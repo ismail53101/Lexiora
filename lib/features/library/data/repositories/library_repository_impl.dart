@@ -1,5 +1,3 @@
-import 'dart:io';
-
 import 'package:drift/drift.dart';
 import 'package:lexiora/core/database/app_database.dart';
 import 'package:lexiora/features/library/domain/entities/category.dart';
@@ -97,6 +95,12 @@ class LibraryRepositoryImpl implements LibraryRepository {
   }
 
   @override
+  Future<Set<String>> existingPaths() async {
+    final List<DocumentRow> rows = await _db.select(_db.documents).get();
+    return rows.map((DocumentRow r) => r.filePath).toSet();
+  }
+
+  @override
   Future<void> insert(LibraryDocument document) async {
     await _db.into(_db.documents).insert(
           DocumentsCompanion.insert(
@@ -145,15 +149,8 @@ class LibraryRepositoryImpl implements LibraryRepository {
 
   @override
   Future<void> delete(String id) async {
-    final DocumentRow? row = await (_db.select(_db.documents)
-          ..where((t) => t.id.equals(id)))
-        .getSingleOrNull();
-    if (row != null) {
-      final File file = File(row.filePath);
-      if (await file.exists()) {
-        await file.delete();
-      }
-    }
+    // Discovered PDFs are referenced in place (they are the user's own files),
+    // so removing a document only deletes the library entry — never the file.
     await (_db.delete(_db.documents)..where((t) => t.id.equals(id))).go();
   }
 

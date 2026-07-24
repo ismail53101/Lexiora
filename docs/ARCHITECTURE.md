@@ -46,7 +46,7 @@ This keeps error handling explicit and testable.
 - **Queries** (reactive lists) are exposed as `StreamProvider`s that watch a
   repository's Drift `watch` streams (e.g. `allDocumentsProvider`).
 - **Commands** are use-case objects exposed via `Provider`s; the UI calls them
-  and folds the returned `Result` (e.g. `importDocumentProvider`,
+  and folds the returned `Result` (e.g. `autoDiscoverProvider`,
   `togglePageBookmarkProvider`).
 - Widgets are `ConsumerWidget` / `ConsumerStatefulWidget`.
 
@@ -60,8 +60,9 @@ layer stays decoupled from construction.
 `lib/app/di/injector.dart` exposes the singleton locator `sl`.
 `injector_config.dart#configureDependencies()`:
 
-1. registers cross-cutting **core singletons** (`AppDatabase`, `StoragePaths`,
-   `FileImportService`, `PermissionService`, `WordActionRegistry`);
+1. registers cross-cutting **core singletons** (`AppDatabase`,
+   `DeviceInfoService`, `PdfDiscoveryService`, `PermissionService`,
+   `ScreenWakeService`, `WordActionRegistry`);
 2. asks **every module** to register its own dependencies;
 3. aggregates the Home destinations each module contributes.
 
@@ -164,11 +165,17 @@ again, without the reader changing.
 
 ## 10. Offline & security posture
 
-- No runtime network calls; no account.
-- **No storage permission** is declared: PDF import uses the Android system
-  picker (Storage Access Framework), which grants scoped access to the chosen
-  file. `PermissionService` exists only for future features that genuinely need
-  a permission, and for opening the OS app-settings page.
+- No runtime network calls; no account. Everything stays on the device.
+- **Storage access for discovery.** To list the PDFs already on the device,
+  Lexiora requests **All files access** (`MANAGE_EXTERNAL_STORAGE`) on Android
+  11+, and the legacy read permission on Android ≤ 10. Files are read **in
+  place** — never copied into the app and never uploaded. Discovery is isolated
+  behind two swappable services: `PdfDiscoveryService` (the native filesystem
+  walk over the `lexiora/platform` channel) and `PermissionService` (the
+  version-aware grant flow + opening the OS app-settings page). Because nothing
+  else in the app touches these, the whole storage strategy can be replaced
+  (e.g. with a Play-review-friendly SAF folder grant) without changing the
+  reader or library UI.
 
 ---
 

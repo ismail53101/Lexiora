@@ -10,18 +10,24 @@ releases (`0.x`) until a `1.0.0` feature-complete milestone.
 
 ---
 
-## ✅ Phase 1 — `v0.1.0` (current)
+## ✅ Phase 1 — `v0.1.x` (current: `v0.1.5`)
 
 Offline PDF study reader.
 
-- Import, read (zoom, scroll direction, night mode, search, go-to-page)
+- **Automatic device-wide PDF discovery** (no import / no file picker; files read
+  in place), read (zoom, scroll direction, night mode, search, go-to-page)
 - Remember last page, reading progress & history, continue reading
 - Highlights & underlines (multi-color, edit, remove), notes (page & selection),
   bookmarks (page & selection), copy
 - Library (recent, favorites, categories), Material 3 UI, dark/light, tablet layouts
-- 100% offline · no account · no unnecessary permissions
+- 100% offline · no account · nothing ever leaves the device
 - Modular foundation + compiling scaffolds for all future modules
 - Prepared tap-on-word extension point
+
+### Phase 1.x release hardening (planned)
+- Production upload keystore + Play signing config
+- Google Play "All files access" declaration **or** an optional SAF
+  folder-grant discovery mode for stricter Play compliance
 
 ---
 

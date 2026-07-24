@@ -9,16 +9,27 @@ android {
     compileSdk = flutter.compileSdkVersion
     ndkVersion = flutter.ndkVersion
 
+    // Extract native libraries (e.g. libpdfium.so, libsqlite3.so) at install
+    // time so Dart FFI's DynamicLibrary.open('libpdfium.so') can resolve them
+    // in RELEASE builds. Without this, release APKs store .so files
+    // uncompressed and unextracted, so the bare-name dlopen fails at runtime —
+    // which caused every PDF to fail to open in release while debug worked.
+    packaging {
+        jniLibs {
+            useLegacyPackaging = true
+        }
+    }
+
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_17
         targetCompatibility = JavaVersion.VERSION_17
     }
 
     defaultConfig {
-        // TODO: Specify your own unique Application ID (https://developer.android.com/studio/build/application-id.html).
+        // Stable application ID for the Lexiora platform (Phase 1).
         applicationId = "com.lexiora.app"
-        // You can update the following values to match your application needs.
-        // For more information, see: https://flutter.dev/to/review-gradle-config.
+        // minSdk 26 (Android 8.0): floor required by pdfrx / PDFium and by the
+        // app's use of modern APIs. versionCode / versionName come from pubspec.
         minSdk = 26
         targetSdk = flutter.targetSdkVersion
         versionCode = flutter.versionCode
@@ -27,8 +38,9 @@ android {
 
     buildTypes {
         release {
-            // TODO: Add your own signing config for the release build.
-            // Signing with the debug keys for now, so `flutter run --release` works.
+            // Phase 1 CI/dev builds are signed with the debug key so the release
+            // APK is directly installable. Production release signing (an upload
+            // keystore) is a Phase-1.x release task, tracked in ROADMAP.md.
             signingConfig = signingConfigs.getByName("debug")
         }
     }

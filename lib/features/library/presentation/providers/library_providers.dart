@@ -1,7 +1,7 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:lexiora/app/di/injector.dart';
-import 'package:lexiora/core/reader_engine/pdf_engine.dart';
-import 'package:lexiora/core/services/file_import_service.dart';
+import 'package:lexiora/core/services/pdf_discovery_service.dart';
+import 'package:lexiora/core/services/permission_service.dart';
 import 'package:lexiora/features/annotations/domain/repositories/annotations_repository.dart';
 import 'package:lexiora/features/bookmarks/domain/repositories/bookmarks_repository.dart';
 import 'package:lexiora/features/library/domain/entities/category.dart';
@@ -54,13 +54,17 @@ final documentByIdProvider = FutureProvider.family<LibraryDocument?, String>(
 
 // ── Commands (use cases) ─────────────────────────────────────────────────────
 
-final Provider<ImportDocument> importDocumentProvider = Provider<ImportDocument>(
-  (Ref ref) => ImportDocument(
+/// Automatically indexes every PDF on the device, referencing files in place.
+final Provider<AutoDiscoverPdfs> autoDiscoverProvider =
+    Provider<AutoDiscoverPdfs>(
+  (Ref ref) => AutoDiscoverPdfs(
     ref.watch(libraryRepositoryProvider),
-    sl<FileImportService>(),
-    sl<PdfEngine>(),
+    sl<PdfDiscoveryService>(),
   ),
 );
+
+final Provider<PermissionService> permissionServiceProvider =
+    Provider<PermissionService>((Ref ref) => sl<PermissionService>());
 
 final Provider<DeleteDocument> deleteDocumentProvider = Provider<DeleteDocument>(
   (Ref ref) => DeleteDocument(

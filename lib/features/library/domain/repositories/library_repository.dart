@@ -10,13 +10,19 @@ abstract interface class LibraryRepository {
   Stream<List<LibraryDocument>> watchByCategory(String categoryId);
 
   Future<LibraryDocument?> getById(String id);
+
+  /// Returns the set of file paths already indexed — used to de-duplicate
+  /// automatic, reference-in-place discovery.
+  Future<Set<String>> existingPaths();
+
   Future<void> insert(LibraryDocument document);
   Future<void> toggleFavorite(String id);
   Future<void> rename(String id, String title);
   Future<void> assignCategory(String id, String? categoryId);
   Future<void> markOpened(String id);
 
-  /// Deletes the document row and its file from disk.
+  /// Deletes the library entry only. The underlying file is the user's own and
+  /// is referenced in place, so it is never removed from the device.
   Future<void> delete(String id);
 
   Stream<List<Category>> watchCategories();

@@ -6,8 +6,6 @@ import 'package:lexiora/app/di/injector.dart';
 import 'package:lexiora/app/router/app_routes.dart';
 import 'package:lexiora/core/constants/app_constants.dart';
 import 'package:lexiora/core/navigation/home_destination.dart';
-import 'package:lexiora/core/usecase/usecase.dart';
-import 'package:lexiora/core/utils/result.dart';
 import 'package:lexiora/core/widgets/empty_state.dart';
 import 'package:lexiora/features/library/domain/entities/library_document.dart';
 import 'package:lexiora/features/library/presentation/providers/library_providers.dart';
@@ -38,11 +36,6 @@ class HomePage extends ConsumerWidget {
     );
 
     return Scaffold(
-      floatingActionButton: FloatingActionButton.extended(
-        onPressed: () => _import(context, ref),
-        icon: const Icon(Icons.add),
-        label: const Text('Import PDF'),
-      ),
       body: CustomScrollView(
         slivers: [
           SliverAppBar.large(
@@ -69,12 +62,13 @@ class HomePage extends ConsumerWidget {
               child: EmptyState(
                 icon: Icons.auto_stories_outlined,
                 title: 'Welcome to Lexiora',
-                message: 'Import a PDF to start reading, highlighting and '
-                    'taking notes — everything stays on your device.',
+                message: 'Lexiora automatically finds the PDF files already on '
+                    'your device. Open your library to browse them — '
+                    'everything stays on your device.',
                 action: FilledButton.icon(
-                  onPressed: () => _import(context, ref),
-                  icon: const Icon(Icons.add),
-                  label: const Text('Import your first PDF'),
+                  onPressed: () => context.push(AppRoutes.library),
+                  icon: const Icon(Icons.folder_open_outlined),
+                  label: const Text('Open library'),
                 ),
               ),
             )
@@ -142,23 +136,6 @@ class HomePage extends ConsumerWidget {
     );
   }
 
-  Future<void> _import(BuildContext context, WidgetRef ref) async {
-    final ScaffoldMessengerState messenger = ScaffoldMessenger.of(context);
-    final Result<LibraryDocument?> result =
-        await ref.read(importDocumentProvider).call(const NoParams());
-    result.fold(
-      (failure) => messenger.showSnackBar(
-        SnackBar(content: Text('Import failed: ${failure.message}')),
-      ),
-      (LibraryDocument? doc) {
-        if (doc != null) {
-          messenger.showSnackBar(
-            SnackBar(content: Text('Imported "${doc.title}"')),
-          );
-        }
-      },
-    );
-  }
 }
 
 class _SearchEntry extends StatelessWidget {

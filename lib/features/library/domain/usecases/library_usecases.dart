@@ -1,8 +1,7 @@
-import 'package:lexiora/core/reader_engine/pdf_engine.dart';
-import 'package:lexiora/core/reader_engine/reader_models.dart';
-import 'package:lexiora/core/services/file_import_service.dart';
+import 'package:lexiora/core/services/pdf_discovery_service.dart';
 import 'package:lexiora/core/usecase/usecase.dart';
 import 'package:lexiora/core/utils/guard.dart';
+import 'package:lexiora/core/utils/logger.dart';
 import 'package:lexiora/core/utils/typedefs.dart';
 import 'package:lexiora/features/annotations/domain/repositories/annotations_repository.dart';
 import 'package:lexiora/features/bookmarks/domain/repositories/bookmarks_repository.dart';
@@ -10,54 +9,69 @@ import 'package:lexiora/features/library/domain/entities/library_document.dart';
 import 'package:lexiora/features/library/domain/repositories/library_repository.dart';
 import 'package:lexiora/features/notes/domain/repositories/notes_repository.dart';
 import 'package:lexiora/features/reading_progress/domain/repositories/reading_progress_repository.dart';
+import 'package:path/path.dart' as p;
 import 'package:uuid/uuid.dart';
 
 const Uuid _uuid = Uuid();
 
-/// Picks a PDF, reads its page count, and adds it to the library.
-///
-/// Returns the created document, or `null` when the user cancels the picker.
-class ImportDocument implements UseCase<LibraryDocument?, NoParams> {
-  const ImportDocument(this._repo, this._importer, this._engine);
+String _titleOf(String fileName) {
+  final String base = p.basenameWithoutExtension(fileName).trim();
+  return base.isEmpty ? 'Untitled document' : base;
+}
+
+/// The result of a discovery run.
+class DiscoveryOutcome {
+  const DiscoveryOutcome({required this.scanned, required this.added});
+  final int scanned;
+  final int added;
+}
+
+/// Automatically scans the whole device for PDFs (using all-files access) and
+/// indexes any not already in the library, referencing each file in place (no
+/// copy). Runs on library open and pull-to-refresh; new files appear on the
+/// next scan. Existing entries are never removed automatically — so a transient
+/// scan miss can never delete a user's highlights/notes/bookmarks. A document
+/// whose file has since been deleted surfaces the reader's error page and can
+/// be removed from the library by hand.
+class AutoDiscoverPdfs implements UseCase<DiscoveryOutcome, NoParams> {
+  const AutoDiscoverPdfs(this._repo, this._discovery);
 
   final LibraryRepository _repo;
-  final FileImportService _importer;
-  final PdfEngine _engine;
+  final PdfDiscoveryService _discovery;
 
   @override
-  ResultFuture<LibraryDocument?> call(NoParams params) => guard(() async {
-        final ImportedFile? imported = await _importer.pickAndImportPdf();
-        if (imported == null) return null;
-
-        int pageCount = 0;
-        try {
-          final PdfDocumentInfo info =
-              await _engine.readDocumentInfo(imported.filePath);
-          pageCount = info.pageCount;
-        } on Object {
-          // A metadata read failure must not block import; page count is
-          // refined the first time the document is opened.
-          pageCount = 0;
+  ResultFuture<DiscoveryOutcome> call(NoParams params) => guard(() async {
+        final List<DeviceFile> found = await _discovery.scanAll();
+        AppLogger.i('AutoDiscover: scanned ${found.length} PDF(s)');
+        final Set<String> existing = await _repo.existingPaths();
+        final DateTime now = DateTime.now();
+        int added = 0;
+        for (final DeviceFile f in found) {
+          if (existing.contains(f.path)) continue;
+          AppLogger.i('AutoDiscover: indexing ${f.path}');
+          await _repo.insert(
+            LibraryDocument(
+              id: _uuid.v4(),
+              title: _titleOf(f.name),
+              fileName: _titleOf(f.name),
+              filePath: f.path,
+              fileSize: f.size,
+              pageCount: 0, // refined the first time the document is opened
+              isFavorite: false,
+              importedAt: now,
+            ),
+          );
+          existing.add(f.path);
+          added++;
         }
-
-        final LibraryDocument doc = LibraryDocument(
-          id: _uuid.v4(),
-          title: imported.displayName,
-          fileName: imported.displayName,
-          filePath: imported.filePath,
-          fileSize: imported.fileSize,
-          pageCount: pageCount,
-          isFavorite: false,
-          importedAt: DateTime.now(),
-        );
-        await _repo.insert(doc);
-        return doc;
+        AppLogger.i('AutoDiscover: added $added new PDF(s)');
+        return DiscoveryOutcome(scanned: found.length, added: added);
       });
 }
 
-/// Deletes a document and *all* of its associated data (annotations, notes,
-/// bookmarks, reading progress) and its file. Composed from the other feature
-/// repositories so cascade behavior lives in one obvious place.
+/// Deletes a document and all of its associated data (annotations, notes,
+/// bookmarks, reading progress). The underlying file is left untouched — it is
+/// the user's own file, referenced in place.
 class DeleteDocument implements UseCase<void, String> {
   const DeleteDocument(
     this._library,

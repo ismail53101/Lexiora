@@ -2,18 +2,18 @@
 
 **A premium, offline-first study & language-learning platform for Android — built with Flutter.**
 
-Lexiora Phase 1 is a production-grade **PDF study reader**: import PDFs, read them with a fast PDFium-based engine, and highlight, underline, annotate, bookmark and take notes — all stored locally on the device. No account. No internet. Your library never leaves your phone.
+Lexiora Phase 1 is a production-grade **PDF study reader**: it **automatically finds every PDF already on your device** and lists them — no importing, no file picking — then reads them with a fast PDFium-based engine and lets you highlight, underline, annotate, bookmark and take notes. Everything is stored locally on the device. No account. No internet. Your library never leaves your phone.
 
 It is also the **foundation** of a larger platform. The architecture is designed so that nine planned modules (Dictionary, Translation, Grammar, Vocabulary Builder, Flashcards, Quiz, Admin, AI Assistant, Cloud Sync) can be added later **without modifying existing code**.
 
-> Version `0.1.0` · Package `com.lexiora.app` · Flutter (stable) · Material 3
+> Version `0.1.5` · Package `com.lexiora.app` · Flutter (stable) · Material 3
 
 ---
 
 ## ✨ Phase 1 features
 
 **Reading**
-- Import PDFs from device storage (system picker — no broad storage permission)
+- **Automatic device-wide PDF discovery** — every PDF on the device is found and listed on open (and on pull-to-refresh), Adobe Acrobat / Xodo style. Files are referenced **in place**; nothing is copied or uploaded. No Import or Find button anywhere.
 - Fast, lazy PDFium rendering tuned for large (500+ page) documents
 - Vertical & horizontal reading directions
 - Pinch/zoom, smooth page navigation, go-to-page
@@ -52,7 +52,8 @@ It is also the **foundation** of a larger platform. The architecture is designed
 | Navigation | GoRouter ^17 |
 | Local database | Drift (SQLite) ^2 — reactive, type-safe |
 | PDF engine | pdfrx ^2 (PDFium) — MIT, behind a swappable abstraction |
-| File import / storage | file_picker, path_provider |
+| PDF discovery | native platform channel (filesystem walk) + `permission_handler` (all-files access) |
+| Paths / storage | `path_provider`, `path` |
 
 Every dependency is free and open source.
 
@@ -134,15 +135,43 @@ flutter build apk --release
 6. `flutter test`
 7. `flutter build apk --release`
 8. Uploads `app-release.apk` as a **workflow artifact**
-9. Publishes it as an asset on the **`v0.1.0`** GitHub Release
+9. Publishes it as an asset on a GitHub Release whose tag is derived from the pubspec version (e.g. **`v0.1.5`**)
 
 The release APK is signed with the debug key by default (see `android/app/build.gradle.kts`); add a signing config there for Play Store distribution.
 
 ---
 
+## 🔐 Permissions & Play Store
+
+Lexiora lists the PDFs already on your device, so it needs to read them:
+
+- **Android 11+ (API 30+):** requests **All files access**
+  (`MANAGE_EXTERNAL_STORAGE`) once, on first open of the Library — the same
+  capability Adobe Acrobat and Xodo use to browse a device's documents. Files
+  are read **in place**; nothing is copied into the app and nothing leaves the
+  device.
+- **Android 10 and below (API ≤ 29):** uses the legacy `READ_EXTERNAL_STORAGE`
+  permission (declared with `maxSdkVersion="29"`).
+
+If access hasn't been granted, the Library shows an **"Allow access to your
+files"** screen with a single Grant button — the app never crashes or shows a
+blank screen.
+
+> **Google Play note.** `MANAGE_EXTERNAL_STORAGE` is a Play **sensitive**
+> permission. Publishing on Play requires a declaration justifying all-files
+> access; a document reader / file-manager use case is an accepted
+> justification, but review is stricter. **Direct APK / sideload distribution is
+> unaffected.** If Play compliance without the declaration is required, the
+> discovery layer is isolated behind `PdfDiscoveryService` +
+> `PermissionService` and can be switched to a Storage-Access-Framework
+> folder-grant model without touching the reader or library UI.
+
 ## 🗺️ Roadmap & versioning
 
-Lexiora follows [Semantic Versioning](https://semver.org). Phase 1 is **v0.1.0**. The nine future modules and their planned versions are described in [`docs/ROADMAP.md`](docs/ROADMAP.md). Changes are tracked in [`CHANGELOG.md`](CHANGELOG.md).
+Lexiora follows [Semantic Versioning](https://semver.org). Phase 1 is the
+**v0.1.x** line (current: **v0.1.5**). The nine future modules and their planned
+versions are described in [`docs/ROADMAP.md`](docs/ROADMAP.md). Changes are
+tracked in [`CHANGELOG.md`](CHANGELOG.md).
 
 ## 📄 License
 

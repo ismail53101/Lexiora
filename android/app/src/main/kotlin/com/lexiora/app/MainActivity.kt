@@ -1,88 +1,113 @@
 package com.lexiora.app
 
-import android.app.Activity
-import android.content.Intent
-import android.net.Uri
-import android.provider.OpenableColumns
+import android.os.Build
+import android.os.Environment
+import android.util.Log
+import android.view.WindowManager
 import io.flutter.embedding.android.FlutterActivity
 import io.flutter.embedding.engine.FlutterEngine
 import io.flutter.plugin.common.MethodChannel
 import java.io.File
 
 /**
- * Hosts a lightweight PDF picker over the Storage Access Framework
- * (ACTION_OPEN_DOCUMENT). This avoids any third-party file-picker plugin and,
- * because SAF grants scoped access to the chosen file, Lexiora needs **no**
- * storage permission. The picked document is copied into the app cache and its
- * path is returned to Dart, which then moves it into app-private storage.
+ * Native platform bridge for Lexiora (`lexiora/platform`).
+ *
+ * Discovery is fully automatic and reference-in-place — there is no import or
+ * folder-picker path. The bridge exposes:
+ *
+ *  - getSdkInt / setKeepScreenOn: small platform helpers.
+ *  - isExternalStorageManager: whether all-files access is granted (always true
+ *    below API 30, where the storage permission covers broad reads).
+ *  - scanAllPdfs: recursively walks the shared-storage volumes and returns every
+ *    readable *.pdf by absolute path (name, size). Requires all-files access on
+ *    Android 11+; the reader opens each file in place, nothing is copied.
  */
 class MainActivity : FlutterActivity() {
-    private val channelName = "lexiora/file_picker"
-    private val pickRequestCode = 0x1069
-    private var pendingResult: MethodChannel.Result? = null
+    private val channelName = "lexiora/platform"
 
     override fun configureFlutterEngine(flutterEngine: FlutterEngine) {
         super.configureFlutterEngine(flutterEngine)
         MethodChannel(flutterEngine.dartExecutor.binaryMessenger, channelName)
             .setMethodCallHandler { call, result ->
                 when (call.method) {
-                    "pickPdf" -> startPdfPick(result)
+                    "getSdkInt" -> result.success(Build.VERSION.SDK_INT)
+                    "setKeepScreenOn" -> {
+                        val on = call.argument<Boolean>("on") ?: false
+                        if (on) {
+                            window.addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON)
+                        } else {
+                            window.clearFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON)
+                        }
+                        result.success(null)
+                    }
+                    "isExternalStorageManager" -> result.success(
+                        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
+                            Environment.isExternalStorageManager()
+                        } else {
+                            true
+                        },
+                    )
+                    "scanAllPdfs" -> scanAllPdfs(result)
                     else -> result.notImplemented()
                 }
             }
     }
 
-    private fun startPdfPick(result: MethodChannel.Result) {
-        if (pendingResult != null) {
-            result.error("busy", "A pick is already in progress.", null)
-            return
-        }
-        pendingResult = result
-        val intent = Intent(Intent.ACTION_OPEN_DOCUMENT).apply {
-            addCategory(Intent.CATEGORY_OPENABLE)
-            type = "application/pdf"
-        }
-        startActivityForResult(intent, pickRequestCode)
+    /** Recursively walks the shared-storage volumes for *.pdf files. */
+    private fun scanAllPdfs(result: MethodChannel.Result) {
+        Thread {
+            val out = ArrayList<Map<String, Any?>>()
+            val seen = HashSet<String>()
+            try {
+                val roots = ArrayList<File>()
+                Environment.getExternalStorageDirectory()?.let { roots.add(it) }
+                // Include secondary volumes (e.g. SD cards): each getExternalFilesDirs
+                // entry is /storage/<VOL>/Android/data/<pkg>/files → the volume root
+                // is four levels up.
+                for (dir in getExternalFilesDirs(null)) {
+                    val vol = dir?.parentFile?.parentFile?.parentFile?.parentFile
+                    if (vol != null && vol.exists() &&
+                        roots.none { it.absolutePath == vol.absolutePath }
+                    ) {
+                        roots.add(vol)
+                    }
+                }
+                for (root in roots) walkPdfs(root, out, seen, 0)
+                Log.i(
+                    "Lexiora",
+                    "scanAllPdfs found ${out.size} PDF(s) across ${roots.size} volume(s)",
+                )
+                runOnUiThread { result.success(out) }
+            } catch (e: Exception) {
+                runOnUiThread { result.error("scan_all_failed", e.message, null) }
+            }
+        }.start()
     }
 
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        super.onActivityResult(requestCode, resultCode, data)
-        if (requestCode != pickRequestCode) return
-        val result = pendingResult ?: return
-        pendingResult = null
-
-        val uri: Uri? = data?.data
-        if (resultCode != Activity.RESULT_OK || uri == null) {
-            result.success(null) // user cancelled
-            return
-        }
-
-        try {
-            val displayName = queryDisplayName(uri) ?: "document.pdf"
-            val cacheFile = File(cacheDir, "import_${System.currentTimeMillis()}.pdf")
-            val input = contentResolver.openInputStream(uri)
-            if (input == null) {
-                result.error("unreadable", "Could not open the selected file.", null)
-                return
-            }
-            input.use { stream ->
-                cacheFile.outputStream().use { output -> stream.copyTo(output) }
-            }
-            result.success(
-                mapOf("path" to cacheFile.absolutePath, "name" to displayName),
-            )
-        } catch (e: Exception) {
-            result.error("import_failed", e.message, null)
-        }
-    }
-
-    private fun queryDisplayName(uri: Uri): String? {
-        contentResolver.query(uri, null, null, null, null)?.use { cursor ->
-            val index = cursor.getColumnIndex(OpenableColumns.DISPLAY_NAME)
-            if (index >= 0 && cursor.moveToFirst()) {
-                return cursor.getString(index)
+    private fun walkPdfs(
+        dir: File,
+        out: ArrayList<Map<String, Any?>>,
+        seen: HashSet<String>,
+        depth: Int,
+    ) {
+        if (depth > 15) return // guard against pathological trees / symlink loops
+        val files = dir.listFiles() ?: return
+        for (f in files) {
+            if (f.isDirectory) {
+                // Skip app-private/system noise at the storage root.
+                if (depth == 0 && f.name == "Android") continue
+                walkPdfs(f, out, seen, depth + 1)
+            } else if (f.name.lowercase().endsWith(".pdf") && f.canRead()) {
+                if (seen.add(f.absolutePath)) {
+                    out.add(
+                        mapOf(
+                            "path" to f.absolutePath,
+                            "name" to f.name,
+                            "size" to f.length(),
+                        ),
+                    )
+                }
             }
         }
-        return null
     }
 }

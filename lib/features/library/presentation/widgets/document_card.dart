@@ -179,8 +179,8 @@ class _Menu extends StatelessWidget {
             value: DocumentCardAction.delete,
             child: ListTile(
               contentPadding: EdgeInsets.zero,
-              leading: Icon(Icons.delete_outline),
-              title: Text('Delete'),
+              leading: Icon(Icons.playlist_remove_outlined),
+              title: Text('Remove from library'),
             ),
           ),
         ],

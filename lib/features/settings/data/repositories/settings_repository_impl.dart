@@ -19,6 +19,8 @@ class SettingsRepositoryImpl implements SettingsRepository {
   static const String _kColorMode = 'colorMode';
   static const String _kHighlightColors = 'highlightColors';
   static const String _kDefaultHighlightColor = 'defaultHighlightColor';
+  static const String _kKeepAwake = 'keepScreenAwake';
+  static const String _kAutoResume = 'autoResume';
 
   @override
   Stream<AppSettings> watchSettings() =>
@@ -66,6 +68,8 @@ class SettingsRepositoryImpl implements SettingsRepository {
         map[_kDefaultHighlightColor],
         AppConstants.defaultHighlightColors[0],
       ),
+      keepScreenAwake: _bool(map[_kKeepAwake], false),
+      autoResume: _bool(map[_kAutoResume], true),
     );
   }
 
@@ -76,6 +80,8 @@ class SettingsRepositoryImpl implements SettingsRepository {
         _kColorMode: s.readerColorMode.index.toString(),
         _kHighlightColors: s.highlightColors.join(','),
         _kDefaultHighlightColor: s.defaultHighlightColor.toString(),
+        _kKeepAwake: s.keepScreenAwake ? '1' : '0',
+        _kAutoResume: s.autoResume ? '1' : '0',
       };
 
   int _int(String? v, int fallback) =>
@@ -86,6 +92,11 @@ class SettingsRepositoryImpl implements SettingsRepository {
 
   double _clampDouble(double v, double lo, double hi) =>
       v < lo ? lo : (v > hi ? hi : v);
+
+  bool _bool(String? v, bool fallback) {
+    if (v == null) return fallback;
+    return v == '1' || v.toLowerCase() == 'true';
+  }
 
   int _enumIndex(String? v, int length, int fallback) {
     final int i = _int(v, fallback);

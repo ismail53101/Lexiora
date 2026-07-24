@@ -1,3 +1,6 @@
+import 'dart:async';
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:lexiora/app/di/injector.dart';
@@ -5,7 +8,9 @@ import 'package:lexiora/core/models/normalized_rect.dart';
 import 'package:lexiora/core/reader_engine/pdf_engine.dart';
 import 'package:lexiora/core/reader_engine/pdf_reader_controller.dart';
 import 'package:lexiora/core/reader_engine/reader_models.dart';
-import 'package:lexiora/core/widgets/empty_state.dart';
+import 'package:lexiora/core/services/screen_wake_service.dart';
+import 'package:lexiora/core/utils/logger.dart';
+import 'package:lexiora/core/widgets/error_view.dart';
 import 'package:lexiora/core/widgets/loading_indicator.dart';
 import 'package:lexiora/features/annotations/domain/entities/highlight.dart';
 import 'package:lexiora/features/annotations/domain/usecases/annotations_usecases.dart';
@@ -27,6 +32,10 @@ import 'package:lexiora/features/settings/presentation/providers/settings_provid
 /// The PDF reading screen. Loads the document and its remembered page, wires
 /// highlights → overlays, selection → the selection toolbar, page changes →
 /// reading progress, and hosts search + the bookmarks/notes/highlights panels.
+///
+/// Every state (loading, error, loaded) renders a full Scaffold with an AppBar,
+/// and load failures show an explained [ErrorView] with Retry/Back — so the
+/// reader can never present a blank, chromeless screen.
 class ReaderPage extends ConsumerStatefulWidget {
   const ReaderPage({super.key, required this.documentId});
 
@@ -43,6 +52,7 @@ class _ReaderPageState extends ConsumerState<ReaderPage> {
   LibraryDocument? _document;
   bool _loading = true;
   String? _error;
+  String? _errorDetails;
   int _initialPage = 1;
   int _pageCount = 0;
   PdfTextSelectionData? _selection;
@@ -61,19 +71,41 @@ class _ReaderPageState extends ConsumerState<ReaderPage> {
   }
 
   Future<void> _load() async {
+    AppLogger.i('Reader._load documentId=$_id');
     try {
       final settings = await ref.read(settingsRepositoryProvider).getSettings();
       final LibraryDocument? doc =
           await ref.read(libraryRepositoryProvider).getById(_id);
       if (doc == null) {
+        AppLogger.w('Reader: document not found ($_id)');
         if (mounted) {
           setState(() {
             _loading = false;
-            _error = 'Document not found.';
+            _error = 'This document is no longer in your library.';
           });
         }
         return;
       }
+
+      // Validate the backing file BEFORE handing it to the PDF engine, so a
+      // missing/empty file shows a helpful error instead of a blank viewer.
+      final File file = File(doc.filePath);
+      final bool exists = await file.exists();
+      final int size = exists ? await file.length() : 0;
+      AppLogger.i('Reader: file=${doc.filePath} exists=$exists size=$size');
+      if (!exists || size == 0) {
+        if (mounted) {
+          setState(() {
+            _loading = false;
+            _document = doc;
+            _error = 'The file for "${doc.title}" is missing or empty. '
+                'It may have been moved or deleted — try re-importing it.';
+            _errorDetails = 'path=${doc.filePath}\nexists=$exists  size=$size';
+          });
+        }
+        return;
+      }
+
       final progress =
           await ref.read(readingProgressRepositoryProvider).getProgress(_id);
       _scrollAxis = settings.readingScrollAxis;
@@ -82,25 +114,42 @@ class _ReaderPageState extends ConsumerState<ReaderPage> {
       _document = doc;
       _pageCount = doc.pageCount;
       final int maxPage = doc.pageCount > 0 ? doc.pageCount : 1000000;
-      _initialPage = (progress?.lastPage ?? 1).clamp(1, maxPage);
+      _initialPage = settings.autoResume
+          ? (progress?.lastPage ?? 1).clamp(1, maxPage)
+          : 1;
+
+      // Honor the "keep screen awake" preference while reading.
+      await sl<ScreenWakeService>().setKeepScreenOn(settings.keepScreenAwake);
 
       await ref.read(markDocumentOpenedProvider).call(_id);
       await ref.read(logReadingSessionProvider).call(
             LogSessionParams(documentId: _id, pageNumber: _initialPage),
           );
       if (mounted) setState(() => _loading = false);
-    } on Object catch (e) {
+    } on Object catch (e, s) {
+      AppLogger.e('Reader._load failed', error: e, stackTrace: s);
       if (mounted) {
         setState(() {
           _loading = false;
-          _error = 'Failed to open document: $e';
+          _error = 'Failed to open this document.';
+          _errorDetails = '$e';
         });
       }
     }
   }
 
+  void _retry() {
+    setState(() {
+      _loading = true;
+      _error = null;
+      _errorDetails = null;
+    });
+    _load();
+  }
+
   @override
   void dispose() {
+    unawaited(sl<ScreenWakeService>().setKeepScreenOn(false));
     _controller.dispose();
     _searchField.dispose();
     super.dispose();
@@ -257,15 +306,21 @@ class _ReaderPageState extends ConsumerState<ReaderPage> {
   @override
   Widget build(BuildContext context) {
     if (_loading) {
-      return const Scaffold(body: LoadingIndicator(message: 'Opening…'));
+      return Scaffold(
+        appBar: AppBar(title: Text(_document?.title ?? 'Opening…')),
+        body: const LoadingIndicator(message: 'Opening…'),
+      );
     }
+
     if (_error != null || _document == null) {
       return Scaffold(
-        appBar: AppBar(),
-        body: EmptyState(
-          icon: Icons.error_outline,
+        appBar: AppBar(title: Text(_document?.title ?? 'Reader')),
+        body: ErrorView(
           title: 'Cannot open document',
-          message: _error ?? 'Unknown error',
+          message: _error ?? 'The document could not be opened.',
+          details: _errorDetails,
+          onRetry: _retry,
+          onBack: () => Navigator.of(context).maybePop(),
         ),
       );
     }

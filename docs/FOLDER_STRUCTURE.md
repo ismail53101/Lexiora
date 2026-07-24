@@ -42,12 +42,12 @@ lexiora/
     │   ├── theme/               # Material 3 light/dark theme + brand colors
     │   ├── responsive/          # breakpoints for phone/tablet layouts
     │   ├── database/            # Drift database, tables, converters
-    │   ├── services/            # StoragePaths, FileImportService, PermissionService
+    │   ├── services/            # PdfDiscoveryService, PermissionService, DeviceInfoService, ScreenWakeService
     │   └── widgets/             # shared widgets (EmptyState, SectionHeader, …)
     │
     ├── features/                # ── Phase 1 features (feature-first) ──────────
     │   ├── home/                # dashboard: search, continue reading, recent, explore
-    │   ├── library/             # import, list, recent, favorites, categories
+    │   ├── library/             # automatic discovery, list, recent, favorites, categories
     │   ├── reader/              # the PDF reader (pdfrx impl lives in data/)
     │   ├── annotations/         # highlights & underlines
     │   ├── notes/               # page- and selection-anchored notes

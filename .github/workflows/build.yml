@@ -1,8 +1,8 @@
 name: Build Lexiora APK
 
 # Builds, analyzes and tests Lexiora on every push to main, then produces a
-# release APK — uploaded both as a workflow artifact and as an asset on the
-# v0.1.0 GitHub Release.
+# release APK — uploaded both as a workflow artifact and as an asset on a
+# GitHub Release whose tag is derived from the pubspec version (e.g. v0.1.5).
 on:
   push:
     branches: [main]
@@ -57,6 +57,10 @@ jobs:
       - name: Build release APK
         run: flutter build apk --release
 
+      - name: Resolve app version
+        id: ver
+        run: echo "v=$(grep '^version:' pubspec.yaml | sed 's/version:[[:space:]]*//; s/+.*//')" >> "$GITHUB_OUTPUT"
+
       - name: Upload APK artifact
         uses: actions/upload-artifact@v4
         with:
@@ -68,8 +72,8 @@ jobs:
         if: github.ref == 'refs/heads/main'
         uses: softprops/action-gh-release@v2
         with:
-          tag_name: v0.1.0
-          name: Lexiora v0.1.0
+          tag_name: v${{ steps.ver.outputs.v }}
+          name: Lexiora v${{ steps.ver.outputs.v }}
           body: Automated Phase 1 release build of Lexiora.
           files: build/app/outputs/flutter-apk/app-release.apk
         env:

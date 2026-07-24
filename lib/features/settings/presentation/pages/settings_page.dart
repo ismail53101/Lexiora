@@ -123,6 +123,25 @@ class _SettingsBody extends ConsumerWidget {
           ],
         ),
         _SectionCard(
+          title: 'Reading behaviour',
+          children: [
+            SwitchListTile(
+              contentPadding: EdgeInsets.zero,
+              title: const Text('Keep screen awake'),
+              subtitle: const Text('Stop the screen dimming while reading'),
+              value: settings.keepScreenAwake,
+              onChanged: controller.setKeepScreenAwake,
+            ),
+            SwitchListTile(
+              contentPadding: EdgeInsets.zero,
+              title: const Text('Auto-resume'),
+              subtitle: const Text('Reopen documents on your last read page'),
+              value: settings.autoResume,
+              onChanged: controller.setAutoResume,
+            ),
+          ],
+        ),
+        _SectionCard(
           title: 'Data',
           children: [
             ListTile(

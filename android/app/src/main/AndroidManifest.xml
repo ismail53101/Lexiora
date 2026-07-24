@@ -1,4 +1,18 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Read PDFs from shared storage on Android 10 and below (API <= 29),
+         where broad read access is enough to enumerate every PDF on the device.
+         On Android 11+ (API 30+) this legacy permission no longer grants
+         file-wide visibility, so discovery there relies on all-files access
+         (declared below). Capped at API 29 so newer versions don't request it. -->
+    <uses-permission
+        android:name="android.permission.READ_EXTERNAL_STORAGE"
+        android:maxSdkVersion="29" />
+    <!-- All-files access: required to automatically discover every PDF on the
+         device (Downloads, Documents, etc.) without the user picking files or
+         folders — the same capability Adobe Acrobat / Xodo use. This is a Google
+         Play "sensitive" permission and requires a declaration at submission. -->
+    <uses-permission android:name="android.permission.MANAGE_EXTERNAL_STORAGE" />
+
     <application
         android:label="Lexiora"
         android:name="${applicationName}"

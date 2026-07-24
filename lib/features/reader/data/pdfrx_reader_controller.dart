@@ -4,20 +4,22 @@ import 'package:pdfrx/pdfrx.dart';
 
 /// pdfrx-backed implementation of the engine-agnostic [PdfReaderController].
 ///
-/// It wraps a [PdfViewerController] and a [PdfTextSearcher] and republishes
-/// their state through simple [ValueListenable]s the reader UI can bind to,
-/// keeping the UI free of any direct pdfrx dependency.
+/// IMPORTANT: [PdfTextSearcher] must only be constructed once the underlying
+/// [PdfViewerController] is *ready* (attached to a live [PdfViewer] with a
+/// loaded document). Its constructor calls `controller!.document…`, which
+/// throws a null-check error if the controller isn't ready yet. Therefore the
+/// searcher is created lazily in [handleReady] / on the first ready tick —
+/// never eagerly in the constructor (doing so crashed the whole reader).
 class PdfrxReaderController implements PdfReaderController {
   PdfrxReaderController() {
     pdf.addListener(_onPdfChanged);
-    searcher.addListener(_onSearchChanged);
   }
 
   /// The underlying pdfrx controller (used only by [PdfrxReaderView]).
   final PdfViewerController pdf = PdfViewerController();
 
-  /// The underlying pdfrx searcher (used for highlighting matches on canvas).
-  late final PdfTextSearcher searcher = PdfTextSearcher(pdf);
+  /// Created lazily once [pdf] is ready; null before that.
+  PdfTextSearcher? _searcher;
 
   final ValueNotifier<bool> _isReady = ValueNotifier<bool>(false);
   final ValueNotifier<int> _currentPage = ValueNotifier<int>(1);
@@ -26,31 +28,47 @@ class PdfrxReaderController implements PdfReaderController {
       ValueNotifier<PdfSearchState>(const PdfSearchState());
   String _query = '';
 
+  /// The text searcher, available only after the viewer is ready.
+  PdfTextSearcher? get searcherOrNull => _searcher;
+
   void _onPdfChanged() {
     if (!pdf.isReady) return;
-    _isReady.value = true;
+    _searcher ??= _createSearcher();
+    if (!_isReady.value) _isReady.value = true;
     _zoom.value = pdf.currentZoom;
     final int? page = pdf.pageNumber;
     if (page != null) _currentPage.value = page;
   }
 
+  PdfTextSearcher _createSearcher() {
+    final PdfTextSearcher searcher = PdfTextSearcher(pdf);
+    searcher.addListener(_onSearchChanged);
+    return searcher;
+  }
+
   void _onSearchChanged() {
-    final int? index = searcher.currentIndex;
+    final PdfTextSearcher? s = _searcher;
+    if (s == null) return;
+    final int? index = s.currentIndex;
     _searchState.value = PdfSearchState(
       query: _query,
-      currentMatch: (index == null || searcher.matches.isEmpty) ? 0 : index + 1,
-      totalMatches: searcher.matches.length,
-      isSearching: searcher.isSearching,
+      currentMatch: (index == null || s.matches.isEmpty) ? 0 : index + 1,
+      totalMatches: s.matches.length,
+      isSearching: s.isSearching,
     );
+  }
+
+  /// Called by the view once pdfrx reports the document is ready — the only
+  /// safe point to construct the [PdfTextSearcher].
+  void handleReady() {
+    _searcher ??= _createSearcher();
+    _isReady.value = true;
   }
 
   /// Called by the view when pdfrx reports a page change.
   void handlePageChanged(int? page) {
     if (page != null) _currentPage.value = page;
   }
-
-  /// Called by the view when the document finishes its first layout.
-  void handleReady() => _isReady.value = true;
 
   @override
   ValueListenable<bool> get isReady => _isReady;
@@ -104,28 +122,30 @@ class PdfrxReaderController implements PdfReaderController {
   @override
   Future<void> search(String query) async {
     _query = query;
+    final PdfTextSearcher? s = _searcher;
+    if (s == null) return; // not ready yet
     if (query.trim().isEmpty) {
-      searcher.resetTextSearch();
+      s.resetTextSearch();
       _searchState.value = const PdfSearchState();
       return;
     }
-    searcher.startTextSearch(query);
+    s.startTextSearch(query);
   }
 
   @override
   Future<void> nextMatch() async {
-    await searcher.goToNextMatch();
+    await _searcher?.goToNextMatch();
   }
 
   @override
   Future<void> previousMatch() async {
-    await searcher.goToPrevMatch();
+    await _searcher?.goToPrevMatch();
   }
 
   @override
   void clearSearch() {
     _query = '';
-    searcher.resetTextSearch();
+    _searcher?.resetTextSearch();
     _searchState.value = const PdfSearchState();
   }
 
@@ -142,8 +162,8 @@ class PdfrxReaderController implements PdfReaderController {
   @override
   void dispose() {
     pdf.removeListener(_onPdfChanged);
-    searcher.removeListener(_onSearchChanged);
-    searcher.dispose();
+    _searcher?.removeListener(_onSearchChanged);
+    _searcher?.dispose();
     _isReady.dispose();
     _currentPage.dispose();
     _zoom.dispose();
