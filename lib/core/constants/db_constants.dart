@@ -19,7 +19,9 @@ abstract final class DbConstants {
   /// v7 → v8 (Phase v0.5.0): Grammar hierarchy — adds `grammar_topics` (a
   /// Category → Subcategory → Lesson tree). Existing grammar_progress /
   /// grammar_favorites are reused, keyed by leaf topic id.
-  static const int schemaVersion = 8;
+  /// v8 → v9 (Phase v0.6.0): Vocabulary module — adds `vocabulary_lists` and
+  /// `vocabulary_words` (A–Z learning word lists). Purely additive.
+  static const int schemaVersion = 9;
 }
 
 /// Constants for the bundled offline translation data set.
@@ -106,6 +108,30 @@ abstract final class ExamDictionaryConstants {
   static const String datasetVersion = 'exam-words-2026.07-expanded';
   static const String seedVersionKey = 'dictionary_exam_seed_version';
   static const int seedBatchSize = 200;
+}
+
+/// Constants for the bundled offline Vocabulary word packs (Phase v0.6.0).
+///
+/// The Vocabulary module ships organized A–Z learning lists. Like the curated
+/// dictionary packs, it uses a **data-driven, multi-pack loader**: every
+/// `*.json` file under [assetDir] is auto-discovered and merged (one pack per
+/// list). To add a list (e.g. GRE, Oxford 3000, IELTS) drop a new `*.json` pack
+/// into `assets/vocabulary/` and rebuild — no Dart change is needed (the
+/// directory is declared in pubspec and the seed version is a content signature
+/// of all packs, so a new/edited pack re-seeds automatically). Re-seeding
+/// rebuilds the vocabulary tables only; no user data is affected.
+abstract final class VocabularyConstants {
+  /// Directory scanned for vocabulary packs (every `*.json` file within).
+  static const String assetDir = 'assets/vocabulary/';
+
+  /// File extension that marks a vocabulary pack.
+  static const String packSuffix = '.json';
+
+  /// Manual version prefix; the effective seed version appends a content
+  /// signature of all discovered packs, so bumping this is rarely needed.
+  static const String datasetVersion = 'vocabulary-2026.07';
+  static const String seedVersionKey = 'vocabulary_seed_version';
+  static const int seedBatchSize = 500;
 }
 
 /// Constants for the local search-history feature.

@@ -1,0 +1,556 @@
+{
+  "list": {
+    "id": "business",
+    "title": "Business Vocabulary",
+    "subtitle": "Essential professional & workplace words",
+    "order": 2
+  },
+  "words": [
+    {
+      "word": "Acquisition",
+      "ipa": "/ˌækwɪˈzɪʃən/",
+      "urdu": "حصول",
+      "meaning": "the act of buying a company",
+      "pos": "noun"
+    },
+    {
+      "word": "Agenda",
+      "ipa": "/əˈdʒɛndə/",
+      "urdu": "ایجنڈا",
+      "meaning": "list of items to be discussed",
+      "pos": "noun"
+    },
+    {
+      "word": "Allocate",
+      "ipa": "/ˈæləkeɪt/",
+      "urdu": "تقسیم کرنا",
+      "meaning": "to assign resources for a purpose",
+      "pos": "verb"
+    },
+    {
+      "word": "Amortize",
+      "ipa": "/ˈæmərˌtaɪz/",
+      "urdu": "ادا کرنا",
+      "meaning": "to pay off debt in regular installments",
+      "pos": "verb"
+    },
+    {
+      "word": "Asset",
+      "ipa": "/ˈæsɛt/",
+      "urdu": "اثاثہ",
+      "meaning": "something of value owned by a business",
+      "pos": "noun"
+    },
+    {
+      "word": "Audit",
+      "ipa": "/ˈɔːdɪt/",
+      "urdu": "جائزہ",
+      "meaning": "official inspection of financial accounts",
+      "pos": "noun"
+    },
+    {
+      "word": "Authorize",
+      "ipa": "/ˈɔːθəraɪz/",
+      "urdu": "اجازت دینا",
+      "meaning": "to give official permission for something",
+      "pos": "verb"
+    },
+    {
+      "word": "Balance Sheet",
+      "ipa": "/ˈbæləns ʃiːt/",
+      "urdu": "بیلنس شیٹ",
+      "meaning": "financial statement of assets and liabilities",
+      "pos": "noun"
+    },
+    {
+      "word": "Benchmark",
+      "ipa": "/ˈbɛntʃmɑːrk/",
+      "urdu": "معیار",
+      "meaning": "a standard used for comparison",
+      "pos": "noun"
+    },
+    {
+      "word": "Board",
+      "ipa": "/bɔːrd/",
+      "urdu": "بورڈ",
+      "meaning": "group of directors governing a company",
+      "pos": "noun"
+    },
+    {
+      "word": "Brand",
+      "ipa": "/brænd/",
+      "urdu": "برانڈ",
+      "meaning": "a company's identity and reputation",
+      "pos": "noun"
+    },
+    {
+      "word": "Budget",
+      "ipa": "/ˈbʌdʒɪt/",
+      "urdu": "بجٹ",
+      "meaning": "a financial plan for income and spending",
+      "pos": "noun"
+    },
+    {
+      "word": "Capital",
+      "ipa": "/ˈkæpɪtəl/",
+      "urdu": "سرمایہ",
+      "meaning": "money used to start or grow a business",
+      "pos": "noun"
+    },
+    {
+      "word": "Cash Flow",
+      "ipa": "/ˈkæʃ floʊ/",
+      "urdu": "نقد بہاؤ",
+      "meaning": "movement of money into and out of a business",
+      "pos": "noun"
+    },
+    {
+      "word": "Client",
+      "ipa": "/ˈklaɪənt/",
+      "urdu": "گاہک",
+      "meaning": "a person who uses professional services",
+      "pos": "noun"
+    },
+    {
+      "word": "Collaborate",
+      "ipa": "/kəˈlæbəreɪt/",
+      "urdu": "مل کر کام کرنا",
+      "meaning": "to work jointly with others",
+      "pos": "verb"
+    },
+    {
+      "word": "Commission",
+      "ipa": "/kəˈmɪʃən/",
+      "urdu": "کمیشن",
+      "meaning": "a fee paid for completing a sale",
+      "pos": "noun"
+    },
+    {
+      "word": "Commodity",
+      "ipa": "/kəˈmɒdɪti/",
+      "urdu": "جنس",
+      "meaning": "a raw material traded in bulk",
+      "pos": "noun"
+    },
+    {
+      "word": "Compliance",
+      "ipa": "/kəmˈplaɪəns/",
+      "urdu": "تعمیل",
+      "meaning": "following rules and regulations",
+      "pos": "noun"
+    },
+    {
+      "word": "Contract",
+      "ipa": "/ˈkɒntrækt/",
+      "urdu": "معاہدہ",
+      "meaning": "a legally binding agreement",
+      "pos": "noun"
+    },
+    {
+      "word": "Corporate",
+      "ipa": "/ˈkɔːrpərɪt/",
+      "urdu": "کارپوریٹ",
+      "meaning": "relating to a large company",
+      "pos": "adjective"
+    },
+    {
+      "word": "Credential",
+      "ipa": "/krɪˈdɛnʃəl/",
+      "urdu": "اسناد",
+      "meaning": "qualification proving competence",
+      "pos": "noun"
+    },
+    {
+      "word": "Deadline",
+      "ipa": "/ˈdɛdlaɪn/",
+      "urdu": "آخری تاریخ",
+      "meaning": "the latest time a task must be completed",
+      "pos": "noun"
+    },
+    {
+      "word": "Debt",
+      "ipa": "/dɛt/",
+      "urdu": "قرض",
+      "meaning": "money owed to another party",
+      "pos": "noun"
+    },
+    {
+      "word": "Delegate",
+      "ipa": "/ˈdɛlɪɡeɪt/",
+      "urdu": "تفویض کرنا",
+      "meaning": "to assign tasks to someone else",
+      "pos": "verb"
+    },
+    {
+      "word": "Demand",
+      "ipa": "/dɪˈmænd/",
+      "urdu": "طلب",
+      "meaning": "consumer desire for a product or service",
+      "pos": "noun"
+    },
+    {
+      "word": "Depreciation",
+      "ipa": "/dɪˌpriːʃiˈeɪʃən/",
+      "urdu": "استہلاک",
+      "meaning": "decrease in an asset's value over time",
+      "pos": "noun"
+    },
+    {
+      "word": "Dividend",
+      "ipa": "/ˈdɪvɪdɛnd/",
+      "urdu": "منافع",
+      "meaning": "profit paid to company shareholders",
+      "pos": "noun"
+    },
+    {
+      "word": "Efficiency",
+      "ipa": "/ɪˈfɪʃənsi/",
+      "urdu": "کارکردگی",
+      "meaning": "achieving results with minimal waste",
+      "pos": "noun"
+    },
+    {
+      "word": "Equity",
+      "ipa": "/ˈɛkwɪti/",
+      "urdu": "حصہ داری",
+      "meaning": "ownership value in a company",
+      "pos": "noun"
+    },
+    {
+      "word": "Expenditure",
+      "ipa": "/ɪkˈspɛndɪtʃər/",
+      "urdu": "اخراجات",
+      "meaning": "money spent by a business",
+      "pos": "noun"
+    },
+    {
+      "word": "Fiscal",
+      "ipa": "/ˈfɪskəl/",
+      "urdu": "مالی",
+      "meaning": "relating to government or company finances",
+      "pos": "adjective"
+    },
+    {
+      "word": "Forecast",
+      "ipa": "/ˈfɔːrkæst/",
+      "urdu": "پیش گوئی",
+      "meaning": "prediction of future business performance",
+      "pos": "noun"
+    },
+    {
+      "word": "Franchise",
+      "ipa": "/ˈfræntʃaɪz/",
+      "urdu": "فرنچائز",
+      "meaning": "license to operate under a brand name",
+      "pos": "noun"
+    },
+    {
+      "word": "Gross",
+      "ipa": "/ɡroʊs/",
+      "urdu": "مجموعی",
+      "meaning": "total amount before any deductions",
+      "pos": "adjective"
+    },
+    {
+      "word": "Growth",
+      "ipa": "/ɡroʊθ/",
+      "urdu": "ترقی",
+      "meaning": "increase in a business's size or profit",
+      "pos": "noun"
+    },
+    {
+      "word": "Incentive",
+      "ipa": "/ɪnˈsɛntɪv/",
+      "urdu": "ترغیب",
+      "meaning": "something that motivates desired behavior",
+      "pos": "noun"
+    },
+    {
+      "word": "Inflation",
+      "ipa": "/ɪnˈfleɪʃən/",
+      "urdu": "مہنگائی",
+      "meaning": "general rise in prices over time",
+      "pos": "noun"
+    },
+    {
+      "word": "Infrastructure",
+      "ipa": "/ˈɪnfrəˌstrʌktʃər/",
+      "urdu": "بنیادی ڈھانچہ",
+      "meaning": "basic systems a business or economy needs",
+      "pos": "noun"
+    },
+    {
+      "word": "Invest",
+      "ipa": "/ɪnˈvɛst/",
+      "urdu": "سرمایہ لگانا",
+      "meaning": "to put money in for future profit",
+      "pos": "verb"
+    },
+    {
+      "word": "Investor",
+      "ipa": "/ɪnˈvɛstər/",
+      "urdu": "سرمایہ کار",
+      "meaning": "a person who puts money into a business",
+      "pos": "noun"
+    },
+    {
+      "word": "Invoice",
+      "ipa": "/ˈɪnvɔɪs/",
+      "urdu": "بل",
+      "meaning": "a bill listing goods or services provided",
+      "pos": "noun"
+    },
+    {
+      "word": "Layoff",
+      "ipa": "/ˈleɪɒf/",
+      "urdu": "برطرفی",
+      "meaning": "temporary or permanent dismissal of workers",
+      "pos": "noun"
+    },
+    {
+      "word": "Leverage",
+      "ipa": "/ˈlɛvərɪdʒ/",
+      "urdu": "اثر و رسوخ",
+      "meaning": "use of borrowed capital to increase returns",
+      "pos": "noun"
+    },
+    {
+      "word": "Liability",
+      "ipa": "/ˌlaɪəˈbɪlɪti/",
+      "urdu": "ذمہ داری",
+      "meaning": "a company's financial debt or obligation",
+      "pos": "noun"
+    },
+    {
+      "word": "Liquidate",
+      "ipa": "/ˈlɪkwɪdeɪt/",
+      "urdu": "تحلیل کرنا",
+      "meaning": "to convert assets into cash",
+      "pos": "verb"
+    },
+    {
+      "word": "Margin",
+      "ipa": "/ˈmɑːrdʒɪn/",
+      "urdu": "منافع کا فرق",
+      "meaning": "difference between revenue and cost",
+      "pos": "noun"
+    },
+    {
+      "word": "Market",
+      "ipa": "/ˈmɑːrkɪt/",
+      "urdu": "بازار",
+      "meaning": "a place or system for buying and selling",
+      "pos": "noun"
+    },
+    {
+      "word": "Merger",
+      "ipa": "/ˈmɜːrdʒər/",
+      "urdu": "انضمام",
+      "meaning": "combining two companies into one",
+      "pos": "noun"
+    },
+    {
+      "word": "Milestone",
+      "ipa": "/ˈmaɪlstoʊn/",
+      "urdu": "سنگ میل",
+      "meaning": "a key stage in a project or business plan",
+      "pos": "noun"
+    },
+    {
+      "word": "Negotiate",
+      "ipa": "/nɪˈɡoʊʃieɪt/",
+      "urdu": "مذاکرہ کرنا",
+      "meaning": "to reach agreement through discussion",
+      "pos": "verb"
+    },
+    {
+      "word": "Net",
+      "ipa": "/nɛt/",
+      "urdu": "خالص",
+      "meaning": "remaining after all deductions",
+      "pos": "adjective"
+    },
+    {
+      "word": "Niche",
+      "ipa": "/nɪtʃ/",
+      "urdu": "مخصوص شعبہ",
+      "meaning": "a specialized segment of the market",
+      "pos": "noun"
+    },
+    {
+      "word": "Outsource",
+      "ipa": "/ˌaʊtˈsɔːrs/",
+      "urdu": "باہر سے لینا",
+      "meaning": "to hire outside workers for a task",
+      "pos": "verb"
+    },
+    {
+      "word": "Overhead",
+      "ipa": "/ˈoʊvərˌhɛd/",
+      "urdu": "اوور ہیڈ",
+      "meaning": "ongoing business costs not tied to output",
+      "pos": "noun"
+    },
+    {
+      "word": "Partnership",
+      "ipa": "/ˈpɑːrtnərʃɪp/",
+      "urdu": "شراکت داری",
+      "meaning": "a business jointly owned by two or more",
+      "pos": "noun"
+    },
+    {
+      "word": "Portfolio",
+      "ipa": "/pɔːrtˈfoʊlioʊ/",
+      "urdu": "پورٹ فولیو",
+      "meaning": "a range of investments or products held",
+      "pos": "noun"
+    },
+    {
+      "word": "Profit",
+      "ipa": "/ˈprɒfɪt/",
+      "urdu": "منافع",
+      "meaning": "money gained after costs are deducted",
+      "pos": "noun"
+    },
+    {
+      "word": "Proposal",
+      "ipa": "/prəˈpoʊzəl/",
+      "urdu": "تجویز",
+      "meaning": "a formal plan presented for consideration",
+      "pos": "noun"
+    },
+    {
+      "word": "Quarter",
+      "ipa": "/ˈkwɔːrtər/",
+      "urdu": "سہ ماہی",
+      "meaning": "one of four three-month business periods",
+      "pos": "noun"
+    },
+    {
+      "word": "Recession",
+      "ipa": "/rɪˈsɛʃən/",
+      "urdu": "کساد بازاری",
+      "meaning": "a period of reduced economic activity",
+      "pos": "noun"
+    },
+    {
+      "word": "Recruit",
+      "ipa": "/rɪˈkruːt/",
+      "urdu": "بھرتی کرنا",
+      "meaning": "to hire new employees",
+      "pos": "verb"
+    },
+    {
+      "word": "Revenue",
+      "ipa": "/ˈrɛvənjuː/",
+      "urdu": "آمدنی",
+      "meaning": "total income earned by a business",
+      "pos": "noun"
+    },
+    {
+      "word": "Scalable",
+      "ipa": "/ˈskeɪləbəl/",
+      "urdu": "قابل توسیع",
+      "meaning": "able to grow efficiently with demand",
+      "pos": "adjective"
+    },
+    {
+      "word": "Shareholder",
+      "ipa": "/ˈʃɛrholdər/",
+      "urdu": "حصہ دار",
+      "meaning": "a person who owns shares in a company",
+      "pos": "noun"
+    },
+    {
+      "word": "Stakeholder",
+      "ipa": "/ˈsteɪkhoʊldər/",
+      "urdu": "اسٹیک ہولڈر",
+      "meaning": "anyone with an interest in a business",
+      "pos": "noun"
+    },
+    {
+      "word": "Strategy",
+      "ipa": "/ˈstræt̬ədʒi/",
+      "urdu": "حکمت عملی",
+      "meaning": "a plan to achieve long-term goals",
+      "pos": "noun"
+    },
+    {
+      "word": "Subsidiary",
+      "ipa": "/səbˈsɪdiɛri/",
+      "urdu": "ذیلی کمپنی",
+      "meaning": "a company controlled by a parent company",
+      "pos": "noun"
+    },
+    {
+      "word": "Supplier",
+      "ipa": "/səˈplaɪər/",
+      "urdu": "فراہم کنندہ",
+      "meaning": "a company that provides goods or materials",
+      "pos": "noun"
+    },
+    {
+      "word": "Surplus",
+      "ipa": "/ˈsɜːrpləs/",
+      "urdu": "فاضل",
+      "meaning": "an amount left over after requirements met",
+      "pos": "noun"
+    },
+    {
+      "word": "Tariff",
+      "ipa": "/ˈtærɪf/",
+      "urdu": "محصول",
+      "meaning": "a tax on imported goods",
+      "pos": "noun"
+    },
+    {
+      "word": "Turnover",
+      "ipa": "/ˈtɜːrnoʊvər/",
+      "urdu": "کاروباری آمدنی",
+      "meaning": "total revenue generated in a period",
+      "pos": "noun"
+    },
+    {
+      "word": "Valuation",
+      "ipa": "/ˌvæljuˈeɪʃən/",
+      "urdu": "قدر",
+      "meaning": "the estimated monetary worth of a company",
+      "pos": "noun"
+    },
+    {
+      "word": "Vendor",
+      "ipa": "/ˈvɛndər/",
+      "urdu": "فروش",
+      "meaning": "a person or company that sells goods",
+      "pos": "noun"
+    },
+    {
+      "word": "Venture",
+      "ipa": "/ˈvɛntʃər/",
+      "urdu": "کاروباری منصوبہ",
+      "meaning": "a new risky business undertaking",
+      "pos": "noun"
+    },
+    {
+      "word": "Viable",
+      "ipa": "/ˈvaɪəbəl/",
+      "urdu": "قابل عمل",
+      "meaning": "capable of working or succeeding",
+      "pos": "adjective"
+    },
+    {
+      "word": "Workforce",
+      "ipa": "/ˈwɜːrkfɔːrs/",
+      "urdu": "افرادی قوت",
+      "meaning": "all people employed by a business",
+      "pos": "noun"
+    },
+    {
+      "word": "Yield",
+      "ipa": "/jiːld/",
+      "urdu": "منافع",
+      "meaning": "profit earned from an investment",
+      "pos": "noun"
+    }
+  ]
+}

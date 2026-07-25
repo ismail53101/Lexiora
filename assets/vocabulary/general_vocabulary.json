@@ -1,0 +1,1116 @@
+{
+  "list": {
+    "id": "general",
+    "title": "General Vocabulary",
+    "subtitle": "Everyday high-frequency English words",
+    "order": 1
+  },
+  "words": [
+    {
+      "word": "Abandon",
+      "ipa": "/əˈbændən/",
+      "urdu": "ترک کرنا",
+      "meaning": "to give up completely",
+      "pos": "verb"
+    },
+    {
+      "word": "Ability",
+      "ipa": "/əˈbɪləti/",
+      "urdu": "صلاحیت",
+      "meaning": "power or skill to do something",
+      "pos": "noun"
+    },
+    {
+      "word": "Absolute",
+      "ipa": "/ˈæbsəluːt/",
+      "urdu": "مکمل",
+      "meaning": "complete; without any limits",
+      "pos": "adjective"
+    },
+    {
+      "word": "Accept",
+      "ipa": "/əkˈsɛpt/",
+      "urdu": "قبول کرنا",
+      "meaning": "to agree to receive or take",
+      "pos": "verb"
+    },
+    {
+      "word": "Achieve",
+      "ipa": "/əˈtʃiːv/",
+      "urdu": "حاصل کرنا",
+      "meaning": "to succeed in reaching a goal",
+      "pos": "verb"
+    },
+    {
+      "word": "Adapt",
+      "ipa": "/əˈdæpt/",
+      "urdu": "ڈھالنا",
+      "meaning": "to change to suit new conditions",
+      "pos": "verb"
+    },
+    {
+      "word": "Adequate",
+      "ipa": "/ˈædɪkwɪt/",
+      "urdu": "کافی",
+      "meaning": "enough for what is needed",
+      "pos": "adjective"
+    },
+    {
+      "word": "Admit",
+      "ipa": "/ədˈmɪt/",
+      "urdu": "تسلیم کرنا",
+      "meaning": "to confess or acknowledge",
+      "pos": "verb"
+    },
+    {
+      "word": "Balance",
+      "ipa": "/ˈbæləns/",
+      "urdu": "توازن",
+      "meaning": "equal distribution of weight",
+      "pos": "noun"
+    },
+    {
+      "word": "Benefit",
+      "ipa": "/ˈbɛnɪfɪt/",
+      "urdu": "فائدہ",
+      "meaning": "an advantage or positive effect",
+      "pos": "noun"
+    },
+    {
+      "word": "Blame",
+      "ipa": "/bleɪm/",
+      "urdu": "الزام",
+      "meaning": "to hold responsible for a fault",
+      "pos": "verb"
+    },
+    {
+      "word": "Bold",
+      "ipa": "/boʊld/",
+      "urdu": "بہادر",
+      "meaning": "showing courage; not afraid",
+      "pos": "adjective"
+    },
+    {
+      "word": "Brief",
+      "ipa": "/briːf/",
+      "urdu": "مختصر",
+      "meaning": "short in duration or length",
+      "pos": "adjective"
+    },
+    {
+      "word": "Burden",
+      "ipa": "/ˈbɜːrdən/",
+      "urdu": "بوجھ",
+      "meaning": "a heavy load or responsibility",
+      "pos": "noun"
+    },
+    {
+      "word": "Capable",
+      "ipa": "/ˈkeɪpəbəl/",
+      "urdu": "قابل",
+      "meaning": "having the ability to do something",
+      "pos": "adjective"
+    },
+    {
+      "word": "Cause",
+      "ipa": "/kɔːz/",
+      "urdu": "وجہ",
+      "meaning": "a reason or source of an effect",
+      "pos": "noun"
+    },
+    {
+      "word": "Certain",
+      "ipa": "/ˈsɜːrtən/",
+      "urdu": "یقینی",
+      "meaning": "sure; without doubt",
+      "pos": "adjective"
+    },
+    {
+      "word": "Challenge",
+      "ipa": "/ˈtʃælɪndʒ/",
+      "urdu": "چیلنج",
+      "meaning": "a difficult task or situation",
+      "pos": "noun"
+    },
+    {
+      "word": "Claim",
+      "ipa": "/kleɪm/",
+      "urdu": "دعویٰ کرنا",
+      "meaning": "to state as a fact without proof",
+      "pos": "verb"
+    },
+    {
+      "word": "Concept",
+      "ipa": "/ˈkɒnsɛpt/",
+      "urdu": "تصور",
+      "meaning": "a general idea or understanding",
+      "pos": "noun"
+    },
+    {
+      "word": "Conflict",
+      "ipa": "/ˈkɒnflɪkt/",
+      "urdu": "تنازع",
+      "meaning": "a serious disagreement or struggle",
+      "pos": "noun"
+    },
+    {
+      "word": "Consistent",
+      "ipa": "/kənˈsɪstənt/",
+      "urdu": "مستقل",
+      "meaning": "always behaving the same way",
+      "pos": "adjective"
+    },
+    {
+      "word": "Debate",
+      "ipa": "/dɪˈbeɪt/",
+      "urdu": "بحث",
+      "meaning": "a formal discussion of a topic",
+      "pos": "noun"
+    },
+    {
+      "word": "Decline",
+      "ipa": "/dɪˈklaɪn/",
+      "urdu": "کمی آنا",
+      "meaning": "to become smaller or weaker",
+      "pos": "verb"
+    },
+    {
+      "word": "Define",
+      "ipa": "/dɪˈfaɪn/",
+      "urdu": "تعریف کرنا",
+      "meaning": "to explain the meaning of",
+      "pos": "verb"
+    },
+    {
+      "word": "Demand",
+      "ipa": "/dɪˈmænd/",
+      "urdu": "مطالبہ",
+      "meaning": "to ask for something firmly",
+      "pos": "verb"
+    },
+    {
+      "word": "Deny",
+      "ipa": "/dɪˈnaɪ/",
+      "urdu": "انکار کرنا",
+      "meaning": "to say something is not true",
+      "pos": "verb"
+    },
+    {
+      "word": "Differ",
+      "ipa": "/ˈdɪfər/",
+      "urdu": "مختلف ہونا",
+      "meaning": "to be unlike or disagree",
+      "pos": "verb"
+    },
+    {
+      "word": "Distribute",
+      "ipa": "/dɪˈstrɪbjuːt/",
+      "urdu": "تقسیم کرنا",
+      "meaning": "to give out among many people",
+      "pos": "verb"
+    },
+    {
+      "word": "Eager",
+      "ipa": "/ˈiːɡər/",
+      "urdu": "بے چین",
+      "meaning": "keenly interested or enthusiastic",
+      "pos": "adjective"
+    },
+    {
+      "word": "Effort",
+      "ipa": "/ˈɛfərt/",
+      "urdu": "کوشش",
+      "meaning": "physical or mental energy used",
+      "pos": "noun"
+    },
+    {
+      "word": "Eliminate",
+      "ipa": "/ɪˈlɪmɪneɪt/",
+      "urdu": "ختم کرنا",
+      "meaning": "to remove or get rid of",
+      "pos": "verb"
+    },
+    {
+      "word": "Emphasize",
+      "ipa": "/ˈɛmfəsaɪz/",
+      "urdu": "زور دینا",
+      "meaning": "to give special importance to",
+      "pos": "verb"
+    },
+    {
+      "word": "Establish",
+      "ipa": "/ɪˈstæblɪʃ/",
+      "urdu": "قائم کرنا",
+      "meaning": "to set up or found something",
+      "pos": "verb"
+    },
+    {
+      "word": "Evaluate",
+      "ipa": "/ɪˈvæljueɪt/",
+      "urdu": "جانچنا",
+      "meaning": "to judge or assess the value of",
+      "pos": "verb"
+    },
+    {
+      "word": "Evident",
+      "ipa": "/ˈɛvɪdənt/",
+      "urdu": "ظاہر",
+      "meaning": "clear and obvious",
+      "pos": "adjective"
+    },
+    {
+      "word": "Factor",
+      "ipa": "/ˈfæktər/",
+      "urdu": "عامل",
+      "meaning": "a cause that contributes to a result",
+      "pos": "noun"
+    },
+    {
+      "word": "Failure",
+      "ipa": "/ˈfeɪljər/",
+      "urdu": "ناکامی",
+      "meaning": "lack of success",
+      "pos": "noun"
+    },
+    {
+      "word": "Familiar",
+      "ipa": "/fəˈmɪliər/",
+      "urdu": "واقف",
+      "meaning": "well known from experience",
+      "pos": "adjective"
+    },
+    {
+      "word": "Focus",
+      "ipa": "/ˈfoʊkəs/",
+      "urdu": "توجہ دینا",
+      "meaning": "to concentrate attention on",
+      "pos": "verb"
+    },
+    {
+      "word": "Formal",
+      "ipa": "/ˈfɔːrməl/",
+      "urdu": "رسمی",
+      "meaning": "following official rules or customs",
+      "pos": "adjective"
+    },
+    {
+      "word": "Frequent",
+      "ipa": "/ˈfriːkwənt/",
+      "urdu": "کثیر",
+      "meaning": "happening often",
+      "pos": "adjective"
+    },
+    {
+      "word": "Function",
+      "ipa": "/ˈfʌŋkʃən/",
+      "urdu": "کام",
+      "meaning": "the purpose something is made for",
+      "pos": "noun"
+    },
+    {
+      "word": "Generate",
+      "ipa": "/ˈdʒɛnəreɪt/",
+      "urdu": "پیدا کرنا",
+      "meaning": "to produce or create something",
+      "pos": "verb"
+    },
+    {
+      "word": "Global",
+      "ipa": "/ˈɡloʊbəl/",
+      "urdu": "عالمی",
+      "meaning": "relating to the whole world",
+      "pos": "adjective"
+    },
+    {
+      "word": "Gradual",
+      "ipa": "/ˈɡrædʒuəl/",
+      "urdu": "بتدریج",
+      "meaning": "happening slowly over time",
+      "pos": "adjective"
+    },
+    {
+      "word": "Grant",
+      "ipa": "/ɡrænt/",
+      "urdu": "دینا",
+      "meaning": "to give or allow officially",
+      "pos": "verb"
+    },
+    {
+      "word": "Guarantee",
+      "ipa": "/ˌɡærənˈtiː/",
+      "urdu": "ضمانت",
+      "meaning": "a firm promise of quality",
+      "pos": "noun"
+    },
+    {
+      "word": "Guide",
+      "ipa": "/ɡaɪd/",
+      "urdu": "رہنمائی کرنا",
+      "meaning": "to show the way or direction",
+      "pos": "verb"
+    },
+    {
+      "word": "Habit",
+      "ipa": "/ˈhæbɪt/",
+      "urdu": "عادت",
+      "meaning": "a regular action done automatically",
+      "pos": "noun"
+    },
+    {
+      "word": "Harsh",
+      "ipa": "/hɑːrʃ/",
+      "urdu": "سخت",
+      "meaning": "cruel; unpleasantly rough",
+      "pos": "adjective"
+    },
+    {
+      "word": "Hesitate",
+      "ipa": "/ˈhɛzɪteɪt/",
+      "urdu": "ہچکچانا",
+      "meaning": "to pause before acting or speaking",
+      "pos": "verb"
+    },
+    {
+      "word": "Honest",
+      "ipa": "/ˈɒnɪst/",
+      "urdu": "ایماندار",
+      "meaning": "truthful and free of deceit",
+      "pos": "adjective"
+    },
+    {
+      "word": "Humble",
+      "ipa": "/ˈhʌmbəl/",
+      "urdu": "عاجز",
+      "meaning": "not thinking too highly of oneself",
+      "pos": "adjective"
+    },
+    {
+      "word": "Identify",
+      "ipa": "/aɪˈdɛntɪfaɪ/",
+      "urdu": "شناخت کرنا",
+      "meaning": "to recognize and name something",
+      "pos": "verb"
+    },
+    {
+      "word": "Ignore",
+      "ipa": "/ɪɡˈnɔːr/",
+      "urdu": "نظرانداز کرنا",
+      "meaning": "to pay no attention to",
+      "pos": "verb"
+    },
+    {
+      "word": "Impact",
+      "ipa": "/ˈɪmpækt/",
+      "urdu": "اثر",
+      "meaning": "a strong effect on something",
+      "pos": "noun"
+    },
+    {
+      "word": "Imply",
+      "ipa": "/ɪmˈplaɪ/",
+      "urdu": "اشارہ کرنا",
+      "meaning": "to suggest without stating directly",
+      "pos": "verb"
+    },
+    {
+      "word": "Improve",
+      "ipa": "/ɪmˈpruːv/",
+      "urdu": "بہتر کرنا",
+      "meaning": "to make or become better",
+      "pos": "verb"
+    },
+    {
+      "word": "Include",
+      "ipa": "/ɪnˈkluːd/",
+      "urdu": "شامل کرنا",
+      "meaning": "to contain as part of a whole",
+      "pos": "verb"
+    },
+    {
+      "word": "Indicate",
+      "ipa": "/ˈɪndɪkeɪt/",
+      "urdu": "اشارہ دینا",
+      "meaning": "to point out or show",
+      "pos": "verb"
+    },
+    {
+      "word": "Issue",
+      "ipa": "/ˈɪʃuː/",
+      "urdu": "مسئلہ",
+      "meaning": "an important topic or problem",
+      "pos": "noun"
+    },
+    {
+      "word": "Join",
+      "ipa": "/dʒɔɪn/",
+      "urdu": "شامل ہونا",
+      "meaning": "to become part of a group",
+      "pos": "verb"
+    },
+    {
+      "word": "Journey",
+      "ipa": "/ˈdʒɜːrni/",
+      "urdu": "سفر",
+      "meaning": "a long trip from one place to another",
+      "pos": "noun"
+    },
+    {
+      "word": "Joyful",
+      "ipa": "/ˈdʒɔɪfəl/",
+      "urdu": "خوش",
+      "meaning": "feeling great happiness",
+      "pos": "adjective"
+    },
+    {
+      "word": "Judge",
+      "ipa": "/dʒʌdʒ/",
+      "urdu": "فیصلہ کرنا",
+      "meaning": "to form an opinion about",
+      "pos": "verb"
+    },
+    {
+      "word": "Justify",
+      "ipa": "/ˈdʒʌstɪfaɪ/",
+      "urdu": "جواز دینا",
+      "meaning": "to give reasons for an action",
+      "pos": "verb"
+    },
+    {
+      "word": "Keen",
+      "ipa": "/kiːn/",
+      "urdu": "شوقین",
+      "meaning": "very interested or enthusiastic",
+      "pos": "adjective"
+    },
+    {
+      "word": "Keep",
+      "ipa": "/kiːp/",
+      "urdu": "رکھنا",
+      "meaning": "to hold or continue to have",
+      "pos": "verb"
+    },
+    {
+      "word": "Key",
+      "ipa": "/kiː/",
+      "urdu": "اہم",
+      "meaning": "most important or essential",
+      "pos": "adjective"
+    },
+    {
+      "word": "Kind",
+      "ipa": "/kaɪnd/",
+      "urdu": "مہربان",
+      "meaning": "friendly and generous in nature",
+      "pos": "adjective"
+    },
+    {
+      "word": "Knowledge",
+      "ipa": "/ˈnɒlɪdʒ/",
+      "urdu": "علم",
+      "meaning": "information and understanding gained",
+      "pos": "noun"
+    },
+    {
+      "word": "Lack",
+      "ipa": "/læk/",
+      "urdu": "کمی",
+      "meaning": "absence of something needed",
+      "pos": "noun"
+    },
+    {
+      "word": "Launch",
+      "ipa": "/lɔːntʃ/",
+      "urdu": "شروع کرنا",
+      "meaning": "to start or introduce officially",
+      "pos": "verb"
+    },
+    {
+      "word": "Limit",
+      "ipa": "/ˈlɪmɪt/",
+      "urdu": "حد",
+      "meaning": "a point beyond which something cannot go",
+      "pos": "noun"
+    },
+    {
+      "word": "Link",
+      "ipa": "/lɪŋk/",
+      "urdu": "رابطہ",
+      "meaning": "a connection between two things",
+      "pos": "noun"
+    },
+    {
+      "word": "Logical",
+      "ipa": "/ˈlɒdʒɪkəl/",
+      "urdu": "منطقی",
+      "meaning": "based on clear reasoning",
+      "pos": "adjective"
+    },
+    {
+      "word": "Loyal",
+      "ipa": "/ˈlɔɪəl/",
+      "urdu": "وفادار",
+      "meaning": "faithful to a person or cause",
+      "pos": "adjective"
+    },
+    {
+      "word": "Maintain",
+      "ipa": "/meɪnˈteɪn/",
+      "urdu": "برقرار رکھنا",
+      "meaning": "to keep in a good condition",
+      "pos": "verb"
+    },
+    {
+      "word": "Major",
+      "ipa": "/ˈmeɪdʒər/",
+      "urdu": "بڑا",
+      "meaning": "most important or significant",
+      "pos": "adjective"
+    },
+    {
+      "word": "Manage",
+      "ipa": "/ˈmænɪdʒ/",
+      "urdu": "سنبھالنا",
+      "meaning": "to be in charge of or control",
+      "pos": "verb"
+    },
+    {
+      "word": "Method",
+      "ipa": "/ˈmɛθəd/",
+      "urdu": "طریقہ",
+      "meaning": "a way of doing something",
+      "pos": "noun"
+    },
+    {
+      "word": "Motive",
+      "ipa": "/ˈmoʊtɪv/",
+      "urdu": "محرک",
+      "meaning": "a reason for doing something",
+      "pos": "noun"
+    },
+    {
+      "word": "Mutual",
+      "ipa": "/ˈmjuːtʃuəl/",
+      "urdu": "باہمی",
+      "meaning": "shared by two or more people",
+      "pos": "adjective"
+    },
+    {
+      "word": "Neglect",
+      "ipa": "/nɪˈɡlɛkt/",
+      "urdu": "غفلت",
+      "meaning": "to fail to care for something",
+      "pos": "verb"
+    },
+    {
+      "word": "Neutral",
+      "ipa": "/ˈnjuːtrəl/",
+      "urdu": "غیر جانبدار",
+      "meaning": "not supporting either side",
+      "pos": "adjective"
+    },
+    {
+      "word": "Notable",
+      "ipa": "/ˈnoʊtəbəl/",
+      "urdu": "قابل ذکر",
+      "meaning": "worthy of attention",
+      "pos": "adjective"
+    },
+    {
+      "word": "Notion",
+      "ipa": "/ˈnoʊʃən/",
+      "urdu": "خیال",
+      "meaning": "a belief or idea about something",
+      "pos": "noun"
+    },
+    {
+      "word": "Numerous",
+      "ipa": "/ˈnjuːmərəs/",
+      "urdu": "بے شمار",
+      "meaning": "existing in large numbers",
+      "pos": "adjective"
+    },
+    {
+      "word": "Objective",
+      "ipa": "/əbˈdʒɛktɪv/",
+      "urdu": "مقصد",
+      "meaning": "a goal you are trying to achieve",
+      "pos": "noun"
+    },
+    {
+      "word": "Obtain",
+      "ipa": "/əbˈteɪn/",
+      "urdu": "حاصل کرنا",
+      "meaning": "to get or acquire something",
+      "pos": "verb"
+    },
+    {
+      "word": "Obvious",
+      "ipa": "/ˈɒbviəs/",
+      "urdu": "واضح",
+      "meaning": "easy to see or understand",
+      "pos": "adjective"
+    },
+    {
+      "word": "Oppose",
+      "ipa": "/əˈpoʊz/",
+      "urdu": "مخالفت کرنا",
+      "meaning": "to be against something",
+      "pos": "verb"
+    },
+    {
+      "word": "Outcome",
+      "ipa": "/ˈaʊtkʌm/",
+      "urdu": "نتیجہ",
+      "meaning": "the result of an action",
+      "pos": "noun"
+    },
+    {
+      "word": "Overall",
+      "ipa": "/ˌoʊvərˈɔːl/",
+      "urdu": "مجموعی",
+      "meaning": "taking everything into account",
+      "pos": "adjective"
+    },
+    {
+      "word": "Perceive",
+      "ipa": "/pərˈsiːv/",
+      "urdu": "سمجھنا",
+      "meaning": "to become aware of through senses",
+      "pos": "verb"
+    },
+    {
+      "word": "Persistent",
+      "ipa": "/pərˈsɪstənt/",
+      "urdu": "مستقل مزاج",
+      "meaning": "continuing firmly despite difficulty",
+      "pos": "adjective"
+    },
+    {
+      "word": "Policy",
+      "ipa": "/ˈpɒləsi/",
+      "urdu": "پالیسی",
+      "meaning": "a plan of action adopted officially",
+      "pos": "noun"
+    },
+    {
+      "word": "Potential",
+      "ipa": "/pəˈtɛnʃəl/",
+      "urdu": "صلاحیت",
+      "meaning": "the capacity to develop or succeed",
+      "pos": "noun"
+    },
+    {
+      "word": "Primary",
+      "ipa": "/ˈpraɪmɛri/",
+      "urdu": "بنیادی",
+      "meaning": "most important; main",
+      "pos": "adjective"
+    },
+    {
+      "word": "Promote",
+      "ipa": "/prəˈmoʊt/",
+      "urdu": "فروغ دینا",
+      "meaning": "to support or raise in rank",
+      "pos": "verb"
+    },
+    {
+      "word": "Prove",
+      "ipa": "/pruːv/",
+      "urdu": "ثابت کرنا",
+      "meaning": "to show something is true",
+      "pos": "verb"
+    },
+    {
+      "word": "Quality",
+      "ipa": "/ˈkwɒlɪti/",
+      "urdu": "معیار",
+      "meaning": "the standard of something",
+      "pos": "noun"
+    },
+    {
+      "word": "Question",
+      "ipa": "/ˈkwɛstʃən/",
+      "urdu": "سوال",
+      "meaning": "a sentence asking for information",
+      "pos": "noun"
+    },
+    {
+      "word": "Quick",
+      "ipa": "/kwɪk/",
+      "urdu": "تیز",
+      "meaning": "done with speed; fast",
+      "pos": "adjective"
+    },
+    {
+      "word": "Quiet",
+      "ipa": "/ˈkwaɪət/",
+      "urdu": "خاموش",
+      "meaning": "making little or no noise",
+      "pos": "adjective"
+    },
+    {
+      "word": "Quote",
+      "ipa": "/kwoʊt/",
+      "urdu": "اقتباس",
+      "meaning": "to repeat someone's exact words",
+      "pos": "verb"
+    },
+    {
+      "word": "Raise",
+      "ipa": "/reɪz/",
+      "urdu": "بڑھانا",
+      "meaning": "to move to a higher position",
+      "pos": "verb"
+    },
+    {
+      "word": "Realistic",
+      "ipa": "/ˌriːəˈlɪstɪk/",
+      "urdu": "حقیقت پسند",
+      "meaning": "based on facts, not wishful thinking",
+      "pos": "adjective"
+    },
+    {
+      "word": "Reduce",
+      "ipa": "/rɪˈdjuːs/",
+      "urdu": "کم کرنا",
+      "meaning": "to make smaller in size or amount",
+      "pos": "verb"
+    },
+    {
+      "word": "Relate",
+      "ipa": "/rɪˈleɪt/",
+      "urdu": "تعلق رکھنا",
+      "meaning": "to have a connection with",
+      "pos": "verb"
+    },
+    {
+      "word": "Relevant",
+      "ipa": "/ˈrɛləvənt/",
+      "urdu": "متعلق",
+      "meaning": "closely connected to the matter",
+      "pos": "adjective"
+    },
+    {
+      "word": "Require",
+      "ipa": "/rɪˈkwaɪər/",
+      "urdu": "ضرورت ہونا",
+      "meaning": "to need something as necessary",
+      "pos": "verb"
+    },
+    {
+      "word": "Resolve",
+      "ipa": "/rɪˈzɒlv/",
+      "urdu": "حل کرنا",
+      "meaning": "to find a solution to a problem",
+      "pos": "verb"
+    },
+    {
+      "word": "Significant",
+      "ipa": "/sɪɡˈnɪfɪkənt/",
+      "urdu": "اہم",
+      "meaning": "important enough to be noticed",
+      "pos": "adjective"
+    },
+    {
+      "word": "Solve",
+      "ipa": "/sɒlv/",
+      "urdu": "حل کرنا",
+      "meaning": "to find the answer to a problem",
+      "pos": "verb"
+    },
+    {
+      "word": "Source",
+      "ipa": "/sɔːrs/",
+      "urdu": "ماخذ",
+      "meaning": "the origin or supply of something",
+      "pos": "noun"
+    },
+    {
+      "word": "Stable",
+      "ipa": "/ˈsteɪbəl/",
+      "urdu": "مستحکم",
+      "meaning": "firm and not likely to change",
+      "pos": "adjective"
+    },
+    {
+      "word": "Strategy",
+      "ipa": "/ˈstrætədʒi/",
+      "urdu": "حکمت عملی",
+      "meaning": "a plan to achieve a long-term goal",
+      "pos": "noun"
+    },
+    {
+      "word": "Suitable",
+      "ipa": "/ˈsuːtəbəl/",
+      "urdu": "موزوں",
+      "meaning": "right or appropriate for a purpose",
+      "pos": "adjective"
+    },
+    {
+      "word": "Support",
+      "ipa": "/səˈpɔːrt/",
+      "urdu": "حمایت",
+      "meaning": "to help or encourage someone",
+      "pos": "verb"
+    },
+    {
+      "word": "Target",
+      "ipa": "/ˈtɑːrɡɪt/",
+      "urdu": "ہدف",
+      "meaning": "an aim or goal to be achieved",
+      "pos": "noun"
+    },
+    {
+      "word": "Tend",
+      "ipa": "/tɛnd/",
+      "urdu": "رجحان ہونا",
+      "meaning": "to be likely to behave in a way",
+      "pos": "verb"
+    },
+    {
+      "word": "Theory",
+      "ipa": "/ˈθɪəri/",
+      "urdu": "نظریہ",
+      "meaning": "an explanation based on evidence",
+      "pos": "noun"
+    },
+    {
+      "word": "Therefore",
+      "ipa": "/ˈðɛrfɔːr/",
+      "urdu": "اس لیے",
+      "meaning": "for that reason; as a result",
+      "pos": "adverb"
+    },
+    {
+      "word": "Tradition",
+      "ipa": "/trəˈdɪʃən/",
+      "urdu": "روایت",
+      "meaning": "a custom passed down generations",
+      "pos": "noun"
+    },
+    {
+      "word": "Transfer",
+      "ipa": "/ˈtrænsfɜːr/",
+      "urdu": "منتقل کرنا",
+      "meaning": "to move from one place to another",
+      "pos": "verb"
+    },
+    {
+      "word": "Trust",
+      "ipa": "/trʌst/",
+      "urdu": "اعتماد",
+      "meaning": "belief in reliability of someone",
+      "pos": "noun"
+    },
+    {
+      "word": "Unique",
+      "ipa": "/juːˈniːk/",
+      "urdu": "منفرد",
+      "meaning": "being the only one of its kind",
+      "pos": "adjective"
+    },
+    {
+      "word": "Unite",
+      "ipa": "/juːˈnaɪt/",
+      "urdu": "متحد کرنا",
+      "meaning": "to join together as one",
+      "pos": "verb"
+    },
+    {
+      "word": "Urgent",
+      "ipa": "/ˈɜːrdʒənt/",
+      "urdu": "فوری",
+      "meaning": "requiring immediate action",
+      "pos": "adjective"
+    },
+    {
+      "word": "Useful",
+      "ipa": "/ˈjuːsfəl/",
+      "urdu": "مفید",
+      "meaning": "able to be used for a purpose",
+      "pos": "adjective"
+    },
+    {
+      "word": "Utilize",
+      "ipa": "/ˈjuːtɪlaɪz/",
+      "urdu": "استعمال کرنا",
+      "meaning": "to make use of something",
+      "pos": "verb"
+    },
+    {
+      "word": "Valid",
+      "ipa": "/ˈvælɪd/",
+      "urdu": "درست",
+      "meaning": "acceptable; based on good reasoning",
+      "pos": "adjective"
+    },
+    {
+      "word": "Value",
+      "ipa": "/ˈvæljuː/",
+      "urdu": "قدر",
+      "meaning": "the worth or importance of something",
+      "pos": "noun"
+    },
+    {
+      "word": "Various",
+      "ipa": "/ˈvɛəriəs/",
+      "urdu": "مختلف",
+      "meaning": "of different kinds",
+      "pos": "adjective"
+    },
+    {
+      "word": "Vital",
+      "ipa": "/ˈvaɪtəl/",
+      "urdu": "ضروری",
+      "meaning": "absolutely necessary for life",
+      "pos": "adjective"
+    },
+    {
+      "word": "Volunteer",
+      "ipa": "/ˌvɒlənˈtɪər/",
+      "urdu": "رضاکار",
+      "meaning": "a person who works without pay",
+      "pos": "noun"
+    },
+    {
+      "word": "Welfare",
+      "ipa": "/ˈwɛlfɛər/",
+      "urdu": "فلاح",
+      "meaning": "the health and happiness of people",
+      "pos": "noun"
+    },
+    {
+      "word": "Widespread",
+      "ipa": "/ˈwaɪdsprɛd/",
+      "urdu": "وسیع پیمانے پر",
+      "meaning": "found in many places",
+      "pos": "adjective"
+    },
+    {
+      "word": "Willing",
+      "ipa": "/ˈwɪlɪŋ/",
+      "urdu": "آمادہ",
+      "meaning": "ready and happy to do something",
+      "pos": "adjective"
+    },
+    {
+      "word": "Wisdom",
+      "ipa": "/ˈwɪzdəm/",
+      "urdu": "حکمت",
+      "meaning": "good judgment from experience",
+      "pos": "noun"
+    },
+    {
+      "word": "Wonder",
+      "ipa": "/ˈwʌndər/",
+      "urdu": "حیرت",
+      "meaning": "a feeling of amazement",
+      "pos": "noun"
+    },
+    {
+      "word": "X-ray",
+      "ipa": "/ˈɛksreɪ/",
+      "urdu": "ایکس رے",
+      "meaning": "radiation used to image inside body",
+      "pos": "noun"
+    },
+    {
+      "word": "Xenophobia",
+      "ipa": "/ˌzɛnəˈfoʊbiə/",
+      "urdu": "غیر ملکی خوف",
+      "meaning": "fear or hatred of foreigners",
+      "pos": "noun"
+    },
+    {
+      "word": "Xeric",
+      "ipa": "/ˈzɛrɪk/",
+      "urdu": "خشک",
+      "meaning": "relating to very dry conditions",
+      "pos": "adjective"
+    },
+    {
+      "word": "Xerox",
+      "ipa": "/ˈzɪərɒks/",
+      "urdu": "فوٹو کاپی",
+      "meaning": "a photocopy of a document",
+      "pos": "noun"
+    },
+    {
+      "word": "Xylophone",
+      "ipa": "/ˈzaɪləfoʊn/",
+      "urdu": "زائلو فون",
+      "meaning": "a musical percussion instrument",
+      "pos": "noun"
+    },
+    {
+      "word": "Year",
+      "ipa": "/jɪər/",
+      "urdu": "سال",
+      "meaning": "a period of twelve months",
+      "pos": "noun"
+    },
+    {
+      "word": "Yearn",
+      "ipa": "/jɜːrn/",
+      "urdu": "تڑپنا",
+      "meaning": "to have a strong desire for",
+      "pos": "verb"
+    },
+    {
+      "word": "Yet",
+      "ipa": "/jɛt/",
+      "urdu": "ابھی تک",
+      "meaning": "up to now; however",
+      "pos": "adverb"
+    },
+    {
+      "word": "Yield",
+      "ipa": "/jiːld/",
+      "urdu": "پیداوار دینا",
+      "meaning": "to produce or give way",
+      "pos": "verb"
+    },
+    {
+      "word": "Young",
+      "ipa": "/jʌŋ/",
+      "urdu": "جوان",
+      "meaning": "not old; in early life",
+      "pos": "adjective"
+    },
+    {
+      "word": "Zeal",
+      "ipa": "/ziːl/",
+      "urdu": "جوش",
+      "meaning": "great energy or enthusiasm",
+      "pos": "noun"
+    },
+    {
+      "word": "Zero",
+      "ipa": "/ˈzɪəroʊ/",
+      "urdu": "صفر",
+      "meaning": "the number 0; nothing",
+      "pos": "noun"
+    },
+    {
+      "word": "Zip",
+      "ipa": "/zɪp/",
+      "urdu": "تیز رفتار",
+      "meaning": "to move fast or fasten with a zip",
+      "pos": "verb"
+    },
+    {
+      "word": "Zone",
+      "ipa": "/zoʊn/",
+      "urdu": "علاقہ",
+      "meaning": "an area with a specific purpose",
+      "pos": "noun"
+    },
+    {
+      "word": "Zoom",
+      "ipa": "/zuːm/",
+      "urdu": "تیزی سے بڑھنا",
+      "meaning": "to move or increase very quickly",
+      "pos": "verb"
+    }
+  ]
+}

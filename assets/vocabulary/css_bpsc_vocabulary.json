@@ -1,0 +1,871 @@
+{
+  "list": {
+    "id": "cssbpsc",
+    "title": "CSS / BPSC Vocabulary",
+    "subtitle": "Editorial & governance words for competitive exams",
+    "order": 9
+  },
+  "words": [
+    {
+      "word": "Abdicate",
+      "ipa": "/ˈæbdɪkeɪt/",
+      "urdu": "دستبردار ہونا",
+      "meaning": "formally give up power or responsibility",
+      "pos": "verb"
+    },
+    {
+      "word": "Abrogation",
+      "ipa": "/ˌæbrəˈɡeɪʃən/",
+      "urdu": "منسوخی",
+      "meaning": "formal repeal of a law or agreement",
+      "pos": "noun"
+    },
+    {
+      "word": "Accountability",
+      "ipa": "/əˌkaʊntəˈbɪləti/",
+      "urdu": "احتساب",
+      "meaning": "being responsible for one's actions",
+      "pos": "noun"
+    },
+    {
+      "word": "Acquittal",
+      "ipa": "/əˈkwɪtəl/",
+      "urdu": "بری",
+      "meaning": "formal release from a criminal charge",
+      "pos": "noun"
+    },
+    {
+      "word": "Adversary",
+      "ipa": "/ˈædvərˌsɛri/",
+      "urdu": "مخالف",
+      "meaning": "one's opponent or enemy",
+      "pos": "noun"
+    },
+    {
+      "word": "Advocacy",
+      "ipa": "/ˈædvəkəsi/",
+      "urdu": "حمایت",
+      "meaning": "public support for a cause or policy",
+      "pos": "noun"
+    },
+    {
+      "word": "Allegation",
+      "ipa": "/ˌæləˈɡeɪʃən/",
+      "urdu": "الزام",
+      "meaning": "unproven claim of wrongdoing",
+      "pos": "noun"
+    },
+    {
+      "word": "Alleviate",
+      "ipa": "/əˈliːvieɪt/",
+      "urdu": "کم کرنا",
+      "meaning": "make suffering or a problem less severe",
+      "pos": "verb"
+    },
+    {
+      "word": "Ambiguity",
+      "ipa": "/ˌæmbɪˈɡjuːəti/",
+      "urdu": "ابہام",
+      "meaning": "state of being open to multiple interpretations",
+      "pos": "noun"
+    },
+    {
+      "word": "Amnesty",
+      "ipa": "/ˈæmnəsti/",
+      "urdu": "عام معافی",
+      "meaning": "official pardon for political offences",
+      "pos": "noun"
+    },
+    {
+      "word": "Annexation",
+      "ipa": "/ˌænɪkˈseɪʃən/",
+      "urdu": "الحاق",
+      "meaning": "forcible addition of territory to a state",
+      "pos": "noun"
+    },
+    {
+      "word": "Arbitrary",
+      "ipa": "/ˈɑːrbɪtrɛri/",
+      "urdu": "من مانی",
+      "meaning": "based on random choice, not reason",
+      "pos": "adjective"
+    },
+    {
+      "word": "Aristocracy",
+      "ipa": "/ˌærɪˈstɒkrəsi/",
+      "urdu": "اشرافیہ",
+      "meaning": "ruling class of hereditary nobility",
+      "pos": "noun"
+    },
+    {
+      "word": "Ascertain",
+      "ipa": "/ˌæsərˈteɪn/",
+      "urdu": "معلوم کرنا",
+      "meaning": "find out with certainty",
+      "pos": "verb"
+    },
+    {
+      "word": "Authoritarian",
+      "ipa": "/əˌθɒrɪˈtɛːriən/",
+      "urdu": "آمرانہ",
+      "meaning": "favouring strict obedience over personal freedom",
+      "pos": "adjective"
+    },
+    {
+      "word": "Autonomy",
+      "ipa": "/ɔːˈtɒnəmi/",
+      "urdu": "خودمختاری",
+      "meaning": "right to self-government or independence",
+      "pos": "noun"
+    },
+    {
+      "word": "Bilateral",
+      "ipa": "/baɪˈlætərəl/",
+      "urdu": "دوطرفہ",
+      "meaning": "involving two parties or countries",
+      "pos": "adjective"
+    },
+    {
+      "word": "Bureaucracy",
+      "ipa": "/bjʊˈrɒkrəsi/",
+      "urdu": "بیوروکریسی",
+      "meaning": "complex government administration system",
+      "pos": "noun"
+    },
+    {
+      "word": "Cession",
+      "ipa": "/ˈsɛʃən/",
+      "urdu": "علاقہ سپردگی",
+      "meaning": "formal giving up of rights or territory",
+      "pos": "noun"
+    },
+    {
+      "word": "Coalition",
+      "ipa": "/ˌkoʊəˈlɪʃən/",
+      "urdu": "اتحاد",
+      "meaning": "alliance of parties formed to govern",
+      "pos": "noun"
+    },
+    {
+      "word": "Coercion",
+      "ipa": "/koʊˈɜːrʒən/",
+      "urdu": "جبر",
+      "meaning": "use of force to compel action",
+      "pos": "noun"
+    },
+    {
+      "word": "Cohesion",
+      "ipa": "/koʊˈhiːʒən/",
+      "urdu": "یکجہتی",
+      "meaning": "unity and solidarity within a group",
+      "pos": "noun"
+    },
+    {
+      "word": "Colonialism",
+      "ipa": "/kəˈloʊniəlɪzəm/",
+      "urdu": "نوآبادیت",
+      "meaning": "policy of acquiring political control over other nations",
+      "pos": "noun"
+    },
+    {
+      "word": "Consensus",
+      "ipa": "/kənˈsɛnsəs/",
+      "urdu": "اتفاق رائے",
+      "meaning": "general agreement among a group",
+      "pos": "noun"
+    },
+    {
+      "word": "Constituency",
+      "ipa": "/kənˈstɪtʃuənsi/",
+      "urdu": "حلقہ انتخاب",
+      "meaning": "body of voters in an electoral district",
+      "pos": "noun"
+    },
+    {
+      "word": "Constitutional",
+      "ipa": "/ˌkɒnstɪˈtjuːʃənəl/",
+      "urdu": "آئینی",
+      "meaning": "in accordance with the constitution",
+      "pos": "adjective"
+    },
+    {
+      "word": "Corruption",
+      "ipa": "/kəˈrʌpʃən/",
+      "urdu": "بدعنوانی",
+      "meaning": "dishonest conduct by those in power",
+      "pos": "noun"
+    },
+    {
+      "word": "Credibility",
+      "ipa": "/ˌkrɛdəˈbɪləti/",
+      "urdu": "اعتبار",
+      "meaning": "quality of being trusted or believed",
+      "pos": "noun"
+    },
+    {
+      "word": "Curtailment",
+      "ipa": "/kɜːrˈteɪlmənt/",
+      "urdu": "کمی",
+      "meaning": "reduction or restriction of something",
+      "pos": "noun"
+    },
+    {
+      "word": "Deadlock",
+      "ipa": "/ˈdɛdlɒk/",
+      "urdu": "تعطل",
+      "meaning": "complete standstill due to opposing forces",
+      "pos": "noun"
+    },
+    {
+      "word": "Decentralization",
+      "ipa": "/diːˌsɛntrələˈzeɪʃən/",
+      "urdu": "لامرکزیت",
+      "meaning": "transfer of power to local authorities",
+      "pos": "noun"
+    },
+    {
+      "word": "Deficit",
+      "ipa": "/ˈdɛfɪsɪt/",
+      "urdu": "خسارہ",
+      "meaning": "amount by which expenditure exceeds revenue",
+      "pos": "noun"
+    },
+    {
+      "word": "Democracy",
+      "ipa": "/dɪˈmɒkrəsi/",
+      "urdu": "جمہوریت",
+      "meaning": "government by the people through elections",
+      "pos": "noun"
+    },
+    {
+      "word": "Despotism",
+      "ipa": "/ˈdɛspətɪzəm/",
+      "urdu": "استبداد",
+      "meaning": "exercise of absolute, tyrannical authority",
+      "pos": "noun"
+    },
+    {
+      "word": "Deterrent",
+      "ipa": "/dɪˈtɜːrənt/",
+      "urdu": "رکاوٹ",
+      "meaning": "thing that discourages an action",
+      "pos": "noun"
+    },
+    {
+      "word": "Diplomacy",
+      "ipa": "/dɪˈploʊməsi/",
+      "urdu": "سفارت کاری",
+      "meaning": "management of international relations",
+      "pos": "noun"
+    },
+    {
+      "word": "Disparity",
+      "ipa": "/dɪˈspærɪti/",
+      "urdu": "عدم مساوات",
+      "meaning": "great difference or inequality between groups",
+      "pos": "noun"
+    },
+    {
+      "word": "Dissent",
+      "ipa": "/dɪˈsɛnt/",
+      "urdu": "اختلاف رائے",
+      "meaning": "hold or express opposing opinions",
+      "pos": "verb"
+    },
+    {
+      "word": "Egalitarian",
+      "ipa": "/ɪˌɡælɪˈtɛːriən/",
+      "urdu": "مساوات پسند",
+      "meaning": "believing in equal rights for all",
+      "pos": "adjective"
+    },
+    {
+      "word": "Electorate",
+      "ipa": "/ɪˈlɛktərɪt/",
+      "urdu": "ووٹرز",
+      "meaning": "all voters in a country or constituency",
+      "pos": "noun"
+    },
+    {
+      "word": "Emancipation",
+      "ipa": "/ɪˌmænsɪˈpeɪʃən/",
+      "urdu": "آزادی",
+      "meaning": "freedom from legal or political restriction",
+      "pos": "noun"
+    },
+    {
+      "word": "Embezzlement",
+      "ipa": "/ɪmˈbɛzəlmənt/",
+      "urdu": "غبن",
+      "meaning": "theft of funds by a trusted employee",
+      "pos": "noun"
+    },
+    {
+      "word": "Enfranchise",
+      "ipa": "/ɪnˈfræntʃaɪz/",
+      "urdu": "حق رائے دہی دینا",
+      "meaning": "give the right to vote",
+      "pos": "verb"
+    },
+    {
+      "word": "Eradicate",
+      "ipa": "/ɪˈrædɪkeɪt/",
+      "urdu": "جڑ سے اکھاڑنا",
+      "meaning": "completely destroy or eliminate something",
+      "pos": "verb"
+    },
+    {
+      "word": "Exacerbate",
+      "ipa": "/ɪɡˈzæsərbeɪt/",
+      "urdu": "بگاڑنا",
+      "meaning": "make a problem or situation worse",
+      "pos": "verb"
+    },
+    {
+      "word": "Exploitation",
+      "ipa": "/ˌɛksplɔɪˈteɪʃən/",
+      "urdu": "استحصال",
+      "meaning": "unfair use of someone for one's benefit",
+      "pos": "noun"
+    },
+    {
+      "word": "Extradition",
+      "ipa": "/ˌɛkstrəˈdɪʃən/",
+      "urdu": "حوالگی",
+      "meaning": "surrendering a suspect to another jurisdiction",
+      "pos": "noun"
+    },
+    {
+      "word": "Federalism",
+      "ipa": "/ˈfɛdərəlɪzəm/",
+      "urdu": "وفاقیت",
+      "meaning": "system dividing power between central and state governments",
+      "pos": "noun"
+    },
+    {
+      "word": "Franchise",
+      "ipa": "/ˈfræntʃaɪz/",
+      "urdu": "حق رائے دہی",
+      "meaning": "right to vote in public elections",
+      "pos": "noun"
+    },
+    {
+      "word": "Fundamentalism",
+      "ipa": "/ˌfʌndəˈmɛntəlɪzəm/",
+      "urdu": "بنیاد پرستی",
+      "meaning": "strict adherence to core religious or ideological beliefs",
+      "pos": "noun"
+    },
+    {
+      "word": "Geopolitics",
+      "ipa": "/ˌdʒiːoʊˈpɒlɪtɪks/",
+      "urdu": "جغرافیائی سیاست",
+      "meaning": "influence of geography on politics and strategy",
+      "pos": "noun"
+    },
+    {
+      "word": "Governance",
+      "ipa": "/ˈɡʌvərnəns/",
+      "urdu": "حکمرانی",
+      "meaning": "way a country or organization is run",
+      "pos": "noun"
+    },
+    {
+      "word": "Grievance",
+      "ipa": "/ˈɡriːvəns/",
+      "urdu": "شکایت",
+      "meaning": "real or perceived cause for complaint",
+      "pos": "noun"
+    },
+    {
+      "word": "Hegemony",
+      "ipa": "/hɪˈdʒɛməni/",
+      "urdu": "بالادستی",
+      "meaning": "dominance of one group over others",
+      "pos": "noun"
+    },
+    {
+      "word": "Humanitarian",
+      "ipa": "/hjuːˌmænɪˈtɛːriən/",
+      "urdu": "انسانی ہمدردی",
+      "meaning": "concerned with improving human welfare",
+      "pos": "adjective"
+    },
+    {
+      "word": "Illicit",
+      "ipa": "/ɪˈlɪsɪt/",
+      "urdu": "ناجائز",
+      "meaning": "forbidden by law or custom",
+      "pos": "adjective"
+    },
+    {
+      "word": "Impartial",
+      "ipa": "/ɪmˈpɑːrʃəl/",
+      "urdu": "غیر جانبدار",
+      "meaning": "treating all sides equally and fairly",
+      "pos": "adjective"
+    },
+    {
+      "word": "Impeachment",
+      "ipa": "/ɪmˈpiːtʃmənt/",
+      "urdu": "مواخذہ",
+      "meaning": "formal charge against a public official",
+      "pos": "noun"
+    },
+    {
+      "word": "Imperative",
+      "ipa": "/ɪmˈpɛrətɪv/",
+      "urdu": "ضروری",
+      "meaning": "of vital importance; urgently required",
+      "pos": "adjective"
+    },
+    {
+      "word": "Impunity",
+      "ipa": "/ɪmˈpjuːnɪti/",
+      "urdu": "بے سزائی",
+      "meaning": "exemption from punishment or consequences",
+      "pos": "noun"
+    },
+    {
+      "word": "Incumbent",
+      "ipa": "/ɪnˈkʌmbənt/",
+      "urdu": "موجودہ عہدیدار",
+      "meaning": "current holder of a political office",
+      "pos": "noun"
+    },
+    {
+      "word": "Indigenous",
+      "ipa": "/ɪnˈdɪdʒɪnəs/",
+      "urdu": "مقامی",
+      "meaning": "originating naturally in a particular region",
+      "pos": "adjective"
+    },
+    {
+      "word": "Inequality",
+      "ipa": "/ˌɪnɪˈkwɒlɪti/",
+      "urdu": "عدم مساوات",
+      "meaning": "unequal distribution of resources or rights",
+      "pos": "noun"
+    },
+    {
+      "word": "Inflation",
+      "ipa": "/ɪnˈfleɪʃən/",
+      "urdu": "افراط زر",
+      "meaning": "general rise in prices over time",
+      "pos": "noun"
+    },
+    {
+      "word": "Infrastructure",
+      "ipa": "/ˈɪnfrəˌstrʌktʃər/",
+      "urdu": "بنیادی ڈھانچہ",
+      "meaning": "basic physical systems of a nation",
+      "pos": "noun"
+    },
+    {
+      "word": "Insurgency",
+      "ipa": "/ɪnˈsɜːrdʒənsi/",
+      "urdu": "بغاوت",
+      "meaning": "armed rebellion against an authority",
+      "pos": "noun"
+    },
+    {
+      "word": "Integrity",
+      "ipa": "/ɪnˈtɛɡrɪti/",
+      "urdu": "دیانتداری",
+      "meaning": "quality of being honest and having strong principles",
+      "pos": "noun"
+    },
+    {
+      "word": "Judiciary",
+      "ipa": "/dʒuːˈdɪʃiɛri/",
+      "urdu": "عدلیہ",
+      "meaning": "branch of government with judicial power",
+      "pos": "noun"
+    },
+    {
+      "word": "Jurisdiction",
+      "ipa": "/ˌdʒʊərɪsˈdɪkʃən/",
+      "urdu": "دائرہ اختیار",
+      "meaning": "official power to make legal decisions",
+      "pos": "noun"
+    },
+    {
+      "word": "Legislation",
+      "ipa": "/ˌlɛdʒɪˈsleɪʃən/",
+      "urdu": "قانون سازی",
+      "meaning": "laws enacted by a legislative body",
+      "pos": "noun"
+    },
+    {
+      "word": "Legitimacy",
+      "ipa": "/lɪˈdʒɪtɪməsi/",
+      "urdu": "جواز",
+      "meaning": "conformity to law or accepted standards",
+      "pos": "noun"
+    },
+    {
+      "word": "Liberalization",
+      "ipa": "/ˌlɪbərələˈzeɪʃən/",
+      "urdu": "آزادکاری",
+      "meaning": "removal of government restrictions",
+      "pos": "noun"
+    },
+    {
+      "word": "Mandate",
+      "ipa": "/ˈmændeɪt/",
+      "urdu": "حکم",
+      "meaning": "official authority given by an election",
+      "pos": "noun"
+    },
+    {
+      "word": "Manifesto",
+      "ipa": "/ˌmænɪˈfɛstoʊ/",
+      "urdu": "منشور",
+      "meaning": "public declaration of a party's intentions",
+      "pos": "noun"
+    },
+    {
+      "word": "Marginalized",
+      "ipa": "/ˈmɑːrdʒɪnəlaɪzd/",
+      "urdu": "پسماندہ",
+      "meaning": "treated as unimportant or excluded from power",
+      "pos": "adjective"
+    },
+    {
+      "word": "Mediation",
+      "ipa": "/ˌmiːdiˈeɪʃən/",
+      "urdu": "ثالثی",
+      "meaning": "intervention to settle a dispute",
+      "pos": "noun"
+    },
+    {
+      "word": "Militancy",
+      "ipa": "/ˈmɪlɪtənsi/",
+      "urdu": "عسکریت پسندی",
+      "meaning": "aggressive pursuit of political or social goals",
+      "pos": "noun"
+    },
+    {
+      "word": "Mitigate",
+      "ipa": "/ˈmɪtɪɡeɪt/",
+      "urdu": "کم کرنا",
+      "meaning": "lessen the severity of something harmful",
+      "pos": "verb"
+    },
+    {
+      "word": "Multilateral",
+      "ipa": "/ˌmʌltiˈlætərəl/",
+      "urdu": "کثیرالجانب",
+      "meaning": "involving three or more parties or nations",
+      "pos": "adjective"
+    },
+    {
+      "word": "Nationalism",
+      "ipa": "/ˈnæʃənəlɪzəm/",
+      "urdu": "قوم پرستی",
+      "meaning": "strong pride in one's nation",
+      "pos": "noun"
+    },
+    {
+      "word": "Nepotism",
+      "ipa": "/ˈnɛpəˌtɪzəm/",
+      "urdu": "اقربا پروری",
+      "meaning": "favouring relatives in professional appointments",
+      "pos": "noun"
+    },
+    {
+      "word": "Oligarchy",
+      "ipa": "/ˈɒlɪɡɑːrki/",
+      "urdu": "اقلیتی حکومت",
+      "meaning": "rule by a small group of people",
+      "pos": "noun"
+    },
+    {
+      "word": "Ordinance",
+      "ipa": "/ˈɔːrdɪnəns/",
+      "urdu": "آرڈیننس",
+      "meaning": "law enacted by executive without legislature",
+      "pos": "noun"
+    },
+    {
+      "word": "Oversight",
+      "ipa": "/ˈoʊvərˌsaɪt/",
+      "urdu": "نگرانی",
+      "meaning": "supervision and monitoring of activities",
+      "pos": "noun"
+    },
+    {
+      "word": "Partisan",
+      "ipa": "/ˈpɑːrtɪzən/",
+      "urdu": "جانبدار",
+      "meaning": "strongly supporting a particular party or cause",
+      "pos": "adjective"
+    },
+    {
+      "word": "Patronage",
+      "ipa": "/ˈpeɪtrənɪdʒ/",
+      "urdu": "سرپرستی",
+      "meaning": "power to give jobs as political reward",
+      "pos": "noun"
+    },
+    {
+      "word": "Plebiscite",
+      "ipa": "/ˈplɛbɪˌsaɪt/",
+      "urdu": "استصواب رائے",
+      "meaning": "direct vote on a single political question",
+      "pos": "noun"
+    },
+    {
+      "word": "Pluralism",
+      "ipa": "/ˈplʊərəlɪzəm/",
+      "urdu": "تکثیریت",
+      "meaning": "coexistence of diverse groups or viewpoints",
+      "pos": "noun"
+    },
+    {
+      "word": "Polarization",
+      "ipa": "/ˌpoʊlərɪˈzeɪʃən/",
+      "urdu": "قطبیت",
+      "meaning": "sharp division into opposing factions",
+      "pos": "noun"
+    },
+    {
+      "word": "Populist",
+      "ipa": "/ˈpɒpjʊlɪst/",
+      "urdu": "عوامی",
+      "meaning": "appealing to ordinary people's concerns",
+      "pos": "adjective"
+    },
+    {
+      "word": "Pragmatic",
+      "ipa": "/præɡˈmætɪk/",
+      "urdu": "عملی",
+      "meaning": "dealing with things practically and realistically",
+      "pos": "adjective"
+    },
+    {
+      "word": "Precedent",
+      "ipa": "/ˈprɛsɪdənt/",
+      "urdu": "نظیر",
+      "meaning": "earlier event used as a later example",
+      "pos": "noun"
+    },
+    {
+      "word": "Proliferation",
+      "ipa": "/prəˌlɪfəˈreɪʃən/",
+      "urdu": "پھیلاؤ",
+      "meaning": "rapid increase or spread of something",
+      "pos": "noun"
+    },
+    {
+      "word": "Propaganda",
+      "ipa": "/ˌprɒpəˈɡændə/",
+      "urdu": "پروپیگنڈا",
+      "meaning": "biased information to promote a cause",
+      "pos": "noun"
+    },
+    {
+      "word": "Prosperity",
+      "ipa": "/prɒˈspɛrɪti/",
+      "urdu": "خوشحالی",
+      "meaning": "state of being economically successful",
+      "pos": "noun"
+    },
+    {
+      "word": "Protectionism",
+      "ipa": "/prəˈtɛkʃənɪzəm/",
+      "urdu": "تحفظ پسندی",
+      "meaning": "policy shielding domestic industries from foreign competition",
+      "pos": "noun"
+    },
+    {
+      "word": "Ratify",
+      "ipa": "/ˈrætɪfaɪ/",
+      "urdu": "توثیق کرنا",
+      "meaning": "formally approve and make legally valid",
+      "pos": "verb"
+    },
+    {
+      "word": "Recession",
+      "ipa": "/rɪˈsɛʃən/",
+      "urdu": "کساد بازاری",
+      "meaning": "period of economic decline and contraction",
+      "pos": "noun"
+    },
+    {
+      "word": "Referendum",
+      "ipa": "/ˌrɛfəˈrɛndəm/",
+      "urdu": "عوامی رائے شماری",
+      "meaning": "direct public vote on a policy question",
+      "pos": "noun"
+    },
+    {
+      "word": "Repression",
+      "ipa": "/rɪˈprɛʃən/",
+      "urdu": "جبر",
+      "meaning": "suppression of freedoms by force",
+      "pos": "noun"
+    },
+    {
+      "word": "Resilience",
+      "ipa": "/rɪˈzɪliəns/",
+      "urdu": "مزاحمت",
+      "meaning": "capacity to recover from difficulties quickly",
+      "pos": "noun"
+    },
+    {
+      "word": "Rhetoric",
+      "ipa": "/ˈrɛtərɪk/",
+      "urdu": "خطابت",
+      "meaning": "persuasive language used in public discourse",
+      "pos": "noun"
+    },
+    {
+      "word": "Sanctions",
+      "ipa": "/ˈsæŋkʃənz/",
+      "urdu": "پابندیاں",
+      "meaning": "penalties imposed on a country or entity",
+      "pos": "noun"
+    },
+    {
+      "word": "Secular",
+      "ipa": "/ˈsɛkjʊlər/",
+      "urdu": "سیکولر",
+      "meaning": "not connected to religion or church",
+      "pos": "adjective"
+    },
+    {
+      "word": "Sovereignty",
+      "ipa": "/ˈsɒvrənti/",
+      "urdu": "خودمختاری",
+      "meaning": "supreme authority of a state over itself",
+      "pos": "noun"
+    },
+    {
+      "word": "Stagnation",
+      "ipa": "/stæɡˈneɪʃən/",
+      "urdu": "جمود",
+      "meaning": "lack of growth or development",
+      "pos": "noun"
+    },
+    {
+      "word": "Subsidy",
+      "ipa": "/ˈsʌbsɪdi/",
+      "urdu": "سبسڈی",
+      "meaning": "financial aid given by the government",
+      "pos": "noun"
+    },
+    {
+      "word": "Surveillance",
+      "ipa": "/sərˈveɪləns/",
+      "urdu": "نگرانی",
+      "meaning": "close monitoring of a person or place",
+      "pos": "noun"
+    },
+    {
+      "word": "Sustainable",
+      "ipa": "/səˈsteɪnəbəl/",
+      "urdu": "پائیدار",
+      "meaning": "capable of being maintained long-term",
+      "pos": "adjective"
+    },
+    {
+      "word": "Totalitarianism",
+      "ipa": "/toʊˌtæləˈtɛːriənɪzəm/",
+      "urdu": "مطلق العنان نظام",
+      "meaning": "centralized control over all aspects of life",
+      "pos": "noun"
+    },
+    {
+      "word": "Transparency",
+      "ipa": "/trænsˈpærənsi/",
+      "urdu": "شفافیت",
+      "meaning": "openness and accountability in governance",
+      "pos": "noun"
+    },
+    {
+      "word": "Turmoil",
+      "ipa": "/ˈtɜːrmɔɪl/",
+      "urdu": "ہلچل",
+      "meaning": "state of confusion and disorder",
+      "pos": "noun"
+    },
+    {
+      "word": "Tyranny",
+      "ipa": "/ˈtɪrəni/",
+      "urdu": "ظلم",
+      "meaning": "cruel, oppressive government or rule",
+      "pos": "noun"
+    },
+    {
+      "word": "Unilateral",
+      "ipa": "/ˌjuːnɪˈlætərəl/",
+      "urdu": "یکطرفہ",
+      "meaning": "decided or done by one party alone",
+      "pos": "adjective"
+    },
+    {
+      "word": "Upheaval",
+      "ipa": "/ʌpˈhiːvəl/",
+      "urdu": "انقلاب",
+      "meaning": "great disruption or disorder in society",
+      "pos": "noun"
+    },
+    {
+      "word": "Verdict",
+      "ipa": "/ˈvɜːrdɪkt/",
+      "urdu": "فیصلہ",
+      "meaning": "official decision reached by a court",
+      "pos": "noun"
+    },
+    {
+      "word": "Veto",
+      "ipa": "/ˈviːtoʊ/",
+      "urdu": "ویٹو",
+      "meaning": "power to reject a decision or proposal",
+      "pos": "noun"
+    },
+    {
+      "word": "Vigilance",
+      "ipa": "/ˈvɪdʒɪləns/",
+      "urdu": "چوکسی",
+      "meaning": "careful watchfulness against danger",
+      "pos": "noun"
+    },
+    {
+      "word": "Vulnerability",
+      "ipa": "/ˌvʌlnərəˈbɪləti/",
+      "urdu": "کمزوری",
+      "meaning": "susceptibility to harm or attack",
+      "pos": "noun"
+    },
+    {
+      "word": "Welfare",
+      "ipa": "/ˈwɛlfɛr/",
+      "urdu": "فلاح",
+      "meaning": "government support for citizens' wellbeing",
+      "pos": "noun"
+    },
+    {
+      "word": "Whistleblower",
+      "ipa": "/ˈwɪsəlˌbloʊər/",
+      "urdu": "انکشاف کنندہ",
+      "meaning": "person who exposes organisational wrongdoing",
+      "pos": "noun"
+    },
+    {
+      "word": "Xenophobia",
+      "ipa": "/ˌzɛnəˈfoʊbiə/",
+      "urdu": "غیر ملکی دشمنی",
+      "meaning": "intense dislike or fear of foreigners",
+      "pos": "noun"
+    },
+    {
+      "word": "Zealotry",
+      "ipa": "/ˈzɛlətri/",
+      "urdu": "متعصبانہ جوش",
+      "meaning": "excessive and uncompromising pursuit of ideals",
+      "pos": "noun"
+    }
+  ]
+}

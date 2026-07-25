@@ -27,6 +27,13 @@ abstract final class AppRoutes {
   static String grammarLesson(String id) =>
       '/grammar/lesson/${Uri.encodeComponent(id)}';
 
+  // Vocabulary (Phase v0.6.0)
+  static const String vocabulary = '/vocabulary';
+  static const String vocabularyListName = 'vocabularyList';
+  static const String vocabularyListPattern = '/vocabulary/list/:id';
+  static String vocabularyList(String id) =>
+      '/vocabulary/list/${Uri.encodeComponent(id)}';
+
   static const String readerName = 'reader';
   static const String readerPattern = '/reader/:id';
   static String reader(String documentId) => '/reader/$documentId';
