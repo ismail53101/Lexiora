@@ -1,11 +1,15 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:lexiora/app/di/injector.dart';
+import 'package:lexiora/core/services/pronunciation_service.dart';
 import 'package:lexiora/core/usecase/usecase.dart';
 import 'package:lexiora/core/utils/result.dart';
 import 'package:lexiora/modules/dictionary/data/dictionary_seeder.dart';
+import 'package:lexiora/modules/dictionary/data/exam_words_seeder.dart';
 import 'package:lexiora/modules/dictionary/domain/entities/dictionary_entry.dart';
+import 'package:lexiora/modules/dictionary/domain/entities/word_profile.dart';
 import 'package:lexiora/modules/dictionary/domain/repositories/dictionary_repository.dart';
 import 'package:lexiora/modules/dictionary/domain/usecases/dictionary_usecases.dart';
+import 'package:lexiora/modules/dictionary/domain/usecases/get_word_profile.dart';
 
 // ── Infrastructure ────────────────────────────────────────────────────────────
 
@@ -78,3 +82,46 @@ final wordLookupProvider = FutureProvider.family<DictionaryResult?, String>(
     );
   },
 );
+
+// ── Dictionary v2 ─────────────────────────────────────────────────────────────
+
+final Provider<ExamWordsSeeder> examWordsSeederProvider =
+    Provider<ExamWordsSeeder>((Ref ref) => sl<ExamWordsSeeder>());
+
+final Provider<GetWordProfile> getWordProfileProvider =
+    Provider<GetWordProfile>(
+  (Ref ref) => GetWordProfile(ref.watch(dictionaryRepositoryProvider)),
+);
+
+/// Aggregated, offline word profile: curated exam data + base senses + derived
+/// related words. Seeding is best-effort so a missing pack never breaks the
+/// screen. Urdu meanings (hybrid) and bookmark state come from their own
+/// providers.
+final wordProfileProvider = FutureProvider.family<WordProfile, String>(
+  (Ref ref, String wordLower) async {
+    try {
+      await ref.watch(dictionarySeederProvider).ensureSeeded();
+    } on Object {
+      // Base dictionary unavailable this run; profile degrades gracefully.
+    }
+    try {
+      await ref.watch(examWordsSeederProvider).ensureSeeded();
+    } on Object {
+      // Curated pack is optional.
+    }
+    final result = await ref.watch(getWordProfileProvider).call(wordLower);
+    return result.fold(
+      (failure) => throw StateError(failure.message),
+      (WordProfile profile) => profile,
+    );
+  },
+);
+
+/// Reactive recent searches (most recent first).
+final recentSearchesProvider = StreamProvider<List<String>>(
+  (Ref ref) => ref.watch(dictionaryRepositoryProvider).watchRecentSearches(),
+);
+
+/// On-device audio pronunciation (TTS) service.
+final Provider<PronunciationService> pronunciationServiceProvider =
+    Provider<PronunciationService>((Ref ref) => sl<PronunciationService>());

@@ -43,8 +43,10 @@ final List<FeatureModule> appModules = <FeatureModule>[
   // Active Phase 2.2 feature — offline Translate (reader word action).
   TranslationModule(),
 
-  // Future modules — placeholder scaffolds only (no behavior yet).
+  // Active Phase v0.4.0 feature — the offline Grammar learning module.
   GrammarModule(),
+
+  // Future modules — placeholder scaffolds only (no behavior yet).
   VocabularyModule(),
   FlashcardsModule(),
   QuizModule(),

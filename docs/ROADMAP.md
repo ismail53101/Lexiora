@@ -54,7 +54,7 @@ Delivery order is indicative; each is independent thanks to the module system.
 |---|---|---|
 | ~~`v0.2.0`~~ | ~~**Dictionary**~~ | ✅ Shipped — offline word definitions; first tap-on-word action |
 | ~~`v0.3.0`~~ | ~~**Multi-language Translation**~~ | ✅ Shipped — offline reader "Translate" word action (French/Portuguese/Hindi/Arabic) |
-| `v0.4.0` | **Grammar** | Grammar explanations and checks for selected text |
+| ~~`v0.4.0`~~ | ~~**Grammar**~~ | ✅ Shipped — offline grammar lessons (15 topics) with search, progress tracking & interactive practice |
 | `v0.5.0` | **Vocabulary Builder** | Save words from the reader into personal lists |
 | `v0.6.0` | **Flashcards** | Spaced-repetition review built from vocabulary |
 | `v0.7.0` | **Quiz System** | Auto-generated quizzes from documents & vocabulary |

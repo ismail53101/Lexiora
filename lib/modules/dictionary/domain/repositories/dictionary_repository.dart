@@ -1,4 +1,5 @@
 import 'package:lexiora/modules/dictionary/domain/entities/dictionary_entry.dart';
+import 'package:lexiora/modules/dictionary/domain/entities/word_profile.dart';
 
 /// Domain contract for the offline dictionary.
 ///
@@ -48,4 +49,35 @@ abstract interface class DictionaryRepository {
 
   /// Reactive list of saved words, most recently saved first.
   Stream<List<DictionaryResult>> watchFavorites();
+
+  // ── Cross-module integration ──────────────────────────────────────────────
+
+  /// Registers an externally-sourced word (e.g. a word translated online by the
+  /// Translation module) into the searchable dictionary index, so it becomes
+  /// findable via Dictionary search in future lookups. No-op when the word is
+  /// already present. Additive integration point — existing behaviour and the
+  /// bundled data set are untouched.
+  Future<void> registerExternalWord({
+    required String word,
+    required String meaning,
+    String? partOfSpeech,
+  });
+
+  // ── Dictionary v2 ───────────────────────────────────────────────────────────
+
+  /// Curated, exam-oriented data for [wordLower], or `null` when the word is not
+  /// in the bundled exam pack.
+  Future<ExamWordData?> examData(String wordLower);
+
+  /// Locally-derived related words (same root) from the base dictionary.
+  Future<List<String>> relatedWords(String wordLower, {int limit});
+
+  /// Records a search in the local history (capped and auto-pruned).
+  Future<void> addSearchHistory(String word);
+
+  /// Reactive recent searches, most recent first.
+  Stream<List<String>> watchRecentSearches({int limit});
+
+  /// Clears the search history.
+  Future<void> clearSearchHistory();
 }

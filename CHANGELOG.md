@@ -5,6 +5,215 @@ All notable changes to Sapiora are documented here.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.5.0] — 2026-07-25
+
+Phase v0.5.0 — **Grammar hierarchy**: the module now follows a strict
+**Category → Subcategory → Lesson** structure. Topics are no longer merged onto
+one page; each type opens its own dedicated lesson.
+
+### Added
+- **Hierarchical navigation.** The Grammar home lists categories; tapping one
+  shows its subtopics; a subtopic opens its own lesson (supports 3 levels, e.g.
+  Tenses → Present Tense → Present Simple). New `grammar_topics` tree table
+  (schema **v8**, additive), seeded from a bundled `grammar_topics.json`; a new
+  Topic screen and route (`/grammar/topic/:id`).
+- **Dedicated lessons** with the mandated sections: Introduction, Urdu
+  Explanation, English Explanation, Types, Rules, Examples, Common Mistakes,
+  Practice, Quiz, Summary. Empty sections are hidden.
+- **Fully authored flagship subtrees:** Parts of Speech (9 lessons: noun,
+  pronoun, verb, adjective, adverb, preposition, conjunction, interjection,
+  determiner) and Tenses (Present/Past/Future → 12 tense lessons), each with all
+  sections including Urdu explanations and a quiz.
+
+### Changed
+- The previous flat lessons (Sentence Structure, Phrases, Clauses, Articles,
+  Prepositions, Conjunctions, Subject–Verb Agreement, Modals, Active & Passive
+  Voice, Direct & Indirect Speech, Punctuation, Conditional Sentences, Common
+  Errors) are preserved as leaf categories so nothing is lost; they can be split
+  into subtopics the same way the flagship categories were. Progress and
+  favorites are reused, keyed by leaf id.
+
+### Notes
+- Offline-first; search now spans all leaf lessons. New tests cover the tree data
+  source, the seeder and the bundled tree's shape (Parts of Speech = 9 leaves,
+  Tenses = 3 branches × 4). `flutter analyze` is clean and the suite passes.
+
+## [0.4.4] — 2026-07-25
+
+Phase v0.4.4 — **expanded the curated dictionary pack** so the rich exam sections
+(Urdu meanings, synonyms & antonyms, usage, collocations, word forms, idioms,
+exam notes) appear for far more words.
+
+### Changed
+- The curated exam pack grew from **40 → 159 words**, adding high-frequency
+  everyday and academic/editorial vocabulary (e.g. analyze, benefit, crucial,
+  demonstrate, evaluate, implement, negotiate, significant, undermine). Each new
+  entry has ordered Urdu meanings, an English definition, synonyms/antonyms,
+  a context-tagged usage sentence (English + Urdu), collocations, word forms and
+  an exam note. Bumped the dataset version so installs re-seed the larger pack.
+
+### Notes
+- These sections are curated (verified) content and render only for words in the
+  pack; other words still show Meaning, Pronunciation and derived Related Words,
+  hiding unverifiable sections (accuracy over completeness). `flutter analyze` is
+  clean and the full suite passes.
+
+## [0.4.3] — 2026-07-25
+
+Phase v0.4.3 — enforces the **mandatory Dictionary display rules**: a fixed
+section order, an offline audio pronunciation button, and family-only Related
+Words. Additive; no existing feature removed.
+
+### Added
+- **Audio pronunciation** — a "tap to hear" button backed by on-device TTS
+  (`flutter_tts`), working offline for installed voices. UK and US buttons are
+  shown only when that accent's voice is available; a loading spinner shows while
+  speaking; TTS errors never crash the app. IPA supports optional UK/US variants.
+
+### Changed
+- **Word Details now follows the exact mandated order**: Word → Meaning (same
+  sense) → Pronunciation + Audio + Part of Speech → Other Common Meanings →
+  Synonyms & Antonyms → Usage → Collocations → Word Forms / Related Words →
+  Idioms → Exam Note. Extra base senses now surface under "Other Common
+  Meanings" (the standalone Definitions list was folded in).
+- **Word Forms and Related Words are one merged section** (curated forms first,
+  then derived family words).
+- **Related Words are now family-only.** Derivation matches the full root (word
+  minus a trailing "e") instead of a fixed prefix, so `inquire → inquiry /
+  inquirer / inquiring` and `govern → government / governor / governance`, while
+  look-alikes like `policy → police` are correctly excluded.
+
+### Notes
+- Accuracy over completeness: sections with unverifiable data are hidden rather
+  than shown wrong. New tests cover the family-only related-words derivation and
+  the audio button's availability/disabled/play states. `flutter analyze` is
+  clean and the full suite passes.
+
+## [0.4.2] — 2026-07-25
+
+Phase v0.4.2 — **Dictionary v2**: a professional, offline-first, exam-oriented
+word profile (CSS/PMS/FPSC/IELTS) built on top of the existing dictionary and
+hybrid translation. No existing feature was removed; everything is additive.
+
+### Added
+- **Redesigned Word Details** (Material 3 cards) showing, in order: Meaning
+  (ordered Urdu + concise English), Pronunciation & Part of Speech, base
+  Definitions, Other Common Meanings, Synonyms & Antonyms, exam-oriented Usage
+  (one context-tagged sentence with the searched word highlighted, EN + Urdu),
+  Common Collocations, Word Forms, Idioms & Phrases, and an Exam Note. Every
+  section hides gracefully when its data is unavailable.
+- **Curated exam word pack** — a bundled `exam_words.json` (40 high-frequency
+  exam/editorial words) seeded once into the new `dictionary_exam_entries` table
+  (schema **v7**, additive). Stored as JSON so richer content ships with no
+  schema change.
+- **Related Words** — derived offline from the base dictionary by shared root
+  (e.g. economy → economic, economics, economist), shown as tappable chips.
+- **Search history** — recent lookups saved locally in `dictionary_search_history`
+  (capped at ~100, auto-pruned), surfaced as "Recent" chips on the Dictionary
+  home with a Clear action.
+- **Bookmark, Copy, and an Offline-status indicator** (🟢 Available Offline /
+  🌐 Retrieved Online • Saved Offline). Bookmarks reuse the existing saved-words
+  store.
+
+### Changed
+- Urdu meanings use the existing **hybrid translation** (offline cache first,
+  then a cached online fallback) both in the reader and the Dictionary. Database
+  schema bumped to **v7** with an additive `onUpgrade` migration (existing
+  tables and data untouched).
+
+### Notes
+- Offline-first and fast: exam data and related words are local queries; the
+  large base dictionary is unchanged. New tests cover the exam data source,
+  seeder, related-words derivation, search-history capping and word-profile
+  aggregation. `flutter analyze` is clean and the full suite passes.
+
+## [0.4.1] — 2026-07-25
+
+Phase v0.4.1 — the **Hybrid Translation System**. An enhancement of the existing
+offline Translate module (not a replacement): it stays offline-first but now
+seamlessly falls back to an online provider and caches the result for offline
+reuse. No existing feature was changed or broken; everything is additive.
+
+### Added
+- **Online fallback (English → Urdu, and other target languages).** When a word
+  has no offline translation, and only then, the reader popup fetches it from a
+  configurable online provider, shows it, and **saves it for offline use** so the
+  next lookup is fully local. The provider sits behind a
+  `RemoteTranslationService` interface (default: MyMemory, keyless) and can be
+  swapped with a one-line DI change — no UI edits. Connectivity is detected via a
+  `ConnectivityService` interface.
+- **Offline translation cache.** A new additive `translation_cache` table
+  (schema **v6**) stores online results separately from the bundled data set, so
+  re-seeding the bundle never discards cached words. Its composite primary key
+  prevents duplicate cache rows.
+- **Source labelling in the popup:** *Source: Offline*, or *Source: Online ·
+  Saved for offline use.*, and a clear *“No offline translation found — connect
+  to the internet…”* state with Retry.
+- **Dictionary integration:** every word successfully translated online is
+  registered into the Dictionary index (additive `registerExternalWord`), so it
+  becomes searchable in future lookups.
+
+### Changed
+- Offline lookup now consults the bundled data set **and** the cache; the online
+  provider is never called when a local result exists. Database schema bumped to
+  **v6** with an additive `onUpgrade` migration (existing tables untouched).
+
+### Fixed
+- **Online fallback now works in release builds.** The `INTERNET` permission was
+  only declared in the debug/profile manifests (Flutter template default), so
+  release builds could not reach the provider — the connectivity check and HTTP
+  request failed and the offline message showed immediately. `INTERNET` is now
+  declared in the **main** manifest. The flow was also hardened to attempt the
+  provider on every offline miss (connectivity is consulted only to classify a
+  failure, so a false-negative probe can’t suppress the fallback), and the
+  Dictionary word details now use the same hybrid path — so the online fallback
+  behaves identically in **both** the PDF reader and Dictionary search.
+
+### Notes
+- Offline-first and non-blocking: PDF reading is never blocked; requests are
+  de-duplicated (cache-first + provider-keyed caching + a DB primary key). New
+  unit tests cover offline lookup, online fallback, cache insertion, cached
+  lookup, the no-internet path, duplicate-cache prevention and response parsing.
+  `flutter analyze` is clean and the full suite passes.
+
+## [0.4.0] — 2026-07-25
+
+Phase v0.4.0 — the offline **Grammar** learning module. A complete, offline
+grammar course that plugs into the app through the existing `FeatureModule`
+contract. No existing feature was changed; the module is entirely additive.
+
+### Added
+- **Grammar Home** (Material 3): instant, debounced search, category filters,
+  **Continue learning**, **Recent topics**, **Favorites**, and all topics grouped
+  by category with per-category completion counts.
+- **Lesson screen**: explanation, rules, examples, notes, tips, common mistakes
+  and **interactive multiple-choice practice questions** (tap to check, with
+  explanations), plus a favorite toggle and a mark-complete action.
+- **15 offline lessons** across four categories (Foundations; Verbs & Tenses;
+  Speech & Connectors; Mechanics): Parts of Speech, Sentence Structure, Phrases,
+  Clauses, Articles, Tenses, Subject–Verb Agreement, Modals, Active & Passive
+  Voice, Conditional Sentences, Direct & Indirect Speech, Prepositions,
+  Conjunctions, Punctuation and Common Errors — **60 practice questions** total.
+- **Progress tracking**: completed lessons, in-progress (with furthest-read
+  fraction) and recently-viewed, all reactive and stored locally.
+- **Home entry & navigation**: the Grammar Home tile is now a live entry (was a
+  “coming soon” placeholder); `GrammarModule` is a real, active module in the
+  registry, contributing the `/grammar` and `/grammar/lesson/:id` routes.
+
+### Changed
+- Database schema bumped to **v5** with an additive `onUpgrade` migration that
+  creates three tables — `grammar_lessons` (bulk-seeded once from a bundled JSON
+  asset), `grammar_progress` and `grammar_favorites` — plus their indexes. All
+  existing tables and data are untouched. The lesson body is stored as JSON, so
+  new content fields can ship without a schema redesign; re-seeding never touches
+  the user's progress or favorites.
+
+### Notes
+- 100% offline; the lesson content is original material under the app's MIT
+  license. Covered by unit tests (data source, seeder, and content validated
+  against the shipped asset) and a widget test for the interactive practice
+  question. `flutter analyze` reports **0 issues** and the full suite passes.
+
 ## [0.3.4] — 2026-07-25
 
 ### Changed

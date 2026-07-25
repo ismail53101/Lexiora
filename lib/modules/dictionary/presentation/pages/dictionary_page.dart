@@ -215,8 +215,8 @@ class _ResultsList extends StatelessWidget {
   }
 }
 
-/// Idle state (empty search box): shows saved words, or a prompt when there are
-/// none.
+/// Idle state (empty search box): shows Recent searches and Saved words, or a
+/// prompt when there is neither.
 class _IdleFavorites extends ConsumerWidget {
   const _IdleFavorites({required this.onOpenWord});
 
@@ -224,41 +224,93 @@ class _IdleFavorites extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final AsyncValue<List<DictionaryResult>> favorites =
-        ref.watch(favoritesProvider);
-    return favorites.when(
-      loading: () => const Center(child: CircularProgressIndicator()),
-      error: (_, _) => const _SearchPrompt(),
-      data: (List<DictionaryResult> favs) {
-        if (favs.isEmpty) return const _SearchPrompt();
-        return ListView.separated(
-          keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.onDrag,
-          itemCount: favs.length + 1,
-          separatorBuilder: (_, _) => const Divider(height: 1),
-          itemBuilder: (BuildContext context, int i) {
-            if (i == 0) {
-              return Padding(
-                padding: const EdgeInsets.fromLTRB(16, 16, 16, 8),
-                child: Row(
-                  children: [
-                    const Icon(Icons.star, color: Colors.amber, size: 20),
-                    const SizedBox(width: 8),
-                    Text(
-                      'Saved words',
-                      style: Theme.of(context)
-                          .textTheme
-                          .titleSmall
-                          ?.copyWith(fontWeight: FontWeight.w700),
-                    ),
-                  ],
-                ),
-              );
-            }
-            final DictionaryResult r = favs[i - 1];
-            return DictionaryResultTile(result: r, onTap: () => onOpenWord(r));
-          },
+    final List<DictionaryResult> favs = ref.watch(favoritesProvider).maybeWhen(
+          data: (List<DictionaryResult> f) => f,
+          orElse: () => const <DictionaryResult>[],
         );
-      },
+    final List<String> recent = ref.watch(recentSearchesProvider).maybeWhen(
+          data: (List<String> r) => r,
+          orElse: () => const <String>[],
+        );
+    if (favs.isEmpty && recent.isEmpty) return const _SearchPrompt();
+
+    return ListView(
+      keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.onDrag,
+      children: <Widget>[
+        if (recent.isNotEmpty) _RecentSearches(words: recent),
+        if (favs.isNotEmpty) ...<Widget>[
+          Padding(
+            padding: const EdgeInsets.fromLTRB(16, 16, 16, 8),
+            child: Row(
+              children: <Widget>[
+                const Icon(Icons.bookmark, color: Colors.amber, size: 20),
+                const SizedBox(width: 8),
+                Text(
+                  'Saved words',
+                  style: Theme.of(context)
+                      .textTheme
+                      .titleSmall
+                      ?.copyWith(fontWeight: FontWeight.w700),
+                ),
+              ],
+            ),
+          ),
+          for (final DictionaryResult r in favs)
+            DictionaryResultTile(result: r, onTap: () => onOpenWord(r)),
+        ],
+      ],
+    );
+  }
+}
+
+/// Recent-searches chips with a Clear action.
+class _RecentSearches extends ConsumerWidget {
+  const _RecentSearches({required this.words});
+
+  final List<String> words;
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final ThemeData theme = Theme.of(context);
+    return Padding(
+      padding: const EdgeInsets.fromLTRB(16, 12, 8, 4),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: <Widget>[
+          Row(
+            children: <Widget>[
+              Icon(Icons.history,
+                  size: 20, color: theme.colorScheme.onSurfaceVariant),
+              const SizedBox(width: 8),
+              Text('Recent',
+                  style: theme.textTheme.titleSmall
+                      ?.copyWith(fontWeight: FontWeight.w700)),
+              const Spacer(),
+              TextButton(
+                onPressed: () =>
+                    ref.read(dictionaryRepositoryProvider).clearSearchHistory(),
+                child: const Text('Clear'),
+              ),
+            ],
+          ),
+          Padding(
+            padding: const EdgeInsets.only(right: 8),
+            child: Wrap(
+              spacing: 8,
+              runSpacing: 8,
+              children: <Widget>[
+                for (final String w in words)
+                  ActionChip(
+                    label: Text(w),
+                    onPressed: () =>
+                        context.push(AppRoutes.dictionaryWord(w.toLowerCase())),
+                  ),
+              ],
+            ),
+          ),
+          const SizedBox(height: 8),
+        ],
+      ),
     );
   }
 }

@@ -182,6 +182,34 @@ class DictionaryFavorites extends Table {
   Set<Column<Object>> get primaryKey => {wordLower};
 }
 
+/// A curated, exam-oriented dictionary entry (Dictionary v2).
+///
+/// Read-mostly: seeded once from the bundled `exam_words.json`. The rich body
+/// (ordered Urdu meanings, other meanings, synonyms/antonyms, context usage,
+/// collocations, word forms, idioms, exam note, pronunciation) is stored as a
+/// single JSON document in [contentJson] so new fields can be added later with
+/// no schema change. Keyed by the lowercased headword for O(1) lookup.
+@DataClassName('DictionaryExamEntryRow')
+class DictionaryExamEntries extends Table {
+  TextColumn get wordLower => text()();
+  TextColumn get word => text()();
+  TextColumn get contentJson => text()();
+
+  @override
+  Set<Column<Object>> get primaryKey => {wordLower};
+}
+
+/// The user's recent word searches (capped and auto-pruned). Local-only.
+@DataClassName('SearchHistoryRow')
+class DictionarySearchHistory extends Table {
+  TextColumn get wordLower => text()();
+  TextColumn get word => text()();
+  DateTimeColumn get searchedAt => dateTime()();
+
+  @override
+  Set<Column<Object>> get primaryKey => {wordLower};
+}
+
 /// An offline translation of an English headword into one target language.
 ///
 /// Read-only, bulk-seeded from the bundled data set. Looked up by
@@ -200,4 +228,139 @@ class TranslationEntries extends Table {
 
   /// The translation text (one or more senses, joined).
   TextColumn get translation => text()();
+}
+
+/// Online-fetched translations saved for offline reuse (Hybrid Translation
+/// System, Phase v0.4.1).
+///
+/// This table is **separate** from the read-only, bulk-seeded
+/// [TranslationEntries] so that re-seeding the bundled data set never wipes the
+/// user's cached online translations. A lookup consults the bundled table first
+/// and then this cache — both are "offline" from the reader's point of view.
+/// The composite primary key ([langCode], [wordLower]) makes lookups fast and
+/// **prevents duplicate cache rows** for the same word/language at the database
+/// level (an upsert simply refreshes the existing row).
+@DataClassName('TranslationCacheRow')
+class TranslationCache extends Table {
+  /// Two-letter target language code, e.g. "ur".
+  TextColumn get langCode => text()();
+
+  /// Lowercased English headword being translated.
+  TextColumn get wordLower => text()();
+
+  /// The original (display) casing of the word.
+  TextColumn get word => text()();
+
+  /// The cached translation text.
+  TextColumn get translation => text()();
+
+  /// How the entry was obtained (e.g. "online"). Kept so cached rows can be
+  /// distinguished/managed later without a schema change.
+  TextColumn get source => text().withDefault(const Constant('online'))();
+
+  DateTimeColumn get createdAt => dateTime()();
+
+  @override
+  Set<Column<Object>> get primaryKey => {langCode, wordLower};
+}
+
+/// A single offline grammar lesson (Phase v0.4.0).
+///
+/// This table is **read-mostly**: it is seeded once from the bundled JSON data
+/// set and then only queried. The list-facing metadata (title, category,
+/// summary, order) lives in dedicated columns for fast, index-backed listing
+/// and search, while the full lesson body (explanation, rules, examples, notes,
+/// tips, common mistakes and practice questions) is stored as a single JSON
+/// document in [contentJson]. Keeping the body as JSON means new content fields
+/// can be added later with **no schema change** — only a bumped dataset version
+/// and an updated asset. The user's reading progress and saved lessons live in
+/// the separate [GrammarProgress] and [GrammarFavorites] tables, so lessons can
+/// be re-seeded without ever touching them.
+@DataClassName('GrammarLessonRow')
+class GrammarLessons extends Table {
+  /// Stable slug id, e.g. `parts-of-speech`.
+  TextColumn get id => text()();
+
+  /// Grouping category, e.g. `Foundations`.
+  TextColumn get category => text()();
+
+  /// Display title, e.g. `Parts of Speech`.
+  TextColumn get title => text()();
+
+  /// One-line description shown in lists and cards.
+  TextColumn get summary => text()();
+
+  /// Lowercased haystack (title + summary + keywords + category) used for
+  /// case-insensitive substring search.
+  TextColumn get searchText => text()();
+
+  /// Sort order within the whole module and within a category (lower first).
+  IntColumn get orderIndex => integer().withDefault(const Constant(0))();
+
+  /// The full lesson body encoded as a JSON object (explanation, rules,
+  /// examples, notes, tips, commonMistakes, practiceQuestions).
+  TextColumn get contentJson => text()();
+
+  @override
+  Set<Column<Object>> get primaryKey => {id};
+}
+
+/// Per-lesson reading progress (one row per lesson the user has opened).
+///
+/// Rows are created lazily the first time a lesson is opened. [status] mirrors
+/// `GrammarProgressStatus.index` (0 = not started, 1 = in progress,
+/// 2 = completed). [scrollProgress] is the furthest read fraction (0..1) and
+/// drives the "Continue learning" and progress-bar UI.
+@DataClassName('GrammarProgressRow')
+class GrammarProgress extends Table {
+  TextColumn get lessonId => text()();
+  IntColumn get status => integer().withDefault(const Constant(0))();
+  RealColumn get scrollProgress => real().withDefault(const Constant(0))();
+  DateTimeColumn get lastViewedAt => dateTime().nullable()();
+  DateTimeColumn get completedAt => dateTime().nullable()();
+
+  @override
+  Set<Column<Object>> get primaryKey => {lessonId};
+}
+
+/// A user-saved ("favorite") grammar lesson.
+///
+/// Keyed by [lessonId]. A snapshot of the title and category is denormalized
+/// here so the Favorites list renders from a single table (fully reactive and
+/// independent of any lessons re-seed).
+@DataClassName('GrammarFavoriteRow')
+class GrammarFavorites extends Table {
+  TextColumn get lessonId => text()();
+  TextColumn get title => text()();
+  TextColumn get category => text()();
+  DateTimeColumn get createdAt => dateTime()();
+
+  @override
+  Set<Column<Object>> get primaryKey => {lessonId};
+}
+
+/// A node in the Grammar Category → Subcategory → Lesson tree (Phase v0.5.0).
+///
+/// Branch nodes ([isLeaf] = false) group children; leaf nodes carry a full
+/// lesson in [contentJson] (introduction, Urdu/English explanation, types,
+/// rules, examples, common mistakes, practice, quiz, summary). Seeded once from
+/// the bundled tree. [parentId] is null for top-level categories. Progress and
+/// favorites are keyed by a leaf's [id] in the existing grammar tables.
+@DataClassName('GrammarTopicRow')
+class GrammarTopics extends Table {
+  TextColumn get id => text()();
+  TextColumn get parentId => text().nullable()();
+  TextColumn get title => text()();
+  TextColumn get subtitle => text().nullable()();
+  IntColumn get orderIndex => integer().withDefault(const Constant(0))();
+  BoolColumn get isLeaf => boolean().withDefault(const Constant(false))();
+
+  /// Lowercased haystack (leaf title + intro/keywords) for search over lessons.
+  TextColumn get searchText => text().withDefault(const Constant(''))();
+
+  /// Full lesson body as JSON, for leaves only (null for branches).
+  TextColumn get contentJson => text().nullable()();
+
+  @override
+  Set<Column<Object>> get primaryKey => {id};
 }

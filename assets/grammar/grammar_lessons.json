@@ -1,0 +1,1011 @@
+[
+  {
+    "id": "parts-of-speech",
+    "category": "Foundations",
+    "order": 1,
+    "title": "Parts of Speech",
+    "summary": "The eight word classes that form the building blocks of every English sentence.",
+    "keywords": ["noun", "verb", "adjective", "adverb", "pronoun", "preposition", "conjunction", "interjection", "word class", "grammar basics"],
+    "explanation": "Every English word belongs to one of eight parts of speech: nouns, pronouns, verbs, adjectives, adverbs, prepositions, conjunctions, and interjections. Understanding each class helps you analyse sentences, choose the right word form, and spot errors.\n\nNouns name people, places, things, or ideas. Verbs express actions or states. Adjectives describe nouns; adverbs modify verbs, adjectives, or other adverbs. Pronouns replace nouns. Prepositions show relationships. Conjunctions join words or clauses. Interjections express emotion.",
+    "rules": [
+      "Nouns can be common (city) or proper (Paris), concrete (table) or abstract (freedom).",
+      "Verbs must agree with their subject in person and number.",
+      "Adjectives normally precede the noun they modify (a tall building) or follow a linking verb (she is tall).",
+      "Adverbs often end in -ly but not always (fast, well, very).",
+      "Pronouns must agree with their antecedent in number and gender.",
+      "Prepositions are always followed by a noun phrase (object of the preposition).",
+      "Coordinating conjunctions join grammatically equal elements; subordinating conjunctions introduce dependent clauses."
+    ],
+    "examples": [
+      { "text": "The curious child reads every book she finds.", "note": "noun, adjective, noun, verb, adjective, noun, pronoun, verb" },
+      { "text": "He runs quickly.", "note": "pronoun + verb + adverb" },
+      { "text": "Oh! I dropped my keys.", "note": "interjection opening the sentence" },
+      { "text": "She sat beside the river.", "note": "preposition 'beside' + noun phrase" },
+      { "text": "I called, but no one answered.", "note": "coordinating conjunction 'but'" }
+    ],
+    "notes": [
+      "A word's part of speech can change with context: 'light' is a noun in 'turn off the light' but an adjective in 'a light breeze'.",
+      "Some grammar books list determiners (the, a, my) as a ninth category separate from adjectives.",
+      "Interjections are grammatically independent and do not affect sentence structure."
+    ],
+    "tips": [
+      "When you read, pause on unfamiliar words and ask: what job does this word do in the sentence?",
+      "Practise labelling every word in short sentences before moving to longer texts.",
+      "Use a colour-coding system (one colour per part of speech) when studying."
+    ],
+    "commonMistakes": [
+      { "wrong": "She runs fastly.", "right": "She runs fast.", "note": "'fast' is already an adverb; 'fastly' does not exist" },
+      { "wrong": "The informations are ready.", "right": "The information is ready.", "note": "'information' is an uncountable noun" },
+      { "wrong": "He is very taller than me.", "right": "He is much taller than me.", "note": "use 'much' before comparatives, not 'very'" },
+      { "wrong": "Between you and I, it is wrong.", "right": "Between you and me, it is wrong.", "note": "prepositions take object pronouns" }
+    ],
+    "practiceQuestions": [
+      {
+        "question": "Identify the part of speech of the underlined word: 'She sings beautifully.'  (beautifully)",
+        "options": ["Adjective", "Noun", "Adverb", "Verb"],
+        "answerIndex": 2,
+        "explanation": "'Beautifully' modifies the verb 'sings', so it is an adverb."
+      },
+      {
+        "question": "Which sentence uses a conjunction correctly?",
+        "options": ["He left, so he was tired.", "He left because he was tired.", "He left, tired he was.", "He left he was tired."],
+        "answerIndex": 1,
+        "explanation": "'Because' is a subordinating conjunction that correctly introduces the reason clause."
+      },
+      {
+        "question": "What part of speech is the word 'freedom' in 'Freedom is priceless'?",
+        "options": ["Verb", "Abstract noun", "Adjective", "Adverb"],
+        "answerIndex": 1,
+        "explanation": "'Freedom' names an idea, making it an abstract noun."
+      },
+      {
+        "question": "Which word is a preposition in the sentence 'The cat sat under the table'?",
+        "options": ["cat", "sat", "under", "table"],
+        "answerIndex": 2,
+        "explanation": "'Under' shows the relationship between 'cat' and 'table', so it is a preposition."
+      }
+    ]
+  },
+  {
+    "id": "sentence-structure",
+    "category": "Foundations",
+    "order": 2,
+    "title": "Sentence Structure",
+    "summary": "How subject, verb, and object combine to form simple, compound, complex, and compound-complex sentences.",
+    "keywords": ["subject", "predicate", "object", "simple sentence", "compound sentence", "complex sentence", "clause", "sentence types", "syntax"],
+    "explanation": "A sentence is a group of words containing a subject and a predicate that expresses a complete thought. The subject tells who or what the sentence is about; the predicate contains the verb and says something about the subject.\n\nSentences are classified by structure: a simple sentence has one independent clause; a compound sentence joins two or more independent clauses with a coordinating conjunction or semicolon; a complex sentence contains one independent and at least one dependent clause; a compound-complex sentence combines both.",
+    "rules": [
+      "Every complete sentence must have at least one subject and one finite verb.",
+      "A simple sentence contains exactly one independent clause.",
+      "In a compound sentence, use a comma before the coordinating conjunction joining two independent clauses.",
+      "A subordinate clause cannot stand alone as a complete sentence.",
+      "The standard English word order is Subject-Verb-Object (SVO).",
+      "Inverted sentences place the verb before the subject, often in questions or for emphasis.",
+      "A compound-complex sentence has at least two independent clauses and one dependent clause."
+    ],
+    "examples": [
+      { "text": "Dogs bark.", "note": "simple sentence: subject + verb" },
+      { "text": "I cooked dinner, and she washed the dishes.", "note": "compound sentence" },
+      { "text": "Although it rained, we enjoyed the picnic.", "note": "complex sentence: dependent + independent clause" },
+      { "text": "She studies hard, so she passes, even when the tests are difficult.", "note": "compound-complex sentence" },
+      { "text": "Never have I seen such courage.", "note": "inverted sentence for emphasis" }
+    ],
+    "notes": [
+      "A sentence fragment is a group of words that lacks a subject, a verb, or a complete thought.",
+      "A run-on sentence joins two or more independent clauses without proper punctuation.",
+      "The object of a sentence can be direct (receives the action) or indirect (to/for whom the action is done)."
+    ],
+    "tips": [
+      "To check for a complete sentence, ask: does this have a subject, a verb, and a complete thought?",
+      "Vary your sentence types in writing to maintain reader interest.",
+      "Identify the main clause first, then find any subordinate clauses attached to it."
+    ],
+    "commonMistakes": [
+      { "wrong": "Running through the park.", "right": "She was running through the park.", "note": "sentence fragment: no subject or finite verb" },
+      { "wrong": "I went home she cooked dinner.", "right": "I went home, and she cooked dinner.", "note": "run-on sentence: needs conjunction or punctuation" },
+      { "wrong": "Because I was tired.", "right": "I slept early because I was tired.", "note": "dependent clause cannot stand alone" },
+      { "wrong": "She decided to left early.", "right": "She decided to leave early.", "note": "infinitive requires base form of verb" }
+    ],
+    "practiceQuestions": [
+      {
+        "question": "Which sentence is a compound sentence?",
+        "options": ["The dog barked.", "When the alarm rang, I woke up.", "I called her, but she did not answer.", "Running along the beach."],
+        "answerIndex": 2,
+        "explanation": "Two independent clauses ('I called her' and 'she did not answer') are joined by 'but', making it compound."
+      },
+      {
+        "question": "Identify the sentence type: 'Although he studied, he failed the exam.'",
+        "options": ["Simple", "Compound", "Complex", "Compound-complex"],
+        "answerIndex": 2,
+        "explanation": "It has one dependent clause ('Although he studied') and one independent clause, so it is complex."
+      },
+      {
+        "question": "Which of the following is a sentence fragment?",
+        "options": ["She laughed.", "After the meeting ended.", "He drove to work.", "The children played outside."],
+        "answerIndex": 1,
+        "explanation": "'After the meeting ended' is a dependent clause with no independent clause to complete the thought."
+      },
+      {
+        "question": "What is the standard word order in English declarative sentences?",
+        "options": ["Verb-Subject-Object", "Object-Subject-Verb", "Subject-Verb-Object", "Subject-Object-Verb"],
+        "answerIndex": 2,
+        "explanation": "Standard English declarative sentences follow Subject-Verb-Object (SVO) order."
+      }
+    ]
+  },
+  {
+    "id": "phrases",
+    "category": "Foundations",
+    "order": 3,
+    "title": "Phrases",
+    "summary": "Groups of related words that act as a single unit but lack a subject-verb pair.",
+    "keywords": ["noun phrase", "verb phrase", "adjective phrase", "adverb phrase", "prepositional phrase", "participial phrase", "infinitive phrase", "phrase types"],
+    "explanation": "A phrase is a group of words that functions as a single part of speech but does not contain both a subject and a finite verb. Phrases are named after the type of word that heads them or the function they perform.\n\nCommon phrase types include noun phrases (a bright red apple), verb phrases (has been studying), prepositional phrases (in the morning), adjective phrases (very tall), adverb phrases (quite quickly), participial phrases (running down the hill), and infinitive phrases (to win the prize).",
+    "rules": [
+      "A phrase has no subject-verb pair; it cannot stand alone as a sentence.",
+      "A noun phrase acts as a noun (subject, object, or complement).",
+      "A prepositional phrase begins with a preposition and ends with its object.",
+      "A participial phrase begins with a participle (-ing or -ed form) and modifies a noun.",
+      "An infinitive phrase begins with 'to' + base verb and can act as a noun, adjective, or adverb.",
+      "A verb phrase consists of a main verb plus any auxiliaries.",
+      "Dangling or misplaced participial phrases can cause confusion and should be avoided."
+    ],
+    "examples": [
+      { "text": "The tall man in the grey coat smiled.", "note": "'The tall man in the grey coat' is a noun phrase" },
+      { "text": "She has been working all night.", "note": "'has been working' is a verb phrase" },
+      { "text": "He placed the book on the shelf.", "note": "'on the shelf' is a prepositional phrase" },
+      { "text": "Exhausted by the run, he sat down.", "note": "participial phrase modifying 'he'" },
+      { "text": "To win the championship is her goal.", "note": "infinitive phrase as subject" }
+    ],
+    "notes": [
+      "A participial phrase placed far from the noun it modifies creates a dangling modifier error.",
+      "Infinitive phrases can be split (e.g., 'to boldly go'), though some style guides advise against it.",
+      "Absolute phrases (e.g., 'The game over, we left') are a type of phrase that modifies an entire clause."
+    ],
+    "tips": [
+      "Find the head word of a phrase (the main noun or verb) to identify the phrase type quickly.",
+      "Check that participial phrases are placed immediately next to the noun they modify.",
+      "Expand single-word subjects and objects into full noun phrases to enrich your writing."
+    ],
+    "commonMistakes": [
+      { "wrong": "Running down the hill, the flowers looked beautiful.", "right": "Running down the hill, she saw beautiful flowers.", "note": "dangling participial phrase: the flowers were not running" },
+      { "wrong": "She wants to immediately leave.", "right": "She wants to leave immediately.", "note": "split infinitive can be awkward; place adverb after phrase" },
+      { "wrong": "I am interest in music.", "right": "I am interested in music.", "note": "use past participle 'interested' in the adjective phrase" },
+      { "wrong": "He is agree with you.", "right": "He agrees with you.", "note": "'agree' is a verb, not an adjective; do not use 'is' with it" }
+    ],
+    "practiceQuestions": [
+      {
+        "question": "What type of phrase is 'under the old bridge' in 'They found coins under the old bridge'?",
+        "options": ["Noun phrase", "Verb phrase", "Prepositional phrase", "Infinitive phrase"],
+        "answerIndex": 2,
+        "explanation": "The phrase begins with the preposition 'under' and ends with its object 'bridge', making it a prepositional phrase."
+      },
+      {
+        "question": "Which sentence contains a dangling participial phrase?",
+        "options": ["Running late, she called a taxi.", "Barking loudly, the dog scared the visitors.", "Tired from work, the sofa felt comfortable.", "Fixing the roof, he used a new hammer."],
+        "answerIndex": 2,
+        "explanation": "The sofa was not tired from work; the phrase dangles because it does not logically modify the noun it is next to."
+      },
+      {
+        "question": "Identify the infinitive phrase in: 'Her dream is to become a doctor.'",
+        "options": ["Her dream", "is to become", "to become a doctor", "a doctor"],
+        "answerIndex": 2,
+        "explanation": "'To become a doctor' starts with 'to' plus a base verb and functions as a noun (subject complement)."
+      },
+      {
+        "question": "Which of the following is NOT a phrase?",
+        "options": ["in the garden", "very quickly", "although she left", "the old red car"],
+        "answerIndex": 2,
+        "explanation": "'Although she left' contains a subject and a verb, making it a dependent clause, not a phrase."
+      }
+    ]
+  },
+  {
+    "id": "clauses",
+    "category": "Foundations",
+    "order": 4,
+    "title": "Clauses",
+    "summary": "Groups of words with a subject and verb; independent clauses stand alone while dependent ones cannot.",
+    "keywords": ["independent clause", "dependent clause", "subordinate clause", "relative clause", "noun clause", "adverb clause", "clause types", "complex sentence"],
+    "explanation": "A clause is a group of words containing a subject and a finite verb. Independent (main) clauses express a complete thought and can stand alone as a sentence. Dependent (subordinate) clauses have a subject and verb but cannot stand alone because they are introduced by a subordinator.\n\nDependent clauses are classified by their function: noun clauses (act as nouns), adjective/relative clauses (modify nouns), and adverb clauses (modify verbs or entire clauses). Recognising clause types is essential for punctuation and style.",
+    "rules": [
+      "An independent clause can stand alone as a complete sentence.",
+      "A dependent clause must be attached to an independent clause.",
+      "Noun clauses can function as subjects, objects, or complements.",
+      "Relative clauses are introduced by relative pronouns: who, whom, whose, which, or that.",
+      "Restrictive relative clauses are not set off by commas; non-restrictive ones are.",
+      "Adverb clauses are introduced by subordinating conjunctions such as because, although, when, and if.",
+      "Two independent clauses should be joined with a conjunction or semicolon, not just a comma."
+    ],
+    "examples": [
+      { "text": "She left early because she was tired.", "note": "'because she was tired' is an adverb clause" },
+      { "text": "What you said surprised everyone.", "note": "'What you said' is a noun clause acting as subject" },
+      { "text": "The book that she recommended was excellent.", "note": "restrictive relative clause" },
+      { "text": "My sister, who lives in Rome, is a chef.", "note": "non-restrictive relative clause: set off by commas" },
+      { "text": "I know when the train arrives.", "note": "noun clause as object of 'know'" }
+    ],
+    "notes": [
+      "Non-restrictive relative clauses provide extra information and can be removed without changing the core meaning.",
+      "Restrictive relative clauses identify which person or thing is meant and cannot be removed.",
+      "In formal writing, use 'whom' (not 'who') when the pronoun is the object of the relative clause."
+    ],
+    "tips": [
+      "To test if a clause is independent, read it alone. If it sounds complete, it is independent.",
+      "Look for subordinating words (because, although, that, who) to identify dependent clauses.",
+      "Practise combining two simple sentences into a complex sentence to develop clause flexibility."
+    ],
+    "commonMistakes": [
+      { "wrong": "The student who she helped, passed the exam.", "right": "The student who she helped passed the exam.", "note": "no comma needed before a restrictive relative clause" },
+      { "wrong": "He asked where did she go.", "right": "He asked where she went.", "note": "embedded questions use statement word order" },
+      { "wrong": "Although it was raining. We played outside.", "right": "Although it was raining, we played outside.", "note": "dependent clause cannot stand alone" },
+      { "wrong": "The man which called is my uncle.", "right": "The man who called is my uncle.", "note": "use 'who' for people, not 'which'" }
+    ],
+    "practiceQuestions": [
+      {
+        "question": "Which clause is an independent clause?",
+        "options": ["Because he was hungry.", "When the lesson ended.", "She finished her homework.", "Although it was late."],
+        "answerIndex": 2,
+        "explanation": "'She finished her homework' is a complete thought with subject and verb and can stand alone."
+      },
+      {
+        "question": "What type of clause is 'who wrote this letter' in 'Do you know who wrote this letter'?",
+        "options": ["Adverb clause", "Relative clause", "Noun clause", "Independent clause"],
+        "answerIndex": 2,
+        "explanation": "The clause acts as the object of 'know', functioning like a noun, so it is a noun clause."
+      },
+      {
+        "question": "Which sentence correctly punctuates a non-restrictive relative clause?",
+        "options": ["My car which is blue needs repair.", "My car, which is blue, needs repair.", "My car which, is blue needs repair.", "My car which is, blue needs repair."],
+        "answerIndex": 1,
+        "explanation": "Non-restrictive relative clauses are enclosed in commas because they provide extra, non-essential information."
+      },
+      {
+        "question": "Which subordinating conjunction introduces an adverb clause of reason?",
+        "options": ["although", "unless", "because", "whenever"],
+        "answerIndex": 2,
+        "explanation": "'Because' introduces a reason ('He left because he was bored'), making it an adverb clause of reason."
+      }
+    ]
+  },
+  {
+    "id": "articles",
+    "category": "Foundations",
+    "order": 5,
+    "title": "Articles",
+    "summary": "The definite article 'the' and indefinite articles 'a/an' signal whether a noun is specific or general.",
+    "keywords": ["definite article", "indefinite article", "the", "a", "an", "zero article", "countable noun", "uncountable noun", "article use"],
+    "explanation": "Articles are small words placed before nouns to indicate definiteness or indefiniteness. English has three articles: 'a' (indefinite, before consonant sounds), 'an' (indefinite, before vowel sounds), and 'the' (definite). The zero article (no article) is used before plural or uncountable nouns in a general sense.\n\n'A/an' introduces something for the first time or refers to any member of a class. 'The' is used when the speaker and listener both know which specific thing is meant, either from prior mention, shared knowledge, or context.",
+    "rules": [
+      "Use 'a' before words beginning with a consonant sound (a university, a cat).",
+      "Use 'an' before words beginning with a vowel sound (an hour, an apple).",
+      "Use 'the' when the noun has been mentioned before or is uniquely identified.",
+      "Use 'the' with superlatives, ordinal numbers, and unique nouns (the sun, the first, the best).",
+      "Use the zero article with plural countable nouns and uncountable nouns used in a general sense.",
+      "Do not use 'the' before proper nouns like names of people, most countries, cities, or languages.",
+      "Use 'the' with geographical features: oceans, rivers, mountain ranges, and plural country names."
+    ],
+    "examples": [
+      { "text": "I saw a dog in the park.", "note": "'a dog' = first mention; 'the park' = specific, known" },
+      { "text": "An honest man is rare.", "note": "'an' before the vowel sound in 'honest'" },
+      { "text": "The Amazon is the longest river in South America.", "note": "'the' with river names and superlatives" },
+      { "text": "Dogs are loyal animals.", "note": "zero article: general statement about all dogs" },
+      { "text": "She plays the piano beautifully.", "note": "'the' used with musical instruments" }
+    ],
+    "notes": [
+      "The choice of 'a' or 'an' depends on sound, not spelling: 'a university' (yoo-sound) but 'an umbrella' (uh-sound).",
+      "Some nouns can take an article or zero article depending on meaning: 'She is in hospital' (British) vs 'She is in the hospital' (American).",
+      "Proper nouns that are pluralised or modified often take 'the': 'the United States', 'the Netherlands'."
+    ],
+    "tips": [
+      "When in doubt about 'a' or 'an', say the phrase aloud: use 'an' if the next word starts with a vowel sound.",
+      "Ask two questions: Is it specific? (the) Is it being mentioned for the first time or in a general sense? (a/an or zero article).",
+      "Keep a list of fixed expressions that always use a particular article (e.g., in the morning, at night, by car)."
+    ],
+    "commonMistakes": [
+      { "wrong": "She is a honest person.", "right": "She is an honest person.", "note": "'honest' begins with a vowel sound /ɒ/, so use 'an'" },
+      { "wrong": "The life is short.", "right": "Life is short.", "note": "zero article for abstract nouns used in a general sense" },
+      { "wrong": "I play a guitar.", "right": "I play the guitar.", "note": "use 'the' with musical instruments in a general sense" },
+      { "wrong": "He is the best student in a class.", "right": "He is the best student in the class.", "note": "'the class' is specific; use 'the'" }
+    ],
+    "practiceQuestions": [
+      {
+        "question": "Choose the correct article: '___ European country I visited most was France.'",
+        "options": ["A", "An", "The", "No article"],
+        "answerIndex": 2,
+        "explanation": "'The' is used because a specific European country (the one visited most) is being identified."
+      },
+      {
+        "question": "Which sentence uses the zero article correctly?",
+        "options": ["The gold is valuable.", "A gold is valuable.", "Gold is valuable.", "An gold is valuable."],
+        "answerIndex": 2,
+        "explanation": "Uncountable nouns like 'gold' used in a general sense take no article."
+      },
+      {
+        "question": "Select the correct form: 'She wants to become ___ engineer.'",
+        "options": ["the", "an", "a", "no article"],
+        "answerIndex": 1,
+        "explanation": "'Engineer' begins with the vowel sound /ɛ/, so the indefinite article 'an' is required."
+      },
+      {
+        "question": "Which sentence correctly uses 'the' with a proper noun?",
+        "options": ["She visited the France.", "He swam in the Atlantic Ocean.", "They live in the London.", "I speak the Spanish."],
+        "answerIndex": 1,
+        "explanation": "'The' is correctly used with ocean names (the Atlantic Ocean); it is not used with country, city, or language names."
+      }
+    ]
+  },
+  {
+    "id": "tenses",
+    "category": "Verbs & Tenses",
+    "order": 6,
+    "title": "Tenses",
+    "summary": "Verb tenses locate actions in time across past, present, and future, each with simple, continuous, perfect, and perfect continuous forms.",
+    "keywords": ["present tense", "past tense", "future tense", "simple", "continuous", "perfect", "perfect continuous", "verb tense", "time"],
+    "explanation": "English has three primary time frames (past, present, future) each with four aspects (simple, continuous, perfect, perfect continuous), yielding twelve main tenses. The simple aspect presents facts or completed actions. The continuous aspect shows ongoing actions. The perfect aspect links an earlier event to a later time. The perfect continuous combines duration with a link to another time point.\n\nChoosing the correct tense requires identifying when the action happens, whether it is complete or ongoing, and whether it is relevant to another point in time.",
+    "rules": [
+      "Use simple present for habits, facts, and scheduled future events.",
+      "Use present continuous for actions happening now or temporary situations.",
+      "Use simple past for completed actions at a definite past time.",
+      "Use past continuous for an ongoing past action interrupted by another event.",
+      "Use present perfect for actions with present relevance or that started in the past and continue.",
+      "Use past perfect for an action completed before another past action.",
+      "Use simple future (will + base verb) for predictions and spontaneous decisions.",
+      "Use future continuous for an ongoing action at a specific future time."
+    ],
+    "examples": [
+      { "text": "She writes a report every Monday.", "note": "simple present: habit" },
+      { "text": "They are watching a film right now.", "note": "present continuous: action in progress" },
+      { "text": "He had left before I arrived.", "note": "past perfect: earlier of two past events" },
+      { "text": "I have lived here for ten years.", "note": "present perfect: started in past, still true" },
+      { "text": "By 9 p.m., she will have finished cooking.", "note": "future perfect: completed before a future point" }
+    ],
+    "notes": [
+      "Stative verbs (know, believe, own, prefer) do not normally appear in continuous tenses.",
+      "The present tense often expresses scheduled future events: 'The train leaves at 6 a.m.'",
+      "Time expressions help select the correct tense: 'yesterday' (past), 'already' (perfect), 'right now' (continuous)."
+    ],
+    "tips": [
+      "Draw a timeline and mark the events to visualise which tense to use.",
+      "Learn time-signal words that pair with each tense (e.g., 'since/for' with perfect, 'while' with continuous).",
+      "Practise minimal pairs: 'I did it' (simple past) vs 'I have done it' (present perfect) and study the difference."
+    ],
+    "commonMistakes": [
+      { "wrong": "I am knowing the answer.", "right": "I know the answer.", "note": "'know' is stative; do not use continuous aspect" },
+      { "wrong": "She has gone to school yesterday.", "right": "She went to school yesterday.", "note": "definite past time 'yesterday' requires simple past, not present perfect" },
+      { "wrong": "When I will arrive, I will call you.", "right": "When I arrive, I will call you.", "note": "time clauses with 'when' use present tense, not future" },
+      { "wrong": "He is always losing his keys.", "right": "He always loses his keys.", "note": "simple present for habitual actions; continuous implies criticism but is informal" }
+    ],
+    "practiceQuestions": [
+      {
+        "question": "Which tense is used in 'By the time you read this, I will have left'?",
+        "options": ["Future simple", "Future continuous", "Future perfect", "Present perfect"],
+        "answerIndex": 2,
+        "explanation": "'Will have left' is future perfect, indicating an action completed before a specific future point."
+      },
+      {
+        "question": "Choose the correct tense: 'She ___ (work) here since 2018.'",
+        "options": ["works", "worked", "has worked", "is working"],
+        "answerIndex": 2,
+        "explanation": "'Since 2018' signals an action that started in the past and continues now, requiring present perfect."
+      },
+      {
+        "question": "Which sentence uses the past continuous correctly?",
+        "options": ["I was sleeping when he called.", "I was sleeping yesterday.", "I was sleep when he called.", "I sleeping when he called."],
+        "answerIndex": 0,
+        "explanation": "Past continuous 'was sleeping' correctly shows an ongoing action interrupted by 'called'."
+      },
+      {
+        "question": "Which verb is stative and should NOT be used in the continuous form?",
+        "options": ["run", "believe", "cook", "travel"],
+        "answerIndex": 1,
+        "explanation": "'Believe' is a stative verb expressing a mental state; it does not normally appear in continuous tenses."
+      }
+    ]
+  },
+  {
+    "id": "subject-verb-agreement",
+    "category": "Verbs & Tenses",
+    "order": 7,
+    "title": "Subject–Verb Agreement",
+    "summary": "The verb must match its subject in number and person, even when other words separate them.",
+    "keywords": ["subject-verb agreement", "singular verb", "plural verb", "collective noun", "indefinite pronoun", "compound subject", "agreement rule"],
+    "explanation": "Subject-verb agreement means the verb form must match the number (singular or plural) and person (first, second, third) of its subject. This is straightforward in most sentences, but becomes tricky when phrases, clauses, or special noun types intervene between subject and verb.\n\nKey trouble spots include collective nouns (team, committee), indefinite pronouns (everyone, each, neither), compound subjects joined by 'or/nor', and subjects that look plural but are grammatically singular (e.g., news, mathematics).",
+    "rules": [
+      "A singular subject takes a singular verb; a plural subject takes a plural verb.",
+      "Phrases between the subject and verb do not change the subject's number.",
+      "Compound subjects joined by 'and' normally take a plural verb.",
+      "When subjects are joined by 'or' or 'nor', the verb agrees with the nearer subject.",
+      "Indefinite pronouns like everyone, each, and neither take a singular verb.",
+      "Collective nouns (team, jury, family) take a singular verb when acting as a unit, plural when individual members are emphasised.",
+      "Nouns that end in -s but refer to a single item (news, mathematics, economics) take a singular verb."
+    ],
+    "examples": [
+      { "text": "The box of chocolates is on the table.", "note": "subject is 'box', not 'chocolates'" },
+      { "text": "Neither the students nor the teacher knows the answer.", "note": "'nor' rule: verb agrees with 'teacher' (nearer)" },
+      { "text": "Everyone is invited to the party.", "note": "'Everyone' is singular" },
+      { "text": "The committee has made its decision.", "note": "collective noun as unit: singular verb" },
+      { "text": "Mathematics is my favourite subject.", "note": "singular despite ending in -s" }
+    ],
+    "notes": [
+      "In inverted sentences, the verb still agrees with the subject, not the preceding noun: 'There are many options.'",
+      "Relative pronouns (who, which, that) take a verb that agrees with the antecedent: 'It is I who am responsible.'",
+      "Expressions like 'a number of' take a plural verb; 'the number of' takes a singular verb."
+    ],
+    "tips": [
+      "Mentally block out any prepositional phrase between subject and verb to find the true subject.",
+      "Memorise the list of always-singular indefinite pronouns: each, every, either, neither, one, everyone, someone, anyone, no one.",
+      "Read the sentence aloud; a mismatch often sounds wrong even before you analyse it."
+    ],
+    "commonMistakes": [
+      { "wrong": "The team are playing well today.", "right": "The team is playing well today.", "note": "in American English, collective nouns take singular verbs when acting as a unit" },
+      { "wrong": "Each of the students have a book.", "right": "Each of the students has a book.", "note": "'each' is singular" },
+      { "wrong": "Either the manager or the employees is responsible.", "right": "Either the manager or the employees are responsible.", "note": "verb agrees with the nearer subject 'employees'" },
+      { "wrong": "There was many people at the event.", "right": "There were many people at the event.", "note": "verb agrees with the real subject 'people', which is plural" }
+    ],
+    "practiceQuestions": [
+      {
+        "question": "Choose the correct verb: 'The quality of her essays ___ improved greatly.'",
+        "options": ["have", "has", "are", "were"],
+        "answerIndex": 1,
+        "explanation": "The subject is 'quality' (singular), not 'essays'; the verb 'has' is correct."
+      },
+      {
+        "question": "Which sentence is correct?",
+        "options": ["Neither he nor she are ready.", "Neither he nor she is ready.", "Neither he nor she were ready.", "Neither he nor she am ready."],
+        "answerIndex": 1,
+        "explanation": "With 'nor', the verb agrees with the nearer subject 'she' (third person singular), so 'is' is correct."
+      },
+      {
+        "question": "Select the correct form: 'News ___ fast in a connected world.'",
+        "options": ["travel", "travels", "are travelling", "have travelled"],
+        "answerIndex": 1,
+        "explanation": "'News' ends in -s but is a singular noun, requiring the singular verb 'travels'."
+      },
+      {
+        "question": "Which indefinite pronoun always takes a singular verb?",
+        "options": ["both", "several", "few", "each"],
+        "answerIndex": 3,
+        "explanation": "'Each' is always singular: 'Each of the players has a role.'"
+      }
+    ]
+  },
+  {
+    "id": "modals",
+    "category": "Verbs & Tenses",
+    "order": 8,
+    "title": "Modals",
+    "summary": "Modal auxiliary verbs like can, must, and should express ability, permission, obligation, and possibility.",
+    "keywords": ["modal verb", "can", "could", "may", "might", "must", "should", "will", "would", "permission"],
+    "explanation": "Modal auxiliary verbs are a special class of helping verbs that express meanings such as ability (can, could), permission (may, might), obligation (must, should), possibility (may, might, could), and prediction (will, shall, would). Modals never change form for person or number and are always followed by the base form of the main verb.\n\nPerfect modals (modal + have + past participle) refer to past situations: 'She must have left early' expresses a logical deduction about the past.",
+    "rules": [
+      "Modals are always followed by the bare infinitive (base form), never 'to' or an inflected form.",
+      "Modals do not take -s in the third person singular (he can, not he cans).",
+      "Use 'can' for present ability; 'could' for past ability or polite requests.",
+      "Use 'may' or 'might' for possibility; 'might' implies lower probability.",
+      "Use 'must' for strong obligation or logical deduction; 'have to' for external obligation.",
+      "Use 'should' for advice or mild obligation; 'ought to' is a near-synonym.",
+      "Perfect modals (should have, could have, must have) refer to past situations."
+    ],
+    "examples": [
+      { "text": "She can speak three languages.", "note": "ability" },
+      { "text": "You must submit the form by Friday.", "note": "strong obligation" },
+      { "text": "It might rain this afternoon.", "note": "possibility" },
+      { "text": "You should see a doctor.", "note": "advice" },
+      { "text": "He must have forgotten the meeting.", "note": "logical deduction about the past" },
+      { "text": "Could you open the window, please?", "note": "polite request" }
+    ],
+    "notes": [
+      "'Must not' means prohibition; 'do not have to' means lack of obligation - they are not interchangeable.",
+      "'Will' expresses prediction or a definite future; 'would' is its past equivalent or used in conditionals.",
+      "Semi-modals (need to, have to, be able to) behave partly like modals but follow regular verb rules."
+    ],
+    "tips": [
+      "Group modals by meaning (ability, permission, obligation, possibility) and learn them in clusters.",
+      "Practise the difference between 'must not' (forbidden) and 'do not have to' (not required).",
+      "For past reference, practise perfect modal forms: could have, should have, might have."
+    ],
+    "commonMistakes": [
+      { "wrong": "She cans drive.", "right": "She can drive.", "note": "modals do not take -s in any person" },
+      { "wrong": "You must to leave now.", "right": "You must leave now.", "note": "modal + bare infinitive; no 'to'" },
+      { "wrong": "You don't must park here.", "right": "You must not park here.", "note": "prohibition uses 'must not', not 'don't must'" },
+      { "wrong": "He should has called earlier.", "right": "He should have called earlier.", "note": "perfect modal: should + have + past participle" }
+    ],
+    "practiceQuestions": [
+      {
+        "question": "Which sentence expresses a logical deduction about the past?",
+        "options": ["She must leave early.", "She must have left early.", "She should leave early.", "She could leave early."],
+        "answerIndex": 1,
+        "explanation": "'Must have left' is a perfect modal expressing a strong logical deduction about a past event."
+      },
+      {
+        "question": "Choose the correct sentence:",
+        "options": ["You don't have to smoke here.", "You must not smoke here.", "You need not to smoke here.", "You cannot must smoke here."],
+        "answerIndex": 1,
+        "explanation": "'Must not' expresses prohibition; the sign means smoking is forbidden."
+      },
+      {
+        "question": "Which sentence uses a modal correctly?",
+        "options": ["He cans swim well.", "He can to swim well.", "He can swim well.", "He can swimming well."],
+        "answerIndex": 2,
+        "explanation": "The correct form is modal + bare infinitive: 'can swim'."
+      },
+      {
+        "question": "What does 'might' indicate compared to 'may'?",
+        "options": ["Greater certainty", "Lower probability", "Strong obligation", "Past ability"],
+        "answerIndex": 1,
+        "explanation": "'Might' suggests lower probability than 'may': 'It might rain' is less certain than 'It may rain'."
+      }
+    ]
+  },
+  {
+    "id": "active-passive-voice",
+    "category": "Verbs & Tenses",
+    "order": 9,
+    "title": "Active & Passive Voice",
+    "summary": "Active voice highlights the doer of an action; passive voice foregrounds the receiver or omits the doer.",
+    "keywords": ["active voice", "passive voice", "agent", "by phrase", "transitive verb", "passive construction", "voice transformation"],
+    "explanation": "In active voice, the subject performs the action: 'The chef prepared the meal.' In passive voice, the subject receives the action: 'The meal was prepared by the chef.' Passive voice is formed with a form of 'be' plus the past participle of the main verb.\n\nPassive voice is preferred when the doer is unknown, unimportant, or deliberately omitted, when the receiver is more important, or in formal and scientific writing. However, active voice is generally clearer and more direct.",
+    "rules": [
+      "Active: Subject + Verb + Object. Passive: Object (as subject) + be + past participle + (by + agent).",
+      "Only transitive verbs (verbs that take an object) can be made passive.",
+      "The 'by' phrase naming the agent is optional in passive sentences.",
+      "The tense of 'be' in the passive mirrors the tense of the original active verb.",
+      "Modal passives use: modal + be + past participle (e.g., 'The report must be submitted').",
+      "Avoid overusing passive voice; active voice is usually clearer.",
+      "The passive is appropriate in scientific writing, news reports, and when the agent is unknown."
+    ],
+    "examples": [
+      { "text": "Active: The committee approved the proposal.", "note": "subject performs the action" },
+      { "text": "Passive: The proposal was approved by the committee.", "note": "receiver becomes subject; agent in by-phrase" },
+      { "text": "The thief was arrested last night.", "note": "agent omitted: unknown or unimportant" },
+      { "text": "The bridge is being repaired.", "note": "present continuous passive" },
+      { "text": "The form must be completed in ink.", "note": "modal passive" }
+    ],
+    "notes": [
+      "Intransitive verbs (arrive, sleep, die) cannot be made passive because they have no object.",
+      "In a passive sentence with two objects, either can become the subject: 'She was given a prize' or 'A prize was given to her'.",
+      "The passive does not always include a 'by' phrase; its absence does not make the sentence wrong."
+    ],
+    "tips": [
+      "To form the passive, find the object in the active sentence and make it the subject.",
+      "Check the tense of 'be': 'was approved' (past), 'is approved' (present), 'will be approved' (future).",
+      "Prefer active voice in most writing; switch to passive only when it genuinely improves clarity or emphasis."
+    ],
+    "commonMistakes": [
+      { "wrong": "The letter was wrote by her.", "right": "The letter was written by her.", "note": "passive requires past participle, not simple past" },
+      { "wrong": "They were arrived late.", "right": "They arrived late.", "note": "'arrive' is intransitive and cannot be passive" },
+      { "wrong": "The cake is baked by she.", "right": "The cake is baked by her.", "note": "by-phrase requires object pronoun" },
+      { "wrong": "The report has been wrote.", "right": "The report has been written.", "note": "use the past participle 'written', not 'wrote'" }
+    ],
+    "practiceQuestions": [
+      {
+        "question": "Convert to passive: 'Scientists discovered a new planet.'",
+        "options": ["A new planet discovered by scientists.", "A new planet was discovered by scientists.", "A new planet is discovered by scientists.", "A new planet was discover by scientists."],
+        "answerIndex": 1,
+        "explanation": "Simple past passive: 'was discovered'; the agent 'scientists' follows 'by'."
+      },
+      {
+        "question": "Which sentence is in the passive voice?",
+        "options": ["She baked a cake.", "The cake was baked by her.", "She has been baking a cake.", "She is baking a cake."],
+        "answerIndex": 1,
+        "explanation": "'Was baked' is the passive form (be + past participle); the receiver 'cake' is the subject."
+      },
+      {
+        "question": "Which verb CANNOT be made passive?",
+        "options": ["write", "build", "arrive", "approve"],
+        "answerIndex": 2,
+        "explanation": "'Arrive' is intransitive and has no object, so it cannot form a passive sentence."
+      },
+      {
+        "question": "Identify the passive voice: 'The meeting will be held on Monday.'",
+        "options": ["It is active voice.", "It is passive voice.", "It is neither active nor passive.", "It is an infinitive."],
+        "answerIndex": 1,
+        "explanation": "'Will be held' is a future passive construction (will + be + past participle)."
+      }
+    ]
+  },
+  {
+    "id": "conditional-sentences",
+    "category": "Verbs & Tenses",
+    "order": 10,
+    "title": "Conditional Sentences",
+    "summary": "Conditional sentences use 'if' clauses to express real, hypothetical, and impossible conditions across four main types.",
+    "keywords": ["conditional", "if clause", "zero conditional", "first conditional", "second conditional", "third conditional", "hypothetical", "mixed conditional"],
+    "explanation": "Conditional sentences describe a relationship between a condition and its result. The 'if' clause (protasis) states the condition; the main clause (apodosis) states the result. There are four standard types, each using different tense combinations.\n\nZero conditional: general truths. First conditional: real or likely future events. Second conditional: unreal or unlikely present/future events. Third conditional: impossible past situations. Mixed conditionals blend time frames (past condition with present result, or present condition with past result).",
+    "rules": [
+      "Zero conditional: if + present simple, present simple (general truths).",
+      "First conditional: if + present simple, will + base verb (real future possibility).",
+      "Second conditional: if + past simple, would + base verb (unreal present/future).",
+      "Third conditional: if + past perfect, would have + past participle (unreal past).",
+      "Do not use 'will' in the 'if' clause of first conditionals (except for requests or emphasis).",
+      "The if-clause and main clause can appear in either order; use a comma when the if-clause comes first.",
+      "Use 'were' instead of 'was' after 'if' in formal second conditionals for all subjects."
+    ],
+    "examples": [
+      { "text": "If you heat ice, it melts.", "note": "zero conditional: scientific fact" },
+      { "text": "If she studies hard, she will pass.", "note": "first conditional: real future possibility" },
+      { "text": "If I had more time, I would travel more.", "note": "second conditional: unreal present" },
+      { "text": "If they had left earlier, they would have caught the train.", "note": "third conditional: impossible past" },
+      { "text": "If I were you, I would apologise.", "note": "second conditional with formal 'were'" }
+    ],
+    "notes": [
+      "Mixed conditionals combine time frames: 'If she had studied (past), she would be a doctor now (present).'",
+      "'Unless' means 'if not' and can replace the if-clause: 'Unless you hurry, you will be late.'",
+      "Conditional sentences can use other modal verbs instead of 'will/would': 'If you need help, you can call me.'"
+    ],
+    "tips": [
+      "Memorise the tense pattern for each conditional type and practise transforming sentences.",
+      "Use keywords: 'will' signals first conditional, 'would' signals second or third.",
+      "Practise third conditionals by reflecting on past regrets: 'If I had prepared, I would have done better.'"
+    ],
+    "commonMistakes": [
+      { "wrong": "If she will come, I will tell her.", "right": "If she comes, I will tell her.", "note": "no 'will' in the if-clause of a first conditional" },
+      { "wrong": "If I would have money, I would travel.", "right": "If I had money, I would travel.", "note": "second conditional uses past simple in the if-clause, not 'would'" },
+      { "wrong": "If he would have studied, he passed.", "right": "If he had studied, he would have passed.", "note": "third conditional: if + past perfect, would have + past participle" },
+      { "wrong": "Unless you don't hurry, you'll miss the bus.", "right": "Unless you hurry, you'll miss the bus.", "note": "'unless' already means 'if not'; do not add another negative" }
+    ],
+    "practiceQuestions": [
+      {
+        "question": "Which conditional is used in 'If she had called, I would have answered'?",
+        "options": ["Zero conditional", "First conditional", "Second conditional", "Third conditional"],
+        "answerIndex": 3,
+        "explanation": "Past perfect in the if-clause and 'would have + past participle' in the main clause identify the third conditional."
+      },
+      {
+        "question": "Choose the correct completion: 'If it rains tomorrow, we ___ the picnic.'",
+        "options": ["cancel", "cancelled", "will cancel", "would cancel"],
+        "answerIndex": 2,
+        "explanation": "First conditional (real future): if + present simple, will + base verb; so 'will cancel'."
+      },
+      {
+        "question": "Which sentence is a correct second conditional?",
+        "options": ["If I am rich, I will travel.", "If I were rich, I would travel.", "If I was rich, I will travel.", "If I would be rich, I travel."],
+        "answerIndex": 1,
+        "explanation": "Second conditional: if + past simple (were), would + base verb; 'If I were rich, I would travel' is correct."
+      },
+      {
+        "question": "What does a zero conditional express?",
+        "options": ["An unlikely future event", "A general truth or fact", "An impossible past situation", "A polite request"],
+        "answerIndex": 1,
+        "explanation": "Zero conditionals describe general truths: 'If you freeze water, it becomes ice.'"
+      }
+    ]
+  },
+  {
+    "id": "direct-indirect-speech",
+    "category": "Speech & Connectors",
+    "order": 11,
+    "title": "Direct & Indirect Speech",
+    "summary": "Direct speech quotes exact words; indirect speech reports meaning with changes to tense, pronouns, and time expressions.",
+    "keywords": ["direct speech", "indirect speech", "reported speech", "backshift", "say", "tell", "reporting verb", "quotation", "tense change"],
+    "explanation": "Direct speech reproduces the exact words of a speaker, enclosed in quotation marks. Indirect (reported) speech conveys the meaning of the original utterance without quoting it word for word, usually introduced by a reporting verb such as say or tell.\n\nWhen shifting from direct to indirect speech, the tense usually moves one step back (backshifts), pronouns change to reflect the new speaker, and time and place expressions adapt. Questions and commands have their own reporting structures.",
+    "rules": [
+      "Use say (or said) when no listener is specified; use tell (or told) when a listener is named.",
+      "In indirect speech, tenses typically backshift one step: present to past, past to past perfect.",
+      "Pronouns in direct speech change to reflect the reporting context.",
+      "Time expressions change: now -> then, today -> that day, tomorrow -> the next day, yesterday -> the day before.",
+      "Yes/no questions become indirect questions with 'if' or 'whether'.",
+      "Wh-questions become indirect questions with statement word order (no inversion).",
+      "Commands are reported with 'tell/ask/order + object + to + infinitive'."
+    ],
+    "examples": [
+      { "text": "Direct: 'I am tired,' she said.", "note": "exact words in quotes" },
+      { "text": "Indirect: She said (that) she was tired.", "note": "present 'am' backshifts to past 'was'" },
+      { "text": "Direct: 'Will you help me?' he asked.", "note": "direct yes/no question" },
+      { "text": "Indirect: He asked if she would help him.", "note": "yes/no question with 'if'; statement order" },
+      { "text": "Direct: 'Open the window,' she said.", "note": "command in direct speech" },
+      { "text": "Indirect: She told him to open the window.", "note": "command reported with to-infinitive" }
+    ],
+    "notes": [
+      "Backshift is not mandatory when reporting something still true: 'She said she lives in Paris' is acceptable if she still does.",
+      "Modal backshifts: will -> would, can -> could, may -> might, must -> had to.",
+      "If the reporting verb is in the present (says, tells), no tense change is required."
+    ],
+    "tips": [
+      "Memorise the standard tense backshift table and practise with short dialogues.",
+      "Change time and place expressions systematically: here -> there, this -> that, now -> then.",
+      "For reported questions, remember: no auxiliary inversion, no question mark."
+    ],
+    "commonMistakes": [
+      { "wrong": "She said me she was tired.", "right": "She told me she was tired.", "note": "'tell' requires a named listener; 'say' does not take an object" },
+      { "wrong": "He asked where did she live.", "right": "He asked where she lived.", "note": "indirect questions use statement order: no inversion" },
+      { "wrong": "She said that she will come tomorrow.", "right": "She said that she would come the next day.", "note": "backshift 'will' to 'would'; change 'tomorrow' to 'the next day'" },
+      { "wrong": "He told to leave immediately.", "right": "He told them to leave immediately.", "note": "'tell' must have a named object before the infinitive" }
+    ],
+    "practiceQuestions": [
+      {
+        "question": "Convert to indirect speech: 'I will call you,' he said.",
+        "options": ["He said he will call me.", "He said he would call me.", "He said I will call you.", "He told he would call me."],
+        "answerIndex": 1,
+        "explanation": "'Will' backshifts to 'would', and the pronoun 'you' changes to 'me' in the reporting context."
+      },
+      {
+        "question": "Which sentence correctly reports a yes/no question?",
+        "options": ["She asked if does he know.", "She asked if he knows.", "She asked whether he knew.", "She asked did he know."],
+        "answerIndex": 2,
+        "explanation": "'Whether he knew' uses statement order and backshifted tense, correctly reporting a yes/no question."
+      },
+      {
+        "question": "Choose the correct reporting verb: 'Please sit down,' the teacher said ___ the students.",
+        "options": ["said", "told", "spoke", "talked"],
+        "answerIndex": 1,
+        "explanation": "'Tell' (told) is used with a named recipient; the teacher told the students to sit down."
+      },
+      {
+        "question": "Which time expression is correctly changed for indirect speech?",
+        "options": ["now -> here", "today -> this day", "yesterday -> the day before", "tomorrow -> next day"],
+        "answerIndex": 2,
+        "explanation": "'Yesterday' in direct speech becomes 'the day before' (or 'the previous day') in indirect speech."
+      }
+    ]
+  },
+  {
+    "id": "prepositions",
+    "category": "Speech & Connectors",
+    "order": 12,
+    "title": "Prepositions",
+    "summary": "Prepositions link nouns, pronouns, or phrases to other words to show time, place, direction, or relationship.",
+    "keywords": ["preposition", "at", "in", "on", "for", "with", "by", "time preposition", "place preposition", "prepositional phrase"],
+    "explanation": "A preposition is a word (or group of words) that relates a noun or pronoun to another word in the sentence. Prepositions express relationships of time (at noon, in June), place (in the room, on the table, at the door), direction (to, toward, into), manner (by bus, with care), and many other semantic roles.\n\nPrepositions always take an object (a noun, pronoun, or noun phrase), forming a prepositional phrase. Many prepositions are idiomatic, meaning learners must memorise which preposition collocates with which noun, verb, or adjective.",
+    "rules": [
+      "Use 'at' for specific times (at 3 p.m.), specific places/points (at the door, at school), and events.",
+      "Use 'in' for enclosed spaces (in the room), months, years, seasons, and longer periods.",
+      "Use 'on' for surfaces (on the table), days, and dates.",
+      "Prepositions must be followed by an object; the object is a noun, pronoun, or noun phrase.",
+      "Never place a preposition before a relative pronoun in restrictive clauses in informal style; in formal style, fronting is acceptable.",
+      "Some adjectives and verbs require fixed prepositions (interested in, afraid of, listen to, depend on).",
+      "Compound prepositions consist of more than one word: in front of, because of, in spite of."
+    ],
+    "examples": [
+      { "text": "She arrived at noon.", "note": "'at' for a specific time" },
+      { "text": "He lives in a small apartment in Paris.", "note": "'in' for enclosed space and city" },
+      { "text": "The book is on the shelf.", "note": "'on' for a surface" },
+      { "text": "She is interested in art history.", "note": "fixed adjective + preposition collocation" },
+      { "text": "He drove toward the mountains.", "note": "'toward' showing direction" }
+    ],
+    "notes": [
+      "Phrasal verbs combine a verb with a preposition or particle; the meaning is often idiomatic (give up, look after).",
+      "In formal writing, avoid ending a sentence with a preposition where possible, although it is grammatically acceptable.",
+      "Some verbs change meaning depending on the preposition: 'look at' (observe), 'look after' (care for), 'look for' (search)."
+    ],
+    "tips": [
+      "Learn prepositions in set phrases and collocations rather than in isolation.",
+      "Use the AT-IN-ON framework for time: at (specific point), in (period), on (day/date).",
+      "Keep a vocabulary notebook of adjective + preposition combinations (good at, aware of, responsible for)."
+    ],
+    "commonMistakes": [
+      { "wrong": "She is good in maths.", "right": "She is good at maths.", "note": "fixed collocation: good at (a subject/skill)" },
+      { "wrong": "He arrived to school late.", "right": "He arrived at school late.", "note": "use 'at' for arrival at a specific place, not 'to'" },
+      { "wrong": "I will see you in Monday.", "right": "I will see you on Monday.", "note": "use 'on' for days of the week" },
+      { "wrong": "She is married with a doctor.", "right": "She is married to a doctor.", "note": "fixed collocation: married to, not married with" }
+    ],
+    "practiceQuestions": [
+      {
+        "question": "Choose the correct preposition: 'The train leaves ___ 8 a.m.'",
+        "options": ["in", "on", "at", "by"],
+        "answerIndex": 2,
+        "explanation": "'At' is used with specific clock times."
+      },
+      {
+        "question": "Which sentence uses a preposition correctly?",
+        "options": ["She is afraid from spiders.", "She is afraid of spiders.", "She is afraid with spiders.", "She is afraid by spiders."],
+        "answerIndex": 1,
+        "explanation": "The fixed collocation is 'afraid of'; prepositions after adjectives must be memorised."
+      },
+      {
+        "question": "Fill in the blank: 'I was born ___ July 1995.'",
+        "options": ["at", "on", "in", "by"],
+        "answerIndex": 2,
+        "explanation": "'In' is used with months and years when no specific date is given."
+      },
+      {
+        "question": "Which of the following is a compound preposition?",
+        "options": ["in", "at", "in front of", "under"],
+        "answerIndex": 2,
+        "explanation": "'In front of' is a compound preposition consisting of three words."
+      }
+    ]
+  },
+  {
+    "id": "conjunctions",
+    "category": "Speech & Connectors",
+    "order": 13,
+    "title": "Conjunctions",
+    "summary": "Conjunctions join words, phrases, or clauses and signal logical relationships such as contrast, addition, and cause.",
+    "keywords": ["conjunction", "coordinating conjunction", "subordinating conjunction", "correlative conjunction", "FANBOYS", "although", "because", "however", "connecting words"],
+    "explanation": "Conjunctions are linking words that connect words, phrases, or clauses. Coordinating conjunctions (for, and, nor, but, or, yet, so - FANBOYS) join grammatically equal elements. Subordinating conjunctions (because, although, if, since, while, unless) introduce dependent clauses. Correlative conjunctions work in pairs (either/or, neither/nor, not only/but also, both/and).\n\nConjunctive adverbs (however, therefore, moreover, consequently) connect independent clauses but are not true conjunctions; they require a semicolon or period before them.",
+    "rules": [
+      "Coordinating conjunctions join elements of equal grammatical rank.",
+      "Use a comma before a coordinating conjunction when joining two independent clauses.",
+      "Subordinating conjunctions introduce dependent clauses and show cause, contrast, time, or condition.",
+      "Correlative conjunctions must be paired correctly: either...or, neither...nor, both...and.",
+      "With correlative conjunctions, the verb agrees with the subject closer to it.",
+      "Conjunctive adverbs (however, therefore) must be preceded by a semicolon or a new sentence, not just a comma.",
+      "Do not begin a formal sentence with a coordinating conjunction according to strict style guides, though it is accepted in informal writing."
+    ],
+    "examples": [
+      { "text": "She studied hard, so she passed the exam.", "note": "coordinating conjunction 'so' showing result" },
+      { "text": "Although it was cold, they went swimming.", "note": "subordinating conjunction showing contrast" },
+      { "text": "Neither the manager nor the staff was informed.", "note": "correlative conjunction; verb agrees with 'staff'" },
+      { "text": "She is talented; moreover, she works hard.", "note": "conjunctive adverb with semicolon" },
+      { "text": "Not only did she win, but she also broke the record.", "note": "correlative conjunction for emphasis" }
+    ],
+    "notes": [
+      "Using a comma alone to join two independent clauses (comma splice) is a punctuation error.",
+      "While 'but' and 'however' both signal contrast, they belong to different grammatical classes and require different punctuation.",
+      "Subordinating conjunctions can appear at the start of a sentence; coordinating ones typically do not."
+    ],
+    "tips": [
+      "Memorise FANBOYS (For, And, Nor, But, Or, Yet, So) for the seven coordinating conjunctions.",
+      "When using conjunctive adverbs like 'however', always use a semicolon or start a new sentence.",
+      "Practise pairing correlative conjunctions correctly to avoid grammatical errors."
+    ],
+    "commonMistakes": [
+      { "wrong": "I was tired, however I kept working.", "right": "I was tired; however, I kept working.", "note": "'however' is a conjunctive adverb; needs semicolon, not a comma alone" },
+      { "wrong": "Neither she nor he are coming.", "right": "Neither she nor he is coming.", "note": "verb agrees with the nearer subject 'he' (singular)" },
+      { "wrong": "She is both clever also beautiful.", "right": "She is both clever and beautiful.", "note": "correlative: 'both...and', not 'both...also'" },
+      { "wrong": "I like both cats. And dogs.", "right": "I like both cats and dogs.", "note": "do not use a coordinating conjunction to start a fragment" }
+    ],
+    "practiceQuestions": [
+      {
+        "question": "Which of the following is a coordinating conjunction?",
+        "options": ["although", "because", "therefore", "but"],
+        "answerIndex": 3,
+        "explanation": "'But' is one of the FANBOYS coordinating conjunctions. The others are subordinating conjunction, subordinating conjunction, and conjunctive adverb."
+      },
+      {
+        "question": "Which sentence is correctly punctuated?",
+        "options": ["She was tired, however she continued.", "She was tired; however, she continued.", "She was tired however she continued.", "She was tired; however she continued."],
+        "answerIndex": 1,
+        "explanation": "Conjunctive adverbs require a semicolon before and a comma after: '; however,'."
+      },
+      {
+        "question": "Choose the correct correlative conjunction pair: 'She is ___ a singer ___ a songwriter.'",
+        "options": ["either...nor", "neither...or", "both...and", "not...but"],
+        "answerIndex": 2,
+        "explanation": "'Both...and' is the correct correlative pair for joining two positive elements."
+      },
+      {
+        "question": "Which sentence uses a subordinating conjunction correctly?",
+        "options": ["She left, and although tired.", "Although tired, she left.", "She left although, tired.", "She, although tired, left and early."],
+        "answerIndex": 1,
+        "explanation": "'Although tired, she left' correctly places the dependent clause before the independent clause with a comma."
+      }
+    ]
+  },
+  {
+    "id": "punctuation",
+    "category": "Mechanics",
+    "order": 14,
+    "title": "Punctuation",
+    "summary": "Punctuation marks organise written text, signal pauses, and clarify meaning for the reader.",
+    "keywords": ["comma", "period", "semicolon", "colon", "apostrophe", "quotation marks", "hyphen", "exclamation mark", "question mark", "punctuation rules"],
+    "explanation": "Punctuation provides written cues that guide readers through a text. The period ends declarative and imperative sentences. The comma separates items in a list, sets off introductory elements, and separates independent clauses before a coordinating conjunction. The semicolon links closely related independent clauses. The colon introduces a list, quotation, or explanation.\n\nThe apostrophe shows possession or marks contractions. Quotation marks enclose direct speech or titles of short works. The hyphen joins compound words or divides words at a line break. The dash (em dash) marks an abrupt break or strong parenthetical.",
+    "rules": [
+      "Use a period at the end of a declarative or imperative sentence.",
+      "Use a comma to separate three or more items in a series (Oxford comma before the final 'and' is recommended).",
+      "Use a semicolon to join two independent clauses without a conjunction.",
+      "Use a colon after an independent clause to introduce a list or explanation.",
+      "Use an apostrophe + s for singular possessives; use apostrophe alone after plural nouns ending in s.",
+      "Do not use an apostrophe to form plural nouns (no greengrocer's apostrophe).",
+      "Use quotation marks to enclose direct speech and titles of short works (articles, poems, songs)."
+    ],
+    "examples": [
+      { "text": "She bought bread, milk, and eggs.", "note": "Oxford comma before 'and'" },
+      { "text": "I was exhausted; I slept for twelve hours.", "note": "semicolon joining related independent clauses" },
+      { "text": "The teacher said: 'Open your books.'", "note": "colon introducing a direct quotation" },
+      { "text": "The children's playground was rebuilt.", "note": "apostrophe for plural possessive" },
+      { "text": "It's raining outside.", "note": "apostrophe in contraction 'it is'" }
+    ],
+    "notes": [
+      "Its (possessive) vs it's (contraction of 'it is' or 'it has') is one of the most common errors in English.",
+      "The Oxford (serial) comma before the final item in a list is optional in British English but recommended for clarity.",
+      "Em dashes indicate a stronger break than commas but weaker than parentheses; use them sparingly."
+    ],
+    "tips": [
+      "Read your work aloud; natural pauses often indicate where commas belong.",
+      "Substitute 'it is' for 'it's' to check correctness: if it makes sense, the apostrophe is correct.",
+      "Use a semicolon only where you could also use a period; if a period is wrong, a semicolon is too."
+    ],
+    "commonMistakes": [
+      { "wrong": "Its a beautiful day.", "right": "It's a beautiful day.", "note": "contraction 'it is' requires an apostrophe" },
+      { "wrong": "She loves cooking, reading and swimming.", "right": "She loves cooking, reading, and swimming.", "note": "include a comma before 'and' in a series for clarity (Oxford comma)" },
+      { "wrong": "I went to the store, I bought milk.", "right": "I went to the store; I bought milk.", "note": "comma splice: use a semicolon or add a conjunction" },
+      { "wrong": "The dogs bone was buried.", "right": "The dog's bone was buried.", "note": "singular possessive requires apostrophe + s" }
+    ],
+    "practiceQuestions": [
+      {
+        "question": "Which sentence uses the apostrophe correctly?",
+        "options": ["The cat's are sleeping.", "The cats' food is on the shelf.", "The cat's is sleeping.", "The cat's food's on the shelf'"],
+        "answerIndex": 1,
+        "explanation": "'The cats' food' correctly uses an apostrophe after the plural noun 'cats' to show possession."
+      },
+      {
+        "question": "Which sentence correctly uses a semicolon?",
+        "options": ["She ran fast; but she lost.", "She ran fast; she still lost.", "She; ran fast and lost.", "She ran; fast and lost."],
+        "answerIndex": 1,
+        "explanation": "A semicolon joins two closely related independent clauses ('She ran fast' and 'she still lost') without a conjunction."
+      },
+      {
+        "question": "What is wrong with this sentence: 'The school changed it's policy.'?",
+        "options": ["'school' should be capitalised.", "'changed' is the wrong tense.", "'it's' should be 'its'.", "There is no error."],
+        "answerIndex": 2,
+        "explanation": "The possessive pronoun 'its' does not have an apostrophe; 'it's' means 'it is'."
+      },
+      {
+        "question": "When should a colon be used?",
+        "options": ["To join two independent clauses of equal weight.", "After an introductory word like 'however'.", "After an independent clause to introduce a list or explanation.", "To mark a word break at the end of a line."],
+        "answerIndex": 2,
+        "explanation": "A colon follows a complete independent clause to introduce a list, quotation, or explanation."
+      }
+    ]
+  },
+  {
+    "id": "common-errors",
+    "category": "Mechanics",
+    "order": 15,
+    "title": "Common Errors",
+    "summary": "Frequent grammar mistakes including confusing homophones, dangling modifiers, and incorrect pronoun case.",
+    "keywords": ["common errors", "grammar mistakes", "homophones", "double negative", "dangling modifier", "pronoun case", "misplaced modifier", "run-on sentence", "fragments", "confusion words"],
+    "explanation": "Even proficient writers make recurring mistakes. The most common fall into several categories: confusing look-alike or sound-alike words (affect/effect, their/there/they're), incorrect pronoun case, dangling or misplaced modifiers, double negatives, subject-verb disagreement, comma splices, and sentence fragments.\n\nRecognising these patterns and learning systematic ways to check for them is more effective than simply memorising rules. Many errors can be caught by reading work aloud, looking for specific trigger words, or applying a targeted revision checklist.",
+    "rules": [
+      "Affect is usually a verb; effect is usually a noun.",
+      "Use subject pronouns (I, he, she, we, they) for sentence subjects; use object pronouns (me, him, her, us, them) elsewhere.",
+      "Avoid double negatives: 'I don't know anything' (not 'I don't know nothing').",
+      "Place modifying words or phrases as close as possible to the word they modify.",
+      "A comma splice occurs when two independent clauses are joined with only a comma; fix it with a conjunction, semicolon, or period.",
+      "Fewer is used with countable nouns; less with uncountable nouns.",
+      "Who refers to people; that or which refer to things."
+    ],
+    "examples": [
+      { "text": "The new law will affect everyone.", "note": "'affect' = verb" },
+      { "text": "The effect of the new law is significant.", "note": "'effect' = noun" },
+      { "text": "Between you and me, I prefer tea.", "note": "object pronoun 'me' after preposition" },
+      { "text": "Only she knows the answer.", "note": "'only' placed correctly before the word it modifies" },
+      { "text": "There were fewer students this year.", "note": "'fewer' for countable noun 'students'" }
+    ],
+    "notes": [
+      "Their (possessive), there (place/existential), and they're (contraction of 'they are') are different words with different uses.",
+      "Its (possessive pronoun) vs it's (it is/it has) is one of the most common punctuation errors.",
+      "Literally is often misused as an intensifier; it should mean 'in actual fact, not figuratively'."
+    ],
+    "tips": [
+      "Keep a personal error log: each time you make a mistake, note it and the correct form.",
+      "For affect/effect, remember: Affect is the Action, Effect is the End result.",
+      "Read your writing backwards sentence by sentence to isolate each sentence and spot fragments or run-ons."
+    ],
+    "commonMistakes": [
+      { "wrong": "I didn't see nobody.", "right": "I didn't see anybody.", "note": "double negative: one negative per clause" },
+      { "wrong": "Between you and I, it is wrong.", "right": "Between you and me, it is wrong.", "note": "preposition 'between' requires object pronoun 'me'" },
+      { "wrong": "There is less people here today.", "right": "There are fewer people here today.", "note": "plural subject 'people' needs plural verb; 'fewer' for countable nouns" },
+      { "wrong": "The manager which called is new.", "right": "The manager who called is new.", "note": "use 'who' for people, not 'which'" },
+      { "wrong": "She past the exam with high marks.", "right": "She passed the exam with high marks.", "note": "'passed' is the verb; 'past' is an adjective/preposition/noun" }
+    ],
+    "practiceQuestions": [
+      {
+        "question": "Which sentence uses 'affect' and 'effect' correctly?",
+        "options": ["The storm effected our plans.", "The storm affected our plans.", "The effect of the storm affected.", "The affect of the storm was huge."],
+        "answerIndex": 1,
+        "explanation": "'Affect' is the verb meaning to influence; 'the storm affected our plans' is correct."
+      },
+      {
+        "question": "Identify the error: 'Me and my friend went to the cinema.'",
+        "options": ["'cinema' should be 'movies'.", "'Me' should be 'I' as a sentence subject.", "'friend' should be plural.", "There is no error."],
+        "answerIndex": 1,
+        "explanation": "Subject pronouns are required for sentence subjects; 'I and my friend' or 'My friend and I' is correct."
+      },
+      {
+        "question": "Which sentence avoids a double negative?",
+        "options": ["I don't want nothing.", "She never said nothing.", "He didn't do anything wrong.", "They couldn't find nobody."],
+        "answerIndex": 2,
+        "explanation": "'He didn't do anything wrong' uses one negative element; the others all use two, creating a double negative."
+      },
+      {
+        "question": "Choose the sentence with correct pronoun use:",
+        "options": ["It was her who called.", "It was she who called.", "It was hers who called.", "It were she who called."],
+        "answerIndex": 1,
+        "explanation": "After the linking verb 'was', a subject complement is required; 'she' (subject form) is correct."
+      }
+    ]
+  }
+]
