@@ -36,6 +36,8 @@ part 'app_database.g.dart';
     GrammarProgress,
     GrammarFavorites,
     GrammarTopics,
+    VocabularyLists,
+    VocabularyWords,
   ],
 )
 class AppDatabase extends _$AppDatabase {
@@ -91,6 +93,12 @@ class AppDatabase extends _$AppDatabase {
           if (from < 8) {
             await m.createTable(grammarTopics);
           }
+          // v8 → v9: Vocabulary module (A–Z learning lists). Purely additive —
+          // existing tables and their data are left untouched.
+          if (from < 9) {
+            await m.createTable(vocabularyLists);
+            await m.createTable(vocabularyWords);
+          }
         },
         beforeOpen: (OpeningDetails details) async {
           await customStatement('PRAGMA foreign_keys = ON');
@@ -125,6 +133,23 @@ class AppDatabase extends _$AppDatabase {
           await customStatement(
             'CREATE INDEX IF NOT EXISTS idx_grammar_topics_search '
             'ON grammar_topics (search_text)',
+          );
+          // Vocabulary: fast A–Z listing per list, headword lookup, and search.
+          await customStatement(
+            'CREATE INDEX IF NOT EXISTS idx_vocab_words_list_letter_order '
+            'ON vocabulary_words (list_id, letter, order_index)',
+          );
+          await customStatement(
+            'CREATE INDEX IF NOT EXISTS idx_vocab_words_lower '
+            'ON vocabulary_words (word_lower)',
+          );
+          await customStatement(
+            'CREATE INDEX IF NOT EXISTS idx_vocab_words_search '
+            'ON vocabulary_words (search_text)',
+          );
+          await customStatement(
+            'CREATE INDEX IF NOT EXISTS idx_vocab_lists_order '
+            'ON vocabulary_lists (order_index)',
           );
         },
       );

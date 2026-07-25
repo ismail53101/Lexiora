@@ -1,0 +1,745 @@
+{
+  "list": {
+    "id": "technology",
+    "title": "Technology Vocabulary",
+    "subtitle": "Computing, internet & software terms",
+    "order": 10
+  },
+  "words": [
+    {
+      "word": "Algorithm",
+      "ipa": "/ˈælɡərɪðəm/",
+      "urdu": "الگورتھم",
+      "meaning": "a step-by-step problem-solving procedure",
+      "pos": "noun"
+    },
+    {
+      "word": "API",
+      "ipa": "/ˌeɪ piː ˈaɪ/",
+      "urdu": "اے پی آئی",
+      "meaning": "interface for communication between applications",
+      "pos": "noun"
+    },
+    {
+      "word": "Application",
+      "ipa": "/ˌæplɪˈkeɪʃən/",
+      "urdu": "ایپلی کیشن",
+      "meaning": "software program for a specific task",
+      "pos": "noun"
+    },
+    {
+      "word": "Artificial Intelligence",
+      "ipa": "/ˌɑːrtɪˈfɪʃəl ɪnˈtelɪdʒəns/",
+      "urdu": "مصنوعی ذہانت",
+      "meaning": "machine simulation of human intelligence",
+      "pos": "noun"
+    },
+    {
+      "word": "Backup",
+      "ipa": "/ˈbækʌp/",
+      "urdu": "بیک اپ",
+      "meaning": "a saved copy of data for recovery",
+      "pos": "noun"
+    },
+    {
+      "word": "Bandwidth",
+      "ipa": "/ˈbændwɪdθ/",
+      "urdu": "بینڈوڈتھ",
+      "meaning": "maximum data-transfer rate of a connection",
+      "pos": "noun"
+    },
+    {
+      "word": "Binary",
+      "ipa": "/ˈbaɪnəri/",
+      "urdu": "دوتائی",
+      "meaning": "number system using only 0 and 1",
+      "pos": "adjective"
+    },
+    {
+      "word": "Bit",
+      "ipa": "/bɪt/",
+      "urdu": "بِٹ",
+      "meaning": "smallest unit of digital data",
+      "pos": "noun"
+    },
+    {
+      "word": "Blockchain",
+      "ipa": "/ˈblɒktʃeɪn/",
+      "urdu": "بلاک چین",
+      "meaning": "decentralised distributed digital ledger",
+      "pos": "noun"
+    },
+    {
+      "word": "Bluetooth",
+      "ipa": "/ˈbluːtuːθ/",
+      "urdu": "بلیوٹوتھ",
+      "meaning": "short-range wireless communication standard",
+      "pos": "noun"
+    },
+    {
+      "word": "Boolean",
+      "ipa": "/ˈbuːliən/",
+      "urdu": "بولین",
+      "meaning": "true/false logical data type",
+      "pos": "adjective"
+    },
+    {
+      "word": "Browser",
+      "ipa": "/ˈbraʊzər/",
+      "urdu": "براؤزر",
+      "meaning": "software for accessing the web",
+      "pos": "noun"
+    },
+    {
+      "word": "Bug",
+      "ipa": "/bʌɡ/",
+      "urdu": "نقص",
+      "meaning": "an error or flaw in software",
+      "pos": "noun"
+    },
+    {
+      "word": "Byte",
+      "ipa": "/baɪt/",
+      "urdu": "بائٹ",
+      "meaning": "unit of data equal to eight bits",
+      "pos": "noun"
+    },
+    {
+      "word": "Cache",
+      "ipa": "/kæʃ/",
+      "urdu": "کیشے",
+      "meaning": "temporary storage for fast data access",
+      "pos": "noun"
+    },
+    {
+      "word": "Cloud",
+      "ipa": "/klaʊd/",
+      "urdu": "کلاؤڈ",
+      "meaning": "internet-based remote computing infrastructure",
+      "pos": "noun"
+    },
+    {
+      "word": "Cloud Computing",
+      "ipa": "/klaʊd kəmˈpjuːtɪŋ/",
+      "urdu": "کلاؤڈ کمپیوٹنگ",
+      "meaning": "delivering computing services over the internet",
+      "pos": "noun"
+    },
+    {
+      "word": "Code",
+      "ipa": "/koʊd/",
+      "urdu": "کوڈ",
+      "meaning": "instructions written in a programming language",
+      "pos": "noun"
+    },
+    {
+      "word": "Compiler",
+      "ipa": "/kəmˈpaɪlər/",
+      "urdu": "کمپائلر",
+      "meaning": "program that translates code to machine language",
+      "pos": "noun"
+    },
+    {
+      "word": "Cookie",
+      "ipa": "/ˈkʊki/",
+      "urdu": "کوکی",
+      "meaning": "small data file stored by a website",
+      "pos": "noun"
+    },
+    {
+      "word": "Cryptocurrency",
+      "ipa": "/ˈkrɪptoʊˌkɜːrənsi/",
+      "urdu": "کریپٹو کرنسی",
+      "meaning": "digital currency using cryptographic security",
+      "pos": "noun"
+    },
+    {
+      "word": "Cursor",
+      "ipa": "/ˈkɜːrsər/",
+      "urdu": "کرسر",
+      "meaning": "on-screen pointer controlled by the user",
+      "pos": "noun"
+    },
+    {
+      "word": "Cybersecurity",
+      "ipa": "/ˈsaɪbərˌsɪˌkjʊərɪti/",
+      "urdu": "سائبر سیکیورٹی",
+      "meaning": "protection of systems from digital attacks",
+      "pos": "noun"
+    },
+    {
+      "word": "Dashboard",
+      "ipa": "/ˈdæʃbɔːrd/",
+      "urdu": "ڈیش بورڈ",
+      "meaning": "visual display of key data and controls",
+      "pos": "noun"
+    },
+    {
+      "word": "Data",
+      "ipa": "/ˈdeɪtə/",
+      "urdu": "ڈیٹا",
+      "meaning": "raw facts or figures processed by a computer",
+      "pos": "noun"
+    },
+    {
+      "word": "Database",
+      "ipa": "/ˈdeɪtəbeɪs/",
+      "urdu": "ڈیٹا بیس",
+      "meaning": "organised collection of structured data",
+      "pos": "noun"
+    },
+    {
+      "word": "Debug",
+      "ipa": "/diːˈbʌɡ/",
+      "urdu": "غلطی دور کرنا",
+      "meaning": "to find and fix errors in software",
+      "pos": "verb"
+    },
+    {
+      "word": "Debugging",
+      "ipa": "/diːˈbʌɡɪŋ/",
+      "urdu": "ڈی بگنگ",
+      "meaning": "process of identifying and fixing software errors",
+      "pos": "noun"
+    },
+    {
+      "word": "Deep Learning",
+      "ipa": "/diːp ˈlɜːrnɪŋ/",
+      "urdu": "گہری مشین لرننگ",
+      "meaning": "machine learning using multilayered neural networks",
+      "pos": "noun"
+    },
+    {
+      "word": "Domain",
+      "ipa": "/doʊˈmeɪn/",
+      "urdu": "ڈومین",
+      "meaning": "unique web address identifier",
+      "pos": "noun"
+    },
+    {
+      "word": "Download",
+      "ipa": "/ˈdaʊnloʊd/",
+      "urdu": "ڈاؤن لوڈ",
+      "meaning": "to transfer data from a remote server",
+      "pos": "verb"
+    },
+    {
+      "word": "Driver",
+      "ipa": "/ˈdraɪvər/",
+      "urdu": "ڈرائیور",
+      "meaning": "software enabling OS to use hardware",
+      "pos": "noun"
+    },
+    {
+      "word": "Encryption",
+      "ipa": "/ɪnˈkrɪpʃən/",
+      "urdu": "خفیہ نویسی",
+      "meaning": "converting data into a coded format",
+      "pos": "noun"
+    },
+    {
+      "word": "End-to-End Encryption",
+      "ipa": "/end tə end ɪnˈkrɪpʃən/",
+      "urdu": "مکمل خفیہ نویسی",
+      "meaning": "encryption from sender to recipient only",
+      "pos": "noun"
+    },
+    {
+      "word": "Ethernet",
+      "ipa": "/ˈiːθərnet/",
+      "urdu": "ایتھرنیٹ",
+      "meaning": "wired local area network technology",
+      "pos": "noun"
+    },
+    {
+      "word": "Firewall",
+      "ipa": "/ˈfaɪərwɔːl/",
+      "urdu": "فائروال",
+      "meaning": "security system filtering network traffic",
+      "pos": "noun"
+    },
+    {
+      "word": "Firmware",
+      "ipa": "/ˈfɜːrmwer/",
+      "urdu": "فرم ویئر",
+      "meaning": "permanent software embedded in hardware",
+      "pos": "noun"
+    },
+    {
+      "word": "Framework",
+      "ipa": "/ˈfreɪmwɜːrk/",
+      "urdu": "فریم ورک",
+      "meaning": "reusable code platform for building applications",
+      "pos": "noun"
+    },
+    {
+      "word": "Gigabyte",
+      "ipa": "/ˈɡɪɡəbaɪt/",
+      "urdu": "گیگا بائٹ",
+      "meaning": "unit of data equal to one billion bytes",
+      "pos": "noun"
+    },
+    {
+      "word": "Git",
+      "ipa": "/ɡɪt/",
+      "urdu": "گٹ",
+      "meaning": "distributed version control system for code",
+      "pos": "noun"
+    },
+    {
+      "word": "Graphics",
+      "ipa": "/ˈɡræfɪks/",
+      "urdu": "گرافکس",
+      "meaning": "visual images generated by a computer",
+      "pos": "noun"
+    },
+    {
+      "word": "Hardware",
+      "ipa": "/ˈhɑːrdwer/",
+      "urdu": "ہارڈ ویئر",
+      "meaning": "physical components of a computer system",
+      "pos": "noun"
+    },
+    {
+      "word": "Hyperlink",
+      "ipa": "/ˈhaɪpərˌlɪŋk/",
+      "urdu": "ہائپرلنک",
+      "meaning": "clickable reference linking to another resource",
+      "pos": "noun"
+    },
+    {
+      "word": "Input",
+      "ipa": "/ˈɪnpʊt/",
+      "urdu": "ان پٹ",
+      "meaning": "data entered into a computer system",
+      "pos": "noun"
+    },
+    {
+      "word": "Interface",
+      "ipa": "/ˈɪntərfeɪs/",
+      "urdu": "انٹرفیس",
+      "meaning": "point of interaction between user and system",
+      "pos": "noun"
+    },
+    {
+      "word": "Internet",
+      "ipa": "/ˈɪntərnet/",
+      "urdu": "انٹرنیٹ",
+      "meaning": "global network connecting millions of computers",
+      "pos": "noun"
+    },
+    {
+      "word": "IP Address",
+      "ipa": "/ˌaɪ ˈpiː ˌædrɛs/",
+      "urdu": "آئی پی ایڈریس",
+      "meaning": "unique numerical label for a networked device",
+      "pos": "noun"
+    },
+    {
+      "word": "Iteration",
+      "ipa": "/ˌɪtəˈreɪʃən/",
+      "urdu": "تکرار",
+      "meaning": "repeated execution of a set of instructions",
+      "pos": "noun"
+    },
+    {
+      "word": "Kernel",
+      "ipa": "/ˈkɜːrnəl/",
+      "urdu": "کرنل",
+      "meaning": "core component managing OS and hardware",
+      "pos": "noun"
+    },
+    {
+      "word": "Keyboard",
+      "ipa": "/ˈkiːbɔːrd/",
+      "urdu": "کی بورڈ",
+      "meaning": "input device with alphanumeric keys",
+      "pos": "noun"
+    },
+    {
+      "word": "Latency",
+      "ipa": "/ˈleɪtənsi/",
+      "urdu": "تاخیر",
+      "meaning": "delay in data transmission over a network",
+      "pos": "noun"
+    },
+    {
+      "word": "Loop",
+      "ipa": "/luːp/",
+      "urdu": "لوپ",
+      "meaning": "instruction sequence repeated until a condition",
+      "pos": "noun"
+    },
+    {
+      "word": "Machine Learning",
+      "ipa": "/məˈʃiːn ˈlɜːrnɪŋ/",
+      "urdu": "مشین لرننگ",
+      "meaning": "AI enabling systems to learn from data",
+      "pos": "noun"
+    },
+    {
+      "word": "Malware",
+      "ipa": "/ˈmælwer/",
+      "urdu": "میل ویئر",
+      "meaning": "software designed to harm computer systems",
+      "pos": "noun"
+    },
+    {
+      "word": "Megabyte",
+      "ipa": "/ˈmeɡəbaɪt/",
+      "urdu": "میگا بائٹ",
+      "meaning": "unit of data equal to one million bytes",
+      "pos": "noun"
+    },
+    {
+      "word": "Memory",
+      "ipa": "/ˈmeməri/",
+      "urdu": "میموری",
+      "meaning": "hardware storing data for immediate use",
+      "pos": "noun"
+    },
+    {
+      "word": "Metadata",
+      "ipa": "/ˈmetəˌdeɪtə/",
+      "urdu": "میٹا ڈیٹا",
+      "meaning": "data that describes other data",
+      "pos": "noun"
+    },
+    {
+      "word": "Modem",
+      "ipa": "/ˈmoʊdəm/",
+      "urdu": "موڈم",
+      "meaning": "device transmitting data over phone lines",
+      "pos": "noun"
+    },
+    {
+      "word": "Monitor",
+      "ipa": "/ˈmɒnɪtər/",
+      "urdu": "مانیٹر",
+      "meaning": "screen displaying visual computer output",
+      "pos": "noun"
+    },
+    {
+      "word": "Network",
+      "ipa": "/ˈnetwɜːrk/",
+      "urdu": "نیٹ ورک",
+      "meaning": "interconnected group of computers sharing resources",
+      "pos": "noun"
+    },
+    {
+      "word": "Open Source",
+      "ipa": "/ˈoʊpən sɔːrs/",
+      "urdu": "اوپن سورس",
+      "meaning": "software with publicly available source code",
+      "pos": "adjective"
+    },
+    {
+      "word": "Operating System",
+      "ipa": "/ˈɒpəreɪtɪŋ ˈsɪstəm/",
+      "urdu": "آپریٹنگ سسٹم",
+      "meaning": "software managing all computer hardware and programs",
+      "pos": "noun"
+    },
+    {
+      "word": "Output",
+      "ipa": "/ˈaʊtpʊt/",
+      "urdu": "آؤٹ پٹ",
+      "meaning": "data produced or displayed by a computer",
+      "pos": "noun"
+    },
+    {
+      "word": "Password",
+      "ipa": "/ˈpæswɜːrd/",
+      "urdu": "پاس ورڈ",
+      "meaning": "secret string for authenticating a user",
+      "pos": "noun"
+    },
+    {
+      "word": "Phishing",
+      "ipa": "/ˈfɪʃɪŋ/",
+      "urdu": "فشنگ",
+      "meaning": "fraudulent attempt to steal sensitive information",
+      "pos": "noun"
+    },
+    {
+      "word": "Pixel",
+      "ipa": "/ˈpɪksəl/",
+      "urdu": "پکسل",
+      "meaning": "smallest unit of a digital image",
+      "pos": "noun"
+    },
+    {
+      "word": "Plugin",
+      "ipa": "/ˈplʌɡɪn/",
+      "urdu": "پلگ ان",
+      "meaning": "software component adding features to a program",
+      "pos": "noun"
+    },
+    {
+      "word": "Processor",
+      "ipa": "/ˈprɒsesər/",
+      "urdu": "پروسیسر",
+      "meaning": "chip that executes computer program instructions",
+      "pos": "noun"
+    },
+    {
+      "word": "Protocol",
+      "ipa": "/ˈproʊtəˌkɒl/",
+      "urdu": "پروٹوکول",
+      "meaning": "set of rules governing data communication",
+      "pos": "noun"
+    },
+    {
+      "word": "Query",
+      "ipa": "/ˈkwɪəri/",
+      "urdu": "سوال",
+      "meaning": "request for data from a database",
+      "pos": "noun"
+    },
+    {
+      "word": "RAM",
+      "ipa": "/ræm/",
+      "urdu": "ریم",
+      "meaning": "volatile memory for active program data",
+      "pos": "noun"
+    },
+    {
+      "word": "Repository",
+      "ipa": "/rɪˈpɒzɪtəri/",
+      "urdu": "ریپوزیٹری",
+      "meaning": "storage location for code or data files",
+      "pos": "noun"
+    },
+    {
+      "word": "Resolution",
+      "ipa": "/ˌrezəˈluːʃən/",
+      "urdu": "ریزولوشن",
+      "meaning": "number of pixels in a display or image",
+      "pos": "noun"
+    },
+    {
+      "word": "Router",
+      "ipa": "/ˈraʊtər/",
+      "urdu": "روٹر",
+      "meaning": "device directing data packets across networks",
+      "pos": "noun"
+    },
+    {
+      "word": "Runtime",
+      "ipa": "/ˈrʌntaɪm/",
+      "urdu": "رن ٹائم",
+      "meaning": "period when a program is executing",
+      "pos": "noun"
+    },
+    {
+      "word": "Sandbox",
+      "ipa": "/ˈsændbɒks/",
+      "urdu": "سینڈ باکس",
+      "meaning": "isolated environment for testing software",
+      "pos": "noun"
+    },
+    {
+      "word": "Screenshot",
+      "ipa": "/ˈskriːnʃɒt/",
+      "urdu": "اسکرین شاٹ",
+      "meaning": "captured image of a screen's display",
+      "pos": "noun"
+    },
+    {
+      "word": "Scroll",
+      "ipa": "/skroʊl/",
+      "urdu": "اسکرول",
+      "meaning": "to move content up or down on screen",
+      "pos": "verb"
+    },
+    {
+      "word": "Search Engine",
+      "ipa": "/sɜːrtʃ ˈendʒɪn/",
+      "urdu": "سرچ انجن",
+      "meaning": "tool for finding information on the internet",
+      "pos": "noun"
+    },
+    {
+      "word": "Server",
+      "ipa": "/ˈsɜːrvər/",
+      "urdu": "سرور",
+      "meaning": "computer providing services to other computers",
+      "pos": "noun"
+    },
+    {
+      "word": "Social Media",
+      "ipa": "/ˈsoʊʃəl ˈmiːdiə/",
+      "urdu": "سوشل میڈیا",
+      "meaning": "online platforms for sharing content socially",
+      "pos": "noun"
+    },
+    {
+      "word": "Software",
+      "ipa": "/ˈsɒftwer/",
+      "urdu": "سافٹ ویئر",
+      "meaning": "programs and operating information for a computer",
+      "pos": "noun"
+    },
+    {
+      "word": "Source Code",
+      "ipa": "/sɔːrs koʊd/",
+      "urdu": "سورس کوڈ",
+      "meaning": "human-readable programming instructions",
+      "pos": "noun"
+    },
+    {
+      "word": "Spam",
+      "ipa": "/spæm/",
+      "urdu": "اسپیم",
+      "meaning": "unsolicited bulk electronic messages",
+      "pos": "noun"
+    },
+    {
+      "word": "Spreadsheet",
+      "ipa": "/ˈspredʃiːt/",
+      "urdu": "اسپریڈ شیٹ",
+      "meaning": "grid-based program for organising data",
+      "pos": "noun"
+    },
+    {
+      "word": "Storage",
+      "ipa": "/ˈstɔːrɪdʒ/",
+      "urdu": "اسٹوریج",
+      "meaning": "capacity to retain data long-term",
+      "pos": "noun"
+    },
+    {
+      "word": "Streaming",
+      "ipa": "/ˈstriːmɪŋ/",
+      "urdu": "اسٹریمنگ",
+      "meaning": "transmitting media continuously over the internet",
+      "pos": "noun"
+    },
+    {
+      "word": "Sync",
+      "ipa": "/sɪŋk/",
+      "urdu": "سنک",
+      "meaning": "to make data identical across multiple devices",
+      "pos": "verb"
+    },
+    {
+      "word": "Syntax",
+      "ipa": "/ˈsɪntæks/",
+      "urdu": "نحوِ کوڈ",
+      "meaning": "set of rules for writing programming language code",
+      "pos": "noun"
+    },
+    {
+      "word": "Template",
+      "ipa": "/ˈtemplɪt/",
+      "urdu": "سانچہ",
+      "meaning": "predefined format for creating documents or code",
+      "pos": "noun"
+    },
+    {
+      "word": "Terminal",
+      "ipa": "/ˈtɜːrmɪnəl/",
+      "urdu": "ٹرمینل",
+      "meaning": "text-based interface for entering commands",
+      "pos": "noun"
+    },
+    {
+      "word": "Throughput",
+      "ipa": "/ˈθruːpʊt/",
+      "urdu": "تھروپٹ",
+      "meaning": "amount of data processed in a given time",
+      "pos": "noun"
+    },
+    {
+      "word": "Toolbar",
+      "ipa": "/ˈtuːlbɑːr/",
+      "urdu": "ٹول بار",
+      "meaning": "row of icons for quick program functions",
+      "pos": "noun"
+    },
+    {
+      "word": "Update",
+      "ipa": "/ˈʌpdeɪt/",
+      "urdu": "اپ ڈیٹ",
+      "meaning": "installing new version or patches for software",
+      "pos": "noun"
+    },
+    {
+      "word": "Upgrade",
+      "ipa": "/ˈʌpɡreɪd/",
+      "urdu": "اپ گریڈ",
+      "meaning": "replacing with a better or newer version",
+      "pos": "noun"
+    },
+    {
+      "word": "Upload",
+      "ipa": "/ˈʌploʊd/",
+      "urdu": "اپ لوڈ",
+      "meaning": "to transfer data to a remote server",
+      "pos": "verb"
+    },
+    {
+      "word": "URL",
+      "ipa": "/ˌjuː ɑːr ˈel/",
+      "urdu": "یو آر ایل",
+      "meaning": "web address of an internet resource",
+      "pos": "noun"
+    },
+    {
+      "word": "Username",
+      "ipa": "/ˈjuːzərneɪm/",
+      "urdu": "صارف نام",
+      "meaning": "unique identifier for a user account",
+      "pos": "noun"
+    },
+    {
+      "word": "Variable",
+      "ipa": "/ˈveəriəbl/",
+      "urdu": "متغیر",
+      "meaning": "named storage location holding a value",
+      "pos": "noun"
+    },
+    {
+      "word": "Virtual Machine",
+      "ipa": "/ˈvɜːrtʃuəl məˈʃiːn/",
+      "urdu": "ورچوئل مشین",
+      "meaning": "emulated computer running within a real system",
+      "pos": "noun"
+    },
+    {
+      "word": "Virtual Reality",
+      "ipa": "/ˈvɜːrtʃuəl riˈælɪti/",
+      "urdu": "مجازی حقیقت",
+      "meaning": "computer-generated immersive 3D environment",
+      "pos": "noun"
+    },
+    {
+      "word": "Virus",
+      "ipa": "/ˈvaɪrəs/",
+      "urdu": "وائرس",
+      "meaning": "malicious program replicating within a system",
+      "pos": "noun"
+    },
+    {
+      "word": "VPN",
+      "ipa": "/ˌviː piː ˈen/",
+      "urdu": "وی پی این",
+      "meaning": "encrypted private tunnel over a public network",
+      "pos": "noun"
+    },
+    {
+      "word": "Widget",
+      "ipa": "/ˈwɪdʒɪt/",
+      "urdu": "وجٹ",
+      "meaning": "small interactive UI component or app",
+      "pos": "noun"
+    },
+    {
+      "word": "WiFi",
+      "ipa": "/ˈwaɪfaɪ/",
+      "urdu": "وائی فائی",
+      "meaning": "wireless local area network technology",
+      "pos": "noun"
+    }
+  ]
+}

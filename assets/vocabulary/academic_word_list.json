@@ -1,0 +1,857 @@
+{
+  "list": {
+    "id": "awl",
+    "title": "Academic Word List (AWL)",
+    "subtitle": "Core academic words for essays and research",
+    "order": 5
+  },
+  "words": [
+    {
+      "word": "Abstract",
+      "ipa": "/ˈæbstrækt/",
+      "urdu": "خلاصہ",
+      "meaning": "summary of a written work",
+      "pos": "noun"
+    },
+    {
+      "word": "Acquire",
+      "ipa": "/əˈkwaɪər/",
+      "urdu": "حاصل کرنا",
+      "meaning": "to gain or obtain something",
+      "pos": "verb"
+    },
+    {
+      "word": "Adequate",
+      "ipa": "/ˈædɪkwɪt/",
+      "urdu": "کافی",
+      "meaning": "satisfactory or acceptable in amount",
+      "pos": "adjective"
+    },
+    {
+      "word": "Adjust",
+      "ipa": "/əˈdʒʌst/",
+      "urdu": "ترتیب دینا",
+      "meaning": "to alter slightly to achieve fit",
+      "pos": "verb"
+    },
+    {
+      "word": "Alternative",
+      "ipa": "/ɔːlˈtɜːrnətɪv/",
+      "urdu": "متبادل",
+      "meaning": "a choice available instead",
+      "pos": "noun"
+    },
+    {
+      "word": "Analyze",
+      "ipa": "/ˈænəlaɪz/",
+      "urdu": "تجزیہ کرنا",
+      "meaning": "to examine in detail",
+      "pos": "verb"
+    },
+    {
+      "word": "Approach",
+      "ipa": "/əˈproʊtʃ/",
+      "urdu": "طریقہ",
+      "meaning": "a method of doing something",
+      "pos": "noun"
+    },
+    {
+      "word": "Assess",
+      "ipa": "/əˈsɛs/",
+      "urdu": "جانچنا",
+      "meaning": "to evaluate or judge a situation",
+      "pos": "verb"
+    },
+    {
+      "word": "Assume",
+      "ipa": "/əˈsuːm/",
+      "urdu": "فرض کرنا",
+      "meaning": "to accept without proof",
+      "pos": "verb"
+    },
+    {
+      "word": "Authority",
+      "ipa": "/əˈθɔːrɪti/",
+      "urdu": "اختیار",
+      "meaning": "power to give orders",
+      "pos": "noun"
+    },
+    {
+      "word": "Available",
+      "ipa": "/əˈveɪləbl/",
+      "urdu": "دستیاب",
+      "meaning": "ready or able to be used",
+      "pos": "adjective"
+    },
+    {
+      "word": "Benefit",
+      "ipa": "/ˈbɛnɪfɪt/",
+      "urdu": "فائدہ",
+      "meaning": "an advantage or positive outcome",
+      "pos": "noun"
+    },
+    {
+      "word": "Category",
+      "ipa": "/ˈkætɪɡɔːri/",
+      "urdu": "زمرہ",
+      "meaning": "a group sharing common features",
+      "pos": "noun"
+    },
+    {
+      "word": "Cease",
+      "ipa": "/siːs/",
+      "urdu": "بند کرنا",
+      "meaning": "to stop or come to an end",
+      "pos": "verb"
+    },
+    {
+      "word": "Chapter",
+      "ipa": "/ˈtʃæptər/",
+      "urdu": "باب",
+      "meaning": "a main section of a book",
+      "pos": "noun"
+    },
+    {
+      "word": "Civil",
+      "ipa": "/ˈsɪvəl/",
+      "urdu": "شہری",
+      "meaning": "relating to citizens or society",
+      "pos": "adjective"
+    },
+    {
+      "word": "Clarify",
+      "ipa": "/ˈklærɪfaɪ/",
+      "urdu": "واضح کرنا",
+      "meaning": "to make easier to understand",
+      "pos": "verb"
+    },
+    {
+      "word": "Coherent",
+      "ipa": "/koʊˈhɪərənt/",
+      "urdu": "مربوط",
+      "meaning": "logical and consistent",
+      "pos": "adjective"
+    },
+    {
+      "word": "Commit",
+      "ipa": "/kəˈmɪt/",
+      "urdu": "پابند ہونا",
+      "meaning": "to pledge to a course of action",
+      "pos": "verb"
+    },
+    {
+      "word": "Communicate",
+      "ipa": "/kəˈmjuːnɪkeɪt/",
+      "urdu": "بات چیت کرنا",
+      "meaning": "to share or exchange information",
+      "pos": "verb"
+    },
+    {
+      "word": "Complex",
+      "ipa": "/ˈkɒmplɛks/",
+      "urdu": "پیچیدہ",
+      "meaning": "consisting of many connected parts",
+      "pos": "adjective"
+    },
+    {
+      "word": "Comprehensive",
+      "ipa": "/ˌkɒmprɪˈhɛnsɪv/",
+      "urdu": "جامع",
+      "meaning": "covering all aspects thoroughly",
+      "pos": "adjective"
+    },
+    {
+      "word": "Concept",
+      "ipa": "/ˈkɒnsɛpt/",
+      "urdu": "تصور",
+      "meaning": "an abstract idea or principle",
+      "pos": "noun"
+    },
+    {
+      "word": "Conclude",
+      "ipa": "/kənˈkluːd/",
+      "urdu": "نتیجہ اخذ کرنا",
+      "meaning": "to reach a decision or judgment",
+      "pos": "verb"
+    },
+    {
+      "word": "Conduct",
+      "ipa": "/ˈkɒndʌkt/",
+      "urdu": "انجام دینا",
+      "meaning": "to carry out or organize",
+      "pos": "verb"
+    },
+    {
+      "word": "Consequence",
+      "ipa": "/ˈkɒnsɪkwəns/",
+      "urdu": "نتیجہ",
+      "meaning": "a result following an action",
+      "pos": "noun"
+    },
+    {
+      "word": "Considerable",
+      "ipa": "/kənˈsɪdərəbl/",
+      "urdu": "قابل ذکر",
+      "meaning": "notably large in size or extent",
+      "pos": "adjective"
+    },
+    {
+      "word": "Consist",
+      "ipa": "/kənˈsɪst/",
+      "urdu": "مشتمل ہونا",
+      "meaning": "to be made up of",
+      "pos": "verb"
+    },
+    {
+      "word": "Constant",
+      "ipa": "/ˈkɒnstənt/",
+      "urdu": "مستقل",
+      "meaning": "remaining the same, unchanging",
+      "pos": "adjective"
+    },
+    {
+      "word": "Constitute",
+      "ipa": "/ˈkɒnstɪtjuːt/",
+      "urdu": "تشکیل دینا",
+      "meaning": "to be a part of a whole",
+      "pos": "verb"
+    },
+    {
+      "word": "Context",
+      "ipa": "/ˈkɒntɛkst/",
+      "urdu": "سیاق و سباق",
+      "meaning": "circumstances forming a background",
+      "pos": "noun"
+    },
+    {
+      "word": "Contract",
+      "ipa": "/ˈkɒntrækt/",
+      "urdu": "معاہدہ",
+      "meaning": "a formal written agreement",
+      "pos": "noun"
+    },
+    {
+      "word": "Contribute",
+      "ipa": "/kənˈtrɪbjuːt/",
+      "urdu": "حصہ ڈالنا",
+      "meaning": "to give a part of a whole",
+      "pos": "verb"
+    },
+    {
+      "word": "Coordinate",
+      "ipa": "/koʊˈɔːrdɪneɪt/",
+      "urdu": "ہم آہنگ کرنا",
+      "meaning": "to organize parts into a whole",
+      "pos": "verb"
+    },
+    {
+      "word": "Create",
+      "ipa": "/kriˈeɪt/",
+      "urdu": "بنانا",
+      "meaning": "to bring something into existence",
+      "pos": "verb"
+    },
+    {
+      "word": "Criteria",
+      "ipa": "/kraɪˈtɪəriə/",
+      "urdu": "معیار",
+      "meaning": "standards for judging something",
+      "pos": "noun"
+    },
+    {
+      "word": "Culture",
+      "ipa": "/ˈkʌltʃər/",
+      "urdu": "ثقافت",
+      "meaning": "shared beliefs of a society",
+      "pos": "noun"
+    },
+    {
+      "word": "Data",
+      "ipa": "/ˈdeɪtə/",
+      "urdu": "اعداد و شمار",
+      "meaning": "facts collected for analysis",
+      "pos": "noun"
+    },
+    {
+      "word": "Deduce",
+      "ipa": "/dɪˈdjuːs/",
+      "urdu": "نتیجہ نکالنا",
+      "meaning": "to reach a conclusion by reasoning",
+      "pos": "verb"
+    },
+    {
+      "word": "Define",
+      "ipa": "/dɪˈfaɪn/",
+      "urdu": "تعریف کرنا",
+      "meaning": "to state the exact meaning of",
+      "pos": "verb"
+    },
+    {
+      "word": "Demonstrate",
+      "ipa": "/ˈdɛmənstreɪt/",
+      "urdu": "ثابت کرنا",
+      "meaning": "to show or prove clearly",
+      "pos": "verb"
+    },
+    {
+      "word": "Derive",
+      "ipa": "/dɪˈraɪv/",
+      "urdu": "اخذ کرنا",
+      "meaning": "to obtain something from a source",
+      "pos": "verb"
+    },
+    {
+      "word": "Design",
+      "ipa": "/dɪˈzaɪn/",
+      "urdu": "منصوبہ",
+      "meaning": "to plan and create something",
+      "pos": "verb"
+    },
+    {
+      "word": "Dimension",
+      "ipa": "/dɪˈmɛnʃən/",
+      "urdu": "جہت",
+      "meaning": "a measurable aspect of something",
+      "pos": "noun"
+    },
+    {
+      "word": "Distinct",
+      "ipa": "/dɪˈstɪŋkt/",
+      "urdu": "الگ",
+      "meaning": "clearly different or separate",
+      "pos": "adjective"
+    },
+    {
+      "word": "Distribute",
+      "ipa": "/dɪˈstrɪbjuːt/",
+      "urdu": "تقسیم کرنا",
+      "meaning": "to spread out or divide among",
+      "pos": "verb"
+    },
+    {
+      "word": "Dominant",
+      "ipa": "/ˈdɒmɪnənt/",
+      "urdu": "غالب",
+      "meaning": "most powerful or influential",
+      "pos": "adjective"
+    },
+    {
+      "word": "Economy",
+      "ipa": "/ɪˈkɒnəmi/",
+      "urdu": "معیشت",
+      "meaning": "system of production and trade",
+      "pos": "noun"
+    },
+    {
+      "word": "Element",
+      "ipa": "/ˈɛlɪmənt/",
+      "urdu": "عنصر",
+      "meaning": "a basic component or part",
+      "pos": "noun"
+    },
+    {
+      "word": "Emphasis",
+      "ipa": "/ˈɛmfəsɪs/",
+      "urdu": "زور",
+      "meaning": "special importance given to something",
+      "pos": "noun"
+    },
+    {
+      "word": "Ensure",
+      "ipa": "/ɪnˈʃʊər/",
+      "urdu": "یقینی بنانا",
+      "meaning": "to make certain something happens",
+      "pos": "verb"
+    },
+    {
+      "word": "Environment",
+      "ipa": "/ɪnˈvaɪrənmənt/",
+      "urdu": "ماحول",
+      "meaning": "surroundings affecting living things",
+      "pos": "noun"
+    },
+    {
+      "word": "Establish",
+      "ipa": "/ɪˈstæblɪʃ/",
+      "urdu": "قائم کرنا",
+      "meaning": "to set up on a firm basis",
+      "pos": "verb"
+    },
+    {
+      "word": "Estimate",
+      "ipa": "/ˈɛstɪmeɪt/",
+      "urdu": "اندازہ لگانا",
+      "meaning": "to calculate approximately",
+      "pos": "verb"
+    },
+    {
+      "word": "Evaluate",
+      "ipa": "/ɪˈvæljueɪt/",
+      "urdu": "جائزہ لینا",
+      "meaning": "to assess or judge something",
+      "pos": "verb"
+    },
+    {
+      "word": "Evident",
+      "ipa": "/ˈɛvɪdənt/",
+      "urdu": "واضح",
+      "meaning": "clearly seen or understood",
+      "pos": "adjective"
+    },
+    {
+      "word": "Factor",
+      "ipa": "/ˈfæktər/",
+      "urdu": "عامل",
+      "meaning": "an element contributing to a result",
+      "pos": "noun"
+    },
+    {
+      "word": "Finance",
+      "ipa": "/ˈfaɪnæns/",
+      "urdu": "مالیات",
+      "meaning": "management of money and funds",
+      "pos": "noun"
+    },
+    {
+      "word": "Formula",
+      "ipa": "/ˈfɔːrmjʊlə/",
+      "urdu": "فارمولا",
+      "meaning": "a rule expressed in symbols",
+      "pos": "noun"
+    },
+    {
+      "word": "Framework",
+      "ipa": "/ˈfreɪmwɜːrk/",
+      "urdu": "ڈھانچہ",
+      "meaning": "a basic structure underlying a system",
+      "pos": "noun"
+    },
+    {
+      "word": "Function",
+      "ipa": "/ˈfʌŋkʃən/",
+      "urdu": "کام",
+      "meaning": "the purpose of something",
+      "pos": "noun"
+    },
+    {
+      "word": "Generate",
+      "ipa": "/ˈdʒɛnəreɪt/",
+      "urdu": "پیدا کرنا",
+      "meaning": "to produce or create something",
+      "pos": "verb"
+    },
+    {
+      "word": "Global",
+      "ipa": "/ˈɡloʊbəl/",
+      "urdu": "عالمی",
+      "meaning": "relating to the whole world",
+      "pos": "adjective"
+    },
+    {
+      "word": "Hierarchy",
+      "ipa": "/ˈhaɪərɑːrki/",
+      "urdu": "درجہ بندی",
+      "meaning": "a system ranked by authority",
+      "pos": "noun"
+    },
+    {
+      "word": "Hypothesis",
+      "ipa": "/haɪˈpɒθɪsɪs/",
+      "urdu": "قیاس",
+      "meaning": "a proposed explanation to test",
+      "pos": "noun"
+    },
+    {
+      "word": "Identify",
+      "ipa": "/aɪˈdɛntɪfaɪ/",
+      "urdu": "شناخت کرنا",
+      "meaning": "to recognize and name something",
+      "pos": "verb"
+    },
+    {
+      "word": "Implement",
+      "ipa": "/ˈɪmplɪmɛnt/",
+      "urdu": "نافذ کرنا",
+      "meaning": "to put a plan into effect",
+      "pos": "verb"
+    },
+    {
+      "word": "Implication",
+      "ipa": "/ˌɪmplɪˈkeɪʃən/",
+      "urdu": "مفہوم",
+      "meaning": "a likely consequence or suggestion",
+      "pos": "noun"
+    },
+    {
+      "word": "Income",
+      "ipa": "/ˈɪnkʌm/",
+      "urdu": "آمدنی",
+      "meaning": "money received for work or investments",
+      "pos": "noun"
+    },
+    {
+      "word": "Indicate",
+      "ipa": "/ˈɪndɪkeɪt/",
+      "urdu": "ظاہر کرنا",
+      "meaning": "to show or point out",
+      "pos": "verb"
+    },
+    {
+      "word": "Individual",
+      "ipa": "/ˌɪndɪˈvɪdʒuəl/",
+      "urdu": "فرد",
+      "meaning": "a single person or thing",
+      "pos": "noun"
+    },
+    {
+      "word": "Initiate",
+      "ipa": "/ɪˈnɪʃieɪt/",
+      "urdu": "شروع کرنا",
+      "meaning": "to cause a process to begin",
+      "pos": "verb"
+    },
+    {
+      "word": "Integrate",
+      "ipa": "/ˈɪntɪɡreɪt/",
+      "urdu": "یکجا کرنا",
+      "meaning": "to combine parts into a whole",
+      "pos": "verb"
+    },
+    {
+      "word": "Interpret",
+      "ipa": "/ɪnˈtɜːrprɪt/",
+      "urdu": "تشریح کرنا",
+      "meaning": "to explain the meaning of",
+      "pos": "verb"
+    },
+    {
+      "word": "Involve",
+      "ipa": "/ɪnˈvɒlv/",
+      "urdu": "شامل ہونا",
+      "meaning": "to include as a necessary part",
+      "pos": "verb"
+    },
+    {
+      "word": "Issue",
+      "ipa": "/ˈɪʃuː/",
+      "urdu": "مسئلہ",
+      "meaning": "an important topic for debate",
+      "pos": "noun"
+    },
+    {
+      "word": "Labor",
+      "ipa": "/ˈleɪbər/",
+      "urdu": "محنت",
+      "meaning": "work, especially physical work",
+      "pos": "noun"
+    },
+    {
+      "word": "Legal",
+      "ipa": "/ˈliːɡəl/",
+      "urdu": "قانونی",
+      "meaning": "permitted by or based on law",
+      "pos": "adjective"
+    },
+    {
+      "word": "Legislate",
+      "ipa": "/ˈlɛdʒɪsleɪt/",
+      "urdu": "قانون بنانا",
+      "meaning": "to make laws",
+      "pos": "verb"
+    },
+    {
+      "word": "Major",
+      "ipa": "/ˈmeɪdʒər/",
+      "urdu": "اہم",
+      "meaning": "most important or significant",
+      "pos": "adjective"
+    },
+    {
+      "word": "Mechanism",
+      "ipa": "/ˈmɛkənɪzəm/",
+      "urdu": "طریقہ کار",
+      "meaning": "a process by which something works",
+      "pos": "noun"
+    },
+    {
+      "word": "Method",
+      "ipa": "/ˈmɛθəd/",
+      "urdu": "طریقہ",
+      "meaning": "a procedure for achieving something",
+      "pos": "noun"
+    },
+    {
+      "word": "Minor",
+      "ipa": "/ˈmaɪnər/",
+      "urdu": "معمولی",
+      "meaning": "small in importance or extent",
+      "pos": "adjective"
+    },
+    {
+      "word": "Modify",
+      "ipa": "/ˈmɒdɪfaɪ/",
+      "urdu": "تبدیل کرنا",
+      "meaning": "to make partial changes to",
+      "pos": "verb"
+    },
+    {
+      "word": "Occur",
+      "ipa": "/əˈkɜːr/",
+      "urdu": "واقع ہونا",
+      "meaning": "to happen or take place",
+      "pos": "verb"
+    },
+    {
+      "word": "Percent",
+      "ipa": "/pərˈsɛnt/",
+      "urdu": "فیصد",
+      "meaning": "one part in every hundred",
+      "pos": "noun"
+    },
+    {
+      "word": "Period",
+      "ipa": "/ˈpɪəriəd/",
+      "urdu": "دور",
+      "meaning": "a length of time",
+      "pos": "noun"
+    },
+    {
+      "word": "Phenomenon",
+      "ipa": "/fɪˈnɒmɪnən/",
+      "urdu": "مظہر",
+      "meaning": "an observable fact or event",
+      "pos": "noun"
+    },
+    {
+      "word": "Philosophy",
+      "ipa": "/fɪˈlɒsəfi/",
+      "urdu": "فلسفہ",
+      "meaning": "study of fundamental questions",
+      "pos": "noun"
+    },
+    {
+      "word": "Policy",
+      "ipa": "/ˈpɒlɪsi/",
+      "urdu": "پالیسی",
+      "meaning": "a course of action adopted",
+      "pos": "noun"
+    },
+    {
+      "word": "Precise",
+      "ipa": "/prɪˈsaɪs/",
+      "urdu": "درست",
+      "meaning": "exact and accurate",
+      "pos": "adjective"
+    },
+    {
+      "word": "Predict",
+      "ipa": "/prɪˈdɪkt/",
+      "urdu": "پیش گوئی کرنا",
+      "meaning": "to say what will happen",
+      "pos": "verb"
+    },
+    {
+      "word": "Previous",
+      "ipa": "/ˈpriːviəs/",
+      "urdu": "پہلا",
+      "meaning": "coming before in time or order",
+      "pos": "adjective"
+    },
+    {
+      "word": "Primary",
+      "ipa": "/ˈpraɪmɛri/",
+      "urdu": "بنیادی",
+      "meaning": "most important or first in order",
+      "pos": "adjective"
+    },
+    {
+      "word": "Principle",
+      "ipa": "/ˈprɪnsɪpl/",
+      "urdu": "اصول",
+      "meaning": "a fundamental truth or rule",
+      "pos": "noun"
+    },
+    {
+      "word": "Proceed",
+      "ipa": "/prəˈsiːd/",
+      "urdu": "آگے بڑھنا",
+      "meaning": "to continue or move forward",
+      "pos": "verb"
+    },
+    {
+      "word": "Process",
+      "ipa": "/ˈprɒsɛs/",
+      "urdu": "عمل",
+      "meaning": "a series of actions to achieve a result",
+      "pos": "noun"
+    },
+    {
+      "word": "Prohibit",
+      "ipa": "/prəˈhɪbɪt/",
+      "urdu": "منع کرنا",
+      "meaning": "to formally forbid by law",
+      "pos": "verb"
+    },
+    {
+      "word": "Promote",
+      "ipa": "/prəˈmoʊt/",
+      "urdu": "فروغ دینا",
+      "meaning": "to support or encourage growth",
+      "pos": "verb"
+    },
+    {
+      "word": "Ratio",
+      "ipa": "/ˈreɪʃioʊ/",
+      "urdu": "تناسب",
+      "meaning": "a relationship between two quantities",
+      "pos": "noun"
+    },
+    {
+      "word": "React",
+      "ipa": "/riˈækt/",
+      "urdu": "رد عمل دینا",
+      "meaning": "to respond to a stimulus",
+      "pos": "verb"
+    },
+    {
+      "word": "Region",
+      "ipa": "/ˈriːdʒən/",
+      "urdu": "علاقہ",
+      "meaning": "a distinct area of a country",
+      "pos": "noun"
+    },
+    {
+      "word": "Relevant",
+      "ipa": "/ˈrɛlɪvənt/",
+      "urdu": "متعلقہ",
+      "meaning": "closely connected to the matter",
+      "pos": "adjective"
+    },
+    {
+      "word": "Require",
+      "ipa": "/rɪˈkwaɪər/",
+      "urdu": "ضرورت ہونا",
+      "meaning": "to need something as necessary",
+      "pos": "verb"
+    },
+    {
+      "word": "Research",
+      "ipa": "/rɪˈsɜːrtʃ/",
+      "urdu": "تحقیق",
+      "meaning": "systematic investigation of a topic",
+      "pos": "noun"
+    },
+    {
+      "word": "Respond",
+      "ipa": "/rɪˈspɒnd/",
+      "urdu": "جواب دینا",
+      "meaning": "to say or act in reply",
+      "pos": "verb"
+    },
+    {
+      "word": "Role",
+      "ipa": "/roʊl/",
+      "urdu": "کردار",
+      "meaning": "the function of someone in a situation",
+      "pos": "noun"
+    },
+    {
+      "word": "Section",
+      "ipa": "/ˈsɛkʃən/",
+      "urdu": "حصہ",
+      "meaning": "a distinct part of something",
+      "pos": "noun"
+    },
+    {
+      "word": "Sector",
+      "ipa": "/ˈsɛktər/",
+      "urdu": "شعبہ",
+      "meaning": "a distinct part of an economy",
+      "pos": "noun"
+    },
+    {
+      "word": "Significant",
+      "ipa": "/sɪɡˈnɪfɪkənt/",
+      "urdu": "اہم",
+      "meaning": "important or meaningful",
+      "pos": "adjective"
+    },
+    {
+      "word": "Similar",
+      "ipa": "/ˈsɪmɪlər/",
+      "urdu": "ملتا جلتا",
+      "meaning": "alike but not identical",
+      "pos": "adjective"
+    },
+    {
+      "word": "Source",
+      "ipa": "/sɔːrs/",
+      "urdu": "ماخذ",
+      "meaning": "a place from which something comes",
+      "pos": "noun"
+    },
+    {
+      "word": "Specific",
+      "ipa": "/spɪˈsɪfɪk/",
+      "urdu": "مخصوص",
+      "meaning": "clearly defined or identified",
+      "pos": "adjective"
+    },
+    {
+      "word": "Structure",
+      "ipa": "/ˈstrʌktʃər/",
+      "urdu": "ڈھانچہ",
+      "meaning": "the arrangement of parts",
+      "pos": "noun"
+    },
+    {
+      "word": "Sufficient",
+      "ipa": "/səˈfɪʃənt/",
+      "urdu": "کافی",
+      "meaning": "enough for a purpose",
+      "pos": "adjective"
+    },
+    {
+      "word": "Technique",
+      "ipa": "/tɛkˈniːk/",
+      "urdu": "تکنیک",
+      "meaning": "a skill or method of doing something",
+      "pos": "noun"
+    },
+    {
+      "word": "Theory",
+      "ipa": "/ˈθɪəri/",
+      "urdu": "نظریہ",
+      "meaning": "a set of ideas explaining something",
+      "pos": "noun"
+    },
+    {
+      "word": "Transition",
+      "ipa": "/træˈnzɪʃən/",
+      "urdu": "تبدیلی",
+      "meaning": "a change from one state to another",
+      "pos": "noun"
+    },
+    {
+      "word": "Valid",
+      "ipa": "/ˈvælɪd/",
+      "urdu": "درست",
+      "meaning": "based on sound reasoning",
+      "pos": "adjective"
+    },
+    {
+      "word": "Vary",
+      "ipa": "/ˈvɛri/",
+      "urdu": "مختلف ہونا",
+      "meaning": "to differ or change",
+      "pos": "verb"
+    },
+    {
+      "word": "Volume",
+      "ipa": "/ˈvɒljuːm/",
+      "urdu": "حجم",
+      "meaning": "the amount of space something occupies",
+      "pos": "noun"
+    }
+  ]
+}

@@ -364,3 +364,56 @@ class GrammarTopics extends Table {
   @override
   Set<Column<Object>> get primaryKey => {id};
 }
+
+/// A vocabulary word list (Phase v0.6.0), e.g. "General Vocabulary",
+/// "Business Vocabulary", "GRE High Frequency".
+///
+/// The Vocabulary module is a *learning* feature (organized A–Z word lists),
+/// distinct from the Dictionary. Lists and their words are seeded from bundled
+/// JSON packs under `assets/vocabulary/` (one pack per list) and merged into
+/// these read-mostly tables. [wordCount] is denormalized so the lists screen
+/// renders from a single query.
+@DataClassName('VocabularyListRow')
+class VocabularyLists extends Table {
+  /// Stable slug id, e.g. `general`, `business`.
+  TextColumn get id => text()();
+  TextColumn get title => text()();
+  TextColumn get subtitle => text().nullable()();
+  IntColumn get orderIndex => integer().withDefault(const Constant(0))();
+  IntColumn get wordCount => integer().withDefault(const Constant(0))();
+
+  @override
+  Set<Column<Object>> get primaryKey => {id};
+}
+
+/// A single vocabulary word within a list (Phase v0.6.0).
+///
+/// Deliberately minimal — this is a learning card, not a dictionary entry: the
+/// English word, its IPA, a short Urdu meaning, a short English meaning, and the
+/// part of speech. (Long definitions, examples, synonyms, idioms, etc. live in
+/// the Dictionary module.) [letter] is the A–Z bucket used for sticky headers
+/// and the quick-jump rail; [searchText] holds `wordLower + urduMeaning` so a
+/// single indexed column powers instant search in both English and Urdu.
+@DataClassName('VocabularyWordRow')
+class VocabularyWords extends Table {
+  /// Stable composite id: `<listId>/<wordLower>`.
+  TextColumn get id => text()();
+  TextColumn get listId => text()();
+  TextColumn get word => text()();
+  TextColumn get wordLower => text()();
+
+  /// Uppercase A–Z bucket (or `#` for non-alphabetic) for grouping/headers.
+  TextColumn get letter => text().withLength(min: 1, max: 1)();
+  TextColumn get ipa => text().nullable()();
+  TextColumn get urduMeaning => text()();
+  TextColumn get englishMeaning => text()();
+  TextColumn get partOfSpeech => text().nullable()();
+  IntColumn get orderIndex => integer().withDefault(const Constant(0))();
+
+  /// Lowercased English word + Urdu meaning, for case-insensitive substring
+  /// search across both scripts.
+  TextColumn get searchText => text().withDefault(const Constant(''))();
+
+  @override
+  Set<Column<Object>> get primaryKey => {id};
+}

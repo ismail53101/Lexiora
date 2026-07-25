@@ -1,0 +1,969 @@
+{
+  "list": {
+    "id": "toefl",
+    "title": "TOEFL Vocabulary",
+    "subtitle": "Academic words frequently seen on the TOEFL",
+    "order": 8
+  },
+  "words": [
+    {
+      "word": "Abstract",
+      "ipa": "/ˈæbstrækt/",
+      "urdu": "تجریدی",
+      "meaning": "existing in thought, not concrete form",
+      "pos": "adjective"
+    },
+    {
+      "word": "Abundant",
+      "ipa": "/əˈbʌndənt/",
+      "urdu": "وافر",
+      "meaning": "present in large amounts",
+      "pos": "adjective"
+    },
+    {
+      "word": "Accommodate",
+      "ipa": "/əˈkɒmədeɪt/",
+      "urdu": "رہائش دینا",
+      "meaning": "provide space or meet needs of",
+      "pos": "verb"
+    },
+    {
+      "word": "Accumulate",
+      "ipa": "/əˈkjuːmjəleɪt/",
+      "urdu": "جمع کرنا",
+      "meaning": "gather or collect over time",
+      "pos": "verb"
+    },
+    {
+      "word": "Acknowledge",
+      "ipa": "/əkˈnɒlɪdʒ/",
+      "urdu": "تسلیم کرنا",
+      "meaning": "accept or admit the truth of",
+      "pos": "verb"
+    },
+    {
+      "word": "Adapt",
+      "ipa": "/əˈdæpt/",
+      "urdu": "ڈھالنا",
+      "meaning": "adjust to new conditions",
+      "pos": "verb"
+    },
+    {
+      "word": "Adequate",
+      "ipa": "/ˈædɪkwət/",
+      "urdu": "کافی",
+      "meaning": "satisfactory or acceptable in quality",
+      "pos": "adjective"
+    },
+    {
+      "word": "Ambiguous",
+      "ipa": "/æmˈbɪɡjuəs/",
+      "urdu": "مبہم",
+      "meaning": "having more than one possible meaning",
+      "pos": "adjective"
+    },
+    {
+      "word": "Analyze",
+      "ipa": "/ˈænəlaɪz/",
+      "urdu": "تجزیہ کرنا",
+      "meaning": "examine in detail to understand",
+      "pos": "verb"
+    },
+    {
+      "word": "Annual",
+      "ipa": "/ˈænjuəl/",
+      "urdu": "سالانہ",
+      "meaning": "occurring once every year",
+      "pos": "adjective"
+    },
+    {
+      "word": "Anticipate",
+      "ipa": "/ænˈtɪsɪpeɪt/",
+      "urdu": "توقع کرنا",
+      "meaning": "expect or predict something in advance",
+      "pos": "verb"
+    },
+    {
+      "word": "Apparent",
+      "ipa": "/əˈpærənt/",
+      "urdu": "ظاہر",
+      "meaning": "clearly visible or obvious",
+      "pos": "adjective"
+    },
+    {
+      "word": "Arbitrary",
+      "ipa": "/ˈɑːrbɪtreri/",
+      "urdu": "من مانی",
+      "meaning": "based on random choice, not reason",
+      "pos": "adjective"
+    },
+    {
+      "word": "Assemble",
+      "ipa": "/əˈsɛmbəl/",
+      "urdu": "جمع کرنا",
+      "meaning": "gather together in one place",
+      "pos": "verb"
+    },
+    {
+      "word": "Assess",
+      "ipa": "/əˈsɛs/",
+      "urdu": "جائزہ لینا",
+      "meaning": "evaluate or estimate the value of",
+      "pos": "verb"
+    },
+    {
+      "word": "Attribute",
+      "ipa": "/ˈætrɪbjuːt/",
+      "urdu": "خاصیت",
+      "meaning": "quality or characteristic belonging to",
+      "pos": "noun"
+    },
+    {
+      "word": "Bias",
+      "ipa": "/ˈbaɪəs/",
+      "urdu": "تعصب",
+      "meaning": "inclination or prejudice for or against",
+      "pos": "noun"
+    },
+    {
+      "word": "Category",
+      "ipa": "/ˈkætɪɡɔːri/",
+      "urdu": "زمرہ",
+      "meaning": "class or division of things",
+      "pos": "noun"
+    },
+    {
+      "word": "Cease",
+      "ipa": "/siːz/",
+      "urdu": "بند کرنا",
+      "meaning": "stop completely",
+      "pos": "verb"
+    },
+    {
+      "word": "Coincide",
+      "ipa": "/ˌkoʊɪnˈsaɪd/",
+      "urdu": "ہم وقت ہونا",
+      "meaning": "happen at the same time or place",
+      "pos": "verb"
+    },
+    {
+      "word": "Collapse",
+      "ipa": "/kəˈlæps/",
+      "urdu": "گرنا",
+      "meaning": "fall down or fail suddenly",
+      "pos": "verb"
+    },
+    {
+      "word": "Commodity",
+      "ipa": "/kəˈmɒdɪti/",
+      "urdu": "جنس",
+      "meaning": "raw material or primary agricultural product",
+      "pos": "noun"
+    },
+    {
+      "word": "Compile",
+      "ipa": "/kəmˈpaɪl/",
+      "urdu": "مرتب کرنا",
+      "meaning": "gather and arrange information systematically",
+      "pos": "verb"
+    },
+    {
+      "word": "Compound",
+      "ipa": "/ˈkɒmpaʊnd/",
+      "urdu": "مرکب",
+      "meaning": "thing made of two or more parts",
+      "pos": "noun"
+    },
+    {
+      "word": "Conceive",
+      "ipa": "/kənˈsiːv/",
+      "urdu": "سوچنا",
+      "meaning": "form or devise an idea",
+      "pos": "verb"
+    },
+    {
+      "word": "Conform",
+      "ipa": "/kənˈfɔːrm/",
+      "urdu": "مطابقت کرنا",
+      "meaning": "comply with rules or standards",
+      "pos": "verb"
+    },
+    {
+      "word": "Consequently",
+      "ipa": "/ˈkɒnsɪkwəntli/",
+      "urdu": "اس لیے",
+      "meaning": "as a result or effect of",
+      "pos": "adverb"
+    },
+    {
+      "word": "Conspicuous",
+      "ipa": "/kənˈspɪkjuəs/",
+      "urdu": "نمایاں",
+      "meaning": "clearly visible and attracting attention",
+      "pos": "adjective"
+    },
+    {
+      "word": "Constitute",
+      "ipa": "/ˈkɒnstɪtjuːt/",
+      "urdu": "بنانا",
+      "meaning": "be part of a whole",
+      "pos": "verb"
+    },
+    {
+      "word": "Contaminate",
+      "ipa": "/kənˈtæmɪneɪt/",
+      "urdu": "آلودہ کرنا",
+      "meaning": "make impure by introducing harmful substance",
+      "pos": "verb"
+    },
+    {
+      "word": "Controversy",
+      "ipa": "/ˈkɒntrəvɜːrsi/",
+      "urdu": "تنازعہ",
+      "meaning": "prolonged public disagreement or debate",
+      "pos": "noun"
+    },
+    {
+      "word": "Converge",
+      "ipa": "/kənˈvɜːrdʒ/",
+      "urdu": "ملنا",
+      "meaning": "come together toward one point",
+      "pos": "verb"
+    },
+    {
+      "word": "Correspond",
+      "ipa": "/ˌkɒrɪˈspɒnd/",
+      "urdu": "مطابق ہونا",
+      "meaning": "match or be consistent with",
+      "pos": "verb"
+    },
+    {
+      "word": "Deduce",
+      "ipa": "/dɪˈdjuːs/",
+      "urdu": "نتیجہ نکالنا",
+      "meaning": "reach a conclusion by reasoning",
+      "pos": "verb"
+    },
+    {
+      "word": "Deficient",
+      "ipa": "/dɪˈfɪʃənt/",
+      "urdu": "کم",
+      "meaning": "lacking in required quality or quantity",
+      "pos": "adjective"
+    },
+    {
+      "word": "Define",
+      "ipa": "/dɪˈfaɪn/",
+      "urdu": "تعریف کرنا",
+      "meaning": "state the meaning of a word or phrase",
+      "pos": "verb"
+    },
+    {
+      "word": "Deliberate",
+      "ipa": "/dɪˈlɪbərət/",
+      "urdu": "جان بوجھ کر",
+      "meaning": "done consciously and intentionally",
+      "pos": "adjective"
+    },
+    {
+      "word": "Denote",
+      "ipa": "/dɪˈnoʊt/",
+      "urdu": "ظاہر کرنا",
+      "meaning": "be a sign of or indicate",
+      "pos": "verb"
+    },
+    {
+      "word": "Deplete",
+      "ipa": "/dɪˈpliːt/",
+      "urdu": "ختم کرنا",
+      "meaning": "use up a supply of resources",
+      "pos": "verb"
+    },
+    {
+      "word": "Deteriorate",
+      "ipa": "/dɪˈtɪəriəreɪt/",
+      "urdu": "خراب ہونا",
+      "meaning": "become progressively worse",
+      "pos": "verb"
+    },
+    {
+      "word": "Differentiate",
+      "ipa": "/ˌdɪfəˈrɛnʃieɪt/",
+      "urdu": "فرق کرنا",
+      "meaning": "recognize or show a difference",
+      "pos": "verb"
+    },
+    {
+      "word": "Diminish",
+      "ipa": "/dɪˈmɪnɪʃ/",
+      "urdu": "کم کرنا",
+      "meaning": "make or become smaller or less",
+      "pos": "verb"
+    },
+    {
+      "word": "Discrete",
+      "ipa": "/dɪˈskriːt/",
+      "urdu": "الگ",
+      "meaning": "individually separate and distinct",
+      "pos": "adjective"
+    },
+    {
+      "word": "Dispose",
+      "ipa": "/dɪˈspoʊz/",
+      "urdu": "ٹھکانے لگانا",
+      "meaning": "get rid of something",
+      "pos": "verb"
+    },
+    {
+      "word": "Distinct",
+      "ipa": "/dɪˈstɪŋkt/",
+      "urdu": "الگ",
+      "meaning": "recognizably different in nature",
+      "pos": "adjective"
+    },
+    {
+      "word": "Diverse",
+      "ipa": "/daɪˈvɜːrs/",
+      "urdu": "متنوع",
+      "meaning": "showing great variety",
+      "pos": "adjective"
+    },
+    {
+      "word": "Dominant",
+      "ipa": "/ˈdɒmɪnənt/",
+      "urdu": "غالب",
+      "meaning": "most powerful or influential",
+      "pos": "adjective"
+    },
+    {
+      "word": "Elaborate",
+      "ipa": "/ɪˈlæbərɪt/",
+      "urdu": "تفصیلی",
+      "meaning": "involving many carefully arranged details",
+      "pos": "adjective"
+    },
+    {
+      "word": "Eliminate",
+      "ipa": "/ɪˈlɪmɪneɪt/",
+      "urdu": "ختم کرنا",
+      "meaning": "completely remove or get rid of",
+      "pos": "verb"
+    },
+    {
+      "word": "Emerge",
+      "ipa": "/ɪˈmɜːrdʒ/",
+      "urdu": "نکلنا",
+      "meaning": "come into being or become known",
+      "pos": "verb"
+    },
+    {
+      "word": "Empirical",
+      "ipa": "/ɪmˈpɪrɪkəl/",
+      "urdu": "تجرباتی",
+      "meaning": "based on observation or experiment",
+      "pos": "adjective"
+    },
+    {
+      "word": "Endure",
+      "ipa": "/ɪnˈdjʊər/",
+      "urdu": "برداشت کرنا",
+      "meaning": "remain in existence or suffer patiently",
+      "pos": "verb"
+    },
+    {
+      "word": "Enhance",
+      "ipa": "/ɪnˈhæns/",
+      "urdu": "بہتر بنانا",
+      "meaning": "increase quality, value, or extent of",
+      "pos": "verb"
+    },
+    {
+      "word": "Ensure",
+      "ipa": "/ɪnˈʃʊər/",
+      "urdu": "یقینی بنانا",
+      "meaning": "make certain something will happen",
+      "pos": "verb"
+    },
+    {
+      "word": "Evaluate",
+      "ipa": "/ɪˈvæljueɪt/",
+      "urdu": "اندازہ لگانا",
+      "meaning": "assess or judge the value of",
+      "pos": "verb"
+    },
+    {
+      "word": "Evidence",
+      "ipa": "/ˈɛvɪdəns/",
+      "urdu": "شواہد",
+      "meaning": "available facts indicating belief or truth",
+      "pos": "noun"
+    },
+    {
+      "word": "Evolve",
+      "ipa": "/ɪˈvɒlv/",
+      "urdu": "ارتقاء کرنا",
+      "meaning": "develop gradually over time",
+      "pos": "verb"
+    },
+    {
+      "word": "Exceed",
+      "ipa": "/ɪkˈsiːd/",
+      "urdu": "بڑھنا",
+      "meaning": "be greater than a limit or amount",
+      "pos": "verb"
+    },
+    {
+      "word": "Exhibit",
+      "ipa": "/ɪɡˈzɪbɪt/",
+      "urdu": "ظاہر کرنا",
+      "meaning": "display or show publicly",
+      "pos": "verb"
+    },
+    {
+      "word": "Explicit",
+      "ipa": "/ɪkˈsplɪsɪt/",
+      "urdu": "واضح",
+      "meaning": "stated clearly and in detail",
+      "pos": "adjective"
+    },
+    {
+      "word": "Exploit",
+      "ipa": "/ɪkˈsplɔɪt/",
+      "urdu": "فائدہ اٹھانا",
+      "meaning": "make full use of unfairly or fully",
+      "pos": "verb"
+    },
+    {
+      "word": "Extract",
+      "ipa": "/ɪkˈstrækt/",
+      "urdu": "نکالنا",
+      "meaning": "remove or take out by effort",
+      "pos": "verb"
+    },
+    {
+      "word": "Factor",
+      "ipa": "/ˈfæktər/",
+      "urdu": "عنصر",
+      "meaning": "element contributing to a result",
+      "pos": "noun"
+    },
+    {
+      "word": "Feasible",
+      "ipa": "/ˈfiːzɪbəl/",
+      "urdu": "ممکن",
+      "meaning": "possible and practical to do",
+      "pos": "adjective"
+    },
+    {
+      "word": "Fluctuate",
+      "ipa": "/ˈflʌktʃueɪt/",
+      "urdu": "اتار چڑھاؤ",
+      "meaning": "rise and fall irregularly",
+      "pos": "verb"
+    },
+    {
+      "word": "Fundamental",
+      "ipa": "/ˌfʌndəˈmɛntəl/",
+      "urdu": "بنیادی",
+      "meaning": "forming a necessary base or core",
+      "pos": "adjective"
+    },
+    {
+      "word": "Generate",
+      "ipa": "/ˈdʒɛnəreɪt/",
+      "urdu": "پیدا کرنا",
+      "meaning": "produce or create something",
+      "pos": "verb"
+    },
+    {
+      "word": "Hierarchy",
+      "ipa": "/ˈhaɪərɑːrki/",
+      "urdu": "درجہ بندی",
+      "meaning": "system ranked in order of authority",
+      "pos": "noun"
+    },
+    {
+      "word": "Hypothesis",
+      "ipa": "/haɪˈpɒθɪsɪs/",
+      "urdu": "قیاس",
+      "meaning": "proposed explanation for investigation",
+      "pos": "noun"
+    },
+    {
+      "word": "Illustrate",
+      "ipa": "/ˈɪləstreɪt/",
+      "urdu": "واضح کرنا",
+      "meaning": "explain or make clear with examples",
+      "pos": "verb"
+    },
+    {
+      "word": "Impartial",
+      "ipa": "/ɪmˈpɑːrʃəl/",
+      "urdu": "غیر جانبدار",
+      "meaning": "treating all rivals or disputants equally",
+      "pos": "adjective"
+    },
+    {
+      "word": "Implement",
+      "ipa": "/ˈɪmplɪmɛnt/",
+      "urdu": "نافذ کرنا",
+      "meaning": "put a plan into effect",
+      "pos": "verb"
+    },
+    {
+      "word": "Imply",
+      "ipa": "/ɪmˈplaɪ/",
+      "urdu": "مطلب ہونا",
+      "meaning": "suggest without stating directly",
+      "pos": "verb"
+    },
+    {
+      "word": "Incentive",
+      "ipa": "/ɪnˈsɛntɪv/",
+      "urdu": "ترغیب",
+      "meaning": "thing that motivates or encourages action",
+      "pos": "noun"
+    },
+    {
+      "word": "Incorporate",
+      "ipa": "/ɪnˈkɔːrpəreɪt/",
+      "urdu": "شامل کرنا",
+      "meaning": "include or add as part of a whole",
+      "pos": "verb"
+    },
+    {
+      "word": "Inevitable",
+      "ipa": "/ɪnˈɛvɪtəbəl/",
+      "urdu": "ناگزیر",
+      "meaning": "certain to happen and unavoidable",
+      "pos": "adjective"
+    },
+    {
+      "word": "Infer",
+      "ipa": "/ɪnˈfɜːr/",
+      "urdu": "نتیجہ نکالنا",
+      "meaning": "conclude from evidence and reasoning",
+      "pos": "verb"
+    },
+    {
+      "word": "Inherent",
+      "ipa": "/ɪnˈhɪərənt/",
+      "urdu": "فطری",
+      "meaning": "existing as a natural or permanent part",
+      "pos": "adjective"
+    },
+    {
+      "word": "Initiate",
+      "ipa": "/ɪˈnɪʃieɪt/",
+      "urdu": "شروع کرنا",
+      "meaning": "cause a process to begin",
+      "pos": "verb"
+    },
+    {
+      "word": "Integrate",
+      "ipa": "/ˈɪntɪɡreɪt/",
+      "urdu": "یکجا کرنا",
+      "meaning": "combine into a whole",
+      "pos": "verb"
+    },
+    {
+      "word": "Intense",
+      "ipa": "/ɪnˈtɛns/",
+      "urdu": "شدید",
+      "meaning": "of extreme force, degree, or strength",
+      "pos": "adjective"
+    },
+    {
+      "word": "Intervene",
+      "ipa": "/ˌɪntərˈviːn/",
+      "urdu": "مداخلت کرنا",
+      "meaning": "come between to affect a situation",
+      "pos": "verb"
+    },
+    {
+      "word": "Isolate",
+      "ipa": "/ˈaɪsəleɪt/",
+      "urdu": "الگ کرنا",
+      "meaning": "separate from others",
+      "pos": "verb"
+    },
+    {
+      "word": "Justify",
+      "ipa": "/ˈdʒʌstɪfaɪ/",
+      "urdu": "جواز دینا",
+      "meaning": "show or prove to be right",
+      "pos": "verb"
+    },
+    {
+      "word": "Logical",
+      "ipa": "/ˈlɒdʒɪkəl/",
+      "urdu": "منطقی",
+      "meaning": "following the rules of logic",
+      "pos": "adjective"
+    },
+    {
+      "word": "Manipulate",
+      "ipa": "/məˈnɪpjəleɪt/",
+      "urdu": "کنٹرول کرنا",
+      "meaning": "control or handle skillfully or unfairly",
+      "pos": "verb"
+    },
+    {
+      "word": "Mechanism",
+      "ipa": "/ˈmɛkənɪzəm/",
+      "urdu": "طریقہ کار",
+      "meaning": "process or system by which something works",
+      "pos": "noun"
+    },
+    {
+      "word": "Migrate",
+      "ipa": "/ˈmaɪɡreɪt/",
+      "urdu": "ہجرت کرنا",
+      "meaning": "move from one region to another",
+      "pos": "verb"
+    },
+    {
+      "word": "Modify",
+      "ipa": "/ˈmɒdɪfaɪ/",
+      "urdu": "تبدیل کرنا",
+      "meaning": "make partial changes to something",
+      "pos": "verb"
+    },
+    {
+      "word": "Negligible",
+      "ipa": "/ˈnɛɡlɪdʒɪbəl/",
+      "urdu": "معمولی",
+      "meaning": "too small to be worth considering",
+      "pos": "adjective"
+    },
+    {
+      "word": "Neutral",
+      "ipa": "/ˈnjuːtrəl/",
+      "urdu": "غیر جانبدار",
+      "meaning": "not supporting or helping either side",
+      "pos": "adjective"
+    },
+    {
+      "word": "Notion",
+      "ipa": "/ˈnoʊʃən/",
+      "urdu": "خیال",
+      "meaning": "concept or belief about something",
+      "pos": "noun"
+    },
+    {
+      "word": "Objective",
+      "ipa": "/əbˈdʒɛktɪv/",
+      "urdu": "مقصد",
+      "meaning": "not influenced by personal feelings",
+      "pos": "adjective"
+    },
+    {
+      "word": "Obtain",
+      "ipa": "/əbˈteɪn/",
+      "urdu": "حاصل کرنا",
+      "meaning": "acquire or come to possess",
+      "pos": "verb"
+    },
+    {
+      "word": "Offset",
+      "ipa": "/ˈɒfsɛt/",
+      "urdu": "برابر کرنا",
+      "meaning": "counteract or compensate for something",
+      "pos": "verb"
+    },
+    {
+      "word": "Optimal",
+      "ipa": "/ˈɒptɪməl/",
+      "urdu": "بہترین",
+      "meaning": "best or most favorable possible",
+      "pos": "adjective"
+    },
+    {
+      "word": "Perceive",
+      "ipa": "/pərˈsiːv/",
+      "urdu": "سمجھنا",
+      "meaning": "become aware of through the senses",
+      "pos": "verb"
+    },
+    {
+      "word": "Perspective",
+      "ipa": "/pərˈspɛktɪv/",
+      "urdu": "نقطہ نظر",
+      "meaning": "particular attitude toward a subject",
+      "pos": "noun"
+    },
+    {
+      "word": "Phenomenon",
+      "ipa": "/fɪˈnɒmɪnɒn/",
+      "urdu": "مظہر",
+      "meaning": "observable fact or event",
+      "pos": "noun"
+    },
+    {
+      "word": "Plausible",
+      "ipa": "/ˈplɔːzɪbəl/",
+      "urdu": "معقول",
+      "meaning": "seeming reasonable or probable",
+      "pos": "adjective"
+    },
+    {
+      "word": "Precise",
+      "ipa": "/prɪˈsaɪs/",
+      "urdu": "درست",
+      "meaning": "exact and accurate in detail",
+      "pos": "adjective"
+    },
+    {
+      "word": "Predominant",
+      "ipa": "/prɪˈdɒmɪnənt/",
+      "urdu": "غالب",
+      "meaning": "most present or noticeable",
+      "pos": "adjective"
+    },
+    {
+      "word": "Presume",
+      "ipa": "/prɪˈzjuːm/",
+      "urdu": "فرض کرنا",
+      "meaning": "suppose something without firm evidence",
+      "pos": "verb"
+    },
+    {
+      "word": "Prevail",
+      "ipa": "/prɪˈveɪl/",
+      "urdu": "غالب آنا",
+      "meaning": "prove more powerful or widespread",
+      "pos": "verb"
+    },
+    {
+      "word": "Prohibit",
+      "ipa": "/prəˈhɪbɪt/",
+      "urdu": "منع کرنا",
+      "meaning": "formally forbid by law or rule",
+      "pos": "verb"
+    },
+    {
+      "word": "Quantify",
+      "ipa": "/ˈkwɒntɪfaɪ/",
+      "urdu": "پیمائش کرنا",
+      "meaning": "express as a measurable quantity",
+      "pos": "verb"
+    },
+    {
+      "word": "Radical",
+      "ipa": "/ˈrædɪkəl/",
+      "urdu": "بنیادی",
+      "meaning": "relating to fundamental change",
+      "pos": "adjective"
+    },
+    {
+      "word": "Refine",
+      "ipa": "/rɪˈfaɪn/",
+      "urdu": "بہتر کرنا",
+      "meaning": "improve by making small changes",
+      "pos": "verb"
+    },
+    {
+      "word": "Reinforce",
+      "ipa": "/ˌriːɪnˈfɔːrs/",
+      "urdu": "مضبوط کرنا",
+      "meaning": "strengthen or support something further",
+      "pos": "verb"
+    },
+    {
+      "word": "Relevant",
+      "ipa": "/ˈrɛlɪvənt/",
+      "urdu": "متعلقہ",
+      "meaning": "closely connected or appropriate",
+      "pos": "adjective"
+    },
+    {
+      "word": "Reluctant",
+      "ipa": "/rɪˈlʌktənt/",
+      "urdu": "ہچکچانا",
+      "meaning": "unwilling or hesitant to do",
+      "pos": "adjective"
+    },
+    {
+      "word": "Resolve",
+      "ipa": "/rɪˈzɒlv/",
+      "urdu": "حل کرنا",
+      "meaning": "settle or find a solution to",
+      "pos": "verb"
+    },
+    {
+      "word": "Restrict",
+      "ipa": "/rɪˈstrɪkt/",
+      "urdu": "محدود کرنا",
+      "meaning": "limit or control the size or amount of",
+      "pos": "verb"
+    },
+    {
+      "word": "Retain",
+      "ipa": "/rɪˈteɪn/",
+      "urdu": "برقرار رکھنا",
+      "meaning": "continue to have or keep",
+      "pos": "verb"
+    },
+    {
+      "word": "Scenario",
+      "ipa": "/sɪˈnɑːriˌoʊ/",
+      "urdu": "صورتحال",
+      "meaning": "possible sequence of events",
+      "pos": "noun"
+    },
+    {
+      "word": "Scrutinize",
+      "ipa": "/ˈskruːtɪnaɪz/",
+      "urdu": "باریک بینی سے دیکھنا",
+      "meaning": "examine closely and critically",
+      "pos": "verb"
+    },
+    {
+      "word": "Significant",
+      "ipa": "/sɪɡˈnɪfɪkənt/",
+      "urdu": "اہم",
+      "meaning": "having a major effect or importance",
+      "pos": "adjective"
+    },
+    {
+      "word": "Simultaneous",
+      "ipa": "/ˌsɪməlˈteɪniəs/",
+      "urdu": "بیک وقت",
+      "meaning": "occurring at the same time",
+      "pos": "adjective"
+    },
+    {
+      "word": "Sophisticated",
+      "ipa": "/səˈfɪstɪkeɪtɪd/",
+      "urdu": "پیچیدہ",
+      "meaning": "highly developed and complex",
+      "pos": "adjective"
+    },
+    {
+      "word": "Spontaneous",
+      "ipa": "/spɒnˈteɪniəs/",
+      "urdu": "خودبخود",
+      "meaning": "occurring naturally without planning",
+      "pos": "adjective"
+    },
+    {
+      "word": "Subsequent",
+      "ipa": "/ˈsʌbsɪkwənt/",
+      "urdu": "بعد کا",
+      "meaning": "coming after in time or order",
+      "pos": "adjective"
+    },
+    {
+      "word": "Subtle",
+      "ipa": "/ˈsʌtəl/",
+      "urdu": "باریک",
+      "meaning": "not obvious and hard to notice",
+      "pos": "adjective"
+    },
+    {
+      "word": "Sufficient",
+      "ipa": "/səˈfɪʃənt/",
+      "urdu": "کافی",
+      "meaning": "enough for a particular purpose",
+      "pos": "adjective"
+    },
+    {
+      "word": "Suppress",
+      "ipa": "/səˈprɛs/",
+      "urdu": "دبانا",
+      "meaning": "forcibly stop or restrain something",
+      "pos": "verb"
+    },
+    {
+      "word": "Sustain",
+      "ipa": "/səˈsteɪn/",
+      "urdu": "برقرار رکھنا",
+      "meaning": "maintain or support over time",
+      "pos": "verb"
+    },
+    {
+      "word": "Terminate",
+      "ipa": "/ˈtɜːrmɪneɪt/",
+      "urdu": "ختم کرنا",
+      "meaning": "bring to an end",
+      "pos": "verb"
+    },
+    {
+      "word": "Theory",
+      "ipa": "/ˈθɪəri/",
+      "urdu": "نظریہ",
+      "meaning": "system of ideas explaining something",
+      "pos": "noun"
+    },
+    {
+      "word": "Transform",
+      "ipa": "/trænsˈfɔːrm/",
+      "urdu": "بدلنا",
+      "meaning": "change in form, appearance, or nature",
+      "pos": "verb"
+    },
+    {
+      "word": "Undergo",
+      "ipa": "/ˌʌndərˈɡoʊ/",
+      "urdu": "گزرنا",
+      "meaning": "experience or be subjected to",
+      "pos": "verb"
+    },
+    {
+      "word": "Uniform",
+      "ipa": "/ˈjuːnɪfɔːrm/",
+      "urdu": "یکساں",
+      "meaning": "remaining the same in all cases",
+      "pos": "adjective"
+    },
+    {
+      "word": "Utilize",
+      "ipa": "/ˈjuːtɪlaɪz/",
+      "urdu": "استعمال کرنا",
+      "meaning": "make practical use of",
+      "pos": "verb"
+    },
+    {
+      "word": "Valid",
+      "ipa": "/ˈvælɪd/",
+      "urdu": "درست",
+      "meaning": "logically or factually sound",
+      "pos": "adjective"
+    },
+    {
+      "word": "Verify",
+      "ipa": "/ˈvɛrɪfaɪ/",
+      "urdu": "تصدیق کرنا",
+      "meaning": "make sure or confirm the truth of",
+      "pos": "verb"
+    },
+    {
+      "word": "Versatile",
+      "ipa": "/ˈvɜːrsətɪl/",
+      "urdu": "ہمہ فن",
+      "meaning": "able to adapt to many functions",
+      "pos": "adjective"
+    },
+    {
+      "word": "Viable",
+      "ipa": "/ˈvaɪəbəl/",
+      "urdu": "قابل عمل",
+      "meaning": "capable of working successfully",
+      "pos": "adjective"
+    },
+    {
+      "word": "Widespread",
+      "ipa": "/ˈwaɪdsprɛd/",
+      "urdu": "وسیع پیمانے پر",
+      "meaning": "spread over a large area or group",
+      "pos": "adjective"
+    },
+    {
+      "word": "Yield",
+      "ipa": "/jiːld/",
+      "urdu": "پیدوار",
+      "meaning": "produce or provide a result",
+      "pos": "verb"
+    }
+  ]
+}
