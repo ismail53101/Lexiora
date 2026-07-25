@@ -6,8 +6,10 @@ import 'package:lexiora/core/database/app_database.dart';
 import 'package:lexiora/core/module/feature_module.dart';
 import 'package:lexiora/core/navigation/home_destination.dart';
 import 'package:lexiora/core/reader_engine/word_action.dart';
+import 'package:lexiora/core/services/pronunciation_service.dart';
 import 'package:lexiora/modules/dictionary/data/datasources/dictionary_local_data_source.dart';
 import 'package:lexiora/modules/dictionary/data/dictionary_seeder.dart';
+import 'package:lexiora/modules/dictionary/data/exam_words_seeder.dart';
 import 'package:lexiora/modules/dictionary/data/repositories/dictionary_repository_impl.dart';
 import 'package:lexiora/modules/dictionary/domain/repositories/dictionary_repository.dart';
 import 'package:lexiora/modules/dictionary/presentation/pages/dictionary_page.dart';
@@ -38,6 +40,12 @@ class DictionaryModule extends FeatureModule {
       )
       ..registerLazySingleton<DictionarySeeder>(
         () => DictionarySeeder(getIt<DictionaryLocalDataSource>()),
+      )
+      ..registerLazySingleton<ExamWordsSeeder>(
+        () => ExamWordsSeeder(getIt<DictionaryLocalDataSource>()),
+      )
+      ..registerLazySingleton<PronunciationService>(
+        TtsPronunciationService.new,
       );
 
     // Contribute the "Look up" action to the shared reader registry (a core

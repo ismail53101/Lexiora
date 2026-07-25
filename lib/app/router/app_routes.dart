@@ -16,6 +16,17 @@ abstract final class AppRoutes {
   static String dictionaryWord(String word) =>
       '/dictionary/word/${Uri.encodeComponent(word)}';
 
+  // Grammar (Phase v0.4.0 / hierarchy v0.5.0)
+  static const String grammar = '/grammar';
+  static const String grammarTopicName = 'grammarTopic';
+  static const String grammarTopicPattern = '/grammar/topic/:id';
+  static String grammarTopic(String id) =>
+      '/grammar/topic/${Uri.encodeComponent(id)}';
+  static const String grammarLessonName = 'grammarLesson';
+  static const String grammarLessonPattern = '/grammar/lesson/:id';
+  static String grammarLesson(String id) =>
+      '/grammar/lesson/${Uri.encodeComponent(id)}';
+
   static const String readerName = 'reader';
   static const String readerPattern = '/reader/:id';
   static String reader(String documentId) => '/reader/$documentId';

@@ -1,4 +1,12 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Internet access for the Hybrid Translation System's online fallback
+         (English → Urdu, v0.4.1). The app remains offline-first; the network is
+         used only when a word has no offline translation. This MUST be declared
+         in the main manifest (the Flutter template only adds INTERNET to the
+         debug/profile manifests), otherwise release builds cannot reach the
+         online provider and the fallback silently fails. -->
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <!-- Read PDFs from shared storage on Android 10 and below (API <= 29),
          where broad read access is enough to enumerate every PDF on the device.
          On Android 11+ (API 30+) this legacy permission no longer grants
@@ -54,6 +62,11 @@
         <intent>
             <action android:name="android.intent.action.PROCESS_TEXT"/>
             <data android:mimeType="text/plain"/>
+        </intent>
+        <!-- Text-to-speech engine visibility (Android 11+) for the dictionary's
+             audio pronunciation button (flutter_tts). -->
+        <intent>
+            <action android:name="android.intent.action.TTS_SERVICE"/>
         </intent>
     </queries>
 </manifest>

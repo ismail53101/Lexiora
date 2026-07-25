@@ -3,7 +3,7 @@ description: "Lexiora — a premium, offline-first study & language-learning pla
 publish_to: "none"
 
 # Semantic version. The `+N` suffix is the Android versionCode.
-version: 0.3.4+13
+version: 0.5.3+23
 
 environment:
   sdk: ">=3.10.0 <4.0.0"
@@ -19,6 +19,8 @@ dependencies:
     sdk: flutter
   flutter_animate: ^4.5.2
   flutter_riverpod: ^3.3.2
+  # Offline, on-device text-to-speech for word pronunciation (Dictionary v2.1).
+  flutter_tts: ^4.2.3
   get_it: ^9.2.1
   go_router: ^17.3.0
   path: ^1.9.1
@@ -41,3 +43,4 @@ flutter:
   assets:
     - assets/dictionary/
     - assets/translations/
+    - assets/grammar/
