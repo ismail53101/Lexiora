@@ -1,8 +1,17 @@
-# Lexiora — Future Integration Guide
+# Sapiora — Future Integration Guide
 
 How to turn a placeholder module in `lib/modules/` into a real feature — or add
 a brand-new one — **without editing any existing code**. This is the payoff of
 the `FeatureModule` architecture.
+
+> **Worked example, now in the codebase:** the **Dictionary** module
+> (`lib/modules/dictionary/`, Phase 2.1) followed exactly the steps below — a
+> new table + v2 migration, a domain/data/presentation stack, a `FeatureModule`
+> that adds DI + routes + a Home tile, and a `WordAction` registered with the
+> core `WordActionRegistry` for reader integration. The only changes to
+> pre-existing files were the additive ones this guide prescribes (register the
+> table, list the module, declare the asset). Read it as the reference
+> implementation for everything below.
 
 ---
 

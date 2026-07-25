@@ -3,9 +3,9 @@
 /// Anything that might change per-environment lives in settings or the database
 /// instead — these are true constants that never require a rewrite.
 abstract final class AppConstants {
-  static const String appName = 'Lexiora';
+  static const String appName = 'Sapiora';
   static const String appTagline = 'Read. Study. Master languages.';
-  static const String appVersion = '0.1.0';
+  static const String appVersion = '0.3.4';
 
   /// Sub-directories (inside the app documents dir) used for local storage.
   static const String documentsDirName = 'documents';

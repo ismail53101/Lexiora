@@ -1,6 +1,6 @@
-# Lexiora — Architecture
+# Sapiora — Architecture
 
-This document explains how Lexiora is structured, why, and how the pieces fit
+This document explains how Sapiora is structured, why, and how the pieces fit
 together so that future modules can be added **without changing existing code**.
 
 ---
@@ -152,14 +152,22 @@ place that imports `pdfrx`. Swapping to another renderer means providing a new
 
 ---
 
-## 9. Tap-on-word extension point (prepared, not implemented)
+## 9. Tap-on-word extension point (multi-action)
 
 `core/reader_engine/word_action.dart` defines `WordAction` and a
-`WordActionRegistry` singleton (registered in DI, empty in Phase 1). Future
-language modules will register actions (define, translate, synonyms, antonyms,
-pronounce, grammar, save-to-vocabulary); the reader already exposes an
-`onWordTap` hook and will render the popup from whatever the registry contains —
-again, without the reader changing.
+`WordActionRegistry` singleton (registered in DI). Modules contribute actions at
+startup: the **Dictionary module** registers `dictionary.define` ("Look up",
+priority 10) and the **Translation module** registers `translation.translate`
+("Translate", priority 20). When a single word is selected, the reader's
+selection toolbar renders **one button per registered action** (ordered by
+priority) and invokes the chosen one, which opens that module's popup.
+
+Crucially, the reader depends only on this **core abstraction** — it never
+imports the dictionary or translation modules, and it was not special-cased to
+add Translate: contributing another `WordAction` is all it took. Future language
+modules (synonyms, grammar, …) register further actions the same way, with no
+change to the reader. This is the Open/Closed Principle at the interaction
+layer.
 
 ---
 
@@ -167,7 +175,7 @@ again, without the reader changing.
 
 - No runtime network calls; no account. Everything stays on the device.
 - **Storage access for discovery.** To list the PDFs already on the device,
-  Lexiora requests **All files access** (`MANAGE_EXTERNAL_STORAGE`) on Android
+  Sapiora requests **All files access** (`MANAGE_EXTERNAL_STORAGE`) on Android
   11+, and the legacy read permission on Android ≤ 10. Files are read **in
   place** — never copied into the app and never uploaded. Discovery is isolated
   behind two swappable services: `PdfDiscoveryService` (the native filesystem

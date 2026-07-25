@@ -8,6 +8,7 @@ import 'package:lexiora/core/models/normalized_rect.dart';
 import 'package:lexiora/core/reader_engine/pdf_engine.dart';
 import 'package:lexiora/core/reader_engine/pdf_reader_controller.dart';
 import 'package:lexiora/core/reader_engine/reader_models.dart';
+import 'package:lexiora/core/reader_engine/word_action.dart';
 import 'package:lexiora/core/services/screen_wake_service.dart';
 import 'package:lexiora/core/utils/logger.dart';
 import 'package:lexiora/core/widgets/error_view.dart';
@@ -244,6 +245,33 @@ class _ReaderPageState extends ConsumerState<ReaderPage> {
     if (mounted) setState(() => _selection = null);
   }
 
+  /// The selected text when it is a single word (letters with optional internal
+  /// hyphen/apostrophe); otherwise null. Drives the toolbar's word actions
+  /// (Look up, Translate) — which are single-word only.
+  String? _selectionSingleWord() {
+    final PdfTextSelectionData? sel = _selection;
+    if (sel == null) return null;
+    final String text = sel.text.trim();
+    if (text.isEmpty || text.length > 64) return null;
+    if (!RegExp(r"^[A-Za-z][A-Za-z'’\-]*$").hasMatch(text)) return null;
+    return text;
+  }
+
+  /// Invokes a registered [WordAction] for the selected word. The reader stays
+  /// decoupled from the dictionary/translation modules — it only knows the core
+  /// [WordActionRegistry] abstraction, and renders whatever it contains.
+  Future<void> _invokeWordAction(WordAction action, String word) async {
+    final PdfTextSelectionData? sel = _selection;
+    final WordActionContext ctx = WordActionContext(
+      documentId: _id,
+      pageNumber: sel?.primaryPage ?? _controller.currentPage.value,
+      word: word,
+      selection: sel,
+    );
+    await action.invoke(context, ctx);
+    await _clearSelection();
+  }
+
   void _cycleColorMode() {
     setState(() {
       _colorMode = ReaderColorMode
@@ -383,14 +411,32 @@ class _ReaderPageState extends ConsumerState<ReaderPage> {
               right: 12,
               bottom: 16,
               child: Center(
-                child: ReaderSelectionToolbar(
-                  colors: _highlightColors,
-                  onHighlight: (int c) => _addHighlight(c, AnnotationType.highlight),
-                  onUnderline: (int c) => _addHighlight(c, AnnotationType.underline),
-                  onNote: _noteSelection,
-                  onBookmark: _bookmarkSelection,
-                  onCopy: _copySelection,
-                  onDismiss: _clearSelection,
+                child: Builder(
+                  builder: (BuildContext context) {
+                    final WordActionRegistry registry =
+                        sl<WordActionRegistry>();
+                    final String? word = registry.hasActions
+                        ? _selectionSingleWord()
+                        : null;
+                    return ReaderSelectionToolbar(
+                      colors: _highlightColors,
+                      onHighlight: (int c) =>
+                          _addHighlight(c, AnnotationType.highlight),
+                      onUnderline: (int c) =>
+                          _addHighlight(c, AnnotationType.underline),
+                      onNote: _noteSelection,
+                      onBookmark: _bookmarkSelection,
+                      onCopy: _copySelection,
+                      onDismiss: _clearSelection,
+                      selectedWord: word,
+                      wordActions: word == null
+                          ? const <WordAction>[]
+                          : registry.actions,
+                      onWordAction: word == null
+                          ? null
+                          : (WordAction a) => _invokeWordAction(a, word),
+                    );
+                  },
                 ),
               ),
             ),

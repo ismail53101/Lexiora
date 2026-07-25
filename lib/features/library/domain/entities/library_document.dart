@@ -1,5 +1,12 @@
 import 'package:equatable/equatable.dart';
 
+/// Canonical de-dup key for a document, based on its immutable original file
+/// name (without extension, lowercased) and byte size. Shared by automatic
+/// discovery and manual import so the same file is never indexed twice — and
+/// stable across renames, which only change the display title.
+String libraryDedupKey(String fileName, int fileSize) =>
+    '${fileName.trim().toLowerCase()}|$fileSize';
+
 /// A PDF in the user's library, with its metadata.
 class LibraryDocument extends Equatable {
   const LibraryDocument({
@@ -14,6 +21,7 @@ class LibraryDocument extends Equatable {
     this.coverPath,
     this.categoryId,
     this.lastOpenedAt,
+    this.isManaged = false,
   });
 
   final String id;
@@ -27,6 +35,10 @@ class LibraryDocument extends Equatable {
   final String? coverPath;
   final String? categoryId;
   final DateTime? lastOpenedAt;
+
+  /// True when [filePath] is a private copy the app made during manual import
+  /// (so it is deleted with the document). False for in-place discovered files.
+  final bool isManaged;
 
   /// Human-friendly file size, e.g. "2.4 MB".
   String get readableSize {
@@ -54,6 +66,7 @@ class LibraryDocument extends Equatable {
         coverPath,
         categoryId,
         lastOpenedAt,
+        isManaged,
       ];
 }
 

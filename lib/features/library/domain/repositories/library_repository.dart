@@ -11,9 +11,12 @@ abstract interface class LibraryRepository {
 
   Future<LibraryDocument?> getById(String id);
 
-  /// Returns the set of file paths already indexed — used to de-duplicate
-  /// automatic, reference-in-place discovery.
-  Future<Set<String>> existingPaths();
+  /// Returns the set of content de-dup keys (`fileName|fileSize`, lowercased)
+  /// for every document. Shared by automatic discovery and manual import so a
+  /// file that is already in the library — however it got there — is never
+  /// added twice. Based on the immutable [LibraryDocument.fileName], so renaming
+  /// a document never breaks de-duplication.
+  Future<Set<String>> existingKeys();
 
   Future<void> insert(LibraryDocument document);
   Future<void> toggleFavorite(String id);
@@ -21,8 +24,9 @@ abstract interface class LibraryRepository {
   Future<void> assignCategory(String id, String? categoryId);
   Future<void> markOpened(String id);
 
-  /// Deletes the library entry only. The underlying file is the user's own and
-  /// is referenced in place, so it is never removed from the device.
+  /// Removes the document from the library. If the document's file is an
+  /// app-managed import copy it is also deleted from disk; in-place
+  /// auto-discovered files (the user's own) are left on the device.
   Future<void> delete(String id);
 
   Stream<List<Category>> watchCategories();

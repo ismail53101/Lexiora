@@ -9,6 +9,13 @@ abstract final class AppRoutes {
   static const String library = '/library';
   static const String settings = '/settings';
 
+  // Dictionary (Phase 2.1)
+  static const String dictionary = '/dictionary';
+  static const String dictionaryWordName = 'dictionaryWord';
+  static const String dictionaryWordPattern = '/dictionary/word/:word';
+  static String dictionaryWord(String word) =>
+      '/dictionary/word/${Uri.encodeComponent(word)}';
+
   static const String readerName = 'reader';
   static const String readerPattern = '/reader/:id';
   static String reader(String documentId) => '/reader/$documentId';

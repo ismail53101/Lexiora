@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:lexiora/core/reader_engine/word_action.dart';
 
 /// Floating toolbar shown while text is selected in the reader. Offers
-/// multi-color highlighting, underline, note, bookmark and copy actions.
+/// multi-color highlighting, underline, note, bookmark and copy actions — plus,
+/// when a single word is selected, one button per registered [WordAction]
+/// (e.g. "Look up", "Translate"), rendered generically from the registry.
 class ReaderSelectionToolbar extends StatelessWidget {
   const ReaderSelectionToolbar({
     super.key,
@@ -12,6 +15,9 @@ class ReaderSelectionToolbar extends StatelessWidget {
     required this.onBookmark,
     required this.onCopy,
     required this.onDismiss,
+    this.selectedWord,
+    this.wordActions = const <WordAction>[],
+    this.onWordAction,
   });
 
   final List<int> colors;
@@ -22,10 +28,22 @@ class ReaderSelectionToolbar extends StatelessWidget {
   final VoidCallback onCopy;
   final VoidCallback onDismiss;
 
+  /// The single selected word eligible for word actions, or null when the
+  /// selection is not a single word.
+  final String? selectedWord;
+
+  /// Registered word actions to offer for [selectedWord] (empty when none apply).
+  final List<WordAction> wordActions;
+  final ValueChanged<WordAction>? onWordAction;
+
   @override
   Widget build(BuildContext context) {
     final ThemeData theme = Theme.of(context);
     final int primaryColor = colors.isNotEmpty ? colors.first : 0xFFFFF176;
+    final bool showWordActions = selectedWord != null &&
+        selectedWord!.isNotEmpty &&
+        wordActions.isNotEmpty &&
+        onWordAction != null;
     return Material(
       elevation: 6,
       borderRadius: BorderRadius.circular(18),
@@ -35,6 +53,35 @@ class ReaderSelectionToolbar extends StatelessWidget {
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
+            if (showWordActions) ...[
+              Align(
+                alignment: Alignment.centerLeft,
+                child: Padding(
+                  padding: const EdgeInsets.only(left: 4, bottom: 6),
+                  child: Text(
+                    '“${selectedWord!}”',
+                    style: theme.textTheme.labelLarge
+                        ?.copyWith(fontWeight: FontWeight.w700),
+                    overflow: TextOverflow.ellipsis,
+                  ),
+                ),
+              ),
+              Wrap(
+                spacing: 8,
+                runSpacing: 8,
+                children: [
+                  for (final WordAction a in wordActions)
+                    FilledButton.tonalIcon(
+                      icon: Icon(a.icon, size: 20),
+                      label: Text(a.label),
+                      onPressed: () => onWordAction!(a),
+                    ),
+                ],
+              ),
+              const SizedBox(height: 8),
+              const Divider(height: 8),
+              const SizedBox(height: 2),
+            ],
             Row(
               mainAxisSize: MainAxisSize.min,
               children: [

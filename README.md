@@ -1,19 +1,20 @@
-# Lexiora
+# Sapiora
 
 **A premium, offline-first study & language-learning platform for Android — built with Flutter.**
 
-Lexiora Phase 1 is a production-grade **PDF study reader**: it **automatically finds every PDF already on your device** and lists them — no importing, no file picking — then reads them with a fast PDFium-based engine and lets you highlight, underline, annotate, bookmark and take notes. Everything is stored locally on the device. No account. No internet. Your library never leaves your phone.
+Sapiora Phase 1 is a production-grade **PDF study reader**: it **automatically finds the PDFs already on your device** *and* lets you **import your own** with the system file picker, then reads them with a fast PDFium-based engine and lets you highlight, underline, annotate, bookmark and take notes. Everything is stored locally on the device. No account. No internet. Your library never leaves your phone.
 
 It is also the **foundation** of a larger platform. The architecture is designed so that nine planned modules (Dictionary, Translation, Grammar, Vocabulary Builder, Flashcards, Quiz, Admin, AI Assistant, Cloud Sync) can be added later **without modifying existing code**.
 
-> Version `0.1.5` · Package `com.lexiora.app` · Flutter (stable) · Material 3
+> Version `0.3.4` · Package `com.lexiora.app` · Flutter (stable) · Material 3
 
 ---
 
 ## ✨ Phase 1 features
 
 **Reading**
-- **Automatic device-wide PDF discovery** — every PDF on the device is found and listed on open (and on pull-to-refresh), Adobe Acrobat / Xodo style. Files are referenced **in place**; nothing is copied or uploaded. No Import or Find button anywhere.
+- **Automatic device-wide PDF discovery** — every PDF on the device is found and listed on open (and on pull-to-refresh), Adobe Acrobat / Xodo style. Files are referenced **in place**; nothing is copied or uploaded.
+- **Manual Import PDF** — a visible Import button (Home + Library) opens the system file picker with **multi-select**; imported files appear instantly. Import and auto-discovery coexist and never produce duplicates.
 - Fast, lazy PDFium rendering tuned for large (500+ page) documents
 - Vertical & horizontal reading directions
 - Pinch/zoom, smooth page navigation, go-to-page
@@ -27,6 +28,27 @@ It is also the **foundation** of a larger platform. The architecture is designed
 - **Bookmarks** — bookmark a page, or bookmark a selection
 - Copy selected text
 - A per-document panel listing all bookmarks, notes and highlights
+- **Look up a word in-reader** — select a single word to open a lightweight
+  dictionary popup (word, meaning, and *Save to Vocabulary*)
+- **Translate a word in-reader** — a *Translate* action beside *Look up* (single
+  words) opens an offline translation popup (original word, translation in your
+  chosen language, *Copy*, and *Save to Vocabulary*). **Urdu is first-class and
+  the default** (prioritised for Pakistani users) with **~12,600 headwords**
+  tuned for academic / newspaper / competitive-exam vocabulary; French,
+  Portuguese, Hindi and Arabic are also offered. Set in Settings → Translation.
+
+**Offline Dictionary** (Phase 2.1)
+- **163,201 real entries** across 107,946 headwords, fully **offline** — bundled
+  and loaded once on first use
+- **Instant search**: index-backed, case-insensitive prefix search grouped by
+  headword, debounced as you type, with lazy pagination
+- **Word details**: part of speech, meaning(s), example sentences, IPA field
+  (for future data)
+- **Urdu meaning shown alongside the English definition** — read from the same
+  offline translation repository as the reader's *Translate*, so Urdu is
+  consistent everywhere (no separate Urdu database)
+- **Favorites / saved vocabulary**, persisted locally and independent of the
+  dictionary data
 
 **Library & app**
 - Beautiful Material 3 Home with search bar, Continue Reading, Recent, Favorites and category filtering
@@ -53,6 +75,8 @@ It is also the **foundation** of a larger platform. The architecture is designed
 | Local database | Drift (SQLite) ^2 — reactive, type-safe |
 | PDF engine | pdfrx ^2 (PDFium) — MIT, behind a swappable abstraction |
 | PDF discovery | native platform channel (filesystem walk) + `permission_handler` (all-files access) |
+| Dictionary data | Wordset Dictionary (CC BY-SA 4.0), bundled gzip JSON-Lines, seeded into Drift |
+| Translation data | Urdu from Wiktionary/kaikki (CC BY-SA); fr/pt/hi/ar from FreeDict (GPL); bundled gzip JSON-Lines, seeded into Drift |
 | Paths / storage | `path_provider`, `path` |
 
 Every dependency is free and open source.
@@ -61,7 +85,7 @@ Every dependency is free and open source.
 
 ## 🏗️ Architecture at a glance
 
-Lexiora uses **feature-first Clean Architecture** with a strict dependency rule (presentation → domain ← data; domain depends on nothing) and a modular composition model.
+Sapiora uses **feature-first Clean Architecture** with a strict dependency rule (presentation → domain ← data; domain depends on nothing) and a modular composition model.
 
 ```
 lib/
@@ -88,8 +112,8 @@ Full details: [`docs/ARCHITECTURE.md`](docs/ARCHITECTURE.md) · [`docs/FOLDER_ST
 ### Setup
 
 ```bash
-git clone https://github.com/<owner>/Lexiora.git
-cd Lexiora
+git clone https://github.com/<owner>/Sapiora.git
+cd Sapiora
 
 flutter pub get
 
@@ -135,7 +159,7 @@ flutter build apk --release
 6. `flutter test`
 7. `flutter build apk --release`
 8. Uploads `app-release.apk` as a **workflow artifact**
-9. Publishes it as an asset on a GitHub Release whose tag is derived from the pubspec version (e.g. **`v0.1.5`**)
+9. Publishes it as an asset on a GitHub Release whose tag is derived from the pubspec version (e.g. **`v0.2.1`**)
 
 The release APK is signed with the debug key by default (see `android/app/build.gradle.kts`); add a signing config there for Play Store distribution.
 
@@ -143,7 +167,7 @@ The release APK is signed with the debug key by default (see `android/app/build.
 
 ## 🔐 Permissions & Play Store
 
-Lexiora lists the PDFs already on your device, so it needs to read them:
+Sapiora lists the PDFs already on your device, so it needs to read them:
 
 - **Android 11+ (API 30+):** requests **All files access**
   (`MANAGE_EXTERNAL_STORAGE`) once, on first open of the Library — the same
@@ -168,11 +192,27 @@ blank screen.
 
 ## 🗺️ Roadmap & versioning
 
-Lexiora follows [Semantic Versioning](https://semver.org). Phase 1 is the
-**v0.1.x** line (current: **v0.1.5**). The nine future modules and their planned
-versions are described in [`docs/ROADMAP.md`](docs/ROADMAP.md). Changes are
-tracked in [`CHANGELOG.md`](CHANGELOG.md).
+Sapiora follows [Semantic Versioning](https://semver.org). Phase 1 shipped the
+**v0.1.x** line; Phase 2.1 (the offline Dictionary) is **v0.2.0** (current). The
+remaining planned modules and their versions are described in
+[`docs/ROADMAP.md`](docs/ROADMAP.md). Changes are tracked in
+[`CHANGELOG.md`](CHANGELOG.md).
 
 ## 📄 License
 
-Released under the [MIT License](LICENSE).
+Application code is released under the [MIT License](LICENSE).
+
+**Dictionary data** is provided by the [Wordset Dictionary](https://github.com/wordset/wordset-dictionary)
+and is licensed under **CC BY-SA 4.0** (with portions derived from Princeton
+WordNet 3.0). It is redistributed unmodified in structure under the same
+license; the full text is bundled at `assets/dictionary/DICTIONARY_LICENSE.txt`
+and surfaced in-app via the Dictionary screen's ⓘ button. The CC BY-SA license
+applies to the bundled data only, not to the application code.
+
+**Translation data** combines two open sources, each redistributed under its own
+license: English→French/Portuguese/Hindi/Arabic from the
+[FreeDict project](https://freedict.org) (**GPL**), and English→**Urdu** from
+[Wiktionary](https://en.wiktionary.org) via [kaikki.org](https://kaikki.org)
+(**CC BY-SA 4.0**, © Wiktionary contributors). See
+`assets/translations/README.txt` and `TRANSLATIONS_LICENSE.txt`. These licenses
+apply to the bundled data only, not to the application code.

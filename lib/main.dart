@@ -9,7 +9,7 @@ import 'package:lexiora/app/router/app_router.dart';
 import 'package:lexiora/core/utils/logger.dart';
 import 'package:pdfrx/pdfrx.dart';
 
-/// Lexiora entry point.
+/// Sapiora entry point.
 ///
 /// Runs inside a guarded zone with a friendly [ErrorWidget.builder] so a build
 /// failure is never an unexplained blank/grey screen, and all framework and
@@ -43,7 +43,7 @@ Future<void> main() async {
       await configureDependencies();
       final GoRouter router = createAppRouter();
 
-      runApp(ProviderScope(child: LexioraApp(router: router)));
+      runApp(ProviderScope(child: SapioraApp(router: router)));
     },
     (Object error, StackTrace stack) {
       AppLogger.e('Uncaught zone error', error: error, stackTrace: stack);
@@ -78,7 +78,7 @@ class _FatalErrorBox extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 const Text(
-                  'Lexiora — rendering error',
+                  'Sapiora — rendering error',
                   style: TextStyle(
                     color: Color(0xFFFF6E6E),
                     fontSize: 18,

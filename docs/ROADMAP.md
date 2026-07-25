@@ -1,6 +1,6 @@
-# Lexiora — Roadmap
+# Sapiora — Roadmap
 
-Lexiora ships in phases. Phase 1 delivers a complete, offline PDF study reader
+Sapiora ships in phases. Phase 1 delivers a complete, offline PDF study reader
 and the architecture for everything that follows. Each future module plugs into
 the existing app via the `FeatureModule` contract (see
 [`FUTURE_INTEGRATION_GUIDE.md`](FUTURE_INTEGRATION_GUIDE.md)) — no rewrites.
@@ -31,14 +31,29 @@ Offline PDF study reader.
 
 ---
 
+## ✅ Phase 2.1 — `v0.2.0` (current): Offline Dictionary
+
+Shipped. A fully offline dictionary engine as an independent module.
+
+- Bundled offline data set (163,201 entries / 107,946 headwords; Wordset,
+  CC BY-SA 4.0), seeded once into `dictionary_entries` (schema v2)
+- Instant, index-backed prefix search grouped by headword; debounced + paged
+- Word details (part of speech, meanings, examples, IPA field for future data)
+- Favorites / saved vocabulary, stored independently of the dictionary data
+- Reader tap-on-word → lightweight "Look up" popup (word, meaning, Save to
+  Vocabulary) via the core `WordActionRegistry` — the first realized tap-on-word
+  action
+
+---
+
 ## 🔜 Future modules
 
 Delivery order is indicative; each is independent thanks to the module system.
 
 | Version | Module | Summary |
 |---|---|---|
-| `v0.2.0` | **Dictionary** | Offline/online word definitions; first tap-on-word action |
-| `v0.3.0` | **Multi-language Translation** | Selection & word translation across languages |
+| ~~`v0.2.0`~~ | ~~**Dictionary**~~ | ✅ Shipped — offline word definitions; first tap-on-word action |
+| ~~`v0.3.0`~~ | ~~**Multi-language Translation**~~ | ✅ Shipped — offline reader "Translate" word action (French/Portuguese/Hindi/Arabic) |
 | `v0.4.0` | **Grammar** | Grammar explanations and checks for selected text |
 | `v0.5.0` | **Vocabulary Builder** | Save words from the reader into personal lists |
 | `v0.6.0` | **Flashcards** | Spaced-repetition review built from vocabulary |

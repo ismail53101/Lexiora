@@ -1,9 +1,208 @@
 # Changelog
 
-All notable changes to Lexiora are documented here.
+All notable changes to Sapiora are documented here.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
+
+## [0.3.4] — 2026-07-25
+
+### Changed
+- **Urdu meaning now appears directly below the English definition** on the
+  Dictionary detail screen (previously it sat above the senses). It is still
+  read from the **same** `TranslationRepository` (via `translationProvider(lang:
+  'ur')`) that powers the reader's Translate popup — one shared offline dataset,
+  no duplicate Urdu store. The card only shows when the word has an offline Urdu
+  translation.
+
+## [0.3.3] — 2026-07-24
+
+Urdu meanings now appear **inside the Dictionary**, alongside the English
+definition — using the very same translation repository as the reader's
+Translate popup.
+
+### Added
+- **Urdu meaning card on the Word Details screen.** When a word exists in the
+  offline Urdu translation data, its Urdu meaning is shown (right-to-left) above
+  the English senses. Words with no Urdu simply omit the card.
+
+### Changed
+- The Dictionary and the PDF **Translate** feature now read Urdu from **one
+  shared source** — the same `TranslationRepository`, via the same
+  `translationProvider(lang: 'ur')` — so Urdu results are identical in both
+  places (and share one first-run seed + cache). No separate Urdu database was
+  created; the existing translation dataset and architecture are reused as-is.
+
+### Notes
+- Reader, database schema, translation seeding and the translation dataset are
+  unchanged — this is a Dictionary-UI integration only. The cross-module link is
+  through the Translation module's public repository/provider, so both modules
+  stay independent.
+
+Significantly expanded the offline **English → Urdu** dataset for English
+learners and competitive-exam students. Data-only change — the translation
+architecture, database schema, seeding process, reader and UI are all unchanged.
+
+### Changed
+- **English → Urdu coverage roughly doubled: 6,256 → 12,559 headwords**
+  (~26,600 senses), with much stronger academic, newspaper and exam vocabulary
+  (e.g. analysis → تَحْلِیل، تَجْزِیَہ · economy → مَعِیشَت، اِقْتِصاد ·
+  parliament → مَجْلِس، پارْلِیمان · inflation → اِفْراطِ زَر، مہنگائی ·
+  examination → اِمْتِحان، جائزہ · democracy → جَمْہُورِیَت).
+- The data is now mined from **both** the English-Wiktionary translation tables
+  **and** the Urdu-Wiktionary glosses (via kaikki.org), then merged and
+  de-duplicated (diacritic-insensitive) — all still CC BY-SA 4.0.
+- Bumped the bundled data-set version so existing installs re-seed once to pick
+  up the larger set (settings and saved vocabulary are untouched).
+
+### Notes
+- No schema migration, no seeding-logic change: the same batched, streaming
+  seeder ingests the larger asset. The other languages (fr/pt/hi/ar) are
+  unchanged. Words still absent from Wiktionary show the graceful "no offline
+  translation" state.
+
+## [0.3.1] — 2026-07-24
+
+**Urdu** is now a first-class offline translation language, prioritised for the
+app's Pakistani audience. Additive only — no architecture change.
+
+### Added
+- **Offline English → Urdu translations** (6,256 headwords / ~10,800 senses),
+  extracted from **English Wiktionary** (via kaikki.org, CC BY-SA 4.0) and merged
+  into the bundled translation data set beside the existing FreeDict languages.
+  Coverage is comparable to the French set; quality is human-curated
+  (e.g. school → اِسْکُول، مَدْرَسَہ، مَکْتَب…).
+
+### Changed
+- **Urdu is the default translation language and is listed first** in the
+  Settings picker, prioritising it for Pakistani users. All languages remain
+  fully user-selectable; anyone can switch in Settings → Translation.
+- Bumped the bundled translation data-set version, so existing installs re-seed
+  once to pick up Urdu (the offline table is rebuilt; user settings/favourites
+  are untouched).
+
+### Notes
+- The translation data set now combines two open sources, each redistributed
+  under its own license: **FreeDict (GPL)** for French/Portuguese/Hindi/Arabic
+  and **Wiktionary (CC BY-SA 4.0)** for Urdu. See
+  `assets/translations/README.txt`. App code remains MIT.
+- FreeDict has no English–Urdu pair, which is why Urdu is sourced from
+  Wiktionary; the modular pipeline ingests both into the same
+  `translation_entries` table with no schema or code-path changes.
+
+## [0.3.0] — 2026-07-24
+
+Reader word-selection **Translate** action — offline, beside "Look up". No
+existing feature or the Dictionary module was modified; everything is additive.
+
+### Added
+- **Translate word action** in the reader's selection toolbar, beside the
+  existing **Look up**. Both appear only for **single-word** selections. The
+  toolbar now renders one button per registered `WordAction`, so this was added
+  purely by contributing an action to the shared registry — the reader was not
+  special-cased.
+- **Lightweight translation popup**: shows the original word, its translated
+  meaning in the user's selected language (when available), a **Copy** button,
+  and — only when a translation exists — a **Save to Vocabulary** button (saves
+  into the shared Dictionary favorites via its public API).
+- **Offline translation data**: a new `translation_entries` table (schema
+  **v4**, additive migration) seeded once, on first use, from a bundled data set
+  of **129,506 entries** across **French, Portuguese, Hindi and Arabic**
+  (FreeDict, GPL). Lookups use a `(lang_code, word_lower)` composite index.
+- **Translation language** setting (Settings → Translation): choose the target
+  language. Stored as a key-value setting (no schema change for the preference).
+
+### Notes
+- Offline coverage is per the bundled data set; when a word or language has no
+  entry, the popup says so clearly and still offers Copy. Adding a language is a
+  data + one-list-entry change — no code changes to the reader.
+- Translation data is licensed **GPL** (FreeDict); the app code stays MIT. The
+  license is bundled at `assets/translations/TRANSLATIONS_LICENSE.txt`.
+- The Dictionary module is unchanged; "Save to Vocabulary" reuses its public
+  repository so the two features share one vocabulary store.
+
+## [0.2.1] — 2026-07-24
+
+Rebrand to **Sapiora** and regression fixes for PDF import and discovery. No
+architecture change; the database and all existing data are preserved
+(additive migration only).
+
+### Changed
+- **Rebranded Lexiora → Sapiora** across all visible surfaces: app name,
+  launcher label, About screen, in-app copy, the root widget, and all docs.
+  Internal identifiers are intentionally unchanged for backward compatibility —
+  the Android `applicationId` (`com.lexiora.app`), the Dart package name
+  (`lexiora`), the database file (`lexiora`) and the platform channel
+  (`lexiora/platform`) all stay the same, so existing installs keep their data.
+
+### Added
+- **Manual “Import PDF” restored** — a clearly visible Import button (FAB on the
+  Home and Library screens). Opens the system file picker with **multi-select**,
+  copies the chosen PDFs into app storage, and they appear in the Library
+  **immediately** (no restart). Works even without all-files access.
+- Manual import and automatic discovery now **coexist**, sharing one de-dup key
+  (`fileName|fileSize`, rename-stable) so a file that was both imported and
+  auto-discovered is never listed twice.
+- `documents.managed_file` column (schema **v3**, additive migration):
+  distinguishes app-imported copies (deleted with the document) from in-place
+  auto-discovered files (the user's own file is never deleted).
+
+### Fixed
+- **Auto-discovery missed many PDFs.** The filesystem walk previously skipped the
+  entire `Android/` tree, which excluded `Android/media/…` where messaging apps
+  (e.g. WhatsApp Documents) keep PDFs. It now traverses everything except the
+  genuinely private `Android/data` and `Android/obb`, raises the recursion depth
+  cap (25), and wraps each directory/entry in its own try/catch so a single
+  unreadable folder can no longer abort the whole scan. Result: substantially
+  more valid PDFs are discovered.
+
+## [0.2.0] — 2026-07-24
+
+Phase 2.1 — the **offline Dictionary engine**. A fast, fully offline dictionary
+that also plugs into the PDF reader. No existing feature was changed; the module
+is entirely additive.
+
+### Added
+- **Offline dictionary database.** A new `dictionary_entries` table (schema v2)
+  seeded once, on first use, from a bundled data set of **163,201 real entries
+  across 107,946 headwords** (Wordset Dictionary, CC BY-SA 4.0). Each entry has
+  word, part of speech, meaning and (where available) an example sentence; the
+  schema also carries an IPA field for future data. Seeding streams a
+  gzip-compressed asset in batches on the database isolate, so the UI never
+  blocks; a one-time progress screen is shown.
+- **Fast search.** Case-insensitive, index-backed prefix search (`word_lower`
+  index + range scan) with results grouped by headword, exact matches first.
+  Instant-as-you-type with a 180 ms debounce, stale-response cancellation, and
+  lazy pagination (infinite scroll).
+- **Dictionary screen** (Material 3): search bar with clear button, plus
+  distinct loading, empty (“start typing”), no-result and results states. When
+  the search box is empty it lists your saved words. A one-time “Preparing the
+  dictionary” progress state covers first-run seeding.
+- **Word details screen**: headword, IPA (when present), all senses (each with
+  part of speech, meaning and example) and a favorite (star) toggle.
+- **Favorites (saved vocabulary).** Add/remove from favorites anywhere (search
+  tiles, details, reader popup); persisted locally in a dedicated
+  `dictionary_favorites` table so they survive any future dictionary re-seed.
+- **Reader integration.** Selecting a single word in the PDF reader now shows a
+  “Look up” action that opens a lightweight popup with the word, its meaning and
+  a single **⭐ Save to Vocabulary** button — nothing else. This is wired through
+  the existing `WordActionRegistry`, so the reader stays fully decoupled from the
+  dictionary.
+- Dictionary data attribution dialog (CC BY-SA 4.0), and the license bundled at
+  `assets/dictionary/DICTIONARY_LICENSE.txt`.
+
+### Changed
+- Database schema bumped to **v2** with an additive `onUpgrade` migration that
+  creates the two dictionary tables and their indexes. All Phase 1 tables and
+  data are untouched.
+- The Dictionary Home tile is now a live entry (was a “coming soon” placeholder)
+  and `DictionaryModule` is a real, active module in the registry.
+
+### Notes
+- The bundled data set has no IPA pronunciations (the source lacks them); the UI
+  hides the IPA line when absent. The schema and details screen already support
+  IPA for a future data set — swapping in a larger/richer set is a bundled-asset
+  change plus a one-line version bump (favorites are unaffected).
 
 ## [0.1.5] — 2026-07-24
 
@@ -13,7 +212,7 @@ no "Import" or "Find on device" buttons anywhere in the app.
 
 ### Changed
 - **Discovery is now fully automatic and reference-in-place.** On opening the
-  Library (and on pull-to-refresh) Lexiora scans the device and lists every PDF,
+  Library (and on pull-to-refresh) Sapiora scans the device and lists every PDF,
   referencing each file at its real path — nothing is copied into the app. New
   files on the device appear on the next scan; removing a document deletes only
   the library entry, never the underlying file.
@@ -59,10 +258,10 @@ Phase 1.1 — automatic PDF discovery fixed and made reliable.
   cannot list arbitrary PDFs on Android 11+ without All-Files-Access, a
   "Scan a folder…" action — and an automatic fallback when the device scan finds
   nothing — lets the user grant a folder (e.g. Downloads) via the Storage Access
-  Framework; Lexiora recursively finds PDFs there and imports them by copying
+  Framework; Sapiora recursively finds PDFs there and imports them by copying
   bytes through `ContentResolver` (works under scoped storage).
 - Detailed discovery logging (scanned count, each candidate URI, indexed count)
-  under the `Lexiora` log tag.
+  under the `Sapiora` log tag.
 
 ### Changed
 - Discovery copies files via content URIs instead of raw file paths, so it works
@@ -178,4 +377,4 @@ Phase 1 — the offline-first PDF study reader and the modular foundation.
   - Unit tests for domain logic; zero-issue `flutter analyze`.
   - GitHub Actions CI: analyze, test, build a release APK, upload it as an artifact and publish it to the `v0.1.0` release.
 
-[0.1.0]: https://github.com/OWNER/Lexiora/releases/tag/v0.1.0
+[0.1.0]: https://github.com/OWNER/Sapiora/releases/tag/v0.1.0

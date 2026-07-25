@@ -41,6 +41,7 @@ class LibraryPage extends ConsumerStatefulWidget {
 class _LibraryPageState extends ConsumerState<LibraryPage> {
   String? _categoryId;
   bool _scanning = false;
+  bool _importing = false;
   bool _accessDenied = false;
   bool _searching = false;
   String _query = '';
@@ -116,6 +117,17 @@ class _LibraryPageState extends ConsumerState<LibraryPage> {
           ),
         ],
       ),
+      floatingActionButton: FloatingActionButton.extended(
+        onPressed: _importing ? null : _import,
+        icon: _importing
+            ? const SizedBox(
+                width: 18,
+                height: 18,
+                child: CircularProgressIndicator(strokeWidth: 2),
+              )
+            : const Icon(Icons.file_upload_outlined),
+        label: Text(_importing ? 'Importing…' : 'Import PDF'),
+      ),
       body: Column(
         children: [
           categories.maybeWhen(
@@ -144,7 +156,7 @@ class _LibraryPageState extends ConsumerState<LibraryPage> {
                                 physics:
                                     const AlwaysScrollableScrollPhysics(),
                                 padding:
-                                    const EdgeInsets.fromLTRB(16, 8, 16, 24),
+                                    const EdgeInsets.fromLTRB(16, 8, 16, 96),
                                 gridDelegate:
                                     const SliverGridDelegateWithMaxCrossAxisExtent(
                                   maxCrossAxisExtent: 200,
@@ -232,13 +244,24 @@ class _LibraryPageState extends ConsumerState<LibraryPage> {
     return EmptyState(
       icon: Icons.menu_book_outlined,
       title: 'No PDFs found',
-      message: 'Lexiora didn’t find any PDF files on this device yet. '
-          'Add PDFs (for example to Downloads or Documents) and pull down to '
-          'refresh — they appear here automatically.',
-      action: OutlinedButton.icon(
-        onPressed: _scanning ? null : () => _autoDiscover(),
-        icon: const Icon(Icons.refresh),
-        label: const Text('Refresh'),
+      message: 'Sapiora didn’t find any PDF files on this device yet. Add PDFs '
+          '(for example to Downloads or Documents) and pull down to refresh, or '
+          'use Import PDF to pick files yourself.',
+      action: Wrap(
+        spacing: 12,
+        alignment: WrapAlignment.center,
+        children: [
+          OutlinedButton.icon(
+            onPressed: _scanning ? null : () => _autoDiscover(),
+            icon: const Icon(Icons.refresh),
+            label: const Text('Refresh'),
+          ),
+          FilledButton.icon(
+            onPressed: _importing ? null : _import,
+            icon: const Icon(Icons.file_upload_outlined),
+            label: const Text('Import PDF'),
+          ),
+        ],
       ),
     );
   }
@@ -247,11 +270,12 @@ class _LibraryPageState extends ConsumerState<LibraryPage> {
     return EmptyState(
       icon: Icons.folder_off_outlined,
       title: 'Allow access to your files',
-      message: 'Lexiora lists the PDFs already on your device — nothing is '
+      message: 'Sapiora lists the PDFs already on your device — nothing is '
           'ever uploaded and everything stays on your phone. To do that it '
           'needs the one-time “All files access” permission (the same '
           'one Adobe Acrobat and Xodo use). Grant it once and your PDFs appear '
-          'here automatically.',
+          'here automatically. You can also use Import PDF to add files without '
+          'granting access.',
       action: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
@@ -320,6 +344,38 @@ class _LibraryPageState extends ConsumerState<LibraryPage> {
             ),
           ),
         );
+      },
+    );
+  }
+
+  /// Manual import via the system file picker (one or several PDFs). Imported
+  /// files appear in the library immediately (the list is stream-backed);
+  /// duplicates of already-known files are skipped.
+  Future<void> _import() async {
+    final ScaffoldMessengerState messenger = ScaffoldMessenger.of(context);
+    setState(() => _importing = true);
+    final Result<ImportOutcome> result =
+        await ref.read(importPdfsProvider).call(const NoParams());
+    if (!mounted) return;
+    setState(() => _importing = false);
+    result.fold(
+      (failure) => messenger.showSnackBar(
+        SnackBar(content: Text('Import failed: ${failure.message}')),
+      ),
+      (ImportOutcome o) {
+        if (o.picked == 0) return; // user cancelled the picker
+        final String msg;
+        if (o.added > 0 && o.duplicates > 0) {
+          msg = 'Imported ${o.added} PDF${o.added == 1 ? '' : 's'} '
+              '· skipped ${o.duplicates} already in your library';
+        } else if (o.added > 0) {
+          msg = 'Imported ${o.added} PDF${o.added == 1 ? '' : 's'}';
+        } else {
+          msg = o.duplicates == 1
+              ? 'That PDF is already in your library'
+              : 'Those PDFs are already in your library';
+        }
+        messenger.showSnackBar(SnackBar(content: Text(msg)));
       },
     );
   }

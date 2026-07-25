@@ -26,6 +26,9 @@ part 'app_database.g.dart';
     ReadingProgress,
     ReadingSessions,
     Settings,
+    DictionaryEntries,
+    DictionaryFavorites,
+    TranslationEntries,
   ],
 )
 class AppDatabase extends _$AppDatabase {
@@ -42,8 +45,39 @@ class AppDatabase extends _$AppDatabase {
         onCreate: (Migrator m) async {
           await m.createAll();
         },
+        onUpgrade: (Migrator m, int from, int to) async {
+          // v1 → v2: introduce the offline Dictionary tables. Purely additive —
+          // existing tables and their data are left untouched.
+          if (from < 2) {
+            await m.createTable(dictionaryEntries);
+            await m.createTable(dictionaryFavorites);
+          }
+          // v2 → v3: add the managed-file flag to documents. Additive; existing
+          // rows default to false (in-place, never auto-deleted).
+          if (from < 3) {
+            await m.addColumn(documents, documents.managedFile);
+          }
+          // v3 → v4: add the offline translation table. Additive.
+          if (from < 4) {
+            await m.createTable(translationEntries);
+          }
+        },
         beforeOpen: (OpeningDetails details) async {
           await customStatement('PRAGMA foreign_keys = ON');
+          // Search-critical indexes. Created idempotently on every open so they
+          // exist on both fresh installs and upgrades without special-casing.
+          await customStatement(
+            'CREATE INDEX IF NOT EXISTS idx_dictionary_word_lower '
+            'ON dictionary_entries (word_lower)',
+          );
+          await customStatement(
+            'CREATE INDEX IF NOT EXISTS idx_dictionary_word_lower_id '
+            'ON dictionary_entries (word_lower, id)',
+          );
+          await customStatement(
+            'CREATE INDEX IF NOT EXISTS idx_translation_lang_word '
+            'ON translation_entries (lang_code, word_lower)',
+          );
         },
       );
 

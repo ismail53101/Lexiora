@@ -6,8 +6,11 @@ import 'package:lexiora/app/di/injector.dart';
 import 'package:lexiora/app/router/app_routes.dart';
 import 'package:lexiora/core/constants/app_constants.dart';
 import 'package:lexiora/core/navigation/home_destination.dart';
+import 'package:lexiora/core/usecase/usecase.dart';
+import 'package:lexiora/core/utils/result.dart';
 import 'package:lexiora/core/widgets/empty_state.dart';
 import 'package:lexiora/features/library/domain/entities/library_document.dart';
+import 'package:lexiora/features/library/domain/usecases/library_usecases.dart';
 import 'package:lexiora/features/library/presentation/providers/library_providers.dart';
 import 'package:lexiora/features/library/presentation/widgets/document_card.dart';
 
@@ -36,6 +39,11 @@ class HomePage extends ConsumerWidget {
     );
 
     return Scaffold(
+      floatingActionButton: FloatingActionButton.extended(
+        onPressed: () => _import(context, ref),
+        icon: const Icon(Icons.file_upload_outlined),
+        label: const Text('Import PDF'),
+      ),
       body: CustomScrollView(
         slivers: [
           SliverAppBar.large(
@@ -61,10 +69,10 @@ class HomePage extends ConsumerWidget {
               hasScrollBody: false,
               child: EmptyState(
                 icon: Icons.auto_stories_outlined,
-                title: 'Welcome to Lexiora',
-                message: 'Lexiora automatically finds the PDF files already on '
-                    'your device. Open your library to browse them — '
-                    'everything stays on your device.',
+                title: 'Welcome to Sapiora',
+                message: 'Sapiora automatically finds the PDF files already on '
+                    'your device — or import your own with the Import PDF '
+                    'button. Everything stays on your device.',
                 action: FilledButton.icon(
                   onPressed: () => context.push(AppRoutes.library),
                   icon: const Icon(Icons.folder_open_outlined),
@@ -83,6 +91,27 @@ class HomePage extends ConsumerWidget {
           const SliverToBoxAdapter(child: SizedBox(height: 96)),
         ],
       ),
+    );
+  }
+
+  Future<void> _import(BuildContext context, WidgetRef ref) async {
+    final ScaffoldMessengerState messenger = ScaffoldMessenger.of(context);
+    final Result<ImportOutcome> result =
+        await ref.read(importPdfsProvider).call(const NoParams());
+    result.fold(
+      (failure) => messenger.showSnackBar(
+        SnackBar(content: Text('Import failed: ${failure.message}')),
+      ),
+      (ImportOutcome o) {
+        if (o.picked == 0) return; // cancelled
+        final String msg = o.added > 0
+            ? 'Imported ${o.added} PDF${o.added == 1 ? '' : 's'}'
+                '${o.duplicates > 0 ? ' · skipped ${o.duplicates} already added' : ''}'
+            : (o.duplicates == 1
+                ? 'That PDF is already in your library'
+                : 'Those PDFs are already in your library');
+        messenger.showSnackBar(SnackBar(content: Text(msg)));
+      },
     );
   }
 

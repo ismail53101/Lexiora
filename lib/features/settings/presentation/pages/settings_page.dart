@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:lexiora/app/di/injector.dart';
 import 'package:lexiora/core/constants/app_constants.dart';
+import 'package:lexiora/core/constants/translation_languages.dart';
 import 'package:lexiora/core/reader_engine/reader_models.dart';
 import 'package:lexiora/core/services/permission_service.dart';
 import 'package:lexiora/features/settings/domain/entities/app_settings.dart';
@@ -142,6 +143,40 @@ class _SettingsBody extends ConsumerWidget {
           ],
         ),
         _SectionCard(
+          title: 'Translation',
+          children: [
+            const _Label('Translate words into'),
+            const SizedBox(height: 4),
+            DropdownButtonFormField<String>(
+              initialValue:
+                  translationLanguageByCode(settings.translationLanguage).code,
+              decoration: const InputDecoration(
+                border: OutlineInputBorder(),
+                isDense: true,
+              ),
+              items: kTranslationLanguages
+                  .map(
+                    (TranslationLanguage l) => DropdownMenuItem<String>(
+                      value: l.code,
+                      child: Text(l.label),
+                    ),
+                  )
+                  .toList(),
+              onChanged: (String? code) {
+                if (code != null) controller.setTranslationLanguage(code);
+              },
+            ),
+            const SizedBox(height: 8),
+            Text(
+              'Used by the reader’s “Translate” action when you select a word. '
+              'Translation data is offline.',
+              style: Theme.of(context).textTheme.bodySmall?.copyWith(
+                    color: Theme.of(context).colorScheme.onSurfaceVariant,
+                  ),
+            ),
+          ],
+        ),
+        _SectionCard(
           title: 'Data',
           children: [
             ListTile(
@@ -164,7 +199,8 @@ class _SettingsBody extends ConsumerWidget {
               contentPadding: EdgeInsets.zero,
               leading: const Icon(Icons.privacy_tip_outlined),
               title: const Text('App permissions'),
-              subtitle: const Text('Lexiora requests no permissions up front'),
+              subtitle:
+                  const Text('Manage the storage access used to find your PDFs'),
               trailing: const Icon(Icons.open_in_new),
               onTap: () => sl<PermissionService>().openSystemSettings(),
             ),

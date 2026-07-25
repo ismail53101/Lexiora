@@ -9,8 +9,8 @@ import 'package:lexiora/features/settings/presentation/providers/settings_provid
 /// Root widget. Binds the reactive [settingsProvider] to the Material 3 theme
 /// (light/dark) and the global text scale, and drives navigation from the
 /// module-assembled [GoRouter].
-class LexioraApp extends ConsumerWidget {
-  const LexioraApp({super.key, required this.router});
+class SapioraApp extends ConsumerWidget {
+  const SapioraApp({super.key, required this.router});
 
   final GoRouter router;
 

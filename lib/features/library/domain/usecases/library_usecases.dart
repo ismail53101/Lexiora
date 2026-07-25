@@ -1,4 +1,7 @@
+import 'dart:io';
+
 import 'package:lexiora/core/services/pdf_discovery_service.dart';
+import 'package:lexiora/core/services/pdf_import_service.dart';
 import 'package:lexiora/core/usecase/usecase.dart';
 import 'package:lexiora/core/utils/guard.dart';
 import 'package:lexiora/core/utils/logger.dart';
@@ -26,6 +29,19 @@ class DiscoveryOutcome {
   final int added;
 }
 
+/// The result of a manual import run.
+class ImportOutcome {
+  const ImportOutcome({
+    required this.picked,
+    required this.added,
+    required this.duplicates,
+  });
+
+  final int picked;
+  final int added;
+  final int duplicates;
+}
+
 /// Automatically scans the whole device for PDFs (using all-files access) and
 /// indexes any not already in the library, referencing each file in place (no
 /// copy). Runs on library open and pull-to-refresh; new files appear on the
@@ -43,30 +59,104 @@ class AutoDiscoverPdfs implements UseCase<DiscoveryOutcome, NoParams> {
   ResultFuture<DiscoveryOutcome> call(NoParams params) => guard(() async {
         final List<DeviceFile> found = await _discovery.scanAll();
         AppLogger.i('AutoDiscover: scanned ${found.length} PDF(s)');
-        final Set<String> existing = await _repo.existingPaths();
+        // De-dup by content key (fileName|size) so an auto-discovered file that
+        // was also manually imported — or vice versa — is never duplicated.
+        final Set<String> keys = await _repo.existingKeys();
         final DateTime now = DateTime.now();
         int added = 0;
         for (final DeviceFile f in found) {
-          if (existing.contains(f.path)) continue;
+          final String title = _titleOf(f.name);
+          final String key = libraryDedupKey(title, f.size);
+          if (keys.contains(key)) continue;
           AppLogger.i('AutoDiscover: indexing ${f.path}');
           await _repo.insert(
             LibraryDocument(
               id: _uuid.v4(),
-              title: _titleOf(f.name),
-              fileName: _titleOf(f.name),
+              title: title,
+              fileName: title,
               filePath: f.path,
               fileSize: f.size,
               pageCount: 0, // refined the first time the document is opened
               isFavorite: false,
               importedAt: now,
+              // isManaged defaults to false: an in-place reference to the
+              // user's own file, which is never auto-deleted.
             ),
           );
-          existing.add(f.path);
+          keys.add(key);
           added++;
         }
         AppLogger.i('AutoDiscover: added $added new PDF(s)');
         return DiscoveryOutcome(scanned: found.length, added: added);
       });
+}
+
+/// Opens the system file picker (multi-select) and imports the chosen PDFs.
+///
+/// Each file is copied into the app's private storage (so it opens reliably
+/// regardless of the source provider) and indexed as a managed document —
+/// deleting such a document removes the copy. Files already in the library
+/// (by content key) are skipped and their just-made copies discarded, so manual
+/// import and automatic discovery never produce duplicates.
+class ImportPdfs implements UseCase<ImportOutcome, NoParams> {
+  const ImportPdfs(this._repo, this._import);
+
+  final LibraryRepository _repo;
+  final PdfImportService _import;
+
+  @override
+  ResultFuture<ImportOutcome> call(NoParams params) => guard(() async {
+        final List<DeviceFile> picked = await _import.pickAndImport();
+        if (picked.isEmpty) {
+          return const ImportOutcome(picked: 0, added: 0, duplicates: 0);
+        }
+        final Set<String> keys = await _repo.existingKeys();
+        final DateTime now = DateTime.now();
+        int added = 0;
+        int duplicates = 0;
+        for (final DeviceFile f in picked) {
+          final String title = _titleOf(f.name);
+          final String key = libraryDedupKey(title, f.size);
+          if (keys.contains(key)) {
+            duplicates++;
+            _discardCopy(f.path); // avoid leaving an orphaned duplicate copy
+            continue;
+          }
+          await _repo.insert(
+            LibraryDocument(
+              id: _uuid.v4(),
+              title: title,
+              fileName: title,
+              filePath: f.path,
+              fileSize: f.size,
+              pageCount: 0,
+              isFavorite: false,
+              importedAt: now,
+              // App-owned copy — removed from disk when the document is deleted.
+              isManaged: true,
+            ),
+          );
+          keys.add(key);
+          added++;
+        }
+        AppLogger.i(
+          'Import: picked ${picked.length}, added $added, duplicates $duplicates',
+        );
+        return ImportOutcome(
+          picked: picked.length,
+          added: added,
+          duplicates: duplicates,
+        );
+      });
+
+  void _discardCopy(String path) {
+    try {
+      final File file = File(path);
+      if (file.existsSync()) file.deleteSync();
+    } on Object catch (e) {
+      AppLogger.w('Import: could not discard duplicate copy $path: $e');
+    }
+  }
 }
 
 /// Deletes a document and all of its associated data (annotations, notes,

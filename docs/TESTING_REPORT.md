@@ -1,11 +1,11 @@
-# Lexiora — Phase 1.1 Testing Report
+# Sapiora — Phase 1.1 Testing Report
 
 Date: 2026-07-24 · Version: **0.1.5+6**
 
 ## What changed since 0.1.4
 
 Discovery is now **fully automatic and reference-in-place**: on opening the
-Library (and on pull-to-refresh) Lexiora walks the device's shared storage and
+Library (and on pull-to-refresh) Sapiora walks the device's shared storage and
 lists every PDF, opening each file at its real path. There is no Import button
 and no "Find on device" menu. On Android 11+ this uses one-time **All files
 access** (`MANAGE_EXTERNAL_STORAGE`); on Android ≤ 10 it uses the legacy read
@@ -32,7 +32,7 @@ then the diagnostic error screen in 0.1.1), while the rest of the app worked.
 
 ## How this was verified
 
-Lexiora is fixed and built in a headless environment (Flutter 3.44.8, Android
+Sapiora is fixed and built in a headless environment (Flutter 3.44.8, Android
 SDK, JDK 17) that has **no Android emulator or physical device**. Everything
 that can be checked without a running device has been checked here; everything
 that requires a live device is listed in the on-device checklist below.
@@ -57,8 +57,8 @@ settings and library models.
 ### 📱 On-device checks to confirm (require a phone/emulator)
 
 Verify on real hardware in **both Debug and Release**. Watch logs with
-`flutter logs` / `adb logcat` — Lexiora logs discovery and every reader step
-under the tag `Lexiora`.
+`flutter logs` / `adb logcat` — Sapiora logs discovery and every reader step
+under the tag `Sapiora`.
 
 **Critical bug 1 — Reader**
 - [ ] Open several PDFs (small, large 500+ pages, scanned) — each opens and renders.

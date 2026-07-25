@@ -48,6 +48,9 @@ class SettingsController {
   Future<void> setAutoResume(bool value) =>
       _mutate((AppSettings s) => s.copyWith(autoResume: value));
 
+  Future<void> setTranslationLanguage(String code) =>
+      _mutate((AppSettings s) => s.copyWith(translationLanguage: code));
+
   Future<void> _mutate(AppSettings Function(AppSettings) update) async {
     final AppSettings current = await _repo.getSettings();
     await _repo.updateSettings(update(current));

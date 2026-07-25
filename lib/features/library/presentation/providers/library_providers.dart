@@ -1,6 +1,7 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:lexiora/app/di/injector.dart';
 import 'package:lexiora/core/services/pdf_discovery_service.dart';
+import 'package:lexiora/core/services/pdf_import_service.dart';
 import 'package:lexiora/core/services/permission_service.dart';
 import 'package:lexiora/features/annotations/domain/repositories/annotations_repository.dart';
 import 'package:lexiora/features/bookmarks/domain/repositories/bookmarks_repository.dart';
@@ -60,6 +61,14 @@ final Provider<AutoDiscoverPdfs> autoDiscoverProvider =
   (Ref ref) => AutoDiscoverPdfs(
     ref.watch(libraryRepositoryProvider),
     sl<PdfDiscoveryService>(),
+  ),
+);
+
+/// Manually imports PDFs chosen from the system file picker (multi-select).
+final Provider<ImportPdfs> importPdfsProvider = Provider<ImportPdfs>(
+  (Ref ref) => ImportPdfs(
+    ref.watch(libraryRepositoryProvider),
+    sl<PdfImportService>(),
   ),
 );
 

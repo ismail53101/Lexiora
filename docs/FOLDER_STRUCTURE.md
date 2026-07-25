@@ -1,4 +1,4 @@
-# Lexiora — Folder Structure
+# Sapiora — Folder Structure
 
 A guided tour of the repository. The golden rule: **`domain` never imports
 `data` or `presentation`**, and features never import each other's internals —
@@ -17,7 +17,7 @@ lexiora/
     ├── main.dart                # Entry point: init pdfrx, DI, router, runApp
     │
     ├── app/                     # ── Composition root ──────────────────────────
-    │   ├── app.dart             # LexioraApp: MaterialApp.router + theme + text scale
+    │   ├── app.dart             # SapioraApp: MaterialApp.router + theme + text scale
     │   ├── di/
     │   │   ├── injector.dart         # the GetIt instance `sl`
     │   │   ├── injector_config.dart  # configureDependencies(): core + modules
@@ -55,17 +55,25 @@ lexiora/
     │   ├── reading_progress/    # last page, %, history, continue reading
     │   └── settings/            # theme, font size, reading direction, colors, backup*
     │
-    └── modules/                 # ── Future modules (compiling scaffolds only) ──
-        ├── dictionary/          # }
-        ├── translation/         # }
-        ├── grammar/             # }  Each implements FeatureModule with NO behavior.
-        ├── vocabulary/          # }  They already plug into DI, routing and the
-        ├── flashcards/          # }  Home "Explore" tiles ("coming soon"), proving
-        ├── quiz/                # }  the architecture end-to-end.
-        ├── ai_assistant/        # }
+    └── modules/                 # ── Pluggable modules ──
+        ├── dictionary/          # ★ ACTIVE (Phase 2.1): full offline dictionary
+        │                        #   engine — domain/data/presentation + seeder.
+        ├── translation/         # ★ ACTIVE (Phase 2.2): offline reader "Translate"
+        │                        #   word action (domain/data/presentation + seeder).
+        ├── grammar/             # }  Future modules: each implements FeatureModule
+        ├── vocabulary/          # }  with NO behavior yet. They already plug into
+        ├── flashcards/          # }  DI, routing and the Home "Explore" tiles
+        ├── quiz/                # }  ("coming soon"), proving the architecture
+        ├── ai_assistant/        # }  end-to-end.
         ├── admin/               # }
         └── cloud_sync/          # }
 ```
+
+The `dictionary` module mirrors the feature anatomy below (domain / data /
+presentation) and adds `data/dictionary_seeder.dart`, which loads the bundled
+`assets/dictionary/wordset.jsonl.gz` into the `dictionary_entries` table on
+first use. It reaches the reader only through the core `WordActionRegistry`, so
+the reader has no dependency on the dictionary.
 
 ### Anatomy of a feature
 

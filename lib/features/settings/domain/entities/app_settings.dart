@@ -1,6 +1,7 @@
 import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart' show ThemeMode;
 import 'package:lexiora/core/constants/app_constants.dart';
+import 'package:lexiora/core/constants/translation_languages.dart';
 import 'package:lexiora/core/reader_engine/reader_models.dart';
 
 /// Immutable snapshot of all user-configurable preferences.
@@ -17,6 +18,7 @@ class AppSettings extends Equatable {
     this.defaultHighlightColor = AppConstants.primaryHighlightColor,
     this.keepScreenAwake = false,
     this.autoResume = true,
+    this.translationLanguage = kDefaultTranslationLanguage,
   });
 
   final ThemeMode themeMode;
@@ -39,6 +41,9 @@ class AppSettings extends Equatable {
   /// Resume from the last read page when reopening a document.
   final bool autoResume;
 
+  /// Target language code for the reader's offline Translate feature.
+  final String translationLanguage;
+
   AppSettings copyWith({
     ThemeMode? themeMode,
     double? fontScale,
@@ -48,6 +53,7 @@ class AppSettings extends Equatable {
     int? defaultHighlightColor,
     bool? keepScreenAwake,
     bool? autoResume,
+    String? translationLanguage,
   }) =>
       AppSettings(
         themeMode: themeMode ?? this.themeMode,
@@ -59,6 +65,7 @@ class AppSettings extends Equatable {
             defaultHighlightColor ?? this.defaultHighlightColor,
         keepScreenAwake: keepScreenAwake ?? this.keepScreenAwake,
         autoResume: autoResume ?? this.autoResume,
+        translationLanguage: translationLanguage ?? this.translationLanguage,
       );
 
   @override
@@ -71,5 +78,6 @@ class AppSettings extends Equatable {
         defaultHighlightColor,
         keepScreenAwake,
         autoResume,
+        translationLanguage,
       ];
 }

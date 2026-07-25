@@ -1,5 +1,8 @@
+import 'dart:io';
+
 import 'package:drift/drift.dart';
 import 'package:lexiora/core/database/app_database.dart';
+import 'package:lexiora/core/utils/logger.dart';
 import 'package:lexiora/features/library/domain/entities/category.dart';
 import 'package:lexiora/features/library/domain/entities/library_document.dart';
 import 'package:lexiora/features/library/domain/repositories/library_repository.dart';
@@ -95,9 +98,11 @@ class LibraryRepositoryImpl implements LibraryRepository {
   }
 
   @override
-  Future<Set<String>> existingPaths() async {
+  Future<Set<String>> existingKeys() async {
     final List<DocumentRow> rows = await _db.select(_db.documents).get();
-    return rows.map((DocumentRow r) => r.filePath).toSet();
+    return rows
+        .map((DocumentRow r) => libraryDedupKey(r.fileName, r.fileSize))
+        .toSet();
   }
 
   @override
@@ -115,6 +120,7 @@ class LibraryRepositoryImpl implements LibraryRepository {
             categoryId: Value(document.categoryId),
             isFavorite: Value(document.isFavorite),
             lastOpenedAt: Value(document.lastOpenedAt),
+            managedFile: Value(document.isManaged),
           ),
         );
   }
@@ -149,8 +155,19 @@ class LibraryRepositoryImpl implements LibraryRepository {
 
   @override
   Future<void> delete(String id) async {
-    // Discovered PDFs are referenced in place (they are the user's own files),
-    // so removing a document only deletes the library entry — never the file.
+    final DocumentRow? row = await (_db.select(_db.documents)
+          ..where((t) => t.id.equals(id)))
+        .getSingleOrNull();
+    // App-managed import copies are deleted from disk; in-place discovered
+    // files (the user's own) are never removed — only the library entry is.
+    if (row != null && row.managedFile) {
+      try {
+        final File file = File(row.filePath);
+        if (file.existsSync()) file.deleteSync();
+      } on Object catch (e) {
+        AppLogger.w('Could not delete managed file ${row.filePath}: $e');
+      }
+    }
     await (_db.delete(_db.documents)..where((t) => t.id.equals(id))).go();
   }
 
@@ -199,6 +216,7 @@ class LibraryRepositoryImpl implements LibraryRepository {
         coverPath: r.coverPath,
         categoryId: r.categoryId,
         lastOpenedAt: r.lastOpenedAt,
+        isManaged: r.managedFile,
       );
 
   Category _mapCategory(CategoryRow r) => Category(

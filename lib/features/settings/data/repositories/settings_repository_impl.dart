@@ -1,6 +1,7 @@
 import 'package:drift/drift.dart';
 import 'package:flutter/material.dart' show ThemeMode;
 import 'package:lexiora/core/constants/app_constants.dart';
+import 'package:lexiora/core/constants/translation_languages.dart';
 import 'package:lexiora/core/database/app_database.dart';
 import 'package:lexiora/core/reader_engine/reader_models.dart';
 import 'package:lexiora/features/settings/domain/entities/app_settings.dart';
@@ -21,6 +22,7 @@ class SettingsRepositoryImpl implements SettingsRepository {
   static const String _kDefaultHighlightColor = 'defaultHighlightColor';
   static const String _kKeepAwake = 'keepScreenAwake';
   static const String _kAutoResume = 'autoResume';
+  static const String _kTranslationLanguage = 'translationLanguage';
 
   @override
   Stream<AppSettings> watchSettings() =>
@@ -70,6 +72,7 @@ class SettingsRepositoryImpl implements SettingsRepository {
       ),
       keepScreenAwake: _bool(map[_kKeepAwake], false),
       autoResume: _bool(map[_kAutoResume], true),
+      translationLanguage: _language(map[_kTranslationLanguage]),
     );
   }
 
@@ -82,7 +85,12 @@ class SettingsRepositoryImpl implements SettingsRepository {
         _kDefaultHighlightColor: s.defaultHighlightColor.toString(),
         _kKeepAwake: s.keepScreenAwake ? '1' : '0',
         _kAutoResume: s.autoResume ? '1' : '0',
+        _kTranslationLanguage: s.translationLanguage,
       };
+
+  String _language(String? v) => (v != null && isSupportedTranslationLanguage(v))
+      ? v
+      : kDefaultTranslationLanguage;
 
   int _int(String? v, int fallback) =>
       v == null ? fallback : (int.tryParse(v) ?? fallback);
