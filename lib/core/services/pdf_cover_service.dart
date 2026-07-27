@@ -40,7 +40,7 @@ class PdfCoverService {
       final PdfPage page = document.pages.first;
 
       final double aspect = page.width <= 0 ? 1.4 : page.height / page.width;
-      final int width = _targetWidth;
+      const int width = _targetWidth;
       final int height = (width * aspect).round().clamp(1, 4000);
 
       final dynamic rendered = await page.render(width: width, height: height);

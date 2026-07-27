@@ -5,7 +5,13 @@ import 'package:lexiora/features/reader/presentation/widgets/reader_selection_to
 
 /// A stand-in [WordAction] for widget tests (no real popup work).
 class _FakeAction implements WordAction {
-  const _FakeAction(this.id, this.label, this.icon, this.priority);
+  const _FakeAction(
+    this.id,
+    this.label,
+    this.icon,
+    this.priority, {
+    this.supportsPhrase = false,
+  });
   @override
   final String id;
   @override
@@ -15,6 +21,8 @@ class _FakeAction implements WordAction {
   @override
   final int priority;
   @override
+  final bool supportsPhrase;
+  @override
   Future<void> invoke(BuildContext context, WordActionContext ctx) async {}
 }
 
@@ -23,7 +31,8 @@ void main() {
 
   const List<WordAction> actions = <WordAction>[
     _FakeAction('dictionary.define', 'Look up', Icons.menu_book_outlined, 10),
-    _FakeAction('translation.translate', 'Translate', Icons.translate, 20),
+    _FakeAction('translation.translate', 'Translate', Icons.translate, 20,
+        supportsPhrase: true),
   ];
 
   testWidgets(
