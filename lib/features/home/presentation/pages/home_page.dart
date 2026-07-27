@@ -13,6 +13,8 @@ import 'package:lexiora/features/library/domain/entities/library_document.dart';
 import 'package:lexiora/features/library/domain/usecases/library_usecases.dart';
 import 'package:lexiora/features/library/presentation/providers/library_providers.dart';
 import 'package:lexiora/features/library/presentation/widgets/document_card.dart';
+import 'package:lexiora/features/settings/domain/entities/app_settings.dart';
+import 'package:lexiora/features/settings/presentation/providers/settings_providers.dart';
 
 /// The Home dashboard: greeting, a (UI-only) search entry, and rows for
 /// Continue Reading, Recent and Favorites, plus module "Explore" tiles that
@@ -49,6 +51,7 @@ class HomePage extends ConsumerWidget {
           SliverAppBar.large(
             title: const Text(AppConstants.appName),
             actions: [
+              const _ThemeToggle(),
               IconButton(
                 icon: const Icon(Icons.settings_outlined),
                 tooltip: 'Settings',
@@ -165,6 +168,45 @@ class HomePage extends ConsumerWidget {
     );
   }
 
+}
+
+/// A Light / Dark / System theme switch right on the Home app bar — no need to
+/// open Settings. Reuses the existing settings controller.
+class _ThemeToggle extends ConsumerWidget {
+  const _ThemeToggle();
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final ThemeMode mode = ref.watch(settingsProvider).maybeWhen(
+          data: (AppSettings s) => s.themeMode,
+          orElse: () => ThemeMode.system,
+        );
+    final IconData icon = switch (mode) {
+      ThemeMode.light => Icons.light_mode_outlined,
+      ThemeMode.dark => Icons.dark_mode_outlined,
+      ThemeMode.system => Icons.brightness_auto_outlined,
+    };
+    return PopupMenuButton<ThemeMode>(
+      icon: Icon(icon),
+      tooltip: 'Theme',
+      onSelected: (ThemeMode m) =>
+          ref.read(settingsControllerProvider).setThemeMode(m),
+      itemBuilder: (BuildContext context) => <PopupMenuEntry<ThemeMode>>[
+        CheckedPopupMenuItem<ThemeMode>(
+            value: ThemeMode.light,
+            checked: mode == ThemeMode.light,
+            child: const Text('Light')),
+        CheckedPopupMenuItem<ThemeMode>(
+            value: ThemeMode.dark,
+            checked: mode == ThemeMode.dark,
+            child: const Text('Dark')),
+        CheckedPopupMenuItem<ThemeMode>(
+            value: ThemeMode.system,
+            checked: mode == ThemeMode.system,
+            child: const Text('System')),
+      ],
+    );
+  }
 }
 
 class _SearchEntry extends StatelessWidget {

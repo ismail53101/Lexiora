@@ -6,12 +6,13 @@ import 'package:lexiora/app/di/module_registry.dart';
 import 'package:lexiora/core/module/feature_module.dart';
 import 'package:lexiora/core/navigation/home_destination.dart';
 
-/// Enforces the navigation rule (v0.6.3): every feature appears exactly once.
+/// Enforces the navigation rule (v0.8.0): every feature appears exactly once.
 ///
-/// Home hosts all modules — Dictionary, Grammar, Vocabulary, Library (active)
-/// plus Flashcards, Quiz, AI Assistant and Cloud Sync (marked "Coming Soon").
-/// The Vocabulary module hosts none of the coming-soon tiles (its Coming Soon
-/// widget was removed), so nothing is duplicated between Home and Vocabulary.
+/// Home hosts all modules — Dictionary, Grammar, Vocabulary, Library, Study Hub
+/// and Flashcards (active) plus Quiz, AI Assistant and Cloud Sync (marked
+/// "Coming Soon"). The Vocabulary module hosts none of the coming-soon tiles
+/// (its Coming Soon widget was removed), so nothing is duplicated between Home
+/// and Vocabulary.
 void main() {
   test('Home hosts all modules once; Vocabulary hosts no coming-soon tiles', () {
     final GetIt gi = GetIt.asNewInstance();
@@ -29,16 +30,18 @@ void main() {
       'grammar',
       'vocabulary',
       'library',
+      'study_hub',
+      'flashcards',
+      'quiz',
+      'ai_assistant',
     ]) {
       expect(byId.containsKey(id), isTrue, reason: '"$id" must be a Home tile');
       expect(byId[id]!.comingSoon, isFalse, reason: '"$id" is active');
+      expect(byId[id]!.routePath, isNotEmpty, reason: '"$id" has a route');
     }
 
     // Cross-cutting future features live on Home, marked coming-soon.
     for (final String id in <String>[
-      'flashcards',
-      'quiz',
-      'ai_assistant',
       'cloud_sync',
     ]) {
       expect(byId.containsKey(id), isTrue, reason: '"$id" must be a Home tile');

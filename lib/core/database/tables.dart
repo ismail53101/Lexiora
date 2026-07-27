@@ -417,3 +417,498 @@ class VocabularyWords extends Table {
   @override
   Set<Column<Object>> get primaryKey => {id};
 }
+
+// ── Study Hub (Phase v0.7.0) ────────────────────────────────────────────────
+//
+// The Study Hub is the user's personal learning dashboard. All three tables
+// below hold USER data (never authored content), keyed by [day] ('YYYY-MM-DD',
+// local) for fast per-day and per-range queries. Every row carries a stable
+// UUID [id] and timestamps so a future Cloud Sync layer can diff/merge without
+// any schema change. These are additive: no existing table is touched.
+
+/// A planned study task for a given [day].
+@DataClassName('StudyTaskRow')
+class StudyTasks extends Table {
+  TextColumn get id => text()();
+  TextColumn get day => text()();
+  TextColumn get title => text()();
+  TextColumn get subject => text().nullable()();
+
+  /// Start/end time as minutes from midnight (0–1439); null when unscheduled.
+  IntColumn get startMinute => integer().nullable()();
+  IntColumn get endMinute => integer().nullable()();
+
+  /// 0 = low, 1 = medium, 2 = high (mirrors TaskPriority.index).
+  IntColumn get priority => integer().withDefault(const Constant(1))();
+  BoolColumn get completed => boolean().withDefault(const Constant(false))();
+  IntColumn get orderIndex => integer().withDefault(const Constant(0))();
+  DateTimeColumn get createdAt => dateTime()();
+  DateTimeColumn get updatedAt => dateTime()();
+  DateTimeColumn get completedAt => dateTime().nullable()();
+
+  // ── v0.7.1 (Academic Planning System) — all additive & nullable/defaulted so
+  //    existing rows remain valid. [title] stays the human label (subject for
+  //    new sessions; the break name for breaks).
+
+  /// The topic within the subject (user-defined; null for breaks).
+  TextColumn get topic => text().nullable()();
+
+  /// Free-form notes/description (user-defined).
+  TextColumn get notes => text().nullable()();
+
+  /// 0 = pending, 1 = in progress, 2 = completed (mirrors TaskStatus.index).
+  /// Kept in sync with [completed] so pre-v0.7.1 queries keep working.
+  IntColumn get status => integer().withDefault(const Constant(0))();
+
+  /// Actual studied minutes recorded for this session (via a timer); optional.
+  IntColumn get durationMinutes => integer().nullable()();
+
+  /// 'session' or 'break' (mirrors SessionKind.key). Existing rows default to
+  /// 'session'. Breaks store their name in [title] and never count as sessions.
+  TextColumn get kind =>
+      text().withDefault(const Constant('session'))();
+
+  @override
+  Set<Column<Object>> get primaryKey => {id};
+}
+
+/// A daily goal with progress (e.g. "Learn 20 vocabulary words").
+@DataClassName('StudyGoalRow')
+class StudyGoals extends Table {
+  TextColumn get id => text()();
+  TextColumn get day => text()();
+  TextColumn get title => text()();
+
+  /// vocabulary / reading / grammar / mcq / custom (mirrors GoalType.key).
+  TextColumn get type => text().withDefault(const Constant('custom'))();
+  IntColumn get targetCount => integer().withDefault(const Constant(1))();
+  IntColumn get currentCount => integer().withDefault(const Constant(0))();
+  TextColumn get unit => text().nullable()();
+  DateTimeColumn get createdAt => dateTime()();
+  DateTimeColumn get updatedAt => dateTime()();
+
+  @override
+  Set<Column<Object>> get primaryKey => {id};
+}
+
+/// A recorded study session — a completed Pomodoro focus block or a manual log.
+/// Drives Study Hours, the streak, and the weekly/monthly statistics.
+@DataClassName('StudySessionRow')
+class StudySessions extends Table {
+  TextColumn get id => text()();
+  TextColumn get day => text()();
+  DateTimeColumn get startedAt => dateTime()();
+  IntColumn get durationMinutes => integer()();
+
+  /// pomodoro / manual.
+  TextColumn get kind => text().withDefault(const Constant('pomodoro'))();
+  DateTimeColumn get createdAt => dateTime()();
+
+  @override
+  Set<Column<Object>> get primaryKey => {id};
+}
+
+/// A reusable study routine template (Phase v0.7.1), e.g. "CSS Routine".
+/// Applying a template copies its items into a day's [StudyTasks] as fully
+/// editable sessions — it never locks any data.
+@DataClassName('StudyTemplateRow')
+class StudyTemplates extends Table {
+  TextColumn get id => text()();
+  TextColumn get name => text()();
+  DateTimeColumn get createdAt => dateTime()();
+  DateTimeColumn get updatedAt => dateTime()();
+
+  @override
+  Set<Column<Object>> get primaryKey => {id};
+}
+
+/// A single session/break inside a [StudyTemplates] routine.
+@DataClassName('StudyTemplateItemRow')
+class StudyTemplateItems extends Table {
+  TextColumn get id => text()();
+  TextColumn get templateId => text()();
+  TextColumn get kind => text().withDefault(const Constant('session'))();
+  TextColumn get title => text()();
+  TextColumn get subject => text().nullable()();
+  TextColumn get topic => text().nullable()();
+  IntColumn get startMinute => integer().nullable()();
+  IntColumn get endMinute => integer().nullable()();
+  IntColumn get priority => integer().withDefault(const Constant(1))();
+  TextColumn get notes => text().nullable()();
+  IntColumn get orderIndex => integer().withDefault(const Constant(0))();
+
+  @override
+  Set<Column<Object>> get primaryKey => {id};
+}
+
+/// A user-defined subject with a custom colour (Phase v0.7.2).
+///
+/// Subjects are keyed by [nameLower] (case-insensitive) so a session's free-text
+/// subject maps to its colour. Deleting/archiving a subject never touches study
+/// history — sessions keep their text; they simply lose (or regain) the colour.
+@DataClassName('StudySubjectRow')
+class StudySubjects extends Table {
+  TextColumn get id => text()();
+  TextColumn get name => text()();
+  TextColumn get nameLower => text()();
+
+  /// ARGB colour value.
+  IntColumn get color => integer()();
+  BoolColumn get archived => boolean().withDefault(const Constant(false))();
+  DateTimeColumn get createdAt => dateTime()();
+  DateTimeColumn get updatedAt => dateTime()();
+
+  @override
+  Set<Column<Object>> get primaryKey => {id};
+}
+
+// ── Flashcards (Phase v0.8.0) ───────────────────────────────────────────────
+//
+// A brand-new, independent module. Everything is user-defined. Subject colours
+// are NOT duplicated here — they are read from `study_subjects`. Cards carry
+// SM-2-ready scheduling fields ([easeFactor], [intervalDays], [repetitions],
+// [lapses], [dueAt], [reviewState]); the full SM-2 algorithm is not implemented.
+
+/// A user-created deck of flashcards.
+@DataClassName('DeckRow')
+class Decks extends Table {
+  TextColumn get id => text()();
+  TextColumn get name => text()();
+  TextColumn get description => text().nullable()();
+  TextColumn get subject => text().nullable()();
+  TextColumn get topic => text().nullable()();
+
+  /// Optional deck-specific ARGB colour (else the subject colour is used).
+  IntColumn get color => integer().nullable()();
+
+  /// Material icon code point for the deck.
+  IntColumn get icon => integer().nullable()();
+  BoolColumn get archived => boolean().withDefault(const Constant(false))();
+  DateTimeColumn get createdAt => dateTime()();
+  DateTimeColumn get updatedAt => dateTime()();
+
+  @override
+  Set<Column<Object>> get primaryKey => {id};
+}
+
+/// A single flashcard. Front/back are free text (rich-text ready). Bookmark,
+/// favourite and difficulty are user controls; the scheduling fields make the
+/// card SM-2 compatible without implementing the algorithm.
+@DataClassName('FlashcardRow')
+class Flashcards extends Table {
+  TextColumn get id => text()();
+  TextColumn get deckId => text()();
+  TextColumn get front => text()();
+  TextColumn get back => text()();
+  TextColumn get subject => text().nullable()();
+  TextColumn get topic => text().nullable()();
+
+  /// Comma-separated user tags (free text).
+  TextColumn get tags => text().nullable()();
+  TextColumn get notes => text().nullable()();
+
+  /// 0 = none, 1 = easy, 2 = medium, 3 = hard (mirrors CardDifficulty.index).
+  IntColumn get difficulty => integer().withDefault(const Constant(0))();
+  BoolColumn get bookmarked => boolean().withDefault(const Constant(false))();
+  BoolColumn get favorite => boolean().withDefault(const Constant(false))();
+
+  // ── SM-2-ready scheduling (simple placeholder scheduler drives these) ──
+  /// 0 = new, 1 = learning, 2 = review (mirrors ReviewState.index).
+  IntColumn get reviewState => integer().withDefault(const Constant(0))();
+  DateTimeColumn get dueAt => dateTime().nullable()();
+  IntColumn get intervalDays => integer().withDefault(const Constant(0))();
+  RealColumn get easeFactor => real().withDefault(const Constant(2.5))();
+  IntColumn get repetitions => integer().withDefault(const Constant(0))();
+  IntColumn get lapses => integer().withDefault(const Constant(0))();
+  DateTimeColumn get lastReviewedAt => dateTime().nullable()();
+
+  TextColumn get searchText => text().withDefault(const Constant(''))();
+  DateTimeColumn get createdAt => dateTime()();
+  DateTimeColumn get updatedAt => dateTime()();
+
+  @override
+  Set<Column<Object>> get primaryKey => {id};
+}
+
+/// One review event, for statistics and (future) SM-2 tuning.
+@DataClassName('ReviewLogRow')
+class ReviewLogs extends Table {
+  TextColumn get id => text()();
+  TextColumn get cardId => text()();
+  TextColumn get deckId => text()();
+
+  /// 0 = again, 1 = hard, 2 = good, 3 = easy (mirrors CardRating.index).
+  IntColumn get rating => integer()();
+  TextColumn get day => text()();
+  DateTimeColumn get reviewedAt => dateTime()();
+  IntColumn get durationMs => integer().withDefault(const Constant(0))();
+
+  @override
+  Set<Column<Object>> get primaryKey => {id};
+}
+
+// ── Quiz Engine (Phase v0.9.0) ──────────────────────────────────────────────
+//
+// A brand-new, fully independent module. It stores NO built-in content — the
+// tables ship empty. Questions are *content*, loaded later via Local JSON /
+// Admin CMS / Cloud API through the QuestionProvider abstraction. Nothing here
+// is hardcoded: banks, subjects, topics, tags and questions are all data-driven.
+// Subject colours are read (never duplicated) from `study_subjects`.
+
+/// A Question Bank — a versioned, taggable group of questions (usually one
+/// per imported JSON pack, but user/Admin-creatable too). Total-question count
+/// is computed on demand (never denormalised) so it can never drift.
+@DataClassName('QuizBankRow')
+class QuizBanks extends Table {
+  TextColumn get id => text()();
+  TextColumn get name => text()();
+  TextColumn get subject => text().nullable()();
+  TextColumn get topic => text().nullable()();
+  TextColumn get description => text().nullable()();
+
+  /// Optional bank-specific ARGB colour (else the subject colour is used).
+  IntColumn get color => integer().nullable()();
+
+  /// Comma-separated free-text tags.
+  TextColumn get tags => text().nullable()();
+
+  /// Content version string (e.g. "1.0") carried from the source pack.
+  TextColumn get version => text().nullable()();
+
+  /// Provenance of the bank: 'manual' | 'local_json' | 'admin' | 'cloud'.
+  TextColumn get source => text().withDefault(const Constant('manual'))();
+
+  /// Stable id from the external source, for merge/replace deduplication.
+  TextColumn get externalId => text().nullable()();
+
+  /// Links into the Subject → Topic hierarchy (v0.9.1). Nullable for banks not
+  /// yet filed under a subject/topic. Managed by the Admin CMS / demo seeder.
+  TextColumn get subjectId => text().nullable()();
+  TextColumn get topicId => text().nullable()();
+  IntColumn get orderIndex => integer().withDefault(const Constant(0))();
+  BoolColumn get archived => boolean().withDefault(const Constant(false))();
+  TextColumn get searchText => text().withDefault(const Constant(''))();
+  DateTimeColumn get createdAt => dateTime()();
+  DateTimeColumn get updatedAt => dateTime()();
+
+  @override
+  Set<Column<Object>> get primaryKey => {id};
+}
+
+/// A universal question. [type] selects how [optionsJson] / [answerJson] are
+/// interpreted, so one row models MCQ (single), True/False and Fill-in-the-Blank
+/// today and Matching / Multi-Correct later — no schema change required.
+@DataClassName('QuizQuestionRow')
+class QuizQuestions extends Table {
+  TextColumn get id => text()();
+  TextColumn get bankId => text()();
+
+  /// Mirrors QuestionType.index: 0 mcqSingle, 1 trueFalse, 2 fillBlank,
+  /// 3 matching (reserved), 4 multiCorrect (reserved).
+  IntColumn get type => integer().withDefault(const Constant(0))();
+
+  /// The question stem / prompt (free text, markdown-ready).
+  TextColumn get prompt => text()();
+
+  /// JSON array of option strings (MCQ/matching). Null for True/False & Blank.
+  TextColumn get optionsJson => text().nullable()();
+
+  /// JSON-encoded correct answer, shape depends on [type]:
+  /// mcqSingle → int index; trueFalse → bool; fillBlank → [accepted strings];
+  /// multiCorrect → [indices]; matching → {left: right}.
+  TextColumn get answerJson => text().nullable()();
+  TextColumn get explanation => text().nullable()();
+
+  /// Denormalised (from the bank/pack) for fast filtering & subject analytics.
+  TextColumn get subject => text().nullable()();
+  TextColumn get topic => text().nullable()();
+  TextColumn get tags => text().nullable()();
+
+  /// 0 = none, 1 = easy, 2 = medium, 3 = hard (mirrors QuizDifficulty.index).
+  IntColumn get difficulty => integer().withDefault(const Constant(0))();
+  BoolColumn get bookmarked => boolean().withDefault(const Constant(false))();
+
+  /// Stable id from the external source, for merge/replace deduplication.
+  TextColumn get externalId => text().nullable()();
+
+  /// Links into the Subject → Topic hierarchy (v0.9.1); denormalised for fast
+  /// per-subject/topic filtering and analytics.
+  TextColumn get subjectId => text().nullable()();
+  TextColumn get topicId => text().nullable()();
+  TextColumn get searchText => text().withDefault(const Constant(''))();
+  DateTimeColumn get createdAt => dateTime()();
+  DateTimeColumn get updatedAt => dateTime()();
+
+  @override
+  Set<Column<Object>> get primaryKey => {id};
+}
+
+/// One quiz attempt (session/result). Finished attempts feed Analytics; an
+/// unfinished attempt ([finishedAt] null) represents an in-progress session.
+@DataClassName('QuizAttemptRow')
+class QuizAttempts extends Table {
+  TextColumn get id => text()();
+
+  /// Bank studied, or null for a mixed/custom selection.
+  TextColumn get bankId => text().nullable()();
+
+  /// 0 = practice, 1 = exam (mirrors QuizMode.index).
+  IntColumn get mode => integer().withDefault(const Constant(0))();
+  TextColumn get title => text().nullable()();
+  IntColumn get totalQuestions => integer().withDefault(const Constant(0))();
+  IntColumn get correct => integer().withDefault(const Constant(0))();
+  IntColumn get wrong => integer().withDefault(const Constant(0))();
+  IntColumn get skipped => integer().withDefault(const Constant(0))();
+  DateTimeColumn get startedAt => dateTime()();
+  DateTimeColumn get finishedAt => dateTime().nullable()();
+  IntColumn get durationMs => integer().withDefault(const Constant(0))();
+
+  /// 'YYYY-MM-DD' of completion, for daily/weekly/monthly analytics ranges.
+  TextColumn get day => text().withDefault(const Constant(''))();
+  DateTimeColumn get createdAt => dateTime()();
+
+  @override
+  Set<Column<Object>> get primaryKey => {id};
+}
+
+/// A single response within an attempt — powers Review Answers and the automatic
+/// Wrong-Answer Notebook. [subject] is copied from the question at answer time
+/// so subject analytics survive later content re-imports.
+@DataClassName('QuizAnswerRow')
+class QuizAttemptAnswers extends Table {
+  TextColumn get id => text()();
+  TextColumn get attemptId => text()();
+  TextColumn get questionId => text()();
+
+  /// JSON-encoded answer the user gave (null when skipped).
+  TextColumn get givenJson => text().nullable()();
+  BoolColumn get isCorrect => boolean().withDefault(const Constant(false))();
+  BoolColumn get skipped => boolean().withDefault(const Constant(false))();
+  TextColumn get subject => text().nullable()();
+  IntColumn get orderIndex => integer().withDefault(const Constant(0))();
+  IntColumn get timeMs => integer().withDefault(const Constant(0))();
+  DateTimeColumn get createdAt => dateTime()();
+
+  @override
+  Set<Column<Object>> get primaryKey => {id};
+}
+
+/// The Wrong-Answer Notebook: one row per question the user has gotten wrong
+/// (deduped by [questionId]). Auto-upserted after each attempt; user can review,
+/// retry, delete or clear all.
+@DataClassName('QuizWrongRow')
+class QuizWrongAnswers extends Table {
+  /// The question id (natural key → one notebook entry per question).
+  TextColumn get questionId => text()();
+  TextColumn get bankId => text().nullable()();
+  TextColumn get subject => text().nullable()();
+
+  /// JSON of the most recent wrong answer given.
+  TextColumn get lastGivenJson => text().nullable()();
+  IntColumn get wrongCount => integer().withDefault(const Constant(1))();
+  DateTimeColumn get lastWrongAt => dateTime()();
+  DateTimeColumn get createdAt => dateTime()();
+
+  @override
+  Set<Column<Object>> get primaryKey => {questionId};
+}
+
+/// Key–value store for Quiz Engine preferences (default mode, questions per
+/// quiz, shuffle, timer, show-explanations, negative marking, …). Key-value so
+/// new settings never need a migration.
+@DataClassName('QuizSettingRow')
+class QuizSettingsRows extends Table {
+  TextColumn get key => text()();
+  TextColumn get value => text()();
+
+  @override
+  Set<Column<Object>> get primaryKey => {key};
+}
+
+/// A top-level Quiz Subject (v0.9.1). Fully data-driven: created, ordered,
+/// coloured and iconised from the hidden Admin CMS (and the demo seeder). The
+/// public app renders whatever rows exist here — nothing is hardcoded.
+@DataClassName('QuizSubjectRow')
+class QuizSubjects extends Table {
+  TextColumn get id => text()();
+  TextColumn get name => text()();
+  TextColumn get description => text().nullable()();
+
+  /// Material icon code point (optional).
+  IntColumn get icon => integer().nullable()();
+
+  /// ARGB colour (optional; else a subject colour / theme default is used).
+  IntColumn get color => integer().nullable()();
+  IntColumn get orderIndex => integer().withDefault(const Constant(0))();
+  BoolColumn get archived => boolean().withDefault(const Constant(false))();
+  TextColumn get searchText => text().withDefault(const Constant(''))();
+  DateTimeColumn get createdAt => dateTime()();
+  DateTimeColumn get updatedAt => dateTime()();
+
+  @override
+  Set<Column<Object>> get primaryKey => {id};
+}
+
+/// A Topic within a Subject (v0.9.1). Unlimited per subject; ordered/editable
+/// from the Admin CMS. Quizzes (banks) and questions link here by [id].
+@DataClassName('QuizTopicRow')
+class QuizTopics extends Table {
+  TextColumn get id => text()();
+  TextColumn get subjectId => text()();
+  TextColumn get name => text()();
+  TextColumn get description => text().nullable()();
+  IntColumn get icon => integer().nullable()();
+  IntColumn get color => integer().nullable()();
+  IntColumn get orderIndex => integer().withDefault(const Constant(0))();
+  BoolColumn get archived => boolean().withDefault(const Constant(false))();
+  DateTimeColumn get createdAt => dateTime()();
+  DateTimeColumn get updatedAt => dateTime()();
+
+  @override
+  Set<Column<Object>> get primaryKey => {id};
+}
+
+// ── AI Assistant (Phase v0.10.0) ────────────────────────────────────────────
+//
+// Offline-first chat persistence for the AI Assistant. Two additive tables:
+// a conversation per chat session and its ordered messages. Content only —
+// the API key is never stored here (it comes from environment config).
+
+/// One AI chat session (a conversation).
+@DataClassName('AiConversationRow')
+class AiConversations extends Table {
+  TextColumn get id => text()();
+  TextColumn get title => text()();
+
+  /// The model used for this conversation (e.g. 'auto').
+  TextColumn get model => text().nullable()();
+  BoolColumn get pinned => boolean().withDefault(const Constant(false))();
+
+  /// Lowercased title (+ optional content) for fast conversation search.
+  TextColumn get searchText => text().withDefault(const Constant(''))();
+  DateTimeColumn get createdAt => dateTime()();
+  DateTimeColumn get updatedAt => dateTime()();
+
+  @override
+  Set<Column<Object>> get primaryKey => {id};
+}
+
+/// One message within a conversation.
+@DataClassName('AiMessageRow')
+class AiMessages extends Table {
+  TextColumn get id => text()();
+  TextColumn get conversationId => text()();
+
+  /// 0 = system, 1 = user, 2 = assistant (mirrors AiRole.index).
+  IntColumn get role => integer()();
+  TextColumn get content => text()();
+
+  /// 0 = done, 1 = error (mirrors AiMessageStatus persisted subset).
+  IntColumn get status => integer().withDefault(const Constant(0))();
+  TextColumn get error => text().nullable()();
+  IntColumn get orderIndex => integer().withDefault(const Constant(0))();
+  DateTimeColumn get createdAt => dateTime()();
+
+  @override
+  Set<Column<Object>> get primaryKey => {id};
+}
