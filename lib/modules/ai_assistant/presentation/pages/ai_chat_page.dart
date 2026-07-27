@@ -49,27 +49,39 @@ class AiChatPage extends ConsumerWidget {
       ref.read(aiChatControllerProvider.notifier).clearError();
     });
 
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(title, overflow: TextOverflow.ellipsis),
-        actions: <Widget>[
-          IconButton(
-            tooltip: 'New chat',
-            icon: const Icon(Icons.add_comment_outlined),
-            onPressed: () =>
-                ref.read(aiChatControllerProvider.notifier).newChat(),
-          ),
-        ],
+   return Scaffold(
+  resizeToAvoidBottomInset: true,
+  appBar: AppBar(
+    title: Text(title, overflow: TextOverflow.ellipsis),
+    actions: <Widget>[
+      IconButton(
+        tooltip: 'New chat',
+        icon: const Icon(Icons.add_comment_outlined),
+        onPressed: () =>
+            ref.read(aiChatControllerProvider.notifier).newChat(),
       ),
-      drawer: const ConversationDrawer(),
-      body: !configured
-          ? _notConfigured(context)
-          : (currentId == null
-              ? const _Welcome()
-              : _MessageList(conversationId: currentId)),
-      bottomNavigationBar: ChatComposer(enabled: configured),
-    );
-  }
+    ],
+  ),
+  drawer: const ConversationDrawer(),
+  body: !configured
+      ? _notConfigured(context)
+      : (currentId == null
+          ? const _Welcome()
+          : _MessageList(conversationId: currentId)),
+  bottomNavigationBar: AnimatedPadding(
+    duration: const Duration(milliseconds: 150),
+    curve: Curves.easeOut,
+    padding: EdgeInsets.only(
+      bottom: MediaQuery.of(context).viewInsets.bottom,
+    ),
+    child: SafeArea(
+      top: false,
+      child: ChatComposer(
+        enabled: configured,
+      ),
+    ),
+  ),
+);
 
   Widget _notConfigured(BuildContext context) => const EmptyState(
         icon: Icons.key_off_outlined,
