@@ -50,7 +50,6 @@ class AiChatPage extends ConsumerWidget {
     });
 
     return Scaffold(
-      resizeToAvoidBottomInset: true,
       appBar: AppBar(
         title: Text(title, overflow: TextOverflow.ellipsis),
         actions: <Widget>[
@@ -68,19 +67,7 @@ class AiChatPage extends ConsumerWidget {
           : (currentId == null
               ? const _Welcome()
               : _MessageList(conversationId: currentId)),
-      bottomNavigationBar: AnimatedPadding(
-        duration: const Duration(milliseconds: 150),
-        curve: Curves.easeOut,
-        padding: EdgeInsets.only(
-          bottom: MediaQuery.of(context).viewInsets.bottom,
-        ),
-        child: SafeArea(
-          top: false,
-          child: ChatComposer(
-            enabled: configured,
-          ),
-        ),
-      ),
+      bottomNavigationBar: ChatComposer(enabled: configured),
     );
   }
 
@@ -113,13 +100,13 @@ class _MessageList extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final AsyncValue<List<AiMessage>> async =
         ref.watch(aiMessagesProvider(conversationId));
-    final bool streaming = ref
-        .watch(aiChatControllerProvider.select((AiChatState s) => s.streaming));
+    final bool streaming =
+        ref.watch(aiChatControllerProvider.select((AiChatState s) => s.streaming));
     final int limit = ref.watch(aiMessageLimitProvider);
 
     return async.when(
       loading: () => const Center(child: CircularProgressIndicator()),
-      error: (Object error, StackTrace stackTrace) => const _Welcome(),
+      error: (_, _) => const _Welcome(),
       data: (List<AiMessage> messages) {
         if (messages.isEmpty && !streaming) return const _Welcome();
         final int off = streaming ? 1 : 0;
