@@ -8,9 +8,10 @@ import 'package:lexiora/modules/ai_assistant/domain/entities/ai_chat.dart';
 import 'package:lexiora/modules/ai_assistant/domain/entities/ai_failure.dart';
 
 class AiApiClient {
-  AiApiClient(this._config);
+  AiApiClient(AiConfig _);
 
-  final AiConfig _config;
+  static const String _workerUrl =
+      'https://sapiora-ai-worker.ismaillasharibaloch53.workers.dev';
 
   Stream<String> streamSse(
     Map<String, dynamic> body, {
@@ -29,13 +30,18 @@ class AiApiClient {
 
     try {
       final HttpClientRequest req = await client
-          .postUrl(Uri.parse(
-              'https://sapiora-ai-worker.ismaillasharibaloch53.workers.dev'))
+          .postUrl(Uri.parse(_workerUrl))
           .timeout(AiConstants.connectTimeout);
 
-      req.headers
-        ..set(HttpHeaders.contentTypeHeader, 'application/json')
-        ..set(HttpHeaders.acceptHeader, 'text/event-stream');
+      req.headers.set(
+        HttpHeaders.contentTypeHeader,
+        'application/json',
+      );
+
+      req.headers.set(
+        HttpHeaders.acceptHeader,
+        'text/event-stream',
+      );
 
       req.add(utf8.encode(jsonEncode(body)));
 
@@ -98,12 +104,13 @@ class AiApiClient {
 
     try {
       final HttpClientRequest req = await client
-          .postUrl(Uri.parse(
-              'https://sapiora-ai-worker.ismaillasharibaloch53.workers.dev'))
+          .postUrl(Uri.parse(_workerUrl))
           .timeout(AiConstants.connectTimeout);
 
-      req.headers
-        ..set(HttpHeaders.contentTypeHeader, 'application/json');
+      req.headers.set(
+        HttpHeaders.contentTypeHeader,
+        'application/json',
+      );
 
       req.add(utf8.encode(jsonEncode(body)));
 
