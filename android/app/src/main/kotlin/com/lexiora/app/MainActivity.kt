@@ -2,9 +2,11 @@ package com.lexiora.app
 
 import android.app.Activity
 import android.content.Intent
+import android.database.Cursor
 import android.net.Uri
 import android.os.Build
 import android.os.Environment
+import android.provider.MediaStore
 import android.provider.OpenableColumns
 import android.util.Log
 import android.view.WindowManager
@@ -22,8 +24,15 @@ import java.io.File
  *  - getSdkInt / setKeepScreenOn: small platform helpers.
  *  - isExternalStorageManager: whether all-files access is granted (always true
  *    below API 30, where the storage permission covers broad reads).
- *  - scanAllPdfs: recursively walks the shared-storage volumes and returns every
- *    readable *.pdf by absolute path (auto-discovery; files opened in place).
+ *  - scanAllPdfs: discovers every readable *.pdf on the device by combining two
+ *    sources — a recursive filesystem walk AND a MediaStore query — and returns
+ *    the de-duplicated union by absolute path (auto-discovery; files opened in
+ *    place). The filesystem walk alone silently returns partial results on many
+ *    OEM builds (MIUI, ColorOS, FuntouchOS, …) even with all-files access
+ *    granted, because scoped-storage/FUSE enforcement varies by vendor; the
+ *    MediaStore query is backed by the system's own indexed media database and
+ *    is unaffected by that restriction, so combining both is far more reliable
+ *    than either alone.
  *  - pickPdfs: opens the system file picker (multi-select) and copies the chosen
  *    PDFs into the app's private files dir, returning {path, name, size} for each
  *    (manual import).
@@ -151,7 +160,7 @@ class MainActivity : FlutterActivity() {
         }
     }
 
-    // ── Automatic discovery (filesystem walk) ──────────────────────────────────
+    // ── Automatic discovery (filesystem walk + MediaStore, merged) ─────────────
 
     private fun scanAllPdfs(result: MethodChannel.Result) {
         Thread {
@@ -171,16 +180,84 @@ class MainActivity : FlutterActivity() {
                         roots.add(vol)
                     }
                 }
+                val beforeMediaStore = out.size
                 for (root in roots) walkPdfs(root, out, seen, 0)
+                val fromWalk = out.size - beforeMediaStore
+
+                // Second, independent source: the system's indexed media database.
+                // This finds files the raw filesystem walk misses on vendor builds
+                // that restrict recursive directory listing under scoped storage,
+                // since MediaStore is populated by the OS's own media scanner and
+                // reads from it are never subject to that restriction.
+                val fromMediaStore = queryMediaStorePdfs(out, seen)
+
                 Log.i(
                     "Lexiora",
-                    "scanAllPdfs found ${out.size} PDF(s) across ${roots.size} volume(s)",
+                    "scanAllPdfs: filesystem=$fromWalk MediaStore=$fromMediaStore " +
+                        "total=${out.size} across ${roots.size} volume(s)",
                 )
                 runOnUiThread { result.success(out) }
             } catch (e: Exception) {
                 runOnUiThread { result.error("scan_all_failed", e.message, null) }
             }
         }.start()
+    }
+
+    /// Queries [MediaStore.Files] for every indexed `application/pdf` entry and
+    /// appends the ones not already found by the filesystem walk (deduped by
+    /// absolute path, via [seen]). Returns how many new entries were added.
+    /// Any failure here (missing column, provider error, …) is swallowed — the
+    /// filesystem walk's results are still returned — since this is a
+    /// best-effort supplementary source, not the only one.
+    private fun queryMediaStorePdfs(
+        out: ArrayList<Map<String, Any?>>,
+        seen: HashSet<String>,
+    ): Int {
+        var added = 0
+        try {
+            val collection = MediaStore.Files.getContentUri("external")
+            val projection = arrayOf(
+                MediaStore.Files.FileColumns.DATA,
+                MediaStore.Files.FileColumns.DISPLAY_NAME,
+                MediaStore.Files.FileColumns.SIZE,
+            )
+            val selection = "${MediaStore.Files.FileColumns.MIME_TYPE} = ?"
+            val selectionArgs = arrayOf("application/pdf")
+
+            val cursor: Cursor? = contentResolver.query(
+                collection,
+                projection,
+                selection,
+                selectionArgs,
+                null,
+            )
+            cursor?.use { c ->
+                val dataIdx = c.getColumnIndex(MediaStore.Files.FileColumns.DATA)
+                val nameIdx = c.getColumnIndex(MediaStore.Files.FileColumns.DISPLAY_NAME)
+                val sizeIdx = c.getColumnIndex(MediaStore.Files.FileColumns.SIZE)
+                if (dataIdx < 0) return@use
+                while (c.moveToNext()) {
+                    val path = c.getString(dataIdx) ?: continue
+                    if (path.isEmpty()) continue
+                    val file = File(path)
+                    if (!file.exists() || !file.canRead()) continue
+                    if (!seen.add(path)) continue // already found by the filesystem walk
+                    val name = if (nameIdx >= 0) c.getString(nameIdx) else null
+                    val size = if (sizeIdx >= 0) c.getLong(sizeIdx) else file.length()
+                    out.add(
+                        mapOf(
+                            "path" to path,
+                            "name" to (name ?: file.name),
+                            "size" to size,
+                        ),
+                    )
+                    added++
+                }
+            }
+        } catch (e: Exception) {
+            Log.w("Lexiora", "MediaStore PDF query failed: ${e.message}")
+        }
+        return added
     }
 
     private fun walkPdfs(
