@@ -14,6 +14,7 @@ import 'package:lexiora/modules/dictionary/dictionary_module.dart';
 import 'package:lexiora/modules/flashcards/flashcards_module.dart';
 import 'package:lexiora/modules/grammar/grammar_module.dart';
 import 'package:lexiora/modules/quiz/quiz_module.dart';
+import 'package:lexiora/modules/study_hub/study_hub_module.dart';
 import 'package:lexiora/modules/translation/translation_module.dart';
 import 'package:lexiora/modules/vocabulary/vocabulary_module.dart';
 
@@ -46,11 +47,22 @@ final List<FeatureModule> appModules = <FeatureModule>[
   // Active Phase v0.4.0 feature — the offline Grammar learning module.
   GrammarModule(),
 
-  // Future modules — placeholder scaffolds only (no behavior yet).
+  // Active Phase v0.6.0 feature — the offline Vocabulary module.
   VocabularyModule(),
+
+  // Active Phase v0.7.0 feature — the Study Hub dashboard.
+  StudyHubModule(),
+
+  // Active Phase v0.8.0 feature — the Flashcards Learning Engine.
   FlashcardsModule(),
+
+  // Active Phase v0.9.0 feature — the Quiz Engine (ships empty; content later).
   QuizModule(),
+
+  // Active Phase v0.10.0 feature — the AI Assistant.
   AiAssistantModule(),
+
+  // Future modules — placeholder scaffolds only (no behavior yet).
   AdminModule(),
   CloudSyncModule(),
 ];

@@ -27,6 +27,47 @@ abstract final class AppRoutes {
   static String grammarLesson(String id) =>
       '/grammar/lesson/${Uri.encodeComponent(id)}';
 
+  // Study Hub (Phase v0.7.0 / v0.7.1)
+  static const String studyHub = '/study-hub';
+  static const String studyHubWeekly = '/study-hub/weekly';
+  static const String studyHubMonthly = '/study-hub/monthly';
+  static const String studyHubTemplates = '/study-hub/templates';
+  static const String studyHubSearch = '/study-hub/search';
+  static const String studyHubSubjects = '/study-hub/subjects';
+  static const String studyHubExport = '/study-hub/export';
+
+  // Flashcards (Phase v0.8.0)
+  static const String flashcards = '/flashcards';
+  static const String flashcardsDecks = '/flashcards/decks';
+  static const String flashcardsDeckName = 'flashcardsDeck';
+  static const String flashcardsDeckPattern = '/flashcards/deck/:id';
+  static String flashcardsDeck(String id) =>
+      '/flashcards/deck/${Uri.encodeComponent(id)}';
+  static const String flashcardsStudy = '/flashcards/study';
+  static const String flashcardsSearch = '/flashcards/search';
+  static const String flashcardsStats = '/flashcards/stats';
+  static const String flashcardsImport = '/flashcards/import';
+  static const String flashcardsExport = '/flashcards/export';
+
+  // Quiz Engine (Phase v0.9.0 / subject-first v0.9.1)
+  static const String quiz = '/quiz';
+  static const String quizSubjectName = 'quizSubject';
+  static const String quizSubjectPattern = '/quiz/subject/:id';
+  static String quizSubject(String id) =>
+      '/quiz/subject/${Uri.encodeComponent(id)}';
+  static const String quizTopicName = 'quizTopic';
+  static const String quizTopicPattern = '/quiz/topic/:id';
+  static String quizTopic(String id) => '/quiz/topic/${Uri.encodeComponent(id)}';
+  static const String quizPlayer = '/quiz/play';
+  static const String quizAnalytics = '/quiz/analytics';
+  static const String quizWrong = '/quiz/wrong';
+  static const String quizBookmarks = '/quiz/bookmarks';
+  static const String quizSearch = '/quiz/search';
+  static const String quizSettings = '/quiz/settings';
+
+  // AI Assistant (Phase v0.10.0)
+  static const String aiAssistant = '/ai';
+
   // Vocabulary (Phase v0.6.0)
   static const String vocabulary = '/vocabulary';
   static const String vocabularyListName = 'vocabularyList';

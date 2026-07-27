@@ -38,6 +38,25 @@ part 'app_database.g.dart';
     GrammarTopics,
     VocabularyLists,
     VocabularyWords,
+    StudyTasks,
+    StudyGoals,
+    StudySessions,
+    StudyTemplates,
+    StudyTemplateItems,
+    StudySubjects,
+    Decks,
+    Flashcards,
+    ReviewLogs,
+    QuizBanks,
+    QuizQuestions,
+    QuizAttempts,
+    QuizAttemptAnswers,
+    QuizWrongAnswers,
+    QuizSettingsRows,
+    QuizSubjects,
+    QuizTopics,
+    AiConversations,
+    AiMessages,
   ],
 )
 class AppDatabase extends _$AppDatabase {
@@ -99,6 +118,57 @@ class AppDatabase extends _$AppDatabase {
             await m.createTable(vocabularyLists);
             await m.createTable(vocabularyWords);
           }
+          // v9 → v10: Study Hub (personal dashboard). Purely additive.
+          if (from < 10) {
+            await m.createTable(studyTasks);
+            await m.createTable(studyGoals);
+            await m.createTable(studySessions);
+          }
+          // v10 → v11: Study Hub → Academic Planning System. Additive columns
+          // on study_tasks + template tables. Existing rows remain valid.
+          if (from < 11) {
+            await m.addColumn(studyTasks, studyTasks.topic);
+            await m.addColumn(studyTasks, studyTasks.notes);
+            await m.addColumn(studyTasks, studyTasks.status);
+            await m.addColumn(studyTasks, studyTasks.durationMinutes);
+            await m.addColumn(studyTasks, studyTasks.kind);
+            await m.createTable(studyTemplates);
+            await m.createTable(studyTemplateItems);
+          }
+          // v11 → v12: Study Hub productivity — subject colours. Additive.
+          if (from < 12) {
+            await m.createTable(studySubjects);
+          }
+          // v12 → v13: Flashcards module. Purely additive.
+          if (from < 13) {
+            await m.createTable(decks);
+            await m.createTable(flashcards);
+            await m.createTable(reviewLogs);
+          }
+          // v13 → v14: Quiz Engine module. Purely additive; ships empty.
+          if (from < 14) {
+            await m.createTable(quizBanks);
+            await m.createTable(quizQuestions);
+            await m.createTable(quizAttempts);
+            await m.createTable(quizAttemptAnswers);
+            await m.createTable(quizWrongAnswers);
+            await m.createTable(quizSettingsRows);
+          }
+          // v14 → v15: Quiz subject-first hierarchy. Additive tables + columns.
+          if (from < 15) {
+            await m.createTable(quizSubjects);
+            await m.createTable(quizTopics);
+            await m.addColumn(quizBanks, quizBanks.subjectId);
+            await m.addColumn(quizBanks, quizBanks.topicId);
+            await m.addColumn(quizBanks, quizBanks.orderIndex);
+            await m.addColumn(quizQuestions, quizQuestions.subjectId);
+            await m.addColumn(quizQuestions, quizQuestions.topicId);
+          }
+          // v15 → v16: AI Assistant chat persistence. Purely additive.
+          if (from < 16) {
+            await m.createTable(aiConversations);
+            await m.createTable(aiMessages);
+          }
         },
         beforeOpen: (OpeningDetails details) async {
           await customStatement('PRAGMA foreign_keys = ON');
@@ -150,6 +220,132 @@ class AppDatabase extends _$AppDatabase {
           await customStatement(
             'CREATE INDEX IF NOT EXISTS idx_vocab_lists_order '
             'ON vocabulary_lists (order_index)',
+          );
+          // Study Hub: fast per-day and per-range queries.
+          await customStatement(
+            'CREATE INDEX IF NOT EXISTS idx_study_tasks_day '
+            'ON study_tasks (day)',
+          );
+          await customStatement(
+            'CREATE INDEX IF NOT EXISTS idx_study_goals_day '
+            'ON study_goals (day)',
+          );
+          await customStatement(
+            'CREATE INDEX IF NOT EXISTS idx_study_sessions_day '
+            'ON study_sessions (day)',
+          );
+          await customStatement(
+            'CREATE INDEX IF NOT EXISTS idx_study_template_items_template '
+            'ON study_template_items (template_id, order_index)',
+          );
+          // Study Hub v0.7.2: fast search/filter over sessions + subject lookup.
+          await customStatement(
+            'CREATE INDEX IF NOT EXISTS idx_study_tasks_subject '
+            'ON study_tasks (subject)',
+          );
+          await customStatement(
+            'CREATE INDEX IF NOT EXISTS idx_study_tasks_status '
+            'ON study_tasks (status)',
+          );
+          await customStatement(
+            'CREATE INDEX IF NOT EXISTS idx_study_tasks_priority '
+            'ON study_tasks (priority)',
+          );
+          await customStatement(
+            'CREATE UNIQUE INDEX IF NOT EXISTS idx_study_subjects_name '
+            'ON study_subjects (name_lower)',
+          );
+          // Flashcards: fast per-deck listing, queue, search & stats at scale.
+          await customStatement(
+            'CREATE INDEX IF NOT EXISTS idx_flashcards_deck '
+            'ON flashcards (deck_id)',
+          );
+          await customStatement(
+            'CREATE INDEX IF NOT EXISTS idx_flashcards_due '
+            'ON flashcards (review_state, due_at)',
+          );
+          await customStatement(
+            'CREATE INDEX IF NOT EXISTS idx_flashcards_flags '
+            'ON flashcards (bookmarked, favorite)',
+          );
+          await customStatement(
+            'CREATE INDEX IF NOT EXISTS idx_flashcards_subject '
+            'ON flashcards (subject)',
+          );
+          await customStatement(
+            'CREATE INDEX IF NOT EXISTS idx_review_logs_day '
+            'ON review_logs (day)',
+          );
+          await customStatement(
+            'CREATE INDEX IF NOT EXISTS idx_decks_archived '
+            'ON decks (archived)',
+          );
+          // Quiz Engine: fast per-bank listing, search & filters at 100k+ scale.
+          await customStatement(
+            'CREATE INDEX IF NOT EXISTS idx_quiz_questions_bank '
+            'ON quiz_questions (bank_id)',
+          );
+          await customStatement(
+            'CREATE INDEX IF NOT EXISTS idx_quiz_questions_type '
+            'ON quiz_questions (type)',
+          );
+          await customStatement(
+            'CREATE INDEX IF NOT EXISTS idx_quiz_questions_flags '
+            'ON quiz_questions (bookmarked)',
+          );
+          await customStatement(
+            'CREATE INDEX IF NOT EXISTS idx_quiz_questions_subject '
+            'ON quiz_questions (subject)',
+          );
+          await customStatement(
+            'CREATE INDEX IF NOT EXISTS idx_quiz_questions_search '
+            'ON quiz_questions (search_text)',
+          );
+          await customStatement(
+            'CREATE INDEX IF NOT EXISTS idx_quiz_banks_archived '
+            'ON quiz_banks (archived)',
+          );
+          await customStatement(
+            'CREATE INDEX IF NOT EXISTS idx_quiz_attempts_day '
+            'ON quiz_attempts (day)',
+          );
+          await customStatement(
+            'CREATE INDEX IF NOT EXISTS idx_quiz_attempt_answers_attempt '
+            'ON quiz_attempt_answers (attempt_id)',
+          );
+          await customStatement(
+            'CREATE INDEX IF NOT EXISTS idx_quiz_wrong_subject '
+            'ON quiz_wrong_answers (subject)',
+          );
+          // Quiz subject-first hierarchy (v0.9.1).
+          await customStatement(
+            'CREATE INDEX IF NOT EXISTS idx_quiz_questions_subject_id '
+            'ON quiz_questions (subject_id)',
+          );
+          await customStatement(
+            'CREATE INDEX IF NOT EXISTS idx_quiz_questions_topic_id '
+            'ON quiz_questions (topic_id)',
+          );
+          await customStatement(
+            'CREATE INDEX IF NOT EXISTS idx_quiz_banks_subject_topic '
+            'ON quiz_banks (subject_id, topic_id, order_index)',
+          );
+          await customStatement(
+            'CREATE INDEX IF NOT EXISTS idx_quiz_subjects_order '
+            'ON quiz_subjects (order_index)',
+          );
+          await customStatement(
+            'CREATE INDEX IF NOT EXISTS idx_quiz_topics_subject '
+            'ON quiz_topics (subject_id, order_index)',
+          );
+          // AI Assistant (v0.10.0): fast per-conversation message paging + recency.
+          await customStatement(
+            'CREATE INDEX IF NOT EXISTS idx_ai_messages_conversation '
+            'ON ai_messages (conversation_id, order_index)',
+          );
+          await customStatement(
+            'CREATE INDEX IF NOT EXISTS idx_ai_conversations_updated '
+            'ON ai_conversations (updated_at)',
           );
         },
       );

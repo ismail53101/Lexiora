@@ -21,7 +21,71 @@ abstract final class DbConstants {
   /// grammar_favorites are reused, keyed by leaf topic id.
   /// v8 → v9 (Phase v0.6.0): Vocabulary module — adds `vocabulary_lists` and
   /// `vocabulary_words` (A–Z learning word lists). Purely additive.
-  static const int schemaVersion = 9;
+  /// v9 → v10 (Phase v0.7.0): Study Hub — adds `study_tasks`, `study_goals`
+  /// and `study_sessions` (personal learning dashboard). Purely additive.
+  /// v10 → v11 (Phase v0.7.1): Study Hub → Academic Planning System. Adds
+  /// columns (topic, notes, status, duration_minutes, kind) to `study_tasks`
+  /// and new `study_templates` / `study_template_items` tables. Purely additive;
+  /// existing Study Hub data remains valid.
+  /// v11 → v12 (Phase v0.7.2): Study Hub productivity — adds `study_subjects`
+  /// (custom subject colours + archive) and indexes for fast search/filter.
+  /// Purely additive.
+  /// v12 → v13 (Phase v0.8.0): Flashcards module — adds `decks`, `flashcards`
+  /// (SM-2-ready) and `review_logs`, plus indexes. Purely additive.
+  /// v13 → v14 (Phase v0.9.0): Quiz Engine — adds `quiz_banks`,
+  /// `quiz_questions`, `quiz_attempts`, `quiz_attempt_answers`,
+  /// `quiz_wrong_answers` and `quiz_settings_rows`, plus indexes. Ships empty
+  /// (questions are content, loaded later via JSON/Admin/Cloud). Purely additive.
+  /// v14 → v15 (Phase v0.9.1): Quiz Engine subject-first hierarchy — adds
+  /// `quiz_subjects` and `quiz_topics`, plus `subject_id`/`topic_id`/`order_index`
+  /// columns on `quiz_banks` and `subject_id`/`topic_id` on `quiz_questions`.
+  /// Purely additive; existing v14 quiz data remains valid.
+  /// v15 → v16 (Phase v0.10.0): AI Assistant — adds `ai_conversations` and
+  /// `ai_messages` (offline chat persistence), plus indexes. Purely additive.
+  static const int schemaVersion = 16;
+}
+
+/// Constants for the Quiz Engine's one-time demo seed.
+///
+/// The demo ships a handful of bundled sample subjects/topics/quizzes so the
+/// subject-first learning workflow is visible out of the box. It is seeded once
+/// into the normal quiz tables as read-only published content the app consumes;
+/// the app never authors content. Bumping [datasetVersion] re-seeds ONLY the
+/// demo rows (tagged by source 'demo'), never user attempt history.
+abstract final class QuizConstants {
+  static const String seedVersionKey = 'quiz_demo_seed_version';
+  static const String datasetVersion = 'quiz-demo-2026.07-v1';
+
+  /// Bank/subject `source` tag marking rows created by the demo seeder.
+  static const String demoSource = 'demo';
+}
+
+/// Constants for the AI Assistant module (Phase v0.10.0).
+///
+/// The provider is OpenAI-compatible. The API key is NEVER hardcoded or stored
+/// in the database — it is supplied at build time via a compile-time
+/// environment define (`--dart-define=SAPIORA_AI_API_KEY=...`) and only ever
+/// held in memory. Base URL and model also fall back to environment defines so
+/// a different endpoint/model can be configured without code changes.
+abstract final class AiConstants {
+  /// Compile-time environment variable names (`String.fromEnvironment`).
+  static const String envApiKey = 'SAPIORA_AI_API_KEY';
+  static const String envBaseUrl = 'SAPIORA_AI_BASE_URL';
+  static const String envModel = 'SAPIORA_AI_MODEL';
+
+  /// Defaults used when the corresponding define is not provided.
+  static const String defaultBaseUrl = 'https://api.hcnsec.cn';
+  static const String defaultModel = 'auto';
+
+  /// OpenAI-compatible chat-completions path appended to the base URL.
+  static const String chatCompletionsPath = '/v1/chat/completions';
+
+  /// Network timeouts.
+  static const Duration connectTimeout = Duration(seconds: 20);
+  static const Duration idleTimeout = Duration(seconds: 60);
+
+  /// Messages fetched per page (lazy loading of long conversations).
+  static const int messagePageSize = 40;
 }
 
 /// Constants for the bundled offline translation data set.
@@ -132,6 +196,20 @@ abstract final class VocabularyConstants {
   static const String datasetVersion = 'vocabulary-2026.07';
   static const String seedVersionKey = 'vocabulary_seed_version';
   static const int seedBatchSize = 500;
+}
+
+/// Constants for the Study Hub module (Phase v0.7.0).
+///
+/// Study Hub stores only user data (tasks, goals, sessions) in dedicated tables.
+/// The lightweight preference below (the last-used Pomodoro mode) is kept in the
+/// shared key-value [Settings] store so it needs no schema of its own.
+abstract final class StudyHubConstants {
+  /// Settings key holding the user's last-selected Pomodoro mode label.
+  static const String pomodoroModeKey = 'studyhub_pomodoro_mode';
+
+  /// Rolling window sizes (in days) for the weekly/monthly views.
+  static const int weeklyDays = 7;
+  static const int monthlyDays = 30;
 }
 
 /// Constants for the local search-history feature.
