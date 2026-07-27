@@ -68,6 +68,9 @@ abstract final class AppRoutes {
   // AI Assistant (Phase v0.10.0)
   static const String aiAssistant = '/ai';
 
+  // Kids Zone (Phase v0.11.0)
+  static const String kids = '/kids';
+
   // Vocabulary (Phase v0.6.0)
   static const String vocabulary = '/vocabulary';
   static const String vocabularyListName = 'vocabularyList';

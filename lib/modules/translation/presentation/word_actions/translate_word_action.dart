@@ -3,8 +3,10 @@ import 'package:lexiora/core/reader_engine/word_action.dart';
 import 'package:lexiora/modules/translation/presentation/widgets/translation_popup.dart';
 
 /// The Translation module's contribution to the reader's tap-on-word extension
-/// point. Sits beside the dictionary "Look up" action; selecting a single word
-/// and choosing "Translate" opens the lightweight translation popup.
+/// point. Sits beside the dictionary "Look up" action; selecting a word *or a
+/// phrase/sentence* and choosing "Translate" opens the lightweight translation
+/// popup — the underlying hybrid (offline-first, online-fallback) translation
+/// pipeline accepts any text, not just single words.
 ///
 /// Priority 20 places it just after "Look up" (priority 10). The reader depends
 /// only on the core [WordAction] abstraction, so this stays fully decoupled.
@@ -22,6 +24,9 @@ class TranslateWordAction implements WordAction {
 
   @override
   int get priority => 20;
+
+  @override
+  bool get supportsPhrase => true;
 
   @override
   Future<void> invoke(BuildContext context, WordActionContext ctx) =>

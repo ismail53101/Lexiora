@@ -13,6 +13,7 @@ import 'package:lexiora/modules/cloud_sync/cloud_sync_module.dart';
 import 'package:lexiora/modules/dictionary/dictionary_module.dart';
 import 'package:lexiora/modules/flashcards/flashcards_module.dart';
 import 'package:lexiora/modules/grammar/grammar_module.dart';
+import 'package:lexiora/modules/kids/kids_module.dart';
 import 'package:lexiora/modules/quiz/quiz_module.dart';
 import 'package:lexiora/modules/study_hub/study_hub_module.dart';
 import 'package:lexiora/modules/translation/translation_module.dart';
@@ -61,6 +62,10 @@ final List<FeatureModule> appModules = <FeatureModule>[
 
   // Active Phase v0.10.0 feature — the AI Assistant.
   AiAssistantModule(),
+
+  // Active Phase v0.11.0 feature — Kids Zone (skeleton: landing page only;
+  // ABC/Numbers/Stories/Quiz/Progress arrive as follow-up files).
+  KidsModule(),
 
   // Future modules — placeholder scaffolds only (no behavior yet).
   AdminModule(),

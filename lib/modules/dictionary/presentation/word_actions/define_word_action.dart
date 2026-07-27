@@ -23,6 +23,10 @@ class DefineWordAction implements WordAction {
   @override
   int get priority => 10;
 
+  // Dictionary lookups are single-word only by design (default: false).
+  @override
+  bool get supportsPhrase => false;
+
   @override
   Future<void> invoke(BuildContext context, WordActionContext ctx) =>
       showWordLookup(context, ctx.word);

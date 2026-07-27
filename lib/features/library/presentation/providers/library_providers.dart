@@ -1,5 +1,6 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:lexiora/app/di/injector.dart';
+import 'package:lexiora/core/services/pdf_cover_service.dart';
 import 'package:lexiora/core/services/pdf_discovery_service.dart';
 import 'package:lexiora/core/services/pdf_import_service.dart';
 import 'package:lexiora/core/services/permission_service.dart';
@@ -61,6 +62,7 @@ final Provider<AutoDiscoverPdfs> autoDiscoverProvider =
   (Ref ref) => AutoDiscoverPdfs(
     ref.watch(libraryRepositoryProvider),
     sl<PdfDiscoveryService>(),
+    sl<PdfCoverService>(),
   ),
 );
 
@@ -69,6 +71,7 @@ final Provider<ImportPdfs> importPdfsProvider = Provider<ImportPdfs>(
   (Ref ref) => ImportPdfs(
     ref.watch(libraryRepositoryProvider),
     sl<PdfImportService>(),
+    sl<PdfCoverService>(),
   ),
 );
 
@@ -82,6 +85,7 @@ final Provider<DeleteDocument> deleteDocumentProvider = Provider<DeleteDocument>
     sl<NotesRepository>(),
     sl<BookmarksRepository>(),
     sl<ReadingProgressRepository>(),
+    sl<PdfCoverService>(),
   ),
 );
 

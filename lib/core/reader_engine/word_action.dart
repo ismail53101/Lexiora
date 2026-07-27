@@ -40,6 +40,12 @@ abstract interface class WordAction {
   /// Ordering within the popup; lower comes first.
   int get priority;
 
+  /// Whether this action accepts a multi-word selection (a phrase or
+  /// sentence), not just a single word. Dictionary-style lookups are
+  /// single-word only; translation and similar free-text actions can accept
+  /// any selected text.
+  bool get supportsPhrase => false;
+
   /// Runs the action. Implementations own their own navigation/UI.
   Future<void> invoke(BuildContext context, WordActionContext ctx);
 }
