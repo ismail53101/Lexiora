@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:lexiora/core/services/pdf_cover_service.dart';
 import 'package:lexiora/core/services/pdf_discovery_service.dart';
 import 'package:lexiora/core/services/pdf_import_service.dart';
 import 'package:lexiora/core/usecase/usecase.dart';
@@ -50,10 +51,11 @@ class ImportOutcome {
 /// whose file has since been deleted surfaces the reader's error page and can
 /// be removed from the library by hand.
 class AutoDiscoverPdfs implements UseCase<DiscoveryOutcome, NoParams> {
-  const AutoDiscoverPdfs(this._repo, this._discovery);
+  const AutoDiscoverPdfs(this._repo, this._discovery, this._cover);
 
   final LibraryRepository _repo;
   final PdfDiscoveryService _discovery;
+  final PdfCoverService _cover;
 
   @override
   ResultFuture<DiscoveryOutcome> call(NoParams params) => guard(() async {
@@ -69,9 +71,12 @@ class AutoDiscoverPdfs implements UseCase<DiscoveryOutcome, NoParams> {
           final String key = libraryDedupKey(title, f.size);
           if (keys.contains(key)) continue;
           AppLogger.i('AutoDiscover: indexing ${f.path}');
+          final String id = _uuid.v4();
+          final String? cover =
+              await _cover.generateCover(documentId: id, pdfPath: f.path);
           await _repo.insert(
             LibraryDocument(
-              id: _uuid.v4(),
+              id: id,
               title: title,
               fileName: title,
               filePath: f.path,
@@ -79,6 +84,7 @@ class AutoDiscoverPdfs implements UseCase<DiscoveryOutcome, NoParams> {
               pageCount: 0, // refined the first time the document is opened
               isFavorite: false,
               importedAt: now,
+              coverPath: cover,
               // isManaged defaults to false: an in-place reference to the
               // user's own file, which is never auto-deleted.
             ),
@@ -99,10 +105,11 @@ class AutoDiscoverPdfs implements UseCase<DiscoveryOutcome, NoParams> {
 /// (by content key) are skipped and their just-made copies discarded, so manual
 /// import and automatic discovery never produce duplicates.
 class ImportPdfs implements UseCase<ImportOutcome, NoParams> {
-  const ImportPdfs(this._repo, this._import);
+  const ImportPdfs(this._repo, this._import, this._cover);
 
   final LibraryRepository _repo;
   final PdfImportService _import;
+  final PdfCoverService _cover;
 
   @override
   ResultFuture<ImportOutcome> call(NoParams params) => guard(() async {
@@ -122,9 +129,12 @@ class ImportPdfs implements UseCase<ImportOutcome, NoParams> {
             _discardCopy(f.path); // avoid leaving an orphaned duplicate copy
             continue;
           }
+          final String id = _uuid.v4();
+          final String? cover =
+              await _cover.generateCover(documentId: id, pdfPath: f.path);
           await _repo.insert(
             LibraryDocument(
-              id: _uuid.v4(),
+              id: id,
               title: title,
               fileName: title,
               filePath: f.path,
@@ -132,6 +142,7 @@ class ImportPdfs implements UseCase<ImportOutcome, NoParams> {
               pageCount: 0,
               isFavorite: false,
               importedAt: now,
+              coverPath: cover,
               // App-owned copy — removed from disk when the document is deleted.
               isManaged: true,
             ),
@@ -169,6 +180,7 @@ class DeleteDocument implements UseCase<void, String> {
     this._notes,
     this._bookmarks,
     this._progress,
+    this._cover,
   );
 
   final LibraryRepository _library;
@@ -176,14 +188,17 @@ class DeleteDocument implements UseCase<void, String> {
   final NotesRepository _notes;
   final BookmarksRepository _bookmarks;
   final ReadingProgressRepository _progress;
+  final PdfCoverService _cover;
 
   @override
   ResultFuture<void> call(String documentId) => guard(() async {
+        final LibraryDocument? doc = await _library.getById(documentId);
         await _annotations.deleteForDocument(documentId);
         await _notes.deleteForDocument(documentId);
         await _bookmarks.deleteForDocument(documentId);
         await _progress.deleteForDocument(documentId);
         await _library.delete(documentId);
+        await _cover.deleteCover(doc?.coverPath);
       });
 }
 

@@ -246,14 +246,28 @@ class _ReaderPageState extends ConsumerState<ReaderPage> {
   }
 
   /// The selected text when it is a single word (letters with optional internal
-  /// hyphen/apostrophe); otherwise null. Drives the toolbar's word actions
-  /// (Look up, Translate) — which are single-word only.
+  /// hyphen/apostrophe); otherwise null. Used to classify a selection as
+  /// single-word vs phrase — word actions that are not [WordAction.supportsPhrase]
+  /// (e.g. dictionary "Look up") only apply to single words.
   String? _selectionSingleWord() {
     final PdfTextSelectionData? sel = _selection;
     if (sel == null) return null;
     final String text = sel.text.trim();
     if (text.isEmpty || text.length > 64) return null;
     if (!RegExp(r"^[A-Za-z][A-Za-z'’\-]*$").hasMatch(text)) return null;
+    return text;
+  }
+
+  /// The selected text eligible for *any* word action — a single word or a
+  /// multi-word phrase/sentence — or null when nothing usable is selected.
+  /// Callers combine this with [_selectionSingleWord] and
+  /// [WordAction.supportsPhrase] to decide which actions to offer: dictionary
+  /// lookups need a single word, while translation accepts a full phrase.
+  String? _selectionActionText() {
+    final PdfTextSelectionData? sel = _selection;
+    if (sel == null) return null;
+    final String text = sel.text.trim();
+    if (text.isEmpty || text.length > 300) return null;
     return text;
   }
 
@@ -415,9 +429,16 @@ class _ReaderPageState extends ConsumerState<ReaderPage> {
                   builder: (BuildContext context) {
                     final WordActionRegistry registry =
                         sl<WordActionRegistry>();
-                    final String? word = registry.hasActions
-                        ? _selectionSingleWord()
-                        : null;
+                    final String? text =
+                        registry.hasActions ? _selectionActionText() : null;
+                    final bool isSingleWord =
+                        text != null && _selectionSingleWord() == text;
+                    final List<WordAction> actions = text == null
+                        ? const <WordAction>[]
+                        : registry.actions
+                            .where((WordAction a) =>
+                                isSingleWord || a.supportsPhrase)
+                            .toList(growable: false);
                     return ReaderSelectionToolbar(
                       colors: _highlightColors,
                       onHighlight: (int c) =>
@@ -428,13 +449,11 @@ class _ReaderPageState extends ConsumerState<ReaderPage> {
                       onBookmark: _bookmarkSelection,
                       onCopy: _copySelection,
                       onDismiss: _clearSelection,
-                      selectedWord: word,
-                      wordActions: word == null
-                          ? const <WordAction>[]
-                          : registry.actions,
-                      onWordAction: word == null
+                      selectedWord: actions.isEmpty ? null : text,
+                      wordActions: actions,
+                      onWordAction: actions.isEmpty
                           ? null
-                          : (WordAction a) => _invokeWordAction(a, word),
+                          : (WordAction a) => _invokeWordAction(a, text!),
                     );
                   },
                 ),

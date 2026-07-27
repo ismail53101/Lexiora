@@ -66,7 +66,7 @@ class _TranslationSheet extends ConsumerWidget {
             const SizedBox(height: 14),
             if (word.isEmpty)
               Text(
-                'Select a single word in the reader to translate it.',
+                'Select a word, phrase, or sentence in the reader to translate it.',
                 style: theme.textTheme.bodyMedium
                     ?.copyWith(color: theme.colorScheme.onSurfaceVariant),
               )

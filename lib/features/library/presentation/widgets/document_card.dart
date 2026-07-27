@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:lexiora/features/library/domain/entities/library_document.dart';
 
@@ -25,7 +27,6 @@ class DocumentCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final ThemeData theme = Theme.of(context);
-    final List<Color> cover = _coverColors(document.title);
 
     return Card(
       clipBehavior: Clip.antiAlias,
@@ -38,24 +39,7 @@ class DocumentCard extends StatelessWidget {
               child: Stack(
                 fit: StackFit.expand,
                 children: [
-                  DecoratedBox(
-                    decoration: BoxDecoration(
-                      gradient: LinearGradient(
-                        colors: cover,
-                        begin: Alignment.topLeft,
-                        end: Alignment.bottomRight,
-                      ),
-                    ),
-                    child: Center(
-                      child: Text(
-                        _initials(document.title),
-                        style: theme.textTheme.headlineMedium?.copyWith(
-                          color: Colors.white,
-                          fontWeight: FontWeight.w800,
-                        ),
-                      ),
-                    ),
-                  ),
+                  _CoverImage(coverPath: document.coverPath, title: document.title),
                   Positioned(
                     top: 4,
                     right: 4,
@@ -114,6 +98,65 @@ class DocumentCard extends StatelessWidget {
               ),
             ),
           ],
+        ),
+      ),
+    );
+  }
+
+}
+
+/// The card's cover: the PDF's real first page when a thumbnail has been
+/// generated ([LibraryDocument.coverPath]), otherwise a deterministic
+/// gradient with the document's initials — the same placeholder used before
+/// thumbnails existed, so older/undiscoverable documents still look
+/// intentional rather than broken.
+class _CoverImage extends StatelessWidget {
+  const _CoverImage({required this.coverPath, required this.title});
+
+  final String? coverPath;
+  final String title;
+
+  @override
+  Widget build(BuildContext context) {
+    final String? path = coverPath;
+    if (path != null && path.isNotEmpty) {
+      return Image.file(
+        File(path),
+        fit: BoxFit.cover,
+        // The file can go missing (e.g. cleared cache, moved storage) after
+        // being recorded — fall back to the placeholder rather than an error
+        // icon so the card always looks finished.
+        errorBuilder: (BuildContext context, Object error, StackTrace? _) =>
+            _Placeholder(title: title),
+      );
+    }
+    return _Placeholder(title: title);
+  }
+}
+
+class _Placeholder extends StatelessWidget {
+  const _Placeholder({required this.title});
+
+  final String title;
+
+  @override
+  Widget build(BuildContext context) {
+    final ThemeData theme = Theme.of(context);
+    return DecoratedBox(
+      decoration: BoxDecoration(
+        gradient: LinearGradient(
+          colors: _coverColors(title),
+          begin: Alignment.topLeft,
+          end: Alignment.bottomRight,
+        ),
+      ),
+      child: Center(
+        child: Text(
+          _initials(title),
+          style: theme.textTheme.headlineMedium?.copyWith(
+            color: Colors.white,
+            fontWeight: FontWeight.w800,
+          ),
         ),
       ),
     );
