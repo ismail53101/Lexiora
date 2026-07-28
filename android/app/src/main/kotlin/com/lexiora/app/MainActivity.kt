@@ -3,6 +3,7 @@ package com.lexiora.app
 import android.app.Activity
 import android.content.Intent
 import android.database.Cursor
+import android.graphics.BitmapFactory
 import android.net.Uri
 import android.os.Build
 import android.os.Environment
@@ -10,6 +11,10 @@ import android.provider.MediaStore
 import android.provider.OpenableColumns
 import android.util.Log
 import android.view.WindowManager
+import com.google.android.gms.tasks.Tasks
+import com.google.mlkit.vision.common.InputImage
+import com.google.mlkit.vision.text.TextRecognition
+import com.google.mlkit.vision.text.latin.TextRecognizerOptions
 import io.flutter.embedding.android.FlutterActivity
 import io.flutter.embedding.engine.FlutterEngine
 import io.flutter.plugin.common.MethodChannel
@@ -66,6 +71,14 @@ class MainActivity : FlutterActivity() {
                     )
                     "scanAllPdfs" -> scanAllPdfs(result)
                     "pickPdfs" -> startPickPdfs(result)
+                    "recognizeText" -> {
+                        val path = call.argument<String>("path")
+                        if (path == null) {
+                            result.error("bad_args", "Missing 'path'", null)
+                        } else {
+                            recognizeText(path, result)
+                        }
+                    }
                     else -> result.notImplemented()
                 }
             }
@@ -301,5 +314,70 @@ class MainActivity : FlutterActivity() {
                 Log.w("Lexiora", "walk skip ${f.absolutePath}: ${e.message}")
             }
         }
+    }
+
+    // ── On-device OCR (scanned/photographed PDF pages) ─────────────────────────
+
+    /// Runs ML Kit's on-device Latin text recognizer over the image at [path]
+    /// (a rendered PDF page) and returns every recognized word with its pixel
+    /// bounding box, so the Dart side can lay a selectable overlay on top of
+    /// the page at exactly the right positions. Runs off the UI thread —
+    /// recognition of a full page can take a few hundred ms.
+    ///
+    /// This never touches the network: the Latin recognition model is bundled
+    /// via Google Play Services and downloaded once on first use, after which
+    /// every call is fully offline, free, and has no request quota.
+    private fun recognizeText(path: String, result: MethodChannel.Result) {
+        Thread {
+            try {
+                val bitmap = BitmapFactory.decodeFile(path)
+                if (bitmap == null) {
+                    runOnUiThread {
+                        result.error("decode_failed", "Could not decode image: $path", null)
+                    }
+                    return@Thread
+                }
+                val recognizer = TextRecognition.getClient(TextRecognizerOptions.DEFAULT_OPTIONS)
+                try {
+                    val image = InputImage.fromBitmap(bitmap, 0)
+                    val visionText = Tasks.await(recognizer.process(image))
+                    val words = ArrayList<Map<String, Any?>>()
+                    for ((blockIndex, block) in visionText.textBlocks.withIndex()) {
+                        for ((lineIndex, line) in block.lines.withIndex()) {
+                            for (element in line.elements) {
+                                val box = element.boundingBox ?: continue
+                                words.add(
+                                    mapOf(
+                                        "text" to element.text,
+                                        "left" to box.left,
+                                        "top" to box.top,
+                                        "right" to box.right,
+                                        "bottom" to box.bottom,
+                                        // Groups words back into their original line/reading
+                                        // order on the Dart side, for phrase selection.
+                                        "lineId" to "$blockIndex-$lineIndex",
+                                    ),
+                                )
+                            }
+                        }
+                    }
+                    runOnUiThread {
+                        result.success(
+                            mapOf(
+                                "imageWidth" to bitmap.width,
+                                "imageHeight" to bitmap.height,
+                                "words" to words,
+                            ),
+                        )
+                    }
+                } finally {
+                    recognizer.close()
+                    bitmap.recycle()
+                }
+            } catch (e: Exception) {
+                Log.w("Lexiora", "recognizeText failed for $path: ${e.message}")
+                runOnUiThread { result.error("ocr_failed", e.message, null) }
+            }
+        }.start()
     }
 }

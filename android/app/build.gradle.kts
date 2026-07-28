@@ -52,6 +52,14 @@ kotlin {
     }
 }
 
+dependencies {
+    // On-device text recognition (OCR) for scanned/photographed PDF pages.
+    // Fully on-device: the recognition model downloads once via Google Play
+    // Services on first use, then runs completely offline — no API key, no
+    // per-request cost, and no usage quota that can run out.
+    implementation("com.google.mlkit:text-recognition:16.0.1")
+}
+
 flutter {
     source = "../.."
 }
