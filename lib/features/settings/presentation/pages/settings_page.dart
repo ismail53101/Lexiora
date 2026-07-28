@@ -221,6 +221,11 @@ class _SettingsBody extends ConsumerWidget {
               title: Text(AppConstants.appTagline),
               subtitle: Text('Offline-first · No account required'),
             ),
+            ListTile(
+              contentPadding: EdgeInsets.zero,
+              leading: Icon(Icons.favorite_outline),
+              title: Text('Developed by Ismail Lashari'),
+            ),
           ],
         ),
       ],

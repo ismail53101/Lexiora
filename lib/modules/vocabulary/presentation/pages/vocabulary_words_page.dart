@@ -10,6 +10,7 @@ import 'package:lexiora/modules/vocabulary/domain/vocabulary_grouping.dart';
 import 'package:lexiora/modules/vocabulary/presentation/providers/vocabulary_providers.dart';
 import 'package:lexiora/modules/vocabulary/presentation/widgets/alphabet_rail.dart';
 import 'package:lexiora/modules/vocabulary/presentation/widgets/vocabulary_word_card.dart';
+import 'package:lexiora/modules/vocabulary/presentation/widgets/vocabulary_word_detail_sheet.dart';
 
 const double _kHeaderExtent = 44;
 const double _kItemExtent = 120;
@@ -159,7 +160,10 @@ class _SearchResults extends StatelessWidget {
       padding: const EdgeInsets.symmetric(vertical: 4),
       itemCount: words.length,
       itemBuilder: (BuildContext context, int i) =>
-          VocabularyWordCard(word: words[i]),
+          VocabularyWordCard(
+            word: words[i],
+            onTap: () => showVocabularyWordDetail(context, words[i]),
+          ),
     );
   }
 }
@@ -196,7 +200,11 @@ class _BrowseView extends StatelessWidget {
                     itemExtent: _kItemExtent,
                     delegate: SliverChildBuilderDelegate(
                       (BuildContext context, int i) =>
-                          VocabularyWordCard(word: s.words[i]),
+                          VocabularyWordCard(
+                            word: s.words[i],
+                            onTap: () =>
+                                showVocabularyWordDetail(context, s.words[i]),
+                          ),
                       childCount: s.words.length,
                     ),
                   ),

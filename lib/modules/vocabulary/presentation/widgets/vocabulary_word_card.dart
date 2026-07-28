@@ -9,9 +9,14 @@ import 'package:lexiora/modules/vocabulary/presentation/widgets/vocab_pronunciat
 /// Kept to a predictable height so the browse list uses a fixed extent (fast
 /// scrolling + exact A–Z jumps). Text lines clamp to avoid overflow.
 class VocabularyWordCard extends StatelessWidget {
-  const VocabularyWordCard({super.key, required this.word});
+  const VocabularyWordCard({super.key, required this.word, this.onTap});
 
   final VocabularyWord word;
+
+  /// Opens the full, untruncated detail view for this word. The card itself
+  /// stays single-line/fixed-height for fast scrolling — tapping is how a
+  /// longer meaning (which would otherwise end in "…") is read in full.
+  final VoidCallback? onTap;
 
   @override
   Widget build(BuildContext context) {
@@ -21,7 +26,9 @@ class VocabularyWordCard extends StatelessWidget {
     return Card(
       margin: const EdgeInsets.fromLTRB(12, 4, 12, 4),
       clipBehavior: Clip.antiAlias,
-      child: Padding(
+      child: InkWell(
+        onTap: onTap,
+        child: Padding(
         padding: const EdgeInsets.fromLTRB(14, 10, 8, 10),
         child: Row(
           children: <Widget>[
@@ -96,6 +103,7 @@ class VocabularyWordCard extends StatelessWidget {
             const SizedBox(width: 6),
             VocabPronunciationButton(text: word.word),
           ],
+        ),
         ),
       ),
     );
