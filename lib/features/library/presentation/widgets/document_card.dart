@@ -120,14 +120,23 @@ class _CoverImage extends StatelessWidget {
   Widget build(BuildContext context) {
     final String? path = coverPath;
     if (path != null && path.isNotEmpty) {
-      return Image.file(
-        File(path),
-        fit: BoxFit.cover,
-        // The file can go missing (e.g. cleared cache, moved storage) after
-        // being recorded — fall back to the placeholder rather than an error
-        // icon so the card always looks finished.
-        errorBuilder: (BuildContext context, Object error, StackTrace? _) =>
-            _Placeholder(title: title),
+      return ColoredBox(
+        // Neutral backing behind the page so `contain` never shows the
+        // card's own background bleeding through at the letterboxed edges.
+        color: const Color(0xFFF3F1EC),
+        child: Image.file(
+          File(path),
+          // `cover` was cropping most of the page away to fill the card
+          // (a rendered page's aspect ratio rarely matches the card's),
+          // which read as an unpleasant, overly zoomed-in thumbnail.
+          // `contain` always shows the whole first page, uncropped.
+          fit: BoxFit.contain,
+          // The file can go missing (e.g. cleared cache, moved storage) after
+          // being recorded — fall back to the placeholder rather than an error
+          // icon so the card always looks finished.
+          errorBuilder: (BuildContext context, Object error, StackTrace? _) =>
+              _Placeholder(title: title),
+        ),
       );
     }
     return _Placeholder(title: title);

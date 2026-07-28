@@ -55,7 +55,24 @@ jobs:
         run: flutter test
 
       - name: Build release APK
-        run: flutter build apk --release
+        # SAPIORA_AI_API_KEY / SAPIORA_AI_BASE_URL come from repo secrets
+        # (Settings → Secrets and variables → Actions) so the AI Assistant is
+        # configured in the built APK without either value being committed to
+        # the repo. SAPIORA_AI_BASE_URL is optional — when the secret isn't
+        # set, this step omits that define entirely and the app falls back to
+        # its compiled-in default (https://api.hcnsec.cn); set it to point the
+        # app at a proxy instead (e.g. a Cloudflare Worker that holds the real
+        # upstream key). If SAPIORA_AI_API_KEY isn't set, the build still
+        # succeeds — the app simply shows its existing "not configured" screen.
+        env:
+          SAPIORA_AI_API_KEY: ${{ secrets.SAPIORA_AI_API_KEY }}
+          SAPIORA_AI_BASE_URL: ${{ secrets.SAPIORA_AI_BASE_URL }}
+        run: |
+          DEFINES="--dart-define=SAPIORA_AI_API_KEY=$SAPIORA_AI_API_KEY"
+          if [ -n "$SAPIORA_AI_BASE_URL" ]; then
+            DEFINES="$DEFINES --dart-define=SAPIORA_AI_BASE_URL=$SAPIORA_AI_BASE_URL"
+          fi
+          flutter build apk --release $DEFINES
 
       - name: Resolve app version
         id: ver
