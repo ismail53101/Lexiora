@@ -42,6 +42,10 @@ android {
             // APK is directly installable. Production release signing (an upload
             // keystore) is a Phase-1.x release task, tracked in ROADMAP.md.
             signingConfig = signingConfigs.getByName("debug")
+            proguardFiles(
+                getDefaultProguardFile("proguard-android-optimize.txt"),
+                "proguard-rules.pro",
+            )
         }
     }
 }
