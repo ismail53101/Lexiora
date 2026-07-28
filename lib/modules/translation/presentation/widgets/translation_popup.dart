@@ -179,6 +179,29 @@ class _Available extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       mainAxisSize: MainAxisSize.min,
       children: <Widget>[
+        Text(
+          'ENGLISH',
+          style: theme.textTheme.labelSmall?.copyWith(
+            color: theme.colorScheme.onSurfaceVariant,
+            fontWeight: FontWeight.w700,
+            letterSpacing: 0.6,
+          ),
+        ),
+        const SizedBox(height: 4),
+        Text(
+          word,
+          style: theme.textTheme.titleMedium?.copyWith(height: 1.3),
+        ),
+        const SizedBox(height: 16),
+        Text(
+          language.englishName.toUpperCase(),
+          style: theme.textTheme.labelSmall?.copyWith(
+            color: theme.colorScheme.onSurfaceVariant,
+            fontWeight: FontWeight.w700,
+            letterSpacing: 0.6,
+          ),
+        ),
+        const SizedBox(height: 4),
         Directionality(
           textDirection: _isRtl ? TextDirection.rtl : TextDirection.ltr,
           child: Text(

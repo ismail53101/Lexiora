@@ -49,6 +49,13 @@ class HomePage extends ConsumerWidget {
       body: CustomScrollView(
         slivers: [
           SliverAppBar.large(
+            leading: Padding(
+              padding: const EdgeInsets.all(10),
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(10),
+                child: Image.asset('assets/branding/app_icon.png'),
+              ),
+            ),
             title: const Text(AppConstants.appName),
             actions: [
               const _ThemeToggle(),
@@ -91,6 +98,7 @@ class HomePage extends ConsumerWidget {
           SliverToBoxAdapter(
             child: _ExploreSection(destinations: destinations),
           ),
+          const SliverToBoxAdapter(child: _HomeFooter()),
           const SliverToBoxAdapter(child: SizedBox(height: 96)),
         ],
       ),
@@ -286,6 +294,26 @@ class _HorizontalList extends StatelessWidget {
         separatorBuilder: (_, _) => const SizedBox(width: 14),
         itemBuilder: (BuildContext context, int i) =>
             SizedBox(width: 150, child: itemBuilder(context, i)),
+      ),
+    );
+  }
+}
+
+class _HomeFooter extends StatelessWidget {
+  const _HomeFooter();
+
+  @override
+  Widget build(BuildContext context) {
+    final ThemeData theme = Theme.of(context);
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 20),
+      child: Center(
+        child: Text(
+          'Developed by Ismail Lashari',
+          style: theme.textTheme.bodySmall?.copyWith(
+            color: theme.colorScheme.onSurfaceVariant,
+          ),
+        ),
       ),
     );
   }
