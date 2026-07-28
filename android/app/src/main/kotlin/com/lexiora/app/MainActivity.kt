@@ -18,8 +18,8 @@ import com.google.mlkit.vision.text.latin.TextRecognizerOptions
 import com.tom_roush.pdfbox.android.PDFBoxResourceLoader
 import com.tom_roush.pdfbox.pdmodel.PDDocument
 import com.tom_roush.pdfbox.pdmodel.PDPageContentStream
-import com.tom_roush.pdfbox.pdmodel.PDPageContentStream.RenderingMode
 import com.tom_roush.pdfbox.pdmodel.font.PDType1Font
+import com.tom_roush.pdfbox.pdmodel.graphics.state.PDExtendedGraphicsState
 import io.flutter.embedding.android.FlutterActivity
 import io.flutter.embedding.engine.FlutterEngine
 import io.flutter.plugin.common.MethodChannel
@@ -445,7 +445,14 @@ class MainActivity : FlutterActivity() {
                         true,
                     )
                     try {
-                        stream.setRenderingMode(RenderingMode.NEITHER) // invisible
+                        // Make everything drawn on this stream fully
+                        // transparent (alpha 0) — the text is written for
+                        // real, selectable and searchable, but nothing is
+                        // visibly painted over the scanned page image.
+                        val invisible = PDExtendedGraphicsState()
+                        invisible.setNonStrokingAlphaConstant(0f)
+                        invisible.setStrokingAlphaConstant(0f)
+                        stream.setGraphicsStateParameters(invisible)
                         for (wordArg in words) {
                             val w = wordArg as? Map<*, *> ?: continue
                             val text = (w["text"] as? String)?.trim() ?: continue
