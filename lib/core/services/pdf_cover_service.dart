@@ -43,7 +43,17 @@ class PdfCoverService {
       const int width = _targetWidth;
       final int height = (width * aspect).round().clamp(1, 4000);
 
-      final dynamic rendered = await page.render(width: width, height: height);
+      // fullWidth/fullHeight tell pdfrx the page's *entire* content should be
+      // scaled to fit this width x height; without them, width/height alone
+      // are treated as a native-scale crop starting at the page's top-left
+      // corner — which is what was making the thumbnail look zoomed into a
+      // small region instead of showing the whole first page.
+      final dynamic rendered = await page.render(
+        width: width,
+        height: height,
+        fullWidth: width.toDouble(),
+        fullHeight: height.toDouble(),
+      );
       if (rendered == null) return null;
       try {
         final Uint8List? png = await _toPng(

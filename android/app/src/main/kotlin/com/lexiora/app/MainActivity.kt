@@ -15,6 +15,11 @@ import com.google.android.gms.tasks.Tasks
 import com.google.mlkit.vision.common.InputImage
 import com.google.mlkit.vision.text.TextRecognition
 import com.google.mlkit.vision.text.latin.TextRecognizerOptions
+import com.tom_roush.pdfbox.android.PDFBoxResourceLoader
+import com.tom_roush.pdfbox.pdmodel.PDDocument
+import com.tom_roush.pdfbox.pdmodel.PDPageContentStream
+import com.tom_roush.pdfbox.pdmodel.PDPageContentStream.RenderingMode
+import com.tom_roush.pdfbox.pdmodel.font.PDType1Font
 import io.flutter.embedding.android.FlutterActivity
 import io.flutter.embedding.engine.FlutterEngine
 import io.flutter.plugin.common.MethodChannel
@@ -77,6 +82,16 @@ class MainActivity : FlutterActivity() {
                             result.error("bad_args", "Missing 'path'", null)
                         } else {
                             recognizeText(path, result)
+                        }
+                    }
+                    "embedOcrText" -> {
+                        val sourcePath = call.argument<String>("sourcePath")
+                        val outputPath = call.argument<String>("outputPath")
+                        val pages = call.argument<List<*>>("pages")
+                        if (sourcePath == null || outputPath == null || pages == null) {
+                            result.error("bad_args", "Missing sourcePath/outputPath/pages", null)
+                        } else {
+                            embedOcrText(sourcePath, outputPath, pages, result)
                         }
                     }
                     else -> result.notImplemented()
@@ -377,6 +392,125 @@ class MainActivity : FlutterActivity() {
             } catch (e: Exception) {
                 Log.w("Lexiora", "recognizeText failed for $path: ${e.message}")
                 runOnUiThread { result.error("ocr_failed", e.message, null) }
+            }
+        }.start()
+    }
+
+    /// Writes an invisible text layer into [sourcePath]'s pages and saves the
+    /// result to [outputPath] (never overwrites the original file in place —
+    /// a failure partway through must never corrupt the user's own PDF).
+    ///
+    /// [pages] is `[{pageIndex: Int, words: [{text, left, top, right, bottom}]}]`
+    /// where each word's box is normalized (0..1) against that page's size,
+    /// with top=0 at the *top* of the page (screen-style — matches how the
+    /// Dart side derives them from the OCR image).
+    ///
+    /// Each word is placed at invisible render mode 3 ("neither fill nor
+    /// stroke" — the standard technique behind every "searchable scanned
+    /// PDF" tool): nothing is drawn, but the text becomes selectable,
+    /// searchable and copyable through pdfrx's existing, already-working
+    /// text-selection system — no reader UI changes needed. A Helvetica glyph
+    /// is horizontally scaled to exactly span the detected word's width, so
+    /// the selectable region lines up with the visible word underneath even
+    /// though Helvetica's own letterforms never exactly match the original.
+    private fun embedOcrText(
+        sourcePath: String,
+        outputPath: String,
+        pages: List<*>,
+        result: MethodChannel.Result,
+    ) {
+        Thread {
+            var document: PDDocument? = null
+            try {
+                PDFBoxResourceLoader.init(applicationContext)
+                document = PDDocument.load(File(sourcePath))
+                val font = PDType1Font.HELVETICA
+
+                for (pageArg in pages) {
+                    val pageMap = pageArg as? Map<*, *> ?: continue
+                    val pageIndex = (pageMap["pageIndex"] as? Number)?.toInt() ?: continue
+                    if (pageIndex < 0 || pageIndex >= document.numberOfPages) continue
+                    val words = pageMap["words"] as? List<*>
+                    if (words.isNullOrEmpty()) continue
+
+                    val page = document.getPage(pageIndex)
+                    val pageWidth = page.mediaBox.width
+                    val pageHeight = page.mediaBox.height
+
+                    val stream = PDPageContentStream(
+                        document,
+                        page,
+                        PDPageContentStream.AppendMode.APPEND,
+                        true,
+                        true,
+                    )
+                    try {
+                        stream.setRenderingMode(RenderingMode.NEITHER) // invisible
+                        for (wordArg in words) {
+                            val w = wordArg as? Map<*, *> ?: continue
+                            val text = (w["text"] as? String)?.trim() ?: continue
+                            if (text.isEmpty()) continue
+                            val left = (w["left"] as? Number)?.toDouble() ?: continue
+                            val top = (w["top"] as? Number)?.toDouble() ?: continue
+                            val right = (w["right"] as? Number)?.toDouble() ?: continue
+                            val bottom = (w["bottom"] as? Number)?.toDouble() ?: continue
+
+                            val boxWidthPt = ((right - left) * pageWidth).toFloat()
+                            val boxHeightPt = ((bottom - top) * pageHeight).toFloat()
+                            if (boxWidthPt <= 0f || boxHeightPt <= 0f) continue
+
+                            // PDF space has its origin at the bottom-left; our boxes
+                            // are top-origin fractions, so flip the Y axis. The
+                            // baseline sits near the box's bottom edge.
+                            val xPt = (left * pageWidth).toFloat()
+                            val yPt = ((1.0 - bottom) * pageHeight).toFloat()
+
+                            var fontSize = boxHeightPt * 0.85f
+                            if (fontSize < 1f) fontSize = 1f
+
+                            val rawWidth = try {
+                                font.getStringWidth(text) / 1000f * fontSize
+                            } catch (e: Exception) {
+                                boxWidthPt // font can't measure this text — fall back
+                            }
+                            val hScale =
+                                if (rawWidth > 0f) {
+                                    (boxWidthPt / rawWidth * 100f).coerceIn(1f, 1000f)
+                                } else {
+                                    100f
+                                }
+
+                            try {
+                                stream.beginText()
+                                stream.setFont(font, fontSize)
+                                stream.setHorizontalScaling(hScale)
+                                stream.newLineAtOffset(xPt, yPt)
+                                stream.showText(text)
+                                stream.endText()
+                            } catch (e: Exception) {
+                                // Helvetica can't encode some glyphs (rare
+                                // symbols/scripts) — skip that one word only.
+                                Log.w("Lexiora", "embed: skipped word '$text': ${e.message}")
+                            }
+                        }
+                    } finally {
+                        stream.close()
+                    }
+                }
+
+                val outFile = File(outputPath)
+                outFile.parentFile?.mkdirs()
+                document.save(outFile)
+                runOnUiThread { result.success(outputPath) }
+            } catch (e: Exception) {
+                Log.w("Lexiora", "embedOcrText failed: ${e.message}")
+                runOnUiThread { result.error("embed_failed", e.message, null) }
+            } finally {
+                try {
+                    document?.close()
+                } catch (e: Exception) {
+                    // already closed / never opened
+                }
             }
         }.start()
     }

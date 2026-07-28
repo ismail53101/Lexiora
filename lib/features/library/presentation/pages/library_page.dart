@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
@@ -50,9 +52,13 @@ class _LibraryPageState extends ConsumerState<LibraryPage> {
   @override
   void initState() {
     super.initState();
-    WidgetsBinding.instance.addPostFrameCallback(
-      (_) => _autoDiscover(initial: true),
-    );
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      _autoDiscover(initial: true);
+      // Fire-and-forget: fills in thumbnails for documents imported before
+      // the cover feature existed. Silent by design — it's a one-time
+      // catch-up, not something the user needs to see happen.
+      unawaited(ref.read(backfillCoversProvider).call(const NoParams()));
+    });
   }
 
   @override

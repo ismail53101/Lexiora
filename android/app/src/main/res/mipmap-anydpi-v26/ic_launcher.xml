@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- Sapiora adaptive launcher icon: bold white "S" monogram on the brand
-     indigo background (#5B4BE6, see values/colors.xml). -->
+<!-- Sapiora adaptive launcher icon: the brand mark (star + book + "S")
+     centered in the safe zone, over a blue gradient matching the full logo
+     (see drawable/ic_launcher_background.xml). -->
 <adaptive-icon xmlns:android="http://schemas.android.com/apk/res/android">
-    <background android:drawable="@color/ic_launcher_background" />
+    <background android:drawable="@drawable/ic_launcher_background" />
     <foreground android:drawable="@mipmap/ic_launcher_foreground" />
     <monochrome android:drawable="@mipmap/ic_launcher_foreground" />
 </adaptive-icon>

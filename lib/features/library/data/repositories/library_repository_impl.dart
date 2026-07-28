@@ -142,6 +142,18 @@ class LibraryRepositoryImpl implements LibraryRepository {
   }
 
   @override
+  Future<void> updateFilePath(String id, String filePath) async {
+    await (_db.update(_db.documents)..where((t) => t.id.equals(id)))
+        .write(DocumentsCompanion(filePath: Value(filePath)));
+  }
+
+  @override
+  Future<void> updateCoverPath(String id, String coverPath) async {
+    await (_db.update(_db.documents)..where((t) => t.id.equals(id)))
+        .write(DocumentsCompanion(coverPath: Value(coverPath)));
+  }
+
+  @override
   Future<void> assignCategory(String id, String? categoryId) async {
     await (_db.update(_db.documents)..where((t) => t.id.equals(id)))
         .write(DocumentsCompanion(categoryId: Value(categoryId)));

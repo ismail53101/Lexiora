@@ -270,3 +270,40 @@ class DeleteCategory implements UseCase<void, String> {
   @override
   ResultFuture<void> call(String id) => guard(() => _repo.deleteCategory(id));
 }
+
+/// Generates a first-page thumbnail for every library document that doesn't
+/// have one yet — specifically, documents imported/discovered *before* the
+/// cover-thumbnail feature existed, which otherwise show the gradient+
+/// initials placeholder forever. New documents already get a cover at
+/// import/discovery time; this only ever needs to touch each older document
+/// once, since [LibraryRepository.updateCoverPath] persists the result.
+///
+/// One failed cover (corrupt file, moved/missing PDF, ...) is skipped and
+/// never stops the rest of the backfill.
+class BackfillCovers implements UseCase<int, NoParams> {
+  const BackfillCovers(this._repo, this._cover);
+
+  final LibraryRepository _repo;
+  final PdfCoverService _cover;
+
+  @override
+  ResultFuture<int> call(NoParams params) => guard(() async {
+        final List<LibraryDocument> all = await _repo.watchAll().first;
+        int updated = 0;
+        for (final LibraryDocument doc in all) {
+          final String? existing = doc.coverPath;
+          if (existing != null && existing.isNotEmpty) continue;
+          final String? cover = await _cover.generateCover(
+            documentId: doc.id,
+            pdfPath: doc.filePath,
+          );
+          if (cover == null) continue;
+          await _repo.updateCoverPath(doc.id, cover);
+          updated++;
+        }
+        if (updated > 0) {
+          AppLogger.i('BackfillCovers: generated $updated cover(s)');
+        }
+        return updated;
+      });
+}
