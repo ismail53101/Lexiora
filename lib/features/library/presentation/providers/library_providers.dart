@@ -114,3 +114,14 @@ final Provider<CreateCategory> createCategoryProvider = Provider<CreateCategory>
 final Provider<DeleteCategory> deleteCategoryProvider = Provider<DeleteCategory>(
   (Ref ref) => DeleteCategory(ref.watch(libraryRepositoryProvider)),
 );
+
+/// One-off pass that generates thumbnails for documents that predate the
+/// cover-thumbnail feature. Triggered once, quietly, when the library page
+/// first opens (see [LibraryPage.initState]).
+final Provider<BackfillCovers> backfillCoversProvider =
+    Provider<BackfillCovers>(
+  (Ref ref) => BackfillCovers(
+    ref.watch(libraryRepositoryProvider),
+    sl<PdfCoverService>(),
+  ),
+);

@@ -21,6 +21,16 @@ abstract interface class LibraryRepository {
   Future<void> insert(LibraryDocument document);
   Future<void> toggleFavorite(String id);
   Future<void> rename(String id, String title);
+
+  /// Repoints [id] at a different file on disk, keeping every other field
+  /// (title, cover, favourite, category, ...) unchanged. Used after OCR
+  /// produces a searchable copy of a scanned document — the copy becomes the
+  /// document's file going forward; the original on-device file is untouched.
+  Future<void> updateFilePath(String id, String filePath);
+
+  /// Sets [id]'s generated cover thumbnail path. Used both right after import
+  /// and to backfill covers for documents that predate the thumbnail feature.
+  Future<void> updateCoverPath(String id, String coverPath);
   Future<void> assignCategory(String id, String? categoryId);
   Future<void> markOpened(String id);
 

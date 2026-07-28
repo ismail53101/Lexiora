@@ -58,6 +58,13 @@ dependencies {
     // Services on first use, then runs completely offline — no API key, no
     // per-request cost, and no usage quota that can run out.
     implementation("com.google.mlkit:text-recognition:16.0.1")
+
+    // Writes an invisible OCR text layer into a PDF's existing pages (the
+    // same technique tools like OCRmyPDF use), so a scanned PDF becomes
+    // selectable/translatable through the app's normal, already-working
+    // text-selection system — no separate selection UI needed for OCR'd
+    // pages. Apache 2.0, free, no server dependency.
+    implementation("com.tom-roush:pdfbox-android:2.0.27.0")
 }
 
 flutter {

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Sapiora adaptive launcher icon background — a vertical blue gradient
+     sampled from the brand icon (bright royal blue at top fading to a deep
+     navy), so it blends seamlessly behind the foreground glyph. -->
+<shape xmlns:android="http://schemas.android.com/apk/res/android">
+    <gradient
+        android:type="linear"
+        android:angle="270"
+        android:startColor="#0048D1"
+        android:centerColor="#002377"
+        android:endColor="#001450" />
+</shape>
