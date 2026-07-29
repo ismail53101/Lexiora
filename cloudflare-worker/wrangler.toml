@@ -1,0 +1,11 @@
+name = "sapiora-ai-worker"
+main = "worker.js"
+compatibility_date = "2026-01-01"
+
+# Non-secret settings can go here as plain vars. Real API keys must NEVER be
+# put in this file (or committed to git) — set them with `wrangler secret put`
+# instead; see README.md.
+[vars]
+DEFAULT_PROVIDER = "hcnsec"
+HCNSEC_BASE_URL = "https://api.hcnsec.cn"
+# FORGE_BASE_URL = "https://your-forge-endpoint.example.com"
