@@ -278,10 +278,12 @@ class _EnglishMeaningState extends State<_EnglishMeaning> {
   Future<void> _load() async {
     final DictionaryResult? result =
         await _dictionary.lookup(widget.word.toLowerCase());
-    if (mounted) setState(() {
-      _result = result;
-      _loading = false;
-    });
+    if (mounted) {
+      setState(() {
+        _result = result;
+        _loading = false;
+      });
+    }
   }
 
   @override
