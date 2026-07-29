@@ -278,9 +278,17 @@ class _EnglishMeaningState extends State<_EnglishMeaning> {
   Future<void> _load() async {
     final DictionaryResult? result =
         await _dictionary.lookup(widget.word.toLowerCase());
+    // Words the Translation module has auto-registered into the dictionary's
+    // search index (so they're findable later) store whatever text the
+    // translation produced — which may be Urdu/Arabic, not an English
+    // definition. Only show entries whose meaning is actually in Latin
+    // script; anything else isn't a real English meaning, so treat it as
+    // "not found" rather than displaying non-English text under this label.
+    final bool isEnglishText = result != null &&
+        !RegExp(r'[\u0600-\u06FF\u0750-\u077F]').hasMatch(result.meaning);
     if (mounted) {
       setState(() {
-        _result = result;
+        _result = isEnglishText ? result : null;
         _loading = false;
       });
     }
