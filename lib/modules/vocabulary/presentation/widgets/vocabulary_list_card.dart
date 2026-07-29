@@ -14,9 +14,8 @@ class VocabularyListCard extends StatelessWidget {
     final ColorScheme scheme = theme.colorScheme;
     final String count = '${list.wordCount} '
         '${list.wordCount == 1 ? 'word' : 'words'}';
-    final String subtitle = (list.subtitle == null || list.subtitle!.isEmpty)
-        ? count
-        : '${list.subtitle} · $count';
+    final bool hasSubtitle =
+        list.subtitle != null && list.subtitle!.isNotEmpty;
 
     return Card(
       margin: const EdgeInsets.fromLTRB(16, 4, 16, 4),
@@ -33,7 +32,27 @@ class VocabularyListCard extends StatelessWidget {
           style: theme.textTheme.titleMedium
               ?.copyWith(fontWeight: FontWeight.w700),
         ),
-        subtitle: Text(subtitle, maxLines: 2, overflow: TextOverflow.ellipsis),
+        subtitle: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            if (hasSubtitle) ...[
+              Text(
+                list.subtitle!,
+                maxLines: 2,
+                overflow: TextOverflow.ellipsis,
+              ),
+              const SizedBox(height: 2),
+            ],
+            // On its own line so it's never the part that gets clipped —
+            // the description above may wrap/truncate, the count never does.
+            Text(
+              count,
+              style: theme.textTheme.bodySmall
+                  ?.copyWith(color: scheme.primary, fontWeight: FontWeight.w600),
+            ),
+          ],
+        ),
         trailing: const Icon(Icons.chevron_right),
       ),
     );

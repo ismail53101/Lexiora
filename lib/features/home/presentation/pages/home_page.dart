@@ -48,15 +48,23 @@ class HomePage extends ConsumerWidget {
       ),
       body: CustomScrollView(
         slivers: [
-          SliverAppBar.large(
-            leading: Padding(
-              padding: const EdgeInsets.all(10),
-              child: ClipRRect(
-                borderRadius: BorderRadius.circular(10),
-                child: Image.asset('assets/branding/app_icon.png'),
-              ),
+          SliverAppBar(
+            floating: true,
+            title: Row(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                ClipRRect(
+                  borderRadius: BorderRadius.circular(8),
+                  child: Image.asset(
+                    'assets/branding/app_icon.png',
+                    width: 32,
+                    height: 32,
+                  ),
+                ),
+                const SizedBox(width: 10),
+                const Text(AppConstants.appName),
+              ],
             ),
-            title: const Text(AppConstants.appName),
             actions: [
               const _ThemeToggle(),
               IconButton(
@@ -305,13 +313,35 @@ class _HomeFooter extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final ThemeData theme = Theme.of(context);
+    final ColorScheme scheme = theme.colorScheme;
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 20),
       child: Center(
-        child: Text(
-          'Developed by Ismail Lashari',
-          style: theme.textTheme.bodySmall?.copyWith(
-            color: theme.colorScheme.onSurfaceVariant,
+        child: Container(
+          padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+          decoration: BoxDecoration(
+            gradient: LinearGradient(
+              colors: [
+                scheme.primary.withValues(alpha: 0.16),
+                scheme.tertiary.withValues(alpha: 0.16),
+              ],
+            ),
+            borderRadius: BorderRadius.circular(20),
+            border: Border.all(color: scheme.primary.withValues(alpha: 0.25)),
+          ),
+          child: Row(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Icon(Icons.favorite, size: 14, color: scheme.primary),
+              const SizedBox(width: 8),
+              Text(
+                'Developed by Ismail Lashari',
+                style: theme.textTheme.labelMedium?.copyWith(
+                  color: scheme.primary,
+                  fontWeight: FontWeight.w700,
+                ),
+              ),
+            ],
           ),
         ),
       ),
