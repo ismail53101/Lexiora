@@ -2,7 +2,7 @@
   "list": {
     "id": "cssbpsc",
     "title": "CSS / BPSC Vocabulary",
-    "subtitle": "Editorial & governance words for competitive exams",
+    "subtitle": "Editorial, governance & essay words for competitive exams",
     "order": 9
   },
   "words": [
@@ -866,6 +866,1427 @@
       "urdu": "متعصبانہ جوش",
       "meaning": "excessive and uncompromising pursuit of ideals",
       "pos": "noun"
+    },
+    {
+      "word": "Ubiquitous",
+      "ipa": "/juːˈbɪkwɪtəs/",
+      "urdu": "موجود ہر جگہ، ہمہ گیر",
+      "meaning": "present or found everywhere",
+      "pos": "adjective"
+    },
+    {
+      "word": "Pernicious",
+      "ipa": "/pərˈnɪʃəs/",
+      "urdu": "نقصان دہ، مہلک",
+      "meaning": "having a harmful effect, especially gradually",
+      "pos": "adjective"
+    },
+    {
+      "word": "Vindictive",
+      "ipa": "/vɪnˈdɪktɪv/",
+      "urdu": "انتقام پسند",
+      "meaning": "having a strong desire for revenge",
+      "pos": "adjective"
+    },
+    {
+      "word": "Acumen",
+      "ipa": "/əˈkjuːmən/",
+      "urdu": "فہم و فراست، ذہانت",
+      "meaning": "the ability to make good judgments quickly",
+      "pos": "noun"
+    },
+    {
+      "word": "Cognizant",
+      "ipa": "/ˈkɒgnɪzənt/",
+      "urdu": "باخبر، آگاہ",
+      "meaning": "having knowledge or awareness of something",
+      "pos": "adjective"
+    },
+    {
+      "word": "Myriad",
+      "ipa": "/ˈmɪriəd/",
+      "urdu": "لاتعداد، بے شمار",
+      "meaning": "a countless or extremely great number",
+      "pos": "adjective"
+    },
+    {
+      "word": "Quintessential",
+      "ipa": "/ˌkwɪntɪˈsɛnʃəl/",
+      "urdu": "عین نمونہ، اصل ترین",
+      "meaning": "representing the most perfect example of a quality",
+      "pos": "adjective"
+    },
+    {
+      "word": "Ostensible",
+      "ipa": "/ɒˈstɛnsəbəl/",
+      "urdu": "بظاہر، ظاہری",
+      "meaning": "stated or appearing to be true, though perhaps not",
+      "pos": "adjective"
+    },
+    {
+      "word": "Profound",
+      "ipa": "/prəˈfaʊnd/",
+      "urdu": "گہرا، عمیق",
+      "meaning": "very great or intense; showing deep insight",
+      "pos": "adjective"
+    },
+    {
+      "word": "Meticulous",
+      "ipa": "/məˈtɪkjələs/",
+      "urdu": "نہایت محتاط، باریک بین",
+      "meaning": "showing great attention to detail",
+      "pos": "adjective"
+    },
+    {
+      "word": "Prudent",
+      "ipa": "/ˈpruːdənt/",
+      "urdu": "محتاط، دانشمند",
+      "meaning": "acting with care and thought for the future",
+      "pos": "adjective"
+    },
+    {
+      "word": "Candid",
+      "ipa": "/ˈkændɪd/",
+      "urdu": "صاف گو، بے لاگ",
+      "meaning": "truthful and straightforward",
+      "pos": "adjective"
+    },
+    {
+      "word": "Vociferous",
+      "ipa": "/vəˈsɪfərəs/",
+      "urdu": "شور مچانے والا، پرزور",
+      "meaning": "vehement or clamorous in expressing views",
+      "pos": "adjective"
+    },
+    {
+      "word": "Acrimonious",
+      "ipa": "/ˌækrɪˈməʊniəs/",
+      "urdu": "تلخ، رنجیدہ",
+      "meaning": "angry and bitter in tone or manner",
+      "pos": "adjective"
+    },
+    {
+      "word": "Audacious",
+      "ipa": "/ɔːˈdeɪʃəs/",
+      "urdu": "جری، نڈر",
+      "meaning": "showing a willingness to take bold risks",
+      "pos": "adjective"
+    },
+    {
+      "word": "Belligerent",
+      "ipa": "/bəˈlɪdʒərənt/",
+      "urdu": "جنگجو، لڑاکا",
+      "meaning": "hostile and aggressive",
+      "pos": "adjective"
+    },
+    {
+      "word": "Cacophony",
+      "ipa": "/kəˈkɒfəni/",
+      "urdu": "شور و غل، بدآہنگی",
+      "meaning": "a harsh, discordant mixture of sounds",
+      "pos": "noun"
+    },
+    {
+      "word": "Capitulate",
+      "ipa": "/kəˈpɪtʃʊleɪt/",
+      "urdu": "ہتھیار ڈالنا، سرنگوں ہونا",
+      "meaning": "to surrender or give in",
+      "pos": "verb"
+    },
+    {
+      "word": "Chronic",
+      "ipa": "/ˈkrɒnɪk/",
+      "urdu": "دائمی، مزمن",
+      "meaning": "persisting for a long time",
+      "pos": "adjective"
+    },
+    {
+      "word": "Circumvent",
+      "ipa": "/ˌsɜːkəmˈvɛnt/",
+      "urdu": "چکما دینا، بچ نکلنا",
+      "meaning": "to find a way around an obstacle",
+      "pos": "verb"
+    },
+    {
+      "word": "Coherent",
+      "ipa": "/kəʊˈhɪərənt/",
+      "urdu": "مربوط، باہم مربوط",
+      "meaning": "logical and consistent",
+      "pos": "adjective"
+    },
+    {
+      "word": "Complacent",
+      "ipa": "/kəmˈpleɪsənt/",
+      "urdu": "خود مطمئن، بے پروا",
+      "meaning": "self-satisfied and unaware of danger",
+      "pos": "adjective"
+    },
+    {
+      "word": "Conundrum",
+      "ipa": "/kəˈnʌndrəm/",
+      "urdu": "پیچیدہ مسئلہ، معمہ",
+      "meaning": "a confusing and difficult problem",
+      "pos": "noun"
+    },
+    {
+      "word": "Credence",
+      "ipa": "/ˈkriːdəns/",
+      "urdu": "اعتبار، یقین",
+      "meaning": "acceptance that something is true",
+      "pos": "noun"
+    },
+    {
+      "word": "Cynical",
+      "ipa": "/ˈsɪnɪkəl/",
+      "urdu": "بدگمان، طنزیہ",
+      "meaning": "distrustful of human sincerity or integrity",
+      "pos": "adjective"
+    },
+    {
+      "word": "Debilitate",
+      "ipa": "/dɪˈbɪlɪteɪt/",
+      "urdu": "کمزور کرنا",
+      "meaning": "to make someone weak",
+      "pos": "verb"
+    },
+    {
+      "word": "Deference",
+      "ipa": "/ˈdɛfərəns/",
+      "urdu": "تعظیم، احترام",
+      "meaning": "humble submission and respect",
+      "pos": "noun"
+    },
+    {
+      "word": "Delineate",
+      "ipa": "/dɪˈlɪnieɪt/",
+      "urdu": "خاکہ کھینچنا، وضاحت کرنا",
+      "meaning": "to describe or portray something precisely",
+      "pos": "verb"
+    },
+    {
+      "word": "Deplore",
+      "ipa": "/dɪˈplɔːr/",
+      "urdu": "مذمت کرنا",
+      "meaning": "to feel or express strong disapproval of",
+      "pos": "verb"
+    },
+    {
+      "word": "Derogatory",
+      "ipa": "/dɪˈrɒgətəri/",
+      "urdu": "تحقیر آمیز",
+      "meaning": "showing disrespect for someone or something",
+      "pos": "adjective"
+    },
+    {
+      "word": "Discern",
+      "ipa": "/dɪˈsɜːn/",
+      "urdu": "تمیز کرنا، پہچاننا",
+      "meaning": "to perceive or recognize something",
+      "pos": "verb"
+    },
+    {
+      "word": "Disparage",
+      "ipa": "/dɪˈspærɪdʒ/",
+      "urdu": "تنقیص کرنا، حقیر جاننا",
+      "meaning": "to criticize unfairly; belittle",
+      "pos": "verb"
+    },
+    {
+      "word": "Dogmatic",
+      "ipa": "/dɒgˈmætɪk/",
+      "urdu": "اپنی رائے پر اڑنے والا",
+      "meaning": "inclined to lay down principles as undeniably true",
+      "pos": "adjective"
+    },
+    {
+      "word": "Dubious",
+      "ipa": "/ˈdjuːbiəs/",
+      "urdu": "مشکوک",
+      "meaning": "hesitating or doubting; of questionable value",
+      "pos": "adjective"
+    },
+    {
+      "word": "Elusive",
+      "ipa": "/ɪˈluːsɪv/",
+      "urdu": "ناقابل حصول، فرار",
+      "meaning": "difficult to find, catch, or achieve",
+      "pos": "adjective"
+    },
+    {
+      "word": "Endemic",
+      "ipa": "/ɛnˈdɛmɪk/",
+      "urdu": "مقامی، علاقائی",
+      "meaning": "regularly found in a particular area or group",
+      "pos": "adjective"
+    },
+    {
+      "word": "Enigma",
+      "ipa": "/ɪˈnɪgmə/",
+      "urdu": "معمہ، پہیلی",
+      "meaning": "a person or thing that is mysterious",
+      "pos": "noun"
+    },
+    {
+      "word": "Ephemeral",
+      "ipa": "/ɪˈfɛmərəl/",
+      "urdu": "عارضی، فانی",
+      "meaning": "lasting for a very short time",
+      "pos": "adjective"
+    },
+    {
+      "word": "Equivocal",
+      "ipa": "/ɪˈkwɪvəkəl/",
+      "urdu": "مبہم، دو پہلو",
+      "meaning": "open to more than one interpretation",
+      "pos": "adjective"
+    },
+    {
+      "word": "Erudite",
+      "ipa": "/ˈɛrʊdaɪt/",
+      "urdu": "علم دوست، پرمعلومات",
+      "meaning": "having or showing great knowledge",
+      "pos": "adjective"
+    },
+    {
+      "word": "Esoteric",
+      "ipa": "/ˌɛsəˈtɛrɪk/",
+      "urdu": "خاص لوگوں کے لیے، خفیہ",
+      "meaning": "intended for or understood by only a small group",
+      "pos": "adjective"
+    },
+    {
+      "word": "Euphemism",
+      "ipa": "/ˈjuːfɪmɪzəm/",
+      "urdu": "خوش کلامی، تلطیف",
+      "meaning": "a mild word substituted for a harsh one",
+      "pos": "noun"
+    },
+    {
+      "word": "Exemplary",
+      "ipa": "/ɪgˈzɛmpləri/",
+      "urdu": "قابل تقلید، نمونہ",
+      "meaning": "serving as a desirable model",
+      "pos": "adjective"
+    },
+    {
+      "word": "Exorbitant",
+      "ipa": "/ɪgˈzɔːbɪtənt/",
+      "urdu": "حد سے زیادہ، گراں",
+      "meaning": "unreasonably high, especially of a price",
+      "pos": "adjective"
+    },
+    {
+      "word": "Expedient",
+      "ipa": "/ɪkˈspiːdiənt/",
+      "urdu": "مناسب، سود مند",
+      "meaning": "convenient and practical, though possibly improper",
+      "pos": "adjective"
+    },
+    {
+      "word": "Fallacy",
+      "ipa": "/ˈfæləsi/",
+      "urdu": "مغالطہ",
+      "meaning": "a mistaken belief based on unsound reasoning",
+      "pos": "noun"
+    },
+    {
+      "word": "Fervent",
+      "ipa": "/ˈfɜːvənt/",
+      "urdu": "پرجوش، پرشوق",
+      "meaning": "having or displaying passionate intensity",
+      "pos": "adjective"
+    },
+    {
+      "word": "Flagrant",
+      "ipa": "/ˈfleɪgrənt/",
+      "urdu": "صریح، کھلا",
+      "meaning": "conspicuously offensive; blatant",
+      "pos": "adjective"
+    },
+    {
+      "word": "Fortuitous",
+      "ipa": "/fɔːˈtjuːɪtəs/",
+      "urdu": "اتفاقی، خوش قسمتی سے",
+      "meaning": "happening by chance rather than design",
+      "pos": "adjective"
+    },
+    {
+      "word": "Frugal",
+      "ipa": "/ˈfruːgəl/",
+      "urdu": "کفایت شعار",
+      "meaning": "sparing or economical with money or food",
+      "pos": "adjective"
+    },
+    {
+      "word": "Furtive",
+      "ipa": "/ˈfɜːtɪv/",
+      "urdu": "چوری چھپے، پوشیدہ",
+      "meaning": "attempting to avoid notice or attention",
+      "pos": "adjective"
+    },
+    {
+      "word": "Grandiose",
+      "ipa": "/ˈgrændiəʊz/",
+      "urdu": "شاندار نما، نمائشی",
+      "meaning": "impressive or affectedly grand",
+      "pos": "adjective"
+    },
+    {
+      "word": "Gregarious",
+      "ipa": "/grɪˈgeəriəs/",
+      "urdu": "ملنسار",
+      "meaning": "fond of company; sociable",
+      "pos": "adjective"
+    },
+    {
+      "word": "Hackneyed",
+      "ipa": "/ˈhæknid/",
+      "urdu": "فرسودہ، گھسا پٹا",
+      "meaning": "lacking originality; overused",
+      "pos": "adjective"
+    },
+    {
+      "word": "Haphazard",
+      "ipa": "/hæpˈhæzəd/",
+      "urdu": "بے ترتیب، بے سوچے سمجھے",
+      "meaning": "lacking any order or organization",
+      "pos": "adjective"
+    },
+    {
+      "word": "Harbinger",
+      "ipa": "/ˈhɑːbɪndʒər/",
+      "urdu": "پیش خبر، پیامبر",
+      "meaning": "a person or thing that signals the approach of something",
+      "pos": "noun"
+    },
+    {
+      "word": "Impasse",
+      "ipa": "/ˈæmpæs/",
+      "urdu": "تعطل، بند گلی",
+      "meaning": "a situation with no way out; deadlock",
+      "pos": "noun"
+    },
+    {
+      "word": "Imperious",
+      "ipa": "/ɪmˈpɪəriəs/",
+      "urdu": "آمرانہ، رعب دار",
+      "meaning": "domineering; expecting obedience",
+      "pos": "adjective"
+    },
+    {
+      "word": "Implicit",
+      "ipa": "/ɪmˈplɪsɪt/",
+      "urdu": "مضمر، پوشیدہ",
+      "meaning": "implied though not plainly expressed",
+      "pos": "adjective"
+    },
+    {
+      "word": "Inadvertent",
+      "ipa": "/ˌɪnədˈvɜːtənt/",
+      "urdu": "غیر ارادی، سہواً",
+      "meaning": "unintentional",
+      "pos": "adjective"
+    },
+    {
+      "word": "Incessant",
+      "ipa": "/ɪnˈsɛsənt/",
+      "urdu": "مسلسل، لگاتار",
+      "meaning": "continuing without pause or interruption",
+      "pos": "adjective"
+    },
+    {
+      "word": "Incongruous",
+      "ipa": "/ɪnˈkɒŋgruəs/",
+      "urdu": "بے میل، نامناسب",
+      "meaning": "not in harmony or keeping with the surroundings",
+      "pos": "adjective"
+    },
+    {
+      "word": "Indispensable",
+      "ipa": "/ˌɪndɪˈspɛnsəbəl/",
+      "urdu": "ناگزیر",
+      "meaning": "absolutely necessary",
+      "pos": "adjective"
+    },
+    {
+      "word": "Ineffable",
+      "ipa": "/ɪnˈɛfəbəl/",
+      "urdu": "ناقابل بیان",
+      "meaning": "too great to be expressed in words",
+      "pos": "adjective"
+    },
+    {
+      "word": "Inevitable",
+      "ipa": "/ɪnˈɛvɪtəbəl/",
+      "urdu": "لازمی، یقینی",
+      "meaning": "certain to happen; unavoidable",
+      "pos": "adjective"
+    },
+    {
+      "word": "Innate",
+      "ipa": "/ɪˈneɪt/",
+      "urdu": "فطری، پیدائشی",
+      "meaning": "inborn; natural",
+      "pos": "adjective"
+    },
+    {
+      "word": "Innocuous",
+      "ipa": "/ɪˈnɒkjuəs/",
+      "urdu": "بے ضرر",
+      "meaning": "not harmful or offensive",
+      "pos": "adjective"
+    },
+    {
+      "word": "Insidious",
+      "ipa": "/ɪnˈsɪdiəs/",
+      "urdu": "خاموشی سے نقصان دینے والا",
+      "meaning": "proceeding in a gradual, harmful way",
+      "pos": "adjective"
+    },
+    {
+      "word": "Instigate",
+      "ipa": "/ˈɪnstɪgeɪt/",
+      "urdu": "اکسانا",
+      "meaning": "to bring about or initiate, often trouble",
+      "pos": "verb"
+    },
+    {
+      "word": "Intransigent",
+      "ipa": "/ɪnˈtrænsɪdʒənt/",
+      "urdu": "سخت گیر، ناقابل مصالحت",
+      "meaning": "unwilling to compromise",
+      "pos": "adjective"
+    },
+    {
+      "word": "Intrinsic",
+      "ipa": "/ɪnˈtrɪnsɪk/",
+      "urdu": "ذاتی، اندرونی",
+      "meaning": "belonging naturally; essential",
+      "pos": "adjective"
+    },
+    {
+      "word": "Inundate",
+      "ipa": "/ˈɪnʌndeɪt/",
+      "urdu": "سیلاب میں ڈبونا، بھر دینا",
+      "meaning": "to overwhelm with a large amount of something",
+      "pos": "verb"
+    },
+    {
+      "word": "Irrefutable",
+      "ipa": "/ɪˈrɛfjʊtəbəl/",
+      "urdu": "ناقابل تردید",
+      "meaning": "impossible to deny or disprove",
+      "pos": "adjective"
+    },
+    {
+      "word": "Juxtapose",
+      "ipa": "/ˈdʒʌkstəpəʊz/",
+      "urdu": "پہلو بہ پہلو رکھنا",
+      "meaning": "to place close together for contrasting effect",
+      "pos": "verb"
+    },
+    {
+      "word": "Lament",
+      "ipa": "/ləˈmɛnt/",
+      "urdu": "نوحہ، ماتم کرنا",
+      "meaning": "to express passionate grief or sorrow",
+      "pos": "verb"
+    },
+    {
+      "word": "Lucid",
+      "ipa": "/ˈluːsɪd/",
+      "urdu": "واضح، صاف",
+      "meaning": "clear and easy to understand",
+      "pos": "adjective"
+    },
+    {
+      "word": "Malaise",
+      "ipa": "/məˈleɪz/",
+      "urdu": "بے چینی، کسل مندی",
+      "meaning": "a general feeling of discomfort or unease",
+      "pos": "noun"
+    },
+    {
+      "word": "Mundane",
+      "ipa": "/mʌnˈdeɪn/",
+      "urdu": "عام، روزمرہ",
+      "meaning": "lacking interest or excitement; ordinary",
+      "pos": "adjective"
+    },
+    {
+      "word": "Myopic",
+      "ipa": "/maɪˈɒpɪk/",
+      "urdu": "کوتاہ نظر",
+      "meaning": "lacking foresight or imagination",
+      "pos": "adjective"
+    },
+    {
+      "word": "Nonchalant",
+      "ipa": "/ˈnɒnʃələnt/",
+      "urdu": "لاپروا، بے نیاز",
+      "meaning": "calmly indifferent; casual",
+      "pos": "adjective"
+    },
+    {
+      "word": "Notorious",
+      "ipa": "/nəʊˈtɔːriəs/",
+      "urdu": "بدنام",
+      "meaning": "famous or well known for something bad",
+      "pos": "adjective"
+    },
+    {
+      "word": "Nuance",
+      "ipa": "/ˈnjuːɑːns/",
+      "urdu": "باریکی، لطیف فرق",
+      "meaning": "a subtle difference in meaning or expression",
+      "pos": "noun"
+    },
+    {
+      "word": "Obsolete",
+      "ipa": "/ˈɒbsəliːt/",
+      "urdu": "متروک",
+      "meaning": "no longer in use; outdated",
+      "pos": "adjective"
+    },
+    {
+      "word": "Obstinate",
+      "ipa": "/ˈɒbstɪnət/",
+      "urdu": "ضدی",
+      "meaning": "stubbornly refusing to change one's opinion",
+      "pos": "adjective"
+    },
+    {
+      "word": "Ominous",
+      "ipa": "/ˈɒmɪnəs/",
+      "urdu": "منحوس، خطرناک",
+      "meaning": "giving the impression of trouble ahead",
+      "pos": "adjective"
+    },
+    {
+      "word": "Onus",
+      "ipa": "/ˈəʊnəs/",
+      "urdu": "ذمہ داری، بوجھ",
+      "meaning": "the responsibility for something",
+      "pos": "noun"
+    },
+    {
+      "word": "Opulent",
+      "ipa": "/ˈɒpjʊlənt/",
+      "urdu": "عالی شان، دولت مند",
+      "meaning": "ostentatiously rich and luxurious",
+      "pos": "adjective"
+    },
+    {
+      "word": "Ostentatious",
+      "ipa": "/ˌɒstɛnˈteɪʃəs/",
+      "urdu": "دکھاوے کا",
+      "meaning": "designed to impress; showy",
+      "pos": "adjective"
+    },
+    {
+      "word": "Outlandish",
+      "ipa": "/aʊtˈlændɪʃ/",
+      "urdu": "عجیب و غریب",
+      "meaning": "looking or sounding bizarre",
+      "pos": "adjective"
+    },
+    {
+      "word": "Paradox",
+      "ipa": "/ˈpærədɒks/",
+      "urdu": "تضاد بیانی",
+      "meaning": "a seemingly contradictory statement that may be true",
+      "pos": "noun"
+    },
+    {
+      "word": "Paramount",
+      "ipa": "/ˈpærəmaʊnt/",
+      "urdu": "اعلیٰ ترین، سب سے اہم",
+      "meaning": "more important than anything else",
+      "pos": "adjective"
+    },
+    {
+      "word": "Parochial",
+      "ipa": "/pəˈrəʊkiəl/",
+      "urdu": "محدود سوچ کا، علاقائی",
+      "meaning": "having a limited or narrow outlook",
+      "pos": "adjective"
+    },
+    {
+      "word": "Paucity",
+      "ipa": "/ˈpɔːsɪti/",
+      "urdu": "کمی، قلت",
+      "meaning": "the presence of something in small quantities",
+      "pos": "noun"
+    },
+    {
+      "word": "Penchant",
+      "ipa": "/ˈpɛntʃənt/",
+      "urdu": "رجحان، شوق",
+      "meaning": "a strong or habitual liking for something",
+      "pos": "noun"
+    },
+    {
+      "word": "Perfunctory",
+      "ipa": "/pəˈfʌŋktəri/",
+      "urdu": "سرسری، بے دلی سے",
+      "meaning": "carried out with minimum effort or reflection",
+      "pos": "adjective"
+    },
+    {
+      "word": "Peripheral",
+      "ipa": "/pəˈrɪfərəl/",
+      "urdu": "ضمنی، حاشیائی",
+      "meaning": "of secondary or minor importance",
+      "pos": "adjective"
+    },
+    {
+      "word": "Perpetuate",
+      "ipa": "/pəˈpɛtʃueɪt/",
+      "urdu": "جاری رکھنا، دوام بخشنا",
+      "meaning": "to make something continue indefinitely",
+      "pos": "verb"
+    },
+    {
+      "word": "Pervasive",
+      "ipa": "/pəˈveɪsɪv/",
+      "urdu": "ہمہ گیر، سرایت کرنے والا",
+      "meaning": "spreading widely throughout an area or group",
+      "pos": "adjective"
+    },
+    {
+      "word": "Plausible",
+      "ipa": "/ˈplɔːzəbəl/",
+      "urdu": "قابل یقین",
+      "meaning": "seeming reasonable or probable",
+      "pos": "adjective"
+    },
+    {
+      "word": "Plight",
+      "ipa": "/plaɪt/",
+      "urdu": "مصیبت، حالت زار",
+      "meaning": "a dangerous, difficult, or unfortunate situation",
+      "pos": "noun"
+    },
+    {
+      "word": "Vehement",
+      "ipa": "/ˈviːəmənt/",
+      "urdu": "پرزور، شدید",
+      "meaning": "showing strong or passionate feeling",
+      "pos": "adjective"
+    },
+    {
+      "word": "Tenacious",
+      "ipa": "/təˈneɪʃəs/",
+      "urdu": "ثابت قدم، ڈٹا رہنے والا",
+      "meaning": "tending to keep a firm hold; persistent",
+      "pos": "adjective"
+    },
+    {
+      "word": "Tangible",
+      "ipa": "/ˈtændʒəbəl/",
+      "urdu": "محسوس ہونے والا، ٹھوس",
+      "meaning": "perceptible by touch; clear and definite",
+      "pos": "adjective"
+    },
+    {
+      "word": "Superfluous",
+      "ipa": "/suːˈpɜːflʊəs/",
+      "urdu": "زائد از ضرورت",
+      "meaning": "unnecessary; more than what is needed",
+      "pos": "adjective"
+    },
+    {
+      "word": "Superficial",
+      "ipa": "/ˌsuːpəˈfɪʃəl/",
+      "urdu": "سطحی",
+      "meaning": "existing on the surface only; not thorough",
+      "pos": "adjective"
+    },
+    {
+      "word": "Succinct",
+      "ipa": "/səkˈsɪŋkt/",
+      "urdu": "جامع، مختصر",
+      "meaning": "briefly and clearly expressed",
+      "pos": "adjective"
+    },
+    {
+      "word": "Substantiate",
+      "ipa": "/səbˈstænʃieɪt/",
+      "urdu": "ثابت کرنا",
+      "meaning": "to provide evidence to support a claim",
+      "pos": "verb"
+    },
+    {
+      "word": "Stringent",
+      "ipa": "/ˈstrɪndʒənt/",
+      "urdu": "سخت",
+      "meaning": "strict, precise, and exacting",
+      "pos": "adjective"
+    },
+    {
+      "word": "Stoic",
+      "ipa": "/ˈstəʊɪk/",
+      "urdu": "بردبار",
+      "meaning": "enduring hardship without complaint",
+      "pos": "adjective"
+    },
+    {
+      "word": "Staunch",
+      "ipa": "/stɔːntʃ/",
+      "urdu": "پکا، وفادار",
+      "meaning": "loyal and committed in attitude",
+      "pos": "adjective"
+    },
+    {
+      "word": "Sporadic",
+      "ipa": "/spəˈrædɪk/",
+      "urdu": "کبھی کبھار، وقفے وقفے سے",
+      "meaning": "occurring at irregular intervals",
+      "pos": "adjective"
+    },
+    {
+      "word": "Solace",
+      "ipa": "/ˈsɒləs/",
+      "urdu": "تسکین",
+      "meaning": "comfort in a time of distress",
+      "pos": "noun"
+    },
+    {
+      "word": "Skeptical",
+      "ipa": "/ˈskɛptɪkəl/",
+      "urdu": "شکی",
+      "meaning": "not easily convinced; having doubts",
+      "pos": "adjective"
+    },
+    {
+      "word": "Scrupulous",
+      "ipa": "/ˈskruːpjʊləs/",
+      "urdu": "دیانتدار، محتاط",
+      "meaning": "diligent, careful, and precise",
+      "pos": "adjective"
+    },
+    {
+      "word": "Salient",
+      "ipa": "/ˈseɪliənt/",
+      "urdu": "نمایاں",
+      "meaning": "most noticeable or important",
+      "pos": "adjective"
+    },
+    {
+      "word": "Rife",
+      "ipa": "/raɪf/",
+      "urdu": "عام، پھیلا ہوا",
+      "meaning": "widespread, especially of something undesirable",
+      "pos": "adjective"
+    },
+    {
+      "word": "Reticent",
+      "ipa": "/ˈrɛtɪsənt/",
+      "urdu": "کم گو، خاموش طبع",
+      "meaning": "not revealing one's thoughts readily",
+      "pos": "adjective"
+    },
+    {
+      "word": "Reprehensible",
+      "ipa": "/ˌrɛprɪˈhɛnsəbəl/",
+      "urdu": "قابل مذمت",
+      "meaning": "deserving strong criticism",
+      "pos": "adjective"
+    },
+    {
+      "word": "Relentless",
+      "ipa": "/rɪˈlɛntlɪs/",
+      "urdu": "بے رحم، مسلسل",
+      "meaning": "unceasingly intense; harsh",
+      "pos": "adjective"
+    },
+    {
+      "word": "Redundant",
+      "ipa": "/rɪˈdʌndənt/",
+      "urdu": "غیر ضروری، زائد",
+      "meaning": "no longer needed; superfluous",
+      "pos": "adjective"
+    },
+    {
+      "word": "Reconcile",
+      "ipa": "/ˈrɛkənsaɪl/",
+      "urdu": "صلح کرانا",
+      "meaning": "to restore friendly relations",
+      "pos": "verb"
+    },
+    {
+      "word": "Reciprocate",
+      "ipa": "/rɪˈsɪprəkeɪt/",
+      "urdu": "جواب دینا، بدلہ چکانا",
+      "meaning": "to respond to an action with a similar one",
+      "pos": "verb"
+    },
+    {
+      "word": "Rebuttal",
+      "ipa": "/rɪˈbʌtəl/",
+      "urdu": "جوابی دلیل",
+      "meaning": "a refutation or contradiction",
+      "pos": "noun"
+    },
+    {
+      "word": "Rampant",
+      "ipa": "/ˈræmpənt/",
+      "urdu": "بے قابو، عام",
+      "meaning": "flourishing or spreading unchecked",
+      "pos": "adjective"
+    },
+    {
+      "word": "Quandary",
+      "ipa": "/ˈkwɒndəri/",
+      "urdu": "مخمصہ",
+      "meaning": "a state of uncertainty over what to do",
+      "pos": "noun"
+    },
+    {
+      "word": "Proclivity",
+      "ipa": "/prəˈklɪvɪti/",
+      "urdu": "رجحان، فطری میلان",
+      "meaning": "a natural tendency to do something",
+      "pos": "noun"
+    },
+    {
+      "word": "Prolific",
+      "ipa": "/prəˈlɪfɪk/",
+      "urdu": "زرخیز، پیداواری",
+      "meaning": "producing a great amount or number",
+      "pos": "adjective"
+    },
+    {
+      "word": "Precarious",
+      "ipa": "/prɪˈkeəriəs/",
+      "urdu": "غیر یقینی، خطرناک",
+      "meaning": "not securely held; dangerously uncertain",
+      "pos": "adjective"
+    },
+    {
+      "word": "Predicament",
+      "ipa": "/prɪˈdɪkəmənt/",
+      "urdu": "مشکل صورتحال",
+      "meaning": "a difficult, unpleasant situation",
+      "pos": "noun"
+    },
+    {
+      "word": "Prevalent",
+      "ipa": "/ˈprɛvələnt/",
+      "urdu": "رائج، عام",
+      "meaning": "widespread in a particular area or time",
+      "pos": "adjective"
+    },
+    {
+      "word": "Nostalgia",
+      "ipa": "/nɒˈstældʒə/",
+      "urdu": "ماضی کی یاد",
+      "meaning": "sentimental longing for the past",
+      "pos": "noun"
+    },
+    {
+      "word": "Obsequious",
+      "ipa": "/əbˈsiːkwiəs/",
+      "urdu": "خوشامدی",
+      "meaning": "excessively eager to please or obey",
+      "pos": "adjective"
+    },
+    {
+      "word": "Obstruct",
+      "ipa": "/əbˈstrʌkt/",
+      "urdu": "رکاوٹ ڈالنا",
+      "meaning": "to block or hinder movement or progress",
+      "pos": "verb"
+    },
+    {
+      "word": "Officious",
+      "ipa": "/əˈfɪʃəs/",
+      "urdu": "بلاجواز مداخلت کرنے والا",
+      "meaning": "asserting authority in an unwelcome way",
+      "pos": "adjective"
+    },
+    {
+      "word": "Palliate",
+      "ipa": "/ˈpælieɪt/",
+      "urdu": "تسکین دینا، کم کرنا",
+      "meaning": "to make a problem less severe",
+      "pos": "verb"
+    },
+    {
+      "word": "Panacea",
+      "ipa": "/ˌpænəˈsiːə/",
+      "urdu": "ہر مرض کی دوا",
+      "meaning": "a solution for all problems or difficulties",
+      "pos": "noun"
+    },
+    {
+      "word": "Pertinent",
+      "ipa": "/ˈpɜːtɪnənt/",
+      "urdu": "متعلقہ",
+      "meaning": "relevant to the matter at hand",
+      "pos": "adjective"
+    },
+    {
+      "word": "Petulant",
+      "ipa": "/ˈpɛtjʊlənt/",
+      "urdu": "چڑچڑا",
+      "meaning": "childishly bad-tempered or sulky",
+      "pos": "adjective"
+    },
+    {
+      "word": "Placate",
+      "ipa": "/pləˈkeɪt/",
+      "urdu": "راضی کرنا",
+      "meaning": "to make someone less angry",
+      "pos": "verb"
+    },
+    {
+      "word": "Poignant",
+      "ipa": "/ˈpɔɪnjənt/",
+      "urdu": "دل کو چھونے والا",
+      "meaning": "evoking a keen sense of sadness",
+      "pos": "adjective"
+    },
+    {
+      "word": "Precipitate",
+      "ipa": "/prɪˈsɪpɪteɪt/",
+      "urdu": "جلد بازی سے کروانا",
+      "meaning": "to cause something to happen suddenly",
+      "pos": "verb"
+    },
+    {
+      "word": "Precocious",
+      "ipa": "/prɪˈkəʊʃəs/",
+      "urdu": "وقت سے پہلے پختہ",
+      "meaning": "showing advanced ability for one's age",
+      "pos": "adjective"
+    },
+    {
+      "word": "Preclude",
+      "ipa": "/prɪˈkluːd/",
+      "urdu": "روکنا، مانع ہونا",
+      "meaning": "to prevent something from happening",
+      "pos": "verb"
+    },
+    {
+      "word": "Premise",
+      "ipa": "/ˈprɛmɪs/",
+      "urdu": "بنیادی خیال",
+      "meaning": "a statement taken as the basis for an argument",
+      "pos": "noun"
+    },
+    {
+      "word": "Presumptuous",
+      "ipa": "/prɪˈzʌmptʃuəs/",
+      "urdu": "خود سری",
+      "meaning": "overconfident and failing to observe limits",
+      "pos": "adjective"
+    },
+    {
+      "word": "Pretentious",
+      "ipa": "/prɪˈtɛnʃəs/",
+      "urdu": "نمائشی، دکھاوے کا",
+      "meaning": "attempting to impress by affecting importance",
+      "pos": "adjective"
+    },
+    {
+      "word": "Proponent",
+      "ipa": "/prəˈpəʊnənt/",
+      "urdu": "حامی",
+      "meaning": "a person who advocates for something",
+      "pos": "noun"
+    },
+    {
+      "word": "Provisional",
+      "ipa": "/prəˈvɪʒənəl/",
+      "urdu": "عارضی",
+      "meaning": "arranged or existing for the present, temporary",
+      "pos": "adjective"
+    },
+    {
+      "word": "Punitive",
+      "ipa": "/ˈpjuːnɪtɪv/",
+      "urdu": "سزا دینے والا",
+      "meaning": "inflicting or intended as punishment",
+      "pos": "adjective"
+    },
+    {
+      "word": "Quell",
+      "ipa": "/kwɛl/",
+      "urdu": "دبانا، ختم کرنا",
+      "meaning": "to put an end to; suppress",
+      "pos": "verb"
+    },
+    {
+      "word": "Rancor",
+      "ipa": "/ˈræŋkər/",
+      "urdu": "کینہ",
+      "meaning": "bitterness or resentfulness",
+      "pos": "noun"
+    },
+    {
+      "word": "Recalcitrant",
+      "ipa": "/rɪˈkælsɪtrənt/",
+      "urdu": "سرکش",
+      "meaning": "stubbornly disobedient",
+      "pos": "adjective"
+    },
+    {
+      "word": "Refute",
+      "ipa": "/rɪˈfjuːt/",
+      "urdu": "تردید کرنا",
+      "meaning": "to prove a statement wrong",
+      "pos": "verb"
+    },
+    {
+      "word": "Repudiate",
+      "ipa": "/rɪˈpjuːdieɪt/",
+      "urdu": "رد کرنا، انکار کرنا",
+      "meaning": "to reject or deny the validity of",
+      "pos": "verb"
+    },
+    {
+      "word": "Rescind",
+      "ipa": "/rɪˈsɪnd/",
+      "urdu": "منسوخ کرنا",
+      "meaning": "to revoke or cancel officially",
+      "pos": "verb"
+    },
+    {
+      "word": "Respite",
+      "ipa": "/ˈrɛspaɪt/",
+      "urdu": "وقفہ، راحت",
+      "meaning": "a short period of rest or relief",
+      "pos": "noun"
+    },
+    {
+      "word": "Retrospect",
+      "ipa": "/ˈrɛtrəspɛkt/",
+      "urdu": "ماضی پر نظر",
+      "meaning": "a review of past events",
+      "pos": "noun"
+    },
+    {
+      "word": "Rigid",
+      "ipa": "/ˈrɪdʒɪd/",
+      "urdu": "سخت، اٹل",
+      "meaning": "unable to bend or adapt; strict",
+      "pos": "adjective"
+    },
+    {
+      "word": "Robust",
+      "ipa": "/rəʊˈbʌst/",
+      "urdu": "مضبوط، توانا",
+      "meaning": "strong, healthy, and vigorous",
+      "pos": "adjective"
+    },
+    {
+      "word": "Rudimentary",
+      "ipa": "/ˌruːdɪˈmɛntəri/",
+      "urdu": "ابتدائی، بنیادی",
+      "meaning": "basic and undeveloped",
+      "pos": "adjective"
+    },
+    {
+      "word": "Scathing",
+      "ipa": "/ˈskeɪðɪŋ/",
+      "urdu": "سخت تنقیدی",
+      "meaning": "witheringly critical",
+      "pos": "adjective"
+    },
+    {
+      "word": "Sinister",
+      "ipa": "/ˈsɪnɪstər/",
+      "urdu": "خطرناک، شر انگیز",
+      "meaning": "suggesting evil or harm is about to happen",
+      "pos": "adjective"
+    },
+    {
+      "word": "Skirmish",
+      "ipa": "/ˈskɜːmɪʃ/",
+      "urdu": "جھڑپ",
+      "meaning": "a brief, minor fight or conflict",
+      "pos": "noun"
+    },
+    {
+      "word": "Somber",
+      "ipa": "/ˈsɒmbər/",
+      "urdu": "اداس، سنجیدہ",
+      "meaning": "dark, gloomy, and serious in mood",
+      "pos": "adjective"
+    },
+    {
+      "word": "Squander",
+      "ipa": "/ˈskwɒndər/",
+      "urdu": "ضائع کرنا",
+      "meaning": "to waste carelessly or foolishly",
+      "pos": "verb"
+    },
+    {
+      "word": "Steadfast",
+      "ipa": "/ˈstɛdfɑːst/",
+      "urdu": "ثابت قدم",
+      "meaning": "firmly fixed or unwavering",
+      "pos": "adjective"
+    },
+    {
+      "word": "Stifle",
+      "ipa": "/ˈstaɪfəl/",
+      "urdu": "دبانا، روکنا",
+      "meaning": "to suppress or restrain",
+      "pos": "verb"
+    },
+    {
+      "word": "Subdue",
+      "ipa": "/səbˈdjuː/",
+      "urdu": "قابو پانا",
+      "meaning": "to bring under control by force",
+      "pos": "verb"
+    },
+    {
+      "word": "Subordinate",
+      "ipa": "/səˈbɔːdɪnət/",
+      "urdu": "ماتحت",
+      "meaning": "lower in rank or position",
+      "pos": "adjective"
+    },
+    {
+      "word": "Substantive",
+      "ipa": "/ˈsʌbstəntɪv/",
+      "urdu": "حقیقی، اہم",
+      "meaning": "having a firm basis in reality; important",
+      "pos": "adjective"
+    },
+    {
+      "word": "Subtle",
+      "ipa": "/ˈsʌtəl/",
+      "urdu": "لطیف، باریک",
+      "meaning": "not obvious; delicate or precise",
+      "pos": "adjective"
+    },
+    {
+      "word": "Succumb",
+      "ipa": "/səˈkʌm/",
+      "urdu": "ہار ماننا",
+      "meaning": "to give way to pressure or overwhelming force",
+      "pos": "verb"
+    },
+    {
+      "word": "Sullen",
+      "ipa": "/ˈsʌlən/",
+      "urdu": "چڑچڑا، خاموش ناراض",
+      "meaning": "bad-tempered and sulkily silent",
+      "pos": "adjective"
+    },
+    {
+      "word": "Superimpose",
+      "ipa": "/ˌsuːpərɪmˈpəʊz/",
+      "urdu": "اوپر رکھنا",
+      "meaning": "to place something over something else",
+      "pos": "verb"
+    },
+    {
+      "word": "Surmise",
+      "ipa": "/səˈmaɪz/",
+      "urdu": "قیاس کرنا",
+      "meaning": "to suppose without certain evidence",
+      "pos": "verb"
+    },
+    {
+      "word": "Susceptible",
+      "ipa": "/səˈsɛptəbəl/",
+      "urdu": "حساس، اثر پذیر",
+      "meaning": "likely to be influenced or harmed by something",
+      "pos": "adjective"
+    },
+    {
+      "word": "Tacit",
+      "ipa": "/ˈtæsɪt/",
+      "urdu": "خاموش، غیر تحریری",
+      "meaning": "understood without being openly stated",
+      "pos": "adjective"
+    },
+    {
+      "word": "Taint",
+      "ipa": "/teɪnt/",
+      "urdu": "داغدار کرنا",
+      "meaning": "to contaminate or spoil the quality of",
+      "pos": "verb"
+    },
+    {
+      "word": "Tantamount",
+      "ipa": "/ˈtæntəmaʊnt/",
+      "urdu": "مترادف، برابر",
+      "meaning": "equivalent in effect to something else",
+      "pos": "adjective"
+    },
+    {
+      "word": "Tedious",
+      "ipa": "/ˈtiːdiəs/",
+      "urdu": "اکتا دینے والا",
+      "meaning": "too long, slow, or dull",
+      "pos": "adjective"
+    },
+    {
+      "word": "Tentative",
+      "ipa": "/ˈtɛntətɪv/",
+      "urdu": "عارضی، غیر یقینی",
+      "meaning": "not certain or fixed; provisional",
+      "pos": "adjective"
+    },
+    {
+      "word": "Thwart",
+      "ipa": "/θwɔːt/",
+      "urdu": "ناکام بنانا",
+      "meaning": "to prevent someone from succeeding",
+      "pos": "verb"
+    },
+    {
+      "word": "Tirade",
+      "ipa": "/taɪˈreɪd/",
+      "urdu": "طویل تنقیدی تقریر",
+      "meaning": "a long angry or critical speech",
+      "pos": "noun"
+    },
+    {
+      "word": "Torpid",
+      "ipa": "/ˈtɔːpɪd/",
+      "urdu": "سست، بے حس",
+      "meaning": "mentally or physically inactive; sluggish",
+      "pos": "adjective"
+    },
+    {
+      "word": "Tumultuous",
+      "ipa": "/tjuːˈmʌltʃuəs/",
+      "urdu": "ہنگامہ خیز",
+      "meaning": "loud, confused, or disorderly",
+      "pos": "adjective"
+    },
+    {
+      "word": "Unanimous",
+      "ipa": "/juːˈnænɪməs/",
+      "urdu": "بالاتفاق",
+      "meaning": "fully in agreement; united in opinion",
+      "pos": "adjective"
+    },
+    {
+      "word": "Underscore",
+      "ipa": "/ˌʌndəˈskɔːr/",
+      "urdu": "نمایاں کرنا",
+      "meaning": "to emphasize the importance of something",
+      "pos": "verb"
+    },
+    {
+      "word": "Undermine",
+      "ipa": "/ˌʌndəˈmaɪn/",
+      "urdu": "کمزور کرنا",
+      "meaning": "to weaken gradually or insidiously",
+      "pos": "verb"
+    },
+    {
+      "word": "Unequivocal",
+      "ipa": "/ˌʌnɪˈkwɪvəkəl/",
+      "urdu": "غیر مبہم، واضح",
+      "meaning": "leaving no doubt; unambiguous",
+      "pos": "adjective"
+    },
+    {
+      "word": "Unprecedented",
+      "ipa": "/ʌnˈprɛsɪdɛntɪd/",
+      "urdu": "بے مثال",
+      "meaning": "never done or known before",
+      "pos": "adjective"
+    },
+    {
+      "word": "Unscrupulous",
+      "ipa": "/ʌnˈskruːpjʊləs/",
+      "urdu": "بے ضمیر",
+      "meaning": "having no moral principles",
+      "pos": "adjective"
+    },
+    {
+      "word": "Untenable",
+      "ipa": "/ʌnˈtɛnəbəl/",
+      "urdu": "ناقابل دفاع",
+      "meaning": "not able to be defended or justified",
+      "pos": "adjective"
+    },
+    {
+      "word": "Venerable",
+      "ipa": "/ˈvɛnərəbəl/",
+      "urdu": "قابل احترام",
+      "meaning": "accorded great respect due to age or wisdom",
+      "pos": "adjective"
+    },
+    {
+      "word": "Veracity",
+      "ipa": "/vəˈræsɪti/",
+      "urdu": "سچائی",
+      "meaning": "conformity to truth; accuracy",
+      "pos": "noun"
+    },
+    {
+      "word": "Verbose",
+      "ipa": "/vɜːˈbəʊs/",
+      "urdu": "پرگو، طویل",
+      "meaning": "using more words than needed",
+      "pos": "adjective"
+    },
+    {
+      "word": "Viable",
+      "ipa": "/ˈvaɪəbəl/",
+      "urdu": "قابل عمل",
+      "meaning": "capable of working successfully",
+      "pos": "adjective"
+    },
+    {
+      "word": "Vex",
+      "ipa": "/vɛks/",
+      "urdu": "پریشان کرنا، ستانا",
+      "meaning": "to make someone annoyed or worried",
+      "pos": "verb"
+    },
+    {
+      "word": "Volatile",
+      "ipa": "/ˈvɒlətaɪl/",
+      "urdu": "غیر مستحکم",
+      "meaning": "liable to change rapidly and unpredictably",
+      "pos": "adjective"
+    },
+    {
+      "word": "Wane",
+      "ipa": "/weɪn/",
+      "urdu": "زوال پذیر ہونا",
+      "meaning": "to decrease in strength or importance",
+      "pos": "verb"
+    },
+    {
+      "word": "Wary",
+      "ipa": "/ˈweəri/",
+      "urdu": "محتاط، چوکنا",
+      "meaning": "feeling or showing caution",
+      "pos": "adjective"
+    },
+    {
+      "word": "Zealous",
+      "ipa": "/ˈzɛləs/",
+      "urdu": "پرجوش",
+      "meaning": "having great energy in pursuit of a cause",
+      "pos": "adjective"
+    },
+    {
+      "word": "Vindicate",
+      "ipa": "/ˈvɪndɪkeɪt/",
+      "urdu": "بے گناہ ثابت کرنا",
+      "meaning": "to clear of blame after being doubted",
+      "pos": "verb"
+    },
+    {
+      "word": "Warrant",
+      "ipa": "/ˈwɒrənt/",
+      "urdu": "جواز فراہم کرنا",
+      "meaning": "to justify or necessitate a course of action",
+      "pos": "verb"
     }
   ]
 }

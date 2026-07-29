@@ -4,6 +4,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:lexiora/app/di/injector.dart';
 import 'package:lexiora/core/constants/translation_languages.dart';
 import 'package:lexiora/features/settings/presentation/providers/settings_providers.dart';
+import 'package:lexiora/modules/dictionary/domain/entities/dictionary_entry.dart';
 import 'package:lexiora/modules/dictionary/domain/repositories/dictionary_repository.dart';
 import 'package:lexiora/modules/translation/domain/entities/translation.dart';
 import 'package:lexiora/modules/translation/domain/entities/translation_outcome.dart';
@@ -170,6 +171,12 @@ class _Available extends StatelessWidget {
 
   bool get _isRtl => language.code == 'ur' || language.code == 'ar';
 
+  /// Only a single word has a dictionary *definition* — a phrase or sentence
+  /// doesn't, so the English-meaning block is single-word only. Mirrors the
+  /// exact rule the reader itself uses to gate the "Look up" action.
+  bool get _isSingleWord =>
+      RegExp(r"^[A-Za-z][A-Za-z'’\-]*$").hasMatch(word);
+
   @override
   Widget build(BuildContext context) {
     final ThemeData theme = Theme.of(context);
@@ -179,20 +186,10 @@ class _Available extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       mainAxisSize: MainAxisSize.min,
       children: <Widget>[
-        Text(
-          'ENGLISH',
-          style: theme.textTheme.labelSmall?.copyWith(
-            color: theme.colorScheme.onSurfaceVariant,
-            fontWeight: FontWeight.w700,
-            letterSpacing: 0.6,
-          ),
-        ),
-        const SizedBox(height: 4),
-        Text(
-          word,
-          style: theme.textTheme.titleMedium?.copyWith(height: 1.3),
-        ),
-        const SizedBox(height: 16),
+        if (_isSingleWord) ...<Widget>[
+          _EnglishMeaning(word: word),
+          const SizedBox(height: 16),
+        ],
         Text(
           language.englishName.toUpperCase(),
           style: theme.textTheme.labelSmall?.copyWith(
@@ -252,6 +249,86 @@ class _Available extends StatelessWidget {
     ScaffoldMessenger.of(context)
       ..hideCurrentSnackBar()
       ..showSnackBar(const SnackBar(content: Text('Copied translation')));
+  }
+}
+
+/// A single word's real English dictionary definition (not just the word
+/// itself echoed back) — looked up from the same offline dictionary the
+/// "Look up" reader action uses. Renders nothing when the word isn't in the
+/// dictionary, rather than showing an empty/misleading section.
+class _EnglishMeaning extends StatefulWidget {
+  const _EnglishMeaning({required this.word});
+  final String word;
+
+  @override
+  State<_EnglishMeaning> createState() => _EnglishMeaningState();
+}
+
+class _EnglishMeaningState extends State<_EnglishMeaning> {
+  final DictionaryRepository _dictionary = sl<DictionaryRepository>();
+  DictionaryResult? _result;
+  bool _loading = true;
+
+  @override
+  void initState() {
+    super.initState();
+    _load();
+  }
+
+  Future<void> _load() async {
+    final DictionaryResult? result =
+        await _dictionary.lookup(widget.word.toLowerCase());
+    if (mounted) setState(() {
+      _result = result;
+      _loading = false;
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    if (_loading) {
+      return const SizedBox(
+        height: 20,
+        width: 20,
+        child: Padding(
+          padding: EdgeInsets.only(top: 2),
+          child: CircularProgressIndicator(strokeWidth: 2),
+        ),
+      );
+    }
+    final DictionaryResult? result = _result;
+    if (result == null) return const SizedBox.shrink(); // not in dictionary
+
+    final ThemeData theme = Theme.of(context);
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      mainAxisSize: MainAxisSize.min,
+      children: <Widget>[
+        Text(
+          'ENGLISH MEANING',
+          style: theme.textTheme.labelSmall?.copyWith(
+            color: theme.colorScheme.onSurfaceVariant,
+            fontWeight: FontWeight.w700,
+            letterSpacing: 0.6,
+          ),
+        ),
+        const SizedBox(height: 4),
+        Text(
+          result.meaning,
+          style: theme.textTheme.titleMedium?.copyWith(height: 1.3),
+        ),
+        if (result.partOfSpeech != null && result.partOfSpeech!.isNotEmpty) ...<Widget>[
+          const SizedBox(height: 4),
+          Text(
+            result.partOfSpeech!,
+            style: theme.textTheme.bodySmall?.copyWith(
+              color: theme.colorScheme.primary,
+              fontStyle: FontStyle.italic,
+            ),
+          ),
+        ],
+      ],
+    );
   }
 }
 
