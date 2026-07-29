@@ -42,7 +42,8 @@ class AiApiClient {
       req.headers
         ..set(HttpHeaders.contentTypeHeader, 'application/json')
         ..set(HttpHeaders.acceptHeader, 'text/event-stream')
-        ..set(HttpHeaders.authorizationHeader, 'Bearer ${_config.apiKey}');
+        ..set(HttpHeaders.authorizationHeader, 'Bearer ${_config.apiKey}')
+        ..set('X-AI-Provider', _config.provider.wireValue);
       req.add(utf8.encode(jsonEncode(body)));
       response = await req.close().timeout(AiConstants.idleTimeout);
     } on SocketException {
@@ -103,7 +104,8 @@ class AiApiClient {
           .timeout(AiConstants.connectTimeout);
       req.headers
         ..set(HttpHeaders.contentTypeHeader, 'application/json')
-        ..set(HttpHeaders.authorizationHeader, 'Bearer ${_config.apiKey}');
+        ..set(HttpHeaders.authorizationHeader, 'Bearer ${_config.apiKey}')
+        ..set('X-AI-Provider', _config.provider.wireValue);
       req.add(utf8.encode(jsonEncode(body)));
       final HttpClientResponse response =
           await req.close().timeout(AiConstants.idleTimeout);

@@ -4,6 +4,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:lexiora/app/di/injector.dart';
 import 'package:lexiora/core/constants/translation_languages.dart';
 import 'package:lexiora/features/settings/presentation/providers/settings_providers.dart';
+import 'package:lexiora/modules/dictionary/data/services/online_dictionary_service.dart';
 import 'package:lexiora/modules/dictionary/domain/entities/dictionary_entry.dart';
 import 'package:lexiora/modules/dictionary/domain/repositories/dictionary_repository.dart';
 import 'package:lexiora/modules/translation/domain/entities/translation.dart';
@@ -266,7 +267,11 @@ class _EnglishMeaning extends StatefulWidget {
 
 class _EnglishMeaningState extends State<_EnglishMeaning> {
   final DictionaryRepository _dictionary = sl<DictionaryRepository>();
-  DictionaryResult? _result;
+  final OnlineDictionaryService _online = OnlineDictionaryService();
+
+  String? _meaning;
+  String? _partOfSpeech;
+  bool _fromOnline = false;
   bool _loading = true;
 
   @override
@@ -276,19 +281,37 @@ class _EnglishMeaningState extends State<_EnglishMeaning> {
   }
 
   Future<void> _load() async {
-    final DictionaryResult? result =
+    final DictionaryResult? local =
         await _dictionary.lookup(widget.word.toLowerCase());
     // Words the Translation module has auto-registered into the dictionary's
     // search index (so they're findable later) store whatever text the
     // translation produced — which may be Urdu/Arabic, not an English
-    // definition. Only show entries whose meaning is actually in Latin
-    // script; anything else isn't a real English meaning, so treat it as
-    // "not found" rather than displaying non-English text under this label.
-    final bool isEnglishText = result != null &&
-        !RegExp(r'[\u0600-\u06FF\u0750-\u077F]').hasMatch(result.meaning);
+    // definition. Only trust entries whose meaning is actually in Latin
+    // script as a real English meaning.
+    final bool localIsEnglish = local != null &&
+        !RegExp(r'[\u0600-\u06FF\u0750-\u077F]').hasMatch(local.meaning);
+
+    if (localIsEnglish) {
+      if (mounted) {
+        setState(() {
+          _meaning = local.meaning;
+          _partOfSpeech = local.partOfSpeech;
+          _fromOnline = false;
+          _loading = false;
+        });
+      }
+      return;
+    }
+
+    // Not in the offline dictionary (or only as a non-English stand-in) —
+    // fall back to a free, keyless online lookup, the same "offline-first,
+    // online-fallback" shape the Urdu translation already uses.
+    final OnlineDefinition? online = await _online.define(widget.word);
     if (mounted) {
       setState(() {
-        _result = isEnglishText ? result : null;
+        _meaning = online?.meaning;
+        _partOfSpeech = online?.partOfSpeech;
+        _fromOnline = online != null;
         _loading = false;
       });
     }
@@ -306,31 +329,40 @@ class _EnglishMeaningState extends State<_EnglishMeaning> {
         ),
       );
     }
-    final DictionaryResult? result = _result;
-    if (result == null) return const SizedBox.shrink(); // not in dictionary
+    final String? meaning = _meaning;
+    if (meaning == null) return const SizedBox.shrink(); // no English meaning found
 
     final ThemeData theme = Theme.of(context);
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       mainAxisSize: MainAxisSize.min,
       children: <Widget>[
-        Text(
-          'ENGLISH MEANING',
-          style: theme.textTheme.labelSmall?.copyWith(
-            color: theme.colorScheme.onSurfaceVariant,
-            fontWeight: FontWeight.w700,
-            letterSpacing: 0.6,
-          ),
+        Row(
+          children: <Widget>[
+            Text(
+              'ENGLISH MEANING',
+              style: theme.textTheme.labelSmall?.copyWith(
+                color: theme.colorScheme.onSurfaceVariant,
+                fontWeight: FontWeight.w700,
+                letterSpacing: 0.6,
+              ),
+            ),
+            if (_fromOnline) ...<Widget>[
+              const SizedBox(width: 6),
+              Icon(Icons.cloud_outlined,
+                  size: 13, color: theme.colorScheme.onSurfaceVariant),
+            ],
+          ],
         ),
         const SizedBox(height: 4),
         Text(
-          result.meaning,
+          meaning,
           style: theme.textTheme.titleMedium?.copyWith(height: 1.3),
         ),
-        if (result.partOfSpeech != null && result.partOfSpeech!.isNotEmpty) ...<Widget>[
+        if (_partOfSpeech != null && _partOfSpeech!.isNotEmpty) ...<Widget>[
           const SizedBox(height: 4),
           Text(
-            result.partOfSpeech!,
+            _partOfSpeech!,
             style: theme.textTheme.bodySmall?.copyWith(
               color: theme.colorScheme.primary,
               fontStyle: FontStyle.italic,

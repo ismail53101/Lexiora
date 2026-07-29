@@ -44,7 +44,12 @@ class OpenAiCompatibleChatService implements AiChatService {
 
     try {
       await for (final String payload in _client.streamSse(
-        <String, dynamic>{'model': useModel, 'messages': wire, 'stream': true},
+        <String, dynamic>{
+          'model': useModel,
+          'messages': wire,
+          'stream': true,
+          'provider': _config.provider.wireValue,
+        },
         cancel: cancel,
       )) {
         final String? delta = parseStreamDelta(payload);
@@ -57,7 +62,11 @@ class OpenAiCompatibleChatService implements AiChatService {
       // Fallback: endpoint didn't stream any content — do one plain completion.
       if (acc.isEmpty && !(cancel?.isCancelled ?? false)) {
         final Map<String, dynamic> json = await _client.postJson(
-          <String, dynamic>{'model': useModel, 'messages': wire},
+          <String, dynamic>{
+            'model': useModel,
+            'messages': wire,
+            'provider': _config.provider.wireValue,
+          },
           cancel: cancel,
         );
         final String content = parseFullContent(json);

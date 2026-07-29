@@ -72,10 +72,15 @@ abstract final class AiConstants {
   static const String envApiKey = 'SAPIORA_AI_API_KEY';
   static const String envBaseUrl = 'SAPIORA_AI_BASE_URL';
   static const String envModel = 'SAPIORA_AI_MODEL';
+  static const String envProvider = 'SAPIORA_AI_PROVIDER';
 
   /// Defaults used when the corresponding define is not provided.
   static const String defaultBaseUrl = 'https://api.hcnsec.cn';
   static const String defaultModel = 'auto';
+  /// 'auto' means the Cloudflare Worker itself picks/falls back between its
+  /// configured upstream providers — the app never needs to know which
+  /// providers exist or choose between them.
+  static const String defaultProvider = 'auto';
 
   /// OpenAI-compatible chat-completions path appended to the base URL.
   static const String chatCompletionsPath = '/v1/chat/completions';
