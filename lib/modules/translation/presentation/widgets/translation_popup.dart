@@ -10,6 +10,7 @@ import 'package:lexiora/modules/dictionary/domain/repositories/dictionary_reposi
 import 'package:lexiora/modules/translation/domain/entities/translation.dart';
 import 'package:lexiora/modules/translation/domain/entities/translation_outcome.dart';
 import 'package:lexiora/modules/translation/presentation/providers/translation_providers.dart';
+import 'package:lexiora/modules/vocabulary/presentation/widgets/vocab_pronunciation_button.dart';
 
 /// Shows the lightweight reader translation popup for a single selected word.
 ///
@@ -61,6 +62,10 @@ class _TranslationSheet extends ConsumerWidget {
                     overflow: TextOverflow.ellipsis,
                   ),
                 ),
+                if (word.isNotEmpty) ...<Widget>[
+                  const SizedBox(width: 4),
+                  VocabPronunciationButton(text: word),
+                ],
                 const SizedBox(width: 10),
                 _LanguageChip(language: language),
               ],
@@ -159,6 +164,19 @@ class _Outcome extends StatelessWidget {
   }
 }
 
+/// Maps a translation target's 2-letter code to a full TTS locale — the
+/// pronunciation service checks device voice availability per locale and
+/// simply hides its button when one isn't installed, so an unmapped/missing
+/// voice degrades gracefully rather than breaking anything.
+String _ttsLocaleFor(String languageCode) => switch (languageCode) {
+      'ur' => 'ur-PK',
+      'ar' => 'ar-SA',
+      'hi' => 'hi-IN',
+      'fr' => 'fr-FR',
+      'pt' => 'pt-PT',
+      _ => 'en-US',
+    };
+
 class _Available extends StatelessWidget {
   const _Available({
     required this.word,
@@ -200,12 +218,24 @@ class _Available extends StatelessWidget {
           ),
         ),
         const SizedBox(height: 4),
-        Directionality(
-          textDirection: _isRtl ? TextDirection.rtl : TextDirection.ltr,
-          child: Text(
-            translation.text,
-            style: theme.textTheme.titleLarge?.copyWith(height: 1.35),
-          ),
+        Row(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: <Widget>[
+            Expanded(
+              child: Directionality(
+                textDirection: _isRtl ? TextDirection.rtl : TextDirection.ltr,
+                child: Text(
+                  translation.text,
+                  style: theme.textTheme.titleLarge?.copyWith(height: 1.35),
+                ),
+              ),
+            ),
+            const SizedBox(width: 4),
+            VocabPronunciationButton(
+              text: translation.text,
+              languageCode: _ttsLocaleFor(language.code),
+            ),
+          ],
         ),
         const SizedBox(height: 12),
         _SourceBadge(online: online),
