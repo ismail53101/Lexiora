@@ -26,6 +26,7 @@ dependencies:
   go_router: ^17.3.0
   gpt_markdown: ^1.1.8
   image_picker: ^1.1.2
+  url_launcher: ^6.3.1
   path: ^1.9.1
   path_provider: ^2.1.6
   pdf: ^3.13.0

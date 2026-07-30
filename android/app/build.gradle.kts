@@ -1,11 +1,24 @@
+import java.util.Properties
+
 plugins {
     id("com.android.application")
     // The Flutter Gradle Plugin must be applied after the Android and Kotlin Gradle plugins.
     id("dev.flutter.flutter-gradle-plugin")
 }
 
+// Release signing: reads android/key.properties if present (never committed —
+// see .gitignore). Falls back to the debug key when it's absent, so local/CI
+// builds keep working before a real upload keystore has been set up. See
+// android/KEYSTORE.md for how to generate one and wire it into CI.
+val keystorePropertiesFile = rootProject.file("key.properties")
+val keystoreProperties = Properties()
+val hasReleaseKeystore = keystorePropertiesFile.exists()
+if (hasReleaseKeystore) {
+    keystoreProperties.load(keystorePropertiesFile.inputStream())
+}
+
 android {
-    namespace = "com.lexiora.app"
+    namespace = "com.sapiora.app"
     compileSdk = flutter.compileSdkVersion
     ndkVersion = flutter.ndkVersion
 
@@ -26,8 +39,10 @@ android {
     }
 
     defaultConfig {
-        // Stable application ID for the Lexiora platform (Phase 1).
-        applicationId = "com.lexiora.app"
+        // Stable application ID for the Sapiora app. This is permanent once
+        // published to the Play Store — never change it after the first
+        // release (doing so publishes as a brand-new, unrelated app listing).
+        applicationId = "com.sapiora.app"
         // minSdk 26 (Android 8.0): floor required by pdfrx / PDFium and by the
         // app's use of modern APIs. versionCode / versionName come from pubspec.
         minSdk = 26
@@ -36,12 +51,25 @@ android {
         versionName = flutter.versionName
     }
 
+    signingConfigs {
+        create("release") {
+            if (hasReleaseKeystore) {
+                storeFile = file(keystoreProperties["storeFile"] as String)
+                storePassword = keystoreProperties["storePassword"] as String
+                keyAlias = keystoreProperties["keyAlias"] as String
+                keyPassword = keystoreProperties["keyPassword"] as String
+            }
+        }
+    }
+
     buildTypes {
         release {
-            // Phase 1 CI/dev builds are signed with the debug key so the release
-            // APK is directly installable. Production release signing (an upload
-            // keystore) is a Phase-1.x release task, tracked in ROADMAP.md.
-            signingConfig = signingConfigs.getByName("debug")
+            // Uses the real upload keystore once android/key.properties exists
+            // (see android/KEYSTORE.md); until then, signs with the debug key
+            // so every build stays installable for testing.
+            signingConfig = signingConfigs.getByName(
+                if (hasReleaseKeystore) "release" else "debug",
+            )
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro",

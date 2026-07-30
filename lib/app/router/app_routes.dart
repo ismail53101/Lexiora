@@ -9,6 +9,7 @@ abstract final class AppRoutes {
   static const String home = '/';
   static const String library = '/library';
   static const String settings = '/settings';
+  static const String admin = '/admin';
 
   // Dictionary (Phase 2.1)
   static const String dictionary = '/dictionary';

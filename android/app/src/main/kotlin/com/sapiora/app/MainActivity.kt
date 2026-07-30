@@ -1,4 +1,4 @@
-package com.lexiora.app
+package com.sapiora.app
 
 import android.app.Activity
 import android.content.Intent
