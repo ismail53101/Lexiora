@@ -137,11 +137,14 @@ export default {
       lastFailure = { status: upstream.status, message: text || upstream.statusText };
       if (!isLastAttempt) continue;
 
+      const debug = request.headers.get("X-Debug") === "1"
+        ? { debug: debugInfo(providerId, env) }
+        : {};
       return jsonError(
         upstream.status,
         "provider_error",
         lastFailure.message,
-        { provider: providerId },
+        { provider: providerId, ...debug },
       );
     }
 
@@ -198,6 +201,19 @@ function providerBaseUrl(id, env) {
   return env[cfg.baseUrlEnv] || cfg.defaultBaseUrl;
 }
 
+/** Safe-to-return diagnostics — never includes the actual key value. */
+function debugInfo(providerId, env) {
+  const apiKey = providerApiKey(providerId, env) || "";
+  const baseUrl = providerBaseUrl(providerId, env) || "";
+  return {
+    targetUrl: `${baseUrl.replace(/\/+$/, "")}${CHAT_COMPLETIONS_PATH}`,
+    apiKeyConfigured: apiKey.length > 0,
+    apiKeyLength: apiKey.length,
+    apiKeyPrefix: apiKey ? apiKey.slice(0, 5) : null,
+    apiKeyHasWhitespace: /\s/.test(apiKey),
+  };
+}
+
 async function callProvider(id, bodyText, env) {
   const baseUrl = providerBaseUrl(id, env);
   if (!baseUrl) {
@@ -210,6 +226,12 @@ async function callProvider(id, bodyText, env) {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
+      Accept: "application/json",
+      // Some upstream gateways reject requests that don't look like they
+      // came from a normal HTTP client (Cloudflare's default fetch() sends
+      // no User-Agent at all, unlike curl/browsers) — this makes the
+      // forwarded request look like an ordinary client call.
+      "User-Agent": "Sapiora-AI-Gateway/1.0 (+Cloudflare-Worker)",
       Authorization: `Bearer ${apiKey}`,
     },
     body: bodyText,
