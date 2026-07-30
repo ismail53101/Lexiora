@@ -5,6 +5,7 @@
 /// their own constants here without touching existing routes.
 abstract final class AppRoutes {
   // Core / Phase 1
+  static const String splash = '/splash';
   static const String home = '/';
   static const String library = '/library';
   static const String settings = '/settings';
