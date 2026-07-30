@@ -21,6 +21,13 @@
          Play "sensitive" permission and requires a declaration at submission. -->
     <uses-permission android:name="android.permission.MANAGE_EXTERNAL_STORAGE" />
 
+    <!-- Lets the AI Assistant's "attach a photo" option take a picture directly
+         (image_picker's ImageSource.camera), in addition to picking an existing
+         image from the gallery (which needs no extra permission on modern
+         Android — the system Photo Picker handles that itself). -->
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-feature android:name="android.hardware.camera" android:required="false" />
+
     <application
         android:label="Sapiora"
         android:name="${applicationName}"

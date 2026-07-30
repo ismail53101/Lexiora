@@ -1,7 +1,9 @@
 import 'dart:convert';
+import 'dart:io';
 
 import 'package:lexiora/modules/ai_assistant/config/ai_config.dart';
 import 'package:lexiora/modules/ai_assistant/data/services/ai_api_client.dart';
+import 'package:lexiora/modules/ai_assistant/domain/entities/ai_attachment.dart';
 import 'package:lexiora/modules/ai_assistant/domain/entities/ai_chat.dart';
 import 'package:lexiora/modules/ai_assistant/domain/entities/ai_failure.dart';
 import 'package:lexiora/modules/ai_assistant/domain/entities/ai_message.dart';
@@ -34,11 +36,7 @@ class OpenAiCompatibleChatService implements AiChatService {
     String? model,
     AiCancelToken? cancel,
   }) async* {
-    final List<Map<String, String>> wire = messages
-        .where((AiMessage m) => m.content.trim().isNotEmpty)
-        .map((AiMessage m) =>
-            <String, String>{'role': m.role.wire, 'content': m.content})
-        .toList();
+    final List<Map<String, dynamic>> wire = await _buildWireMessages(messages);
     final String useModel = model ?? _config.model;
     final StringBuffer acc = StringBuffer();
 
@@ -93,6 +91,69 @@ class OpenAiCompatibleChatService implements AiChatService {
           partialText: acc.toString(),
         );
       }
+    }
+  }
+
+  // ── Wire message construction ───────────────────────────────────────────────
+
+  /// Converts stored [AiMessage]s into the OpenAI-compatible `messages` array,
+  /// expanding any image attachment (see [AiAttachment]) into the standard
+  /// vision content-parts shape:
+  /// `[{"type":"text",...},{"type":"image_url","image_url":{"url":"data:..."}}]`.
+  /// A model/provider that doesn't support vision simply won't understand the
+  /// extra part — this never breaks plain-text messages, which stay exactly
+  /// the simple `content: "..."` shape they always were.
+  Future<List<Map<String, dynamic>>> _buildWireMessages(
+    List<AiMessage> messages,
+  ) async {
+    final List<Map<String, dynamic>> wire = <Map<String, dynamic>>[];
+    for (final AiMessage m in messages) {
+      final AiAttachment att = AiAttachment.parse(m.content);
+      final String text = att.text.trim();
+
+      if (!att.hasImage) {
+        if (text.isEmpty) continue;
+        wire.add(<String, dynamic>{'role': m.role.wire, 'content': text});
+        continue;
+      }
+
+      final String? dataUrl = await _readImageAsDataUrl(att.imagePath!);
+      if (dataUrl == null) {
+        // Image file missing/unreadable (e.g. deleted from storage) — degrade
+        // to text-only rather than dropping or failing the whole request.
+        if (text.isEmpty) continue;
+        wire.add(<String, dynamic>{'role': m.role.wire, 'content': text});
+        continue;
+      }
+
+      wire.add(<String, dynamic>{
+        'role': m.role.wire,
+        'content': <Map<String, dynamic>>[
+          <String, dynamic>{
+            'type': 'text',
+            'text': text.isEmpty ? 'Describe this image.' : text,
+          },
+          <String, dynamic>{
+            'type': 'image_url',
+            'image_url': <String, String>{'url': dataUrl},
+          },
+        ],
+      });
+    }
+    return wire;
+  }
+
+  Future<String?> _readImageAsDataUrl(String path) async {
+    try {
+      final File file = File(path);
+      if (!await file.exists()) return null;
+      final List<int> bytes = await file.readAsBytes();
+      final String mime = path.toLowerCase().endsWith('.png')
+          ? 'image/png'
+          : 'image/jpeg';
+      return 'data:$mime;base64,${base64Encode(bytes)}';
+    } on Object {
+      return null;
     }
   }
 
