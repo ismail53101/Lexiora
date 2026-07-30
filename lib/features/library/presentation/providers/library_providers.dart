@@ -75,6 +75,16 @@ final Provider<ImportPdfs> importPdfsProvider = Provider<ImportPdfs>(
   ),
 );
 
+/// Imports PDFs directly into a chosen category — used by the Admin Panel.
+final Provider<AdminImportPdfs> adminImportPdfsProvider =
+    Provider<AdminImportPdfs>(
+  (Ref ref) => AdminImportPdfs(
+    ref.watch(libraryRepositoryProvider),
+    sl<PdfImportService>(),
+    sl<PdfCoverService>(),
+  ),
+);
+
 final Provider<PermissionService> permissionServiceProvider =
     Provider<PermissionService>((Ref ref) => sl<PermissionService>());
 

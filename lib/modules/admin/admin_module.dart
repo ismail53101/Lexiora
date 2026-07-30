@@ -1,11 +1,14 @@
+import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
+import 'package:go_router/go_router.dart';
+import 'package:lexiora/app/router/app_routes.dart';
 import 'package:lexiora/core/module/feature_module.dart';
+import 'package:lexiora/modules/admin/presentation/pages/admin_panel_page.dart';
 
-/// PLACEHOLDER MODULE — Phase 1 scaffold only; no behavior is implemented.
-///
 /// The Admin Panel is an internal/back-office module, so it contributes no
-/// Home tile. It still plugs into the same [FeatureModule] contract and will
-/// gain DI + routes in a future phase. See docs/FUTURE_INTEGRATION_GUIDE.md.
+/// Home tile — it's reached from Settings instead. PDFs added through it are
+/// filed under the "Admin" library category (reusing the existing document
+/// pipeline); links and notes are stored via [AdminContentService].
 class AdminModule extends FeatureModule {
   @override
   String get id => 'admin';
@@ -15,4 +18,12 @@ class AdminModule extends FeatureModule {
 
   @override
   void registerDependencies(GetIt getIt) {}
+
+  @override
+  List<RouteBase> routes(GetIt getIt) => <RouteBase>[
+        GoRoute(
+          path: AppRoutes.admin,
+          builder: (_, _) => const AdminPanelPage(),
+        ),
+      ];
 }

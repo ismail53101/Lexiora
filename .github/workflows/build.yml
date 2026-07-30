@@ -48,6 +48,26 @@ jobs:
         # regenerate it to match the pinned Gradle version before building.
         run: cd android && gradle wrapper --gradle-version 9.1.0
 
+      - name: Set up release signing
+        # Only runs when the keystore secret exists — see android/KEYSTORE.md.
+        # Until then, the build falls back to debug signing automatically
+        # (see android/app/build.gradle.kts), so this step being skipped
+        # never breaks the build.
+        if: ${{ secrets.ANDROID_KEYSTORE_BASE64 != '' }}
+        env:
+          ANDROID_KEYSTORE_BASE64: ${{ secrets.ANDROID_KEYSTORE_BASE64 }}
+          ANDROID_KEYSTORE_PASSWORD: ${{ secrets.ANDROID_KEYSTORE_PASSWORD }}
+          ANDROID_KEY_PASSWORD: ${{ secrets.ANDROID_KEY_PASSWORD }}
+          ANDROID_KEY_ALIAS: ${{ secrets.ANDROID_KEY_ALIAS }}
+        run: |
+          echo "$ANDROID_KEYSTORE_BASE64" | base64 -d > android/app/upload-keystore.jks
+          cat > android/key.properties <<EOF
+          storePassword=$ANDROID_KEYSTORE_PASSWORD
+          keyPassword=$ANDROID_KEY_PASSWORD
+          keyAlias=$ANDROID_KEY_ALIAS
+          storeFile=upload-keystore.jks
+          EOF
+
       - name: Analyze
         run: flutter analyze
 
@@ -81,6 +101,21 @@ jobs:
           fi
           flutter build apk --release $DEFINES
 
+      - name: Build release App Bundle (.aab, for Play Store)
+        env:
+          SAPIORA_AI_API_KEY: ${{ secrets.SAPIORA_AI_API_KEY }}
+          SAPIORA_AI_BASE_URL: ${{ secrets.SAPIORA_AI_BASE_URL }}
+          SAPIORA_AI_PROVIDER: ${{ secrets.SAPIORA_AI_PROVIDER }}
+        run: |
+          DEFINES="--dart-define=SAPIORA_AI_API_KEY=$SAPIORA_AI_API_KEY"
+          if [ -n "$SAPIORA_AI_BASE_URL" ]; then
+            DEFINES="$DEFINES --dart-define=SAPIORA_AI_BASE_URL=$SAPIORA_AI_BASE_URL"
+          fi
+          if [ -n "$SAPIORA_AI_PROVIDER" ]; then
+            DEFINES="$DEFINES --dart-define=SAPIORA_AI_PROVIDER=$SAPIORA_AI_PROVIDER"
+          fi
+          flutter build appbundle --release $DEFINES
+
       - name: Resolve app version
         id: ver
         run: echo "v=$(grep '^version:' pubspec.yaml | sed 's/version:[[:space:]]*//; s/+.*//')" >> "$GITHUB_OUTPUT"
@@ -92,6 +127,13 @@ jobs:
           path: build/app/outputs/flutter-apk/app-release.apk
           if-no-files-found: error
 
+      - name: Upload App Bundle artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: sapiora-release-aab
+          path: build/app/outputs/bundle/release/app-release.aab
+          if-no-files-found: error
+
       - name: Publish APK to GitHub Release
         if: github.ref == 'refs/heads/main'
         uses: softprops/action-gh-release@v2
@@ -99,6 +141,8 @@ jobs:
           tag_name: v${{ steps.ver.outputs.v }}
           name: Lexiora v${{ steps.ver.outputs.v }}
           body: Automated Phase 1 release build of Lexiora.
-          files: build/app/outputs/flutter-apk/app-release.apk
+          files: |
+            build/app/outputs/flutter-apk/app-release.apk
+            build/app/outputs/bundle/release/app-release.aab
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

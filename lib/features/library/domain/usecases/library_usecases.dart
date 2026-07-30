@@ -170,6 +170,73 @@ class ImportPdfs implements UseCase<ImportOutcome, NoParams> {
   }
 }
 
+/// Same import flow as [ImportPdfs], but assigns every newly-imported
+/// document to [categoryId] — used by the Admin Panel to build a curated
+/// PDF collection (stored as an ordinary library category, so it reuses the
+/// existing, already-working document storage/rendering/reader pipeline
+/// rather than needing any separate content system).
+class AdminImportPdfs {
+  const AdminImportPdfs(this._repo, this._import, this._cover);
+
+  final LibraryRepository _repo;
+  final PdfImportService _import;
+  final PdfCoverService _cover;
+
+  ResultFuture<ImportOutcome> call(String categoryId) => guard(() async {
+        final List<DeviceFile> picked = await _import.pickAndImport();
+        if (picked.isEmpty) {
+          return const ImportOutcome(picked: 0, added: 0, duplicates: 0);
+        }
+        final Set<String> keys = await _repo.existingKeys();
+        final DateTime now = DateTime.now();
+        int added = 0;
+        int duplicates = 0;
+        for (final DeviceFile f in picked) {
+          final String title = _titleOf(f.name);
+          final String key = libraryDedupKey(title, f.size);
+          if (keys.contains(key)) {
+            duplicates++;
+            _discardCopy(f.path);
+            continue;
+          }
+          final String id = _uuid.v4();
+          final String? cover =
+              await _cover.generateCover(documentId: id, pdfPath: f.path);
+          await _repo.insert(
+            LibraryDocument(
+              id: id,
+              title: title,
+              fileName: title,
+              filePath: f.path,
+              fileSize: f.size,
+              pageCount: 0,
+              isFavorite: false,
+              importedAt: now,
+              coverPath: cover,
+              categoryId: categoryId,
+              isManaged: true,
+            ),
+          );
+          keys.add(key);
+          added++;
+        }
+        return ImportOutcome(
+          picked: picked.length,
+          added: added,
+          duplicates: duplicates,
+        );
+      });
+
+  void _discardCopy(String path) {
+    try {
+      final File file = File(path);
+      if (file.existsSync()) file.deleteSync();
+    } on Object catch (e) {
+      AppLogger.w('AdminImport: could not discard duplicate copy $path: $e');
+    }
+  }
+}
+
 /// Deletes a document and all of its associated data (annotations, notes,
 /// bookmarks, reading progress). The underlying file is left untouched — it is
 /// the user's own file, referenced in place.

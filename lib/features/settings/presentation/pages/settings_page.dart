@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:go_router/go_router.dart';
 import 'package:lexiora/app/di/injector.dart';
+import 'package:lexiora/app/router/app_routes.dart';
 import 'package:lexiora/core/constants/app_constants.dart';
 import 'package:lexiora/core/constants/translation_languages.dart';
 import 'package:lexiora/core/reader_engine/reader_models.dart';
@@ -203,6 +205,19 @@ class _SettingsBody extends ConsumerWidget {
                   const Text('Manage the storage access used to find your PDFs'),
               trailing: const Icon(Icons.open_in_new),
               onTap: () => sl<PermissionService>().openSystemSettings(),
+            ),
+          ],
+        ),
+        _SectionCard(
+          title: 'Admin',
+          children: [
+            ListTile(
+              contentPadding: EdgeInsets.zero,
+              leading: const Icon(Icons.admin_panel_settings_outlined),
+              title: const Text('Admin Panel'),
+              subtitle: const Text('Manage curated PDFs, links & notes'),
+              trailing: const Icon(Icons.chevron_right),
+              onTap: () => context.push(AppRoutes.admin),
             ),
           ],
         ),
