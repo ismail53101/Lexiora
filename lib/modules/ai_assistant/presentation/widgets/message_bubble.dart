@@ -1,11 +1,15 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:lexiora/modules/ai_assistant/domain/entities/ai_attachment.dart';
 import 'package:lexiora/modules/ai_assistant/domain/entities/ai_message.dart';
 import 'package:lexiora/modules/ai_assistant/presentation/widgets/ai_markdown.dart';
 import 'package:share_plus/share_plus.dart';
 
-/// One persisted chat message. User messages are plain selectable text;
-/// assistant messages render Markdown. Long-press for copy/share/delete/(regen).
+/// One persisted chat message. User messages are plain selectable text (plus
+/// an attached image, if any); assistant messages render Markdown.
+/// Long-press for copy/share/delete/(regen).
 class MessageBubble extends StatelessWidget {
   const MessageBubble({
     super.key,
@@ -24,6 +28,9 @@ class MessageBubble extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final ThemeData theme = Theme.of(context);
+    final AiAttachment attachment = AiAttachment.parse(message.content);
+    final String text = attachment.text;
+
     final Color bg = _isUser
         ? theme.colorScheme.primary
         : (_isError
@@ -38,12 +45,13 @@ class MessageBubble extends StatelessWidget {
     return Align(
       alignment: _isUser ? Alignment.centerRight : Alignment.centerLeft,
       child: GestureDetector(
-        onLongPress: () => _showActions(context),
+        onLongPress: () => _showActions(context, text),
         child: Container(
           constraints: BoxConstraints(
               maxWidth: MediaQuery.of(context).size.width * 0.86),
           margin: const EdgeInsets.symmetric(horizontal: 12, vertical: 4),
-          padding: const EdgeInsets.fromLTRB(14, 10, 14, 8),
+          padding: EdgeInsets.fromLTRB(
+              attachment.hasImage ? 6 : 14, 6, attachment.hasImage ? 6 : 14, 8),
           decoration: BoxDecoration(
             color: bg,
             borderRadius: BorderRadius.only(
@@ -52,54 +60,86 @@ class MessageBubble extends StatelessWidget {
               bottomLeft: Radius.circular(_isUser ? 16 : 4),
               bottomRight: Radius.circular(_isUser ? 4 : 16),
             ),
+            boxShadow: <BoxShadow>[
+              BoxShadow(
+                color: theme.colorScheme.shadow.withValues(alpha: 0.05),
+                blurRadius: 6,
+                offset: const Offset(0, 2),
+              ),
+            ],
           ),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
-              if (_isError && message.content.trim().isEmpty)
-                Row(
+              if (attachment.hasImage) ...<Widget>[
+                _AttachedImage(path: attachment.imagePath!),
+                if (text.isNotEmpty || (_isError && text.isEmpty))
+                  const SizedBox(height: 8),
+              ],
+              Padding(
+                padding: EdgeInsets.symmetric(
+                    horizontal: attachment.hasImage ? 8 : 0),
+                child: _buildBody(context, text, fg),
+              ),
+              const SizedBox(height: 4),
+              Padding(
+                padding: EdgeInsets.symmetric(
+                    horizontal: attachment.hasImage ? 8 : 0),
+                child: Row(
                   mainAxisSize: MainAxisSize.min,
                   children: <Widget>[
-                    Icon(Icons.error_outline, size: 18, color: fg),
-                    const SizedBox(width: 8),
-                    Flexible(
-                        child: Text(message.error ?? 'Something went wrong.',
-                            style: TextStyle(color: fg))),
+                    Text(
+                      _time(message.createdAt),
+                      style: theme.textTheme.labelSmall?.copyWith(
+                          color: fg.withValues(alpha: 0.6), fontSize: 10),
+                    ),
+                    if (!_isUser) ...<Widget>[
+                      const SizedBox(width: 8),
+                      _iconBtn(context, Icons.copy, 'Copy',
+                          () => _copy(context, text)),
+                      if (onRegenerate != null)
+                        _iconBtn(context, Icons.refresh, 'Regenerate',
+                            onRegenerate!),
+                    ],
                   ],
-                )
-              else if (_isUser)
-                SelectableText(message.content, style: TextStyle(color: fg))
-              else
-                AiMarkdown(data: message.content, color: fg),
-              if (_isError && message.content.trim().isNotEmpty) ...<Widget>[
-                const SizedBox(height: 6),
-                Text(message.error ?? 'Stopped',
-                    style: theme.textTheme.labelSmall?.copyWith(color: fg)),
-              ],
-              const SizedBox(height: 4),
-              Row(
-                mainAxisSize: MainAxisSize.min,
-                children: <Widget>[
-                  Text(
-                    _time(message.createdAt),
-                    style: theme.textTheme.labelSmall?.copyWith(
-                        color: fg.withValues(alpha: 0.6), fontSize: 10),
-                  ),
-                  if (!_isUser) ...<Widget>[
-                    const SizedBox(width: 8),
-                    _iconBtn(context, Icons.copy, 'Copy',
-                        () => _copy(context, message.content)),
-                    if (onRegenerate != null)
-                      _iconBtn(context, Icons.refresh, 'Regenerate',
-                          onRegenerate!),
-                  ],
-                ],
+                ),
               ),
             ],
           ),
         ),
       ),
     );
+  }
+
+  Widget _buildBody(BuildContext context, String text, Color fg) {
+    if (_isError && text.trim().isEmpty) {
+      return Row(
+        mainAxisSize: MainAxisSize.min,
+        children: <Widget>[
+          Icon(Icons.error_outline, size: 18, color: fg),
+          const SizedBox(width: 8),
+          Flexible(
+              child: Text(message.error ?? 'Something went wrong.',
+                  style: TextStyle(color: fg))),
+        ],
+      );
+    }
+    final Widget body = _isUser
+        ? SelectableText(text, style: TextStyle(color: fg))
+        : AiMarkdown(data: text, color: fg);
+    if (_isError && text.trim().isNotEmpty) {
+      final ThemeData theme = Theme.of(context);
+      return Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: <Widget>[
+          body,
+          const SizedBox(height: 6),
+          Text(message.error ?? 'Stopped',
+              style: theme.textTheme.labelSmall?.copyWith(color: fg)),
+        ],
+      );
+    }
+    return body;
   }
 
   Widget _iconBtn(
@@ -115,7 +155,7 @@ class MessageBubble extends StatelessWidget {
     );
   }
 
-  void _showActions(BuildContext context) {
+  void _showActions(BuildContext context, String text) {
     showModalBottomSheet<void>(
       context: context,
       showDragHandle: true,
@@ -128,7 +168,7 @@ class MessageBubble extends StatelessWidget {
               title: const Text('Copy'),
               onTap: () {
                 Navigator.of(context).pop();
-                _copy(context, message.content);
+                _copy(context, text);
               },
             ),
             ListTile(
@@ -136,7 +176,7 @@ class MessageBubble extends StatelessWidget {
               title: const Text('Share'),
               onTap: () {
                 Navigator.of(context).pop();
-                _share(message.content);
+                _share(text);
               },
             ),
             if (onRegenerate != null)
@@ -177,5 +217,54 @@ class MessageBubble extends StatelessWidget {
   static String _time(DateTime dt) {
     String two(int n) => n.toString().padLeft(2, '0');
     return '${two(dt.hour)}:${two(dt.minute)}';
+  }
+}
+
+/// The thumbnail for an image attached to a user message — tap to view it
+/// full-screen.
+class _AttachedImage extends StatelessWidget {
+  const _AttachedImage({required this.path});
+
+  final String path;
+
+  @override
+  Widget build(BuildContext context) {
+    final ThemeData theme = Theme.of(context);
+    return GestureDetector(
+      onTap: () => _openFullscreen(context),
+      child: ClipRRect(
+        borderRadius: BorderRadius.circular(12),
+        child: Image.file(
+          File(path),
+          fit: BoxFit.cover,
+          width: double.infinity,
+          height: 180,
+          errorBuilder: (_, _, _) => Container(
+            height: 120,
+            color: theme.colorScheme.surfaceContainerHighest,
+            alignment: Alignment.center,
+            child: const Icon(Icons.broken_image_outlined),
+          ),
+        ),
+      ),
+    );
+  }
+
+  void _openFullscreen(BuildContext context) {
+    Navigator.of(context).push(
+      PageRouteBuilder<void>(
+        opaque: false,
+        barrierColor: Colors.black87,
+        pageBuilder: (_, _, _) => Scaffold(
+          backgroundColor: Colors.transparent,
+          appBar: AppBar(backgroundColor: Colors.transparent, elevation: 0),
+          body: Center(
+            child: InteractiveViewer(
+              child: Image.file(File(path)),
+            ),
+          ),
+        ),
+      ),
+    );
   }
 }
