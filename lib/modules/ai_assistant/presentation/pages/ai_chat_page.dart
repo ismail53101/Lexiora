@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:lexiora/core/widgets/empty_state.dart';
 import 'package:lexiora/modules/ai_assistant/domain/entities/ai_conversation.dart';
-import 'package:lexiora/modules/ai_assistant/domain/entities/ai_failure.dart';
 import 'package:lexiora/modules/ai_assistant/domain/entities/ai_message.dart';
 import 'package:lexiora/modules/ai_assistant/presentation/providers/ai_providers.dart';
 import 'package:lexiora/modules/ai_assistant/presentation/widgets/ai_markdown.dart';
@@ -30,26 +29,8 @@ class AiChatPage extends ConsumerWidget {
           orElse: () => 'AI Assistant',
         );
 
-    // Surface transient errors (e.g. not configured, network) as a SnackBar.
-    ref.listen<AiFailure?>(
-        aiChatControllerProvider.select((AiChatState s) => s.error),
-        (AiFailure? prev, AiFailure? next) {
-      if (next == null) return;
-      final ScaffoldMessengerState messenger = ScaffoldMessenger.of(context);
-      messenger.hideCurrentSnackBar();
-      messenger.showSnackBar(SnackBar(
-        content: Text(next.message),
-        action: next.kind == AiFailureKind.notConfigured
-            ? null
-            : SnackBarAction(
-                label: 'Retry',
-                onPressed: () =>
-                    ref.read(aiChatControllerProvider.notifier).regenerate()),
-      ));
-      ref.read(aiChatControllerProvider.notifier).clearError();
-    });
-
     return Scaffold(
+      resizeToAvoidBottomInset: true,
       appBar: AppBar(
         title: Text(title, overflow: TextOverflow.ellipsis),
         actions: <Widget>[
@@ -62,12 +43,18 @@ class AiChatPage extends ConsumerWidget {
         ],
       ),
       drawer: const ConversationDrawer(),
-      body: !configured
-          ? _notConfigured(context)
-          : (currentId == null
-              ? const _Welcome()
-              : _MessageList(conversationId: currentId)),
-      bottomNavigationBar: ChatComposer(enabled: configured),
+      body: Column(
+        children: <Widget>[
+          Expanded(
+            child: !configured
+                ? _notConfigured(context)
+                : (currentId == null
+                    ? const _Welcome()
+                    : _MessageList(conversationId: currentId)),
+          ),
+          ChatComposer(enabled: configured),
+        ],
+      ),
     );
   }
 
