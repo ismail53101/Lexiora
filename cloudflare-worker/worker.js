@@ -9,8 +9,8 @@
  * Endpoint:  POST /v1/chat/completions   (OpenAI-compatible body)
  *
  * Provider selection (checked in this order — first one present wins):
- *   1. HTTP header  X-AI-Provider: forge | hcnsec | auto
- *   2. JSON body    { "provider": "forge" | "hcnsec" | "auto" }
+ *   1. HTTP header  X-AI-Provider: forge | hcnsec | tokenrouter | auto
+ *   2. JSON body    { "provider": "forge" | "hcnsec" | "tokenrouter" | "auto" }
  *   3. env.DEFAULT_PROVIDER (falls back to "hcnsec" if unset)
  *
  * "auto" (the app's default) tries the default provider first and — only if
@@ -27,13 +27,23 @@
  * 3. Nothing else changes — not the Flutter app, not this routing logic.
  */
 
-/** @type {Record<string, { baseUrlEnv: string, apiKeyEnv: string, defaultBaseUrl?: string }>} */
+/** @type {Record<string, { baseUrlEnv: string, apiKeyEnv: string, defaultBaseUrl?: string, modelEnv?: string, defaultModel?: string }>} */
 const PROVIDERS = {
   forge: { baseUrlEnv: "FORGE_BASE_URL", apiKeyEnv: "FORGE_API_KEY" },
   hcnsec: {
     baseUrlEnv: "HCNSEC_BASE_URL",
     apiKeyEnv: "HCNSEC_API_KEY",
     defaultBaseUrl: "https://api.hcnsec.cn",
+  },
+  tokenrouter: {
+    baseUrlEnv: "TOKENROUTER_BASE_URL",
+    apiKeyEnv: "TOKENROUTER_API_KEY",
+    defaultBaseUrl: "https://api.tokenrouter.com",
+    // The app sends a generic "auto"/"model" value it doesn't control the
+    // meaning of — TokenRouter needs its own real model id, so it's
+    // substituted in whenever this provider is used (see providerModel()).
+    modelEnv: "TOKENROUTER_MODEL",
+    defaultModel: "moonshotai/kimi-k3-free",
   },
 };
 
@@ -201,6 +211,14 @@ function providerBaseUrl(id, env) {
   return env[cfg.baseUrlEnv] || cfg.defaultBaseUrl;
 }
 
+/** The real model id to send this provider, if it needs a specific one
+ * rather than whatever generic value the app sent (e.g. "auto"). */
+function providerModel(id, env) {
+  const cfg = PROVIDERS[id];
+  if (!cfg.modelEnv && !cfg.defaultModel) return null;
+  return (cfg.modelEnv && env[cfg.modelEnv]) || cfg.defaultModel || null;
+}
+
 /** Safe-to-return diagnostics — never includes the actual key value. */
 function debugInfo(providerId, env) {
   const apiKey = providerApiKey(providerId, env) || "";
@@ -211,6 +229,7 @@ function debugInfo(providerId, env) {
     apiKeyLength: apiKey.length,
     apiKeyPrefix: apiKey ? apiKey.slice(0, 5) : null,
     apiKeyHasWhitespace: /\s/.test(apiKey),
+    model: providerModel(providerId, env),
   };
 }
 
@@ -221,6 +240,7 @@ async function callProvider(id, bodyText, env) {
   }
   const apiKey = providerApiKey(id, env);
   const target = `${baseUrl.replace(/\/+$/, "")}${CHAT_COMPLETIONS_PATH}`;
+  const outgoingBody = rewriteModel(bodyText, providerModel(id, env));
 
   return fetch(target, {
     method: "POST",
@@ -234,8 +254,23 @@ async function callProvider(id, bodyText, env) {
       "User-Agent": "Sapiora-AI-Gateway/1.0 (+Cloudflare-Worker)",
       Authorization: `Bearer ${apiKey}`,
     },
-    body: bodyText,
+    body: outgoingBody,
   });
+}
+
+/** Returns [bodyText] unchanged if [model] is null, otherwise returns it
+ * with the JSON "model" field replaced. Falls back to the original text on
+ * any parse error — a provider getting the app's generic model value is far
+ * better than the whole request failing to build. */
+function rewriteModel(bodyText, model) {
+  if (!model) return bodyText;
+  try {
+    const parsed = JSON.parse(bodyText);
+    parsed.model = model;
+    return JSON.stringify(parsed);
+  } catch {
+    return bodyText;
+  }
 }
 
 function jsonError(status, code, message, extra) {
