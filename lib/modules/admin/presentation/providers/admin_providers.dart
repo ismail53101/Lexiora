@@ -5,6 +5,7 @@ import 'package:lexiora/features/library/domain/usecases/library_usecases.dart';
 import 'package:lexiora/features/library/domain/repositories/library_repository.dart';
 import 'package:lexiora/features/library/presentation/providers/library_providers.dart';
 import 'package:lexiora/modules/admin/data/services/admin_content_service.dart';
+import 'package:lexiora/modules/admin/data/services/admin_export_service.dart';
 import 'package:lexiora/modules/admin/domain/entities/admin_link.dart';
 import 'package:lexiora/modules/admin/domain/entities/admin_note.dart';
 
@@ -37,3 +38,11 @@ final FutureProvider<List<AdminLink>> adminLinksProvider =
 final FutureProvider<List<AdminNote>> adminNotesProvider =
     FutureProvider<List<AdminNote>>(
         (Ref ref) => ref.watch(adminContentServiceProvider).loadNotes());
+
+final Provider<AdminExportService> adminExportServiceProvider =
+    Provider<AdminExportService>(
+  (Ref ref) => AdminExportService(
+    ref.watch(adminContentServiceProvider),
+    ref.watch(libraryRepositoryProvider),
+  ),
+);

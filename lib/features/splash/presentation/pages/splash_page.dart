@@ -20,7 +20,7 @@ class SplashPage extends StatefulWidget {
 }
 
 class _SplashPageState extends State<SplashPage> {
-  static const Duration _holdDuration = Duration(milliseconds: 1400);
+  static const Duration _holdDuration = Duration(milliseconds: 2200);
 
   @override
   void initState() {

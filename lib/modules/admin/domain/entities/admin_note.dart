@@ -7,18 +7,24 @@ class AdminNote extends Equatable {
     required this.id,
     required this.title,
     required this.content,
+    this.subject,
     required this.createdAt,
   });
 
   final String id;
   final String title;
   final String content;
+
+  /// Free-text grouping (e.g. "Pakistan Affairs", "English") — lets the
+  /// unified Admin Panel list be organized/filtered by topic.
+  final String? subject;
   final DateTime createdAt;
 
   factory AdminNote.fromJson(Map<String, dynamic> json) => AdminNote(
         id: json['id'] as String,
         title: json['title'] as String,
         content: json['content'] as String,
+        subject: json['subject'] as String?,
         createdAt: DateTime.parse(json['createdAt'] as String),
       );
 
@@ -26,9 +32,11 @@ class AdminNote extends Equatable {
         'id': id,
         'title': title,
         'content': content,
+        'subject': subject,
         'createdAt': createdAt.toIso8601String(),
       };
 
   @override
-  List<Object?> get props => <Object?>[id, title, content, createdAt];
+  List<Object?> get props =>
+      <Object?>[id, title, content, subject, createdAt];
 }

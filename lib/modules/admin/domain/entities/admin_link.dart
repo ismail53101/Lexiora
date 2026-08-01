@@ -8,6 +8,7 @@ class AdminLink extends Equatable {
     required this.title,
     required this.url,
     this.note,
+    this.subject,
     required this.createdAt,
   });
 
@@ -15,6 +16,10 @@ class AdminLink extends Equatable {
   final String title;
   final String url;
   final String? note;
+
+  /// Free-text grouping (e.g. "Pakistan Affairs", "English") — lets the
+  /// unified Admin Panel list be organized/filtered by topic.
+  final String? subject;
   final DateTime createdAt;
 
   factory AdminLink.fromJson(Map<String, dynamic> json) => AdminLink(
@@ -22,6 +27,7 @@ class AdminLink extends Equatable {
         title: json['title'] as String,
         url: json['url'] as String,
         note: json['note'] as String?,
+        subject: json['subject'] as String?,
         createdAt: DateTime.parse(json['createdAt'] as String),
       );
 
@@ -30,9 +36,11 @@ class AdminLink extends Equatable {
         'title': title,
         'url': url,
         'note': note,
+        'subject': subject,
         'createdAt': createdAt.toIso8601String(),
       };
 
   @override
-  List<Object?> get props => <Object?>[id, title, url, note, createdAt];
+  List<Object?> get props =>
+      <Object?>[id, title, url, note, subject, createdAt];
 }
