@@ -64,7 +64,11 @@ class AdminPanelPage extends ConsumerWidget {
         ],
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: () => _showAddSheet(context, ref, categoryId.valueOrNull),
+        onPressed: () => _showAddSheet(
+  context,
+  ref,
+  categoryId.asData?.value,
+),
         child: const Icon(Icons.add),
       ),
       body: categoryId.when(

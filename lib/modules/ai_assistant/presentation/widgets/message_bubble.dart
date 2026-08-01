@@ -134,16 +134,20 @@ class MessageBubble extends StatelessWidget {
           anchors: state.contextMenuAnchors,
           buttonItems: <ContextMenuButtonItem>[
             ...state.contextMenuButtonItems,
-            ContextMenuButtonItem(
-              label: 'Translate',
-              onPressed: () {
-                final String? selected = state.selectedContent?.plainText;
-                state.hideToolbar();
-                if (selected != null && selected.trim().isNotEmpty) {
-                  showTranslationPopup(context, selected.trim());
-                }
-              },
-            ),
+           ContextMenuButtonItem(
+  label: 'Translate',
+  onPressed: () {
+    state.hideToolbar();
+
+    ScaffoldMessenger.of(context).showSnackBar(
+      const SnackBar(
+        content: Text(
+          'Translate feature will be re-enabled in the next update.',
+        ),
+      ),
+    );
+  },
+),
           ],
         );
       },
