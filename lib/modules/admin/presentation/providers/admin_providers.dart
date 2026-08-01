@@ -25,8 +25,11 @@ final FutureProvider<String> adminCategoryIdProvider =
   if (existing != null) return existing.id;
 
   await ref.read(createCategoryProvider).call(
-        (name: 'Admin', colorValue: 0xFF5B4BE6),
-      );
+  const CreateCategoryParams(
+    'Admin',
+    0xFF5B4BE6,
+  ),
+);
   final List<Category> refreshed = await repo.watchCategories().first;
   return refreshed.firstWhere((Category c) => c.name == 'Admin').id;
 });

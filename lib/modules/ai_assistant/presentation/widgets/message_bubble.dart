@@ -5,7 +5,6 @@ import 'package:flutter/services.dart';
 import 'package:lexiora/modules/ai_assistant/domain/entities/ai_attachment.dart';
 import 'package:lexiora/modules/ai_assistant/domain/entities/ai_message.dart';
 import 'package:lexiora/modules/ai_assistant/presentation/widgets/ai_markdown.dart';
-import 'package:lexiora/modules/translation/presentation/widgets/translation_popup.dart';
 import 'package:share_plus/share_plus.dart';
 
 /// One persisted chat message. User messages are plain selectable text (plus
@@ -134,16 +133,20 @@ class MessageBubble extends StatelessWidget {
           anchors: state.contextMenuAnchors,
           buttonItems: <ContextMenuButtonItem>[
             ...state.contextMenuButtonItems,
-            ContextMenuButtonItem(
-              label: 'Translate',
-              onPressed: () {
-                final String? selected = state.selectedContent?.plainText;
-                state.hideToolbar();
-                if (selected != null && selected.trim().isNotEmpty) {
-                  showTranslationPopup(context, selected.trim());
-                }
-              },
-            ),
+           ContextMenuButtonItem(
+  label: 'Translate',
+  onPressed: () {
+    state.hideToolbar();
+
+    ScaffoldMessenger.of(context).showSnackBar(
+      const SnackBar(
+        content: Text(
+          'Translate feature will be re-enabled in the next update.',
+        ),
+      ),
+    );
+  },
+),
           ],
         );
       },
