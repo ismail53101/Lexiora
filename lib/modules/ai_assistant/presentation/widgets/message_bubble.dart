@@ -5,7 +5,6 @@ import 'package:flutter/services.dart';
 import 'package:lexiora/modules/ai_assistant/domain/entities/ai_attachment.dart';
 import 'package:lexiora/modules/ai_assistant/domain/entities/ai_message.dart';
 import 'package:lexiora/modules/ai_assistant/presentation/widgets/ai_markdown.dart';
-import 'package:lexiora/modules/translation/presentation/widgets/translation_popup.dart';
 import 'package:share_plus/share_plus.dart';
 
 /// One persisted chat message. User messages are plain selectable text (plus
