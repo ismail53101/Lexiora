@@ -49,17 +49,23 @@ jobs:
         run: cd android && gradle wrapper --gradle-version 9.1.0
 
       - name: Set up release signing
-        # Only runs when the keystore secret exists — see android/KEYSTORE.md.
-        # Until then, the build falls back to debug signing automatically
-        # (see android/app/build.gradle.kts), so this step being skipped
-        # never breaks the build.
-        if: ${{ secrets.ANDROID_KEYSTORE_BASE64 != '' }}
+        # Runs every time, but only actually does anything when the keystore
+        # secret exists -- see android/KEYSTORE.md. Until then, the build
+        # falls back to debug signing automatically (see
+        # android/app/build.gradle.kts), so this step doing nothing never
+        # breaks the build. The check has to live in the shell script, not a
+        # YAML `if:`, because GitHub Actions doesn't allow referencing
+        # `secrets` directly in step-level `if:` conditions.
         env:
           ANDROID_KEYSTORE_BASE64: ${{ secrets.ANDROID_KEYSTORE_BASE64 }}
           ANDROID_KEYSTORE_PASSWORD: ${{ secrets.ANDROID_KEYSTORE_PASSWORD }}
           ANDROID_KEY_PASSWORD: ${{ secrets.ANDROID_KEY_PASSWORD }}
           ANDROID_KEY_ALIAS: ${{ secrets.ANDROID_KEY_ALIAS }}
         run: |
+          if [ -z "$ANDROID_KEYSTORE_BASE64" ]; then
+            echo "No ANDROID_KEYSTORE_BASE64 secret set -- building with debug signing."
+            exit 0
+          fi
           echo "$ANDROID_KEYSTORE_BASE64" | base64 -d > android/app/upload-keystore.jks
           cat > android/key.properties <<EOF
           storePassword=$ANDROID_KEYSTORE_PASSWORD
@@ -76,21 +82,28 @@ jobs:
 
       - name: Build release APK
         # SAPIORA_AI_API_KEY / SAPIORA_AI_BASE_URL / SAPIORA_AI_PROVIDER come
-        # from repo secrets (Settings → Secrets and variables → Actions) so
+        # from repo secrets (Settings -> Secrets and variables -> Actions) so
         # the AI Assistant is configured in the built APK without any of
-        # them being committed to the repo. SAPIORA_AI_BASE_URL is optional —
+        # them being committed to the repo. SAPIORA_AI_BASE_URL is optional --
         # when unset, this step omits that define and the app falls back to
         # its compiled-in default (https://api.hcnsec.cn); set it to point
         # the app at the Cloudflare Worker gateway instead (see
         # cloudflare-worker/README.md), which holds the real upstream
-        # provider keys. SAPIORA_AI_PROVIDER is optional too — leave it
+        # provider keys. SAPIORA_AI_PROVIDER is optional too -- leave it
         # unset for "auto" (the Worker decides, with automatic fallback).
-        # If SAPIORA_AI_API_KEY isn't set, the build still succeeds — the
+        # If SAPIORA_AI_API_KEY isn't set, the build still succeeds -- the
         # app simply shows its existing "not configured" screen.
+        #
+        # SAPIORA_ENABLE_ADMIN: while it's set to "true", every build this
+        # workflow produces (APK and AAB) includes the Admin Panel -- meant
+        # for personal practice/curation only. Delete this secret (or set it
+        # to anything other than "true") before the Play Store release build,
+        # so the public build compiles without the Admin Panel's code at all.
         env:
           SAPIORA_AI_API_KEY: ${{ secrets.SAPIORA_AI_API_KEY }}
           SAPIORA_AI_BASE_URL: ${{ secrets.SAPIORA_AI_BASE_URL }}
           SAPIORA_AI_PROVIDER: ${{ secrets.SAPIORA_AI_PROVIDER }}
+          SAPIORA_ENABLE_ADMIN: ${{ secrets.SAPIORA_ENABLE_ADMIN }}
         run: |
           DEFINES="--dart-define=SAPIORA_AI_API_KEY=$SAPIORA_AI_API_KEY"
           if [ -n "$SAPIORA_AI_BASE_URL" ]; then
@@ -98,6 +111,9 @@ jobs:
           fi
           if [ -n "$SAPIORA_AI_PROVIDER" ]; then
             DEFINES="$DEFINES --dart-define=SAPIORA_AI_PROVIDER=$SAPIORA_AI_PROVIDER"
+          fi
+          if [ "$SAPIORA_ENABLE_ADMIN" = "true" ]; then
+            DEFINES="$DEFINES --dart-define=SAPIORA_ENABLE_ADMIN=true"
           fi
           flutter build apk --release $DEFINES
 
@@ -106,6 +122,7 @@ jobs:
           SAPIORA_AI_API_KEY: ${{ secrets.SAPIORA_AI_API_KEY }}
           SAPIORA_AI_BASE_URL: ${{ secrets.SAPIORA_AI_BASE_URL }}
           SAPIORA_AI_PROVIDER: ${{ secrets.SAPIORA_AI_PROVIDER }}
+          SAPIORA_ENABLE_ADMIN: ${{ secrets.SAPIORA_ENABLE_ADMIN }}
         run: |
           DEFINES="--dart-define=SAPIORA_AI_API_KEY=$SAPIORA_AI_API_KEY"
           if [ -n "$SAPIORA_AI_BASE_URL" ]; then
@@ -113,6 +130,9 @@ jobs:
           fi
           if [ -n "$SAPIORA_AI_PROVIDER" ]; then
             DEFINES="$DEFINES --dart-define=SAPIORA_AI_PROVIDER=$SAPIORA_AI_PROVIDER"
+          fi
+          if [ "$SAPIORA_ENABLE_ADMIN" = "true" ]; then
+            DEFINES="$DEFINES --dart-define=SAPIORA_ENABLE_ADMIN=true"
           fi
           flutter build appbundle --release $DEFINES
 

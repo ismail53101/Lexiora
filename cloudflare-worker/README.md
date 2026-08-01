@@ -86,7 +86,9 @@ Try forcing a specific provider with `-H "X-AI-Provider: forge"` or
 ## Adding another provider later (e.g. Gemini, Claude, Groq, OpenRouter, ...)
 
 1. In `worker.js`, add an entry to the `PROVIDERS` map with its base-URL env
-   var name and API-key env var name.
+   var name and API-key env var name. If it needs a specific model id rather
+   than whatever the app sent, also add `modelEnv`/`defaultModel` — see the
+   `tokenrouter` entry for an example (routes to `moonshotai/kimi-k3-free`).
 2. `wrangler secret put <NEWPROVIDER>_API_KEY`.
 3. Optionally set `<NEWPROVIDER>_BASE_URL` if it's not OpenAI-compatible at
    the default path.
