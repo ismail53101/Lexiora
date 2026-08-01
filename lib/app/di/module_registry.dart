@@ -1,3 +1,4 @@
+import 'package:lexiora/core/config/build_flags.dart';
 import 'package:lexiora/core/module/feature_module.dart';
 import 'package:lexiora/features/annotations/annotations_module.dart';
 import 'package:lexiora/features/bookmarks/bookmarks_module.dart';
@@ -62,7 +63,9 @@ final List<FeatureModule> appModules = <FeatureModule>[
   // Active Phase v0.10.0 feature — the AI Assistant.
   AiAssistantModule(),
 
+  // Personal-use only — see BuildFlags.enableAdmin. Excluded from the public build.
+  if (BuildFlags.enableAdmin) AdminModule(),
+
   // Future modules — placeholder scaffolds only (no behavior yet).
-  AdminModule(),
   CloudSyncModule(),
 ];

@@ -5,6 +5,7 @@ import 'package:flutter/services.dart';
 import 'package:lexiora/modules/ai_assistant/domain/entities/ai_attachment.dart';
 import 'package:lexiora/modules/ai_assistant/domain/entities/ai_message.dart';
 import 'package:lexiora/modules/ai_assistant/presentation/widgets/ai_markdown.dart';
+import 'package:lexiora/modules/translation/presentation/widgets/translation_popup.dart';
 import 'package:share_plus/share_plus.dart';
 
 /// One persisted chat message. User messages are plain selectable text (plus
@@ -127,19 +128,40 @@ class MessageBubble extends StatelessWidget {
     final Widget body = _isUser
         ? SelectableText(text, style: TextStyle(color: fg))
         : AiMarkdown(data: text, color: fg);
+    final Widget selectableBody = SelectionArea(
+      contextMenuBuilder: (BuildContext context, SelectableRegionState state) {
+        return AdaptiveTextSelectionToolbar.buttonItems(
+          anchors: state.contextMenuAnchors,
+          buttonItems: <ContextMenuButtonItem>[
+            ...state.contextMenuButtonItems,
+            ContextMenuButtonItem(
+              label: 'Translate',
+              onPressed: () {
+                final String? selected = state.selectedContent?.plainText;
+                state.hideToolbar();
+                if (selected != null && selected.trim().isNotEmpty) {
+                  showTranslationPopup(context, selected.trim());
+                }
+              },
+            ),
+          ],
+        );
+      },
+      child: body,
+    );
     if (_isError && text.trim().isNotEmpty) {
       final ThemeData theme = Theme.of(context);
       return Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
-          body,
+          selectableBody,
           const SizedBox(height: 6),
           Text(message.error ?? 'Stopped',
               style: theme.textTheme.labelSmall?.copyWith(color: fg)),
         ],
       );
     }
-    return body;
+    return selectableBody;
   }
 
   Widget _iconBtn(

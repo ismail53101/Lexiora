@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:lexiora/app/di/injector.dart';
 import 'package:lexiora/app/router/app_routes.dart';
+import 'package:lexiora/core/config/build_flags.dart';
 import 'package:lexiora/core/constants/app_constants.dart';
 import 'package:lexiora/core/constants/translation_languages.dart';
 import 'package:lexiora/core/reader_engine/reader_models.dart';
@@ -208,19 +209,20 @@ class _SettingsBody extends ConsumerWidget {
             ),
           ],
         ),
-        _SectionCard(
-          title: 'Admin',
-          children: [
-            ListTile(
-              contentPadding: EdgeInsets.zero,
-              leading: const Icon(Icons.admin_panel_settings_outlined),
-              title: const Text('Admin Panel'),
-              subtitle: const Text('Manage curated PDFs, links & notes'),
-              trailing: const Icon(Icons.chevron_right),
-              onTap: () => context.push(AppRoutes.admin),
-            ),
-          ],
-        ),
+        if (BuildFlags.enableAdmin)
+          _SectionCard(
+            title: 'Admin',
+            children: [
+              ListTile(
+                contentPadding: EdgeInsets.zero,
+                leading: const Icon(Icons.admin_panel_settings_outlined),
+                title: const Text('Admin Panel'),
+                subtitle: const Text('Manage curated PDFs, links & notes'),
+                trailing: const Icon(Icons.chevron_right),
+                onTap: () => context.push(AppRoutes.admin),
+              ),
+            ],
+          ),
         const _SectionCard(
           title: 'About',
           children: [
