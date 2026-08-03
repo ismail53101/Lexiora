@@ -8,5 +8,5 @@ abstract final class BuildFlags {
   /// private/dev APK with `--dart-define=SAPIORA_ENABLE_ADMIN=true` to
   /// include it.
   static const bool enableAdmin =
-      bool.fromEnvironment('SAPIORA_ENABLE_ADMIN', defaultValue: false);
+      bool.fromEnvironment('SAPIORA_ENABLE_ADMIN');
 }

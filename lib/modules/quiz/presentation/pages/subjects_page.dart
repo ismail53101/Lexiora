@@ -3,6 +3,7 @@ import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:lexiora/app/router/app_routes.dart';
+import 'package:lexiora/core/widgets/app_bottom_nav.dart';
 import 'package:lexiora/core/widgets/empty_state.dart';
 import 'package:lexiora/modules/quiz/domain/entities/quiz_subject.dart';
 import 'package:lexiora/modules/quiz/presentation/providers/quiz_providers.dart';
@@ -20,6 +21,7 @@ class SubjectsPage extends ConsumerWidget {
         ref.watch(quizSubjectsProvider(false));
 
     return Scaffold(
+      bottomNavigationBar: const AppBottomNav(currentIndex: 2),
       appBar: AppBar(
         title: const Text('Quiz'),
         actions: <Widget>[

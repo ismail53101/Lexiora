@@ -5,6 +5,7 @@ import 'package:lexiora/features/bookmarks/bookmarks_module.dart';
 import 'package:lexiora/features/home/home_module.dart';
 import 'package:lexiora/features/library/library_module.dart';
 import 'package:lexiora/features/notes/notes_module.dart';
+import 'package:lexiora/features/profile/profile_module.dart';
 import 'package:lexiora/features/reader/reader_module.dart';
 import 'package:lexiora/features/reading_progress/reading_progress_module.dart';
 import 'package:lexiora/features/settings/settings_module.dart';
@@ -37,6 +38,7 @@ final List<FeatureModule> appModules = <FeatureModule>[
   ReadingProgressModule(),
   AnnotationsModule(),
   NotesModule(),
+  ProfileModule(),
   BookmarksModule(),
 
   // Active Phase 2.1 feature — the offline Dictionary engine.

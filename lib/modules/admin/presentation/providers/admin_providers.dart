@@ -1,8 +1,8 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:lexiora/app/di/injector.dart';
 import 'package:lexiora/features/library/domain/entities/category.dart';
-import 'package:lexiora/features/library/domain/usecases/library_usecases.dart';
 import 'package:lexiora/features/library/domain/repositories/library_repository.dart';
+import 'package:lexiora/features/library/domain/usecases/library_usecases.dart';
 import 'package:lexiora/features/library/presentation/providers/library_providers.dart';
 import 'package:lexiora/modules/admin/data/services/admin_content_service.dart';
 import 'package:lexiora/modules/admin/data/services/admin_export_service.dart';
@@ -24,12 +24,9 @@ final FutureProvider<String> adminCategoryIdProvider =
       .firstWhere((Category? c) => c?.name == 'Admin', orElse: () => null);
   if (existing != null) return existing.id;
 
-  await ref.read(createCategoryProvider).call(
-  const CreateCategoryParams(
-    'Admin',
-    0xFF5B4BE6,
-  ),
-);
+  await ref
+      .read(createCategoryProvider)
+      .call(const CreateCategoryParams('Admin', 0xFF5B4BE6));
   final List<Category> refreshed = await repo.watchCategories().first;
   return refreshed.firstWhere((Category c) => c.name == 'Admin').id;
 });

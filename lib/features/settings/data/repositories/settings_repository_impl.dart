@@ -23,6 +23,8 @@ class SettingsRepositoryImpl implements SettingsRepository {
   static const String _kKeepAwake = 'keepScreenAwake';
   static const String _kAutoResume = 'autoResume';
   static const String _kTranslationLanguage = 'translationLanguage';
+  static const String _kDisplayName = 'displayName';
+  static const String _kDailyTopicsGoal = 'dailyTopicsGoal';
 
   @override
   Stream<AppSettings> watchSettings() =>
@@ -73,6 +75,8 @@ class SettingsRepositoryImpl implements SettingsRepository {
       keepScreenAwake: _bool(map[_kKeepAwake], false),
       autoResume: _bool(map[_kAutoResume], true),
       translationLanguage: _language(map[_kTranslationLanguage]),
+      displayName: map[_kDisplayName] ?? '',
+      dailyTopicsGoal: _int(map[_kDailyTopicsGoal], 5).clamp(1, 99),
     );
   }
 
@@ -86,6 +90,8 @@ class SettingsRepositoryImpl implements SettingsRepository {
         _kKeepAwake: s.keepScreenAwake ? '1' : '0',
         _kAutoResume: s.autoResume ? '1' : '0',
         _kTranslationLanguage: s.translationLanguage,
+        _kDisplayName: s.displayName,
+        _kDailyTopicsGoal: s.dailyTopicsGoal.toString(),
       };
 
   String _language(String? v) => (v != null && isSupportedTranslationLanguage(v))

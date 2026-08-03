@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:lexiora/core/widgets/app_bottom_nav.dart';
 import 'package:lexiora/core/widgets/empty_state.dart';
 import 'package:lexiora/modules/ai_assistant/domain/entities/ai_conversation.dart';
 import 'package:lexiora/modules/ai_assistant/domain/entities/ai_message.dart';
@@ -31,6 +32,7 @@ class AiChatPage extends ConsumerWidget {
 
     return Scaffold(
       resizeToAvoidBottomInset: true,
+      bottomNavigationBar: const AppBottomNav(currentIndex: 1),
       appBar: AppBar(
         title: Text(title, overflow: TextOverflow.ellipsis),
         actions: <Widget>[
