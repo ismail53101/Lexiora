@@ -71,8 +71,7 @@ abstract final class AppRoutes {
   // AI Assistant (Phase v0.10.0)
   static const String aiAssistant = '/ai';
   static const String notesHome = '/notes';
-  static const String profile = '/profile';
-
+ 
   // Vocabulary (Phase v0.6.0)
   static const String vocabulary = '/vocabulary';
   static const String vocabularyListName = 'vocabularyList';

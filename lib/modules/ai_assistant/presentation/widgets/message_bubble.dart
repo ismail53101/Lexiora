@@ -128,27 +128,31 @@ class MessageBubble extends StatelessWidget {
     final Widget body = _isUser
         ? SelectableText(text, style: TextStyle(color: fg))
         : AiMarkdown(data: text, color: fg);
-    final Widget selectableBody = SelectionArea(
-      contextMenuBuilder: (BuildContext context, SelectableRegionState state) {
-        return AdaptiveTextSelectionToolbar.buttonItems(
-          anchors: state.contextMenuAnchors,
-          buttonItems: <ContextMenuButtonItem>[
-            ...state.contextMenuButtonItems,
-            ContextMenuButtonItem(
-              label: 'Translate',
-              onPressed: () {
-                final String? selected = state.getSelectedContent()?.plainText;
-                state.hideToolbar();
-                if (selected != null && selected.trim().isNotEmpty) {
-                  showTranslationPopup(context, selected.trim());
-                }
-              },
-            ),
-          ],
-        );
-      },
-      child: body,
+   final Widget selectableBody = SelectionArea(
+  contextMenuBuilder: (BuildContext context, SelectableRegionState state) {
+    return AdaptiveTextSelectionToolbar.buttonItems(
+      anchors: state.contextMenuAnchors,
+      buttonItems: <ContextMenuButtonItem>[
+        ...state.contextMenuButtonItems,
+        ContextMenuButtonItem(
+          label: 'Translate',
+          onPressed: () {
+            state.hideToolbar();
+
+            ScaffoldMessenger.of(context).showSnackBar(
+              const SnackBar(
+                content: Text(
+                  'Translate is temporarily unavailable on this Flutter version.',
+                ),
+              ),
+            );
+          },
+        ),
+      ],
     );
+  },
+  child: body,
+);
     if (_isError && text.trim().isNotEmpty) {
       final ThemeData theme = Theme.of(context);
       return Column(
