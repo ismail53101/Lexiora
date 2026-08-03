@@ -7,6 +7,10 @@ abstract final class AppConstants {
   static const String appTagline = 'Read. Study. Master languages.';
   static const String appVersion = '0.3.4';
 
+  /// Shown in the Home greeting and Profile screen. Sapiora has no account
+  /// system — this is the developer's own copy of the app for now.
+  static const String userDisplayName = 'Ismail';
+
   /// Sub-directories (inside the app documents dir) used for local storage.
   static const String documentsDirName = 'documents';
   static const String coversDirName = 'covers';

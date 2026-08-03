@@ -38,11 +38,20 @@ class StudyStreak extends Equatable {
 
 /// The reporting window for the Progress Tracker / Statistics.
 enum StudyRange {
+  daily,
   weekly,
   monthly;
 
-  int get days => this == StudyRange.weekly ? 7 : 30;
-  String get label => this == StudyRange.weekly ? 'Weekly' : 'Monthly';
+  int get days => switch (this) {
+        StudyRange.daily => 1,
+        StudyRange.weekly => 7,
+        StudyRange.monthly => 30,
+      };
+  String get label => switch (this) {
+        StudyRange.daily => 'Today',
+        StudyRange.weekly => 'Weekly',
+        StudyRange.monthly => 'Monthly',
+      };
 }
 
 /// Aggregated study statistics over a rolling range.

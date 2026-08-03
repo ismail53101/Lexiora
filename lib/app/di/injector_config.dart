@@ -3,7 +3,6 @@ import 'package:lexiora/app/di/module_registry.dart';
 import 'package:lexiora/core/database/app_database.dart';
 import 'package:lexiora/core/module/feature_module.dart';
 import 'package:lexiora/core/navigation/home_destination.dart';
-import 'package:lexiora/modules/admin/data/services/admin_content_service.dart';
 import 'package:lexiora/core/reader_engine/word_action.dart';
 import 'package:lexiora/core/services/device_info_service.dart';
 import 'package:lexiora/core/services/pdf_cover_service.dart';
@@ -11,6 +10,7 @@ import 'package:lexiora/core/services/pdf_discovery_service.dart';
 import 'package:lexiora/core/services/pdf_import_service.dart';
 import 'package:lexiora/core/services/permission_service.dart';
 import 'package:lexiora/core/services/screen_wake_service.dart';
+import 'package:lexiora/modules/admin/data/services/admin_content_service.dart';
 
 /// Configures the GetIt service locator.
 ///

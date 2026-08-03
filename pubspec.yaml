@@ -12,7 +12,6 @@ environment:
 # Flutter 3.44.8 / Dart 3.12.2 so the lockfile is fully reproducible.
 dependencies:
   archive: ^4.0.9
-  cross_file: ^0.3.4+2
   cupertino_icons: ^1.0.9
   drift: ^2.34.2
   drift_flutter: ^0.3.1

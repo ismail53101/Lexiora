@@ -79,10 +79,7 @@ class AdminExportService {
       ArchiveFile('admin_export.json', manifestBytes.length, manifestBytes),
     );
 
-    final List<int>? zipBytes = ZipEncoder().encode(archive);
-    if (zipBytes == null) {
-      throw StateError('Could not build the export zip.');
-    }
+    final List<int> zipBytes = ZipEncoder().encode(archive);
 
     final Directory dir = await getApplicationSupportDirectory();
     final String stamp = DateTime.now()

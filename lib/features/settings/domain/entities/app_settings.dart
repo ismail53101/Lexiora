@@ -19,6 +19,8 @@ class AppSettings extends Equatable {
     this.keepScreenAwake = false,
     this.autoResume = true,
     this.translationLanguage = kDefaultTranslationLanguage,
+    this.displayName = '',
+    this.dailyTopicsGoal = 5,
   });
 
   final ThemeMode themeMode;
@@ -44,6 +46,13 @@ class AppSettings extends Equatable {
   /// Target language code for the reader's offline Translate feature.
   final String translationLanguage;
 
+  /// Shown on Home's greeting and the Profile page. Empty until the user
+  /// sets it (the greeting simply omits the name in that case).
+  final String displayName;
+
+  /// The denominator in Home's "Today's Goal — x / y Topics" card.
+  final int dailyTopicsGoal;
+
   AppSettings copyWith({
     ThemeMode? themeMode,
     double? fontScale,
@@ -54,6 +63,8 @@ class AppSettings extends Equatable {
     bool? keepScreenAwake,
     bool? autoResume,
     String? translationLanguage,
+    String? displayName,
+    int? dailyTopicsGoal,
   }) =>
       AppSettings(
         themeMode: themeMode ?? this.themeMode,
@@ -66,6 +77,8 @@ class AppSettings extends Equatable {
         keepScreenAwake: keepScreenAwake ?? this.keepScreenAwake,
         autoResume: autoResume ?? this.autoResume,
         translationLanguage: translationLanguage ?? this.translationLanguage,
+        displayName: displayName ?? this.displayName,
+        dailyTopicsGoal: dailyTopicsGoal ?? this.dailyTopicsGoal,
       );
 
   @override
@@ -79,5 +92,7 @@ class AppSettings extends Equatable {
         keepScreenAwake,
         autoResume,
         translationLanguage,
+        displayName,
+        dailyTopicsGoal,
       ];
 }

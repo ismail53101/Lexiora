@@ -12,9 +12,27 @@ abstract final class AppTheme {
   static ThemeData dark() => _build(Brightness.dark);
 
   static ThemeData _build(Brightness brightness) {
-    final ColorScheme scheme = ColorScheme.fromSeed(
+    final bool isDark = brightness == Brightness.dark;
+    final ColorScheme generated = ColorScheme.fromSeed(
       seedColor: AppColors.brandSeed,
       brightness: brightness,
+    );
+
+    // Layer the brief's exact premium palette onto the algorithmically
+    // generated scheme — every other tone (error, outline, elevation
+    // levels, ...) still comes from Material 3's own accessible generation,
+    // only the specific values the design calls out are pinned.
+    final ColorScheme scheme = generated.copyWith(
+      surface: isDark ? AppColors.darkBackground : AppColors.lightBackground,
+      onSurface: isDark ? AppColors.darkText : AppColors.lightText,
+      onSurfaceVariant:
+          isDark ? AppColors.darkTextSecondary : AppColors.lightTextSecondary,
+      surfaceContainerHighest: isDark ? AppColors.darkCard : AppColors.lightCard,
+      surfaceContainerHigh: isDark ? AppColors.darkCard : AppColors.lightCard,
+      surfaceContainer: isDark ? AppColors.darkCard : AppColors.lightCard,
+      primary: isDark ? AppColors.darkPrimary : AppColors.lightPrimary,
+      onPrimary: Colors.white,
+      tertiary: isDark ? AppColors.darkAccent : AppColors.lightAccent,
     );
 
     final ThemeData base = ThemeData(
@@ -39,7 +57,7 @@ abstract final class AppTheme {
       ),
       cardTheme: CardThemeData(
         elevation: 0,
-        color: scheme.surfaceContainerHighest.withValues(alpha: 0.45),
+        color: scheme.surfaceContainerHighest,
         clipBehavior: Clip.antiAlias,
         margin: EdgeInsets.zero,
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),

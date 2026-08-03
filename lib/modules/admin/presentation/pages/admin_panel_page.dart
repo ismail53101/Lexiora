@@ -64,10 +64,14 @@ class AdminPanelPage extends ConsumerWidget {
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () => _showAddSheet(
-  context,
-  ref,
-  categoryId.asData?.value,
-),
+          context,
+          ref,
+          categoryId.when(
+            data: (String v) => v,
+            loading: () => null,
+            error: (Object _, StackTrace _) => null,
+          ),
+        ),
         child: const Icon(Icons.add),
       ),
       body: categoryId.when(
@@ -238,6 +242,7 @@ class AdminPanelPage extends ConsumerWidget {
         .showSnackBar(SnackBar(content: Text('Added ${outcome.added} PDF(s).')));
 
     final String? subject = await _askSubject(context);
+    if (!context.mounted) return;
     if (subject == null || subject.trim().isEmpty) return;
 
     // Applies the chosen subject to every newly-added PDF in this batch.
@@ -265,7 +270,7 @@ class AdminPanelPage extends ConsumerWidget {
         ),
         actions: <Widget>[
           TextButton(
-            onPressed: () => Navigator.of(dialogContext).pop(null),
+            onPressed: () => Navigator.of(dialogContext).pop(),
             child: const Text('Skip'),
           ),
           FilledButton(

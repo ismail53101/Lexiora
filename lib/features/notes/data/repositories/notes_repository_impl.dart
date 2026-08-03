@@ -21,6 +21,17 @@ class NotesRepositoryImpl implements NotesRepository {
   }
 
   @override
+  Stream<List<Note>> watchAll() {
+    final query = _db.select(_db.notes)
+      ..orderBy([
+        (t) => OrderingTerm(expression: t.updatedAt, mode: OrderingMode.desc),
+      ]);
+    return query.watch().map(
+          (List<NoteRow> rows) => rows.map(_mapRow).toList(growable: false),
+        );
+  }
+
+  @override
   Future<void> add(Note note) async {
     await _db.into(_db.notes).insert(
           NotesCompanion.insert(

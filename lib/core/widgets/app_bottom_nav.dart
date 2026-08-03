@@ -1,0 +1,55 @@
+import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
+import 'package:lexiora/app/router/app_routes.dart';
+
+/// The persistent bottom tab bar shown on each of the app's 5 top-level
+/// screens (Home, AI Assistant, Quiz, Notes, Profile).
+///
+/// Each of those screens embeds this in its own `Scaffold.bottomNavigationBar`
+/// — there's no `ShellRoute` wrapping them, so each tab keeps owning its own
+/// route/page the same way every other [FeatureModule] does. Switching tabs
+/// uses [GoRouter.go] (not `push`), so tabs never stack on top of each other.
+class AppBottomNav extends StatelessWidget {
+  const AppBottomNav({super.key, required this.currentIndex});
+
+  /// Which tab is active: 0 Home, 1 AI Assistant, 2 Quiz, 3 Notes, 4 Profile.
+  final int currentIndex;
+
+  static const List<_Tab> _tabs = <_Tab>[
+    _Tab('Home', Icons.home_outlined, Icons.home_rounded, AppRoutes.home),
+    _Tab('AI Assistant', Icons.smart_toy_outlined, Icons.smart_toy_rounded,
+        AppRoutes.aiAssistant),
+    _Tab('Quiz', Icons.quiz_outlined, Icons.quiz_rounded, AppRoutes.quiz),
+    _Tab('Notes', Icons.notes_outlined, Icons.notes_rounded,
+        AppRoutes.notesHome),
+    _Tab('Profile', Icons.person_outline, Icons.person_rounded,
+        AppRoutes.profile),
+  ];
+
+  @override
+  Widget build(BuildContext context) {
+    return NavigationBar(
+      selectedIndex: currentIndex,
+      onDestinationSelected: (int i) {
+        if (i == currentIndex) return;
+        context.go(_tabs[i].route);
+      },
+      destinations: <Widget>[
+        for (final _Tab tab in _tabs)
+          NavigationDestination(
+            icon: Icon(tab.icon),
+            selectedIcon: Icon(tab.selectedIcon),
+            label: tab.label,
+          ),
+      ],
+    );
+  }
+}
+
+class _Tab {
+  const _Tab(this.label, this.icon, this.selectedIcon, this.route);
+  final String label;
+  final IconData icon;
+  final IconData selectedIcon;
+  final String route;
+}
