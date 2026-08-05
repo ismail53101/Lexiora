@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -15,10 +17,12 @@ import 'package:lexiora/features/library/domain/usecases/library_usecases.dart';
 import 'package:lexiora/features/library/presentation/providers/library_providers.dart';
 import 'package:lexiora/features/library/presentation/widgets/document_card.dart';
 import 'package:lexiora/modules/study_hub/domain/entities/study_goal.dart';
+import 'package:lexiora/modules/study_hub/domain/study_dates.dart';
 import 'package:lexiora/modules/study_hub/presentation/providers/study_hub_providers.dart';
 
-/// The Home dashboard: a personal greeting, quick search, Recent Documents,
-/// Explore module list, Today's Goal, and Import PDF — the app's landing tab.
+/// The Home dashboard: a personal greeting, quick search, at-a-glance stats,
+/// Continue reading / Recent documents, Explore module grid, Today's Goal,
+/// and Import PDF — the app's landing tab.
 class HomePage extends ConsumerWidget {
   const HomePage({super.key});
 
@@ -73,9 +77,8 @@ class HomePage extends ConsumerWidget {
                 ),
               )
             else ...[
-              _entryStrip(context, 'Continue reading', continueReading),
-              _docStrip(context, 'Recent Documents', recent,
-                  showViewAll: true),
+              const SliverToBoxAdapter(child: _StatsRow()),
+              _continueAndRecentSection(context, continueReading, recent),
               _docStrip(context, 'Favorites', favorites),
             ],
             SliverToBoxAdapter(
@@ -118,28 +121,59 @@ class HomePage extends ConsumerWidget {
     );
   }
 
-  Widget _entryStrip(
+  /// "Continue reading" (left) and "Recent documents" (right) side by side —
+  /// falls back to a stacked column on very narrow widths so nothing gets
+  /// cramped on small screens, and simply grows wider on large/desktop
+  /// windows since both columns are flex-based.
+  Widget _continueAndRecentSection(
     BuildContext context,
-    String title,
-    AsyncValue<List<LibraryEntry>> async,
+    AsyncValue<List<LibraryEntry>> continueAsync,
+    AsyncValue<List<LibraryDocument>> recentAsync,
   ) {
-    final List<LibraryEntry> entries = async.maybeWhen(
-        data: (List<LibraryEntry> e) => e, orElse: () => const []);
-    if (entries.isEmpty) {
+    final List<LibraryEntry> continueEntries = continueAsync.maybeWhen(
+        data: (List<LibraryEntry> e) => e, orElse: () => const <LibraryEntry>[]);
+    final List<LibraryDocument> recentDocs = recentAsync.maybeWhen(
+      data: (List<LibraryDocument> d) => d,
+      orElse: () => const <LibraryDocument>[],
+    );
+
+    if (continueEntries.isEmpty && recentDocs.isEmpty) {
       return const SliverToBoxAdapter(child: SizedBox.shrink());
     }
+
     return SliverToBoxAdapter(
-      child: _Section(
-        title: title,
-        child: _HorizontalList(
-          itemCount: entries.length,
-          itemBuilder: (BuildContext context, int i) {
-            final LibraryEntry e = entries[i];
-            return DocumentCard(
-              document: e.document,
-              progress: e.percent,
-              onOpen: () => context.push(AppRoutes.reader(e.document.id)),
-            );
+      child: Padding(
+        padding: const EdgeInsets.fromLTRB(20, 20, 20, 0),
+        child: LayoutBuilder(
+          builder: (BuildContext context, BoxConstraints constraints) {
+            final Widget? left = continueEntries.isEmpty
+                ? null
+                : _ContinueReadingColumn(entries: continueEntries);
+            final Widget? right = recentDocs.isEmpty
+                ? null
+                : _RecentDocumentsColumn(documents: recentDocs);
+
+            if (left != null && right != null) {
+              if (constraints.maxWidth < 300) {
+                return Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: <Widget>[
+                    left,
+                    const SizedBox(height: 20),
+                    right,
+                  ],
+                );
+              }
+              return Row(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: <Widget>[
+                  Expanded(child: left),
+                  const SizedBox(width: 14),
+                  Expanded(child: right),
+                ],
+              );
+            }
+            return left ?? right ?? const SizedBox.shrink();
           },
         ),
       ),
@@ -281,6 +315,142 @@ class _GlowIconButtonState extends State<_GlowIconButton> {
   }
 }
 
+/// The "24 PDFs / study time today / today's goal" glance row.
+class _StatsRow extends ConsumerWidget {
+  const _StatsRow();
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final ColorScheme scheme = Theme.of(context).colorScheme;
+
+    final int docCount = ref.watch(allDocumentsProvider).maybeWhen(
+        data: (List<LibraryDocument> d) => d.length, orElse: () => 0);
+
+    final int studyMinutes = ref.watch(studyMinutesTodayProvider).maybeWhen(
+        data: (int m) => m, orElse: () => 0);
+
+    final List<StudyGoal> goals = ref.watch(studyGoalsProvider).maybeWhen(
+        data: (List<StudyGoal> g) => g, orElse: () => const <StudyGoal>[]);
+    final int goalTotal = goals.length;
+    final int goalDone = goals.where((StudyGoal g) => g.achieved).length;
+
+    return Padding(
+      padding: const EdgeInsets.fromLTRB(20, 6, 20, 0),
+      child: Row(
+        children: <Widget>[
+          Expanded(
+            child: _StatTile(
+              icon: Icons.description_outlined,
+              value: '$docCount',
+              label: 'PDFs',
+              subLabel: 'In library',
+              color: scheme.primary,
+              onTap: () => context.push(AppRoutes.library),
+            ),
+          ),
+          const SizedBox(width: 10),
+          Expanded(
+            child: _StatTile(
+              icon: Icons.schedule_rounded,
+              value: formatDuration(studyMinutes),
+              label: 'Study time',
+              subLabel: 'Today',
+              color: const Color(0xFF38BDF8),
+              onTap: () => context.push(AppRoutes.studyHub),
+            ),
+          ),
+          const SizedBox(width: 10),
+          Expanded(
+            child: _StatTile(
+              icon: Icons.track_changes_rounded,
+              value: goalTotal == 0 ? '—' : '$goalDone / $goalTotal',
+              label: 'Goal',
+              subLabel: goalTotal == 0
+                  ? 'Set a goal'
+                  : (goalDone >= goalTotal ? 'Completed' : 'In progress'),
+              color: scheme.primary,
+              onTap: () => context.push(AppRoutes.studyHub),
+            ),
+          ),
+        ],
+      ),
+    ).animate().fadeIn(duration: 300.ms).slideY(begin: 0.06, end: 0);
+  }
+}
+
+class _StatTile extends StatelessWidget {
+  const _StatTile({
+    required this.icon,
+    required this.value,
+    required this.label,
+    required this.subLabel,
+    required this.color,
+    this.onTap,
+  });
+
+  final IconData icon;
+  final String value;
+  final String label;
+  final String subLabel;
+  final Color color;
+  final VoidCallback? onTap;
+
+  @override
+  Widget build(BuildContext context) {
+    final ThemeData theme = Theme.of(context);
+    final ColorScheme scheme = theme.colorScheme;
+    return Material(
+      color: scheme.surfaceContainerHigh,
+      borderRadius: BorderRadius.circular(18),
+      child: InkWell(
+        borderRadius: BorderRadius.circular(18),
+        onTap: onTap,
+        child: Padding(
+          padding: const EdgeInsets.symmetric(vertical: 14, horizontal: 6),
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: <Widget>[
+              Container(
+                width: 38,
+                height: 38,
+                decoration: BoxDecoration(
+                  shape: BoxShape.circle,
+                  color: color.withValues(alpha: 0.14),
+                ),
+                alignment: Alignment.center,
+                child: Icon(icon, color: color, size: 19),
+              ),
+              const SizedBox(height: 8),
+              Text(
+                value,
+                maxLines: 1,
+                overflow: TextOverflow.ellipsis,
+                style: theme.textTheme.titleMedium
+                    ?.copyWith(fontWeight: FontWeight.w800, color: color),
+              ),
+              const SizedBox(height: 2),
+              Text(
+                label,
+                maxLines: 1,
+                overflow: TextOverflow.ellipsis,
+                style: theme.textTheme.bodySmall
+                    ?.copyWith(fontWeight: FontWeight.w600),
+              ),
+              Text(
+                subLabel,
+                maxLines: 1,
+                overflow: TextOverflow.ellipsis,
+                style: theme.textTheme.labelSmall
+                    ?.copyWith(color: scheme.onSurfaceVariant),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
+
 class _Section extends StatelessWidget {
   const _Section({required this.title, required this.child, this.onViewAll});
   final String title;
@@ -371,6 +541,255 @@ class _ElevatedCard extends StatelessWidget {
   }
 }
 
+/// Left column of the two-column row: the in-progress document(s), styled as
+/// one large cover card (matching the target dashboard layout). Scrolls
+/// horizontally only when there's more than one in-progress document.
+class _ContinueReadingColumn extends StatelessWidget {
+  const _ContinueReadingColumn({required this.entries});
+  final List<LibraryEntry> entries;
+
+  @override
+  Widget build(BuildContext context) {
+    final ThemeData theme = Theme.of(context);
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      mainAxisSize: MainAxisSize.min,
+      children: <Widget>[
+        Padding(
+          padding: const EdgeInsets.only(bottom: 10),
+          child: Text(
+            'Continue reading',
+            style: theme.textTheme.titleMedium
+                ?.copyWith(fontWeight: FontWeight.w800),
+          ),
+        ),
+        SizedBox(
+          height: 244,
+          child: entries.length == 1
+              ? _ElevatedCard(
+                  child: DocumentCard(
+                    document: entries.first.document,
+                    progress: entries.first.percent,
+                    onOpen: () =>
+                        context.push(AppRoutes.reader(entries.first.document.id)),
+                  ),
+                )
+              : ListView.separated(
+                  scrollDirection: Axis.horizontal,
+                  physics: const BouncingScrollPhysics(),
+                  itemCount: entries.length,
+                  separatorBuilder: (_, _) => const SizedBox(width: 14),
+                  itemBuilder: (BuildContext context, int i) {
+                    final LibraryEntry e = entries[i];
+                    return SizedBox(
+                      width: 152,
+                      child: _ElevatedCard(
+                        child: DocumentCard(
+                          document: e.document,
+                          progress: e.percent,
+                          onOpen: () =>
+                              context.push(AppRoutes.reader(e.document.id)),
+                        ),
+                      ),
+                    );
+                  },
+                ),
+        ),
+      ],
+    ).animate().fadeIn(duration: 300.ms).slideY(begin: 0.06, end: 0);
+  }
+}
+
+/// Right column of the two-column row: a compact vertical list of the most
+/// recent documents, each as a thumbnail + title + metadata row.
+class _RecentDocumentsColumn extends StatelessWidget {
+  const _RecentDocumentsColumn({required this.documents});
+  final List<LibraryDocument> documents;
+
+  @override
+  Widget build(BuildContext context) {
+    final ThemeData theme = Theme.of(context);
+    final List<LibraryDocument> shown = documents.take(3).toList();
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      mainAxisSize: MainAxisSize.min,
+      children: <Widget>[
+        Padding(
+          padding: const EdgeInsets.only(bottom: 10),
+          child: Row(
+            children: <Widget>[
+              Expanded(
+                child: Text(
+                  'Recent documents',
+                  style: theme.textTheme.titleMedium
+                      ?.copyWith(fontWeight: FontWeight.w800),
+                ),
+              ),
+              TextButton(
+                style: TextButton.styleFrom(
+                  padding: const EdgeInsets.symmetric(horizontal: 8),
+                  minimumSize: Size.zero,
+                  tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+                ),
+                onPressed: () => context.push(AppRoutes.library),
+                child: const Text('View all'),
+              ),
+            ],
+          ),
+        ),
+        for (int i = 0; i < shown.length; i++)
+          Padding(
+            padding: EdgeInsets.only(bottom: i == shown.length - 1 ? 0 : 10),
+            child: _RecentDocRow(
+              document: shown[i],
+              onOpen: () => context.push(AppRoutes.reader(shown[i].id)),
+            ),
+          ),
+      ],
+    ).animate().fadeIn(duration: 300.ms).slideY(begin: 0.06, end: 0);
+  }
+}
+
+/// A compact document row: small cover thumbnail, a "PDF" pill, title, and
+/// size · recency line — used in the Recent documents column.
+class _RecentDocRow extends StatelessWidget {
+  const _RecentDocRow({required this.document, required this.onOpen});
+  final LibraryDocument document;
+  final VoidCallback onOpen;
+
+  @override
+  Widget build(BuildContext context) {
+    final ThemeData theme = Theme.of(context);
+    final ColorScheme scheme = theme.colorScheme;
+
+    return Material(
+      color: scheme.surfaceContainerHigh,
+      borderRadius: BorderRadius.circular(16),
+      child: InkWell(
+        borderRadius: BorderRadius.circular(16),
+        onTap: onOpen,
+        child: Padding(
+          padding: const EdgeInsets.all(10),
+          child: Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: <Widget>[
+              ClipRRect(
+                borderRadius: BorderRadius.circular(10),
+                child: SizedBox(
+                  width: 46,
+                  height: 58,
+                  child: _RecentDocThumb(document: document),
+                ),
+              ),
+              const SizedBox(width: 10),
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisSize: MainAxisSize.min,
+                  children: <Widget>[
+                    Container(
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 7, vertical: 1),
+                      decoration: BoxDecoration(
+                        color: scheme.primaryContainer,
+                        borderRadius: BorderRadius.circular(6),
+                      ),
+                      child: Text(
+                        'PDF',
+                        style: theme.textTheme.labelSmall?.copyWith(
+                          color: scheme.onPrimaryContainer,
+                          fontWeight: FontWeight.w700,
+                        ),
+                      ),
+                    ),
+                    const SizedBox(height: 5),
+                    Text(
+                      document.title,
+                      maxLines: 2,
+                      overflow: TextOverflow.ellipsis,
+                      style: theme.textTheme.bodyMedium?.copyWith(
+                        fontWeight: FontWeight.w700,
+                        height: 1.2,
+                      ),
+                    ),
+                    const SizedBox(height: 4),
+                    Text(
+                      '${document.readableSize} · '
+                      '${_relativeDayLabel(document.lastOpenedAt ?? document.importedAt)}',
+                      maxLines: 1,
+                      overflow: TextOverflow.ellipsis,
+                      style: theme.textTheme.bodySmall
+                          ?.copyWith(color: scheme.onSurfaceVariant),
+                    ),
+                  ],
+                ),
+              ),
+              Icon(Icons.more_vert, size: 18, color: scheme.onSurfaceVariant),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+/// The recent-doc row's thumbnail: the real cover when one exists, otherwise
+/// a small placeholder icon — never shows a broken-image glyph.
+class _RecentDocThumb extends StatelessWidget {
+  const _RecentDocThumb({required this.document});
+  final LibraryDocument document;
+
+  @override
+  Widget build(BuildContext context) {
+    final ColorScheme scheme = Theme.of(context).colorScheme;
+    final String? path = document.coverPath;
+    if (path != null && path.isNotEmpty) {
+      return ColoredBox(
+        color: const Color(0xFFF3F1EC),
+        child: Image.file(
+          File(path),
+          fit: BoxFit.contain,
+          errorBuilder: (BuildContext context, Object error, StackTrace? _) =>
+              _RecentDocThumbPlaceholder(scheme: scheme),
+        ),
+      );
+    }
+    return _RecentDocThumbPlaceholder(scheme: scheme);
+  }
+}
+
+class _RecentDocThumbPlaceholder extends StatelessWidget {
+  const _RecentDocThumbPlaceholder({required this.scheme});
+  final ColorScheme scheme;
+
+  @override
+  Widget build(BuildContext context) {
+    return ColoredBox(
+      color: scheme.surfaceContainerHighest,
+      child: Icon(
+        Icons.picture_as_pdf_outlined,
+        color: scheme.onSurfaceVariant,
+        size: 20,
+      ),
+    );
+  }
+}
+
+/// A short "Today" / "Yesterday" / "N days ago" label for a document's
+/// recency, used only by the Recent documents row.
+String _relativeDayLabel(DateTime dt) {
+  final DateTime now = DateTime.now();
+  final DateTime day = DateTime(dt.year, dt.month, dt.day);
+  final DateTime today = DateTime(now.year, now.month, now.day);
+  final int diff = today.difference(day).inDays;
+  if (diff <= 0) return 'Today';
+  if (diff == 1) return 'Yesterday';
+  if (diff < 7) return '$diff days ago';
+  if (diff < 30) return '${(diff / 7).floor()}w ago';
+  if (diff < 365) return '${(diff / 30).floor()}mo ago';
+  return '${(diff / 365).floor()}y ago';
+}
+
 class _HomeFooter extends StatelessWidget {
   const _HomeFooter();
 
@@ -413,8 +832,10 @@ class _HomeFooter extends StatelessWidget {
   }
 }
 
-/// The Explore module list — a vertical stack of rows (icon, label, subtitle,
-/// chevron), one per [HomeDestination].
+/// The Explore module grid — a responsive wrap of square tiles (icon, label,
+/// subtitle), one per [HomeDestination]. The column count adapts to the
+/// available width, so this looks right from a narrow phone up to a wide
+/// desktop/Windows window without ever overflowing.
 class _ExploreSection extends StatelessWidget {
   const _ExploreSection({required this.destinations});
   final List<HomeDestination> destinations;
@@ -440,14 +861,28 @@ class _ExploreSection extends StatelessWidget {
           ),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 16),
-            child: Column(
-              children: <Widget>[
-                for (int i = 0; i < visible.length; i++)
-                  Padding(
-                    padding: const EdgeInsets.only(bottom: 10),
-                    child: _ExploreRow(destination: visible[i], index: i),
-                  ),
-              ],
+            child: LayoutBuilder(
+              builder: (BuildContext context, BoxConstraints constraints) {
+                const double spacing = 12;
+                // ~68 logical px per tile keeps 5 columns on a typical phone
+                // width and scales up cleanly on wider/desktop windows.
+                final int columns =
+                    (constraints.maxWidth / 68).floor().clamp(3, 7);
+                final double tileWidth =
+                    (constraints.maxWidth - spacing * (columns - 1)) /
+                        columns;
+                return Wrap(
+                  spacing: spacing,
+                  runSpacing: spacing,
+                  children: <Widget>[
+                    for (int i = 0; i < visible.length; i++)
+                      SizedBox(
+                        width: tileWidth,
+                        child: _ExploreTile(destination: visible[i], index: i),
+                      ),
+                  ],
+                );
+              },
             ),
           ),
         ],
@@ -456,24 +891,39 @@ class _ExploreSection extends StatelessWidget {
   }
 }
 
-class _ExploreRow extends StatelessWidget {
-  const _ExploreRow({required this.destination, required this.index});
+class _ExploreTile extends StatelessWidget {
+  const _ExploreTile({required this.destination, required this.index});
   final HomeDestination destination;
   final int index;
+
+  /// Purely presentational per-module accent colors so the grid reads as
+  /// distinct modules at a glance. Unknown/future ids fall back to the
+  /// theme's primary color, so no destination is ever left uncolored.
+  static const Map<String, Color> _accentColors = <String, Color>{
+    'library': Color(0xFF8B7CF6),
+    'study_hub': Color(0xFF8B7CF6),
+    'dictionary': Color(0xFF2DD4BF),
+    'grammar': Color(0xFFFACC15),
+    'vocabulary': Color(0xFFF472B6),
+    'flashcards': Color(0xFF22D3EE),
+    'quiz': Color(0xFFFB923C),
+    'ai_assistant': Color(0xFF8B7CF6),
+    'cloud_sync': Color(0xFF2DD4BF),
+  };
 
   @override
   Widget build(BuildContext context) {
     final ThemeData theme = Theme.of(context);
     final ColorScheme scheme = theme.colorScheme;
+    final Color accent = _accentColors[destination.id] ?? scheme.primary;
 
     return Material(
       color: scheme.surfaceContainerHigh,
-      borderRadius: BorderRadius.circular(20),
-      elevation: 0,
+      borderRadius: BorderRadius.circular(18),
       child: InkWell(
-        borderRadius: BorderRadius.circular(20),
-        splashColor: scheme.primary.withValues(alpha: 0.10),
-        highlightColor: scheme.primary.withValues(alpha: 0.06),
+        borderRadius: BorderRadius.circular(18),
+        splashColor: accent.withValues(alpha: 0.10),
+        highlightColor: accent.withValues(alpha: 0.06),
         onTap: () {
           if (destination.comingSoon) {
             ScaffoldMessenger.of(context)
@@ -485,79 +935,63 @@ class _ExploreRow extends StatelessWidget {
             context.push(destination.routePath);
           }
         },
-        child: Padding(
-          padding: const EdgeInsets.all(14),
-          child: Row(
-            children: [
-              Container(
-                width: 48,
-                height: 48,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(14),
-                  gradient: LinearGradient(
-                    begin: Alignment.topLeft,
-                    end: Alignment.bottomRight,
-                    colors: <Color>[
-                      scheme.primary.withValues(alpha: 0.85),
-                      scheme.tertiary.withValues(alpha: 0.85),
-                    ],
+        child: Stack(
+          children: <Widget>[
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 12),
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: <Widget>[
+                  Icon(destination.icon, color: accent, size: 26),
+                  const SizedBox(height: 8),
+                  Text(
+                    destination.label,
+                    textAlign: TextAlign.center,
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
+                    style: theme.textTheme.labelMedium
+                        ?.copyWith(fontWeight: FontWeight.w700),
+                  ),
+                  if (destination.subtitle != null) ...[
+                    const SizedBox(height: 2),
+                    Text(
+                      destination.subtitle!,
+                      textAlign: TextAlign.center,
+                      maxLines: 1,
+                      overflow: TextOverflow.ellipsis,
+                      style: theme.textTheme.labelSmall
+                          ?.copyWith(color: scheme.onSurfaceVariant),
+                    ),
+                  ],
+                ],
+              ),
+            ),
+            if (destination.comingSoon)
+              Positioned(
+                top: 6,
+                right: 6,
+                child: Container(
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 6, vertical: 1),
+                  decoration: BoxDecoration(
+                    color: scheme.secondaryContainer,
+                    borderRadius: BorderRadius.circular(6),
+                  ),
+                  child: Text(
+                    'Soon',
+                    style: theme.textTheme.labelSmall?.copyWith(
+                      color: scheme.onSecondaryContainer,
+                    ),
                   ),
                 ),
-                alignment: Alignment.center,
-                child: Icon(destination.icon, color: scheme.onPrimary, size: 22),
               ),
-              const SizedBox(width: 14),
-              Expanded(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Row(
-                      children: [
-                        Text(
-                          destination.label,
-                          style: theme.textTheme.titleSmall
-                              ?.copyWith(fontWeight: FontWeight.w700),
-                        ),
-                        if (destination.comingSoon) ...[
-                          const SizedBox(width: 8),
-                          Container(
-                            padding: const EdgeInsets.symmetric(
-                                horizontal: 7, vertical: 1),
-                            decoration: BoxDecoration(
-                              color: scheme.secondaryContainer,
-                              borderRadius: BorderRadius.circular(6),
-                            ),
-                            child: Text(
-                              'Soon',
-                              style: theme.textTheme.labelSmall?.copyWith(
-                                color: scheme.onSecondaryContainer,
-                              ),
-                            ),
-                          ),
-                        ],
-                      ],
-                    ),
-                    if (destination.subtitle != null) ...[
-                      const SizedBox(height: 2),
-                      Text(
-                        destination.subtitle!,
-                        style: theme.textTheme.bodySmall
-                            ?.copyWith(color: scheme.onSurfaceVariant),
-                      ),
-                    ],
-                  ],
-                ),
-              ),
-              Icon(Icons.chevron_right_rounded,
-                  color: scheme.onSurfaceVariant),
-            ],
-          ),
+          ],
         ),
       ),
     )
-        .animate(delay: (40 * index).ms)
-        .fadeIn(duration: 260.ms)
-        .slideX(begin: 0.04, end: 0);
+        .animate(delay: (30 * index).ms)
+        .fadeIn(duration: 240.ms)
+        .scale(begin: const Offset(0.92, 0.92), end: const Offset(1, 1));
   }
 }
 
