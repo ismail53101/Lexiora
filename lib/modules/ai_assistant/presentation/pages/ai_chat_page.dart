@@ -34,7 +34,15 @@ class AiChatPage extends ConsumerWidget {
       resizeToAvoidBottomInset: true,
       bottomNavigationBar: const AppBottomNav(currentIndex: 1),
       appBar: AppBar(
-        title: Text(title, overflow: TextOverflow.ellipsis),
+        title: Row(
+          mainAxisSize: MainAxisSize.min,
+          children: <Widget>[
+            Flexible(child: Text(title, overflow: TextOverflow.ellipsis)),
+            const SizedBox(width: 6),
+            Icon(Icons.auto_awesome_rounded,
+                size: 18, color: Theme.of(context).colorScheme.tertiary),
+          ],
+        ),
         actions: <Widget>[
           IconButton(
             tooltip: 'New chat',
@@ -72,12 +80,58 @@ class _Welcome extends StatelessWidget {
   const _Welcome();
 
   @override
-  Widget build(BuildContext context) => const EmptyState(
-        icon: Icons.smart_toy_outlined,
-        title: 'Ask me anything',
-        message:
-            'Start a conversation — explanations, summaries, code, tables and math are all supported.',
-      );
+  Widget build(BuildContext context) {
+    final ThemeData theme = Theme.of(context);
+    final ColorScheme scheme = theme.colorScheme;
+    return Center(
+      child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 32),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: <Widget>[
+            Container(
+              width: 88,
+              height: 88,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(22),
+                gradient: LinearGradient(
+                  begin: Alignment.topLeft,
+                  end: Alignment.bottomRight,
+                  colors: <Color>[scheme.primary, scheme.tertiary],
+                ),
+                boxShadow: <BoxShadow>[
+                  BoxShadow(
+                    color: scheme.primary.withValues(alpha: 0.35),
+                    blurRadius: 24,
+                    spreadRadius: 1,
+                    offset: const Offset(0, 10),
+                  ),
+                ],
+              ),
+              alignment: Alignment.center,
+              child: Icon(Icons.auto_stories_rounded,
+                  color: scheme.onPrimary, size: 40),
+            ),
+            const SizedBox(height: 20),
+            Text(
+              'Hi, how can I assist you?',
+              textAlign: TextAlign.center,
+              style: theme.textTheme.titleLarge
+                  ?.copyWith(fontWeight: FontWeight.w800),
+            ),
+            const SizedBox(height: 10),
+            Text(
+              'Start a conversation — explanations, summaries, code, '
+              'tables and math are all supported.',
+              textAlign: TextAlign.center,
+              style: theme.textTheme.bodyMedium
+                  ?.copyWith(color: scheme.onSurfaceVariant),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
 }
 
 class _MessageList extends ConsumerWidget {
@@ -151,25 +205,66 @@ class _StreamingBubble extends ConsumerWidget {
     final String text = ref.watch(
         aiChatControllerProvider.select((AiChatState s) => s.streamingText));
     final ThemeData theme = Theme.of(context);
-    return Align(
-      alignment: Alignment.centerLeft,
-      child: Container(
-        constraints:
-            BoxConstraints(maxWidth: MediaQuery.of(context).size.width * 0.86),
-        margin: const EdgeInsets.symmetric(horizontal: 12, vertical: 4),
-        padding: const EdgeInsets.fromLTRB(14, 12, 14, 12),
-        decoration: BoxDecoration(
-          color: theme.colorScheme.surfaceContainerHighest,
-          borderRadius: const BorderRadius.only(
-            topLeft: Radius.circular(16),
-            topRight: Radius.circular(16),
-            bottomLeft: Radius.circular(4),
-            bottomRight: Radius.circular(16),
+    final ColorScheme scheme = theme.colorScheme;
+
+    return Container(
+      margin: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        mainAxisSize: MainAxisSize.min,
+        children: <Widget>[
+          Container(
+            width: 36,
+            height: 36,
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(10),
+              gradient: LinearGradient(
+                begin: Alignment.topLeft,
+                end: Alignment.bottomRight,
+                colors: <Color>[scheme.primary, scheme.tertiary],
+              ),
+            ),
+            alignment: Alignment.center,
+            child: Icon(Icons.auto_stories_rounded,
+                color: scheme.onPrimary, size: 18),
           ),
-        ),
-        child: text.isEmpty
-            ? const TypingIndicator()
-            : AiMarkdown(data: text, color: theme.colorScheme.onSurface),
+          const SizedBox(width: 8),
+          Flexible(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisSize: MainAxisSize.min,
+              children: <Widget>[
+                Padding(
+                  padding: const EdgeInsets.only(bottom: 4),
+                  child: Text(
+                    'AI Assistant',
+                    style: theme.textTheme.labelMedium?.copyWith(
+                      fontWeight: FontWeight.w700,
+                      color: scheme.primary,
+                    ),
+                  ),
+                ),
+                Container(
+                  constraints: BoxConstraints(
+                      maxWidth: MediaQuery.of(context).size.width * 0.72),
+                  padding: const EdgeInsets.fromLTRB(14, 12, 14, 12),
+                  decoration: BoxDecoration(
+                    color: scheme.surfaceContainerHighest,
+                    borderRadius: const BorderRadius.only(
+                      topLeft: Radius.circular(16),
+                      topRight: Radius.circular(16),
+                      bottomLeft: Radius.circular(4),
+                      bottomRight: Radius.circular(16),
+                    ),
+                  ),
+                  child: text.isEmpty
+                      ? const TypingIndicator()
+                      : AiMarkdown(data: text, color: scheme.onSurface),
+                ),
+              ],
+            ),
+          ),
+        ],
       ),
     );
   }
