@@ -42,6 +42,23 @@ class _SettingsBody extends ConsumerWidget {
       padding: const EdgeInsets.fromLTRB(16, 12, 16, 32),
       children: [
         _SectionCard(
+          title: 'Profile',
+          children: [
+            const _Label('Your name'),
+            _DisplayNameField(
+              initialValue: settings.displayName,
+              onChanged: controller.setDisplayName,
+            ),
+            const SizedBox(height: 8),
+            Text(
+              'Shown in the greeting on Home and on your Profile page.',
+              style: Theme.of(context).textTheme.bodySmall?.copyWith(
+                    color: Theme.of(context).colorScheme.onSurfaceVariant,
+                  ),
+            ),
+          ],
+        ),
+        _SectionCard(
           title: 'Appearance',
           children: [
             const _Label('Theme'),
@@ -294,6 +311,52 @@ class _SectionCard extends StatelessWidget {
           ),
         ],
       ),
+    );
+  }
+}
+
+/// A text field for the user's display name. Keeps its own controller so
+/// typing doesn't fight with the reactive [settingsProvider] rebuilding this
+/// page on every keystroke — the value is only persisted once the user
+/// finishes editing (submits or taps away).
+class _DisplayNameField extends StatefulWidget {
+  const _DisplayNameField({required this.initialValue, required this.onChanged});
+  final String initialValue;
+  final ValueChanged<String> onChanged;
+
+  @override
+  State<_DisplayNameField> createState() => _DisplayNameFieldState();
+}
+
+class _DisplayNameFieldState extends State<_DisplayNameField> {
+  late final TextEditingController _controller =
+      TextEditingController(text: widget.initialValue);
+  late final FocusNode _focusNode = FocusNode()..addListener(_onFocusChange);
+
+  void _onFocusChange() {
+    if (!_focusNode.hasFocus) widget.onChanged(_controller.text);
+  }
+
+  @override
+  void dispose() {
+    _focusNode.removeListener(_onFocusChange);
+    _focusNode.dispose();
+    _controller.dispose();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return TextField(
+      controller: _controller,
+      focusNode: _focusNode,
+      textCapitalization: TextCapitalization.words,
+      decoration: const InputDecoration(
+        isDense: true,
+        hintText: 'e.g. Ismail',
+        prefixIcon: Icon(Icons.person_outline),
+      ),
+      onSubmitted: widget.onChanged,
     );
   }
 }

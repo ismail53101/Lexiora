@@ -51,6 +51,9 @@ class SettingsController {
   Future<void> setTranslationLanguage(String code) =>
       _mutate((AppSettings s) => s.copyWith(translationLanguage: code));
 
+  Future<void> setDisplayName(String name) =>
+      _mutate((AppSettings s) => s.copyWith(displayName: name.trim()));
+
   Future<void> _mutate(AppSettings Function(AppSettings) update) async {
     final AppSettings current = await _repo.getSettings();
     await _repo.updateSettings(update(current));

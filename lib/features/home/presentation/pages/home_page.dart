@@ -6,7 +6,6 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:lexiora/app/di/injector.dart';
 import 'package:lexiora/app/router/app_routes.dart';
-import 'package:lexiora/core/constants/app_constants.dart';
 import 'package:lexiora/core/navigation/home_destination.dart';
 import 'package:lexiora/core/usecase/usecase.dart';
 import 'package:lexiora/core/utils/result.dart';
@@ -16,6 +15,8 @@ import 'package:lexiora/features/library/domain/entities/library_document.dart';
 import 'package:lexiora/features/library/domain/usecases/library_usecases.dart';
 import 'package:lexiora/features/library/presentation/providers/library_providers.dart';
 import 'package:lexiora/features/library/presentation/widgets/document_card.dart';
+import 'package:lexiora/features/settings/domain/entities/app_settings.dart';
+import 'package:lexiora/features/settings/presentation/providers/settings_providers.dart';
 import 'package:lexiora/modules/study_hub/domain/entities/study_goal.dart';
 import 'package:lexiora/modules/study_hub/domain/study_dates.dart';
 import 'package:lexiora/modules/study_hub/presentation/providers/study_hub_providers.dart';
@@ -38,6 +39,8 @@ class HomePage extends ConsumerWidget {
         ref.watch(favoriteDocumentsProvider);
     final List<HomeDestination> destinations =
         sl<HomeDestinationRegistry>().destinations;
+    final String displayName = ref.watch(settingsProvider).maybeWhen(
+        data: (AppSettings s) => s.displayName, orElse: () => '');
 
     final bool isEmpty = all.maybeWhen(
       data: (List<LibraryDocument> d) => d.isEmpty,
@@ -55,7 +58,9 @@ class HomePage extends ConsumerWidget {
               child: Padding(
                 padding: const EdgeInsets.fromLTRB(20, 12, 20, 4),
                 child: _GreetingRow(
+                  displayName: displayName,
                   onSearchTap: () => context.push(AppRoutes.library),
+                  onThemeTap: () => _toggleTheme(context, ref),
                 ),
               ),
             ),
@@ -119,6 +124,16 @@ class HomePage extends ConsumerWidget {
         messenger.showSnackBar(SnackBar(content: Text(msg)));
       },
     );
+  }
+
+  /// Flips between Light and Dark (from whichever is currently in effect —
+  /// including when following System) so the header button always has a
+  /// clear, single next state to switch to.
+  void _toggleTheme(BuildContext context, WidgetRef ref) {
+    final Brightness current = Theme.of(context).brightness;
+    final ThemeMode next =
+        current == Brightness.dark ? ThemeMode.light : ThemeMode.dark;
+    ref.read(settingsControllerProvider).setThemeMode(next);
   }
 
   /// "Continue reading" (left) and "Recent documents" (right) side by side —
@@ -210,10 +225,18 @@ class HomePage extends ConsumerWidget {
   }
 }
 
-/// "Good Evening, Ismail 👋" + subtitle, with the circular search button.
+/// "Good Evening, Ismail 👋" (or just "Good Evening 👋" until a name is set)
+/// + subtitle, with the circular search and theme-toggle buttons.
 class _GreetingRow extends StatelessWidget {
-  const _GreetingRow({required this.onSearchTap});
+  const _GreetingRow({
+    required this.displayName,
+    required this.onSearchTap,
+    required this.onThemeTap,
+  });
+
+  final String displayName;
   final VoidCallback onSearchTap;
+  final VoidCallback onThemeTap;
 
   String get _greeting {
     final int hour = DateTime.now().hour;
@@ -226,6 +249,7 @@ class _GreetingRow extends StatelessWidget {
   Widget build(BuildContext context) {
     final ThemeData theme = Theme.of(context);
     final ColorScheme scheme = theme.colorScheme;
+    final bool isDark = theme.brightness == Brightness.dark;
 
     return Row(
       crossAxisAlignment: CrossAxisAlignment.center,
@@ -239,11 +263,14 @@ class _GreetingRow extends StatelessWidget {
                   style: theme.textTheme.headlineSmall
                       ?.copyWith(fontWeight: FontWeight.w800),
                   children: <InlineSpan>[
-                    TextSpan(text: '$_greeting, '),
-                    TextSpan(
-                      text: AppConstants.userDisplayName,
-                      style: TextStyle(color: scheme.primary),
-                    ),
+                    TextSpan(text: displayName.isEmpty
+                        ? _greeting
+                        : '$_greeting, '),
+                    if (displayName.isNotEmpty)
+                      TextSpan(
+                        text: displayName,
+                        style: TextStyle(color: scheme.primary),
+                      ),
                     const TextSpan(text: ' 👋'),
                   ],
                 ),
@@ -257,7 +284,12 @@ class _GreetingRow extends StatelessWidget {
             ],
           ),
         ),
-        const SizedBox(width: 12),
+        const SizedBox(width: 10),
+        _GlowIconButton(
+          icon: isDark ? Icons.dark_mode_rounded : Icons.light_mode_rounded,
+          onTap: onThemeTap,
+        ),
+        const SizedBox(width: 10),
         _GlowIconButton(icon: Icons.search_rounded, onTap: onSearchTap),
       ],
     ).animate().fadeIn(duration: 320.ms).slideY(begin: -0.08, end: 0);
@@ -864,10 +896,11 @@ class _ExploreSection extends StatelessWidget {
             child: LayoutBuilder(
               builder: (BuildContext context, BoxConstraints constraints) {
                 const double spacing = 12;
-                // ~68 logical px per tile keeps 5 columns on a typical phone
-                // width and scales up cleanly on wider/desktop windows.
+                // ~78 logical px per tile keeps labels/subtitles readable on
+                // a typical phone width and scales up cleanly on wider/
+                // desktop windows, without ever needing to cut words off.
                 final int columns =
-                    (constraints.maxWidth / 68).floor().clamp(3, 7);
+                    (constraints.maxWidth / 78).floor().clamp(3, 6);
                 final double tileWidth =
                     (constraints.maxWidth - spacing * (columns - 1)) /
                         columns;
@@ -947,20 +980,20 @@ class _ExploreTile extends StatelessWidget {
                   Text(
                     destination.label,
                     textAlign: TextAlign.center,
-                    maxLines: 1,
+                    maxLines: 2,
                     overflow: TextOverflow.ellipsis,
                     style: theme.textTheme.labelMedium
-                        ?.copyWith(fontWeight: FontWeight.w700),
+                        ?.copyWith(fontWeight: FontWeight.w700, height: 1.15),
                   ),
                   if (destination.subtitle != null) ...[
-                    const SizedBox(height: 2),
+                    const SizedBox(height: 3),
                     Text(
                       destination.subtitle!,
                       textAlign: TextAlign.center,
-                      maxLines: 1,
+                      maxLines: 2,
                       overflow: TextOverflow.ellipsis,
-                      style: theme.textTheme.labelSmall
-                          ?.copyWith(color: scheme.onSurfaceVariant),
+                      style: theme.textTheme.labelSmall?.copyWith(
+                          color: scheme.onSurfaceVariant, height: 1.2),
                     ),
                   ],
                 ],
