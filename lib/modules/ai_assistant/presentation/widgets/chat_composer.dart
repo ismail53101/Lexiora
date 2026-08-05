@@ -196,6 +196,8 @@ class _ChatComposerState extends ConsumerState<ChatComposer> {
                   ),
                 ),
                 const SizedBox(width: 8),
+                _MicButton(enabled: widget.enabled),
+                const SizedBox(width: 8),
                 _SendStopButton(
                   streaming: streaming,
                   canSend: widget.enabled && _canSend,
@@ -235,6 +237,25 @@ class _AttachButton extends StatelessWidget {
               child: CircularProgressIndicator(strokeWidth: 2),
             )
           : const Icon(Icons.add_photo_alternate_outlined),
+    );
+  }
+}
+
+class _MicButton extends StatelessWidget {
+  const _MicButton({required this.enabled});
+  final bool enabled;
+
+  @override
+  Widget build(BuildContext context) {
+    return IconButton(
+      tooltip: 'Voice input — coming soon',
+      onPressed: enabled
+          ? () => ScaffoldMessenger.of(context)
+            ..hideCurrentSnackBar()
+            ..showSnackBar(const SnackBar(
+                content: Text('Voice input is coming in a future update.')))
+          : null,
+      icon: const Icon(Icons.mic_none_rounded),
     );
   }
 }
