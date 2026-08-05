@@ -8,6 +8,8 @@ import 'package:lexiora/features/library/domain/entities/library_document.dart';
 import 'package:lexiora/features/library/presentation/providers/library_providers.dart';
 import 'package:lexiora/features/notes/domain/entities/note.dart';
 import 'package:lexiora/features/notes/presentation/pages/all_notes_page.dart';
+import 'package:lexiora/features/settings/domain/entities/app_settings.dart';
+import 'package:lexiora/features/settings/presentation/providers/settings_providers.dart';
 
 /// The Profile tab — a personal snapshot (real library stats, not
 /// placeholders) plus quick links to Settings and About. Sapiora has no
@@ -29,6 +31,9 @@ class ProfilePage extends ConsumerWidget {
     final int noteCount = ref
         .watch(allNotesProvider)
         .maybeWhen(data: (List<Note> n) => n.length, orElse: () => 0);
+    final String displayName = ref.watch(settingsProvider).maybeWhen(
+        data: (AppSettings s) => s.displayName, orElse: () => '');
+    final String shownName = displayName.isEmpty ? 'You' : displayName;
 
     return Scaffold(
       bottomNavigationBar: const AppBottomNav(currentIndex: 4),
@@ -52,7 +57,7 @@ class ProfilePage extends ConsumerWidget {
                   ),
                   alignment: Alignment.center,
                   child: Text(
-                    AppConstants.userDisplayName.substring(0, 1),
+                    shownName.substring(0, 1).toUpperCase(),
                     style: theme.textTheme.headlineMedium?.copyWith(
                       color: scheme.onPrimary,
                       fontWeight: FontWeight.w800,
@@ -61,7 +66,7 @@ class ProfilePage extends ConsumerWidget {
                 ),
                 const SizedBox(height: 14),
                 Text(
-                  AppConstants.userDisplayName,
+                  shownName,
                   style: theme.textTheme.headlineSmall
                       ?.copyWith(fontWeight: FontWeight.w800),
                 ),
