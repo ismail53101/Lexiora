@@ -7,12 +7,9 @@ import 'package:go_router/go_router.dart';
 import 'package:lexiora/app/di/injector.dart';
 import 'package:lexiora/app/router/app_routes.dart';
 import 'package:lexiora/core/navigation/home_destination.dart';
-import 'package:lexiora/core/usecase/usecase.dart';
-import 'package:lexiora/core/utils/result.dart';
 import 'package:lexiora/core/widgets/app_bottom_nav.dart';
 import 'package:lexiora/core/widgets/empty_state.dart';
 import 'package:lexiora/features/library/domain/entities/library_document.dart';
-import 'package:lexiora/features/library/domain/usecases/library_usecases.dart';
 import 'package:lexiora/features/library/presentation/providers/library_providers.dart';
 import 'package:lexiora/features/library/presentation/widgets/document_card.dart';
 import 'package:lexiora/features/settings/domain/entities/app_settings.dart';
@@ -82,47 +79,24 @@ class HomePage extends ConsumerWidget {
                 ),
               )
             else ...[
-              const SliverToBoxAdapter(child: _StatsRow()),
               _continueAndRecentSection(context, continueReading, recent),
               _docStrip(context, 'Favorites', favorites),
             ],
             SliverToBoxAdapter(
               child: _ExploreSection(destinations: destinations),
             ),
-            SliverToBoxAdapter(
-              child: Padding(
-                padding: const EdgeInsets.fromLTRB(20, 8, 20, 8),
-                child: _GoalAndImportRow(
-                  onImport: () => _import(context, ref),
+            if (!isEmpty)
+              const SliverToBoxAdapter(
+                child: Padding(
+                  padding: EdgeInsets.only(top: 8),
+                  child: _StatsRow(),
                 ),
               ),
-            ),
             const SliverToBoxAdapter(child: _HomeFooter()),
             const SliverToBoxAdapter(child: SizedBox(height: 24)),
           ],
         ),
       ),
-    );
-  }
-
-  Future<void> _import(BuildContext context, WidgetRef ref) async {
-    final ScaffoldMessengerState messenger = ScaffoldMessenger.of(context);
-    final Result<ImportOutcome> result =
-        await ref.read(importPdfsProvider).call(const NoParams());
-    result.fold(
-      (failure) => messenger.showSnackBar(
-        SnackBar(content: Text('Import failed: ${failure.message}')),
-      ),
-      (ImportOutcome o) {
-        if (o.picked == 0) return; // cancelled
-        final String msg = o.added > 0
-            ? 'Imported ${o.added} PDF${o.added == 1 ? '' : 's'}'
-                '${o.duplicates > 0 ? ' · skipped ${o.duplicates} already added' : ''}'
-            : (o.duplicates == 1
-                ? 'That PDF is already in your library'
-                : 'Those PDFs are already in your library');
-        messenger.showSnackBar(SnackBar(content: Text(msg)));
-      },
     );
   }
 
@@ -284,12 +258,12 @@ class _GreetingRow extends StatelessWidget {
             ],
           ),
         ),
-        const SizedBox(width: 10),
+        const SizedBox(width: 8),
         _GlowIconButton(
           icon: isDark ? Icons.dark_mode_rounded : Icons.light_mode_rounded,
           onTap: onThemeTap,
         ),
-        const SizedBox(width: 10),
+        const SizedBox(width: 8),
         _GlowIconButton(icon: Icons.search_rounded, onTap: onSearchTap),
       ],
     ).animate().fadeIn(duration: 320.ms).slideY(begin: -0.08, end: 0);
@@ -322,8 +296,8 @@ class _GlowIconButtonState extends State<_GlowIconButton> {
         duration: const Duration(milliseconds: 120),
         curve: Curves.easeOut,
         child: Container(
-          width: 52,
-          height: 52,
+          width: 40,
+          height: 40,
           decoration: BoxDecoration(
             shape: BoxShape.circle,
             gradient: LinearGradient(
@@ -333,14 +307,13 @@ class _GlowIconButtonState extends State<_GlowIconButton> {
             ),
             boxShadow: <BoxShadow>[
               BoxShadow(
-                color: scheme.primary.withValues(alpha: 0.38),
-                blurRadius: 18,
-                spreadRadius: 1,
-                offset: const Offset(0, 6),
+                color: scheme.primary.withValues(alpha: 0.35),
+                blurRadius: 12,
+                offset: const Offset(0, 4),
               ),
             ],
           ),
-          child: Icon(widget.icon, color: scheme.onPrimary),
+          child: Icon(widget.icon, color: scheme.onPrimary, size: 19),
         ),
       ),
     );
@@ -531,15 +504,15 @@ class _HorizontalList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 244,
+      height: 200,
       child: ListView.separated(
         scrollDirection: Axis.horizontal,
         physics: const BouncingScrollPhysics(),
         padding: const EdgeInsets.symmetric(horizontal: 16),
         itemCount: itemCount,
-        separatorBuilder: (_, _) => const SizedBox(width: 14),
+        separatorBuilder: (_, _) => const SizedBox(width: 12),
         itemBuilder: (BuildContext context, int i) => SizedBox(
-          width: 152,
+          width: 124,
           child: _ElevatedCard(
             child: itemBuilder(context, i),
           ),
@@ -596,25 +569,28 @@ class _ContinueReadingColumn extends StatelessWidget {
           ),
         ),
         SizedBox(
-          height: 244,
+          height: 200,
           child: entries.length == 1
-              ? _ElevatedCard(
-                  child: DocumentCard(
-                    document: entries.first.document,
-                    progress: entries.first.percent,
-                    onOpen: () =>
-                        context.push(AppRoutes.reader(entries.first.document.id)),
+              ? SizedBox(
+                  width: 140,
+                  child: _ElevatedCard(
+                    child: DocumentCard(
+                      document: entries.first.document,
+                      progress: entries.first.percent,
+                      onOpen: () => context
+                          .push(AppRoutes.reader(entries.first.document.id)),
+                    ),
                   ),
                 )
               : ListView.separated(
                   scrollDirection: Axis.horizontal,
                   physics: const BouncingScrollPhysics(),
                   itemCount: entries.length,
-                  separatorBuilder: (_, _) => const SizedBox(width: 14),
+                  separatorBuilder: (_, _) => const SizedBox(width: 12),
                   itemBuilder: (BuildContext context, int i) {
                     final LibraryEntry e = entries[i];
                     return SizedBox(
-                      width: 152,
+                      width: 124,
                       child: _ElevatedCard(
                         child: DocumentCard(
                           document: e.document,
@@ -701,19 +677,19 @@ class _RecentDocRow extends StatelessWidget {
         borderRadius: BorderRadius.circular(16),
         onTap: onOpen,
         child: Padding(
-          padding: const EdgeInsets.all(10),
+          padding: const EdgeInsets.all(8),
           child: Row(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
               ClipRRect(
-                borderRadius: BorderRadius.circular(10),
+                borderRadius: BorderRadius.circular(8),
                 child: SizedBox(
-                  width: 46,
-                  height: 58,
+                  width: 36,
+                  height: 46,
                   child: _RecentDocThumb(document: document),
                 ),
               ),
-              const SizedBox(width: 10),
+              const SizedBox(width: 8),
               Expanded(
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -734,23 +710,23 @@ class _RecentDocRow extends StatelessWidget {
                         ),
                       ),
                     ),
-                    const SizedBox(height: 5),
+                    const SizedBox(height: 4),
                     Text(
                       document.title,
                       maxLines: 2,
                       overflow: TextOverflow.ellipsis,
-                      style: theme.textTheme.bodyMedium?.copyWith(
+                      style: theme.textTheme.bodySmall?.copyWith(
                         fontWeight: FontWeight.w700,
                         height: 1.2,
                       ),
                     ),
-                    const SizedBox(height: 4),
+                    const SizedBox(height: 3),
                     Text(
                       '${document.readableSize} · '
                       '${_relativeDayLabel(document.lastOpenedAt ?? document.importedAt)}',
                       maxLines: 1,
                       overflow: TextOverflow.ellipsis,
-                      style: theme.textTheme.bodySmall
+                      style: theme.textTheme.labelSmall
                           ?.copyWith(color: scheme.onSurfaceVariant),
                     ),
                   ],
@@ -895,12 +871,12 @@ class _ExploreSection extends StatelessWidget {
             padding: const EdgeInsets.symmetric(horizontal: 16),
             child: LayoutBuilder(
               builder: (BuildContext context, BoxConstraints constraints) {
-                const double spacing = 12;
-                // ~78 logical px per tile keeps labels/subtitles readable on
-                // a typical phone width and scales up cleanly on wider/
-                // desktop windows, without ever needing to cut words off.
+                const double spacing = 10;
+                // ~100 logical px per tile gives labels/subtitles enough
+                // room to lay out on a single line on a typical phone
+                // width, and scales up cleanly on wider/desktop windows.
                 final int columns =
-                    (constraints.maxWidth / 78).floor().clamp(3, 6);
+                    (constraints.maxWidth / 100).floor().clamp(3, 6);
                 final double tileWidth =
                     (constraints.maxWidth - spacing * (columns - 1)) /
                         columns;
@@ -971,29 +947,32 @@ class _ExploreTile extends StatelessWidget {
         child: Stack(
           children: <Widget>[
             Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 12),
+              padding: const EdgeInsets.symmetric(horizontal: 4, vertical: 12),
               child: Column(
                 mainAxisSize: MainAxisSize.min,
                 children: <Widget>[
-                  Icon(destination.icon, color: accent, size: 26),
-                  const SizedBox(height: 8),
+                  Icon(destination.icon, color: accent, size: 22),
+                  const SizedBox(height: 6),
                   Text(
                     destination.label,
                     textAlign: TextAlign.center,
-                    maxLines: 2,
+                    maxLines: 1,
                     overflow: TextOverflow.ellipsis,
-                    style: theme.textTheme.labelMedium
-                        ?.copyWith(fontWeight: FontWeight.w700, height: 1.15),
+                    style: theme.textTheme.labelSmall?.copyWith(
+                        fontWeight: FontWeight.w700, height: 1.15),
                   ),
                   if (destination.subtitle != null) ...[
-                    const SizedBox(height: 3),
+                    const SizedBox(height: 2),
                     Text(
                       destination.subtitle!,
                       textAlign: TextAlign.center,
-                      maxLines: 2,
+                      maxLines: 1,
                       overflow: TextOverflow.ellipsis,
                       style: theme.textTheme.labelSmall?.copyWith(
-                          color: scheme.onSurfaceVariant, height: 1.2),
+                        color: scheme.onSurfaceVariant,
+                        height: 1.2,
+                        fontSize: 10,
+                      ),
                     ),
                   ],
                 ],
@@ -1028,181 +1007,4 @@ class _ExploreTile extends StatelessWidget {
   }
 }
 
-/// Today's Goal (real data from Study Hub's daily goals) side-by-side with
-/// the Import PDF action.
-class _GoalAndImportRow extends ConsumerWidget {
-  const _GoalAndImportRow({required this.onImport});
-  final VoidCallback onImport;
 
-  @override
-  Widget build(BuildContext context, WidgetRef ref) {
-    return IntrinsicHeight(
-      child: Row(
-        crossAxisAlignment: CrossAxisAlignment.stretch,
-        children: <Widget>[
-          const Expanded(flex: 6, child: _TodaysGoalCard()),
-          const SizedBox(width: 12),
-          Expanded(flex: 5, child: _ImportPdfButton(onTap: onImport)),
-        ],
-      ),
-    );
-  }
-}
-
-class _TodaysGoalCard extends ConsumerWidget {
-  const _TodaysGoalCard();
-
-  @override
-  Widget build(BuildContext context, WidgetRef ref) {
-    final ThemeData theme = Theme.of(context);
-    final ColorScheme scheme = theme.colorScheme;
-    final AsyncValue<List<StudyGoal>> goalsAsync =
-        ref.watch(studyGoalsProvider);
-    final List<StudyGoal> goals = goalsAsync.maybeWhen(
-        data: (List<StudyGoal> g) => g, orElse: () => const <StudyGoal>[]);
-
-    final int total = goals.length;
-    final int done = goals.where((StudyGoal g) => g.achieved).length;
-    final double fraction = total == 0 ? 0 : done / total;
-
-    return Container(
-      padding: const EdgeInsets.all(18),
-      decoration: BoxDecoration(
-        color: scheme.surfaceContainerHigh,
-        borderRadius: BorderRadius.circular(22),
-        boxShadow: <BoxShadow>[
-          BoxShadow(
-            color: scheme.shadow.withValues(alpha: 0.08),
-            blurRadius: 14,
-            offset: const Offset(0, 6),
-          ),
-        ],
-      ),
-      child: InkWell(
-        borderRadius: BorderRadius.circular(22),
-        onTap: () => context.push(AppRoutes.studyHub),
-        child: Row(
-          children: <Widget>[
-            SizedBox(
-              width: 56,
-              height: 56,
-              child: Stack(
-                alignment: Alignment.center,
-                children: <Widget>[
-                  TweenAnimationBuilder<double>(
-                    tween: Tween<double>(begin: 0, end: fraction),
-                    duration: const Duration(milliseconds: 700),
-                    curve: Curves.easeOutCubic,
-                    builder: (BuildContext context, double value, _) =>
-                        CircularProgressIndicator(
-                      value: value,
-                      strokeWidth: 6,
-                      backgroundColor:
-                          scheme.outlineVariant.withValues(alpha: 0.4),
-                      valueColor: AlwaysStoppedAnimation<Color>(scheme.primary),
-                    ),
-                  ),
-                  Text(
-                    total == 0 ? '—' : '${(fraction * 100).round()}%',
-                    style: theme.textTheme.labelSmall
-                        ?.copyWith(fontWeight: FontWeight.w800),
-                  ),
-                ],
-              ),
-            ),
-            const SizedBox(width: 14),
-            Expanded(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                mainAxisSize: MainAxisSize.min,
-                children: <Widget>[
-                  Text(
-                    "Today's Goal",
-                    style: theme.textTheme.labelMedium
-                        ?.copyWith(color: scheme.onSurfaceVariant),
-                  ),
-                  const SizedBox(height: 2),
-                  Text(
-                    total == 0 ? 'Set a goal' : '$done / $total Topics',
-                    style: theme.textTheme.titleMedium
-                        ?.copyWith(fontWeight: FontWeight.w800),
-                  ),
-                ],
-              ),
-            ),
-          ],
-        ),
-      ),
-    );
-  }
-}
-
-class _ImportPdfButton extends StatefulWidget {
-  const _ImportPdfButton({required this.onTap});
-  final VoidCallback onTap;
-
-  @override
-  State<_ImportPdfButton> createState() => _ImportPdfButtonState();
-}
-
-class _ImportPdfButtonState extends State<_ImportPdfButton> {
-  bool _pressed = false;
-
-  @override
-  Widget build(BuildContext context) {
-    final ColorScheme scheme = Theme.of(context).colorScheme;
-    final ThemeData theme = Theme.of(context);
-
-    return GestureDetector(
-      onTapDown: (_) => setState(() => _pressed = true),
-      onTapCancel: () => setState(() => _pressed = false),
-      onTapUp: (_) => setState(() => _pressed = false),
-      onTap: widget.onTap,
-      child: AnimatedScale(
-        scale: _pressed ? 0.96 : 1.0,
-        duration: const Duration(milliseconds: 120),
-        curve: Curves.easeOut,
-        child: Container(
-          padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 16),
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(22),
-            gradient: LinearGradient(
-              begin: Alignment.topLeft,
-              end: Alignment.bottomRight,
-              colors: <Color>[scheme.primary, scheme.tertiary],
-            ),
-            boxShadow: <BoxShadow>[
-              BoxShadow(
-                color: scheme.primary.withValues(alpha: 0.35),
-                blurRadius: 18,
-                offset: const Offset(0, 8),
-              ),
-            ],
-          ),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-              Icon(Icons.upload_rounded, color: scheme.onPrimary, size: 26),
-              const SizedBox(height: 10),
-              Text(
-                'Import PDF',
-                style: theme.textTheme.titleSmall?.copyWith(
-                  color: scheme.onPrimary,
-                  fontWeight: FontWeight.w800,
-                ),
-              ),
-              const SizedBox(height: 2),
-              Text(
-                'Add and study anywhere',
-                style: theme.textTheme.bodySmall?.copyWith(
-                  color: scheme.onPrimary.withValues(alpha: 0.85),
-                ),
-              ),
-            ],
-          ),
-        ),
-      ),
-    );
-  }
-}
