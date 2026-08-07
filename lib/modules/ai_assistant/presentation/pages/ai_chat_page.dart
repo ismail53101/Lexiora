@@ -207,62 +207,38 @@ class _StreamingBubble extends ConsumerWidget {
     final ThemeData theme = Theme.of(context);
     final ColorScheme scheme = theme.colorScheme;
 
+    // Matches MessageBubble's assistant styling: no boxed bubble, full
+    // width, small sparkle + label header — so the reply doesn't visually
+    // "jump" into a different layout once streaming finishes.
     return Container(
-      margin: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
-      child: Row(
+      width: double.infinity,
+      margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+      child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         mainAxisSize: MainAxisSize.min,
         children: <Widget>[
-          Container(
-            width: 36,
-            height: 36,
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(10),
-              gradient: LinearGradient(
-                begin: Alignment.topLeft,
-                end: Alignment.bottomRight,
-                colors: <Color>[scheme.primary, scheme.tertiary],
-              ),
-            ),
-            alignment: Alignment.center,
-            child: Icon(Icons.auto_stories_rounded,
-                color: scheme.onPrimary, size: 18),
-          ),
-          const SizedBox(width: 8),
-          Flexible(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
+          Padding(
+            padding: const EdgeInsets.only(bottom: 4),
+            child: Row(
               mainAxisSize: MainAxisSize.min,
               children: <Widget>[
-                Padding(
-                  padding: const EdgeInsets.only(bottom: 4),
-                  child: Text(
-                    'AI Assistant',
-                    style: theme.textTheme.labelMedium?.copyWith(
-                      fontWeight: FontWeight.w700,
-                      color: scheme.primary,
-                    ),
+                Icon(Icons.auto_awesome_rounded, size: 14, color: scheme.primary),
+                const SizedBox(width: 5),
+                Text(
+                  'AI Assistant',
+                  style: theme.textTheme.labelMedium?.copyWith(
+                    fontWeight: FontWeight.w700,
+                    color: scheme.primary,
                   ),
-                ),
-                Container(
-                  constraints: BoxConstraints(
-                      maxWidth: MediaQuery.of(context).size.width * 0.72),
-                  padding: const EdgeInsets.fromLTRB(14, 12, 14, 12),
-                  decoration: BoxDecoration(
-                    color: scheme.surfaceContainerHighest,
-                    borderRadius: const BorderRadius.only(
-                      topLeft: Radius.circular(16),
-                      topRight: Radius.circular(16),
-                      bottomLeft: Radius.circular(4),
-                      bottomRight: Radius.circular(16),
-                    ),
-                  ),
-                  child: text.isEmpty
-                      ? const TypingIndicator()
-                      : AiMarkdown(data: text, color: scheme.onSurface),
                 ),
               ],
             ),
+          ),
+          SizedBox(
+            width: double.infinity,
+            child: text.isEmpty
+                ? const TypingIndicator()
+                : AiMarkdown(data: text, color: scheme.onSurface),
           ),
         ],
       ),

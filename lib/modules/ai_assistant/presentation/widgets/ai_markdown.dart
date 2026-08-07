@@ -5,6 +5,11 @@ import 'package:gpt_markdown/gpt_markdown.dart';
 /// Renders assistant Markdown: headings, bold/italic, bullet & numbered lists,
 /// tables, fenced code blocks, and LaTeX math ($...$ / $$...$$). Provider-output
 /// friendly via the `gpt_markdown` engine.
+///
+/// Headings are toned down to chat-appropriate sizes (a raw `#` from a model
+/// shouldn't render bigger than a screen title) and tables are wrapped in
+/// their own horizontally-scrollable, bordered card so a wide table scrolls
+/// sideways instead of being clipped off the edge of the screen.
 class AiMarkdown extends StatelessWidget {
   const AiMarkdown({super.key, required this.data, this.color});
 
@@ -14,15 +19,115 @@ class AiMarkdown extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final ThemeData theme = Theme.of(context);
-    return GptMarkdown(
-      data,
-      useDollarSignsForLatex: true,
-      style: theme.textTheme.bodyMedium?.copyWith(
-        color: color ?? theme.colorScheme.onSurface,
-        height: 1.45,
+    final ColorScheme scheme = theme.colorScheme;
+    final Color textColor = color ?? scheme.onSurface;
+
+    return GptMarkdownTheme(
+      gptThemeData: GptMarkdownThemeData(
+        brightness: theme.brightness,
+        linkColor: scheme.primary,
+        highlightColor: scheme.primary.withValues(alpha: 0.16),
+        h1: theme.textTheme.titleLarge
+            ?.copyWith(color: textColor, fontWeight: FontWeight.w800),
+        h2: theme.textTheme.titleMedium
+            ?.copyWith(color: textColor, fontWeight: FontWeight.w800),
+        h3: theme.textTheme.titleSmall
+            ?.copyWith(color: textColor, fontWeight: FontWeight.w800),
+        h4: theme.textTheme.bodyLarge
+            ?.copyWith(color: textColor, fontWeight: FontWeight.w800),
+        h5: theme.textTheme.bodyMedium
+            ?.copyWith(color: textColor, fontWeight: FontWeight.w800),
+        h6: theme.textTheme.bodyMedium
+            ?.copyWith(color: textColor, fontWeight: FontWeight.w700),
+        hrLineColor: scheme.outlineVariant,
+        hrLineThickness: 1,
       ),
-      codeBuilder: (BuildContext context, String name, String code, bool closed) =>
-          _CodeBlock(language: name, code: code),
+      child: GptMarkdown(
+        data,
+        useDollarSignsForLatex: true,
+        style: theme.textTheme.bodyMedium?.copyWith(
+          color: textColor,
+          height: 1.5,
+        ),
+        codeBuilder:
+            (BuildContext context, String name, String code, bool closed) =>
+                _CodeBlock(language: name, code: code),
+        // Left untyped (rather than spelling out the package's row/cell/config
+        // types) so Dart infers them from the `tableBuilder` parameter's own
+        // type — avoids coupling this file to gpt_markdown's exact internal
+        // type names, which have changed across versions.
+        tableBuilder: (context, rows, textStyle, config) =>
+            _MarkdownTable(rows: rows, textStyle: textStyle, color: textColor),
+      ),
+    );
+  }
+}
+
+/// A ChatGPT-style table: shaded header row, bordered cells, and horizontal
+/// scrolling so wide tables never get cut off by the screen edge — they just
+/// scroll sideways instead.
+class _MarkdownTable extends StatelessWidget {
+  const _MarkdownTable({
+    required this.rows,
+    required this.textStyle,
+    required this.color,
+  });
+
+  // Kept dynamic (not the package's row/cell type names) — those types
+  // aren't part of gpt_markdown's stable public export path across versions,
+  // so this reads `.isHeader` / `.fields` / `.data` / `.alignment` off
+  // whatever row/cell objects gpt_markdown hands back.
+  final List<dynamic> rows;
+  final TextStyle textStyle;
+  final Color color;
+
+  @override
+  Widget build(BuildContext context) {
+    final ThemeData theme = Theme.of(context);
+    final ColorScheme scheme = theme.colorScheme;
+
+    return Container(
+      margin: const EdgeInsets.symmetric(vertical: 8),
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(10),
+        border: Border.all(color: scheme.outlineVariant),
+      ),
+      clipBehavior: Clip.antiAlias,
+      child: SingleChildScrollView(
+        scrollDirection: Axis.horizontal,
+        child: Table(
+          defaultVerticalAlignment: TableCellVerticalAlignment.middle,
+          border: TableBorder(
+            horizontalInside: BorderSide(color: scheme.outlineVariant),
+            verticalInside: BorderSide(color: scheme.outlineVariant),
+          ),
+          children: <TableRow>[
+            for (final dynamic row in rows)
+              TableRow(
+                decoration: row.isHeader == true
+                    ? BoxDecoration(color: scheme.surfaceContainerHighest)
+                    : null,
+                children: <Widget>[
+                  for (final dynamic cell in row.fields as List<dynamic>)
+                    Padding(
+                      padding:
+                          const EdgeInsets.symmetric(horizontal: 12, vertical: 9),
+                      child: Text(
+                        '${cell.data}',
+                        textAlign: cell.alignment as TextAlign?,
+                        style: textStyle.copyWith(
+                          color: color,
+                          fontWeight: row.isHeader == true
+                              ? FontWeight.w700
+                              : FontWeight.w400,
+                        ),
+                      ),
+                    ),
+                ],
+              ),
+          ],
+        ),
+      ),
     );
   }
 }

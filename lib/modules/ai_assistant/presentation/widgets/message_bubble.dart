@@ -32,11 +32,16 @@ class MessageBubble extends StatelessWidget {
     final AiAttachment attachment = AiAttachment.parse(message.content);
     final String text = attachment.text;
 
+    // ChatGPT-style split: the user's own messages stay in a solid, rounded
+    // bubble on the right. Assistant replies get no bubble at all — just
+    // plain full-width text on the left, like the real ChatGPT app — so long
+    // answers (headings, tables, code) have the whole screen width to lay
+    // out in instead of being squeezed into a ~70%-wide box.
+    final bool useBubbleBox = _isUser || _isError;
+
     final Color bg = _isUser
         ? theme.colorScheme.primary
-        : (_isError
-            ? theme.colorScheme.errorContainer
-            : theme.colorScheme.surfaceContainerHighest);
+        : (_isError ? theme.colorScheme.errorContainer : Colors.transparent);
     final Color fg = _isUser
         ? theme.colorScheme.onPrimary
         : (_isError
@@ -48,6 +53,11 @@ class MessageBubble extends StatelessWidget {
       child: Row(
         mainAxisSize: MainAxisSize.min,
         children: <Widget>[
+          if (!_isUser) ...<Widget>[
+            Icon(Icons.auto_awesome_rounded,
+                size: 14, color: theme.colorScheme.primary),
+            const SizedBox(width: 5),
+          ],
           Text(
             _isUser ? 'You' : 'AI Assistant',
             style: theme.textTheme.labelMedium?.copyWith(
@@ -66,47 +76,54 @@ class MessageBubble extends StatelessWidget {
       ),
     );
 
+    final Widget bubbleBody = Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      mainAxisSize: MainAxisSize.min,
+      children: <Widget>[
+        if (attachment.hasImage) ...<Widget>[
+          _AttachedImage(path: attachment.imagePath!),
+          if (text.isNotEmpty || (_isError && text.isEmpty))
+            const SizedBox(height: 8),
+        ],
+        Padding(
+          padding:
+              EdgeInsets.symmetric(horizontal: attachment.hasImage ? 8 : 0),
+          child: _buildBody(context, text, fg),
+        ),
+      ],
+    );
+
     final Widget bubble = GestureDetector(
       onLongPress: () => _showActions(context, text),
-      child: Container(
-        constraints: BoxConstraints(
-          maxWidth: MediaQuery.of(context).size.width * (_isUser ? 0.82 : 0.72),
-        ),
-        padding: EdgeInsets.fromLTRB(
-            attachment.hasImage ? 6 : 14, 12, attachment.hasImage ? 6 : 14, 12),
-        decoration: BoxDecoration(
-          color: bg,
-          borderRadius: BorderRadius.only(
-            topLeft: const Radius.circular(16),
-            topRight: const Radius.circular(16),
-            bottomLeft: Radius.circular(_isUser ? 16 : 4),
-            bottomRight: Radius.circular(_isUser ? 4 : 16),
-          ),
-          boxShadow: <BoxShadow>[
-            BoxShadow(
-              color: theme.colorScheme.shadow.withValues(alpha: 0.05),
-              blurRadius: 6,
-              offset: const Offset(0, 2),
-            ),
-          ],
-        ),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          mainAxisSize: MainAxisSize.min,
-          children: <Widget>[
-            if (attachment.hasImage) ...<Widget>[
-              _AttachedImage(path: attachment.imagePath!),
-              if (text.isNotEmpty || (_isError && text.isEmpty))
-                const SizedBox(height: 8),
-            ],
-            Padding(
-              padding:
-                  EdgeInsets.symmetric(horizontal: attachment.hasImage ? 8 : 0),
-              child: _buildBody(context, text, fg),
-            ),
-          ],
-        ),
-      ),
+      child: useBubbleBox
+          ? Container(
+              constraints: BoxConstraints(
+                maxWidth: MediaQuery.of(context).size.width * 0.82,
+              ),
+              padding: EdgeInsets.fromLTRB(attachment.hasImage ? 6 : 14, 12,
+                  attachment.hasImage ? 6 : 14, 12),
+              decoration: BoxDecoration(
+                color: bg,
+                borderRadius: BorderRadius.only(
+                  topLeft: const Radius.circular(16),
+                  topRight: const Radius.circular(16),
+                  bottomLeft: Radius.circular(_isUser ? 16 : 4),
+                  bottomRight: Radius.circular(_isUser ? 4 : 16),
+                ),
+                boxShadow: _isUser
+                    ? <BoxShadow>[
+                        BoxShadow(
+                          color: theme.colorScheme.shadow.withValues(alpha: 0.05),
+                          blurRadius: 6,
+                          offset: const Offset(0, 2),
+                        ),
+                      ]
+                    : null,
+              ),
+              child: bubbleBody,
+            )
+          // Assistant, no error: plain text, full available width.
+          : SizedBox(width: double.infinity, child: bubbleBody),
     );
 
     final Widget content = Column(
@@ -118,7 +135,7 @@ class MessageBubble extends StatelessWidget {
         bubble,
         if (!_isUser)
           Padding(
-            padding: const EdgeInsets.only(top: 4),
+            padding: const EdgeInsets.only(top: 6),
             child: _ActionRow(
               onCopy: () => _copy(context, text),
               onRegenerate: onRegenerate,
@@ -136,17 +153,12 @@ class MessageBubble extends StatelessWidget {
       );
     }
 
+    // Assistant replies span the full row width (no avatar column) so text,
+    // headings and tables get every available pixel — same as ChatGPT.
     return Container(
-      margin: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
-      child: Row(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        mainAxisSize: MainAxisSize.min,
-        children: <Widget>[
-          const _AiAvatar(),
-          const SizedBox(width: 8),
-          Flexible(child: content),
-        ],
-      ),
+      width: double.infinity,
+      margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+      child: content,
     );
   }
 
@@ -292,30 +304,6 @@ class MessageBubble extends StatelessWidget {
   }
 }
 
-/// The small square gradient avatar shown beside assistant replies — reuses
-/// the app's own brand gradient and iconography, no extra image asset needed.
-class _AiAvatar extends StatelessWidget {
-  const _AiAvatar();
-
-  @override
-  Widget build(BuildContext context) {
-    final ColorScheme scheme = Theme.of(context).colorScheme;
-    return Container(
-      width: 36,
-      height: 36,
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(10),
-        gradient: LinearGradient(
-          begin: Alignment.topLeft,
-          end: Alignment.bottomRight,
-          colors: <Color>[scheme.primary, scheme.tertiary],
-        ),
-      ),
-      alignment: Alignment.center,
-      child: Icon(Icons.auto_stories_rounded, color: scheme.onPrimary, size: 18),
-    );
-  }
-}
 
 /// Copy / thumbs-up / thumbs-down / read-aloud quick actions under an
 /// assistant reply.
