@@ -63,9 +63,11 @@ class AiMarkdown extends StatelessWidget {
   }
 }
 
-/// A ChatGPT-style table: shaded header row, bordered cells, and horizontal
-/// scrolling so wide tables never get cut off by the screen edge — they just
-/// scroll sideways instead.
+/// A ChatGPT-style table: shaded header row, bordered cells. Text wraps
+/// within each column instead of scrolling sideways — the previous
+/// horizontal-scroll version let long cell text run off the right edge of
+/// the screen with no visual hint that there was more to see, which read as
+/// words being "hidden". Wrapping keeps every word on-screen up front.
 class _MarkdownTable extends StatelessWidget {
   const _MarkdownTable({
     required this.rows,
@@ -86,56 +88,57 @@ class _MarkdownTable extends StatelessWidget {
     final ThemeData theme = Theme.of(context);
     final ColorScheme scheme = theme.colorScheme;
 
+    // Every column gets an equal, bounded share of the available width
+    // (rather than sizing to its own content) — that's what lets long cell
+    // text wrap onto multiple lines instead of needing horizontal scroll.
+    final int columnCount = rows.isEmpty
+        ? 0
+        : (rows.first.fields as List<dynamic>).length;
+    final Map<int, TableColumnWidth> columnWidths = <int, TableColumnWidth>{
+      for (int i = 0; i < columnCount; i++) i: const FlexColumnWidth(),
+    };
+
     return Container(
+      width: double.infinity,
       margin: const EdgeInsets.symmetric(vertical: 8),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(10),
         border: Border.all(color: scheme.outlineVariant),
       ),
       clipBehavior: Clip.antiAlias,
-      child: SingleChildScrollView(
-        scrollDirection: Axis.horizontal,
-        child: Table(
-          // A plain Table defaults each column to FlexColumnWidth, which
-          // needs a *bounded* parent width to divide up — but this table
-          // sits inside a horizontally-scrolling view, which hands it an
-          // *unbounded* width. That mismatch was throwing a layout error on
-          // every table reply, which Flutter was silently swallowing into a
-          // blank/black box instead of showing the table. IntrinsicColumnWidth
-          // sizes each column from its own content instead, which works fine
-          // under unbounded width.
-          defaultColumnWidth: const IntrinsicColumnWidth(),
-          defaultVerticalAlignment: TableCellVerticalAlignment.middle,
-          border: TableBorder(
-            horizontalInside: BorderSide(color: scheme.outlineVariant),
-            verticalInside: BorderSide(color: scheme.outlineVariant),
-          ),
-          children: <TableRow>[
-            for (final dynamic row in rows)
-              TableRow(
-                decoration: row.isHeader == true
-                    ? BoxDecoration(color: scheme.surfaceContainerHighest)
-                    : null,
-                children: <Widget>[
-                  for (final dynamic cell in row.fields as List<dynamic>)
-                    Padding(
-                      padding:
-                          const EdgeInsets.symmetric(horizontal: 12, vertical: 9),
-                      child: Text(
-                        '${cell.data}',
-                        textAlign: cell.alignment as TextAlign?,
-                        style: textStyle.copyWith(
-                          color: color,
-                          fontWeight: row.isHeader == true
-                              ? FontWeight.w700
-                              : FontWeight.w400,
-                        ),
+      child: Table(
+        columnWidths: columnWidths,
+        defaultVerticalAlignment: TableCellVerticalAlignment.middle,
+        border: TableBorder(
+          horizontalInside: BorderSide(color: scheme.outlineVariant),
+          verticalInside: BorderSide(color: scheme.outlineVariant),
+        ),
+        children: <TableRow>[
+          for (final dynamic row in rows)
+            TableRow(
+              decoration: row.isHeader == true
+                  ? BoxDecoration(color: scheme.surfaceContainerHighest)
+                  : null,
+              children: <Widget>[
+                for (final dynamic cell in row.fields as List<dynamic>)
+                  Padding(
+                    padding:
+                        const EdgeInsets.symmetric(horizontal: 10, vertical: 9),
+                    child: Text(
+                      '${cell.data}',
+                      textAlign: cell.alignment as TextAlign?,
+                      softWrap: true,
+                      style: textStyle.copyWith(
+                        color: color,
+                        fontSize: 13,
+                        fontWeight:
+                            row.isHeader == true ? FontWeight.w700 : FontWeight.w400,
                       ),
                     ),
-                ],
-              ),
-          ],
-        ),
+                  ),
+              ],
+            ),
+        ],
       ),
     );
   }
