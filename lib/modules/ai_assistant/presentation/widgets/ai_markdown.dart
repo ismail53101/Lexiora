@@ -96,6 +96,15 @@ class _MarkdownTable extends StatelessWidget {
       child: SingleChildScrollView(
         scrollDirection: Axis.horizontal,
         child: Table(
+          // A plain Table defaults each column to FlexColumnWidth, which
+          // needs a *bounded* parent width to divide up — but this table
+          // sits inside a horizontally-scrolling view, which hands it an
+          // *unbounded* width. That mismatch was throwing a layout error on
+          // every table reply, which Flutter was silently swallowing into a
+          // blank/black box instead of showing the table. IntrinsicColumnWidth
+          // sizes each column from its own content instead, which works fine
+          // under unbounded width.
+          defaultColumnWidth: const IntrinsicColumnWidth(),
           defaultVerticalAlignment: TableCellVerticalAlignment.middle,
           border: TableBorder(
             horizontalInside: BorderSide(color: scheme.outlineVariant),
