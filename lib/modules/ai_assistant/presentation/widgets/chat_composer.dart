@@ -135,14 +135,14 @@ class _ChatComposerState extends ConsumerState<ChatComposer> {
     return SafeArea(
       top: false,
       child: Container(
-        padding: const EdgeInsets.fromLTRB(10, 8, 10, 10),
+        padding: const EdgeInsets.fromLTRB(16, 12, 16, 16),
         decoration: BoxDecoration(
           color: theme.colorScheme.surface,
           boxShadow: <BoxShadow>[
             BoxShadow(
-              color: theme.colorScheme.shadow.withValues(alpha: 0.06),
-              blurRadius: 12,
-              offset: const Offset(0, -2),
+              color: Colors.black.withValues(alpha: 0.05),
+              blurRadius: 16,
+              offset: const Offset(0, -4),
             ),
           ],
         ),
@@ -154,22 +154,24 @@ class _ChatComposerState extends ConsumerState<ChatComposer> {
                 path: _pendingImagePath!,
                 onRemove: () => setState(() => _pendingImagePath = null),
               ),
-              const SizedBox(height: 8),
+              const SizedBox(height: 12),
             ],
-            // One continuous rounded pill holding everything — attach, the
-            // text field, mic and send — matching the ChatGPT input bar,
-            // instead of separate floating icon buttons around a smaller
-            // pill.
             Container(
               decoration: BoxDecoration(
-                color: theme.colorScheme.surfaceContainerHighest
-                    .withValues(alpha: 0.55),
+                color: const Color(0xFF2B2B2B),
                 borderRadius: BorderRadius.circular(28),
                 border: Border.all(
-                  color:
-                      theme.colorScheme.outlineVariant.withValues(alpha: 0.4),
+                  color: Colors.white.withValues(alpha: 0.06),
                 ),
+                boxShadow: <BoxShadow>[
+                  BoxShadow(
+                    color: Colors.black.withValues(alpha: 0.2),
+                    blurRadius: 12,
+                    offset: const Offset(0, 4),
+                  ),
+                ],
               ),
+              padding: const EdgeInsets.all(4),
               child: Row(
                 crossAxisAlignment: CrossAxisAlignment.end,
                 children: <Widget>[
@@ -178,6 +180,7 @@ class _ChatComposerState extends ConsumerState<ChatComposer> {
                     enabled: widget.enabled,
                     onTap: _showAttachSheet,
                   ),
+                  const SizedBox(width: 4),
                   Expanded(
                     child: TextField(
                       controller: _controller,
@@ -185,29 +188,40 @@ class _ChatComposerState extends ConsumerState<ChatComposer> {
                       enabled: widget.enabled,
                       minLines: 1,
                       maxLines: 6,
+                      expands: false,
                       textInputAction: TextInputAction.newline,
                       keyboardType: TextInputType.multiline,
+                      style: const TextStyle(
+                        color: Colors.white,
+                        fontSize: 16,
+                        fontWeight: FontWeight.w400,
+                        height: 1.4,
+                      ),
                       decoration: InputDecoration(
                         hintText: widget.enabled
-                            ? 'Message the assistant…'
+                            ? 'Ask Sapiora'
                             : 'AI Assistant is not configured',
+                        hintStyle: const TextStyle(
+                          color: Color(0xFF8E8E93),
+                          fontSize: 16,
+                          fontWeight: FontWeight.w400,
+                        ),
                         border: InputBorder.none,
                         isCollapsed: true,
-                        contentPadding:
-                            const EdgeInsets.symmetric(vertical: 15),
+                        contentPadding: const EdgeInsets.symmetric(
+                          horizontal: 8,
+                          vertical: 14,
+                        ),
                       ),
                     ),
                   ),
-                  _MicButton(enabled: widget.enabled),
-                  Padding(
-                    padding: const EdgeInsets.only(right: 5),
-                    child: _SendStopButton(
-                      streaming: streaming,
-                      canSend: widget.enabled && _canSend,
-                      onSend: _send,
-                      onStop: () =>
-                          ref.read(aiChatControllerProvider.notifier).stop(),
-                    ),
+                  const SizedBox(width: 4),
+                  _SendStopButton(
+                    streaming: streaming,
+                    canSend: widget.enabled && _canSend,
+                    onSend: _send,
+                    onStop: () =>
+                        ref.read(aiChatControllerProvider.notifier).stop(),
                   ),
                 ],
               ),
@@ -232,35 +246,35 @@ class _AttachButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return IconButton(
-      tooltip: 'Attach an image',
-      onPressed: enabled && !busy ? onTap : null,
-      icon: busy
-          ? const SizedBox(
-              width: 20,
-              height: 20,
-              child: CircularProgressIndicator(strokeWidth: 2),
-            )
-          : const Icon(Icons.add_photo_alternate_outlined),
-    );
-  }
-}
-
-class _MicButton extends StatelessWidget {
-  const _MicButton({required this.enabled});
-  final bool enabled;
-
-  @override
-  Widget build(BuildContext context) {
-    return IconButton(
-      tooltip: 'Voice input — coming soon',
-      onPressed: enabled
-          ? () => ScaffoldMessenger.of(context)
-            ..hideCurrentSnackBar()
-            ..showSnackBar(const SnackBar(
-                content: Text('Voice input is coming in a future update.')))
-          : null,
-      icon: const Icon(Icons.mic_none_rounded),
+    return InkWell(
+      onTap: enabled && !busy ? onTap : null,
+      borderRadius: BorderRadius.circular(21),
+      child: Container(
+        width: 42,
+        height: 42,
+        decoration: const BoxDecoration(
+          shape: BoxShape.circle,
+          color: Color(0xFF3A3A3C),
+        ),
+        child: busy
+            ? const Center(
+                child: SizedBox(
+                  width: 20,
+                  height: 20,
+                  child: CircularProgressIndicator(
+                    strokeWidth: 2,
+                    color: Colors.white,
+                  ),
+                ),
+              )
+            : const Center(
+                child: Icon(
+                  Icons.add_rounded,
+                  color: Colors.white,
+                  size: 24,
+                ),
+              ),
+      ),
     );
   }
 }
@@ -332,42 +346,40 @@ class _SendStopButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final ThemeData theme = Theme.of(context);
     if (streaming) {
-      return IconButton.filled(
-        onPressed: onStop,
-        tooltip: 'Stop generating',
-        icon: const Icon(Icons.stop_rounded),
-        style: IconButton.styleFrom(
-          backgroundColor: theme.colorScheme.errorContainer,
-          foregroundColor: theme.colorScheme.onErrorContainer,
+      return InkWell(
+        onTap: onStop,
+        borderRadius: BorderRadius.circular(21),
+        child: Container(
+          width: 42,
+          height: 42,
+          decoration: const BoxDecoration(
+            shape: BoxShape.circle,
+            color: Color(0xFF3A3A3C),
+          ),
+          child: const Center(
+            child: Icon(Icons.stop_rounded, color: Colors.white, size: 24),
+          ),
         ),
       );
     }
     return AnimatedContainer(
       duration: const Duration(milliseconds: 150),
+      width: 42,
+      height: 42,
       decoration: BoxDecoration(
         shape: BoxShape.circle,
-        gradient: canSend
-            ? LinearGradient(
-                begin: Alignment.topLeft,
-                end: Alignment.bottomRight,
-                colors: <Color>[
-                  theme.colorScheme.primary,
-                  theme.colorScheme.tertiary,
-                ],
-              )
-            : null,
-        color: canSend ? null : theme.colorScheme.surfaceContainerHighest,
+        color: canSend ? const Color(0xFF0A84FF) : const Color(0xFF3A3A3C),
       ),
       child: IconButton(
         onPressed: canSend ? onSend : null,
         tooltip: 'Send',
-        icon: Icon(
-          Icons.arrow_upward_rounded,
-          color: canSend
-              ? theme.colorScheme.onPrimary
-              : theme.colorScheme.onSurfaceVariant.withValues(alpha: 0.5),
+        padding: EdgeInsets.zero,
+        disabledColor: Colors.white.withValues(alpha: 0.5),
+        color: Colors.white,
+        icon: const Icon(
+          Icons.north_rounded,
+          size: 24,
         ),
       ),
     );
