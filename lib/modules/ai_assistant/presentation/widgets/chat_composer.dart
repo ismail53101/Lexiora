@@ -156,26 +156,29 @@ class _ChatComposerState extends ConsumerState<ChatComposer> {
               ),
               const SizedBox(height: 8),
             ],
-            Row(
-              crossAxisAlignment: CrossAxisAlignment.end,
-              children: <Widget>[
-                _AttachButton(
-                  busy: _pickingImage,
-                  enabled: widget.enabled,
-                  onTap: _showAttachSheet,
+            // One continuous rounded pill holding everything — attach, the
+            // text field, mic and send — matching the ChatGPT input bar,
+            // instead of separate floating icon buttons around a smaller
+            // pill.
+            Container(
+              decoration: BoxDecoration(
+                color: theme.colorScheme.surfaceContainerHighest
+                    .withValues(alpha: 0.55),
+                borderRadius: BorderRadius.circular(28),
+                border: Border.all(
+                  color:
+                      theme.colorScheme.outlineVariant.withValues(alpha: 0.4),
                 ),
-                const SizedBox(width: 4),
-                Expanded(
-                  child: Container(
-                    decoration: BoxDecoration(
-                      color: theme.colorScheme.surfaceContainerHighest
-                          .withValues(alpha: 0.55),
-                      borderRadius: BorderRadius.circular(26),
-                      border: Border.all(
-                        color: theme.colorScheme.outlineVariant
-                            .withValues(alpha: 0.4),
-                      ),
-                    ),
+              ),
+              child: Row(
+                crossAxisAlignment: CrossAxisAlignment.end,
+                children: <Widget>[
+                  _AttachButton(
+                    busy: _pickingImage,
+                    enabled: widget.enabled,
+                    onTap: _showAttachSheet,
+                  ),
+                  Expanded(
                     child: TextField(
                       controller: _controller,
                       focusNode: _focus,
@@ -189,23 +192,25 @@ class _ChatComposerState extends ConsumerState<ChatComposer> {
                             ? 'Message the assistant…'
                             : 'AI Assistant is not configured',
                         border: InputBorder.none,
-                        contentPadding: const EdgeInsets.symmetric(
-                            horizontal: 18, vertical: 13),
+                        isCollapsed: true,
+                        contentPadding:
+                            const EdgeInsets.symmetric(vertical: 15),
                       ),
                     ),
                   ),
-                ),
-                const SizedBox(width: 8),
-                _MicButton(enabled: widget.enabled),
-                const SizedBox(width: 8),
-                _SendStopButton(
-                  streaming: streaming,
-                  canSend: widget.enabled && _canSend,
-                  onSend: _send,
-                  onStop: () =>
-                      ref.read(aiChatControllerProvider.notifier).stop(),
-                ),
-              ],
+                  _MicButton(enabled: widget.enabled),
+                  Padding(
+                    padding: const EdgeInsets.only(right: 5),
+                    child: _SendStopButton(
+                      streaming: streaming,
+                      canSend: widget.enabled && _canSend,
+                      onSend: _send,
+                      onStop: () =>
+                          ref.read(aiChatControllerProvider.notifier).stop(),
+                    ),
+                  ),
+                ],
+              ),
             ),
           ],
         ),
