@@ -8,8 +8,8 @@ import 'package:lexiora/modules/ai_assistant/presentation/providers/ai_providers
 import 'package:path_provider/path_provider.dart';
 import 'package:uuid/uuid.dart';
 
-/// The message input bar: text field, an image-attach button, and the
-/// send / stop toggle.
+/// The message input bar: a single ChatGPT-style rounded pill holding the
+/// attach button, the text field, and the send / stop toggle.
 class ChatComposer extends ConsumerStatefulWidget {
   const ChatComposer({super.key, required this.enabled});
 
@@ -129,20 +129,38 @@ class _ChatComposerState extends ConsumerState<ChatComposer> {
   @override
   Widget build(BuildContext context) {
     final ThemeData theme = Theme.of(context);
+    final ColorScheme scheme = theme.colorScheme;
+    final bool isDark = theme.brightness == Brightness.dark;
     final bool streaming = ref
         .watch(aiChatControllerProvider.select((AiChatState s) => s.streaming));
+
+    // Forced explicitly per-brightness rather than trusting
+    // `surfaceContainerHighest`/`onSurfaceVariant` alone: on this app's
+    // light theme those tokens were resolving dark enough that the "Ask
+    // Sapiora" hint text became almost invisible against the pill. Picking
+    // the pill background and hint/text colors directly by brightness
+    // guarantees real contrast in both themes.
+    final Color pillColor =
+        isDark ? const Color(0xFF2A2A2E) : const Color(0xFFF0F1F4);
+    final Color pillBorder = isDark
+        ? Colors.white.withValues(alpha: 0.10)
+        : Colors.black.withValues(alpha: 0.08);
+    final Color hintColor = isDark
+        ? Colors.white.withValues(alpha: 0.55)
+        : Colors.black.withValues(alpha: 0.45);
+    final Color inputTextColor = isDark ? Colors.white : Colors.black87;
 
     return SafeArea(
       top: false,
       child: Container(
-        padding: const EdgeInsets.fromLTRB(16, 12, 16, 16),
+        padding: const EdgeInsets.fromLTRB(10, 8, 10, 10),
         decoration: BoxDecoration(
-          color: theme.colorScheme.surface,
+          color: scheme.surface,
           boxShadow: <BoxShadow>[
             BoxShadow(
-              color: Colors.black.withValues(alpha: 0.05),
-              blurRadius: 16,
-              offset: const Offset(0, -4),
+              color: scheme.shadow.withValues(alpha: 0.06),
+              blurRadius: 12,
+              offset: const Offset(0, -2),
             ),
           ],
         ),
@@ -154,33 +172,35 @@ class _ChatComposerState extends ConsumerState<ChatComposer> {
                 path: _pendingImagePath!,
                 onRemove: () => setState(() => _pendingImagePath = null),
               ),
-              const SizedBox(height: 12),
+              const SizedBox(height: 8),
             ],
+            // One continuous rounded pill holding everything — attach, the
+            // text field, and send — matching the latest ChatGPT Android
+            // composer: a single dark capsule, no separate floating buttons.
             Container(
+              constraints: const BoxConstraints(minHeight: 52),
+              padding: const EdgeInsets.symmetric(horizontal: 6),
               decoration: BoxDecoration(
-                color: const Color(0xFF2B2B2B),
-                borderRadius: BorderRadius.circular(28),
-                border: Border.all(
-                  color: Colors.white.withValues(alpha: 0.06),
-                ),
+                color: pillColor,
+                borderRadius: BorderRadius.circular(30),
+                border: Border.all(color: pillBorder),
                 boxShadow: <BoxShadow>[
                   BoxShadow(
-                    color: Colors.black.withValues(alpha: 0.2),
-                    blurRadius: 12,
-                    offset: const Offset(0, 4),
+                    color: scheme.shadow.withValues(alpha: 0.08),
+                    blurRadius: 10,
+                    offset: const Offset(0, 3),
                   ),
                 ],
               ),
-              padding: const EdgeInsets.all(4),
               child: Row(
-                crossAxisAlignment: CrossAxisAlignment.end,
+                crossAxisAlignment: CrossAxisAlignment.center,
                 children: <Widget>[
                   _AttachButton(
                     busy: _pickingImage,
                     enabled: widget.enabled,
+                    iconColor: inputTextColor,
                     onTap: _showAttachSheet,
                   ),
-                  const SizedBox(width: 4),
                   Expanded(
                     child: TextField(
                       controller: _controller,
@@ -191,37 +211,33 @@ class _ChatComposerState extends ConsumerState<ChatComposer> {
                       expands: false,
                       textInputAction: TextInputAction.newline,
                       keyboardType: TextInputType.multiline,
-                      style: const TextStyle(
-                        color: Colors.white,
-                        fontSize: 16,
-                        fontWeight: FontWeight.w400,
-                        height: 1.4,
-                      ),
+                      textAlignVertical: TextAlignVertical.center,
+                      style:
+                          theme.textTheme.bodyLarge?.copyWith(color: inputTextColor),
+                      cursorColor: scheme.primary,
                       decoration: InputDecoration(
                         hintText: widget.enabled
                             ? 'Ask Sapiora'
-                            : 'AI Assistant is not configured',
-                        hintStyle: const TextStyle(
-                          color: Color(0xFF8E8E93),
-                          fontSize: 16,
-                          fontWeight: FontWeight.w400,
-                        ),
+                            : 'Sapiora is not configured',
+                        hintStyle: theme.textTheme.bodyLarge
+                            ?.copyWith(color: hintColor),
                         border: InputBorder.none,
                         isCollapsed: true,
-                        contentPadding: const EdgeInsets.symmetric(
-                          horizontal: 8,
-                          vertical: 14,
-                        ),
+                        contentPadding:
+                            const EdgeInsets.symmetric(vertical: 14),
                       ),
                     ),
                   ),
                   const SizedBox(width: 4),
-                  _SendStopButton(
-                    streaming: streaming,
-                    canSend: widget.enabled && _canSend,
-                    onSend: _send,
-                    onStop: () =>
-                        ref.read(aiChatControllerProvider.notifier).stop(),
+                  Padding(
+                    padding: const EdgeInsets.only(right: 2),
+                    child: _SendStopButton(
+                      streaming: streaming,
+                      canSend: widget.enabled && _canSend,
+                      onSend: _send,
+                      onStop: () =>
+                          ref.read(aiChatControllerProvider.notifier).stop(),
+                    ),
                   ),
                 ],
               ),
@@ -238,43 +254,31 @@ class _AttachButton extends StatelessWidget {
     required this.busy,
     required this.enabled,
     required this.onTap,
+    required this.iconColor,
   });
 
   final bool busy;
   final bool enabled;
   final VoidCallback onTap;
+  final Color iconColor;
 
   @override
   Widget build(BuildContext context) {
-    return InkWell(
-      onTap: enabled && !busy ? onTap : null,
-      borderRadius: BorderRadius.circular(21),
-      child: Container(
-        width: 42,
-        height: 42,
-        decoration: const BoxDecoration(
-          shape: BoxShape.circle,
-          color: Color(0xFF3A3A3C),
-        ),
-        child: busy
-            ? const Center(
-                child: SizedBox(
-                  width: 20,
-                  height: 20,
-                  child: CircularProgressIndicator(
-                    strokeWidth: 2,
-                    color: Colors.white,
-                  ),
-                ),
-              )
-            : const Center(
-                child: Icon(
-                  Icons.add_rounded,
-                  color: Colors.white,
-                  size: 24,
-                ),
+    return IconButton(
+      tooltip: 'Attach an image',
+      onPressed: enabled && !busy ? onTap : null,
+      visualDensity: VisualDensity.compact,
+      icon: busy
+          ? SizedBox(
+              width: 20,
+              height: 20,
+              child: CircularProgressIndicator(
+                strokeWidth: 2,
+                color: iconColor,
               ),
-      ),
+            )
+          : Icon(Icons.add_rounded,
+              color: enabled ? iconColor : iconColor.withValues(alpha: 0.4)),
     );
   }
 }
@@ -331,6 +335,11 @@ class _ImagePreviewChip extends StatelessWidget {
   }
 }
 
+/// The circular send / stop button — solid blue with an upward arrow while
+/// idle (matching ChatGPT), swapping to a filled stop icon while a reply is
+/// streaming. Sizing and behavior are unchanged; only the idle-state look
+/// was made to match ChatGPT's flat, solid-color circle instead of a
+/// gradient.
 class _SendStopButton extends StatelessWidget {
   const _SendStopButton({
     required this.streaming,
@@ -344,42 +353,48 @@ class _SendStopButton extends StatelessWidget {
   final VoidCallback onSend;
   final VoidCallback onStop;
 
+  static const double _size = 34;
+
   @override
   Widget build(BuildContext context) {
+    final ThemeData theme = Theme.of(context);
+    final ColorScheme scheme = theme.colorScheme;
+
     if (streaming) {
-      return InkWell(
-        onTap: onStop,
-        borderRadius: BorderRadius.circular(21),
-        child: Container(
-          width: 42,
-          height: 42,
-          decoration: const BoxDecoration(
-            shape: BoxShape.circle,
-            color: Color(0xFF3A3A3C),
-          ),
-          child: const Center(
-            child: Icon(Icons.stop_rounded, color: Colors.white, size: 24),
+      return SizedBox(
+        width: _size,
+        height: _size,
+        child: IconButton.filled(
+          onPressed: onStop,
+          tooltip: 'Stop generating',
+          padding: EdgeInsets.zero,
+          icon: const Icon(Icons.stop_rounded, size: 18),
+          style: IconButton.styleFrom(
+            backgroundColor: scheme.errorContainer,
+            foregroundColor: scheme.onErrorContainer,
           ),
         ),
       );
     }
+
     return AnimatedContainer(
       duration: const Duration(milliseconds: 150),
-      width: 42,
-      height: 42,
+      width: _size,
+      height: _size,
       decoration: BoxDecoration(
         shape: BoxShape.circle,
-        color: canSend ? const Color(0xFF0A84FF) : const Color(0xFF3A3A3C),
+        color: canSend ? scheme.primary : scheme.surfaceContainerHighest,
       ),
       child: IconButton(
         onPressed: canSend ? onSend : null,
         tooltip: 'Send',
         padding: EdgeInsets.zero,
-        disabledColor: Colors.white.withValues(alpha: 0.5),
-        color: Colors.white,
-        icon: const Icon(
-          Icons.north_rounded,
-          size: 24,
+        icon: Icon(
+          Icons.arrow_upward_rounded,
+          size: 19,
+          color: canSend
+              ? scheme.onPrimary
+              : scheme.onSurfaceVariant.withValues(alpha: 0.5),
         ),
       ),
     );
