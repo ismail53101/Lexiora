@@ -18,9 +18,10 @@ import 'package:lexiora/modules/study_hub/domain/entities/study_goal.dart';
 import 'package:lexiora/modules/study_hub/domain/study_dates.dart';
 import 'package:lexiora/modules/study_hub/presentation/providers/study_hub_providers.dart';
 
-/// The Home dashboard: a personal greeting, quick search, at-a-glance stats,
-/// Continue reading / Recent documents, Explore module grid, Today's Goal,
-/// and Import PDF — the app's landing tab.
+/// The Home dashboard: a personal greeting + quick search, the Explore
+/// module grid (brought up top so it's visible without scrolling),
+/// followed by Continue reading / Recent documents, Favorites and the
+/// at-a-glance stats row further down — the app's landing tab.
 class HomePage extends ConsumerWidget {
   const HomePage({super.key});
 
@@ -77,21 +78,20 @@ class HomePage extends ConsumerWidget {
                     label: const Text('Open library'),
                   ),
                 ),
-              )
-            else ...[
-              _continueAndRecentSection(context, continueReading, recent),
-              _docStrip(context, 'Favorites', favorites),
-            ],
+              ),
             SliverToBoxAdapter(
               child: _ExploreSection(destinations: destinations),
             ),
-            if (!isEmpty)
+            if (!isEmpty) ...[
+              _continueAndRecentSection(context, continueReading, recent),
+              _docStrip(context, 'Favorites', favorites),
               const SliverToBoxAdapter(
                 child: Padding(
                   padding: EdgeInsets.only(top: 8),
                   child: _StatsRow(),
                 ),
               ),
+            ],
             const SliverToBoxAdapter(child: _HomeFooter()),
             const SliverToBoxAdapter(child: SizedBox(height: 24)),
           ],
@@ -258,12 +258,12 @@ class _GreetingRow extends StatelessWidget {
             ],
           ),
         ),
-        const SizedBox(width: 8),
+        const SizedBox(width: 6),
         _GlowIconButton(
           icon: isDark ? Icons.dark_mode_rounded : Icons.light_mode_rounded,
           onTap: onThemeTap,
         ),
-        const SizedBox(width: 8),
+        const SizedBox(width: 6),
         _GlowIconButton(icon: Icons.search_rounded, onTap: onSearchTap),
       ],
     ).animate().fadeIn(duration: 320.ms).slideY(begin: -0.08, end: 0);
@@ -296,8 +296,8 @@ class _GlowIconButtonState extends State<_GlowIconButton> {
         duration: const Duration(milliseconds: 120),
         curve: Curves.easeOut,
         child: Container(
-          width: 40,
-          height: 40,
+          width: 34,
+          height: 34,
           decoration: BoxDecoration(
             shape: BoxShape.circle,
             gradient: LinearGradient(
@@ -307,13 +307,13 @@ class _GlowIconButtonState extends State<_GlowIconButton> {
             ),
             boxShadow: <BoxShadow>[
               BoxShadow(
-                color: scheme.primary.withValues(alpha: 0.35),
-                blurRadius: 12,
-                offset: const Offset(0, 4),
+                color: scheme.primary.withValues(alpha: 0.30),
+                blurRadius: 10,
+                offset: const Offset(0, 3),
               ),
             ],
           ),
-          child: Icon(widget.icon, color: scheme.onPrimary, size: 19),
+          child: Icon(widget.icon, color: scheme.onPrimary, size: 16),
         ),
       ),
     );
@@ -504,7 +504,7 @@ class _HorizontalList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 200,
+      height: 172,
       child: ListView.separated(
         scrollDirection: Axis.horizontal,
         physics: const BouncingScrollPhysics(),
@@ -512,7 +512,7 @@ class _HorizontalList extends StatelessWidget {
         itemCount: itemCount,
         separatorBuilder: (_, _) => const SizedBox(width: 12),
         itemBuilder: (BuildContext context, int i) => SizedBox(
-          width: 124,
+          width: 108,
           child: _ElevatedCard(
             child: itemBuilder(context, i),
           ),
@@ -569,10 +569,10 @@ class _ContinueReadingColumn extends StatelessWidget {
           ),
         ),
         SizedBox(
-          height: 200,
+          height: 172,
           child: entries.length == 1
               ? SizedBox(
-                  width: 140,
+                  width: 122,
                   child: _ElevatedCard(
                     child: DocumentCard(
                       document: entries.first.document,
@@ -590,7 +590,7 @@ class _ContinueReadingColumn extends StatelessWidget {
                   itemBuilder: (BuildContext context, int i) {
                     final LibraryEntry e = entries[i];
                     return SizedBox(
-                      width: 124,
+                      width: 108,
                       child: _ElevatedCard(
                         child: DocumentCard(
                           document: e.document,
@@ -947,31 +947,43 @@ class _ExploreTile extends StatelessWidget {
         child: Stack(
           children: <Widget>[
             Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 4, vertical: 12),
+              padding:
+                  const EdgeInsets.symmetric(horizontal: 3, vertical: 10),
               child: Column(
                 mainAxisSize: MainAxisSize.min,
                 children: <Widget>[
-                  Icon(destination.icon, color: accent, size: 22),
-                  const SizedBox(height: 6),
-                  Text(
-                    destination.label,
-                    textAlign: TextAlign.center,
-                    maxLines: 1,
-                    overflow: TextOverflow.ellipsis,
-                    style: theme.textTheme.labelSmall?.copyWith(
-                        fontWeight: FontWeight.w700, height: 1.15),
+                  Icon(destination.icon, color: accent, size: 20),
+                  const SizedBox(height: 5),
+                  // FittedBox scales the label down to fit the tile's width
+                  // instead of wrapping mid-word or getting cut off with an
+                  // ellipsis — every label always reads in full.
+                  FittedBox(
+                    fit: BoxFit.scaleDown,
+                    child: Text(
+                      destination.label,
+                      textAlign: TextAlign.center,
+                      maxLines: 1,
+                      softWrap: false,
+                      style: theme.textTheme.labelSmall?.copyWith(
+                          fontWeight: FontWeight.w700,
+                          height: 1.15,
+                          fontSize: 11),
+                    ),
                   ),
                   if (destination.subtitle != null) ...[
                     const SizedBox(height: 2),
-                    Text(
-                      destination.subtitle!,
-                      textAlign: TextAlign.center,
-                      maxLines: 1,
-                      overflow: TextOverflow.ellipsis,
-                      style: theme.textTheme.labelSmall?.copyWith(
-                        color: scheme.onSurfaceVariant,
-                        height: 1.2,
-                        fontSize: 10,
+                    FittedBox(
+                      fit: BoxFit.scaleDown,
+                      child: Text(
+                        destination.subtitle!,
+                        textAlign: TextAlign.center,
+                        maxLines: 1,
+                        softWrap: false,
+                        style: theme.textTheme.labelSmall?.copyWith(
+                          color: scheme.onSurfaceVariant,
+                          height: 1.2,
+                          fontSize: 9,
+                        ),
                       ),
                     ),
                   ],
