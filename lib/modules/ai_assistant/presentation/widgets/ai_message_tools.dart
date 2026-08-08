@@ -1,6 +1,5 @@
 import 'dart:io';
 
-import 'package:cross_file/cross_file.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_tts/flutter_tts.dart';
@@ -12,6 +11,9 @@ import 'package:path_provider/path_provider.dart';
 import 'package:pdf/pdf.dart' hide PdfDocument, PdfPage;
 import 'package:pdf/widgets.dart' as pw;
 import 'package:pdfrx/pdfrx.dart';
+// XFile itself comes from share_plus's own re-export of cross_file — no
+// separate cross_file import needed (and the analyzer flags it as
+// unnecessary if you add one).
 import 'package:share_plus/share_plus.dart';
 
 /// Pulls the plain text out of an existing PDF (e.g. one the user attaches
