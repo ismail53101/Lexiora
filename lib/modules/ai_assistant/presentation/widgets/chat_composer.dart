@@ -3,8 +3,11 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:lexiora/core/services/pdf_discovery_service.dart' show DeviceFile;
+import 'package:lexiora/core/services/pdf_import_service.dart';
 import 'package:lexiora/modules/ai_assistant/domain/entities/ai_attachment.dart';
 import 'package:lexiora/modules/ai_assistant/presentation/providers/ai_providers.dart';
+import 'package:lexiora/modules/ai_assistant/presentation/widgets/ai_message_tools.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:uuid/uuid.dart';
 
@@ -23,11 +26,13 @@ class _ChatComposerState extends ConsumerState<ChatComposer> {
   final TextEditingController _controller = TextEditingController();
   final FocusNode _focus = FocusNode();
   final ImagePicker _picker = ImagePicker();
+  final PdfImportService _pdfPicker = PdfImportService();
   static const Uuid _uuid = Uuid();
 
   bool _hasText = false;
   String? _pendingImagePath;
   bool _pickingImage = false;
+  bool _pickingPdf = false;
 
   @override
   void initState() {
@@ -83,6 +88,54 @@ class _ChatComposerState extends ConsumerState<ChatComposer> {
     return dir;
   }
 
+  /// Opens the same native PDF picker the Library's "Import PDF" uses, pulls
+  /// the plain text out of whichever file is chosen, and drops it into the
+  /// message box (with a clear `[PDF attached: ...]` marker) so the person
+  /// can add their own question before sending — same idea as the existing
+  /// image attachment, just for documents instead of photos.
+  Future<void> _attachPdf() async {
+    if (_pickingPdf) return;
+    setState(() => _pickingPdf = true);
+    final ScaffoldMessengerState messenger = ScaffoldMessenger.of(context);
+    try {
+      final List<DeviceFile> picked = await _pdfPicker.pickAndImport();
+      if (picked.isEmpty) return;
+      if (picked.length > 1 && mounted) {
+        messenger.showSnackBar(
+          const SnackBar(content: Text('Only the first PDF picked was attached.')),
+        );
+      }
+      final DeviceFile file = picked.first;
+      final String? extracted = await extractPdfPlainText(file.path);
+      if (!mounted) return;
+      if (extracted == null) {
+        messenger.showSnackBar(
+          const SnackBar(
+            content: Text(
+              "Couldn't read any text from that PDF (it may be a scanned "
+              'image with no text layer).',
+            ),
+          ),
+        );
+        return;
+      }
+      final String block = '[PDF attached: ${file.name}]\n$extracted\n\n';
+      final String existing = _controller.text;
+      _controller.text = block + existing;
+      _controller.selection =
+          TextSelection.collapsed(offset: _controller.text.length);
+      _focus.requestFocus();
+    } on Object {
+      if (mounted) {
+        messenger.showSnackBar(
+          const SnackBar(content: Text('Could not attach that PDF.')),
+        );
+      }
+    } finally {
+      if (mounted) setState(() => _pickingPdf = false);
+    }
+  }
+
   void _showAttachSheet() {
     showModalBottomSheet<void>(
       context: context,
@@ -105,6 +158,15 @@ class _ChatComposerState extends ConsumerState<ChatComposer> {
               onTap: () {
                 Navigator.of(sheetContext).pop();
                 _pickImage(ImageSource.camera);
+              },
+            ),
+            ListTile(
+              leading: const Icon(Icons.picture_as_pdf_outlined),
+              title: const Text('Attach a PDF'),
+              subtitle: const Text('Its text is added so you can ask about it'),
+              onTap: () {
+                Navigator.of(sheetContext).pop();
+                _attachPdf();
               },
             ),
             const SizedBox(height: 8),
@@ -196,7 +258,7 @@ class _ChatComposerState extends ConsumerState<ChatComposer> {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: <Widget>[
                   _AttachButton(
-                    busy: _pickingImage,
+                    busy: _pickingImage || _pickingPdf,
                     enabled: widget.enabled,
                     iconColor: inputTextColor,
                     onTap: _showAttachSheet,
