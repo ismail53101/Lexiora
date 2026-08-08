@@ -231,6 +231,7 @@ class AdminPanelPage extends ConsumerWidget {
       BuildContext context, WidgetRef ref, String categoryId) async {
     final ScaffoldMessengerState messenger = ScaffoldMessenger.of(context);
     final result = await ref.read(adminImportPdfsProvider).call(categoryId);
+    if (!context.mounted) return;
 
     if (result case Err(:final failure)) {
       messenger.showSnackBar(

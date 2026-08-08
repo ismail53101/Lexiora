@@ -35,10 +35,10 @@ void main() {
     test('exact duplicate is rejected', () {
       final QuizQuestion existing = mcq(
           'e1', 'b1', 'What is the capital of Punjab?',
-          options: const <String>['Lahore', 'Karachi', 'Peshawar'], answerIndex: 0);
+          options: const <String>['Lahore', 'Karachi', 'Peshawar']);
       final QuizQuestion candidate = mcq(
           'c1', 'b2', 'What is the capital of Punjab?',
-          options: const <String>['Lahore', 'Karachi', 'Peshawar'], answerIndex: 0);
+          options: const <String>['Lahore', 'Karachi', 'Peshawar']);
 
       final DuplicateVerdict v = checker.check(candidate, <QuizQuestion>[existing]);
       expect(v.isDuplicate, isTrue);
@@ -49,7 +49,7 @@ void main() {
     test('same question with reordered options is rejected', () {
       final QuizQuestion existing = mcq(
           'e1', 'b1', 'What is the capital of Punjab?',
-          options: const <String>['Lahore', 'Karachi', 'Peshawar'], answerIndex: 0);
+          options: const <String>['Lahore', 'Karachi', 'Peshawar']);
       final QuizQuestion candidate = mcq(
           'c1', 'b2', 'What is the capital of Punjab?',
           options: const <String>['Peshawar', 'Lahore', 'Karachi'], answerIndex: 1);
@@ -62,10 +62,10 @@ void main() {
     test('same question with different options is rejected', () {
       final QuizQuestion existing = mcq(
           'e1', 'b1', 'What is the capital of Punjab?',
-          options: const <String>['Lahore', 'Karachi', 'Peshawar'], answerIndex: 0);
+          options: const <String>['Lahore', 'Karachi', 'Peshawar']);
       final QuizQuestion candidate = mcq(
           'c1', 'b2', 'What is the capital of Punjab?',
-          options: const <String>['Lahore', 'Multan', 'Faisalabad'], answerIndex: 0);
+          options: const <String>['Lahore', 'Multan', 'Faisalabad']);
 
       final DuplicateVerdict v = checker.check(candidate, <QuizQuestion>[existing]);
       expect(v.isDuplicate, isTrue);
@@ -75,10 +75,10 @@ void main() {
     test('reworded duplicate with the same answer is rejected', () {
       final QuizQuestion existing = mcq(
           'e1', 'b1', 'What is the national animal of Pakistan?',
-          options: const <String>['Markhor', 'Lion', 'Tiger'], answerIndex: 0);
+          options: const <String>['Markhor', 'Lion', 'Tiger']);
       final QuizQuestion candidate = mcq(
           'c1', 'b2', 'Which animal is the national animal of Pakistan?',
-          options: const <String>['Markhor', 'Leopard', 'Bear'], answerIndex: 0);
+          options: const <String>['Markhor', 'Leopard', 'Bear']);
 
       final DuplicateVerdict v = checker.check(candidate, <QuizQuestion>[existing]);
       expect(v.isDuplicate, isTrue);
@@ -89,13 +89,13 @@ void main() {
       final QuizQuestion existing = mcq(
           'e1', 'b1',
           'Which companion of the Prophet was given the title Sword of Allah?',
-          options: const <String>['Khalid bin Waleed', 'Ali', 'Umar'], answerIndex: 0);
+          options: const <String>['Khalid bin Waleed', 'Ali', 'Umar']);
       // All of the candidate's significant tokens sit inside the longer
       // existing prompt, but its Jaccard overlap is below the reworded bar —
       // this is the same-concept (containment) case.
       final QuizQuestion candidate = mcq(
           'c1', 'b2', 'Sword of Allah was the title of whom?',
-          options: const <String>['Khalid bin Waleed', 'Abu Bakr', 'Uthman'], answerIndex: 0);
+          options: const <String>['Khalid bin Waleed', 'Abu Bakr', 'Uthman']);
 
       final DuplicateVerdict v = checker.check(candidate, <QuizQuestion>[existing]);
       expect(v.isDuplicate, isTrue);
@@ -110,7 +110,7 @@ void main() {
             'He asked me where was I going.',
             'He asked me that where I was going.',
           ],
-          answerIndex: 0);
+          );
       final QuizQuestion candidate = mcq(
           'c1', 'b2', 'Choose the correct sentence:',
           options: const <String>[
@@ -118,7 +118,7 @@ void main() {
             'He is afraid from dogs.',
             'He is afraid at dogs.',
           ],
-          answerIndex: 0);
+          );
 
       final DuplicateVerdict v = checker.check(candidate, <QuizQuestion>[existing]);
       expect(v.isDuplicate, isFalse, reason: 'different sentences = different questions');
@@ -132,7 +132,7 @@ void main() {
             'He asked me where was I going.',
             'He asked me that where I was going.',
           ],
-          answerIndex: 0);
+          );
       final QuizQuestion candidate = mcq(
           'c1', 'b2', 'Choose the correct sentence:',
           options: const <String>[
@@ -140,7 +140,7 @@ void main() {
             'He asked me where I had gone.',
             'He asked me where was I going.',
           ],
-          answerIndex: 0);
+          );
 
       final DuplicateVerdict v = checker.check(candidate, <QuizQuestion>[existing]);
       expect(v.isDuplicate, isTrue);
@@ -151,10 +151,10 @@ void main() {
       // Both are Iskander Mirza, but they ask different facts (office vs office).
       final QuizQuestion existing = mcq(
           'e1', 'b1', 'Who was the first President of Pakistan?',
-          options: const <String>['Iskander Mirza', 'Ayub Khan', 'Yahya Khan'], answerIndex: 0);
+          options: const <String>['Iskander Mirza', 'Ayub Khan', 'Yahya Khan']);
       final QuizQuestion candidate = mcq(
           'c1', 'b2', 'Who was the last Governor-General of Pakistan?',
-          options: const <String>['Iskander Mirza', 'Ghulam Muhammad', 'Malik Ghulam'], answerIndex: 0);
+          options: const <String>['Iskander Mirza', 'Ghulam Muhammad', 'Malik Ghulam']);
 
       final DuplicateVerdict v = checker.check(candidate, <QuizQuestion>[existing]);
       expect(v.isDuplicate, isFalse);
@@ -163,10 +163,10 @@ void main() {
     test('same answer but a DIFFERENT landmark is kept (unique)', () {
       final QuizQuestion existing = mcq(
           'e1', 'b1', 'Where is the Badshahi Mosque located?',
-          options: const <String>['Lahore', 'Karachi', 'Multan'], answerIndex: 0);
+          options: const <String>['Lahore', 'Karachi', 'Multan']);
       final QuizQuestion candidate = mcq(
           'c1', 'b2', 'Where are the Shalimar Gardens located?',
-          options: const <String>['Lahore', 'Peshawar', 'Quetta'], answerIndex: 0);
+          options: const <String>['Lahore', 'Peshawar', 'Quetta']);
 
       final DuplicateVerdict v = checker.check(candidate, <QuizQuestion>[existing]);
       expect(v.isDuplicate, isFalse);
@@ -175,10 +175,10 @@ void main() {
     test('genuinely new question passes', () {
       final QuizQuestion existing = mcq(
           'e1', 'b1', 'What is the capital of Punjab?',
-          options: const <String>['Lahore', 'Karachi', 'Peshawar'], answerIndex: 0);
+          options: const <String>['Lahore', 'Karachi', 'Peshawar']);
       final QuizQuestion candidate = mcq(
           'c1', 'b2', 'Who wrote the national anthem of Pakistan?',
-          options: const <String>['Hafeez Jalandhari', 'Allama Iqbal', 'Faiz'], answerIndex: 0);
+          options: const <String>['Hafeez Jalandhari', 'Allama Iqbal', 'Faiz']);
 
       final DuplicateVerdict v = checker.check(candidate, <QuizQuestion>[existing]);
       expect(v.isDuplicate, isFalse);
@@ -212,19 +212,19 @@ void main() {
       // Pre-existing content in the bank (never to be modified).
       await repo.saveQuestion(mcq(
           'e1', 'b1', 'What is the capital of Punjab?',
-          options: const <String>['Lahore', 'Karachi', 'Peshawar'], answerIndex: 0));
+          options: const <String>['Lahore', 'Karachi', 'Peshawar']));
 
       final QuizDedupReport report = await admin.addGeneratedQuestions(
         bankId: 'b1',
         candidates: <QuizQuestion>[
           mcq('c1', 'b1', 'What is the capital of Punjab?', // exact dup
-              options: const <String>['Lahore', 'Karachi', 'Peshawar'], answerIndex: 0),
+              options: const <String>['Lahore', 'Karachi', 'Peshawar']),
           mcq('c2', 'b1', 'Which city is the capital of Punjab?', // reworded dup
-              options: const <String>['Lahore', 'Multan', 'Sialkot'], answerIndex: 0),
+              options: const <String>['Lahore', 'Multan', 'Sialkot']),
           mcq('c3', 'b1', 'Who wrote the national anthem of Pakistan?', // unique
-              options: const <String>['Hafeez Jalandhari', 'Iqbal', 'Faiz'], answerIndex: 0),
+              options: const <String>['Hafeez Jalandhari', 'Iqbal', 'Faiz']),
           mcq('c4', 'b1', 'When did Pakistan gain independence?', // unique
-              options: const <String>['1947', '1948', '1956'], answerIndex: 0),
+              options: const <String>['1947', '1948', '1956']),
         ],
       );
 
@@ -255,9 +255,9 @@ void main() {
         bankId: 'b1',
         candidates: <QuizQuestion>[
           mcq('c1', 'b1', 'What is the antonym of "ancient"?',
-              options: const <String>['Modern', 'Old', 'Elderly'], answerIndex: 0),
+              options: const <String>['Modern', 'Old', 'Elderly']),
           mcq('c2', 'b1', 'What is the antonym of "ancient"?',
-              options: const <String>['Modern', 'Old', 'Elderly'], answerIndex: 0),
+              options: const <String>['Modern', 'Old', 'Elderly']),
         ],
       );
 
@@ -272,7 +272,7 @@ void main() {
           id: 'b1', name: 'GSA', createdAt: now, updatedAt: now));
       final List<QuizQuestion> candidates = <QuizQuestion>[
         mcq('c1', 'b1', 'What is the SI unit of force?',
-            options: const <String>['Newton', 'Joule', 'Watt'], answerIndex: 0),
+            options: const <String>['Newton', 'Joule', 'Watt']),
       ];
 
       final QuizDedupReport first = await admin.addGeneratedQuestions(

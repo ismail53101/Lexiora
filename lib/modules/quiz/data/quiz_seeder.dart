@@ -45,7 +45,10 @@ class QuizSeeder {
     // Drop any legacy demo rows so the bundled banks are the single source of
     // bundled content (demo subjects cascade their topics, banks, questions).
     for (final subjectRow in await _local.allSubjects()) {
-      if (subjectRow.source == QuizConstants.demoSource) {
+      // The legacy demo seeder used fixed `demo_*` ids; `source` is an
+      // in-memory-only entity field (never persisted on the row), so the id
+      // prefix is the reliable way to detect and remove demo content here.
+      if (subjectRow.id.startsWith('demo_')) {
         await _repo.deleteSubject(subjectRow.id);
       }
     }
@@ -80,7 +83,6 @@ class QuizSeeder {
               id: topicId,
               subjectId: subjectId,
               name: topicName,
-              orderIndex: 0,
               createdAt: now,
               updatedAt: now,
             ));
