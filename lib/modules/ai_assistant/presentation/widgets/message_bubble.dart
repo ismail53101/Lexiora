@@ -177,7 +177,13 @@ class MessageBubble extends StatelessWidget {
     }
     final Widget body = _isUser
         ? SelectableText(text, style: TextStyle(color: fg))
-        : AiMarkdown(data: text, color: fg);
+        : (_isError
+            ? AiMarkdown(data: text, color: fg)
+            // Long assistant replies collapse behind a "Show more" toggle,
+            // like ChatGPT — this is baked into the widget itself, so it
+            // applies to every reply for every person using the app, not
+            // just something turned on for one user.
+            : _ExpandableAiBody(text: text, color: fg));
    final Widget selectableBody = SelectionArea(
   contextMenuBuilder: (BuildContext context, SelectableRegionState state) {
     return AdaptiveTextSelectionToolbar.buttonItems(
@@ -357,7 +363,169 @@ class _ActionRow extends StatelessWidget {
   }
 }
 
-/// The thumbnail for an image attached to a user message — tap to view it
+/// Wraps an assistant reply's rendered Markdown and, once it's tall enough
+/// to feel like a wall of text, collapses it behind a fixed-height preview
+/// with a bottom fade and a "Show more" toggle — the same pattern ChatGPT
+/// uses. Short replies that never exceed the preview height render exactly
+/// as before, with no toggle at all.
+class _ExpandableAiBody extends StatefulWidget {
+  const _ExpandableAiBody({required this.text, required this.color});
+
+  final String text;
+  final Color color;
+
+  @override
+  State<_ExpandableAiBody> createState() => _ExpandableAiBodyState();
+}
+
+class _ExpandableAiBodyState extends State<_ExpandableAiBody> {
+  static const double _collapsedHeight = 260;
+
+  final GlobalKey _measureKey = GlobalKey();
+  bool _measured = false;
+  bool _overflows = false;
+  bool _expanded = false;
+
+  @override
+  void initState() {
+    super.initState();
+    WidgetsBinding.instance.addPostFrameCallback((_) => _measure());
+  }
+
+  @override
+  void didUpdateWidget(covariant _ExpandableAiBody oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    if (oldWidget.text != widget.text) {
+      // Re-measure if the message content itself ever changes in place
+      // (e.g. a retried/edited reply swapped in for the same bubble).
+      _measured = false;
+      WidgetsBinding.instance.addPostFrameCallback((_) => _measure());
+    }
+  }
+
+  void _measure() {
+    final RenderBox? box =
+        _measureKey.currentContext?.findRenderObject() as RenderBox?;
+    if (box == null || !mounted) return;
+    final bool overflow = box.size.height > _collapsedHeight + 8;
+    setState(() {
+      _measured = true;
+      _overflows = overflow;
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final Widget content = AiMarkdown(data: widget.text, color: widget.color);
+
+    if (!_measured) {
+      // First frame only: laid out off-screen purely to measure its
+      // natural height, so there's no flash of full-length content before
+      // deciding whether it needs to collapse.
+      return Offstage(child: Container(key: _measureKey, child: content));
+    }
+
+    if (!_overflows || _expanded) {
+      return Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        mainAxisSize: MainAxisSize.min,
+        children: <Widget>[
+          content,
+          if (_overflows)
+            _ShowMoreToggle(
+              expanded: true,
+              onTap: () => setState(() => _expanded = false),
+            ),
+        ],
+      );
+    }
+
+    final Color fade = Theme.of(context).scaffoldBackgroundColor;
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      mainAxisSize: MainAxisSize.min,
+      children: <Widget>[
+        ClipRect(
+          child: SizedBox(
+            height: _collapsedHeight,
+            child: Stack(
+              children: <Widget>[
+                Align(
+                  alignment: Alignment.topLeft,
+                  child: OverflowBox(
+                    alignment: Alignment.topLeft,
+                    minHeight: 0,
+                    maxHeight: double.infinity,
+                    child: content,
+                  ),
+                ),
+                Positioned(
+                  left: 0,
+                  right: 0,
+                  bottom: 0,
+                  child: IgnorePointer(
+                    child: Container(
+                      height: 48,
+                      decoration: BoxDecoration(
+                        gradient: LinearGradient(
+                          begin: Alignment.topCenter,
+                          end: Alignment.bottomCenter,
+                          colors: <Color>[
+                            fade.withValues(alpha: 0),
+                            fade,
+                          ],
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ),
+        _ShowMoreToggle(
+          expanded: false,
+          onTap: () => setState(() => _expanded = true),
+        ),
+      ],
+    );
+  }
+}
+
+class _ShowMoreToggle extends StatelessWidget {
+  const _ShowMoreToggle({required this.expanded, required this.onTap});
+
+  final bool expanded;
+  final VoidCallback onTap;
+
+  @override
+  Widget build(BuildContext context) {
+    final ColorScheme scheme = Theme.of(context).colorScheme;
+    return InkWell(
+      onTap: onTap,
+      borderRadius: BorderRadius.circular(8),
+      child: Padding(
+        padding: const EdgeInsets.symmetric(vertical: 6),
+        child: Row(
+          mainAxisSize: MainAxisSize.min,
+          children: <Widget>[
+            Text(
+              expanded ? 'Show less' : 'Show more',
+              style: TextStyle(color: scheme.primary, fontWeight: FontWeight.w700),
+            ),
+            Icon(
+              expanded
+                  ? Icons.keyboard_arrow_up_rounded
+                  : Icons.keyboard_arrow_down_rounded,
+              color: scheme.primary,
+              size: 20,
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}/// The thumbnail for an image attached to a user message — tap to view it
 /// full-screen.
 class _AttachedImage extends StatelessWidget {
   const _AttachedImage({required this.path});
