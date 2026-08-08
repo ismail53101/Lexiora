@@ -175,16 +175,28 @@ class MessageBubble extends StatelessWidget {
         ],
       );
     }
+    // The "Show more" collapse belongs on the USER's own messages — someone
+    // pasting a long article to ask the assistant about it shouldn't have
+    // that whole block filling the screen — not on the assistant's replies,
+    // which should always render in full.
     final Widget body = _isUser
-        ? SelectableText(text, style: TextStyle(color: fg))
-        : (_isError
-            ? AiMarkdown(data: text, color: fg)
-            // Long assistant replies collapse behind a "Show more" toggle,
-            // like ChatGPT — this is baked into the widget itself, so it
-            // applies to every reply for every person using the app, not
-            // just something turned on for one user.
-            : _ExpandableAiBody(text: text, color: fg));
-   final Widget selectableBody = SelectionArea(
+        ? _ExpandableUserText(text: text, color: fg)
+        : AiMarkdown(data: text, color: fg);
+    // A visible, explicit selection highlight — on this app's theme the
+    // ambient TextSelectionTheme color was blending into the bubble/page
+    // background, so a long-press selection was there but invisible. User
+    // bubbles get a light overlay (readable against the solid primary
+    // background); assistant text (no background) gets a tinted-primary
+    // highlight, same as most reading apps.
+    final Widget selectableBody = Theme(
+      data: Theme.of(context).copyWith(
+        textSelectionTheme: TextSelectionThemeData(
+          selectionColor: _isUser
+              ? Colors.white.withValues(alpha: 0.35)
+              : Theme.of(context).colorScheme.primary.withValues(alpha: 0.28),
+        ),
+      ),
+      child: SelectionArea(
   contextMenuBuilder: (BuildContext context, SelectableRegionState state) {
     return AdaptiveTextSelectionToolbar.buttonItems(
       anchors: state.contextMenuAnchors,
@@ -208,6 +220,7 @@ class MessageBubble extends StatelessWidget {
     );
   },
   child: body,
+),
 );
     if (_isError && text.trim().isNotEmpty) {
       final ThemeData theme = Theme.of(context);
@@ -366,20 +379,24 @@ class _ActionRow extends StatelessWidget {
 /// Wraps an assistant reply's rendered Markdown and, once it's tall enough
 /// to feel like a wall of text, collapses it behind a fixed-height preview
 /// with a bottom fade and a "Show more" toggle — the same pattern ChatGPT
-/// uses. Short replies that never exceed the preview height render exactly
-/// as before, with no toggle at all.
-class _ExpandableAiBody extends StatefulWidget {
-  const _ExpandableAiBody({required this.text, required this.color});
+/// Wraps a user-sent message and, once it's tall enough to feel like a wall
+/// of text (e.g. a whole article pasted in to ask the assistant about),
+/// collapses it behind a fixed-height preview with a bottom fade and a
+/// "Show more" toggle — the same pattern ChatGPT uses. Short messages that
+/// never exceed the preview height render exactly as before, with no
+/// toggle at all.
+class _ExpandableUserText extends StatefulWidget {
+  const _ExpandableUserText({required this.text, required this.color});
 
   final String text;
   final Color color;
 
   @override
-  State<_ExpandableAiBody> createState() => _ExpandableAiBodyState();
+  State<_ExpandableUserText> createState() => _ExpandableUserTextState();
 }
 
-class _ExpandableAiBodyState extends State<_ExpandableAiBody> {
-  static const double _collapsedHeight = 260;
+class _ExpandableUserTextState extends State<_ExpandableUserText> {
+  static const double _collapsedHeight = 220;
 
   final GlobalKey _measureKey = GlobalKey();
   bool _measured = false;
@@ -393,11 +410,11 @@ class _ExpandableAiBodyState extends State<_ExpandableAiBody> {
   }
 
   @override
-  void didUpdateWidget(covariant _ExpandableAiBody oldWidget) {
+  void didUpdateWidget(covariant _ExpandableUserText oldWidget) {
     super.didUpdateWidget(oldWidget);
     if (oldWidget.text != widget.text) {
       // Re-measure if the message content itself ever changes in place
-      // (e.g. a retried/edited reply swapped in for the same bubble).
+      // (e.g. a retried/edited message swapped in for the same bubble).
       _measured = false;
       WidgetsBinding.instance.addPostFrameCallback((_) => _measure());
     }
@@ -416,7 +433,8 @@ class _ExpandableAiBodyState extends State<_ExpandableAiBody> {
 
   @override
   Widget build(BuildContext context) {
-    final Widget content = AiMarkdown(data: widget.text, color: widget.color);
+    final Widget content =
+        SelectableText(widget.text, style: TextStyle(color: widget.color));
 
     if (!_measured) {
       // First frame only: laid out off-screen purely to measure its
@@ -434,13 +452,17 @@ class _ExpandableAiBodyState extends State<_ExpandableAiBody> {
           if (_overflows)
             _ShowMoreToggle(
               expanded: true,
+              color: widget.color,
               onTap: () => setState(() => _expanded = false),
             ),
         ],
       );
     }
 
-    final Color fade = Theme.of(context).scaffoldBackgroundColor;
+    // Fades to the bubble's own background (solid primary color), not the
+    // page background — this preview sits inside the colored user bubble,
+    // not directly on the scaffold.
+    final Color fade = Theme.of(context).colorScheme.primary;
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       mainAxisSize: MainAxisSize.min,
@@ -485,6 +507,7 @@ class _ExpandableAiBodyState extends State<_ExpandableAiBody> {
         ),
         _ShowMoreToggle(
           expanded: false,
+          color: widget.color,
           onTap: () => setState(() => _expanded = true),
         ),
       ],
@@ -493,14 +516,23 @@ class _ExpandableAiBodyState extends State<_ExpandableAiBody> {
 }
 
 class _ShowMoreToggle extends StatelessWidget {
-  const _ShowMoreToggle({required this.expanded, required this.onTap});
+  const _ShowMoreToggle({
+    required this.expanded,
+    required this.onTap,
+    this.color,
+  });
 
   final bool expanded;
   final VoidCallback onTap;
+  // Explicit override for when this sits inside a solid-colored bubble
+  // (e.g. the primary-colored user bubble) — falls back to the theme's
+  // primary color for the no-background assistant case.
+  final Color? color;
 
   @override
   Widget build(BuildContext context) {
     final ColorScheme scheme = Theme.of(context).colorScheme;
+    final Color tint = color ?? scheme.primary;
     return InkWell(
       onTap: onTap,
       borderRadius: BorderRadius.circular(8),
@@ -511,13 +543,13 @@ class _ShowMoreToggle extends StatelessWidget {
           children: <Widget>[
             Text(
               expanded ? 'Show less' : 'Show more',
-              style: TextStyle(color: scheme.primary, fontWeight: FontWeight.w700),
+              style: TextStyle(color: tint, fontWeight: FontWeight.w700),
             ),
             Icon(
               expanded
                   ? Icons.keyboard_arrow_up_rounded
                   : Icons.keyboard_arrow_down_rounded,
-              color: scheme.primary,
+              color: tint,
               size: 20,
             ),
           ],
@@ -525,7 +557,9 @@ class _ShowMoreToggle extends StatelessWidget {
       ),
     );
   }
-}/// The thumbnail for an image attached to a user message — tap to view it
+}
+
+/// The thumbnail for an image attached to a user message — tap to view it
 /// full-screen.
 class _AttachedImage extends StatelessWidget {
   const _AttachedImage({required this.path});
