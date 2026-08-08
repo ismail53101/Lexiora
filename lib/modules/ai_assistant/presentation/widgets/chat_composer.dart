@@ -255,7 +255,6 @@ class _ChatComposerState extends ConsumerState<ChatComposer> {
                 ],
               ),
               child: Row(
-                crossAxisAlignment: CrossAxisAlignment.center,
                 children: <Widget>[
                   _AttachButton(
                     busy: _pickingImage || _pickingPdf,
@@ -270,7 +269,6 @@ class _ChatComposerState extends ConsumerState<ChatComposer> {
                       enabled: widget.enabled,
                       minLines: 1,
                       maxLines: 6,
-                      expands: false,
                       textInputAction: TextInputAction.newline,
                       keyboardType: TextInputType.multiline,
                       textAlignVertical: TextAlignVertical.center,

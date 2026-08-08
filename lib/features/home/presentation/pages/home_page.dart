@@ -47,7 +47,6 @@ class HomePage extends ConsumerWidget {
 
     return Scaffold(
       bottomNavigationBar: const AppBottomNav(currentIndex: 0),
-      floatingActionButton: null,
       body: SafeArea(
         bottom: false,
         child: CustomScrollView(
@@ -226,7 +225,6 @@ class _GreetingRow extends StatelessWidget {
     final bool isDark = theme.brightness == Brightness.dark;
 
     return Row(
-      crossAxisAlignment: CrossAxisAlignment.center,
       children: <Widget>[
         Expanded(
           child: Column(
