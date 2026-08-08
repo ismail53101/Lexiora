@@ -5,7 +5,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_tts/flutter_tts.dart';
 import 'package:path_provider/path_provider.dart';
-import 'package:pdf/pdf.dart';
+// PdfDocument/PdfPage exist in BOTH packages below (one is for reading an
+// existing PDF's text, the other for building a new PDF) — hidden from the
+// `pdf` package so pdfrx's versions (the ones actually used for reading)
+// win without an ambiguous-import error.
+import 'package:pdf/pdf.dart' hide PdfDocument, PdfPage;
 import 'package:pdf/widgets.dart' as pw;
 import 'package:pdfrx/pdfrx.dart';
 import 'package:share_plus/share_plus.dart';
@@ -101,7 +105,7 @@ class AiReadAloudController {
     await _tts.awaitSpeakCompletion(false);
     _tts.setCompletionHandler(() => activeMessageId.value = null);
     _tts.setCancelHandler(() => activeMessageId.value = null);
-    _tts.setErrorHandler((Object _) => activeMessageId.value = null);
+    _tts.setErrorHandler((dynamic _) => activeMessageId.value = null);
     _configured = true;
   }
 
