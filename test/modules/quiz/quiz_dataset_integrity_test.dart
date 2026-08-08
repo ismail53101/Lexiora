@@ -116,6 +116,32 @@ void main() {
             reason: 'bank $ref has repeated question ids');
       }
     });
+
+    test('every bank file is covered by a declared pubspec asset', () {
+      // Flutter's asset bundler only includes files DIRECTLY inside a declared
+      // directory (it does not recurse into subdirectories), so every bank
+      // file's parent directory must be listed explicitly in pubspec.yaml —
+      // otherwise the bank silently never ships in the APK and the seeder
+      // cannot load it on device.
+      final Set<String> declared = _readDeclaredAssets();
+      expect(declared, isNotEmpty,
+          reason: 'no assets were parsed from pubspec.yaml');
+
+      for (final Map<String, dynamic> entry in _readManifest()) {
+        final String ref = '${entry['ref']}';
+        final String filePath = 'assets/quiz/$ref';
+        final String parentDir =
+            filePath.substring(0, filePath.lastIndexOf('/') + 1);
+        final bool covered = declared.contains(filePath) ||
+            declared.contains(parentDir) ||
+            declared.contains('$parentDir/');
+        expect(covered, isTrue,
+            reason: 'bank file $filePath is not covered by any declared '
+                'asset in pubspec.yaml — add its directory '
+                '("$parentDir") to the flutter.assets list or it will be '
+                'omitted from the APK');
+      }
+    });
   });
 }
 
@@ -125,6 +151,31 @@ List<Map<String, dynamic>> _readManifest() {
   return (decoded is Map && decoded['banks'] is List)
       ? (decoded['banks'] as List).cast<Map<String, dynamic>>()
       : const <Map<String, dynamic>>[];
+}
+
+/// Reads the `flutter.assets` section of pubspec.yaml, returning the exact
+/// declared entries (dirs keep their trailing slash, e.g. "assets/quiz/").
+Set<String> _readDeclaredAssets() {
+  final File f = File('pubspec.yaml');
+  if (!f.existsSync()) return const <String>{};
+  final List<String> lines = f.readAsLinesSync();
+  final Set<String> assets = <String>{};
+  bool inAssets = false;
+  for (final String line in lines) {
+    final String trimmed = line.trim();
+    if (trimmed == 'assets:') {
+      inAssets = true;
+      continue;
+    }
+    if (inAssets) {
+      if (trimmed.isEmpty || trimmed.startsWith('#')) continue;
+      // Left the assets block: dedent or a different top-level key.
+      if (!line.startsWith('    ')) break;
+      if (!line.startsWith('    - ')) continue; // other key under flutter
+      assets.add(trimmed.substring(2).trim());
+    }
+  }
+  return assets;
 }
 
 /// Parses every bank listed in the manifest into a flat corpus of questions,

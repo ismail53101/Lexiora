@@ -5,6 +5,18 @@ All notable changes to Sapiora are documented here.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.10.2] — 2026-08-08
+
+**Fix: quiz banks now actually ship in the APK.** Flutter's asset bundler only
+includes files *directly inside* a declared asset directory — it does not
+recurse into subdirectories. The 46 bank files live in subdirectories of
+`assets/quiz/`, so the previous release packaged only `manifest.json` and the
+seeder failed to load any questions on device (Quiz section showed 0
+questions). Each quiz subdirectory is now declared explicitly in `pubspec.yaml`
+so every bank ships. The seeder was also hardened: a failing bank is logged and
+skipped instead of aborting the whole seed, and a CI regression test asserts
+that every manifest bank file is covered by a declared asset.
+
 ## [0.10.1] — 2026-08-08
 
 **Bundled exam question banks.** The Quiz Engine now ships its full curated

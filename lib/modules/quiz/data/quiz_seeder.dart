@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:flutter/foundation.dart' show debugPrint;
 import 'package:lexiora/core/constants/db_constants.dart';
 import 'package:lexiora/modules/quiz/data/datasources/quiz_local_data_source.dart';
 import 'package:lexiora/modules/quiz/data/providers/content_providers.dart';
@@ -53,51 +54,70 @@ class QuizSeeder {
       }
     }
 
-    // Seed every bank listed in the bundled manifest.
+    // Seed every bank listed in the bundled manifest. A failing bank is
+    // logged and skipped rather than aborting the whole seed, so one missing
+    // or malformed file can never blank the entire Quiz section. If any bank
+    // failed, the seed version is left unset so the next launch retries
+    // (subjects/topics upsert and imports merge by external id, so retries
+    // never duplicate).
     final Map<String, String> subjectIds = <String, String>{};
+    bool anyFailure = false;
     if (await _provider.isAvailable()) {
       for (final QuizBankManifest manifest in await _provider.listBanks()) {
-        final String subjectName =
-            (manifest.subject?.trim().isNotEmpty ?? false)
-                ? manifest.subject!.trim()
-                : 'General Knowledge';
-        final String subjectId =
-            subjectIds.putIfAbsent(subjectName, () => _slug(subjectName));
-        await _repo.saveSubject(QuizSubject(
-          id: subjectId,
-          name: subjectName,
-          orderIndex: subjectIds.length - 1,
-          source: QuizConstants.bundledSource,
-          createdAt: now,
-          updatedAt: now,
-        ));
+        try {
+          final String subjectName =
+              (manifest.subject?.trim().isNotEmpty ?? false)
+                  ? manifest.subject!.trim()
+                  : 'General Knowledge';
+          final String subjectId =
+              subjectIds.putIfAbsent(subjectName, () => _slug(subjectName));
+          await _repo.saveSubject(QuizSubject(
+            id: subjectId,
+            name: subjectName,
+            orderIndex: subjectIds.length - 1,
+            source: QuizConstants.bundledSource,
+            createdAt: now,
+            updatedAt: now,
+          ));
 
-        String? topicId;
-        final String topicName = (manifest.topic?.trim().isNotEmpty ?? false)
-            ? manifest.topic!.trim()
-            : '';
-        if (topicName.isNotEmpty) {
-          topicId = _slug('$subjectName $topicName');
-          if (await _repo.topic(topicId) == null) {
-            await _repo.saveTopic(QuizTopic(
-              id: topicId,
-              subjectId: subjectId,
-              name: topicName,
-              createdAt: now,
-              updatedAt: now,
-            ));
+          String? topicId;
+          final String topicName = (manifest.topic?.trim().isNotEmpty ?? false)
+              ? manifest.topic!.trim()
+              : '';
+          if (topicName.isNotEmpty) {
+            topicId = _slug('$subjectName $topicName');
+            if (await _repo.topic(topicId) == null) {
+              await _repo.saveTopic(QuizTopic(
+                id: topicId,
+                subjectId: subjectId,
+                name: topicName,
+                createdAt: now,
+                updatedAt: now,
+              ));
+            }
           }
-        }
 
-        final QuizImportPayload payload = await _provider.fetchBank(manifest.ref);
-        final ImportPreview preview = QuizJsonParser.validate(payload);
-        if (preview.hasBlockingErrors) continue;
-        await _repo.importPayload(payload, ImportStrategy.merge,
-            subjectId: subjectId, topicId: topicId);
+          final QuizImportPayload payload =
+              await _provider.fetchBank(manifest.ref);
+          final ImportPreview preview = QuizJsonParser.validate(payload);
+          if (preview.hasBlockingErrors) {
+            debugPrint('[QuizSeeder] skipping ${manifest.ref}: '
+                '${preview.errors.map((ImportIssue e) => e.message).join('; ')}');
+            anyFailure = true;
+            continue;
+          }
+          await _repo.importPayload(payload, ImportStrategy.merge,
+              subjectId: subjectId, topicId: topicId);
+        } on Object catch (e) {
+          debugPrint('[QuizSeeder] failed to seed ${manifest.ref}: $e');
+          anyFailure = true;
+        }
       }
     }
 
-    await _local.setSeededVersion(QuizConstants.datasetVersion);
+    if (!anyFailure) {
+      await _local.setSeededVersion(QuizConstants.datasetVersion);
+    }
   }
 
   /// Deterministic lowercase-kebab slug used for stable subject/topic ids so

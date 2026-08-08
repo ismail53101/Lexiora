@@ -3,7 +3,7 @@ description: "Lexiora — a premium, offline-first study & language-learning pla
 publish_to: "none"
 
 # Semantic version. The `+N` suffix is the Android versionCode.
-version: 0.10.1+37
+version: 0.10.2+38
 
 environment:
   sdk: ">=3.10.0 <4.0.0"
@@ -54,4 +54,11 @@ flutter:
     - assets/grammar/
     - assets/vocabulary/
     - assets/fonts/
+    # NOTE: Flutter's asset bundler only includes files directly inside a
+    # declared directory (it does NOT recurse into subdirectories), so each
+    # quiz subdirectory must be listed explicitly.
     - assets/quiz/
+    - assets/quiz/english/
+    - assets/quiz/gsa/
+    - assets/quiz/islamiat/
+    - assets/quiz/pakistan_affairs/
