@@ -5,6 +5,31 @@ All notable changes to Sapiora are documented here.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.10.1] — 2026-08-08
+
+**Bundled exam question banks.** The Quiz Engine now ships its full curated
+content instead of demo rows: **5,243 deduplicated MCQs across 46 banks** under
+`assets/quiz/` (Pakistan Affairs 130×10, Islamic Studies 100×22, General Science
+& Ability 130×7, English 833), seeded once into the normal quiz tables by a
+manifest-driven seeder. Every generated question is guarded by
+`QuizDuplicateChecker` before it can be saved.
+
+### Added
+- **Quiz duplicate prevention** — `QuizDuplicateChecker` rejects exact,
+  reworded, option-reordered, different-option and same-concept duplicates
+  against the entire corpus before a generated MCQ is saved.
+- **Dataset integrity test** — the full shipped corpus must parse cleanly and
+  pass the duplicate check in CI.
+
+### Changed
+- The legacy demo seed is replaced by the bundled manifest seeder (dataset
+  version `quiz-bundled-2026.08-v24`); existing installs re-seed once
+  automatically.
+
+### Fixed
+- The seeder detects legacy demo rows by their `demo_` id prefix (`source` is
+  an in-memory-only entity field and is never persisted on the row).
+
 ## [Unreleased]
 
 ### Added
