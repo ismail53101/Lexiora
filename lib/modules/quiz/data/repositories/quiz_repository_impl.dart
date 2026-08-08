@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:math' as math;
 
 import 'package:drift/drift.dart';
 import 'package:lexiora/core/database/app_database.dart';
@@ -8,10 +9,12 @@ import 'package:lexiora/modules/quiz/domain/entities/quiz_content.dart';
 import 'package:lexiora/modules/quiz/domain/entities/quiz_models.dart';
 import 'package:lexiora/modules/quiz/domain/entities/quiz_question.dart';
 import 'package:lexiora/modules/quiz/domain/entities/quiz_settings.dart';
+import 'package:lexiora/modules/quiz/domain/entities/quiz_stage_progress.dart';
 import 'package:lexiora/modules/quiz/domain/entities/quiz_subject.dart';
 import 'package:lexiora/modules/quiz/domain/entities/quiz_topic.dart';
 import 'package:lexiora/modules/quiz/domain/quiz_dates.dart';
 import 'package:lexiora/modules/quiz/domain/quiz_grading.dart';
+import 'package:lexiora/modules/quiz/domain/quiz_stages.dart';
 import 'package:lexiora/modules/quiz/domain/repositories/quiz_repository.dart';
 import 'package:uuid/uuid.dart';
 
@@ -163,6 +166,61 @@ class QuizRepositoryImpl implements QuizRepository {
       QuizQuestionsCompanion(
           bookmarked: Value<bool>(value),
           updatedAt: Value<DateTime>(DateTime.now())));
+
+  // ── Stage quizzes (v0.11.0) ─────────────────────────────────────────────────
+
+  @override
+  Future<List<QuizQuestion>> stageQuestions(String subjectId, int stageIndex,
+      {int perStage = quizStagePerStage}) async {
+    final List<QuizQuestionRow> rows = await _local.stageQuestions(subjectId,
+        offset: stageIndex * perStage, limit: perStage);
+    return rows.map(_toQuestion).toList();
+  }
+
+  @override
+  Future<int> stageQuestionCount(String subjectId) =>
+      _local.countQuestions(QuizFilter(subjectId: subjectId));
+
+  @override
+  Stream<List<QuizStageProgress>> watchStageProgress(String subjectId) => _local
+      .watchStageProgress(subjectId)
+      .map((List<QuizStageProgressRow> rows) => rows
+          .map((QuizStageProgressRow r) => QuizStageProgress(
+                subjectId: r.subjectId,
+                stageIndex: r.stageIndex,
+                bestScore: r.bestScore,
+                bestStars: r.bestStars,
+                attempts: r.attempts,
+                passed: r.passed,
+                lastPlayedAt: r.lastPlayedAt,
+              ))
+          .toList(growable: false));
+
+  @override
+  Future<void> saveStageResult({
+    required String subjectId,
+    required int stageIndex,
+    required int correct,
+    required int total,
+  }) async {
+    final QuizStageProgressRow? existing =
+        await _local.stageProgress(subjectId, stageIndex);
+    final int score = total == 0 ? 0 : (correct * 100 / total).round();
+    final DateTime now = DateTime.now();
+    await _local.upsertStageProgress(QuizStageProgressCompanion(
+      subjectId: Value<String>(subjectId),
+      stageIndex: Value<int>(stageIndex),
+      bestScore: Value<int>(math.max(existing?.bestScore ?? 0, score)),
+      bestStars: Value<int>(math.max(existing?.bestStars ?? 0,
+          quizStageStars(correct, total))),
+      attempts: Value<int>((existing?.attempts ?? 0) + 1),
+      passed: Value<bool>(
+          (existing?.passed ?? false) || quizStagePassed(correct, total)),
+      lastPlayedAt: Value<DateTime?>(now),
+      createdAt: Value<DateTime>(existing?.createdAt ?? now),
+      updatedAt: Value<DateTime>(now),
+    ));
+  }
 
   // ── Play / attempts ─────────────────────────────────────────────────────────
 

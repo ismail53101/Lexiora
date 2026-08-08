@@ -5,6 +5,44 @@ All notable changes to Sapiora are documented here.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.11.0] — 2026-08-08
+
+**Staged Quiz — play the existing 5,243-question banks as a premium level
+ladder.** The Quiz tab now opens on two cards — **MCQs** (subject-wise
+practice) and **Quiz** (timed stages). Each stage is 10 questions with a 30s
+per-question countdown, exam-style scoring at the end, star ratings and a
+score ring; passing a stage (≥50%) unlocks the next one, with a paginated
+stage map, per-stage best scores and a next-stage flow. No new content: stages
+are deterministic slices of the bundled banks, and every attempt still feeds
+Analytics, the wrong-answer notebook and Review Answers.
+
+### Added
+- **Quiz tab home** with two premium gradient cards (MCQs / Quiz), replacing
+  the bare subject list as the tab root. Global search, analytics, bookmarks,
+  wrong answers and settings stay in the overflow menu.
+- **Staged Quiz ladder** (`Quiz → Quiz → subject`): every 10-question slice of
+  a subject's pool as a card — locked (padlock), current (PLAY badge) or
+  completed (best-score ring + stars). Paginated so 200+ stage subjects stay
+  clean; header shows passed/total with a progress bar.
+- **Stage player**: 30s countdown per question (auto-skip on timeout),
+  QUIT/NEXT controls, no feedback until the end.
+- **Stage results**: animated score ring, 0–3 stars (3★ ≥90%, 2★ ≥70%, 1★
+  ≥50%), pass/unlock banner, Review answers, Retry and Next-stage actions.
+- **Stage progress persistence**: new `quiz_stage_progress` table (schema v17,
+  additive migration) storing best score/stars, attempt count and passed state
+  per subject/stage; unlock state is derived (stage N+1 needs stage N passed).
+- Unit tests for the stage rules (bucket math, stars, unlock ladder) and for
+  the repository (stage slicing + best-result merge).
+
+### Changed
+- `QuizMode` gains a `stage` mode; stage attempts are recorded like any other
+  quiz, so Analytics / Wrong Answers / Review keep working.
+
+### Notes
+- Data-driven: stages are derived from the subject's question count at runtime,
+  so future bank additions automatically extend the ladder — no data changes
+  needed and the duplicate-prevention rule is untouched.
+
 ## [0.10.2] — 2026-08-08
 
 **Fix: quiz banks now actually ship in the APK.** Flutter's asset bundler only

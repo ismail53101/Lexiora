@@ -868,6 +868,36 @@ class QuizTopics extends Table {
   Set<Column<Object>> get primaryKey => {id};
 }
 
+/// Per-stage progress for the staged Quiz experience (Phase v0.11.0).
+///
+/// One row per (subject, stage): the user's best result on that stage's
+/// 10-question challenge. Unlock logic is derived at read time (a stage is
+/// unlocked once the previous stage is passed), so only the best result is
+/// stored here — attempts/analytics still live in the existing quiz tables.
+@DataClassName('QuizStageProgressRow')
+class QuizStageProgress extends Table {
+  TextColumn get subjectId => text()();
+  IntColumn get stageIndex => integer()();
+
+  /// Best percentage score (0–100) achieved on this stage.
+  IntColumn get bestScore => integer().withDefault(const Constant(0))();
+
+  /// Best star rating (0–3) achieved on this stage.
+  IntColumn get bestStars => integer().withDefault(const Constant(0))();
+
+  /// Total number of completed attempts on this stage.
+  IntColumn get attempts => integer().withDefault(const Constant(0))();
+
+  /// True once the stage was passed (score >= 50%), unlocking the next one.
+  BoolColumn get passed => boolean().withDefault(const Constant(false))();
+  DateTimeColumn get lastPlayedAt => dateTime().nullable()();
+  DateTimeColumn get createdAt => dateTime()();
+  DateTimeColumn get updatedAt => dateTime()();
+
+  @override
+  Set<Column<Object>> get primaryKey => {subjectId, stageIndex};
+}
+
 // ── AI Assistant (Phase v0.10.0) ────────────────────────────────────────────
 //
 // Offline-first chat persistence for the AI Assistant. Two additive tables:

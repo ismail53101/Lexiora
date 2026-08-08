@@ -42,7 +42,10 @@ abstract final class DbConstants {
   /// Purely additive; existing v14 quiz data remains valid.
   /// v15 → v16 (Phase v0.10.0): AI Assistant — adds `ai_conversations` and
   /// `ai_messages` (offline chat persistence), plus indexes. Purely additive.
-  static const int schemaVersion = 16;
+  /// v16 → v17 (Phase v0.11.0): Staged Quiz — adds `quiz_stage_progress`
+  /// (best result per subject/stage, driving the unlock ladder). Purely
+  /// additive; all existing quiz data remains valid.
+  static const int schemaVersion = 17;
 }
 
 /// Constants for the Quiz Engine's bundled content seed.

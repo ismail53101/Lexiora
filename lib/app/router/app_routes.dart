@@ -54,6 +54,8 @@ abstract final class AppRoutes {
 
   // Quiz Engine (Phase v0.9.0 / subject-first v0.9.1)
   static const String quiz = '/quiz';
+  static const String quizMcqs = '/quiz/mcqs';
+  static const String quizStages = '/quiz/stages';
   static const String quizSubjectName = 'quizSubject';
   static const String quizSubjectPattern = '/quiz/subject/:id';
   static String quizSubject(String id) =>
@@ -68,10 +70,17 @@ abstract final class AppRoutes {
   static const String quizSearch = '/quiz/search';
   static const String quizSettings = '/quiz/settings';
 
+  // Staged Quiz (Phase v0.11.0)
+  static const String quizStageMapName = 'quizStageMap';
+  static const String quizStageMapPattern = '/quiz/stage-map/:subjectId';
+  static String quizStageMap(String subjectId) =>
+      '/quiz/stage-map/${Uri.encodeComponent(subjectId)}';
+  static const String quizStagePlay = '/quiz/stage-play';
+
   // AI Assistant (Phase v0.10.0)
   static const String aiAssistant = '/ai';
   static const String notesHome = '/notes';
- 
+
   // Vocabulary (Phase v0.6.0)
   static const String vocabulary = '/vocabulary';
   static const String vocabularyListName = 'vocabularyList';

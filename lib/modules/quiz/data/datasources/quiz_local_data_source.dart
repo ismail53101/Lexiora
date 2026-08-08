@@ -244,6 +244,54 @@ class QuizLocalDataSource {
     });
   }
 
+  // ── Stage quizzes (v0.11.0) ─────────────────────────────────────────────────
+  //
+  // Stages are deterministic slices of a subject's question pool, ordered by
+  // topic → bank → insertion so buckets stay stable across sessions (new
+  // questions appended later land at the end). Progress lives in the dedicated
+  // quiz_stage_progress table; attempts still feed the normal quiz tables.
+
+  Future<List<QuizQuestionRow>> stageQuestions(String subjectId,
+      {required int offset, required int limit}) async {
+    final List<QueryRow> rows = await _db
+        .customSelect(
+          'SELECT * FROM quiz_questions WHERE subject_id = ? '
+          "ORDER BY COALESCE(topic_id, ''), bank_id, created_at, id "
+          'LIMIT ? OFFSET ?',
+          variables: <Variable<Object>>[
+            Variable.withString(subjectId),
+            Variable.withInt(limit),
+            Variable.withInt(offset),
+          ],
+          readsFrom: <ResultSetImplementation<dynamic, dynamic>>{
+            _db.quizQuestions,
+          },
+        )
+        .get();
+    return rows.map((QueryRow r) => _db.quizQuestions.map(r.data)).toList();
+  }
+
+  Stream<List<QuizStageProgressRow>> watchStageProgress(String subjectId) =>
+      (_db.select(_db.quizStageProgress)
+            ..where(
+                ($QuizStageProgressTable t) => t.subjectId.equals(subjectId))
+            ..orderBy(<OrderClauseGenerator<$QuizStageProgressTable>>[
+              ($QuizStageProgressTable t) =>
+                  OrderingTerm(expression: t.stageIndex),
+            ]))
+          .watch();
+
+  Future<QuizStageProgressRow?> stageProgress(
+          String subjectId, int stageIndex) =>
+      (_db.select(_db.quizStageProgress)
+            ..where(($QuizStageProgressTable t) =>
+                t.subjectId.equals(subjectId) &
+                t.stageIndex.equals(stageIndex)))
+          .getSingleOrNull();
+
+  Future<void> upsertStageProgress(QuizStageProgressCompanion row) =>
+      _db.into(_db.quizStageProgress).insertOnConflictUpdate(row);
+
   // ── Questions ───────────────────────────────────────────────────────────────
 
   Future<QuizQuestionRow?> question(String id) =>

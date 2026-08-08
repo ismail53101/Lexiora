@@ -55,6 +55,7 @@ part 'app_database.g.dart';
     QuizSettingsRows,
     QuizSubjects,
     QuizTopics,
+    QuizStageProgress,
     AiConversations,
     AiMessages,
   ],
@@ -168,6 +169,10 @@ class AppDatabase extends _$AppDatabase {
           if (from < 16) {
             await m.createTable(aiConversations);
             await m.createTable(aiMessages);
+          }
+          // v16 → v17: Staged Quiz progress. Purely additive.
+          if (from < 17) {
+            await m.createTable(quizStageProgress);
           }
         },
         beforeOpen: (OpeningDetails details) async {
@@ -316,6 +321,10 @@ class AppDatabase extends _$AppDatabase {
           await customStatement(
             'CREATE INDEX IF NOT EXISTS idx_quiz_wrong_subject '
             'ON quiz_wrong_answers (subject)',
+          );
+          await customStatement(
+            'CREATE INDEX IF NOT EXISTS idx_quiz_stage_progress_subject '
+            'ON quiz_stage_progress (subject_id)',
           );
           // Quiz subject-first hierarchy (v0.9.1).
           await customStatement(

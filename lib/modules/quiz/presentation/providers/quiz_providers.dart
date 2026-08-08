@@ -6,8 +6,10 @@ import 'package:lexiora/modules/quiz/data/services/quiz_export_service.dart';
 import 'package:lexiora/modules/quiz/domain/entities/quiz_bank.dart';
 import 'package:lexiora/modules/quiz/domain/entities/quiz_models.dart';
 import 'package:lexiora/modules/quiz/domain/entities/quiz_settings.dart';
+import 'package:lexiora/modules/quiz/domain/entities/quiz_stage_progress.dart';
 import 'package:lexiora/modules/quiz/domain/entities/quiz_subject.dart';
 import 'package:lexiora/modules/quiz/domain/entities/quiz_topic.dart';
+import 'package:lexiora/modules/quiz/domain/quiz_stages.dart';
 import 'package:lexiora/modules/quiz/domain/repositories/question_provider.dart';
 import 'package:lexiora/modules/quiz/domain/repositories/quiz_admin_repository.dart';
 import 'package:lexiora/modules/quiz/domain/repositories/quiz_repository.dart';
@@ -73,6 +75,22 @@ final quizSubjectBanksProvider =
 
 final quizSubjectByIdProvider = FutureProvider.family<QuizSubject?, String>(
     (Ref ref, String id) => ref.watch(quizRepositoryProvider).subject(id));
+
+// ── Staged Quiz (v0.11.0) ────────────────────────────────────────────────────
+
+/// Per-stage best results for a subject (drives the stage map + unlock ladder).
+final quizStageProgressProvider =
+    StreamProvider.family<List<QuizStageProgress>, String>(
+        (Ref ref, String subjectId) =>
+            ref.watch(quizRepositoryProvider).watchStageProgress(subjectId));
+
+/// Number of stages a subject's question pool splits into (10 per stage).
+final quizStageCountProvider = FutureProvider.family<int, String>(
+    (Ref ref, String subjectId) async {
+  final int questions =
+      await ref.watch(quizRepositoryProvider).stageQuestionCount(subjectId);
+  return quizStageCount(questions);
+});
 
 final quizTopicByIdProvider = FutureProvider.family<QuizTopic?, String>(
     (Ref ref, String id) => ref.watch(quizRepositoryProvider).topic(id));

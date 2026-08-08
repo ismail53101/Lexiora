@@ -9,11 +9,25 @@ import 'package:lexiora/modules/quiz/domain/entities/quiz_subject.dart';
 import 'package:lexiora/modules/quiz/presentation/providers/quiz_providers.dart';
 import 'package:lexiora/modules/quiz/presentation/widgets/quiz_icons.dart';
 
-/// Quiz home — subject-first. A learning surface only: it renders whatever
-/// published subjects exist and never creates or manages content. Global
-/// learner utilities live in the overflow menu.
+/// Which subject list this page renders. Both share the same data; only the
+/// title and the per-subject destination differ.
+enum QuizSubjectsVariant {
+  /// Subject-wise MCQs practice (subject → topics → practice).
+  mcqs,
+
+  /// Stage picker for the staged Quiz ladder (subject → stage map).
+  stages,
+}
+
+/// Subject-first list. A learning surface only: it renders whatever published
+/// subjects exist and never creates or manages content. Global learner
+/// utilities live in the overflow menu.
 class SubjectsPage extends ConsumerWidget {
-  const SubjectsPage({super.key});
+  const SubjectsPage({super.key, this.variant = QuizSubjectsVariant.mcqs});
+
+  final QuizSubjectsVariant variant;
+
+  bool get _isStages => variant == QuizSubjectsVariant.stages;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -23,7 +37,7 @@ class SubjectsPage extends ConsumerWidget {
     return Scaffold(
       bottomNavigationBar: const AppBottomNav(currentIndex: 2),
       appBar: AppBar(
-        title: const Text('Quiz'),
+        title: Text(_isStages ? 'Quiz' : 'MCQs'),
         actions: <Widget>[
           IconButton(
             icon: const Icon(Icons.search),
@@ -75,7 +89,7 @@ class SubjectsPage extends ConsumerWidget {
             padding: const EdgeInsets.symmetric(vertical: 8),
             children: <Widget>[
               for (final QuizSubjectSummary s in subjects)
-                _SubjectCard(summary: s),
+                _SubjectCard(summary: s, variant: variant),
               const SizedBox(height: 24),
             ].animate(interval: 40.ms).fadeIn(duration: 200.ms).slideY(
                   begin: 0.05,
@@ -90,8 +104,9 @@ class SubjectsPage extends ConsumerWidget {
 }
 
 class _SubjectCard extends StatelessWidget {
-  const _SubjectCard({required this.summary});
+  const _SubjectCard({required this.summary, required this.variant});
   final QuizSubjectSummary summary;
+  final QuizSubjectsVariant variant;
 
   @override
   Widget build(BuildContext context) {
@@ -102,7 +117,9 @@ class _SubjectCard extends StatelessWidget {
       margin: const EdgeInsets.fromLTRB(16, 5, 16, 5),
       clipBehavior: Clip.antiAlias,
       child: ListTile(
-        onTap: () => context.push(AppRoutes.quizSubject(s.id)),
+        onTap: () => context.push(variant == QuizSubjectsVariant.stages
+            ? AppRoutes.quizStageMap(s.id)
+            : AppRoutes.quizSubject(s.id)),
         leading: CircleAvatar(
           backgroundColor: color,
           child: Icon(quizIcon(s.icon), color: Colors.white),
