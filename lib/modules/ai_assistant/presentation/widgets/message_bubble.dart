@@ -5,6 +5,7 @@ import 'package:flutter/services.dart';
 import 'package:lexiora/modules/ai_assistant/domain/entities/ai_attachment.dart';
 import 'package:lexiora/modules/ai_assistant/domain/entities/ai_message.dart';
 import 'package:lexiora/modules/ai_assistant/presentation/widgets/ai_markdown.dart';
+import 'package:lexiora/modules/ai_assistant/presentation/widgets/ai_message_tools.dart';
 import 'package:share_plus/share_plus.dart';
 
 /// One persisted chat message, shown with a sender label + timestamp above
@@ -137,10 +138,11 @@ class MessageBubble extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.only(top: 6),
             child: _ActionRow(
+              messageId: message.id,
+              text: text,
               onCopy: () => _copy(context, text),
               onRegenerate: onRegenerate,
               onFeedback: (bool liked) => _feedback(context, liked),
-              onSpeak: () => _comingSoon(context, 'Read aloud'),
             ),
           ),
       ],
@@ -306,14 +308,6 @@ class MessageBubble extends StatelessWidget {
       );
   }
 
-  void _comingSoon(BuildContext context, String feature) {
-    ScaffoldMessenger.of(context)
-      ..hideCurrentSnackBar()
-      ..showSnackBar(
-        SnackBar(content: Text('$feature is coming in a future update.')),
-      );
-  }
-
   static String _time(DateTime dt) {
     final int h24 = dt.hour;
     final int h12 = h24 % 12 == 0 ? 12 : h24 % 12;
@@ -324,19 +318,21 @@ class MessageBubble extends StatelessWidget {
 }
 
 
-/// Copy / thumbs-up / thumbs-down / read-aloud quick actions under an
-/// assistant reply.
+/// Copy / thumbs-up / thumbs-down / read-aloud / make-PDF quick actions
+/// under an assistant reply.
 class _ActionRow extends StatelessWidget {
   const _ActionRow({
+    required this.messageId,
+    required this.text,
     required this.onCopy,
     required this.onFeedback,
-    required this.onSpeak,
     this.onRegenerate,
   });
 
+  final String messageId;
+  final String text;
   final VoidCallback onCopy;
   final ValueChanged<bool> onFeedback;
-  final VoidCallback onSpeak;
   final VoidCallback? onRegenerate;
 
   @override
@@ -350,7 +346,9 @@ class _ActionRow extends StatelessWidget {
             () => onFeedback(true)),
         _icon(context, Icons.thumb_down_outlined, 'Bad response',
             () => onFeedback(false)),
-        _icon(context, Icons.volume_up_outlined, 'Read aloud', onSpeak),
+        _ReadAloudButton(messageId: messageId, text: text),
+        _icon(context, Icons.picture_as_pdf_outlined, 'Make PDF',
+            () => exportMessageAsPdf(context, text: text)),
         if (onRegenerate != null)
           _icon(context, Icons.refresh_rounded, 'Regenerate', onRegenerate!),
       ].map((Widget w) => Padding(
@@ -376,9 +374,38 @@ class _ActionRow extends StatelessWidget {
   }
 }
 
-/// Wraps an assistant reply's rendered Markdown and, once it's tall enough
-/// to feel like a wall of text, collapses it behind a fixed-height preview
-/// with a bottom fade and a "Show more" toggle — the same pattern ChatGPT
+/// The "Read aloud" toggle — icon and tooltip swap to a stop icon while
+/// this exact message is the one currently playing, and playback
+/// automatically flips back on completion, cancellation, or if a different
+/// message's read-aloud button is tapped instead.
+class _ReadAloudButton extends StatelessWidget {
+  const _ReadAloudButton({required this.messageId, required this.text});
+
+  final String messageId;
+  final String text;
+
+  @override
+  Widget build(BuildContext context) {
+    return ValueListenableBuilder<Object?>(
+      valueListenable: AiReadAloudController.instance.activeMessageId,
+      builder: (BuildContext context, Object? activeId, _) {
+        final bool speaking = activeId == messageId;
+        return IconButton(
+          icon: Icon(speaking
+              ? Icons.stop_circle_outlined
+              : Icons.volume_up_outlined),
+          tooltip: speaking ? 'Stop reading' : 'Read aloud',
+          visualDensity: VisualDensity.compact,
+          padding: EdgeInsets.zero,
+          constraints: const BoxConstraints(minWidth: 30, minHeight: 28),
+          onPressed: () =>
+              AiReadAloudController.instance.toggle(messageId, text),
+        );
+      },
+    );
+  }
+}
+
 /// Wraps a user-sent message and, once it's tall enough to feel like a wall
 /// of text (e.g. a whole article pasted in to ask the assistant about),
 /// collapses it behind a fixed-height preview with a bottom fade and a
