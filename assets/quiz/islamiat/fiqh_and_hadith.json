@@ -1,0 +1,1413 @@
+{
+  "bank": {
+    "name": "Fiqh & Hadith",
+    "subject": "Islamic Studies",
+    "topic": "Fiqh & Hadith",
+    "description": "The schools of Islamic jurisprudence, major hadith collections, and the rules of worship.",
+    "tags": "css,pms,fpsc,islamic-studies,fiqh,hadith",
+    "version": "1.0",
+    "id": "islamiat_fiqh_and_hadith"
+  },
+  "questions": [
+    {
+      "type": "mcq",
+      "prompt": "What are the four major schools of Islamic jurisprudence (Fiqh)?",
+      "options": [
+        "Hanafi, Maliki, Shafi'i, Hanbali",
+        "Hanafi, Zahiri, Qadari, Mu'tazili",
+        "Maliki, Ja'fari, Ibadi, Hanbali",
+        "Shafi'i, Sufi, Ash'ari, Maturidi"
+      ],
+      "answer": 0,
+      "explanation": "The four Sunni schools are Hanafi, Maliki, Shafi'i and Hanbali.",
+      "difficulty": "medium",
+      "id": "q01"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who founded the Hanafi school of jurisprudence?",
+      "options": [
+        "Imam Abu Hanifa",
+        "Imam Malik",
+        "Imam Shafi'i",
+        "Imam Ahmad ibn Hanbal"
+      ],
+      "answer": 0,
+      "explanation": "Imam Abu Hanifa (d. 767 CE) founded the Hanafi school, followed by most South Asian Muslims.",
+      "difficulty": "easy",
+      "id": "q02"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who compiled Sahih al-Bukhari, considered the most authentic book after the Quran?",
+      "options": [
+        "Imam Muslim",
+        "Imam Bukhari",
+        "Imam Tirmidhi",
+        "Imam Abu Dawud"
+      ],
+      "answer": 1,
+      "explanation": "Imam Muhammad ibn Ismail al-Bukhari (d. 870 CE) compiled Sahih al-Bukhari.",
+      "difficulty": "easy",
+      "id": "q03"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The six major hadith collections are known as?",
+      "options": [
+        "Kutub al-Sittah",
+        "Sihah al-Arba'a",
+        "Masabih al-Sunan",
+        "Al-Muwatta"
+      ],
+      "answer": 0,
+      "explanation": "Kutub al-Sittah: Bukhari, Muslim, Abu Dawud, Tirmidhi, Nasa'i and Ibn Majah.",
+      "difficulty": "medium",
+      "id": "q04"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which of the following is NOT among the six major hadith books (Kutub al-Sittah)?",
+      "options": [
+        "Sahih al-Bukhari",
+        "Muwatta Imam Malik",
+        "Sahih Muslim",
+        "Sunan Abu Dawud"
+      ],
+      "answer": 1,
+      "explanation": "Muwatta Imam Malik is a great collection but is not counted among the six.",
+      "difficulty": "hard",
+      "id": "q05"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which collection is regarded as the second most authentic hadith book?",
+      "options": [
+        "Sunan Abu Dawud",
+        "Sahih Muslim",
+        "Jami' at-Tirmidhi",
+        "Sunan an-Nasa'i"
+      ],
+      "answer": 1,
+      "explanation": "Sahih Muslim, compiled by Imam Muslim, ranks second after Bukhari.",
+      "difficulty": "medium",
+      "id": "q06"
+    },
+    {
+      "type": "mcq",
+      "prompt": "A 'Fatwa' is?",
+      "options": [
+        "A legal ruling issued by a qualified scholar (Mufti)",
+        "A type of prayer",
+        "A chapter of the Quran",
+        "A pilgrimage rite"
+      ],
+      "answer": 0,
+      "explanation": "A fatwa is a non-binding legal opinion issued by a Mufti.",
+      "difficulty": "easy",
+      "id": "q07"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which of the following is NOT a Fard (obligatory) act of Wudu (ablution)?",
+      "options": [
+        "Washing the face",
+        "Washing the arms to the elbows",
+        "Wiping the head",
+        "Rinsing the mouth"
+      ],
+      "answer": 3,
+      "explanation": "Rinsing the mouth is a Sunnah of wudu, not Fard.",
+      "difficulty": "hard",
+      "id": "q08"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Tayammum (dry ablution) is performed with?",
+      "options": [
+        "Water only",
+        "Clean earth or dust",
+        "Sand from Makkah only",
+        "A cloth"
+      ],
+      "answer": 1,
+      "explanation": "Tayammum uses clean earth when water is unavailable or harmful.",
+      "difficulty": "easy",
+      "id": "q09"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Ghusl refers to?",
+      "options": [
+        "Wiping socks",
+        "The full-body ritual wash",
+        "Washing hands only",
+        "Cleaning the shoes"
+      ],
+      "answer": 1,
+      "explanation": "Ghusl is the complete washing of the body for major impurity.",
+      "difficulty": "easy",
+      "id": "q10"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Adhan is?",
+      "options": [
+        "The call to prayer",
+        "The opening takbeer",
+        "The Friday sermon",
+        "The final salam"
+      ],
+      "answer": 0,
+      "explanation": "The adhan is the call announcing the prayer time.",
+      "difficulty": "easy",
+      "id": "q11"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Iqamah is?",
+      "options": [
+        "The call to begin prayer in congregation",
+        "The prayer of Eid",
+        "A funeral prayer",
+        "The call for Friday prayer only"
+      ],
+      "answer": 0,
+      "explanation": "The iqamah is given just before the congregational prayer begins.",
+      "difficulty": "medium",
+      "id": "q12"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Sadaqat-ul-Fitr must be paid?",
+      "options": [
+        "Before the Eid-ul-Fitr prayer",
+        "During Ramadan only at night",
+        "On Eid-ul-Adha",
+        "Once a year on Friday"
+      ],
+      "answer": 0,
+      "explanation": "Fitrana is given before the Eid-ul-Fitr prayer.",
+      "difficulty": "medium",
+      "id": "q13"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The days of Qurbani (sacrifice) are?",
+      "options": [
+        "10, 11 and 12 Dhul-Hijjah",
+        "1, 2 and 3 Shawwal",
+        "Last three days of Ramadan",
+        "First three days of Muharram"
+      ],
+      "answer": 0,
+      "explanation": "Qurbani is offered on the 10th, 11th and 12th of Dhul-Hijjah.",
+      "difficulty": "medium",
+      "id": "q14"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Taraweeh prayers are offered during the nights of?",
+      "options": [
+        "Ramadan",
+        "Shaban",
+        "Rajab",
+        "Dhul-Hijjah"
+      ],
+      "answer": 0,
+      "explanation": "Taraweeh is the special nightly prayer of Ramadan.",
+      "difficulty": "easy",
+      "id": "q15"
+    },
+    {
+      "type": "mcq",
+      "prompt": "I'tikaf (seclusion in the mosque) is most recommended in the?",
+      "options": [
+        "First ten days of Ramadan",
+        "Middle ten days of Ramadan",
+        "Last ten days of Ramadan",
+        "Ten days of Dhul-Hijjah"
+      ],
+      "answer": 2,
+      "explanation": "I'tikaf is commonly observed in the last ten days of Ramadan.",
+      "difficulty": "medium",
+      "id": "q16"
+    },
+    {
+      "type": "mcq",
+      "prompt": "In Islamic law, 'Haram' means?",
+      "options": [
+        "Permitted",
+        "Recommended",
+        "Disliked",
+        "Forbidden"
+      ],
+      "answer": 3,
+      "explanation": "Haram is what is strictly forbidden.",
+      "difficulty": "easy",
+      "id": "q17"
+    },
+    {
+      "type": "mcq",
+      "prompt": "A 'Makruh' act in Islamic law is?",
+      "options": [
+        "Obligatory",
+        "Disliked but not forbidden",
+        "Highly rewarded",
+        "A major sin"
+      ],
+      "answer": 1,
+      "explanation": "Makruh is disliked; avoiding it is rewarded but doing it is not a sin.",
+      "difficulty": "medium",
+      "id": "q18"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Imam Bukhari was born in which city (in modern Uzbekistan)?",
+      "options": [
+        "Samarkand",
+        "Bukhara",
+        "Tashkent",
+        "Khiva"
+      ],
+      "answer": 1,
+      "explanation": "Imam Bukhari was born in Bukhara in 810 CE.",
+      "difficulty": "hard",
+      "id": "q19"
+    },
+    {
+      "type": "mcq",
+      "prompt": "In the Hanafi school, Witr prayer is considered?",
+      "options": [
+        "Nafl",
+        "Wajib",
+        "Sunnah Muakkadah",
+        "Fard"
+      ],
+      "answer": 1,
+      "explanation": "Witr is Wajib in the Hanafi school.",
+      "difficulty": "hard",
+      "id": "q20"
+    },
+    {
+      "type": "mcq",
+      "prompt": "From Pakistan, the Qibla (direction of prayer) is generally towards the?",
+      "options": [
+        "North",
+        "East",
+        "South",
+        "West (southwest)"
+      ],
+      "answer": 3,
+      "explanation": "From Pakistan the Kaaba lies to the southwest (roughly west).",
+      "difficulty": "medium",
+      "id": "q21"
+    },
+    {
+      "type": "mcq",
+      "prompt": "A hadith is defined as?",
+      "options": [
+        "The word of Allah",
+        "The sayings, actions and approvals of the Prophet (PBUH)",
+        "A law of the state",
+        "A commentary on the Quran"
+      ],
+      "answer": 1,
+      "explanation": "Hadith records the Prophet's sayings, deeds and tacit approvals.",
+      "difficulty": "easy",
+      "id": "q22"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which of these is a condition for valid Salah?",
+      "options": [
+        "Facing the Qibla",
+        "Wearing green clothes",
+        "Praying in a mosque only",
+        "Praying after sunrise only"
+      ],
+      "answer": 0,
+      "explanation": "Facing the Qibla is one of the prerequisites of prayer.",
+      "difficulty": "easy",
+      "id": "q23"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Imam Ahmad ibn Hanbal founded which school?",
+      "options": [
+        "Hanafi",
+        "Maliki",
+        "Shafi'i",
+        "Hanbali"
+      ],
+      "answer": 3,
+      "explanation": "The Hanbali school is named after Imam Ahmad ibn Hanbal.",
+      "difficulty": "easy",
+      "id": "q24"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who founded the Shafi'i school of thought?",
+      "options": [
+        "Imam Abu Hanifa",
+        "Imam Muhammad ibn Idris al-Shafi'i",
+        "Imam Malik",
+        "Imam Bukhari"
+      ],
+      "answer": 1,
+      "explanation": "Imam al-Shafi'i (d. 820 CE) founded the Shafi'i school.",
+      "difficulty": "easy",
+      "id": "q25"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What is the meaning of 'Fiqh'?",
+      "options": [
+        "Deep understanding of Islamic law and rulings",
+        "Memorization of the Quran",
+        "Recitation of hadith",
+        "Arabic grammar"
+      ],
+      "answer": 0,
+      "explanation": "Fiqh is the deep understanding and science of Islamic jurisprudence.",
+      "difficulty": "easy",
+      "id": "q26"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What are the primary sources of Islamic law (Shariah)?",
+      "options": [
+        "Quran, Sunnah, Ijma and Qiyas",
+        "Only the Quran",
+        "Only hadith",
+        "Customs and traditions"
+      ],
+      "answer": 0,
+      "explanation": "The primary sources are the Quran, Sunnah, Ijma (consensus) and Qiyas (analogy).",
+      "difficulty": "easy",
+      "id": "q27"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What does 'Haram' mean in Islamic law?",
+      "options": [
+        "Forbidden",
+        "Permissible",
+        "Recommended",
+        "Discouraged"
+      ],
+      "answer": 0,
+      "explanation": "Haram is strictly forbidden; its opposite is Halal (permissible).",
+      "difficulty": "easy",
+      "id": "q28"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What is 'Mustahab'?",
+      "options": [
+        "Recommended and rewarded, but not obligatory",
+        "Compulsory",
+        "Forbidden",
+        "Disliked"
+      ],
+      "answer": 0,
+      "explanation": "Mustahab (Sunnah/Nafl) acts are recommended; doing them is rewarded, leaving them is not sinful.",
+      "difficulty": "medium",
+      "id": "q29"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What is 'Mubah'?",
+      "options": [
+        "Neutral or permissible acts with no reward or sin",
+        "Compulsory",
+        "Forbidden",
+        "Recommended"
+      ],
+      "answer": 0,
+      "explanation": "Mubah acts are neutral — neither commanded nor prohibited.",
+      "difficulty": "medium",
+      "id": "q30"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What is 'Riba'?",
+      "options": [
+        "Interest or usury, strictly prohibited",
+        "A type of charity",
+        "A form of trade",
+        "A prayer"
+      ],
+      "answer": 0,
+      "explanation": "Riba (interest/usury) is explicitly prohibited in the Quran (2:275-279).",
+      "difficulty": "easy",
+      "id": "q31"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What is 'Gharar' in Islamic finance?",
+      "options": [
+        "Excessive uncertainty or ambiguity in a contract",
+        "A charitable endowment",
+        "A type of tax",
+        "A loan"
+      ],
+      "answer": 0,
+      "explanation": "Gharar (excessive uncertainty) invalidates contracts in Islamic commercial law.",
+      "difficulty": "hard",
+      "id": "q32"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What is 'Mudarabah'?",
+      "options": [
+        "A profit-sharing partnership where one provides capital and the other expertise",
+        "A fixed-interest loan",
+        "A charity",
+        "A trade monopoly"
+      ],
+      "answer": 0,
+      "explanation": "Mudarabah is a profit-sharing partnership, a cornerstone of Islamic finance.",
+      "difficulty": "hard",
+      "id": "q33"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What is 'Musharakah'?",
+      "options": [
+        "A joint venture where all partners contribute capital and share profit/loss",
+        "A loan with interest",
+        "A single-person business",
+        "A type of charity"
+      ],
+      "answer": 0,
+      "explanation": "Musharakah is a partnership in which all parties share capital, profit and loss.",
+      "difficulty": "hard",
+      "id": "q34"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What is 'Waqf'?",
+      "options": [
+        "A perpetual endowment of property for charitable purposes",
+        "A temporary loan",
+        "A tax on wealth",
+        "A type of marriage"
+      ],
+      "answer": 0,
+      "explanation": "Waqf is an Islamic endowment whose benefits are dedicated permanently to charity.",
+      "difficulty": "medium",
+      "id": "q35"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What is 'Nikah'?",
+      "options": [
+        "The Islamic marriage contract",
+        "A divorce",
+        "A betrothal gift",
+        "A family gathering"
+      ],
+      "answer": 0,
+      "explanation": "Nikah is the sacred marriage contract between a man and woman in Islam.",
+      "difficulty": "easy",
+      "id": "q36"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What is 'Talaq'?",
+      "options": [
+        "Divorce in Islamic law",
+        "Marriage",
+        "A legal witness",
+        "Inheritance"
+      ],
+      "answer": 0,
+      "explanation": "Talaq is the Islamic dissolution of marriage, governed by strict rules.",
+      "difficulty": "easy",
+      "id": "q37"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What is 'Mahr'?",
+      "options": [
+        "The mandatory gift given by the groom to the bride at marriage",
+        "A wedding feast",
+        "A divorce settlement",
+        "A type of loan"
+      ],
+      "answer": 0,
+      "explanation": "Mahr is the obligatory bridal gift owed to the wife, a mark of respect and security.",
+      "difficulty": "medium",
+      "id": "q38"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What is 'Halal' meat?",
+      "options": [
+        "Meat from animals slaughtered according to Islamic rules with Allah's name",
+        "Any meat",
+        "Only fish",
+        "Meat cooked in a certain way"
+      ],
+      "answer": 0,
+      "explanation": "Halal slaughter requires the animal to be healthy, the name of Allah invoked, and blood drained.",
+      "difficulty": "easy",
+      "id": "q39"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which animals are considered Haram (forbidden) to eat in Islam?",
+      "options": [
+        "Pork and animals not slaughtered Islamically",
+        "Only beef",
+        "Only poultry",
+        "All meat"
+      ],
+      "answer": 0,
+      "explanation": "Pork, blood, carrion and animals not slaughtered properly are Haram (5:3).",
+      "difficulty": "easy",
+      "id": "q40"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What is 'Wudu-breaking' (Nawqidh-ul-Wudu)?",
+      "options": [
+        "Things that invalidate ablution",
+        "Things that complete prayer",
+        "Types of fasting",
+        "Conditions of Zakat"
+      ],
+      "answer": 0,
+      "explanation": "Things like natural relief, sleep and loss of consciousness invalidate Wudu.",
+      "difficulty": "medium",
+      "id": "q41"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What is 'Istinja'?",
+      "options": [
+        "Cleansing after using the toilet, with water or stones",
+        "A type of prayer",
+        "A fast",
+        "A charity"
+      ],
+      "answer": 0,
+      "explanation": "Istinja is the obligatory cleanliness after relieving oneself.",
+      "difficulty": "medium",
+      "id": "q42"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What is 'Salah-ul-Jumu'ah'?",
+      "options": [
+        "The Friday congregational prayer with a sermon",
+        "A funeral prayer",
+        "An eclipse prayer",
+        "A voluntary night prayer"
+      ],
+      "answer": 0,
+      "explanation": "Jumu'ah replaces Zuhr on Fridays and is preceded by the Khutbah.",
+      "difficulty": "easy",
+      "id": "q43"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What is the 'Khutbah'?",
+      "options": [
+        "The sermon delivered at Jumu'ah and Eid prayers",
+        "The call to prayer",
+        "A supplication after prayer",
+        "A Quranic recitation"
+      ],
+      "answer": 0,
+      "explanation": "Khutbah is the religious sermon delivered before the Jumu'ah and Eid prayers.",
+      "difficulty": "easy",
+      "id": "q44"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which of the following is NOT a condition for the validity of Salah?",
+      "options": [
+        "Wealth and social status",
+        "Purity (Taharah)",
+        "Facing the Qibla",
+        "Covering the awrah"
+      ],
+      "answer": 0,
+      "explanation": "Salah requires purity, Qibla, covering the awrah and proper times — wealth is irrelevant.",
+      "difficulty": "medium",
+      "id": "q45"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What is 'Fidyah'?",
+      "options": [
+        "Feeding a poor person for each missed fast when unable to fast permanently",
+        "A penalty of fasting 60 days",
+        "A charitable gift at Eid",
+        "A Hajj requirement"
+      ],
+      "answer": 0,
+      "explanation": "Fidyah is feeding one needy person per unkept fast for those who can never fast.",
+      "difficulty": "hard",
+      "id": "q46"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who is eligible to receive Zakat according to the Quran?",
+      "options": [
+        "Eight categories including the poor, needy and debtors",
+        "Only relatives",
+        "Only orphans",
+        "Only travelers"
+      ],
+      "answer": 0,
+      "explanation": "Surah At-Tawbah (9:60) lists eight eligible categories for Zakat.",
+      "difficulty": "medium",
+      "id": "q47"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What is 'Aqiqah'?",
+      "options": [
+        "The sacrifice for a newborn child",
+        "A wedding feast",
+        "A funeral meal",
+        "A vow"
+      ],
+      "answer": 0,
+      "explanation": "Aqiqah is the Sunnah sacrifice of two sheep for a boy and one for a girl at birth.",
+      "difficulty": "medium",
+      "id": "q48"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What is 'Qurbani'?",
+      "options": [
+        "The animal sacrifice during Eid-ul-Adha",
+        "A type of prayer",
+        "A fast",
+        "A charitable endowment"
+      ],
+      "answer": 0,
+      "explanation": "Qurbani is the sacrifice on 10-12 Dhul-Hijjah commemorating Ibrahim's (AS) obedience.",
+      "difficulty": "easy",
+      "id": "q49"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What is 'I'tikaf'?",
+      "options": [
+        "Seclusion in the mosque for worship, especially in the last ten nights of Ramadan",
+        "A pilgrimage",
+        "A charity",
+        "A form of divorce"
+      ],
+      "answer": 0,
+      "explanation": "I'tikaf is spiritual retreat in the mosque, recommended in the last ten days of Ramadan.",
+      "difficulty": "medium",
+      "id": "q50"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What is the ruling on 'Nafl' (voluntary) prayers?",
+      "options": [
+        "Recommended and rewarding, not obligatory",
+        "Compulsory",
+        "Forbidden",
+        "Neutral"
+      ],
+      "answer": 0,
+      "explanation": "Nafl prayers are voluntary acts of worship that earn reward.",
+      "difficulty": "easy",
+      "id": "q51"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What is 'Taharah'?",
+      "options": [
+        "Ritual purity required for worship",
+        "A type of prayer",
+        "A fast",
+        "A charity"
+      ],
+      "answer": 0,
+      "explanation": "Taharah (purity) — of body, clothes and place — is a condition for Salah.",
+      "difficulty": "easy",
+      "id": "q52"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What does 'Shariah' literally mean?",
+      "options": [
+        "The clear path to water, i.e. the divine law",
+        "A school of thought",
+        "A type of worship",
+        "A legal verdict"
+      ],
+      "answer": 0,
+      "explanation": "Shariah literally means the path to a watering hole — the divine law guiding life.",
+      "difficulty": "medium",
+      "id": "q53"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What is 'Usul al-Fiqh'?",
+      "options": [
+        "The principles and methodology of deriving Islamic rulings",
+        "A collection of rulings",
+        "A book of prayers",
+        "A school of thought"
+      ],
+      "answer": 0,
+      "explanation": "Usul al-Fiqh is the science of how rulings are derived from their sources.",
+      "difficulty": "hard",
+      "id": "q54"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which book is known as 'Sahih' and was compiled by Imam Bukhari?",
+      "options": [
+        "Sahih al-Bukhari",
+        "Sahih Muslim",
+        "Sunan Abu Dawood",
+        "Tirmidhi"
+      ],
+      "answer": 0,
+      "explanation": "Sahih al-Bukhari is the most authentic hadith collection.",
+      "difficulty": "easy",
+      "id": "q55"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who compiled 'Sahih Muslim'?",
+      "options": [
+        "Imam Muslim",
+        "Imam Bukhari",
+        "Imam Tirmidhi",
+        "Imam Nasa'i"
+      ],
+      "answer": 0,
+      "explanation": "Imam Muslim compiled Sahih Muslim.",
+      "difficulty": "easy",
+      "id": "q56"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The 'Muwatta' was compiled by:",
+      "options": [
+        "Imam Malik",
+        "Imam Abu Hanifa",
+        "Imam Bukhari",
+        "Imam Shafi"
+      ],
+      "answer": 0,
+      "explanation": "Imam Malik compiled Al-Muwatta, an early fiqh work.",
+      "difficulty": "medium",
+      "id": "q57"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What does 'Sahih' mean in hadith terminology?",
+      "options": [
+        "Authentic and sound",
+        "Weak",
+        "Good",
+        "Fabricated"
+      ],
+      "answer": 0,
+      "explanation": "Sahih refers to hadith with authentic chains.",
+      "difficulty": "easy",
+      "id": "q58"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What is a 'Da'if' hadith?",
+      "options": [
+        "A weak hadith",
+        "A strong hadith",
+        "A fabricated hadith",
+        "A famous hadith"
+      ],
+      "answer": 0,
+      "explanation": "Da'if denotes a hadith with a weak chain or text.",
+      "difficulty": "medium",
+      "id": "q59"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What does 'Hadith Qudsi' refer to?",
+      "options": [
+        "Divine sayings narrated by the Prophet (PBUH)",
+        "The Quran",
+        "Fiqh rulings",
+        "Prophet's biography"
+      ],
+      "answer": 0,
+      "explanation": "Hadith Qudsi contains Allah's words narrated by the Prophet (PBUH).",
+      "difficulty": "medium",
+      "id": "q60"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which scholar is known as the 'Imam of the Sunnah'?",
+      "options": [
+        "Imam Ahmad bin Hanbal",
+        "Imam Malik",
+        "Imam Shafi",
+        "Imam Abu Hanifa"
+      ],
+      "answer": 0,
+      "explanation": "Imam Ahmad bin Hanbal is called the Imam of the Sunnah.",
+      "difficulty": "medium",
+      "id": "q61"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The 'Isnad' of a hadith refers to:",
+      "options": [
+        "The chain of narrators",
+        "The main text",
+        "The ruling",
+        "The chapter"
+      ],
+      "answer": 0,
+      "explanation": "Isnad is the chain through which the hadith was transmitted.",
+      "difficulty": "easy",
+      "id": "q62"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What is 'Ijtihad'?",
+      "options": [
+        "Independent reasoning in religious law",
+        "A type of prayer",
+        "Fasting",
+        "Pilgrimage"
+      ],
+      "answer": 0,
+      "explanation": "Ijtihad is scholarly effort to derive rulings.",
+      "difficulty": "easy",
+      "id": "q63"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What does 'Fiqh' literally mean?",
+      "options": [
+        "Deep understanding",
+        "Obedience",
+        "Fasting",
+        "Charity"
+      ],
+      "answer": 0,
+      "explanation": "Fiqh means comprehension and understanding of Islamic law.",
+      "difficulty": "easy",
+      "id": "q64"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The book 'Al-Risala' on usul al-fiqh was written by:",
+      "options": [
+        "Imam al-Shafi'i",
+        "Imam Abu Hanifa",
+        "Imam Malik",
+        "Imam Bukhari"
+      ],
+      "answer": 0,
+      "explanation": "Al-Shafi'i's Al-Risala founded usul al-fiqh.",
+      "difficulty": "hard",
+      "id": "q65"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What does 'Qiyas' mean in fiqh?",
+      "options": [
+        "Analogical reasoning",
+        "Consensus",
+        "Custom",
+        "Direct text"
+      ],
+      "answer": 0,
+      "explanation": "Qiyas applies known rulings to similar new cases.",
+      "difficulty": "medium",
+      "id": "q66"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What is 'Ijma'?",
+      "options": [
+        "Consensus of scholars",
+        "Analogy",
+        "Tradition",
+        "Revelation"
+      ],
+      "answer": 0,
+      "explanation": "Ijma is the scholarly consensus on a ruling.",
+      "difficulty": "medium",
+      "id": "q67"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who compiled the 'Sunan Abu Dawood'?",
+      "options": [
+        "Imam Abu Dawood",
+        "Imam Tirmidhi",
+        "Imam Nasa'i",
+        "Ibn Majah"
+      ],
+      "answer": 0,
+      "explanation": "Abu Dawood compiled his Sunan.",
+      "difficulty": "easy",
+      "id": "q68"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The 'Sunan Ibn Majah' completes which set?",
+      "options": [
+        "The six authentic hadith books (Kutub Sittah)",
+        "The four schools",
+        "The Tafsir works",
+        "The Seerah works"
+      ],
+      "answer": 0,
+      "explanation": "Ibn Majah's Sunan is the sixth of the Kutub Sittah.",
+      "difficulty": "medium",
+      "id": "q69"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What does 'Fatwa' mean?",
+      "options": [
+        "A legal opinion by a qualified scholar",
+        "A type of prayer",
+        "A pilgrimage",
+        "A fast"
+      ],
+      "answer": 0,
+      "explanation": "A fatwa is a scholarly legal opinion.",
+      "difficulty": "easy",
+      "id": "q70"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which school of fiqh is most widely followed in Pakistan?",
+      "options": [
+        "Hanafi",
+        "Maliki",
+        "Shafi'i",
+        "Hanbali"
+      ],
+      "answer": 0,
+      "explanation": "The Hanafi school dominates in Pakistan.",
+      "difficulty": "easy",
+      "id": "q71"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The 'Jami at-Tirmidhi' was compiled by:",
+      "options": [
+        "Imam Tirmidhi",
+        "Imam Bukhari",
+        "Imam Muslim",
+        "Imam Nasa'i"
+      ],
+      "answer": 0,
+      "explanation": "Tirmidhi's Jami is one of the six canonical collections.",
+      "difficulty": "easy",
+      "id": "q72"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The 'Sunan an-Nasa'i' was compiled by:",
+      "options": [
+        "Imam an-Nasa'i",
+        "Imam Tirmidhi",
+        "Imam Abu Dawood",
+        "Ibn Majah"
+      ],
+      "answer": 0,
+      "explanation": "An-Nasa'i compiled his Sunan al-Sughra.",
+      "difficulty": "easy",
+      "id": "q73"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What is 'Taqleed'?",
+      "options": [
+        "Following a qualified scholar's rulings",
+        "Independent reasoning",
+        "Consensus",
+        "Analogy"
+      ],
+      "answer": 0,
+      "explanation": "Taqleed means adherence to a mujtahid's guidance.",
+      "difficulty": "medium",
+      "id": "q74"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which school of fiqh is the official school of Saudi Arabia?",
+      "options": [
+        "Hanbali",
+        "Hanafi",
+        "Maliki",
+        "Shafi'i"
+      ],
+      "answer": 0,
+      "explanation": "Saudi Arabia follows the Hanbali school.",
+      "difficulty": "medium",
+      "id": "q75"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which school of fiqh is dominant in North and West Africa?",
+      "options": [
+        "Maliki",
+        "Hanafi",
+        "Shafi'i",
+        "Hanbali"
+      ],
+      "answer": 0,
+      "explanation": "The Maliki school prevails in North and West Africa.",
+      "difficulty": "medium",
+      "id": "q76"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which school of fiqh is dominant in Southeast Asia, Egypt and the Levant?",
+      "options": [
+        "Shafi'i",
+        "Hanafi",
+        "Maliki",
+        "Hanbali"
+      ],
+      "answer": 0,
+      "explanation": "The Shafi'i school is widespread in Southeast Asia, Egypt and the Levant.",
+      "difficulty": "medium",
+      "id": "q77"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Imam Abu Hanifa was a resident scholar of which city?",
+      "options": [
+        "Kufa",
+        "Basra",
+        "Baghdad",
+        "Damascus"
+      ],
+      "answer": 0,
+      "explanation": "Imam Abu Hanifa lived and taught in Kufa.",
+      "difficulty": "medium",
+      "id": "q78"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Imam al-Shafi'i is buried in which city?",
+      "options": [
+        "Cairo",
+        "Baghdad",
+        "Madinah",
+        "Damascus"
+      ],
+      "answer": 0,
+      "explanation": "Imam al-Shafi'i passed away and is buried in Cairo.",
+      "difficulty": "medium",
+      "id": "q79"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The famous creedal work 'Al-Fiqh al-Akbar' is attributed to which Imam?",
+      "options": [
+        "Imam Abu Hanifa",
+        "Imam Malik",
+        "Imam Shafi'i",
+        "Imam Ahmad"
+      ],
+      "answer": 0,
+      "explanation": "Al-Fiqh al-Akbar is traditionally attributed to Imam Abu Hanifa.",
+      "difficulty": "hard",
+      "id": "q80"
+    },
+    {
+      "type": "mcq",
+      "prompt": "In the Hanafi school, what is the distinction between 'Fard' and 'Wajib'?",
+      "options": [
+        "Fard is proven by decisive evidence; Wajib by probable evidence",
+        "They are exactly the same",
+        "Wajib is stronger",
+        "Fard applies only to prayer"
+      ],
+      "answer": 0,
+      "explanation": "In Hanafi usul, Fard rests on definitive proof while Wajib rests on strong probable proof.",
+      "difficulty": "hard",
+      "id": "q81"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which of the following nullifies the prayer (Salah)?",
+      "options": [
+        "Speaking deliberately without need",
+        "Closing the eyes",
+        "Standing on one foot",
+        "Looking at the horizon"
+      ],
+      "answer": 0,
+      "explanation": "Deliberate speech during Salah invalidates it.",
+      "difficulty": "medium",
+      "id": "q82"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What is 'Nisab' in the context of Zakat?",
+      "options": [
+        "The minimum wealth threshold that makes Zakat obligatory",
+        "The amount of Zakat given",
+        "The poor who receive Zakat",
+        "The month of Zakat"
+      ],
+      "answer": 0,
+      "explanation": "Nisab is the minimum amount of wealth above which Zakat becomes due.",
+      "difficulty": "medium",
+      "id": "q83"
+    },
+    {
+      "type": "mcq",
+      "prompt": "At which times is prayer generally disliked (Makruh)?",
+      "options": [
+        "At sunrise, zenith and sunset",
+        "At midnight only",
+        "At dawn only",
+        "At all times"
+      ],
+      "answer": 0,
+      "explanation": "Prayer is disliked at sunrise, when the sun is at its zenith, and at sunset.",
+      "difficulty": "medium",
+      "id": "q84"
+    },
+    {
+      "type": "mcq",
+      "prompt": "A non-emphasized Sunnah act is called?",
+      "options": [
+        "Sunnah Ghair Mu'akkadah",
+        "Sunnah Mu'akkadah",
+        "Fard",
+        "Nafl"
+      ],
+      "answer": 0,
+      "explanation": "Sunnah Ghair Mu'akkadah is the recommended practice the Prophet (PBUH) sometimes left.",
+      "difficulty": "medium",
+      "id": "q85"
+    },
+    {
+      "type": "mcq",
+      "prompt": "In the Hanafi school, what is the ruling of Taraweeh prayer?",
+      "options": [
+        "Sunnah Mu'akkadah",
+        "Fard",
+        "Wajib",
+        "Makruh"
+      ],
+      "answer": 0,
+      "explanation": "Taraweeh is Sunnah Mu'akkadah in the Hanafi school.",
+      "difficulty": "medium",
+      "id": "q86"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What is 'Qada' in fiqh?",
+      "options": [
+        "Making up a missed obligatory act",
+        "Performing an act on time",
+        "A voluntary act",
+        "A forbidden act"
+      ],
+      "answer": 0,
+      "explanation": "Qada is the performance of a missed obligatory act after its time.",
+      "difficulty": "medium",
+      "id": "q87"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Performing an act of worship in its appointed time is called?",
+      "options": [
+        "Ada",
+        "Qada",
+        "Qasr",
+        "Jam'"
+      ],
+      "answer": 0,
+      "explanation": "Ada is performing worship within its prescribed time.",
+      "difficulty": "medium",
+      "id": "q88"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What is the ruling of Qurbani in the Hanafi school?",
+      "options": [
+        "Wajib",
+        "Sunnah Mu'akkadah",
+        "Fard",
+        "Mubah"
+      ],
+      "answer": 0,
+      "explanation": "In the Hanafi school, Qurbani is Wajib for those who possess Nisab.",
+      "difficulty": "medium",
+      "id": "q89"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who wrote 'Al-Hidayah', a foundational text of Hanafi fiqh?",
+      "options": [
+        "Burhan al-Din al-Marghinani",
+        "Imam Abu Hanifa",
+        "Imam Muhammad al-Shaybani",
+        "Imam Abu Yusuf"
+      ],
+      "answer": 0,
+      "explanation": "Al-Hidayah was compiled by Burhan al-Din al-Marghinani.",
+      "difficulty": "hard",
+      "id": "q90"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The substantive rules of Islamic law are called?",
+      "options": [
+        "Furu' al-Fiqh",
+        "Usul al-Fiqh",
+        "Ilm al-Kalam",
+        "Ilm al-Hadith"
+      ],
+      "answer": 0,
+      "explanation": "Furu' al-Fiqh are the detailed rulings, as opposed to the principles (usul).",
+      "difficulty": "medium",
+      "id": "q91"
+    },
+    {
+      "type": "mcq",
+      "prompt": "A scholar qualified to issue legal opinions (Fatwa) is called?",
+      "options": [
+        "Mufti",
+        "Qadi",
+        "Hafiz",
+        "Muhaddith"
+      ],
+      "answer": 0,
+      "explanation": "A Mufti is the scholar who issues Fatwas.",
+      "difficulty": "easy",
+      "id": "q92"
+    },
+    {
+      "type": "mcq",
+      "prompt": "In Hanafi usul, 'Istihsan' means?",
+      "options": [
+        "Juristic preference for the better ruling",
+        "Strict analogy only",
+        "Consensus of scholars",
+        "Blocking the means to evil"
+      ],
+      "answer": 0,
+      "explanation": "Istihsan is the Hanafi principle of preferring a more suitable ruling over strict analogy.",
+      "difficulty": "hard",
+      "id": "q93"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What is 'Maslahah Mursalah' in fiqh?",
+      "options": [
+        "Unrestricted public interest",
+        "Custom of the people",
+        "Juristic preference",
+        "Analogical deduction"
+      ],
+      "answer": 0,
+      "explanation": "Maslahah Mursalah considers general public welfare, used especially in the Maliki school.",
+      "difficulty": "hard",
+      "id": "q94"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What is 'Sadd al-Dhara'i'?",
+      "options": [
+        "Blocking the lawful means that lead to evil",
+        "Permitting all means",
+        "The consensus principle",
+        "The preference principle"
+      ],
+      "answer": 0,
+      "explanation": "Sadd al-Dhara'i closes the legitimate-looking paths that lead to prohibited outcomes.",
+      "difficulty": "hard",
+      "id": "q95"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What is 'Urf' as a source of Islamic law?",
+      "options": [
+        "The established custom of a people",
+        "The Quran",
+        "The Sunnah",
+        "The consensus"
+      ],
+      "answer": 0,
+      "explanation": "Urf — sound custom — is considered when it does not contradict the texts.",
+      "difficulty": "hard",
+      "id": "q96"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Shortening the four-rakah prayers while travelling is called?",
+      "options": [
+        "Qasr",
+        "Jam'",
+        "Qada",
+        "Ada"
+      ],
+      "answer": 0,
+      "explanation": "Qasr reduces the four-rakah prayers to two while travelling.",
+      "difficulty": "medium",
+      "id": "q97"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Combining two prayers at one time is called?",
+      "options": [
+        "Jam'",
+        "Qasr",
+        "Taqdim",
+        "Takhir"
+      ],
+      "answer": 0,
+      "explanation": "Jam' is combining two prayers, such as Zuhr and Asr, at one time.",
+      "difficulty": "medium",
+      "id": "q98"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The prostration performed to compensate for forgetfulness in prayer is called?",
+      "options": [
+        "Sajdah Sahw",
+        "Sajdah Tilawah",
+        "Sajdah Shukr",
+        "Sajdah Jalsa"
+      ],
+      "answer": 0,
+      "explanation": "Sajdah Sahw is the two prostrations offered for mistakes in the prayer.",
+      "difficulty": "medium",
+      "id": "q99"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The prostration upon reciting certain Quranic verses is called?",
+      "options": [
+        "Sajdah Tilawah",
+        "Sajdah Sahw",
+        "Sajdah Shukr",
+        "Sajdah Wajib"
+      ],
+      "answer": 0,
+      "explanation": "Sajdah Tilawah is performed at the verses commanding prostration.",
+      "difficulty": "medium",
+      "id": "q100"
+    }
+  ]
+}

@@ -1,0 +1,1833 @@
+{
+  "bank": {
+    "name": "Foreign Policy",
+    "subject": "Pakistan Affairs",
+    "topic": "Foreign Policy",
+    "description": "Pakistan's relations with international organisations and major powers, and its key foreign policy milestones.",
+    "tags": "css,pms,fpsc,pakistan-affairs,foreign-policy",
+    "version": "1.0",
+    "id": "pakistan_affairs_foreign_policy"
+  },
+  "questions": [
+    {
+      "type": "mcq",
+      "prompt": "In which year did Pakistan become a member of the United Nations?",
+      "options": [
+        "1945",
+        "1947",
+        "1948",
+        "1950"
+      ],
+      "answer": 1,
+      "explanation": "Pakistan joined the United Nations on 30 September 1947.",
+      "difficulty": "medium",
+      "id": "q01"
+    },
+    {
+      "type": "mcq",
+      "prompt": "In which year was the Organisation of Islamic Cooperation (OIC) founded, with Pakistan as a founding member?",
+      "options": [
+        "1969",
+        "1974",
+        "1985",
+        "1997"
+      ],
+      "answer": 0,
+      "explanation": "The OIC was founded at the 1969 Rabat summit; Pakistan hosted its second summit in Lahore in 1974.",
+      "difficulty": "medium",
+      "id": "q02"
+    },
+    {
+      "type": "mcq",
+      "prompt": "In which year was SAARC founded, and where is its headquarters?",
+      "options": [
+        "1975, Islamabad",
+        "1985, Kathmandu",
+        "1992, Dhaka",
+        "1999, Colombo"
+      ],
+      "answer": 1,
+      "explanation": "SAARC was founded in 1985 at the Dhaka summit; its secretariat is in Kathmandu, Nepal.",
+      "difficulty": "medium",
+      "id": "q03"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Pakistan left the Commonwealth in 1972 and rejoined in which year?",
+      "options": [
+        "1975",
+        "1980",
+        "1989",
+        "1995"
+      ],
+      "answer": 2,
+      "explanation": "Pakistan withdrew from the Commonwealth in 1972 and rejoined in 1989.",
+      "difficulty": "hard",
+      "id": "q04"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Pakistan was among the first countries to recognize the People's Republic of China, doing so in which year?",
+      "options": [
+        "1950",
+        "1954",
+        "1963",
+        "1971"
+      ],
+      "answer": 0,
+      "explanation": "Pakistan recognised the PRC in 1950, and formal diplomatic relations were established in 1951.",
+      "difficulty": "hard",
+      "id": "q05"
+    },
+    {
+      "type": "mcq",
+      "prompt": "In which year did Pakistan join SEATO?",
+      "options": [
+        "1950",
+        "1954",
+        "1958",
+        "1962"
+      ],
+      "answer": 1,
+      "explanation": "Pakistan joined the Southeast Asia Treaty Organization (SEATO) in 1954.",
+      "difficulty": "hard",
+      "id": "q06"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Where is the headquarters of the Economic Cooperation Organization (ECO)?",
+      "options": [
+        "Ankara",
+        "Islamabad",
+        "Tehran",
+        "Cairo"
+      ],
+      "answer": 2,
+      "explanation": "The ECO, established in 1985 as the successor of RCD, has its secretariat in Tehran.",
+      "difficulty": "hard",
+      "id": "q07"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The D-8 (Developing Eight) organisation was founded in which year and city?",
+      "options": [
+        "1985, Dhaka",
+        "1990, Kuala Lumpur",
+        "1997, Istanbul",
+        "2005, Jakarta"
+      ],
+      "answer": 2,
+      "explanation": "The D-8 was founded in 1997 in Istanbul; Pakistan is a founding member.",
+      "difficulty": "hard",
+      "id": "q08"
+    },
+    {
+      "type": "mcq",
+      "prompt": "In which year did Pakistan become a full member of the Shanghai Cooperation Organisation (SCO)?",
+      "options": [
+        "2005",
+        "2015",
+        "2017",
+        "2021"
+      ],
+      "answer": 2,
+      "explanation": "Pakistan and India were admitted as full SCO members at the Astana summit in June 2017.",
+      "difficulty": "medium",
+      "id": "q09"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The first war between Pakistan and India over Kashmir was fought in which year?",
+      "options": [
+        "1948",
+        "1962",
+        "1965",
+        "1971"
+      ],
+      "answer": 0,
+      "explanation": "The first Kashmir war was fought in 1947-48, ending with a UN-brokered ceasefire in 1949.",
+      "difficulty": "medium",
+      "id": "q10"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Line of Control (LOC) in Kashmir was formalised under which agreement?",
+      "options": [
+        "Tashkent Declaration",
+        "Lahore Declaration",
+        "Simla Agreement",
+        "Indus Water Treaty"
+      ],
+      "answer": 2,
+      "explanation": "The Simla Agreement (1972) converted the 1949 ceasefire line into the Line of Control.",
+      "difficulty": "medium",
+      "id": "q11"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which country is called Pakistan's 'all-weather friend'?",
+      "options": [
+        "United States",
+        "Saudi Arabia",
+        "Turkey",
+        "China"
+      ],
+      "answer": 3,
+      "explanation": "China is widely referred to as Pakistan's all-weather friend and iron brother.",
+      "difficulty": "easy",
+      "id": "q12"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which country does Pakistan NOT share a border with?",
+      "options": [
+        "India",
+        "China",
+        "Afghanistan",
+        "Turkey"
+      ],
+      "answer": 3,
+      "explanation": "Turkey does not share a land border with Pakistan.",
+      "difficulty": "easy",
+      "id": "q13"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Baghdad Pact, later renamed CENTO, was signed in which year?",
+      "options": [
+        "1955",
+        "1950",
+        "1962",
+        "1948"
+      ],
+      "answer": 0,
+      "explanation": "Pakistan joined the Baghdad Pact in 1955, renamed CENTO after Iraq's withdrawal.",
+      "difficulty": "medium",
+      "id": "q14"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Pakistan left SEATO and CENTO in which year?",
+      "options": [
+        "1972 (after the 1971 war)",
+        "1965",
+        "1990",
+        "1958"
+      ],
+      "answer": 0,
+      "explanation": "Pakistan withdrew from both pacts in 1972 under Bhutto's foreign policy.",
+      "difficulty": "medium",
+      "id": "q15"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Pakistan recognized the independence of which Central Asian states in 1991?",
+      "options": [
+        "All five former Soviet republics",
+        "Only Kazakhstan",
+        "Only Uzbekistan",
+        "None initially"
+      ],
+      "answer": 0,
+      "explanation": "Pakistan recognized all five Central Asian republics after the USSR dissolved in 1991.",
+      "difficulty": "medium",
+      "id": "q16"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Pakistan's longest border is with which country?",
+      "options": [
+        "India",
+        "Afghanistan",
+        "Iran",
+        "China"
+      ],
+      "answer": 0,
+      "explanation": "The border with India (including Kashmir) is Pakistan's longest.",
+      "difficulty": "medium",
+      "id": "q17"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The 'Agreement on Bilateral Cooperation' signed by Pakistan and China in 2020 extended the friendship to how many years?",
+      "options": [
+        "80 years (strategic partnership)",
+        "50 years",
+        "25 years",
+        "100 years"
+      ],
+      "answer": 0,
+      "explanation": "In 2020, Pakistan and China agreed to extend their strategic cooperation to 80 years.",
+      "difficulty": "hard",
+      "id": "q18"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Pakistan played a key role in opening US-China relations in 1971 through which diplomat?",
+      "options": [
+        "Zulfikar Ali Bhutto (foreign minister)",
+        "Ayub Khan",
+        "Yahya Khan",
+        "Liaquat Ali Khan"
+      ],
+      "answer": 0,
+      "explanation": "Bhutto, as foreign minister, and Yahya Khan helped arrange Kissinger's secret 1971 visit to China.",
+      "difficulty": "hard",
+      "id": "q19"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Pakistan is a member of which South Asian regional organization?",
+      "options": [
+        "SAARC",
+        "ASEAN",
+        "GCC",
+        "AU"
+      ],
+      "answer": 0,
+      "explanation": "Pakistan is a founding member of SAARC (established 1985).",
+      "difficulty": "easy",
+      "id": "q20"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The 'Zarb-e-Azb' and 'Radd-ul-Fasaad' operations were Pakistan's domestic counter-terrorism campaigns. Which statement is true?",
+      "options": [
+        "They were domestic security operations, not foreign policy agreements",
+        "They were UN missions",
+        "They were trade pacts",
+        "They were space programs"
+      ],
+      "answer": 0,
+      "explanation": "Zarb-e-Azb (2014) and Radd-ul-Fasaad (2017) were military operations inside Pakistan.",
+      "difficulty": "medium",
+      "id": "q21"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Pakistan's ambassador who was martyred in the 2008 Marriott bombing in Islamabad was?",
+      "options": [
+        "No ambassador was killed; the Czech ambassador's car was struck",
+        "The US ambassador",
+        "The Chinese ambassador",
+        "The Indian ambassador"
+      ],
+      "answer": 0,
+      "explanation": "The 2008 Marriott attack killed the Czech ambassador to Pakistan.",
+      "difficulty": "hard",
+      "id": "q22"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which international event did Pakistan host in 1996?",
+      "options": [
+        "The Cricket World Cup (co-hosted)",
+        "The Olympics",
+        "The FIFA World Cup",
+        "The Asian Games only"
+      ],
+      "answer": 0,
+      "explanation": "Pakistan co-hosted the 1996 Cricket World Cup with India and Sri Lanka.",
+      "difficulty": "easy",
+      "id": "q23"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The 'Kartarpur Corridor' opened in 2019 connects Pakistan with India for pilgrims of which faith?",
+      "options": [
+        "Sikhism",
+        "Hinduism",
+        "Buddhism",
+        "Christianity"
+      ],
+      "answer": 0,
+      "explanation": "The Kartarpur Corridor lets Sikh pilgrims visit Gurdwara Darbar Sahib visa-free.",
+      "difficulty": "easy",
+      "id": "q24"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Pakistan's first head of state was?",
+      "options": [
+        "Muhammad Ali Jinnah",
+        "Liaquat Ali Khan",
+        "Khawaja Nazimuddin",
+        "Iskander Mirza"
+      ],
+      "answer": 0,
+      "explanation": "Jinnah served as Governor-General, the head of state, from 1947 to 1948.",
+      "difficulty": "easy",
+      "id": "q25"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Pakistan's permanent representative to the UN in 1947 presented the Kashmir issue; who was he?",
+      "options": [
+        "Zafarullah Khan",
+        "Chaudhry Muhammad Ali",
+        "Iskander Mirza",
+        "Abul Hasan Ispahani"
+      ],
+      "answer": 0,
+      "explanation": "Sir Muhammad Zafarullah Khan, foreign minister, took the Kashmir dispute to the UN in 1948.",
+      "difficulty": "medium",
+      "id": "q26"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which Pakistani served as President of the UN General Assembly?",
+      "options": [
+        "Sir Zafarullah Khan (1962-63)",
+        "Jinnah",
+        "Liaquat Ali Khan",
+        "Malik Firoz Khan Noon"
+      ],
+      "answer": 0,
+      "explanation": "Sir Muhammad Zafarullah Khan was UNGA President in 1962-63.",
+      "difficulty": "medium",
+      "id": "q27"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Pakistan is a founding member of which Islamic body?",
+      "options": [
+        "The OIC (1969)",
+        "The Arab League",
+        "The GCC",
+        "The AU"
+      ],
+      "answer": 0,
+      "explanation": "Pakistan co-founded the Organization of Islamic Cooperation.",
+      "difficulty": "easy",
+      "id": "q28"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The 'Indus Waters Treaty' was signed with India in?",
+      "options": [
+        "1960",
+        "1947",
+        "1972",
+        "1955"
+      ],
+      "answer": 0,
+      "explanation": "The World Bank-brokered Indus Waters Treaty was signed on 19 September 1960.",
+      "difficulty": "easy",
+      "id": "q29"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which rivers were allocated to Pakistan under the Indus Waters Treaty?",
+      "options": [
+        "Indus, Jhelum and Chenab",
+        "Ravi, Sutlej and Beas",
+        "All six rivers",
+        "Only the Indus"
+      ],
+      "answer": 0,
+      "explanation": "Pakistan received the western rivers (Indus, Jhelum, Chenab); India the eastern ones.",
+      "difficulty": "easy",
+      "id": "q30"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Pakistan and India signed the 'Tashkent Declaration' after which war?",
+      "options": [
+        "The 1965 war",
+        "The 1971 war",
+        "The Kargil conflict",
+        "The 1948 war"
+      ],
+      "answer": 0,
+      "explanation": "The 1966 Tashkent Declaration ended the 1965 Indo-Pakistan war.",
+      "difficulty": "easy",
+      "id": "q31"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Line of Control (LoC) in Kashmir was formalized by?",
+      "options": [
+        "The Simla Agreement (1972)",
+        "The UN resolution of 1948",
+        "The Lahore Declaration",
+        "The Tashkent Declaration"
+      ],
+      "answer": 0,
+      "explanation": "The 1972 Simla Agreement converted the ceasefire line into the LoC.",
+      "difficulty": "medium",
+      "id": "q32"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Pakistan's nuclear policy is described as?",
+      "options": [
+        "Credible minimum deterrence",
+        "First-strike doctrine",
+        "No-first-use only",
+        "Nuclear sharing"
+      ],
+      "answer": 0,
+      "explanation": "Pakistan maintains a doctrine of credible minimum deterrence.",
+      "difficulty": "medium",
+      "id": "q33"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Pakistan has not signed which international treaty?",
+      "options": [
+        "The NPT (Nuclear Non-Proliferation Treaty)",
+        "The UN Charter",
+        "The Geneva Conventions",
+        "The WTO agreements"
+      ],
+      "answer": 0,
+      "explanation": "Pakistan is not a signatory to the NPT (it joined later nuclear states like India and Israel).",
+      "difficulty": "medium",
+      "id": "q34"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Pakistan's relations with which country were strained by the 'Dawn leaks' and 2019 tensions?",
+      "options": [
+        "India",
+        "Iran",
+        "China",
+        "Saudi Arabia"
+      ],
+      "answer": 0,
+      "explanation": "Pakistan-India tensions spiked in 2019 after Pulwama and Balakot.",
+      "difficulty": "medium",
+      "id": "q35"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The 'Gwadar-Chabahar' rivalry involves which two countries?",
+      "options": [
+        "Pakistan (Gwadar) and Iran (Chabahar)",
+        "India and Nepal",
+        "China and Japan",
+        "Turkey and Greece"
+      ],
+      "answer": 0,
+      "explanation": "Iran's Chabahar port competes with Pakistan's Gwadar for regional trade.",
+      "difficulty": "medium",
+      "id": "q36"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Pakistan recognized the Taliban government in Afghanistan in?",
+      "options": [
+        "It has not formally recognized any post-2021 government; it has de facto ties",
+        "1996 only",
+        "2021 immediately",
+        "2014"
+      ],
+      "answer": 0,
+      "explanation": "Pakistan maintained de facto engagement but did not formally recognize the Taliban regime.",
+      "difficulty": "hard",
+      "id": "q37"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The 'Durand Line' was drawn by which British official?",
+      "options": [
+        "Mortimer Durand",
+        "Cyril Radcliffe",
+        "Lord Mountbatten",
+        "George Curzon"
+      ],
+      "answer": 0,
+      "explanation": "Sir Mortimer Durand demarcated the 1893 border with Afghanistan.",
+      "difficulty": "easy",
+      "id": "q38"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Pakistan's 'strategic depth' concept historically related to?",
+      "options": [
+        "Relations with Afghanistan",
+        "Nuclear deterrence",
+        "Trade with China",
+        "Naval power"
+      ],
+      "answer": 0,
+      "explanation": "'Strategic depth' was a debated doctrine involving Afghanistan's role in Pakistan's security.",
+      "difficulty": "hard",
+      "id": "q39"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The 'Heart of Asia-Istanbul Process' includes Pakistan as a participant. It focuses on?",
+      "options": [
+        "Afghanistan's stability and regional cooperation",
+        "Nuclear disarmament",
+        "Climate finance",
+        "Maritime security"
+      ],
+      "answer": 0,
+      "explanation": "The Heart of Asia process promotes Afghan-led regional cooperation.",
+      "difficulty": "hard",
+      "id": "q40"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Pakistan has a 'strategic partnership' with which country in the Indian Ocean?",
+      "options": [
+        "China",
+        "Japan",
+        "Australia",
+        "Brazil"
+      ],
+      "answer": 0,
+      "explanation": "The China-Pakistan all-weather strategic partnership is central to regional ties.",
+      "difficulty": "easy",
+      "id": "q41"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which body mediates the Indus Waters Treaty disputes?",
+      "options": [
+        "The World Bank (neutral expert and court of arbitration)",
+        "The UN Security Council",
+        "The ICJ only",
+        "The WTO"
+      ],
+      "answer": 0,
+      "explanation": "The World Bank facilitates dispute resolution under the treaty.",
+      "difficulty": "medium",
+      "id": "q42"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The 'Kashmir dispute' was first raised at the UN by Pakistan in?",
+      "options": [
+        "January 1948",
+        "1947",
+        "1950",
+        "1965"
+      ],
+      "answer": 0,
+      "explanation": "Pakistan took the Kashmir issue to the UN Security Council in January 1948.",
+      "difficulty": "easy",
+      "id": "q43"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which Pakistani foreign minister is known for the 'zero problems' policy with neighbors?",
+      "options": [
+        "No PM applied that phrase; it was Turkey's Ahmet Davutoglu policy",
+        "Z.A. Bhutto",
+        "Shah Mehmood Qureshi",
+        "Khurshid Kasuri"
+      ],
+      "answer": 0,
+      "explanation": "'Zero problems with neighbors' was the foreign policy of Turkish PM Davutoglu, not Pakistan's.",
+      "difficulty": "hard",
+      "id": "q44"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Pakistan joined the Non-Aligned Movement (NAM) in which year?",
+      "options": [
+        "1979",
+        "1955",
+        "1961",
+        "1992"
+      ],
+      "answer": 0,
+      "explanation": "Pakistan joined NAM in 1979.",
+      "difficulty": "medium",
+      "id": "q45"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Pakistan left CENTO in which year?",
+      "options": [
+        "1979",
+        "1965",
+        "1971",
+        "1985"
+      ],
+      "answer": 0,
+      "explanation": "Pakistan withdrew from CENTO in March 1979.",
+      "difficulty": "medium",
+      "id": "q46"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Pakistan's 'Vision East Asia' policy aims at closer ties with:",
+      "options": [
+        "China, Japan and South Korea",
+        "Europe",
+        "Africa",
+        "Latin America"
+      ],
+      "answer": 0,
+      "explanation": "Vision East Asia focuses on East Asian economies.",
+      "difficulty": "medium",
+      "id": "q47"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The 'Zero Problems with Neighbours' policy was actually pursued by:",
+      "options": [
+        "Turkey",
+        "Pakistan",
+        "Iran",
+        "India"
+      ],
+      "answer": 0,
+      "explanation": "It was Turkish policy under Foreign Minister Davutoglu.",
+      "difficulty": "medium",
+      "id": "q48"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Pakistan recognised which country as an independent state in 2023?",
+      "options": [
+        "Kosovo",
+        "Palestine",
+        "Taiwan",
+        "Kurdistan"
+      ],
+      "answer": 0,
+      "explanation": "Pakistan recognised Kosovo as an independent state in 2023.",
+      "difficulty": "hard",
+      "id": "q49"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The UN partition plan for Palestine (1947) was opposed by Pakistan because:",
+      "options": [
+        "It favoured the creation of Israel at Palestinian expense",
+        "It was too lenient on Britain",
+        "It ignored the UN",
+        "It harmed Arab trade"
+      ],
+      "answer": 0,
+      "explanation": "Pakistan opposed the 1947 partition as unfair to Palestinians.",
+      "difficulty": "easy",
+      "id": "q50"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Pakistan's first foreign policy priority at independence was:",
+      "options": [
+        "To develop friendly relations with Muslim states",
+        "To join the Warsaw Pact",
+        "To colonise Kashmir",
+        "To leave the Commonwealth"
+      ],
+      "answer": 0,
+      "explanation": "Pakistan's initial policy emphasised Muslim world solidarity.",
+      "difficulty": "easy",
+      "id": "q51"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Pakistani diplomat who drafted the 'Jinnah-Bhutto' pact concept was:",
+      "options": [
+        "Z.A. Bhutto at the UN",
+        "Liaquat Ali Khan",
+        "Iskander Mirza",
+        "Feroz Khan Noon"
+      ],
+      "answer": 0,
+      "explanation": "Bhutto, as foreign minister, articulated Pakistan's post-1965 policy at the UN.",
+      "difficulty": "hard",
+      "id": "q52"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Pakistan's friendship treaty with China was signed in:",
+      "options": [
+        "1951",
+        "1962",
+        "1965",
+        "1948"
+      ],
+      "answer": 0,
+      "explanation": "The Sino-Pakistan friendship treaty was signed in May 1951.",
+      "difficulty": "medium",
+      "id": "q53"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Pakistan is a founding member of which organisation?",
+      "options": [
+        "OIC (Organisation of Islamic Cooperation)",
+        "NATO",
+        "EU",
+        "ASEAN"
+      ],
+      "answer": 0,
+      "explanation": "Pakistan was a founding member of the OIC in 1969.",
+      "difficulty": "easy",
+      "id": "q54"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Simla Agreement between Pakistan and India was signed in:",
+      "options": [
+        "1972",
+        "1965",
+        "1971",
+        "1976"
+      ],
+      "answer": 0,
+      "explanation": "The Simla Agreement was signed on 2 July 1972.",
+      "difficulty": "easy",
+      "id": "q55"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which Pakistani foreign minister negotiated the Simla Agreement?",
+      "options": [
+        "Z.A. Bhutto",
+        "Sharifuddin Pirzada",
+        "Agha Shahi",
+        "Sahabzada Yaqub Khan"
+      ],
+      "answer": 0,
+      "explanation": "PM Z.A. Bhutto signed the Simla Agreement with Indira Gandhi.",
+      "difficulty": "easy",
+      "id": "q56"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Pakistan's trade route via Gwadar is part of which initiative?",
+      "options": [
+        "CPEC",
+        "Silk Road of Iran",
+        "Eurasian Union",
+        "Indian Ocean Rim"
+      ],
+      "answer": 0,
+      "explanation": "Gwadar is the centrepiece port of CPEC.",
+      "difficulty": "easy",
+      "id": "q57"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Durand Line was drawn in which year?",
+      "options": [
+        "1893",
+        "1849",
+        "1919",
+        "1878"
+      ],
+      "answer": 0,
+      "explanation": "The Durand Line between British India and Afghanistan was fixed in 1893.",
+      "difficulty": "easy",
+      "id": "q58"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Pakistan's embassy in which capital hosted the Afghan Taliban talks in 2023?",
+      "options": [
+        "Islamabad",
+        "Tehran",
+        "Riyadh",
+        "Moscow"
+      ],
+      "answer": 0,
+      "explanation": "Pakistan hosted Taliban representatives in Islamabad.",
+      "difficulty": "hard",
+      "id": "q59"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The 'Pak-India Kartarpur Corridor' was inaugurated in:",
+      "options": [
+        "2019",
+        "2017",
+        "2020",
+        "2016"
+      ],
+      "answer": 0,
+      "explanation": "The Kartarpur corridor opened in November 2019.",
+      "difficulty": "easy",
+      "id": "q60"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Pakistan supported which side in the 1979 Afghan conflict initially?",
+      "options": [
+        "The Afghan resistance (Mujahideen)",
+        "The Soviet-backed government",
+        "Neutrality only",
+        "India"
+      ],
+      "answer": 0,
+      "explanation": "Pakistan supported the Mujahideen resistance after the Soviet invasion.",
+      "difficulty": "easy",
+      "id": "q61"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Pakistan's membership of the Commonwealth was suspended in:",
+      "options": [
+        "1999 after the coup",
+        "1971",
+        "1958",
+        "Never suspended"
+      ],
+      "answer": 0,
+      "explanation": "Pakistan was suspended from the Commonwealth after the 1999 coup.",
+      "difficulty": "medium",
+      "id": "q62"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Tashkent Declaration ended which conflict?",
+      "options": [
+        "The 1965 Indo-Pakistan war",
+        "The 1971 war",
+        "The Kargil conflict",
+        "The Siachen dispute"
+      ],
+      "answer": 0,
+      "explanation": "Tashkent (January 1966) ended the 1965 war.",
+      "difficulty": "easy",
+      "id": "q63"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Pakistan established diplomatic relations with which country first in 1950?",
+      "options": [
+        "China",
+        "USA",
+        "Iran",
+        "Turkey"
+      ],
+      "answer": 0,
+      "explanation": "Pakistan was among the first to recognise China in 1950.",
+      "difficulty": "medium",
+      "id": "q64"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The 'D-8' group was founded with Pakistan as a member in:",
+      "options": [
+        "1997",
+        "1990",
+        "2000",
+        "1985"
+      ],
+      "answer": 0,
+      "explanation": "The D-8 economic group was founded in 1997.",
+      "difficulty": "medium",
+      "id": "q65"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Pakistan's border with China is known as:",
+      "options": [
+        "Khunjerab border",
+        "Durand Line",
+        "Wagah border",
+        "Zero Point"
+      ],
+      "answer": 0,
+      "explanation": "The China-Pakistan border runs via the Khunjerab Pass.",
+      "difficulty": "easy",
+      "id": "q66"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Rann of Kutch conflict between Pakistan and India occurred in:",
+      "options": [
+        "1965",
+        "1962",
+        "1971",
+        "1955"
+      ],
+      "answer": 0,
+      "explanation": "The Rann of Kutch skirmishes occurred in April 1965.",
+      "difficulty": "medium",
+      "id": "q67"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Pakistan's 'Look Africa' policy emphasises:",
+      "options": [
+        "Closer ties with African nations",
+        "Military alliances in Africa",
+        "Only South Africa",
+        "Trade with Egypt"
+      ],
+      "answer": 0,
+      "explanation": "Look Africa seeks broader engagement with the continent.",
+      "difficulty": "medium",
+      "id": "q68"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Kargil conflict took place in which year?",
+      "options": [
+        "1999",
+        "1998",
+        "2001",
+        "1996"
+      ],
+      "answer": 0,
+      "explanation": "The Kargil conflict occurred in May–July 1999.",
+      "difficulty": "easy",
+      "id": "q69"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Pakistan's permanent representative to the UN presented the Kashmir case prominently in:",
+      "options": [
+        "Z.A. Bhutto's 1965 speech",
+        "1948 only",
+        "1971 only",
+        "No prominent speech"
+      ],
+      "answer": 0,
+      "explanation": "Bhutto's famous 1965 UN Security Council speech highlighted Kashmir.",
+      "difficulty": "easy",
+      "id": "q70"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which Pakistani official signed the 1947 boundary agreement with Afghanistan?",
+      "options": [
+        "Liaquat Ali Khan",
+        "Jinnah",
+        "Sir Ghulam Hussain Hidayatullah",
+        "No such agreement"
+      ],
+      "answer": 3,
+      "explanation": "There was no such boundary agreement; the Durand Line was accepted, not re-negotiated.",
+      "difficulty": "hard",
+      "id": "q71"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The 'Heart of Asia-Istanbul Process' focuses on:",
+      "options": [
+        "Regional cooperation on Afghanistan",
+        "Trade with Europe",
+        "Central Asian railways",
+        "Persian Gulf security"
+      ],
+      "answer": 0,
+      "explanation": "The Heart of Asia process promotes Afghan-led regional cooperation.",
+      "difficulty": "medium",
+      "id": "q72"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Pakistan established diplomatic relations with which Muslim country first?",
+      "options": [
+        "Iran",
+        "Turkey",
+        "Saudi Arabia",
+        "Egypt"
+      ],
+      "answer": 0,
+      "explanation": "Iran was among the first countries to recognise Pakistan.",
+      "difficulty": "medium",
+      "id": "q73"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The 'Pakistan-Turkey' strategic partnership was elevated to strategic council level in:",
+      "options": [
+        "2009",
+        "2005",
+        "2013",
+        "2000"
+      ],
+      "answer": 0,
+      "explanation": "The High-Level Strategic Cooperation Council was set up in 2009.",
+      "difficulty": "hard",
+      "id": "q74"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The 'Pakistan-Russia' relationship saw significant improvement after:",
+      "options": [
+        "The 2014–2016 thaw and defence pacts",
+        "The 1965 war",
+        "The 1971 war",
+        "The 1990s only"
+      ],
+      "answer": 0,
+      "explanation": "Pakistan-Russia ties warmed notably from 2014 onward.",
+      "difficulty": "medium",
+      "id": "q75"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The 'Gwadar-Chabahar' rivalry involves:",
+      "options": [
+        "Pakistan and Iran's competing ports",
+        "India and China only",
+        "Turkey and Iran",
+        "None"
+      ],
+      "answer": 0,
+      "explanation": "Gwadar (Pakistan) and Chabahar (Iran) are rival deep-water ports.",
+      "difficulty": "medium",
+      "id": "q76"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Pakistan's 'Think 20' engagement relates to:",
+      "options": [
+        "The G20 forum's think-tank track",
+        "The UN Security Council",
+        "The Commonwealth",
+        "The IMF"
+      ],
+      "answer": 0,
+      "explanation": "T20 is the G20's think-tank engagement group.",
+      "difficulty": "hard",
+      "id": "q77"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Pakistan recognised Bangladesh in:",
+      "options": [
+        "1974",
+        "1972",
+        "1971",
+        "1976"
+      ],
+      "answer": 0,
+      "explanation": "Pakistan recognised Bangladesh in February 1974.",
+      "difficulty": "medium",
+      "id": "q78"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The 'Composite Dialogue' between Pakistan and India was launched in:",
+      "options": [
+        "1997",
+        "1990",
+        "2001",
+        "2004"
+      ],
+      "answer": 0,
+      "explanation": "The Composite Dialogue began in 1997.",
+      "difficulty": "hard",
+      "id": "q79"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Pakistan's stance on the Middle East conflict supports:",
+      "options": [
+        "Palestinian self-determination",
+        "Israeli expansion",
+        "Neutrality only",
+        "Only economic ties"
+      ],
+      "answer": 0,
+      "explanation": "Pakistan consistently backs Palestinian rights.",
+      "difficulty": "easy",
+      "id": "q80"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The 'Pakistan-China All-Weather Friendship' is symbolised by:",
+      "options": [
+        "CPEC and the Khunjerab border",
+        "A trade embargo",
+        "Military hostility",
+        "No formal ties"
+      ],
+      "answer": 0,
+      "explanation": "CPEC and the shared border embody the friendship.",
+      "difficulty": "easy",
+      "id": "q81"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Pakistan's embassy in which city was attacked by extremists in 1979?",
+      "options": [
+        "Kabul",
+        "Tehran",
+        "Riyadh",
+        "Moscow"
+      ],
+      "answer": 0,
+      "explanation": "The Pakistani embassy in Kabul was attacked in 1979.",
+      "difficulty": "hard",
+      "id": "q82"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The 'Indus Waters Treaty' was brokered by:",
+      "options": [
+        "The World Bank",
+        "The UN",
+        "The USA",
+        "The Commonwealth"
+      ],
+      "answer": 0,
+      "explanation": "The World Bank mediated the 1960 treaty.",
+      "difficulty": "easy",
+      "id": "q83"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Pakistan's 'Strategic Depth' doctrine was associated with:",
+      "options": [
+        "Policy toward Afghanistan",
+        "Naval expansion",
+        "Nuclear tests",
+        "Economic reform"
+      ],
+      "answer": 0,
+      "explanation": "Strategic Depth, linked to Gen. Hamid Gul, concerned Afghanistan.",
+      "difficulty": "medium",
+      "id": "q84"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The 'TAPI' pipeline project involves:",
+      "options": [
+        "Turkmenistan, Afghanistan, Pakistan, India",
+        "Turkey, Iran, Iraq",
+        "Thailand and China",
+        "Only Pakistan"
+      ],
+      "answer": 0,
+      "explanation": "TAPI is a gas pipeline from Turkmenistan to India via Afghanistan and Pakistan.",
+      "difficulty": "easy",
+      "id": "q85"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Pakistan is a dialogue partner of which organisation?",
+      "options": [
+        "SCO",
+        "NATO",
+        "ASEAN",
+        "Arab League"
+      ],
+      "answer": 0,
+      "explanation": "Pakistan is a full member of the SCO.",
+      "difficulty": "easy",
+      "id": "q86"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The 'Jinnah-Bhutto' concept of foreign policy emphasised:",
+      "options": [
+        "Muslim unity and non-alignment",
+        "Isolationism",
+        "Colonial alliance",
+        "Regional only"
+      ],
+      "answer": 0,
+      "explanation": "Pakistan's early policy stressed Muslim world solidarity.",
+      "difficulty": "easy",
+      "id": "q87"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The 'Quetta-Shanghai' connectivity is part of:",
+      "options": [
+        "CPEC's western route",
+        "The TAPI route",
+        "The Iran gas pipeline",
+        "The silk road of India"
+      ],
+      "answer": 0,
+      "explanation": "CPEC's western route links Quetta toward the border with China.",
+      "difficulty": "medium",
+      "id": "q88"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Pakistan's representative to the UN in 1948 presented the Kashmir case to:",
+      "options": [
+        "The UN Security Council",
+        "The UN General Assembly only",
+        "The ICJ",
+        "The Commonwealth"
+      ],
+      "answer": 0,
+      "explanation": "Pakistan took the Kashmir dispute to the UN Security Council in 1948.",
+      "difficulty": "easy",
+      "id": "q89"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Pakistan hosted the OIC summit in Lahore in which year?",
+      "options": [
+        "1974",
+        "1969",
+        "1979",
+        "1984"
+      ],
+      "answer": 0,
+      "explanation": "Pakistan hosted the Second OIC summit in Lahore in 1974.",
+      "difficulty": "medium",
+      "id": "q90"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Pakistan's second round of nuclear tests, Chagai-II, was conducted on which date?",
+      "options": [
+        "30 May 1998",
+        "28 May 1998",
+        "2 June 1998",
+        "25 May 1998"
+      ],
+      "answer": 0,
+      "explanation": "Chagai-II was conducted on 30 May 1998.",
+      "difficulty": "hard",
+      "id": "q91"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Pakistan's nuclear test site is located in which hills?",
+      "options": [
+        "Ras Koh",
+        "Salt Range",
+        "Kirthar",
+        "Sulaiman"
+      ],
+      "answer": 0,
+      "explanation": "The Chagai test site lies in the Ras Koh hills of Balochistan.",
+      "difficulty": "medium",
+      "id": "q92"
+    },
+    {
+      "type": "mcq",
+      "prompt": "India conducted its second round of nuclear tests, Pokhran-II, in which year?",
+      "options": [
+        "1998",
+        "1996",
+        "2000",
+        "1994"
+      ],
+      "answer": 0,
+      "explanation": "India conducted Pokhran-II tests in May 1998.",
+      "difficulty": "medium",
+      "id": "q93"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Pakistan has not signed which treaty banning nuclear test explosions?",
+      "options": [
+        "The CTBT",
+        "The Geneva Convention",
+        "The NPT",
+        "The Ottawa Treaty"
+      ],
+      "answer": 0,
+      "explanation": "Pakistan has not signed the Comprehensive Nuclear-Test-Ban Treaty (CTBT).",
+      "difficulty": "medium",
+      "id": "q94"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Comprehensive Nuclear-Test-Ban Treaty (CTBT) opened for signature in which year?",
+      "options": [
+        "1996",
+        "1995",
+        "1998",
+        "1993"
+      ],
+      "answer": 0,
+      "explanation": "The CTBT was opened for signature in 1996.",
+      "difficulty": "hard",
+      "id": "q95"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The US Pressler Amendment imposed sanctions on Pakistan in which year?",
+      "options": [
+        "1990",
+        "1985",
+        "1992",
+        "1988"
+      ],
+      "answer": 0,
+      "explanation": "The Pressler Amendment triggered sanctions on Pakistan in 1990.",
+      "difficulty": "hard",
+      "id": "q96"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Agra Summit between Pakistan and India was held in which year?",
+      "options": [
+        "2001",
+        "1999",
+        "2004",
+        "1998"
+      ],
+      "answer": 0,
+      "explanation": "The Agra Summit took place in July 2001.",
+      "difficulty": "medium",
+      "id": "q97"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Lahore Declaration between Pakistan and India was signed in which year?",
+      "options": [
+        "1999",
+        "1997",
+        "2001",
+        "1998"
+      ],
+      "answer": 0,
+      "explanation": "The Lahore Declaration was signed in February 1999.",
+      "difficulty": "medium",
+      "id": "q98"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Agra Summit was held between which two leaders?",
+      "options": [
+        "Pervez Musharraf and Atal Bihari Vajpayee",
+        "Nawaz Sharif and Vajpayee",
+        "Benazir Bhutto and Rajiv Gandhi",
+        "Ayub Khan and Nehru"
+      ],
+      "answer": 0,
+      "explanation": "Musharraf and Vajpayee met at the Agra Summit in 2001.",
+      "difficulty": "medium",
+      "id": "q99"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The UN Military Observer Group in India and Pakistan (UNMOGIP) has operated since which year?",
+      "options": [
+        "1949",
+        "1947",
+        "1952",
+        "1955"
+      ],
+      "answer": 0,
+      "explanation": "UNMOGIP has supervised the ceasefire in Kashmir since 1949.",
+      "difficulty": "hard",
+      "id": "q100"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Pakistan's official position demands that the Kashmir dispute be resolved through?",
+      "options": [
+        "A plebiscite under UN resolutions",
+        "Direct annexation",
+        "World Bank arbitration",
+        "A bilateral trade deal"
+      ],
+      "answer": 0,
+      "explanation": "Pakistan calls for a UN-supervised plebiscite in Kashmir.",
+      "difficulty": "medium",
+      "id": "q101"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Pakistan was elected as a non-permanent member of the UN Security Council for 2025-26 in which year?",
+      "options": [
+        "2024",
+        "2023",
+        "2022",
+        "2025"
+      ],
+      "answer": 0,
+      "explanation": "Pakistan won a non-permanent UNSC seat for 2025-26 in June 2024.",
+      "difficulty": "hard",
+      "id": "q102"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Shanghai Cooperation Organisation (SCO) was founded in which year?",
+      "options": [
+        "2001",
+        "1996",
+        "2005",
+        "1999"
+      ],
+      "answer": 0,
+      "explanation": "The SCO was founded in June 2001.",
+      "difficulty": "medium",
+      "id": "q103"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The headquarters of the Shanghai Cooperation Organisation is located in?",
+      "options": [
+        "Beijing",
+        "Moscow",
+        "Shanghai",
+        "Astana"
+      ],
+      "answer": 0,
+      "explanation": "The SCO secretariat is in Beijing.",
+      "difficulty": "medium",
+      "id": "q104"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Pakistan joined the Economic Cooperation Organization (ECO) in which year?",
+      "options": [
+        "1992",
+        "1985",
+        "1990",
+        "1995"
+      ],
+      "answer": 0,
+      "explanation": "Pakistan joined the ECO in 1992.",
+      "difficulty": "hard",
+      "id": "q105"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Iran-Pakistan gas pipeline project is also known as the?",
+      "options": [
+        "Peace Pipeline",
+        "Silk Pipeline",
+        "Golden Pipeline",
+        "Indus Pipeline"
+      ],
+      "answer": 0,
+      "explanation": "The Iran-Pakistan pipeline is popularly called the Peace Pipeline.",
+      "difficulty": "medium",
+      "id": "q106"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Pakistan does not officially recognise which state?",
+      "options": [
+        "Israel",
+        "Kosovo",
+        "Palestine",
+        "Taiwan"
+      ],
+      "answer": 0,
+      "explanation": "Pakistan does not recognise the state of Israel.",
+      "difficulty": "easy",
+      "id": "q107"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which principle guided Pakistan's early foreign policy under the Quaid?",
+      "options": [
+        "Friendship with all, enmity with none",
+        "Isolationism",
+        "Expansionism",
+        "Balance of power only"
+      ],
+      "answer": 0,
+      "explanation": "Jinnah advocated friendly relations with all nations.",
+      "difficulty": "medium",
+      "id": "q108"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Pakistan is among the largest troop contributors to which organisation's peacekeeping missions?",
+      "options": [
+        "The United Nations",
+        "NATO",
+        "The Arab League",
+        "ASEAN"
+      ],
+      "answer": 0,
+      "explanation": "Pakistan is one of the top contributors of troops to UN peacekeeping.",
+      "difficulty": "medium",
+      "id": "q109"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who was the first female Foreign Minister of Pakistan?",
+      "options": [
+        "Hina Rabbani Khar",
+        "Sherry Rehman",
+        "Maleeha Lodhi",
+        "Fehmida Mirza"
+      ],
+      "answer": 0,
+      "explanation": "Hina Rabbani Khar became Foreign Minister in 2011.",
+      "difficulty": "medium",
+      "id": "q110"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Doha Process refers to peace talks on which country held in Qatar?",
+      "options": [
+        "Afghanistan",
+        "Syria",
+        "Yemen",
+        "Libya"
+      ],
+      "answer": 0,
+      "explanation": "The Doha Process concerned peace talks on Afghanistan.",
+      "difficulty": "medium",
+      "id": "q111"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Pakistan-Iran border is approximately how long?",
+      "options": [
+        "About 900 km",
+        "About 500 km",
+        "About 1,500 km",
+        "About 2,000 km"
+      ],
+      "answer": 0,
+      "explanation": "The Pak-Iran border is roughly 900 kilometres long.",
+      "difficulty": "medium",
+      "id": "q112"
+    },
+    {
+      "type": "mcq",
+      "prompt": "UN Security Council Resolution 47, the first on Kashmir, was adopted in which year?",
+      "options": [
+        "1948",
+        "1947",
+        "1950",
+        "1953"
+      ],
+      "answer": 0,
+      "explanation": "Resolution 47 was adopted in April 1948.",
+      "difficulty": "hard",
+      "id": "q113"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Pakistan aligned with the United States in the 'war on terror' after which event?",
+      "options": [
+        "The 9/11 attacks",
+        "The Gulf War",
+        "The Soviet invasion of Afghanistan",
+        "The 1965 war"
+      ],
+      "answer": 0,
+      "explanation": "After 9/11, Pakistan joined the US-led war on terror.",
+      "difficulty": "easy",
+      "id": "q114"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Pakistan's policy of outreach towards the Central Asian republics is called?",
+      "options": [
+        "Connect Central Asia",
+        "Look East",
+        "Vision Asia",
+        "Neighbourhood First"
+      ],
+      "answer": 0,
+      "explanation": "Pakistan's policy toward Central Asia is known as 'Connect Central Asia'.",
+      "difficulty": "hard",
+      "id": "q115"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which country has historically been a major source of financial and energy support to Pakistan?",
+      "options": [
+        "Saudi Arabia",
+        "Japan",
+        "Australia",
+        "Brazil"
+      ],
+      "answer": 0,
+      "explanation": "Saudi Arabia has provided significant financial and energy support to Pakistan.",
+      "difficulty": "medium",
+      "id": "q116"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Pakistan does not recognise which country because of the Nagorno-Karabakh dispute?",
+      "options": [
+        "Armenia",
+        "Azerbaijan",
+        "Georgia",
+        "Turkey"
+      ],
+      "answer": 0,
+      "explanation": "Pakistan does not recognise Armenia due to its stance on Nagorno-Karabakh.",
+      "difficulty": "hard",
+      "id": "q117"
+    },
+    {
+      "type": "mcq",
+      "prompt": "In the Nagorno-Karabakh conflict, Pakistan supported?",
+      "options": [
+        "Azerbaijan",
+        "Armenia",
+        "Russia",
+        "Turkey only"
+      ],
+      "answer": 0,
+      "explanation": "Pakistan has supported Azerbaijan's position in the conflict.",
+      "difficulty": "hard",
+      "id": "q118"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Pakistan has served as a non-permanent member of the UN Security Council how many times?",
+      "options": [
+        "Eight",
+        "Five",
+        "Six",
+        "Seven"
+      ],
+      "answer": 0,
+      "explanation": "Pakistan has served eight terms on the UN Security Council.",
+      "difficulty": "hard",
+      "id": "q119"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Baglihar Dam, a water dispute with India, is constructed on which river?",
+      "options": [
+        "Chenab",
+        "Jhelum",
+        "Ravi",
+        "Sutlej"
+      ],
+      "answer": 0,
+      "explanation": "The Baglihar Dam is on the Chenab River.",
+      "difficulty": "hard",
+      "id": "q120"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Kishanganga hydroelectric project dispute concerns which river?",
+      "options": [
+        "Neelum",
+        "Chenab",
+        "Ravi",
+        "Beas"
+      ],
+      "answer": 0,
+      "explanation": "The Kishanganga project is on the Neelum River.",
+      "difficulty": "hard",
+      "id": "q121"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Wullar Barrage controversy concerns a project on which river?",
+      "options": [
+        "Jhelum",
+        "Chenab",
+        "Ravi",
+        "Indus"
+      ],
+      "answer": 0,
+      "explanation": "The Wullar Barrage dispute involves the Jhelum River.",
+      "difficulty": "hard",
+      "id": "q122"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Geneva Accords on Afghanistan were signed in which year?",
+      "options": [
+        "1988",
+        "1985",
+        "1990",
+        "1992"
+      ],
+      "answer": 0,
+      "explanation": "The Geneva Accords were signed in April 1988.",
+      "difficulty": "hard",
+      "id": "q123"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Pakistan has hosted which of the world's largest refugee populations?",
+      "options": [
+        "Afghan refugees",
+        "Syrian refugees",
+        "Rohingya refugees",
+        "Palestinian refugees"
+      ],
+      "answer": 0,
+      "explanation": "Pakistan has hosted millions of Afghan refugees over decades.",
+      "difficulty": "medium",
+      "id": "q124"
+    },
+    {
+      "type": "mcq",
+      "prompt": "After the Taliban's return to power in Afghanistan in 2021, Pakistan advocated?",
+      "options": [
+        "Engagement and dialogue with the new government",
+        "Military intervention",
+        "Complete isolation",
+        "Recognition of a northern government"
+      ],
+      "answer": 0,
+      "explanation": "Pakistan urged engagement with the Taliban administration.",
+      "difficulty": "medium",
+      "id": "q125"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Pakistan and Iran share their border primarily through which province of Pakistan?",
+      "options": [
+        "Balochistan",
+        "Sindh",
+        "Punjab",
+        "Khyber Pakhtunkhwa"
+      ],
+      "answer": 0,
+      "explanation": "The Pak-Iran border runs through Balochistan.",
+      "difficulty": "easy",
+      "id": "q126"
+    },
+    {
+      "type": "mcq",
+      "prompt": "In 2015 Pakistan's parliament voted to remain neutral in which conflict?",
+      "options": [
+        "The Yemen conflict",
+        "The Syrian civil war",
+        "The Libyan crisis",
+        "The Afghan war"
+      ],
+      "answer": 0,
+      "explanation": "Parliament voted to stay neutral in the Yemen conflict in 2015.",
+      "difficulty": "hard",
+      "id": "q127"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Pakistan's nuclear doctrine of 'full spectrum deterrence' aims to?",
+      "options": [
+        "Deter all levels of aggression",
+        "Only counter strategic strikes",
+        "Abandon nuclear weapons",
+        "Limit deterrence to conventional war"
+      ],
+      "answer": 0,
+      "explanation": "Full spectrum deterrence covers all levels of threat.",
+      "difficulty": "hard",
+      "id": "q128"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Pakistan is not a member of which nuclear-related group?",
+      "options": [
+        "The Nuclear Suppliers Group",
+        "The IAEA",
+        "The Wassenaar Arrangement",
+        "The Zangger Committee"
+      ],
+      "answer": 0,
+      "explanation": "Pakistan is not a member of the Nuclear Suppliers Group (NSG).",
+      "difficulty": "medium",
+      "id": "q129"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who was the first Foreign Minister of Pakistan?",
+      "options": [
+        "Sir Muhammad Zafarullah Khan",
+        "Liaquat Ali Khan",
+        "Ghulam Muhammad",
+        "Chaudhry Muhammad Ali"
+      ],
+      "answer": 0,
+      "explanation": "Sir Zafarullah Khan served as Pakistan's first Foreign Minister.",
+      "difficulty": "medium",
+      "id": "q130"
+    }
+  ]
+}

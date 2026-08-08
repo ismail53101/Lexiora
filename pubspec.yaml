@@ -53,3 +53,4 @@ flutter:
     - assets/translations/
     - assets/grammar/
     - assets/vocabulary/
+    - assets/quiz/

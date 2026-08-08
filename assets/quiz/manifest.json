@@ -1,0 +1,326 @@
+{
+  "banks": [
+    {
+      "ref": "pakistan_affairs/history.json",
+      "name": "History",
+      "subject": "Pakistan Affairs",
+      "topic": "History",
+      "version": "1.0"
+    },
+    {
+      "ref": "pakistan_affairs/constitution.json",
+      "name": "Constitution & Politics",
+      "subject": "Pakistan Affairs",
+      "topic": "Constitution & Politics",
+      "version": "1.0"
+    },
+    {
+      "ref": "pakistan_affairs/geography.json",
+      "name": "Geography",
+      "subject": "Pakistan Affairs",
+      "topic": "Geography",
+      "version": "1.0"
+    },
+    {
+      "ref": "pakistan_affairs/economy.json",
+      "name": "Economy",
+      "subject": "Pakistan Affairs",
+      "topic": "Economy",
+      "version": "1.0"
+    },
+    {
+      "ref": "pakistan_affairs/foreign_policy.json",
+      "name": "Foreign Policy",
+      "subject": "Pakistan Affairs",
+      "topic": "Foreign Policy",
+      "version": "1.0"
+    },
+    {
+      "ref": "pakistan_affairs/freedom_movement.json",
+      "name": "Freedom Movement",
+      "subject": "Pakistan Affairs",
+      "topic": "Freedom Movement",
+      "version": "1.0"
+    },
+    {
+      "ref": "pakistan_affairs/culture_society.json",
+      "name": "Culture & Society",
+      "subject": "Pakistan Affairs",
+      "topic": "Culture & Society",
+      "version": "1.0"
+    },
+    {
+      "ref": "pakistan_affairs/provinces_regions.json",
+      "name": "Provinces & Regions",
+      "subject": "Pakistan Affairs",
+      "topic": "Provinces & Regions",
+      "version": "1.0"
+    },
+    {
+      "ref": "pakistan_affairs/science_personalities.json",
+      "name": "Science & Personalities",
+      "subject": "Pakistan Affairs",
+      "topic": "Science & Personalities",
+      "version": "1.0"
+    },
+    {
+      "ref": "pakistan_affairs/defence_nuclear.json",
+      "name": "Defence & Nuclear",
+      "subject": "Pakistan Affairs",
+      "topic": "Defence & Nuclear",
+      "version": "1.0"
+    },
+    {
+      "ref": "islamiat/quran.json",
+      "name": "The Holy Quran",
+      "subject": "Islamic Studies",
+      "topic": "The Holy Quran",
+      "version": "1.0"
+    },
+    {
+      "ref": "islamiat/pillars_and_worship.json",
+      "name": "Pillars & Worship",
+      "subject": "Islamic Studies",
+      "topic": "Pillars & Worship",
+      "version": "1.0"
+    },
+    {
+      "ref": "islamiat/seerat.json",
+      "name": "Seerat-un-Nabi",
+      "subject": "Islamic Studies",
+      "topic": "Seerat-un-Nabi",
+      "version": "1.0"
+    },
+    {
+      "ref": "islamiat/companions_and_caliphs.json",
+      "name": "Companions & Caliphs",
+      "subject": "Islamic Studies",
+      "topic": "Companions & Caliphs",
+      "version": "1.0"
+    },
+    {
+      "ref": "islamiat/prophets_and_beliefs.json",
+      "name": "Prophets & Beliefs",
+      "subject": "Islamic Studies",
+      "topic": "Prophets & Beliefs",
+      "version": "1.0"
+    },
+    {
+      "ref": "islamiat/fiqh_and_hadith.json",
+      "name": "Fiqh & Hadith",
+      "subject": "Islamic Studies",
+      "topic": "Fiqh & Hadith",
+      "version": "1.0"
+    },
+    {
+      "ref": "islamiat/islamic_history.json",
+      "name": "Islamic History",
+      "subject": "Islamic Studies",
+      "topic": "Islamic History",
+      "version": "1.0"
+    },
+    {
+      "ref": "islamiat/notable_women.json",
+      "name": "Notable Women in Islam",
+      "subject": "Islamic Studies",
+      "topic": "Notable Women in Islam",
+      "version": "1.0"
+    },
+    {
+      "ref": "islamiat/islamic_calendar.json",
+      "name": "Islamic Calendar & Special Days",
+      "subject": "Islamic Studies",
+      "topic": "Islamic Calendar & Special Days",
+      "version": "1.0"
+    },
+    {
+      "ref": "islamiat/ghazwat.json",
+      "name": "Battles of Islam (Ghazwat)",
+      "subject": "Islamic Studies",
+      "topic": "Battles of Islam (Ghazwat)",
+      "version": "1.0"
+    },
+    {
+      "ref": "islamiat/surahs_verses.json",
+      "name": "Surahs & Key Verses",
+      "subject": "Islamic Studies",
+      "topic": "Surahs & Key Verses",
+      "version": "1.0"
+    },
+    {
+      "ref": "islamiat/concepts_terminology.json",
+      "name": "Islamic Concepts & Terminology",
+      "subject": "Islamic Studies",
+      "topic": "Islamic Concepts & Terminology",
+      "version": "1.0"
+    },
+    {
+      "ref": "islamiat/scholars_imams.json",
+      "name": "Scholars & Imams",
+      "subject": "Islamic Studies",
+      "topic": "Scholars & Imams",
+      "version": "1.0"
+    },
+    {
+      "ref": "islamiat/muslim_civilization.json",
+      "name": "Muslim Civilization & Contributions",
+      "subject": "Islamic Studies",
+      "topic": "Muslim Civilization & Contributions",
+      "version": "1.0"
+    },
+    {
+      "ref": "islamiat/quran_facts.json",
+      "name": "Quranic Facts & Revelation",
+      "subject": "Islamic Studies",
+      "topic": "Quranic Facts & Revelation",
+      "version": "1.0"
+    },
+    {
+      "ref": "islamiat/hadith_sunnah.json",
+      "name": "Hadith & Sunnah",
+      "subject": "Islamic Studies",
+      "topic": "Hadith & Sunnah",
+      "version": "1.0"
+    },
+    {
+      "ref": "islamiat/pillars_details.json",
+      "name": "Salah, Zakat, Hajj & Fasting Details",
+      "subject": "Islamic Studies",
+      "topic": "Salah, Zakat, Hajj & Fasting Details",
+      "version": "1.0"
+    },
+    {
+      "ref": "islamiat/prophets_of_islam.json",
+      "name": "Prophets of Islam",
+      "subject": "Islamic Studies",
+      "topic": "Prophets of Islam",
+      "version": "1.0"
+    },
+    {
+      "ref": "islamiat/muslim_rule_south_asia.json",
+      "name": "Muslim Rule in South Asia",
+      "subject": "Islamic Studies",
+      "topic": "Muslim Rule in South Asia",
+      "version": "1.0"
+    },
+    {
+      "ref": "islamiat/islamic_festivals.json",
+      "name": "Islamic Festivals & Special Days",
+      "subject": "Islamic Studies",
+      "topic": "Islamic Festivals & Special Days",
+      "version": "1.0"
+    },
+    {
+      "ref": "islamiat/angels_beliefs.json",
+      "name": "Angels, Beliefs & Articles of Faith",
+      "subject": "Islamic Studies",
+      "topic": "Angels, Beliefs & Articles of Faith",
+      "version": "1.0"
+    },
+    {
+      "ref": "islamiat/seerah_makkah_madinah.json",
+      "name": "Seerah: Life in Makkah & Madinah",
+      "subject": "Islamic Studies",
+      "topic": "Seerah: Life in Makkah & Madinah",
+      "version": "1.0"
+    },
+    {
+      "ref": "gsa/physics.json",
+      "name": "Physics",
+      "subject": "General Science & Ability",
+      "topic": "Physics",
+      "version": "1.0"
+    },
+    {
+      "ref": "gsa/chemistry.json",
+      "name": "Chemistry",
+      "subject": "General Science & Ability",
+      "topic": "Chemistry",
+      "version": "1.0"
+    },
+    {
+      "ref": "gsa/biology.json",
+      "name": "Biology",
+      "subject": "General Science & Ability",
+      "topic": "Biology",
+      "version": "1.0"
+    },
+    {
+      "ref": "gsa/earth_space.json",
+      "name": "Earth & Space",
+      "subject": "General Science & Ability",
+      "topic": "Earth & Space",
+      "version": "1.0"
+    },
+    {
+      "ref": "gsa/computer.json",
+      "name": "Computer Science",
+      "subject": "General Science & Ability",
+      "topic": "Computer Science",
+      "version": "1.0"
+    },
+    {
+      "ref": "gsa/math_reasoning.json",
+      "name": "Math & Reasoning",
+      "subject": "General Science & Ability",
+      "topic": "Math & Reasoning",
+      "version": "1.0"
+    },
+    {
+      "ref": "gsa/inventions_scientists.json",
+      "name": "Inventions & Scientists",
+      "subject": "General Science & Ability",
+      "topic": "Inventions & Scientists",
+      "version": "1.0"
+    },
+    {
+      "ref": "english/grammar.json",
+      "name": "Grammar",
+      "subject": "English",
+      "topic": "Grammar",
+      "version": "1.0"
+    },
+    {
+      "ref": "english/vocabulary.json",
+      "name": "Vocabulary",
+      "subject": "English",
+      "topic": "Vocabulary",
+      "version": "1.0"
+    },
+    {
+      "ref": "english/synonyms.json",
+      "name": "Synonyms",
+      "subject": "English",
+      "topic": "Synonyms",
+      "version": "1.0"
+    },
+    {
+      "ref": "english/antonyms.json",
+      "name": "Antonyms",
+      "subject": "English",
+      "topic": "Antonyms",
+      "version": "1.0"
+    },
+    {
+      "ref": "english/idioms.json",
+      "name": "Idioms & Phrases",
+      "subject": "English",
+      "topic": "Idioms & Phrases",
+      "version": "1.0"
+    },
+    {
+      "ref": "english/sentence_correction.json",
+      "name": "Sentence Correction",
+      "subject": "English",
+      "topic": "Sentence Correction",
+      "version": "1.0"
+    },
+    {
+      "ref": "english/one_word_substitution.json",
+      "name": "One-Word Substitution",
+      "subject": "English",
+      "topic": "One-Word Substitution",
+      "version": "1.0"
+    }
+  ]
+}

@@ -1,0 +1,1413 @@
+{
+  "bank": {
+    "name": "Companions & Caliphs",
+    "subject": "Islamic Studies",
+    "topic": "Companions & Caliphs",
+    "description": "The rightly-guided Caliphs, prominent Sahabah (companions) and the early Islamic period.",
+    "tags": "css,pms,fpsc,islamic-studies,companions,caliphs",
+    "version": "1.0",
+    "id": "islamiat_companions_and_caliphs"
+  },
+  "questions": [
+    {
+      "type": "mcq",
+      "prompt": "Hazrat Abu Bakr (RA) is known by which title?",
+      "options": [
+        "Al-Farooq",
+        "As-Siddiq",
+        "Dhun-Noorain",
+        "Saifullah"
+      ],
+      "answer": 1,
+      "explanation": "Abu Bakr (RA) is called As-Siddiq (the most truthful) for confirming the Isra and Mi'raj.",
+      "difficulty": "medium",
+      "id": "q01"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who was the second Caliph of Islam?",
+      "options": [
+        "Umar (RA)",
+        "Abu Bakr (RA)",
+        "Uthman (RA)",
+        "Ali (RA)"
+      ],
+      "answer": 0,
+      "explanation": "Umar ibn al-Khattab (RA) was the second Caliph (634-644 CE).",
+      "difficulty": "easy",
+      "id": "q02"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Hazrat Umar (RA) is known by which title?",
+      "options": [
+        "As-Siddiq",
+        "Dhun-Noorain",
+        "Al-Farooq",
+        "Abu Turab"
+      ],
+      "answer": 2,
+      "explanation": "Umar (RA) is called Al-Farooq, the one who distinguishes truth from falsehood.",
+      "difficulty": "medium",
+      "id": "q03"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which Caliph introduced the Hijri (lunar) calendar?",
+      "options": [
+        "Abu Bakr (RA)",
+        "Umar (RA)",
+        "Uthman (RA)",
+        "Ali (RA)"
+      ],
+      "answer": 1,
+      "explanation": "The Hijri calendar was introduced in 16 AH (638 CE) during the caliphate of Umar (RA).",
+      "difficulty": "hard",
+      "id": "q04"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who was the third Caliph of Islam?",
+      "options": [
+        "Umar (RA)",
+        "Abu Bakr (RA)",
+        "Uthman (RA)",
+        "Ali (RA)"
+      ],
+      "answer": 2,
+      "explanation": "Uthman ibn Affan (RA) was the third Caliph (644-656 CE).",
+      "difficulty": "easy",
+      "id": "q05"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Hazrat Uthman (RA) is known by which title?",
+      "options": [
+        "Al-Farooq",
+        "As-Siddiq",
+        "Saifullah",
+        "Dhun-Noorain"
+      ],
+      "answer": 3,
+      "explanation": "Uthman (RA) is called Dhun-Noorain, 'the one with two lights', as he married two daughters of the Prophet (PBUH).",
+      "difficulty": "medium",
+      "id": "q06"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who was the fourth Caliph of Islam?",
+      "options": [
+        "Uthman (RA)",
+        "Ali (RA)",
+        "Umar (RA)",
+        "Abu Bakr (RA)"
+      ],
+      "answer": 1,
+      "explanation": "Ali ibn Abi Talib (RA) was the fourth Caliph (656-661 CE).",
+      "difficulty": "easy",
+      "id": "q07"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The period of the rightly-guided Caliphs (Khulafa-e-Rashideen) covers which years?",
+      "options": [
+        "622-632 CE",
+        "632-661 CE",
+        "661-750 CE",
+        "750-850 CE"
+      ],
+      "answer": 1,
+      "explanation": "The era of the four rightly-guided Caliphs lasted from 632 CE to 661 CE.",
+      "difficulty": "medium",
+      "id": "q08"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which Caliph moved the capital of the Islamic state to Kufa?",
+      "options": [
+        "Umar (RA)",
+        "Uthman (RA)",
+        "Ali (RA)",
+        "Muawiyah (RA)"
+      ],
+      "answer": 2,
+      "explanation": "Ali (RA) shifted the capital from Madinah to Kufa (in Iraq) during his caliphate.",
+      "difficulty": "hard",
+      "id": "q09"
+    },
+    {
+      "type": "mcq",
+      "prompt": "During whose caliphate was Jerusalem (Bait-ul-Maqdis) conquered?",
+      "options": [
+        "Abu Bakr (RA)",
+        "Umar (RA)",
+        "Uthman (RA)",
+        "Ali (RA)"
+      ],
+      "answer": 1,
+      "explanation": "Jerusalem was taken in 638 CE during the caliphate of Umar (RA), who accepted its peaceful surrender.",
+      "difficulty": "medium",
+      "id": "q10"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who was the first to be given the title 'Ameer-ul-Momineen' (Leader of the Believers)?",
+      "options": [
+        "Abu Bakr (RA)",
+        "Uthman (RA)",
+        "Umar (RA)",
+        "Ali (RA)"
+      ],
+      "answer": 2,
+      "explanation": "Umar (RA) was the first to be called Ameer-ul-Momineen.",
+      "difficulty": "hard",
+      "id": "q11"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Hazrat Khalid bin Waleed (RA) is known by which title?",
+      "options": [
+        "Saifullah (Sword of Allah)",
+        "As-Siddiq",
+        "Al-Farooq",
+        "Dhun-Noorain"
+      ],
+      "answer": 0,
+      "explanation": "Khalid bin Waleed (RA) was titled Saifullah, the Sword of Allah, for his military prowess.",
+      "difficulty": "medium",
+      "id": "q12"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which companion narrated the largest number of hadiths?",
+      "options": [
+        "Abu Hurairah (RA)",
+        "Ibn Abbas (RA)",
+        "Anas ibn Malik (RA)",
+        "Jabir (RA)"
+      ],
+      "answer": 0,
+      "explanation": "Abu Hurairah (RA) is the companion from whom the most hadiths (about 5,374) are narrated.",
+      "difficulty": "medium",
+      "id": "q13"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Hazrat Ali (RA) is associated with which famous sword?",
+      "options": [
+        "Zulfiqar",
+        "Saif al-Islam",
+        "Al-Mu'min",
+        "Al-Farouq"
+      ],
+      "answer": 0,
+      "explanation": "Zulfiqar, the double-bladed sword, is famously associated with Ali (RA).",
+      "difficulty": "medium",
+      "id": "q14"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which companion, known as the 'translator of the Quran', was the cousin of the Prophet (PBUH)?",
+      "options": [
+        "Abdullah ibn Masud (RA)",
+        "Abdullah ibn Abbas (RA)",
+        "Zayd ibn Thabit (RA)",
+        "Salman al-Farsi (RA)"
+      ],
+      "answer": 1,
+      "explanation": "Abdullah ibn Abbas (RA), a cousin of the Prophet (PBUH), was renowned for Quranic knowledge and exegesis.",
+      "difficulty": "hard",
+      "id": "q15"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which Caliph was martyred while leading the Fajr prayer?",
+      "options": [
+        "Umar (RA)",
+        "Uthman (RA)",
+        "Ali (RA)",
+        "Abu Bakr (RA)"
+      ],
+      "answer": 0,
+      "explanation": "Umar (RA) was assassinated by Abu Lu'lu'ah while leading the Fajr prayer in Madinah in 23 AH.",
+      "difficulty": "hard",
+      "id": "q16"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which of the Prophet's (PBUH) daughters was the wife of Ali (RA)?",
+      "options": [
+        "Zainab",
+        "Ruqayyah",
+        "Umm Kulthum",
+        "Fatimah"
+      ],
+      "answer": 3,
+      "explanation": "Fatimah (RA), the youngest daughter of the Prophet (PBUH), married Ali (RA).",
+      "difficulty": "easy",
+      "id": "q17"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who are the 'Khulafa-e-Rashidun'?",
+      "options": [
+        "The first four rightly guided caliphs",
+        "The four Imams of fiqh",
+        "The ten promised Jannah",
+        "The scribes of revelation"
+      ],
+      "answer": 0,
+      "explanation": "The Khulafa-e-Rashidun are Abu Bakr, Umar, Uthman and Ali (RA).",
+      "difficulty": "easy",
+      "id": "q18"
+    },
+    {
+      "type": "mcq",
+      "prompt": "How many years did Abu Bakr (RA) serve as caliph?",
+      "options": [
+        "About 2 years (632-634 CE)",
+        "10 years",
+        "5 years",
+        "1 year"
+      ],
+      "answer": 0,
+      "explanation": "Abu Bakr (RA) was caliph for about 2 years until his death in 634 CE.",
+      "difficulty": "medium",
+      "id": "q19"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who nominated Abu Bakr (RA) as caliph before the Saqifah meeting?",
+      "options": [
+        "Umar ibn al-Khattab",
+        "Ali",
+        "Uthman",
+        "Zaid bin Thabit"
+      ],
+      "answer": 0,
+      "explanation": "Umar (RA) proposed Abu Bakr (RA) for the caliphate, and the community pledged allegiance.",
+      "difficulty": "medium",
+      "id": "q20"
+    },
+    {
+      "type": "mcq",
+      "prompt": "During whose caliphate was the Quran compiled into one volume?",
+      "options": [
+        "Abu Bakr's",
+        "Umar's",
+        "Uthman's",
+        "Ali's"
+      ],
+      "answer": 0,
+      "explanation": "The first compilation into a single Mushaf was done during Abu Bakr's caliphate.",
+      "difficulty": "easy",
+      "id": "q21"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who fought the Ridda (apostasy) wars during his caliphate?",
+      "options": [
+        "Abu Bakr",
+        "Umar",
+        "Uthman",
+        "Ali"
+      ],
+      "answer": 0,
+      "explanation": "Abu Bakr (RA) fought the apostate tribes who refused Zakat after the Prophet's (PBUH) death.",
+      "difficulty": "medium",
+      "id": "q22"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who introduced the Hijri calendar during his caliphate?",
+      "options": [
+        "Umar ibn al-Khattab",
+        "Uthman",
+        "Abu Bakr",
+        "Ali"
+      ],
+      "answer": 0,
+      "explanation": "Umar (RA) instituted the Hijri calendar in 17 AH, beginning from the Hijrah.",
+      "difficulty": "medium",
+      "id": "q23"
+    },
+    {
+      "type": "mcq",
+      "prompt": "During whose caliphate were Basra, Kufa and Fustat founded?",
+      "options": [
+        "Umar's",
+        "Uthman's",
+        "Ali's",
+        "Abu Bakr's"
+      ],
+      "answer": 0,
+      "explanation": "Umar (RA) founded the garrison cities of Basra, Kufa and Fustat as administrative centers.",
+      "difficulty": "hard",
+      "id": "q24"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who was assassinated while leading the Fajr prayer in Madinah?",
+      "options": [
+        "Umar ibn al-Khattab",
+        "Uthman",
+        "Ali",
+        "Abu Bakr"
+      ],
+      "answer": 0,
+      "explanation": "Umar (RA) was fatally stabbed by Abu Lu'lu'a (Firuz) during Fajr in 644 CE.",
+      "difficulty": "medium",
+      "id": "q25"
+    },
+    {
+      "type": "mcq",
+      "prompt": "During whose caliphate was the standard Mushaf (Uthmani script) distributed?",
+      "options": [
+        "Uthman's",
+        "Umar's",
+        "Abu Bakr's",
+        "Ali's"
+      ],
+      "answer": 0,
+      "explanation": "Uthman (RA) standardized the Quranic text and sent copies to the provinces.",
+      "difficulty": "easy",
+      "id": "q26"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What title is Uthman (RA) known by?",
+      "options": [
+        "Dhun-Nurayn (Possessor of the Two Lights)",
+        "Al-Faruq",
+        "Al-Siddiq",
+        "Asadullah"
+      ],
+      "answer": 0,
+      "explanation": "Uthman (RA) earned 'Dhun-Nurayn' for marrying two daughters of the Prophet (PBUH): Ruqayyah and Umm Kulthum.",
+      "difficulty": "medium",
+      "id": "q27"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What title is Ali (RA) known by for his bravery?",
+      "options": [
+        "Asadullah (Lion of Allah)",
+        "Al-Faruq",
+        "Al-Amin",
+        "Dhun-Nurayn"
+      ],
+      "answer": 0,
+      "explanation": "Ali (RA) was called Asadullah, the Lion of Allah, for his valor.",
+      "difficulty": "medium",
+      "id": "q28"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Battle of Jamal (Camel) and Siffin occurred during whose caliphate?",
+      "options": [
+        "Ali's",
+        "Uthman's",
+        "Umar's",
+        "Hasan's"
+      ],
+      "answer": 0,
+      "explanation": "The civil conflicts of Jamal (656) and Siffin (657) took place during Ali's (RA) caliphate.",
+      "difficulty": "medium",
+      "id": "q29"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who established the Umayyad dynasty?",
+      "options": [
+        "Muawiyah ibn Abi Sufyan",
+        "Yazid",
+        "Abdul Malik",
+        "Uthman"
+      ],
+      "answer": 0,
+      "explanation": "Muawiyah (RA) founded the Umayyad dynasty in 661 CE after the caliphate of Hasan (RA).",
+      "difficulty": "easy",
+      "id": "q30"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who is known as the 'Sword of Allah' (Saifullah)?",
+      "options": [
+        "Khalid bin Waleed",
+        "Hamza",
+        "Ali",
+        "Umar"
+      ],
+      "answer": 0,
+      "explanation": "Khalid bin Waleed (RA) was given the title Saifullah (Sword of Allah) by the Prophet (PBUH).",
+      "difficulty": "easy",
+      "id": "q31"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who was the first mu'adhdhin (caller to prayer) of Islam?",
+      "options": [
+        "Bilal ibn Rabah",
+        "Abdullah ibn Umm Maktum",
+        "Abu Mahdhurah",
+        "Zaid bin Harithah"
+      ],
+      "answer": 0,
+      "explanation": "Bilal (RA), an Abyssinian companion, was chosen as the first mu'adhdhin.",
+      "difficulty": "easy",
+      "id": "q32"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who proposed the Adhan (call to prayer) after seeing a vision?",
+      "options": [
+        "Abdullah bin Zaid",
+        "Bilal",
+        "Umar",
+        "Uthman"
+      ],
+      "answer": 0,
+      "explanation": "Abdullah bin Zaid (RA) saw the Adhan in a dream, and the Prophet (PBUH) confirmed it.",
+      "difficulty": "medium",
+      "id": "q33"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who was the first to accept Islam from among the women?",
+      "options": [
+        "Khadijah bint Khuwaylid",
+        "Fatimah",
+        "Aisha",
+        "Umm Salama"
+      ],
+      "answer": 0,
+      "explanation": "Khadijah (RA), the Prophet's wife, was the first person overall to accept Islam.",
+      "difficulty": "easy",
+      "id": "q34"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who was the first scribe of the revelation?",
+      "options": [
+        "Uthman ibn Affan",
+        "Zaid bin Thabit",
+        "Ali",
+        "Abu Bakr"
+      ],
+      "answer": 0,
+      "explanation": "Uthman (RA) is counted among the earliest scribes of the Quranic revelation.",
+      "difficulty": "medium",
+      "id": "q35"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who is called 'Umm-ul-Mu'minin'?",
+      "options": [
+        "The wives of the Prophet (PBUH)",
+        "Fatimah only",
+        "Khadijah only",
+        "Aisha only"
+      ],
+      "answer": 0,
+      "explanation": "All the wives of the Prophet (PBUH) are titled Ummahat-ul-Mu'minin (Mothers of the Believers).",
+      "difficulty": "medium",
+      "id": "q36"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who was the governor of Syria under Umar (RA) and later founder of the Umayyads?",
+      "options": [
+        "Muawiyah ibn Abi Sufyan",
+        "Amr ibn al-Aas",
+        "Saad bin Abi Waqas",
+        "Abu Ubaidah"
+      ],
+      "answer": 0,
+      "explanation": "Muawiyah (RA) was appointed governor of Syria by Umar (RA).",
+      "difficulty": "medium",
+      "id": "q37"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who conquered Egypt during Umar's caliphate?",
+      "options": [
+        "Amr ibn al-Aas",
+        "Khalid bin Waleed",
+        "Saad bin Abi Waqas",
+        "Uqba bin Nafi"
+      ],
+      "answer": 0,
+      "explanation": "Amr ibn al-Aas (RA) led the conquest of Egypt in 641 CE.",
+      "difficulty": "medium",
+      "id": "q38"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who commanded the Muslim army at the Battle of Qadisiyyah against Persia?",
+      "options": [
+        "Saad bin Abi Waqas",
+        "Khalid bin Waleed",
+        "Amr ibn al-Aas",
+        "Al-Muthanna"
+      ],
+      "answer": 0,
+      "explanation": "Saad bin Abi Waqas (RA), a companion and maternal uncle of the Prophet (PBUH), led at Qadisiyyah.",
+      "difficulty": "medium",
+      "id": "q39"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who was called the 'Trustee of the Ummah' (Amin-ul-Ummah)?",
+      "options": [
+        "Abu Ubaidah ibn al-Jarrah",
+        "Umar",
+        "Uthman",
+        "Khalid bin Waleed"
+      ],
+      "answer": 0,
+      "explanation": "Abu Ubaidah ibn al-Jarrah (RA) was titled Amin-ul-Ummah (Trustee of the Ummah).",
+      "difficulty": "hard",
+      "id": "q40"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who was the first to accept Islam among the Persians?",
+      "options": [
+        "Salman al-Farsi",
+        "Bilal",
+        "Khabbab",
+        "Ammar"
+      ],
+      "answer": 0,
+      "explanation": "Salman al-Farsi (RA), who sought the truth across lands, embraced Islam in Madinah.",
+      "difficulty": "medium",
+      "id": "q41"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who suggested digging the trench at the Battle of Khandaq?",
+      "options": [
+        "Salman al-Farsi",
+        "Khalid bin Waleed",
+        "Ali",
+        "Umar"
+      ],
+      "answer": 0,
+      "explanation": "Salman al-Farsi (RA), familiar with Persian tactics, suggested the trench.",
+      "difficulty": "easy",
+      "id": "q42"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who was the Prophet's (PBUH) freed slave and adopted son, martyred at Mu'tah?",
+      "options": [
+        "Zaid bin Harithah",
+        "Bilal",
+        "Salman",
+        "Abu Hurairah"
+      ],
+      "answer": 0,
+      "explanation": "Zaid bin Harithah (RA) commanded the army at Mu'tah and was martyred there.",
+      "difficulty": "medium",
+      "id": "q43"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who was known as 'Abu Turab' (father of dust), a title given by the Prophet (PBUH)?",
+      "options": [
+        "Ali ibn Abi Talib",
+        "Umar",
+        "Uthman",
+        "Zaid"
+      ],
+      "answer": 0,
+      "explanation": "The Prophet (PBUH) affectionately called Ali (RA) 'Abu Turab'.",
+      "difficulty": "hard",
+      "id": "q44"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who was the first Muazzin (caller to prayer) of Islam?",
+      "options": [
+        "Bilal ibn Rabah (RA)",
+        "Umar (RA)",
+        "Ali (RA)",
+        "Zaid (RA)"
+      ],
+      "answer": 0,
+      "explanation": "Bilal was chosen as the first muazzin in Madinah.",
+      "difficulty": "easy",
+      "id": "q45"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who was the Prophet's (PBUH) scribe and close companion known as 'the trusted one'?",
+      "options": [
+        "Abu Bakr (RA)",
+        "Uthman (RA)",
+        "Ali (RA)",
+        "Umar (RA)"
+      ],
+      "answer": 1,
+      "explanation": "Uthman was known as Al-Siddiq's companion and 'the trustworthy' (Amin).",
+      "difficulty": "medium",
+      "id": "q46"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who was given the title 'Lion of Allah'?",
+      "options": [
+        "Hamza (RA)",
+        "Ali (RA)",
+        "Khalid bin Waleed",
+        "Umar (RA)"
+      ],
+      "answer": 0,
+      "explanation": "Hamza, the Prophet's uncle, was titled 'Asadullah'.",
+      "difficulty": "easy",
+      "id": "q47"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who was the companion that memorised the Quran completely and led prayers?",
+      "options": [
+        "Zaid bin Thabit (RA)",
+        "Umar (RA)",
+        "Talha (RA)",
+        "Abu Darda (RA)"
+      ],
+      "answer": 0,
+      "explanation": "Zaid bin Thabit was a renowned scribe and reciter.",
+      "difficulty": "medium",
+      "id": "q48"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Prophet (PBUH) called which companion 'the trustee of this Ummah'?",
+      "options": [
+        "Abu Ubaidah bin Jarrah",
+        "Uthman (RA)",
+        "Saad bin Abi Waqqas",
+        "Abdur Rahman bin Auf"
+      ],
+      "answer": 0,
+      "explanation": "Abu Ubaidah was described as the Ummah's trustee.",
+      "difficulty": "hard",
+      "id": "q49"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who was the first governor of Madinah appointed by the Prophet (PBUH)?",
+      "options": [
+        "Mus'ab bin Umair",
+        "Zaid bin Thabit",
+        "Abu Bakr (RA)",
+        "Ali (RA)"
+      ],
+      "answer": 0,
+      "explanation": "Mus'ab bin Umair was sent as the first teacher/governor to Madinah.",
+      "difficulty": "hard",
+      "id": "q50"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who was the companion known for his generosity called 'the prince of martyrs'?",
+      "options": [
+        "Hamza (RA)",
+        "Ja'far bin Abi Talib (RA)",
+        "Uthman (RA)",
+        "Abu Talha (RA)"
+      ],
+      "answer": 0,
+      "explanation": "Hamza is called the chief of martyrs.",
+      "difficulty": "medium",
+      "id": "q51"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who suggested the compilation of the Quran into one book during Abu Bakr's caliphate?",
+      "options": [
+        "Umar (RA)",
+        "Uthman (RA)",
+        "Ali (RA)",
+        "Zaid bin Thabit"
+      ],
+      "answer": 0,
+      "explanation": "Umar proposed the compilation to Abu Bakr.",
+      "difficulty": "medium",
+      "id": "q52"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who was the Prophet's (PBUH) cousin and son-in-law?",
+      "options": [
+        "Ali ibn Abi Talib (RA)",
+        "Ja'far (RA)",
+        "Abdullah bin Abbas (RA)",
+        "Hamza (RA)"
+      ],
+      "answer": 0,
+      "explanation": "Ali was both cousin and son-in-law of the Prophet (PBUH).",
+      "difficulty": "easy",
+      "id": "q53"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who was known as 'Al-Farooq'?",
+      "options": [
+        "Umar ibn Al-Khattab (RA)",
+        "Abu Bakr (RA)",
+        "Uthman (RA)",
+        "Ali (RA)"
+      ],
+      "answer": 0,
+      "explanation": "Umar was titled Al-Farooq, the distinguisher between truth and falsehood.",
+      "difficulty": "easy",
+      "id": "q54"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who was known as 'Al-Siddiq'?",
+      "options": [
+        "Abu Bakr (RA)",
+        "Umar (RA)",
+        "Uthman (RA)",
+        "Ali (RA)"
+      ],
+      "answer": 0,
+      "explanation": "Abu Bakr was called Al-Siddiq for his unwavering belief.",
+      "difficulty": "easy",
+      "id": "q55"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who was the companion that migrated to Abyssinia twice and later died at Mu'tah?",
+      "options": [
+        "Ja'far bin Abi Talib (RA)",
+        "Zaid bin Haritha",
+        "Abdullah bin Masud",
+        "Bilal (RA)"
+      ],
+      "answer": 0,
+      "explanation": "Ja'far led the migrants to Abyssinia and fell at Mu'tah.",
+      "difficulty": "medium",
+      "id": "q56"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who was the freed slave and adopted son of the Prophet (PBUH) martyred at Mu'tah?",
+      "options": [
+        "Zaid bin Haritha",
+        "Bilal (RA)",
+        "Salman Farsi",
+        "Anas (RA)"
+      ],
+      "answer": 0,
+      "explanation": "Zaid bin Haritha fell as commander at Mu'tah.",
+      "difficulty": "easy",
+      "id": "q57"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who was the companion that served the Prophet (PBUH) for ten years in Madinah?",
+      "options": [
+        "Anas bin Malik (RA)",
+        "Abu Huraira (RA)",
+        "Abdullah bin Abbas",
+        "Jabir (RA)"
+      ],
+      "answer": 0,
+      "explanation": "Anas bin Malik served the Prophet (PBUH) for a decade.",
+      "difficulty": "easy",
+      "id": "q58"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who was the first to embrace Islam among children?",
+      "options": [
+        "Ali ibn Abi Talib (RA)",
+        "Zaid bin Haritha",
+        "Abdullah bin Zubair",
+        "Usama bin Zaid"
+      ],
+      "answer": 0,
+      "explanation": "Ali was the first child to accept Islam.",
+      "difficulty": "easy",
+      "id": "q59"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who was the companion known as 'the gateway of knowledge'?",
+      "options": [
+        "Ali ibn Abi Talib (RA)",
+        "Ibn Masud",
+        "Ibn Abbas",
+        "Abu Huraira"
+      ],
+      "answer": 0,
+      "explanation": "The Prophet (PBUH) said Ali is the gate of knowledge.",
+      "difficulty": "medium",
+      "id": "q60"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who was the companion that narrated the most hadith?",
+      "options": [
+        "Abu Huraira (RA)",
+        "Anas (RA)",
+        "Ibn Abbas",
+        "Aisha (RA)"
+      ],
+      "answer": 0,
+      "explanation": "Abu Huraira narrated the largest number of hadith.",
+      "difficulty": "easy",
+      "id": "q61"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who was the companion that suggested digging the trench at the Battle of Khandaq?",
+      "options": [
+        "Salman al-Farsi (RA)",
+        "Zubair (RA)",
+        "Talha (RA)",
+        "Abu Darda (RA)"
+      ],
+      "answer": 0,
+      "explanation": "Salman the Persian proposed the trench strategy.",
+      "difficulty": "easy",
+      "id": "q62"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who was the last of the ten promised Paradise (Asharah Mubashsharah) to die?",
+      "options": [
+        "Saad bin Abi Waqqas (RA)",
+        "Abdur Rahman bin Auf",
+        "Abu Ubaidah",
+        "Zubair (RA)"
+      ],
+      "answer": 0,
+      "explanation": "Saad bin Abi Waqqas was the last of the ten to pass away.",
+      "difficulty": "hard",
+      "id": "q63"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which daughter of Abu Bakr (RA) was married to the Prophet (PBUH)?",
+      "options": [
+        "Aisha (RA)",
+        "Hafsa (RA)",
+        "Sauda (RA)",
+        "Maimuna (RA)"
+      ],
+      "answer": 0,
+      "explanation": "Aisha bint Abu Bakr (RA) was the Prophet's (PBUH) wife.",
+      "difficulty": "easy",
+      "id": "q64"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Umar (RA) was assassinated by whom?",
+      "options": [
+        "Abu Lu'lu'ah (Firuz)",
+        "Ibn Muljam",
+        "A Christian monk",
+        "A Byzantine spy"
+      ],
+      "answer": 0,
+      "explanation": "Umar (RA) was stabbed by the Persian slave Abu Lu'lu'ah during the Fajr prayer.",
+      "difficulty": "medium",
+      "id": "q65"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Uthman (RA) was martyred during which event?",
+      "options": [
+        "The siege of his house by rebels",
+        "The Battle of Siffin",
+        "The Battle of Jamal",
+        "The conquest of Egypt"
+      ],
+      "answer": 0,
+      "explanation": "Uthman (RA) was martyred when rebels besieged his house in Madinah.",
+      "difficulty": "medium",
+      "id": "q66"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Where was Ali (RA) martyred?",
+      "options": [
+        "In the mosque at Kufa",
+        "In Madinah",
+        "At Siffin",
+        "At Karbala"
+      ],
+      "answer": 0,
+      "explanation": "Ali (RA) was struck by Ibn Muljam while praying at the mosque of Kufa.",
+      "difficulty": "medium",
+      "id": "q67"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which companion was known for his beautiful recitation and was called 'the one with the sweet voice'?",
+      "options": [
+        "Abu Musa al-Ashari (RA)",
+        "Bilal (RA)",
+        "Zaid bin Thabit (RA)",
+        "Ubayy bin Ka'b (RA)"
+      ],
+      "answer": 0,
+      "explanation": "The Prophet (PBUH) praised Abu Musa al-Ashari (RA) for his beautiful recitation.",
+      "difficulty": "medium",
+      "id": "q68"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who was the first companion to recite the Quran aloud in Makkah?",
+      "options": [
+        "Abdullah ibn Masud (RA)",
+        "Abu Bakr (RA)",
+        "Uthman (RA)",
+        "Ali (RA)"
+      ],
+      "answer": 0,
+      "explanation": "Abdullah ibn Masud (RA) was the first to recite the Quran publicly in Makkah.",
+      "difficulty": "hard",
+      "id": "q69"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who were the sons of Ali (RA) and Fatimah (RA)?",
+      "options": [
+        "Hasan (RA) and Hussain (RA)",
+        "Qasim and Abdullah",
+        "Zaid and Usama",
+        "Musa and Ibrahim"
+      ],
+      "answer": 0,
+      "explanation": "Hasan (RA) and Hussain (RA) were the grandsons of the Prophet (PBUH).",
+      "difficulty": "easy",
+      "id": "q70"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which two grandsons of the Prophet (PBUH) are called the 'leaders of the youth of Paradise'?",
+      "options": [
+        "Hasan (RA) and Hussain (RA)",
+        "Abdullah and Ubaidullah",
+        "Qasim and Tayyib",
+        "Ibrahim and Ismail"
+      ],
+      "answer": 0,
+      "explanation": "A hadith calls Hasan and Hussain (RA) the leaders of the youth of Paradise.",
+      "difficulty": "medium",
+      "id": "q71"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who was the first freed slave to embrace Islam?",
+      "options": [
+        "Zaid bin Harithah (RA)",
+        "Bilal (RA)",
+        "Salman al-Farsi (RA)",
+        "Suhayb (RA)"
+      ],
+      "answer": 0,
+      "explanation": "Zaid bin Harithah (RA), the Prophet's (PBUH) adopted son, was the first freed slave to accept Islam.",
+      "difficulty": "medium",
+      "id": "q72"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who was the poet of the Prophet (PBUH)?",
+      "options": [
+        "Hassan bin Thabit (RA)",
+        "Ka'b bin Zuhair (RA)",
+        "Abdullah bin Rawahah (RA)",
+        "Labid (RA)"
+      ],
+      "answer": 0,
+      "explanation": "Hassan bin Thabit (RA) defended the Prophet (PBUH) with his poetry.",
+      "difficulty": "easy",
+      "id": "q73"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which caliph established the army register (Diwan al-Jund)?",
+      "options": [
+        "Umar (RA)",
+        "Abu Bakr (RA)",
+        "Uthman (RA)",
+        "Ali (RA)"
+      ],
+      "answer": 0,
+      "explanation": "Umar (RA) organized the Diwan al-Jund to pay the army stipends.",
+      "difficulty": "medium",
+      "id": "q74"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which caliph introduced the regular minting of Islamic dirhams?",
+      "options": [
+        "Umar (RA)",
+        "Uthman (RA)",
+        "Ali (RA)",
+        "Muawiyah (RA)"
+      ],
+      "answer": 0,
+      "explanation": "Umar (RA) standardized the Islamic dirham coinage.",
+      "difficulty": "hard",
+      "id": "q75"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which companion was called 'Zush-Shahadatain' (the one whose testimony counts as two)?",
+      "options": [
+        "Khuzaimah bin Thabit (RA)",
+        "Zaid bin Thabit (RA)",
+        "Abdullah bin Zaid (RA)",
+        "Thabit bin Qais (RA)"
+      ],
+      "answer": 0,
+      "explanation": "The Prophet (PBUH) counted Khuzaimah bin Thabit's (RA) testimony as two testimonies.",
+      "difficulty": "hard",
+      "id": "q76"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who compiled the Quran into one volume during Abu Bakr's (RA) caliphate?",
+      "options": [
+        "Zaid bin Thabit (RA)",
+        "Ali (RA)",
+        "Uthman (RA)",
+        "Ubayy bin Ka'b (RA)"
+      ],
+      "answer": 0,
+      "explanation": "Zaid bin Thabit (RA) led the team that compiled the Quran under Abu Bakr (RA).",
+      "difficulty": "medium",
+      "id": "q77"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which uncle of the Prophet (PBUH) fought at the Battle of Badr?",
+      "options": [
+        "Hamza (RA)",
+        "Abbas (RA)",
+        "Abu Talib",
+        "Abu Lahab"
+      ],
+      "answer": 0,
+      "explanation": "Hamza (RA), the Prophet's (PBUH) uncle, fought bravely at Badr.",
+      "difficulty": "medium",
+      "id": "q78"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which chief of the Aws accepted Islam through Mus'ab bin Umair (RA)?",
+      "options": [
+        "Sa'd bin Mu'adh (RA)",
+        "Sa'd bin Ubadah (RA)",
+        "Abdullah bin Ubayy",
+        "Usaid bin Hudair (RA)"
+      ],
+      "answer": 0,
+      "explanation": "Sa'd bin Mu'adh (RA), the chief of Aws, embraced Islam through Mus'ab (RA).",
+      "difficulty": "hard",
+      "id": "q79"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who was appointed the first governor of Makkah after its conquest?",
+      "options": [
+        "Attab bin Asid (RA)",
+        "Bilal (RA)",
+        "Khalid bin Waleed (RA)",
+        "Amr ibn al-Aas (RA)"
+      ],
+      "answer": 0,
+      "explanation": "The Prophet (PBUH) appointed Attab bin Asid (RA) governor of Makkah.",
+      "difficulty": "hard",
+      "id": "q80"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who are the 'Asharah Mubashsharah'?",
+      "options": [
+        "The ten companions promised Paradise",
+        "The ten scribes of revelation",
+        "The ten martyrs of Badr",
+        "The ten narrators of hadith"
+      ],
+      "answer": 0,
+      "explanation": "The Asharah Mubashsharah are the ten companions given glad tidings of Paradise.",
+      "difficulty": "medium",
+      "id": "q81"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which of the following was NOT among the ten promised Paradise?",
+      "options": [
+        "Amr ibn al-Aas (RA)",
+        "Abu Bakr (RA)",
+        "Umar (RA)",
+        "Ali (RA)"
+      ],
+      "answer": 0,
+      "explanation": "Amr ibn al-Aas (RA) is not among the ten promised Paradise.",
+      "difficulty": "hard",
+      "id": "q82"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which two companions were martyred at the Battle of the Camel?",
+      "options": [
+        "Talha (RA) and Zubair (RA)",
+        "Sa'd and Sa'id",
+        "Abu Ubaidah and Mu'adh",
+        "Uthman and Ali"
+      ],
+      "answer": 0,
+      "explanation": "Talha (RA) and Zubair (RA), both among the ten promised Paradise, fell at the Battle of the Camel.",
+      "difficulty": "hard",
+      "id": "q83"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which companion gave all his wealth in the way of Allah and kept nothing for his family?",
+      "options": [
+        "Abu Bakr (RA)",
+        "Uthman (RA)",
+        "Abdul-Rahman bin Auf (RA)",
+        "Talha (RA)"
+      ],
+      "answer": 0,
+      "explanation": "When Abu Bakr (RA) brought all his wealth, the Prophet (PBUH) asked what he left for his family.",
+      "difficulty": "medium",
+      "id": "q84"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who was the chief of the Khazraj who was a candidate for leadership at Saqifah?",
+      "options": [
+        "Sa'd bin Ubadah (RA)",
+        "Sa'd bin Mu'adh (RA)",
+        "Abu Ayyub al-Ansari (RA)",
+        "Ubayy bin Ka'b (RA)"
+      ],
+      "answer": 0,
+      "explanation": "Sa'd bin Ubadah (RA), chief of the Khazraj, was proposed at Saqifah Bani Sa'idah.",
+      "difficulty": "hard",
+      "id": "q85"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who was the first governor of Kufa?",
+      "options": [
+        "Sa'd bin Abi Waqqas (RA)",
+        "Ammar bin Yasir (RA)",
+        "Abdullah ibn Masud (RA)",
+        "Hudhayfah (RA)"
+      ],
+      "answer": 0,
+      "explanation": "Umar (RA) appointed Sa'd bin Abi Waqqas (RA) as the first governor of Kufa.",
+      "difficulty": "hard",
+      "id": "q86"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which companion embraced Islam after reading Surah Ta-Ha?",
+      "options": [
+        "Umar ibn al-Khattab (RA)",
+        "Khalid bin Waleed (RA)",
+        "Hamza (RA)",
+        "Abu Dujana (RA)"
+      ],
+      "answer": 0,
+      "explanation": "Umar (RA) was moved to accept Islam after hearing Surah Ta-Ha.",
+      "difficulty": "medium",
+      "id": "q87"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Uthman (RA) is called 'Dhul-Hijratayn' because he?",
+      "options": [
+        "Migrated to both Abyssinia and Madinah",
+        "Made two pilgrimages with the Prophet (PBUH)",
+        "Married two daughters of the Prophet (PBUH)",
+        "Led two major expeditions"
+      ],
+      "answer": 0,
+      "explanation": "Uthman (RA) took part in both migrations — to Abyssinia and to Madinah.",
+      "difficulty": "medium",
+      "id": "q88"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who wrote the document of the Treaty of Hudaybiyyah?",
+      "options": [
+        "Ali (RA)",
+        "Uthman (RA)",
+        "Zaid bin Thabit (RA)",
+        "Abu Bakr (RA)"
+      ],
+      "answer": 0,
+      "explanation": "Ali (RA) wrote the terms of the Treaty of Hudaybiyyah.",
+      "difficulty": "medium",
+      "id": "q89"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which title did Abu Bakr (RA) use after becoming caliph?",
+      "options": [
+        "Khalifat-ur-Rasul (Successor of the Messenger)",
+        "Ameer-ul-Momineen",
+        "Al-Mahdi",
+        "Sultan"
+      ],
+      "answer": 0,
+      "explanation": "Abu Bakr (RA) styled himself Khalifat-ur-Rasul, successor of the Messenger.",
+      "difficulty": "medium",
+      "id": "q90"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who was the Prophet's (PBUH) scribe who recorded the revelation and was martyred at Yamama?",
+      "options": [
+        "Salim, the freed slave of Abu Hudhayfah (RA)",
+        "Zaid bin Thabit (RA)",
+        "Ubayy bin Ka'b (RA)",
+        "Mu'adh bin Jabal (RA)"
+      ],
+      "answer": 0,
+      "explanation": "Salim (RA), a leading Quranic reciter, was martyred at the Battle of Yamama.",
+      "difficulty": "hard",
+      "id": "q91"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who was the companion known as 'the one whom the Prophet (PBUH) loved and who loved him'?",
+      "options": [
+        "Usama bin Zaid (RA)",
+        "Bilal (RA)",
+        "Anas bin Malik (RA)",
+        "Zaid bin Harithah (RA)"
+      ],
+      "answer": 0,
+      "explanation": "The Prophet (PBUH) said he loved Usama bin Zaid (RA) and that Usama loved him.",
+      "difficulty": "hard",
+      "id": "q92"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which companion was the first to be appointed as the 'Mu'adhdhin' of the Prophet's Mosque?",
+      "options": [
+        "Bilal (RA)",
+        "Abdullah bin Zaid (RA)",
+        "Abu Mahdhurah (RA)",
+        "Sa'd al-Qaradh (RA)"
+      ],
+      "answer": 0,
+      "explanation": "Bilal (RA) was the first mu'adhdhin of the Prophet's Mosque in Madinah.",
+      "difficulty": "easy",
+      "id": "q93"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which companion was the standard-bearer of the Muslims at the Battle of Mu'tah?",
+      "options": [
+        "Zaid bin Harithah (RA)",
+        "Ja'far bin Abi Talib (RA)",
+        "Khalid bin Waleed (RA)",
+        "Abdullah bin Rawahah (RA)"
+      ],
+      "answer": 0,
+      "explanation": "Zaid bin Harithah (RA) carried the standard at Mu'tah until his martyrdom.",
+      "difficulty": "medium",
+      "id": "q94"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who was the companion famous for his eloquence who delivered the Prophet's (PBUH) message to the Persians?",
+      "options": [
+        "Nu'man bin Muqarrin (RA)",
+        "Hudhayfah (RA)",
+        "Jarir bin Abdullah (RA)",
+        "Al-Mughirah (RA)"
+      ],
+      "answer": 0,
+      "explanation": "Al-Mughirah bin Shu'bah (RA) was sent to the Persian court.",
+      "difficulty": "hard",
+      "id": "q95"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who was the companion who carried the message of Islam to the Negus of Abyssinia?",
+      "options": [
+        "Amr bin Umayyah al-Damri (RA)",
+        "Ja'far bin Abi Talib (RA)",
+        "Uthman (RA)",
+        "Mus'ab bin Umair (RA)"
+      ],
+      "answer": 0,
+      "explanation": "Amr bin Umayyah al-Damri (RA) delivered the Prophet's (PBUH) letter to the Negus.",
+      "difficulty": "hard",
+      "id": "q96"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which companion was the first to be martyred among the Ansar at Badr?",
+      "options": [
+        "Harithah bin Suraqah (RA)",
+        "Sa'd bin Mu'adh (RA)",
+        "Anas bin Nadr (RA)",
+        "Abu Ayyub (RA)"
+      ],
+      "answer": 0,
+      "explanation": "Harithah bin Suraqah (RA) was martyred at Badr and the Prophet (PBUH) said he is in Paradise.",
+      "difficulty": "hard",
+      "id": "q97"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who was the companion known as 'the guardian of the Prophet's (PBUH) secrets'?",
+      "options": [
+        "Hudhayfah bin al-Yaman (RA)",
+        "Abu Hurairah (RA)",
+        "Abdullah ibn Umar (RA)",
+        "Salman al-Farsi (RA)"
+      ],
+      "answer": 0,
+      "explanation": "Hudhayfah (RA) was entrusted with the names of the hypocrites.",
+      "difficulty": "hard",
+      "id": "q98"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which companion was the first to give the 'Salam' greeting as a Sunnah?",
+      "options": [
+        "Abdullah ibn Salam (RA)",
+        "Bilal (RA)",
+        "Ammar (RA)",
+        "Abu Dharr (RA)"
+      ],
+      "answer": 0,
+      "explanation": "Abdullah ibn Salam (RA), the Jewish scholar who accepted Islam, was known for his knowledge.",
+      "difficulty": "medium",
+      "id": "q99"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who was the companion who was the Prophet's (PBUH) chamberlain and gatekeeper?",
+      "options": [
+        "Anas bin Malik (RA)",
+        "Abu Hurairah (RA)",
+        "Uqbah bin Amir (RA)",
+        "Zaid bin Arqam (RA)"
+      ],
+      "answer": 0,
+      "explanation": "Anas bin Malik (RA) served the Prophet (PBUH) from childhood.",
+      "difficulty": "medium",
+      "id": "q100"
+    }
+  ]
+}

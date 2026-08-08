@@ -1,0 +1,1833 @@
+{
+  "bank": {
+    "name": "Inventions & Scientists",
+    "subject": "General Science & Ability",
+    "topic": "Inventions & Scientists",
+    "description": "Famous inventors, discoveries and the scientists behind them.",
+    "tags": "css,pms,fpsc,ppsc,nts,gsa,inventions,scientists",
+    "version": "1.0",
+    "id": "gsa_inventions_scientists"
+  },
+  "questions": [
+    {
+      "type": "mcq",
+      "prompt": "Penicillin, the first antibiotic, was discovered by?",
+      "options": [
+        "Alexander Fleming",
+        "Louis Pasteur",
+        "Robert Koch",
+        "Joseph Lister"
+      ],
+      "answer": 0,
+      "explanation": "Alexander Fleming discovered penicillin in 1928.",
+      "difficulty": "easy",
+      "id": "q01"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The law of gravitation was formulated by?",
+      "options": [
+        "Albert Einstein",
+        "Isaac Newton",
+        "Galileo Galilei",
+        "Johannes Kepler"
+      ],
+      "answer": 1,
+      "explanation": "Newton published the law of universal gravitation in 1687.",
+      "difficulty": "easy",
+      "id": "q02"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The telephone was invented by?",
+      "options": [
+        "Thomas Edison",
+        "Alexander Graham Bell",
+        "Guglielmo Marconi",
+        "Nikola Tesla"
+      ],
+      "answer": 1,
+      "explanation": "Alexander Graham Bell patented the telephone in 1876.",
+      "difficulty": "easy",
+      "id": "q03"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The practical electric light bulb is credited to?",
+      "options": [
+        "Thomas Edison",
+        "James Watt",
+        "Benjamin Franklin",
+        "Michael Faraday"
+      ],
+      "answer": 0,
+      "explanation": "Edison developed a commercially practical incandescent bulb in 1879.",
+      "difficulty": "easy",
+      "id": "q04"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Wireless radio communication is associated with?",
+      "options": [
+        "Samuel Morse",
+        "Guglielmo Marconi",
+        "Alexander Bell",
+        "Heinrich Hertz"
+      ],
+      "answer": 1,
+      "explanation": "Marconi developed practical wireless telegraphy/radio.",
+      "difficulty": "medium",
+      "id": "q05"
+    },
+    {
+      "type": "mcq",
+      "prompt": "X-rays were discovered by?",
+      "options": [
+        "Marie Curie",
+        "Wilhelm Roentgen",
+        "Ernest Rutherford",
+        "Niels Bohr"
+      ],
+      "answer": 1,
+      "explanation": "Roentgen discovered X-rays in 1895 and won the first Nobel Prize in Physics.",
+      "difficulty": "medium",
+      "id": "q06"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The periodic table of elements was developed by?",
+      "options": [
+        "Dmitri Mendeleev",
+        "John Dalton",
+        "Antoine Lavoisier",
+        "Henry Moseley"
+      ],
+      "answer": 0,
+      "explanation": "Mendeleev published the first periodic table in 1869.",
+      "difficulty": "medium",
+      "id": "q07"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The theory of evolution by natural selection was proposed by?",
+      "options": [
+        "Gregor Mendel",
+        "Charles Darwin",
+        "Alfred Wallace only",
+        "Jean-Baptiste Lamarck"
+      ],
+      "answer": 1,
+      "explanation": "Darwin's 'On the Origin of Species' (1859) proposed natural selection.",
+      "difficulty": "medium",
+      "id": "q08"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The first vaccination (for smallpox) was developed by?",
+      "options": [
+        "Louis Pasteur",
+        "Edward Jenner",
+        "Robert Koch",
+        "Jonas Salk"
+      ],
+      "answer": 1,
+      "explanation": "Edward Jenner created the smallpox vaccine in 1796.",
+      "difficulty": "medium",
+      "id": "q09"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Pasteurization, the process of heating liquids to kill microbes, is named after?",
+      "options": [
+        "Louis Pasteur",
+        "Edward Jenner",
+        "Alexander Fleming",
+        "Koch"
+      ],
+      "answer": 0,
+      "explanation": "Louis Pasteur developed pasteurization.",
+      "difficulty": "easy",
+      "id": "q10"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The double-helix structure of DNA was discovered by?",
+      "options": [
+        "Mendel and Morgan",
+        "Watson and Crick",
+        "Darwin and Wallace",
+        "Franklin and Wilkins only"
+      ],
+      "answer": 1,
+      "explanation": "James Watson and Francis Crick published the DNA model in 1953.",
+      "difficulty": "medium",
+      "id": "q11"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Dolly, the first cloned mammal, was?",
+      "options": [
+        "A cat",
+        "A sheep",
+        "A mouse",
+        "A monkey"
+      ],
+      "answer": 1,
+      "explanation": "Dolly the sheep was cloned in 1996.",
+      "difficulty": "easy",
+      "id": "q12"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Radium and polonium were discovered by?",
+      "options": [
+        "Marie Curie and Pierre Curie",
+        "Albert Einstein",
+        "Enrico Fermi",
+        "Niels Bohr"
+      ],
+      "answer": 0,
+      "explanation": "The Curies discovered radium and polonium; Marie won two Nobel Prizes.",
+      "difficulty": "medium",
+      "id": "q13"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Nobel Prize is named after?",
+      "options": [
+        "Albert Nobel",
+        "Alfred Nobel",
+        "Niels Bohr",
+        "Robert Nobel"
+      ],
+      "answer": 1,
+      "explanation": "Alfred Nobel, inventor of dynamite, endowed the prizes.",
+      "difficulty": "medium",
+      "id": "q14"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who is known as the father of modern physics?",
+      "options": [
+        "Albert Einstein",
+        "Isaac Newton",
+        "Galileo Galilei",
+        "Max Planck"
+      ],
+      "answer": 0,
+      "explanation": "Einstein's theories of relativity transformed modern physics.",
+      "difficulty": "easy",
+      "id": "q15"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who invented the safety elevator?",
+      "options": [
+        "Elisha Otis",
+        "Henry Ford",
+        "Nikola Tesla",
+        "James Watt"
+      ],
+      "answer": 0,
+      "explanation": "Elisha Otis invented the safety elevator in 1853.",
+      "difficulty": "medium",
+      "id": "q16"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Marie Curie is famous for her work on:",
+      "options": [
+        "Radioactivity",
+        "Penicillin",
+        "Gravity",
+        "Electricity"
+      ],
+      "answer": 0,
+      "explanation": "Curie discovered radium and polonium; she won two Nobel Prizes.",
+      "difficulty": "medium",
+      "id": "q17"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who invented the steam engine (improved version)?",
+      "options": [
+        "James Watt",
+        "George Stephenson",
+        "Thomas Newcomen",
+        "Henry Ford"
+      ],
+      "answer": 0,
+      "explanation": "Watt's improved steam engine (1769) powered the Industrial Revolution.",
+      "difficulty": "medium",
+      "id": "q18"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who is credited with inventing the airplane?",
+      "options": [
+        "Wright Brothers",
+        "Henry Ford",
+        "Charles Lindbergh",
+        "Alberto Santos-Dumont"
+      ],
+      "answer": 0,
+      "explanation": "Orville and Wilbur Wright made the first powered flight in 1903.",
+      "difficulty": "easy",
+      "id": "q19"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The polio vaccine was developed by:",
+      "options": [
+        "Jonas Salk",
+        "Louis Pasteur",
+        "Alexander Fleming",
+        "Edward Jenner"
+      ],
+      "answer": 0,
+      "explanation": "Salk developed the first effective polio vaccine in 1955.",
+      "difficulty": "medium",
+      "id": "q20"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who discovered the electron?",
+      "options": [
+        "J.J. Thomson",
+        "Ernest Rutherford",
+        "Niels Bohr",
+        "James Chadwick"
+      ],
+      "answer": 0,
+      "explanation": "J.J. Thomson discovered the electron in 1897.",
+      "difficulty": "medium",
+      "id": "q21"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who invented the zipper?",
+      "options": [
+        "Elias Howe",
+        "Gideon Sundback",
+        "Samuel Morse",
+        "Whitcomb Judson"
+      ],
+      "answer": 1,
+      "explanation": "Gideon Sundback perfected the modern zipper in 1913.",
+      "difficulty": "easy",
+      "id": "q22"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who discovered the tuberculosis (TB) bacterium?",
+      "options": [
+        "Louis Pasteur",
+        "Edward Jenner",
+        "Robert Koch",
+        "Alexander Fleming"
+      ],
+      "answer": 2,
+      "explanation": "Robert Koch identified the TB bacillus in 1882.",
+      "difficulty": "easy",
+      "id": "q23"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who built the steam locomotive 'Rocket'?",
+      "options": [
+        "Richard Trevithick",
+        "James Watt",
+        "Robert Fulton",
+        "George Stephenson"
+      ],
+      "answer": 3,
+      "explanation": "George Stephenson's Rocket (1829) was a famous early locomotive.",
+      "difficulty": "easy",
+      "id": "q24"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who first observed the four largest moons of Jupiter?",
+      "options": [
+        "Galileo Galilei",
+        "Johannes Kepler",
+        "Tycho Brahe",
+        "Isaac Newton"
+      ],
+      "answer": 0,
+      "explanation": "Galileo discovered Jupiter's large moons in 1610.",
+      "difficulty": "easy",
+      "id": "q25"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who is the father of modern chemistry?",
+      "options": [
+        "Antoine Lavoisier",
+        "John Dalton",
+        "Robert Boyle",
+        "Dmitri Mendeleev"
+      ],
+      "answer": 0,
+      "explanation": "Lavoisier revolutionised chemistry with the law of conservation of mass.",
+      "difficulty": "medium",
+      "id": "q26"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who invented the telescope?",
+      "options": [
+        "Hans Lippershey",
+        "Galileo Galilei",
+        "Isaac Newton",
+        "Johannes Kepler"
+      ],
+      "answer": 0,
+      "explanation": "Lippershey, a Dutch lensmaker, invented the telescope in 1608.",
+      "difficulty": "medium",
+      "id": "q27"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who discovered the circulation of blood?",
+      "options": [
+        "William Harvey",
+        "Galen",
+        "Hippocrates",
+        "Andreas Vesalius"
+      ],
+      "answer": 0,
+      "explanation": "Harvey described blood circulation in 1628.",
+      "difficulty": "medium",
+      "id": "q28"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who invented the computer mouse?",
+      "options": [
+        "Douglas Engelbart",
+        "Bill Gates",
+        "Steve Jobs",
+        "Alan Turing"
+      ],
+      "answer": 0,
+      "explanation": "Engelbart demonstrated the mouse in 1968.",
+      "difficulty": "medium",
+      "id": "q29"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who invented the barometer?",
+      "options": [
+        "Evangelista Torricelli",
+        "Galileo",
+        "Blaise Pascal",
+        "Robert Boyle"
+      ],
+      "answer": 0,
+      "explanation": "Torricelli invented the barometer in 1643.",
+      "difficulty": "hard",
+      "id": "q30"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who invented the helicopter?",
+      "options": [
+        "Igor Sikorsky",
+        "Leonardo da Vinci",
+        "Wright Brothers",
+        "Frank Whittle"
+      ],
+      "answer": 0,
+      "explanation": "Sikorsky built the first practical helicopter in 1939.",
+      "difficulty": "medium",
+      "id": "q31"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who is known as the father of computers?",
+      "options": [
+        "Charles Babbage",
+        "Alan Turing",
+        "John von Neumann",
+        "Ada Lovelace"
+      ],
+      "answer": 0,
+      "explanation": "Babbage designed the analytical engine, the first computer concept.",
+      "difficulty": "easy",
+      "id": "q32"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who invented the refrigerator?",
+      "options": [
+        "Jacob Perkins",
+        "Thomas Edison",
+        "Karl von Linde",
+        "James Joule"
+      ],
+      "answer": 0,
+      "explanation": "Perkins patented the first vapour-compression refrigerator in 1834.",
+      "difficulty": "hard",
+      "id": "q33"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who invented the ballpoint pen?",
+      "options": [
+        "László Bíró",
+        "John Loud",
+        "Baron Bich",
+        "George Parker"
+      ],
+      "answer": 0,
+      "explanation": "Bíró patented the modern ballpoint pen in 1938.",
+      "difficulty": "medium",
+      "id": "q34"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who discovered the neutron?",
+      "options": [
+        "James Chadwick",
+        "Ernest Rutherford",
+        "J.J. Thomson",
+        "Niels Bohr"
+      ],
+      "answer": 0,
+      "explanation": "Chadwick discovered the neutron in 1932.",
+      "difficulty": "medium",
+      "id": "q35"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who invented the battery?",
+      "options": [
+        "Alessandro Volta",
+        "Benjamin Franklin",
+        "Michael Faraday",
+        "Thomas Edison"
+      ],
+      "answer": 0,
+      "explanation": "Volta invented the voltaic pile, the first battery, in 1800.",
+      "difficulty": "easy",
+      "id": "q36"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who discovered the laws of planetary motion?",
+      "options": [
+        "Johannes Kepler",
+        "Galileo Galilei",
+        "Tycho Brahe",
+        "Isaac Newton"
+      ],
+      "answer": 0,
+      "explanation": "Kepler formulated his three laws of planetary motion.",
+      "difficulty": "medium",
+      "id": "q37"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who invented the motion picture camera?",
+      "options": [
+        "George Eastman",
+        "Eadweard Muybridge",
+        "Thomas Edison",
+        "Auguste Lumière"
+      ],
+      "answer": 2,
+      "explanation": "Edison's kinetoscope was an early motion picture camera.",
+      "difficulty": "easy",
+      "id": "q38"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The first person to walk on the Moon was:",
+      "options": [
+        "Neil Armstrong",
+        "Buzz Aldrin",
+        "Yuri Gagarin",
+        "John Glenn"
+      ],
+      "answer": 0,
+      "explanation": "Armstrong stepped onto the Moon in 1969 during Apollo 11.",
+      "difficulty": "easy",
+      "id": "q39"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who discovered the hormone insulin?",
+      "options": [
+        "Jonas Salk",
+        "Frederick Banting",
+        "Edward Jenner",
+        "Louis Pasteur"
+      ],
+      "answer": 1,
+      "explanation": "Banting and Best isolated insulin in 1921.",
+      "difficulty": "easy",
+      "id": "q40"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who invented the internal combustion engine?",
+      "options": [
+        "Rudolf Diesel",
+        "Karl Benz",
+        "Nikolaus Otto",
+        "James Watt"
+      ],
+      "answer": 2,
+      "explanation": "Nikolaus Otto built the first practical four-stroke engine in 1876.",
+      "difficulty": "easy",
+      "id": "q41"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who invented the electric telegraph?",
+      "options": [
+        "Alexander Graham Bell",
+        "Thomas Edison",
+        "Guglielmo Marconi",
+        "Samuel Morse"
+      ],
+      "answer": 3,
+      "explanation": "Samuel Morse developed the electric telegraph and Morse code.",
+      "difficulty": "easy",
+      "id": "q42"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who developed the BCG vaccine against tuberculosis?",
+      "options": [
+        "Albert Calmette",
+        "Robert Koch",
+        "Louis Pasteur",
+        "Edward Jenner"
+      ],
+      "answer": 0,
+      "explanation": "Calmette and Guérin developed the BCG vaccine in 1921.",
+      "difficulty": "medium",
+      "id": "q43"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The first artificial satellite was:",
+      "options": [
+        "Sputnik 1",
+        "Explorer 1",
+        "Vostok 1",
+        "Telstar"
+      ],
+      "answer": 0,
+      "explanation": "The USSR launched Sputnik 1 in 1957.",
+      "difficulty": "medium",
+      "id": "q44"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who discovered radioactivity?",
+      "options": [
+        "Marie Curie",
+        "Wilhelm Roentgen",
+        "Henri Becquerel",
+        "Ernest Rutherford"
+      ],
+      "answer": 2,
+      "explanation": "Henri Becquerel discovered radioactivity in 1896.",
+      "difficulty": "medium",
+      "id": "q45"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who captured the famous X-ray diffraction image of DNA (Photo 51)?",
+      "options": [
+        "James Watson",
+        "Francis Crick",
+        "Linus Pauling",
+        "Rosalind Franklin"
+      ],
+      "answer": 3,
+      "explanation": "Rosalind Franklin's Photo 51 helped reveal the DNA double helix.",
+      "difficulty": "easy",
+      "id": "q46"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who invented the mechanical calculator known as the stepped reckoner?",
+      "options": [
+        "Gottfried Leibniz",
+        "Blaise Pascal",
+        "Charles Babbage",
+        "John Napier"
+      ],
+      "answer": 0,
+      "explanation": "Gottfried Leibniz built the stepped reckoner in 1672.",
+      "difficulty": "medium",
+      "id": "q47"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who discovered the proton?",
+      "options": [
+        "James Chadwick",
+        "Ernest Rutherford",
+        "J.J. Thomson",
+        "Niels Bohr"
+      ],
+      "answer": 1,
+      "explanation": "Rutherford discovered the proton in 1919.",
+      "difficulty": "medium",
+      "id": "q48"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The telescope was improved for astronomical use by:",
+      "options": [
+        "Isaac Newton",
+        "Copernicus",
+        "Galileo Galilei",
+        "Tycho Brahe"
+      ],
+      "answer": 2,
+      "explanation": "Galileo used telescopes to observe the heavens in 1609.",
+      "difficulty": "easy",
+      "id": "q49"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The first vaccine was developed against:",
+      "options": [
+        "Polio",
+        "Rabies",
+        "Smallpox",
+        "Tuberculosis"
+      ],
+      "answer": 2,
+      "explanation": "Jenner's 1796 vaccine targeted smallpox.",
+      "difficulty": "medium",
+      "id": "q50"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The first successful heart transplant was performed by:",
+      "options": [
+        "William DeVries",
+        "Christiaan Barnard",
+        "Michael DeBakey",
+        "Norman Shumway"
+      ],
+      "answer": 1,
+      "explanation": "Barnard performed the first human heart transplant in 1967.",
+      "difficulty": "hard",
+      "id": "q51"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who discovered oxygen?",
+      "options": [
+        "Antoine Lavoisier",
+        "Henry Cavendish",
+        "Joseph Priestley",
+        "John Dalton"
+      ],
+      "answer": 2,
+      "explanation": "Priestley isolated oxygen in 1774; Lavoisier named it.",
+      "difficulty": "medium",
+      "id": "q52"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The concept of the atom was first proposed in modern science by:",
+      "options": [
+        "John Dalton",
+        "Democritus",
+        "Ernest Rutherford",
+        "Niels Bohr"
+      ],
+      "answer": 0,
+      "explanation": "Dalton's atomic theory (1808) founded modern chemistry.",
+      "difficulty": "medium",
+      "id": "q53"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who proposed the heliocentric model of the Solar System?",
+      "options": [
+        "Claudius Ptolemy",
+        "Nicolaus Copernicus",
+        "Aristotle",
+        "Galileo"
+      ],
+      "answer": 1,
+      "explanation": "Copernicus placed the Sun at the centre in 1543.",
+      "difficulty": "easy",
+      "id": "q54"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The field of quantum mechanics was founded by:",
+      "options": [
+        "Albert Einstein",
+        "Niels Bohr",
+        "Max Planck",
+        "Werner Heisenberg"
+      ],
+      "answer": 2,
+      "explanation": "Planck's quantum theory (1900) started quantum mechanics.",
+      "difficulty": "hard",
+      "id": "q55"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who invented the modern air conditioner?",
+      "options": [
+        "Willis Carrier",
+        "Jacob Perkins",
+        "Thomas Edison",
+        "Carl von Linde"
+      ],
+      "answer": 0,
+      "explanation": "Willis Carrier built the first modern air conditioner in 1902.",
+      "difficulty": "hard",
+      "id": "q56"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who invented the typewriter?",
+      "options": [
+        "Henry Mill",
+        "Christopher Sholes",
+        "Remington",
+        "Thomas Edison"
+      ],
+      "answer": 1,
+      "explanation": "Sholes patented the first practical typewriter in 1868.",
+      "difficulty": "hard",
+      "id": "q57"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who discovered the nucleus of the atom?",
+      "options": [
+        "Ernest Rutherford",
+        "J.J. Thomson",
+        "James Chadwick",
+        "Niels Bohr"
+      ],
+      "answer": 0,
+      "explanation": "Rutherford's gold-foil experiment revealed the nucleus in 1911.",
+      "difficulty": "medium",
+      "id": "q58"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who invented the diesel engine?",
+      "options": [
+        "Nikolaus Otto",
+        "Rudolf Diesel",
+        "Karl Benz",
+        "Henry Ford"
+      ],
+      "answer": 1,
+      "explanation": "Rudolf Diesel patented the diesel engine in 1892.",
+      "difficulty": "hard",
+      "id": "q59"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The anaesthetic properties of ether were first demonstrated by:",
+      "options": [
+        "Crawford Long",
+        "Joseph Lister",
+        "Humphry Davy",
+        "James Simpson"
+      ],
+      "answer": 0,
+      "explanation": "Long used ether for surgery in 1842.",
+      "difficulty": "hard",
+      "id": "q60"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who discovered Uranus?",
+      "options": [
+        "William Herschel",
+        "Galileo",
+        "Johann Galle",
+        "Percival Lowell"
+      ],
+      "answer": 0,
+      "explanation": "Herschel discovered Uranus in 1781.",
+      "difficulty": "medium",
+      "id": "q61"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The inventor of the modern computer, the Analytical Engine, was:",
+      "options": [
+        "Alan Turing",
+        "Charles Babbage",
+        "John von Neumann",
+        "Konrad Zuse"
+      ],
+      "answer": 1,
+      "explanation": "Babbage designed the Analytical Engine in the 1830s.",
+      "difficulty": "easy",
+      "id": "q62"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who invented the television?",
+      "options": [
+        "Philo Farnsworth",
+        "Vladimir Zworykin",
+        "John Logie Baird",
+        "Guglielmo Marconi"
+      ],
+      "answer": 2,
+      "explanation": "Baird demonstrated the first working television in 1925.",
+      "difficulty": "medium",
+      "id": "q63"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The rabies and anthrax vaccines are attributed to:",
+      "options": [
+        "Louis Pasteur",
+        "Edward Jenner",
+        "Alexander Fleming",
+        "Robert Koch"
+      ],
+      "answer": 0,
+      "explanation": "Pasteur pioneered vaccines for both rabies and anthrax.",
+      "difficulty": "medium",
+      "id": "q64"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who invented the phonograph?",
+      "options": [
+        "Alexander Graham Bell",
+        "Emile Berliner",
+        "Thomas Edison",
+        "Nikola Tesla"
+      ],
+      "answer": 2,
+      "explanation": "Thomas Edison invented the phonograph, the first sound recorder, in 1877.",
+      "difficulty": "easy",
+      "id": "q65"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who explained the photoelectric effect and won a Nobel Prize for it?",
+      "options": [
+        "Albert Einstein",
+        "Niels Bohr",
+        "Max Planck",
+        "Erwin Schrödinger"
+      ],
+      "answer": 0,
+      "explanation": "Einstein explained the photoelectric effect, earning the 1921 Nobel Prize in Physics.",
+      "difficulty": "medium",
+      "id": "q66"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who co-founded Microsoft with Bill Gates?",
+      "options": [
+        "Steve Jobs",
+        "Paul Allen",
+        "Mark Zuckerberg",
+        "Larry Page"
+      ],
+      "answer": 1,
+      "explanation": "Paul Allen and Bill Gates co-founded Microsoft in 1975.",
+      "difficulty": "easy",
+      "id": "q67"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who first observed the rings of Saturn through a telescope?",
+      "options": [
+        "Nicolaus Copernicus",
+        "Tycho Brahe",
+        "Galileo Galilei",
+        "Edmond Halley"
+      ],
+      "answer": 2,
+      "explanation": "Galileo saw Saturn's rings in 1610, initially mistaking them for handles.",
+      "difficulty": "medium",
+      "id": "q68"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which astronomer defended the heliocentric model and was tried by the Inquisition?",
+      "options": [
+        "Ptolemy",
+        "Johannes Kepler",
+        "Tycho Brahe",
+        "Galileo Galilei"
+      ],
+      "answer": 3,
+      "explanation": "Galileo's telescopic evidence for heliocentrism led to his 1633 trial.",
+      "difficulty": "hard",
+      "id": "q69"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who invented the printing press?",
+      "options": [
+        "William Caxton",
+        "Johannes Gutenberg",
+        "Benjamin Franklin",
+        "Thomas Edison"
+      ],
+      "answer": 1,
+      "explanation": "Johannes Gutenberg invented the movable-type printing press around 1440.",
+      "difficulty": "medium",
+      "id": "q70"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who invented the pendulum clock?",
+      "options": [
+        "Galileo Galilei",
+        "Christiaan Huygens",
+        "Isaac Newton",
+        "Robert Hooke"
+      ],
+      "answer": 1,
+      "explanation": "Christiaan Huygens built the first pendulum clock in 1656.",
+      "difficulty": "hard",
+      "id": "q71"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who invented the sewing machine?",
+      "options": [
+        "Elias Howe",
+        "James Watt",
+        "John Kay",
+        "Samuel Morse"
+      ],
+      "answer": 0,
+      "explanation": "Elias Howe patented the first practical sewing machine in 1846.",
+      "difficulty": "medium",
+      "id": "q72"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who invented the dynamite?",
+      "options": [
+        "Alfred Nobel",
+        "Thomas Edison",
+        "Alexander Graham Bell",
+        "Louis Pasteur"
+      ],
+      "answer": 0,
+      "explanation": "Alfred Nobel invented dynamite in 1867.",
+      "difficulty": "easy",
+      "id": "q73"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who won Nobel Prizes in both Physics and Chemistry?",
+      "options": [
+        "Albert Einstein",
+        "Marie Curie",
+        "Niels Bohr",
+        "Enrico Fermi"
+      ],
+      "answer": 1,
+      "explanation": "Marie Curie won the Physics Prize (1903) and the Chemistry Prize (1911).",
+      "difficulty": "hard",
+      "id": "q74"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who discovered the laws of inheritance using pea plants?",
+      "options": [
+        "Charles Darwin",
+        "Gregor Mendel",
+        "Hugo de Vries",
+        "Thomas Morgan"
+      ],
+      "answer": 1,
+      "explanation": "Gregor Mendel discovered the laws of inheritance through experiments on pea plants.",
+      "difficulty": "easy",
+      "id": "q75"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The law of universal gravitation describes the force between:",
+      "options": [
+        "Two electric charges",
+        "Two masses",
+        "Two magnets",
+        "Light and matter"
+      ],
+      "answer": 1,
+      "explanation": "Universal gravitation is the attractive force acting between any two masses.",
+      "difficulty": "medium",
+      "id": "q76"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The first man to travel into space was:",
+      "options": [
+        "Neil Armstrong",
+        "Yuri Gagarin",
+        "John Glenn",
+        "Buzz Aldrin"
+      ],
+      "answer": 1,
+      "explanation": "Yuri Gagarin orbited the Earth in Vostok 1 in April 1961.",
+      "difficulty": "easy",
+      "id": "q77"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who invented the cotton gin?",
+      "options": [
+        "Eli Whitney",
+        "Henry Ford",
+        "Cyrus McCormick",
+        "James Hargreaves"
+      ],
+      "answer": 0,
+      "explanation": "Eli Whitney invented the cotton gin in 1793.",
+      "difficulty": "medium",
+      "id": "q78"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who discovered the cell under a microscope?",
+      "options": [
+        "Antonie van Leeuwenhoek",
+        "Robert Hooke",
+        "Matthias Schleiden",
+        "Theodor Schwann"
+      ],
+      "answer": 1,
+      "explanation": "Robert Hooke first described cells from a slice of cork in 1665.",
+      "difficulty": "hard",
+      "id": "q79"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who invented the safety matches?",
+      "options": [
+        "John Walker",
+        "Robert Boyle",
+        "Humphry Davy",
+        "Justus von Liebig"
+      ],
+      "answer": 0,
+      "explanation": "John Walker invented the first friction safety matches in 1826.",
+      "difficulty": "hard",
+      "id": "q80"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The law of conservation of mass is associated with:",
+      "options": [
+        "John Dalton",
+        "Antoine Lavoisier",
+        "Joseph Priestley",
+        "Henry Cavendish"
+      ],
+      "answer": 1,
+      "explanation": "Antoine Lavoisier established that mass is conserved in chemical reactions.",
+      "difficulty": "medium",
+      "id": "q81"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The first computer programmer was:",
+      "options": [
+        "Charles Babbage",
+        "Ada Lovelace",
+        "Alan Turing",
+        "Grace Hopper"
+      ],
+      "answer": 1,
+      "explanation": "Ada Lovelace wrote the first algorithm intended for a machine.",
+      "difficulty": "medium",
+      "id": "q82"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who invented the laser?",
+      "options": [
+        "Theodore Maiman",
+        "Albert Einstein",
+        "Charles Townes",
+        "Gordon Gould"
+      ],
+      "answer": 0,
+      "explanation": "Theodore Maiman built the first working laser in 1960.",
+      "difficulty": "hard",
+      "id": "q83"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who is regarded as the father of computer science?",
+      "options": [
+        "Charles Babbage",
+        "Alan Turing",
+        "John von Neumann",
+        "Bill Gates"
+      ],
+      "answer": 1,
+      "explanation": "Alan Turing is regarded as the father of computer science.",
+      "difficulty": "medium",
+      "id": "q84"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who independently proposed the theory of evolution by natural selection?",
+      "options": [
+        "Alfred Russel Wallace",
+        "Gregor Mendel",
+        "Jean-Baptiste Lamarck",
+        "Herbert Spencer"
+      ],
+      "answer": 0,
+      "explanation": "Alfred Russel Wallace independently conceived the theory of natural selection alongside Darwin.",
+      "difficulty": "medium",
+      "id": "q85"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who built the first mechanical calculating machine, the Pascaline?",
+      "options": [
+        "Blaise Pascal",
+        "Gottfried Leibniz",
+        "William Oughtred",
+        "John Napier"
+      ],
+      "answer": 0,
+      "explanation": "Blaise Pascal built the Pascaline, an early mechanical calculator, in 1642.",
+      "difficulty": "hard",
+      "id": "q86"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who invented the alternating current (AC) system?",
+      "options": [
+        "Thomas Edison",
+        "Nikola Tesla",
+        "George Westinghouse",
+        "Michael Faraday"
+      ],
+      "answer": 1,
+      "explanation": "Nikola Tesla developed the alternating current (AC) system.",
+      "difficulty": "medium",
+      "id": "q87"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who invented the mercury thermometer?",
+      "options": [
+        "Daniel Gabriel Fahrenheit",
+        "Anders Celsius",
+        "Galileo Galilei",
+        "Lord Kelvin"
+      ],
+      "answer": 0,
+      "explanation": "Fahrenheit made the first reliable mercury thermometer in 1714.",
+      "difficulty": "medium",
+      "id": "q88"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who invented the first compound microscope?",
+      "options": [
+        "Zacharias Janssen",
+        "Robert Hooke",
+        "Antonie van Leeuwenhoek",
+        "Galileo Galilei"
+      ],
+      "answer": 0,
+      "explanation": "Zacharias Janssen is credited with the first compound microscope around 1590.",
+      "difficulty": "medium",
+      "id": "q89"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who proposed the quantum theory of the atom?",
+      "options": [
+        "Niels Bohr",
+        "Ernest Rutherford",
+        "J.J. Thomson",
+        "Max Planck"
+      ],
+      "answer": 0,
+      "explanation": "Bohr's 1913 model placed electrons in fixed orbits around the nucleus.",
+      "difficulty": "hard",
+      "id": "q90"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who proposed the 'plum pudding' model of the atom?",
+      "options": [
+        "J.J. Thomson",
+        "Ernest Rutherford",
+        "Niels Bohr",
+        "John Dalton"
+      ],
+      "answer": 0,
+      "explanation": "Thomson pictured electrons embedded in a positive sphere, like plums in pudding.",
+      "difficulty": "hard",
+      "id": "q91"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who invented the lightning rod?",
+      "options": [
+        "Benjamin Franklin",
+        "Thomas Edison",
+        "Michael Faraday",
+        "Nikola Tesla"
+      ],
+      "answer": 0,
+      "explanation": "Benjamin Franklin invented the lightning rod after his kite experiments.",
+      "difficulty": "medium",
+      "id": "q92"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who invented the photocopier (xerography)?",
+      "options": [
+        "Chester Carlson",
+        "James Watt",
+        "Elisha Otis",
+        "Willis Carrier"
+      ],
+      "answer": 0,
+      "explanation": "Chester Carlson invented xerography in 1938; Xerox commercialised it.",
+      "difficulty": "hard",
+      "id": "q93"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who invented the postage stamp?",
+      "options": [
+        "Rowland Hill",
+        "Alexander Graham Bell",
+        "Samuel Morse",
+        "Henry Ford"
+      ],
+      "answer": 0,
+      "explanation": "Rowland Hill introduced the Penny Black, the first adhesive postage stamp.",
+      "difficulty": "medium",
+      "id": "q94"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who invented the gramophone?",
+      "options": [
+        "Emile Berliner",
+        "Thomas Edison",
+        "Alexander Graham Bell",
+        "Guglielmo Marconi"
+      ],
+      "answer": 0,
+      "explanation": "Emile Berliner's gramophone played flat discs, unlike Edison's cylinder phonograph.",
+      "difficulty": "hard",
+      "id": "q95"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who invented the microwave oven?",
+      "options": [
+        "Percy Spencer",
+        "John Walker",
+        "Charles Babbage",
+        "George Westinghouse"
+      ],
+      "answer": 0,
+      "explanation": "Percy Spencer discovered microwave heating from a radar magnetron in 1945.",
+      "difficulty": "medium",
+      "id": "q96"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who invented the first automatic traffic light?",
+      "options": [
+        "Garrett Morgan",
+        "Thomas Edison",
+        "Rudolf Diesel",
+        "Eli Whitney"
+      ],
+      "answer": 0,
+      "explanation": "Garrett Morgan patented a three-position traffic signal in 1923.",
+      "difficulty": "medium",
+      "id": "q97"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who is known as the father of the atomic bomb?",
+      "options": [
+        "Robert Oppenheimer",
+        "Albert Einstein",
+        "Enrico Fermi",
+        "Niels Bohr"
+      ],
+      "answer": 0,
+      "explanation": "Robert Oppenheimer directed the Manhattan Project that built the atomic bomb.",
+      "difficulty": "medium",
+      "id": "q98"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who invented the spinning jenny?",
+      "options": [
+        "James Hargreaves",
+        "Richard Arkwright",
+        "Samuel Crompton",
+        "Elias Howe"
+      ],
+      "answer": 0,
+      "explanation": "James Hargreaves invented the spinning jenny during the Industrial Revolution.",
+      "difficulty": "hard",
+      "id": "q99"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who discovered the noble gases?",
+      "options": [
+        "William Ramsay",
+        "Robert Boyle",
+        "Joseph Priestley",
+        "Humphry Davy"
+      ],
+      "answer": 0,
+      "explanation": "William Ramsay isolated argon, helium and the other noble gases.",
+      "difficulty": "hard",
+      "id": "q100"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who invented the safety razor?",
+      "options": [
+        "King Gillette",
+        "Jacob Perkins",
+        "John Walker",
+        "Willis Carrier"
+      ],
+      "answer": 0,
+      "explanation": "King Gillette invented the safety razor with disposable blades.",
+      "difficulty": "medium",
+      "id": "q101"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who invented the mechanical reaper?",
+      "options": [
+        "Cyrus McCormick",
+        "Eli Whitney",
+        "John Deere",
+        "James Hargreaves"
+      ],
+      "answer": 0,
+      "explanation": "Cyrus McCormick's reaper transformed wheat harvesting in the 1830s.",
+      "difficulty": "hard",
+      "id": "q102"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who invented the first bicycle (the draisine)?",
+      "options": [
+        "Karl von Drais",
+        "Kirkpatrick Macmillan",
+        "John Dunlop",
+        "Gottlieb Daimler"
+      ],
+      "answer": 0,
+      "explanation": "Karl von Drais built the draisine, a two-wheeled runabout, in 1817.",
+      "difficulty": "hard",
+      "id": "q103"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who built the first practical automobile with an internal combustion engine?",
+      "options": [
+        "Karl Benz",
+        "Henry Ford",
+        "Rudolf Diesel",
+        "Nikolaus Otto"
+      ],
+      "answer": 0,
+      "explanation": "Karl Benz built the Motorwagen in 1885, widely considered the first automobile.",
+      "difficulty": "medium",
+      "id": "q104"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who invented the automated teller machine (ATM)?",
+      "options": [
+        "John Shepherd-Barron",
+        "Thomas Edison",
+        "Alexander Graham Bell",
+        "James Ritty"
+      ],
+      "answer": 0,
+      "explanation": "John Shepherd-Barron installed the first ATM in London in 1967.",
+      "difficulty": "medium",
+      "id": "q105"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who made the first mobile phone call?",
+      "options": [
+        "Martin Cooper",
+        "Steve Jobs",
+        "Bill Gates",
+        "Tim Berners-Lee"
+      ],
+      "answer": 0,
+      "explanation": "Martin Cooper of Motorola made the first handheld mobile call in 1973.",
+      "difficulty": "easy",
+      "id": "q106"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who first observed the planet Neptune through a telescope?",
+      "options": [
+        "Johann Galle",
+        "William Herschel",
+        "Clyde Tombaugh",
+        "Galileo Galilei"
+      ],
+      "answer": 0,
+      "explanation": "Johann Galle found Neptune in 1846 at the position predicted by Le Verrier.",
+      "difficulty": "hard",
+      "id": "q107"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who discovered the dwarf planet Pluto?",
+      "options": [
+        "Clyde Tombaugh",
+        "Percival Lowell",
+        "William Herschel",
+        "Johann Galle"
+      ],
+      "answer": 0,
+      "explanation": "Clyde Tombaugh discovered Pluto at Lowell Observatory in 1930.",
+      "difficulty": "medium",
+      "id": "q108"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who discovered Saturn's largest moon, Titan?",
+      "options": [
+        "Christiaan Huygens",
+        "Galileo Galilei",
+        "William Herschel",
+        "Giovanni Cassini"
+      ],
+      "answer": 0,
+      "explanation": "Huygens discovered Titan in 1655, about forty years before Cassini's moons.",
+      "difficulty": "hard",
+      "id": "q109"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who invented the reflecting telescope?",
+      "options": [
+        "Isaac Newton",
+        "Galileo Galilei",
+        "Hans Lippershey",
+        "Johannes Kepler"
+      ],
+      "answer": 0,
+      "explanation": "Newton built the first practical reflecting telescope in 1668 using a mirror.",
+      "difficulty": "medium",
+      "id": "q110"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who is credited with inventing the jet engine?",
+      "options": [
+        "Frank Whittle",
+        "Orville Wright",
+        "Henry Ford",
+        "Rudolf Diesel"
+      ],
+      "answer": 0,
+      "explanation": "Frank Whittle patented the turbojet engine in 1930.",
+      "difficulty": "hard",
+      "id": "q111"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who was the first woman to travel into space?",
+      "options": [
+        "Valentina Tereshkova",
+        "Sally Ride",
+        "Kalpana Chawla",
+        "Mae Jemison"
+      ],
+      "answer": 0,
+      "explanation": "Valentina Tereshkova orbited the Earth in 1963 aboard Vostok 6.",
+      "difficulty": "medium",
+      "id": "q112"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who was the first woman to win a Nobel Prize?",
+      "options": [
+        "Marie Curie",
+        "Rosalind Franklin",
+        "Lise Meitner",
+        "Irene Joliot-Curie"
+      ],
+      "answer": 0,
+      "explanation": "Marie Curie won the 1903 Nobel Prize in Physics.",
+      "difficulty": "easy",
+      "id": "q113"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who discovered the ABO blood group system?",
+      "options": [
+        "Karl Landsteiner",
+        "William Harvey",
+        "Edward Jenner",
+        "Alexander Fleming"
+      ],
+      "answer": 0,
+      "explanation": "Karl Landsteiner identified the A, B and O blood groups in 1900.",
+      "difficulty": "medium",
+      "id": "q114"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who invented the stethoscope?",
+      "options": [
+        "Rene Laennec",
+        "Wilhelm Roentgen",
+        "Robert Koch",
+        "Louis Pasteur"
+      ],
+      "answer": 0,
+      "explanation": "Rene Laennec invented the stethoscope in 1816.",
+      "difficulty": "medium",
+      "id": "q115"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who is known as the father of medicine?",
+      "options": [
+        "Hippocrates",
+        "Aristotle",
+        "Galen",
+        "Avicenna"
+      ],
+      "answer": 0,
+      "explanation": "Hippocrates, the Greek physician, is called the father of medicine.",
+      "difficulty": "easy",
+      "id": "q116"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who is known as the father of biology?",
+      "options": [
+        "Aristotle",
+        "Hippocrates",
+        "Charles Darwin",
+        "Gregor Mendel"
+      ],
+      "answer": 0,
+      "explanation": "Aristotle is regarded as the father of biology for his study of living things.",
+      "difficulty": "medium",
+      "id": "q117"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who is known as the father of taxonomy?",
+      "options": [
+        "Carolus Linnaeus",
+        "Charles Darwin",
+        "Gregor Mendel",
+        "Alfred Wallace"
+      ],
+      "answer": 0,
+      "explanation": "Linnaeus devised the binomial system of naming species.",
+      "difficulty": "medium",
+      "id": "q118"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who first observed bacteria under a microscope?",
+      "options": [
+        "Antonie van Leeuwenhoek",
+        "Robert Hooke",
+        "Louis Pasteur",
+        "Robert Koch"
+      ],
+      "answer": 0,
+      "explanation": "Leeuwenhoek, the father of microbiology, first saw bacteria in 1674.",
+      "difficulty": "medium",
+      "id": "q119"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who invented the pressure cooker?",
+      "options": [
+        "Denis Papin",
+        "Jacob Perkins",
+        "James Watt",
+        "Alfred Nobel"
+      ],
+      "answer": 0,
+      "explanation": "Denis Papin's steam digester of 1679 was the forerunner of the pressure cooker.",
+      "difficulty": "hard",
+      "id": "q120"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who invented the integrated circuit?",
+      "options": [
+        "Jack Kilby",
+        "Gordon Moore",
+        "Steve Wozniak",
+        "Ted Hoff"
+      ],
+      "answer": 0,
+      "explanation": "Jack Kilby built the first working integrated circuit at Texas Instruments in 1958.",
+      "difficulty": "medium",
+      "id": "q121"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who invented the Geiger counter?",
+      "options": [
+        "Hans Geiger",
+        "Wilhelm Roentgen",
+        "Marie Curie",
+        "Enrico Fermi"
+      ],
+      "answer": 0,
+      "explanation": "Hans Geiger developed the radiation detector that bears his name.",
+      "difficulty": "medium",
+      "id": "q122"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who devised the Richter scale for earthquakes?",
+      "options": [
+        "Charles Richter",
+        "Alfred Wegener",
+        "Giuseppe Mercalli",
+        "Beno Gutenberg"
+      ],
+      "answer": 0,
+      "explanation": "Charles Richter introduced the magnitude scale in 1935.",
+      "difficulty": "medium",
+      "id": "q123"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who devised the Mohs scale for mineral hardness?",
+      "options": [
+        "Friedrich Mohs",
+        "Charles Richter",
+        "Alfred Wegener",
+        "Robert Boyle"
+      ],
+      "answer": 0,
+      "explanation": "Friedrich Mohs created the 1-10 hardness scale for minerals in 1812.",
+      "difficulty": "medium",
+      "id": "q124"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who proposed the Big Bang theory?",
+      "options": [
+        "Georges Lemaitre",
+        "Albert Einstein",
+        "Edwin Hubble",
+        "Stephen Hawking"
+      ],
+      "answer": 0,
+      "explanation": "Georges Lemaitre first proposed that the universe began with a primeval explosion.",
+      "difficulty": "hard",
+      "id": "q125"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who was the first person to walk in space?",
+      "options": [
+        "Alexei Leonov",
+        "Yuri Gagarin",
+        "Neil Armstrong",
+        "Buzz Aldrin"
+      ],
+      "answer": 0,
+      "explanation": "Alexei Leonov made the first spacewalk in 1965.",
+      "difficulty": "medium",
+      "id": "q126"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who invented the electrocardiograph (ECG)?",
+      "options": [
+        "Willem Einthoven",
+        "Rene Laennec",
+        "Jonas Salk",
+        "Edward Jenner"
+      ],
+      "answer": 0,
+      "explanation": "Willem Einthoven invented the electrocardiograph and won a Nobel Prize for it.",
+      "difficulty": "medium",
+      "id": "q127"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who introduced the Celsius temperature scale?",
+      "options": [
+        "Anders Celsius",
+        "Daniel Fahrenheit",
+        "Lord Kelvin",
+        "William Rankine"
+      ],
+      "answer": 0,
+      "explanation": "Anders Celsius proposed the centigrade scale in 1742.",
+      "difficulty": "easy",
+      "id": "q128"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who introduced the pH scale?",
+      "options": [
+        "Soren Sorensen",
+        "Antoine Lavoisier",
+        "Svante Arrhenius",
+        "John Dalton"
+      ],
+      "answer": 0,
+      "explanation": "Soren Sorensen introduced the pH scale in 1909 to express acidity.",
+      "difficulty": "hard",
+      "id": "q129"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who discovered infrared radiation?",
+      "options": [
+        "William Herschel",
+        "James Chadwick",
+        "Henri Becquerel",
+        "Max Planck"
+      ],
+      "answer": 0,
+      "explanation": "William Herschel found infrared rays beyond the red end of the spectrum in 1800.",
+      "difficulty": "hard",
+      "id": "q130"
+    }
+  ]
+}

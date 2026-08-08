@@ -1,0 +1,1413 @@
+{
+  "bank": {
+    "name": "Seerat-un-Nabi",
+    "subject": "Islamic Studies",
+    "topic": "Seerat-un-Nabi",
+    "description": "The life of the Holy Prophet Muhammad (PBUH): birth, early life, prophethood, migration and major battles.",
+    "tags": "css,pms,fpsc,islamic-studies,seerat",
+    "version": "1.0",
+    "id": "islamiat_seerat"
+  },
+  "questions": [
+    {
+      "type": "mcq",
+      "prompt": "In which year was the Holy Prophet Muhammad (PBUH) born?",
+      "options": [
+        "571 CE (Year of the Elephant)",
+        "575 CE",
+        "580 CE",
+        "610 CE"
+      ],
+      "answer": 0,
+      "explanation": "The Prophet (PBUH) was born in 571 CE, the Year of the Elephant, in Makkah.",
+      "difficulty": "medium",
+      "id": "q01"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What was the name of the mother of the Holy Prophet (PBUH)?",
+      "options": [
+        "Amina bint Wahb",
+        "Khadijah",
+        "Fatimah",
+        "Halima Sa'dia"
+      ],
+      "answer": 0,
+      "explanation": "His mother was Amina bint Wahb; she passed away when he was about six years old.",
+      "difficulty": "medium",
+      "id": "q02"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What was the name of the father of the Holy Prophet (PBUH)?",
+      "options": [
+        "Abdullah",
+        "Abdul Muttalib",
+        "Abu Talib",
+        "Hamza"
+      ],
+      "answer": 0,
+      "explanation": "His father Abdullah died before the Prophet's birth.",
+      "difficulty": "medium",
+      "id": "q03"
+    },
+    {
+      "type": "mcq",
+      "prompt": "After the death of his mother and grandfather, who raised the Holy Prophet (PBUH)?",
+      "options": [
+        "Abu Talib",
+        "Abu Bakr",
+        "Hamza",
+        "Abbas"
+      ],
+      "answer": 0,
+      "explanation": "After his grandfather Abdul Muttalib died, his uncle Abu Talib took care of him.",
+      "difficulty": "medium",
+      "id": "q04"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What was the name of the first wife of the Holy Prophet (PBUH)?",
+      "options": [
+        "Khadijah",
+        "Aisha",
+        "Hafsa",
+        "Zainab"
+      ],
+      "answer": 0,
+      "explanation": "Khadijah (RA), a noble Makkan businesswoman, was the first wife of the Prophet (PBUH).",
+      "difficulty": "easy",
+      "id": "q05"
+    },
+    {
+      "type": "mcq",
+      "prompt": "At what age did the Holy Prophet (PBUH) receive the first revelation?",
+      "options": [
+        "35",
+        "38",
+        "40",
+        "45"
+      ],
+      "answer": 2,
+      "explanation": "He was 40 years old when he received the first revelation in the Cave of Hira.",
+      "difficulty": "easy",
+      "id": "q06"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who was the first man to accept Islam?",
+      "options": [
+        "Umar (RA)",
+        "Abu Bakr (RA)",
+        "Ali (RA)",
+        "Uthman (RA)"
+      ],
+      "answer": 1,
+      "explanation": "Abu Bakr (RA) was the first adult male to accept Islam.",
+      "difficulty": "medium",
+      "id": "q07"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who was the first woman to accept Islam?",
+      "options": [
+        "Khadijah (RA)",
+        "Aisha (RA)",
+        "Fatimah (RA)",
+        "Sumayyah (RA)"
+      ],
+      "answer": 0,
+      "explanation": "Khadijah (RA) was the first person to accept Islam, followed by Ali (RA) and Zayd ibn Harithah (RA).",
+      "difficulty": "medium",
+      "id": "q08"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who was the first freed slave to accept Islam?",
+      "options": [
+        "Bilal (RA)",
+        "Zayd ibn Harithah (RA)",
+        "Salman al-Farsi (RA)",
+        "Suhayb (RA)"
+      ],
+      "answer": 1,
+      "explanation": "Zayd ibn Harithah (RA), the adopted son of the Prophet (PBUH), was the first freed slave to embrace Islam.",
+      "difficulty": "hard",
+      "id": "q09"
+    },
+    {
+      "type": "mcq",
+      "prompt": "In which year did the Hijrah (migration) to Madinah take place?",
+      "options": [
+        "610 CE",
+        "622 CE",
+        "630 CE",
+        "632 CE"
+      ],
+      "answer": 1,
+      "explanation": "The Hijrah to Yathrib (Madinah) took place in 622 CE, which marks the start of the Islamic calendar.",
+      "difficulty": "easy",
+      "id": "q10"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Isra and Mi'raj journey is associated with which month of the Islamic calendar?",
+      "options": [
+        "Ramadan",
+        "Shaban",
+        "Rajab",
+        "Muharram"
+      ],
+      "answer": 2,
+      "explanation": "The night journey (Isra and Mi'raj) is commemorated on 27 Rajab.",
+      "difficulty": "medium",
+      "id": "q11"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Battle of Badr was fought in which year?",
+      "options": [
+        "2 AH",
+        "3 AH",
+        "5 AH",
+        "8 AH"
+      ],
+      "answer": 0,
+      "explanation": "The Battle of Badr was fought in 2 AH (624 CE) in Ramadan; about 313 Muslims faced a much larger Quraysh force.",
+      "difficulty": "medium",
+      "id": "q12"
+    },
+    {
+      "type": "mcq",
+      "prompt": "In which battle was Hazrat Hamza (RA), the uncle of the Prophet (PBUH), martyred?",
+      "options": [
+        "Badr",
+        "Uhud",
+        "Trench",
+        "Khaybar"
+      ],
+      "answer": 1,
+      "explanation": "Hamza (RA), titled the 'Lion of Allah', was martyred at the Battle of Uhud in 3 AH.",
+      "difficulty": "medium",
+      "id": "q13"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Battle of the Trench (Khandaq) was fought in which year?",
+      "options": [
+        "2 AH",
+        "3 AH",
+        "5 AH",
+        "7 AH"
+      ],
+      "answer": 2,
+      "explanation": "The Battle of the Trench was fought in 5 AH (627 CE); the trench strategy was suggested by Salman al-Farsi (RA).",
+      "difficulty": "medium",
+      "id": "q14"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Treaty of Hudaybiyyah was signed in which year?",
+      "options": [
+        "4 AH",
+        "5 AH",
+        "6 AH",
+        "7 AH"
+      ],
+      "answer": 2,
+      "explanation": "The Treaty of Hudaybiyyah was concluded in 6 AH (628 CE) between the Muslims and the Quraysh.",
+      "difficulty": "hard",
+      "id": "q15"
+    },
+    {
+      "type": "mcq",
+      "prompt": "In which year was Makkah conquered by the Muslims?",
+      "options": [
+        "5 AH",
+        "6 AH",
+        "7 AH",
+        "8 AH"
+      ],
+      "answer": 3,
+      "explanation": "Makkah was conquered peacefully in 8 AH (630 CE).",
+      "difficulty": "medium",
+      "id": "q16"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Farewell Hajj (Hajjat-ul-Wida) of the Holy Prophet (PBUH) took place in which year?",
+      "options": [
+        "8 AH",
+        "9 AH",
+        "10 AH",
+        "11 AH"
+      ],
+      "answer": 2,
+      "explanation": "The Prophet (PBUH) performed his only Hajj in 10 AH (632 CE) and delivered the Farewell Sermon at Arafat.",
+      "difficulty": "medium",
+      "id": "q17"
+    },
+    {
+      "type": "mcq",
+      "prompt": "In which year and city did the Holy Prophet (PBUH) pass away?",
+      "options": [
+        "8 AH, Makkah",
+        "11 AH, Madinah",
+        "10 AH, Madinah",
+        "9 AH, Makkah"
+      ],
+      "answer": 1,
+      "explanation": "The Prophet (PBUH) passed away on 12 Rabi-ul-Awwal 11 AH (632 CE) in Madinah.",
+      "difficulty": "medium",
+      "id": "q18"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who was the first Mu'azzin (caller to prayer) of Islam?",
+      "options": [
+        "Umar (RA)",
+        "Uthman (RA)",
+        "Bilal (RA)",
+        "Abu Bakr (RA)"
+      ],
+      "answer": 2,
+      "explanation": "Bilal ibn Rabah (RA) was chosen as the first Mu'azzin of Islam.",
+      "difficulty": "easy",
+      "id": "q19"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which was the first mosque built in Islam?",
+      "options": [
+        "Masjid al-Haram",
+        "Masjid an-Nabawi",
+        "Masjid Quba",
+        "Masjid al-Aqsa"
+      ],
+      "answer": 2,
+      "explanation": "Masjid Quba, built on the outskirts of Madinah during the Hijrah, is the first mosque of Islam.",
+      "difficulty": "medium",
+      "id": "q20"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What titles was the Holy Prophet (PBUH) given for his truthfulness and trustworthiness before prophethood?",
+      "options": [
+        "Al-Mujahid and Al-Ghazi",
+        "As-Siddiq and Al-Farooq",
+        "As-Sadiq and Al-Amin",
+        "Al-Hakam and Al-Adl"
+      ],
+      "answer": 2,
+      "explanation": "The Makkans called him As-Sadiq (the truthful) and Al-Amin (the trustworthy).",
+      "difficulty": "easy",
+      "id": "q21"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which tribe did the Prophet Muhammad (PBUH) belong to?",
+      "options": [
+        "Quraysh",
+        "Aws",
+        "Khazraj",
+        "Thaqif"
+      ],
+      "answer": 0,
+      "explanation": "The Prophet (PBUH) belonged to the Quraysh tribe of Makkah, specifically Banu Hashim.",
+      "difficulty": "easy",
+      "id": "q22"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What was the name of the Prophet's (PBUH) grandfather?",
+      "options": [
+        "Abdul-Muttalib",
+        "Abu Talib",
+        "Abdullah",
+        "Hashim"
+      ],
+      "answer": 0,
+      "explanation": "His grandfather was Abdul-Muttalib ibn Hashim.",
+      "difficulty": "easy",
+      "id": "q23"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Prophet (PBUH) worked as a shepherd in his youth. Whose flocks did he tend?",
+      "options": [
+        "The flocks of the Makkans for hire",
+        "Only his own family's flocks",
+        "The king's flocks",
+        "He never shepherded"
+      ],
+      "answer": 0,
+      "explanation": "Like many prophets, he shepherded sheep for the people of Makkah for payment in his youth.",
+      "difficulty": "medium",
+      "id": "q24"
+    },
+    {
+      "type": "mcq",
+      "prompt": "At the rebuilding of the Kaaba, the Prophet (PBUH) was chosen to place which object?",
+      "options": [
+        "The Black Stone (Hajar-e-Aswad)",
+        "The door of the Kaaba",
+        "The gold gutter",
+        "The cornerstone"
+      ],
+      "answer": 0,
+      "explanation": "The Quraysh chose him to place the Black Stone, and he resolved the dispute by having the tribes hold the cloth together.",
+      "difficulty": "medium",
+      "id": "q25"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What was the 'Hilf-ul-Fudul'?",
+      "options": [
+        "An alliance for justice and protecting the oppressed",
+        "A trade agreement",
+        "A war alliance",
+        "A marriage pact"
+      ],
+      "answer": 0,
+      "explanation": "The Hilf-ul-Fudul was a pre-Islamic pact to aid the oppressed, which the Prophet (PBUH) later praised.",
+      "difficulty": "medium",
+      "id": "q26"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who was the first person to believe in the Prophet (PBUH) after Khadijah?",
+      "options": [
+        "Ali ibn Abi Talib",
+        "Abu Bakr",
+        "Zaid bin Harithah",
+        "Uthman"
+      ],
+      "answer": 2,
+      "explanation": "Zaid bin Harithah, his freed slave and adopted son, was among the very first to accept Islam.",
+      "difficulty": "hard",
+      "id": "q27"
+    },
+    {
+      "type": "mcq",
+      "prompt": "How long did the Prophet (PBUH) receive revelation in Makkah before the Hijrah?",
+      "options": [
+        "About 13 years",
+        "About 10 years",
+        "About 5 years",
+        "About 20 years"
+      ],
+      "answer": 0,
+      "explanation": "The Makkan period of revelation lasted about 13 years (610-622 CE).",
+      "difficulty": "easy",
+      "id": "q28"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who was the first martyr of Islam?",
+      "options": [
+        "Sumayyah bint Khayyat",
+        "Bilal",
+        "Ammar bin Yasir",
+        "Khabbab"
+      ],
+      "answer": 0,
+      "explanation": "Sumayyah, mother of Ammar bin Yasir, was martyred by Abu Jahl — the first martyr of Islam.",
+      "difficulty": "medium",
+      "id": "q29"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What did the Quraysh offer the Prophet (PBUH) to abandon his mission?",
+      "options": [
+        "Wealth, leadership and women (kingship offer)",
+        "A share of the Kaaba treasury",
+        "Exile to Abyssinia",
+        "A statue in his honor"
+      ],
+      "answer": 0,
+      "explanation": "The Quraysh offered him wealth, status and marriage alliances, which he refused.",
+      "difficulty": "medium",
+      "id": "q30"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which Surah of the Quran is a reply to the Quraysh's offer of compromise?",
+      "options": [
+        "Al-Kafirun",
+        "Al-Ikhlas",
+        "Al-Fatiha",
+        "Al-Masad"
+      ],
+      "answer": 0,
+      "explanation": "Surah Al-Kafirun (The Disbelievers) is the definitive answer rejecting any compromise in faith.",
+      "difficulty": "medium",
+      "id": "q31"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Prophet (PBUH) visited Taif to invite its people to Islam. What was the outcome?",
+      "options": [
+        "He was rejected and stoned by the people of Taif",
+        "They accepted Islam",
+        "They signed a treaty",
+        "They joined the Hijrah"
+      ],
+      "answer": 0,
+      "explanation": "The people of Taif rejected him and had him stoned; the angel offered to destroy them, but he refused and prayed for their guidance.",
+      "difficulty": "medium",
+      "id": "q32"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who accepted Islam after hearing the Quran in a famous incident and was once his bitter enemy?",
+      "options": [
+        "Umar ibn al-Khattab",
+        "Abu Jahl",
+        "Abu Lahab",
+        "Walid ibn Mughirah"
+      ],
+      "answer": 0,
+      "explanation": "Umar (RA), initially a fierce opponent, embraced Islam after hearing Surah Taha — strengthening the Muslims of Makkah.",
+      "difficulty": "easy",
+      "id": "q33"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The 'Year of Sorrow' (Aam-ul-Huzn) refers to which year?",
+      "options": [
+        "619 CE (10th year of prophethood)",
+        "610 CE",
+        "622 CE",
+        "632 CE"
+      ],
+      "answer": 0,
+      "explanation": "In 619 CE the Prophet (PBUH) lost both Khadijah and Abu Talib, a year of profound sorrow.",
+      "difficulty": "medium",
+      "id": "q34"
+    },
+    {
+      "type": "mcq",
+      "prompt": "During the Mi'raj, how many daily prayers were initially prescribed before being reduced to five?",
+      "options": [
+        "Fifty",
+        "Ten",
+        "Thirty",
+        "Seven"
+      ],
+      "answer": 0,
+      "explanation": "Fifty prayers were prescribed, then reduced to five at Musa's (AS) advice, with the reward of fifty.",
+      "difficulty": "medium",
+      "id": "q35"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who was the Prophet's (PBUH) cousin who slept in his bed during the Hijrah to deceive the Quraysh?",
+      "options": [
+        "Ali ibn Abi Talib",
+        "Jafar ibn Abi Talib",
+        "Aqil",
+        "Zaid"
+      ],
+      "answer": 0,
+      "explanation": "Ali (RA) slept in the Prophet's (PBUH) bed on the night of the Hijrah, allowing him to escape safely.",
+      "difficulty": "easy",
+      "id": "q36"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who guided the Prophet (PBUH) and Abu Bakr to Madinah via a secret route?",
+      "options": [
+        "Abdullah bin Uraiqit, a non-Muslim guide",
+        "Bilal",
+        "Salman al-Farsi",
+        "Abu Ubaidah"
+      ],
+      "answer": 0,
+      "explanation": "The Prophet (PBUH) hired Abdullah bin Uraiqit, a pagan guide, to lead them on the less-traveled coastal route.",
+      "difficulty": "hard",
+      "id": "q37"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What event is marked as the start of the Islamic calendar?",
+      "options": [
+        "The Hijrah to Madinah (622 CE)",
+        "The birth of the Prophet (PBUH)",
+        "The conquest of Makkah",
+        "The Battle of Badr"
+      ],
+      "answer": 0,
+      "explanation": "Caliph Umar established the Hijri calendar starting from the Hijrah year 622 CE.",
+      "difficulty": "easy",
+      "id": "q38"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which group welcomed the Prophet (PBUH) in Madinah and is known as the 'Ansar'?",
+      "options": [
+        "The Muslims of Madinah (Aws and Khazraj)",
+        "The Muhajirin",
+        "The Jews of Madinah",
+        "The Quraysh"
+      ],
+      "answer": 0,
+      "explanation": "The Ansar (Helpers) were the Muslims of Madinah from the Aws and Khazraj tribes who hosted the Muhajirin.",
+      "difficulty": "easy",
+      "id": "q39"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The emigrants who left Makkah with the Prophet (PBUH) are called?",
+      "options": [
+        "Muhajirin",
+        "Ansar",
+        "Sahabah",
+        "Tabi'in"
+      ],
+      "answer": 0,
+      "explanation": "The Muhajirin are the Muslims who migrated from Makkah to Madinah.",
+      "difficulty": "easy",
+      "id": "q40"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Prophet (PBUH) established brotherhood (Mu'akhat) between whom in Madinah?",
+      "options": [
+        "The Muhajirin and the Ansar",
+        "The Aws and the Khazraj",
+        "Muslims and Jews",
+        "The Quraysh and the Ansar"
+      ],
+      "answer": 0,
+      "explanation": "He paired each Muhajir with an Ansari brother to build bonds of brotherhood and support.",
+      "difficulty": "medium",
+      "id": "q41"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Where did the camel of the Prophet (PBUH) stop in Madinah, where Masjid-e-Nabawi was later built?",
+      "options": [
+        "At the land of two orphans (Sahl and Suhail)",
+        "At the market square",
+        "At the hill of Uhud",
+        "At Quba"
+      ],
+      "answer": 0,
+      "explanation": "His camel stopped at a date-drying yard owned by orphans Sahl and Suhail; the Prophet (PBUH) bought it for the mosque.",
+      "difficulty": "hard",
+      "id": "q42"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who was the Prophet's (PBUH) uncle who protected him in Makkah and died a non-Muslim?",
+      "options": [
+        "Abu Talib",
+        "Hamza",
+        "Abbas",
+        "Harith"
+      ],
+      "answer": 0,
+      "explanation": "Abu Talib protected him for decades but passed away before embracing Islam, in 619 CE.",
+      "difficulty": "easy",
+      "id": "q43"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which uncle of the Prophet (PBUH) embraced Islam and was martyred at Uhud?",
+      "options": [
+        "Hamza ibn Abdul-Muttalib",
+        "Abu Talib",
+        "Abbas",
+        "Al-Harith"
+      ],
+      "answer": 0,
+      "explanation": "Hamza (RA), 'Sayyid-ush-Shuhada' (leader of the martyrs), was martyred at Uhud.",
+      "difficulty": "easy",
+      "id": "q44"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which son of Abu Lahab's wife was martyred at Badr?",
+      "options": [
+        "Utbah bin Abi Lahab",
+        "Muawiyah",
+        "Yazid",
+        "Abdullah bin Ubayy"
+      ],
+      "answer": 0,
+      "explanation": "Utbah bin Abi Lahab was a Muslim who died at Badr, fighting against his own family.",
+      "difficulty": "hard",
+      "id": "q45"
+    },
+    {
+      "type": "mcq",
+      "prompt": "How many sons did the Prophet (PBUH) have?",
+      "options": [
+        "Three (Qasim, Abdullah, Ibrahim)",
+        "One",
+        "Five",
+        "Two"
+      ],
+      "answer": 0,
+      "explanation": "His sons were Qasim, Abdullah (Tayyib/Tahir) and Ibrahim; all died in infancy.",
+      "difficulty": "medium",
+      "id": "q46"
+    },
+    {
+      "type": "mcq",
+      "prompt": "How many daughters did the Prophet (PBUH) have?",
+      "options": [
+        "Four (Zainab, Ruqayyah, Umm Kulthum, Fatimah)",
+        "Two",
+        "Three",
+        "Five"
+      ],
+      "answer": 0,
+      "explanation": "His daughters were Zainab, Ruqayyah, Umm Kulthum and Fatimah (RA).",
+      "difficulty": "easy",
+      "id": "q47"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The mother of Prophet Ibrahim (son of the Prophet PBUH) was?",
+      "options": [
+        "Maria al-Qibtiyyah",
+        "Khadijah",
+        "Aisha",
+        "Safiyyah"
+      ],
+      "answer": 0,
+      "explanation": "Ibrahim (RA), who died as an infant, was born to Maria al-Qibtiyyah (RA).",
+      "difficulty": "medium",
+      "id": "q48"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which wife of the Prophet (PBUH) was the daughter of Abu Bakr?",
+      "options": [
+        "Aisha",
+        "Hafsa",
+        "Sawdah",
+        "Umm Salama"
+      ],
+      "answer": 0,
+      "explanation": "Aisha bint Abu Bakr (RA) married the Prophet (PBUH) after the Hijrah.",
+      "difficulty": "easy",
+      "id": "q49"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which wife of the Prophet (PBUH) was the daughter of Umar?",
+      "options": [
+        "Hafsa",
+        "Aisha",
+        "Zainab",
+        "Umm Habibah"
+      ],
+      "answer": 0,
+      "explanation": "Hafsa bint Umar (RA) was the daughter of Umar ibn al-Khattab.",
+      "difficulty": "medium",
+      "id": "q50"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which wife of the Prophet (PBUH) was a Jewish captive from Banu Nadir who embraced Islam?",
+      "options": [
+        "Safiyyah bint Huyayy",
+        "Khadijah",
+        "Maimunah",
+        "Juwairiyyah"
+      ],
+      "answer": 0,
+      "explanation": "Safiyyah (RA), daughter of the Banu Nadir chief, embraced Islam and married the Prophet (PBUH) after Khaybar.",
+      "difficulty": "hard",
+      "id": "q51"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Prophet (PBUH) worked as a trader for which wealthy widow?",
+      "options": [
+        "Khadijah (RA)",
+        "Hind bint Utbah",
+        "Umm Salama",
+        "Sawdah"
+      ],
+      "answer": 0,
+      "explanation": "He managed Khadijah's trade before marriage.",
+      "difficulty": "easy",
+      "id": "q52"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Prophet (PBUH) married Khadijah (RA) at what age?",
+      "options": [
+        "25 years",
+        "30 years",
+        "20 years",
+        "35 years"
+      ],
+      "answer": 0,
+      "explanation": "He married Khadijah at 25.",
+      "difficulty": "easy",
+      "id": "q53"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Prophet's (PBUH) first child was:",
+      "options": [
+        "Qasim",
+        "Fatimah",
+        "Abdullah",
+        "Ibrahim"
+      ],
+      "answer": 0,
+      "explanation": "Qasim was his first child.",
+      "difficulty": "medium",
+      "id": "q54"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Prophet's (PBUH) youngest daughter was:",
+      "options": [
+        "Fatimah (RA)",
+        "Zainab (RA)",
+        "Ruqayyah (RA)",
+        "Umm Kulthum (RA)"
+      ],
+      "answer": 0,
+      "explanation": "Fatimah was the youngest.",
+      "difficulty": "easy",
+      "id": "q55"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which of the Prophet's (PBUH) daughters married Uthman (RA)?",
+      "options": [
+        "Ruqayyah then Umm Kulthum",
+        "Fatimah",
+        "Zainab",
+        "None"
+      ],
+      "answer": 0,
+      "explanation": "Uthman married Ruqayyah, then Umm Kulthum.",
+      "difficulty": "hard",
+      "id": "q56"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Prophet (PBUH) was known as 'Al-Amin' meaning:",
+      "options": [
+        "The Trustworthy",
+        "The Brave",
+        "The Wise",
+        "The Merciful"
+      ],
+      "answer": 0,
+      "explanation": "He earned the title Al-Amin.",
+      "difficulty": "easy",
+      "id": "q57"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Prophet (PBUH) was also known as 'As-Sadiq' meaning:",
+      "options": [
+        "The Truthful",
+        "The Trustworthy",
+        "The Kind",
+        "The Strong"
+      ],
+      "answer": 0,
+      "explanation": "He was called As-Sadiq.",
+      "difficulty": "easy",
+      "id": "q58"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The 'Hilf al-Fudul' was an alliance the Prophet (PBUH) joined to:",
+      "options": [
+        "Protect the oppressed",
+        "Go to war",
+        "Trade goods",
+        "Build the Kaaba"
+      ],
+      "answer": 0,
+      "explanation": "Hilf al-Fudul upheld justice in Makkah.",
+      "difficulty": "medium",
+      "id": "q59"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Prophet (PBUH) participated in the rebuilding of which structure?",
+      "options": [
+        "The Kaaba",
+        "Masjid Nabawi",
+        "The Quba mosque",
+        "The Aqsa mosque"
+      ],
+      "answer": 0,
+      "explanation": "He helped place the Black Stone during the Kaaba's rebuilding.",
+      "difficulty": "easy",
+      "id": "q60"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The 'Black Stone' (Hajar al-Aswad) was placed by the Prophet (PBUH) using:",
+      "options": [
+        "A cloth lifted by tribal chiefs",
+        "A crane",
+        "A camel",
+        "Iron tools"
+      ],
+      "answer": 0,
+      "explanation": "He resolved the dispute by placing the stone on a cloth.",
+      "difficulty": "medium",
+      "id": "q61"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The 'Seerah' of the Prophet (PBUH) primarily refers to:",
+      "options": [
+        "His biography and life",
+        "His sayings",
+        "His battles only",
+        "His family tree"
+      ],
+      "answer": 0,
+      "explanation": "Seerah is the prophetic biography.",
+      "difficulty": "easy",
+      "id": "q62"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The famous first biography of the Prophet (PBUH) was written by:",
+      "options": [
+        "Ibn Ishaq",
+        "Ibn Kathir",
+        "Al-Tabari",
+        "Imam Bukhari"
+      ],
+      "answer": 0,
+      "explanation": "Ibn Ishaq wrote the earliest sirah.",
+      "difficulty": "medium",
+      "id": "q63"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The 'Seerat-un-Nabi' (in Urdu) was written by:",
+      "options": [
+        "Shibli Nomani and Sulaiman Nadvi",
+        "Allama Iqbal",
+        "Maulana Maududi",
+        "Sir Syed"
+      ],
+      "answer": 0,
+      "explanation": "Shibli and Nadvi authored this Urdu classic.",
+      "difficulty": "hard",
+      "id": "q64"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Prophet's (PBUH) camel during Hijrah was named:",
+      "options": [
+        "Qaswa",
+        "Duldul",
+        "Buraq",
+        "Zulfiqar"
+      ],
+      "answer": 0,
+      "explanation": "Qaswa was his mount on the Hijrah.",
+      "difficulty": "hard",
+      "id": "q65"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The 'Buraq' was the mount used during:",
+      "options": [
+        "The Night Journey (Isra and Miraj)",
+        "The Hijrah",
+        "The Battle of Badr",
+        "The Farewell Hajj"
+      ],
+      "answer": 0,
+      "explanation": "Buraq carried him on the Isra.",
+      "difficulty": "easy",
+      "id": "q66"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Prophet (PBUH) had how many wives in total?",
+      "options": [
+        "11 (including those married after Khadijah)",
+        "5",
+        "7",
+        "15"
+      ],
+      "answer": 0,
+      "explanation": "He married 11 women in total.",
+      "difficulty": "medium",
+      "id": "q67"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Prophet's (PBUH) seal (stamp) bore the words:",
+      "options": [
+        "Muhammad Rasul Allah",
+        "La ilaha illallah",
+        "Bismillah",
+        "Allahu Akbar"
+      ],
+      "answer": 0,
+      "explanation": "His seal read 'Muhammad, Messenger of Allah'.",
+      "difficulty": "hard",
+      "id": "q68"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Prophet (PBUH) sent letters inviting rulers to Islam during:",
+      "options": [
+        "6–7 AH after Hudaibiya",
+        "The Makkan period",
+        "The first year of Hijrah",
+        "Only at the end"
+      ],
+      "answer": 0,
+      "explanation": "After Hudaibiya, letters went to rulers.",
+      "difficulty": "medium",
+      "id": "q69"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Prophet (PBUH) is buried in which mosque?",
+      "options": [
+        "Masjid Nabawi in Madinah",
+        "Masjid Haram",
+        "Masjid Quba",
+        "Masjid Aqsa"
+      ],
+      "answer": 0,
+      "explanation": "He rests in Masjid Nabawi.",
+      "difficulty": "easy",
+      "id": "q70"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who was the wet nurse (foster mother) of the Prophet Muhammad (PBUH)?",
+      "options": [
+        "Halimah Sa'diyah",
+        "Amina bint Wahb",
+        "Umm Ayman",
+        "Thuwaybah"
+      ],
+      "answer": 0,
+      "explanation": "Halimah Sa'diyah of the Banu Sa'd nursed the Prophet (PBUH).",
+      "difficulty": "medium",
+      "id": "q71"
+    },
+    {
+      "type": "mcq",
+      "prompt": "As an infant, the Prophet (PBUH) was sent to be raised among which tribe?",
+      "options": [
+        "Banu Sa'd",
+        "Banu Hashim",
+        "Banu Thaqif",
+        "Banu Nadir"
+      ],
+      "answer": 0,
+      "explanation": "He was raised in the desert with the Banu Sa'd, as was the Makkan custom.",
+      "difficulty": "medium",
+      "id": "q72"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The mother of the Prophet (PBUH), Amina, passed away at which place?",
+      "options": [
+        "Al-Abwa",
+        "Makkah",
+        "Madinah",
+        "Taif"
+      ],
+      "answer": 0,
+      "explanation": "Amina died at Al-Abwa between Makkah and Madinah when he was six.",
+      "difficulty": "medium",
+      "id": "q73"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The pre-Islamic war in which the young Prophet (PBUH) witnessed the alliance of the Quraysh against Qays is called?",
+      "options": [
+        "Harb al-Fijar",
+        "Yawm al-Aqabah",
+        "Ghazwa al-Ahzab",
+        "Yawm Dhu Qar"
+      ],
+      "answer": 0,
+      "explanation": "The Sacrilegious War (Harb al-Fijar) was fought in the youth of the Prophet (PBUH).",
+      "difficulty": "hard",
+      "id": "q74"
+    },
+    {
+      "type": "mcq",
+      "prompt": "On his first trading journey with Khadijah's (RA) caravan, the Prophet (PBUH) travelled to?",
+      "options": [
+        "Syria (Sham)",
+        "Egypt",
+        "Persia",
+        "Yemen"
+      ],
+      "answer": 0,
+      "explanation": "The Prophet (PBUH) led a caravan to Syria (Busrā) before his marriage.",
+      "difficulty": "medium",
+      "id": "q75"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who accompanied the Prophet (PBUH) as Khadijah's (RA) servant on the journey to Syria?",
+      "options": [
+        "Maysarah",
+        "Bilal",
+        "Zaid bin Harithah",
+        "Abu Bakr"
+      ],
+      "answer": 0,
+      "explanation": "Maysarah, Khadijah's servant, travelled with him and reported his honesty.",
+      "difficulty": "hard",
+      "id": "q76"
+    },
+    {
+      "type": "mcq",
+      "prompt": "During the Hijrah, the Prophet (PBUH) and Abu Bakr (RA) hid in the Cave of Thawr for how many days?",
+      "options": [
+        "Three days",
+        "One day",
+        "Seven days",
+        "Ten days"
+      ],
+      "answer": 0,
+      "explanation": "The two stayed hidden in the Cave of Thawr for three days.",
+      "difficulty": "easy",
+      "id": "q77"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who carried food and water to the Prophet (PBUH) and Abu Bakr (RA) in the Cave of Thawr?",
+      "options": [
+        "Asma bint Abi Bakr",
+        "Aisha (RA)",
+        "Fatimah (RA)",
+        "Umm Salama"
+      ],
+      "answer": 0,
+      "explanation": "Asma bint Abi Bakr brought provisions to the cave.",
+      "difficulty": "medium",
+      "id": "q78"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which companion was called 'Dhat al-Nitaqayn' (the one with two belts)?",
+      "options": [
+        "Asma bint Abi Bakr",
+        "Khadijah (RA)",
+        "Hafsa (RA)",
+        "Sumayyah (RA)"
+      ],
+      "answer": 0,
+      "explanation": "Asma earned this title for tearing her belt to tie food for the Hijrah.",
+      "difficulty": "hard",
+      "id": "q79"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What was the name of the sword of the Prophet Muhammad (PBUH)?",
+      "options": [
+        "Dhulfiqar",
+        "Zulfikhar",
+        "Al-Qaswa",
+        "Al-Buraq"
+      ],
+      "answer": 0,
+      "explanation": "Dhulfiqar was the famous sword of the Prophet (PBUH).",
+      "difficulty": "easy",
+      "id": "q80"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The white mule given to the Prophet (PBUH) as a gift was named?",
+      "options": [
+        "Duldul",
+        "Qaswa",
+        "Ya'fur",
+        "Buraq"
+      ],
+      "answer": 0,
+      "explanation": "Duldul was the white mule presented to the Prophet (PBUH).",
+      "difficulty": "hard",
+      "id": "q81"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The donkey on which the Prophet (PBUH) rode in Madinah was named?",
+      "options": [
+        "Ya'fur",
+        "Duldul",
+        "Qaswa",
+        "Adba"
+      ],
+      "answer": 0,
+      "explanation": "Ya'fur was the name of the Prophet's (PBUH) donkey.",
+      "difficulty": "hard",
+      "id": "q82"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The mosque where the Qibla was changed from Jerusalem to the Kaaba is called?",
+      "options": [
+        "Masjid al-Qiblatayn",
+        "Masjid Quba",
+        "Masjid an-Nabawi",
+        "Masjid al-Haram"
+      ],
+      "answer": 0,
+      "explanation": "Masjid al-Qiblatayn in Madinah witnessed the change of direction.",
+      "difficulty": "medium",
+      "id": "q83"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The verse commanding the change of the Qibla is found in which Surah?",
+      "options": [
+        "Al-Baqarah (2:144)",
+        "Al-Maidah",
+        "Al-Isra",
+        "Al-Anfal"
+      ],
+      "answer": 0,
+      "explanation": "Surah Al-Baqarah 2:144 commands turning towards the Sacred Mosque.",
+      "difficulty": "medium",
+      "id": "q84"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Adhan was introduced after the dream of which companion?",
+      "options": [
+        "Abdullah ibn Zayd",
+        "Bilal ibn Rabah",
+        "Umar ibn al-Khattab",
+        "Abdullah ibn Masood"
+      ],
+      "answer": 0,
+      "explanation": "Abdullah ibn Zayd saw the Adhan in a dream, which the Prophet (PBUH) approved.",
+      "difficulty": "hard",
+      "id": "q85"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Prophet Muhammad (PBUH) performed Umrah how many times in his lifetime?",
+      "options": [
+        "Four",
+        "Two",
+        "Three",
+        "Six"
+      ],
+      "answer": 0,
+      "explanation": "The Prophet (PBUH) performed four Umrahs.",
+      "difficulty": "medium",
+      "id": "q86"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Prophet Muhammad (PBUH) performed the Hajj how many times?",
+      "options": [
+        "Once (the Farewell Hajj)",
+        "Twice",
+        "Three times",
+        "Five times"
+      ],
+      "answer": 0,
+      "explanation": "He performed only the Farewell Hajj in 10 AH.",
+      "difficulty": "easy",
+      "id": "q87"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Prophet (PBUH) personally took part in how many Ghazwah (battles)?",
+      "options": [
+        "About 27",
+        "Nine",
+        "Fifty",
+        "Twelve"
+      ],
+      "answer": 0,
+      "explanation": "The Prophet (PBUH) participated in around 27 Ghazwah.",
+      "difficulty": "hard",
+      "id": "q88"
+    },
+    {
+      "type": "mcq",
+      "prompt": "In which battle did the Prophet (PBUH) suffer an injury to his face and tooth?",
+      "options": [
+        "Uhud",
+        "Badr",
+        "Khandaq",
+        "Tabuk"
+      ],
+      "answer": 0,
+      "explanation": "At Uhud the Prophet (PBUH) was wounded and a tooth was broken.",
+      "difficulty": "medium",
+      "id": "q89"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which companion shielded the Prophet (PBUH) with his own body at Uhud and was wounded many times?",
+      "options": [
+        "Talha ibn Ubaydillah",
+        "Ali ibn Abi Talib",
+        "Abu Bakr (RA)",
+        "Umar (RA)"
+      ],
+      "answer": 0,
+      "explanation": "Talha ibn Ubaydillah protected the Prophet (PBUH) at Uhud with his body.",
+      "difficulty": "hard",
+      "id": "q90"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who acted as the scribe writing the Treaty of Hudaybiyyah?",
+      "options": [
+        "Ali ibn Abi Talib",
+        "Zaid bin Thabit",
+        "Uthman ibn Affan",
+        "Muawiyah"
+      ],
+      "answer": 0,
+      "explanation": "Ali (RA) wrote the text of the Treaty of Hudaybiyyah.",
+      "difficulty": "medium",
+      "id": "q91"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who was sent by the Prophet (PBUH) as his envoy to the Quraysh before the Treaty of Hudaybiyyah?",
+      "options": [
+        "Uthman ibn Affan",
+        "Ali ibn Abi Talib",
+        "Umar ibn al-Khattab",
+        "Abu Bakr"
+      ],
+      "answer": 0,
+      "explanation": "Uthman (RA) was sent to Makkah to negotiate with the Quraysh.",
+      "difficulty": "medium",
+      "id": "q92"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The 'Bay'at al-Ridwan' (the pledge of satisfaction) was taken at which place?",
+      "options": [
+        "Hudaybiyyah under a tree",
+        "Aqabah",
+        "The Kaaba",
+        "Uhud"
+      ],
+      "answer": 0,
+      "explanation": "The pledge of Ridwan was taken at Hudaybiyyah under a tree in 6 AH.",
+      "difficulty": "medium",
+      "id": "q93"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Prophet (PBUH) sent a letter inviting which Persian emperor to Islam?",
+      "options": [
+        "Khusrau Parviz",
+        "Shapur II",
+        "Yazdegerd III",
+        "Bahram Gur"
+      ],
+      "answer": 0,
+      "explanation": "The letter was sent to Khusrau (Khosrow) II of the Sasanian Empire.",
+      "difficulty": "hard",
+      "id": "q94"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Prophet (PBUH) also sent a letter of invitation to which Byzantine emperor?",
+      "options": [
+        "Heraclius",
+        "Constantine IV",
+        "Justinian",
+        "Theodosius"
+      ],
+      "answer": 0,
+      "explanation": "Heraclius, the Byzantine emperor, received the Prophet's (PBUH) letter.",
+      "difficulty": "hard",
+      "id": "q95"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who was sent to Madinah before the Hijrah to teach the Quran and Islam?",
+      "options": [
+        "Mus'ab ibn Umayr",
+        "Bilal ibn Rabah",
+        "Ammar ibn Yasir",
+        "Abdullah ibn Masood"
+      ],
+      "answer": 0,
+      "explanation": "Mus'ab ibn Umayr was the first missionary sent to Yathrib.",
+      "difficulty": "medium",
+      "id": "q96"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The two Pledges of Aqabah were made with the delegation from which city?",
+      "options": [
+        "Madinah (Yathrib)",
+        "Makkah",
+        "Taif",
+        "Khaibar"
+      ],
+      "answer": 0,
+      "explanation": "The Ansar of Madinah made the two Pledges of Aqabah with the Prophet (PBUH).",
+      "difficulty": "medium",
+      "id": "q97"
+    },
+    {
+      "type": "mcq",
+      "prompt": "How many people took part in the First Pledge of Aqabah?",
+      "options": [
+        "Twelve",
+        "Ten",
+        "Seventy-three",
+        "Forty"
+      ],
+      "answer": 0,
+      "explanation": "Twelve men took the First Pledge of Aqabah.",
+      "difficulty": "hard",
+      "id": "q98"
+    },
+    {
+      "type": "mcq",
+      "prompt": "After the conquest of Makkah, the Prophet (PBUH) returned the keys of the Kaaba to whom?",
+      "options": [
+        "Uthman ibn Talha",
+        "Abbas ibn Abdul-Muttalib",
+        "Ali ibn Abi Talib",
+        "Abu Sufyan"
+      ],
+      "answer": 0,
+      "explanation": "The Prophet (PBUH) returned the keys to Uthman ibn Talha of the Banu Shaiba.",
+      "difficulty": "hard",
+      "id": "q99"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The year in which delegations of Arabs came to Madinah to accept Islam is called?",
+      "options": [
+        "The Year of Delegations (9 AH)",
+        "The Year of Sorrow",
+        "The Year of the Elephant",
+        "The Year of Conquest"
+      ],
+      "answer": 0,
+      "explanation": "9 AH is known as the Year of Delegations.",
+      "difficulty": "medium",
+      "id": "q100"
+    }
+  ]
+}

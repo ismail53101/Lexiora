@@ -1,0 +1,1455 @@
+{
+  "bank": {
+    "name": "One-Word Substitution",
+    "subject": "English",
+    "topic": "One-Word Substitution",
+    "description": "Choose the single word that best replaces the given phrase.",
+    "tags": "css,pms,fpsc,ppsc,nts,english,one-word-substitution,vocabulary",
+    "version": "1.0",
+    "id": "english_one_word_substitution"
+  },
+  "questions": [
+    {
+      "type": "mcq",
+      "prompt": "One who speaks many languages:",
+      "options": [
+        "Linguist",
+        "Polyglot",
+        "Orator",
+        "Interpreter"
+      ],
+      "answer": 1,
+      "explanation": "A polyglot is a person who speaks many languages.",
+      "difficulty": "medium",
+      "id": "q01"
+    },
+    {
+      "type": "mcq",
+      "prompt": "A person who writes books:",
+      "options": [
+        "Editor",
+        "Publisher",
+        "Author",
+        "Critic"
+      ],
+      "answer": 2,
+      "explanation": "An author is a person who writes books.",
+      "difficulty": "easy",
+      "id": "q02"
+    },
+    {
+      "type": "mcq",
+      "prompt": "A person who cannot read or write:",
+      "options": [
+        "Illiterate",
+        "Ignorant",
+        "Immature",
+        "Uneducated only in schools"
+      ],
+      "answer": 0,
+      "explanation": "Illiterate means unable to read or write.",
+      "difficulty": "easy",
+      "id": "q03"
+    },
+    {
+      "type": "mcq",
+      "prompt": "A place where bees are kept:",
+      "options": [
+        "Apiary",
+        "Aviary",
+        "Aquarium",
+        "Stable"
+      ],
+      "answer": 0,
+      "explanation": "An apiary is a place where bees are kept; an aviary is for birds.",
+      "difficulty": "hard",
+      "id": "q04"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The study of stars and planets:",
+      "options": [
+        "Geology",
+        "Astronomy",
+        "Meteorology",
+        "Biology"
+      ],
+      "answer": 1,
+      "explanation": "Astronomy is the study of stars, planets and the universe.",
+      "difficulty": "easy",
+      "id": "q05"
+    },
+    {
+      "type": "mcq",
+      "prompt": "A person who is present everywhere:",
+      "options": [
+        "Omniscient",
+        "Omnipotent",
+        "Omnipresent",
+        "Universal"
+      ],
+      "answer": 2,
+      "explanation": "Omnipresent means present everywhere at the same time.",
+      "difficulty": "hard",
+      "id": "q06"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Something that cannot be avoided:",
+      "options": [
+        "Inevitable",
+        "Invincible",
+        "Inexorable",
+        "Intangible"
+      ],
+      "answer": 0,
+      "explanation": "Inevitable means certain to happen and unavoidable.",
+      "difficulty": "medium",
+      "id": "q07"
+    },
+    {
+      "type": "mcq",
+      "prompt": "A person who loves his country and works for it:",
+      "options": [
+        "Nationalist",
+        "Patriot",
+        "Citizen",
+        "Activist"
+      ],
+      "answer": 1,
+      "explanation": "A patriot is a person who loves and supports his country.",
+      "difficulty": "easy",
+      "id": "q08"
+    },
+    {
+      "type": "mcq",
+      "prompt": "A medicine that kills germs:",
+      "options": [
+        "Antiseptic",
+        "Antidote",
+        "Antibiotic",
+        "Antihistamine"
+      ],
+      "answer": 2,
+      "explanation": "An antibiotic is a medicine that kills or inhibits bacteria and germs.",
+      "difficulty": "medium",
+      "id": "q09"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Government by the people:",
+      "options": [
+        "Autocracy",
+        "Democracy",
+        "Oligarchy",
+        "Monarchy"
+      ],
+      "answer": 1,
+      "explanation": "Democracy is government by the people, through elected representatives.",
+      "difficulty": "easy",
+      "id": "q10"
+    },
+    {
+      "type": "mcq",
+      "prompt": "A person who looks on the bright side of things:",
+      "options": [
+        "Optimist",
+        "Pessimist",
+        "Realist",
+        "Idealist"
+      ],
+      "answer": 0,
+      "explanation": "An optimist always expects good outcomes and sees the bright side.",
+      "difficulty": "medium",
+      "id": "q11"
+    },
+    {
+      "type": "mcq",
+      "prompt": "A statement that can be understood in two ways:",
+      "options": [
+        "Ambiguous",
+        "Equivalent",
+        "Eloquent",
+        "Impartial"
+      ],
+      "answer": 0,
+      "explanation": "Ambiguous means open to more than one interpretation.",
+      "difficulty": "hard",
+      "id": "q12"
+    },
+    {
+      "type": "mcq",
+      "prompt": "A person who does not believe in God:",
+      "options": [
+        "Atheist",
+        "Agnostic",
+        "Apostate",
+        "Heretic"
+      ],
+      "answer": 0,
+      "explanation": "An atheist is a person who does not believe in the existence of God.",
+      "difficulty": "medium",
+      "id": "q13"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The science of the origin and development of the universe:",
+      "options": [
+        "Etymology",
+        "Cosmology",
+        "Chronology",
+        "Geology"
+      ],
+      "answer": 1,
+      "explanation": "Cosmology is the study of the origin and development of the universe.",
+      "difficulty": "hard",
+      "id": "q14"
+    },
+    {
+      "type": "mcq",
+      "prompt": "That which cannot be conquered:",
+      "options": [
+        "Invincible",
+        "Irresistible",
+        "Impenetrable",
+        "Infallible"
+      ],
+      "answer": 0,
+      "explanation": "Invincible means too powerful to be defeated or conquered.",
+      "difficulty": "medium",
+      "id": "q15"
+    },
+    {
+      "type": "mcq",
+      "prompt": "One word for 'a person who can speak several languages':",
+      "options": [
+        "polyglot",
+        "monolingual",
+        "linguist",
+        "orator"
+      ],
+      "answer": 0,
+      "explanation": "A polyglot speaks many languages; a linguist studies languages.",
+      "difficulty": "easy",
+      "id": "q16"
+    },
+    {
+      "type": "mcq",
+      "prompt": "One word for 'a person who loves mankind and works for its welfare':",
+      "options": [
+        "philanthropist",
+        "misanthrope",
+        "altruist",
+        "humanist"
+      ],
+      "answer": 0,
+      "explanation": "A philanthropist promotes the welfare of others, often through donations.",
+      "difficulty": "medium",
+      "id": "q17"
+    },
+    {
+      "type": "mcq",
+      "prompt": "One word for 'a government by the wealthy':",
+      "options": [
+        "plutocracy",
+        "democracy",
+        "aristocracy",
+        "theocracy"
+      ],
+      "answer": 0,
+      "explanation": "Plutocracy is rule by the wealthy; aristocracy is rule by the nobility.",
+      "difficulty": "medium",
+      "id": "q18"
+    },
+    {
+      "type": "mcq",
+      "prompt": "One word for 'something that cannot be corrected':",
+      "options": [
+        "incorrigible",
+        "irreparable",
+        "inevitable",
+        "intolerable"
+      ],
+      "answer": 0,
+      "explanation": "Incorrigible means beyond correction or reform.",
+      "difficulty": "hard",
+      "id": "q19"
+    },
+    {
+      "type": "mcq",
+      "prompt": "One word for 'a place where wine is made':",
+      "options": [
+        "brewery",
+        "distillery",
+        "winery",
+        "cannery"
+      ],
+      "answer": 2,
+      "explanation": "A winery is where wine is produced; a brewery makes beer.",
+      "difficulty": "medium",
+      "id": "q20"
+    },
+    {
+      "type": "mcq",
+      "prompt": "One word for 'the study of human population':",
+      "options": [
+        "demography",
+        "geography",
+        "sociology",
+        "anthropology"
+      ],
+      "answer": 0,
+      "explanation": "Demography is the statistical study of human populations.",
+      "difficulty": "medium",
+      "id": "q21"
+    },
+    {
+      "type": "mcq",
+      "prompt": "One word for 'a person who is indifferent to pleasure or pain':",
+      "options": [
+        "stoic",
+        "epicurean",
+        "cynic",
+        "ascetic"
+      ],
+      "answer": 0,
+      "explanation": "A stoic endures hardship without showing emotion.",
+      "difficulty": "hard",
+      "id": "q22"
+    },
+    {
+      "type": "mcq",
+      "prompt": "One word for 'the murder of a brother':",
+      "options": [
+        "fratricide",
+        "patricide",
+        "matricide",
+        "regicide"
+      ],
+      "answer": 0,
+      "explanation": "Fratricide is the killing of a brother; regicide the killing of a king.",
+      "difficulty": "easy",
+      "id": "q23"
+    },
+    {
+      "type": "mcq",
+      "prompt": "One word for 'a person who never makes mistakes':",
+      "options": [
+        "infallible",
+        "invincible",
+        "incorrigible",
+        "inalienable"
+      ],
+      "answer": 0,
+      "explanation": "Infallible means incapable of making mistakes.",
+      "difficulty": "medium",
+      "id": "q24"
+    },
+    {
+      "type": "mcq",
+      "prompt": "One word for 'a book written about one's own life':",
+      "options": [
+        "autobiography",
+        "biography",
+        "memoir",
+        "chronicle"
+      ],
+      "answer": 0,
+      "explanation": "An autobiography is an account of a person's life written by that person.",
+      "difficulty": "easy",
+      "id": "q25"
+    },
+    {
+      "type": "mcq",
+      "prompt": "One word for 'fear of confined spaces':",
+      "options": [
+        "claustrophobia",
+        "acrophobia",
+        "hydrophobia",
+        "xenophobia"
+      ],
+      "answer": 0,
+      "explanation": "Claustrophobia is the fear of enclosed spaces; acrophobia of heights.",
+      "difficulty": "easy",
+      "id": "q26"
+    },
+    {
+      "type": "mcq",
+      "prompt": "One word for 'a person who studies the origins and customs of ancient peoples':",
+      "options": [
+        "archaeologist",
+        "anthropologist",
+        "geologist",
+        "historian"
+      ],
+      "answer": 0,
+      "explanation": "An archaeologist studies ancient human societies through artefacts and remains.",
+      "difficulty": "medium",
+      "id": "q27"
+    },
+    {
+      "type": "mcq",
+      "prompt": "One word for 'the study of the origins and history of words':",
+      "options": [
+        "etymology",
+        "phonology",
+        "syntax",
+        "semantics"
+      ],
+      "answer": 0,
+      "explanation": "Etymology studies the origin and development of words.",
+      "difficulty": "medium",
+      "id": "q28"
+    },
+    {
+      "type": "mcq",
+      "prompt": "One word for 'a person who believes in the existence of God':",
+      "options": [
+        "theist",
+        "atheist",
+        "agnostic",
+        "skeptic"
+      ],
+      "answer": 0,
+      "explanation": "A theist believes in God; an atheist does not; an agnostic is unsure.",
+      "difficulty": "easy",
+      "id": "q29"
+    },
+    {
+      "type": "mcq",
+      "prompt": "One word for 'a place where weapons and ammunition are stored':",
+      "options": [
+        "arsenal",
+        "armory",
+        "granary",
+        "depot"
+      ],
+      "answer": 0,
+      "explanation": "An arsenal is a storehouse for weapons and ammunition.",
+      "difficulty": "medium",
+      "id": "q30"
+    },
+    {
+      "type": "mcq",
+      "prompt": "One word for 'a person appointed to settle disputes':",
+      "options": [
+        "arbitrator",
+        "advocate",
+        "witness",
+        "jury"
+      ],
+      "answer": 0,
+      "explanation": "An arbitrator settles disputes between parties.",
+      "difficulty": "medium",
+      "id": "q31"
+    },
+    {
+      "type": "mcq",
+      "prompt": "One word for 'a speech in a play delivered by one character alone':",
+      "options": [
+        "soliloquy",
+        "dialogue",
+        "monologue",
+        "prologue"
+      ],
+      "answer": 0,
+      "explanation": "A soliloquy is a speech spoken by a character alone on stage.",
+      "difficulty": "hard",
+      "id": "q32"
+    },
+    {
+      "type": "mcq",
+      "prompt": "One word for 'a government by officials':",
+      "options": [
+        "bureaucracy",
+        "democracy",
+        "aristocracy",
+        "monarchy"
+      ],
+      "answer": 0,
+      "explanation": "Bureaucracy is rule by administrative officials.",
+      "difficulty": "medium",
+      "id": "q33"
+    },
+    {
+      "type": "mcq",
+      "prompt": "One word for 'a person who loves books':",
+      "options": [
+        "bibliophile",
+        "philosopher",
+        "librarian",
+        "calligrapher"
+      ],
+      "answer": 0,
+      "explanation": "A bibliophile loves or collects books.",
+      "difficulty": "easy",
+      "id": "q34"
+    },
+    {
+      "type": "mcq",
+      "prompt": "One word for 'the study of birds':",
+      "options": [
+        "ornithology",
+        "entomology",
+        "herpetology",
+        "ichthyology"
+      ],
+      "answer": 0,
+      "explanation": "Ornithology is the scientific study of birds.",
+      "difficulty": "medium",
+      "id": "q35"
+    },
+    {
+      "type": "mcq",
+      "prompt": "One word for 'a person who is very fond of pleasure and luxury':",
+      "options": [
+        "epicurean",
+        "ascetic",
+        "hermit",
+        "puritan"
+      ],
+      "answer": 0,
+      "explanation": "An epicurean is devoted to the pursuit of pleasure and luxury.",
+      "difficulty": "hard",
+      "id": "q36"
+    },
+    {
+      "type": "mcq",
+      "prompt": "One word for 'a person who withdraws from the world to live in solitude':",
+      "options": [
+        "hermit",
+        "nomad",
+        "herald",
+        "host"
+      ],
+      "answer": 0,
+      "explanation": "A hermit lives alone, away from society, often for religious reasons.",
+      "difficulty": "medium",
+      "id": "q37"
+    },
+    {
+      "type": "mcq",
+      "prompt": "One word for 'a collection of maps':",
+      "options": [
+        "atlas",
+        "gazetteer",
+        "almanac",
+        "diagram"
+      ],
+      "answer": 0,
+      "explanation": "An atlas is a book of maps.",
+      "difficulty": "easy",
+      "id": "q38"
+    },
+    {
+      "type": "mcq",
+      "prompt": "One word for 'the art of public speaking':",
+      "options": [
+        "oratory",
+        "rhetoric",
+        "elocution",
+        "diction"
+      ],
+      "answer": 0,
+      "explanation": "Oratory is the art of skilled, persuasive public speaking.",
+      "difficulty": "medium",
+      "id": "q39"
+    },
+    {
+      "type": "mcq",
+      "prompt": "One word for 'a disease that spreads rapidly among many people':",
+      "options": [
+        "epidemic",
+        "endemic",
+        "pandemic",
+        "contagion"
+      ],
+      "answer": 0,
+      "explanation": "An epidemic spreads rapidly within a community; a pandemic is worldwide.",
+      "difficulty": "easy",
+      "id": "q40"
+    },
+    {
+      "type": "mcq",
+      "prompt": "One word for 'a person who writes for newspapers or magazines':",
+      "options": [
+        "journalist",
+        "author",
+        "editor",
+        "novelist"
+      ],
+      "answer": 0,
+      "explanation": "A journalist writes news reports for publications.",
+      "difficulty": "easy",
+      "id": "q41"
+    },
+    {
+      "type": "mcq",
+      "prompt": "One word for 'to speak ill of someone behind their back':",
+      "options": [
+        "defame",
+        "compliment",
+        "praise",
+        "applaud"
+      ],
+      "answer": 0,
+      "explanation": "Defame means to damage someone's reputation with false statements.",
+      "difficulty": "medium",
+      "id": "q42"
+    },
+    {
+      "type": "mcq",
+      "prompt": "One word for 'a government ruled by women':",
+      "options": [
+        "gynocracy",
+        "matriarchy",
+        "democracy",
+        "oligarchy"
+      ],
+      "answer": 0,
+      "explanation": "Gynocracy (gynecocracy) is government by women.",
+      "difficulty": "hard",
+      "id": "q43"
+    },
+    {
+      "type": "mcq",
+      "prompt": "One word for 'a person who is easily deceived':",
+      "options": [
+        "gullible",
+        "credulous",
+        "naive",
+        "skeptical"
+      ],
+      "answer": 0,
+      "explanation": "Gullible means easily tricked or deceived.",
+      "difficulty": "easy",
+      "id": "q44"
+    },
+    {
+      "type": "mcq",
+      "prompt": "One word for 'a person who withdraws money from a bank by cheque':",
+      "options": [
+        "payee",
+        "drawer",
+        "endorser",
+        "creditor"
+      ],
+      "answer": 0,
+      "explanation": "The payee is the person to whom a cheque is made payable.",
+      "difficulty": "hard",
+      "id": "q45"
+    },
+    {
+      "type": "mcq",
+      "prompt": "One word for 'a person who studies the weather':",
+      "options": [
+        "meteorologist",
+        "geologist",
+        "astronomer",
+        "cartographer"
+      ],
+      "answer": 0,
+      "explanation": "A meteorologist studies weather and climate.",
+      "difficulty": "easy",
+      "id": "q46"
+    },
+    {
+      "type": "mcq",
+      "prompt": "One word for 'a doctor who treats children':",
+      "options": [
+        "paediatrician",
+        "dermatologist",
+        "cardiologist",
+        "neurologist"
+      ],
+      "answer": 0,
+      "explanation": "A paediatrician specialises in the care of children.",
+      "difficulty": "easy",
+      "id": "q47"
+    },
+    {
+      "type": "mcq",
+      "prompt": "One word for 'a statement that is obviously true and says nothing new':",
+      "options": [
+        "platitude",
+        "paradox",
+        "epigram",
+        "hypothesis"
+      ],
+      "answer": 0,
+      "explanation": "A platitude is a trite, obvious statement lacking originality.",
+      "difficulty": "hard",
+      "id": "q48"
+    },
+    {
+      "type": "mcq",
+      "prompt": "One word for 'a person who talks too much':",
+      "options": [
+        "loquacious",
+        "taciturn",
+        "reticent",
+        "silent"
+      ],
+      "answer": 0,
+      "explanation": "Loquacious means very talkative.",
+      "difficulty": "hard",
+      "id": "q49"
+    },
+    {
+      "type": "mcq",
+      "prompt": "One word for 'a place where coins are manufactured':",
+      "options": [
+        "mint",
+        "foundry",
+        "workshop",
+        "factory"
+      ],
+      "answer": 0,
+      "explanation": "A mint is where coins are produced.",
+      "difficulty": "easy",
+      "id": "q50"
+    },
+    {
+      "type": "mcq",
+      "prompt": "One word for 'the study of the universe and celestial bodies':",
+      "options": [
+        "astronomy",
+        "astrology",
+        "cosmology",
+        "geology"
+      ],
+      "answer": 0,
+      "explanation": "Astronomy is the scientific study of celestial objects.",
+      "difficulty": "easy",
+      "id": "q51"
+    },
+    {
+      "type": "mcq",
+      "prompt": "One word for 'a person who settles in another country':",
+      "options": [
+        "immigrant",
+        "emigrant",
+        "expatriate",
+        "tourist"
+      ],
+      "answer": 0,
+      "explanation": "An immigrant is someone who comes to live permanently in another country.",
+      "difficulty": "medium",
+      "id": "q52"
+    },
+    {
+      "type": "mcq",
+      "prompt": "One word for 'a formal written request to an authority':",
+      "options": [
+        "petition",
+        "application",
+        "complaint",
+        "proposal"
+      ],
+      "answer": 0,
+      "explanation": "A petition is a formal written request.",
+      "difficulty": "easy",
+      "id": "q53"
+    },
+    {
+      "type": "mcq",
+      "prompt": "One word for 'the killing of a large number of people':",
+      "options": [
+        "massacre",
+        "murder",
+        "homicide",
+        "slaughter"
+      ],
+      "answer": 0,
+      "explanation": "A massacre is the brutal killing of many people.",
+      "difficulty": "medium",
+      "id": "q54"
+    },
+    {
+      "type": "mcq",
+      "prompt": "One word for 'a person who believes that all events are predetermined':",
+      "options": [
+        "fatalist",
+        "pessimist",
+        "optimist",
+        "realist"
+      ],
+      "answer": 0,
+      "explanation": "A fatalist believes fate decides everything.",
+      "difficulty": "hard",
+      "id": "q55"
+    },
+    {
+      "type": "mcq",
+      "prompt": "One word for 'a roundabout way of saying something':",
+      "options": [
+        "circumlocution",
+        "repetition",
+        "redundancy",
+        "elaboration"
+      ],
+      "answer": 0,
+      "explanation": "Circumlocution is indirect or roundabout speech.",
+      "difficulty": "hard",
+      "id": "q56"
+    },
+    {
+      "type": "mcq",
+      "prompt": "One word for 'a person who is appointed to audit accounts':",
+      "options": [
+        "auditor",
+        "accountant",
+        "treasurer",
+        "cashier"
+      ],
+      "answer": 0,
+      "explanation": "An auditor examines and verifies financial accounts.",
+      "difficulty": "medium",
+      "id": "q57"
+    },
+    {
+      "type": "mcq",
+      "prompt": "One word for 'a disease that spreads by contact':",
+      "options": [
+        "contagious",
+        "infectious",
+        "hereditary",
+        "chronic"
+      ],
+      "answer": 0,
+      "explanation": "A contagious disease spreads by direct contact.",
+      "difficulty": "medium",
+      "id": "q58"
+    },
+    {
+      "type": "mcq",
+      "prompt": "One word for 'a person who lives in a foreign country':",
+      "options": [
+        "expatriate",
+        "immigrant",
+        "emigrant",
+        "refugee"
+      ],
+      "answer": 0,
+      "explanation": "An expatriate lives outside their native country.",
+      "difficulty": "medium",
+      "id": "q59"
+    },
+    {
+      "type": "mcq",
+      "prompt": "One word for 'a person who thinks only of himself':",
+      "options": [
+        "egoist",
+        "altruist",
+        "philanthropist",
+        "humanitarian"
+      ],
+      "answer": 0,
+      "explanation": "An egoist is concerned chiefly with their own interests.",
+      "difficulty": "easy",
+      "id": "q60"
+    },
+    {
+      "type": "mcq",
+      "prompt": "One word for 'a place where books are kept':",
+      "options": [
+        "library",
+        "bookshop",
+        "archive",
+        "gallery"
+      ],
+      "answer": 0,
+      "explanation": "A library is a place where books are collected and read.",
+      "difficulty": "easy",
+      "id": "q61"
+    },
+    {
+      "type": "mcq",
+      "prompt": "One word for 'the study of ancient life through fossils':",
+      "options": [
+        "palaeontology",
+        "archaeology",
+        "anthropology",
+        "geology"
+      ],
+      "answer": 0,
+      "explanation": "Palaeontology studies fossil remains of ancient life.",
+      "difficulty": "hard",
+      "id": "q62"
+    },
+    {
+      "type": "mcq",
+      "prompt": "One word for 'a person who makes or repairs shoes':",
+      "options": [
+        "cobbler",
+        "tailor",
+        "carpenter",
+        "goldsmith"
+      ],
+      "answer": 0,
+      "explanation": "A cobbler mends or makes shoes.",
+      "difficulty": "easy",
+      "id": "q63"
+    },
+    {
+      "type": "mcq",
+      "prompt": "One word for 'a formal speech praising a dead person':",
+      "options": [
+        "eulogy",
+        "obituary",
+        "epitaph",
+        "tribute"
+      ],
+      "answer": 0,
+      "explanation": "A eulogy is a speech in praise of someone deceased.",
+      "difficulty": "hard",
+      "id": "q64"
+    },
+    {
+      "type": "mcq",
+      "prompt": "One word for 'a person who writes his own biography':",
+      "options": [
+        "autobiographer",
+        "biographer",
+        "memoirist",
+        "chronicler"
+      ],
+      "answer": 0,
+      "explanation": "An autobiographer writes the story of their own life.",
+      "difficulty": "easy",
+      "id": "q65"
+    },
+    {
+      "type": "mcq",
+      "prompt": "One word for 'a temporary suspension of hostilities':",
+      "options": [
+        "truce",
+        "treaty",
+        "alliance",
+        "armistice"
+      ],
+      "answer": 0,
+      "explanation": "A truce is an agreed temporary stop to fighting.",
+      "difficulty": "medium",
+      "id": "q66"
+    },
+    {
+      "type": "mcq",
+      "prompt": "One word for 'a person who studies maps and mapmaking':",
+      "options": [
+        "cartographer",
+        "geographer",
+        "topographer",
+        "surveyor"
+      ],
+      "answer": 0,
+      "explanation": "A cartographer draws and studies maps.",
+      "difficulty": "medium",
+      "id": "q67"
+    },
+    {
+      "type": "mcq",
+      "prompt": "One word for 'the sound made by a lion':",
+      "options": [
+        "roar",
+        "bark",
+        "howl",
+        "bellow"
+      ],
+      "answer": 0,
+      "explanation": "A lion roars.",
+      "difficulty": "easy",
+      "id": "q68"
+    },
+    {
+      "type": "mcq",
+      "prompt": "One word for 'a place where goods are stored':",
+      "options": [
+        "warehouse",
+        "market",
+        "showroom",
+        "bazaar"
+      ],
+      "answer": 0,
+      "explanation": "A warehouse is a large building for storing goods.",
+      "difficulty": "easy",
+      "id": "q69"
+    },
+    {
+      "type": "mcq",
+      "prompt": "One word for 'a person who is always cheerful':",
+      "options": [
+        "optimist",
+        "pessimist",
+        "fatalist",
+        "idealist"
+      ],
+      "answer": 0,
+      "explanation": "An optimist always looks on the bright side.",
+      "difficulty": "easy",
+      "id": "q70"
+    },
+    {
+      "type": "mcq",
+      "prompt": "One word for 'a person who makes maps of the sky or studies stars':",
+      "options": [
+        "astronomer",
+        "astrologer",
+        "astronaut",
+        "cosmonaut"
+      ],
+      "answer": 0,
+      "explanation": "An astronomer scientifically studies stars and celestial bodies.",
+      "difficulty": "easy",
+      "id": "q71"
+    },
+    {
+      "type": "mcq",
+      "prompt": "One word for 'the study of human diseases and their treatment':",
+      "options": [
+        "pathology",
+        "physiology",
+        "pharmacology",
+        "anatomy"
+      ],
+      "answer": 0,
+      "explanation": "Pathology is the study of disease.",
+      "difficulty": "hard",
+      "id": "q72"
+    },
+    {
+      "type": "mcq",
+      "prompt": "One word for 'a person who writes letters or official documents for others':",
+      "options": [
+        "scribe",
+        "author",
+        "editor",
+        "typist"
+      ],
+      "answer": 0,
+      "explanation": "A scribe copies or writes documents professionally.",
+      "difficulty": "medium",
+      "id": "q73"
+    },
+    {
+      "type": "mcq",
+      "prompt": "One word for 'a place where airplanes are kept and repaired':",
+      "options": [
+        "hangar",
+        "airport",
+        "runway",
+        "terminal"
+      ],
+      "answer": 0,
+      "explanation": "A hangar is a large building housing aircraft.",
+      "difficulty": "medium",
+      "id": "q74"
+    },
+    {
+      "type": "mcq",
+      "prompt": "One word for 'a person who is easily frightened':",
+      "options": [
+        "timid",
+        "brave",
+        "bold",
+        "courageous"
+      ],
+      "answer": 0,
+      "explanation": "Timid means easily scared or shy.",
+      "difficulty": "easy",
+      "id": "q75"
+    },
+    {
+      "type": "mcq",
+      "prompt": "One word for 'a story that is not true':",
+      "options": [
+        "fiction",
+        "fact",
+        "history",
+        "record"
+      ],
+      "answer": 0,
+      "explanation": "Fiction is invented or untrue narrative.",
+      "difficulty": "easy",
+      "id": "q76"
+    },
+    {
+      "type": "mcq",
+      "prompt": "One word for 'the study of the mind and behaviour':",
+      "options": [
+        "psychology",
+        "sociology",
+        "philosophy",
+        "biology"
+      ],
+      "answer": 0,
+      "explanation": "Psychology is the science of mind and behaviour.",
+      "difficulty": "easy",
+      "id": "q77"
+    },
+    {
+      "type": "mcq",
+      "prompt": "One word for 'a person who is trained to travel in space':",
+      "options": [
+        "astronaut",
+        "pilot",
+        "navigator",
+        "engineer"
+      ],
+      "answer": 0,
+      "explanation": "An astronaut is a space traveller.",
+      "difficulty": "easy",
+      "id": "q78"
+    },
+    {
+      "type": "mcq",
+      "prompt": "One word for 'a formal farewell ceremony for the dead':",
+      "options": [
+        "funeral",
+        "memorial",
+        "vigil",
+        "procession"
+      ],
+      "answer": 0,
+      "explanation": "A funeral is the ceremony for burying or cremating the dead.",
+      "difficulty": "easy",
+      "id": "q79"
+    },
+    {
+      "type": "mcq",
+      "prompt": "One word for 'a place where animals are kept for study or display':",
+      "options": [
+        "zoo",
+        "farm",
+        "stable",
+        "ranch"
+      ],
+      "answer": 0,
+      "explanation": "A zoo (zoological garden) keeps animals for display.",
+      "difficulty": "easy",
+      "id": "q80"
+    },
+    {
+      "type": "mcq",
+      "prompt": "One word for 'the art of beautiful handwriting':",
+      "options": [
+        "calligraphy",
+        "typography",
+        "printing",
+        "engraving"
+      ],
+      "answer": 0,
+      "explanation": "Calligraphy is the art of decorative handwriting.",
+      "difficulty": "medium",
+      "id": "q81"
+    },
+    {
+      "type": "mcq",
+      "prompt": "One word for 'a person who foretells the future':",
+      "options": [
+        "prophet",
+        "historian",
+        "philosopher",
+        "chronicler"
+      ],
+      "answer": 0,
+      "explanation": "A prophet foretells future events by divine inspiration.",
+      "difficulty": "medium",
+      "id": "q82"
+    },
+    {
+      "type": "mcq",
+      "prompt": "One word for 'a group of ships sailing together':",
+      "options": [
+        "fleet",
+        "flock",
+        "herd",
+        "convoy"
+      ],
+      "answer": 0,
+      "explanation": "A fleet is a group of ships operating together.",
+      "difficulty": "medium",
+      "id": "q83"
+    },
+    {
+      "type": "mcq",
+      "prompt": "One word for 'a remedy for all diseases':",
+      "options": [
+        "panacea",
+        "placebo",
+        "antidote",
+        "vaccine"
+      ],
+      "answer": 0,
+      "explanation": "A panacea is a universal remedy for all ills.",
+      "difficulty": "medium",
+      "id": "q84"
+    },
+    {
+      "type": "mcq",
+      "prompt": "One word for 'a person who is hard to please':",
+      "options": [
+        "fastidious",
+        "frugal",
+        "affable",
+        "candid"
+      ],
+      "answer": 0,
+      "explanation": "A fastidious person is very particular and hard to please.",
+      "difficulty": "medium",
+      "id": "q85"
+    },
+    {
+      "type": "mcq",
+      "prompt": "One word for 'an official stop of fighting':",
+      "options": [
+        "truce",
+        "treaty",
+        "pact",
+        "alliance"
+      ],
+      "answer": 0,
+      "explanation": "A truce is a temporary agreement to stop fighting.",
+      "difficulty": "easy",
+      "id": "q86"
+    },
+    {
+      "type": "mcq",
+      "prompt": "One word for 'a person who eats too much':",
+      "options": [
+        "glutton",
+        "gourmet",
+        "epicure",
+        "carnivore"
+      ],
+      "answer": 0,
+      "explanation": "A glutton is someone who eats excessively.",
+      "difficulty": "easy",
+      "id": "q87"
+    },
+    {
+      "type": "mcq",
+      "prompt": "One word for 'a list of books and writings':",
+      "options": [
+        "bibliography",
+        "biography",
+        "catalogue",
+        "directory"
+      ],
+      "answer": 0,
+      "explanation": "A bibliography lists books and sources used in a work.",
+      "difficulty": "medium",
+      "id": "q88"
+    },
+    {
+      "type": "mcq",
+      "prompt": "One word for 'a speech delivered without preparation':",
+      "options": [
+        "impromptu",
+        "soliloquy",
+        "dialogue",
+        "monologue"
+      ],
+      "answer": 0,
+      "explanation": "An impromptu speech is given without preparation.",
+      "difficulty": "medium",
+      "id": "q89"
+    },
+    {
+      "type": "mcq",
+      "prompt": "One word for 'the killing of a king':",
+      "options": [
+        "regicide",
+        "homicide",
+        "patricide",
+        "suicide"
+      ],
+      "answer": 0,
+      "explanation": "Regicide is the killing of a king or monarch.",
+      "difficulty": "medium",
+      "id": "q90"
+    },
+    {
+      "type": "mcq",
+      "prompt": "One word for 'a person who lives alone':",
+      "options": [
+        "recluse",
+        "hermitage",
+        "introvert",
+        "nomad"
+      ],
+      "answer": 0,
+      "explanation": "A recluse is someone who lives in solitude.",
+      "difficulty": "easy",
+      "id": "q91"
+    },
+    {
+      "type": "mcq",
+      "prompt": "One word for 'a book written by hand':",
+      "options": [
+        "manuscript",
+        "typescript",
+        "pamphlet",
+        "edition"
+      ],
+      "answer": 0,
+      "explanation": "A manuscript is a handwritten document or book.",
+      "difficulty": "easy",
+      "id": "q92"
+    },
+    {
+      "type": "mcq",
+      "prompt": "One word for 'a person who has no money':",
+      "options": [
+        "pauper",
+        "beggar",
+        "vagrant",
+        "mendicant"
+      ],
+      "answer": 0,
+      "explanation": "A pauper is an extremely poor person with no money.",
+      "difficulty": "easy",
+      "id": "q93"
+    },
+    {
+      "type": "mcq",
+      "prompt": "One word for 'the murder of one's mother':",
+      "options": [
+        "matricide",
+        "patricide",
+        "fratricide",
+        "infanticide"
+      ],
+      "answer": 0,
+      "explanation": "Matricide is the killing of one's own mother.",
+      "difficulty": "medium",
+      "id": "q94"
+    },
+    {
+      "type": "mcq",
+      "prompt": "One word for 'a person who studies human societies':",
+      "options": [
+        "sociologist",
+        "anthropologist",
+        "psychologist",
+        "archaeologist"
+      ],
+      "answer": 1,
+      "explanation": "An anthropologist studies human societies and cultures.",
+      "difficulty": "medium",
+      "id": "q95"
+    },
+    {
+      "type": "mcq",
+      "prompt": "One word for 'a place where weapons are stored':",
+      "options": [
+        "arsenal",
+        "armory",
+        "fortress",
+        "magazine"
+      ],
+      "answer": 1,
+      "explanation": "An armory is a store for weapons and military equipment.",
+      "difficulty": "medium",
+      "id": "q96"
+    },
+    {
+      "type": "mcq",
+      "prompt": "One word for 'a person who hates mankind':",
+      "options": [
+        "misanthrope",
+        "misogynist",
+        "philanthropist",
+        "misanthropist"
+      ],
+      "answer": 0,
+      "explanation": "A misanthrope dislikes or distrusts humankind.",
+      "difficulty": "hard",
+      "id": "q97"
+    },
+    {
+      "type": "mcq",
+      "prompt": "One word for 'an office with no work but high pay':",
+      "options": [
+        "sinecure",
+        "vacancy",
+        "cushion",
+        "bureaucracy"
+      ],
+      "answer": 0,
+      "explanation": "A sinecure is a paid post requiring little or no work.",
+      "difficulty": "hard",
+      "id": "q98"
+    },
+    {
+      "type": "mcq",
+      "prompt": "One word for 'a place where clothes are kept':",
+      "options": [
+        "wardrobe",
+        "almirah",
+        "armoire",
+        "closet"
+      ],
+      "answer": 0,
+      "explanation": "A wardrobe is a cupboard for storing clothes.",
+      "difficulty": "easy",
+      "id": "q99"
+    },
+    {
+      "type": "mcq",
+      "prompt": "One word for 'a person who can use both hands equally well':",
+      "options": [
+        "ambidextrous",
+        "dexterous",
+        "ambitious",
+        "versatile"
+      ],
+      "answer": 0,
+      "explanation": "An ambidextrous person uses both hands with equal skill.",
+      "difficulty": "hard",
+      "id": "q100"
+    },
+    {
+      "type": "mcq",
+      "prompt": "One word for 'an inscription on a tombstone':",
+      "options": [
+        "epitaph",
+        "epigraph",
+        "eulogy",
+        "obituary"
+      ],
+      "answer": 0,
+      "explanation": "An epitaph is an inscription on a tomb in memory of the dead.",
+      "difficulty": "hard",
+      "id": "q101"
+    },
+    {
+      "type": "mcq",
+      "prompt": "One word for 'a person who has thorough knowledge of a subject':",
+      "options": [
+        "expert",
+        "authority",
+        "specialist",
+        "connoisseur"
+      ],
+      "answer": 1,
+      "explanation": "An authority is an expert with thorough knowledge of a subject.",
+      "difficulty": "easy",
+      "id": "q102"
+    },
+    {
+      "type": "mcq",
+      "prompt": "One word for 'an imaginary ideal society':",
+      "options": [
+        "utopia",
+        "paradise",
+        "heaven",
+        "oasis"
+      ],
+      "answer": 0,
+      "explanation": "A utopia is an imaginary perfect society.",
+      "difficulty": "medium",
+      "id": "q103"
+    }
+  ]
+}

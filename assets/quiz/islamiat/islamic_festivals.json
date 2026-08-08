@@ -1,0 +1,1413 @@
+{
+  "bank": {
+    "name": "Islamic Festivals & Special Days",
+    "subject": "Islamic Studies",
+    "topic": "Islamic Festivals & Special Days",
+    "description": "The two Eids and other significant days of the Islamic calendar.",
+    "tags": "css,pms,fpsc,ppsc,nts,islamic-studies,festivals,eid",
+    "version": "1.0",
+    "id": "islamiat_islamic_festivals"
+  },
+  "questions": [
+    {
+      "type": "mcq",
+      "prompt": "Eid-ul-Fitr is celebrated on which day of Shawwal?",
+      "options": [
+        "1st",
+        "10th",
+        "15th",
+        "27th"
+      ],
+      "answer": 0,
+      "explanation": "Eid-ul-Fitr falls on the 1st of Shawwal, marking the end of Ramadan.",
+      "difficulty": "easy",
+      "id": "q01"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Eid-ul-Adha falls on the 10th of which Islamic month?",
+      "options": [
+        "Dhul-Hijjah",
+        "Shawwal",
+        "Ramadan",
+        "Muharram"
+      ],
+      "answer": 0,
+      "explanation": "Eid-ul-Adha is on the 10th of Dhul-Hijjah, after the day of Arafat.",
+      "difficulty": "easy",
+      "id": "q02"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Eid-ul-Adha commemorates the willingness of which prophet to sacrifice his son?",
+      "options": [
+        "Ibrahim (AS)",
+        "Musa (AS)",
+        "Nuh (AS)",
+        "Yusuf (AS)"
+      ],
+      "answer": 0,
+      "explanation": "It commemorates Prophet Ibrahim's (AS) willingness to sacrifice his son in obedience to Allah.",
+      "difficulty": "easy",
+      "id": "q03"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What is the Takbir recited on Eid days called?",
+      "options": [
+        "Takbir-e-Tashreeq",
+        "Talbiah",
+        "Adhan",
+        "Khutbah"
+      ],
+      "answer": 0,
+      "explanation": "Takbir-e-Tashreeq is recited after prayers from Eid-ul-Adha's eve through the days of Tashreeq.",
+      "difficulty": "hard",
+      "id": "q04"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Prophet Musa (AS) was saved from Pharaoh on which day?",
+      "options": [
+        "10th of Muharram (Ashura)",
+        "1st of Shawwal",
+        "12th of Rabi-ul-Awwal",
+        "27th of Rajab"
+      ],
+      "answer": 0,
+      "explanation": "Musa (AS) and the Israelites were saved on the day of Ashura, for which the Prophet (PBUH) recommended fasting.",
+      "difficulty": "medium",
+      "id": "q05"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The birthday of the Prophet Muhammad (PBUH), 12 Rabi-ul-Awwal, is called?",
+      "options": [
+        "Eid Milad-un-Nabi",
+        "Shab-e-Barat",
+        "Laylat-ul-Qadr",
+        "Ashura"
+      ],
+      "answer": 0,
+      "explanation": "12 Rabi-ul-Awwal is observed as Eid Milad-un-Nabi (the Prophet's birthday).",
+      "difficulty": "easy",
+      "id": "q06"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The night journey of the Prophet (PBUH) from Makkah to Jerusalem and ascent to the heavens is called?",
+      "options": [
+        "Shab-e-Meraj (Isra & Mi'raj)",
+        "Shab-e-Barat",
+        "Laylat-ul-Qadr",
+        "Shab-e-Jumma"
+      ],
+      "answer": 0,
+      "explanation": "Shab-e-Meraj (27 Rajab) marks the Isra (night journey) and Mi'raj (ascension).",
+      "difficulty": "easy",
+      "id": "q07"
+    },
+    {
+      "type": "mcq",
+      "prompt": "During the Mi'raj, which obligation was prescribed directly by Allah?",
+      "options": [
+        "The five daily prayers",
+        "Zakat",
+        "Hajj",
+        "Fasting"
+      ],
+      "answer": 0,
+      "explanation": "The five daily prayers were ordained during the Mi'raj.",
+      "difficulty": "easy",
+      "id": "q08"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The night in mid-Sha'ban, when deeds are raised, is called?",
+      "options": [
+        "Shab-e-Barat",
+        "Laylat-ul-Qadr",
+        "Shab-e-Meraj",
+        "Laylat-ul-Jumu'ah"
+      ],
+      "answer": 0,
+      "explanation": "Shab-e-Barat (15 Sha'ban) is observed as a night of forgiveness.",
+      "difficulty": "easy",
+      "id": "q09"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Quran says Laylat-ul-Qadr is better than how many months?",
+      "options": [
+        "One thousand months",
+        "One hundred months",
+        "Ten months",
+        "Fifty months"
+      ],
+      "answer": 0,
+      "explanation": "Surah Al-Qadr (97:3): 'The Night of Power is better than a thousand months.'",
+      "difficulty": "easy",
+      "id": "q10"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which day is celebrated as the 'Day of Arafat'?",
+      "options": [
+        "9th Dhul-Hijjah",
+        "10th Dhul-Hijjah",
+        "1st Muharram",
+        "27th Rajab"
+      ],
+      "answer": 0,
+      "explanation": "The 9th of Dhul-Hijjah is the Day of Arafat, when pilgrims stand at Arafat; fasting is recommended for others.",
+      "difficulty": "medium",
+      "id": "q11"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Islamic New Year begins with which month?",
+      "options": [
+        "Muharram",
+        "Safar",
+        "Rajab",
+        "Ramadan"
+      ],
+      "answer": 0,
+      "explanation": "Muharram is the first month of the Islamic (Hijri) calendar.",
+      "difficulty": "easy",
+      "id": "q12"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Hijri calendar year 1 corresponds to which event?",
+      "options": [
+        "The Hijrah (migration) to Madinah",
+        "The conquest of Makkah",
+        "The Battle of Badr",
+        "The birth of the Prophet (PBUH)"
+      ],
+      "answer": 0,
+      "explanation": "The Islamic calendar begins with the Hijrah (622 CE) of the Prophet (PBUH) to Madinah.",
+      "difficulty": "easy",
+      "id": "q13"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which month is the first of the four sacred months (al-Ashhur al-Hurum)?",
+      "options": [
+        "Muharram",
+        "Rajab",
+        "Shawwal",
+        "Safar"
+      ],
+      "answer": 0,
+      "explanation": "The sacred months are Muharram, Rajab, Dhul-Qa'dah and Dhul-Hijjah.",
+      "difficulty": "medium",
+      "id": "q14"
+    },
+    {
+      "type": "mcq",
+      "prompt": "How many days does Eid-ul-Fitr last officially?",
+      "options": [
+        "1 day",
+        "3 days",
+        "5 days",
+        "7 days"
+      ],
+      "answer": 0,
+      "explanation": "Eid-ul-Fitr is one day (1 Shawwal); Eid-ul-Adha's festivities span several days.",
+      "difficulty": "medium",
+      "id": "q15"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Fasting on which two days is forbidden (except for specific reasons)?",
+      "options": [
+        "Eid-ul-Fitr and Eid-ul-Adha",
+        "Muharram and Rajab",
+        "Monday and Thursday",
+        "Arafat and Ashura"
+      ],
+      "answer": 0,
+      "explanation": "Fasting on the two Eids is prohibited.",
+      "difficulty": "medium",
+      "id": "q16"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which night marks the beginning of Ramadan and the revelation of the Quran?",
+      "options": [
+        "Laylat-ul-Qadr",
+        "Shab-e-Barat",
+        "Laylat-ul-Raghaib",
+        "Shab-e-Meraj"
+      ],
+      "answer": 0,
+      "explanation": "Laylat-ul-Qadr, in the last ten nights of Ramadan, marks when the Quran was first revealed.",
+      "difficulty": "medium",
+      "id": "q17"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which prayer is offered on the two Eids?",
+      "options": [
+        "Salat-ul-Eidain (two rakat with extra Takbirat)",
+        "Jumu'ah",
+        "Taraweeh",
+        "Janazah"
+      ],
+      "answer": 0,
+      "explanation": "The Eid prayer has extra Takbirat and is followed by the Khutbah.",
+      "difficulty": "easy",
+      "id": "q18"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Eid-ul-Adha is also called?",
+      "options": [
+        "Eid-ul-Kabir (the Greater Eid)",
+        "Eid-ul-Saghir",
+        "Eid-e-Milad",
+        "Shab-e-Eid"
+      ],
+      "answer": 0,
+      "explanation": "Eid-ul-Adha is known as the Greater Eid in many Muslim regions.",
+      "difficulty": "easy",
+      "id": "q19"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What is the Sunnah act of saying 'Takbir' on the days of Eid?",
+      "options": [
+        "Reciting 'Allahu Akbar' aloud, especially from Eid eve to Arafat",
+        "Only silently",
+        "Only in the mosque",
+        "It is forbidden"
+      ],
+      "answer": 0,
+      "explanation": "Takbirat are recited from the eve of Eid-ul-Adha through the days of Tashreeq.",
+      "difficulty": "medium",
+      "id": "q20"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The night before Eid-ul-Fitr is traditionally observed with?",
+      "options": [
+        "Worship and supplication (it is a blessed night)",
+        "No special practice",
+        "Feasting only",
+        "Travel"
+      ],
+      "answer": 0,
+      "explanation": "The eve of Eid is considered blessed for worship and dua.",
+      "difficulty": "medium",
+      "id": "q21"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which month's fasting is most recommended after Ramadan?",
+      "options": [
+        "Muharram",
+        "Rajab",
+        "Sha'ban",
+        "Shawwal"
+      ],
+      "answer": 0,
+      "explanation": "The Prophet (PBUH) said the best fast after Ramadan is in Allah's month, Muharram.",
+      "difficulty": "medium",
+      "id": "q22"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which two nights are considered especially significant for worship in Ramadan?",
+      "options": [
+        "The odd nights of the last ten days",
+        "The first two nights",
+        "Only the 1st night",
+        "Only the 15th night"
+      ],
+      "answer": 0,
+      "explanation": "Laylat-ul-Qadr is sought in the odd nights of the final ten days of Ramadan.",
+      "difficulty": "easy",
+      "id": "q23"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which day is celebrated as the 'Day of Arafat' with fasting recommended?",
+      "options": [
+        "9 Dhul-Hijjah",
+        "10 Muharram",
+        "1 Shawwal",
+        "27 Rajab"
+      ],
+      "answer": 0,
+      "explanation": "Fasting the Day of Arafat expiates sins of the past and coming year.",
+      "difficulty": "medium",
+      "id": "q24"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The 10th of Muharram (Ashura) fasting expiates?",
+      "options": [
+        "The sins of the previous year",
+        "All sins of a lifetime",
+        "Only minor mistakes",
+        "Nothing"
+      ],
+      "answer": 0,
+      "explanation": "The Prophet (PBUH) said fasting Ashura expiates the previous year's sins.",
+      "difficulty": "medium",
+      "id": "q25"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What is 'Eid-e-Milad-un-Nabi'?",
+      "options": [
+        "The observance of the Prophet's (PBUH) birthday on 12 Rabi-ul-Awwal",
+        "A harvest festival",
+        "A national day",
+        "A wedding celebration"
+      ],
+      "answer": 0,
+      "explanation": "12 Rabi-ul-Awwal marks the birth of the Prophet Muhammad (PBUH).",
+      "difficulty": "easy",
+      "id": "q26"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which of the following is the recommended way to celebrate the two Eids?",
+      "options": [
+        "Prayer, takbir, charity and family bonds",
+        "Only feasting",
+        "Only travel",
+        "Only gifts"
+      ],
+      "answer": 0,
+      "explanation": "Eid is celebrated with prayer, takbir, charity (Fitr/Adha) and strengthening family ties.",
+      "difficulty": "easy",
+      "id": "q27"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which act is recommended on the morning of Eid before the prayer?",
+      "options": [
+        "Taking a bath (Ghusl) and wearing best clothes",
+        "Fasting",
+        "Travel",
+        "Silence"
+      ],
+      "answer": 0,
+      "explanation": "Ghusl, perfume and best attire are Sunnah for both Eid prayers.",
+      "difficulty": "medium",
+      "id": "q28"
+    },
+    {
+      "type": "mcq",
+      "prompt": "On Eid-ul-Fitr, the Sunnah is to eat something before the prayer; on Eid-ul-Adha, to eat after?",
+      "options": [
+        "The sacrifice",
+        "The prayer",
+        "The sermon",
+        "The takbir"
+      ],
+      "answer": 0,
+      "explanation": "On Fitr one eats before prayer; on Adha one eats from the sacrifice after prayer.",
+      "difficulty": "medium",
+      "id": "q29"
+    },
+    {
+      "type": "mcq",
+      "prompt": "How many Takbirat are in the first rakah of the Eid prayer in Hanafi fiqh?",
+      "options": [
+        "Three extra Takbirat",
+        "One",
+        "Two",
+        "Four"
+      ],
+      "answer": 0,
+      "explanation": "Hanafi fiqh adds three Takbirat in the first rakah and three in the second.",
+      "difficulty": "hard",
+      "id": "q30"
+    },
+    {
+      "type": "mcq",
+      "prompt": "How much is the standard Sadaqat-ul-Fitr amount?",
+      "options": [
+        "One Sa' of staple food per person",
+        "One Rupee",
+        "One meal only",
+        "One tenth of wealth"
+      ],
+      "answer": 0,
+      "explanation": "Sadaqat-ul-Fitr is a Sa' (about 2.5-3 kg) of staple food per person.",
+      "difficulty": "medium",
+      "id": "q31"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Quran mentions the two Eids in which context?",
+      "options": [
+        "Eid is mentioned indirectly; the days are established by Sunnah",
+        "Explicitly by name",
+        "Only Eid-ul-Adha",
+        "Neither is mentioned"
+      ],
+      "answer": 0,
+      "explanation": "The Quran mentions the festive days indirectly (e.g., 5:114); the Eids are fixed by the Sunnah.",
+      "difficulty": "hard",
+      "id": "q32"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which day marks the end of the Hajj and the celebration of Eid-ul-Adha?",
+      "options": [
+        "10 Dhul-Hijjah",
+        "9 Dhul-Hijjah",
+        "1 Shawwal",
+        "1 Muharram"
+      ],
+      "answer": 0,
+      "explanation": "10 Dhul-Hijjah is Eid-ul-Adha, following the Day of Arafat.",
+      "difficulty": "easy",
+      "id": "q33"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What is the duration of the Qurbani (sacrifice) days?",
+      "options": [
+        "Three days: 10, 11 and 12 Dhul-Hijjah",
+        "One day only",
+        "Seven days",
+        "Ten days"
+      ],
+      "answer": 0,
+      "explanation": "The sacrifice may be performed on the 10th and the two days of Tashreeq.",
+      "difficulty": "medium",
+      "id": "q34"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The meat of the Qurbani is to be divided into how many parts?",
+      "options": [
+        "Three: for self, relatives and the needy",
+        "Two equal halves",
+        "All for the poor",
+        "All for self"
+      ],
+      "answer": 0,
+      "explanation": "Sunnah is to divide the sacrifice among family, relatives and the poor.",
+      "difficulty": "medium",
+      "id": "q35"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What is the Sunnah number of Takbirs in the Eid prayer?",
+      "options": [
+        "Extra Takbirs (6 additional in Hanafi practice)",
+        "No extra Takbirs",
+        "Only 2",
+        "Only 1"
+      ],
+      "answer": 0,
+      "explanation": "Hanafi fiqh includes extra Takbirs in Eid prayer.",
+      "difficulty": "medium",
+      "id": "q36"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What is the animal sacrifice on Eid-ul-Adha called?",
+      "options": [
+        "Qurbani (Udhiyah)",
+        "Sadaqah",
+        "Fitra",
+        "Kaffarah"
+      ],
+      "answer": 0,
+      "explanation": "Udhiyah/Qurbani is the Eid-ul-Adha sacrifice.",
+      "difficulty": "easy",
+      "id": "q37"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which festival is celebrated after the month of fasting?",
+      "options": [
+        "Eid-ul-Fitr",
+        "Eid-ul-Adha",
+        "Mawlid",
+        "Shab-e-Barat"
+      ],
+      "answer": 0,
+      "explanation": "Eid-ul-Fitr marks the end of Ramadan.",
+      "difficulty": "easy",
+      "id": "q38"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Eid-ul-Fitr prayer is offered:",
+      "options": [
+        "In congregation with Takbirs",
+        "Alone only",
+        "Only at home",
+        "Only at night"
+      ],
+      "answer": 0,
+      "explanation": "Eid prayer is performed in congregation.",
+      "difficulty": "easy",
+      "id": "q39"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which occasion is commemorated on 12 Rabi-ul-Awwal?",
+      "options": [
+        "Mawlid (birth of the Prophet PBUH)",
+        "Eid-ul-Fitr",
+        "Ashura",
+        "Shab-e-Miraj"
+      ],
+      "answer": 0,
+      "explanation": "Mawlid is observed on 12 Rabi-ul-Awwal.",
+      "difficulty": "easy",
+      "id": "q40"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Shab-e-Miraj commemorates:",
+      "options": [
+        "The Night Journey to the heavens",
+        "The migration",
+        "The first revelation",
+        "The conquest of Makkah"
+      ],
+      "answer": 0,
+      "explanation": "Miraj is the Prophet's (PBUH) ascension.",
+      "difficulty": "easy",
+      "id": "q41"
+    },
+    {
+      "type": "mcq",
+      "prompt": "On which Islamic date is Shab-e-Miraj observed?",
+      "options": [
+        "27 Rajab",
+        "15 Sha'ban",
+        "1 Muharram",
+        "10 Dhul-Hijjah"
+      ],
+      "answer": 0,
+      "explanation": "Miraj is remembered on 27 Rajab.",
+      "difficulty": "medium",
+      "id": "q42"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which night is called the 'Night of Forgiveness'?",
+      "options": [
+        "Shab-e-Barat",
+        "Shab-e-Miraj",
+        "Lailat-ul-Qadr",
+        "Arafah"
+      ],
+      "answer": 0,
+      "explanation": "Shab-e-Barat is the Night of Forgiveness.",
+      "difficulty": "easy",
+      "id": "q43"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The 'Night of Power' is better than:",
+      "options": [
+        "A thousand months",
+        "A hundred years",
+        "Ten years",
+        "A year"
+      ],
+      "answer": 0,
+      "explanation": "Lailat-ul-Qadr is better than a thousand months.",
+      "difficulty": "easy",
+      "id": "q44"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which festival involves standing at Arafah?",
+      "options": [
+        "Hajj (with Eid-ul-Adha)",
+        "Eid-ul-Fitr",
+        "Mawlid",
+        "Ashura"
+      ],
+      "answer": 0,
+      "explanation": "The Day of Arafah is part of Hajj.",
+      "difficulty": "easy",
+      "id": "q45"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which voluntary fast is recommended on the 9th of Dhul-Hijjah?",
+      "options": [
+        "Fast of Arafah",
+        "Fast of Ashura",
+        "Fast of Monday",
+        "Fast of Ramadan"
+      ],
+      "answer": 0,
+      "explanation": "Fasting on Arafah expiates the past and coming year.",
+      "difficulty": "medium",
+      "id": "q46"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The 'Eid prayer' is considered which ruling in the Hanafi school?",
+      "options": [
+        "Wajib (necessary)",
+        "Fard",
+        "Sunnah only",
+        "Makruh"
+      ],
+      "answer": 0,
+      "explanation": "Hanafi scholars deem Eid prayer Wajib.",
+      "difficulty": "medium",
+      "id": "q47"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The 'Takbir-e-Tashreeq' is recited after which prayer?",
+      "options": [
+        "Fard prayers from 9 to 13 Dhul-Hijjah",
+        "Only Fajr",
+        "Only Maghrib",
+        "Only Isha"
+      ],
+      "answer": 0,
+      "explanation": "Takbir-e-Tashreeq follows fard prayers on Eid days.",
+      "difficulty": "medium",
+      "id": "q48"
+    },
+    {
+      "type": "mcq",
+      "prompt": "On which day is fasting forbidden?",
+      "options": [
+        "Eid-ul-Fitr and Eid-ul-Adha",
+        "Only Mondays",
+        "Only Fridays",
+        "Only Saturdays"
+      ],
+      "answer": 0,
+      "explanation": "Fasting is prohibited on both Eids.",
+      "difficulty": "easy",
+      "id": "q49"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which festival is linked to the story of Ibrahim (AS) and Ismail (AS)?",
+      "options": [
+        "Eid-ul-Adha",
+        "Eid-ul-Fitr",
+        "Mawlid",
+        "Ashura"
+      ],
+      "answer": 0,
+      "explanation": "Eid-ul-Adha commemorates Ibrahim's sacrifice.",
+      "difficulty": "easy",
+      "id": "q50"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Lailat-ul-Qadr is sought especially in which nights?",
+      "options": [
+        "The last ten nights of Ramadan",
+        "The first ten nights",
+        "The middle nights",
+        "Only the 1st night"
+      ],
+      "answer": 0,
+      "explanation": "It lies in the last ten nights, especially odd ones.",
+      "difficulty": "easy",
+      "id": "q51"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which act is performed on the 10th Dhul-Hijjah besides the Eid prayer?",
+      "options": [
+        "Animal sacrifice",
+        "Fasting",
+        "Charity only",
+        "Praying all night"
+      ],
+      "answer": 0,
+      "explanation": "Qurbani is performed on Eid-ul-Adha.",
+      "difficulty": "easy",
+      "id": "q52"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The 'Khutbah' after Eid prayer is delivered by:",
+      "options": [
+        "The Imam after the prayer",
+        "The Muazzin",
+        "The caliph only",
+        "No one"
+      ],
+      "answer": 0,
+      "explanation": "The Eid khutbah follows the prayer.",
+      "difficulty": "easy",
+      "id": "q53"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Ashura falls on which date?",
+      "options": [
+        "10 Muharram",
+        "1 Muharram",
+        "15 Sha'ban",
+        "27 Rajab"
+      ],
+      "answer": 0,
+      "explanation": "Ashura is the 10th of Muharram.",
+      "difficulty": "easy",
+      "id": "q54"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which occasion marks the end of Hajj?",
+      "options": [
+        "Eid-ul-Adha",
+        "Eid-ul-Fitr",
+        "Mawlid",
+        "Shab-e-Barat"
+      ],
+      "answer": 0,
+      "explanation": "Eid-ul-Adha coincides with the completion of Hajj rites.",
+      "difficulty": "easy",
+      "id": "q55"
+    },
+    {
+      "type": "mcq",
+      "prompt": "In which month is the festival of the 'white days' (Ayyam al-Beed) fasting recommended?",
+      "options": [
+        "Every Islamic month (13, 14, 15)",
+        "Only Ramadan",
+        "Only Dhul-Hijjah",
+        "Only Muharram"
+      ],
+      "answer": 0,
+      "explanation": "Fasting the white days is recommended each month.",
+      "difficulty": "hard",
+      "id": "q56"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Eid-ul-Fitr is also called the?",
+      "options": [
+        "Smaller Eid (Eid-ul-Saghir)",
+        "Greater Eid",
+        "Eid of Sacrifice",
+        "Eid-e-Milad"
+      ],
+      "answer": 0,
+      "explanation": "Eid-ul-Fitr is known as the Smaller Eid, while Eid-ul-Adha is the Greater Eid.",
+      "difficulty": "medium",
+      "id": "q57"
+    },
+    {
+      "type": "mcq",
+      "prompt": "In the Hanafi school, the second rakah of the Eid prayer has how many extra takbirs?",
+      "options": [
+        "Two",
+        "Three",
+        "Four",
+        "One"
+      ],
+      "answer": 0,
+      "explanation": "In Hanafi fiqh, the second rakah of the Eid prayer has two extra takbirs.",
+      "difficulty": "hard",
+      "id": "q58"
+    },
+    {
+      "type": "mcq",
+      "prompt": "A goat for Qurbani may be offered on behalf of?",
+      "options": [
+        "One person or one household",
+        "Seven people",
+        "Two people",
+        "Ten people"
+      ],
+      "answer": 0,
+      "explanation": "The Qurbani of a goat or sheep is for one person (or one household).",
+      "difficulty": "medium",
+      "id": "q59"
+    },
+    {
+      "type": "mcq",
+      "prompt": "A cow or camel Qurbani may be shared among up to how many people?",
+      "options": [
+        "Seven",
+        "Three",
+        "Ten",
+        "Two"
+      ],
+      "answer": 0,
+      "explanation": "A cow or camel may be shared among up to seven people.",
+      "difficulty": "medium",
+      "id": "q60"
+    },
+    {
+      "type": "mcq",
+      "prompt": "A goat offered for Qurbani must be at least how old?",
+      "options": [
+        "One year",
+        "Six months",
+        "Two years",
+        "Five years"
+      ],
+      "answer": 0,
+      "explanation": "A goat must be at least one year old for a valid Qurbani.",
+      "difficulty": "medium",
+      "id": "q61"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What is 'Eid-e-Ghadeer'?",
+      "options": [
+        "An observance on 18 Dhul-Hijjah recalling the Prophet's (PBUH) address at Ghadir Khumm",
+        "A pre-Islamic festival",
+        "A harvest festival",
+        "A spring festival"
+      ],
+      "answer": 0,
+      "explanation": "Eid-e-Ghadeer marks 18 Dhul-Hijjah, the day of the Prophet's (PBUH) address at Ghadir Khumm.",
+      "difficulty": "hard",
+      "id": "q62"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The recommended supplication on Laylat-ul-Qadr is?",
+      "options": [
+        "Allahumma innaka 'afuwwun tuhibbul-'afwa fa'fu 'anni",
+        "Rabbana atina fid-dunya hasanah",
+        "Subhana Rabbika Rabbil-'izzati",
+        "Allahu akbar kabira"
+      ],
+      "answer": 0,
+      "explanation": "Aisha (RA) was taught to say 'O Allah, You are Forgiving, love forgiveness, so forgive me'.",
+      "difficulty": "medium",
+      "id": "q63"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The 10th of Muharram is significant because of?",
+      "options": [
+        "The martyrdom of Imam Hussain (RA) and the saving of Musa (AS)",
+        "The birth of the Prophet (PBUH)",
+        "The first revelation",
+        "The conquest of Makkah"
+      ],
+      "answer": 0,
+      "explanation": "Ashura recalls Musa's (AS) deliverance and the martyrdom of Hussain (RA) at Karbala.",
+      "difficulty": "medium",
+      "id": "q64"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Eid prayer is traditionally performed at?",
+      "options": [
+        "An open ground (Eidgah) or mosque",
+        "Home alone only",
+        "The Kaaba only",
+        "The graveyard"
+      ],
+      "answer": 0,
+      "explanation": "The Sunnah is to pray the Eid prayer in an open prayer ground.",
+      "difficulty": "easy",
+      "id": "q65"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Takbir-e-Tashreeq is recited until which time?",
+      "options": [
+        "The Asr of the 13th Dhul-Hijjah",
+        "The Maghrib of the 10th",
+        "The Fajr of the 9th",
+        "The Isha of the 12th"
+      ],
+      "answer": 0,
+      "explanation": "Takbir-e-Tashreeq runs from the Fajr of 9 Dhul-Hijjah to the Asr of the 13th.",
+      "difficulty": "hard",
+      "id": "q66"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which day is called the 'Day of the Greater Hajj' (Yawm al-Hajj al-Akbar)?",
+      "options": [
+        "10 Dhul-Hijjah",
+        "9 Dhul-Hijjah",
+        "1 Shawwal",
+        "10 Muharram"
+      ],
+      "answer": 0,
+      "explanation": "The 10th of Dhul-Hijjah, the day of sacrifice, is the Day of the Greater Hajj.",
+      "difficulty": "hard",
+      "id": "q67"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The first ten days of Ramadan are associated with?",
+      "options": [
+        "Mercy (Rahmah)",
+        "Forgiveness (Maghfirah)",
+        "Freedom from the Fire",
+        "The sacrifice"
+      ],
+      "answer": 0,
+      "explanation": "The first Ashra of Ramadan is the days of mercy.",
+      "difficulty": "medium",
+      "id": "q68"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The middle ten days of Ramadan are associated with?",
+      "options": [
+        "Forgiveness (Maghfirah)",
+        "Mercy",
+        "Freedom from the Fire",
+        "Fasting the white days"
+      ],
+      "answer": 0,
+      "explanation": "The second Ashra is the days of forgiveness.",
+      "difficulty": "medium",
+      "id": "q69"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The last ten days of Ramadan are associated with?",
+      "options": [
+        "Freedom from the Fire (Najah)",
+        "Mercy",
+        "Forgiveness",
+        "The harvest"
+      ],
+      "answer": 0,
+      "explanation": "The final Ashra of Ramadan is the days of seeking freedom from the Fire.",
+      "difficulty": "medium",
+      "id": "q70"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Fasting during the first nine days of Dhul-Hijjah is?",
+      "options": [
+        "Highly recommended",
+        "Obligatory",
+        "Forbidden",
+        "Only for pilgrims"
+      ],
+      "answer": 0,
+      "explanation": "Fasting the first nine days of Dhul-Hijjah is strongly recommended, especially Arafah.",
+      "difficulty": "medium",
+      "id": "q71"
+    },
+    {
+      "type": "mcq",
+      "prompt": "In the Shafi'i school, the Eid prayer is?",
+      "options": [
+        "Sunnah Mu'akkadah",
+        "Fard",
+        "Wajib",
+        "Makruh"
+      ],
+      "answer": 0,
+      "explanation": "In the Shafi'i school the Eid prayer is an emphasised Sunnah.",
+      "difficulty": "medium",
+      "id": "q72"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which surahs did the Prophet (PBUH) often recite in the two Eid prayers?",
+      "options": [
+        "Al-A'la and Al-Ghashiyah",
+        "Al-Fatiha and Al-Ikhlas",
+        "Al-Baqarah and Al-Imran",
+        "Al-Fath and An-Nasr"
+      ],
+      "answer": 0,
+      "explanation": "In the Eid prayers the Prophet (PBUH) recited Surah Al-A'la and Surah Al-Ghashiyah.",
+      "difficulty": "hard",
+      "id": "q73"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which of the following animals is valid for Qurbani?",
+      "options": [
+        "Goat, sheep, cow or camel",
+        "Horse or donkey",
+        "Chicken or fish",
+        "Any wild animal"
+      ],
+      "answer": 0,
+      "explanation": "Qurbani is valid with goats, sheep, cows or camels.",
+      "difficulty": "easy",
+      "id": "q74"
+    },
+    {
+      "type": "mcq",
+      "prompt": "A cow offered for Qurbani must be at least how old?",
+      "options": [
+        "Two years",
+        "One year",
+        "Six months",
+        "Four years"
+      ],
+      "answer": 0,
+      "explanation": "A cow must be at least two years old for Qurbani.",
+      "difficulty": "medium",
+      "id": "q75"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The first Eid-ul-Fitr was celebrated in which year?",
+      "options": [
+        "2 AH",
+        "1 AH",
+        "3 AH",
+        "8 AH"
+      ],
+      "answer": 0,
+      "explanation": "The first Eid-ul-Fitr followed the first Ramadan of obligatory fasting in 2 AH.",
+      "difficulty": "hard",
+      "id": "q76"
+    },
+    {
+      "type": "mcq",
+      "prompt": "In South Asia, Eid-ul-Adha is commonly called?",
+      "options": [
+        "Bakra Eid",
+        "Meethi Eid",
+        "Shab-e-Barat",
+        "Eid-e-Ghadeer"
+      ],
+      "answer": 0,
+      "explanation": "Eid-ul-Adha is popularly called Bakra Eid in South Asia.",
+      "difficulty": "easy",
+      "id": "q77"
+    },
+    {
+      "type": "mcq",
+      "prompt": "In Pakistan, Eid-ul-Fitr is commonly known as?",
+      "options": [
+        "Meethi Eid (the sweet Eid)",
+        "Bakra Eid",
+        "Eid-e-Milad",
+        "Shab-e-Qadr"
+      ],
+      "answer": 0,
+      "explanation": "Eid-ul-Fitr is called Meethi Eid in Pakistan because of its sweet dishes.",
+      "difficulty": "easy",
+      "id": "q78"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Prophet (PBUH) used to return from the Eid prayer by?",
+      "options": [
+        "A different route from the one he took",
+        "The same route always",
+        "Running back",
+        "Riding a horse"
+      ],
+      "answer": 0,
+      "explanation": "The Sunnah is to return from the Eid prayer by a different path.",
+      "difficulty": "medium",
+      "id": "q79"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Eid-ul-Adha celebrations extend over how many days?",
+      "options": [
+        "Three days (10-12 Dhul-Hijjah)",
+        "One day only",
+        "Five days",
+        "Seven days"
+      ],
+      "answer": 0,
+      "explanation": "Eid-ul-Adha spans the three days of Tashriq.",
+      "difficulty": "medium",
+      "id": "q80"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The word 'Fitr' in Eid-ul-Fitr means?",
+      "options": [
+        "Breaking the fast",
+        "Sacrifice",
+        "Gathering",
+        "Rejoicing"
+      ],
+      "answer": 0,
+      "explanation": "Fitr refers to breaking the fast of Ramadan.",
+      "difficulty": "medium",
+      "id": "q81"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The word 'Adha' in Eid-ul-Adha is related to?",
+      "options": [
+        "Udhiyah — the sacrifice",
+        "The fast",
+        "The moon",
+        "The journey"
+      ],
+      "answer": 0,
+      "explanation": "Adha comes from Udhiyah, the sacrifice of the day.",
+      "difficulty": "medium",
+      "id": "q82"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Eid prayer is performed at what time?",
+      "options": [
+        "After sunrise until midday",
+        "At midnight",
+        "At dawn",
+        "At sunset"
+      ],
+      "answer": 0,
+      "explanation": "The Eid prayer is offered after sunrise up to the time of zawal.",
+      "difficulty": "medium",
+      "id": "q83"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The two Eids are described in hadith as?",
+      "options": [
+        "Days of eating, drinking and remembrance of Allah",
+        "Days of mourning",
+        "Days of travel",
+        "Days of silence"
+      ],
+      "answer": 0,
+      "explanation": "The Prophet (PBUH) called the Eids days of eating, drinking and dhikr.",
+      "difficulty": "medium",
+      "id": "q84"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which night is called the 'Night of Bara'ah' (freedom from the Fire)?",
+      "options": [
+        "15 Sha'ban (Shab-e-Barat)",
+        "27 Rajab",
+        "27 Ramadan",
+        "1 Muharram"
+      ],
+      "answer": 0,
+      "explanation": "Shab-e-Barat, the 15th of Sha'ban, is the night of freedom from the Fire.",
+      "difficulty": "easy",
+      "id": "q85"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which day marks the end of the Hajj season with the sacrifice?",
+      "options": [
+        "10 Dhul-Hijjah",
+        "1 Shawwal",
+        "9 Dhul-Hijjah",
+        "10 Muharram"
+      ],
+      "answer": 0,
+      "explanation": "The 10th of Dhul-Hijjah closes Hajj with Eid-ul-Adha and Qurbani.",
+      "difficulty": "easy",
+      "id": "q86"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The night of Arafah is the night before which day?",
+      "options": [
+        "Eid-ul-Adha",
+        "Eid-ul-Fitr",
+        "Ashura",
+        "Shab-e-Barat"
+      ],
+      "answer": 0,
+      "explanation": "The night of 9 Dhul-Hijjah precedes Eid-ul-Adha.",
+      "difficulty": "medium",
+      "id": "q87"
+    },
+    {
+      "type": "mcq",
+      "prompt": "On Eid-ul-Fitr, which charity is given before the prayer?",
+      "options": [
+        "Zakat-ul-Fitr (Sadaqat-ul-Fitr)",
+        "Zakat al-Mal",
+        "Fidyah",
+        "Kaffarah"
+      ],
+      "answer": 0,
+      "explanation": "Zakat-ul-Fitr is given before the Eid-ul-Fitr prayer.",
+      "difficulty": "easy",
+      "id": "q88"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which day is the fast of Arafah observed?",
+      "options": [
+        "9 Dhul-Hijjah",
+        "10 Dhul-Hijjah",
+        "1 Shawwal",
+        "10 Muharram"
+      ],
+      "answer": 0,
+      "explanation": "The fast of Arafah is on the 9th of Dhul-Hijjah for non-pilgrims.",
+      "difficulty": "medium",
+      "id": "q89"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which night of Ramadan is called the 'Night of Power'?",
+      "options": [
+        "Laylat-ul-Qadr",
+        "Shab-e-Barat",
+        "Shab-e-Meraj",
+        "The night of Eid"
+      ],
+      "answer": 0,
+      "explanation": "Laylat-ul-Qadr, in the last ten nights, is the Night of Power.",
+      "difficulty": "easy",
+      "id": "q90"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What is the 'Takbir' that is recited from the eve of Eid-ul-Adha?",
+      "options": [
+        "Allahu Akbar, Allahu Akbar, La ilaha illallah, Allahu Akbar, Allahu Akbar, wa lillahil-hamd",
+        "SubhanAllah",
+        "Alhamdulillah",
+        "La hawla wa la quwwata"
+      ],
+      "answer": 0,
+      "explanation": "The Takbir of the Eids glorifies Allah after the obligatory prayers.",
+      "difficulty": "medium",
+      "id": "q91"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which festival involves the 'Umrah of Ramadan' being considered equal to Hajj?",
+      "options": [
+        "The Umrah performed in Ramadan",
+        "Eid-ul-Fitr",
+        "Shab-e-Barat",
+        "Eid-e-Milad"
+      ],
+      "answer": 0,
+      "explanation": "A hadith says Umrah in Ramadan equals Hajj in reward.",
+      "difficulty": "medium",
+      "id": "q92"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The days of 'Tashriq' fall in which month?",
+      "options": [
+        "Dhul-Hijjah",
+        "Shawwal",
+        "Muharram",
+        "Rajab"
+      ],
+      "answer": 0,
+      "explanation": "The 11th-13th of Dhul-Hijjah are the days of Tashriq.",
+      "difficulty": "medium",
+      "id": "q93"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What is the reward of fasting on the Day of Arafah?",
+      "options": [
+        "Expiates the sins of two years",
+        "Expiates one year",
+        "Has no reward",
+        "Expiates a lifetime"
+      ],
+      "answer": 0,
+      "explanation": "Fasting Arafah expiates the sins of the previous and coming year.",
+      "difficulty": "medium",
+      "id": "q94"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which companion taught the supplication of Laylat-ul-Qadr to Aisha (RA)?",
+      "options": [
+        "The Prophet (PBUH) himself",
+        "Abu Bakr (RA)",
+        "Umar (RA)",
+        "Jibra'il (AS) directly"
+      ],
+      "answer": 0,
+      "explanation": "The Prophet (PBUH) taught Aisha (RA) the 'afuww' supplication for Laylat-ul-Qadr.",
+      "difficulty": "medium",
+      "id": "q95"
+    },
+    {
+      "type": "mcq",
+      "prompt": "On which day do Muslims celebrate by offering the 'Udhiyah'?",
+      "options": [
+        "10 Dhul-Hijjah",
+        "1 Shawwal",
+        "27 Rajab",
+        "15 Sha'ban"
+      ],
+      "answer": 0,
+      "explanation": "The Udhiyah (Qurbani) is offered on 10 Dhul-Hijjah and the days of Tashriq.",
+      "difficulty": "easy",
+      "id": "q96"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which night is the 27th of Rajab?",
+      "options": [
+        "Shab-e-Meraj (Isra and Mi'raj)",
+        "Shab-e-Barat",
+        "Laylat-ul-Qadr",
+        "The night of Arafah"
+      ],
+      "answer": 0,
+      "explanation": "The 27th of Rajab commemorates the Night Journey and Ascension.",
+      "difficulty": "easy",
+      "id": "q97"
+    },
+    {
+      "type": "mcq",
+      "prompt": "How many extra takbirs are there in the first rakah of the Eid prayer in Hanafi fiqh?",
+      "options": [
+        "Three",
+        "Two",
+        "Four",
+        "Five"
+      ],
+      "answer": 0,
+      "explanation": "In the Hanafi school the first rakah has three extra takbirs.",
+      "difficulty": "hard",
+      "id": "q98"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The 8th of Dhul-Hijjah, when pilgrims set out to Mina and water the animals, is called?",
+      "options": [
+        "Yawm al-Tarwiyah",
+        "Yawm al-Nahr",
+        "Yawm al-Arafah",
+        "Yawm al-Tashriq"
+      ],
+      "answer": 0,
+      "explanation": "The 8th of Dhul-Hijjah is Yawm al-Tarwiyah, the day pilgrims travel to Mina.",
+      "difficulty": "hard",
+      "id": "q99"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The last Friday of Ramadan, specially honoured in South Asia, is known as?",
+      "options": [
+        "Jumu'ah al-Wida",
+        "Jumu'ah al-Mubarak",
+        "Jumu'ah al-Nur",
+        "Jumu'ah al-Kabir"
+      ],
+      "answer": 0,
+      "explanation": "Jumu'ah al-Wida, the farewell Friday of Ramadan, is observed with special devotion.",
+      "difficulty": "easy",
+      "id": "q100"
+    }
+  ]
+}

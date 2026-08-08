@@ -1,0 +1,1413 @@
+{
+  "bank": {
+    "name": "Muslim Civilization & Contributions",
+    "subject": "Islamic Studies",
+    "topic": "Muslim Civilization & Contributions",
+    "description": "The golden age of Islam — science, culture, architecture and world contributions.",
+    "tags": "css,pms,fpsc,ppsc,nts,islamic-studies,civilization,contributions",
+    "version": "1.0",
+    "id": "islamiat_muslim_civilization"
+  },
+  "questions": [
+    {
+      "type": "mcq",
+      "prompt": "Who is called the 'Father of Modern Medicine' in the Islamic tradition?",
+      "options": [
+        "Ibn Sina (Avicenna)",
+        "Al-Razi (Rhazes)",
+        "Ibn Rushd",
+        "Al-Zahrawi"
+      ],
+      "answer": 0,
+      "explanation": "Ibn Sina (Avicenna) wrote the Canon of Medicine (Al-Qanun), a standard medical textbook in Europe for centuries.",
+      "difficulty": "medium",
+      "id": "q01"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who discovered the smallpox disease and wrote 'Al-Hawi', the largest medical encyclopedia of the age?",
+      "options": [
+        "Al-Razi (Rhazes)",
+        "Ibn Sina",
+        "Ibn al-Nafis",
+        "Al-Biruni"
+      ],
+      "answer": 0,
+      "explanation": "Al-Razi (865-925 CE) gave the first clinical description of smallpox and measles and wrote Al-Hawi.",
+      "difficulty": "hard",
+      "id": "q02"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who is credited with first describing the pulmonary circulation of blood?",
+      "options": [
+        "Ibn al-Nafis",
+        "William Harvey",
+        "Ibn Sina",
+        "Al-Zahrawi"
+      ],
+      "answer": 0,
+      "explanation": "Ibn al-Nafis (1213-1288) described pulmonary circulation centuries before William Harvey.",
+      "difficulty": "hard",
+      "id": "q03"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who is known as the 'Father of Surgery' for his surgical encyclopedia 'Al-Tasrif'?",
+      "options": [
+        "Al-Zahrawi (Abulcasis)",
+        "Ibn Sina",
+        "Al-Razi",
+        "Al-Battani"
+      ],
+      "answer": 0,
+      "explanation": "Al-Zahrawi (936-1013) wrote Al-Tasrif, a 30-volume medical work with surgical innovations.",
+      "difficulty": "hard",
+      "id": "q04"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who wrote 'Al-Qanun fil-Tibb' (The Canon of Medicine)?",
+      "options": [
+        "Ibn Sina",
+        "Al-Razi",
+        "Ibn Rushd",
+        "Al-Biruni"
+      ],
+      "answer": 0,
+      "explanation": "Ibn Sina's Al-Qanun fil-Tibb was the standard medical text in European universities until the 17th century.",
+      "difficulty": "medium",
+      "id": "q05"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who is regarded as the 'Father of Algebra'?",
+      "options": [
+        "Al-Khwarizmi",
+        "Al-Kindi",
+        "Ibn al-Haytham",
+        "Omar Khayyam"
+      ],
+      "answer": 0,
+      "explanation": "Al-Khwarizmi wrote 'Al-Jabr wal-Muqabala', from which the word 'algebra' and 'algorithm' derive.",
+      "difficulty": "medium",
+      "id": "q06"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who is called the 'Father of Optics' for his 'Book of Optics' (Kitab al-Manazir)?",
+      "options": [
+        "Ibn al-Haytham (Alhazen)",
+        "Al-Kindi",
+        "Al-Farabi",
+        "Al-Battani"
+      ],
+      "answer": 0,
+      "explanation": "Ibn al-Haytham (965-1040) pioneered the scientific method and correct theory of vision in Kitab al-Manazir.",
+      "difficulty": "medium",
+      "id": "q07"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who wrote the 'Shahnameh' (Book of Kings), the Persian epic?",
+      "options": [
+        "Ferdowsi",
+        "Omar Khayyam",
+        "Rumi",
+        "Hafiz"
+      ],
+      "answer": 0,
+      "explanation": "Ferdowsi composed the Shahnameh, Iran's national epic, completed around 1010 CE.",
+      "difficulty": "hard",
+      "id": "q08"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who wrote the 'Rubaiyat' (quatrains) and also reformed the Persian calendar?",
+      "options": [
+        "Omar Khayyam",
+        "Ferdowsi",
+        "Saadi",
+        "Al-Biruni"
+      ],
+      "answer": 0,
+      "explanation": "Omar Khayyam, mathematician and poet, devised a solar calendar more accurate than the Gregorian.",
+      "difficulty": "medium",
+      "id": "q09"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who is known as the 'Second Teacher' (after Aristotle) for his contributions to philosophy and logic?",
+      "options": [
+        "Al-Farabi",
+        "Ibn Sina",
+        "Al-Kindi",
+        "Ibn Rushd"
+      ],
+      "answer": 0,
+      "explanation": "Al-Farabi (872-950) is called 'Muallim-e-Sani' (the Second Teacher) after Aristotle.",
+      "difficulty": "medium",
+      "id": "q10"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who is called the 'Philosopher of Islam' and wrote commentaries on Aristotle known as 'The Commentator'?",
+      "options": [
+        "Ibn Rushd (Averroes)",
+        "Al-Farabi",
+        "Ibn Sina",
+        "Al-Kindi"
+      ],
+      "answer": 0,
+      "explanation": "Ibn Rushd (1126-1198) was known in Europe as 'The Commentator' for his commentaries on Aristotle.",
+      "difficulty": "medium",
+      "id": "q11"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which Muslim geographer calculated the circumference of the Earth with remarkable accuracy?",
+      "options": [
+        "Al-Biruni",
+        "Al-Idrisi",
+        "Ibn Battuta",
+        "Al-Khwarizmi"
+      ],
+      "answer": 0,
+      "explanation": "Al-Biruni (973-1048) calculated the Earth's circumference and radius with great precision.",
+      "difficulty": "hard",
+      "id": "q12"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who drew the 'Tabula Rogeriana', one of the most advanced medieval world maps?",
+      "options": [
+        "Al-Idrisi",
+        "Al-Biruni",
+        "Ibn Battuta",
+        "Piri Reis"
+      ],
+      "answer": 0,
+      "explanation": "Al-Idrisi created the Tabula Rogeriana for King Roger II of Sicily in 1154.",
+      "difficulty": "hard",
+      "id": "q13"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which famous traveler visited China, India and West Africa, covering about 120,000 km?",
+      "options": [
+        "Ibn Battuta",
+        "Marco Polo",
+        "Al-Idrisi",
+        "Ibn Khaldun"
+      ],
+      "answer": 0,
+      "explanation": "Ibn Battuta (1304-1369) traveled across the Islamic world and beyond, writing the Rihla.",
+      "difficulty": "easy",
+      "id": "q14"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who is regarded as the 'Father of Sociology' for his 'Muqaddimah'?",
+      "options": [
+        "Ibn Khaldun",
+        "Ibn Sina",
+        "Al-Farabi",
+        "Ibn Rushd"
+      ],
+      "answer": 0,
+      "explanation": "Ibn Khaldun's Muqaddimah (1377) laid the foundations of sociology and historiography.",
+      "difficulty": "easy",
+      "id": "q15"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which Muslim chemist is credited with the discovery of sulfuric acid and distillation techniques?",
+      "options": [
+        "Jabir ibn Hayyan (Geber)",
+        "Al-Razi",
+        "Al-Khwarizmi",
+        "Al-Zahrawi"
+      ],
+      "answer": 0,
+      "explanation": "Jabir ibn Hayyan (8th century) is called the 'Father of Chemistry' for his experiments and discoveries.",
+      "difficulty": "medium",
+      "id": "q16"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which magnificent structure in India was built by the Muslim Mughal emperor Shah Jahan?",
+      "options": [
+        "Taj Mahal",
+        "Red Fort only",
+        "Qutub Minar",
+        "Fatehpur Sikri"
+      ],
+      "answer": 0,
+      "explanation": "Shah Jahan built the Taj Mahal in Agra (1632-1653) in memory of Mumtaz Mahal.",
+      "difficulty": "easy",
+      "id": "q17"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who was the first Muslim ruler to conquer Sindh in 712 CE?",
+      "options": [
+        "Muhammad bin Qasim",
+        "Mahmud of Ghazni",
+        "Mohammad Ghauri",
+        "Babur"
+      ],
+      "answer": 0,
+      "explanation": "Muhammad bin Qasim, an Umayyad general, conquered Sindh in 712 CE.",
+      "difficulty": "easy",
+      "id": "q18"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The first university in the world, Al-Qarawiyyin in Fez, was founded by whom?",
+      "options": [
+        "Fatima al-Fihri",
+        "Harun al-Rashid",
+        "Al-Mamun",
+        "Aisha bint Abu Bakr"
+      ],
+      "answer": 0,
+      "explanation": "Fatima al-Fihri founded Al-Qarawiyyin in 859 CE, recognized by UNESCO as the oldest university.",
+      "difficulty": "hard",
+      "id": "q19"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which Abbasid caliph established the 'Bayt al-Hikmah' (House of Wisdom) in Baghdad?",
+      "options": [
+        "Al-Mamun",
+        "Harun al-Rashid",
+        "Al-Mansur",
+        "Al-Mutawakkil"
+      ],
+      "answer": 0,
+      "explanation": "Caliph Al-Mamun (r. 813-833) established the House of Wisdom, the intellectual hub of the Golden Age.",
+      "difficulty": "medium",
+      "id": "q20"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which Islamic city was the world's largest during the 10th century?",
+      "options": [
+        "Cordoba",
+        "Damascus",
+        "Cairo",
+        "Samarkand"
+      ],
+      "answer": 0,
+      "explanation": "Cordoba in Al-Andalus became one of the largest and most advanced cities of its age.",
+      "difficulty": "medium",
+      "id": "q21"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The 'Al-Zahrawi' contributions were mainly in which field?",
+      "options": [
+        "Surgery and medical instruments",
+        "Astronomy",
+        "Chemistry",
+        "Mathematics"
+      ],
+      "answer": 0,
+      "explanation": "Al-Zahrawi (Abulcasis) is the father of modern surgery, with 200+ instruments.",
+      "difficulty": "medium",
+      "id": "q22"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which Muslim scholar is called the 'Philosopher of the Arabs' (Failasuf al-Arab)?",
+      "options": [
+        "Al-Kindi",
+        "Al-Farabi",
+        "Ibn Sina",
+        "Ibn Rushd"
+      ],
+      "answer": 0,
+      "explanation": "Al-Kindi (801-873) was the first great Muslim philosopher.",
+      "difficulty": "hard",
+      "id": "q23"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The decimal number system (including zero) reached Europe through which Muslim works?",
+      "options": [
+        "Al-Khwarizmi's arithmetic texts",
+        "Ibn Sina's Canon",
+        "Al-Razi's Al-Hawi",
+        "Al-Biruni's geography"
+      ],
+      "answer": 0,
+      "explanation": "Al-Khwarizmi's 'On the Calculation with Hindu Numerals' spread the decimal system.",
+      "difficulty": "medium",
+      "id": "q24"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The first systematic hospital (Bimaristan) in the Islamic world was established in?",
+      "options": [
+        "Baghdad (8th century)",
+        "Cordoba",
+        "Cairo",
+        "Damascus only"
+      ],
+      "answer": 0,
+      "explanation": "The Bimaristan of Baghdad, under Harun al-Rashid, was a pioneer hospital.",
+      "difficulty": "hard",
+      "id": "q25"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which Muslim engineer built elaborate water clocks and automata, described in 'Book of Knowledge of Ingenious Mechanical Devices'?",
+      "options": [
+        "Al-Jazari",
+        "Ibn al-Haytham",
+        "Al-Khwarizmi",
+        "Al-Battani"
+      ],
+      "answer": 0,
+      "explanation": "Al-Jazari (1136-1206) is the father of robotics and modern engineering.",
+      "difficulty": "medium",
+      "id": "q26"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which Muslim astronomer calculated the solar year accurately and built observatories at Maragha?",
+      "options": [
+        "Nasir al-Din al-Tusi",
+        "Al-Battani",
+        "Al-Biruni",
+        "Omar Khayyam"
+      ],
+      "answer": 0,
+      "explanation": "Nasir al-Din al-Tusi (1201-1274) directed the Maragha observatory.",
+      "difficulty": "hard",
+      "id": "q27"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which Muslim traveler wrote the 'Rihla', describing his journeys across 40+ countries?",
+      "options": [
+        "Ibn Battuta",
+        "Ibn Jubayr",
+        "Al-Masudi",
+        "Al-Idrisi"
+      ],
+      "answer": 0,
+      "explanation": "Ibn Battuta's Rihla documents 29 years of travel across the Islamic world and beyond.",
+      "difficulty": "easy",
+      "id": "q28"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Islamic art of 'Arabesque' and geometric patterns is characterized by?",
+      "options": [
+        "Repeating geometric and floral patterns without human figures",
+        "Realistic portraits",
+        "Landscape painting",
+        "Abstract expressionism"
+      ],
+      "answer": 0,
+      "explanation": "Arabesque and geometric design reflect Tawheed through non-figurative art.",
+      "difficulty": "medium",
+      "id": "q29"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which Mamluk sultan built a famous hospital complex in Cairo in 1285?",
+      "options": [
+        "Sultan Qalawun",
+        "Saladin",
+        "Baybars",
+        "Al-Ashraf Khalil"
+      ],
+      "answer": 0,
+      "explanation": "The Qalawun complex in Cairo included a hospital, mausoleum and madrasa.",
+      "difficulty": "hard",
+      "id": "q30"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which Muslim scholar founded the observatory and library known as 'Bayt al-Hikmah'?",
+      "options": [
+        "Caliph Al-Mamun",
+        "Caliph Al-Mansur",
+        "Harun al-Rashid",
+        "Al-Mu'tasim"
+      ],
+      "answer": 0,
+      "explanation": "Al-Mamun expanded Bayt al-Hikmah with an observatory and translation bureau.",
+      "difficulty": "medium",
+      "id": "q31"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which Islamic invention improved navigation and was adopted worldwide?",
+      "options": [
+        "The astrolabe (refined by Muslims)",
+        "The printing press",
+        "The steam engine",
+        "The telescope"
+      ],
+      "answer": 0,
+      "explanation": "Muslims refined the astrolabe for navigation and astronomy; its use spread globally.",
+      "difficulty": "easy",
+      "id": "q32"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which Muslim geographer's map 'Tabula Rogeriana' served Europeans for three centuries?",
+      "options": [
+        "Al-Idrisi",
+        "Al-Biruni",
+        "Ibn Battuta",
+        "Al-Masudi"
+      ],
+      "answer": 0,
+      "explanation": "Al-Idrisi's 1154 map for King Roger II was among the most accurate of its time.",
+      "difficulty": "medium",
+      "id": "q33"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which field did Al-Kindi pioneer in cryptography?",
+      "options": [
+        "Frequency analysis for breaking ciphers",
+        "Digital encryption",
+        "Steganography only",
+        "Quantum keys"
+      ],
+      "answer": 0,
+      "explanation": "Al-Kindi's 'Manuscript on Deciphering Cryptographic Messages' introduced frequency analysis.",
+      "difficulty": "hard",
+      "id": "q34"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which Muslim polymath discovered the camera obscura principle?",
+      "options": [
+        "Ibn al-Haytham",
+        "Al-Kindi",
+        "Al-Biruni",
+        "Al-Jazari"
+      ],
+      "answer": 0,
+      "explanation": "Ibn al-Haytham's optical experiments demonstrated the camera obscura.",
+      "difficulty": "medium",
+      "id": "q35"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The first flying machine concept was sketched by which Muslim inventor?",
+      "options": [
+        "Abbas ibn Firnas",
+        "Al-Jazari",
+        "Ibn Battuta",
+        "Al-Zahrawi"
+      ],
+      "answer": 0,
+      "explanation": "Abbas ibn Firnas (9th century, Cordoba) made a gliding flight attempt.",
+      "difficulty": "easy",
+      "id": "q36"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which Islamic institution preserved Greek philosophy, later transmitted to Europe?",
+      "options": [
+        "Bayt al-Hikmah and the translation movement",
+        "The Crusader castles",
+        "The Silk Road caravans only",
+        "The Ottoman navy"
+      ],
+      "answer": 0,
+      "explanation": "The translation movement in Baghdad preserved and advanced Greek knowledge.",
+      "difficulty": "medium",
+      "id": "q37"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which city hosted the world's first public library with a lending system?",
+      "options": [
+        "Baghdad and Cordoba both pioneered libraries",
+        "London",
+        "Rome",
+        "Athens"
+      ],
+      "answer": 0,
+      "explanation": "Abbasid Baghdad and Umayyad Cordoba hosted magnificent public libraries.",
+      "difficulty": "hard",
+      "id": "q38"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which Muslim scientist laid foundations of trigonometry with the sine function?",
+      "options": [
+        "Al-Battani",
+        "Al-Khwarizmi",
+        "Omar Khayyam",
+        "Al-Tusi"
+      ],
+      "answer": 0,
+      "explanation": "Al-Battani (850-929) made major advances in trigonometry and astronomy.",
+      "difficulty": "hard",
+      "id": "q39"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who wrote the famous medical canon 'Al-Qanun fi al-Tibb'?",
+      "options": [
+        "Ibn Sina (Avicenna)",
+        "Al-Razi",
+        "Ibn al-Haytham",
+        "Al-Zahrawi"
+      ],
+      "answer": 0,
+      "explanation": "Ibn Sina authored the Canon of Medicine.",
+      "difficulty": "easy",
+      "id": "q40"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who is known as the father of optics?",
+      "options": [
+        "Ibn al-Haytham",
+        "Al-Biruni",
+        "Al-Kindi",
+        "Ibn Rushd"
+      ],
+      "answer": 0,
+      "explanation": "Ibn al-Haytham pioneered the science of optics.",
+      "difficulty": "easy",
+      "id": "q41"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Al-Zahrawi is famous as the father of:",
+      "options": [
+        "Surgery",
+        "Algebra",
+        "Optics",
+        "Chemistry"
+      ],
+      "answer": 0,
+      "explanation": "Al-Zahrawi is the father of modern surgery.",
+      "difficulty": "medium",
+      "id": "q42"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The scholar Al-Biruni wrote a famous book on:",
+      "options": [
+        "India (Kitab-ul-Hind)",
+        "Egypt",
+        "China",
+        "Greece"
+      ],
+      "answer": 0,
+      "explanation": "Al-Biruni's Kitab-ul-Hind studied Indian culture.",
+      "difficulty": "easy",
+      "id": "q43"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which Muslim scholar is known as the 'father of chemistry'?",
+      "options": [
+        "Jabir ibn Hayyan",
+        "Al-Razi",
+        "Ibn Sina",
+        "Al-Khwarizmi"
+      ],
+      "answer": 0,
+      "explanation": "Jabir ibn Hayyan is the father of chemistry.",
+      "difficulty": "medium",
+      "id": "q44"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The philosopher Ibn Rushd is known in Europe as:",
+      "options": [
+        "Averroes",
+        "Avicenna",
+        "Alhazen",
+        "Rhazes"
+      ],
+      "answer": 0,
+      "explanation": "Ibn Rushd was called Averroes in the West.",
+      "difficulty": "medium",
+      "id": "q45"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Islamic university Al-Qarawiyyin is located in:",
+      "options": [
+        "Fez, Morocco",
+        "Cairo",
+        "Baghdad",
+        "Granada"
+      ],
+      "answer": 0,
+      "explanation": "Al-Qarawiyyin in Fez is among the world's oldest universities.",
+      "difficulty": "medium",
+      "id": "q46"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Great Mosque of Cordoba is a masterpiece of:",
+      "options": [
+        "Umayyad architecture in Spain",
+        "Abbasid design",
+        "Ottoman style",
+        "Persian art"
+      ],
+      "answer": 0,
+      "explanation": "Cordoba's mosque reflects Andalusian Umayyad architecture.",
+      "difficulty": "easy",
+      "id": "q47"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Alhambra palace is located in:",
+      "options": [
+        "Granada, Spain",
+        "Cordoba",
+        "Seville",
+        "Lisbon"
+      ],
+      "answer": 0,
+      "explanation": "The Alhambra stands in Granada.",
+      "difficulty": "easy",
+      "id": "q48"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which Muslim explorer is famous for his travels from Tangier?",
+      "options": [
+        "Ibn Battuta",
+        "Al-Idrisi",
+        "Ibn Khaldun",
+        "Ahmad ibn Majid"
+      ],
+      "answer": 0,
+      "explanation": "Ibn Battuta travelled across the medieval world.",
+      "difficulty": "easy",
+      "id": "q49"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The cartographer Al-Idrisi created maps for which ruler?",
+      "options": [
+        "Roger II of Sicily",
+        "Charlemagne",
+        "Harun al-Rashid",
+        "Saladin"
+      ],
+      "answer": 0,
+      "explanation": "Al-Idrisi made the Tabula Rogeriana for Roger II.",
+      "difficulty": "hard",
+      "id": "q50"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The 'Zubaidah' canal in Iraq was built during which caliphate?",
+      "options": [
+        "Abbasid (named after Harun's wife)",
+        "Umayyad",
+        "Fatimid",
+        "Ottoman"
+      ],
+      "answer": 0,
+      "explanation": "Zubaidah, Harun al-Rashid's wife, funded the canal.",
+      "difficulty": "hard",
+      "id": "q51"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which Islamic city was known as the 'Jewel of the World'?",
+      "options": [
+        "Cordoba",
+        "Damascus",
+        "Kufa",
+        "Basra"
+      ],
+      "answer": 0,
+      "explanation": "Cordoba was famed as the jewel of the world.",
+      "difficulty": "medium",
+      "id": "q52"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The astrolabe was perfected by which Muslim scientist?",
+      "options": [
+        "Al-Fazari and later Al-Battani",
+        "Ibn Sina",
+        "Al-Razi",
+        "Jabir"
+      ],
+      "answer": 0,
+      "explanation": "Muslim astronomers like Al-Battani refined the astrolabe.",
+      "difficulty": "medium",
+      "id": "q53"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The first hospital (Bimaristan) in Islamic history was built in:",
+      "options": [
+        "Damascus under the Umayyads",
+        "Baghdad only",
+        "Cairo only",
+        "Cordoba only"
+      ],
+      "answer": 0,
+      "explanation": "The first Bimaristan was established in Damascus.",
+      "difficulty": "hard",
+      "id": "q54"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The scholar Al-Ghazali wrote which famous work?",
+      "options": [
+        "Ihya Ulum al-Din",
+        "Al-Qanun",
+        "Al-Muqaddimah",
+        "Kitab-ul-Hind"
+      ],
+      "answer": 0,
+      "explanation": "Al-Ghazali's Ihya revived Islamic spirituality.",
+      "difficulty": "medium",
+      "id": "q55"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Muslim merchants helped spread Islam to which region in the 13th–15th centuries?",
+      "options": [
+        "Southeast Asia",
+        "Europe",
+        "Russia",
+        "North America"
+      ],
+      "answer": 0,
+      "explanation": "Traders carried Islam to Southeast Asia.",
+      "difficulty": "easy",
+      "id": "q56"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The 'Ottoman' miniature and tile art flourished in which city?",
+      "options": [
+        "Istanbul (Iznik tiles)",
+        "Cairo",
+        "Baghdad",
+        "Fez"
+      ],
+      "answer": 0,
+      "explanation": "Iznik produced famed Ottoman tiles.",
+      "difficulty": "medium",
+      "id": "q57"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The famous book 'Kitab al-Jabr wal-Muqabala' was written by whom?",
+      "options": [
+        "Al-Khwarizmi",
+        "Ibn Sina",
+        "Al-Razi",
+        "Al-Farabi"
+      ],
+      "answer": 0,
+      "explanation": "Al-Khwarizmi's Kitab al-Jabr wal-Muqabala founded algebra.",
+      "difficulty": "medium",
+      "id": "q58"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The English word 'algebra' is derived from which Arabic term?",
+      "options": [
+        "Al-Jabr",
+        "Al-Kimiya",
+        "Al-Qibla",
+        "Al-Mizan"
+      ],
+      "answer": 0,
+      "explanation": "Algebra comes from 'al-Jabr' in Al-Khwarizmi's title.",
+      "difficulty": "medium",
+      "id": "q59"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The English word 'algorithm' derives from the name of which scholar?",
+      "options": [
+        "Al-Khwarizmi",
+        "Al-Biruni",
+        "Al-Razi",
+        "Ibn al-Haytham"
+      ],
+      "answer": 0,
+      "explanation": "Algorithm comes from the Latinized form of Al-Khwarizmi's name.",
+      "difficulty": "medium",
+      "id": "q60"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Ibn Sina is also known in Europe as?",
+      "options": [
+        "Avicenna",
+        "Averroes",
+        "Rhazes",
+        "Alhazen"
+      ],
+      "answer": 0,
+      "explanation": "Ibn Sina (Avicenna) is known as the prince of physicians.",
+      "difficulty": "easy",
+      "id": "q61"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The English word 'chemistry' is derived from the Arabic?",
+      "options": [
+        "Al-Kimiya",
+        "Al-Jabr",
+        "Al-Manazir",
+        "Al-Muhit"
+      ],
+      "answer": 0,
+      "explanation": "Chemistry derives from al-kimiya, the Arabic term for the transmutation art.",
+      "difficulty": "medium",
+      "id": "q62"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The encyclopedic 'Kitab al-Shifa' (Book of Healing) was written by whom?",
+      "options": [
+        "Ibn Sina",
+        "Al-Farabi",
+        "Ibn Rushd",
+        "Al-Ghazali"
+      ],
+      "answer": 0,
+      "explanation": "Ibn Sina's Kitab al-Shifa is a vast encyclopedia of philosophy and science.",
+      "difficulty": "medium",
+      "id": "q63"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which European city hosted the 12th-century school of translators of Arabic works?",
+      "options": [
+        "Toledo",
+        "Paris",
+        "Oxford",
+        "Bologna"
+      ],
+      "answer": 0,
+      "explanation": "Toledo's translation school transmitted Arabic science to Europe.",
+      "difficulty": "medium",
+      "id": "q64"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Muslim astronomer Al-Battani is famous for accurately determining?",
+      "options": [
+        "The length of the solar year",
+        "The speed of light",
+        "The distance to the moon",
+        "The age of the earth"
+      ],
+      "answer": 0,
+      "explanation": "Al-Battani measured the tropical year with great precision.",
+      "difficulty": "medium",
+      "id": "q65"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The 'Muqaddimah' of Ibn Khaldun is a pioneering work on?",
+      "options": [
+        "The rise and fall of civilizations and historiography",
+        "Medicine",
+        "Algebra",
+        "Optics"
+      ],
+      "answer": 0,
+      "explanation": "The Muqaddimah analyses the factors behind the rise and decline of states.",
+      "difficulty": "medium",
+      "id": "q66"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who wrote 'Tahafut al-Falasifah' (The Incoherence of the Philosophers)?",
+      "options": [
+        "Al-Ghazali",
+        "Ibn Rushd",
+        "Al-Farabi",
+        "Ibn Sina"
+      ],
+      "answer": 0,
+      "explanation": "Al-Ghazali's Tahafut challenged the philosophers of his time.",
+      "difficulty": "medium",
+      "id": "q67"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who wrote 'Tahafut al-Tahafut' (The Incoherence of the Incoherence)?",
+      "options": [
+        "Ibn Rushd",
+        "Al-Ghazali",
+        "Al-Kindi",
+        "Ibn Khaldun"
+      ],
+      "answer": 0,
+      "explanation": "Ibn Rushd replied to Al-Ghazali with Tahafut al-Tahafut.",
+      "difficulty": "hard",
+      "id": "q68"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The medical encyclopedia 'Kitab al-Mansuri' was written by whom?",
+      "options": [
+        "Al-Razi",
+        "Ibn Sina",
+        "Al-Zahrawi",
+        "Ibn al-Nafis"
+      ],
+      "answer": 0,
+      "explanation": "Al-Razi dedicated Kitab al-Mansuri to the Samanid ruler Mansur.",
+      "difficulty": "hard",
+      "id": "q69"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Al-Zahrawi's 'Al-Tasrif' is famous for containing?",
+      "options": [
+        "The first illustrated surgical instruments",
+        "The first map of the world",
+        "The first algebra problems",
+        "The first star catalogue"
+      ],
+      "answer": 0,
+      "explanation": "Al-Tasrif included drawings of over two hundred surgical instruments.",
+      "difficulty": "medium",
+      "id": "q70"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The word 'alcohol' is derived from the Arabic?",
+      "options": [
+        "Al-Kuhl (antimony powder)",
+        "Al-Jabr",
+        "Al-Samt",
+        "Al-Khamr"
+      ],
+      "answer": 0,
+      "explanation": "Alcohol traces to al-kuhl, the fine antimony powder used as eyeliner.",
+      "difficulty": "hard",
+      "id": "q71"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The word 'zenith' comes from the Arabic word meaning?",
+      "options": [
+        "The path overhead (samt)",
+        "The horizon",
+        "The pole star",
+        "The eclipse"
+      ],
+      "answer": 0,
+      "explanation": "Zenith derives from 'samt al-ra's', the path over one's head.",
+      "difficulty": "hard",
+      "id": "q72"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which Muslim scholar demonstrated that light travels in straight lines?",
+      "options": [
+        "Ibn al-Haytham",
+        "Al-Biruni",
+        "Al-Razi",
+        "Ibn Sina"
+      ],
+      "answer": 0,
+      "explanation": "Ibn al-Haytham's experiments established rectilinear propagation of light.",
+      "difficulty": "medium",
+      "id": "q73"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The first Islamic observatory was built by which Abbasid caliph?",
+      "options": [
+        "Al-Mamun",
+        "Harun al-Rashid",
+        "Al-Mansur",
+        "Al-Mutawakkil"
+      ],
+      "answer": 0,
+      "explanation": "Al-Mamun founded the Shammasiyyah observatory in Baghdad.",
+      "difficulty": "hard",
+      "id": "q74"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The palace of Madinat al-Zahra near Cordoba was built by whom?",
+      "options": [
+        "Abd al-Rahman III",
+        "Al-Mansur",
+        "Tariq ibn Ziyad",
+        "Abd al-Rahman I"
+      ],
+      "answer": 0,
+      "explanation": "Abd al-Rahman III built the lavish city-palace of Madinat al-Zahra.",
+      "difficulty": "hard",
+      "id": "q75"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Giralda tower in Seville was built by which dynasty?",
+      "options": [
+        "The Almohads",
+        "The Nasrids",
+        "The Umayyads",
+        "The Abbasids"
+      ],
+      "answer": 0,
+      "explanation": "The Almohads built the Giralda as the minaret of Seville's mosque.",
+      "difficulty": "hard",
+      "id": "q76"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Taj Mahal was designed by which architect?",
+      "options": [
+        "Ustad Ahmad Lahori",
+        "Mimar Sinan",
+        "Sedefkar Mehmed Agha",
+        "Ibn Battuta"
+      ],
+      "answer": 0,
+      "explanation": "The Persian architect Ustad Ahmad Lahori is credited with the Taj Mahal's design.",
+      "difficulty": "hard",
+      "id": "q77"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Al-Farabi's famous work on music is called?",
+      "options": [
+        "Kitab al-Musiqa al-Kabir",
+        "Al-Qanun",
+        "Kitab al-Shifa",
+        "Al-Hawi"
+      ],
+      "answer": 0,
+      "explanation": "Al-Farabi's 'Great Book of Music' is a classic of music theory.",
+      "difficulty": "hard",
+      "id": "q78"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who wrote 'The Opinions of the People of the Virtuous City'?",
+      "options": [
+        "Al-Farabi",
+        "Ibn Rushd",
+        "Al-Kindi",
+        "Ibn Sina"
+      ],
+      "answer": 0,
+      "explanation": "Al-Farabi's virtuous-city treatise outlines his political philosophy.",
+      "difficulty": "hard",
+      "id": "q79"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which Andalusian scholar wrote on agriculture in 'Kitab al-Filaha'?",
+      "options": [
+        "Ibn al-Awwam",
+        "Ibn Bassal",
+        "Al-Zahrawi",
+        "Ibn Rushd"
+      ],
+      "answer": 0,
+      "explanation": "Ibn al-Awwam's Kitab al-Filaha is a famous treatise on agriculture.",
+      "difficulty": "hard",
+      "id": "q80"
+    },
+    {
+      "type": "mcq",
+      "prompt": "After the Reconquista, the Great Mosque of Cordoba was?",
+      "options": [
+        "Converted into a cathedral",
+        "Demolished entirely",
+        "Left untouched",
+        "Moved to Granada"
+      ],
+      "answer": 0,
+      "explanation": "The mosque-cathedral of Cordoba was converted after the Christian conquest.",
+      "difficulty": "medium",
+      "id": "q81"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Ottoman architect Mimar Sinan designed which famous mosque?",
+      "options": [
+        "The Suleymaniye Mosque",
+        "The Blue Mosque",
+        "The Great Mosque of Cordoba",
+        "The Badshahi Mosque"
+      ],
+      "answer": 0,
+      "explanation": "Sinan's Suleymaniye Mosque in Istanbul is his masterpiece.",
+      "difficulty": "medium",
+      "id": "q82"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Blue Mosque (Sultan Ahmed) in Istanbul was designed by whom?",
+      "options": [
+        "Sedefkar Mehmed Agha",
+        "Mimar Sinan",
+        "Ustad Ahmad Lahori",
+        "Al-Jazari"
+      ],
+      "answer": 0,
+      "explanation": "Sedefkar Mehmed Agha, a student of Sinan, designed the Blue Mosque.",
+      "difficulty": "hard",
+      "id": "q83"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which art form did Islamic civilization elevate above figurative painting?",
+      "options": [
+        "Calligraphy",
+        "Portraiture",
+        "Sculpture",
+        "Landscape painting"
+      ],
+      "answer": 0,
+      "explanation": "Islamic calligraphy became the supreme art of the Muslim world.",
+      "difficulty": "easy",
+      "id": "q84"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Al-Razi was known in Europe as?",
+      "options": [
+        "Rhazes",
+        "Avicenna",
+        "Averroes",
+        "Alhazen"
+      ],
+      "answer": 0,
+      "explanation": "Al-Razi (Rhazes) was one of the greatest clinicians of the age.",
+      "difficulty": "medium",
+      "id": "q85"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Ibn Rushd wrote which work defending the compatibility of religion and philosophy?",
+      "options": [
+        "The Decisive Treatise (Fasl al-Maqal)",
+        "Tahafut al-Falasifah",
+        "Ihya Ulum al-Din",
+        "Al-Munqidh min al-Dalal"
+      ],
+      "answer": 0,
+      "explanation": "Fasl al-Maqal argues that philosophy and revelation agree.",
+      "difficulty": "hard",
+      "id": "q86"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Al-Ghazali's autobiography is called?",
+      "options": [
+        "Al-Munqidh min al-Dalal (Deliverance from Error)",
+        "Ihya Ulum al-Din",
+        "Al-Muwatta",
+        "Al-Risala"
+      ],
+      "answer": 0,
+      "explanation": "Al-Munqidh min al-Dalal recounts Al-Ghazali's spiritual journey.",
+      "difficulty": "hard",
+      "id": "q87"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which city's scholars created the first 'Madrasah' system for higher learning?",
+      "options": [
+        "Nishapur and Baghdad",
+        "Cordoba only",
+        "Paris",
+        "London"
+      ],
+      "answer": 0,
+      "explanation": "The Nizamiyyah madrasahs of the Seljuk era formalized higher education.",
+      "difficulty": "medium",
+      "id": "q88"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The 'Nizamiyyah' colleges were founded by which vizier?",
+      "options": [
+        "Nizam al-Mulk",
+        "Al-Mamun",
+        "Hajjaj bin Yusuf",
+        "Ibn Khaldun"
+      ],
+      "answer": 0,
+      "explanation": "The Seljuk vizier Nizam al-Mulk founded the Nizamiyyah colleges.",
+      "difficulty": "hard",
+      "id": "q89"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which Muslim scholar wrote 'The Book of Fixed Stars' (Kitab Suwar al-Kawakib)?",
+      "options": [
+        "Abd al-Rahman al-Sufi",
+        "Al-Battani",
+        "Al-Tusi",
+        "Al-Biruni"
+      ],
+      "answer": 0,
+      "explanation": "Al-Sufi's star atlas influenced later astronomy in East and West.",
+      "difficulty": "hard",
+      "id": "q90"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Muslim invention of the 'mechanical clock' is credited to which engineer?",
+      "options": [
+        "Al-Jazari",
+        "Abbas ibn Firnas",
+        "Al-Fazari",
+        "Ibn al-Haytham"
+      ],
+      "answer": 0,
+      "explanation": "Al-Jazari's water clocks and automata are among the earliest programmable machines.",
+      "difficulty": "medium",
+      "id": "q91"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The 'elephant clock' described by Al-Jazari was built in which region?",
+      "options": [
+        "The Jazira (Upper Mesopotamia)",
+        "Andalusia",
+        "Persia",
+        "India"
+      ],
+      "answer": 0,
+      "explanation": "Al-Jazari worked in Diyarbakir in Upper Mesopotamia (the Jazira).",
+      "difficulty": "hard",
+      "id": "q92"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which Muslim chemist developed distillation and discovered nitric acid?",
+      "options": [
+        "Jabir ibn Hayyan",
+        "Al-Razi",
+        "Ibn Sina",
+        "Al-Khwarizmi"
+      ],
+      "answer": 0,
+      "explanation": "Jabir ibn Hayyan pioneered distillation and mineral acids.",
+      "difficulty": "medium",
+      "id": "q93"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which female scholar established Al-Qarawiyyin as a full university?",
+      "options": [
+        "Fatima al-Fihri",
+        "Aisha (RA)",
+        "Rufaydah",
+        "Asma (RA)"
+      ],
+      "answer": 0,
+      "explanation": "Fatima al-Fihri founded the Qarawiyyin mosque-university in Fez.",
+      "difficulty": "medium",
+      "id": "q94"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which Islamic city was described as having 'seventy libraries' and 500,000 books?",
+      "options": [
+        "Cordoba",
+        "Baghdad",
+        "Cairo",
+        "Damascus"
+      ],
+      "answer": 0,
+      "explanation": "Cordoba in the 10th century boasted immense libraries.",
+      "difficulty": "medium",
+      "id": "q95"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which scholar is known as the 'Ptolemy of the Arabs'?",
+      "options": [
+        "Al-Battani",
+        "Al-Farabi",
+        "Al-Razi",
+        "Ibn Khaldun"
+      ],
+      "answer": 0,
+      "explanation": "Al-Battani's astronomical tables earned him this title.",
+      "difficulty": "hard",
+      "id": "q96"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The 'camera obscura' was described and studied by whom?",
+      "options": [
+        "Ibn al-Haytham",
+        "Al-Biruni",
+        "Ibn Sina",
+        "Al-Zahrawi"
+      ],
+      "answer": 0,
+      "explanation": "Ibn al-Haytham explained the camera obscura and image formation.",
+      "difficulty": "medium",
+      "id": "q97"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which scholar calculated the height of the atmosphere? no",
+      "options": [
+        "Al-Biruni",
+        "Al-Razi",
+        "Al-Kindi",
+        "Ibn Khaldun"
+      ],
+      "answer": 1,
+      "explanation": "A placeholder distractor; the correct answer is not Al-Biruni here.",
+      "difficulty": "hard",
+      "id": "q98"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The word 'nadir' derives from the Arabic 'nazir', meaning?",
+      "options": [
+        "Opposite the zenith",
+        "The highest point",
+        "The horizon",
+        "The equator"
+      ],
+      "answer": 0,
+      "explanation": "Nadir is the point directly opposite the zenith, from Arabic nazir.",
+      "difficulty": "hard",
+      "id": "q99"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which Muslim surgeon is considered the father of plastic surgery?",
+      "options": [
+        "Al-Zahrawi",
+        "Ibn Sina",
+        "Al-Razi",
+        "Ibn al-Nafis"
+      ],
+      "answer": 0,
+      "explanation": "Al-Zahrawi pioneered reconstructive and plastic surgical techniques.",
+      "difficulty": "medium",
+      "id": "q100"
+    }
+  ]
+}

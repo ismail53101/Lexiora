@@ -5,6 +5,62 @@ All notable changes to Sapiora are documented here.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [Unreleased]
+
+### Added
+- **Duplicate prevention for generated MCQs (`QuizDuplicateChecker`).** A pure,
+  deterministic check now guards every generated question before it is saved:
+  the candidate is compared against the ENTIRE question bank and rejected when
+  it is an exact duplicate, a reworded duplicate, the same question with
+  reordered options, the same question with different options, or the same
+  knowledge point (paraphrase). `QuizAdminRepository.addGeneratedQuestions`
+  saves only the questions that pass, never modifies or duplicates existing
+  rows, and reports each rejection with the reason and the colliding question.
+  Uniqueness wins over quantity: if duplicates are found, fewer questions are
+  returned than requested rather than lowering the bar. Unit-tested in
+  `test/modules/quiz/quiz_duplicate_check_test.dart`.
+- **Dataset-level duplicate prevention test**
+  (`test/modules/quiz/quiz_dataset_integrity_test.dart`). Every bundled bank
+  under `assets/quiz/` is parsed with the same `QuizJsonParser` the seeder uses
+  and the whole shipped corpus (~3,750 questions) is run through the real
+  `QuizDuplicateChecker` — any duplicate group (exact, reordered options,
+  different options, reworded or same-concept) fails the suite, so a future
+  edit can never silently re-introduce duplicate questions.
+
+### Changed
+- **Quiz banks deduplicated.** General Science & Ability is now **910 unique
+  MCQs across the 7 banks** — physics (130), chemistry (130), biology (130),
+  computer (130), earth & space (130), inventions & scientists (130), and math &
+  reasoning (130). The GSA banks were expanded from 662 to 910 questions (+248):
+  every new question was pre-checked against the entire bundled corpus with
+  `QuizDuplicateChecker`, and exact, reworded, different-option, reordered-
+  option and same-concept collisions were rejected before anything was saved. English is now **833 unique MCQs across the 7 banks** —
+  antonyms (77), grammar (187), idioms & phrases (117), one-word substitution
+  (103), sentence correction (104), synonyms (127), and vocabulary (118).
+  Islamic Studies is now **2,200 unique MCQs across the 22 banks** and
+  Pakistan Affairs is now **1,300 unique MCQs across the 10 banks** (all
+  re-validated with sequential IDs; see the rebalancing entry below). Every bank was checked against the
+  duplicate-prevention rules in `QuizDuplicateChecker`, and the remaining
+  duplicate and near-duplicate questions (same fact re-worded, same question
+  re-asked with different wording or options, same sentence across banks,
+  identical stems re-asked with reworded answers) were removed so the shipped
+  corpus passes the same check that guards new MCQs. Dataset version bumped
+  (`quiz-bundled-2026.08-v23`) so existing installs re-seed and pick up the
+  expanded, deduplicated set without losing progress.
+- **Quiz bank rebalancing.** Islamic Studies is now **2,200 unique MCQs — 100
+  per bank across all 22 banks** (previously 48–100 per bank, 1,334 total) and
+  Pakistan Affairs is now **1,300 unique MCQs — 130 per bank across all 10
+  banks** (previously 91–130, 910 total). Each new question was authored
+  against its bank's existing content and passed through the same
+  `QuizDuplicateChecker` the app uses: every candidate was compared with the
+  ENTIRE bundled corpus and exact, reworded, different-option,
+  reordered-option and same-concept collisions were rejected before anything
+  was saved (16 near-duplicates were caught and dropped). Banks are capped at
+  their targets with sequential IDs, JSON re-validated, and the whole shipped
+  corpus (~5,243 questions) passes the dataset integrity test. Dataset version
+  bumped (`quiz-bundled-2026.08-v24`) so existing installs re-seed and pick up
+  the balanced set without losing progress.
+
 ## [0.5.0] — 2026-07-25
 
 Phase v0.5.0 — **Grammar hierarchy**: the module now follows a strict

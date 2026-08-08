@@ -1,0 +1,1413 @@
+{
+  "bank": {
+    "name": "Angels, Beliefs & Articles of Faith",
+    "subject": "Islamic Studies",
+    "topic": "Angels, Beliefs & Articles of Faith",
+    "description": "The articles of faith, angels and core Islamic beliefs.",
+    "tags": "css,pms,fpsc,ppsc,nts,islamic-studies,angels,beliefs,iman",
+    "version": "1.0",
+    "id": "islamiat_angels_beliefs"
+  },
+  "questions": [
+    {
+      "type": "mcq",
+      "prompt": "Belief in the books of Allah includes which revealed scriptures?",
+      "options": [
+        "Taurat, Zabur, Injeel and Quran",
+        "Only the Quran",
+        "Vedas and Bible",
+        "Torah and Quran only"
+      ],
+      "answer": 0,
+      "explanation": "Muslims believe in the Taurat (Musa), Zabur (Daud), Injeel (Isa) and the Quran (Muhammad PBUH).",
+      "difficulty": "easy",
+      "id": "q01"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who is the angel responsible for blowing the trumpet (Sur) on the Day of Judgment?",
+      "options": [
+        "Israfil",
+        "Mika'il",
+        "Azra'il",
+        "Jibra'il"
+      ],
+      "answer": 0,
+      "explanation": "Israfil (AS) will blow the Sur (trumpet) to signal the Day of Resurrection.",
+      "difficulty": "medium",
+      "id": "q02"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which angel is the one who takes souls at death?",
+      "options": [
+        "Azra'il (Malak-ul-Maut)",
+        "Jibra'il",
+        "Mika'il",
+        "Israfil"
+      ],
+      "answer": 0,
+      "explanation": "Azra'il is the angel of death who takes the souls of the departed.",
+      "difficulty": "medium",
+      "id": "q03"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The angels who question the dead in the grave are called?",
+      "options": [
+        "Munkar and Nakir",
+        "Raqib and Atid",
+        "Harut and Marut",
+        "Kiraman Katibin"
+      ],
+      "answer": 0,
+      "explanation": "Munkar and Nakir are the angels who question the deceased in the grave.",
+      "difficulty": "medium",
+      "id": "q04"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The angels who record good and bad deeds are called?",
+      "options": [
+        "Kiraman Katibin",
+        "Munkar and Nakir",
+        "Harut and Marut",
+        "Hafaza"
+      ],
+      "answer": 0,
+      "explanation": "Kiraman Katibin are the noble recording angels (Qaf 50:17-18).",
+      "difficulty": "hard",
+      "id": "q05"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which angel is the keeper of Paradise (Jannah)?",
+      "options": [
+        "Ridwan",
+        "Malik",
+        "Mika'il",
+        "Israfil"
+      ],
+      "answer": 0,
+      "explanation": "Ridwan is the angel guarding Paradise; Malik guards Hell.",
+      "difficulty": "hard",
+      "id": "q06"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which angel is the keeper of Hell (Jahannam)?",
+      "options": [
+        "Malik",
+        "Ridwan",
+        "Azra'il",
+        "Jibra'il"
+      ],
+      "answer": 0,
+      "explanation": "Malik is the keeper of Jahannam (Zukhruf 43:77).",
+      "difficulty": "hard",
+      "id": "q07"
+    },
+    {
+      "type": "mcq",
+      "prompt": "How many angels carry the Throne of Allah on the Day of Judgment?",
+      "options": [
+        "Eight",
+        "Four",
+        "Two",
+        "Twelve"
+      ],
+      "answer": 0,
+      "explanation": "The Quran mentions eight angels bearing the Throne on that Day (69:17).",
+      "difficulty": "hard",
+      "id": "q08"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What is 'Taqdir' (Qadar)?",
+      "options": [
+        "Belief in divine decree, both good and bad",
+        "Belief in angels",
+        "Belief in the afterlife",
+        "Belief in prophets"
+      ],
+      "answer": 0,
+      "explanation": "Taqdir is the belief that all that happens is by Allah's decree and measure.",
+      "difficulty": "medium",
+      "id": "q09"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What is 'Akhirah'?",
+      "options": [
+        "The afterlife and the Day of Judgment",
+        "The world of this life",
+        "The angels",
+        "The revealed books"
+      ],
+      "answer": 0,
+      "explanation": "Akhirah refers to the eternal life after death, including resurrection and judgment.",
+      "difficulty": "easy",
+      "id": "q10"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What are the two names for Paradise and Hell in the Quran?",
+      "options": [
+        "Jannah and Jahannam",
+        "Barzakh and Araf",
+        "Sidrat and Tubba",
+        "Ruh and Nafs"
+      ],
+      "answer": 0,
+      "explanation": "Jannah (Paradise) and Jahannam (Hell) are the two eternal abodes.",
+      "difficulty": "easy",
+      "id": "q11"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What is 'Barzakh'?",
+      "options": [
+        "The intermediate state between death and resurrection",
+        "The Day of Judgment",
+        "The bridge over Hell",
+        "A level of Paradise"
+      ],
+      "answer": 0,
+      "explanation": "Barzakh is the grave/interim state until the Day of Resurrection.",
+      "difficulty": "medium",
+      "id": "q12"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What is the 'Sirat'?",
+      "options": [
+        "The bridge over Hell that all must cross",
+        "The scale of deeds",
+        "The book of deeds",
+        "A gate of Paradise"
+      ],
+      "answer": 0,
+      "explanation": "As-Sirat is the bridge over Jahannam; the righteous cross it to Jannah.",
+      "difficulty": "medium",
+      "id": "q13"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What is 'Mizan'?",
+      "options": [
+        "The weighing of deeds on the Day of Judgment",
+        "The bridge",
+        "The trumpet",
+        "The book of records"
+      ],
+      "answer": 0,
+      "explanation": "Al-Mizan is the balance in which deeds will be weighed (21:47).",
+      "difficulty": "medium",
+      "id": "q14"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The first question asked of the dead in the grave is about?",
+      "options": [
+        "Their Lord (Rabb)",
+        "Their wealth",
+        "Their family",
+        "Their age"
+      ],
+      "answer": 0,
+      "explanation": "The deceased is asked: Who is your Lord? What is your religion? Who is your Prophet?",
+      "difficulty": "medium",
+      "id": "q15"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which Surah begins by swearing by the 'Day of Resurrection'?",
+      "options": [
+        "Surah Al-Qiyamah",
+        "Surah Al-Waqi'ah",
+        "Surah Al-Haqqah",
+        "Surah At-Takwir"
+      ],
+      "answer": 0,
+      "explanation": "Surah Al-Qiyamah opens: 'I swear by the Day of Resurrection.'",
+      "difficulty": "medium",
+      "id": "q16"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The angel Jibra'il (AS) is also called?",
+      "options": [
+        "Ruh-ul-Qudus (the Holy Spirit)",
+        "Malak-ul-Maut",
+        "Ridwan",
+        "Kiraman Katibin"
+      ],
+      "answer": 0,
+      "explanation": "Jibra'il is called Ruh-ul-Qudus and Ruh-ul-Amin in the Quran.",
+      "difficulty": "medium",
+      "id": "q17"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What are the 'Hafaza' angels?",
+      "options": [
+        "Guardian angels who protect humans",
+        "Recording angels",
+        "Angels of the grave",
+        "Angels of rain"
+      ],
+      "answer": 0,
+      "explanation": "Hafaza are the guardian angels appointed over every person (13:11).",
+      "difficulty": "hard",
+      "id": "q18"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which angel is entrusted with delivering revelation to the Prophets?",
+      "options": [
+        "Jibra'il (AS)",
+        "Mika'il (AS)",
+        "Israfil (AS)",
+        "Malik (AS)"
+      ],
+      "answer": 0,
+      "explanation": "Jibra'il (Gabriel) is the angel of revelation who conveyed Allah's message to the Prophets.",
+      "difficulty": "easy",
+      "id": "q19"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which angel is entrusted with the distribution of sustenance and rain?",
+      "options": [
+        "Mika'il (AS)",
+        "Israfil (AS)",
+        "Azra'il (AS)",
+        "Ridwan (AS)"
+      ],
+      "answer": 0,
+      "explanation": "Mika'il (Michael) is responsible for providing sustenance and controlling rain and provisions.",
+      "difficulty": "easy",
+      "id": "q20"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which angel is known as the angel of death who takes the souls of people?",
+      "options": [
+        "Azra'il (AS)",
+        "Jibra'il (AS)",
+        "Israfil (AS)",
+        "Mika'il (AS)"
+      ],
+      "answer": 0,
+      "explanation": "Azra'il (AS), the Angel of Death, is tasked with taking the souls of every living being.",
+      "difficulty": "easy",
+      "id": "q21"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who is the keeper of Hell (Jahannam)?",
+      "options": [
+        "Malik (AS)",
+        "Ridwan (AS)",
+        "Nakir (AS)",
+        "Israfil (AS)"
+      ],
+      "answer": 0,
+      "explanation": "Malik (AS) is the chief keeper of Hell mentioned in the Quran (43:77).",
+      "difficulty": "medium",
+      "id": "q22"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who is the guardian of Paradise (Jannah)?",
+      "options": [
+        "Ridwan (AS)",
+        "Malik (AS)",
+        "Munkar (AS)",
+        "Harut (AS)"
+      ],
+      "answer": 0,
+      "explanation": "Ridwan (AS) is the keeper of Paradise who welcomes the believers.",
+      "difficulty": "medium",
+      "id": "q23"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What does 'Kiraman Katibin' mean?",
+      "options": [
+        "Noble recording angels",
+        "Angels of death",
+        "Angels of rain",
+        "Angels of the Throne"
+      ],
+      "answer": 0,
+      "explanation": "Kiraman Katibin are the noble angels who record every person's good and bad deeds.",
+      "difficulty": "easy",
+      "id": "q24"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which angels carry the Throne (Arsh) of Allah?",
+      "options": [
+        "Hamalat-ul-Arsh",
+        "Hafaza",
+        "Munkar and Nakir",
+        "Kiraman Katibin"
+      ],
+      "answer": 0,
+      "explanation": "Hamalat-ul-Arsh are the angels who bear the Throne of Allah (40:7).",
+      "difficulty": "medium",
+      "id": "q25"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which two angels were sent to Babylon and taught people magic as a trial?",
+      "options": [
+        "Harut and Marut",
+        "Munkar and Nakir",
+        "Hafaza",
+        "Hamalat-ul-Arsh"
+      ],
+      "answer": 0,
+      "explanation": "Harut and Marut are mentioned in Surah Al-Baqarah (2:102) as a trial sent to Babylon.",
+      "difficulty": "hard",
+      "id": "q26"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What is the first article of faith (Iman) in Islam?",
+      "options": [
+        "Belief in Allah",
+        "Belief in angels",
+        "Belief in Prophets",
+        "Belief in the Last Day"
+      ],
+      "answer": 0,
+      "explanation": "Tawheed — belief in the Oneness of Allah — is the first and most fundamental article of faith.",
+      "difficulty": "easy",
+      "id": "q27"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What is 'Qadar' in Islamic belief?",
+      "options": [
+        "Divine decree and predestination",
+        "Repentance",
+        "Charity",
+        "Pilgrimage"
+      ],
+      "answer": 0,
+      "explanation": "Qadar is the belief that everything happens by Allah's divine decree and measure.",
+      "difficulty": "easy",
+      "id": "q28"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What is the period between death and the Day of Judgment called?",
+      "options": [
+        "Barzakh",
+        "Mizan",
+        "Sirat",
+        "Hashr"
+      ],
+      "answer": 0,
+      "explanation": "Barzakh is the intermediate state between death and resurrection.",
+      "difficulty": "easy",
+      "id": "q29"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What is the 'Mizan' on the Day of Judgment?",
+      "options": [
+        "The scale weighing deeds",
+        "The bridge over Hell",
+        "The gathering place",
+        "The book of deeds"
+      ],
+      "answer": 0,
+      "explanation": "Mizan is the scale on which every person's good and bad deeds will be weighed.",
+      "difficulty": "medium",
+      "id": "q30"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What is the 'Sirat' in Islamic eschatology?",
+      "options": [
+        "The bridge over Hell thinner than a hair",
+        "A book of deeds",
+        "A valley in Paradise",
+        "A mountain near Makkah"
+      ],
+      "answer": 0,
+      "explanation": "Sirat is the bridge over Hell that everyone must cross; the righteous cross swiftly, the sinful stumble.",
+      "difficulty": "medium",
+      "id": "q31"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What is 'Hashr' (the Gathering)?",
+      "options": [
+        "All mankind gathered on the plain of judgment",
+        "The weighing of deeds",
+        "The blowing of the trumpet",
+        "The questioning in the grave"
+      ],
+      "answer": 0,
+      "explanation": "Hashr is the Day of Gathering when all creation is assembled for judgment.",
+      "difficulty": "medium",
+      "id": "q32"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What is 'Taqdir' also known as?",
+      "options": [
+        "Divine destiny and fate",
+        "A form of prayer",
+        "A type of charity",
+        "A pilgrimage rite"
+      ],
+      "answer": 0,
+      "explanation": "Taqdir is another term for Qadar — Allah's decree and destiny for all creation.",
+      "difficulty": "medium",
+      "id": "q33"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which angel recorded the Quranic revelation as it was revealed?",
+      "options": [
+        "Jibra'il (AS) with the Prophet (PBUH)",
+        "Israfil (AS)",
+        "Mika'il (AS)",
+        "Malik (AS)"
+      ],
+      "answer": 0,
+      "explanation": "Jibra'il (AS) brought the revelation to the Prophet (PBUH), who dictated it to the scribes.",
+      "difficulty": "easy",
+      "id": "q34"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which angel is responsible for taking souls at death?",
+      "options": [
+        "Angel Azrael (Malak-ul-Maut)",
+        "Angel Jibreel",
+        "Angel Israfil",
+        "Angel Mikail"
+      ],
+      "answer": 0,
+      "explanation": "Azrael is the angel of death who takes souls.",
+      "difficulty": "easy",
+      "id": "q35"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who was the angel that visited the Prophet (PBUH) in the cave of Hira?",
+      "options": [
+        "Angel Jibreel",
+        "Angel Mikail",
+        "Angel Israfil",
+        "Angel Ridwan"
+      ],
+      "answer": 0,
+      "explanation": "Jibreel brought the first revelation in Hira.",
+      "difficulty": "easy",
+      "id": "q36"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The keeper of Hell is known as:",
+      "options": [
+        "Malik (the chief guardian)",
+        "Ridwan",
+        "Munkar",
+        "Nakir"
+      ],
+      "answer": 0,
+      "explanation": "Malik is the guardian of Jahannam.",
+      "difficulty": "medium",
+      "id": "q37"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Angels are created from:",
+      "options": [
+        "Light (Nur)",
+        "Fire",
+        "Clay",
+        "Smoke"
+      ],
+      "answer": 0,
+      "explanation": "Angels were created from light according to hadith.",
+      "difficulty": "easy",
+      "id": "q38"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The angel who delivers sustenance and rain is:",
+      "options": [
+        "Angel Mikail",
+        "Angel Jibreel",
+        "Angel Azrael",
+        "Angel Israfil"
+      ],
+      "answer": 0,
+      "explanation": "Mikail is responsible for provisions and rain.",
+      "difficulty": "easy",
+      "id": "q39"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The number of angels carrying the Throne (Arsh) is:",
+      "options": [
+        "Eight (as described in the Quran)",
+        "Four",
+        "Ten",
+        "Twelve"
+      ],
+      "answer": 0,
+      "explanation": "The Quran mentions eight angels bearing the Throne.",
+      "difficulty": "medium",
+      "id": "q40"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Belief in angels is one of the:",
+      "options": [
+        "Six articles of faith (Iman)",
+        "Five pillars",
+        "Ten commandments",
+        "Sunnahs only"
+      ],
+      "answer": 0,
+      "explanation": "Belief in angels is a core article of Iman.",
+      "difficulty": "easy",
+      "id": "q41"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The angel who carries revelations to other prophets before Prophet Muhammad (PBUH) was:",
+      "options": [
+        "Jibreel (same angel)",
+        "Mikail",
+        "Israfil",
+        "Harut"
+      ],
+      "answer": 0,
+      "explanation": "Jibreel conveyed revelation to all prophets.",
+      "difficulty": "easy",
+      "id": "q42"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The guardian of Paradise is:",
+      "options": [
+        "Angel Ridwan",
+        "Angel Malik",
+        "Angel Jibreel",
+        "Angel Mikail"
+      ],
+      "answer": 0,
+      "explanation": "Ridwan is the keeper of Jannah.",
+      "difficulty": "medium",
+      "id": "q43"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which angels are mentioned by name in the Quran?",
+      "options": [
+        "Jibreel and Mikail",
+        "Only Jibreel",
+        "Azrael only",
+        "None are named"
+      ],
+      "answer": 0,
+      "explanation": "The Quran names Jibreel and Mikail directly.",
+      "difficulty": "medium",
+      "id": "q44"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The angels do not enter a house containing:",
+      "options": [
+        "A dog or images (as per hadith)",
+        "A Quran",
+        "A child",
+        "Food"
+      ],
+      "answer": 0,
+      "explanation": "Hadith states angels avoid homes with dogs or images.",
+      "difficulty": "medium",
+      "id": "q45"
+    },
+    {
+      "type": "mcq",
+      "prompt": "In the Quran, angels are described as:",
+      "options": [
+        "Honoured servants who obey Allah",
+        "Sons of Allah",
+        "Eternal beings like Allah",
+        "Independent creators"
+      ],
+      "answer": 0,
+      "explanation": "Angels are obedient, honoured servants of Allah.",
+      "difficulty": "easy",
+      "id": "q46"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The two angels Harut and Marut are mentioned in which context?",
+      "options": [
+        "The trial in Babylon regarding magic",
+        "Guardians of Hell",
+        "Carriers of the Throne",
+        "Recorders of deeds"
+      ],
+      "answer": 0,
+      "explanation": "Harut and Marut are linked to the test of magic in Babylon.",
+      "difficulty": "hard",
+      "id": "q47"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Angels can take which forms?",
+      "options": [
+        "Human form by Allah's command",
+        "Only light",
+        "Only animals",
+        "They never appear"
+      ],
+      "answer": 0,
+      "explanation": "Angels appeared in human form, e.g., to Maryam and Ibrahim.",
+      "difficulty": "medium",
+      "id": "q48"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The angel that came to Ibrahim (AS) with news of Ishaq was:",
+      "options": [
+        "Jibreel and other angels",
+        "Israfil",
+        "Azrael",
+        "Mikail only"
+      ],
+      "answer": 0,
+      "explanation": "Angels visited Ibrahim with glad tidings.",
+      "difficulty": "medium",
+      "id": "q49"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Angels do not eat, drink, or:",
+      "options": [
+        "Sleep or disobey Allah",
+        "Worship",
+        "Move",
+        "Exist"
+      ],
+      "answer": 0,
+      "explanation": "Angels have no physical needs and never disobey.",
+      "difficulty": "easy",
+      "id": "q50"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who taught Adam (AS) the names of all things as mentioned in the Quran?",
+      "options": [
+        "Allah Himself (through His will)",
+        "Angel Jibreel only",
+        "Iblis",
+        "Another prophet"
+      ],
+      "answer": 0,
+      "explanation": "Allah taught Adam the names, then asked the angels about them.",
+      "difficulty": "medium",
+      "id": "q51"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The angels who protect a person from harm are called:",
+      "options": [
+        "Hafaza (guardian angels)",
+        "Katibin",
+        "Munkar",
+        "Nakir"
+      ],
+      "answer": 0,
+      "explanation": "Hafaza are the guarding angels assigned to each person.",
+      "difficulty": "medium",
+      "id": "q52"
+    },
+    {
+      "type": "mcq",
+      "prompt": "In the Quran, Iblis refused to prostrate to Adam because of:",
+      "options": [
+        "Arrogance (pride)",
+        "Fear",
+        "Ignorance",
+        "Jealousy of angels"
+      ],
+      "answer": 0,
+      "explanation": "Iblis refused out of arrogance, claiming superiority.",
+      "difficulty": "easy",
+      "id": "q53"
+    },
+    {
+      "type": "mcq",
+      "prompt": "According to Surah Fatir, angels are created with how many wings?",
+      "options": [
+        "Two, three or four",
+        "Only two",
+        "Exactly four",
+        "Only one pair"
+      ],
+      "answer": 0,
+      "explanation": "Surah Fatir (35:1) says Allah made angels with wings — two, three and four.",
+      "difficulty": "medium",
+      "id": "q54"
+    },
+    {
+      "type": "mcq",
+      "prompt": "How many angels are appointed as keepers of Hell according to the Quran?",
+      "options": [
+        "Nineteen",
+        "Twelve",
+        "Seven",
+        "Eight"
+      ],
+      "answer": 0,
+      "explanation": "Surah Al-Muddaththir (74:30) states: 'Over it are nineteen.'",
+      "difficulty": "medium",
+      "id": "q55"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What are the 'Zabaniyah'?",
+      "options": [
+        "Angels of punishment in Hell",
+        "Angels of mercy",
+        "Recording angels",
+        "Guardian angels"
+      ],
+      "answer": 0,
+      "explanation": "The Zabaniyah are the stern angels appointed over Hell.",
+      "difficulty": "medium",
+      "id": "q56"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who gave Zakariyya (AS) the glad tidings of a son (Yahya)?",
+      "options": [
+        "The angels",
+        "A human king",
+        "Iblis",
+        "The jinn"
+      ],
+      "answer": 0,
+      "explanation": "In Surah Maryam and Surah Al-Imran, the angels announced Yahya to Zakariyya (AS).",
+      "difficulty": "medium",
+      "id": "q57"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which angel conveyed the news of Isa (AS) to Maryam (AS)?",
+      "options": [
+        "Jibra'il (AS)",
+        "Israfil (AS)",
+        "Mika'il (AS)",
+        "Azra'il (AS)"
+      ],
+      "answer": 0,
+      "explanation": "Jibra'il (AS) appeared to Maryam in the form of a well-made man to give the news of Isa.",
+      "difficulty": "easy",
+      "id": "q58"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What is 'Iman-e-Mufassal'?",
+      "options": [
+        "The detailed statement of Islamic belief",
+        "A brief creed",
+        "A type of prayer",
+        "A chapter of the Quran"
+      ],
+      "answer": 0,
+      "explanation": "Iman-e-Mufassal spells out belief in Allah, His angels, books, messengers, the Last Day and Qadar in detail.",
+      "difficulty": "medium",
+      "id": "q59"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What is 'Iman-e-Mujmal'?",
+      "options": [
+        "The concise summary of Islamic belief",
+        "A detailed creed",
+        "A supplication",
+        "A form of zakat"
+      ],
+      "answer": 0,
+      "explanation": "Iman-e-Mujmal is the brief declaration of faith in Allah and His attributes as described.",
+      "difficulty": "medium",
+      "id": "q60"
+    },
+    {
+      "type": "mcq",
+      "prompt": "How many articles of faith (Iman) are there in Islam?",
+      "options": [
+        "Six",
+        "Five",
+        "Seven",
+        "Four"
+      ],
+      "answer": 0,
+      "explanation": "The six articles are: Allah, angels, revealed books, messengers, the Last Day and divine decree.",
+      "difficulty": "easy",
+      "id": "q61"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which of the following is NOT among the six articles of faith?",
+      "options": [
+        "Belief in angels",
+        "Belief in the revealed books",
+        "Belief in the Imamate of the Twelve Imams",
+        "Belief in the Day of Judgment"
+      ],
+      "answer": 2,
+      "explanation": "The six articles cover Allah, angels, books, messengers, the Last Day and Qadar; the Twelve-Imam doctrine is not among them.",
+      "difficulty": "medium",
+      "id": "q62"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What is 'Aqeedah'?",
+      "options": [
+        "Creed or core beliefs",
+        "Prayer",
+        "Charity",
+        "Fasting"
+      ],
+      "answer": 0,
+      "explanation": "Aqeedah is the set of beliefs a Muslim holds about Allah and the faith.",
+      "difficulty": "easy",
+      "id": "q63"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What does 'Kufr' mean?",
+      "options": [
+        "Disbelief or ingratitude",
+        "Hypocrisy",
+        "Innovation",
+        "Asceticism"
+      ],
+      "answer": 0,
+      "explanation": "Kufr is rejection of or ingratitude towards Allah's guidance.",
+      "difficulty": "easy",
+      "id": "q64"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What is 'Nifaq' (hypocrisy)?",
+      "options": [
+        "Outward faith with inward disbelief",
+        "Open disbelief",
+        "Polytheism",
+        "Doubting Allah's mercy"
+      ],
+      "answer": 0,
+      "explanation": "Nifaq is showing faith outwardly while concealing disbelief.",
+      "difficulty": "medium",
+      "id": "q65"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who are the 'Munafiqun'?",
+      "options": [
+        "Hypocrites who show faith but conceal disbelief",
+        "Polytheists",
+        "Idolaters",
+        "The righteous"
+      ],
+      "answer": 0,
+      "explanation": "The Quran repeatedly warns about the Munafiqun, who declare faith but do not believe in their hearts.",
+      "difficulty": "easy",
+      "id": "q66"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The two recording angels sit on which sides of a person?",
+      "options": [
+        "The right and left shoulders",
+        "The forehead and back",
+        "In front and behind",
+        "Under the feet"
+      ],
+      "answer": 0,
+      "explanation": "Tradition holds that two angels record deeds from the right and left shoulders.",
+      "difficulty": "medium",
+      "id": "q67"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who are the 'Mu'aqqibat' mentioned in Surah Ar-Ra'd?",
+      "options": [
+        "Guardian angels who follow a person in front and behind",
+        "Angels of the grave",
+        "Angels of Paradise",
+        "Angels of rain"
+      ],
+      "answer": 0,
+      "explanation": "Surah Ar-Ra'd (13:11) mentions guardian angels protecting a person from the front and behind.",
+      "difficulty": "hard",
+      "id": "q68"
+    },
+    {
+      "type": "mcq",
+      "prompt": "According to the common Islamic belief, the Sur (trumpet) will be blown how many times?",
+      "options": [
+        "Twice",
+        "Once",
+        "Four times",
+        "Ten times"
+      ],
+      "answer": 0,
+      "explanation": "The first blow stuns creation and the second raises mankind for judgment.",
+      "difficulty": "medium",
+      "id": "q69"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What is 'Qiyamah'?",
+      "options": [
+        "The Day of Resurrection",
+        "The night of power",
+        "A type of prayer",
+        "The month of fasting"
+      ],
+      "answer": 0,
+      "explanation": "Qiyamah is the Day of Resurrection when all creation is raised for judgment.",
+      "difficulty": "easy",
+      "id": "q70"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What is the 'A'raf'?",
+      "options": [
+        "The elevated heights between Paradise and Hell",
+        "The bridge over Hell",
+        "A river in Paradise",
+        "A spring in Hell"
+      ],
+      "answer": 0,
+      "explanation": "Surah Al-A'raf describes the people of the Heights standing between Jannah and Jahannam.",
+      "difficulty": "hard",
+      "id": "q71"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which tree is mentioned in the Quran as growing in Hell?",
+      "options": [
+        "Zaqqum",
+        "Sidr",
+        "Tuba",
+        "Kawthar"
+      ],
+      "answer": 0,
+      "explanation": "Zaqqum is the bitter tree of Hell mentioned in several surahs.",
+      "difficulty": "medium",
+      "id": "q72"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What is 'Salsabil'?",
+      "options": [
+        "A spring in Paradise",
+        "A tree in Hell",
+        "A mountain in Makkah",
+        "A river in Egypt"
+      ],
+      "answer": 0,
+      "explanation": "Salsabil is a spring in Paradise mentioned in Surah Al-Insan (76:18).",
+      "difficulty": "hard",
+      "id": "q73"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What is 'Kawthar'?",
+      "options": [
+        "A river and pool in Paradise granted to the Prophet (PBUH)",
+        "The scale of deeds",
+        "A gate of Paradise",
+        "The angel of revelation"
+      ],
+      "answer": 0,
+      "explanation": "Surah Al-Kawthar (108) refers to the abundant river granted to the Prophet (PBUH).",
+      "difficulty": "medium",
+      "id": "q74"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What are 'Sijjin' and 'Illiyyin'?",
+      "options": [
+        "Records of the wicked and of the righteous",
+        "Two gates of Hell",
+        "Two angels",
+        "Two mountains"
+      ],
+      "answer": 0,
+      "explanation": "Surah Al-Mutaffifin mentions the register of the wicked (Sijjin) and of the righteous (Illiyyin).",
+      "difficulty": "hard",
+      "id": "q75"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who is traditionally regarded as the chief of the angels?",
+      "options": [
+        "Jibra'il (AS)",
+        "Mika'il (AS)",
+        "Israfil (AS)",
+        "Azra'il (AS)"
+      ],
+      "answer": 0,
+      "explanation": "Jibra'il (AS) is regarded as the leader of the angels, entrusted with revelation.",
+      "difficulty": "easy",
+      "id": "q76"
+    },
+    {
+      "type": "mcq",
+      "prompt": "By Allah's command, the angels prostrated before whom?",
+      "options": [
+        "Adam (AS)",
+        "The heavens",
+        "The mountains",
+        "The sun"
+      ],
+      "answer": 0,
+      "explanation": "Allah commanded the angels to prostrate to Adam (AS), and Iblis alone refused.",
+      "difficulty": "easy",
+      "id": "q77"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which angels were sent to punish the people of Lut (AS)?",
+      "options": [
+        "Jibra'il (AS) and his companions",
+        "Mika'il (AS) alone",
+        "Israfil (AS)",
+        "Ridwan (AS)"
+      ],
+      "answer": 0,
+      "explanation": "Angels led by Jibra'il (AS) turned the towns of Lut's people upside down.",
+      "difficulty": "hard",
+      "id": "q78"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The angel Jibra'il (AS) sometimes appeared to the Prophet (PBUH) in the form of which companion?",
+      "options": [
+        "Dihyah al-Kalbi",
+        "Bilal (RA)",
+        "Umar (RA)",
+        "Ali (RA)"
+      ],
+      "answer": 0,
+      "explanation": "Jibreel would at times appear in the form of the handsome companion Dihyah al-Kalbi.",
+      "difficulty": "hard",
+      "id": "q79"
+    },
+    {
+      "type": "mcq",
+      "prompt": "How many angels did Allah send to aid the believers at the Battle of Badr?",
+      "options": [
+        "One thousand",
+        "Ten thousand",
+        "Two",
+        "Nineteen"
+      ],
+      "answer": 0,
+      "explanation": "Surah Al-Anfal (8:9) says Allah reinforced the believers with one thousand angels.",
+      "difficulty": "medium",
+      "id": "q80"
+    },
+    {
+      "type": "mcq",
+      "prompt": "After the Prophet (PBUH) was rejected at Ta'if, the angel of the mountains offered what?",
+      "options": [
+        "To crush the people of Ta'if between the mountains",
+        "Wealth",
+        "A kingdom",
+        "Immediate victory"
+      ],
+      "answer": 0,
+      "explanation": "The angel of the mountains offered to destroy Ta'if, but the Prophet declined, hoping their descendants would believe.",
+      "difficulty": "hard",
+      "id": "q81"
+    },
+    {
+      "type": "mcq",
+      "prompt": "According to a hadith, for whom do the angels lower their wings?",
+      "options": [
+        "The seeker of knowledge",
+        "The wealthy",
+        "The traveler",
+        "The athlete"
+      ],
+      "answer": 0,
+      "explanation": "A hadith says the angels lower their wings for the seeker of knowledge, pleased with what he seeks.",
+      "difficulty": "medium",
+      "id": "q82"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which of the following do angels lack, according to Islamic belief?",
+      "options": [
+        "Gender and physical needs",
+        "Duties",
+        "Obedience to Allah",
+        "The ability to act"
+      ],
+      "answer": 0,
+      "explanation": "Angels have no gender, no need for food, drink or sleep, and never disobey Allah.",
+      "difficulty": "medium",
+      "id": "q83"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who will be the first to be raised on the Day of Judgment?",
+      "options": [
+        "Prophet Muhammad (PBUH)",
+        "Adam (AS)",
+        "Musa (AS)",
+        "Isa (AS)"
+      ],
+      "answer": 0,
+      "explanation": "The Prophet (PBUH) said he will be the first to be raised on the Day of Judgment.",
+      "difficulty": "medium",
+      "id": "q84"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What is 'Shafa'ah'?",
+      "options": [
+        "Intercession on the Day of Judgment",
+        "A type of prayer",
+        "Charity",
+        "Fasting"
+      ],
+      "answer": 0,
+      "explanation": "Shafa'ah is the intercession granted to the Prophet (PBUH) for the believers on the Day of Judgment.",
+      "difficulty": "medium",
+      "id": "q85"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which two prophets' wives are cited in the Quran as examples of disbelievers?",
+      "options": [
+        "Nuh (AS) and Lut (AS)",
+        "Ibrahim (AS) and Ismail (AS)",
+        "Musa (AS) and Harun (AS)",
+        "Yusuf (AS) and Ayyub (AS)"
+      ],
+      "answer": 0,
+      "explanation": "Surah At-Tahrim cites the wives of Nuh and Lut as examples of those who disbelieved.",
+      "difficulty": "hard",
+      "id": "q86"
+    },
+    {
+      "type": "mcq",
+      "prompt": "In the traditions of Badr, the angels who aided the believers are described wearing what?",
+      "options": [
+        "White turbans",
+        "Golden armor",
+        "Black robes",
+        "Leather caps"
+      ],
+      "answer": 0,
+      "explanation": "Seerah traditions describe the angels at Badr wearing white turbans.",
+      "difficulty": "hard",
+      "id": "q87"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What does the Arabic word 'Mala'ikah' (angels) imply?",
+      "options": [
+        "Messengers of light who obey Allah",
+        "People of the book",
+        "Celestial bodies",
+        "Pure humans"
+      ],
+      "answer": 0,
+      "explanation": "Mala'ikah derives from the root meaning 'to send' — angels are Allah's messengers of light.",
+      "difficulty": "easy",
+      "id": "q88"
+    },
+    {
+      "type": "mcq",
+      "prompt": "In his true form, Jibra'il (AS) is described in hadith as having how many wings?",
+      "options": [
+        "Six hundred",
+        "Two",
+        "Four",
+        "Eight"
+      ],
+      "answer": 0,
+      "explanation": "A hadith describes Jibreel appearing in his true form with six hundred wings.",
+      "difficulty": "hard",
+      "id": "q89"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What does 'Jannah' literally mean?",
+      "options": [
+        "Garden",
+        "Fire",
+        "House",
+        "Bridge"
+      ],
+      "answer": 0,
+      "explanation": "Jannah literally means 'garden', and is the Quranic term for Paradise.",
+      "difficulty": "easy",
+      "id": "q90"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which gate of Paradise is reserved for those who fast?",
+      "options": [
+        "Ar-Rayyan",
+        "Al-Kawthar",
+        "Bab al-Salam",
+        "Bab al-Jihad"
+      ],
+      "answer": 0,
+      "explanation": "Ar-Rayyan is the gate of Paradise through which those who fast will enter.",
+      "difficulty": "hard",
+      "id": "q91"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What is 'Yawm al-Hisab'?",
+      "options": [
+        "The Day of Reckoning and Account",
+        "The day of birth",
+        "The day of Hajj",
+        "The day of Friday"
+      ],
+      "answer": 0,
+      "explanation": "Yawm al-Hisab is the Day when every soul is taken to account for its deeds.",
+      "difficulty": "medium",
+      "id": "q92"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The command for the angels to prostrate to Adam (AS) appears first in which surah?",
+      "options": [
+        "Surah Al-Baqarah",
+        "Surah Al-Ikhlas",
+        "Surah Al-Fatiha",
+        "Surah An-Nas"
+      ],
+      "answer": 0,
+      "explanation": "Surah Al-Baqarah (2:34) records the command for the angels to prostrate to Adam.",
+      "difficulty": "hard",
+      "id": "q93"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which surah describes a day whose length is fifty thousand years?",
+      "options": [
+        "Surah Al-Ma'arij",
+        "Surah Al-Fatiha",
+        "Surah Al-Kawthar",
+        "Surah An-Nasr"
+      ],
+      "answer": 0,
+      "explanation": "Surah Al-Ma'arij (70:4) refers to a day whose measure is fifty thousand years.",
+      "difficulty": "hard",
+      "id": "q94"
+    },
+    {
+      "type": "mcq",
+      "prompt": "On which night do the angels and the Spirit descend in abundance?",
+      "options": [
+        "Laylat-ul-Qadr",
+        "Shab-e-Barat",
+        "The night of Eid",
+        "The night of Arafat"
+      ],
+      "answer": 0,
+      "explanation": "Surah Al-Qadr says the angels and the Spirit descend on the Night of Power.",
+      "difficulty": "medium",
+      "id": "q95"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What is 'Yaum ad-Din'?",
+      "options": [
+        "The Day of Judgment",
+        "The day of fasting",
+        "The day of prayer",
+        "The day of birth"
+      ],
+      "answer": 0,
+      "explanation": "Yaum ad-Din, the Day of Requital, is a Quranic name for the Day of Judgment.",
+      "difficulty": "medium",
+      "id": "q96"
+    },
+    {
+      "type": "mcq",
+      "prompt": "According to the Prophet (PBUH), angels are made from light, jinn from fire, and humans from what?",
+      "options": [
+        "Clay",
+        "Water",
+        "Air",
+        "Stone"
+      ],
+      "answer": 0,
+      "explanation": "A hadith states angels were created from light, jinn from smokeless fire, and humans from clay.",
+      "difficulty": "easy",
+      "id": "q97"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Receiving the book of deeds in the right hand signifies what?",
+      "options": [
+        "A good reckoning",
+        "Punishment",
+        "Death",
+        "Exile"
+      ],
+      "answer": 0,
+      "explanation": "The righteous receive their record in the right hand, while the wicked receive it in the left or from behind.",
+      "difficulty": "medium",
+      "id": "q98"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The 'Kursi' (Footstool) of Allah is mentioned in which verse?",
+      "options": [
+        "Ayat-ul-Kursi (2:255)",
+        "The first verse of Al-Fatiha",
+        "The last verse of Al-Baqarah",
+        "The opening of Al-Hashr"
+      ],
+      "answer": 0,
+      "explanation": "Ayat-ul-Kursi (2:255) mentions the Kursi of Allah encompassing the heavens and the earth.",
+      "difficulty": "hard",
+      "id": "q99"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Upon whom did Allah send down the 'Sakinah' (tranquility)?",
+      "options": [
+        "The believers, as mentioned in the Quran",
+        "The angels alone",
+        "The Quraysh",
+        "The jinn"
+      ],
+      "answer": 0,
+      "explanation": "The Quran says Allah sent down Sakinah, tranquility, upon the believers, e.g. Surah Al-Fath (48:4).",
+      "difficulty": "medium",
+      "id": "q100"
+    }
+  ]
+}

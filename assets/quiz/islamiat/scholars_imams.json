@@ -1,0 +1,1413 @@
+{
+  "bank": {
+    "name": "Scholars & Imams",
+    "subject": "Islamic Studies",
+    "topic": "Scholars & Imams",
+    "description": "The great Imams of fiqh, hadith scholars and early Islamic personalities.",
+    "tags": "css,pms,fpsc,ppsc,nts,islamic-studies,imams,scholars",
+    "version": "1.0",
+    "id": "islamiat_scholars_imams"
+  },
+  "questions": [
+    {
+      "type": "mcq",
+      "prompt": "Which Imam is known as the author of 'Al-Umm' and founded a school combining hadith and fiqh?",
+      "options": [
+        "Imam Shafi'i",
+        "Imam Abu Hanifa",
+        "Imam Malik",
+        "Imam Bukhari"
+      ],
+      "answer": 0,
+      "explanation": "Imam Muhammad ibn Idris al-Shafi'i wrote Al-Umm and founded the Shafi'i school.",
+      "difficulty": "medium",
+      "id": "q01"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who is the founder of the Hanbali school of thought?",
+      "options": [
+        "Imam Abu Hanifa",
+        "Imam Malik",
+        "Imam Ahmad bin Hanbal",
+        "Imam Shafi'i"
+      ],
+      "answer": 2,
+      "explanation": "Imam Ahmad bin Hanbal founded the Hanbali school, known for its strict adherence to hadith.",
+      "difficulty": "medium",
+      "id": "q02"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What are the 'Sihah Sittah'?",
+      "options": [
+        "The six most authentic collections of hadith",
+        "The six articles of faith",
+        "The six days of fasting",
+        "The six pillars of prayer"
+      ],
+      "answer": 0,
+      "explanation": "The Sihah Sittah are the six canonical hadith collections: Bukhari, Muslim, Abu Dawood, Tirmidhi, Nasa'i and Ibn Majah.",
+      "difficulty": "medium",
+      "id": "q03"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who is called the 'Sultan-ul-Hind' for his revival of Islam in South Asia?",
+      "options": [
+        "Sheikh Ahmad Sirhindi",
+        "Shah Waliullah Dehlawi",
+        "Hazrat Nizamuddin Auliya",
+        "Khwaja Moinuddin Chishti"
+      ],
+      "answer": 0,
+      "explanation": "Sheikh Ahmad Sirhindi (Mujaddid Alf Thani) is known as Mujaddid (reviver) of the second millennium.",
+      "difficulty": "medium",
+      "id": "q04"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who wrote 'Hujjatullah al-Baligha' and translated the Quran into Persian?",
+      "options": [
+        "Shah Waliullah Dehlawi",
+        "Sir Syed Ahmad Khan",
+        "Allama Iqbal",
+        "Maulana Maududi"
+      ],
+      "answer": 0,
+      "explanation": "Shah Waliullah Dehlawi (1703-1762) wrote Hujjatullah al-Baligha and translated the Quran into Persian.",
+      "difficulty": "medium",
+      "id": "q05"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who was the first compiler of the hadith literature into a formal book?",
+      "options": [
+        "Imam Bukhari",
+        "Imam Malik",
+        "Imam Muhammad al-Baqir",
+        "Abdul Malik bin Marwan"
+      ],
+      "answer": 1,
+      "explanation": "Imam Malik's Al-Muwatta (8th century) is regarded as one of the earliest formal compilations of hadith and fiqh.",
+      "difficulty": "hard",
+      "id": "q06"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which scholar compiled 'Fath al-Bari', the most famous commentary on Sahih al-Bukhari?",
+      "options": [
+        "Ibn Hajar al-Asqalani",
+        "Ibn Kathir",
+        "Al-Nawawi",
+        "Al-Qurtubi"
+      ],
+      "answer": 0,
+      "explanation": "Ibn Hajar al-Asqalani wrote Fath al-Bari, the celebrated commentary on Sahih al-Bukhari.",
+      "difficulty": "hard",
+      "id": "q07"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who wrote the famous Tafsir 'Ma'ariful Quran' in Urdu?",
+      "options": [
+        "Maulana Maududi",
+        "Mufti Muhammad Shafi",
+        "Maulana Ashraf Ali Thanwi",
+        "Maulana Shabbir Ahmad Usmani"
+      ],
+      "answer": 1,
+      "explanation": "Mufti Muhammad Shafi wrote Ma'ariful Quran, a widely used Urdu Tafsir.",
+      "difficulty": "hard",
+      "id": "q08"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who authored 'Tafhim-ul-Quran'?",
+      "options": [
+        "Abul A'la Maududi",
+        "Allama Iqbal",
+        "Sir Syed Ahmad Khan",
+        "Maulana Abul Kalam Azad"
+      ],
+      "answer": 0,
+      "explanation": "Maulana Abul A'la Maududi authored Tafhim-ul-Quran, a major Urdu commentary of the Quran.",
+      "difficulty": "easy",
+      "id": "q09"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who is known as the 'Father of Modern Islamic Economics' and wrote 'Islami Ma'ashiat'?",
+      "options": [
+        "Dr. Muhammad Umer Chapra",
+        "Muhammad Baqir al-Sadr",
+        "Abul A'la Maududi",
+        "Khurshid Ahmad"
+      ],
+      "answer": 2,
+      "explanation": "Maulana Maududi wrote Islami Ma'ashiat (Islamic Economics) and is a pioneer of modern Islamic economics.",
+      "difficulty": "hard",
+      "id": "q10"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who is considered the founder of the 'Aligarh Movement' for Muslim education in India?",
+      "options": [
+        "Sir Syed Ahmad Khan",
+        "Allama Iqbal",
+        "Maulana Abul Kalam Azad",
+        "Nawab Salimullah"
+      ],
+      "answer": 0,
+      "explanation": "Sir Syed Ahmad Khan founded the Aligarh Movement and Muhammadan Anglo-Oriental College (later AMU).",
+      "difficulty": "easy",
+      "id": "q11"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who wrote the famous book 'Al-Risala', the foundational work on the principles of Islamic jurisprudence?",
+      "options": [
+        "Imam Shafi'i",
+        "Imam Abu Hanifa",
+        "Imam Malik",
+        "Imam Ahmad bin Hanbal"
+      ],
+      "answer": 0,
+      "explanation": "Imam al-Shafi'i's Al-Risala is the earliest systematic work on Usul al-Fiqh.",
+      "difficulty": "hard",
+      "id": "q12"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which female scholar narrated more than 2,000 hadiths and is called 'Umm al-Mu'minin'?",
+      "options": [
+        "Aisha bint Abu Bakr",
+        "Khadijah",
+        "Fatimah",
+        "Hafsa"
+      ],
+      "answer": 0,
+      "explanation": "Aisha (RA), the Prophet's wife, narrated over 2,000 hadiths and was a major source of Islamic knowledge.",
+      "difficulty": "easy",
+      "id": "q13"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who is called the 'Sheikh ul Islam' and wrote 'Tafsir Ibn Kathir'?",
+      "options": [
+        "Ibn Kathir",
+        "Ibn Hajar",
+        "Al-Suyuti",
+        "Ibn Taymiyyah"
+      ],
+      "answer": 0,
+      "explanation": "Ismail ibn Kathir (d. 1373 CE) wrote the famous Tafsir al-Quran al-Azim (Tafsir Ibn Kathir).",
+      "difficulty": "medium",
+      "id": "q14"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which great scholar is known as 'Mujaddid-e-Alf-e-Sani' (Reviver of the Second Millennium)?",
+      "options": [
+        "Sheikh Ahmad Sirhindi",
+        "Imam Ghazali",
+        "Ibn Taymiyyah",
+        "Shah Waliullah"
+      ],
+      "answer": 0,
+      "explanation": "Sheikh Ahmad Sirhindi is known as Mujaddid-e-Alf-e-Sani for his revivalist efforts in the 17th century.",
+      "difficulty": "medium",
+      "id": "q15"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who wrote 'Ihya Ulum al-Din' (The Revival of the Religious Sciences)?",
+      "options": [
+        "Imam Al-Ghazali",
+        "Ibn Sina",
+        "Al-Farabi",
+        "Ibn Rushd"
+      ],
+      "answer": 0,
+      "explanation": "Imam Abu Hamid al-Ghazali (1058-1111) wrote Ihya Ulum al-Din, a masterpiece of Islamic spirituality.",
+      "difficulty": "medium",
+      "id": "q16"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who wrote the famous 'Sahih' collection and was a student of Imam Bukhari?",
+      "options": [
+        "Imam Muslim",
+        "Imam Tirmidhi",
+        "Imam Abu Dawood",
+        "Imam Nasa'i"
+      ],
+      "answer": 0,
+      "explanation": "Imam Muslim studied under Imam Bukhari and compiled Sahih Muslim.",
+      "difficulty": "medium",
+      "id": "q17"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who is known as the 'Hujjat-ul-Islam' (Proof of Islam)?",
+      "options": [
+        "Imam Ghazali",
+        "Imam Ibn Taymiyyah",
+        "Imam Nawawi",
+        "Imam Suyuti"
+      ],
+      "answer": 0,
+      "explanation": "Imam Abu Hamid al-Ghazali earned the title Hujjat-ul-Islam.",
+      "difficulty": "medium",
+      "id": "q18"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which scholar is known as the 'Mujaddid' (reviver) of the 12th Islamic century in the subcontinent?",
+      "options": [
+        "Shah Waliullah Dehlawi",
+        "Sheikh Ahmad Sirhindi",
+        "Maulana Maududi",
+        "Sir Syed Ahmad Khan"
+      ],
+      "answer": 0,
+      "explanation": "Shah Waliullah is often called the Mujaddid of his era for his revivalist work.",
+      "difficulty": "medium",
+      "id": "q19"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who wrote 'Al-Fiqh al-Akbar', a foundational text on Islamic creed?",
+      "options": [
+        "Imam Abu Hanifa",
+        "Imam Malik",
+        "Imam Shafi'i",
+        "Imam Ahmad"
+      ],
+      "answer": 0,
+      "explanation": "Al-Fiqh al-Akbar is attributed to Imam Abu Hanifa on matters of Aqeedah.",
+      "difficulty": "hard",
+      "id": "q20"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who was the founder of the Deobandi movement?",
+      "options": [
+        "Maulana Muhammad Qasim Nanautawi",
+        "Maulana Maududi",
+        "Mufti Shafi",
+        "Sir Syed Ahmad Khan"
+      ],
+      "answer": 0,
+      "explanation": "Qasim Nanautawi and Rashid Ahmad Gangohi founded Darul Uloom Deoband in 1866.",
+      "difficulty": "medium",
+      "id": "q21"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who wrote 'Tafsir al-Jalalayn', a famous short commentary?",
+      "options": [
+        "Jalaluddin al-Mahalli and Jalaluddin al-Suyuti",
+        "Ibn Kathir",
+        "Al-Qurtubi",
+        "Al-Baghawi"
+      ],
+      "answer": 0,
+      "explanation": "Tafsir al-Jalalayn was co-authored by two Jalals — al-Mahalli and al-Suyuti.",
+      "difficulty": "hard",
+      "id": "q22"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who wrote 'Al-Jami' al-Sahih' and is buried in Nishapur?",
+      "options": [
+        "Imam Muslim",
+        "Imam Bukhari",
+        "Imam Tirmidhi",
+        "Imam Nasa'i"
+      ],
+      "answer": 0,
+      "explanation": "Imam Muslim is buried in Nishapur (Iran).",
+      "difficulty": "hard",
+      "id": "q23"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which scholar is famous for his 'Sunan' and for grading hadiths with 'Hasan'?",
+      "options": [
+        "Imam Tirmidhi",
+        "Imam Bukhari",
+        "Imam Muslim",
+        "Imam Ibn Majah"
+      ],
+      "answer": 0,
+      "explanation": "Imam al-Tirmidhi pioneered the 'Hasan' (good) grading in his Jami.",
+      "difficulty": "medium",
+      "id": "q24"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who is the compiler of 'Sunan Ibn Majah', the last of the Sihah Sittah?",
+      "options": [
+        "Ibn Majah",
+        "Abu Dawood",
+        "Nasa'i",
+        "Tirmidhi"
+      ],
+      "answer": 0,
+      "explanation": "Muhammad ibn Yazid Ibn Majah compiled the Sunan bearing his name.",
+      "difficulty": "easy",
+      "id": "q25"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who wrote 'Tafsir al-Qurtubi' (Al-Jami' li-Ahkam al-Quran), focused on rulings?",
+      "options": [
+        "Al-Qurtubi",
+        "Ibn Kathir",
+        "Al-Suyuti",
+        "Al-Tabari"
+      ],
+      "answer": 0,
+      "explanation": "Imam al-Qurtubi's Tafsir emphasizes legal rulings (Ahkam) from the Quran.",
+      "difficulty": "medium",
+      "id": "q26"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which companion is known as the 'Interpreter of the Quran' (Tarjuman-ul-Quran)?",
+      "options": [
+        "Abdullah ibn Abbas",
+        "Abdullah ibn Masood",
+        "Zaid bin Thabit",
+        "Ubayy bin Ka'b"
+      ],
+      "answer": 0,
+      "explanation": "Abdullah ibn Abbas (RA) earned 'Tarjuman-ul-Quran' for his deep Quranic knowledge.",
+      "difficulty": "medium",
+      "id": "q27"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which of the ten promised Jannah was martyred at the Battle of Badr?",
+      "options": [
+        "Ubaidah ibn al-Harith",
+        "Talha",
+        "Zubair",
+        "Abu Ubaidah"
+      ],
+      "answer": 0,
+      "explanation": "Ubaidah ibn al-Harith, one of the Ashara Mubashshara, died of wounds from Badr.",
+      "difficulty": "hard",
+      "id": "q28"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who was the first to embrace Islam from the slaves?",
+      "options": [
+        "Bilal ibn Rabah",
+        "Zaid bin Harithah",
+        "Salman al-Farsi",
+        "Ammar bin Yasir"
+      ],
+      "answer": 0,
+      "explanation": "Bilal (RA), an Abyssinian slave, was among the earliest believers.",
+      "difficulty": "easy",
+      "id": "q29"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who wrote 'Risalat al-Tawhid' and influenced modern Islamic thought?",
+      "options": [
+        "Muhammad Abduh",
+        "Jamal al-Din al-Afghani",
+        "Rashid Rida",
+        "Hasan al-Banna"
+      ],
+      "answer": 0,
+      "explanation": "Muhammad Abduh's Risalat al-Tawhid (1897) addressed theology and reform.",
+      "difficulty": "hard",
+      "id": "q30"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who founded the Muslim Brotherhood (Ikhwan al-Muslimun) in 1928?",
+      "options": [
+        "Hasan al-Banna",
+        "Sayyid Qutb",
+        "Muhammad Abduh",
+        "Rashid Rida"
+      ],
+      "answer": 0,
+      "explanation": "Hasan al-Banna founded the Muslim Brotherhood in Egypt in 1928.",
+      "difficulty": "medium",
+      "id": "q31"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who wrote 'Islami Nazariyat-e-Hayat' and 'Tafhim-ul-Quran'?",
+      "options": [
+        "Maulana Maududi",
+        "Mufti Shafi",
+        "Maulana Thanwi",
+        "Maulana Azad"
+      ],
+      "answer": 0,
+      "explanation": "Maududi authored both Tafhim-ul-Quran and Islami Nazariyat-e-Hayat.",
+      "difficulty": "medium",
+      "id": "q32"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who was the teacher of Imam Abu Hanifa in hadith?",
+      "options": [
+        "Imam Muhammad al-Baqir",
+        "Imam Malik",
+        "Imam Shafi'i",
+        "Imam Bukhari"
+      ],
+      "answer": 0,
+      "explanation": "Abu Hanifa studied under the fifth Imam, Muhammad al-Baqir, among others.",
+      "difficulty": "hard",
+      "id": "q33"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which scholar compiled 'Sunan Abu Dawood', strong on legal rulings?",
+      "options": [
+        "Abu Dawood al-Sijistani",
+        "Ibn Majah",
+        "Nasa'i",
+        "Tirmidhi"
+      ],
+      "answer": 0,
+      "explanation": "Abu Dawood's Sunan is prized for fiqh-relevant hadiths.",
+      "difficulty": "easy",
+      "id": "q34"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who wrote 'Al-Muwatta' and is buried in Madinah?",
+      "options": [
+        "Imam Malik",
+        "Imam Abu Hanifa",
+        "Imam Bukhari",
+        "Imam Shafi'i"
+      ],
+      "answer": 0,
+      "explanation": "Imam Malik, author of Al-Muwatta, is buried in Al-Baqi, Madinah.",
+      "difficulty": "medium",
+      "id": "q35"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who is called the 'Shaykh al-Islam' of his time and authored 'Fatawa' that bear his name?",
+      "options": [
+        "Ibn Taymiyyah",
+        "Al-Ghazali",
+        "Ibn Hajar",
+        "Al-Suyuti"
+      ],
+      "answer": 0,
+      "explanation": "Ibn Taymiyyah (1263-1328) is known as Shaykh al-Islam; his Fatawa remain influential.",
+      "difficulty": "medium",
+      "id": "q36"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which Imam is known as the 'Greatest Imam' (Imam al-Azam)?",
+      "options": [
+        "Imam Abu Hanifa",
+        "Imam Malik",
+        "Imam Shafi'i",
+        "Imam Ahmad"
+      ],
+      "answer": 0,
+      "explanation": "Imam Abu Hanifa is called Imam al-Azam.",
+      "difficulty": "easy",
+      "id": "q37"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which Imam wrote 'Al-Risala' on usul al-fiqh?",
+      "options": [
+        "Imam Shafi'i",
+        "Imam Abu Hanifa",
+        "Imam Malik",
+        "Imam Ahmad"
+      ],
+      "answer": 0,
+      "explanation": "Imam Shafi'i authored Al-Risala.",
+      "difficulty": "medium",
+      "id": "q38"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Imam Malik was based in which city?",
+      "options": [
+        "Madinah",
+        "Kufa",
+        "Baghdad",
+        "Cairo"
+      ],
+      "answer": 0,
+      "explanation": "Imam Malik lived in Madinah.",
+      "difficulty": "easy",
+      "id": "q39"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Imam Ahmad bin Hanbal authored which famous hadith collection?",
+      "options": [
+        "Musnad Ahmad",
+        "Sahih Bukhari",
+        "Muwatta",
+        "Sunan Abu Dawood"
+      ],
+      "answer": 0,
+      "explanation": "Musnad Ahmad is his major work.",
+      "difficulty": "medium",
+      "id": "q40"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The scholar Al-Ghazali is famous for which title?",
+      "options": [
+        "Hujjat-ul-Islam",
+        "Sheikh-ul-Islam",
+        "Imam al-Azam",
+        "Sultan-ul-Ulama"
+      ],
+      "answer": 0,
+      "explanation": "Al-Ghazali is Hujjat-ul-Islam.",
+      "difficulty": "medium",
+      "id": "q41"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Ibn Taymiyyah was known for his expertise in:",
+      "options": [
+        "Tafsir, hadith and fiqh",
+        "Only mathematics",
+        "Only medicine",
+        "Only astronomy"
+      ],
+      "answer": 0,
+      "explanation": "Ibn Taymiyyah excelled in Islamic sciences.",
+      "difficulty": "easy",
+      "id": "q42"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Imam Nawawi is famous for which hadith collection?",
+      "options": [
+        "Riyad as-Salihin",
+        "Sahih Muslim",
+        "Muwatta",
+        "Musnad Ahmad"
+      ],
+      "answer": 0,
+      "explanation": "Riyad as-Salihin is Imam Nawawi's classic.",
+      "difficulty": "easy",
+      "id": "q43"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The famous mufassir Al-Qurtubi wrote which Tafsir?",
+      "options": [
+        "Al-Jami' li-Ahkam al-Quran",
+        "Tafsir Ibn Kathir",
+        "Tafsir Tabari",
+        "Ruh al-Ma'ani"
+      ],
+      "answer": 0,
+      "explanation": "Al-Qurtubi authored the Ahkam tafsir.",
+      "difficulty": "hard",
+      "id": "q44"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which scholar is known as 'the reviver of the second century'?",
+      "options": [
+        "Imam Shafi'i",
+        "Imam Abu Hanifa",
+        "Al-Ghazali",
+        "Imam Ahmad"
+      ],
+      "answer": 0,
+      "explanation": "Hadith mentions a reviver each century; Shafi'i is often linked to his era.",
+      "difficulty": "hard",
+      "id": "q45"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who was the famous student of Imam Abu Hanifa who compiled his rulings?",
+      "options": [
+        "Imam Abu Yusuf and Imam Muhammad",
+        "Imam Bukhari",
+        "Imam Muslim",
+        "Imam Nawawi"
+      ],
+      "answer": 0,
+      "explanation": "Abu Yusuf and Muhammad al-Shaybani recorded Hanafi fiqh.",
+      "difficulty": "medium",
+      "id": "q46"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The scholar 'Imam al-Bukhari' was born in:",
+      "options": [
+        "Bukhara",
+        "Basra",
+        "Kufa",
+        "Madinah"
+      ],
+      "answer": 0,
+      "explanation": "Imam Bukhari was born in Bukhara.",
+      "difficulty": "easy",
+      "id": "q47"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The 'Tafsir al-Tabari' was written by:",
+      "options": [
+        "Ibn Jarir al-Tabari",
+        "Ibn Kathir",
+        "Al-Qurtubi",
+        "Ibn Hajar"
+      ],
+      "answer": 0,
+      "explanation": "Al-Tabari authored the great historical tafsir.",
+      "difficulty": "easy",
+      "id": "q48"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The scholar 'Ibn Qayyim al-Jawziyyah' was the student of:",
+      "options": [
+        "Ibn Taymiyyah",
+        "Al-Ghazali",
+        "Imam Nawawi",
+        "Ibn Hajar"
+      ],
+      "answer": 0,
+      "explanation": "Ibn Qayyim was Ibn Taymiyyah's foremost student.",
+      "difficulty": "easy",
+      "id": "q49"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which female scholar was among the teachers of Imam al-Bukhari?",
+      "options": [
+        "None; Bukhari's teachers were all men",
+        "Fatimah al-Fihri",
+        "Aisha (RA)",
+        "Rabia Basri"
+      ],
+      "answer": 0,
+      "explanation": "Bukhari studied under male scholars; women scholars like Nafisa are known separately.",
+      "difficulty": "hard",
+      "id": "q50"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The founder of the university Al-Azhar was from which dynasty?",
+      "options": [
+        "Fatimid",
+        "Umayyad",
+        "Abbasid",
+        "Ottoman"
+      ],
+      "answer": 0,
+      "explanation": "Al-Azhar was founded under the Fatimids in 970 CE.",
+      "difficulty": "medium",
+      "id": "q51"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The scholar 'Shah Waliullah Dehlawi' was from:",
+      "options": [
+        "Delhi (South Asia)",
+        "Baghdad",
+        "Cairo",
+        "Makkah"
+      ],
+      "answer": 0,
+      "explanation": "Shah Waliullah lived in Delhi.",
+      "difficulty": "easy",
+      "id": "q52"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which scholar translated the Quran into Persian?",
+      "options": [
+        "Shah Waliullah",
+        "Imam Bukhari",
+        "Al-Ghazali",
+        "Ibn Khaldun"
+      ],
+      "answer": 0,
+      "explanation": "Shah Waliullah translated the Quran into Persian.",
+      "difficulty": "easy",
+      "id": "q53"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The famous scholar 'Mawlana Rumi' wrote:",
+      "options": [
+        "The Mathnawi",
+        "Al-Qanun",
+        "Al-Muqaddimah",
+        "Fath al-Bari"
+      ],
+      "answer": 0,
+      "explanation": "Rumi's Mathnawi is a spiritual masterpiece.",
+      "difficulty": "easy",
+      "id": "q54"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The scholar 'Imam al-Nasa'i' specialised in:",
+      "options": [
+        "Hadith criticism",
+        "Sufi poetry",
+        "Mathematics",
+        "Medicine"
+      ],
+      "answer": 0,
+      "explanation": "Nasa'i was a hadith scholar.",
+      "difficulty": "easy",
+      "id": "q55"
+    },
+    {
+      "type": "mcq",
+      "prompt": "In which year was Darul Uloom Deoband founded?",
+      "options": [
+        "1866",
+        "1857",
+        "1901",
+        "1947"
+      ],
+      "answer": 0,
+      "explanation": "Darul Uloom Deoband was established in 1866.",
+      "difficulty": "medium",
+      "id": "q56"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Fatawa-e-Alamgiri, a major Hanafi legal code, was compiled under which Mughal emperor?",
+      "options": [
+        "Aurangzeb Alamgir",
+        "Akbar",
+        "Shah Jahan",
+        "Jahangir"
+      ],
+      "answer": 0,
+      "explanation": "Fatawa-e-Alamgiri was compiled by scholars on Aurangzeb's order.",
+      "difficulty": "medium",
+      "id": "q57"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who wrote the famous Tafsir 'Al-Kashshaf'?",
+      "options": [
+        "Al-Zamakhshari",
+        "Al-Tabari",
+        "Al-Baghawi",
+        "Al-Nasafi"
+      ],
+      "answer": 0,
+      "explanation": "Al-Kashshaf was written by Abu al-Qasim al-Zamakhshari.",
+      "difficulty": "hard",
+      "id": "q58"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The classical work 'Asbab al-Nuzul' (occasions of revelation) was compiled by?",
+      "options": [
+        "Al-Wahidi",
+        "Al-Suyuti",
+        "Ibn Kathir",
+        "Al-Zamakhshari"
+      ],
+      "answer": 0,
+      "explanation": "Al-Wahidi wrote the famous Asbab al-Nuzul.",
+      "difficulty": "hard",
+      "id": "q59"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who wrote the universal history 'Al-Kamil fi al-Tarikh'?",
+      "options": [
+        "Ibn al-Athir",
+        "Ibn Khaldun",
+        "Al-Tabari",
+        "Ibn Kathir"
+      ],
+      "answer": 0,
+      "explanation": "Al-Kamil fi al-Tarikh is by Ali ibn al-Athir.",
+      "difficulty": "hard",
+      "id": "q60"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who wrote the 'Muqaddimah', the famous introduction to the philosophy of history?",
+      "options": [
+        "Ibn Khaldun",
+        "Al-Ghazali",
+        "Ibn Sina",
+        "Al-Farabi"
+      ],
+      "answer": 0,
+      "explanation": "Ibn Khaldun's Muqaddimah founded the philosophy of history.",
+      "difficulty": "medium",
+      "id": "q61"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who wrote 'Al-Mustasfa', a major work on the principles of jurisprudence?",
+      "options": [
+        "Al-Ghazali",
+        "Ibn Rushd",
+        "Al-Shatibi",
+        "Al-Razi"
+      ],
+      "answer": 0,
+      "explanation": "Al-Mustasfa min 'Ilm al-Usul is by Imam al-Ghazali.",
+      "difficulty": "hard",
+      "id": "q62"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The hadith collection 'Kanz al-Ummal' was compiled by?",
+      "options": [
+        "Al-Muttaqi al-Hindi",
+        "Ibn Majah",
+        "Al-Tabrizi",
+        "Al-Nasa'i"
+      ],
+      "answer": 0,
+      "explanation": "Kanz al-Ummal was compiled by Al-Muttaqi al-Hindi.",
+      "difficulty": "hard",
+      "id": "q63"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The popular South Asian hadith work 'Mishkat al-Masabih' was compiled by?",
+      "options": [
+        "Al-Tabrizi",
+        "Al-Baghawi",
+        "Al-Tirmidhi",
+        "Ibn Hibban"
+      ],
+      "answer": 0,
+      "explanation": "Mishkat al-Masabih is by Wali al-Din al-Tabrizi.",
+      "difficulty": "medium",
+      "id": "q64"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who compiled the hadith work 'Al-Adab al-Mufrad' on manners?",
+      "options": [
+        "Imam al-Bukhari",
+        "Imam Muslim",
+        "Imam Malik",
+        "Imam Ahmad"
+      ],
+      "answer": 0,
+      "explanation": "Al-Adab al-Mufrad is a collection of hadith on manners by al-Bukhari.",
+      "difficulty": "hard",
+      "id": "q65"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who wrote the hadith collection 'Sunan al-Kubra'?",
+      "options": [
+        "Al-Bayhaqi",
+        "Abu Dawood",
+        "Al-Nasa'i",
+        "Al-Daraqutni"
+      ],
+      "answer": 0,
+      "explanation": "Sunan al-Kubra is by Ahmad ibn al-Husayn al-Bayhaqi.",
+      "difficulty": "hard",
+      "id": "q66"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who authored the creedal text 'Al-Aqeedah al-Tahawiyyah'?",
+      "options": [
+        "Imam al-Tahawi",
+        "Imam Abu Hanifa",
+        "Ibn Taymiyyah",
+        "Al-Ash'ari"
+      ],
+      "answer": 0,
+      "explanation": "Al-Aqeedah al-Tahawiyyah is by Abu Ja'far al-Tahawi.",
+      "difficulty": "medium",
+      "id": "q67"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who wrote 'Kitab al-Kharaj', a foundational work on public finance in Islam?",
+      "options": [
+        "Abu Yusuf",
+        "Imam Malik",
+        "Al-Shafi'i",
+        "Ibn Qudamah"
+      ],
+      "answer": 0,
+      "explanation": "Kitab al-Kharaj was written by Abu Yusuf, a student of Abu Hanifa.",
+      "difficulty": "hard",
+      "id": "q68"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who wrote 'Al-Hidayah', the classical manual of Hanafi fiqh?",
+      "options": [
+        "Al-Marghinani",
+        "Al-Haskafi",
+        "Ibn Abidin",
+        "Al-Tahawi"
+      ],
+      "answer": 0,
+      "explanation": "Al-Hidayah is by Burhan al-Din al-Marghinani.",
+      "difficulty": "medium",
+      "id": "q69"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who founded the Barelvi movement in South Asia?",
+      "options": [
+        "Ahmad Raza Khan Barelvi",
+        "Muhammad Qasim Nanautawi",
+        "Sir Syed Ahmad Khan",
+        "Ashraf Ali Thanwi"
+      ],
+      "answer": 0,
+      "explanation": "The Barelvi movement was founded by Ahmad Raza Khan Barelvi.",
+      "difficulty": "medium",
+      "id": "q70"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who wrote 'Kanzul Iman', a widely used Urdu translation of the Quran?",
+      "options": [
+        "Ahmad Raza Khan Barelvi",
+        "Shah Waliullah",
+        "Maulana Maududi",
+        "Mufti Muhammad Shafi"
+      ],
+      "answer": 0,
+      "explanation": "Kanzul Iman is the Urdu translation by Ahmad Raza Khan Barelvi.",
+      "difficulty": "medium",
+      "id": "q71"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who wrote the famous Urdu Tafsir 'Tafsir-e-Usmani'?",
+      "options": [
+        "Shabbir Ahmad Usmani",
+        "Shibli Nomani",
+        "Ashraf Ali Thanwi",
+        "Muhammad Taqi Usmani"
+      ],
+      "answer": 0,
+      "explanation": "Tafsir-e-Usmani is by Maulana Shabbir Ahmad Usmani and his teachers.",
+      "difficulty": "hard",
+      "id": "q72"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who compiled the Shia hadith collection 'Bihar al-Anwar'?",
+      "options": [
+        "Allama Majlisi",
+        "Al-Kulayni",
+        "Al-Tusi",
+        "Sharif al-Radi"
+      ],
+      "answer": 0,
+      "explanation": "Bihar al-Anwar is the encyclopedic hadith work of Allama Majlisi.",
+      "difficulty": "hard",
+      "id": "q73"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The sermons and sayings of Imam Ali (RA) collected in 'Nahj al-Balagha' were compiled by?",
+      "options": [
+        "Sharif al-Radi",
+        "Al-Majlisi",
+        "Al-Kulayni",
+        "Ibn Babawayh"
+      ],
+      "answer": 0,
+      "explanation": "Nahj al-Balagha was compiled by Sharif al-Radi.",
+      "difficulty": "hard",
+      "id": "q74"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who authored 'Al-Kafi', the most important Shia hadith collection?",
+      "options": [
+        "Al-Kulayni",
+        "Al-Tusi",
+        "Al-Saduq",
+        "Al-Majlisi"
+      ],
+      "answer": 0,
+      "explanation": "Al-Kafi is by Muhammad ibn Ya'qub al-Kulayni.",
+      "difficulty": "hard",
+      "id": "q75"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who wrote 'Al-Muwafaqat', the foundational work on the objectives of Shariah?",
+      "options": [
+        "Al-Shatibi",
+        "Al-Ghazali",
+        "Ibn Qayyim",
+        "Al-Suyuti"
+      ],
+      "answer": 0,
+      "explanation": "Al-Muwafaqat on Maqasid al-Shariah is by Abu Ishaq al-Shatibi.",
+      "difficulty": "hard",
+      "id": "q76"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who wrote 'Al-Ashbah wa al-Naza'ir', a classic of Hanafi legal maxims?",
+      "options": [
+        "Al-Suyuti",
+        "Ibn Nujaym",
+        "Al-Shawkani",
+        "Ibn Abidin"
+      ],
+      "answer": 0,
+      "explanation": "Al-Ashbah wa al-Naza'ir is by Jalal al-Din al-Suyuti.",
+      "difficulty": "hard",
+      "id": "q77"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The modern Tafsir 'Al-Manar' was written jointly by?",
+      "options": [
+        "Muhammad Abduh and Rashid Rida",
+        "Muhammad Abduh alone",
+        "Sayyid Qutb and Maududi",
+        "Ibn Kathir and Al-Baghawi"
+      ],
+      "answer": 0,
+      "explanation": "Tafsir al-Manar was begun by Abduh and completed by Rashid Rida.",
+      "difficulty": "medium",
+      "id": "q78"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who founded the Jamaat-e-Islami in 1941?",
+      "options": [
+        "Abul A'la Maududi",
+        "Hasan al-Banna",
+        "Sayyid Qutb",
+        "Maulana Azad"
+      ],
+      "answer": 0,
+      "explanation": "Abul A'la Maududi founded the Jamaat-e-Islami in 1941.",
+      "difficulty": "medium",
+      "id": "q79"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who authored the 'Maktubat-i-Imam Rabbani' (the Letters of Imam Rabbani)?",
+      "options": [
+        "Ahmad Sirhindi",
+        "Shah Waliullah",
+        "Ibn Taymiyyah",
+        "Al-Ghazali"
+      ],
+      "answer": 0,
+      "explanation": "Maktubat-i-Imam Rabbani collects the letters of Ahmad Sirhindi.",
+      "difficulty": "medium",
+      "id": "q80"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who wrote 'The Reconstruction of Religious Thought in Islam'?",
+      "options": [
+        "Allama Muhammad Iqbal",
+        "Sayyid Qutb",
+        "Abul Kalam Azad",
+        "Sir Syed Ahmad Khan"
+      ],
+      "answer": 0,
+      "explanation": "Iqbal's Reconstruction lectures were published in 1930.",
+      "difficulty": "medium",
+      "id": "q81"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which poet-philosopher is known as 'Shair-e-Mashriq' (Poet of the East)?",
+      "options": [
+        "Allama Muhammad Iqbal",
+        "Mirza Ghalib",
+        "Hafeez Jalandhari",
+        "Josh Malihabadi"
+      ],
+      "answer": 0,
+      "explanation": "Allama Iqbal is honoured as the Poet of the East.",
+      "difficulty": "easy",
+      "id": "q82"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Imam Shafi'i studied fiqh under which great Imam in Madinah?",
+      "options": [
+        "Imam Malik",
+        "Imam Abu Hanifa",
+        "Imam Ahmad bin Hanbal",
+        "Imam al-Bukhari"
+      ],
+      "answer": 0,
+      "explanation": "Imam Shafi'i was a student of Imam Malik in Madinah.",
+      "difficulty": "medium",
+      "id": "q83"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The title 'Al-Muwatta' of Imam Malik literally means?",
+      "options": [
+        "The well-trodden path",
+        "The correct collection",
+        "The revival",
+        "The proof"
+      ],
+      "answer": 0,
+      "explanation": "Al-Muwatta means the well-trodden, approved path.",
+      "difficulty": "hard",
+      "id": "q84"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who wrote 'Radd al-Muhtar', the famous commentary on Al-Durr al-Mukhtar?",
+      "options": [
+        "Ibn Abidin",
+        "Al-Haskafi",
+        "Al-Marghinani",
+        "Al-Shurunbulali"
+      ],
+      "answer": 0,
+      "explanation": "Radd al-Muhtar, the great Hanafi reference, is by Ibn Abidin.",
+      "difficulty": "hard",
+      "id": "q85"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who wrote the Tafsir 'Fath al-Qadir' combining hadith and tafsir?",
+      "options": [
+        "Al-Shawkani",
+        "Al-Alusi",
+        "Al-Zamakhshari",
+        "Al-Baghawi"
+      ],
+      "answer": 0,
+      "explanation": "Fath al-Qadir is the celebrated Tafsir of Muhammad al-Shawkani.",
+      "difficulty": "hard",
+      "id": "q86"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who wrote 'Zad al-Ma'ad', a comprehensive work on the Seerah and fiqh?",
+      "options": [
+        "Ibn Qayyim al-Jawziyyah",
+        "Ibn Taymiyyah",
+        "Ibn Kathir",
+        "Al-Nawawi"
+      ],
+      "answer": 0,
+      "explanation": "Zad al-Ma'ad fi Hady Khayr al-'Ibad is by Ibn Qayyim.",
+      "difficulty": "medium",
+      "id": "q87"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which modern scholar is famous for grading hadiths in 'Silsilat al-Ahadith al-Sahihah'?",
+      "options": [
+        "Muhammad Nasiruddin al-Albani",
+        "Ibn Hajar",
+        "Al-Suyuti",
+        "Al-Bukhari"
+      ],
+      "answer": 0,
+      "explanation": "Al-Albani is renowned for his hadith authentication work.",
+      "difficulty": "hard",
+      "id": "q88"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who wrote 'Fiqh al-Sunnah', a widely used modern fiqh manual?",
+      "options": [
+        "Sayyid Sabiq",
+        "Yusuf al-Qaradawi",
+        "Muhammad Abu Zahra",
+        "Wahbah al-Zuhayli"
+      ],
+      "answer": 0,
+      "explanation": "Fiqh al-Sunnah is by Sayyid Sabiq.",
+      "difficulty": "hard",
+      "id": "q89"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who wrote 'Al-Mughni', the great Hanbali encyclopedia of fiqh?",
+      "options": [
+        "Ibn Qudamah",
+        "Ibn Taymiyyah",
+        "Ibn Hazm",
+        "Ibn al-Qayyim"
+      ],
+      "answer": 0,
+      "explanation": "Al-Mughni is the monumental Hanbali fiqh work of Ibn Qudamah.",
+      "difficulty": "hard",
+      "id": "q90"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who wrote 'Al-Muhalla', the Zahiri fiqh work arranged by rulings?",
+      "options": [
+        "Ibn Hazm",
+        "Ibn Qudamah",
+        "Al-Shawkani",
+        "Al-San'ani"
+      ],
+      "answer": 0,
+      "explanation": "Al-Muhalla is by the Zahiri scholar Ibn Hazm of Andalusia.",
+      "difficulty": "hard",
+      "id": "q91"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who compiled the authentic hadith collection known as 'Sahih Ibn Hibban'?",
+      "options": [
+        "Ibn Hibban",
+        "Ibn Khuzaymah",
+        "Ibn Majah",
+        "Al-Hakim"
+      ],
+      "answer": 0,
+      "explanation": "Sahih Ibn Hibban is by the scholar Ibn Hibban al-Busti.",
+      "difficulty": "hard",
+      "id": "q92"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who compiled 'Al-Mustadrak ala al-Sahihain', supplementing Bukhari and Muslim?",
+      "options": [
+        "Al-Hakim al-Nishapuri",
+        "Al-Bayhaqi",
+        "Al-Daraqutni",
+        "Al-Khatib al-Baghdadi"
+      ],
+      "answer": 0,
+      "explanation": "Al-Mustadrak is by Abu Abdillah al-Hakim al-Nishapuri.",
+      "difficulty": "hard",
+      "id": "q93"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who wrote the history 'Al-Bidayah wa al-Nihayah' (The Beginning and the End)?",
+      "options": [
+        "Ibn Kathir",
+        "Al-Tabari",
+        "Ibn al-Athir",
+        "Al-Dhahabi"
+      ],
+      "answer": 0,
+      "explanation": "Al-Bidayah wa al-Nihayah is the universal history of Ibn Kathir.",
+      "difficulty": "hard",
+      "id": "q94"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who wrote the Tafsir 'Al-Mazhari', popular in South Asia?",
+      "options": [
+        "Qadi Thanaullah Panipati",
+        "Shah Waliullah",
+        "Abdul Qadir",
+        "Mufti Muhammad Shafi"
+      ],
+      "answer": 0,
+      "explanation": "Tafsir al-Mazhari is by Qadi Thanaullah Panipati.",
+      "difficulty": "hard",
+      "id": "q95"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who edited and transmitted the 'Sirat Rasul Allah' as 'Al-Sirah al-Nabawiyyah'?",
+      "options": [
+        "Ibn Hisham",
+        "Ibn Sa'd",
+        "Al-Tabari",
+        "Ibn Ishaq"
+      ],
+      "answer": 0,
+      "explanation": "Ibn Hisham edited Ibn Ishaq's Sirat into the famous recension.",
+      "difficulty": "medium",
+      "id": "q96"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who wrote 'Al-Tabaqat al-Kubra', the great biographical dictionary of early Muslims?",
+      "options": [
+        "Ibn Sa'd",
+        "Ibn Hisham",
+        "Al-Dhahabi",
+        "Ibn al-Athir"
+      ],
+      "answer": 0,
+      "explanation": "Al-Tabaqat al-Kubra is by Ibn Sa'd, secretary of al-Waqidi.",
+      "difficulty": "hard",
+      "id": "q97"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who wrote 'Tarikh al-Rusul wa al-Muluk' (History of the Prophets and Kings)?",
+      "options": [
+        "Al-Tabari",
+        "Ibn Kathir",
+        "Ibn Khaldun",
+        "Al-Masudi"
+      ],
+      "answer": 0,
+      "explanation": "The famous universal history is by Ibn Jarir al-Tabari.",
+      "difficulty": "medium",
+      "id": "q98"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who wrote 'Al-Itqan fi Ulum al-Quran', the classic on Quranic sciences?",
+      "options": [
+        "Al-Suyuti",
+        "Al-Zarkashi",
+        "Ibn Kathir",
+        "Al-Nawawi"
+      ],
+      "answer": 0,
+      "explanation": "Al-Itqan fi Ulum al-Quran is by Jalal al-Din al-Suyuti.",
+      "difficulty": "hard",
+      "id": "q99"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who wrote 'Sharh al-Aqa'id al-Nasafiyyah' on theology?",
+      "options": [
+        "Sa'd al-Din al-Taftazani",
+        "Al-Ash'ari",
+        "Al-Maturidi",
+        "Ibn Rushd"
+      ],
+      "answer": 0,
+      "explanation": "The celebrated commentary on the Nasafi creed is by al-Taftazani.",
+      "difficulty": "hard",
+      "id": "q100"
+    }
+  ]
+}

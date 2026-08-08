@@ -1,0 +1,1833 @@
+{
+  "bank": {
+    "name": "Constitution & Politics",
+    "subject": "Pakistan Affairs",
+    "topic": "Constitution & Politics",
+    "description": "The 1973 Constitution, its amendments, and Pakistan's political and judicial system.",
+    "tags": "css,pms,fpsc,pakistan-affairs,constitution,politics",
+    "version": "1.0",
+    "id": "pakistan_affairs_constitution"
+  },
+  "questions": [
+    {
+      "type": "mcq",
+      "prompt": "How many Articles does the 1973 Constitution of Pakistan contain?",
+      "options": [
+        "180",
+        "280",
+        "340",
+        "450"
+      ],
+      "answer": 1,
+      "explanation": "The 1973 Constitution consists of 280 Articles (plus schedules and annexes).",
+      "difficulty": "medium",
+      "id": "q01"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which system of government does the 1973 Constitution of Pakistan establish?",
+      "options": [
+        "Presidential",
+        "Parliamentary",
+        "Semi-presidential",
+        "Directorial"
+      ],
+      "answer": 1,
+      "explanation": "The 1973 Constitution establishes a parliamentary (Westminster-style) system with the Prime Minister as head of government.",
+      "difficulty": "easy",
+      "id": "q02"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who is the head of state under the 1973 Constitution?",
+      "options": [
+        "The President",
+        "The Prime Minister",
+        "The Chief Justice",
+        "The Speaker"
+      ],
+      "answer": 0,
+      "explanation": "The President is the head of state, elected by an electoral college of parliament and provincial assemblies.",
+      "difficulty": "easy",
+      "id": "q03"
+    },
+    {
+      "type": "mcq",
+      "prompt": "How many members does the National Assembly of Pakistan have?",
+      "options": [
+        "272",
+        "300",
+        "332",
+        "342"
+      ],
+      "answer": 3,
+      "explanation": "The National Assembly has 342 seats: 272 general, 60 reserved for women and 10 for minorities.",
+      "difficulty": "medium",
+      "id": "q04"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Before the 26th Amendment, how many members did the Senate of Pakistan have?",
+      "options": [
+        "87",
+        "96",
+        "100",
+        "104"
+      ],
+      "answer": 2,
+      "explanation": "The Senate had 100 members before the 26th Amendment (2024) increased provincial representation.",
+      "difficulty": "hard",
+      "id": "q05"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which constitutional amendment renamed the North-West Frontier Province (NWFP) to Khyber Pakhtunkhwa?",
+      "options": [
+        "17th",
+        "18th",
+        "19th",
+        "21st"
+      ],
+      "answer": 1,
+      "explanation": "The 18th Amendment (2010) renamed NWFP to Khyber Pakhtunkhwa.",
+      "difficulty": "medium",
+      "id": "q06"
+    },
+    {
+      "type": "mcq",
+      "prompt": "In which year was the 18th Amendment passed?",
+      "options": [
+        "2008",
+        "2010",
+        "2012",
+        "2015"
+      ],
+      "answer": 1,
+      "explanation": "The 18th Amendment was passed in April 2010 and is the largest amendment to the constitution.",
+      "difficulty": "medium",
+      "id": "q07"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which amendment abolished the President's discretionary power to dissolve the National Assembly under Article 58(2)(b)?",
+      "options": [
+        "13th",
+        "17th",
+        "18th",
+        "20th"
+      ],
+      "answer": 2,
+      "explanation": "The 18th Amendment (2010) abolished Article 58(2)(b), shifting power to parliament and the Prime Minister.",
+      "difficulty": "hard",
+      "id": "q08"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which amendment merged the Federally Administered Tribal Areas (FATA) into Khyber Pakhtunkhwa?",
+      "options": [
+        "22nd",
+        "24th",
+        "25th",
+        "26th"
+      ],
+      "answer": 2,
+      "explanation": "The 25th Amendment (2018) merged FATA into Khyber Pakhtunkhwa.",
+      "difficulty": "hard",
+      "id": "q09"
+    },
+    {
+      "type": "mcq",
+      "prompt": "According to the Objectives Resolution, sovereignty over the entire universe belongs to whom?",
+      "options": [
+        "Almighty Allah",
+        "Parliament",
+        "The President",
+        "The People"
+      ],
+      "answer": 0,
+      "explanation": "The Objectives Resolution (1949) declared that sovereignty over the entire universe belongs to Almighty Allah alone.",
+      "difficulty": "easy",
+      "id": "q10"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which Constitution of Pakistan introduced a presidential system of government?",
+      "options": [
+        "1956",
+        "1962",
+        "1973",
+        "1985"
+      ],
+      "answer": 1,
+      "explanation": "The 1962 Constitution, promulgated by Ayub Khan, introduced a presidential system.",
+      "difficulty": "medium",
+      "id": "q11"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What is the national language of Pakistan according to the 1973 Constitution?",
+      "options": [
+        "English",
+        "Urdu",
+        "Punjabi",
+        "Sindhi"
+      ],
+      "answer": 1,
+      "explanation": "Article 251 declares Urdu as the national language, with regional languages to be promoted.",
+      "difficulty": "easy",
+      "id": "q12"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who can remove the President of Pakistan through impeachment?",
+      "options": [
+        "The Supreme Court",
+        "A joint sitting of parliament",
+        "The Prime Minister alone",
+        "The Chief of Army Staff"
+      ],
+      "answer": 1,
+      "explanation": "The President can be impeached for violation of the constitution or gross misconduct by a joint sitting of parliament with a two-thirds majority.",
+      "difficulty": "medium",
+      "id": "q13"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which body conducts general elections in Pakistan?",
+      "options": [
+        "Election Commission of Pakistan",
+        "Supreme Court",
+        "Interior Ministry",
+        "National Assembly Secretariat"
+      ],
+      "answer": 0,
+      "explanation": "The Election Commission of Pakistan (ECP), established under Article 218, conducts and supervises elections.",
+      "difficulty": "easy",
+      "id": "q14"
+    },
+    {
+      "type": "mcq",
+      "prompt": "In which year did Benazir Bhutto become the first woman Prime Minister of Pakistan?",
+      "options": [
+        "1988",
+        "1990",
+        "1993",
+        "1996"
+      ],
+      "answer": 0,
+      "explanation": "Benazir Bhutto became Prime Minister in December 1988, the first woman to head a Muslim-majority country's government.",
+      "difficulty": "easy",
+      "id": "q15"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who imposed martial law in Pakistan on 5 July 1977?",
+      "options": [
+        "Ayub Khan",
+        "Yahya Khan",
+        "Zia-ul-Haq",
+        "Pervez Musharraf"
+      ],
+      "answer": 2,
+      "explanation": "General Muhammad Zia-ul-Haq imposed martial law on 5 July 1977 and remained in power until 1988.",
+      "difficulty": "easy",
+      "id": "q16"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The doctrine by which courts validated otherwise unconstitutional actions of the executive is known as?",
+      "options": [
+        "Doctrine of Necessity",
+        "Doctrine of Separation",
+        "Doctrine of Precedent",
+        "Doctrine of Immunity"
+      ],
+      "answer": 0,
+      "explanation": "The Doctrine of Necessity was invoked in 1958, 1969, 1977 and 1999 to validate martial law regimes.",
+      "difficulty": "hard",
+      "id": "q17"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which Article of the 1973 Constitution guarantees equality of all citizens before the law?",
+      "options": [
+        "Article 14",
+        "Article 25",
+        "Article 58",
+        "Article 63"
+      ],
+      "answer": 1,
+      "explanation": "Article 25 provides equality of citizens before the law and prohibits discrimination.",
+      "difficulty": "medium",
+      "id": "q18"
+    },
+    {
+      "type": "mcq",
+      "prompt": "How is the Prime Minister of Pakistan elected?",
+      "options": [
+        "By the Senate",
+        "By a majority in the National Assembly",
+        "Directly by the people",
+        "By the President"
+      ],
+      "answer": 1,
+      "explanation": "The Prime Minister is elected by a majority of members in the National Assembly.",
+      "difficulty": "easy",
+      "id": "q19"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which amendment reduced the President's powers by restoring the parliamentary system and is often called a 'mini-constitution'?",
+      "options": [
+        "8th",
+        "13th",
+        "17th",
+        "18th"
+      ],
+      "answer": 3,
+      "explanation": "The 18th Amendment (2010) is often called a 'mini-constitution' for the sweeping changes it made.",
+      "difficulty": "medium",
+      "id": "q20"
+    },
+    {
+      "type": "mcq",
+      "prompt": "According to the 1973 Constitution, the state religion of Pakistan is?",
+      "options": [
+        "Islam",
+        "No official religion",
+        "Christianity",
+        "All religions equally"
+      ],
+      "answer": 0,
+      "explanation": "Islam is declared the state religion under Article 2 of the Constitution.",
+      "difficulty": "easy",
+      "id": "q21"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The head of state of Pakistan is the?",
+      "options": [
+        "President",
+        "Prime Minister",
+        "Chief Justice",
+        "Speaker"
+      ],
+      "answer": 0,
+      "explanation": "The President is the head of state; the Prime Minister is the head of government.",
+      "difficulty": "easy",
+      "id": "q22"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The head of government of Pakistan is the?",
+      "options": [
+        "Prime Minister",
+        "President",
+        "Chief of Army Staff",
+        "Senate Chairman"
+      ],
+      "answer": 0,
+      "explanation": "The Prime Minister heads the federal government under the 1973 Constitution.",
+      "difficulty": "easy",
+      "id": "q23"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Parliament of Pakistan consists of how many houses?",
+      "options": [
+        "Two (National Assembly and Senate)",
+        "One (National Assembly only)",
+        "Three",
+        "Four"
+      ],
+      "answer": 0,
+      "explanation": "Pakistan has a bicameral parliament: the National Assembly (lower house) and Senate (upper house).",
+      "difficulty": "easy",
+      "id": "q24"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What is the maximum number of seats in the National Assembly?",
+      "options": [
+        "336 (266 general plus reserved)",
+        "200",
+        "272 only",
+        "400"
+      ],
+      "answer": 0,
+      "explanation": "After the 25th Amendment, the National Assembly has 336 seats including reserved seats.",
+      "difficulty": "hard",
+      "id": "q25"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which article of the Constitution guarantees fundamental rights?",
+      "options": [
+        "Articles 8 to 28",
+        "Article 1",
+        "Article 50",
+        "Article 100"
+      ],
+      "answer": 0,
+      "explanation": "Fundamental rights are enshrined in Articles 8-28 of the Constitution.",
+      "difficulty": "medium",
+      "id": "q26"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The superior judiciary of Pakistan consists of?",
+      "options": [
+        "The Supreme Court, Federal Shariat Court and High Courts",
+        "Only the Supreme Court",
+        "Only High Courts",
+        "District courts only"
+      ],
+      "answer": 0,
+      "explanation": "The superior judiciary comprises the Supreme Court, Federal Shariat Court and provincial High Courts.",
+      "difficulty": "medium",
+      "id": "q27"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The 18th Amendment (2010) is most famous for?",
+      "options": [
+        "Devolving powers and abolishing the concurrent list",
+        "Increasing presidential powers",
+        "Imposing emergency",
+        "Abolishing the Senate"
+      ],
+      "answer": 0,
+      "explanation": "The 18th Amendment devolved 17 ministries to provinces and abolished the concurrent list.",
+      "difficulty": "easy",
+      "id": "q28"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Council of Common Interests (CCI) was restored by which amendment?",
+      "options": [
+        "The 18th Amendment",
+        "The 17th Amendment",
+        "The 13th Amendment",
+        "The 8th Amendment"
+      ],
+      "answer": 0,
+      "explanation": "The 18th Amendment revived the CCI to resolve federal-provincial matters.",
+      "difficulty": "medium",
+      "id": "q29"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who is the Chairman of the Senate of Pakistan?",
+      "options": [
+        "The Senate elects its own chairman",
+        "The President",
+        "The PM appoints him",
+        "The Chief Justice"
+      ],
+      "answer": 0,
+      "explanation": "The Senate elects its Chairman from among its members.",
+      "difficulty": "easy",
+      "id": "q30"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The National Assembly speaker is elected by?",
+      "options": [
+        "The members of the National Assembly",
+        "The President",
+        "The Senate",
+        "The Supreme Court"
+      ],
+      "answer": 0,
+      "explanation": "Members of the National Assembly elect their own Speaker.",
+      "difficulty": "easy",
+      "id": "q31"
+    },
+    {
+      "type": "mcq",
+      "prompt": "How many seats are reserved for women in the National Assembly?",
+      "options": [
+        "60",
+        "30",
+        "20",
+        "100"
+      ],
+      "answer": 0,
+      "explanation": "60 seats are reserved for women in the National Assembly (Article 51).",
+      "difficulty": "medium",
+      "id": "q32"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Senate of Pakistan has how many seats after the 25th Amendment?",
+      "options": [
+        "96",
+        "100",
+        "80",
+        "104"
+      ],
+      "answer": 0,
+      "explanation": "The Senate has 96 members after the 25th Amendment (2022) merged FATA.",
+      "difficulty": "hard",
+      "id": "q33"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The term of the Senate is?",
+      "options": [
+        "6 years (half retire every 3 years)",
+        "5 years",
+        "4 years",
+        "7 years"
+      ],
+      "answer": 0,
+      "explanation": "Senators serve 6-year terms; half retire every three years.",
+      "difficulty": "medium",
+      "id": "q34"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The term of the National Assembly is?",
+      "options": [
+        "5 years",
+        "4 years",
+        "6 years",
+        "3 years"
+      ],
+      "answer": 0,
+      "explanation": "The National Assembly sits for a 5-year term.",
+      "difficulty": "easy",
+      "id": "q35"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which amendment fixed the tenure of the Chief of Army Staff?",
+      "options": [
+        "The 19th Amendment (2011)",
+        "The 18th Amendment",
+        "The 17th Amendment",
+        "The 22nd Amendment"
+      ],
+      "answer": 0,
+      "explanation": "The 19th Amendment set a uniform tenure for the army chief.",
+      "difficulty": "hard",
+      "id": "q36"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The '22nd Amendment' (2016) is related to?",
+      "options": [
+        "Appointment of the Chief Election Commissioner",
+        "Provincial boundaries",
+        "Religious courts",
+        "Federal taxes"
+      ],
+      "answer": 0,
+      "explanation": "The 22nd Amendment addressed CEC appointment and the ECP.",
+      "difficulty": "hard",
+      "id": "q37"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which amendment merged FATA with Khyber Pakhtunkhwa?",
+      "options": [
+        "The 25th Amendment (2018)",
+        "The 18th Amendment",
+        "The 23rd Amendment",
+        "The 24th Amendment"
+      ],
+      "answer": 0,
+      "explanation": "The 25th Amendment merged FATA into KP in 2018.",
+      "difficulty": "easy",
+      "id": "q38"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Article 62 and 63 of the Constitution deal with?",
+      "options": [
+        "Qualifications and disqualifications of parliamentarians",
+        "Fundamental rights",
+        "Provincial autonomy",
+        "The judiciary"
+      ],
+      "answer": 0,
+      "explanation": "Articles 62-63 set the qualifications and disqualification criteria for legislators.",
+      "difficulty": "medium",
+      "id": "q39"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The federal capital territory of Pakistan is?",
+      "options": [
+        "Islamabad Capital Territory",
+        "Karachi",
+        "Rawalpindi",
+        "Lahore"
+      ],
+      "answer": 0,
+      "explanation": "Islamabad Capital Territory is the federal capital area.",
+      "difficulty": "easy",
+      "id": "q40"
+    },
+    {
+      "type": "mcq",
+      "prompt": "How many provincial assemblies does Pakistan have?",
+      "options": [
+        "Four (Punjab, Sindh, KP, Balochistan)",
+        "Three",
+        "Five",
+        "Six"
+      ],
+      "answer": 0,
+      "explanation": "Each of the four provinces has its own provincial assembly.",
+      "difficulty": "easy",
+      "id": "q41"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The 'National Command Authority' (NCA) is headed by?",
+      "options": [
+        "The Prime Minister",
+        "The President",
+        "The Army Chief",
+        "The Defence Minister"
+      ],
+      "answer": 0,
+      "explanation": "The PM chairs the NCA, which oversees Pakistan's nuclear assets.",
+      "difficulty": "medium",
+      "id": "q42"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Federal Shariat Court hears appeals on?",
+      "options": [
+        "Islamic law matters (Hudood cases)",
+        "Only commercial disputes",
+        "Only tax cases",
+        "Criminal appeals only"
+      ],
+      "answer": 0,
+      "explanation": "The Federal Shariat Court reviews laws against Islamic injunctions.",
+      "difficulty": "medium",
+      "id": "q43"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The 'Election Commission of Pakistan' conducts?",
+      "options": [
+        "Federal and provincial elections",
+        "Only local elections",
+        "Only Senate elections",
+        "Only referendums"
+      ],
+      "answer": 0,
+      "explanation": "The ECP conducts all national and provincial elections.",
+      "difficulty": "easy",
+      "id": "q44"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What is the 'National Assembly' called in Urdu?",
+      "options": [
+        "Qaumi Assembly",
+        "Senate",
+        "Majlis-e-Shura",
+        "Wafaqi Majlis"
+      ],
+      "answer": 0,
+      "explanation": "The National Assembly is the Qaumi Assembly; the Senate is the upper house.",
+      "difficulty": "easy",
+      "id": "q45"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The 'Majlis-e-Shura' in Islamic governance traditionally means?",
+      "options": [
+        "The consultative council",
+        "The treasury",
+        "The judiciary",
+        "The army"
+      ],
+      "answer": 0,
+      "explanation": "Majlis-e-Shura is the consultative assembly in Islamic political tradition.",
+      "difficulty": "medium",
+      "id": "q46"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which schedule of the Constitution lists the federal legislative subjects?",
+      "options": [
+        "The Fourth Schedule",
+        "The First Schedule",
+        "The Second Schedule",
+        "The Seventh Schedule"
+      ],
+      "answer": 0,
+      "explanation": "The Fourth Schedule lists federal subjects; the Fifth, provincial subjects.",
+      "difficulty": "hard",
+      "id": "q47"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The President of Pakistan is elected by?",
+      "options": [
+        "An electoral college of parliament and provincial assemblies",
+        "Direct popular vote",
+        "The army",
+        "The Supreme Court"
+      ],
+      "answer": 0,
+      "explanation": "The President is elected by an electoral college comprising MPs and provincial legislators.",
+      "difficulty": "medium",
+      "id": "q48"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Article 245 of the Constitution deals with?",
+      "options": [
+        "The Armed Forces and their role in defending Pakistan",
+        "Fundamental rights",
+        "The census",
+        "The budget"
+      ],
+      "answer": 0,
+      "explanation": "Article 245 concerns the Armed Forces' duty to defend Pakistan.",
+      "difficulty": "hard",
+      "id": "q49"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who was the first President of the Constituent Assembly of Pakistan?",
+      "options": [
+        "Quaid-e-Azam Muhammad Ali Jinnah",
+        "Liaquat Ali Khan",
+        "Khawaja Nazimuddin",
+        "Chaudhry Muhammad Ali"
+      ],
+      "answer": 0,
+      "explanation": "Jinnah served as the first President of the Constituent Assembly until his death.",
+      "difficulty": "easy",
+      "id": "q50"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which article of the 1973 Constitution deals with the independence of the judiciary?",
+      "options": [
+        "Article 175",
+        "Article 8",
+        "Article 62",
+        "Article 245"
+      ],
+      "answer": 0,
+      "explanation": "Article 175 states that the judiciary shall be separate from the executive.",
+      "difficulty": "medium",
+      "id": "q51"
+    },
+    {
+      "type": "mcq",
+      "prompt": "How many times was the 1973 Constitution suspended or abrogated?",
+      "options": [
+        "Two times",
+        "Three times",
+        "Once",
+        "Never"
+      ],
+      "answer": 0,
+      "explanation": "It was suspended under martial law in 1977 and 1999.",
+      "difficulty": "hard",
+      "id": "q52"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who administers the oath of office to the Prime Minister?",
+      "options": [
+        "The President",
+        "The Chief Justice",
+        "The Speaker",
+        "The Chief Election Commissioner"
+      ],
+      "answer": 0,
+      "explanation": "The President administers the oath to the Prime Minister under Article 91.",
+      "difficulty": "easy",
+      "id": "q53"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The National Assembly has how many general seats?",
+      "options": [
+        "266",
+        "342",
+        "272",
+        "300"
+      ],
+      "answer": 0,
+      "explanation": "There are 266 general seats plus 60 reserved for women and 10 for minorities, totalling 336.",
+      "difficulty": "easy",
+      "id": "q54"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which constitutional amendment lowered the voting age from 21 to 18?",
+      "options": [
+        "18th Amendment",
+        "17th Amendment",
+        "20th Amendment",
+        "14th Amendment"
+      ],
+      "answer": 0,
+      "explanation": "The 18th Amendment (2010) also reduced the voting age to 18.",
+      "difficulty": "medium",
+      "id": "q55"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who can dissolve the National Assembly under the 1973 Constitution?",
+      "options": [
+        "The President on the Prime Minister's advice",
+        "The Prime Minister alone",
+        "The Speaker alone",
+        "The Chief Justice"
+      ],
+      "answer": 0,
+      "explanation": "Under Article 58, the President may dissolve the NA on the advice of the PM.",
+      "difficulty": "medium",
+      "id": "q56"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Objectives Resolution was adopted by the Constituent Assembly in which year?",
+      "options": [
+        "1949",
+        "1947",
+        "1950",
+        "1954"
+      ],
+      "answer": 0,
+      "explanation": "It was passed on 12 March 1949 and later made the preamble of the constitutions.",
+      "difficulty": "easy",
+      "id": "q57"
+    },
+    {
+      "type": "mcq",
+      "prompt": "How many judges sit on the Supreme Court of Pakistan's bench?",
+      "options": [
+        "The Chief Justice plus other judges as fixed by law",
+        "Fixed at 17",
+        "Fixed at 10",
+        "Fixed at 5"
+      ],
+      "answer": 0,
+      "explanation": "The strength is determined by statute; the CJP presides over the bench.",
+      "difficulty": "easy",
+      "id": "q58"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which article protects the right to information?",
+      "options": [
+        "Article 19A",
+        "Article 19",
+        "Article 20",
+        "Article 16"
+      ],
+      "answer": 0,
+      "explanation": "Article 19A, added by the 18th Amendment, guarantees the right to information.",
+      "difficulty": "medium",
+      "id": "q59"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who appoints the Chief Election Commissioner?",
+      "options": [
+        "The President",
+        "The Prime Minister",
+        "The Chief Justice",
+        "The Senate Chairman"
+      ],
+      "answer": 0,
+      "explanation": "The CEC is appointed by the President under Article 213.",
+      "difficulty": "easy",
+      "id": "q60"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which amendment restored the 1973 Constitution's original parliamentary character?",
+      "options": [
+        "18th Amendment",
+        "8th Amendment",
+        "17th Amendment",
+        "21st Amendment"
+      ],
+      "answer": 0,
+      "explanation": "The 18th Amendment (2010) abolished the discretionary powers of the President.",
+      "difficulty": "easy",
+      "id": "q61"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Senate of Pakistan has how many members?",
+      "options": [
+        "96",
+        "104",
+        "100",
+        "88"
+      ],
+      "answer": 1,
+      "explanation": "After the 25th Amendment, the Senate has 104 members.",
+      "difficulty": "medium",
+      "id": "q62"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which body interprets the Constitution in Pakistan?",
+      "options": [
+        "The Supreme Court",
+        "The National Assembly",
+        "The Election Commission",
+        "The Council of Common Interests"
+      ],
+      "answer": 0,
+      "explanation": "The Supreme Court is the final interpreter of the Constitution.",
+      "difficulty": "easy",
+      "id": "q63"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What does Article 8 of the Constitution declare?",
+      "options": [
+        "Laws inconsistent with fundamental rights are void",
+        "The national language is Urdu",
+        "Islam is the state religion",
+        "The capital is Islamabad"
+      ],
+      "answer": 0,
+      "explanation": "Article 8 nullifies any law that conflicts with fundamental rights.",
+      "difficulty": "easy",
+      "id": "q64"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which amendment made Urdu the sole national language?",
+      "options": [
+        "No amendment; it was so from 1973",
+        "7th Amendment",
+        "12th Amendment",
+        "25th Amendment"
+      ],
+      "answer": 0,
+      "explanation": "Article 251 declared Urdu the national language from the outset of the 1973 Constitution.",
+      "difficulty": "medium",
+      "id": "q65"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What is the term of office for a Senator?",
+      "options": [
+        "Six years",
+        "Five years",
+        "Four years",
+        "Three years"
+      ],
+      "answer": 0,
+      "explanation": "Senators serve six-year terms, with half retiring every three years.",
+      "difficulty": "easy",
+      "id": "q66"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who presides over joint sittings of the Parliament?",
+      "options": [
+        "The Speaker of the National Assembly",
+        "The Chairman of the Senate",
+        "The President",
+        "The Prime Minister"
+      ],
+      "answer": 0,
+      "explanation": "The Speaker presides over joint sittings under Article 56.",
+      "difficulty": "medium",
+      "id": "q67"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The concept of 'Provincial Autonomy' was strengthened by which amendment?",
+      "options": [
+        "18th Amendment",
+        "8th Amendment",
+        "17th Amendment",
+        "15th Amendment"
+      ],
+      "answer": 0,
+      "explanation": "The 18th Amendment devolved 47 subjects to the provinces.",
+      "difficulty": "easy",
+      "id": "q68"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who was the first female Speaker of the National Assembly of Pakistan?",
+      "options": [
+        "Fahmida Mirza",
+        "Benazir Bhutto",
+        "Hina Rabbani Khar",
+        "Sherry Rehman"
+      ],
+      "answer": 0,
+      "explanation": "Fahmida Mirza served as Speaker from 2008 to 2013.",
+      "difficulty": "easy",
+      "id": "q69"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which constitutional body oversees the federal budget?",
+      "options": [
+        "The National Assembly",
+        "The Senate",
+        "The Supreme Court",
+        "The CCI"
+      ],
+      "answer": 0,
+      "explanation": "The money bill originates in the National Assembly.",
+      "difficulty": "easy",
+      "id": "q70"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Article 62 of the Constitution deals with:",
+      "options": [
+        "Qualifications of a member of Parliament",
+        "The national flag",
+        "Provincial boundaries",
+        "The federal capital"
+      ],
+      "answer": 0,
+      "explanation": "Article 62 lays down the qualifications for parliamentary membership.",
+      "difficulty": "easy",
+      "id": "q71"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who acts as President when the office falls vacant?",
+      "options": [
+        "The Chairman of the Senate",
+        "The Speaker",
+        "The Chief Justice",
+        "The PM"
+      ],
+      "answer": 0,
+      "explanation": "Under Article 49, the Senate Chairman acts as President until a successor is elected.",
+      "difficulty": "medium",
+      "id": "q72"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Council of Common Interests was established under which article?",
+      "options": [
+        "Article 153",
+        "Article 62",
+        "Article 8",
+        "Article 91"
+      ],
+      "answer": 0,
+      "explanation": "Article 153 creates the Council of Common Interests.",
+      "difficulty": "hard",
+      "id": "q73"
+    },
+    {
+      "type": "mcq",
+      "prompt": "How many amendments has the 1973 Constitution undergone so far?",
+      "options": [
+        "More than 25",
+        "Exactly 12",
+        "Exactly 8",
+        "Fewer than 5"
+      ],
+      "answer": 0,
+      "explanation": "The Constitution has been amended 26 times, the latest being the 26th Amendment (2024).",
+      "difficulty": "medium",
+      "id": "q74"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The federal capital territory is governed under which article?",
+      "options": [
+        "Article 55",
+        "Article 245",
+        "Article 19",
+        "Article 90"
+      ],
+      "answer": 0,
+      "explanation": "Article 55 covers the administration of the federal capital, Islamabad.",
+      "difficulty": "hard",
+      "id": "q75"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which institution is known as the 'supreme guardian' of the Constitution?",
+      "options": [
+        "The Supreme Court",
+        "The President",
+        "The Army",
+        "The Parliament"
+      ],
+      "answer": 0,
+      "explanation": "The Supreme Court acts as the guardian and final interpreter of the Constitution.",
+      "difficulty": "easy",
+      "id": "q76"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Under Article 63, a member of Parliament is disqualified if he:",
+      "options": [
+        "Is of unsound mind or holds dual nationality",
+        "Is too young",
+        "Lives abroad",
+        "Owns property"
+      ],
+      "answer": 0,
+      "explanation": "Article 63 lists grounds of disqualification including unsound mind and dual citizenship.",
+      "difficulty": "easy",
+      "id": "q77"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The National Finance Commission is constituted under which article?",
+      "options": [
+        "Article 160",
+        "Article 153",
+        "Article 58",
+        "Article 99"
+      ],
+      "answer": 0,
+      "explanation": "Article 160 provides for the National Finance Commission.",
+      "difficulty": "hard",
+      "id": "q78"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What is the minimum age to become President of Pakistan?",
+      "options": [
+        "45 years",
+        "35 years",
+        "40 years",
+        "50 years"
+      ],
+      "answer": 0,
+      "explanation": "A presidential candidate must be at least 45 years old under Article 41.",
+      "difficulty": "easy",
+      "id": "q79"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which article of the 1973 Constitution deals with the election of the President?",
+      "options": [
+        "Article 41",
+        "Article 58",
+        "Article 91",
+        "Article 63"
+      ],
+      "answer": 0,
+      "explanation": "Article 41 governs the election and qualifications of the President.",
+      "difficulty": "medium",
+      "id": "q80"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The National Assembly's term is:",
+      "options": [
+        "Five years",
+        "Four years",
+        "Six years",
+        "Seven years"
+      ],
+      "answer": 0,
+      "explanation": "The National Assembly serves a five-year term.",
+      "difficulty": "easy",
+      "id": "q81"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The 'basic structure doctrine' in Pakistan was discussed in which famous case?",
+      "options": [
+        "Zulfiqar Ali Bhutto vs State (Nusrat Bhutto case context)",
+        "Muhammad Nawaz Sharif vs President",
+        "Liaquat Ali Khan case",
+        "No such doctrine exists"
+      ],
+      "answer": 0,
+      "explanation": "The Supreme Court's 1977 Nusrat Bhutto case addressed the constitutional order.",
+      "difficulty": "hard",
+      "id": "q82"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which amendment declared Islam as the state religion?",
+      "options": [
+        "2nd Amendment (1974)",
+        "1st Amendment",
+        "8th Amendment",
+        "18th Amendment"
+      ],
+      "answer": 0,
+      "explanation": "The 2nd Amendment (1974) declared Ahmadis non-Muslims; the state religion provision was already in the 1973 Constitution.",
+      "difficulty": "hard",
+      "id": "q83"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who is the constitutional head of the federal government?",
+      "options": [
+        "The Prime Minister",
+        "The President",
+        "The Speaker",
+        "The Chief Justice"
+      ],
+      "answer": 0,
+      "explanation": "The PM is the chief executive under the 1973 Constitution.",
+      "difficulty": "easy",
+      "id": "q84"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The federal cabinet is appointed by:",
+      "options": [
+        "The President on the PM's advice",
+        "The PM alone",
+        "The Speaker",
+        "The CEC"
+      ],
+      "answer": 0,
+      "explanation": "The President appoints the cabinet on the advice of the Prime Minister.",
+      "difficulty": "medium",
+      "id": "q85"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Article 58(2)(b), which allowed the President to dissolve the NA, was restored by which amendment?",
+      "options": [
+        "17th Amendment",
+        "8th Amendment",
+        "18th Amendment",
+        "13th Amendment"
+      ],
+      "answer": 0,
+      "explanation": "The 17th Amendment (2003) restored Article 58(2)(b).",
+      "difficulty": "hard",
+      "id": "q86"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which body decides on the disqualification of an MNA under Article 63A?",
+      "options": [
+        "The Election Commission",
+        "The Supreme Court",
+        "The Speaker",
+        "The CJP"
+      ],
+      "answer": 0,
+      "explanation": "Article 63A provides for the ECP to decide on defection cases.",
+      "difficulty": "hard",
+      "id": "q87"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The oath of the Chief Justice of Pakistan is administered by:",
+      "options": [
+        "The President",
+        "The PM",
+        "The Senate Chairman",
+        "The senior most judge"
+      ],
+      "answer": 0,
+      "explanation": "The President administers the oath to the Chief Justice.",
+      "difficulty": "medium",
+      "id": "q88"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which amendment set up the National Accountability Bureau (NAB)?",
+      "options": [
+        "No amendment; NAB was created by an ordinance (1999)",
+        "8th Amendment",
+        "18th Amendment",
+        "21st Amendment"
+      ],
+      "answer": 0,
+      "explanation": "NAB was established by the National Accountability Ordinance 1999.",
+      "difficulty": "hard",
+      "id": "q89"
+    },
+    {
+      "type": "mcq",
+      "prompt": "How many provinces were recognised in the 1973 Constitution?",
+      "options": [
+        "Four",
+        "Three",
+        "Five",
+        "Two"
+      ],
+      "answer": 0,
+      "explanation": "The 1973 Constitution recognised four provinces.",
+      "difficulty": "easy",
+      "id": "q90"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The right to education (Article 25A) was inserted by:",
+      "options": [
+        "The 18th Amendment",
+        "The 8th Amendment",
+        "The 13th Amendment",
+        "The 22nd Amendment"
+      ],
+      "answer": 0,
+      "explanation": "Article 25A, added in 2010, guarantees free education for ages 5–16.",
+      "difficulty": "easy",
+      "id": "q91"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Federal Shariat Court was established under:",
+      "options": [
+        "The 1973 Constitution",
+        "A presidential order of 1980",
+        "The 8th Amendment",
+        "The 18th Amendment"
+      ],
+      "answer": 0,
+      "explanation": "The Federal Shariat Court was created by the 1973 Constitution.",
+      "difficulty": "medium",
+      "id": "q92"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Article 245 of the Constitution empowers:",
+      "options": [
+        "The Armed Forces to defend Pakistan when called",
+        "The police",
+        "The judiciary",
+        "The provinces"
+      ],
+      "answer": 0,
+      "explanation": "Article 245 deals with the Armed Forces' duty to defend Pakistan.",
+      "difficulty": "medium",
+      "id": "q93"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which authority grants assent to a bill passed by Parliament?",
+      "options": [
+        "The President",
+        "The Speaker",
+        "The PM",
+        "The CJP"
+      ],
+      "answer": 0,
+      "explanation": "The President gives assent to bills under Article 75.",
+      "difficulty": "easy",
+      "id": "q94"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The first session of the current Constitution's National Assembly met in:",
+      "options": [
+        "August 1973",
+        "July 1970",
+        "March 1977",
+        "December 1971"
+      ],
+      "answer": 0,
+      "explanation": "The first NA under the 1973 Constitution convened in August 1973.",
+      "difficulty": "hard",
+      "id": "q95"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Provincial Assemblies' seats for minorities are reserved under:",
+      "options": [
+        "Article 106",
+        "Article 51",
+        "Article 62",
+        "Article 91"
+      ],
+      "answer": 0,
+      "explanation": "Article 106 provides for minority seats in provincial assemblies.",
+      "difficulty": "hard",
+      "id": "q96"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The 1956 Constitution of Pakistan was abrogated in which year?",
+      "options": [
+        "1958",
+        "1956",
+        "1960",
+        "1962"
+      ],
+      "answer": 0,
+      "explanation": "The 1956 Constitution was abrogated on 7 October 1958 when martial law was declared.",
+      "difficulty": "medium",
+      "id": "q97"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The 1962 Constitution of Pakistan was enforced in which year?",
+      "options": [
+        "1962",
+        "1958",
+        "1964",
+        "1960"
+      ],
+      "answer": 0,
+      "explanation": "The 1962 Constitution came into force on 8 June 1962 under Ayub Khan.",
+      "difficulty": "medium",
+      "id": "q98"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The 1962 Constitution was abrogated in which year?",
+      "options": [
+        "1969",
+        "1965",
+        "1971",
+        "1967"
+      ],
+      "answer": 0,
+      "explanation": "Yahya Khan abrogated the 1962 Constitution and imposed martial law in March 1969.",
+      "difficulty": "hard",
+      "id": "q99"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Legal Framework Order (LFO) of 1970 was issued by whom?",
+      "options": [
+        "General Yahya Khan",
+        "Ayub Khan",
+        "Zulfikar Ali Bhutto",
+        "Iskandar Mirza"
+      ],
+      "answer": 0,
+      "explanation": "Yahya Khan issued the LFO 1970 to set rules for the general elections.",
+      "difficulty": "medium",
+      "id": "q100"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Interim Constitution of Pakistan (1972) was framed under whom?",
+      "options": [
+        "Zulfikar Ali Bhutto",
+        "Ayub Khan",
+        "Yahya Khan",
+        "Nurul Amin"
+      ],
+      "answer": 0,
+      "explanation": "The interim constitution was adopted in 1972 under Bhutto's leadership.",
+      "difficulty": "hard",
+      "id": "q101"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The 1973 Constitution of Pakistan was enforced on which date?",
+      "options": [
+        "14 August 1973",
+        "23 March 1973",
+        "12 April 1973",
+        "1 July 1973"
+      ],
+      "answer": 0,
+      "explanation": "The 1973 Constitution came into force on 14 August 1973.",
+      "difficulty": "medium",
+      "id": "q102"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Article 6 of the 1973 Constitution declares what?",
+      "options": [
+        "Acts against the state to be high treason",
+        "Islam the state religion",
+        "Urdu the national language",
+        "Equality of citizens"
+      ],
+      "answer": 0,
+      "explanation": "Article 6 makes abrogation or subversion of the Constitution high treason.",
+      "difficulty": "medium",
+      "id": "q103"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Article 9 of the Constitution guarantees?",
+      "options": [
+        "Security of person",
+        "Freedom of religion",
+        "Freedom of trade",
+        "Right to property"
+      ],
+      "answer": 0,
+      "explanation": "Article 9 guarantees no person shall be deprived of life or liberty save by law.",
+      "difficulty": "medium",
+      "id": "q104"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The right to a fair trial (Article 10A) was inserted by which amendment?",
+      "options": [
+        "18th Amendment",
+        "19th Amendment",
+        "17th Amendment",
+        "21st Amendment"
+      ],
+      "answer": 0,
+      "explanation": "Article 10A on the right to a fair trial was added by the 18th Amendment (2010).",
+      "difficulty": "medium",
+      "id": "q105"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Article 14 of the Constitution protects?",
+      "options": [
+        "The dignity of man",
+        "Freedom of press",
+        "Right to education",
+        "Right to information"
+      ],
+      "answer": 0,
+      "explanation": "Article 14 protects the dignity of man and the inviolability of privacy.",
+      "difficulty": "medium",
+      "id": "q106"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Freedom of movement is guaranteed under which Article?",
+      "options": [
+        "Article 15",
+        "Article 19",
+        "Article 20",
+        "Article 16"
+      ],
+      "answer": 0,
+      "explanation": "Article 15 guarantees freedom of movement throughout Pakistan.",
+      "difficulty": "hard",
+      "id": "q107"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Freedom of association is guaranteed under which Article?",
+      "options": [
+        "Article 17",
+        "Article 15",
+        "Article 18",
+        "Article 19"
+      ],
+      "answer": 0,
+      "explanation": "Article 17 grants the right to form associations and unions.",
+      "difficulty": "hard",
+      "id": "q108"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Freedom of religion is guaranteed under which Article?",
+      "options": [
+        "Article 20",
+        "Article 19",
+        "Article 15",
+        "Article 25"
+      ],
+      "answer": 0,
+      "explanation": "Article 20 guarantees freedom to profess and practise religion.",
+      "difficulty": "medium",
+      "id": "q109"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Protection of property rights is provided under which Article?",
+      "options": [
+        "Article 24",
+        "Article 23",
+        "Article 18",
+        "Article 21"
+      ],
+      "answer": 0,
+      "explanation": "Article 24 protects the right to property in accordance with law.",
+      "difficulty": "hard",
+      "id": "q110"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Article 26 of the Constitution deals with?",
+      "options": [
+        "Non-discrimination in access to public places",
+        "Equality before law",
+        "Freedom of speech",
+        "Right to education"
+      ],
+      "answer": 0,
+      "explanation": "Article 26 prohibits discrimination in access to public places on grounds of race, religion or sex.",
+      "difficulty": "hard",
+      "id": "q111"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which amendment introduced the anti-defection law in Pakistan?",
+      "options": [
+        "14th Amendment",
+        "18th Amendment",
+        "17th Amendment",
+        "13th Amendment"
+      ],
+      "answer": 0,
+      "explanation": "The 14th Amendment (1997) disqualified floor-crossers from membership of assemblies.",
+      "difficulty": "medium",
+      "id": "q112"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The 13th Amendment (1997) is known for?",
+      "options": [
+        "Abolishing the President's power to dissolve the National Assembly",
+        "Lowering the voting age",
+        "Creating the Senate",
+        "Making Urdu the national language"
+      ],
+      "answer": 0,
+      "explanation": "The 13th Amendment removed the discretionary power of the President to dissolve the National Assembly.",
+      "difficulty": "medium",
+      "id": "q113"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Eighth Amendment, which added Article 58(2)(b), was passed in which year?",
+      "options": [
+        "1985",
+        "1990",
+        "1973",
+        "1988"
+      ],
+      "answer": 0,
+      "explanation": "The 8th Amendment (1985) introduced Article 58(2)(b) giving the President power to dissolve the Assembly.",
+      "difficulty": "hard",
+      "id": "q114"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The 20th Amendment (2012) dealt with?",
+      "options": [
+        "Caretaker governments and election timelines",
+        "Military courts",
+        "FATA merger",
+        "Women's reserved seats"
+      ],
+      "answer": 0,
+      "explanation": "The 20th Amendment set rules for caretaker governments and timely elections.",
+      "difficulty": "medium",
+      "id": "q115"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The 21st Amendment (2015) established?",
+      "options": [
+        "Military courts for terrorism cases",
+        "The National Accountability Bureau",
+        "The Council of Common Interests",
+        "Constitutional Benches"
+      ],
+      "answer": 0,
+      "explanation": "The 21st Amendment allowed trial of terrorism cases in military courts.",
+      "difficulty": "medium",
+      "id": "q116"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The 24th Amendment (2017) is related to?",
+      "options": [
+        "Delimitation of constituencies based on the census",
+        "Provincial autonomy",
+        "Judicial appointments",
+        "Senate representation"
+      ],
+      "answer": 0,
+      "explanation": "The 24th Amendment allowed delimitation of constituencies on the basis of the 2017 census.",
+      "difficulty": "hard",
+      "id": "q117"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The 26th Amendment (2024) is most notable for?",
+      "options": [
+        "Constitutional Benches and a fixed term for the Chief Justice",
+        "The creation of FATA",
+        "The abolition of the Senate",
+        "The 58(2)(b) restoration"
+      ],
+      "answer": 0,
+      "explanation": "The 26th Amendment set up Constitutional Benches and fixed the Chief Justice's term at three years.",
+      "difficulty": "medium",
+      "id": "q118"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The 27th Amendment (2025) provided for?",
+      "options": [
+        "Extension of military courts under the Army Act",
+        "New provinces",
+        "Direct election of the President",
+        "Abolition of the concurrent list"
+      ],
+      "answer": 0,
+      "explanation": "The 27th Amendment re-enacted provisions extending military courts.",
+      "difficulty": "hard",
+      "id": "q119"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Governor of a province is appointed by?",
+      "options": [
+        "The President",
+        "The Prime Minister",
+        "The provincial Chief Minister",
+        "The Governor-General"
+      ],
+      "answer": 0,
+      "explanation": "Under Article 101, the Governor is appointed by the President.",
+      "difficulty": "medium",
+      "id": "q120"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Chief Minister of a province is elected by?",
+      "options": [
+        "The provincial assembly",
+        "The Governor",
+        "The President",
+        "The Prime Minister"
+      ],
+      "answer": 0,
+      "explanation": "Under Article 130, the Chief Minister is elected by the provincial assembly.",
+      "difficulty": "medium",
+      "id": "q121"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Caretaker governments in Pakistan are provided for under which Article?",
+      "options": [
+        "Article 224",
+        "Article 130",
+        "Article 101",
+        "Article 153"
+      ],
+      "answer": 0,
+      "explanation": "Article 224 deals with caretaker governments before elections.",
+      "difficulty": "hard",
+      "id": "q122"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The power to amend the Constitution is vested in Parliament under which Article?",
+      "options": [
+        "Article 238",
+        "Article 239",
+        "Article 58",
+        "Article 245"
+      ],
+      "answer": 0,
+      "explanation": "Article 238 gives Parliament the power to amend the Constitution, with procedure in Article 239.",
+      "difficulty": "hard",
+      "id": "q123"
+    },
+    {
+      "type": "mcq",
+      "prompt": "How many non-Muslim seats are reserved in the National Assembly?",
+      "options": [
+        "10",
+        "5",
+        "15",
+        "20"
+      ],
+      "answer": 0,
+      "explanation": "Ten seats in the National Assembly are reserved for non-Muslims.",
+      "difficulty": "medium",
+      "id": "q124"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Senators in Pakistan are elected through?",
+      "options": [
+        "Proportional representation by provincial assemblies",
+        "Direct general elections",
+        "Presidential nomination",
+        "The Election Commission's appointment"
+      ],
+      "answer": 0,
+      "explanation": "Senate members are elected through proportional representation by the provincial assemblies.",
+      "difficulty": "medium",
+      "id": "q125"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The President of Pakistan must be?",
+      "options": [
+        "A Muslim",
+        "At least 30 years old",
+        "A member of the Senate",
+        "A graduate"
+      ],
+      "answer": 0,
+      "explanation": "Under Article 41, the President must be a Muslim of at least 45 years of age.",
+      "difficulty": "medium",
+      "id": "q126"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Supreme Judicial Council is empowered to?",
+      "options": [
+        "Remove superior court judges",
+        "Conduct elections",
+        "Approve the budget",
+        "Try treason cases"
+      ],
+      "answer": 0,
+      "explanation": "The Supreme Judicial Council investigates and may recommend removal of judges.",
+      "difficulty": "medium",
+      "id": "q127"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Advisory jurisdiction of the Supreme Court is provided under which Article?",
+      "options": [
+        "Article 186",
+        "Article 184",
+        "Article 175",
+        "Article 199"
+      ],
+      "answer": 0,
+      "explanation": "Under Article 186 the President may refer questions of public importance for the Court's opinion.",
+      "difficulty": "hard",
+      "id": "q128"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Supreme Court can exercise suo motu jurisdiction under which Article?",
+      "options": [
+        "Article 184(3)",
+        "Article 199",
+        "Article 186",
+        "Article 245"
+      ],
+      "answer": 0,
+      "explanation": "Article 184(3) allows the Supreme Court to take suo motu action on matters of public importance.",
+      "difficulty": "medium",
+      "id": "q129"
+    },
+    {
+      "type": "mcq",
+      "prompt": "How many High Courts does Pakistan currently have?",
+      "options": [
+        "Five",
+        "Four",
+        "Three",
+        "Six"
+      ],
+      "answer": 0,
+      "explanation": "Pakistan has five High Courts: four provincial and the Islamabad High Court.",
+      "difficulty": "medium",
+      "id": "q130"
+    }
+  ]
+}

@@ -1,0 +1,1413 @@
+{
+  "bank": {
+    "name": "Pillars & Worship",
+    "subject": "Islamic Studies",
+    "topic": "Pillars & Worship",
+    "description": "The five pillars of Islam: Shahada, Salah, Zakat, Sawm and Hajj, with their rules and timings.",
+    "tags": "css,pms,fpsc,islamic-studies,pillars",
+    "version": "1.0",
+    "id": "islamiat_pillars_and_worship"
+  },
+  "questions": [
+    {
+      "type": "mcq",
+      "prompt": "How many pillars of Islam are there?",
+      "options": [
+        "3",
+        "4",
+        "5",
+        "6"
+      ],
+      "answer": 2,
+      "explanation": "Islam has five pillars: Shahada, Salah, Zakat, Sawm and Hajj.",
+      "difficulty": "easy",
+      "id": "q01"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which pillar of Islam is the declaration of faith?",
+      "options": [
+        "Shahada",
+        "Salah",
+        "Zakat",
+        "Hajj"
+      ],
+      "answer": 0,
+      "explanation": "Shahada, the testimony that there is no god but Allah and Muhammad (PBUH) is His Messenger, is the first pillar.",
+      "difficulty": "easy",
+      "id": "q02"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What is the obligatory rate of Zakat on wealth?",
+      "options": [
+        "1%",
+        "2.5%",
+        "5%",
+        "10%"
+      ],
+      "answer": 1,
+      "explanation": "Zakat is 2.5% (one-fortieth) of wealth that reaches the nisab threshold.",
+      "difficulty": "easy",
+      "id": "q03"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Zakat is obligatory on wealth that exceeds which threshold?",
+      "options": [
+        "Haya",
+        "Nisab",
+        "Fitra",
+        "Sadqa"
+      ],
+      "answer": 1,
+      "explanation": "Zakat is due when wealth exceeds the nisab, the minimum threshold prescribed in Shariah.",
+      "difficulty": "medium",
+      "id": "q04"
+    },
+    {
+      "type": "mcq",
+      "prompt": "In which month do Muslims observe fasting (Sawm)?",
+      "options": [
+        "Rajab",
+        "Ramadan",
+        "Shaban",
+        "Muharram"
+      ],
+      "answer": 1,
+      "explanation": "Fasting in the month of Ramadan is the fourth pillar of Islam.",
+      "difficulty": "easy",
+      "id": "q05"
+    },
+    {
+      "type": "mcq",
+      "prompt": "How many obligatory (Fard) units of prayer does the Fajr prayer have?",
+      "options": [
+        "2",
+        "3",
+        "4",
+        "5"
+      ],
+      "answer": 0,
+      "explanation": "Fajr consists of 2 Fard rak'ahs (plus 2 Sunnah).",
+      "difficulty": "easy",
+      "id": "q06"
+    },
+    {
+      "type": "mcq",
+      "prompt": "How many obligatory prayers are offered daily?",
+      "options": [
+        "3",
+        "4",
+        "5",
+        "6"
+      ],
+      "answer": 2,
+      "explanation": "Five obligatory prayers are offered daily: Fajr, Zuhr, Asr, Maghrib and Isha.",
+      "difficulty": "easy",
+      "id": "q07"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which prayer is offered in congregation on Friday instead of Zuhr?",
+      "options": [
+        "Taraweeh",
+        "Jumu'ah",
+        "Eid",
+        "Tahajjud"
+      ],
+      "answer": 1,
+      "explanation": "Jumu'ah, the Friday prayer, replaces the Zuhr prayer for those attending the congregation.",
+      "difficulty": "easy",
+      "id": "q08"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Eid-ul-Fitr is celebrated on which day of which month?",
+      "options": [
+        "1 Shawwal",
+        "10 Dhul-Hijjah",
+        "27 Rajab",
+        "12 Rabi-ul-Awwal"
+      ],
+      "answer": 0,
+      "explanation": "Eid-ul-Fitr is celebrated on the first day of Shawwal, marking the end of Ramadan.",
+      "difficulty": "medium",
+      "id": "q09"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Eid-ul-Adha is celebrated on which day of Dhul-Hijjah?",
+      "options": [
+        "1st",
+        "8th",
+        "9th",
+        "10th"
+      ],
+      "answer": 3,
+      "explanation": "Eid-ul-Adha is celebrated on the 10th of Dhul-Hijjah after the Wuquf at Arafat.",
+      "difficulty": "medium",
+      "id": "q10"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Hajj is obligatory for a Muslim once in a lifetime if?",
+      "options": [
+        "He is over 50 years old",
+        "He is physically and financially able",
+        "He has a visa",
+        "He has performed Umrah"
+      ],
+      "answer": 1,
+      "explanation": "Hajj is obligatory once in a lifetime for those who are physically and financially able.",
+      "difficulty": "easy",
+      "id": "q11"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which rite is considered the most essential part of Hajj?",
+      "options": [
+        "Tawaf",
+        "Wuquf (standing) at Arafat",
+        "Sa'i",
+        "Stoning the Jamarat"
+      ],
+      "answer": 1,
+      "explanation": "The Wuquf at Arafat on the 9th of Dhul-Hijjah is the central rite; 'Hajj is Arafat'.",
+      "difficulty": "medium",
+      "id": "q12"
+    },
+    {
+      "type": "mcq",
+      "prompt": "During Hajj, pilgrims perform Tawaf around which structure?",
+      "options": [
+        "Masjid Quba",
+        "The Kaaba",
+        "The Zamzam well",
+        "Mount Uhud"
+      ],
+      "answer": 1,
+      "explanation": "Tawaf is the circumambulation of the Holy Kaaba seven times.",
+      "difficulty": "easy",
+      "id": "q13"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Sa'i of Hajj and Umrah is performed between which two hills?",
+      "options": [
+        "Safa and Marwah",
+        "Arafat and Muzdalifah",
+        "Mina and Arafat",
+        "Hira and Thawr"
+      ],
+      "answer": 0,
+      "explanation": "Sa'i is the seven circuits between the hills of Safa and Marwah.",
+      "difficulty": "medium",
+      "id": "q14"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which month precedes Ramadan in the Islamic calendar?",
+      "options": [
+        "Rajab",
+        "Dhul-Qa'dah",
+        "Muharram",
+        "Shaban"
+      ],
+      "answer": 3,
+      "explanation": "Shaban is the eighth month and directly precedes Ramadan.",
+      "difficulty": "medium",
+      "id": "q15"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Laylat-ul-Qadr is to be found in which part of Ramadan?",
+      "options": [
+        "First ten nights",
+        "Middle ten nights",
+        "Last ten nights",
+        "First night only"
+      ],
+      "answer": 2,
+      "explanation": "Laylat-ul-Qadr is in the last ten nights of Ramadan, most likely on an odd night.",
+      "difficulty": "easy",
+      "id": "q16"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which voluntary prayer is offered in the latter part of the night?",
+      "options": [
+        "Taraweeh",
+        "Tahajjud",
+        "Chasht",
+        "Ishraq"
+      ],
+      "answer": 1,
+      "explanation": "Tahajjud is the voluntary night prayer offered after waking in the latter part of the night.",
+      "difficulty": "medium",
+      "id": "q17"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Salah is which pillar of Islam?",
+      "options": [
+        "First",
+        "Second",
+        "Third",
+        "Fourth"
+      ],
+      "answer": 1,
+      "explanation": "Salah is the second pillar of Islam after Shahada.",
+      "difficulty": "easy",
+      "id": "q18"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What is the first pillar of Islam?",
+      "options": [
+        "Shahadah (declaration of faith)",
+        "Salah",
+        "Zakat",
+        "Hajj"
+      ],
+      "answer": 0,
+      "explanation": "The Shahadah — bearing witness that there is no god but Allah and Muhammad (PBUH) is His Messenger — is the first pillar.",
+      "difficulty": "easy",
+      "id": "q19"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What is the meaning of 'La ilaha illallah'?",
+      "options": [
+        "There is no god but Allah",
+        "Allah is great",
+        "Praise be to Allah",
+        "Allah is the Creator"
+      ],
+      "answer": 0,
+      "explanation": "'La ilaha illallah' means 'There is no deity worthy of worship except Allah.'",
+      "difficulty": "easy",
+      "id": "q20"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which pillar of Islam purifies wealth?",
+      "options": [
+        "Zakat",
+        "Sawm",
+        "Hajj",
+        "Shahadah"
+      ],
+      "answer": 0,
+      "explanation": "Zakat purifies wealth and shares it with the needy — the third pillar.",
+      "difficulty": "easy",
+      "id": "q21"
+    },
+    {
+      "type": "mcq",
+      "prompt": "How many times are the five daily prayers mentioned as Fard in the Quran?",
+      "options": [
+        "Five times in the Quran",
+        "The Quran mentions prayer generally, and the five are fixed by Sunnah",
+        "Only once",
+        "Seven times"
+      ],
+      "answer": 1,
+      "explanation": "The Quran commands Salah generally; the specific five daily prayers are established through the Sunnah and the Mi'raj.",
+      "difficulty": "hard",
+      "id": "q22"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What is the reward of a voluntary prayer according to hadith compared to fard?",
+      "options": [
+        "Voluntary is a perfection of the fard",
+        "Voluntary is forbidden",
+        "Voluntary replaces fard",
+        "There is no reward"
+      ],
+      "answer": 0,
+      "explanation": "Sunnah/nafl prayers complete and perfect any deficiency in the obligatory prayers.",
+      "difficulty": "medium",
+      "id": "q23"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What is the difference between Wajib and Fard?",
+      "options": [
+        "Fard is definitively established and Wajib is nearly as binding; both are obligatory in practice",
+        "Fard is optional and Wajib is compulsory",
+        "Wajib is optional",
+        "There is no difference at all"
+      ],
+      "answer": 0,
+      "explanation": "Fard is established by definitive evidence; Wajib is obligatory but established by strong, somewhat lesser evidence (in Hanafi fiqh).",
+      "difficulty": "hard",
+      "id": "q24"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What is the funeral prayer called?",
+      "options": [
+        "Salat-ul-Janazah",
+        "Salat-ul-Eid",
+        "Salat-ul-Taraweeh",
+        "Salat-ul-Duha"
+      ],
+      "answer": 0,
+      "explanation": "Salat-ul-Janazah is the funeral prayer, performed in standing without Ruku or Sajdah.",
+      "difficulty": "easy",
+      "id": "q25"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which prayer is performed during an eclipse?",
+      "options": [
+        "Salat-ul-Khusuf (solar/lunar eclipse prayer)",
+        "Salat-ul-Janazah",
+        "Salat-ul-Eid",
+        "Salat-ul-Tasbih"
+      ],
+      "answer": 0,
+      "explanation": "Salat-ul-Khusuf is the prayer during a solar or lunar eclipse.",
+      "difficulty": "medium",
+      "id": "q26"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What is Salat-ul-Istisqa?",
+      "options": [
+        "The prayer for rain",
+        "The eclipse prayer",
+        "The funeral prayer",
+        "The fear prayer"
+      ],
+      "answer": 0,
+      "explanation": "Salat-ul-Istisqa is the special prayer for rain during drought.",
+      "difficulty": "medium",
+      "id": "q27"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What is 'Salat-ul-Khawf'?",
+      "options": [
+        "The prayer of fear during battle",
+        "The midnight prayer",
+        "The prayer of gratitude",
+        "The prayer of need"
+      ],
+      "answer": 0,
+      "explanation": "Salat-ul-Khawf is the shortened/arranged congregational prayer during battle or danger.",
+      "difficulty": "hard",
+      "id": "q28"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What is the 'Qunut'?",
+      "options": [
+        "A supplication recited in specific prayers, e.g. during Witr or calamities",
+        "A type of prostration",
+        "The call to prayer",
+        "The Eid sermon"
+      ],
+      "answer": 0,
+      "explanation": "Qunut is a special supplication, commonly recited in Witr and during the Fajr prayer in times of calamity.",
+      "difficulty": "medium",
+      "id": "q29"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What does 'Tasbih' mean?",
+      "options": [
+        "Glorifying Allah (SubhanAllah)",
+        "Bowing",
+        "Prostrating",
+        "Standing in prayer"
+      ],
+      "answer": 0,
+      "explanation": "Tasbih is the glorification of Allah, such as saying 'SubhanAllah'.",
+      "difficulty": "easy",
+      "id": "q30"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What is 'Takbir'?",
+      "options": [
+        "Saying 'Allahu Akbar'",
+        "Saying 'Alhamdulillah'",
+        "Saying 'Astaghfirullah'",
+        "Saying 'La ilaha illallah'"
+      ],
+      "answer": 0,
+      "explanation": "Takbir is saying 'Allahu Akbar' (Allah is the Greatest).",
+      "difficulty": "easy",
+      "id": "q31"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What is 'Tahmid'?",
+      "options": [
+        "Saying 'Alhamdulillah' (praise be to Allah)",
+        "Saying 'Allahu Akbar'",
+        "Saying 'Bismillah'",
+        "Saying 'Ameen'"
+      ],
+      "answer": 0,
+      "explanation": "Tahmid is praising Allah with 'Alhamdulillah'.",
+      "difficulty": "medium",
+      "id": "q32"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What is the night prayer performed after Isha during Ramadan called?",
+      "options": [
+        "Taraweeh",
+        "Tahajjud",
+        "Witr",
+        "Duha"
+      ],
+      "answer": 0,
+      "explanation": "Taraweeh is the congregational night prayer of Ramadan, after Isha.",
+      "difficulty": "easy",
+      "id": "q33"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What is the 'Witr' prayer?",
+      "options": [
+        "An odd-numbered prayer prayed after Isha",
+        "A prayer at dawn",
+        "A prayer for rain",
+        "A voluntary daytime prayer"
+      ],
+      "answer": 0,
+      "explanation": "Witr is the odd-numbered (1, 3, 5, 7 or 9 rakat) prayer offered after Isha.",
+      "difficulty": "medium",
+      "id": "q34"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What is 'Salat-ul-Duha'?",
+      "options": [
+        "A voluntary mid-morning prayer",
+        "A pre-dawn prayer",
+        "A night prayer",
+        "A funeral prayer"
+      ],
+      "answer": 0,
+      "explanation": "Salat-ul-Duha (Ishraq/Chasht) is the voluntary prayer after sunrise until noon.",
+      "difficulty": "medium",
+      "id": "q35"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What is 'Salat-ul-Tasbih'?",
+      "options": [
+        "A prayer in which Tasbih is recited many times",
+        "A prayer for rain",
+        "An eclipse prayer",
+        "A battle prayer"
+      ],
+      "answer": 0,
+      "explanation": "Salat-ul-Tasbih is a special voluntary prayer involving 300 recitations of Tasbih.",
+      "difficulty": "hard",
+      "id": "q36"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What does 'Ruku' mean in prayer?",
+      "options": [
+        "Bowing with hands on knees",
+        "Prostration",
+        "Standing",
+        "Sitting between prostrations"
+      ],
+      "answer": 0,
+      "explanation": "Ruku is the bowing position in Salah, glorifying Allah's greatness.",
+      "difficulty": "easy",
+      "id": "q37"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What is said three times in Ruku?",
+      "options": [
+        "Subhana Rabbiyal-Azim",
+        "Subhana Rabbiyal-A'la",
+        "Sami Allahu liman hamidah",
+        "Rabbana lakal-hamd"
+      ],
+      "answer": 0,
+      "explanation": "In Ruku one says 'Subhana Rabbiyal-Azim' — Glory to my Lord, the Magnificent.",
+      "difficulty": "medium",
+      "id": "q38"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What is said in Sajdah?",
+      "options": [
+        "Subhana Rabbiyal-A'la",
+        "Subhana Rabbiyal-Azim",
+        "Allahu Akbar",
+        "Sami Allahu liman hamidah"
+      ],
+      "answer": 0,
+      "explanation": "In Sajdah one says 'Subhana Rabbiyal-A'la' — Glory to my Lord, the Most High.",
+      "difficulty": "medium",
+      "id": "q39"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What is the 'Tashahhud'?",
+      "options": [
+        "The testimony recited while sitting in prayer",
+        "The opening takbir",
+        "The final salam",
+        "A type of prostration"
+      ],
+      "answer": 0,
+      "explanation": "Tashahhud (Attahiyyat) is the sitting testimony in the second and final units of prayer.",
+      "difficulty": "medium",
+      "id": "q40"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What ends the prayer?",
+      "options": [
+        "Salam to the right and left",
+        "A final takbir",
+        "Dua only",
+        "Standing up"
+      ],
+      "answer": 0,
+      "explanation": "The prayer concludes with Salam ('Assalamu alaikum wa rahmatullah') to the right and left.",
+      "difficulty": "easy",
+      "id": "q41"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who leads the congregation in prayer?",
+      "options": [
+        "The Imam",
+        "The Mu'adhdhin",
+        "The Khatib",
+        "The Qari"
+      ],
+      "answer": 0,
+      "explanation": "The Imam leads the congregational prayer; the Mu'adhdhin gives the Adhan.",
+      "difficulty": "easy",
+      "id": "q42"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What is 'Ghusl'?",
+      "options": [
+        "The full ritual bath for purification",
+        "A partial ablution",
+        "Dry ablution",
+        "Wiping over socks"
+      ],
+      "answer": 0,
+      "explanation": "Ghusl is the complete washing of the body for major purification.",
+      "difficulty": "easy",
+      "id": "q43"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What is the reward of congregational prayer compared to praying alone?",
+      "options": [
+        "27 times greater",
+        "2 times greater",
+        "Equal",
+        "10 times greater"
+      ],
+      "answer": 0,
+      "explanation": "The Prophet (PBUH) said congregational prayer is 27 times more rewarding than praying alone (Bukhari, Muslim).",
+      "difficulty": "medium",
+      "id": "q44"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What is 'Qibla' of the Muslims?",
+      "options": [
+        "The Kaaba in Makkah",
+        "Jerusalem",
+        "Madinah",
+        "Karbala"
+      ],
+      "answer": 0,
+      "explanation": "The Qibla is the Kaaba in Makkah, faced in all prayers.",
+      "difficulty": "easy",
+      "id": "q45"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Before which direction did Muslims initially pray before the Qibla was changed to the Kaaba?",
+      "options": [
+        "Jerusalem (Masjid al-Aqsa)",
+        "Makkah",
+        "Madinah",
+        "Taif"
+      ],
+      "answer": 0,
+      "explanation": "Muslims initially prayed toward Jerusalem; the Qibla was changed to the Kaaba in 2 AH (2:144).",
+      "difficulty": "medium",
+      "id": "q46"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What is 'Khushu' in Salah?",
+      "options": [
+        "Focus and humility of the heart in prayer",
+        "Loud recitation",
+        "Quick prayer",
+        "Standing straight"
+      ],
+      "answer": 0,
+      "explanation": "Khushu is the presence of heart and humble focus during prayer.",
+      "difficulty": "medium",
+      "id": "q47"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What is 'Tahiyyat' (Attahiyyat)?",
+      "options": [
+        "The greeting of Allah in the sitting position of prayer",
+        "The final salam",
+        "The opening dua",
+        "The call to prayer"
+      ],
+      "answer": 0,
+      "explanation": "Attahiyyat is the greeting and testimony recited while sitting in the prayer.",
+      "difficulty": "medium",
+      "id": "q48"
+    },
+    {
+      "type": "mcq",
+      "prompt": "How many daily prayers are obligatory (Fard)?",
+      "options": [
+        "Five",
+        "Three",
+        "Seven",
+        "Ten"
+      ],
+      "answer": 0,
+      "explanation": "Five daily prayers are Fard.",
+      "difficulty": "easy",
+      "id": "q49"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which prayer is offered at dawn?",
+      "options": [
+        "Fajr",
+        "Zuhr",
+        "Asr",
+        "Maghrib"
+      ],
+      "answer": 0,
+      "explanation": "Fajr is the pre-dawn prayer.",
+      "difficulty": "easy",
+      "id": "q50"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Zuhr prayer is offered:",
+      "options": [
+        "After midday",
+        "At dawn",
+        "After sunset",
+        "At night"
+      ],
+      "answer": 0,
+      "explanation": "Zuhr is the early afternoon prayer.",
+      "difficulty": "easy",
+      "id": "q51"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Maghrib prayer is offered:",
+      "options": [
+        "Just after sunset",
+        "At midday",
+        "At dawn",
+        "Late night"
+      ],
+      "answer": 0,
+      "explanation": "Maghrib follows sunset.",
+      "difficulty": "easy",
+      "id": "q52"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which prayer is the last of the five daily prayers?",
+      "options": [
+        "Isha",
+        "Asr",
+        "Maghrib",
+        "Fajr"
+      ],
+      "answer": 0,
+      "explanation": "Isha is the night prayer.",
+      "difficulty": "easy",
+      "id": "q53"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Friday congregation prayer is called:",
+      "options": [
+        "Salat-ul-Jumu'ah",
+        "Salat-ul-Taraweeh",
+        "Salat-ul-Janazah",
+        "Salat-ul-Istikharah"
+      ],
+      "answer": 0,
+      "explanation": "Jumu'ah is the Friday congregational prayer.",
+      "difficulty": "easy",
+      "id": "q54"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Witr prayer is offered after which prayer?",
+      "options": [
+        "Isha",
+        "Fajr",
+        "Zuhr",
+        "Maghrib"
+      ],
+      "answer": 0,
+      "explanation": "Witr is prayed after Isha.",
+      "difficulty": "easy",
+      "id": "q55"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Taraweeh prayers are performed during:",
+      "options": [
+        "Ramadan nights",
+        "Muharram",
+        "Only Fridays",
+        "Only Eids"
+      ],
+      "answer": 0,
+      "explanation": "Taraweeh is the Ramadan night prayer.",
+      "difficulty": "easy",
+      "id": "q56"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Tahajjud prayer is offered:",
+      "options": [
+        "In the last part of the night",
+        "At dawn only",
+        "At midday",
+        "After Asr"
+      ],
+      "answer": 0,
+      "explanation": "Tahajjud is the voluntary night prayer.",
+      "difficulty": "easy",
+      "id": "q57"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which prayer is a sign of gratitude after the completion of Ramadan?",
+      "options": [
+        "Eid-ul-Fitr prayer",
+        "Taraweeh",
+        "Witr",
+        "Janazah"
+      ],
+      "answer": 0,
+      "explanation": "Eid-ul-Fitr prayer celebrates the end of fasting.",
+      "difficulty": "easy",
+      "id": "q58"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Zakat is calculated at what rate?",
+      "options": [
+        "2.5% of qualifying wealth",
+        "10% of all income",
+        "5% only",
+        "20% of savings"
+      ],
+      "answer": 0,
+      "explanation": "Zakat is 2.5% (1/40) of qualifying wealth.",
+      "difficulty": "easy",
+      "id": "q59"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Fasting during Ramadan is which pillar?",
+      "options": [
+        "The fourth pillar",
+        "The second pillar",
+        "The third pillar",
+        "The fifth pillar"
+      ],
+      "answer": 0,
+      "explanation": "Sawm is the fourth pillar of Islam.",
+      "difficulty": "easy",
+      "id": "q60"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who is exempt from fasting in Ramadan?",
+      "options": [
+        "The sick, travellers and the elderly",
+        "Only children",
+        "Only the rich",
+        "No one"
+      ],
+      "answer": 0,
+      "explanation": "Those with valid excuses are exempt.",
+      "difficulty": "easy",
+      "id": "q61"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The pre-dawn meal before fasting is called:",
+      "options": [
+        "Suhoor",
+        "Iftar",
+        "Zakat",
+        "Fitra"
+      ],
+      "answer": 0,
+      "explanation": "Suhoor is eaten before dawn.",
+      "difficulty": "easy",
+      "id": "q62"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The meal to break the fast at sunset is called:",
+      "options": [
+        "Iftar",
+        "Suhoor",
+        "Sadaqah",
+        "Nisab"
+      ],
+      "answer": 0,
+      "explanation": "Iftar breaks the daily fast.",
+      "difficulty": "easy",
+      "id": "q63"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Hajj is obligatory on a Muslim who:",
+      "options": [
+        "Is physically and financially able",
+        "Has a job",
+        "Is old only",
+        "Lives in Makkah"
+      ],
+      "answer": 0,
+      "explanation": "Hajj is required of the capable.",
+      "difficulty": "easy",
+      "id": "q64"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The 'Umrah' is known as the:",
+      "options": [
+        "Lesser pilgrimage",
+        "Greater pilgrimage",
+        "Night journey",
+        "Farewell pilgrimage"
+      ],
+      "answer": 0,
+      "explanation": "Umrah is the lesser pilgrimage, optional.",
+      "difficulty": "easy",
+      "id": "q65"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The 'Ihram' refers to:",
+      "options": [
+        "The state of pilgrimage consecration",
+        "A type of prayer",
+        "A charity",
+        "A fast"
+      ],
+      "answer": 0,
+      "explanation": "Ihram is the sacred state and dress of Hajj/Umrah.",
+      "difficulty": "easy",
+      "id": "q66"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The declaration of faith 'La ilaha illallah, Muhammadur Rasulullah' is the:",
+      "options": [
+        "Shahadah",
+        "Takbir",
+        "Tasbih",
+        "Tahlil"
+      ],
+      "answer": 0,
+      "explanation": "Shahadah is the testimony of faith.",
+      "difficulty": "easy",
+      "id": "q67"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which of the following is NOT among the five pillars of Islam?",
+      "options": [
+        "Jihad (armed struggle)",
+        "Shahadah",
+        "Salah",
+        "Zakat"
+      ],
+      "answer": 0,
+      "explanation": "The five pillars are Shahadah, Salah, Zakat, Sawm and Hajj — Jihad is not among them.",
+      "difficulty": "easy",
+      "id": "q68"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The word 'Islam' literally means?",
+      "options": [
+        "Submission and peace",
+        "Struggle",
+        "Faith",
+        "Gratitude"
+      ],
+      "answer": 0,
+      "explanation": "Islam comes from 'aslama' — peaceful surrender to Allah.",
+      "difficulty": "easy",
+      "id": "q69"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Zakat literally means?",
+      "options": [
+        "Purification and growth",
+        "Charity only",
+        "Wealth",
+        "Poverty"
+      ],
+      "answer": 0,
+      "explanation": "Zakat purifies wealth and causes it to grow in blessing.",
+      "difficulty": "medium",
+      "id": "q70"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Zakat is due once every?",
+      "options": [
+        "Lunar year (Hijri year)",
+        "Solar year",
+        "Month",
+        "Week"
+      ],
+      "answer": 0,
+      "explanation": "Zakat is paid once per Hijri year on wealth held above Nisab.",
+      "difficulty": "medium",
+      "id": "q71"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Ushr on canal-irrigated land is generally?",
+      "options": [
+        "5%",
+        "10%",
+        "2.5%",
+        "20%"
+      ],
+      "answer": 0,
+      "explanation": "Land irrigated with effort pays 5% Ushr, while rain-fed land pays 10%.",
+      "difficulty": "hard",
+      "id": "q72"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Nisab of silver is approximately?",
+      "options": [
+        "612.36 grams (52.5 tolas)",
+        "87.48 grams",
+        "40 grams",
+        "200 grams"
+      ],
+      "answer": 0,
+      "explanation": "The silver Nisab is about 612.36 grams (52.5 tolas).",
+      "difficulty": "medium",
+      "id": "q73"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which of the following nullifies the fast of Ramadan?",
+      "options": [
+        "Intentional eating or drinking",
+        "Forgetful eating",
+        "Brushing teeth",
+        "Swallowing saliva"
+      ],
+      "answer": 0,
+      "explanation": "Intentional consumption breaks the fast; forgetfulness does not.",
+      "difficulty": "medium",
+      "id": "q74"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Shahadah consists of how many parts?",
+      "options": [
+        "Two declarations",
+        "One declaration",
+        "Three declarations",
+        "Four declarations"
+      ],
+      "answer": 0,
+      "explanation": "The Shahadah testifies to Allah's oneness and Muhammad's (PBUH) messengerhood.",
+      "difficulty": "easy",
+      "id": "q75"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The two rakat before the Fajr prayer are called?",
+      "options": [
+        "The Sunnah of Fajr (highly emphasized)",
+        "Nafl",
+        "Witr",
+        "Tahajjud"
+      ],
+      "answer": 0,
+      "explanation": "The Sunnah before Fajr is the most emphasized of the regular Sunnah prayers.",
+      "difficulty": "medium",
+      "id": "q76"
+    },
+    {
+      "type": "mcq",
+      "prompt": "According to a hadith, the two rakat before Fajr are better than?",
+      "options": [
+        "The world and everything in it",
+        "A thousand prayers",
+        "A year of worship",
+        "All other Sunnah prayers"
+      ],
+      "answer": 0,
+      "explanation": "The Prophet (PBUH) said the Fajr Sunnah is better than the world and all it contains.",
+      "difficulty": "hard",
+      "id": "q77"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The voluntary prayer offered between Maghrib and Isha is called?",
+      "options": [
+        "Salat al-Awwabin",
+        "Tahajjud",
+        "Duha",
+        "Istikhara"
+      ],
+      "answer": 0,
+      "explanation": "The prayer between Maghrib and Isha is known as Salat al-Awwabin.",
+      "difficulty": "hard",
+      "id": "q78"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The 'greeting of the mosque' before sitting is called?",
+      "options": [
+        "Tahiyyat al-Masjid",
+        "Tahajjud",
+        "Taraweeh",
+        "Tasbih"
+      ],
+      "answer": 0,
+      "explanation": "Tahiyyat al-Masjid is two rakat offered on entering the mosque.",
+      "difficulty": "medium",
+      "id": "q79"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Prayer in the Prophet's Mosque (Masjid Nabawi) is rewarded how many times more than elsewhere?",
+      "options": [
+        "1,000 times",
+        "100 times",
+        "10 times",
+        "500 times"
+      ],
+      "answer": 0,
+      "explanation": "A prayer in Masjid Nabawi is worth 1,000 prayers elsewhere (except the Haram).",
+      "difficulty": "medium",
+      "id": "q80"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Prayer in the Sacred Mosque (Masjid al-Haram) in Makkah is rewarded how many times more?",
+      "options": [
+        "100,000 times",
+        "1,000 times",
+        "10,000 times",
+        "500 times"
+      ],
+      "answer": 0,
+      "explanation": "A prayer in the Haram is rewarded 100,000 times over.",
+      "difficulty": "medium",
+      "id": "q81"
+    },
+    {
+      "type": "mcq",
+      "prompt": "According to a hadith, the first thing a servant will be questioned about on the Day of Judgment is?",
+      "options": [
+        "The prayer (Salah)",
+        "The fast",
+        "The wealth",
+        "The family"
+      ],
+      "answer": 0,
+      "explanation": "The first matter of reckoning is the prayer.",
+      "difficulty": "medium",
+      "id": "q82"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The word 'Sawm' (fasting) literally means?",
+      "options": [
+        "To abstain",
+        "To eat",
+        "To pray",
+        "To give"
+      ],
+      "answer": 0,
+      "explanation": "Sawm means abstention, particularly from food, drink and desires.",
+      "difficulty": "medium",
+      "id": "q83"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which of the following invalidates Wudu (ablution)?",
+      "options": [
+        "Natural discharge or deep sleep",
+        "Reading the Quran",
+        "Touching a book",
+        "Walking"
+      ],
+      "answer": 0,
+      "explanation": "Things that break wudu include natural discharge, deep sleep and loss of senses.",
+      "difficulty": "medium",
+      "id": "q84"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Wiping over the leather socks (Khuffayn) during wudu is called?",
+      "options": [
+        "Masah",
+        "Tayammum",
+        "Ghusl",
+        "Istinja"
+      ],
+      "answer": 0,
+      "explanation": "Masah is the wiping permitted over khuffayn in place of washing the feet.",
+      "difficulty": "medium",
+      "id": "q85"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The opening takbir of the prayer is called?",
+      "options": [
+        "Takbirat al-Ihram (Tahrimah)",
+        "Takbir al-Qunut",
+        "Takbir al-Tashriq",
+        "Takbir al-Janazah"
+      ],
+      "answer": 0,
+      "explanation": "Takbirat al-Ihram marks the beginning of the prayer, making other acts forbidden.",
+      "difficulty": "medium",
+      "id": "q86"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The standing position in prayer is called?",
+      "options": [
+        "Qiyam",
+        "Ruku",
+        "Sajdah",
+        "Jalsah"
+      ],
+      "answer": 0,
+      "explanation": "Qiyam is the standing in prayer, obligatory at the start of each rakah.",
+      "difficulty": "easy",
+      "id": "q87"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The sitting between the two prostrations is called?",
+      "options": [
+        "Jalsah",
+        "Qiyam",
+        "Ruku",
+        "Qa'dah"
+      ],
+      "answer": 0,
+      "explanation": "Jalsah is the brief sitting between the two sajdahs.",
+      "difficulty": "medium",
+      "id": "q88"
+    },
+    {
+      "type": "mcq",
+      "prompt": "After the prayer, the Prophet (PBUH) sought Allah's forgiveness how many times?",
+      "options": [
+        "Three times",
+        "Once",
+        "Seven times",
+        "Ten times"
+      ],
+      "answer": 0,
+      "explanation": "After each prayer the Prophet (PBUH) sought forgiveness three times.",
+      "difficulty": "hard",
+      "id": "q89"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which of the following is an essential pillar (Rukn) of Salah?",
+      "options": [
+        "Standing (Qiyam) when able",
+        "Closing the eyes",
+        "Facing a wall",
+        "Wearing black"
+      ],
+      "answer": 0,
+      "explanation": "Standing is an essential element of the obligatory prayer for those able to stand.",
+      "difficulty": "medium",
+      "id": "q90"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which of the five pillars is purely financial?",
+      "options": [
+        "Zakat",
+        "Salah",
+        "Sawm",
+        "Shahadah"
+      ],
+      "answer": 0,
+      "explanation": "Zakat is the pillar with a purely financial obligation.",
+      "difficulty": "easy",
+      "id": "q91"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The time when the fast begins at dawn is called?",
+      "options": [
+        "Imsak",
+        "Iftar",
+        "Suhoor",
+        "Fajr prayer"
+      ],
+      "answer": 0,
+      "explanation": "Imsak is the start of the fasting time at dawn.",
+      "difficulty": "medium",
+      "id": "q92"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Hajj performed together with Umrah in a single state of Ihram is called?",
+      "options": [
+        "Hajj-e-Qiran",
+        "Hajj-e-Tamattu",
+        "Hajj-e-Ifrad",
+        "Hajj-e-Badal"
+      ],
+      "answer": 0,
+      "explanation": "In Qiran, the pilgrim enters Ihram for both Hajj and Umrah together.",
+      "difficulty": "hard",
+      "id": "q93"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Hajj performed after completing an Umrah with a break between them is called?",
+      "options": [
+        "Hajj-e-Tamattu",
+        "Hajj-e-Qiran",
+        "Hajj-e-Ifrad",
+        "Hajj-e-Nafl"
+      ],
+      "answer": 0,
+      "explanation": "In Tamattu, the pilgrim performs Umrah first, then Hajj in the same season.",
+      "difficulty": "hard",
+      "id": "q94"
+    },
+    {
+      "type": "mcq",
+      "prompt": "In which two types of Hajj is Umrah combined with Hajj?",
+      "options": [
+        "Qiran and Tamattu",
+        "Ifrad and Qiran",
+        "Ifrad and Tamattu",
+        "Only Qiran"
+      ],
+      "answer": 0,
+      "explanation": "Both Qiran and Tamattu involve Umrah; Ifrad is Hajj alone.",
+      "difficulty": "hard",
+      "id": "q95"
+    },
+    {
+      "type": "mcq",
+      "prompt": "On Fridays the Prophet (PBUH) often recited which surahs in the Fajr prayer?",
+      "options": [
+        "As-Sajdah and Al-Insan",
+        "Al-Fatiha and Al-Ikhlas",
+        "Al-Kahf and Yasin",
+        "Al-Mulk and Ar-Rahman"
+      ],
+      "answer": 0,
+      "explanation": "The Prophet (PBUH) recited Surah As-Sajdah and Surah Al-Insan at Friday Fajr.",
+      "difficulty": "hard",
+      "id": "q96"
+    },
+    {
+      "type": "mcq",
+      "prompt": "In the Adhan, the phrase 'Hayya ala al-falah' (come to success) is called how many times?",
+      "options": [
+        "Twice",
+        "Once",
+        "Three times",
+        "Four times"
+      ],
+      "answer": 0,
+      "explanation": "Like 'Hayya ala al-salah', 'Hayya ala al-falah' is called twice.",
+      "difficulty": "medium",
+      "id": "q97"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The time of the Fajr prayer ends at?",
+      "options": [
+        "Sunrise",
+        "Midday",
+        "Midnight",
+        "Sunset"
+      ],
+      "answer": 0,
+      "explanation": "Fajr time lasts from dawn until sunrise.",
+      "difficulty": "easy",
+      "id": "q98"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The prayer of the sick who cannot stand is offered?",
+      "options": [
+        "Sitting or lying as able",
+        "Only in the mosque",
+        "Not allowed",
+        "By proxy"
+      ],
+      "answer": 0,
+      "explanation": "The sick may pray sitting or lying down, with gestures for ruku and sajdah.",
+      "difficulty": "medium",
+      "id": "q99"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What is the ruling of the five daily prayers for a Muslim who has reached puberty and is sane?",
+      "options": [
+        "Fard (obligatory)",
+        "Sunnah",
+        "Nafl",
+        "Optional"
+      ],
+      "answer": 0,
+      "explanation": "The five prayers are obligatory upon every accountable Muslim.",
+      "difficulty": "easy",
+      "id": "q100"
+    }
+  ]
+}

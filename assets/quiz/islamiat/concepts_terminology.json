@@ -1,0 +1,1413 @@
+{
+  "bank": {
+    "name": "Islamic Concepts & Terminology",
+    "subject": "Islamic Studies",
+    "topic": "Islamic Concepts & Terminology",
+    "description": "Key Islamic terms and concepts every exam candidate should know.",
+    "tags": "css,pms,fpsc,ppsc,nts,islamic-studies,terminology,concepts",
+    "version": "1.0",
+    "id": "islamiat_concepts_terminology"
+  },
+  "questions": [
+    {
+      "type": "mcq",
+      "prompt": "What does the term 'Tawheed' mean?",
+      "options": [
+        "Unity of Allah (Oneness of God)",
+        "Prayer",
+        "Fasting",
+        "Charity"
+      ],
+      "answer": 0,
+      "explanation": "Tawheed is the Oneness and Unity of Allah — the core belief of Islam.",
+      "difficulty": "easy",
+      "id": "q01"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What is 'Sunnah'?",
+      "options": [
+        "The holy book",
+        "The practice and sayings of the Prophet Muhammad (PBUH)",
+        "A type of prayer",
+        "An Islamic festival"
+      ],
+      "answer": 1,
+      "explanation": "Sunnah refers to the established practice, sayings and approvals of the Prophet (PBUH).",
+      "difficulty": "easy",
+      "id": "q02"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What is 'Qiyas'?",
+      "options": [
+        "Analogical reasoning in Islamic law",
+        "Consensus of scholars",
+        "Tradition of the Prophet (PBUH)",
+        "A pilgrimage rite"
+      ],
+      "answer": 0,
+      "explanation": "Qiyas is analogical deduction, used to derive rulings for new cases by analogy with existing ones.",
+      "difficulty": "medium",
+      "id": "q03"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What does 'Halal' mean?",
+      "options": [
+        "Forbidden",
+        "Permissible",
+        "Recommended",
+        "Reprehensible"
+      ],
+      "answer": 1,
+      "explanation": "Halal means lawful or permissible in Islam; Haram means forbidden.",
+      "difficulty": "easy",
+      "id": "q04"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What is 'Taqwa'?",
+      "options": [
+        "God-consciousness and piety",
+        "Charity",
+        "Pilgrimage",
+        "Repentance"
+      ],
+      "answer": 0,
+      "explanation": "Taqwa is God-consciousness, piety and mindfulness of Allah in all actions.",
+      "difficulty": "medium",
+      "id": "q05"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What is 'Sadaqah'?",
+      "options": [
+        "Compulsory charity (Zakat)",
+        "Voluntary charity",
+        "A fine for breaking a fast",
+        "A type of prayer"
+      ],
+      "answer": 1,
+      "explanation": "Sadaqah is voluntary charity, given freely; Zakat is the obligatory alms.",
+      "difficulty": "easy",
+      "id": "q06"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What does 'Jihad' literally mean?",
+      "options": [
+        "Holy war",
+        "Struggle or striving",
+        "Martyrdom",
+        "Conquest"
+      ],
+      "answer": 1,
+      "explanation": "Jihad means striving or struggling in the way of Allah — including self-improvement, not only armed struggle.",
+      "difficulty": "easy",
+      "id": "q07"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What does 'Shirk' mean?",
+      "options": [
+        "Associating partners with Allah",
+        "Showing off",
+        "Breaking a promise",
+        "Backbiting"
+      ],
+      "answer": 0,
+      "explanation": "Shirk is associating partners with Allah — the gravest sin in Islam.",
+      "difficulty": "easy",
+      "id": "q08"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What is 'Tawbah'?",
+      "options": [
+        "Gratitude",
+        "Repentance to Allah",
+        "Patience",
+        "Thankfulness"
+      ],
+      "answer": 1,
+      "explanation": "Tawbah is sincere repentance to Allah, seeking His forgiveness.",
+      "difficulty": "easy",
+      "id": "q09"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What is 'Sabr'?",
+      "options": [
+        "Patience and perseverance",
+        "Gratitude",
+        "Trust in Allah",
+        "Humility"
+      ],
+      "answer": 0,
+      "explanation": "Sabr means patience, steadfastness and perseverance, especially in adversity.",
+      "difficulty": "easy",
+      "id": "q10"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What is 'Istikhara'?",
+      "options": [
+        "A prayer for seeking Allah's guidance",
+        "A prayer of need",
+        "A funeral prayer",
+        "A Eid prayer"
+      ],
+      "answer": 0,
+      "explanation": "Salat-ul-Istikhara is the prayer offered to seek Allah's guidance in a decision.",
+      "difficulty": "medium",
+      "id": "q11"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What does 'Fard' mean?",
+      "options": [
+        "Optional act",
+        "Obligatory act",
+        "Recommended act",
+        "Permissible act"
+      ],
+      "answer": 1,
+      "explanation": "Fard is an obligatory act; omitting it without excuse is sinful.",
+      "difficulty": "medium",
+      "id": "q12"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What is 'Sunnah Mu'akkadah'?",
+      "options": [
+        "Highly recommended practice of the Prophet (PBUH)",
+        "Compulsory act",
+        "Optional prayer",
+        "A non-Islamic custom"
+      ],
+      "answer": 0,
+      "explanation": "Sunnah Mu'akkadah is the confirmed, emphasised Sunnah the Prophet (PBUH) regularly performed.",
+      "difficulty": "hard",
+      "id": "q13"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What is 'Niyyah'?",
+      "options": [
+        "Intention before an act of worship",
+        "A type of prayer",
+        "Cleanliness",
+        "A Quranic term for charity"
+      ],
+      "answer": 0,
+      "explanation": "Niyyah is the intention made in the heart before worship; deeds are judged by intentions.",
+      "difficulty": "easy",
+      "id": "q14"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What does 'Ummah' mean?",
+      "options": [
+        "The global community of Muslims",
+        "A caliphate",
+        "A mosque",
+        "A pilgrimage"
+      ],
+      "answer": 0,
+      "explanation": "Ummah is the worldwide community of Muslims bound by faith.",
+      "difficulty": "easy",
+      "id": "q15"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What does 'Taqleed' mean?",
+      "options": [
+        "Following a qualified scholar or school of jurisprudence",
+        "Independent reasoning",
+        "Consensus of scholars",
+        "Innovation in religion"
+      ],
+      "answer": 0,
+      "explanation": "Taqleed is following the rulings of a qualified mujtahid or an established school of fiqh.",
+      "difficulty": "hard",
+      "id": "q16"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What is 'Bid'ah'?",
+      "options": [
+        "An innovation in religious matters",
+        "A lawful practice",
+        "A type of prayer",
+        "A Quranic recitation style"
+      ],
+      "answer": 0,
+      "explanation": "Bid'ah is an innovation in matters of religion, generally condemned in Islamic teachings.",
+      "difficulty": "medium",
+      "id": "q17"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What is 'Istighfar'?",
+      "options": [
+        "Seeking Allah's forgiveness",
+        "Giving charity",
+        "Reciting the Quran",
+        "Fasting"
+      ],
+      "answer": 0,
+      "explanation": "Istighfar is seeking Allah's forgiveness, e.g. 'Astaghfirullah'.",
+      "difficulty": "easy",
+      "id": "q18"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What is 'Dhikr'?",
+      "options": [
+        "Remembrance of Allah",
+        "A type of prayer",
+        "A charity",
+        "A pilgrimage"
+      ],
+      "answer": 0,
+      "explanation": "Dhikr is the remembrance of Allah through phrases like SubhanAllah and Alhamdulillah.",
+      "difficulty": "easy",
+      "id": "q19"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What is 'Dua'?",
+      "options": [
+        "Supplication or calling upon Allah",
+        "A type of fast",
+        "A form of charity",
+        "A funeral rite"
+      ],
+      "answer": 0,
+      "explanation": "Dua is heartfelt supplication to Allah, the essence of worship.",
+      "difficulty": "easy",
+      "id": "q20"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What is 'Rizq'?",
+      "options": [
+        "Sustenance and provision from Allah",
+        "A type of prayer",
+        "A pilgrimage",
+        "A form of fasting"
+      ],
+      "answer": 0,
+      "explanation": "Rizq is the provision Allah grants to every creature.",
+      "difficulty": "medium",
+      "id": "q21"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What is 'Amanah'?",
+      "options": [
+        "Trust and responsibility",
+        "Charity",
+        "Patience",
+        "Gratitude"
+      ],
+      "answer": 0,
+      "explanation": "Amanah means trust — fulfilling duties and returning what is entrusted.",
+      "difficulty": "medium",
+      "id": "q22"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What is 'Sidq'?",
+      "options": [
+        "Truthfulness and honesty",
+        "Charity",
+        "Patience",
+        "Modesty"
+      ],
+      "answer": 0,
+      "explanation": "Sidq means truthfulness — a foundational virtue of a believer.",
+      "difficulty": "medium",
+      "id": "q23"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What is 'Haya'?",
+      "options": [
+        "Modesty and shyness",
+        "Generosity",
+        "Courage",
+        "Knowledge"
+      ],
+      "answer": 0,
+      "explanation": "Haya is modesty, called a branch of faith by the Prophet (PBUH).",
+      "difficulty": "medium",
+      "id": "q24"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What is 'Ihsan'?",
+      "options": [
+        "Worshipping Allah as if you see Him",
+        "Charity only",
+        "Fasting",
+        "Hajj"
+      ],
+      "answer": 0,
+      "explanation": "Ihsan is excellence in worship — 'worship Allah as though you see Him'.",
+      "difficulty": "medium",
+      "id": "q25"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What is 'Ikhlas'?",
+      "options": [
+        "Sincerity and purity of intention",
+        "Patience",
+        "Gratitude",
+        "Humility"
+      ],
+      "answer": 0,
+      "explanation": "Ikhlas is doing deeds purely for Allah's sake.",
+      "difficulty": "easy",
+      "id": "q26"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What is 'Tawakkul'?",
+      "options": [
+        "Trust and reliance on Allah after making effort",
+        "Fear of Allah",
+        "Love of Allah",
+        "Gratitude"
+      ],
+      "answer": 0,
+      "explanation": "Tawakkul is placing one's trust in Allah while taking the necessary means.",
+      "difficulty": "medium",
+      "id": "q27"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What is 'Zuhd'?",
+      "options": [
+        "Ascetic detachment from worldly excess",
+        "Loving the world",
+        "Hoarding wealth",
+        "A type of prayer"
+      ],
+      "answer": 0,
+      "explanation": "Zuhd is abstemiousness — preferring the hereafter over worldly excess.",
+      "difficulty": "hard",
+      "id": "q28"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What is 'Riya'?",
+      "options": [
+        "Showing off in worship",
+        "Sincerity",
+        "Charity",
+        "Patience"
+      ],
+      "answer": 0,
+      "explanation": "Riya (ostentation) is doing deeds to be seen by people — a hidden shirk.",
+      "difficulty": "medium",
+      "id": "q29"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What is 'Ujub'?",
+      "options": [
+        "Self-conceit and vanity over one's deeds",
+        "Gratitude",
+        "Humility",
+        "Generosity"
+      ],
+      "answer": 0,
+      "explanation": "Ujub is being proud of one's own deeds, which can nullify their reward.",
+      "difficulty": "hard",
+      "id": "q30"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What is 'Hijrah'?",
+      "options": [
+        "Migration, especially for the sake of religion",
+        "A pilgrimage",
+        "A fast",
+        "A prayer"
+      ],
+      "answer": 0,
+      "explanation": "Hijrah is migration — most famously the Prophet's (PBUH) move to Madinah.",
+      "difficulty": "easy",
+      "id": "q31"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What is 'Fitra'?",
+      "options": [
+        "The natural disposition with which humans are created",
+        "A charity",
+        "A fast",
+        "A prayer"
+      ],
+      "answer": 0,
+      "explanation": "Fitra is the innate nature upon which Allah created people (30:30).",
+      "difficulty": "medium",
+      "id": "q32"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What is 'Shura'?",
+      "options": [
+        "Mutual consultation in decision-making",
+        "A type of prayer",
+        "A charity",
+        "A fast"
+      ],
+      "answer": 0,
+      "explanation": "Shura is consultation, commanded in the Quran (42:38) for community affairs.",
+      "difficulty": "medium",
+      "id": "q33"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What is 'Adl'?",
+      "options": [
+        "Justice and fairness",
+        "Patience",
+        "Forgiveness",
+        "Generosity"
+      ],
+      "answer": 0,
+      "explanation": "Adl is justice, which Allah commands in all dealings (16:90).",
+      "difficulty": "medium",
+      "id": "q34"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What is 'Rahmah'?",
+      "options": [
+        "Mercy and compassion",
+        "Justice",
+        "Courage",
+        "Knowledge"
+      ],
+      "answer": 0,
+      "explanation": "Rahmah is mercy — Allah describes Himself as Ar-Rahman, the Most Merciful.",
+      "difficulty": "easy",
+      "id": "q35"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What is 'Shukr'?",
+      "options": [
+        "Gratitude to Allah",
+        "Patience",
+        "Charity",
+        "Supplication"
+      ],
+      "answer": 0,
+      "explanation": "Shukr is thankfulness to Allah, which increases blessings.",
+      "difficulty": "easy",
+      "id": "q36"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What is 'Barakah'?",
+      "options": [
+        "Divine blessing that increases goodness",
+        "A type of fast",
+        "A pilgrimage",
+        "A legal ruling"
+      ],
+      "answer": 0,
+      "explanation": "Barakah is Allah's blessing that multiplies the benefit of things.",
+      "difficulty": "medium",
+      "id": "q37"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What does 'Sunnah' refer to?",
+      "options": [
+        "The way and practices of the Prophet (PBUH)",
+        "The Quran",
+        "The angels",
+        "The caliphs"
+      ],
+      "answer": 0,
+      "explanation": "Sunnah is the Prophet's (PBUH) teachings, actions and approvals.",
+      "difficulty": "easy",
+      "id": "q38"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What is 'Wudu'?",
+      "options": [
+        "Ablution before prayer",
+        "Charity",
+        "Fasting",
+        "Supplication"
+      ],
+      "answer": 0,
+      "explanation": "Wudu is the ritual purification before Salah.",
+      "difficulty": "easy",
+      "id": "q39"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What does 'Dua' mean?",
+      "options": [
+        "Supplication to Allah",
+        "Charity",
+        "Fasting",
+        "Remembrance"
+      ],
+      "answer": 0,
+      "explanation": "Dua is calling upon Allah in supplication.",
+      "difficulty": "easy",
+      "id": "q40"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What is 'Zakat'?",
+      "options": [
+        "Obligatory charity on wealth",
+        "Voluntary prayer",
+        "Fasting",
+        "Pilgrimage"
+      ],
+      "answer": 0,
+      "explanation": "Zakat is the obligatory alms on eligible wealth.",
+      "difficulty": "easy",
+      "id": "q41"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What is 'Fard' in Islamic law?",
+      "options": [
+        "An obligatory act",
+        "A recommended act",
+        "A voluntary act",
+        "A disliked act"
+      ],
+      "answer": 0,
+      "explanation": "Fard is an obligation whose performance is required.",
+      "difficulty": "easy",
+      "id": "q42"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What does 'Mustahab' mean?",
+      "options": [
+        "Recommended or preferred",
+        "Forbidden",
+        "Obligatory",
+        "Disliked"
+      ],
+      "answer": 0,
+      "explanation": "Mustahab acts are rewarded but not required.",
+      "difficulty": "medium",
+      "id": "q43"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What is 'Tawheed'?",
+      "options": [
+        "The oneness of Allah",
+        "Prophethood",
+        "The Hereafter",
+        "Angels"
+      ],
+      "answer": 0,
+      "explanation": "Tawheed is the belief in Allah's absolute oneness.",
+      "difficulty": "easy",
+      "id": "q44"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What is 'Iman'?",
+      "options": [
+        "Faith in Allah and His teachings",
+        "Charity",
+        "Fasting",
+        "Pilgrimage"
+      ],
+      "answer": 0,
+      "explanation": "Iman is the deep faith of a believer.",
+      "difficulty": "easy",
+      "id": "q45"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What does 'Tawbah' mean?",
+      "options": [
+        "Repentance and turning back to Allah",
+        "Patience",
+        "Charity",
+        "Pilgrimage"
+      ],
+      "answer": 0,
+      "explanation": "Tawbah is sincere repentance from sin.",
+      "difficulty": "easy",
+      "id": "q46"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What is 'Sadaqat-ul-Fitr'?",
+      "options": [
+        "Charity given at the end of Ramadan",
+        "Charity during Hajj",
+        "A voluntary fast",
+        "A type of prayer"
+      ],
+      "answer": 0,
+      "explanation": "Sadaqat-ul-Fitr is paid before Eid-ul-Fitr.",
+      "difficulty": "easy",
+      "id": "q47"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What does 'Bid'ah' mean?",
+      "options": [
+        "Innovation in religion",
+        "Charity",
+        "Prayer",
+        "Fasting"
+      ],
+      "answer": 0,
+      "explanation": "Bid'ah is religious innovation without Quranic or Prophetic basis.",
+      "difficulty": "medium",
+      "id": "q48"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who is a 'Munafiq'?",
+      "options": [
+        "One who shows faith outwardly but hides disbelief",
+        "A polytheist",
+        "A sincere believer",
+        "A scholar"
+      ],
+      "answer": 0,
+      "explanation": "A Munafiq is a hypocrite who conceals disbelief behind a show of faith.",
+      "difficulty": "easy",
+      "id": "q49"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What does 'Mushrik' mean?",
+      "options": [
+        "One who associates partners with Allah",
+        "One who repents",
+        "A traveler",
+        "A guardian"
+      ],
+      "answer": 0,
+      "explanation": "A Mushrik commits Shirk by associating partners with Allah.",
+      "difficulty": "easy",
+      "id": "q50"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What does 'Muttaqi' mean?",
+      "options": [
+        "A God-conscious and pious person",
+        "A wealthy person",
+        "A warrior",
+        "A poet"
+      ],
+      "answer": 0,
+      "explanation": "Muttaqi describes someone who has Taqwa — consciousness of Allah.",
+      "difficulty": "medium",
+      "id": "q51"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What is 'Nikah' in Islamic law?",
+      "options": [
+        "The marriage contract",
+        "Divorce",
+        "Inheritance",
+        "A prayer"
+      ],
+      "answer": 0,
+      "explanation": "Nikah is the Islamic marriage contract between a man and a woman.",
+      "difficulty": "easy",
+      "id": "q52"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who is a 'Mahram'?",
+      "options": [
+        "A close relative whom one can never marry",
+        "A business partner",
+        "A servant",
+        "A neighbor"
+      ],
+      "answer": 0,
+      "explanation": "A Mahram is a close relative such as a father, brother or son, whom one cannot marry.",
+      "difficulty": "medium",
+      "id": "q53"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What is 'Wasiyyah'?",
+      "options": [
+        "A bequest or will made before death",
+        "A type of prayer",
+        "A fast",
+        "A pilgrimage"
+      ],
+      "answer": 0,
+      "explanation": "Wasiyyah is the Islamic will through which a person bequeaths up to one-third of the estate.",
+      "difficulty": "medium",
+      "id": "q54"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What is 'Mirath'?",
+      "options": [
+        "Islamic inheritance and division of the estate",
+        "A charity",
+        "A loan",
+        "A fine"
+      ],
+      "answer": 0,
+      "explanation": "Mirath is the Quranically prescribed system of inheritance.",
+      "difficulty": "medium",
+      "id": "q55"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What are 'Hudud' in Islamic law?",
+      "options": [
+        "Fixed punishments prescribed for major crimes",
+        "Recommended prayers",
+        "Voluntary fasts",
+        "Court fees"
+      ],
+      "answer": 0,
+      "explanation": "Hudud are the fixed penalties set out in the Quran and Sunnah for specified offences.",
+      "difficulty": "medium",
+      "id": "q56"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What is 'Tazkiyah'?",
+      "options": [
+        "Purification of the soul",
+        "A type of charity",
+        "An annual festival",
+        "A pilgrimage rite"
+      ],
+      "answer": 0,
+      "explanation": "Tazkiyah is the spiritual purification and growth of the self.",
+      "difficulty": "medium",
+      "id": "q57"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What is 'Muraqabah'?",
+      "options": [
+        "Constant awareness that Allah is watching",
+        "A night prayer",
+        "A fast",
+        "A visit to the sick"
+      ],
+      "answer": 0,
+      "explanation": "Muraqabah is the state of being ever-conscious that Allah observes one's deeds.",
+      "difficulty": "medium",
+      "id": "q58"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What is 'Dawah'?",
+      "options": [
+        "Inviting others to Islam",
+        "A funeral prayer",
+        "A marriage feast",
+        "A type of zakat"
+      ],
+      "answer": 0,
+      "explanation": "Dawah is the call or invitation to the way of Islam.",
+      "difficulty": "easy",
+      "id": "q59"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What is 'Tabligh'?",
+      "options": [
+        "Conveying the message of Islam",
+        "Wealth accumulation",
+        "A type of inheritance",
+        "A battle strategy"
+      ],
+      "answer": 0,
+      "explanation": "Tabligh means conveying or delivering Allah's message to others.",
+      "difficulty": "easy",
+      "id": "q60"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What is a 'Madhhab'?",
+      "options": [
+        "A school of Islamic jurisprudence",
+        "A type of mosque",
+        "A pilgrimage route",
+        "A style of calligraphy"
+      ],
+      "answer": 0,
+      "explanation": "A Madhhab is one of the recognized schools of fiqh, such as Hanafi or Shafi'i.",
+      "difficulty": "medium",
+      "id": "q61"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What is 'Fiqh'?",
+      "options": [
+        "Deep understanding of Islamic law",
+        "Memorization only",
+        "A type of poetry",
+        "A trade"
+      ],
+      "answer": 0,
+      "explanation": "Fiqh is the body of Islamic jurisprudence — deep understanding of the rulings of Shariah.",
+      "difficulty": "easy",
+      "id": "q62"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What is 'Naskh' in Quranic sciences?",
+      "options": [
+        "Abrogation of an earlier ruling by a later one",
+        "The oral transmission",
+        "A mode of recitation",
+        "A chapter division"
+      ],
+      "answer": 0,
+      "explanation": "Naskh refers to the abrogation of an earlier Islamic ruling by a later revelation.",
+      "difficulty": "hard",
+      "id": "q63"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What is 'Hadith Qudsi'?",
+      "options": [
+        "A divine saying relayed by the Prophet (PBUH) in his own words",
+        "A verse of the Quran",
+        "A saying of a companion",
+        "A legal ruling"
+      ],
+      "answer": 0,
+      "explanation": "Hadith Qudsi is revelation from Allah expressed in the Prophet's words, distinct from the Quran.",
+      "difficulty": "hard",
+      "id": "q64"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What is the 'Matn' of a hadith?",
+      "options": [
+        "The text or content of the report",
+        "The chain of narrators",
+        "The narrator's name",
+        "The commentary"
+      ],
+      "answer": 0,
+      "explanation": "Matn is the body of the hadith — the text after the chain of narrators.",
+      "difficulty": "medium",
+      "id": "q65"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What does 'Da'if' mean in hadith science?",
+      "options": [
+        "Weak",
+        "Authentic",
+        "Well-known",
+        "Famous"
+      ],
+      "answer": 0,
+      "explanation": "Da'if is a hadith with a defect in its chain or text that reduces its reliability.",
+      "difficulty": "medium",
+      "id": "q66"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What is a 'Mawdu' hadith?",
+      "options": [
+        "A fabricated or forged report",
+        "A very strong report",
+        "An abridged report",
+        "A legal ruling"
+      ],
+      "answer": 0,
+      "explanation": "Mawdu refers to a hadith that is fabricated and falsely attributed to the Prophet (PBUH).",
+      "difficulty": "hard",
+      "id": "q67"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What is a 'Mutawatir' hadith?",
+      "options": [
+        "One transmitted by many chains at every level",
+        "A single-narrator report",
+        "A weak report",
+        "A disputed report"
+      ],
+      "answer": 0,
+      "explanation": "Mutawatir is a hadith transmitted by so many narrators at each level that collusion is impossible.",
+      "difficulty": "hard",
+      "id": "q68"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What is an 'Ahad' hadith?",
+      "options": [
+        "One transmitted through a single or few chains",
+        "A mass-transmitted report",
+        "A fabricated report",
+        "A Quranic verse"
+      ],
+      "answer": 0,
+      "explanation": "Ahad is a hadith whose transmission falls short of the mass-transmitted level.",
+      "difficulty": "hard",
+      "id": "q69"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What is 'Sirah'?",
+      "options": [
+        "The biography of the Prophet (PBUH)",
+        "A type of prayer",
+        "A fast",
+        "A legal manual"
+      ],
+      "answer": 0,
+      "explanation": "Sirah is the study of the life and times of the Prophet Muhammad (PBUH).",
+      "difficulty": "easy",
+      "id": "q70"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What is 'Khilafah'?",
+      "options": [
+        "The succession and leadership of the Muslim community",
+        "A type of charity",
+        "A battle",
+        "A pilgrimage"
+      ],
+      "answer": 0,
+      "explanation": "Khilafah is the institution of leadership succeeding the Prophet (PBUH).",
+      "difficulty": "medium",
+      "id": "q71"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What does 'Fitnah' mean?",
+      "options": [
+        "Trial, tribulation or civil strife",
+        "A blessing",
+        "A feast",
+        "A journey"
+      ],
+      "answer": 0,
+      "explanation": "Fitnah in the Quran and Sunnah refers to trials, temptation and discord.",
+      "difficulty": "medium",
+      "id": "q72"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What does 'Ilm' mean?",
+      "options": [
+        "Knowledge",
+        "Wealth",
+        "Strength",
+        "Beauty"
+      ],
+      "answer": 0,
+      "explanation": "Ilm is knowledge, highly prized in Islam.",
+      "difficulty": "easy",
+      "id": "q73"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What does 'Hikmah' mean?",
+      "options": [
+        "Wisdom",
+        "Patience",
+        "Charity",
+        "Courage"
+      ],
+      "answer": 0,
+      "explanation": "Hikmah is wisdom — placing things in their proper place.",
+      "difficulty": "easy",
+      "id": "q74"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What does 'Adab' mean?",
+      "options": [
+        "Etiquette and good manners",
+        "A type of prayer",
+        "A fast",
+        "A tax"
+      ],
+      "answer": 0,
+      "explanation": "Adab is the cultivation of proper conduct and refined manners.",
+      "difficulty": "easy",
+      "id": "q75"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What is 'Akhlaq'?",
+      "options": [
+        "Character and moral conduct",
+        "A legal penalty",
+        "A pilgrimage rite",
+        "A type of charity"
+      ],
+      "answer": 0,
+      "explanation": "Akhlaq is the moral character and ethical conduct of a person.",
+      "difficulty": "easy",
+      "id": "q76"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What are 'Mu'amalat' in Islamic law?",
+      "options": [
+        "Social and economic transactions",
+        "Acts of worship only",
+        "Criminal penalties",
+        "Funeral rites"
+      ],
+      "answer": 0,
+      "explanation": "Mu'amalat covers dealings such as trade, contracts and finance in Islamic law.",
+      "difficulty": "medium",
+      "id": "q77"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What are 'Ibadat'?",
+      "options": [
+        "Acts of worship",
+        "Trade transactions",
+        "Criminal laws",
+        "Family matters"
+      ],
+      "answer": 0,
+      "explanation": "Ibadat are the acts of worship such as prayer, fasting and charity.",
+      "difficulty": "easy",
+      "id": "q78"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What is 'Nafil' (Nafl)?",
+      "options": [
+        "A voluntary act of worship",
+        "An obligatory act",
+        "A forbidden act",
+        "A disliked act"
+      ],
+      "answer": 0,
+      "explanation": "Nafil is any supererogatory act of worship performed voluntarily.",
+      "difficulty": "easy",
+      "id": "q79"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What is 'Tawaf'?",
+      "options": [
+        "Circling the Kaaba seven times",
+        "Running between two hills",
+        "Standing at Arafat",
+        "Stoning the pillars"
+      ],
+      "answer": 0,
+      "explanation": "Tawaf is the seven circuits around the Kaaba performed during Hajj and Umrah.",
+      "difficulty": "easy",
+      "id": "q80"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What is 'Sa'i'?",
+      "options": [
+        "Running between Safa and Marwah",
+        "Circling the Kaaba",
+        "Standing at Arafat",
+        "Casting stones"
+      ],
+      "answer": 0,
+      "explanation": "Sa'i commemorates Hajar's search for water between the hills of Safa and Marwah.",
+      "difficulty": "easy",
+      "id": "q81"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What is 'Wuquf' at Arafat?",
+      "options": [
+        "Standing in prayer at Arafat on the 9th of Dhul-Hijjah",
+        "Circling the Kaaba",
+        "The sacrifice",
+        "The stoning ritual"
+      ],
+      "answer": 0,
+      "explanation": "Wuquf at Arafat is the essential standing of Hajj on the Day of Arafah.",
+      "difficulty": "medium",
+      "id": "q82"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What does 'Rukn' mean in the context of worship?",
+      "options": [
+        "A pillar or essential element",
+        "A recommended act",
+        "A disliked act",
+        "An invalidating act"
+      ],
+      "answer": 0,
+      "explanation": "A Rukn is an essential element of an act of worship whose omission invalidates it.",
+      "difficulty": "medium",
+      "id": "q83"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What does 'Mubah' mean in Islamic law?",
+      "options": [
+        "Permissible and neutral",
+        "Forbidden",
+        "Obligatory",
+        "Disliked"
+      ],
+      "answer": 0,
+      "explanation": "Mubah is an act about which the law is indifferent — neither commanded nor prohibited.",
+      "difficulty": "medium",
+      "id": "q84"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What does 'Makruh' mean in Islamic law?",
+      "options": [
+        "Disliked but not forbidden",
+        "Forbidden",
+        "Obligatory",
+        "Recommended"
+      ],
+      "answer": 0,
+      "explanation": "Makruh is an act that is disapproved; avoiding it earns reward but doing it brings no punishment.",
+      "difficulty": "medium",
+      "id": "q85"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What does 'Wajib' mean in Islamic law?",
+      "options": [
+        "Necessary and obligatory",
+        "Recommended",
+        "Permissible",
+        "Forbidden"
+      ],
+      "answer": 0,
+      "explanation": "Wajib is an obligatory act, close in force to Fard.",
+      "difficulty": "medium",
+      "id": "q86"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What is 'Sadaqah Jariyah'?",
+      "options": [
+        "Ongoing charity that continues to benefit after death",
+        "Charity given only in Ramadan",
+        "A debt",
+        "A fine"
+      ],
+      "answer": 0,
+      "explanation": "Sadaqah Jariyah, such as a well or a school, keeps earning reward after death.",
+      "difficulty": "easy",
+      "id": "q87"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What is the 'Kalimah'?",
+      "options": [
+        "The declaration of faith (Shahadah)",
+        "A chapter of the Quran",
+        "A type of prayer",
+        "A festival"
+      ],
+      "answer": 0,
+      "explanation": "The Kalimah is the testimony of faith: La ilaha illallah, Muhammadur Rasulullah.",
+      "difficulty": "easy",
+      "id": "q88"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What is the 'Iqamah'?",
+      "options": [
+        "The second call marking the start of prayer",
+        "The call to Friday prayer",
+        "A supplication after prayer",
+        "The Eid takbir"
+      ],
+      "answer": 0,
+      "explanation": "The Iqamah is recited just before the congregational prayer begins.",
+      "difficulty": "medium",
+      "id": "q89"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What are 'Taraweeh' prayers?",
+      "options": [
+        "Night prayers offered during Ramadan",
+        "Prayers at Eid",
+        "Funeral prayers",
+        "Friday prayers"
+      ],
+      "answer": 0,
+      "explanation": "Taraweeh are the voluntary night prayers performed in congregation during Ramadan.",
+      "difficulty": "easy",
+      "id": "q90"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What is 'Tasbih'?",
+      "options": [
+        "Glorifying Allah by saying SubhanAllah",
+        "Praising Allah with Alhamdulillah",
+        "Declaring Allahu Akbar",
+        "Reciting the Quran"
+      ],
+      "answer": 0,
+      "explanation": "Tasbih is the glorification of Allah, usually by repeating SubhanAllah.",
+      "difficulty": "easy",
+      "id": "q91"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What is 'Tahlil'?",
+      "options": [
+        "Saying La ilaha illallah (there is no god but Allah)",
+        "Saying Allahu Akbar",
+        "Saying Alhamdulillah",
+        "Saying SubhanAllah"
+      ],
+      "answer": 0,
+      "explanation": "Tahlil is the declaration of Allah's oneness, La ilaha illallah.",
+      "difficulty": "easy",
+      "id": "q92"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What is 'Ruku' in prayer?",
+      "options": [
+        "Bowing with the back level",
+        "Prostration",
+        "Standing",
+        "Sitting for the testimony"
+      ],
+      "answer": 0,
+      "explanation": "Ruku is the bowing position in prayer, followed by prostration.",
+      "difficulty": "easy",
+      "id": "q93"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What is 'Sajdah' in prayer?",
+      "options": [
+        "Prostration on the ground",
+        "Bowing",
+        "Standing",
+        "Turning the head"
+      ],
+      "answer": 0,
+      "explanation": "Sajdah is the prostration in which the forehead touches the ground.",
+      "difficulty": "easy",
+      "id": "q94"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What is 'Tajweed'?",
+      "options": [
+        "The rules of correct Quranic recitation",
+        "A mode of memorization",
+        "A type of calligraphy",
+        "A translation method"
+      ],
+      "answer": 0,
+      "explanation": "Tajweed governs the correct pronunciation and articulation of the Quran's letters.",
+      "difficulty": "easy",
+      "id": "q95"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What is 'Tartil'?",
+      "options": [
+        "Slow, measured recitation of the Quran",
+        "Fast recitation",
+        "A type of calligraphy",
+        "A prayer"
+      ],
+      "answer": 0,
+      "explanation": "Allah commands the Quran to be recited with Tartil — measured, unhurried recitation.",
+      "difficulty": "medium",
+      "id": "q96"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What are the 'Qira'at'?",
+      "options": [
+        "The different modes of Quranic recitation",
+        "The chapters of the Quran",
+        "The verses of the Quran",
+        "The scholars of hadith"
+      ],
+      "answer": 0,
+      "explanation": "The Qira'at are the established variant modes of reciting the Quran.",
+      "difficulty": "hard",
+      "id": "q97"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who is a 'Hafiz'?",
+      "options": [
+        "One who has memorized the entire Quran",
+        "One who translates the Quran",
+        "A calligrapher",
+        "A judge"
+      ],
+      "answer": 0,
+      "explanation": "A Hafiz is someone who has committed the whole Quran to memory.",
+      "difficulty": "easy",
+      "id": "q98"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What is 'Ghaybah'?",
+      "options": [
+        "Speaking ill of someone in their absence",
+        "A type of charity",
+        "A prayer",
+        "A fast"
+      ],
+      "answer": 0,
+      "explanation": "Ghaybah (backbiting) is mentioning a person's fault in their absence — forbidden in Islam.",
+      "difficulty": "medium",
+      "id": "q99"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What is 'Namimah'?",
+      "options": [
+        "Carrying tales between people to cause discord",
+        "A type of charity",
+        "A pilgrimage",
+        "A prayer"
+      ],
+      "answer": 0,
+      "explanation": "Namimah, tale-carrying and mischief-making between people, is a major sin.",
+      "difficulty": "medium",
+      "id": "q100"
+    }
+  ]
+}

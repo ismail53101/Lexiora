@@ -1,0 +1,1413 @@
+{
+  "bank": {
+    "name": "Notable Women in Islam",
+    "subject": "Islamic Studies",
+    "topic": "Notable Women in Islam",
+    "description": "The wives, daughters and exemplary women of Islamic history mentioned in the Quran and hadith.",
+    "tags": "css,pms,fpsc,islamic-studies,women",
+    "version": "1.0",
+    "id": "islamiat_notable_women"
+  },
+  "questions": [
+    {
+      "type": "mcq",
+      "prompt": "Who was the first wife of the Holy Prophet (PBUH) and the first person to accept Islam?",
+      "options": [
+        "Aisha (RA)",
+        "Hafsa (RA)",
+        "Khadijah (RA)",
+        "Umm Salama (RA)"
+      ],
+      "answer": 2,
+      "explanation": "Khadijah bint Khuwaylid (RA) was the Prophet's first wife and the first Muslim.",
+      "difficulty": "easy",
+      "id": "q01"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Khadijah (RA) supported the Prophet (PBUH) as a successful?",
+      "options": [
+        "Teacher",
+        "Businesswoman",
+        "Farmer",
+        "Physician"
+      ],
+      "answer": 1,
+      "explanation": "Khadijah (RA) was a wealthy and respected businesswoman of Makkah.",
+      "difficulty": "easy",
+      "id": "q02"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which woman is the only one mentioned by name in the Holy Quran?",
+      "options": [
+        "Khadijah",
+        "Aisha",
+        "Maryam (AS)",
+        "Fatimah"
+      ],
+      "answer": 2,
+      "explanation": "Maryam (Mary), mother of Isa (AS), is named in the Quran.",
+      "difficulty": "easy",
+      "id": "q03"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which Surah of the Quran is named after a woman?",
+      "options": [
+        "Al-Ankabut",
+        "Maryam",
+        "Al-Mujadila",
+        "Al-Fajr"
+      ],
+      "answer": 1,
+      "explanation": "Surah Maryam (19) is named after Maryam (AS).",
+      "difficulty": "medium",
+      "id": "q04"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Aisha (RA), one of the most learned companions, was the daughter of?",
+      "options": [
+        "Umar (RA)",
+        "Abu Bakr (RA)",
+        "Uthman (RA)",
+        "Ali (RA)"
+      ],
+      "answer": 1,
+      "explanation": "Aisha bint Abi Bakr (RA) was the daughter of Abu Bakr (RA).",
+      "difficulty": "easy",
+      "id": "q05"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which daughter of the Prophet (PBUH) married Ali (RA)?",
+      "options": [
+        "Zainab",
+        "Ruqayyah",
+        "Umm Kulthum",
+        "Fatimah"
+      ],
+      "answer": 3,
+      "explanation": "Fatimah (RA), the youngest daughter, married Ali (RA).",
+      "difficulty": "easy",
+      "id": "q06"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Fatimah (RA), daughter of the Prophet (PBUH), is known by which title?",
+      "options": [
+        "Az-Zahra",
+        "Al-Farooq",
+        "As-Siddiqah only",
+        "Umm-ul-Masakin"
+      ],
+      "answer": 0,
+      "explanation": "Fatimah (RA) is called Az-Zahra, 'the radiant one'.",
+      "difficulty": "medium",
+      "id": "q07"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which wife of the Prophet (PBUH) was the daughter of Umar (RA) and a hafiza (memoriser of the Quran)?",
+      "options": [
+        "Aisha (RA)",
+        "Hafsa (RA)",
+        "Sawdah (RA)",
+        "Maimunah (RA)"
+      ],
+      "answer": 1,
+      "explanation": "Hafsa bint Umar (RA) memorised the Quran; a copy of the compilation was kept with her.",
+      "difficulty": "hard",
+      "id": "q08"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Asma bint Abi Bakr (RA), who carried food to the Prophet (PBUH) during the Hijrah, is known as?",
+      "options": [
+        "Dhat an-Nitaqayn (the one with two belts)",
+        "Umm Ammarah",
+        "Az-Zahra",
+        "Al-Hawwa"
+      ],
+      "answer": 0,
+      "explanation": "Asma (RA) earned the title 'Dhat an-Nitaqayn' for her two belts during the migration.",
+      "difficulty": "hard",
+      "id": "q09"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who is regarded as the first martyr of Islam?",
+      "options": [
+        "Khadijah (RA)",
+        "Sumayyah (RA)",
+        "Aisha (RA)",
+        "Fatimah (RA)"
+      ],
+      "answer": 1,
+      "explanation": "Sumayyah bint Khayyat (RA), a companion, was martyred by the Quraysh.",
+      "difficulty": "medium",
+      "id": "q10"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which woman famously defended the Prophet (PBUH) at the Battle of Uhud?",
+      "options": [
+        "Nusaybah bint Ka'b (Umm Ammarah)",
+        "Khadijah (RA)",
+        "Hafsa (RA)",
+        "Umm Kulthum (RA)"
+      ],
+      "answer": 0,
+      "explanation": "Nusaybah (RA) fought courageously to protect the Prophet (PBUH) at Uhud.",
+      "difficulty": "hard",
+      "id": "q11"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which wife of Pharaoh is praised in the Quran as an example of faith?",
+      "options": [
+        "Aasiya",
+        "Bilqis",
+        "Sarah",
+        "Hajar"
+      ],
+      "answer": 0,
+      "explanation": "Aasiya, wife of Pharaoh, is cited in the Quran (66:11) as a model believer.",
+      "difficulty": "medium",
+      "id": "q12"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Queen of Sheba, who accepted the truth brought by Prophet Sulayman (AS), is known as?",
+      "options": [
+        "Aasiya",
+        "Bilqis",
+        "Zulaykha",
+        "Hajar"
+      ],
+      "answer": 1,
+      "explanation": "Bilqis, the Queen of Sheba, submitted to Allah after Sulayman's (AS) message.",
+      "difficulty": "medium",
+      "id": "q13"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Hajar (RA), the mother of Ismail (AS), is commemorated in Hajj by which rite?",
+      "options": [
+        "The Sa'i between Safa and Marwah",
+        "Stoning the Jamarat",
+        "The Qurbani",
+        "The Tawaf"
+      ],
+      "answer": 0,
+      "explanation": "The Sa'i re-enacts Hajar's (RA) search for water between Safa and Marwah.",
+      "difficulty": "medium",
+      "id": "q14"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The wives of the Prophet (PBUH) are honoured with which title?",
+      "options": [
+        "Ummahat-ul-Momineen",
+        "Sahabiyat only",
+        "Muhajirat",
+        "Ansariyat"
+      ],
+      "answer": 0,
+      "explanation": "The Prophet's wives are called the Mothers of the Believers.",
+      "difficulty": "easy",
+      "id": "q15"
+    },
+    {
+      "type": "mcq",
+      "prompt": "At what age did Khadijah (RA) marry the Prophet (PBUH)?",
+      "options": [
+        "25",
+        "30",
+        "40",
+        "45"
+      ],
+      "answer": 2,
+      "explanation": "Khadijah (RA) was about 40 when she married the Prophet (PBUH), who was 25.",
+      "difficulty": "medium",
+      "id": "q16"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which of the Prophet's (PBUH) daughters first married Uthman (RA)?",
+      "options": [
+        "Zainab",
+        "Ruqayyah",
+        "Fatimah",
+        "Umm Kulthum"
+      ],
+      "answer": 1,
+      "explanation": "Ruqayyah (RA) married Uthman (RA); after her death, Umm Kulthum (RA) married him too.",
+      "difficulty": "hard",
+      "id": "q17"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The mother of Prophet Musa (AS) is mentioned in the Quran as receiving a divine revelation to?",
+      "options": [
+        "Place Musa in a basket on the river",
+        "Flee to Egypt",
+        "Marry Pharaoh's court",
+        "Build a ship"
+      ],
+      "answer": 0,
+      "explanation": "Musa's (AS) mother was inspired to put her baby in a basket and let the river carry him.",
+      "difficulty": "hard",
+      "id": "q18"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who was the first wife of the Prophet (PBUH) and his greatest supporter?",
+      "options": [
+        "Khadijah bint Khuwaylid",
+        "Aisha",
+        "Sawdah",
+        "Hafsa"
+      ],
+      "answer": 0,
+      "explanation": "Khadijah (RA) was the first to accept Islam and supported the Prophet (PBUH) throughout the early struggle.",
+      "difficulty": "easy",
+      "id": "q19"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which daughter of the Prophet (PBUH) married Uthman (RA)?",
+      "options": [
+        "Ruqayyah and later Umm Kulthum",
+        "Fatimah",
+        "Zainab",
+        "Aisha"
+      ],
+      "answer": 0,
+      "explanation": "Ruqayyah and, after her death, Umm Kulthum married Uthman (RA) — hence his title Dhun-Nurayn.",
+      "difficulty": "medium",
+      "id": "q20"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What title is given to Fatimah (RA)?",
+      "options": [
+        "Sayyidat-un-Nisa (Leader of the Women of Paradise)",
+        "Umm-ul-Mu'minin",
+        "Malika",
+        "Shahida"
+      ],
+      "answer": 0,
+      "explanation": "Fatimah (RA) is titled Sayyidat-un-Nisa, the leader of the women of Paradise.",
+      "difficulty": "medium",
+      "id": "q21"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which wife of the Prophet (PBUH) narrated the most hadiths?",
+      "options": [
+        "Aisha",
+        "Khadijah",
+        "Umm Salama",
+        "Zainab"
+      ],
+      "answer": 0,
+      "explanation": "Aisha (RA) narrated over 2,000 hadiths, the most of any woman.",
+      "difficulty": "medium",
+      "id": "q22"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who was the first wife of the Prophet (PBUH) after Khadijah's death?",
+      "options": [
+        "Sawdah bint Zam'ah",
+        "Aisha",
+        "Hafsa",
+        "Umm Habibah"
+      ],
+      "answer": 0,
+      "explanation": "Sawdah (RA), a widow and early Muslim, married the Prophet (PBUH) after Khadijah.",
+      "difficulty": "medium",
+      "id": "q23"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which wife of the Prophet (PBUH) was among the first migrants to Abyssinia and later married him after her husband's death?",
+      "options": [
+        "Umm Salama",
+        "Aisha",
+        "Khadijah",
+        "Safiyyah"
+      ],
+      "answer": 0,
+      "explanation": "Umm Salama (RA), widow of Abu Salama, was renowned for wisdom and narrated many hadiths.",
+      "difficulty": "medium",
+      "id": "q24"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which wife of the Prophet (PBUH) was the daughter of Abu Sufyan, married in Abyssinia?",
+      "options": [
+        "Umm Habibah",
+        "Safiyyah",
+        "Maimunah",
+        "Juwairiyyah"
+      ],
+      "answer": 0,
+      "explanation": "Umm Habibah (RA), daughter of Abu Sufyan, married the Prophet (PBUH) while in Abyssinia.",
+      "difficulty": "hard",
+      "id": "q25"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which wife of the Prophet (PBUH) was a descendant of the Banu Mustaliq, freed and married after the expedition?",
+      "options": [
+        "Juwairiyyah",
+        "Safiyyah",
+        "Zainab bint Jahsh",
+        "Umm Salama"
+      ],
+      "answer": 0,
+      "explanation": "Juwairiyyah (RA) was freed and married by the Prophet (PBUH), leading her tribe to embrace Islam.",
+      "difficulty": "hard",
+      "id": "q26"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who was the first person to embrace Islam after the Prophet's (PBUH) wife Khadijah?",
+      "options": [
+        "Ali (RA)",
+        "Zaid bin Harithah",
+        "Abu Bakr",
+        "Umm Ayman"
+      ],
+      "answer": 0,
+      "explanation": "After Khadijah, Ali (RA), then Zaid (RA), accepted Islam in the first days of the mission.",
+      "difficulty": "medium",
+      "id": "q27"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which woman is praised in the Quran as an example of faith for believers alongside Asiya?",
+      "options": [
+        "Maryam (Mary)",
+        "Hajar",
+        "Sara",
+        "Zulaikha"
+      ],
+      "answer": 0,
+      "explanation": "The Quran cites Maryam and Asiya as exemplary women of faith (66:11-12).",
+      "difficulty": "medium",
+      "id": "q28"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who was the woman who ran between Safa and Marwah in search of water?",
+      "options": [
+        "Hajar",
+        "Sara",
+        "Asiya",
+        "Maryam"
+      ],
+      "answer": 0,
+      "explanation": "Hajar (RA), mother of Isma'il (AS), ran between the hills until the Zamzam well appeared.",
+      "difficulty": "easy",
+      "id": "q29"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who was the wife of the Egyptian minister (Aziz) who attempted to seduce Yusuf (AS)?",
+      "options": [
+        "Zulaikha",
+        "Asiya",
+        "Hajar",
+        "Sara"
+      ],
+      "answer": 0,
+      "explanation": "Zulaikha, wife of the Aziz of Egypt, features in the story of Yusuf (AS) in Surah Yusuf.",
+      "difficulty": "medium",
+      "id": "q30"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who was the mother of Prophet Musa (AS)?",
+      "options": [
+        "The wife of Imran, unnamed in the Quran but inspired by Allah",
+        "Asiya",
+        "Maryam",
+        "Hajar"
+      ],
+      "answer": 0,
+      "explanation": "Musa's (AS) mother, inspired by Allah, placed him in a basket on the river (28:7).",
+      "difficulty": "medium",
+      "id": "q31"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who adopted Musa (AS) as a son, raising him in the palace?",
+      "options": [
+        "Asiya, wife of Pharaoh",
+        "Maryam",
+        "Hajar",
+        "Zulaikha"
+      ],
+      "answer": 0,
+      "explanation": "Asiya took the baby Musa (AS) in, and Allah returned him to his mother as nurse.",
+      "difficulty": "medium",
+      "id": "q32"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who was the sister of Musa (AS) who followed his basket?",
+      "options": [
+        "His sister, whose name is not given in the Quran",
+        "Maryam",
+        "Hajar",
+        "Sarah"
+      ],
+      "answer": 0,
+      "explanation": "Musa's (AS) sister followed the basket and suggested his mother as a nurse (28:11-12).",
+      "difficulty": "medium",
+      "id": "q33"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which queen is mentioned in the Quran for her wisdom in the story of Sulaiman (AS)?",
+      "options": [
+        "The Queen of Sheba (Bilqis)",
+        "Cleopatra",
+        "Asiya",
+        "Zulaikha"
+      ],
+      "answer": 0,
+      "explanation": "The Queen of Sheba (Bilqis) visited Sulaiman (AS) and embraced the truth (27:44).",
+      "difficulty": "easy",
+      "id": "q34"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who was the wife of the Prophet (PBUH) from the Banu Nadir who embraced Islam before marriage?",
+      "options": [
+        "Safiyyah",
+        "Maimunah",
+        "Juwairiyyah",
+        "Umm Habibah"
+      ],
+      "answer": 0,
+      "explanation": "Safiyyah (RA), daughter of Huyayy ibn Akhtab, embraced Islam and married the Prophet (PBUH).",
+      "difficulty": "medium",
+      "id": "q35"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who was the last wife the Prophet (PBUH) married?",
+      "options": [
+        "Maimunah bint al-Harith",
+        "Safiyyah",
+        "Umm Salama",
+        "Hafsa"
+      ],
+      "answer": 0,
+      "explanation": "Maimunah (RA) was the last wife married, in 7 AH during the 'Umrat al-Qada'.",
+      "difficulty": "hard",
+      "id": "q36"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who was the first woman to embrace Islam?",
+      "options": [
+        "Khadijah bint Khuwaylid (RA)",
+        "Aisha (RA)",
+        "Fatimah (RA)",
+        "Umm Salama"
+      ],
+      "answer": 0,
+      "explanation": "Khadijah was the first to accept Islam.",
+      "difficulty": "easy",
+      "id": "q37"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which wife of the Prophet (PBUH) was known for narrating many hadith?",
+      "options": [
+        "Aisha bint Abi Bakr (RA)",
+        "Sawdah (RA)",
+        "Hafsa (RA)",
+        "Umm Habiba"
+      ],
+      "answer": 0,
+      "explanation": "Aisha narrated over two thousand hadith.",
+      "difficulty": "easy",
+      "id": "q38"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The daughter of the Prophet (PBUH) who married Ali (RA) was:",
+      "options": [
+        "Fatimah (RA)",
+        "Zainab (RA)",
+        "Ruqayyah (RA)",
+        "Umm Kulthum (RA)"
+      ],
+      "answer": 0,
+      "explanation": "Fatimah married Ali ibn Abi Talib.",
+      "difficulty": "easy",
+      "id": "q39"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who was the wife of the Prophet (PBUH) known as 'Umm-ul-Masakeen'?",
+      "options": [
+        "Zainab bint Khuzaimah (RA)",
+        "Aisha (RA)",
+        "Hafsa (RA)",
+        "Maimunah (RA)"
+      ],
+      "answer": 0,
+      "explanation": "Zainab bint Khuzaimah was called mother of the poor.",
+      "difficulty": "hard",
+      "id": "q40"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which woman is called the 'mother of believers'?",
+      "options": [
+        "All wives of the Prophet (PBUH)",
+        "Only Khadijah",
+        "Only Aisha",
+        "Only Fatimah"
+      ],
+      "answer": 0,
+      "explanation": "All the Prophet's (PBUH) wives are Ummahat-ul-Mu'minin.",
+      "difficulty": "easy",
+      "id": "q41"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The woman who nursed the Prophet (PBUH) as an infant was:",
+      "options": [
+        "Halimah Sa'diyah",
+        "Amina (RA)",
+        "Khadijah",
+        "Barakah"
+      ],
+      "answer": 0,
+      "explanation": "Halimah Sa'diyah was the Prophet's (PBUH) wet nurse.",
+      "difficulty": "easy",
+      "id": "q42"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Prophet's (PBUH) mother was:",
+      "options": [
+        "Aminah bint Wahb",
+        "Halimah",
+        "Khadijah",
+        "Fatimah"
+      ],
+      "answer": 0,
+      "explanation": "Aminah bint Wahb was the mother of the Prophet (PBUH).",
+      "difficulty": "easy",
+      "id": "q43"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which companion woman helped the Muslims at Uhud by treating the wounded?",
+      "options": [
+        "Umm Ammarah (Nusaybah bint Ka'b)",
+        "Aisha (RA)",
+        "Fatimah (RA)",
+        "Hafsa (RA)"
+      ],
+      "answer": 0,
+      "explanation": "Nusaybah defended the Prophet (PBUH) at Uhud.",
+      "difficulty": "hard",
+      "id": "q44"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who was the first woman to take part in the 'Bay'ah of Aqabah'?",
+      "options": [
+        "Women were included in the second Aqabah pledge",
+        "No women participated",
+        "Only Khadijah",
+        "Only Aisha"
+      ],
+      "answer": 0,
+      "explanation": "Women participated in the second Pledge of Aqabah.",
+      "difficulty": "hard",
+      "id": "q45"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The famous female scholar and narrator of hadith from the Prophet's (PBUH) family was:",
+      "options": [
+        "Aisha (RA)",
+        "Khadijah (RA)",
+        "Sawdah",
+        "Umm Kulthum"
+      ],
+      "answer": 0,
+      "explanation": "Aisha was a leading scholar among the companions.",
+      "difficulty": "easy",
+      "id": "q46"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who was the daughter of Umar (RA) and wife of the Prophet (PBUH)?",
+      "options": [
+        "Hafsa bint Umar (RA)",
+        "Aisha (RA)",
+        "Zainab (RA)",
+        "Sawdah (RA)"
+      ],
+      "answer": 0,
+      "explanation": "Hafsa was Umar's daughter and the Prophet's (PBUH) wife.",
+      "difficulty": "easy",
+      "id": "q47"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The first female Muslim ruler in history was:",
+      "options": [
+        "Razia Sultana",
+        "Shajarat al-Durr",
+        "Aisha (RA)",
+        "Arwa al-Sulayhi"
+      ],
+      "answer": 0,
+      "explanation": "Shajarat al-Durr ruled Egypt in the 13th century.",
+      "difficulty": "hard",
+      "id": "q48"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The first Muslim woman to migrate to Abyssinia was:",
+      "options": [
+        "Umm Salama",
+        "Khadijah (RA)",
+        "Fatimah (RA)",
+        "Aisha (RA)"
+      ],
+      "answer": 0,
+      "explanation": "Umm Salama was among the early migrants.",
+      "difficulty": "hard",
+      "id": "q49"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which companion woman was known as the 'nurse of the Muslims'?",
+      "options": [
+        "Umm Ayman (Barakah)",
+        "Aisha (RA)",
+        "Hafsa",
+        "Sawdah"
+      ],
+      "answer": 0,
+      "explanation": "Barakah (Umm Ayman) served the Prophet's (PBUH) household.",
+      "difficulty": "medium",
+      "id": "q50"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who was the wife of the Prophet (PBUH) from the Umayyad clan, daughter of Abu Sufyan?",
+      "options": [
+        "Umm Habiba (Ramlah)",
+        "Hafsa",
+        "Maimunah",
+        "Zainab"
+      ],
+      "answer": 0,
+      "explanation": "Umm Habiba was Abu Sufyan's daughter.",
+      "difficulty": "hard",
+      "id": "q51"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The first woman in Islam to memorise the entire Quran was:",
+      "options": [
+        "Hafsa bint Umar (RA)",
+        "Aisha (RA)",
+        "Fatimah (RA)",
+        "Khadijah (RA)"
+      ],
+      "answer": 0,
+      "explanation": "Hafsa was entrusted with a copy of the Quran.",
+      "difficulty": "medium",
+      "id": "q52"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The 'Sultan Razia' ruled which Sultanate?",
+      "options": [
+        "Delhi Sultanate",
+        "Ottoman Empire",
+        "Mamluk Egypt",
+        "Abbasid"
+      ],
+      "answer": 0,
+      "explanation": "Razia Sultana ruled Delhi (1236–1240).",
+      "difficulty": "easy",
+      "id": "q53"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which wife of the Prophet (PBUH) was married to him after being widowed at Badr?",
+      "options": [
+        "Zainab bint Khuzaimah",
+        "Aisha",
+        "Hafsa",
+        "Sawdah"
+      ],
+      "answer": 0,
+      "explanation": "Zainab bint Khuzaimah was widowed at Badr.",
+      "difficulty": "hard",
+      "id": "q54"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The mother of Imam Hasan and Imam Husain was:",
+      "options": [
+        "Fatimah (RA)",
+        "Aisha (RA)",
+        "Khadijah (RA)",
+        "Umm Salama"
+      ],
+      "answer": 0,
+      "explanation": "Fatimah was the mother of Hasan and Husain.",
+      "difficulty": "easy",
+      "id": "q55"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who was the last wife of the Prophet (PBUH) to pass away?",
+      "options": [
+        "Umm Salama",
+        "Aisha (RA)",
+        "Maimunah (RA)",
+        "Hafsa (RA)"
+      ],
+      "answer": 0,
+      "explanation": "Umm Salama was the last of the wives to die.",
+      "difficulty": "hard",
+      "id": "q56"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The first woman to perform Hijrah to Madinah openly was:",
+      "options": [
+        "Umm Kulthum bint Uqbah",
+        "Aisha (RA)",
+        "Fatimah (RA)",
+        "Sawdah"
+      ],
+      "answer": 0,
+      "explanation": "Umm Kulthum bint Uqbah migrated openly to Madinah.",
+      "difficulty": "hard",
+      "id": "q57"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which of the Prophet's (PBUH) daughters passed away during the expedition of Badr?",
+      "options": [
+        "Ruqayyah (RA)",
+        "Zainab (RA)",
+        "Umm Kulthum (RA)",
+        "Fatimah (RA)"
+      ],
+      "answer": 0,
+      "explanation": "Ruqayyah (RA), wife of Uthman (RA), died in 2 AH during the Badr expedition.",
+      "difficulty": "hard",
+      "id": "q58"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which daughter of the Prophet (PBUH) passed away about six months after him?",
+      "options": [
+        "Fatimah (RA)",
+        "Zainab (RA)",
+        "Ruqayyah (RA)",
+        "Umm Kulthum (RA)"
+      ],
+      "answer": 0,
+      "explanation": "Fatimah (RA) died about six months after the Prophet (PBUH).",
+      "difficulty": "medium",
+      "id": "q59"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Prophet's (PBUH) son Ibrahim was born to which wife?",
+      "options": [
+        "Maria al-Qibtiyya (RA)",
+        "Khadijah (RA)",
+        "Aisha (RA)",
+        "Hafsa (RA)"
+      ],
+      "answer": 0,
+      "explanation": "Ibrahim (RA) was the son of the Prophet (PBUH) and Maria al-Qibtiyya.",
+      "difficulty": "medium",
+      "id": "q60"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Zainab bint Jahsh (RA) was married to which companion before the Prophet (PBUH)?",
+      "options": [
+        "Zaid bin Harithah (RA)",
+        "Abu Bakr (RA)",
+        "Umar (RA)",
+        "Ali (RA)"
+      ],
+      "answer": 0,
+      "explanation": "Zainab bint Jahsh (RA) was first married to Zaid bin Harithah (RA).",
+      "difficulty": "medium",
+      "id": "q61"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which wife of the Prophet (PBUH) was his cousin?",
+      "options": [
+        "Zainab bint Jahsh (RA)",
+        "Aisha (RA)",
+        "Hafsa (RA)",
+        "Sauda (RA)"
+      ],
+      "answer": 0,
+      "explanation": "Zainab bint Jahsh (RA) was the Prophet's (PBUH) cousin.",
+      "difficulty": "medium",
+      "id": "q62"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which female companion asked the Prophet (PBUH) for a share of the spoils after Khaybar?",
+      "options": [
+        "Umm Sinan (RA)",
+        "Aisha (RA)",
+        "Asma (RA)",
+        "Khadijah (RA)"
+      ],
+      "answer": 0,
+      "explanation": "Umm Sinan al-Aslamiyyah (RA) fought at Khaybar and requested a share.",
+      "difficulty": "hard",
+      "id": "q63"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Rufaydah al-Aslamiyyah is remembered as?",
+      "options": [
+        "The first Muslim nurse",
+        "The first female poet",
+        "The first woman ruler",
+        "The first female scholar"
+      ],
+      "answer": 0,
+      "explanation": "Rufaydah (RA) set up field hospitals during the Prophet's (PBUH) campaigns.",
+      "difficulty": "hard",
+      "id": "q64"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Jewish woman who offered the Prophet (PBUH) poisoned meat at Khaybar was?",
+      "options": [
+        "Zainab bint al-Harith",
+        "Safiyyah (RA)",
+        "Hind bint Utbah",
+        "Asma bint Marwan"
+      ],
+      "answer": 0,
+      "explanation": "Zainab bint al-Harith poisoned the mutton offered to the Prophet (PBUH).",
+      "difficulty": "hard",
+      "id": "q65"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which aunt of the Prophet (PBUH) accepted Islam and was the mother of Zubair (RA)?",
+      "options": [
+        "Safiyyah bint Abdul-Muttalib",
+        "Arwa bint Abdul-Muttalib",
+        "Atikah bint Abdul-Muttalib",
+        "Barrah bint Abdul-Muttalib"
+      ],
+      "answer": 0,
+      "explanation": "Safiyyah (RA), the Prophet's (PBUH) aunt, was the mother of Zubair (RA).",
+      "difficulty": "hard",
+      "id": "q66"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The mother of Maryam (AS), wife of Imran, was?",
+      "options": [
+        "Hannah (Anne)",
+        "Asiya",
+        "Hajar",
+        "Sarah"
+      ],
+      "answer": 0,
+      "explanation": "Hannah, the wife of Imran, dedicated Maryam (AS) to Allah's service.",
+      "difficulty": "medium",
+      "id": "q67"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Safiyyah (RA), wife of the Prophet (PBUH), was a descendant of which prophet?",
+      "options": [
+        "Harun (AS)",
+        "Musa (AS)",
+        "Dawud (AS)",
+        "Ibrahim (AS)"
+      ],
+      "answer": 0,
+      "explanation": "Safiyyah (RA) descended from Harun (AS), hence her name.",
+      "difficulty": "medium",
+      "id": "q68"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Battle of the Camel is named after the camel of which of the Prophet's (PBUH) wives?",
+      "options": [
+        "Aisha (RA)",
+        "Umm Salama (RA)",
+        "Hafsa (RA)",
+        "Safiyyah (RA)"
+      ],
+      "answer": 0,
+      "explanation": "The Battle of Jamal (656) is named after Aisha's (RA) camel.",
+      "difficulty": "medium",
+      "id": "q69"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Asma bint Abi Bakr (RA) was the wife of which companion?",
+      "options": [
+        "Zubair (RA)",
+        "Talha (RA)",
+        "Abdul-Rahman bin Auf (RA)",
+        "Sa'd bin Abi Waqqas (RA)"
+      ],
+      "answer": 0,
+      "explanation": "Asma bint Abi Bakr (RA) married Zubair (RA).",
+      "difficulty": "medium",
+      "id": "q70"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which daughter of Abu Bakr (RA) was married to Talha (RA)?",
+      "options": [
+        "Umm Kulthum bint Abi Bakr",
+        "Aisha (RA)",
+        "Asma (RA)",
+        "Hafsa (RA)"
+      ],
+      "answer": 0,
+      "explanation": "Umm Kulthum bint Abi Bakr (RA) married Talha (RA).",
+      "difficulty": "hard",
+      "id": "q71"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which wife of the Prophet (PBUH) is buried in Makkah rather than Madinah?",
+      "options": [
+        "Khadijah (RA)",
+        "Aisha (RA)",
+        "Hafsa (RA)",
+        "Maimunah (RA)"
+      ],
+      "answer": 0,
+      "explanation": "Khadijah (RA) is buried in Jannat al-Mu'alla in Makkah.",
+      "difficulty": "medium",
+      "id": "q72"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The first wife of the Prophet (PBUH) to pass away was?",
+      "options": [
+        "Khadijah (RA)",
+        "Zainab bint Khuzaimah (RA)",
+        "Aisha (RA)",
+        "Sauda (RA)"
+      ],
+      "answer": 0,
+      "explanation": "Khadijah (RA) died in the year of sorrow, before the Hijrah.",
+      "difficulty": "medium",
+      "id": "q73"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Khadijah (RA) passed away in approximately which year?",
+      "options": [
+        "620 CE (10 BH)",
+        "610 CE",
+        "622 CE",
+        "632 CE"
+      ],
+      "answer": 0,
+      "explanation": "Khadijah (RA) died about 620 CE, shortly before the Hijrah.",
+      "difficulty": "medium",
+      "id": "q74"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which of Prophet Shuaib's (AS) daughters drew water for Musa (AS) at Madyan?",
+      "options": [
+        "One of his two daughters",
+        "His wife",
+        "His sister",
+        "A servant"
+      ],
+      "answer": 0,
+      "explanation": "One of Shuaib's (AS) daughters brought Musa (AS) water at the well.",
+      "difficulty": "medium",
+      "id": "q75"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Prophet (PBUH) had a foster sister from Halima's family named?",
+      "options": [
+        "Shayma",
+        "Amina",
+        "Barakah",
+        "Rufaydah"
+      ],
+      "answer": 0,
+      "explanation": "Shayma, Halima's daughter, was the Prophet's (PBUH) foster sister.",
+      "difficulty": "hard",
+      "id": "q76"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Prophet's (PBUH) foster brother from Halima's family was?",
+      "options": [
+        "Abdullah ibn al-Harith",
+        "Ali (RA)",
+        "Zaid (RA)",
+        "Hamza (RA)"
+      ],
+      "answer": 0,
+      "explanation": "Abdullah ibn al-Harith was the Prophet's (PBUH) foster brother.",
+      "difficulty": "hard",
+      "id": "q77"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Aisha (RA) narrated the incident of the Ifk (slander), which is discussed in which surah?",
+      "options": [
+        "Surah An-Nur",
+        "Surah Al-Ahzab",
+        "Surah At-Tahrim",
+        "Surah Al-Mujadilah"
+      ],
+      "answer": 0,
+      "explanation": "Surah An-Nur (24:11-20) addresses the slander against Aisha (RA).",
+      "difficulty": "medium",
+      "id": "q78"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which wife of the Prophet (PBUH) was called the 'mother of the poor'?",
+      "options": [
+        "Zainab bint Khuzaimah (RA)",
+        "Khadijah (RA)",
+        "Aisha (RA)",
+        "Maimunah (RA)"
+      ],
+      "answer": 0,
+      "explanation": "Zainab bint Khuzaimah (RA) was known as Umm al-Masakeen for her charity.",
+      "difficulty": "medium",
+      "id": "q79"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which of the Prophet's (PBUH) wives accompanied him on the farewell pilgrimage and narrated many rulings?",
+      "options": [
+        "Aisha (RA)",
+        "Safiyyah (RA)",
+        "Juwairiyyah (RA)",
+        "Maimunah (RA)"
+      ],
+      "answer": 0,
+      "explanation": "Aisha (RA) was with the Prophet (PBUH) at the Farewell Hajj and transmitted many rulings.",
+      "difficulty": "medium",
+      "id": "q80"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who was the first woman to accept Islam from the Ansar in Madinah?",
+      "options": [
+        "Umm Imarah's mother, Umm Salim (RA)",
+        "Khadijah (RA)",
+        "Aisha (RA)",
+        "Sumayyah (RA)"
+      ],
+      "answer": 0,
+      "explanation": "Umm Sulaym (RA) was among the earliest Ansari women to accept Islam.",
+      "difficulty": "hard",
+      "id": "q81"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which female companion was the mother of Anas bin Malik (RA)?",
+      "options": [
+        "Umm Sulaym (RA)",
+        "Umm Ayman (RA)",
+        "Umm Salama (RA)",
+        "Nusaybah (RA)"
+      ],
+      "answer": 0,
+      "explanation": "Umm Sulaym (RA), a devoted companion, was the mother of Anas (RA).",
+      "difficulty": "medium",
+      "id": "q82"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which woman was called 'Umm Ayman' and served the Prophet (PBUH) as his nurse?",
+      "options": [
+        "Barakah",
+        "Rufaydah",
+        "Shayma",
+        "Safiyyah"
+      ],
+      "answer": 0,
+      "explanation": "Barakah (RA), called Umm Ayman, served the Prophet (PBUH) from childhood.",
+      "difficulty": "medium",
+      "id": "q83"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which wife of the Prophet (PBUH) was present at the Treaty of Hudaybiyyah and suggested the sacrifice there?",
+      "options": [
+        "Umm Salama (RA)",
+        "Aisha (RA)",
+        "Hafsa (RA)",
+        "Sauda (RA)"
+      ],
+      "answer": 0,
+      "explanation": "Umm Salama (RA) advised the Prophet (PBUH) to shave and sacrifice at Hudaybiyyah.",
+      "difficulty": "hard",
+      "id": "q84"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which female companion memorised the Quran in the Prophet's (PBUH) lifetime and was a hafiza?",
+      "options": [
+        "Hafsa (RA)",
+        "Aisha (RA)",
+        "Asma (RA)",
+        "Fatimah (RA)"
+      ],
+      "answer": 0,
+      "explanation": "Hafsa bint Umar (RA) memorised the entire Quran.",
+      "difficulty": "medium",
+      "id": "q85"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who was the wife of the Prophet (PBUH) who was the daughter of Abu Sufyan (RA)?",
+      "options": [
+        "Umm Habibah (RA)",
+        "Safiyyah (RA)",
+        "Juwairiyyah (RA)",
+        "Maimunah (RA)"
+      ],
+      "answer": 0,
+      "explanation": "Umm Habibah (Ramlah) (RA) was the daughter of Abu Sufyan.",
+      "difficulty": "medium",
+      "id": "q86"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which wife of the Prophet (PBUH) was from the Banu Mustaliq, freed after the Muraisi expedition?",
+      "options": [
+        "Juwairiyyah (RA)",
+        "Safiyyah (RA)",
+        "Hafsa (RA)",
+        "Sauda (RA)"
+      ],
+      "answer": 0,
+      "explanation": "Juwairiyyah bint al-Harith (RA) was freed and married after the expedition.",
+      "difficulty": "medium",
+      "id": "q87"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which woman was among the first to accept Islam and was the wife of Abu Lahab's son?",
+      "options": [
+        "Zainab (RA) (daughter of the Prophet PBUH)",
+        "Khadijah (RA)",
+        "Sumayyah (RA)",
+        "Umm Kulthum (RA)"
+      ],
+      "answer": 0,
+      "explanation": "Zainab (RA), the Prophet's (PBUH) daughter, was married to Abu al-As.",
+      "difficulty": "hard",
+      "id": "q88"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which daughter of the Prophet (PBUH) was married to Abu al-As ibn al-Rabi'?",
+      "options": [
+        "Zainab (RA)",
+        "Ruqayyah (RA)",
+        "Umm Kulthum (RA)",
+        "Fatimah (RA)"
+      ],
+      "answer": 0,
+      "explanation": "Zainab (RA) married Abu al-As and was reunited with him after Islam.",
+      "difficulty": "medium",
+      "id": "q89"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which wife of the Prophet (PBUH) was known for her generosity and was the daughter of Al-Harith?",
+      "options": [
+        "Maimunah (RA)",
+        "Safiyyah (RA)",
+        "Juwairiyyah (RA)",
+        "Sauda (RA)"
+      ],
+      "answer": 0,
+      "explanation": "Maimunah bint al-Harith (RA), the last wife, was generous and kind.",
+      "difficulty": "medium",
+      "id": "q90"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which woman is described in the Quran as the mother of Isa (AS) and a sign for the worlds?",
+      "options": [
+        "Maryam (AS)",
+        "Asiya",
+        "Hajar",
+        "Sarah"
+      ],
+      "answer": 0,
+      "explanation": "Maryam (AS), mother of Isa (AS), is a sign for all worlds.",
+      "difficulty": "easy",
+      "id": "q91"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which queen is mentioned in the Quran as the ruler of Saba who submitted to Allah?",
+      "options": [
+        "Bilqis (Queen of Sheba)",
+        "Cleopatra",
+        "Zenobia",
+        "Hatshepsut"
+      ],
+      "answer": 0,
+      "explanation": "Bilqis, the Queen of Sheba, accepted the message of Sulaiman (AS).",
+      "difficulty": "easy",
+      "id": "q92"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which wife of Pharaoh is praised in the Quran for her faith?",
+      "options": [
+        "Asiya",
+        "Zulaikha",
+        "Maryam",
+        "Bilqis"
+      ],
+      "answer": 0,
+      "explanation": "Asiya, wife of Pharaoh, is cited as an example for believers.",
+      "difficulty": "easy",
+      "id": "q93"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which woman's story involves running between Safa and Marwah?",
+      "options": [
+        "Hajar (RA)",
+        "Sarah",
+        "Asiya",
+        "Maryam"
+      ],
+      "answer": 0,
+      "explanation": "Hajar (RA) ran between Safa and Marwah seeking water for Ismail (AS).",
+      "difficulty": "easy",
+      "id": "q94"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which female companion was known as the 'mother of the believers' by all Muslims?",
+      "options": [
+        "Each wife of the Prophet (PBUH)",
+        "Khadijah (RA) only",
+        "Aisha (RA) only",
+        "Fatimah (RA)"
+      ],
+      "answer": 0,
+      "explanation": "All the wives of the Prophet (PBUH) share the title Ummahat-ul-Momineen.",
+      "difficulty": "medium",
+      "id": "q95"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which woman was the first to be martyred in the way of Allah?",
+      "options": [
+        "Sumayyah (RA)",
+        "Khadijah (RA)",
+        "Aisha (RA)",
+        "Nusaybah (RA)"
+      ],
+      "answer": 0,
+      "explanation": "Sumayyah (RA), mother of Ammar (RA), was the first martyr of Islam.",
+      "difficulty": "medium",
+      "id": "q96"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which woman defended the Prophet (PBUH) at Uhud with a sword?",
+      "options": [
+        "Nusaybah bint Ka'b (RA)",
+        "Aisha (RA)",
+        "Umm Salama (RA)",
+        "Asma (RA)"
+      ],
+      "answer": 0,
+      "explanation": "Nusaybah (RA), Umm Ammarah, fought at Uhud to protect the Prophet (PBUH).",
+      "difficulty": "medium",
+      "id": "q97"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who was the first woman to rule as a Muslim monarch?",
+      "options": [
+        "Razia Sultana",
+        "Khadijah (RA)",
+        "Nur Jahan",
+        "Shajar al-Durr"
+      ],
+      "answer": 0,
+      "explanation": "Razia Sultana of Delhi is generally called the first female Muslim ruler.",
+      "difficulty": "medium",
+      "id": "q98"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The first female Mamluk ruler of Egypt was?",
+      "options": [
+        "Shajar al-Durr",
+        "Razia Sultana",
+        "Nur Jahan",
+        "Aisha (RA)"
+      ],
+      "answer": 0,
+      "explanation": "Shajar al-Durr ruled Egypt briefly after the death of her husband.",
+      "difficulty": "hard",
+      "id": "q99"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which wife of the Prophet (PBUH) migrated openly to Madinah, breaking with custom?",
+      "options": [
+        "Umm Kulthum bint Uqbah (RA)",
+        "Aisha (RA)",
+        "Hafsa (RA)",
+        "Sauda (RA)"
+      ],
+      "answer": 0,
+      "explanation": "Umm Kulthum bint Uqbah (RA) made her Hijrah openly.",
+      "difficulty": "hard",
+      "id": "q100"
+    }
+  ]
+}

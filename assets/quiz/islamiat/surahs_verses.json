@@ -1,0 +1,1413 @@
+{
+  "bank": {
+    "name": "Surahs & Key Verses",
+    "subject": "Islamic Studies",
+    "topic": "Surahs & Key Verses",
+    "description": "Facts about the Surahs of the Quran and their famous verses.",
+    "tags": "css,pms,fpsc,ppsc,nts,islamic-studies,quran,surahs",
+    "version": "1.0",
+    "id": "islamiat_surahs_verses"
+  },
+  "questions": [
+    {
+      "type": "mcq",
+      "prompt": "Which Surah is also called the 'Umm-ul-Quran' (Mother of the Quran)?",
+      "options": [
+        "Surah Al-Fatiha",
+        "Surah Al-Baqarah",
+        "Surah Al-Ikhlas",
+        "Surah Al-Muzammil"
+      ],
+      "answer": 0,
+      "explanation": "Surah Al-Fatiha is known as Umm-ul-Quran (Mother of the Quran) and Umm-ul-Kitab.",
+      "difficulty": "easy",
+      "id": "q01"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which Surah protects against punishment of the grave according to hadith?",
+      "options": [
+        "Surah Al-Mulk",
+        "Surah Al-Ikhlas",
+        "Surah Al-Falaq",
+        "Surah Al-Kawthar"
+      ],
+      "answer": 0,
+      "explanation": "Surah Al-Mulk (Tabarak) is reported to intercede for its reciter and protect against the punishment of the grave.",
+      "difficulty": "medium",
+      "id": "q02"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which two Surahs are recited for protection and are called 'Al-Mu'awwidhatayn'?",
+      "options": [
+        "Al-Falaq and An-Nas",
+        "Al-Ikhlas and Al-Kafirun",
+        "Al-Baqarah and Al-Imran",
+        "Yaseen and Ar-Rahman"
+      ],
+      "answer": 0,
+      "explanation": "Al-Falaq and An-Nas are the Mu'awwidhatayn, the two Surahs of seeking refuge.",
+      "difficulty": "easy",
+      "id": "q03"
+    },
+    {
+      "type": "mcq",
+      "prompt": "In which Surah is the 'Nur' (Light) verse, the most famous verse on veiling, found?",
+      "options": [
+        "Surah Al-Hujurat",
+        "Surah An-Nur",
+        "Surah Al-Ahzab",
+        "Surah Al-Maidah"
+      ],
+      "answer": 1,
+      "explanation": "The Verse of Light (Ayat an-Nur) is in Surah An-Nur (24:35).",
+      "difficulty": "medium",
+      "id": "q04"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which Surah was revealed completely at once, causing the narrator to faint at its magnificence?",
+      "options": [
+        "Surah Al-Fatiha",
+        "Surah Al-An'am",
+        "Surah Al-Maidah",
+        "Surah At-Tawbah"
+      ],
+      "answer": 1,
+      "explanation": "Surah Al-An'am is said to have been revealed all at once, accompanied by angels.",
+      "difficulty": "hard",
+      "id": "q05"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Surah Al-Fil (The Elephant) refers to the attack on the Kaaba by which army?",
+      "options": [
+        "Abraha's army with elephants",
+        "Nebuchadnezzar's army",
+        "The Roman army",
+        "The Persian army"
+      ],
+      "answer": 0,
+      "explanation": "Surah Al-Fil narrates the destruction of Abraha's elephant army, which attacked the Kaaba in the Year of the Elephant.",
+      "difficulty": "easy",
+      "id": "q06"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which Surah is called the 'Surah of Unity' (Tawheed)?",
+      "options": [
+        "Surah Al-Kafirun",
+        "Surah Al-Ikhlas",
+        "Surah Al-Falaq",
+        "Surah Al-Kawthar"
+      ],
+      "answer": 1,
+      "explanation": "Surah Al-Ikhlas is the Surah of pure Tawheed; it equals a third of the Quran in reward.",
+      "difficulty": "easy",
+      "id": "q07"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which verse commands Muslims to fast during the month of Ramadan?",
+      "options": [
+        "Surah Al-Baqarah 2:183",
+        "Surah Al-Maidah 5:90",
+        "Surah An-Nisa 4:103",
+        "Surah Al-Baqarah 2:255"
+      ],
+      "answer": 0,
+      "explanation": "Surah Al-Baqarah 2:183 prescribes fasting in Ramadan: 'O you who believe! Fasting is prescribed for you...'",
+      "difficulty": "medium",
+      "id": "q08"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which Surah begins without 'Bismillah'?",
+      "options": [
+        "Surah At-Tawbah",
+        "Surah Al-Anfal",
+        "Surah Al-Fath",
+        "Surah Al-Hajj"
+      ],
+      "answer": 0,
+      "explanation": "Surah At-Tawbah is the only Surah that does not begin with Bismillah.",
+      "difficulty": "easy",
+      "id": "q09"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Bismillah appears twice in which Surah?",
+      "options": [
+        "Surah Al-Fatiha",
+        "Surah An-Naml",
+        "Surah Al-Ankabut",
+        "Surah Hud"
+      ],
+      "answer": 1,
+      "explanation": "Bismillah appears at the start of Surah An-Naml and again inside it (27:30).",
+      "difficulty": "medium",
+      "id": "q10"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which Surah's theme is the victory of Makkah and is one of the shortest Surahs?",
+      "options": [
+        "Surah Al-Fath",
+        "Surah An-Nasr",
+        "Surah Al-Kawthar",
+        "Surah Al-Ikhlas"
+      ],
+      "answer": 1,
+      "explanation": "Surah An-Nasr (3 verses) announces the victory of Makkah and the people entering Islam in crowds.",
+      "difficulty": "medium",
+      "id": "q11"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which Surah is known for its mention of the Prophet's (PBUH) character as 'a great moral character'?",
+      "options": [
+        "Surah Al-Qalam",
+        "Surah Al-Muzzammil",
+        "Surah Al-Muddaththir",
+        "Surah Ad-Duha"
+      ],
+      "answer": 0,
+      "explanation": "Surah Al-Qalam (68:4) says: 'And indeed, you are of a great moral character.'",
+      "difficulty": "hard",
+      "id": "q12"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which Surah addresses the wives of the Prophet (PBUH) regarding purdah and family life?",
+      "options": [
+        "Surah An-Nisa",
+        "Surah Al-Ahzab",
+        "Surah Al-Hujurat",
+        "Surah At-Talaq"
+      ],
+      "answer": 1,
+      "explanation": "Surah Al-Ahzab contains the rules of purdah and addresses the Prophet's wives.",
+      "difficulty": "medium",
+      "id": "q13"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which Surah is called the 'Surah of Manners' (Akhlaq), covering respect and etiquette?",
+      "options": [
+        "Surah Al-Hujurat",
+        "Surah Al-Asr",
+        "Surah Luqman",
+        "Surah Al-Ma'un"
+      ],
+      "answer": 0,
+      "explanation": "Surah Al-Hujurat covers social ethics — verifying news, avoiding mockery, and good manners.",
+      "difficulty": "hard",
+      "id": "q14"
+    },
+    {
+      "type": "mcq",
+      "prompt": "In which Surah is the story of Prophet Yusuf (AS), called 'Ahsan-ul-Qasas' (the best of stories), narrated?",
+      "options": [
+        "Surah Yusuf",
+        "Surah Yaseen",
+        "Surah Ibrahim",
+        "Surah Al-Kahf"
+      ],
+      "answer": 0,
+      "explanation": "Surah Yusuf narrates the complete story of Prophet Yusuf (AS), described as the best of stories.",
+      "difficulty": "easy",
+      "id": "q15"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which Surah contains the story of the 'People of the Cave' (Ashab-e-Kahf)?",
+      "options": [
+        "Surah Al-Anbiya",
+        "Surah Al-Kahf",
+        "Surah Al-Furqan",
+        "Surah Qaf"
+      ],
+      "answer": 1,
+      "explanation": "Surah Al-Kahf narrates the story of the People of the Cave and is recommended for recitation on Fridays.",
+      "difficulty": "easy",
+      "id": "q16"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which Surah is a conversation between Allah and the angels about the creation of Adam (AS)?",
+      "options": [
+        "Surah Al-Baqarah",
+        "Surah Sad",
+        "Surah Al-Hijr",
+        "Surah Al-Imran"
+      ],
+      "answer": 0,
+      "explanation": "Surah Al-Baqarah (2:30-38) opens with Allah's dialogue with the angels about creating Adam (AS).",
+      "difficulty": "medium",
+      "id": "q17"
+    },
+    {
+      "type": "mcq",
+      "prompt": "How many verses are there in the Holy Quran in total?",
+      "options": [
+        "6,236",
+        "6,666",
+        "5,000",
+        "7,000"
+      ],
+      "answer": 0,
+      "explanation": "The Quran has 6,236 verses (by the Kufan count), though counts vary slightly by school.",
+      "difficulty": "medium",
+      "id": "q18"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which Surah mentions the 'Zul-Qarnain' and Gog and Magog (Yajuj and Majuj)?",
+      "options": [
+        "Surah Al-Kahf",
+        "Surah Al-Anbiya",
+        "Surah Al-Qasas",
+        "Surah Al-Hajj"
+      ],
+      "answer": 0,
+      "explanation": "Surah Al-Kahf (18) tells of Zul-Qarnain building a barrier against Yajuj and Majuj.",
+      "difficulty": "medium",
+      "id": "q19"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which Surah is called 'the Surah of the ants' for mentioning Prophet Sulaiman (AS)?",
+      "options": [
+        "Surah An-Naml",
+        "Surah An-Nahl",
+        "Surah Saba",
+        "Surah Sad"
+      ],
+      "answer": 0,
+      "explanation": "Surah An-Naml (The Ant) includes Sulaiman's (AS) story with the ant and the hoopoe.",
+      "difficulty": "medium",
+      "id": "q20"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The 'Ayat-ul-Mubahila' (verse of mutual cursing) is in which Surah?",
+      "options": [
+        "Surah Al-Imran",
+        "Surah Al-Maidah",
+        "Surah An-Nisa",
+        "Surah Al-Ahzab"
+      ],
+      "answer": 0,
+      "explanation": "Ayat-ul-Mubahila (3:61) in Surah Al-Imran concerns the delegation of Najran.",
+      "difficulty": "hard",
+      "id": "q21"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which Surah opens with 'Alif Lam Meem, Zalikal Kitabu la rayba fih'?",
+      "options": [
+        "Surah Al-Baqarah",
+        "Surah Al-Fatiha",
+        "Surah Al-Imran",
+        "Surah An-Nas"
+      ],
+      "answer": 0,
+      "explanation": "Surah Al-Baqarah 2:1-2 begins with Alif Lam Meem and 'This is the Book about which there is no doubt.'",
+      "difficulty": "medium",
+      "id": "q22"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which Surah was revealed at Mina and is the shortest Madani Surah?",
+      "options": [
+        "Surah Al-Kawthar",
+        "Surah Al-Ikhlas",
+        "Surah An-Nasr",
+        "Surah Al-Asr"
+      ],
+      "answer": 0,
+      "explanation": "Surah Al-Kawthar, revealed in Makkah or Madinah (scholars differ), is the shortest Surah with 3 verses.",
+      "difficulty": "hard",
+      "id": "q23"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which Surah begins with 'Qul a'udhu bi Rabbil-falaq'?",
+      "options": [
+        "Surah Al-Falaq",
+        "Surah An-Nas",
+        "Surah Al-Ikhlas",
+        "Surah Al-Kafirun"
+      ],
+      "answer": 0,
+      "explanation": "Surah Al-Falaq (113) begins 'Say: I seek refuge in the Lord of the daybreak.'",
+      "difficulty": "easy",
+      "id": "q24"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which Surah mentions the 'Cave' and 'The Owner of the Two Gardens' as parables?",
+      "options": [
+        "Surah Al-Kahf",
+        "Surah Al-An'am",
+        "Surah Yusuf",
+        "Surah Ibrahim"
+      ],
+      "answer": 0,
+      "explanation": "Surah Al-Kahf contains four stories including the man with two gardens.",
+      "difficulty": "easy",
+      "id": "q25"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which Surah is referred to as 'Al-Bara'at' (repudiation) and was revealed regarding treaties?",
+      "options": [
+        "Surah At-Tawbah",
+        "Surah Al-Anfal",
+        "Surah Al-Fath",
+        "Surah Al-Hujurat"
+      ],
+      "answer": 0,
+      "explanation": "Surah At-Tawbah is also called Al-Bara'at, dealing with the annulment of treaties with the polytheists.",
+      "difficulty": "medium",
+      "id": "q26"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which Surah's verse 9 is called 'Ayat-ul-Kursi'?",
+      "options": [
+        "Surah Al-Baqarah (2:255)",
+        "Surah Al-Imran",
+        "Surah An-Nur",
+        "Surah Al-Hashr"
+      ],
+      "answer": 0,
+      "explanation": "Ayat-ul-Kursi is verse 255 of Surah Al-Baqarah, the verse of the Throne.",
+      "difficulty": "easy",
+      "id": "q27"
+    },
+    {
+      "type": "mcq",
+      "prompt": "In which Surah is the story of the 'people of the city' (Ashab-ul-Qaryah) mentioned?",
+      "options": [
+        "Surah Yaseen",
+        "Surah Al-Kahf",
+        "Surah Al-Buruj",
+        "Surah Al-Fajr"
+      ],
+      "answer": 0,
+      "explanation": "Surah Yaseen (36) tells of the messengers sent to a city and the man who rushed from its outskirts.",
+      "difficulty": "hard",
+      "id": "q28"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which Surah is called 'Surah al-Hamd' (praise) for beginning with praise of Allah?",
+      "options": [
+        "Surah Al-Fatiha",
+        "Surah Al-Ikhlas",
+        "Surah Ar-Rahman",
+        "Surah Al-Asr"
+      ],
+      "answer": 0,
+      "explanation": "Al-Fatiha begins 'Alhamdu lillahi Rabbil-'alamin' — all praise is for Allah.",
+      "difficulty": "easy",
+      "id": "q29"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which Surah describes the 'Battle of Badr' in detail?",
+      "options": [
+        "Surah Al-Anfal",
+        "Surah Al-Ahzab",
+        "Surah Al-Fath",
+        "Surah Al-Hajj"
+      ],
+      "answer": 0,
+      "explanation": "Surah Al-Anfal (Spoils of War) was revealed after Badr and details its lessons.",
+      "difficulty": "medium",
+      "id": "q30"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which Surah was revealed regarding the 'Battle of the Trench' and the Banu Qurayzah?",
+      "options": [
+        "Surah Al-Ahzab",
+        "Surah Al-Anfal",
+        "Surah Al-Fath",
+        "Surah Al-Hujurat"
+      ],
+      "answer": 0,
+      "explanation": "Surah Al-Ahzab (The Confederates) narrates the siege of Madinah in 5 AH.",
+      "difficulty": "medium",
+      "id": "q31"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which Surah ends with the two 'Qul a'udhu' verses?",
+      "options": [
+        "Al-Falaq and An-Nas are separate Surahs (113-114)",
+        "Al-Baqarah",
+        "Al-Ikhlas",
+        "Al-Kafirun"
+      ],
+      "answer": 0,
+      "explanation": "The last two Surahs, Al-Falaq and An-Nas, are the Mu'awwidhatayn seeking refuge.",
+      "difficulty": "medium",
+      "id": "q32"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which Surah is called 'Al-Mu'mina' or 'Surah of Faith' for its repeated call 'O you who believe'?",
+      "options": [
+        "Surah Al-Ma'idah",
+        "Surah Al-Baqarah",
+        "Surah Al-Hujurat",
+        "Surah Al-Mumtahanah"
+      ],
+      "answer": 0,
+      "explanation": "Surah Al-Ma'idah (The Table) frequently addresses 'O you who believe' and completes the religion.",
+      "difficulty": "hard",
+      "id": "q33"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which Surah contains the longest verse (Ayat-ud-Dain) about debt?",
+      "options": [
+        "Surah Al-Baqarah (2:282)",
+        "Surah An-Nisa",
+        "Surah Al-Imran",
+        "Surah At-Tawbah"
+      ],
+      "answer": 0,
+      "explanation": "Ayat-ud-Dain (2:282) on written contracts of debt is the Quran's longest verse.",
+      "difficulty": "medium",
+      "id": "q34"
+    },
+    {
+      "type": "mcq",
+      "prompt": "In which Surah does Allah command the Prophet (PBUH) to declare 'Qul huwa Allahu ahad'?",
+      "options": [
+        "Surah Al-Ikhlas",
+        "Surah Al-Fatiha",
+        "Surah Al-Muzzammil",
+        "Surah Al-Muddaththir"
+      ],
+      "answer": 0,
+      "explanation": "Surah Al-Ikhlas (112) commands: 'Say: He is Allah, the One.'",
+      "difficulty": "easy",
+      "id": "q35"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which Surah is known for the verse of 'sabr and salat' (seek help through patience and prayer)?",
+      "options": [
+        "Surah Al-Baqarah (2:153)",
+        "Surah Al-Imran",
+        "Surah Al-Anfal",
+        "Surah Hud"
+      ],
+      "answer": 0,
+      "explanation": "2:153 tells believers to seek help through patience (sabr) and prayer (salat).",
+      "difficulty": "medium",
+      "id": "q36"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which Surah's theme is the Oneness of Allah against polytheism, addressed to the disbelievers?",
+      "options": [
+        "Surah Al-Kafirun",
+        "Surah Al-Ikhlas",
+        "Surah Al-Masad",
+        "Surah Al-Humazah"
+      ],
+      "answer": 0,
+      "explanation": "Surah Al-Kafirun (109) declares disavowal of disbelief: 'For you is your religion, and for me is my religion.'",
+      "difficulty": "medium",
+      "id": "q37"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which Surah mentions the 'people of the elephant' (Ashab-ul-Fil)?",
+      "options": [
+        "Surah Al-Fil",
+        "Surah Quraysh",
+        "Surah Al-Ma'un",
+        "Surah Al-Kawthar"
+      ],
+      "answer": 0,
+      "explanation": "Surah Al-Fil (105) recounts how Allah destroyed Abraha's elephant army.",
+      "difficulty": "easy",
+      "id": "q38"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which Surah commands the unity and cooperation of the Quraysh in trade journeys?",
+      "options": [
+        "Surah Quraysh",
+        "Surah Al-Fil",
+        "Surah Al-Asr",
+        "Surah Al-Humazah"
+      ],
+      "answer": 0,
+      "explanation": "Surah Quraysh (106) reminds the Quraysh of Allah's favours in their winter and summer journeys.",
+      "difficulty": "medium",
+      "id": "q39"
+    },
+    {
+      "type": "mcq",
+      "prompt": "In which Surah is the story of the Prophet Musa (AS) meeting Khidr (AS)?",
+      "options": [
+        "Surah Al-Kahf",
+        "Surah Al-Qasas",
+        "Surah Taha",
+        "Surah Al-A'raf"
+      ],
+      "answer": 0,
+      "explanation": "The journey of Musa (AS) with Khidr (AS) is narrated in Surah Al-Kahf (18:60-82).",
+      "difficulty": "medium",
+      "id": "q40"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which Surah is called 'Al-Mulk' for its opening 'Tabarakallazi biyadihil-mulk'?",
+      "options": [
+        "Surah Al-Mulk",
+        "Surah Al-Waqi'ah",
+        "Surah Al-Haqqah",
+        "Surah An-Naba"
+      ],
+      "answer": 0,
+      "explanation": "Surah Al-Mulk (67) begins 'Blessed is He in whose hand is the dominion.'",
+      "difficulty": "easy",
+      "id": "q41"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which Surah describes the events of the 'Day of Judgment' in detail and is called 'Al-Qari'ah'?",
+      "options": [
+        "Surah Al-Qari'ah",
+        "Surah Az-Zalzalah",
+        "Surah Al-Ghashiyah",
+        "Surah At-Takathur"
+      ],
+      "answer": 0,
+      "explanation": "Surah Al-Qari'ah (101) depicts the Striking Calamity — the Day of Judgment.",
+      "difficulty": "medium",
+      "id": "q42"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which Surah ends with 'Surah An-Nas' as the final revelation chapter?",
+      "options": [
+        "An-Nas is the last Surah (114)",
+        "Al-Falaq",
+        "Al-Ikhlas",
+        "Al-Baqarah"
+      ],
+      "answer": 0,
+      "explanation": "Surah An-Nas (Mankind) is the 114th and final Surah of the Quran.",
+      "difficulty": "easy",
+      "id": "q43"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which Surah is known as 'Al-Saif' (the Sword) for its command regarding the polytheists?",
+      "options": [
+        "Surah At-Tawbah (9:5)",
+        "Surah Al-Anfal",
+        "Surah Al-Fath",
+        "Surah Al-Hajj"
+      ],
+      "answer": 0,
+      "explanation": "At-Tawbah 9:5 (Ayat as-Saif) concerns the treatment of treaty-breaking polytheists.",
+      "difficulty": "hard",
+      "id": "q44"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which Surah contains the 'Verse of Purification' (Ayat-ul-Tathir)?",
+      "options": [
+        "Surah Al-Ahzab (33:33)",
+        "Surah An-Nur",
+        "Surah Al-Maidah",
+        "Surah Al-Hujurat"
+      ],
+      "answer": 0,
+      "explanation": "Ayat-ul-Tathir (33:33) addresses the Ahl al-Bayt: 'Allah intends only to remove from you the impurity.'",
+      "difficulty": "hard",
+      "id": "q45"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which Surah begins with 'Alam nashrah laka sadrak' (Did We not expand for you your breast)?",
+      "options": [
+        "Surah Ash-Sharh",
+        "Surah Ad-Duha",
+        "Surah Al-Inshirah only",
+        "Surah Al-Lail"
+      ],
+      "answer": 0,
+      "explanation": "Surah Ash-Sharh (94), also called Al-Inshirah, comforts the Prophet (PBUH).",
+      "difficulty": "medium",
+      "id": "q46"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Surah Al-Baqarah contains the longest verse, Ayat-ul-Dayn, at:",
+      "options": [
+        "2:282",
+        "2:255",
+        "2:2",
+        "2:100"
+      ],
+      "answer": 0,
+      "explanation": "Verse 2:282 deals with debt contracts.",
+      "difficulty": "hard",
+      "id": "q47"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Surah Al-Falaq and Surah An-Nas are together called:",
+      "options": [
+        "Al-Mu'awwidhatayn",
+        "Al-Mufassal",
+        "Al-Manzil",
+        "Al-Mathani"
+      ],
+      "answer": 0,
+      "explanation": "They are the two protective surahs.",
+      "difficulty": "medium",
+      "id": "q48"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Surah An-Nasr mentions which event?",
+      "options": [
+        "The Conquest of Makkah",
+        "The Battle of Badr",
+        "The Hijrah",
+        "The Treaty of Hudaibiya"
+      ],
+      "answer": 0,
+      "explanation": "An-Nasr celebrates the victory of Makkah.",
+      "difficulty": "easy",
+      "id": "q49"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Surah Al-Kawthar means:",
+      "options": [
+        "Abundance",
+        "The cow",
+        "The spider",
+        "The dawn"
+      ],
+      "answer": 0,
+      "explanation": "Al-Kawthar means abundance.",
+      "difficulty": "easy",
+      "id": "q50"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Surah Al-Asr emphasises:",
+      "options": [
+        "Time and its value",
+        "Charity",
+        "War",
+        "Food"
+      ],
+      "answer": 0,
+      "explanation": "Al-Asr warns about the loss of time.",
+      "difficulty": "easy",
+      "id": "q51"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Surah Al-Humazah condemns:",
+      "options": [
+        "Slander and hoarding wealth",
+        "Stealing",
+        "Gambling",
+        "Idol worship"
+      ],
+      "answer": 0,
+      "explanation": "It criticises backbiters and wealth hoarders.",
+      "difficulty": "medium",
+      "id": "q52"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Surah Al-Ma'un deals with:",
+      "options": [
+        "Those who deny small kindnesses",
+        "The moon",
+        "The elephant",
+        "The night"
+      ],
+      "answer": 0,
+      "explanation": "Al-Ma'un condemns neglecting charity.",
+      "difficulty": "medium",
+      "id": "q53"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Surah Al-Fil narrates the story of:",
+      "options": [
+        "The army of the elephant",
+        "The cow of Bani Israel",
+        "The spider",
+        "The whale"
+      ],
+      "answer": 0,
+      "explanation": "Al-Fil recalls Abraha's elephant army.",
+      "difficulty": "easy",
+      "id": "q54"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Surah Al-Quraish is addressed to:",
+      "options": [
+        "The Quraysh tribe",
+        "The Ansar",
+        "The Jews",
+        "The Christians"
+      ],
+      "answer": 0,
+      "explanation": "It reminds Quraysh of Allah's favours.",
+      "difficulty": "easy",
+      "id": "q55"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Surah Al-Balad takes its name from:",
+      "options": [
+        "The city (Makkah)",
+        "The moon",
+        "The sun",
+        "The mountain"
+      ],
+      "answer": 0,
+      "explanation": "Al-Balad refers to the city of Makkah.",
+      "difficulty": "medium",
+      "id": "q56"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Surah Al-Fajr takes its name from:",
+      "options": [
+        "The dawn",
+        "The night",
+        "The day",
+        "The sun"
+      ],
+      "answer": 0,
+      "explanation": "Al-Fajr means the dawn.",
+      "difficulty": "easy",
+      "id": "q57"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Surah Al-Ghashiyah describes:",
+      "options": [
+        "The overwhelming event (Day of Judgment)",
+        "The cow",
+        "The bee",
+        "The cave"
+      ],
+      "answer": 0,
+      "explanation": "Al-Ghashiyah depicts the Hour.",
+      "difficulty": "medium",
+      "id": "q58"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Surah At-Tin swears by:",
+      "options": [
+        "The fig and the olive",
+        "The moon",
+        "The stars",
+        "The sea"
+      ],
+      "answer": 0,
+      "explanation": "At-Tin opens with the fig and olive.",
+      "difficulty": "easy",
+      "id": "q59"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Surah Al-Alaq's first word is:",
+      "options": [
+        "Iqra (Read)",
+        "Qul (Say)",
+        "Tabbat",
+        "Wail"
+      ],
+      "answer": 0,
+      "explanation": "Al-Alaq begins with 'Read!'.",
+      "difficulty": "easy",
+      "id": "q60"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Surah Al-Qadr declares Lailat-ul-Qadr better than:",
+      "options": [
+        "A thousand months",
+        "A hundred years",
+        "Ten days",
+        "A year"
+      ],
+      "answer": 0,
+      "explanation": "Verse 3 states it is better than a thousand months.",
+      "difficulty": "easy",
+      "id": "q61"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Surah Al-Bayyinah refers to:",
+      "options": [
+        "The clear proof (the Quran)",
+        "The elephant",
+        "The cave",
+        "The spider"
+      ],
+      "answer": 0,
+      "explanation": "Al-Bayyinah means the clear evidence.",
+      "difficulty": "easy",
+      "id": "q62"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Surah Az-Zalzalah describes:",
+      "options": [
+        "The earthquake of the Hour",
+        "The flood",
+        "The wind",
+        "The eclipse"
+      ],
+      "answer": 0,
+      "explanation": "Az-Zalzalah portrays the great quake.",
+      "difficulty": "easy",
+      "id": "q63"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Surah Al-Adiyat swears by:",
+      "options": [
+        "The chargers (horses of war)",
+        "The stars",
+        "The figs",
+        "The clouds"
+      ],
+      "answer": 0,
+      "explanation": "Al-Adiyat opens with the war horses.",
+      "difficulty": "medium",
+      "id": "q64"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Surah Al-Kafirun commands:",
+      "options": [
+        "Disavowal of disbelief",
+        "Charity",
+        "Patience",
+        "Migration"
+      ],
+      "answer": 0,
+      "explanation": "Al-Kafirun declares separation from false worship.",
+      "difficulty": "easy",
+      "id": "q65"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Surah An-Nasr mentions:",
+      "options": [
+        "The help of Allah and victory",
+        "The flood",
+        "The cow",
+        "The bee"
+      ],
+      "answer": 0,
+      "explanation": "An-Nasr celebrates divine help.",
+      "difficulty": "easy",
+      "id": "q66"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Surah Al-Masad condemns:",
+      "options": [
+        "Abu Lahab and his wife",
+        "The Quraysh",
+        "The Jews",
+        "The hypocrites"
+      ],
+      "answer": 0,
+      "explanation": "Al-Masad (Lahab) targets Abu Lahab.",
+      "difficulty": "easy",
+      "id": "q67"
+    },
+    {
+      "type": "mcq",
+      "prompt": "In which Surah is the verse 'We have indeed made the Quran easy to remember' repeated four times?",
+      "options": [
+        "Surah Al-Qamar",
+        "Surah Ya-Sin",
+        "Surah Ar-Rahman",
+        "Surah Al-Insan"
+      ],
+      "answer": 0,
+      "explanation": "The refrain 'Wa laqad yassarnal-Qur'ana' occurs four times in Al-Qamar (54).",
+      "difficulty": "hard",
+      "id": "q68"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The verse about the Trust (Amanah) being offered to the heavens and the earth is in which Surah?",
+      "options": [
+        "Surah Al-Ahzab (33:72)",
+        "Surah Al-Baqarah",
+        "Surah Al-Mulk",
+        "Surah Al-Isra"
+      ],
+      "answer": 0,
+      "explanation": "Al-Ahzab 33:72 speaks of the Trust offered to creation.",
+      "difficulty": "medium",
+      "id": "q69"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The three companions whose repentance was accepted after the Battle of Tabuk are mentioned in which Surah?",
+      "options": [
+        "Surah At-Tawbah (9:118)",
+        "Surah Al-Anfal",
+        "Surah Al-Hujurat",
+        "Surah Al-Mumtahanah"
+      ],
+      "answer": 0,
+      "explanation": "At-Tawbah 9:118 mentions the three who were left behind at Tabuk.",
+      "difficulty": "hard",
+      "id": "q70"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The transformation of the Sabbath-breakers into apes is mentioned in which Surah?",
+      "options": [
+        "Surah Al-A'raf (7:166)",
+        "Surah Al-Baqarah only",
+        "Surah Al-Maidah",
+        "Surah Al-Isra"
+      ],
+      "answer": 0,
+      "explanation": "Al-A'raf 7:166 records the Sabbath-breakers being turned into apes.",
+      "difficulty": "hard",
+      "id": "q71"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What is the 20th Surah of the Holy Quran?",
+      "options": [
+        "Surah Ta-Ha",
+        "Surah Maryam",
+        "Surah Al-Anbiya",
+        "Surah Al-Hajj"
+      ],
+      "answer": 0,
+      "explanation": "Ta-Ha is the 20th chapter of the Quran.",
+      "difficulty": "medium",
+      "id": "q72"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which Surah mentions the hoopoe (Hudhud) carrying news to Prophet Sulaiman (AS)?",
+      "options": [
+        "Surah An-Naml",
+        "Surah Saba",
+        "Surah As-Saffat",
+        "Surah Al-Anbiya"
+      ],
+      "answer": 0,
+      "explanation": "The hoopoe's report about the Queen of Sheba is in An-Naml (27).",
+      "difficulty": "medium",
+      "id": "q73"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which Surah narrates the story of the Queen of Sheba (Bilqis)?",
+      "options": [
+        "Surah An-Naml",
+        "Surah Saba",
+        "Surah Al-Qasas",
+        "Surah An-Nisa"
+      ],
+      "answer": 0,
+      "explanation": "The Queen of Sheba's conversion is narrated in An-Naml (27).",
+      "difficulty": "medium",
+      "id": "q74"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What is the 27th Surah of the Holy Quran?",
+      "options": [
+        "Surah An-Naml",
+        "Surah Ash-Shu'ara",
+        "Surah Al-Qasas",
+        "Surah Al-Ankabut"
+      ],
+      "answer": 0,
+      "explanation": "An-Naml (the Ant) is the 27th chapter.",
+      "difficulty": "medium",
+      "id": "q75"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The she-camel of Prophet Salih (AS) is mentioned in which Surah?",
+      "options": [
+        "Surah Al-A'raf (7:73)",
+        "Surah Al-Kahf",
+        "Surah Hud",
+        "Surah Al-Muminun"
+      ],
+      "answer": 0,
+      "explanation": "The naqat Allah (she-camel) of Thamud appears in Al-A'raf among others.",
+      "difficulty": "hard",
+      "id": "q76"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What is the 15th Surah of the Holy Quran?",
+      "options": [
+        "Surah Al-Hijr",
+        "Surah Ibrahim",
+        "Surah An-Nahl",
+        "Surah Ar-Ra'd"
+      ],
+      "answer": 0,
+      "explanation": "Al-Hijr (the Rocky Tract) is the 15th chapter.",
+      "difficulty": "hard",
+      "id": "q77"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which Surah is named after the woman who argued with the Prophet (PBUH) about her husband?",
+      "options": [
+        "Surah Al-Mujadila",
+        "Surah Al-Mumtahanah",
+        "Surah An-Nisa",
+        "Surah Maryam"
+      ],
+      "answer": 0,
+      "explanation": "Al-Mujadila (58) is named after the woman who pleaded her case.",
+      "difficulty": "medium",
+      "id": "q78"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The pre-Islamic practice of 'Zihar' is condemned in which Surah?",
+      "options": [
+        "Surah Al-Mujadila (58:3)",
+        "Surah At-Talaq",
+        "Surah An-Nur",
+        "Surah Al-Ahzab"
+      ],
+      "answer": 0,
+      "explanation": "Zihar is prohibited in the opening verses of Al-Mujadila.",
+      "difficulty": "hard",
+      "id": "q79"
+    },
+    {
+      "type": "mcq",
+      "prompt": "How many Surahs begin with the glorification 'Sabbaha' or 'Yusabbihu' (the Musabbihat)?",
+      "options": [
+        "Five",
+        "Three",
+        "Seven",
+        "Nine"
+      ],
+      "answer": 0,
+      "explanation": "Five Surahs — Al-Hadid, Al-Hashr, As-Saff, Al-Jumu'ah, At-Taghabun — open with glorification.",
+      "difficulty": "hard",
+      "id": "q80"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What is the 64th Surah of the Holy Quran?",
+      "options": [
+        "Surah At-Taghabun",
+        "Surah Al-Munafiqun",
+        "Surah As-Saff",
+        "Surah Al-Jumu'ah"
+      ],
+      "answer": 0,
+      "explanation": "At-Taghabun (the Mutual Loss and Gain) is the 64th chapter.",
+      "difficulty": "hard",
+      "id": "q81"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which Surah is called 'As-Saff' (the Ranks), speaking of fighting in Allah's path?",
+      "options": [
+        "Surah As-Saff (61)",
+        "Surah Al-Anfal",
+        "Surah Al-Fath",
+        "Surah Al-Hashr"
+      ],
+      "answer": 0,
+      "explanation": "As-Saff is the 61st chapter, named after the ranks of believers.",
+      "difficulty": "medium",
+      "id": "q82"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The command 'Prepare against them whatever strength you can' is in which Surah?",
+      "options": [
+        "Surah Al-Anfal (8:60)",
+        "Surah At-Tawbah",
+        "Surah Al-Hajj",
+        "Surah Al-Mujadila"
+      ],
+      "answer": 0,
+      "explanation": "Al-Anfal 8:60 commands preparing strength against the enemy.",
+      "difficulty": "hard",
+      "id": "q83"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The verse 'There is no compulsion in religion' is from which Surah?",
+      "options": [
+        "Surah Al-Baqarah (2:256)",
+        "Surah Al-Kafirun",
+        "Surah At-Tawbah",
+        "Surah Al-Maidah"
+      ],
+      "answer": 0,
+      "explanation": "Baqarah 2:256 contains 'La ikraha fid-din'.",
+      "difficulty": "medium",
+      "id": "q84"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What is the 40th Surah of the Holy Quran?",
+      "options": [
+        "Surah Ghafir (Al-Mu'min)",
+        "Surah Az-Zumar",
+        "Surah Fussilat",
+        "Surah Ash-Shura"
+      ],
+      "answer": 0,
+      "explanation": "Ghafir (the Forgiver) is the 40th chapter.",
+      "difficulty": "hard",
+      "id": "q85"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The supplication 'Rabbana atina fid-dunya hasanah' is found in which Surah?",
+      "options": [
+        "Surah Al-Baqarah (2:201)",
+        "Surah Al-Fatiha",
+        "Surah Al-Imran",
+        "Surah Ibrahim"
+      ],
+      "answer": 0,
+      "explanation": "The verse 2:201 contains this famous dua.",
+      "difficulty": "medium",
+      "id": "q86"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which Surah contains the advice of Luqman to his son?",
+      "options": [
+        "Surah Luqman (31)",
+        "Surah Al-Isra",
+        "Surah Al-Furqan",
+        "Surah Al-Hujurat"
+      ],
+      "answer": 0,
+      "explanation": "Luqman's wisdom to his son is in Surah Luqman 31:13-19.",
+      "difficulty": "medium",
+      "id": "q87"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which Surah narrates the story of Qarun (Korah) and his treasures?",
+      "options": [
+        "Surah Al-Qasas (28)",
+        "Surah Al-Ankabut",
+        "Surah Saba",
+        "Surah Az-Zukhruf"
+      ],
+      "answer": 0,
+      "explanation": "The story of Qarun is in Surah Al-Qasas 28:76-82.",
+      "difficulty": "hard",
+      "id": "q88"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The lofty city of 'Iram' (the city of the pillars) is mentioned in which Surah?",
+      "options": [
+        "Surah Al-Fajr (89:7)",
+        "Surah Al-Hijr",
+        "Surah Saba",
+        "Surah Al-Qamar"
+      ],
+      "answer": 0,
+      "explanation": "Iram, the city of the 'Ad, is mentioned in Al-Fajr 89:7.",
+      "difficulty": "hard",
+      "id": "q89"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What is the 34th Surah of the Holy Quran?",
+      "options": [
+        "Surah Saba",
+        "Surah Fatir",
+        "Surah Yasin",
+        "Surah As-Saffat"
+      ],
+      "answer": 0,
+      "explanation": "Saba is the 34th chapter, named after the people of Sheba.",
+      "difficulty": "medium",
+      "id": "q90"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What is the 47th Surah of the Holy Quran?",
+      "options": [
+        "Surah Muhammad",
+        "Surah Al-Fath",
+        "Surah Al-Hujurat",
+        "Surah Qaf"
+      ],
+      "answer": 0,
+      "explanation": "Surah Muhammad is the 47th chapter.",
+      "difficulty": "hard",
+      "id": "q91"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which Surah opens with the letter 'Qaf' and the oath by the Glorious Quran?",
+      "options": [
+        "Surah Qaf (50)",
+        "Surah Sad",
+        "Surah Ya-Sin",
+        "Surah Al-Qalam"
+      ],
+      "answer": 0,
+      "explanation": "Qaf 50:1 begins 'Qaf wal-Qur'anil-majid'.",
+      "difficulty": "hard",
+      "id": "q92"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which Surah opens with the letter 'Sad' and the oath by the Quran full of reminder?",
+      "options": [
+        "Surah Sad (38)",
+        "Surah Qaf",
+        "Surah Al-A'raf",
+        "Surah Maryam"
+      ],
+      "answer": 0,
+      "explanation": "Sad 38:1 begins 'Sad wal-Qur'ani dhi dhikr'.",
+      "difficulty": "hard",
+      "id": "q93"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The great sacrifice offered as ransom for Prophet Ismail (AS) is mentioned in which Surah?",
+      "options": [
+        "Surah As-Saffat (37:107)",
+        "Surah Al-Anbiya",
+        "Surah Ibrahim",
+        "Surah Al-Hajj"
+      ],
+      "answer": 0,
+      "explanation": "As-Saffat 37:107 mentions the great sacrifice in place of Ismail (AS).",
+      "difficulty": "hard",
+      "id": "q94"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The dream of Prophet Ibrahim (AS) about sacrificing his son is narrated in which Surah?",
+      "options": [
+        "Surah As-Saffat (37:102)",
+        "Surah Yusuf",
+        "Surah Al-Kahf",
+        "Surah Al-Saffat"
+      ],
+      "answer": 0,
+      "explanation": "Ibrahim's (AS) dream and obedience are in As-Saffat 37:102.",
+      "difficulty": "medium",
+      "id": "q95"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The meeting of the two seas (Maraj al-Bahrayn) is mentioned in which Surah?",
+      "options": [
+        "Surah Ar-Rahman (55:19)",
+        "Surah Al-Furqan",
+        "Surah An-Naml",
+        "Surah Fatir"
+      ],
+      "answer": 0,
+      "explanation": "Ar-Rahman 55:19 mentions the two seas that meet.",
+      "difficulty": "hard",
+      "id": "q96"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The people of Tubba' are mentioned in which Surah?",
+      "options": [
+        "Surah Ad-Dukhan (44:37)",
+        "Surah Saba",
+        "Surah Al-Ahqaf",
+        "Surah Al-Fajr"
+      ],
+      "answer": 0,
+      "explanation": "The people of Tubba' are cited in Ad-Dukhan 44:37.",
+      "difficulty": "hard",
+      "id": "q97"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What is the 44th Surah of the Holy Quran?",
+      "options": [
+        "Surah Ad-Dukhan",
+        "Surah Az-Zukhruf",
+        "Surah Al-Jathiyah",
+        "Surah Al-Ahqaf"
+      ],
+      "answer": 0,
+      "explanation": "Ad-Dukhan (the Smoke) is the 44th chapter.",
+      "difficulty": "hard",
+      "id": "q98"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The verse 'Man gets only what he strives for' is from which Surah?",
+      "options": [
+        "Surah An-Najm (53:39)",
+        "Surah Al-Baqarah",
+        "Surah Al-Isra",
+        "Surah Az-Zalzalah"
+      ],
+      "answer": 0,
+      "explanation": "An-Najm 53:39 states that man attains only what he strives for.",
+      "difficulty": "hard",
+      "id": "q99"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The verse promising Allah's protection of the Quran (the Reminder) is in which Surah?",
+      "options": [
+        "Surah Al-Hijr (15:9)",
+        "Surah Al-Baqarah",
+        "Surah Al-Isra",
+        "Surah Az-Zumar"
+      ],
+      "answer": 0,
+      "explanation": "Al-Hijr 15:9: 'We have sent down the Reminder and We will preserve it.'",
+      "difficulty": "medium",
+      "id": "q100"
+    }
+  ]
+}

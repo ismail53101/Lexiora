@@ -1,0 +1,1413 @@
+{
+  "bank": {
+    "name": "Battles of Islam (Ghazwat)",
+    "subject": "Islamic Studies",
+    "topic": "Battles of Islam (Ghazwat)",
+    "description": "Key battles of the Prophet Muhammad (PBUH) and the early Islamic period.",
+    "tags": "css,pms,fpsc,ppsc,nts,islamic-studies,ghazwat,battles",
+    "version": "1.0",
+    "id": "islamiat_ghazwat"
+  },
+  "questions": [
+    {
+      "type": "mcq",
+      "prompt": "How many Muslims fought in the Battle of Badr?",
+      "options": [
+        "Around 1,000",
+        "Around 500",
+        "Around 313",
+        "Around 700"
+      ],
+      "answer": 2,
+      "explanation": "About 313 Muslims fought at Badr against a Quraysh force of about 1,000.",
+      "difficulty": "medium",
+      "id": "q01"
+    },
+    {
+      "type": "mcq",
+      "prompt": "In which year (AH) was the Battle of Uhud fought?",
+      "options": [
+        "2 AH",
+        "3 AH",
+        "4 AH",
+        "6 AH"
+      ],
+      "answer": 1,
+      "explanation": "The Battle of Uhud was fought in 3 AH (625 CE).",
+      "difficulty": "easy",
+      "id": "q02"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which Muslim leader was martyred at the Battle of Uhud?",
+      "options": [
+        "Hamza ibn Abdul-Muttalib",
+        "Ali ibn Abi Talib",
+        "Umar ibn al-Khattab",
+        "Abu Bakr al-Siddiq"
+      ],
+      "answer": 0,
+      "explanation": "Hamza ibn Abdul-Muttalib, the Prophet's uncle, was martyred at Uhud.",
+      "difficulty": "medium",
+      "id": "q03"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which battle took place during the time of the Prophet Muhammad (PBUH) and was won through a trench dug around Madinah?",
+      "options": [
+        "Battle of Badr",
+        "Battle of Uhud",
+        "Battle of the Trench (Khandaq)",
+        "Battle of Hunain"
+      ],
+      "answer": 2,
+      "explanation": "The Battle of the Trench (Ahzab/Khandaq) in 5 AH was defended using a trench, on the suggestion of Salman al-Farsi.",
+      "difficulty": "easy",
+      "id": "q04"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The conquest of Makkah took place in which year?",
+      "options": [
+        "6 AH",
+        "7 AH",
+        "8 AH",
+        "10 AH"
+      ],
+      "answer": 2,
+      "explanation": "Makkah was conquered peacefully in 8 AH (630 CE), in Ramadan.",
+      "difficulty": "easy",
+      "id": "q05"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which expedition of the Prophet (PBUH) was the last and the largest?",
+      "options": [
+        "Battle of Hunain",
+        "Expedition of Tabuk",
+        "Battle of Khaybar",
+        "Conquest of Makkah"
+      ],
+      "answer": 1,
+      "explanation": "The Expedition of Tabuk in 9 AH was the last and largest military expedition of the Prophet (PBUH).",
+      "difficulty": "hard",
+      "id": "q06"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Battle of Hunain was fought against which tribe?",
+      "options": [
+        "Hawazin",
+        "Quraysh",
+        "Banu Qurayzah",
+        "Banu Nadir"
+      ],
+      "answer": 0,
+      "explanation": "The Battle of Hunain in 8 AH was fought against the Hawazin tribe after the conquest of Makkah.",
+      "difficulty": "medium",
+      "id": "q07"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who was the commander of the Muslim army at the Battle of Mu'tah?",
+      "options": [
+        "Khalid bin Waleed",
+        "Zaid bin Harithah",
+        "Hamza",
+        "Abu Ubaidah"
+      ],
+      "answer": 1,
+      "explanation": "Zaid bin Harithah was the first commander at Mu'tah; after his martyrdom, command passed to Ja'far and then Khalid bin Waleed.",
+      "difficulty": "medium",
+      "id": "q08"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who killed the great warrior of the Quraysh, Abu Jahl, at the Battle of Badr?",
+      "options": [
+        "Hamza",
+        "Ali ibn Abi Talib",
+        "Muadh bin Amr",
+        "Umar bin Khattab"
+      ],
+      "answer": 2,
+      "explanation": "Abu Jahl was killed at Badr; according to tradition, Muadh bin Amr and Muawwiz bin Afra were instrumental, with the final blow credited to Abdullah bin Masood.",
+      "difficulty": "hard",
+      "id": "q09"
+    },
+    {
+      "type": "mcq",
+      "prompt": "In which battle did the Muslims use the strategy of archers stationed on a mountain pass?",
+      "options": [
+        "Badr",
+        "Uhud",
+        "Khandaq",
+        "Khaybar"
+      ],
+      "answer": 1,
+      "explanation": "At Uhud, the Prophet (PBUH) posted 50 archers on a hill; their early departure changed the course of the battle.",
+      "difficulty": "easy",
+      "id": "q10"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Battle of Khaybar was fought against which community?",
+      "options": [
+        "The Jews of Khaybar",
+        "The Christians of Najran",
+        "The polytheists of Makkah",
+        "The Byzantines"
+      ],
+      "answer": 0,
+      "explanation": "The Battle of Khaybar in 7 AH was fought against the Jewish tribes of Khaybar.",
+      "difficulty": "easy",
+      "id": "q11"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which verse of the Quran is called the 'Aayat-e-Karima' and was revealed during a battle?",
+      "options": [
+        "Ayat al-Kursi",
+        "Ayat al-Karima (Surah al-Anbiya 87)",
+        "Ayat al-Mawaddah",
+        "Ayat al-Nur"
+      ],
+      "answer": 1,
+      "explanation": "Aayat-e-Karima (Surah al-Anbiya 21:87, 'La ilaha illa anta subhanaka...') was revealed during the Battle of Badr.",
+      "difficulty": "hard",
+      "id": "q12"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who led the Muslim army in the Battle of Yarmuk against the Byzantines during the caliphate of Abu Bakr?",
+      "options": [
+        "Khalid bin Waleed",
+        "Abu Ubaidah bin al-Jarrah",
+        "Saad bin Abi Waqas",
+        "Amr bin al-Aas"
+      ],
+      "answer": 0,
+      "explanation": "Khalid bin Waleed commanded the Muslim forces at the Battle of Yarmuk (636 CE) against the Byzantines.",
+      "difficulty": "medium",
+      "id": "q13"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Battle of Qadisiyyah was fought against which empire?",
+      "options": [
+        "Byzantine Empire",
+        "Sassanid (Persian) Empire",
+        "Ghassanids",
+        "Kushan Empire"
+      ],
+      "answer": 1,
+      "explanation": "The Battle of Qadisiyyah (637 CE) was fought between the Muslims and the Sassanid Persian Empire, under Saad bin Abi Waqas.",
+      "difficulty": "medium",
+      "id": "q14"
+    },
+    {
+      "type": "mcq",
+      "prompt": "In which battle was the uncle of the Prophet (PBUH), Abbas, taken prisoner and later embraced Islam?",
+      "options": [
+        "Uhud",
+        "Badr",
+        "Khandaq",
+        "Hunain"
+      ],
+      "answer": 1,
+      "explanation": "Abbas ibn Abdul-Muttalib was among those captured at Badr; he later embraced Islam.",
+      "difficulty": "hard",
+      "id": "q15"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which tribe of Madinah betrayed the Muslims and was dealt with after the Battle of the Trench?",
+      "options": [
+        "Banu Nadir",
+        "Banu Qurayzah",
+        "Banu Mustaliq",
+        "Banu Thaqif"
+      ],
+      "answer": 1,
+      "explanation": "The Banu Qurayzah broke their pact and allied with the enemy during the Battle of the Trench.",
+      "difficulty": "medium",
+      "id": "q16"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The first Ghazwa (battle) of Islam is which?",
+      "options": [
+        "Badr",
+        "Uhud",
+        "Waddan (al-Abwa)",
+        "Tabuk"
+      ],
+      "answer": 2,
+      "explanation": "The first ghazwa was the expedition of Waddan (al-Abwa) in 2 AH, though Badr is the first major battle.",
+      "difficulty": "hard",
+      "id": "q17"
+    },
+    {
+      "type": "mcq",
+      "prompt": "How many Ghazwat (battles led by the Prophet PBUH) are generally recorded?",
+      "options": [
+        "7",
+        "19",
+        "27",
+        "40"
+      ],
+      "answer": 2,
+      "explanation": "The Prophet (PBUH) personally led about 27 ghazwat (expeditions); some accounts say around 29.",
+      "difficulty": "hard",
+      "id": "q18"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who was the standard-bearer of the Muslims at the Battle of Badr?",
+      "options": [
+        "Ali ibn Abi Talib",
+        "Mus'ab bin Umair",
+        "Hamza",
+        "Bilal"
+      ],
+      "answer": 1,
+      "explanation": "Mus'ab bin Umair, the first ambassador of Islam, carried the Muslim standard at Badr.",
+      "difficulty": "hard",
+      "id": "q19"
+    },
+    {
+      "type": "mcq",
+      "prompt": "In which battle did the famous swordsman Ali ibn Abi Talib defeat Amr bin Abd Wudd?",
+      "options": [
+        "Badr",
+        "Uhud",
+        "Trench (Khandaq)",
+        "Khaybar"
+      ],
+      "answer": 2,
+      "explanation": "At the Battle of the Trench, Ali defeated the Quraysh champion Amr bin Abd Wudd.",
+      "difficulty": "medium",
+      "id": "q20"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The 'Sariyyah' in Islamic terminology refers to which type of expedition?",
+      "options": [
+        "Expedition led by the Prophet (PBUH)",
+        "Expedition led by a companion without the Prophet (PBUH)",
+        "Naval battle",
+        "A peace treaty"
+      ],
+      "answer": 1,
+      "explanation": "Sariyyah is an expedition sent out under a companion's command, whereas ghazwa is one the Prophet (PBUH) led personally.",
+      "difficulty": "hard",
+      "id": "q21"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which battle is referred to as 'Yom al-Furqan' (the Day of Criterion) in the Quran?",
+      "options": [
+        "Badr",
+        "Uhud",
+        "Hunain",
+        "Tabuk"
+      ],
+      "answer": 0,
+      "explanation": "The Quran calls the Battle of Badr 'Yawm al-Furqan' (the day of the criterion) — Surah al-Anfal 8:41.",
+      "difficulty": "medium",
+      "id": "q22"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Muslim army at Tabuk was the largest yet, numbering about how many?",
+      "options": [
+        "10,000",
+        "30,000",
+        "50,000",
+        "5,000"
+      ],
+      "answer": 1,
+      "explanation": "The army of Tabuk in 9 AH is said to have numbered about 30,000.",
+      "difficulty": "hard",
+      "id": "q23"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who was the commander of the Quraysh army at Badr?",
+      "options": [
+        "Abu Jahl",
+        "Abu Sufyan",
+        "Khalid bin Waleed",
+        "Umayya bin Khalaf"
+      ],
+      "answer": 0,
+      "explanation": "Abu Jahl (Amr ibn Hisham) commanded the Quraysh at Badr and was killed.",
+      "difficulty": "medium",
+      "id": "q24"
+    },
+    {
+      "type": "mcq",
+      "prompt": "How many Quraysh fighters were at the Battle of Badr?",
+      "options": [
+        "About 1,000",
+        "About 313",
+        "About 500",
+        "About 3,000"
+      ],
+      "answer": 0,
+      "explanation": "About 1,000 Quraysh fought against roughly 313 Muslims.",
+      "difficulty": "medium",
+      "id": "q25"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who was the first to draw his sword at Badr in the traditional duel?",
+      "options": [
+        "Ali ibn Abi Talib",
+        "Hamza",
+        "Abu Bakr",
+        "Zubair"
+      ],
+      "answer": 0,
+      "explanation": "The three duels at Badr were fought by Ali, Hamza and Ubaidah (RA) against the Quraysh champions.",
+      "difficulty": "hard",
+      "id": "q26"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which verse calls the Muslims at Badr 'a small band' that Allah helped with angels?",
+      "options": [
+        "Surah Al-Anfal (8:9)",
+        "Surah Al-Fatiha",
+        "Surah Al-Maidah",
+        "Surah Al-Ahzab"
+      ],
+      "answer": 0,
+      "explanation": "Surah Al-Anfal 8:9 records the Muslims' call for help and the sending of a thousand angels.",
+      "difficulty": "medium",
+      "id": "q27"
+    },
+    {
+      "type": "mcq",
+      "prompt": "How many Muslims were martyred at Badr?",
+      "options": [
+        "14",
+        "70",
+        "100",
+        "3"
+      ],
+      "answer": 0,
+      "explanation": "Fourteen Muslims were martyred at Badr; 70 Quraysh were killed and 70 captured.",
+      "difficulty": "medium",
+      "id": "q28"
+    },
+    {
+      "type": "mcq",
+      "prompt": "At Uhud, how many Muslims faced about 3,000 Quraysh?",
+      "options": [
+        "About 700",
+        "About 313",
+        "About 1,500",
+        "About 100"
+      ],
+      "answer": 0,
+      "explanation": "About 700 Muslims (after 300 withdrew) faced around 3,000 at Uhud.",
+      "difficulty": "medium",
+      "id": "q29"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who commanded the archers at Uhud and was later martyred?",
+      "options": [
+        "Abdullah bin Jubair",
+        "Hamza",
+        "Mus'ab bin Umair",
+        "Zaid bin Thabit"
+      ],
+      "answer": 0,
+      "explanation": "Abdullah bin Jubair (RA) led the 50 archers; their leaving the post caused the setback at Uhud.",
+      "difficulty": "hard",
+      "id": "q30"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The treaty at Hudaibiyah was negotiated on behalf of the Quraysh by?",
+      "options": [
+        "Suhail bin Amr",
+        "Abu Sufyan",
+        "Abu Jahl",
+        "Umayya bin Khalaf"
+      ],
+      "answer": 0,
+      "explanation": "Suhail bin Amr negotiated for the Quraysh; the treaty was signed in 6 AH.",
+      "difficulty": "hard",
+      "id": "q31"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which Surah is called the 'Surah of Victory' (Al-Fath) and was revealed on the return from Hudaibiyah?",
+      "options": [
+        "Surah Al-Fath",
+        "Surah An-Nasr",
+        "Surah Al-Anfal",
+        "Surah Al-Hajj"
+      ],
+      "answer": 0,
+      "explanation": "Surah Al-Fath (48) was revealed after the Treaty of Hudaibiyah, calling it a manifest victory.",
+      "difficulty": "medium",
+      "id": "q32"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which year is known as the 'Year of Delegations' (Aam-ul-Wufud)?",
+      "options": [
+        "9 AH",
+        "8 AH",
+        "10 AH",
+        "6 AH"
+      ],
+      "answer": 0,
+      "explanation": "In 9 AH delegations from across Arabia accepted Islam after the conquest of Makkah.",
+      "difficulty": "hard",
+      "id": "q33"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The 'Bai'at-e-Rizwan' (Pledge of Ridwan) was taken under which tree before which event?",
+      "options": [
+        "Before Hudaibiyah, pledging to fight the Quraysh",
+        "Before Badr",
+        "Before the conquest of Makkah",
+        "Before Tabuk"
+      ],
+      "answer": 0,
+      "explanation": "Under the tree at Hudaibiyah, the companions pledged loyalty, praised in the Quran (48:18).",
+      "difficulty": "medium",
+      "id": "q34"
+    },
+    {
+      "type": "mcq",
+      "prompt": "At the conquest of Makkah, the Prophet (PBUH) entered the city from which direction?",
+      "options": [
+        "From the upper (north) side via Kada",
+        "From the south gate",
+        "From the sea",
+        "He entered from the east"
+      ],
+      "answer": 0,
+      "explanation": "The Prophet (PBUH) entered from the north (Kada) at the head of about 10,000 men.",
+      "difficulty": "hard",
+      "id": "q35"
+    },
+    {
+      "type": "mcq",
+      "prompt": "How many Muslims entered Makkah at its conquest?",
+      "options": [
+        "About 10,000",
+        "About 5,000",
+        "About 3,000",
+        "About 20,000"
+      ],
+      "answer": 0,
+      "explanation": "Roughly 10,000 Muslims marched on Makkah in 8 AH (630 CE).",
+      "difficulty": "medium",
+      "id": "q36"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What did the Prophet (PBUH) do with the idols in the Kaaba at the conquest of Makkah?",
+      "options": [
+        "He had them all destroyed",
+        "He kept them",
+        "He sold them",
+        "He moved them to Madinah"
+      ],
+      "answer": 0,
+      "explanation": "He destroyed the idols, reciting 'Truth has come and falsehood has vanished' (17:81).",
+      "difficulty": "easy",
+      "id": "q37"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What was the general amnesty granted at the conquest of Makkah called?",
+      "options": [
+        "'Go, for you are free' (general amnesty)",
+        "A heavy fine",
+        "Exile of the Quraysh",
+        "Confiscation of property"
+      ],
+      "answer": 0,
+      "explanation": "The Prophet (PBUH) declared amnesty: 'Go, for you are free' — a hallmark of his mercy.",
+      "difficulty": "easy",
+      "id": "q38"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who had broken the pact of Hudaibiyah, prompting the conquest of Makkah?",
+      "options": [
+        "The Banu Bakr, allied with Quraysh, against Khuza'a",
+        "The Jews of Madinah",
+        "The Christians of Najran",
+        "The tribe of Thaqif"
+      ],
+      "answer": 0,
+      "explanation": "The Quraysh-allied Banu Bakr attacked Khuza'a, breaking the treaty and triggering the conquest.",
+      "difficulty": "hard",
+      "id": "q39"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which companion guarded the entrance of the cave of Thawr during the Hijrah?",
+      "options": [
+        "Asma bint Abu Bakr brought food; no one guarded the cave",
+        "Bilal",
+        "Umar",
+        "Zaid"
+      ],
+      "answer": 0,
+      "explanation": "Abu Bakr's daughter Asma carried provisions, and Abdullah bin Abu Bakr brought news during the three days.",
+      "difficulty": "hard",
+      "id": "q40"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The spider's web at the Cave of Thawr is associated with which event?",
+      "options": [
+        "The Hijrah, protecting the Prophet (PBUH) and Abu Bakr",
+        "The battle of Badr",
+        "The conquest of Makkah",
+        "The treaty of Hudaibiyah"
+      ],
+      "answer": 0,
+      "explanation": "A spider wove its web and a bird nested at the cave entrance, leading pursuers to pass by.",
+      "difficulty": "easy",
+      "id": "q41"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which expedition resulted in the 'Sariyyah of Nakhla', the first booty of the Muslims?",
+      "options": [
+        "The expedition led by Abdullah bin Jahsh",
+        "The raid of Badr",
+        "The march to Tabuk",
+        "The expedition of Khaybar"
+      ],
+      "answer": 0,
+      "explanation": "Abdullah bin Jahsh led the Nakhla patrol (2 AH) which captured booty — the first for the Muslims.",
+      "difficulty": "hard",
+      "id": "q42"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Battle of the Camel (Jamal) in 656 CE was fought between?",
+      "options": [
+        "Ali (RA) and forces of Aisha (RA), Talha and Zubair",
+        "Uthman and Muawiyah",
+        "Hasan and Yazid",
+        "Abu Bakr and the Ridda tribes"
+      ],
+      "answer": 0,
+      "explanation": "The Battle of Jamal pitted Ali's (RA) forces against those seeking justice for Uthman's (RA) death.",
+      "difficulty": "medium",
+      "id": "q43"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Battle of Siffin (657 CE) was fought between?",
+      "options": [
+        "Ali (RA) and Muawiyah (RA)",
+        "Uthman and rebels",
+        "Hasan and Yazid",
+        "Ali and the Kharijites only"
+      ],
+      "answer": 0,
+      "explanation": "Siffin was fought between Ali's (RA) forces and Muawiyah's (RA), ending in arbitration.",
+      "difficulty": "medium",
+      "id": "q44"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who seceded from Ali's (RA) camp after Siffin, forming the Kharijites?",
+      "options": [
+        "A group rejecting arbitration, later killed at Nahrawan",
+        "The Ansar",
+        "The Muhajirin",
+        "The Quraysh"
+      ],
+      "answer": 0,
+      "explanation": "The Kharijites rejected the arbitration at Siffin; Ali (RA) defeated them at Nahrawan in 658.",
+      "difficulty": "hard",
+      "id": "q45"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Ali (RA) was martyred in 661 CE by whom?",
+      "options": [
+        "A Kharijite named Abd al-Rahman ibn Muljam",
+        "Muawiyah's army",
+        "A Byzantine assassin",
+        "Yazid's agents"
+      ],
+      "answer": 0,
+      "explanation": "Ali (RA) was struck by Ibn Muljam while praying at Kufa in 40 AH.",
+      "difficulty": "medium",
+      "id": "q46"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Battle of Karbala (680 CE) resulted in the martyrdom of whom?",
+      "options": [
+        "Husain ibn Ali (RA) and his family and companions",
+        "Hasan (RA)",
+        "Ali (RA)",
+        "Zaid (RA)"
+      ],
+      "answer": 0,
+      "explanation": "Husain ibn Ali (RA) and his companions were martyred at Karbala by Yazid's forces.",
+      "difficulty": "easy",
+      "id": "q47"
+    },
+    {
+      "type": "mcq",
+      "prompt": "In which year did the Battle of Karbala take place?",
+      "options": [
+        "61 AH (680 CE)",
+        "40 AH",
+        "72 AH",
+        "10 AH"
+      ],
+      "answer": 0,
+      "explanation": "Karbala occurred on 10 Muharram 61 AH (10 October 680 CE).",
+      "difficulty": "medium",
+      "id": "q48"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The incident of the 'Ashab-ul-Ukhdud' (People of the Trench) is mentioned in which Surah?",
+      "options": [
+        "Surah Al-Buruj",
+        "Surah Al-Fajr",
+        "Surah Al-Kahf",
+        "Surah Al-Fil"
+      ],
+      "answer": 0,
+      "explanation": "Surah Al-Buruj (85) narrates the believers thrown into a trench of fire.",
+      "difficulty": "medium",
+      "id": "q49"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Muslim army at the Battle of Mu'tah numbered about?",
+      "options": [
+        "3,000",
+        "10,000",
+        "30,000",
+        "1,000"
+      ],
+      "answer": 0,
+      "explanation": "About 3,000 Muslims fought a much larger Byzantine-Arab force at Mu'tah in 8 AH.",
+      "difficulty": "medium",
+      "id": "q50"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who was the third commander appointed at Mu'tah after Ja'far's martyrdom?",
+      "options": [
+        "Khalid bin Waleed",
+        "Zaid bin Harithah",
+        "Abdullah bin Rawaha",
+        "Abu Ubaidah"
+      ],
+      "answer": 0,
+      "explanation": "After Zaid and Ja'far fell, command passed to Abdullah bin Rawaha, then to Khalid bin Waleed.",
+      "difficulty": "hard",
+      "id": "q51"
+    },
+    {
+      "type": "mcq",
+      "prompt": "How many Muslims participated in the Battle of Badr?",
+      "options": [
+        "313",
+        "500",
+        "1000",
+        "700"
+      ],
+      "answer": 0,
+      "explanation": "Around 313 Muslims fought at Badr.",
+      "difficulty": "easy",
+      "id": "q52"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which battle is called 'Yaum-ul-Furqan' (the day of distinction)?",
+      "options": [
+        "Battle of Badr",
+        "Battle of Uhud",
+        "Battle of Khandaq",
+        "Battle of Tabuk"
+      ],
+      "answer": 0,
+      "explanation": "Badr is called Yaum-ul-Furqan.",
+      "difficulty": "medium",
+      "id": "q53"
+    },
+    {
+      "type": "mcq",
+      "prompt": "At which battle was the Prophet (PBUH) wounded?",
+      "options": [
+        "Battle of Uhud",
+        "Battle of Badr",
+        "Battle of Khandaq",
+        "Battle of Hunain"
+      ],
+      "answer": 0,
+      "explanation": "The Prophet (PBUH) was wounded at Uhud.",
+      "difficulty": "easy",
+      "id": "q54"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who was the chief of the archers at Uhud who left their post?",
+      "options": [
+        "Abdullah bin Jubair",
+        "Zaid bin Thabit",
+        "Saad bin Muadh",
+        "Usama bin Zaid"
+      ],
+      "answer": 0,
+      "explanation": "Abdullah bin Jubair led the archers who abandoned their position.",
+      "difficulty": "hard",
+      "id": "q55"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Battle of Khandaq is also known as:",
+      "options": [
+        "The Battle of the Trench",
+        "The Battle of the Ditch",
+        "The Battle of Conquest",
+        "The Battle of Farewell"
+      ],
+      "answer": 0,
+      "explanation": "Khandaq means trench.",
+      "difficulty": "easy",
+      "id": "q56"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Battle of Mu'tah was fought against which empire?",
+      "options": [
+        "The Byzantine (Roman) Empire",
+        "The Persians",
+        "The Egyptians",
+        "The Abyssinians"
+      ],
+      "answer": 0,
+      "explanation": "Mu'tah was fought against Byzantine forces.",
+      "difficulty": "medium",
+      "id": "q57"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who took the flag at Mu'tah after Zaid bin Haritha fell?",
+      "options": [
+        "Ja'far bin Abi Talib",
+        "Khalid bin Waleed",
+        "Abdullah bin Rawaha",
+        "Ali (RA)"
+      ],
+      "answer": 0,
+      "explanation": "Ja'far took command and fell next.",
+      "difficulty": "hard",
+      "id": "q58"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which year is known as the 'Year of Grief' (Aam-ul-Huzn)?",
+      "options": [
+        "The 10th year of prophethood",
+        "The 1st year of Hijrah",
+        "The year of Badr",
+        "The year of Conquest"
+      ],
+      "answer": 0,
+      "explanation": "619 CE, the year Khadijah and Abu Talib died.",
+      "difficulty": "medium",
+      "id": "q59"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Battle of Hunain took place in which year?",
+      "options": [
+        "8 AH",
+        "2 AH",
+        "5 AH",
+        "10 AH"
+      ],
+      "answer": 0,
+      "explanation": "Hunain occurred in 8 AH after the Conquest of Makkah.",
+      "difficulty": "medium",
+      "id": "q60"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which battle was fought without a single arrow being fired by the Muslims?",
+      "options": [
+        "Battle of Khandaq",
+        "Battle of Badr",
+        "Battle of Uhud",
+        "Battle of Hunain"
+      ],
+      "answer": 0,
+      "explanation": "Khandaq was won through siege tactics without direct battle.",
+      "difficulty": "medium",
+      "id": "q61"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The 'Expedition of Tabuk' was the last expedition led by the Prophet (PBUH). In which year?",
+      "options": [
+        "9 AH",
+        "8 AH",
+        "10 AH",
+        "7 AH"
+      ],
+      "answer": 0,
+      "explanation": "Tabuk occurred in 9 AH.",
+      "difficulty": "easy",
+      "id": "q62"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who was killed by the Prophet's (PBUH) companion at Badr among the idolaters?",
+      "options": [
+        "Abu Jahl",
+        "Abu Lahab",
+        "Umayyah bin Khalaf",
+        "Amr bin Hisham"
+      ],
+      "answer": 0,
+      "explanation": "Abu Jahl (Amr bin Hisham) fell at Badr.",
+      "difficulty": "medium",
+      "id": "q63"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Quranic surah that mentions the Battle of Badr is:",
+      "options": [
+        "Surah Al-Anfal",
+        "Surah Al-Fath",
+        "Surah An-Nasr",
+        "Surah Al-Ikhlas"
+      ],
+      "answer": 0,
+      "explanation": "Surah Al-Anfal discusses the Battle of Badr.",
+      "difficulty": "medium",
+      "id": "q64"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who was the general of the Quraysh army at Uhud?",
+      "options": [
+        "Abu Sufyan",
+        "Abu Jahl",
+        "Ikrimah",
+        "Walid bin Utbah"
+      ],
+      "answer": 0,
+      "explanation": "Abu Sufyan led the Quraysh at Uhud.",
+      "difficulty": "medium",
+      "id": "q65"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The 'Battle of Bani Mustaliq' is also known as:",
+      "options": [
+        "The Muraisi expedition",
+        "The trench battle",
+        "The conquest",
+        "The farewell battle"
+      ],
+      "answer": 0,
+      "explanation": "The expedition against Bani Mustaliq is the Muraisi campaign.",
+      "difficulty": "hard",
+      "id": "q66"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which treaty allowed Muslims to perform Umrah the following year?",
+      "options": [
+        "Treaty of Hudaibiya",
+        "Treaty of Madinah",
+        "Treaty of Najran",
+        "The Pact of Aqaba"
+      ],
+      "answer": 0,
+      "explanation": "Hudaibiya permitted Umrah the next year.",
+      "difficulty": "easy",
+      "id": "q67"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Muslims' first naval expedition under Islam was led by:",
+      "options": [
+        "Umar's governor Muawiyah (RA) against Cyprus",
+        "Abu Bakr (RA)",
+        "Ali (RA)",
+        "Khalid bin Waleed"
+      ],
+      "answer": 0,
+      "explanation": "The first naval campaign occurred during Umar's reign under Muawiyah.",
+      "difficulty": "hard",
+      "id": "q68"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Battle of Badr took place near which location?",
+      "options": [
+        "The wells of Badr, south of Madinah",
+        "Mount Uhud",
+        "The city of Makkah",
+        "The valley of Hunain"
+      ],
+      "answer": 0,
+      "explanation": "Badr was fought near the wells of Badr, about 150 km south of Madinah.",
+      "difficulty": "medium",
+      "id": "q69"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which companion shielded the Prophet (PBUH) with his body at Uhud?",
+      "options": [
+        "Talha (RA)",
+        "Ali (RA)",
+        "Zubair (RA)",
+        "Abu Dujana (RA)"
+      ],
+      "answer": 0,
+      "explanation": "Talha (RA) protected the Prophet (PBUH) at Uhud and was praised for it.",
+      "difficulty": "hard",
+      "id": "q70"
+    },
+    {
+      "type": "mcq",
+      "prompt": "How many Muslims were martyred at the Battle of Uhud?",
+      "options": [
+        "About 70",
+        "About 14",
+        "About 140",
+        "About 30"
+      ],
+      "answer": 0,
+      "explanation": "Around seventy Muslims were martyred at Uhud, including Hamza (RA).",
+      "difficulty": "medium",
+      "id": "q71"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The incident of the slander (Ifk) is associated with which expedition?",
+      "options": [
+        "Banu Mustaliq (Muraisi)",
+        "Banu Nadir",
+        "Khaybar",
+        "Tabuk"
+      ],
+      "answer": 0,
+      "explanation": "The slander against Aisha (RA) occurred on the return from the Muraisi expedition.",
+      "difficulty": "hard",
+      "id": "q72"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Prophet (PBUH) gave the flag to whom on the day the fort of Khaybar was conquered?",
+      "options": [
+        "Ali (RA)",
+        "Abu Bakr (RA)",
+        "Umar (RA)",
+        "Khalid bin Waleed (RA)"
+      ],
+      "answer": 0,
+      "explanation": "The Prophet (PBUH) gave the standard to Ali (RA), who conquered the Khaybar fort.",
+      "difficulty": "medium",
+      "id": "q73"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The expedition of Tabuk was mounted in response to the threat of which empire?",
+      "options": [
+        "The Byzantine (Roman) Empire",
+        "The Persian Empire",
+        "The Abyssinians",
+        "The Khwarezmians"
+      ],
+      "answer": 0,
+      "explanation": "Tabuk was prepared against the rumoured Byzantine advance on the northern border.",
+      "difficulty": "medium",
+      "id": "q74"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who was left in charge of Madinah during the expedition of Tabuk?",
+      "options": [
+        "Ali (RA)",
+        "Abu Bakr (RA)",
+        "Umar (RA)",
+        "Abdullah bin Umm Maktum (RA)"
+      ],
+      "answer": 0,
+      "explanation": "The Prophet (PBUH) left Ali (RA) to govern Madinah during Tabuk.",
+      "difficulty": "medium",
+      "id": "q75"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which three companions were left behind at Tabuk and are mentioned in Surah At-Tawbah?",
+      "options": [
+        "Ka'b bin Malik, Murara bin Rabi' and Hilal bin Umayyah",
+        "Talha, Zubair and Sa'd",
+        "Uthman, Ali and Zaid",
+        "Abu Bakr, Umar and Uthman"
+      ],
+      "answer": 0,
+      "explanation": "The repentance of these three is recorded in Surah At-Tawbah.",
+      "difficulty": "hard",
+      "id": "q76"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Muslim army at the Battle of Hunain numbered about?",
+      "options": [
+        "12,000",
+        "3,000",
+        "30,000",
+        "10,000"
+      ],
+      "answer": 0,
+      "explanation": "The Muslims were about 12,000 at Hunain, many of them new converts.",
+      "difficulty": "medium",
+      "id": "q77"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who led the Hawazin tribe at the Battle of Hunain?",
+      "options": [
+        "Malik bin Awf",
+        "Abu Sufyan",
+        "Suhail bin Amr",
+        "Khalid bin Waleed"
+      ],
+      "answer": 0,
+      "explanation": "Malik bin Awf al-Nasri commanded the Hawazin at Hunain.",
+      "difficulty": "hard",
+      "id": "q78"
+    },
+    {
+      "type": "mcq",
+      "prompt": "At Hunain, with which words did the Prophet (PBUH) rally the retreating Muslims?",
+      "options": [
+        "I am the Prophet; no lie (Ana al-Nabi la kadhib)",
+        "Stand firm, O believers",
+        "Return to the banner",
+        "Allah is with the patient"
+      ],
+      "answer": 0,
+      "explanation": "The Prophet (PBUH) cried 'I am the Prophet, no lie; I am the son of Abdul-Muttalib'.",
+      "difficulty": "medium",
+      "id": "q79"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which battle is described in Surah Al-Ahzab?",
+      "options": [
+        "The Battle of the Trench",
+        "The Battle of Badr",
+        "The Battle of Uhud",
+        "The Battle of Hunain"
+      ],
+      "answer": 0,
+      "explanation": "Surah Al-Ahzab (33) recounts the Battle of the Trench.",
+      "difficulty": "medium",
+      "id": "q80"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which surah was revealed shortly after the Conquest of Makkah?",
+      "options": [
+        "Surah An-Nasr",
+        "Surah Al-Fath",
+        "Surah Al-Masad",
+        "Surah Al-Kawthar"
+      ],
+      "answer": 0,
+      "explanation": "Surah An-Nasr announced the help of Allah and the victory of Makkah.",
+      "difficulty": "medium",
+      "id": "q81"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Battle of Khaybar was fought in which year?",
+      "options": [
+        "7 AH",
+        "5 AH",
+        "8 AH",
+        "6 AH"
+      ],
+      "answer": 0,
+      "explanation": "Khaybar was conquered in 7 AH.",
+      "difficulty": "medium",
+      "id": "q82"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Uhud is a mountain near which city?",
+      "options": [
+        "Madinah",
+        "Makkah",
+        "Ta'if",
+        "Khaybar"
+      ],
+      "answer": 0,
+      "explanation": "Mount Uhud lies just north of Madinah.",
+      "difficulty": "easy",
+      "id": "q83"
+    },
+    {
+      "type": "mcq",
+      "prompt": "At Khaybar, a Jewish woman offered the Prophet (PBUH) what?",
+      "options": [
+        "Poisoned meat",
+        "A treaty",
+        "A gift of gold",
+        "A challenge to duel"
+      ],
+      "answer": 0,
+      "explanation": "Zainab bint al-Harith offered the Prophet (PBUH) poisoned mutton at Khaybar.",
+      "difficulty": "medium",
+      "id": "q84"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Battle of Hunain is mentioned in which surah?",
+      "options": [
+        "Surah At-Tawbah",
+        "Surah Al-Anfal",
+        "Surah Al-Ahzab",
+        "Surah Al-Fath"
+      ],
+      "answer": 0,
+      "explanation": "Surah At-Tawbah (9:25) mentions the day of Hunain.",
+      "difficulty": "medium",
+      "id": "q85"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Battle of the Camel took place in which year?",
+      "options": [
+        "36 AH",
+        "40 AH",
+        "61 AH",
+        "28 AH"
+      ],
+      "answer": 0,
+      "explanation": "The Battle of the Camel took place in 36 AH (656 CE).",
+      "difficulty": "hard",
+      "id": "q86"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What does 'Furqan' mean, as in 'Yawm al-Furqan'?",
+      "options": [
+        "The criterion between truth and falsehood",
+        "The victory",
+        "The battle",
+        "The treaty"
+      ],
+      "answer": 0,
+      "explanation": "Furqan means the standard that distinguishes truth from falsehood.",
+      "difficulty": "medium",
+      "id": "q87"
+    },
+    {
+      "type": "mcq",
+      "prompt": "After accepting Islam, Khalid bin Waleed (RA) first fought at which battle?",
+      "options": [
+        "Mu'tah",
+        "Badr",
+        "Uhud",
+        "Khandaq"
+      ],
+      "answer": 0,
+      "explanation": "Khalid bin Waleed (RA) accepted Islam in 8 AH and first fought as a Muslim at Mu'tah.",
+      "difficulty": "hard",
+      "id": "q88"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Battle of the Camel was fought near which city?",
+      "options": [
+        "Basra",
+        "Kufa",
+        "Madinah",
+        "Damascus"
+      ],
+      "answer": 0,
+      "explanation": "The Battle of the Camel took place near Basra.",
+      "difficulty": "hard",
+      "id": "q89"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Battle of Siffin was fought near which river?",
+      "options": [
+        "The Euphrates",
+        "The Nile",
+        "The Tigris",
+        "The Jordan"
+      ],
+      "answer": 0,
+      "explanation": "Siffin was fought on the banks of the Euphrates.",
+      "difficulty": "hard",
+      "id": "q90"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who was the arbiter for Ali (RA) at the arbitration of Siffin?",
+      "options": [
+        "Abu Musa al-Ashari (RA)",
+        "Amr ibn al-Aas (RA)",
+        "Abdullah ibn Abbas (RA)",
+        "Sa'd bin Abi Waqqas (RA)"
+      ],
+      "answer": 0,
+      "explanation": "Abu Musa al-Ashari (RA) represented Ali (RA) in the arbitration.",
+      "difficulty": "hard",
+      "id": "q91"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who was the arbiter for Muawiyah (RA) at the arbitration of Siffin?",
+      "options": [
+        "Amr ibn al-Aas (RA)",
+        "Abu Musa al-Ashari (RA)",
+        "Al-Mughirah (RA)",
+        "Abdullah ibn Umar (RA)"
+      ],
+      "answer": 0,
+      "explanation": "Amr ibn al-Aas (RA) represented Muawiyah (RA).",
+      "difficulty": "hard",
+      "id": "q92"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Battle of Nahrawan was fought against whom?",
+      "options": [
+        "The Kharijites",
+        "The Byzantines",
+        "The Persians",
+        "The Romans"
+      ],
+      "answer": 0,
+      "explanation": "Ali (RA) defeated the Kharijites at Nahrawan in 38 AH.",
+      "difficulty": "hard",
+      "id": "q93"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Battle of Uhud was fought because the Quraysh wanted to avenge?",
+      "options": [
+        "The defeat at Badr",
+        "The conquest of Khaybar",
+        "The Treaty of Hudaybiyyah",
+        "The exile of Banu Nadir"
+      ],
+      "answer": 0,
+      "explanation": "The Quraysh marched on Madinah to avenge their losses at Badr.",
+      "difficulty": "medium",
+      "id": "q94"
+    },
+    {
+      "type": "mcq",
+      "prompt": "How many Muslims participated in digging the trench at Khandaq?",
+      "options": [
+        "About 3,000",
+        "About 700",
+        "About 313",
+        "About 10,000"
+      ],
+      "answer": 0,
+      "explanation": "About three thousand Muslims dug the trench under the Prophet's (PBUH) direction.",
+      "difficulty": "medium",
+      "id": "q95"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who were the allies of the Quraysh at the Battle of the Trench?",
+      "options": [
+        "The confederate tribes (Ahzab), including Banu Ghatafan",
+        "The Jews of Khaybar only",
+        "The Byzantines",
+        "The Persians"
+      ],
+      "answer": 0,
+      "explanation": "The Quraysh joined with the Ghatafan and other tribes to form the confederates (Ahzab).",
+      "difficulty": "medium",
+      "id": "q96"
+    },
+    {
+      "type": "mcq",
+      "prompt": "At the Battle of the Trench, which Jewish tribe broke its pact during the siege?",
+      "options": [
+        "Banu Qurayzah",
+        "Banu Qaynuqa",
+        "Banu Nadir",
+        "Banu Mustaliq"
+      ],
+      "answer": 0,
+      "explanation": "Banu Qurayzah negotiated with the confederates during the siege and were dealt with after.",
+      "difficulty": "medium",
+      "id": "q97"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who was the leader of the Muslims' archers who left their post at Uhud?",
+      "options": [
+        "Abdullah bin Jubair (RA)",
+        "Sa'd bin Abi Waqqas (RA)",
+        "Zubair (RA)",
+        "Talha (RA)"
+      ],
+      "answer": 0,
+      "explanation": "Abdullah bin Jubair (RA) commanded the archers; his men abandoned the pass against orders.",
+      "difficulty": "medium",
+      "id": "q98"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which battle is called 'the battle of the nations' in which the Muslims faced the confederates?",
+      "options": [
+        "Khandaq (Ahzab)",
+        "Badr",
+        "Uhud",
+        "Hunain"
+      ],
+      "answer": 0,
+      "explanation": "The Trench battle is also called Ghazwah al-Ahzab, the battle of the confederates.",
+      "difficulty": "medium",
+      "id": "q99"
+    },
+    {
+      "type": "mcq",
+      "prompt": "How many Muslims were at the Battle of Badr compared to the Quraysh?",
+      "options": [
+        "About 313 against about 1,000",
+        "About 700 against 3,000",
+        "About 3,000 against 10,000",
+        "About 1,000 against 1,000"
+      ],
+      "answer": 0,
+      "explanation": "Roughly 313 Muslims faced about 1,000 Quraysh at Badr.",
+      "difficulty": "medium",
+      "id": "q100"
+    }
+  ]
+}

@@ -1,0 +1,1833 @@
+{
+  "bank": {
+    "name": "Math & Reasoning",
+    "subject": "General Science & Ability",
+    "topic": "Math & Reasoning",
+    "description": "Basic arithmetic, geometry, percentages, averages, series and mental-ability questions.",
+    "tags": "css,pms,fpsc,ppsc,nts,gsa,math,reasoning",
+    "version": "1.0",
+    "id": "gsa_math_reasoning"
+  },
+  "questions": [
+    {
+      "type": "mcq",
+      "prompt": "Which of the following is a prime number?",
+      "options": [
+        "15",
+        "21",
+        "29",
+        "33"
+      ],
+      "answer": 2,
+      "explanation": "29 has only two divisors: 1 and itself.",
+      "difficulty": "easy",
+      "id": "q01"
+    },
+    {
+      "type": "mcq",
+      "prompt": "15% of 200 is?",
+      "options": [
+        "15",
+        "30",
+        "40",
+        "45"
+      ],
+      "answer": 1,
+      "explanation": "200 x 0.15 = 30.",
+      "difficulty": "easy",
+      "id": "q02"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The average of 2, 4, 6, 8 and 10 is?",
+      "options": [
+        "5",
+        "6",
+        "7",
+        "8"
+      ],
+      "answer": 1,
+      "explanation": "Sum is 30; 30 divided by 5 equals 6.",
+      "difficulty": "easy",
+      "id": "q03"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The area of a rectangle with length 8 and width 5 is?",
+      "options": [
+        "13",
+        "26",
+        "40",
+        "80"
+      ],
+      "answer": 2,
+      "explanation": "Area = length x width = 8 x 5 = 40.",
+      "difficulty": "easy",
+      "id": "q04"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The perimeter of a square with side 6 is?",
+      "options": [
+        "12",
+        "24",
+        "36",
+        "48"
+      ],
+      "answer": 1,
+      "explanation": "Perimeter of a square = 4 x side = 24.",
+      "difficulty": "easy",
+      "id": "q05"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The circumference of a circle is given by?",
+      "options": [
+        "2 x pi x r",
+        "pi x r",
+        "r x r",
+        "2 x pi x r x r"
+      ],
+      "answer": 0,
+      "explanation": "Circumference = 2 x pi x radius.",
+      "difficulty": "medium",
+      "id": "q06"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The value of pi (pi) is approximately?",
+      "options": [
+        "2.14",
+        "3.1416",
+        "3.33",
+        "2.718"
+      ],
+      "answer": 1,
+      "explanation": "Pi is about 3.1416.",
+      "difficulty": "easy",
+      "id": "q07"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The square of 12 is?",
+      "options": [
+        "122",
+        "124",
+        "144",
+        "148"
+      ],
+      "answer": 2,
+      "explanation": "12 x 12 = 144.",
+      "difficulty": "easy",
+      "id": "q08"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The square root of 144 is?",
+      "options": [
+        "10",
+        "11",
+        "12",
+        "14"
+      ],
+      "answer": 2,
+      "explanation": "12 x 12 = 144, so the root is 12.",
+      "difficulty": "easy",
+      "id": "q09"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What number comes next in the series 2, 4, 8, 16, ?",
+      "options": [
+        "20",
+        "24",
+        "32",
+        "36"
+      ],
+      "answer": 2,
+      "explanation": "Each term doubles: 16 x 2 = 32.",
+      "difficulty": "easy",
+      "id": "q10"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What is the next number in the series 1, 4, 9, 16, ?",
+      "options": [
+        "20",
+        "24",
+        "25",
+        "30"
+      ],
+      "answer": 2,
+      "explanation": "These are squares: 5 x 5 = 25.",
+      "difficulty": "easy",
+      "id": "q11"
+    },
+    {
+      "type": "mcq",
+      "prompt": "In Roman numerals, the letter X represents?",
+      "options": [
+        "5",
+        "10",
+        "50",
+        "100"
+      ],
+      "answer": 1,
+      "explanation": "X = 10; L = 50; C = 100; M = 1,000.",
+      "difficulty": "easy",
+      "id": "q12"
+    },
+    {
+      "type": "mcq",
+      "prompt": "In Roman numerals, L represents?",
+      "options": [
+        "10",
+        "50",
+        "100",
+        "500"
+      ],
+      "answer": 1,
+      "explanation": "L = 50 in Roman numerals.",
+      "difficulty": "medium",
+      "id": "q13"
+    },
+    {
+      "type": "mcq",
+      "prompt": "1/4 expressed as a percentage is?",
+      "options": [
+        "14%",
+        "25%",
+        "40%",
+        "50%"
+      ],
+      "answer": 1,
+      "explanation": "1/4 = 0.25 = 25%.",
+      "difficulty": "easy",
+      "id": "q14"
+    },
+    {
+      "type": "mcq",
+      "prompt": "0.5 expressed as a fraction is?",
+      "options": [
+        "1/2",
+        "1/3",
+        "2/3",
+        "1/5"
+      ],
+      "answer": 0,
+      "explanation": "0.5 equals one half.",
+      "difficulty": "easy",
+      "id": "q15"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which number is divisible by 3?",
+      "options": [
+        "25",
+        "31",
+        "42",
+        "44"
+      ],
+      "answer": 2,
+      "explanation": "42 divided by 3 equals 14 exactly.",
+      "difficulty": "easy",
+      "id": "q16"
+    },
+    {
+      "type": "mcq",
+      "prompt": "If a = b and b = c, then a = c. This property is called?",
+      "options": [
+        "Commutative",
+        "Transitive",
+        "Associative",
+        "Distributive"
+      ],
+      "answer": 1,
+      "explanation": "The transitive property of equality links a to c.",
+      "difficulty": "medium",
+      "id": "q17"
+    },
+    {
+      "type": "mcq",
+      "prompt": "A man walks 3 km east then 4 km north. How far is he from the start?",
+      "options": [
+        "5 km",
+        "6 km",
+        "7 km",
+        "12 km"
+      ],
+      "answer": 0,
+      "explanation": "By Pythagoras: sqrt(3^2 + 4^2) = sqrt(25) = 5 km.",
+      "difficulty": "medium",
+      "id": "q18"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The next number in the series 2, 6, 12, 20, 30, ___ is:",
+      "options": [
+        "42",
+        "36",
+        "40",
+        "38"
+      ],
+      "answer": 0,
+      "explanation": "Differences increase by 2: +4, +6, +8, +10, then +12 → 42.",
+      "difficulty": "medium",
+      "id": "q19"
+    },
+    {
+      "type": "mcq",
+      "prompt": "If 5 pens cost Rs 150, what is the cost of 8 pens?",
+      "options": [
+        "Rs 240",
+        "Rs 200",
+        "Rs 260",
+        "Rs 180"
+      ],
+      "answer": 0,
+      "explanation": "One pen costs 150/5 = Rs 30; 8 pens cost 30 × 8 = Rs 240.",
+      "difficulty": "easy",
+      "id": "q20"
+    },
+    {
+      "type": "mcq",
+      "prompt": "If x + 7 = 15, what is x?",
+      "options": [
+        "8",
+        "7",
+        "9",
+        "22"
+      ],
+      "answer": 0,
+      "explanation": "x = 15 − 7 = 8.",
+      "difficulty": "easy",
+      "id": "q21"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which number is the odd one out: 12, 24, 35, 48, 60?",
+      "options": [
+        "35",
+        "12",
+        "24",
+        "48"
+      ],
+      "answer": 0,
+      "explanation": "35 is not divisible by 12; all others are multiples of 12.",
+      "difficulty": "easy",
+      "id": "q22"
+    },
+    {
+      "type": "mcq",
+      "prompt": "If the ratio of boys to girls is 3:2 and there are 40 students, how many are girls?",
+      "options": [
+        "16",
+        "24",
+        "20",
+        "14"
+      ],
+      "answer": 0,
+      "explanation": "Total parts = 5; each part = 8; girls = 2 × 8 = 16.",
+      "difficulty": "medium",
+      "id": "q23"
+    },
+    {
+      "type": "mcq",
+      "prompt": "A number increased by 20% becomes 60. What is the number?",
+      "options": [
+        "50",
+        "40",
+        "48",
+        "55"
+      ],
+      "answer": 0,
+      "explanation": "120% of the number = 60 → number = 60 ÷ 1.2 = 50.",
+      "difficulty": "medium",
+      "id": "q24"
+    },
+    {
+      "type": "mcq",
+      "prompt": "How many seconds are there in 3 minutes?",
+      "options": [
+        "180",
+        "300",
+        "120",
+        "160"
+      ],
+      "answer": 0,
+      "explanation": "3 × 60 = 180 seconds.",
+      "difficulty": "easy",
+      "id": "q25"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What is 20% of 250?",
+      "options": [
+        "50",
+        "40",
+        "60",
+        "45"
+      ],
+      "answer": 0,
+      "explanation": "20/100 × 250 = 50.",
+      "difficulty": "easy",
+      "id": "q26"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The sum of the interior angles of a quadrilateral is:",
+      "options": [
+        "180°",
+        "360°",
+        "270°",
+        "90°"
+      ],
+      "answer": 1,
+      "explanation": "A quadrilateral's interior angles sum to 360°.",
+      "difficulty": "easy",
+      "id": "q27"
+    },
+    {
+      "type": "mcq",
+      "prompt": "If a shirt costs Rs. 800 and is sold at 25% discount, the selling price is:",
+      "options": [
+        "Rs. 600",
+        "Rs. 700",
+        "Rs. 550",
+        "Rs. 650"
+      ],
+      "answer": 0,
+      "explanation": "25% of 800 = 200; 800 − 200 = 600.",
+      "difficulty": "easy",
+      "id": "q28"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The perimeter of a square with side 5 cm is:",
+      "options": [
+        "20 cm",
+        "25 cm",
+        "15 cm",
+        "10 cm"
+      ],
+      "answer": 0,
+      "explanation": "Perimeter = 4 × side = 4 × 5 = 20 cm.",
+      "difficulty": "easy",
+      "id": "q29"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What is the value of 7²?",
+      "options": [
+        "49",
+        "14",
+        "77",
+        "56"
+      ],
+      "answer": 0,
+      "explanation": "7 × 7 = 49.",
+      "difficulty": "easy",
+      "id": "q30"
+    },
+    {
+      "type": "mcq",
+      "prompt": "How many minutes are there in a day?",
+      "options": [
+        "1440",
+        "14400",
+        "86400",
+        "1200"
+      ],
+      "answer": 0,
+      "explanation": "24 × 60 = 1440 minutes.",
+      "difficulty": "easy",
+      "id": "q31"
+    },
+    {
+      "type": "mcq",
+      "prompt": "If a number is divided by 8 gives remainder 5, what remainder when divided by 2?",
+      "options": [
+        "1",
+        "5",
+        "3",
+        "0"
+      ],
+      "answer": 0,
+      "explanation": "An odd number (8k+5) divided by 2 leaves remainder 1.",
+      "difficulty": "hard",
+      "id": "q32"
+    },
+    {
+      "type": "mcq",
+      "prompt": "A ladder leans against a wall. This is an example of:",
+      "options": [
+        "A right triangle application",
+        "A circle",
+        "A sphere",
+        "A cube"
+      ],
+      "answer": 0,
+      "explanation": "The ladder, wall and ground form a right triangle (Pythagoras).",
+      "difficulty": "medium",
+      "id": "q33"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The simple interest on Rs. 1000 at 10% per annum for 2 years is:",
+      "options": [
+        "Rs. 200",
+        "Rs. 100",
+        "Rs. 150",
+        "Rs. 250"
+      ],
+      "answer": 0,
+      "explanation": "SI = P×R×T/100 = 1000×10×2/100 = 200.",
+      "difficulty": "easy",
+      "id": "q34"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which number is the smallest: 0.25, 0.5, 0.125, 0.75?",
+      "options": [
+        "0.125",
+        "0.25",
+        "0.5",
+        "0.75"
+      ],
+      "answer": 0,
+      "explanation": "0.125 is the smallest decimal.",
+      "difficulty": "easy",
+      "id": "q35"
+    },
+    {
+      "type": "mcq",
+      "prompt": "A clock shows 3:00. The angle between the hands is:",
+      "options": [
+        "90 degrees",
+        "60 degrees",
+        "45 degrees",
+        "120 degrees"
+      ],
+      "answer": 0,
+      "explanation": "At 3:00 the hands are perpendicular: 90°.",
+      "difficulty": "medium",
+      "id": "q36"
+    },
+    {
+      "type": "mcq",
+      "prompt": "If 3 apples cost Rs. 45, the cost of 5 apples is:",
+      "options": [
+        "Rs. 75",
+        "Rs. 90",
+        "Rs. 60",
+        "Rs. 80"
+      ],
+      "answer": 0,
+      "explanation": "One apple = 15; 5 × 15 = 75.",
+      "difficulty": "easy",
+      "id": "q37"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The number of faces on a cube is:",
+      "options": [
+        "6",
+        "4",
+        "8",
+        "12"
+      ],
+      "answer": 0,
+      "explanation": "A cube has 6 faces.",
+      "difficulty": "easy",
+      "id": "q38"
+    },
+    {
+      "type": "mcq",
+      "prompt": "2³ + 3² = ?",
+      "options": [
+        "17",
+        "15",
+        "12",
+        "13"
+      ],
+      "answer": 0,
+      "explanation": "8 + 9 = 17.",
+      "difficulty": "easy",
+      "id": "q39"
+    },
+    {
+      "type": "mcq",
+      "prompt": "If the circumference of a circle is 44 cm, its diameter (π=22/7) is:",
+      "options": [
+        "14 cm",
+        "7 cm",
+        "22 cm",
+        "28 cm"
+      ],
+      "answer": 0,
+      "explanation": "d = C/π = 44 × 7/22 = 14 cm.",
+      "difficulty": "hard",
+      "id": "q40"
+    },
+    {
+      "type": "mcq",
+      "prompt": "A car covers 90 km in 1.5 hours. Its speed is:",
+      "options": [
+        "60 km/h",
+        "45 km/h",
+        "75 km/h",
+        "90 km/h"
+      ],
+      "answer": 0,
+      "explanation": "90/1.5 = 60 km/h.",
+      "difficulty": "easy",
+      "id": "q41"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The mode of 3, 5, 7, 5, 9, 5 is:",
+      "options": [
+        "5",
+        "3",
+        "7",
+        "9"
+      ],
+      "answer": 0,
+      "explanation": "5 appears most frequently.",
+      "difficulty": "easy",
+      "id": "q42"
+    },
+    {
+      "type": "mcq",
+      "prompt": "If today is Monday, what day will it be after 10 days?",
+      "options": [
+        "Thursday",
+        "Wednesday",
+        "Friday",
+        "Tuesday"
+      ],
+      "answer": 0,
+      "explanation": "10 days = 1 week + 3 days; Monday + 3 = Thursday.",
+      "difficulty": "medium",
+      "id": "q43"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The sum of the first 10 natural numbers is:",
+      "options": [
+        "55",
+        "50",
+        "45",
+        "60"
+      ],
+      "answer": 0,
+      "explanation": "n(n+1)/2 = 10×11/2 = 55.",
+      "difficulty": "medium",
+      "id": "q44"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What is 25% of 80?",
+      "options": [
+        "20",
+        "25",
+        "30",
+        "15"
+      ],
+      "answer": 0,
+      "explanation": "25/100 × 80 = 20.",
+      "difficulty": "easy",
+      "id": "q45"
+    },
+    {
+      "type": "mcq",
+      "prompt": "If a man walks 5 km in 1 hour, how far in 3.5 hours?",
+      "options": [
+        "17.5 km",
+        "15 km",
+        "20 km",
+        "18 km"
+      ],
+      "answer": 0,
+      "explanation": "5 × 3.5 = 17.5 km.",
+      "difficulty": "easy",
+      "id": "q46"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The value of 25% of 200 is:",
+      "options": [
+        "50",
+        "25",
+        "75",
+        "100"
+      ],
+      "answer": 0,
+      "explanation": "25% × 200 = 0.25 × 200 = 50.",
+      "difficulty": "easy",
+      "id": "q47"
+    },
+    {
+      "type": "mcq",
+      "prompt": "If 3x = 21, what is the value of x?",
+      "options": [
+        "7",
+        "6",
+        "9",
+        "5"
+      ],
+      "answer": 0,
+      "explanation": "x = 21 ÷ 3 = 7.",
+      "difficulty": "easy",
+      "id": "q48"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The average of 10, 20 and 30 is:",
+      "options": [
+        "25",
+        "15",
+        "20",
+        "30"
+      ],
+      "answer": 2,
+      "explanation": "(10 + 20 + 30) ÷ 3 = 60 ÷ 3 = 20.",
+      "difficulty": "easy",
+      "id": "q49"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which of the following is an even number?",
+      "options": [
+        "137",
+        "124",
+        "159",
+        "201"
+      ],
+      "answer": 1,
+      "explanation": "124 ends in 4, so it is divisible by 2.",
+      "difficulty": "easy",
+      "id": "q50"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The value of 1/2 + 1/4 is:",
+      "options": [
+        "2/6",
+        "1/6",
+        "3/4",
+        "2/4"
+      ],
+      "answer": 2,
+      "explanation": "1/2 = 2/4, so 2/4 + 1/4 = 3/4.",
+      "difficulty": "easy",
+      "id": "q51"
+    },
+    {
+      "type": "mcq",
+      "prompt": "If the sum of two numbers is 15 and one is 9, the other is:",
+      "options": [
+        "6",
+        "5",
+        "7",
+        "4"
+      ],
+      "answer": 0,
+      "explanation": "15 − 9 = 6.",
+      "difficulty": "easy",
+      "id": "q52"
+    },
+    {
+      "type": "mcq",
+      "prompt": "How many sides does a hexagon have?",
+      "options": [
+        "5",
+        "6",
+        "7",
+        "8"
+      ],
+      "answer": 1,
+      "explanation": "A hexagon has six sides.",
+      "difficulty": "easy",
+      "id": "q53"
+    },
+    {
+      "type": "mcq",
+      "prompt": "If the ratio of boys to girls is 3:2 and there are 30 boys, the number of girls is:",
+      "options": [
+        "20",
+        "15",
+        "25",
+        "10"
+      ],
+      "answer": 0,
+      "explanation": "3 parts = 30, so 1 part = 10; girls = 2 × 10 = 20.",
+      "difficulty": "medium",
+      "id": "q54"
+    },
+    {
+      "type": "mcq",
+      "prompt": "If a book costs Rs. 240 after a 20% discount, its original price was:",
+      "options": [
+        "Rs. 300",
+        "Rs. 288",
+        "Rs. 320",
+        "Rs. 260"
+      ],
+      "answer": 0,
+      "explanation": "Rs. 240 is 80% of the price, so price = 240 ÷ 0.8 = Rs. 300.",
+      "difficulty": "hard",
+      "id": "q55"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The LCM of 4 and 6 is:",
+      "options": [
+        "24",
+        "12",
+        "8",
+        "18"
+      ],
+      "answer": 1,
+      "explanation": "Multiples: 12 is the smallest common multiple of 4 and 6.",
+      "difficulty": "medium",
+      "id": "q56"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The HCF of 12 and 18 is:",
+      "options": [
+        "3",
+        "9",
+        "6",
+        "12"
+      ],
+      "answer": 2,
+      "explanation": "6 is the largest number dividing both 12 and 18.",
+      "difficulty": "medium",
+      "id": "q57"
+    },
+    {
+      "type": "mcq",
+      "prompt": "If 2x + 3 = 11, then x equals:",
+      "options": [
+        "4",
+        "3",
+        "5",
+        "7"
+      ],
+      "answer": 0,
+      "explanation": "2x = 11 − 3 = 8, so x = 4.",
+      "difficulty": "easy",
+      "id": "q58"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The sum of the first 20 natural numbers is:",
+      "options": [
+        "190",
+        "230",
+        "210",
+        "250"
+      ],
+      "answer": 2,
+      "explanation": "Sum = 20 × 21 ÷ 2 = 210.",
+      "difficulty": "medium",
+      "id": "q59"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What is the value of 3³?",
+      "options": [
+        "27",
+        "9",
+        "12",
+        "81"
+      ],
+      "answer": 0,
+      "explanation": "3³ = 3 × 3 × 3 = 27.",
+      "difficulty": "easy",
+      "id": "q60"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The next number in the series 5, 10, 20, 40, ... is:",
+      "options": [
+        "60",
+        "80",
+        "50",
+        "100"
+      ],
+      "answer": 1,
+      "explanation": "Each term is doubled: 40 × 2 = 80.",
+      "difficulty": "easy",
+      "id": "q61"
+    },
+    {
+      "type": "mcq",
+      "prompt": "A man saves Rs. 2,000 per month. His yearly savings are:",
+      "options": [
+        "Rs. 20,000",
+        "Rs. 22,000",
+        "Rs. 24,000",
+        "Rs. 26,000"
+      ],
+      "answer": 2,
+      "explanation": "2,000 × 12 = Rs. 24,000.",
+      "difficulty": "easy",
+      "id": "q62"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What is 10% of 250?",
+      "options": [
+        "25",
+        "20",
+        "15",
+        "30"
+      ],
+      "answer": 0,
+      "explanation": "0.10 × 250 = 25.",
+      "difficulty": "easy",
+      "id": "q63"
+    },
+    {
+      "type": "mcq",
+      "prompt": "If Ali is 3 years older than Bilal and their ages sum to 25, Ali's age is:",
+      "options": [
+        "13",
+        "14",
+        "12",
+        "15"
+      ],
+      "answer": 1,
+      "explanation": "Bilal = x, Ali = x + 3; 2x + 3 = 25 → x = 11, Ali = 14.",
+      "difficulty": "medium",
+      "id": "q64"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The value of 4/5 as a percentage is:",
+      "options": [
+        "75%",
+        "60%",
+        "80%",
+        "90%"
+      ],
+      "answer": 2,
+      "explanation": "4 ÷ 5 = 0.8 = 80%.",
+      "difficulty": "medium",
+      "id": "q65"
+    },
+    {
+      "type": "mcq",
+      "prompt": "If the perimeter of a square is 40 cm, the length of one side is:",
+      "options": [
+        "10 cm",
+        "8 cm",
+        "20 cm",
+        "5 cm"
+      ],
+      "answer": 0,
+      "explanation": "Side = perimeter ÷ 4 = 40 ÷ 4 = 10 cm.",
+      "difficulty": "easy",
+      "id": "q66"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which number is divisible by 9?",
+      "options": [
+        "729",
+        "500",
+        "633",
+        "811"
+      ],
+      "answer": 0,
+      "explanation": "Digit sum of 729 is 18, divisible by 9.",
+      "difficulty": "medium",
+      "id": "q67"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The angle of a straight line is:",
+      "options": [
+        "90°",
+        "360°",
+        "180°",
+        "270°"
+      ],
+      "answer": 2,
+      "explanation": "A straight angle measures 180 degrees.",
+      "difficulty": "easy",
+      "id": "q68"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The mean of the numbers 5, 5, 10, 10 is:",
+      "options": [
+        "7.5",
+        "5",
+        "10",
+        "8"
+      ],
+      "answer": 0,
+      "explanation": "(5+5+10+10) ÷ 4 = 30 ÷ 4 = 7.5.",
+      "difficulty": "medium",
+      "id": "q69"
+    },
+    {
+      "type": "mcq",
+      "prompt": "If 3/4 of a number is 60, the number is:",
+      "options": [
+        "80",
+        "45",
+        "90",
+        "75"
+      ],
+      "answer": 0,
+      "explanation": "Number = 60 ÷ 0.75 = 80.",
+      "difficulty": "medium",
+      "id": "q70"
+    },
+    {
+      "type": "mcq",
+      "prompt": "How many minutes are there in 2.5 hours?",
+      "options": [
+        "120",
+        "150",
+        "180",
+        "250"
+      ],
+      "answer": 1,
+      "explanation": "2.5 × 60 = 150 minutes.",
+      "difficulty": "easy",
+      "id": "q71"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The next term of the series 3, 6, 12, 24, ... is:",
+      "options": [
+        "36",
+        "42",
+        "48",
+        "54"
+      ],
+      "answer": 2,
+      "explanation": "Each term doubles: 24 × 2 = 48.",
+      "difficulty": "easy",
+      "id": "q72"
+    },
+    {
+      "type": "mcq",
+      "prompt": "A cyclist covers 45 km in 3 hours. His speed is:",
+      "options": [
+        "15 km/h",
+        "12 km/h",
+        "18 km/h",
+        "20 km/h"
+      ],
+      "answer": 0,
+      "explanation": "Speed = 45 ÷ 3 = 15 km/h.",
+      "difficulty": "easy",
+      "id": "q73"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What is 25% of 400?",
+      "options": [
+        "50",
+        "150",
+        "200",
+        "100"
+      ],
+      "answer": 3,
+      "explanation": "25% of 400 = 0.25 × 400 = 100.",
+      "difficulty": "easy",
+      "id": "q74"
+    },
+    {
+      "type": "mcq",
+      "prompt": "If a dozen eggs cost Rs 240, the cost of one egg is:",
+      "options": [
+        "Rs 12",
+        "Rs 18",
+        "Rs 20",
+        "Rs 24"
+      ],
+      "answer": 2,
+      "explanation": "Rs 240 ÷ 12 = Rs 20 per egg.",
+      "difficulty": "easy",
+      "id": "q75"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which of the following is the largest number?",
+      "options": [
+        "0.25",
+        "0.5",
+        "0.125",
+        "0.75"
+      ],
+      "answer": 3,
+      "explanation": "0.75 is greater than 0.5, 0.25 and 0.125.",
+      "difficulty": "easy",
+      "id": "q76"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The average of 4, 8, 12 and 16 is:",
+      "options": [
+        "10",
+        "9",
+        "12",
+        "11"
+      ],
+      "answer": 0,
+      "explanation": "(4 + 8 + 12 + 16) ÷ 4 = 40 ÷ 4 = 10.",
+      "difficulty": "easy",
+      "id": "q77"
+    },
+    {
+      "type": "mcq",
+      "prompt": "A car travels at a speed of 60 km/h. How far does it travel in 3 hours?",
+      "options": [
+        "120 km",
+        "150 km",
+        "180 km",
+        "200 km"
+      ],
+      "answer": 2,
+      "explanation": "Distance = speed × time = 60 × 3 = 180 km.",
+      "difficulty": "easy",
+      "id": "q78"
+    },
+    {
+      "type": "mcq",
+      "prompt": "A shopkeeper buys an item for Rs 500 and sells it for Rs 600. His profit percentage is:",
+      "options": [
+        "15%",
+        "18%",
+        "20%",
+        "25%"
+      ],
+      "answer": 2,
+      "explanation": "Profit = 100, so profit % = (100 ÷ 500) × 100 = 20%.",
+      "difficulty": "medium",
+      "id": "q79"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The product of two numbers is 48 and their sum is 14. The numbers are:",
+      "options": [
+        "6 and 8",
+        "4 and 12",
+        "3 and 16",
+        "2 and 24"
+      ],
+      "answer": 0,
+      "explanation": "6 × 8 = 48 and 6 + 8 = 14.",
+      "difficulty": "medium",
+      "id": "q80"
+    },
+    {
+      "type": "mcq",
+      "prompt": "If 8 workers can build a wall in 6 days, how many days will 12 workers take?",
+      "options": [
+        "3",
+        "4",
+        "5",
+        "9"
+      ],
+      "answer": 1,
+      "explanation": "Worker-days stay constant: 8 × 6 = 12 × d, so d = 4 days.",
+      "difficulty": "medium",
+      "id": "q81"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What is 0.75 expressed as a fraction in its lowest terms?",
+      "options": [
+        "3/4",
+        "7/10",
+        "15/20",
+        "75/100"
+      ],
+      "answer": 0,
+      "explanation": "0.75 = 75/100 = 3/4 when reduced.",
+      "difficulty": "hard",
+      "id": "q82"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What is the smallest prime number?",
+      "options": [
+        "0",
+        "1",
+        "2",
+        "3"
+      ],
+      "answer": 2,
+      "explanation": "2 is the smallest prime number and the only even prime.",
+      "difficulty": "easy",
+      "id": "q83"
+    },
+    {
+      "type": "mcq",
+      "prompt": "A shirt is sold for Rs 900 after a 10% discount. What was the original price?",
+      "options": [
+        "Rs 950",
+        "Rs 990",
+        "Rs 1000",
+        "Rs 1100"
+      ],
+      "answer": 2,
+      "explanation": "Rs 900 is 90% of the original price, so the original price is 900 / 0.9 = Rs 1000.",
+      "difficulty": "medium",
+      "id": "q84"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What is the value of 2^3?",
+      "options": [
+        "4",
+        "6",
+        "8",
+        "9"
+      ],
+      "answer": 2,
+      "explanation": "2^3 = 2 x 2 x 2 = 8.",
+      "difficulty": "easy",
+      "id": "q85"
+    },
+    {
+      "type": "mcq",
+      "prompt": "If x + 5 = 12, then x equals:",
+      "options": [
+        "5",
+        "6",
+        "7",
+        "8"
+      ],
+      "answer": 2,
+      "explanation": "x = 12 - 5 = 7.",
+      "difficulty": "easy",
+      "id": "q86"
+    },
+    {
+      "type": "mcq",
+      "prompt": "A shopkeeper buys for Rs. 500 and sells for Rs. 650. His profit percent is:",
+      "options": [
+        "20%",
+        "25%",
+        "30%",
+        "35%"
+      ],
+      "answer": 2,
+      "explanation": "Profit = 650 - 500 = Rs 150, so profit percent = (150 / 500) x 100 = 30%.",
+      "difficulty": "medium",
+      "id": "q87"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The value of 5! (5 factorial) is:",
+      "options": [
+        "60",
+        "100",
+        "120",
+        "125"
+      ],
+      "answer": 2,
+      "explanation": "5! = 5 x 4 x 3 x 2 x 1 = 120.",
+      "difficulty": "easy",
+      "id": "q88"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What is the value of 7^2 + 1?",
+      "options": [
+        "48",
+        "49",
+        "50",
+        "51"
+      ],
+      "answer": 2,
+      "explanation": "7^2 = 49, so 49 + 1 = 50.",
+      "difficulty": "easy",
+      "id": "q89"
+    },
+    {
+      "type": "mcq",
+      "prompt": "If a shop gives a 10% discount on a Rs. 500 item, the discount is:",
+      "options": [
+        "Rs 10",
+        "Rs 40",
+        "Rs 50",
+        "Rs 100"
+      ],
+      "answer": 2,
+      "explanation": "10% of 500 = Rs 50.",
+      "difficulty": "easy",
+      "id": "q90"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The number of degrees in a right angle is:",
+      "options": [
+        "45",
+        "90",
+        "180",
+        "360"
+      ],
+      "answer": 1,
+      "explanation": "A right angle measures 90 degrees.",
+      "difficulty": "easy",
+      "id": "q91"
+    },
+    {
+      "type": "mcq",
+      "prompt": "If 12 workers build a wall in 8 days, how many days would 16 workers take?",
+      "options": [
+        "4",
+        "5",
+        "6",
+        "9"
+      ],
+      "answer": 2,
+      "explanation": "More workers take less time: 12 x 8 / 16 = 6 days.",
+      "difficulty": "medium",
+      "id": "q92"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The value of 0.5 x 0.4 is:",
+      "options": [
+        "0.02",
+        "0.2",
+        "2",
+        "20"
+      ],
+      "answer": 1,
+      "explanation": "0.5 x 0.4 = 0.20 = 0.2.",
+      "difficulty": "easy",
+      "id": "q93"
+    },
+    {
+      "type": "mcq",
+      "prompt": "A car consumes 8 litres per 100 km. Fuel needed for 250 km is:",
+      "options": [
+        "16 litres",
+        "18 litres",
+        "20 litres",
+        "25 litres"
+      ],
+      "answer": 2,
+      "explanation": "250 / 100 = 2.5, so fuel needed = 8 x 2.5 = 20 litres.",
+      "difficulty": "medium",
+      "id": "q94"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What is 15% of 300?",
+      "options": [
+        "35",
+        "40",
+        "45",
+        "50"
+      ],
+      "answer": 2,
+      "explanation": "15% of 300 = 0.15 x 300 = 45.",
+      "difficulty": "easy",
+      "id": "q95"
+    },
+    {
+      "type": "mcq",
+      "prompt": "A triangle with all three sides equal is called:",
+      "options": [
+        "Scalene",
+        "Isosceles",
+        "Equilateral",
+        "Right-angled"
+      ],
+      "answer": 2,
+      "explanation": "An equilateral triangle has three equal sides and three equal angles.",
+      "difficulty": "easy",
+      "id": "q96"
+    },
+    {
+      "type": "mcq",
+      "prompt": "If 15 machines produce 450 units, how many units do 20 machines produce?",
+      "options": [
+        "500",
+        "550",
+        "600",
+        "650"
+      ],
+      "answer": 2,
+      "explanation": "Each machine produces 450 / 15 = 30 units, so 20 machines produce 20 x 30 = 600 units.",
+      "difficulty": "medium",
+      "id": "q97"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which of the following numbers is NOT a prime number?",
+      "options": [
+        "3",
+        "7",
+        "15",
+        "19"
+      ],
+      "answer": 2,
+      "explanation": "15 = 3 x 5, so it is not a prime number.",
+      "difficulty": "easy",
+      "id": "q98"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What is the remainder when 47 is divided by 5?",
+      "options": [
+        "1",
+        "2",
+        "3",
+        "4"
+      ],
+      "answer": 1,
+      "explanation": "45 is the nearest multiple of 5, so the remainder is 47 - 45 = 2.",
+      "difficulty": "easy",
+      "id": "q99"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The area of a square with side 7 cm is:",
+      "options": [
+        "28 cm2",
+        "49 cm2",
+        "56 cm2",
+        "98 cm2"
+      ],
+      "answer": 1,
+      "explanation": "Area of a square = side x side = 7 x 7 = 49 cm2.",
+      "difficulty": "easy",
+      "id": "q100"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which of the following is a composite number?",
+      "options": [
+        "7",
+        "11",
+        "21",
+        "23"
+      ],
+      "answer": 2,
+      "explanation": "21 = 3 x 7, so it is a composite number.",
+      "difficulty": "medium",
+      "id": "q101"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The simple interest on Rs 1,000 at 5% per annum for 2 years is:",
+      "options": [
+        "Rs 50",
+        "Rs 100",
+        "Rs 150",
+        "Rs 200"
+      ],
+      "answer": 1,
+      "explanation": "SI = (1000 x 5 x 2) / 100 = Rs 100.",
+      "difficulty": "medium",
+      "id": "q102"
+    },
+    {
+      "type": "mcq",
+      "prompt": "How many minutes are there in 1.5 hours?",
+      "options": [
+        "60",
+        "80",
+        "90",
+        "100"
+      ],
+      "answer": 2,
+      "explanation": "1.5 hours = 1.5 x 60 = 90 minutes.",
+      "difficulty": "easy",
+      "id": "q103"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What is the average of 10, 20, 30 and 40?",
+      "options": [
+        "20",
+        "25",
+        "30",
+        "35"
+      ],
+      "answer": 1,
+      "explanation": "Average = (10 + 20 + 30 + 40) / 4 = 100 / 4 = 25.",
+      "difficulty": "easy",
+      "id": "q104"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What is the next number in the series 2, 3, 5, 8, 13, ?",
+      "options": [
+        "21",
+        "20",
+        "18",
+        "19"
+      ],
+      "answer": 0,
+      "explanation": "Each term is the sum of the previous two: 8 + 13 = 21 (Fibonacci series).",
+      "difficulty": "easy",
+      "id": "q105"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What is 50% of 120?",
+      "options": [
+        "60",
+        "50",
+        "70",
+        "100"
+      ],
+      "answer": 0,
+      "explanation": "Half of 120 is 60.",
+      "difficulty": "easy",
+      "id": "q106"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What is the next number in the series 81, 27, 9, 3, ?",
+      "options": [
+        "1",
+        "0",
+        "2",
+        "3"
+      ],
+      "answer": 0,
+      "explanation": "Each term is divided by 3: 3 divided by 3 equals 1.",
+      "difficulty": "medium",
+      "id": "q107"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What is the next number in the series 1, 2, 4, 7, 11, ?",
+      "options": [
+        "16",
+        "15",
+        "14",
+        "18"
+      ],
+      "answer": 0,
+      "explanation": "The differences increase by 1 each time: +1, +2, +3, +4, so 11 + 5 = 16.",
+      "difficulty": "medium",
+      "id": "q108"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The average of 5, 10, 15 and 20 is?",
+      "options": [
+        "12.5",
+        "15",
+        "12",
+        "10"
+      ],
+      "answer": 0,
+      "explanation": "The sum is 50 and 50 divided by 4 is 12.5.",
+      "difficulty": "easy",
+      "id": "q109"
+    },
+    {
+      "type": "mcq",
+      "prompt": "If x/4 = 9, what is the value of x?",
+      "options": [
+        "36",
+        "13",
+        "45",
+        "9"
+      ],
+      "answer": 0,
+      "explanation": "Multiplying both sides by 4 gives x = 36.",
+      "difficulty": "easy",
+      "id": "q110"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The area of a triangle with base 10 cm and height 6 cm is?",
+      "options": [
+        "30 cm2",
+        "60 cm2",
+        "16 cm2",
+        "120 cm2"
+      ],
+      "answer": 0,
+      "explanation": "Area = 1/2 x base x height = 1/2 x 10 x 6 = 30 cm2.",
+      "difficulty": "easy",
+      "id": "q111"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The area of a circle of radius 7 cm (pi = 22/7) is?",
+      "options": [
+        "154 cm2",
+        "44 cm2",
+        "1540 cm2",
+        "22 cm2"
+      ],
+      "answer": 0,
+      "explanation": "Area = pi x r x r = 22/7 x 7 x 7 = 154 cm2.",
+      "difficulty": "medium",
+      "id": "q112"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The perimeter of a rectangle with length 10 cm and width 6 cm is?",
+      "options": [
+        "32 cm",
+        "60 cm",
+        "16 cm",
+        "64 cm"
+      ],
+      "answer": 0,
+      "explanation": "Perimeter = 2 x (length + width) = 2 x 16 = 32 cm.",
+      "difficulty": "easy",
+      "id": "q113"
+    },
+    {
+      "type": "mcq",
+      "prompt": "If the sum of the angles of a triangle is 180 degrees, each angle of an equilateral triangle is?",
+      "options": [
+        "60 degrees",
+        "90 degrees",
+        "45 degrees",
+        "120 degrees"
+      ],
+      "answer": 0,
+      "explanation": "An equilateral triangle has three equal angles: 180/3 = 60 degrees.",
+      "difficulty": "easy",
+      "id": "q114"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What is 3/5 of 100?",
+      "options": [
+        "60",
+        "40",
+        "50",
+        "30"
+      ],
+      "answer": 0,
+      "explanation": "100 divided by 5 is 20, and 3 x 20 = 60.",
+      "difficulty": "easy",
+      "id": "q115"
+    },
+    {
+      "type": "mcq",
+      "prompt": "If 6 workers can complete a job in 10 days, how many days will 15 workers take?",
+      "options": [
+        "4",
+        "25",
+        "5",
+        "9"
+      ],
+      "answer": 0,
+      "explanation": "Workers x days stays constant: 6 x 10 = 60, and 60/15 = 4 days.",
+      "difficulty": "medium",
+      "id": "q116"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What is the value of 2^4?",
+      "options": [
+        "16",
+        "8",
+        "32",
+        "64"
+      ],
+      "answer": 0,
+      "explanation": "2 x 2 x 2 x 2 = 16.",
+      "difficulty": "easy",
+      "id": "q117"
+    },
+    {
+      "type": "mcq",
+      "prompt": "How many degrees does the hour hand of a clock move in one hour?",
+      "options": [
+        "30 degrees",
+        "15 degrees",
+        "60 degrees",
+        "90 degrees"
+      ],
+      "answer": 0,
+      "explanation": "The hour hand covers 360 degrees in 12 hours, so 360/12 = 30 degrees per hour.",
+      "difficulty": "medium",
+      "id": "q118"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What is the next number in the series 0, 3, 8, 15, 24, ?",
+      "options": [
+        "35",
+        "34",
+        "33",
+        "36"
+      ],
+      "answer": 0,
+      "explanation": "The terms are n x n minus 1: 0, 3, 8, 15, 24, so 6 x 6 - 1 = 35.",
+      "difficulty": "hard",
+      "id": "q119"
+    },
+    {
+      "type": "mcq",
+      "prompt": "If 4x - 5 = 15, what is the value of x?",
+      "options": [
+        "5",
+        "10",
+        "2.5",
+        "20"
+      ],
+      "answer": 0,
+      "explanation": "4x = 20, so x = 5.",
+      "difficulty": "easy",
+      "id": "q120"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The simplest form of the fraction 12/18 is?",
+      "options": [
+        "2/3",
+        "3/4",
+        "1/2",
+        "4/5"
+      ],
+      "answer": 0,
+      "explanation": "Dividing numerator and denominator by 6 gives 2/3.",
+      "difficulty": "easy",
+      "id": "q121"
+    },
+    {
+      "type": "mcq",
+      "prompt": "A man spends 20% of his salary on rent. If his salary is Rs. 30,000, his monthly rent is?",
+      "options": [
+        "Rs. 6,000",
+        "Rs. 3,000",
+        "Rs. 12,000",
+        "Rs. 24,000"
+      ],
+      "answer": 0,
+      "explanation": "20% of 30,000 = 0.20 x 30,000 = Rs. 6,000.",
+      "difficulty": "easy",
+      "id": "q122"
+    },
+    {
+      "type": "mcq",
+      "prompt": "If a number is increased by 10% and the result is 110, the original number was?",
+      "options": [
+        "100",
+        "99",
+        "121",
+        "110"
+      ],
+      "answer": 0,
+      "explanation": "If 110% of the number is 110, then 100% is 110/1.1 = 100.",
+      "difficulty": "medium",
+      "id": "q123"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What is the value of 5^3?",
+      "options": [
+        "125",
+        "15",
+        "25",
+        "625"
+      ],
+      "answer": 0,
+      "explanation": "5 x 5 x 5 = 125.",
+      "difficulty": "easy",
+      "id": "q124"
+    },
+    {
+      "type": "mcq",
+      "prompt": "A clock shows 6:00. The angle between the two hands is?",
+      "options": [
+        "180 degrees",
+        "90 degrees",
+        "60 degrees",
+        "120 degrees"
+      ],
+      "answer": 0,
+      "explanation": "At 6:00 the hands are in a straight line, making an angle of 180 degrees.",
+      "difficulty": "medium",
+      "id": "q125"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What is the next number in the series 64, 32, 16, 8, ?",
+      "options": [
+        "4",
+        "2",
+        "0",
+        "6"
+      ],
+      "answer": 0,
+      "explanation": "Each term is halved: 8 divided by 2 equals 4.",
+      "difficulty": "easy",
+      "id": "q126"
+    },
+    {
+      "type": "mcq",
+      "prompt": "If 2/5 of a number is 40, what is the number?",
+      "options": [
+        "100",
+        "16",
+        "200",
+        "50"
+      ],
+      "answer": 0,
+      "explanation": "If 2/5 of the number is 40, then the number is 40 x 5/2 = 100.",
+      "difficulty": "medium",
+      "id": "q127"
+    },
+    {
+      "type": "mcq",
+      "prompt": "A shopkeeper sells an item for Rs. 900 at a profit of 20%. The cost price was?",
+      "options": [
+        "Rs. 750",
+        "Rs. 720",
+        "Rs. 800",
+        "Rs. 700"
+      ],
+      "answer": 0,
+      "explanation": "If the selling price is 120% of cost, cost = 900/1.2 = Rs. 750.",
+      "difficulty": "medium",
+      "id": "q128"
+    },
+    {
+      "type": "mcq",
+      "prompt": "How many seconds are there in 2 hours?",
+      "options": [
+        "7200",
+        "720",
+        "12000",
+        "3600"
+      ],
+      "answer": 0,
+      "explanation": "2 hours = 2 x 60 x 60 = 7,200 seconds.",
+      "difficulty": "easy",
+      "id": "q129"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The difference between the largest and the smallest of 12, 45, 23, 67 is?",
+      "options": [
+        "55",
+        "35",
+        "45",
+        "57"
+      ],
+      "answer": 0,
+      "explanation": "67 - 12 = 55.",
+      "difficulty": "easy",
+      "id": "q130"
+    }
+  ]
+}

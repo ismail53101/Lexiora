@@ -1,0 +1,1665 @@
+{
+  "bank": {
+    "name": "Vocabulary",
+    "subject": "English",
+    "topic": "Vocabulary",
+    "description": "Word meanings that frequently appear in CSS, PMS and one-paper English papers.",
+    "tags": "css,pms,fpsc,ppsc,nts,english,vocabulary",
+    "version": "1.0",
+    "id": "english_vocabulary"
+  },
+  "questions": [
+    {
+      "type": "mcq",
+      "prompt": "The word 'abundant' most nearly means?",
+      "options": [
+        "Scarce",
+        "Plentiful",
+        "Sudden",
+        "Empty"
+      ],
+      "answer": 1,
+      "explanation": "Abundant means existing in large quantities; plentiful.",
+      "difficulty": "easy",
+      "id": "q01"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The word 'benevolent' means?",
+      "options": [
+        "Kind and generous",
+        "Angry and rude",
+        "Uncertain",
+        "Fearful"
+      ],
+      "answer": 0,
+      "explanation": "Benevolent means well-meaning and kind.",
+      "difficulty": "easy",
+      "id": "q02"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The word 'candid' means?",
+      "options": [
+        "Secretive",
+        "Honest and frank",
+        "Careless",
+        "Doubtful"
+      ],
+      "answer": 1,
+      "explanation": "Candid means truthful and straightforward.",
+      "difficulty": "medium",
+      "id": "q03"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The word 'diligent' most nearly means?",
+      "options": [
+        "Lazy",
+        "Hardworking and careful",
+        "Distracted",
+        "Arrogant"
+      ],
+      "answer": 1,
+      "explanation": "Diligent means showing steady and earnest effort.",
+      "difficulty": "easy",
+      "id": "q04"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The word 'eloquent' means?",
+      "options": [
+        "Fluent and persuasive in speech",
+        "Quiet and shy",
+        "Slow and hesitant",
+        "Careless in speech"
+      ],
+      "answer": 0,
+      "explanation": "Eloquent means expressing ideas clearly and persuasively.",
+      "difficulty": "medium",
+      "id": "q05"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The word 'fragile' means?",
+      "options": [
+        "Strong",
+        "Easily broken or damaged",
+        "Heavy",
+        "Permanent"
+      ],
+      "answer": 1,
+      "explanation": "Fragile means delicate and easily broken.",
+      "difficulty": "easy",
+      "id": "q06"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The word 'genuine' most nearly means?",
+      "options": [
+        "Fake",
+        "Authentic and real",
+        "Rare",
+        "Hidden"
+      ],
+      "answer": 1,
+      "explanation": "Genuine means truly what it is said to be.",
+      "difficulty": "easy",
+      "id": "q07"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The word 'hasty' means?",
+      "options": [
+        "Careful",
+        "Slow",
+        "Rushed and quick",
+        "Relaxed"
+      ],
+      "answer": 2,
+      "explanation": "Hasty means done with excessive speed or urgency.",
+      "difficulty": "medium",
+      "id": "q08"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The word 'immense' means?",
+      "options": [
+        "Tiny",
+        "Huge or vast",
+        "Narrow",
+        "Brief"
+      ],
+      "answer": 1,
+      "explanation": "Immense means extremely large.",
+      "difficulty": "easy",
+      "id": "q09"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The word 'lucid' most nearly means?",
+      "options": [
+        "Confusing",
+        "Clear and easy to understand",
+        "Dark",
+        "Verbose"
+      ],
+      "answer": 1,
+      "explanation": "Lucid means expressed clearly.",
+      "difficulty": "medium",
+      "id": "q10"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The word 'meticulous' means?",
+      "options": [
+        "Careless",
+        "Very careful and precise",
+        "Quick",
+        "Rough"
+      ],
+      "answer": 1,
+      "explanation": "Meticulous means showing great attention to detail.",
+      "difficulty": "medium",
+      "id": "q11"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The word 'obscure' most nearly means?",
+      "options": [
+        "Well known",
+        "Not clear or easily understood",
+        "Bright",
+        "Common"
+      ],
+      "answer": 1,
+      "explanation": "Obscure means difficult to see or understand.",
+      "difficulty": "medium",
+      "id": "q12"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The word 'plausible' means?",
+      "options": [
+        "Unbelievable",
+        "Seeming reasonable or believable",
+        "False",
+        "Impossible"
+      ],
+      "answer": 1,
+      "explanation": "Plausible means appearing to be true or reasonable.",
+      "difficulty": "medium",
+      "id": "q13"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The word 'resilient' most nearly means?",
+      "options": [
+        "Weak",
+        "Able to recover quickly",
+        "Stubborn",
+        "Forgetful"
+      ],
+      "answer": 1,
+      "explanation": "Resilient means able to withstand and recover from difficulty.",
+      "difficulty": "medium",
+      "id": "q14"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The word 'tenacious' most nearly means?",
+      "options": [
+        "Giving up easily",
+        "Holding firmly; persistent",
+        "Careless",
+        "Timid"
+      ],
+      "answer": 1,
+      "explanation": "Tenacious means not readily letting go; persistent.",
+      "difficulty": "hard",
+      "id": "q15"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The word 'ubiquitous' means?",
+      "options": [
+        "Rare",
+        "Present everywhere",
+        "Absent",
+        "Temporary"
+      ],
+      "answer": 1,
+      "explanation": "Ubiquitous means found everywhere.",
+      "difficulty": "hard",
+      "id": "q16"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The word 'prudent' most nearly means?",
+      "options": [
+        "Foolish",
+        "Wise and careful",
+        "Reckless",
+        "Impulsive"
+      ],
+      "answer": 1,
+      "explanation": "Prudent means acting with care and foresight.",
+      "difficulty": "medium",
+      "id": "q17"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The word 'ambiguous' means?",
+      "options": [
+        "Clear",
+        "Open to more than one interpretation",
+        "Simple",
+        "Direct"
+      ],
+      "answer": 1,
+      "explanation": "Ambiguous means having more than one possible meaning.",
+      "difficulty": "medium",
+      "id": "q18"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The word 'notorious' most nearly means?",
+      "options": [
+        "Famous for something bad",
+        "Unknown",
+        "Admired",
+        "Anonymous"
+      ],
+      "answer": 0,
+      "explanation": "Notorious means well known for a bad quality or deed.",
+      "difficulty": "medium",
+      "id": "q19"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The word 'naive' means?",
+      "options": [
+        "Worldly wise",
+        "Lacking experience or judgment",
+        "Suspicious",
+        "Rude"
+      ],
+      "answer": 1,
+      "explanation": "Naive means showing a lack of experience or sophistication.",
+      "difficulty": "medium",
+      "id": "q20"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The word 'colossal' most nearly means?",
+      "options": [
+        "Small",
+        "Extremely large",
+        "Narrow",
+        "Light"
+      ],
+      "answer": 1,
+      "explanation": "Colossal means huge in size or extent.",
+      "difficulty": "easy",
+      "id": "q21"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The word 'serene' means?",
+      "options": [
+        "Agitated",
+        "Calm and peaceful",
+        "Noisy",
+        "Turbulent"
+      ],
+      "answer": 1,
+      "explanation": "Serene means calm, peaceful and untroubled.",
+      "difficulty": "easy",
+      "id": "q22"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The word 'ephemeral' most nearly means:",
+      "options": [
+        "Lasting for a very short time",
+        "Permanent",
+        "Very bright",
+        "Hidden"
+      ],
+      "answer": 0,
+      "explanation": "Ephemeral means short-lived or fleeting.",
+      "difficulty": "medium",
+      "id": "q23"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The word 'skeptical' means:",
+      "options": [
+        "Doubtful or questioning",
+        "Believing",
+        "Happy",
+        "Fearful"
+      ],
+      "answer": 0,
+      "explanation": "Skeptical means not easily convinced; doubting.",
+      "difficulty": "easy",
+      "id": "q24"
+    },
+    {
+      "type": "mcq",
+      "prompt": "'Impeccable' means:",
+      "options": [
+        "Flawless; without fault",
+        "Broken",
+        "Dirty",
+        "Average"
+      ],
+      "answer": 0,
+      "explanation": "Impeccable means perfect and without mistakes.",
+      "difficulty": "easy",
+      "id": "q25"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What does 'hinder' mean?",
+      "options": [
+        "To slow down or obstruct",
+        "To help",
+        "To speed up",
+        "To praise"
+      ],
+      "answer": 0,
+      "explanation": "Hinder means to create difficulty for or delay progress.",
+      "difficulty": "easy",
+      "id": "q26"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The word 'anonymous' means:",
+      "options": [
+        "With no name known",
+        "Famous",
+        "Honest",
+        "Nearby"
+      ],
+      "answer": 0,
+      "explanation": "Anonymous means of unknown name or identity.",
+      "difficulty": "easy",
+      "id": "q27"
+    },
+    {
+      "type": "mcq",
+      "prompt": "'Innovate' most nearly means:",
+      "options": [
+        "To introduce something new",
+        "To copy",
+        "To destroy",
+        "To delay"
+      ],
+      "answer": 0,
+      "explanation": "Innovate means to make changes or introduce new methods.",
+      "difficulty": "easy",
+      "id": "q28"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The word 'novice' most nearly means:",
+      "options": [
+        "A beginner",
+        "An expert",
+        "A teacher",
+        "A judge"
+      ],
+      "answer": 0,
+      "explanation": "A novice is someone new to a field or task.",
+      "difficulty": "easy",
+      "id": "q29"
+    },
+    {
+      "type": "mcq",
+      "prompt": "'Alleviate' means:",
+      "options": [
+        "To make less severe",
+        "To worsen",
+        "To ignore",
+        "To celebrate"
+      ],
+      "answer": 0,
+      "explanation": "Alleviate means to reduce pain or difficulty.",
+      "difficulty": "medium",
+      "id": "q30"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What does 'prosperous' mean?",
+      "options": [
+        "Wealthy and successful",
+        "Poor",
+        "Angry",
+        "Lonely"
+      ],
+      "answer": 0,
+      "explanation": "Prosperous means flourishing or financially successful.",
+      "difficulty": "easy",
+      "id": "q31"
+    },
+    {
+      "type": "mcq",
+      "prompt": "'Diligence' means:",
+      "options": [
+        "Careful and persistent effort",
+        "Laziness",
+        "Anger",
+        "Confusion"
+      ],
+      "answer": 0,
+      "explanation": "Diligence is steady, earnest effort in one's work.",
+      "difficulty": "medium",
+      "id": "q32"
+    },
+    {
+      "type": "mcq",
+      "prompt": "'Enthusiastic' most nearly means:",
+      "options": [
+        "Eager and excited",
+        "Bored",
+        "Reluctant",
+        "Sleepy"
+      ],
+      "answer": 0,
+      "explanation": "Enthusiastic means showing intense interest or excitement.",
+      "difficulty": "easy",
+      "id": "q33"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What does 'inevitable' mean?",
+      "options": [
+        "Certain to happen",
+        "Impossible",
+        "Unlikely",
+        "Avoidable"
+      ],
+      "answer": 0,
+      "explanation": "Inevitable means unavoidable and certain to occur.",
+      "difficulty": "easy",
+      "id": "q34"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The word 'capable' most nearly means:",
+      "options": [
+        "Able to do something well",
+        "Unable",
+        "Unwilling",
+        "Confused"
+      ],
+      "answer": 0,
+      "explanation": "Capable means having the ability or skill to do something.",
+      "difficulty": "easy",
+      "id": "q35"
+    },
+    {
+      "type": "mcq",
+      "prompt": "'Adequate' most nearly means:",
+      "options": [
+        "Enough or sufficient",
+        "Lacking",
+        "Excessive",
+        "Tiny"
+      ],
+      "answer": 0,
+      "explanation": "Adequate means satisfactory or sufficient for a purpose.",
+      "difficulty": "easy",
+      "id": "q36"
+    },
+    {
+      "type": "mcq",
+      "prompt": "'Comprehensive' most nearly means:",
+      "options": [
+        "Including everything; complete",
+        "Narrow",
+        "Partial",
+        "Brief"
+      ],
+      "answer": 0,
+      "explanation": "Comprehensive means covering all aspects; thorough and complete.",
+      "difficulty": "medium",
+      "id": "q37"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What does 'adversity' mean?",
+      "options": [
+        "Difficulty or misfortune",
+        "Good fortune",
+        "Wealth",
+        "Success"
+      ],
+      "answer": 0,
+      "explanation": "Adversity refers to hardship, difficulty or misfortune.",
+      "difficulty": "medium",
+      "id": "q38"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The word 'courteous' means:",
+      "options": [
+        "Polite and respectful",
+        "Rude",
+        "Loud",
+        "Careless"
+      ],
+      "answer": 0,
+      "explanation": "Courteous means showing good manners and respect.",
+      "difficulty": "easy",
+      "id": "q39"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What does 'spontaneous' mean?",
+      "options": [
+        "Done without planning",
+        "Carefully planned",
+        "Reluctant",
+        "Forced"
+      ],
+      "answer": 0,
+      "explanation": "Spontaneous means natural, unplanned and impulsive.",
+      "difficulty": "medium",
+      "id": "q40"
+    },
+    {
+      "type": "mcq",
+      "prompt": "'Versatile' most nearly means:",
+      "options": [
+        "Able to do many different things",
+        "Limited",
+        "Inflexible",
+        "Fragile"
+      ],
+      "answer": 0,
+      "explanation": "Versatile means adaptable and skilled in many areas.",
+      "difficulty": "medium",
+      "id": "q41"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What does 'endeavour' mean?",
+      "options": [
+        "A serious attempt or effort",
+        "A failure",
+        "A rest",
+        "A doubt"
+      ],
+      "answer": 0,
+      "explanation": "Endeavour is a determined effort to achieve something.",
+      "difficulty": "medium",
+      "id": "q42"
+    },
+    {
+      "type": "mcq",
+      "prompt": "'Consensus' most nearly means:",
+      "options": [
+        "General agreement",
+        "Disagreement",
+        "A debate",
+        "A vote against"
+      ],
+      "answer": 0,
+      "explanation": "Consensus is a general agreement among a group.",
+      "difficulty": "medium",
+      "id": "q43"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The word 'amiable' means:",
+      "options": [
+        "Friendly and pleasant",
+        "Unfriendly",
+        "Angry",
+        "Cold"
+      ],
+      "answer": 0,
+      "explanation": "Amiable means good-natured and sociable.",
+      "difficulty": "easy",
+      "id": "q44"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What does 'elaborate' mean?",
+      "options": [
+        "Very detailed and complicated",
+        "Simple",
+        "Short",
+        "Plain"
+      ],
+      "answer": 0,
+      "explanation": "Elaborate means involving many details or complexity.",
+      "difficulty": "medium",
+      "id": "q45"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The word 'cease' most nearly means:",
+      "options": [
+        "To stop or bring to an end",
+        "To begin",
+        "To continue",
+        "To speed up"
+      ],
+      "answer": 0,
+      "explanation": "Cease means to stop happening or end.",
+      "difficulty": "easy",
+      "id": "q46"
+    },
+    {
+      "type": "mcq",
+      "prompt": "'Apparent' means:",
+      "options": [
+        "Clearly visible or obvious",
+        "Hidden",
+        "Unclear",
+        "Doubtful"
+      ],
+      "answer": 0,
+      "explanation": "Apparent means easily seen or understood.",
+      "difficulty": "easy",
+      "id": "q47"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What does 'vague' mean?",
+      "options": [
+        "Not clearly expressed",
+        "Precise",
+        "Detailed",
+        "Bright"
+      ],
+      "answer": 0,
+      "explanation": "Vague means unclear or imprecise.",
+      "difficulty": "easy",
+      "id": "q48"
+    },
+    {
+      "type": "mcq",
+      "prompt": "'Coherent' means:",
+      "options": [
+        "Logical and consistent",
+        "Confusing",
+        "Broken",
+        "Silent"
+      ],
+      "answer": 0,
+      "explanation": "Coherent means clear, logical and well-organised.",
+      "difficulty": "medium",
+      "id": "q49"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What does 'lucrative' mean?",
+      "options": [
+        "Producing much profit",
+        "Loss-making",
+        "Cheap",
+        "Boring"
+      ],
+      "answer": 0,
+      "explanation": "Lucrative means profitable or financially rewarding.",
+      "difficulty": "medium",
+      "id": "q50"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What does 'coincide' mean?",
+      "options": [
+        "To happen at the same time",
+        "To disagree",
+        "To separate",
+        "To delay"
+      ],
+      "answer": 0,
+      "explanation": "Coincide means to occur simultaneously or correspond.",
+      "difficulty": "medium",
+      "id": "q51"
+    },
+    {
+      "type": "mcq",
+      "prompt": "'Obligatory' means:",
+      "options": [
+        "Required by rule or law",
+        "Optional",
+        "Voluntary",
+        "Rare"
+      ],
+      "answer": 0,
+      "explanation": "Obligatory means compulsory or binding.",
+      "difficulty": "easy",
+      "id": "q52"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What does 'sceptical' mean?",
+      "options": [
+        "Having doubts",
+        "Believing everything",
+        "Happy",
+        "Fearful"
+      ],
+      "answer": 0,
+      "explanation": "Sceptical means not easily convinced; questioning.",
+      "difficulty": "easy",
+      "id": "q53"
+    },
+    {
+      "type": "mcq",
+      "prompt": "'Eminent' means:",
+      "options": [
+        "Famous and respected",
+        "Unknown",
+        "Average",
+        "Hidden"
+      ],
+      "answer": 0,
+      "explanation": "Eminent describes someone distinguished in their field.",
+      "difficulty": "medium",
+      "id": "q54"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What does 'deficient' mean?",
+      "options": [
+        "Lacking in some needed quality",
+        "Sufficient",
+        "Abundant",
+        "Complete"
+      ],
+      "answer": 0,
+      "explanation": "Deficient means not having enough of something.",
+      "difficulty": "medium",
+      "id": "q55"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The word 'perseverance' most nearly means:",
+      "options": [
+        "Steady persistence despite difficulty",
+        "Giving up",
+        "Hesitation",
+        "Carelessness"
+      ],
+      "answer": 0,
+      "explanation": "Perseverance is continued effort despite obstacles.",
+      "difficulty": "medium",
+      "id": "q56"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What does 'substantial' mean?",
+      "options": [
+        "Of considerable importance or size",
+        "Trivial",
+        "Tiny",
+        "Insignificant"
+      ],
+      "answer": 0,
+      "explanation": "Substantial means large, significant or solid.",
+      "difficulty": "medium",
+      "id": "q57"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The word 'conceit' most nearly means:",
+      "options": [
+        "Excessive pride in oneself",
+        "Modesty",
+        "Shyness",
+        "Humility"
+      ],
+      "answer": 0,
+      "explanation": "Conceit is excessive self-esteem or vanity.",
+      "difficulty": "medium",
+      "id": "q58"
+    },
+    {
+      "type": "mcq",
+      "prompt": "'Immerse' means:",
+      "options": [
+        "To involve deeply or dip under",
+        "To remove",
+        "To float",
+        "To dry"
+      ],
+      "answer": 0,
+      "explanation": "Immerse means to submerge or engage fully.",
+      "difficulty": "medium",
+      "id": "q59"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What does 'cordial' mean?",
+      "options": [
+        "Warm and friendly",
+        "Cold",
+        "Rude",
+        "Indifferent"
+      ],
+      "answer": 0,
+      "explanation": "Cordial means sincere and affectionate.",
+      "difficulty": "easy",
+      "id": "q60"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The word 'obsolete' most nearly means:",
+      "options": [
+        "No longer in use",
+        "Modern",
+        "Popular",
+        "New"
+      ],
+      "answer": 0,
+      "explanation": "Obsolete means outdated or out of use.",
+      "difficulty": "easy",
+      "id": "q61"
+    },
+    {
+      "type": "mcq",
+      "prompt": "'Explicit' means:",
+      "options": [
+        "Stated clearly and in detail",
+        "Vague",
+        "Hidden",
+        "Implied"
+      ],
+      "answer": 0,
+      "explanation": "Explicit means fully and clearly expressed.",
+      "difficulty": "medium",
+      "id": "q62"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What does 'amend' mean?",
+      "options": [
+        "To make minor improvements",
+        "To destroy",
+        "To ignore",
+        "To repeat"
+      ],
+      "answer": 0,
+      "explanation": "Amend means to modify or improve.",
+      "difficulty": "easy",
+      "id": "q63"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What does 'stagnant' mean?",
+      "options": [
+        "Not flowing or developing",
+        "Moving fast",
+        "Fresh",
+        "Active"
+      ],
+      "answer": 0,
+      "explanation": "Stagnant means still, motionless or showing no progress.",
+      "difficulty": "medium",
+      "id": "q64"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The word 'profound' most nearly means:",
+      "options": [
+        "Very deep or intense",
+        "Shallow",
+        "Superficial",
+        "Light"
+      ],
+      "answer": 0,
+      "explanation": "Profound means deep, intense or far-reaching.",
+      "difficulty": "medium",
+      "id": "q65"
+    },
+    {
+      "type": "mcq",
+      "prompt": "'Incentive' means:",
+      "options": [
+        "A reason to do something; motivation",
+        "A punishment",
+        "An obstacle",
+        "A delay"
+      ],
+      "answer": 0,
+      "explanation": "An incentive is something that motivates action.",
+      "difficulty": "medium",
+      "id": "q66"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What does 'legible' mean?",
+      "options": [
+        "Clear enough to read",
+        "Illegible",
+        "Hidden",
+        "Blurred"
+      ],
+      "answer": 0,
+      "explanation": "Legible means handwriting or print that can be read easily.",
+      "difficulty": "easy",
+      "id": "q67"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The word 'hazardous' most nearly means:",
+      "options": [
+        "Dangerous",
+        "Safe",
+        "Harmless",
+        "Gentle"
+      ],
+      "answer": 0,
+      "explanation": "Hazardous means involving risk or danger.",
+      "difficulty": "easy",
+      "id": "q68"
+    },
+    {
+      "type": "mcq",
+      "prompt": "'Reciprocate' means:",
+      "options": [
+        "To respond in kind",
+        "To ignore",
+        "To reject",
+        "To delay"
+      ],
+      "answer": 0,
+      "explanation": "Reciprocate means to return a feeling or action.",
+      "difficulty": "hard",
+      "id": "q69"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What does 'pertinent' mean?",
+      "options": [
+        "Relevant to the matter at hand",
+        "Irrelevant",
+        "Unrelated",
+        "Random"
+      ],
+      "answer": 0,
+      "explanation": "Pertinent means directly relevant or applicable.",
+      "difficulty": "hard",
+      "id": "q70"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The word 'flourish' most nearly means:",
+      "options": [
+        "To thrive or grow well",
+        "To wither",
+        "To decline",
+        "To stop"
+      ],
+      "answer": 0,
+      "explanation": "Flourish means to grow or develop successfully.",
+      "difficulty": "easy",
+      "id": "q71"
+    },
+    {
+      "type": "mcq",
+      "prompt": "'Transparent' means:",
+      "options": [
+        "Clear and see-through",
+        "Opaque",
+        "Dark",
+        "Thick"
+      ],
+      "answer": 0,
+      "explanation": "Transparent means allowing light to pass through.",
+      "difficulty": "easy",
+      "id": "q72"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What does 'gracious' mean?",
+      "options": [
+        "Courteous and kind",
+        "Rude",
+        "Harsh",
+        "Cold"
+      ],
+      "answer": 0,
+      "explanation": "Gracious means showing courtesy and kindness.",
+      "difficulty": "easy",
+      "id": "q73"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The word 'solemn' most nearly means:",
+      "options": [
+        "Serious and formal",
+        "Playful",
+        "Casual",
+        "Light-hearted"
+      ],
+      "answer": 0,
+      "explanation": "Solemn means grave, serious and dignified.",
+      "difficulty": "medium",
+      "id": "q74"
+    },
+    {
+      "type": "mcq",
+      "prompt": "'Apprehend' means:",
+      "options": [
+        "To arrest or understand",
+        "To release",
+        "To ignore",
+        "To forget"
+      ],
+      "answer": 0,
+      "explanation": "Apprehend means to seize (arrest) or grasp mentally.",
+      "difficulty": "hard",
+      "id": "q75"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What does 'vigorous' mean?",
+      "options": [
+        "Strong and energetic",
+        "Weak",
+        "Lethargic",
+        "Slow"
+      ],
+      "answer": 0,
+      "explanation": "Vigorous means full of physical or mental energy.",
+      "difficulty": "easy",
+      "id": "q76"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The word 'catastrophe' most nearly means:",
+      "options": [
+        "A great disaster",
+        "A success",
+        "A small problem",
+        "A celebration"
+      ],
+      "answer": 0,
+      "explanation": "A catastrophe is a sudden, widespread disaster.",
+      "difficulty": "medium",
+      "id": "q77"
+    },
+    {
+      "type": "mcq",
+      "prompt": "'Comply' means:",
+      "options": [
+        "To obey a rule or request",
+        "To refuse",
+        "To ignore",
+        "To argue"
+      ],
+      "answer": 0,
+      "explanation": "Comply means to act in accordance with instructions.",
+      "difficulty": "easy",
+      "id": "q78"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What does 'notion' mean?",
+      "options": [
+        "A belief or idea",
+        "A fact",
+        "A law",
+        "A machine"
+      ],
+      "answer": 0,
+      "explanation": "A notion is an idea or belief about something.",
+      "difficulty": "easy",
+      "id": "q79"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What does 'barren' mean?",
+      "options": [
+        "Unable to produce crops or offspring",
+        "Fertile",
+        "Productive",
+        "Green"
+      ],
+      "answer": 0,
+      "explanation": "Barren land yields no crops; a barren person cannot bear children.",
+      "difficulty": "medium",
+      "id": "q80"
+    },
+    {
+      "type": "mcq",
+      "prompt": "'Fathom' means:",
+      "options": [
+        "To understand deeply",
+        "To ignore",
+        "To forget",
+        "To measure quickly"
+      ],
+      "answer": 0,
+      "explanation": "Fathom means to comprehend or grasp fully.",
+      "difficulty": "hard",
+      "id": "q81"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What does 'futile' mean?",
+      "options": [
+        "Pointless and useless",
+        "Successful",
+        "Useful",
+        "Valuable"
+      ],
+      "answer": 0,
+      "explanation": "Futile means incapable of producing a useful result.",
+      "difficulty": "medium",
+      "id": "q82"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The word 'vivid' most nearly means:",
+      "options": [
+        "Bright and distinct",
+        "Dull",
+        "Grey",
+        "Blurred"
+      ],
+      "answer": 0,
+      "explanation": "Vivid means producing strong, clear images in the mind.",
+      "difficulty": "easy",
+      "id": "q83"
+    },
+    {
+      "type": "mcq",
+      "prompt": "'Murky' means:",
+      "options": [
+        "Dark, cloudy or unclear",
+        "Clear",
+        "Bright",
+        "Pure"
+      ],
+      "answer": 0,
+      "explanation": "Murky means dark, dim or difficult to see through.",
+      "difficulty": "medium",
+      "id": "q84"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What does 'dwell' mean?",
+      "options": [
+        "To live or reside",
+        "To leave",
+        "To travel",
+        "To vanish"
+      ],
+      "answer": 0,
+      "explanation": "Dwell means to live in a place.",
+      "difficulty": "easy",
+      "id": "q85"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The word 'nimble' most nearly means:",
+      "options": [
+        "Quick and light in movement",
+        "Slow",
+        "Clumsy",
+        "Heavy"
+      ],
+      "answer": 0,
+      "explanation": "Nimble means agile and quick-moving.",
+      "difficulty": "medium",
+      "id": "q86"
+    },
+    {
+      "type": "mcq",
+      "prompt": "'Ardent' means:",
+      "options": [
+        "Passionate and enthusiastic",
+        "Indifferent",
+        "Cold",
+        "Lazy"
+      ],
+      "answer": 0,
+      "explanation": "Ardent means showing strong feeling or enthusiasm.",
+      "difficulty": "medium",
+      "id": "q87"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What does 'bias' mean?",
+      "options": [
+        "Prejudice or partiality",
+        "Fairness",
+        "Neutrality",
+        "Balance"
+      ],
+      "answer": 0,
+      "explanation": "Bias is an unfair preference for or against something.",
+      "difficulty": "easy",
+      "id": "q88"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The word 'dismal' most nearly means:",
+      "options": [
+        "Gloomy and depressing",
+        "Cheerful",
+        "Bright",
+        "Hopeful"
+      ],
+      "answer": 0,
+      "explanation": "Dismal means depressing or miserable.",
+      "difficulty": "medium",
+      "id": "q89"
+    },
+    {
+      "type": "mcq",
+      "prompt": "'Coerce' means:",
+      "options": [
+        "To force someone to do something",
+        "To encourage",
+        "To invite",
+        "To help"
+      ],
+      "answer": 0,
+      "explanation": "Coerce means to compel by force or threats.",
+      "difficulty": "medium",
+      "id": "q90"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What does 'thrive' mean?",
+      "options": [
+        "To grow and prosper",
+        "To fail",
+        "To wither",
+        "To decline"
+      ],
+      "answer": 0,
+      "explanation": "Thrive means to grow or develop well.",
+      "difficulty": "easy",
+      "id": "q91"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The word 'subtle' most nearly means:",
+      "options": [
+        "Fine, delicate or not obvious",
+        "Loud",
+        "Obvious",
+        "Rough"
+      ],
+      "answer": 0,
+      "explanation": "Subtle means so slight as to be hard to notice.",
+      "difficulty": "medium",
+      "id": "q92"
+    },
+    {
+      "type": "mcq",
+      "prompt": "'Conspiracy' means:",
+      "options": [
+        "A secret plan by a group",
+        "A public meeting",
+        "An accident",
+        "A celebration"
+      ],
+      "answer": 0,
+      "explanation": "A conspiracy is a secret plot by a group.",
+      "difficulty": "medium",
+      "id": "q93"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What does 'deliberate' mean?",
+      "options": [
+        "Done on purpose",
+        "Accidental",
+        "Unintentional",
+        "Careless"
+      ],
+      "answer": 0,
+      "explanation": "Deliberate means intentional and carefully considered.",
+      "difficulty": "easy",
+      "id": "q94"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The word 'feasible' most nearly means:",
+      "options": [
+        "Possible and practical",
+        "Impossible",
+        "Difficult",
+        "Risky"
+      ],
+      "answer": 0,
+      "explanation": "Feasible means capable of being done successfully.",
+      "difficulty": "medium",
+      "id": "q95"
+    },
+    {
+      "type": "mcq",
+      "prompt": "'Imminent' means:",
+      "options": [
+        "About to happen very soon",
+        "Far in the future",
+        "Unlikely",
+        "Already past"
+      ],
+      "answer": 0,
+      "explanation": "Imminent means likely to occur at any moment.",
+      "difficulty": "medium",
+      "id": "q96"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The word 'arduous' most nearly means:",
+      "options": [
+        "Demanding great effort",
+        "Effortless",
+        "Simple",
+        "Easy"
+      ],
+      "answer": 0,
+      "explanation": "Arduous means involving strenuous effort.",
+      "difficulty": "medium",
+      "id": "q97"
+    },
+    {
+      "type": "mcq",
+      "prompt": "'Vacant' means:",
+      "options": [
+        "Empty and unoccupied",
+        "Full",
+        "Crowded",
+        "Busy"
+      ],
+      "answer": 0,
+      "explanation": "Vacant means not occupied or in use.",
+      "difficulty": "easy",
+      "id": "q98"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What does 'frugal' mean?",
+      "options": [
+        "Sparing or economical",
+        "Wasteful",
+        "Extravagant",
+        "Lavish"
+      ],
+      "answer": 0,
+      "explanation": "Frugal means careful with money or resources.",
+      "difficulty": "medium",
+      "id": "q99"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The word 'vulnerable' most nearly means:",
+      "options": [
+        "Open to attack or harm",
+        "Protected",
+        "Invincible",
+        "Safe"
+      ],
+      "answer": 0,
+      "explanation": "Vulnerable means susceptible to harm.",
+      "difficulty": "medium",
+      "id": "q100"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What does 'deteriorate' mean?",
+      "options": [
+        "To become progressively worse",
+        "To improve",
+        "To stabilise",
+        "To grow"
+      ],
+      "answer": 0,
+      "explanation": "Deteriorate means to decline in quality or value.",
+      "difficulty": "medium",
+      "id": "q101"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The word 'reluctant' most nearly means:",
+      "options": [
+        "Unwilling or hesitant",
+        "Eager",
+        "Ready",
+        "Keen"
+      ],
+      "answer": 0,
+      "explanation": "Reluctant means showing unwillingness.",
+      "difficulty": "easy",
+      "id": "q102"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What does 'pragmatic' mean?",
+      "options": [
+        "Practical and realistic",
+        "Idealistic",
+        "Impractical",
+        "Naive"
+      ],
+      "answer": 0,
+      "explanation": "Pragmatic means dealing with things practically.",
+      "difficulty": "medium",
+      "id": "q103"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The word 'zealous' most nearly means:",
+      "options": [
+        "Eager and passionate",
+        "Indifferent",
+        "Lazy",
+        "Calm"
+      ],
+      "answer": 0,
+      "explanation": "Zealous means full of enthusiasm and devotion.",
+      "difficulty": "medium",
+      "id": "q104"
+    },
+    {
+      "type": "mcq",
+      "prompt": "'Tedious' means:",
+      "options": [
+        "Long and boring",
+        "Exciting",
+        "Brief",
+        "Interesting"
+      ],
+      "answer": 0,
+      "explanation": "Tedious means tiresome because of length or dullness.",
+      "difficulty": "medium",
+      "id": "q105"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What does 'punctual' mean?",
+      "options": [
+        "Arriving on time",
+        "Late",
+        "Lazy",
+        "Forgetful"
+      ],
+      "answer": 0,
+      "explanation": "Punctual means being on time.",
+      "difficulty": "easy",
+      "id": "q106"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The word 'hostile' most nearly means:",
+      "options": [
+        "Unfriendly and aggressive",
+        "Friendly",
+        "Warm",
+        "Kind"
+      ],
+      "answer": 0,
+      "explanation": "Hostile means showing ill will or opposition.",
+      "difficulty": "easy",
+      "id": "q107"
+    },
+    {
+      "type": "mcq",
+      "prompt": "'Illuminate' means:",
+      "options": [
+        "To light up or clarify",
+        "To darken",
+        "To hide",
+        "To confuse"
+      ],
+      "answer": 0,
+      "explanation": "Illuminate means to make bright or explain clearly.",
+      "difficulty": "medium",
+      "id": "q108"
+    },
+    {
+      "type": "mcq",
+      "prompt": "'Persevere' means:",
+      "options": [
+        "To keep going despite difficulty",
+        "To give up",
+        "To hesitate",
+        "To pause"
+      ],
+      "answer": 0,
+      "explanation": "Persevere means to continue steadfastly.",
+      "difficulty": "medium",
+      "id": "q109"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What does 'tranquil' mean?",
+      "options": [
+        "Calm and peaceful",
+        "Loud",
+        "Busy",
+        "Restless"
+      ],
+      "answer": 0,
+      "explanation": "Tranquil means free from disturbance.",
+      "difficulty": "easy",
+      "id": "q110"
+    },
+    {
+      "type": "mcq",
+      "prompt": "'Ample' means:",
+      "options": [
+        "More than enough",
+        "Scarce",
+        "Insufficient",
+        "Tiny"
+      ],
+      "answer": 0,
+      "explanation": "Ample means plentiful or sufficient.",
+      "difficulty": "easy",
+      "id": "q111"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What does 'compassionate' mean?",
+      "options": [
+        "Feeling sympathy for others",
+        "Cruel",
+        "Indifferent",
+        "Selfish"
+      ],
+      "answer": 0,
+      "explanation": "Compassionate means showing deep sympathy.",
+      "difficulty": "easy",
+      "id": "q112"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The word 'evident' most nearly means:",
+      "options": [
+        "Clearly seen or understood",
+        "Hidden",
+        "Doubtful",
+        "Vague"
+      ],
+      "answer": 0,
+      "explanation": "Evident means plain and obvious.",
+      "difficulty": "easy",
+      "id": "q113"
+    },
+    {
+      "type": "mcq",
+      "prompt": "'Precaution' means:",
+      "options": [
+        "A step taken to prevent harm",
+        "A risk taken",
+        "An accident",
+        "A mistake"
+      ],
+      "answer": 0,
+      "explanation": "A precaution is an action taken to avoid danger.",
+      "difficulty": "easy",
+      "id": "q114"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What does 'remedy' mean?",
+      "options": [
+        "A cure or solution",
+        "A problem",
+        "A cause",
+        "A symptom"
+      ],
+      "answer": 0,
+      "explanation": "A remedy is a medicine or solution to a problem.",
+      "difficulty": "easy",
+      "id": "q115"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The word 'scarce' most nearly means:",
+      "options": [
+        "In short supply",
+        "Plentiful",
+        "Abundant",
+        "Common"
+      ],
+      "answer": 0,
+      "explanation": "Scarce means insufficient or rare.",
+      "difficulty": "easy",
+      "id": "q116"
+    },
+    {
+      "type": "mcq",
+      "prompt": "'Wary' means:",
+      "options": [
+        "Cautious and watchful",
+        "Careless",
+        "Confident",
+        "Reckless"
+      ],
+      "answer": 0,
+      "explanation": "Wary means on guard against danger.",
+      "difficulty": "medium",
+      "id": "q117"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What does 'concise' mean?",
+      "options": [
+        "Brief but complete",
+        "Long-winded",
+        "Wordy",
+        "Detailed"
+      ],
+      "answer": 0,
+      "explanation": "Concise means expressing much in few words.",
+      "difficulty": "medium",
+      "id": "q118"
+    }
+  ]
+}

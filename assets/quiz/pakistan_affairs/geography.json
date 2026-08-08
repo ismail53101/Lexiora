@@ -1,0 +1,1833 @@
+{
+  "bank": {
+    "name": "Geography",
+    "subject": "Pakistan Affairs",
+    "topic": "Geography",
+    "description": "Physical, political and economic geography of Pakistan: mountains, rivers, deserts, cities and borders.",
+    "tags": "css,pms,fpsc,pakistan-affairs,geography",
+    "version": "1.0",
+    "id": "pakistan_affairs_geography"
+  },
+  "questions": [
+    {
+      "type": "mcq",
+      "prompt": "What is the height of K2, the highest peak in Pakistan?",
+      "options": [
+        "8,611 metres",
+        "8,126 metres",
+        "7,788 metres",
+        "8,848 metres"
+      ],
+      "answer": 0,
+      "explanation": "K2, at 8,611 metres, is the second-highest mountain in the world and the highest in Pakistan.",
+      "difficulty": "easy",
+      "id": "q01"
+    },
+    {
+      "type": "mcq",
+      "prompt": "In which mountain range is K2 located?",
+      "options": [
+        "Himalayas",
+        "Karakoram",
+        "Hindu Kush",
+        "Salt Range"
+      ],
+      "answer": 1,
+      "explanation": "K2 lies in the Karakoram range in Gilgit-Baltistan.",
+      "difficulty": "medium",
+      "id": "q02"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which is the longest river of Pakistan?",
+      "options": [
+        "Jhelum",
+        "Indus",
+        "Chenab",
+        "Ravi"
+      ],
+      "answer": 1,
+      "explanation": "The Indus is about 2,900 km long, the longest river flowing through Pakistan.",
+      "difficulty": "easy",
+      "id": "q03"
+    },
+    {
+      "type": "mcq",
+      "prompt": "From where does the Indus River originate?",
+      "options": [
+        "India",
+        "Nepal",
+        "Tibet (China)",
+        "Afghanistan"
+      ],
+      "answer": 2,
+      "explanation": "The Indus originates near Lake Mansarovar in Tibet and enters Pakistan through Gilgit-Baltistan.",
+      "difficulty": "medium",
+      "id": "q04"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Tarbela Dam, one of the largest earth-filled dams in the world, is built on which river?",
+      "options": [
+        "Indus",
+        "Jhelum",
+        "Chenab",
+        "Ravi"
+      ],
+      "answer": 0,
+      "explanation": "Tarbela Dam is on the Indus River in Khyber Pakhtunkhwa.",
+      "difficulty": "easy",
+      "id": "q05"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Mangla Dam is constructed on which river?",
+      "options": [
+        "Indus",
+        "Jhelum",
+        "Chenab",
+        "Sutlej"
+      ],
+      "answer": 1,
+      "explanation": "Mangla Dam is on the Jhelum River in the Pothohar region.",
+      "difficulty": "easy",
+      "id": "q06"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Indus Water Treaty between Pakistan and India was signed in which year, with which international body's mediation?",
+      "options": [
+        "1950, UN",
+        "1958, IMF",
+        "1960, World Bank",
+        "1971, ADB"
+      ],
+      "answer": 2,
+      "explanation": "The Indus Water Treaty was signed on 19 September 1960 with the World Bank acting as mediator.",
+      "difficulty": "medium",
+      "id": "q07"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which is the largest province of Pakistan by area?",
+      "options": [
+        "Punjab",
+        "Sindh",
+        "Khyber Pakhtunkhwa",
+        "Balochistan"
+      ],
+      "answer": 3,
+      "explanation": "Balochistan is the largest province by area, covering about 44% of Pakistan's total area.",
+      "difficulty": "easy",
+      "id": "q08"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which province of Pakistan has the largest population?",
+      "options": [
+        "Punjab",
+        "Sindh",
+        "Khyber Pakhtunkhwa",
+        "Balochistan"
+      ],
+      "answer": 0,
+      "explanation": "Punjab is the most populous province of Pakistan.",
+      "difficulty": "easy",
+      "id": "q09"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Thar Desert is located in which province?",
+      "options": [
+        "Punjab",
+        "Khyber Pakhtunkhwa",
+        "Balochistan",
+        "Sindh"
+      ],
+      "answer": 3,
+      "explanation": "The Thar Desert lies in the southeast of Sindh province.",
+      "difficulty": "medium",
+      "id": "q10"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Khyber Pass connects Pakistan with which country?",
+      "options": [
+        "Afghanistan",
+        "Iran",
+        "China",
+        "India"
+      ],
+      "answer": 0,
+      "explanation": "The Khyber Pass links Pakistan with Afghanistan through the Hindu Kush.",
+      "difficulty": "easy",
+      "id": "q11"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Durand Line is the border between Pakistan and which country?",
+      "options": [
+        "Afghanistan",
+        "Iran",
+        "China",
+        "India"
+      ],
+      "answer": 0,
+      "explanation": "The Durand Line demarcates the Pakistan-Afghanistan border.",
+      "difficulty": "easy",
+      "id": "q12"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Khunjerab Pass connects Pakistan with which country?",
+      "options": [
+        "India",
+        "Afghanistan",
+        "Iran",
+        "China"
+      ],
+      "answer": 3,
+      "explanation": "The Khunjerab Pass, on the Karakoram Highway, connects Pakistan with China.",
+      "difficulty": "medium",
+      "id": "q13"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What is the capital city of Pakistan?",
+      "options": [
+        "Karachi",
+        "Lahore",
+        "Islamabad",
+        "Peshawar"
+      ],
+      "answer": 2,
+      "explanation": "Islamabad became the capital of Pakistan in the 1960s, replacing Karachi.",
+      "difficulty": "easy",
+      "id": "q14"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which city is the largest and the financial hub of Pakistan?",
+      "options": [
+        "Karachi",
+        "Lahore",
+        "Islamabad",
+        "Faisalabad"
+      ],
+      "answer": 0,
+      "explanation": "Karachi is Pakistan's largest city and its main financial and commercial centre.",
+      "difficulty": "easy",
+      "id": "q15"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The famous Khewra salt mine is located in which province?",
+      "options": [
+        "Punjab",
+        "Sindh",
+        "Khyber Pakhtunkhwa",
+        "Balochistan"
+      ],
+      "answer": 0,
+      "explanation": "Khewra salt mine, in the Salt Range of Punjab, is the second-largest salt mine in the world.",
+      "difficulty": "medium",
+      "id": "q16"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Manchar Lake, the largest freshwater lake of Pakistan, is situated in which province?",
+      "options": [
+        "Punjab",
+        "Balochistan",
+        "Khyber Pakhtunkhwa",
+        "Sindh"
+      ],
+      "answer": 3,
+      "explanation": "Manchar Lake lies in Sindh, about 30 km west of Sehwan.",
+      "difficulty": "hard",
+      "id": "q17"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Gwadar, Pakistan's deep-sea port, is located in which province?",
+      "options": [
+        "Sindh",
+        "Punjab",
+        "Khyber Pakhtunkhwa",
+        "Balochistan"
+      ],
+      "answer": 3,
+      "explanation": "Gwadar port is on the Makran coast of Balochistan and is the centrepiece of CPEC.",
+      "difficulty": "easy",
+      "id": "q18"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Faisalabad is popularly known as the?",
+      "options": [
+        "City of Lights",
+        "City of Colleges",
+        "Manchester of Pakistan",
+        "City of Gardens"
+      ],
+      "answer": 2,
+      "explanation": "Faisalabad, a major textile centre, is called the 'Manchester of Pakistan'.",
+      "difficulty": "medium",
+      "id": "q19"
+    },
+    {
+      "type": "mcq",
+      "prompt": "How many provinces does Pakistan have?",
+      "options": [
+        "3",
+        "4",
+        "5",
+        "6"
+      ],
+      "answer": 1,
+      "explanation": "Pakistan has four provinces: Punjab, Sindh, Khyber Pakhtunkhwa and Balochistan, plus federal territories.",
+      "difficulty": "easy",
+      "id": "q20"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which sea lies to the south of Pakistan?",
+      "options": [
+        "Bay of Bengal",
+        "Red Sea",
+        "Persian Gulf",
+        "Arabian Sea"
+      ],
+      "answer": 3,
+      "explanation": "The Arabian Sea borders Pakistan's southern coastline.",
+      "difficulty": "easy",
+      "id": "q21"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The world's highest battlefield, Siachen, lies in which region?",
+      "options": [
+        "The Kashmir region",
+        "Thar",
+        "Makran",
+        "Cholistan"
+      ],
+      "answer": 0,
+      "explanation": "The Siachen Glacier, at about 6,400 metres, is the world's highest battlefield and lies in the disputed Kashmir region.",
+      "difficulty": "hard",
+      "id": "q22"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which is the most populous province of Pakistan?",
+      "options": [
+        "Punjab",
+        "Sindh",
+        "Khyber Pakhtunkhwa",
+        "Balochistan"
+      ],
+      "answer": 0,
+      "explanation": "Punjab is the most populous province, with over half of Pakistan's population.",
+      "difficulty": "easy",
+      "id": "q23"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which river forms the natural border between Pakistan and India in Punjab?",
+      "options": [
+        "Ravi",
+        "Indus",
+        "Chenab",
+        "Jhelum"
+      ],
+      "answer": 0,
+      "explanation": "The Ravi river runs along part of the India-Pakistan border in Punjab.",
+      "difficulty": "medium",
+      "id": "q24"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The highest peak of Pakistan and the second highest in the world is?",
+      "options": [
+        "K2 (8,611 m)",
+        "Nanga Parbat",
+        "Broad Peak",
+        "Gasherbrum I"
+      ],
+      "answer": 0,
+      "explanation": "K2 (Mount Godwin-Austen), 8,611 m, is the world's second-highest peak.",
+      "difficulty": "easy",
+      "id": "q25"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which is the largest glacier of Pakistan outside the polar regions?",
+      "options": [
+        "Siachen Glacier",
+        "Biafo Glacier",
+        "Baltoro Glacier",
+        "Hispar Glacier"
+      ],
+      "answer": 0,
+      "explanation": "The Siachen Glacier, about 76 km, is the longest glacier in the Karakoram range.",
+      "difficulty": "medium",
+      "id": "q26"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Karakoram Highway connects Pakistan with which country?",
+      "options": [
+        "China",
+        "India",
+        "Afghanistan",
+        "Iran"
+      ],
+      "answer": 0,
+      "explanation": "The KKH links Pakistan's Gilgit-Baltistan with China's Xinjiang via the Khunjerab Pass.",
+      "difficulty": "easy",
+      "id": "q27"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Khunjerab Pass is the highest paved international border crossing in the world, at about?",
+      "options": [
+        "4,693 m",
+        "3,000 m",
+        "5,500 m",
+        "2,500 m"
+      ],
+      "answer": 0,
+      "explanation": "The Khunjerab Pass sits at about 4,693 metres between Pakistan and China.",
+      "difficulty": "hard",
+      "id": "q28"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which is the second largest city of Pakistan?",
+      "options": [
+        "Lahore",
+        "Faisalabad",
+        "Multan",
+        "Peshawar"
+      ],
+      "answer": 0,
+      "explanation": "Lahore, the capital of Punjab, is the second largest city.",
+      "difficulty": "easy",
+      "id": "q29"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Indus River originates from which region?",
+      "options": [
+        "Tibet (Mount Kailash area)",
+        "The Karakoram",
+        "The Himalayas only",
+        "The Hindu Kush"
+      ],
+      "answer": 0,
+      "explanation": "The Indus rises near Mount Kailash in Tibet and flows through Kashmir and Pakistan.",
+      "difficulty": "medium",
+      "id": "q30"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which river is called the 'Nile of Pakistan'?",
+      "options": [
+        "The Indus",
+        "The Chenab",
+        "The Jhelum",
+        "The Ravi"
+      ],
+      "answer": 0,
+      "explanation": "The Indus, Pakistan's lifeline, is sometimes called the Nile of Pakistan.",
+      "difficulty": "easy",
+      "id": "q31"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The 'Cholistan Desert' is located in which province?",
+      "options": [
+        "Punjab",
+        "Sindh",
+        "Balochistan",
+        "Khyber Pakhtunkhwa"
+      ],
+      "answer": 0,
+      "explanation": "Cholistan (Rohi) lies in southern Punjab near Bahawalpur.",
+      "difficulty": "easy",
+      "id": "q32"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The 'Kharan Desert' is in which province?",
+      "options": [
+        "Balochistan",
+        "Punjab",
+        "Sindh",
+        "Khyber Pakhtunkhwa"
+      ],
+      "answer": 0,
+      "explanation": "The Kharan Desert is in western Balochistan.",
+      "difficulty": "medium",
+      "id": "q33"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The 'Hingol National Park', Pakistan's largest, is in?",
+      "options": [
+        "Balochistan",
+        "Punjab",
+        "Sindh",
+        "Gilgit-Baltistan"
+      ],
+      "answer": 0,
+      "explanation": "Hingol National Park lies along Balochistan's Makran coast.",
+      "difficulty": "medium",
+      "id": "q34"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which mountain pass connects Pakistan with Afghanistan?",
+      "options": [
+        "Khyber Pass",
+        "Khunjerab Pass",
+        "Bolan Pass",
+        "Lowari Pass"
+      ],
+      "answer": 0,
+      "explanation": "The Khyber Pass links Peshawar with Jalalabad, Afghanistan.",
+      "difficulty": "easy",
+      "id": "q35"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The 'Bolan Pass' connects which regions?",
+      "options": [
+        "Quetta with Sindh/Punjab",
+        "Peshawar with Kabul",
+        "Gilgit with China",
+        "Karachi with Gwadar"
+      ],
+      "answer": 0,
+      "explanation": "The Bolan Pass links Quetta (Balochistan) with the Indus plains.",
+      "difficulty": "medium",
+      "id": "q36"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which city is known as the 'City of Colleges'?",
+      "options": [
+        "Lahore",
+        "Faisalabad",
+        "Multan",
+        "Sialkot"
+      ],
+      "answer": 0,
+      "explanation": "Lahore is historically called the City of Colleges for its educational institutions.",
+      "difficulty": "medium",
+      "id": "q37"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The 'Kaghan Valley' is located in which province?",
+      "options": [
+        "Khyber Pakhtunkhwa",
+        "Punjab",
+        "Gilgit-Baltistan",
+        "Balochistan"
+      ],
+      "answer": 0,
+      "explanation": "Kaghan Valley lies in Mansehra district, Khyber Pakhtunkhwa.",
+      "difficulty": "medium",
+      "id": "q38"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The 'Naran' and 'Kaghan' tourist areas are near which lake?",
+      "options": [
+        "Saif-ul-Mulook Lake",
+        "Manchar Lake",
+        "Keenjhar Lake",
+        "Hanna Lake"
+      ],
+      "answer": 0,
+      "explanation": "Saif-ul-Mulook Lake, at Naran, is famed for its beauty and legends.",
+      "difficulty": "easy",
+      "id": "q39"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which is the highest lake of Pakistan?",
+      "options": [
+        "Kachura (Skardu) area lakes are high; Rush Lake in Hunza is among the highest",
+        "Manchar",
+        "Keenjhar",
+        "Hanna"
+      ],
+      "answer": 0,
+      "explanation": "Rush Lake in Nagar/Hunza, at about 4,700 m, is among the world's highest lakes.",
+      "difficulty": "hard",
+      "id": "q40"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The 'Attabad Lake' was formed in 2010 due to?",
+      "options": [
+        "A landslide blocking the Hunza River",
+        "A volcanic eruption",
+        "A glacier surge only",
+        "An earthquake in the sea"
+      ],
+      "answer": 0,
+      "explanation": "The Attabad landslide in 2010 dammed the Hunza River, creating the lake.",
+      "difficulty": "medium",
+      "id": "q41"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which province has the longest coastline of Pakistan?",
+      "options": [
+        "Balochistan",
+        "Sindh",
+        "Punjab",
+        "Khyber Pakhtunkhwa"
+      ],
+      "answer": 0,
+      "explanation": "Balochistan's Makran coast is about 770 km, longer than Sindh's coastline.",
+      "difficulty": "medium",
+      "id": "q42"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The 'Rann of Kutch' lies on the border of?",
+      "options": [
+        "Sindh and India (Gujarat)",
+        "Punjab and India",
+        "Balochistan and Iran",
+        "KP and Afghanistan"
+      ],
+      "answer": 0,
+      "explanation": "The Rann of Kutch salt marsh straddles the Sindh-Gujarat border.",
+      "difficulty": "medium",
+      "id": "q43"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which city of Pakistan is called the 'Manchester of the East'?",
+      "options": [
+        "Faisalabad",
+        "Karachi",
+        "Lahore",
+        "Multan"
+      ],
+      "answer": 0,
+      "explanation": "Faisalabad, a textile hub, is called the Manchester of Pakistan/the East.",
+      "difficulty": "easy",
+      "id": "q44"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The 'Khewra Salt Mine' is the world's?",
+      "options": [
+        "Second largest salt mine",
+        "Largest salt mine",
+        "Deepest mine",
+        "Oldest coal mine"
+      ],
+      "answer": 0,
+      "explanation": "Khewra in Punjab is the world's second-largest salt mine.",
+      "difficulty": "easy",
+      "id": "q45"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The 'Thar' and 'Thal' are both?",
+      "options": [
+        "Deserts of Pakistan (Sindh and Punjab)",
+        "Rivers",
+        "Mountains",
+        "Lakes"
+      ],
+      "answer": 0,
+      "explanation": "Thar is in Sindh and Thal is in Punjab — both are deserts.",
+      "difficulty": "easy",
+      "id": "q46"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The 'Deosai National Park', the second-highest plateau in the world, is in?",
+      "options": [
+        "Gilgit-Baltistan",
+        "Balochistan",
+        "Punjab",
+        "Sindh"
+      ],
+      "answer": 0,
+      "explanation": "Deosai, at about 4,114 m, lies in Gilgit-Baltistan.",
+      "difficulty": "easy",
+      "id": "q47"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which is the largest lake in Pakistan?",
+      "options": [
+        "Manchar Lake",
+        "Haleji Lake",
+        "Keenjhar Lake",
+        "Saiful Muluk"
+      ],
+      "answer": 0,
+      "explanation": "Manchar Lake in Sindh is the largest freshwater lake of Pakistan.",
+      "difficulty": "easy",
+      "id": "q48"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Karakoram Highway was completed in which year?",
+      "options": [
+        "1978",
+        "1982",
+        "1971",
+        "1965"
+      ],
+      "answer": 0,
+      "explanation": "The KKH was completed and opened to traffic in 1978.",
+      "difficulty": "medium",
+      "id": "q49"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which is the largest desert of Pakistan?",
+      "options": [
+        "Cholistan",
+        "Thar",
+        "Thal",
+        "Kharan"
+      ],
+      "answer": 1,
+      "explanation": "The Thar Desert is Pakistan's largest desert.",
+      "difficulty": "easy",
+      "id": "q50"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Kirthar mountain range lies in which province?",
+      "options": [
+        "Sindh",
+        "Balochistan",
+        "Punjab",
+        "KPK"
+      ],
+      "answer": 0,
+      "explanation": "The Kirthar range runs through Sindh and Balochistan.",
+      "difficulty": "medium",
+      "id": "q51"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Indus River enters Pakistan from which direction?",
+      "options": [
+        "From the north (Kashmir)",
+        "From the east",
+        "From the west",
+        "From the south"
+      ],
+      "answer": 0,
+      "explanation": "The Indus enters Pakistan flowing from the north.",
+      "difficulty": "easy",
+      "id": "q52"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Chashma Barrage is constructed on which river?",
+      "options": [
+        "Indus",
+        "Jhelum",
+        "Chenab",
+        "Ravi"
+      ],
+      "answer": 0,
+      "explanation": "Chashma Barrage is on the Indus River.",
+      "difficulty": "medium",
+      "id": "q53"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The highest mountain in Pakistan is:",
+      "options": [
+        "K2",
+        "Nanga Parbat",
+        "Rakaposhi",
+        "Tirich Mir"
+      ],
+      "answer": 0,
+      "explanation": "K2 (8,611 m) is the highest peak in Pakistan.",
+      "difficulty": "easy",
+      "id": "q54"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Indus River delta is located in:",
+      "options": [
+        "Sindh",
+        "Balochistan",
+        "Punjab",
+        "Gilgit-Baltistan"
+      ],
+      "answer": 0,
+      "explanation": "The Indus delta lies in southern Sindh near the Arabian Sea.",
+      "difficulty": "easy",
+      "id": "q55"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Makran coastal highway connects Karachi with:",
+      "options": [
+        "Gwadar",
+        "Lahore",
+        "Peshawar",
+        "Hyderabad"
+      ],
+      "answer": 0,
+      "explanation": "The Makran Coastal Highway links Karachi to Gwadar.",
+      "difficulty": "easy",
+      "id": "q56"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The city of Quetta is located in which valley?",
+      "options": [
+        "Quetta Valley",
+        "Peshawar Valley",
+        "Kaghan Valley",
+        "Swat Valley"
+      ],
+      "answer": 0,
+      "explanation": "Quetta sits in the Quetta Valley of Balochistan.",
+      "difficulty": "easy",
+      "id": "q57"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Jhelum River is a tributary of:",
+      "options": [
+        "The Chenab",
+        "The Indus",
+        "The Ravi",
+        "The Sutlej"
+      ],
+      "answer": 0,
+      "explanation": "The Jhelum joins the Chenab near Trimmu.",
+      "difficulty": "medium",
+      "id": "q58"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Sindhu River is another name for:",
+      "options": [
+        "The Indus",
+        "The Chenab",
+        "The Kabul",
+        "The Ravi"
+      ],
+      "answer": 0,
+      "explanation": "Sindhu is the ancient name of the Indus.",
+      "difficulty": "easy",
+      "id": "q59"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Bolan Pass is located in which province?",
+      "options": [
+        "Balochistan",
+        "Sindh",
+        "Punjab",
+        "KPK"
+      ],
+      "answer": 0,
+      "explanation": "The Bolan Pass is in Balochistan.",
+      "difficulty": "easy",
+      "id": "q60"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The famous Lalazar plateau is located near:",
+      "options": [
+        "Kaghan Valley",
+        "Naran",
+        "Skardu",
+        "Ziarat"
+      ],
+      "answer": 0,
+      "explanation": "Lalazar, known as the 'plateau of flowers', is near Kaghan.",
+      "difficulty": "hard",
+      "id": "q61"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Neelum River flows through which region?",
+      "options": [
+        "Azad Kashmir",
+        "Gilgit-Baltistan",
+        "Punjab",
+        "Sindh"
+      ],
+      "answer": 0,
+      "explanation": "The Neelum (Kishanganga) River flows through Azad Kashmir.",
+      "difficulty": "medium",
+      "id": "q62"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Jinnah Barrage is located near which city?",
+      "options": [
+        "Kalabagh",
+        "Sukkur",
+        "Hyderabad",
+        "Multan"
+      ],
+      "answer": 0,
+      "explanation": "The Jinnah Barrage is near Kalabagh on the Indus.",
+      "difficulty": "medium",
+      "id": "q63"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Gulf of Oman is located to the south of which province?",
+      "options": [
+        "Balochistan",
+        "Sindh",
+        "Punjab",
+        "KPK"
+      ],
+      "answer": 0,
+      "explanation": "The Makran coast of Balochistan borders the Gulf of Oman.",
+      "difficulty": "easy",
+      "id": "q64"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The famous Thar Desert extends into which Indian state?",
+      "options": [
+        "Rajasthan",
+        "Gujarat",
+        "Punjab (India)",
+        "Haryana"
+      ],
+      "answer": 0,
+      "explanation": "The Thar spans Sindh and Rajasthan.",
+      "difficulty": "easy",
+      "id": "q65"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The highest peak of the Hindu Kush range in Pakistan is:",
+      "options": [
+        "Tirich Mir",
+        "K2",
+        "Nanga Parbat",
+        "Rakaposhi"
+      ],
+      "answer": 0,
+      "explanation": "Tirich Mir (7,708 m) is the highest in the Hindu Kush.",
+      "difficulty": "medium",
+      "id": "q66"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Indus Waters flow mainly through which province?",
+      "options": [
+        "Punjab",
+        "Sindh",
+        "Balochistan",
+        "KPK"
+      ],
+      "answer": 0,
+      "explanation": "The Indus and its tributaries mainly irrigate Punjab.",
+      "difficulty": "easy",
+      "id": "q67"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Hub Dam supplies water to which city?",
+      "options": [
+        "Karachi",
+        "Hyderabad",
+        "Quetta",
+        "Sukkur"
+      ],
+      "answer": 0,
+      "explanation": "The Hub Dam provides drinking water to Karachi.",
+      "difficulty": "easy",
+      "id": "q68"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The 'Babusar Pass' connects:",
+      "options": [
+        "Kaghan Valley with Chilas",
+        "Quetta with Iran",
+        "Peshawar with Kabul",
+        "Lahore with Multan"
+      ],
+      "answer": 0,
+      "explanation": "Babusar Top links Kaghan with the Karakoram Highway near Chilas.",
+      "difficulty": "medium",
+      "id": "q69"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Panjnad River is formed by the confluence of:",
+      "options": [
+        "Sutlej, Beas, Ravi, Chenab and Jhelum",
+        "Only two rivers",
+        "Only the Indus",
+        "The Kabul and Swat"
+      ],
+      "answer": 0,
+      "explanation": "Panjnad (five rivers) is formed by the five rivers of Punjab.",
+      "difficulty": "medium",
+      "id": "q70"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Siachen Glacier is located in which region?",
+      "options": [
+        "Karakoram range",
+        "Hindu Kush",
+        "Sulaiman range",
+        "Kirthar range"
+      ],
+      "answer": 0,
+      "explanation": "The Siachen Glacier lies in the eastern Karakoram.",
+      "difficulty": "easy",
+      "id": "q71"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The 'Rani Kot Fort' is located in which province?",
+      "options": [
+        "Sindh",
+        "Punjab",
+        "Balochistan",
+        "KPK"
+      ],
+      "answer": 0,
+      "explanation": "Rani Kot, the largest fort in the world, is in Sindh.",
+      "difficulty": "medium",
+      "id": "q72"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The highest plateau of Pakistan is:",
+      "options": [
+        "Deosai Plains",
+        "Potohar Plateau",
+        "Balochistan Plateau",
+        "Thal Plateau"
+      ],
+      "answer": 0,
+      "explanation": "Deosai is the highest plateau, at about 4,114 m.",
+      "difficulty": "easy",
+      "id": "q73"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The 'Sulaiman Range' lies on the border of Pakistan with:",
+      "options": [
+        "Afghanistan",
+        "India",
+        "China",
+        "Iran"
+      ],
+      "answer": 0,
+      "explanation": "The Sulaiman Range runs along the Pakistan-Afghanistan border.",
+      "difficulty": "medium",
+      "id": "q74"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The 'Cholistan Desert' is also known as:",
+      "options": [
+        "Rohi",
+        "Thar",
+        "Registan",
+        "Dasht"
+      ],
+      "answer": 0,
+      "explanation": "Cholistan is locally called Rohi.",
+      "difficulty": "medium",
+      "id": "q75"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The 'Hingol River' flows through which province?",
+      "options": [
+        "Balochistan",
+        "Sindh",
+        "Punjab",
+        "KPK"
+      ],
+      "answer": 0,
+      "explanation": "The Hingol River is in Balochistan.",
+      "difficulty": "medium",
+      "id": "q76"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The 'Karakoram Pass' connects Pakistan with:",
+      "options": [
+        "China (via the Karakoram range)",
+        "Afghanistan",
+        "India",
+        "Iran"
+      ],
+      "answer": 0,
+      "explanation": "The Karakoram Pass historically linked to China.",
+      "difficulty": "medium",
+      "id": "q77"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The 'Tarbela Lake' is formed by:",
+      "options": [
+        "Tarbela Dam",
+        "Mangla Dam",
+        "Chashma Barrage",
+        "Hub Dam"
+      ],
+      "answer": 0,
+      "explanation": "Tarbela Lake is the reservoir of Tarbela Dam.",
+      "difficulty": "easy",
+      "id": "q78"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The 'Swat River' flows through which valley?",
+      "options": [
+        "Swat Valley",
+        "Kaghan Valley",
+        "Chitral Valley",
+        "Kashmir Valley"
+      ],
+      "answer": 0,
+      "explanation": "The Swat River drains the Swat Valley.",
+      "difficulty": "easy",
+      "id": "q79"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The 'Kharan' and 'Chagai' are districts of which province?",
+      "options": [
+        "Balochistan",
+        "Sindh",
+        "Punjab",
+        "KPK"
+      ],
+      "answer": 0,
+      "explanation": "Both districts are in Balochistan.",
+      "difficulty": "easy",
+      "id": "q80"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The 'Bolan River' passes through:",
+      "options": [
+        "The Bolan Pass",
+        "The Khyber Pass",
+        "The Khunjerab Pass",
+        "The Lowari Pass"
+      ],
+      "answer": 0,
+      "explanation": "The Bolan River flows through the Bolan Pass in Balochistan.",
+      "difficulty": "medium",
+      "id": "q81"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The 'Karakoram Highway' connects which two cities?",
+      "options": [
+        "Hasanabdal (Pakistan) to Kashgar (China)",
+        "Karachi to Gwadar",
+        "Lahore to Multan",
+        "Peshawar to Kabul"
+      ],
+      "answer": 0,
+      "explanation": "The KKH links Hasanabdal with Kashgar.",
+      "difficulty": "medium",
+      "id": "q82"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The 'Nanga Parbat' peak is also known as:",
+      "options": [
+        "The Killer Mountain",
+        "The Queen of the Hills",
+        "The White Mountain",
+        "The Silent Peak"
+      ],
+      "answer": 0,
+      "explanation": "Nanga Parbat is called the Killer Mountain.",
+      "difficulty": "medium",
+      "id": "q83"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The 'Ravi' river flows through which major Pakistani city?",
+      "options": [
+        "Lahore",
+        "Karachi",
+        "Peshawar",
+        "Quetta"
+      ],
+      "answer": 0,
+      "explanation": "The Ravi flows through Lahore.",
+      "difficulty": "easy",
+      "id": "q84"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The 'Keenjhar Lake' is located near:",
+      "options": [
+        "Thatta, Sindh",
+        "Lahore",
+        "Multan",
+        "Sukkur"
+      ],
+      "answer": 0,
+      "explanation": "Keenjhar Lake is near Thatta in Sindh.",
+      "difficulty": "medium",
+      "id": "q85"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The 'Ziarat Juniper Forest' is the second largest of its kind in:",
+      "options": [
+        "The world (juniper forest)",
+        "Pakistan only",
+        "Asia only",
+        "Balochistan only"
+      ],
+      "answer": 0,
+      "explanation": "Ziarat's juniper forest is the world's second largest.",
+      "difficulty": "medium",
+      "id": "q86"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The 'Gwadar Bay' lies at the junction of which two countries?",
+      "options": [
+        "Pakistan and Iran",
+        "Pakistan and China",
+        "Pakistan and India",
+        "Pakistan and Oman"
+      ],
+      "answer": 0,
+      "explanation": "Gwadar Bay is shared by Pakistan and Iran.",
+      "difficulty": "medium",
+      "id": "q87"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The 'Lowari Pass' connects Chitral with:",
+      "options": [
+        "Dir and Peshawar",
+        "Gilgit",
+        "Swat",
+        "Kashmir"
+      ],
+      "answer": 0,
+      "explanation": "Lowari Top links Chitral with Dir.",
+      "difficulty": "medium",
+      "id": "q88"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The 'Sir Creek' is a disputed estuary between Pakistan and:",
+      "options": [
+        "India",
+        "Iran",
+        "China",
+        "Oman"
+      ],
+      "answer": 0,
+      "explanation": "Sir Creek is a boundary dispute with India.",
+      "difficulty": "easy",
+      "id": "q89"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which of the following countries does NOT share a border with Pakistan?",
+      "options": [
+        "Nepal",
+        "China",
+        "Iran",
+        "Afghanistan"
+      ],
+      "answer": 0,
+      "explanation": "Nepal does not share a border with Pakistan; Pakistan borders China, India, Afghanistan and Iran.",
+      "difficulty": "easy",
+      "id": "q90"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The total length of Pakistan's coastline is approximately?",
+      "options": [
+        "1,050 km",
+        "700 km",
+        "1,400 km",
+        "2,000 km"
+      ],
+      "answer": 0,
+      "explanation": "Pakistan's coastline along the Arabian Sea is roughly 1,050 kilometres.",
+      "difficulty": "medium",
+      "id": "q91"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Shandur Pass is famous for being?",
+      "options": [
+        "The world's highest polo ground",
+        "The deepest gorge in Pakistan",
+        "The highest paved road",
+        "A major salt mining site"
+      ],
+      "answer": 0,
+      "explanation": "Shandur, between Chitral and Gilgit, hosts the world's highest polo ground.",
+      "difficulty": "medium",
+      "id": "q92"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Warsak Dam is constructed on which river?",
+      "options": [
+        "Kabul River",
+        "Indus River",
+        "Swat River",
+        "Jhelum River"
+      ],
+      "answer": 0,
+      "explanation": "Warsak Dam lies on the Kabul River near Peshawar.",
+      "difficulty": "medium",
+      "id": "q93"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Sukkur Barrage, originally called Lloyd Barrage, is built on which river?",
+      "options": [
+        "Indus",
+        "Chenab",
+        "Ravi",
+        "Sutlej"
+      ],
+      "answer": 0,
+      "explanation": "The Sukkur Barrage spans the Indus River and was completed in 1932.",
+      "difficulty": "medium",
+      "id": "q94"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Guddu Barrage is located on which river?",
+      "options": [
+        "Indus",
+        "Jhelum",
+        "Chenab",
+        "Kabul"
+      ],
+      "answer": 0,
+      "explanation": "The Guddu Barrage spans the Indus near Sukkur and Kashmore.",
+      "difficulty": "medium",
+      "id": "q95"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Kotri Barrage, also known as Ghulam Muhammad Barrage, is on which river?",
+      "options": [
+        "Indus",
+        "Indus at Hyderabad",
+        "Ravi",
+        "Sutlej"
+      ],
+      "answer": 0,
+      "explanation": "The Kotri Barrage on the Indus supplies water to Hyderabad and the delta region.",
+      "difficulty": "hard",
+      "id": "q96"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Marala Headworks is built on which river?",
+      "options": [
+        "Chenab",
+        "Jhelum",
+        "Ravi",
+        "Indus"
+      ],
+      "answer": 0,
+      "explanation": "Marala Headworks on the Chenab feeds the Upper Chenab Canal.",
+      "difficulty": "hard",
+      "id": "q97"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Rasul Barrage is located on which river?",
+      "options": [
+        "Jhelum",
+        "Chenab",
+        "Ravi",
+        "Sutlej"
+      ],
+      "answer": 0,
+      "explanation": "The Rasul Barrage spans the Jhelum River near Mandi Bahauddin.",
+      "difficulty": "hard",
+      "id": "q98"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Kabul River joins the Indus at which city?",
+      "options": [
+        "Attock",
+        "Peshawar",
+        "Nowshera",
+        "Mardan"
+      ],
+      "answer": 0,
+      "explanation": "The Kabul River meets the Indus at Attock.",
+      "difficulty": "medium",
+      "id": "q99"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Soan River flows through which city of Pakistan?",
+      "options": [
+        "Rawalpindi",
+        "Lahore",
+        "Multan",
+        "Quetta"
+      ],
+      "answer": 0,
+      "explanation": "The Soan River flows through the Rawalpindi-Islamabad region.",
+      "difficulty": "medium",
+      "id": "q100"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The city of Multan is known as?",
+      "options": [
+        "The City of Saints",
+        "The City of Colleges",
+        "The Manchester of Pakistan",
+        "The City of Gardens"
+      ],
+      "answer": 0,
+      "explanation": "Multan, with its many Sufi shrines, is called the City of Saints.",
+      "difficulty": "easy",
+      "id": "q101"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Peshawar is historically considered?",
+      "options": [
+        "One of the oldest living cities in South Asia",
+        "The youngest city of Pakistan",
+        "The capital of the Mughals",
+        "A purely modern settlement"
+      ],
+      "answer": 0,
+      "explanation": "Peshawar is regarded as one of the oldest living cities in South Asia.",
+      "difficulty": "medium",
+      "id": "q102"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The ancient city of Taxila is located in which province?",
+      "options": [
+        "Punjab",
+        "Khyber Pakhtunkhwa",
+        "Sindh",
+        "Balochistan"
+      ],
+      "answer": 0,
+      "explanation": "Taxila, a UNESCO World Heritage site, lies in Punjab near Rawalpindi.",
+      "difficulty": "easy",
+      "id": "q103"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The archaeological site of Harappa is located in which district?",
+      "options": [
+        "Sahiwal",
+        "Lahore",
+        "Multan",
+        "Sargodha"
+      ],
+      "answer": 0,
+      "explanation": "Harappa is in the Sahiwal district of Punjab.",
+      "difficulty": "medium",
+      "id": "q104"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Takht-i-Bahi, a Buddhist monastic complex, is located in which province?",
+      "options": [
+        "Khyber Pakhtunkhwa",
+        "Punjab",
+        "Sindh",
+        "Gilgit-Baltistan"
+      ],
+      "answer": 0,
+      "explanation": "Takht-i-Bahi near Mardan is a UNESCO site in Khyber Pakhtunkhwa.",
+      "difficulty": "medium",
+      "id": "q105"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Rakaposhi, one of the highest peaks in the world, is located in?",
+      "options": [
+        "Gilgit-Baltistan",
+        "Khyber Pakhtunkhwa",
+        "Azad Kashmir",
+        "Balochistan"
+      ],
+      "answer": 0,
+      "explanation": "Rakaposhi (7,788 m) stands in the Karakoram range of Gilgit-Baltistan.",
+      "difficulty": "medium",
+      "id": "q106"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Batura Glacier is located in which region?",
+      "options": [
+        "Gilgit-Baltistan",
+        "Sindh",
+        "Punjab",
+        "Balochistan"
+      ],
+      "answer": 0,
+      "explanation": "The Batura Glacier lies in the Karakoram range of Gilgit-Baltistan.",
+      "difficulty": "hard",
+      "id": "q107"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Margalla Hills surround which city?",
+      "options": [
+        "Islamabad",
+        "Peshawar",
+        "Rawalpindi",
+        "Abbottabad"
+      ],
+      "answer": 0,
+      "explanation": "The Margalla Hills rise on the northern edge of Islamabad.",
+      "difficulty": "easy",
+      "id": "q108"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Salt Range of Pakistan is famous for?",
+      "options": [
+        "Rock salt deposits",
+        "Gold mines",
+        "Coal fields",
+        "Marble quarries"
+      ],
+      "answer": 0,
+      "explanation": "The Salt Range in Punjab contains the famous rock salt deposits of Khewra.",
+      "difficulty": "medium",
+      "id": "q109"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Rawal Lake supplies drinking water to which city?",
+      "options": [
+        "Islamabad and Rawalpindi",
+        "Lahore",
+        "Faisalabad",
+        "Gujranwala"
+      ],
+      "answer": 0,
+      "explanation": "Rawal Lake on the Korang River serves the twin cities.",
+      "difficulty": "easy",
+      "id": "q110"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The city of Hyderabad in Pakistan is famous for?",
+      "options": [
+        "The tombs of the Talpur Mirs",
+        "The Badshahi Mosque",
+        "The Minar-e-Pakistan",
+        "The Shalimar Gardens"
+      ],
+      "answer": 0,
+      "explanation": "Hyderabad's notable landmarks include the Talpur-era monuments.",
+      "difficulty": "medium",
+      "id": "q111"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Changa Manga forest is located near which city?",
+      "options": [
+        "Lahore",
+        "Multan",
+        "Faisalabad",
+        "Sialkot"
+      ],
+      "answer": 0,
+      "explanation": "Changa Manga, one of the world's largest man-made forests, is near Lahore.",
+      "difficulty": "easy",
+      "id": "q112"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Saindak copper and gold project is located in which province?",
+      "options": [
+        "Balochistan",
+        "Sindh",
+        "Punjab",
+        "Khyber Pakhtunkhwa"
+      ],
+      "answer": 0,
+      "explanation": "The Saindak project lies in the Chagai district of Balochistan.",
+      "difficulty": "medium",
+      "id": "q113"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Reko Diq, one of the world's largest copper-gold deposits, is in?",
+      "options": [
+        "Balochistan",
+        "Gilgit-Baltistan",
+        "Punjab",
+        "Sindh"
+      ],
+      "answer": 0,
+      "explanation": "Reko Diq is located in the Chagai district of Balochistan.",
+      "difficulty": "medium",
+      "id": "q114"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Chromite in Pakistan is mainly mined in?",
+      "options": [
+        "Muslimbagh in Balochistan",
+        "Khewra in Punjab",
+        "Thatta in Sindh",
+        "Chitral in KP"
+      ],
+      "answer": 0,
+      "explanation": "Muslimbagh in Balochistan is Pakistan's principal chromite mining area.",
+      "difficulty": "hard",
+      "id": "q115"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Tobe Camp and Chitral are known for the mining of?",
+      "options": [
+        "Gemstones",
+        "Coal",
+        "Iron ore",
+        "Bauxite"
+      ],
+      "answer": 0,
+      "explanation": "Chitral and nearby areas are famous for gemstones such as emerald and topaz.",
+      "difficulty": "hard",
+      "id": "q116"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which river flows through the city of Hyderabad, Sindh?",
+      "options": [
+        "Indus",
+        "Ravi",
+        "Chenab",
+        "Sutlej"
+      ],
+      "answer": 0,
+      "explanation": "The Indus River flows through Hyderabad.",
+      "difficulty": "medium",
+      "id": "q117"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The district of Chitral is connected to the rest of Pakistan mainly through?",
+      "options": [
+        "Lowari Pass",
+        "Bolan Pass",
+        "Khyber Pass",
+        "Tochi Pass"
+      ],
+      "answer": 0,
+      "explanation": "The Lowari Pass links Chitral with Dir and the rest of Khyber Pakhtunkhwa.",
+      "difficulty": "medium",
+      "id": "q118"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Gomal Pass lies on the border between Pakistan and?",
+      "options": [
+        "Afghanistan",
+        "India",
+        "Iran",
+        "China"
+      ],
+      "answer": 0,
+      "explanation": "The Gomal Pass connects the Dera Ismail Khan region with Afghanistan.",
+      "difficulty": "medium",
+      "id": "q119"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Tochi Pass is located in which province?",
+      "options": [
+        "Khyber Pakhtunkhwa",
+        "Balochistan",
+        "Punjab",
+        "Sindh"
+      ],
+      "answer": 0,
+      "explanation": "The Tochi Pass lies in North Waziristan, Khyber Pakhtunkhwa.",
+      "difficulty": "hard",
+      "id": "q120"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Wagah border crossing connects Pakistan with which country?",
+      "options": [
+        "India",
+        "Afghanistan",
+        "Iran",
+        "China"
+      ],
+      "answer": 0,
+      "explanation": "Wagah, near Lahore, is the main land border crossing with India.",
+      "difficulty": "easy",
+      "id": "q121"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Torkham border crossing lies on the border with?",
+      "options": [
+        "Afghanistan",
+        "India",
+        "Iran",
+        "Tajikistan"
+      ],
+      "answer": 0,
+      "explanation": "Torkham is the Khyber Pass border point between Pakistan and Afghanistan.",
+      "difficulty": "easy",
+      "id": "q122"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Makran Coastal Range lies along which province's coast?",
+      "options": [
+        "Balochistan",
+        "Sindh",
+        "Punjab",
+        "Khyber Pakhtunkhwa"
+      ],
+      "answer": 0,
+      "explanation": "The Makran range runs along the Balochistan coastline.",
+      "difficulty": "medium",
+      "id": "q123"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The highest peak of the Sulaiman Range in Pakistan is?",
+      "options": [
+        "Takht-e-Sulaiman",
+        "Tirich Mir",
+        "Rakaposhi",
+        "Nanga Parbat"
+      ],
+      "answer": 0,
+      "explanation": "Takht-e-Sulaiman (3,487 m) is the highest peak of the Sulaiman Range.",
+      "difficulty": "hard",
+      "id": "q124"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Zaskar mountain range is located in?",
+      "options": [
+        "Gilgit-Baltistan and Ladakh",
+        "Sindh",
+        "Punjab",
+        "Balochistan"
+      ],
+      "answer": 0,
+      "explanation": "The Zaskar range lies in the eastern Karakoram region near Ladakh.",
+      "difficulty": "hard",
+      "id": "q125"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Swat Valley is famous for?",
+      "options": [
+        "Its Buddhist heritage and scenic beauty",
+        "Its salt mines",
+        "Its coal deposits",
+        "Its industrial zone"
+      ],
+      "answer": 0,
+      "explanation": "Swat is known for ancient Buddhist sites and its scenic valley.",
+      "difficulty": "easy",
+      "id": "q126"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The largest river of Sindh province is?",
+      "options": [
+        "Indus",
+        "Chenab",
+        "Jhelum",
+        "Ravi"
+      ],
+      "answer": 0,
+      "explanation": "The Indus is the principal river flowing through Sindh.",
+      "difficulty": "medium",
+      "id": "q127"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Lal Suhanra National Park is located in which province?",
+      "options": [
+        "Punjab",
+        "Sindh",
+        "Balochistan",
+        "Khyber Pakhtunkhwa"
+      ],
+      "answer": 0,
+      "explanation": "Lal Suhanra National Park lies in the Bahawalpur district of Punjab.",
+      "difficulty": "medium",
+      "id": "q128"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Khunjerab River forms part of the upper course of which river?",
+      "options": [
+        "Hunza River",
+        "Kabul River",
+        "Swat River",
+        "Soan River"
+      ],
+      "answer": 0,
+      "explanation": "The Khunjerab River is an upper tributary of the Hunza River.",
+      "difficulty": "hard",
+      "id": "q129"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Jhelum River originates from which spring?",
+      "options": [
+        "Verinag in Kashmir",
+        "Mount Kailash",
+        "Rakaposhi",
+        "Chitral"
+      ],
+      "answer": 0,
+      "explanation": "The Jhelum rises from the Verinag spring in Kashmir.",
+      "difficulty": "hard",
+      "id": "q130"
+    }
+  ]
+}

@@ -1,0 +1,1413 @@
+{
+  "bank": {
+    "name": "Quranic Facts & Revelation",
+    "subject": "Islamic Studies",
+    "topic": "Quranic Facts & Revelation",
+    "description": "How the Quran was revealed, compiled and preserved, plus key facts.",
+    "tags": "css,pms,fpsc,ppsc,nts,islamic-studies,quran,revelation",
+    "version": "1.0",
+    "id": "islamiat_quran_facts"
+  },
+  "questions": [
+    {
+      "type": "mcq",
+      "prompt": "The first revelation was received on which night?",
+      "options": [
+        "Laylat-ul-Qadr",
+        "Shab-e-Barat",
+        "Shab-e-Meraj",
+        "Eid night"
+      ],
+      "answer": 0,
+      "explanation": "The Quran began to be revealed on Laylat-ul-Qadr (the Night of Power) in Ramadan.",
+      "difficulty": "medium",
+      "id": "q01"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Under which caliph was the Quran first compiled into a single book (Mushaf)?",
+      "options": [
+        "Umar ibn al-Khattab",
+        "Abu Bakr al-Siddiq",
+        "Uthman ibn Affan",
+        "Ali ibn Abi Talib"
+      ],
+      "answer": 1,
+      "explanation": "Abu Bakr, on Umar's advice, ordered the first compilation of the Quran into a single Mushaf after the Battle of Yamama.",
+      "difficulty": "medium",
+      "id": "q02"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who was appointed by Abu Bakr to compile the Quran?",
+      "options": [
+        "Zaid bin Thabit",
+        "Ali ibn Abi Talib",
+        "Abdullah bin Masood",
+        "Ubayy bin Ka'b"
+      ],
+      "answer": 0,
+      "explanation": "Zaid bin Thabit, a young scribe of the Prophet (PBUH), was tasked with compiling the Quran.",
+      "difficulty": "medium",
+      "id": "q03"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who ordered the standardization of the Quranic script and sent copies to different cities?",
+      "options": [
+        "Abu Bakr",
+        "Umar",
+        "Uthman",
+        "Ali"
+      ],
+      "answer": 2,
+      "explanation": "Caliph Uthman standardized the Quranic text and distributed official copies to prevent recitation differences.",
+      "difficulty": "medium",
+      "id": "q04"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What is the first word of the first revelation?",
+      "options": [
+        "Bismillah",
+        "Iqra (Read)",
+        "Alhamdulillah",
+        "Qul"
+      ],
+      "answer": 1,
+      "explanation": "The first revealed word was 'Iqra' (Read), the opening of Surah Al-Alaq.",
+      "difficulty": "easy",
+      "id": "q05"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which Surah was revealed last according to most scholars?",
+      "options": [
+        "Surah Al-Nasr",
+        "Surah Al-Maidah",
+        "Surah Al-Baqarah",
+        "Surah At-Tawbah"
+      ],
+      "answer": 1,
+      "explanation": "Surah Al-Maidah, particularly its verse on completing the religion (5:3), is widely held to be among the last revealed.",
+      "difficulty": "hard",
+      "id": "q06"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What are the Makki (Makkan) Surahs?",
+      "options": [
+        "Revealed before the Hijrah",
+        "Revealed after the Hijrah",
+        "The longest surahs",
+        "Surahs about fasting"
+      ],
+      "answer": 0,
+      "explanation": "Makki Surahs were revealed before the Hijrah to Madinah; Madani Surahs after it.",
+      "difficulty": "easy",
+      "id": "q07"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which angel brought the revelation to the Prophet Muhammad (PBUH)?",
+      "options": [
+        "Isra'il",
+        "Jibra'il (Gabriel)",
+        "Mika'il",
+        "Israfil"
+      ],
+      "answer": 1,
+      "explanation": "Angel Jibra'il (Gabriel) delivered the Quran to the Prophet (PBUH).",
+      "difficulty": "easy",
+      "id": "q08"
+    },
+    {
+      "type": "mcq",
+      "prompt": "In which month was the Quran revealed?",
+      "options": [
+        "Muharram",
+        "Rajab",
+        "Ramadan",
+        "Shawwal"
+      ],
+      "answer": 2,
+      "explanation": "The Quran was revealed in Ramadan, the month in which fasting is prescribed (2:185).",
+      "difficulty": "easy",
+      "id": "q09"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What is 'Tarteel'?",
+      "options": [
+        "Slow, measured and beautiful recitation",
+        "Memorizing the Quran",
+        "Interpreting the Quran",
+        "Writing the Quran"
+      ],
+      "answer": 0,
+      "explanation": "Tarteel is the measured, melodious recitation of the Quran as commanded in 73:4.",
+      "difficulty": "medium",
+      "id": "q10"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What is 'Hifz' in the context of the Quran?",
+      "options": [
+        "Memorization of the Quran",
+        "Interpretation",
+        "Recitation with melody",
+        "Compilation"
+      ],
+      "answer": 0,
+      "explanation": "Hifz is the complete memorization of the Quran; a hafiz is one who has memorized it.",
+      "difficulty": "easy",
+      "id": "q11"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which was the first Surah revealed in full?",
+      "options": [
+        "Surah Al-Fatiha",
+        "Surah Al-Ikhlas",
+        "Surah Al-Falaq",
+        "Surah Al-Kawthar"
+      ],
+      "answer": 0,
+      "explanation": "Surah Al-Fatiha is generally regarded as the first Surah revealed in full.",
+      "difficulty": "hard",
+      "id": "q12"
+    },
+    {
+      "type": "mcq",
+      "prompt": "In which battle did about 70 Huffaz (memorizers of the Quran) of the Quran get martyred, prompting its compilation?",
+      "options": [
+        "Battle of Yamama",
+        "Battle of Badr",
+        "Battle of Uhud",
+        "Battle of Khandaq"
+      ],
+      "answer": 0,
+      "explanation": "The heavy loss of Huffaz at the Battle of Yamama (633 CE) led Umar to urge the compilation of the Quran.",
+      "difficulty": "hard",
+      "id": "q13"
+    },
+    {
+      "type": "mcq",
+      "prompt": "How many Sajdah (prostration) verses are there in the Quran?",
+      "options": [
+        "14",
+        "15",
+        "20",
+        "10"
+      ],
+      "answer": 1,
+      "explanation": "There are 15 verses of Sajdah (14 by some counts; 15 including the widely accepted 15th in Surah Al-Najm).",
+      "difficulty": "hard",
+      "id": "q14"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What is the meaning of the word 'Quran'?",
+      "options": [
+        "The Book",
+        "The Recitation",
+        "The Law",
+        "The Wisdom"
+      ],
+      "answer": 1,
+      "explanation": "Quran derives from the root qara'a, meaning to read or recite.",
+      "difficulty": "medium",
+      "id": "q15"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which Surah is called 'Al-Fatiha' for being the opening of the Quran?",
+      "options": [
+        "Surah Al-Falaq",
+        "Surah Al-Fatiha",
+        "Surah Al-Mulk",
+        "Surah Yaseen"
+      ],
+      "answer": 1,
+      "explanation": "Al-Fatiha means 'The Opening' — it is the first Surah and is recited in every unit of prayer.",
+      "difficulty": "easy",
+      "id": "q16"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What is the first chapter revealed in full after the initial five verses of Al-Alaq?",
+      "options": [
+        "Surah Al-Muzzammil",
+        "Surah Al-Muddaththir",
+        "Surah Al-Fatiha",
+        "Surah Ad-Duha"
+      ],
+      "answer": 1,
+      "explanation": "Surah Al-Muddaththir ('O you wrapped in garments') was among the earliest full Surahs revealed.",
+      "difficulty": "hard",
+      "id": "q17"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What is 'Tafsir'?",
+      "options": [
+        "Interpretation and commentary of the Quran",
+        "Memorization",
+        "Recitation",
+        "Translation only"
+      ],
+      "answer": 0,
+      "explanation": "Tafsir is the scholarly explanation and commentary of Quranic verses.",
+      "difficulty": "medium",
+      "id": "q18"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which companion of the Prophet (PBUH) was called 'Sayyid-ul-Qurra' (leader of the reciters)?",
+      "options": [
+        "Ubayy bin Ka'b",
+        "Abdullah bin Masood",
+        "Zaid bin Thabit",
+        "Salim Mawla Abi Hudhaifa"
+      ],
+      "answer": 0,
+      "explanation": "Ubayy bin Ka'b was renowned among the companions for his knowledge of Quranic recitation.",
+      "difficulty": "hard",
+      "id": "q19"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which small Surah is reported to equal one-third of the Quran in reward?",
+      "options": [
+        "Surah Al-Ikhlas",
+        "Surah Al-Kawthar",
+        "Surah Al-Asr",
+        "Surah An-Nasr"
+      ],
+      "answer": 0,
+      "explanation": "Reciting Surah Al-Ikhlas three times is said to carry the reward of reciting the whole Quran.",
+      "difficulty": "easy",
+      "id": "q20"
+    },
+    {
+      "type": "mcq",
+      "prompt": "How many times does the word 'Bismillah' appear in the Quran in total?",
+      "options": [
+        "112",
+        "113",
+        "114",
+        "115"
+      ],
+      "answer": 2,
+      "explanation": "Bismillah appears 114 times — once at the start of every Surah except At-Tawbah, and twice in An-Naml.",
+      "difficulty": "medium",
+      "id": "q21"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which companion of the Prophet (PBUH) used to recite the Quran publicly in Makkah and was persecuted for it?",
+      "options": [
+        "Abdullah bin Masood",
+        "Bilal",
+        "Ammar bin Yasir",
+        "Khabbab bin al-Aratt"
+      ],
+      "answer": 0,
+      "explanation": "Abdullah bin Masood was the first to recite the Quran aloud in the Kaaba, for which he was beaten.",
+      "difficulty": "hard",
+      "id": "q22"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What is 'Ilm-ul-Tajweed'?",
+      "options": [
+        "The science of correct Quranic pronunciation and recitation",
+        "The science of interpretation",
+        "The science of memorization",
+        "The science of history"
+      ],
+      "answer": 0,
+      "explanation": "Tajweed is the set of rules governing the correct pronunciation of Quranic letters during recitation.",
+      "difficulty": "medium",
+      "id": "q23"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Quranic term 'Muhkamat' refers to which verses?",
+      "options": [
+        "Clear and decisive verses",
+        "Ambiguous verses",
+        "Abrogated verses",
+        "Verses of prostration"
+      ],
+      "answer": 0,
+      "explanation": "Muhkamat are the clear, decisive verses; Mutashabihat are the allegorical ones (3:7).",
+      "difficulty": "hard",
+      "id": "q24"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who was the famous female Hafiza of the Quran among the Prophet's (PBUH) wives?",
+      "options": [
+        "Hafsa bint Umar",
+        "Aisha bint Abu Bakr",
+        "Khadijah",
+        "Zainab bint Jahsh"
+      ],
+      "answer": 0,
+      "explanation": "Hafsa bint Umar memorized the Quran, and the compiled Mushaf was kept with her for a time.",
+      "difficulty": "medium",
+      "id": "q25"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which companion was chosen to record revelation in Madinah?",
+      "options": [
+        "Zaid bin Thabit",
+        "Uthman ibn Affan",
+        "Ali",
+        "Abu Bakr"
+      ],
+      "answer": 0,
+      "explanation": "Zaid bin Thabit was the chief scribe of revelation in Madinah.",
+      "difficulty": "medium",
+      "id": "q26"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Quranic script with diacritical marks was standardized by?",
+      "options": [
+        "Al-Hajjaj ibn Yusuf's reforms",
+        "Uthman (RA) only",
+        "The Ottoman court",
+        "Modern scholars only"
+      ],
+      "answer": 0,
+      "explanation": "Diacritical dots were added in the Umayyad period under Al-Hajjaj's reforms.",
+      "difficulty": "hard",
+      "id": "q27"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What is the 'Asbab al-Nuzul'?",
+      "options": [
+        "The occasions and reasons for revelation of verses",
+        "The chain of narrators",
+        "The commentary tradition",
+        "The rules of recitation"
+      ],
+      "answer": 0,
+      "explanation": "Asbab al-Nuzul studies the contexts in which verses were revealed.",
+      "difficulty": "medium",
+      "id": "q28"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which of the following is NOT a name of the Quran?",
+      "options": [
+        "Al-Masbaha (a rosary)",
+        "Al-Furqan",
+        "Adh-Dhikr",
+        "Al-Kitab"
+      ],
+      "answer": 0,
+      "explanation": "Al-Furqan, Adh-Dhikr and Al-Kitab are Quranic names; Al-Masbaha is not.",
+      "difficulty": "medium",
+      "id": "q29"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The word 'Injil' in the Quran refers to?",
+      "options": [
+        "The Gospel revealed to Prophet Isa (AS)",
+        "The Psalms",
+        "The Torah",
+        "The Quran itself"
+      ],
+      "answer": 0,
+      "explanation": "Injil is the revelation given to Isa (AS).",
+      "difficulty": "easy",
+      "id": "q30"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which Surah is recited at the funeral prayer?",
+      "options": [
+        "Surah Al-Fatiha",
+        "Surah Yaseen",
+        "Surah Al-Mulk",
+        "Surah Al-Ikhlas"
+      ],
+      "answer": 0,
+      "explanation": "Al-Fatiha is recited in the Janazah prayer.",
+      "difficulty": "easy",
+      "id": "q31"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What is the term for the Quranic divisions marked for daily recitation (one-thirtieth)?",
+      "options": [
+        "Juz",
+        "Surah",
+        "Ayah",
+        "Ruku"
+      ],
+      "answer": 0,
+      "explanation": "The Quran is divided into 30 Juz for daily recitation.",
+      "difficulty": "easy",
+      "id": "q32"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which verse commands 'Read in the name of your Lord who created'?",
+      "options": [
+        "Surah Al-Alaq (96:1)",
+        "Surah Al-Fatiha (1:1)",
+        "Surah Al-Baqarah (2:1)",
+        "Surah Al-Ikhlas (112:1)"
+      ],
+      "answer": 0,
+      "explanation": "The first revelation, 96:1, commands reading in the name of the Lord.",
+      "difficulty": "easy",
+      "id": "q33"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Quran was compiled into the Uthmani Mushaf during which period?",
+      "options": [
+        "The caliphate of Uthman (RA), 650-656 CE",
+        "The Prophet's (PBUH) lifetime",
+        "The Abbasid era",
+        "The Ottoman era"
+      ],
+      "answer": 0,
+      "explanation": "Uthman (RA) commissioned the official Mushaf copies between 650 and 656 CE.",
+      "difficulty": "medium",
+      "id": "q34"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which Surah is called 'Al-Munjiyah' (the Saver) for interceding for its reciter?",
+      "options": [
+        "Surah Al-Mulk",
+        "Surah Yaseen",
+        "Surah Al-Fatiha",
+        "Surah Al-Ikhlas"
+      ],
+      "answer": 0,
+      "explanation": "Surah Al-Mulk is reported to intercede and save its reciter from the punishment of the grave.",
+      "difficulty": "medium",
+      "id": "q35"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which Surah is called 'Al-Waqi'ah' (The Inevitable) and is recommended for protection from poverty?",
+      "options": [
+        "Surah Al-Waqi'ah",
+        "Surah Al-Mulk",
+        "Surah Yaseen",
+        "Surah Al-Kahf"
+      ],
+      "answer": 0,
+      "explanation": "Surah Al-Waqi'ah is associated with wealth protection in popular hadith tradition.",
+      "difficulty": "easy",
+      "id": "q36"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who were the first Huffaz (memorizers) of the Quran?",
+      "options": [
+        "The companions of the Prophet (PBUH)",
+        "The Umayyad scribes",
+        "The Abbasid scholars",
+        "The Ottoman teachers"
+      ],
+      "answer": 0,
+      "explanation": "Many companions memorized the Quran during the Prophet's (PBUH) lifetime.",
+      "difficulty": "easy",
+      "id": "q37"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Quranic term for 'the Day of Standing' before Allah is?",
+      "options": [
+        "Yaum-ul-Qiyamah",
+        "Yaum-ul-Furqan",
+        "Yaum-ul-Mawlid",
+        "Yaum-ul-Nuzul"
+      ],
+      "answer": 0,
+      "explanation": "Yaum-ul-Qiyamah is the Day of Resurrection and Judgment.",
+      "difficulty": "easy",
+      "id": "q38"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which Surah was revealed regarding the 'Ifk' (slander) incident?",
+      "options": [
+        "Surah An-Nur",
+        "Surah Al-Hujurat",
+        "Surah Al-Ahzab",
+        "Surah At-Tawbah"
+      ],
+      "answer": 0,
+      "explanation": "Surah An-Nur (24:11-20) addressed the slander against Aisha (RA).",
+      "difficulty": "medium",
+      "id": "q39"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which Surah mentions the 'Jizyah' tax for non-Muslims under Muslim rule?",
+      "options": [
+        "Surah At-Tawbah (9:29)",
+        "Surah Al-Maidah",
+        "Surah Al-Anfal",
+        "Surah Al-Hajj"
+      ],
+      "answer": 0,
+      "explanation": "At-Tawbah 9:29 outlines the Jizyah arrangement.",
+      "difficulty": "hard",
+      "id": "q40"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What is the 'Qira'at' of the Quran?",
+      "options": [
+        "The recognized methods of recitation transmitted from the Prophet (PBUH)",
+        "The commentary",
+        "The translation",
+        "The chapter divisions"
+      ],
+      "answer": 0,
+      "explanation": "The ten Qira'at are the canonical recitation traditions, all authentic.",
+      "difficulty": "hard",
+      "id": "q41"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which two Surahs are called 'Az-Zahrawain' (the Two Bright Ones)?",
+      "options": [
+        "Al-Baqarah and Al-Imran",
+        "Al-Fatiha and Al-Ikhlas",
+        "Yaseen and Ar-Rahman",
+        "Al-Mulk and Al-Waqi'ah"
+      ],
+      "answer": 0,
+      "explanation": "Al-Baqarah and Al-Imran are called Az-Zahrawain (the two luminous ones).",
+      "difficulty": "hard",
+      "id": "q42"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which verse is called 'Ayat al-Mubahilah' and involves the Ahl al-Bayt?",
+      "options": [
+        "Surah Al-Imran (3:61)",
+        "Surah Al-Baqarah (2:255)",
+        "Surah An-Nur (24:31)",
+        "Surah Al-Ahzab (33:33)"
+      ],
+      "answer": 0,
+      "explanation": "3:61 (Mubahilah) involved the Prophet (PBUH), Ali, Fatimah, Hasan and Husain.",
+      "difficulty": "hard",
+      "id": "q43"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which Surah praises the 'Ansar' and 'Muhajirin' and the conquest of Makkah?",
+      "options": [
+        "Surah Al-Hashr",
+        "Surah Al-Anfal",
+        "Surah Al-Fath",
+        "Surah Al-Hujurat"
+      ],
+      "answer": 0,
+      "explanation": "Surah Al-Hashr (59:8-10) praises the emigrants and helpers.",
+      "difficulty": "hard",
+      "id": "q44"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which Surah is called 'Al-Sab' al-Mathani' (the Seven Oft-Repeated)?",
+      "options": [
+        "Surah Al-Fatiha",
+        "Surah Al-Ikhlas",
+        "Surah Yaseen",
+        "Surah Al-Kahf"
+      ],
+      "answer": 0,
+      "explanation": "Al-Fatiha is the seven oft-repeated verses (15:87).",
+      "difficulty": "medium",
+      "id": "q45"
+    },
+    {
+      "type": "mcq",
+      "prompt": "A 'Ruku' refers to:",
+      "options": [
+        "A section of a surah",
+        "A type of prayer",
+        "A charity",
+        "A fast"
+      ],
+      "answer": 0,
+      "explanation": "Ruku divides surahs into thematic sections.",
+      "difficulty": "medium",
+      "id": "q46"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Quran's verses are called:",
+      "options": [
+        "Ayat",
+        "Ruku",
+        "Juz",
+        "Sipara"
+      ],
+      "answer": 0,
+      "explanation": "Ayat are the verses of the Quran.",
+      "difficulty": "easy",
+      "id": "q47"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which surah is revealed in full in the Quran?",
+      "options": [
+        "Surah Al-Fatihah",
+        "Surah Al-Ikhlas",
+        "Surah An-Nas",
+        "Surah Al-Falaq"
+      ],
+      "answer": 0,
+      "explanation": "Al-Fatihah was revealed in full.",
+      "difficulty": "medium",
+      "id": "q48"
+    },
+    {
+      "type": "mcq",
+      "prompt": "How many verses are in the Quran approximately?",
+      "options": [
+        "About 6,236",
+        "3,000",
+        "10,000",
+        "5,000"
+      ],
+      "answer": 0,
+      "explanation": "The Quran has about 6,236 verses.",
+      "difficulty": "medium",
+      "id": "q49"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which surah is the 'crown of the Quran'?",
+      "options": [
+        "Surah Ar-Rahman",
+        "Surah Al-Mulk",
+        "Surah Al-Fatihah",
+        "Surah Ya-Sin"
+      ],
+      "answer": 0,
+      "explanation": "Ar-Rahman is called the crown of the Quran.",
+      "difficulty": "medium",
+      "id": "q50"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The 'Manzil' divides the Quran into how many parts?",
+      "options": [
+        "7",
+        "5",
+        "10",
+        "3"
+      ],
+      "answer": 0,
+      "explanation": "Manzil divides the Quran into 7 sections.",
+      "difficulty": "hard",
+      "id": "q51"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Quran was preserved through:",
+      "options": [
+        "Memorisation and writing",
+        "Only oral traditions",
+        "Only written copies",
+        "Stone carvings"
+      ],
+      "answer": 0,
+      "explanation": "The Quran was preserved by both memory and script.",
+      "difficulty": "easy",
+      "id": "q52"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The 'Sajdah' verses in the Quran require:",
+      "options": [
+        "Prostration upon recitation",
+        "Fasting",
+        "Charity",
+        "Prayer"
+      ],
+      "answer": 0,
+      "explanation": "Sajdah tilawat is performed at these verses.",
+      "difficulty": "easy",
+      "id": "q53"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Quranic chapters revealed in Makkah are called:",
+      "options": [
+        "Makki surahs",
+        "Madani surahs",
+        "Munazal",
+        "Furqan"
+      ],
+      "answer": 0,
+      "explanation": "Makki surahs were revealed in Makkah.",
+      "difficulty": "easy",
+      "id": "q54"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The surahs revealed in Madinah are called:",
+      "options": [
+        "Madani surahs",
+        "Makki surahs",
+        "Tafsir",
+        "Hadith"
+      ],
+      "answer": 0,
+      "explanation": "Madani surahs came after the Hijrah.",
+      "difficulty": "easy",
+      "id": "q55"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The term 'Tafsir' means:",
+      "options": [
+        "Exegesis or explanation of the Quran",
+        "Recitation",
+        "Memorisation",
+        "Translation only"
+      ],
+      "answer": 0,
+      "explanation": "Tafsir explains Quranic meanings.",
+      "difficulty": "easy",
+      "id": "q56"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The famous Tafsir 'Tafsir Ibn Kathir' was written by:",
+      "options": [
+        "Ibn Kathir",
+        "Al-Tabari",
+        "Al-Qurtubi",
+        "Ibn Taymiyyah"
+      ],
+      "answer": 0,
+      "explanation": "Ibn Kathir authored this renowned tafsir.",
+      "difficulty": "easy",
+      "id": "q57"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The first Tafsir of the Quran was by:",
+      "options": [
+        "The Prophet (PBUH) and companions",
+        "Imam Bukhari",
+        "Al-Ghazali",
+        "Ibn Sina"
+      ],
+      "answer": 0,
+      "explanation": "The Prophet (PBUH) was the first mufassir.",
+      "difficulty": "medium",
+      "id": "q58"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Quranic script used today is based on:",
+      "options": [
+        "The Uthmani script",
+        "The Kufic script only",
+        "The Egyptian script only",
+        "The Persian script"
+      ],
+      "answer": 0,
+      "explanation": "The Uthmani script is the standard.",
+      "difficulty": "hard",
+      "id": "q59"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The 'Tajweed' refers to:",
+      "options": [
+        "The rules of Quranic recitation",
+        "A type of tafsir",
+        "A chapter",
+        "A prayer"
+      ],
+      "answer": 0,
+      "explanation": "Tajweed governs correct pronunciation.",
+      "difficulty": "easy",
+      "id": "q60"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The 'Surah Al-Ankabut' takes its name from:",
+      "options": [
+        "The spider",
+        "The cow",
+        "The ant",
+        "The bee"
+      ],
+      "answer": 0,
+      "explanation": "Al-Ankabut means the spider.",
+      "difficulty": "easy",
+      "id": "q61"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Surah An-Naml takes its name from:",
+      "options": [
+        "The ant",
+        "The spider",
+        "The bee",
+        "The whale"
+      ],
+      "answer": 0,
+      "explanation": "An-Naml means the ant.",
+      "difficulty": "easy",
+      "id": "q62"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Surah Al-Kahf narrates the story of:",
+      "options": [
+        "The People of the Cave",
+        "The Prophet Yusuf",
+        "The Elephant",
+        "The Flood"
+      ],
+      "answer": 0,
+      "explanation": "Al-Kahf tells of the sleepers in the cave.",
+      "difficulty": "easy",
+      "id": "q63"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The 'Fawatih' (disjointed letters) open how many surahs?",
+      "options": [
+        "29 surahs",
+        "10 surahs",
+        "50 surahs",
+        "5 surahs"
+      ],
+      "answer": 0,
+      "explanation": "29 surahs begin with muqatta'at letters.",
+      "difficulty": "hard",
+      "id": "q64"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Cave of Hira lies on which mountain near Makkah?",
+      "options": [
+        "Jabal al-Noor",
+        "Jabal Uhud",
+        "Jabal Thawr",
+        "Jabal Arafat"
+      ],
+      "answer": 0,
+      "explanation": "Cave Hira is on Jabal al-Noor (the Mountain of Light).",
+      "difficulty": "easy",
+      "id": "q65"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The term 'Mushaf' refers to?",
+      "options": [
+        "The bound collection of the Quranic pages",
+        "The interpretation of the Quran",
+        "A single verse of the Quran",
+        "The science of recitation"
+      ],
+      "answer": 0,
+      "explanation": "Mushaf is the bound book form of the Quran.",
+      "difficulty": "medium",
+      "id": "q66"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Quranic principle that a later verse may replace the ruling of an earlier one is called?",
+      "options": [
+        "Naskh (abrogation)",
+        "Tanzil",
+        "Tajweed",
+        "Hifz"
+      ],
+      "answer": 0,
+      "explanation": "Naskh is the abrogation of an earlier ruling by a later revelation.",
+      "difficulty": "hard",
+      "id": "q67"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Quran was revealed in how many dialects (Ahruf) according to hadith?",
+      "options": [
+        "Seven",
+        "Five",
+        "Ten",
+        "Three"
+      ],
+      "answer": 0,
+      "explanation": "The Quran was revealed in seven Ahruf (dialects) as a mercy.",
+      "difficulty": "hard",
+      "id": "q68"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who is credited with introducing the vowel marks (harakat) to the Quranic script?",
+      "options": [
+        "Abu al-Aswad al-Du'ali",
+        "Al-Hajjaj ibn Yusuf",
+        "Zaid bin Thabit",
+        "Ibn Mujahid"
+      ],
+      "answer": 0,
+      "explanation": "Abu al-Aswad al-Du'ali is credited with the vowel-point system.",
+      "difficulty": "hard",
+      "id": "q69"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The recitations of Hafs and Warsh are examples of?",
+      "options": [
+        "Two of the ten canonical Qira'at",
+        "Two Tafsir schools",
+        "Two compilation methods",
+        "Two scripts of the Mushaf"
+      ],
+      "answer": 0,
+      "explanation": "Hafs an Asim and Warsh an Nafi are two canonical Qira'at.",
+      "difficulty": "hard",
+      "id": "q70"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which Qira'ah (recitation) is the most widely used in the world today?",
+      "options": [
+        "Hafs an Asim",
+        "Warsh an Nafi",
+        "Qalun",
+        "Al-Duri"
+      ],
+      "answer": 0,
+      "explanation": "The Hafs an Asim recitation is used by the majority of Muslims today.",
+      "difficulty": "medium",
+      "id": "q71"
+    },
+    {
+      "type": "mcq",
+      "prompt": "A 'Hizb' of the Quran is equal to?",
+      "options": [
+        "Half of a Juz",
+        "One Juz",
+        "One Manzil",
+        "One Surah"
+      ],
+      "answer": 0,
+      "explanation": "Each Juz contains two Hizb; the Quran has sixty Hizb in total.",
+      "difficulty": "medium",
+      "id": "q72"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The 30th and final Juz of the Quran is popularly called?",
+      "options": [
+        "Juz Amma",
+        "Juz Tabarak",
+        "Juz Qad Sami'a",
+        "Juz Yaseen"
+      ],
+      "answer": 0,
+      "explanation": "The 30th Juz is called Juz Amma after its first word.",
+      "difficulty": "easy",
+      "id": "q73"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Surah Al-Fatiha is also known as 'Al-Shifa', which means?",
+      "options": [
+        "The Cure",
+        "The Opening",
+        "The Praise",
+        "The Mother"
+      ],
+      "answer": 0,
+      "explanation": "Al-Fatiha is called Al-Shifa (the Cure) for its healing recitation.",
+      "difficulty": "hard",
+      "id": "q74"
+    },
+    {
+      "type": "mcq",
+      "prompt": "According to a hadith, which is the greatest Surah of the Quran?",
+      "options": [
+        "Surah Al-Fatiha",
+        "Surah Al-Baqarah",
+        "Surah Al-Ikhlas",
+        "Surah Ya-Sin"
+      ],
+      "answer": 0,
+      "explanation": "The Prophet (PBUH) called Al-Fatiha the greatest Surah of the Quran.",
+      "difficulty": "easy",
+      "id": "q75"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who was the very first person to memorise the entire Quran?",
+      "options": [
+        "The Prophet Muhammad (PBUH)",
+        "Abu Bakr (RA)",
+        "Zaid bin Thabit (RA)",
+        "Ubayy bin Ka'b (RA)"
+      ],
+      "answer": 0,
+      "explanation": "The Prophet (PBUH) received and memorised the Quran as it was revealed.",
+      "difficulty": "medium",
+      "id": "q76"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Quran describes itself as 'Al-Furqan', meaning?",
+      "options": [
+        "The Criterion (that distinguishes right from wrong)",
+        "The Recitation",
+        "The Reminder",
+        "The Clear Book"
+      ],
+      "answer": 0,
+      "explanation": "Al-Furqan is the Criterion separating truth from falsehood.",
+      "difficulty": "easy",
+      "id": "q77"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Surah Al-Kafirun and Surah Al-Ikhlas are together called?",
+      "options": [
+        "Al-Muqashqishatan",
+        "Al-Mu'awwidhatayn",
+        "Az-Zahrawain",
+        "Al-Mufassal"
+      ],
+      "answer": 0,
+      "explanation": "The two Surahs that remove hypocrisy are called Al-Muqashqishatan.",
+      "difficulty": "hard",
+      "id": "q78"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The special voluntary night prayer of Ramadan, performed in congregation, is called?",
+      "options": [
+        "Tarawih",
+        "Tahajjud",
+        "Witr",
+        "Duha"
+      ],
+      "answer": 0,
+      "explanation": "Tarawih is the nightly prayer of Ramadan performed after Isha.",
+      "difficulty": "easy",
+      "id": "q79"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The word 'Tilawat' means?",
+      "options": [
+        "The recitation of the Quran",
+        "The memorisation of the Quran",
+        "The interpretation of the Quran",
+        "The writing of the Quran"
+      ],
+      "answer": 0,
+      "explanation": "Tilawat is the act of reciting the Quran.",
+      "difficulty": "easy",
+      "id": "q80"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Reciting Quranic verses for healing and protection is called?",
+      "options": [
+        "Ruqyah",
+        "Hifz",
+        "Tafsir",
+        "Istikharah"
+      ],
+      "answer": 0,
+      "explanation": "Ruqyah is the legitimate recitation of Quran for healing.",
+      "difficulty": "medium",
+      "id": "q81"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Quran is also called 'Al-Zikr', which means?",
+      "options": [
+        "The Reminder",
+        "The Recitation",
+        "The Criterion",
+        "The Light"
+      ],
+      "answer": 0,
+      "explanation": "Al-Zikr (the Reminder) is one of the names of the Quran.",
+      "difficulty": "medium",
+      "id": "q82"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who first suggested to Abu Bakr (RA) that the Quran be compiled into one book?",
+      "options": [
+        "Umar ibn al-Khattab (RA)",
+        "Ali ibn Abi Talib (RA)",
+        "Uthman ibn Affan (RA)",
+        "Zaid bin Thabit (RA)"
+      ],
+      "answer": 0,
+      "explanation": "Umar (RA) suggested compilation after many Huffaz fell at Yamama.",
+      "difficulty": "medium",
+      "id": "q83"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What is the 100th Surah of the Holy Quran?",
+      "options": [
+        "Surah Al-Adiyat",
+        "Surah Az-Zalzalah",
+        "Surah Al-Qariah",
+        "Surah At-Takathur"
+      ],
+      "answer": 0,
+      "explanation": "Al-Adiyat (the Chargers) is the 100th chapter.",
+      "difficulty": "medium",
+      "id": "q84"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What is the 103rd Surah of the Holy Quran?",
+      "options": [
+        "Surah Al-Asr",
+        "Surah Al-Humazah",
+        "Surah Al-Fil",
+        "Surah Quraysh"
+      ],
+      "answer": 0,
+      "explanation": "Al-Asr (Time) is the 103rd chapter.",
+      "difficulty": "medium",
+      "id": "q85"
+    },
+    {
+      "type": "mcq",
+      "prompt": "In 'Umm-ul-Kitab', the word 'Umm' means?",
+      "options": [
+        "Mother",
+        "Book",
+        "Chapter",
+        "Praise"
+      ],
+      "answer": 0,
+      "explanation": "Umm means mother; Al-Fatiha is the mother of the Book.",
+      "difficulty": "easy",
+      "id": "q86"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The 'Bismillah' at the start of Surahs contains how many Arabic letters?",
+      "options": [
+        "Nineteen",
+        "Twelve",
+        "Twenty-five",
+        "Nine"
+      ],
+      "answer": 0,
+      "explanation": "Bismillahir-Rahmanir-Rahim contains 19 letters, matching the guardians of Hell.",
+      "difficulty": "hard",
+      "id": "q87"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The entire Quran is divided into how many Hizb?",
+      "options": [
+        "Sixty",
+        "Thirty",
+        "Seven",
+        "Fifteen"
+      ],
+      "answer": 0,
+      "explanation": "Thirty Juz multiplied by two Hizb each gives sixty Hizb.",
+      "difficulty": "hard",
+      "id": "q88"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Before compilation into a book, the Quran was initially preserved by writing on?",
+      "options": [
+        "Bones, palm leaves and flat stones",
+        "Only paper",
+        "Only wooden boards",
+        "Cloth scrolls"
+      ],
+      "answer": 0,
+      "explanation": "The early Muslims wrote revelation on bones, palm leaves, stones and hide.",
+      "difficulty": "medium",
+      "id": "q89"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The miraculous inimitability of the Quran that no one can match is called?",
+      "options": [
+        "Ijaz al-Quran",
+        "Tanzim al-Quran",
+        "Tahqiq al-Quran",
+        "Tarteel al-Quran"
+      ],
+      "answer": 0,
+      "explanation": "Ijaz al-Quran is the doctrine of the Quran's miraculous inimitability.",
+      "difficulty": "medium",
+      "id": "q90"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The gradual, piecemeal revelation of the Quran is called?",
+      "options": [
+        "Tanjim",
+        "Tarteel",
+        "Tilawat",
+        "Tajweed"
+      ],
+      "answer": 0,
+      "explanation": "Tanjim refers to the Quran being revealed gradually over 23 years.",
+      "difficulty": "hard",
+      "id": "q91"
+    },
+    {
+      "type": "mcq",
+      "prompt": "In which city was the Quran first compiled into a single Mushaf under Abu Bakr (RA)?",
+      "options": [
+        "Madinah",
+        "Makkah",
+        "Kufa",
+        "Damascus"
+      ],
+      "answer": 0,
+      "explanation": "The first compilation was carried out in Madinah under Abu Bakr (RA).",
+      "difficulty": "medium",
+      "id": "q92"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which Surah was the first complete Surah to be revealed after the opening verses of Al-Alaq?",
+      "options": [
+        "Surah Al-Muddaththir",
+        "Surah Al-Alaq",
+        "Surah Al-Muzzammil",
+        "Surah Al-Falaq"
+      ],
+      "answer": 0,
+      "explanation": "After the first five verses of Al-Alaq, Surah Al-Muddaththir was revealed next.",
+      "difficulty": "hard",
+      "id": "q93"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The 'Basmalah' is not recited at the beginning of which Surah?",
+      "options": [
+        "Surah At-Tawbah",
+        "Surah An-Naml",
+        "Surah Al-Anfal",
+        "Surah Al-Fatiha"
+      ],
+      "answer": 0,
+      "explanation": "At-Tawbah is the only Surah that begins without the Bismillah.",
+      "difficulty": "easy",
+      "id": "q94"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who wrote the famous Tafsir 'Ruh al-Ma'ani'?",
+      "options": [
+        "Al-Alusi",
+        "Ibn Kathir",
+        "Al-Qurtubi",
+        "Al-Baghawi"
+      ],
+      "answer": 0,
+      "explanation": "Ruh al-Ma'ani was written by Mahmud al-Alusi.",
+      "difficulty": "hard",
+      "id": "q95"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The first four verses of Surah Al-Alaq begin with the command?",
+      "options": [
+        "Iqra (Read)",
+        "Qum (Arise)",
+        "Sabbih (Glorify)",
+        "Ihdina (Guide us)"
+      ],
+      "answer": 0,
+      "explanation": "The first revelation begins with 'Iqra bismi Rabbik' — Read in the name of your Lord.",
+      "difficulty": "easy",
+      "id": "q96"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which companion was known as the first Muazzin and also memorised the Quran?",
+      "options": [
+        "Bilal ibn Rabah (RA)",
+        "Zaid bin Thabit (RA)",
+        "Ubayy bin Ka'b (RA)",
+        "Abdullah ibn Masood (RA)"
+      ],
+      "answer": 0,
+      "explanation": "Bilal (RA) was the first Muazzin of Islam.",
+      "difficulty": "medium",
+      "id": "q97"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The 'Wahy' was first received by the Prophet (PBUH) in which month?",
+      "options": [
+        "Ramadan",
+        "Rajab",
+        "Shawwal",
+        "Muharram"
+      ],
+      "answer": 0,
+      "explanation": "The revelation began in the month of Ramadan on Laylat-ul-Qadr.",
+      "difficulty": "easy",
+      "id": "q98"
+    },
+    {
+      "type": "mcq",
+      "prompt": "How many times does the word 'Quran' itself appear in the Quran approximately?",
+      "options": [
+        "About seventy times",
+        "Ten times",
+        "Two hundred times",
+        "Once"
+      ],
+      "answer": 0,
+      "explanation": "The word Quran appears roughly seventy times in the text.",
+      "difficulty": "hard",
+      "id": "q99"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The 'Sajdah tilawah' verse found in Surah As-Sajdah is which verse?",
+      "options": [
+        "Verse 15",
+        "Verse 1",
+        "Verse 30",
+        "Verse 9"
+      ],
+      "answer": 0,
+      "explanation": "The prostration verse of Surah As-Sajdah is 32:15.",
+      "difficulty": "hard",
+      "id": "q100"
+    }
+  ]
+}

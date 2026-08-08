@@ -1,0 +1,1413 @@
+{
+  "bank": {
+    "name": "Prophets of Islam",
+    "subject": "Islamic Studies",
+    "topic": "Prophets of Islam",
+    "description": "The lives and stories of the prophets mentioned in the Quran.",
+    "tags": "css,pms,fpsc,ppsc,nts,islamic-studies,prophets,anbiya",
+    "version": "1.0",
+    "id": "islamiat_prophets_of_islam"
+  },
+  "questions": [
+    {
+      "type": "mcq",
+      "prompt": "Who is the first prophet of Islam according to Islamic belief?",
+      "options": [
+        "Adam (AS)",
+        "Nuh (AS)",
+        "Ibrahim (AS)",
+        "Muhammad (PBUH)"
+      ],
+      "answer": 0,
+      "explanation": "Prophet Adam (AS) is regarded as the first human and first prophet.",
+      "difficulty": "easy",
+      "id": "q01"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which prophet built the Ark to save believers from the flood?",
+      "options": [
+        "Nuh (Noah)",
+        "Hud",
+        "Salih",
+        "Yunus"
+      ],
+      "answer": 0,
+      "explanation": "Prophet Nuh (AS) built the Ark by Allah's command and carried pairs of animals and the believers.",
+      "difficulty": "easy",
+      "id": "q02"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which prophet was swallowed by a whale?",
+      "options": [
+        "Yunus (Jonah)",
+        "Yaqoob",
+        "Ayyub",
+        "Daud"
+      ],
+      "answer": 0,
+      "explanation": "Prophet Yunus (AS) was swallowed by a great fish and prayed from its darkness; Allah saved him.",
+      "difficulty": "easy",
+      "id": "q03"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which prophet was betrayed and thrown into a well by his brothers, then rose to power in Egypt?",
+      "options": [
+        "Yusuf (Joseph)",
+        "Yaqoob",
+        "Harun",
+        "Shuaib"
+      ],
+      "answer": 0,
+      "explanation": "Prophet Yusuf (AS) was thrown into a well by his brothers and later became Egypt's treasurer.",
+      "difficulty": "easy",
+      "id": "q04"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which prophet received the Torah (Taurat)?",
+      "options": [
+        "Musa (AS)",
+        "Daud (AS)",
+        "Isa (AS)",
+        "Ibrahim (AS)"
+      ],
+      "answer": 0,
+      "explanation": "The Taurat (Torah) was revealed to Prophet Musa (AS).",
+      "difficulty": "easy",
+      "id": "q05"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which prophet received the Zabur (Psalms)?",
+      "options": [
+        "Daud (David)",
+        "Sulaiman",
+        "Musa",
+        "Yahya"
+      ],
+      "answer": 0,
+      "explanation": "The Zabur (Psalms) was revealed to Prophet Daud (AS).",
+      "difficulty": "medium",
+      "id": "q06"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which prophet received the Injeel (Gospel)?",
+      "options": [
+        "Isa (Jesus)",
+        "Musa",
+        "Ibrahim",
+        "Yahya"
+      ],
+      "answer": 0,
+      "explanation": "The Injeel (Gospel) was revealed to Prophet Isa (AS).",
+      "difficulty": "easy",
+      "id": "q07"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which prophet was given the miracle of speaking to animals and commanding the wind?",
+      "options": [
+        "Sulaiman (Solomon)",
+        "Daud",
+        "Musa",
+        "Zakariyya"
+      ],
+      "answer": 0,
+      "explanation": "Prophet Sulaiman (AS) understood the language of birds and ants and controlled the wind.",
+      "difficulty": "medium",
+      "id": "q08"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which prophet is known as 'Ruhullah' (the Spirit of Allah)?",
+      "options": [
+        "Isa (Jesus)",
+        "Musa",
+        "Adam",
+        "Idris"
+      ],
+      "answer": 0,
+      "explanation": "Isa (AS) is called Ruhullah because he was created by the Spirit (Jibra'il) at Allah's command.",
+      "difficulty": "medium",
+      "id": "q09"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which prophet was patient through severe illness and is the symbol of patience (Sabr)?",
+      "options": [
+        "Ayyub (Job)",
+        "Yunus",
+        "Yaqoob",
+        "Zakariyya"
+      ],
+      "answer": 0,
+      "explanation": "Prophet Ayyub (AS) endured severe illness and loss with extraordinary patience.",
+      "difficulty": "medium",
+      "id": "q10"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which prophet was sent to the people of Thamud, who cut mountains?",
+      "options": [
+        "Salih (AS)",
+        "Hud (AS)",
+        "Shuaib (AS)",
+        "Lut (AS)"
+      ],
+      "answer": 0,
+      "explanation": "Prophet Salih (AS) was sent to Thamud, whose miracle was the she-camel.",
+      "difficulty": "medium",
+      "id": "q11"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which prophet was sent to the people of Midian (Madyan)?",
+      "options": [
+        "Shuaib (AS)",
+        "Hud",
+        "Salih",
+        "Yunus"
+      ],
+      "answer": 0,
+      "explanation": "Prophet Shuaib (AS) warned the people of Madyan against fraudulent trade.",
+      "difficulty": "medium",
+      "id": "q12"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which prophet was sent to the people of Sodom (the people of Lut)?",
+      "options": [
+        "Lut (Lot)",
+        "Shuaib",
+        "Hud",
+        "Yaqoob"
+      ],
+      "answer": 0,
+      "explanation": "Prophet Lut (AS) was sent to Sodom to warn against immorality.",
+      "difficulty": "medium",
+      "id": "q13"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who is the father of Prophet Yusuf (AS)?",
+      "options": [
+        "Yaqoob (Jacob)",
+        "Ishaq",
+        "Ibrahim",
+        "Harun"
+      ],
+      "answer": 0,
+      "explanation": "Yaqoob (AS), also called Isra'il, was the father of Yusuf (AS).",
+      "difficulty": "medium",
+      "id": "q14"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which prophet was the father of Prophet Yahya (John)?",
+      "options": [
+        "Zakariyya (Zechariah)",
+        "Isa",
+        "Musa",
+        "Ilyas"
+      ],
+      "answer": 0,
+      "explanation": "Prophet Zakariyya (AS) was granted Yahya (AS) in his old age.",
+      "difficulty": "medium",
+      "id": "q15"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which prophet is mentioned in the Quran as having been raised to a high place by Allah?",
+      "options": [
+        "Idris (Enoch)",
+        "Hud",
+        "Lut",
+        "Ayyub"
+      ],
+      "answer": 0,
+      "explanation": "Idris (AS) is described as raised to a lofty station (19:57).",
+      "difficulty": "hard",
+      "id": "q16"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which prophet was commanded by Allah to sacrifice his son, and was ransomed with a great sacrifice?",
+      "options": [
+        "Ibrahim (AS)",
+        "Ishaq only",
+        "Yaqoob",
+        "Nuh"
+      ],
+      "answer": 0,
+      "explanation": "Prophet Ibrahim (AS) was tested with the command to sacrifice his son; Allah ransomed him — commemorated at Eid-ul-Adha.",
+      "difficulty": "medium",
+      "id": "q17"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Prophet Isma'il (AS) and his mother Hajar are associated with which Makkah landmarks?",
+      "options": [
+        "Safa & Marwah and the Zamzam well",
+        "Arafat",
+        "Mina",
+        "The Kaaba only"
+      ],
+      "answer": 0,
+      "explanation": "Hajar ran between Safa and Marwah seeking water, and the Zamzam well sprang for Isma'il (AS).",
+      "difficulty": "medium",
+      "id": "q18"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who helped rebuild the Kaaba with Prophet Ibrahim (AS)?",
+      "options": [
+        "Isma'il (AS)",
+        "Ishaq (AS)",
+        "Lut (AS)",
+        "Yaqoob (AS)"
+      ],
+      "answer": 0,
+      "explanation": "Ibrahim (AS) and Isma'il (AS) raised the foundations of the Kaaba (2:127).",
+      "difficulty": "medium",
+      "id": "q19"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which prophet was given the miracle of making a camel come out of the rock?",
+      "options": [
+        "Salih (AS)",
+        "Hud (AS)",
+        "Shuaib (AS)",
+        "Musa (AS)"
+      ],
+      "answer": 0,
+      "explanation": "Prophet Salih's (AS) she-camel was a miracle for the people of Thamud.",
+      "difficulty": "medium",
+      "id": "q20"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who interpreted the dream of the king of Egypt about seven cows?",
+      "options": [
+        "Yusuf (AS)",
+        "Musa (AS)",
+        "Daud (AS)",
+        "Sulaiman (AS)"
+      ],
+      "answer": 0,
+      "explanation": "Yusuf (AS) interpreted the dream of seven fat and seven lean cows.",
+      "difficulty": "easy",
+      "id": "q21"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which prophet was tested with severe loss of wealth, children and health?",
+      "options": [
+        "Ayyub (Job)",
+        "Yusuf (AS)",
+        "Yaqoob (AS)",
+        "Yunus (AS)"
+      ],
+      "answer": 0,
+      "explanation": "Prophet Ayyub's (AS) patience through trials is proverbial in Islam.",
+      "difficulty": "easy",
+      "id": "q22"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which prophet is mentioned as the 'good news' to Zakariyya (AS)?",
+      "options": [
+        "Yahya (John)",
+        "Isa (AS)",
+        "Musa (AS)",
+        "Ilyas (AS)"
+      ],
+      "answer": 0,
+      "explanation": "Zakariyya (AS) was given glad tidings of Yahya (AS) in his old age.",
+      "difficulty": "medium",
+      "id": "q23"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which prophet received the 'Table' (Al-Ma'idah) from heaven for his disciples?",
+      "options": [
+        "Isa (AS)",
+        "Musa (AS)",
+        "Daud (AS)",
+        "Yahya (AS)"
+      ],
+      "answer": 0,
+      "explanation": "Surah Al-Ma'idah (5:112-115) narrates the heavenly table for Isa's (AS) disciples.",
+      "difficulty": "hard",
+      "id": "q24"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which prophet is known for the 'Ship' (Safinah) of Nuh carrying the believers?",
+      "options": [
+        "Nuh (AS)",
+        "Musa (AS)",
+        "Yunus (AS)",
+        "Hud (AS)"
+      ],
+      "answer": 0,
+      "explanation": "Nuh's (AS) ark saved the believers from the great flood.",
+      "difficulty": "easy",
+      "id": "q25"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which prophet's people worshipped the calf during his absence?",
+      "options": [
+        "Musa's (AS) people",
+        "Nuh's (AS) people",
+        "Salih's (AS) people",
+        "Hud's (AS) people"
+      ],
+      "answer": 0,
+      "explanation": "While Musa (AS) was on Mount Tur, the Samiri made a calf for his people to worship.",
+      "difficulty": "easy",
+      "id": "q26"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which prophet prayed for the conversion of his entire people and was granted patience?",
+      "options": [
+        "Nuh (AS)",
+        "Lut (AS)",
+        "Hud (AS)",
+        "Shuaib (AS)"
+      ],
+      "answer": 0,
+      "explanation": "Nuh (AS) called his people for centuries with remarkable patience.",
+      "difficulty": "medium",
+      "id": "q27"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which prophet was a carpenter by profession?",
+      "options": [
+        "Zakariyya (AS)",
+        "Isa (AS)",
+        "Nuh (AS)",
+        "Daud (AS)"
+      ],
+      "answer": 0,
+      "explanation": "Zakariyya (AS) worked as a carpenter, as mentioned in hadith.",
+      "difficulty": "hard",
+      "id": "q28"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which prophet had the miracle of iron being made soft for him?",
+      "options": [
+        "Daud (AS)",
+        "Sulaiman (AS)",
+        "Musa (AS)",
+        "Yusuf (AS)"
+      ],
+      "answer": 0,
+      "explanation": "Allah softened iron for Daud (AS) to make armour (34:10-11).",
+      "difficulty": "medium",
+      "id": "q29"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which prophet had a ring and ruled over jinn and wind?",
+      "options": [
+        "Sulaiman (AS)",
+        "Daud (AS)",
+        "Yusuf (AS)",
+        "Zulqarnain"
+      ],
+      "answer": 0,
+      "explanation": "Sulaiman (AS) commanded the wind and the jinn by Allah's power.",
+      "difficulty": "easy",
+      "id": "q30"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which prophet is called 'Zabihullah' (the one of sacrifice)?",
+      "options": [
+        "Isma'il (AS)",
+        "Ishaq (AS)",
+        "Ibrahim (AS)",
+        "Yaqoob (AS)"
+      ],
+      "answer": 0,
+      "explanation": "Isma'il (AS) is called Zabihullah for the sacrifice commanded of Ibrahim (AS).",
+      "difficulty": "medium",
+      "id": "q31"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who was the grandfather of Prophet Musa (AS)?",
+      "options": [
+        "Levi (son of Yaqoob) lineage — Musa descended from Yaqoob (AS)",
+        "Ibrahim (AS)",
+        "Harun (AS)",
+        "Daud (AS)"
+      ],
+      "answer": 0,
+      "explanation": "Musa (AS) descended from Yaqoob (AS) through Levi's lineage.",
+      "difficulty": "hard",
+      "id": "q32"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Quran was revealed to which prophet?",
+      "options": [
+        "Muhammad (PBUH)",
+        "Musa (AS)",
+        "Isa (AS)",
+        "Dawood (AS)"
+      ],
+      "answer": 0,
+      "explanation": "The Quran was revealed to Prophet Muhammad (PBUH).",
+      "difficulty": "easy",
+      "id": "q33"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which prophet healed the sick and revived the dead by Allah's permission?",
+      "options": [
+        "Isa (AS)",
+        "Musa (AS)",
+        "Ibrahim (AS)",
+        "Yahya (AS)"
+      ],
+      "answer": 0,
+      "explanation": "Isa performed these miracles with Allah's permission.",
+      "difficulty": "easy",
+      "id": "q34"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which prophet's people were destroyed by a great flood?",
+      "options": [
+        "Nuh (AS)",
+        "Lut (AS)",
+        "Hud (AS)",
+        "Saleh (AS)"
+      ],
+      "answer": 0,
+      "explanation": "Nuh's people perished in the flood.",
+      "difficulty": "easy",
+      "id": "q35"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which prophet is known for his wisdom and just rule?",
+      "options": [
+        "Sulaiman (AS)",
+        "Yusuf (AS)",
+        "Musa (AS)",
+        "Yunus (AS)"
+      ],
+      "answer": 0,
+      "explanation": "Sulaiman was granted wisdom and a mighty kingdom.",
+      "difficulty": "easy",
+      "id": "q36"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which prophet was sent to the people of Sodom?",
+      "options": [
+        "Lut (AS)",
+        "Hud (AS)",
+        "Shu'ayb (AS)",
+        "Saleh (AS)"
+      ],
+      "answer": 0,
+      "explanation": "Lut (Lot) was sent to Sodom.",
+      "difficulty": "easy",
+      "id": "q37"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which prophet was the son of Prophet Dawood (AS)?",
+      "options": [
+        "Sulaiman (AS)",
+        "Yahya (AS)",
+        "Isa (AS)",
+        "Ilyas (AS)"
+      ],
+      "answer": 0,
+      "explanation": "Sulaiman was the son of Dawood.",
+      "difficulty": "easy",
+      "id": "q38"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which prophet had a twin brother Harun (AS)?",
+      "options": [
+        "Musa (AS)",
+        "Ibrahim (AS)",
+        "Yusuf (AS)",
+        "Nuh (AS)"
+      ],
+      "answer": 0,
+      "explanation": "Harun was Musa's brother and supporter.",
+      "difficulty": "easy",
+      "id": "q39"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which prophet is known as the 'seal of the prophets'?",
+      "options": [
+        "Muhammad (PBUH)",
+        "Isa (AS)",
+        "Musa (AS)",
+        "Ibrahim (AS)"
+      ],
+      "answer": 0,
+      "explanation": "Muhammad (PBUH) is the seal of the prophets.",
+      "difficulty": "easy",
+      "id": "q40"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which prophet is mentioned in the Quran as a carpenter's son?",
+      "options": [
+        "Isa (AS)",
+        "Yahya (AS)",
+        "Yusuf (AS)",
+        "Zakariyya (AS)"
+      ],
+      "answer": 0,
+      "explanation": "Isa is the son of Maryam, raised by a carpenter.",
+      "difficulty": "hard",
+      "id": "q41"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which prophet's wife was punished for disbelief?",
+      "options": [
+        "Nuh's wife",
+        "Ibrahim's wife",
+        "Musa's wife",
+        "Yusuf's wife"
+      ],
+      "answer": 0,
+      "explanation": "The Quran mentions the wives of Nuh and Lut as examples of disbelief.",
+      "difficulty": "medium",
+      "id": "q42"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which prophet argued with a tyrant about the sun rising from the east?",
+      "options": [
+        "Ibrahim (AS)",
+        "Musa (AS)",
+        "Nuh (AS)",
+        "Yusuf (AS)"
+      ],
+      "answer": 0,
+      "explanation": "Ibrahim debated Nimrod about the sun.",
+      "difficulty": "medium",
+      "id": "q43"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which prophet was granted the ability to make a cup that predicted events?",
+      "options": [
+        "Yusuf (AS)",
+        "Sulaiman (AS)",
+        "Dawood (AS)",
+        "Musa (AS)"
+      ],
+      "answer": 0,
+      "explanation": "Yusuf used the cup in the Egyptian king's court.",
+      "difficulty": "hard",
+      "id": "q44"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which prophet's nation was punished with a mighty wind?",
+      "options": [
+        "Hud's people (Aad)",
+        "Saleh's people",
+        "Lut's people",
+        "Nuh's people"
+      ],
+      "answer": 0,
+      "explanation": "The Aad were destroyed by a violent wind.",
+      "difficulty": "medium",
+      "id": "q45"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which prophet's people were punished with a shout (Sayhah)?",
+      "options": [
+        "Saleh's people (Thamud)",
+        "Aad",
+        "Midian",
+        "Egyptians"
+      ],
+      "answer": 0,
+      "explanation": "Thamud was destroyed by a mighty shout.",
+      "difficulty": "hard",
+      "id": "q46"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which prophet is described as 'the most truthful' (Siddiq) in the Quran?",
+      "options": [
+        "Yusuf (AS)",
+        "Musa (AS)",
+        "Ibrahim (AS)",
+        "Nuh (AS)"
+      ],
+      "answer": 0,
+      "explanation": "Yusuf is called Siddiq in the Quran.",
+      "difficulty": "medium",
+      "id": "q47"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which prophet's mother was Maryam (AS)?",
+      "options": [
+        "Isa (AS)",
+        "Yahya (AS)",
+        "Musa (AS)",
+        "Zakariyya (AS)"
+      ],
+      "answer": 0,
+      "explanation": "Maryam was the mother of Isa.",
+      "difficulty": "easy",
+      "id": "q48"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which prophet is known as 'Habibullah' (the Beloved of Allah)?",
+      "options": [
+        "Muhammad (PBUH)",
+        "Adam (AS)",
+        "Musa (AS)",
+        "Isa (AS)"
+      ],
+      "answer": 0,
+      "explanation": "Muhammad (PBUH) is honoured with the title Habibullah, the beloved of Allah.",
+      "difficulty": "medium",
+      "id": "q49"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which miracle involved the hand of Musa (AS) shining white?",
+      "options": [
+        "The white-hand miracle before Pharaoh",
+        "The parting of the sea",
+        "The staff turning to a serpent",
+        "The manna and quails"
+      ],
+      "answer": 0,
+      "explanation": "Allah made Musa's (AS) hand shine white as a sign to Pharaoh (Surah Ta-Ha).",
+      "difficulty": "medium",
+      "id": "q50"
+    },
+    {
+      "type": "mcq",
+      "prompt": "On which mountain did Musa (AS) receive the tablets?",
+      "options": [
+        "Mount Sinai (Tur)",
+        "Mount Uhud",
+        "Mount Arafat",
+        "Mount Safa"
+      ],
+      "answer": 0,
+      "explanation": "Musa (AS) received the tablets on Mount Tur (Sinai) after his forty-day seclusion.",
+      "difficulty": "medium",
+      "id": "q51"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who raised Musa (AS) in his palace after he was found in the river?",
+      "options": [
+        "Pharaoh (Fir'aun)",
+        "The king of Egypt's vizier",
+        "The priests",
+        "His uncle"
+      ],
+      "answer": 0,
+      "explanation": "Pharaoh's wife Asiya persuaded Pharaoh to keep the baby, so Musa (AS) was raised in the palace.",
+      "difficulty": "medium",
+      "id": "q52"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which prophet defeated Goliath (Jalut) with a sling?",
+      "options": [
+        "Dawud (AS)",
+        "Talut",
+        "Musa (AS)",
+        "Sulaiman (AS)"
+      ],
+      "answer": 0,
+      "explanation": "The young Dawud (AS) felled Goliath with a sling in the battle against the Philistines.",
+      "difficulty": "easy",
+      "id": "q53"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which prophet interpreted the dreams of the king's two imprisoned servants?",
+      "options": [
+        "Yusuf (AS)",
+        "Ibrahim (AS)",
+        "Ayyub (AS)",
+        "Shuaib (AS)"
+      ],
+      "answer": 0,
+      "explanation": "In prison, Yusuf (AS) interpreted the dreams of the cupbearer and the baker.",
+      "difficulty": "medium",
+      "id": "q54"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which prophet was the son of Ishaq (AS)?",
+      "options": [
+        "Yaqoob (AS)",
+        "Ismail (AS)",
+        "Yusuf (AS)",
+        "Musa (AS)"
+      ],
+      "answer": 0,
+      "explanation": "Yaqoob (AS), also called Israel, was the son of Ishaq (AS).",
+      "difficulty": "medium",
+      "id": "q55"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who was the father of Ismail (AS)?",
+      "options": [
+        "Ibrahim (AS)",
+        "Yaqoob (AS)",
+        "Ishaq (AS)",
+        "Lut (AS)"
+      ],
+      "answer": 0,
+      "explanation": "Ismail (AS) was the eldest son of Ibrahim (AS) from Hajar.",
+      "difficulty": "easy",
+      "id": "q56"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which prophet was thrown into the fire by his people but was saved by Allah?",
+      "options": [
+        "Ibrahim (AS)",
+        "Yusuf (AS)",
+        "Musa (AS)",
+        "Ayyub (AS)"
+      ],
+      "answer": 0,
+      "explanation": "When Ibrahim (AS) was thrown into the fire, Allah commanded it to be cool and safe for him.",
+      "difficulty": "easy",
+      "id": "q57"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which prophet called his people to Allah for nine hundred and fifty years?",
+      "options": [
+        "Nuh (AS)",
+        "Hud (AS)",
+        "Salih (AS)",
+        "Lut (AS)"
+      ],
+      "answer": 0,
+      "explanation": "Surah Al-Ankabut says Nuh (AS) remained among his people for nine hundred and fifty years.",
+      "difficulty": "medium",
+      "id": "q58"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who was the wife of Ibrahim (AS) and mother of Ismail (AS)?",
+      "options": [
+        "Hajar",
+        "Sarah",
+        "Asiya",
+        "Maryam"
+      ],
+      "answer": 0,
+      "explanation": "Hajar was Ibrahim's (AS) wife and the mother of Ismail (AS).",
+      "difficulty": "easy",
+      "id": "q59"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who was the wife of Ibrahim (AS) and mother of Ishaq (AS)?",
+      "options": [
+        "Sarah",
+        "Hajar",
+        "Amina",
+        "Khadija"
+      ],
+      "answer": 0,
+      "explanation": "Sarah was the wife of Ibrahim (AS) who gave birth to Ishaq (AS) in old age.",
+      "difficulty": "medium",
+      "id": "q60"
+    },
+    {
+      "type": "mcq",
+      "prompt": "How were the people of Lut (AS) destroyed?",
+      "options": [
+        "By a rain of stones (Sijjil)",
+        "By a great flood",
+        "By a mighty wind",
+        "By an earthquake"
+      ],
+      "answer": 0,
+      "explanation": "Allah rained stones of baked clay upon the towns of Lut's (AS) people.",
+      "difficulty": "medium",
+      "id": "q61"
+    },
+    {
+      "type": "mcq",
+      "prompt": "How many prophets are mentioned by name in the Quran?",
+      "options": [
+        "Twenty-five",
+        "Twelve",
+        "Forty",
+        "Ninety-nine"
+      ],
+      "answer": 0,
+      "explanation": "Twenty-five prophets are named in the Quran.",
+      "difficulty": "medium",
+      "id": "q62"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What does 'Ulul Azm' mean?",
+      "options": [
+        "The resolute prophets who endured great trials",
+        "The prophets of Bani Israel",
+        "The early prophets",
+        "The prophets with books"
+      ],
+      "answer": 0,
+      "explanation": "Ulul Azm refers to the messengers of firm resolve who faced the greatest opposition.",
+      "difficulty": "hard",
+      "id": "q63"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What does 'Rasul' mean in Islamic terminology?",
+      "options": [
+        "A messenger sent with a new scripture or law",
+        "A king",
+        "A scholar",
+        "A priest"
+      ],
+      "answer": 0,
+      "explanation": "A Rasul is a messenger commissioned with a new revelation and law for his people.",
+      "difficulty": "medium",
+      "id": "q64"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which statement about 'Nabi' and 'Rasul' is correct?",
+      "options": [
+        "Every Rasul is a Nabi, but not every Nabi is a Rasul",
+        "Every Nabi is a Rasul",
+        "They are identical in every respect",
+        "A Nabi is higher than a Rasul"
+      ],
+      "answer": 0,
+      "explanation": "Every Rasul is also a Nabi, but a Nabi is not necessarily a Rasul with a new law.",
+      "difficulty": "hard",
+      "id": "q65"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Quran mentions the 'Suhuf' (scrolls) of which two prophets?",
+      "options": [
+        "Ibrahim (AS) and Musa (AS)",
+        "Adam (AS) and Nuh (AS)",
+        "Dawud (AS) and Sulaiman (AS)",
+        "Isa (AS) and Yahya (AS)"
+      ],
+      "answer": 0,
+      "explanation": "Surah Al-A'la refers to the scrolls of Ibrahim and Musa.",
+      "difficulty": "hard",
+      "id": "q66"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which prophet tended sheep before receiving prophethood?",
+      "options": [
+        "Musa (AS)",
+        "Isa (AS)",
+        "Sulaiman (AS)",
+        "Yunus (AS)"
+      ],
+      "answer": 0,
+      "explanation": "Musa (AS) worked as a shepherd in Madyan before prophethood.",
+      "difficulty": "medium",
+      "id": "q67"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which prophet spoke in the cradle as a baby?",
+      "options": [
+        "Isa (AS)",
+        "Yahya (AS)",
+        "Yusuf (AS)",
+        "Musa (AS)"
+      ],
+      "answer": 0,
+      "explanation": "As an infant, Isa (AS) spoke to defend his mother Maryam (AS).",
+      "difficulty": "easy",
+      "id": "q68"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What does 'Hawariyyun' refer to?",
+      "options": [
+        "The disciples and helpers of Isa (AS)",
+        "The companions of Musa (AS)",
+        "The guards of the Kaaba",
+        "The scribes of the Quran"
+      ],
+      "answer": 0,
+      "explanation": "The Hawariyyun were the sincere disciples who supported Isa (AS).",
+      "difficulty": "medium",
+      "id": "q69"
+    },
+    {
+      "type": "mcq",
+      "prompt": "How many disciples (Hawariyyun) did Isa (AS) have?",
+      "options": [
+        "Twelve",
+        "Ten",
+        "Seven",
+        "Forty"
+      ],
+      "answer": 0,
+      "explanation": "The Quran and tradition refer to the twelve disciples who aided Isa (AS).",
+      "difficulty": "medium",
+      "id": "q70"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which prophet was raised up to heaven by Allah?",
+      "options": [
+        "Isa (AS)",
+        "Musa (AS)",
+        "Idris (AS)",
+        "Yahya (AS)"
+      ],
+      "answer": 0,
+      "explanation": "Allah raised Isa (AS) to Himself; he was neither killed nor crucified.",
+      "difficulty": "medium",
+      "id": "q71"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which prophet is called 'Al-Masih' (the Messiah)?",
+      "options": [
+        "Isa (AS)",
+        "Musa (AS)",
+        "Dawud (AS)",
+        "Sulaiman (AS)"
+      ],
+      "answer": 0,
+      "explanation": "Isa (AS) is called Al-Masih in the Quran.",
+      "difficulty": "easy",
+      "id": "q72"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Arab tribes trace their lineage to which prophet?",
+      "options": [
+        "Ismail (AS)",
+        "Ishaq (AS)",
+        "Yaqoob (AS)",
+        "Yusuf (AS)"
+      ],
+      "answer": 0,
+      "explanation": "The Arabs of the Adnanite line descend from Ismail (AS), son of Ibrahim (AS).",
+      "difficulty": "medium",
+      "id": "q73"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Bani Israel are named after which prophet?",
+      "options": [
+        "Yaqoob (AS)",
+        "Ishaq (AS)",
+        "Musa (AS)",
+        "Harun (AS)"
+      ],
+      "answer": 0,
+      "explanation": "Yaqoob (AS) is also called Israel, and his descendants are Bani Israel.",
+      "difficulty": "medium",
+      "id": "q74"
+    },
+    {
+      "type": "mcq",
+      "prompt": "According to Islamic tradition, who was the first of the Messengers (Rusul)?",
+      "options": [
+        "Nuh (AS)",
+        "Adam (AS)",
+        "Idris (AS)",
+        "Ibrahim (AS)"
+      ],
+      "answer": 0,
+      "explanation": "Nuh (AS) is traditionally regarded as the first messenger sent with a law.",
+      "difficulty": "hard",
+      "id": "q75"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which prophet had twelve sons from whom the tribes of Israel descended?",
+      "options": [
+        "Yaqoob (AS)",
+        "Ibrahim (AS)",
+        "Ismail (AS)",
+        "Musa (AS)"
+      ],
+      "answer": 0,
+      "explanation": "Yaqoob (AS) had twelve sons whose descendants formed the tribes of Israel.",
+      "difficulty": "medium",
+      "id": "q76"
+    },
+    {
+      "type": "mcq",
+      "prompt": "In the valley of ants, which prophet heard the speech of an ant?",
+      "options": [
+        "Sulaiman (AS)",
+        "Dawud (AS)",
+        "Yusuf (AS)",
+        "Musa (AS)"
+      ],
+      "answer": 0,
+      "explanation": "Surah An-Naml tells of Sulaiman (AS) hearing an ant warn its colony.",
+      "difficulty": "medium",
+      "id": "q77"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who was the father of Ibrahim (AS)?",
+      "options": [
+        "Azar",
+        "Tariq",
+        "Yaqoob",
+        "Harun"
+      ],
+      "answer": 0,
+      "explanation": "Ibrahim's (AS) father Azar was an idol-maker mentioned in the Quran.",
+      "difficulty": "medium",
+      "id": "q78"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Ibrahim (AS) was born in which region?",
+      "options": [
+        "Ur of the Chaldees (Babylonia)",
+        "Egypt",
+        "Palestine",
+        "Yemen"
+      ],
+      "answer": 0,
+      "explanation": "Ibrahim (AS) was born in the land of Babylon (Ur), where people worshipped idols.",
+      "difficulty": "medium",
+      "id": "q79"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which prophet forgave his brothers when they came to him in Egypt?",
+      "options": [
+        "Yusuf (AS)",
+        "Ibrahim (AS)",
+        "Ayyub (AS)",
+        "Musa (AS)"
+      ],
+      "answer": 0,
+      "explanation": "Yusuf (AS) forgave his brothers, saying there was no blame upon them.",
+      "difficulty": "easy",
+      "id": "q80"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which prophet is called 'Zul-Nun' (the one of the fish) in the Quran?",
+      "options": [
+        "Yunus (AS)",
+        "Nuh (AS)",
+        "Musa (AS)",
+        "Ayyub (AS)"
+      ],
+      "answer": 0,
+      "explanation": "Yunus (AS) is called Zul-Nun because of his stay in the belly of the great fish.",
+      "difficulty": "medium",
+      "id": "q81"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which dua did Yunus (AS) make in the darkness of the fish?",
+      "options": [
+        "La ilaha illa anta subhanaka inni kuntu minaz-zalimin",
+        "Rabbana atina fid-dunya hasanah",
+        "Rabbi zidni ilma",
+        "Rabbi inni lima anzalta ilayya min khairin faqir"
+      ],
+      "answer": 0,
+      "explanation": "Yunus (AS) called out that there is no god but Allah and that he was of the wrongdoers.",
+      "difficulty": "hard",
+      "id": "q82"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The people of which prophet avoided punishment by believing before it came?",
+      "options": [
+        "Yunus (AS)",
+        "Nuh (AS)",
+        "Hud (AS)",
+        "Salih (AS)"
+      ],
+      "answer": 0,
+      "explanation": "The people of Yunus (AS) believed at the last moment and were spared the punishment.",
+      "difficulty": "medium",
+      "id": "q83"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which prophet traveled with Al-Khidr to learn wisdom?",
+      "options": [
+        "Musa (AS)",
+        "Ilyas (AS)",
+        "Yunus (AS)",
+        "Ayyub (AS)"
+      ],
+      "answer": 0,
+      "explanation": "Surah Al-Kahf recounts Musa's (AS) journey with Al-Khidr and its three lessons.",
+      "difficulty": "medium",
+      "id": "q84"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Allah commanded Musa (AS) to speak gently to whom?",
+      "options": [
+        "Pharaoh (Fir'aun)",
+        "The Samiri",
+        "His own people",
+        "The priests"
+      ],
+      "answer": 0,
+      "explanation": "Musa and Harun (AS) were told to speak to Pharaoh in gentle words.",
+      "difficulty": "medium",
+      "id": "q85"
+    },
+    {
+      "type": "mcq",
+      "prompt": "At the burning bush on Mount Tur, who received the call of Allah?",
+      "options": [
+        "Musa (AS)",
+        "Harun (AS)",
+        "Shuaib (AS)",
+        "Ilyas (AS)"
+      ],
+      "answer": 0,
+      "explanation": "On his journey from Madyan, Musa (AS) saw a fire at Tur and received the divine call.",
+      "difficulty": "medium",
+      "id": "q86"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Musa (AS) married the daughter of which prophet?",
+      "options": [
+        "Shuaib (AS)",
+        "Lut (AS)",
+        "Salih (AS)",
+        "Hud (AS)"
+      ],
+      "answer": 0,
+      "explanation": "While in Madyan, Musa (AS) worked for Shuaib (AS) and married one of his daughters.",
+      "difficulty": "medium",
+      "id": "q87"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who was the first prophet to receive revealed scriptures (Suhuf)?",
+      "options": [
+        "Adam (AS)",
+        "Nuh (AS)",
+        "Ibrahim (AS)",
+        "Musa (AS)"
+      ],
+      "answer": 0,
+      "explanation": "Tradition holds that Adam (AS) received ten scrolls as the first revealed scriptures.",
+      "difficulty": "hard",
+      "id": "q88"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which prophet is described in the Quran as 'an excellent example' for those who hope in Allah?",
+      "options": [
+        "Muhammad (PBUH)",
+        "Ibrahim (AS)",
+        "Yusuf (AS)",
+        "Ayyub (AS)"
+      ],
+      "answer": 0,
+      "explanation": "Surah Al-Ahzab (33:21) declares the Prophet (PBUH) an excellent example for believers.",
+      "difficulty": "medium",
+      "id": "q89"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who was the king to whom Musa (AS) was sent?",
+      "options": [
+        "Pharaoh (Fir'aun)",
+        "Nimrod",
+        "Abraha",
+        "Sargon"
+      ],
+      "answer": 0,
+      "explanation": "Musa (AS) was sent to Pharaoh, the tyrant of Egypt.",
+      "difficulty": "easy",
+      "id": "q90"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which prophet will lead mankind with the 'great intercession' (Shafa'ah al-Uzma) on Judgment Day?",
+      "options": [
+        "Muhammad (PBUH)",
+        "Ibrahim (AS)",
+        "Musa (AS)",
+        "Isa (AS)"
+      ],
+      "answer": 0,
+      "explanation": "The Prophet (PBUH) will be granted the great intercession on the Day of Judgment.",
+      "difficulty": "hard",
+      "id": "q91"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which name of the Prophet (PBUH) is mentioned in Surah As-Saff?",
+      "options": [
+        "Ahmad",
+        "Muhammad",
+        "Mustafa",
+        "Taha"
+      ],
+      "answer": 0,
+      "explanation": "Surah As-Saff (61:6) mentions the Prophet (PBUH) by the name Ahmad.",
+      "difficulty": "medium",
+      "id": "q92"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which prophet is known for weaving chainmail armor?",
+      "options": [
+        "Dawud (AS)",
+        "Sulaiman (AS)",
+        "Musa (AS)",
+        "Zakariyya (AS)"
+      ],
+      "answer": 0,
+      "explanation": "Allah taught Dawud (AS) the making of coats of mail (Surah Al-Anbiya).",
+      "difficulty": "hard",
+      "id": "q93"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which prophet's people were the builders of the city of 'Iram'?",
+      "options": [
+        "Aad (people of Hud)",
+        "Thamud (people of Salih)",
+        "Madyan (people of Shuaib)",
+        "Sodom (people of Lut)"
+      ],
+      "answer": 0,
+      "explanation": "The Quran mentions Iram, the city of pillars associated with the people of Aad.",
+      "difficulty": "hard",
+      "id": "q94"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which prophet asked Allah for Harun (AS) as a helper?",
+      "options": [
+        "Musa (AS)",
+        "Dawud (AS)",
+        "Yusuf (AS)",
+        "Ayyub (AS)"
+      ],
+      "answer": 0,
+      "explanation": "Musa (AS) asked Allah to strengthen him with his brother Harun (AS).",
+      "difficulty": "medium",
+      "id": "q95"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which prophet is associated with the 'cave' story in Surah Al-Kahf alongside Al-Khidr?",
+      "options": [
+        "Musa (AS)",
+        "Yunus (AS)",
+        "Ilyas (AS)",
+        "Zul-Qarnain"
+      ],
+      "answer": 0,
+      "explanation": "Surah Al-Kahf recounts Musa's (AS) journey with Al-Khidr.",
+      "difficulty": "medium",
+      "id": "q96"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which prophet's mother placed him in a basket on the river?",
+      "options": [
+        "Musa (AS)",
+        "Isa (AS)",
+        "Yusuf (AS)",
+        "Yahya (AS)"
+      ],
+      "answer": 0,
+      "explanation": "Musa's (AS) mother set him adrift in a basket on the Nile to save him from Pharaoh.",
+      "difficulty": "easy",
+      "id": "q97"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which prophet is mentioned in the Quran as being 'saved from the sea' with his army drowned after him?",
+      "options": [
+        "Musa (AS)",
+        "Yunus (AS)",
+        "Nuh (AS)",
+        "Ibrahim (AS)"
+      ],
+      "answer": 0,
+      "explanation": "Musa (AS) and his followers crossed the sea while Pharaoh's army drowned.",
+      "difficulty": "medium",
+      "id": "q98"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which prophet is known as the one given 'the two bright proofs' (staff and white hand)?",
+      "options": [
+        "Musa (AS)",
+        "Harun (AS)",
+        "Dawud (AS)",
+        "Sulaiman (AS)"
+      ],
+      "answer": 0,
+      "explanation": "Allah granted Musa (AS) two clear signs: the staff and the shining hand.",
+      "difficulty": "hard",
+      "id": "q99"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who was the uncle and protector of Musa (AS) among his own people?",
+      "options": [
+        "Harun (AS)",
+        "Shuaib (AS)",
+        "Khidr",
+        "Yusha (AS)"
+      ],
+      "answer": 0,
+      "explanation": "Harun (AS), Musa's brother, was his supporter among Bani Israel.",
+      "difficulty": "medium",
+      "id": "q100"
+    }
+  ]
+}

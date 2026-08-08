@@ -1,0 +1,1833 @@
+{
+  "bank": {
+    "name": "Earth & Space",
+    "subject": "General Science & Ability",
+    "topic": "Earth & Space",
+    "description": "The solar system, Earth, the atmosphere, oceans, geology and world geography basics.",
+    "tags": "css,pms,fpsc,ppsc,nts,gsa,earth,space",
+    "version": "1.0",
+    "id": "gsa_earth_space"
+  },
+  "questions": [
+    {
+      "type": "mcq",
+      "prompt": "Which is the third planet from the Sun?",
+      "options": [
+        "Mars",
+        "Earth",
+        "Venus",
+        "Mercury"
+      ],
+      "answer": 1,
+      "explanation": "Earth is the third planet from the Sun.",
+      "difficulty": "easy",
+      "id": "q01"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which planet is closest to the Sun?",
+      "options": [
+        "Mercury",
+        "Venus",
+        "Earth",
+        "Mars"
+      ],
+      "answer": 0,
+      "explanation": "Mercury is the innermost planet.",
+      "difficulty": "easy",
+      "id": "q02"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which is the largest planet in the solar system?",
+      "options": [
+        "Saturn",
+        "Neptune",
+        "Jupiter",
+        "Uranus"
+      ],
+      "answer": 2,
+      "explanation": "Jupiter is the largest planet.",
+      "difficulty": "easy",
+      "id": "q03"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which planet is famous for its prominent rings?",
+      "options": [
+        "Jupiter",
+        "Uranus",
+        "Saturn",
+        "Neptune"
+      ],
+      "answer": 2,
+      "explanation": "Saturn has the most spectacular ring system.",
+      "difficulty": "easy",
+      "id": "q04"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which is the hottest planet of the solar system?",
+      "options": [
+        "Venus",
+        "Mercury",
+        "Mars",
+        "Jupiter"
+      ],
+      "answer": 0,
+      "explanation": "Venus, with its thick CO2 atmosphere, is the hottest planet.",
+      "difficulty": "medium",
+      "id": "q05"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The smallest planet of the solar system is?",
+      "options": [
+        "Mercury",
+        "Mars",
+        "Pluto",
+        "Venus"
+      ],
+      "answer": 0,
+      "explanation": "Mercury is the smallest planet.",
+      "difficulty": "medium",
+      "id": "q06"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Moon is Earth's?",
+      "options": [
+        "Star",
+        "Planet",
+        "Natural satellite",
+        "Asteroid"
+      ],
+      "answer": 2,
+      "explanation": "The Moon is Earth's only natural satellite.",
+      "difficulty": "easy",
+      "id": "q07"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Sun is a?",
+      "options": [
+        "Planet",
+        "Comet",
+        "Star",
+        "Nebula"
+      ],
+      "answer": 2,
+      "explanation": "The Sun is the star at the centre of our solar system.",
+      "difficulty": "easy",
+      "id": "q08"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Sun is composed mainly of?",
+      "options": [
+        "Oxygen and carbon",
+        "Hydrogen and helium",
+        "Iron and nickel",
+        "Nitrogen and argon"
+      ],
+      "answer": 1,
+      "explanation": "The Sun is about 74% hydrogen and 24% helium.",
+      "difficulty": "medium",
+      "id": "q09"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The nearest star to Earth (after the Sun) is?",
+      "options": [
+        "Sirius",
+        "Betelgeuse",
+        "Proxima Centauri",
+        "Alpha Centauri A"
+      ],
+      "answer": 2,
+      "explanation": "Proxima Centauri, about 4.2 light-years away, is the nearest star.",
+      "difficulty": "medium",
+      "id": "q10"
+    },
+    {
+      "type": "mcq",
+      "prompt": "A light year is a unit of?",
+      "options": [
+        "Time",
+        "Distance",
+        "Speed",
+        "Brightness"
+      ],
+      "answer": 1,
+      "explanation": "A light year is the distance light travels in one year.",
+      "difficulty": "medium",
+      "id": "q11"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Our galaxy is called the?",
+      "options": [
+        "Andromeda",
+        "Milky Way",
+        "Whirlpool",
+        "Sombrero"
+      ],
+      "answer": 1,
+      "explanation": "Earth's home galaxy is the Milky Way.",
+      "difficulty": "easy",
+      "id": "q12"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Day and night on Earth are caused by?",
+      "options": [
+        "Earth's rotation on its axis",
+        "Earth's revolution around the Sun",
+        "The Moon's orbit",
+        "The tilt of the axis"
+      ],
+      "answer": 0,
+      "explanation": "The Earth spins on its axis, giving us day and night.",
+      "difficulty": "easy",
+      "id": "q13"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The changing seasons are caused by?",
+      "options": [
+        "Earth's rotation",
+        "Earth's revolution around the Sun and axial tilt",
+        "The Moon's gravity",
+        "Solar flares"
+      ],
+      "answer": 1,
+      "explanation": "Seasons result from the Earth's tilted orbit around the Sun.",
+      "difficulty": "medium",
+      "id": "q14"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Earth's axis is tilted at approximately?",
+      "options": [
+        "15.5 degrees",
+        "23.5 degrees",
+        "30 degrees",
+        "45 degrees"
+      ],
+      "answer": 1,
+      "explanation": "The axial tilt is about 23.5 degrees.",
+      "difficulty": "medium",
+      "id": "q15"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which layer of the atmosphere is closest to the Earth's surface?",
+      "options": [
+        "Troposphere",
+        "Stratosphere",
+        "Mesosphere",
+        "Thermosphere"
+      ],
+      "answer": 0,
+      "explanation": "Weather occurs in the troposphere, the lowest layer.",
+      "difficulty": "medium",
+      "id": "q16"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Approximately what percentage of Earth's surface is covered by water?",
+      "options": [
+        "50%",
+        "61%",
+        "71%",
+        "81%"
+      ],
+      "answer": 2,
+      "explanation": "About 71% of the Earth's surface is water.",
+      "difficulty": "medium",
+      "id": "q17"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The deepest point in the world's oceans is?",
+      "options": [
+        "Mariana Trench",
+        "Java Trench",
+        "Puerto Rico Trench",
+        "Tonga Trench"
+      ],
+      "answer": 0,
+      "explanation": "The Mariana Trench's Challenger Deep is the deepest known point.",
+      "difficulty": "medium",
+      "id": "q18"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The highest mountain in the world is?",
+      "options": [
+        "K2",
+        "Kangchenjunga",
+        "Mount Everest",
+        "Makalu"
+      ],
+      "answer": 2,
+      "explanation": "Mount Everest (8,848 m) is the world's highest peak.",
+      "difficulty": "easy",
+      "id": "q19"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The largest hot desert in the world is the?",
+      "options": [
+        "Gobi",
+        "Kalahari",
+        "Sahara",
+        "Thar"
+      ],
+      "answer": 2,
+      "explanation": "The Sahara is the largest hot desert.",
+      "difficulty": "medium",
+      "id": "q20"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which is the largest continent by area?",
+      "options": [
+        "Africa",
+        "Asia",
+        "North America",
+        "Europe"
+      ],
+      "answer": 1,
+      "explanation": "Asia is the largest continent.",
+      "difficulty": "easy",
+      "id": "q21"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which is the largest country in the world by area?",
+      "options": [
+        "Canada",
+        "China",
+        "United States",
+        "Russia"
+      ],
+      "answer": 3,
+      "explanation": "Russia is the largest country by land area.",
+      "difficulty": "easy",
+      "id": "q22"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Prime Meridian passes through which place?",
+      "options": [
+        "Paris",
+        "Greenwich, London",
+        "New York",
+        "Cairo"
+      ],
+      "answer": 1,
+      "explanation": "The Prime Meridian (0 degrees) passes through Greenwich.",
+      "difficulty": "medium",
+      "id": "q23"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Pakistan Standard Time is?",
+      "options": [
+        "GMT + 3",
+        "GMT + 4",
+        "GMT + 5",
+        "GMT + 6"
+      ],
+      "answer": 2,
+      "explanation": "Pakistan is at GMT+5 (PKT).",
+      "difficulty": "medium",
+      "id": "q24"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Tides on Earth are mainly caused by?",
+      "options": [
+        "Wind",
+        "The Moon's gravitational pull",
+        "Earthquakes",
+        "Ocean currents"
+      ],
+      "answer": 1,
+      "explanation": "The Moon's gravity (and the Sun's, to a lesser degree) drives tides.",
+      "difficulty": "medium",
+      "id": "q25"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Rocks formed by the cooling of molten magma are called?",
+      "options": [
+        "Sedimentary",
+        "Igneous",
+        "Metamorphic",
+        "Fossilised"
+      ],
+      "answer": 1,
+      "explanation": "Igneous rocks form when magma or lava cools.",
+      "difficulty": "medium",
+      "id": "q26"
+    },
+    {
+      "type": "mcq",
+      "prompt": "An instrument that records earthquakes is the?",
+      "options": [
+        "Barometer",
+        "Seismograph",
+        "Altimeter",
+        "Hygrometer"
+      ],
+      "answer": 1,
+      "explanation": "A seismograph detects and records seismic waves.",
+      "difficulty": "easy",
+      "id": "q27"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which planet is often called Earth's 'sister planet' due to its similar size?",
+      "options": [
+        "Venus",
+        "Mars",
+        "Mercury",
+        "Neptune"
+      ],
+      "answer": 0,
+      "explanation": "Venus is close to Earth in size and is called its sister planet.",
+      "difficulty": "medium",
+      "id": "q28"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What are sedimentary rocks formed from?",
+      "options": [
+        "Layers of compressed sediment",
+        "Cooled magma",
+        "Heat and pressure",
+        "Living organisms only"
+      ],
+      "answer": 0,
+      "explanation": "Sedimentary rocks form from layers of sediment compressed over time (e.g. sandstone).",
+      "difficulty": "medium",
+      "id": "q29"
+    },
+    {
+      "type": "mcq",
+      "prompt": "A solar eclipse occurs when:",
+      "options": [
+        "The Moon passes between the Sun and Earth",
+        "Earth passes between the Sun and Moon",
+        "The Moon enters Earth's shadow",
+        "The Sun moves behind the Moon"
+      ],
+      "answer": 0,
+      "explanation": "In a solar eclipse the Moon blocks the Sun's light from reaching Earth.",
+      "difficulty": "medium",
+      "id": "q30"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which is the second largest planet in the solar system?",
+      "options": [
+        "Saturn",
+        "Jupiter",
+        "Uranus",
+        "Neptune"
+      ],
+      "answer": 0,
+      "explanation": "Saturn is the second largest planet after Jupiter.",
+      "difficulty": "easy",
+      "id": "q31"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which planet has the tallest volcano in the solar system, Olympus Mons?",
+      "options": [
+        "Mars",
+        "Venus",
+        "Jupiter",
+        "Mercury"
+      ],
+      "answer": 0,
+      "explanation": "Olympus Mons, the largest volcano, is on Mars.",
+      "difficulty": "medium",
+      "id": "q32"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The ozone layer protects Earth from:",
+      "options": [
+        "Ultraviolet radiation",
+        "Microwaves",
+        "X-rays",
+        "Radio waves"
+      ],
+      "answer": 0,
+      "explanation": "Ozone absorbs harmful UV radiation.",
+      "difficulty": "easy",
+      "id": "q33"
+    },
+    {
+      "type": "mcq",
+      "prompt": "During a total lunar eclipse, the Moon usually appears:",
+      "options": [
+        "Reddish or copper coloured",
+        "Bright blue",
+        "Pure white",
+        "Green"
+      ],
+      "answer": 0,
+      "explanation": "Earth's atmosphere bends red light onto the Moon, giving it a reddish hue.",
+      "difficulty": "hard",
+      "id": "q34"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which planet is known as the Morning Star?",
+      "options": [
+        "Venus",
+        "Mars",
+        "Mercury",
+        "Jupiter"
+      ],
+      "answer": 0,
+      "explanation": "Venus is often visible as the morning star.",
+      "difficulty": "easy",
+      "id": "q35"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which planet's atmosphere is mostly carbon dioxide with clouds of sulphuric acid?",
+      "options": [
+        "Venus",
+        "Mars",
+        "Jupiter",
+        "Saturn"
+      ],
+      "answer": 0,
+      "explanation": "Venus has a dense CO2 atmosphere with acid clouds.",
+      "difficulty": "medium",
+      "id": "q36"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The outermost layer of the Earth is the:",
+      "options": [
+        "Crust",
+        "Mantle",
+        "Core",
+        "Magma"
+      ],
+      "answer": 0,
+      "explanation": "The crust is Earth's outermost solid layer.",
+      "difficulty": "easy",
+      "id": "q37"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The 'Blue Planet' is another name for:",
+      "options": [
+        "Earth",
+        "Mars",
+        "Neptune",
+        "Uranus"
+      ],
+      "answer": 0,
+      "explanation": "Earth looks blue due to its oceans.",
+      "difficulty": "easy",
+      "id": "q38"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which planet currently has the most known moons?",
+      "options": [
+        "Saturn",
+        "Jupiter",
+        "Mars",
+        "Uranus"
+      ],
+      "answer": 0,
+      "explanation": "Saturn leads with over 140 confirmed moons.",
+      "difficulty": "hard",
+      "id": "q39"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Milky Way is a:",
+      "options": [
+        "Spiral galaxy",
+        "Elliptical galaxy",
+        "Irregular galaxy",
+        "Star cluster"
+      ],
+      "answer": 0,
+      "explanation": "The Milky Way is a barred spiral galaxy.",
+      "difficulty": "medium",
+      "id": "q40"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The layer of the atmosphere where jets fly is the:",
+      "options": [
+        "Stratosphere",
+        "Troposphere",
+        "Mesosphere",
+        "Exosphere"
+      ],
+      "answer": 0,
+      "explanation": "Commercial jets fly in the lower stratosphere.",
+      "difficulty": "medium",
+      "id": "q41"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which planet has the Great Red Spot?",
+      "options": [
+        "Jupiter",
+        "Saturn",
+        "Mars",
+        "Neptune"
+      ],
+      "answer": 0,
+      "explanation": "Jupiter's Great Red Spot is a giant storm.",
+      "difficulty": "easy",
+      "id": "q42"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The study of the universe is called:",
+      "options": [
+        "Cosmology",
+        "Astrology",
+        "Geology",
+        "Meteorology"
+      ],
+      "answer": 0,
+      "explanation": "Cosmology studies the origin and structure of the universe.",
+      "difficulty": "medium",
+      "id": "q43"
+    },
+    {
+      "type": "mcq",
+      "prompt": "A lunar eclipse occurs when:",
+      "options": [
+        "Earth comes between the Sun and the Moon",
+        "The Moon is between Earth and the Sun",
+        "The Moon reflects no light",
+        "The Sun dims"
+      ],
+      "answer": 0,
+      "explanation": "A lunar eclipse happens when Earth's shadow falls on the Moon.",
+      "difficulty": "easy",
+      "id": "q44"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which planet is known as the 'Ice Giant'?",
+      "options": [
+        "Uranus",
+        "Jupiter",
+        "Saturn",
+        "Mars"
+      ],
+      "answer": 0,
+      "explanation": "Uranus and Neptune are both ice giants.",
+      "difficulty": "medium",
+      "id": "q45"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which is the largest moon of Jupiter?",
+      "options": [
+        "Ganymede",
+        "Titan",
+        "Europa",
+        "Callisto"
+      ],
+      "answer": 0,
+      "explanation": "Ganymede is the largest moon in the solar system.",
+      "difficulty": "medium",
+      "id": "q46"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which planet rotates on its side with an axial tilt of about 98 degrees?",
+      "options": [
+        "Uranus",
+        "Neptune",
+        "Saturn",
+        "Jupiter"
+      ],
+      "answer": 0,
+      "explanation": "Uranus rolls around the Sun on its side.",
+      "difficulty": "medium",
+      "id": "q47"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which body was reclassified as a dwarf planet in 2006?",
+      "options": [
+        "Pluto",
+        "Ceres",
+        "Eris",
+        "Makemake"
+      ],
+      "answer": 0,
+      "explanation": "The IAU reclassified Pluto as a dwarf planet in 2006.",
+      "difficulty": "easy",
+      "id": "q48"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The main asteroid belt lies between the orbits of:",
+      "options": [
+        "Mars and Jupiter",
+        "Earth and Mars",
+        "Jupiter and Saturn",
+        "Venus and Earth"
+      ],
+      "answer": 0,
+      "explanation": "Most asteroids orbit between Mars and Jupiter.",
+      "difficulty": "easy",
+      "id": "q49"
+    },
+    {
+      "type": "mcq",
+      "prompt": "How many planets are in our solar system?",
+      "options": [
+        "Eight",
+        "Nine",
+        "Ten",
+        "Seven"
+      ],
+      "answer": 0,
+      "explanation": "There are eight planets.",
+      "difficulty": "easy",
+      "id": "q50"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Earth rotates on its axis from:",
+      "options": [
+        "West to east",
+        "East to west",
+        "North to south",
+        "It does not rotate"
+      ],
+      "answer": 0,
+      "explanation": "Earth rotates west to east.",
+      "difficulty": "easy",
+      "id": "q51"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Kuiper Belt is located beyond the orbit of which planet?",
+      "options": [
+        "Neptune",
+        "Saturn",
+        "Mars",
+        "Uranus"
+      ],
+      "answer": 0,
+      "explanation": "The Kuiper Belt extends beyond Neptune.",
+      "difficulty": "medium",
+      "id": "q52"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which planet is often the brightest object in the night sky after the Moon?",
+      "options": [
+        "Venus",
+        "Mars",
+        "Jupiter",
+        "Mercury"
+      ],
+      "answer": 0,
+      "explanation": "Venus shines brightly as the closest planet to Earth.",
+      "difficulty": "medium",
+      "id": "q53"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which gas in the atmosphere shields life from harmful ultraviolet rays?",
+      "options": [
+        "Ozone",
+        "Oxygen",
+        "Nitrogen",
+        "Carbon dioxide"
+      ],
+      "answer": 0,
+      "explanation": "The ozone layer absorbs most of the Sun's ultraviolet radiation.",
+      "difficulty": "easy",
+      "id": "q54"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which planet has the fastest winds in the solar system?",
+      "options": [
+        "Neptune",
+        "Jupiter",
+        "Earth",
+        "Mars"
+      ],
+      "answer": 0,
+      "explanation": "Neptune's winds can exceed 2,000 km/h.",
+      "difficulty": "hard",
+      "id": "q55"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which is the largest moon of Saturn?",
+      "options": [
+        "Titan",
+        "Rhea",
+        "Iapetus",
+        "Enceladus"
+      ],
+      "answer": 0,
+      "explanation": "Titan is Saturn's largest moon.",
+      "difficulty": "medium",
+      "id": "q56"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The layer of the atmosphere where weather occurs is the:",
+      "options": [
+        "Stratosphere",
+        "Mesosphere",
+        "Troposphere",
+        "Thermosphere"
+      ],
+      "answer": 2,
+      "explanation": "Most weather phenomena take place in the troposphere.",
+      "difficulty": "medium",
+      "id": "q57"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which of the following is a metamorphic rock?",
+      "options": [
+        "Marble",
+        "Basalt",
+        "Sandstone",
+        "Granite"
+      ],
+      "answer": 0,
+      "explanation": "Marble forms when limestone is metamorphosed.",
+      "difficulty": "hard",
+      "id": "q58"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which planet is the densest in the Solar System?",
+      "options": [
+        "Mercury",
+        "Venus",
+        "Mars",
+        "Earth"
+      ],
+      "answer": 3,
+      "explanation": "Earth has the highest density of all the planets.",
+      "difficulty": "easy",
+      "id": "q59"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which of the following is a gas giant?",
+      "options": [
+        "Jupiter",
+        "Mars",
+        "Mercury",
+        "Venus"
+      ],
+      "answer": 0,
+      "explanation": "Jupiter is a gas giant along with Saturn, Uranus and Neptune.",
+      "difficulty": "medium",
+      "id": "q60"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which is the second largest ocean on Earth?",
+      "options": [
+        "Atlantic Ocean",
+        "Indian Ocean",
+        "Arctic Ocean",
+        "Pacific Ocean"
+      ],
+      "answer": 0,
+      "explanation": "The Atlantic is the second largest ocean after the Pacific.",
+      "difficulty": "easy",
+      "id": "q61"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The study of celestial objects and space is called:",
+      "options": [
+        "Astrology",
+        "Geology",
+        "Astronomy",
+        "Oceanography"
+      ],
+      "answer": 2,
+      "explanation": "Astronomy is the scientific study of the universe.",
+      "difficulty": "easy",
+      "id": "q62"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which gas makes up about 21% of the Earth's atmosphere?",
+      "options": [
+        "Nitrogen",
+        "Oxygen",
+        "Carbon dioxide",
+        "Argon"
+      ],
+      "answer": 1,
+      "explanation": "Oxygen makes up about 21% of the atmosphere.",
+      "difficulty": "easy",
+      "id": "q63"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which layer of the atmosphere contains the ozone layer?",
+      "options": [
+        "Troposphere",
+        "Ionosphere",
+        "Stratosphere",
+        "Exosphere"
+      ],
+      "answer": 2,
+      "explanation": "The ozone layer lies within the stratosphere.",
+      "difficulty": "easy",
+      "id": "q64"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The dense rocky layer beneath the crust is the:",
+      "options": [
+        "Mantle",
+        "Outer core",
+        "Inner core",
+        "Asthenosphere only"
+      ],
+      "answer": 0,
+      "explanation": "The mantle lies between the crust and the core.",
+      "difficulty": "medium",
+      "id": "q65"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which planet takes the longest time to orbit the Sun?",
+      "options": [
+        "Saturn",
+        "Uranus",
+        "Neptune",
+        "Jupiter"
+      ],
+      "answer": 2,
+      "explanation": "Neptune, the farthest planet, takes about 165 years to orbit the Sun.",
+      "difficulty": "easy",
+      "id": "q66"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which of the following is a greenhouse gas?",
+      "options": [
+        "Oxygen",
+        "Carbon dioxide",
+        "Nitrogen",
+        "Argon"
+      ],
+      "answer": 1,
+      "explanation": "Carbon dioxide traps heat in the atmosphere, contributing to the greenhouse effect.",
+      "difficulty": "easy",
+      "id": "q67"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The breakdown of rocks into smaller pieces without changing their composition is:",
+      "options": [
+        "Erosion",
+        "Weathering",
+        "Deposition",
+        "Sedimentation"
+      ],
+      "answer": 1,
+      "explanation": "Weathering breaks rocks in place; erosion transports the fragments away.",
+      "difficulty": "medium",
+      "id": "q68"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The ancient supercontinent that broke apart to form today's continents is:",
+      "options": [
+        "Gondwana",
+        "Pangaea",
+        "Laurasia",
+        "Rodinia"
+      ],
+      "answer": 1,
+      "explanation": "Pangaea was the supercontinent that split into the modern continents.",
+      "difficulty": "hard",
+      "id": "q69"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The theory of continental drift was proposed by:",
+      "options": [
+        "Charles Darwin",
+        "Alfred Wegener",
+        "James Hutton",
+        "Isaac Newton"
+      ],
+      "answer": 1,
+      "explanation": "Alfred Wegener proposed the theory of continental drift in 1912.",
+      "difficulty": "medium",
+      "id": "q70"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which is the deepest ocean trench?",
+      "options": [
+        "Java Trench",
+        "Mariana Trench",
+        "Tonga Trench",
+        "Puerto Rico Trench"
+      ],
+      "answer": 1,
+      "explanation": "The Mariana Trench in the Pacific Ocean is the deepest point on Earth.",
+      "difficulty": "easy",
+      "id": "q71"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The comet that returns every 76 years is:",
+      "options": [
+        "Halley's Comet",
+        "Hale-Bopp",
+        "Comet Encke",
+        "Comet ISON"
+      ],
+      "answer": 0,
+      "explanation": "Halley's Comet returns to the inner Solar System about every 76 years.",
+      "difficulty": "medium",
+      "id": "q72"
+    },
+    {
+      "type": "mcq",
+      "prompt": "In which atmospheric layer do most meteors burn up?",
+      "options": [
+        "Troposphere",
+        "Stratosphere",
+        "Mesosphere",
+        "Thermosphere"
+      ],
+      "answer": 2,
+      "explanation": "Meteors usually burn up in the mesosphere, roughly 50-85 km above the surface.",
+      "difficulty": "medium",
+      "id": "q73"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which planet has the shortest day because it spins the fastest?",
+      "options": [
+        "Mercury",
+        "Mars",
+        "Jupiter",
+        "Saturn"
+      ],
+      "answer": 2,
+      "explanation": "Jupiter rotates the fastest of all the planets, giving it the shortest day (about 10 hours).",
+      "difficulty": "medium",
+      "id": "q74"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The point on the Earth's surface directly above an earthquake's focus is the:",
+      "options": [
+        "Epicentre",
+        "Hypocentre",
+        "Fault line",
+        "Seismic zone"
+      ],
+      "answer": 0,
+      "explanation": "The epicentre lies on the surface directly above the earthquake's focus (hypocentre).",
+      "difficulty": "easy",
+      "id": "q75"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which is the nearest large galaxy to the Milky Way?",
+      "options": [
+        "Andromeda Galaxy",
+        "Triangulum Galaxy",
+        "Sombrero Galaxy",
+        "Whirlpool Galaxy"
+      ],
+      "answer": 0,
+      "explanation": "The Andromeda Galaxy is the nearest large spiral galaxy to the Milky Way.",
+      "difficulty": "medium",
+      "id": "q76"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which force keeps the planets in orbit around the Sun?",
+      "options": [
+        "Friction",
+        "Magnetism",
+        "Gravity",
+        "Centrifugal force only"
+      ],
+      "answer": 2,
+      "explanation": "Gravitational attraction keeps the planets in orbit around the Sun.",
+      "difficulty": "easy",
+      "id": "q77"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which star is nearest to the Earth?",
+      "options": [
+        "Sirius",
+        "Polaris",
+        "The Sun",
+        "Alpha Centauri"
+      ],
+      "answer": 2,
+      "explanation": "The Sun is the nearest star to the Earth.",
+      "difficulty": "easy",
+      "id": "q78"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which of the following is a sedimentary rock?",
+      "options": [
+        "Marble",
+        "Granite",
+        "Sandstone",
+        "Basalt"
+      ],
+      "answer": 2,
+      "explanation": "Sandstone is formed from compacted sand; marble is metamorphic and granite is igneous.",
+      "difficulty": "medium",
+      "id": "q79"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which layer of the Earth is a solid sphere of iron and nickel?",
+      "options": [
+        "Crust",
+        "Mantle",
+        "Outer core",
+        "Inner core"
+      ],
+      "answer": 3,
+      "explanation": "The inner core is a solid sphere of iron and nickel.",
+      "difficulty": "medium",
+      "id": "q80"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The uppermost layer of Earth's atmosphere is the:",
+      "options": [
+        "Stratosphere",
+        "Mesosphere",
+        "Thermosphere",
+        "Exosphere"
+      ],
+      "answer": 3,
+      "explanation": "The exosphere is the outermost layer of the atmosphere.",
+      "difficulty": "medium",
+      "id": "q81"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Water in its gaseous state is called:",
+      "options": [
+        "Ice",
+        "Steam",
+        "Snow",
+        "Frost"
+      ],
+      "answer": 1,
+      "explanation": "Water vapour (steam) is water in its gaseous state.",
+      "difficulty": "easy",
+      "id": "q82"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The boundary between the Earth's crust and mantle is called the:",
+      "options": [
+        "Mohorovicic discontinuity",
+        "Gutenberg discontinuity",
+        "Lithosphere",
+        "Asthenosphere"
+      ],
+      "answer": 0,
+      "explanation": "The Moho, or Mohorovicic discontinuity, separates the crust from the mantle.",
+      "difficulty": "hard",
+      "id": "q83"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Sun's outermost atmosphere, visible during a total solar eclipse, is the:",
+      "options": [
+        "Photosphere",
+        "Chromosphere",
+        "Corona",
+        "Solar wind"
+      ],
+      "answer": 2,
+      "explanation": "The corona, the Sun's outer atmosphere, becomes visible during a total solar eclipse.",
+      "difficulty": "medium",
+      "id": "q84"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The study of earthquakes is called:",
+      "options": [
+        "Seismology",
+        "Meteorology",
+        "Geology",
+        "Volcanology"
+      ],
+      "answer": 0,
+      "explanation": "Seismology is the scientific study of earthquakes and the seismic waves they produce.",
+      "difficulty": "easy",
+      "id": "q85"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which planet is known as the 'Red Planet'?",
+      "options": [
+        "Mars",
+        "Venus",
+        "Jupiter",
+        "Mercury"
+      ],
+      "answer": 0,
+      "explanation": "Mars appears red because its surface is rich in iron oxide (rust).",
+      "difficulty": "easy",
+      "id": "q86"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which planet has no natural satellite?",
+      "options": [
+        "Mercury",
+        "Earth",
+        "Mars",
+        "Neptune"
+      ],
+      "answer": 0,
+      "explanation": "Mercury and Venus are the only planets without moons; Mercury is the standard answer.",
+      "difficulty": "medium",
+      "id": "q87"
+    },
+    {
+      "type": "mcq",
+      "prompt": "How long does the Earth take to complete one rotation on its axis?",
+      "options": [
+        "24 hours",
+        "12 hours",
+        "365 days",
+        "48 hours"
+      ],
+      "answer": 0,
+      "explanation": "One rotation of the Earth takes about 24 hours, giving day and night.",
+      "difficulty": "easy",
+      "id": "q88"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Earth takes approximately how many days to complete one revolution around the Sun?",
+      "options": [
+        "365.25 days",
+        "360 days",
+        "354 days",
+        "400 days"
+      ],
+      "answer": 0,
+      "explanation": "The Earth orbits the Sun in about 365.25 days, which is why we add a leap day every four years.",
+      "difficulty": "medium",
+      "id": "q89"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which planet is the second from the Sun?",
+      "options": [
+        "Venus",
+        "Mercury",
+        "Earth",
+        "Mars"
+      ],
+      "answer": 0,
+      "explanation": "Venus is the second planet in order from the Sun.",
+      "difficulty": "easy",
+      "id": "q90"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which layer of the Earth is in a liquid state?",
+      "options": [
+        "Outer core",
+        "Crust",
+        "Mantle",
+        "Inner core"
+      ],
+      "answer": 0,
+      "explanation": "The outer core is a liquid layer of molten iron and nickel.",
+      "difficulty": "medium",
+      "id": "q91"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which is the largest ocean in the world?",
+      "options": [
+        "Pacific Ocean",
+        "Atlantic Ocean",
+        "Indian Ocean",
+        "Arctic Ocean"
+      ],
+      "answer": 0,
+      "explanation": "The Pacific Ocean covers about one-third of the Earth's surface.",
+      "difficulty": "easy",
+      "id": "q92"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which is the smallest ocean in the world?",
+      "options": [
+        "Arctic Ocean",
+        "Pacific Ocean",
+        "Atlantic Ocean",
+        "Indian Ocean"
+      ],
+      "answer": 0,
+      "explanation": "The Arctic Ocean is the smallest and shallowest of the five oceans.",
+      "difficulty": "easy",
+      "id": "q93"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which continent is known as the 'Dark Continent'?",
+      "options": [
+        "Africa",
+        "Asia",
+        "Europe",
+        "Australia"
+      ],
+      "answer": 0,
+      "explanation": "Africa was historically called the Dark Continent because its interior was little known.",
+      "difficulty": "medium",
+      "id": "q94"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which is the longest river in the world?",
+      "options": [
+        "Nile",
+        "Amazon",
+        "Yangtze",
+        "Mississippi"
+      ],
+      "answer": 0,
+      "explanation": "The Nile, at about 6,650 km, is generally regarded as the world's longest river.",
+      "difficulty": "easy",
+      "id": "q95"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which is the largest island in the world?",
+      "options": [
+        "Greenland",
+        "Madagascar",
+        "Borneo",
+        "Sumatra"
+      ],
+      "answer": 0,
+      "explanation": "Greenland is the largest island in the world.",
+      "difficulty": "easy",
+      "id": "q96"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which country is known as the 'Land of the Rising Sun'?",
+      "options": [
+        "Japan",
+        "China",
+        "South Korea",
+        "Thailand"
+      ],
+      "answer": 0,
+      "explanation": "Japan is called the Land of the Rising Sun because of its position to the east.",
+      "difficulty": "easy",
+      "id": "q97"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The highest plateau in the world is the?",
+      "options": [
+        "Tibetan Plateau",
+        "Deccan Plateau",
+        "Iranian Plateau",
+        "Anatolian Plateau"
+      ],
+      "answer": 0,
+      "explanation": "The Tibetan Plateau, averaging over 4,500 m, is the highest plateau on Earth.",
+      "difficulty": "medium",
+      "id": "q98"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which is the longest mountain range in the world?",
+      "options": [
+        "Andes",
+        "Himalayas",
+        "Rockies",
+        "Alps"
+      ],
+      "answer": 0,
+      "explanation": "The Andes in South America is the world's longest continental mountain range.",
+      "difficulty": "medium",
+      "id": "q99"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which planet has retrograde (backward) rotation?",
+      "options": [
+        "Venus",
+        "Mercury",
+        "Mars",
+        "Jupiter"
+      ],
+      "answer": 0,
+      "explanation": "Venus spins slowly in the opposite direction to most planets.",
+      "difficulty": "hard",
+      "id": "q100"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The temperature at the centre of the Sun is approximately?",
+      "options": [
+        "15 million C",
+        "1 million C",
+        "100 million C",
+        "5,500 C"
+      ],
+      "answer": 0,
+      "explanation": "The Sun's core reaches about 15 million degrees Celsius.",
+      "difficulty": "hard",
+      "id": "q101"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Sun produces its energy through?",
+      "options": [
+        "Nuclear fusion",
+        "Nuclear fission",
+        "Chemical reaction",
+        "Combustion"
+      ],
+      "answer": 0,
+      "explanation": "The Sun fuses hydrogen into helium in its core, releasing enormous energy.",
+      "difficulty": "easy",
+      "id": "q102"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which planet has a day that is longer than its year?",
+      "options": [
+        "Venus",
+        "Mercury",
+        "Mars",
+        "Neptune"
+      ],
+      "answer": 0,
+      "explanation": "Venus rotates so slowly that its day is longer than its year.",
+      "difficulty": "hard",
+      "id": "q103"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which is the brightest star in the night sky?",
+      "options": [
+        "Sirius",
+        "Polaris",
+        "Vega",
+        "Betelgeuse"
+      ],
+      "answer": 0,
+      "explanation": "Sirius (the Dog Star) is the brightest star visible from Earth.",
+      "difficulty": "medium",
+      "id": "q104"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The North Star (Polaris) is located in which constellation?",
+      "options": [
+        "Ursa Minor",
+        "Ursa Major",
+        "Orion",
+        "Cassiopeia"
+      ],
+      "answer": 0,
+      "explanation": "Polaris marks the end of the Little Dipper's handle in Ursa Minor.",
+      "difficulty": "hard",
+      "id": "q105"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The North Star is also known as?",
+      "options": [
+        "Polaris",
+        "Sirius",
+        "Canopus",
+        "Arcturus"
+      ],
+      "answer": 0,
+      "explanation": "Polaris, the Pole Star, lies almost directly above the Earth's north pole.",
+      "difficulty": "easy",
+      "id": "q106"
+    },
+    {
+      "type": "mcq",
+      "prompt": "In which atmospheric layer is the ionosphere mainly located?",
+      "options": [
+        "Thermosphere",
+        "Troposphere",
+        "Stratosphere",
+        "Mesosphere"
+      ],
+      "answer": 0,
+      "explanation": "The ionosphere overlaps the thermosphere, where gases are ionised by solar radiation.",
+      "difficulty": "hard",
+      "id": "q107"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which is the coldest layer of the atmosphere?",
+      "options": [
+        "Mesosphere",
+        "Troposphere",
+        "Stratosphere",
+        "Thermosphere"
+      ],
+      "answer": 0,
+      "explanation": "The mesosphere is the coldest layer, with temperatures near minus 90 C.",
+      "difficulty": "medium",
+      "id": "q108"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The interval between two successive high tides is about?",
+      "options": [
+        "12 hours 25 minutes",
+        "24 hours",
+        "6 hours",
+        "1 hour"
+      ],
+      "answer": 0,
+      "explanation": "High tides occur about every 12 hours 25 minutes as the Moon orbits.",
+      "difficulty": "hard",
+      "id": "q109"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which sedimentary rock is formed mainly from the shells of marine organisms?",
+      "options": [
+        "Limestone",
+        "Granite",
+        "Basalt",
+        "Marble"
+      ],
+      "answer": 0,
+      "explanation": "Limestone is largely made of calcium carbonate from sea shells and corals.",
+      "difficulty": "medium",
+      "id": "q110"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Great Barrier Reef lies in which ocean?",
+      "options": [
+        "Pacific Ocean",
+        "Indian Ocean",
+        "Atlantic Ocean",
+        "Southern Ocean"
+      ],
+      "answer": 0,
+      "explanation": "The Great Barrier Reef lies in the Coral Sea off Australia's northeast coast, part of the Pacific Ocean.",
+      "difficulty": "medium",
+      "id": "q111"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which is the highest waterfall in the world?",
+      "options": [
+        "Angel Falls",
+        "Niagara Falls",
+        "Victoria Falls",
+        "Iguazu Falls"
+      ],
+      "answer": 0,
+      "explanation": "Angel Falls in Venezuela drops about 979 m, the highest in the world.",
+      "difficulty": "medium",
+      "id": "q112"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The largest lake in the world (by surface area) is the?",
+      "options": [
+        "Caspian Sea",
+        "Lake Superior",
+        "Lake Baikal",
+        "Dead Sea"
+      ],
+      "answer": 0,
+      "explanation": "The Caspian Sea, a salt lake, is the largest lake by surface area.",
+      "difficulty": "medium",
+      "id": "q113"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The deepest lake in the world is?",
+      "options": [
+        "Lake Baikal",
+        "Lake Superior",
+        "Caspian Sea",
+        "Lake Tanganyika"
+      ],
+      "answer": 0,
+      "explanation": "Lake Baikal in Russia is the deepest lake, about 1,642 m deep.",
+      "difficulty": "medium",
+      "id": "q114"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which desert is located in Pakistan?",
+      "options": [
+        "Thar Desert",
+        "Sahara",
+        "Gobi",
+        "Kalahari"
+      ],
+      "answer": 0,
+      "explanation": "The Thar Desert lies in the southeast of Pakistan and northwest India.",
+      "difficulty": "easy",
+      "id": "q115"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which is the southernmost continent?",
+      "options": [
+        "Antarctica",
+        "Australia",
+        "South America",
+        "Africa"
+      ],
+      "answer": 0,
+      "explanation": "Antarctica surrounds the South Pole and is the southernmost continent.",
+      "difficulty": "easy",
+      "id": "q116"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which is the largest country in South America?",
+      "options": [
+        "Brazil",
+        "Argentina",
+        "Peru",
+        "Chile"
+      ],
+      "answer": 0,
+      "explanation": "Brazil is the largest country in South America by area and population.",
+      "difficulty": "easy",
+      "id": "q117"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which country is called the 'Gift of the Nile'?",
+      "options": [
+        "Egypt",
+        "Sudan",
+        "Ethiopia",
+        "Libya"
+      ],
+      "answer": 0,
+      "explanation": "Egypt's civilisation depends on the Nile, giving it the name Gift of the Nile.",
+      "difficulty": "medium",
+      "id": "q118"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which is the second largest moon in the Solar System?",
+      "options": [
+        "Titan",
+        "Ganymede",
+        "Europa",
+        "Io"
+      ],
+      "answer": 0,
+      "explanation": "After Ganymede, Titan is the second largest moon in the Solar System.",
+      "difficulty": "hard",
+      "id": "q119"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which planet is the least dense?",
+      "options": [
+        "Saturn",
+        "Jupiter",
+        "Uranus",
+        "Neptune"
+      ],
+      "answer": 0,
+      "explanation": "Saturn's density is less than water, making it the least dense planet.",
+      "difficulty": "hard",
+      "id": "q120"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The twinkling of stars is caused by?",
+      "options": [
+        "Atmospheric refraction",
+        "Rotation of the Earth",
+        "Reflection of light",
+        "Solar wind"
+      ],
+      "answer": 0,
+      "explanation": "Starlight is bent by moving layers of the atmosphere, making stars appear to twinkle.",
+      "difficulty": "medium",
+      "id": "q121"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which was the first planet discovered with the help of a telescope?",
+      "options": [
+        "Uranus",
+        "Neptune",
+        "Pluto",
+        "Saturn"
+      ],
+      "answer": 0,
+      "explanation": "William Herschel discovered Uranus in 1781, the first planet found by telescope.",
+      "difficulty": "hard",
+      "id": "q122"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which is the largest dwarf planet in the Solar System?",
+      "options": [
+        "Pluto",
+        "Ceres",
+        "Eris",
+        "Makemake"
+      ],
+      "answer": 0,
+      "explanation": "Pluto is the largest known dwarf planet in the Solar System.",
+      "difficulty": "medium",
+      "id": "q123"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The constellation Ursa Major is commonly known as the?",
+      "options": [
+        "Great Bear",
+        "Little Bear",
+        "Hunter",
+        "Twins"
+      ],
+      "answer": 0,
+      "explanation": "Ursa Major means Great Bear in Latin and contains the Big Dipper.",
+      "difficulty": "medium",
+      "id": "q124"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which planet's rings are made mostly of ice and rock particles?",
+      "options": [
+        "Saturn",
+        "Jupiter",
+        "Mars",
+        "Mercury"
+      ],
+      "answer": 0,
+      "explanation": "Saturn's spectacular rings are made of billions of ice and rock particles.",
+      "difficulty": "easy",
+      "id": "q125"
+    },
+    {
+      "type": "mcq",
+      "prompt": "How many moons does the planet Mars have?",
+      "options": [
+        "2",
+        "1",
+        "4",
+        "0"
+      ],
+      "answer": 0,
+      "explanation": "Mars has two small moons, Phobos and Deimos.",
+      "difficulty": "medium",
+      "id": "q126"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The moons of Mars are named?",
+      "options": [
+        "Phobos and Deimos",
+        "Titan and Rhea",
+        "Europa and Ganymede",
+        "Io and Callisto"
+      ],
+      "answer": 0,
+      "explanation": "Mars's moons are named Phobos (fear) and Deimos (terror), after the sons of Ares.",
+      "difficulty": "medium",
+      "id": "q127"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Ring of Fire is associated with?",
+      "options": [
+        "Volcanoes and earthquakes",
+        "Tornadoes",
+        "Monsoons",
+        "Tsunamis"
+      ],
+      "answer": 0,
+      "explanation": "The Pacific Ring of Fire is where many volcanoes and earthquakes occur.",
+      "difficulty": "easy",
+      "id": "q128"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which is the highest mountain range in the world?",
+      "options": [
+        "Himalayas",
+        "Andes",
+        "Alps",
+        "Karakoram"
+      ],
+      "answer": 0,
+      "explanation": "The Himalayas contain the world's highest peaks, including Everest.",
+      "difficulty": "easy",
+      "id": "q129"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which is the largest desert in Asia?",
+      "options": [
+        "Gobi Desert",
+        "Thar Desert",
+        "Arabian Desert",
+        "Taklamakan Desert"
+      ],
+      "answer": 0,
+      "explanation": "The Gobi, spanning China and Mongolia, is the largest desert in Asia.",
+      "difficulty": "medium",
+      "id": "q130"
+    }
+  ]
+}

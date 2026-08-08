@@ -1,0 +1,1469 @@
+{
+  "bank": {
+    "name": "Sentence Correction",
+    "subject": "English",
+    "topic": "Sentence Correction",
+    "description": "Choose the option that makes the sentence grammatically correct.",
+    "tags": "css,pms,fpsc,ppsc,nts,english,sentence-correction,grammar",
+    "version": "1.0",
+    "id": "english_sentence_correction"
+  },
+  "questions": [
+    {
+      "type": "mcq",
+      "prompt": "Choose the correct sentence:",
+      "options": [
+        "He go to school every day.",
+        "He goes to school every day.",
+        "He going to school every day.",
+        "He gone to school every day."
+      ],
+      "answer": 1,
+      "explanation": "With the third-person singular 'he', the present simple verb takes '-s' (goes).",
+      "difficulty": "easy",
+      "id": "q01"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Choose the correct sentence:",
+      "options": [
+        "She don't like coffee.",
+        "She doesn't likes coffee.",
+        "She doesn't like coffee.",
+        "She don't likes coffee."
+      ],
+      "answer": 2,
+      "explanation": "The auxiliary 'doesn't' is followed by the base form 'like'.",
+      "difficulty": "easy",
+      "id": "q02"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Choose the correct sentence:",
+      "options": [
+        "I have saw that film.",
+        "I have seen that film.",
+        "I has seen that film.",
+        "I have seeing that film."
+      ],
+      "answer": 1,
+      "explanation": "The present perfect requires 'have' + past participle (seen).",
+      "difficulty": "easy",
+      "id": "q03"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Choose the correct sentence:",
+      "options": [
+        "He is more taller than his brother.",
+        "He is taller than his brother.",
+        "He is tallest than his brother.",
+        "He is most taller than his brother."
+      ],
+      "answer": 1,
+      "explanation": "Short adjectives form the comparative with '-er', not 'more'.",
+      "difficulty": "easy",
+      "id": "q04"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Choose the correct sentence:",
+      "options": [
+        "Neither of the boys were present.",
+        "Neither of the boys was present.",
+        "Neither of the boys are present.",
+        "Neither boys were present."
+      ],
+      "answer": 1,
+      "explanation": "With 'neither of', the singular verb 'was' is correct.",
+      "difficulty": "hard",
+      "id": "q05"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Choose the correct sentence:",
+      "options": [
+        "Each of the students have a book.",
+        "Each of the students has a book.",
+        "Each of the students are having a book.",
+        "Each students has a book."
+      ],
+      "answer": 1,
+      "explanation": "'Each' takes a singular verb, so 'has' is correct.",
+      "difficulty": "medium",
+      "id": "q06"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Choose the correct sentence:",
+      "options": [
+        "If I was rich, I would travel.",
+        "If I were rich, I would travel.",
+        "If I am rich, I would travel.",
+        "If I be rich, I would travel."
+      ],
+      "answer": 1,
+      "explanation": "Second conditional uses 'were' (subjunctive) after 'if'.",
+      "difficulty": "medium",
+      "id": "q07"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Choose the correct sentence:",
+      "options": [
+        "She is married with a doctor.",
+        "She is married to a doctor.",
+        "She is married by a doctor.",
+        "She is married of a doctor."
+      ],
+      "answer": 1,
+      "explanation": "The correct preposition is 'married to'.",
+      "difficulty": "medium",
+      "id": "q08"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Choose the correct sentence:",
+      "options": [
+        "He is good in mathematics.",
+        "He is good at mathematics.",
+        "He is good with mathematics.",
+        "He is good on mathematics."
+      ],
+      "answer": 1,
+      "explanation": "'Good at' is used for skills and subjects.",
+      "difficulty": "easy",
+      "id": "q09"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Choose the correct sentence:",
+      "options": [
+        "I look forward to see you.",
+        "I look forward to seeing you.",
+        "I look forward to seen you.",
+        "I look forward seeing you."
+      ],
+      "answer": 1,
+      "explanation": "After 'look forward to', the gerund (-ing form) is used.",
+      "difficulty": "medium",
+      "id": "q10"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Choose the correct sentence:",
+      "options": [
+        "The news are good today.",
+        "The news is good today.",
+        "The news were good today.",
+        "The news have been good today."
+      ],
+      "answer": 1,
+      "explanation": "'News' is an uncountable noun and takes a singular verb.",
+      "difficulty": "medium",
+      "id": "q11"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Choose the correct sentence:",
+      "options": [
+        "He has been living here since 2010.",
+        "He has been living here since ten years.",
+        "He is living here since 2010.",
+        "He lives here since 2010."
+      ],
+      "answer": 0,
+      "explanation": "'Since' is used with a point in time (2010); 'for' is used with a duration.",
+      "difficulty": "medium",
+      "id": "q12"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Choose the correct sentence:",
+      "options": [
+        "One of my friends are a doctor.",
+        "One of my friend is a doctor.",
+        "One of my friends is a doctor.",
+        "One of my friends were a doctor."
+      ],
+      "answer": 2,
+      "explanation": "'One of + plural noun' takes a singular verb.",
+      "difficulty": "medium",
+      "id": "q13"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Choose the correct sentence:",
+      "options": [
+        "He prefers tea than coffee.",
+        "He prefers tea to coffee.",
+        "He prefers tea over coffee.",
+        "He prefers tea from coffee."
+      ],
+      "answer": 1,
+      "explanation": "The correct structure is 'prefer X to Y'.",
+      "difficulty": "hard",
+      "id": "q14"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Choose the correct sentence:",
+      "options": [
+        "The committee have decided the matter.",
+        "The committee has decided the matter.",
+        "The committee are decided the matter.",
+        "The committee have been decided the matter."
+      ],
+      "answer": 1,
+      "explanation": "Collective nouns such as 'committee' usually take a singular verb.",
+      "difficulty": "medium",
+      "id": "q15"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Choose the correct sentence:",
+      "options": [
+        "No sooner had he arrived than it started raining.",
+        "No sooner he had arrived than it started raining.",
+        "No sooner did he arrive when it started raining.",
+        "No sooner he arrived than it started raining."
+      ],
+      "answer": 0,
+      "explanation": "'No sooner... than' uses inversion: 'No sooner had he arrived than...'.",
+      "difficulty": "hard",
+      "id": "q16"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Choose the correct sentence:",
+      "options": [
+        "I am used to wake up early.",
+        "I am used to waking up early.",
+        "I used to waking up early.",
+        "I am use to waking up early."
+      ],
+      "answer": 1,
+      "explanation": "'Be used to' is followed by the gerund (-ing form).",
+      "difficulty": "hard",
+      "id": "q17"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Choose the correct sentence:",
+      "options": [
+        "This is the girl whom won the prize.",
+        "This is the girl who won the prize.",
+        "This is the girl which won the prize.",
+        "This is the girl whose won the prize."
+      ],
+      "answer": 1,
+      "explanation": "'Who' is the subject relative pronoun for people; 'which' is for things.",
+      "difficulty": "medium",
+      "id": "q18"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Choose the correct sentence:",
+      "options": [
+        "He is senior than me.",
+        "He is senior to me.",
+        "He is senior from me.",
+        "He is senior of me."
+      ],
+      "answer": 1,
+      "explanation": "Latin-origin comparatives like 'senior' take 'to', not 'than'.",
+      "difficulty": "hard",
+      "id": "q19"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Choose the correct sentence:",
+      "options": [
+        "She advised me to work hard.",
+        "She advised me work hard.",
+        "She advised to me to work hard.",
+        "She advised that I must work hard."
+      ],
+      "answer": 0,
+      "explanation": "The structure is 'advise + object + to-infinitive'.",
+      "difficulty": "medium",
+      "id": "q20"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Choose the correct sentence:",
+      "options": [
+        "I have less money than him.",
+        "I have fewer money than him.",
+        "I have lesser money than him.",
+        "I have little money than him."
+      ],
+      "answer": 0,
+      "explanation": "'Less' is used with uncountable nouns such as money.",
+      "difficulty": "medium",
+      "id": "q21"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Choose the correct sentence:",
+      "options": [
+        "The scenery of Murree are beautiful.",
+        "The scenery of Murree is beautiful.",
+        "The sceneries of Murree is beautiful.",
+        "The scenery of Murree were beautiful."
+      ],
+      "answer": 1,
+      "explanation": "'Scenery' is uncountable and takes a singular verb.",
+      "difficulty": "medium",
+      "id": "q22"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Choose the correct sentence:",
+      "options": [
+        "He has not been to Lahore since a month.",
+        "He has not been to Lahore for a month.",
+        "He has not been to Lahore from a month.",
+        "He has not been to Lahore until a month."
+      ],
+      "answer": 1,
+      "explanation": "'For' is used with a duration of time (a month).",
+      "difficulty": "easy",
+      "id": "q23"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Identify the error: 'One of my friend lives in Lahore.'",
+      "options": [
+        "One of my friend → one of my friends",
+        "lives → live",
+        "in Lahore → at Lahore",
+        "No error"
+      ],
+      "answer": 0,
+      "explanation": "After 'one of' the noun must be plural: 'one of my friends'.",
+      "difficulty": "easy",
+      "id": "q24"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Identify the error: 'He insisted to pay the bill.'",
+      "options": [
+        "insisted to → insisted on",
+        "pay → paying",
+        "the bill → a bill",
+        "No error"
+      ],
+      "answer": 0,
+      "explanation": "'Insist' takes the preposition 'on': 'insisted on paying the bill'.",
+      "difficulty": "medium",
+      "id": "q25"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Identify the error: 'The news are good today.'",
+      "options": [
+        "are → is",
+        "news → newses",
+        "good → well",
+        "No error"
+      ],
+      "answer": 0,
+      "explanation": "'News' is uncountable and takes a singular verb: 'The news is good'.",
+      "difficulty": "easy",
+      "id": "q26"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Choose the correct sentence:",
+      "options": [
+        "He does not likes tea",
+        "He does not like tea",
+        "He do not like tea",
+        "He not like tea"
+      ],
+      "answer": 1,
+      "explanation": "With 'does', the main verb stays in the base form: 'does not like'.",
+      "difficulty": "easy",
+      "id": "q27"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Identify the error: 'I have visited Karachi last year.'",
+      "options": [
+        "have visited → visited",
+        "Karachi → to Karachi",
+        "last year → the last year",
+        "No error"
+      ],
+      "answer": 0,
+      "explanation": "'Last year' is a definite past time, so the simple past is required: 'I visited Karachi last year'.",
+      "difficulty": "medium",
+      "id": "q28"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Identify the error: 'He asked me that where I lived.'",
+      "options": [
+        "that where → where",
+        "asked → told",
+        "lived → live",
+        "No error"
+      ],
+      "answer": 0,
+      "explanation": "Wh-questions in reported speech do not need 'that': 'He asked me where I lived'.",
+      "difficulty": "medium",
+      "id": "q29"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Choose the correct sentence:",
+      "options": [
+        "Scarcely had he arrived when it started raining",
+        "Scarcely he had arrived when it started raining",
+        "Scarcely had he arrived than it started raining",
+        "Scarcely he arrived when it starts raining"
+      ],
+      "answer": 0,
+      "explanation": "'Scarcely...when' uses inversion: 'Scarcely had he arrived when...' (never 'than').",
+      "difficulty": "hard",
+      "id": "q30"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Identify the error: 'He prefers tea than coffee.'",
+      "options": [
+        "than → to",
+        "prefers → prefer",
+        "tea → the tea",
+        "No error"
+      ],
+      "answer": 0,
+      "explanation": "'Prefer' takes 'to': 'He prefers tea to coffee'.",
+      "difficulty": "medium",
+      "id": "q31"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Choose the correct sentence:",
+      "options": [
+        "She advised me to not go there",
+        "She advised me not to go there",
+        "She advised me not go there",
+        "She advised me to not going there"
+      ],
+      "answer": 1,
+      "explanation": "The negative infinitive is 'not to go', with 'not' placed before 'to'.",
+      "difficulty": "medium",
+      "id": "q32"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Identify the error: 'The committee are divided in its opinion.'",
+      "options": [
+        "are divided in its opinion → are divided in their opinion",
+        "The committee → the committees",
+        "No error",
+        "divided → divide"
+      ],
+      "answer": 0,
+      "explanation": "If 'committee' is treated as plural ('are'), the pronoun must agree: 'are divided in their opinion'.",
+      "difficulty": "hard",
+      "id": "q33"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Choose the correct sentence:",
+      "options": [
+        "He is the tallest of the two brothers",
+        "He is the taller of the two brothers",
+        "He is tallest of the two brothers",
+        "He is the taller among the two brothers"
+      ],
+      "answer": 1,
+      "explanation": "For two people use the comparative 'taller', not the superlative 'tallest'.",
+      "difficulty": "medium",
+      "id": "q34"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Identify the error: 'He has not written to me since a month.'",
+      "options": [
+        "since → for",
+        "has not → did not",
+        "to me → me",
+        "No error"
+      ],
+      "answer": 0,
+      "explanation": "'Since' needs a point in time; for a duration use 'for a month'.",
+      "difficulty": "medium",
+      "id": "q35"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Choose the correct sentence:",
+      "options": [
+        "I look forward to hear from you",
+        "I look forward to hearing from you",
+        "I look forward for hearing from you",
+        "I look forward to heard from you"
+      ],
+      "answer": 1,
+      "explanation": "'Look forward to' is followed by the gerund: 'to hearing'.",
+      "difficulty": "medium",
+      "id": "q36"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Identify the error: 'He has been sleeping for three hours.'",
+      "options": [
+        "No error",
+        "has been → is",
+        "for → since",
+        "hours → hour"
+      ],
+      "answer": 0,
+      "explanation": "The sentence is correct: present perfect continuous with a duration ('for three hours').",
+      "difficulty": "medium",
+      "id": "q37"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Choose the correct sentence:",
+      "options": [
+        "If I was you, I would accept",
+        "If I were you, I would accept",
+        "If I am you, I would accept",
+        "If I be you, I would accept"
+      ],
+      "answer": 1,
+      "explanation": "The subjunctive 'were' is used in the second conditional: 'If I were you'.",
+      "difficulty": "medium",
+      "id": "q38"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Identify the error: 'The sceneries of Murree are beautiful.'",
+      "options": [
+        "sceneries → scenery",
+        "are → is",
+        "of → in",
+        "No error"
+      ],
+      "answer": 0,
+      "explanation": "'Scenery' is uncountable and has no plural form.",
+      "difficulty": "medium",
+      "id": "q39"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Choose the correct sentence:",
+      "options": [
+        "He denied to take the money",
+        "He denied taking the money",
+        "He denied to took the money",
+        "He denied take the money"
+      ],
+      "answer": 1,
+      "explanation": "'Deny' takes a gerund: 'denied taking'.",
+      "difficulty": "medium",
+      "id": "q40"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Identify the error: 'I have bought this car for five years.'",
+      "options": [
+        "have bought → have had",
+        "this car → a car",
+        "for → since",
+        "No error"
+      ],
+      "answer": 0,
+      "explanation": "'Buy' is momentary; with a duration use 'have had' (state verb).",
+      "difficulty": "hard",
+      "id": "q41"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Identify the error: 'Let's discuss about the plan.'",
+      "options": [
+        "discuss about → discuss",
+        "Let's → Let us",
+        "the plan → a plan",
+        "No error"
+      ],
+      "answer": 0,
+      "explanation": "'Discuss' is transitive and takes no preposition: 'discuss the plan'.",
+      "difficulty": "easy",
+      "id": "q42"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Choose the correct sentence:",
+      "options": [
+        "He has left for Lahore yesterday",
+        "He left for Lahore yesterday",
+        "He had left for Lahore yesterday",
+        "He leaves for Lahore yesterday"
+      ],
+      "answer": 1,
+      "explanation": "'Yesterday' requires simple past: 'He left for Lahore yesterday'.",
+      "difficulty": "easy",
+      "id": "q43"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Choose the correct sentence:",
+      "options": [
+        "He suggested me to go",
+        "He suggested that I go",
+        "He suggested me going",
+        "He suggested to me to go"
+      ],
+      "answer": 1,
+      "explanation": "'Suggest' takes a that-clause or gerund, never 'suggest me to'.",
+      "difficulty": "hard",
+      "id": "q44"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Identify the error: 'The furniture are expensive.'",
+      "options": [
+        "are → is",
+        "furniture → furnitures",
+        "expensive → expensively",
+        "No error"
+      ],
+      "answer": 0,
+      "explanation": "'Furniture' is uncountable and takes a singular verb: 'is expensive'.",
+      "difficulty": "medium",
+      "id": "q45"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Choose the correct sentence:",
+      "options": [
+        "He is very good in mathematics",
+        "He is very good at mathematics",
+        "He is very good for mathematics",
+        "He is very good with mathematics"
+      ],
+      "answer": 1,
+      "explanation": "'Good at' + skill/subject is the correct idiom.",
+      "difficulty": "easy",
+      "id": "q46"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Identify the error: 'Hardly had he reached the station when the train left.'",
+      "options": [
+        "No error",
+        "Hardly → Hard",
+        "when → than",
+        "left → had left"
+      ],
+      "answer": 0,
+      "explanation": "The sentence is correct: 'Hardly...when' with inversion and past perfect.",
+      "difficulty": "medium",
+      "id": "q47"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Identify the error: 'He asked that why she was late.'",
+      "options": [
+        "that why → why",
+        "asked → told",
+        "was → is",
+        "No error"
+      ],
+      "answer": 0,
+      "explanation": "Wh-word questions in reported speech drop 'that': 'He asked why she was late'.",
+      "difficulty": "medium",
+      "id": "q48"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Choose the correct sentence:",
+      "options": [
+        "Neither Ali nor his brothers is coming",
+        "Neither Ali nor his brothers are coming",
+        "Neither Ali nor his brothers was coming",
+        "Neither Ali or his brothers are coming"
+      ],
+      "answer": 1,
+      "explanation": "With 'neither...nor', the verb agrees with the nearer subject (brothers) → 'are'.",
+      "difficulty": "medium",
+      "id": "q49"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Identify the error: 'He told to me that he was tired.'",
+      "options": [
+        "told to me → told me",
+        "that → that he",
+        "was → is",
+        "No error"
+      ],
+      "answer": 0,
+      "explanation": "'Tell' takes a direct object: 'told me', not 'told to me'.",
+      "difficulty": "medium",
+      "id": "q50"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Choose the correct sentence:",
+      "options": [
+        "He is sleeping since 9 p.m.",
+        "He has been sleeping since 9 p.m.",
+        "He sleeps since 9 p.m.",
+        "He was sleeping since 9 p.m."
+      ],
+      "answer": 1,
+      "explanation": "'Since 9 p.m.' with a continuing action requires present perfect continuous.",
+      "difficulty": "medium",
+      "id": "q51"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Identify the error: 'I have a little knowledge about the subject.'",
+      "options": [
+        "a little → little",
+        "about → of",
+        "have → has",
+        "No error"
+      ],
+      "answer": 0,
+      "explanation": "'Little' (almost none) is negative; 'a little' means some. The intended meaning determines it.",
+      "difficulty": "hard",
+      "id": "q52"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Identify the error: 'The team were playing well yesterday.'",
+      "options": [
+        "No error",
+        "were → was",
+        "playing → played",
+        "yesterday → the yesterday"
+      ],
+      "answer": 0,
+      "explanation": "Collective nouns may take plural verbs when members act individually — acceptable usage.",
+      "difficulty": "hard",
+      "id": "q53"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Choose the correct sentence:",
+      "options": [
+        "I and Ali are friends",
+        "Ali and I are friends",
+        "Ali and me are friends",
+        "Me and Ali are friends"
+      ],
+      "answer": 1,
+      "explanation": "The polite order is 'Ali and I'; 'I' is the subject pronoun.",
+      "difficulty": "easy",
+      "id": "q54"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Identify the error: 'He has gone to London two days ago.'",
+      "options": [
+        "has gone → went",
+        "to → in",
+        "two days ago → two days before",
+        "No error"
+      ],
+      "answer": 0,
+      "explanation": "'Two days ago' is a definite past time → simple past 'went'.",
+      "difficulty": "medium",
+      "id": "q55"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Identify the error: 'He is more taller than his brother.'",
+      "options": [
+        "more taller → taller",
+        "is → was",
+        "than → to",
+        "No error"
+      ],
+      "answer": 0,
+      "explanation": "'Taller' is already comparative; 'more taller' is a double comparative.",
+      "difficulty": "easy",
+      "id": "q56"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Choose the correct sentence:",
+      "options": [
+        "He is good in cricket",
+        "He is good at cricket",
+        "He is good for cricket",
+        "He is good on cricket"
+      ],
+      "answer": 1,
+      "explanation": "'Good at' + sport/activity is the correct idiom.",
+      "difficulty": "easy",
+      "id": "q57"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Choose the correct sentence:",
+      "options": [
+        "I am having a lot of work",
+        "I have a lot of work",
+        "I am having much work",
+        "I have been having much work"
+      ],
+      "answer": 1,
+      "explanation": "'Have' meaning possession is a state verb, not used in continuous: 'I have a lot of work'.",
+      "difficulty": "medium",
+      "id": "q58"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Identify the error: 'He asked me where did I live.'",
+      "options": [
+        "where did I live → where I lived",
+        "asked → told",
+        "live → lives",
+        "No error"
+      ],
+      "answer": 0,
+      "explanation": "Indirect questions use statement order: 'where I lived'.",
+      "difficulty": "medium",
+      "id": "q59"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Identify the error: 'Each of the boys were given a prize.'",
+      "options": [
+        "were → was",
+        "of → among",
+        "boys → boy",
+        "No error"
+      ],
+      "answer": 0,
+      "explanation": "'Each' is singular → 'was given'.",
+      "difficulty": "medium",
+      "id": "q60"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Choose the correct sentence:",
+      "options": [
+        "If I was you, I would go",
+        "If I were you, I would go",
+        "If I am you, I would go",
+        "If I be you, I would go"
+      ],
+      "answer": 1,
+      "explanation": "Second conditional uses subjunctive 'were': 'If I were you'.",
+      "difficulty": "medium",
+      "id": "q61"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Choose the correct sentence:",
+      "options": [
+        "He is elder than his brother",
+        "He is older than his brother",
+        "He is eldest than his brother",
+        "He is more elder than his brother"
+      ],
+      "answer": 1,
+      "explanation": "Compare two people by age → 'older than'.",
+      "difficulty": "medium",
+      "id": "q62"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Identify the error: 'The teacher asked the students to not make noise.'",
+      "options": [
+        "to not make → not to make",
+        "asked → told",
+        "the students → students",
+        "No error"
+      ],
+      "answer": 0,
+      "explanation": "Negative infinitive: 'not to make'.",
+      "difficulty": "medium",
+      "id": "q63"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Choose the correct sentence:",
+      "options": [
+        "It is raining since morning",
+        "It has been raining since morning",
+        "It rains since morning",
+        "It is rained since morning"
+      ],
+      "answer": 1,
+      "explanation": "Continuing action → present perfect continuous.",
+      "difficulty": "medium",
+      "id": "q64"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Identify the error: 'He is suffering from fever since Monday.'",
+      "options": [
+        "is suffering → has been suffering",
+        "from → with",
+        "since → for",
+        "No error"
+      ],
+      "answer": 0,
+      "explanation": "With 'since Monday' and continuing action → present perfect continuous.",
+      "difficulty": "medium",
+      "id": "q65"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Choose the correct sentence:",
+      "options": [
+        "He asked me where did I live",
+        "He asked me where I lived",
+        "He asked me where do I live",
+        "He asked me that where I lived"
+      ],
+      "answer": 1,
+      "explanation": "Indirect questions use statement word order.",
+      "difficulty": "medium",
+      "id": "q66"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Identify the error: 'Each of the students have submitted the assignment.'",
+      "options": [
+        "have → has",
+        "of → among",
+        "the students → the student",
+        "No error"
+      ],
+      "answer": 0,
+      "explanation": "'Each' is singular → 'has submitted'.",
+      "difficulty": "medium",
+      "id": "q67"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Choose the correct sentence:",
+      "options": [
+        "The house that I live in is old",
+        "The house that I live is old",
+        "The house that I live at is old",
+        "The house that I live to is old"
+      ],
+      "answer": 0,
+      "explanation": "The relative clause 'that I live in' needs the preposition.",
+      "difficulty": "medium",
+      "id": "q68"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Identify the error: 'He does not likes tea.'",
+      "options": [
+        "does not likes → does not like",
+        "tea → the tea",
+        "He → him",
+        "No error"
+      ],
+      "answer": 0,
+      "explanation": "After 'does', the main verb stays in base form: 'does not like'.",
+      "difficulty": "easy",
+      "id": "q69"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Choose the correct sentence:",
+      "options": [
+        "Neither of the two answers are correct",
+        "Neither of the two answers is correct",
+        "Neither of the two answers were correct",
+        "Neither of the answers are correct"
+      ],
+      "answer": 1,
+      "explanation": "'Neither' is singular → 'is correct'.",
+      "difficulty": "medium",
+      "id": "q70"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Identify the error: 'He told that he is busy.'",
+      "options": [
+        "told → said",
+        "that → that he",
+        "is → was",
+        "No error"
+      ],
+      "answer": 0,
+      "explanation": "'Tell' needs an object (told me); without one use 'said'.",
+      "difficulty": "hard",
+      "id": "q71"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Choose the correct sentence:",
+      "options": [
+        "He is married with her",
+        "He is married to her",
+        "He is married from her",
+        "He is married at her"
+      ],
+      "answer": 1,
+      "explanation": "The correct idiom is 'married to'.",
+      "difficulty": "easy",
+      "id": "q72"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Choose the correct sentence:",
+      "options": [
+        "He has been working here since five years",
+        "He has been working here for five years",
+        "He has been working here from five years",
+        "He has been working here at five years"
+      ],
+      "answer": 1,
+      "explanation": "For is used with a duration of time: for five years.",
+      "difficulty": "easy",
+      "id": "q73"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Choose the correct sentence:",
+      "options": [
+        "I look forward to meet you",
+        "I look forward to meeting you",
+        "I look forward to met you",
+        "I look forward meet you"
+      ],
+      "answer": 1,
+      "explanation": "Look forward to takes a gerund: to meeting.",
+      "difficulty": "easy",
+      "id": "q74"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Choose the correct sentence:",
+      "options": [
+        "He prevented me from going",
+        "He prevented me to go",
+        "He prevented me going",
+        "He prevented me for going"
+      ],
+      "answer": 0,
+      "explanation": "Prevent takes 'from + gerund'.",
+      "difficulty": "easy",
+      "id": "q75"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Choose the correct sentence:",
+      "options": [
+        "No sooner did he arrive than it started raining",
+        "No sooner he arrived than it started raining",
+        "No sooner did he arrive when it started raining",
+        "No sooner he arrives than it rains"
+      ],
+      "answer": 0,
+      "explanation": "No sooner is followed by 'than', with inversion after did.",
+      "difficulty": "medium",
+      "id": "q76"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Choose the correct sentence:",
+      "options": [
+        "She is senior than me",
+        "She is senior to me",
+        "She is senior from me",
+        "She is senior over me"
+      ],
+      "answer": 1,
+      "explanation": "Latin comparatives (senior, junior, superior) take to.",
+      "difficulty": "easy",
+      "id": "q77"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Choose the correct sentence:",
+      "options": [
+        "He told that he was unwell",
+        "He said that he was unwell",
+        "He told to me that he was unwell",
+        "He said me that he was unwell"
+      ],
+      "answer": 1,
+      "explanation": "Say takes 'to + person' or nothing; tell requires an object.",
+      "difficulty": "easy",
+      "id": "q78"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Choose the correct sentence:",
+      "options": [
+        "He is one of the best players who has won the trophy",
+        "He is one of the best players who have won the trophy",
+        "He is one of the best player who have won the trophy",
+        "He is the one of the best players who has won the trophy"
+      ],
+      "answer": 1,
+      "explanation": "In 'one of + plural noun + who', the verb agrees with the plural antecedent.",
+      "difficulty": "hard",
+      "id": "q79"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Choose the correct sentence:",
+      "options": [
+        "He insisted on paying the bill",
+        "He insisted to pay the bill",
+        "He insisted for paying the bill",
+        "He insisted paying the bill"
+      ],
+      "answer": 0,
+      "explanation": "Insist is followed by 'on + gerund'.",
+      "difficulty": "easy",
+      "id": "q80"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Choose the correct sentence:",
+      "options": [
+        "I prefer tea than coffee",
+        "I prefer tea to coffee",
+        "I prefer tea over coffee",
+        "I prefer tea from coffee"
+      ],
+      "answer": 1,
+      "explanation": "Prefer X to Y is the correct construction.",
+      "difficulty": "easy",
+      "id": "q81"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Choose the correct sentence:",
+      "options": [
+        "He is not only intelligent but also hardworking",
+        "He is not only intelligent but hardworking also",
+        "He is only not intelligent but also hardworking",
+        "Not only he is intelligent but also hardworking"
+      ],
+      "answer": 0,
+      "explanation": "Not only...but also is the correct correlative pair.",
+      "difficulty": "easy",
+      "id": "q82"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Choose the correct sentence:",
+      "options": [
+        "The news are good",
+        "The news is good",
+        "The news were good",
+        "The news have been good"
+      ],
+      "answer": 1,
+      "explanation": "News is uncountable and takes a singular verb.",
+      "difficulty": "easy",
+      "id": "q83"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Choose the correct sentence:",
+      "options": [
+        "She has gone to the market yesterday",
+        "She went to the market yesterday",
+        "She has went to the market yesterday",
+        "She is going to the market yesterday"
+      ],
+      "answer": 1,
+      "explanation": "A definite past time (yesterday) requires the simple past.",
+      "difficulty": "easy",
+      "id": "q84"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Choose the correct sentence:",
+      "options": [
+        "The committee have decided",
+        "The committee has decided",
+        "The committee are deciding",
+        "The committee were decided"
+      ],
+      "answer": 1,
+      "explanation": "When the committee acts as one body, use a singular verb.",
+      "difficulty": "medium",
+      "id": "q85"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Choose the correct sentence:",
+      "options": [
+        "I have visited Lahore in 2019",
+        "I visited Lahore in 2019",
+        "I had visited Lahore in 2019 already",
+        "I have been visiting Lahore in 2019"
+      ],
+      "answer": 1,
+      "explanation": "A finished past moment (in 2019) needs the simple past.",
+      "difficulty": "easy",
+      "id": "q86"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Choose the correct sentence:",
+      "options": [
+        "He is angry on me",
+        "He is angry with me",
+        "He is angry at me",
+        "He is angry upon me"
+      ],
+      "answer": 1,
+      "explanation": "Angry with a person is the standard idiom.",
+      "difficulty": "easy",
+      "id": "q87"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Choose the correct sentence:",
+      "options": [
+        "She has been sleeping for two hours",
+        "She has been sleeping since two hours",
+        "She slept for two hours now",
+        "She has slept for two hours ago"
+      ],
+      "answer": 0,
+      "explanation": "For + duration is correct with the present perfect continuous.",
+      "difficulty": "easy",
+      "id": "q88"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Choose the correct sentence:",
+      "options": [
+        "Neither he nor his friends was invited",
+        "Neither he nor his friends were invited",
+        "Neither he nor his friends is invited",
+        "Neither he nor friends was invited"
+      ],
+      "answer": 1,
+      "explanation": "With neither...nor, the verb agrees with the nearer subject (friends → were).",
+      "difficulty": "hard",
+      "id": "q89"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Choose the correct sentence:",
+      "options": [
+        "I have a lot of work to do today",
+        "I have lot of works to do today",
+        "I have many works to do today",
+        "I have much works to do today"
+      ],
+      "answer": 0,
+      "explanation": "Work is uncountable; use a lot of, not many/much with plural.",
+      "difficulty": "easy",
+      "id": "q90"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Choose the correct sentence:",
+      "options": [
+        "She said she will come tomorrow",
+        "She said she would come the next day",
+        "She said she will come the next day",
+        "She says she would come tomorrow"
+      ],
+      "answer": 1,
+      "explanation": "In reported speech, will becomes would and tomorrow becomes the next day.",
+      "difficulty": "medium",
+      "id": "q91"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Choose the correct sentence:",
+      "options": [
+        "He works hard so that he may pass",
+        "He works hard so that he may passed",
+        "He works hard so that he can passed",
+        "He works hard so that he might passed"
+      ],
+      "answer": 0,
+      "explanation": "So that is followed by may/can + base verb.",
+      "difficulty": "medium",
+      "id": "q92"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Choose the correct sentence:",
+      "options": [
+        "He is elder than me",
+        "He is older than me",
+        "He is elder from me",
+        "He is oldest than me"
+      ],
+      "answer": 1,
+      "explanation": "Elder is used for family members without than; older is the general comparative with than.",
+      "difficulty": "medium",
+      "id": "q93"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Choose the correct sentence:",
+      "options": [
+        "I have not seen him since Monday",
+        "I have not seen him for Monday",
+        "I have not seen him from Monday",
+        "I have not seen him after Monday"
+      ],
+      "answer": 0,
+      "explanation": "Since is used with a point in time: since Monday.",
+      "difficulty": "easy",
+      "id": "q94"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Choose the correct sentence:",
+      "options": [
+        "He is enough strong to lift it",
+        "He is strong enough to lift it",
+        "He is strong enough lifting it",
+        "He is enough strong lifting it"
+      ],
+      "answer": 1,
+      "explanation": "Enough follows the adjective: strong enough.",
+      "difficulty": "easy",
+      "id": "q95"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Choose the correct sentence:",
+      "options": [
+        "The furniture are new",
+        "The furniture is new",
+        "The furnitures are new",
+        "The furniture were new"
+      ],
+      "answer": 1,
+      "explanation": "Furniture is uncountable and takes a singular verb.",
+      "difficulty": "easy",
+      "id": "q96"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Choose the correct sentence:",
+      "options": [
+        "She is interested for music",
+        "She is interested in music",
+        "She is interested at music",
+        "She is interested on music"
+      ],
+      "answer": 1,
+      "explanation": "Interested in is the correct idiom.",
+      "difficulty": "easy",
+      "id": "q97"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Choose the correct sentence:",
+      "options": [
+        "We discussed about the plan",
+        "We discussed the plan",
+        "We discussed on the plan",
+        "We discussed over the plan"
+      ],
+      "answer": 1,
+      "explanation": "Discuss takes a direct object without a preposition.",
+      "difficulty": "easy",
+      "id": "q98"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Choose the correct sentence:",
+      "options": [
+        "She suggested me to go",
+        "She suggested that I should go",
+        "She suggested me going",
+        "She suggested to me to go"
+      ],
+      "answer": 1,
+      "explanation": "Suggest takes a that-clause, not an indirect object.",
+      "difficulty": "hard",
+      "id": "q99"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Choose the correct sentence:",
+      "options": [
+        "He returned back the book",
+        "He returned the book",
+        "He returned back the book again",
+        "He returned back the book late"
+      ],
+      "answer": 1,
+      "explanation": "Return already implies back; adding back is redundant.",
+      "difficulty": "easy",
+      "id": "q100"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Choose the correct sentence:",
+      "options": [
+        "Hardly had I left when the phone rang",
+        "Hardly I had left when the phone rang",
+        "Hardly had I left than the phone rang",
+        "Hardly I left when the phone rang"
+      ],
+      "answer": 0,
+      "explanation": "Hardly...when with inversion is the correct structure.",
+      "difficulty": "hard",
+      "id": "q101"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Choose the correct sentence:",
+      "options": [
+        "Each student have a book",
+        "Each student has a book",
+        "Each students have a book",
+        "Each of student has a book"
+      ],
+      "answer": 1,
+      "explanation": "Each is singular and takes a singular verb.",
+      "difficulty": "easy",
+      "id": "q102"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Choose the correct sentence:",
+      "options": [
+        "The police has caught the thief",
+        "The police have caught the thief",
+        "The police is catching the thief",
+        "The police has catch the thief"
+      ],
+      "answer": 1,
+      "explanation": "Police is a collective noun that takes a plural verb.",
+      "difficulty": "medium",
+      "id": "q103"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Choose the correct sentence:",
+      "options": [
+        "He has less money than his brother",
+        "He has fewer money than his brother",
+        "He has lesser money than his brother",
+        "He has few money than his brother"
+      ],
+      "answer": 0,
+      "explanation": "Less is used with uncountable nouns like money.",
+      "difficulty": "easy",
+      "id": "q104"
+    }
+  ]
+}

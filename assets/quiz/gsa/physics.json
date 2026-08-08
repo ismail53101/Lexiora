@@ -1,0 +1,1833 @@
+{
+  "bank": {
+    "name": "Physics",
+    "subject": "General Science & Ability",
+    "topic": "Physics",
+    "description": "Units, motion, forces, energy, light, sound, electricity, heat and the fundamentals of physics asked in CSS/GSA and one-paper exams.",
+    "tags": "css,pms,fpsc,ppsc,nts,gsa,physics",
+    "version": "1.0",
+    "id": "gsa_physics"
+  },
+  "questions": [
+    {
+      "type": "mcq",
+      "prompt": "What is the SI unit of force?",
+      "options": [
+        "Joule",
+        "Newton",
+        "Watt",
+        "Pascal"
+      ],
+      "answer": 1,
+      "explanation": "Force is measured in newtons (N).",
+      "difficulty": "easy",
+      "id": "q01"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The SI unit of energy and work is?",
+      "options": [
+        "Joule",
+        "Watt",
+        "Newton",
+        "Ampere"
+      ],
+      "answer": 0,
+      "explanation": "Work and energy are measured in joules (J).",
+      "difficulty": "easy",
+      "id": "q02"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What is the SI unit of electric current?",
+      "options": [
+        "Volt",
+        "Ohm",
+        "Ampere",
+        "Coulomb"
+      ],
+      "answer": 2,
+      "explanation": "Electric current is measured in amperes (A).",
+      "difficulty": "easy",
+      "id": "q03"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The SI unit of frequency is?",
+      "options": [
+        "Hertz",
+        "Decibel",
+        "Tesla",
+        "Lumen"
+      ],
+      "answer": 0,
+      "explanation": "Frequency is measured in hertz (Hz).",
+      "difficulty": "medium",
+      "id": "q04"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What is the SI unit of pressure?",
+      "options": [
+        "Bar",
+        "Pascal",
+        "Torr",
+        "Atmosphere"
+      ],
+      "answer": 1,
+      "explanation": "Pressure is measured in pascals (Pa).",
+      "difficulty": "easy",
+      "id": "q05"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The SI unit of electrical resistance is?",
+      "options": [
+        "Ohm",
+        "Volt",
+        "Farad",
+        "Henry"
+      ],
+      "answer": 0,
+      "explanation": "Resistance is measured in ohms.",
+      "difficulty": "easy",
+      "id": "q06"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which of the following is the SI unit of temperature?",
+      "options": [
+        "Celsius",
+        "Fahrenheit",
+        "Kelvin",
+        "Rankine"
+      ],
+      "answer": 2,
+      "explanation": "The SI unit of temperature is the kelvin (K).",
+      "difficulty": "medium",
+      "id": "q07"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The speed of light in vacuum is approximately?",
+      "options": [
+        "300,000 km/s",
+        "150,000 km/s",
+        "3,000 km/s",
+        "30,000 km/s"
+      ],
+      "answer": 0,
+      "explanation": "Light travels at about 300,000 km/s (3 x 10^8 m/s) in vacuum.",
+      "difficulty": "easy",
+      "id": "q08"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The speed of sound in air at room temperature is approximately?",
+      "options": [
+        "343 m/s",
+        "640 m/s",
+        "150 m/s",
+        "1,000 m/s"
+      ],
+      "answer": 0,
+      "explanation": "Sound travels at about 343 m/s in air at 20 C.",
+      "difficulty": "medium",
+      "id": "q09"
+    },
+    {
+      "type": "mcq",
+      "prompt": "In which medium does sound travel fastest?",
+      "options": [
+        "Solids",
+        "Liquids",
+        "Gases",
+        "Vacuum"
+      ],
+      "answer": 0,
+      "explanation": "Sound travels fastest in solids because particles are closely packed.",
+      "difficulty": "easy",
+      "id": "q10"
+    },
+    {
+      "type": "mcq",
+      "prompt": "A rainbow is formed due to which phenomenon of light?",
+      "options": [
+        "Reflection only",
+        "Absorption",
+        "Dispersion and refraction",
+        "Diffraction of sound"
+      ],
+      "answer": 2,
+      "explanation": "Raindrops refract and disperse white light into its colours.",
+      "difficulty": "medium",
+      "id": "q11"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The sky appears blue because of?",
+      "options": [
+        "Reflection by water",
+        "Scattering of light by air molecules",
+        "Absorption of blue light",
+        "The colour of the sun"
+      ],
+      "answer": 1,
+      "explanation": "Shorter blue wavelengths are scattered more by air molecules (Rayleigh scattering).",
+      "difficulty": "medium",
+      "id": "q12"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Newton's first law of motion is also called the law of?",
+      "options": [
+        "Inertia",
+        "Acceleration",
+        "Action and reaction",
+        "Gravitation"
+      ],
+      "answer": 0,
+      "explanation": "Newton's first law states that a body at rest stays at rest unless acted on by a force: inertia.",
+      "difficulty": "easy",
+      "id": "q13"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The equation F = ma represents Newton's?",
+      "options": [
+        "First law",
+        "Second law",
+        "Third law",
+        "Law of gravitation"
+      ],
+      "answer": 1,
+      "explanation": "Newton's second law states force equals mass times acceleration.",
+      "difficulty": "easy",
+      "id": "q14"
+    },
+    {
+      "type": "mcq",
+      "prompt": "'To every action there is an equal and opposite reaction' is Newton's?",
+      "options": [
+        "First law",
+        "Second law",
+        "Third law",
+        "Universal law"
+      ],
+      "answer": 2,
+      "explanation": "Newton's third law of motion describes action-reaction pairs.",
+      "difficulty": "easy",
+      "id": "q15"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The kinetic energy of a moving body is given by?",
+      "options": [
+        "mgh",
+        "mv",
+        "1/2 mv^2",
+        "F x d"
+      ],
+      "answer": 2,
+      "explanation": "Kinetic energy = half times mass times velocity squared.",
+      "difficulty": "medium",
+      "id": "q16"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Power is defined as?",
+      "options": [
+        "Force x distance",
+        "Work divided by time",
+        "Mass x acceleration",
+        "Energy x time"
+      ],
+      "answer": 1,
+      "explanation": "Power is the rate of doing work: work/time.",
+      "difficulty": "easy",
+      "id": "q17"
+    },
+    {
+      "type": "mcq",
+      "prompt": "At sea level, pure water boils at?",
+      "options": [
+        "90 C",
+        "98 C",
+        "100 C",
+        "110 C"
+      ],
+      "answer": 2,
+      "explanation": "Water boils at 100 C (212 F) at one atmosphere of pressure.",
+      "difficulty": "easy",
+      "id": "q18"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Ice floats on water because?",
+      "options": [
+        "It is heavier than water",
+        "Its density is lower than water",
+        "It is warmer",
+        "It contains air bubbles only"
+      ],
+      "answer": 1,
+      "explanation": "Ice is less dense than liquid water, so it floats.",
+      "difficulty": "medium",
+      "id": "q19"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Heat transfer by radiation does NOT require?",
+      "options": [
+        "A medium",
+        "A temperature difference",
+        "A hot body",
+        "A surface"
+      ],
+      "answer": 0,
+      "explanation": "Radiation (like sunlight) travels through vacuum without any medium.",
+      "difficulty": "medium",
+      "id": "q20"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Like magnetic poles?",
+      "options": [
+        "Attract each other",
+        "Repel each other",
+        "Neutralise each other",
+        "Have no effect"
+      ],
+      "answer": 1,
+      "explanation": "Like poles repel; unlike poles attract.",
+      "difficulty": "easy",
+      "id": "q21"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Ohm's law is expressed as?",
+      "options": [
+        "V = IR",
+        "V = I/R",
+        "I = VR",
+        "R = VI"
+      ],
+      "answer": 0,
+      "explanation": "Voltage equals current times resistance.",
+      "difficulty": "easy",
+      "id": "q22"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which type of lens is used to correct short-sightedness (myopia)?",
+      "options": [
+        "Convex",
+        "Concave",
+        "Cylindrical",
+        "Bifocal"
+      ],
+      "answer": 1,
+      "explanation": "Myopia is corrected with concave (diverging) lenses.",
+      "difficulty": "medium",
+      "id": "q23"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Long-sightedness (hypermetropia) is corrected with?",
+      "options": [
+        "Concave lens",
+        "Convex lens",
+        "Flat lens",
+        "Prism"
+      ],
+      "answer": 1,
+      "explanation": "Hypermetropia is corrected with convex (converging) lenses.",
+      "difficulty": "medium",
+      "id": "q24"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Nuclear reactors generate electricity through?",
+      "options": [
+        "Nuclear fusion",
+        "Nuclear fission",
+        "Chemical reaction",
+        "Solar cells"
+      ],
+      "answer": 1,
+      "explanation": "Reactors use controlled nuclear fission of uranium or plutonium.",
+      "difficulty": "medium",
+      "id": "q25"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The famous equation E = mc^2 was given by?",
+      "options": [
+        "Newton",
+        "Einstein",
+        "Bohr",
+        "Planck"
+      ],
+      "answer": 1,
+      "explanation": "Albert Einstein proposed the mass-energy equivalence in 1905.",
+      "difficulty": "easy",
+      "id": "q26"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The gravity on the Moon is about what fraction of Earth's gravity?",
+      "options": [
+        "Half",
+        "One-third",
+        "One-sixth",
+        "One-tenth"
+      ],
+      "answer": 2,
+      "explanation": "The Moon's gravity is about 1/6 that of Earth.",
+      "difficulty": "easy",
+      "id": "q27"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Weight is the product of?",
+      "options": [
+        "Mass and gravity",
+        "Mass and volume",
+        "Density and gravity",
+        "Force and area"
+      ],
+      "answer": 0,
+      "explanation": "Weight = mass x gravitational acceleration.",
+      "difficulty": "easy",
+      "id": "q28"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Ultrasound refers to sound waves with frequency?",
+      "options": [
+        "Below 20 Hz",
+        "Between 20 Hz and 20 kHz",
+        "Above 20 kHz",
+        "Exactly 1,000 Hz"
+      ],
+      "answer": 2,
+      "explanation": "Frequencies above 20,000 Hz are ultrasonic and are used in medical imaging.",
+      "difficulty": "medium",
+      "id": "q29"
+    },
+    {
+      "type": "mcq",
+      "prompt": "An ECG (electrocardiogram) records the activity of which organ?",
+      "options": [
+        "Brain",
+        "Heart",
+        "Lungs",
+        "Kidneys"
+      ],
+      "answer": 1,
+      "explanation": "ECG records the electrical activity of the heart.",
+      "difficulty": "easy",
+      "id": "q30"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The instrument used to measure atmospheric pressure is?",
+      "options": [
+        "Barometer",
+        "Thermometer",
+        "Hygrometer",
+        "Anemometer"
+      ],
+      "answer": 0,
+      "explanation": "A barometer measures atmospheric pressure.",
+      "difficulty": "easy",
+      "id": "q31"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which instrument measures the speed of wind?",
+      "options": [
+        "Barometer",
+        "Anemometer",
+        "Hygrometer",
+        "Ammeter"
+      ],
+      "answer": 1,
+      "explanation": "An anemometer measures wind speed.",
+      "difficulty": "medium",
+      "id": "q32"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Convex mirrors are commonly used as?",
+      "options": [
+        "Rear-view mirrors in vehicles",
+        "Magnifying glasses",
+        "Telescope objectives",
+        "Spectacle lenses for myopia"
+      ],
+      "answer": 0,
+      "explanation": "Convex mirrors give a wide field of view, ideal for rear-view mirrors.",
+      "difficulty": "medium",
+      "id": "q33"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The image formed by a plane mirror is?",
+      "options": [
+        "Real and inverted",
+        "Virtual and erect",
+        "Real and erect",
+        "Virtual and inverted"
+      ],
+      "answer": 1,
+      "explanation": "Plane mirrors form virtual, erect, same-size images.",
+      "difficulty": "easy",
+      "id": "q34"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The SI unit of electric charge is?",
+      "options": [
+        "Volt",
+        "Coulomb",
+        "Ohm",
+        "Joule"
+      ],
+      "answer": 1,
+      "explanation": "Electric charge is measured in coulombs (C).",
+      "difficulty": "medium",
+      "id": "q35"
+    },
+    {
+      "type": "mcq",
+      "prompt": "A body in uniform circular motion has?",
+      "options": [
+        "Constant velocity",
+        "Constant acceleration towards the centre",
+        "Zero acceleration",
+        "Increasing speed"
+      ],
+      "answer": 1,
+      "explanation": "Uniform circular motion involves centripetal acceleration towards the centre.",
+      "difficulty": "hard",
+      "id": "q36"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which of the following is a vector quantity?",
+      "options": [
+        "Speed",
+        "Mass",
+        "Force",
+        "Temperature"
+      ],
+      "answer": 2,
+      "explanation": "Force has both magnitude and direction, so it is a vector.",
+      "difficulty": "medium",
+      "id": "q37"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Friction between two surfaces in contact can be reduced by?",
+      "options": [
+        "Making surfaces rough",
+        "Using lubricants",
+        "Increasing the weight",
+        "Using dry surfaces"
+      ],
+      "answer": 1,
+      "explanation": "Lubricants reduce friction between moving parts.",
+      "difficulty": "easy",
+      "id": "q38"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The bending of light as it passes from one medium to another is called?",
+      "options": [
+        "Reflection",
+        "Refraction",
+        "Diffraction",
+        "Polarisation"
+      ],
+      "answer": 1,
+      "explanation": "Refraction is the bending of light due to a change in medium.",
+      "difficulty": "easy",
+      "id": "q39"
+    },
+    {
+      "type": "mcq",
+      "prompt": "One newton is the force that accelerates a mass of 1 kg at a rate of:",
+      "options": [
+        "1 m/s²",
+        "2 m/s²",
+        "5 m/s²",
+        "10 m/s²"
+      ],
+      "answer": 0,
+      "explanation": "1 N = 1 kg × 1 m/s².",
+      "difficulty": "easy",
+      "id": "q40"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which instrument measures electric potential difference (voltage)?",
+      "options": [
+        "Ammeter",
+        "Voltmeter",
+        "Ohmmeter",
+        "Galvanometer"
+      ],
+      "answer": 1,
+      "explanation": "A voltmeter measures the potential difference between two points.",
+      "difficulty": "easy",
+      "id": "q41"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What is the SI unit of power?",
+      "options": [
+        "Watt",
+        "Joule",
+        "Newton",
+        "Pascal"
+      ],
+      "answer": 0,
+      "explanation": "Power (rate of energy transfer) is measured in watts (W); the joule measures energy.",
+      "difficulty": "easy",
+      "id": "q42"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which scientist formulated the theory of general relativity?",
+      "options": [
+        "Albert Einstein",
+        "Isaac Newton",
+        "Galileo Galilei",
+        "Niels Bohr"
+      ],
+      "answer": 0,
+      "explanation": "Einstein published the general theory of relativity in 1915, describing gravity as curved spacetime.",
+      "difficulty": "easy",
+      "id": "q43"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which device converts mechanical energy into electrical energy?",
+      "options": [
+        "Generator",
+        "Motor",
+        "Transformer",
+        "Rectifier"
+      ],
+      "answer": 0,
+      "explanation": "A generator converts mechanical energy to electrical; a motor does the reverse.",
+      "difficulty": "easy",
+      "id": "q44"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which wave type does NOT require a medium to travel?",
+      "options": [
+        "Electromagnetic",
+        "Sound",
+        "Seismic",
+        "Water"
+      ],
+      "answer": 0,
+      "explanation": "Electromagnetic waves (light, radio) travel through a vacuum; mechanical waves need a medium.",
+      "difficulty": "easy",
+      "id": "q45"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What happens to a gas when its temperature increases at constant pressure?",
+      "options": [
+        "Its volume expands",
+        "Its volume contracts",
+        "It becomes a liquid",
+        "Its mass increases"
+      ],
+      "answer": 0,
+      "explanation": "Charles's Law: at constant pressure, gas volume is directly proportional to absolute temperature.",
+      "difficulty": "medium",
+      "id": "q46"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The bending of light as it passes around an obstacle is called:",
+      "options": [
+        "Diffraction",
+        "Refraction",
+        "Reflection",
+        "Dispersion"
+      ],
+      "answer": 0,
+      "explanation": "Diffraction is the spreading/bending of waves around obstacles; refraction is bending through a medium.",
+      "difficulty": "hard",
+      "id": "q47"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which color of visible light has the shortest wavelength?",
+      "options": [
+        "Violet",
+        "Red",
+        "Yellow",
+        "Green"
+      ],
+      "answer": 0,
+      "explanation": "Violet has the shortest wavelength and highest frequency in the visible spectrum.",
+      "difficulty": "medium",
+      "id": "q48"
+    },
+    {
+      "type": "mcq",
+      "prompt": "One watt is equal to one:",
+      "options": [
+        "Joule per second",
+        "Newton per metre",
+        "Volt per ampere",
+        "Kilogram per metre"
+      ],
+      "answer": 0,
+      "explanation": "1 W = 1 J/s, so power is joules per second.",
+      "difficulty": "easy",
+      "id": "q49"
+    },
+    {
+      "type": "mcq",
+      "prompt": "An object at rest will remain at rest unless acted on by:",
+      "options": [
+        "An external force",
+        "Gravity only",
+        "Friction",
+        "Inertia"
+      ],
+      "answer": 0,
+      "explanation": "Newton's first law: bodies maintain state unless an external force acts.",
+      "difficulty": "easy",
+      "id": "q50"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which force keeps planets orbiting the Sun?",
+      "options": [
+        "Gravitational force",
+        "Magnetic force",
+        "Electrostatic force",
+        "Nuclear force"
+      ],
+      "answer": 0,
+      "explanation": "Gravity provides the centripetal force for planetary orbits.",
+      "difficulty": "easy",
+      "id": "q51"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which of the following is a scalar quantity?",
+      "options": [
+        "Speed",
+        "Velocity",
+        "Force",
+        "Acceleration"
+      ],
+      "answer": 0,
+      "explanation": "Speed has magnitude only; the others also have direction.",
+      "difficulty": "medium",
+      "id": "q52"
+    },
+    {
+      "type": "mcq",
+      "prompt": "An electric generator converts:",
+      "options": [
+        "Mechanical energy into electrical energy",
+        "Electrical energy into mechanical",
+        "Heat into light",
+        "Light into sound"
+      ],
+      "answer": 0,
+      "explanation": "Generators convert mechanical energy into electricity.",
+      "difficulty": "easy",
+      "id": "q53"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which colour of light has the highest frequency?",
+      "options": [
+        "Violet",
+        "Red",
+        "Yellow",
+        "Green"
+      ],
+      "answer": 0,
+      "explanation": "Violet has the highest frequency in the visible spectrum.",
+      "difficulty": "easy",
+      "id": "q54"
+    },
+    {
+      "type": "mcq",
+      "prompt": "A magnifying glass is an example of a:",
+      "options": [
+        "Convex lens",
+        "Concave lens",
+        "Plane mirror",
+        "Convex mirror"
+      ],
+      "answer": 0,
+      "explanation": "A convex (converging) lens magnifies close objects.",
+      "difficulty": "easy",
+      "id": "q55"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The centre of the Earth is known as the:",
+      "options": [
+        "Core",
+        "Mantle",
+        "Crust",
+        "Magma"
+      ],
+      "answer": 0,
+      "explanation": "The Earth's innermost layer is the core.",
+      "difficulty": "easy",
+      "id": "q56"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The resistance of a conductor depends on its:",
+      "options": [
+        "Length, area and material",
+        "Colour only",
+        "Weight only",
+        "Age"
+      ],
+      "answer": 0,
+      "explanation": "Resistance depends on length, cross-sectional area and resistivity.",
+      "difficulty": "medium",
+      "id": "q57"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which particle has a negative charge?",
+      "options": [
+        "Electron",
+        "Proton",
+        "Neutron",
+        "Positron"
+      ],
+      "answer": 0,
+      "explanation": "Electrons carry a negative charge.",
+      "difficulty": "easy",
+      "id": "q58"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which simple machine is a screwdriver?",
+      "options": [
+        "A wheel and axle",
+        "A lever",
+        "An inclined plane",
+        "A pulley"
+      ],
+      "answer": 0,
+      "explanation": "A screwdriver works as a wheel and axle.",
+      "difficulty": "medium",
+      "id": "q59"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The freezing point of water is:",
+      "options": [
+        "0°C",
+        "100°C",
+        "-4°C",
+        "32°F"
+      ],
+      "answer": 0,
+      "explanation": "Water freezes at 0°C under standard conditions.",
+      "difficulty": "easy",
+      "id": "q60"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The law of conservation of energy states that energy:",
+      "options": [
+        "Cannot be created or destroyed, only transformed",
+        "Can be created",
+        "Can be destroyed",
+        "Always increases"
+      ],
+      "answer": 0,
+      "explanation": "Energy is conserved; it only changes form.",
+      "difficulty": "easy",
+      "id": "q61"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The SI unit of electric potential difference is:",
+      "options": [
+        "Volt",
+        "Ampere",
+        "Ohm",
+        "Watt"
+      ],
+      "answer": 0,
+      "explanation": "Voltage is measured in volts.",
+      "difficulty": "easy",
+      "id": "q62"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which instrument measures the speed of a vehicle?",
+      "options": [
+        "Speedometer",
+        "Barometer",
+        "Thermometer",
+        "Ammeter"
+      ],
+      "answer": 0,
+      "explanation": "A speedometer shows a vehicle's speed.",
+      "difficulty": "easy",
+      "id": "q63"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The phenomenon of sound bouncing back from a surface is called:",
+      "options": [
+        "Echo",
+        "Refraction",
+        "Diffraction",
+        "Resonance"
+      ],
+      "answer": 0,
+      "explanation": "An echo is reflected sound.",
+      "difficulty": "easy",
+      "id": "q64"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which lens is thicker at the centre than at the edges?",
+      "options": [
+        "Convex lens",
+        "Concave lens",
+        "Plane glass",
+        "Prism"
+      ],
+      "answer": 0,
+      "explanation": "A convex lens bulges at the centre.",
+      "difficulty": "easy",
+      "id": "q65"
+    },
+    {
+      "type": "mcq",
+      "prompt": "A magnet has how many poles?",
+      "options": [
+        "Two (north and south)",
+        "One",
+        "Four",
+        "Three"
+      ],
+      "answer": 0,
+      "explanation": "Every magnet has a north and a south pole.",
+      "difficulty": "easy",
+      "id": "q66"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which type of energy does a stretched bow possess?",
+      "options": [
+        "Elastic potential energy",
+        "Kinetic energy",
+        "Nuclear energy",
+        "Sound energy"
+      ],
+      "answer": 0,
+      "explanation": "A stretched bow stores elastic potential energy.",
+      "difficulty": "easy",
+      "id": "q67"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The phenomenon of magnetism produced by electric current is called:",
+      "options": [
+        "Electromagnetism",
+        "Electrolysis",
+        "Photoelectric effect",
+        "Thermionic emission"
+      ],
+      "answer": 0,
+      "explanation": "Electric current creates magnetic fields.",
+      "difficulty": "easy",
+      "id": "q68"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which instrument measures humidity?",
+      "options": [
+        "Hygrometer",
+        "Barometer",
+        "Thermometer",
+        "Hydrometer"
+      ],
+      "answer": 0,
+      "explanation": "A hygrometer measures humidity.",
+      "difficulty": "easy",
+      "id": "q69"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The instrument used to measure the density of liquids is:",
+      "options": [
+        "Hydrometer",
+        "Hygrometer",
+        "Barometer",
+        "Manometer"
+      ],
+      "answer": 0,
+      "explanation": "A hydrometer measures liquid density.",
+      "difficulty": "medium",
+      "id": "q70"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The phenomenon of a rainbow is due to:",
+      "options": [
+        "Dispersion and refraction of light",
+        "Reflection only",
+        "Diffraction only",
+        "Absorption"
+      ],
+      "answer": 0,
+      "explanation": "Rainbows form by refraction and dispersion in water droplets.",
+      "difficulty": "easy",
+      "id": "q71"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which of the following is a renewable energy source?",
+      "options": [
+        "Solar energy",
+        "Coal",
+        "Natural gas",
+        "Petroleum"
+      ],
+      "answer": 0,
+      "explanation": "Solar energy is renewable.",
+      "difficulty": "easy",
+      "id": "q72"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The process by which a liquid changes into a gas at its surface is:",
+      "options": [
+        "Evaporation",
+        "Boiling",
+        "Sublimation",
+        "Condensation"
+      ],
+      "answer": 0,
+      "explanation": "Evaporation occurs at the liquid surface.",
+      "difficulty": "easy",
+      "id": "q73"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The unit of magnetic flux density is:",
+      "options": [
+        "Weber",
+        "Henry",
+        "Gauss",
+        "Tesla"
+      ],
+      "answer": 3,
+      "explanation": "Tesla is the SI unit of magnetic flux density.",
+      "difficulty": "medium",
+      "id": "q74"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The number of vibrations per second is called:",
+      "options": [
+        "Frequency",
+        "Amplitude",
+        "Wavelength",
+        "Velocity"
+      ],
+      "answer": 0,
+      "explanation": "Frequency counts oscillations per second.",
+      "difficulty": "easy",
+      "id": "q75"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The pitch of sound depends on its:",
+      "options": [
+        "Amplitude",
+        "Intensity",
+        "Frequency",
+        "Speed"
+      ],
+      "answer": 2,
+      "explanation": "Pitch is determined by frequency.",
+      "difficulty": "easy",
+      "id": "q76"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which of the following is a good insulator?",
+      "options": [
+        "Copper",
+        "Silver",
+        "Iron",
+        "Rubber"
+      ],
+      "answer": 3,
+      "explanation": "Rubber does not conduct electricity well.",
+      "difficulty": "easy",
+      "id": "q77"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which scientist formulated the laws of motion?",
+      "options": [
+        "Albert Einstein",
+        "Isaac Newton",
+        "Galileo Galilei",
+        "Michael Faraday"
+      ],
+      "answer": 1,
+      "explanation": "Newton formulated the three laws of motion.",
+      "difficulty": "easy",
+      "id": "q78"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The rate of change of velocity is called:",
+      "options": [
+        "Speed",
+        "Distance",
+        "Acceleration",
+        "Displacement"
+      ],
+      "answer": 2,
+      "explanation": "Acceleration is the rate of change of velocity.",
+      "difficulty": "easy",
+      "id": "q79"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The SI unit of mass is:",
+      "options": [
+        "Gram",
+        "Newton",
+        "Pound",
+        "Kilogram"
+      ],
+      "answer": 3,
+      "explanation": "Mass is measured in kilograms.",
+      "difficulty": "easy",
+      "id": "q80"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The SI unit of time is:",
+      "options": [
+        "Second",
+        "Minute",
+        "Hour",
+        "Day"
+      ],
+      "answer": 0,
+      "explanation": "The second is the SI unit of time.",
+      "difficulty": "easy",
+      "id": "q81"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What is the charge of an electron?",
+      "options": [
+        "Positive",
+        "Negative",
+        "Neutral",
+        "Zero"
+      ],
+      "answer": 1,
+      "explanation": "An electron carries a negative charge of about 1.6 x 10^-19 coulombs.",
+      "difficulty": "easy",
+      "id": "q82"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What happens to the pressure of a gas when its volume decreases at constant temperature?",
+      "options": [
+        "It decreases",
+        "It increases",
+        "It stays the same",
+        "It becomes zero"
+      ],
+      "answer": 1,
+      "explanation": "By Boyle's law, at constant temperature the pressure of a gas increases as its volume decreases.",
+      "difficulty": "easy",
+      "id": "q83"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The process of converting a solid directly into gas is called:",
+      "options": [
+        "Evaporation",
+        "Condensation",
+        "Sublimation",
+        "Melting"
+      ],
+      "answer": 2,
+      "explanation": "Sublimation is the direct change of a solid into vapour, e.g. dry ice or camphor.",
+      "difficulty": "easy",
+      "id": "q84"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which instrument measures electric current?",
+      "options": [
+        "Voltmeter",
+        "Ammeter",
+        "Barometer",
+        "Thermometer"
+      ],
+      "answer": 1,
+      "explanation": "An ammeter measures electric current in amperes; a voltmeter measures potential difference.",
+      "difficulty": "easy",
+      "id": "q85"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Energy possessed by a moving body is called:",
+      "options": [
+        "Potential energy",
+        "Kinetic energy",
+        "Chemical energy",
+        "Nuclear energy"
+      ],
+      "answer": 1,
+      "explanation": "The energy of motion is kinetic energy, given by 1/2 mv2.",
+      "difficulty": "easy",
+      "id": "q86"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The phenomenon of splitting white light into colours is called:",
+      "options": [
+        "Reflection",
+        "Refraction",
+        "Dispersion",
+        "Diffraction"
+      ],
+      "answer": 2,
+      "explanation": "Dispersion splits white light into its spectrum, as seen in a prism or a rainbow.",
+      "difficulty": "medium",
+      "id": "q87"
+    },
+    {
+      "type": "mcq",
+      "prompt": "A concave lens always forms which type of image?",
+      "options": [
+        "Real and inverted",
+        "Virtual and erect",
+        "Real and erect",
+        "Virtual and inverted"
+      ],
+      "answer": 1,
+      "explanation": "A concave (diverging) lens always forms a virtual, erect and diminished image.",
+      "difficulty": "medium",
+      "id": "q88"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which type of wave is light?",
+      "options": [
+        "Longitudinal",
+        "Transverse",
+        "Mechanical",
+        "Stationary"
+      ],
+      "answer": 1,
+      "explanation": "Light is a transverse electromagnetic wave and does not require a medium.",
+      "difficulty": "medium",
+      "id": "q89"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The acceleration due to gravity on Earth is approximately:",
+      "options": [
+        "9.8 m/s2",
+        "10.8 m/s2",
+        "8.9 m/s2",
+        "19.6 m/s2"
+      ],
+      "answer": 0,
+      "explanation": "The standard value of g near the Earth's surface is about 9.8 m/s2.",
+      "difficulty": "easy",
+      "id": "q90"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which device converts sound waves into electrical signals?",
+      "options": [
+        "Loudspeaker",
+        "Microphone",
+        "Ammeter",
+        "Transformer"
+      ],
+      "answer": 1,
+      "explanation": "A microphone converts sound into electrical signals; a loudspeaker does the reverse.",
+      "difficulty": "easy",
+      "id": "q91"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The normal human eye focuses images on the:",
+      "options": [
+        "Cornea",
+        "Iris",
+        "Retina",
+        "Pupil"
+      ],
+      "answer": 2,
+      "explanation": "The lens of the eye focuses light on the retina, where the image is formed.",
+      "difficulty": "easy",
+      "id": "q92"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which device is used to see distant objects clearly?",
+      "options": [
+        "Microscope",
+        "Telescope",
+        "Periscope",
+        "Spectroscope"
+      ],
+      "answer": 1,
+      "explanation": "A telescope magnifies distant objects; a microscope magnifies tiny nearby objects.",
+      "difficulty": "easy",
+      "id": "q93"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The device used to measure electric power is:",
+      "options": [
+        "Ammeter",
+        "Voltmeter",
+        "Wattmeter",
+        "Galvanometer"
+      ],
+      "answer": 2,
+      "explanation": "A wattmeter measures electric power in watts.",
+      "difficulty": "medium",
+      "id": "q94"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which metal is the best conductor of electricity?",
+      "options": [
+        "Copper",
+        "Aluminium",
+        "Silver",
+        "Gold"
+      ],
+      "answer": 2,
+      "explanation": "Silver is the best conductor of electricity, followed by copper.",
+      "difficulty": "medium",
+      "id": "q95"
+    },
+    {
+      "type": "mcq",
+      "prompt": "A transformer is used to:",
+      "options": [
+        "Generate electricity",
+        "Change the voltage of AC",
+        "Store electrical energy",
+        "Convert AC into DC"
+      ],
+      "answer": 1,
+      "explanation": "A transformer changes the voltage of alternating current (step-up or step-down).",
+      "difficulty": "medium",
+      "id": "q96"
+    },
+    {
+      "type": "mcq",
+      "prompt": "When a ray of light enters a denser medium, it bends:",
+      "options": [
+        "Away from the normal",
+        "Towards the normal",
+        "Along the normal",
+        "It does not bend"
+      ],
+      "answer": 1,
+      "explanation": "Light bends towards the normal when entering a denser medium, e.g. from air to water.",
+      "difficulty": "medium",
+      "id": "q97"
+    },
+    {
+      "type": "mcq",
+      "prompt": "A person's weight is less on the Moon because:",
+      "options": [
+        "The Moon has less mass than the Earth",
+        "The Moon has weaker gravity than the Earth",
+        "The Moon has no atmosphere",
+        "The Moon is far from the Sun"
+      ],
+      "answer": 1,
+      "explanation": "The Moon's gravity is about one-sixth of Earth's, so weight (mg) is about one-sixth.",
+      "difficulty": "easy",
+      "id": "q98"
+    },
+    {
+      "type": "mcq",
+      "prompt": "An electric motor converts:",
+      "options": [
+        "Mechanical energy into electrical energy",
+        "Electrical energy into mechanical energy",
+        "Heat energy into electrical energy",
+        "Light energy into electrical energy"
+      ],
+      "answer": 1,
+      "explanation": "A motor converts electrical energy into mechanical energy; a generator does the reverse.",
+      "difficulty": "easy",
+      "id": "q99"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The loudness of sound depends on its:",
+      "options": [
+        "Frequency",
+        "Amplitude",
+        "Speed",
+        "Wavelength"
+      ],
+      "answer": 1,
+      "explanation": "Loudness depends on the amplitude of the sound wave; pitch depends on frequency.",
+      "difficulty": "easy",
+      "id": "q100"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which type of mirror is used in a shaving mirror?",
+      "options": [
+        "Plane mirror",
+        "Convex mirror",
+        "Concave mirror",
+        "Cylindrical mirror"
+      ],
+      "answer": 2,
+      "explanation": "A concave mirror forms a magnified, erect image when the face is held close, which is ideal for shaving.",
+      "difficulty": "medium",
+      "id": "q101"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The SI unit of luminous intensity is?",
+      "options": [
+        "Candela",
+        "Lumen",
+        "Lux",
+        "Weber"
+      ],
+      "answer": 0,
+      "explanation": "Luminous intensity is measured in candelas (cd), one of the seven SI base units.",
+      "difficulty": "easy",
+      "id": "q102"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The SI unit of magnetic flux is?",
+      "options": [
+        "Weber",
+        "Tesla",
+        "Gauss",
+        "Henry"
+      ],
+      "answer": 0,
+      "explanation": "Magnetic flux is measured in webers (Wb); flux density is measured in teslas.",
+      "difficulty": "medium",
+      "id": "q103"
+    },
+    {
+      "type": "mcq",
+      "prompt": "A fuse wire is generally made of an alloy of?",
+      "options": [
+        "Tin and lead",
+        "Copper and zinc",
+        "Aluminium and iron",
+        "Silver and gold"
+      ],
+      "answer": 0,
+      "explanation": "Fuse wire uses a tin-lead alloy with a low melting point so it melts and breaks the circuit on overload.",
+      "difficulty": "medium",
+      "id": "q104"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The SI unit of capacitance is?",
+      "options": [
+        "Farad",
+        "Ohm",
+        "Henry",
+        "Weber"
+      ],
+      "answer": 0,
+      "explanation": "Capacitance is measured in farads (F).",
+      "difficulty": "easy",
+      "id": "q105"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The SI unit of inductance is?",
+      "options": [
+        "Henry",
+        "Farad",
+        "Tesla",
+        "Gauss"
+      ],
+      "answer": 0,
+      "explanation": "Inductance is measured in henries (H).",
+      "difficulty": "medium",
+      "id": "q106"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which substance has the highest specific heat capacity?",
+      "options": [
+        "Water",
+        "Sand",
+        "Iron",
+        "Mercury"
+      ],
+      "answer": 0,
+      "explanation": "Water has a high specific heat capacity of about 4200 J per kg per kelvin, which is why it is used as a coolant.",
+      "difficulty": "medium",
+      "id": "q107"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Convection is the main mode of heat transfer in?",
+      "options": [
+        "Liquids and gases",
+        "Solids only",
+        "Vacuum",
+        "Metals"
+      ],
+      "answer": 0,
+      "explanation": "Convection transfers heat through the bulk movement of fluids, that is liquids and gases.",
+      "difficulty": "easy",
+      "id": "q108"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Heat from the Sun reaches the Earth by?",
+      "options": [
+        "Radiation",
+        "Conduction",
+        "Convection",
+        "All of these"
+      ],
+      "answer": 0,
+      "explanation": "Radiation does not require a medium, so the Sun's heat crosses empty space by radiation.",
+      "difficulty": "easy",
+      "id": "q109"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which device is used to detect the presence of electric charge?",
+      "options": [
+        "Electroscope",
+        "Voltmeter",
+        "Galvanometer",
+        "Ammeter"
+      ],
+      "answer": 0,
+      "explanation": "An electroscope indicates electric charge by the divergence of its gold leaves.",
+      "difficulty": "medium",
+      "id": "q110"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What is the frequency of AC mains supply in Pakistan?",
+      "options": [
+        "50 Hz",
+        "60 Hz",
+        "100 Hz",
+        "25 Hz"
+      ],
+      "answer": 0,
+      "explanation": "Pakistan's AC mains supply runs at 50 hertz, like most of Europe and Asia.",
+      "difficulty": "easy",
+      "id": "q111"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Sound waves cannot travel through?",
+      "options": [
+        "Vacuum",
+        "Air",
+        "Water",
+        "Steel"
+      ],
+      "answer": 0,
+      "explanation": "Sound needs a material medium; it cannot travel through a vacuum.",
+      "difficulty": "easy",
+      "id": "q112"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which mirror is used in the headlights of vehicles?",
+      "options": [
+        "Concave mirror",
+        "Convex mirror",
+        "Plane mirror",
+        "Parabolic mirror"
+      ],
+      "answer": 0,
+      "explanation": "A concave mirror behind the bulb reflects a parallel beam of light ahead of the vehicle.",
+      "difficulty": "medium",
+      "id": "q113"
+    },
+    {
+      "type": "mcq",
+      "prompt": "A body is said to be in equilibrium when the net force acting on it is?",
+      "options": [
+        "Zero",
+        "Maximum",
+        "Constant",
+        "Increasing"
+      ],
+      "answer": 0,
+      "explanation": "In equilibrium the vector sum of all forces and torques acting on a body is zero.",
+      "difficulty": "medium",
+      "id": "q114"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The turning effect of a force about a point is called?",
+      "options": [
+        "Moment of force (torque)",
+        "Pressure",
+        "Impulse",
+        "Momentum"
+      ],
+      "answer": 0,
+      "explanation": "Torque, or moment of force, is the product of force and the perpendicular distance from the pivot.",
+      "difficulty": "easy",
+      "id": "q115"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which instrument measures the depth of the sea using sound waves?",
+      "options": [
+        "Fathometer",
+        "Barometer",
+        "Hydrometer",
+        "Sextant"
+      ],
+      "answer": 0,
+      "explanation": "A fathometer sends sound pulses to the seabed and measures the echo time to find depth.",
+      "difficulty": "medium",
+      "id": "q116"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The SI unit of plane angle is?",
+      "options": [
+        "Radian",
+        "Steradian",
+        "Degree",
+        "Gradian"
+      ],
+      "answer": 0,
+      "explanation": "The radian (rad) is the SI unit of plane angle.",
+      "difficulty": "easy",
+      "id": "q117"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The SI unit of solid angle is?",
+      "options": [
+        "Steradian",
+        "Radian",
+        "Degree",
+        "Candela"
+      ],
+      "answer": 0,
+      "explanation": "The steradian (sr) is the SI unit of solid angle.",
+      "difficulty": "hard",
+      "id": "q118"
+    },
+    {
+      "type": "mcq",
+      "prompt": "A sound wave is an example of a?",
+      "options": [
+        "Longitudinal wave",
+        "Transverse wave",
+        "Standing wave",
+        "Surface wave"
+      ],
+      "answer": 0,
+      "explanation": "In sound, particles vibrate parallel to the direction of propagation, so sound is a longitudinal wave.",
+      "difficulty": "easy",
+      "id": "q119"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The formation of a mirage is due to?",
+      "options": [
+        "Total internal reflection of light",
+        "Dispersion of light",
+        "Diffraction of light",
+        "Polarisation of light"
+      ],
+      "answer": 0,
+      "explanation": "A mirage appears when light is totally internally reflected by hot, less dense layers of air near the ground.",
+      "difficulty": "hard",
+      "id": "q120"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which force opposes the relative motion of two surfaces in contact?",
+      "options": [
+        "Friction",
+        "Gravity",
+        "Tension",
+        "Thrust"
+      ],
+      "answer": 0,
+      "explanation": "Friction always opposes the relative sliding motion between two surfaces in contact.",
+      "difficulty": "easy",
+      "id": "q121"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The strength of an electromagnet can be increased by?",
+      "options": [
+        "Increasing the number of turns of the coil",
+        "Decreasing the current",
+        "Removing the core",
+        "Using a longer wire"
+      ],
+      "answer": 0,
+      "explanation": "Field strength rises with more turns of wire, a larger current and a soft iron core.",
+      "difficulty": "medium",
+      "id": "q122"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Kilowatt-hour (kWh) is a unit of?",
+      "options": [
+        "Energy",
+        "Power",
+        "Force",
+        "Pressure"
+      ],
+      "answer": 0,
+      "explanation": "The kilowatt-hour is the commercial unit of electrical energy.",
+      "difficulty": "medium",
+      "id": "q123"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The motion of a swinging pendulum is an example of?",
+      "options": [
+        "Periodic motion",
+        "Random motion",
+        "Translatory motion",
+        "Linear motion"
+      ],
+      "answer": 0,
+      "explanation": "A pendulum repeats its motion at regular intervals, which is periodic motion.",
+      "difficulty": "easy",
+      "id": "q124"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which lens converges parallel rays of light to a single point?",
+      "options": [
+        "Convex lens",
+        "Concave lens",
+        "Plane glass",
+        "Cylindrical lens"
+      ],
+      "answer": 0,
+      "explanation": "A convex (converging) lens brings parallel rays of light to a focus.",
+      "difficulty": "easy",
+      "id": "q125"
+    },
+    {
+      "type": "mcq",
+      "prompt": "An electric iron works on which effect of electric current?",
+      "options": [
+        "Heating effect",
+        "Magnetic effect",
+        "Chemical effect",
+        "All of these"
+      ],
+      "answer": 0,
+      "explanation": "The heating effect of current is used in electric irons, heaters and toasters.",
+      "difficulty": "easy",
+      "id": "q126"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The magnetic effect of an electric current was discovered by?",
+      "options": [
+        "Hans Christian Oersted",
+        "Michael Faraday",
+        "James Watt",
+        "Thomas Edison"
+      ],
+      "answer": 0,
+      "explanation": "In 1820 Oersted found that a current-carrying wire deflects a compass needle, showing the magnetic effect of current.",
+      "difficulty": "medium",
+      "id": "q127"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which colour of light is deviated the most when white light passes through a prism?",
+      "options": [
+        "Violet",
+        "Red",
+        "Yellow",
+        "Green"
+      ],
+      "answer": 0,
+      "explanation": "Violet has the shortest wavelength and is deviated most during dispersion.",
+      "difficulty": "easy",
+      "id": "q128"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The focal length (f) of a spherical mirror is related to its radius of curvature (R) by?",
+      "options": [
+        "f = R/2",
+        "f = 2R",
+        "f = R",
+        "f = R/4"
+      ],
+      "answer": 0,
+      "explanation": "The focus lies halfway between the pole and the centre of curvature, so f = R/2.",
+      "difficulty": "medium",
+      "id": "q129"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The image formed on a cinema screen is?",
+      "options": [
+        "Real and inverted",
+        "Virtual and erect",
+        "Real and erect",
+        "Virtual and inverted"
+      ],
+      "answer": 0,
+      "explanation": "A projector forms a real, inverted image on the screen, which appears upright to the audience.",
+      "difficulty": "medium",
+      "id": "q130"
+    }
+  ]
+}

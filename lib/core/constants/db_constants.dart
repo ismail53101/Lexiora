@@ -45,19 +45,22 @@ abstract final class DbConstants {
   static const int schemaVersion = 16;
 }
 
-/// Constants for the Quiz Engine's one-time demo seed.
+/// Constants for the Quiz Engine's bundled content seed.
 ///
-/// The demo ships a handful of bundled sample subjects/topics/quizzes so the
-/// subject-first learning workflow is visible out of the box. It is seeded once
-/// into the normal quiz tables as read-only published content the app consumes;
-/// the app never authors content. Bumping [datasetVersion] re-seeds ONLY the
-/// demo rows (tagged by source 'demo'), never user attempt history.
+/// Real exam banks ship as JSON under `assets/quiz/` (see the
+/// `LocalJsonQuestionProvider` and `QuizJsonParser` schema) and are seeded once
+/// into the normal quiz tables as published content the app consumes; the app
+/// never authors content. Bumping [datasetVersion] re-seeds the bundled banks
+/// and removes the legacy demo rows, never user attempt history.
 abstract final class QuizConstants {
   static const String seedVersionKey = 'quiz_demo_seed_version';
-  static const String datasetVersion = 'quiz-demo-2026.07-v1';
+  static const String datasetVersion = 'quiz-bundled-2026.08-v24';
 
-  /// Bank/subject `source` tag marking rows created by the demo seeder.
+  /// Bank/subject `source` tag marking rows created by the old demo seeder.
   static const String demoSource = 'demo';
+
+  /// Bank/subject `source` tag for content seeded from `assets/quiz/`.
+  static const String bundledSource = 'bundled';
 }
 
 /// Constants for the AI Assistant module (Phase v0.10.0).

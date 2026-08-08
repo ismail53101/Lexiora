@@ -1,0 +1,1091 @@
+{
+  "bank": {
+    "name": "Antonyms",
+    "subject": "English",
+    "topic": "Antonyms",
+    "description": "Choose the word opposite in meaning to the given word.",
+    "tags": "css,pms,fpsc,ppsc,nts,english,antonyms",
+    "version": "1.0",
+    "id": "english_antonyms"
+  },
+  "questions": [
+    {
+      "type": "mcq",
+      "prompt": "Choose the antonym of 'happy'.",
+      "options": [
+        "Joyful",
+        "Cheerful",
+        "Sad",
+        "Glad"
+      ],
+      "answer": 2,
+      "explanation": "Sad is the opposite of happy.",
+      "difficulty": "easy",
+      "id": "q01"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Choose the antonym of 'begin'.",
+      "options": [
+        "Start",
+        "End",
+        "Launch",
+        "Commence"
+      ],
+      "answer": 1,
+      "explanation": "End is the opposite of begin.",
+      "difficulty": "easy",
+      "id": "q02"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Choose the antonym of 'brave'.",
+      "options": [
+        "Courageous",
+        "Bold",
+        "Cowardly",
+        "Fearless"
+      ],
+      "answer": 2,
+      "explanation": "Cowardly is the opposite of brave.",
+      "difficulty": "easy",
+      "id": "q03"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Choose the antonym of 'clever'.",
+      "options": [
+        "Intelligent",
+        "Foolish",
+        "Smart",
+        "Bright"
+      ],
+      "answer": 1,
+      "explanation": "Foolish is the opposite of clever.",
+      "difficulty": "easy",
+      "id": "q04"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Choose the antonym of 'rich'.",
+      "options": [
+        "Wealthy",
+        "Affluent",
+        "Poor",
+        "Prosperous"
+      ],
+      "answer": 2,
+      "explanation": "Poor is the opposite of rich.",
+      "difficulty": "easy",
+      "id": "q05"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Choose the antonym of 'ancient'.",
+      "options": [
+        "Old",
+        "Modern",
+        "Antique",
+        "Aged"
+      ],
+      "answer": 1,
+      "explanation": "Modern is the opposite of ancient.",
+      "difficulty": "easy",
+      "id": "q06"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Choose the antonym of 'permanent'.",
+      "options": [
+        "Eternal",
+        "Temporary",
+        "Constant",
+        "Lasting"
+      ],
+      "answer": 1,
+      "explanation": "Temporary is the opposite of permanent.",
+      "difficulty": "easy",
+      "id": "q07"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Choose the antonym of 'expand'.",
+      "options": [
+        "Grow",
+        "Contract",
+        "Enlarge",
+        "Increase"
+      ],
+      "answer": 1,
+      "explanation": "Contract is the opposite of expand.",
+      "difficulty": "easy",
+      "id": "q08"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Choose the antonym of 'transparent'.",
+      "options": [
+        "Clear",
+        "Opaque",
+        "See-through",
+        "Crystal"
+      ],
+      "answer": 1,
+      "explanation": "Opaque is the opposite of transparent.",
+      "difficulty": "medium",
+      "id": "q09"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Choose the antonym of 'artificial'.",
+      "options": [
+        "Synthetic",
+        "Fake",
+        "Natural",
+        "Man-made"
+      ],
+      "answer": 2,
+      "explanation": "Natural is the opposite of artificial.",
+      "difficulty": "medium",
+      "id": "q10"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Choose the antonym of 'majority'.",
+      "options": [
+        "Bulk",
+        "Minority",
+        "Most",
+        "Greater part"
+      ],
+      "answer": 1,
+      "explanation": "Minority is the opposite of majority.",
+      "difficulty": "medium",
+      "id": "q11"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Choose the antonym of 'optimist'.",
+      "options": [
+        "Hopeful",
+        "Pessimist",
+        "Positive",
+        "Cheerful"
+      ],
+      "answer": 1,
+      "explanation": "A pessimist is the opposite of an optimist.",
+      "difficulty": "medium",
+      "id": "q12"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Choose the antonym of 'conceal'.",
+      "options": [
+        "Hide",
+        "Reveal",
+        "Cover",
+        "Mask"
+      ],
+      "answer": 1,
+      "explanation": "Reveal is the opposite of conceal.",
+      "difficulty": "medium",
+      "id": "q13"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Choose the antonym of 'vague'.",
+      "options": [
+        "Unclear",
+        "Hazy",
+        "Precise",
+        "Ambiguous"
+      ],
+      "answer": 2,
+      "explanation": "Precise is the opposite of vague.",
+      "difficulty": "hard",
+      "id": "q14"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Choose the antonym of 'reluctant'.",
+      "options": [
+        "Unwilling",
+        "Hesitant",
+        "Eager",
+        "Averse"
+      ],
+      "answer": 2,
+      "explanation": "Eager is the opposite of reluctant.",
+      "difficulty": "hard",
+      "id": "q15"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Choose the antonym of 'adversity'.",
+      "options": [
+        "Hardship",
+        "Misfortune",
+        "Prosperity",
+        "Trouble"
+      ],
+      "answer": 2,
+      "explanation": "Prosperity is the opposite of adversity.",
+      "difficulty": "hard",
+      "id": "q16"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Choose the antonym of 'acquit'.",
+      "options": [
+        "Clear",
+        "Exonerate",
+        "Convict",
+        "Absolve"
+      ],
+      "answer": 2,
+      "explanation": "To convict is the opposite of to acquit.",
+      "difficulty": "hard",
+      "id": "q17"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Choose the antonym of 'gradual'.",
+      "options": [
+        "Slow",
+        "Steady",
+        "Sudden",
+        "Progressive"
+      ],
+      "answer": 2,
+      "explanation": "Sudden is the opposite of gradual.",
+      "difficulty": "medium",
+      "id": "q18"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Choose the antonym of 'sluggish'.",
+      "options": [
+        "Lethargic",
+        "Energetic",
+        "Lazy",
+        "Slow"
+      ],
+      "answer": 1,
+      "explanation": "Energetic is the opposite of sluggish.",
+      "difficulty": "hard",
+      "id": "q19"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Choose the antonym of 'barren'.",
+      "options": [
+        "Fertile",
+        "Sterile",
+        "Bare",
+        "Empty"
+      ],
+      "answer": 0,
+      "explanation": "Fertile is the opposite of barren.",
+      "difficulty": "medium",
+      "id": "q20"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Choose the antonym of 'frequent'.",
+      "options": [
+        "Regular",
+        "Rare",
+        "Common",
+        "Recurrent"
+      ],
+      "answer": 1,
+      "explanation": "Rare is the opposite of frequent.",
+      "difficulty": "medium",
+      "id": "q21"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Choose the antonym of 'import'.",
+      "options": [
+        "Bring in",
+        "Export",
+        "Receive",
+        "Admit"
+      ],
+      "answer": 1,
+      "explanation": "To export is the opposite of to import.",
+      "difficulty": "easy",
+      "id": "q22"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Choose the antonym of 'ascend'.",
+      "options": [
+        "Climb",
+        "Rise",
+        "Descend",
+        "Soar"
+      ],
+      "answer": 2,
+      "explanation": "Descend is the opposite of ascend.",
+      "difficulty": "medium",
+      "id": "q23"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Choose the antonym of 'diligent'.",
+      "options": [
+        "Industrious",
+        "Hardworking",
+        "Lazy",
+        "Assiduous"
+      ],
+      "answer": 2,
+      "explanation": "Lazy is the opposite of diligent.",
+      "difficulty": "hard",
+      "id": "q24"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Choose the antonym of 'recede'.",
+      "options": [
+        "Retreat",
+        "Advance",
+        "Withdraw",
+        "Ebb"
+      ],
+      "answer": 1,
+      "explanation": "To advance is the opposite of to recede.",
+      "difficulty": "hard",
+      "id": "q25"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Choose the antonym of 'brilliant'.",
+      "options": [
+        "Bright",
+        "Dull",
+        "Sparkling",
+        "Radiant"
+      ],
+      "answer": 1,
+      "explanation": "Dull is the opposite of brilliant.",
+      "difficulty": "easy",
+      "id": "q26"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Antonym of 'victory':",
+      "options": [
+        "defeat",
+        "success",
+        "triumph",
+        "prize"
+      ],
+      "answer": 0,
+      "explanation": "Victory means winning; defeat is the opposite.",
+      "difficulty": "easy",
+      "id": "q27"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Antonym of 'minor':",
+      "options": [
+        "major",
+        "small",
+        "young",
+        "few"
+      ],
+      "answer": 0,
+      "explanation": "Minor means lesser in importance; major is its opposite.",
+      "difficulty": "easy",
+      "id": "q28"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Antonym of 'honest':",
+      "options": [
+        "deceitful",
+        "truthful",
+        "fair",
+        "sincere"
+      ],
+      "answer": 0,
+      "explanation": "Honest means truthful; deceitful is its opposite.",
+      "difficulty": "easy",
+      "id": "q29"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Antonym of 'generous':",
+      "options": [
+        "stingy",
+        "kind",
+        "giving",
+        "noble"
+      ],
+      "answer": 0,
+      "explanation": "Generous means giving freely; stingy means unwilling to give.",
+      "difficulty": "easy",
+      "id": "q30"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Antonym of 'scarce':",
+      "options": [
+        "plentiful",
+        "rare",
+        "limited",
+        "insufficient"
+      ],
+      "answer": 0,
+      "explanation": "Scarce means in short supply; plentiful is its opposite.",
+      "difficulty": "easy",
+      "id": "q31"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Antonym of 'descend':",
+      "options": [
+        "ascend",
+        "fall",
+        "drop",
+        "sink"
+      ],
+      "answer": 0,
+      "explanation": "Descend means to go down; ascend means to go up.",
+      "difficulty": "easy",
+      "id": "q32"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Antonym of 'amateur':",
+      "options": [
+        "professional",
+        "beginner",
+        "novice",
+        "learner"
+      ],
+      "answer": 0,
+      "explanation": "Amateur means non-professional; professional is its opposite.",
+      "difficulty": "easy",
+      "id": "q33"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Antonym of 'surrender':",
+      "options": [
+        "resist",
+        "yield",
+        "submit",
+        "capitulate"
+      ],
+      "answer": 0,
+      "explanation": "Surrender means to give up; resist is the opposite.",
+      "difficulty": "medium",
+      "id": "q34"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Antonym of 'increase':",
+      "options": [
+        "decrease",
+        "grow",
+        "expand",
+        "rise"
+      ],
+      "answer": 0,
+      "explanation": "Increase means to grow; decrease is its opposite.",
+      "difficulty": "easy",
+      "id": "q35"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Antonym of 'capture':",
+      "options": [
+        "release",
+        "seize",
+        "catch",
+        "arrest"
+      ],
+      "answer": 0,
+      "explanation": "Capture means to seize; release is its opposite.",
+      "difficulty": "easy",
+      "id": "q36"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Antonym of 'clarity':",
+      "options": [
+        "confusion",
+        "precision",
+        "lucidity",
+        "certainty"
+      ],
+      "answer": 0,
+      "explanation": "Clarity means clearness; confusion is its opposite.",
+      "difficulty": "medium",
+      "id": "q37"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Antonym of 'harsh':",
+      "options": [
+        "gentle",
+        "severe",
+        "rough",
+        "cruel"
+      ],
+      "answer": 0,
+      "explanation": "Harsh means severe or rough; gentle is its opposite.",
+      "difficulty": "easy",
+      "id": "q38"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Antonym of 'triumph':",
+      "options": [
+        "defeat",
+        "victory",
+        "success",
+        "win"
+      ],
+      "answer": 0,
+      "explanation": "Triumph means victory; defeat is its opposite.",
+      "difficulty": "easy",
+      "id": "q39"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Antonym of 'sorrow':",
+      "options": [
+        "joy",
+        "grief",
+        "sadness",
+        "misery"
+      ],
+      "answer": 0,
+      "explanation": "Sorrow means sadness; joy is its opposite.",
+      "difficulty": "easy",
+      "id": "q40"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Antonym of 'emerge':",
+      "options": [
+        "disappear",
+        "appear",
+        "arise",
+        "surface"
+      ],
+      "answer": 0,
+      "explanation": "Emerge means to come into view; disappear is its opposite.",
+      "difficulty": "medium",
+      "id": "q41"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Antonym of 'positive':",
+      "options": [
+        "negative",
+        "sure",
+        "certain",
+        "optimistic"
+      ],
+      "answer": 0,
+      "explanation": "Positive means certain or good; negative is its opposite.",
+      "difficulty": "easy",
+      "id": "q42"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Antonym of 'capable':",
+      "options": [
+        "incompetent",
+        "able",
+        "skilled",
+        "proficient"
+      ],
+      "answer": 0,
+      "explanation": "Capable means able; incompetent is its opposite.",
+      "difficulty": "medium",
+      "id": "q43"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Antonym of 'dull':",
+      "options": [
+        "bright",
+        "dim",
+        "gloomy",
+        "cloudy"
+      ],
+      "answer": 0,
+      "explanation": "Dull means not bright; bright is its opposite.",
+      "difficulty": "easy",
+      "id": "q44"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Antonym of 'rare':",
+      "options": [
+        "common",
+        "scarce",
+        "unusual",
+        "unique"
+      ],
+      "answer": 0,
+      "explanation": "Rare means uncommon; common is its opposite.",
+      "difficulty": "easy",
+      "id": "q45"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Antonym of 'obedient':",
+      "options": [
+        "disobedient",
+        "compliant",
+        "docile",
+        "submissive"
+      ],
+      "answer": 0,
+      "explanation": "Obedient means compliant; disobedient is its opposite.",
+      "difficulty": "easy",
+      "id": "q46"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Antonym of 'rigid':",
+      "options": [
+        "flexible",
+        "stiff",
+        "hard",
+        "stubborn"
+      ],
+      "answer": 0,
+      "explanation": "Rigid means stiff; flexible is its opposite.",
+      "difficulty": "easy",
+      "id": "q47"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Antonym of 'accept':",
+      "options": [
+        "reject",
+        "receive",
+        "welcome",
+        "approve"
+      ],
+      "answer": 0,
+      "explanation": "Accept means to take willingly; reject is its opposite.",
+      "difficulty": "easy",
+      "id": "q48"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Antonym of 'compel':",
+      "options": [
+        "persuade freely",
+        "force",
+        "oblige",
+        "coerce"
+      ],
+      "answer": 0,
+      "explanation": "Compel means to force; persuade freely is its opposite.",
+      "difficulty": "hard",
+      "id": "q49"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Antonym of 'abandon':",
+      "options": [
+        "keep",
+        "desert",
+        "forsake",
+        "leave"
+      ],
+      "answer": 0,
+      "explanation": "Abandon means to leave behind; keep is its opposite.",
+      "difficulty": "easy",
+      "id": "q50"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Antonym of 'severe':",
+      "options": [
+        "mild",
+        "harsh",
+        "intense",
+        "strict"
+      ],
+      "answer": 0,
+      "explanation": "Severe means intense; mild is its opposite.",
+      "difficulty": "easy",
+      "id": "q51"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Antonym of 'genuine':",
+      "options": [
+        "counterfeit",
+        "authentic",
+        "real",
+        "true"
+      ],
+      "answer": 0,
+      "explanation": "Genuine means real; counterfeit is its opposite.",
+      "difficulty": "medium",
+      "id": "q52"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Antonym of 'adequate':",
+      "options": [
+        "insufficient",
+        "enough",
+        "sufficient",
+        "ample"
+      ],
+      "answer": 0,
+      "explanation": "Adequate means sufficient; insufficient is its opposite.",
+      "difficulty": "medium",
+      "id": "q53"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Antonym of 'fragile':",
+      "options": [
+        "durable",
+        "delicate",
+        "brittle",
+        "weak"
+      ],
+      "answer": 0,
+      "explanation": "Fragile means easily broken; durable is its opposite.",
+      "difficulty": "easy",
+      "id": "q54"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Antonym of 'humble':",
+      "options": [
+        "arrogant",
+        "modest",
+        "simple",
+        "meek"
+      ],
+      "answer": 0,
+      "explanation": "Humble means modest; arrogant is its opposite.",
+      "difficulty": "easy",
+      "id": "q55"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Antonym of 'explicit':",
+      "options": [
+        "ambiguous",
+        "clear",
+        "precise",
+        "specific"
+      ],
+      "answer": 0,
+      "explanation": "Explicit means clearly stated; ambiguous is its opposite.",
+      "difficulty": "medium",
+      "id": "q56"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Antonym of 'cautious':",
+      "options": [
+        "careless",
+        "careful",
+        "wary",
+        "vigilant"
+      ],
+      "answer": 0,
+      "explanation": "Cautious means careful; careless is its opposite.",
+      "difficulty": "easy",
+      "id": "q57"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Antonym of 'courage':",
+      "options": [
+        "cowardice",
+        "bravery",
+        "valour",
+        "boldness"
+      ],
+      "answer": 0,
+      "explanation": "Courage means bravery; cowardice is its opposite.",
+      "difficulty": "easy",
+      "id": "q58"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Antonym of 'abundant':",
+      "options": [
+        "scarce",
+        "plentiful",
+        "ample",
+        "copious"
+      ],
+      "answer": 0,
+      "explanation": "Abundant means plentiful; scarce is its opposite.",
+      "difficulty": "easy",
+      "id": "q59"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Antonym of 'courteous':",
+      "options": [
+        "rude",
+        "polite",
+        "gracious",
+        "kind"
+      ],
+      "answer": 0,
+      "explanation": "Courteous means polite; rude is its opposite.",
+      "difficulty": "easy",
+      "id": "q60"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Antonym of 'vacant':",
+      "options": [
+        "occupied",
+        "empty",
+        "bare",
+        "hollow"
+      ],
+      "answer": 0,
+      "explanation": "Vacant means empty; occupied is its opposite.",
+      "difficulty": "easy",
+      "id": "q61"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Antonym of 'flexible':",
+      "options": [
+        "rigid",
+        "bendable",
+        "adaptable",
+        "elastic"
+      ],
+      "answer": 0,
+      "explanation": "Flexible means easily bent; rigid is its opposite.",
+      "difficulty": "medium",
+      "id": "q62"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Antonym of 'wasteful':",
+      "options": [
+        "economical",
+        "lavish",
+        "extravagant",
+        "spendthrift"
+      ],
+      "answer": 0,
+      "explanation": "Wasteful means extravagant; economical is its opposite.",
+      "difficulty": "medium",
+      "id": "q63"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Antonym of 'authentic':",
+      "options": [
+        "counterfeit",
+        "genuine",
+        "real",
+        "original"
+      ],
+      "answer": 0,
+      "explanation": "Authentic means genuine; counterfeit is its opposite.",
+      "difficulty": "medium",
+      "id": "q64"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Antonym of 'admire':",
+      "options": [
+        "despise",
+        "respect",
+        "praise",
+        "honour"
+      ],
+      "answer": 0,
+      "explanation": "Admire means to respect; despise is its opposite.",
+      "difficulty": "easy",
+      "id": "q65"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Antonym of 'major':",
+      "options": [
+        "minor",
+        "chief",
+        "principal",
+        "primary"
+      ],
+      "answer": 0,
+      "explanation": "Major means greater; minor is its opposite.",
+      "difficulty": "easy",
+      "id": "q66"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Antonym of 'compulsory':",
+      "options": [
+        "optional",
+        "mandatory",
+        "required",
+        "obligatory"
+      ],
+      "answer": 0,
+      "explanation": "Compulsory means required; optional is its opposite.",
+      "difficulty": "easy",
+      "id": "q67"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Antonym of 'peaceful':",
+      "options": [
+        "violent",
+        "calm",
+        "tranquil",
+        "serene"
+      ],
+      "answer": 0,
+      "explanation": "Peaceful means calm; violent is its opposite.",
+      "difficulty": "easy",
+      "id": "q68"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Antonym of 'arrive':",
+      "options": [
+        "depart",
+        "come",
+        "reach",
+        "appear"
+      ],
+      "answer": 0,
+      "explanation": "Arrive means to reach; depart is its opposite.",
+      "difficulty": "easy",
+      "id": "q69"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Antonym of 'deliberate':",
+      "options": [
+        "accidental",
+        "intentional",
+        "planned",
+        "purposeful"
+      ],
+      "answer": 0,
+      "explanation": "Deliberate means on purpose; accidental is its opposite.",
+      "difficulty": "medium",
+      "id": "q70"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Antonym of 'include':",
+      "options": [
+        "exclude",
+        "contain",
+        "embrace",
+        "cover"
+      ],
+      "answer": 0,
+      "explanation": "Include means to take in; exclude is its opposite.",
+      "difficulty": "easy",
+      "id": "q71"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Antonym of 'widen':",
+      "options": [
+        "narrow",
+        "broaden",
+        "extend",
+        "expand"
+      ],
+      "answer": 0,
+      "explanation": "Widen means to broaden; narrow is its opposite.",
+      "difficulty": "easy",
+      "id": "q72"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Antonym of 'despair':",
+      "options": [
+        "hope",
+        "gloom",
+        "sorrow",
+        "misery"
+      ],
+      "answer": 0,
+      "explanation": "Despair means loss of hope; hope is its opposite.",
+      "difficulty": "easy",
+      "id": "q73"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Antonym of 'punctual':",
+      "options": [
+        "late",
+        "prompt",
+        "timely",
+        "on time"
+      ],
+      "answer": 0,
+      "explanation": "Punctual means on time; late is its opposite.",
+      "difficulty": "easy",
+      "id": "q74"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Antonym of 'comprehensive':",
+      "options": [
+        "limited",
+        "complete",
+        "thorough",
+        "extensive"
+      ],
+      "answer": 0,
+      "explanation": "Comprehensive means covering everything; limited is its opposite.",
+      "difficulty": "medium",
+      "id": "q75"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Antonym of 'reveal':",
+      "options": [
+        "conceal",
+        "disclose",
+        "expose",
+        "unveil"
+      ],
+      "answer": 0,
+      "explanation": "Reveal means to make known; conceal is its opposite.",
+      "difficulty": "easy",
+      "id": "q76"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Antonym of 'optimistic':",
+      "options": [
+        "pessimistic",
+        "hopeful",
+        "cheerful",
+        "positive"
+      ],
+      "answer": 0,
+      "explanation": "Optimistic means hopeful; pessimistic is its opposite.",
+      "difficulty": "easy",
+      "id": "q77"
+    }
+  ]
+}

@@ -1,5 +1,7 @@
 import 'package:lexiora/modules/quiz/domain/entities/quiz_bank.dart';
 import 'package:lexiora/modules/quiz/domain/entities/quiz_content.dart';
+import 'package:lexiora/modules/quiz/domain/entities/quiz_question.dart';
+import 'package:lexiora/modules/quiz/domain/quiz_duplicate_check.dart';
 
 /// Hidden Admin architecture (no UI in this version).
 ///
@@ -26,6 +28,17 @@ abstract interface class QuizAdminRepository {
     String jsonText, {
     ImportStrategy strategy,
     String? fallbackName,
+  });
+
+  /// Saves [candidates] into [bankId], but ONLY the ones that pass the
+  /// duplicate-prevention check against the ENTIRE existing question bank
+  /// (exact, reworded, same-concept, same-question-with-different/reordered
+  /// options). Duplicates are rejected and reported; existing questions are
+  /// never modified or duplicated. Uniqueness wins over quantity: if the
+  /// candidates contain duplicates, fewer questions are saved than requested.
+  Future<QuizDedupReport> addGeneratedQuestions({
+    required String bankId,
+    required List<QuizQuestion> candidates,
   });
 
   /// Imports raw JSON and files the resulting bank + questions under the given

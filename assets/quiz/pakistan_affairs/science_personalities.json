@@ -1,0 +1,1833 @@
+{
+  "bank": {
+    "name": "Science & Personalities",
+    "subject": "Pakistan Affairs",
+    "topic": "Science & Personalities",
+    "description": "Pakistan's scientists, Nobel laureates and national figures who shaped science, education and social progress.",
+    "tags": "css,pms,fpsc,pakistan-affairs,science,personalities",
+    "version": "1.0",
+    "id": "pakistan_affairs_science_personalities"
+  },
+  "questions": [
+    {
+      "type": "mcq",
+      "prompt": "Dr. Abdus Salam won the Nobel Prize in Physics in which year?",
+      "options": [
+        "1968",
+        "1979",
+        "1988",
+        "1998"
+      ],
+      "answer": 1,
+      "explanation": "Abdus Salam shared the 1979 Nobel Prize in Physics for the electroweak theory.",
+      "difficulty": "easy",
+      "id": "q01"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Abdus Salam is best known for his contribution to which theory?",
+      "options": [
+        "Theory of relativity",
+        "Electroweak unification",
+        "Quantum gravity",
+        "String theory"
+      ],
+      "answer": 1,
+      "explanation": "Salam (with Glashow and Weinberg) unified the electromagnetic and weak forces.",
+      "difficulty": "medium",
+      "id": "q02"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Dr. Mahbub ul Haq is famous for developing which measure?",
+      "options": [
+        "Gross Domestic Product",
+        "Human Development Index (HDI)",
+        "Multidimensional Poverty Index",
+        "Purchasing Power Parity"
+      ],
+      "answer": 1,
+      "explanation": "Mahbub ul Haq created the Human Development Index used by the UNDP.",
+      "difficulty": "medium",
+      "id": "q03"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Malala Yousafzai won the Nobel Peace Prize in which year?",
+      "options": [
+        "2011",
+        "2012",
+        "2013",
+        "2014"
+      ],
+      "answer": 3,
+      "explanation": "Malala shared the 2014 Nobel Peace Prize with Kailash Satyarthi.",
+      "difficulty": "easy",
+      "id": "q04"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Malala Yousafzai is a native of which region?",
+      "options": [
+        "Swabi",
+        "Swat",
+        "Chitral",
+        "Kohat"
+      ],
+      "answer": 1,
+      "explanation": "Malala comes from the Swat Valley of Khyber Pakhtunkhwa.",
+      "difficulty": "medium",
+      "id": "q05"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Arfa Karim became the youngest Microsoft Certified Professional at what age?",
+      "options": [
+        "9 years",
+        "12 years",
+        "14 years",
+        "16 years"
+      ],
+      "answer": 0,
+      "explanation": "Arfa Karim earned the MCP certification at age 9 in 2004.",
+      "difficulty": "medium",
+      "id": "q06"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Dr. Ruth Pfau, who devoted her life to fighting leprosy in Pakistan, belonged to which country originally?",
+      "options": [
+        "United States",
+        "France",
+        "Germany",
+        "United Kingdom"
+      ],
+      "answer": 2,
+      "explanation": "Ruth Pfau, a German nun, worked against leprosy in Pakistan for over 50 years.",
+      "difficulty": "hard",
+      "id": "q07"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Dr. Atta-ur-Rahman is a renowned Pakistani scientist in which field?",
+      "options": [
+        "Astrophysics",
+        "Chemistry",
+        "Botany",
+        "Mathematics"
+      ],
+      "answer": 1,
+      "explanation": "Atta-ur-Rahman is a leading organic chemist who won the UNESCO Science Prize in 1999.",
+      "difficulty": "medium",
+      "id": "q08"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Dr. Nergis Mavalvala contributed to the discovery of?",
+      "options": [
+        "The Higgs boson",
+        "Gravitational waves",
+        "Dark matter",
+        "Exoplanets"
+      ],
+      "answer": 1,
+      "explanation": "Nergis Mavalvala, born in Karachi, was part of the LIGO team that detected gravitational waves.",
+      "difficulty": "hard",
+      "id": "q09"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Dr. Abdul Qadeer Khan is regarded as the father of Pakistan's?",
+      "options": [
+        "Space programme",
+        "Nuclear weapons programme",
+        "Missile programme",
+        "IT industry"
+      ],
+      "answer": 1,
+      "explanation": "A. Q. Khan led Pakistan's uranium enrichment nuclear programme.",
+      "difficulty": "easy",
+      "id": "q10"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Khan Research Laboratories (KRL), associated with Pakistan's nuclear programme, are located at?",
+      "options": [
+        "Wah Cantt",
+        "Kahuta",
+        "Chagai",
+        "Sargodha"
+      ],
+      "answer": 1,
+      "explanation": "KRL is based at Kahuta, near Islamabad.",
+      "difficulty": "hard",
+      "id": "q11"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Dr. Samar Mubarakmand led which project?",
+      "options": [
+        "Pakistan's space satellite programme",
+        "The Chagai nuclear tests",
+        "The Gwadar port project",
+        "The Tarbela extension"
+      ],
+      "answer": 1,
+      "explanation": "Samar Mubarakmand headed the team that conducted the 1998 Chagai nuclear tests.",
+      "difficulty": "hard",
+      "id": "q12"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Dr. Abdus Salam was born in which city of Punjab?",
+      "options": [
+        "Sargodha",
+        "Jhang",
+        "Faisalabad",
+        "Sahiwal"
+      ],
+      "answer": 1,
+      "explanation": "Abdus Salam was born in Jhang in 1926.",
+      "difficulty": "hard",
+      "id": "q13"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Amjad Saqib, founder of Akhuwat, is known for providing?",
+      "options": [
+        "Microfinance with zero interest",
+        "Free education",
+        "Free healthcare",
+        "Vocational training"
+      ],
+      "answer": 0,
+      "explanation": "Akhuwat gives interest-free micro-loans to the poor and is one of the world's largest.",
+      "difficulty": "medium",
+      "id": "q14"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Marium Mukhtiar, the first female fighter pilot of Pakistan to die in service, was associated with which force?",
+      "options": [
+        "Pakistan Navy",
+        "Pakistan Air Force",
+        "Pakistan Army",
+        "Civil Aviation Authority"
+      ],
+      "answer": 1,
+      "explanation": "Marium Mukhtiar was a Pakistan Air Force fighter pilot who died in a 2015 training crash.",
+      "difficulty": "hard",
+      "id": "q15"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Justice Ayesha A. Malik made history in 2022 by becoming the first woman?",
+      "options": [
+        "Federal Minister",
+        "Supreme Court judge of Pakistan",
+        "Chief Justice of a province",
+        "Attorney General"
+      ],
+      "answer": 1,
+      "explanation": "Ayesha Malik became the first woman judge of the Supreme Court of Pakistan in 2022.",
+      "difficulty": "medium",
+      "id": "q16"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Pakistan's first satellite, launched in 1962, was named?",
+      "options": [
+        "Badr-1",
+        "Rehbar-1",
+        "PAKSAT-1R",
+        "Shahpar"
+      ],
+      "answer": 1,
+      "explanation": "Rehbar-1, launched in June 1962, made Pakistan the third Asian country in space.",
+      "difficulty": "hard",
+      "id": "q17"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Pakistan's first indigenous communication satellite, launched in 2011, was?",
+      "options": [
+        "Badr-A",
+        "PAKSAT-1R",
+        "Rehbar-2",
+        "PakSat-2"
+      ],
+      "answer": 1,
+      "explanation": "PAKSAT-1R was launched from China in August 2011.",
+      "difficulty": "hard",
+      "id": "q18"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Dr. Shaukat Hameed Khan, known for his work in which field, led Pakistan's first scientific expedition?",
+      "options": [
+        "Laser physics and energy",
+        "Marine biology",
+        "Astronomy",
+        "Genetics"
+      ],
+      "answer": 0,
+      "explanation": "Shaukat Hameed Khan is a prominent physicist who worked on lasers and energy systems.",
+      "difficulty": "hard",
+      "id": "q19"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which Pakistani was the first to receive the Nishan-e-Imtiaz for science?",
+      "options": [
+        "Abdus Salam",
+        "Salimuzzaman Siddiqui",
+        "A. Q. Khan",
+        "Atta-ur-Rahman"
+      ],
+      "answer": 1,
+      "explanation": "Salimuzzaman Siddiqui, the celebrated chemist, was among the earliest science laureates.",
+      "difficulty": "hard",
+      "id": "q20"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who was the first Pakistani to win the Nobel Prize?",
+      "options": [
+        "Abdus Salam",
+        "Malala Yousafzai",
+        "Har Gobind Khorana",
+        "Amjad Saqib"
+      ],
+      "answer": 0,
+      "explanation": "Abdus Salam won the 1979 Nobel Prize in Physics.",
+      "difficulty": "easy",
+      "id": "q21"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who was the youngest Nobel laureate, a Pakistani education activist?",
+      "options": [
+        "Malala Yousafzai",
+        "Abdus Salam",
+        "Benazir Bhutto",
+        "Arfa Karim"
+      ],
+      "answer": 0,
+      "explanation": "Malala Yousafzai won the 2014 Nobel Peace Prize at age 17.",
+      "difficulty": "easy",
+      "id": "q22"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who was the youngest Microsoft Certified Professional in Pakistan's history?",
+      "options": [
+        "Arfa Karim Randhawa",
+        "Malala Yousafzai",
+        "Jehangir Karamat",
+        "Atta-ur-Rahman"
+      ],
+      "answer": 0,
+      "explanation": "Arfa Karim became the youngest MCP at age 9 in 2005.",
+      "difficulty": "medium",
+      "id": "q23"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Dr. Abdus Salam founded which international research center in Italy?",
+      "options": [
+        "ICTP (Trieste)",
+        "CERN",
+        "NASA",
+        "MIT"
+      ],
+      "answer": 0,
+      "explanation": "Salam founded the International Centre for Theoretical Physics in Trieste.",
+      "difficulty": "hard",
+      "id": "q24"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Professor Atta-ur-Rahman is renowned in which scientific field?",
+      "options": [
+        "Chemistry (organic/natural products)",
+        "Physics",
+        "Astronomy",
+        "Botany"
+      ],
+      "answer": 0,
+      "explanation": "Atta-ur-Rahman is a leading organic chemist known for natural products research.",
+      "difficulty": "medium",
+      "id": "q25"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who is known as the 'Father of Pakistan's Nuclear Program'?",
+      "options": [
+        "Dr. Abdul Qadeer Khan",
+        "Dr. Abdus Salam",
+        "Dr. Salimuzzaman Siddiqui",
+        "Dr. Raziuddin Siddiqui"
+      ],
+      "answer": 0,
+      "explanation": "A.Q. Khan is credited with leading Pakistan's uranium enrichment program.",
+      "difficulty": "easy",
+      "id": "q26"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The 'Rehbar-I' rocket, Pakistan's first, was launched in cooperation with which country?",
+      "options": [
+        "The United States (NASA)",
+        "China",
+        "Russia",
+        "France"
+      ],
+      "answer": 0,
+      "explanation": "Rehbar-I was launched in 1962 with NASA's assistance from Sonmiani.",
+      "difficulty": "medium",
+      "id": "q27"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Mahbub-ul-Haq is famous for developing which economic index?",
+      "options": [
+        "The Human Development Index (HDI)",
+        "GDP per capita",
+        "The Gini index",
+        "The Big Mac index"
+      ],
+      "answer": 0,
+      "explanation": "Mahbub-ul-Haq created the HDI with Amartya Sen for the UNDP.",
+      "difficulty": "medium",
+      "id": "q28"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Dr. Salimuzzaman Siddiqui is famous for research on which plant's anti-epileptic properties?",
+      "options": [
+        "Rauwolfia serpentina (asrol)",
+        "Neem",
+        "Tulsi",
+        "Aloe vera"
+      ],
+      "answer": 0,
+      "explanation": "Siddiqui isolated asrol from Rauwolfia for treating epilepsy and hypertension.",
+      "difficulty": "hard",
+      "id": "q29"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who is called the 'Mother Teresa of Pakistan' for her social work?",
+      "options": [
+        "Abdul Sattar Edhi",
+        "Ruth Pfau",
+        "Bilquis Edhi",
+        "Shehnaz Wazir"
+      ],
+      "answer": 1,
+      "explanation": "Dr. Ruth Pfau, a German nun, is called the 'Mother Teresa of Pakistan' for leprosy work; Edhi is the 'Angel of Mercy'.",
+      "difficulty": "medium",
+      "id": "q30"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who is known as the 'Father of Pakistan's Space Program'?",
+      "options": [
+        "Abdus Salam (founded SUPARCO's beginnings)",
+        "A.Q. Khan",
+        "Salimuzzaman Siddiqui",
+        "Rafi Muhammad Chaudhry"
+      ],
+      "answer": 0,
+      "explanation": "Abdus Salam was instrumental in establishing Pakistan's space research (SUPARCO).",
+      "difficulty": "hard",
+      "id": "q31"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The 'Pakistan Atomic Energy Commission' (PAEC) was led by whom during the nuclear program?",
+      "options": [
+        "Munir Ahmad Khan",
+        "A.Q. Khan",
+        "Abdus Salam",
+        "Ishfaq Ahmad"
+      ],
+      "answer": 0,
+      "explanation": "Munir Ahmad Khan headed PAEC and led the 1998 Chagai tests.",
+      "difficulty": "medium",
+      "id": "q32"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which Pakistani scientist is called the 'Father of Pakistan's Uranium Enrichment'?",
+      "options": [
+        "Abdul Qadeer Khan",
+        "Munir Ahmad Khan",
+        "Abdus Salam",
+        "Ishfaq Ahmad"
+      ],
+      "answer": 0,
+      "explanation": "A.Q. Khan led the Kahuta enrichment program.",
+      "difficulty": "easy",
+      "id": "q33"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The 'SUPARCO' (Space and Upper Atmosphere Research Commission) was established in?",
+      "options": [
+        "1961",
+        "1947",
+        "1971",
+        "1990"
+      ],
+      "answer": 0,
+      "explanation": "SUPARCO was created in 1961 with Abdus Salam's support.",
+      "difficulty": "medium",
+      "id": "q34"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Dr. Rafi Muhammad Chaudhry is known for contributions in which field?",
+      "options": [
+        "Nuclear physics",
+        "Botany",
+        "Chemistry",
+        "Astronomy"
+      ],
+      "answer": 0,
+      "explanation": "Rafi Chaudhry was a pioneering Pakistani nuclear physicist.",
+      "difficulty": "medium",
+      "id": "q35"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which Pakistani scientist won the 2003 UNESCO Kalinga Prize for science popularization?",
+      "options": [
+        "Pervez Hoodbhoy",
+        "Abdus Salam",
+        "Atta-ur-Rahman",
+        "Salimuzzaman Siddiqui"
+      ],
+      "answer": 0,
+      "explanation": "Pervez Hoodbhoy, physicist and science communicator, won the Kalinga Prize.",
+      "difficulty": "hard",
+      "id": "q36"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which Pakistani is known as the 'First Lady of Pakistani Cricket'?",
+      "options": [
+        "No such title; Sana Mir captained women's cricket",
+        "Sana Mir",
+        "Bismah Maroof",
+        "Nida Dar"
+      ],
+      "answer": 0,
+      "explanation": "Sana Mir was Pakistan's women's cricket captain; the title is informal.",
+      "difficulty": "medium",
+      "id": "q37"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Dr. Samar Mubarakmand is known for which project?",
+      "options": [
+        "Leading the Chagai nuclear tests team",
+        "Space telescopes",
+        "Robotics",
+        "Marine biology"
+      ],
+      "answer": 0,
+      "explanation": "Samar Mubarakmand was the senior scientist who led the 1998 Chagai tests.",
+      "difficulty": "medium",
+      "id": "q38"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who was the first Pakistani woman to climb K2?",
+      "options": [
+        "Samina Baig",
+        "Malala Yousafzai",
+        "Arfa Karim",
+        "Sania Mirza"
+      ],
+      "answer": 0,
+      "explanation": "Samina Baig climbed K2 and Everest; she was the first Pakistani woman on both.",
+      "difficulty": "medium",
+      "id": "q39"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The 'HEC' (Higher Education Commission) was established in?",
+      "options": [
+        "2002",
+        "1990",
+        "2010",
+        "1985"
+      ],
+      "answer": 0,
+      "explanation": "The HEC was founded in 2002 under Pervez Musharraf's government.",
+      "difficulty": "medium",
+      "id": "q40"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which Pakistani won the 2015 'Princess of Asturias' Award?",
+      "options": [
+        "Malala Yousafzai (and later Nobel)",
+        "Abdus Salam",
+        "Imran Khan",
+        "Atif Aslam"
+      ],
+      "answer": 0,
+      "explanation": "Malala won the Princess of Asturias Award in 2014 before the Nobel Peace Prize.",
+      "difficulty": "hard",
+      "id": "q41"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The 'CM Punjab Laptop Scheme' and 'Ehsaas' programs represent?",
+      "options": [
+        "Government initiatives for education and welfare",
+        "Military exercises",
+        "Space missions",
+        "Trade deals"
+      ],
+      "answer": 0,
+      "explanation": "Laptop schemes and Ehsaas are education/social-welfare initiatives.",
+      "difficulty": "easy",
+      "id": "q42"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which Pakistani physicist co-founded the 'Citizens Archive of Pakistan'?",
+      "options": [
+        "Pervez Hoodbhoy (among founders)",
+        "Abdus Salam",
+        "Atta-ur-Rahman",
+        "A.Q. Khan"
+      ],
+      "answer": 0,
+      "explanation": "Hoodbhoy is among the founders of the Citizens Archive of Pakistan.",
+      "difficulty": "hard",
+      "id": "q43"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which Pakistani scientist is famous for the 'Siddiqui reaction' in chemistry?",
+      "options": [
+        "Salimuzzaman Siddiqui",
+        "Abdus Salam",
+        "Atta-ur-Rahman",
+        "Rafi Chaudhry"
+      ],
+      "answer": 0,
+      "explanation": "Salimuzzaman Siddiqui pioneered alkaloid chemistry in Pakistan.",
+      "difficulty": "medium",
+      "id": "q44"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The 'Kaghan' and 'Naran' resorts are known as a base for which peak?",
+      "options": [
+        "Malika Parbat (in the area)",
+        "K2",
+        "Nanga Parbat",
+        "Rakaposhi"
+      ],
+      "answer": 0,
+      "explanation": "Malika Parbat is the highest peak in the Kaghan valley area.",
+      "difficulty": "hard",
+      "id": "q45"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which Pakistani woman won the '2018 Asian Games' medal in cricket?",
+      "options": [
+        "The women's cricket team won bronze at the 2018 Asian Games",
+        "Sania Mirza",
+        "Samina Baig",
+        "Arfa Karim"
+      ],
+      "answer": 0,
+      "explanation": "Pakistan women's cricket won bronze at Jakarta-Palembang 2018.",
+      "difficulty": "medium",
+      "id": "q46"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who is the current head of the 'Pakistan Academy of Sciences' tradition founder?",
+      "options": [
+        "The Academy was founded in 1953 by leading scientists incl. Abdus Salam",
+        "Only A.Q. Khan",
+        "Only politicians",
+        "Foreign scholars"
+      ],
+      "answer": 0,
+      "explanation": "The Pakistan Academy of Sciences was established in 1953 with Abdus Salam among its founders.",
+      "difficulty": "hard",
+      "id": "q47"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The 'Rehbar-II' rocket was launched in?",
+      "options": [
+        "1962 (same year, later than Rehbar-I)",
+        "1965",
+        "1970",
+        "1980"
+      ],
+      "answer": 0,
+      "explanation": "Rehbar-II followed Rehbar-I in 1962, both from Sonmiani.",
+      "difficulty": "hard",
+      "id": "q48"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which Pakistani scientist contributed to the discovery of the 'SU(2) gauge theory'?",
+      "options": [
+        "Abdus Salam (electroweak theory)",
+        "A.Q. Khan",
+        "Munir Ahmad Khan",
+        "Samar Mubarakmand"
+      ],
+      "answer": 0,
+      "explanation": "Abdus Salam co-developed the electroweak theory, unifying electromagnetism and weak force.",
+      "difficulty": "medium",
+      "id": "q49"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The 'Nishan-e-Imtiaz' (civilian award) has been given to which scientists?",
+      "options": [
+        "Abdus Salam and A.Q. Khan among others",
+        "Only politicians",
+        "Only poets",
+        "Only athletes"
+      ],
+      "answer": 0,
+      "explanation": "Both Abdus Salam and A.Q. Khan received the Nishan-e-Imtiaz.",
+      "difficulty": "easy",
+      "id": "q50"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which Pakistani scientist is known for work on the 'electroweak' theory?",
+      "options": [
+        "Dr. Abdus Salam",
+        "Dr. A.Q. Khan",
+        "Dr. Salimuzzaman Siddiqui",
+        "Dr. Atta-ur-Rahman"
+      ],
+      "answer": 0,
+      "explanation": "Abdus Salam shared the Nobel Prize for the electroweak theory.",
+      "difficulty": "easy",
+      "id": "q51"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Dr. Salimuzzaman Siddiqui was a pioneer in:",
+      "options": [
+        "Chemistry of medicinal plants",
+        "Nuclear physics",
+        "Space science",
+        "Genetics"
+      ],
+      "answer": 0,
+      "explanation": "Siddiqui pioneered the chemistry of herbal medicines.",
+      "difficulty": "medium",
+      "id": "q52"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which Pakistani scientist was appointed chairman of the Pakistan Atomic Energy Commission?",
+      "options": [
+        "Dr. Munir Ahmad Khan",
+        "Dr. A.Q. Khan",
+        "Dr. Ishfaq Ahmad",
+        "Dr. Samar Mubarakmand"
+      ],
+      "answer": 0,
+      "explanation": "Dr. Munir Ahmad Khan led PAEC for many years.",
+      "difficulty": "medium",
+      "id": "q53"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The first Pakistani woman to become a pilot in the PAF was:",
+      "options": [
+        "Marium Mukhtiar",
+        "Sana Mir",
+        "Bilquis Edhi",
+        "Shazia Hidayat"
+      ],
+      "answer": 0,
+      "explanation": "Marium Mukhtiar, who died in a 2015 crash, was among the first female fighter pilots.",
+      "difficulty": "medium",
+      "id": "q54"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Dr. Atta-ur-Rahman is famous for contributions in:",
+      "options": [
+        "Organic chemistry",
+        "Astronomy",
+        "Mathematics",
+        "Botany only"
+      ],
+      "answer": 0,
+      "explanation": "Atta-ur-Rahman is a leading organic chemist.",
+      "difficulty": "easy",
+      "id": "q55"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Pakistani mathematician who worked on the 'Ramanujan conjecture' was:",
+      "options": [
+        "Dr. Muhammad Anwar Pervez",
+        "Dr. Riazuddin",
+        "Dr. Asghar Qadir",
+        "Dr. Tahira Syed"
+      ],
+      "answer": 0,
+      "explanation": "Dr. Anwar Pervez contributed to number theory and the Ramanujan conjecture.",
+      "difficulty": "hard",
+      "id": "q56"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who is known as the father of Pakistan's nuclear programme?",
+      "options": [
+        "Dr. A.Q. Khan",
+        "Dr. Abdus Salam",
+        "Dr. Munir Khan",
+        "Dr. Rafi Muhammad"
+      ],
+      "answer": 0,
+      "explanation": "Dr. A.Q. Khan is called the father of Pakistan's nuclear programme.",
+      "difficulty": "easy",
+      "id": "q57"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The physicist Dr. Riazuddin was a student of:",
+      "options": [
+        "Dr. Abdus Salam",
+        "Einstein",
+        "Bohr",
+        "Feynman"
+      ],
+      "answer": 0,
+      "explanation": "Riazuddin was a distinguished student of Abdus Salam.",
+      "difficulty": "hard",
+      "id": "q58"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which Pakistani scientist worked on the top quark experiment at Fermilab?",
+      "options": [
+        "Dr. Muhammad Anwar Pervez",
+        "Dr. Atta-ur-Rahman",
+        "Dr. Salim Siddiqui",
+        "Dr. A.Q. Khan"
+      ],
+      "answer": 0,
+      "explanation": "Dr. Pervez was part of the CDF collaboration that discovered the top quark.",
+      "difficulty": "hard",
+      "id": "q59"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Pakistani economist who won the 2024 Economics Nobel?",
+      "options": [
+        "No Pakistani has won it",
+        "Mahbub-ul-Haq",
+        "Amartya Sen",
+        "Muhammad Yunus"
+      ],
+      "answer": 0,
+      "explanation": "No Pakistani has yet won the Economics Nobel.",
+      "difficulty": "medium",
+      "id": "q60"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Dr. Samar Mubarakmand led which nuclear test team?",
+      "options": [
+        "The Chagai test team",
+        "The K-8 programme",
+        "The SUPARCO team",
+        "The POF team"
+      ],
+      "answer": 0,
+      "explanation": "Dr. Samar Mubarakmand headed the Chagai nuclear tests.",
+      "difficulty": "easy",
+      "id": "q61"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The famous Pakistani physicist Dr. Pervez Hoodbhoy works in the field of:",
+      "options": [
+        "Nuclear and high-energy physics",
+        "Botany",
+        "Chemistry",
+        "Geology"
+      ],
+      "answer": 0,
+      "explanation": "Hoodbhoy is a nuclear physicist and science educator.",
+      "difficulty": "easy",
+      "id": "q62"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which Pakistani won the 2021 Nobel Peace Prize?",
+      "options": [
+        "No Pakistani; it was shared by others",
+        "Malala Yousafzai",
+        "Abdus Salam",
+        "Imran Khan"
+      ],
+      "answer": 0,
+      "explanation": "The 2021 Peace Prize went to journalists; Malala won in 2014.",
+      "difficulty": "medium",
+      "id": "q63"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The 'Karakoram Highway' was built with assistance from which country?",
+      "options": [
+        "China",
+        "USA",
+        "Turkey",
+        "Iran"
+      ],
+      "answer": 0,
+      "explanation": "China helped construct the KKH in the 1960s–70s.",
+      "difficulty": "easy",
+      "id": "q64"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Pakistani scientist Dr. Shahid Masood is known for:",
+      "options": [
+        "Work on Dengue vaccine and infectious diseases",
+        "Rocket science",
+        "The Higgs boson",
+        "Marine biology"
+      ],
+      "answer": 0,
+      "explanation": "Dr. Shahid Masood researched vaccines including for dengue.",
+      "difficulty": "hard",
+      "id": "q65"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The 'Baba-e-Urdu' who promoted science writing in Urdu was:",
+      "options": [
+        "Maulvi Abdul Haq",
+        "Allama Iqbal",
+        "Hafeez Jalandhari",
+        "Akhtar Hameed Khan"
+      ],
+      "answer": 0,
+      "explanation": "Maulvi Abdul Haq, 'Baba-e-Urdu', promoted Urdu scientific literature.",
+      "difficulty": "medium",
+      "id": "q66"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which Pakistani scientist founded the 'Nobel laureate' style institute ICGEB?",
+      "options": [
+        "Dr. Atta-ur-Rahman",
+        "Dr. Abdus Salam",
+        "Dr. Salimuzzaman",
+        "Dr. A.Q. Khan"
+      ],
+      "answer": 0,
+      "explanation": "Atta-ur-Rahman served as coordinator of ICGEB-related programs.",
+      "difficulty": "hard",
+      "id": "q67"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Pakistan's first satellite was launched in which year?",
+      "options": [
+        "1990 (Badr-1)",
+        "2001",
+        "1985",
+        "1998"
+      ],
+      "answer": 0,
+      "explanation": "Badr-1, Pakistan's first satellite, was launched in 1990.",
+      "difficulty": "medium",
+      "id": "q68"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The mathematician Dr. Asghar Qadir contributed to:",
+      "options": [
+        "General relativity and cosmology",
+        "Organic chemistry",
+        "Botany",
+        "Geology"
+      ],
+      "answer": 0,
+      "explanation": "Asghar Qadir worked on relativity and cosmology.",
+      "difficulty": "hard",
+      "id": "q69"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Pakistan's first nuclear power plant was established at:",
+      "options": [
+        "Karachi (KANUPP)",
+        "Chashma",
+        "Chagai",
+        "Mianwali"
+      ],
+      "answer": 0,
+      "explanation": "KANUPP, near Karachi, began operation in 1972.",
+      "difficulty": "easy",
+      "id": "q70"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The 'PASDEC' is associated with:",
+      "options": [
+        "Saudi-Pakistan investment cooperation",
+        "Space research",
+        "Textile exports",
+        "Defence production"
+      ],
+      "answer": 0,
+      "explanation": "PASDEC is a Saudi-Pakistani development company.",
+      "difficulty": "hard",
+      "id": "q71"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Dr. Nergis Mavalvala, a Pakistani physicist, works at:",
+      "options": [
+        "MIT on gravitational waves",
+        "CERN on the Higgs",
+        "NASA on Mars",
+        "Oxford on climate"
+      ],
+      "answer": 0,
+      "explanation": "Nergis Mavalvala at MIT contributed to LIGO's gravitational wave discovery.",
+      "difficulty": "easy",
+      "id": "q72"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Chashma Nuclear Power Plant units were built with cooperation from:",
+      "options": [
+        "China",
+        "USA",
+        "Russia",
+        "France"
+      ],
+      "answer": 0,
+      "explanation": "China assisted the Chashma (CHASNUPP) project.",
+      "difficulty": "easy",
+      "id": "q73"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Pakistan's 'Badr-2' satellite was launched in:",
+      "options": [
+        "2001",
+        "1990",
+        "1996",
+        "2011"
+      ],
+      "answer": 0,
+      "explanation": "Badr-2 was launched in December 2001.",
+      "difficulty": "hard",
+      "id": "q74"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Pakistani scientist Dr. Ikram-ul-Haq is known for:",
+      "options": [
+        "Biotechnology and enzyme research",
+        "Astrophysics",
+        "Earthquake engineering",
+        "Plant taxonomy"
+      ],
+      "answer": 0,
+      "explanation": "Dr. Ikram-ul-Haq is a noted biotechnologist.",
+      "difficulty": "hard",
+      "id": "q75"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which Pakistani physicist received the 'Einstein Medal'?",
+      "options": [
+        "Dr. Abdus Salam",
+        "Dr. Riazuddin",
+        "Dr. Pervez Hoodbhoy",
+        "Dr. Munir Khan"
+      ],
+      "answer": 0,
+      "explanation": "Abdus Salam received the Einstein Medal in 1979.",
+      "difficulty": "easy",
+      "id": "q76"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The 'National Centre for Physics' is located at:",
+      "options": [
+        "Islamabad",
+        "Karachi",
+        "Lahore",
+        "Peshawar"
+      ],
+      "answer": 0,
+      "explanation": "The NCP is situated in Islamabad.",
+      "difficulty": "easy",
+      "id": "q77"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Pakistan's 'PRSS-1' remote sensing satellite was launched in:",
+      "options": [
+        "2018",
+        "2015",
+        "2020",
+        "2012"
+      ],
+      "answer": 0,
+      "explanation": "PRSS-1 was launched from China in July 2018.",
+      "difficulty": "medium",
+      "id": "q78"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which Pakistani scientist won the 1979 Nobel Prize in Physics?",
+      "options": [
+        "Abdus Salam",
+        "Har Gobind Khorana",
+        "Subrahmanyan Chandrasekhar",
+        "Muhammad Yunus"
+      ],
+      "answer": 0,
+      "explanation": "Abdus Salam won the 1979 Physics Nobel with Glashow and Weinberg.",
+      "difficulty": "easy",
+      "id": "q79"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Dr. A.Q. Khan was also the founder of:",
+      "options": [
+        "The Kahuta Research Laboratories",
+        "SUPARCO",
+        "PAEC",
+        "NUST"
+      ],
+      "answer": 0,
+      "explanation": "A.Q. Khan founded the Kahuta Research Laboratories (KRL).",
+      "difficulty": "easy",
+      "id": "q80"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which Pakistani scientist was the first to head the COMSATS?",
+      "options": [
+        "Dr. Ishfaq Ahmad",
+        "Dr. Atta-ur-Rahman",
+        "Dr. Salimuzzaman",
+        "Dr. Munir Khan"
+      ],
+      "answer": 0,
+      "explanation": "Dr. Ishfaq Ahmad served as head of COMSATS.",
+      "difficulty": "hard",
+      "id": "q81"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Pakistan's 'Veqar-un-Nisa' was the first woman to:",
+      "options": [
+        "Become a surgeon in Pakistan",
+        "Pilot a plane",
+        "Head SUPARCO",
+        "Win a Nobel"
+      ],
+      "answer": 0,
+      "explanation": "Dr. Veqar-un-Nisa was Pakistan's first female surgeon.",
+      "difficulty": "hard",
+      "id": "q82"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Pakistani physicist Dr. Mohammad Abdus Salam also founded:",
+      "options": [
+        "ICTP (Trieste)",
+        "CERN",
+        "NASA",
+        "ISRO"
+      ],
+      "answer": 0,
+      "explanation": "Salam founded the International Centre for Theoretical Physics.",
+      "difficulty": "medium",
+      "id": "q83"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which Pakistani scientist contributed to the 'Chagai' tests as test director?",
+      "options": [
+        "Dr. Samar Mubarakmand",
+        "Dr. A.Q. Khan",
+        "Dr. Ishfaq Ahmad",
+        "Dr. Munir Khan"
+      ],
+      "answer": 0,
+      "explanation": "Dr. Samar Mubarakmand was the test director at Chagai.",
+      "difficulty": "easy",
+      "id": "q84"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Pakistani 'Salam Chair' in Physics is established at:",
+      "options": [
+        "GC University Lahore",
+        "NUST",
+        "Punjab University",
+        "Karachi University"
+      ],
+      "answer": 0,
+      "explanation": "The Abdus Salam Chair is at GC University Lahore.",
+      "difficulty": "hard",
+      "id": "q85"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Dr. Javed Iqbal Qazi is known for work in:",
+      "options": [
+        "Astrophysics",
+        "Botany",
+        "Marine biology",
+        "Geology"
+      ],
+      "answer": 0,
+      "explanation": "Dr. Javed Iqbal Qazi is a noted Pakistani astrophysicist.",
+      "difficulty": "hard",
+      "id": "q86"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The 'Pakistan Academy of Sciences' was founded in:",
+      "options": [
+        "1953",
+        "1965",
+        "1971",
+        "1947"
+      ],
+      "answer": 0,
+      "explanation": "The PAS was established in 1953.",
+      "difficulty": "hard",
+      "id": "q87"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which Pakistani mathematician is famous for work on the 'heat equation'?",
+      "options": [
+        "Dr. Muhammad Anwar Pervez",
+        "Dr. Asghar Qadir",
+        "Dr. Riazuddin",
+        "Dr. Atta-ur-Rahman"
+      ],
+      "answer": 0,
+      "explanation": "Dr. Anwar Pervez worked on differential equations including the heat equation.",
+      "difficulty": "hard",
+      "id": "q88"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Pakistani scientist who developed the 'Hunyani' vaccine line was:",
+      "options": [
+        "Dr. Shahid Masood",
+        "Dr. Salimuzzaman",
+        "Dr. Atta-ur-Rahman",
+        "Dr. A.Q. Khan"
+      ],
+      "answer": 0,
+      "explanation": "Dr. Shahid Masood worked on vaccine development.",
+      "difficulty": "hard",
+      "id": "q89"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The 'National Institute of Oceanography' of Pakistan is based at:",
+      "options": [
+        "Karachi",
+        "Gwadar",
+        "Lahore",
+        "Islamabad"
+      ],
+      "answer": 0,
+      "explanation": "The NIO is headquartered in Karachi.",
+      "difficulty": "medium",
+      "id": "q90"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The 'COMSATS University' was established under the auspices of:",
+      "options": [
+        "The COMSATS Commission for science and technology",
+        "The UN",
+        "NATO",
+        "The World Bank"
+      ],
+      "answer": 0,
+      "explanation": "CUI was set up by the COMSATS Commission.",
+      "difficulty": "medium",
+      "id": "q91"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Dr. Shaukat Hameed Khan is known for contributions in:",
+      "options": [
+        "Physics and energy research",
+        "Botany",
+        "Chemistry only",
+        "Marine life"
+      ],
+      "answer": 0,
+      "explanation": "Dr. Shaukat Hameed Khan is a physicist and energy expert.",
+      "difficulty": "medium",
+      "id": "q92"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The 'Agha Khan' and 'Salam' Nobel connection refers to:",
+      "options": [
+        "Abdus Salam's shared Nobel with Glashow and Weinberg",
+        "A religious award",
+        "A military medal",
+        "A sports trophy"
+      ],
+      "answer": 0,
+      "explanation": "Salam shared the 1979 Physics Nobel with Glashow and Weinberg.",
+      "difficulty": "easy",
+      "id": "q93"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Pakistan's 'PNRA' regulates:",
+      "options": [
+        "Nuclear safety and radiation protection",
+        "Air traffic",
+        "Cyber security",
+        "Railways"
+      ],
+      "answer": 0,
+      "explanation": "The Pakistan Nuclear Regulatory Authority oversees nuclear safety.",
+      "difficulty": "easy",
+      "id": "q94"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The 'KRL' founded by Dr. A.Q. Khan is located at:",
+      "options": [
+        "Kahuta",
+        "Wah",
+        "Taxila",
+        "Chagai"
+      ],
+      "answer": 0,
+      "explanation": "KRL is at Kahuta near Rawalpindi.",
+      "difficulty": "easy",
+      "id": "q95"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who was the first Pakistani woman to receive the Nishan-e-Imtiaz?",
+      "options": [
+        "Begum Ra'ana Liaquat Ali Khan",
+        "Malala Yousafzai",
+        "Arfa Karim",
+        "Ruth Pfau"
+      ],
+      "answer": 0,
+      "explanation": "Begum Ra'ana Liaquat Ali Khan was among the first women to receive the Nishan-e-Imtiaz.",
+      "difficulty": "hard",
+      "id": "q96"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Pakistani architect who designed the Minar-e-Pakistan was?",
+      "options": [
+        "Nayyar Ali Dada",
+        "Vedat Dalokay",
+        "Habib Fida Ali",
+        "M. R. Khan"
+      ],
+      "answer": 0,
+      "explanation": "Nayyar Ali Dada designed the Minar-e-Pakistan.",
+      "difficulty": "hard",
+      "id": "q97"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The 'Salam Prize' in mathematics is awarded by which organisation?",
+      "options": [
+        "The World Academy of Sciences",
+        "The Nobel Foundation",
+        "ICTP",
+        "UNESCO"
+      ],
+      "answer": 0,
+      "explanation": "The Abdus Salam Prize in mathematics is given by TWAS.",
+      "difficulty": "hard",
+      "id": "q98"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which Pakistani scientist is known as the 'Father of Pakistan's Nuclear Programme' besides A.Q. Khan?",
+      "options": [
+        "Munir Ahmad Khan",
+        "Salimuzzaman Siddiqui",
+        "Atta-ur-Rahman",
+        "Samar Mubarakmand"
+      ],
+      "answer": 0,
+      "explanation": "Munir Ahmad Khan, PAEC chairman, is also called the Father of the Nuclear Programme.",
+      "difficulty": "hard",
+      "id": "q99"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The 'Rehbar-1' rocket was launched from which site?",
+      "options": [
+        "Sonmiani",
+        "Thumba",
+        "Sriharikota",
+        "Gwadar"
+      ],
+      "answer": 0,
+      "explanation": "Rehbar-1 was launched from Sonmiani.",
+      "difficulty": "hard",
+      "id": "q100"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Pakistani scientist who served as Chairman of SUPARCO during the 1960s was?",
+      "options": [
+        "Dr. Abdus Salam",
+        "Dr. Riazuddin",
+        "Dr. Salimuzzaman",
+        "Dr. Ishfaq Ahmad"
+      ],
+      "answer": 0,
+      "explanation": "Dr. Abdus Salam was closely involved with SUPARCO's founding.",
+      "difficulty": "medium",
+      "id": "q101"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The 'Badr-1' satellite, Pakistan's first indigenously built satellite, was launched in which year?",
+      "options": [
+        "1990",
+        "1985",
+        "1995",
+        "2000"
+      ],
+      "answer": 0,
+      "explanation": "Badr-1 was launched in 1990.",
+      "difficulty": "medium",
+      "id": "q102"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Pakistan's 'PAKSAT-1R' communication satellite was launched in which year?",
+      "options": [
+        "2011",
+        "2008",
+        "2013",
+        "2015"
+      ],
+      "answer": 0,
+      "explanation": "PAKSAT-1R was launched in August 2011.",
+      "difficulty": "hard",
+      "id": "q103"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Pakistani mountaineer who climbed Everest and K2 was?",
+      "options": [
+        "Hassan Sadpara",
+        "Ali Sadpara",
+        "Samina Baig",
+        "Nazir Sabir"
+      ],
+      "answer": 0,
+      "explanation": "Hassan Sadpara has summited both Everest and K2.",
+      "difficulty": "hard",
+      "id": "q104"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which Pakistani climber was the first to summit all fourteen 8,000-metre peaks?",
+      "options": [
+        "Ali Sadpara",
+        "Hassan Sadpara",
+        "Nazir Sabir",
+        "No Pakistani has done so yet"
+      ],
+      "answer": 0,
+      "explanation": "No Pakistani climber has yet summited all fourteen eight-thousanders.",
+      "difficulty": "hard",
+      "id": "q105"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The famous Pakistani climber Nazir Sabir belongs to which region?",
+      "options": [
+        "Hunza",
+        "Skardu",
+        "Chitral",
+        "Gilgit"
+      ],
+      "answer": 0,
+      "explanation": "Nazir Sabir is from Hunza.",
+      "difficulty": "hard",
+      "id": "q106"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which Pakistani scientist won the UNESCO Science Prize?",
+      "options": [
+        "Atta-ur-Rahman",
+        "Abdus Salam",
+        "Ruth Pfau",
+        "A.Q. Khan"
+      ],
+      "answer": 0,
+      "explanation": "Atta-ur-Rahman received the UNESCO Science Prize.",
+      "difficulty": "hard",
+      "id": "q107"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The 'Khan Research Laboratories' (KRL) was established in which year?",
+      "options": [
+        "1976",
+        "1972",
+        "1980",
+        "1985"
+      ],
+      "answer": 0,
+      "explanation": "KRL was established in 1976.",
+      "difficulty": "hard",
+      "id": "q108"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The 'Pakistan Atomic Energy Commission' (PAEC) was established in which year?",
+      "options": [
+        "1956",
+        "1960",
+        "1954",
+        "1962"
+      ],
+      "answer": 0,
+      "explanation": "PAEC was established in 1956.",
+      "difficulty": "hard",
+      "id": "q109"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The first Chairman of the Pakistan Atomic Energy Commission was?",
+      "options": [
+        "Dr. Nazir Ahmad",
+        "Dr. Abdus Salam",
+        "Dr. Munir Ahmad Khan",
+        "Dr. Ishfaq Ahmad"
+      ],
+      "answer": 0,
+      "explanation": "Dr. Nazir Ahmad was the first PAEC chairman.",
+      "difficulty": "hard",
+      "id": "q110"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The physicist Dr. Riazuddin is known for contributions to?",
+      "options": [
+        "Theoretical physics",
+        "Botany",
+        "Geology",
+        "Medicine"
+      ],
+      "answer": 0,
+      "explanation": "Dr. Riazuddin was a theoretical physicist.",
+      "difficulty": "medium",
+      "id": "q111"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The 'Institute of Space Technology' (IST) is located in which city?",
+      "options": [
+        "Islamabad",
+        "Karachi",
+        "Lahore",
+        "Peshawar"
+      ],
+      "answer": 0,
+      "explanation": "The IST is in Islamabad.",
+      "difficulty": "medium",
+      "id": "q112"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Pakistani mathematician Dr. Muhammad Anwar Pervez worked at which institution?",
+      "options": [
+        "Princeton University",
+        "MIT",
+        "Oxford",
+        "Harvard"
+      ],
+      "answer": 0,
+      "explanation": "Dr. Anwar Pervez taught at Princeton.",
+      "difficulty": "hard",
+      "id": "q113"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The 'Karakoram International University' is located at?",
+      "options": [
+        "Gilgit",
+        "Skardu",
+        "Hunza",
+        "Chitral"
+      ],
+      "answer": 0,
+      "explanation": "Karakoram International University is in Gilgit.",
+      "difficulty": "medium",
+      "id": "q114"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The 'Quaid-e-Azam University' is located in which city?",
+      "options": [
+        "Islamabad",
+        "Karachi",
+        "Lahore",
+        "Rawalpindi"
+      ],
+      "answer": 0,
+      "explanation": "Quaid-e-Azam University is in Islamabad.",
+      "difficulty": "easy",
+      "id": "q115"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The 'National University of Sciences and Technology' (NUST) is headquartered at?",
+      "options": [
+        "Islamabad",
+        "Rawalpindi",
+        "Lahore",
+        "Karachi"
+      ],
+      "answer": 0,
+      "explanation": "NUST's main campus is in Islamabad.",
+      "difficulty": "medium",
+      "id": "q116"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The 'Pakistan Institute of Engineering and Applied Sciences' (PIEAS) is located at?",
+      "options": [
+        "Islamabad",
+        "Karachi",
+        "Lahore",
+        "Faisalabad"
+      ],
+      "answer": 0,
+      "explanation": "PIEAS is in Islamabad.",
+      "difficulty": "medium",
+      "id": "q117"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which Pakistani economist formulated the 'Human Development Index' methodology?",
+      "options": [
+        "Mahbub ul Haq",
+        "Amartya Sen",
+        "Ishrat Husain",
+        "Sartaj Aziz"
+      ],
+      "answer": 0,
+      "explanation": "Mahbub ul Haq created the HDI concept.",
+      "difficulty": "medium",
+      "id": "q118"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The economist Amartya Sen collaborated with Mahbub ul Haq on which index?",
+      "options": [
+        "Human Development Index",
+        "Gini coefficient",
+        "Big Mac Index",
+        "Inflation index"
+      ],
+      "answer": 0,
+      "explanation": "Sen helped develop the HDI with Mahbub ul Haq.",
+      "difficulty": "hard",
+      "id": "q119"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The first woman Vice-Chancellor of a Pakistani university was?",
+      "options": [
+        "Dr. Najma Najam",
+        "Arfa Karim",
+        "Ruth Pfau",
+        "Samina Baig"
+      ],
+      "answer": 0,
+      "explanation": "Dr. Najma Najam was the first woman VC of a Pakistani university.",
+      "difficulty": "hard",
+      "id": "q120"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The 'Pakistan Science Foundation' (PSF) was established in which year?",
+      "options": [
+        "1973",
+        "1965",
+        "1980",
+        "1970"
+      ],
+      "answer": 0,
+      "explanation": "The Pakistan Science Foundation was established in 1973.",
+      "difficulty": "hard",
+      "id": "q121"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Pakistani scientist who discovered the 'nuclear track' detection method was?",
+      "options": [
+        "Dr. Hafeez Hoorani",
+        "Dr. Riazuddin",
+        "Dr. Shaukat Hameed Khan",
+        "Dr. Samar Mubarakmand"
+      ],
+      "answer": 0,
+      "explanation": "Dr. Shaukat Hameed Khan worked on laser and nuclear track research.",
+      "difficulty": "hard",
+      "id": "q122"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The 'Centre for Advanced Electronics' is associated with which city?",
+      "options": [
+        "Islamabad",
+        "Karachi",
+        "Lahore",
+        "Peshawar"
+      ],
+      "answer": 0,
+      "explanation": "The CAE is part of NUST in Islamabad.",
+      "difficulty": "hard",
+      "id": "q123"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which Pakistani scientist served as the Director General of COMSATS?",
+      "options": [
+        "Dr. Ishfaq Ahmad",
+        "Dr. Atta-ur-Rahman",
+        "Dr. Salimuzzaman",
+        "Dr. Abdus Salam"
+      ],
+      "answer": 0,
+      "explanation": "Dr. Ishfaq Ahmad served COMSATS in leadership roles.",
+      "difficulty": "hard",
+      "id": "q124"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The 'Pakistan Meteorological Department' headquarters is in which city?",
+      "options": [
+        "Islamabad",
+        "Karachi",
+        "Lahore",
+        "Quetta"
+      ],
+      "answer": 0,
+      "explanation": "PMD headquarters is in Islamabad.",
+      "difficulty": "medium",
+      "id": "q125"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Pakistan's 'Bolan University of Medical and Health Sciences' is located in which city?",
+      "options": [
+        "Quetta",
+        "Karachi",
+        "Lahore",
+        "Peshawar"
+      ],
+      "answer": 0,
+      "explanation": "The Bolan University of Medical and Health Sciences is in Quetta.",
+      "difficulty": "hard",
+      "id": "q126"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The 'Pakistan Academy of Sciences' is located in which city?",
+      "options": [
+        "Islamabad",
+        "Karachi",
+        "Lahore",
+        "Peshawar"
+      ],
+      "answer": 0,
+      "explanation": "The Pakistan Academy of Sciences is in Islamabad.",
+      "difficulty": "medium",
+      "id": "q127"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The first Pakistani woman scientist to lead a major national research institute was?",
+      "options": [
+        "Dr. Ishrat Rahim",
+        "Malala Yousafzai",
+        "Arfa Karim",
+        "Nazia Hassan"
+      ],
+      "answer": 0,
+      "explanation": "Dr. Ishrat Rahim was a pioneer woman scientist in Pakistan.",
+      "difficulty": "hard",
+      "id": "q128"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The 'Salam International Centre for Theoretical Physics' is located in which city?",
+      "options": [
+        "Trieste",
+        "Geneva",
+        "Rome",
+        "Vienna"
+      ],
+      "answer": 0,
+      "explanation": "ICTP is in Trieste, Italy.",
+      "difficulty": "medium",
+      "id": "q129"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which Pakistani scientist received the 'Nishan-e-Imtiaz' for his work in chemistry?",
+      "options": [
+        "Dr. Atta-ur-Rahman",
+        "Dr. Abdus Salam",
+        "Dr. Munir Ahmad Khan",
+        "Dr. Riazuddin"
+      ],
+      "answer": 0,
+      "explanation": "Atta-ur-Rahman received the Nishan-e-Imtiaz for chemistry.",
+      "difficulty": "medium",
+      "id": "q130"
+    }
+  ]
+}
