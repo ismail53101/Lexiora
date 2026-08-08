@@ -5,6 +5,7 @@ import 'package:flutter/services.dart';
 import 'package:lexiora/modules/ai_assistant/domain/entities/ai_attachment.dart';
 import 'package:lexiora/modules/ai_assistant/domain/entities/ai_message.dart';
 import 'package:lexiora/modules/ai_assistant/presentation/widgets/ai_markdown.dart';
+import 'package:lexiora/modules/ai_assistant/presentation/widgets/ai_message_tools.dart';
 import 'package:share_plus/share_plus.dart';
 
 /// One persisted chat message, shown with a sender label + timestamp above
@@ -137,10 +138,11 @@ class MessageBubble extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.only(top: 6),
             child: _ActionRow(
+              messageId: message.id,
+              text: text,
               onCopy: () => _copy(context, text),
               onRegenerate: onRegenerate,
               onFeedback: (bool liked) => _feedback(context, liked),
-              onSpeak: () => _comingSoon(context, 'Read aloud'),
             ),
           ),
       ],
@@ -175,10 +177,28 @@ class MessageBubble extends StatelessWidget {
         ],
       );
     }
+    // The "Show more" collapse belongs on the USER's own messages — someone
+    // pasting a long article to ask the assistant about it shouldn't have
+    // that whole block filling the screen — not on the assistant's replies,
+    // which should always render in full.
     final Widget body = _isUser
-        ? SelectableText(text, style: TextStyle(color: fg))
+        ? _ExpandableUserText(text: text, color: fg)
         : AiMarkdown(data: text, color: fg);
-   final Widget selectableBody = SelectionArea(
+    // A visible, explicit selection highlight — on this app's theme the
+    // ambient TextSelectionTheme color was blending into the bubble/page
+    // background, so a long-press selection was there but invisible. User
+    // bubbles get a light overlay (readable against the solid primary
+    // background); assistant text (no background) gets a tinted-primary
+    // highlight, same as most reading apps.
+    final Widget selectableBody = Theme(
+      data: Theme.of(context).copyWith(
+        textSelectionTheme: TextSelectionThemeData(
+          selectionColor: _isUser
+              ? Colors.white.withValues(alpha: 0.35)
+              : Theme.of(context).colorScheme.primary.withValues(alpha: 0.28),
+        ),
+      ),
+      child: SelectionArea(
   contextMenuBuilder: (BuildContext context, SelectableRegionState state) {
     return AdaptiveTextSelectionToolbar.buttonItems(
       anchors: state.contextMenuAnchors,
@@ -202,6 +222,7 @@ class MessageBubble extends StatelessWidget {
     );
   },
   child: body,
+),
 );
     if (_isError && text.trim().isNotEmpty) {
       final ThemeData theme = Theme.of(context);
@@ -287,14 +308,6 @@ class MessageBubble extends StatelessWidget {
       );
   }
 
-  void _comingSoon(BuildContext context, String feature) {
-    ScaffoldMessenger.of(context)
-      ..hideCurrentSnackBar()
-      ..showSnackBar(
-        SnackBar(content: Text('$feature is coming in a future update.')),
-      );
-  }
-
   static String _time(DateTime dt) {
     final int h24 = dt.hour;
     final int h12 = h24 % 12 == 0 ? 12 : h24 % 12;
@@ -305,19 +318,21 @@ class MessageBubble extends StatelessWidget {
 }
 
 
-/// Copy / thumbs-up / thumbs-down / read-aloud quick actions under an
-/// assistant reply.
+/// Copy / thumbs-up / thumbs-down / read-aloud / make-PDF quick actions
+/// under an assistant reply.
 class _ActionRow extends StatelessWidget {
   const _ActionRow({
+    required this.messageId,
+    required this.text,
     required this.onCopy,
     required this.onFeedback,
-    required this.onSpeak,
     this.onRegenerate,
   });
 
+  final String messageId;
+  final String text;
   final VoidCallback onCopy;
   final ValueChanged<bool> onFeedback;
-  final VoidCallback onSpeak;
   final VoidCallback? onRegenerate;
 
   @override
@@ -331,7 +346,9 @@ class _ActionRow extends StatelessWidget {
             () => onFeedback(true)),
         _icon(context, Icons.thumb_down_outlined, 'Bad response',
             () => onFeedback(false)),
-        _icon(context, Icons.volume_up_outlined, 'Read aloud', onSpeak),
+        _ReadAloudButton(messageId: messageId, text: text),
+        _icon(context, Icons.picture_as_pdf_outlined, 'Make PDF',
+            () => exportMessageAsPdf(context, text: text)),
         if (onRegenerate != null)
           _icon(context, Icons.refresh_rounded, 'Regenerate', onRegenerate!),
       ].map((Widget w) => Padding(
@@ -353,6 +370,228 @@ class _ActionRow extends StatelessWidget {
       padding: EdgeInsets.zero,
       constraints: const BoxConstraints(minWidth: 30, minHeight: 28),
       onPressed: onTap,
+    );
+  }
+}
+
+/// The "Read aloud" toggle — icon and tooltip swap to a stop icon while
+/// this exact message is the one currently playing, and playback
+/// automatically flips back on completion, cancellation, or if a different
+/// message's read-aloud button is tapped instead.
+class _ReadAloudButton extends StatelessWidget {
+  const _ReadAloudButton({required this.messageId, required this.text});
+
+  final String messageId;
+  final String text;
+
+  @override
+  Widget build(BuildContext context) {
+    return ValueListenableBuilder<Object?>(
+      valueListenable: AiReadAloudController.instance.activeMessageId,
+      builder: (BuildContext context, Object? activeId, _) {
+        final bool speaking = activeId == messageId;
+        return IconButton(
+          icon: Icon(speaking
+              ? Icons.stop_circle_outlined
+              : Icons.volume_up_outlined),
+          tooltip: speaking ? 'Stop reading' : 'Read aloud',
+          visualDensity: VisualDensity.compact,
+          padding: EdgeInsets.zero,
+          constraints: const BoxConstraints(minWidth: 30, minHeight: 28),
+          onPressed: () async {
+            final ScaffoldMessengerState messenger =
+                ScaffoldMessenger.of(context);
+            try {
+              await AiReadAloudController.instance.toggle(messageId, text);
+            } on Object catch (e, st) {
+              debugPrint('Read aloud failed: $e\n$st');
+              messenger.showSnackBar(
+                SnackBar(content: Text('Could not read this aloud: $e')),
+              );
+            }
+          },
+        );
+      },
+    );
+  }
+}
+
+/// Wraps a user-sent message and, once it's tall enough to feel like a wall
+/// of text (e.g. a whole article pasted in to ask the assistant about),
+/// collapses it behind a fixed-height preview with a bottom fade and a
+/// "Show more" toggle — the same pattern ChatGPT uses. Short messages that
+/// never exceed the preview height render exactly as before, with no
+/// toggle at all.
+class _ExpandableUserText extends StatefulWidget {
+  const _ExpandableUserText({required this.text, required this.color});
+
+  final String text;
+  final Color color;
+
+  @override
+  State<_ExpandableUserText> createState() => _ExpandableUserTextState();
+}
+
+class _ExpandableUserTextState extends State<_ExpandableUserText> {
+  static const double _collapsedHeight = 220;
+
+  final GlobalKey _measureKey = GlobalKey();
+  bool _measured = false;
+  bool _overflows = false;
+  bool _expanded = false;
+
+  @override
+  void initState() {
+    super.initState();
+    WidgetsBinding.instance.addPostFrameCallback((_) => _measure());
+  }
+
+  @override
+  void didUpdateWidget(covariant _ExpandableUserText oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    if (oldWidget.text != widget.text) {
+      // Re-measure if the message content itself ever changes in place
+      // (e.g. a retried/edited message swapped in for the same bubble).
+      _measured = false;
+      WidgetsBinding.instance.addPostFrameCallback((_) => _measure());
+    }
+  }
+
+  void _measure() {
+    final RenderBox? box =
+        _measureKey.currentContext?.findRenderObject() as RenderBox?;
+    if (box == null || !mounted) return;
+    final bool overflow = box.size.height > _collapsedHeight + 8;
+    setState(() {
+      _measured = true;
+      _overflows = overflow;
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final Widget content =
+        SelectableText(widget.text, style: TextStyle(color: widget.color));
+
+    if (!_measured) {
+      // First frame only: laid out off-screen purely to measure its
+      // natural height, so there's no flash of full-length content before
+      // deciding whether it needs to collapse.
+      return Offstage(child: Container(key: _measureKey, child: content));
+    }
+
+    if (!_overflows || _expanded) {
+      return Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        mainAxisSize: MainAxisSize.min,
+        children: <Widget>[
+          content,
+          if (_overflows)
+            _ShowMoreToggle(
+              expanded: true,
+              color: widget.color,
+              onTap: () => setState(() => _expanded = false),
+            ),
+        ],
+      );
+    }
+
+    // Fades to the bubble's own background (solid primary color), not the
+    // page background — this preview sits inside the colored user bubble,
+    // not directly on the scaffold.
+    final Color fade = Theme.of(context).colorScheme.primary;
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      mainAxisSize: MainAxisSize.min,
+      children: <Widget>[
+        ClipRect(
+          child: SizedBox(
+            height: _collapsedHeight,
+            child: Stack(
+              children: <Widget>[
+                Align(
+                  alignment: Alignment.topLeft,
+                  child: OverflowBox(
+                    alignment: Alignment.topLeft,
+                    minHeight: 0,
+                    maxHeight: double.infinity,
+                    child: content,
+                  ),
+                ),
+                Positioned(
+                  left: 0,
+                  right: 0,
+                  bottom: 0,
+                  child: IgnorePointer(
+                    child: Container(
+                      height: 48,
+                      decoration: BoxDecoration(
+                        gradient: LinearGradient(
+                          begin: Alignment.topCenter,
+                          end: Alignment.bottomCenter,
+                          colors: <Color>[
+                            fade.withValues(alpha: 0),
+                            fade,
+                          ],
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ),
+        _ShowMoreToggle(
+          expanded: false,
+          color: widget.color,
+          onTap: () => setState(() => _expanded = true),
+        ),
+      ],
+    );
+  }
+}
+
+class _ShowMoreToggle extends StatelessWidget {
+  const _ShowMoreToggle({
+    required this.expanded,
+    required this.onTap,
+    this.color,
+  });
+
+  final bool expanded;
+  final VoidCallback onTap;
+  // Explicit override for when this sits inside a solid-colored bubble
+  // (e.g. the primary-colored user bubble) — falls back to the theme's
+  // primary color for the no-background assistant case.
+  final Color? color;
+
+  @override
+  Widget build(BuildContext context) {
+    final ColorScheme scheme = Theme.of(context).colorScheme;
+    final Color tint = color ?? scheme.primary;
+    return InkWell(
+      onTap: onTap,
+      borderRadius: BorderRadius.circular(8),
+      child: Padding(
+        padding: const EdgeInsets.symmetric(vertical: 6),
+        child: Row(
+          mainAxisSize: MainAxisSize.min,
+          children: <Widget>[
+            Text(
+              expanded ? 'Show less' : 'Show more',
+              style: TextStyle(color: tint, fontWeight: FontWeight.w700),
+            ),
+            Icon(
+              expanded
+                  ? Icons.keyboard_arrow_up_rounded
+                  : Icons.keyboard_arrow_down_rounded,
+              color: tint,
+              size: 20,
+            ),
+          ],
+        ),
+      ),
     );
   }
 }

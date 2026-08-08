@@ -63,11 +63,15 @@ class AiMarkdown extends StatelessWidget {
   }
 }
 
-/// A ChatGPT-style table: shaded header row, bordered cells. Text wraps
-/// within each column instead of scrolling sideways — the previous
-/// horizontal-scroll version let long cell text run off the right edge of
-/// the screen with no visual hint that there was more to see, which read as
-/// words being "hidden". Wrapping keeps every word on-screen up front.
+/// A ChatGPT-style table: shaded header row, bordered cells. Each column
+/// gets an equal share of the screen when that's roomy enough for text to
+/// wrap normally; once there isn't enough room per column for that (e.g. a
+/// 4-column Word / English / Urdu / Synonym table), squeezing columns down
+/// with FlexColumnWidth forces individual long words to snap mid-letter
+/// ("Parado" / "xically") because there's no space left to wrap at a word
+/// boundary. In that case each column instead gets a fixed, comfortable
+/// minimum width and the whole table scrolls sideways — words stay whole,
+/// you just swipe to see the rest of a wide table.
 class _MarkdownTable extends StatelessWidget {
   const _MarkdownTable({
     required this.rows,
@@ -83,30 +87,22 @@ class _MarkdownTable extends StatelessWidget {
   final TextStyle textStyle;
   final Color color;
 
+  // Below this width per column, wrapped text starts running out of room
+  // for whole words at normal font sizes — that's the threshold for
+  // switching from "shrink columns to fit" to "fixed width + scroll".
+  static const double _minComfortableColumnWidth = 108;
+
   @override
   Widget build(BuildContext context) {
     final ThemeData theme = Theme.of(context);
     final ColorScheme scheme = theme.colorScheme;
 
-    // Every column gets an equal, bounded share of the available width
-    // (rather than sizing to its own content) — that's what lets long cell
-    // text wrap onto multiple lines instead of needing horizontal scroll.
-    final int columnCount = rows.isEmpty
-        ? 0
-        : (rows.first.fields as List<dynamic>).length;
-    final Map<int, TableColumnWidth> columnWidths = <int, TableColumnWidth>{
-      for (int i = 0; i < columnCount; i++) i: const FlexColumnWidth(),
-    };
+    final int columnCount =
+        rows.isEmpty ? 0 : (rows.first.fields as List<dynamic>).length;
+    if (columnCount == 0) return const SizedBox.shrink();
 
-    return Container(
-      width: double.infinity,
-      margin: const EdgeInsets.symmetric(vertical: 8),
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(10),
-        border: Border.all(color: scheme.outlineVariant),
-      ),
-      clipBehavior: Clip.antiAlias,
-      child: Table(
+    Widget buildTable(Map<int, TableColumnWidth> columnWidths) {
+      return Table(
         columnWidths: columnWidths,
         defaultVerticalAlignment: TableCellVerticalAlignment.middle,
         border: TableBorder(
@@ -122,8 +118,8 @@ class _MarkdownTable extends StatelessWidget {
               children: <Widget>[
                 for (final dynamic cell in row.fields as List<dynamic>)
                   Padding(
-                    padding:
-                        const EdgeInsets.symmetric(horizontal: 10, vertical: 9),
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: 10, vertical: 9),
                     child: Text(
                       '${cell.data}',
                       textAlign: cell.alignment as TextAlign?,
@@ -131,15 +127,54 @@ class _MarkdownTable extends StatelessWidget {
                       style: textStyle.copyWith(
                         color: color,
                         fontSize: 13,
-                        fontWeight:
-                            row.isHeader == true ? FontWeight.w700 : FontWeight.w400,
+                        fontWeight: row.isHeader == true
+                            ? FontWeight.w700
+                            : FontWeight.w400,
                       ),
                     ),
                   ),
               ],
             ),
         ],
-      ),
+      );
+    }
+
+    return LayoutBuilder(
+      builder: (BuildContext context, BoxConstraints constraints) {
+        final double available = constraints.maxWidth.isFinite
+            ? constraints.maxWidth
+            : MediaQuery.sizeOf(context).width;
+        final bool fitsComfortably =
+            columnCount * _minComfortableColumnWidth <= available;
+
+        final Widget bordered = Container(
+          margin: const EdgeInsets.symmetric(vertical: 8),
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(10),
+            border: Border.all(color: scheme.outlineVariant),
+          ),
+          clipBehavior: Clip.antiAlias,
+          child: fitsComfortably
+              ? buildTable(<int, TableColumnWidth>{
+                  for (int i = 0; i < columnCount; i++)
+                    i: const FlexColumnWidth(),
+                })
+              : SizedBox(
+                  width: columnCount * _minComfortableColumnWidth,
+                  child: buildTable(<int, TableColumnWidth>{
+                    for (int i = 0; i < columnCount; i++)
+                      i: const FixedColumnWidth(_minComfortableColumnWidth),
+                  }),
+                ),
+        );
+
+        if (fitsComfortably) return SizedBox(width: double.infinity, child: bordered);
+
+        return SingleChildScrollView(
+          scrollDirection: Axis.horizontal,
+          child: bordered,
+        );
+      },
     );
   }
 }

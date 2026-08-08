@@ -44,12 +44,8 @@ class AiChatPage extends ConsumerWidget {
           ],
         ),
         actions: <Widget>[
-          IconButton(
-            tooltip: 'New chat',
-            icon: const Icon(Icons.add_comment_outlined),
-            onPressed: () =>
-                ref.read(aiChatControllerProvider.notifier).newChat(),
-          ),
+          _HeaderActions(currentId: currentId),
+          const SizedBox(width: 8),
         ],
       ),
       drawer: const ConversationDrawer(),
@@ -76,6 +72,123 @@ class AiChatPage extends ConsumerWidget {
       );
 }
 
+/// ChatGPT-style header actions: a small dark pill holding an edit
+/// ("new chat") icon and — once a conversation exists — an overflow menu
+/// for renaming or deleting it. Replaces the old single "add_comment_outlined"
+/// button.
+class _HeaderActions extends ConsumerWidget {
+  const _HeaderActions({required this.currentId});
+
+  final String? currentId;
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final ThemeData theme = Theme.of(context);
+    final ColorScheme scheme = theme.colorScheme;
+
+    return Container(
+      decoration: BoxDecoration(
+        color: scheme.surfaceContainerHighest.withValues(alpha: 0.55),
+        borderRadius: BorderRadius.circular(20),
+      ),
+      child: Row(
+        mainAxisSize: MainAxisSize.min,
+        children: <Widget>[
+          IconButton(
+            tooltip: 'New chat',
+            visualDensity: VisualDensity.compact,
+            icon: const Icon(Icons.edit_square, size: 20),
+            onPressed: () =>
+                ref.read(aiChatControllerProvider.notifier).newChat(),
+          ),
+          if (currentId != null)
+            PopupMenuButton<String>(
+              tooltip: 'More',
+              icon: const Icon(Icons.more_vert_rounded, size: 20),
+              onSelected: (String value) async {
+                final String id = currentId!;
+                if (value == 'rename') {
+                  await _rename(context, ref, id);
+                } else if (value == 'delete') {
+                  await _delete(context, ref, id);
+                }
+              },
+              itemBuilder: (BuildContext context) => const <PopupMenuEntry<String>>[
+                PopupMenuItem<String>(
+                  value: 'rename',
+                  child: ListTile(
+                    leading: Icon(Icons.edit_outlined),
+                    title: Text('Rename'),
+                    contentPadding: EdgeInsets.zero,
+                  ),
+                ),
+                PopupMenuItem<String>(
+                  value: 'delete',
+                  child: ListTile(
+                    leading: Icon(Icons.delete_outline),
+                    title: Text('Delete chat'),
+                    contentPadding: EdgeInsets.zero,
+                  ),
+                ),
+              ],
+            ),
+        ],
+      ),
+    );
+  }
+
+  Future<void> _rename(BuildContext context, WidgetRef ref, String id) async {
+    final TextEditingController controller = TextEditingController();
+    final String? name = await showDialog<String>(
+      context: context,
+      builder: (BuildContext context) => AlertDialog(
+        title: const Text('Rename chat'),
+        content: TextField(
+          controller: controller,
+          autofocus: true,
+          decoration: const InputDecoration(labelText: 'Title'),
+          onSubmitted: (String v) => Navigator.of(context).pop(v),
+        ),
+        actions: <Widget>[
+          TextButton(
+              onPressed: () => Navigator.of(context).pop(),
+              child: const Text('Cancel')),
+          FilledButton(
+              onPressed: () => Navigator.of(context).pop(controller.text),
+              child: const Text('Save')),
+        ],
+      ),
+    );
+    controller.dispose();
+    if (name != null && name.trim().isNotEmpty) {
+      await ref.read(aiRepositoryProvider).renameConversation(id, name);
+    }
+  }
+
+  Future<void> _delete(BuildContext context, WidgetRef ref, String id) async {
+    final bool ok = await showDialog<bool>(
+          context: context,
+          builder: (BuildContext context) => AlertDialog(
+            title: const Text('Delete chat?'),
+            content:
+                const Text('This conversation will be permanently removed.'),
+            actions: <Widget>[
+              TextButton(
+                  onPressed: () => Navigator.of(context).pop(false),
+                  child: const Text('Cancel')),
+              FilledButton(
+                  onPressed: () => Navigator.of(context).pop(true),
+                  child: const Text('Delete')),
+            ],
+          ),
+        ) ??
+        false;
+    if (!ok) return;
+    await ref.read(aiRepositoryProvider).deleteConversation(id);
+    ref.read(aiChatControllerProvider.notifier).newChat();
+  }
+}
+
 class _Welcome extends StatelessWidget {
   const _Welcome();
 
@@ -94,11 +207,6 @@ class _Welcome extends StatelessWidget {
               height: 88,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(22),
-                gradient: LinearGradient(
-                  begin: Alignment.topLeft,
-                  end: Alignment.bottomRight,
-                  colors: <Color>[scheme.primary, scheme.tertiary],
-                ),
                 boxShadow: <BoxShadow>[
                   BoxShadow(
                     color: scheme.primary.withValues(alpha: 0.35),
@@ -108,9 +216,13 @@ class _Welcome extends StatelessWidget {
                   ),
                 ],
               ),
-              alignment: Alignment.center,
-              child: Icon(Icons.auto_stories_rounded,
-                  color: scheme.onPrimary, size: 40),
+              clipBehavior: Clip.antiAlias,
+              // The app's real Sapiora logo, same footprint (88x88, 22
+              // radius) as the placeholder book icon it replaces.
+              child: Image.asset(
+                'assets/branding/app_icon.png',
+                fit: BoxFit.cover,
+              ),
             ),
             const SizedBox(height: 20),
             Text(
