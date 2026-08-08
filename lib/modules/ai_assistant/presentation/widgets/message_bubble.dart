@@ -398,8 +398,18 @@ class _ReadAloudButton extends StatelessWidget {
           visualDensity: VisualDensity.compact,
           padding: EdgeInsets.zero,
           constraints: const BoxConstraints(minWidth: 30, minHeight: 28),
-          onPressed: () =>
-              AiReadAloudController.instance.toggle(messageId, text),
+          onPressed: () async {
+            final ScaffoldMessengerState messenger =
+                ScaffoldMessenger.of(context);
+            try {
+              await AiReadAloudController.instance.toggle(messageId, text);
+            } on Object catch (e, st) {
+              debugPrint('Read aloud failed: $e\n$st');
+              messenger.showSnackBar(
+                SnackBar(content: Text('Could not read this aloud: $e')),
+              );
+            }
+          },
         );
       },
     );

@@ -111,6 +111,10 @@ class AiReadAloudController {
 
   /// Starts reading [text] aloud for [messageId], or stops it if that same
   /// message is already the one playing (tap-to-toggle).
+  ///
+  /// Throws on failure (e.g. no TTS engine/voice installed on the device)
+  /// so the caller can show the real error instead of the tap silently
+  /// doing nothing.
   Future<void> toggle(Object messageId, String text) async {
     await _ensureConfigured();
     if (activeMessageId.value == messageId) {
@@ -122,10 +126,21 @@ class AiReadAloudController {
     final String clean = stripMarkdownForPlainText(text);
     if (clean.isEmpty) return;
     activeMessageId.value = messageId;
-    await _tts.setLanguage('en-US');
-    await _tts.setSpeechRate(0.46);
-    await _tts.setPitch(1.0);
-    await _tts.speak(clean);
+    try {
+      await _tts.setLanguage('en-US');
+      await _tts.setSpeechRate(0.46);
+      await _tts.setPitch(1.0);
+      final Object? result = await _tts.speak(clean);
+      // On Android/iOS flutter_tts returns 1 for success; surface anything
+      // else as a real failure instead of silently doing nothing.
+      if (result is int && result != 1) {
+        activeMessageId.value = null;
+        throw StateError('Text-to-speech engine returned code $result.');
+      }
+    } on Object {
+      activeMessageId.value = null;
+      rethrow;
+    }
   }
 
   Future<void> stop() async {
@@ -229,9 +244,13 @@ Future<void> exportMessageAsPdf(
     await SharePlus.instance.share(
       ShareParams(files: <XFile>[XFile(path)], text: title),
     );
-  } on Object {
+  } on Object catch (e, st) {
+    // Logged for `flutter run`/`adb logcat` visibility, and shown in the
+    // snackbar too — the generic "please try again" message before this
+    // gave no way to tell what actually failed.
+    debugPrint('exportMessageAsPdf failed: $e\n$st');
     messenger.showSnackBar(
-      const SnackBar(content: Text('Could not create the PDF. Please try again.')),
+      SnackBar(content: Text('Could not create the PDF: $e')),
     );
   }
 }
