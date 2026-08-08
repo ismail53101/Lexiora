@@ -11,6 +11,36 @@ import 'package:lexiora/modules/quiz/domain/entities/quiz_question.dart';
 import 'package:lexiora/modules/quiz/domain/entities/quiz_subject.dart';
 import 'package:lexiora/modules/quiz/domain/entities/quiz_topic.dart';
 import 'package:lexiora/modules/quiz/domain/quiz_json.dart';
+import 'package:lexiora/modules/quiz/domain/repositories/question_provider.dart';
+
+/// Serves a tiny in-memory manifest + banks, standing in for the bundled
+/// `assets/quiz/` content the real LocalJsonQuestionProvider reads (assets
+/// are not available inside unit tests).
+class _FakeBundledProvider implements QuestionProvider {
+  const _FakeBundledProvider(this.banks);
+
+  final List<QuizBankManifest> banks;
+
+  @override
+  QuizContentSource get source => QuizContentSource.localJson;
+
+  @override
+  Future<bool> isAvailable() async => true;
+
+  @override
+  Future<List<QuizBankManifest>> listBanks() async => banks;
+
+  @override
+  Future<QuizImportPayload> fetchBank(String ref) async =>
+      QuizJsonParser.parse(
+        '{ "bank": { "name": "$ref" }, "questions": ['
+        ' { "type": "mcq", "prompt": "q1 of $ref",'
+        '   "options": ["A", "B", "C"], "answer": 0 },'
+        ' { "type": "mcq", "prompt": "q2 of $ref",'
+        '   "options": ["A", "B", "C"], "answer": 1 } ] }',
+        fallbackName: ref,
+      );
+}
 
 void main() {
   late AppDatabase db;
@@ -119,25 +149,41 @@ void main() {
     expect(qs.single.topicId, 't1');
   });
 
-  test('demo seeder installs exactly four subjects, idempotently', () async {
-    final QuizSeeder seeder = QuizSeeder(repo, local);
+  test('bundled seeder installs manifest subjects, idempotently', () async {
+    final _FakeBundledProvider provider = _FakeBundledProvider(
+      const <QuizBankManifest>[
+        QuizBankManifest(
+          ref: 'pakistan_affairs/economy.json',
+          name: 'Economy',
+          subject: 'Pakistan Affairs',
+          topic: 'Economy',
+        ),
+        QuizBankManifest(
+          ref: 'english/grammar.json',
+          name: 'Grammar',
+          subject: 'English',
+        ),
+      ],
+    );
+    final QuizSeeder seeder = QuizSeeder(repo, local, provider);
     await seeder.ensureSeeded();
 
     final List<QuizSubjectSummary> subs = await repo.watchSubjects().first;
-    expect(subs.length, 4);
+    expect(subs.length, 2, reason: 'one subject per manifest subject name');
 
-    // Pakistan Affairs demonstrates the topic hierarchy: 5 topics, 5 quizzes.
-    expect((await repo.watchTopics('demo_subj_pak').first).length, 5);
-    expect((await repo.watchBanksIn(subjectId: 'demo_subj_pak').first).length, 5);
+    // Pakistan Affairs demonstrates the topic hierarchy from the manifest.
+    expect((await repo.watchTopics('pakistan-affairs').first).length, 1);
+    expect((await repo.watchBanksIn(subjectId: 'pakistan-affairs').first).length,
+        1);
 
     // Every seeded subject has content.
     for (final QuizSubjectSummary s in subs) {
       expect(s.questionCount, greaterThan(0),
-          reason: '${s.subject.name} should have demo questions');
+          reason: '${s.subject.name} should have bundled questions');
     }
 
-    // Running again does not duplicate (fixed ids + version guard).
+    // Running again does not duplicate (stable slugs + version guard).
     await seeder.ensureSeeded();
-    expect((await repo.watchSubjects().first).length, 4);
+    expect((await repo.watchSubjects().first).length, 2);
   });
 }
