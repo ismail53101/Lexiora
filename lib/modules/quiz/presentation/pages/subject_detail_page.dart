@@ -94,10 +94,9 @@ class SubjectDetailPage extends ConsumerWidget {
             title: 'Practice',
             child: Column(
               children: <Widget>[
-                _action(context, Icons.play_circle_outline, 'MCQs',
-                    'Practice every question in this subject',
-                    () => context.push(
-                        '${AppRoutes.quizPlayer}?subject=$subjectId&mode=${QuizMode.practice.name}')),
+                _action(context, Icons.list_alt_rounded, 'MCQs',
+                    'Study every question — answers shown on each card',
+                    () => context.push(AppRoutes.quizMcqBrowse(subjectId))),
                 _action(context, Icons.star_border, 'Bookmarks',
                     'Your saved questions',
                     () => Navigator.of(context).push(MaterialPageRoute<void>(

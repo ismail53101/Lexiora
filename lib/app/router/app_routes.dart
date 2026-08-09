@@ -56,6 +56,10 @@ abstract final class AppRoutes {
   static const String quiz = '/quiz';
   static const String quizMcqs = '/quiz/mcqs';
   static const String quizStages = '/quiz/stages';
+  static const String quizMcqBrowseName = 'quizMcqBrowse';
+  static const String quizMcqBrowsePattern = '/quiz/mcqs/browse/:subjectId';
+  static String quizMcqBrowse(String subjectId) =>
+      '/quiz/mcqs/browse/${Uri.encodeComponent(subjectId)}';
   static const String quizSubjectName = 'quizSubject';
   static const String quizSubjectPattern = '/quiz/subject/:id';
   static String quizSubject(String id) =>

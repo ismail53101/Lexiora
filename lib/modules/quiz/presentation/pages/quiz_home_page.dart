@@ -1,25 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:lexiora/app/router/app_routes.dart';
 import 'package:lexiora/core/widgets/app_bottom_nav.dart';
-import 'package:lexiora/core/widgets/empty_state.dart';
-import 'package:lexiora/modules/quiz/domain/entities/quiz_subject.dart';
-import 'package:lexiora/modules/quiz/presentation/providers/quiz_providers.dart';
-import 'package:lexiora/modules/quiz/presentation/widgets/quiz_icons.dart';
 
-/// Quiz tab home (Phase v0.11.0). Two premium entry cards — **MCQs**
-/// (subject-wise practice) and **Quiz** (staged, timed levels) — mirroring the
-/// classic "All Modules" layout, with the subject list below for quick access.
-class QuizHomePage extends ConsumerWidget {
+/// Quiz tab home (Phase v0.12.0). Two premium entry cards — **MCQs**
+/// (study-mode, subject-wise practice with answers) and **Quiz** (staged,
+/// timed levels) — mirroring the classic "All Modules" layout. Subjects are
+/// reached from inside either card, so no separate subject list lives here.
+class QuizHomePage extends StatelessWidget {
   const QuizHomePage({super.key});
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
-    final AsyncValue<List<QuizSubjectSummary>> subjectsAsync =
-        ref.watch(quizSubjectsProvider(false));
-
+  Widget build(BuildContext context) {
     return Scaffold(
       bottomNavigationBar: const AppBottomNav(currentIndex: 2),
       appBar: AppBar(
@@ -56,93 +49,96 @@ class QuizHomePage extends ConsumerWidget {
           ),
         ],
       ),
-      body: subjectsAsync.when(
-        loading: () => const Center(child: CircularProgressIndicator()),
-        error: (_, _) => const EmptyState(
-          icon: Icons.error_outline,
-          title: 'Could not load subjects',
-          message: 'Please try again.',
-        ),
-        data: (List<QuizSubjectSummary> subjects) => ListView(
-          padding: const EdgeInsets.all(16),
-          children: <Widget>[
-            Text(
-              'Master every subject, one level at a time',
-              style: Theme.of(context).textTheme.titleLarge?.copyWith(
-                    fontWeight: FontWeight.w800,
-                  ),
-            ),
-            const SizedBox(height: 4),
-            Text(
-              'Practice subject-wise MCQs, or climb the timed stage ladder.',
-              style: Theme.of(context)
-                  .textTheme
-                  .bodyMedium
-                  ?.copyWith(color: Theme.of(context).colorScheme.onSurfaceVariant),
-            ),
-            const SizedBox(height: 16),
-            // IntrinsicHeight bounds the Row's cross axis so that
-            // CrossAxisAlignment.stretch has a real height to fill. Without it,
-            // a stretch Row inside a ListView receives an unbounded height
-            // constraint and the cards fail to lay out (blank area in release).
-            IntrinsicHeight(
-              child: Row(
-                crossAxisAlignment: CrossAxisAlignment.stretch,
-                children: <Widget>[
-                  Expanded(
-                    child: _ModuleCard(
-                      title: 'MCQs',
-                      subtitle: 'Subject-wise MCQs for test preparation',
-                      icon: Icons.list_alt_rounded,
-                      gradient: const <Color>[
-                        Color(0xFFF2B33D),
-                        Color(0xFFC77D1B),
-                      ],
-                      onTap: () => context.push(AppRoutes.quizMcqs),
-                    ),
-                  ),
-                  const SizedBox(width: 12),
-                  Expanded(
-                    child: _ModuleCard(
-                      title: 'Quiz',
-                      subtitle: 'Timed 10-question levels, stage by stage',
-                      icon: Icons.emoji_events_outlined,
-                      gradient: const <Color>[
-                        Color(0xFF5C8DF6),
-                        Color(0xFF4A56C4),
-                      ],
-                      onTap: () => context.push(AppRoutes.quizStages),
-                    ),
-                  ),
-                ],
-              ),
-            ).animate().fadeIn(duration: 250.ms).slideY(
-                  begin: 0.06,
-                  end: 0,
-                  curve: Curves.easeOut,
+      body: ListView(
+        padding: const EdgeInsets.all(16),
+        children: <Widget>[
+          Text(
+            'Master every subject, one level at a time',
+            style: Theme.of(context).textTheme.titleLarge?.copyWith(
+                  fontWeight: FontWeight.w800,
                 ),
-            const SizedBox(height: 24),
-            Text(
-              'Subjects',
-              style: Theme.of(context)
-                  .textTheme
-                  .titleMedium
-                  ?.copyWith(fontWeight: FontWeight.w700),
+          ),
+          const SizedBox(height: 4),
+          Text(
+            'Practice subject-wise MCQs, or climb the timed stage ladder.',
+            style: Theme.of(context)
+                .textTheme
+                .bodyMedium
+                ?.copyWith(color: Theme.of(context).colorScheme.onSurfaceVariant),
+          ),
+          const SizedBox(height: 20),
+          // IntrinsicHeight bounds the Row's cross axis so that
+          // CrossAxisAlignment.stretch has a real height to fill. Without it,
+          // a stretch Row inside a ListView receives an unbounded height
+          // constraint and the cards fail to lay out (blank area in release).
+          IntrinsicHeight(
+            child: Row(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: <Widget>[
+                Expanded(
+                  child: _ModuleCard(
+                    title: 'MCQs',
+                    subtitle: 'Subject-wise MCQs, answers shown as you study',
+                    icon: Icons.list_alt_rounded,
+                    gradient: const <Color>[
+                      Color(0xFFF2B33D),
+                      Color(0xFFC77D1B),
+                    ],
+                    onTap: () => context.push(AppRoutes.quizMcqs),
+                  ),
+                ),
+                const SizedBox(width: 12),
+                Expanded(
+                  child: _ModuleCard(
+                    title: 'Quiz',
+                    subtitle: 'Timed 10-question levels, stage by stage',
+                    icon: Icons.emoji_events_outlined,
+                    gradient: const <Color>[
+                      Color(0xFF5C8DF6),
+                      Color(0xFF4A56C4),
+                    ],
+                    onTap: () => context.push(AppRoutes.quizStages),
+                  ),
+                ),
+              ],
             ),
-            const SizedBox(height: 4),
-            if (subjects.isEmpty)
-              const EmptyState(
-                icon: Icons.school_outlined,
-                title: 'No subjects yet',
-                message:
-                    'Published quiz content will appear here once it is added.',
-              )
-            else
-              for (final QuizSubjectSummary s in subjects)
-                _SubjectCard(summary: s),
-            const SizedBox(height: 24),
-          ],
-        ),
+          ).animate().fadeIn(duration: 250.ms).slideY(
+                begin: 0.06,
+                end: 0,
+                curve: Curves.easeOut,
+              ),
+          const SizedBox(height: 20),
+          Container(
+            padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 14),
+            decoration: BoxDecoration(
+              color: Theme.of(context)
+                  .colorScheme
+                  .surfaceContainerHighest
+                  .withValues(alpha: 0.5),
+              borderRadius: BorderRadius.circular(16),
+            ),
+            child: Row(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: <Widget>[
+                Icon(Icons.tips_and_updates_outlined,
+                    size: 20, color: Theme.of(context).colorScheme.primary),
+                const SizedBox(width: 12),
+                Expanded(
+                  child: Text(
+                    'MCQs shows the correct answer on every card so you can '
+                    'learn while browsing. Quiz is the timed stage ladder — '
+                    'answers stay hidden until the end.',
+                    style: Theme.of(context)
+                        .textTheme
+                        .bodySmall
+                        ?.copyWith(height: 1.4),
+                  ),
+                ),
+              ],
+            ),
+          ).animate(delay: 80.ms).fadeIn(duration: 300.ms),
+          const SizedBox(height: 24),
+        ],
       ),
     );
   }
@@ -237,35 +233,6 @@ class _ModuleCard extends StatelessWidget {
             ),
           ),
         ),
-      ),
-    );
-  }
-}
-
-class _SubjectCard extends StatelessWidget {
-  const _SubjectCard({required this.summary});
-  final QuizSubjectSummary summary;
-
-  @override
-  Widget build(BuildContext context) {
-    final ThemeData theme = Theme.of(context);
-    final QuizSubject s = summary.subject;
-    final Color color = s.colorValue ?? theme.colorScheme.primary;
-    return Card(
-      margin: const EdgeInsets.symmetric(vertical: 5),
-      clipBehavior: Clip.antiAlias,
-      child: ListTile(
-        onTap: () => context.push(AppRoutes.quizSubject(s.id)),
-        leading: CircleAvatar(
-          backgroundColor: color,
-          child: Icon(quizIcon(s.icon), color: Colors.white),
-        ),
-        title: Text(s.name, style: const TextStyle(fontWeight: FontWeight.w700)),
-        subtitle: Text(<String>[
-          if (summary.topicCount > 0) '${summary.topicCount} topics',
-          '${summary.questionCount} questions',
-        ].join(' · ')),
-        trailing: const Icon(Icons.chevron_right),
       ),
     );
   }

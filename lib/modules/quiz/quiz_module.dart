@@ -13,6 +13,7 @@ import 'package:lexiora/modules/quiz/domain/entities/quiz_models.dart';
 import 'package:lexiora/modules/quiz/domain/repositories/quiz_admin_repository.dart';
 import 'package:lexiora/modules/quiz/domain/repositories/quiz_repository.dart';
 import 'package:lexiora/modules/quiz/presentation/pages/bookmarks_page.dart';
+import 'package:lexiora/modules/quiz/presentation/pages/mcq_browse_page.dart';
 import 'package:lexiora/modules/quiz/presentation/pages/quiz_analytics_page.dart';
 import 'package:lexiora/modules/quiz/presentation/pages/quiz_home_page.dart';
 import 'package:lexiora/modules/quiz/presentation/pages/quiz_player_page.dart';
@@ -75,6 +76,18 @@ class QuizModule extends FeatureModule {
           path: AppRoutes.quizStages,
           builder: (_, _) =>
               const SubjectsPage(variant: QuizSubjectsVariant.stages),
+        ),
+        GoRoute(
+          path: AppRoutes.quizMcqBrowsePattern,
+          name: AppRoutes.quizMcqBrowseName,
+          builder: (BuildContext context, GoRouterState state) {
+            final Map<String, String> q = state.uri.queryParameters;
+            return McqBrowsePage(
+              subjectId: state.pathParameters['subjectId'] ?? '',
+              topicId: q['topic'],
+              title: q['title'],
+            );
+          },
         ),
         GoRoute(
           path: AppRoutes.quizStageMapPattern,
