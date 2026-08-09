@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:math' show Random;
 
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -12,8 +13,11 @@ import 'package:lexiora/modules/quiz/presentation/widgets/quiz_common.dart';
 
 /// The timed, exam-style player for a single stage (Phase v0.11.0).
 ///
-/// Exam rules: 30 seconds per question (timeout = skipped), no instant
-/// feedback — the score, stars and review all appear on the results screen.
+/// Exam rules: 50 seconds per question (timeout = skipped), options shuffled
+/// per question so the correct answer is never predictably in position A, and
+/// instant green/red feedback — the timer FREEZES the moment the user answers,
+/// the options lock, and NEXT (or FINISH) resets the timer for the next
+/// question. The score, stars and review all appear on the results screen.
 /// Answering the last question (or the last timer expiring) submits the stage
 /// and records the attempt + stage progress.
 class StagePlayerPage extends ConsumerStatefulWidget {
@@ -37,10 +41,13 @@ class _StagePlayerPageState extends ConsumerState<StagePlayerPage> {
   final Map<int, QuizGivenAnswer> _answers = <int, QuizGivenAnswer>{};
   final Map<int, int> _timeMs = <int, int>{};
   final TextEditingController _blank = TextEditingController();
+  final Random _random = Random();
+  List<int> _displayOrder = const <int>[];
   int _index = 0;
   int _remaining = quizStageSecondsPerQuestion;
   bool _loading = true;
   bool _submitting = false;
+  bool _frozen = false;
   Timer? _timer;
   DateTime _shownAt = DateTime.now();
   DateTime _startedAt = DateTime.now();
@@ -70,9 +77,21 @@ class _StagePlayerPageState extends ConsumerState<StagePlayerPage> {
       _loading = false;
       _startedAt = DateTime.now();
       _shownAt = DateTime.now();
+      _frozen = false;
+      _prepareQuestion();
       _syncBlank();
       _startTimer();
     });
+  }
+
+  /// Shuffles the current question's options once (per question load, never
+  /// per rebuild) and keeps the display→original mapping for grading.
+  void _prepareQuestion() {
+    if (_questions.isEmpty) return;
+    final QuizQuestion q = _questions[_index];
+    final ShuffledOptions shuffled =
+        shuffleOptions(q.options, q.answerIndex, _random);
+    _displayOrder = shuffled.order;
   }
 
   void _startTimer() {
@@ -100,7 +119,9 @@ class _StagePlayerPageState extends ConsumerState<StagePlayerPage> {
       setState(() {
         _answers.remove(_index);
         _index++;
+        _frozen = false;
         _shownAt = DateTime.now();
+        _prepareQuestion();
         _syncBlank();
         _startTimer();
       });
@@ -118,6 +139,19 @@ class _StagePlayerPageState extends ConsumerState<StagePlayerPage> {
 
   void _select(QuizGivenAnswer given) {
     setState(() => _answers[_index] = given);
+    _freezeIfAnswered();
+  }
+
+  /// Stops the countdown the instant the current question is answered. The
+  /// timer stays frozen (no ticks, no negative time) until NEXT/FINISH.
+  void _freezeIfAnswered() {
+    if (_frozen) return;
+    final QuizGivenAnswer? given = _answers[_index];
+    if (given == null || given.isEmpty) return;
+    _frozen = true;
+    _timer?.cancel();
+    _accrueTime();
+    _shownAt = DateTime.now();
   }
 
   void _goNext() {
@@ -129,7 +163,9 @@ class _StagePlayerPageState extends ConsumerState<StagePlayerPage> {
     }
     setState(() {
       _index++;
+      _frozen = false;
       _shownAt = DateTime.now();
+      _prepareQuestion();
       _syncBlank();
       _startTimer();
     });
@@ -332,9 +368,12 @@ class _StagePlayerPageState extends ConsumerState<StagePlayerPage> {
     final bool answered = given != null && !given.isEmpty;
     switch (q.type) {
       case QuestionType.mcqSingle:
+        // Options are shown shuffled (fixed for this question); the displayed
+        // position maps back to the original index for grading.
         return <Widget>[
-          for (int i = 0; i < q.options.length; i++)
-            _choice(q, i, q.options[i], given),
+          for (int display = 0; display < _displayOrder.length; display++)
+            _choice(
+                q, display, q.options[_displayOrder[display]], given),
         ];
       case QuestionType.trueFalse:
         return <Widget>[
@@ -350,8 +389,10 @@ class _StagePlayerPageState extends ConsumerState<StagePlayerPage> {
               labelText: 'Your answer',
               border: OutlineInputBorder(),
             ),
-            onChanged: (String v) => setState(
-                () => _answers[_index] = QuizGivenAnswer.blank(v)),
+            onChanged: (String v) {
+              setState(() => _answers[_index] = QuizGivenAnswer.blank(v));
+              _freezeIfAnswered();
+            },
           ),
           if (answered) ...<Widget>[
             const SizedBox(height: 10),
@@ -381,17 +422,20 @@ class _StagePlayerPageState extends ConsumerState<StagePlayerPage> {
   }
 
   Widget _choice(
-      QuizQuestion q, int i, String text, QuizGivenAnswer? given) {
+      QuizQuestion q, int displayIndex, String text, QuizGivenAnswer? given) {
+    final int originalIndex = _displayOrder[displayIndex];
     final bool answered = given != null && !given.isEmpty;
-    final bool isSelected = given?.index == i;
-    final bool isAnswer = q.answerIndex == i;
+    final bool isSelected = given?.index == originalIndex;
+    final bool isAnswer = q.answerIndex == originalIndex;
     return QuizOptionCard(
       text: text,
       state: answered
           ? quizOptionStateAfterAnswer(
               isAnswer: isAnswer, isSelected: isSelected)
           : QuizOptionState.normal,
-      onTap: answered ? null : () => _select(QuizGivenAnswer.choice(i)),
+      onTap: answered
+          ? null
+          : () => _select(QuizGivenAnswer.choice(originalIndex)),
     );
   }
 

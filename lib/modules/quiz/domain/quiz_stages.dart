@@ -12,8 +12,9 @@ const int quizStagePerStage = 10;
 /// Percentage required to pass a stage and unlock the next one.
 const int quizStagePassPercent = 50;
 
-/// Seconds allowed per question inside a stage.
-const int quizStageSecondsPerQuestion = 30;
+/// Seconds allowed per question inside a stage. The timer freezes as soon as
+/// the user answers (and resets for each new question).
+const int quizStageSecondsPerQuestion = 50;
 
 /// How many stages a subject's question pool splits into (ceil division, so a
 /// trailing partial stage counts once). Returns 0 for an empty pool.

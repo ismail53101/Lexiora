@@ -394,7 +394,7 @@ class _StageCard extends StatelessWidget {
 
   String _subtitle(ThemeData theme) {
     if (locked) return 'Pass Stage $stageIndex to unlock';
-    if (progress == null) return '10 questions · 30s each';
+    if (progress == null) return '10 questions · 50s each';
     final String stars = '★' * progress!.bestStars +
         '☆' * (3 - progress!.bestStars);
     return 'Best $stars · ${progress!.attempts} attempt'

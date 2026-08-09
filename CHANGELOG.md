@@ -5,6 +5,21 @@ All notable changes to Sapiora are documented here.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.17.0] — 2026-08-09
+
+### Changed
+
+- **Quiz stage player: 50s timer, freeze-on-answer, shuffled options.** The
+  per-question countdown is now 50 seconds (was 30). The timer freezes the
+  instant the user answers — it never keeps counting down to zero while the
+  user reviews the green/red feedback. Pressing NEXT (or FINISH) resets it to
+  50 seconds for the next question. MCQ options are shuffled per question when
+  the question loads (never reshuffled on rebuild), and the correct-answer
+  reference is remapped along with the order, so the correct answer is no
+  longer predictably option A — it lands randomly across A/B/C/D while grading
+  still matches the real answer. Timeout (skipped), scoring, results, QUIT and
+  the MCQs study feed are unchanged.
+
 ## [0.16.0] — 2026-08-09
 
 ### Changed

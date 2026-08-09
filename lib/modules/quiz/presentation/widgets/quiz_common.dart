@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:lexiora/modules/quiz/domain/entities/quiz_question.dart';
 
@@ -210,6 +212,47 @@ class QuizOptionCard extends StatelessWidget {
       ),
     );
   }
+}
+
+/// A shuffled MCQ option layout: the options in display order, the display
+/// index of the correct answer, and the display→original index mapping so
+/// grading can recover the original answer reference.
+class ShuffledOptions {
+  const ShuffledOptions({
+    required this.options,
+    required this.correctDisplayIndex,
+    required this.order,
+  });
+
+  /// Options in their shuffled display order.
+  final List<String> options;
+
+  /// Display position (0-based) of the correct answer, or -1 if unknown.
+  final int correctDisplayIndex;
+
+  /// display position → original option index.
+  final List<int> order;
+
+  /// The original option index shown at [displayIndex].
+  int originalIndexOf(int displayIndex) => order[displayIndex];
+}
+
+/// Shuffle a question's options together with the correct-answer reference, so
+/// the correct answer lands on A/B/C/D at random (never assumed to be A) while
+/// grading still works against the original index. Pure and deterministic for
+/// a given [rng] — call once per question load, never per rebuild.
+ShuffledOptions shuffleOptions(
+    List<String> options, int? correctIndex, Random rng) {
+  final List<int> order =
+      List<int>.generate(options.length, (int i) => i)..shuffle(rng);
+  final int displayCorrect =
+      correctIndex == null ? -1 : order.indexOf(correctIndex);
+  return ShuffledOptions(
+    options:
+        List<String>.generate(options.length, (int i) => options[order[i]]),
+    correctDisplayIndex: displayCorrect,
+    order: order,
+  );
 }
 
 /// A prominent question container (rounded, bordered, comfortable padding,
