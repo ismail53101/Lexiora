@@ -8,7 +8,6 @@ import 'package:lexiora/modules/quiz/domain/entities/quiz_subject.dart';
 import 'package:lexiora/modules/quiz/domain/entities/quiz_topic.dart';
 import 'package:lexiora/modules/quiz/presentation/pages/bookmarks_page.dart';
 import 'package:lexiora/modules/quiz/presentation/pages/subject_stats_page.dart';
-import 'package:lexiora/modules/quiz/presentation/pages/wrong_answers_page.dart';
 import 'package:lexiora/modules/quiz/presentation/providers/quiz_providers.dart';
 import 'package:lexiora/modules/quiz/presentation/widgets/quiz_common.dart';
 import 'package:lexiora/modules/quiz/presentation/widgets/quiz_icons.dart';
@@ -108,10 +107,16 @@ class SubjectDetailPage extends ConsumerWidget {
                     'Your saved questions',
                     () => Navigator.of(context).push(MaterialPageRoute<void>(
                         builder: (_) => BookmarksPage(subjectId: subjectId)))),
+                // Wrong Answers opens the answers-shown study feed scoped to
+                // this subject's wrong-answer notebook — same cards, search,
+                // filters and "Read more >>" as the MCQs row. The old page
+                // launched the interactive practice player, which belongs to
+                // the Quiz section only.
                 _action(context, Icons.error_outline, 'Wrong Answers',
-                    'Review and retry your mistakes',
-                    () => Navigator.of(context).push(MaterialPageRoute<void>(
-                        builder: (_) => WrongAnswersPage(subjectId: subjectId)))),
+                    'Your missed questions — answers shown on each card',
+                    () => context.push(
+                        '${AppRoutes.quizMcqBrowse(subjectId)}'
+                        '?wrong=1&title=${Uri.encodeComponent('Wrong Answers')}')),
                 _action(context, Icons.bar_chart, 'Statistics',
                     'Your progress in this subject',
                     () => Navigator.of(context).push(MaterialPageRoute<void>(

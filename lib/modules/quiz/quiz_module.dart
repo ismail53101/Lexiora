@@ -86,6 +86,7 @@ class QuizModule extends FeatureModule {
               subjectId: state.pathParameters['subjectId'] ?? '',
               topicId: q['topic'],
               title: q['title'],
+              onlyWrong: q['wrong'] == '1',
             );
           },
         ),

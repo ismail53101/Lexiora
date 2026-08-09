@@ -22,11 +22,17 @@ class McqBrowsePage extends ConsumerStatefulWidget {
     required this.subjectId,
     this.topicId,
     this.title,
+    this.onlyWrong = false,
   });
 
   final String subjectId;
   final String? topicId;
   final String? title;
+
+  /// When true, the feed is scoped to this subject's wrong-answer notebook
+  /// (same study cards, answers still shown). Used by the subject page's
+  /// "Wrong Answers" row instead of the old practice-player notebook.
+  final bool onlyWrong;
 
   @override
   ConsumerState<McqBrowsePage> createState() => _McqBrowsePageState();
@@ -63,6 +69,7 @@ class _McqBrowsePageState extends ConsumerState<McqBrowsePage> {
         difficulty: _difficulty,
         type: _type,
         onlyBookmarked: _onlyBookmarked,
+        onlyWrong: widget.onlyWrong,
       );
 
   @override
@@ -296,14 +303,21 @@ class _McqBrowsePageState extends ConsumerState<McqBrowsePage> {
                       )
                     : _questions.isEmpty
                         ? EmptyState(
-                            icon: Icons.search_off_outlined,
+                            icon: widget.onlyWrong
+                                ? Icons.check_circle_outline
+                                : Icons.search_off_outlined,
                             title: _hasActiveFilters
                                 ? 'No matches'
-                                : 'No questions yet',
+                                : widget.onlyWrong
+                                    ? 'No wrong answers yet'
+                                    : 'No questions yet',
                             message: _hasActiveFilters
                                 ? 'No questions match your search or filters.'
-                                : 'Questions for this selection are added '
-                                    'from the published content.',
+                                : widget.onlyWrong
+                                    ? 'Questions you miss in the Quiz section are '
+                                        'collected here for revision.'
+                                    : 'Questions for this selection are added '
+                                        'from the published content.',
                           )
                         : NotificationListener<ScrollNotification>(
                             onNotification: (ScrollNotification n) {
@@ -318,7 +332,9 @@ class _McqBrowsePageState extends ConsumerState<McqBrowsePage> {
                                 if (index == 0) {
                                   return _HeaderBanner(
                                     count: _total,
-                                    scoped: widget.topicId != null,
+                                    scoped: widget.topicId != null ||
+                                        widget.onlyWrong,
+                                    wrong: widget.onlyWrong,
                                     filtered: _hasActiveFilters,
                                   );
                                 }
@@ -350,11 +366,13 @@ class _HeaderBanner extends StatelessWidget {
   const _HeaderBanner({
     required this.count,
     required this.scoped,
+    required this.wrong,
     required this.filtered,
   });
 
   final int count;
   final bool scoped;
+  final bool wrong;
   final bool filtered;
 
   @override
@@ -378,7 +396,9 @@ class _HeaderBanner extends StatelessWidget {
             child: Text(
               filtered
                   ? '$count matching · correct answers shown'
-                  : '$count questions · correct answers shown',
+                  : wrong
+                      ? '$count wrong answers · correct answers shown'
+                      : '$count questions · correct answers shown',
               style: theme.textTheme.bodyMedium?.copyWith(
                 fontWeight: FontWeight.w700,
                 color: theme.colorScheme.primary,

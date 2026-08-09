@@ -1,12 +1,25 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:go_router/go_router.dart';
+import 'package:lexiora/app/router/app_routes.dart';
 import 'package:lexiora/modules/quiz/domain/entities/quiz_models.dart';
+import 'package:lexiora/modules/quiz/domain/entities/quiz_topic.dart';
 import 'package:lexiora/modules/quiz/presentation/providers/quiz_providers.dart';
 import 'package:lexiora/modules/quiz/presentation/widgets/quiz_common.dart';
 
-typedef _SubjStats = ({int total, int bookmarks, int wrong, double accuracy});
+typedef _TopicRow = ({String id, String name, int count, int bookmarks});
+typedef _SubjStats = ({
+  int total,
+  int bookmarks,
+  int wrong,
+  double accuracy,
+  bool hasAccuracy,
+  List<_TopicRow> topics,
+});
 
-/// Per-subject statistics (questions, bookmarks, wrong answers, accuracy).
+/// Per-subject study overview: questions, bookmarks, topic breakdown, and —
+/// only when real data exists — wrong answers and accuracy. Nothing here
+/// depends on timed quizzes, so the page is useful from day one.
 class SubjectStatsPage extends ConsumerStatefulWidget {
   const SubjectStatsPage(
       {super.key, required this.subjectId, required this.subjectName});
@@ -35,14 +48,43 @@ class _SubjectStatsPageState extends ConsumerState<SubjectStatsPage> {
         QuizFilter(subjectId: widget.subjectId, onlyBookmarked: true));
     final int wrong = await repo.countQuestions(
         QuizFilter(subjectId: widget.subjectId, onlyWrong: true));
+
     double accuracy = 0;
+    bool hasAccuracy = false;
     for (final SubjectAccuracy a in await repo.subjectAccuracies()) {
-      if (a.subject.toLowerCase() == widget.subjectName.toLowerCase()) {
+      if (a.subject.toLowerCase() == widget.subjectName.toLowerCase() &&
+          a.total > 0) {
         accuracy = a.accuracy;
+        hasAccuracy = true;
         break;
       }
     }
-    return (total: total, bookmarks: bookmarks, wrong: wrong, accuracy: accuracy);
+
+    final List<QuizTopicSummary> topics =
+        await ref.read(quizTopicsProvider(widget.subjectId).future);
+    final List<_TopicRow> rows = <_TopicRow>[];
+    for (final QuizTopicSummary t in topics) {
+      final int b = await repo.countQuestions(QuizFilter(
+          subjectId: widget.subjectId,
+          topicId: t.topic.id,
+          onlyBookmarked: true));
+      rows.add((
+        id: t.topic.id,
+        name: t.topic.name,
+        count: t.questionCount,
+        bookmarks: b,
+      ));
+    }
+    rows.sort((_TopicRow a, _TopicRow b) => b.count.compareTo(a.count));
+
+    return (
+      total: total,
+      bookmarks: bookmarks,
+      wrong: wrong,
+      accuracy: accuracy,
+      hasAccuracy: hasAccuracy,
+      topics: rows,
+    );
   }
 
   @override
@@ -60,10 +102,14 @@ class _SubjectStatsPageState extends ConsumerState<SubjectStatsPage> {
               <(IconData, String, String)>[
             (Icons.help_outline, '${s.total}', 'Questions'),
             (Icons.star_border, '${s.bookmarks}', 'Bookmarked'),
-            (Icons.error_outline, '${s.wrong}', 'Wrong'),
-            (Icons.percent, '${s.accuracy.toStringAsFixed(0)}%', 'Accuracy'),
+            (Icons.category_outlined, '${s.topics.length}', 'Topics'),
+            if (s.wrong > 0)
+              (Icons.error_outline, '${s.wrong}', 'Wrong'),
+            if (s.hasAccuracy)
+              (Icons.percent, '${s.accuracy.toStringAsFixed(0)}%', 'Accuracy'),
           ];
           return ListView(
+            padding: const EdgeInsets.symmetric(vertical: 8),
             children: <Widget>[
               QuizSectionCard(
                 icon: Icons.insights,
@@ -83,6 +129,31 @@ class _SubjectStatsPageState extends ConsumerState<SubjectStatsPage> {
                   },
                 ),
               ),
+              if (s.topics.isNotEmpty)
+                QuizSectionCard(
+                  icon: Icons.folder_outlined,
+                  title: 'By topic',
+                  child: Column(
+                    children: <Widget>[
+                      for (final _TopicRow t in s.topics)
+                        ListTile(
+                          contentPadding: EdgeInsets.zero,
+                          leading: const Icon(Icons.chevron_right),
+                          title: Text(t.name,
+                              style:
+                                  const TextStyle(fontWeight: FontWeight.w600)),
+                          subtitle: Text(t.bookmarks > 0
+                              ? '${t.count} questions · '
+                                  '${t.bookmarks} bookmarked'
+                              : '${t.count} questions'),
+                          onTap: () => context.push(
+                              '${AppRoutes.quizMcqBrowse(widget.subjectId)}'
+                              '?topic=${Uri.encodeComponent(t.id)}'
+                              '&title=${Uri.encodeComponent(t.name)}'),
+                        ),
+                    ],
+                  ),
+                ),
               const SizedBox(height: 24),
             ],
           );

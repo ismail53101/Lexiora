@@ -3,7 +3,7 @@ description: "Lexiora — a premium, offline-first study & language-learning pla
 publish_to: "none"
 
 # Semantic version. The `+N` suffix is the Android versionCode.
-version: 0.18.0+47
+version: 0.19.0+48
 
 environment:
   sdk: ">=3.10.0 <4.0.0"

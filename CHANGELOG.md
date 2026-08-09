@@ -5,6 +5,23 @@ All notable changes to Sapiora are documented here.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.19.0] — 2026-08-09
+
+### Changed
+
+- **Wrong Answers is now a study feed, not a practice notebook.** Tapping
+  Wrong Answers on a subject page opens the same answers-shown MCQs feed
+  scoped to that subject's wrong-answer notebook — the correct answer is
+  already marked on every card, with search, filters, bookmarks and
+  "Read more >>" explanations. The old page (a bare list plus a "Retry all"
+  button that launched the interactive practice player) is gone from the
+  MCQs section: that behaviour belongs to the Quiz section only.
+- **Statistics page rebuilt to be useful from day one.** The subject stats
+  page now always shows Questions, Bookmarked and Topics, plus a per-topic
+  breakdown with bookmark counts (tap a topic to open its study feed). Wrong
+  and Accuracy tiles only appear when real data exists, so the page never
+  shows dead zero tiles.
+
 ## [0.18.0] — 2026-08-09
 
 ### Changed
