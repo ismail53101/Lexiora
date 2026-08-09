@@ -63,7 +63,14 @@ class SubjectDetailPage extends ConsumerWidget {
                       title: Text(t.topic.name),
                       subtitle: Text('${t.questionCount} questions'),
                       trailing: const Icon(Icons.chevron_right),
-                      onTap: () => context.push(AppRoutes.quizTopic(t.topic.id)),
+                      // Topics open the same answers-shown study feed as the
+                      // Practice -> MCQs row, scoped to this topic. The MCQs
+                      // section is a learning surface only; the interactive
+                      // practice player lives in the Quiz section instead.
+                      onTap: () => context.push(
+                          '${AppRoutes.quizMcqBrowse(subjectId)}'
+                          '?topic=${Uri.encodeComponent(t.topic.id)}'
+                          '&title=${Uri.encodeComponent(t.topic.name)}'),
                     ),
                 ],
               ),

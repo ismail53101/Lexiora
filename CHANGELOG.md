@@ -5,6 +5,21 @@ All notable changes to Sapiora are documented here.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.18.0] — 2026-08-09
+
+### Changed
+
+- **Every MCQs entry opens the answers-shown study feed.** Tapping a topic on
+  a subject page (e.g. English → Synonyms) now opens the same study-mode feed
+  as the Practice → MCQs row: a scrollable list of question cards with the
+  correct answer already marked in the accent colour (bold + faint tint),
+  search, filters, bookmarks and "Read more >>" explanations — scoped to that
+  topic's questions. The interactive practice player (green/red feedback,
+  question counter, Previous/Skip/Next, timer) is no longer reachable from the
+  MCQs section: that behaviour belongs to the Quiz section only, so the two
+  modes can never be mixed. No question data was touched; the Quiz (staged)
+  section is completely unchanged.
+
 ## [0.17.0] — 2026-08-09
 
 ### Changed
