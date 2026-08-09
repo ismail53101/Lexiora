@@ -69,7 +69,7 @@ class _ImportPageState extends ConsumerState<ImportPage> {
                 ButtonSegment<ImportSource>(
                     value: ImportSource.vocabulary, label: Text('Vocabulary')),
                 ButtonSegment<ImportSource>(
-                    value: ImportSource.studyHub, label: Text('Study Hub')),
+                    value: ImportSource.studyHub, label: Text('Study Planner')),
               ],
               selected: <ImportSource>{_source},
               onSelectionChanged: (Set<ImportSource> s) {

@@ -46,9 +46,9 @@ class _StudyTimerCardState extends ConsumerState<StudyTimerCard> {
             selected: <int>{_mode},
             onSelectionChanged: (Set<int> s) => setState(() => _mode = s.first),
           ),
-          const SizedBox(height: 16),
+          const SizedBox(height: 10),
           _mode == 0 ? const _PomodoroBody() : const _ManualBody(),
-          const SizedBox(height: 12),
+          const SizedBox(height: 8),
           Text('Studied today: ${formatDuration(minutesToday)}',
               style: theme.textTheme.bodySmall
                   ?.copyWith(color: theme.colorScheme.onSurfaceVariant)),
@@ -91,11 +91,11 @@ class _PomodoroBody extends ConsumerWidget {
             ),
           ],
         ),
-        const SizedBox(height: 16),
+        const SizedBox(height: 10),
         ProgressRing(
           value: state.progress,
-          size: 168,
-          strokeWidth: 12,
+          size: 132,
+          strokeWidth: 10,
           color: state.isFocus
               ? theme.colorScheme.primary
               : theme.colorScheme.tertiary,
@@ -111,7 +111,7 @@ class _PomodoroBody extends ConsumerWidget {
             ],
           ),
         ),
-        const SizedBox(height: 16),
+        const SizedBox(height: 10),
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
@@ -199,8 +199,8 @@ class _ManualBody extends ConsumerWidget {
     return Column(
       children: <Widget>[
         Container(
-          width: 168,
-          height: 168,
+          width: 132,
+          height: 132,
           alignment: Alignment.center,
           decoration: BoxDecoration(
             shape: BoxShape.circle,
@@ -218,7 +218,7 @@ class _ManualBody extends ConsumerWidget {
             ],
           ),
         ),
-        const SizedBox(height: 16),
+        const SizedBox(height: 10),
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[

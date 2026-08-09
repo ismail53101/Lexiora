@@ -28,7 +28,7 @@ class StudyHubModule extends FeatureModule {
   String get id => 'study_hub';
 
   @override
-  String get name => 'Study Hub';
+  String get name => 'Study Planner';
 
   @override
   void registerDependencies(GetIt getIt) {
@@ -77,7 +77,7 @@ class StudyHubModule extends FeatureModule {
   List<HomeDestination> homeDestinations(GetIt getIt) => const <HomeDestination>[
         HomeDestination(
           id: 'study_hub',
-          label: 'Study Hub',
+          label: 'Study Planner',
           subtitle: 'Plan, track & focus',
           icon: Icons.school_outlined,
           routePath: AppRoutes.studyHub,
