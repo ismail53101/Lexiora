@@ -5,6 +5,21 @@ All notable changes to Sapiora are documented here.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.15.0] — 2026-08-09
+
+### Changed
+
+- **Quiz stages give instant feedback.** The Quiz (stage) player now behaves
+  like the reference interactive test: select an option and the correct answer
+  turns green immediately, a picked-wrong answer turns red, and the actual
+  correct answer also turns green. All four options lock after answering — no
+  changing, no multiple selections. **NEXT / FINISH is disabled until you
+  answer** (the 30s timer still auto-advances unanswered questions as before),
+  the counter shows `1/10` style numbering, and the question now sits in a
+  prominent rounded, bordered card that wraps long questions. QUIT, the timer,
+  scoring, stage progress and the results screen are unchanged. The MCQs
+  browse section keeps showing answers upfront — the two modes stay separate.
+
 ## [0.14.0] — 2026-08-09
 
 ### Changed

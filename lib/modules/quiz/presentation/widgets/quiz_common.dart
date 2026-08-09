@@ -97,6 +97,18 @@ enum QuizOptionState {
   wrong,
 }
 
+/// The option-card state once the user has answered: the correct option turns
+/// green, a picked-wrong option turns red, everything else stays neutral.
+/// Pure and position-independent — the answer comes from the question data.
+QuizOptionState quizOptionStateAfterAnswer({
+  required bool isAnswer,
+  required bool isSelected,
+}) {
+  if (isAnswer) return QuizOptionState.correct;
+  if (isSelected) return QuizOptionState.wrong;
+  return QuizOptionState.normal;
+}
+
 /// A shared answer-option card used by every MCQ surface (practice player,
 /// stage player, review) so the two quiz screens stay pixel-consistent.
 /// The correct/wrong states are deliberately high-contrast and unmistakable.
@@ -194,6 +206,38 @@ class QuizOptionCard extends StatelessWidget {
               ],
             ),
           ),
+        ),
+      ),
+    );
+  }
+}
+
+/// A prominent question container (rounded, bordered, comfortable padding,
+/// centered bold text). Long questions wrap naturally — no fixed heights.
+class QuizQuestionCard extends StatelessWidget {
+  const QuizQuestionCard({super.key, required this.prompt});
+
+  final String prompt;
+
+  @override
+  Widget build(BuildContext context) {
+    final ThemeData theme = Theme.of(context);
+    return Container(
+      width: double.infinity,
+      padding: const EdgeInsets.symmetric(horizontal: 18, vertical: 20),
+      decoration: BoxDecoration(
+        color: theme.colorScheme.surfaceContainerHighest.withValues(alpha: 0.45),
+        borderRadius: BorderRadius.circular(16),
+        border: Border.all(
+          color: theme.colorScheme.primary.withValues(alpha: 0.35),
+        ),
+      ),
+      child: Text(
+        prompt,
+        textAlign: TextAlign.center,
+        style: theme.textTheme.titleLarge?.copyWith(
+          fontWeight: FontWeight.w800,
+          height: 1.35,
         ),
       ),
     );

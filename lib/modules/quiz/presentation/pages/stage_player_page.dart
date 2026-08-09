@@ -223,6 +223,7 @@ class _StagePlayerPageState extends ConsumerState<StagePlayerPage> {
     final QuizQuestion q = _questions[_index];
     final bool isLast = _index == _questions.length - 1;
     final QuizGivenAnswer? given = _answers[_index];
+    final bool answered = given != null && !given.isEmpty;
 
     return PopScope(
       canPop: false,
@@ -282,14 +283,16 @@ class _StagePlayerPageState extends ConsumerState<StagePlayerPage> {
                 ),
                 const Spacer(),
                 Text(
-                  'Question ${_index + 1} of ${_questions.length}',
-                  style: theme.textTheme.labelMedium
-                      ?.copyWith(color: theme.colorScheme.onSurfaceVariant),
+                  '${_index + 1}/${_questions.length}',
+                  style: theme.textTheme.labelMedium?.copyWith(
+                    color: theme.colorScheme.onSurfaceVariant,
+                    fontWeight: FontWeight.w700,
+                  ),
                 ),
               ],
             ),
             const SizedBox(height: 16),
-            Text(q.prompt, style: theme.textTheme.titleLarge),
+            QuizQuestionCard(prompt: q.prompt),
             const SizedBox(height: 20),
             ..._answerArea(theme, q, given),
           ],
@@ -306,7 +309,7 @@ class _StagePlayerPageState extends ConsumerState<StagePlayerPage> {
                 ),
                 const Spacer(),
                 FilledButton.icon(
-                  onPressed: _submitting ? null : _goNext,
+                  onPressed: _submitting ? null : (answered ? _goNext : null),
                   icon: Icon(isLast ? Icons.done_all : Icons.arrow_forward),
                   label: Text(isLast ? 'FINISH' : 'NEXT'),
                 ),
@@ -326,6 +329,7 @@ class _StagePlayerPageState extends ConsumerState<StagePlayerPage> {
 
   List<Widget> _answerArea(
       ThemeData theme, QuizQuestion q, QuizGivenAnswer? given) {
+    final bool answered = given != null && !given.isEmpty;
     switch (q.type) {
       case QuestionType.mcqSingle:
         return <Widget>[
@@ -341,12 +345,28 @@ class _StagePlayerPageState extends ConsumerState<StagePlayerPage> {
         return <Widget>[
           TextField(
             controller: _blank,
+            enabled: !answered,
             decoration: const InputDecoration(
               labelText: 'Your answer',
               border: OutlineInputBorder(),
             ),
-            onChanged: (String v) => _answers[_index] = QuizGivenAnswer.blank(v),
+            onChanged: (String v) => setState(
+                () => _answers[_index] = QuizGivenAnswer.blank(v)),
           ),
+          if (answered) ...<Widget>[
+            const SizedBox(height: 10),
+            Text(
+              q.isCorrect(given!)
+                  ? 'Correct ✓'
+                  : 'Correct answer: ${q.answerTexts.join(', ')}',
+              style: theme.textTheme.bodyMedium?.copyWith(
+                color: q.isCorrect(given!)
+                    ? quizCorrectColor
+                    : theme.colorScheme.error,
+                fontWeight: FontWeight.w700,
+              ),
+            ),
+          ],
         ];
       case QuestionType.matching:
       case QuestionType.multiCorrect:
@@ -362,21 +382,31 @@ class _StagePlayerPageState extends ConsumerState<StagePlayerPage> {
 
   Widget _choice(
       QuizQuestion q, int i, String text, QuizGivenAnswer? given) {
+    final bool answered = given != null && !given.isEmpty;
     final bool isSelected = given?.index == i;
+    final bool isAnswer = q.answerIndex == i;
     return QuizOptionCard(
       text: text,
-      state: isSelected ? QuizOptionState.selected : QuizOptionState.normal,
-      onTap: () => _select(QuizGivenAnswer.choice(i)),
+      state: answered
+          ? quizOptionStateAfterAnswer(
+              isAnswer: isAnswer, isSelected: isSelected)
+          : QuizOptionState.normal,
+      onTap: answered ? null : () => _select(QuizGivenAnswer.choice(i)),
     );
   }
 
   Widget _boolChoice(QuizQuestion q, bool value, String text,
       QuizGivenAnswer? given) {
+    final bool answered = given != null && !given.isEmpty;
     final bool isSelected = given?.boolValue == value;
+    final bool isAnswer = q.answerBool == value;
     return QuizOptionCard(
       text: text,
-      state: isSelected ? QuizOptionState.selected : QuizOptionState.normal,
-      onTap: () => _select(QuizGivenAnswer.boolean(value)),
+      state: answered
+          ? quizOptionStateAfterAnswer(
+              isAnswer: isAnswer, isSelected: isSelected)
+          : QuizOptionState.normal,
+      onTap: answered ? null : () => _select(QuizGivenAnswer.boolean(value)),
     );
   }
 }
