@@ -5,6 +5,17 @@ All notable changes to Sapiora are documented here.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.11.1] — 2026-08-09
+
+### Fixed
+
+- **Quiz home cards no longer disappear.** The MCQs / Quiz cards on the Quiz
+  tab used `CrossAxisAlignment.stretch` inside a `ListView`, which hands the
+  cards an unbounded (infinite) height constraint — Flutter's flex layout then
+  produced an infinite-height child and the whole card row (and everything
+  below it) failed to lay out in the release build. The row is now wrapped in
+  `IntrinsicHeight` so both cards size to a real, equal height.
+
 ## [0.11.0] — 2026-08-08
 
 **Staged Quiz — play the existing 5,243-question banks as a premium level

@@ -81,35 +81,41 @@ class QuizHomePage extends ConsumerWidget {
                   ?.copyWith(color: Theme.of(context).colorScheme.onSurfaceVariant),
             ),
             const SizedBox(height: 16),
-            Row(
-              crossAxisAlignment: CrossAxisAlignment.stretch,
-              children: <Widget>[
-                Expanded(
-                  child: _ModuleCard(
-                    title: 'MCQs',
-                    subtitle: 'Subject-wise MCQs for test preparation',
-                    icon: Icons.list_alt_rounded,
-                    gradient: const <Color>[
-                      Color(0xFFF2B33D),
-                      Color(0xFFC77D1B),
-                    ],
-                    onTap: () => context.push(AppRoutes.quizMcqs),
+            // IntrinsicHeight bounds the Row's cross axis so that
+            // CrossAxisAlignment.stretch has a real height to fill. Without it,
+            // a stretch Row inside a ListView receives an unbounded height
+            // constraint and the cards fail to lay out (blank area in release).
+            IntrinsicHeight(
+              child: Row(
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: <Widget>[
+                  Expanded(
+                    child: _ModuleCard(
+                      title: 'MCQs',
+                      subtitle: 'Subject-wise MCQs for test preparation',
+                      icon: Icons.list_alt_rounded,
+                      gradient: const <Color>[
+                        Color(0xFFF2B33D),
+                        Color(0xFFC77D1B),
+                      ],
+                      onTap: () => context.push(AppRoutes.quizMcqs),
+                    ),
                   ),
-                ),
-                const SizedBox(width: 12),
-                Expanded(
-                  child: _ModuleCard(
-                    title: 'Quiz',
-                    subtitle: 'Timed 10-question levels, stage by stage',
-                    icon: Icons.emoji_events_outlined,
-                    gradient: const <Color>[
-                      Color(0xFF5C8DF6),
-                      Color(0xFF4A56C4),
-                    ],
-                    onTap: () => context.push(AppRoutes.quizStages),
+                  const SizedBox(width: 12),
+                  Expanded(
+                    child: _ModuleCard(
+                      title: 'Quiz',
+                      subtitle: 'Timed 10-question levels, stage by stage',
+                      icon: Icons.emoji_events_outlined,
+                      gradient: const <Color>[
+                        Color(0xFF5C8DF6),
+                        Color(0xFF4A56C4),
+                      ],
+                      onTap: () => context.push(AppRoutes.quizStages),
+                    ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ).animate().fadeIn(duration: 250.ms).slideY(
                   begin: 0.06,
                   end: 0,
