@@ -539,15 +539,15 @@ class _McqCard extends StatelessWidget {
             width: double.infinity,
             padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 10),
             decoration: BoxDecoration(
-              color: theme.colorScheme.primary.withValues(alpha: 0.10),
+              color: quizCorrectColor.withValues(alpha: 0.10),
               borderRadius: BorderRadius.circular(10),
               border: Border.all(
-                  color: theme.colorScheme.primary.withValues(alpha: 0.35)),
+                  color: quizCorrectColor.withValues(alpha: 0.35)),
             ),
             child: Row(
               children: <Widget>[
                 Icon(Icons.check_circle_rounded,
-                    size: 18, color: theme.colorScheme.primary),
+                    size: 18, color: quizCorrectColor),
                 const SizedBox(width: 8),
                 Expanded(
                   child: Text.rich(
@@ -564,7 +564,7 @@ class _McqCard extends StatelessWidget {
                           text: q.answerTexts.join(', '),
                           style: theme.textTheme.bodyMedium?.copyWith(
                             fontWeight: FontWeight.w700,
-                            color: theme.colorScheme.primary,
+                            color: quizCorrectColor,
                           ),
                         ),
                       ],
@@ -611,12 +611,12 @@ class _AnswerRow extends StatelessWidget {
       padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 10),
       decoration: BoxDecoration(
         color: isAnswer
-            ? theme.colorScheme.primary.withValues(alpha: 0.12)
+            ? quizCorrectColor.withValues(alpha: 0.12)
             : theme.colorScheme.surfaceContainerHighest.withValues(alpha: 0.35),
         borderRadius: BorderRadius.circular(10),
         border: isAnswer
             ? Border.all(
-                color: theme.colorScheme.primary.withValues(alpha: 0.5))
+                color: quizCorrectColor.withValues(alpha: 0.5))
             : null,
       ),
       child: Row(
@@ -628,7 +628,7 @@ class _AnswerRow extends StatelessWidget {
                 : Icons.radio_button_unchecked,
             size: 19,
             color: isAnswer
-                ? theme.colorScheme.primary
+                ? quizCorrectColor
                 : theme.colorScheme.onSurfaceVariant,
           ),
           const SizedBox(width: 10),
@@ -638,7 +638,7 @@ class _AnswerRow extends StatelessWidget {
               style: theme.textTheme.bodyMedium?.copyWith(
                 fontWeight: isAnswer ? FontWeight.w800 : FontWeight.w500,
                 color: isAnswer
-                    ? theme.colorScheme.primary
+                    ? quizCorrectColor
                     : theme.colorScheme.onSurface,
               ),
             ),

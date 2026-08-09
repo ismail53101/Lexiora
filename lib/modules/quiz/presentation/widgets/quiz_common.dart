@@ -76,3 +76,126 @@ class QuestionTypeChip extends StatelessWidget {
     );
   }
 }
+
+/// Semantic colour for the correct answer. Mirrors the reference app's
+/// green-correct / red-wrong feedback language, inside the dark theme, so a
+/// correct highlight is unmistakable on every MCQ surface.
+const Color quizCorrectColor = Color(0xFF2E7D32);
+
+/// Visual state of a single answer option card.
+enum QuizOptionState {
+  /// Idle — dark surface card with an empty radio button.
+  normal,
+
+  /// Picked but not yet revealed (exam/stage selection).
+  selected,
+
+  /// Revealed as the correct answer — solid green, bold white text, check.
+  correct,
+
+  /// Revealed as a picked-but-wrong answer — solid error red, bold white text.
+  wrong,
+}
+
+/// A shared answer-option card used by every MCQ surface (practice player,
+/// stage player, review) so the two quiz screens stay pixel-consistent.
+/// The correct/wrong states are deliberately high-contrast and unmistakable.
+class QuizOptionCard extends StatelessWidget {
+  const QuizOptionCard({
+    super.key,
+    required this.text,
+    this.state = QuizOptionState.normal,
+    this.onTap,
+    this.padding = const EdgeInsets.symmetric(horizontal: 14, vertical: 14),
+  });
+
+  final String text;
+  final QuizOptionState state;
+  final VoidCallback? onTap;
+  final EdgeInsetsGeometry padding;
+
+  @override
+  Widget build(BuildContext context) {
+    final ThemeData theme = Theme.of(context);
+    final bool correct = state == QuizOptionState.correct;
+    final bool wrong = state == QuizOptionState.wrong;
+    final bool selected = state == QuizOptionState.selected;
+
+    final Color bg;
+    if (correct) {
+      bg = quizCorrectColor;
+    } else if (wrong) {
+      bg = theme.colorScheme.error;
+    } else if (selected) {
+      bg = theme.colorScheme.secondaryContainer;
+    } else {
+      bg = theme.colorScheme.surfaceContainerHighest.withValues(alpha: 0.4);
+    }
+
+    final Color iconColor = (correct || wrong)
+        ? Colors.white
+        : selected
+            ? theme.colorScheme.primary
+            : theme.colorScheme.onSurfaceVariant;
+    final Color textColor =
+        (correct || wrong) ? Colors.white : theme.colorScheme.onSurface;
+    final bool emphasized = correct || wrong;
+
+    return Padding(
+      padding: const EdgeInsets.only(bottom: 10),
+      child: Material(
+        color: bg,
+        borderRadius: BorderRadius.circular(12),
+        clipBehavior: Clip.antiAlias,
+        child: InkWell(
+          onTap: onTap,
+          child: Padding(
+            padding: padding,
+            child: Row(
+              children: <Widget>[
+                Icon(
+                  correct
+                      ? Icons.check_circle_rounded
+                      : wrong
+                          ? Icons.cancel_rounded
+                          : selected
+                              ? Icons.radio_button_checked
+                              : Icons.radio_button_unchecked,
+                  size: 20,
+                  color: iconColor,
+                ),
+                const SizedBox(width: 12),
+                Expanded(
+                  child: Text(
+                    text,
+                    style: theme.textTheme.bodyMedium?.copyWith(
+                      color: textColor,
+                      fontWeight:
+                          emphasized ? FontWeight.w800 : FontWeight.w500,
+                    ),
+                  ),
+                ),
+                if (emphasized)
+                  Container(
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: 8, vertical: 2),
+                    decoration: BoxDecoration(
+                      color: Colors.white.withValues(alpha: 0.22),
+                      borderRadius: BorderRadius.circular(20),
+                    ),
+                    child: Text(
+                      correct ? 'Correct' : 'Wrong',
+                      style: theme.textTheme.labelSmall?.copyWith(
+                        color: Colors.white,
+                        fontWeight: FontWeight.w800,
+                      ),
+                    ),
+                  ),
+              ],
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+}

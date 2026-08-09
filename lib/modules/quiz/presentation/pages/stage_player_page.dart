@@ -8,6 +8,7 @@ import 'package:lexiora/modules/quiz/domain/quiz_grading.dart';
 import 'package:lexiora/modules/quiz/domain/quiz_stages.dart';
 import 'package:lexiora/modules/quiz/presentation/pages/stage_results_page.dart';
 import 'package:lexiora/modules/quiz/presentation/providers/quiz_providers.dart';
+import 'package:lexiora/modules/quiz/presentation/widgets/quiz_common.dart';
 
 /// The timed, exam-style player for a single stage (Phase v0.11.0).
 ///
@@ -329,12 +330,12 @@ class _StagePlayerPageState extends ConsumerState<StagePlayerPage> {
       case QuestionType.mcqSingle:
         return <Widget>[
           for (int i = 0; i < q.options.length; i++)
-            _choice(theme, q, i, q.options[i], given),
+            _choice(q, i, q.options[i], given),
         ];
       case QuestionType.trueFalse:
         return <Widget>[
-          _boolChoice(theme, q, true, 'True', given),
-          _boolChoice(theme, q, false, 'False', given),
+          _boolChoice(q, true, 'True', given),
+          _boolChoice(q, false, 'False', given),
         ];
       case QuestionType.fillBlank:
         return <Widget>[
@@ -360,70 +361,22 @@ class _StagePlayerPageState extends ConsumerState<StagePlayerPage> {
   }
 
   Widget _choice(
-      ThemeData theme, QuizQuestion q, int i, String text, QuizGivenAnswer? given) {
+      QuizQuestion q, int i, String text, QuizGivenAnswer? given) {
     final bool isSelected = given?.index == i;
-    return Padding(
-      padding: const EdgeInsets.only(bottom: 10),
-      child: Material(
-        color: isSelected
-            ? theme.colorScheme.secondaryContainer
-            : theme.colorScheme.surfaceContainerHighest.withValues(alpha: 0.4),
-        borderRadius: BorderRadius.circular(12),
-        clipBehavior: Clip.antiAlias,
-        child: InkWell(
-          onTap: () => _select(QuizGivenAnswer.choice(i)),
-          child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 14),
-            child: Row(
-              children: <Widget>[
-                Icon(
-                  isSelected
-                      ? Icons.radio_button_checked
-                      : Icons.radio_button_unchecked,
-                  size: 20,
-                  color: isSelected ? theme.colorScheme.primary : null,
-                ),
-                const SizedBox(width: 12),
-                Expanded(child: Text(text)),
-              ],
-            ),
-          ),
-        ),
-      ),
+    return QuizOptionCard(
+      text: text,
+      state: isSelected ? QuizOptionState.selected : QuizOptionState.normal,
+      onTap: () => _select(QuizGivenAnswer.choice(i)),
     );
   }
 
-  Widget _boolChoice(ThemeData theme, QuizQuestion q, bool value, String text,
+  Widget _boolChoice(QuizQuestion q, bool value, String text,
       QuizGivenAnswer? given) {
     final bool isSelected = given?.boolValue == value;
-    return Padding(
-      padding: const EdgeInsets.only(bottom: 10),
-      child: Material(
-        color: isSelected
-            ? theme.colorScheme.secondaryContainer
-            : theme.colorScheme.surfaceContainerHighest.withValues(alpha: 0.4),
-        borderRadius: BorderRadius.circular(12),
-        clipBehavior: Clip.antiAlias,
-        child: InkWell(
-          onTap: () => _select(QuizGivenAnswer.boolean(value)),
-          child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 16),
-            child: Row(
-              children: <Widget>[
-                Icon(
-                  isSelected
-                      ? Icons.radio_button_checked
-                      : Icons.radio_button_unchecked,
-                  size: 20,
-                  color: isSelected ? theme.colorScheme.primary : null,
-                ),
-                const SizedBox(width: 12),
-                Text(text),
-              ],
-            ),
-          ),
-        ),
-      ),
+    return QuizOptionCard(
+      text: text,
+      state: isSelected ? QuizOptionState.selected : QuizOptionState.normal,
+      onTap: () => _select(QuizGivenAnswer.boolean(value)),
     );
   }
 }

@@ -5,6 +5,23 @@ All notable changes to Sapiora are documented here.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.14.0] — 2026-08-09
+
+### Changed
+
+- **Unmistakable answer feedback across the Quiz screens.** All MCQ surfaces
+  now share one option-card component and a green-correct / red-wrong
+  language (mirroring the classic PAK MCQS reference, inside the dark theme):
+  - **Practice (MCQs) player:** picking an answer instantly fills the correct
+    option solid green with a check + "Correct" pill (bold white text) and the
+    picked-wrong option solid red with a "Wrong" pill; the rest stay muted.
+    Question numbering and the progress bar are unchanged.
+  - **Stage (Quiz) player:** option cards are pixel-identical to practice —
+    picked = purple-tinted fill + filled radio, unpicked = dark surface.
+  - **Review answers:** correct = green, wrong = red, matching the players.
+  - **MCQs browse cards:** the inline correct-answer highlight is green now,
+    so "correct = green" reads consistently in every screen.
+
 ## [0.13.0] — 2026-08-09
 
 ### Added
