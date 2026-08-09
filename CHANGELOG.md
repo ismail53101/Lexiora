@@ -5,6 +5,16 @@ All notable changes to Sapiora are documented here.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.13.0] — 2026-08-09
+
+### Added
+
+- **Search & filters in the MCQs browser.** The study-mode MCQs list now has a
+  search box (matches question text/options, debounced) plus filter chips for
+  question **type** (MCQ / True-False / Fill-blank), **difficulty**
+  (Easy / Medium / Hard) and **bookmarked-only**, with a Reset chip to clear
+  everything. The banner updates to show the number of matching questions.
+
 ## [0.12.0] — 2026-08-09
 
 ### Added

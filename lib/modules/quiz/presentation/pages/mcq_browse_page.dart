@@ -35,6 +35,9 @@ class McqBrowsePage extends ConsumerStatefulWidget {
 class _McqBrowsePageState extends ConsumerState<McqBrowsePage> {
   static const int _pageSize = 25;
 
+  final TextEditingController _search = TextEditingController();
+  Timer? _debounce;
+
   final List<QuizQuestion> _questions = <QuizQuestion>[];
   int _total = 0;
   bool _loading = true;
@@ -42,15 +45,37 @@ class _McqBrowsePageState extends ConsumerState<McqBrowsePage> {
   bool _hasMore = true;
   bool _error = false;
 
+  String _query = '';
+  QuizDifficulty? _difficulty;
+  QuestionType? _type;
+  bool _onlyBookmarked = false;
+
+  bool get _hasActiveFilters =>
+      _query.trim().isNotEmpty ||
+      _difficulty != null ||
+      _type != null ||
+      _onlyBookmarked;
+
   QuizFilter get _filter => QuizFilter(
         subjectId: widget.subjectId,
         topicId: widget.topicId,
+        query: _query,
+        difficulty: _difficulty,
+        type: _type,
+        onlyBookmarked: _onlyBookmarked,
       );
 
   @override
   void initState() {
     super.initState();
     WidgetsBinding.instance.addPostFrameCallback((_) => _loadFirst());
+  }
+
+  @override
+  void dispose() {
+    _debounce?.cancel();
+    _search.dispose();
+    super.dispose();
   }
 
   Future<void> _loadFirst() async {
@@ -111,6 +136,89 @@ class _McqBrowsePageState extends ConsumerState<McqBrowsePage> {
     setState(() => _questions[index] = q.copyWith(bookmarked: next));
   }
 
+  void _onQueryChanged(String value) {
+    _debounce?.cancel();
+    setState(() => _query = value);
+    _debounce = Timer(const Duration(milliseconds: 350), () {
+      if (mounted) _loadFirst();
+    });
+  }
+
+  void _clearSearch() {
+    _debounce?.cancel();
+    _search.clear();
+    setState(() => _query = '');
+    _loadFirst();
+  }
+
+  void _applyFilters() {
+    _debounce?.cancel();
+    _loadFirst();
+  }
+
+  void _resetFilters() {
+    _debounce?.cancel();
+    _search.clear();
+    setState(() {
+      _query = '';
+      _difficulty = null;
+      _type = null;
+      _onlyBookmarked = false;
+    });
+    _loadFirst();
+  }
+
+  Widget _typeChip() {
+    final ThemeData theme = Theme.of(context);
+    return Padding(
+      padding: const EdgeInsets.only(right: 8),
+      child: PopupMenuButton<QuestionType?>(
+        onSelected: (QuestionType? t) {
+          setState(() => _type = t);
+          _applyFilters();
+        },
+        itemBuilder: (BuildContext context) => <PopupMenuEntry<QuestionType?>>[
+          const PopupMenuItem<QuestionType?>(child: Text('Any type')),
+          for (final QuestionType t in QuestionType.values)
+            PopupMenuItem<QuestionType?>(value: t, child: Text(t.label)),
+        ],
+        child: Chip(
+          label: Text(_type == null ? 'Type' : _type!.shortLabel),
+          avatar: const Icon(Icons.arrow_drop_down, size: 18),
+          backgroundColor:
+              _type == null ? null : theme.colorScheme.secondaryContainer,
+        ),
+      ),
+    );
+  }
+
+  Widget _difficultyChip() {
+    final ThemeData theme = Theme.of(context);
+    return Padding(
+      padding: const EdgeInsets.only(right: 8),
+      child: PopupMenuButton<QuizDifficulty?>(
+        onSelected: (QuizDifficulty? d) {
+          setState(() => _difficulty = d);
+          _applyFilters();
+        },
+        itemBuilder: (BuildContext context) =>
+            <PopupMenuEntry<QuizDifficulty?>>[
+          const PopupMenuItem<QuizDifficulty?>(child: Text('Any')),
+          for (final QuizDifficulty d in QuizDifficulty.values)
+            PopupMenuItem<QuizDifficulty?>(value: d, child: Text(d.label)),
+        ],
+        child: Chip(
+          label: Text(
+              _difficulty == null ? 'Difficulty' : _difficulty!.label),
+          avatar: const Icon(Icons.arrow_drop_down, size: 18),
+          backgroundColor: _difficulty == null
+              ? null
+              : theme.colorScheme.secondaryContainer,
+        ),
+      ),
+    );
+  }
+
   bool _nearBottom(ScrollNotification n) {
     if (n.metrics.maxScrollExtent == 0) return false;
     return n.metrics.pixels >= n.metrics.maxScrollExtent - 600;
@@ -121,67 +229,134 @@ class _McqBrowsePageState extends ConsumerState<McqBrowsePage> {
     final ThemeData theme = Theme.of(context);
     return Scaffold(
       appBar: AppBar(title: Text(widget.title ?? 'MCQs')),
-      body: _loading
-          ? const Center(child: CircularProgressIndicator())
-          : _error
-              ? EmptyState(
-                  icon: Icons.error_outline,
-                  title: 'Could not load questions',
-                  message: 'Please try again.',
-                  action: FilledButton(
-                    onPressed: _loadFirst,
-                    child: const Text('Retry'),
-                  ),
-                )
-              : _questions.isEmpty
-                  ? const EmptyState(
-                      icon: Icons.quiz_outlined,
-                      title: 'No questions yet',
-                      message:
-                          'Questions for this selection are added from the '
-                          'published content.',
-                    )
-                  : NotificationListener<ScrollNotification>(
-                      onNotification: (ScrollNotification n) {
-                        if (_nearBottom(n)) unawaited(_loadMore());
-                        return false;
-                      },
-                      child: ListView.builder(
-                        padding: const EdgeInsets.fromLTRB(16, 8, 16, 24),
-                        itemCount: _questions.length + 2,
-                        itemBuilder: (BuildContext context, int index) {
-                          if (index == 0) {
-                            return _HeaderBanner(
-                              count: _total,
-                              scoped: widget.topicId != null,
-                            );
-                          }
-                          if (index == _questions.length + 1) {
-                            return _Footer(
-                                loading: _loadingMore, hasMore: _hasMore);
-                          }
-                          final int qi = index - 1;
-                          return _McqCard(
-                            question: _questions[qi],
-                            number: qi + 1,
-                            onBookmark: () => _toggleBookmark(qi),
-                          ).animate(
-                            delay: Duration(
-                                milliseconds: 20 * (qi < 6 ? qi : 6)),
-                          ).fadeIn(duration: 220.ms);
-                        },
+      body: Column(
+        children: <Widget>[
+          Padding(
+            padding: const EdgeInsets.fromLTRB(16, 12, 16, 4),
+            child: TextField(
+              controller: _search,
+              onChanged: _onQueryChanged,
+              textInputAction: TextInputAction.search,
+              decoration: InputDecoration(
+                hintText: 'Search questions…',
+                prefixIcon: const Icon(Icons.search),
+                suffixIcon: _query.isEmpty
+                    ? null
+                    : IconButton(
+                        icon: const Icon(Icons.close),
+                        tooltip: 'Clear search',
+                        onPressed: _clearSearch,
                       ),
+              ),
+            ),
+          ),
+          SizedBox(
+            height: 48,
+            child: ListView(
+              scrollDirection: Axis.horizontal,
+              padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 4),
+              children: <Widget>[
+                _typeChip(),
+                _difficultyChip(),
+                Padding(
+                  padding: const EdgeInsets.only(right: 8),
+                  child: FilterChip(
+                    label: const Text('Bookmarked'),
+                    selected: _onlyBookmarked,
+                    onSelected: (bool v) {
+                      setState(() => _onlyBookmarked = v);
+                      _applyFilters();
+                    },
+                  ),
+                ),
+                if (_hasActiveFilters)
+                  Padding(
+                    padding: const EdgeInsets.only(right: 8),
+                    child: ActionChip(
+                      avatar: const Icon(Icons.restart_alt, size: 16),
+                      label: const Text('Reset'),
+                      onPressed: _resetFilters,
                     ),
+                  ),
+              ],
+            ),
+          ),
+          Expanded(
+            child: _loading
+                ? const Center(child: CircularProgressIndicator())
+                : _error
+                    ? EmptyState(
+                        icon: Icons.error_outline,
+                        title: 'Could not load questions',
+                        message: 'Please try again.',
+                        action: FilledButton(
+                          onPressed: _loadFirst,
+                          child: const Text('Retry'),
+                        ),
+                      )
+                    : _questions.isEmpty
+                        ? EmptyState(
+                            icon: Icons.search_off_outlined,
+                            title: _hasActiveFilters
+                                ? 'No matches'
+                                : 'No questions yet',
+                            message: _hasActiveFilters
+                                ? 'No questions match your search or filters.'
+                                : 'Questions for this selection are added '
+                                    'from the published content.',
+                          )
+                        : NotificationListener<ScrollNotification>(
+                            onNotification: (ScrollNotification n) {
+                              if (_nearBottom(n)) unawaited(_loadMore());
+                              return false;
+                            },
+                            child: ListView.builder(
+                              padding:
+                                  const EdgeInsets.fromLTRB(16, 8, 16, 24),
+                              itemCount: _questions.length + 2,
+                              itemBuilder: (BuildContext context, int index) {
+                                if (index == 0) {
+                                  return _HeaderBanner(
+                                    count: _total,
+                                    scoped: widget.topicId != null,
+                                    filtered: _hasActiveFilters,
+                                  );
+                                }
+                                if (index == _questions.length + 1) {
+                                  return _Footer(
+                                      loading: _loadingMore,
+                                      hasMore: _hasMore);
+                                }
+                                final int qi = index - 1;
+                                return _McqCard(
+                                  question: _questions[qi],
+                                  number: qi + 1,
+                                  onBookmark: () => _toggleBookmark(qi),
+                                ).animate(
+                                  delay: Duration(
+                                      milliseconds: 20 * (qi < 6 ? qi : 6)),
+                                ).fadeIn(duration: 220.ms);
+                              },
+                            ),
+                          ),
+          ),
+        ],
+      ),
     );
   }
 }
 
 /// "X questions · answers shown" banner pinned above the card list.
 class _HeaderBanner extends StatelessWidget {
-  const _HeaderBanner({required this.count, required this.scoped});
+  const _HeaderBanner({
+    required this.count,
+    required this.scoped,
+    required this.filtered,
+  });
 
   final int count;
   final bool scoped;
+  final bool filtered;
 
   @override
   Widget build(BuildContext context) {
@@ -202,7 +377,9 @@ class _HeaderBanner extends StatelessWidget {
           const SizedBox(width: 10),
           Expanded(
             child: Text(
-              '$count questions · correct answers shown',
+              filtered
+                  ? '$count matching · correct answers shown'
+                  : '$count questions · correct answers shown',
               style: theme.textTheme.bodyMedium?.copyWith(
                 fontWeight: FontWeight.w700,
                 color: theme.colorScheme.primary,
