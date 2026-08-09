@@ -330,7 +330,6 @@ class _McqBrowsePageState extends ConsumerState<McqBrowsePage> {
                                 final int qi = index - 1;
                                 return _McqCard(
                                   question: _questions[qi],
-                                  number: qi + 1,
                                   onBookmark: () => _toggleBookmark(qi),
                                 ).animate(
                                   delay: Duration(
@@ -429,12 +428,10 @@ class _Footer extends StatelessWidget {
 class _McqCard extends StatelessWidget {
   const _McqCard({
     required this.question,
-    required this.number,
     required this.onBookmark,
   });
 
   final QuizQuestion question;
-  final int number;
   final VoidCallback onBookmark;
 
   static const String _letters = 'ABCDEFGH';
@@ -488,9 +485,9 @@ class _McqCard extends StatelessWidget {
             ),
             const SizedBox(height: 6),
             Text(
-              '${q.type == QuestionType.mcqSingle ? '$number. ' : ''}${q.prompt}',
+              q.prompt,
               style: theme.textTheme.titleMedium?.copyWith(
-                fontWeight: FontWeight.w700,
+                fontWeight: FontWeight.w800,
                 height: 1.35,
               ),
             ),
@@ -521,16 +518,14 @@ class _McqCard extends StatelessWidget {
       case QuestionType.trueFalse:
         return <Widget>[
           _AnswerRow(
-            leading: 'True',
-            text: '',
+            leading: '',
+            text: 'True',
             isAnswer: q.answerBool == true,
-            plain: true,
           ),
           _AnswerRow(
-            leading: 'False',
-            text: '',
+            leading: '',
+            text: 'False',
             isAnswer: q.answerBool == false,
-            plain: true,
           ),
         ];
       case QuestionType.fillBlank:
@@ -539,39 +534,28 @@ class _McqCard extends StatelessWidget {
             width: double.infinity,
             padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 10),
             decoration: BoxDecoration(
-              color: quizCorrectColor.withValues(alpha: 0.10),
+              color: theme.colorScheme.primary.withValues(alpha: 0.08),
               borderRadius: BorderRadius.circular(10),
-              border: Border.all(
-                  color: quizCorrectColor.withValues(alpha: 0.35)),
             ),
-            child: Row(
-              children: <Widget>[
-                Icon(Icons.check_circle_rounded,
-                    size: 18, color: quizCorrectColor),
-                const SizedBox(width: 8),
-                Expanded(
-                  child: Text.rich(
-                    TextSpan(
-                      children: <InlineSpan>[
-                        TextSpan(
-                          text: 'Answer: ',
-                          style: theme.textTheme.bodyMedium?.copyWith(
-                            fontWeight: FontWeight.w700,
-                            color: theme.colorScheme.onSurfaceVariant,
-                          ),
-                        ),
-                        TextSpan(
-                          text: q.answerTexts.join(', '),
-                          style: theme.textTheme.bodyMedium?.copyWith(
-                            fontWeight: FontWeight.w700,
-                            color: quizCorrectColor,
-                          ),
-                        ),
-                      ],
+            child: Text.rich(
+              TextSpan(
+                children: <InlineSpan>[
+                  TextSpan(
+                    text: 'Answer: ',
+                    style: theme.textTheme.bodyMedium?.copyWith(
+                      fontWeight: FontWeight.w600,
+                      color: theme.colorScheme.onSurfaceVariant,
                     ),
                   ),
-                ),
-              ],
+                  TextSpan(
+                    text: q.answerTexts.join(', '),
+                    style: theme.textTheme.bodyMedium?.copyWith(
+                      fontWeight: FontWeight.w800,
+                      color: theme.colorScheme.primary,
+                    ),
+                  ),
+                ],
+              ),
             ),
           ),
         ];
@@ -588,58 +572,57 @@ class _McqCard extends StatelessWidget {
   }
 }
 
-/// One option row; the correct one is bolded and tinted (reference-app style).
+/// One option row in the study feed. The correct option is bolded in the
+/// app's accent colour with a faint tint — a quiet "this is the answer"
+/// marker. Deliberately passive: no radio buttons, no check icons, no
+/// red/green feedback (that language belongs to the Quiz section).
 class _AnswerRow extends StatelessWidget {
   const _AnswerRow({
     required this.leading,
     required this.text,
     required this.isAnswer,
-    this.plain = false,
   });
 
+  /// Letter label, e.g. "A." — empty for True/False rows.
   final String leading;
   final String text;
   final bool isAnswer;
-  final bool plain;
 
   @override
   Widget build(BuildContext context) {
     final ThemeData theme = Theme.of(context);
+    final Color accent = theme.colorScheme.primary;
     return Container(
       width: double.infinity,
       margin: const EdgeInsets.only(bottom: 8),
       padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 10),
       decoration: BoxDecoration(
         color: isAnswer
-            ? quizCorrectColor.withValues(alpha: 0.12)
+            ? accent.withValues(alpha: 0.08)
             : theme.colorScheme.surfaceContainerHighest.withValues(alpha: 0.35),
         borderRadius: BorderRadius.circular(10),
-        border: isAnswer
-            ? Border.all(
-                color: quizCorrectColor.withValues(alpha: 0.5))
-            : null,
       ),
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
-          Icon(
-            isAnswer
-                ? Icons.check_circle_rounded
-                : Icons.radio_button_unchecked,
-            size: 19,
-            color: isAnswer
-                ? quizCorrectColor
-                : theme.colorScheme.onSurfaceVariant,
-          ),
-          const SizedBox(width: 10),
+          if (leading.isNotEmpty) ...<Widget>[
+            Text(
+              leading,
+              style: theme.textTheme.bodyMedium?.copyWith(
+                fontWeight: isAnswer ? FontWeight.w800 : FontWeight.w600,
+                color: isAnswer ? accent : theme.colorScheme.onSurfaceVariant,
+              ),
+            ),
+            const SizedBox(width: 10),
+          ],
           Expanded(
             child: Text(
-              plain ? leading : '$leading $text',
+              text,
               style: theme.textTheme.bodyMedium?.copyWith(
                 fontWeight: isAnswer ? FontWeight.w800 : FontWeight.w500,
                 color: isAnswer
-                    ? quizCorrectColor
-                    : theme.colorScheme.onSurface,
+                    ? accent
+                    : theme.colorScheme.onSurface.withValues(alpha: 0.72),
               ),
             ),
           ),
@@ -649,7 +632,8 @@ class _AnswerRow extends StatelessWidget {
   }
 }
 
-/// "Read more ▾" expander, like the reference app's per-card read-more link.
+/// "Read more >>" expander at the card's bottom-right, like the reference
+/// app's per-card read-more link. Tapping reveals the explanation in place.
 class _ReadMore extends StatefulWidget {
   const _ReadMore({required this.explanation});
 
@@ -666,31 +650,19 @@ class _ReadMoreState extends State<_ReadMore> {
   Widget build(BuildContext context) {
     final ThemeData theme = Theme.of(context);
     return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
+      crossAxisAlignment: CrossAxisAlignment.end,
       children: <Widget>[
         InkWell(
           onTap: () => setState(() => _open = !_open),
           borderRadius: BorderRadius.circular(8),
           child: Padding(
-            padding: const EdgeInsets.symmetric(vertical: 4),
-            child: Row(
-              mainAxisSize: MainAxisSize.min,
-              children: <Widget>[
-                Text(
-                  _open ? 'Read less' : 'Read more',
-                  style: theme.textTheme.labelLarge?.copyWith(
-                    color: theme.colorScheme.primary,
-                    fontWeight: FontWeight.w700,
-                  ),
-                ),
-                Icon(
-                  _open
-                      ? Icons.keyboard_arrow_up_rounded
-                      : Icons.keyboard_arrow_down_rounded,
-                  size: 18,
-                  color: theme.colorScheme.primary,
-                ),
-              ],
+            padding: const EdgeInsets.symmetric(vertical: 4, horizontal: 2),
+            child: Text(
+              _open ? 'Read less <<' : 'Read more >>',
+              style: theme.textTheme.labelLarge?.copyWith(
+                color: theme.colorScheme.primary,
+                fontWeight: FontWeight.w700,
+              ),
             ),
           ),
         ),

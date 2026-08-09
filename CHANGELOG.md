@@ -5,6 +5,20 @@ All notable changes to Sapiora are documented here.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.16.0] — 2026-08-09
+
+### Changed
+
+- **MCQs section is a pure study/revision feed.** The MCQs browse cards no
+  longer borrow any Quiz-screen furniture: radio icons, check badges and
+  green correct-answer tints are gone. Each card now shows the question in
+  bold, the options A–D beneath it, the correct option quietly marked in the
+  app's accent colour (bold text + faint tint, no icons, no borders), and a
+  bottom-right "Read more >>" link that expands the explanation in place.
+  True/False and fill-in-the-blank rows use the same quiet accent treatment.
+  Bookmarks, search, filters, lazy pagination and all question data are
+  unchanged; the Quiz section is completely untouched.
+
 ## [0.15.0] — 2026-08-09
 
 ### Changed
