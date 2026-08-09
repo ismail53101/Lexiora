@@ -201,7 +201,7 @@ enum ImportSource {
   String get label => switch (this) {
         ImportSource.dictionary => 'Dictionary',
         ImportSource.vocabulary => 'Vocabulary',
-        ImportSource.studyHub => 'Study Hub subjects & topics',
+        ImportSource.studyHub => 'Study Planner subjects & topics',
       };
 }
 

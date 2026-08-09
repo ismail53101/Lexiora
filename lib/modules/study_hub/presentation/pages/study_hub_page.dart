@@ -3,16 +3,22 @@ import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:lexiora/app/router/app_routes.dart';
-import 'package:lexiora/modules/study_hub/presentation/widgets/daily_goal_card.dart';
 import 'package:lexiora/modules/study_hub/presentation/widgets/quick_actions_card.dart';
-import 'package:lexiora/modules/study_hub/presentation/widgets/streak_card.dart';
 import 'package:lexiora/modules/study_hub/presentation/widgets/study_hub_common.dart';
 import 'package:lexiora/modules/study_hub/presentation/widgets/study_progress_cards.dart';
 import 'package:lexiora/modules/study_hub/presentation/widgets/study_timer_card.dart';
 import 'package:lexiora/modules/study_hub/presentation/widgets/tasks_card.dart';
-import 'package:lexiora/modules/study_hub/presentation/widgets/today_timeline_card.dart';
+import 'package:lexiora/modules/study_hub/presentation/widgets/today_overview_card.dart';
 
-/// The Study Hub dashboard — the student's Academic Planning System home.
+/// The Study Planner dashboard (formerly "Study Hub") — the student's
+/// Academic Planning System home.
+///
+/// Redesigned into a compact, one-short-scroll dashboard: Streak / Today's
+/// Goal / Study Today share one row instead of three tall cards, Weekly
+/// Statistics + Progress Tracker were merged into one Progress section
+/// (they showed mostly the same numbers twice), and Planners / Tools moved
+/// from full-height list rows into compact 2-column tile grids. Every
+/// feature from the previous layout is still here — just denser.
 class StudyHubPage extends ConsumerWidget {
   const StudyHubPage({super.key});
 
@@ -20,7 +26,7 @@ class StudyHubPage extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Study Hub'),
+        title: const Text('Study Planner'),
         actions: <Widget>[
           IconButton(
             icon: const Icon(Icons.search),
@@ -30,20 +36,17 @@ class StudyHubPage extends ConsumerWidget {
         ],
       ),
       body: ListView(
-        padding: const EdgeInsets.symmetric(vertical: 8),
+        padding: const EdgeInsets.symmetric(vertical: 6),
         children: <Widget>[
-          const StreakCard(),
-          const DailyGoalCard(),
-          const TodayTimelineCard(),
+          const TodayOverviewRow(),
           const DailyPlannerCard(),
           const _PlannersCard(),
           const _ToolsCard(),
           const StudyTimerCard(),
-          const WeeklyStatsCard(),
-          const ProgressTrackerCard(),
+          const ProgressCard(),
           const QuickActionsCard(),
-          const SizedBox(height: 24),
-        ].animate(interval: 45.ms).fadeIn(duration: 240.ms).slideY(
+          const SizedBox(height: 20),
+        ].animate(interval: 40.ms).fadeIn(duration: 220.ms).slideY(
               begin: 0.05,
               end: 0,
               curve: Curves.easeOut,
@@ -53,34 +56,35 @@ class StudyHubPage extends ConsumerWidget {
   }
 }
 
-/// Navigation into the full Weekly / Monthly planners and Templates.
+/// Navigation into the full Weekly / Monthly planners and Templates — a
+/// compact 2-column tile grid instead of three full-height list rows.
 class _PlannersCard extends StatelessWidget {
   const _PlannersCard();
 
   @override
   Widget build(BuildContext context) {
-    return const SectionCard(
+    return SectionCard(
       icon: Icons.calendar_month_outlined,
       title: 'Planners',
-      child: Column(
-        children: <Widget>[
-          _NavRow(
+      child: CompactNavGrid(
+        tiles: <Widget>[
+          CompactNavTile(
             icon: Icons.view_week_outlined,
             label: 'Weekly Planner',
-            subtitle: 'Plan every day of the week',
-            route: AppRoutes.studyHubWeekly,
+            subtitle: 'Every day of the week',
+            onTap: () => context.push(AppRoutes.studyHubWeekly),
           ),
-          _NavRow(
+          CompactNavTile(
             icon: Icons.calendar_month,
             label: 'Monthly Planner',
-            subtitle: 'Schedule any date on a calendar',
-            route: AppRoutes.studyHubMonthly,
+            subtitle: 'Any date on a calendar',
+            onTap: () => context.push(AppRoutes.studyHubMonthly),
           ),
-          _NavRow(
+          CompactNavTile(
             icon: Icons.event_repeat,
             label: 'Templates',
             subtitle: 'Save & reuse study routines',
-            route: AppRoutes.studyHubTemplates,
+            onTap: () => context.push(AppRoutes.studyHubTemplates),
           ),
         ],
       ),
@@ -88,63 +92,38 @@ class _PlannersCard extends StatelessWidget {
   }
 }
 
-/// Productivity tools: search, subject colours, export & backup.
+/// Productivity tools: search, subject colours, export & backup — a compact
+/// 2-column tile grid instead of three full-height list rows.
 class _ToolsCard extends StatelessWidget {
   const _ToolsCard();
 
   @override
   Widget build(BuildContext context) {
-    return const SectionCard(
+    return SectionCard(
       icon: Icons.build_outlined,
       title: 'Tools',
-      child: Column(
-        children: <Widget>[
-          _NavRow(
+      child: CompactNavGrid(
+        tiles: <Widget>[
+          CompactNavTile(
             icon: Icons.search,
             label: 'Search & Filter',
-            subtitle: 'Find sessions across all your plans',
-            route: AppRoutes.studyHubSearch,
+            subtitle: 'Find sessions',
+            onTap: () => context.push(AppRoutes.studyHubSearch),
           ),
-          _NavRow(
+          CompactNavTile(
             icon: Icons.palette_outlined,
             label: 'Manage Subjects',
-            subtitle: 'Colour-label and organise subjects',
-            route: AppRoutes.studyHubSubjects,
+            subtitle: 'Organise subjects',
+            onTap: () => context.push(AppRoutes.studyHubSubjects),
           ),
-          _NavRow(
+          CompactNavTile(
             icon: Icons.ios_share,
             label: 'Export & Backup',
-            subtitle: 'CSV / PDF / Excel · local backup',
-            route: AppRoutes.studyHubExport,
+            subtitle: 'CSV / PDF / Excel',
+            onTap: () => context.push(AppRoutes.studyHubExport),
           ),
         ],
       ),
-    );
-  }
-}
-
-class _NavRow extends StatelessWidget {
-  const _NavRow({
-    required this.icon,
-    required this.label,
-    required this.subtitle,
-    required this.route,
-  });
-
-  final IconData icon;
-  final String label;
-  final String subtitle;
-  final String route;
-
-  @override
-  Widget build(BuildContext context) {
-    return ListTile(
-      contentPadding: EdgeInsets.zero,
-      leading: Icon(icon, color: Theme.of(context).colorScheme.primary),
-      title: Text(label, style: const TextStyle(fontWeight: FontWeight.w600)),
-      subtitle: Text(subtitle),
-      trailing: const Icon(Icons.chevron_right),
-      onTap: () => context.push(route),
     );
   }
 }

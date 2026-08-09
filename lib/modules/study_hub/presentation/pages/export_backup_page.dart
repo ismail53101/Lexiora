@@ -233,7 +233,7 @@ class _ExportBackupPageState extends ConsumerState<ExportBackupPage> {
           builder: (BuildContext context) => AlertDialog(
             title: const Text('Restore backup?'),
             content: const Text(
-                'This replaces your current Study Hub data with the backup. '
+                'This replaces your current Study Planner data with the backup. '
                 'This cannot be undone.'),
             actions: <Widget>[
               TextButton(
