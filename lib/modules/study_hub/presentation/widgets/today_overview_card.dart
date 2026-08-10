@@ -34,15 +34,17 @@ class TodayOverviewRow extends ConsumerWidget {
         builder: (BuildContext context, BoxConstraints c) {
           const double gap = 8;
           final double w = (c.maxWidth - gap * 2) / 3;
-          return Row(
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: <Widget>[
-              SizedBox(width: w, child: _StreakTile(streak: streak)),
-              const SizedBox(width: gap),
-              SizedBox(width: w, child: _GoalTile(day: day, goals: goals)),
-              const SizedBox(width: gap),
-              SizedBox(width: w, child: _StudyTodayTile(minutes: minutesToday)),
-            ],
+          return IntrinsicHeight(
+            child: Row(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: <Widget>[
+                SizedBox(width: w, child: _StreakTile(streak: streak)),
+                const SizedBox(width: gap),
+                SizedBox(width: w, child: _GoalTile(day: day, goals: goals)),
+                const SizedBox(width: gap),
+                SizedBox(width: w, child: _StudyTodayTile(minutes: minutesToday)),
+              ],
+            ),
           );
         },
       ),
