@@ -55,6 +55,8 @@ class DayPlannerSection extends ConsumerWidget {
             PopupMenuButton<String>(
               icon: const Icon(Icons.add),
               tooltip: 'Add',
+              color: theme.colorScheme.surfaceContainerHigh,
+              elevation: 8,
               onSelected: (String v) => v == 'session'
                   ? showSessionEditor(context, day: day)
                   : showBreakEditor(context, day: day),

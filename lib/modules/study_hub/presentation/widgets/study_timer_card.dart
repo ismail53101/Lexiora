@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:lexiora/modules/study_hub/domain/pomodoro_state.dart';
 import 'package:lexiora/modules/study_hub/domain/study_dates.dart';
+import 'package:lexiora/modules/study_hub/presentation/pages/pomodoro_fullscreen_page.dart';
 import 'package:lexiora/modules/study_hub/presentation/providers/manual_timer_controller.dart';
 import 'package:lexiora/modules/study_hub/presentation/providers/pomodoro_controller.dart';
 import 'package:lexiora/modules/study_hub/presentation/providers/study_hub_providers.dart';
@@ -35,6 +36,17 @@ class _StudyTimerCardState extends ConsumerState<StudyTimerCard> {
     return SectionCard(
       icon: Icons.timer_outlined,
       title: 'Study Timer',
+      trailing: IconButton(
+        icon: const Icon(Icons.fullscreen),
+        tooltip: 'Full screen',
+        visualDensity: VisualDensity.compact,
+        onPressed: () => Navigator.of(context).push(
+          MaterialPageRoute<void>(
+            fullscreenDialog: true,
+            builder: (_) => const PomodoroFullscreenPage(),
+          ),
+        ),
+      ),
       child: Column(
         children: <Widget>[
           SegmentedButton<int>(
