@@ -104,45 +104,42 @@ class _PomodoroBody extends ConsumerWidget {
           ],
         ),
         const SizedBox(height: 10),
-        ProgressRing(
-          value: state.progress,
-          size: 132,
-          strokeWidth: 10,
-          color: state.isFocus
-              ? theme.colorScheme.primary
-              : theme.colorScheme.tertiary,
-          center: Column(
-            mainAxisSize: MainAxisSize.min,
-            children: <Widget>[
-              Text(_mmss(state.remainingSeconds),
-                  style: theme.textTheme.displaySmall
-                      ?.copyWith(fontWeight: FontWeight.w800)),
-              Text(state.isFocus ? 'Focus' : 'Break',
-                  style: theme.textTheme.labelLarge
-                      ?.copyWith(color: theme.colorScheme.onSurfaceVariant)),
-            ],
+        // Premium tap-to-toggle: the ring itself starts and pauses the timer,
+        // so no Start button is needed — just a Reset beside a hint.
+        GestureDetector(
+          behavior: HitTestBehavior.opaque,
+          onTap: state.running ? controller.pause : controller.start,
+          child: ProgressRing(
+            value: state.progress,
+            size: 132,
+            strokeWidth: 10,
+            color: state.isFocus
+                ? theme.colorScheme.primary
+                : theme.colorScheme.tertiary,
+            center: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: <Widget>[
+                Text(_mmss(state.remainingSeconds),
+                    style: theme.textTheme.displaySmall
+                        ?.copyWith(fontWeight: FontWeight.w800)),
+                Text(state.isFocus ? 'Focus' : 'Break',
+                    style: theme.textTheme.labelLarge
+                        ?.copyWith(color: theme.colorScheme.onSurfaceVariant)),
+              ],
+            ),
           ),
         ),
-        const SizedBox(height: 10),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            FilledButton.icon(
-              onPressed: state.running ? controller.pause : controller.start,
-              icon: Icon(state.running ? Icons.pause : Icons.play_arrow),
-              label: Text(state.running
-                  ? 'Pause'
-                  : (state.remainingSeconds < state.phaseSeconds
-                      ? 'Resume'
-                      : 'Start')),
-            ),
-            const SizedBox(width: 12),
-            OutlinedButton.icon(
-              onPressed: controller.reset,
-              icon: const Icon(Icons.replay),
-              label: const Text('Reset'),
-            ),
-          ],
+        const SizedBox(height: 6),
+        Text(
+          state.running ? 'Tap the ring to pause' : 'Tap the ring to start',
+          style: theme.textTheme.labelSmall
+              ?.copyWith(color: theme.colorScheme.onSurfaceVariant),
+        ),
+        const SizedBox(height: 8),
+        OutlinedButton.icon(
+          onPressed: controller.reset,
+          icon: const Icon(Icons.replay),
+          label: const Text('Reset'),
         ),
       ],
     );

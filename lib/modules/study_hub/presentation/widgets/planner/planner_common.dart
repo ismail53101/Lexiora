@@ -421,13 +421,16 @@ class PlannerTaskRow extends ConsumerWidget {
                                       maxLines: 1,
                                       overflow: TextOverflow.ellipsis,
                                       style: theme.textTheme.bodyLarge?.copyWith(
-                                        fontWeight: FontWeight.w700,
+                                        fontWeight: FontWeight.w800,
                                         decoration: task.completed
                                             ? TextDecoration.lineThrough
                                             : null,
+                                        // The subject line carries the subject's own
+                                        // colour (auto-assigned per subject), so each
+                                        // subject reads distinctly at a glance.
                                         color: task.completed
                                             ? theme.colorScheme.onSurfaceVariant
-                                            : null,
+                                            : subjectColor,
                                       ),
                                     ),
                                     if (time.isNotEmpty)
@@ -468,15 +471,39 @@ class PlannerTaskRow extends ConsumerWidget {
     final String time = _timeRange(task);
     return Row(
       children: <Widget>[
-        Icon(Icons.work_outline, size: 18, color: theme.colorScheme.tertiary),
+        Container(
+          width: 34,
+          height: 34,
+          decoration: BoxDecoration(
+            color: theme.colorScheme.tertiary.withValues(alpha: 0.14),
+            borderRadius: BorderRadius.circular(10),
+          ),
+          alignment: Alignment.center,
+          child: Icon(Icons.work_outline,
+              size: 18, color: theme.colorScheme.tertiary),
+        ),
         const SizedBox(width: 10),
         Expanded(
-          child: Text(
-            time.isEmpty ? task.title : '${task.title} · $time',
-            maxLines: 1,
-            overflow: TextOverflow.ellipsis,
-            style: theme.textTheme.bodyMedium?.copyWith(
-                fontStyle: FontStyle.italic, color: theme.colorScheme.onSurfaceVariant),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: <Widget>[
+              Text(
+                task.title.trim().isEmpty ? 'Break' : task.title,
+                maxLines: 1,
+                overflow: TextOverflow.ellipsis,
+                style: theme.textTheme.bodyMedium
+                    ?.copyWith(fontWeight: FontWeight.w700),
+              ),
+              if (time.isNotEmpty)
+                Text(
+                  time,
+                  maxLines: 1,
+                  overflow: TextOverflow.ellipsis,
+                  style: theme.textTheme.labelSmall?.copyWith(
+                      color: theme.colorScheme.tertiary,
+                      fontWeight: FontWeight.w700),
+                ),
+            ],
           ),
         ),
       ],

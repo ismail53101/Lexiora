@@ -1,3 +1,5 @@
+import 'dart:math' as math;
+
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -15,6 +17,10 @@ String _mmss(int seconds) {
 /// the Study Planner dashboard — same [pomodoroProvider], so starting,
 /// pausing or resetting here is reflected back on the dashboard card (and
 /// vice versa) instantly, since they share one controller.
+///
+/// Premium interaction: tap the big ring to start and tap it again to pause —
+/// there is no separate Start button, just a Reset. Rotating the phone flips
+/// into a wide "big screen" layout (ring left, controls right).
 class PomodoroFullscreenPage extends ConsumerWidget {
   const PomodoroFullscreenPage({super.key});
 
@@ -23,6 +29,7 @@ class PomodoroFullscreenPage extends ConsumerWidget {
     final ThemeData theme = Theme.of(context);
     final PomodoroState state = ref.watch(pomodoroProvider);
     final PomodoroController controller = ref.read(pomodoroProvider.notifier);
+    final bool running = state.running;
 
     return AnnotatedRegion<SystemUiOverlayStyle>(
       value: SystemUiOverlayStyle.light,
@@ -50,18 +57,24 @@ class PomodoroFullscreenPage extends ConsumerWidget {
                 ),
               ),
               Expanded(
-                child: Center(
-                  child: Column(
-                    mainAxisSize: MainAxisSize.min,
-                    children: <Widget>[
-                      Text(state.mode.label,
-                          style: theme.textTheme.labelLarge?.copyWith(
-                              color: theme.colorScheme.onSurfaceVariant)),
-                      const SizedBox(height: 24),
-                      ProgressRing(
+                child: LayoutBuilder(
+                  builder:
+                      (BuildContext context, BoxConstraints constraints) {
+                    final bool landscape =
+                        constraints.maxWidth > constraints.maxHeight;
+                    // The ring scales with the screen — big and bold in
+                    // landscape, like a real desk timer.
+                    final double ringSize = landscape
+                        ? math.min(constraints.maxHeight * 0.72, 360.0)
+                        : 280.0;
+
+                    final Widget dial = GestureDetector(
+                      behavior: HitTestBehavior.opaque,
+                      onTap: running ? controller.pause : controller.start,
+                      child: ProgressRing(
                         value: state.progress,
-                        size: 280,
-                        strokeWidth: 16,
+                        size: ringSize,
+                        strokeWidth: landscape ? 22 : 16,
                         color: state.isFocus
                             ? theme.colorScheme.primary
                             : theme.colorScheme.tertiary,
@@ -69,50 +82,90 @@ class PomodoroFullscreenPage extends ConsumerWidget {
                           mainAxisSize: MainAxisSize.min,
                           children: <Widget>[
                             Text(_mmss(state.remainingSeconds),
-                                style: theme.textTheme.displayLarge
-                                    ?.copyWith(fontWeight: FontWeight.w800)),
+                                style: theme.textTheme.displayLarge?.copyWith(
+                                    fontWeight: FontWeight.w800,
+                                    fontSize: ringSize * 0.24)),
                             Text(state.isFocus ? 'Focus' : 'Break',
                                 style: theme.textTheme.titleMedium?.copyWith(
                                     color: theme.colorScheme.onSurfaceVariant)),
                           ],
                         ),
                       ),
-                      const SizedBox(height: 40),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
+                    );
+
+                    final Widget hint = Text(
+                      running
+                          ? 'Tap the ring to pause'
+                          : 'Tap the ring to start',
+                      style: theme.textTheme.labelLarge?.copyWith(
+                          color: theme.colorScheme.onSurfaceVariant),
+                    );
+
+                    final Widget reset = OutlinedButton.icon(
+                      style: OutlinedButton.styleFrom(
+                        padding: const EdgeInsets.symmetric(
+                            horizontal: 28, vertical: 18),
+                        textStyle: theme.textTheme.titleMedium,
+                      ),
+                      onPressed: controller.reset,
+                      icon: const Icon(Icons.replay, size: 24),
+                      label: const Text('Reset'),
+                    );
+
+                    if (landscape) {
+                      // Big-screen mode: ring on the left, info + controls on
+                      // the right so everything fits a rotated phone.
+                      return Padding(
+                        padding: const EdgeInsets.fromLTRB(24, 8, 32, 24),
+                        child: Row(
+                          children: <Widget>[
+                            Expanded(child: Center(child: dial)),
+                            const SizedBox(width: 40),
+                            Expanded(
+                              child: Column(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: <Widget>[
+                                  Text(state.mode.label,
+                                      style: theme.textTheme.headlineSmall
+                                          ?.copyWith(
+                                              fontWeight: FontWeight.w800)),
+                                  const SizedBox(height: 8),
+                                  Text(
+                                      state.isFocus ? 'Focus session' : 'Break',
+                                      style: theme.textTheme.titleMedium
+                                          ?.copyWith(
+                                              color: theme
+                                                  .colorScheme.onSurfaceVariant)),
+                                  const SizedBox(height: 28),
+                                  hint,
+                                  const SizedBox(height: 16),
+                                  reset,
+                                ],
+                              ),
+                            ),
+                          ],
+                        ),
+                      );
+                    }
+
+                    return Center(
+                      child: Column(
+                        mainAxisSize: MainAxisSize.min,
                         children: <Widget>[
-                          FilledButton.icon(
-                            style: FilledButton.styleFrom(
-                              padding: const EdgeInsets.symmetric(
-                                  horizontal: 28, vertical: 18),
-                              textStyle: theme.textTheme.titleMedium,
-                            ),
-                            onPressed:
-                                state.running ? controller.pause : controller.start,
-                            icon: Icon(
-                                state.running ? Icons.pause : Icons.play_arrow,
-                                size: 26),
-                            label: Text(state.running
-                                ? 'Pause'
-                                : (state.remainingSeconds < state.phaseSeconds
-                                    ? 'Resume'
-                                    : 'Start')),
-                          ),
-                          const SizedBox(width: 16),
-                          OutlinedButton.icon(
-                            style: OutlinedButton.styleFrom(
-                              padding: const EdgeInsets.symmetric(
-                                  horizontal: 24, vertical: 18),
-                              textStyle: theme.textTheme.titleMedium,
-                            ),
-                            onPressed: controller.reset,
-                            icon: const Icon(Icons.replay, size: 24),
-                            label: const Text('Reset'),
-                          ),
+                          Text(state.mode.label,
+                              style: theme.textTheme.labelLarge?.copyWith(
+                                  color: theme.colorScheme.onSurfaceVariant)),
+                          const SizedBox(height: 24),
+                          dial,
+                          const SizedBox(height: 28),
+                          hint,
+                          const SizedBox(height: 16),
+                          reset,
                         ],
                       ),
-                    ],
-                  ),
+                    );
+                  },
                 ),
               ),
             ],

@@ -5,6 +5,30 @@ All notable changes to Sapiora are documented here.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.21.2] — 2026-08-10
+
+### Changed
+
+- **Every subject now wears its own colour on the session card itself.** The
+  subject headline on each planner task card is tinted with the subject's
+  colour (auto-assigned per subject — no manual set-up needed), so a row of
+  different subjects reads as a colourful study line instead of one flat
+  colour, while completed sessions still grey out with a strikethrough.
+- **Break cards redesigned to match session cards.** Breaks no longer render
+  as a thin italic "Break · 11:05 AM – 11:10 AM" line that sat oddly under the
+  sessions. Each break is now a proper card with a tinted briefcase chip, a
+  bold title and the time range below in the break colour — consistent with
+  the study sessions around it.
+- **Premium Pomodoro timer interaction.** Tapping the timer ring now starts
+  the countdown and tapping it again pauses it — the separate Start button is
+  gone, leaving just a Reset button and a "tap the ring" hint. Rotating the
+  phone switches to a big-screen layout: a large ring on the left with the
+  mode, hint and Reset on the right.
+- **Picking a start time flows straight into the end time.** Tapping Start
+  opens the time picker; after you confirm it with OK, the End time picker
+  opens automatically (pre-filled with start + 1h) so you only confirm the
+  end — no separate End tap needed. Breaks do the same with start + 15 min.
+
 ## [0.21.1] — 2026-08-10
 
 ### Changed

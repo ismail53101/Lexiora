@@ -81,8 +81,9 @@ class _SessionEditorState extends ConsumerState<_SessionEditor> {
     super.dispose();
   }
 
-  Future<void> _pickTime({required bool start}) async {
-    final int base = (start ? _start : _end) ?? (start ? 9 * 60 : 10 * 60);
+  Future<void> _pickTime({required bool start, int? initialMinute}) async {
+    final int base = initialMinute ??
+        ((start ? _start : _end) ?? (start ? 9 * 60 : 10 * 60));
     final TimeOfDay? picked = await showTimePicker(
       context: context,
       initialTime: TimeOfDay(hour: base ~/ 60, minute: base % 60),
@@ -92,16 +93,18 @@ class _SessionEditorState extends ConsumerState<_SessionEditor> {
       final int m = picked.hour * 60 + picked.minute;
       if (start) {
         _start = m;
-        // Auto-fill the end time so a session isn't left open-ended by
-        // default — a 1-hour block from the new start, unless an end was
-        // already explicitly set later than this start.
-        if (_end == null || _end! <= m) {
-          _end = (m + 60) % (24 * 60);
-        }
       } else {
         _end = m;
       }
     });
+    // After the start time is confirmed (OK), jump straight into the
+    // end-time picker — pre-filled with start + 1h — so the user just
+    // confirms the end; no need to tap the End button separately.
+    if (start && mounted) {
+      final int suggested =
+          (_end != null && _end! > m) ? _end! : (m + 60) % (24 * 60);
+      await _pickTime(start: false, initialMinute: suggested);
+    }
   }
 
   Future<void> _save() async {
@@ -335,8 +338,9 @@ class _BreakEditorState extends ConsumerState<_BreakEditor> {
     super.dispose();
   }
 
-  Future<void> _pickTime({required bool start}) async {
-    final int base = (start ? _start : _end) ?? (start ? 11 * 60 : 11 * 60 + 15);
+  Future<void> _pickTime({required bool start, int? initialMinute}) async {
+    final int base = initialMinute ??
+        ((start ? _start : _end) ?? (start ? 11 * 60 : 11 * 60 + 15));
     final TimeOfDay? picked = await showTimePicker(
       context: context,
       initialTime: TimeOfDay(hour: base ~/ 60, minute: base % 60),
@@ -346,15 +350,17 @@ class _BreakEditorState extends ConsumerState<_BreakEditor> {
       final int m = picked.hour * 60 + picked.minute;
       if (start) {
         _start = m;
-        // Same auto-fill idea as the session editor, just a shorter
-        // default block (15 min) since breaks are normally brief.
-        if (_end == null || _end! <= m) {
-          _end = (m + 15) % (24 * 60);
-        }
       } else {
         _end = m;
       }
     });
+    // Same flow as sessions: confirming the start opens the end picker
+    // automatically (pre-filled with start + 15 min).
+    if (start && mounted) {
+      final int suggested =
+          (_end != null && _end! > m) ? _end! : (m + 15) % (24 * 60);
+      await _pickTime(start: false, initialMinute: suggested);
+    }
   }
 
   Future<void> _save() async {
