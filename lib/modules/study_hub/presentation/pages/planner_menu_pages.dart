@@ -15,9 +15,9 @@ class PlannerTimerPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: const Text('Study Timer')),
-      body: const ListView(
-        padding: EdgeInsets.symmetric(vertical: 6),
-        children: <Widget>[StudyTimerCard()],
+      body: ListView(
+        padding: const EdgeInsets.symmetric(vertical: 6),
+        children: const <Widget>[StudyTimerCard()],
       ),
     );
   }
@@ -32,9 +32,9 @@ class PlannerProgressPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: const Text('Progress')),
-      body: const ListView(
-        padding: EdgeInsets.symmetric(vertical: 6),
-        children: <Widget>[ProgressCard()],
+      body: ListView(
+        padding: const EdgeInsets.symmetric(vertical: 6),
+        children: const <Widget>[ProgressCard()],
       ),
     );
   }
@@ -48,9 +48,9 @@ class PlannerQuickActionsPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: const Text('Quick Actions')),
-      body: const ListView(
-        padding: EdgeInsets.symmetric(vertical: 6),
-        children: <Widget>[QuickActionsCard()],
+      body: ListView(
+        padding: const EdgeInsets.symmetric(vertical: 6),
+        children: const <Widget>[QuickActionsCard()],
       ),
     );
   }
