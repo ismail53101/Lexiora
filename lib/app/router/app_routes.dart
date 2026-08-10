@@ -32,7 +32,7 @@ abstract final class AppRoutes {
 
   // Study Hub (Phase v0.7.0 / v0.7.1)
   static const String studyHub = '/study-hub';
-  static const String studyHubPlanner = '/study-hub/planner';
+  static const String studyHubDaily = '/study-hub/daily';
   static const String studyHubWeekly = '/study-hub/weekly';
   static const String studyHubMonthly = '/study-hub/monthly';
   static const String studyHubTemplates = '/study-hub/templates';
