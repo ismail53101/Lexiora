@@ -20,6 +20,12 @@ class VocabularyRepositoryImpl implements VocabularyRepository {
       _local.watchWords(listId).map((List<VocabularyWordRow> rows) =>
           rows.map(_toWord).toList(growable: false));
 
+  @override
+  Future<VocabularyWord?> lookupWord(String wordLower) async {
+    final VocabularyWordRow? row = await _local.lookupWord(wordLower);
+    return row == null ? null : _toWord(row);
+  }
+
   VocabularyListSummary _toList(VocabularyListRow r) => VocabularyListSummary(
         id: r.id,
         title: r.title,

@@ -32,6 +32,18 @@ class VocabularyLocalDataSource {
         .watch();
   }
 
+  /// One-shot, case-insensitive headword lookup across every vocabulary pack.
+  /// Used by reader/translation popups to surface the curated English + Urdu
+  /// meaning of an exam word; returns the first pack that contains it.
+  Future<VocabularyWordRow?> lookupWord(String wordLower) async {
+    final String wl = wordLower.trim().toLowerCase();
+    if (wl.isEmpty) return null;
+    return (_db.select(_db.vocabularyWords)
+          ..where((t) => t.wordLower.equals(wl))
+          ..limit(1))
+        .getSingleOrNull();
+  }
+
   Future<int> wordCount() async {
     final Expression<int> c = _db.vocabularyWords.id.count();
     final query = _db.selectOnly(_db.vocabularyWords)

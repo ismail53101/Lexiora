@@ -147,7 +147,14 @@ class _PdfrxReaderViewState extends State<PdfrxReaderView> {
           <Widget>[
             PdfOverlayInteractionRegion(
               onDoubleTap: (PdfOverlayInteractionDetails details) {
-                widget.controller.toggleDoubleTapZoom(details.localPosition);
+                // The controller converts the tap to document coordinates
+                // itself — passing the raw position straight to setZoom was
+                // what made the view jump to the first page.
+                widget.controller.toggleDoubleTapZoom(
+                  globalPosition: details.globalPosition,
+                  localPosition: details.localPosition,
+                  viewSize: size,
+                );
                 return true;
               },
               child: SizedBox(width: size.width, height: size.height),

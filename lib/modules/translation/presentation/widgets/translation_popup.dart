@@ -4,9 +4,12 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:lexiora/app/di/injector.dart';
 import 'package:lexiora/core/constants/translation_languages.dart';
 import 'package:lexiora/features/settings/presentation/providers/settings_providers.dart';
+import 'package:lexiora/modules/dictionary/data/dictionary_seeder.dart';
 import 'package:lexiora/modules/dictionary/data/services/online_dictionary_service.dart';
 import 'package:lexiora/modules/dictionary/domain/entities/dictionary_entry.dart';
 import 'package:lexiora/modules/dictionary/domain/repositories/dictionary_repository.dart';
+import 'package:lexiora/modules/vocabulary/domain/entities/vocabulary_word.dart';
+import 'package:lexiora/modules/vocabulary/domain/repositories/vocabulary_repository.dart';
 import 'package:lexiora/modules/translation/domain/entities/translation.dart';
 import 'package:lexiora/modules/translation/domain/entities/translation_outcome.dart';
 import 'package:lexiora/modules/translation/presentation/providers/translation_providers.dart';
@@ -309,6 +312,8 @@ class _EnglishMeaning extends StatefulWidget {
 
 class _EnglishMeaningState extends State<_EnglishMeaning> {
   final DictionaryRepository _dictionary = sl<DictionaryRepository>();
+  final DictionarySeeder _dictionarySeeder = sl<DictionarySeeder>();
+  final VocabularyRepository _vocabulary = sl<VocabularyRepository>();
   final OnlineDictionaryService _online = OnlineDictionaryService();
 
   String? _meaning;
@@ -323,39 +328,76 @@ class _EnglishMeaningState extends State<_EnglishMeaning> {
   }
 
   Future<void> _load() async {
-    final DictionaryResult? local =
-        await _dictionary.lookup(widget.word.toLowerCase());
-    // Words the Translation module has auto-registered into the dictionary's
-    // search index (so they're findable later) store whatever text the
-    // translation produced — which may be Urdu/Arabic, not an English
-    // definition. Only trust entries whose meaning is actually in Latin
-    // script as a real English meaning.
-    final bool localIsEnglish = local != null &&
-        !RegExp(r'[\u0600-\u06FF\u0750-\u077F]').hasMatch(local.meaning);
+    try {
+      // The bundled dictionary seeds lazily on first use, and the reader
+      // popup is a first-class seeding trigger (see DictionarySeeder docs).
+      // Without this a fresh install's dictionary tables are empty, so every
+      // lookup returns null and the English meaning silently disappears —
+      // the exact bug seen in the popup. ensureSeeded is idempotent (shared
+      // future) so this is cheap after the first run.
+      await _dictionarySeeder.ensureSeeded();
 
-    if (localIsEnglish) {
+      final DictionaryResult? local =
+          await _dictionary.lookup(widget.word.toLowerCase());
+      // Words the Translation module has auto-registered into the dictionary's
+      // search index (so they're findable later) store whatever text the
+      // translation produced — which may be Urdu/Arabic, not an English
+      // definition. Only trust entries whose meaning is actually in Latin
+      // script as a real English meaning.
+      final bool localIsEnglish = local != null &&
+          !RegExp(r'[\u0600-\u06FF\u0750-\u077F]').hasMatch(local.meaning);
+
+      if (localIsEnglish) {
+        if (mounted) {
+          setState(() {
+            _meaning = local.meaning;
+            _partOfSpeech = local.partOfSpeech;
+            _fromOnline = false;
+            _loading = false;
+          });
+        }
+        return;
+      }
+
+      // Fallback: the curated exam vocabulary packs (CSS/BPSC, IELTS, …).
+      // They carry exactly the short English + Urdu meanings competitive-exam
+      // readers need, for words the base dictionary may not cover.
+      final VocabularyWord? packWord =
+          await _vocabulary.lookupWord(widget.word.toLowerCase());
+      if (packWord != null && packWord.englishMeaning.trim().isNotEmpty) {
+        if (mounted) {
+          setState(() {
+            _meaning = packWord.englishMeaning;
+            _partOfSpeech = packWord.partOfSpeech;
+            _fromOnline = false;
+            _loading = false;
+          });
+        }
+        return;
+      }
+
+      // Final fallback — free, keyless online lookup, the same
+      // "offline-first, online-fallback" shape the Urdu translation uses.
+      final OnlineDefinition? online = await _online.define(widget.word);
       if (mounted) {
         setState(() {
-          _meaning = local.meaning;
-          _partOfSpeech = local.partOfSpeech;
+          _meaning = online?.meaning;
+          _partOfSpeech = online?.partOfSpeech;
+          _fromOnline = online != null;
+          _loading = false;
+        });
+      }
+    } on Object {
+      // A seeder/database/network failure must never strand the popup on a
+      // perpetual spinner — degrade to "no English meaning" instead.
+      if (mounted) {
+        setState(() {
+          _meaning = null;
+          _partOfSpeech = null;
           _fromOnline = false;
           _loading = false;
         });
       }
-      return;
-    }
-
-    // Not in the offline dictionary (or only as a non-English stand-in) —
-    // fall back to a free, keyless online lookup, the same "offline-first,
-    // online-fallback" shape the Urdu translation already uses.
-    final OnlineDefinition? online = await _online.define(widget.word);
-    if (mounted) {
-      setState(() {
-        _meaning = online?.meaning;
-        _partOfSpeech = online?.partOfSpeech;
-        _fromOnline = online != null;
-        _loading = false;
-      });
     }
   }
 

@@ -1,5 +1,5 @@
 import 'dart:math' as math;
-import 'dart:ui' show Offset;
+import 'dart:ui' show Offset, Size;
 
 import 'package:flutter/foundation.dart';
 import 'package:lexiora/core/reader_engine/pdf_reader_controller.dart';
@@ -123,14 +123,48 @@ class PdfrxReaderController implements PdfReaderController {
   /// centred on the tapped point, or back to the fit-to-screen scale when
   /// already zoomed in. Deliberately a modest step ("a little bit"), not a
   /// full zoom-in/zoom-out cycle.
-  Future<void> toggleDoubleTapZoom(Offset viewerPosition) async {
+  ///
+  /// pdfrx's [PdfViewerController.setZoom] takes the zoom centre in *document*
+  /// coordinates, not widget/screen pixels — passing a raw tap position was
+  /// the cause of the "zoom jumps to the first page" bug (small screen
+  /// coordinates are near the document origin, i.e. the top-left of page 1).
+  /// We therefore convert the tap's global position to document coordinates
+  /// (exactly like pdfrx does for pinch zoom) before zooming.
+  Future<void> toggleDoubleTapZoom({
+    required Offset globalPosition,
+    required Offset localPosition,
+    required Size viewSize,
+  }) async {
     if (!pdf.isReady) return;
     final double base = pdf.coverScale;
     final double current = pdf.currentZoom;
     final bool zoomedIn = current > base * 1.2;
     final double target =
         zoomedIn ? base : math.min(base * 1.6, pdf.maxScale);
-    await pdf.setZoom(viewerPosition, target);
+
+    // Zooming back OUT: keep the current viewport stable (its centre stays
+    // put) — the same safe, proven path the toolbar zoom buttons use.
+    if (zoomedIn) {
+      await pdf.setZoom(pdf.visibleRect.center, target);
+      _zoom.value = pdf.currentZoom;
+      return;
+    }
+
+    final Offset? documentPoint = pdf.globalToDocument(globalPosition);
+    if (documentPoint == null) {
+      // Transform not yet available — fall back to viewport-centre zoom.
+      await pdf.setZoom(pdf.visibleRect.center, target);
+      _zoom.value = pdf.currentZoom;
+      return;
+    }
+
+    // Zooming IN: keep the tapped content under the finger, mirroring pdfrx's
+    // own pinch-zoom centring (document point + (view centre − tap) / zoom).
+    final Offset center = documentPoint.translate(
+      (viewSize.width / 2 - localPosition.dx) / target,
+      (viewSize.height / 2 - localPosition.dy) / target,
+    );
+    await pdf.setZoom(center, target);
     _zoom.value = pdf.currentZoom;
   }
 

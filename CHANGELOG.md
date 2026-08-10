@@ -5,6 +5,27 @@ All notable changes to Sapiora are documented here.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.21.4] — 2026-08-10
+
+### Fixed
+
+- **Double-tap zoom no longer jumps to the first page.** The zoom centre is
+  now converted to true document coordinates — the same conversion pdfrx
+  itself uses for pinch zoom — so double-tapping keeps the tapped content
+  under your finger instead of flinging the view back to page 1.
+- **English meaning now shows in the reader pop-up on fresh installs.** The
+  bundled dictionary seeds lazily and the pop-up never triggered the seed, so
+  on a new install every word's English definition silently disappeared. The
+  pop-up now ensures the dictionary is ready before lookup, falls back to the
+  curated CSS/BPSC exam packs for words the base dictionary doesn't cover,
+  and degrades gracefully (no stuck spinner) if a lookup fails.
+
+### Changed
+
+- **CSS / BPSC Vocabulary is now the first word list.** The combined CSS/BPSC
+  pack (1,010 words) is pinned to the top of the Vocabulary screen so
+  competitive-exam words are the first thing you see.
+
 ## [0.21.3] — 2026-08-10
 
 ### Added
