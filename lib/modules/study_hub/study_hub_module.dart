@@ -12,8 +12,8 @@ import 'package:lexiora/modules/study_hub/presentation/pages/daily_planner_page.
 import 'package:lexiora/modules/study_hub/presentation/pages/export_backup_page.dart';
 import 'package:lexiora/modules/study_hub/presentation/pages/manage_subjects_page.dart';
 import 'package:lexiora/modules/study_hub/presentation/pages/monthly_planner_page.dart';
+import 'package:lexiora/modules/study_hub/presentation/pages/planner_page.dart';
 import 'package:lexiora/modules/study_hub/presentation/pages/search_page.dart';
-import 'package:lexiora/modules/study_hub/presentation/pages/study_hub_page.dart';
 import 'package:lexiora/modules/study_hub/presentation/pages/templates_page.dart';
 import 'package:lexiora/modules/study_hub/presentation/pages/weekly_planner_page.dart';
 
@@ -46,7 +46,7 @@ class StudyHubModule extends FeatureModule {
   List<RouteBase> routes(GetIt getIt) => <RouteBase>[
         GoRoute(
           path: AppRoutes.studyHub,
-          builder: (_, _) => const StudyHubPage(),
+          builder: (_, _) => const PlannerPage(),
         ),
         GoRoute(
           path: AppRoutes.studyHubDaily,

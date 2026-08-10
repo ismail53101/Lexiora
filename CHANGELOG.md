@@ -5,6 +5,26 @@ All notable changes to Sapiora are documented here.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.21.1] — 2026-08-10
+
+### Changed
+
+- **Study Planner now opens straight into the tabbed planner.** Opening Study
+  Planner lands on the mockup interface: the Daily | Weekly | Monthly pill
+  switcher sits right at the top, with the selected view below it — Daily
+  (led by the 🔥 streak / 🎯 goal / ⏱ study-today overview row), Weekly
+  (collapsible day cards) and Monthly (calendar, stats grid + progress
+  donut). No more separate dashboard before the planner.
+- **Every dashboard feature stays reachable from the planner's ⋮ menu:**
+  Study Timer (Pomodoro + Manual + full screen), Progress (weekly / monthly
+  statistics), Quick Actions, Templates, Manage Subjects and Export &
+  Backup. The old standalone dashboard page and its unused daily-planner
+  card were removed.
+- **Planner views match the mockup's subject-colour look.** Each day of the
+  week strip now shows its subjects as small coloured dots, task rows draw a
+  subject-coloured timeline, every task card shows its time range tinted in
+  the subject's colour, and the break row uses the mockup's briefcase icon.
+
 ## [0.21.0] — 2026-08-10
 
 ### Added
