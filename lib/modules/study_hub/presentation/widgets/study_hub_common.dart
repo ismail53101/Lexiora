@@ -95,10 +95,10 @@ class CompactNavTile extends StatelessWidget {
                   children: <Widget>[
                     Text(
                       label,
-                      maxLines: 1,
+                      maxLines: 2,
                       overflow: TextOverflow.ellipsis,
                       style: theme.textTheme.labelLarge
-                          ?.copyWith(fontWeight: FontWeight.w700),
+                          ?.copyWith(fontWeight: FontWeight.w700, height: 1.15),
                     ),
                     if (subtitle != null)
                       Text(

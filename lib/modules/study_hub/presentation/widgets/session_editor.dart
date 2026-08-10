@@ -70,6 +70,8 @@ class _SessionEditorState extends ConsumerState<_SessionEditor> {
   late int? _end = widget.existing?.endMinute;
   late TaskPriority _priority = widget.existing?.priority ?? TaskPriority.medium;
   late TaskStatus _status = widget.existing?.status ?? TaskStatus.pending;
+  bool _addBreak = false;
+  int _breakMinutes = 10;
 
   @override
   void dispose() {
@@ -90,6 +92,12 @@ class _SessionEditorState extends ConsumerState<_SessionEditor> {
       final int m = picked.hour * 60 + picked.minute;
       if (start) {
         _start = m;
+        // Auto-fill the end time so a session isn't left open-ended by
+        // default — a 1-hour block from the new start, unless an end was
+        // already explicitly set later than this start.
+        if (_end == null || _end! <= m) {
+          _end = (m + 60) % (24 * 60);
+        }
       } else {
         _end = m;
       }
@@ -125,6 +133,26 @@ class _SessionEditorState extends ConsumerState<_SessionEditor> {
       clearTimes: _start == null && _end == null,
     );
     await ref.read(studyHubRepositoryProvider).saveTask(task);
+    // One combined flow: optionally create the break right after this
+    // session's end time, instead of it being a separate "Add break" step —
+    // so a Pomodoro-style focus+break pair can be planned in one go.
+    if (widget.existing == null && _addBreak && _end != null) {
+      final int breakStart = _end!;
+      final int breakEnd = (breakStart + _breakMinutes) % (24 * 60);
+      await ref.read(studyHubRepositoryProvider).saveTask(
+            StudyTask(
+              id: const Uuid().v4(),
+              day: widget.day,
+              title: 'Break',
+              startMinute: breakStart,
+              endMinute: breakEnd,
+              kind: SessionKind.breakTime,
+              status: TaskStatus.pending,
+              createdAt: now,
+              updatedAt: now,
+            ),
+          );
+    }
     if (mounted) Navigator.of(context).pop();
   }
 
@@ -208,6 +236,28 @@ class _SessionEditorState extends ConsumerState<_SessionEditor> {
                 ),
               ],
             ),
+            if (widget.existing == null) ...<Widget>[
+              const SizedBox(height: 12),
+              SwitchListTile.adaptive(
+                contentPadding: EdgeInsets.zero,
+                value: _addBreak,
+                onChanged: (bool v) => setState(() => _addBreak = v),
+                title: const Text('Add a break right after this session'),
+                subtitle: const Text('Creates it in the same step — Pomodoro-style'),
+              ),
+              if (_addBreak)
+                Wrap(
+                  spacing: 8,
+                  children: <Widget>[
+                    for (final int m in const <int>[5, 10, 15, 20])
+                      ChoiceChip(
+                        label: Text('$m min'),
+                        selected: _breakMinutes == m,
+                        onSelected: (_) => setState(() => _breakMinutes = m),
+                      ),
+                  ],
+                ),
+            ],
             const SizedBox(height: 16),
             Text('Priority', style: theme.textTheme.labelLarge),
             const SizedBox(height: 8),
@@ -296,6 +346,11 @@ class _BreakEditorState extends ConsumerState<_BreakEditor> {
       final int m = picked.hour * 60 + picked.minute;
       if (start) {
         _start = m;
+        // Same auto-fill idea as the session editor, just a shorter
+        // default block (15 min) since breaks are normally brief.
+        if (_end == null || _end! <= m) {
+          _end = (m + 15) % (24 * 60);
+        }
       } else {
         _end = m;
       }
