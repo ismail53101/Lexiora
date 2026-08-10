@@ -5,6 +5,29 @@ All notable changes to Sapiora are documented here.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.21.0] — 2026-08-10
+
+### Added
+
+- **Unified Study Planner with a Daily / Weekly / Monthly switcher.** The
+  planner is now one continuous experience: a segmented Daily | Weekly |
+  Monthly control sits at the top of every planner page (and a redesigned
+  unified Planner page bundles all three views behind a pill switcher with
+  colour-coded subjects, round checkmarks, a collapsible weekly list and a
+  monthly calendar with a stats grid + progress donut).
+  - **Daily** — week date-strip navigation with tappable day pills.
+  - **Weekly** — collapsible day rows that show "Weekday, date · N tasks"
+    and expand to the full day on tap; only today opens by default.
+  - **Monthly** — calendar with task-colour dots, month-at-a-glance stats
+    and a progress ring.
+
+### Fixed
+
+- **Study Planner build restored.** The planner redesign had accidentally
+  removed the shared `day_planner_section.dart` widget while the Daily,
+  Weekly and Monthly pages still used it, which broke `flutter analyze` and
+  the APK build. The widget is restored (unchanged), so the planner ships.
+
 ## [0.20.0] — 2026-08-09
 
 ### Changed
