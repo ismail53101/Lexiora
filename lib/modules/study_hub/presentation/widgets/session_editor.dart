@@ -89,8 +89,8 @@ class _SessionEditorState extends ConsumerState<_SessionEditor> {
       initialTime: TimeOfDay(hour: base ~/ 60, minute: base % 60),
     );
     if (picked == null) return;
+    final int m = picked.hour * 60 + picked.minute;
     setState(() {
-      final int m = picked.hour * 60 + picked.minute;
       if (start) {
         _start = m;
       } else {
@@ -346,8 +346,8 @@ class _BreakEditorState extends ConsumerState<_BreakEditor> {
       initialTime: TimeOfDay(hour: base ~/ 60, minute: base % 60),
     );
     if (picked == null) return;
+    final int m = picked.hour * 60 + picked.minute;
     setState(() {
-      final int m = picked.hour * 60 + picked.minute;
       if (start) {
         _start = m;
       } else {
