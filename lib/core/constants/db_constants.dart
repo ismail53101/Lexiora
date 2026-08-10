@@ -121,13 +121,16 @@ abstract final class TranslationConstants {
   /// Endpoint of the default online translation provider. It is abstracted
   /// behind `RemoteTranslationService`, so swapping providers (e.g. to
   /// LibreTranslate or a paid API) is a one-line binding change and requires no
-  /// UI changes. Default is MyMemory — free and keyless.
+  /// UI changes. Default is Google Translate's keyless web endpoint — far
+  /// better single-word and sentence quality than the previous default
+  /// (MyMemory), which regularly returned the wrong sense for isolated words
+  /// (e.g. "execution" → "پھانسی" instead of "عملدرآمد").
   static const String remoteEndpoint =
-      'https://api.mymemory.translated.net/get';
+      'https://translate.googleapis.com/translate_a/single';
 
   /// Human-readable provider name (diagnostics/logs only; the UI shows a
   /// generic "Online" source label).
-  static const String remoteProviderName = 'MyMemory';
+  static const String remoteProviderName = 'Google Translate';
 
   /// Network timeout for a single online translation request.
   static const Duration remoteTimeout = Duration(seconds: 8);

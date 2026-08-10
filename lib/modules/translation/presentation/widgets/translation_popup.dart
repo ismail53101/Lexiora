@@ -28,6 +28,18 @@ Future<void> showTranslationPopup(BuildContext context, String selectedWord) {
   );
 }
 
+/// Strips whitespace and stray leading/trailing punctuation from a reader
+/// selection (PDF selections frequently include ":", ",", ".", quotes) so a
+/// single word is treated as a single word — the English-meaning block and the
+/// dictionary lookup depend on it, and translators render "execution:" quite
+/// differently from "execution".
+String cleanSelectedText(String raw) {
+  String text = raw.trim();
+  text = text.replaceFirst(RegExp(r'^[^A-Za-z0-9]+'), '');
+  text = text.replaceFirst(RegExp(r'[^A-Za-z0-9]+$'), '');
+  return text;
+}
+
 class _TranslationSheet extends ConsumerWidget {
   const _TranslationSheet({required this.selectedWord});
 
@@ -36,7 +48,7 @@ class _TranslationSheet extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final ThemeData theme = Theme.of(context);
-    final String word = selectedWord.trim();
+    final String word = cleanSelectedText(selectedWord);
 
     final String langCode = ref.watch(settingsProvider).maybeWhen(
           data: (s) => s.translationLanguage,

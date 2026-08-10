@@ -5,6 +5,7 @@ import 'package:lexiora/core/services/connectivity_service.dart';
 import 'package:lexiora/core/utils/result.dart';
 import 'package:lexiora/modules/dictionary/data/datasources/dictionary_local_data_source.dart';
 import 'package:lexiora/modules/dictionary/data/repositories/dictionary_repository_impl.dart';
+import 'package:lexiora/modules/dictionary/data/services/online_dictionary_service.dart';
 import 'package:lexiora/modules/dictionary/domain/entities/dictionary_entry.dart';
 import 'package:lexiora/modules/translation/data/datasources/translation_local_data_source.dart';
 import 'package:lexiora/modules/translation/data/repositories/translation_repository_impl.dart';
@@ -32,6 +33,7 @@ class _FakeRemote implements RemoteTranslationService {
   String? result;
   bool throws;
   int callCount = 0;
+  String? lastWord;
 
   @override
   String get providerName => 'Fake';
@@ -42,9 +44,21 @@ class _FakeRemote implements RemoteTranslationService {
     required String targetLanguageCode,
   }) async {
     callCount++;
+    lastWord = word;
     if (throws) throw Exception('network down');
     return result;
   }
+}
+
+/// Online dictionary stub — returns a canned definition or none at all.
+class _FakeOnlineDictionary extends OnlineDictionaryService {
+  _FakeOnlineDictionary({this.definition});
+  final String? definition;
+
+  @override
+  Future<OnlineDefinition?> define(String word) async => definition == null
+      ? null
+      : OnlineDefinition(meaning: definition!);
 }
 
 void main() {
@@ -67,12 +81,14 @@ void main() {
   HybridTranslate buildUseCase({
     required _FakeRemote remote,
     required _FakeConnectivity connectivity,
+    OnlineDictionaryService? onlineDict,
   }) =>
       HybridTranslate(
         translationRepository: repo,
         remoteService: remote,
         connectivity: connectivity,
         dictionaryRepository: dictRepo,
+        onlineDictionary: onlineDict ?? _FakeOnlineDictionary(),
       );
 
   Future<TranslationOutcome> run(
@@ -107,7 +123,46 @@ void main() {
     expect(outcome.translation?.text, 'کتاب');
     expect(outcome.translation?.source, TranslationSource.offline);
     expect(remote.callCount, 0, reason: 'offline hit must not hit the network');
-    expect(conn.callCount, 0, reason: 'no need to check connectivity on a hit');
+    // Single words consult connectivity once before the sense-aware attempt,
+    // but a real translation request never fires when the offline DB hits.
+  });
+
+  test('single word stays offline-first when the device is offline', () async {
+    await seedEntry('ur', 'book', 'کتاب');
+    final _FakeRemote remote = _FakeRemote(result: 'SHOULD NOT BE USED');
+    final _FakeConnectivity conn = _FakeConnectivity(false);
+
+    final TranslationOutcome outcome =
+        await run(buildUseCase(remote: remote, connectivity: conn), 'book', 'ur');
+
+    expect(outcome.status, TranslationOutcomeStatus.offline);
+    expect(outcome.translation?.text, 'کتاب');
+    expect(remote.callCount, 0);
+  });
+
+  test('single word with a definition is translated via its definition '
+      '(sense-aware: never the bare word)', () async {
+    // Seed the dictionary so the sense-aware path resolves a definition
+    // without any online dictionary call.
+    await dictRepo.registerExternalWord(
+      word: 'execution',
+      meaning: 'the act of carrying out a plan',
+    );
+    final _FakeRemote remote = _FakeRemote(result: 'عملدرآمد');
+    final _FakeConnectivity conn = _FakeConnectivity(true);
+
+    final TranslationOutcome outcome = await run(
+      buildUseCase(remote: remote, connectivity: conn),
+      'execution',
+      'ur',
+    );
+
+    expect(outcome.status, TranslationOutcomeStatus.online);
+    expect(outcome.translation?.text, 'عملدرآمد');
+    expect(remote.lastWord, 'the act of carrying out a plan',
+        reason: 'the definition — not the bare word — is what gets translated');
+    // Cached under the original word for offline reuse.
+    expect(await repo.translate('execution', 'ur'), 'عملدرآمد');
   });
 
   test('online fallback fetches, caches, and registers with the Dictionary',

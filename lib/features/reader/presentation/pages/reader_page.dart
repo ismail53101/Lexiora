@@ -245,6 +245,16 @@ class _ReaderPageState extends ConsumerState<ReaderPage> {
     if (mounted) setState(() => _selection = null);
   }
 
+  /// Trims a PDF selection and strips stray leading/trailing punctuation (PDF
+  /// selections frequently include ":", ",", ".", quotes) so single words are
+  /// recognized — and handed to word actions — as single words.
+  String _cleanSelectedText(String raw) {
+    String text = raw.trim();
+    text = text.replaceFirst(RegExp(r'^[^A-Za-z0-9]+'), '');
+    text = text.replaceFirst(RegExp(r'[^A-Za-z0-9]+$'), '');
+    return text;
+  }
+
   /// The selected text when it is a single word (letters with optional internal
   /// hyphen/apostrophe); otherwise null. Used to classify a selection as
   /// single-word vs phrase — word actions that are not [WordAction.supportsPhrase]
@@ -252,7 +262,7 @@ class _ReaderPageState extends ConsumerState<ReaderPage> {
   String? _selectionSingleWord() {
     final PdfTextSelectionData? sel = _selection;
     if (sel == null) return null;
-    final String text = sel.text.trim();
+    final String text = _cleanSelectedText(sel.text.trim());
     if (text.isEmpty || text.length > 64) return null;
     if (!RegExp(r"^[A-Za-z][A-Za-z'’\-]*$").hasMatch(text)) return null;
     return text;
@@ -263,12 +273,14 @@ class _ReaderPageState extends ConsumerState<ReaderPage> {
   /// Callers combine this with [_selectionSingleWord] and
   /// [WordAction.supportsPhrase] to decide which actions to offer: dictionary
   /// lookups need a single word, while translation accepts a full phrase.
+  /// Single words are returned in their cleaned form so actions never see
+  /// stray punctuation (e.g. "execution," → "execution").
   String? _selectionActionText() {
     final PdfTextSelectionData? sel = _selection;
     if (sel == null) return null;
-    final String text = sel.text.trim();
-    if (text.isEmpty || text.length > 300) return null;
-    return text;
+    final String raw = sel.text.trim();
+    if (raw.isEmpty || raw.length > 300) return null;
+    return _selectionSingleWord() ?? raw;
   }
 
   /// Invokes a registered [WordAction] for the selected word. The reader stays

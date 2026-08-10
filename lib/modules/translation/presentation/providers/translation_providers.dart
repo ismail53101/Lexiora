@@ -2,6 +2,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:lexiora/app/di/injector.dart';
 import 'package:lexiora/core/services/connectivity_service.dart';
 import 'package:lexiora/core/utils/result.dart';
+import 'package:lexiora/modules/dictionary/data/services/online_dictionary_service.dart';
 import 'package:lexiora/modules/dictionary/presentation/providers/dictionary_providers.dart';
 import 'package:lexiora/modules/translation/data/translation_seeder.dart';
 import 'package:lexiora/modules/translation/domain/entities/translation.dart';
@@ -27,6 +28,11 @@ final Provider<RemoteTranslationService> remoteTranslationServiceProvider =
 final Provider<ConnectivityService> connectivityServiceProvider =
     Provider<ConnectivityService>((Ref ref) => sl<ConnectivityService>());
 
+/// Free, keyless online English-definition source used by the single-word
+/// sense-disambiguation step in [HybridTranslate].
+final Provider<OnlineDictionaryService> onlineDictionaryServiceProvider =
+    Provider<OnlineDictionaryService>((Ref ref) => OnlineDictionaryService());
+
 // ── Use cases ───────────────────────────────────────────────────────────────
 
 final Provider<TranslateWord> translateWordProvider = Provider<TranslateWord>(
@@ -40,6 +46,7 @@ final Provider<HybridTranslate> hybridTranslateProvider =
     remoteService: ref.watch(remoteTranslationServiceProvider),
     connectivity: ref.watch(connectivityServiceProvider),
     dictionaryRepository: ref.watch(dictionaryRepositoryProvider),
+    onlineDictionary: ref.watch(onlineDictionaryServiceProvider),
   ),
 );
 

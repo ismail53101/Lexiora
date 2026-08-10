@@ -5,11 +5,13 @@ import 'package:lexiora/core/constants/db_constants.dart';
 import 'package:lexiora/modules/translation/domain/services/remote_translation_service.dart';
 
 /// Default [RemoteTranslationService] backed by a configurable HTTP endpoint
-/// (MyMemory by default — free and keyless), using `dart:io` so no extra
-/// package dependency is required.
+/// (Google Translate's keyless web endpoint by default — free, no API key),
+/// using `dart:io` so no extra package dependency is required.
 ///
 /// The response parsing is isolated in the pure, static [parseTranslation] so it
-/// can be unit-tested without any network access.
+/// can be unit-tested without any network access. Both the Google Translate and
+/// the legacy MyMemory response shapes are understood, so the endpoint can be
+/// swapped (e.g. back to MyMemory) without touching the parser.
 class HttpTranslationService implements RemoteTranslationService {
   HttpTranslationService({
     String? endpoint,
@@ -34,10 +36,15 @@ class HttpTranslationService implements RemoteTranslationService {
     final String q = word.trim();
     if (q.isEmpty || targetLanguageCode.isEmpty) return null;
 
+    // Google-style query parameters. If the configured endpoint is a
+    // different provider, only this block needs adjusting.
     final Uri uri = Uri.parse(_endpoint).replace(
       queryParameters: <String, String>{
+        'client': 'gtx',
+        'sl': 'en',
+        'tl': targetLanguageCode,
+        'dt': 't',
         'q': q,
-        'langpair': 'en|$targetLanguageCode',
       },
     );
 
@@ -54,9 +61,14 @@ class HttpTranslationService implements RemoteTranslationService {
     return parseTranslation(body);
   }
 
-  /// Parses a MyMemory-style JSON response, returning the translated text or
-  /// `null` when the payload carries no usable translation. Pure and static so
-  /// it is trivially unit-testable.
+  /// Parses a translation response, returning the translated text or `null`
+  /// when the payload carries no usable translation. Pure and static so it is
+  /// trivially unit-testable.
+  ///
+  /// Understands both response shapes:
+  ///  * Google Translate (`translate_a/single`):
+  ///    `[ [ [ "translated", "original", ... ], ... ], null, "en", ... ]`
+  ///  * MyMemory (`/get`): `{ "responseData": { "translatedText": "..." } }`
   static String? parseTranslation(String body) {
     Object? decoded;
     try {
@@ -64,6 +76,24 @@ class HttpTranslationService implements RemoteTranslationService {
     } on FormatException {
       return null;
     }
+
+    // ── Google Translate shape ──────────────────────────────────────────────
+    // A top-level list whose first element is the list of sentence groups;
+    // each group's first element is its translated text.
+    if (decoded is List) {
+      final Object? sentences = decoded.isEmpty ? null : decoded.first;
+      if (sentences is! List) return null;
+      final StringBuffer buffer = StringBuffer();
+      for (final Object? sentence in sentences) {
+        if (sentence is! List || sentence.isEmpty) continue;
+        final Object? text = sentence.first;
+        if (text is String && text.isNotEmpty) buffer.write(text);
+      }
+      final String joined = buffer.toString().trim();
+      return joined.isEmpty ? null : joined;
+    }
+
+    // ── MyMemory shape ──────────────────────────────────────────────────────
     if (decoded is! Map<String, dynamic>) return null;
     final Object? data = decoded['responseData'];
     if (data is! Map<String, dynamic>) return null;

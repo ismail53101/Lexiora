@@ -1,3 +1,6 @@
+import 'dart:math' as math;
+import 'dart:ui' show Offset;
+
 import 'package:flutter/foundation.dart';
 import 'package:lexiora/core/reader_engine/pdf_reader_controller.dart';
 import 'package:pdfrx/pdfrx.dart';
@@ -113,6 +116,21 @@ class PdfrxReaderController implements PdfReaderController {
   Future<void> resetZoom() async {
     if (!pdf.isReady) return;
     await pdf.setZoom(pdf.visibleRect.center, pdf.coverScale);
+    _zoom.value = pdf.currentZoom;
+  }
+
+  /// Double-tap zoom toggle for the reader: zoom to a comfortable close-up
+  /// centred on the tapped point, or back to the fit-to-screen scale when
+  /// already zoomed in. Deliberately a modest step ("a little bit"), not a
+  /// full zoom-in/zoom-out cycle.
+  Future<void> toggleDoubleTapZoom(Offset viewerPosition) async {
+    if (!pdf.isReady) return;
+    final double base = pdf.coverScale;
+    final double current = pdf.currentZoom;
+    final bool zoomedIn = current > base * 1.2;
+    final double target =
+        zoomedIn ? base : math.min(base * 1.6, pdf.maxScale);
+    await pdf.setZoom(viewerPosition, target);
     _zoom.value = pdf.currentZoom;
   }
 

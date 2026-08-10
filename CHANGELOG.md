@@ -5,6 +5,39 @@ All notable changes to Sapiora are documented here.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.21.3] — 2026-08-10
+
+### Added
+
+- **Double-tap zoom in the PDF reader.** Double-tap anywhere on a page zooms
+  to a comfortable close-up centred on your finger (about 1.6×), and
+  double-tapping again zooms back out to fit the screen. Text selection,
+  pinch-zoom and panning are completely unaffected.
+
+### Changed
+
+- **CSS / BPSC Vocabulary expanded to 1,010 exam-oriented words.** The
+  combined CSS/BPSC list now spans Governance, Economy, Education, Climate,
+  Security, International Relations, Society, Technology, Analytical,
+  Solutions, Essay, Connectors and General vocabulary — each word with a
+  simple English meaning and a clear Urdu translation, still A–Z sorted.
+
+### Fixed
+
+- **Sense-correct Urdu translations for single words.** Online translators
+  routinely picked the wrong meaning for isolated words — e.g. "execution"
+  came back as پھانسی ("hanging") instead of عملدرآمد ("carrying out"). The
+  reader now translates the word's English definition instead of the bare
+  word, so the Urdu meaning matches the sense actually used in the text.
+- **Online translation quality switched to Google Translate.** The free,
+  keyless Google web endpoint replaces MyMemory as the online provider —
+  noticeably better for both single words and full phrases/sentences.
+- **English meaning now appears for far more words.** PDF selections often
+  carry a stray trailing punctuation character (e.g. "execution,"), which
+  stopped the pop-up from treating the selection as a single word — so the
+  simple English definition (and the clean word saved to Vocabulary) were
+  missing. Selections are now cleaned before lookup.
+
 ## [0.21.2] — 2026-08-10
 
 ### Changed

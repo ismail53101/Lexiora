@@ -29,6 +29,26 @@ void main() {
     expect(HttpTranslationService.parseTranslation(body), isNull);
   });
 
+  test('parses a valid Google Translate response', () {
+    const String body =
+        '[[["عمل، طریقہ یا عمل کرنے کا انداز","execution",null,null,3]],'
+        'null,"en",null,null,null,null,[]]';
+    expect(HttpTranslationService.parseTranslation(body),
+        'عمل، طریقہ یا عمل کرنے کا انداز');
+  });
+
+  test('joins Google multi-segment responses', () {
+    const String body =
+        '[[["پہلا","first",null,null,3],[" دوسرا","second",null,null,3]],'
+        'null,"en",null,null,null,null,[]]';
+    expect(HttpTranslationService.parseTranslation(body), 'پہلا دوسرا');
+  });
+
+  test('returns null for an empty Google response', () {
+    const String body = '[[],null,"en",null,null,null,null,[]]';
+    expect(HttpTranslationService.parseTranslation(body), isNull);
+  });
+
   test('returns null when responseData is missing', () {
     const String body = '{"responseStatus":200}';
     expect(HttpTranslationService.parseTranslation(body), isNull);
