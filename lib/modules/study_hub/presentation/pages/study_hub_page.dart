@@ -69,6 +69,12 @@ class _PlannersCard extends StatelessWidget {
       child: CompactNavGrid(
         tiles: <Widget>[
           CompactNavTile(
+            icon: Icons.event_note_outlined,
+            label: 'Daily Planner',
+            subtitle: 'Today, one day at a time',
+            onTap: () => context.push(AppRoutes.studyHubPlanner),
+          ),
+          CompactNavTile(
             icon: Icons.view_week_outlined,
             label: 'Weekly Planner',
             subtitle: 'Every day of the week',
