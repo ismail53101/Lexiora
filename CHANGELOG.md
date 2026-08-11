@@ -5,6 +5,28 @@ All notable changes to Sapiora are documented here.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.21.6] — 2026-08-11
+
+### Added
+
+- **Curated common-word dictionary (642 entries)** — `assets/dictionary/common_words.json`
+  + `common_words_2.json`. Simple English definitions **and** simple Urdu for the
+  everyday words users tap in the reader (connectors, prepositions, common verbs
+  and nouns). Auto-discovered by the exam seeder — no code change needed to grow it.
+
+### Fixed
+
+- **Online fallback now translates the bare word, not the WordNet definition.**
+  Previously, uncached words were machine-translated from their verbose dictionary
+  definition (e.g. `eventually` → "غير متعینہ مدت یا خاص طور پر طویل تاخیر کے بعد").
+  Now the fallback translates just the word itself, producing short, natural Urdu.
+- **Reader pop-up now seeds the curated dictionary before translating.** The
+  curated common-word layer was previously only loaded on the Dictionary page,
+  so reader pop-ups never saw it.
+- **Word-sense heuristic penalises loaded/technical senses** ("notoriety",
+  "pathology", "deficiency") so the offline dictionary picks the everyday sense
+  for the long tail of uncovered words.
+
 ## [0.21.5] — 2026-08-11
 
 ### Fixed

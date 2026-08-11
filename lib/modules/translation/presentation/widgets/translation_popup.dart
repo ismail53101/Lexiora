@@ -5,6 +5,7 @@ import 'package:lexiora/app/di/injector.dart';
 import 'package:lexiora/core/constants/translation_languages.dart';
 import 'package:lexiora/features/settings/presentation/providers/settings_providers.dart';
 import 'package:lexiora/modules/dictionary/data/dictionary_seeder.dart';
+import 'package:lexiora/modules/dictionary/data/exam_words_seeder.dart';
 import 'package:lexiora/modules/dictionary/domain/repositories/dictionary_repository.dart';
 import 'package:lexiora/modules/translation/data/services/word_meaning_service.dart';
 import 'package:lexiora/modules/translation/domain/entities/translation.dart';
@@ -311,6 +312,7 @@ class _EnglishMeaning extends StatefulWidget {
 class _EnglishMeaningState extends State<_EnglishMeaning> {
   final DictionarySeeder _dictionarySeeder = sl<DictionarySeeder>();
   final VocabularySeeder _vocabularySeeder = sl<VocabularySeeder>();
+  final ExamWordsSeeder _examSeeder = sl<ExamWordsSeeder>();
 
   String? _meaning;
   String? _partOfSpeech;
@@ -325,12 +327,13 @@ class _EnglishMeaningState extends State<_EnglishMeaning> {
 
   Future<void> _load() async {
     try {
-      // The bundled dictionary and the exam vocabulary packs both seed
-      // lazily; the reader popup is a first-class seeding trigger (see
-      // DictionarySeeder docs). ensureSeeded is idempotent (shared future) so
-      // this is cheap after the first run.
+      // The bundled dictionary, the exam vocabulary packs and the curated
+      // common-words packs all seed lazily; the reader popup is a first-class
+      // seeding trigger (see DictionarySeeder docs). ensureSeeded is
+      // idempotent (shared future) so this is cheap after the first run.
       await _dictionarySeeder.ensureSeeded();
       await _vocabularySeeder.ensureSeeded();
+      await _examSeeder.ensureSeeded();
 
       // Resolve the best exam-appropriate meaning: curated packs first (so
       // "attention" → "the act of focusing the mind", not "treatment"), then

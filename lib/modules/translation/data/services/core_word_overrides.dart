@@ -164,4 +164,16 @@ const Map<String, List<String>> kCoreWordOverrides = <String, List<String>>{
   'bank': <String>['a place where money is kept and financial services are offered', 'noun', 'بینک'],
   'fair': <String>['just and honest, treating everyone equally', 'adjective', 'منصفانہ'],
   'fit': <String>['healthy and strong; the right size or shape for something', 'adjective', 'موزوں، تندرست'],
+  // Common words users hit in current-affairs booklets that are (a) missing
+  // from every curated pack AND the offline Wiktionary Urdu data, or (b) whose
+  // raw dictionary sense / offline Urdu is misleading.
+  'eventually': <String>['in the end; after a long time', 'adverb', 'آخر کار'],
+  'finally': <String>['in the end; after a long delay or series of events', 'adverb', 'بالآخر'],
+  'reputation': <String>['the opinion that people in general have about someone or something', 'noun', 'شہرت'],
+  'exaggerate': <String>['to make something seem larger, more important, or worse than it really is', 'verb', 'مبالغہ کرنا'],
+  'significantly': <String>['in an important or noticeable way', 'adverb', 'نمایاں طور پر'],
+  'roughly': <String>['approximately; not exactly', 'adverb', 'تقریباً'],
+  'consecutive': <String>['following one after another without a break', 'adjective', 'مسلسل، لگاتار'],
+  'surplus': <String>['an amount that is more than what is needed', 'noun', 'زائد رقم'],
+  'enhancement': <String>['the process of improving or increasing the quality of something', 'noun', 'بہتری، اضافہ'],
 };

@@ -89,6 +89,14 @@ final hybridTranslationProvider =
   } on Object {
     // Falls back to online only — acceptable on a broken seed.
   }
+  // Curated exam dictionary (exam_words.json + common-words packs) — this is
+  // what carries the simple English + Urdu meanings for everyday words, so it
+  // must be seeded before the sense-aware resolution runs.
+  try {
+    await ref.watch(examWordsSeederProvider).ensureSeeded();
+  } on Object {
+    // Falls back to the base dictionary / online.
+  }
   try {
     await ref.watch(vocabularySeedProvider);
   } on Object {

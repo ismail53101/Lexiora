@@ -24,8 +24,10 @@ class HybridTranslateParams {
 ///      [WordMeaningService] (curated exam packs → curated exam pack → offline
 ///      dictionary best sense → online best sense). If the resolved meaning
 ///      carries a curated Urdu translation, it is served **offline**; otherwise
-///      the English definition is translated (never the bare word, which
-///      translators routinely get wrong — e.g. "execution" → "پھانسی").
+///      the bundled offline word-level translation (Wiktionary-sourced) is
+///      served. Only when both miss does the word fall through to the online
+///      fallback, which translates the bare word itself (machine-translating
+///      verbose dictionary definitions rendered unusable Urdu).
 ///   2. **Offline first** — look up the local database (bundled data + cache).
 ///      On a hit, return immediately; the online provider is **never** called.
 ///   3. **Connectivity** — on a miss, check whether the device is online.
@@ -66,8 +68,16 @@ class HybridTranslate
         }
 
         // 1) Single-word sense-aware attempt. Works fully offline when the
-        //    meaning carries a curated Urdu translation; otherwise it needs a
-        //    connection to translate the English definition.
+        //    meaning carries a curated Urdu translation; otherwise the bundled
+        //    offline word-level translation (Wiktionary-sourced, e.g.
+        //    "reputation" → "شہرت") is served next. Only when both miss does
+        //    the word fall through to the online fallback below, which
+        //    translates the bare word itself — machine-translating the verbose
+        //    WordNet definition used to produce garbage like "eventually" →
+        //    "غير متعینہ مدت یا خاص طور پر طویل تاخیر کے بعد". The handful of
+        //    multi-sense traps (e.g. "execution" → "پھانسی") are pinned by the
+        //    curated packs / core-word overrides above, so translating the bare
+        //    word is safe and reads naturally.
         if (_isSingleWord(word)) {
           final WordMeaning? meaning = await _resolveMeaning(word);
           if (meaning != null) {
@@ -85,14 +95,15 @@ class HybridTranslate
                 Translation(word: word, languageCode: lang, text: curated),
               );
             }
-            if (await _isConnected()) {
-              final TranslationOutcome? sensed = await _translateDefinition(
-                word: word,
-                lang: lang,
-                meaning: meaning.meaning,
-              );
-              if (sensed != null) return sensed;
-            }
+          }
+
+          // No curated Urdu → the offline word-level entry (bundled data +
+          // cache) is a curated, word-sized answer.
+          final String? wordLevel = await _repo.translate(word, lang);
+          if (wordLevel != null && wordLevel.isNotEmpty) {
+            return TranslationOutcome.offline(
+              Translation(word: word, languageCode: lang, text: wordLevel),
+            );
           }
         }
 
@@ -154,45 +165,6 @@ class HybridTranslate
       AppLogger.e('Meaning resolution failed', error: e, stackTrace: s);
       return null;
     }
-  }
-
-  /// Sense-aware online translation: translate the word's English definition
-  /// instead of the bare word. Returns `null` when the online call failed, so
-  /// callers fall back to the normal pipeline.
-  Future<TranslationOutcome?> _translateDefinition({
-    required String word,
-    required String lang,
-    required String meaning,
-  }) async {
-    if (meaning.trim().isEmpty) return null;
-
-    String? fetched;
-    try {
-      fetched = await _remote.translate(
-        word: meaning,
-        targetLanguageCode: lang,
-      );
-    } on Object catch (e, s) {
-      AppLogger.e('Definition translation failed', error: e, stackTrace: s);
-      return null;
-    }
-    final String text = fetched?.trim() ?? '';
-    if (text.isEmpty) return null;
-
-    await _repo.cacheTranslation(
-      word: word,
-      languageCode: lang,
-      translation: text,
-    );
-    await _registerInDictionary(word, text);
-    return TranslationOutcome.online(
-      Translation(
-        word: word,
-        languageCode: lang,
-        text: text,
-        source: TranslationSource.online,
-      ),
-    );
   }
 
   /// Connectivity probe used only to classify an online failure (no internet vs

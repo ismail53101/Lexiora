@@ -33,6 +33,12 @@ void main() {
           contains('focusing the mind'));
       expect(kCoreWordOverrides['tragedy']![0], contains('sad event'));
       expect(kCoreWordOverrides['contribute']![0], contains('cause or produce'));
+      expect(kCoreWordOverrides['eventually']![0], contains('in the end'));
+      expect(kCoreWordOverrides['eventually']![2], 'آخر کار');
+      expect(kCoreWordOverrides['reputation']![0], contains('opinion'));
+      expect(kCoreWordOverrides['reputation']![2], 'شہرت');
+      expect(kCoreWordOverrides['exaggerate']![0], contains('seem larger'));
+      expect(kCoreWordOverrides['exaggerate']![2], 'مبالغہ کرنا');
     });
 
     test('inflected forms resolve to an override base form', () {

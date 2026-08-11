@@ -44,6 +44,22 @@ const Set<String> kDomainIndicators = <String>{
   'muscle',
   'heraldry',
   'taxation',
+  // Loaded / negative-evaluation words — the sense a CSS/BPSC reader needs is
+  // almost never the one that says someone is "notorious", "pompous" or
+  // "deficient". Penalizing them keeps "reputation" → "the general opinion"
+  // instead of "notoriety…", and "deficit" → the accounting sense instead of
+  // a neurological one.
+  'notoriety',
+  'pompous',
+  'vanity',
+  'deficiency',
+  'neurological',
+  'sports',
+  'cosmology',
+  'pathology',
+  'abnormal',
+  'proliferation',
+  'vegetation',
 };
 
 /// Markers of a general/abstract sense, used only to break ties.

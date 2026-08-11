@@ -212,31 +212,54 @@ void main() {
     expect(await repo.translate('contributing', 'ur'), 'حصہ ڈالنا');
   });
 
-  test('single word with a definition is translated via its definition '
-      '(sense-aware: never the bare word)', () async {
-    // Seed the dictionary so the sense-aware path resolves a definition
-    // without any online dictionary call. ('execution' is covered by the
-    // curated core-word overrides and would resolve offline with a curated
-    // Urdu, so use a word outside the overrides to exercise this path.)
-    await dictRepo.registerExternalWord(
-      word: 'enhancement',
-      meaning: 'the act of making something better',
-    );
-    final _FakeRemote remote = _FakeRemote(result: 'عملدرآمد');
+  test('offline word-level Urdu beats machine-translating the definition '
+      '(no curated pack/override — e.g. reputation → شہرت)', () async {
+    // 'reputation' has a bundled offline word-level Urdu entry but no curated
+    // pack/override meaning. It must be served offline from that entry instead
+    // of machine-translating the (often wrong) dictionary definition.
+    await seedEntry('ur', 'reputation', 'شہرت');
+    final _FakeRemote remote = _FakeRemote(result: 'SHOULD NOT BE USED');
     final _FakeConnectivity conn = _FakeConnectivity(true);
 
     final TranslationOutcome outcome = await run(
       buildUseCase(remote: remote, connectivity: conn),
-      'enhancement',
+      'reputation',
+      'ur',
+    );
+
+    expect(outcome.status, TranslationOutcomeStatus.offline);
+    expect(outcome.translation?.text, 'شہرت');
+    expect(remote.callCount, 0,
+        reason: 'bundled offline Urdu is used; the network is never touched');
+  });
+
+  test('single word outside the curated layers falls back to the ONLINE '
+      'bare-word translation (never the WordNet definition)', () async {
+    // 'elevation' is in none of the curated layers (packs, exam pack,
+    // core-word overrides) and has no bundled offline Urdu in the test DB, so
+    // it must fall through to the online provider — which translates the bare
+    // word itself. Machine-translating verbose WordNet definitions produced
+    // unusable Urdu (e.g. "eventually" → "غير متعینہ مدت…"), so the bare word
+    // is the correct target now.
+    await dictRepo.registerExternalWord(
+      word: 'elevation',
+      meaning: 'the act of making something higher or better',
+    );
+    final _FakeRemote remote = _FakeRemote(result: 'بلندی');
+    final _FakeConnectivity conn = _FakeConnectivity(true);
+
+    final TranslationOutcome outcome = await run(
+      buildUseCase(remote: remote, connectivity: conn),
+      'elevation',
       'ur',
     );
 
     expect(outcome.status, TranslationOutcomeStatus.online);
-    expect(outcome.translation?.text, 'عملدرآمد');
-    expect(remote.lastWord, 'the act of making something better',
-        reason: 'the definition — not the bare word — is what gets translated');
+    expect(outcome.translation?.text, 'بلندی');
+    expect(remote.lastWord, 'elevation',
+        reason: 'the bare word — not the dictionary definition — is translated');
     // Cached under the original word for offline reuse.
-    expect(await repo.translate('enhancement', 'ur'), 'عملدرآمد');
+    expect(await repo.translate('elevation', 'ur'), 'بلندی');
   });
 
   test('online fallback fetches, caches, and registers with the Dictionary',
