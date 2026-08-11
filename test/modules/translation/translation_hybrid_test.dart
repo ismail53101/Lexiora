@@ -215,26 +215,28 @@ void main() {
   test('single word with a definition is translated via its definition '
       '(sense-aware: never the bare word)', () async {
     // Seed the dictionary so the sense-aware path resolves a definition
-    // without any online dictionary call.
+    // without any online dictionary call. ('execution' is covered by the
+    // curated core-word overrides and would resolve offline with a curated
+    // Urdu, so use a word outside the overrides to exercise this path.)
     await dictRepo.registerExternalWord(
-      word: 'execution',
-      meaning: 'the act of carrying out a plan',
+      word: 'enhancement',
+      meaning: 'the act of making something better',
     );
     final _FakeRemote remote = _FakeRemote(result: 'عملدرآمد');
     final _FakeConnectivity conn = _FakeConnectivity(true);
 
     final TranslationOutcome outcome = await run(
       buildUseCase(remote: remote, connectivity: conn),
-      'execution',
+      'enhancement',
       'ur',
     );
 
     expect(outcome.status, TranslationOutcomeStatus.online);
     expect(outcome.translation?.text, 'عملدرآمد');
-    expect(remote.lastWord, 'the act of carrying out a plan',
+    expect(remote.lastWord, 'the act of making something better',
         reason: 'the definition — not the bare word — is what gets translated');
     // Cached under the original word for offline reuse.
-    expect(await repo.translate('execution', 'ur'), 'عملدرآمد');
+    expect(await repo.translate('enhancement', 'ur'), 'عملدرآمد');
   });
 
   test('online fallback fetches, caches, and registers with the Dictionary',

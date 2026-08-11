@@ -90,11 +90,16 @@ int? pickBestDefinitionIndex(List<String> definitions) {
     if (score < bestScore) {
       best = i;
       bestScore = score;
-    } else if (score == bestScore &&
-        best != null &&
+    } else if (best != null &&
+        score <= bestScore + 2 &&
         _hasGeneralMarker(definitions[i]) &&
         !_hasGeneralMarker(definitions[best])) {
+      // A definition that reads like everyday English ("concentration of
+      // attention") should beat a marginally shorter one that doesn't
+      // ("maximum clarity or distinctness of an idea"). Only when the
+      // shortest is a technical/odd sense and the marker'd sense is close.
       best = i;
+      bestScore = score;
     }
   }
   return best;

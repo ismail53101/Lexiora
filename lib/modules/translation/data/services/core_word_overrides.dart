@@ -156,4 +156,12 @@ const Map<String, List<String>> kCoreWordOverrides = <String, List<String>>{
   'contribute': <String>['to help cause or produce a result', 'verb', 'حصہ ڈالنا'],
   'execution': <String>['the act of carrying out a plan, order, or task', 'noun', 'عملدرآمد'],
   'infrastructure': <String>['basic systems and facilities needed by a society or economy', 'noun', 'بنیادی ڈھانچہ'],
+  'record': <String>['to write down or store information for later use; a written account', 'verb', 'ریکارڈ'],
+  'minute': <String>['a unit of time equal to 60 seconds', 'noun', 'منٹ'],
+  'second': <String>['coming after the first; a unit of time equal to 1/60 of a minute', 'adjective', 'دوسرا'],
+  'charge': <String>['an amount of money that must be paid; to ask someone to pay', 'noun', 'قیمت، چارج'],
+  'flat': <String>['level and smooth, without bumps; an apartment', 'adjective', 'ہموار'],
+  'bank': <String>['a place where money is kept and financial services are offered', 'noun', 'بینک'],
+  'fair': <String>['just and honest, treating everyone equally', 'adjective', 'منصفانہ'],
+  'fit': <String>['healthy and strong; the right size or shape for something', 'adjective', 'موزوں، تندرست'],
 };
