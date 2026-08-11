@@ -41,6 +41,35 @@ void main() {
       expect(kCoreWordOverrides['exaggerate']![2], 'مبالغہ کرنا');
     });
 
+    test('NEXA current-affairs screenshot words are pinned (wrong online translations)', () {
+      // "insulated" → موصل (conductor) came from Google; "underlining" →
+      // انڈر لائننگ was a transliteration; "communiqué" → بات چیت was wrong;
+      // "internationalising" / "insulated" / "communiqu" showed no English
+      // meaning at all. All must now resolve from the curated override layer.
+      expect(kCoreWordOverrides['insulate']![0], contains('protect'));
+      expect(kCoreWordOverrides['insulate']![2], 'محفوظ کرنا');
+      expect(kCoreWordOverrides['underline']![0], contains('emphasize'));
+      expect(kCoreWordOverrides['underline']![2], 'لکیر کھینچنا، زور دینا');
+      expect(kCoreWordOverrides['wedge']![0], contains('tightly'));
+      expect(kCoreWordOverrides['internationalise']![0], contains('many countries'));
+      expect(kCoreWordOverrides['internationalize']![0], contains('many countries'));
+      expect(kCoreWordOverrides['open-ended']![0], contains('fixed limit'));
+      expect(kCoreWordOverrides['open-ended']![2], 'غیر محدود');
+      expect(kCoreWordOverrides['de-escalation']![0], contains('less serious'));
+      expect(kCoreWordOverrides['de-escalation']![2], 'شدت میں کمی');
+      expect(kCoreWordOverrides['diplomatically']![2], 'سفارتی طور پر');
+      expect(kCoreWordOverrides['communiqué']![2], 'سرکاری اعلامیہ');
+      expect(kCoreWordOverrides['communiqu']![2], 'سرکاری اعلامیہ');
+      // Inflected selections resolve to the pinned base forms.
+      expect(baseForms('insulated').contains('insulate'), isTrue);
+      expect(baseForms('underlining').contains('underline'), isTrue);
+      expect(baseForms('wedged').contains('wedge'), isTrue);
+      expect(baseForms('internationalising').contains('internationalise'),
+          isTrue);
+      expect(baseForms('internationalizing').contains('internationalize'),
+          isTrue);
+    });
+
     test('inflected forms resolve to an override base form', () {
       // people's → people ; points → point ; meaning → mean
       for (final String form in <String>['people', 'point', 'mean']) {

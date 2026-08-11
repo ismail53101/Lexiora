@@ -176,4 +176,19 @@ const Map<String, List<String>> kCoreWordOverrides = <String, List<String>>{
   'consecutive': <String>['following one after another without a break', 'adjective', 'مسلسل، لگاتار'],
   'surplus': <String>['an amount that is more than what is needed', 'noun', 'زائد رقم'],
   'enhancement': <String>['the process of improving or increasing the quality of something', 'noun', 'بہتری، اضافہ'],
+  // Words the user reported from NEXA current-affairs booklet screenshots —
+  // the online provider (Google / free dictionary) returned the wrong sense
+  // (e.g. "insulated" → موصل = conductor, "underlining" → a transliteration)
+  // or no English definition at all. Pinning them here serves a correct,
+  // exam-appropriate meaning + Urdu fully offline.
+  'insulate': <String>['to protect or separate something from heat, cold, or outside influence', 'verb', 'محفوظ کرنا'],
+  'underline': <String>['to draw a line under a word; to emphasize or stress something', 'verb', 'لکیر کھینچنا، زور دینا'],
+  'wedge': <String>['to fix or force something tightly into a small space', 'verb', 'دبا کر رکھنا، پھنسانا'],
+  'internationalise': <String>['to make something involve or apply to many countries', 'verb', 'بین الاقوامی بنانا'],
+  'internationalize': <String>['to make something involve or apply to many countries', 'verb', 'بین الاقوامی بنانا'],
+  'open-ended': <String>['without a fixed limit or end date; able to continue or change as needed', 'adjective', 'غیر محدود'],
+  'de-escalation': <String>['the act of making a conflict or crisis less serious or intense', 'noun', 'شدت میں کمی'],
+  'diplomatically': <String>['in a tactful way that avoids upsetting people; through official relations between countries', 'adverb', 'سفارتی طور پر'],
+  'communiqué': <String>['an official announcement or statement, usually from a government or a meeting', 'noun', 'سرکاری اعلامیہ'],
+  'communiqu': <String>['an official announcement or statement, usually from a government or a meeting', 'noun', 'سرکاری اعلامیہ'],
 };

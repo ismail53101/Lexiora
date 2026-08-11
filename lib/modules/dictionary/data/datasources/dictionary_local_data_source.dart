@@ -5,6 +5,7 @@ import 'package:lexiora/core/constants/db_constants.dart';
 import 'package:lexiora/core/database/app_database.dart';
 import 'package:lexiora/modules/dictionary/domain/entities/dictionary_entry.dart';
 import 'package:lexiora/modules/dictionary/domain/entities/word_profile.dart';
+import 'package:lexiora/modules/vocabulary/data/base_forms.dart';
 
 /// All local-database access for the dictionary module.
 ///
@@ -240,15 +241,54 @@ class DictionaryLocalDataSource {
   // ── Curated exam word pack (Dictionary v2) ──────────────────────────────────
 
   /// The curated exam data for a word, or `null` when it is not in the pack.
+  ///
+  /// Matches the exact headword first, then progressively de-inflected forms
+  /// (e.g. "insulated" → "insulate") and finally the de-accented form
+  /// (e.g. "communiqué" → "communique"), so the WordNet-enriched lemma packs
+  /// also cover inflected and accented words readers select in documents.
   Future<ExamWordData?> examData(String wordLower) async {
     final String wl = wordLower.trim().toLowerCase();
     if (wl.isEmpty) return null;
-    final DictionaryExamEntryRow? row = await (_db.select(_db.dictionaryExamEntries)
-          ..where((t) => t.wordLower.equals(wl))
-          ..limit(1))
-        .getSingleOrNull();
-    if (row == null) return null;
-    return _decodeExam(row.word, row.contentJson);
+    final List<String> candidates = baseForms(wl)..addAll(_accentVariants(wl));
+    for (final String form in candidates) {
+      final DictionaryExamEntryRow? row =
+          await (_db.select(_db.dictionaryExamEntries)
+                ..where((t) => t.wordLower.equals(form))
+                ..limit(1))
+              .getSingleOrNull();
+      if (row != null) return _decodeExam(row.word, row.contentJson);
+    }
+    return null;
+  }
+
+  /// Diacritic-stripped variant of a lowercase headword (é → e, ç → c, …), or
+  /// an empty list when the word has no accents to strip.
+  static List<String> _accentVariants(String wl) {
+    const Map<String, String> map = <String, String>{
+      'à': 'a', 'á': 'a', 'â': 'a', 'ã': 'a', 'ä': 'a', 'å': 'a',
+      'ç': 'c',
+      'è': 'e', 'é': 'e', 'ê': 'e', 'ë': 'e',
+      'ì': 'i', 'í': 'i', 'î': 'i', 'ï': 'i',
+      'ñ': 'n',
+      'ò': 'o', 'ó': 'o', 'ô': 'o', 'õ': 'o', 'ö': 'o',
+      'ù': 'u', 'ú': 'u', 'û': 'u', 'ü': 'u',
+      'ý': 'y', 'ÿ': 'y',
+      'œ': 'oe', 'æ': 'ae', 'ß': 'ss',
+    };
+    final StringBuffer b = StringBuffer();
+    bool changed = false;
+    for (final int rune in wl.runes) {
+      final String ch = String.fromCharCode(rune);
+      final String? rep = map[ch];
+      if (rep != null) {
+        b.write(rep);
+        changed = true;
+      } else {
+        b.write(ch);
+      }
+    }
+    final String out = b.toString();
+    return changed && out != wl ? <String>[out] : const <String>[];
   }
 
   Future<String?> examSeededVersion() async {

@@ -84,6 +84,21 @@ void main() {
     expect(await ds.examData('missing'), isNull);
   });
 
+  test('examData falls back to base forms for inflected words', () async {
+    await ds.insertExamEntries(<DictionaryExamEntriesCompanion>[
+      DictionaryExamEntriesCompanion.insert(
+        wordLower: 'insulate',
+        word: 'insulate',
+        contentJson: jsonEncode(_examMap('insulate')),
+      ),
+    ]);
+
+    final ExamWordData? e = await ds.examData('insulated');
+    expect(e, isNotNull,
+        reason: 'insulated should resolve to the insulate lemma');
+    expect(e!.word, 'insulate');
+  });
+
   test('exam seeder seeds from the bundle and is idempotent', () async {
     final String json = jsonEncode(<Map<String, dynamic>>[
       _examMap('policy'),

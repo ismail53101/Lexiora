@@ -14,6 +14,21 @@ This bundle combines two free/open sources:
    License: Creative Commons Attribution-ShareAlike 4.0 (CC BY-SA 4.0),
    https://creativecommons.org/licenses/by-sa/4.0/  (© Wiktionary contributors).
 
+Extra pack: urdu_wiktionary_extra.json
+   Urdu → English (l="en") rows derived from the kaikki.org Urdu Wiktionary
+   dump (https://kaikki.org/dictionary/Urdu/) — Urdu headwords with their
+   English glosses — plus new English → Urdu (l="ur") rows not covered by the
+   base set. Same CC BY-SA 4.0 license as source (2) above. Merged after the
+   base gz by the seeder; base rows always win on a (lang, word) collision.
+
+Extra pack: curated_reader_fixes.json
+   Hand-curated English → Urdu (l="ur") rows for reader pop-up words that the
+   online fallback mistranslated (e.g. "insulated" → موصل = conductor,
+   "communiqué" → بات چیت, "underlining" → a transliteration) or that showed
+   no English definition. They are merged the same way as the Wiktionary extra
+   pack, and the app's curated override layer serves the matching English
+   meanings offline. Simple, exam-appropriate translations only.
+
 Format : translations.jsonl.gz — gzip-compressed JSON Lines. One entry per line:
          {"l":<2-letter target language>,"w":<english headword, lowercase>,"t":<translation(s)>}
 

@@ -5,6 +5,34 @@ All notable changes to Sapiora are documented here.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.21.7] — 2026-08-11
+
+### Added
+
+- **Synonyms, antonyms and example sentences for every dictionary word.**
+  New WordNet 3.1 enrichment (`000_wordnet_enrichment.json`, ~111k entries,
+  sense-aligned so the picked synonyms match the word's real meaning) plus
+  in-place enrichment of the curated packs. The Word Details screen now shows
+  Synonyms & Antonyms for ~70k words (previously 159) and an example sentence
+  with Urdu for ~34k words — the Urdu of auto-derived sentences is fetched by
+  the hybrid translator and cached for offline reuse.
+- **Curated exam extras** — `de-escalation` and `communiqué` (with Urdu usage),
+  and `examData` now falls back to base forms + de-accented forms
+  (`insulated` → `insulate`, `communiqué` → `communique`).
+- **English → Urdu idioms (1,874)** — a separate, licensed dataset under
+  `assets/idioms/`, never merged into vocabulary.
+- **Offline translation extras** — `urdu_wiktionary_extra.json` (5,593 rows)
+  and hand-curated `curated_reader_fixes.json`, auto-merged by the translation
+  seeder via content signature.
+
+### Fixed
+
+- **Reader pop-up meanings for the reported NEXA booklet words** — `insulated`
+  (was موصل = conductor), `communiqué` (was بات چیت), `underlining` (was a
+  transliteration) and `internationalising` / `open-ended` / `de-escalation` /
+  `diplomatically` / `wedged` now resolve to curated English + Urdu meanings
+  fully offline.
+
 ## [0.21.6] — 2026-08-11
 
 ### Added

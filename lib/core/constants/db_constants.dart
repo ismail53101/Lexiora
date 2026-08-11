@@ -104,11 +104,19 @@ abstract final class TranslationConstants {
   /// Bundled, gzip-compressed JSON-Lines data set (see assets/translations).
   static const String assetPath = 'assets/translations/translations.jsonl.gz';
 
+  /// Directory scanned for extra translation packs (every `*.json` file within,
+  /// e.g. `urdu_wiktionary_extra.json`). Mirrors the exam/vocabulary multi-pack
+  /// loader pattern: drop a new file in and rebuild — no Dart change needed.
+  static const String assetDir = 'assets/translations/';
+
   /// Version tag of the bundled data set. Seeding re-runs whenever the value
   /// stored in settings differs from this. Bumped when the English→Urdu data
   /// was significantly expanded (academic/newspaper/exam vocabulary), so
-  /// existing installs re-seed to pick up the larger set.
-  static const String datasetVersion = 'freedict+wiktionary-ur-2026.07-exam';
+  /// existing installs re-seed to pick up the larger set. The effective seed
+  /// version appends a content signature of the extra packs, so a new/edited
+  /// pack re-seeds automatically without bumping this.
+  static const String datasetVersion =
+      'freedict+wiktionary-ur-2026.07-exam+urduwiktionary';
 
   /// Settings key under which the seeded translation data-set version is kept.
   static const String seedVersionKey = 'translation_seed_version';
