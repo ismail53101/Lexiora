@@ -22,19 +22,25 @@ Curated pack: urdu_wiktionary_pack.json
   existing entry is overridden.
 
 Enrichment pack: 000_wordnet_enrichment.json
-  WordNet 3.1 (https://wordnet.princeton.edu) synonyms, antonyms and example
-  sentences for ~80,000 dictionary words. Derived from the official WordNet
-  data files (WordNet License — permissive, redistribution permitted). One
-  entry per headword: {"word","partOfSpeech","synonyms","antonyms","usage"}.
-  The "000_" prefix makes the exam-pack seeder merge it FIRST, so the curated
-  packs always win for words they already cover. Together with the base-form
-  fallback in examData() this gives nearly every dictionary word its own
-  Synonyms & Antonyms and Usage (example sentence) sections; the Urdu
-  translation of an auto-derived example sentence is fetched by the hybrid
+  WordNet 3.1 (https://wordnet.princeton.edu) example sentences for ~110k
+  dictionary words (WordNet License — permissive, redistribution permitted).
+  One entry per headword: {"word","partOfSpeech","usage"} — an exam-friendly
+  example sentence (best sense matched against the word's dictionary meaning;
+  inappropriate content filtered). The "000_" prefix makes the exam-pack
+  seeder merge it FIRST, so the curated packs always win for words they
+  already cover. Together with the base-form + de-accent fallback in
+  examData(), nearly every dictionary word shows a Usage (example sentence)
+  section; the Urdu translation of the sentence is fetched by the hybrid
   translator and cached for offline reuse.
 
+  Synonyms & Antonyms are NOT auto-generated: WordNet synset members are too
+  noisy for a learner dictionary (e.g. "avoid" → "face up"), so only
+  hand-curated synonyms/antonyms (exam_words.json, exam_extras.json) are
+  shown, and the Synonyms & Antonyms section hides for every other word.
+
 Curated packs: exam_words.json, common_words.json, common_words_2.json
-  Hand-curated exam / high-frequency word packs (CSS & BPSC oriented). They are
-  enriched with WordNet synonyms, antonyms and an example sentence wherever the
-  field was previously empty; hand-written Urdu meanings, usage sentences and
-  exam notes are never overwritten.
+  Hand-curated exam / high-frequency word packs (CSS & BPSC oriented).
+  exam_words.json carries hand-written synonyms/antonyms/usage/idioms/exam
+  notes; common_words* carry simple English + Urdu meanings and a WordNet
+  example sentence where available. Hand-written Urdu meanings, usage
+  sentences and exam notes are never overwritten.

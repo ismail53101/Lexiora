@@ -5,6 +5,22 @@ All notable changes to Sapiora are documented here.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.21.8] — 2026-08-11
+
+### Fixed
+
+- **Auto-generated synonyms/antonyms removed.** The WordNet-generated
+  Synonyms & Antonyms from 0.21.7 were too noisy for a learner dictionary
+  (e.g. `avoid → face up`, `complain → quetch/kvetch`, `important → of
+  import`). All machine-generated synonyms/antonyms have been eliminated;
+  only the hand-curated ones remain (the 159 exam words + `de-escalation` /
+  `communiqué`). The Synonyms & Antonyms section simply hides for every other
+  word instead of showing wrong data.
+- **Example sentences kept.** The WordNet example sentences (best sense,
+  filtered for inappropriate content) remain for ~34k words — the Usage
+  section still shows a real sentence with Urdu (fetched once online, then
+  cached).
+
 ## [0.21.7] — 2026-08-11
 
 ### Added
