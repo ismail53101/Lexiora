@@ -1,9 +1,9 @@
 name: lexiora
-description: "Lexiora — a premium, offline-first study & language-learning platform. Phase 1: a production-grade PDF study reader with highlights, notes, bookmarks and reading progress."
+description: "Sapiora — a premium, offline-first study & language-learning platform. Phase 1: a production-grade PDF study reader with highlights, notes, bookmarks and reading progress."
 publish_to: "none"
 
 # Semantic version. The `+N` suffix is the Android versionCode.
-version: 0.21.4+54
+version: 0.21.5+55
 
 environment:
   sdk: ">=3.10.0 <4.0.0"

@@ -3,9 +3,8 @@ import 'package:lexiora/core/usecase/usecase.dart';
 import 'package:lexiora/core/utils/guard.dart';
 import 'package:lexiora/core/utils/logger.dart';
 import 'package:lexiora/core/utils/typedefs.dart';
-import 'package:lexiora/modules/dictionary/data/services/online_dictionary_service.dart';
-import 'package:lexiora/modules/dictionary/domain/entities/dictionary_entry.dart';
 import 'package:lexiora/modules/dictionary/domain/repositories/dictionary_repository.dart';
+import 'package:lexiora/modules/translation/data/services/word_meaning_service.dart';
 import 'package:lexiora/modules/translation/domain/entities/translation.dart';
 import 'package:lexiora/modules/translation/domain/entities/translation_outcome.dart';
 import 'package:lexiora/modules/translation/domain/repositories/translation_repository.dart';
@@ -21,13 +20,12 @@ class HybridTranslateParams {
 /// Offline-first translation with a seamless online fallback.
 ///
 /// Order of operations (the heart of the Hybrid Translation System):
-///   1. **Single-word sense disambiguation** — for a single word on a device
-///      that appears to be online, translate the word's English *definition*
-///      (offline dictionary first, then the free online dictionary) instead of
-///      the bare word. Translators routinely pick the wrong sense for isolated
-///      words — e.g. "execution" → "پھانسی" ("hanging") instead of
-///      "عملدرآمد" ("carrying out") — while translating the definition
-///      reliably lands on the intended sense.
+///   1. **Single-word sense disambiguation** — resolve the word's meaning via
+///      [WordMeaningService] (curated exam packs → curated exam pack → offline
+///      dictionary best sense → online best sense). If the resolved meaning
+///      carries a curated Urdu translation, it is served **offline**; otherwise
+///      the English definition is translated (never the bare word, which
+///      translators routinely get wrong — e.g. "execution" → "پھانسی").
 ///   2. **Offline first** — look up the local database (bundled data + cache).
 ///      On a hit, return immediately; the online provider is **never** called.
 ///   3. **Connectivity** — on a miss, check whether the device is online.
@@ -45,18 +43,18 @@ class HybridTranslate
     required RemoteTranslationService remoteService,
     required ConnectivityService connectivity,
     required DictionaryRepository dictionaryRepository,
-    required OnlineDictionaryService onlineDictionary,
+    required WordMeaningService meaningService,
   })  : _repo = translationRepository,
         _remote = remoteService,
         _connectivity = connectivity,
         _dictionary = dictionaryRepository,
-        _onlineDictionary = onlineDictionary;
+        _meaningService = meaningService;
 
   final TranslationRepository _repo;
   final RemoteTranslationService _remote;
   final ConnectivityService _connectivity;
   final DictionaryRepository _dictionary;
-  final OnlineDictionaryService _onlineDictionary;
+  final WordMeaningService _meaningService;
 
   @override
   ResultFuture<TranslationOutcome> call(HybridTranslateParams params) =>
@@ -67,16 +65,34 @@ class HybridTranslate
           return const TranslationOutcome.notFound();
         }
 
-        // 1) Single-word sense-aware attempt. Only run when the device appears
-        //    online; otherwise skip straight to the fast offline path below.
+        // 1) Single-word sense-aware attempt. Works fully offline when the
+        //    meaning carries a curated Urdu translation; otherwise it needs a
+        //    connection to translate the English definition.
         if (_isSingleWord(word)) {
-          final bool connected = await _isConnected();
-          if (connected) {
-            final TranslationOutcome? sensed = await _translateByDefinition(
-              word: word,
-              lang: lang,
-            );
-            if (sensed != null) return sensed;
+          final WordMeaning? meaning = await _resolveMeaning(word);
+          if (meaning != null) {
+            final String curated = meaning.urdu ?? '';
+            if (curated.trim().isNotEmpty) {
+              // Curated exam-pack Urdu — the best, exam-appropriate answer,
+              // served offline and cached for reuse.
+              await _repo.cacheTranslation(
+                word: word,
+                languageCode: lang,
+                translation: curated,
+              );
+              await _registerInDictionary(word, curated);
+              return TranslationOutcome.offline(
+                Translation(word: word, languageCode: lang, text: curated),
+              );
+            }
+            if (await _isConnected()) {
+              final TranslationOutcome? sensed = await _translateDefinition(
+                word: word,
+                lang: lang,
+                meaning: meaning.meaning,
+              );
+              if (sensed != null) return sensed;
+            }
           }
         }
 
@@ -129,20 +145,31 @@ class HybridTranslate
   bool _isSingleWord(String word) =>
       RegExp(r"^[A-Za-z][A-Za-z'’\-]*$").hasMatch(word);
 
+  /// Best-effort meaning resolution — a failure simply falls back to the
+  /// normal pipeline.
+  Future<WordMeaning?> _resolveMeaning(String word) async {
+    try {
+      return await _meaningService.resolve(word.toLowerCase());
+    } on Object catch (e, s) {
+      AppLogger.e('Meaning resolution failed', error: e, stackTrace: s);
+      return null;
+    }
+  }
+
   /// Sense-aware online translation: translate the word's English definition
-  /// instead of the bare word. Returns `null` when no definition is available
-  /// or the online call failed, so callers fall back to the normal pipeline.
-  Future<TranslationOutcome?> _translateByDefinition({
+  /// instead of the bare word. Returns `null` when the online call failed, so
+  /// callers fall back to the normal pipeline.
+  Future<TranslationOutcome?> _translateDefinition({
     required String word,
     required String lang,
+    required String meaning,
   }) async {
-    final String? definition = await _englishDefinition(word);
-    if (definition == null || definition.isEmpty) return null;
+    if (meaning.trim().isEmpty) return null;
 
     String? fetched;
     try {
       fetched = await _remote.translate(
-        word: definition,
+        word: meaning,
         targetLanguageCode: lang,
       );
     } on Object catch (e, s) {
@@ -166,21 +193,6 @@ class HybridTranslate
         source: TranslationSource.online,
       ),
     );
-  }
-
-  /// Best English definition for [word] — the offline dictionary first (fast,
-  /// always available), then the free online dictionary. Only Latin-script
-  /// definitions are trusted: the Translation module registers translated text
-  /// (often Urdu/Arabic) into the dictionary index, which is not a definition.
-  Future<String?> _englishDefinition(String word) async {
-    final DictionaryResult? local =
-        await _dictionary.lookup(word.toLowerCase());
-    final bool localIsEnglish = local != null &&
-        !RegExp(r'[\u0600-\u06FF\u0750-\u077F]').hasMatch(local.meaning);
-    if (localIsEnglish) return local.meaning;
-
-    final OnlineDefinition? online = await _onlineDictionary.define(word);
-    return online?.meaning;
   }
 
   /// Connectivity probe used only to classify an online failure (no internet vs

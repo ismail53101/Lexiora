@@ -5,6 +5,37 @@ All notable changes to Sapiora are documented here.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.21.5] — 2026-08-11
+
+### Fixed
+
+- **Reader pop-up word meanings are now correct.** The pop-up used the
+  offline dictionary's first sense, which for common words is often the rare
+  or literary one (`attention` → "treatment", `tragedy` → "drama"). Meanings
+  are now resolved through a five-tier system that prioritises the curated
+  exam packs (CSS/BPSC, Oxford, IELTS…) with inflected-form matching
+  (`contributing` → `contribute`), a curated layer for everyday words the raw
+  dictionary gets wrong, and a best-sense heuristic for the long tail — so
+  `attention` → توجہ, `tragedy` → سانحہ, and `contributing` → حصہ ڈالنا. The
+  Urdu translation flows through the same resolution, so English meaning and
+  Urdu are always consistent and curated Urdu is served offline.
+
+### Added
+
+- **Privacy Policy.** New in-app Settings → About → Privacy Policy screen and
+  a hosted policy at `docs/privacy-policy.html` (for the Play Store listing).
+- **Licenses & Credits.** New in-app Settings → About → Licenses & Credits
+  screen that displays the bundled dictionary and translation data licenses
+  (Wordset CC BY-SA, WordNet/Princeton, translation data GPL v2) plus the
+  Flutter package licenses.
+- **Branded splash screen.** The launch screen now uses the Sapiora navy brand
+  colour (Android 12+ gets the matching system splash).
+
+### Changed
+
+- **Sapiora name consistency.** GitHub workflow name/release title, README
+  package line, and the pubspec description all now say Sapiora.
+
 ## [0.21.4] — 2026-08-10
 
 ### Fixed

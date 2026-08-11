@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Sapiora brand navy — used for the Android launch/splash background so
+         the window starts on-brand instead of flashing white. -->
+    <color name="splash_background">#001450</color>
+</resources>

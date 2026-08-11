@@ -6,7 +6,7 @@ Sapiora Phase 1 is a production-grade **PDF study reader**: it **automatically f
 
 It is also the **foundation** of a larger platform. The architecture is designed so that nine planned modules (Dictionary, Translation, Grammar, Vocabulary Builder, Flashcards, Quiz, Admin, AI Assistant, Cloud Sync) can be added later **without modifying existing code**.
 
-> Version `0.3.4` · Package `com.lexiora.app` · Flutter (stable) · Material 3
+> Version `0.21.4` · Package `com.sapiora.app` · Flutter (stable) · Material 3
 
 ---
 

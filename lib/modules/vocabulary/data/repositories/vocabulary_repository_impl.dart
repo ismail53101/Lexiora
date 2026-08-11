@@ -1,4 +1,5 @@
 import 'package:lexiora/core/database/app_database.dart';
+import 'package:lexiora/modules/vocabulary/data/base_forms.dart';
 import 'package:lexiora/modules/vocabulary/data/datasources/vocabulary_local_data_source.dart';
 import 'package:lexiora/modules/vocabulary/domain/entities/vocabulary_list.dart';
 import 'package:lexiora/modules/vocabulary/domain/entities/vocabulary_word.dart';
@@ -24,6 +25,15 @@ class VocabularyRepositoryImpl implements VocabularyRepository {
   Future<VocabularyWord?> lookupWord(String wordLower) async {
     final VocabularyWordRow? row = await _local.lookupWord(wordLower);
     return row == null ? null : _toWord(row);
+  }
+
+  @override
+  Future<VocabularyWord?> lookupWordFlexible(String wordLower) async {
+    for (final String form in baseForms(wordLower)) {
+      final VocabularyWordRow? row = await _local.lookupWord(form);
+      if (row != null) return _toWord(row);
+    }
+    return null;
   }
 
   VocabularyListSummary _toList(VocabularyListRow r) => VocabularyListSummary(

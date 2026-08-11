@@ -2,8 +2,8 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:lexiora/app/di/injector.dart';
 import 'package:lexiora/core/services/connectivity_service.dart';
 import 'package:lexiora/core/utils/result.dart';
-import 'package:lexiora/modules/dictionary/data/services/online_dictionary_service.dart';
 import 'package:lexiora/modules/dictionary/presentation/providers/dictionary_providers.dart';
+import 'package:lexiora/modules/translation/data/services/word_meaning_service.dart';
 import 'package:lexiora/modules/translation/data/translation_seeder.dart';
 import 'package:lexiora/modules/translation/domain/entities/translation.dart';
 import 'package:lexiora/modules/translation/domain/entities/translation_outcome.dart';
@@ -11,6 +11,7 @@ import 'package:lexiora/modules/translation/domain/repositories/translation_repo
 import 'package:lexiora/modules/translation/domain/services/remote_translation_service.dart';
 import 'package:lexiora/modules/translation/domain/usecases/hybrid_translate.dart';
 import 'package:lexiora/modules/translation/domain/usecases/translation_usecases.dart';
+import 'package:lexiora/modules/vocabulary/presentation/providers/vocabulary_providers.dart';
 
 // ── Infrastructure ──────────────────────────────────────────────────────────
 
@@ -28,10 +29,12 @@ final Provider<RemoteTranslationService> remoteTranslationServiceProvider =
 final Provider<ConnectivityService> connectivityServiceProvider =
     Provider<ConnectivityService>((Ref ref) => sl<ConnectivityService>());
 
-/// Free, keyless online English-definition source used by the single-word
-/// sense-disambiguation step in [HybridTranslate].
-final Provider<OnlineDictionaryService> onlineDictionaryServiceProvider =
-    Provider<OnlineDictionaryService>((Ref ref) => OnlineDictionaryService());
+/// Resolves a single word's best English meaning (+ curated Urdu when
+/// available) across the exam packs, base dictionary and free online
+/// dictionary — shared by the popup's English-meaning section and the
+/// sense-aware Urdu translation path.
+final Provider<WordMeaningService> wordMeaningServiceProvider =
+    Provider<WordMeaningService>((Ref ref) => sl<WordMeaningService>());
 
 // ── Use cases ───────────────────────────────────────────────────────────────
 
@@ -46,7 +49,7 @@ final Provider<HybridTranslate> hybridTranslateProvider =
     remoteService: ref.watch(remoteTranslationServiceProvider),
     connectivity: ref.watch(connectivityServiceProvider),
     dictionaryRepository: ref.watch(dictionaryRepositoryProvider),
-    onlineDictionary: ref.watch(onlineDictionaryServiceProvider),
+    meaningService: ref.watch(wordMeaningServiceProvider),
   ),
 );
 
@@ -79,6 +82,18 @@ final hybridTranslationProvider =
     FutureProvider.family<TranslationOutcome, TranslateKey>(
         (Ref ref, TranslateKey key) async {
   await ref.watch(translationSeederProvider).ensureSeeded();
+  // The sense-aware path reads the bundled dictionary + exam packs, both of
+  // which seed lazily — ensure they are ready (idempotent, best-effort).
+  try {
+    await ref.watch(dictionarySeederProvider).ensureSeeded();
+  } on Object {
+    // Falls back to online only — acceptable on a broken seed.
+  }
+  try {
+    await ref.watch(vocabularySeedProvider);
+  } on Object {
+    // Falls back to the base dictionary / online.
+  }
   final result = await ref
       .watch(hybridTranslateProvider)
       .call(HybridTranslateParams(key.word, key.lang));

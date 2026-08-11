@@ -1,6 +1,6 @@
-name: Build Lexiora APK
+name: Build Sapiora APK
 
-# Builds, analyzes and tests Lexiora on every push to main, then produces a
+# Builds, analyzes and tests Sapiora on every push to main, then produces a
 # release APK — uploaded both as a workflow artifact and as an asset on a
 # GitHub Release whose tag is derived from the pubspec version (e.g. v0.1.5).
 on:
@@ -159,8 +159,8 @@ jobs:
         uses: softprops/action-gh-release@v2
         with:
           tag_name: v${{ steps.ver.outputs.v }}
-          name: Lexiora v${{ steps.ver.outputs.v }}
-          body: Automated Phase 1 release build of Lexiora.
+          name: Sapiora v${{ steps.ver.outputs.v }}
+          body: Automated release build of Sapiora.
           files: |
             build/app/outputs/flutter-apk/app-release.apk
             build/app/outputs/bundle/release/app-release.aab

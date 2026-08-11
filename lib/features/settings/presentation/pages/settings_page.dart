@@ -9,6 +9,8 @@ import 'package:lexiora/core/constants/translation_languages.dart';
 import 'package:lexiora/core/reader_engine/reader_models.dart';
 import 'package:lexiora/core/services/permission_service.dart';
 import 'package:lexiora/features/settings/domain/entities/app_settings.dart';
+import 'package:lexiora/features/settings/presentation/pages/licenses_page.dart';
+import 'package:lexiora/features/settings/presentation/pages/privacy_policy_page.dart';
 import 'package:lexiora/features/settings/presentation/providers/settings_providers.dart';
 
 /// The Settings screen. Reads the reactive [settingsProvider] and mutates
@@ -240,25 +242,52 @@ class _SettingsBody extends ConsumerWidget {
               ),
             ],
           ),
-        const _SectionCard(
+        _SectionCard(
           title: 'About',
           children: [
-            ListTile(
+            const ListTile(
               contentPadding: EdgeInsets.zero,
               leading: Icon(Icons.info_outline),
               title: Text(AppConstants.appName),
               subtitle: Text('Version ${AppConstants.appVersion}'),
             ),
-            ListTile(
+            const ListTile(
               contentPadding: EdgeInsets.zero,
               leading: Icon(Icons.school_outlined),
               title: Text(AppConstants.appTagline),
               subtitle: Text('Offline-first · No account required'),
             ),
-            ListTile(
+            const ListTile(
               contentPadding: EdgeInsets.zero,
               leading: Icon(Icons.favorite_outline),
               title: Text('Developed by Ismail Lashari'),
+            ),
+            const Divider(),
+            ListTile(
+              contentPadding: EdgeInsets.zero,
+              leading: const Icon(Icons.privacy_tip_outlined),
+              title: const Text('Privacy Policy'),
+              subtitle: const Text('How Sapiora handles your data'),
+              trailing: const Icon(Icons.chevron_right),
+              onTap: () => Navigator.of(context).push(
+                MaterialPageRoute<void>(
+                  builder: (_) => const PrivacyPolicyPage(),
+                ),
+              ),
+            ),
+            ListTile(
+              contentPadding: EdgeInsets.zero,
+              leading: const Icon(Icons.description_outlined),
+              title: const Text('Licenses & Credits'),
+              subtitle: const Text(
+                'Attribution for dictionary & translation data',
+              ),
+              trailing: const Icon(Icons.chevron_right),
+              onTap: () => Navigator.of(context).push(
+                MaterialPageRoute<void>(
+                  builder: (_) => const LicensesPage(),
+                ),
+              ),
             ),
           ],
         ),
