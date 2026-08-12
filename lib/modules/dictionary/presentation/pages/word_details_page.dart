@@ -9,6 +9,7 @@ import 'package:lexiora/core/widgets/error_view.dart';
 import 'package:lexiora/modules/dictionary/domain/entities/dictionary_entry.dart';
 import 'package:lexiora/modules/dictionary/domain/entities/word_profile.dart';
 import 'package:lexiora/modules/dictionary/domain/usecases/dictionary_usecases.dart';
+import 'package:lexiora/modules/dictionary/domain/usecases/usage_relevance.dart';
 import 'package:lexiora/modules/dictionary/presentation/providers/dictionary_providers.dart';
 import 'package:lexiora/modules/dictionary/presentation/widgets/part_of_speech_chip.dart';
 import 'package:lexiora/modules/dictionary/presentation/widgets/pronunciation_button.dart';
@@ -331,12 +332,15 @@ class _ProfileView extends StatelessWidget {
   /// primary example sentence (when it reads like a real sentence).
   static WordUsage? _resolveUsage(WordProfile profile) {
     final ExamWordData? e = profile.exam;
-    if (e?.usage != null) return e!.usage;
+    final WordUsage? curated = validatedUsage(profile.wordLower, e?.usage);
+    if (curated != null) return curated;
+
     final String? example = profile.base?.primary?.exampleSentence;
     if (example == null || example.trim().isEmpty) return null;
-    final int words = example.split(RegExp(r'\s+')).length;
-    if (words < 3) return null; // "wet paint"-style gloss fragments
-    return WordUsage(context: 'Usage', english: example.trim(), urdu: '');
+    return validatedUsage(
+      profile.wordLower,
+      WordUsage(context: 'Usage', english: example.trim(), urdu: ''),
+    );
   }
 
   /// Curated other meanings when available; otherwise the base dictionary's
