@@ -62,9 +62,8 @@ Set<String> _forms(String value) {
   if (word.endsWith('ied') && word.length > 5) forms.add('${word.substring(0, word.length - 3)}y');
   if (word.endsWith('ed') && word.length > 4) forms.add(word.substring(0, word.length - 2));
   if (word.endsWith('ing') && word.length > 5) forms.add(word.substring(0, word.length - 3));
-  if (word.endsWith('er') && word.length > 5) forms.add(word.substring(0, word.length - 2));
-  if (word.endsWith('or') && word.length > 5) forms.add(word.substring(0, word.length - 2));
-  if (word.endsWith('ly') && word.length > 5) forms.add(word.substring(0, word.length - 2));
+  // Do not strip derivational suffixes such as -er/-or/-ly: “elevator”
+  // and “elevate” are related words, not grammatical forms of one another.
 
   final List<String> snapshot = forms.toList(growable: false);
   for (final String form in snapshot) {
