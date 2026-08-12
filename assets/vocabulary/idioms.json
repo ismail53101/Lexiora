@@ -1,1810 +1,418 @@
 {
- "list": {
-  "id": "idioms",
-  "title": "Idioms & Proverbs",
-  "subtitle": "Common idioms and proverbs with Urdu meanings",
-  "order": 9
- },
- "words": [
-  {
-   "word": "A bad beginning makes a bad ending.",
-   "urdu": "آغاز بد انجام بد",
-   "meaning": "A bad start usually leads to a bad result.",
-   "pos": "Proverb"
-  },
-  {
-   "word": "A bad workman always quarrels with his tools.",
-   "urdu": "ناچ نہ جانے آنگن ٹیڑھا",
-   "meaning": "A poor worker blames his tools instead of himself.",
-   "pos": "Proverb"
-  },
-  {
-   "word": "A bed of roses.",
-   "urdu": "خوشگوار تجربہ / آرام دہ",
-   "meaning": "A situation of comfort and ease.",
-   "pos": "Idiom"
-  },
-  {
-   "word": "A bird in hand is worth two in the bush.",
-   "urdu": "نو نقد نہ تیرہ ادھار",
-   "meaning": "What you already have is worth more than what you might get later.",
-   "pos": "Proverb"
-  },
-  {
-   "word": "A bribe will enter without knocking.",
-   "urdu": "رشوت ہر جگہ راستہ بنا لیتی ہے",
-   "meaning": "Bribery can open any door.",
-   "pos": "Proverb"
-  },
-  {
-   "word": "A broken reed.",
-   "urdu": "غیر معتبر شخص",
-   "meaning": "An unreliable person or thing.",
-   "pos": "Idiom"
-  },
-  {
-   "word": "A burnt child dreads the fire.",
-   "urdu": "دودھ کا جلا چھاچھ بھی پھونک پھونک کر پیتا ہے",
-   "meaning": "A person who has been hurt once becomes very careful.",
-   "pos": "Proverb"
-  },
-  {
-   "word": "A chip of the old block.",
-   "urdu": "جیسا باپ ویسا بیٹا",
-   "meaning": "A child who is very much like his father.",
-   "pos": "Idiom"
-  },
-  {
-   "word": "A clear conscience is a coat of mail.",
-   "urdu": "صاف ضمیر بہترین زرہ بکتر ہے",
-   "meaning": "A clear conscience protects a person from fear.",
-   "pos": "Proverb"
-  },
-  {
-   "word": "A constant guest is never welcome.",
-   "urdu": "روز کا مہمان بالائے جان",
-   "meaning": "A visitor who comes too often loses his welcome.",
-   "pos": "Proverb"
-  },
-  {
-   "word": "A contented mind is a continual feast.",
-   "urdu": "قناعت سب سے بڑی دولت ہے",
-   "meaning": "Contentment is the greatest wealth.",
-   "pos": "Proverb"
-  },
-  {
-   "word": "A covetous man is never satisfied.",
-   "urdu": "لالچی کا کبھی پیٹ نہیں بھرتا",
-   "meaning": "A greedy person never has enough.",
-   "pos": "Proverb"
-  },
-  {
-   "word": "A crown is no cure for the headache.",
-   "urdu": "دولت سے دکھ دور نہیں ہوتا",
-   "meaning": "Wealth cannot remove all worries.",
-   "pos": "Proverb"
-  },
-  {
-   "word": "A danger foreseen is half avoided.",
-   "urdu": "پیش بندی سے خطرہ ٹل جاتا ہے",
-   "meaning": "A danger you know about is easier to avoid.",
-   "pos": "Proverb"
-  },
-  {
-   "word": "A day after the fair.",
-   "urdu": "بہت دیر سے",
-   "meaning": "Too late to benefit from an opportunity.",
-   "pos": "Idiom"
-  },
-  {
-   "word": "A disease known is half cured.",
-   "urdu": "مرض کی تشخیص کو آدھا علاج سمجھنا چاہیے",
-   "meaning": "Knowing the problem is half the solution.",
-   "pos": "Proverb"
-  },
-  {
-   "word": "A drop in the ocean.",
-   "urdu": "اونٹ کے منہ میں زیرہ",
-   "meaning": "A very small amount compared with what is needed.",
-   "pos": "Idiom"
-  },
-  {
-   "word": "A drowning man catches at a straw.",
-   "urdu": "ڈوبتے کو تنکے کا سہارا",
-   "meaning": "A desperate person grasps at any small hope.",
-   "pos": "Proverb"
-  },
-  {
-   "word": "A fair face may hide a foul heart.",
-   "urdu": "شکل مومن کا کرتوت کافر",
-   "meaning": "A pleasant face may hide evil intentions.",
-   "pos": "Proverb"
-  },
-  {
-   "word": "A fault confessed is half redressed.",
-   "urdu": "اقرار جرم اصلاح جرم",
-   "meaning": "Admitting a fault is half the correction.",
-   "pos": "Proverb"
-  },
-  {
-   "word": "A figure among ciphers.",
-   "urdu": "اندھوں میں کانا راجا",
-   "meaning": "Someone who stands out among ordinary people.",
-   "pos": "Idiom"
-  },
-  {
-   "word": "A fish out of water.",
-   "urdu": "ارد گرد کے ماحول میں بے چینی",
-   "meaning": "Someone uncomfortable in unfamiliar surroundings.",
-   "pos": "Idiom"
-  },
-  {
-   "word": "A fly in the ointment.",
-   "urdu": "ایک چھوٹی سی چیز جو قیمتی شے کو خراب کر دیتی ہے",
-   "meaning": "A small flaw that spoils something good.",
-   "pos": "Idiom"
-  },
-  {
-   "word": "A fly on the wheel.",
-   "urdu": "اپنی صلاحیتوں کا غلط اندازہ لگانے والا",
-   "meaning": "Someone who overestimates his own importance.",
-   "pos": "Idiom"
-  },
-  {
-   "word": "A fool and his money are soon parted.",
-   "urdu": "احمق کی دولت کو ٹکاؤ کہاں",
-   "meaning": "A foolish person wastes money quickly.",
-   "pos": "Proverb"
-  },
-  {
-   "word": "A fool's errand.",
-   "urdu": "بے مقصد سفر",
-   "meaning": "A pointless mission.",
-   "pos": "Idiom"
-  },
-  {
-   "word": "A friend in need is a friend indeed.",
-   "urdu": "دوست وہ جو مصیبت میں کام آئے",
-   "meaning": "A true friend helps you in trouble.",
-   "pos": "Proverb"
-  },
-  {
-   "word": "A friend is another self.",
-   "urdu": "دوست گویا اپنی ہی ذات کا پرتو ہوتا ہے",
-   "meaning": "A true friend is like a second self.",
-   "pos": "Proverb"
-  },
-  {
-   "word": "A friend is easier lost than found.",
-   "urdu": "دوست گنوانا سہل حاصل کرنا مشکل",
-   "meaning": "Friends are easier to lose than to gain.",
-   "pos": "Proverb"
-  },
-  {
-   "word": "A friend to everybody is a friend to nobody.",
-   "urdu": "جو شخص سب کا دوست ہے اسے کسی کا دوست نہ سمجھو",
-   "meaning": "Trying to please everyone means pleasing no one.",
-   "pos": "Proverb"
-  },
-  {
-   "word": "A friend's frown is better than a fool's smile.",
-   "urdu": "دوست کی ناراضگی دشمن کی مسکراہٹ سے بہتر ہے",
-   "meaning": "Honest criticism from a friend is better than flattery.",
-   "pos": "Proverb"
-  },
-  {
-   "word": "A golden age.",
-   "urdu": "تاریخ کا روشن دور",
-   "meaning": "A period of great achievement and peace.",
-   "pos": "Idiom"
-  },
-  {
-   "word": "A golden key opens every lock.",
-   "urdu": "سونے کی چابی سے ہر تالا کھل جاتا ہے",
-   "meaning": "Money opens every door.",
-   "pos": "Proverb"
-  },
-  {
-   "word": "A good beginning is half the battle.",
-   "urdu": "نیک آغاز نصف فتح ہوتی ہے",
-   "meaning": "A good start makes success much easier.",
-   "pos": "Proverb"
-  },
-  {
-   "word": "A good name is better than riches.",
-   "urdu": "جائے لاکھ رہے ساکھ",
-   "meaning": "A good reputation is worth more than wealth.",
-   "pos": "Proverb"
-  },
-  {
-   "word": "A good name is sooner lost than won.",
-   "urdu": "نیک نامی گنوانا سہل حصول مشکل",
-   "meaning": "Reputation is hard to earn and easy to lose.",
-   "pos": "Proverb"
-  },
-  {
-   "word": "A good tongue is a good weapon.",
-   "urdu": "زبان شیریں ملک گیری",
-   "meaning": "A sweet tongue can win anything.",
-   "pos": "Proverb"
-  },
-  {
-   "word": "A hard nut to crack.",
-   "urdu": "لوہے کے چنے چبانا",
-   "meaning": "A very difficult problem or person.",
-   "pos": "Idiom"
-  },
-  {
-   "word": "A hedge between keeps friendship green.",
-   "urdu": "باڑ سے دوستی میں فرق نہیں آنے پاتا",
-   "meaning": "Keeping some distance preserves friendship.",
-   "pos": "Proverb"
-  },
-  {
-   "word": "A hit or a miss.",
-   "urdu": "ایسی حالت جس میں کامیابی یا ناکامی دونوں ممکن ہوں",
-   "meaning": "An uncertain outcome.",
-   "pos": "Idiom"
-  },
-  {
-   "word": "A honey tongue, a heart of gall.",
-   "urdu": "زبان پر شہد دل میں زہر",
-   "meaning": "Sweet words may hide a bitter heart.",
-   "pos": "Proverb"
-  },
-  {
-   "word": "A hungry man is an angry man.",
-   "urdu": "بھوکا سو روکھا",
-   "meaning": "A hungry person is easily angered.",
-   "pos": "Proverb"
-  },
-  {
-   "word": "A journey of a thousand miles begins with one step.",
-   "urdu": "بڑے بڑے کاموں کا آغاز بھی بہت چھوٹا ہوتا ہے",
-   "meaning": "Every great achievement starts with a small beginning.",
-   "pos": "Proverb"
-  },
-  {
-   "word": "A little knowledge is a dangerous thing.",
-   "urdu": "نیم حکیم خطرہ جان",
-   "meaning": "Knowing a little without full understanding can mislead.",
-   "pos": "Proverb"
-  },
-  {
-   "word": "A little leak will sink a great ship.",
-   "urdu": "تھوڑی بد احتیاطی بڑا نقصان کرتی ہے",
-   "meaning": "Small neglect can cause great loss.",
-   "pos": "Proverb"
-  },
-  {
-   "word": "A man can die but once.",
-   "urdu": "موت ایک ہی بار آ سکتی ہے",
-   "meaning": "Fear of death should not stop you from acting bravely.",
-   "pos": "Proverb"
-  },
-  {
-   "word": "A man in debt is caught in a net.",
-   "urdu": "قرض کے دام سے نکلنا مشکل ہے",
-   "meaning": "Debt traps a person.",
-   "pos": "Proverb"
-  },
-  {
-   "word": "A man is known by the company he keeps.",
-   "urdu": "آدمی اپنی صحبت سے پہچانا جاتا ہے",
-   "meaning": "Your friends show what kind of person you are.",
-   "pos": "Proverb"
-  },
-  {
-   "word": "A man's house is his castle.",
-   "urdu": "اپنا گھر قلعہ",
-   "meaning": "A person's home is his safe refuge.",
-   "pos": "Proverb"
-  },
-  {
-   "word": "A new broom sweeps clean.",
-   "urdu": "نیا نوکر مارے ہرن",
-   "meaning": "A newly appointed person makes big changes.",
-   "pos": "Proverb"
-  },
-  {
-   "word": "A nine days' wonder.",
-   "urdu": "چار دن کی چاندنی پھر اندھیری رات",
-   "meaning": "Something that attracts attention only briefly.",
-   "pos": "Idiom"
-  },
-  {
-   "word": "A penny saved is a penny earned.",
-   "urdu": "بچایا سو کمایا",
-   "meaning": "Saving money is as good as earning it.",
-   "pos": "Proverb"
-  },
-  {
-   "word": "A promise delayed is justice deferred.",
-   "urdu": "وعدہ پورا کرنے میں دیر کرنا ناانصافی ہے",
-   "meaning": "Delaying a promise is a kind of injustice.",
-   "pos": "Proverb"
-  },
-  {
-   "word": "A promise neglected is an untruth told.",
-   "urdu": "وعدہ خلافی کرنا اور جھوٹ بولنا برابر",
-   "meaning": "A broken promise is as bad as telling a lie.",
-   "pos": "Proverb"
-  },
-  {
-   "word": "A prophet is not honoured in his own country.",
-   "urdu": "گھر کا جوگی جوگنا باہر کا جوگی سدھ",
-   "meaning": "A person's worth is often unrecognized at home.",
-   "pos": "Proverb"
-  },
-  {
-   "word": "A quiet conscience sleeps in thunder.",
-   "urdu": "صاف ضمیر کو کس کا ڈر",
-   "meaning": "A clear conscience fears nothing.",
-   "pos": "Proverb"
-  },
-  {
-   "word": "A quiet tongue shows a wise head.",
-   "urdu": "کم گوئی دانائی کی علامت ہے",
-   "meaning": "A wise person speaks little.",
-   "pos": "Proverb"
-  },
-  {
-   "word": "A reconciled friend is a double enemy.",
-   "urdu": "ایک بار جو دشمنی کرے اس کا اعتبار نہ کرو",
-   "meaning": "Someone once your enemy can never be fully trusted.",
-   "pos": "Proverb"
-  },
-  {
-   "word": "A rolling stone gathers no moss.",
-   "urdu": "دھوبی کا کتا گھر کا نہ گھاٹ کا",
-   "meaning": "A person who keeps moving gains nothing lasting.",
-   "pos": "Proverb"
-  },
-  {
-   "word": "A single sinner sinks the boat.",
-   "urdu": "ایک مچھلی سارے جال کو گندا کرتی ہے",
-   "meaning": "One bad member can ruin the whole group.",
-   "pos": "Proverb"
-  },
-  {
-   "word": "A snake in one's sleeve.",
-   "urdu": "آستین کا سانپ",
-   "meaning": "A hidden enemy or traitor.",
-   "pos": "Idiom"
-  },
-  {
-   "word": "A soft answer turns away wrath.",
-   "urdu": "ٹھنڈا لوہا گرم لوہے کو کاٹتا ہے",
-   "meaning": "A gentle reply calms anger.",
-   "pos": "Proverb"
-  },
-  {
-   "word": "A sound mind in a sound body.",
-   "urdu": "قوی دماغ مضبوط جسم میں ہی رہ سکتا ہے",
-   "meaning": "A healthy mind lives in a healthy body.",
-   "pos": "Proverb"
-  },
-  {
-   "word": "A square peg in a round hole.",
-   "urdu": "بے محل و بے موقع",
-   "meaning": "Someone unsuited to his position.",
-   "pos": "Idiom"
-  },
-  {
-   "word": "A stitch in time saves nine.",
-   "urdu": "وقت کا ایک ٹانکا بے وقت کے سو ٹانکوں سے بچاتا ہے",
-   "meaning": "Fixing a small problem early prevents a bigger one.",
-   "pos": "Proverb"
-  },
-  {
-   "word": "A stumble may prevent a fall.",
-   "urdu": "آدمی وہ ہے جو ٹھوکر کھا کر سنبھل جائے",
-   "meaning": "A small mistake can teach you to avoid a bigger one.",
-   "pos": "Proverb"
-  },
-  {
-   "word": "A thief is certainly caught at last.",
-   "urdu": "سو دن چور کے ایک دن شاہ کا",
-   "meaning": "A thief is caught in the end.",
-   "pos": "Proverb"
-  },
-  {
-   "word": "A tree is known by its fruit.",
-   "urdu": "درخت اپنے پھل سے پہچانا جاتا ہے",
-   "meaning": "A person is judged by his results.",
-   "pos": "Proverb"
-  },
-  {
-   "word": "A wise enemy is better than a foolish friend.",
-   "urdu": "نادان دوست سے دانا دشمن بھلا",
-   "meaning": "Better an honest enemy than a foolish friend.",
-   "pos": "Proverb"
-  },
-  {
-   "word": "A wise man gets learning from those who have none themselves.",
-   "urdu": "عقلمند بیوقوفوں کے تجربہ سے سیکھتا ہے",
-   "meaning": "The wise learn even from the mistakes of fools.",
-   "pos": "Proverb"
-  },
-  {
-   "word": "A wolf in sheep's clothing.",
-   "urdu": "بغل میں چھری منہ میں رام رام",
-   "meaning": "A dangerous person who pretends to be harmless.",
-   "pos": "Idiom"
-  },
-  {
-   "word": "A word and a stone let go cannot be recalled.",
-   "urdu": "زبان سے نکلی بات اور کمان سے نکلا تیر واپس نہیں آتے",
-   "meaning": "Spoken words, like thrown stones, cannot be taken back.",
-   "pos": "Proverb"
-  },
-  {
-   "word": "A word out of season may mar the course of a whole life.",
-   "urdu": "بے محل بات بہت نقصان دہ ثابت ہو سکتی ہے",
-   "meaning": "An ill-timed word can cause great harm.",
-   "pos": "Proverb"
-  },
-  {
-   "word": "A word to the wise is enough.",
-   "urdu": "عقلمند کو اشارہ کافی ہے",
-   "meaning": "A wise person needs only a hint.",
-   "pos": "Proverb"
-  },
-  {
-   "word": "A work begun is half done.",
-   "urdu": "کام شروع کرنا ہی مشکل ہوتا ہے",
-   "meaning": "Starting a task is the hardest part.",
-   "pos": "Proverb"
-  },
-  {
-   "word": "A workman is known by his work.",
-   "urdu": "کاریگر کام سے پہچانا جاتا ہے",
-   "meaning": "A worker is judged by the quality of his work.",
-   "pos": "Proverb"
-  },
-  {
-   "word": "A young idler, an old beggar.",
-   "urdu": "جوانی میں آوارہ، بڑھاپے میں فقیر",
-   "meaning": "Idle youth leads to a poor old age.",
-   "pos": "Proverb"
-  },
-  {
-   "word": "Absence sharpens love.",
-   "urdu": "جدائی عشق کی آگ کو بھڑکا دیتی ہے",
-   "meaning": "Separation makes love stronger.",
-   "pos": "Proverb"
-  },
-  {
-   "word": "Actions speak louder than words.",
-   "urdu": "اصلیت کو افعال ہی ظاہر کر سکتے ہیں",
-   "meaning": "What you do matters more than what you say.",
-   "pos": "Proverb"
-  },
-  {
-   "word": "Adversity is the best judge of a friend and a foe.",
-   "urdu": "وقت پڑنے پر دوست اور دشمن کی پہچان ہوتی ہے",
-   "meaning": "Hard times reveal true friends.",
-   "pos": "Proverb"
-  },
-  {
-   "word": "Adversity makes a man wise, not rich.",
-   "urdu": "بپتا سے گیان بڑے نہ دھن",
-   "meaning": "Hardship teaches wisdom, not wealth.",
-   "pos": "Proverb"
-  },
-  {
-   "word": "After a storm comes a calm.",
-   "urdu": "طوفان کے بعد سکون",
-   "meaning": "Difficult times are followed by peace.",
-   "pos": "Proverb"
-  },
-  {
-   "word": "All doors are open to courtesy.",
-   "urdu": "اخلاق کو ہر جگہ خوش آمدید کہا جاتا ہے",
-   "meaning": "Good manners open every door.",
-   "pos": "Proverb"
-  },
-  {
-   "word": "All that glitters is not gold.",
-   "urdu": "ہر چمکتی ہوئی چیز سونا نہیں ہوتی",
-   "meaning": "What looks attractive may not be valuable.",
-   "pos": "Proverb"
-  },
-  {
-   "word": "All's well that ends well.",
-   "urdu": "انتھ بھلا تو سب بھلا",
-   "meaning": "A good ending makes all the trouble worthwhile.",
-   "pos": "Proverb"
-  },
-  {
-   "word": "An empty vessel makes much noise.",
-   "urdu": "تھوتھا چنا باجے گھنا",
-   "meaning": "Those who know least talk the most.",
-   "pos": "Proverb"
-  },
-  {
-   "word": "An idle man tempts the devil.",
-   "urdu": "بیکار آدمی خود شیطان کو بلاتا ہے",
-   "meaning": "Idle people are easily led into mischief.",
-   "pos": "Proverb"
-  },
-  {
-   "word": "As long as there is life there is hope.",
-   "urdu": "جب تک سانس تب تک آس",
-   "meaning": "Never lose hope while you are alive.",
-   "pos": "Proverb"
-  },
-  {
-   "word": "As you sow, so shall you reap.",
-   "urdu": "جیسا بوؤگے ویسا کاٹوگے",
-   "meaning": "You face the results of your own actions.",
-   "pos": "Proverb"
-  },
-  {
-   "word": "Barking dogs seldom bite.",
-   "urdu": "جو گرجتے ہیں وہ برستے نہیں",
-   "meaning": "Those who threaten most usually do least harm.",
-   "pos": "Proverb"
-  },
-  {
-   "word": "Beauty requires no paint.",
-   "urdu": "نہیں محتاج زیور کا جسے خوبی خدا نے دی",
-   "meaning": "Real beauty needs no decoration.",
-   "pos": "Proverb"
-  },
-  {
-   "word": "Better alone than in a bad company.",
-   "urdu": "بری صحبت سے اکیلا رہنا اچھا",
-   "meaning": "Being alone is better than bad company.",
-   "pos": "Proverb"
-  },
-  {
-   "word": "Better late than never.",
-   "urdu": "دیر آید درست آید",
-   "meaning": "Doing something late is better than not doing it at all.",
-   "pos": "Proverb"
-  },
-  {
-   "word": "Between the devil and the deep sea.",
-   "urdu": "آگے کنواں پیچھے کھائی",
-   "meaning": "Stuck between two dangers or difficult choices.",
-   "pos": "Idiom"
-  },
-  {
-   "word": "Birds of a feather flock together.",
-   "urdu": "چور چور مسیرے بھائی",
-   "meaning": "Similar people tend to stay together.",
-   "pos": "Proverb"
-  },
-  {
-   "word": "Blood is thicker than water.",
-   "urdu": "اپنا اپنا غیر غیر",
-   "meaning": "Family ties are stronger than other relationships.",
-   "pos": "Proverb"
-  },
-  {
-   "word": "Brevity is the soul of wit.",
-   "urdu": "اختصار ظرافت کی جان ہے",
-   "meaning": "Short and clear speech is the essence of wisdom.",
-   "pos": "Proverb"
-  },
-  {
-   "word": "By perseverance the snail reached the ark.",
-   "urdu": "استقلال بڑی چیز ہے",
-   "meaning": "Steady persistence achieves great things.",
-   "pos": "Proverb"
-  },
-  {
-   "word": "By the skin of one's teeth.",
-   "urdu": "بال بال",
-   "meaning": "By a very narrow margin.",
-   "pos": "Idiom"
-  },
-  {
-   "word": "By word of mouth.",
-   "urdu": "زبانی طور پر",
-   "meaning": "Through spoken words rather than writing.",
-   "pos": "Idiom"
-  },
-  {
-   "word": "Care killed the cat.",
-   "urdu": "فکر بری بلا",
-   "meaning": "Excessive worry can destroy a person.",
-   "pos": "Proverb"
-  },
-  {
-   "word": "Casting pearls before swine.",
-   "urdu": "بھینس کے آگے بین بجانا",
-   "meaning": "Wasting good things on people who cannot value them.",
-   "pos": "Idiom"
-  },
-  {
-   "word": "Catch the bear before you sell his skin.",
-   "urdu": "خیالی پلاؤ مت پکاؤ",
-   "meaning": "Do not count on something before you actually have it.",
-   "pos": "Proverb"
-  },
-  {
-   "word": "Caution is the parent of safety.",
-   "urdu": "سلامتی کے لیے احتیاط ضروری ہے",
-   "meaning": "Carefulness brings safety.",
-   "pos": "Proverb"
-  },
-  {
-   "word": "Charity begins at home.",
-   "urdu": "اول خویش بعد درویش",
-   "meaning": "Help your own family before helping others.",
-   "pos": "Proverb"
-  },
-  {
-   "word": "Cheats never prosper.",
-   "urdu": "دھوکے کبھی پھلتے پھولتے نہیں دیکھے گئے",
-   "meaning": "Dishonest people do not succeed in the end.",
-   "pos": "Proverb"
-  },
-  {
-   "word": "Circumstance alters cases.",
-   "urdu": "حالات سے معاملات بدل جاتے ہیں",
-   "meaning": "Circumstances change the way a matter is judged.",
-   "pos": "Proverb"
-  },
-  {
-   "word": "Cleanliness is next to godliness.",
-   "urdu": "صفائی پارسائی سے دوسرے درجے پر ہے",
-   "meaning": "Cleanliness is almost as important as virtue.",
-   "pos": "Proverb"
-  },
-  {
-   "word": "Clemency is the remedy of cruelty.",
-   "urdu": "ظلم کا علاج رحمدلی بھی ہے",
-   "meaning": "Mercy is the cure for cruelty.",
-   "pos": "Proverb"
-  },
-  {
-   "word": "Common danger produces agreement.",
-   "urdu": "مصیبت ایک کر دیتی ہے",
-   "meaning": "Shared danger unites people.",
-   "pos": "Proverb"
-  },
-  {
-   "word": "Comparisons are odious.",
-   "urdu": "مقابلہ ناگوار ہوتا ہے",
-   "meaning": "Comparisons are unpleasant.",
-   "pos": "Proverb"
-  },
-  {
-   "word": "Confidence begets confidence.",
-   "urdu": "اعتبار سے عموماً اعتبار پیدا ہوتا ہے",
-   "meaning": "Trust creates trust.",
-   "pos": "Proverb"
-  },
-  {
-   "word": "Constant dropping wears away the stone.",
-   "urdu": "روز کے ٹپکے سے پتھر بھی گھس جاتا ہے",
-   "meaning": "Small persistent efforts achieve great results.",
-   "pos": "Proverb"
-  },
-  {
-   "word": "Content is better than riches.",
-   "urdu": "قناعت سے بڑھ کر کوئی دولت نہیں",
-   "meaning": "Contentment is greater than wealth.",
-   "pos": "Proverb"
-  },
-  {
-   "word": "Cut your coat according to your cloth.",
-   "urdu": "جتنی چادر ہو اتنا پیر پھیلاؤ",
-   "meaning": "Spend only as much as you can afford.",
-   "pos": "Proverb"
-  },
-  {
-   "word": "Diamond cuts diamond.",
-   "urdu": "لوہا لوہے کو کاٹتا ہے",
-   "meaning": "A strong opponent needs a strong match.",
-   "pos": "Proverb"
-  },
-  {
-   "word": "Do good, have good.",
-   "urdu": "کر بھلا ہو بھلا",
-   "meaning": "Good deeds bring good results.",
-   "pos": "Proverb"
-  },
-  {
-   "word": "Do not burn your house to frighten away the mice.",
-   "urdu": "تھوڑے فائدے کے لیے زیادہ نقصان کرنا",
-   "meaning": "Do not cause great loss for a small gain.",
-   "pos": "Proverb"
-  },
-  {
-   "word": "Do not count your chickens before they are hatched.",
-   "urdu": "آئندہ کے غیر یقینی واقعے پر بہت زیادہ انحصار کر لینا",
-   "meaning": "Do not assume success before it actually happens.",
-   "pos": "Proverb"
-  },
-  {
-   "word": "Do not leave today's work for tomorrow.",
-   "urdu": "آج کا کام کل پر مت چھوڑو",
-   "meaning": "Do not delay what can be done now.",
-   "pos": "Proverb"
-  },
-  {
-   "word": "Do not put all your eggs in one basket.",
-   "urdu": "سارے انڈے ایک ہی ٹوکری میں مت رکھو",
-   "meaning": "Do not risk everything on a single plan.",
-   "pos": "Proverb"
-  },
-  {
-   "word": "Each moment has its own charm.",
-   "urdu": "وقت وقت کا راگ اچھا ہوتا ہے",
-   "meaning": "Every time and situation has its own value.",
-   "pos": "Proverb"
-  },
-  {
-   "word": "Even walls have ears.",
-   "urdu": "دیواروں کے بھی کان ہوتے ہیں",
-   "meaning": "Someone may be listening secretly.",
-   "pos": "Proverb"
-  },
-  {
-   "word": "Every flow will have an ebb.",
-   "urdu": "ہر کمال کا زوال ہوتا ہے",
-   "meaning": "Every high is followed by a low.",
-   "pos": "Proverb"
-  },
-  {
-   "word": "Everything is fair in love and war.",
-   "urdu": "محبت اور جنگ میں ہر چیز جائز ہوتی ہے",
-   "meaning": "In love and war any trick may be allowed.",
-   "pos": "Proverb"
-  },
-  {
-   "word": "Experience is the greatest teacher.",
-   "urdu": "تجربہ سب سے بڑا استاد ہے",
-   "meaning": "We learn most from our own experience.",
-   "pos": "Proverb"
-  },
-  {
-   "word": "Failure teaches more than success.",
-   "urdu": "انسان فتح سے نہیں بلکہ شکست سے بہت کچھ سیکھتا ہے",
-   "meaning": "People learn more from failure than from success.",
-   "pos": "Proverb"
-  },
-  {
-   "word": "Food for thought.",
-   "urdu": "ایسی بات جو کچھ سوچنے کا موقع دے",
-   "meaning": "Something worth thinking about.",
-   "pos": "Idiom"
-  },
-  {
-   "word": "Forbidden fruit is sweetest.",
-   "urdu": "چوری کا گڑ میٹھا لگتا ہے",
-   "meaning": "What is forbidden seems most attractive.",
-   "pos": "Proverb"
-  },
-  {
-   "word": "Forewarned is forearmed.",
-   "urdu": "خطرے سے آگاہی ہو تو انسان مقابلے کے لیے تیار رہتا ہے",
-   "meaning": "Knowing a danger in advance lets you prepare for it.",
-   "pos": "Proverb"
-  },
-  {
-   "word": "Forgive that you may be forgiven.",
-   "urdu": "دوسروں کو معاف کرو تاکہ تمہیں بھی معافی مل جائے",
-   "meaning": "Forgive others so you too may be forgiven.",
-   "pos": "Proverb"
-  },
-  {
-   "word": "Fortune favours the brave.",
-   "urdu": "قسمت بہادر آدمی کی کنیز ہے",
-   "meaning": "Luck favours those who act boldly.",
-   "pos": "Proverb"
-  },
-  {
-   "word": "Fortune knocks at least once at every man's gate.",
-   "urdu": "ایک دفعہ سب کے دن پھرتے ہیں",
-   "meaning": "Every person gets a chance at least once in life.",
-   "pos": "Proverb"
-  },
-  {
-   "word": "Fortune turns like a mill-wheel.",
-   "urdu": "قسمت کا چکر کبھی اوپر کبھی نیچے",
-   "meaning": "Luck rises and falls.",
-   "pos": "Proverb"
-  },
-  {
-   "word": "Fortunes change suddenly.",
-   "urdu": "دن پھرتے دیر نہیں لگتی",
-   "meaning": "Luck can change overnight.",
-   "pos": "Proverb"
-  },
-  {
-   "word": "From time to time.",
-   "urdu": "کبھی کبھار",
-   "meaning": "Occasionally, now and then.",
-   "pos": "Idiom"
-  },
-  {
-   "word": "Give a loan and gain an enemy.",
-   "urdu": "ادھار دیجئے دشمنی لیجئے",
-   "meaning": "Lending money can turn friends into enemies.",
-   "pos": "Proverb"
-  },
-  {
-   "word": "God helps those who help themselves.",
-   "urdu": "ہمت مرداں مدد خدا",
-   "meaning": "God helps people who make their own effort.",
-   "pos": "Proverb"
-  },
-  {
-   "word": "Good health is a thousand blessings.",
-   "urdu": "تندرستی ہزار نعمت ہے",
-   "meaning": "Health is the greatest blessing.",
-   "pos": "Proverb"
-  },
-  {
-   "word": "Grapes are sour.",
-   "urdu": "انگور کھٹے ہیں",
-   "meaning": "Pretending to dislike what you cannot get.",
-   "pos": "Idiom"
-  },
-  {
-   "word": "Great boast, little roast.",
-   "urdu": "اونچی دوکان پھیکا پکوان",
-   "meaning": "Big claims but poor results.",
-   "pos": "Proverb"
-  },
-  {
-   "word": "Great talkers are little doers.",
-   "urdu": "باتوں چکنے کاموں خوار",
-   "meaning": "Those who talk much usually do little.",
-   "pos": "Proverb"
-  },
-  {
-   "word": "Greed is a curse.",
-   "urdu": "لالچ بری بلا ہے",
-   "meaning": "Greed brings ruin.",
-   "pos": "Proverb"
-  },
-  {
-   "word": "Grief divided is made lighter.",
-   "urdu": "بانٹ کھانے سے رنج ہلکا ہوتا ہے",
-   "meaning": "Sharing sorrow makes it easier to bear.",
-   "pos": "Proverb"
-  },
-  {
-   "word": "Habit is second nature.",
-   "urdu": "عادت خصلت ہو جاتی ہے",
-   "meaning": "A habit becomes part of your nature.",
-   "pos": "Proverb"
-  },
-  {
-   "word": "Half a loaf is better than no bread.",
-   "urdu": "نہ ہونے سے آدھی بھلی",
-   "meaning": "A small share is better than having nothing.",
-   "pos": "Proverb"
-  },
-  {
-   "word": "Hand and glove.",
-   "urdu": "گہرے دوست",
-   "meaning": "Very close and in full agreement.",
-   "pos": "Idiom"
-  },
-  {
-   "word": "Hands down.",
-   "urdu": "نہایت آسانی سے",
-   "meaning": "Easily and without doubt.",
-   "pos": "Idiom"
-  },
-  {
-   "word": "Handsome is that handsome does.",
-   "urdu": "کام پیارا ہے جام پیارا نہیں",
-   "meaning": "Goodness shows in actions, not in appearance.",
-   "pos": "Proverb"
-  },
-  {
-   "word": "Hard words break no bones.",
-   "urdu": "سخت الفاظ کسی کو کیا نقصان پہنچا سکتے ہیں",
-   "meaning": "Harsh words do no real physical harm.",
-   "pos": "Proverb"
-  },
-  {
-   "word": "Haste makes waste.",
-   "urdu": "جلدی کا کام شیطان کا",
-   "meaning": "Rushing causes mistakes and loss.",
-   "pos": "Proverb"
-  },
-  {
-   "word": "Haves and have-nots.",
-   "urdu": "امیر و غریب",
-   "meaning": "The rich and the poor.",
-   "pos": "Idiom"
-  },
-  {
-   "word": "He has lost his marbles.",
-   "urdu": "اس کی عقل گھاس چرنے کو گئی ہے",
-   "meaning": "He has gone mad or foolish.",
-   "pos": "Idiom"
-  },
-  {
-   "word": "He is wise who looks ahead.",
-   "urdu": "عقلمند کل کی فکر کرتا ہے",
-   "meaning": "Wise people think about the future.",
-   "pos": "Proverb"
-  },
-  {
-   "word": "He labours in vain who tries to please all.",
-   "urdu": "سب کو خوش کرنا ناممکن ہے",
-   "meaning": "You cannot please everyone.",
-   "pos": "Proverb"
-  },
-  {
-   "word": "He preaches best who lives best.",
-   "urdu": "مثال سے جو اثر ہوتا ہے وہ وعظ سے نہیں ہو سکتا",
-   "meaning": "Example teaches better than preaching.",
-   "pos": "Proverb"
-  },
-  {
-   "word": "He who digs a pit for others falls into it.",
-   "urdu": "جو کسی کے لیے گڑھا کھودتا ہے خود ہی اس میں گرتا ہے",
-   "meaning": "Those who scheme against others get caught themselves.",
-   "pos": "Proverb"
-  },
-  {
-   "word": "He who suffers, conquers.",
-   "urdu": "جو تکلیف اٹھا سکتا ہے فتح اسی کو نصیب ہوتی ہے",
-   "meaning": "Patience through hardship brings victory.",
-   "pos": "Proverb"
-  },
-  {
-   "word": "Health is better than wealth.",
-   "urdu": "ایک تندرستی ہزار نعمت",
-   "meaning": "Good health is worth more than money.",
-   "pos": "Proverb"
-  },
-  {
-   "word": "Hear the other side also.",
-   "urdu": "بات کے دونوں پہلوؤں پر غور کرو",
-   "meaning": "Listen to both sides before judging.",
-   "pos": "Proverb"
-  },
-  {
-   "word": "Hearsay is half lies.",
-   "urdu": "سنی سنائی بات آدھا جھوٹ",
-   "meaning": "Rumours are usually half false.",
-   "pos": "Proverb"
-  },
-  {
-   "word": "His bark is worse than his bite.",
-   "urdu": "اس کا بھونکنا کاٹنے سے بھی برا ہے",
-   "meaning": "He sounds more frightening than he really is.",
-   "pos": "Idiom"
-  },
-  {
-   "word": "His deeds belie his words.",
-   "urdu": "فعل دیگر قول دیگر",
-   "meaning": "His actions contradict his words.",
-   "pos": "Proverb"
-  },
-  {
-   "word": "Hit the nail on the head.",
-   "urdu": "مطلوبہ مقصد حاصل کرنا",
-   "meaning": "To say or do exactly the right thing.",
-   "pos": "Idiom"
-  },
-  {
-   "word": "Honesty is the best policy.",
-   "urdu": "ایمانداری بہترین حکمت عملی ہے",
-   "meaning": "Being honest is always the wisest choice.",
-   "pos": "Proverb"
-  },
-  {
-   "word": "In Rome do as the Romans do.",
-   "urdu": "جیسا دیس ویسا بھیس",
-   "meaning": "Follow the customs of the place you are in.",
-   "pos": "Proverb"
-  },
-  {
-   "word": "Inch by inch.",
-   "urdu": "آہستہ آہستہ",
-   "meaning": "Slowly and gradually.",
-   "pos": "Idiom"
-  },
-  {
-   "word": "It is no use crying over spilled milk.",
-   "urdu": "اب پچھتائے کیا جب چڑیا چگ گئی کھیت",
-   "meaning": "Do not regret what cannot be undone.",
-   "pos": "Proverb"
-  },
-  {
-   "word": "It is too good to be true.",
-   "urdu": "اچھی خبر جس پر یقین نہ آئے",
-   "meaning": "So good that it seems unreal.",
-   "pos": "Proverb"
-  },
-  {
-   "word": "It takes all sorts to make the world.",
-   "urdu": "اس دنیا میں ہر طرح کے لوگ رہتے ہیں",
-   "meaning": "The world is made of all kinds of people.",
-   "pos": "Proverb"
-  },
-  {
-   "word": "It takes two to make a quarrel.",
-   "urdu": "تالی ایک ہاتھ سے نہیں بجتی",
-   "meaning": "A quarrel needs both sides.",
-   "pos": "Proverb"
-  },
-  {
-   "word": "Keep friends close but keep enemies closer.",
-   "urdu": "دوستوں کو قریب لیکن دشمنوں کو قریب تر رکھو",
-   "meaning": "Watch your enemies closely to stay safe.",
-   "pos": "Proverb"
-  },
-  {
-   "word": "Kill not the goose that lays the golden eggs.",
-   "urdu": "سونے کا انڈہ دینے والی مرغی کو حلال کرنا بیوقوفی ہے",
-   "meaning": "Do not destroy the source of your wealth.",
-   "pos": "Proverb"
-  },
-  {
-   "word": "Kings have long arms.",
-   "urdu": "بادشاہوں کے اختیارات و طاقت بہت وسیع ہوتے ہیں",
-   "meaning": "Rulers have far-reaching power.",
-   "pos": "Proverb"
-  },
-  {
-   "word": "Life is not a bed of roses.",
-   "urdu": "زندگی پھولوں کی سیج نہیں",
-   "meaning": "Life has hardships as well as joys.",
-   "pos": "Proverb"
-  },
-  {
-   "word": "Look before you leap.",
-   "urdu": "پہلے تولو پھر بولو",
-   "meaning": "Think carefully before you act.",
-   "pos": "Proverb"
-  },
-  {
-   "word": "Lost time is never found again.",
-   "urdu": "گیا وقت پھر ہاتھ نہیں آتا",
-   "meaning": "Wasted time can never be recovered.",
-   "pos": "Proverb"
-  },
-  {
-   "word": "Love conquers all things.",
-   "urdu": "محبت تمام مشکلات پر غلبہ پا لیتی ہے",
-   "meaning": "Love overcomes every obstacle.",
-   "pos": "Proverb"
-  },
-  {
-   "word": "Love is blind.",
-   "urdu": "محبت اندھی ہوتی ہے",
-   "meaning": "Love ignores the faults of the loved one.",
-   "pos": "Proverb"
-  },
-  {
-   "word": "Love me, love my dog.",
-   "urdu": "مجھ سے محبت کرنی ہے تو میری ہر چیز سے محبت کرنی پڑے گی",
-   "meaning": "If you love someone, accept everything about them.",
-   "pos": "Proverb"
-  },
-  {
-   "word": "Lying is weakness; truth is strength.",
-   "urdu": "جھوٹ بولنا کمزوری ہے اور سچ صحت کی علامت",
-   "meaning": "Lies weaken a person; truth strengthens him.",
-   "pos": "Proverb"
-  },
-  {
-   "word": "Make hay while the sun shines.",
-   "urdu": "بہتی گنگا میں ہاتھ دھولو",
-   "meaning": "Use the opportunity while it lasts.",
-   "pos": "Proverb"
-  },
-  {
-   "word": "Make the best of a bad bargain.",
-   "urdu": "بھرپور فائدہ اٹھانا",
-   "meaning": "Accept a bad situation and get the most from it.",
-   "pos": "Idiom"
-  },
-  {
-   "word": "Man proposes, God disposes.",
-   "urdu": "واہ رے قسمت کے ولیا پکائی تھی کھیر ہوگیا دلیا",
-   "meaning": "Humans plan, but fate decides the outcome.",
-   "pos": "Proverb"
-  },
-  {
-   "word": "Manners maketh man.",
-   "urdu": "با ادب ہو کر بزرگ بنے",
-   "meaning": "Good manners make a person respected.",
-   "pos": "Proverb"
-  },
-  {
-   "word": "Many a little makes a mickle.",
-   "urdu": "بوند بوند سے گھڑا بھرتا ہے",
-   "meaning": "Small savings add up to a large amount.",
-   "pos": "Proverb"
-  },
-  {
-   "word": "Many hands make light work.",
-   "urdu": "بہت سے کرنے والے ہوں تو کام جلد ہو جاتا ہے",
-   "meaning": "A task is easier when many people help.",
-   "pos": "Proverb"
-  },
-  {
-   "word": "Many men, many minds.",
-   "urdu": "جتنے لوگ اتنے آراء",
-   "meaning": "Different people have different views.",
-   "pos": "Proverb"
-  },
-  {
-   "word": "Many words hurt more than swords.",
-   "urdu": "زبان کا گھاؤ تلوار سے بھی بڑھ کر ہوتا ہے",
-   "meaning": "Words can hurt more than weapons.",
-   "pos": "Proverb"
-  },
-  {
-   "word": "Marry in haste, repent at leisure.",
-   "urdu": "جلدی کا نتیجہ ندامت ہے",
-   "meaning": "Hasty decisions bring later regret.",
-   "pos": "Proverb"
-  },
-  {
-   "word": "Meekness is not weakness.",
-   "urdu": "حلیم طبع ہونا کمزوری نہیں",
-   "meaning": "Gentleness is not a sign of weakness.",
-   "pos": "Proverb"
-  },
-  {
-   "word": "Mercy begets mercy.",
-   "urdu": "رحم سے رحم پیدا ہوتا ہے",
-   "meaning": "Showing kindness brings kindness.",
-   "pos": "Proverb"
-  },
-  {
-   "word": "Might is not always right.",
-   "urdu": "جس کی لاٹھی ہو ہمیشہ اس کی بھینس نہیں ہوتی",
-   "meaning": "Power does not always decide what is right.",
-   "pos": "Proverb"
-  },
-  {
-   "word": "Might is right.",
-   "urdu": "جس کی لاتھی اس کی بھینس",
-   "meaning": "The powerful can force their will on others.",
-   "pos": "Proverb"
-  },
-  {
-   "word": "Mildness governs better than anger.",
-   "urdu": "جو کام نرمی سے نکلتا ہے وہ گرمی سے نہیں نکلتا",
-   "meaning": "Gentleness achieves what anger cannot.",
-   "pos": "Proverb"
-  },
-  {
-   "word": "Mind your own business.",
-   "urdu": "اپنے کام سے کام رکھو",
-   "meaning": "Do not interfere in other people's affairs.",
-   "pos": "Proverb"
-  },
-  {
-   "word": "Misfortunes never come singly.",
-   "urdu": "مصیبت کبھی تنہا نہیں آتی",
-   "meaning": "Bad things often happen together.",
-   "pos": "Proverb"
-  },
-  {
-   "word": "Moderation is a treasure.",
-   "urdu": "میانہ روی بڑی دولت ہے",
-   "meaning": "Moderation is a great virtue.",
-   "pos": "Proverb"
-  },
-  {
-   "word": "Money borrowed is soon sorrowed.",
-   "urdu": "قرض جلد ہی باعث تکلیف بن جاتا ہے",
-   "meaning": "Borrowing money soon brings worry.",
-   "pos": "Proverb"
-  },
-  {
-   "word": "Money is a good servant but a bad master.",
-   "urdu": "زر خدمتگار اچھا لیکن آقا برا",
-   "meaning": "Use money wisely; do not let it control you.",
-   "pos": "Proverb"
-  },
-  {
-   "word": "Money makes money.",
-   "urdu": "روپیہ کو روپیہ کھینچتا ہے",
-   "meaning": "Wealth attracts more wealth.",
-   "pos": "Proverb"
-  },
-  {
-   "word": "Money makes the man.",
-   "urdu": "آدمی کی قدر روپے سے ہوتی ہے",
-   "meaning": "People are judged by their wealth.",
-   "pos": "Proverb"
-  },
-  {
-   "word": "Money makes the mare go.",
-   "urdu": "دام بنائے کام",
-   "meaning": "Money can get almost anything done.",
-   "pos": "Proverb"
-  },
-  {
-   "word": "Necessity is the mother of invention.",
-   "urdu": "ضرورت ایجاد کی ماں ہے",
-   "meaning": "Need drives people to create solutions.",
-   "pos": "Proverb"
-  },
-  {
-   "word": "Neither fish nor fowl.",
-   "urdu": "آدھا تیتر آدھا بٹیر",
-   "meaning": "Something that fits no clear category.",
-   "pos": "Idiom"
-  },
-  {
-   "word": "Never look a gift horse in the mouth.",
-   "urdu": "مفت کی گائے کے دانت کون دیکھتا ہے",
-   "meaning": "Do not criticize a gift you receive.",
-   "pos": "Proverb"
-  },
-  {
-   "word": "Never meet trouble halfway.",
-   "urdu": "مصیبت کے استقبال کے لیے تیار نہ رہو",
-   "meaning": "Do not worry about trouble before it comes.",
-   "pos": "Proverb"
-  },
-  {
-   "word": "No man can serve two masters.",
-   "urdu": "ایک میان میں دو تلواریں نہیں سماتیں",
-   "meaning": "You cannot serve two conflicting masters.",
-   "pos": "Proverb"
-  },
-  {
-   "word": "No one is born without faults.",
-   "urdu": "عیب سے کوئی پاک نہیں",
-   "meaning": "Everyone has faults.",
-   "pos": "Proverb"
-  },
-  {
-   "word": "No pains, no gains.",
-   "urdu": "سیوہ بن میوہ نہیں",
-   "meaning": "You cannot get results without effort.",
-   "pos": "Proverb"
-  },
-  {
-   "word": "Nothing comes amiss to a hungry man.",
-   "urdu": "بھوکے کو سوکھی بھی چپڑی کے برابر",
-   "meaning": "A hungry person is grateful for any food.",
-   "pos": "Proverb"
-  },
-  {
-   "word": "Nothing comes without a price.",
-   "urdu": "کام بن دام نہیں",
-   "meaning": "Everything good must be earned or paid for.",
-   "pos": "Proverb"
-  },
-  {
-   "word": "One lie leads to another.",
-   "urdu": "جھوٹ کی انتہا نہیں",
-   "meaning": "One lie forces you to tell more lies.",
-   "pos": "Proverb"
-  },
-  {
-   "word": "One nail drives out another.",
-   "urdu": "کانٹے سے کانٹا نکلتا ہے",
-   "meaning": "One problem is removed by another.",
-   "pos": "Proverb"
-  },
-  {
-   "word": "One post and a hundred candidates.",
-   "urdu": "ایک انار سو بیمار",
-   "meaning": "Too many applicants for a single position.",
-   "pos": "Proverb"
-  },
-  {
-   "word": "Out of sight, out of mind.",
-   "urdu": "آنکھ اوجھل پہاڑ اوجھل",
-   "meaning": "You forget what you do not see.",
-   "pos": "Proverb"
-  },
-  {
-   "word": "Out of the frying pan into the fire.",
-   "urdu": "آسمان سے گرا کھجور میں اٹکا",
-   "meaning": "Going from a bad situation to a worse one.",
-   "pos": "Idiom"
-  },
-  {
-   "word": "Practice makes a man perfect.",
-   "urdu": "مشق انسان کو کامل بنا دیتی ہے",
-   "meaning": "Regular practice makes you perfect.",
-   "pos": "Proverb"
-  },
-  {
-   "word": "Prevention is better than cure.",
-   "urdu": "پرہیز علاج سے بہتر ہے",
-   "meaning": "It is better to avoid a problem than to fix it.",
-   "pos": "Proverb"
-  },
-  {
-   "word": "Pride hath a fall.",
-   "urdu": "غرور کا سر نیچا",
-   "meaning": "Pride leads to downfall.",
-   "pos": "Proverb"
-  },
-  {
-   "word": "Punctuality is the soul of business.",
-   "urdu": "پابندی وقت کاروبار کی جان ہے",
-   "meaning": "Being on time is essential to success.",
-   "pos": "Proverb"
-  },
-  {
-   "word": "Riches have wings.",
-   "urdu": "مایا دل کی چھایا",
-   "meaning": "Wealth can disappear quickly.",
-   "pos": "Proverb"
-  },
-  {
-   "word": "Rome was not built in a day.",
-   "urdu": "ہتھیلی پر سرسوں نہیں جمتی",
-   "meaning": "Great tasks take time and patience.",
-   "pos": "Proverb"
-  },
-  {
-   "word": "Rubbing salt in a wound.",
-   "urdu": "جلے پر نمک چھڑکنا",
-   "meaning": "Making someone's pain or sorrow worse.",
-   "pos": "Idiom"
-  },
-  {
-   "word": "Seeing is believing.",
-   "urdu": "سنی سنائی بات کا اعتبار نہیں ہوتا",
-   "meaning": "You believe what you see yourself.",
-   "pos": "Proverb"
-  },
-  {
-   "word": "Self-praise is no recommendation.",
-   "urdu": "اپنے منہ میاں مٹھو بننا",
-   "meaning": "Praising yourself proves nothing.",
-   "pos": "Proverb"
-  },
-  {
-   "word": "Silence is half consent.",
-   "urdu": "خاموشی نیم رضا",
-   "meaning": "Staying silent may mean you agree.",
-   "pos": "Proverb"
-  },
-  {
-   "word": "Slow and steady wins the race.",
-   "urdu": "سہج پکے سو میٹھا ہو",
-   "meaning": "Steady, patient effort beats careless haste.",
-   "pos": "Proverb"
-  },
-  {
-   "word": "Society moulds a man.",
-   "urdu": "خربوزے کو دیکھ کر خربوزہ رنگ پکڑتا ہے",
-   "meaning": "People take on the character of their surroundings.",
-   "pos": "Proverb"
-  },
-  {
-   "word": "Something is better than nothing.",
-   "urdu": "بھاگتے چور کی لنگوٹی ہی سہی",
-   "meaning": "Having a little is better than having nothing.",
-   "pos": "Proverb"
-  },
-  {
-   "word": "Strike while the iron is hot.",
-   "urdu": "بہتے دریا میں ہاتھ دھونا",
-   "meaning": "Act at the right moment.",
-   "pos": "Proverb"
-  },
-  {
-   "word": "Tastes differ.",
-   "urdu": "سب کو ایک ہی چیز نہیں بھاتی",
-   "meaning": "Different people like different things.",
-   "pos": "Proverb"
-  },
-  {
-   "word": "Taxes are the sinews of the state.",
-   "urdu": "لگان کے بغیر سلطنت کا کام نہیں چل سکتا",
-   "meaning": "Without taxes a state cannot function.",
-   "pos": "Proverb"
-  },
-  {
-   "word": "Teaching others teaches yourself.",
-   "urdu": "علم دوسروں کو دینے سے بڑھتا ہے",
-   "meaning": "Teaching others increases your own knowledge.",
-   "pos": "Proverb"
-  },
-  {
-   "word": "The best things are hard to come by.",
-   "urdu": "بہترین چیزیں مشکل سے دستیاب ہوتی ہیں",
-   "meaning": "Valuable things are not easy to obtain.",
-   "pos": "Proverb"
-  },
-  {
-   "word": "The boughs that bear most hang lowest.",
-   "urdu": "جتنا پھلے اتنا جھکے",
-   "meaning": "The most accomplished people are the humblest.",
-   "pos": "Proverb"
-  },
-  {
-   "word": "The child is the father of the man.",
-   "urdu": "چھوٹوں سے بڑے ہوتے آئے",
-   "meaning": "Childhood shapes the adult.",
-   "pos": "Proverb"
-  },
-  {
-   "word": "The early bird catches the worm.",
-   "urdu": "پہلے مارے سو میری",
-   "meaning": "Acting early brings success.",
-   "pos": "Proverb"
-  },
-  {
-   "word": "The end crowns the work.",
-   "urdu": "کام کی قیمت انجام سے ہے",
-   "meaning": "The result shows the quality of the work.",
-   "pos": "Proverb"
-  },
-  {
-   "word": "The end makes all equal.",
-   "urdu": "موت کے آگے سب برابر",
-   "meaning": "Death makes everyone equal.",
-   "pos": "Proverb"
-  },
-  {
-   "word": "The eye is the mirror of the soul.",
-   "urdu": "آنکھ گویا ضمیر کا آئینہ ہے",
-   "meaning": "The eyes reveal a person's true feelings.",
-   "pos": "Proverb"
-  },
-  {
-   "word": "The face is the index of the mind.",
-   "urdu": "دل کا حال چہرے سے عیاں ہو جاتا ہے",
-   "meaning": "The face reveals what is in the mind.",
-   "pos": "Proverb"
-  },
-  {
-   "word": "The grass is always greener on the other side.",
-   "urdu": "دور کے ڈھول سہانے",
-   "meaning": "Other people's situations always seem better.",
-   "pos": "Proverb"
-  },
-  {
-   "word": "The guilty are always afraid.",
-   "urdu": "مجرم کو ہر وقت کھٹکا لگا رہتا ہے",
-   "meaning": "The guilty live in constant fear.",
-   "pos": "Proverb"
-  },
-  {
-   "word": "The poor man's voice is never heard.",
-   "urdu": "نقار خانے میں طوطی کی صدا کون سنتا ہے",
-   "meaning": "The weak are not listened to.",
-   "pos": "Proverb"
-  },
-  {
-   "word": "The truth is bitter.",
-   "urdu": "سچی بات ہمیشہ کڑوی لگتی ہے",
-   "meaning": "The truth is often hard to accept.",
-   "pos": "Proverb"
-  },
-  {
-   "word": "There is a time for everything.",
-   "urdu": "ہر کام کا وقت مقرر ہے",
-   "meaning": "Everything should be done at the right time.",
-   "pos": "Proverb"
-  },
-  {
-   "word": "There is more to it than meets the eye.",
-   "urdu": "دال میں کالا",
-   "meaning": "The situation is more complex than it appears.",
-   "pos": "Proverb"
-  },
-  {
-   "word": "There is no rose without a thorn.",
-   "urdu": "جہاں پھول وہاں کانٹا",
-   "meaning": "Every good thing has some drawback.",
-   "pos": "Proverb"
-  },
-  {
-   "word": "Time and tide wait for none.",
-   "urdu": "وقت اور موت کسی کا انتظار نہیں کرتی",
-   "meaning": "Time waits for no one; act in time.",
-   "pos": "Proverb"
-  },
-  {
-   "word": "Time is the greatest healer.",
-   "urdu": "وقت سب سے بڑا مرہم ہے",
-   "meaning": "Pain and grief fade with time.",
-   "pos": "Proverb"
-  },
-  {
-   "word": "Time waits for no one.",
-   "urdu": "وقت کسی کا انتظار نہیں کرتا",
-   "meaning": "Do not waste time; it never stops.",
-   "pos": "Proverb"
-  },
-  {
-   "word": "Tit for tat.",
-   "urdu": "ادلے کا بدلہ",
-   "meaning": "Returning equal treatment, harm for harm.",
-   "pos": "Idiom"
-  },
-  {
-   "word": "To be a puppet in someone's hands.",
-   "urdu": "دوسرے کے ہاتھ کی کٹھ پتلی",
-   "meaning": "To be controlled by another person.",
-   "pos": "Idiom"
-  },
-  {
-   "word": "To break one's word.",
-   "urdu": "وعدہ توڑنا",
-   "meaning": "To fail to keep a promise.",
-   "pos": "Idiom"
-  },
-  {
-   "word": "To break the ice.",
-   "urdu": "آغاز کرنا",
-   "meaning": "To start a conversation in an awkward situation.",
-   "pos": "Idiom"
-  },
-  {
-   "word": "To break the news.",
-   "urdu": "غیر متوقع خبر دینا",
-   "meaning": "To tell someone surprising or bad news.",
-   "pos": "Idiom"
-  },
-  {
-   "word": "To breathe one's last.",
-   "urdu": "مر جانا",
-   "meaning": "To die.",
-   "pos": "Idiom"
-  },
-  {
-   "word": "To bring to light.",
-   "urdu": "ظاہر کرنا",
-   "meaning": "To reveal something hidden.",
-   "pos": "Idiom"
-  },
-  {
-   "word": "To build on sand.",
-   "urdu": "اپنی عمارت کی بنیاد ریت پر رکھنا",
-   "meaning": "To base something on an insecure foundation.",
-   "pos": "Idiom"
-  },
-  {
-   "word": "To carry coals to Newcastle.",
-   "urdu": "الٹے بانس بریلی کو",
-   "meaning": "To do something completely unnecessary.",
-   "pos": "Idiom"
-  },
-  {
-   "word": "To catch sight of.",
-   "urdu": "جھلک دیکھنا",
-   "meaning": "To see something briefly.",
-   "pos": "Idiom"
-  },
-  {
-   "word": "To come to grief.",
-   "urdu": "بد قسمتی کا سامنا کرنا",
-   "meaning": "To meet with disaster or failure.",
-   "pos": "Idiom"
-  },
-  {
-   "word": "To come to nothing.",
-   "urdu": "لا حاصل",
-   "meaning": "To end in failure.",
-   "pos": "Idiom"
-  },
-  {
-   "word": "To dig a well when the fire has started.",
-   "urdu": "آگ لگنے پر کنواں کھودنا",
-   "meaning": "To act too late.",
-   "pos": "Idiom"
-  },
-  {
-   "word": "To follow the beaten path.",
-   "urdu": "لکیر کا فقیر",
-   "meaning": "To follow tradition without thinking.",
-   "pos": "Idiom"
-  },
-  {
-   "word": "To give someone a piece of one's mind.",
-   "urdu": "کھری کھری سنانا",
-   "meaning": "To tell someone off frankly.",
-   "pos": "Idiom"
-  },
-  {
-   "word": "To have one foot in the grave.",
-   "urdu": "موت کے قریب ہونا",
-   "meaning": "To be very old or near death.",
-   "pos": "Idiom"
-  },
-  {
-   "word": "To have one's heart in one's mouth.",
-   "urdu": "گھبرانا، خوف زدہ ہونا",
-   "meaning": "To be very frightened.",
-   "pos": "Idiom"
-  },
-  {
-   "word": "To have other fish to fry.",
-   "urdu": "کچھ اور بھی کرنے کو ہونا",
-   "meaning": "To have more important things to do.",
-   "pos": "Idiom"
-  },
-  {
-   "word": "To have two strings to one's bow.",
-   "urdu": "ایک سے زیادہ ذرائع رکھنا",
-   "meaning": "To have a backup plan.",
-   "pos": "Idiom"
-  },
-  {
-   "word": "To make a mountain of a molehill.",
-   "urdu": "بات کا بتنگڑ بنانا",
-   "meaning": "To exaggerate a small problem.",
-   "pos": "Idiom"
-  },
-  {
-   "word": "To make a rope of sand.",
-   "urdu": "مٹی کی رسی بنانا",
-   "meaning": "To attempt an impossible task.",
-   "pos": "Idiom"
-  },
-  {
-   "word": "To meet halfway.",
-   "urdu": "معاملات میں کمی کر کے مصالحت کر لینا",
-   "meaning": "To compromise with the other side.",
-   "pos": "Idiom"
-  },
-  {
-   "word": "To pull a long face.",
-   "urdu": "چہرے پر اداسی دکھائی دینا",
-   "meaning": "To look sad or unhappy.",
-   "pos": "Idiom"
-  },
-  {
-   "word": "To pull the wool over someone's eyes.",
-   "urdu": "آنکھوں پر پٹی باندھنا",
-   "meaning": "To deceive someone.",
-   "pos": "Idiom"
-  },
-  {
-   "word": "To rake up old quarrels.",
-   "urdu": "گڑے مردے اکھاڑنا",
-   "meaning": "To revive old disputes.",
-   "pos": "Idiom"
-  },
-  {
-   "word": "To set a wolf to guard the sheep.",
-   "urdu": "بلی کو دودھ کی رکھوالی بٹھانا",
-   "meaning": "To trust a dangerous person with something valuable.",
-   "pos": "Idiom"
-  },
-  {
-   "word": "To show a lamp to the sun.",
-   "urdu": "آفتاب کو چراغ دکھانا",
-   "meaning": "To teach or help someone who needs none.",
-   "pos": "Idiom"
-  },
-  {
-   "word": "To sit on the fence.",
-   "urdu": "دھوبی کا کتا نہ گھر کا نہ گھاٹ کا",
-   "meaning": "To avoid taking sides.",
-   "pos": "Idiom"
-  },
-  {
-   "word": "To take French leave.",
-   "urdu": "اجازت کے بغیر چھٹی",
-   "meaning": "To leave without permission.",
-   "pos": "Idiom"
-  },
-  {
-   "word": "To take the rough with the smooth.",
-   "urdu": "بعض اوقات ناموافق حالات میں بھی صبر و شکر سے کام لینا پڑتا ہے",
-   "meaning": "To accept both good and bad times.",
-   "pos": "Idiom"
-  },
-  {
-   "word": "To write on water.",
-   "urdu": "پانی پر لکھنا",
-   "meaning": "To do something that leaves no trace.",
-   "pos": "Idiom"
-  },
-  {
-   "word": "Too much familiarity breeds contempt.",
-   "urdu": "قدر کھو دیتا ہے روز کا آنا جانا",
-   "meaning": "Being too familiar reduces respect.",
-   "pos": "Proverb"
-  },
-  {
-   "word": "Truth fears no examination.",
-   "urdu": "سانچ کو آنچ نہیں",
-   "meaning": "Truth can stand any test.",
-   "pos": "Proverb"
-  },
-  {
-   "word": "Two birds with one stone.",
-   "urdu": "ایک تیر سے دو شکار",
-   "meaning": "Achieving two goals with one action.",
-   "pos": "Idiom"
-  },
-  {
-   "word": "Two heads are better than one.",
-   "urdu": "دو کی عقل ایک سے بڑی",
-   "meaning": "Two people think better than one.",
-   "pos": "Proverb"
-  },
-  {
-   "word": "Two wrongs do not make a right.",
-   "urdu": "دو غلطیاں مل کر درست نہیں ہو جاتیں",
-   "meaning": "Revenge does not fix a wrong.",
-   "pos": "Proverb"
-  },
-  {
-   "word": "Uneasy lies the head that wears a crown.",
-   "urdu": "کوٹھی والا روئے چھپر والا سوئے",
-   "meaning": "Great power brings great worry.",
-   "pos": "Proverb"
-  },
-  {
-   "word": "Union is strength.",
-   "urdu": "اتفاق میں برکت ہے",
-   "meaning": "Working together makes people strong.",
-   "pos": "Proverb"
-  },
-  {
-   "word": "What is violent is not lasting.",
-   "urdu": "تشدد لازمی طور پر عارضی ہوتا ہے",
-   "meaning": "Violence and force do not last.",
-   "pos": "Proverb"
-  },
-  {
-   "word": "When the great quarrel, the poor suffer.",
-   "urdu": "چنوں کے ساتھ گھن بھی پس جاتا ہے",
-   "meaning": "The common people suffer from the disputes of the powerful.",
-   "pos": "Proverb"
-  },
-  {
-   "word": "Where there is a will, there is a way.",
-   "urdu": "جہاں چاہ وہاں راہ",
-   "meaning": "Strong determination finds a way to succeed.",
-   "pos": "Proverb"
-  },
-  {
-   "word": "Wrong at the very beginning.",
-   "urdu": "بسم اللہ ہی غلط",
-   "meaning": "Doomed from the start.",
-   "pos": "Idiom"
-  },
-  {
-   "word": "You cannot get blood out of a stone.",
-   "urdu": "پتھر میں سے تیل نہیں نکلتا",
-   "meaning": "You cannot get something from someone who has none.",
-   "pos": "Proverb"
-  },
-  {
-   "word": "You cannot have your cake and eat it too.",
-   "urdu": "سانپ بھی مر جائے، لاٹھی بھی نہ ٹوٹے",
-   "meaning": "You cannot enjoy two opposite benefits at once.",
-   "pos": "Proverb"
-  },
-  {
-   "word": "You never know till you have tried.",
-   "urdu": "آدمی راہ پڑا یا باہ پڑا جانیے",
-   "meaning": "You cannot know your ability without trying.",
-   "pos": "Proverb"
-  },
-  {
-   "word": "Youth and white paper take any impression.",
-   "urdu": "نرم کونپل ہے جدھر چاہو موڑ لو",
-   "meaning": "Young minds are easily shaped.",
-   "pos": "Proverb"
-  },
-  {
-   "word": "Youth will have its swing.",
-   "urdu": "جوانی دیوانی",
-   "meaning": "Youth is a time of high spirits.",
-   "pos": "Proverb"
-  },
-  {
-   "word": "Zeal without knowledge is a runaway horse.",
-   "urdu": "علم کے بغیر جوش بے لگام گھوڑے کی مانند ہے",
-   "meaning": "Enthusiasm without knowledge is dangerous.",
-   "pos": "Proverb"
-  }
- ]
+  "list": {
+    "id": "idioms",
+    "title": "Idioms",
+    "subtitle": "Common idioms with Urdu meanings",
+    "order": 3
+  },
+  "words": [
+    {
+      "word": "A bed of roses.",
+      "urdu": "خوشگوار تجربہ / آرام دہ",
+      "meaning": "A situation of comfort and ease.",
+      "pos": "Idiom"
+    },
+    {
+      "word": "A broken reed.",
+      "urdu": "غیر معتبر شخص",
+      "meaning": "An unreliable person or thing.",
+      "pos": "Idiom"
+    },
+    {
+      "word": "A chip of the old block.",
+      "urdu": "جیسا باپ ویسا بیٹا",
+      "meaning": "A child who is very much like his father.",
+      "pos": "Idiom"
+    },
+    {
+      "word": "A day after the fair.",
+      "urdu": "بہت دیر سے",
+      "meaning": "Too late to benefit from an opportunity.",
+      "pos": "Idiom"
+    },
+    {
+      "word": "A drop in the ocean.",
+      "urdu": "اونٹ کے منہ میں زیرہ",
+      "meaning": "A very small amount compared with what is needed.",
+      "pos": "Idiom"
+    },
+    {
+      "word": "A figure among ciphers.",
+      "urdu": "اندھوں میں کانا راجا",
+      "meaning": "Someone who stands out among ordinary people.",
+      "pos": "Idiom"
+    },
+    {
+      "word": "A fish out of water.",
+      "urdu": "ارد گرد کے ماحول میں بے چینی",
+      "meaning": "Someone uncomfortable in unfamiliar surroundings.",
+      "pos": "Idiom"
+    },
+    {
+      "word": "A fly in the ointment.",
+      "urdu": "ایک چھوٹی سی چیز جو قیمتی شے کو خراب کر دیتی ہے",
+      "meaning": "A small flaw that spoils something good.",
+      "pos": "Idiom"
+    },
+    {
+      "word": "A fly on the wheel.",
+      "urdu": "اپنی صلاحیتوں کا غلط اندازہ لگانے والا",
+      "meaning": "Someone who overestimates his own importance.",
+      "pos": "Idiom"
+    },
+    {
+      "word": "A fool's errand.",
+      "urdu": "بے مقصد سفر",
+      "meaning": "A pointless mission.",
+      "pos": "Idiom"
+    },
+    {
+      "word": "A golden age.",
+      "urdu": "تاریخ کا روشن دور",
+      "meaning": "A period of great achievement and peace.",
+      "pos": "Idiom"
+    },
+    {
+      "word": "A hard nut to crack.",
+      "urdu": "لوہے کے چنے چبانا",
+      "meaning": "A very difficult problem or person.",
+      "pos": "Idiom"
+    },
+    {
+      "word": "A hit or a miss.",
+      "urdu": "ایسی حالت جس میں کامیابی یا ناکامی دونوں ممکن ہوں",
+      "meaning": "An uncertain outcome.",
+      "pos": "Idiom"
+    },
+    {
+      "word": "A nine days' wonder.",
+      "urdu": "چار دن کی چاندنی پھر اندھیری رات",
+      "meaning": "Something that attracts attention only briefly.",
+      "pos": "Idiom"
+    },
+    {
+      "word": "A snake in one's sleeve.",
+      "urdu": "آستین کا سانپ",
+      "meaning": "A hidden enemy or traitor.",
+      "pos": "Idiom"
+    },
+    {
+      "word": "A square peg in a round hole.",
+      "urdu": "بے محل و بے موقع",
+      "meaning": "Someone unsuited to his position.",
+      "pos": "Idiom"
+    },
+    {
+      "word": "A wolf in sheep's clothing.",
+      "urdu": "بغل میں چھری منہ میں رام رام",
+      "meaning": "A dangerous person who pretends to be harmless.",
+      "pos": "Idiom"
+    },
+    {
+      "word": "Between the devil and the deep sea.",
+      "urdu": "آگے کنواں پیچھے کھائی",
+      "meaning": "Stuck between two dangers or difficult choices.",
+      "pos": "Idiom"
+    },
+    {
+      "word": "By the skin of one's teeth.",
+      "urdu": "بال بال",
+      "meaning": "By a very narrow margin.",
+      "pos": "Idiom"
+    },
+    {
+      "word": "By word of mouth.",
+      "urdu": "زبانی طور پر",
+      "meaning": "Through spoken words rather than writing.",
+      "pos": "Idiom"
+    },
+    {
+      "word": "Casting pearls before swine.",
+      "urdu": "بھینس کے آگے بین بجانا",
+      "meaning": "Wasting good things on people who cannot value them.",
+      "pos": "Idiom"
+    },
+    {
+      "word": "Food for thought.",
+      "urdu": "ایسی بات جو کچھ سوچنے کا موقع دے",
+      "meaning": "Something worth thinking about.",
+      "pos": "Idiom"
+    },
+    {
+      "word": "From time to time.",
+      "urdu": "کبھی کبھار",
+      "meaning": "Occasionally, now and then.",
+      "pos": "Idiom"
+    },
+    {
+      "word": "Grapes are sour.",
+      "urdu": "انگور کھٹے ہیں",
+      "meaning": "Pretending to dislike what you cannot get.",
+      "pos": "Idiom"
+    },
+    {
+      "word": "Hand and glove.",
+      "urdu": "گہرے دوست",
+      "meaning": "Very close and in full agreement.",
+      "pos": "Idiom"
+    },
+    {
+      "word": "Hands down.",
+      "urdu": "نہایت آسانی سے",
+      "meaning": "Easily and without doubt.",
+      "pos": "Idiom"
+    },
+    {
+      "word": "Haves and have-nots.",
+      "urdu": "امیر و غریب",
+      "meaning": "The rich and the poor.",
+      "pos": "Idiom"
+    },
+    {
+      "word": "He has lost his marbles.",
+      "urdu": "اس کی عقل گھاس چرنے کو گئی ہے",
+      "meaning": "He has gone mad or foolish.",
+      "pos": "Idiom"
+    },
+    {
+      "word": "His bark is worse than his bite.",
+      "urdu": "اس کا بھونکنا کاٹنے سے بھی برا ہے",
+      "meaning": "He sounds more frightening than he really is.",
+      "pos": "Idiom"
+    },
+    {
+      "word": "Hit the nail on the head.",
+      "urdu": "مطلوبہ مقصد حاصل کرنا",
+      "meaning": "To say or do exactly the right thing.",
+      "pos": "Idiom"
+    },
+    {
+      "word": "Inch by inch.",
+      "urdu": "آہستہ آہستہ",
+      "meaning": "Slowly and gradually.",
+      "pos": "Idiom"
+    },
+    {
+      "word": "Make the best of a bad bargain.",
+      "urdu": "بھرپور فائدہ اٹھانا",
+      "meaning": "Accept a bad situation and get the most from it.",
+      "pos": "Idiom"
+    },
+    {
+      "word": "Neither fish nor fowl.",
+      "urdu": "آدھا تیتر آدھا بٹیر",
+      "meaning": "Something that fits no clear category.",
+      "pos": "Idiom"
+    },
+    {
+      "word": "Out of the frying pan into the fire.",
+      "urdu": "آسمان سے گرا کھجور میں اٹکا",
+      "meaning": "Going from a bad situation to a worse one.",
+      "pos": "Idiom"
+    },
+    {
+      "word": "Rubbing salt in a wound.",
+      "urdu": "جلے پر نمک چھڑکنا",
+      "meaning": "Making someone's pain or sorrow worse.",
+      "pos": "Idiom"
+    },
+    {
+      "word": "Tit for tat.",
+      "urdu": "ادلے کا بدلہ",
+      "meaning": "Returning equal treatment, harm for harm.",
+      "pos": "Idiom"
+    },
+    {
+      "word": "To be a puppet in someone's hands.",
+      "urdu": "دوسرے کے ہاتھ کی کٹھ پتلی",
+      "meaning": "To be controlled by another person.",
+      "pos": "Idiom"
+    },
+    {
+      "word": "To break one's word.",
+      "urdu": "وعدہ توڑنا",
+      "meaning": "To fail to keep a promise.",
+      "pos": "Idiom"
+    },
+    {
+      "word": "To break the ice.",
+      "urdu": "آغاز کرنا",
+      "meaning": "To start a conversation in an awkward situation.",
+      "pos": "Idiom"
+    },
+    {
+      "word": "To break the news.",
+      "urdu": "غیر متوقع خبر دینا",
+      "meaning": "To tell someone surprising or bad news.",
+      "pos": "Idiom"
+    },
+    {
+      "word": "To breathe one's last.",
+      "urdu": "مر جانا",
+      "meaning": "To die.",
+      "pos": "Idiom"
+    },
+    {
+      "word": "To bring to light.",
+      "urdu": "ظاہر کرنا",
+      "meaning": "To reveal something hidden.",
+      "pos": "Idiom"
+    },
+    {
+      "word": "To build on sand.",
+      "urdu": "اپنی عمارت کی بنیاد ریت پر رکھنا",
+      "meaning": "To base something on an insecure foundation.",
+      "pos": "Idiom"
+    },
+    {
+      "word": "To carry coals to Newcastle.",
+      "urdu": "الٹے بانس بریلی کو",
+      "meaning": "To do something completely unnecessary.",
+      "pos": "Idiom"
+    },
+    {
+      "word": "To catch sight of.",
+      "urdu": "جھلک دیکھنا",
+      "meaning": "To see something briefly.",
+      "pos": "Idiom"
+    },
+    {
+      "word": "To come to grief.",
+      "urdu": "بد قسمتی کا سامنا کرنا",
+      "meaning": "To meet with disaster or failure.",
+      "pos": "Idiom"
+    },
+    {
+      "word": "To come to nothing.",
+      "urdu": "لا حاصل",
+      "meaning": "To end in failure.",
+      "pos": "Idiom"
+    },
+    {
+      "word": "To dig a well when the fire has started.",
+      "urdu": "آگ لگنے پر کنواں کھودنا",
+      "meaning": "To act too late.",
+      "pos": "Idiom"
+    },
+    {
+      "word": "To follow the beaten path.",
+      "urdu": "لکیر کا فقیر",
+      "meaning": "To follow tradition without thinking.",
+      "pos": "Idiom"
+    },
+    {
+      "word": "To give someone a piece of one's mind.",
+      "urdu": "کھری کھری سنانا",
+      "meaning": "To tell someone off frankly.",
+      "pos": "Idiom"
+    },
+    {
+      "word": "To have one foot in the grave.",
+      "urdu": "موت کے قریب ہونا",
+      "meaning": "To be very old or near death.",
+      "pos": "Idiom"
+    },
+    {
+      "word": "To have one's heart in one's mouth.",
+      "urdu": "گھبرانا، خوف زدہ ہونا",
+      "meaning": "To be very frightened.",
+      "pos": "Idiom"
+    },
+    {
+      "word": "To have other fish to fry.",
+      "urdu": "کچھ اور بھی کرنے کو ہونا",
+      "meaning": "To have more important things to do.",
+      "pos": "Idiom"
+    },
+    {
+      "word": "To have two strings to one's bow.",
+      "urdu": "ایک سے زیادہ ذرائع رکھنا",
+      "meaning": "To have a backup plan.",
+      "pos": "Idiom"
+    },
+    {
+      "word": "To make a mountain of a molehill.",
+      "urdu": "بات کا بتنگڑ بنانا",
+      "meaning": "To exaggerate a small problem.",
+      "pos": "Idiom"
+    },
+    {
+      "word": "To make a rope of sand.",
+      "urdu": "مٹی کی رسی بنانا",
+      "meaning": "To attempt an impossible task.",
+      "pos": "Idiom"
+    },
+    {
+      "word": "To meet halfway.",
+      "urdu": "معاملات میں کمی کر کے مصالحت کر لینا",
+      "meaning": "To compromise with the other side.",
+      "pos": "Idiom"
+    },
+    {
+      "word": "To pull a long face.",
+      "urdu": "چہرے پر اداسی دکھائی دینا",
+      "meaning": "To look sad or unhappy.",
+      "pos": "Idiom"
+    },
+    {
+      "word": "To pull the wool over someone's eyes.",
+      "urdu": "آنکھوں پر پٹی باندھنا",
+      "meaning": "To deceive someone.",
+      "pos": "Idiom"
+    },
+    {
+      "word": "To rake up old quarrels.",
+      "urdu": "گڑے مردے اکھاڑنا",
+      "meaning": "To revive old disputes.",
+      "pos": "Idiom"
+    },
+    {
+      "word": "To set a wolf to guard the sheep.",
+      "urdu": "بلی کو دودھ کی رکھوالی بٹھانا",
+      "meaning": "To trust a dangerous person with something valuable.",
+      "pos": "Idiom"
+    },
+    {
+      "word": "To show a lamp to the sun.",
+      "urdu": "آفتاب کو چراغ دکھانا",
+      "meaning": "To teach or help someone who needs none.",
+      "pos": "Idiom"
+    },
+    {
+      "word": "To sit on the fence.",
+      "urdu": "دھوبی کا کتا نہ گھر کا نہ گھاٹ کا",
+      "meaning": "To avoid taking sides.",
+      "pos": "Idiom"
+    },
+    {
+      "word": "To take French leave.",
+      "urdu": "اجازت کے بغیر چھٹی",
+      "meaning": "To leave without permission.",
+      "pos": "Idiom"
+    },
+    {
+      "word": "To take the rough with the smooth.",
+      "urdu": "بعض اوقات ناموافق حالات میں بھی صبر و شکر سے کام لینا پڑتا ہے",
+      "meaning": "To accept both good and bad times.",
+      "pos": "Idiom"
+    },
+    {
+      "word": "To write on water.",
+      "urdu": "پانی پر لکھنا",
+      "meaning": "To do something that leaves no trace.",
+      "pos": "Idiom"
+    },
+    {
+      "word": "Two birds with one stone.",
+      "urdu": "ایک تیر سے دو شکار",
+      "meaning": "Achieving two goals with one action.",
+      "pos": "Idiom"
+    },
+    {
+      "word": "Wrong at the very beginning.",
+      "urdu": "بسم اللہ ہی غلط",
+      "meaning": "Doomed from the start.",
+      "pos": "Idiom"
+    }
+  ]
 }

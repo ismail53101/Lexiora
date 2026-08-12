@@ -5,6 +5,23 @@ All notable changes to Sapiora are documented here.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.23.0] — 2026-08-12
+
+### Changed
+
+- **Vocabulary section trimmed to a competitive-exam focus** (12 lists → 5).
+  Removed General, Business, Oxford 3000/5000, Academic Word List, IELTS,
+  TOEFL, Technology and Medical packs; kept:
+  - **CSS / BPSC Vocabulary** (1,010)
+  - **GRE High Frequency** (121)
+  - **One-Word Substitutions** (new, 134) — classic CSS/BPSC/PMS exam items
+    (Altruist, Ambidextrous, Genocide, Misanthrope, …) with Urdu + IPA
+  - **Idioms** (68) and **Proverbs** (232) — the combined "Idioms & Proverbs"
+    pack is now split into two separate lists using its existing per-entry
+    classification, so idioms and proverbs no longer mix.
+- Pack tests updated for the new list set (5 packs, ≥ 1,500 words, IPA
+  requirement skipped for both phrase lists).
+
 ## [0.22.3] — 2026-08-12
 
 ### Fixed

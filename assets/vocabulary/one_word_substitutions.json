@@ -1,0 +1,948 @@
+{
+  "list": {
+    "id": "oneword",
+    "title": "One-Word Substitutions",
+    "subtitle": "Classic CSS / BPSC exam one-word substitutions",
+    "order": 2
+  },
+  "words": [
+    {
+      "word": "Altruist",
+      "ipa": "/ˈæltruɪst/",
+      "urdu": "دوسروں کی بھلائی چاہنے والا",
+      "meaning": "a person who thinks of the welfare of others",
+      "pos": "noun"
+    },
+    {
+      "word": "Ambidextrous",
+      "ipa": "/ˌæmbɪˈdɛkstrəs/",
+      "urdu": "دونوں ہاتھوں سے یکساں کام کرنے والا",
+      "meaning": "able to use both hands equally well",
+      "pos": "adjective"
+    },
+    {
+      "word": "Ambiguous",
+      "ipa": "/æmˈbɪɡjuəs/",
+      "urdu": "مبہم",
+      "meaning": "having more than one possible meaning",
+      "pos": "adjective"
+    },
+    {
+      "word": "Amateur",
+      "ipa": "/ˈæmətə/",
+      "urdu": "شوقیہ",
+      "meaning": "one who does something for pleasure, not as a profession",
+      "pos": "noun"
+    },
+    {
+      "word": "Anarchist",
+      "ipa": "/ˈænəkɪst/",
+      "urdu": "انتشار پسند",
+      "meaning": "one who wants to abolish all government",
+      "pos": "noun"
+    },
+    {
+      "word": "Anonymous",
+      "ipa": "/əˈnɒnɪməs/",
+      "urdu": "گمنام",
+      "meaning": "a work done without the author's name",
+      "pos": "adjective"
+    },
+    {
+      "word": "Antagonist",
+      "ipa": "/ænˈtæɡənɪst/",
+      "urdu": "مخالف",
+      "meaning": "one who opposes or fights another",
+      "pos": "noun"
+    },
+    {
+      "word": "Antique",
+      "ipa": "/ænˈtiːk/",
+      "urdu": "قدیم",
+      "meaning": "belonging to ancient times",
+      "pos": "adjective"
+    },
+    {
+      "word": "Apostle",
+      "ipa": "/əˈpɒsəl/",
+      "urdu": "حواری",
+      "meaning": "a follower sent on a holy mission",
+      "pos": "noun"
+    },
+    {
+      "word": "Archaeologist",
+      "ipa": "/ˌɑːkiˈɒlədʒɪst/",
+      "urdu": "ماہرِ آثارِ قدیمہ",
+      "meaning": "one who studies ancient remains",
+      "pos": "noun"
+    },
+    {
+      "word": "Architect",
+      "ipa": "/ˈɑːkɪtɛkt/",
+      "urdu": "معمار",
+      "meaning": "one who designs buildings",
+      "pos": "noun"
+    },
+    {
+      "word": "Aristocracy",
+      "ipa": "/ˌærɪˈstɒkrəsi/",
+      "urdu": "اشرافیہ",
+      "meaning": "government by the nobles",
+      "pos": "noun"
+    },
+    {
+      "word": "Ascetic",
+      "ipa": "/əˈsɛtɪk/",
+      "urdu": "زاہد",
+      "meaning": "one who avoids worldly pleasures",
+      "pos": "noun"
+    },
+    {
+      "word": "Atheist",
+      "ipa": "/ˈeɪθiɪst/",
+      "urdu": "ملحد",
+      "meaning": "one who does not believe in God",
+      "pos": "noun"
+    },
+    {
+      "word": "Audible",
+      "ipa": "/ˈɔːdɪbəl/",
+      "urdu": "سنائی دینے والا",
+      "meaning": "that can be heard",
+      "pos": "adjective"
+    },
+    {
+      "word": "Autobiography",
+      "ipa": "/ˌɔːtəbaɪˈɒɡrəfi/",
+      "urdu": "خودنوشت",
+      "meaning": "the story of a person's life written by himself",
+      "pos": "noun"
+    },
+    {
+      "word": "Autocracy",
+      "ipa": "/ɔːˈtɒkrəsi/",
+      "urdu": "مطلق العنان حکومت",
+      "meaning": "government by one person with unlimited power",
+      "pos": "noun"
+    },
+    {
+      "word": "Autograph",
+      "ipa": "/ˈɔːtəɡrɑːf/",
+      "urdu": "دستخط",
+      "meaning": "one's own signature",
+      "pos": "noun"
+    },
+    {
+      "word": "Autonomy",
+      "ipa": "/ɔːˈtɒnəmi/",
+      "urdu": "خود مختاری",
+      "meaning": "the right of self-government",
+      "pos": "noun"
+    },
+    {
+      "word": "Bibliophile",
+      "ipa": "/ˈbɪbliəfaɪl/",
+      "urdu": "کتابوں کا شوقین",
+      "meaning": "one who loves books",
+      "pos": "noun"
+    },
+    {
+      "word": "Bigamy",
+      "ipa": "/ˈbɪɡəmi/",
+      "urdu": "دو شادی",
+      "meaning": "the crime of marrying two persons at the same time",
+      "pos": "noun"
+    },
+    {
+      "word": "Bilingual",
+      "ipa": "/ˌbaɪˈlɪŋɡwəl/",
+      "urdu": "دو زبانوں کا",
+      "meaning": "one who speaks two languages",
+      "pos": "adjective"
+    },
+    {
+      "word": "Biography",
+      "ipa": "/baɪˈɒɡrəfi/",
+      "urdu": "سوانح عمری",
+      "meaning": "life history of a person written by another",
+      "pos": "noun"
+    },
+    {
+      "word": "Calligraphy",
+      "ipa": "/kəˈlɪɡrəfi/",
+      "urdu": "خطاطی",
+      "meaning": "the art of beautiful handwriting",
+      "pos": "noun"
+    },
+    {
+      "word": "Carnivorous",
+      "ipa": "/kɑːˈnɪvərəs/",
+      "urdu": "گوشت خور",
+      "meaning": "feeding on flesh",
+      "pos": "adjective"
+    },
+    {
+      "word": "Cartographer",
+      "ipa": "/kɑːˈtɒɡrəfə/",
+      "urdu": "نقشہ نگار",
+      "meaning": "one who draws maps",
+      "pos": "noun"
+    },
+    {
+      "word": "Celibate",
+      "ipa": "/ˈsɛlɪbət/",
+      "urdu": "بے نکاح رہنے والا",
+      "meaning": "one who abstains from marriage",
+      "pos": "noun"
+    },
+    {
+      "word": "Centenarian",
+      "ipa": "/ˌsɛntɪˈnɛəriən/",
+      "urdu": "سو سالہ",
+      "meaning": "a person who is a hundred years old",
+      "pos": "noun"
+    },
+    {
+      "word": "Chauvinist",
+      "ipa": "/ˈʃəʊvɪnɪst/",
+      "urdu": "متعصب وطن پرست",
+      "meaning": "one who is blindly devoted to his country",
+      "pos": "noun"
+    },
+    {
+      "word": "Chronic",
+      "ipa": "/ˈkrɒnɪk/",
+      "urdu": "دائمی",
+      "meaning": "a disease lasting for a long time",
+      "pos": "adjective"
+    },
+    {
+      "word": "Contemporary",
+      "ipa": "/kənˈtɛmpərəri/",
+      "urdu": "ہم عصر",
+      "meaning": "living or occurring at the same time",
+      "pos": "adjective"
+    },
+    {
+      "word": "Cosmopolitan",
+      "ipa": "/ˌkɒzməˈpɒlɪtən/",
+      "urdu": "عالمی شہری",
+      "meaning": "a person who considers the whole world his home",
+      "pos": "noun"
+    },
+    {
+      "word": "Cynic",
+      "ipa": "/ˈsɪnɪk/",
+      "urdu": "بدگمان",
+      "meaning": "one who believes people act only for selfish reasons",
+      "pos": "noun"
+    },
+    {
+      "word": "Democrat",
+      "ipa": "/ˈdɛməkræt/",
+      "urdu": "جمہوریت پسند",
+      "meaning": "one who believes in government by the people",
+      "pos": "noun"
+    },
+    {
+      "word": "Demography",
+      "ipa": "/dɪˈmɒɡrəfi/",
+      "urdu": "آبادیات",
+      "meaning": "the statistical study of human population",
+      "pos": "noun"
+    },
+    {
+      "word": "Dictator",
+      "ipa": "/dɪkˈteɪtə/",
+      "urdu": "آمر",
+      "meaning": "a ruler with absolute power",
+      "pos": "noun"
+    },
+    {
+      "word": "Diplomat",
+      "ipa": "/ˈdɪpləmæt/",
+      "urdu": "سفارت کار",
+      "meaning": "one who manages relations between countries",
+      "pos": "noun"
+    },
+    {
+      "word": "Edible",
+      "ipa": "/ˈɛdɪbəl/",
+      "urdu": "کھانے کے قابل",
+      "meaning": "that can be eaten",
+      "pos": "adjective"
+    },
+    {
+      "word": "Egoist",
+      "ipa": "/ˈɛɡoʊɪst/",
+      "urdu": "خود غرض",
+      "meaning": "one who thinks only of himself",
+      "pos": "noun"
+    },
+    {
+      "word": "Emigrant",
+      "ipa": "/ˈɛmɪɡrənt/",
+      "urdu": "وطن چھوڑنے والا",
+      "meaning": "one who leaves his country to settle in another",
+      "pos": "noun"
+    },
+    {
+      "word": "Immigrant",
+      "ipa": "/ˈɪmɪɡrənt/",
+      "urdu": "مہاجر",
+      "meaning": "one who comes into a foreign country to settle",
+      "pos": "noun"
+    },
+    {
+      "word": "Epitaph",
+      "ipa": "/ˈɛpɪtɑːf/",
+      "urdu": "کتبہ",
+      "meaning": "words inscribed on a tombstone",
+      "pos": "noun"
+    },
+    {
+      "word": "Eternal",
+      "ipa": "/ɪˈtɜːnəl/",
+      "urdu": "ابدی",
+      "meaning": "lasting forever",
+      "pos": "adjective"
+    },
+    {
+      "word": "Ethnology",
+      "ipa": "/ɛθˈnɒlədʒi/",
+      "urdu": "نسلیات",
+      "meaning": "the science that deals with human races",
+      "pos": "noun"
+    },
+    {
+      "word": "Eccentric",
+      "ipa": "/ɪkˈsɛntrɪk/",
+      "urdu": "انوکھا",
+      "meaning": "one whose behaviour is odd or unusual",
+      "pos": "noun"
+    },
+    {
+      "word": "Expatriate",
+      "ipa": "/ɛksˈpætriət/",
+      "urdu": "جلاوطن",
+      "meaning": "a person who lives in a foreign country",
+      "pos": "noun"
+    },
+    {
+      "word": "Extempore",
+      "ipa": "/ɪkˈstɛmpəri/",
+      "urdu": "بے ساختہ",
+      "meaning": "a speech made without preparation",
+      "pos": "adjective"
+    },
+    {
+      "word": "Fatalist",
+      "ipa": "/ˈfeɪtəlɪst/",
+      "urdu": "تقدیر پرست",
+      "meaning": "one who believes that everything is destined",
+      "pos": "noun"
+    },
+    {
+      "word": "Feminist",
+      "ipa": "/ˈfɛmɪnɪst/",
+      "urdu": "حقوق نسواں کا حامی",
+      "meaning": "one who believes in equal rights for women",
+      "pos": "noun"
+    },
+    {
+      "word": "Fragile",
+      "ipa": "/ˈfrædʒaɪl/",
+      "urdu": "نازک",
+      "meaning": "easily broken",
+      "pos": "adjective"
+    },
+    {
+      "word": "Fratricide",
+      "ipa": "/ˈfrætrɪsaɪd/",
+      "urdu": "بھائی کا قتل",
+      "meaning": "the killing of one's brother",
+      "pos": "noun"
+    },
+    {
+      "word": "Genocide",
+      "ipa": "/ˈdʒɛnəsaɪd/",
+      "urdu": "نسل کشی",
+      "meaning": "the killing of a whole race",
+      "pos": "noun"
+    },
+    {
+      "word": "Glutton",
+      "ipa": "/ˈɡlʌtən/",
+      "urdu": "پیٹو",
+      "meaning": "one who eats too much",
+      "pos": "noun"
+    },
+    {
+      "word": "Hedonist",
+      "ipa": "/ˈhiːdənɪst/",
+      "urdu": "عیش پسند",
+      "meaning": "one who believes pleasure is the chief good",
+      "pos": "noun"
+    },
+    {
+      "word": "Herbivorous",
+      "ipa": "/hɜːˈbɪvərəs/",
+      "urdu": "سبزی خور",
+      "meaning": "feeding on plants",
+      "pos": "adjective"
+    },
+    {
+      "word": "Hereditary",
+      "ipa": "/həˈrɛdɪtəri/",
+      "urdu": "موروثی",
+      "meaning": "passed from parents to offspring",
+      "pos": "adjective"
+    },
+    {
+      "word": "Homogeneous",
+      "ipa": "/ˌhɒməˈdʒiːniəs/",
+      "urdu": "یکساں",
+      "meaning": "of the same kind",
+      "pos": "adjective"
+    },
+    {
+      "word": "Humanitarian",
+      "ipa": "/hjuːˌmænɪˈtɛəriən/",
+      "urdu": "انسان دوست",
+      "meaning": "one who works for the welfare of mankind",
+      "pos": "noun"
+    },
+    {
+      "word": "Hypocrite",
+      "ipa": "/ˈhɪpəkrɪt/",
+      "urdu": "منافق",
+      "meaning": "one who pretends to be what he is not",
+      "pos": "noun"
+    },
+    {
+      "word": "Illiterate",
+      "ipa": "/ɪˈlɪtərət/",
+      "urdu": "ناخواندہ",
+      "meaning": "one who cannot read or write",
+      "pos": "adjective"
+    },
+    {
+      "word": "Illegible",
+      "ipa": "/ɪˈlɛdʒɪbəl/",
+      "urdu": "ناقابلِ مطالعہ",
+      "meaning": "that cannot be read",
+      "pos": "adjective"
+    },
+    {
+      "word": "Immortal",
+      "ipa": "/ɪˈmɔːtəl/",
+      "urdu": "لافانی",
+      "meaning": "that cannot die",
+      "pos": "adjective"
+    },
+    {
+      "word": "Impartial",
+      "ipa": "/ɪmˈpɑːʃəl/",
+      "urdu": "غیر جانبدار",
+      "meaning": "not favouring either side",
+      "pos": "adjective"
+    },
+    {
+      "word": "Impromptu",
+      "ipa": "/ɪmˈprɒmptjuː/",
+      "urdu": "بے ساختہ",
+      "meaning": "without preparation",
+      "pos": "adjective"
+    },
+    {
+      "word": "Incorrigible",
+      "ipa": "/ɪnˈkɒrɪdʒɪbəl/",
+      "urdu": "ناقابلِ اصلاح",
+      "meaning": "a person who cannot be corrected",
+      "pos": "adjective"
+    },
+    {
+      "word": "Indefatigable",
+      "ipa": "/ˌɪndɪˈfætɪɡəbəl/",
+      "urdu": "نہ تھکنے والا",
+      "meaning": "one who never gets tired",
+      "pos": "adjective"
+    },
+    {
+      "word": "Indelible",
+      "ipa": "/ɪnˈdɛlɪbəl/",
+      "urdu": "ناقابلِ مٹانے",
+      "meaning": "that cannot be erased",
+      "pos": "adjective"
+    },
+    {
+      "word": "Infanticide",
+      "ipa": "/ɪnˈfæntɪsaɪd/",
+      "urdu": "شیرخوار کا قتل",
+      "meaning": "the killing of an infant",
+      "pos": "noun"
+    },
+    {
+      "word": "Infidel",
+      "ipa": "/ˈɪnfɪdəl/",
+      "urdu": "کافر",
+      "meaning": "one who does not believe in religion",
+      "pos": "noun"
+    },
+    {
+      "word": "Inflammable",
+      "ipa": "/ɪnˈflæməbəl/",
+      "urdu": "آتش گیر",
+      "meaning": "that catches fire easily",
+      "pos": "adjective"
+    },
+    {
+      "word": "Insomnia",
+      "ipa": "/ɪnˈsɒmniə/",
+      "urdu": "بے خوابی",
+      "meaning": "inability to sleep",
+      "pos": "noun"
+    },
+    {
+      "word": "Interpreter",
+      "ipa": "/ɪnˈtɜːprɪtə/",
+      "urdu": "مترجم",
+      "meaning": "one who translates orally",
+      "pos": "noun"
+    },
+    {
+      "word": "Introvert",
+      "ipa": "/ˈɪntrəvɜːt/",
+      "urdu": "تنہائی پسند",
+      "meaning": "one who is reserved and inward-looking",
+      "pos": "noun"
+    },
+    {
+      "word": "Invincible",
+      "ipa": "/ɪnˈvɪnsɪbəl/",
+      "urdu": "ناقابلِ شکست",
+      "meaning": "that cannot be defeated",
+      "pos": "adjective"
+    },
+    {
+      "word": "Irremediable",
+      "ipa": "/ˌɪrɪˈmiːdiəbəl/",
+      "urdu": "ناقابلِ علاج",
+      "meaning": "that cannot be cured",
+      "pos": "adjective"
+    },
+    {
+      "word": "Kleptomaniac",
+      "ipa": "/ˌklɛptəˈmeɪniæk/",
+      "urdu": "چوری کا جنون رکھنے والا",
+      "meaning": "one with an uncontrollable urge to steal",
+      "pos": "noun"
+    },
+    {
+      "word": "Lexicographer",
+      "ipa": "/ˌlɛksɪˈkɒɡrəfə/",
+      "urdu": "لغت نویس",
+      "meaning": "one who compiles a dictionary",
+      "pos": "noun"
+    },
+    {
+      "word": "Litigant",
+      "ipa": "/ˈlɪtɪɡənt/",
+      "urdu": "مقدمہ باز",
+      "meaning": "one who takes a case to court",
+      "pos": "noun"
+    },
+    {
+      "word": "Magnanimous",
+      "ipa": "/mæɡˈnænɪməs/",
+      "urdu": "فراخ دل",
+      "meaning": "generous in forgiving",
+      "pos": "adjective"
+    },
+    {
+      "word": "Malicious",
+      "ipa": "/məˈlɪʃəs/",
+      "urdu": "کینہ پرور",
+      "meaning": "having evil intentions",
+      "pos": "adjective"
+    },
+    {
+      "word": "Maniac",
+      "ipa": "/ˈmeɪniæk/",
+      "urdu": "پاگل",
+      "meaning": "a mad person",
+      "pos": "noun"
+    },
+    {
+      "word": "Matricide",
+      "ipa": "/ˈmeɪtrɪsaɪd/",
+      "urdu": "ماں کا قتل",
+      "meaning": "the killing of one's mother",
+      "pos": "noun"
+    },
+    {
+      "word": "Meticulous",
+      "ipa": "/mɪˈtɪkjʊləs/",
+      "urdu": "باریک بین",
+      "meaning": "paying great attention to detail",
+      "pos": "adjective"
+    },
+    {
+      "word": "Migrant",
+      "ipa": "/ˈmaɪɡrənt/",
+      "urdu": "نقل مکانی کرنے والا",
+      "meaning": "one who moves from place to place",
+      "pos": "noun"
+    },
+    {
+      "word": "Misanthrope",
+      "ipa": "/ˈmɪsənθrəʊp/",
+      "urdu": "انسان سے نفرت کرنے والا",
+      "meaning": "one who hates mankind",
+      "pos": "noun"
+    },
+    {
+      "word": "Misogynist",
+      "ipa": "/mɪˈsɒdʒɪnɪst/",
+      "urdu": "عورتوں سے نفرت کرنے والا",
+      "meaning": "one who hates women",
+      "pos": "noun"
+    },
+    {
+      "word": "Monarchy",
+      "ipa": "/ˈmɒnəki/",
+      "urdu": "بادشاہت",
+      "meaning": "government by a king or queen",
+      "pos": "noun"
+    },
+    {
+      "word": "Monogamy",
+      "ipa": "/məˈnɒɡəmi/",
+      "urdu": "یک زوجیت",
+      "meaning": "the practice of having one spouse at a time",
+      "pos": "noun"
+    },
+    {
+      "word": "Monologue",
+      "ipa": "/ˈmɒnəlɒɡ/",
+      "urdu": "خود کلامی",
+      "meaning": "a speech by one person",
+      "pos": "noun"
+    },
+    {
+      "word": "Monopoly",
+      "ipa": "/məˈnɒpəli/",
+      "urdu": "اجارہ داری",
+      "meaning": "exclusive control of trade",
+      "pos": "noun"
+    },
+    {
+      "word": "Narcissist",
+      "ipa": "/ˈnɑːsɪsɪst/",
+      "urdu": "خود پسند",
+      "meaning": "one who loves himself excessively",
+      "pos": "noun"
+    },
+    {
+      "word": "Nocturnal",
+      "ipa": "/nɒkˈtɜːnəl/",
+      "urdu": "رات کو سرگرم",
+      "meaning": "active at night",
+      "pos": "adjective"
+    },
+    {
+      "word": "Obituary",
+      "ipa": "/əˈbɪtʃuəri/",
+      "urdu": "وفاتیات",
+      "meaning": "a notice of a person's death",
+      "pos": "noun"
+    },
+    {
+      "word": "Obsolete",
+      "ipa": "/ˈɒbsəliːt/",
+      "urdu": "متروک",
+      "meaning": "no longer in use",
+      "pos": "adjective"
+    },
+    {
+      "word": "Omnipotent",
+      "ipa": "/ɒmˈnɪpətənt/",
+      "urdu": "قادرِ مطلق",
+      "meaning": "all-powerful",
+      "pos": "adjective"
+    },
+    {
+      "word": "Omnipresent",
+      "ipa": "/ˌɒmnɪˈprɛzənt/",
+      "urdu": "حاضر و ناظر",
+      "meaning": "present everywhere",
+      "pos": "adjective"
+    },
+    {
+      "word": "Omniscient",
+      "ipa": "/ɒmˈnɪsiənt/",
+      "urdu": "ہمہ دان",
+      "meaning": "knowing everything",
+      "pos": "adjective"
+    },
+    {
+      "word": "Optimist",
+      "ipa": "/ˈɒptɪmɪst/",
+      "urdu": "رجائیت پسند",
+      "meaning": "one who sees the bright side of things",
+      "pos": "noun"
+    },
+    {
+      "word": "Orator",
+      "ipa": "/ˈɒrətə/",
+      "urdu": "خطیب",
+      "meaning": "a person skilled in public speaking",
+      "pos": "noun"
+    },
+    {
+      "word": "Orthodox",
+      "ipa": "/ˈɔːθədɒks/",
+      "urdu": "قدامت پسند",
+      "meaning": "strictly following traditional customs",
+      "pos": "adjective"
+    },
+    {
+      "word": "Pacifist",
+      "ipa": "/ˈpæsɪfɪst/",
+      "urdu": "امن پسند",
+      "meaning": "one who is against war",
+      "pos": "noun"
+    },
+    {
+      "word": "Patricide",
+      "ipa": "/ˈpætrɪsaɪd/",
+      "urdu": "باپ کا قتل",
+      "meaning": "the killing of one's father",
+      "pos": "noun"
+    },
+    {
+      "word": "Pessimist",
+      "ipa": "/ˈpɛsɪmɪst/",
+      "urdu": "مایوسی پسند",
+      "meaning": "one who sees the dark side of things",
+      "pos": "noun"
+    },
+    {
+      "word": "Philanthropist",
+      "ipa": "/fɪˈlænθrəpɪst/",
+      "urdu": "فلاح کار",
+      "meaning": "one who loves and helps mankind",
+      "pos": "noun"
+    },
+    {
+      "word": "Philatelist",
+      "ipa": "/fɪˈlætəlɪst/",
+      "urdu": "ڈاک ٹکٹ جمع کرنے والا",
+      "meaning": "one who collects stamps",
+      "pos": "noun"
+    },
+    {
+      "word": "Posthumous",
+      "ipa": "/ˈpɒstjʊməs/",
+      "urdu": "بعد از وفات",
+      "meaning": "a work published after the author's death",
+      "pos": "adjective"
+    },
+    {
+      "word": "Preamble",
+      "ipa": "/priˈæmbəl/",
+      "urdu": "دیباچہ",
+      "meaning": "the introductory part of a constitution",
+      "pos": "noun"
+    },
+    {
+      "word": "Pseudonym",
+      "ipa": "/ˈsjuːdənɪm/",
+      "urdu": "تخلص",
+      "meaning": "a fictitious name used by an author",
+      "pos": "noun"
+    },
+    {
+      "word": "Psychiatrist",
+      "ipa": "/saɪˈkaɪətrɪst/",
+      "urdu": "ماہرِ نفسیات",
+      "meaning": "one who treats mental illness",
+      "pos": "noun"
+    },
+    {
+      "word": "Pyromaniac",
+      "ipa": "/ˌpaɪrəˈmeɪniæk/",
+      "urdu": "آتش زنی کا عادی",
+      "meaning": "one who has a mania for setting fires",
+      "pos": "noun"
+    },
+    {
+      "word": "Realist",
+      "ipa": "/ˈrɪəlɪst/",
+      "urdu": "حقیقت پسند",
+      "meaning": "one who looks at things as they are",
+      "pos": "noun"
+    },
+    {
+      "word": "Regicide",
+      "ipa": "/ˈrɛdʒɪsaɪd/",
+      "urdu": "بادشاہ کا قتل",
+      "meaning": "the killing of a king",
+      "pos": "noun"
+    },
+    {
+      "word": "Reticent",
+      "ipa": "/ˈrɛtɪsənt/",
+      "urdu": "کم گو",
+      "meaning": "reserved; not talking much",
+      "pos": "adjective"
+    },
+    {
+      "word": "Sacrilege",
+      "ipa": "/ˈsækrɪlɪdʒ/",
+      "urdu": "بے حرمتی",
+      "meaning": "misuse of something sacred",
+      "pos": "noun"
+    },
+    {
+      "word": "Sedentary",
+      "ipa": "/ˈsɛdəntəri/",
+      "urdu": "بیٹھے رہنے والا",
+      "meaning": "requiring much sitting",
+      "pos": "adjective"
+    },
+    {
+      "word": "Sedition",
+      "ipa": "/sɪˈdɪʃən/",
+      "urdu": "بغاوت",
+      "meaning": "speech or action against the government",
+      "pos": "noun"
+    },
+    {
+      "word": "Skeptic",
+      "ipa": "/ˈskɛptɪk/",
+      "urdu": "شکی",
+      "meaning": "one who doubts",
+      "pos": "noun"
+    },
+    {
+      "word": "Suicide",
+      "ipa": "/ˈsuːɪsaɪd/",
+      "urdu": "خودکشی",
+      "meaning": "the killing of oneself",
+      "pos": "noun"
+    },
+    {
+      "word": "Superfluous",
+      "ipa": "/suːˈpɜːfluəs/",
+      "urdu": "فالتو",
+      "meaning": "more than what is needed",
+      "pos": "adjective"
+    },
+    {
+      "word": "Synchronous",
+      "ipa": "/ˈsɪŋkrənəs/",
+      "urdu": "ہم وقت",
+      "meaning": "happening at the same time",
+      "pos": "adjective"
+    },
+    {
+      "word": "Teetotaler",
+      "ipa": "/tiːˈtəʊtələ/",
+      "urdu": "شراب سے پرہیز کرنے والا",
+      "meaning": "one who abstains from alcohol",
+      "pos": "noun"
+    },
+    {
+      "word": "Theist",
+      "ipa": "/ˈθiːɪst/",
+      "urdu": "خدا پرست",
+      "meaning": "one who believes in God",
+      "pos": "noun"
+    },
+    {
+      "word": "Theocracy",
+      "ipa": "/θiˈɒkrəsi/",
+      "urdu": "مذہبی حکومت",
+      "meaning": "government by religious leaders",
+      "pos": "noun"
+    },
+    {
+      "word": "Transparent",
+      "ipa": "/trænsˈpærənt/",
+      "urdu": "شفاف",
+      "meaning": "that can be seen through",
+      "pos": "adjective"
+    },
+    {
+      "word": "Utopia",
+      "ipa": "/juːˈtəʊpiə/",
+      "urdu": "مثالی معاشرہ",
+      "meaning": "an imaginary perfect society",
+      "pos": "noun"
+    },
+    {
+      "word": "Vandal",
+      "ipa": "/ˈvændəl/",
+      "urdu": "تخریب کار",
+      "meaning": "one who destroys public property",
+      "pos": "noun"
+    },
+    {
+      "word": "Venomous",
+      "ipa": "/ˈvɛnəməs/",
+      "urdu": "زہریلا",
+      "meaning": "poisonous",
+      "pos": "adjective"
+    },
+    {
+      "word": "Verbatim",
+      "ipa": "/vɜːˈbeɪtɪm/",
+      "urdu": "لفظ بہ لفظ",
+      "meaning": "word for word",
+      "pos": "adverb"
+    },
+    {
+      "word": "Veteran",
+      "ipa": "/ˈvɛtərən/",
+      "urdu": "تجربہ کار",
+      "meaning": "an experienced person",
+      "pos": "noun"
+    },
+    {
+      "word": "Vigilant",
+      "ipa": "/ˈvɪdʒɪlənt/",
+      "urdu": "چوکس",
+      "meaning": "watchful",
+      "pos": "adjective"
+    },
+    {
+      "word": "Virtuoso",
+      "ipa": "/ˌvɜːtjuˈəʊsəʊ/",
+      "urdu": "ماہرِ موسیقی",
+      "meaning": "an expert musician",
+      "pos": "noun"
+    },
+    {
+      "word": "Vulnerable",
+      "ipa": "/ˈvʌlnərəbəl/",
+      "urdu": "کمزور",
+      "meaning": "easily harmed",
+      "pos": "adjective"
+    },
+    {
+      "word": "Xenophobia",
+      "ipa": "/ˌzɛnəˈfəʊbiə/",
+      "urdu": "غیروں سے نفرت",
+      "meaning": "fear or hatred of foreigners",
+      "pos": "noun"
+    },
+    {
+      "word": "Zealot",
+      "ipa": "/ˈzɛlət/",
+      "urdu": "جوشیلا",
+      "meaning": "one who is over-enthusiastic",
+      "pos": "noun"
+    }
+  ]
+}

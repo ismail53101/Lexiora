@@ -15,8 +15,8 @@ void main() {
         .where((File f) => f.path.toLowerCase().endsWith('.json'))
         .toList();
 
-    expect(files.length, greaterThanOrEqualTo(11),
-        reason: 'all starter lists should ship');
+    expect(files.length, greaterThanOrEqualTo(5),
+        reason: 'all competitive-exam lists should ship');
 
     final Set<String> ids = <String>{};
     int total = 0;
@@ -38,8 +38,8 @@ void main() {
 
       // Idioms & proverbs are phrases, not single words, so they have no
       // canonical IPA; everything else must carry a slashed IPA.
-      final bool isIdioms = id == 'idioms';
-      final List<String> required = isIdioms
+      final bool isPhraseList = id == 'idioms' || id == 'proverbs';
+      final List<String> required = isPhraseList
           ? const <String>['word', 'urdu', 'meaning', 'pos']
           : const <String>['word', 'ipa', 'urdu', 'meaning', 'pos'];
 
@@ -50,7 +50,7 @@ void main() {
           expect((m[k] as String?)?.trim().isNotEmpty ?? false, isTrue,
               reason: 'list "$id" entry missing "$k"');
         }
-        if (!isIdioms) {
+        if (!isPhraseList) {
           expect((m['ipa'] as String).startsWith('/'), isTrue,
               reason: 'list "$id": IPA for "${m['word']}" must be slashed');
         }
@@ -60,7 +60,7 @@ void main() {
       total += words.length;
     }
 
-    expect(total, greaterThanOrEqualTo(1000),
+    expect(total, greaterThanOrEqualTo(1500),
         reason: 'realistic starter content across all lists, not demo data');
   });
 }
