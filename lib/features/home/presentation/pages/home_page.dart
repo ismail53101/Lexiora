@@ -9,6 +9,8 @@ import 'package:lexiora/app/router/app_routes.dart';
 import 'package:lexiora/core/navigation/home_destination.dart';
 import 'package:lexiora/core/widgets/app_bottom_nav.dart';
 import 'package:lexiora/core/widgets/empty_state.dart';
+import 'package:lexiora/features/home/data/latest_update_mock_data.dart';
+import 'package:lexiora/features/home/presentation/widgets/latest_update_card.dart';
 import 'package:lexiora/features/library/domain/entities/library_document.dart';
 import 'package:lexiora/features/library/presentation/providers/library_providers.dart';
 import 'package:lexiora/features/library/presentation/widgets/document_card.dart';
@@ -58,6 +60,15 @@ class HomePage extends ConsumerWidget {
                   displayName: displayName,
                   onSearchTap: () => context.push(AppRoutes.library),
                   onThemeTap: () => _toggleTheme(context, ref),
+                ),
+              ),
+            ),
+            SliverToBoxAdapter(
+              child: Padding(
+                padding: const EdgeInsets.fromLTRB(20, 12, 20, 0),
+                child: LatestUpdateCard(
+                  update: mockLatestUpdates.first,
+                  itemCount: mockLatestUpdates.length,
                 ),
               ),
             ),
