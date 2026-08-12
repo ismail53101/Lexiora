@@ -5,6 +5,151 @@ All notable changes to Sapiora are documented here.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.22.2] — 2026-08-12
+
+### Added
+
+- **Every high-frequency word now has Urdu in the dictionary section.** The
+  corrections pack (`zz_curated_corrections.json`, 732 → 1,180 entries) now
+  hand-pins simple, exam-appropriate Urdu for all of the **top ~2,000 most
+  common English words** (measured by SemCor frequency) that the kaikki
+  sources and old pack missed — have, down, out, create, education, schedule,
+  define, determine, prevent, maintain, approach, conduct, data, term,
+  pattern, sample, select, perform, settle, vary, employ, shift, identify,
+  introduce, advance, award, factor, display, engage, assign, velocity, ...
+  Only genuinely offensive headwords (negro, damn, bastard) and fragments
+  (non, anti, u.s.) are intentionally left English-only. Coverage: **0 real
+  words missing Urdu in the top-1,000**, 0 in the top-2,000.
+- **A second Urdu source in the dictionary pipeline.** `rebuild_dictionary.py`
+  now also ingests the kaikki.org **English** Wiktionary dump (each English
+  headword's curated Urdu `translations`), alongside the existing Urdu dump.
+  The English dump contributes 779 headwords / 1,517 Urdu translations as
+  candidates; **240 words** in the pack (bench, brake, boulevard, biology,
+  chemistry, chicken, beach, ...) get their Urdu from this source alone
+  because the Urdu dump doesn't cover them, and it independently confirms the
+  existing meanings for hundreds more.
+
+### Fixed
+
+- **Gloss-first Urdu extraction.** The old extractor read each Urdu sense's
+  first *link*, which is often a `{{topic|...}}` category tag — that is how
+  wrong pairs like `automotive → شیشہ` (windscreen), `semantics → ضد`
+  (antonym) and `windscreen → شیشہ` mis-pairings were born. The pipeline now
+  takes the sense's English **gloss** (stripping a leading infinitive "to " so
+  `to accept → accept`), and filters offensive senses, digit/vulgar Urdu
+  words, and junk headwords (parentheses, trailing hyphens, phrase glosses).
+- **Common-sense WordNet ordering bug.** Per-lemma SemCor counts were being
+  overwritten by the synset's *last* (rarest) member, so `cat` ranked "to
+  vomit" above "feline mammal". Counts are now per-lemma (with the cntlist's
+  satellite-adjective keys matched via their gloss word).
+- **Stale entries can no longer freeze into the pack.** The pipeline read its
+  own previous output as an input, so one bad row (`have → گلا بیٹھنا`)
+  survived every rebuild. Previous-pack Urdu is now an explicit snapshot
+  (`OLD_URDU_PACK`) used only as a fallback — and it now **defaults to a
+  committed copy** of the pre-pipeline pack
+  (`tools/dictionary/snapshots/urdu_wiktionary_pack.v21.8.json`), so a plain
+  `python3 tools/dictionary/rebuild_dictionary.py` run is reproducible out of
+  the box. The fallback contributes 26 good words the two kaikki sources miss
+  (astronomy, biology, botany, chemistry, geography, linguistics, music,
+  mythology, physics, politics, rooster, ...).
+- **+448 hand-curated corrections** (732 → 1,180): wrong or awkward Urdu
+  meanings and sense-order conflicts (bank, sheik, miss, basic, compulsory,
+  constitutional, fez, semantics, automotive, scared, page, bug, agency,
+  oyster, dissimilar, hearts, union, distressed, fired, participate,
+  establish, thereby, warrant, ...) are pinned in `zz_curated_corrections.json`,
+  which always wins the merge. The last 7 fix mis-pairs the second source
+  surfaced (`union → میتھن`, `distressed → دین`, `participate → بیٹھنا`,
+  `thereby → اس کے علاوہ`, ...), and 3 more fix wrong fallback-only pairs
+  inherited from the pre-pipeline pack (`courtesan → آنٹی "aunt"` → طوائف,
+  `lesbianism → چپٹی "flat"` → ہم جنس پرستی, `oblique → خزاؤں "taxes"` →
+  ترچھا).
+- **Vulgar/sensitive content is blocked in both sources.** The English-dump
+  loader now drops vulgar/sensitive English headwords (arse, ass, anal,
+  condom, crap, fuck, sex, slut, vagina, ...) exactly like the Urdu-dump path
+  already did, and a latent regex bug (`copulat|masturbat|ejaculat` required
+  a word boundary right after the stem, so copulate/copulation,
+  masturbate/masturbation and ejaculate/ejaculation never matched) is fixed.
+  13 such entries were removed from the pack.
+- **Empty entries eliminated:** entries whose Urdu came with no usable English
+  body are kept only when the base Wordset dictionary supplies the definition,
+  so the app never shows a word with "no information".
+
+## [0.22.1] — 2026-08-12
+
+### Changed
+
+- **The dictionary now has a real JSON pipeline** (`tools/dictionary/rebuild_dictionary.py`)
+  instead of one-off scripts. It regenerates the two data packs from raw
+  licensed sources (WordNet 3.1 + kaikki.org Urdu + the bundled Wordset base),
+  picks every word's **most common sense by real frequency data**, and
+  revalidates the output — so expanding or fixing the dictionary from now on
+  is running one script, not hand-editing thousands of entries.
+
+### Added
+
+- **English definition + example sentences for essentially every dictionary
+  word.** The old `000_wordnet_enrichment.json` carried only example sentences
+  (~30k) — 110k words had no definition of their own, so the app fell back to
+  the base dictionary's *first* sense, which for many words was a rare or
+  technical one (`bat` → "a turn at bat", `mother` → "inspiration",
+  `bright` → "full of promise"). The regenerated pack gives all ~112k words a
+  **common-sense-first English definition** (WordNet senses ranked by SemCor
+  frequency) plus example sentences where WordNet has them. Machine-generated
+  synonyms/antonyms are intentionally **not** shipped: the pipeline no longer
+  emits them (v0.21.8 removed the noisy auto-synonyms; only the hand-curated
+  packs carry synonyms).
+- **Urdu coverage expanded ~4,800 → ~5,700 headwords** in the regenerated
+  `urdu_wiktionary_pack.json`, with **common-sense-first Urdu** picked from
+  the primary English gloss of each Urdu Wiktionary sense — the same
+  frequency-aware logic that fixed `abacus → جنت` now applies to every
+  kaikki-derived pairing, not just the 732 hand-corrected words.
+
+### Fixed
+
+- **Wrong-Urdu / wrong-definition regressions the auto-pipeline could have
+  introduced are excluded by design:** headwords owned by the richer
+  hand-curated packs (`exam_words`, `common_words*`, `zz_` corrections) are
+  never touched, suffix fragments (`-ed`, `-ly`) and definitional phrase
+  glosses ("a code of laws") are dropped, and all Urdu is validated as Urdu
+  script (0 Latin leakages).
+
+## [0.22.0] — 2026-08-12
+
+### Fixed
+
+- **732 wrong dictionary meanings corrected (Urdu + English).** The
+  kaikki.org-derived `urdu_wiktionary_pack.json` paired some English headwords
+  with a *rare or technical* Urdu sense — e.g. `angel → سر` (head),
+  `breakfast → حاضری` (attendance), `bright → آئینہ` (mirror), `abacus → جنت`
+  (heaven), `robber → یتیم` (orphan), `squabble → چونچ` (beak) — and showed
+  rare/technical English definitions for many more (e.g. `bat → to wink
+  briefly`, `mother → make children`, `salt → preserve with salt`).
+- A new hand-curated **`zz_curated_corrections.json` corrections pack** (732
+  entries) pins the common, exam-appropriate English definition + simple Urdu
+  meaning for every affected word. Because the exam-pack seeder merges packs
+  alphabetically with the last one winning, the `zz_` pack always overrides
+  the raw kaikki entries — fixing the word profile page in the Dictionary
+  **and** the reader pop-up, fully offline, on next launch (the seed
+  signature changes, so re-seeding happens automatically).
+- Every corrected entry was validated: 0 duplicate headwords, proper Urdu
+  script + non-empty English meaning + part of speech, and an independent
+  Urdu→English reverse audit confirms no remaining misaligned pair.
+
+## [0.21.9] — 2026-08-11
+
+### Added
+
+- **Separate "Idioms & Proverbs" list in the Vocabulary section (300 curated
+  entries).** The English→Urdu idioms/proverbs now have their own dedicated
+  A–Z vocabulary list (`assets/vocabulary/idioms.json`, list id `idioms`) with
+  search by English or Urdu, part-of-speech chips (Idiom / Proverb) and a short
+  simple English meaning per entry. Derived from the licensed Apache-2.0
+  dataset `assets/idioms/idioms.json` (Ehtisham1328/urdu-idioms-with-english-
+  translation); only genuinely useful, correctly-paired idioms/proverbs were
+  kept, deduped, and every entry validated for Urdu script + non-empty meaning.
+  Kept as a separate data structure from normal vocabulary — never merged into
+  the dictionary. Loaded automatically by the pack seeder on next launch.
+
 ## [0.21.8] — 2026-08-11
 
 ### Fixed
