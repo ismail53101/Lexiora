@@ -5,6 +5,42 @@ All notable changes to Sapiora are documented here.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.22.3] — 2026-08-12
+
+### Fixed
+
+- **92 wrong Urdu meanings corrected in one batch** (a full sweep of the
+  high-frequency dictionary section found Hindi/Sanskrit leakage and wrong
+  senses in the kaikki-derived pack). Added to the corrections pack
+  (`zz_curated_corrections.json`, 1,180 → 1,272 entries):
+  - Wrong meaning: `hardship` → مشکل (was محنت "hard work"), `cell` → خلیہ
+    (was خلا "void"), `well` → کنواں (was کلیہ "kidney"), `die` → مرنا
+    (was سونا "sleep"), `ever` → کبھی (was ہرگز "never"), `ride` → سواری
+    کرنا (was جھولا "swing"), `section` → حصہ (was قسمت "fate"), `shoot` →
+    گولی مارنا (was کیل "nail"), `design` → ڈیزائن (was سنسکار "ritual"),
+    `stress` → دباؤ (was آگھات "blow"), `sense` → حس (was ارتھ/مضمون),
+    `charge` → الزام (was حوالہ "reference"), `figure` → شکل (was مورت
+    "idol"), `student` → طالب علم (was معلم "teacher"), `average` → اوسط
+    (was مدھم "dim"), `tall` → لمبا (was اونٹ "camel"), `member` → رکن
+    (was عضو "organ"), `rule` → قاعدہ (was نیم "half"), `father` → باپ
+    (was اب "now"), `neat` → صاف ستھرا (was اجلا "bright"), `stage` →
+    مرحلہ (was اکھاڑا "arena"), `discover` → دریافت کرنا (was پژوہش
+    "research"), `declare` → اعلان کرنا (was نااہل قرار دینا).
+  - Hindi/Sanskrit leakage removed: `war`/`battle`/`sing`/`red`/`power`/
+    `spirit`/`mind`/`community`/`century`/`available`/`enemy`/`evidence`/
+    `material`/`action`/`development`/`mass`/`human`/`local`/`black`/
+    `paper`/`meaning`/`slowly`/`arm`/`leg`/`information`/`establish`/`step`/
+    `observe`/`eye`/`hand`/`four`/`here`/`three`/`home`/`office`/`head`/
+    `foot`/`today`/`government`/`smile`/`horse`/`air`/`much`/`just`/
+    `general`/`complete`/`dark`/`accept`/`view`/`apply`/`develop`/`lie`/
+    `act`/`amount`/`range`/`hit`/`cut`/`function`/`plant`/`product`/
+    `voice`/`even`/`attention`/`admit`/`bear`/`feature`/`reflect`/`space`/
+    `object`/`particular`/`table`/`treat`/`door`/`care`/`swing` — each now
+    carries the common, learner-standard Urdu meaning.
+- The batch is reproducible: `tools/dictionary/fix_urdu_meanings.py` re-applies
+  it, and the packs were regenerated (urdu_wiktionary_pack.json 5,743 → 5,651
+  entries as the corrected words moved to the winning zz pack).
+
 ## [0.22.2] — 2026-08-12
 
 ### Added

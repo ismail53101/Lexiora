@@ -11,7 +11,7 @@ scripts pick the **common** sense of each word programmatically.
 | Output | What changed vs. the old packs |
 |---|---|
 | `assets/dictionary/000_wordnet_enrichment.json` | Every word now has an **English definition** (the old pack only carried example sentences), plus **synonyms**, **antonyms** and a **usage example** where WordNet has them. |
-| `assets/dictionary/urdu_wiktionary_pack.json` | Urdu coverage expanded from ~4,800 to 5,743 pack headwords (~7,700 in the merged dictionary), from **two** Wiktionary sources, with **common-sense-first** Urdu meanings (the old pack sometimes picked a rare sense, e.g. `abacus → جنت`). |
+| `assets/dictionary/urdu_wiktionary_pack.json` | Urdu coverage expanded from ~4,800 to 5,651 pack headwords (~7,700 in the merged dictionary), from **two** Wiktionary sources, with **common-sense-first** Urdu meanings (the old pack sometimes picked a rare sense, e.g. `abacus → جنت`). |
 
 Both are regenerated **in place**; the app's seeder merges every pack by
 lowercase headword (later path wins), so `urdu_wiktionary_pack.json` (u)
@@ -96,7 +96,13 @@ and leftover machine-generated synonyms/antonyms.
   JSONL format and re-run — the pipeline merges and keeps existing entries.- **Hand fixes**: add entries to `zz_curated_corrections.json` (it wins the
    merge) — no regeneration needed. Recent additions: `courtesan → طوائف`,
    `lesbianism → ہم جنس پرستی`, `oblique → ترچھا` (fixes wrong fallback-only
-   pairs inherited from the pre-pipeline pack).
+   pairs inherited from the pre-pipeline pack), and a 92-word batch of common
+   words whose Urdu leaked into Hindi/Sanskrit or a wrong sense
+   (`hardship → مشکل` not محنت, `cell → خلیہ` not خلا, `well → کنواں` not
+   کلیہ "kidney", `ever → کبھی` not ہرگز "never", `student → طالب علم` not
+   معلم "teacher", `average → اوسط` not مدھم "dim", `tall → لمبا` not اونٹ
+   "camel", ...). To re-apply the whole batch run
+   `python3 tools/dictionary/fix_urdu_meanings.py`.
 - **New curated lists**: drop a new `*.json` pack into `assets/dictionary/`
   and rebuild the app; the seeder picks it up automatically.
 
