@@ -22,6 +22,7 @@ import 'package:lexiora/features/home/presentation/pages/current_affairs_page.da
 import 'package:lexiora/features/home/presentation/providers/current_affairs_providers.dart';
 import 'package:lexiora/features/home/presentation/widgets/latest_update_card.dart';
 import 'package:lexiora/features/library/domain/entities/library_document.dart';
+import 'package:lexiora/features/library/domain/usecases/library_usecases.dart';
 import 'package:lexiora/features/library/presentation/providers/library_providers.dart';
 import 'package:lexiora/features/library/presentation/widgets/document_card.dart';
 import 'package:lexiora/features/settings/domain/entities/app_settings.dart';
