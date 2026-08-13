@@ -344,20 +344,26 @@ class _GreetingRow extends StatelessWidget {
     final ColorScheme scheme = theme.colorScheme;
     final bool isDark = theme.brightness == Brightness.dark;
 
-    return Row(
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
-        Expanded(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: <Widget>[
-              Text.rich(
+        Row(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: <Widget>[
+            Expanded(
+              child: Text.rich(
+                maxLines: 1,
+                overflow: TextOverflow.ellipsis,
                 TextSpan(
-                  style: theme.textTheme.headlineSmall
-                      ?.copyWith(fontWeight: FontWeight.w800),
+                  style: theme.textTheme.titleLarge?.copyWith(
+                    fontWeight: FontWeight.w800,
+                  ),
                   children: <InlineSpan>[
-                    TextSpan(text: displayName.isEmpty
-                        ? _greeting
-                        : '$_greeting, '),
+                    TextSpan(
+                      text: displayName.isEmpty
+                          ? _greeting
+                          : '$_greeting, ',
+                    ),
                     if (displayName.isNotEmpty)
                       TextSpan(
                         text: displayName,
@@ -367,22 +373,22 @@ class _GreetingRow extends StatelessWidget {
                   ],
                 ),
               ),
-              const SizedBox(height: 4),
-              Text(
-                'Keep learning, keep growing.',
-                style: theme.textTheme.bodyMedium
-                    ?.copyWith(color: scheme.onSurfaceVariant),
-              ),
-            ],
-          ),
+            ),
+            const SizedBox(width: 6),
+            _GlowIconButton(
+              icon: isDark ? Icons.dark_mode_rounded : Icons.light_mode_rounded,
+              onTap: onThemeTap,
+            ),
+            const SizedBox(width: 6),
+            _GlowIconButton(icon: Icons.search_rounded, onTap: onSearchTap),
+          ],
         ),
-        const SizedBox(width: 6),
-        _GlowIconButton(
-          icon: isDark ? Icons.dark_mode_rounded : Icons.light_mode_rounded,
-          onTap: onThemeTap,
+        const SizedBox(height: 2),
+        Text(
+          'Keep learning, keep growing.',
+          style: theme.textTheme.bodyMedium
+              ?.copyWith(color: scheme.onSurfaceVariant),
         ),
-        const SizedBox(width: 6),
-        _GlowIconButton(icon: Icons.search_rounded, onTap: onSearchTap),
       ],
     ).animate().fadeIn(duration: 320.ms).slideY(begin: -0.08, end: 0);
   }
