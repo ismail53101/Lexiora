@@ -71,6 +71,7 @@ class GrammarModule extends FeatureModule {
           subtitle: 'Learn grammar offline',
           icon: Icons.spellcheck,
           routePath: AppRoutes.grammar,
+          imageAsset: 'assets/branding/grammar_explore.png',
           order: 12,
         ),
       ];

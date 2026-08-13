@@ -77,6 +77,7 @@ class DictionaryModule extends FeatureModule {
           subtitle: 'Look up words offline',
           icon: Icons.menu_book_outlined,
           routePath: AppRoutes.dictionary,
+          imageAsset: 'assets/branding/dictionary_explore.png',
           order: 10,
         ),
       ];

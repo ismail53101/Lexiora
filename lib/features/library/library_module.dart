@@ -40,6 +40,7 @@ class LibraryModule extends FeatureModule {
           subtitle: 'All your documents',
           icon: Icons.folder_copy_outlined,
           routePath: AppRoutes.library,
+          imageAsset: 'assets/branding/library_explore.png',
           order: 0,
         ),
       ];
