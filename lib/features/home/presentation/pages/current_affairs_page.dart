@@ -35,13 +35,21 @@ class _CurrentAffairsPageState extends ConsumerState<CurrentAffairsPage> {
     final List<LatestUpdate> international = liveFeed?.international ?? _fallback('International');
     final List<LatestUpdate> sectionStories = _selectedSection == 0 ? national : international;
     final String sectionLabel = _selectedSection == 0 ? 'National' : 'International';
-    final String feedLabel = _selectedFeedType == 0 ? 'Latest' : 'Opinions';
-    final List<LatestUpdate> stories = sectionStories
-        .where((LatestUpdate story) => _matchesFeedType(story, _selectedFeedType))
-        .toList(growable: false);
+    final bool isNational = _selectedSection == 0;
+    final String feedLabel = isNational && _selectedFeedType == 1 ? 'Opinions' : 'Latest';
+    final List<LatestUpdate> stories = isNational
+        ? sectionStories
+            .where((LatestUpdate story) => _matchesFeedType(story, _selectedFeedType))
+            .toList(growable: false)
+        : sectionStories;
     final bool isRefreshing = feedAsync.isLoading && liveFeed == null;
 
+    final Color pageBackground = theme.brightness == Brightness.light
+        ? Color.lerp(scheme.surface, scheme.primaryContainer, 0.16)!
+        : scheme.surface;
+
     return Scaffold(
+      backgroundColor: pageBackground,
       appBar: AppBar(
         titleSpacing: 20,
         title: Row(
@@ -83,15 +91,16 @@ class _CurrentAffairsPageState extends ConsumerState<CurrentAffairsPage> {
                 ),
               ),
             ),
-            SliverToBoxAdapter(
-              child: Padding(
-                padding: const EdgeInsets.fromLTRB(20, 12, 20, 0),
-                child: _FeedTypeSwitcher(
-                  selectedFeedType: _selectedFeedType,
-                  onFeedTypeChanged: (int index) => setState(() => _selectedFeedType = index),
+            if (isNational)
+              SliverToBoxAdapter(
+                child: Padding(
+                  padding: const EdgeInsets.fromLTRB(20, 12, 20, 0),
+                  child: _FeedTypeSwitcher(
+                    selectedFeedType: _selectedFeedType,
+                    onFeedTypeChanged: (int index) => setState(() => _selectedFeedType = index),
+                  ),
                 ),
               ),
-            ),
             SliverToBoxAdapter(
               child: Padding(
                 padding: const EdgeInsets.fromLTRB(20, 22, 20, 0),
