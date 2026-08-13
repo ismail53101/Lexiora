@@ -83,6 +83,8 @@ String stripMarkdownForPlainText(String input) {
   return out.trim();
 }
 
+enum AiReadAloudState { idle, playing, paused }
+
 /// Coordinates on-device text-to-speech playback for AI Assistant replies.
 ///
 /// A single app-wide instance so starting playback on one message always
@@ -97,8 +99,10 @@ class AiReadAloudController {
   final FlutterTts _tts = FlutterTts();
 
   /// The id of the message currently being read aloud, or null if nothing
-  /// is playing. Listen to this to drive a per-message play/stop icon.
+  /// is active. Listen to this together with [playbackState] for controls.
   final ValueNotifier<Object?> activeMessageId = ValueNotifier<Object?>(null);
+  final ValueNotifier<AiReadAloudState> playbackState =
+      ValueNotifier<AiReadAloudState>(AiReadAloudState.idle);
 
   bool _configured = false;
 
@@ -107,22 +111,42 @@ class AiReadAloudController {
     await _tts.awaitSpeakCompletion(true);
     await _tts.setQueueMode(1);
     await _tts.setVolume(1.0);
-    _tts.setCompletionHandler(() => activeMessageId.value = null);
-    _tts.setCancelHandler(() => activeMessageId.value = null);
-    _tts.setErrorHandler((dynamic _) => activeMessageId.value = null);
+    _tts.setCompletionHandler(_resetState);
+    _tts.setCancelHandler(_resetState);
+    _tts.setPauseHandler(() {
+      playbackState.value = AiReadAloudState.paused;
+    });
+    _tts.setContinueHandler(() {
+      playbackState.value = AiReadAloudState.playing;
+    });
+    _tts.setErrorHandler((dynamic _) => _resetState());
     _configured = true;
   }
 
-  /// Starts reading [text] aloud for [messageId], or stops it if that same
-  /// message is already the one playing (tap-to-toggle).
+  void _resetState() {
+    activeMessageId.value = null;
+    playbackState.value = AiReadAloudState.idle;
+  }
+
+  /// Starts reading [text] aloud for [messageId]. Tapping the same active
+  /// message toggles between pause and resume.
   ///
   /// Throws on failure (e.g. no TTS engine/voice installed on the device)
   /// so the caller can show the real error instead of the tap silently
   /// doing nothing.
   Future<void> toggle(Object messageId, String text) async {
     if (activeMessageId.value == messageId) {
-      activeMessageId.value = null;
-      await _tts.stop();
+      if (playbackState.value == AiReadAloudState.playing) {
+        await _tts.pause();
+        playbackState.value = AiReadAloudState.paused;
+      } else if (playbackState.value == AiReadAloudState.paused) {
+        // flutter_tts exposes pause but not a cross-platform resume method.
+        // Speaking the retained text again provides a reliable resume action
+        // on Android and iOS instead of leaving the control unresponsive.
+        final String clean = stripMarkdownForPlainText(text);
+        playbackState.value = AiReadAloudState.playing;
+        await _tts.speak(clean);
+      }
       return;
     }
 
@@ -132,6 +156,7 @@ class AiReadAloudController {
     // Publish the state before any asynchronous engine setup so the button
     // immediately shows that playback is starting, even on a cold TTS engine.
     activeMessageId.value = messageId;
+    playbackState.value = AiReadAloudState.playing;
     try {
       await _ensureConfigured();
       await _tts.stop();
@@ -143,18 +168,18 @@ class AiReadAloudController {
       // On Android/iOS flutter_tts returns 1 for success; surface anything
       // else as a real failure instead of silently doing nothing.
       if (result is int && result != 1) {
-        activeMessageId.value = null;
+        _resetState();
         throw StateError('Text-to-speech engine returned code $result.');
       }
     } on Object {
-      activeMessageId.value = null;
+      _resetState();
       rethrow;
     }
   }
 
   Future<void> stop() async {
     await _tts.stop();
-    activeMessageId.value = null;
+    _resetState();
   }
 }
 

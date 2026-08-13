@@ -393,38 +393,68 @@ class _ReadAloudButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ValueListenableBuilder<Object?>(
-      valueListenable: AiReadAloudController.instance.activeMessageId,
-      builder: (BuildContext context, Object? activeId, _) {
-        final bool speaking = activeId == messageId;
+    final AiReadAloudController controller = AiReadAloudController.instance;
+    return AnimatedBuilder(
+      animation: Listenable.merge(<Listenable>[
+        controller.activeMessageId,
+        controller.playbackState,
+      ]),
+      builder: (BuildContext context, Widget? child) {
+        final bool active = controller.activeMessageId.value == messageId;
+        final AiReadAloudState state = controller.playbackState.value;
+        final bool paused = active && state == AiReadAloudState.paused;
         final ColorScheme scheme = Theme.of(context).colorScheme;
-        return IconButton(
-          icon: AnimatedSwitcher(
-            duration: const Duration(milliseconds: 180),
-            transitionBuilder: (Widget child, Animation<double> animation) =>
-                FadeTransition(opacity: animation, child: child),
-            child: Icon(
-              speaking ? Icons.stop_circle_rounded : Icons.volume_up_rounded,
-              key: ValueKey<bool>(speaking),
-              color: speaking ? scheme.primary : scheme.onSurfaceVariant,
+        return Row(
+          mainAxisSize: MainAxisSize.min,
+          children: <Widget>[
+            IconButton(
+              icon: AnimatedSwitcher(
+                duration: const Duration(milliseconds: 180),
+                transitionBuilder: (Widget child, Animation<double> animation) =>
+                    FadeTransition(opacity: animation, child: child),
+                child: Icon(
+                  !active
+                      ? Icons.volume_up_rounded
+                      : paused
+                          ? Icons.play_arrow_rounded
+                          : Icons.pause_rounded,
+                  key: ValueKey<String>(
+                    !active ? 'idle' : paused ? 'paused' : 'playing',
+                  ),
+                  color: active ? scheme.primary : scheme.onSurfaceVariant,
+                ),
+              ),
+              tooltip: !active
+                  ? 'Read aloud'
+                  : paused
+                      ? 'Resume reading'
+                      : 'Pause reading',
+              visualDensity: VisualDensity.compact,
+              padding: EdgeInsets.zero,
+              constraints: const BoxConstraints(minWidth: 30, minHeight: 28),
+              onPressed: () async {
+                final ScaffoldMessengerState messenger =
+                    ScaffoldMessenger.of(context);
+                try {
+                  await controller.toggle(messageId, text);
+                } on Object catch (e, st) {
+                  debugPrint('Read aloud failed: $e\\n$st');
+                  messenger.showSnackBar(
+                    SnackBar(content: Text('Could not read this aloud: $e')),
+                  );
+                }
+              },
             ),
-          ),
-          tooltip: speaking ? 'Stop reading' : 'Read aloud',
-          visualDensity: VisualDensity.compact,
-          padding: EdgeInsets.zero,
-          constraints: const BoxConstraints(minWidth: 30, minHeight: 28),
-          onPressed: () async {
-            final ScaffoldMessengerState messenger =
-                ScaffoldMessenger.of(context);
-            try {
-              await AiReadAloudController.instance.toggle(messageId, text);
-            } on Object catch (e, st) {
-              debugPrint('Read aloud failed: $e\n$st');
-              messenger.showSnackBar(
-                SnackBar(content: Text('Could not read this aloud: $e')),
-              );
-            }
-          },
+            if (active)
+              IconButton(
+                icon: Icon(Icons.stop_rounded, color: scheme.error),
+                tooltip: 'Stop reading',
+                visualDensity: VisualDensity.compact,
+                padding: EdgeInsets.zero,
+                constraints: const BoxConstraints(minWidth: 30, minHeight: 28),
+                onPressed: controller.stop,
+              ),
+          ],
         );
       },
     );
