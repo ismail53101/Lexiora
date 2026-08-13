@@ -52,6 +52,8 @@ class QuizHomePage extends StatelessWidget {
       body: ListView(
         padding: const EdgeInsets.all(16),
         children: <Widget>[
+          _QuizHeroBanner(),
+          const SizedBox(height: 18),
           Text(
             'Master every subject, one level at a time',
             style: Theme.of(context).textTheme.titleLarge?.copyWith(
@@ -138,6 +140,84 @@ class QuizHomePage extends StatelessWidget {
             ),
           ).animate(delay: 80.ms).fadeIn(duration: 300.ms),
           const SizedBox(height: 24),
+        ],
+      ),
+    );
+  }
+}
+
+class _QuizHeroBanner extends StatelessWidget {
+  const _QuizHeroBanner();
+
+  @override
+  Widget build(BuildContext context) {
+    final ColorScheme scheme = Theme.of(context).colorScheme;
+    return Container(
+      height: 178,
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(26),
+        gradient: LinearGradient(
+          colors: <Color>[
+            scheme.primaryContainer,
+            scheme.tertiaryContainer,
+          ],
+          begin: Alignment.topLeft,
+          end: Alignment.bottomRight,
+        ),
+        boxShadow: <BoxShadow>[
+          BoxShadow(
+            color: scheme.primary.withValues(alpha: 0.16),
+            blurRadius: 18,
+            offset: const Offset(0, 8),
+          ),
+        ],
+      ),
+      clipBehavior: Clip.antiAlias,
+      child: Stack(
+        children: <Widget>[
+          Positioned(
+            right: -12,
+            bottom: -22,
+            child: Image.asset(
+              'assets/quiz/branding/quiz_hero.png',
+              width: 190,
+              height: 190,
+              fit: BoxFit.contain,
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.fromLTRB(18, 20, 150, 18),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                Text(
+                  'QUIZ ARENA',
+                  style: Theme.of(context).textTheme.labelLarge?.copyWith(
+                        color: scheme.primary,
+                        fontWeight: FontWeight.w900,
+                        letterSpacing: 1.2,
+                      ),
+                ),
+                const SizedBox(height: 7),
+                Text(
+                  'Think. Practice. Master.',
+                  style: Theme.of(context).textTheme.titleLarge?.copyWith(
+                        fontWeight: FontWeight.w900,
+                        height: 1.05,
+                      ),
+                ),
+                const SizedBox(height: 7),
+                Text(
+                  'Sharpen your exam edge one question at a time.',
+                  style: Theme.of(context).textTheme.bodySmall?.copyWith(
+                        color: scheme.onSurfaceVariant,
+                        height: 1.3,
+                      ),
+                ),
+              ],
+            ),
+          ),
         ],
       ),
     );

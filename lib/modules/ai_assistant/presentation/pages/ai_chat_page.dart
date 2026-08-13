@@ -217,10 +217,10 @@ class _Welcome extends StatelessWidget {
                 ],
               ),
               clipBehavior: Clip.antiAlias,
-              // The app's real Sapiora logo, same footprint (88x88, 22
-              // radius) as the placeholder book icon it replaces.
+              // This is a page-local AI Assistant badge. The app's main
+              // Sapiora logo remains unchanged in assets/branding/.
               child: Image.asset(
-                'assets/branding/app_icon.png',
+                'assets/quiz/branding/sapiora_ai_page_badge.png',
                 fit: BoxFit.cover,
               ),
             ),

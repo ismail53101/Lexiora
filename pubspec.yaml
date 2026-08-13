@@ -59,6 +59,7 @@ flutter:
     # declared directory (it does NOT recurse into subdirectories), so each
     # quiz subdirectory must be listed explicitly.
     - assets/quiz/
+    - assets/quiz/branding/
     - assets/quiz/english/
     - assets/quiz/gsa/
     - assets/quiz/islamiat/
