@@ -981,7 +981,29 @@ class _ExploreTile extends StatelessWidget {
               child: Column(
                 mainAxisSize: MainAxisSize.min,
                 children: <Widget>[
-                  Icon(destination.icon, color: accent, size: 20),
+                  if (destination.imageAsset != null)
+                    Container(
+                      width: 42,
+                      height: 42,
+                      padding: const EdgeInsets.all(3),
+                      decoration: BoxDecoration(
+                        color: accent.withValues(alpha: 0.10),
+                        shape: BoxShape.circle,
+                      ),
+                      child: ClipOval(
+                        child: Image.asset(
+                          destination.imageAsset!,
+                          fit: BoxFit.cover,
+                          errorBuilder: (_, _, _) => Icon(
+                            destination.icon,
+                            color: accent,
+                            size: 20,
+                          ),
+                        ),
+                      ),
+                    )
+                  else
+                    Icon(destination.icon, color: accent, size: 20),
                   const SizedBox(height: 5),
                   // FittedBox scales the label down to fit the tile's width
                   // instead of wrapping mid-word or getting cut off with an

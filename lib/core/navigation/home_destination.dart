@@ -15,6 +15,7 @@ class HomeDestination {
     required this.icon,
     required this.routePath,
     this.subtitle,
+    this.imageAsset,
     this.enabled = true,
     this.comingSoon = false,
     this.order = 100,
@@ -24,6 +25,10 @@ class HomeDestination {
   final String id;
   final String label;
   final String? subtitle;
+
+  /// Optional page-specific artwork shown inside the Home Explore tile.
+  final String? imageAsset;
+
   final IconData icon;
 
   /// Route this tile navigates to when tapped.

@@ -165,6 +165,7 @@ class QuizModule extends FeatureModule {
           label: 'Quiz',
           subtitle: 'Practice by subject',
           icon: Icons.quiz_outlined,
+          imageAsset: 'assets/quiz/branding/quiz_hero.png',
           routePath: AppRoutes.quiz,
           order: 15,
         ),

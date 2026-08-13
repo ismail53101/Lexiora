@@ -217,10 +217,10 @@ class _Welcome extends StatelessWidget {
                 ],
               ),
               clipBehavior: Clip.antiAlias,
-              // This is a page-local AI Assistant badge. The app's main
-              // Sapiora logo remains unchanged in assets/branding/.
+              // Keep the original Sapiora logo in the AI Assistant welcome
+              // circle. The new AI artwork is used only on the Home tile.
               child: Image.asset(
-                'assets/quiz/branding/sapiora_ai_page_badge.png',
+                'assets/branding/app_icon.png',
                 fit: BoxFit.cover,
               ),
             ),
