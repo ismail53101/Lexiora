@@ -48,10 +48,20 @@ const PROVIDERS = {
 };
 
 const CHAT_COMPLETIONS_PATH = "/v1/chat/completions";
-
+const NEWS_CACHE_KEY = "https://sapiora.internal/cache/current-affairs/latest-v1";
+const NEWS_CACHE_TTL_MS = 15 * 60 * 1000;
+const NEWS_SOURCES = [
+  { id: "express-tribune-pakistan", name: "Express Tribune", category: "National", url: "https://tribune.com.pk/feed/pakistan" },
+  { id: "the-news-pakistan", name: "The News", category: "National", url: "https://www.thenews.com.pk/rss/1/0" },
+  { id: "bbc-world", name: "BBC World", category: "International", url: "https://feeds.bbci.co.uk/news/world/rss.xml" },
+  { id: "express-tribune-world", name: "Express Tribune", category: "International", url: "https://tribune.com.pk/feed/world" },
+  { id: "the-news-world", name: "The News", category: "International", url: "https://www.thenews.com.pk/rss/1/2" },
+  { id: "al-jazeera-world", name: "Al Jazeera", category: "International", url: "https://www.aljazeera.com/xml/rss/all.xml" },
+];
 const CORS_HEADERS = {
   "Access-Control-Allow-Origin": "*",
-  "Access-Control-Allow-Methods": "POST, OPTIONS",
+  "Access-Control-Allow-Methods": "GET, POST, OPTIONS",
+
   "Access-Control-Allow-Headers": "Content-Type, Authorization, X-AI-Provider",
 };
 
@@ -60,12 +70,18 @@ export default {
    * @param {Request} request
    * @param {Record<string, string>} env
    */
-  async fetch(request, env) {
+    async fetch(request, env, ctx) {
     if (request.method === "OPTIONS") {
       return new Response(null, { status: 204, headers: CORS_HEADERS });
     }
-
     const url = new URL(request.url);
+    if (url.pathname === "/api/current-affairs/latest") {
+      if (request.method !== "GET") {
+        return jsonError(405, "method_not_allowed", "Use GET.");
+      }
+      return currentAffairsResponse(ctx);
+    }
+
     if (url.pathname !== CHAT_COMPLETIONS_PATH) {
       return jsonError(404, "not_found", `Unknown path: ${url.pathname}`);
     }
@@ -161,8 +177,160 @@ export default {
     // Unreachable in practice (the loop always returns), but keeps the
     // function's control flow explicit.
     return jsonError(502, "unknown_error", lastFailure?.message || "All providers failed.");
+    },
+  async scheduled(controller, env, ctx) {
+    ctx.waitUntil(refreshCurrentAffairs());
   },
 };
+async function currentAffairsResponse(ctx) {
+  const cache = caches.default;
+  const cached = await cache.match(NEWS_CACHE_KEY);
+  if (cached) {
+    const payload = await cached.clone().json().catch(() => null);
+    if (payload && Date.now() - payload.fetchedAt < NEWS_CACHE_TTL_MS) {
+      return withCors(cached);
+    }
+  }
+
+  const payload = await refreshCurrentAffairs();
+  const response = jsonResponse(payload);
+  ctx.waitUntil(cache.put(new Request(NEWS_CACHE_KEY), response.clone()));
+  return response;
+}
+
+async function refreshCurrentAffairs() {
+  const settled = await Promise.allSettled(NEWS_SOURCES.map(fetchNewsSource));
+  const stories = settled.flatMap((result) =>
+    result.status === "fulfilled" ? result.value : []
+  );
+  const unique = deduplicateStories(stories)
+    .sort((a, b) => dateValue(b.publishedAt) - dateValue(a.publishedAt));
+  const payload = {
+    fetchedAt: Date.now(),
+    national: unique.filter((story) => story.category === "National").slice(0, 20),
+    international: unique.filter((story) => story.category === "International").slice(0, 20),
+    sources: NEWS_SOURCES.map(({ id, name, category }) => ({ id, name, category })),
+  };
+  await caches.default.put(
+    new Request(NEWS_CACHE_KEY),
+    jsonResponse(payload),
+  );
+  return payload;
+}
+
+async function fetchNewsSource(source) {
+  const controller = new AbortController();
+  const timeout = setTimeout(() => controller.abort(), 10000);
+  try {
+    const response = await fetch(source.url, {
+      headers: {
+        Accept: "application/rss+xml, application/atom+xml, application/xml, text/xml",
+        "User-Agent": "Sapiora-Current-Affairs/1.0 (+RSS reader)",
+      },
+      signal: controller.signal,
+    });
+    if (!response.ok) return [];
+    return parseFeed(await response.text(), source);
+  } finally {
+    clearTimeout(timeout);
+  }
+}
+
+function parseFeed(xml, source) {
+  const blocks = [...xml.matchAll(/<(item|entry)\b[^>]*>([\s\S]*?)<\/\1>/gi)];
+  return blocks.map((match) => {
+    const block = match[2];
+    const title = cleanText(readTag(block, "title"));
+    const url = readLink(block);
+    const description = cleanText(
+      readTag(block, "description") || readTag(block, "summary") || readTag(block, "content:encoded")
+    ).slice(0, 500);
+    const publishedAt = readTag(block, "pubDate") || readTag(block, "dc:date") ||
+      readTag(block, "published") || readTag(block, "updated");
+    if (!title || !url) return null;
+    return {
+      id: stableStoryId(url, title),
+      title,
+      source: source.name,
+      category: source.category,
+      publishedAt: validDate(publishedAt),
+      excerpt: description,
+      imageUrl: readImage(block),
+      articleUrl: url,
+    };
+  }).filter(Boolean);
+}
+
+function readTag(block, tag) {
+  const match = block.match(new RegExp(`<${tag}\\b[^>]*>([\\s\\S]*?)</${tag}>`, "i"));
+  return match ? match[1].trim() : "";
+}
+
+function readLink(block) {
+  const atom = block.match(/<link\b[^>]*href=["']([^"']+)["'][^>]*\/?/i);
+  return atom ? decodeXml(atom[1]) : decodeXml(readTag(block, "link"));
+}
+
+function readImage(block) {
+  const media = block.match(/<(?:media:content|media:thumbnail|enclosure)\b[^>]*url=["']([^"']+)["']/i);
+  if (media) return decodeXml(media[1]);
+  const image = block.match(/<img\b[^>]*src=["']([^"']+)["']/i);
+  return image ? decodeXml(image[1]) : null;
+}
+
+function cleanText(value) {
+  return decodeXml(value)
+    .replace(/<!\[CDATA\[|\]\]>/g, "")
+    .replace(/<[^>]+>/g, " ")
+    .replace(/\s+/g, " ")
+    .trim();
+}
+
+function decodeXml(value) {
+  return value
+    .replace(/&amp;/g, "&")
+    .replace(/&lt;/g, "<")
+    .replace(/&gt;/g, ">")
+    .replace(/&quot;/g, '"')
+    .replace(/&#39;|&apos;/g, "'");
+}
+
+function dateValue(value) {
+  const time = Date.parse(value || '');
+  return Number.isNaN(time) ? 0 : time;
+}
+
+function validDate(value) {
+  const time = Date.parse(value || "");
+  return Number.isNaN(time) ? null : new Date(time).toISOString();
+}
+
+function stableStoryId(url, title) {
+  return (url || title).toLowerCase().replace(/[^a-z0-9]+/g, "-").slice(0, 180);
+}
+
+function deduplicateStories(stories) {
+  const seen = new Set();
+  return stories.filter((story) => {
+    const key = stableStoryId(story.articleUrl, story.title);
+    if (seen.has(key)) return false;
+    seen.add(key);
+    return true;
+  });
+}
+
+function jsonResponse(body, status = 200) {
+  return new Response(JSON.stringify(body), {
+    status,
+    headers: { ...CORS_HEADERS, "Content-Type": "application/json; charset=utf-8" },
+  });
+}
+
+function withCors(response) {
+  const headers = new Headers(response.headers);
+  Object.entries(CORS_HEADERS).forEach(([key, value]) => headers.set(key, value));
+  return new Response(response.body, { status: response.status, headers });
+}
 
 /**
  * Header takes precedence over the body field, since it doesn't require

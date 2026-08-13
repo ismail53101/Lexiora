@@ -8,10 +8,18 @@ class LatestUpdate {
     required this.source,
     required this.category,
     required this.relativeTime,
+    this.excerpt = '',
+    this.imageUrl,
+    this.articleUrl,
+    this.publishedAt,
   });
 
   final String headline;
   final String source;
   final String category;
   final String relativeTime;
+  final String excerpt;
+  final String? imageUrl;
+  final String? articleUrl;
+  final DateTime? publishedAt;
 }

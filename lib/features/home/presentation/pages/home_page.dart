@@ -10,6 +10,9 @@ import 'package:lexiora/core/navigation/home_destination.dart';
 import 'package:lexiora/core/widgets/app_bottom_nav.dart';
 import 'package:lexiora/core/widgets/empty_state.dart';
 import 'package:lexiora/features/home/data/latest_update_mock_data.dart';
+import 'package:lexiora/features/home/domain/entities/current_affairs_feed.dart';
+import 'package:lexiora/features/home/domain/entities/latest_update.dart';
+import 'package:lexiora/features/home/presentation/providers/current_affairs_providers.dart';
 import 'package:lexiora/features/home/presentation/widgets/latest_update_card.dart';
 import 'package:lexiora/features/library/domain/entities/library_document.dart';
 import 'package:lexiora/features/library/presentation/providers/library_providers.dart';
@@ -37,6 +40,17 @@ class HomePage extends ConsumerWidget {
         ref.watch(recentDocumentsProvider);
     final AsyncValue<List<LibraryDocument>> favorites =
         ref.watch(favoriteDocumentsProvider);
+    final AsyncValue<CurrentAffairsFeed?> currentAffairs =
+        ref.watch(currentAffairsProvider);
+    final CurrentAffairsFeed? liveFeed = currentAffairs.maybeWhen(
+      data: (CurrentAffairsFeed? feed) => feed,
+      orElse: () => null,
+    );
+    final LatestUpdate featuredUpdate =
+        liveFeed?.featured ?? mockLatestUpdates.first;
+    final int updateCount = liveFeed == null || liveFeed.all.isEmpty
+        ? mockLatestUpdates.length
+        : liveFeed.all.length.clamp(1, 5).toInt();
     final List<HomeDestination> destinations =
         sl<HomeDestinationRegistry>().destinations;
     final String displayName = ref.watch(settingsProvider).maybeWhen(
@@ -67,8 +81,8 @@ class HomePage extends ConsumerWidget {
               child: Padding(
                 padding: const EdgeInsets.fromLTRB(20, 12, 20, 0),
                 child: LatestUpdateCard(
-                  update: mockLatestUpdates.first,
-                  itemCount: mockLatestUpdates.length,
+                  update: featuredUpdate,
+                  itemCount: updateCount,
                 ),
               ),
             ),

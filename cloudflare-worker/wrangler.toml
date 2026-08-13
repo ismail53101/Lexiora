@@ -2,6 +2,9 @@ name = "sapiora-ai-worker"
 main = "worker.js"
 compatibility_date = "2026-01-01"
 
+[triggers]
+crons = ["*/15 * * * *"]
+
 # Non-secret settings can go here as plain vars. Real API keys must NEVER be
 # put in this file (or committed to git) — set them with `wrangler secret put`
 # instead; see README.md.

@@ -103,9 +103,13 @@ jobs:
           SAPIORA_AI_API_KEY: ${{ secrets.SAPIORA_AI_API_KEY }}
           SAPIORA_AI_BASE_URL: ${{ secrets.SAPIORA_AI_BASE_URL }}
           SAPIORA_AI_PROVIDER: ${{ secrets.SAPIORA_AI_PROVIDER }}
+          SAPIORA_CURRENT_AFFAIRS_BASE_URL: ${{ secrets.SAPIORA_AI_BASE_URL }}
           SAPIORA_ENABLE_ADMIN: ${{ secrets.SAPIORA_ENABLE_ADMIN }}
         run: |
           DEFINES="--dart-define=SAPIORA_AI_API_KEY=$SAPIORA_AI_API_KEY"
+          if [ -n "$SAPIORA_CURRENT_AFFAIRS_BASE_URL" ]; then
+            DEFINES="$DEFINES --dart-define=SAPIORA_CURRENT_AFFAIRS_BASE_URL=$SAPIORA_CURRENT_AFFAIRS_BASE_URL"
+          fi
           if [ -n "$SAPIORA_AI_BASE_URL" ]; then
             DEFINES="$DEFINES --dart-define=SAPIORA_AI_BASE_URL=$SAPIORA_AI_BASE_URL"
           fi
@@ -122,9 +126,13 @@ jobs:
           SAPIORA_AI_API_KEY: ${{ secrets.SAPIORA_AI_API_KEY }}
           SAPIORA_AI_BASE_URL: ${{ secrets.SAPIORA_AI_BASE_URL }}
           SAPIORA_AI_PROVIDER: ${{ secrets.SAPIORA_AI_PROVIDER }}
+          SAPIORA_CURRENT_AFFAIRS_BASE_URL: ${{ secrets.SAPIORA_AI_BASE_URL }}
           SAPIORA_ENABLE_ADMIN: ${{ secrets.SAPIORA_ENABLE_ADMIN }}
         run: |
           DEFINES="--dart-define=SAPIORA_AI_API_KEY=$SAPIORA_AI_API_KEY"
+          if [ -n "$SAPIORA_CURRENT_AFFAIRS_BASE_URL" ]; then
+            DEFINES="$DEFINES --dart-define=SAPIORA_CURRENT_AFFAIRS_BASE_URL=$SAPIORA_CURRENT_AFFAIRS_BASE_URL"
+          fi
           if [ -n "$SAPIORA_AI_BASE_URL" ]; then
             DEFINES="$DEFINES --dart-define=SAPIORA_AI_BASE_URL=$SAPIORA_AI_BASE_URL"
           fi

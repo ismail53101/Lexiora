@@ -96,3 +96,19 @@ Try forcing a specific provider with `-H "X-AI-Provider: forge"` or
 
 Nothing in the Flutter app changes — it already just sends `X-AI-Provider`
 as a hint and lets the Worker do the rest.
+
+
+## Current Affairs RSS cache
+
+The Worker also exposes `GET /api/current-affairs/latest`. It fetches metadata only from the configured public RSS feeds, removes duplicate stories by canonical article URL/title, and returns separate `national` and `international` arrays. Each story contains its title, source, category, publication time, excerpt, optional image URL, and original article URL. Full article bodies are never stored.
+
+The scheduled Worker trigger refreshes the cache every 15 minutes. The currently configured sources are Express Tribune Pakistan and The News News under `National`, and BBC World, Express Tribune World, The News World, and Al Jazeera under `International`. A source that temporarily fails contributes no new items while the remaining sources continue to populate the cache.
+
+The Flutter release build can connect the existing Home card by passing:
+
+```bash
+flutter build apk --release \
+  --dart-define=SAPIORA_CURRENT_AFFAIRS_BASE_URL=https://YOUR_WORKER_URL
+```
+
+If the define is omitted or the endpoint is unavailable, the Home card keeps using its bundled mock update. The GitHub Actions release workflow reuses the existing `SAPIORA_AI_BASE_URL` secret for this optional define.
