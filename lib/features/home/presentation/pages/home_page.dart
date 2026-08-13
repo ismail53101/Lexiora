@@ -47,11 +47,10 @@ class HomePage extends ConsumerWidget {
       data: (CurrentAffairsFeed? feed) => feed,
       orElse: () => null,
     );
-    final LatestUpdate featuredUpdate =
-        liveFeed?.featured ?? mockLatestUpdates.first;
-    final int updateCount = liveFeed == null || liveFeed.all.isEmpty
-        ? mockLatestUpdates.length
-        : liveFeed.all.length.clamp(1, 5).toInt();
+    final List<LatestUpdate> carouselUpdates = liveFeed == null || liveFeed.all.isEmpty
+        ? mockLatestUpdates
+        : liveFeed.all.take(5).toList(growable: false);
+    final LatestUpdate featuredUpdate = carouselUpdates.first;
     final List<HomeDestination> destinations =
         sl<HomeDestinationRegistry>().destinations;
     final String displayName = ref.watch(settingsProvider).maybeWhen(
@@ -83,7 +82,8 @@ class HomePage extends ConsumerWidget {
                 padding: const EdgeInsets.fromLTRB(20, 12, 20, 0),
                 child: LatestUpdateCard(
                   update: featuredUpdate,
-                  itemCount: updateCount,
+                  updates: carouselUpdates,
+                  itemCount: carouselUpdates.length,
                   onTap: () => Navigator.of(context).push(
                     MaterialPageRoute<void>(
                       builder: (_) => const CurrentAffairsPage(),

@@ -6,45 +6,162 @@ import 'package:lexiora/features/home/domain/entities/latest_update.dart';
 import 'package:lexiora/features/home/presentation/providers/current_affairs_providers.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-class CurrentAffairsPage extends ConsumerWidget {
+class CurrentAffairsPage extends ConsumerStatefulWidget {
   const CurrentAffairsPage({super.key});
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
-    final AsyncValue<CurrentAffairsFeed?> feedAsync =
-        ref.watch(currentAffairsProvider);
+  ConsumerState<CurrentAffairsPage> createState() => _CurrentAffairsPageState();
+}
+
+class _CurrentAffairsPageState extends ConsumerState<CurrentAffairsPage> {
+  int _selectedSection = 0;
+
+  Future<void> _refresh() async {
+    ref.invalidate(currentAffairsProvider);
+    await ref.read(currentAffairsProvider.future);
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final ThemeData theme = Theme.of(context);
+    final ColorScheme scheme = theme.colorScheme;
+    final AsyncValue<CurrentAffairsFeed?> feedAsync = ref.watch(currentAffairsProvider);
     final CurrentAffairsFeed? liveFeed = feedAsync.maybeWhen(
       data: (CurrentAffairsFeed? feed) => feed,
       orElse: () => null,
     );
-    final List<LatestUpdate> national = liveFeed?.national ??
-        mockLatestUpdates
-            .where((LatestUpdate story) => story.category == 'National')
-            .toList(growable: false);
-    final List<LatestUpdate> international = liveFeed?.international ??
-        mockLatestUpdates
-            .where((LatestUpdate story) => story.category == 'International')
-            .toList(growable: false);
+    final List<LatestUpdate> national = liveFeed?.national ?? _fallback('National');
+    final List<LatestUpdate> international = liveFeed?.international ?? _fallback('International');
+    final List<LatestUpdate> stories = _selectedSection == 0 ? national : international;
+    final String sectionLabel = _selectedSection == 0 ? 'National' : 'International';
+    final bool isRefreshing = feedAsync.isLoading && liveFeed == null;
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Current Affairs'),
+        titleSpacing: 20,
+        title: Row(
+          children: <Widget>[
+            Container(
+              width: 32,
+              height: 32,
+              padding: const EdgeInsets.all(5),
+              decoration: BoxDecoration(
+                color: scheme.primary.withValues(alpha: 0.14),
+                borderRadius: BorderRadius.circular(11),
+              ),
+              child: Image.asset('assets/branding/app_icon.png'),
+            ),
+            const SizedBox(width: 10),
+            const Text('Current Affairs'),
+          ],
+        ),
+        actions: <Widget>[
+          Padding(
+            padding: const EdgeInsets.only(right: 16),
+            child: _LivePill(color: scheme.tertiary),
+          ),
+        ],
       ),
       body: RefreshIndicator(
-        onRefresh: () async => ref.invalidate(currentAffairsProvider),
-        child: ListView(
-          padding: const EdgeInsets.fromLTRB(20, 8, 20, 28),
-          children: <Widget>[
-            _Section(
-              title: 'National',
-              subtitle: 'Pakistan current affairs',
-              stories: national,
+        onRefresh: _refresh,
+        color: scheme.primary,
+        backgroundColor: scheme.surfaceContainerHigh,
+        child: CustomScrollView(
+          physics: const AlwaysScrollableScrollPhysics(),
+          slivers: <Widget>[
+            SliverToBoxAdapter(
+              child: Padding(
+                padding: const EdgeInsets.fromLTRB(20, 8, 20, 0),
+                child: _IntroBlock(
+                  selectedSection: _selectedSection,
+                  onSectionChanged: (int index) => setState(() => _selectedSection = index),
+                ),
+              ),
             ),
-            const SizedBox(height: 24),
-            _Section(
-              title: 'International',
-              subtitle: 'World current affairs',
-              stories: international,
+            SliverToBoxAdapter(
+              child: Padding(
+                padding: const EdgeInsets.fromLTRB(20, 22, 20, 0),
+                child: _SectionHeading(
+                  sectionLabel: sectionLabel,
+                  storyCount: stories.length,
+                  isLive: liveFeed != null,
+                ),
+              ),
+            ),
+            if (isRefreshing)
+              const SliverFillRemaining(
+                hasScrollBody: false,
+                child: Center(child: CircularProgressIndicator()),
+              )
+            else if (stories.isEmpty)
+              SliverToBoxAdapter(
+                child: Padding(
+                  padding: const EdgeInsets.fromLTRB(20, 18, 20, 40),
+                  child: _EmptyStoriesCard(sectionLabel: sectionLabel),
+                ),
+              )
+            else ...[
+              SliverToBoxAdapter(
+                child: Padding(
+                  padding: const EdgeInsets.fromLTRB(20, 14, 20, 0),
+                  child: _FeaturedStoryCard(story: stories.first),
+                ),
+              ),
+              SliverPadding(
+                padding: const EdgeInsets.fromLTRB(20, 22, 20, 30),
+                sliver: SliverList.builder(
+                  itemCount: stories.length > 1 ? stories.length - 1 : 0,
+                  itemBuilder: (BuildContext context, int index) {
+                    final LatestUpdate story = stories[index + 1];
+                    return Padding(
+                      padding: const EdgeInsets.only(bottom: 10),
+                      child: _EditorialStoryCard(story: story),
+                    );
+                  },
+                ),
+              ),
+            ],
+          ],
+        ),
+      ),
+    );
+  }
+
+  List<LatestUpdate> _fallback(String category) {
+    return mockLatestUpdates
+        .where((LatestUpdate story) => story.category.toLowerCase() == category.toLowerCase())
+        .toList(growable: false);
+  }
+}
+
+class _LivePill extends StatelessWidget {
+  const _LivePill({required this.color});
+
+  final Color color;
+
+  @override
+  Widget build(BuildContext context) {
+    final ColorScheme scheme = Theme.of(context).colorScheme;
+    return DecoratedBox(
+      decoration: BoxDecoration(
+        color: color.withValues(alpha: 0.13),
+        borderRadius: BorderRadius.circular(30),
+        border: Border.all(color: color.withValues(alpha: 0.28)),
+      ),
+      child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 6),
+        child: Row(
+          mainAxisSize: MainAxisSize.min,
+          children: <Widget>[
+            Container(width: 7, height: 7, decoration: BoxDecoration(color: color, shape: BoxShape.circle)),
+            const SizedBox(width: 6),
+            Text(
+              'LIVE',
+              style: Theme.of(context).textTheme.labelSmall?.copyWith(
+                    color: scheme.onSurface,
+                    fontWeight: FontWeight.w800,
+                    letterSpacing: 0.7,
+                  ),
             ),
           ],
         ),
@@ -53,16 +170,11 @@ class CurrentAffairsPage extends ConsumerWidget {
   }
 }
 
-class _Section extends StatelessWidget {
-  const _Section({
-    required this.title,
-    required this.subtitle,
-    required this.stories,
-  });
+class _IntroBlock extends StatelessWidget {
+  const _IntroBlock({required this.selectedSection, required this.onSectionChanged});
 
-  final String title;
-  final String subtitle;
-  final List<LatestUpdate> stories;
+  final int selectedSection;
+  final ValueChanged<int> onSectionChanged;
 
   @override
   Widget build(BuildContext context) {
@@ -72,74 +184,150 @@ class _Section extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
         Text(
-          title,
-          style: theme.textTheme.titleLarge?.copyWith(
-            fontWeight: FontWeight.w800,
+          'The daily brief',
+          style: theme.textTheme.headlineSmall?.copyWith(
+            fontWeight: FontWeight.w900,
+            letterSpacing: -0.5,
           ),
         ),
-        const SizedBox(height: 2),
+        const SizedBox(height: 4),
         Text(
-          subtitle,
-          style: theme.textTheme.bodySmall?.copyWith(
-            color: scheme.onSurfaceVariant,
+          'Stay sharp on the stories shaping Pakistan and the world.',
+          style: theme.textTheme.bodyMedium?.copyWith(color: scheme.onSurfaceVariant),
+        ),
+        const SizedBox(height: 18),
+        DecoratedBox(
+          decoration: BoxDecoration(
+            color: scheme.surfaceContainerHighest,
+            borderRadius: BorderRadius.circular(17),
+            border: Border.all(color: scheme.outlineVariant.withValues(alpha: 0.7)),
+          ),
+          child: Padding(
+            padding: const EdgeInsets.all(4),
+            child: Row(
+              children: <Widget>[
+                _Segment(
+                  label: 'National',
+                  detail: 'Pakistan',
+                  selected: selectedSection == 0,
+                  onTap: () => onSectionChanged(0),
+                ),
+                _Segment(
+                  label: 'International',
+                  detail: 'World',
+                  selected: selectedSection == 1,
+                  onTap: () => onSectionChanged(1),
+                ),
+              ],
+            ),
           ),
         ),
-        const SizedBox(height: 10),
-        if (stories.isEmpty)
-          Container(
-            width: double.infinity,
-            padding: const EdgeInsets.all(18),
-            decoration: BoxDecoration(
-              color: scheme.surfaceContainerHigh,
-              borderRadius: BorderRadius.circular(16),
-            ),
-            child: Text(
-              'No recent stories available.',
-              style: theme.textTheme.bodyMedium?.copyWith(
-                color: scheme.onSurfaceVariant,
-              ),
-            ),
-          )
-        else
-          ...stories.map((LatestUpdate story) => Padding(
-                padding: const EdgeInsets.only(bottom: 10),
-                child: _StoryTile(story: story),
-              )),
       ],
     );
   }
 }
 
-class _StoryTile extends StatelessWidget {
-  const _StoryTile({required this.story});
+class _Segment extends StatelessWidget {
+  const _Segment({required this.label, required this.detail, required this.selected, required this.onTap});
+
+  final String label;
+  final String detail;
+  final bool selected;
+  final VoidCallback onTap;
+
+  @override
+  Widget build(BuildContext context) {
+    final ThemeData theme = Theme.of(context);
+    final ColorScheme scheme = theme.colorScheme;
+    final Color foreground = selected ? scheme.onPrimary : scheme.onSurfaceVariant;
+    return Expanded(
+      child: Material(
+        color: selected ? scheme.primary : Colors.transparent,
+        borderRadius: BorderRadius.circular(13),
+        child: InkWell(
+          onTap: onTap,
+          borderRadius: BorderRadius.circular(13),
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 10),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                Text(
+                  detail.toUpperCase(),
+                  style: theme.textTheme.labelSmall?.copyWith(
+                    color: foreground.withValues(alpha: selected ? 0.78 : 0.72),
+                    fontWeight: FontWeight.w800,
+                    letterSpacing: 0.5,
+                  ),
+                ),
+                const SizedBox(width: 7),
+                Flexible(
+                  child: Text(
+                    label,
+                    overflow: TextOverflow.ellipsis,
+                    style: theme.textTheme.titleSmall?.copyWith(
+                      color: foreground,
+                      fontWeight: FontWeight.w900,
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class _SectionHeading extends StatelessWidget {
+  const _SectionHeading({required this.sectionLabel, required this.storyCount, required this.isLive});
+
+  final String sectionLabel;
+  final int storyCount;
+  final bool isLive;
+
+  @override
+  Widget build(BuildContext context) {
+    final ThemeData theme = Theme.of(context);
+    final ColorScheme scheme = theme.colorScheme;
+    return Row(
+      crossAxisAlignment: CrossAxisAlignment.end,
+      children: <Widget>[
+        Expanded(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: <Widget>[
+              Text(
+                '$sectionLabel headlines',
+                style: theme.textTheme.titleMedium?.copyWith(fontWeight: FontWeight.w900),
+              ),
+              const SizedBox(height: 3),
+              Text(
+                '$storyCount latest reports',
+                style: theme.textTheme.bodySmall?.copyWith(color: scheme.onSurfaceVariant),
+              ),
+            ],
+          ),
+        ),
+        Icon(isLive ? Icons.wifi_tethering_rounded : Icons.cloud_off_rounded, size: 16, color: isLive ? scheme.tertiary : scheme.onSurfaceVariant),
+        const SizedBox(width: 5),
+        Text(
+          isLive ? 'Live feed' : 'Saved fallback',
+          style: theme.textTheme.labelMedium?.copyWith(
+            color: isLive ? scheme.tertiary : scheme.onSurfaceVariant,
+            fontWeight: FontWeight.w800,
+          ),
+        ),
+      ],
+    );
+  }
+}
+
+class _FeaturedStoryCard extends StatelessWidget {
+  const _FeaturedStoryCard({required this.story});
 
   final LatestUpdate story;
-
-  Future<void> _openArticle(BuildContext context) async {
-    final String? articleUrl = story.articleUrl;
-    if (articleUrl == null || articleUrl.isEmpty) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text('This story has no article link.')),
-      );
-      return;
-    }
-    final Uri? uri = Uri.tryParse(articleUrl);
-    if (uri == null || !(uri.scheme == 'http' || uri.scheme == 'https')) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text('This article link is unavailable.')),
-      );
-      return;
-    }
-    final bool opened = await launchUrl(
-      uri,
-      mode: LaunchMode.externalApplication,
-    );
-    if (!opened && context.mounted) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text('Could not open the article.')),
-      );
-    }
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -147,14 +335,103 @@ class _StoryTile extends StatelessWidget {
     final ColorScheme scheme = theme.colorScheme;
     return Material(
       color: scheme.surfaceContainerHigh,
-      borderRadius: BorderRadius.circular(16),
+      borderRadius: BorderRadius.circular(24),
       clipBehavior: Clip.antiAlias,
       child: InkWell(
-        onTap: () => _openArticle(context),
+        onTap: () => _openArticle(context, story),
         child: Padding(
-          padding: const EdgeInsets.all(14),
+          padding: const EdgeInsets.all(10),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: <Widget>[
+              _StoryImage(story: story, height: 170, radius: 18),
+              Padding(
+                padding: const EdgeInsets.fromLTRB(7, 15, 7, 8),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: <Widget>[
+                    Row(
+                      children: <Widget>[
+                        _CategoryTag(label: story.category),
+                        const Spacer(),
+                        Text(
+                          '${story.source} · ${story.relativeTime}',
+                          style: theme.textTheme.labelSmall?.copyWith(
+                            color: scheme.onSurfaceVariant,
+                            fontWeight: FontWeight.w700,
+                          ),
+                        ),
+                      ],
+                    ),
+                    const SizedBox(height: 10),
+                    Text(
+                      story.headline,
+                      maxLines: 4,
+                      overflow: TextOverflow.ellipsis,
+                      style: theme.textTheme.headlineSmall?.copyWith(
+                        fontWeight: FontWeight.w900,
+                        height: 1.08,
+                        letterSpacing: -0.4,
+                      ),
+                    ),
+                    if (story.excerpt.trim().isNotEmpty) ...[
+                      const SizedBox(height: 9),
+                      Text(
+                        story.excerpt.trim(),
+                        maxLines: 3,
+                        overflow: TextOverflow.ellipsis,
+                        style: theme.textTheme.bodyMedium?.copyWith(
+                          color: scheme.onSurfaceVariant,
+                          height: 1.35,
+                        ),
+                      ),
+                    ],
+                    const SizedBox(height: 13),
+                    Row(
+                      children: <Widget>[
+                        Text(
+                          'Read full report',
+                          style: theme.textTheme.labelLarge?.copyWith(
+                            color: scheme.primary,
+                            fontWeight: FontWeight.w900,
+                          ),
+                        ),
+                        const SizedBox(width: 5),
+                        Icon(Icons.arrow_forward_rounded, size: 17, color: scheme.primary),
+                      ],
+                    ),
+                  ],
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class _EditorialStoryCard extends StatelessWidget {
+  const _EditorialStoryCard({required this.story});
+
+  final LatestUpdate story;
+
+  @override
+  Widget build(BuildContext context) {
+    final ThemeData theme = Theme.of(context);
+    final ColorScheme scheme = theme.colorScheme;
+    return Material(
+      color: scheme.surfaceContainerHigh,
+      borderRadius: BorderRadius.circular(18),
+      clipBehavior: Clip.antiAlias,
+      child: InkWell(
+        onTap: () => _openArticle(context, story),
+        child: Padding(
+          padding: const EdgeInsets.all(10),
           child: Row(
             children: <Widget>[
+              _StoryImage(story: story, height: 76, width: 88, radius: 13),
+              const SizedBox(width: 12),
               Expanded(
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -164,28 +441,161 @@ class _StoryTile extends StatelessWidget {
                       maxLines: 3,
                       overflow: TextOverflow.ellipsis,
                       style: theme.textTheme.titleSmall?.copyWith(
-                        fontWeight: FontWeight.w800,
+                        fontWeight: FontWeight.w900,
+                        height: 1.15,
                       ),
                     ),
                     const SizedBox(height: 7),
-                    Text(
-                      '${story.source} · ${story.relativeTime}',
-                      maxLines: 1,
-                      overflow: TextOverflow.ellipsis,
-                      style: theme.textTheme.bodySmall?.copyWith(
-                        color: scheme.onSurfaceVariant,
-                        fontWeight: FontWeight.w600,
-                      ),
+                    Row(
+                      children: <Widget>[
+                        Flexible(
+                          child: Text(
+                            story.source,
+                            maxLines: 1,
+                            overflow: TextOverflow.ellipsis,
+                            style: theme.textTheme.labelSmall?.copyWith(
+                              color: scheme.onSurfaceVariant,
+                              fontWeight: FontWeight.w700,
+                            ),
+                          ),
+                        ),
+                        Text(' · ${story.relativeTime}', style: theme.textTheme.labelSmall?.copyWith(color: scheme.onSurfaceVariant)),
+                      ],
                     ),
                   ],
                 ),
               ),
-              const SizedBox(width: 10),
-              Icon(Icons.open_in_new_rounded, color: scheme.primary, size: 20),
+              const SizedBox(width: 7),
+              Icon(Icons.arrow_outward_rounded, size: 18, color: scheme.primary),
             ],
           ),
         ),
       ),
     );
+  }
+}
+
+class _StoryImage extends StatelessWidget {
+  const _StoryImage({required this.story, required this.height, required this.radius, this.width});
+
+  final LatestUpdate story;
+  final double height;
+  final double radius;
+  final double? width;
+
+  @override
+  Widget build(BuildContext context) {
+    final ThemeData theme = Theme.of(context);
+    final ColorScheme scheme = theme.colorScheme;
+    final Widget fallback = DecoratedBox(
+      decoration: BoxDecoration(
+        gradient: LinearGradient(
+          colors: <Color>[scheme.primaryContainer, scheme.tertiaryContainer],
+          begin: Alignment.topLeft,
+          end: Alignment.bottomRight,
+        ),
+      ),
+      child: Center(
+        child: Icon(Icons.public_rounded, color: scheme.onPrimaryContainer, size: height * 0.30),
+      ),
+    );
+    return SizedBox(
+      width: width,
+      height: height,
+      child: ClipRRect(
+        borderRadius: BorderRadius.circular(radius),
+        child: story.imageUrl == null
+            ? fallback
+            : Image.network(
+                story.imageUrl!,
+                fit: BoxFit.cover,
+                errorBuilder: (_, __, ___) => fallback,
+              ),
+      ),
+    );
+  }
+}
+
+class _CategoryTag extends StatelessWidget {
+  const _CategoryTag({required this.label});
+
+  final String label;
+
+  @override
+  Widget build(BuildContext context) {
+    final ThemeData theme = Theme.of(context);
+    final ColorScheme scheme = theme.colorScheme;
+    return DecoratedBox(
+      decoration: BoxDecoration(
+        color: scheme.secondaryContainer,
+        borderRadius: BorderRadius.circular(8),
+      ),
+      child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 5),
+        child: Text(
+          label.toUpperCase(),
+          style: theme.textTheme.labelSmall?.copyWith(
+            color: scheme.onSecondaryContainer,
+            fontWeight: FontWeight.w900,
+            letterSpacing: 0.45,
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class _EmptyStoriesCard extends StatelessWidget {
+  const _EmptyStoriesCard({required this.sectionLabel});
+
+  final String sectionLabel;
+
+  @override
+  Widget build(BuildContext context) {
+    final ThemeData theme = Theme.of(context);
+    final ColorScheme scheme = theme.colorScheme;
+    return Container(
+      width: double.infinity,
+      padding: const EdgeInsets.all(22),
+      decoration: BoxDecoration(
+        color: scheme.surfaceContainerHigh,
+        borderRadius: BorderRadius.circular(18),
+        border: Border.all(color: scheme.outlineVariant.withValues(alpha: 0.65)),
+      ),
+      child: Column(
+        children: <Widget>[
+          Icon(Icons.newspaper_outlined, color: scheme.primary, size: 30),
+          const SizedBox(height: 10),
+          Text(
+            'No $sectionLabel stories available yet.',
+            textAlign: TextAlign.center,
+            style: theme.textTheme.titleSmall?.copyWith(fontWeight: FontWeight.w800),
+          ),
+          const SizedBox(height: 4),
+          Text(
+            'Pull down to refresh the live feed.',
+            textAlign: TextAlign.center,
+            style: theme.textTheme.bodySmall?.copyWith(color: scheme.onSurfaceVariant),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+Future<void> _openArticle(BuildContext context, LatestUpdate story) async {
+  final String? articleUrl = story.articleUrl;
+  if (articleUrl == null || articleUrl.isEmpty) {
+    ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text('This story has no article link.')));
+    return;
+  }
+  final Uri? uri = Uri.tryParse(articleUrl);
+  if (uri == null || !(uri.scheme == 'http' || uri.scheme == 'https')) {
+    ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text('This article link is unavailable.')));
+    return;
+  }
+  final bool opened = await launchUrl(uri, mode: LaunchMode.externalApplication);
+  if (!opened && context.mounted) {
+    ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text('Could not open the article.')));
   }
 }
