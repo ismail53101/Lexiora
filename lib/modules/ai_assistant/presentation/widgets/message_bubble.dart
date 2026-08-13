@@ -318,7 +318,7 @@ class MessageBubble extends StatelessWidget {
 }
 
 
-/// Copy / thumbs-up / thumbs-down / read-aloud / make-PDF quick actions
+/// Copy / thumbs-up / thumbs-down / read-aloud / share quick actions
 /// under an assistant reply.
 class _ActionRow extends StatelessWidget {
   const _ActionRow({
@@ -347,8 +347,7 @@ class _ActionRow extends StatelessWidget {
         _icon(context, Icons.thumb_down_outlined, 'Bad response',
             () => onFeedback(false)),
         _ReadAloudButton(messageId: messageId, text: text),
-        _icon(context, Icons.picture_as_pdf_outlined, 'Make PDF',
-            () => exportMessageAsPdf(context, text: text)),
+        _icon(context, Icons.share_outlined, 'Share', () => _share(text)),
         if (onRegenerate != null)
           _icon(context, Icons.refresh_rounded, 'Regenerate', onRegenerate!),
       ].map((Widget w) => Padding(

@@ -104,7 +104,9 @@ class AiReadAloudController {
 
   Future<void> _ensureConfigured() async {
     if (_configured) return;
-    await _tts.awaitSpeakCompletion(false);
+    await _tts.awaitSpeakCompletion(true);
+    await _tts.setQueueMode(1);
+    await _tts.setVolume(1.0);
     _tts.setCompletionHandler(() => activeMessageId.value = null);
     _tts.setCancelHandler(() => activeMessageId.value = null);
     _tts.setErrorHandler((dynamic _) => activeMessageId.value = null);
@@ -132,6 +134,7 @@ class AiReadAloudController {
       await _tts.setLanguage('en-US');
       await _tts.setSpeechRate(0.46);
       await _tts.setPitch(1.0);
+      await _tts.setVolume(1.0);
       final Object? result = await _tts.speak(clean);
       // On Android/iOS flutter_tts returns 1 for success; surface anything
       // else as a real failure instead of silently doing nothing.
