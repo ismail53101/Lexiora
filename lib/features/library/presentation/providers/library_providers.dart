@@ -63,6 +63,7 @@ final Provider<AutoDiscoverPdfs> autoDiscoverProvider =
     ref.watch(libraryRepositoryProvider),
     sl<PdfDiscoveryService>(),
     sl<PdfCoverService>(),
+    ref.watch(deleteDocumentProvider),
   ),
 );
 

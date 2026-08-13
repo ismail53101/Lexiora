@@ -14,7 +14,6 @@ import 'package:lexiora/core/services/permission_service.dart';
 import 'package:lexiora/core/usecase/usecase.dart';
 import 'package:lexiora/core/utils/result.dart';
 import 'package:lexiora/core/widgets/app_bottom_nav.dart';
-import 'package:lexiora/core/widgets/empty_state.dart';
 import 'package:lexiora/features/home/data/latest_update_mock_data.dart';
 import 'package:lexiora/features/home/domain/entities/current_affairs_feed.dart';
 import 'package:lexiora/features/home/domain/entities/latest_update.dart';
@@ -139,8 +138,6 @@ class _HomePageState extends ConsumerState<HomePage>
 
   @override
   Widget build(BuildContext context) {
-    final AsyncValue<List<LibraryDocument>> all =
-        ref.watch(allDocumentsProvider);
     final AsyncValue<List<LibraryEntry>> continueReading =
         ref.watch(continueReadingProvider);
     final AsyncValue<List<LibraryDocument>> recent =
@@ -161,11 +158,6 @@ class _HomePageState extends ConsumerState<HomePage>
         sl<HomeDestinationRegistry>().destinations;
     final String displayName = ref.watch(settingsProvider).maybeWhen(
         data: (AppSettings s) => s.displayName, orElse: () => '');
-
-    final bool isEmpty = all.maybeWhen(
-      data: (List<LibraryDocument> d) => d.isEmpty,
-      orElse: () => false,
-    );
 
     return Scaffold(
       bottomNavigationBar: const AppBottomNav(currentIndex: 0),
@@ -204,27 +196,10 @@ class _HomePageState extends ConsumerState<HomePage>
                 ),
               ),
             ),
-            if (isEmpty)
-              SliverFillRemaining(
-                hasScrollBody: false,
-                child: EmptyState(
-                  icon: Icons.auto_stories_outlined,
-                  title: 'Welcome to Sapiora',
-                  message:
-                      'Sapiora automatically finds the PDF files already on '
-                      'your device — or import your own with the Import PDF '
-                      'button. Everything stays on your device.',
-                  action: FilledButton.icon(
-                    onPressed: () => context.push(AppRoutes.library),
-                    icon: const Icon(Icons.folder_open_outlined),
-                    label: const Text('Open library'),
-                  ),
-                ),
-              ),
             SliverToBoxAdapter(
               child: _ExploreSection(destinations: destinations),
             ),
-            if (!isEmpty) ...[
+            ...[
               _continueAndRecentSection(context, continueReading, recent),
               _docStrip(context, 'Favorites', favorites),
               const SliverToBoxAdapter(
