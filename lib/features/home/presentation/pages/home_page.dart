@@ -12,6 +12,7 @@ import 'package:lexiora/core/widgets/empty_state.dart';
 import 'package:lexiora/features/home/data/latest_update_mock_data.dart';
 import 'package:lexiora/features/home/domain/entities/current_affairs_feed.dart';
 import 'package:lexiora/features/home/domain/entities/latest_update.dart';
+import 'package:lexiora/features/home/presentation/pages/current_affairs_page.dart';
 import 'package:lexiora/features/home/presentation/providers/current_affairs_providers.dart';
 import 'package:lexiora/features/home/presentation/widgets/latest_update_card.dart';
 import 'package:lexiora/features/library/domain/entities/library_document.dart';
@@ -83,6 +84,11 @@ class HomePage extends ConsumerWidget {
                 child: LatestUpdateCard(
                   update: featuredUpdate,
                   itemCount: updateCount,
+                  onTap: () => Navigator.of(context).push(
+                    MaterialPageRoute<void>(
+                      builder: (_) => const CurrentAffairsPage(),
+                    ),
+                  ),
                 ),
               ),
             ),
