@@ -50,13 +50,63 @@ const PROVIDERS = {
 const CHAT_COMPLETIONS_PATH = "/v1/chat/completions";
 const NEWS_CACHE_KEY = "https://sapiora.internal/cache/current-affairs/latest-v1";
 const NEWS_CACHE_TTL_MS = 15 * 60 * 1000;
+const NEWS_FRESHNESS_WINDOW_MS = 48 * 60 * 60 * 1000;
+
+const RELEVANCE_BOOSTS = [
+  ['politic', 8],
+  ['government', 8],
+  ['minister', 6],
+  ['parliament', 6],
+  ['election', 7],
+  ['diplom', 7],
+  ['foreign affair', 8],
+  ['geopolit', 8],
+  ['econom', 7],
+  ['inflation', 6],
+  ['trade', 5],
+  ['security', 7],
+  ['defen', 6],
+  ['terror', 7],
+  ['conflict', 6],
+  ['war', 5],
+  ['climate', 7],
+  ['environment', 5],
+  ['science', 6],
+  ['research', 4],
+  ['united nations', 7],
+  ['nato', 6],
+  ['g20', 6],
+  ['summit', 5],
+  ['sanction', 5],
+  ['earthquake', 5],
+  ['disaster', 5],
+  ['pandemic', 6],
+  ['court', 4],
+  ['supreme', 5],
+];
+const RELEVANCE_PENALTIES = [
+  ['entertainment', 10],
+  ['celebrity', 10],
+  ['hollywood', 8],
+  ['bollywood', 8],
+  ['film', 7],
+  ['movie', 7],
+  ['music', 6],
+  ['cricket', 5],
+  ['football', 5],
+  ['sports', 5],
+];
 const NEWS_SOURCES = [
-  { id: "express-tribune-pakistan", name: "Express Tribune", category: "National", url: "https://tribune.com.pk/feed/pakistan" },
-  { id: "the-news-pakistan", name: "The News", category: "National", url: "https://www.thenews.com.pk/rss/1/0" },
-  { id: "bbc-world", name: "BBC World", category: "International", url: "https://feeds.bbci.co.uk/news/world/rss.xml" },
-  { id: "express-tribune-world", name: "Express Tribune", category: "International", url: "https://tribune.com.pk/feed/world" },
-  { id: "the-news-world", name: "The News", category: "International", url: "https://www.thenews.com.pk/rss/1/2" },
-  { id: "al-jazeera-world", name: "Al Jazeera", category: "International", url: "https://www.aljazeera.com/xml/rss/all.xml" },
+  // Pakistan — official latest-news and opinion feeds.
+  { id: "dawn-latest-news", name: "Dawn", category: "National", feedType: "Latest News", url: "https://www.dawn.com/feeds/latest-news" },
+  { id: "dawn-opinion", name: "Dawn", category: "National", feedType: "Opinions", url: "https://www.dawn.com/feeds/opinion" },
+  { id: "express-tribune-pakistan", name: "Express Tribune", category: "National", feedType: "Latest News", url: "https://tribune.com.pk/feed/pakistan" },
+  { id: "the-news-pakistan", name: "The News", category: "National", feedType: "Latest News", url: "https://www.thenews.com.pk/rss/1/0" },
+  // World — official world/latest feeds. No unsupported category feed is guessed.
+  { id: "bbc-world", name: "BBC World", category: "International", feedType: "Latest News", url: "https://feeds.bbci.co.uk/news/world/rss.xml" },
+  { id: "al-jazeera-world", name: "Al Jazeera", category: "International", feedType: "Latest News", url: "https://www.aljazeera.com/xml/rss/all.xml" },
+  { id: "express-tribune-world", name: "Express Tribune", category: "International", feedType: "Latest News", url: "https://tribune.com.pk/feed/world" },
+  { id: "the-news-world", name: "The News", category: "International", feedType: "Latest News", url: "https://www.thenews.com.pk/rss/1/2" },
 ];
 const CORS_HEADERS = {
   "Access-Control-Allow-Origin": "*",
@@ -203,13 +253,21 @@ async function refreshCurrentAffairs() {
   const stories = settled.flatMap((result) =>
     result.status === "fulfilled" ? result.value : []
   );
-  const unique = deduplicateStories(stories)
-    .sort((a, b) => dateValue(b.publishedAt) - dateValue(a.publishedAt));
+  const freshStories = filterFreshStories(deduplicateStories(stories));
   const payload = {
     fetchedAt: Date.now(),
-    national: unique.filter((story) => story.category === "National").slice(0, 20),
-    international: unique.filter((story) => story.category === "International").slice(0, 20),
-    sources: NEWS_SOURCES.map(({ id, name, category }) => ({ id, name, category })),
+    national: selectLatestStories(
+      freshStories.filter((story) => story.category === "National"),
+    ),
+    international: selectLatestStories(
+      freshStories.filter((story) => story.category === "International"),
+    ),
+    sources: NEWS_SOURCES.map(({ id, name, category, feedType }) => ({
+      id,
+      name,
+      category,
+      feedType,
+    })),
   };
   await caches.default.put(
     new Request(NEWS_CACHE_KEY),
@@ -253,6 +311,7 @@ function parseFeed(xml, source) {
       title,
       source: source.name,
       category: source.category,
+      feedType: source.feedType,
       publishedAt: validDate(publishedAt),
       excerpt: description,
       imageUrl: readImage(block),
@@ -293,6 +352,45 @@ function decodeXml(value) {
     .replace(/&gt;/g, ">")
     .replace(/&quot;/g, '"')
     .replace(/&#39;|&apos;/g, "'");
+}
+
+function filterFreshStories(stories, now = Date.now()) {
+  return stories.filter((story) => {
+    const published = dateValue(story.publishedAt);
+    return published > 0 && now - published >= 0 &&
+      now - published <= NEWS_FRESHNESS_WINDOW_MS;
+  });
+}
+
+function selectLatestStories(stories) {
+  if (stories.length === 0) return [];
+
+  // Relevance is used to remove low-value lifestyle/sports noise when there
+  // are exam-relevant stories available. The final ordering remains strictly
+  // newest-first, as required for a Latest feed.
+  const scored = stories.map((story) => ({
+    story,
+    score: relevanceScore(story),
+  }));
+  const relevant = scored.filter((entry) => entry.score > 0);
+  const candidates = relevant.length > 0 ? relevant : scored;
+
+  return candidates
+    .sort((a, b) => dateValue(b.story.publishedAt) - dateValue(a.story.publishedAt))
+    .slice(0, 20)
+    .map((entry) => entry.story);
+}
+
+function relevanceScore(story) {
+  const text = `${story.title} ${story.excerpt}`.toLowerCase();
+  let score = 0;
+  for (const [keyword, weight] of RELEVANCE_BOOSTS) {
+    if (text.includes(keyword)) score += weight;
+  }
+  for (const [keyword, weight] of RELEVANCE_PENALTIES) {
+    if (text.includes(keyword)) score -= weight;
+  }
+  return score;
 }
 
 function dateValue(value) {
