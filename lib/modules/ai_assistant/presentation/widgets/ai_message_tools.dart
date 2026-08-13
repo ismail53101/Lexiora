@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'dart:io';
 
 import 'package:flutter/material.dart';
@@ -103,7 +104,12 @@ class AiReadAloudController {
   final ValueNotifier<Object?> activeMessageId = ValueNotifier<Object?>(null);
   final ValueNotifier<AiReadAloudState> playbackState =
       ValueNotifier<AiReadAloudState>(AiReadAloudState.idle);
+  final ValueNotifier<Duration> playbackElapsed =
+      ValueNotifier<Duration>(Duration.zero);
+  final ValueNotifier<Duration> playbackDuration =
+      ValueNotifier<Duration>(Duration.zero);
 
+  Timer? _progressTimer;
   bool _configured = false;
 
   Future<void> _ensureConfigured() async {
@@ -124,8 +130,35 @@ class AiReadAloudController {
   }
 
   void _resetState() {
+    _stopProgressTimer();
     activeMessageId.value = null;
     playbackState.value = AiReadAloudState.idle;
+    playbackElapsed.value = Duration.zero;
+    playbackDuration.value = Duration.zero;
+  }
+
+  void _stopProgressTimer() {
+    _progressTimer?.cancel();
+    _progressTimer = null;
+  }
+
+  void _startProgressTimer() {
+    _stopProgressTimer();
+    _progressTimer = Timer.periodic(const Duration(seconds: 1), (_) {
+      if (playbackState.value != AiReadAloudState.playing) return;
+      final Duration next = playbackElapsed.value + const Duration(seconds: 1);
+      final Duration total = playbackDuration.value;
+      playbackElapsed.value = total > Duration.zero && next >= total ? total : next;
+    });
+  }
+
+  void _prepareProgress(String text) {
+    final int words = text.trim().split(RegExp(r'\\s+')).length;
+    // A calm reading estimate keeps the progress bar useful even though the
+    // platform TTS plugin does not expose a cross-platform duration callback.
+    final int seconds = (words / 2.25).ceil().clamp(3, 3600);
+    playbackElapsed.value = Duration.zero;
+    playbackDuration.value = Duration(seconds: seconds);
   }
 
   /// Starts reading [text] aloud for [messageId]. Tapping the same active
@@ -138,6 +171,7 @@ class AiReadAloudController {
     if (activeMessageId.value == messageId) {
       if (playbackState.value == AiReadAloudState.playing) {
         await _tts.pause();
+        _stopProgressTimer();
         playbackState.value = AiReadAloudState.paused;
       } else if (playbackState.value == AiReadAloudState.paused) {
         // flutter_tts exposes pause but not a cross-platform resume method.
@@ -145,6 +179,7 @@ class AiReadAloudController {
         // on Android and iOS instead of leaving the control unresponsive.
         final String clean = stripMarkdownForPlainText(text);
         playbackState.value = AiReadAloudState.playing;
+        _startProgressTimer();
         await _tts.speak(clean);
       }
       return;
@@ -157,6 +192,8 @@ class AiReadAloudController {
     // immediately shows that playback is starting, even on a cold TTS engine.
     activeMessageId.value = messageId;
     playbackState.value = AiReadAloudState.playing;
+    _prepareProgress(clean);
+    _startProgressTimer();
     try {
       await _ensureConfigured();
       await _tts.stop();

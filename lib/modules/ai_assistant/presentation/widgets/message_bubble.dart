@@ -346,25 +346,46 @@ class _ActionRow extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final ColorScheme scheme = Theme.of(context).colorScheme;
-    return Row(
-      mainAxisSize: MainAxisSize.min,
-      children: <Widget>[
-        _icon(context, Icons.copy_outlined, 'Copy', onCopy),
-        _icon(context, Icons.thumb_up_outlined, 'Good response',
-            () => onFeedback(true)),
-        _icon(context, Icons.thumb_down_outlined, 'Bad response',
-            () => onFeedback(false)),
-        _ReadAloudButton(messageId: messageId, text: text),
-        _icon(context, Icons.share_outlined, 'Share', onShare),
-        if (onRegenerate != null)
-          _icon(context, Icons.refresh_rounded, 'Regenerate', onRegenerate!),
-      ].map((Widget w) => Padding(
-            padding: const EdgeInsets.only(right: 2),
-            child: IconTheme(
-              data: IconThemeData(color: scheme.onSurfaceVariant, size: 17),
-              child: w,
+    final AiReadAloudController controller = AiReadAloudController.instance;
+    return AnimatedBuilder(
+      animation: Listenable.merge(<Listenable>[
+        controller.activeMessageId,
+        controller.playbackState,
+        controller.playbackElapsed,
+        controller.playbackDuration,
+      ]),
+      builder: (BuildContext context, Widget? child) {
+        final bool active = controller.activeMessageId.value == messageId;
+        return Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: <Widget>[
+            if (active) ...<Widget>[
+              _PlaybackBar(messageId: messageId, text: text),
+              const SizedBox(height: 4),
+            ],
+            Row(
+              mainAxisSize: MainAxisSize.min,
+              children: <Widget>[
+                _icon(context, Icons.copy_outlined, 'Copy', onCopy),
+                _icon(context, Icons.thumb_up_outlined, 'Good response',
+                    () => onFeedback(true)),
+                _icon(context, Icons.thumb_down_outlined, 'Bad response',
+                    () => onFeedback(false)),
+                _ReadAloudButton(messageId: messageId, text: text),
+                _icon(context, Icons.share_outlined, 'Share', onShare),
+                if (onRegenerate != null)
+                  _icon(context, Icons.refresh_rounded, 'Regenerate', onRegenerate!),
+              ].map((Widget w) => Padding(
+                    padding: const EdgeInsets.only(right: 2),
+                    child: IconTheme(
+                      data: IconThemeData(color: scheme.onSurfaceVariant, size: 17),
+                      child: w,
+                    ),
+                  )).toList(),
             ),
-          )).toList(),
+          ],
+        );
+      },
     );
   }
 
@@ -377,6 +398,88 @@ class _ActionRow extends StatelessWidget {
       padding: EdgeInsets.zero,
       constraints: const BoxConstraints(minWidth: 30, minHeight: 28),
       onPressed: onTap,
+    );
+  }
+}
+
+class _PlaybackBar extends StatelessWidget {
+  const _PlaybackBar({required this.messageId, required this.text});
+
+  final String messageId;
+  final String text;
+
+  static String _clock(Duration value) {
+    final int seconds = value.inSeconds;
+    final String minutes = (seconds ~/ 60).toString().padLeft(2, '0');
+    final String remainder = (seconds % 60).toString().padLeft(2, '0');
+    return '$minutes:$remainder';
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final AiReadAloudController controller = AiReadAloudController.instance;
+    final ColorScheme scheme = Theme.of(context).colorScheme;
+    final AiReadAloudState state = controller.playbackState.value;
+    final bool paused = state == AiReadAloudState.paused;
+    final Duration elapsed = controller.playbackElapsed.value;
+    final Duration total = controller.playbackDuration.value;
+    final double progress = total.inMilliseconds <= 0
+        ? 0
+        : (elapsed.inMilliseconds / total.inMilliseconds).clamp(0.0, 1.0);
+
+    return Container(
+      width: double.infinity,
+      padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 5),
+      decoration: BoxDecoration(
+        color: scheme.surfaceContainerHighest.withValues(alpha: 0.82),
+        borderRadius: BorderRadius.circular(24),
+        border: Border.all(color: scheme.outlineVariant.withValues(alpha: 0.7)),
+      ),
+      child: Row(
+        children: <Widget>[
+          IconButton(
+            tooltip: paused ? 'Resume reading' : 'Pause reading',
+            visualDensity: VisualDensity.compact,
+            padding: EdgeInsets.zero,
+            constraints: const BoxConstraints(minWidth: 40, minHeight: 36),
+            style: IconButton.styleFrom(
+              backgroundColor: scheme.primary,
+              foregroundColor: scheme.onPrimary,
+            ),
+            icon: Icon(paused ? Icons.play_arrow_rounded : Icons.pause_rounded),
+            onPressed: () => controller.toggle(messageId, text),
+          ),
+          const SizedBox(width: 8),
+          Text(
+            _clock(elapsed),
+            style: Theme.of(context).textTheme.labelMedium?.copyWith(
+                  fontFeatures: const <FontFeature>[
+                    FontFeature.tabularFigures(),
+                  ],
+                  fontWeight: FontWeight.w700,
+                ),
+          ),
+          const SizedBox(width: 10),
+          Expanded(
+            child: LinearProgressIndicator(
+              value: progress,
+              minHeight: 3,
+              borderRadius: BorderRadius.circular(3),
+              backgroundColor: scheme.outlineVariant.withValues(alpha: 0.6),
+              valueColor: AlwaysStoppedAnimation<Color>(scheme.primary),
+            ),
+          ),
+          const SizedBox(width: 8),
+          IconButton(
+            tooltip: 'Stop reading',
+            visualDensity: VisualDensity.compact,
+            padding: EdgeInsets.zero,
+            constraints: const BoxConstraints(minWidth: 38, minHeight: 36),
+            icon: const Icon(Icons.close_rounded),
+            onPressed: controller.stop,
+          ),
+        ],
+      ),
     );
   }
 }
