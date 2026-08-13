@@ -86,6 +86,11 @@ class MessageBubble extends StatelessWidget {
           if (text.isNotEmpty || (_isError && text.isEmpty))
             const SizedBox(height: 8),
         ],
+        if (attachment.hasPdf) ...<Widget>[
+          _AttachedPdf(name: attachment.pdfName ?? 'Attached PDF'),
+          if (text.isNotEmpty || (_isError && text.isEmpty))
+            const SizedBox(height: 8),
+        ],
         Padding(
           padding:
               EdgeInsets.symmetric(horizontal: attachment.hasImage ? 8 : 0),
@@ -593,6 +598,44 @@ class _ShowMoreToggle extends StatelessWidget {
             ),
           ],
         ),
+      ),
+    );
+  }
+}
+
+class _AttachedPdf extends StatelessWidget {
+  const _AttachedPdf({required this.name});
+
+  final String name;
+
+  @override
+  Widget build(BuildContext context) {
+    final ThemeData theme = Theme.of(context);
+    final ColorScheme scheme = theme.colorScheme;
+    return Container(
+      padding: const EdgeInsets.symmetric(horizontal: 11, vertical: 9),
+      decoration: BoxDecoration(
+        color: scheme.onPrimary.withValues(alpha: 0.12),
+        borderRadius: BorderRadius.circular(12),
+        border: Border.all(color: scheme.onPrimary.withValues(alpha: 0.25)),
+      ),
+      child: Row(
+        mainAxisSize: MainAxisSize.min,
+        children: <Widget>[
+          Icon(Icons.picture_as_pdf_outlined, color: scheme.onPrimary, size: 22),
+          const SizedBox(width: 8),
+          Flexible(
+            child: Text(
+              name,
+              maxLines: 1,
+              overflow: TextOverflow.ellipsis,
+              style: theme.textTheme.labelLarge?.copyWith(
+                color: scheme.onPrimary,
+                fontWeight: FontWeight.w700,
+              ),
+            ),
+          ),
+        ],
       ),
     );
   }

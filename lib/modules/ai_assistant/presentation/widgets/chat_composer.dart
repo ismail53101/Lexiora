@@ -31,6 +31,9 @@ class _ChatComposerState extends ConsumerState<ChatComposer> {
 
   bool _hasText = false;
   String? _pendingImagePath;
+  String? _pendingPdfPath;
+  String? _pendingPdfName;
+  String? _pendingPdfText;
   bool _pickingImage = false;
   bool _pickingPdf = false;
 
@@ -50,7 +53,8 @@ class _ChatComposerState extends ConsumerState<ChatComposer> {
     super.dispose();
   }
 
-  bool get _canSend => _hasText || _pendingImagePath != null;
+  bool get _canSend =>
+      _hasText || _pendingImagePath != null || _pendingPdfPath != null;
 
   Future<void> _pickImage(ImageSource source) async {
     if (_pickingImage) return;
@@ -88,11 +92,9 @@ class _ChatComposerState extends ConsumerState<ChatComposer> {
     return dir;
   }
 
-  /// Opens the same native PDF picker the Library's "Import PDF" uses, pulls
-  /// the plain text out of whichever file is chosen, and drops it into the
-  /// message box (with a clear `[PDF attached: ...]` marker) so the person
-  /// can add their own question before sending — same idea as the existing
-  /// image attachment, just for documents instead of photos.
+  /// Opens the same native PDF picker the Library's "Import PDF" uses. The
+  /// selected document stays as a PDF attachment chip; extracted text is kept
+  /// as hidden context for the AI request and is never pasted into the editor.
   Future<void> _attachPdf() async {
     if (_pickingPdf) return;
     setState(() => _pickingPdf = true);
@@ -112,18 +114,17 @@ class _ChatComposerState extends ConsumerState<ChatComposer> {
         messenger.showSnackBar(
           const SnackBar(
             content: Text(
-              "Couldn't read any text from that PDF (it may be a scanned "
-              'image with no text layer).',
+              "PDF attached, but no text layer was found. You can still ask "
+              'about it after adding a question.',
             ),
           ),
         );
-        return;
       }
-      final String block = '[PDF attached: ${file.name}]\n$extracted\n\n';
-      final String existing = _controller.text;
-      _controller.text = block + existing;
-      _controller.selection =
-          TextSelection.collapsed(offset: _controller.text.length);
+      setState(() {
+        _pendingPdfPath = file.path;
+        _pendingPdfName = file.name;
+        _pendingPdfText = extracted;
+      });
       _focus.requestFocus();
     } on Object {
       if (mounted) {
@@ -163,7 +164,8 @@ class _ChatComposerState extends ConsumerState<ChatComposer> {
             ListTile(
               leading: const Icon(Icons.picture_as_pdf_outlined),
               title: const Text('Attach a PDF'),
-              subtitle: const Text('Its text is added so you can ask about it'),
+              subtitle: const Text('Attach the document and ask about it'),
+
               onTap: () {
                 Navigator.of(sheetContext).pop();
                 _attachPdf();
@@ -180,11 +182,19 @@ class _ChatComposerState extends ConsumerState<ChatComposer> {
     if (!_canSend) return;
     final String content = AiAttachment.encode(
       imagePath: _pendingImagePath,
+      pdfPath: _pendingPdfPath,
+      pdfName: _pendingPdfName,
+      pdfText: _pendingPdfText,
       text: _controller.text.trim(),
     );
     ref.read(aiChatControllerProvider.notifier).send(content);
     _controller.clear();
-    setState(() => _pendingImagePath = null);
+    setState(() {
+      _pendingImagePath = null;
+      _pendingPdfPath = null;
+      _pendingPdfName = null;
+      _pendingPdfText = null;
+    });
     _focus.requestFocus();
   }
 
@@ -233,6 +243,17 @@ class _ChatComposerState extends ConsumerState<ChatComposer> {
               _ImagePreviewChip(
                 path: _pendingImagePath!,
                 onRemove: () => setState(() => _pendingImagePath = null),
+              ),
+              const SizedBox(height: 8),
+            ],
+            if (_pendingPdfPath != null) ...<Widget>[
+              _PdfPreviewChip(
+                name: _pendingPdfName ?? 'Attached PDF',
+                onRemove: () => setState(() {
+                  _pendingPdfPath = null;
+                  _pendingPdfName = null;
+                  _pendingPdfText = null;
+                }),
               ),
               const SizedBox(height: 8),
             ],
@@ -390,6 +411,58 @@ class _ImagePreviewChip extends StatelessWidget {
             ),
           ),
         ],
+      ),
+    );
+  }
+}
+
+class _PdfPreviewChip extends StatelessWidget {
+  const _PdfPreviewChip({required this.name, required this.onRemove});
+
+  final String name;
+  final VoidCallback onRemove;
+
+  @override
+  Widget build(BuildContext context) {
+    final ThemeData theme = Theme.of(context);
+    final ColorScheme scheme = theme.colorScheme;
+    return Align(
+      alignment: Alignment.centerLeft,
+      child: Container(
+        constraints: const BoxConstraints(maxWidth: 300),
+        padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 9),
+        decoration: BoxDecoration(
+          color: scheme.errorContainer.withValues(alpha: 0.58),
+          borderRadius: BorderRadius.circular(14),
+          border: Border.all(color: scheme.outlineVariant),
+        ),
+        child: Row(
+          mainAxisSize: MainAxisSize.min,
+          children: <Widget>[
+            Icon(Icons.picture_as_pdf_outlined, color: scheme.error, size: 22),
+            const SizedBox(width: 8),
+            Flexible(
+              child: Text(
+                name,
+                maxLines: 1,
+                overflow: TextOverflow.ellipsis,
+                style: theme.textTheme.labelLarge?.copyWith(
+                  color: scheme.onErrorContainer,
+                  fontWeight: FontWeight.w700,
+                ),
+              ),
+            ),
+            const SizedBox(width: 6),
+            IconButton(
+              onPressed: onRemove,
+              tooltip: 'Remove PDF',
+              visualDensity: VisualDensity.compact,
+              padding: EdgeInsets.zero,
+              constraints: const BoxConstraints(minWidth: 26, minHeight: 26),
+              icon: Icon(Icons.close_rounded, color: scheme.onErrorContainer, size: 18),
+            ),
+          ],
+        ),
       ),
     );
   }
