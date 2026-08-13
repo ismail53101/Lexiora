@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'dart:io';
 
 import 'dart:ui' as ui;
@@ -9,6 +10,9 @@ import 'package:go_router/go_router.dart';
 import 'package:lexiora/app/di/injector.dart';
 import 'package:lexiora/app/router/app_routes.dart';
 import 'package:lexiora/core/navigation/home_destination.dart';
+import 'package:lexiora/core/services/permission_service.dart';
+import 'package:lexiora/core/usecase/usecase.dart';
+import 'package:lexiora/core/utils/result.dart';
 import 'package:lexiora/core/widgets/app_bottom_nav.dart';
 import 'package:lexiora/core/widgets/empty_state.dart';
 import 'package:lexiora/features/home/data/latest_update_mock_data.dart';
@@ -30,11 +34,110 @@ import 'package:lexiora/modules/study_hub/presentation/providers/study_hub_provi
 /// module grid (brought up top so it's visible without scrolling),
 /// followed by Continue reading / Recent documents, Favorites and the
 /// at-a-glance stats row further down — the app's landing tab.
-class HomePage extends ConsumerWidget {
+class HomePage extends ConsumerStatefulWidget {
   const HomePage({super.key});
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
+  ConsumerState<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends ConsumerState<HomePage>
+    with WidgetsBindingObserver {
+  bool _discoveryInFlight = false;
+  bool _permissionPromptShown = false;
+
+  @override
+  void initState() {
+    super.initState();
+    WidgetsBinding.instance.addObserver(this);
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      unawaited(_initializePdfDiscovery());
+    });
+  }
+
+  @override
+  void dispose() {
+    WidgetsBinding.instance.removeObserver(this);
+    super.dispose();
+  }
+
+  @override
+  void didChangeAppLifecycleState(AppLifecycleState state) {
+    if (state == AppLifecycleState.resumed) {
+      // This covers returning from Android's All files access settings. If
+      // access was granted there, the scan starts without a restart.
+      unawaited(_initializePdfDiscovery());
+    }
+  }
+
+  Future<void> _initializePdfDiscovery() async {
+    if (!mounted || _discoveryInFlight) return;
+    final PermissionService permission = ref.read(permissionServiceProvider);
+    final bool granted = await permission.isGrantedForDiscovery();
+    if (!mounted) return;
+    if (granted) {
+      await _scanInBackground();
+      return;
+    }
+    if (!_permissionPromptShown) {
+      _permissionPromptShown = true;
+      _showPermissionPrompt();
+    }
+  }
+
+  Future<void> _scanInBackground() async {
+    if (_discoveryInFlight || !mounted) return;
+    _discoveryInFlight = true;
+    try {
+      final Result<DiscoveryOutcome> result =
+          await ref.read(autoDiscoverProvider).call(const NoParams());
+      if (!mounted) return;
+      result.fold(
+        (failure) => debugPrint('Background PDF discovery failed: ${failure.message}'),
+        (_) {},
+      );
+    } finally {
+      _discoveryInFlight = false;
+    }
+  }
+
+  void _showPermissionPrompt() {
+    final ScaffoldMessengerState messenger = ScaffoldMessenger.of(context);
+    messenger
+      ..hideCurrentSnackBar()
+      ..showSnackBar(
+        SnackBar(
+          content: const Text('Allow file access to discover PDFs automatically.'),
+          action: SnackBarAction(
+            label: 'Allow',
+            onPressed: () => unawaited(_requestPermissionAndScan()),
+          ),
+          duration: const Duration(seconds: 8),
+        ),
+      );
+  }
+
+  Future<void> _requestPermissionAndScan() async {
+    final PermissionService permission = ref.read(permissionServiceProvider);
+    final StorageAccessStatus status = await permission.requestForDiscovery();
+    if (!mounted) return;
+    if (status == StorageAccessStatus.granted) {
+      await _scanInBackground();
+    } else if (status == StorageAccessStatus.permanentlyDenied) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: const Text('Enable file access in Android Settings to scan PDFs.'),
+          action: SnackBarAction(
+            label: 'Settings',
+            onPressed: () => unawaited(permission.openSystemSettings()),
+          ),
+        ),
+      );
+    }
+  }
+
+  @override
+  Widget build(BuildContext context) {
     final AsyncValue<List<LibraryDocument>> all =
         ref.watch(allDocumentsProvider);
     final AsyncValue<List<LibraryEntry>> continueReading =
