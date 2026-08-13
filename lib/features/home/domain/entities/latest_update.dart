@@ -8,6 +8,7 @@ class LatestUpdate {
     required this.source,
     required this.category,
     required this.relativeTime,
+    this.feedType = 'Latest News',
     this.excerpt = '',
     this.imageUrl,
     this.articleUrl,
@@ -18,6 +19,7 @@ class LatestUpdate {
   final String source;
   final String category;
   final String relativeTime;
+  final String feedType;
   final String excerpt;
   final String? imageUrl;
   final String? articleUrl;

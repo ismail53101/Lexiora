@@ -15,6 +15,7 @@ class CurrentAffairsPage extends ConsumerStatefulWidget {
 
 class _CurrentAffairsPageState extends ConsumerState<CurrentAffairsPage> {
   int _selectedSection = 0;
+  int _selectedFeedType = 0;
 
   Future<void> _refresh() async {
     ref.invalidate(currentAffairsProvider);
@@ -32,8 +33,12 @@ class _CurrentAffairsPageState extends ConsumerState<CurrentAffairsPage> {
     );
     final List<LatestUpdate> national = liveFeed?.national ?? _fallback('National');
     final List<LatestUpdate> international = liveFeed?.international ?? _fallback('International');
-    final List<LatestUpdate> stories = _selectedSection == 0 ? national : international;
+    final List<LatestUpdate> sectionStories = _selectedSection == 0 ? national : international;
     final String sectionLabel = _selectedSection == 0 ? 'National' : 'International';
+    final String feedLabel = _selectedFeedType == 0 ? 'Latest' : 'Opinions';
+    final List<LatestUpdate> stories = sectionStories
+        .where((LatestUpdate story) => _matchesFeedType(story, _selectedFeedType))
+        .toList(growable: false);
     final bool isRefreshing = feedAsync.isLoading && liveFeed == null;
 
     return Scaffold(
@@ -80,9 +85,19 @@ class _CurrentAffairsPageState extends ConsumerState<CurrentAffairsPage> {
             ),
             SliverToBoxAdapter(
               child: Padding(
+                padding: const EdgeInsets.fromLTRB(20, 12, 20, 0),
+                child: _FeedTypeSwitcher(
+                  selectedFeedType: _selectedFeedType,
+                  onFeedTypeChanged: (int index) => setState(() => _selectedFeedType = index),
+                ),
+              ),
+            ),
+            SliverToBoxAdapter(
+              child: Padding(
                 padding: const EdgeInsets.fromLTRB(20, 22, 20, 0),
                 child: _SectionHeading(
                   sectionLabel: sectionLabel,
+                  feedLabel: feedLabel,
                   storyCount: stories.length,
                   isLive: liveFeed != null,
                 ),
@@ -125,6 +140,13 @@ class _CurrentAffairsPageState extends ConsumerState<CurrentAffairsPage> {
         ),
       ),
     );
+  }
+
+  bool _matchesFeedType(LatestUpdate story, int selectedFeedType) {
+    if (selectedFeedType == 0) {
+      return story.feedType.toLowerCase() != 'opinions';
+    }
+    return story.feedType.toLowerCase() == 'opinions';
   }
 
   List<LatestUpdate> _fallback(String category) {
@@ -227,6 +249,88 @@ class _IntroBlock extends StatelessWidget {
   }
 }
 
+class _FeedTypeSwitcher extends StatelessWidget {
+  const _FeedTypeSwitcher({required this.selectedFeedType, required this.onFeedTypeChanged});
+
+  final int selectedFeedType;
+  final ValueChanged<int> onFeedTypeChanged;
+
+  @override
+  Widget build(BuildContext context) {
+    final ThemeData theme = Theme.of(context);
+    final ColorScheme scheme = theme.colorScheme;
+    return DecoratedBox(
+      decoration: BoxDecoration(
+        color: scheme.surfaceContainerHighest.withValues(alpha: 0.62),
+        borderRadius: BorderRadius.circular(14),
+        border: Border.all(color: scheme.outlineVariant.withValues(alpha: 0.58)),
+      ),
+      child: Padding(
+        padding: const EdgeInsets.all(3),
+        child: Row(
+          children: <Widget>[
+            _FeedTypeSegment(
+              label: 'Latest',
+              icon: Icons.bolt_rounded,
+              selected: selectedFeedType == 0,
+              onTap: () => onFeedTypeChanged(0),
+            ),
+            _FeedTypeSegment(
+              label: 'Opinions',
+              icon: Icons.forum_outlined,
+              selected: selectedFeedType == 1,
+              onTap: () => onFeedTypeChanged(1),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class _FeedTypeSegment extends StatelessWidget {
+  const _FeedTypeSegment({required this.label, required this.icon, required this.selected, required this.onTap});
+
+  final String label;
+  final IconData icon;
+  final bool selected;
+  final VoidCallback onTap;
+
+  @override
+  Widget build(BuildContext context) {
+    final ThemeData theme = Theme.of(context);
+    final ColorScheme scheme = theme.colorScheme;
+    final Color foreground = selected ? scheme.onSecondaryContainer : scheme.onSurfaceVariant;
+    return Expanded(
+      child: Material(
+        color: selected ? scheme.secondaryContainer : Colors.transparent,
+        borderRadius: BorderRadius.circular(11),
+        child: InkWell(
+          onTap: onTap,
+          borderRadius: BorderRadius.circular(11),
+          child: Padding(
+            padding: const EdgeInsets.symmetric(vertical: 8),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                Icon(icon, size: 16, color: foreground),
+                const SizedBox(width: 6),
+                Text(
+                  label,
+                  style: theme.textTheme.labelLarge?.copyWith(
+                    color: foreground,
+                    fontWeight: FontWeight.w900,
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+}
+
 class _Segment extends StatelessWidget {
   const _Segment({required this.label, required this.detail, required this.selected, required this.onTap});
 
@@ -281,9 +385,10 @@ class _Segment extends StatelessWidget {
 }
 
 class _SectionHeading extends StatelessWidget {
-  const _SectionHeading({required this.sectionLabel, required this.storyCount, required this.isLive});
+  const _SectionHeading({required this.sectionLabel, required this.feedLabel, required this.storyCount, required this.isLive});
 
   final String sectionLabel;
+  final String feedLabel;
   final int storyCount;
   final bool isLive;
 
@@ -299,12 +404,12 @@ class _SectionHeading extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
               Text(
-                '$sectionLabel headlines',
+                '$sectionLabel · $feedLabel headlines',
                 style: theme.textTheme.titleMedium?.copyWith(fontWeight: FontWeight.w900),
               ),
               const SizedBox(height: 3),
               Text(
-                '$storyCount latest reports',
+                '$storyCount $feedLabel reports',
                 style: theme.textTheme.bodySmall?.copyWith(color: scheme.onSurfaceVariant),
               ),
             ],

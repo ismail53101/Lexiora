@@ -39,6 +39,9 @@ class CurrentAffairsFeed {
       source: json['source']?.toString() ?? 'Current Affairs',
       category: json['category']?.toString() ?? 'International',
       relativeTime: _relativeTime(publishedAt),
+      feedType: json['feedType']?.toString().trim().isNotEmpty == true
+          ? json['feedType'].toString()
+          : 'Latest News',
       excerpt: json['excerpt']?.toString() ?? '',
       imageUrl: _nullable(json['imageUrl']),
       articleUrl: _nullable(json['articleUrl']),
