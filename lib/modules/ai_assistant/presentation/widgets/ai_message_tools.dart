@@ -120,17 +120,21 @@ class AiReadAloudController {
   /// so the caller can show the real error instead of the tap silently
   /// doing nothing.
   Future<void> toggle(Object messageId, String text) async {
-    await _ensureConfigured();
     if (activeMessageId.value == messageId) {
-      await _tts.stop();
       activeMessageId.value = null;
+      await _tts.stop();
       return;
     }
-    await _tts.stop();
+
     final String clean = stripMarkdownForPlainText(text);
     if (clean.isEmpty) return;
+
+    // Publish the state before any asynchronous engine setup so the button
+    // immediately shows that playback is starting, even on a cold TTS engine.
     activeMessageId.value = messageId;
     try {
+      await _ensureConfigured();
+      await _tts.stop();
       await _tts.setLanguage('en-US');
       await _tts.setSpeechRate(0.46);
       await _tts.setPitch(1.0);

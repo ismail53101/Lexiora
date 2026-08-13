@@ -397,10 +397,18 @@ class _ReadAloudButton extends StatelessWidget {
       valueListenable: AiReadAloudController.instance.activeMessageId,
       builder: (BuildContext context, Object? activeId, _) {
         final bool speaking = activeId == messageId;
+        final ColorScheme scheme = Theme.of(context).colorScheme;
         return IconButton(
-          icon: Icon(speaking
-              ? Icons.stop_circle_outlined
-              : Icons.volume_up_outlined),
+          icon: AnimatedSwitcher(
+            duration: const Duration(milliseconds: 180),
+            transitionBuilder: (Widget child, Animation<double> animation) =>
+                FadeTransition(opacity: animation, child: child),
+            child: Icon(
+              speaking ? Icons.stop_circle_rounded : Icons.volume_up_rounded,
+              key: ValueKey<bool>(speaking),
+              color: speaking ? scheme.primary : scheme.onSurfaceVariant,
+            ),
+          ),
           tooltip: speaking ? 'Stop reading' : 'Read aloud',
           visualDensity: VisualDensity.compact,
           padding: EdgeInsets.zero,
