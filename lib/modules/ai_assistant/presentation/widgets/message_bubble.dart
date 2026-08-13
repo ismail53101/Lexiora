@@ -141,6 +141,7 @@ class MessageBubble extends StatelessWidget {
               messageId: message.id,
               text: text,
               onCopy: () => _copy(context, text),
+              onShare: () => _share(text),
               onRegenerate: onRegenerate,
               onFeedback: (bool liked) => _feedback(context, liked),
             ),
@@ -325,6 +326,7 @@ class _ActionRow extends StatelessWidget {
     required this.messageId,
     required this.text,
     required this.onCopy,
+    required this.onShare,
     required this.onFeedback,
     this.onRegenerate,
   });
@@ -332,6 +334,7 @@ class _ActionRow extends StatelessWidget {
   final String messageId;
   final String text;
   final VoidCallback onCopy;
+  final VoidCallback onShare;
   final ValueChanged<bool> onFeedback;
   final VoidCallback? onRegenerate;
 
@@ -347,7 +350,7 @@ class _ActionRow extends StatelessWidget {
         _icon(context, Icons.thumb_down_outlined, 'Bad response',
             () => onFeedback(false)),
         _ReadAloudButton(messageId: messageId, text: text),
-        _icon(context, Icons.share_outlined, 'Share', () => _share(text)),
+        _icon(context, Icons.share_outlined, 'Share', onShare),
         if (onRegenerate != null)
           _icon(context, Icons.refresh_rounded, 'Regenerate', onRegenerate!),
       ].map((Widget w) => Padding(
