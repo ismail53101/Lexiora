@@ -584,18 +584,103 @@ class _EmptyStoriesCard extends StatelessWidget {
 }
 
 Future<void> _openArticle(BuildContext context, LatestUpdate story) async {
-  final String? articleUrl = story.articleUrl;
+  final String? articleUrl = story.articleUrl?.trim();
   if (articleUrl == null || articleUrl.isEmpty) {
-    ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text('This story has no article link.')));
+    await _showArticleUnavailable(context, story);
     return;
   }
+
   final Uri? uri = Uri.tryParse(articleUrl);
   if (uri == null || !(uri.scheme == 'http' || uri.scheme == 'https')) {
-    ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text('This article link is unavailable.')));
+    await _showArticleUnavailable(context, story);
     return;
   }
-  final bool opened = await launchUrl(uri, mode: LaunchMode.externalApplication);
-  if (!opened && context.mounted) {
-    ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text('Could not open the article.')));
+
+  try {
+    final bool opened = await launchUrl(
+      uri,
+      mode: LaunchMode.externalApplication,
+    );
+    if (!opened && context.mounted) {
+      await _showArticleUnavailable(context, story);
+    }
+  } on Object {
+    if (context.mounted) {
+      await _showArticleUnavailable(context, story);
+    }
   }
+}
+
+Future<void> _showArticleUnavailable(
+  BuildContext context,
+  LatestUpdate story,
+) async {
+  if (!context.mounted) return;
+  final ThemeData theme = Theme.of(context);
+  final ColorScheme scheme = theme.colorScheme;
+  final String url = story.articleUrl?.trim() ?? '';
+
+  await showDialog<void>(
+    context: context,
+    builder: (BuildContext dialogContext) {
+      return AlertDialog(
+        icon: Icon(Icons.public_off_rounded, color: scheme.tertiary),
+        title: const Text('Source temporarily unavailable'),
+        content: SingleChildScrollView(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisSize: MainAxisSize.min,
+            children: <Widget>[
+              Text(
+                'This ${story.source} article could not be opened. The original news source may be unavailable on your network or may be blocking access from this device.',
+                style: theme.textTheme.bodyMedium?.copyWith(
+                  color: scheme.onSurfaceVariant,
+                  height: 1.35,
+                ),
+              ),
+              const SizedBox(height: 14),
+              Text(
+                'Original source',
+                style: theme.textTheme.labelMedium?.copyWith(
+                  color: scheme.primary,
+                  fontWeight: FontWeight.w800,
+                ),
+              ),
+              const SizedBox(height: 4),
+              Text(
+                story.source,
+                style: theme.textTheme.titleSmall?.copyWith(
+                  fontWeight: FontWeight.w800,
+                ),
+              ),
+              if (url.isNotEmpty) ...[
+                const SizedBox(height: 10),
+                SelectableText(
+                  url,
+                  style: theme.textTheme.bodySmall?.copyWith(
+                    color: scheme.onSurfaceVariant,
+                    height: 1.3,
+                  ),
+                ),
+              ],
+            ],
+          ),
+        ),
+        actions: <Widget>[
+          TextButton(
+            onPressed: () => Navigator.of(dialogContext).pop(),
+            child: const Text('Close'),
+          ),
+          if (url.isNotEmpty)
+            FilledButton.tonal(
+              onPressed: () {
+                Navigator.of(dialogContext).pop();
+                _openArticle(context, story);
+              },
+              child: const Text('Try again'),
+            ),
+        ],
+      );
+    },
+  );
 }
