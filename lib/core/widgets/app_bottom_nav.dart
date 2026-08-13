@@ -16,7 +16,13 @@ class AppBottomNav extends StatelessWidget {
   final int currentIndex;
 
   static const List<_Tab> _tabs = <_Tab>[
-    _Tab('Home', Icons.home_outlined, Icons.home_rounded, AppRoutes.home),
+    _Tab(
+      'Home',
+      Icons.home_outlined,
+      Icons.home_rounded,
+      AppRoutes.home,
+      imageAsset: 'assets/branding/home_nav.jpg',
+    ),
     _Tab(
       'AI Assistant',
       Icons.smart_toy_outlined,
@@ -33,8 +39,13 @@ class AppBottomNav extends StatelessWidget {
     ),
     _Tab('Notes', Icons.notes_outlined, Icons.notes_rounded,
         AppRoutes.notesHome),
-    _Tab('Profile', Icons.person_outline, Icons.person_rounded,
-        AppRoutes.profile),
+    _Tab(
+      'Profile',
+      Icons.person_outline,
+      Icons.person_rounded,
+      AppRoutes.profile,
+      imageAsset: 'assets/branding/profile_nav.jpg',
+    ),
   ];
 
   @override
