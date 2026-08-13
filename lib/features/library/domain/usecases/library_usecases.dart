@@ -6,6 +6,7 @@ import 'package:lexiora/core/services/pdf_import_service.dart';
 import 'package:lexiora/core/usecase/usecase.dart';
 import 'package:lexiora/core/utils/guard.dart';
 import 'package:lexiora/core/utils/logger.dart';
+import 'package:lexiora/core/utils/result.dart';
 import 'package:lexiora/core/utils/typedefs.dart';
 import 'package:lexiora/features/annotations/domain/repositories/annotations_repository.dart';
 import 'package:lexiora/features/bookmarks/domain/repositories/bookmarks_repository.dart';
