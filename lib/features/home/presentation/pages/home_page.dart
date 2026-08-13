@@ -1,5 +1,7 @@
 import 'dart:io';
 
+import 'dart:ui' as ui;
+
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -65,8 +67,14 @@ class HomePage extends ConsumerWidget {
       bottomNavigationBar: const AppBottomNav(currentIndex: 0),
       body: SafeArea(
         bottom: false,
-        child: CustomScrollView(
-          slivers: [
+        child: Stack(
+          fit: StackFit.expand,
+          children: <Widget>[
+            _HomeBackgroundDecor(
+              enabled: Theme.of(context).brightness == Brightness.light,
+            ),
+            CustomScrollView(
+              slivers: [
             SliverToBoxAdapter(
               child: Padding(
                 padding: const EdgeInsets.fromLTRB(20, 12, 20, 4),
@@ -124,6 +132,8 @@ class HomePage extends ConsumerWidget {
             ],
             const SliverToBoxAdapter(child: _HomeFooter()),
             const SliverToBoxAdapter(child: SizedBox(height: 24)),
+              ],
+            ),
           ],
         ),
       ),
@@ -862,6 +872,94 @@ class _HomeFooter extends StatelessWidget {
                 ),
               ),
             ],
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class _HomeBackgroundDecor extends StatelessWidget {
+  const _HomeBackgroundDecor({required this.enabled});
+
+  final bool enabled;
+
+  @override
+  Widget build(BuildContext context) {
+    if (!enabled) return const SizedBox.expand();
+    final ColorScheme scheme = Theme.of(context).colorScheme;
+    return IgnorePointer(
+      child: ClipRect(
+        child: Stack(
+          fit: StackFit.expand,
+          children: <Widget>[
+            ColoredBox(color: scheme.surface),
+            _PastelBlob(
+              color: const Color(0xFFB9F2C6),
+              size: 320,
+              top: -115,
+              left: -105,
+            ),
+            _PastelBlob(
+              color: const Color(0xFFB9E7FF),
+              size: 370,
+              top: 10,
+              right: -150,
+            ),
+            _PastelBlob(
+              color: const Color(0xFFFFC6DF),
+              size: 330,
+              top: 410,
+              right: -155,
+            ),
+            _PastelBlob(
+              color: const Color(0xFFBDEFFF),
+              size: 290,
+              top: 780,
+              left: -170,
+            ),
+            _PastelBlob(
+              color: const Color(0xFFE5C8FF),
+              size: 310,
+              top: 1160,
+              right: -160,
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class _PastelBlob extends StatelessWidget {
+  const _PastelBlob({
+    required this.color,
+    required this.size,
+    this.top,
+    this.right,
+    this.left,
+  });
+
+  final Color color;
+  final double size;
+  final double? top;
+  final double? right;
+  final double? left;
+
+  @override
+  Widget build(BuildContext context) {
+    return Positioned(
+      top: top,
+      right: right,
+      left: left,
+      child: ImageFiltered(
+        imageFilter: ui.ImageFilter.blur(sigmaX: 42, sigmaY: 42),
+        child: Container(
+          width: size,
+          height: size,
+          decoration: BoxDecoration(
+            color: color.withValues(alpha: 0.14),
+            shape: BoxShape.circle,
           ),
         ),
       ),
