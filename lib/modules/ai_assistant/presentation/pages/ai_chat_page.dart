@@ -217,10 +217,8 @@ class _Welcome extends StatelessWidget {
                 ],
               ),
               clipBehavior: Clip.antiAlias,
-              // Keep the original Sapiora logo in the AI Assistant welcome
-              // circle. The new AI artwork is used only on the Home tile.
               child: Image.asset(
-                'assets/branding/app_icon.png',
+                'assets/branding/ai_assistant_nav.png',
                 fit: BoxFit.cover,
               ),
             ),

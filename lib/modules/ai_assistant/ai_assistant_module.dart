@@ -68,7 +68,7 @@ class AiAssistantModule extends FeatureModule {
           label: 'AI Assistant',
           subtitle: 'Chat, ask & learn',
           icon: Icons.smart_toy_outlined,
-          imageAsset: 'assets/quiz/branding/sapiora_ai_page_badge.png',
+          imageAsset: 'assets/branding/ai_assistant_nav.png',
           routePath: AppRoutes.aiAssistant,
           order: 16,
         ),

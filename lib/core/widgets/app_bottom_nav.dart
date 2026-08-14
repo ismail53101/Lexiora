@@ -21,14 +21,14 @@ class AppBottomNav extends StatelessWidget {
       Icons.home_outlined,
       Icons.home_rounded,
       AppRoutes.home,
-      imageAsset: 'assets/branding/home_nav.jpg',
+      imageAsset: 'assets/branding/home_nav.png',
     ),
     _Tab(
       'AI Assistant',
       Icons.smart_toy_outlined,
       Icons.smart_toy_rounded,
       AppRoutes.aiAssistant,
-      imageAsset: 'assets/quiz/branding/sapiora_ai_page_badge.png',
+      imageAsset: 'assets/branding/ai_assistant_nav.png',
     ),
     _Tab(
       'Quiz',
