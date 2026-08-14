@@ -29,6 +29,10 @@ abstract final class AppRoutes {
   static const String grammarLessonPattern = '/grammar/lesson/:id';
   static String grammarLesson(String id) =>
       '/grammar/lesson/${Uri.encodeComponent(id)}';
+  static const String grammarTypeName = 'grammarType';
+  static const String grammarTypePattern = '/grammar/lesson/:id/type/:type';
+  static String grammarType(String lessonId, String type) =>
+      '/grammar/lesson/${Uri.encodeComponent(lessonId)}/type/${Uri.encodeComponent(type)}';
 
   // Study Hub (Phase v0.7.0 / v0.7.1)
   static const String studyHub = '/study-hub';

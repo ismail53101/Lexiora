@@ -2,6 +2,8 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:go_router/go_router.dart';
+import 'package:lexiora/app/router/app_routes.dart';
 import 'package:lexiora/core/widgets/empty_state.dart';
 import 'package:lexiora/core/widgets/error_view.dart';
 import 'package:lexiora/modules/grammar/domain/entities/grammar_lesson.dart';
@@ -142,6 +144,9 @@ class _LessonView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final ThemeData theme = Theme.of(context);
+    if (lesson.id == 'pos/noun') {
+      return _NounLandingView(lesson: lesson);
+    }
     return ListView(
       padding: const EdgeInsets.fromLTRB(16, 16, 16, 24),
       children: <Widget>[
@@ -197,7 +202,7 @@ class _LessonView extends StatelessWidget {
             GrammarSectionCard(
               icon: Icons.account_tree_outlined,
               title: type.name,
-              child: _TypeItem(type: type),
+              child: GrammarTypeContent(type: type),
             ),
         ],
 
@@ -298,8 +303,140 @@ class _LessonView extends StatelessWidget {
   }
 }
 
-class _TypeItem extends StatelessWidget {
-  const _TypeItem({required this.type});
+class _NounLandingView extends StatelessWidget {
+  const _NounLandingView({required this.lesson});
+
+  final GrammarLesson lesson;
+
+  @override
+  Widget build(BuildContext context) {
+    final ThemeData theme = Theme.of(context);
+    final GrammarExample? overviewExample =
+        lesson.examples.isEmpty ? null : lesson.examples.first;
+    const List<Color> accents = <Color>[
+      Color(0xFF35B85A),
+      Color(0xFF287BE8),
+      Color(0xFF8749D6),
+      Color(0xFFF28A18),
+      Color(0xFFFFB20F),
+      Color(0xFF16A6A0),
+      Color(0xFFE83D82),
+      Color(0xFF139BD2),
+    ];
+
+    return ListView(
+      padding: const EdgeInsets.fromLTRB(16, 16, 16, 24),
+      children: <Widget>[
+        GrammarSectionCard(
+          icon: Icons.description_outlined,
+          title: 'Noun',
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: <Widget>[
+              if (lesson.introduction.isNotEmpty)
+                Text(lesson.introduction,
+                    style: theme.textTheme.bodyLarge?.copyWith(height: 1.5)),
+              if (lesson.urduExplanation.isNotEmpty) ...<Widget>[
+                const Divider(height: 24),
+                Directionality(
+                  textDirection: TextDirection.rtl,
+                  child: Text(
+                    lesson.urduExplanation,
+                    textAlign: TextAlign.right,
+                    style: theme.textTheme.bodyLarge?.copyWith(height: 1.7),
+                  ),
+                ),
+              ],
+              if (overviewExample != null) ...<Widget>[
+                const Divider(height: 24),
+                Text('Example',
+                    style: theme.textTheme.titleSmall?.copyWith(
+                      color: theme.colorScheme.primary,
+                      fontWeight: FontWeight.w800,
+                    )),
+                const SizedBox(height: 6),
+                Text(overviewExample.text,
+                    style: theme.textTheme.bodyLarge?.copyWith(height: 1.5)),
+                if (overviewExample.urdu?.isNotEmpty ?? false) ...<Widget>[
+                  const SizedBox(height: 5),
+                  Directionality(
+                    textDirection: TextDirection.rtl,
+                    child: Text(
+                      overviewExample.urdu!,
+                      textAlign: TextAlign.right,
+                      style: theme.textTheme.bodyMedium?.copyWith(height: 1.6),
+                    ),
+                  ),
+                ],
+              ],
+            ],
+          ),
+        ),
+        const SizedBox(height: 4),
+        for (int index = 0; index < lesson.types.length; index++)
+          _NounTypeRow(
+            type: lesson.types[index],
+            number: index + 1,
+            accent: accents[index % accents.length],
+            lessonId: lesson.id,
+          ),
+      ],
+    );
+  }
+}
+
+class _NounTypeRow extends StatelessWidget {
+  const _NounTypeRow({
+    required this.type,
+    required this.number,
+    required this.accent,
+    required this.lessonId,
+  });
+
+  final GrammarType type;
+  final int number;
+  final Color accent;
+  final String lessonId;
+
+  @override
+  Widget build(BuildContext context) {
+    final ThemeData theme = Theme.of(context);
+    return Card(
+      margin: const EdgeInsets.only(bottom: 10),
+      clipBehavior: Clip.antiAlias,
+      child: InkWell(
+        onTap: () => context.push(AppRoutes.grammarType(lessonId, type.name)),
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 12),
+          child: Row(
+            children: <Widget>[
+              CircleAvatar(
+                radius: 22,
+                backgroundColor: accent,
+                child: const Icon(Icons.folder_open_outlined,
+                    color: Colors.white, size: 23),
+              ),
+              const SizedBox(width: 12),
+              Expanded(
+                child: Text(
+                  '$number. ${type.name}',
+                  style: theme.textTheme.titleMedium?.copyWith(
+                    fontWeight: FontWeight.w700,
+                  ),
+                ),
+              ),
+              Icon(Icons.chevron_right,
+                  color: theme.colorScheme.onSurfaceVariant),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class GrammarTypeContent extends StatelessWidget {
+  const GrammarTypeContent({required this.type});
   final GrammarType type;
 
   @override
