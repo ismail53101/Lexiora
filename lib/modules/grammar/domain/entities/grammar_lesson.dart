@@ -31,12 +31,13 @@ class GrammarExample extends Equatable {
 
 /// A common mistake: an incorrect form paired with its correction.
 class GrammarMistake extends Equatable {
-  const GrammarMistake({required this.wrong, required this.right, this.note});
+  const GrammarMistake({required this.wrong, required this.right, this.note, this.urdu});
   final String wrong;
   final String right;
   final String? note;
+  final String? urdu;
   @override
-  List<Object?> get props => <Object?>[wrong, right, note];
+  List<Object?> get props => <Object?>[wrong, right, note, urdu];
 }
 
 /// A multiple-choice question (used for both Practice and Quiz).
@@ -68,6 +69,7 @@ class GrammarType extends Equatable {
     required this.description,
     this.urduExplanation = '',
     this.subjectVerbAgreement = '',
+    this.subjectVerbAgreementUrdu = '',
     this.examples = const <GrammarExample>[],
     this.rules = const <String>[],
     this.commonMistakes = const <GrammarMistake>[],
@@ -78,6 +80,7 @@ class GrammarType extends Equatable {
   final String description;
   final String urduExplanation;
   final String subjectVerbAgreement;
+  final String subjectVerbAgreementUrdu;
   final List<GrammarExample> examples;
   final List<String> rules;
   final List<GrammarMistake> commonMistakes;
@@ -97,6 +100,7 @@ class GrammarType extends Equatable {
         description,
         urduExplanation,
         subjectVerbAgreement,
+        subjectVerbAgreementUrdu,
         examples,
         rules,
         commonMistakes,

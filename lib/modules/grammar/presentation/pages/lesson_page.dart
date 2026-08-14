@@ -487,6 +487,17 @@ class GrammarTypeContent extends StatelessWidget {
               type.subjectVerbAgreement,
               style: theme.textTheme.bodyLarge?.copyWith(height: 1.5),
             ),
+            if (type.subjectVerbAgreementUrdu.isNotEmpty) ...<Widget>[
+              const SizedBox(height: 6),
+              Directionality(
+                textDirection: TextDirection.rtl,
+                child: Text(
+                  type.subjectVerbAgreementUrdu,
+                  textAlign: TextAlign.right,
+                  style: theme.textTheme.bodyMedium?.copyWith(height: 1.6),
+                ),
+              ),
+            ],
           ],
           if (type.examples.isNotEmpty) ...<Widget>[
             const _TypeSubheading(title: 'Examples', icon: Icons.format_quote),
@@ -635,6 +646,23 @@ class _MistakeItem extends StatelessWidget {
                           ?.copyWith(color: right, fontWeight: FontWeight.w600)),
                 ),
               ],
+            ),
+          ],
+          if (mistake.urdu != null && mistake.urdu!.isNotEmpty) ...<Widget>[
+            const SizedBox(height: 4),
+            Padding(
+              padding: const EdgeInsets.only(left: 26),
+              child: Directionality(
+                textDirection: TextDirection.rtl,
+                child: Text(
+                  mistake.urdu!,
+                  textAlign: TextAlign.right,
+                  style: theme.textTheme.bodySmall?.copyWith(
+                    color: scheme.onSurfaceVariant,
+                    height: 1.6,
+                  ),
+                ),
+              ),
             ),
           ],
           if (mistake.note != null && mistake.note!.isNotEmpty) ...<Widget>[

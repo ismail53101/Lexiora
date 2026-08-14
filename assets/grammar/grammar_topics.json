@@ -829,24 +829,24 @@
           "urduExplanation": "Proper noun کسی خاص شخص، جگہ، ادارے، دن، مہینے یا واقعے کا نام ہوتا ہے اور عموماً بڑے حرف سے شروع ہوتا ہے۔",
           "examples": [
             {
-              "text": "Muhammad Ali Jinnah founded Pakistan.",
-              "urdu": "محمد علی جناح نے پاکستان قائم کیا۔",
-              "note": "Muhammad Ali Jinnah is a singular proper-noun subject, so the past verb “founded” is correct; Pakistan is the specific object name."
+              "text": "The Election Commission released the report, and the committee accepted its recommendations.",
+              "urdu": "الیکشن کمیشن نے رپورٹ جاری کی، اور کمیٹی نے اس کی سفارشات قبول کر لیں۔",
+              "note": "Compound sentence: 'The Election Commission' (singular proper noun) is the subject of the first clause and takes the singular verb 'released'; 'the committee' (singular) is subject of the second clause and takes 'accepted'. The conjunction 'and' joins two independent clauses."
             },
             {
-              "text": "Sara visited Islamabad in July.",
-              "urdu": "سارا جولائی میں اسلام آباد گئی۔",
-              "note": "Sara is a singular proper-noun subject and “visited” is past tense; Islamabad and July are specific names, so both begin with capitals."
+              "text": "A candidate from Lahore who topped the district exam will appear before the selection board tomorrow.",
+              "urdu": "لاہور کے ایک امیدوار جو ضلعی امتحان میں اوّل آیا، کل سلیکشن بورڈ کے سامنے پیش ہوگا۔",
+              "note": "Complex sentence: main clause subject is 'A candidate from Lahore' (singular) so singular verb 'will appear' is used; the relative clause 'who topped the district exam' modifies the candidate. 'Lahore' is a proper noun and capitalized."
             },
             {
-              "text": "The Indus River flows through Pakistan.",
-              "urdu": "دریائے سندھ پاکستان سے گزرتا ہے۔",
-              "note": "Indus River is a singular proper-noun subject, so “flows” takes -s; Pakistan is the specific place named after “through.”"
+              "text": "FPSC and PPSC coordinate training sessions, but each commission issues its own policy circulars.",
+              "urdu": "FPSC اور PPSC تربیتی اجلاس مربوط کرتے ہیں، مگر ہر کمیشن اپنی پالیسی سرکلرز جاری کرتا/جاری کرتی ہے۔",
+              "note": "Compound-complex context: 'FPSC and PPSC' (compound plural subject) take plural verb 'coordinate'; the contrasting clause uses 'each commission' (singular antecedent) requiring singular verb 'issues' and a possessive 'its'."
             },
             {
-              "text": "The CSS examination is conducted by FPSC.",
-              "urdu": "CSS کا امتحان FPSC منعقد کرتا ہے۔",
-              "note": "The examination is singular, so “is conducted” agrees with it; CSS and FPSC are specific names written in capitals."
+              "text": "Dr. Khan submitted his research to the Law Review before the new academic session began.",
+              "urdu": "ڈاکٹر خان نے اپنا تحقیقی مقالہ لا ریویو کو نئے تعلیمی سیشن شروع ہونے سے پہلے جمع کرایا۔",
+              "note": "Simple sentence: 'Dr. Khan' (singular proper noun with title) is the subject and takes singular past tense 'submitted'; 'to the Law Review' is the correct prepositional object (institution name as proper noun)."
             }
           ],
           "rules": [
@@ -856,19 +856,22 @@
           ],
           "commonMistakes": [
             {
-              "wrong": "I visited islamabad in july.",
-              "right": "I visited Islamabad in July.",
-              "note": "Islamabad and July are specific names, so both require capital letters; the lowercase forms are incorrect."
+              "wrong": "the css examination are difficult.",
+              "right": "The CSS examination is difficult.",
+              "urdu": "CSS کا امتحان مشکل ہے۔",
+              "note": "Error: lowercase and plural verb. 'Examination' is a singular noun (proper noun phrase 'CSS examination'), so use singular verb 'is' and capitalize 'The' and 'CSS'."
             },
             {
-              "wrong": "pakistan is beautiful.",
-              "right": "Pakistan is beautiful.",
-              "note": "Pakistan is the specific name of a country, so its first letter must be capitalized."
+              "wrong": "He and sara is on the committee.",
+              "right": "He and Sara are on the committee.",
+              "urdu": "وہ اور سارا کمیٹی میں ہیں۔",
+              "note": "Error: verb agreement with compound subject. Subjects joined by 'and' form a plural subject, so use plural verb 'are'; also capitalize the proper name 'Sara'."
             },
             {
-              "wrong": "He studies at the university of punjab.",
-              "right": "He studies at the University of the Punjab.",
-              "note": "The official institution name uses capitals; “University of the Punjab” is treated as a proper noun."
+              "wrong": "The University of punjab have announced results.",
+              "right": "The University of the Punjab has announced the results.",
+              "urdu": "یونیورسٹی آف دی پنجاب نے نتائج کا اعلان کر دیا ہے۔",
+              "note": "Error: institution name capitalization/article and verb number. 'The University of the Punjab' is a singular proper noun and takes singular verb 'has'; also use correct capitalization and include 'the' in the official name; add 'the' before 'results' if referring to specific results."
             }
           ],
           "practice": [
@@ -952,7 +955,8 @@
               "answerIndex": 1,
               "explanation": "CSS is an official abbreviation written in capitals."
             }
-          ]
+          ],
+          "subjectVerbAgreementUrdu": "فاعل-فعل مطابقت: Proper noun یعنی خاص اسم (کسی شخص، جگہ، ادارہ، دن، مہینے یا تاریخی واقعے کا مخصوص نام) عموماً واحد شمار ہوا کرتا ہے، اس لیے اس کے ساتھ واحد فعل آتا ہے اور اسمِ خاص بڑے حرف سے شروع ہوتا ہے۔ مثال: “Islamabad is the capital of Pakistan.” میں “Islamabad” واحد اسمِ خاص ہے اس لیے فعل “is” آیا۔"
         },
         {
           "name": "Common Noun",
@@ -960,24 +964,24 @@
           "urduExplanation": "Common noun کسی شخص، جگہ، جانور یا چیز کا عام نام ہوتا ہے، کسی خاص فرد یا جگہ کا نام نہیں ہوتا۔",
           "examples": [
             {
-              "text": "The student borrowed a book.",
-              "urdu": "طالب علم نے ایک کتاب ادھار لی۔",
-              "note": "Student is a singular countable subject, so “the” identifies one student; book is a singular countable object, so “a” is used."
+              "text": "The candidate prepares for the examination.",
+              "urdu": "امیدوار امتحان کی تیاری کرتا ہے۔",
+              "note": "“Candidate” singular common noun as subject; present-simple verb takes –s: “prepares”. Preposition “for” introduces the object “the examination” with the definite article."
             },
             {
-              "text": "A doctor treated the patient.",
-              "urdu": "ایک ڈاکٹر نے مریض کا علاج کیا۔",
-              "note": "Doctor is a singular countable subject and “a” means one; patient is the object, and the past verb “treated” does not change by number."
+              "text": "The committee reviews the policy, and it issues recommendations.",
+              "urdu": "کمیٹی پالیسی کا جائزہ لیتی ہے، اور یہ سفارشات جاری کرتی ہے۔",
+              "note": "“Committee” is a collective common noun treated here as singular, so verbs are singular: “reviews” and “issues”; conjunction “and” joins two independent clauses, with pronoun “it” agreeing with the singular committee."
             },
             {
-              "text": "The city needs better transport.",
-              "urdu": "شہر کو بہتر نقل و حمل کی ضرورت ہے۔",
-              "note": "City is a singular subject, so “needs” takes -s; transport is a general uncountable object, so no plural -s is added."
+              "text": "When the research team submits its report, the administration will review the findings.",
+              "urdu": "جب تحقیقاتی ٹیم اپنی رپورٹ جمع کرائے گی تو انتظامیہ نتائج کا جائزہ لے گی۔",
+              "note": "Complex sentence: subordinate clause “When…” has singular subject “research team” so present verb “submits” has –s and possessive “its”; main clause has singular subject “administration” with future “will review.”"
             },
             {
-              "text": "The examination requires preparation.",
-              "urdu": "امتحان کے لیے تیاری ضروری ہے۔",
-              "note": "Examination is a singular subject, so “requires” takes -s; preparation is a general uncountable noun used without a plural form."
+              "text": "Researchers collect data, analyze results, and publish conclusions.",
+              "urdu": "محققین ڈیٹا جمع کرتے ہیں، نتائج کا تجزیہ کرتے ہیں، اور نتائج شائع کرتے ہیں۔",
+              "note": "“Researchers” is a plural common noun, so present-simple verbs use the base form (no –s): “collect, analyze, publish.” The verbs share the same plural subject and take plural agreement."
             }
           ],
           "rules": [
@@ -989,17 +993,20 @@
             {
               "wrong": "The student work hard.",
               "right": "The student works hard.",
-              "note": "Student is singular, so the simple-present verb needs -s: “works,” not “work.”"
+              "urdu": "طالب علم سخت محنت کرتا ہے۔",
+              "note": "Error: third-person singular subject “The student” requires present-simple verb with –s. Correct: “works.”"
             },
             {
               "wrong": "She bought a furnitures.",
               "right": "She bought furniture.",
-              "note": "Furniture is uncountable, so it has no regular plural -s; use “furniture,” not “a furnitures.”"
+              "urdu": "اس نے فرنیچر خریدا۔",
+              "note": "Error: “furniture” is an uncountable noun and does not take a plural -s or the indefinite article “a.” Use “furniture” or “a piece of furniture.”"
             },
             {
               "wrong": "He is teacher.",
               "right": "He is a teacher.",
-              "note": "Teacher is singular and countable, so it needs a determiner such as “a”: “a teacher.”"
+              "urdu": "وہ ایک استاد ہے۔",
+              "note": "Error: singular countable noun “teacher” needs a determiner; use “a” (or another determiner) before the singular noun."
             }
           ],
           "practice": [
@@ -1083,7 +1090,8 @@
               "answerIndex": 0,
               "explanation": "Doctor is a general profession."
             }
-          ]
+          ],
+          "subjectVerbAgreementUrdu": "Subject–Verb Agreement: فعل اور فاعل نمبر (واحد یا جمع) اور شخص کے مطابق میل کھاتے ہیں؛ واحد فاعل کے ساتھ موجودہ زمانے میں فعل کے آخر میں عام طور پر -s آتا ہے (مثلاً he/it/ she reads)، جبکہ جمع فاعل کے ساتھ فعل کی بنیادی شکل رہتی ہے (they read). حفاظتی الفاظ، عارضی جملے، یا اجتماعی اسم کے لیے معنی اور سیاق کی بنیاد پر واحد یا جمع فعل استعمال ہو سکتا ہے۔"
         },
         {
           "name": "Collective Noun",
@@ -1091,24 +1099,24 @@
           "urduExplanation": "Collective noun لوگوں، جانوروں یا چیزوں کے گروہ کا نام ہوتا ہے جسے ایک اکائی سمجھا جاتا ہے، جیسے team، committee اور flock۔",
           "examples": [
             {
-              "text": "The committee is reviewing the report.",
-              "urdu": "کمیٹی رپورٹ کا جائزہ لے رہی ہے۔",
-              "note": "Committee is a collective noun acting as one unit, so it takes singular “is”; report is the singular object after “the.”"
+              "text": "The committee will announce the examination schedule tomorrow.",
+              "urdu": "کمیٹی کل امتحانی شیڈول کا اعلان کرے گی۔",
+              "note": "\"The committee\" is a collective noun treated as one unit, so it takes the singular future verb \"will announce\"; \"the examination schedule\" is the singular object."
             },
             {
-              "text": "A flock of birds flew over the lake.",
-              "urdu": "پرندوں کا جھنڈ جھیل کے اوپر سے اڑا۔",
-              "note": "Flock is the singular collective subject, so “flew” agrees with it; birds is plural inside the “of” phrase and does not control the verb."
+              "text": "The research panel approved the methodology, and the administration implemented the new policy.",
+              "urdu": "ریسرچ پینل نے طریقۂ کار کی منظوری دی، اور انتظامیہ نے نئی پالیسی نافذ کی۔",
+              "note": "Compound sentence with two independent clauses; each collective subject governs its own singular past verb (\"approved\", \"implemented\")."
             },
             {
-              "text": "The jury reached its decision.",
-              "urdu": "جیوری اپنے فیصلے پر پہنچ گئی۔",
-              "note": "Jury acts as one unit, so the past verb “reached” and singular possessive “its” refer to one group; decision is the object."
+              "text": "Although the team was divided on procedural details, it reached a unanimous decision at the meeting.",
+              "urdu": "اگرچہ ٹیم طریقۂ کار کی باریک تفصیلات پر منقسم تھی، مگر میٹنگ میں اس نے اتفاقِ رائے سے فیصلہ کیا۔",
+              "note": "Complex sentence: subordinate clause uses singular verb \"was\" for \"team,\" and \"it\" in main clause refers to the team as a single unit."
             },
             {
-              "text": "The team celebrated its victory.",
-              "urdu": "ٹیم نے اپنی فتح کا جشن منایا۔",
-              "note": "Team is treated as one unit, so “celebrated” and “its” are used; victory is the singular object of the possessive phrase."
+              "text": "A panel of experts is reviewing the candidates' applications for the public service posts.",
+              "urdu": "ماہرین کے پینل نے عوامی خدمت کے عہدوں کے لیے امیدواروں کی درخواستوں کا جائزہ لے رہا ہے۔",
+              "note": "\"A panel of experts\" is a singular collective subject; the plural noun \"candidates\" is inside a prepositional/possessive phrase and does not control the verb, so use singular \"is reviewing\"."
             }
           ],
           "rules": [
@@ -1118,19 +1126,22 @@
           ],
           "commonMistakes": [
             {
-              "wrong": "The team are united as one unit.",
-              "right": "The team is united as one unit.",
-              "note": "Team acts as one unit, so it takes singular “is,” not plural “are.”"
+              "wrong": "The committee are preparing their report.",
+              "right": "The committee is preparing its report.",
+              "urdu": "کمیٹی اپنی رپورٹ تیار کر رہی ہے۔",
+              "note": "Error: plural verb \"are\" and plural possessive \"their\" used with collective noun. Rule: treat committee as a single unit and use singular verb and possessive (is, its)."
             },
             {
-              "wrong": "The committee have submitted its report.",
-              "right": "The committee has submitted its report.",
-              "note": "Committee is one group, so it takes “has”; singular “committee” also agrees with “its.”"
+              "wrong": "A panel of judges have decided the case.",
+              "right": "A panel of judges has decided the case.",
+              "urdu": "ججز کے پینل نے مقدمہ کا فیصلہ کر دیا ہے۔",
+              "note": "Error: verb agrees with the head noun \"panel\" (singular), not the plural noun inside the phrase. Rule: use singular verb \"has\" with \"panel of judges.\""
             },
             {
-              "wrong": "The jury announced their decision as one body.",
-              "right": "The jury announced its decision as one body.",
-              "note": "Jury acts as one body, so use singular “its,” not plural “their.”"
+              "wrong": "The faculty were divided in their opinion on the policy.",
+              "right": "The faculty was divided in its opinion on the policy.",
+              "urdu": "فیکلٹی پالیسی کے بارے میں اپنی رائے میں منقسم تھی۔",
+              "note": "Error: plural verb \"were\" and plural pronoun \"their\" used with a collective noun treated as singular. Rule: where the group acts as one unit, use singular verb and singular pronoun (was, its)."
             }
           ],
           "practice": [
@@ -1214,7 +1225,8 @@
               "answerIndex": 0,
               "explanation": "Flock is the singular head noun."
             }
-          ]
+          ],
+          "subjectVerbAgreementUrdu": "موضوع-فعل کا مطابقت (Subject–Verb Agreement) برائے جمعِ واحد نامیں (collective nouns):\nجمعِ واحد نام جیسے committee، team، panel، faculty وغیرہ عموماً ایک اکائی کے طور پر سمجھے جاتے ہیں، اس لیے وہ عموماً واحد فعل (singular verb) اور واحد ضمیر (its، it) لیتے ہیں۔ اگر مجموعے کے اندر افراد کی الگ الگ کارروائی یا انفرادی رکنیت کو واضح طور پر ظاہر کیا جائے تو جمع فعل (plural verb) اور جمع ضمیر استعمال ہو سکتا ہے۔\n\nExamples:\n1) The committee will announce the examination schedule tomorrow.\n   اردو: کمیٹی کل امتحانی شیڈول کا اعلان کرے گی۔\n   Note: \"The committee\" is a collective noun treated as one unit, so it takes the singular future verb \"will announce\"; \"the examination schedule\" is the singular direct object.\n\n2) The research panel approved the methodology, and the administration implemented the new policy.\n   اردو: ریسرچ پینل نے طریقۂ کار کی منظوری دی، اور انتظامیہ نے نئی پالیسی نافذ کی۔\n   Note: This compound sentence has two independent clauses; each collective subject (\"research panel\" and \"administration\") governs its own singular past verb (\"approved\", \"implemented\").\n\n3) Although the team was divided on procedural details, it reached a unanimous decision at the meeting.\n   اردو: اگرچہ ٹیم طریقۂ کار کی باریک تفصیلات پر منقسم تھی، مگر میٹنگ میں اس نے اتفاقِ رائے سے فیصلہ کیا۔\n   Note: In this complex sentence the subordinate clause uses singular verb \"was\" for the collective \"team,\" and the pronoun \"it\" in the main clause refers back to the team as a single unit.\n\n4) A panel of experts is reviewing the candidates' applications for the public service posts.\n   اردو: ماہرین کے پینل نے عوامی خدمت کے عہدوں کے لیے امیدواروں کی درخواستوں کا جائزہ لے رہا ہے۔\n   Note: \"A panel of experts\" is a singular collective subject; the plural noun \"candidates\" appears inside a prepositional/possessive phrase and does not control the verb, so the singular progressive \"is reviewing\" is correct."
         },
         {
           "name": "Abstract Noun",
@@ -1222,24 +1234,24 @@
           "urduExplanation": "Abstract noun کسی خیال، خوبی، احساس، حالت یا عمل کا نام ہوتا ہے جسے عموماً دیکھا یا چھوا نہیں جا سکتا، جیسے honesty اور freedom۔",
           "examples": [
             {
-              "text": "Honesty is an important quality.",
-              "urdu": "ایمانداری ایک اہم خوبی ہے۔",
-              "note": "Honesty is a singular abstract subject, so it takes “is”; quality is a singular complement after “an.”"
+              "text": "Integrity guides the decisions of public officials.",
+              "urdu": "دیانتداری عوامی عہدیداروں کے فیصلوں کی رہنمائی کرتی ہے۔",
+              "note": "Integrity is a singular abstract noun and serves as the subject, so it takes the singular verb 'guides'; the phrase 'of public officials' is a prepositional modifier of 'decisions' and does not change verb agreement."
             },
             {
-              "text": "Freedom inspires responsible citizens.",
-              "urdu": "آزادی ذمہ دار شہریوں کو تحریک دیتی ہے۔",
-              "note": "Freedom is a singular abstract subject, so “inspires” takes -s; citizens is the plural object and does not control the verb."
+              "text": "The committee values fairness, and it rejects biased procedures.",
+              "urdu": "کمیٹی انصاف کی قدر کرتی ہے، اور وہ جانبدار طریقہ کار کو مسترد کر دیتی ہے۔",
+              "note": "Fairness is an uncountable abstract noun functioning as the direct object of 'values'; the sentence is compound (two independent clauses joined by 'and'), and the pronoun 'it' agrees with the singular noun 'committee' to take 'rejects'."
             },
             {
-              "text": "Her kindness impressed the panel.",
-              "urdu": "اس کی مہربانی نے پینل کو متاثر کیا۔",
-              "note": "Kindness is an abstract noun used as the subject; the past verb “impressed” is unchanged for singular or plural subjects."
+              "text": "Although evidence was limited, the research emphasized accountability in administration.",
+              "urdu": "اگرچہ شواہد محدود تھے، تحقیق نے انتظامیہ میں جوابدہی پر زور دیا۔",
+              "note": "Accountability is an abstract noun used as the object of 'emphasized'; 'research' is a singular/uncountable subject so the past verb 'emphasized' is correct, and the subordinating clause beginning with 'Although' does not affect the subject–verb agreement."
             },
             {
-              "text": "Knowledge improves performance.",
-              "urdu": "علم کارکردگی بہتر بناتا ہے۔",
-              "note": "Knowledge is a singular uncountable abstract subject, so “improves” takes -s; performance is the object."
+              "text": "A report on justice and human rights has influenced the new policy for examinations.",
+              "urdu": "انصاف اور حقوقِ انسانی کے بارے میں ایک رپورٹ نے امتحانات کے لیے نئی پالیسی پر اثر ڈالا ہے۔",
+              "note": "The grammatical subject is 'A report' (singular); the prepositional phrase 'on justice and human rights' contains abstract nouns that modify 'report' but do not make the subject plural, so the singular verb 'has influenced' is required; 'for examinations' shows the policy's purpose."
             }
           ],
           "rules": [
@@ -1249,19 +1261,22 @@
           ],
           "commonMistakes": [
             {
-              "wrong": "Honesty are the best policy.",
-              "right": "Honesty is the best policy.",
-              "note": "Honesty is singular, so it takes “is,” not plural “are.”"
+              "wrong": "Advices from the committee were helpful.",
+              "right": "Advice from the committee was helpful.",
+              "urdu": "کمیٹی کا مشورہ مددگار تھا۔",
+              "note": "Error: 'advice' is an uncountable abstract noun and has no plural form 'advices'; it takes a singular verb 'was'. Use 'a piece of advice' or 'pieces of advice' when you need a countable form."
             },
             {
-              "wrong": "He showed many kindnesses.",
-              "right": "He showed great kindness.",
-              "note": "Kindness names a quality and is normally uncountable; use “great kindness,” not plural “kindnesses.”"
+              "wrong": "Justice are the cornerstone of law.",
+              "right": "Justice is the cornerstone of the law.",
+              "urdu": "انصاف قانون کی بنیاد ہے۔",
+              "note": "Error: 'justice' is a singular abstract noun, so it requires the singular verb 'is'. Replace plural verb 'are' with 'is' and add 'the' if referring to law in general."
             },
             {
-              "wrong": "The informations is useful.",
-              "right": "The information is useful.",
-              "note": "Information is uncountable and has no plural -s; it takes singular “is.”"
+              "wrong": "The informations in the report were contradictory.",
+              "right": "The information in the report was contradictory.",
+              "urdu": "رپورٹ میں موجود معلومات متضاد تھیں۔",
+              "note": "Error: 'information' is uncountable and does not take a plural form 'informations'; use the singular verb 'was' or, if countable units are intended, say 'several pieces of information' followed by a plural verb."
             }
           ],
           "practice": [
@@ -1345,7 +1360,8 @@
               "answerIndex": 2,
               "explanation": "Happiness names a feeling."
             }
-          ]
+          ],
+          "subjectVerbAgreementUrdu": "Abstract nouns عام طور پر ایک خیال، خوبی یا حالت کو ظاہر کرتے ہیں اور عموماً واحد شمار (singular) سمجھے جاتے ہیں، اس لیے واحد فعل (verb) لیتے ہیں؛ مثلاً \"honesty is\"۔ بعض abstract الفاظ غیرشمار (uncountable) ہوتے ہیں (جیسے information, advice) اور اُن کا جمع نہیں بنتا؛ اگر آپ کو شمار کرنا ہو تو \"pieces of information\" یا \"a piece of advice\" جیسی ترکیب استعمال کریں۔ موجودہ فاعل (subject) کی تعداد فعل کے انتخاب کو طے کرتی ہے، نہ کہ اس کے بعد آنے والی حرفِ جار یا وصفی جملے۔"
         },
         {
           "name": "Countable Noun",
@@ -1353,24 +1369,24 @@
           "urduExplanation": "Countable noun وہ اسم ہے جسے گنا جا سکتا ہے اور جس کی واحد اور جمع دونوں شکلیں ہوتی ہیں، جیسے one book اور two books۔",
           "examples": [
             {
-              "text": "The candidate answered three questions.",
-              "urdu": "امیدوار نے تین سوالات کے جواب دیے۔",
-              "note": "Candidate is singular and questions is plural; the past verb “answered” is unchanged, while the number three marks the plural object."
+              "text": "A candidate submitted the form for the scholarship.",
+              "urdu": "ایک امیدوار نے اسکالرشپ کے لیے فارم جمع کروایا۔",
+              "note": "The subject \"candidate\" is singular and takes the singular action \"submitted\"; \"a\" is the correct indefinite article before a singular countable noun; \"for\" indicates purpose."
             },
             {
-              "text": "I bought two chairs.",
-              "urdu": "میں نے دو کرسیاں خریدیں۔",
-              "note": "I is the subject and takes “bought”; chairs is a plural countable object shown by “two,” so it has a plural -s."
+              "text": "The candidates studied the syllabus, and the administration published the schedule.",
+              "urdu": "امیدواروں نے نصاب کا مطالعہ کیا، اور انتظامیہ نے شیڈول شائع کیا۔",
+              "note": "A compound sentence: \"the candidates\" is plural and governs \"studied\"; the clauses are independent and connected by \"and,\" each clause has its own subject and verb."
             },
             {
-              "text": "An apple is on the table.",
-              "urdu": "میز پر ایک سیب ہے۔",
-              "note": "Apple is one singular countable subject, so it takes “is”; “an” is used before apple because it begins with a vowel sound."
+              "text": "If a researcher receives two grants, the institution will expand its research team.",
+              "urdu": "اگر ایک محقق کو دو گرانٹس ملیں تو ادارہ اپنی تحقیقی ٹیم بڑھائے گا۔",
+              "note": "A complex sentence with a conditional subordinate clause: singular \"a researcher\" vs plural object \"two grants\"; main clause subject \"the institution\" (singular) matches \"will expand.\""
             },
             {
-              "text": "Several students joined the seminar.",
-              "urdu": "کئی طلبہ سیمینار میں شامل ہوئے۔",
-              "note": "Students is a plural countable subject, so “joined” refers to several students; the past form is unchanged by number."
+              "text": "Have the panel members reviewed all the applications?",
+              "urdu": "کیا پینل کے ارکان نے تمام درخواستوں کا جائزہ لیا ہے؟",
+              "note": "Interrogative form: plural subject \"panel members\" requires auxiliary \"have\" plus past participle \"reviewed\"; \"all the applications\" is the plural object."
             }
           ],
           "rules": [
@@ -1380,19 +1396,22 @@
           ],
           "commonMistakes": [
             {
-              "wrong": "She bought a books.",
-              "right": "She bought a book.",
-              "note": "Book is singular, so use “a book”; the plural “books” cannot follow the singular article “a.”"
+              "wrong": "There is many reports about the policy.",
+              "right": "There are many reports about the policy.",
+              "urdu": "پالیسی کے بارے میں بہت سی رپورٹس ہیں۔",
+              "note": "Error: singular verb \"is\" used with plural subject \"reports.\" Rule: use \"are\" with plural subjects (There + plural noun → are)."
             },
             {
-              "wrong": "There is five candidates.",
-              "right": "There are five candidates.",
-              "note": "Candidates is plural, so use “are,” not “is”; “is” would fit one candidate."
+              "wrong": "She submitted a applications to the commission.",
+              "right": "She submitted an application to the commission.",
+              "urdu": "اس نے کمیشن کو ایک درخواست جمع کروائی۔",
+              "note": "Error: plural noun \"applications\" cannot follow the singular article \"a,\" and \"application\" begins with a vowel sound so use \"an.\" Rule: match article to singular/plural and vowel sound."
             },
             {
-              "wrong": "I have much questions.",
-              "right": "I have many questions.",
-              "note": "Questions are plural countable nouns, so use “many,” not “much,” which is for uncountable nouns."
+              "wrong": "The committee have issued its recommendations.",
+              "right": "The committee has issued its recommendations.",
+              "urdu": "کمیٹی نے اپنی سفارشات جاری کی ہیں۔",
+              "note": "Error: collective noun \"committee\" treated as a single unit should take singular verb \"has.\" Rule: collective nouns generally take singular verbs when acting as one body (use plural only when members act individually)."
             }
           ],
           "practice": [
@@ -1476,7 +1495,8 @@
               "answerIndex": 1,
               "explanation": "Students is plural."
             }
-          ]
+          ],
+          "subjectVerbAgreementUrdu": "Subject–Verb Agreement کا خلاصہ: فاعل اور فعل کی تعداد (واحد یا جمع) ایک دوسرے کے مطابق ہونی چاہیے؛ واحد فاعل واحد فعل لیتا ہے اور جمع فاعل جمع فعل۔ شمار پذیر اسم (countable noun) کی واحد اور جمع شکلیں واضح کرنے کے لیے articles (a/an/the)، عددی الفاظ (one, two, many) اور quantifiers (several, many) کا درست استعمال ضروری ہے۔\n\nExamples:\n1) English: A candidate submitted the form for the scholarship.\n   Urdu: ایک امیدوار نے اسکالرشپ کے لیے فارم جمع کروایا۔\n   Note: \"candidate\" is a singular countable noun preceded by the indefinite article \"a\"; it is the subject and takes the past verb \"submitted\". \"form\" is a singular countable object and \"for\" correctly marks purpose (submitted the form for the scholarship).\n\n2) English: The candidates studied the syllabus, and the administration published the schedule.\n   Urdu: امیدواروں نے نصاب کا مطالعہ کیا، اور انتظامیہ نے شیڈول شائع کیا۔\n   Note: This is a compound sentence with two independent clauses joined by \"and.\" \"The candidates\" is plural and governs the verb \"studied\"; the second clause has a singular collective noun \"the administration\" with its own verb \"published.\"\n\n3) English: If a researcher receives two grants, the institution will expand its research team.\n   Urdu: اگر ایک محقق کو دو گرانٹس ملیں تو ادارہ اپنی تحقیقی ٹیم بڑھائے گا۔\n   Note: This complex conditional sentence has a subordinate \"If\" clause. \"A researcher\" is singular in the condition, \"two grants\" is a plural object in that clause, and the main clause subject \"the institution\" (singular) takes the future verb \"will expand.\" Possessive \"its\" links the institution to the team.\n\n4) English: Have the panel members reviewed all the applications?\n   Urdu: کیا پینل کے ارکان نے تمام درخواستوں کا جائزہ لیا ہے؟\n   Note: This interrogative uses the auxiliary \"have\" because the subject \"the panel members\" is plural and the main verb is the past participle \"reviewed.\" \"All the applications\" is a plural object of the review."
         },
         {
           "name": "Uncountable Noun",
@@ -1484,24 +1504,24 @@
           "urduExplanation": "Uncountable noun ایسی چیز، مادے یا خیال کا نام ہے جسے الگ الگ گنا نہیں جاتا اور عموماً اس کی جمع نہیں بنتی، جیسے advice اور information۔",
           "examples": [
             {
-              "text": "The information is useful.",
-              "urdu": "معلومات مفید ہیں۔",
-              "note": "Information is an uncountable subject treated as singular, so it takes “is”; it does not take a plural -s."
+              "text": "The research is comprehensive.",
+              "urdu": "تحقیق جامع ہے۔",
+              "note": "Research ایک غیرشمار اسم ہے؛ یہ موضوع کے طور پر واحد سمجھا جاتا ہے اس لیے واحد فعل 'is' لیا گیا ہے۔"
             },
             {
-              "text": "We need some advice.",
-              "urdu": "ہمیں کچھ مشورے کی ضرورت ہے۔",
-              "note": "We is the subject and takes “need”; advice is an uncountable object, so “some” is used instead of “an” or a plural -s."
+              "text": "The evidence is weak, but the committee has accepted the recommendations.",
+              "urdu": "شواہد کمزور ہیں، لیکن کمیٹی نے سفارشات منظور کر لی ہیں۔",
+              "note": "Evidence غیرشمار ہے اور پہلے جزو میں واحد فعل 'is' استعمال ہوا ہے؛ جملہ 'but' کے ذریعے دو آزاد جملوں کو جوڑتا ہے، ہر جزو کا فعل اپنے موضوع کے مطابق ہے۔"
             },
             {
-              "text": "There is little water in the bottle.",
-              "urdu": "بوتل میں تھوڑا پانی ہے۔",
-              "note": "Water is an uncountable singular subject in “there is,” so “is” is correct; “little” means a small amount, not a number of items."
+              "text": "Although the evidence is limited, the administration has implemented the policy.",
+              "urdu": "اگرچہ شواہد محدود ہیں، انتظامیہ نے پالیسی نافذ کر دی ہے۔",
+              "note": "Subordinate clause میں 'evidence' غیرشمار اور واحد تصور ہونے کی وجہ سے 'is' درست ہے؛ مرکزی جملہ میں فعل administration کے مطابق ہے۔"
             },
             {
-              "text": "The equipment was delivered yesterday.",
-              "urdu": "آلات کل پہنچا دیے گئے تھے۔",
-              "note": "Equipment is an uncountable singular subject, so “was delivered” is correct; equipment does not normally take a plural -s."
+              "text": "There is little equipment suitable for the examination.",
+              "urdu": "امتحان کے لیے مناسب آلات بہت کم ہیں۔",
+              "note": "'Equipment' غیرشمار اسم ہے؛ 'there is' ساخت میں واحد فعل استعمال ہوتا ہے اور 'little' مقدار بتاتا ہے، عدد نہیں۔"
             }
           ],
           "rules": [
@@ -1513,17 +1533,20 @@
             {
               "wrong": "The information are correct.",
               "right": "The information is correct.",
-              "note": "Information is uncountable and treated as singular, so use “is,” not “are.”"
+              "urdu": "معلومات درست ہیں۔",
+              "note": "غلطی: 'information' غیرشمار اسم ہے اور اسے واحد فعل کے ساتھ لیا جاتا ہے؛ درست فعل 'is' ہے نہ کہ 'are'۔"
             },
             {
               "wrong": "She gave me an advice.",
               "right": "She gave me some advice.",
-              "note": "Advice is uncountable, so it cannot normally take “an”; use “some advice” or “a piece of advice.”"
+              "urdu": "اس نے مجھے کچھ مشورہ دیا۔",
+              "note": "غلطی: 'advice' غیرشمار ہے، اس لیے 'an' قابل استعمال نہیں؛ 'some advice' یا 'a piece of advice' درست ہیں۔"
             },
             {
               "wrong": "We bought many furniture.",
               "right": "We bought much furniture.",
-              "note": "Furniture is uncountable, so use “much furniture” or “pieces of furniture,” not “many furniture.”"
+              "urdu": "ہم نے بہت سا فرنیچر خریدا۔",
+              "note": "غلطی: 'furniture' غیرشمار اسم ہے، 'many' شمار اسم کے ساتھ آتا ہے؛ غیرشمار کے لیے 'much' یا 'pieces of furniture' استعمال کریں۔"
             }
           ],
           "practice": [
@@ -1607,7 +1630,8 @@
               "answerIndex": 1,
               "explanation": "Furniture takes is."
             }
-          ]
+          ],
+          "subjectVerbAgreementUrdu": "غیرشمار اسم — تعریف اور Subject–Verb Agreement (مختصر وضاحت): غیرشمار اسم وہ اسم ہوتا ہے جو مادّہ، مقدار، خیال یا مجموعہ ظاہر کرتا ہے اور عام طور پر الگ الگ شمار نہیں کیا جاتا؛ ایسے اسم عموماً واحد شمار سمجھ کر واحد فعل لیتے ہیں۔ مثال: information, advice, research, evidence, equipment وغیرہ۔ ذیل میں چار مثالیں مختلف جملہ اسالیب کے ساتھ دی گئی ہیں:\n\nمثال 1 (سادہ جملہ):\nEnglish: \"The research is comprehensive.\" \nاردو: \"تحقیق جامع ہے۔\"\nنوٹ: یہاں 'research' غیرشمار اسم ہے اور موضوع (subject) کے طور پر واحد تصور ہوتا ہے، لہٰذا واحد فعل 'is' استعمال ہوا ہے؛ کوئی article یا plural -s نہیں۔\n\nمثال 2 (مرکب جملہ - compound):\nEnglish: \"The evidence is weak, but the committee has accepted the recommendations.\" \nاردو: \"شواہد کمزور ہیں، لیکن کمیٹی نے سفارشات منظور کر لی ہیں۔\"\nنوٹ: پہلے جزو میں 'evidence' غیرشمار اسم ہے اور واحد فعل 'is' لیتا ہے؛ 'but' کے بعد دوسرا جزو ایک مختلف فاعل (the committee) اور فعل رکھتا ہے — عدد کا فیصلہ ہر موضوع کے مطابق ہوتا ہے۔\n\nمثال 3 (مرکبِ مرکب/پیچیدہ جملہ - complex):\nEnglish: \"Although the evidence is limited, the administration has implemented the policy.\" \nاردو: \"اگرچہ شواہد محدود ہیں، انتظامیہ نے پالیسی نافذ کر دی ہے۔\"\nنوٹ: 'Although' subordinate clause کے اندر 'evidence' کا استعمال ہے؛ وہ غیرشمار اسم ہے اس لیے 'is' درست ہے؛ مرکزی جزو میں فعل 'has implemented' administration (واحد ادارتی اسم) کے مطابق ہے۔\n\nمثال 4 (وجودی/there-structure):\nEnglish: \"There is little equipment suitable for the examination.\" \nاردو: \"امتحان کے لیے مناسب آلات بہت کم ہیں۔\"\nنوٹ: 'equipment' غیرشمار اسم ہے اور 'there is' کے ساتھ واحد سمجھا جاتا ہے؛ 'little' مقدار ظاہر کرتا ہے نہ کہ اشیاء کی گنتی، اس لیے واحد فعل برقرار رہتا ہے۔"
         },
         {
           "name": "Material Noun",
@@ -1615,24 +1639,24 @@
           "urduExplanation": "Material noun کسی مادے یا مواد کا نام ہوتا ہے جس سے چیزیں بنائی جاتی ہیں، جیسے gold، wood، steel اور cotton۔",
           "examples": [
             {
-              "text": "Gold is a valuable metal.",
-              "urdu": "سونا ایک قیمتی دھات ہے۔",
-              "note": "Gold is a singular uncountable material noun, so it takes “is”; “a valuable metal” identifies one metal as its complement."
+              "text": "Gold is stored in the national treasury.",
+              "urdu": "قومی خزانے میں سونا محفوظ رکھا جاتا ہے۔",
+              "note": "Gold is an uncountable material noun and the singular subject of the passive verb 'is stored'; the prepositional phrase 'in the national treasury' shows location."
             },
             {
-              "text": "The table is made of wood.",
-              "urdu": "میز لکڑی سے بنی ہے۔",
-              "note": "Table is a singular subject, so “is made” agrees with it; wood is an uncountable material after “of,” so it has no plural -s."
+              "text": "The audit inspected the hospital, and it reported that the steel used in the staircases was corroding.",
+              "urdu": "آڈٹ ٹیم نے ہسپتال کا معائنہ کیا، اور اس نے رپورٹ کی کہ سیڑھیوں میں استعمال ہونے والا اسٹیل زنگ آلود ہو رہا تھا۔",
+              "note": "Compound sentence with two independent clauses joined by 'and'; in the subordinate clause 'steel' is an uncountable material noun and governs the verb 'was corroding'; 'used in' indicates the material's role."
             },
             {
-              "text": "Cotton is used to make fabric.",
-              "urdu": "کپڑا بنانے کے لیے روئی استعمال ہوتی ہے۔",
-              "note": "Cotton is a singular uncountable material subject, so “is used” is correct; fabric is the object of “make.”"
+              "text": "Because cotton is highly flammable, the examination hall forbids loose cotton materials during practical tests.",
+              "urdu": "چونکہ روئی آسانی سے جل سکتی ہے، عملی امتحانات کے دوران امتحانی ہال میں ڈھیلے روئی کے مواد کی اجازت نہیں ہے۔",
+              "note": "Complex sentence with a subordinate clause beginning 'Because'; 'cotton' is an uncountable material noun and takes the singular verb 'is' in the clause, while the main clause subject 'the examination hall' takes 'forbids'."
             },
             {
-              "text": "The bridge is built with steel.",
-              "urdu": "پل اسٹیل سے بنایا گیا ہے۔",
-              "note": "Bridge is singular, so “is built” agrees with it; steel names the uncountable material used with “with.”"
+              "text": "The candidate submitted a model made of plastic for the public service science exhibition.",
+              "urdu": "امیدوار نے پبلک سروس سائنس نمائش کے لیے پلاسٹک سے بنایا ہوا ماڈل جمع کروایا۔",
+              "note": "Simple sentence where 'model' is the grammatical subject and 'plastic' is an uncountable material noun used after the participial phrase 'made of'; material stays singular and is not pluralized."
             }
           ],
           "rules": [
@@ -1644,17 +1668,20 @@
             {
               "wrong": "The furnitures are made of wood.",
               "right": "The furniture is made of wood.",
-              "note": "Furniture is uncountable, so use singular “is” and no plural -s; wood is also treated as a material."
+              "urdu": "فرنیچر لکڑی سے بنایا گیا ہے۔",
+              "note": "Error: 'furniture' is an uncountable noun (not 'furnitures'), so use singular verb 'is' and no plural -s."
             },
             {
               "wrong": "He bought three golds.",
               "right": "He bought three gold rings.",
-              "note": "Gold is uncountable, so count objects instead: “three gold rings,” not “three golds.”"
+              "urdu": "اس نے تین سونے کی انگوٹھیاں خریدیں۔",
+              "note": "Error: 'gold' is uncountable and cannot be pluralized; countable units must be named (e.g., 'three gold rings')."
             },
             {
               "wrong": "The steel are strong.",
               "right": "The steel is strong.",
-              "note": "Steel is an uncountable material noun, so it takes singular “is,” not “are.”"
+              "urdu": "اسٹیل مضبوط ہے۔",
+              "note": "Error: 'steel' is an uncountable material noun and takes the singular verb 'is', not 'are'."
             }
           ],
           "practice": [
@@ -1738,7 +1765,8 @@
               "answerIndex": 0,
               "explanation": "Wood is an uncountable material."
             }
-          ]
+          ],
+          "subjectVerbAgreementUrdu": "فاعل-فعل کا میل (Subject–Verb Agreement): مادّہ نام (material noun) عام طور پر ناقابلِ شمار ہوتا ہے اور واحد شمار کی طرح لیا جاتا ہے، اس لیے فعل بھی عموماً واحد کے ساتھ آتا ہے۔ مادّہ نام عام طور پر بغیر جمع -s کے آتے ہیں اور انھیں گننے کے لیے اُن کے ساتھ قابلِ شمار اشیاء یا اکائیوں کا ذکر کیا جاتا ہے (مثلاً “three gold rings” نہ کہ “three golds”)۔ ’made of/ made from/ used in/ with/ in/ by‘ جیسے prepositions مادّہ کی حیثیت بتاتے ہیں: “made of” سے ظاہر ہوتا ہے کہ چیز وہی مادّہ ہے جس سے بنا ہے؛ “made from” اس تبدیلی کو بتاتا ہے جب مادّہ کی اصل صورت بدل گئی ہو؛ “used in/with/for” مادّہ کے استعمال کو ظاہر کرتے ہیں۔\n\nمثالیں:\n1) Gold is stored in the national treasury.\n   اردو: قومی خزانے میں سونا محفوظ رکھا جاتا ہے۔\n   Note: \"Gold\" is an uncountable material noun and the singular subject of the passive verb \"is stored\"; the prepositional phrase \"in the national treasury\" shows location.\n\n2) The audit inspected the hospital, and it reported that the steel used in the staircases was corroding.\n   اردو: آڈٹ ٹیم نے ہسپتال کا معائنہ کیا، اور اس نے رپورٹ کی کہ سیڑھیوں میں استعمال ہونے والا اسٹیل زنگ آلود ہو رہا تھا۔\n   Note: Compound sentence with two independent clauses joined by \"and\"; in the subordinate clause \"steel\" is an uncountable material noun and governs the verb \"was corroding\"; \"used in\" indicates the material's role.\n\n3) Because cotton is highly flammable, the examination hall forbids loose cotton materials during practical tests.\n   اردو: چونکہ روئی آسانی سے جل سکتی ہے، عملی امتحانات کے دوران امتحانی ہال میں ڈھیلے روئی کے مواد کی اجازت نہیں ہے۔\n   Note: Complex sentence with a subordinate clause beginning \"Because\"; \"cotton\" is an uncountable material noun and takes the singular verb \"is\" in the clause, while the main clause subject \"the examination hall\" takes \"forbids\".\n\n4) The candidate submitted a model made of plastic for the public service science exhibition.\n   اردو: امیدوار نے پبلک سروس سائنس نمائش کے لیے پلاسٹک سے بنایا ہوا ماڈل جمع کروایا۔\n   Note: Simple sentence where \"model\" is the grammatical subject and \"plastic\" is an uncountable material noun used after the participial phrase \"made of\"; material stays singular and is not pluralized."
         },
         {
           "name": "Compound Noun",
@@ -1746,24 +1774,24 @@
           "urduExplanation": "Compound noun دو یا دو سے زیادہ الفاظ کے ملنے سے بننے والا اسم ہے جو ایک نیا مطلب دیتا ہے، جیسے toothpaste، bus stop اور civil service۔",
           "examples": [
             {
-              "text": "The bus stop is near the centre.",
-              "urdu": "بس اسٹاپ مرکز کے قریب ہے۔",
-              "note": "Bus stop is one singular compound subject, so it takes “is”; centre is a singular noun after “the.”"
+              "text": "The civil service exam starts at nine o'clock.",
+              "urdu": "سول سروس کا امتحان صبح نو بجے شروع ہوتا ہے۔",
+              "note": "“Civil service exam” ایک واحد مرکب اسم ہے، لہٰذا فعل واحد “starts” استعمال ہوا؛ ‘at nine o’clock’ وقت بتانے والا حرفِ جار ہے اور اس کا فعل کے ساتھ کوئی تبدیلی نہیں۔"
             },
             {
-              "text": "My mother-in-law lives in Lahore.",
-              "urdu": "میری ساس لاہور میں رہتی ہیں۔",
-              "note": "Mother-in-law is singular, so “lives” takes -s; Lahore is a proper-noun place name, not the subject."
+              "text": "The research report is complete, and the review committee will publish its findings.",
+              "urdu": "تحقیقی رپورٹ مکمل ہے، اور جائزہ کمیٹی اپنے نتائج شائع کرے گی۔",
+              "note": "یہ ایک مرکب جملہ ہے: “research report” واحد مفعولی/موضوع کے طور پر پہلے جزو میں واحد فعل “is” لیتا ہے؛ دوسرا جزو “review committee” ایک الگ واحد جماعت ہے جو مستقبل میں فعل “will publish” کرے گی؛ ‘its/its’ حوالہ کاری مالکیت ظاہر کرتا ہے۔"
             },
             {
-              "text": "The classroom was quiet.",
-              "urdu": "کلاس روم خاموش تھا۔",
-              "note": "Classroom is one singular compound subject, so the past verb “was” agrees with it; quiet is its complement."
+              "text": "Candidates who submitted their forms to the examination centre waited for the interview schedule.",
+              "urdu": "وہ امیدوار جنہوں نے اپنے فارم امتحانی مرکز میں جمع کروائے، انٹرویو کے شیڈول کا انتظار کر رہے تھے۔",
+              "note": "یہ پیچیدہ جملہ ہے جس میں “Candidates” پر منحصر نسبت (relative clause) ہے؛ “examination centre” حرفِ جار “to” کے بعد مفعول کی طرح آیا ہے؛ موضوع جمع ہے اس لیے ماضیِ جمع/مسلسل فعل (“waited”/“were waiting”) استعمال کیا گیا۔"
             },
             {
-              "text": "The police officer helped the child.",
-              "urdu": "پولیس افسر نے بچے کی مدد کی۔",
-              "note": "Police officer is one singular compound subject; the past verb “helped” stays the same, and child is the singular object."
+              "text": "My two brothers-in-law attended the administration meeting.",
+              "urdu": "میرے دو بہنوئی انتظامی اجلاس میں شریک ہوئے۔",
+              "note": "“Brothers-in-law” میں جمعی نشان مرکزی اسم “brother” پر آتا ہے؛ چونکہ موضوع جمع ہے، فعل ماضی “attended” بغیر -s کے آیا۔"
             }
           ],
           "rules": [
@@ -1775,17 +1803,20 @@
             {
               "wrong": "My two brother-in-laws visited us.",
               "right": "My two brothers-in-law visited us.",
-              "note": "In “brothers-in-law,” the main noun brother takes the plural ending; “in-law” remains unchanged."
+              "urdu": "میرے دو بہنوئی ہم سے ملنے آئے۔",
+              "note": "غلطی: جمع کا نشان غلط جگہ پر لگا۔ قاعدہ: مرکب اسم ‘brother-in-law’ میں جمعی نشان مرکزی اسم ‘brother’ پر آتا ہے: brothers-in-law۔"
             },
             {
-              "wrong": "The bus stops is crowded.",
-              "right": "The bus stop is crowded.",
-              "note": "One bus stop is singular, so use “is”; “stops” would mean more than one stop and would need “are.”"
+              "wrong": "The committee are preparing its report.",
+              "right": "The committee is preparing its report.",
+              "urdu": "کمیٹی اپنی رپورٹ تیار کر رہی ہے۔",
+              "note": "غلطی: فعل اور موضوع کا عدمِ مطابقت۔ ’Committee’ کو یہاں ایک واحد ادارتی یونٹ کے طور پر دیکھا گیا ہے، اس لیے واحد فعل ‘is’ اور واحد ضمیر ‘its’ استعمال ہوں گے۔"
             },
             {
-              "wrong": "She bought two toothbrush.",
-              "right": "She bought two toothbrushes.",
-              "note": "The compound noun toothbrush takes -es in the plural: “toothbrushes.”"
+              "wrong": "The examination-centre have changed its address.",
+              "right": "The examination centre has changed its address.",
+              "urdu": "امتحانی مرکز نے اپنا پتہ تبدیل کر دیا ہے۔",
+              "note": "غلطی: غیر ضروری ہائفن اور فعل کی عددی غلطی۔ درست فارم ’examination centre’ بغیر ہائفن اور چونکہ یہ واحد واحد ادارہ ہے اس لیے فعل ‘has’ ہوگا۔"
             }
           ],
           "practice": [
@@ -1869,7 +1900,8 @@
               "answerIndex": 0,
               "explanation": "Mother receives the plural ending."
             }
-          ]
+          ],
+          "subjectVerbAgreementUrdu": "موضوع اور فعل کا مطابقت: مرکب اسم (مثلاً “bus stop”, “civil service exam”) ایک واحد یونٹ سمجھا جائے تو واحد فعل (is, has) لیا جاتا ہے؛ اگر مرکزی اسم جمع ہو تو فعل جمع (are, have) ہوگا۔ بعض اجتماعی اسم (committee, staff) کے لیے معنی اور لہجہ کے حساب سے واحد یا جمع فعل منتخب کریں۔"
         }
       ],
       "rules": [
@@ -2165,20 +2197,24 @@
           "subjectVerbAgreement": "The candidates submitted their forms, and they received receipts.",
           "examples": [
             {
-              "text": "The commission interviewed the candidate.",
-              "note": "The commission is the subject and interviewed is past tense, so the verb does not change by number."
+              "text": "The candidate submitted her report.",
+              "urdu": "امیدوار نے اپنی رپورٹ جمع کروائی۔",
+              "note": "'The candidate' is a singular subject; 'her' is a singular possessive pronoun referring to that candidate; past tense 'submitted' is used and does not vary by number."
             },
             {
-              "text": "She prepared for the CSS examination.",
-              "note": "She is a singular subject pronoun, so prepared refers to one female candidate."
+              "text": "The candidates prepared thoroughly, but when they arrived, the examiners found several discrepancies in their documents.",
+              "urdu": "امیدواروں نے اچھی طرح تیاری کی، مگر جب وہ پہنچے تو ممتحین نے ان کے دستاویزات میں متعدد تضادات پائے۔",
+              "note": "'The candidates' is plural; pronouns 'they' and 'their' agree in number; 'when they arrived' is a subordinate clause and the two main clauses are joined by 'but'."
             },
             {
-              "text": "The panel invited us to present our research.",
-              "note": "Us is the object after invited; we would be correct only as a subject."
+              "text": "The committee reviewed the applications, and it invited two candidates for interviews.",
+              "urdu": "کمیٹی نے درخواستوں کا جائزہ لیا، اور اس نے دو امیدواروں کو انٹرویوز کے لیے مدعو کیا۔",
+              "note": "'Committee' is a collective noun treated as singular here, so singular pronoun 'it' is used; 'and' connects two independent clauses, each with its own verb."
             },
             {
-              "text": "Between you and me, the policy needs revision.",
-              "note": "Me is correct after the preposition between; I is a subject form."
+              "text": "If the panel agrees with the recommendation, it will forward the report to the ministry.",
+              "urdu": "اگر پینل سفارش سے متفق ہو جائے تو وہ رپورٹ وزارت کو بھیج دے گا۔",
+              "note": "'If' introduces a subordinate (conditional) clause; 'the panel' is singular and matched by singular pronoun 'it' in the main clause; 'with' is a preposition governing 'the recommendation'."
             }
           ],
           "rules": [
@@ -2189,17 +2225,20 @@
             {
               "wrong": "Him submitted the application.",
               "right": "He submitted the application.",
-              "note": "He is the subject before submitted; him is an object form."
+              "urdu": "اس نے درخواست جمع کروائی۔",
+              "note": "Error: 'Him' is an object form; rule: subject position before the verb requires subject pronoun 'He'."
             },
             {
               "wrong": "The officer spoke to I.",
               "right": "The officer spoke to me.",
-              "note": "Me is the object after to; I is used as a subject."
+              "urdu": "افسر نے مجھ سے بات کی۔",
+              "note": "Error: 'to' is a preposition and must be followed by an object pronoun; use 'me' not subject 'I'."
             },
             {
-              "wrong": "Her and me attended the interview.",
-              "right": "She and I attended the interview.",
-              "note": "Both pronouns are subjects, so subject forms are required."
+              "wrong": "Each of the candidates must submit their affidavit.",
+              "right": "Each of the candidates must submit his or her affidavit.",
+              "urdu": "امیدواروں میں سے ہر ایک کو اپنا حلف نامہ جمع کروانا ہوگا۔",
+              "note": "Error: 'Each' is distributive and grammatically singular; the pronoun should be singular ('his or her') though modern informal usage often accepts singular 'their'—competitive exams prefer 'his or her' or a rewrite."
             }
           ],
           "practice": [
@@ -2258,7 +2297,8 @@
               "answerIndex": 1,
               "explanation": "A pronoun must agree with its antecedent and fit its grammatical role."
             }
-          ]
+          ],
+          "subjectVerbAgreementUrdu": "Subject–Verb Agreement: فاعل اور فعل کا میل شمار و شخص کے اعتبار سے ہوتا ہے؛ واحد فاعل واحد فعل لیتا ہے اور جمع فاعل جمع فعل۔ جب فاعل مرکب ہو اور ’and‘ سے جڑا ہو تو عموماً جمع فعل آتا ہے؛ ’or/nor‘ میں فعل قریب ترین فاعل کے مطابق ہوتا ہے۔ ضمائر (pronouns) صورت کے اعتبار سے بدلتے ہیں: subject (I, he, she, we, they)، object (me, him, her, us, them)، اور possessive (my/ mine, his, her/ hers, our/ ours, their/ theirs)۔\n\nExamples:\n1) English: The candidate submitted her report.\n   اردو: امیدوار نے اپنی رپورٹ جمع کروائی۔\n   Note: 'The candidate' is a singular subject; 'her' is a singular possessive pronoun referring to that candidate. 'Submitted' is past tense (past form does not vary for number in English).\n\n2) English: The candidates prepared thoroughly, but when they arrived, the examiners found several discrepancies in their documents.\n   اردو: امیدواروں نے اچھی طرح تیاری کی، مگر جب وہ پہنچے تو ممتحین نے ان کے دستاویزات میں متعدد تضادات پائے۔\n   Note: 'The candidates' is plural; 'they' and 'their' are plural pronouns agreeing with that subject. 'When they arrived' is a subordinate clause; main clauses are joined by 'but'.\n\n3) English: The committee reviewed the applications, and it invited two candidates for interviews.\n   اردو: کمیٹی نے درخواستوں کا جائزہ لیا، اور اس نے دو امیدواروں کو انٹرویوز کے لیے مدعو کیا۔\n   Note: Here 'The committee' is treated as a singular collective noun and replaced by singular pronoun 'it'; each independent clause has its own verb after the conjunction 'and'.\n\n4) English: If the panel agrees with the recommendation, it will forward the report to the ministry.\n   اردو: اگر پینل سفارش سے متفق ہو جائے تو وہ رپورٹ وزارت کو بھیج دے گا۔\n   Note: 'If' introduces a subordinate condition; 'the panel' is singular, so the main clause uses singular pronoun 'it' and future verb 'will forward'. 'With' is a preposition governing 'the recommendation'."
         },
         {
           "name": "Possessive Pronoun",
@@ -2267,20 +2307,24 @@
           "subjectVerbAgreement": "The research proposal is ours, not theirs.",
           "examples": [
             {
-              "text": "This seat is mine.",
-              "note": "Mine stands alone after is and shows ownership; my would need a following noun."
+              "text": "This answer is mine.",
+              "urdu": "یہ جواب میرا ہے۔",
+              "note": "\"Mine\" replaces \"my answer\" and is a subject complement after the linking verb \"is,\" referring to a singular antecedent."
             },
             {
-              "text": "The final decision was theirs.",
-              "note": "Theirs replaces their decision, so no noun follows it."
+              "text": "The senior candidates submitted their reports, but the final draft was ours.",
+              "urdu": "سینئر امیدواروں نے اپنی رپورٹس جمع کرائیں، مگر حتمی مسودہ ہمارا تھا۔",
+              "note": "\"Ours\" replaces \"our final draft\" and stands alone as the subject complement after \"was;\" sentence is compound (joined by 'but')."
             },
             {
-              "text": "Her notes are clearer than mine.",
-              "note": "Mine replaces my notes; the comparison is between two possessive forms."
+              "text": "Although the draft report was prepared by several interns, the credit for the research is theirs.",
+              "urdu": "اگرچہ مسودہ رپورٹ متعدد انٹرنوں نے تیار کی تھی، تحقیق کا کریڈٹ ان کا ہے۔",
+              "note": "\"Theirs\" refers to 'several interns' (plural); it functions as the subject complement after 'is' in a complex sentence."
             },
             {
-              "text": "The constitution is ours to protect.",
-              "note": "Ours replaces our constitution and is the subject complement after is."
+              "text": "The department's justification seemed stronger than ours.",
+              "urdu": "محکمہ کی توجیہ ہمارے مقابلے میں زیادہ مضبوط محسوس ہوئی۔",
+              "note": "\"Ours\" replaces 'our justification' in a comparative structure; the verb 'seemed' agrees with the singular subject 'justification'."
             }
           ],
           "rules": [
@@ -2291,17 +2335,20 @@
             {
               "wrong": "This report is my.",
               "right": "This report is mine.",
-              "note": "Mine is the independent possessive; my must be followed by a noun."
+              "urdu": "یہ رپورٹ میری ہے۔",
+              "note": "غلطی: 'my' بطور possessive adjective ایک اسم modify کرتا ہے اور خود اکیلا استعمال نہیں ہو سکتا؛ جب کسی linking verb کے بعد ملکیت بتانی ہو تو 'mine' استعمال کریں۔"
             },
             {
               "wrong": "The files are their.",
               "right": "The files are theirs.",
-              "note": "Theirs stands alone after are; their modifies a noun."
+              "urdu": "یہ فائلیں ان کی ہیں۔",
+              "note": "غلطی: 'their' determiner ہے اور اسے noun درکار ہوتا ہے ('their files')؛ مستقل possessive استعمال کے لیے 'theirs' لازمی ہے جب وہ خود اکیلا آئے۔"
             },
             {
               "wrong": "That seat is her.",
               "right": "That seat is hers.",
-              "note": "Hers is the possessive pronoun used without a following noun."
+              "urdu": "وہ نشست اس کی ہے۔",
+              "note": "غلطی: 'her' object/possessive adjective ہے جو noun کے ساتھ آتا ہے؛ linking verb کے بعد واحد طور پر استعمال کے لیے 'hers' درست ہے۔"
             }
           ],
           "practice": [
@@ -2360,7 +2407,8 @@
               "answerIndex": 1,
               "explanation": "A pronoun must agree with its antecedent and fit its grammatical role."
             }
-          ]
+          ],
+          "subjectVerbAgreementUrdu": "فاعل اور فعل کا میل: فاعل (subject) اور فعل (verb) کی وضاحت میں عدد و شخص کے لحاظ سے مطابقت لازمی ہے؛ واحد فاعل کے ساتھ واحد فعل اور جمع فاعل کے ساتھ جمع فعل آتا ہے۔\n\nExamples:\n1) English: \"This answer is mine.\" \n   Urdu: \"یہ جواب میرا ہے۔\"\n   Note (EN): \"Mine\" is an independent possessive pronoun replacing \"my answer.\" It functions as the subject complement after the linking verb \"is,\" referring to a singular antecedent (this answer).\n\n2) English: \"The senior candidates submitted their reports, but the final draft was ours.\" \n   Urdu: \"سینئر امیدواروں نے اپنی رپورٹس جمع کرائیں، مگر حتمی مسودہ ہمارا تھا۔\"\n   Note (EN): \"Ours\" replaces \"our final draft\" and stands alone as the subject complement after \"was.\" The sentence is compound (two independent clauses joined by \"but\"); \"senior candidates\" is plural, but the noun \"final draft\" is singular, so the singular verb \"was\" matches the subject complement.\n\n3) English: \"Although the draft report was prepared by several interns, the credit for the research is theirs.\" \n   Urdu: \"اگرچہ مسودہ رپورٹ متعدد انٹرنوں نے تیار کی تھی، تحقیق کا کریڈٹ ان کا ہے۔\"\n   Note (EN): \"Theirs\" refers to \"several interns\" (plural) and functions as the subject complement after \"is.\" The sentence is complex, with a subordinate clause introduced by \"Although.\"\n\n4) English: \"The department's justification seemed stronger than ours.\" \n   Urdu: \"محکمہ کی توجیہ ہمارے مقابلے میں زیادہ مضبوط محسوس ہوئی۔\"\n   Note (EN): \"Ours\" replaces \"our justification.\" The comparative \"stronger than\" compares two possessive concepts; the verb \"seemed\" agrees with the singular subject \"justification.\""
         },
         {
           "name": "Reflexive Pronoun",
@@ -2369,20 +2417,24 @@
           "subjectVerbAgreement": "The minister himself approved the summary.",
           "examples": [
             {
-              "text": "The researcher blamed herself for the error.",
-              "note": "Herself matches singular female researcher as the object of blamed."
+              "text": "The institution prides itself on its transparent recruitment process.",
+              "urdu": "ادارہ اپنی شفاف بھرتی کے عمل پر خود فخر محسوس کرتا ہے۔",
+              "note": "‘itself’ refers to the singular non‑human subject 'the institution' and is the object in 'pride oneself on'; 'prides' is singular to agree with the subject."
             },
             {
-              "text": "The candidates prepared themselves for the test.",
-              "note": "Themselves matches plural candidates and refers back to them."
+              "text": "The candidates studied the statutes thoroughly, and they reminded themselves of the examination rules.",
+              "urdu": "امیدواروں نے ضوابط کا باریک بینی سے مطالعہ کیا، اور انہوں نے خود کو امتحانی قواعد کی یاد دہانی کروائی۔",
+              "note": "'themselves' refers to the plural antecedent 'the candidates' and is the object of 'reminded'; the sentence is compound, so both independent clauses require correct agreement."
             },
             {
-              "text": "The machine switched itself off.",
-              "note": "Itself matches the singular non-human subject machine."
+              "text": "When the researcher submitted her report, she praised herself for the careful analysis.",
+              "urdu": "جب محققہ نے اپنی رپورٹ جمع کروائی تو اس نے محتاط تجزیے پر خود کی تعریف کی۔",
+              "note": "'herself' matches the singular female antecedent 'the researcher'; the subordinate time clause precedes the main clause where the reflexive appears."
             },
             {
-              "text": "Please introduce yourself to the panel.",
-              "note": "Yourself matches the implied singular subject you in the command."
+              "text": "Please make yourselves familiar with the committee's guidelines before the interview.",
+              "urdu": "برائے مہربانی انٹرویو سے پہلے کمیٹی کے اصول و ضوابط سے خود کو آگاہ کریں۔",
+              "note": "Imperative with implied plural subject 'you' requires 'yourselves'; 'with' governs 'the committee's guidelines'."
             }
           ],
           "rules": [
@@ -2391,19 +2443,22 @@
           ],
           "commonMistakes": [
             {
-              "wrong": "The researcher blamed her for the error.",
-              "right": "The researcher blamed herself for the error.",
-              "note": "Herself shows the researcher and the person blamed are the same; her suggests another female."
+              "wrong": "The commissioner blamed him for the delay.",
+              "right": "The commissioner blamed himself for the delay.",
+              "urdu": "کمشنر نے تاخیر پر خود کو موردِ الزام ٹھہرایا۔",
+              "note": "Error: 'him' suggests a different male person. Rule: when subject and object are the same person, use the reflexive pronoun ('himself')."
             },
             {
-              "wrong": "Ali completed the form himselfs.",
-              "right": "Ali completed the form himself.",
-              "note": "Himself is the correct singular masculine form; himselfs is not a word."
+              "wrong": "The inspector reminded herselfs of the code.",
+              "right": "The inspector reminded herself of the code.",
+              "urdu": "انسپکٹر نے خود کو ضابطے کی یاد دہانی کروائی۔",
+              "note": "Error: 'herselfs' is not a word. Rule: use the correct singular reflexive form 'herself' for a singular female antecedent."
             },
             {
-              "wrong": "The candidates congratulated himself.",
-              "right": "The candidates congratulated themselves.",
-              "note": "Candidates is plural, so the matching reflexive is themselves."
+              "wrong": "The members congratulated himself on the report.",
+              "right": "The members congratulated themselves on the report.",
+              "urdu": "ارکان نے رپورٹ پر خود کو مبارکباد دی۔",
+              "note": "Error: number disagreement — 'himself' is singular. Rule: reflexive pronoun must agree in number with its antecedent ('members' is plural, so use 'themselves')."
             }
           ],
           "practice": [
@@ -2462,7 +2517,8 @@
               "answerIndex": 1,
               "explanation": "A pronoun must agree with its antecedent and fit its grammatical role."
             }
-          ]
+          ],
+          "subjectVerbAgreementUrdu": "فاعل اور فعل کا مطابقت: فاعل اور فعل کا عدد (واحد یا جمع) اور شخص (پہلا، دوسرا، تیسرا) کے لحاظ سے میل ہونا ضروری ہے۔ واحد فاعل کے ساتھ واحد فعل آتا ہے اور جمع فاعل کے ساتھ جمع فعل؛ جب جمع فاعل کو ایک واحد اکائی کے طور پر دیکھا جائے (مثلاً 'the committee') تو فعل واحد بھی ہو سکتا ہے۔\n\nمثالی جملے — Reflexive Pronouns (عکسِ ضمیری ضمائر):\n\nExample 1 (Simple):\nEnglish: The institution prides itself on its transparent recruitment process.\nUrdu: ادارہ اپنی شفاف بھرتی کے عمل پر خود فخر محسوس کرتا ہے۔\nNote: 'itself' refers back to the singular non‑human antecedent 'the institution' and functions as the object in the construction 'pride oneself on'; the verb 'prides' is singular to agree with the singular subject.\n\nExample 2 (Compound):\nEnglish: The candidates studied the statutes thoroughly, and they reminded themselves of the examination rules.\nUrdu: امیدواروں نے ضوابط کا باریک بینی سے مطالعہ کیا، اور انہوں نے خود کو امتحانی قواعد کی یاد دہانی کروائی۔\nNote: 'themselves' refers to the plural antecedent 'the candidates' (they) and is the object of 'reminded'; the clause after the comma is an independent clause joined by 'and', so number agreement must be maintained in the second clause as well.\n\nExample 3 (Complex):\nEnglish: When the researcher submitted her report, she praised herself for the careful analysis.\nUrdu: جب محققہ نے اپنی رپورٹ جمع کروائی تو اس نے محتاط تجزیے پر خود کی تعریف کی۔\nNote: In the complex sentence the subordinate clause 'When the researcher submitted her report' sets time; the main clause subject 'she' is the same person as 'the researcher', so 'herself' is used as the reflexive object to show subject and object are identical.\n\nExample 4 (Imperative/Instruction):\nEnglish: Please make yourselves familiar with the committee's guidelines before the interview.\nUrdu: برائے مہربانی انٹرویو سے پہلے کمیٹی کے اصول و ضوابط سے خود کو آگاہ کریں۔\nNote: Imperative has an implied subject 'you' (here plural), so 'yourselves' matches that plural implied subject; 'with' is the preposition governing 'the committee's guidelines'."
         },
         {
           "name": "Relative Pronoun",
@@ -2471,20 +2527,24 @@
           "subjectVerbAgreement": "The officer who prepared the report received an award.",
           "examples": [
             {
-              "text": "The policy that the cabinet approved is effective.",
-              "note": "That refers to policy and is the object of approved; the cabinet is the clause subject."
+              "text": "placeholder",
+              "urdu": "placeholder",
+              "note": "placeholder"
             },
             {
-              "text": "The candidate whom the panel selected topped the list.",
-              "note": "Whom is the object of selected because the panel selected the candidate."
+              "text": "placeholder",
+              "urdu": "placeholder",
+              "note": "placeholder"
             },
             {
-              "text": "The institution whose graduates serve the country is respected.",
-              "note": "Whose shows possession: the graduates belong to the institution."
+              "text": "placeholder",
+              "urdu": "placeholder",
+              "note": "placeholder"
             },
             {
-              "text": "The report, which was published yesterday, is reliable.",
-              "note": "Which refers to report and adds non-essential information after a comma."
+              "text": "placeholder",
+              "urdu": "placeholder",
+              "note": "placeholder"
             }
           ],
           "rules": [
@@ -2493,19 +2553,22 @@
           ],
           "commonMistakes": [
             {
-              "wrong": "The officer which prepared the report won.",
-              "right": "The officer who prepared the report won.",
-              "note": "Who is used for a person as the subject; which is normally for things."
+              "wrong": "The officer which prepared the report won an award.",
+              "right": "The officer who prepared the report won an award.",
+              "urdu": "رپورٹ تیار کرنے والے افسر کو اعزاز ملا۔",
+              "note": "Error: \"which\" is for things; use \"who\" for people when the relative pronoun is the subject of the relative clause."
             },
             {
-              "wrong": "The candidate who the panel selected won.",
-              "right": "The candidate whom the panel selected won.",
-              "note": "Whom is the formal object after selected; who is the subject form."
+              "wrong": "The candidate who the panel selected topped the list.",
+              "right": "The candidate whom the panel selected topped the list.",
+              "urdu": "پینل نے جس امیدوار کو منتخب کیا وہ فہرست میں سرفہرست آیا۔",
+              "note": "Error: \"who\" is the subject form; here the pronoun is the object of \"selected,\" so formal usage requires \"whom.\" (Or rewrite: \"The candidate who was selected by the panel...\")"
             },
             {
-              "wrong": "The policy who was approved is effective.",
-              "right": "The policy that was approved is effective.",
-              "note": "That refers to a thing such as policy; who refers to people."
+              "wrong": "The policy who was adopted yesterday affects many departments.",
+              "right": "The policy that was adopted yesterday affects many departments.",
+              "urdu": "وہ پالیسی جو کل اپنائی گئی تھی کئی محکموں کو متاثر کرتی ہے۔",
+              "note": "Error: \"who\" refers to people; use \"that\" or \"which\" for things. In restrictive clauses (no commas) prefer \"that.\""
             }
           ],
           "practice": [
@@ -2564,7 +2627,8 @@
               "answerIndex": 1,
               "explanation": "A pronoun must agree with its antecedent and fit its grammatical role."
             }
-          ]
+          ],
+          "subjectVerbAgreementUrdu": "اسم اور فعل کا میل (Subject–Verb Agreement): واحد فاعل واحد فعل لیتا ہے اور جمع فاعل جمع فعل؛ رشتہ دار فقرہ (relative clause) میں فعل کا میل اُس اصل اسم (antecedent) کے مطابق ہوتا ہے جس سے رشتہ دار ضمیر تعلق بناتا ہے۔ رشتہ دار ضمیر کی قسم (who, whom, whose, which, that) اس بات کا تعین کرتی ہے کہ وہ شخص ہے یا چیز، فقرے میں موضوع ہے یا مفعول، اور آیا جملہ محدود (restrictive) یا غیر محدود (non‑defining) ہے۔\n\nExamples:\n\n1) (Simple) English: The candidate who applied for the scholarship passed the examination.\n   Urdu: وہ امیدوار جس نے وظیفے کے لیے درخواست دی تھی امتحان میں کامیاب ہوا۔\n   Note: \"who\" refers to the candidate (singular person) and is the subject of the relative clause \"who applied for the scholarship\"; the main verb \"passed\" agrees with the singular antecedent.\n\n2) (Compound) English: The committee reviewed the reports, and those who prepared them answered questions confidently.\n   Urdu: کمیٹی نے رپورٹس کا جائزہ لیا، اور جن لوگوں نے انہیں تیار کیا تھا انہوں نے اعتماد کے ساتھ سوالات کے جواب دیے۔\n   Note: \"those\" is plural and its antecedent is people; \"who\" is the subject of \"prepared\" within the relative clause, \"them\" refers back to \"reports\" as object, and the main clause verb \"answered\" agrees with the plural \"those\".\n\n3) (Complex, restrictive) English: The research that the university funded led to recommendations for public policy.\n   Urdu: وہ تحقیق جسے یونیورسٹی نے فنڈ کیا تھا عوامی پالیسی کے لئے سفارشات کا باعث بنی۔\n   Note: \"that\" refers to \"research\" (a thing) and introduces a restrictive clause where \"the university\" is the subject and \"research\" is the object of \"funded\"; the main verb \"led\" agrees with the singular antecedent \"research\".\n\n4) (Non‑defining relative clause) English: The report, which the administration published last month, influenced the new regulations.\n   Urdu: رپورٹ، جسے انتظامیہ نے پچھلے ماہ شائع کیا تھا، نے نئے ضوابط پر اثر ڈالا۔\n   Note: \"which\" introduces a non‑defining (extra) clause set off by commas and refers to the thing \"report\"; here \"which\" is object of \"published\" and the main verb \"influenced\" agrees with the singular noun \"report\"."
         },
         {
           "name": "Demonstrative Pronoun",
@@ -2573,20 +2637,24 @@
           "subjectVerbAgreement": "These are the recommendations for the committee.",
           "examples": [
             {
-              "text": "This is the official notice.",
-              "note": "This is singular, so is agrees with one notice."
+              "text": "This policy applies to all public service candidates.",
+              "urdu": "یہ پالیسی تمام عوامی خدمت کے امیدواروں پر لاگو ہوتی ہے۔",
+              "note": "‘This’ refers to the singular noun 'policy' (antecedent) and functions as the subject; hence the singular verb 'applies' is used. The prepositional phrase 'to all public service candidates' does not affect subject–verb agreement."
             },
             {
-              "text": "Those were the previous exam papers.",
-              "note": "Those is plural and refers to papers farther away, so were is used."
+              "text": "This report is detailed, and these recommendations deserve serious consideration.",
+              "urdu": "یہ رپورٹ تفصیلی ہے، اور یہ سفارشات سنجیدہ غور کے لائق ہیں۔",
+              "note": "The sentence is compound: the first independent clause has singular subject 'this report' with singular verb 'is'; the second clause has plural subject 'these recommendations' with plural verb 'deserve'. The coordinating conjunction 'and' joins two separately agreeing clauses."
             },
             {
-              "text": "That is the constitutional issue.",
-              "note": "That is singular, so it takes is."
+              "text": "That regulation, which the committee drafted last month, remains in force until the court rules otherwise.",
+              "urdu": "وہ ضابطہ، جسے کمیٹی نے پچھلے ماہ تیار کیا تھا، تب تک نافذ رہے گا جب تک عدالت دوسری صورت میں فیصلہ نہ کرے۔",
+              "note": "'That' points to the singular antecedent 'regulation' and is the main clause subject; the relative clause 'which the committee drafted last month' modifies the noun and does not change the main verb's singular form 'remains'."
             },
             {
-              "text": "These are the survey results.",
-              "note": "These is plural, so are is required."
+              "text": "These research findings were presented by the Institute for Public Administration.",
+              "urdu": "یہ تحقیقی نتائج ادارہ برائے عوامی انتظامیہ کی جانب سے پیش کیے گئے تھے۔",
+              "note": "'These' refers to the plural noun 'research findings' and agrees with the plural past passive verb 'were presented'. The agent phrase 'by the Institute for Public Administration' does not affect number agreement."
             }
           ],
           "rules": [
@@ -2595,19 +2663,22 @@
           ],
           "commonMistakes": [
             {
-              "wrong": "This are the official rules.",
-              "right": "These are the official rules.",
-              "note": "Rules is plural, so use plural these and are."
+              "wrong": "This are the committee's findings.",
+              "right": "These are the committee's findings.",
+              "urdu": "یہ کمیٹی کے نتائج ہیں۔",
+              "note": "Error: 'This' (singular) used with plural noun 'findings'. Rule: use plural demonstrative 'these' and plural verb 'are' with plural nouns."
             },
             {
-              "wrong": "Those is the final report.",
-              "right": "That is the final report.",
-              "note": "Report is singular, so use singular that and is."
+              "wrong": "Those is the final verdict.",
+              "right": "That is the final verdict.",
+              "urdu": "وہ آخری فیصلہ تھا۔",
+              "note": "Error: plural demonstrative 'Those' with singular noun 'verdict'. Rule: use singular demonstrative 'that' and singular verb 'is/was' for singular antecedents."
             },
             {
-              "wrong": "These was the old policy.",
-              "right": "This was the old policy.",
-              "note": "Policy is singular, so use this with was."
+              "wrong": "This were the approved candidates.",
+              "right": "These were the approved candidates.",
+              "urdu": "یہ منظور شدہ امیدوار تھے۔",
+              "note": "Error: singular demonstrative 'This' used with plural noun 'candidates'. Rule: match demonstrative and verb number to the noun; plural noun requires 'these' and plural verb 'were'."
             }
           ],
           "practice": [
@@ -2666,7 +2737,8 @@
               "answerIndex": 1,
               "explanation": "A pronoun must agree with its antecedent and fit its grammatical role."
             }
-          ]
+          ],
+          "subjectVerbAgreementUrdu": "فاعل اور فعل کی ہم آہنگی (Subject–Verb Agreement): فاعل اور فعل کا عدد (واحد یا جمع) اور شخص کے لحاظ سے میل ضروری ہوتا ہے۔ جب فاعل واحد ہو تو واحد فعل استعمال کریں ('this is'، 'that was') اور جب فاعل جمع ہو تو جمع فعل ('these are'، 'those were')۔ اضافی عبارات مثلاً prepositional phrases یا 'by' agent جمله فعل کی عددی شکل کو تبدیل نہیں کرتے۔"
         },
         {
           "name": "Interrogative Pronoun",
@@ -2675,20 +2747,24 @@
           "subjectVerbAgreement": "Who prepared the examination report?",
           "examples": [
             {
-              "text": "Whom did the commission invite?",
-              "note": "Whom is the object of invite because the commission is the subject."
+              "text": "Who prepared the examination report?",
+              "urdu": "کس نے امتحانی رپورٹ تیار کی؟",
+              "note": "Who is the subject of prepared (subject form). The verb agrees with the implied subject who performed the action; no preposition is involved."
             },
             {
-              "text": "Which of these policies is effective?",
-              "note": "Which is singular here because it asks about one policy, so is is used."
+              "text": "Who reviewed the draft and who approved the final report?",
+              "urdu": "کس نے مسودہ کا جائزہ لیا اور کس نے حتمی رپورٹ کی منظوری دی؟",
+              "note": "Compound sentence with two independent clauses joined by 'and'. Each 'who' is the subject of its clause and each verb agrees with its own subject."
             },
             {
-              "text": "Whose is this research paper?",
-              "note": "Whose stands alone and asks about ownership of the paper."
+              "text": "Which of the proposed policies that the committee endorsed will improve public administration?",
+              "urdu": "کمیٹی کی طرف سے منظور شدہ مجوزہ پالیسیوں میں سے کون سی عوامی انتظامیہ کو بہتر بنائے گی؟",
+              "note": "'Which of' selects one item from a group; the relative clause 'that the committee endorsed' modifies 'policies'. The main verb 'will improve' agrees with the singular item implied by 'which (one)'."
             },
             {
-              "text": "What caused the economic decline?",
-              "note": "What is the subject causing the decline, so it comes before caused."
+              "text": "Whom did the selection board recommend for the civil service training program?",
+              "urdu": "انتخابی بورڈ نے کس کو سول سروس ٹریننگ پروگرام کے لیے سفارش کی؟",
+              "note": "Whom is the object of recommend and follows auxiliary inversion ('did the board recommend'). Use 'whom' for the objective case after the verb; 'for' introduces the purpose."
             }
           ],
           "rules": [
@@ -2699,17 +2775,20 @@
             {
               "wrong": "Whom prepared the report?",
               "right": "Who prepared the report?",
-              "note": "Who is the subject of prepared; whom is the object form."
+              "urdu": "کس نے رپورٹ تیار کی؟",
+              "note": "Error: 'whom' is the objective form; here the pronoun is the subject of 'prepared', so the subject form 'who' is correct."
             },
             {
               "wrong": "Who did the panel invite?",
               "right": "Whom did the panel invite?",
-              "note": "Whom is the formal object of invite; the panel is the subject."
+              "urdu": "پینل نے کس کو مدعو کیا؟",
+              "note": "Error: In formal grammar the pronoun after the verb is object; 'did the panel invite' takes an object, so use 'whom' (objective case)."
             },
             {
               "wrong": "Which are the correct option?",
               "right": "Which is the correct option?",
-              "note": "Option is singular, so use is; are requires a plural noun."
+              "urdu": "کون سا درست آپشن ہے؟",
+              "note": "Error: Subject–verb agreement; 'option' is singular, so the singular verb 'is' must be used. Alternatively, make both plural ('Which are the correct options?')."
             }
           ],
           "practice": [
@@ -2768,7 +2847,8 @@
               "answerIndex": 1,
               "explanation": "A pronoun must agree with its antecedent and fit its grammatical role."
             }
-          ]
+          ],
+          "subjectVerbAgreementUrdu": "Examples (Interrogative Pronouns):\n\n1) English: Who prepared the examination report?\n   Urdu: کس نے امتحانی رپورٹ تیار کی؟\n   Note: 'Who' is the subject of 'prepared' (subject form). The verb agrees with the (implicit) subject; here 'who' performs the action, so use the subject form 'who', not 'whom'.\n\n2) English: Who reviewed the draft and who approved the final report?\n   Urdu: کس نے مسودہ کا جائزہ لیا اور کس نے حتمی رپورٹ کی منظوری دی؟\n   Note: This is a compound sentence with two independent clauses joined by 'and'. Each 'who' is the subject of its own clause, so each verb ('reviewed', 'approved') agrees separately with its subject.\n\n3) English: Which of the proposed policies that the committee endorsed will improve public administration?\n   Urdu: کمیٹی کی طرف سے منظور شدہ مجوزہ پالیسیوں میں سے کون سی عوامی انتظامیہ کو بہتر بنائے گی؟\n   Note: 'Which of' selects one item from a group ('proposed policies'); the relative clause 'that the committee endorsed' modifies 'policies'. The main verb 'will improve' agrees with the singular item implied by 'which (one)'.\n\n4) English: Whom did the selection board recommend for the civil service training program?\n   Urdu: انتخابی بورڈ نے کس کو سول سروس ٹریننگ پروگرام کے لیے سفارش کی؟\n   Note: 'Whom' is the object of 'recommend' and follows the auxiliary inversion ('did the board recommend'). Use 'whom' for the objective case after the verb; the preposition 'for' (= 'کے لیے') introduces the purpose.\n\nSubject–Verb Agreement (مختصر وضاحت اردو میں):\nفاعل اور فعل کی تعداد (واحد/جمع) اور شخص کے مطابق فعل کا فارم تبدیل ہوتا ہے۔ سوالی ضمایر جیسے 'who' جب فاعل ہوں تو فعل فاعل کے مطابق آتا ہے؛ جب مفعول ہوں تو 'whom' استعمال کریں۔ 'Which of' یا 'one of' جیسی ترکیبات میں فعل اس اسم کے مطابق ہوگا جو 'of' کے بعد آتا ہے: اگر مراد واحد شے ہے تو واحد فعل، اگر مراد جمع اشیاء ہیں تو جمع فعل۔"
         },
         {
           "name": "Indefinite Pronoun",
@@ -2777,20 +2857,24 @@
           "subjectVerbAgreement": "Everyone in the academy submits his or her form on time.",
           "examples": [
             {
-              "text": "Each of the candidates has an admit card.",
-              "note": "Each is singular even before plural candidates, so has is required."
+              "text": "Each candidate submits the application before the deadline.",
+              "urdu": "ہر امیدوار آخری تاریخ سے پہلے اپنی درخواست جمع کرواتا ہے۔",
+              "note": "'Each' یہاں subject ہے اور ہر فرد کو الگ الگ ظاہر کرتا ہے، اس لیے یہ singular ہے؛ 'candidate' singular ہے اور فعل 'submits' بھی singular ہے۔"
             },
             {
-              "text": "Several have challenged the decision.",
-              "note": "Several is plural, so have is used."
+              "text": "Some members approved the report, but others requested more data.",
+              "urdu": "کچھ اراکین نے رپورٹ کی منظوری دے دی، مگر دوسروں نے مزید معلومات کا مطالبہ کیا۔",
+              "note": "یہ compound sentence ہے۔ 'Some' یہاں plural معنی میں ہے (some members)، اس لیے پہلے clause میں فعل 'approved' plural کے مطابق ہے؛ 'others' بھی members کی طرف اشارہ کرتا ہے اور دوسرے clause میں 'requested' استعمال ہوا۔"
             },
             {
-              "text": "Nobody was absent from the hearing.",
-              "note": "Nobody is singular and takes was, not were."
+              "text": "None of the committee's recommendations was accepted because each suggestion conflicted with existing policy.",
+              "urdu": "کمیٹی کی کسی بھی سفارش کو منظور نہیں کیا گیا کیونکہ ہر تجویز موجودہ پالیسی سے متصادم تھی۔",
+              "note": "یہ complex sentence ہے: 'None of the committee's recommendations' میں 'none' بطور 'not one' لیا گیا ہے اس لیے singular verb 'was' درست ہے؛ بعد میں 'each suggestion' بھی singular ہے اور اس نے subordinate clause کی طرف اشارہ کیا، لہٰذا singular agreement برقرار رکھا گیا۔"
             },
             {
-              "text": "All of the evidence is relevant.",
-              "note": "Evidence is uncountable and singular, so is is correct."
+              "text": "All of the evidence is admissible under the law.",
+              "urdu": "تمام شواہد قانون کے تحت قابلِ قبول ہیں۔",
+              "note": "'All of the evidence' میں 'evidence' غیرشمار (uncountable) ہے، اس لیے English میں singular verb 'is' درست ہے۔ (Urdu ترجمہ روایتی طور پر جمع صورت میں آتا ہے لیکن معنی وہی ہیں؛ انگریزی agreement noun کی شمارپذیری پر مبنی ہوتی ہے۔)"
             }
           ],
           "rules": [
@@ -2801,17 +2885,20 @@
             {
               "wrong": "Everyone have submitted the form.",
               "right": "Everyone has submitted the form.",
-              "note": "Everyone is singular, so it takes has."
+              "urdu": "ہر شخص نے فارم جمع کرایا ہے۔",
+              "note": "خرابی: 'Everyone' singular ضمیر ہے اور singular auxiliary 'has' چاہیے؛ 'have' غلط ہے۔"
             },
             {
               "wrong": "Each candidates has a badge.",
               "right": "Each candidate has a badge.",
-              "note": "Each is followed by a singular noun and takes has."
+              "urdu": "ہر امیدوار کے پاس بیج ہے۔",
+              "note": "خرابی: 'Each' کے بعد اسم singular ہونا چاہیے؛ 'candidates' (plural) غلط ہے۔ درست اسم 'candidate' اور فعل singular 'has' ہوگا۔"
             },
             {
-              "wrong": "Nobody were ready.",
-              "right": "Nobody was ready.",
-              "note": "Nobody is singular, so was is required."
+              "wrong": "None of the report were accurate.",
+              "right": "None of the reports was accurate.",
+              "urdu": "کسی بھی رپورٹ درست نہیں تھی۔",
+              "note": "خرابی: 'of' کے بعد اسم کو درست شکل میں لکھنا ضروری ہے (reports، نہ کہ report) اور یہاں 'none' کا مطلب 'not one' ہے اس لیے singular verb 'was' ترجیح دی جاتی ہے؛ 'were' غلط ہے۔"
             }
           ],
           "practice": [
@@ -2870,7 +2957,8 @@
               "answerIndex": 1,
               "explanation": "A pronoun must agree with its antecedent and fit its grammatical role."
             }
-          ]
+          ],
+          "subjectVerbAgreementUrdu": "غیر معین ضمائر (مثلاً everyone, someone, each, nobody) عموماً واحد تصور کیے جاتے ہیں اور واحد فعل لیتے ہیں؛ لہٰذا singular verbs جیسے is، has، was استعمال کریں۔ چند، many، several جیسے ضمائر جمع معنی دیتے ہیں لہٰذا plural verbs (are، have) استعمال ہوتے ہیں۔ 'all', 'some', 'none' وغیرہ کی صورت میں فیصلہ اس بات پر منحصر ہے کہ ان کے بعد آنے والا اسم شمارپذیر (plural) ہے یا غیرشمار/غیرمخصوص (uncountable)؛ مثلاً all of the evidence → singular؛ all of the candidates → plural۔ 'each of' ہمیشہ واحد فعل لیتا ہے؛ 'either' اور 'neither' بھی واحد ہوتے ہیں۔ جب ضرورت ہو تو واحد ضمیر کے لیے singular they بطور غیر رسمی اور قبول شدہ حل استعمال کیا جا سکتا ہے۔"
         },
         {
           "name": "Reciprocal Pronoun",
@@ -2879,20 +2967,24 @@
           "subjectVerbAgreement": "The two delegations respected each other.",
           "examples": [
             {
-              "text": "The candidates helped one another during the workshop.",
-              "note": "One another shows mutual help among several candidates."
+              "text": "Candidates exchanged study notes with each other during the revision week.",
+              "urdu": "امیدواروں نے نظرِ ثانی کے ہفتے کے دوران ایک دوسرے کے ساتھ مطالعے کے نوٹس کا تبادلہ کیا۔",
+              "note": "Simple sentence. 'Candidates' is a plural subject; 'each other' is the reciprocal object linked by 'with'; the verb 'exchanged' agrees with the plural subject."
             },
             {
-              "text": "The two departments blamed each other.",
-              "note": "Each other shows a mutual relationship between departments."
+              "text": "The audit committee and the finance committee exchanged reports with each other, and then they met to reconcile the figures.",
+              "urdu": "آڈٹ کمیٹی اور فنانس کمیٹی نے ایک دوسرے کے ساتھ رپورٹس کا تبادلہ کیا، اور پھر وہ اعداد و شمار کو ہم آہنگ کرنے کے لیے ملاقات کی۔",
+              "note": "Compound sentence joined by 'and'. The compound subject ('the audit committee and the finance committee') is plural; 'each other' shows mutual action in the first clause and 'they' refers back to the same plural subject in the second clause."
             },
             {
-              "text": "The partners consult each other before decisions.",
-              "note": "Partners is plural, so consult is the base plural verb."
+              "text": "When researchers from different institutions collaborate on a study, they often cite one another in literature reviews.",
+              "urdu": "جب مختلف اداروں کے محققین کسی مطالعہ پر تعاون کرتے ہیں تو وہ اکثر اپنے لٹریچر ریویوز میں ایک دوسرے کا حوالہ دیتے ہیں۔",
+              "note": "Complex sentence with a subordinate 'When' clause. 'Researchers' (plural) is the antecedent for 'they' and 'one another'; 'cite' is present plural to match the subject; 'one another' is appropriate for mutual citation among multiple institutions."
             },
             {
-              "text": "The communities support one another.",
-              "note": "Communities is plural, and one another shows mutual support."
+              "text": "Panel members will hold each other accountable for procedural lapses.",
+              "urdu": "پینل کے اراکین عملی طریقۂ کار میں کوتاہیوں کے لیے ایک دوسرے کو جوابدہ ٹھہراﺅں گے۔",
+              "note": "Simple future sentence. 'Panel members' is a plural subject; 'will hold each other accountable' uses the auxiliary 'will' with a reciprocal object 'each other'; agreement is maintained through the plural subject."
             }
           ],
           "rules": [
@@ -2903,17 +2995,20 @@
             {
               "wrong": "The two teams helped himself.",
               "right": "The two teams helped each other.",
-              "note": "A plural subject needs a reciprocal form, not singular himself."
+              "urdu": "دونوں ٹیموں نے ایک دوسرے کی مدد کی۔",
+              "note": "Error: singular reflexive 'himself' does not match the plural subjects. Rule: use a reciprocal pronoun (each other) for mutual action between plural subjects."
             },
             {
               "wrong": "The partners blamed each other themselves.",
               "right": "The partners blamed each other.",
-              "note": "Each other already shows mutual action; themselves is unnecessary."
+              "urdu": "شراکت داروں نے ایک دوسرے کو موردِ الزام ٹھہرایا۔",
+              "note": "Error: redundant addition of 'themselves'. Rule: 'each other' already expresses mutual action; do not add reflexive pronouns unnecessarily."
             },
             {
-              "wrong": "The committee members supports one another.",
+              "wrong": "The committee member supports one another.",
               "right": "The committee members support one another.",
-              "note": "Members is plural, so support is required."
+              "urdu": "کمیٹی کے اراکین ایک دوسرے کی حمایت کرتے ہیں۔",
+              "note": "Error: number mismatch — singular 'committee member' conflicts with reciprocal 'one another' which requires a plural antecedent. Rule: ensure subject number matches reciprocal pronoun and verb agreement ('support' for plural)."
             }
           ],
           "practice": [
@@ -2972,7 +3067,8 @@
               "answerIndex": 1,
               "explanation": "A pronoun must agree with its antecedent and fit its grammatical role."
             }
-          ]
+          ],
+          "subjectVerbAgreementUrdu": "افعال کا اتفاق: جب باہمی ضمائر (each other, one another) استعمال ہوتے ہیں تو فعل فاعل کے ساتھ میل کھاتا ہے۔ عام طور پر باہمی عمل جمع فاعلوں کے درمیان واقع ہوتا ہے؛ اس لیے فعل بھی جمع کے مطابق ہونا چاہیے۔\n\nمثالیں:\n1) English: \"Candidates exchanged study notes with each other during the revision week.\" \n   Urdu: \"امیدواروں نے نظرِ ثانی کے ہفتے کے دوران ایک دوسرے کے ساتھ مطالعے کے نوٹس کا تبادلہ کیا۔\"\n   Note: Simple sentence. 'Candidates' جمع فاعل ہے؛ 'each other' باہمی مفعول ہے جو 'with' کے ذریعے فعل 'exchanged' سے جڑتا ہے؛ فعل ماضی 'exchanged' فاعل کے مطابق ہے۔\n\n2) English: \"The audit committee and the finance committee exchanged reports with each other, and then they met to reconcile the figures.\" \n   Urdu: \"آڈٹ کمیٹی اور فنانس کمیٹی نے ایک دوسرے کے ساتھ رپورٹس کا تبادلہ کیا، اور پھر وہ اعداد و شمار کو ہم آہنگ کرنے کے لیے ملاقات کی۔\"\n   Note: Compound sentence joined by 'and'. موضوع دو کمیٹیوں کا مرکب ہے (جمع)، اس لیے 'exchanged reports with each other' میں 'each other' باہمی عمل دکھاتا ہے؛ دوسری شق ('they met') اسی جمع موضوع کو حوالہ دیتی ہے۔\n\n3) English: \"When researchers from different institutions collaborate on a study, they often cite one another in literature reviews.\" \n   Urdu: \"جب مختلف اداروں کے محققین کسی مطالعہ پر تعاون کرتے ہیں تو وہ اکثر اپنے لٹریچر ریویوز میں ایک دوسرے کا حوالہ دیتے ہیں۔\"\n   Note: Complex sentence with a subordinate 'When' clause. 'Researchers' جمع سابقہ ہے اور 'they' و 'one another' اسی کا حوالہ ہیں؛ فعل 'cite' (present plural) فاعل کے ساتھ میل کھاتا ہے اور 'one another' متعدد اداروں کے درمیان باہمی حوالہ ظاہر کرتا ہے۔\n\n4) English: \"Panel members will hold each other accountable for procedural lapses.\" \n   Urdu: \"پینل کے اراکین عملی طریقۂ کار میں کوتاہیوں کے لیے ایک دوسرے کو جوابدہ ٹھہراﺅں گے۔\"\n   Note: Simple future sentence. 'Panel members' جمع فاعل ہے؛ مستقبل کی ساخت 'will hold' میں 'each other' مفعول ہے؛ فعل کا تضامن (agreement) فاعل کی جمعی نوعیت کے مطابق برقرار ہے۔"
         },
         {
           "name": "Distributive Pronoun",
@@ -2981,20 +3077,24 @@
           "subjectVerbAgreement": "Each of the applicants has a separate roll number.",
           "examples": [
             {
-              "text": "Neither of the answers is correct.",
-              "note": "Neither is singular in formal exam English, so is is used."
+              "text": "Each candidate submitted his or her application before the deadline.",
+              "urdu": "ہر امیدوار نے آخری تاریخ سے پہلے اپنی درخواست جمع کروائی۔",
+              "note": "'Each' فاعلِ واحد ہے؛ فعل واحد سمجھ کر لیا جاتا ہے؛ 'his or her' ہر انفرادی امیدوار کی ملکیت ظاہر کرتا ہے۔"
             },
             {
-              "text": "Either of the routes leads to the examination centre.",
-              "note": "Either means one of two and takes singular leads."
+              "text": "Neither the committee nor the administration has accepted the report, and the committee will request revisions.",
+              "urdu": "نہ تو کمیٹی نے اور نہ ہی انتظامیہ نے رپورٹ منظور کی ہے، اور کمیٹی دوبارہ ترامیم طلب کرے گی۔",
+              "note": "'Neither...nor' میں فعل قریبی اسم کے مطابق ہوگا؛ یہاں 'administration' قریب ہے اس لیے 'has' درست ہے؛ دوسرا حصہ آزاد جملہ ہے۔"
             },
             {
-              "text": "Each received a certificate.",
-              "note": "Each is singular, so the past verb received is grammatically suitable."
+              "text": "Either of the research proposals that meet the funders' criteria is likely to be funded.",
+              "urdu": "ایسی تحقیقی تجاویز میں سے کسی ایک کو جو فنڈرز کے معیار پر پورا اُترے، مالی اعانت ملنے کا امکان ہے۔",
+              "note": "'Either' واحد اظہار کرتا ہے؛ صفتی جملہ 'that meet' 'proposals' کو محدود کرتا ہے (جمع)، مگر مرکزی فعل 'Either' کے ساتھ واحد رہے گا۔"
             },
             {
-              "text": "Neither was willing to withdraw the appeal.",
-              "note": "Neither refers to two separately and takes was."
+              "text": "Each of the examination papers was marked by a different examiner.",
+              "urdu": "ہر امتحانی پرچہ مختلف ممتحن کے ذریعے جانچا گیا۔",
+              "note": "'Each' فاعلِ واحد ہے؛ جملہ passive ہے اور 'by' ایجنٹ دکھاتا ہے؛ فعل 'was' واحد کے مطابق ہے۔"
             }
           ],
           "rules": [
@@ -3003,19 +3103,22 @@
           ],
           "commonMistakes": [
             {
-              "wrong": "Each of the candidates have a slip.",
-              "right": "Each of the candidates has a slip.",
-              "note": "Each is singular; the plural noun after of does not control the verb."
+              "wrong": "Each of the candidates have submitted their forms.",
+              "right": "Each of the candidates has submitted his or her form.",
+              "urdu": "ہر امیدوار نے اپنا فارم جمع کروایا ہے۔",
+              "note": "غلطی: 'Each' واحد ہے اس لیے فعل 'has' درکار ہے؛ رسمی امتحانی عبارت میں 'his or her' واحد ملکیت ظاہر کرنے کے لیے مناسب ہے۔"
             },
             {
-              "wrong": "Neither options are acceptable.",
-              "right": "Neither option is acceptable.",
-              "note": "Neither takes a singular noun and singular is."
+              "wrong": "Neither of the reports are acceptable.",
+              "right": "Neither of the reports is acceptable.",
+              "urdu": "رپورٹوں میں سے کوئی بھی قابلِ قبول نہیں ہے۔",
+              "note": "غلطی: 'Neither' واحد شمارہ لیتا ہے؛ لہٰذا فعل 'is' استعمال کریں، نہ کہ جمع 'are'۔"
             },
             {
-              "wrong": "Either of the plans are workable.",
-              "right": "Either of the plans is workable.",
-              "note": "Either refers to one of two plans, so is is required."
+              "wrong": "Either of the policies were implemented last year.",
+              "right": "Either of the policies was implemented last year.",
+              "urdu": "پالیسیوں میں سے کسی ایک کو پچھلے سال نافذ کیا گیا تھا۔",
+              "note": "غلطی: 'Either' ایک کو ظاہر کرتا ہے اس لیے واحد فعل 'was' درکار ہے؛ 'were' جمع فعل ہے جو غلطِ مطابقت ہے۔"
             }
           ],
           "practice": [
@@ -3074,7 +3177,8 @@
               "answerIndex": 1,
               "explanation": "A pronoun must agree with its antecedent and fit its grammatical role."
             }
-          ]
+          ],
+          "subjectVerbAgreementUrdu": "موضوع–فعل مطابقت (Subject–Verb Agreement) — مختصر وضاحت: Distributive pronouns جیسے each, either, neither گروہی افراد کو الگ الگ ظاہر کرتے ہیں لہٰذا عام طور پر واحد شمارہ فعل لیتے ہیں۔ مثال کے طور پر 'Each of the candidates has...' میں 'Each' واحد فاعل ہے چاہے 'of' کے بعد اسم جمع ہو۔ 'Either...or' اور 'Neither...nor' میں فعل عموماً قریبی اسم کے مطابق ہو گا (nearest noun rule)۔ ذیل میں چار مثالیں (انگریزی جملہ، اردو ترجمہ اور مختصر نوٹ): 1) English: \"Each candidate submitted his or her application before the deadline.\" Urdu: \"ہر امیدوار نے آخری تاریخ سے پہلے اپنی درخواست جمع کروائی۔\" Note (اردو): \"'Each' فاعلِ واحد ہے؛ فعل واحد فرض کر کے استعمال کیا جاتا ہے؛ 'his or her' تنہائی میں ہر امیدوار کی ملکیت ظاہر کرتا ہے۔\" 2) English: \"Neither the committee nor the administration has accepted the report, and the committee will request revisions.\" Urdu: \"نہ تو کمیٹی نے اور نہ ہی انتظامیہ نے رپورٹ منظور کی ہے، اور کمیٹی دوبارہ ترامیم طلب کرے گی۔\" Note (اردو): \"'Neither...nor' مرکب فاعل ہے؛ فعل قریب تر اسم (administration) کے مطابق آیا ہے اس لیے 'has' درست ہے؛ دوسرا حصہ آزاد جملہ ہے اس لیے الگ فعل استعمال ہوا۔\" 3) English: \"Either of the research proposals that meet the funders' criteria is likely to be funded.\" Urdu: \"ایسی تحقیقی تجاویز میں سے کسی ایک کو جو فنڈرز کے معیار پر پورا اُترے، مالی اعانت ملنے کا امکان ہے۔\" Note (اردو): \"'Either' واحد کو ظاہر کرتا ہے؛ 'that meet' صفتی جملہ ('proposals' کے لیے) جمع صورت میں ہے، مگر مرکزی فعل 'Either' کے ساتھ واحد ہے اس لیے 'is' مناسب ہے۔\" 4) English: \"Each of the examination papers was marked by a different examiner.\" Urdu: \"ہر امتحانی پرچہ مختلف ممتحن کے ذریعے جانچا گیا۔\" Note (اردو): \"'Each' فاعلِ واحد ہے؛ جملہ passive شکل میں ہے اور 'by' ایجنٹ کو بتاتا ہے؛ لہٰذا فعل واحد 'was' درست ہے۔"
         },
         {
           "name": "Intensive/Emphatic Pronoun",
@@ -3083,20 +3187,24 @@
           "subjectVerbAgreement": "The minister himself addressed the competitive-exam candidates.",
           "examples": [
             {
-              "text": "The director herself signed the notification.",
-              "note": "Herself emphasizes director; signed still agrees with singular director."
+              "text": "The candidates themselves submitted the research reports.",
+              "urdu": "امیدواروں نے خود تحقیقاتی رپورٹس جمع کروائیں۔",
+              "note": "The antecedent 'the candidates' is a plural subject; 'themselves' is emphatic and agrees in number; verb 'submitted' is plural to match; no special prepositions affect emphasis."
             },
             {
-              "text": "The candidates themselves requested clarification.",
-              "note": "Themselves agrees with plural candidates and adds emphasis."
+              "text": "The committee reviewed the policy draft, and the chair herself signed the final version.",
+              "urdu": "کمیٹی نے پالیسی مسودہ کا جائزہ لیا، اور چیئر نے خود حتمی ورژن پر دستخط کیے۔",
+              "note": "Compound sentence: two clauses joined by 'and'. In clause two 'chair' is singular and 'herself' emphasizes that subject; verb 'signed' agrees with the singular chair."
             },
             {
-              "text": "I myself checked the references.",
-              "note": "Myself emphasizes I; the sentence remains complete without it."
+              "text": "Although the institution itself had revised the examination schedule, the administration announced no changes.",
+              "urdu": "اگرچہ ادارے نے خود امتحانی شیڈول میں ترمیم کی تھی، انتظامیہ نے کوئی تبدیلی کا اعلان نہیں کیا۔",
+              "note": "Complex sentence: subordinate clause ('Although...') contains the emphasized antecedent 'the institution'; 'itself' stresses agency in subordinate clause while main clause has a different subject, so each clause's verb agrees with its own subject."
             },
             {
-              "text": "The policy itself is not controversial.",
-              "note": "Itself emphasizes policy, and singular policy takes is."
+              "text": "The director herself and the deputy himself attended the disciplinary hearing and answered the panel's questions.",
+              "urdu": "ڈائریکٹر خود اور ڈپٹی خود تادیبی سماعت میں شریک ہوئے اور پینل کے سوالات کے جواب دیے۔",
+              "note": "Compound subject joined by 'and' produces a plural subject; each noun has its emphatic pronoun matching gender/number; verbs are plural to agree with the combined subject."
             }
           ],
           "rules": [
@@ -3107,17 +3215,20 @@
             {
               "wrong": "Myself submitted the application.",
               "right": "I myself submitted the application.",
-              "note": "I is the subject; myself is only an emphatic addition."
+              "urdu": "میں نے خود درخواست جمع کروائی۔",
+              "note": "Error: 'Myself' cannot function as the main subject. Rule: use the correct subject pronoun (I) and add the intensive pronoun (myself) after it for emphasis."
             },
             {
               "wrong": "The officer herselfs approved it.",
               "right": "The officer herself approved it.",
-              "note": "Herself is the correct singular feminine form."
+              "urdu": "آفیسر نے خود اس کی منظوری دی۔",
+              "note": "Error: 'herselfs' is nonstandard/incorrect. Rule: intensive/reflexive pronouns do not take plural -s; use the correct form 'herself' for a singular feminine antecedent."
             },
             {
               "wrong": "The candidates himself answered.",
               "right": "The candidates themselves answered.",
-              "note": "Candidates is plural, so use themselves."
+              "urdu": "امیدواروں نے خود جواب دیا۔",
+              "note": "Error: number mismatch between antecedent and intensive pronoun. Rule: the emphatic pronoun must agree in number and person with its antecedent—use 'themselves' for plural antecedents."
             }
           ],
           "practice": [
@@ -3176,7 +3287,8 @@
               "answerIndex": 1,
               "explanation": "A pronoun must agree with its antecedent and fit its grammatical role."
             }
-          ]
+          ],
+          "subjectVerbAgreementUrdu": "مثالیں اور وضاحتیں:\n1) The candidates themselves submitted the research reports.\nاردو: امیدواروں نے خود تحقیقاتی رپورٹس جمع کروائیں۔\nNote: The antecedent 'the candidates' is a plural subject; 'themselves' is an emphatic pronoun agreeing in number with that subject. The verb 'submitted' is plural to match the plural subject; there are no special prepositions or articles affecting the emphasis.\n\n2) The committee reviewed the policy draft, and the chair herself signed the final version.\nاردو: کمیٹی نے پالیسی مسودہ کا جائزہ لیا، اور چیئر نے خود حتمی ورژن پر دستخط کیے۔\nNote: This is a compound sentence with two independent clauses joined by 'and'. In the second clause 'the chair' is the singular subject and 'herself' emphasizes that subject; the verb 'signed' agrees with the singular chair. The emphasis does not change the clause linkage or the use of the definite article 'the'.\n\n3) Although the institution itself had revised the examination schedule, the administration announced no changes.\nاردو: اگرچہ ادارے نے خود امتحانی شیڈول میں ترمیم کی تھی، انتظامیہ نے کوئی تبدیلی کا اعلان نہیں کیا۔\nNote: A complex sentence with a subordinate concessive clause ('Although ...'). 'The institution' is the antecedent of 'itself' inside the subordinate clause; 'itself' stresses that the institution acted (agency). The main clause has a different subject (the administration), so verb agreement follows each clause's true subject.\n\n4) The director herself and the deputy himself attended the disciplinary hearing and answered the panel's questions.\nاردو: ڈائریکٹر خود اور ڈپٹی خود تادیبی سماعت میں شریک ہوئے اور پینل کے سوالات کے جواب دیے۔\nNote: A compound subject joined by 'and' makes the subject plural; each noun carries its own emphatic pronoun matching gender/number. Verbs are plural to agree with the combined subject. Possessive ('panel's') shows the object of the answers.\n\nSubject–Verb Agreement (مختصر وضاحت):\nفاعل اور فعل کی ہم آہنگی یہ کہتی ہے کہ فعل ہمیشہ اپنے حقیقی فاعل (subject) کے مطابق واحد یا جمع ہوگا۔ تقویتی/زور دینے والے ضمیر (myself, yourself, herself, himself, itself, ourselves, yourselves, themselves) اپنے antecedent کی شخصیت اور تعداد کے مطابق ہوتے ہیں اور بنیادی معنی میں اضافی زور دیتے ہیں؛ وہ جملے کا اصل فاعل نہیں بنتے، اس لیے فعل اسی حقیقی فاعل کے مطابق رہتا ہے۔ جب دو اسم 'and' سے جڑیں تو فعل عام طور پر جمع ہوگا، اور 'by' عام طور پر passive جملوں میں عامل بتانے کے لیے آتا ہے۔"
         }
       ],
       "rules": [

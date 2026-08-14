@@ -314,6 +314,7 @@ class GrammarLocalDataSource {
             description: desc,
             urduExplanation: _str(e['urduExplanation']),
             subjectVerbAgreement: _str(e['subjectVerbAgreement']),
+            subjectVerbAgreementUrdu: _str(e['subjectVerbAgreementUrdu']),
             examples: _examples(e['examples']),
             rules: _strList(e['rules']),
             commonMistakes: _mistakes(e['commonMistakes']),
@@ -354,7 +355,11 @@ class GrammarLocalDataSource {
         final String right = e['right']?.toString() ?? '';
         if (wrong.isNotEmpty || right.isNotEmpty) {
           out.add(GrammarMistake(
-              wrong: wrong, right: right, note: _nullStr(e['note'])));
+              wrong: wrong,
+              right: right,
+              note: _nullStr(e['note']),
+              urdu: _nullStr(e['urdu']),
+            ));
         }
       }
     }
