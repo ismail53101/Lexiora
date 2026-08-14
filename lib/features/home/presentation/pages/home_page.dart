@@ -338,6 +338,13 @@ class _GreetingRow extends StatelessWidget {
     return 'Good Evening';
   }
 
+  String get _greetingIcon {
+    final int hour = DateTime.now().hour;
+    if (hour < 12) return '🌄';
+    if (hour < 17) return '☀️';
+    return '🌇';
+  }
+
   @override
   Widget build(BuildContext context) {
     final ThemeData theme = Theme.of(context);
@@ -356,6 +363,7 @@ class _GreetingRow extends StatelessWidget {
                 overflow: TextOverflow.ellipsis,
                 TextSpan(
                   style: theme.textTheme.titleLarge?.copyWith(
+                    fontSize: 20,
                     fontWeight: FontWeight.w800,
                   ),
                   children: <InlineSpan>[
@@ -369,12 +377,16 @@ class _GreetingRow extends StatelessWidget {
                         text: displayName,
                         style: TextStyle(color: scheme.primary),
                       ),
-                    const TextSpan(text: ' 👋'),
                   ],
                 ),
               ),
             ),
-            const SizedBox(width: 6),
+            const SizedBox(width: 4),
+            Text(
+              _greetingIcon,
+              style: const TextStyle(fontSize: 20),
+            ),
+            const SizedBox(width: 4),
             _GlowIconButton(
               icon: isDark ? Icons.dark_mode_rounded : Icons.light_mode_rounded,
               onTap: onThemeTap,
