@@ -5,6 +5,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:lexiora/core/services/pdf_discovery_service.dart' show DeviceFile;
 import 'package:lexiora/core/services/pdf_import_service.dart';
+import 'package:lexiora/core/services/pdf_ocr_service.dart';
 import 'package:lexiora/modules/ai_assistant/domain/entities/ai_attachment.dart';
 import 'package:lexiora/modules/ai_assistant/presentation/providers/ai_providers.dart';
 import 'package:lexiora/modules/ai_assistant/presentation/widgets/ai_message_tools.dart';
@@ -27,6 +28,7 @@ class _ChatComposerState extends ConsumerState<ChatComposer> {
   final FocusNode _focus = FocusNode();
   final ImagePicker _picker = ImagePicker();
   final PdfImportService _pdfPicker = PdfImportService();
+  final PdfOcrService _pdfOcr = PdfOcrService();
   static const Uuid _uuid = Uuid();
 
   bool _hasText = false;
@@ -108,20 +110,30 @@ class _ChatComposerState extends ConsumerState<ChatComposer> {
         );
       }
       final DeviceFile file = picked.first;
-      final String? extracted = await extractPdfPlainText(file.path);
+      // Always run the existing page-aware OCR preparation. It skips pages
+      // that already have text and fills in scanned pages, which also makes
+      // mixed text/scanned PDFs readable instead of handling only the fully
+      // image-based case.
+      final String readablePath = await _pdfOcr.makeSearchable(
+        documentId: _uuid.v4(),
+        sourcePath: file.path,
+      );
+      final String? extracted = await extractPdfPlainText(readablePath);
       if (!mounted) return;
-      if (extracted == null) {
-        messenger.showSnackBar(
-          const SnackBar(
-            content: Text(
-              "PDF attached, but no text layer was found. You can still ask "
-              'about it after adding a question.',
-            ),
+      messenger.showSnackBar(
+        SnackBar(
+          content: Text(
+            extracted == null
+                ? 'PDF attached, but no readable text could be found.'
+                : readablePath == file.path
+                    ? 'PDF attached and ready for questions.'
+                    : 'Scanned PDF processed and ready for questions.',
           ),
-        );
-      }
+          duration: const Duration(seconds: 2),
+        ),
+      );
       setState(() {
-        _pendingPdfPath = file.path;
+        _pendingPdfPath = readablePath;
         _pendingPdfName = file.name;
         _pendingPdfText = extracted;
       });
@@ -429,37 +441,65 @@ class _PdfPreviewChip extends StatelessWidget {
     return Align(
       alignment: Alignment.centerLeft,
       child: Container(
-        constraints: const BoxConstraints(maxWidth: 300),
-        padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 9),
+        constraints: const BoxConstraints(maxWidth: 320),
+        padding: const EdgeInsets.fromLTRB(8, 7, 6, 7),
         decoration: BoxDecoration(
-          color: scheme.errorContainer.withValues(alpha: 0.58),
-          borderRadius: BorderRadius.circular(14),
+          color: scheme.surfaceContainerHighest,
+          borderRadius: BorderRadius.circular(16),
           border: Border.all(color: scheme.outlineVariant),
         ),
         child: Row(
           mainAxisSize: MainAxisSize.min,
           children: <Widget>[
-            Icon(Icons.picture_as_pdf_outlined, color: scheme.error, size: 22),
-            const SizedBox(width: 8),
-            Flexible(
-              child: Text(
-                name,
-                maxLines: 1,
-                overflow: TextOverflow.ellipsis,
-                style: theme.textTheme.labelLarge?.copyWith(
-                  color: scheme.onErrorContainer,
-                  fontWeight: FontWeight.w700,
-                ),
+            Container(
+              width: 38,
+              height: 38,
+              alignment: Alignment.center,
+              decoration: BoxDecoration(
+                color: scheme.errorContainer,
+                borderRadius: BorderRadius.circular(11),
+              ),
+              child: Icon(
+                Icons.picture_as_pdf_rounded,
+                color: scheme.error,
+                size: 22,
               ),
             ),
-            const SizedBox(width: 6),
+            const SizedBox(width: 9),
+            Flexible(
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: <Widget>[
+                  Text(
+                    name,
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
+                    style: theme.textTheme.labelLarge?.copyWith(
+                      color: scheme.onSurface,
+                      fontWeight: FontWeight.w700,
+                    ),
+                  ),
+                  Text(
+                    'PDF document',
+                    style: theme.textTheme.labelSmall?.copyWith(
+                      color: scheme.onSurfaceVariant,
+                    ),
+                  ),
+                ],
+              ),
+            ),
             IconButton(
               onPressed: onRemove,
               tooltip: 'Remove PDF',
               visualDensity: VisualDensity.compact,
               padding: EdgeInsets.zero,
-              constraints: const BoxConstraints(minWidth: 26, minHeight: 26),
-              icon: Icon(Icons.close_rounded, color: scheme.onErrorContainer, size: 18),
+              constraints: const BoxConstraints(minWidth: 30, minHeight: 30),
+              icon: Icon(
+                Icons.close_rounded,
+                color: scheme.onSurfaceVariant,
+                size: 18,
+              ),
             ),
           ],
         ),

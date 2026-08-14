@@ -754,26 +754,51 @@ class _AttachedPdf extends StatelessWidget {
     final ThemeData theme = Theme.of(context);
     final ColorScheme scheme = theme.colorScheme;
     return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 11, vertical: 9),
+      padding: const EdgeInsets.fromLTRB(7, 6, 10, 6),
       decoration: BoxDecoration(
         color: scheme.onPrimary.withValues(alpha: 0.12),
-        borderRadius: BorderRadius.circular(12),
+        borderRadius: BorderRadius.circular(15),
         border: Border.all(color: scheme.onPrimary.withValues(alpha: 0.25)),
       ),
       child: Row(
         mainAxisSize: MainAxisSize.min,
         children: <Widget>[
-          Icon(Icons.picture_as_pdf_outlined, color: scheme.onPrimary, size: 22),
+          Container(
+            width: 36,
+            height: 36,
+            alignment: Alignment.center,
+            decoration: BoxDecoration(
+              color: scheme.onPrimary.withValues(alpha: 0.16),
+              borderRadius: BorderRadius.circular(10),
+            ),
+            child: Icon(
+              Icons.picture_as_pdf_rounded,
+              color: scheme.onPrimary,
+              size: 21,
+            ),
+          ),
           const SizedBox(width: 8),
           Flexible(
-            child: Text(
-              name,
-              maxLines: 1,
-              overflow: TextOverflow.ellipsis,
-              style: theme.textTheme.labelLarge?.copyWith(
-                color: scheme.onPrimary,
-                fontWeight: FontWeight.w700,
-              ),
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: <Widget>[
+                Text(
+                  name,
+                  maxLines: 1,
+                  overflow: TextOverflow.ellipsis,
+                  style: theme.textTheme.labelLarge?.copyWith(
+                    color: scheme.onPrimary,
+                    fontWeight: FontWeight.w700,
+                  ),
+                ),
+                Text(
+                  'PDF document',
+                  style: theme.textTheme.labelSmall?.copyWith(
+                    color: scheme.onPrimary.withValues(alpha: 0.72),
+                  ),
+                ),
+              ],
             ),
           ),
         ],

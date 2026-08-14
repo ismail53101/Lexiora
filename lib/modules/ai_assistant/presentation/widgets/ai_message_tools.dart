@@ -22,40 +22,46 @@ import 'package:share_plus/share_plus.dart';
 /// already used elsewhere in the app (see `PdfOcrService`) — no extra
 /// package needed just for this.
 ///
-/// Capped at [maxChars] so an enormous PDF doesn't blow up the request to
-/// the assistant; returns null if the file couldn't be opened or had no
-/// extractable text at all (e.g. a purely scanned PDF with no OCR layer).
+/// Extracts selectable text page-by-page and keeps page boundaries visible to
+/// the assistant. A larger bounded context supports document summaries and
+/// data inspection without allowing an enormous PDF to create an unbounded
+/// request. When the limit is reached, both the beginning and ending sections
+/// are retained instead of silently discarding everything after the first
+/// characters.
 Future<String?> extractPdfPlainText(
   String filePath, {
-  int maxChars = 12000,
+  int maxChars = 48000,
 }) async {
   PdfDocument? document;
   try {
     document = await PdfDocument.openFile(filePath);
-    final StringBuffer buffer = StringBuffer();
-    for (final PdfPage page in document.pages) {
-      if (buffer.length >= maxChars) break;
+    final List<String> pageSections = <String>[];
+    for (int index = 0; index < document.pages.length; index++) {
+      final PdfPage page = document.pages[index];
       try {
         // Typed dynamically, matching PdfOcrService — the precise return
         // type isn't part of pdfrx's documented static API surface.
         final dynamic pageText = await (page as dynamic).loadText();
         final String text = (pageText.fullText as String?)?.trim() ?? '';
         if (text.isNotEmpty) {
-          buffer.writeln(text);
-          buffer.writeln();
+          pageSections.add('--- Page ${index + 1} ---\n$text');
         }
       } on Object {
         // Skip a single unreadable page rather than failing the whole
-        // document.
+        // document. OCR has already handled pages without a text layer.
       }
     }
-    String out = buffer.toString().trim();
+    final String out = pageSections.join('\n\n').trim();
     if (out.isEmpty) return null;
-    if (out.length > maxChars) {
-      out =
-          '${out.substring(0, maxChars).trim()}\n\n[…truncated — this PDF continues beyond what was attached here…]';
-    }
-    return out;
+    if (out.length <= maxChars) return out;
+
+    // Preserve both document context and conclusions for summaries. The
+    // explicit marker tells the model that the middle was not transmitted.
+    final int headChars = (maxChars * 0.72).floor();
+    final int tailChars = maxChars - headChars;
+    return '${out.substring(0, headChars).trim()}\n\n'
+        '[…middle of this PDF omitted from the attachment context…]\n\n'
+        '${out.substring(out.length - tailChars).trim()}';
   } on Object {
     return null;
   } finally {
