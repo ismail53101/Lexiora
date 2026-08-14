@@ -819,8 +819,8 @@
     "order": 1,
     "isLeaf": true,
     "content": {
-      "introduction": "A noun is a word that names a person, place, animal, thing, substance, or idea. Nouns are central to sentence structure and are frequently tested through articles, number, capitalization, subject–verb agreement, possessives, and word formation in CSS, PMS, FPSC, PPSC, and IELTS examinations.",
-      "urduExplanation": "Noun وہ لفظ ہے جو کسی شخص، جگہ، جانور، چیز، مادے یا خیال کا نام بتاتا ہے۔ جملے میں noun فاعل، مفعول یا کسی دوسرے حصے کے طور پر آ سکتا ہے۔ امتحانات میں noun کے استعمال سے articles، singular/plural، capitalization اور subject-verb agreement کے سوالات آتے ہیں۔",
+      "introduction": "A noun names a person, place, animal, thing, substance, or idea. It can be a subject, object, or complement.",
+      "urduExplanation": "Noun وہ لفظ ہے جو کسی شخص، جگہ، جانور، چیز، مادّے یا خیال کا نام بتاتا ہے۔ یہ جملے میں فاعل، مفعول یا خبر بن سکتا ہے۔",
       "englishExplanation": "The main noun categories in this lesson are proper, common, collective, abstract, countable, uncountable, material, and compound nouns. A noun may belong to more than one category: information is both common and uncountable, while Islamabad is both proper and countable in some contexts. Always judge the noun from its use in the sentence.",
       "types": [
         {
@@ -830,13 +830,23 @@
           "examples": [
             {
               "text": "Muhammad Ali Jinnah founded Pakistan.",
-              "urdu": "محمد علی جناح نے پاکستان کی بنیاد رکھی۔",
-              "note": "Muhammad Ali Jinnah and Pakistan are proper nouns."
+              "urdu": "محمد علی جناح نے پاکستان قائم کیا۔",
+              "note": "Specific names of a person and country."
+            },
+            {
+              "text": "Sara visited Islamabad in July.",
+              "urdu": "سارا جولائی میں اسلام آباد گئی۔",
+              "note": "Specific names of a person, city, and month."
+            },
+            {
+              "text": "The Indus River flows through Pakistan.",
+              "urdu": "دریائے سندھ پاکستان سے گزرتا ہے۔",
+              "note": "The river and country have specific names."
             },
             {
               "text": "The CSS examination is conducted by FPSC.",
               "urdu": "CSS کا امتحان FPSC منعقد کرتا ہے۔",
-              "note": "CSS and FPSC are names of specific institutions or examinations."
+              "note": "CSS and FPSC identify particular examinations or institutions."
             }
           ],
           "rules": [
@@ -846,9 +856,19 @@
           ],
           "commonMistakes": [
             {
-              "wrong": "I visited lahore in march.",
-              "right": "I visited Lahore in March.",
-              "note": "Names of places and months begin with capital letters."
+              "wrong": "I visited islamabad in july.",
+              "right": "I visited Islamabad in July.",
+              "note": "Cities and months begin with capital letters."
+            },
+            {
+              "wrong": "pakistan is beautiful.",
+              "right": "Pakistan is beautiful.",
+              "note": "A country name is a proper noun."
+            },
+            {
+              "wrong": "He studies at the university of punjab.",
+              "right": "He studies at the University of the Punjab.",
+              "note": "An official institution name uses capitals."
             }
           ],
           "practice": [
@@ -875,7 +895,64 @@
               "explanation": "The name of the subject is written as Pakistan Studies."
             }
           ],
-          "subjectVerbAgreement": "Islamabad is the capital of Pakistan. “Islamabad” is a singular proper noun, so it takes the singular verb “is.”"
+          "subjectVerbAgreement": "Islamabad is the capital of Pakistan. “Islamabad” is a singular proper noun, so it takes the singular verb “is.”",
+          "quiz": [
+            {
+              "question": "Which is a proper noun in “Ayesha visited Lahore”?",
+              "options": [
+                "visited",
+                "Lahore",
+                "Ayesha",
+                "the"
+              ],
+              "answerIndex": 2,
+              "explanation": "Ayesha is a specific name; Lahore is also proper."
+            },
+            {
+              "question": "Choose the correct form.",
+              "options": [
+                "I live in pakistan.",
+                "I live in Pakistan.",
+                "I live in PAKISTAN city.",
+                "I live in pakistan city."
+              ],
+              "answerIndex": 1,
+              "explanation": "Pakistan begins with a capital letter."
+            },
+            {
+              "question": "Which contains only proper nouns?",
+              "options": [
+                "river, city",
+                "Karachi, Monday",
+                "teacher, Pakistan",
+                "book, July"
+              ],
+              "answerIndex": 1,
+              "explanation": "Karachi and Monday are specific names."
+            },
+            {
+              "question": "Which noun is proper in “The Indus River flows”?",
+              "options": [
+                "flows",
+                "river",
+                "Indus River",
+                "the"
+              ],
+              "answerIndex": 2,
+              "explanation": "Indus River names one particular river."
+            },
+            {
+              "question": "Choose the correct sentence.",
+              "options": [
+                "The css test is difficult.",
+                "The CSS test is difficult.",
+                "The Css test is difficult.",
+                "The cSS test is difficult."
+              ],
+              "answerIndex": 1,
+              "explanation": "CSS is an official abbreviation written in capitals."
+            }
+          ]
         },
         {
           "name": "Common Noun",
@@ -883,14 +960,24 @@
           "urduExplanation": "Common noun کسی شخص، جگہ، جانور یا چیز کا عام نام ہوتا ہے، کسی خاص فرد یا جگہ کا نام نہیں ہوتا۔",
           "examples": [
             {
-              "text": "The teacher explained the difficult question.",
-              "urdu": "استاد نے مشکل سوال سمجھایا۔",
-              "note": "Teacher and question are general names."
+              "text": "The student borrowed a book.",
+              "urdu": "طالب علم نے ایک کتاب ادھار لی۔",
+              "note": "Student and book are general names."
             },
             {
-              "text": "A city needs clean water and good roads.",
-              "urdu": "ایک شہر کو صاف پانی اور اچھی سڑکوں کی ضرورت ہوتی ہے۔",
-              "note": "City, water, and roads are common nouns."
+              "text": "A doctor treated the patient.",
+              "urdu": "ایک ڈاکٹر نے مریض کا علاج کیا۔",
+              "note": "Doctor and patient are general names of people."
+            },
+            {
+              "text": "The city needs better transport.",
+              "urdu": "شہر کو بہتر نقل و حمل کی ضرورت ہے۔",
+              "note": "City and transport are general names."
+            },
+            {
+              "text": "The examination requires preparation.",
+              "urdu": "امتحان کے لیے تیاری ضروری ہے۔",
+              "note": "Examination and preparation are general nouns."
             }
           ],
           "rules": [
@@ -900,9 +987,19 @@
           ],
           "commonMistakes": [
             {
-              "wrong": "The student borrowed book.",
-              "right": "The student borrowed a book.",
-              "note": "A singular countable common noun usually needs an article or determiner."
+              "wrong": "The student work hard.",
+              "right": "The student works hard.",
+              "note": "A singular noun takes works."
+            },
+            {
+              "wrong": "She bought a furnitures.",
+              "right": "She bought furniture.",
+              "note": "Furniture is uncountable."
+            },
+            {
+              "wrong": "He is teacher.",
+              "right": "He is a teacher.",
+              "note": "A singular countable noun needs a determiner."
             }
           ],
           "practice": [
@@ -929,7 +1026,64 @@
               "explanation": "Book is singular and countable, so it needs a."
             }
           ],
-          "subjectVerbAgreement": "The student works hard. “Student” is a singular common noun, so the verb takes the singular form “works.”"
+          "subjectVerbAgreement": "The student works hard. “Student” is a singular common noun, so the verb takes the singular form “works.”",
+          "quiz": [
+            {
+              "question": "Which is common in “The teacher entered”?",
+              "options": [
+                "teacher",
+                "The",
+                "entered",
+                "the"
+              ],
+              "answerIndex": 0,
+              "explanation": "Teacher is a general name."
+            },
+            {
+              "question": "Choose the correct sentence.",
+              "options": [
+                "The candidate work hard.",
+                "The candidate works hard.",
+                "The candidate working hard.",
+                "The candidate work hards."
+              ],
+              "answerIndex": 1,
+              "explanation": "The singular candidate takes works."
+            },
+            {
+              "question": "Which uses a common noun?",
+              "options": [
+                "Lahore is large.",
+                "The child is reading.",
+                "Monday is busy.",
+                "Pakistan is large."
+              ],
+              "answerIndex": 1,
+              "explanation": "Child is a general name."
+            },
+            {
+              "question": "Choose the correct article.",
+              "options": [
+                "He bought book.",
+                "He bought a book.",
+                "He bought an book.",
+                "He bought books one."
+              ],
+              "answerIndex": 1,
+              "explanation": "Book is singular and countable."
+            },
+            {
+              "question": "Which is common in “The doctor examined Ali”?",
+              "options": [
+                "doctor",
+                "Ali",
+                "examined",
+                "the"
+              ],
+              "answerIndex": 0,
+              "explanation": "Doctor is a general profession."
+            }
+          ]
         },
         {
           "name": "Collective Noun",
@@ -937,14 +1091,24 @@
           "urduExplanation": "Collective noun لوگوں، جانوروں یا چیزوں کے گروہ کا نام ہوتا ہے جسے ایک اکائی سمجھا جاتا ہے، جیسے team، committee اور flock۔",
           "examples": [
             {
-              "text": "The committee has approved the new policy.",
-              "urdu": "کمیٹی نے نئی پالیسی منظور کر لی ہے۔",
-              "note": "Committee acts as one unit, so has is used."
+              "text": "The committee is reviewing the report.",
+              "urdu": "کمیٹی رپورٹ کا جائزہ لے رہی ہے۔",
+              "note": "Committee names a group acting as one unit."
             },
             {
-              "text": "The flock of birds flew over the lake.",
+              "text": "A flock of birds flew over the lake.",
               "urdu": "پرندوں کا جھنڈ جھیل کے اوپر سے اڑا۔",
               "note": "Flock names a group of birds."
+            },
+            {
+              "text": "The jury reached its decision.",
+              "urdu": "جیوری اپنے فیصلے پر پہنچ گئی۔",
+              "note": "Jury names a group deciding together."
+            },
+            {
+              "text": "The team celebrated its victory.",
+              "urdu": "ٹیم نے اپنی فتح کا جشن منایا۔",
+              "note": "Team names players treated as one group."
             }
           ],
           "rules": [
@@ -954,9 +1118,19 @@
           ],
           "commonMistakes": [
             {
-              "wrong": "The jury are deciding the case as one body.",
-              "right": "The jury is deciding the case as one body.",
-              "note": "Use a singular verb when a collective group acts together."
+              "wrong": "The team are united as one unit.",
+              "right": "The team is united as one unit.",
+              "note": "A group acting together takes a singular verb."
+            },
+            {
+              "wrong": "The committee have submitted its report.",
+              "right": "The committee has submitted its report.",
+              "note": "The singular committee agrees with has."
+            },
+            {
+              "wrong": "The jury announced their decision as one body.",
+              "right": "The jury announced its decision as one body.",
+              "note": "A group acting as one unit takes its."
             }
           ],
           "practice": [
@@ -983,7 +1157,64 @@
               "explanation": "Flock names a group of birds."
             }
           ],
-          "subjectVerbAgreement": "The committee is reviewing the report. The committee acts as one unit, so the singular verb “is” is used."
+          "subjectVerbAgreement": "The committee is reviewing the report. The committee acts as one unit, so the singular verb “is” is used.",
+          "quiz": [
+            {
+              "question": "Choose the correct sentence.",
+              "options": [
+                "The committee are one body.",
+                "The committee is one body.",
+                "The committee be one body.",
+                "The committee were one body."
+              ],
+              "answerIndex": 1,
+              "explanation": "Committee acts as one unit."
+            },
+            {
+              "question": "Which is collective in “The army defended”?",
+              "options": [
+                "defended",
+                "border",
+                "army",
+                "the"
+              ],
+              "answerIndex": 2,
+              "explanation": "Army names a group."
+            },
+            {
+              "question": "Choose the correct pronoun.",
+              "options": [
+                "The jury announced their decision as one body.",
+                "The jury announced its decision as one body.",
+                "The jury announced it decision.",
+                "The jury announced them decision."
+              ],
+              "answerIndex": 1,
+              "explanation": "A single group takes its."
+            },
+            {
+              "question": "Which shows separate action?",
+              "options": [
+                "The team is united.",
+                "The team has won.",
+                "The team are arguing among themselves.",
+                "The team celebrates together."
+              ],
+              "answerIndex": 2,
+              "explanation": "Are shows members acting separately."
+            },
+            {
+              "question": "Choose the correct verb.",
+              "options": [
+                "The flock of birds is moving south.",
+                "The flock of birds are moving souths.",
+                "The flock of birds moveing south.",
+                "The flock of birds be moving south."
+              ],
+              "answerIndex": 0,
+              "explanation": "Flock is the singular head noun."
+            }
+          ]
         },
         {
           "name": "Abstract Noun",
@@ -991,14 +1222,24 @@
           "urduExplanation": "Abstract noun کسی خیال، خوبی، احساس، حالت یا عمل کا نام ہوتا ہے جسے عموماً دیکھا یا چھوا نہیں جا سکتا، جیسے honesty اور freedom۔",
           "examples": [
             {
-              "text": "Honesty is essential for public service.",
-              "urdu": "سرکاری خدمت کے لیے ایمانداری ضروری ہے۔",
-              "note": "Honesty is a quality, so it is abstract."
+              "text": "Honesty is an important quality.",
+              "urdu": "ایمانداری ایک اہم خوبی ہے۔",
+              "note": "Honesty names a quality that cannot be touched."
             },
             {
-              "text": "The nation values freedom and justice.",
-              "urdu": "قوم آزادی اور انصاف کی قدر کرتی ہے۔",
-              "note": "Freedom and justice are ideas, not physical objects."
+              "text": "Freedom inspires responsible citizens.",
+              "urdu": "آزادی ذمہ دار شہریوں کو تحریک دیتی ہے۔",
+              "note": "Freedom names an idea."
+            },
+            {
+              "text": "Her kindness impressed the panel.",
+              "urdu": "اس کی مہربانی نے پینل کو متاثر کیا۔",
+              "note": "Kindness names a quality."
+            },
+            {
+              "text": "Knowledge improves performance.",
+              "urdu": "علم کارکردگی بہتر بناتا ہے۔",
+              "note": "Knowledge names an idea or state of understanding."
             }
           ],
           "rules": [
@@ -1008,9 +1249,19 @@
           ],
           "commonMistakes": [
             {
-              "wrong": "Her honest impressed the panel.",
-              "right": "Her honesty impressed the panel.",
-              "note": "Use the abstract noun honesty, not the adjective honest."
+              "wrong": "Honesty are the best policy.",
+              "right": "Honesty is the best policy.",
+              "note": "A singular abstract noun takes is."
+            },
+            {
+              "wrong": "He showed many kindnesses.",
+              "right": "He showed great kindness.",
+              "note": "Kindness is normally uncountable as a quality."
+            },
+            {
+              "wrong": "The informations is useful.",
+              "right": "The information is useful.",
+              "note": "Information has no plural s."
             }
           ],
           "practice": [
@@ -1037,7 +1288,64 @@
               "explanation": "Bravery is the standard abstract noun."
             }
           ],
-          "subjectVerbAgreement": "Honesty is an important quality. “Honesty” is an abstract noun normally treated as singular, so it takes “is.”"
+          "subjectVerbAgreement": "Honesty is an important quality. “Honesty” is an abstract noun normally treated as singular, so it takes “is.”",
+          "quiz": [
+            {
+              "question": "Which is abstract in “Justice should be equal”?",
+              "options": [
+                "Justice",
+                "equal",
+                "all",
+                "should"
+              ],
+              "answerIndex": 0,
+              "explanation": "Justice names an idea."
+            },
+            {
+              "question": "Choose the correct verb.",
+              "options": [
+                "Knowledge are valuable.",
+                "Knowledge is valuable.",
+                "Knowledge be valuable.",
+                "Knowledge were valuable."
+              ],
+              "answerIndex": 1,
+              "explanation": "Knowledge is singular and uncountable."
+            },
+            {
+              "question": "Which sentence has an abstract noun?",
+              "options": [
+                "The chair is broken.",
+                "Her courage impressed us.",
+                "The boy opened the door.",
+                "The river is wide."
+              ],
+              "answerIndex": 1,
+              "explanation": "Courage names a quality."
+            },
+            {
+              "question": "Choose the correct form.",
+              "options": [
+                "She gave me advices.",
+                "She gave me some advice.",
+                "She gave me an advice.",
+                "She gave me many advice."
+              ],
+              "answerIndex": 1,
+              "explanation": "Advice is uncountable."
+            },
+            {
+              "question": "Which names a feeling?",
+              "options": [
+                "improves",
+                "health",
+                "Happiness",
+                "improves health"
+              ],
+              "answerIndex": 2,
+              "explanation": "Happiness names a feeling."
+            }
+          ]
         },
         {
           "name": "Countable Noun",
@@ -1045,14 +1353,24 @@
           "urduExplanation": "Countable noun وہ اسم ہے جسے گنا جا سکتا ہے اور جس کی واحد اور جمع دونوں شکلیں ہوتی ہیں، جیسے one book اور two books۔",
           "examples": [
             {
-              "text": "The examiner asked three difficult questions.",
-              "urdu": "ممتحن نے تین مشکل سوال پوچھے۔",
-              "note": "Questions can be counted and have a plural form."
+              "text": "The candidate answered three questions.",
+              "urdu": "امیدوار نے تین سوالات کے جواب دیے۔",
+              "note": "Candidate and questions can be counted."
             },
             {
-              "text": "She submitted an application before the deadline.",
-              "urdu": "اس نے آخری تاریخ سے پہلے ایک درخواست جمع کرائی۔",
-              "note": "Application is singular countable and takes an."
+              "text": "I bought two chairs.",
+              "urdu": "میں نے دو کرسیاں خریدیں۔",
+              "note": "Chairs have singular and plural forms."
+            },
+            {
+              "text": "An apple is on the table.",
+              "urdu": "میز پر ایک سیب ہے۔",
+              "note": "Apple is singular and countable."
+            },
+            {
+              "text": "Several students joined the seminar.",
+              "urdu": "کئی طلبہ سیمینار میں شامل ہوئے۔",
+              "note": "Students can be counted and are plural."
             }
           ],
           "rules": [
@@ -1062,9 +1380,19 @@
           ],
           "commonMistakes": [
             {
-              "wrong": "She bought an books.",
-              "right": "She bought some books.",
-              "note": "An is used with singular nouns; use some or a number with plural nouns."
+              "wrong": "She bought a books.",
+              "right": "She bought a book.",
+              "note": "A singular noun cannot follow a plural form."
+            },
+            {
+              "wrong": "There is five candidates.",
+              "right": "There are five candidates.",
+              "note": "A plural noun takes are."
+            },
+            {
+              "wrong": "I have much questions.",
+              "right": "I have many questions.",
+              "note": "Many is used with plural countable nouns."
             }
           ],
           "practice": [
@@ -1091,7 +1419,64 @@
               "explanation": "Criteria is the plural of criterion in formal English."
             }
           ],
-          "subjectVerbAgreement": "The candidates are preparing for the examination. “Candidates” is plural, so it takes the plural verb “are.”"
+          "subjectVerbAgreement": "The candidates are preparing for the examination. “Candidates” is plural, so it takes the plural verb “are.”",
+          "quiz": [
+            {
+              "question": "Choose the correct sentence.",
+              "options": [
+                "There is five books.",
+                "There are five books.",
+                "There are five book.",
+                "There be five books."
+              ],
+              "answerIndex": 1,
+              "explanation": "Books is plural and takes are."
+            },
+            {
+              "question": "Which fits “___ candidate passed”?",
+              "options": [
+                "Much",
+                "An",
+                "Many",
+                "A lot"
+              ],
+              "answerIndex": 1,
+              "explanation": "Candidate is singular with a vowel sound."
+            },
+            {
+              "question": "Choose the correct question.",
+              "options": [
+                "How much questions?",
+                "How many questions?",
+                "How many question?",
+                "How few information?"
+              ],
+              "answerIndex": 1,
+              "explanation": "Questions are plural countable nouns."
+            },
+            {
+              "question": "Which contains a countable noun?",
+              "options": [
+                "water",
+                "three pens",
+                "advice",
+                "information"
+              ],
+              "answerIndex": 1,
+              "explanation": "Pens can be counted."
+            },
+            {
+              "question": "Choose the correct verb.",
+              "options": [
+                "The students is ready.",
+                "The students are ready.",
+                "The students be ready.",
+                "The students was ready."
+              ],
+              "answerIndex": 1,
+              "explanation": "Students is plural."
+            }
+          ]
         },
         {
           "name": "Uncountable Noun",
@@ -1099,14 +1484,24 @@
           "urduExplanation": "Uncountable noun ایسی چیز، مادے یا خیال کا نام ہے جسے الگ الگ گنا نہیں جاتا اور عموماً اس کی جمع نہیں بنتی، جیسے advice اور information۔",
           "examples": [
             {
-              "text": "The candidate needs more information about the policy.",
-              "urdu": "امیدوار کو پالیسی کے بارے میں مزید معلومات درکار ہیں۔",
-              "note": "Information is uncountable in standard English."
+              "text": "The information is useful.",
+              "urdu": "معلومات مفید ہیں۔",
+              "note": "Information is uncountable and takes a singular verb."
             },
             {
-              "text": "The professor gave useful advice before the examination.",
-              "urdu": "پروفیسر نے امتحان سے پہلے مفید مشورہ دیا۔",
-              "note": "Advice is uncountable; use a piece of advice for one item."
+              "text": "We need some advice.",
+              "urdu": "ہمیں کچھ مشورے کی ضرورت ہے۔",
+              "note": "Advice is uncountable."
+            },
+            {
+              "text": "There is little water in the bottle.",
+              "urdu": "بوتل میں تھوڑا پانی ہے۔",
+              "note": "Water is uncountable."
+            },
+            {
+              "text": "The equipment was delivered yesterday.",
+              "urdu": "آلات کل پہنچا دیے گئے تھے۔",
+              "note": "Equipment is uncountable and has no plural s."
             }
           ],
           "rules": [
@@ -1116,9 +1511,19 @@
           ],
           "commonMistakes": [
             {
-              "wrong": "She gave me an advice and two informations.",
-              "right": "She gave me some advice and two pieces of information.",
-              "note": "Advice and information do not normally take a plural form."
+              "wrong": "The information are correct.",
+              "right": "The information is correct.",
+              "note": "Information takes the singular verb is."
+            },
+            {
+              "wrong": "She gave me an advice.",
+              "right": "She gave me some advice.",
+              "note": "Advice is uncountable."
+            },
+            {
+              "wrong": "We bought many furniture.",
+              "right": "We bought much furniture.",
+              "note": "Furniture is uncountable; much is appropriate."
             }
           ],
           "practice": [
@@ -1145,7 +1550,64 @@
               "explanation": "Furniture is uncountable and takes a singular verb."
             }
           ],
-          "subjectVerbAgreement": "The information is useful. “Information” is uncountable and normally takes a singular verb, so “is” is correct."
+          "subjectVerbAgreement": "The information is useful. “Information” is uncountable and normally takes a singular verb, so “is” is correct.",
+          "quiz": [
+            {
+              "question": "Choose the correct sentence.",
+              "options": [
+                "The information are useful.",
+                "The information is useful.",
+                "The informations are useful.",
+                "An information is useful."
+              ],
+              "answerIndex": 1,
+              "explanation": "Information takes is."
+            },
+            {
+              "question": "Which phrase is correct?",
+              "options": [
+                "an advice",
+                "many advice",
+                "a piece of advice",
+                "advices"
+              ],
+              "answerIndex": 2,
+              "explanation": "A piece of advice is countable."
+            },
+            {
+              "question": "Choose the correct determiner.",
+              "options": [
+                "many water",
+                "much water",
+                "a water",
+                "waters"
+              ],
+              "answerIndex": 1,
+              "explanation": "Water is uncountable."
+            },
+            {
+              "question": "Which is uncountable in “The equipment is new”?",
+              "options": [
+                "equipment",
+                "new",
+                "is",
+                "the"
+              ],
+              "answerIndex": 0,
+              "explanation": "Equipment is uncountable."
+            },
+            {
+              "question": "Choose the correct verb.",
+              "options": [
+                "The furniture are old.",
+                "The furniture is old.",
+                "The furnitures is old.",
+                "The furniture be old."
+              ],
+              "answerIndex": 1,
+              "explanation": "Furniture takes is."
+            }
+          ]
         },
         {
           "name": "Material Noun",
@@ -1153,14 +1615,24 @@
           "urduExplanation": "Material noun کسی مادے یا مواد کا نام ہوتا ہے جس سے چیزیں بنائی جاتی ہیں، جیسے gold، wood، steel اور cotton۔",
           "examples": [
             {
-              "text": "The bridge is made of steel.",
-              "urdu": "پل فولاد سے بنا ہوا ہے۔",
-              "note": "Steel names the material used to make the bridge."
-            },
-            {
               "text": "Gold is a valuable metal.",
               "urdu": "سونا ایک قیمتی دھات ہے۔",
-              "note": "Gold is a material noun and is usually uncountable."
+              "note": "Gold names a substance."
+            },
+            {
+              "text": "The table is made of wood.",
+              "urdu": "میز لکڑی سے بنی ہے۔",
+              "note": "Wood names the material used."
+            },
+            {
+              "text": "Cotton is used to make fabric.",
+              "urdu": "کپڑا بنانے کے لیے روئی استعمال ہوتی ہے۔",
+              "note": "Cotton names a raw material."
+            },
+            {
+              "text": "The bridge is built with steel.",
+              "urdu": "پل اسٹیل سے بنایا گیا ہے۔",
+              "note": "Steel names a construction material."
             }
           ],
           "rules": [
@@ -1170,9 +1642,19 @@
           ],
           "commonMistakes": [
             {
-              "wrong": "The table is made from a wood.",
-              "right": "The table is made of wood.",
-              "note": "Wood is used as an uncountable material in this sentence."
+              "wrong": "The furnitures are made of wood.",
+              "right": "The furniture is made of wood.",
+              "note": "Furniture is uncountable."
+            },
+            {
+              "wrong": "He bought three golds.",
+              "right": "He bought three gold rings.",
+              "note": "Gold needs a counted object."
+            },
+            {
+              "wrong": "The steel are strong.",
+              "right": "The steel is strong.",
+              "note": "Steel as a material is singular."
             }
           ],
           "practice": [
@@ -1199,7 +1681,64 @@
               "explanation": "Water is normally uncountable and takes is."
             }
           ],
-          "subjectVerbAgreement": "Gold is a valuable metal. “Gold” is a material noun generally used as an uncountable singular noun, so it takes “is.”"
+          "subjectVerbAgreement": "Gold is a valuable metal. “Gold” is a material noun generally used as an uncountable singular noun, so it takes “is.”",
+          "quiz": [
+            {
+              "question": "Which is material in “The ring is silver”?",
+              "options": [
+                "ring",
+                "made",
+                "silver",
+                "of"
+              ],
+              "answerIndex": 2,
+              "explanation": "Silver names the material."
+            },
+            {
+              "question": "Choose the correct sentence.",
+              "options": [
+                "Gold are expensive.",
+                "Gold is expensive.",
+                "Golds is expensive.",
+                "A gold is expensive."
+              ],
+              "answerIndex": 1,
+              "explanation": "Gold is uncountable."
+            },
+            {
+              "question": "Which is material in “The shirt is cotton”?",
+              "options": [
+                "shirt",
+                "made",
+                "cotton",
+                "is"
+              ],
+              "answerIndex": 2,
+              "explanation": "Cotton names the substance."
+            },
+            {
+              "question": "Choose the correct expression.",
+              "options": [
+                "three steels",
+                "three pieces of steel",
+                "three steelings",
+                "three steel"
+              ],
+              "answerIndex": 1,
+              "explanation": "Use a unit to count steel."
+            },
+            {
+              "question": "Which uses a material noun correctly?",
+              "options": [
+                "The chair is made of wood.",
+                "The wood are chairs.",
+                "A wood is on the table.",
+                "Woods is hard."
+              ],
+              "answerIndex": 0,
+              "explanation": "Wood is an uncountable material."
+            }
+          ]
         },
         {
           "name": "Compound Noun",
@@ -1207,14 +1746,24 @@
           "urduExplanation": "Compound noun دو یا دو سے زیادہ الفاظ کے ملنے سے بننے والا اسم ہے جو ایک نیا مطلب دیتا ہے، جیسے toothpaste، bus stop اور civil service۔",
           "examples": [
             {
-              "text": "The bus stop is near the examination centre.",
-              "urdu": "بس اسٹاپ امتحانی مرکز کے قریب ہے۔",
-              "note": "Bus stop is a two-word compound noun."
+              "text": "The bus stop is near the centre.",
+              "urdu": "بس اسٹاپ مرکز کے قریب ہے۔",
+              "note": "Bus stop combines words to name one place."
             },
             {
-              "text": "Her mother-in-law lives in Islamabad.",
-              "urdu": "اس کی ساس اسلام آباد میں رہتی ہیں۔",
-              "note": "Mother-in-law is a hyphenated compound noun."
+              "text": "My mother-in-law lives in Lahore.",
+              "urdu": "میری ساس لاہور میں رہتی ہیں۔",
+              "note": "Mother-in-law is a multi-word noun."
+            },
+            {
+              "text": "The classroom was quiet.",
+              "urdu": "کلاس روم خاموش تھا۔",
+              "note": "Classroom combines class and room."
+            },
+            {
+              "text": "The police officer helped the child.",
+              "urdu": "پولیس افسر نے بچے کی مدد کی۔",
+              "note": "Police officer names one person with two words."
             }
           ],
           "rules": [
@@ -1224,9 +1773,19 @@
           ],
           "commonMistakes": [
             {
-              "wrong": "The two mother-in-laws attended the meeting.",
-              "right": "The two mothers-in-law attended the meeting.",
-              "note": "The main noun mother takes the plural ending."
+              "wrong": "My two brother-in-laws visited us.",
+              "right": "My two brothers-in-law visited us.",
+              "note": "The main noun brother takes the plural."
+            },
+            {
+              "wrong": "The bus stops is crowded.",
+              "right": "The bus stop is crowded.",
+              "note": "One bus stop is singular."
+            },
+            {
+              "wrong": "She bought two toothbrush.",
+              "right": "She bought two toothbrushes.",
+              "note": "Toothbrush takes -es in the plural."
             }
           ],
           "practice": [
@@ -1253,7 +1812,64 @@
               "explanation": "The main noun brother takes the plural form."
             }
           ],
-          "subjectVerbAgreement": "The bus stop is near the examination centre. “Bus stop” is a singular compound noun, so it takes “is”; its plural form takes “are.”"
+          "subjectVerbAgreement": "The bus stop is near the examination centre. “Bus stop” is a singular compound noun, so it takes “is”; its plural form takes “are.”",
+          "quiz": [
+            {
+              "question": "Choose the correct plural.",
+              "options": [
+                "brother-in-laws",
+                "brothers-in-law",
+                "brother-in-lawes",
+                "brothers-in-laws"
+              ],
+              "answerIndex": 1,
+              "explanation": "The main noun brother takes the plural."
+            },
+            {
+              "question": "Which is compound in “The classroom is bright”?",
+              "options": [
+                "bright",
+                "is",
+                "classroom",
+                "the"
+              ],
+              "answerIndex": 2,
+              "explanation": "Classroom combines class and room."
+            },
+            {
+              "question": "Choose the correct sentence.",
+              "options": [
+                "The bus stop are crowded.",
+                "The bus stop is crowded.",
+                "The bus stops is crowded.",
+                "The bus stop be crowded."
+              ],
+              "answerIndex": 1,
+              "explanation": "One bus stop is singular."
+            },
+            {
+              "question": "Correct plural of toothbrush?",
+              "options": [
+                "toothbrushs",
+                "toothbrushes",
+                "teethbrush",
+                "toothsbrush"
+              ],
+              "answerIndex": 1,
+              "explanation": "Toothbrush takes -es."
+            },
+            {
+              "question": "Main noun in “mothers-in-law”?",
+              "options": [
+                "mothers",
+                "in",
+                "law",
+                "mother-in-law"
+              ],
+              "answerIndex": 0,
+              "explanation": "Mother receives the plural ending."
+            }
+          ]
         }
       ],
       "rules": [
@@ -1264,19 +1880,9 @@
       "structure": [],
       "examples": [
         {
-          "text": "Pakistan is a country, and Islamabad is its capital.",
-          "urdu": "پاکستان ایک ملک ہے اور اسلام آباد اس کا دارالحکومت ہے۔",
-          "note": "Pakistan and Islamabad are proper nouns; country and capital are common nouns."
-        },
-        {
-          "text": "Honesty and knowledge help a candidate succeed.",
-          "urdu": "ایمانداری اور علم امیدوار کو کامیاب ہونے میں مدد دیتے ہیں۔",
-          "note": "Honesty and knowledge are abstract nouns."
-        },
-        {
-          "text": "The committee examined three applications.",
-          "urdu": "کمیٹی نے تین درخواستوں کا جائزہ لیا۔",
-          "note": "Committee is collective; applications are countable nouns."
+          "text": "The teacher explains the lesson in the classroom.",
+          "urdu": "استاد کلاس روم میں سبق سمجھاتا ہے۔",
+          "note": "Teacher names a person and classroom names a place; both are nouns."
         }
       ],
       "commonMistakes": [
