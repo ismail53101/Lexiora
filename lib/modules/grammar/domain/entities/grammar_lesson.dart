@@ -67,6 +67,7 @@ class GrammarType extends Equatable {
     required this.name,
     required this.description,
     this.urduExplanation = '',
+    this.subjectVerbAgreement = '',
     this.examples = const <GrammarExample>[],
     this.rules = const <String>[],
     this.commonMistakes = const <GrammarMistake>[],
@@ -76,6 +77,7 @@ class GrammarType extends Equatable {
   final String name;
   final String description;
   final String urduExplanation;
+  final String subjectVerbAgreement;
   final List<GrammarExample> examples;
   final List<String> rules;
   final List<GrammarMistake> commonMistakes;
@@ -83,6 +85,7 @@ class GrammarType extends Equatable {
 
   bool get hasDetailedContent =>
       urduExplanation.isNotEmpty ||
+      subjectVerbAgreement.isNotEmpty ||
       examples.isNotEmpty ||
       rules.isNotEmpty ||
       commonMistakes.isNotEmpty ||
@@ -93,6 +96,7 @@ class GrammarType extends Equatable {
         name,
         description,
         urduExplanation,
+        subjectVerbAgreement,
         examples,
         rules,
         commonMistakes,

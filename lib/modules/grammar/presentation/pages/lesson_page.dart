@@ -180,17 +180,26 @@ class _LessonView extends StatelessWidget {
                 style: theme.textTheme.bodyLarge?.copyWith(height: 1.5)),
           ),
 
-        if (lesson.types.isNotEmpty)
+        if (lesson.types.isNotEmpty) ...<Widget>[
           GrammarSectionCard(
             icon: Icons.account_tree_outlined,
-            title: 'Types',
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
+            title: 'Types of Noun',
+            child: Wrap(
+              spacing: 8,
+              runSpacing: 8,
               children: <Widget>[
-                for (final GrammarType t in lesson.types) _TypeItem(type: t),
+                for (final GrammarType type in lesson.types)
+                  Chip(label: Text(type.name)),
               ],
             ),
           ),
+          for (final GrammarType type in lesson.types)
+            GrammarSectionCard(
+              icon: Icons.account_tree_outlined,
+              title: type.name,
+              child: _TypeItem(type: type),
+            ),
+        ],
 
         if (lesson.rules.isNotEmpty)
           GrammarSectionCard(
@@ -313,21 +322,9 @@ class _TypeItem extends StatelessWidget {
       );
     }
 
-    return Container(
-      width: double.infinity,
-      margin: const EdgeInsets.only(bottom: 14),
-      padding: const EdgeInsets.all(14),
-      decoration: BoxDecoration(
-        color: theme.colorScheme.surface,
-        borderRadius: BorderRadius.circular(16),
-        border: Border.all(color: theme.colorScheme.outlineVariant),
-      ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: <Widget>[
-          Text(type.name,
-              style: theme.textTheme.titleMedium
-                  ?.copyWith(fontWeight: FontWeight.w800)),
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: <Widget>[
           if (type.description.isNotEmpty) ...<Widget>[
             const SizedBox(height: 6),
             Text(type.description,
@@ -342,6 +339,16 @@ class _TypeItem extends StatelessWidget {
                 textAlign: TextAlign.right,
                 style: theme.textTheme.bodyMedium?.copyWith(height: 1.7),
               ),
+            ),
+          ],
+          if (type.subjectVerbAgreement.isNotEmpty) ...<Widget>[
+            const _TypeSubheading(
+              title: 'Subject–Verb Agreement',
+              icon: Icons.rule,
+            ),
+            Text(
+              type.subjectVerbAgreement,
+              style: theme.textTheme.bodyLarge?.copyWith(height: 1.5),
             ),
           ],
           if (type.examples.isNotEmpty) ...<Widget>[
@@ -371,7 +378,6 @@ class _TypeItem extends StatelessWidget {
               ),
           ],
         ],
-      ),
     );
   }
 }

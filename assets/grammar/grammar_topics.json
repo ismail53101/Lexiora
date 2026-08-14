@@ -874,7 +874,8 @@
               "answerIndex": 1,
               "explanation": "The name of the subject is written as Pakistan Studies."
             }
-          ]
+          ],
+          "subjectVerbAgreement": "Islamabad is the capital of Pakistan. “Islamabad” is a singular proper noun, so it takes the singular verb “is.”"
         },
         {
           "name": "Common Noun",
@@ -927,7 +928,8 @@
               "answerIndex": 1,
               "explanation": "Book is singular and countable, so it needs a."
             }
-          ]
+          ],
+          "subjectVerbAgreement": "The student works hard. “Student” is a singular common noun, so the verb takes the singular form “works.”"
         },
         {
           "name": "Collective Noun",
@@ -980,7 +982,8 @@
               "answerIndex": 1,
               "explanation": "Flock names a group of birds."
             }
-          ]
+          ],
+          "subjectVerbAgreement": "The committee is reviewing the report. The committee acts as one unit, so the singular verb “is” is used."
         },
         {
           "name": "Abstract Noun",
@@ -1033,7 +1036,8 @@
               "answerIndex": 1,
               "explanation": "Bravery is the standard abstract noun."
             }
-          ]
+          ],
+          "subjectVerbAgreement": "Honesty is an important quality. “Honesty” is an abstract noun normally treated as singular, so it takes “is.”"
         },
         {
           "name": "Countable Noun",
@@ -1086,7 +1090,8 @@
               "answerIndex": 2,
               "explanation": "Criteria is the plural of criterion in formal English."
             }
-          ]
+          ],
+          "subjectVerbAgreement": "The candidates are preparing for the examination. “Candidates” is plural, so it takes the plural verb “are.”"
         },
         {
           "name": "Uncountable Noun",
@@ -1139,7 +1144,8 @@
               "answerIndex": 1,
               "explanation": "Furniture is uncountable and takes a singular verb."
             }
-          ]
+          ],
+          "subjectVerbAgreement": "The information is useful. “Information” is uncountable and normally takes a singular verb, so “is” is correct."
         },
         {
           "name": "Material Noun",
@@ -1192,7 +1198,8 @@
               "answerIndex": 1,
               "explanation": "Water is normally uncountable and takes is."
             }
-          ]
+          ],
+          "subjectVerbAgreement": "Gold is a valuable metal. “Gold” is a material noun generally used as an uncountable singular noun, so it takes “is.”"
         },
         {
           "name": "Compound Noun",
@@ -1245,7 +1252,8 @@
               "answerIndex": 1,
               "explanation": "The main noun brother takes the plural form."
             }
-          ]
+          ],
+          "subjectVerbAgreement": "The bus stop is near the examination centre. “Bus stop” is a singular compound noun, so it takes “is”; its plural form takes “are.”"
         }
       ],
       "rules": [
