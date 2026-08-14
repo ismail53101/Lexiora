@@ -2154,163 +2154,1089 @@
     "order": 2,
     "isLeaf": true,
     "content": {
-      "introduction": "A pronoun is a word used in place of a noun to avoid repeating it. Pronouns make sentences shorter and smoother, which is especially useful in formal writing for CSS, PMS, and IELTS essays. Understanding pronoun types and agreement is crucial for avoiding common grammar mistakes in exams.",
-      "urduExplanation": "Pronoun وہ لفظ ہوتا ہے جو noun کی جگہ استعمال ہوتا ہے تاکہ بار بار ایک ہی نام نہ دہرانا پڑے۔ جیسے 'Ali is a doctor. He works in a hospital' میں 'he' نے 'Ali' کی جگہ لی۔ pronouns کی مختلف اقسام ہیں جیسے personal، possessive، reflexive اور relative، اور ہر ایک کا استعمال کا الگ طریقہ ہے۔ صحیح pronoun کا انتخاب جملے کو صاف اور روانی والا بناتا ہے۔",
-      "englishExplanation": "Pronouns replace nouns to prevent repetition and keep sentences concise and clear. They must agree in number and gender with the noun they replace, called the antecedent. Common categories include personal pronouns (I, you, he), possessive pronouns (mine, yours), reflexive pronouns (myself, himself), and relative pronouns (who, which, that). Correct pronoun usage is a frequent testing point in English exams because errors in agreement or case are easy to make but easy to spot once understood.",
+      "introduction": "A pronoun replaces a noun or noun phrase to avoid repetition. In competitive exams, check its antecedent, number, person, gender, and subject/object case.",
+      "urduExplanation": "Pronoun وہ لفظ ہے جو noun یا noun phrase کی جگہ آتا ہے۔ امتحانات میں اس کا درست انتخاب antecedent، واحد/جمع، شخص، جنس اور subject/object case کے مطابق کیا جاتا ہے۔",
+      "englishExplanation": "Pronouns must clearly refer to an antecedent and agree with it. They must use the correct subject, object, possessive, reflexive, or relative form.",
       "types": [
         {
           "name": "Personal Pronoun",
-          "description": "Refers to specific people or things, e.g., I, you, he, she, it, we, they."
+          "description": "Replaces a person or thing and changes according to person, number, and subject/object case.",
+          "urduExplanation": "Personal pronoun کسی شخص یا چیز کی جگہ آتا ہے اور subject یا object کے مطابق بدلتا ہے۔",
+          "subjectVerbAgreement": "The candidates submitted their forms, and they received receipts.",
+          "examples": [
+            {
+              "text": "The commission interviewed the candidate.",
+              "note": "The commission is the subject and interviewed is past tense, so the verb does not change by number."
+            },
+            {
+              "text": "She prepared for the CSS examination.",
+              "note": "She is a singular subject pronoun, so prepared refers to one female candidate."
+            },
+            {
+              "text": "The panel invited us to present our research.",
+              "note": "Us is the object after invited; we would be correct only as a subject."
+            },
+            {
+              "text": "Between you and me, the policy needs revision.",
+              "note": "Me is correct after the preposition between; I is a subject form."
+            }
+          ],
+          "rules": [
+            "Replaces a person or thing and changes according to person, number, and subject/object case.",
+            "The candidates submitted their forms, and they received receipts."
+          ],
+          "commonMistakes": [
+            {
+              "wrong": "Him submitted the application.",
+              "right": "He submitted the application.",
+              "note": "He is the subject before submitted; him is an object form."
+            },
+            {
+              "wrong": "The officer spoke to I.",
+              "right": "The officer spoke to me.",
+              "note": "Me is the object after to; I is used as a subject."
+            },
+            {
+              "wrong": "Her and me attended the interview.",
+              "right": "She and I attended the interview.",
+              "note": "Both pronouns are subjects, so subject forms are required."
+            }
+          ],
+          "practice": [
+            {
+              "question": "Choose the correct pronoun form in a competitive-exam sentence.",
+              "options": [
+                "he",
+                "him",
+                "they",
+                "them"
+              ],
+              "answerIndex": 0,
+              "explanation": "The correct form must fit the pronoun type and sentence role."
+            },
+            {
+              "question": "Choose the correct verb: Each candidate ___ prepared.",
+              "options": [
+                "have",
+                "has",
+                "are",
+                "were"
+              ],
+              "answerIndex": 1,
+              "explanation": "Each is singular, so has is required."
+            },
+            {
+              "question": "Which sentence is grammatically correct?",
+              "options": [
+                "The commission interviewed the candidate.",
+                "The candidates was ready.",
+                "Him submitted the form.",
+                "The policy are effective."
+              ],
+              "answerIndex": 0,
+              "explanation": "The first sentence follows the relevant pronoun and agreement rule."
+            },
+            {
+              "question": "Select the correct object pronoun: The panel invited ___.",
+              "options": [
+                "I",
+                "we",
+                "me",
+                "he"
+              ],
+              "answerIndex": 2,
+              "explanation": "Me is an object pronoun after invited."
+            },
+            {
+              "question": "What must a pronoun agree with?",
+              "options": [
+                "Only punctuation",
+                "Its antecedent and sentence role",
+                "Only the last noun",
+                "Nothing"
+              ],
+              "answerIndex": 1,
+              "explanation": "A pronoun must agree with its antecedent and fit its grammatical role."
+            }
+          ]
         },
         {
           "name": "Possessive Pronoun",
-          "description": "Shows ownership without a noun following it, e.g., mine, yours, his, hers, ours, theirs."
+          "description": "Shows ownership by replacing a noun phrase; it stands alone and is not followed by the owned noun.",
+          "urduExplanation": "Possessive pronoun ملکیت ظاہر کرتا ہے اور noun کی جگہ اکیلا استعمال ہوتا ہے۔",
+          "subjectVerbAgreement": "The research proposal is ours, not theirs.",
+          "examples": [
+            {
+              "text": "This seat is mine.",
+              "note": "Mine stands alone after is and shows ownership; my would need a following noun."
+            },
+            {
+              "text": "The final decision was theirs.",
+              "note": "Theirs replaces their decision, so no noun follows it."
+            },
+            {
+              "text": "Her notes are clearer than mine.",
+              "note": "Mine replaces my notes; the comparison is between two possessive forms."
+            },
+            {
+              "text": "The constitution is ours to protect.",
+              "note": "Ours replaces our constitution and is the subject complement after is."
+            }
+          ],
+          "rules": [
+            "Shows ownership by replacing a noun phrase; it stands alone and is not followed by the owned noun.",
+            "The research proposal is ours, not theirs."
+          ],
+          "commonMistakes": [
+            {
+              "wrong": "This report is my.",
+              "right": "This report is mine.",
+              "note": "Mine is the independent possessive; my must be followed by a noun."
+            },
+            {
+              "wrong": "The files are their.",
+              "right": "The files are theirs.",
+              "note": "Theirs stands alone after are; their modifies a noun."
+            },
+            {
+              "wrong": "That seat is her.",
+              "right": "That seat is hers.",
+              "note": "Hers is the possessive pronoun used without a following noun."
+            }
+          ],
+          "practice": [
+            {
+              "question": "Choose the correct pronoun form in a competitive-exam sentence.",
+              "options": [
+                "he",
+                "him",
+                "they",
+                "them"
+              ],
+              "answerIndex": 0,
+              "explanation": "The correct form must fit the pronoun type and sentence role."
+            },
+            {
+              "question": "Choose the correct verb: Each candidate ___ prepared.",
+              "options": [
+                "have",
+                "has",
+                "are",
+                "were"
+              ],
+              "answerIndex": 1,
+              "explanation": "Each is singular, so has is required."
+            },
+            {
+              "question": "Which sentence is grammatically correct?",
+              "options": [
+                "This seat is mine.",
+                "The candidates was ready.",
+                "Him submitted the form.",
+                "The policy are effective."
+              ],
+              "answerIndex": 0,
+              "explanation": "The first sentence follows the relevant pronoun and agreement rule."
+            },
+            {
+              "question": "Select the correct object pronoun: The panel invited ___.",
+              "options": [
+                "I",
+                "we",
+                "me",
+                "he"
+              ],
+              "answerIndex": 2,
+              "explanation": "Me is an object pronoun after invited."
+            },
+            {
+              "question": "What must a pronoun agree with?",
+              "options": [
+                "Only punctuation",
+                "Its antecedent and sentence role",
+                "Only the last noun",
+                "Nothing"
+              ],
+              "answerIndex": 1,
+              "explanation": "A pronoun must agree with its antecedent and fit its grammatical role."
+            }
+          ]
         },
         {
           "name": "Reflexive Pronoun",
-          "description": "Refers back to the subject of the sentence, e.g., myself, yourself, himself, themselves."
+          "description": "Refers back to the subject when the subject and object are the same person or thing.",
+          "urduExplanation": "Reflexive pronoun اسی subject کی طرف واپس اشارہ کرتا ہے جب subject اور object ایک ہی ہوں۔",
+          "subjectVerbAgreement": "The minister himself approved the summary.",
+          "examples": [
+            {
+              "text": "The researcher blamed herself for the error.",
+              "note": "Herself matches singular female researcher as the object of blamed."
+            },
+            {
+              "text": "The candidates prepared themselves for the test.",
+              "note": "Themselves matches plural candidates and refers back to them."
+            },
+            {
+              "text": "The machine switched itself off.",
+              "note": "Itself matches the singular non-human subject machine."
+            },
+            {
+              "text": "Please introduce yourself to the panel.",
+              "note": "Yourself matches the implied singular subject you in the command."
+            }
+          ],
+          "rules": [
+            "Refers back to the subject when the subject and object are the same person or thing.",
+            "The minister himself approved the summary."
+          ],
+          "commonMistakes": [
+            {
+              "wrong": "The researcher blamed her for the error.",
+              "right": "The researcher blamed herself for the error.",
+              "note": "Herself shows the researcher and the person blamed are the same; her suggests another female."
+            },
+            {
+              "wrong": "Ali completed the form himselfs.",
+              "right": "Ali completed the form himself.",
+              "note": "Himself is the correct singular masculine form; himselfs is not a word."
+            },
+            {
+              "wrong": "The candidates congratulated himself.",
+              "right": "The candidates congratulated themselves.",
+              "note": "Candidates is plural, so the matching reflexive is themselves."
+            }
+          ],
+          "practice": [
+            {
+              "question": "Choose the correct pronoun form in a competitive-exam sentence.",
+              "options": [
+                "he",
+                "him",
+                "they",
+                "them"
+              ],
+              "answerIndex": 0,
+              "explanation": "The correct form must fit the pronoun type and sentence role."
+            },
+            {
+              "question": "Choose the correct verb: Each candidate ___ prepared.",
+              "options": [
+                "have",
+                "has",
+                "are",
+                "were"
+              ],
+              "answerIndex": 1,
+              "explanation": "Each is singular, so has is required."
+            },
+            {
+              "question": "Which sentence is grammatically correct?",
+              "options": [
+                "The researcher blamed herself for the error.",
+                "The candidates was ready.",
+                "Him submitted the form.",
+                "The policy are effective."
+              ],
+              "answerIndex": 0,
+              "explanation": "The first sentence follows the relevant pronoun and agreement rule."
+            },
+            {
+              "question": "Select the correct object pronoun: The panel invited ___.",
+              "options": [
+                "I",
+                "we",
+                "me",
+                "he"
+              ],
+              "answerIndex": 2,
+              "explanation": "Me is an object pronoun after invited."
+            },
+            {
+              "question": "What must a pronoun agree with?",
+              "options": [
+                "Only punctuation",
+                "Its antecedent and sentence role",
+                "Only the last noun",
+                "Nothing"
+              ],
+              "answerIndex": 1,
+              "explanation": "A pronoun must agree with its antecedent and fit its grammatical role."
+            }
+          ]
         },
         {
           "name": "Relative Pronoun",
-          "description": "Connects a clause to a noun it describes, e.g., who, whom, whose, which, that."
+          "description": "Introduces a relative clause and refers back to a noun called its antecedent.",
+          "urduExplanation": "Relative pronoun پہلے آنے والے noun سے تعلق بناتا اور relative clause شروع کرتا ہے۔",
+          "subjectVerbAgreement": "The officer who prepared the report received an award.",
+          "examples": [
+            {
+              "text": "The policy that the cabinet approved is effective.",
+              "note": "That refers to policy and is the object of approved; the cabinet is the clause subject."
+            },
+            {
+              "text": "The candidate whom the panel selected topped the list.",
+              "note": "Whom is the object of selected because the panel selected the candidate."
+            },
+            {
+              "text": "The institution whose graduates serve the country is respected.",
+              "note": "Whose shows possession: the graduates belong to the institution."
+            },
+            {
+              "text": "The report, which was published yesterday, is reliable.",
+              "note": "Which refers to report and adds non-essential information after a comma."
+            }
+          ],
+          "rules": [
+            "Introduces a relative clause and refers back to a noun called its antecedent.",
+            "The officer who prepared the report received an award."
+          ],
+          "commonMistakes": [
+            {
+              "wrong": "The officer which prepared the report won.",
+              "right": "The officer who prepared the report won.",
+              "note": "Who is used for a person as the subject; which is normally for things."
+            },
+            {
+              "wrong": "The candidate who the panel selected won.",
+              "right": "The candidate whom the panel selected won.",
+              "note": "Whom is the formal object after selected; who is the subject form."
+            },
+            {
+              "wrong": "The policy who was approved is effective.",
+              "right": "The policy that was approved is effective.",
+              "note": "That refers to a thing such as policy; who refers to people."
+            }
+          ],
+          "practice": [
+            {
+              "question": "Choose the correct pronoun form in a competitive-exam sentence.",
+              "options": [
+                "he",
+                "him",
+                "they",
+                "them"
+              ],
+              "answerIndex": 0,
+              "explanation": "The correct form must fit the pronoun type and sentence role."
+            },
+            {
+              "question": "Choose the correct verb: Each candidate ___ prepared.",
+              "options": [
+                "have",
+                "has",
+                "are",
+                "were"
+              ],
+              "answerIndex": 1,
+              "explanation": "Each is singular, so has is required."
+            },
+            {
+              "question": "Which sentence is grammatically correct?",
+              "options": [
+                "The policy that the cabinet approved is effective.",
+                "The candidates was ready.",
+                "Him submitted the form.",
+                "The policy are effective."
+              ],
+              "answerIndex": 0,
+              "explanation": "The first sentence follows the relevant pronoun and agreement rule."
+            },
+            {
+              "question": "Select the correct object pronoun: The panel invited ___.",
+              "options": [
+                "I",
+                "we",
+                "me",
+                "he"
+              ],
+              "answerIndex": 2,
+              "explanation": "Me is an object pronoun after invited."
+            },
+            {
+              "question": "What must a pronoun agree with?",
+              "options": [
+                "Only punctuation",
+                "Its antecedent and sentence role",
+                "Only the last noun",
+                "Nothing"
+              ],
+              "answerIndex": 1,
+              "explanation": "A pronoun must agree with its antecedent and fit its grammatical role."
+            }
+          ]
         },
         {
           "name": "Demonstrative Pronoun",
-          "description": "Points to specific things, e.g., this, that, these, those."
+          "description": "Points to a specific noun or idea and shows singular/plural and near/far meaning.",
+          "urduExplanation": "Demonstrative pronoun قریب یا دور شخص، چیز یا خیال کی طرف اشارہ کرتا ہے۔",
+          "subjectVerbAgreement": "These are the recommendations for the committee.",
+          "examples": [
+            {
+              "text": "This is the official notice.",
+              "note": "This is singular, so is agrees with one notice."
+            },
+            {
+              "text": "Those were the previous exam papers.",
+              "note": "Those is plural and refers to papers farther away, so were is used."
+            },
+            {
+              "text": "That is the constitutional issue.",
+              "note": "That is singular, so it takes is."
+            },
+            {
+              "text": "These are the survey results.",
+              "note": "These is plural, so are is required."
+            }
+          ],
+          "rules": [
+            "Points to a specific noun or idea and shows singular/plural and near/far meaning.",
+            "These are the recommendations for the committee."
+          ],
+          "commonMistakes": [
+            {
+              "wrong": "This are the official rules.",
+              "right": "These are the official rules.",
+              "note": "Rules is plural, so use plural these and are."
+            },
+            {
+              "wrong": "Those is the final report.",
+              "right": "That is the final report.",
+              "note": "Report is singular, so use singular that and is."
+            },
+            {
+              "wrong": "These was the old policy.",
+              "right": "This was the old policy.",
+              "note": "Policy is singular, so use this with was."
+            }
+          ],
+          "practice": [
+            {
+              "question": "Choose the correct pronoun form in a competitive-exam sentence.",
+              "options": [
+                "he",
+                "him",
+                "they",
+                "them"
+              ],
+              "answerIndex": 0,
+              "explanation": "The correct form must fit the pronoun type and sentence role."
+            },
+            {
+              "question": "Choose the correct verb: Each candidate ___ prepared.",
+              "options": [
+                "have",
+                "has",
+                "are",
+                "were"
+              ],
+              "answerIndex": 1,
+              "explanation": "Each is singular, so has is required."
+            },
+            {
+              "question": "Which sentence is grammatically correct?",
+              "options": [
+                "This is the official notice.",
+                "The candidates was ready.",
+                "Him submitted the form.",
+                "The policy are effective."
+              ],
+              "answerIndex": 0,
+              "explanation": "The first sentence follows the relevant pronoun and agreement rule."
+            },
+            {
+              "question": "Select the correct object pronoun: The panel invited ___.",
+              "options": [
+                "I",
+                "we",
+                "me",
+                "he"
+              ],
+              "answerIndex": 2,
+              "explanation": "Me is an object pronoun after invited."
+            },
+            {
+              "question": "What must a pronoun agree with?",
+              "options": [
+                "Only punctuation",
+                "Its antecedent and sentence role",
+                "Only the last noun",
+                "Nothing"
+              ],
+              "answerIndex": 1,
+              "explanation": "A pronoun must agree with its antecedent and fit its grammatical role."
+            }
+          ]
         },
         {
           "name": "Interrogative Pronoun",
-          "description": "Used to ask questions, e.g., who, whom, whose, which, what."
+          "description": "Asks about an unknown person, thing, owner, choice, or object in a question.",
+          "urduExplanation": "Interrogative pronoun سوال میں نامعلوم شخص، چیز، مالک یا انتخاب کے بارے میں پوچھتا ہے۔",
+          "subjectVerbAgreement": "Who prepared the examination report?",
+          "examples": [
+            {
+              "text": "Whom did the commission invite?",
+              "note": "Whom is the object of invite because the commission is the subject."
+            },
+            {
+              "text": "Which of these policies is effective?",
+              "note": "Which is singular here because it asks about one policy, so is is used."
+            },
+            {
+              "text": "Whose is this research paper?",
+              "note": "Whose stands alone and asks about ownership of the paper."
+            },
+            {
+              "text": "What caused the economic decline?",
+              "note": "What is the subject causing the decline, so it comes before caused."
+            }
+          ],
+          "rules": [
+            "Asks about an unknown person, thing, owner, choice, or object in a question.",
+            "Who prepared the examination report?"
+          ],
+          "commonMistakes": [
+            {
+              "wrong": "Whom prepared the report?",
+              "right": "Who prepared the report?",
+              "note": "Who is the subject of prepared; whom is the object form."
+            },
+            {
+              "wrong": "Who did the panel invite?",
+              "right": "Whom did the panel invite?",
+              "note": "Whom is the formal object of invite; the panel is the subject."
+            },
+            {
+              "wrong": "Which are the correct option?",
+              "right": "Which is the correct option?",
+              "note": "Option is singular, so use is; are requires a plural noun."
+            }
+          ],
+          "practice": [
+            {
+              "question": "Choose the correct pronoun form in a competitive-exam sentence.",
+              "options": [
+                "he",
+                "him",
+                "they",
+                "them"
+              ],
+              "answerIndex": 0,
+              "explanation": "The correct form must fit the pronoun type and sentence role."
+            },
+            {
+              "question": "Choose the correct verb: Each candidate ___ prepared.",
+              "options": [
+                "have",
+                "has",
+                "are",
+                "were"
+              ],
+              "answerIndex": 1,
+              "explanation": "Each is singular, so has is required."
+            },
+            {
+              "question": "Which sentence is grammatically correct?",
+              "options": [
+                "Whom did the commission invite?",
+                "The candidates was ready.",
+                "Him submitted the form.",
+                "The policy are effective."
+              ],
+              "answerIndex": 0,
+              "explanation": "The first sentence follows the relevant pronoun and agreement rule."
+            },
+            {
+              "question": "Select the correct object pronoun: The panel invited ___.",
+              "options": [
+                "I",
+                "we",
+                "me",
+                "he"
+              ],
+              "answerIndex": 2,
+              "explanation": "Me is an object pronoun after invited."
+            },
+            {
+              "question": "What must a pronoun agree with?",
+              "options": [
+                "Only punctuation",
+                "Its antecedent and sentence role",
+                "Only the last noun",
+                "Nothing"
+              ],
+              "answerIndex": 1,
+              "explanation": "A pronoun must agree with its antecedent and fit its grammatical role."
+            }
+          ]
+        },
+        {
+          "name": "Indefinite Pronoun",
+          "description": "Refers to a person or thing without naming it specifically.",
+          "urduExplanation": "Indefinite pronoun کسی غیر مخصوص شخص یا چیز کی طرف اشارہ کرتا ہے۔",
+          "subjectVerbAgreement": "Everyone in the academy submits his or her form on time.",
+          "examples": [
+            {
+              "text": "Each of the candidates has an admit card.",
+              "note": "Each is singular even before plural candidates, so has is required."
+            },
+            {
+              "text": "Several have challenged the decision.",
+              "note": "Several is plural, so have is used."
+            },
+            {
+              "text": "Nobody was absent from the hearing.",
+              "note": "Nobody is singular and takes was, not were."
+            },
+            {
+              "text": "All of the evidence is relevant.",
+              "note": "Evidence is uncountable and singular, so is is correct."
+            }
+          ],
+          "rules": [
+            "Refers to a person or thing without naming it specifically.",
+            "Everyone in the academy submits his or her form on time."
+          ],
+          "commonMistakes": [
+            {
+              "wrong": "Everyone have submitted the form.",
+              "right": "Everyone has submitted the form.",
+              "note": "Everyone is singular, so it takes has."
+            },
+            {
+              "wrong": "Each candidates has a badge.",
+              "right": "Each candidate has a badge.",
+              "note": "Each is followed by a singular noun and takes has."
+            },
+            {
+              "wrong": "Nobody were ready.",
+              "right": "Nobody was ready.",
+              "note": "Nobody is singular, so was is required."
+            }
+          ],
+          "practice": [
+            {
+              "question": "Choose the correct pronoun form in a competitive-exam sentence.",
+              "options": [
+                "he",
+                "him",
+                "they",
+                "them"
+              ],
+              "answerIndex": 0,
+              "explanation": "The correct form must fit the pronoun type and sentence role."
+            },
+            {
+              "question": "Choose the correct verb: Each candidate ___ prepared.",
+              "options": [
+                "have",
+                "has",
+                "are",
+                "were"
+              ],
+              "answerIndex": 1,
+              "explanation": "Each is singular, so has is required."
+            },
+            {
+              "question": "Which sentence is grammatically correct?",
+              "options": [
+                "Each of the candidates has an admit card.",
+                "The candidates was ready.",
+                "Him submitted the form.",
+                "The policy are effective."
+              ],
+              "answerIndex": 0,
+              "explanation": "The first sentence follows the relevant pronoun and agreement rule."
+            },
+            {
+              "question": "Select the correct object pronoun: The panel invited ___.",
+              "options": [
+                "I",
+                "we",
+                "me",
+                "he"
+              ],
+              "answerIndex": 2,
+              "explanation": "Me is an object pronoun after invited."
+            },
+            {
+              "question": "What must a pronoun agree with?",
+              "options": [
+                "Only punctuation",
+                "Its antecedent and sentence role",
+                "Only the last noun",
+                "Nothing"
+              ],
+              "answerIndex": 1,
+              "explanation": "A pronoun must agree with its antecedent and fit its grammatical role."
+            }
+          ]
+        },
+        {
+          "name": "Reciprocal Pronoun",
+          "description": "Shows that two or more people or groups perform an action mutually.",
+          "urduExplanation": "Reciprocal pronoun باہمی عمل ظاہر کرتا ہے، جیسے each other یا one another۔",
+          "subjectVerbAgreement": "The two delegations respected each other.",
+          "examples": [
+            {
+              "text": "The candidates helped one another during the workshop.",
+              "note": "One another shows mutual help among several candidates."
+            },
+            {
+              "text": "The two departments blamed each other.",
+              "note": "Each other shows a mutual relationship between departments."
+            },
+            {
+              "text": "The partners consult each other before decisions.",
+              "note": "Partners is plural, so consult is the base plural verb."
+            },
+            {
+              "text": "The communities support one another.",
+              "note": "Communities is plural, and one another shows mutual support."
+            }
+          ],
+          "rules": [
+            "Shows that two or more people or groups perform an action mutually.",
+            "The two delegations respected each other."
+          ],
+          "commonMistakes": [
+            {
+              "wrong": "The two teams helped himself.",
+              "right": "The two teams helped each other.",
+              "note": "A plural subject needs a reciprocal form, not singular himself."
+            },
+            {
+              "wrong": "The partners blamed each other themselves.",
+              "right": "The partners blamed each other.",
+              "note": "Each other already shows mutual action; themselves is unnecessary."
+            },
+            {
+              "wrong": "The committee members supports one another.",
+              "right": "The committee members support one another.",
+              "note": "Members is plural, so support is required."
+            }
+          ],
+          "practice": [
+            {
+              "question": "Choose the correct pronoun form in a competitive-exam sentence.",
+              "options": [
+                "he",
+                "him",
+                "they",
+                "them"
+              ],
+              "answerIndex": 0,
+              "explanation": "The correct form must fit the pronoun type and sentence role."
+            },
+            {
+              "question": "Choose the correct verb: Each candidate ___ prepared.",
+              "options": [
+                "have",
+                "has",
+                "are",
+                "were"
+              ],
+              "answerIndex": 1,
+              "explanation": "Each is singular, so has is required."
+            },
+            {
+              "question": "Which sentence is grammatically correct?",
+              "options": [
+                "The candidates helped one another during the workshop.",
+                "The candidates was ready.",
+                "Him submitted the form.",
+                "The policy are effective."
+              ],
+              "answerIndex": 0,
+              "explanation": "The first sentence follows the relevant pronoun and agreement rule."
+            },
+            {
+              "question": "Select the correct object pronoun: The panel invited ___.",
+              "options": [
+                "I",
+                "we",
+                "me",
+                "he"
+              ],
+              "answerIndex": 2,
+              "explanation": "Me is an object pronoun after invited."
+            },
+            {
+              "question": "What must a pronoun agree with?",
+              "options": [
+                "Only punctuation",
+                "Its antecedent and sentence role",
+                "Only the last noun",
+                "Nothing"
+              ],
+              "answerIndex": 1,
+              "explanation": "A pronoun must agree with its antecedent and fit its grammatical role."
+            }
+          ]
+        },
+        {
+          "name": "Distributive Pronoun",
+          "description": "Refers to members of a group separately, especially each, either, and neither.",
+          "urduExplanation": "Distributive pronoun گروہ کے افراد کو الگ الگ ظاہر کرتا ہے۔",
+          "subjectVerbAgreement": "Each of the applicants has a separate roll number.",
+          "examples": [
+            {
+              "text": "Neither of the answers is correct.",
+              "note": "Neither is singular in formal exam English, so is is used."
+            },
+            {
+              "text": "Either of the routes leads to the examination centre.",
+              "note": "Either means one of two and takes singular leads."
+            },
+            {
+              "text": "Each received a certificate.",
+              "note": "Each is singular, so the past verb received is grammatically suitable."
+            },
+            {
+              "text": "Neither was willing to withdraw the appeal.",
+              "note": "Neither refers to two separately and takes was."
+            }
+          ],
+          "rules": [
+            "Refers to members of a group separately, especially each, either, and neither.",
+            "Each of the applicants has a separate roll number."
+          ],
+          "commonMistakes": [
+            {
+              "wrong": "Each of the candidates have a slip.",
+              "right": "Each of the candidates has a slip.",
+              "note": "Each is singular; the plural noun after of does not control the verb."
+            },
+            {
+              "wrong": "Neither options are acceptable.",
+              "right": "Neither option is acceptable.",
+              "note": "Neither takes a singular noun and singular is."
+            },
+            {
+              "wrong": "Either of the plans are workable.",
+              "right": "Either of the plans is workable.",
+              "note": "Either refers to one of two plans, so is is required."
+            }
+          ],
+          "practice": [
+            {
+              "question": "Choose the correct pronoun form in a competitive-exam sentence.",
+              "options": [
+                "he",
+                "him",
+                "they",
+                "them"
+              ],
+              "answerIndex": 0,
+              "explanation": "The correct form must fit the pronoun type and sentence role."
+            },
+            {
+              "question": "Choose the correct verb: Each candidate ___ prepared.",
+              "options": [
+                "have",
+                "has",
+                "are",
+                "were"
+              ],
+              "answerIndex": 1,
+              "explanation": "Each is singular, so has is required."
+            },
+            {
+              "question": "Which sentence is grammatically correct?",
+              "options": [
+                "Neither of the answers is correct.",
+                "The candidates was ready.",
+                "Him submitted the form.",
+                "The policy are effective."
+              ],
+              "answerIndex": 0,
+              "explanation": "The first sentence follows the relevant pronoun and agreement rule."
+            },
+            {
+              "question": "Select the correct object pronoun: The panel invited ___.",
+              "options": [
+                "I",
+                "we",
+                "me",
+                "he"
+              ],
+              "answerIndex": 2,
+              "explanation": "Me is an object pronoun after invited."
+            },
+            {
+              "question": "What must a pronoun agree with?",
+              "options": [
+                "Only punctuation",
+                "Its antecedent and sentence role",
+                "Only the last noun",
+                "Nothing"
+              ],
+              "answerIndex": 1,
+              "explanation": "A pronoun must agree with its antecedent and fit its grammatical role."
+            }
+          ]
+        },
+        {
+          "name": "Intensive/Emphatic Pronoun",
+          "description": "Adds emphasis to a noun or pronoun and can be removed without changing the basic meaning.",
+          "urduExplanation": "Intensive pronoun subject یا noun پر زور دیتا ہے اور بنیادی معنی برقرار رہتے ہیں۔",
+          "subjectVerbAgreement": "The minister himself addressed the competitive-exam candidates.",
+          "examples": [
+            {
+              "text": "The director herself signed the notification.",
+              "note": "Herself emphasizes director; signed still agrees with singular director."
+            },
+            {
+              "text": "The candidates themselves requested clarification.",
+              "note": "Themselves agrees with plural candidates and adds emphasis."
+            },
+            {
+              "text": "I myself checked the references.",
+              "note": "Myself emphasizes I; the sentence remains complete without it."
+            },
+            {
+              "text": "The policy itself is not controversial.",
+              "note": "Itself emphasizes policy, and singular policy takes is."
+            }
+          ],
+          "rules": [
+            "Adds emphasis to a noun or pronoun and can be removed without changing the basic meaning.",
+            "The minister himself addressed the competitive-exam candidates."
+          ],
+          "commonMistakes": [
+            {
+              "wrong": "Myself submitted the application.",
+              "right": "I myself submitted the application.",
+              "note": "I is the subject; myself is only an emphatic addition."
+            },
+            {
+              "wrong": "The officer herselfs approved it.",
+              "right": "The officer herself approved it.",
+              "note": "Herself is the correct singular feminine form."
+            },
+            {
+              "wrong": "The candidates himself answered.",
+              "right": "The candidates themselves answered.",
+              "note": "Candidates is plural, so use themselves."
+            }
+          ],
+          "practice": [
+            {
+              "question": "Choose the correct pronoun form in a competitive-exam sentence.",
+              "options": [
+                "he",
+                "him",
+                "they",
+                "them"
+              ],
+              "answerIndex": 0,
+              "explanation": "The correct form must fit the pronoun type and sentence role."
+            },
+            {
+              "question": "Choose the correct verb: Each candidate ___ prepared.",
+              "options": [
+                "have",
+                "has",
+                "are",
+                "were"
+              ],
+              "answerIndex": 1,
+              "explanation": "Each is singular, so has is required."
+            },
+            {
+              "question": "Which sentence is grammatically correct?",
+              "options": [
+                "The director herself signed the notification.",
+                "The candidates was ready.",
+                "Him submitted the form.",
+                "The policy are effective."
+              ],
+              "answerIndex": 0,
+              "explanation": "The first sentence follows the relevant pronoun and agreement rule."
+            },
+            {
+              "question": "Select the correct object pronoun: The panel invited ___.",
+              "options": [
+                "I",
+                "we",
+                "me",
+                "he"
+              ],
+              "answerIndex": 2,
+              "explanation": "Me is an object pronoun after invited."
+            },
+            {
+              "question": "What must a pronoun agree with?",
+              "options": [
+                "Only punctuation",
+                "Its antecedent and sentence role",
+                "Only the last noun",
+                "Nothing"
+              ],
+              "answerIndex": 1,
+              "explanation": "A pronoun must agree with its antecedent and fit its grammatical role."
+            }
+          ]
         }
       ],
       "rules": [
-        "A pronoun must agree in number and gender with its antecedent (the noun it replaces).",
-        "Use subject pronouns (I, he, she, we, they) as the subject of a verb and object pronouns (me, him, her, us, them) as the object.",
-        "Possessive pronouns never take an apostrophe (its, not it's, when showing possession).",
-        "Reflexive pronouns are used only when the subject and object of the action are the same person or thing.",
-        "Use 'who' for people and 'which' for things when choosing a relative pronoun; 'that' can refer to both in restrictive clauses.",
-        "Avoid ambiguous pronoun reference; make sure it is always clear which noun the pronoun replaces."
+        "A subject pronoun comes before the verb; an object pronoun follows a verb or preposition.",
+        "A pronoun must agree with its antecedent in number and person.",
+        "Use possessive pronouns alone; use possessive determiners before nouns.",
+        "Use reflexive pronouns when they refer back to the subject or add emphasis.",
+        "Check who/whom, each/everyone, neither/either, and this/these in exam questions."
       ],
       "examples": [
         {
-          "text": "Ali said he would come to the meeting.",
-          "note": "personal pronoun"
+          "text": "The candidates submitted their forms before the examination.",
+          "note": "Candidates is plural, so their is plural; submitted is past tense and does not change with number."
         },
         {
-          "text": "This book is mine, not yours.",
-          "note": "possessive pronoun"
-        },
-        {
-          "text": "She hurt herself while cooking.",
-          "note": "reflexive pronoun"
-        },
-        {
-          "text": "The teacher who taught us grammar has retired.",
-          "note": "relative pronoun"
-        },
-        {
-          "text": "This is the best essay I have written.",
-          "note": "demonstrative pronoun"
-        },
-        {
-          "text": "Who is responsible for this decision?",
-          "note": "interrogative pronoun"
-        },
-        {
-          "text": "The dog wagged its tail happily.",
-          "note": "possessive pronoun (no apostrophe)"
+          "text": "The researcher explained the result, and she defended it.",
+          "note": "She refers to researcher as the subject, while it refers to result as the object."
         }
       ],
       "commonMistakes": [
         {
-          "wrong": "Me and him are going to the seminar.",
-          "right": "He and I are going to the seminar.",
-          "note": "subject pronouns must be used as the subject of the sentence"
+          "wrong": "Between you and I, the policy is weak.",
+          "right": "Between you and me, the policy is weak.",
+          "note": "Me follows the preposition between as its object; I is used as a subject."
         },
         {
-          "wrong": "The company changed it's policy last year.",
-          "right": "The company changed its policy last year.",
-          "note": "'its' shows possession and never takes an apostrophe"
+          "wrong": "Everyone have completed their form.",
+          "right": "Everyone has completed his or her form.",
+          "note": "Everyone is singular in formal exam English, so has and his or her agree with it."
         },
         {
-          "wrong": "Everyone should bring their own book.",
-          "right": "Everyone should bring his or her own book.",
-          "note": "in formal exam English, 'everyone' is singular and needs a singular pronoun"
-        },
-        {
-          "wrong": "I hurt myself, said Sara about her friend.",
-          "right": "Sara said she hurt herself.",
-          "note": "reflexive pronoun must match the subject performing and receiving the action"
+          "wrong": "The committee members discussed among themselves.",
+          "right": "The committee members discussed among themselves.",
+          "note": "This is correct: members is plural and themselves refers back to the plural subject."
         }
       ],
       "practice": [
         {
-          "question": "Choose the correct pronoun: 'This decision is ___, not theirs.'",
+          "question": "Choose the correct sentence.",
           "options": [
-            "us",
-            "our",
-            "ours",
-            "ourselves"
-          ],
-          "answerIndex": 2,
-          "explanation": "'Ours' is a possessive pronoun used without a following noun, correctly showing ownership."
-        },
-        {
-          "question": "Which sentence uses a reflexive pronoun correctly?",
-          "options": [
-            "He taught himself to code.",
-            "He taught hisself to code.",
-            "He taught him to code.",
-            "He taught themself to code."
+            "The candidates submitted their forms.",
+            "The candidates submitted his form.",
+            "Him submitted the form.",
+            "The candidate submit their form."
           ],
           "answerIndex": 0,
-          "explanation": "'Himself' correctly refers back to the subject 'he' performing an action on himself."
-        },
-        {
-          "question": "Select the correct relative pronoun: 'The scientist ___ discovered the cure won an award.'",
-          "options": [
-            "which",
-            "whom",
-            "who",
-            "whose"
-          ],
-          "answerIndex": 2,
-          "explanation": "'Who' is used for people as the subject of the relative clause."
+          "explanation": "Candidates is plural, so their and the plural structure are correct."
         }
       ],
       "quiz": [
         {
-          "question": "Which sentence is grammatically correct?",
+          "question": "Choose the correct sentence.",
           "options": [
-            "Between you and I, this plan is risky.",
-            "Between you and me, this plan is risky.",
-            "Between you and myself, this plan is risky.",
-            "Between you and he, this plan is risky."
+            "The candidates submitted their forms.",
+            "The candidates submitted his form.",
+            "Him submitted the form.",
+            "The candidate submit their form."
           ],
-          "answerIndex": 1,
-          "explanation": "'Me' is the correct object pronoun after the preposition 'between'."
-        },
-        {
-          "question": "Choose the sentence with correct pronoun-antecedent agreement.",
-          "options": [
-            "Each student must submit their ID card.",
-            "Each student must submit his or her ID card.",
-            "Each student must submit its ID card.",
-            "Each student must submit they ID card."
-          ],
-          "answerIndex": 1,
-          "explanation": "'Each' is singular, so it requires the singular pronoun form 'his or her' in formal English."
-        },
-        {
-          "question": "Which pronoun correctly completes: 'The book ___ cover is torn belongs to Ahmed.'?",
-          "options": [
-            "who",
-            "which",
-            "whose",
-            "whom"
-          ],
-          "answerIndex": 2,
-          "explanation": "'Whose' shows possession and correctly links 'cover' to 'the book'."
+          "answerIndex": 0,
+          "explanation": "Candidates is plural, so their and the plural structure are correct."
         }
       ],
       "summary": "Pronouns replace nouns to avoid repetition and must agree in number, gender, and case with their antecedent. Key categories include personal, possessive, reflexive, relative, demonstrative, and interrogative pronouns. Careful attention to subject/object forms and clear antecedents prevents the most common pronoun errors in exams."

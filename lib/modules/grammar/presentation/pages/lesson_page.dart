@@ -144,7 +144,7 @@ class _LessonView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final ThemeData theme = Theme.of(context);
-    if (lesson.id == 'pos/noun') {
+    if (lesson.id == 'pos/noun' || lesson.id == 'pos/pronoun') {
       return _NounLandingView(lesson: lesson);
     }
     return ListView(
@@ -329,7 +329,7 @@ class _NounLandingView extends StatelessWidget {
       children: <Widget>[
         GrammarSectionCard(
           icon: Icons.description_outlined,
-          title: 'Noun',
+          title: lesson.title,
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
