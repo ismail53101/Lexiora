@@ -308,7 +308,17 @@ class GrammarLocalDataSource {
       if (e is Map) {
         final String name = e['name']?.toString().trim() ?? '';
         final String desc = e['description']?.toString().trim() ?? '';
-        if (name.isNotEmpty) out.add(GrammarType(name: name, description: desc));
+        if (name.isNotEmpty) {
+          out.add(GrammarType(
+            name: name,
+            description: desc,
+            urduExplanation: _str(e['urduExplanation']),
+            examples: _examples(e['examples']),
+            rules: _strList(e['rules']),
+            commonMistakes: _mistakes(e['commonMistakes']),
+            practice: _questions(e['practice']),
+          ));
+        }
       }
     }
     return out;

@@ -296,17 +296,110 @@ class _TypeItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final ThemeData theme = Theme.of(context);
-    return Padding(
-      padding: const EdgeInsets.only(bottom: 10),
+    if (!type.hasDetailedContent) {
+      return Padding(
+        padding: const EdgeInsets.only(bottom: 10),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: <Widget>[
+            Text(type.name,
+                style: theme.textTheme.titleSmall
+                    ?.copyWith(fontWeight: FontWeight.w700)),
+            if (type.description.isNotEmpty)
+              Text(type.description,
+                  style: theme.textTheme.bodyMedium?.copyWith(height: 1.35)),
+          ],
+        ),
+      );
+    }
+
+    return Container(
+      width: double.infinity,
+      margin: const EdgeInsets.only(bottom: 14),
+      padding: const EdgeInsets.all(14),
+      decoration: BoxDecoration(
+        color: theme.colorScheme.surface,
+        borderRadius: BorderRadius.circular(16),
+        border: Border.all(color: theme.colorScheme.outlineVariant),
+      ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
           Text(type.name,
-              style: theme.textTheme.titleSmall
-                  ?.copyWith(fontWeight: FontWeight.w700)),
-          if (type.description.isNotEmpty)
+              style: theme.textTheme.titleMedium
+                  ?.copyWith(fontWeight: FontWeight.w800)),
+          if (type.description.isNotEmpty) ...<Widget>[
+            const SizedBox(height: 6),
             Text(type.description,
-                style: theme.textTheme.bodyMedium?.copyWith(height: 1.35)),
+                style: theme.textTheme.bodyMedium?.copyWith(height: 1.45)),
+          ],
+          if (type.urduExplanation.isNotEmpty) ...<Widget>[
+            const SizedBox(height: 10),
+            Directionality(
+              textDirection: TextDirection.rtl,
+              child: Text(
+                type.urduExplanation,
+                textAlign: TextAlign.right,
+                style: theme.textTheme.bodyMedium?.copyWith(height: 1.7),
+              ),
+            ),
+          ],
+          if (type.examples.isNotEmpty) ...<Widget>[
+            const _TypeSubheading(title: 'Examples', icon: Icons.format_quote),
+            for (final GrammarExample example in type.examples)
+              _ExampleItem(example: example),
+          ],
+          if (type.rules.isNotEmpty) ...<Widget>[
+            const _TypeSubheading(title: 'Rules', icon: Icons.rule),
+            for (final String rule in type.rules) GrammarBullet(text: rule),
+          ],
+          if (type.commonMistakes.isNotEmpty) ...<Widget>[
+            _TypeSubheading(
+              title: 'Common Mistakes',
+              icon: Icons.report_gmailerrorred_outlined,
+              color: theme.colorScheme.error,
+            ),
+            for (final GrammarMistake mistake in type.commonMistakes)
+              _MistakeItem(mistake: mistake),
+          ],
+          if (type.practice.isNotEmpty) ...<Widget>[
+            const _TypeSubheading(title: 'Practice', icon: Icons.edit_note),
+            for (int i = 0; i < type.practice.length; i++)
+              PracticeQuestionCard(
+                question: type.practice[i],
+                index: i + 1,
+              ),
+          ],
+        ],
+      ),
+    );
+  }
+}
+
+class _TypeSubheading extends StatelessWidget {
+  const _TypeSubheading({required this.title, required this.icon, this.color});
+
+  final String title;
+  final IconData icon;
+  final Color? color;
+
+  @override
+  Widget build(BuildContext context) {
+    final ThemeData theme = Theme.of(context);
+    final Color tint = color ?? theme.colorScheme.primary;
+    return Padding(
+      padding: const EdgeInsets.only(top: 14, bottom: 8),
+      child: Row(
+        children: <Widget>[
+          Icon(icon, size: 19, color: tint),
+          const SizedBox(width: 7),
+          Text(
+            title,
+            style: theme.textTheme.titleSmall?.copyWith(
+              color: tint,
+              fontWeight: FontWeight.w800,
+            ),
+          ),
         ],
       ),
     );

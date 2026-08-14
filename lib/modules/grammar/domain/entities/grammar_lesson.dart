@@ -63,11 +63,41 @@ class GrammarQuestion extends Equatable {
 /// A named sub-type or structural note within a lesson (e.g. "Proper Noun",
 /// or a tense's "Structure").
 class GrammarType extends Equatable {
-  const GrammarType({required this.name, required this.description});
+  const GrammarType({
+    required this.name,
+    required this.description,
+    this.urduExplanation = '',
+    this.examples = const <GrammarExample>[],
+    this.rules = const <String>[],
+    this.commonMistakes = const <GrammarMistake>[],
+    this.practice = const <GrammarQuestion>[],
+  });
+
   final String name;
   final String description;
+  final String urduExplanation;
+  final List<GrammarExample> examples;
+  final List<String> rules;
+  final List<GrammarMistake> commonMistakes;
+  final List<GrammarQuestion> practice;
+
+  bool get hasDetailedContent =>
+      urduExplanation.isNotEmpty ||
+      examples.isNotEmpty ||
+      rules.isNotEmpty ||
+      commonMistakes.isNotEmpty ||
+      practice.isNotEmpty;
+
   @override
-  List<Object?> get props => <Object?>[name, description];
+  List<Object?> get props => <Object?>[
+        name,
+        description,
+        urduExplanation,
+        examples,
+        rules,
+        commonMistakes,
+        practice,
+      ];
 }
 
 /// A single dedicated grammar lesson (a leaf in the topic tree). Sections that
