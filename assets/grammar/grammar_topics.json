@@ -1807,10 +1807,10 @@
               "note": "غلطی: جمع کا نشان غلط جگہ پر لگا۔ قاعدہ: مرکب اسم ‘brother-in-law’ میں جمعی نشان مرکزی اسم ‘brother’ پر آتا ہے: brothers-in-law۔"
             },
             {
-              "wrong": "The committee are preparing its report.",
-              "right": "The committee is preparing its report.",
-              "urdu": "کمیٹی اپنی رپورٹ تیار کر رہی ہے۔",
-              "note": "غلطی: فعل اور موضوع کا عدمِ مطابقت۔ ’Committee’ کو یہاں ایک واحد ادارتی یونٹ کے طور پر دیکھا گیا ہے، اس لیے واحد فعل ‘is’ اور واحد ضمیر ‘its’ استعمال ہوں گے۔"
+              "wrong": "The policy making committee is preparing its report.",
+              "right": "The policymaking committee is preparing its report.",
+              "urdu": "پالیسی سازی کرنے والی کمیٹی اپنی رپورٹ تیار کر رہی ہے۔",
+              "note": "Policymaking is written as one compound adjective before committee. The singular subject committee takes is preparing."
             },
             {
               "wrong": "The examination-centre have changed its address.",
@@ -2218,8 +2218,7 @@
             }
           ],
           "rules": [
-            "Replaces a person or thing and changes according to person, number, and subject/object case.",
-            "The candidates submitted their forms, and they received receipts."
+            "Replaces a person or thing and changes according to person, number, and subject/object case."
           ],
           "commonMistakes": [
             {
@@ -2328,8 +2327,7 @@
             }
           ],
           "rules": [
-            "Shows ownership by replacing a noun phrase; it stands alone and is not followed by the owned noun.",
-            "The research proposal is ours, not theirs."
+            "Shows ownership by replacing a noun phrase; it stands alone and is not followed by the owned noun."
           ],
           "commonMistakes": [
             {
@@ -2438,8 +2436,7 @@
             }
           ],
           "rules": [
-            "Refers back to the subject when the subject and object are the same person or thing.",
-            "The minister himself approved the summary."
+            "Refers back to the subject when the subject and object are the same person or thing."
           ],
           "commonMistakes": [
             {
@@ -2524,32 +2521,31 @@
           "name": "Relative Pronoun",
           "description": "Introduces a relative clause and refers back to a noun called its antecedent.",
           "urduExplanation": "Relative pronoun پہلے آنے والے noun سے تعلق بناتا اور relative clause شروع کرتا ہے۔",
-          "subjectVerbAgreement": "The officer who prepared the report received an award.",
+          "subjectVerbAgreement": "The relative pronoun agrees with its antecedent in person and number, while the verb inside the relative clause agrees with the clause subject.",
           "examples": [
             {
-              "text": "placeholder",
-              "urdu": "placeholder",
-              "note": "placeholder"
+              "text": "The officer who prepared the report received an award.",
+              "urdu": "جس افسر نے رپورٹ تیار کی اسے اعزاز ملا۔",
+              "note": "یہ complex sentence ہے۔ Who کا antecedent officer ہے اور who relative clause میں subject ہے؛ اس لیے who انسان کے لیے استعمال ہوا، جبکہ prepared کا subject who ہے اور received کا main-clause subject officer ہے۔\nاردو وضاحت: 'who' انسان کے لیے آتا ہے اور اپنے antecedent 'officer' کی طرف واپس اشارہ کرتا ہے۔"
             },
             {
-              "text": "placeholder",
-              "urdu": "placeholder",
-              "note": "placeholder"
+              "text": "The candidate who topped the written test also passed the interview.",
+              "urdu": "جس امیدوار نے تحریری امتحان میں پہلی پوزیشن حاصل کی وہ انٹرویو میں بھی کامیاب ہوا۔",
+              "note": "Who refers back to candidate and is the subject of topped. The relative clause identifies which candidate is meant, so no comma is used; passed agrees with the singular subject candidate.\nاردو وضاحت: 'who' امیدوار کی طرف اشارہ کرتا ہے اور relative clause میں فاعل ہے؛ اس لیے 'who' درست ہے، 'which' نہیں۔"
             },
             {
-              "text": "placeholder",
-              "urdu": "placeholder",
-              "note": "placeholder"
+              "text": "The policy that the commission approved has improved public service delivery.",
+              "urdu": "جس پالیسی کی کمیشن نے منظوری دی ہے اس نے عوامی خدمات کی فراہمی بہتر بنا دی ہے۔",
+              "note": "This is a complex sentence. That refers to the thing policy and is the object of approved; the commission is the subject of the relative clause. The main subject policy is singular, so has improved is correct.\nاردو وضاحت: چیز یا پالیسی کے لیے 'that' استعمال ہوا؛ 'commission' نے منظوری دی، اس لیے relative clause میں approved آیا۔"
             },
             {
-              "text": "placeholder",
-              "urdu": "placeholder",
-              "note": "placeholder"
+              "text": "The committee accepted the proposal, which was supported by independent researchers.",
+              "urdu": "کمیٹی نے اس تجویز کو منظور کر لیا، جس کی آزاد محققین نے حمایت کی تھی۔",
+              "note": "یہ compound-complex sentence ہے۔ Which refers back to the proposal and begins a non-restrictive relative clause, so a comma is required. Was supported is passive: proposal receives the action, while by introduces the agents, independent researchers.\nاردو وضاحت: 'which' تجویز کی طرف واپس اشارہ کرتا ہے؛ comma اضافی معلومات والی relative clause کو الگ کرتا ہے، اور 'by' حمایت کرنے والوں کو ظاہر کرتا ہے۔"
             }
           ],
           "rules": [
-            "Introduces a relative clause and refers back to a noun called its antecedent.",
-            "The officer who prepared the report received an award."
+            "Introduces a relative clause and refers back to a noun called its antecedent."
           ],
           "commonMistakes": [
             {
@@ -2658,8 +2654,7 @@
             }
           ],
           "rules": [
-            "Points to a specific noun or idea and shows singular/plural and near/far meaning.",
-            "These are the recommendations for the committee."
+            "Points to a specific noun or idea and shows singular/plural and near/far meaning."
           ],
           "commonMistakes": [
             {
@@ -2768,8 +2763,7 @@
             }
           ],
           "rules": [
-            "Asks about an unknown person, thing, owner, choice, or object in a question.",
-            "Who prepared the examination report?"
+            "Asks about an unknown person, thing, owner, choice, or object in a question."
           ],
           "commonMistakes": [
             {
@@ -2878,8 +2872,7 @@
             }
           ],
           "rules": [
-            "Refers to a person or thing without naming it specifically.",
-            "Everyone in the academy submits his or her form on time."
+            "Refers to a person or thing without naming it specifically."
           ],
           "commonMistakes": [
             {
@@ -2988,8 +2981,7 @@
             }
           ],
           "rules": [
-            "Shows that two or more people or groups perform an action mutually.",
-            "The two delegations respected each other."
+            "Shows that two or more people or groups perform an action mutually."
           ],
           "commonMistakes": [
             {
@@ -3098,8 +3090,7 @@
             }
           ],
           "rules": [
-            "Refers to members of a group separately, especially each, either, and neither.",
-            "Each of the applicants has a separate roll number."
+            "Refers to members of a group separately, especially each, either, and neither."
           ],
           "commonMistakes": [
             {
@@ -3208,8 +3199,7 @@
             }
           ],
           "rules": [
-            "Adds emphasis to a noun or pronoun and can be removed without changing the basic meaning.",
-            "The minister himself addressed the competitive-exam candidates."
+            "Adds emphasis to a noun or pronoun and can be removed without changing the basic meaning."
           ],
           "commonMistakes": [
             {
@@ -3321,9 +3311,10 @@
           "note": "Everyone is singular in formal exam English, so has and his or her agree with it."
         },
         {
-          "wrong": "The committee members discussed among themselves.",
+          "wrong": "The committee members discussed between themselves.",
           "right": "The committee members discussed among themselves.",
-          "note": "This is correct: members is plural and themselves refers back to the plural subject."
+          "note": "Among is preferred for a group of more than two people; between is normally used for two distinct parties in formal exam English.",
+          "urdu": "کمیٹی کے ارکان نے آپس میں گفتگو کی۔"
         }
       ],
       "practice": [
