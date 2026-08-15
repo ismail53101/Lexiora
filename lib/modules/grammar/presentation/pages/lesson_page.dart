@@ -144,7 +144,7 @@ class _LessonView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final ThemeData theme = Theme.of(context);
-    if (lesson.id == 'pos/noun' || lesson.id == 'pos/pronoun') {
+    if (lesson.id == 'pos/noun' || lesson.id == 'pos/pronoun' || lesson.id == 'pos/verb') {
       return _NounLandingView(lesson: lesson);
     }
     return ListView(

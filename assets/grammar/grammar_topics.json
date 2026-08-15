@@ -3489,93 +3489,398 @@
     "order": 3,
     "isLeaf": true,
     "content": {
-      "introduction": "A verb is a word that expresses an action, occurrence, or state of being, and every complete sentence must contain one. Verbs change form to show tense, number, and voice, making them one of the most tested areas in CSS, PMS, and IELTS grammar sections. A strong grasp of verb types and tenses is essential for accurate and confident writing and speaking.",
-      "urduExplanation": "Verb وہ لفظ ہے جو کسی کام، عمل یا حالت کو ظاہر کرتا ہے، جیسے 'run', 'is' یا 'become'۔ ہر مکمل جملے میں کم از کم ایک verb ضرور ہوتا ہے۔ verbs کی مختلف اقسام ہیں جیسے action verbs جو کوئی کام بتاتے ہیں، linking verbs جو subject کو اس کی حالت سے جوڑتے ہیں، اور auxiliary یا modal verbs جو مدد کے لیے استعمال ہوتے ہیں۔ صحیح tense اور subject-verb agreement کا خیال رکھنا انگریزی لکھنے میں بہت ضروری ہے۔",
+      "introduction": "A verb expresses an action, occurrence, or state of being. Verbs change form to show tense, number, voice, and mood, making them central to CSS, PMS, PCS, BPSC, and IELTS grammar questions.",
+      "urduExplanation": "فعل وہ لفظ ہے جو کسی کام، واقعے یا حالت کو ظاہر کرتا ہے۔ فعل زمانہ، واحد و جمع، مجہول ساخت اور اندازِ بیان کے مطابق اپنی شکل بدل سکتا ہے۔",
       "englishExplanation": "Verbs are the core of a sentence, showing what the subject does, is, or experiences. They can be classified as action verbs (run, write), linking verbs (be, seem, become), auxiliary verbs (is, have, will), and modal verbs (can, must, should) that express ability, permission, or necessity. Verbs are also classified as transitive (requiring a direct object) or intransitive (not requiring one). Verb tense, subject-verb agreement, and correct use of modals are frequently tested because small errors here change the meaning or correctness of a sentence significantly.",
       "types": [
         {
           "name": "Action Verb",
-          "description": "Expresses a physical or mental action performed by the subject, e.g., run, think, write."
+          "description": "An action verb expresses a physical or mental action performed by the subject, such as review, decide, analyse, or implement.",
+          "urduExplanation": "فعلِ عمل کسی شخص یا چیز کی طرف سے کیے جانے والے جسمانی یا ذہنی کام کو ظاہر کرتا ہے، جیسے جائزہ لینا، فیصلہ کرنا، تجزیہ کرنا یا نافذ کرنا۔",
+          "wordFocus": "In 'The commission reviewed the appeals', 'reviewed' is the action verb, 'commission' is the subject, and 'appeals' is the direct object.",
+          "subjectVerbAgreement": "The commission reviewed the candidates' appeals. 'Reviewed' is an action verb showing a completed action; the singular subject 'commission' performs it, and the plural object 'appeals' does not control the verb.",
+          "rules": [
+            "Action verbs can describe physical or mental activity.",
+            "The verb must show the correct tense for the time of the action.",
+            "A transitive action verb is followed by a direct object, but an intransitive action verb can stand without one."
+          ],
+          "examples": [
+            {
+              "text": "The commission reviewed the candidates’ appeals before issuing its decision.",
+              "urdu": "کمیشن نے فیصلہ جاری کرنے سے پہلے امیدواروں کی اپیلوں کا جائزہ لیا۔",
+              "note": "'Reviewed' is a past-tense action verb; 'commission' is the subject and 'appeals' is the direct object."
+            },
+            {
+              "text": "The policy analyst examined the budget and identified two risks.",
+              "urdu": "پالیسی تجزیہ کار نے بجٹ کا جائزہ لیا اور دو خطرات کی نشاندہی کی۔",
+              "note": "'Examined' and 'identified' are coordinated action verbs with the analyst as their subject."
+            },
+            {
+              "text": "Although the evidence was limited, the committee evaluated the proposal carefully.",
+              "urdu": "اگرچہ شواہد محدود تھے، کمیٹی نے تجویز کا بغور جائزہ لیا۔",
+              "note": "'Evaluated' expresses the committee’s mental action; the concessive clause does not change its past tense."
+            },
+            {
+              "text": "Candidates should analyse the question before selecting an answer.",
+              "urdu": "امیدواروں کو جواب منتخب کرنے سے پہلے سوال کا تجزیہ کرنا چاہیے۔",
+              "note": "'Analyse' is the base action verb after the modal 'should'."
+            }
+          ],
+          "commonMistakes": [
+            {
+              "wrong": "The committee review the proposal yesterday.",
+              "right": "The committee reviewed the proposal yesterday.",
+              "urdu": "کمیٹی نے گزشتہ روز تجویز کا جائزہ لیا۔",
+              "note": "The time marker 'yesterday' requires the past form 'reviewed', not the present form 'review'."
+            },
+            {
+              "wrong": "The analyst discussed about the policy.",
+              "right": "The analyst discussed the policy.",
+              "urdu": "تجزیہ کار نے پالیسی پر بحث کی۔",
+              "note": "'Discuss' takes a direct object and does not require the preposition 'about' before the object."
+            },
+            {
+              "wrong": "The candidates has prepared the reports.",
+              "right": "The candidates have prepared the reports.",
+              "urdu": "امیدواروں نے رپورٹس تیار کر لی ہیں۔",
+              "note": "The plural subject 'candidates' requires the plural auxiliary 'have'."
+            }
+          ],
+          "examTips": [
+            "In error detection, locate the subject and time marker before choosing the action-verb form.",
+            "After a modal such as should or must, use the base form of the action verb."
+          ]
         },
         {
           "name": "Linking Verb",
-          "description": "Connects the subject to a noun or adjective that describes it, e.g., be, seem, become, appear."
+          "description": "A linking verb connects the subject to a subject complement that identifies or describes it; it does not show an action performed on an object.",
+          "urduExplanation": "فعلِ ربط فاعل کو اس کی شناخت یا صفت بیان کرنے والے لفظ سے ملاتا ہے؛ یہ کسی مفعول پر ہونے والا عمل ظاہر نہیں کرتا۔",
+          "wordFocus": "In 'The revised policy is effective', 'is' links the subject 'policy' to the adjective complement 'effective'.",
+          "subjectVerbAgreement": "The revised policy is effective. 'Is' is a linking verb connecting the singular subject 'policy' with the adjective 'effective'; it does not take a direct object.",
+          "rules": [
+            "Forms of be, seem, become, remain, and appear can function as linking verbs.",
+            "A linking verb is followed by a subject complement, usually a noun or adjective.",
+            "Use a subject form after a linking verb when the complement identifies the subject in formal examination grammar."
+          ],
+          "examples": [
+            {
+              "text": "The new examination policy seems equitable to all candidates.",
+              "urdu": "نئی امتحانی پالیسی تمام امیدواروں کے لیے منصفانہ معلوم ہوتی ہے۔",
+              "note": "'Seems' links the singular subject 'policy' to the adjective complement 'equitable'."
+            },
+            {
+              "text": "The committee became confident after reviewing the evidence.",
+              "urdu": "شواہد کا جائزہ لینے کے بعد کمیٹی پُراعتماد ہو گئی۔",
+              "note": "'Became' links 'committee' to the adjective 'confident'; 'after reviewing' is a participial phrase."
+            },
+            {
+              "text": "The main objective is public accountability.",
+              "urdu": "بنیادی مقصد عوامی جواب دہی ہے۔",
+              "note": "'Is' links the subject 'objective' to the noun complement 'accountability'."
+            },
+            {
+              "text": "The results remained uncertain until the commission verified the records.",
+              "urdu": "کمیشن کی طرف سے ریکارڈ کی تصدیق تک نتائج غیر یقینی رہے۔",
+              "note": "'Remained' links 'results' to the adjective 'uncertain'; the until-clause gives the time limit."
+            }
+          ],
+          "commonMistakes": [
+            {
+              "wrong": "The policy seems effectively.",
+              "right": "The policy seems effective.",
+              "urdu": "پالیسی مؤثر معلوم ہوتی ہے۔",
+              "note": "After the linking verb 'seems', an adjective complement 'effective' describes the policy; the adverb 'effectively' is incorrect here."
+            },
+            {
+              "wrong": "The committee became successfully after the reform.",
+              "right": "The committee became successful after the reform.",
+              "urdu": "اصلاح کے بعد کمیٹی کامیاب ہو گئی۔",
+              "note": "'Became' requires an adjective complement 'successful', not the adverb 'successfully'."
+            },
+            {
+              "wrong": "The main purpose is to improve accountability.",
+              "right": "The main purpose is improving accountability.",
+              "urdu": "بنیادی مقصد جواب دہی کو بہتر بنانا ہے۔",
+              "note": "In this intended noun-complement pattern, the gerund phrase 'improving accountability' names the purpose; the infinitive construction changes the structure and emphasis."
+            }
+          ],
+          "examTips": [
+            "Do not mistake a subject complement for a direct object after a linking verb.",
+            "Use an adjective after linking verbs when it describes the subject."
+          ]
         },
         {
           "name": "Auxiliary Verb",
-          "description": "Helps the main verb to form tenses, questions, or negatives, e.g., is, have, will, do."
+          "description": "An auxiliary verb helps a main verb form tense, aspect, voice, questions, or negatives.",
+          "urduExplanation": "معاون فعل مرکزی فعل کے ساتھ مل کر زمانہ، پہلو، مجہول ساخت، سوال یا نفی بناتا ہے۔",
+          "wordFocus": "In 'The commission has approved the policy', 'has' is the auxiliary and 'approved' is the main verb.",
+          "subjectVerbAgreement": "The commission has approved the policy. 'Has' is the singular auxiliary agreeing with 'commission', while 'approved' remains the past participle in the present perfect tense.",
+          "rules": [
+            "Be, have, and do can act as auxiliaries.",
+            "After do, does, or did, use the base form of the main verb.",
+            "In perfect tenses, have/has/had is followed by a past participle; in passive voice, be is followed by a past participle."
+          ],
+          "examples": [
+            {
+              "text": "The commission has approved the revised policy.",
+              "urdu": "کمیشن نے نظرثانی شدہ پالیسی منظور کر لی ہے۔",
+              "note": "'Has' is the auxiliary and 'approved' is the past participle forming the present perfect."
+            },
+            {
+              "text": "Did the examiner verify the candidate’s documents?",
+              "urdu": "کیا ممتحن نے امیدوار کی دستاویزات کی تصدیق کی؟",
+              "note": "'Did' forms the past question, so the main verb returns to the base form 'verify'."
+            },
+            {
+              "text": "The recommendations are being reviewed by the ministry.",
+              "urdu": "وزارت کی طرف سے سفارشات کا جائزہ لیا جا رہا ہے۔",
+              "note": "'Are being' are auxiliaries forming the present progressive passive, and 'reviewed' is the past participle."
+            },
+            {
+              "text": "The administration had completed the reform before the audit began.",
+              "urdu": "آڈٹ شروع ہونے سے پہلے انتظامیہ اصلاح مکمل کر چکی تھی۔",
+              "note": "'Had' forms the past perfect and is followed by the past participle 'completed'."
+            }
+          ],
+          "commonMistakes": [
+            {
+              "wrong": "The commission did not approved the policy.",
+              "right": "The commission did not approve the policy.",
+              "urdu": "کمیشن نے پالیسی منظور نہیں کی۔",
+              "note": "After the auxiliary 'did', the main verb must be the base form 'approve'."
+            },
+            {
+              "wrong": "The ministry has announce the result.",
+              "right": "The ministry has announced the result.",
+              "urdu": "وزارت نے نتیجے کا اعلان کر دیا ہے۔",
+              "note": "The present perfect auxiliary 'has' requires the past participle 'announced'."
+            },
+            {
+              "wrong": "The reports is being reviewed.",
+              "right": "The reports are being reviewed.",
+              "urdu": "رپورٹس کا جائزہ لیا جا رہا ہے۔",
+              "note": "The plural subject 'reports' requires the plural auxiliary 'are'."
+            }
+          ],
+          "examTips": [
+            "Auxiliary verbs often reveal tense and voice; check the form of the main verb that follows them.",
+            "After do/does/did, never add the past or third-person singular ending to the main verb."
+          ]
         },
         {
           "name": "Modal Verb",
-          "description": "Expresses ability, permission, possibility, or obligation, e.g., can, could, must, should, may."
+          "description": "A modal verb expresses ability, permission, possibility, necessity, advice, or obligation and is followed by a base verb.",
+          "urduExplanation": "فعلِ امکانی صلاحیت، اجازت، امکان، ضرورت، مشورے یا پابندی کو ظاہر کرتا ہے اور اس کے بعد فعل کی بنیادی شکل آتی ہے۔",
+          "wordFocus": "In 'Candidates must submit original documents', 'must' is the modal and 'submit' is the base main verb.",
+          "subjectVerbAgreement": "Candidates must submit the original documents. The modal 'must' is unchanged for every subject, and it is followed by the base verb 'submit', not 'submits' or 'submitted'.",
+          "rules": [
+            "A modal is followed by the base form of the verb.",
+            "Modals do not take -s for a third-person singular subject.",
+            "Use must for strong obligation, should for advice, may/might for possibility, and can/could for ability or permission according to context."
+          ],
+          "examples": [
+            {
+              "text": "Candidates must submit the original documents before the interview.",
+              "urdu": "امیدواروں کو انٹرویو سے پہلے اصل دستاویزات جمع کرانی ہوں گی۔",
+              "note": "'Must' expresses obligation and is followed by the base verb 'submit'."
+            },
+            {
+              "text": "The commission may revise the policy after public consultation.",
+              "urdu": "عوامی مشاورت کے بعد کمیشن پالیسی میں ترمیم کر سکتا ہے۔",
+              "note": "'May' expresses possibility and 'revise' remains in the base form."
+            },
+            {
+              "text": "The administration should address the security concerns immediately.",
+              "urdu": "انتظامیہ کو سکیورٹی کے خدشات کا فوری ازالہ کرنا چاہیے۔",
+              "note": "'Should' expresses advice and takes the base verb 'address'."
+            },
+            {
+              "text": "A transparent procedure can improve public confidence.",
+              "urdu": "شفاف طریقہ کار عوامی اعتماد کو بہتر بنا سکتا ہے۔",
+              "note": "'Can' expresses possibility or ability and is followed by the base verb 'improve'."
+            }
+          ],
+          "commonMistakes": [
+            {
+              "wrong": "The candidate must submits the form.",
+              "right": "The candidate must submit the form.",
+              "urdu": "امیدوار کو فارم جمع کرانا ہوگا۔",
+              "note": "A modal is followed by the base verb, so 'must submit' is correct."
+            },
+            {
+              "wrong": "The ministry should to revise the policy.",
+              "right": "The ministry should revise the policy.",
+              "urdu": "وزارت کو پالیسی میں ترمیم کرنی چاہیے۔",
+              "note": "A modal is not followed by 'to'; use 'should revise'."
+            },
+            {
+              "wrong": "Candidates can achieved better results.",
+              "right": "Candidates can achieve better results.",
+              "urdu": "امیدوار بہتر نتائج حاصل کر سکتے ہیں۔",
+              "note": "After 'can', use the base form 'achieve', not the past form 'achieved'."
+            }
+          ],
+          "examTips": [
+            "The pattern modal + base verb is a frequent sentence-correction question.",
+            "Do not add -s, -ed, or to after a modal unless another structure requires it."
+          ]
         },
         {
           "name": "Transitive Verb",
-          "description": "Requires a direct object to complete its meaning, e.g., 'She reads a book.'"
+          "description": "A transitive verb transfers its action to a direct object, which answers what or whom after the verb.",
+          "urduExplanation": "فعلِ متعدی کا عمل براہِ راست مفعول تک پہنچتا ہے، جو فعل کے بعد کیا یا کسے کے سوال کا جواب دیتا ہے۔",
+          "wordFocus": "In 'The examiner evaluated the answer scripts', 'evaluated' is transitive and 'answer scripts' is its direct object.",
+          "subjectVerbAgreement": "The examiner evaluated the answer scripts. 'Evaluated' is a transitive verb, 'examiner' is the singular subject, and 'answer scripts' is the direct object receiving the action.",
+          "rules": [
+            "A transitive verb normally requires a direct object to complete its meaning.",
+            "The direct object follows the verb without a necessary preposition.",
+            "A passive sentence can be formed by moving the object into the subject position."
+          ],
+          "examples": [
+            {
+              "text": "The examiner evaluated the answer scripts within two days.",
+              "urdu": "ممتحن نے دو دن کے اندر جوابی کاپیوں کا جائزہ لیا۔",
+              "note": "'Evaluated' is transitive and takes 'answer scripts' as its direct object."
+            },
+            {
+              "text": "The commission approved the recruitment policy.",
+              "urdu": "کمیشن نے بھرتی کی پالیسی منظور کی۔",
+              "note": "'Approved' transfers its action to the direct object 'recruitment policy'."
+            },
+            {
+              "text": "The report highlighted serious gaps in public healthcare.",
+              "urdu": "رپورٹ نے عوامی صحت کے نظام میں سنگین خامیوں کو نمایاں کیا۔",
+              "note": "'Highlighted' is followed by the direct object 'serious gaps'."
+            },
+            {
+              "text": "The court rejected the petition because it lacked legal grounds.",
+              "urdu": "عدالت نے درخواست مسترد کر دی کیونکہ اس میں قانونی بنیادیں نہیں تھیں۔",
+              "note": "'Rejected' takes 'petition' as its direct object; the because-clause gives the reason."
+            }
+          ],
+          "commonMistakes": [
+            {
+              "wrong": "The committee discussed about the proposal.",
+              "right": "The committee discussed the proposal.",
+              "urdu": "کمیٹی نے تجویز پر بحث کی۔",
+              "note": "'Discuss' is transitive and takes a direct object without 'about'."
+            },
+            {
+              "wrong": "The policy affects on public confidence.",
+              "right": "The policy affects public confidence.",
+              "urdu": "پالیسی عوامی اعتماد کو متاثر کرتی ہے۔",
+              "note": "'Affect' takes the direct object directly and does not require 'on'."
+            },
+            {
+              "wrong": "The examiner explained the candidates the rule.",
+              "right": "The examiner explained the rule to the candidates.",
+              "urdu": "ممتحن نے امیدواروں کو قاعدہ سمجھایا۔",
+              "note": "With 'explain', the thing explained is the direct object; use 'to' before the recipient."
+            }
+          ],
+          "examTips": [
+            "Ask what or whom after the verb to locate the direct object.",
+            "Do not add a preposition after transitive verbs such as discuss, affect, and enter."
+          ]
         },
         {
           "name": "Intransitive Verb",
-          "description": "Does not require a direct object to complete its meaning, e.g., 'The baby sleeps.'"
+          "description": "An intransitive verb expresses a complete action or state without requiring a direct object.",
+          "urduExplanation": "فعلِ لازم ایسا عمل یا حالت ظاہر کرتا ہے جو براہِ راست مفعول کے بغیر بھی مکمل معنی دیتی ہے۔",
+          "wordFocus": "In 'The delegation arrived before the hearing', 'arrived' is complete without a direct object; the remaining phrase gives time.",
+          "subjectVerbAgreement": "The delegation arrived before the hearing. 'Arrived' is an intransitive verb with no direct object; 'before the hearing' is a prepositional phrase, and 'delegation' is the subject.",
+          "rules": [
+            "An intransitive verb does not take a direct object.",
+            "A prepositional phrase after an intransitive verb is not a direct object.",
+            "Some verbs can be transitive or intransitive depending on the sentence, so examine the context."
+          ],
+          "examples": [
+            {
+              "text": "The delegation arrived before the hearing began.",
+              "urdu": "وفد سماعت شروع ہونے سے پہلے پہنچ گیا۔",
+              "note": "'Arrived' is intransitive and complete without an object; 'before the hearing began' is a time clause."
+            },
+            {
+              "text": "The candidates waited outside the examination hall.",
+              "urdu": "امیدوار امتحانی ہال کے باہر انتظار کرتے رہے۔",
+              "note": "'Waited' is intransitive; 'outside the examination hall' is a prepositional phrase, not an object."
+            },
+            {
+              "text": "The evidence disappeared during the investigation.",
+              "urdu": "تحقیقات کے دوران شواہد غائب ہو گئے۔",
+              "note": "'Disappeared' is intransitive and does not transfer an action to a direct object."
+            },
+            {
+              "text": "The administration responded promptly to the public’s concerns.",
+              "urdu": "انتظامیہ نے عوام کے خدشات کا فوری جواب دیا۔",
+              "note": "'Responded' is used intransitively here; 'to the concerns' is a prepositional phrase."
+            }
+          ],
+          "commonMistakes": [
+            {
+              "wrong": "The delegation arrived the venue on time.",
+              "right": "The delegation arrived at the venue on time.",
+              "urdu": "وفد وقت پر مقام پر پہنچ گیا۔",
+              "note": "'Arrive' does not take a direct object; use the preposition 'at' before a specific place."
+            },
+            {
+              "wrong": "The candidates entered into the examination hall.",
+              "right": "The candidates entered the examination hall.",
+              "urdu": "امیدوار امتحانی ہال میں داخل ہوئے۔",
+              "note": "'Enter' is transitive and takes the place directly, so 'into' is unnecessary here."
+            },
+            {
+              "wrong": "The evidence disappeared it during the audit.",
+              "right": "The evidence disappeared during the audit.",
+              "urdu": "آڈٹ کے دوران شواہد غائب ہو گئے۔",
+              "note": "'Disappeared' is complete without an object; the extra pronoun 'it' is grammatically unnecessary."
+            }
+          ],
+          "examTips": [
+            "Do not treat every noun after an intransitive verb as an object; check whether a preposition introduces it.",
+            "Remember that some verbs change category with context, especially enter, open, run, and grow."
+          ]
         }
       ],
       "rules": [
-        "A verb must agree in number with its subject: singular subjects take singular verbs, and plural subjects take plural verbs.",
-        "Use auxiliary verbs (be, have, do) correctly to form continuous, perfect, and question structures.",
-        "Modal verbs are always followed by the base form of the main verb, never the -s, -ed, or -ing form (e.g., 'she can go', not 'she can goes').",
-        "Linking verbs are followed by an adjective or noun describing the subject, not an adverb (e.g., 'She looks happy', not 'She looks happily').",
-        "Transitive verbs must be followed by a direct object, while intransitive verbs stand alone or are followed only by adverbials.",
-        "Irregular verbs do not follow the regular -ed pattern for past tense and must be memorized (go/went, eat/ate, write/wrote)."
+        "A complete clause normally contains a finite verb.",
+        "Check the subject, tense, auxiliary, and verb form in every sentence.",
+        "After a modal or do/does/did auxiliary, use the base form of the main verb.",
+        "Transitive verbs take direct objects, while intransitive verbs do not.",
+        "Linking verbs take subject complements rather than direct objects.",
+        "Verb patterns should be checked in error detection, sentence correction, and cloze tests."
       ],
       "examples": [
         {
-          "text": "She writes a report every Friday.",
-          "note": "action verb"
-        },
-        {
-          "text": "The soup smells delicious.",
-          "note": "linking verb"
-        },
-        {
-          "text": "They have finished their homework.",
-          "note": "auxiliary verb"
-        },
-        {
-          "text": "Students must submit their forms by Monday.",
-          "note": "modal verb"
-        },
-        {
-          "text": "He kicked the ball across the field.",
-          "note": "transitive verb"
-        },
-        {
-          "text": "The children laughed loudly in the park.",
-          "note": "intransitive verb"
-        },
-        {
-          "text": "The train arrives at 9 a.m. every day.",
-          "note": "present simple tense"
+          "text": "The commission reviewed the policy and announced its decision.",
+          "urdu": "کمیشن نے پالیسی کا جائزہ لیا اور اپنا فیصلہ سنایا۔",
+          "note": "'Reviewed' and 'announced' are verbs that express two completed actions."
         }
       ],
       "commonMistakes": [
         {
-          "wrong": "She don't like tea.",
-          "right": "She doesn't like tea.",
-          "note": "third-person singular subjects require 'does' in negatives and questions"
+          "wrong": "The candidates must submits their forms.",
+          "right": "The candidates must submit their forms.",
+          "urdu": "امیدواروں کو اپنے فارم جمع کرانے ہوں گے۔",
+          "note": "After the modal 'must', use the base verb 'submit'."
         },
         {
-          "wrong": "He can plays football very well.",
-          "right": "He can play football very well.",
-          "note": "modal verbs must be followed by the base form of the verb"
+          "wrong": "The committee discussed about the policy.",
+          "right": "The committee discussed the policy.",
+          "urdu": "کمیٹی نے پالیسی پر بحث کی۔",
+          "note": "'Discuss' takes a direct object without 'about'."
         },
         {
-          "wrong": "The news are very shocking today.",
-          "right": "The news is very shocking today.",
-          "note": "'news' is an uncountable noun and always takes a singular verb"
+          "wrong": "The reports was reviewed yesterday.",
+          "right": "The reports were reviewed yesterday.",
+          "urdu": "رپورٹس کا گزشتہ روز جائزہ لیا گیا۔",
+          "note": "The plural subject 'reports' requires the plural auxiliary 'were'."
         },
         {
-          "wrong": "She looks happily after winning the award.",
-          "right": "She looks happy after winning the award.",
-          "note": "linking verbs take adjectives, not adverbs, to describe the subject"
+          "wrong": "The examiner did not approved the answer.",
+          "right": "The examiner did not approve the answer.",
+          "urdu": "ممتحن نے جواب منظور نہیں کیا۔",
+          "note": "After 'did not', use the base verb 'approve'."
         }
       ],
       "practice": [
@@ -3648,7 +3953,11 @@
           "explanation": "Modal verbs like 'should' are always followed by the base form of the verb, here 'study'."
         }
       ],
-      "summary": "Verbs express actions, states, or occurrences and must agree with their subjects in number while following correct tense and modal patterns. Key types include action, linking, auxiliary, modal, transitive, and intransitive verbs. Careful attention to modal-plus-base-verb structure and subject-verb agreement prevents the most common exam errors."
+      "summary": "Master the verb by identifying its function, tense, auxiliary, object pattern, and agreement before selecting a form.",
+      "examTips": [
+        "Identify the subject and auxiliary before choosing the main-verb form.",
+        "In competitive exams, check modal + base verb, auxiliary + correct participle, transitive-object patterns, and subject–verb agreement."
+      ]
     }
   },
   {
