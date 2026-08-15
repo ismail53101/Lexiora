@@ -313,6 +313,8 @@ class GrammarLocalDataSource {
             name: name,
             description: desc,
             urduExplanation: _str(e['urduExplanation']),
+            wordFocus: _str(e['wordFocus']),
+            pronounTable: _pronounTable(e['pronounTable']),
             subjectVerbAgreement: _str(e['subjectVerbAgreement']),
             subjectVerbAgreementUrdu: _str(e['subjectVerbAgreementUrdu']),
             examples: _examples(e['examples']),
@@ -324,6 +326,15 @@ class GrammarLocalDataSource {
       }
     }
     return out;
+  }
+
+  static List<GrammarPronounRow> _pronounTable(Object? v) {
+    if (v is! List) return const <GrammarPronounRow>[];
+    return v.whereType<Map>().map((Map e) => GrammarPronounRow(
+      person: _str(e['person']),
+      subject: _str(e['subject']),
+      object: _str(e['object']),
+    )).where((GrammarPronounRow row) => row.person.isNotEmpty).toList(growable: false);
   }
 
   static List<GrammarExample> _examples(Object? v) {

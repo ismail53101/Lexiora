@@ -335,7 +335,7 @@ class _NounLandingView extends StatelessWidget {
             children: <Widget>[
               if (lesson.introduction.isNotEmpty)
                 Text(lesson.introduction,
-                    style: theme.textTheme.bodyLarge?.copyWith(height: 1.5)),
+                    style: theme.textTheme.bodyMedium?.copyWith(height: 1.35)),
               if (lesson.urduExplanation.isNotEmpty) ...<Widget>[
                 const Divider(height: 24),
                 Directionality(
@@ -343,7 +343,7 @@ class _NounLandingView extends StatelessWidget {
                   child: Text(
                     lesson.urduExplanation,
                     textAlign: TextAlign.right,
-                    style: theme.textTheme.bodyLarge?.copyWith(height: 1.7),
+                    style: theme.textTheme.bodyMedium?.copyWith(height: 1.55),
                   ),
                 ),
               ],
@@ -356,7 +356,7 @@ class _NounLandingView extends StatelessWidget {
                     )),
                 const SizedBox(height: 6),
                 Text(overviewExample.text,
-                    style: theme.textTheme.bodyLarge?.copyWith(height: 1.5)),
+                    style: theme.textTheme.bodyMedium?.copyWith(height: 1.35)),
                 if (overviewExample.urdu?.isNotEmpty ?? false) ...<Widget>[
                   const SizedBox(height: 5),
                   Directionality(
@@ -364,7 +364,7 @@ class _NounLandingView extends StatelessWidget {
                     child: Text(
                       overviewExample.urdu!,
                       textAlign: TextAlign.right,
-                      style: theme.textTheme.bodyMedium?.copyWith(height: 1.6),
+                      style: theme.textTheme.bodySmall?.copyWith(height: 1.45),
                     ),
                   ),
                 ],
@@ -478,15 +478,16 @@ class GrammarTypeContent extends StatelessWidget {
               ),
             ),
           ],
+          if (type.wordFocus.isNotEmpty) ...<Widget>[
+            const _TypeSubheading(title: 'Identify the Type', icon: Icons.label_outline),
+            Text(type.wordFocus, style: theme.textTheme.bodyMedium?.copyWith(height: 1.4)),
+          ],
+          if (type.pronounTable.isNotEmpty) ...<Widget>[
+            const _TypeSubheading(title: 'Personal Pronoun Forms', icon: Icons.table_chart_outlined),
+            _PronounTable(rows: type.pronounTable),
+          ],
           if (type.subjectVerbAgreement.isNotEmpty) ...<Widget>[
-            const _TypeSubheading(
-              title: 'Subject–Verb Agreement',
-              icon: Icons.rule,
-            ),
-            Text(
-              type.subjectVerbAgreement,
-              style: theme.textTheme.bodyLarge?.copyWith(height: 1.5),
-            ),
+            _AgreementCard(text: type.subjectVerbAgreement),
             if (type.subjectVerbAgreementUrdu.isNotEmpty) ...<Widget>[
               const SizedBox(height: 6),
               Directionality(
@@ -528,6 +529,78 @@ class GrammarTypeContent extends StatelessWidget {
         ],
     );
   }
+}
+
+class _AgreementCard extends StatelessWidget {
+  const _AgreementCard({required this.text});
+  final String text;
+
+  @override
+  Widget build(BuildContext context) {
+    final ThemeData theme = Theme.of(context);
+    final Color accent = theme.colorScheme.tertiary;
+    return Container(
+      width: double.infinity,
+      margin: const EdgeInsets.only(top: 14),
+      padding: const EdgeInsets.all(14),
+      decoration: BoxDecoration(
+        color: accent.withValues(alpha: 0.10),
+        borderRadius: BorderRadius.circular(12),
+        border: Border.all(color: accent.withValues(alpha: 0.35)),
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: <Widget>[
+          Row(children: <Widget>[
+            Icon(Icons.rule, size: 19, color: accent),
+            const SizedBox(width: 7),
+            Text('Subject–Verb Agreement', style: theme.textTheme.titleSmall?.copyWith(color: accent, fontWeight: FontWeight.w800)),
+          ]),
+          const SizedBox(height: 9),
+          Text(text, style: theme.textTheme.bodyMedium?.copyWith(height: 1.45)),
+        ],
+      ),
+    );
+  }
+}
+
+class _PronounTable extends StatelessWidget {
+  const _PronounTable({required this.rows});
+  final List<GrammarPronounRow> rows;
+
+  @override
+  Widget build(BuildContext context) {
+    final ThemeData theme = Theme.of(context);
+    return Table(
+      border: TableBorder.all(color: theme.colorScheme.outlineVariant),
+      columnWidths: const <int, TableColumnWidth>{
+        0: FlexColumnWidth(1.45),
+        1: FlexColumnWidth(0.8),
+        2: FlexColumnWidth(0.8),
+      },
+      children: <TableRow>[
+        TableRow(
+          decoration: BoxDecoration(color: theme.colorScheme.primary.withValues(alpha: 0.10)),
+          children: <Widget>[
+            _tableCell(theme, 'Person', bold: true),
+            _tableCell(theme, 'Subject', bold: true),
+            _tableCell(theme, 'Object', bold: true),
+          ],
+        ),
+        for (final GrammarPronounRow row in rows)
+          TableRow(children: <Widget>[
+            _tableCell(theme, row.person),
+            _tableCell(theme, row.subject),
+            _tableCell(theme, row.object),
+          ]),
+      ],
+    );
+  }
+
+  Widget _tableCell(ThemeData theme, String text, {bool bold = false}) => Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 7),
+        child: Text(text, style: theme.textTheme.bodySmall?.copyWith(fontWeight: bold ? FontWeight.w700 : null)),
+      );
 }
 
 class _TypeSubheading extends StatelessWidget {

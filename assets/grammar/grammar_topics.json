@@ -956,7 +956,8 @@
               "explanation": "CSS is an official abbreviation written in capitals."
             }
           ],
-          "subjectVerbAgreementUrdu": ""
+          "subjectVerbAgreementUrdu": "",
+          "wordFocus": "Proper nouns in this section are specific names: 'Pakistan' names a country, 'Islamabad' names a city, and 'the Supreme Court' names a particular institution."
         },
         {
           "name": "Common Noun",
@@ -1091,7 +1092,8 @@
               "explanation": "Doctor is a general profession."
             }
           ],
-          "subjectVerbAgreementUrdu": ""
+          "subjectVerbAgreementUrdu": "",
+          "wordFocus": "Common nouns name general classes: 'candidate' names any member of a class, 'report' names a general document, and 'committee' names a general group."
         },
         {
           "name": "Collective Noun",
@@ -1226,7 +1228,8 @@
               "explanation": "Flock is the singular head noun."
             }
           ],
-          "subjectVerbAgreementUrdu": ""
+          "subjectVerbAgreementUrdu": "",
+          "wordFocus": "Collective nouns name groups as units: 'committee', 'panel', 'team', and 'administration' refer to groups that may take a singular verb when treated as one unit."
         },
         {
           "name": "Abstract Noun",
@@ -1361,7 +1364,8 @@
               "explanation": "Happiness names a feeling."
             }
           ],
-          "subjectVerbAgreementUrdu": ""
+          "subjectVerbAgreementUrdu": "",
+          "wordFocus": "Abstract nouns name ideas, qualities, or states: 'integrity', 'fairness', 'justice', and 'accountability' cannot be touched or counted as physical objects."
         },
         {
           "name": "Countable Noun",
@@ -1496,7 +1500,8 @@
               "explanation": "Students is plural."
             }
           ],
-          "subjectVerbAgreementUrdu": ""
+          "subjectVerbAgreementUrdu": "",
+          "wordFocus": "Countable nouns can be counted individually: 'candidate/candidates', 'application/applications', and 'proposal/proposals' have singular and plural forms and can follow numbers."
         },
         {
           "name": "Uncountable Noun",
@@ -1631,7 +1636,8 @@
               "explanation": "Furniture takes is."
             }
           ],
-          "subjectVerbAgreementUrdu": ""
+          "subjectVerbAgreementUrdu": "",
+          "wordFocus": "Uncountable nouns name substances, information, or ideas treated as a mass: 'research', 'evidence', and 'equipment' normally take singular verbs and are not used with a/an directly."
         },
         {
           "name": "Material Noun",
@@ -1766,7 +1772,8 @@
               "explanation": "Wood is an uncountable material."
             }
           ],
-          "subjectVerbAgreementUrdu": ""
+          "subjectVerbAgreementUrdu": "",
+          "wordFocus": "Material nouns name substances from which things are made: 'gold', 'steel', 'cotton', and 'plastic' identify materials rather than individual objects."
         },
         {
           "name": "Compound Noun",
@@ -1901,7 +1908,8 @@
               "explanation": "Mother receives the plural ending."
             }
           ],
-          "subjectVerbAgreementUrdu": ""
+          "subjectVerbAgreementUrdu": "",
+          "wordFocus": "Compound nouns combine two or more words into one naming unit: 'civil service exam', 'research report', and 'review committee' name specific people, things, or institutions as combined terms."
         }
       ],
       "rules": [
@@ -2297,7 +2305,45 @@
               "explanation": "A pronoun must agree with its antecedent and fit its grammatical role."
             }
           ],
-          "subjectVerbAgreementUrdu": ""
+          "subjectVerbAgreementUrdu": "",
+          "wordFocus": "Personal pronouns replace names of people, animals, or things: 'them' replaces the candidates as an object, while 'they' replaces candidates as a subject.",
+          "pronounTable": [
+            {
+              "person": "First person singular",
+              "subject": "I",
+              "object": "me"
+            },
+            {
+              "person": "Second person singular/plural",
+              "subject": "you",
+              "object": "you"
+            },
+            {
+              "person": "Third person singular (male)",
+              "subject": "he",
+              "object": "him"
+            },
+            {
+              "person": "Third person singular (female)",
+              "subject": "she",
+              "object": "her"
+            },
+            {
+              "person": "Third person singular (thing/animal)",
+              "subject": "it",
+              "object": "it"
+            },
+            {
+              "person": "First person plural",
+              "subject": "we",
+              "object": "us"
+            },
+            {
+              "person": "Third person plural",
+              "subject": "they",
+              "object": "them"
+            }
+          ]
         },
         {
           "name": "Possessive Pronoun",
@@ -2406,7 +2452,8 @@
               "explanation": "A pronoun must agree with its antecedent and fit its grammatical role."
             }
           ],
-          "subjectVerbAgreementUrdu": ""
+          "subjectVerbAgreementUrdu": "",
+          "wordFocus": "Possessive pronouns show ownership without a following noun: 'mine', 'ours', and 'theirs' stand independently; unlike 'my' or 'our', they do not directly modify a noun."
         },
         {
           "name": "Reflexive Pronoun",
@@ -2515,7 +2562,8 @@
               "explanation": "A pronoun must agree with its antecedent and fit its grammatical role."
             }
           ],
-          "subjectVerbAgreementUrdu": ""
+          "subjectVerbAgreementUrdu": "",
+          "wordFocus": "Reflexive pronouns refer back to the subject: 'himself', 'herself', 'itself', and 'themselves' show that the subject and the affected person or thing are the same."
         },
         {
           "name": "Relative Pronoun",
@@ -2624,7 +2672,8 @@
               "explanation": "A pronoun must agree with its antecedent and fit its grammatical role."
             }
           ],
-          "subjectVerbAgreementUrdu": ""
+          "subjectVerbAgreementUrdu": "",
+          "wordFocus": "Relative pronouns link a relative clause to an antecedent: 'who' refers to a person, while 'that' or 'which' can refer to a thing or policy."
         },
         {
           "name": "Demonstrative Pronoun",
@@ -2733,7 +2782,8 @@
               "explanation": "A pronoun must agree with its antecedent and fit its grammatical role."
             }
           ],
-          "subjectVerbAgreementUrdu": ""
+          "subjectVerbAgreementUrdu": "",
+          "wordFocus": "Demonstrative pronouns point to nouns: 'this/that' are singular and 'these/those' are plural; the verb must agree with the selected demonstrative."
         },
         {
           "name": "Interrogative Pronoun",
@@ -2842,7 +2892,8 @@
               "explanation": "A pronoun must agree with its antecedent and fit its grammatical role."
             }
           ],
-          "subjectVerbAgreementUrdu": ""
+          "subjectVerbAgreementUrdu": "",
+          "wordFocus": "Interrogative pronouns ask about an unknown person or thing: 'who' is used for a subject, 'whom' for an object, and 'which' selects from known options."
         },
         {
           "name": "Indefinite Pronoun",
@@ -2951,7 +3002,8 @@
               "explanation": "A pronoun must agree with its antecedent and fit its grammatical role."
             }
           ],
-          "subjectVerbAgreementUrdu": ""
+          "subjectVerbAgreementUrdu": "",
+          "wordFocus": "Indefinite pronouns refer to people or things without naming them precisely: 'each', 'everyone', and 'none' may require singular agreement, while 'some' and 'others' can be plural."
         },
         {
           "name": "Reciprocal Pronoun",
@@ -3060,7 +3112,8 @@
               "explanation": "A pronoun must agree with its antecedent and fit its grammatical role."
             }
           ],
-          "subjectVerbAgreementUrdu": ""
+          "subjectVerbAgreementUrdu": "",
+          "wordFocus": "Reciprocal pronouns express a mutual relationship: 'each other' and 'one another' refer to members acting toward one another and normally follow a plural subject."
         },
         {
           "name": "Distributive Pronoun",
@@ -3169,7 +3222,8 @@
               "explanation": "A pronoun must agree with its antecedent and fit its grammatical role."
             }
           ],
-          "subjectVerbAgreementUrdu": ""
+          "subjectVerbAgreementUrdu": "",
+          "wordFocus": "Distributive pronouns consider members separately: 'each', 'either', and 'neither' normally take singular verbs because they refer to one member at a time."
         },
         {
           "name": "Intensive/Emphatic Pronoun",
@@ -3278,7 +3332,8 @@
               "explanation": "A pronoun must agree with its antecedent and fit its grammatical role."
             }
           ],
-          "subjectVerbAgreementUrdu": ""
+          "subjectVerbAgreementUrdu": "",
+          "wordFocus": "Intensive pronouns add emphasis to a noun or pronoun: 'herself', 'himself', and 'themselves' stress who performed the action but do not change the subject's verb agreement."
         }
       ],
       "rules": [

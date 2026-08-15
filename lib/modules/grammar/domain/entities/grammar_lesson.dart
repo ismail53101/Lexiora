@@ -41,6 +41,16 @@ class GrammarMistake extends Equatable {
 }
 
 /// A multiple-choice question (used for both Practice and Quiz).
+class GrammarPronounRow extends Equatable {
+  const GrammarPronounRow({required this.person, required this.subject, required this.object});
+  final String person;
+  final String subject;
+  final String object;
+
+  @override
+  List<Object?> get props => <Object?>[person, subject, object];
+}
+
 class GrammarQuestion extends Equatable {
   const GrammarQuestion({
     required this.question,
@@ -68,6 +78,8 @@ class GrammarType extends Equatable {
     required this.name,
     required this.description,
     this.urduExplanation = '',
+    this.wordFocus = '',
+    this.pronounTable = const <GrammarPronounRow>[],
     this.subjectVerbAgreement = '',
     this.subjectVerbAgreementUrdu = '',
     this.examples = const <GrammarExample>[],
@@ -79,6 +91,8 @@ class GrammarType extends Equatable {
   final String name;
   final String description;
   final String urduExplanation;
+  final String wordFocus;
+  final List<GrammarPronounRow> pronounTable;
   final String subjectVerbAgreement;
   final String subjectVerbAgreementUrdu;
   final List<GrammarExample> examples;
@@ -88,6 +102,8 @@ class GrammarType extends Equatable {
 
   bool get hasDetailedContent =>
       urduExplanation.isNotEmpty ||
+      wordFocus.isNotEmpty ||
+      pronounTable.isNotEmpty ||
       subjectVerbAgreement.isNotEmpty ||
       examples.isNotEmpty ||
       rules.isNotEmpty ||
@@ -99,6 +115,8 @@ class GrammarType extends Equatable {
         name,
         description,
         urduExplanation,
+        wordFocus,
+        pronounTable,
         subjectVerbAgreement,
         subjectVerbAgreementUrdu,
         examples,
