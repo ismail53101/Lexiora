@@ -819,59 +819,65 @@
     "order": 1,
     "isLeaf": true,
     "content": {
-      "introduction": "A noun names a person, place, animal, thing, substance, or idea.",
-      "urduExplanation": "Noun وہ لفظ ہے جو کسی شخص، جگہ، جانور، چیز، مادے یا خیال کا نام بتاتا ہے۔",
+      "introduction": "A noun is the name of a person, place, animal, thing, substance, or idea.",
+      "urduExplanation": "کسی شخص، جگہ، جانور، چیز، مادے یا خیال کے نام کو اسم یعنی Noun کہتے ہیں۔",
       "englishExplanation": "The main noun categories in this lesson are proper, common, collective, abstract, countable, uncountable, material, and compound nouns. A noun may belong to more than one category: information is both common and uncountable, while Islamabad is both proper and countable in some contexts. Always judge the noun from its use in the sentence.",
       "types": [
         {
           "name": "Proper Noun",
-          "description": "A Proper Noun names one specific person, place, country, day, or institution.",
-          "urduExplanation": "اسمِ خاص کسی خاص شخص، جگہ، ملک، دن یا ادارے کا نام ہوتا ہے۔",
+          "description": "A Proper Noun is the special name of a particular person, place, day, country, or institution.",
+          "urduExplanation": "اسمِ خاص کسی خاص شخص، جگہ، دن، ملک یا ادارے کا مخصوص نام ہوتا ہے۔",
           "examples": [
             {
-              "text": "Ali lives in Lahore.",
-              "urdu": "علی لاہور میں رہتا ہے۔",
-              "note": "Ali and Lahore are specific names, so both are Proper Nouns. Ali is singular, so the verb is lives."
+              "text": "Fatima Jinnah was the sister of Mohammad Ali Jinnah.",
+              "urdu": "فاطمہ جناح، محمد علی جناح کی بہن تھیں۔",
+              "note": "Fatima Jinnah and Mohammad Ali Jinnah are specific people, so they are Proper Nouns and begin with capital letters."
             },
             {
-              "text": "The commission meets on Monday.",
-              "urdu": "کمیشن پیر کے روز اجلاس کرتا ہے۔",
-              "note": "Monday is the name of one specific day, so it is a Proper Noun. The singular subject commission takes meets."
+              "text": "The Indus River flows through Pakistan.",
+              "urdu": "دریائے سندھ پاکستان سے ہو کر گزرتا ہے۔",
+              "note": "Indus River is the specific name of a river, and Pakistan is the specific name of a country; both are Proper Nouns."
             },
             {
-              "text": "Pakistan exports rice to other countries.",
-              "urdu": "پاکستان دوسرے ممالک کو چاول برآمد کرتا ہے۔",
-              "note": "Pakistan is the specific name of a country, so it is a Proper Noun. The singular country takes exports."
+              "text": "The Faisal Mosque is beautiful.",
+              "urdu": "فیصل مسجد خوبصورت ہے۔",
+              "note": "Faisal Mosque names one particular mosque, so it is a Proper Noun and begins with capital letters."
             },
             {
-              "text": "The Supreme Court announced its decision.",
-              "urdu": "سپریم کورٹ نے اپنا فیصلہ سنایا۔",
-              "note": "The Supreme Court names one specific institution, so it is a Proper Noun. The institution is singular, so announced is correct in the past tense."
+              "text": "The commission will meet on Monday in Quetta.",
+              "urdu": "کمیشن پیر کے روز کوئٹہ میں اجلاس کرے گا۔",
+              "note": "Monday and Quetta are specific names of a day and a place, so both are Proper Nouns."
             }
           ],
           "rules": [
-            "Begin a Proper Noun with a capital letter.",
-            "Use a Proper Noun for one specific person, place, day, or institution.",
-            "A singular Proper Noun normally takes a singular verb."
+            "Always begin a Proper Noun with a capital letter: Islamabad, Monday, Amazon.",
+            "A Proper Noun names one specific person, place, day, country, or institution.",
+            "Do not use a or an before most Proper Nouns: Ali is my friend, not A Ali is my friend."
           ],
           "commonMistakes": [
             {
-              "wrong": "ali lives in Lahore.",
-              "right": "Ali lives in Lahore.",
-              "urdu": "علی لاہور میں رہتا ہے۔",
-              "note": "Ali is a specific name, so its first letter must be capitalized."
+              "wrong": "I will meet you on monday.",
+              "right": "I will meet you on Monday.",
+              "urdu": "میں آپ سے پیر کے روز ملوں گا۔",
+              "note": "Days and months are Proper Nouns, so they begin with capital letters."
             },
             {
-              "wrong": "Pakistan face economic problems.",
-              "right": "Pakistan faces economic problems.",
-              "urdu": "پاکستان کو معاشی مسائل کا سامنا ہے۔",
-              "note": "Pakistan is singular, so the present verb must be faces."
+              "wrong": "I bought a Book yesterday.",
+              "right": "I bought a book yesterday.",
+              "urdu": "میں نے کل ایک کتاب خریدی۔",
+              "note": "Book is a Common Noun here because it does not name one specific book; it should be lowercase."
             },
             {
-              "wrong": "The commission meets in monday.",
-              "right": "The commission meets on Monday.",
-              "urdu": "کمیشن پیر کے روز اجلاس کرتا ہے۔",
-              "note": "Monday is a Proper Noun and needs a capital letter; the correct preposition is on."
+              "wrong": "I visited the city Karachi.",
+              "right": "I visited Karachi.",
+              "urdu": "میں کراچی گیا۔",
+              "note": "Karachi already gives the specific city name, so city is unnecessary in ordinary usage. The city of Karachi is also correct when emphasis is needed."
+            },
+            {
+              "wrong": "A Ali is my friend.",
+              "right": "Ali is my friend.",
+              "urdu": "علی میرا دوست ہے۔",
+              "note": "Most Proper Nouns do not take a or an because Ali is already a specific name."
             }
           ],
           "practice": [
@@ -898,7 +904,7 @@
               "explanation": "The name of the subject is written as Pakistan Studies."
             }
           ],
-          "subjectVerbAgreement": "Pakistan faces serious economic challenges.",
+          "subjectVerbAgreement": "Islamabad attracts many visitors each year.",
           "quiz": [
             {
               "question": "Which is a proper noun in “Ayesha visited Lahore”?",
@@ -957,60 +963,72 @@
             }
           ],
           "subjectVerbAgreementUrdu": "",
-          "wordFocus": "Proper Nouns name specific things. In “Ali lives in Lahore,” Ali and Lahore are Proper Nouns.",
+          "wordFocus": "Proper Nouns name specific people, places, days, countries, or institutions. Examples include Rashid, Quetta, Monday, Pakistan, and the Supreme Court.",
           "tableTitle": "",
           "tableColumns": [],
           "tableRows": []
         },
         {
           "name": "Common Noun",
-          "description": "A Common Noun names a general person, place, animal, or thing.",
-          "urduExplanation": "اسمِ عام کسی عام شخص، جگہ، جانور یا چیز کا نام ہوتا ہے۔",
+          "description": "A Common Noun is a general name given to every person, place, animal, or thing of the same class or kind.",
+          "urduExplanation": "اسمِ عام ایک ہی قسم کے عام شخص، جگہ، جانور یا چیز کے لیے استعمال ہونے والا نام ہے۔",
           "examples": [
             {
-              "text": "The candidate submitted a form.",
-              "urdu": "امیدوار نے ایک فارم جمع کرایا۔",
-              "note": "Candidate and form are general names, so they are Common Nouns. The singular subject takes submitted in the past tense."
+              "text": "A boy is running on the road.",
+              "urdu": "ایک لڑکا سڑک پر دوڑ رہا ہے۔",
+              "note": "Boy and road are Common Nouns because they name a general person and place, not specific names."
             },
             {
-              "text": "The teacher explained the rule.",
-              "urdu": "استاد نے قاعدہ سمجھایا۔",
-              "note": "Teacher and rule are general names, so they are Common Nouns. The sentence has one subject and one object."
+              "text": "The teacher is in the classroom.",
+              "urdu": "استاد کلاس روم میں ہے۔",
+              "note": "Teacher and classroom are Common Nouns. The article the makes these general nouns specific in this context."
             },
             {
-              "text": "The committee reviewed the report.",
-              "urdu": "کمیٹی نے رپورٹ کا جائزہ لیا۔",
-              "note": "Committee and report are general names. Report is the object of reviewed."
+              "text": "The student is reading a book.",
+              "urdu": "طالب علم ایک کتاب پڑھ رہا ہے۔",
+              "note": "Student and book are Common Nouns. Student is the subject, and book is the object of reading."
             },
             {
-              "text": "Students prepared their answers.",
-              "urdu": "طلبہ نے اپنے جوابات تیار کیے۔",
-              "note": "Students and answers are general names, so they are Common Nouns. The plural subject takes prepared in the past tense."
+              "text": "The river passes through the town.",
+              "urdu": "دریا قصبے سے گزرتا ہے۔",
+              "note": "River and town are Common Nouns because they name general kinds of places or things."
             }
           ],
           "rules": [
-            "A Common Noun names a general class, not one special name.",
-            "Use a or an with one singular countable Common Noun when needed.",
-            "A plural Common Noun normally takes a plural verb."
+            "A Common Noun names a general person, place, animal, or thing: boy, city, teacher, river, book, school.",
+            "Use a or an with one singular countable Common Noun when needed: a boy, an exam.",
+            "Use the when the context makes a Common Noun specific: The book on the table is mine."
           ],
           "commonMistakes": [
             {
-              "wrong": "The candidate submitted form.",
-              "right": "The candidate submitted a form.",
-              "urdu": "امیدوار نے ایک فارم جمع کرایا۔",
-              "note": "Singular countable noun form needs the article a here."
+              "wrong": "I bought a Book yesterday.",
+              "right": "I bought a book yesterday.",
+              "urdu": "میں نے کل ایک کتاب خریدی۔",
+              "note": "Book is a Common Noun, so it normally begins with a lowercase letter."
             },
             {
-              "wrong": "The students prepares answers.",
-              "right": "The students prepare answers.",
-              "urdu": "طلبہ جوابات تیار کرتے ہیں۔",
-              "note": "Students is plural, so it takes the plural verb prepare."
+              "wrong": "The Student is reading.",
+              "right": "The student is reading.",
+              "urdu": "طالب علم پڑھ رہا ہے۔",
+              "note": "Student is a Common Noun. It is not capitalized merely because it follows the article the."
             },
             {
-              "wrong": "The book are useful.",
-              "right": "The book is useful.",
-              "urdu": "کتاب مفید ہے۔",
-              "note": "Book is one singular Common Noun, so it takes is."
+              "wrong": "I bought book.",
+              "right": "I bought a book.",
+              "urdu": "میں نے ایک کتاب خریدی۔",
+              "note": "A singular countable Common Noun normally needs a determiner such as a, an, the, my, or this."
+            },
+            {
+              "wrong": "I need a water.",
+              "right": "I need some water.",
+              "urdu": "مجھے کچھ پانی چاہیے۔",
+              "note": "Water is normally an Uncountable Noun, so a or an is not used directly before it."
+            },
+            {
+              "wrong": "There are many childs in the park.",
+              "right": "There are many children in the park.",
+              "urdu": "پارک میں بہت سے بچے ہیں۔",
+              "note": "Child has the irregular plural form children, not childs."
             }
           ],
           "practice": [
@@ -1037,7 +1055,7 @@
               "explanation": "Book is singular and countable, so it needs a."
             }
           ],
-          "subjectVerbAgreement": "The candidate submits the form before the deadline.",
+          "subjectVerbAgreement": "The student reads a book in the library.",
           "quiz": [
             {
               "question": "Which is common in “The teacher entered”?",
@@ -1096,7 +1114,7 @@
             }
           ],
           "subjectVerbAgreementUrdu": "",
-          "wordFocus": "In “The candidate read a book,” candidate and book are Common Nouns because they name general classes.",
+          "wordFocus": "Common Nouns name general classes. In “The student reads a book,” student and book are Common Nouns, not specific names.",
           "tableTitle": "",
           "tableColumns": [],
           "tableRows": []
@@ -1944,9 +1962,9 @@
       "structure": [],
       "examples": [
         {
-          "text": "The teacher explains the lesson.",
-          "urdu": "استاد سبق سمجھاتا ہے۔",
-          "note": "Teacher and lesson are Nouns: teacher is the subject and lesson is the object."
+          "text": "Ali is carrying a pen to school.",
+          "urdu": "علی ایک قلم لے کر اسکول جا رہا ہے۔",
+          "note": "Ali is a person, pen is a thing, and school is a place; all are Nouns."
         }
       ],
       "commonMistakes": [
