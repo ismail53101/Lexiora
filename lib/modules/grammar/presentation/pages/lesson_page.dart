@@ -651,6 +651,19 @@ class _ExampleItem extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
+          if (example.referenceText != null && example.referenceText!.isNotEmpty) ...<Widget>[
+            Text('Noun reference', style: theme.textTheme.labelMedium?.copyWith(color: theme.colorScheme.onSurfaceVariant, fontWeight: FontWeight.w700)),
+            const SizedBox(height: 4),
+            Text(example.referenceText!, style: theme.textTheme.bodyMedium?.copyWith(height: 1.35, color: theme.colorScheme.onSurfaceVariant)),
+            if (example.referenceUrdu != null && example.referenceUrdu!.isNotEmpty) ...<Widget>[
+              const SizedBox(height: 4),
+              Directionality(
+                textDirection: TextDirection.rtl,
+                child: Text(example.referenceUrdu!, textAlign: TextAlign.right, style: theme.textTheme.bodySmall?.copyWith(height: 1.45, color: theme.colorScheme.onSurfaceVariant)),
+              ),
+            ],
+            const Divider(height: 18),
+          ],
           Text(example.text,
               style: theme.textTheme.bodyLarge?.copyWith(height: 1.4)),
           if (example.urdu != null && example.urdu!.isNotEmpty) ...<Widget>[

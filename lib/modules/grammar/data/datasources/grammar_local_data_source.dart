@@ -350,6 +350,8 @@ class GrammarLocalDataSource {
             text: text,
             urdu: _nullStr(e['urdu']),
             note: _nullStr(e['note']),
+            referenceText: _nullStr(e['referenceText']),
+            referenceUrdu: _nullStr(e['referenceUrdu']),
           ));
         }
       }

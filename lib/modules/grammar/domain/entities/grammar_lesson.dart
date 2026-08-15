@@ -19,14 +19,18 @@ enum GrammarProgressStatus {
 /// A worked example: the example [text], an optional [urdu] translation, plus
 /// an optional short [note].
 class GrammarExample extends Equatable {
-  const GrammarExample({required this.text, this.urdu, this.note});
+  const GrammarExample({required this.text, this.urdu, this.note, this.referenceText, this.referenceUrdu});
   final String text;
 
   /// Urdu translation of [text], shown right-to-left beneath it. Optional.
   final String? urdu;
   final String? note;
+
+  /// Optional noun-based reference sentence shown before a Pronoun example.
+  final String? referenceText;
+  final String? referenceUrdu;
   @override
-  List<Object?> get props => <Object?>[text, urdu, note];
+  List<Object?> get props => <Object?>[text, urdu, note, referenceText, referenceUrdu];
 }
 
 /// A common mistake: an incorrect form paired with its correction.

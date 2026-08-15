@@ -2205,24 +2205,32 @@
           "subjectVerbAgreement": "The panel issues its ruling, and it notifies the candidates immediately. Subject 'the panel' is a singular collective noun, so singular verbs 'issues' and 'notifies' are used; the pronoun 'it' and possessive 'its' agree in number with 'panel', and the conjunction 'and' links two clauses with the same singular subject.",
           "examples": [
             {
-              "text": "The candidate submitted her report.",
-              "urdu": "امیدوار نے اپنی رپورٹ جمع کروائی۔",
-              "note": "The candidate submitted her report: 'The candidate' is singular, 'submitted' is the past-tense verb agreeing with a singular subject, and the possessive pronoun 'her' matches the singular noun in number and gender."
+              "referenceText": "The candidates submitted the applications before the deadline.",
+              "referenceUrdu": "امیدواروں نے آخری تاریخ سے پہلے درخواستیں جمع کرائیں۔",
+              "text": "They submitted them before the deadline.",
+              "urdu": "انہوں نے انہیں آخری تاریخ سے پہلے جمع کرا دیا۔",
+              "note": "'They' replaces 'the candidates' as a plural subject, while 'them' replaces 'the applications' as a plural object pronoun."
             },
             {
-              "text": "The candidates prepared thoroughly, but when they arrived, the examiners found several discrepancies in their documents.",
-              "urdu": "امیدواروں نے اچھی طرح تیاری کی، مگر جب وہ پہنچے تو ممتحین نے ان کے دستاویزات میں متعدد تضادات پائے۔",
-              "note": "The candidates prepared thoroughly, but when they arrived, the examiners found several discrepancies in their documents: 'The candidates' is plural, so plural verb 'prepared' and pronouns 'they' and 'their' correctly agree in number; the subordinate 'when' clause and contrastive 'but' are correctly placed."
+              "referenceText": "I reviewed the policy document before the committee asked me to present the findings.",
+              "referenceUrdu": "میں نے پالیسی کی دستاویز کا جائزہ لیا، اس سے پہلے کہ کمیٹی نے مجھے نتائج پیش کرنے کو کہا۔",
+              "text": "I reviewed it before the committee asked me to present the findings.",
+              "urdu": "میں نے اس کا جائزہ لیا، اس سے پہلے کہ کمیٹی نے مجھے نتائج پیش کرنے کو کہا۔",
+              "note": "'I' is a first-person singular subject and 'me' is a first-person singular object; 'it' replaces the policy document."
             },
             {
-              "text": "The committee reviewed the applications, and it invited two candidates for interviews.",
-              "urdu": "کمیٹی نے درخواستوں کا جائزہ لیا، اور اس نے دو امیدواروں کو انٹرویوز کے لیے مدعو کیا۔",
-              "note": "The committee reviewed the applications, and it invited two candidates for interviews: 'Committee' is a singular collective noun here, so the singular pronoun 'it' and singular verb forms agree with the singular subject."
+              "referenceText": "The researcher completed the analysis, and the supervisor praised the researcher.",
+              "referenceUrdu": "محقق نے تجزیہ مکمل کیا اور نگران نے محقق کی تعریف کی۔",
+              "text": "The researcher completed the analysis, and the supervisor praised her.",
+              "urdu": "محقق نے تجزیہ مکمل کیا اور نگران نے اس کی تعریف کی۔",
+              "note": "'Her' is a third-person singular female object pronoun referring to 'the researcher'."
             },
             {
-              "text": "If the panel agrees with the recommendation, it will forward the report to the ministry.",
-              "urdu": "اگر پینل سفارش سے متفق ہو جائے تو وہ رپورٹ وزارت کو بھیج دے گا۔",
-              "note": "If the panel agrees with the recommendation, it will forward the report to the ministry: the conditional 'If' clause uses the singular present 'agrees' for the singular subject 'panel', and the main clause uses 'it' and the future 'will forward' to match that singular subject."
+              "referenceText": "We submitted the proposal to the commission, and the commission replied to us.",
+              "referenceUrdu": "ہم نے کمیشن کو تجویز جمع کرائی اور کمیشن نے ہمیں جواب دیا۔",
+              "text": "We submitted the proposal to the commission, and it replied to us.",
+              "urdu": "ہم نے کمیشن کو تجویز جمع کرائی اور اس نے ہمیں جواب دیا۔",
+              "note": "'We' is a first-person plural subject, 'it' refers to the singular commission, and 'us' is a first-person plural object pronoun."
             }
           ],
           "rules": [
@@ -2352,24 +2360,32 @@
           "subjectVerbAgreement": "Either the examiner or the invigilators are responsible for collecting answer sheets, but the folder at the desk is ours. The correlative conjunction 'either...or' makes the verb agree with the nearer subject 'invigilators' (plural), so 'are responsible' is correct; in the second clause the singular noun phrase 'the folder' takes the singular verb 'is' and the possessive pronoun 'ours' stands alone replacing 'our folder'.",
           "examples": [
             {
-              "text": "This answer is mine.",
-              "urdu": "یہ جواب میرا ہے۔",
-              "note": "The demonstrative noun phrase 'this answer' is singular, so the singular verb 'is' is correct; 'mine' is the appropriate possessive pronoun standing alone for 'my answer'."
+              "referenceText": "The approved policy is the commission’s.",
+              "referenceUrdu": "منظور شدہ پالیسی کمیشن کی ہے۔",
+              "text": "The approved policy is theirs.",
+              "urdu": "منظور شدہ پالیسی ان کی ہے۔",
+              "note": "'Theirs' shows possession and stands alone; it replaces 'the commission’s policy' without a following noun."
             },
             {
-              "text": "The senior candidates submitted their reports, but the final draft was ours.",
-              "urdu": "سینئر امیدواروں نے اپنی رپورٹس جمع کرائیں، مگر حتمی مسودہ ہمارا تھا۔",
-              "note": "Plural subject 'the senior candidates' takes the past plural verb 'submitted' and the plural possessive adjective 'their' modifies 'reports'; the contrast clause has singular subject 'the final draft' with singular verb 'was' and the possessive pronoun 'ours' stands alone."
+              "referenceText": "This research proposal belongs to me.",
+              "referenceUrdu": "یہ تحقیقی تجویز میری ہے۔",
+              "text": "This research proposal is mine.",
+              "urdu": "یہ تحقیقی تجویز میری ہے۔",
+              "note": "'Mine' is a possessive pronoun that shows ownership and follows the linking verb 'is'."
             },
             {
-              "text": "Although the draft report was prepared by several interns, the credit for the research is theirs.",
-              "urdu": "اگرچہ مسودہ رپورٹ متعدد انٹرنوں نے تیار کی تھی، تحقیق کا کریڈٹ ان کا ہے۔",
-              "note": "'Draft report' is the singular subject of 'was prepared', so the singular verb is correct despite the plural agent in the by-phrase; 'theirs' correctly indicates plural ownership of 'the credit'."
+              "referenceText": "The responsibility for the report belongs to us.",
+              "referenceUrdu": "رپورٹ کی ذمہ داری ہماری ہے۔",
+              "text": "The responsibility for the report is ours.",
+              "urdu": "رپورٹ کی ذمہ داری ہماری ہے۔",
+              "note": "'Ours' replaces 'our responsibility' and functions independently after 'is'."
             },
             {
-              "text": "The department's justification seemed stronger than ours.",
-              "urdu": "محکمہ کی توجیہ ہمارے مقابلے میں زیادہ مضبوط محسوس ہوئی۔",
-              "note": "The possessive noun phrase 'the department's justification' is singular and takes the past singular verb 'seemed'; 'ours' replaces 'our justification' in the comparison and correctly stands alone as a possessive pronoun."
+              "referenceText": "The final recommendations belong to the candidates.",
+              "referenceUrdu": "حتمی سفارشات امیدواروں کی ہیں۔",
+              "text": "The final recommendations are theirs.",
+              "urdu": "حتمی سفارشات ان کی ہیں۔",
+              "note": "'Theirs' refers to the plural owners and agrees with the plural meaning of the recommendations."
             }
           ],
           "rules": [
@@ -2462,24 +2478,32 @@
           "subjectVerbAgreement": "Neither the chief examiner nor the secretary was convinced by the candidate himself. In the 'neither...nor' construction the verb agrees with the nearer subject ('the secretary' — singular), so a singular verb 'was' is required; the conjunction choice determines agreement, and 'the candidate himself' uses the reflexive to show the candidate is the same agent in the passive phrase 'was convinced by'.",
           "examples": [
             {
-              "text": "The institution prides itself on its transparent recruitment process.",
-              "urdu": "ادارہ اپنی شفاف بھرتی کے عمل پر خود فخر محسوس کرتا ہے۔",
-              "note": "Singular subject 'The institution' takes third-person singular verb 'prides', and the reflexive 'itself' correctly refers back to that neuter singular subject; 'on' introduces the prepositional complement."
+              "referenceText": "The candidate prepared the candidate for the interview.",
+              "referenceUrdu": "امیدوار نے انٹرویو کے لیے امیدوار کو تیار کیا۔",
+              "text": "The candidate prepared himself for the interview.",
+              "urdu": "امیدوار نے خود کو انٹرویو کے لیے تیار کیا۔",
+              "note": "'Himself' refers back to the singular male subject 'the candidate' and is the object of 'prepared'."
             },
             {
-              "text": "The candidates studied the statutes thoroughly, and they reminded themselves of the examination rules.",
-              "urdu": "امیدواروں نے ضوابط کا باریک بینی سے مطالعہ کیا، اور انہوں نے خود کو امتحانی قواعد کی یاد دہانی کروائی۔",
-              "note": "Plural subject 'The candidates' uses past-tense verb 'studied', and the second clause uses 'they' and the plural reflexive 'themselves' so pronoun and reflexive agree in number."
+              "referenceText": "The minister blamed the minister for the policy error.",
+              "referenceUrdu": "وزیر نے پالیسی کی غلطی کے لیے وزیر کو ذمہ دار ٹھہرایا۔",
+              "text": "The minister blamed herself for the policy error.",
+              "urdu": "وزیر نے پالیسی کی غلطی کا ذمہ دار خود کو ٹھہرایا۔",
+              "note": "'Herself' refers to the female subject 'the minister' and shows that the subject and object are the same person."
             },
             {
-              "text": "When the researcher submitted her report, she praised herself for the careful analysis.",
-              "urdu": "جب محققہ نے اپنی رپورٹ جمع کروائی تو اس نے محتاط تجزیے پر خود کی تعریف کی۔",
-              "note": "The subordinate clause 'When the researcher submitted her report' has a singular subject, and the main clause uses matching singular pronouns 'she' and reflexive 'herself' with past-tense verbs, so person and number agree."
+              "referenceText": "The committee reminded the committee to follow the rules.",
+              "referenceUrdu": "کمیٹی نے کمیٹی کو قواعد پر عمل کرنے کی یاد دہانی کرائی۔",
+              "text": "The committee reminded itself to follow the rules.",
+              "urdu": "کمیٹی نے خود کو قواعد پر عمل کرنے کی یاد دہانی کرائی۔",
+              "note": "'Itself' refers back to the singular collective noun 'committee' and functions as the object."
             },
             {
-              "text": "Please make yourselves familiar with the committee's guidelines before the interview.",
-              "urdu": "برائے مہربانی انٹرویو سے پہلے کمیٹی کے اصول و ضوابط سے خود کو آگاہ کریں۔",
-              "note": "Imperative 'Please make' has an implied plural 'you' addressee here, so the reflexive 'yourselves' correctly matches the plural audience and 'with the committee's guidelines' is the correct prepositional complement."
+              "referenceText": "The candidates reviewed the candidates’ answers carefully.",
+              "referenceUrdu": "امیدواروں نے امیدواروں کے جوابات کا بغور جائزہ لیا۔",
+              "text": "The candidates reviewed their answers themselves.",
+              "urdu": "امیدواروں نے خود اپنے جوابات کا جائزہ لیا۔",
+              "note": "'Themselves' refers to the plural subject 'candidates' and adds emphasis; 'their' shows possession."
             }
           ],
           "rules": [
@@ -2572,24 +2596,32 @@
           "subjectVerbAgreement": "The analyst who prepares the weekly briefings provides crucial data to policymakers. The singular definite noun 'the analyst' is the antecedent and requires the relative pronoun 'who' for a person; both the relative-clause verb 'prepares' and the main verb 'provides' are singular to agree with that antecedent, and the definite article 'the' specifies the particular subject.",
           "examples": [
             {
+              "referenceText": "The officer prepared the report. The officer received an award.",
+              "referenceUrdu": "افسر نے رپورٹ تیار کی۔ افسر کو انعام ملا۔",
               "text": "The officer who prepared the report received an award.",
-              "urdu": "جس افسر نے رپورٹ تیار کی اسے اعزاز ملا۔",
-              "note": "The relative pronoun 'who' correctly refers to the person 'the officer', and the verbs 'prepared' and 'received' agree with the singular antecedent."
+              "urdu": "جس افسر نے رپورٹ تیار کی اسے انعام ملا۔",
+              "note": "'Who' refers to the person 'officer' and joins the relative clause to the main clause."
             },
             {
-              "text": "The candidate who topped the written test also passed the interview.",
-              "urdu": "جس امیدوار نے تحریری امتحان میں پہلی پوزیشن حاصل کی وہ انٹرویو میں بھی کامیاب ہوا۔",
-              "note": "'Who' refers to the candidate (a person), and the past-tense verbs 'topped' and 'passed' agree with the singular subject; 'also' simply links the actions."
+              "referenceText": "The policy improved public service delivery. The commission approved the policy.",
+              "referenceUrdu": "پالیسی نے عوامی خدمات کی فراہمی بہتر بنائی۔ کمیشن نے پالیسی منظور کی۔",
+              "text": "The policy that the commission approved improved public service delivery.",
+              "urdu": "جس پالیسی کو کمیشن نے منظور کیا اس نے عوامی خدمات کی فراہمی بہتر بنائی۔",
+              "note": "'That' refers to the thing 'policy' and introduces a restrictive relative clause."
             },
             {
-              "text": "The policy that the commission approved has improved public service delivery.",
-              "urdu": "جس پالیسی کی کمیشن نے منظوری دی ہے اس نے عوامی خدمات کی فراہمی بہتر بنا دی ہے۔",
-              "note": "'That' correctly introduces a restrictive relative clause referring to the non-human noun 'policy'; the clause 'the commission approved' supplies the embedded verb and the main verb 'has improved' agrees with the singular antecedent."
+              "referenceText": "The research was funded by the university. The research led to recommendations.",
+              "referenceUrdu": "تحقیق کو یونیورسٹی نے مالی معاونت دی۔ تحقیق سے سفارشات سامنے آئیں۔",
+              "text": "The research which the university funded led to recommendations.",
+              "urdu": "جس تحقیق کو یونیورسٹی نے مالی معاونت دی اس سے سفارشات سامنے آئیں۔",
+              "note": "'Which' refers to the thing 'research' and functions as the object of 'funded'."
             },
             {
-              "text": "The committee accepted the proposal, which was supported by independent researchers.",
-              "urdu": "کمیٹی نے اس تجویز کو منظور کر لیا، جس کی آزاد محققین نے حمایت کی تھی۔",
-              "note": "The comma indicates a non-restrictive clause introduced by 'which', which correctly refers to 'the proposal'; the passive verb 'was supported' agrees in number with 'the proposal'."
+              "referenceText": "The committee reviewed the reports. The reports contained useful evidence.",
+              "referenceUrdu": "کمیٹی نے رپورٹس کا جائزہ لیا۔ رپورٹس میں مفید شواہد موجود تھے۔",
+              "text": "The committee reviewed the reports that contained useful evidence.",
+              "urdu": "کمیٹی نے ان رپورٹس کا جائزہ لیا جن میں مفید شواہد موجود تھے۔",
+              "note": "'That' refers to the plural noun 'reports' and introduces information identifying which reports are meant."
             }
           ],
           "rules": [
@@ -2682,24 +2714,32 @@
           "subjectVerbAgreement": "These guidelines on exam eligibility require immediate review by the selection board. The subject is the plural noun phrase \"these guidelines\" (demonstrative \"these\" + plural noun), so it takes the plural verb \"require\"; the prepositional phrases \"on exam eligibility\" and \"by the selection board\" do not affect subject–verb agreement.",
           "examples": [
             {
-              "text": "This policy applies to all public service candidates.",
-              "urdu": "یہ پالیسی تمام عوامی خدمت کے امیدواروں پر لاگو ہوتی ہے۔",
-              "note": "\"This policy applies to all public service candidates.\" has the singular demonstrative \"this\" modifying the singular noun \"policy,\" so the singular verb \"applies\" is correct; the prepositional phrase \"to all public service candidates\" does not change agreement."
+              "referenceText": "This policy near the speaker is effective.",
+              "referenceUrdu": "مقرر کے قریب یہ پالیسی مؤثر ہے۔",
+              "text": "This is effective.",
+              "urdu": "یہ مؤثر ہے۔",
+              "note": "'This' points to one nearby policy and takes the singular linking verb 'is'."
             },
             {
-              "text": "This report is detailed, and these recommendations deserve serious consideration.",
-              "urdu": "یہ رپورٹ تفصیلی ہے، اور یہ سفارشات سنجیدہ غور کے لائق ہیں۔",
-              "note": "\"This report is detailed, and these recommendations deserve serious consideration.\" contains two coordinated independent clauses: the singular subject \"this report\" with singular verb \"is,\" and the plural subject \"these recommendations\" with plural verb \"deserve.\""
+              "referenceText": "Those recommendations from the previous committee were rejected.",
+              "referenceUrdu": "پچھلی کمیٹی کی وہ سفارشات مسترد کر دی گئیں۔",
+              "text": "Those were rejected.",
+              "urdu": "وہ مسترد کر دی گئیں۔",
+              "note": "'Those' replaces plural recommendations and therefore takes the plural verb 'were'."
             },
             {
-              "text": "That regulation, which the committee drafted last month, remains in force until the court rules otherwise.",
-              "urdu": "وہ ضابطہ، جسے کمیٹی نے پچھلے ماہ تیار کیا تھا، تب تک نافذ رہے گا جب تک عدالت دوسری صورت میں فیصلہ نہ کرے۔",
-              "note": "\"That regulation, which the committee drafted last month, remains in force until the court rules otherwise.\" has the singular subject \"that regulation\" taking the singular verb \"remains;\" the nonrestrictive relative clause and the temporal subordinate clause do not alter the main subject–verb agreement."
+              "referenceText": "These findings support the new education policy.",
+              "referenceUrdu": "یہ نتائج نئی تعلیمی پالیسی کی حمایت کرتے ہیں۔",
+              "text": "These support the new education policy.",
+              "urdu": "یہ نئی تعلیمی پالیسی کی حمایت کرتے ہیں۔",
+              "note": "'These' points to several nearby findings and functions as a plural subject."
             },
             {
-              "text": "These research findings were presented by the Institute for Public Administration.",
-              "urdu": "یہ تحقیقی نتائج ادارہ برائے عوامی انتظامیہ کی جانب سے پیش کیے گئے تھے۔",
-              "note": "\"These research findings were presented by the Institute for Public Administration.\" uses the plural demonstrative \"these\" with the plural noun \"findings,\" so the plural passive verb \"were presented\" is correct; the agentive \"by\" phrase does not affect agreement."
+              "referenceText": "That proposal was rejected by the commission.",
+              "referenceUrdu": "وہ تجویز کمیشن نے مسترد کر دی۔",
+              "text": "That was rejected by the commission.",
+              "urdu": "وہ کمیشن نے مسترد کر دی۔",
+              "note": "'That' points to one proposal farther away and replaces the singular noun phrase."
             }
           ],
           "rules": [
@@ -2792,24 +2832,32 @@
           "subjectVerbAgreement": "Which candidate for the federal service has submitted the additional documents? The noun 'candidate' is the singular subject selected by 'which', so the singular verb form 'has submitted' is required; the prepositional phrase 'for the federal service' modifies the subject and does not affect verb number.",
           "examples": [
             {
-              "text": "Who prepared the examination report?",
-              "urdu": "کس نے امتحانی رپورٹ تیار کی؟",
-              "note": "Who functions as the subject referring to the person who performed the action, so the past-tense verb 'prepared' agrees with that subject."
+              "referenceText": "Which candidate submitted the additional documents?",
+              "referenceUrdu": "کس امیدوار نے اضافی دستاویزات جمع کرائیں؟",
+              "text": "Which submitted the additional documents?",
+              "urdu": "کس نے اضافی دستاویزات جمع کرائیں؟",
+              "note": "'Which' replaces the understood noun 'candidate' and asks about one member of a known group."
             },
             {
-              "text": "Who reviewed the draft and who approved the final report?",
-              "urdu": "کس نے مسودہ کا جائزہ لیا اور کس نے حتمی رپورٹ کی منظوری دی؟",
-              "note": "Each 'who' introduces its own clause and acts as that clause's subject, so 'reviewed' and 'approved' agree independently with their respective subjects."
+              "referenceText": "Who prepared the examination report?",
+              "referenceUrdu": "امتحانی رپورٹ کس نے تیار کی؟",
+              "text": "Who prepared it?",
+              "urdu": "کس نے اسے تیار کیا؟",
+              "note": "'Who' is the subject asking about an unknown person, while 'it' replaces the examination report as the object."
             },
             {
-              "text": "Which of the proposed policies that the committee endorsed will improve public administration?",
-              "urdu": "کمیٹی کی طرف سے منظور شدہ مجوزہ پالیسیوں میں سے کون سی عوامی انتظامیہ کو بہتر بنائے گی؟",
-              "note": "'Which of the proposed policies' is the subject phrase and the relative clause 'that the committee endorsed' only modifies 'policies' without changing verb agreement, so 'will improve' correctly follows the subject phrase."
+              "referenceText": "The commission interviewed which applicant?",
+              "referenceUrdu": "کمیشن نے کس درخواست گزار کا انٹرویو کیا؟",
+              "text": "Whom did the commission interview?",
+              "urdu": "کمیشن نے کس کا انٹرویو کیا؟",
+              "note": "'Whom' is the object form used for the person receiving the action of 'interview'."
             },
             {
-              "text": "Whom did the selection board recommend for the civil service training program?",
-              "urdu": "انتخابی بورڈ نے کس کو سول سروس ٹریننگ پروگرام کے لیے سفارش کی؟",
-              "note": "'Whom' is correctly used as the object of 'recommend' and appears after the auxiliary 'did'; the auxiliary takes the base verb 'recommend', and the following prepositional phrase is a complement."
+              "referenceText": "What caused the delay in the examination schedule?",
+              "referenceUrdu": "امتحانی شیڈول میں تاخیر کی وجہ کیا تھی؟",
+              "text": "What caused the delay?",
+              "urdu": "تاخیر کی وجہ کیا تھی؟",
+              "note": "'What' asks about an unknown thing and functions as the subject of 'caused'."
             }
           ],
           "rules": [
@@ -2902,24 +2950,32 @@
           "subjectVerbAgreement": "Many applicants who passed the preliminary test have scheduled their interviews. The subject \"Many applicants\" is plural, the relative clause \"who passed the preliminary test\" does not change the number, so the plural auxiliary verb \"have\" with the past participle \"scheduled\" is required; the possessive pronoun \"their\" correctly agrees with the plural antecedent.",
           "examples": [
             {
-              "text": "Each candidate submits the application before the deadline.",
-              "urdu": "ہر امیدوار آخری تاریخ سے پہلے اپنی درخواست جمع کرواتا ہے۔",
-              "note": "\"Each candidate\" is singular because the determiner \"each\" requires a singular noun and singular verb \"submits\"; \"before the deadline\" is a time phrase modifying the verb."
+              "referenceText": "Every candidate must check every candidate’s documents.",
+              "referenceUrdu": "ہر امیدوار کو ہر امیدوار کی دستاویزات جانچنی چاہییں۔",
+              "text": "Everyone must check their documents.",
+              "urdu": "ہر شخص کو اپنی دستاویزات جانچنی چاہییں۔",
+              "note": "'Everyone' refers to people generally and takes singular agreement; singular 'their' avoids repeating the noun."
             },
             {
-              "text": "Some members approved the report, but others requested more data.",
-              "urdu": "کچھ اراکین نے رپورٹ کی منظوری دے دی، مگر دوسروں نے مزید معلومات کا مطالبہ کیا۔",
-              "note": "\"Some members\" is plural and takes the plural verb \"approved\"; \"others\" is a plural pronoun replacing \"some members\" in the second clause, and \"but\" contrasts the two actions."
+              "referenceText": "Some members approved the report, but other members requested more data.",
+              "referenceUrdu": "کچھ ارکان نے رپورٹ منظور کی، لیکن دوسرے ارکان نے مزید معلومات طلب کیں۔",
+              "text": "Some approved the report, but others requested more data.",
+              "urdu": "کچھ نے رپورٹ منظور کی، لیکن دوسروں نے مزید معلومات طلب کیں۔",
+              "note": "'Some' and 'others' refer to unspecified plural members and take the plural verb 'requested'."
             },
             {
-              "text": "None of the committee's recommendations was accepted because each suggestion conflicted with existing policy.",
-              "urdu": "کمیٹی کی کسی بھی سفارش کو منظور نہیں کیا گیا کیونکہ ہر تجویز موجودہ پالیسی سے متصادم تھی۔",
-              "note": "In this sentence \"none\" is treated as singular meaning \"not one,\" so it takes the singular verb \"was\"; \"each suggestion\" is singular and correctly pairs with the singular verb \"conflicted.\""
+              "referenceText": "No candidate accepted the recommendation.",
+              "referenceUrdu": "کسی امیدوار نے سفارش قبول نہیں کی۔",
+              "text": "None accepted the recommendation.",
+              "urdu": "کسی نے سفارش قبول نہیں کی۔",
+              "note": "'None' replaces an unspecified group; here it refers to no candidates and takes the plural verb 'accepted'."
             },
             {
-              "text": "All of the evidence is admissible under the law.",
-              "urdu": "تمام شواہد قانون کے تحت قابلِ قبول ہیں۔",
-              "note": "\"Evidence\" is an uncountable noun, so \"all\" takes a singular verb and the correct form is \"is admissible,\" with \"under the law\" as a modifying prepositional phrase."
+              "referenceText": "Several applicants passed the preliminary test.",
+              "referenceUrdu": "کئی درخواست گزار ابتدائی امتحان میں کامیاب ہوئے۔",
+              "text": "Several passed the preliminary test.",
+              "urdu": "کئی ابتدائی امتحان میں کامیاب ہوئے۔",
+              "note": "'Several' refers to more than two unspecified applicants and functions as a plural subject."
             }
           ],
           "rules": [
@@ -3012,24 +3068,32 @@
           "subjectVerbAgreement": "During the joint oral exam, the two examiners challenged each other on points of law. Subject 'the two examiners' is plural, so the plural past verb 'challenged' is used; the reciprocal pronoun 'each other' shows mutual action between the two examiners, and the prepositional phrase 'during the joint oral exam' does not affect subject–verb agreement.",
           "examples": [
             {
-              "text": "Candidates exchanged study notes with each other during the revision week.",
-              "urdu": "امیدواروں نے نظرِ ثانی کے ہفتے کے دوران ایک دوسرے کے ساتھ مطالعے کے نوٹس کا تبادلہ کیا۔",
-              "note": "'Candidates' is a plural subject, so the past plural verb 'exchanged' correctly agrees; the reciprocal phrase 'with each other' indicates mutual exchange and the time phrase 'during the revision week' is a prepositional phrase that does not affect agreement."
+              "referenceText": "The two departments supported the two departments.",
+              "referenceUrdu": "دونوں محکموں نے دونوں محکموں کی حمایت کی۔",
+              "text": "The two departments supported each other.",
+              "urdu": "دونوں محکموں نے ایک دوسرے کی حمایت کی۔",
+              "note": "'Each other' shows that the two departments acted mutually toward one another."
             },
             {
-              "text": "The audit committee and the finance committee exchanged reports with each other, and then they met to reconcile the figures.",
-              "urdu": "آڈٹ کمیٹی اور فنانس کمیٹی نے ایک دوسرے کے ساتھ رپورٹس کا تبادلہ کیا، اور پھر وہ اعداد و شمار کو ہم آہنگ کرنے کے لیے ملاقات کی۔",
-              "note": "The compound subject 'the audit committee and the finance committee' is plural (two distinct committees), so the plural verb 'exchanged' is correct; 'with each other' properly marks mutual action and the pronoun 'they' correctly refers back to the plural subject in the following clause."
+              "referenceText": "The candidates exchanged notes with the candidates.",
+              "referenceUrdu": "امیدواروں نے امیدواروں کے ساتھ نوٹس کا تبادلہ کیا۔",
+              "text": "The candidates exchanged notes with one another.",
+              "urdu": "امیدواروں نے ایک دوسرے کے ساتھ نوٹس کا تبادلہ کیا۔",
+              "note": "'One another' refers to members of a plural group acting mutually."
             },
             {
-              "text": "When researchers from different institutions collaborate on a study, they often cite one another in literature reviews.",
-              "urdu": "جب مختلف اداروں کے محققین کسی مطالعہ پر تعاون کرتے ہیں تو وہ اکثر اپنے لٹریچر ریویوز میں ایک دوسرے کا حوالہ دیتے ہیں۔",
-              "note": "The subordinate clause sets the context but the main subject 'researchers' is plural, so the present plural verb 'cite' (with 'they') is correct; 'one another' is an acceptable reciprocal pronoun for mutually citing among multiple researchers, and the prepositional phrase 'from different institutions' does not change agreement."
+              "referenceText": "The two committees reviewed the two committees’ proposals.",
+              "referenceUrdu": "دونوں کمیٹیوں نے دونوں کمیٹیوں کی تجاویز کا جائزہ لیا۔",
+              "text": "The two committees reviewed each other’s proposals.",
+              "urdu": "دونوں کمیٹیوں نے ایک دوسرے کی تجاویز کا جائزہ لیا۔",
+              "note": "'Each other’s' expresses mutual possession between the two committees."
             },
             {
-              "text": "Panel members will hold each other accountable for procedural lapses.",
-              "urdu": "پینل کے اراکین عملی طریقۂ کار میں کوتاہیوں کے لیے ایک دوسرے کو جوابدہ ٹھہراﺅں گے۔",
-              "note": "'Panel members' is a plural subject, so the auxiliary 'will' plus base verb 'hold' is correct for future tense; 'each other' indicates mutual accountability and the prepositional phrase 'for procedural lapses' does not affect subject–verb agreement."
+              "referenceText": "The partners consulted the partners before the merger.",
+              "referenceUrdu": "شراکت داروں نے انضمام سے پہلے شراکت داروں سے مشورہ کیا۔",
+              "text": "The partners consulted one another before the merger.",
+              "urdu": "شراکت داروں نے انضمام سے پہلے ایک دوسرے سے مشورہ کیا۔",
+              "note": "'One another' is the reciprocal object of 'consulted'."
             }
           ],
           "rules": [
@@ -3122,24 +3186,32 @@
           "subjectVerbAgreement": "Each of the shortlisted students has been scheduled for an oral assessment. 'Each' is a singular distributive pronoun (the prepositional phrase 'of the shortlisted students' does not change number), so the verb uses the singular form 'has been scheduled' to agree with the subject.",
           "examples": [
             {
-              "text": "Each candidate submitted his or her application before the deadline.",
-              "urdu": "ہر امیدوار نے آخری تاریخ سے پہلے اپنی درخواست جمع کروائی۔",
-              "note": "'Each candidate' is a distributive singular subject, so the singular pronoun 'his or her' matches the antecedent; the verb 'submitted' is correctly formed for the past tense context."
+              "referenceText": "Each candidate received a separate registration slip.",
+              "referenceUrdu": "ہر امیدوار کو الگ رجسٹریشن پرچی ملی۔",
+              "text": "Each received a separate registration slip.",
+              "urdu": "ہر ایک کو الگ رجسٹریشن پرچی ملی۔",
+              "note": "'Each' refers to members separately and takes the singular verb 'received'."
             },
             {
-              "text": "Neither the committee nor the administration has accepted the report, and the committee will request revisions.",
-              "urdu": "نہ تو کمیٹی نے اور نہ ہی انتظامیہ نے رپورٹ منظور کی ہے، اور کمیٹی دوبارہ ترامیم طلب کرے گی۔",
-              "note": "In 'Neither the committee nor the administration has accepted the report,' the verb agrees with the nearer subject 'administration' (singular), so 'has accepted' is correct; the following clause correctly uses 'will request' for a separate future action."
+              "referenceText": "Either proposal can satisfy the commission’s requirement.",
+              "referenceUrdu": "دونوں میں سے کوئی ایک تجویز کمیشن کی ضرورت پوری کر سکتی ہے۔",
+              "text": "Either can satisfy the commission’s requirement.",
+              "urdu": "دونوں میں سے کوئی ایک کمیشن کی ضرورت پوری کر سکتی ہے۔",
+              "note": "'Either' selects one of two proposals and functions as a singular pronoun."
             },
             {
-              "text": "Either of the research proposals that meet the funders' criteria is likely to be funded.",
-              "urdu": "ایسی تحقیقی تجاویز میں سے کسی ایک کو جو فنڈرز کے معیار پر پورا اُترے، مالی اعانت ملنے کا امکان ہے۔",
-              "note": "In the sentence with 'Either of the research proposals that meet the funders' criteria is likely to be funded,' 'Either' is singular and takes the singular verb 'is'; the relative clause 'that meet the funders' criteria' correctly uses plural 'meet' to agree with 'proposals.'"
+              "referenceText": "Neither recommendation was accepted by the board.",
+              "referenceUrdu": "بورڈ نے دونوں میں سے کوئی سفارش قبول نہیں کی۔",
+              "text": "Neither was accepted by the board.",
+              "urdu": "دونوں میں سے کوئی بھی بورڈ نے قبول نہیں کی۔",
+              "note": "'Neither' means not one of two and takes the singular passive verb 'was accepted'."
             },
             {
-              "text": "Each of the examination papers was marked by a different examiner.",
-              "urdu": "ہر امتحانی پرچہ مختلف ممتحن کے ذریعے جانچا گیا۔",
-              "note": "'Each of the examination papers was marked by a different examiner' uses the singular distributive 'Each,' so the singular passive verb 'was marked' is correct, and 'a different examiner' appropriately matches each paper individually."
+              "referenceText": "Each of the shortlisted candidates has an interview.",
+              "referenceUrdu": "مختصر فہرست میں شامل ہر امیدوار کا انٹرویو ہے۔",
+              "text": "Each has an interview.",
+              "urdu": "ہر ایک کا انٹرویو ہے۔",
+              "note": "'Each' remains singular even when the omitted antecedent is the plural noun 'candidates'."
             }
           ],
           "rules": [
@@ -3232,24 +3304,32 @@
           "subjectVerbAgreement": "The chief examiner himself reviews each candidate's answers before final grading. The subject is 'The chief examiner' (singular), 'himself' is an intensive pronoun that emphasizes the subject without changing its number, so the verb takes the third-person singular form 'reviews'; the prepositional phrase 'before final grading' does not affect subject–verb agreement.",
           "examples": [
             {
-              "text": "The candidates themselves submitted the research reports.",
-              "urdu": "امیدواروں نے خود تحقیقاتی رپورٹس جمع کروائیں۔",
-              "note": "The candidates themselves submitted the research reports: 'The candidates' is a plural subject and the intensive pronoun 'themselves' agrees in number, with the past verb 'submitted' correctly matching the subject."
+              "referenceText": "The chief examiner reviewed the answers personally.",
+              "referenceUrdu": "چیف ممتحن نے ذاتی طور پر جوابات کا جائزہ لیا۔",
+              "text": "The chief examiner himself reviewed the answers.",
+              "urdu": "چیف ممتحن نے خود جوابات کا جائزہ لیا۔",
+              "note": "'Himself' emphasizes the singular male subject 'chief examiner' without changing the verb."
             },
             {
-              "text": "The committee reviewed the policy draft, and the chair herself signed the final version.",
-              "urdu": "کمیٹی نے پالیسی مسودہ کا جائزہ لیا، اور چیئر نے خود حتمی ورژن پر دستخط کیے۔",
-              "note": "The committee reviewed the policy draft, and the chair herself signed the final version: the sentence has two coordinated clauses with their own subjects and verbs, and 'the chair herself' is singular with the intensive pronoun 'herself' correctly emphasizing the subject."
+              "referenceText": "The commission announced the policy personally.",
+              "referenceUrdu": "کمیشن نے ذاتی طور پر پالیسی کا اعلان کیا۔",
+              "text": "The commission itself announced the policy.",
+              "urdu": "کمیشن نے خود پالیسی کا اعلان کیا۔",
+              "note": "'Itself' adds emphasis to the collective noun 'commission', which remains the subject controlling 'announced'."
             },
             {
-              "text": "Although the institution itself had revised the examination schedule, the administration announced no changes.",
-              "urdu": "اگرچہ ادارے نے خود امتحانی شیڈول میں ترمیم کی تھی، انتظامیہ نے کوئی تبدیلی کا اعلان نہیں کیا۔",
-              "note": "Although the institution itself had revised the examination schedule, the administration announced no changes: the subordinate clause uses past perfect 'had revised' for a prior action, 'itself' intensifies 'the institution', and the main clause's past verb 'announced' correctly agrees with 'the administration'."
+              "referenceText": "The candidates submitted the research report personally.",
+              "referenceUrdu": "امیدواروں نے ذاتی طور پر تحقیقی رپورٹ جمع کرائی۔",
+              "text": "The candidates themselves submitted the research report.",
+              "urdu": "امیدواروں نے خود تحقیقی رپورٹ جمع کرائی۔",
+              "note": "'Themselves' emphasizes the plural subject 'candidates' and agrees with it in number."
             },
             {
-              "text": "The director herself and the deputy himself attended the disciplinary hearing and answered the panel's questions.",
-              "urdu": "ڈائریکٹر خود اور ڈپٹی خود تادیبی سماعت میں شریک ہوئے اور پینل کے سوالات کے جواب دیے۔",
-              "note": "The director herself and the deputy himself attended the disciplinary hearing and answered the panel's questions: the compound subject is plural, so the past plural verbs 'attended' and 'answered' correctly agree, and the intensive pronouns match each subject in gender and number. "
+              "referenceText": "The minister signed the agreement personally.",
+              "referenceUrdu": "وزیر نے ذاتی طور پر معاہدے پر دستخط کیے۔",
+              "text": "The minister herself signed the agreement.",
+              "urdu": "وزیر نے خود معاہدے پر دستخط کیے۔",
+              "note": "'Herself' emphasizes the female subject 'minister'; it does not replace the subject or alter the verb."
             }
           ],
           "rules": [
