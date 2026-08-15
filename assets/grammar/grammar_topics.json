@@ -819,59 +819,59 @@
     "order": 1,
     "isLeaf": true,
     "content": {
-      "introduction": "A noun names a person, place, animal, thing, substance, or idea. It can be a subject, object, or complement.",
-      "urduExplanation": "Noun وہ لفظ ہے جو کسی شخص، جگہ، جانور، چیز، مادّے یا خیال کا نام بتاتا ہے۔ یہ جملے میں فاعل، مفعول یا خبر بن سکتا ہے۔",
+      "introduction": "A noun names a person, place, animal, thing, substance, or idea.",
+      "urduExplanation": "Noun وہ لفظ ہے جو کسی شخص، جگہ، جانور، چیز، مادے یا خیال کا نام بتاتا ہے۔",
       "englishExplanation": "The main noun categories in this lesson are proper, common, collective, abstract, countable, uncountable, material, and compound nouns. A noun may belong to more than one category: information is both common and uncountable, while Islamabad is both proper and countable in some contexts. Always judge the noun from its use in the sentence.",
       "types": [
         {
           "name": "Proper Noun",
-          "description": "A specific name of a person, place, institution, day, month, or historical event. It normally begins with a capital letter.",
-          "urduExplanation": "Proper noun کسی خاص شخص، جگہ، ادارے، دن، مہینے یا واقعے کا نام ہوتا ہے اور عموماً بڑے حرف سے شروع ہوتا ہے۔",
+          "description": "A Proper Noun names one specific person, place, country, day, or institution.",
+          "urduExplanation": "اسمِ خاص کسی خاص شخص، جگہ، ملک، دن یا ادارے کا نام ہوتا ہے۔",
           "examples": [
             {
-              "text": "The Election Commission released the report, and the committee accepted its recommendations.",
-              "urdu": "الیکشن کمیشن نے رپورٹ جاری کی، اور کمیٹی نے اس کی سفارشات قبول کر لیں۔",
-              "note": "\"The Election Commission released the report, and the committee accepted its recommendations.\" — Two independent clauses with singular subjects: \"The Election Commission\" and \"the committee\" each take the past singular verbs \"released\" and \"accepted,\" and the pronoun \"its\" correctly refers back to the singular committee."
+              "text": "Ali lives in Lahore.",
+              "urdu": "علی لاہور میں رہتا ہے۔",
+              "note": "Ali and Lahore are specific names, so both are Proper Nouns. Ali is singular, so the verb is lives."
             },
             {
-              "text": "A candidate from Lahore who topped the district exam will appear before the selection board tomorrow.",
-              "urdu": "لاہور کے ایک امیدوار جو ضلعی امتحان میں اوّل آیا، کل سلیکشن بورڈ کے سامنے پیش ہوگا۔",
-              "note": "\"A candidate from Lahore who topped the district exam will appear before the selection board tomorrow.\" — The main subject is the singular noun phrase \"A candidate,\" modified by a relative clause; the future verb \"will appear\" correctly agrees with the singular subject, and prepositional phrases do not change agreement."
+              "text": "The commission meets on Monday.",
+              "urdu": "کمیشن پیر کے روز اجلاس کرتا ہے۔",
+              "note": "Monday is the name of one specific day, so it is a Proper Noun. The singular subject commission takes meets."
             },
             {
-              "text": "FPSC and PPSC coordinate training sessions, but each commission issues its own policy circulars.",
-              "urdu": "FPSC اور PPSC تربیتی اجلاس مربوط کرتے ہیں، مگر ہر کمیشن اپنی پالیسی سرکلرز جاری کرتا/جاری کرتی ہے۔",
-              "note": "\"FPSC and PPSC coordinate training sessions, but each commission issues its own policy circulars.\" — The compound subject \"FPSC and PPSC\" is plural and takes the plural verb \"coordinate,\" while the distributive phrase \"each commission\" is singular and correctly takes the singular verb \"issues\" and singular pronoun \"its.\""
+              "text": "Pakistan exports rice to other countries.",
+              "urdu": "پاکستان دوسرے ممالک کو چاول برآمد کرتا ہے۔",
+              "note": "Pakistan is the specific name of a country, so it is a Proper Noun. The singular country takes exports."
             },
             {
-              "text": "Dr. Khan submitted his research to the Law Review before the new academic session began.",
-              "urdu": "ڈاکٹر خان نے اپنا تحقیقی مقالہ لا ریویو کو نئے تعلیمی سیشن شروع ہونے سے پہلے جمع کرایا۔",
-              "note": "\"Dr. Khan submitted his research to the Law Review before the new academic session began.\" — The singular subject \"Dr. Khan\" takes the past singular verb \"submitted,\" \"his\" correctly agrees in gender and number, and the prepositional and temporal phrases do not affect subject–verb agreement."
+              "text": "The Supreme Court announced its decision.",
+              "urdu": "سپریم کورٹ نے اپنا فیصلہ سنایا۔",
+              "note": "The Supreme Court names one specific institution, so it is a Proper Noun. The institution is singular, so announced is correct in the past tense."
             }
           ],
           "rules": [
-            "Capitalize the first letter of names: Lahore, Quaid-e-Azam, Monday, and March.",
-            "Use the definite article with some geographical names: the Indus, the United States, and the United Nations.",
-            "Do not usually use an article before a person’s name or a single city name: Ali lives in Karachi."
+            "Begin a Proper Noun with a capital letter.",
+            "Use a Proper Noun for one specific person, place, day, or institution.",
+            "A singular Proper Noun normally takes a singular verb."
           ],
           "commonMistakes": [
             {
-              "wrong": "the css examination are difficult.",
-              "right": "The CSS examination is difficult.",
-              "urdu": "CSS کا امتحان مشکل ہے۔",
-              "note": "\"the css examination are difficult.\" — Error: improper capitalization and incorrect verb number; \"CSS\" and the sentence-initial \"The\" should be capitalized, and the singular subject \"CSS examination\" requires the singular verb \"is.\""
+              "wrong": "ali lives in Lahore.",
+              "right": "Ali lives in Lahore.",
+              "urdu": "علی لاہور میں رہتا ہے۔",
+              "note": "Ali is a specific name, so its first letter must be capitalized."
             },
             {
-              "wrong": "He and sara is on the committee.",
-              "right": "He and Sara are on the committee.",
-              "urdu": "وہ اور سارا کمیٹی میں ہیں۔",
-              "note": "\"He and sara is on the committee.\" — Error: subject–verb disagreement and capitalization; the compound subject \"He and Sara\" is plural so it requires the plural verb \"are,\" and \"Sara\" must be capitalized."
+              "wrong": "Pakistan face economic problems.",
+              "right": "Pakistan faces economic problems.",
+              "urdu": "پاکستان کو معاشی مسائل کا سامنا ہے۔",
+              "note": "Pakistan is singular, so the present verb must be faces."
             },
             {
-              "wrong": "The University of punjab have announced results.",
-              "right": "The University of the Punjab has announced the results.",
-              "urdu": "یونیورسٹی آف دی پنجاب نے نتائج کا اعلان کر دیا ہے۔",
-              "note": "\"The University of punjab have announced results.\" — Errors: incorrect capitalization, missing definite article in the institution's formal name, and wrong verb number; the proper name is \"The University of the Punjab,\" which is a singular institution and therefore takes the singular verb \"has,\" and \"Punjab\" must be capitalized."
+              "wrong": "The commission meets in monday.",
+              "right": "The commission meets on Monday.",
+              "urdu": "کمیشن پیر کے روز اجلاس کرتا ہے۔",
+              "note": "Monday is a Proper Noun and needs a capital letter; the correct preposition is on."
             }
           ],
           "practice": [
@@ -898,7 +898,7 @@
               "explanation": "The name of the subject is written as Pakistan Studies."
             }
           ],
-          "subjectVerbAgreement": "The Ministry of Federal Education issues the revised syllabus before each examination cycle. Subject: \"The Ministry of Federal Education\" is a singular proper noun (name of an institution), so it takes the singular present verb \"issues\"; the noun phrase is followed by a prepositional time phrase that does not affect verb agreement.",
+          "subjectVerbAgreement": "Pakistan faces serious economic challenges.",
           "quiz": [
             {
               "question": "Which is a proper noun in “Ayesha visited Lahore”?",
@@ -957,57 +957,60 @@
             }
           ],
           "subjectVerbAgreementUrdu": "",
-          "wordFocus": "Proper nouns in this section are specific names: 'Pakistan' names a country, 'Islamabad' names a city, and 'the Supreme Court' names a particular institution."
+          "wordFocus": "Proper Nouns name specific things. In “Ali lives in Lahore,” Ali and Lahore are Proper Nouns.",
+          "tableTitle": "",
+          "tableColumns": [],
+          "tableRows": []
         },
         {
           "name": "Common Noun",
-          "description": "A general name for a person, place, animal, thing, or idea; it does not identify one particular member of a class.",
-          "urduExplanation": "Common noun کسی شخص، جگہ، جانور یا چیز کا عام نام ہوتا ہے، کسی خاص فرد یا جگہ کا نام نہیں ہوتا۔",
+          "description": "A Common Noun names a general person, place, animal, or thing.",
+          "urduExplanation": "اسمِ عام کسی عام شخص، جگہ، جانور یا چیز کا نام ہوتا ہے۔",
           "examples": [
             {
-              "text": "The candidate prepares for the examination.",
-              "urdu": "امیدوار امتحان کی تیاری کرتا ہے۔",
-              "note": "'The candidate' is a singular subject, so the present-tense verb takes the third-person singular form 'prepares' and the prepositional phrase 'for the examination' shows purpose."
+              "text": "The candidate submitted a form.",
+              "urdu": "امیدوار نے ایک فارم جمع کرایا۔",
+              "note": "Candidate and form are general names, so they are Common Nouns. The singular subject takes submitted in the past tense."
             },
             {
-              "text": "The committee reviews the policy, and it issues recommendations.",
-              "urdu": "کمیٹی پالیسی کا جائزہ لیتی ہے، اور یہ سفارشات جاری کرتی ہے۔",
-              "note": "'Committee' is a collective noun treated as singular here, so both verbs 'reviews' and 'issues' are singular and the pronoun 'it' correctly refers back to the committee."
+              "text": "The teacher explained the rule.",
+              "urdu": "استاد نے قاعدہ سمجھایا۔",
+              "note": "Teacher and rule are general names, so they are Common Nouns. The sentence has one subject and one object."
             },
             {
-              "text": "When the research team submits its report, the administration will review the findings.",
-              "urdu": "جب تحقیقاتی ٹیم اپنی رپورٹ جمع کرائے گی تو انتظامیہ نتائج کا جائزہ لے گی۔",
-              "note": "The collective noun 'research team' is treated as singular, so the subordinate verb 'submits' and the possessive pronoun 'its' are singular; the main clause subject 'the administration' correctly pairs with the future verb 'will review'."
+              "text": "The committee reviewed the report.",
+              "urdu": "کمیٹی نے رپورٹ کا جائزہ لیا۔",
+              "note": "Committee and report are general names. Report is the object of reviewed."
             },
             {
-              "text": "Researchers collect data, analyze results, and publish conclusions.",
-              "urdu": "محققین ڈیٹا جمع کرتے ہیں، نتائج کا تجزیہ کرتے ہیں، اور نتائج شائع کرتے ہیں۔",
-              "note": "'Researchers' is a plural subject, so the coordinated verbs use the base plural forms 'collect, analyze, publish' to agree with the plural subject and maintain parallel structure."
+              "text": "Students prepared their answers.",
+              "urdu": "طلبہ نے اپنے جوابات تیار کیے۔",
+              "note": "Students and answers are general names, so they are Common Nouns. The plural subject takes prepared in the past tense."
             }
           ],
           "rules": [
-            "A common noun is usually written in lowercase unless it begins a sentence.",
-            "It may become a proper noun when it receives a specific name: river → the River Indus.",
-            "Use suitable articles or determiners with singular countable common nouns: a book, the book, my book."
+            "A Common Noun names a general class, not one special name.",
+            "Use a or an with one singular countable Common Noun when needed.",
+            "A plural Common Noun normally takes a plural verb."
           ],
           "commonMistakes": [
             {
-              "wrong": "The student work hard.",
-              "right": "The student works hard.",
-              "urdu": "طالب علم سخت محنت کرتا ہے۔",
-              "note": "'The student work hard.' has a subject-verb agreement error: the singular subject 'The student' requires the singular verb 'works'."
+              "wrong": "The candidate submitted form.",
+              "right": "The candidate submitted a form.",
+              "urdu": "امیدوار نے ایک فارم جمع کرایا۔",
+              "note": "Singular countable noun form needs the article a here."
             },
             {
-              "wrong": "She bought a furnitures.",
-              "right": "She bought furniture.",
-              "urdu": "اس نے فرنیچر خریدا۔",
-              "note": "'She bought a furnitures.' contains two errors: 'furniture' is an uncountable noun and does not take a plural form, and the indefinite article 'a' cannot be used with uncountable nouns; the correct form is 'She bought furniture.'"
+              "wrong": "The students prepares answers.",
+              "right": "The students prepare answers.",
+              "urdu": "طلبہ جوابات تیار کرتے ہیں۔",
+              "note": "Students is plural, so it takes the plural verb prepare."
             },
             {
-              "wrong": "He is teacher.",
-              "right": "He is a teacher.",
-              "urdu": "وہ ایک استاد ہے۔",
-              "note": "'He is teacher.' omits the required article before a singular count noun; it should be 'He is a teacher.'"
+              "wrong": "The book are useful.",
+              "right": "The book is useful.",
+              "urdu": "کتاب مفید ہے۔",
+              "note": "Book is one singular Common Noun, so it takes is."
             }
           ],
           "practice": [
@@ -1034,7 +1037,7 @@
               "explanation": "Book is singular and countable, so it needs a."
             }
           ],
-          "subjectVerbAgreement": "The examiner evaluates each script carefully. The subject 'The examiner' is singular and third-person, so the verb takes the third-person singular form 'evaluates'; 'each script' treats papers individually (singular) and the adverb 'carefully' modifies the verb.",
+          "subjectVerbAgreement": "The candidate submits the form before the deadline.",
           "quiz": [
             {
               "question": "Which is common in “The teacher entered”?",
@@ -1093,57 +1096,60 @@
             }
           ],
           "subjectVerbAgreementUrdu": "",
-          "wordFocus": "Common nouns name general classes: 'candidate' names any member of a class, 'report' names a general document, and 'committee' names a general group."
+          "wordFocus": "In “The candidate read a book,” candidate and book are Common Nouns because they name general classes.",
+          "tableTitle": "",
+          "tableColumns": [],
+          "tableRows": []
         },
         {
           "name": "Collective Noun",
-          "description": "A word that names a group of people, animals, or things as one unit, such as team, committee, flock, or jury.",
-          "urduExplanation": "Collective noun لوگوں، جانوروں یا چیزوں کے گروہ کا نام ہوتا ہے جسے ایک اکائی سمجھا جاتا ہے، جیسے team، committee اور flock۔",
+          "description": "A Collective Noun names a group of people, animals, or things as one unit.",
+          "urduExplanation": "اسمِ مجموعہ لوگوں، جانوروں یا چیزوں کے ایسے گروہ کا نام ہے جسے ایک اکائی سمجھا جائے۔",
           "examples": [
             {
-              "text": "The committee will announce the examination schedule tomorrow.",
-              "urdu": "کمیٹی کل امتحانی شیڈول کا اعلان کرے گی۔",
-              "note": "The collective noun 'committee' is treated as a single unit, so the singular future verb 'will announce' correctly agrees with the subject."
+              "text": "The committee approved the plan.",
+              "urdu": "کمیٹی نے منصوبے کی منظوری دی۔",
+              "note": "Committee names a group acting as one unit, so it is a Collective Noun. It takes the singular verb approved in the past tense."
             },
             {
-              "text": "The research panel approved the methodology, and the administration implemented the new policy.",
-              "urdu": "ریسرچ پینل نے طریقۂ کار کی منظوری دی، اور انتظامیہ نے نئی پالیسی نافذ کی۔",
-              "note": "Two independent singular subjects ('research panel' and 'the administration') govern their own past-tense verbs, and the comma + and properly links the two independent clauses."
+              "text": "The team won the match.",
+              "urdu": "ٹیم نے میچ جیت لیا۔",
+              "note": "Team names several people as one group, so it is a Collective Noun. It acts as one unit here."
             },
             {
-              "text": "Although the team was divided on procedural details, it reached a unanimous decision at the meeting.",
-              "urdu": "اگرچہ ٹیم طریقۂ کار کی باریک تفصیلات پر منقسم تھی، مگر میٹنگ میں اس نے اتفاقِ رائے سے فیصلہ کیا۔",
-              "note": "The concessive subordinate clause ('Although the team was divided...') does not change the subject number; 'team' is singular, so the singular verb 'was' and singular pronoun 'it' correctly refer to the group acting as one unit."
+              "text": "The jury reached a decision.",
+              "urdu": "جیوری ایک فیصلے پر پہنچی۔",
+              "note": "Jury names a group of people. It is singular here because the jury reached one decision as a unit."
             },
             {
-              "text": "A panel of experts is reviewing the candidates' applications for the public service posts.",
-              "urdu": "ماہرین کے پینل نے عوامی خدمت کے عہدوں کے لیے امیدواروں کی درخواستوں کا جائزہ لے رہا ہے۔",
-              "note": "The head noun 'panel' is singular despite the plural in the prepositional phrase 'of experts', so the singular verb 'is reviewing' correctly agrees with the subject."
+              "text": "The staff are checking their files.",
+              "urdu": "عملہ اپنی فائلیں چیک کر رہا ہے۔",
+              "note": "Staff is a Collective Noun. It takes are here because the members are acting separately."
             }
           ],
           "rules": [
-            "Use a singular verb when the group acts as one unit: The jury is deciding the case.",
-            "A plural verb may be used in British English when members act separately: The team are arguing among themselves.",
-            "The collective noun is different from the members it contains: army is the group, soldiers are the members."
+            "A Collective Noun names a group.",
+            "Use a singular verb when the group acts as one unit.",
+            "A plural verb may be used when the members act separately."
           ],
           "commonMistakes": [
             {
-              "wrong": "The committee are preparing their report.",
-              "right": "The committee is preparing its report.",
-              "urdu": "کمیٹی اپنی رپورٹ تیار کر رہی ہے۔",
-              "note": "Error: the collective noun 'committee' has been treated as plural; the plural verb 'are' and plural pronoun 'their' should be the singular 'is' and 'its'."
+              "wrong": "The committee approve the plan.",
+              "right": "The committee approves the plan.",
+              "urdu": "کمیٹی منصوبے کی منظوری دیتی ہے۔",
+              "note": "Committee acts as one unit here, so the singular verb approves is needed."
             },
             {
-              "wrong": "A panel of judges have decided the case.",
-              "right": "A panel of judges has decided the case.",
-              "urdu": "ججز کے پینل نے مقدمہ کا فیصلہ کر دیا ہے۔",
-              "note": "Error: 'panel' is the singular subject, so the auxiliary should be 'has' not the plural 'have'; the prepositional phrase 'of judges' does not change the verb number."
+              "wrong": "The team are winning the match.",
+              "right": "The team is winning the match.",
+              "urdu": "ٹیم میچ جیت رہی ہے۔",
+              "note": "Team is treated as one unit in this sentence, so use is."
             },
             {
-              "wrong": "The faculty were divided in their opinion on the policy.",
-              "right": "The faculty was divided in its opinion on the policy.",
-              "urdu": "فیکلٹی پالیسی کے بارے میں اپنی رائے میں منقسم تھی۔",
-              "note": "Error: 'faculty' is being treated as plural; both the verb and pronoun should be singular ('was' and 'its') when the faculty is considered a single body."
+              "wrong": "The jury have reached one decision.",
+              "right": "The jury has reached one decision.",
+              "urdu": "جیوری ایک فیصلے پر پہنچ چکی ہے۔",
+              "note": "One decision shows that the jury acts as a single unit, so use has."
             }
           ],
           "practice": [
@@ -1170,7 +1176,7 @@
               "explanation": "Flock names a group of birds."
             }
           ],
-          "subjectVerbAgreement": "The admissions committee has published the final shortlist for the civil service exam. The subject 'the admissions committee' is a singular collective noun (the definite article 'the' specifies the group), so the singular present-perfect verb 'has published' is required; any referring pronoun would be 'it/its' rather than 'they/their'.",
+          "subjectVerbAgreement": "The committee approves the new policy.",
           "quiz": [
             {
               "question": "Choose the correct sentence.",
@@ -1229,57 +1235,60 @@
             }
           ],
           "subjectVerbAgreementUrdu": "",
-          "wordFocus": "Collective nouns name groups as units: 'committee', 'panel', 'team', and 'administration' refer to groups that may take a singular verb when treated as one unit."
+          "wordFocus": "In “The committee approved the plan,” committee is a Collective Noun because it names a group acting as one unit.",
+          "tableTitle": "",
+          "tableColumns": [],
+          "tableRows": []
         },
         {
           "name": "Abstract Noun",
-          "description": "A noun that names an idea, quality, feeling, state, or action that cannot normally be seen or touched, such as honesty or freedom.",
-          "urduExplanation": "Abstract noun کسی خیال، خوبی، احساس، حالت یا عمل کا نام ہوتا ہے جسے عموماً دیکھا یا چھوا نہیں جا سکتا، جیسے honesty اور freedom۔",
+          "description": "An Abstract Noun names an idea, quality, feeling, or state that cannot be touched.",
+          "urduExplanation": "اسمِ کیفیت کسی خیال، خوبی، احساس یا حالت کا نام ہے جسے چھوا نہیں جا سکتا۔",
           "examples": [
             {
-              "text": "Integrity guides the decisions of public officials.",
-              "urdu": "دیانتداری عوامی عہدیداروں کے فیصلوں کی رہنمائی کرتی ہے۔",
-              "note": "Integrity is an abstract noun treated as singular, so it takes the singular verb guides to agree with the subject; the phrase the decisions of public officials is the object."
+              "text": "Honesty builds public trust.",
+              "urdu": "ایمان داری عوامی اعتماد پیدا کرتی ہے۔",
+              "note": "Honesty and trust are Abstract Nouns because they name qualities or ideas. Honesty is singular, so the verb is builds."
             },
             {
-              "text": "The committee values fairness, and it rejects biased procedures.",
-              "urdu": "کمیٹی انصاف کی قدر کرتی ہے، اور وہ جانبدار طریقہ کار کو مسترد کر دیتی ہے۔",
-              "note": "Committee here is a collective noun treated as a single entity, so it takes singular verbs values and rejects, and the pronoun it correctly refers back to the committee."
+              "text": "Justice protects citizens.",
+              "urdu": "انصاف شہریوں کی حفاظت کرتا ہے۔",
+              "note": "Justice is an Abstract Noun naming an idea. It is singular, so it takes protects."
             },
             {
-              "text": "Although evidence was limited, the research emphasized accountability in administration.",
-              "urdu": "اگرچہ شواہد محدود تھے، تحقیق نے انتظامیہ میں جوابدہی پر زور دیا۔",
-              "note": "Evidence is an uncountable abstract noun taking the singular verb was in the subordinate clause, and the singular subject research in the main clause takes emphasized; the subordinate clause modifies the main clause."
+              "text": "The policy brought hope to families.",
+              "urdu": "پالیسی خاندانوں کے لیے امید لائی۔",
+              "note": "Hope is an Abstract Noun naming a feeling. It is the object of brought."
             },
             {
-              "text": "A report on justice and human rights has influenced the new policy for examinations.",
-              "urdu": "انصاف اور حقوقِ انسانی کے بارے میں ایک رپورٹ نے امتحانات کے لیے نئی پالیسی پر اثر ڈالا ہے۔",
-              "note": "The indefinite article a signals the singular subject a report, which takes the singular present perfect has influenced; the coordinated nouns justice and human rights function within the prepositional phrase modifying report. "
+              "text": "Courage helps a candidate face difficulty.",
+              "urdu": "حوصلہ امیدوار کو مشکل کا سامنا کرنے میں مدد دیتا ہے۔",
+              "note": "Courage and difficulty are Abstract Nouns. Courage is the singular subject and takes helps."
             }
           ],
           "rules": [
-            "Abstract nouns are often formed from adjectives or verbs: honest → honesty, brave → bravery, decide → decision.",
-            "Many abstract nouns are uncountable and do not take a plural: advice, information, knowledge, and honesty.",
-            "Some abstract nouns can be countable when they mean different instances or types: experiences, freedoms, and kindnesses."
+            "An Abstract Noun names an idea, quality, feeling, or state.",
+            "Abstract Nouns are often uncountable and take a singular verb.",
+            "Use the exact form: honesty, not honest, when naming a quality."
           ],
           "commonMistakes": [
             {
-              "wrong": "Advices from the committee were helpful.",
-              "right": "Advice from the committee was helpful.",
-              "urdu": "کمیٹی کا مشورہ مددگار تھا۔",
-              "note": "Advices is incorrect because advice is an uncountable noun and should not be pluralized; use the singular advice and the singular verb was if needed. "
+              "wrong": "Honest is important in public service.",
+              "right": "Honesty is important in public service.",
+              "urdu": "عوامی خدمت میں ایمانداری اہم ہے۔",
+              "note": "Honesty is the noun naming the quality; honest is an adjective."
             },
             {
-              "wrong": "Justice are the cornerstone of law.",
-              "right": "Justice is the cornerstone of the law.",
-              "urdu": "انصاف قانون کی بنیاد ہے۔",
-              "note": "The error is the plural verb are with the singular abstract noun justice; use the singular verb is and include the definite article the before law as in the correction. "
+              "wrong": "Justice are necessary.",
+              "right": "Justice is necessary.",
+              "urdu": "انصاف ضروری ہے۔",
+              "note": "Justice is one Abstract Noun, so it takes is."
             },
             {
-              "wrong": "The informations in the report were contradictory.",
-              "right": "The information in the report was contradictory.",
-              "urdu": "رپورٹ میں موجود معلومات متضاد تھیں۔",
-              "note": "Informations is incorrect because information is uncountable and has no plural form; use the singular information with the singular verb was. "
+              "wrong": "The policy gave many hopes.",
+              "right": "The policy gave hope.",
+              "urdu": "پالیسی نے امید دی۔",
+              "note": "Hope is normally uncountable when it means a general feeling."
             }
           ],
           "practice": [
@@ -1306,7 +1315,7 @@
               "explanation": "Bravery is the standard abstract noun."
             }
           ],
-          "subjectVerbAgreement": "Diplomacy often determines the success of international negotiations. The subject diplomacy is an abstract noun treated as singular, so it takes the singular present verb determines; often is an adverb modifying the verb, and the phrase the success of international negotiations is the definite object introduced by the article the.",
+          "subjectVerbAgreement": "Honesty builds public trust.",
           "quiz": [
             {
               "question": "Which is abstract in “Justice should be equal”?",
@@ -1365,57 +1374,60 @@
             }
           ],
           "subjectVerbAgreementUrdu": "",
-          "wordFocus": "Abstract nouns name ideas, qualities, or states: 'integrity', 'fairness', 'justice', and 'accountability' cannot be touched or counted as physical objects."
+          "wordFocus": "In “Honesty builds trust,” honesty and trust are Abstract Nouns because they name qualities or ideas.",
+          "tableTitle": "",
+          "tableColumns": [],
+          "tableRows": []
         },
         {
           "name": "Countable Noun",
-          "description": "A noun that can be counted and has singular and plural forms, such as one book, two books, or several questions.",
-          "urduExplanation": "Countable noun وہ اسم ہے جسے گنا جا سکتا ہے اور جس کی واحد اور جمع دونوں شکلیں ہوتی ہیں، جیسے one book اور two books۔",
+          "description": "A Countable Noun can be counted and has singular and plural forms.",
+          "urduExplanation": "قابلِ شمار اسم کو گنا جا سکتا ہے اور اس کی واحد اور جمع شکلیں ہوتی ہیں۔",
           "examples": [
             {
-              "text": "A candidate submitted the form for the scholarship.",
-              "urdu": "ایک امیدوار نے اسکالرشپ کے لیے فارم جمع کروایا۔",
-              "note": "The singular subject 'A candidate' is correctly paired with the past-tense verb 'submitted', and the article 'A' signals one person."
+              "text": "One candidate submitted a form.",
+              "urdu": "ایک امیدوار نے فارم جمع کرایا۔",
+              "note": "Candidate and form are Countable Nouns. The singular subject one candidate takes submitted in the past tense."
             },
             {
-              "text": "The candidates studied the syllabus, and the administration published the schedule.",
-              "urdu": "امیدواروں نے نصاب کا مطالعہ کیا، اور انتظامیہ نے شیڈول شائع کیا۔",
-              "note": "The sentence contains two independent clauses joined by 'and'; 'The candidates' (plural) correctly takes 'studied', while 'the administration' is a collective noun functioning as a single entity that took the past verb 'published'."
+              "text": "Three candidates passed the test.",
+              "urdu": "تین امیدوار امتحان میں کامیاب ہوئے۔",
+              "note": "Candidates is the plural form of the Countable Noun candidate. The plural subject takes passed in the past tense."
             },
             {
-              "text": "If a researcher receives two grants, the institution will expand its research team.",
-              "urdu": "اگر ایک محقق کو دو گرانٹس ملیں تو ادارہ اپنی تحقیقی ٹیم بڑھائے گا۔",
-              "note": "In the conditional, the if-clause uses present simple 'receives' for the singular subject 'a researcher', and the main clause uses 'will expand' for the singular institution; the plural object 'two grants' does not affect verb agreement."
+              "text": "The examiner checked two answers.",
+              "urdu": "ممتحن نے دو جوابات چیک کیے۔",
+              "note": "Answers is a plural Countable Noun because two answers can be counted."
             },
             {
-              "text": "Have the panel members reviewed all the applications?",
-              "urdu": "کیا پینل کے ارکان نے تمام درخواستوں کا جائزہ لیا ہے؟",
-              "note": "In the question, present perfect requires the auxiliary before the subject; 'panel members' is plural so the correct auxiliary is 'have', matching the plural subject."
+              "text": "Several questions appeared in the paper.",
+              "urdu": "پرچے میں کئی سوالات آئے۔",
+              "note": "Questions is a plural Countable Noun. Several is used with a plural countable noun."
             }
           ],
           "rules": [
-            "Use a/an with a singular countable noun: a candidate, an answer.",
-            "Use many, few, several, or numbers with plural countable nouns: many students, three papers.",
-            "Plural forms may be regular (-s/-es) or irregular: books, classes, children, and men."
+            "A singular Countable Noun can take a or an.",
+            "Use numbers such as one, two, or several with Countable Nouns.",
+            "A plural Countable Noun normally takes a plural verb."
           ],
           "commonMistakes": [
             {
-              "wrong": "There is many reports about the policy.",
-              "right": "There are many reports about the policy.",
-              "urdu": "پالیسی کے بارے میں بہت سی رپورٹس ہیں۔",
-              "note": "The error is a subject-verb agreement mismatch: the plural noun 'reports' requires 'are' rather than singular 'is'."
+              "wrong": "She bought two book.",
+              "right": "She bought two books.",
+              "urdu": "اس نے دو کتابیں خریدیں۔",
+              "note": "A number greater than one needs the plural form books."
             },
             {
-              "wrong": "She submitted a applications to the commission.",
-              "right": "She submitted an application to the commission.",
-              "urdu": "اس نے کمیشن کو ایک درخواست جمع کروائی۔",
-              "note": "The error is an article and number mismatch: the indefinite article should agree with a singular noun and with pronunciation, so use 'an application' (not 'a applications')."
+              "wrong": "There is many candidates.",
+              "right": "There are many candidates.",
+              "urdu": "وہاں بہت سے امیدوار ہیں۔",
+              "note": "Candidates is plural, so use are."
             },
             {
-              "wrong": "The committee have issued its recommendations.",
-              "right": "The committee has issued its recommendations.",
-              "urdu": "کمیٹی نے اپنی سفارشات جاری کی ہیں۔",
-              "note": "The error is treating the collective noun 'committee' as plural; a committee is usually singular in formal writing, so use 'has' to agree with the singular noun (and retain the singular pronoun 'its')."
+              "wrong": "I saw an candidates.",
+              "right": "I saw a candidate.",
+              "urdu": "میں نے ایک امیدوار دیکھا۔",
+              "note": "A singular noun takes a before the consonant sound in candidate."
             }
           ],
           "practice": [
@@ -1442,7 +1454,7 @@
               "explanation": "Criteria is the plural of criterion in formal English."
             }
           ],
-          "subjectVerbAgreement": "Each candidate for the scholarship submits the required documents by the deadline. The subject 'Each candidate' is grammatically singular because 'each' distributes to individual members, so the verb must be third-person singular 'submits'; the prepositional phrase 'for the scholarship' and the plural object 'the required documents' do not change the verb number.",
+          "subjectVerbAgreement": "Each candidate submits the required document.",
           "quiz": [
             {
               "question": "Choose the correct sentence.",
@@ -1501,57 +1513,60 @@
             }
           ],
           "subjectVerbAgreementUrdu": "",
-          "wordFocus": "Countable nouns can be counted individually: 'candidate/candidates', 'application/applications', and 'proposal/proposals' have singular and plural forms and can follow numbers."
+          "wordFocus": "In “one candidate” and “three candidates,” candidate is Countable because it has singular and plural forms.",
+          "tableTitle": "",
+          "tableColumns": [],
+          "tableRows": []
         },
         {
           "name": "Uncountable Noun",
-          "description": "A noun that is treated as a substance, mass, idea, or whole and is not normally counted separately or given a plural form.",
-          "urduExplanation": "Uncountable noun ایسی چیز، مادے یا خیال کا نام ہے جسے الگ الگ گنا نہیں جاتا اور عموماً اس کی جمع نہیں بنتی، جیسے advice اور information۔",
+          "description": "An Uncountable Noun names a substance, idea, or mass that is not counted separately.",
+          "urduExplanation": "ناقابلِ شمار اسم ایسی چیز، مادے یا خیال کا نام ہے جسے الگ الگ نہیں گنا جاتا۔",
           "examples": [
             {
-              "text": "The research is comprehensive.",
-              "urdu": "تحقیق جامع ہے۔",
-              "note": "'Research' is an uncountable noun here and functions as a singular subject, so it correctly takes the singular verb 'is'."
+              "text": "The research is useful for the examination.",
+              "urdu": "تحقیق امتحان کے لیے مفید ہے۔",
+              "note": "Research is an Uncountable Noun, so it takes the singular verb is. It is not normally written as researches for general research."
             },
             {
-              "text": "The evidence is weak, but the committee has accepted the recommendations.",
-              "urdu": "شواہد کمزور ہیں، لیکن کمیٹی نے سفارشات منظور کر لی ہیں۔",
-              "note": "In the first clause, 'evidence' is uncountable and correctly takes the singular verb 'is'; in the second clause, the collective noun 'committee' is treated as singular and correctly takes the singular perfect 'has accepted'."
+              "text": "The information was accurate.",
+              "urdu": "معلومات درست تھیں۔",
+              "note": "Information is Uncountable and takes the singular verb was. Do not write informations."
             },
             {
-              "text": "Although the evidence is limited, the administration has implemented the policy.",
-              "urdu": "اگرچہ شواہد محدود ہیں، انتظامیہ نے پالیسی نافذ کر دی ہے۔",
-              "note": "The subordinate clause begins with 'Although' and does not affect the main clause's verb; 'evidence' is uncountable in the subordinate clause, and the main subject 'the administration' is a singular collective noun taking 'has implemented'."
+              "text": "The equipment is new.",
+              "urdu": "آلات نئے ہیں۔",
+              "note": "Equipment is Uncountable in English and takes is. Use pieces of equipment when counting items."
             },
             {
-              "text": "There is little equipment suitable for the examination.",
-              "urdu": "امتحان کے لیے مناسب آلات بہت کم ہیں۔",
-              "note": "In the existential construction 'There is', 'equipment' is an uncountable noun treated as singular, and 'little' correctly indicates a small quantity of an uncountable noun. "
+              "text": "The committee needs more evidence.",
+              "urdu": "کمیٹی کو مزید شواہد کی ضرورت ہے۔",
+              "note": "Evidence is Uncountable here, so more is used without a plural s."
             }
           ],
           "rules": [
-            "Do not use a/an or a number directly with uncountable nouns: some advice, much information.",
-            "Use a unit phrase to count them: a piece of advice, two bottles of water, three items of equipment.",
-            "Uncountable nouns normally take singular verbs: The information is useful; the furniture was expensive."
+            "Uncountable Nouns normally take a singular verb.",
+            "Use much, little, or some with many common Uncountable Nouns.",
+            "Do not add plural s to words such as information, advice, equipment, or evidence."
           ],
           "commonMistakes": [
             {
-              "wrong": "The information are correct.",
-              "right": "The information is correct.",
-              "urdu": "معلومات درست ہیں۔",
-              "note": "The error is using the plural verb 'are' with the uncountable noun 'information'; the correct singular verb is 'is'."
+              "wrong": "The information are useful.",
+              "right": "The information is useful.",
+              "urdu": "معلومات مفید ہیں۔",
+              "note": "Information is Uncountable in English, so it takes is."
             },
             {
-              "wrong": "She gave me an advice.",
-              "right": "She gave me some advice.",
-              "urdu": "اس نے مجھے کچھ مشورہ دیا۔",
-              "note": "'Advice' is an uncountable noun and cannot take the indefinite article 'an'; use a quantifier such as 'some' or the phrase 'a piece of advice'."
+              "wrong": "The researcher gave me many advices.",
+              "right": "The researcher gave me much advice.",
+              "urdu": "محقق نے مجھے بہت سے مشورے دیے۔",
+              "note": "Advice is Uncountable; use much advice or pieces of advice."
             },
             {
-              "wrong": "We bought many furniture.",
-              "right": "We bought much furniture.",
-              "urdu": "ہم نے بہت سا فرنیچر خریدا۔",
-              "note": "'Furniture' is uncountable and should not be used with the plural quantifier 'many'; use 'much furniture' or 'many pieces of furniture' instead."
+              "wrong": "The laboratory bought new equipments.",
+              "right": "The laboratory bought new equipment.",
+              "urdu": "لیبارٹری نے نئے آلات خریدے۔",
+              "note": "Equipment is Uncountable and does not normally take plural s."
             }
           ],
           "practice": [
@@ -1578,7 +1593,7 @@
               "explanation": "Furniture is uncountable and takes a singular verb."
             }
           ],
-          "subjectVerbAgreement": "Knowledge of past papers is essential for competitive-exam preparation. The subject 'Knowledge' is an uncountable noun treated as singular, so it takes the singular verb 'is'; the prepositional phrase 'of past papers' modifies the subject and does not change the verb agreement.",
+          "subjectVerbAgreement": "The research is useful for the examination.",
           "quiz": [
             {
               "question": "Choose the correct sentence.",
@@ -1637,57 +1652,60 @@
             }
           ],
           "subjectVerbAgreementUrdu": "",
-          "wordFocus": "Uncountable nouns name substances, information, or ideas treated as a mass: 'research', 'evidence', and 'equipment' normally take singular verbs and are not used with a/an directly."
+          "wordFocus": "In “The research is useful,” research is Uncountable, so it is not written as researches for this meaning.",
+          "tableTitle": "",
+          "tableColumns": [],
+          "tableRows": []
         },
         {
           "name": "Material Noun",
-          "description": "A noun that names a substance or material from which objects are made, such as gold, wood, steel, cotton, or water.",
-          "urduExplanation": "Material noun کسی مادے یا مواد کا نام ہوتا ہے جس سے چیزیں بنائی جاتی ہیں، جیسے gold، wood، steel اور cotton۔",
+          "description": "A Material Noun names a substance from which things are made.",
+          "urduExplanation": "اسمِ مادہ اس چیز یا مادے کا نام ہے جس سے دوسری چیزیں بنائی جاتی ہیں۔",
           "examples": [
             {
-              "text": "Gold is stored in the national treasury.",
-              "urdu": "قومی خزانے میں سونا محفوظ رکھا جاتا ہے۔",
-              "note": "Gold is an uncountable material noun and thus takes the singular verb 'is stored'; 'the' before 'national treasury' correctly specifies a particular institution."
+              "text": "The bridge is made of steel.",
+              "urdu": "پل فولاد سے بنا ہوا ہے۔",
+              "note": "Steel is a Material Noun naming the substance. Made of shows the material used; made by would name the maker."
             },
             {
-              "text": "The audit inspected the hospital, and it reported that the steel used in the staircases was corroding.",
-              "urdu": "آڈٹ ٹیم نے ہسپتال کا معائنہ کیا، اور اس نے رپورٹ کی کہ سیڑھیوں میں استعمال ہونے والا اسٹیل زنگ آلود ہو رہا تھا۔",
-              "note": "In the sentence, 'the audit' is a singular subject taking 'reported', and within the reported clause 'the steel used in the staircases' the material noun 'steel' functions as a singular subject taking 'was corroding'."
+              "text": "The table is made of wood.",
+              "urdu": "میز لکڑی سے بنی ہوئی ہے۔",
+              "note": "Wood is a Material Noun. Made of is correct because wood remains the material of the table."
             },
             {
-              "text": "Because cotton is highly flammable, the examination hall forbids loose cotton materials during practical tests.",
-              "urdu": "چونکہ روئی آسانی سے جل سکتی ہے، عملی امتحانات کے دوران امتحانی ہال میں ڈھیلے روئی کے مواد کی اجازت نہیں ہے۔",
-              "note": "'Cotton' is used as an uncountable singular in the clause 'cotton is highly flammable', and the verb 'forbids' correctly agrees with the singular subject 'the examination hall'."
+              "text": "The officer wore a gold badge.",
+              "urdu": "افسر نے سونے کا بیج پہنا۔",
+              "note": "Gold is a Material Noun naming the substance used in the badge."
             },
             {
-              "text": "The candidate submitted a model made of plastic for the public service science exhibition.",
-              "urdu": "امیدوار نے پبلک سروس سائنس نمائش کے لیے پلاسٹک سے بنایا ہوا ماڈل جمع کروایا۔",
-              "note": "'A model' is a singular count noun taking 'submitted', while 'made of plastic' uses the material noun 'plastic' in a material phrase and 'for the public service science exhibition' correctly expresses purpose."
+              "text": "The bottle is made from recycled plastic.",
+              "urdu": "بوتل ری سائیکل شدہ پلاسٹک سے بنی ہے۔",
+              "note": "Plastic is a Material Noun. Made from is used because the original material changes during production."
             }
           ],
           "rules": [
-            "Material nouns are generally uncountable and take singular verbs: Gold is precious.",
-            "Use a unit or container when measuring them: a glass of water, two bags of cement.",
-            "A material noun may become countable when it means a type or an object made from it: wines, irons, and glasses."
+            "A Material Noun names a substance.",
+            "Use made of when the material is still easy to recognize.",
+            "Use made from when the original material changes during production."
           ],
           "commonMistakes": [
             {
-              "wrong": "The furnitures are made of wood.",
-              "right": "The furniture is made of wood.",
-              "urdu": "فرنیچر لکڑی سے بنایا گیا ہے۔",
-              "note": "'The furnitures are made of wood.' incorrectly pluralizes the uncountable noun 'furniture'; use the uncountable singular: 'The furniture is made of wood,' or say 'pieces of furniture are made of wood.'"
+              "wrong": "The chair is made for wood.",
+              "right": "The chair is made of wood.",
+              "urdu": "کرسی لکڑی سے بنی ہوئی ہے۔",
+              "note": "Made of names the material; made for means purpose, not material."
             },
             {
-              "wrong": "He bought three golds.",
-              "right": "He bought three gold rings.",
-              "urdu": "اس نے تین سونے کی انگوٹھیاں خریدیں۔",
-              "note": "'He bought three golds.' wrongly pluralizes the uncountable noun 'gold'; specify a countable item or measure, e.g. 'He bought three gold rings' or 'He bought three ounces of gold.'"
+              "wrong": "The bridge is made by steel.",
+              "right": "The bridge is made of steel.",
+              "urdu": "پل فولاد سے بنا ہوا ہے۔",
+              "note": "Made by normally names the maker, while made of names the material."
             },
             {
-              "wrong": "The steel are strong.",
-              "right": "The steel is strong.",
-              "urdu": "اسٹیل مضبوط ہے۔",
-              "note": "'The steel are strong.' wrongly uses the plural verb with the uncountable noun 'steel'; use the singular verb: 'The steel is strong,' or make the subject countable (e.g. 'The steel beams are strong')."
+              "wrong": "The badge is made with gold.",
+              "right": "The badge is made of gold.",
+              "urdu": "بیج سونے سے بنا ہوا ہے۔",
+              "note": "Made of is the standard expression for the material of an object."
             }
           ],
           "practice": [
@@ -1714,7 +1732,7 @@
               "explanation": "Water is normally uncountable and takes is."
             }
           ],
-          "subjectVerbAgreement": "In the engineering practical exam, copper is required for several circuit demonstrations. 'Copper' is a material noun used as an uncountable singular subject, so it takes the singular passive verb 'is required'; the prepositional phrase 'for several circuit demonstrations' names the plural objects but does not change the singular verb, and 'the' specifies a particular exam.",
+          "subjectVerbAgreement": "Steel is used in the bridge.",
           "quiz": [
             {
               "question": "Which is material in “The ring is silver”?",
@@ -1773,57 +1791,60 @@
             }
           ],
           "subjectVerbAgreementUrdu": "",
-          "wordFocus": "Material nouns name substances from which things are made: 'gold', 'steel', 'cotton', and 'plastic' identify materials rather than individual objects."
+          "wordFocus": "In “The bridge is made of steel,” steel is a Material Noun because it names the substance used to make the bridge.",
+          "tableTitle": "",
+          "tableColumns": [],
+          "tableRows": []
         },
         {
           "name": "Compound Noun",
-          "description": "A noun made by joining two or more words to create one meaning, such as toothpaste, bus stop, mother-in-law, or civil service.",
-          "urduExplanation": "Compound noun دو یا دو سے زیادہ الفاظ کے ملنے سے بننے والا اسم ہے جو ایک نیا مطلب دیتا ہے، جیسے toothpaste، bus stop اور civil service۔",
+          "description": "A Compound Noun is made by joining two or more words to name one person, place, thing, or idea.",
+          "urduExplanation": "مرکب اسم دو یا دو سے زیادہ الفاظ کو ملا کر ایک شخص، جگہ، چیز یا خیال کا نام بناتا ہے۔",
           "examples": [
             {
-              "text": "The civil service exam starts at nine o'clock.",
-              "urdu": "سول سروس کا امتحان صبح نو بجے شروع ہوتا ہے۔",
-              "note": "\"The civil service exam starts at nine o'clock.\" — The subject \"The civil service exam\" is singular, so it correctly takes the third-person singular present verb \"starts\"; the time phrase \"at nine o'clock\" simply indicates when the event begins."
+              "text": "The examination hall opens at eight o’clock.",
+              "urdu": "امتحانی ہال آٹھ بجے کھلتا ہے۔",
+              "note": "Examination hall is a Compound Noun made from examination and hall. It names one place, so the singular verb opens is used."
             },
             {
-              "text": "The research report is complete, and the review committee will publish its findings.",
-              "urdu": "تحقیقی رپورٹ مکمل ہے، اور جائزہ کمیٹی اپنے نتائج شائع کرے گی۔",
-              "note": "\"The research report is complete, and the review committee will publish its findings.\" — Two independent clauses have separate singular subjects: \"the research report\" takes \"is,\" and the collective noun \"the review committee\" takes the future verb phrase \"will publish\"; the possessive \"its\" correctly refers to the committee as a single entity."
+              "text": "The research report is complete.",
+              "urdu": "تحقیقی رپورٹ مکمل ہے۔",
+              "note": "Research report is a Compound Noun made from research and report. It names one document."
             },
             {
-              "text": "Candidates who submitted their forms to the examination centre waited for the interview schedule.",
-              "urdu": "وہ امیدوار جنہوں نے اپنے فارم امتحانی مرکز میں جمع کروائے، انٹرویو کے شیڈول کا انتظار کر رہے تھے۔",
-              "note": "\"Candidates who submitted their forms to the examination centre waited for the interview schedule.\" — The main subject \"Candidates\" is plural, so the plural past action is expressed; the relative clause \"who submitted their forms\" modifies the plural subject and does not change agreement, and \"their\" correctly matches the plural noun."
+              "text": "The policymaker announced a new plan.",
+              "urdu": "پالیسی ساز نے نیا منصوبہ سنایا۔",
+              "note": "Policymaker is a Compound Noun made from policy and maker. It names one person."
             },
             {
-              "text": "My two brothers-in-law attended the administration meeting.",
-              "urdu": "میرے دو بہنوئی انتظامی اجلاس میں شریک ہوئے۔",
-              "note": "\"My two brothers-in-law attended the administration meeting.\" — The compound family noun pluralizes on \"brothers,\" producing \"brothers-in-law,\" and the past verb \"attended\" correctly reflects the plural subject."
+              "text": "The civil-service exam begins tomorrow.",
+              "urdu": "سول سروس کا امتحان کل شروع ہوتا ہے۔",
+              "note": "Civil-service exam is a Compound Noun phrase naming one examination."
             }
           ],
           "rules": [
-            "Compound nouns may be written as one word, two words, or hyphenated words: classroom, post office, and well-known examples.",
-            "In most compound nouns, pluralize the main word: mothers-in-law, passers-by, and attorneys-general.",
-            "Learn common exam compounds carefully because spelling and word order affect meaning: greenhouse is different from green house."
+            "A Compound Noun joins words to give one meaning.",
+            "Compound Nouns may be written as one word, two words, or with a hyphen.",
+            "Make the main noun plural when forming a plural Compound Noun, such as examination halls."
           ],
           "commonMistakes": [
             {
-              "wrong": "My two brother-in-laws visited us.",
-              "right": "My two brothers-in-law visited us.",
-              "urdu": "میرے دو بہنوئی ہم سے ملنے آئے۔",
-              "note": "\"My two brother-in-laws visited us.\" — Error: the plural of the compound noun is formed on \"brother,\" not on \"in-law,\" so the correct form is \"brothers-in-law.\""
+              "wrong": "The examination halls opens early.",
+              "right": "The examination hall opens early.",
+              "urdu": "امتحانی ہال جلد کھلتا ہے۔",
+              "note": "One hall is singular, so use hall and opens."
             },
             {
-              "wrong": "The policy making committee is preparing its report.",
-              "right": "The policymaking committee is preparing its report.",
-              "urdu": "پالیسی سازی کرنے والی کمیٹی اپنی رپورٹ تیار کر رہی ہے۔",
-              "note": "\"The policy making committee is preparing its report.\" — Error: the compound noun/adjective should be closed (or hyphenated); write \"policymaking committee\" (or \"policy-making committee\") rather than separating the words."
+              "wrong": "The policymaker make a plan.",
+              "right": "The policymaker makes a plan.",
+              "urdu": "پالیسی ساز منصوبہ بناتا ہے۔",
+              "note": "Policymaker is one singular Compound Noun, so the verb is makes."
             },
             {
-              "wrong": "The examination-centre have changed its address.",
-              "right": "The examination centre has changed its address.",
-              "urdu": "امتحانی مرکز نے اپنا پتہ تبدیل کر دیا ہے۔",
-              "note": "\"The examination-centre have changed its address.\" — Errors: do not hyphenate \"examination centre,\" and the singular subject \"examination centre\" requires the singular verb \"has,\" not \"have,\" so correct is \"The examination centre has changed its address.\""
+              "wrong": "The civil service exam are difficult.",
+              "right": "The civil-service exam is difficult.",
+              "urdu": "سول سروس کا امتحان مشکل ہے۔",
+              "note": "One exam is singular, so use is; the compound may be written with a hyphen."
             }
           ],
           "practice": [
@@ -1850,7 +1871,7 @@
               "explanation": "The main noun brother takes the plural form."
             }
           ],
-          "subjectVerbAgreement": "The admissions committee decides the shortlist after reviewing all applications. The subject \"admissions committee\" is a singular collective compound noun (the head noun committee is singular), so it takes the third-person singular present verb \"decides\"; the participial clause \"after reviewing all applications\" only modifies the subject and does not affect verb agreement.",
+          "subjectVerbAgreement": "The examination hall opens at eight o’clock.",
           "quiz": [
             {
               "question": "Choose the correct plural.",
@@ -1909,7 +1930,10 @@
             }
           ],
           "subjectVerbAgreementUrdu": "",
-          "wordFocus": "Compound nouns combine two or more words into one naming unit: 'civil service exam', 'research report', and 'review committee' name specific people, things, or institutions as combined terms."
+          "wordFocus": "In “The examination hall is crowded,” examination hall is a Compound Noun made from examination + hall.",
+          "tableTitle": "",
+          "tableColumns": [],
+          "tableRows": []
         }
       ],
       "rules": [
@@ -1920,9 +1944,9 @@
       "structure": [],
       "examples": [
         {
-          "text": "The teacher explains the lesson in the classroom.",
-          "urdu": "استاد کلاس روم میں سبق سمجھاتا ہے۔",
-          "note": "Teacher names a person and classroom names a place; both are nouns."
+          "text": "The teacher explains the lesson.",
+          "urdu": "استاد سبق سمجھاتا ہے۔",
+          "note": "Teacher and lesson are Nouns: teacher is the subject and lesson is the object."
         }
       ],
       "commonMistakes": [
