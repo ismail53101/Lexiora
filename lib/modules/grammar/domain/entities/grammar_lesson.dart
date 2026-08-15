@@ -75,6 +75,13 @@ class GrammarQuestion extends Equatable {
       <Object?>[question, options, answerIndex, explanation];
 }
 
+class GrammarTableRow extends Equatable {
+  const GrammarTableRow({required this.cells});
+  final List<String> cells;
+  @override
+  List<Object?> get props => <Object?>[cells];
+}
+
 /// A named sub-type or structural note within a lesson (e.g. "Proper Noun",
 /// or a tense's "Structure").
 class GrammarType extends Equatable {
@@ -84,6 +91,9 @@ class GrammarType extends Equatable {
     this.urduExplanation = '',
     this.wordFocus = '',
     this.pronounTable = const <GrammarPronounRow>[],
+    this.tableTitle = '',
+    this.tableColumns = const <String>[],
+    this.tableRows = const <GrammarTableRow>[],
     this.subjectVerbAgreement = '',
     this.subjectVerbAgreementUrdu = '',
     this.examples = const <GrammarExample>[],
@@ -97,6 +107,9 @@ class GrammarType extends Equatable {
   final String urduExplanation;
   final String wordFocus;
   final List<GrammarPronounRow> pronounTable;
+  final String tableTitle;
+  final List<String> tableColumns;
+  final List<GrammarTableRow> tableRows;
   final String subjectVerbAgreement;
   final String subjectVerbAgreementUrdu;
   final List<GrammarExample> examples;
@@ -108,6 +121,7 @@ class GrammarType extends Equatable {
       urduExplanation.isNotEmpty ||
       wordFocus.isNotEmpty ||
       pronounTable.isNotEmpty ||
+      tableRows.isNotEmpty ||
       subjectVerbAgreement.isNotEmpty ||
       examples.isNotEmpty ||
       rules.isNotEmpty ||
@@ -121,6 +135,9 @@ class GrammarType extends Equatable {
         urduExplanation,
         wordFocus,
         pronounTable,
+        tableTitle,
+        tableColumns,
+        tableRows,
         subjectVerbAgreement,
         subjectVerbAgreementUrdu,
         examples,

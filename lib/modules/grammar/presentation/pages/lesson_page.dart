@@ -486,6 +486,10 @@ class GrammarTypeContent extends StatelessWidget {
             const _TypeSubheading(title: 'Personal Pronoun Forms', icon: Icons.table_chart_outlined),
             _PronounTable(rows: type.pronounTable),
           ],
+          if (type.tableRows.isNotEmpty) ...<Widget>[
+            _TypeSubheading(title: type.tableTitle.isEmpty ? 'Verb Forms' : type.tableTitle, icon: Icons.table_chart_outlined),
+            _GrammarTable(columns: type.tableColumns, rows: type.tableRows),
+          ],
           if (type.subjectVerbAgreement.isNotEmpty) ...<Widget>[
             _AgreementCard(text: type.subjectVerbAgreement),
             if (type.subjectVerbAgreementUrdu.isNotEmpty) ...<Widget>[
@@ -527,6 +531,37 @@ class GrammarTypeContent extends StatelessWidget {
               ),
           ],
         ],
+    );
+  }
+}
+
+class _GrammarTable extends StatelessWidget {
+  const _GrammarTable({required this.columns, required this.rows});
+  final List<String> columns;
+  final List<GrammarTableRow> rows;
+
+  @override
+  Widget build(BuildContext context) {
+    final ThemeData theme = Theme.of(context);
+    final ColorScheme scheme = theme.colorScheme;
+    final List<String> safeColumns = columns.isEmpty ? List<String>.generate(rows.first.cells.length, (int i) => 'Column ${i + 1}') : columns;
+    return Card(
+      margin: const EdgeInsets.only(bottom: 14),
+      elevation: 0,
+      color: scheme.surfaceContainerHighest.withValues(alpha: 0.55),
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(14)),
+      child: SingleChildScrollView(
+        scrollDirection: Axis.horizontal,
+        padding: const EdgeInsets.all(10),
+        child: DataTable(
+          headingRowColor: WidgetStatePropertyAll<Color>(scheme.primary.withValues(alpha: 0.12)),
+          dataRowMinHeight: 44,
+          dataRowMaxHeight: 86,
+          columnSpacing: 18,
+          columns: safeColumns.map((String column) => DataColumn(label: Text(column, style: theme.textTheme.labelMedium?.copyWith(fontWeight: FontWeight.w700)))).toList(),
+          rows: rows.map((GrammarTableRow row) => DataRow(cells: List<DataCell>.generate(safeColumns.length, (int i) => DataCell(Text(i < row.cells.length ? row.cells[i] : '', style: theme.textTheme.bodySmall?.copyWith(height: 1.3)))))).toList(),
+        ),
+      ),
     );
   }
 }

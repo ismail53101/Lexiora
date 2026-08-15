@@ -3549,6 +3549,81 @@
           "examTips": [
             "In error detection, locate the subject and time marker before choosing the action-verb form.",
             "After a modal such as should or must, use the base form of the action verb."
+          ],
+          "tableTitle": "Action Verb Forms and Object Use",
+          "tableColumns": [
+            "Base",
+            "-s/-es",
+            "Past",
+            "Past Participle",
+            "-ing",
+            "Object?",
+            "Reason"
+          ],
+          "tableRows": [
+            [
+              "run",
+              "runs",
+              "ran",
+              "run",
+              "running",
+              "Usually no",
+              "The action can be complete without an object: The candidate ran."
+            ],
+            [
+              "jump",
+              "jumps",
+              "jumped",
+              "jumped",
+              "jumping",
+              "Usually no",
+              "Over the barrier is a prepositional phrase, not a direct object."
+            ],
+            [
+              "walk",
+              "walks",
+              "walked",
+              "walked",
+              "walking",
+              "Usually no",
+              "The action is complete; into the hall only gives direction."
+            ],
+            [
+              "swim",
+              "swims",
+              "swam",
+              "swum",
+              "swimming",
+              "Usually no",
+              "Across the river gives direction, not a direct object."
+            ],
+            [
+              "climb",
+              "climbs",
+              "climbed",
+              "climbed",
+              "climbing",
+              "Sometimes",
+              "The stairs can receive the action: The officer climbed the stairs."
+            ],
+            [
+              "eat",
+              "eats",
+              "ate",
+              "eaten",
+              "eating",
+              "Sometimes",
+              "Lunch can receive the action, but The candidates ate is also complete."
+            ],
+            [
+              "write",
+              "writes",
+              "wrote",
+              "written",
+              "writing",
+              "Usually yes",
+              "An essay receives the action: The applicant wrote an essay."
+            ]
           ]
         },
         {
@@ -3607,6 +3682,90 @@
           "examTips": [
             "Do not mistake a subject complement for a direct object after a linking verb.",
             "Use an adjective after linking verbs when it describes the subject."
+          ],
+          "tableTitle": "Linking Verb Forms and Complements",
+          "tableColumns": [
+            "Base",
+            "-s/-es",
+            "Past",
+            "Past Participle",
+            "-ing",
+            "Complement",
+            "Reason"
+          ],
+          "tableRows": [
+            [
+              "be",
+              "is",
+              "was/were",
+              "been",
+              "being",
+              "Adjective/noun",
+              "Is links the subject to a description or identity, not an object."
+            ],
+            [
+              "seem",
+              "seems",
+              "seemed",
+              "seemed",
+              "seeming",
+              "Adjective",
+              "Seems links the subject to an apparent quality."
+            ],
+            [
+              "become",
+              "becomes",
+              "became",
+              "become",
+              "becoming",
+              "Adjective/noun",
+              "Became shows a change of state or identity."
+            ],
+            [
+              "appear",
+              "appears",
+              "appeared",
+              "appeared",
+              "appearing",
+              "Adjective/phrase",
+              "Appears connects the subject with how it seems."
+            ],
+            [
+              "remain",
+              "remains",
+              "remained",
+              "remained",
+              "remaining",
+              "Adjective/noun",
+              "Remained shows a continuing state."
+            ],
+            [
+              "feel",
+              "feels",
+              "felt",
+              "felt",
+              "feeling",
+              "Adjective",
+              "Feels links the subject to a condition or opinion."
+            ],
+            [
+              "look",
+              "looks",
+              "looked",
+              "looked",
+              "looking",
+              "Adjective",
+              "Looks is linking when an adjective describes appearance."
+            ],
+            [
+              "sound",
+              "sounds",
+              "sounded",
+              "sounded",
+              "sounding",
+              "Adjective",
+              "Sounds links information or speech to an impression."
+            ]
           ]
         },
         {
@@ -3665,6 +3824,58 @@
           "examTips": [
             "Auxiliary verbs often reveal tense and voice; check the form of the main verb that follows them.",
             "After do/does/did, never add the past or third-person singular ending to the main verb."
+          ],
+          "tableTitle": "Auxiliary Verb Forms and Functions",
+          "tableColumns": [
+            "Auxiliary",
+            "Main form after it",
+            "Structure",
+            "Function",
+            "Example"
+          ],
+          "tableRows": [
+            [
+              "do/does",
+              "base verb",
+              "does not + submit",
+              "Negative present",
+              "The candidate does not submit late."
+            ],
+            [
+              "did",
+              "base verb",
+              "did + verify",
+              "Past question/negative",
+              "Did the examiner verify the file?"
+            ],
+            [
+              "has/have",
+              "past participle",
+              "has + approved",
+              "Present perfect",
+              "The commission has approved the policy."
+            ],
+            [
+              "had",
+              "past participle",
+              "had + completed",
+              "Past perfect",
+              "The ministry had completed the reform."
+            ],
+            [
+              "is/are",
+              "-ing form",
+              "are + reviewing",
+              "Present progressive",
+              "The reports are being reviewed."
+            ],
+            [
+              "was/were",
+              "past participle",
+              "was + announced",
+              "Past passive",
+              "The result was announced."
+            ]
           ]
         },
         {
@@ -3723,6 +3934,58 @@
           "examTips": [
             "The pattern modal + base verb is a frequent sentence-correction question.",
             "Do not add -s, -ed, or to after a modal unless another structure requires it."
+          ],
+          "tableTitle": "Modal Verb + Base Verb Patterns",
+          "tableColumns": [
+            "Modal",
+            "Main verb form",
+            "Meaning",
+            "Correct example",
+            "Why"
+          ],
+          "tableRows": [
+            [
+              "must",
+              "Base",
+              "Obligation",
+              "Candidates must submit documents.",
+              "A modal never takes -s after it."
+            ],
+            [
+              "should",
+              "Base",
+              "Advice",
+              "The ministry should revise the policy.",
+              "Do not use should to revise."
+            ],
+            [
+              "may",
+              "Base",
+              "Possibility/permission",
+              "The commission may review the case.",
+              "May is followed by review, not reviews."
+            ],
+            [
+              "might",
+              "Base",
+              "Less certain possibility",
+              "The policy might improve access.",
+              "Might does not change for the subject."
+            ],
+            [
+              "can",
+              "Base",
+              "Ability/possibility",
+              "The procedure can improve confidence.",
+              "Can is followed by the base form improve."
+            ],
+            [
+              "could",
+              "Base",
+              "Past ability/polite possibility",
+              "The committee could reconsider the decision.",
+              "Could is followed by reconsider."
+            ]
           ]
         },
         {
@@ -3781,6 +4044,58 @@
           "examTips": [
             "Ask what or whom after the verb to locate the direct object.",
             "Do not add a preposition after transitive verbs such as discuss, affect, and enter."
+          ],
+          "tableTitle": "Transitive Verbs and Direct Objects",
+          "tableColumns": [
+            "Verb",
+            "Past form",
+            "Direct object?",
+            "Question",
+            "Example"
+          ],
+          "tableRows": [
+            [
+              "evaluate",
+              "evaluated",
+              "Yes",
+              "evaluated what?",
+              "The examiner evaluated the scripts."
+            ],
+            [
+              "approve",
+              "approved",
+              "Yes",
+              "approved what?",
+              "The commission approved the policy."
+            ],
+            [
+              "reject",
+              "rejected",
+              "Yes",
+              "rejected what?",
+              "The court rejected the petition."
+            ],
+            [
+              "explain",
+              "explained",
+              "Yes",
+              "explained what?",
+              "The teacher explained the rule to candidates."
+            ],
+            [
+              "discuss",
+              "discussed",
+              "Yes",
+              "discussed what?",
+              "The committee discussed the proposal."
+            ],
+            [
+              "arrive",
+              "arrived",
+              "No",
+              "No direct object",
+              "The delegation arrived at the venue."
+            ]
           ]
         },
         {
@@ -3839,6 +4154,58 @@
           "examTips": [
             "Do not treat every noun after an intransitive verb as an object; check whether a preposition introduces it.",
             "Remember that some verbs change category with context, especially enter, open, run, and grow."
+          ],
+          "tableTitle": "Intransitive Verbs and Object Use",
+          "tableColumns": [
+            "Verb",
+            "Past form",
+            "Direct object?",
+            "What follows?",
+            "Reason"
+          ],
+          "tableRows": [
+            [
+              "run",
+              "ran",
+              "No",
+              "Adverb or place phrase",
+              "The candidate ran quickly; quickly is an adverb."
+            ],
+            [
+              "jump",
+              "jumped",
+              "No",
+              "Prepositional phrase",
+              "The athlete jumped over the barrier."
+            ],
+            [
+              "walk",
+              "walked",
+              "No",
+              "Direction phrase",
+              "The delegation walked into the hall."
+            ],
+            [
+              "swim",
+              "swam",
+              "No",
+              "Place/direction phrase",
+              "The candidates swam across the river."
+            ],
+            [
+              "arrive",
+              "arrived",
+              "No",
+              "At + place",
+              "Arrive is complete; at the venue gives location."
+            ],
+            [
+              "respond",
+              "responded",
+              "No",
+              "To + noun",
+              "To public concerns is a prepositional phrase, not an object."
+            ]
           ]
         }
       ],
