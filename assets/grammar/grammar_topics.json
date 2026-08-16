@@ -2290,60 +2290,68 @@
       "types": [
         {
           "name": "Personal Pronoun",
-          "description": "Replaces a person or thing and changes according to person, number, and subject/object case.",
-          "urduExplanation": "Personal pronoun کسی شخص یا چیز کی جگہ آتا ہے اور subject یا object کے مطابق بدلتا ہے۔",
-          "subjectVerbAgreement": "The panel issues its ruling, and it notifies the candidates immediately. Subject 'the panel' is a singular collective noun, so singular verbs 'issues' and 'notifies' are used; the pronoun 'it' and possessive 'its' agree in number with 'panel', and the conjunction 'and' links two clauses with the same singular subject.",
+          "description": "A Personal Pronoun is used instead of the name of a person, animal, or thing.",
+          "urduExplanation": "ضمیرِ شخصی کسی شخص، جانور یا چیز کے نام کی جگہ استعمال ہوتا ہے۔",
+          "subjectVerbAgreement": "",
           "examples": [
             {
-              "referenceText": "The candidates submitted the applications before the deadline.",
-              "referenceUrdu": "امیدواروں نے آخری تاریخ سے پہلے درخواستیں جمع کرائیں۔",
-              "text": "They submitted them before the deadline.",
-              "urdu": "انہوں نے انہیں آخری تاریخ سے پہلے جمع کرا دیا۔",
-              "note": "'They' replaces 'the candidates' as a plural subject, while 'them' replaces 'the applications' as a plural object pronoun."
+              "referenceText": "Ahmed is my friend. Ahmed lives in Quetta.",
+              "referenceUrdu": "احمد میرا دوست ہے۔ احمد کوئٹہ میں رہتا ہے۔",
+              "text": "Ahmed is my friend. He lives in Quetta.",
+              "urdu": "احمد میرا دوست ہے۔ وہ کوئٹہ میں رہتا ہے۔",
+              "note": "**He** replaces the noun **Ahmed** and refers to one male person."
             },
             {
-              "referenceText": "I reviewed the policy document before the committee asked me to present the findings.",
-              "referenceUrdu": "میں نے پالیسی کی دستاویز کا جائزہ لیا، اس سے پہلے کہ کمیٹی نے مجھے نتائج پیش کرنے کو کہا۔",
-              "text": "I reviewed it before the committee asked me to present the findings.",
-              "urdu": "میں نے اس کا جائزہ لیا، اس سے پہلے کہ کمیٹی نے مجھے نتائج پیش کرنے کو کہا۔",
-              "note": "'I' is a first-person singular subject and 'me' is a first-person singular object; 'it' replaces the policy document."
+              "referenceText": "Nimra is a teacher. Nimra teaches English.",
+              "referenceUrdu": "نمرہ ایک استاد ہے۔ نمرہ انگریزی پڑھاتی ہے۔",
+              "text": "Nimra is a teacher. She teaches English.",
+              "urdu": "نمرہ ایک استاد ہے۔ وہ انگریزی پڑھاتی ہے۔",
+              "note": "**She** replaces **Nimra** and refers to one female person."
             },
             {
-              "referenceText": "The researcher completed the analysis, and the supervisor praised the researcher.",
-              "referenceUrdu": "محقق نے تجزیہ مکمل کیا اور نگران نے محقق کی تعریف کی۔",
-              "text": "The researcher completed the analysis, and the supervisor praised her.",
-              "urdu": "محقق نے تجزیہ مکمل کیا اور نگران نے اس کی تعریف کی۔",
-              "note": "'Her' is a third-person singular female object pronoun referring to 'the researcher'."
+              "referenceText": "Ayesha invited the students to her house.",
+              "referenceUrdu": "عائشہ نے طلبہ کو اپنے گھر بلایا۔",
+              "text": "Ayesha invited us to her house.",
+              "urdu": "عائشہ نے ہمیں اپنے گھر بلایا۔",
+              "note": "**Us** is an object pronoun referring to more than one person."
             },
             {
-              "referenceText": "We submitted the proposal to the commission, and the commission replied to us.",
-              "referenceUrdu": "ہم نے کمیشن کو تجویز جمع کرائی اور کمیشن نے ہمیں جواب دیا۔",
-              "text": "We submitted the proposal to the commission, and it replied to us.",
-              "urdu": "ہم نے کمیشن کو تجویز جمع کرائی اور اس نے ہمیں جواب دیا۔",
-              "note": "'We' is a first-person plural subject, 'it' refers to the singular commission, and 'us' is a first-person plural object pronoun."
+              "referenceText": "The candidates submitted the candidates’ forms, and the candidates received confirmation.",
+              "referenceUrdu": "امیدواروں نے امیدواروں کے فارم جمع کرائے اور امیدواروں کو تصدیق موصول ہوئی۔",
+              "text": "The candidates submitted their forms, and they received confirmation.",
+              "urdu": "امیدواروں نے اپنے فارم جمع کرائے اور انہیں تصدیق موصول ہوئی۔",
+              "note": "**They** is a plural subject pronoun and **their** shows possession."
             }
           ],
           "rules": [
-            "Replaces a person or thing and changes according to person, number, and subject/object case."
+            "A **Personal Pronoun** replaces a person’s or thing’s name to avoid repetition.",
+            "Use a pronoun according to **number**: singular or plural.",
+            "After a **preposition**, use the object form of the pronoun."
           ],
           "commonMistakes": [
             {
-              "wrong": "Him submitted the application.",
-              "right": "He submitted the application.",
-              "urdu": "اس نے درخواست جمع کروائی۔",
-              "note": "Him submitted the application. → He submitted the application.: 'Him' is an object pronoun incorrectly used as the subject; replace it with the subject pronoun 'he'."
+              "wrong": "This gift is for **I**.",
+              "right": "This gift is for **me**.",
+              "urdu": "یہ تحفہ میرے لیے ہے۔",
+              "note": "**For** is a preposition, so the object form **me** is required."
             },
             {
-              "wrong": "The officer spoke to I.",
-              "right": "The officer spoke to me.",
-              "urdu": "افسر نے مجھ سے بات کی۔",
-              "note": "The officer spoke to I. → The officer spoke to me.: 'I' is a subject pronoun but is the object of the preposition 'to'; the correct object pronoun is 'me'."
+              "wrong": "**They is** ready for the interview.",
+              "right": "**They are** ready for the interview.",
+              "urdu": "وہ انٹرویو کے لیے تیار ہیں۔",
+              "note": "**They** is plural, so it takes **are**."
             },
             {
-              "wrong": "Each of the candidates must submit their affidavit.",
-              "right": "Each of the candidates must submit his or her affidavit.",
-              "urdu": "امیدواروں میں سے ہر ایک کو اپنا حلف نامہ جمع کروانا ہوگا۔",
-              "note": "Each of the candidates must submit their affidavit. → Each of the candidates must submit his or her affidavit.: 'Each' is grammatically singular and requires a singular pronoun, so 'their' should be replaced by 'his or her' in formal usage."
+              "wrong": "The committee invited **he**.",
+              "right": "The committee invited **him**.",
+              "urdu": "کمیٹی نے اسے بلایا۔",
+              "note": "**Him** is the object of **invited**."
+            },
+            {
+              "wrong": "**Me** submitted the application.",
+              "right": "**I** submitted the application.",
+              "urdu": "میں نے درخواست جمع کرائی۔",
+              "note": "**I** is the subject, so the subject form is needed."
             }
           ],
           "practice": [
@@ -2404,7 +2412,7 @@
             }
           ],
           "subjectVerbAgreementUrdu": "",
-          "wordFocus": "Personal pronouns replace names of people, animals, or things: 'them' replaces the candidates as an object, while 'they' replaces candidates as a subject.",
+          "wordFocus": "",
           "pronounTable": [
             {
               "person": "First person singular",
@@ -2441,64 +2449,78 @@
               "subject": "they",
               "object": "them"
             }
+          ],
+          "exampleWords": "I, me, you, he, him, she, her, it, we, us, they, them",
+          "ruleExamples": [
+            "**Ali** is hardworking. **He** studies every day.",
+            "**He** is a student. **They** are students.",
+            "The officer spoke with **me**, not **I**."
           ]
         },
         {
           "name": "Possessive Pronoun",
-          "description": "Shows ownership by replacing a noun phrase; it stands alone and is not followed by the owned noun.",
-          "urduExplanation": "Possessive pronoun ملکیت ظاہر کرتا ہے اور noun کی جگہ اکیلا استعمال ہوتا ہے۔",
-          "subjectVerbAgreement": "Either the examiner or the invigilators are responsible for collecting answer sheets, but the folder at the desk is ours. The correlative conjunction 'either...or' makes the verb agree with the nearer subject 'invigilators' (plural), so 'are responsible' is correct; in the second clause the singular noun phrase 'the folder' takes the singular verb 'is' and the possessive pronoun 'ours' stands alone replacing 'our folder'.",
+          "description": "A Possessive Pronoun shows ownership without repeating the noun.",
+          "urduExplanation": "ضمیرِ ملکی کسی چیز کی ملکیت ظاہر کرتا ہے اور اسم کو دوبارہ دہرانے سے بچاتا ہے۔",
+          "subjectVerbAgreement": "",
           "examples": [
             {
-              "referenceText": "The approved policy is the commission’s.",
-              "referenceUrdu": "منظور شدہ پالیسی کمیشن کی ہے۔",
-              "text": "The approved policy is theirs.",
-              "urdu": "منظور شدہ پالیسی ان کی ہے۔",
-              "note": "'Theirs' shows possession and stands alone; it replaces 'the commission’s policy' without a following noun."
+              "referenceText": "The commission published the commission’s report.",
+              "referenceUrdu": "کمیشن نے کمیشن کی رپورٹ شائع کی۔",
+              "text": "The commission published its report. The report is theirs.",
+              "urdu": "کمیشن نے اپنی رپورٹ شائع کی۔ رپورٹ ان کی ہے۔",
+              "note": "**Theirs** shows ownership and replaces “the commission’s report.”"
             },
             {
-              "referenceText": "This research proposal belongs to me.",
-              "referenceUrdu": "یہ تحقیقی تجویز میری ہے۔",
-              "text": "This research proposal is mine.",
-              "urdu": "یہ تحقیقی تجویز میری ہے۔",
-              "note": "'Mine' is a possessive pronoun that shows ownership and follows the linking verb 'is'."
+              "referenceText": "This is my seat.",
+              "referenceUrdu": "یہ میری نشست ہے۔",
+              "text": "This seat belongs to me. It is mine.",
+              "urdu": "یہ نشست میری ہے۔",
+              "note": "**Mine** shows that the seat belongs to the speaker."
             },
             {
-              "referenceText": "The responsibility for the report belongs to us.",
-              "referenceUrdu": "رپورٹ کی ذمہ داری ہماری ہے۔",
-              "text": "The responsibility for the report is ours.",
-              "urdu": "رپورٹ کی ذمہ داری ہماری ہے۔",
-              "note": "'Ours' replaces 'our responsibility' and functions independently after 'is'."
+              "referenceText": "The research team completed the team’s work.",
+              "referenceUrdu": "تحقیقی ٹیم نے ٹیم کا کام مکمل کیا۔",
+              "text": "The research team completed its work; the final results are theirs.",
+              "urdu": "تحقیقی ٹیم نے اپنا کام مکمل کیا؛ حتمی نتائج ان کے ہیں۔",
+              "note": "**Theirs** refers to the research team’s results."
             },
             {
-              "referenceText": "The final recommendations belong to the candidates.",
-              "referenceUrdu": "حتمی سفارشات امیدواروں کی ہیں۔",
-              "text": "The final recommendations are theirs.",
-              "urdu": "حتمی سفارشات ان کی ہیں۔",
-              "note": "'Theirs' refers to the plural owners and agrees with the plural meaning of the recommendations."
+              "referenceText": "That is her office, not his office.",
+              "referenceUrdu": "وہ اس کا دفتر ہے، اس کا دفتر نہیں۔",
+              "text": "That office is hers, not his.",
+              "urdu": "وہ دفتر اس کا ہے، اس کا نہیں۔",
+              "note": "**Hers** and **his** show ownership without a following noun."
             }
           ],
           "rules": [
-            "Shows ownership by replacing a noun phrase; it stands alone and is not followed by the owned noun."
+            "A **Possessive Pronoun** stands alone and does not take a noun after it.",
+            "Do not confuse **its** with **it’s**.",
+            "Use the form that agrees with the owner, not with the owned thing."
           ],
           "commonMistakes": [
             {
-              "wrong": "This report is my.",
-              "right": "This report is mine.",
-              "urdu": "یہ رپورٹ میری ہے۔",
-              "note": "Error: 'my' is a possessive adjective and cannot stand alone as a predicate; replace 'my' with the possessive pronoun 'mine' to form 'This report is mine.'"
+              "wrong": "This file is **her**.",
+              "right": "This file is **hers**.",
+              "urdu": "یہ فائل اس کی ہے۔",
+              "note": "**Hers** stands alone as a Possessive Pronoun."
             },
             {
-              "wrong": "The files are their.",
-              "right": "The files are theirs.",
-              "urdu": "یہ فائلیں ان کی ہیں۔",
-              "note": "Error: 'their' is a possessive adjective that must modify a noun; use the possessive pronoun 'theirs' after the linking verb: 'The files are theirs.'"
+              "wrong": "The decision was **their’s**.",
+              "right": "The decision was **theirs**.",
+              "urdu": "فیصلہ ان کا تھا۔",
+              "note": "Possessive Pronouns do not take an apostrophe."
             },
             {
-              "wrong": "That seat is her.",
-              "right": "That seat is hers.",
-              "urdu": "وہ نشست اس کی ہے۔",
-              "note": "Error: 'her' functions as an object or possessive adjective and cannot be a predicate pronoun; use 'hers' as the independent possessive pronoun: 'That seat is hers.'"
+              "wrong": "The ministry changed **it’s** policy.",
+              "right": "The ministry changed **its** policy.",
+              "urdu": "وزارت نے اپنی پالیسی تبدیل کی۔",
+              "note": "**Its** shows possession; **it’s** means “it is.”"
+            },
+            {
+              "wrong": "This is **our**.",
+              "right": "This is **ours**.",
+              "urdu": "یہ ہمارا ہے۔",
+              "note": "**Ours** is used without a noun after it."
             }
           ],
           "practice": [
@@ -2559,64 +2581,78 @@
             }
           ],
           "subjectVerbAgreementUrdu": "",
-          "wordFocus": "Possessive pronouns show ownership without a following noun: 'mine', 'ours', and 'theirs' stand independently; unlike 'my' or 'our', they do not directly modify a noun."
+          "wordFocus": "",
+          "exampleWords": "mine, yours, his, hers, ours, theirs",
+          "ruleExamples": [
+            "This policy file is **mine**.",
+            "**Its** cover is blue, but **it’s** useful.",
+            "The report is **theirs**, not **ours**."
+          ]
         },
         {
           "name": "Reflexive Pronoun",
-          "description": "Refers back to the subject when the subject and object are the same person or thing.",
-          "urduExplanation": "Reflexive pronoun اسی subject کی طرف واپس اشارہ کرتا ہے جب subject اور object ایک ہی ہوں۔",
-          "subjectVerbAgreement": "Neither the chief examiner nor the secretary was convinced by the candidate himself. In the 'neither...nor' construction the verb agrees with the nearer subject ('the secretary' — singular), so a singular verb 'was' is required; the conjunction choice determines agreement, and 'the candidate himself' uses the reflexive to show the candidate is the same agent in the passive phrase 'was convinced by'.",
+          "description": "A Reflexive Pronoun refers back to the subject of the sentence.",
+          "urduExplanation": "ضمیرِ انعکاسی دوبارہ اسی فاعل کی طرف اشارہ کرتا ہے۔",
+          "subjectVerbAgreement": "",
           "examples": [
             {
-              "referenceText": "The candidate prepared the candidate for the interview.",
-              "referenceUrdu": "امیدوار نے انٹرویو کے لیے امیدوار کو تیار کیا۔",
-              "text": "The candidate prepared himself for the interview.",
-              "urdu": "امیدوار نے خود کو انٹرویو کے لیے تیار کیا۔",
-              "note": "'Himself' refers back to the singular male subject 'the candidate' and is the object of 'prepared'."
+              "referenceText": "The officer blamed the officer for the error.",
+              "referenceUrdu": "افسر نے افسر کو غلطی کا ذمہ دار ٹھہرایا۔",
+              "text": "The officer blamed himself for the error.",
+              "urdu": "افسر نے غلطی کا ذمہ دار خود کو ٹھہرایا۔",
+              "note": "**Himself** refers back to the subject **officer**."
             },
             {
-              "referenceText": "The minister blamed the minister for the policy error.",
-              "referenceUrdu": "وزیر نے پالیسی کی غلطی کے لیے وزیر کو ذمہ دار ٹھہرایا۔",
-              "text": "The minister blamed herself for the policy error.",
-              "urdu": "وزیر نے پالیسی کی غلطی کا ذمہ دار خود کو ٹھہرایا۔",
-              "note": "'Herself' refers to the female subject 'the minister' and shows that the subject and object are the same person."
+              "referenceText": "The students introduced the students to the panel.",
+              "referenceUrdu": "طلبہ نے طلبہ کا پینل سے تعارف کرایا۔",
+              "text": "The students introduced themselves to the panel.",
+              "urdu": "طلبہ نے پینل سے اپنا تعارف کرایا۔",
+              "note": "**Themselves** refers back to the plural subject **students**."
             },
             {
-              "referenceText": "The committee reminded the committee to follow the rules.",
-              "referenceUrdu": "کمیٹی نے کمیٹی کو قواعد پر عمل کرنے کی یاد دہانی کرائی۔",
-              "text": "The committee reminded itself to follow the rules.",
-              "urdu": "کمیٹی نے خود کو قواعد پر عمل کرنے کی یاد دہانی کرائی۔",
-              "note": "'Itself' refers back to the singular collective noun 'committee' and functions as the object."
+              "referenceText": "I taught me to use the software.",
+              "referenceUrdu": "میں نے مجھے سافٹ ویئر استعمال کرنا سکھایا۔",
+              "text": "I taught myself to use the software.",
+              "urdu": "میں نے خود سافٹ ویئر استعمال کرنا سیکھا۔",
+              "note": "**Myself** refers back to the subject **I**."
             },
             {
-              "referenceText": "The candidates reviewed the candidates’ answers carefully.",
-              "referenceUrdu": "امیدواروں نے امیدواروں کے جوابات کا بغور جائزہ لیا۔",
-              "text": "The candidates reviewed their answers themselves.",
-              "urdu": "امیدواروں نے خود اپنے جوابات کا جائزہ لیا۔",
-              "note": "'Themselves' refers to the plural subject 'candidates' and adds emphasis; 'their' shows possession."
+              "referenceText": "The machine switched the machine off.",
+              "referenceUrdu": "مشین نے مشین کو بند کیا۔",
+              "text": "The machine switched itself off.",
+              "urdu": "مشین خود بند ہو گئی۔",
+              "note": "**Itself** refers back to the subject **machine**."
             }
           ],
           "rules": [
-            "Refers back to the subject when the subject and object are the same person or thing."
+            "Use a **Reflexive Pronoun** when the subject and object are the same.",
+            "The Reflexive Pronoun must agree with the **subject** in person and number.",
+            "Do not use a Reflexive Pronoun as the ordinary subject of a sentence."
           ],
           "commonMistakes": [
             {
-              "wrong": "The commissioner blamed him for the delay.",
-              "right": "The commissioner blamed himself for the delay.",
-              "urdu": "کمشنر نے تاخیر پر خود کو موردِ الزام ٹھہرایا۔",
-              "note": "Error: 'him' is an ordinary object pronoun and does not show that the subject and object are the same person; the reflexive 'himself' must be used when the commissioner blames himself."
+              "wrong": "**Myself** submitted the form.",
+              "right": "**I** submitted the form.",
+              "urdu": "میں نے فارم جمع کرایا۔",
+              "note": "Use **I** as the subject; **myself** is not an ordinary subject pronoun."
             },
             {
-              "wrong": "The inspector reminded herselfs of the code.",
-              "right": "The inspector reminded herself of the code.",
-              "urdu": "انسپکٹر نے خود کو ضابطے کی یاد دہانی کروائی۔",
-              "note": "Error: 'herselfs' is a nonstandard, misspelled form; the correct singular reflexive is 'herself', agreeing with the singular subject 'The inspector'."
+              "wrong": "The candidate prepared **him** for the interview.",
+              "right": "The candidate prepared **himself** for the interview.",
+              "urdu": "امیدوار نے خود کو انٹرویو کے لیے تیار کیا۔",
+              "note": "The subject and object are the same, so **himself** is needed."
             },
             {
-              "wrong": "The members congratulated himself on the report.",
-              "right": "The members congratulated themselves on the report.",
-              "urdu": "ارکان نے رپورٹ پر خود کو مبارکباد دی۔",
-              "note": "Error: 'himself' is singular and does not agree with the plural subject 'The members'; use the plural reflexive 'themselves' for number agreement."
+              "wrong": "The students blamed **himself**.",
+              "right": "The students blamed **themselves**.",
+              "urdu": "طلبہ نے خود کو قصوروار ٹھہرایا۔",
+              "note": "**Themselves** agrees with the plural subject **students**."
+            },
+            {
+              "wrong": "The officer spoke to **her** about the case.",
+              "right": "The officer spoke to **herself** about the case.",
+              "urdu": "افسر نے مقدمے کے بارے میں خود سے بات کی۔",
+              "note": "The officer is speaking to the same person, so the Reflexive Pronoun **herself** is required."
             }
           ],
           "practice": [
@@ -2677,64 +2713,78 @@
             }
           ],
           "subjectVerbAgreementUrdu": "",
-          "wordFocus": "Reflexive pronouns refer back to the subject: 'himself', 'herself', 'itself', and 'themselves' show that the subject and the affected person or thing are the same."
+          "wordFocus": "",
+          "exampleWords": "myself, yourself, himself, herself, itself, ourselves, themselves",
+          "ruleExamples": [
+            "The candidate prepared **himself** for the interview.",
+            "We reminded **ourselves** about the deadline.",
+            "**I** submitted the form, not **myself**."
+          ]
         },
         {
           "name": "Relative Pronoun",
-          "description": "Introduces a relative clause and refers back to a noun called its antecedent.",
-          "urduExplanation": "Relative pronoun پہلے آنے والے noun سے تعلق بناتا اور relative clause شروع کرتا ہے۔",
-          "subjectVerbAgreement": "The analyst who prepares the weekly briefings provides crucial data to policymakers. The singular definite noun 'the analyst' is the antecedent and requires the relative pronoun 'who' for a person; both the relative-clause verb 'prepares' and the main verb 'provides' are singular to agree with that antecedent, and the definite article 'the' specifies the particular subject.",
+          "description": "A Relative Pronoun connects a noun with a clause that gives more information about it.",
+          "urduExplanation": "ضمیرِ موصولہ اسم کو ایسے جملے سے ملاتا ہے جو اس کے بارے میں مزید معلومات دیتا ہے۔",
+          "subjectVerbAgreement": "",
           "examples": [
             {
               "referenceText": "The officer prepared the report. The officer received an award.",
               "referenceUrdu": "افسر نے رپورٹ تیار کی۔ افسر کو انعام ملا۔",
               "text": "The officer who prepared the report received an award.",
               "urdu": "جس افسر نے رپورٹ تیار کی اسے انعام ملا۔",
-              "note": "'Who' refers to the person 'officer' and joins the relative clause to the main clause."
+              "note": "**Who** refers to the person **officer** and joins the clause."
             },
             {
-              "referenceText": "The policy improved public service delivery. The commission approved the policy.",
-              "referenceUrdu": "پالیسی نے عوامی خدمات کی فراہمی بہتر بنائی۔ کمیشن نے پالیسی منظور کی۔",
-              "text": "The policy that the commission approved improved public service delivery.",
-              "urdu": "جس پالیسی کو کمیشن نے منظور کیا اس نے عوامی خدمات کی فراہمی بہتر بنائی۔",
-              "note": "'That' refers to the thing 'policy' and introduces a restrictive relative clause."
+              "referenceText": "The cabinet approved the policy. The policy is effective.",
+              "referenceUrdu": "کابینہ نے پالیسی منظور کی۔ پالیسی مؤثر ہے۔",
+              "text": "The policy that the cabinet approved is effective.",
+              "urdu": "وہ پالیسی مؤثر ہے جسے کابینہ نے منظور کیا۔",
+              "note": "**That** refers to the thing **policy**."
             },
             {
-              "referenceText": "The research was funded by the university. The research led to recommendations.",
-              "referenceUrdu": "تحقیق کو یونیورسٹی نے مالی معاونت دی۔ تحقیق سے سفارشات سامنے آئیں۔",
-              "text": "The research which the university funded led to recommendations.",
-              "urdu": "جس تحقیق کو یونیورسٹی نے مالی معاونت دی اس سے سفارشات سامنے آئیں۔",
-              "note": "'Which' refers to the thing 'research' and functions as the object of 'funded'."
+              "referenceText": "The researcher wrote an article. The article won the prize.",
+              "referenceUrdu": "محقق نے مضمون لکھا۔ مضمون نے انعام جیتا۔",
+              "text": "The researcher whose article won the prize thanked the university.",
+              "urdu": "جس محقق کے مضمون نے انعام جیتا اس نے یونیورسٹی کا شکریہ ادا کیا۔",
+              "note": "**Whose** shows possession and refers to **researcher**."
             },
             {
-              "referenceText": "The committee reviewed the reports. The reports contained useful evidence.",
-              "referenceUrdu": "کمیٹی نے رپورٹس کا جائزہ لیا۔ رپورٹس میں مفید شواہد موجود تھے۔",
-              "text": "The committee reviewed the reports that contained useful evidence.",
-              "urdu": "کمیٹی نے ان رپورٹس کا جائزہ لیا جن میں مفید شواہد موجود تھے۔",
-              "note": "'That' refers to the plural noun 'reports' and introduces information identifying which reports are meant."
+              "referenceText": "The board recommended the candidate. The committee interviewed the candidate.",
+              "referenceUrdu": "بورڈ نے امیدوار کی سفارش کی۔ کمیٹی نے امیدوار کا انٹرویو کیا۔",
+              "text": "The committee interviewed the candidate whom the board recommended.",
+              "urdu": "کمیٹی نے اس امیدوار کا انٹرویو کیا جس کی سفارش بورڈ نے کی تھی۔",
+              "note": "**Whom** is the object of **recommended** in formal English."
             }
           ],
           "rules": [
-            "Introduces a relative clause and refers back to a noun called its antecedent."
+            "Use **who** for people.",
+            "Use **which** or **that** for things and animals in appropriate clauses.",
+            "Use **whose** to show possession."
           ],
           "commonMistakes": [
             {
-              "wrong": "The officer which prepared the report won an award.",
-              "right": "The officer who prepared the report won an award.",
-              "urdu": "رپورٹ تیار کرنے والے افسر کو اعزاز ملا۔",
-              "note": "'Which' is incorrect when referring to a person; use 'who' to refer to the officer."
+              "wrong": "The officer **which** prepared the report was promoted.",
+              "right": "The officer **who** prepared the report was promoted.",
+              "urdu": "جس افسر نے رپورٹ تیار کی اسے ترقی دی گئی۔",
+              "note": "Use **who** for a person."
             },
             {
-              "wrong": "The candidate who the panel selected topped the list.",
-              "right": "The candidate whom the panel selected topped the list.",
-              "urdu": "پینل نے جس امیدوار کو منتخب کیا وہ فہرست میں سرفہرست آیا۔",
-              "note": "The relative pronoun is the object of 'selected', so the objective form 'whom' is required in formal usage rather than the subject form 'who'."
+              "wrong": "The policy **who** was approved is effective.",
+              "right": "The policy **that** was approved is effective.",
+              "urdu": "جو پالیسی منظور ہوئی وہ مؤثر ہے۔",
+              "note": "Use **that** or **which** for a thing."
             },
             {
-              "wrong": "The policy who was adopted yesterday affects many departments.",
-              "right": "The policy that was adopted yesterday affects many departments.",
-              "urdu": "وہ پالیسی جو کل اپنائی گئی تھی کئی محکموں کو متاثر کرتی ہے۔",
-              "note": "'Who' wrongly refers to an inanimate noun; use 'that' or 'which' for things, with 'that' appropriate in a restrictive clause."
+              "wrong": "The candidate **who** the panel selected thanked them.",
+              "right": "The candidate **whom** the panel selected thanked them.",
+              "urdu": "جس امیدوار کو پینل نے منتخب کیا اس نے ان کا شکریہ ادا کیا۔",
+              "note": "**Whom** is the formal object form here."
+            },
+            {
+              "wrong": "The officer **whose** prepared the report was praised.",
+              "right": "The officer **who** prepared the report was praised.",
+              "urdu": "جس افسر نے رپورٹ تیار کی اسے سراہا گیا۔",
+              "note": "Use **who** for a subject; **whose** must show possession."
             }
           ],
           "practice": [
@@ -2795,64 +2845,78 @@
             }
           ],
           "subjectVerbAgreementUrdu": "",
-          "wordFocus": "Relative pronouns link a relative clause to an antecedent: 'who' refers to a person, while 'that' or 'which' can refer to a thing or policy."
+          "wordFocus": "",
+          "exampleWords": "who, whom, whose, which, that",
+          "ruleExamples": [
+            "The officer **who** prepared the report received an award.",
+            "The policy **that** the commission approved is effective.",
+            "The candidate **whose** form was incomplete submitted it again."
+          ]
         },
         {
           "name": "Demonstrative Pronoun",
-          "description": "Points to a specific noun or idea and shows singular/plural and near/far meaning.",
-          "urduExplanation": "Demonstrative pronoun قریب یا دور شخص، چیز یا خیال کی طرف اشارہ کرتا ہے۔",
-          "subjectVerbAgreement": "These guidelines on exam eligibility require immediate review by the selection board. The subject is the plural noun phrase \"these guidelines\" (demonstrative \"these\" + plural noun), so it takes the plural verb \"require\"; the prepositional phrases \"on exam eligibility\" and \"by the selection board\" do not affect subject–verb agreement.",
+          "description": "A Demonstrative Pronoun points to a person, thing, or idea.",
+          "urduExplanation": "اسمِ اشارہ کسی شخص، چیز یا خیال کی طرف اشارہ کرتا ہے۔",
+          "subjectVerbAgreement": "",
           "examples": [
             {
-              "referenceText": "This policy near the speaker is effective.",
-              "referenceUrdu": "مقرر کے قریب یہ پالیسی مؤثر ہے۔",
-              "text": "This is effective.",
-              "urdu": "یہ مؤثر ہے۔",
-              "note": "'This' points to one nearby policy and takes the singular linking verb 'is'."
+              "referenceText": "This policy was approved today.",
+              "referenceUrdu": "یہ پالیسی آج منظور ہوئی۔",
+              "text": "This is the policy approved today.",
+              "urdu": "یہ آج منظور کی گئی پالیسی ہے۔",
+              "note": "**This** points to one nearby policy."
             },
             {
-              "referenceText": "Those recommendations from the previous committee were rejected.",
-              "referenceUrdu": "پچھلی کمیٹی کی وہ سفارشات مسترد کر دی گئیں۔",
-              "text": "Those were rejected.",
-              "urdu": "وہ مسترد کر دی گئیں۔",
-              "note": "'Those' replaces plural recommendations and therefore takes the plural verb 'were'."
+              "referenceText": "Those recommendations were rejected.",
+              "referenceUrdu": "وہ سفارشات مسترد کر دی گئیں۔",
+              "text": "Those were rejected by the commission.",
+              "urdu": "وہ کمیشن نے مسترد کر دیے تھے۔",
+              "note": "**Those** points to several distant recommendations."
             },
             {
-              "referenceText": "These findings support the new education policy.",
-              "referenceUrdu": "یہ نتائج نئی تعلیمی پالیسی کی حمایت کرتے ہیں۔",
-              "text": "These support the new education policy.",
-              "urdu": "یہ نئی تعلیمی پالیسی کی حمایت کرتے ہیں۔",
-              "note": "'These' points to several nearby findings and functions as a plural subject."
+              "referenceText": "These documents are ready.",
+              "referenceUrdu": "یہ دستاویزات تیار ہیں۔",
+              "text": "These are ready for the examination.",
+              "urdu": "یہ امتحان کے لیے تیار ہیں۔",
+              "note": "**These** refers to several nearby documents."
             },
             {
-              "referenceText": "That proposal was rejected by the commission.",
-              "referenceUrdu": "وہ تجویز کمیشن نے مسترد کر دی۔",
-              "text": "That was rejected by the commission.",
-              "urdu": "وہ کمیشن نے مسترد کر دی۔",
-              "note": "'That' points to one proposal farther away and replaces the singular noun phrase."
+              "referenceText": "That decision is final.",
+              "referenceUrdu": "وہ فیصلہ حتمی ہے۔",
+              "text": "That is the final decision.",
+              "urdu": "وہ حتمی فیصلہ ہے۔",
+              "note": "**That** points to one specific decision farther away."
             }
           ],
           "rules": [
-            "Points to a specific noun or idea and shows singular/plural and near/far meaning."
+            "Use **this** and **that** for singular meaning.",
+            "Use **these** and **those** for plural meaning.",
+            "**This/these** usually point to something near, while **that/those** point to something farther away."
           ],
           "commonMistakes": [
             {
-              "wrong": "This are the committee's findings.",
-              "right": "These are the committee's findings.",
-              "urdu": "یہ کمیٹی کے نتائج ہیں۔",
-              "note": "\"This are the committee's findings.\" uses the singular demonstrative \"this\" with the plural verb \"are,\" causing a number mismatch; change \"This\" to the plural \"These.\""
+              "wrong": "**These is** the final report.",
+              "right": "**This is** the final report.",
+              "urdu": "یہ حتمی رپورٹ ہے۔",
+              "note": "A singular report takes **this**, not **these**."
             },
             {
-              "wrong": "Those is the final verdict.",
-              "right": "That is the final verdict.",
-              "urdu": "وہ آخری فیصلہ تھا۔",
-              "note": "\"Those is the final verdict.\" pairs the plural demonstrative \"those\" with the singular verb \"is,\" producing disagreement; use the singular demonstrative \"That\" to match the singular predicate."
+              "wrong": "**That are** the approved files.",
+              "right": "**Those are** the approved files.",
+              "urdu": "وہ منظور شدہ فائلیں ہیں۔",
+              "note": "Plural files take **those** and **are**."
             },
             {
-              "wrong": "This were the approved candidates.",
-              "right": "These were the approved candidates.",
-              "urdu": "یہ منظور شدہ امیدوار تھے۔",
-              "note": "\"This were the approved candidates.\" incorrectly uses the singular demonstrative \"This\" with the plural verb \"were.\" The demonstrative should be plural (\"These\") to agree with the plural predicate."
+              "wrong": "**This** documents are confidential.",
+              "right": "**These** documents are confidential.",
+              "urdu": "یہ دستاویزات خفیہ ہیں۔",
+              "note": "Plural documents take **these**."
+            },
+            {
+              "wrong": "**Those is** the correct answer.",
+              "right": "**That is** the correct answer.",
+              "urdu": "وہ درست جواب ہے۔",
+              "note": "A singular answer takes **that** and **is**."
             }
           ],
           "practice": [
@@ -2913,64 +2977,78 @@
             }
           ],
           "subjectVerbAgreementUrdu": "",
-          "wordFocus": "Demonstrative pronouns point to nouns: 'this/that' are singular and 'these/those' are plural; the verb must agree with the selected demonstrative."
+          "wordFocus": "",
+          "exampleWords": "this, that, these, those",
+          "ruleExamples": [
+            "**This** is the final policy.",
+            "**These** are the approved guidelines.",
+            "**Those** were the previous recommendations."
+          ]
         },
         {
           "name": "Interrogative Pronoun",
-          "description": "Asks about an unknown person, thing, owner, choice, or object in a question.",
-          "urduExplanation": "Interrogative pronoun سوال میں نامعلوم شخص، چیز، مالک یا انتخاب کے بارے میں پوچھتا ہے۔",
-          "subjectVerbAgreement": "Which candidate for the federal service has submitted the additional documents? The noun 'candidate' is the singular subject selected by 'which', so the singular verb form 'has submitted' is required; the prepositional phrase 'for the federal service' modifies the subject and does not affect verb number.",
+          "description": "An Interrogative Pronoun asks about a person, thing, choice, or possession.",
+          "urduExplanation": "ضمیرِ استفہام کسی شخص، چیز، انتخاب یا ملکیت کے بارے میں سوال کرتا ہے۔",
+          "subjectVerbAgreement": "",
           "examples": [
             {
-              "referenceText": "Which candidate submitted the additional documents?",
-              "referenceUrdu": "کس امیدوار نے اضافی دستاویزات جمع کرائیں؟",
-              "text": "Which submitted the additional documents?",
-              "urdu": "کس نے اضافی دستاویزات جمع کرائیں؟",
-              "note": "'Which' replaces the understood noun 'candidate' and asks about one member of a known group."
+              "referenceText": "The commission approved the policy.",
+              "referenceUrdu": "کمیشن نے پالیسی منظور کی۔",
+              "text": "Who approved the policy?",
+              "urdu": "پالیسی کس نے منظور کی؟",
+              "note": "**Who** is the subject asking about the person who acted."
             },
             {
-              "referenceText": "Who prepared the examination report?",
-              "referenceUrdu": "امتحانی رپورٹ کس نے تیار کی؟",
-              "text": "Who prepared it?",
-              "urdu": "کس نے اسے تیار کیا؟",
-              "note": "'Who' is the subject asking about an unknown person, while 'it' replaces the examination report as the object."
+              "referenceText": "The panel invited the candidate.",
+              "referenceUrdu": "پینل نے امیدوار کو بلایا۔",
+              "text": "Whom did the panel invite?",
+              "urdu": "پینل نے کسے بلایا؟",
+              "note": "**Whom** is the formal object of **invite**."
             },
             {
-              "referenceText": "The commission interviewed which applicant?",
-              "referenceUrdu": "کمیشن نے کس درخواست گزار کا انٹرویو کیا؟",
-              "text": "Whom did the commission interview?",
-              "urdu": "کمیشن نے کس کا انٹرویو کیا؟",
-              "note": "'Whom' is the object form used for the person receiving the action of 'interview'."
+              "referenceText": "This is the officer’s report.",
+              "referenceUrdu": "یہ افسر کی رپورٹ ہے۔",
+              "text": "Whose is this report?",
+              "urdu": "یہ رپورٹ کس کی ہے؟",
+              "note": "**Whose** asks about ownership."
             },
             {
-              "referenceText": "What caused the delay in the examination schedule?",
-              "referenceUrdu": "امتحانی شیڈول میں تاخیر کی وجہ کیا تھی؟",
-              "text": "What caused the delay?",
-              "urdu": "تاخیر کی وجہ کیا تھی؟",
-              "note": "'What' asks about an unknown thing and functions as the subject of 'caused'."
+              "referenceText": "The commission approved one policy.",
+              "referenceUrdu": "کمیشن نے ایک پالیسی منظور کی۔",
+              "text": "Which did the commission approve?",
+              "urdu": "کمیشن نے کون سا منظور کیا؟",
+              "note": "**Which** asks the listener to choose one known item."
             }
           ],
           "rules": [
-            "Asks about an unknown person, thing, owner, choice, or object in a question."
+            "Use **who** as the subject of a question.",
+            "Use **whom** as the object in formal English.",
+            "Use **whose** to ask about possession."
           ],
           "commonMistakes": [
             {
-              "wrong": "Whom prepared the report?",
-              "right": "Who prepared the report?",
-              "urdu": "کس نے رپورٹ تیار کی؟",
-              "note": "Error: 'whom' is an object pronoun but here functions as the subject; it should be 'who' as the subject of 'prepared'."
+              "wrong": "**Whom** is responsible for the decision?",
+              "right": "**Who** is responsible for the decision?",
+              "urdu": "فیصلے کا ذمہ دار کون ہے؟",
+              "note": "**Who** is the subject of **is responsible**."
             },
             {
-              "wrong": "Who did the panel invite?",
-              "right": "Whom did the panel invite?",
-              "urdu": "پینل نے کس کو مدعو کیا؟",
-              "note": "Error: 'who' is used as the object after the auxiliary 'did'; the objective form 'whom' is required because it receives the action of 'invite'."
+              "wrong": "**Who** did the panel invite?",
+              "right": "**Whom** did the panel invite?",
+              "urdu": "پینل نے کسے بلایا؟",
+              "note": "In formal English, **whom** is the object of **invite**."
             },
             {
-              "wrong": "Which are the correct option?",
-              "right": "Which is the correct option?",
-              "urdu": "کون سا درست آپشن ہے؟",
-              "note": "Error: subject–verb disagreement: 'option' is singular, so the singular verb 'is' must be used, yielding 'Which is the correct option?'."
+              "wrong": "**Who’s** report is this?",
+              "right": "**Whose** report is this?",
+              "urdu": "یہ کس کی رپورٹ ہے؟",
+              "note": "**Whose** asks about possession; **who’s** means “who is.”"
+            },
+            {
+              "wrong": "**Which candidate did the commission select him?**",
+              "right": "**Which candidate did the commission select?**",
+              "urdu": "کمیشن نے کس امیدوار کو منتخب کیا؟",
+              "note": "Do not add an extra object pronoun after the noun phrase."
             }
           ],
           "practice": [
@@ -3031,64 +3109,78 @@
             }
           ],
           "subjectVerbAgreementUrdu": "",
-          "wordFocus": "Interrogative pronouns ask about an unknown person or thing: 'who' is used for a subject, 'whom' for an object, and 'which' selects from known options."
+          "wordFocus": "",
+          "exampleWords": "who, whom, whose, which, what",
+          "ruleExamples": [
+            "**Who** submitted the application?",
+            "The panel invited **whom**?",
+            "**Whose** is this file?"
+          ]
         },
         {
           "name": "Indefinite Pronoun",
-          "description": "Refers to a person or thing without naming it specifically.",
-          "urduExplanation": "Indefinite pronoun کسی غیر مخصوص شخص یا چیز کی طرف اشارہ کرتا ہے۔",
-          "subjectVerbAgreement": "Many applicants who passed the preliminary test have scheduled their interviews. The subject \"Many applicants\" is plural, the relative clause \"who passed the preliminary test\" does not change the number, so the plural auxiliary verb \"have\" with the past participle \"scheduled\" is required; the possessive pronoun \"their\" correctly agrees with the plural antecedent.",
+          "description": "An Indefinite Pronoun refers to a person or thing without naming exactly who or what.",
+          "urduExplanation": "ضمیرِ غیر معین کسی غیر مخصوص شخص یا چیز کی طرف اشارہ کرتا ہے۔",
+          "subjectVerbAgreement": "",
           "examples": [
             {
-              "referenceText": "Every candidate must check every candidate’s documents.",
-              "referenceUrdu": "ہر امیدوار کو ہر امیدوار کی دستاویزات جانچنی چاہییں۔",
-              "text": "Everyone must check their documents.",
-              "urdu": "ہر شخص کو اپنی دستاویزات جانچنی چاہییں۔",
-              "note": "'Everyone' refers to people generally and takes singular agreement; singular 'their' avoids repeating the noun."
+              "referenceText": "All candidates must bring identity cards.",
+              "referenceUrdu": "تمام امیدواروں کو شناختی کارڈ لانے ہوں گے۔",
+              "text": "Everyone must bring an identity card.",
+              "urdu": "ہر شخص کو شناختی کارڈ لانا ہوگا۔",
+              "note": "**Everyone** refers to all people individually and takes a singular verb."
             },
             {
-              "referenceText": "Some members approved the report, but other members requested more data.",
-              "referenceUrdu": "کچھ ارکان نے رپورٹ منظور کی، لیکن دوسرے ارکان نے مزید معلومات طلب کیں۔",
-              "text": "Some approved the report, but others requested more data.",
-              "urdu": "کچھ نے رپورٹ منظور کی، لیکن دوسروں نے مزید معلومات طلب کیں۔",
-              "note": "'Some' and 'others' refer to unspecified plural members and take the plural verb 'requested'."
+              "referenceText": "An unknown candidate left a file.",
+              "referenceUrdu": "ایک نامعلوم امیدوار نے فائل چھوڑی۔",
+              "text": "Someone left a file on the desk.",
+              "urdu": "کسی نے میز پر فائل چھوڑی ہے۔",
+              "note": "**Someone** refers to one unknown person."
             },
             {
-              "referenceText": "No candidate accepted the recommendation.",
-              "referenceUrdu": "کسی امیدوار نے سفارش قبول نہیں کی۔",
-              "text": "None accepted the recommendation.",
-              "urdu": "کسی نے سفارش قبول نہیں کی۔",
-              "note": "'None' replaces an unspecified group; here it refers to no candidates and takes the plural verb 'accepted'."
+              "referenceText": "Several candidates were selected.",
+              "referenceUrdu": "کئی امیدوار منتخب ہوئے۔",
+              "text": "Several were selected for the interview.",
+              "urdu": "کئی افراد کو انٹرویو کے لیے منتخب کیا گیا۔",
+              "note": "**Several** refers to more than one person."
             },
             {
-              "referenceText": "Several applicants passed the preliminary test.",
-              "referenceUrdu": "کئی درخواست گزار ابتدائی امتحان میں کامیاب ہوئے۔",
-              "text": "Several passed the preliminary test.",
-              "urdu": "کئی ابتدائی امتحان میں کامیاب ہوئے۔",
-              "note": "'Several' refers to more than two unspecified applicants and functions as a plural subject."
+              "referenceText": "No item was missing from the record.",
+              "referenceUrdu": "ریکارڈ سے کوئی چیز غائب نہیں تھی۔",
+              "text": "Nothing was missing from the record.",
+              "urdu": "ریکارڈ میں کچھ بھی غائب نہیں تھا۔",
+              "note": "**Nothing** refers to no thing and takes a singular verb."
             }
           ],
           "rules": [
-            "Refers to a person or thing without naming it specifically."
+            "Words such as **everyone, someone, nobody,** and **each** usually take singular verbs.",
+            "Use a plural form with **many, several,** and **few**.",
+            "Avoid a double negative with indefinite pronouns such as **nobody** and **nothing**."
           ],
           "commonMistakes": [
             {
-              "wrong": "Everyone have submitted the form.",
-              "right": "Everyone has submitted the form.",
-              "urdu": "ہر شخص نے فارم جمع کرایا ہے۔",
-              "note": "\"Everyone\" is an indefinite pronoun that is grammatically singular, so it requires the singular auxiliary \"has\" rather than \"have.\""
+              "wrong": "**Everyone have** a duty.",
+              "right": "**Everyone has** a duty.",
+              "urdu": "ہر شخص کی ایک ذمہ داری ہے۔",
+              "note": "**Everyone** is grammatically singular."
             },
             {
-              "wrong": "Each candidates has a badge.",
-              "right": "Each candidate has a badge.",
-              "urdu": "ہر امیدوار کے پاس بیج ہے۔",
-              "note": "Using \"each\" requires a singular noun, so \"candidates\" should be singular \"candidate\"; the verb \"has\" is already correct for a singular subject."
+              "wrong": "**Several was** absent.",
+              "right": "**Several were** absent.",
+              "urdu": "کئی غیر حاضر تھے۔",
+              "note": "**Several** has plural meaning, so use **were**."
             },
             {
-              "wrong": "None of the report were accurate.",
-              "right": "None of the reports was accurate.",
-              "urdu": "کسی بھی رپورٹ درست نہیں تھی۔",
-              "note": "The head noun after \"none of\" should be plural for countable items (\"reports\"), and in formal usage \"none\" meaning \"not one\" takes a singular verb, so use \"None of the reports was accurate.\""
+              "wrong": "I did not see **nobody**.",
+              "right": "I did not see **anybody**.",
+              "urdu": "میں نے کسی کو نہیں دیکھا۔",
+              "note": "Avoid the double negative **did not + nobody**."
+            },
+            {
+              "wrong": "**Each candidates** submitted a form.",
+              "right": "**Each candidate** submitted a form.",
+              "urdu": "ہر امیدوار نے فارم جمع کرایا۔",
+              "note": "**Each** is followed by a singular noun."
             }
           ],
           "practice": [
@@ -3149,64 +3241,78 @@
             }
           ],
           "subjectVerbAgreementUrdu": "",
-          "wordFocus": "Indefinite pronouns refer to people or things without naming them precisely: 'each', 'everyone', and 'none' may require singular agreement, while 'some' and 'others' can be plural."
+          "wordFocus": "",
+          "exampleWords": "someone, anyone, everyone, nobody, something, nothing, each",
+          "ruleExamples": [
+            "**Everyone has** submitted the form.",
+            "**Several are** waiting outside.",
+            "**Nobody knows** the answer."
+          ]
         },
         {
           "name": "Reciprocal Pronoun",
-          "description": "Shows that two or more people or groups perform an action mutually.",
-          "urduExplanation": "Reciprocal pronoun باہمی عمل ظاہر کرتا ہے، جیسے each other یا one another۔",
-          "subjectVerbAgreement": "During the joint oral exam, the two examiners challenged each other on points of law. Subject 'the two examiners' is plural, so the plural past verb 'challenged' is used; the reciprocal pronoun 'each other' shows mutual action between the two examiners, and the prepositional phrase 'during the joint oral exam' does not affect subject–verb agreement.",
+          "description": "A Reciprocal Pronoun shows a mutual action between two or more people or groups.",
+          "urduExplanation": "ضمیرِ باہمی دو یا زیادہ افراد یا گروہوں کے درمیان باہمی عمل ظاہر کرتا ہے۔",
+          "subjectVerbAgreement": "",
           "examples": [
             {
-              "referenceText": "The two departments supported the two departments.",
-              "referenceUrdu": "دونوں محکموں نے دونوں محکموں کی حمایت کی۔",
-              "text": "The two departments supported each other.",
-              "urdu": "دونوں محکموں نے ایک دوسرے کی حمایت کی۔",
-              "note": "'Each other' shows that the two departments acted mutually toward one another."
+              "referenceText": "Department A consulted Department B, and Department B consulted Department A.",
+              "referenceUrdu": "محکمہ الف نے محکمہ ب سے مشورہ کیا اور محکمہ ب نے محکمہ الف سے مشورہ کیا۔",
+              "text": "The two departments consulted each other.",
+              "urdu": "دونوں محکموں نے ایک دوسرے سے مشورہ کیا۔",
+              "note": "**Each other** shows mutual action between two departments."
             },
             {
-              "referenceText": "The candidates exchanged notes with the candidates.",
-              "referenceUrdu": "امیدواروں نے امیدواروں کے ساتھ نوٹس کا تبادلہ کیا۔",
-              "text": "The candidates exchanged notes with one another.",
-              "urdu": "امیدواروں نے ایک دوسرے کے ساتھ نوٹس کا تبادلہ کیا۔",
-              "note": "'One another' refers to members of a plural group acting mutually."
+              "referenceText": "Each candidate congratulated the other candidates.",
+              "referenceUrdu": "ہر امیدوار نے دوسرے امیدواروں کو مبارک باد دی۔",
+              "text": "The three candidates congratulated one another.",
+              "urdu": "تینوں امیدواروں نے ایک دوسرے کو مبارک باد دی۔",
+              "note": "**One another** shows a mutual action among three people."
             },
             {
-              "referenceText": "The two committees reviewed the two committees’ proposals.",
-              "referenceUrdu": "دونوں کمیٹیوں نے دونوں کمیٹیوں کی تجاویز کا جائزہ لیا۔",
-              "text": "The two committees reviewed each other’s proposals.",
-              "urdu": "دونوں کمیٹیوں نے ایک دوسرے کی تجاویز کا جائزہ لیا۔",
-              "note": "'Each other’s' expresses mutual possession between the two committees."
+              "referenceText": "The first witness helped the second, and the second helped the first.",
+              "referenceUrdu": "پہلے گواہ نے دوسرے کی مدد کی اور دوسرے نے پہلے کی مدد کی۔",
+              "text": "The two witnesses helped each other during the inquiry.",
+              "urdu": "دونوں گواہوں نے تحقیقات کے دوران ایک دوسرے کی مدد کی۔",
+              "note": "**Each other** is the object of **helped**."
             },
             {
-              "referenceText": "The partners consulted the partners before the merger.",
-              "referenceUrdu": "شراکت داروں نے انضمام سے پہلے شراکت داروں سے مشورہ کیا۔",
-              "text": "The partners consulted one another before the merger.",
-              "urdu": "شراکت داروں نے انضمام سے پہلے ایک دوسرے سے مشورہ کیا۔",
-              "note": "'One another' is the reciprocal object of 'consulted'."
+              "referenceText": "The organizations shared information mutually.",
+              "referenceUrdu": "اداروں نے باہمی طور پر معلومات بانٹیں۔",
+              "text": "The partner organizations shared information with one another.",
+              "urdu": "شراکت دار اداروں نے ایک دوسرے کے ساتھ معلومات بانٹیں۔",
+              "note": "**One another** expresses cooperation among the organizations."
             }
           ],
           "rules": [
-            "Shows that two or more people or groups perform an action mutually."
+            "Use **each other** or **one another** when the members act mutually.",
+            "A Reciprocal Pronoun needs a plural subject.",
+            "Do not use a Reflexive Pronoun for a mutual action."
           ],
           "commonMistakes": [
             {
-              "wrong": "The two teams helped himself.",
-              "right": "The two teams helped each other.",
+              "wrong": "The two teams helped **themselves**.",
+              "right": "The two teams helped **each other**.",
               "urdu": "دونوں ٹیموں نے ایک دوسرے کی مدد کی۔",
-              "note": "The error uses the singular reflexive 'himself' with a plural subject 'the two teams', which is mismatched; replace the reflexive with the reciprocal 'each other' (or use 'themselves') to agree in number."
+              "note": "The action is mutual, so use **each other**."
             },
             {
-              "wrong": "The partners blamed each other themselves.",
-              "right": "The partners blamed each other.",
-              "urdu": "شراکت داروں نے ایک دوسرے کو موردِ الزام ٹھہرایا۔",
-              "note": "The phrase contains a redundancy: 'each other themselves' repeats reflexivity; remove 'themselves' so that 'The partners blamed each other.' is correct."
+              "wrong": "The committee members blamed **each other** himself.",
+              "right": "The committee members blamed **each other**.",
+              "urdu": "کمیٹی کے ارکان نے ایک دوسرے کو قصوروار ٹھہرایا۔",
+              "note": "Do not add a Reflexive Pronoun after a Reciprocal Pronoun."
             },
             {
-              "wrong": "The committee member supports one another.",
-              "right": "The committee members support one another.",
-              "urdu": "کمیٹی کے اراکین ایک دوسرے کی حمایت کرتے ہیں۔",
-              "note": "The subject is singular ('The committee member') but uses the reciprocal 'one another' which implies multiple participants; either pluralize the subject ('The committee members support one another.') or use a singular reflexive (e.g., 'supports himself/herself') to fix agreement."
+              "wrong": "The officer helped **each other**.",
+              "right": "The officers helped **each other**.",
+              "urdu": "افسروں نے ایک دوسرے کی مدد کی۔",
+              "note": "A Reciprocal Pronoun needs a plural subject."
+            },
+            {
+              "wrong": "The two departments supports **each other**.",
+              "right": "The two departments support **each other**.",
+              "urdu": "دونوں محکمے ایک دوسرے کی حمایت کرتے ہیں۔",
+              "note": "The plural subject **departments** takes **support**."
             }
           ],
           "practice": [
@@ -3267,64 +3373,78 @@
             }
           ],
           "subjectVerbAgreementUrdu": "",
-          "wordFocus": "Reciprocal pronouns express a mutual relationship: 'each other' and 'one another' refer to members acting toward one another and normally follow a plural subject."
+          "wordFocus": "",
+          "exampleWords": "each other, one another",
+          "ruleExamples": [
+            "The two departments supported **each other**.",
+            "The three teams congratulated **one another**.",
+            "The candidates helped **each other**."
+          ]
         },
         {
           "name": "Distributive Pronoun",
-          "description": "Refers to members of a group separately, especially each, either, and neither.",
-          "urduExplanation": "Distributive pronoun گروہ کے افراد کو الگ الگ ظاہر کرتا ہے۔",
-          "subjectVerbAgreement": "Each of the shortlisted students has been scheduled for an oral assessment. 'Each' is a singular distributive pronoun (the prepositional phrase 'of the shortlisted students' does not change number), so the verb uses the singular form 'has been scheduled' to agree with the subject.",
+          "description": "A Distributive Pronoun refers to members of a group separately, one at a time.",
+          "urduExplanation": "ضمیرِ تقسیمی گروہ کے افراد کی طرف الگ الگ اشارہ کرتا ہے۔",
+          "subjectVerbAgreement": "",
           "examples": [
             {
-              "referenceText": "Each candidate received a separate registration slip.",
-              "referenceUrdu": "ہر امیدوار کو الگ رجسٹریشن پرچی ملی۔",
-              "text": "Each received a separate registration slip.",
-              "urdu": "ہر ایک کو الگ رجسٹریشن پرچی ملی۔",
-              "note": "'Each' refers to members separately and takes the singular verb 'received'."
+              "referenceText": "The candidates submitted forms one by one.",
+              "referenceUrdu": "امیدواروں نے ایک ایک کر کے فارم جمع کرائے۔",
+              "text": "Each of the candidates submitted a form.",
+              "urdu": "ہر امیدوار نے ایک فارم جمع کرایا۔",
+              "note": "**Each** considers the candidates separately and takes **submitted** for the singular meaning."
             },
             {
-              "referenceText": "Either proposal can satisfy the commission’s requirement.",
-              "referenceUrdu": "دونوں میں سے کوئی ایک تجویز کمیشن کی ضرورت پوری کر سکتی ہے۔",
-              "text": "Either can satisfy the commission’s requirement.",
-              "urdu": "دونوں میں سے کوئی ایک کمیشن کی ضرورت پوری کر سکتی ہے۔",
-              "note": "'Either' selects one of two proposals and functions as a singular pronoun."
+              "referenceText": "One of these two routes is suitable.",
+              "referenceUrdu": "ان دو راستوں میں سے ایک مناسب ہے۔",
+              "text": "Either of these routes is suitable.",
+              "urdu": "ان دونوں راستوں میں سے کوئی ایک مناسب ہے۔",
+              "note": "**Either** refers to one of two choices and takes **is**."
             },
             {
-              "referenceText": "Neither recommendation was accepted by the board.",
-              "referenceUrdu": "بورڈ نے دونوں میں سے کوئی سفارش قبول نہیں کی۔",
-              "text": "Neither was accepted by the board.",
-              "urdu": "دونوں میں سے کوئی بھی بورڈ نے قبول نہیں کی۔",
-              "note": "'Neither' means not one of two and takes the singular passive verb 'was accepted'."
+              "referenceText": "Not one of the two answers is correct.",
+              "referenceUrdu": "دونوں میں سے کوئی ایک جواب درست نہیں ہے۔",
+              "text": "Neither of the answers is correct.",
+              "urdu": "دونوں میں سے کوئی جواب درست نہیں ہے۔",
+              "note": "**Neither** means not one of two and takes the singular verb **is**."
             },
             {
-              "referenceText": "Each of the shortlisted candidates has an interview.",
-              "referenceUrdu": "مختصر فہرست میں شامل ہر امیدوار کا انٹرویو ہے۔",
-              "text": "Each has an interview.",
-              "urdu": "ہر ایک کا انٹرویو ہے۔",
-              "note": "'Each' remains singular even when the omitted antecedent is the plural noun 'candidates'."
+              "referenceText": "Each candidate was given a separate time.",
+              "referenceUrdu": "ہر امیدوار کو الگ وقت دیا گیا۔",
+              "text": "Each was given a separate interview time.",
+              "urdu": "ہر ایک کو انٹرویو کا الگ وقت دیا گیا۔",
+              "note": "**Each** refers to people individually without repeating the noun."
             }
           ],
           "rules": [
-            "Refers to members of a group separately, especially each, either, and neither."
+            "**Each** refers to members separately and usually takes a singular verb.",
+            "**Either** means one of two, while **neither** means not one of two.",
+            "Use a singular noun after **each, either,** and **neither**."
           ],
           "commonMistakes": [
             {
-              "wrong": "Each of the candidates have submitted their forms.",
-              "right": "Each of the candidates has submitted his or her form.",
-              "urdu": "ہر امیدوار نے اپنا فارم جمع کروایا ہے۔",
-              "note": "The sentence treats 'Each' as plural; with distributive 'Each' the verb must be singular ('has'), and the pronoun should be singular ('his or her') or the sentence should be rephrased to use 'All' for plural agreement."
+              "wrong": "**Each of the candidates have** a form.",
+              "right": "**Each of the candidates has** a form.",
+              "urdu": "ہر امیدوار کے پاس ایک فارم ہے۔",
+              "note": "**Each** takes a singular verb."
             },
             {
-              "wrong": "Neither of the reports are acceptable.",
-              "right": "Neither of the reports is acceptable.",
-              "urdu": "رپورٹوں میں سے کوئی بھی قابلِ قبول نہیں ہے۔",
-              "note": "Using 'are' with 'Neither' is incorrect because 'Neither' is singular; the plural noun in the prepositional phrase does not determine agreement, so the correct verb is 'is.'"
+              "wrong": "**Either of the options are** acceptable.",
+              "right": "**Either of the options is** acceptable.",
+              "urdu": "دونوں اختیارات میں سے کوئی ایک قابل قبول ہے۔",
+              "note": "**Either** is singular in this structure."
             },
             {
-              "wrong": "Either of the policies were implemented last year.",
-              "right": "Either of the policies was implemented last year.",
-              "urdu": "پالیسیوں میں سے کسی ایک کو پچھلے سال نافذ کیا گیا تھا۔",
-              "note": "'Either' is a singular distributive pronoun, so it requires a singular verb; 'were' is incorrect here and should be 'was.'"
+              "wrong": "**Neither answers are** correct.",
+              "right": "**Neither answer is** correct.",
+              "urdu": "دونوں میں سے کوئی جواب درست نہیں ہے۔",
+              "note": "Use a singular noun and singular verb after **neither**."
+            },
+            {
+              "wrong": "**Each candidates** received a card.",
+              "right": "**Each candidate** received a card.",
+              "urdu": "ہر امیدوار کو ایک کارڈ ملا۔",
+              "note": "**Each** is followed by a singular noun."
             }
           ],
           "practice": [
@@ -3385,64 +3505,78 @@
             }
           ],
           "subjectVerbAgreementUrdu": "",
-          "wordFocus": "Distributive pronouns consider members separately: 'each', 'either', and 'neither' normally take singular verbs because they refer to one member at a time."
+          "wordFocus": "",
+          "exampleWords": "each, either, neither",
+          "ruleExamples": [
+            "**Each** of the candidates has a form.",
+            "**Either** of the routes is safe.",
+            "**Neither** answer is correct."
+          ]
         },
         {
           "name": "Intensive/Emphatic Pronoun",
-          "description": "Adds emphasis to a noun or pronoun and can be removed without changing the basic meaning.",
-          "urduExplanation": "Intensive pronoun subject یا noun پر زور دیتا ہے اور بنیادی معنی برقرار رہتے ہیں۔",
-          "subjectVerbAgreement": "The chief examiner himself reviews each candidate's answers before final grading. The subject is 'The chief examiner' (singular), 'himself' is an intensive pronoun that emphasizes the subject without changing its number, so the verb takes the third-person singular form 'reviews'; the prepositional phrase 'before final grading' does not affect subject–verb agreement.",
+          "description": "An Intensive Pronoun emphasizes a noun or pronoun but does not add a new action.",
+          "urduExplanation": "ضمیرِ تاکیدی کسی اسم یا ضمیر پر زور دیتا ہے لیکن نیا عمل ظاہر نہیں کرتا۔",
+          "subjectVerbAgreement": "",
           "examples": [
             {
-              "referenceText": "The chief examiner reviewed the answers personally.",
-              "referenceUrdu": "چیف ممتحن نے ذاتی طور پر جوابات کا جائزہ لیا۔",
-              "text": "The chief examiner himself reviewed the answers.",
-              "urdu": "چیف ممتحن نے خود جوابات کا جائزہ لیا۔",
-              "note": "'Himself' emphasizes the singular male subject 'chief examiner' without changing the verb."
+              "referenceText": "The director announced the decision.",
+              "referenceUrdu": "ڈائریکٹر نے فیصلے کا اعلان کیا۔",
+              "text": "The director himself announced the decision.",
+              "urdu": "ڈائریکٹر نے خود فیصلے کا اعلان کیا۔",
+              "note": "**Himself** emphasizes the subject **director**."
             },
             {
-              "referenceText": "The commission announced the policy personally.",
-              "referenceUrdu": "کمیشن نے ذاتی طور پر پالیسی کا اعلان کیا۔",
-              "text": "The commission itself announced the policy.",
-              "urdu": "کمیشن نے خود پالیسی کا اعلان کیا۔",
-              "note": "'Itself' adds emphasis to the collective noun 'commission', which remains the subject controlling 'announced'."
+              "referenceText": "The committee approved the policy.",
+              "referenceUrdu": "کمیٹی نے پالیسی منظور کی۔",
+              "text": "The committee itself approved the policy.",
+              "urdu": "کمیٹی نے خود پالیسی منظور کی۔",
+              "note": "**Itself** adds emphasis to **committee**."
             },
             {
-              "referenceText": "The candidates submitted the research report personally.",
-              "referenceUrdu": "امیدواروں نے ذاتی طور پر تحقیقی رپورٹ جمع کرائی۔",
-              "text": "The candidates themselves submitted the research report.",
-              "urdu": "امیدواروں نے خود تحقیقی رپورٹ جمع کرائی۔",
-              "note": "'Themselves' emphasizes the plural subject 'candidates' and agrees with it in number."
+              "referenceText": "The researchers checked the data.",
+              "referenceUrdu": "محققین نے اعداد و شمار کی جانچ کی۔",
+              "text": "The researchers themselves checked the data.",
+              "urdu": "محققین نے خود اعداد و شمار کی جانچ کی۔",
+              "note": "**Themselves** emphasizes the plural subject **researchers**."
             },
             {
-              "referenceText": "The minister signed the agreement personally.",
-              "referenceUrdu": "وزیر نے ذاتی طور پر معاہدے پر دستخط کیے۔",
-              "text": "The minister herself signed the agreement.",
-              "urdu": "وزیر نے خود معاہدے پر دستخط کیے۔",
-              "note": "'Herself' emphasizes the female subject 'minister'; it does not replace the subject or alter the verb."
+              "referenceText": "I prepared the presentation.",
+              "referenceUrdu": "میں نے پریزنٹیشن تیار کی۔",
+              "text": "I myself prepared the presentation.",
+              "urdu": "میں نے خود پریزنٹیشن تیار کی۔",
+              "note": "**Myself** emphasizes the subject **I**."
             }
           ],
           "rules": [
-            "Adds emphasis to a noun or pronoun and can be removed without changing the basic meaning."
+            "An **Intensive Pronoun** can be removed without destroying the basic sentence.",
+            "It usually comes directly after the noun or at the end for emphasis.",
+            "Do not confuse an Intensive Pronoun with a Reflexive Pronoun that is needed as an object."
           ],
           "commonMistakes": [
             {
-              "wrong": "Myself submitted the application.",
-              "right": "I myself submitted the application.",
-              "urdu": "میں نے خود درخواست جمع کروائی۔",
-              "note": "'Myself submitted the application.' uses the reflexive pronoun 'myself' as the subject, which is incorrect; use the subject pronoun 'I' and optionally retain 'myself' for emphasis: 'I myself submitted the application.'"
+              "wrong": "**Myself** prepared the report.",
+              "right": "**I** prepared the report.",
+              "urdu": "میں نے رپورٹ تیار کی۔",
+              "note": "An Intensive Pronoun cannot replace the ordinary subject **I**."
             },
             {
-              "wrong": "The officer herselfs approved it.",
-              "right": "The officer herself approved it.",
-              "urdu": "آفیسر نے خود اس کی منظوری دی۔",
-              "note": "'The officer herselfs approved it.' shows an invalid plural form 'herselfs'; intensive pronouns do not take plural endings, so use 'herself'."
+              "wrong": "The officer blamed **him** for the error himself.",
+              "right": "The officer blamed **himself** for the error.",
+              "urdu": "افسر نے خود کو غلطی کا ذمہ دار ٹھہرایا۔",
+              "note": "The intended emphasis is on the officer as the doer, so the natural sentence uses **himself** as the object."
             },
             {
-              "wrong": "The candidates himself answered.",
-              "right": "The candidates themselves answered.",
-              "urdu": "امیدواروں نے خود جواب دیا۔",
-              "note": "'The candidates himself answered.' has a number/gender mismatch: 'candidates' is plural, so the intensive pronoun must be plural 'themselves'."
+              "wrong": "The committee **itself approved** the policy itself.",
+              "right": "The committee itself approved the policy.",
+              "urdu": "کمیٹی نے خود پالیسی منظور کی۔",
+              "note": "Use emphasis once; the repeated form is unnecessary."
+            },
+            {
+              "wrong": "The researchers **themselves checked** the data themselves.",
+              "right": "The researchers themselves checked the data.",
+              "urdu": "محققین نے خود اعداد و شمار کی جانچ کی۔",
+              "note": "Do not repeat the same emphasis at both positions."
             }
           ],
           "practice": [
@@ -3503,7 +3637,13 @@
             }
           ],
           "subjectVerbAgreementUrdu": "",
-          "wordFocus": "Intensive pronouns add emphasis to a noun or pronoun: 'herself', 'himself', and 'themselves' stress who performed the action but do not change the subject's verb agreement."
+          "wordFocus": "",
+          "exampleWords": "myself, yourself, himself, herself, itself, ourselves, themselves",
+          "ruleExamples": [
+            "The director **himself** announced the decision.",
+            "The committee approved the policy **itself**.",
+            "The minister **herself** addressed the candidates."
+          ]
         }
       ],
       "rules": [
