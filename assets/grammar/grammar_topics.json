@@ -3725,55 +3725,62 @@
       "types": [
         {
           "name": "Action Verb",
-          "description": "An action verb expresses a physical or mental action performed by the subject, such as review, decide, analyse, or implement.",
-          "urduExplanation": "فعلِ عمل کسی شخص یا چیز کی طرف سے کیے جانے والے جسمانی یا ذہنی کام کو ظاہر کرتا ہے، جیسے جائزہ لینا، فیصلہ کرنا، تجزیہ کرنا یا نافذ کرنا۔",
+          "description": "An action verb shows what a person, animal, or thing does.",
+          "urduExplanation": "فعلِ عمل وہ لفظ ہے جو کسی شخص، جانور یا چیز کے کسی کام کرنے کو ظاہر کرے۔",
           "wordFocus": "In 'The commission reviewed the appeals', 'reviewed' is the action verb, 'commission' is the subject, and 'appeals' is the direct object.",
           "subjectVerbAgreement": "The commission reviewed the candidates' appeals. 'Reviewed' is an action verb showing a completed action; the singular subject 'commission' performs it, and the plural object 'appeals' does not control the verb.",
           "rules": [
-            "Action verbs can describe physical or mental activity.",
-            "The verb must show the correct tense for the time of the action.",
-            "A transitive action verb is followed by a direct object, but an intransitive action verb can stand without one."
+            "Action verbs can describe **physical** and **mental** actions.",
+            "Action verbs can show actions in different **tenses**.",
+            "Some action verbs take an **object**.",
+            "Some action verbs do not need an **object**."
           ],
           "examples": [
             {
-              "text": "The commission reviewed the candidates’ appeals before issuing its decision.",
-              "urdu": "کمیشن نے فیصلہ جاری کرنے سے پہلے امیدواروں کی اپیلوں کا جائزہ لیا۔",
-              "note": "'Reviewed' is a past-tense action verb; 'commission' is the subject and 'appeals' is the direct object."
+              "text": "Ali plays cricket every evening.",
+              "urdu": "علی ہر شام کرکٹ کھیلتا ہے۔",
+              "note": "**Plays** is an action verb. The subject **Ali** is singular, so the present verb takes **-s**."
             },
             {
-              "text": "The policy analyst examined the budget and identified two risks.",
-              "urdu": "پالیسی تجزیہ کار نے بجٹ کا جائزہ لیا اور دو خطرات کی نشاندہی کی۔",
-              "note": "'Examined' and 'identified' are coordinated action verbs with the analyst as their subject."
+              "text": "The boy kicks the ball.",
+              "urdu": "لڑکا گیند کو لات مارتا ہے۔",
+              "note": "**Kicks** is a physical action verb. The ball is the object receiving the action."
             },
             {
-              "text": "Although the evidence was limited, the committee evaluated the proposal carefully.",
-              "urdu": "اگرچہ شواہد محدود تھے، کمیٹی نے تجویز کا بغور جائزہ لیا۔",
-              "note": "'Evaluated' expresses the committee’s mental action; the concessive clause does not change its past tense."
+              "text": "I remember his name.",
+              "urdu": "مجھے اس کا نام یاد ہے۔",
+              "note": "**Remember** is a mental action verb because the action happens in the mind."
             },
             {
-              "text": "Candidates should analyse the question before selecting an answer.",
-              "urdu": "امیدواروں کو جواب منتخب کرنے سے پہلے سوال کا تجزیہ کرنا چاہیے۔",
-              "note": "'Analyse' is the base action verb after the modal 'should'."
+              "text": "The baby cried loudly.",
+              "urdu": "بچہ زور سے رویا۔",
+              "note": "**Cried** is an action verb, and the sentence is complete without an object."
             }
           ],
           "commonMistakes": [
             {
-              "wrong": "The committee review the proposal yesterday.",
-              "right": "The committee reviewed the proposal yesterday.",
-              "urdu": "کمیٹی نے گزشتہ روز تجویز کا جائزہ لیا۔",
-              "note": "The time marker 'yesterday' requires the past form 'reviewed', not the present form 'review'."
+              "wrong": "He **play** cricket every day.",
+              "right": "He **plays** cricket every day.",
+              "urdu": "وہ ہر روز کرکٹ کھیلتا ہے۔",
+              "note": "With **he, she, it**, or a singular noun in the simple present, the action verb usually takes **-s/-es**."
             },
             {
-              "wrong": "The analyst discussed about the policy.",
-              "right": "The analyst discussed the policy.",
-              "urdu": "تجزیہ کار نے پالیسی پر بحث کی۔",
-              "note": "'Discuss' takes a direct object and does not require the preposition 'about' before the object."
+              "wrong": "They **studies** every day.",
+              "right": "They **study** every day.",
+              "urdu": "وہ ہر روز پڑھتے ہیں۔",
+              "note": "With **they, you, we**, or a plural noun, use the base form **study**."
             },
             {
-              "wrong": "The candidates has prepared the reports.",
-              "right": "The candidates have prepared the reports.",
-              "urdu": "امیدواروں نے رپورٹس تیار کر لی ہیں۔",
-              "note": "The plural subject 'candidates' requires the plural auxiliary 'have'."
+              "wrong": "He does not **plays** cricket.",
+              "right": "He does not **play** cricket.",
+              "urdu": "وہ کرکٹ نہیں کھیلتا۔",
+              "note": "After **does**, use the base form of the action verb."
+            },
+            {
+              "wrong": "He did not **went** to school.",
+              "right": "He did not **go** to school.",
+              "urdu": "وہ اسکول نہیں گیا۔",
+              "note": "After **did**, always use the base form **go**, not the past form **went**."
             }
           ],
           "examTips": [
@@ -3854,6 +3861,13 @@
               "Usually yes",
               "An essay receives the action: The applicant wrote an essay."
             ]
+          ],
+          "exampleWords": "run, write, eat, speak, jump",
+          "ruleExamples": [
+            "**Physical:** The boy **kicks** the ball. **Mental:** I **remember** his name.",
+            "He **plays** cricket. He **played** cricket. He **will play** cricket.",
+            "Ali **opened** the door. Sara **wrote** a letter.",
+            "The baby **cried**. The children **laughed**."
           ]
         },
         {
@@ -3863,9 +3877,9 @@
           "wordFocus": "In 'The revised policy is effective', 'is' links the subject 'policy' to the adjective complement 'effective'.",
           "subjectVerbAgreement": "The revised policy is effective. 'Is' is a linking verb connecting the singular subject 'policy' with the adjective 'effective'; it does not take a direct object.",
           "rules": [
-            "Forms of be, seem, become, remain, and appear can function as linking verbs.",
-            "A linking verb is followed by a subject complement, usually a noun or adjective.",
-            "Use a subject form after a linking verb when the complement identifies the subject in formal examination grammar."
+            "A linking verb connects the **subject** with a word that describes it.",
+            "Use a form of **be** that agrees with the subject.",
+            "Some verbs such as **look** and **feel** can be linking or action verbs depending on the sentence."
           ],
           "examples": [
             {
@@ -3907,6 +3921,12 @@
               "right": "The main purpose is improving accountability.",
               "urdu": "بنیادی مقصد جواب دہی کو بہتر بنانا ہے۔",
               "note": "In this intended noun-complement pattern, the gerund phrase 'improving accountability' names the purpose; the infinitive construction changes the structure and emphasis."
+            },
+            {
+              "wrong": "The policy **are** effective.",
+              "right": "The policy **is** effective.",
+              "urdu": "پالیسی مؤثر ہے۔",
+              "note": "The singular subject **policy** takes **is**."
             }
           ],
           "examTips": [
@@ -3996,6 +4016,12 @@
               "Adjective",
               "Sounds links information or speech to an impression."
             ]
+          ],
+          "exampleWords": "be, seem, become, appear, remain, feel, look",
+          "ruleExamples": [
+            "The policy **is** effective.",
+            "The results **are** uncertain.",
+            "The officer **looked** tired, but she **looked at** the report."
           ]
         },
         {
@@ -4005,9 +4031,9 @@
           "wordFocus": "In 'The commission has approved the policy', 'has' is the auxiliary and 'approved' is the main verb.",
           "subjectVerbAgreement": "The commission has approved the policy. 'Has' is the singular auxiliary agreeing with 'commission', while 'approved' remains the past participle in the present perfect tense.",
           "rules": [
-            "Be, have, and do can act as auxiliaries.",
-            "After do, does, or did, use the base form of the main verb.",
-            "In perfect tenses, have/has/had is followed by a past participle; in passive voice, be is followed by a past participle."
+            "Use **do, does,** or **did** for questions and negatives.",
+            "After **do, does,** or **did**, use the **base verb**.",
+            "Use **has/have + past participle** for the perfect tense."
           ],
           "examples": [
             {
@@ -4049,6 +4075,12 @@
               "right": "The reports are being reviewed.",
               "urdu": "رپورٹس کا جائزہ لیا جا رہا ہے۔",
               "note": "The plural subject 'reports' requires the plural auxiliary 'are'."
+            },
+            {
+              "wrong": "The committee **has approve** the policy.",
+              "right": "The committee **has approved** the policy.",
+              "urdu": "کمیٹی نے پالیسی منظور کر لی ہے۔",
+              "note": "After **has**, use the past participle **approved**."
             }
           ],
           "examTips": [
@@ -4106,6 +4138,12 @@
               "Past passive",
               "The result was announced."
             ]
+          ],
+          "exampleWords": "is, are, was, have, has, do, does, did, will",
+          "ruleExamples": [
+            "The candidate **does not submit** late.",
+            "The commission **did not approve** the proposal.",
+            "The panel **has reviewed** the report."
           ]
         },
         {
@@ -4115,9 +4153,9 @@
           "wordFocus": "In 'Candidates must submit original documents', 'must' is the modal and 'submit' is the base main verb.",
           "subjectVerbAgreement": "Candidates must submit the original documents. The modal 'must' is unchanged for every subject, and it is followed by the base verb 'submit', not 'submits' or 'submitted'.",
           "rules": [
-            "A modal is followed by the base form of the verb.",
-            "Modals do not take -s for a third-person singular subject.",
-            "Use must for strong obligation, should for advice, may/might for possibility, and can/could for ability or permission according to context."
+            "A modal is followed by the **base verb**.",
+            "A modal does not take **-s** for he, she, or it.",
+            "Use **must** for strong obligation and **should** for advice."
           ],
           "examples": [
             {
@@ -4159,6 +4197,12 @@
               "right": "Candidates can achieve better results.",
               "urdu": "امیدوار بہتر نتائج حاصل کر سکتے ہیں۔",
               "note": "After 'can', use the base form 'achieve', not the past form 'achieved'."
+            },
+            {
+              "wrong": "The candidate **must submits** the form.",
+              "right": "The candidate **must submit** the form.",
+              "urdu": "امیدوار کو فارم جمع کرانا ہوگا۔",
+              "note": "After the modal **must**, use the base verb **submit**."
             }
           ],
           "examTips": [
@@ -4216,6 +4260,12 @@
               "The committee could reconsider the decision.",
               "Could is followed by reconsider."
             ]
+          ],
+          "exampleWords": "can, could, may, might, must, should, will, would",
+          "ruleExamples": [
+            "Candidates **must submit** the form.",
+            "The policy **may improve** public services.",
+            "The ministry **should revise** the rule."
           ]
         },
         {
@@ -4225,9 +4275,9 @@
           "wordFocus": "In 'The examiner evaluated the answer scripts', 'evaluated' is transitive and 'answer scripts' is its direct object.",
           "subjectVerbAgreement": "The examiner evaluated the answer scripts. 'Evaluated' is a transitive verb, 'examiner' is the singular subject, and 'answer scripts' is the direct object receiving the action.",
           "rules": [
-            "A transitive verb normally requires a direct object to complete its meaning.",
-            "The direct object follows the verb without a necessary preposition.",
-            "A passive sentence can be formed by moving the object into the subject position."
+            "A transitive verb normally needs a **direct object**.",
+            "The direct object answers **what** or **whom** after the verb.",
+            "Do not add an unnecessary preposition before the object of verbs such as **discuss**."
           ],
           "examples": [
             {
@@ -4269,6 +4319,12 @@
               "right": "The examiner explained the rule to the candidates.",
               "urdu": "ممتحن نے امیدواروں کو قاعدہ سمجھایا۔",
               "note": "With 'explain', the thing explained is the direct object; use 'to' before the recipient."
+            },
+            {
+              "wrong": "The committee **discussed about** the proposal.",
+              "right": "The committee **discussed** the proposal.",
+              "urdu": "کمیٹی نے تجویز پر بحث کی۔",
+              "note": "The transitive verb **discuss** takes a direct object without **about**."
             }
           ],
           "examTips": [
@@ -4326,6 +4382,12 @@
               "No direct object",
               "The delegation arrived at the venue."
             ]
+          ],
+          "exampleWords": "open, write, evaluate, approve, discuss, submit",
+          "ruleExamples": [
+            "The examiner **evaluated the scripts**.",
+            "The commission approved **what? The policy**.",
+            "The committee **discussed the proposal**, not discussed about the proposal."
           ]
         },
         {
@@ -4335,9 +4397,9 @@
           "wordFocus": "In 'The delegation arrived before the hearing', 'arrived' is complete without a direct object; the remaining phrase gives time.",
           "subjectVerbAgreement": "The delegation arrived before the hearing. 'Arrived' is an intransitive verb with no direct object; 'before the hearing' is a prepositional phrase, and 'delegation' is the subject.",
           "rules": [
-            "An intransitive verb does not take a direct object.",
-            "A prepositional phrase after an intransitive verb is not a direct object.",
-            "Some verbs can be transitive or intransitive depending on the sentence, so examine the context."
+            "An intransitive verb can complete its meaning without a **direct object**.",
+            "A phrase after a preposition is not a **direct object**.",
+            "Some intransitive verbs cannot normally be changed into the **passive voice**."
           ],
           "examples": [
             {
@@ -4379,6 +4441,12 @@
               "right": "The evidence disappeared during the audit.",
               "urdu": "آڈٹ کے دوران شواہد غائب ہو گئے۔",
               "note": "'Disappeared' is complete without an object; the extra pronoun 'it' is grammatically unnecessary."
+            },
+            {
+              "wrong": "The delegation **arrived the venue** on time.",
+              "right": "The delegation **arrived at the venue** on time.",
+              "urdu": "وفد وقت پر مقام پر پہنچ گیا۔",
+              "note": "The intransitive verb **arrive** needs **at** before a specific place; the place is not a direct object."
             }
           ],
           "examTips": [
@@ -4436,6 +4504,12 @@
               "To + noun",
               "To public concerns is a prepositional phrase, not an object."
             ]
+          ],
+          "exampleWords": "arrive, cry, laugh, sleep, occur, disappear",
+          "ruleExamples": [
+            "The delegation **arrived** on time.",
+            "The baby **cried** in the room.",
+            "The problem **occurred** during the audit."
           ]
         }
       ],
