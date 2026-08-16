@@ -478,9 +478,19 @@ class GrammarTypeContent extends StatelessWidget {
               ),
             ),
           ],
-          if (type.wordFocus.isNotEmpty) ...<Widget>[
-            const _TypeSubheading(title: 'Identify the Type', icon: Icons.label_outline),
-            Text(type.wordFocus, style: theme.textTheme.bodyMedium?.copyWith(height: 1.4)),
+          if (type.exampleWords.isNotEmpty) ...<Widget>[
+            Padding(
+              padding: const EdgeInsets.only(top: 12, bottom: 8),
+              child: Text.rich(
+                TextSpan(
+                  style: theme.textTheme.bodyMedium?.copyWith(height: 1.45),
+                  children: <InlineSpan>[
+                    const TextSpan(text: 'E.g.: ', style: TextStyle(fontWeight: FontWeight.w800)),
+                    TextSpan(text: type.exampleWords),
+                  ],
+                ),
+              ),
+            ),
           ],
           if (type.pronounTable.isNotEmpty) ...<Widget>[
             const _TypeSubheading(title: 'Personal Pronoun Forms', icon: Icons.table_chart_outlined),
@@ -672,6 +682,17 @@ class _TypeSubheading extends StatelessWidget {
   }
 }
 
+List<TextSpan> _boldMarkedSpans(String text) {
+  final List<String> parts = text.split('**');
+  return <TextSpan>[
+    for (int i = 0; i < parts.length; i++)
+      TextSpan(
+        text: parts[i],
+        style: i.isOdd ? const TextStyle(fontWeight: FontWeight.w800) : null,
+      ),
+  ];
+}
+
 class _RuleItem extends StatelessWidget {
   const _RuleItem({required this.rule, this.example});
   final String rule;
@@ -680,14 +701,7 @@ class _RuleItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final ThemeData theme = Theme.of(context);
-    final List<String> parts = rule.split('**');
-    final List<TextSpan> spans = <TextSpan>[];
-    for (int i = 0; i < parts.length; i++) {
-      spans.add(TextSpan(
-        text: parts[i],
-        style: i.isOdd ? const TextStyle(fontWeight: FontWeight.w800) : null,
-      ));
-    }
+    final List<TextSpan> spans = _boldMarkedSpans(rule);
     return Padding(
       padding: const EdgeInsets.only(bottom: 10),
       child: Row(
@@ -701,7 +715,15 @@ class _RuleItem extends StatelessWidget {
                 Text.rich(TextSpan(style: theme.textTheme.bodyMedium?.copyWith(height: 1.4), children: spans)),
                 if (example != null && example!.isNotEmpty) ...<Widget>[
                   const SizedBox(height: 3),
-                  Text('Example: $example', style: theme.textTheme.bodySmall?.copyWith(color: theme.colorScheme.primary, fontStyle: FontStyle.italic)),
+                  Text.rich(
+                  TextSpan(
+                    style: theme.textTheme.bodySmall?.copyWith(color: theme.colorScheme.primary, fontStyle: FontStyle.italic),
+                    children: <InlineSpan>[
+                      const TextSpan(text: 'Example: '),
+                      ..._boldMarkedSpans(example!),
+                    ],
+                  ),
+                ),
                 ],
               ],
             ),

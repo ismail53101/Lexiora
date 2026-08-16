@@ -90,6 +90,7 @@ class GrammarType extends Equatable {
     required this.description,
     this.urduExplanation = '',
     this.wordFocus = '',
+    this.exampleWords = '',
     this.pronounTable = const <GrammarPronounRow>[],
     this.tableTitle = '',
     this.tableColumns = const <String>[],
@@ -107,6 +108,8 @@ class GrammarType extends Equatable {
   final String description;
   final String urduExplanation;
   final String wordFocus;
+  /// Short category-specific words shown after the English and Urdu definitions.
+  final String exampleWords;
   final List<GrammarPronounRow> pronounTable;
   final String tableTitle;
   final List<String> tableColumns;
@@ -137,6 +140,7 @@ class GrammarType extends Equatable {
         description,
         urduExplanation,
         wordFocus,
+        exampleWords,
         pronounTable,
         tableTitle,
         tableColumns,

@@ -314,6 +314,7 @@ class GrammarLocalDataSource {
             description: desc,
             urduExplanation: _str(e['urduExplanation']),
             wordFocus: _str(e['wordFocus']),
+            exampleWords: _str(e['exampleWords']),
             pronounTable: _pronounRows(e['pronounTable']),
             tableTitle: _str(e['tableTitle']),
             tableColumns: _strList(e['tableColumns']),

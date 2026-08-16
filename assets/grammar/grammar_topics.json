@@ -963,7 +963,7 @@
             }
           ],
           "subjectVerbAgreementUrdu": "",
-          "wordFocus": "Proper Nouns name specific people, places, days, countries, or institutions. Examples include Rashid, Quetta, Monday, Pakistan, and the Supreme Court.",
+          "wordFocus": "",
           "tableTitle": "",
           "tableColumns": [],
           "tableRows": [],
@@ -971,7 +971,8 @@
             "**Islamabad** is the capital of Pakistan.",
             "**Monday** is the first day of the examination.",
             "**Ali** is my friend."
-          ]
+          ],
+          "exampleWords": "Rashid, Quetta, Monday, Pakistan, Supreme Court"
         },
         {
           "name": "Common Noun",
@@ -1119,7 +1120,7 @@
             }
           ],
           "subjectVerbAgreementUrdu": "",
-          "wordFocus": "Common Nouns name general classes. In “The student reads a book,” student and book are Common Nouns, not specific names.",
+          "wordFocus": "",
           "tableTitle": "",
           "tableColumns": [],
           "tableRows": [],
@@ -1127,7 +1128,8 @@
             "The **boy** goes to **school**.",
             "A **candidate** submitted an application.",
             "The **book** on the table is mine."
-          ]
+          ],
+          "exampleWords": "boy, school, hospital, book, river"
         },
         {
           "name": "Collective Noun",
@@ -1263,7 +1265,7 @@
             }
           ],
           "subjectVerbAgreementUrdu": "",
-          "wordFocus": "In “The committee approved the plan,” committee is a Collective Noun because it names a group acting as one unit.",
+          "wordFocus": "",
           "tableTitle": "",
           "tableColumns": [],
           "tableRows": [],
@@ -1271,7 +1273,8 @@
             "A **jury** reached one decision.",
             "The **committee approves** the plan.",
             "The **family are sitting** in different rooms."
-          ]
+          ],
+          "exampleWords": "family, team, jury, committee, staff"
         },
         {
           "name": "Abstract Noun",
@@ -1407,7 +1410,7 @@
             }
           ],
           "subjectVerbAgreementUrdu": "",
-          "wordFocus": "In “Honesty builds trust,” honesty and trust are Abstract Nouns because they name qualities or ideas.",
+          "wordFocus": "",
           "tableTitle": "",
           "tableColumns": [],
           "tableRows": [],
@@ -1415,7 +1418,8 @@
             "**Honesty** is a valuable quality.",
             "**Justice** is important in every court.",
             "**Courage** helped the candidate face the interview."
-          ]
+          ],
+          "exampleWords": "honesty, courage, justice, freedom, wisdom"
         },
         {
           "name": "Countable Noun",
@@ -1551,7 +1555,7 @@
             }
           ],
           "subjectVerbAgreementUrdu": "",
-          "wordFocus": "In “one candidate” and “three candidates,” candidate is Countable because it has singular and plural forms.",
+          "wordFocus": "",
           "tableTitle": "",
           "tableColumns": [],
           "tableRows": [],
@@ -1559,7 +1563,8 @@
             "A **candidate** submitted a form.",
             "Two **reports** reached the office.",
             "Several **questions** appeared in the test."
-          ]
+          ],
+          "exampleWords": "book, candidate, question, report, document"
         },
         {
           "name": "Uncountable Noun",
@@ -1695,7 +1700,7 @@
             }
           ],
           "subjectVerbAgreementUrdu": "",
-          "wordFocus": "In “The research is useful,” research is Uncountable, so it is not written as researches for this meaning.",
+          "wordFocus": "",
           "tableTitle": "",
           "tableColumns": [],
           "tableRows": [],
@@ -1703,7 +1708,8 @@
             "**Information** is useful for candidates.",
             "The **research** supports the policy.",
             "The office needs **some equipment**."
-          ]
+          ],
+          "exampleWords": "water, advice, information, furniture, equipment"
         },
         {
           "name": "Material Noun",
@@ -1839,7 +1845,7 @@
             }
           ],
           "subjectVerbAgreementUrdu": "",
-          "wordFocus": "In “The bridge is made of steel,” steel is a Material Noun because it names the substance used to make the bridge.",
+          "wordFocus": "",
           "tableTitle": "",
           "tableColumns": [],
           "tableRows": [],
@@ -1847,7 +1853,8 @@
             "**Gold** is used in jewellery.",
             "**Wood** is a useful material.",
             "The chair is **made of wood**."
-          ]
+          ],
+          "exampleWords": "gold, wood, iron, cotton, silver"
         },
         {
           "name": "Compound Noun",
@@ -1983,7 +1990,7 @@
             }
           ],
           "subjectVerbAgreementUrdu": "",
-          "wordFocus": "In “The examination hall is crowded,” examination hall is a Compound Noun made from examination + hall.",
+          "wordFocus": "",
           "tableTitle": "",
           "tableColumns": [],
           "tableRows": [],
@@ -1991,7 +1998,8 @@
             "The **classroom** is ready for the lesson.",
             "The **examination hall** opens at eight o’clock.",
             "The **civil-service exam** begins tomorrow."
-          ]
+          ],
+          "exampleWords": "classroom, examination hall, policymaker, research report, civil-service exam"
         }
       ],
       "rules": [
