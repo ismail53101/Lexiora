@@ -322,6 +322,7 @@ class GrammarLocalDataSource {
             subjectVerbAgreementUrdu: _str(e['subjectVerbAgreementUrdu']),
             examples: _examples(e['examples']),
             rules: _strList(e['rules']),
+            ruleExamples: _strList(e['ruleExamples']),
             commonMistakes: _mistakes(e['commonMistakes']),
             practice: _questions(e['practice']),
           ));

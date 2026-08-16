@@ -850,9 +850,9 @@
             }
           ],
           "rules": [
-            "Always begin a Proper Noun with a capital letter: Islamabad, Monday, Amazon.",
-            "A Proper Noun names one specific person, place, day, country, or institution.",
-            "Do not use a or an before most Proper Nouns: Ali is my friend, not A Ali is my friend."
+            "Always begin a **Proper Noun** with a **capital letter**.",
+            "A Proper Noun names one **specific person, place, day, country, or institution**.",
+            "Do not use **a** or **an** before most Proper Nouns."
           ],
           "commonMistakes": [
             {
@@ -904,7 +904,7 @@
               "explanation": "The name of the subject is written as Pakistan Studies."
             }
           ],
-          "subjectVerbAgreement": "Islamabad attracts many visitors each year.",
+          "subjectVerbAgreement": "",
           "quiz": [
             {
               "question": "Which is a proper noun in “Ayesha visited Lahore”?",
@@ -966,7 +966,12 @@
           "wordFocus": "Proper Nouns name specific people, places, days, countries, or institutions. Examples include Rashid, Quetta, Monday, Pakistan, and the Supreme Court.",
           "tableTitle": "",
           "tableColumns": [],
-          "tableRows": []
+          "tableRows": [],
+          "ruleExamples": [
+            "**Islamabad** is the capital of Pakistan.",
+            "**Monday** is the first day of the examination.",
+            "**Ali** is my friend."
+          ]
         },
         {
           "name": "Common Noun",
@@ -995,9 +1000,9 @@
             }
           ],
           "rules": [
-            "A Common Noun names a general person, place, animal, or thing: boy, city, teacher, river, book, school.",
-            "Use a or an with one singular countable Common Noun when needed: a boy, an exam.",
-            "Use the when the context makes a Common Noun specific: The book on the table is mine."
+            "A **Common Noun** names a **general person, place, animal, or thing**.",
+            "Use **a** or **an** with one **singular countable Common Noun** when needed.",
+            "Use **the** when the context makes a Common Noun **specific**."
           ],
           "commonMistakes": [
             {
@@ -1055,7 +1060,7 @@
               "explanation": "Book is singular and countable, so it needs a."
             }
           ],
-          "subjectVerbAgreement": "The student reads a book in the library.",
+          "subjectVerbAgreement": "",
           "quiz": [
             {
               "question": "Which is common in “The teacher entered”?",
@@ -1117,7 +1122,12 @@
           "wordFocus": "Common Nouns name general classes. In “The student reads a book,” student and book are Common Nouns, not specific names.",
           "tableTitle": "",
           "tableColumns": [],
-          "tableRows": []
+          "tableRows": [],
+          "ruleExamples": [
+            "The **boy** goes to **school**.",
+            "A **candidate** submitted an application.",
+            "The **book** on the table is mine."
+          ]
         },
         {
           "name": "Collective Noun",
@@ -1146,9 +1156,9 @@
             }
           ],
           "rules": [
-            "A Collective Noun names a group.",
-            "Use a singular verb when the group acts as one unit.",
-            "A plural verb may be used when the members act separately."
+            "A **Collective Noun** names a **group** of people, animals, or things.",
+            "Use a **singular verb** when the group acts as **one unit**.",
+            "A **plural verb** may be used when the **members act separately**."
           ],
           "commonMistakes": [
             {
@@ -1194,7 +1204,7 @@
               "explanation": "Flock names a group of birds."
             }
           ],
-          "subjectVerbAgreement": "The committee approves the new policy.",
+          "subjectVerbAgreement": "",
           "quiz": [
             {
               "question": "Choose the correct sentence.",
@@ -1256,7 +1266,12 @@
           "wordFocus": "In “The committee approved the plan,” committee is a Collective Noun because it names a group acting as one unit.",
           "tableTitle": "",
           "tableColumns": [],
-          "tableRows": []
+          "tableRows": [],
+          "ruleExamples": [
+            "A **jury** reached one decision.",
+            "The **committee approves** the plan.",
+            "The **family are sitting** in different rooms."
+          ]
         },
         {
           "name": "Abstract Noun",
@@ -1285,9 +1300,9 @@
             }
           ],
           "rules": [
-            "An Abstract Noun names an idea, quality, feeling, or state.",
-            "Abstract Nouns are often uncountable and take a singular verb.",
-            "Use the exact form: honesty, not honest, when naming a quality."
+            "An **Abstract Noun** names an **idea, quality, feeling, or state**.",
+            "Abstract Nouns are often **uncountable** and take a **singular verb**.",
+            "Use an Abstract Noun to discuss an **idea or quality**, not a physical object."
           ],
           "commonMistakes": [
             {
@@ -1333,7 +1348,7 @@
               "explanation": "Bravery is the standard abstract noun."
             }
           ],
-          "subjectVerbAgreement": "Honesty builds public trust.",
+          "subjectVerbAgreement": "",
           "quiz": [
             {
               "question": "Which is abstract in “Justice should be equal”?",
@@ -1395,7 +1410,12 @@
           "wordFocus": "In “Honesty builds trust,” honesty and trust are Abstract Nouns because they name qualities or ideas.",
           "tableTitle": "",
           "tableColumns": [],
-          "tableRows": []
+          "tableRows": [],
+          "ruleExamples": [
+            "**Honesty** is a valuable quality.",
+            "**Justice** is important in every court.",
+            "**Courage** helped the candidate face the interview."
+          ]
         },
         {
           "name": "Countable Noun",
@@ -1424,9 +1444,9 @@
             }
           ],
           "rules": [
-            "A singular Countable Noun can take a or an.",
-            "Use numbers such as one, two, or several with Countable Nouns.",
-            "A plural Countable Noun normally takes a plural verb."
+            "A singular **Countable Noun** can take **a** or **an**.",
+            "Use **numbers** such as one, two, or several with Countable Nouns.",
+            "Plural Countable Nouns can take **many**, **few**, or **several**."
           ],
           "commonMistakes": [
             {
@@ -1472,7 +1492,7 @@
               "explanation": "Criteria is the plural of criterion in formal English."
             }
           ],
-          "subjectVerbAgreement": "Each candidate submits the required document.",
+          "subjectVerbAgreement": "",
           "quiz": [
             {
               "question": "Choose the correct sentence.",
@@ -1534,7 +1554,12 @@
           "wordFocus": "In “one candidate” and “three candidates,” candidate is Countable because it has singular and plural forms.",
           "tableTitle": "",
           "tableColumns": [],
-          "tableRows": []
+          "tableRows": [],
+          "ruleExamples": [
+            "A **candidate** submitted a form.",
+            "Two **reports** reached the office.",
+            "Several **questions** appeared in the test."
+          ]
         },
         {
           "name": "Uncountable Noun",
@@ -1563,9 +1588,9 @@
             }
           ],
           "rules": [
-            "Uncountable Nouns normally take a singular verb.",
-            "Use much, little, or some with many common Uncountable Nouns.",
-            "Do not add plural s to words such as information, advice, equipment, or evidence."
+            "An **Uncountable Noun** names a substance, idea, or mass that is not normally counted separately.",
+            "Uncountable Nouns normally take a **singular verb**.",
+            "Use **much**, **little**, or **some**, not **a** or **an**, with many Uncountable Nouns."
           ],
           "commonMistakes": [
             {
@@ -1611,7 +1636,7 @@
               "explanation": "Furniture is uncountable and takes a singular verb."
             }
           ],
-          "subjectVerbAgreement": "The research is useful for the examination.",
+          "subjectVerbAgreement": "",
           "quiz": [
             {
               "question": "Choose the correct sentence.",
@@ -1673,7 +1698,12 @@
           "wordFocus": "In “The research is useful,” research is Uncountable, so it is not written as researches for this meaning.",
           "tableTitle": "",
           "tableColumns": [],
-          "tableRows": []
+          "tableRows": [],
+          "ruleExamples": [
+            "**Information** is useful for candidates.",
+            "The **research** supports the policy.",
+            "The office needs **some equipment**."
+          ]
         },
         {
           "name": "Material Noun",
@@ -1702,9 +1732,9 @@
             }
           ],
           "rules": [
-            "A Material Noun names a substance.",
-            "Use made of when the material is still easy to recognize.",
-            "Use made from when the original material changes during production."
+            "A **Material Noun** names a **substance or material**.",
+            "Material Nouns are usually **uncountable** when they refer to material in general.",
+            "Use **made of** when the material is still easy to recognize."
           ],
           "commonMistakes": [
             {
@@ -1750,7 +1780,7 @@
               "explanation": "Water is normally uncountable and takes is."
             }
           ],
-          "subjectVerbAgreement": "Steel is used in the bridge.",
+          "subjectVerbAgreement": "",
           "quiz": [
             {
               "question": "Which is material in “The ring is silver”?",
@@ -1812,7 +1842,12 @@
           "wordFocus": "In “The bridge is made of steel,” steel is a Material Noun because it names the substance used to make the bridge.",
           "tableTitle": "",
           "tableColumns": [],
-          "tableRows": []
+          "tableRows": [],
+          "ruleExamples": [
+            "**Gold** is used in jewellery.",
+            "**Wood** is a useful material.",
+            "The chair is **made of wood**."
+          ]
         },
         {
           "name": "Compound Noun",
@@ -1841,9 +1876,9 @@
             }
           ],
           "rules": [
-            "A Compound Noun joins words to give one meaning.",
-            "Compound Nouns may be written as one word, two words, or with a hyphen.",
-            "Make the main noun plural when forming a plural Compound Noun, such as examination halls."
+            "A **Compound Noun** joins **two or more words** to give one meaning.",
+            "Compound Nouns may be written as **one word, two words, or with a hyphen**.",
+            "In a compound noun, identify the **complete expression**, not only one word."
           ],
           "commonMistakes": [
             {
@@ -1889,7 +1924,7 @@
               "explanation": "The main noun brother takes the plural form."
             }
           ],
-          "subjectVerbAgreement": "The examination hall opens at eight o’clock.",
+          "subjectVerbAgreement": "",
           "quiz": [
             {
               "question": "Choose the correct plural.",
@@ -1951,7 +1986,12 @@
           "wordFocus": "In “The examination hall is crowded,” examination hall is a Compound Noun made from examination + hall.",
           "tableTitle": "",
           "tableColumns": [],
-          "tableRows": []
+          "tableRows": [],
+          "ruleExamples": [
+            "The **classroom** is ready for the lesson.",
+            "The **examination hall** opens at eight o’clock.",
+            "The **civil-service exam** begins tomorrow."
+          ]
         }
       ],
       "rules": [

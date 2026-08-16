@@ -98,6 +98,7 @@ class GrammarType extends Equatable {
     this.subjectVerbAgreementUrdu = '',
     this.examples = const <GrammarExample>[],
     this.rules = const <String>[],
+    this.ruleExamples = const <String>[],
     this.commonMistakes = const <GrammarMistake>[],
     this.practice = const <GrammarQuestion>[],
   });
@@ -114,6 +115,8 @@ class GrammarType extends Equatable {
   final String subjectVerbAgreementUrdu;
   final List<GrammarExample> examples;
   final List<String> rules;
+  /// Optional example sentence aligned by index with [rules].
+  final List<String> ruleExamples;
   final List<GrammarMistake> commonMistakes;
   final List<GrammarQuestion> practice;
 
@@ -142,6 +145,7 @@ class GrammarType extends Equatable {
         subjectVerbAgreementUrdu,
         examples,
         rules,
+        ruleExamples,
         commonMistakes,
         practice,
       ];

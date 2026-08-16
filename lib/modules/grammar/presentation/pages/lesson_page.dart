@@ -490,6 +490,14 @@ class GrammarTypeContent extends StatelessWidget {
             _TypeSubheading(title: type.tableTitle.isEmpty ? 'Verb Forms' : type.tableTitle, icon: Icons.table_chart_outlined),
             _GrammarTable(columns: type.tableColumns, rows: type.tableRows),
           ],
+          if (type.rules.isNotEmpty) ...<Widget>[
+            const _TypeSubheading(title: 'Rules', icon: Icons.rule),
+            for (int i = 0; i < type.rules.length; i++)
+              _RuleItem(
+                rule: type.rules[i],
+                example: i < type.ruleExamples.length ? type.ruleExamples[i] : null,
+              ),
+          ],
           if (type.subjectVerbAgreement.isNotEmpty) ...<Widget>[
             _AgreementCard(text: type.subjectVerbAgreement),
             if (type.subjectVerbAgreementUrdu.isNotEmpty) ...<Widget>[
@@ -508,10 +516,6 @@ class GrammarTypeContent extends StatelessWidget {
             const _TypeSubheading(title: 'Examples', icon: Icons.format_quote),
             for (final GrammarExample example in type.examples)
               _ExampleItem(example: example),
-          ],
-          if (type.rules.isNotEmpty) ...<Widget>[
-            const _TypeSubheading(title: 'Rules', icon: Icons.rule),
-            for (final String rule in type.rules) GrammarBullet(text: rule),
           ],
           if (type.commonMistakes.isNotEmpty) ...<Widget>[
             _TypeSubheading(
@@ -660,6 +664,46 @@ class _TypeSubheading extends StatelessWidget {
             style: theme.textTheme.titleSmall?.copyWith(
               color: tint,
               fontWeight: FontWeight.w800,
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class _RuleItem extends StatelessWidget {
+  const _RuleItem({required this.rule, this.example});
+  final String rule;
+  final String? example;
+
+  @override
+  Widget build(BuildContext context) {
+    final ThemeData theme = Theme.of(context);
+    final List<String> parts = rule.split('**');
+    final List<TextSpan> spans = <TextSpan>[];
+    for (int i = 0; i < parts.length; i++) {
+      spans.add(TextSpan(
+        text: parts[i],
+        style: i.isOdd ? const TextStyle(fontWeight: FontWeight.w800) : null,
+      ));
+    }
+    return Padding(
+      padding: const EdgeInsets.only(bottom: 10),
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: <Widget>[
+          Text('• ', style: theme.textTheme.bodyMedium?.copyWith(color: theme.colorScheme.primary)),
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: <Widget>[
+                Text.rich(TextSpan(style: theme.textTheme.bodyMedium?.copyWith(height: 1.4), children: spans)),
+                if (example != null && example!.isNotEmpty) ...<Widget>[
+                  const SizedBox(height: 3),
+                  Text('Example: $example', style: theme.textTheme.bodySmall?.copyWith(color: theme.colorScheme.primary, fontStyle: FontStyle.italic)),
+                ],
+              ],
             ),
           ),
         ],
