@@ -165,6 +165,9 @@ class GrammarLesson extends Equatable {
     this.urduExplanation = '',
     this.englishExplanation = '',
     this.types = const <GrammarType>[],
+    this.degreeTypes = const <GrammarType>[],
+    this.degreeNote = '',
+    this.degreeExamples = const <String>[],
     this.rules = const <String>[],
     this.structure = const <String>[],
     this.examples = const <GrammarExample>[],
@@ -181,6 +184,9 @@ class GrammarLesson extends Equatable {
   final String urduExplanation;
   final String englishExplanation;
   final List<GrammarType> types;
+  final List<GrammarType> degreeTypes;
+  final String degreeNote;
+  final List<String> degreeExamples;
   final List<String> rules;
 
   /// The structural pattern/formula for this topic (e.g. "Subject + can + V1"),
@@ -203,6 +209,9 @@ class GrammarLesson extends Equatable {
         urduExplanation,
         englishExplanation,
         types,
+        degreeTypes,
+        degreeNote,
+        degreeExamples,
         rules,
         structure,
         examples,

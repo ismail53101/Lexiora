@@ -42,7 +42,10 @@ class TypeDetailPage extends ConsumerWidget {
             );
           }
           GrammarType? selected;
-          for (final GrammarType type in lesson.types) {
+          for (final GrammarType type in <GrammarType>[
+            ...lesson.types,
+            ...lesson.degreeTypes,
+          ]) {
             if (type.name == typeName) {
               selected = type;
               break;

@@ -144,7 +144,10 @@ class _LessonView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final ThemeData theme = Theme.of(context);
-    if (lesson.id == 'pos/noun' || lesson.id == 'pos/pronoun' || lesson.id == 'pos/verb') {
+    if (lesson.id == 'pos/noun' ||
+        lesson.id == 'pos/pronoun' ||
+        lesson.id == 'pos/verb' ||
+        lesson.id == 'pos/adjective') {
       return _NounLandingView(lesson: lesson);
     }
     return ListView(
@@ -188,7 +191,9 @@ class _LessonView extends StatelessWidget {
         if (lesson.types.isNotEmpty) ...<Widget>[
           GrammarSectionCard(
             icon: Icons.account_tree_outlined,
-            title: 'Types of Noun',
+            title: lesson.id == 'pos/adjective'
+                ? 'Kinds of Adjective'
+                : 'Types of Noun',
             child: Wrap(
               spacing: 8,
               runSpacing: 8,
@@ -377,6 +382,8 @@ class _NounLandingView extends StatelessWidget {
           ),
         ),
         const SizedBox(height: 4),
+        if (lesson.id == 'pos/adjective')
+          const _LandingSectionLabel(title: 'Kinds of Adjective'),
         for (int index = 0; index < lesson.types.length; index++)
           _NounTypeRow(
             type: lesson.types[index],
@@ -384,7 +391,87 @@ class _NounLandingView extends StatelessWidget {
             accent: accents[index % accents.length],
             lessonId: lesson.id,
           ),
+        if (lesson.id == 'pos/adjective' && lesson.degreeTypes.isNotEmpty)
+          _DegreeFolderCard(
+            lesson: lesson,
+            accents: accents,
+          ),
       ],
+    );
+  }
+}
+
+class _DegreeFolderCard extends StatelessWidget {
+  const _DegreeFolderCard({required this.lesson, required this.accents});
+
+  final GrammarLesson lesson;
+  final List<Color> accents;
+
+  @override
+  Widget build(BuildContext context) {
+    final ThemeData theme = Theme.of(context);
+    return Card(
+      margin: const EdgeInsets.only(top: 2, bottom: 10),
+      clipBehavior: Clip.antiAlias,
+      child: Padding(
+        padding: const EdgeInsets.fromLTRB(14, 14, 14, 4),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: <Widget>[
+            Row(
+              children: <Widget>[
+                CircleAvatar(
+                  radius: 22,
+                  backgroundColor: theme.colorScheme.primary,
+                  child: const Icon(Icons.folder_open_outlined,
+                      color: Colors.white, size: 23),
+                ),
+                const SizedBox(width: 12),
+                Expanded(
+                  child: Text(
+                    'Degrees of Comparison',
+                    style: theme.textTheme.titleMedium
+                        ?.copyWith(fontWeight: FontWeight.w800),
+                  ),
+                ),
+              ],
+            ),
+            if (lesson.degreeNote.isNotEmpty) ...<Widget>[
+              const SizedBox(height: 12),
+              Text(
+                lesson.degreeNote,
+                style: theme.textTheme.bodyMedium?.copyWith(height: 1.45),
+              ),
+            ],
+            const SizedBox(height: 6),
+            for (int index = 0; index < lesson.degreeTypes.length; index++)
+              _NounTypeRow(
+                type: lesson.degreeTypes[index],
+                number: index + 1,
+                accent: accents[(index + lesson.types.length) % accents.length],
+                lessonId: lesson.id,
+              ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class _LandingSectionLabel extends StatelessWidget {
+  const _LandingSectionLabel({required this.title});
+
+  final String title;
+
+  @override
+  Widget build(BuildContext context) {
+    final ThemeData theme = Theme.of(context);
+    return Padding(
+      padding: const EdgeInsets.fromLTRB(2, 12, 2, 8),
+      child: Text(
+        title,
+        style: theme.textTheme.titleMedium?.copyWith(fontWeight: FontWeight.w800),
+      ),
     );
   }
 }

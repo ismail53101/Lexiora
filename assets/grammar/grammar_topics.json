@@ -21,27 +21,38 @@
       "types": [
         {
           "name": "Descriptive Adjective",
-          "description": "Describes the quality or characteristic of a noun, e.g., beautiful, tall, honest."
+          "description": "Describes the quality or characteristic of a noun.",
+          "exampleWords": "beautiful, tall, honest"
         },
         {
           "name": "Quantitative Adjective",
-          "description": "Shows the amount or quantity of a noun, e.g., some, many, few, several."
+          "description": "Shows the amount of something.",
+          "exampleWords": "much, little, enough"
+        },
+        {
+          "name": "Numeral Adjective",
+          "description": "Shows the number or order of nouns.",
+          "exampleWords": "one, three, first"
         },
         {
           "name": "Demonstrative Adjective",
-          "description": "Points out a specific noun, e.g., this, that, these, those."
+          "description": "Points out a specific noun.",
+          "exampleWords": "this, that, these, those"
         },
         {
           "name": "Possessive Adjective",
-          "description": "Shows ownership and is placed before a noun, e.g., my, your, his, their."
+          "description": "Shows ownership or possession.",
+          "exampleWords": "my, your, his, her, our, their"
         },
         {
-          "name": "Comparative Adjective",
-          "description": "Compares two things, usually formed with -er or 'more', e.g., faster, more intelligent."
+          "name": "Interrogative Adjective",
+          "description": "Is used with a noun to ask a question.",
+          "exampleWords": "what, which, whose"
         },
         {
-          "name": "Superlative Adjective",
-          "description": "Compares three or more things, usually formed with -est or 'most', e.g., fastest, most intelligent."
+          "name": "Distributive Adjective",
+          "description": "Refers to members of a group individually.",
+          "exampleWords": "each, every, either, neither"
         }
       ],
       "rules": [
@@ -174,7 +185,115 @@
           "explanation": "Correct order is age before shape before material: old round wooden table."
         }
       ],
-      "summary": "Adjectives describe or modify nouns and pronouns, showing quality, quantity, or possession, and change form to express comparison. Short adjectives use -er/-est while longer ones use more/most, and irregular forms like good/better/best must be memorized. Correct adjective order and comparison forms are frequently tested and easy to master with practice."
+      "summary": "Adjectives describe or modify nouns and pronouns, showing quality, quantity, or possession, and change form to express comparison. Short adjectives use -er/-est while longer ones use more/most, and irregular forms like good/better/best must be memorized. Correct adjective order and comparison forms are frequently tested and easy to master with practice.",
+      "degreeTypes": [
+        {
+          "name": "Positive Degree",
+          "description": "Shows the basic quality of one person, place, or thing without comparison.",
+          "exampleWords": "tall, bright, honest",
+          "rules": [
+            "Use the positive form when no comparison is made.",
+            "Use the adjective before a noun or after a linking verb."
+          ],
+          "ruleExamples": [
+            "**Ali** is **tall**.",
+            "The **bright** student answered the question."
+          ],
+          "examples": [
+            {
+              "text": "The honest officer reported the facts.",
+              "note": "Honest describes one officer; no comparison is made."
+            },
+            {
+              "text": "The room is clean.",
+              "note": "Clean shows the quality of one room."
+            }
+          ],
+          "commonMistakes": [
+            {
+              "wrong": "Ali is taller.",
+              "right": "Ali is tall.",
+              "note": "Use taller only when comparing Ali with another person or thing."
+            },
+            {
+              "wrong": "The sky is more blue.",
+              "right": "The sky is blue.",
+              "note": "Use the positive form when no comparison is intended."
+            }
+          ]
+        },
+        {
+          "name": "Comparative Degree",
+          "description": "Compares two people, places, or things.",
+          "exampleWords": "taller, brighter, more useful",
+          "rules": [
+            "Use -er with many short adjectives and use than after the comparative form.",
+            "Use more before many longer adjectives when comparing two things."
+          ],
+          "ruleExamples": [
+            "Ali is **taller than** Ahmed.",
+            "This method is **more useful than** the old method."
+          ],
+          "examples": [
+            {
+              "text": "Karachi is larger than Multan.",
+              "note": "Larger compares two cities, Karachi and Multan."
+            },
+            {
+              "text": "This answer is more accurate than that answer.",
+              "note": "More accurate compares two answers."
+            }
+          ],
+          "commonMistakes": [
+            {
+              "wrong": "Ali is more taller than Ahmed.",
+              "right": "Ali is taller than Ahmed.",
+              "note": "Do not use more with an adjective that already uses -er."
+            },
+            {
+              "wrong": "This book is better that one.",
+              "right": "This book is better than that one.",
+              "note": "Use than after a comparative adjective."
+            }
+          ]
+        },
+        {
+          "name": "Superlative Degree",
+          "description": "Shows the highest or lowest quality among three or more people, places, or things.",
+          "exampleWords": "tallest, brightest, most useful",
+          "rules": [
+            "Use the before a superlative adjective in a normal sentence.",
+            "Use -est with many short adjectives and most with many longer adjectives."
+          ],
+          "ruleExamples": [
+            "Ali is **the tallest** boy in the class.",
+            "This is **the most useful** book in the library."
+          ],
+          "examples": [
+            {
+              "text": "Mount Everest is the highest peak in the world.",
+              "note": "Highest compares Mount Everest with all other peaks."
+            },
+            {
+              "text": "She is the most careful student in the class.",
+              "note": "Most careful shows the highest degree among the students."
+            }
+          ],
+          "commonMistakes": [
+            {
+              "wrong": "He is most tallest in the team.",
+              "right": "He is the tallest in the team.",
+              "note": "Use the with the superlative and do not combine most with -est."
+            },
+            {
+              "wrong": "This is the better answer of all.",
+              "right": "This is the best answer of all.",
+              "note": "Use the superlative form when comparing more than two answers."
+            }
+          ]
+        }
+      ],
+      "degreeNote": "Kinds of Adjective tell us what type of adjective it is.\nDegrees of Comparison show the level of comparison of an adjective."
     }
   },
   {
