@@ -2284,8 +2284,8 @@
     "order": 2,
     "isLeaf": true,
     "content": {
-      "introduction": "A pronoun replaces a noun or noun phrase to avoid repetition. In competitive exams, check its antecedent, number, person, gender, and subject/object case.",
-      "urduExplanation": "Pronoun وہ لفظ ہے جو noun یا noun phrase کی جگہ آتا ہے۔ امتحانات میں اس کا درست انتخاب antecedent، واحد/جمع، شخص، جنس اور subject/object case کے مطابق کیا جاتا ہے۔",
+      "introduction": "Such words which are used for or instead of nouns are called pronouns.",
+      "urduExplanation": "وہ لفظ جو کسی اسم کی جگہ استعمال ہو اسمِ ضمیر کہلاتا ہے۔",
       "englishExplanation": "Pronouns must clearly refer to an antecedent and agree with it. They must use the correct subject, object, possessive, reflexive, or relative form.",
       "types": [
         {
@@ -3655,13 +3655,9 @@
       ],
       "examples": [
         {
-          "text": "The commission informed them about the revised examination schedule.",
-          "note": "Them is a personal pronoun used as the object of informed. The preposition about introduces the subject of the information, and revised modifies the singular noun schedule.",
-          "urdu": "کمیشن نے انہیں امتحان کے نظرثانی شدہ شیڈول کے بارے میں آگاہ کیا۔"
-        },
-        {
-          "text": "The researcher explained the result, and she defended it.",
-          "note": "She refers to researcher as the subject, while it refers to result as the object."
+          "text": "Ahmed is my friend. He lives in Quetta.",
+          "urdu": "احمد میرا دوست ہے۔ وہ کوئٹہ میں رہتا ہے۔",
+          "note": "**He** replaces **Ahmed** and refers to one male person."
         }
       ],
       "commonMistakes": [
@@ -3719,8 +3715,8 @@
     "order": 3,
     "isLeaf": true,
     "content": {
-      "introduction": "A verb expresses an action, occurrence, or state of being. Verbs change form to show tense, number, voice, and mood, making them central to CSS, PMS, PCS, BPSC, and IELTS grammar questions.",
-      "urduExplanation": "فعل وہ لفظ ہے جو کسی کام، واقعے یا حالت کو ظاہر کرتا ہے۔ فعل زمانہ، واحد و جمع، مجہول ساخت اور اندازِ بیان کے مطابق اپنی شکل بدل سکتا ہے۔",
+      "introduction": "The verb is a word which is used to show an action of a person, an animal or thing.",
+      "urduExplanation": "فعل وہ لفظ ہے جو ہمیں کسی شخص یا چیز کے کام کے بارے میں بتاتا ہے۔",
       "englishExplanation": "Verbs are the core of a sentence, showing what the subject does, is, or experiences. They can be classified as action verbs (run, write), linking verbs (be, seem, become), auxiliary verbs (is, have, will), and modal verbs (can, must, should) that express ability, permission, or necessity. Verbs are also classified as transitive (requiring a direct object) or intransitive (not requiring one). Verb tense, subject-verb agreement, and correct use of modals are frequently tested because small errors here change the meaning or correctness of a sentence significantly.",
       "types": [
         {
@@ -3787,81 +3783,9 @@
             "In error detection, locate the subject and time marker before choosing the action-verb form.",
             "After a modal such as should or must, use the base form of the action verb."
           ],
-          "tableTitle": "Action Verb Forms and Object Use",
-          "tableColumns": [
-            "Base",
-            "-s/-es",
-            "Past",
-            "Past Participle",
-            "-ing",
-            "Object?",
-            "Reason"
-          ],
-          "tableRows": [
-            [
-              "run",
-              "runs",
-              "ran",
-              "run",
-              "running",
-              "Usually no",
-              "The action can be complete without an object: The candidate ran."
-            ],
-            [
-              "jump",
-              "jumps",
-              "jumped",
-              "jumped",
-              "jumping",
-              "Usually no",
-              "Over the barrier is a prepositional phrase, not a direct object."
-            ],
-            [
-              "walk",
-              "walks",
-              "walked",
-              "walked",
-              "walking",
-              "Usually no",
-              "The action is complete; into the hall only gives direction."
-            ],
-            [
-              "swim",
-              "swims",
-              "swam",
-              "swum",
-              "swimming",
-              "Usually no",
-              "Across the river gives direction, not a direct object."
-            ],
-            [
-              "climb",
-              "climbs",
-              "climbed",
-              "climbed",
-              "climbing",
-              "Sometimes",
-              "The stairs can receive the action: The officer climbed the stairs."
-            ],
-            [
-              "eat",
-              "eats",
-              "ate",
-              "eaten",
-              "eating",
-              "Sometimes",
-              "Lunch can receive the action, but The candidates ate is also complete."
-            ],
-            [
-              "write",
-              "writes",
-              "wrote",
-              "written",
-              "writing",
-              "Usually yes",
-              "An essay receives the action: The applicant wrote an essay."
-            ]
-          ],
+          "tableTitle": "",
+          "tableColumns": [],
+          "tableRows": [],
           "exampleWords": "run, write, eat, speak, jump",
           "ruleExamples": [
             "**Physical:** The boy **kicks** the ball. **Mental:** I **remember** his name.",
@@ -3933,90 +3857,9 @@
             "Do not mistake a subject complement for a direct object after a linking verb.",
             "Use an adjective after linking verbs when it describes the subject."
           ],
-          "tableTitle": "Linking Verb Forms and Complements",
-          "tableColumns": [
-            "Base",
-            "-s/-es",
-            "Past",
-            "Past Participle",
-            "-ing",
-            "Complement",
-            "Reason"
-          ],
-          "tableRows": [
-            [
-              "be",
-              "is",
-              "was/were",
-              "been",
-              "being",
-              "Adjective/noun",
-              "Is links the subject to a description or identity, not an object."
-            ],
-            [
-              "seem",
-              "seems",
-              "seemed",
-              "seemed",
-              "seeming",
-              "Adjective",
-              "Seems links the subject to an apparent quality."
-            ],
-            [
-              "become",
-              "becomes",
-              "became",
-              "become",
-              "becoming",
-              "Adjective/noun",
-              "Became shows a change of state or identity."
-            ],
-            [
-              "appear",
-              "appears",
-              "appeared",
-              "appeared",
-              "appearing",
-              "Adjective/phrase",
-              "Appears connects the subject with how it seems."
-            ],
-            [
-              "remain",
-              "remains",
-              "remained",
-              "remained",
-              "remaining",
-              "Adjective/noun",
-              "Remained shows a continuing state."
-            ],
-            [
-              "feel",
-              "feels",
-              "felt",
-              "felt",
-              "feeling",
-              "Adjective",
-              "Feels links the subject to a condition or opinion."
-            ],
-            [
-              "look",
-              "looks",
-              "looked",
-              "looked",
-              "looking",
-              "Adjective",
-              "Looks is linking when an adjective describes appearance."
-            ],
-            [
-              "sound",
-              "sounds",
-              "sounded",
-              "sounded",
-              "sounding",
-              "Adjective",
-              "Sounds links information or speech to an impression."
-            ]
-          ],
+          "tableTitle": "",
+          "tableColumns": [],
+          "tableRows": [],
           "exampleWords": "be, seem, become, appear, remain, feel, look",
           "ruleExamples": [
             "The policy **is** effective.",
@@ -4087,58 +3930,9 @@
             "Auxiliary verbs often reveal tense and voice; check the form of the main verb that follows them.",
             "After do/does/did, never add the past or third-person singular ending to the main verb."
           ],
-          "tableTitle": "Auxiliary Verb Forms and Functions",
-          "tableColumns": [
-            "Auxiliary",
-            "Main form after it",
-            "Structure",
-            "Function",
-            "Example"
-          ],
-          "tableRows": [
-            [
-              "do/does",
-              "base verb",
-              "does not + submit",
-              "Negative present",
-              "The candidate does not submit late."
-            ],
-            [
-              "did",
-              "base verb",
-              "did + verify",
-              "Past question/negative",
-              "Did the examiner verify the file?"
-            ],
-            [
-              "has/have",
-              "past participle",
-              "has + approved",
-              "Present perfect",
-              "The commission has approved the policy."
-            ],
-            [
-              "had",
-              "past participle",
-              "had + completed",
-              "Past perfect",
-              "The ministry had completed the reform."
-            ],
-            [
-              "is/are",
-              "-ing form",
-              "are + reviewing",
-              "Present progressive",
-              "The reports are being reviewed."
-            ],
-            [
-              "was/were",
-              "past participle",
-              "was + announced",
-              "Past passive",
-              "The result was announced."
-            ]
-          ],
+          "tableTitle": "",
+          "tableColumns": [],
+          "tableRows": [],
           "exampleWords": "is, are, was, have, has, do, does, did, will",
           "ruleExamples": [
             "The candidate **does not submit** late.",
@@ -4209,58 +4003,9 @@
             "The pattern modal + base verb is a frequent sentence-correction question.",
             "Do not add -s, -ed, or to after a modal unless another structure requires it."
           ],
-          "tableTitle": "Modal Verb + Base Verb Patterns",
-          "tableColumns": [
-            "Modal",
-            "Main verb form",
-            "Meaning",
-            "Correct example",
-            "Why"
-          ],
-          "tableRows": [
-            [
-              "must",
-              "Base",
-              "Obligation",
-              "Candidates must submit documents.",
-              "A modal never takes -s after it."
-            ],
-            [
-              "should",
-              "Base",
-              "Advice",
-              "The ministry should revise the policy.",
-              "Do not use should to revise."
-            ],
-            [
-              "may",
-              "Base",
-              "Possibility/permission",
-              "The commission may review the case.",
-              "May is followed by review, not reviews."
-            ],
-            [
-              "might",
-              "Base",
-              "Less certain possibility",
-              "The policy might improve access.",
-              "Might does not change for the subject."
-            ],
-            [
-              "can",
-              "Base",
-              "Ability/possibility",
-              "The procedure can improve confidence.",
-              "Can is followed by the base form improve."
-            ],
-            [
-              "could",
-              "Base",
-              "Past ability/polite possibility",
-              "The committee could reconsider the decision.",
-              "Could is followed by reconsider."
-            ]
-          ],
+          "tableTitle": "",
+          "tableColumns": [],
+          "tableRows": [],
           "exampleWords": "can, could, may, might, must, should, will, would",
           "ruleExamples": [
             "Candidates **must submit** the form.",
@@ -4331,58 +4076,9 @@
             "Ask what or whom after the verb to locate the direct object.",
             "Do not add a preposition after transitive verbs such as discuss, affect, and enter."
           ],
-          "tableTitle": "Transitive Verbs and Direct Objects",
-          "tableColumns": [
-            "Verb",
-            "Past form",
-            "Direct object?",
-            "Question",
-            "Example"
-          ],
-          "tableRows": [
-            [
-              "evaluate",
-              "evaluated",
-              "Yes",
-              "evaluated what?",
-              "The examiner evaluated the scripts."
-            ],
-            [
-              "approve",
-              "approved",
-              "Yes",
-              "approved what?",
-              "The commission approved the policy."
-            ],
-            [
-              "reject",
-              "rejected",
-              "Yes",
-              "rejected what?",
-              "The court rejected the petition."
-            ],
-            [
-              "explain",
-              "explained",
-              "Yes",
-              "explained what?",
-              "The teacher explained the rule to candidates."
-            ],
-            [
-              "discuss",
-              "discussed",
-              "Yes",
-              "discussed what?",
-              "The committee discussed the proposal."
-            ],
-            [
-              "arrive",
-              "arrived",
-              "No",
-              "No direct object",
-              "The delegation arrived at the venue."
-            ]
-          ],
+          "tableTitle": "",
+          "tableColumns": [],
+          "tableRows": [],
           "exampleWords": "open, write, evaluate, approve, discuss, submit",
           "ruleExamples": [
             "The examiner **evaluated the scripts**.",
@@ -4453,58 +4149,9 @@
             "Do not treat every noun after an intransitive verb as an object; check whether a preposition introduces it.",
             "Remember that some verbs change category with context, especially enter, open, run, and grow."
           ],
-          "tableTitle": "Intransitive Verbs and Object Use",
-          "tableColumns": [
-            "Verb",
-            "Past form",
-            "Direct object?",
-            "What follows?",
-            "Reason"
-          ],
-          "tableRows": [
-            [
-              "run",
-              "ran",
-              "No",
-              "Adverb or place phrase",
-              "The candidate ran quickly; quickly is an adverb."
-            ],
-            [
-              "jump",
-              "jumped",
-              "No",
-              "Prepositional phrase",
-              "The athlete jumped over the barrier."
-            ],
-            [
-              "walk",
-              "walked",
-              "No",
-              "Direction phrase",
-              "The delegation walked into the hall."
-            ],
-            [
-              "swim",
-              "swam",
-              "No",
-              "Place/direction phrase",
-              "The candidates swam across the river."
-            ],
-            [
-              "arrive",
-              "arrived",
-              "No",
-              "At + place",
-              "Arrive is complete; at the venue gives location."
-            ],
-            [
-              "respond",
-              "responded",
-              "No",
-              "To + noun",
-              "To public concerns is a prepositional phrase, not an object."
-            ]
-          ],
+          "tableTitle": "",
+          "tableColumns": [],
+          "tableRows": [],
           "exampleWords": "arrive, cry, laugh, sleep, occur, disappear",
           "ruleExamples": [
             "The delegation **arrived** on time.",
@@ -4523,9 +4170,9 @@
       ],
       "examples": [
         {
-          "text": "The commission reviewed the policy and announced its decision.",
-          "urdu": "کمیشن نے پالیسی کا جائزہ لیا اور اپنا فیصلہ سنایا۔",
-          "note": "'Reviewed' and 'announced' are verbs that express two completed actions."
+          "text": "I eat an apple.",
+          "urdu": "میں ایک سیب کھاتا ہوں۔",
+          "note": "**Eat** is the verb because it shows the action performed by the speaker."
         }
       ],
       "commonMistakes": [

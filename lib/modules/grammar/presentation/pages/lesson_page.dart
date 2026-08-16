@@ -355,8 +355,12 @@ class _NounLandingView extends StatelessWidget {
                       fontWeight: FontWeight.w800,
                     )),
                 const SizedBox(height: 6),
-                Text(overviewExample.text,
-                    style: theme.textTheme.bodyMedium?.copyWith(height: 1.35)),
+                Text.rich(
+                  TextSpan(
+                    style: theme.textTheme.bodyMedium?.copyWith(height: 1.35),
+                    children: _boldMarkedSpans(overviewExample.text),
+                  ),
+                ),
                 if (overviewExample.urdu?.isNotEmpty ?? false) ...<Widget>[
                   const SizedBox(height: 5),
                   Directionality(
@@ -765,8 +769,12 @@ class _ExampleItem extends StatelessWidget {
             ],
             const Divider(height: 18),
           ],
-          Text(example.text,
-              style: theme.textTheme.bodyLarge?.copyWith(height: 1.4)),
+          Text.rich(
+            TextSpan(
+              style: theme.textTheme.bodyLarge?.copyWith(height: 1.4),
+              children: _boldMarkedSpans(example.text),
+            ),
+          ),
           if (example.urdu != null && example.urdu!.isNotEmpty) ...<Widget>[
             const SizedBox(height: 6),
             Directionality(
@@ -781,10 +789,14 @@ class _ExampleItem extends StatelessWidget {
           ],
           if (example.note != null && example.note!.isNotEmpty) ...<Widget>[
             const SizedBox(height: 6),
-            Text(example.note!,
+            Text.rich(
+              TextSpan(
                 style: theme.textTheme.labelMedium?.copyWith(
                     color: theme.colorScheme.primary,
-                    fontStyle: FontStyle.italic)),
+                    fontStyle: FontStyle.italic),
+                children: _boldMarkedSpans(example.note!),
+              ),
+            ),
           ],
         ],
       ),
@@ -813,10 +825,14 @@ class _MistakeItem extends StatelessWidget {
                 Icon(Icons.close, size: 18, color: scheme.error),
                 const SizedBox(width: 8),
                 Expanded(
-                  child: Text(mistake.wrong,
+                  child: Text.rich(
+                    TextSpan(
                       style: theme.textTheme.bodyMedium?.copyWith(
                           color: scheme.error,
-                          decoration: TextDecoration.lineThrough)),
+                          decoration: TextDecoration.lineThrough),
+                      children: _boldMarkedSpans(mistake.wrong),
+                    ),
+                  ),
                 ),
               ],
             ),
@@ -828,9 +844,13 @@ class _MistakeItem extends StatelessWidget {
                 const Icon(Icons.check, size: 18, color: right),
                 const SizedBox(width: 8),
                 Expanded(
-                  child: Text(mistake.right,
+                  child: Text.rich(
+                    TextSpan(
                       style: theme.textTheme.bodyMedium
-                          ?.copyWith(color: right, fontWeight: FontWeight.w600)),
+                          ?.copyWith(color: right, fontWeight: FontWeight.w600),
+                      children: _boldMarkedSpans(mistake.right),
+                    ),
+                  ),
                 ),
               ],
             ),
@@ -856,9 +876,13 @@ class _MistakeItem extends StatelessWidget {
             const SizedBox(height: 4),
             Padding(
               padding: const EdgeInsets.only(left: 26),
-              child: Text(mistake.note!,
+              child: Text.rich(
+                TextSpan(
                   style: theme.textTheme.bodySmall
-                      ?.copyWith(color: scheme.onSurfaceVariant)),
+                      ?.copyWith(color: scheme.onSurfaceVariant),
+                  children: _boldMarkedSpans(mistake.note!),
+                ),
+              ),
             ),
           ],
         ],
