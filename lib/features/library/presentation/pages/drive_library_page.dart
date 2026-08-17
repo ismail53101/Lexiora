@@ -19,6 +19,7 @@ class DriveLibraryPage extends ConsumerStatefulWidget {
 class _DriveLibraryPageState extends ConsumerState<DriveLibraryPage> {
   late Future<List<GoogleDrivePdf>> _files;
   String? _openingId;
+  DriveDownloadProgress? _downloadProgress;
 
   GoogleDriveService get _drive => ref.read(googleDriveServiceProvider);
 
@@ -39,9 +40,18 @@ class _DriveLibraryPageState extends ConsumerState<DriveLibraryPage> {
 
   Future<void> _open(GoogleDrivePdf pdf) async {
     if (_openingId != null) return;
-    setState(() => _openingId = pdf.id);
+    setState(() {
+      _openingId = pdf.id;
+      _downloadProgress = null;
+    });
     try {
-      final File cached = await _drive.downloadPdf(pdf);
+      final DrivePdfOpenResult opened = await _drive.openPdf(
+        pdf,
+        onProgress: (DriveDownloadProgress progress) {
+          if (mounted) setState(() => _downloadProgress = progress);
+        },
+      );
+      final File cached = opened.file;
       if (!mounted) return;
       final LibraryDocument temporaryDocument = LibraryDocument(
         id: 'drive_${pdf.id}',
@@ -61,7 +71,12 @@ class _DriveLibraryPageState extends ConsumerState<DriveLibraryPage> {
         SnackBar(content: Text('Google Drive PDF unavailable: $error')),
       );
     } finally {
-      if (mounted) setState(() => _openingId = null);
+      if (mounted) {
+        setState(() {
+          _openingId = null;
+          _downloadProgress = null;
+        });
+      }
     }
   }
 
@@ -134,6 +149,9 @@ class _DriveLibraryPageState extends ConsumerState<DriveLibraryPage> {
                 pdf: files[index],
                 drive: _drive,
                 opening: _openingId == files[index].id,
+                progress: _openingId == files[index].id
+                    ? _downloadProgress
+                    : null,
                 onOpen: () => _open(files[index]),
               ),
             ),
@@ -152,12 +170,14 @@ class _DriveCard extends StatefulWidget {
     required this.pdf,
     required this.drive,
     required this.opening,
+    required this.progress,
     required this.onOpen,
   });
 
   final GoogleDrivePdf pdf;
   final GoogleDriveService drive;
   final bool opening;
+  final DriveDownloadProgress? progress;
   final VoidCallback onOpen;
 
   @override
@@ -207,11 +227,8 @@ class _DriveCardState extends State<_DriveCard> {
               showMenu: false,
             ),
             if (widget.opening)
-              const Positioned.fill(
-                child: ColoredBox(
-                  color: Color(0x88000000),
-                  child: Center(child: CircularProgressIndicator()),
-                ),
+              Positioned.fill(
+                child: _DownloadOverlay(progress: widget.progress),
               ),
           ],
         );
@@ -257,3 +274,75 @@ class _DriveError extends StatelessWidget {
   }
 }
 
+
+class _DownloadOverlay extends StatelessWidget {
+  const _DownloadOverlay({required this.progress});
+
+  final DriveDownloadProgress? progress;
+
+  @override
+  Widget build(BuildContext context) {
+    final DriveDownloadProgress? value = progress;
+    final bool cached = value?.fromCache ?? false;
+    return ColoredBox(
+      color: const Color(0xCC101018),
+      child: Center(
+        child: Padding(
+          padding: const EdgeInsets.all(16),
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Text(
+                cached ? 'Opening from device…' : 'Downloading PDF…',
+                textAlign: TextAlign.center,
+                style: const TextStyle(
+                  color: Colors.white,
+                  fontWeight: FontWeight.w700,
+                ),
+              ),
+              if (!cached) ...[
+                const SizedBox(height: 10),
+                if (value?.fraction != null)
+                  Text(
+                    '${((value!.fraction ?? 0) * 100).round()}%',
+                    style: const TextStyle(color: Colors.white, fontSize: 18),
+                  ),
+                const SizedBox(height: 6),
+                LinearProgressIndicator(value: value?.fraction),
+                const SizedBox(height: 6),
+                Text(
+                  '${_formatBytes(value?.downloadedBytes ?? 0)} / ${_formatBytes(value?.totalBytes)}',
+                  textAlign: TextAlign.center,
+                  style: const TextStyle(color: Colors.white70, fontSize: 12),
+                ),
+                if (value?.remainingBytes != null)
+                  Text(
+                    '${_formatBytes(value!.remainingBytes!)} remaining',
+                    style: const TextStyle(color: Colors.white70, fontSize: 12),
+                  ),
+              ] else
+                const Padding(
+                  padding: EdgeInsets.only(top: 12),
+                  child: SizedBox(
+                    width: 24,
+                    height: 24,
+                    child: CircularProgressIndicator(strokeWidth: 2),
+                  ),
+                ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+
+  String _formatBytes(int? bytes) {
+    if (bytes == null) return 'Unknown size';
+    if (bytes < 1024) return '$bytes B';
+    final double kb = bytes / 1024;
+    if (kb < 1024) return '${kb.toStringAsFixed(1)} KB';
+    final double mb = kb / 1024;
+    if (mb < 1024) return '${mb.toStringAsFixed(1)} MB';
+    return '${(mb / 1024).toStringAsFixed(1)} GB';
+  }
+}
