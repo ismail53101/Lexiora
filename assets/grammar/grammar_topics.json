@@ -4520,15 +4520,17 @@
           "name": "Verb Forms Tables",
           "description": "Two separate tables of common regular and irregular verbs for competitive exams, composition papers, one-paper exams, and English MCQs.",
           "exampleWords": "V1: First Form > V2: Second Form > V3: Third Form",
-          "tableGroups": [
+          "childTypes": [
             {
-              "title": "Regular Verbs Table",
-              "columns": [
+              "name": "Regular Verbs Table",
+              "description": "A compact V1, V2, and V3 table of common competitive-exam verbs.",
+              "tableTitle": "Regular Verbs Table",
+              "tableColumns": [
                 "V1: First Form",
                 "V2: Second Form",
                 "V3: Third Form"
               ],
-              "rows": [
+              "tableRows": [
                 [
                   "accept",
                   "accepted",
@@ -4782,13 +4784,15 @@
               ]
             },
             {
-              "title": "Irregular Verbs Table",
-              "columns": [
+              "name": "Irregular Verbs Table",
+              "description": "A compact V1, V2, and V3 table of common competitive-exam verbs.",
+              "tableTitle": "Irregular Verbs Table",
+              "tableColumns": [
                 "V1: First Form",
                 "V2: Second Form",
                 "V3: Third Form"
               ],
-              "rows": [
+              "tableRows": [
                 [
                   "be",
                   "was/were",

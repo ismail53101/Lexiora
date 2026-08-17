@@ -111,6 +111,7 @@ class GrammarType extends Equatable {
     this.tableColumns = const <String>[],
     this.tableRows = const <GrammarTableRow>[],
     this.tableGroups = const <GrammarTableGroup>[],
+    this.childTypes = const <GrammarType>[],
     this.subjectVerbAgreement = '',
     this.subjectVerbAgreementUrdu = '',
     this.examples = const <GrammarExample>[],
@@ -131,6 +132,7 @@ class GrammarType extends Equatable {
   final List<String> tableColumns;
   final List<GrammarTableRow> tableRows;
   final List<GrammarTableGroup> tableGroups;
+  final List<GrammarType> childTypes;
   final String subjectVerbAgreement;
   final String subjectVerbAgreementUrdu;
   final List<GrammarExample> examples;
@@ -146,6 +148,7 @@ class GrammarType extends Equatable {
       pronounTable.isNotEmpty ||
       tableRows.isNotEmpty ||
       tableGroups.isNotEmpty ||
+      childTypes.isNotEmpty ||
       subjectVerbAgreement.isNotEmpty ||
       examples.isNotEmpty ||
       rules.isNotEmpty ||
@@ -164,6 +167,7 @@ class GrammarType extends Equatable {
         tableColumns,
         tableRows,
         tableGroups,
+        childTypes,
         subjectVerbAgreement,
         subjectVerbAgreementUrdu,
         examples,

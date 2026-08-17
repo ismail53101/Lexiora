@@ -41,17 +41,17 @@ class TypeDetailPage extends ConsumerWidget {
               message: 'This noun section is not available offline.',
             );
           }
+
           GrammarType? selected;
           for (final GrammarType type in <GrammarType>[
             ...lesson.types,
             ...lesson.additionalTypes,
             ...lesson.degreeTypes,
           ]) {
-            if (type.name == typeName) {
-              selected = type;
-              break;
-            }
+            selected = _findGrammarType(type, typeName);
+            if (selected != null) break;
           }
+
           if (selected == null) {
             return const EmptyState(
               icon: Icons.search_off,
@@ -59,6 +59,35 @@ class TypeDetailPage extends ConsumerWidget {
               message: 'This noun section is not available offline.',
             );
           }
+
+          if (selected.childTypes.isNotEmpty) {
+            return ListView(
+              padding: const EdgeInsets.fromLTRB(16, 16, 16, 24),
+              children: <Widget>[
+                GrammarSectionCard(
+                  icon: Icons.account_tree_outlined,
+                  title: selected.name,
+                  child: Column(
+                    children: <Widget>[
+                      for (final GrammarType child in selected.childTypes)
+                        _NestedGrammarFolder(
+                          title: child.name,
+                          onTap: () => Navigator.of(context).push(
+                            MaterialPageRoute<void>(
+                              builder: (_) => TypeDetailPage(
+                                lessonId: lessonId,
+                                typeName: child.name,
+                              ),
+                            ),
+                          ),
+                        ),
+                    ],
+                  ),
+                ),
+              ],
+            );
+          }
+
           return ListView(
             padding: const EdgeInsets.fromLTRB(16, 16, 16, 24),
             children: <Widget>[
@@ -70,6 +99,50 @@ class TypeDetailPage extends ConsumerWidget {
             ],
           );
         },
+      ),
+    );
+  }
+}
+
+GrammarType? _findGrammarType(GrammarType type, String name) {
+  if (type.name == name) return type;
+  for (final GrammarType child in type.childTypes) {
+    final GrammarType? found = _findGrammarType(child, name);
+    if (found != null) return found;
+  }
+  return null;
+}
+
+class _NestedGrammarFolder extends StatelessWidget {
+  const _NestedGrammarFolder({required this.title, required this.onTap});
+
+  final String title;
+  final VoidCallback onTap;
+
+  @override
+  Widget build(BuildContext context) {
+    final ThemeData theme = Theme.of(context);
+    return Card(
+      margin: const EdgeInsets.only(bottom: 10),
+      child: InkWell(
+        borderRadius: BorderRadius.circular(14),
+        onTap: onTap,
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 13),
+          child: Row(
+            children: <Widget>[
+              Icon(Icons.folder_outlined, color: theme.colorScheme.primary),
+              const SizedBox(width: 12),
+              Expanded(
+                child: Text(
+                  title,
+                  style: theme.textTheme.titleSmall?.copyWith(fontWeight: FontWeight.w700),
+                ),
+              ),
+              Icon(Icons.chevron_right, color: theme.colorScheme.onSurfaceVariant),
+            ],
+          ),
+        ),
       ),
     );
   }

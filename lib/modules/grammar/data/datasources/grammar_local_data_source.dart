@@ -324,6 +324,7 @@ class GrammarLocalDataSource {
             tableColumns: _strList(e['tableColumns']),
             tableRows: _tableRows(e['tableRows']),
             tableGroups: _tableGroups(e['tableGroups']),
+            childTypes: _types(e['childTypes']),
             subjectVerbAgreement: _str(e['subjectVerbAgreement']),
             subjectVerbAgreementUrdu: _str(e['subjectVerbAgreementUrdu']),
             examples: _examples(e['examples']),

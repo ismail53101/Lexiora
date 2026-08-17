@@ -596,7 +596,11 @@ class GrammarTypeContent extends StatelessWidget {
           ],
           if (type.tableRows.isNotEmpty) ...<Widget>[
             _TypeSubheading(title: type.tableTitle.isEmpty ? 'Verb Forms' : type.tableTitle, icon: Icons.table_chart_outlined),
-            _GrammarTable(columns: type.tableColumns, rows: type.tableRows),
+            _GrammarTable(
+              columns: type.tableColumns,
+              rows: type.tableRows,
+              compact: type.name == 'Regular Verbs Table' || type.name == 'Irregular Verbs Table',
+            ),
           ],
           if (type.name == 'Verb Forms Tables' && type.tableGroups.isNotEmpty) ...<Widget>[
             for (final GrammarTableGroup group in type.tableGroups)
