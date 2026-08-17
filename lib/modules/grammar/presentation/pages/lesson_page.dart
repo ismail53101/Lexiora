@@ -391,8 +391,6 @@ class _NounLandingView extends StatelessWidget {
             accent: accents[index % accents.length],
             lessonId: lesson.id,
           ),
-        if (lesson.id == 'pos/verb' && lesson.additionalTypes.isNotEmpty)
-          const _LandingSectionLabel(title: 'Additional Verb Topics'),
         for (int index = 0; index < lesson.additionalTypes.length; index++)
           _NounTypeRow(
             type: lesson.additionalTypes[index],
@@ -564,8 +562,12 @@ class GrammarTypeContent extends StatelessWidget {
       children: <Widget>[
           if (type.description.isNotEmpty) ...<Widget>[
             const SizedBox(height: 6),
-            Text(type.description,
-                style: theme.textTheme.bodyMedium?.copyWith(height: 1.45)),
+            Text.rich(
+              TextSpan(
+                style: theme.textTheme.bodyMedium?.copyWith(height: 1.45),
+                children: _boldMarkedSpans(type.description),
+              ),
+            ),
           ],
           if (type.urduExplanation.isNotEmpty) ...<Widget>[
             const SizedBox(height: 10),
@@ -581,14 +583,10 @@ class GrammarTypeContent extends StatelessWidget {
           if (type.exampleWords.isNotEmpty) ...<Widget>[
             Padding(
               padding: const EdgeInsets.only(top: 12, bottom: 8),
-              child: Text.rich(
-                TextSpan(
-                  style: theme.textTheme.bodyMedium?.copyWith(height: 1.45),
-                  children: <InlineSpan>[
-                    const TextSpan(text: 'E.g.: ', style: TextStyle(fontWeight: FontWeight.w800)),
-                    TextSpan(text: type.exampleWords),
-                  ],
-                ),
+              child: _VerbFormsAwareText(
+                label: 'E.g.: ',
+                text: type.exampleWords,
+                labelStyle: const TextStyle(fontWeight: FontWeight.w800),
               ),
             ),
           ],
@@ -600,10 +598,14 @@ class GrammarTypeContent extends StatelessWidget {
             _TypeSubheading(title: type.tableTitle.isEmpty ? 'Verb Forms' : type.tableTitle, icon: Icons.table_chart_outlined),
             _GrammarTable(columns: type.tableColumns, rows: type.tableRows),
           ],
-          for (final GrammarTableGroup group in type.tableGroups) ...<Widget>[
-            _TypeSubheading(title: group.title, icon: Icons.table_chart_outlined),
-            _GrammarTable(columns: group.columns, rows: group.rows),
-          ],
+          if (type.name == 'Verb Forms Tables' && type.tableGroups.isNotEmpty) ...<Widget>[
+            for (final GrammarTableGroup group in type.tableGroups)
+              _CompactTableSection(group: group),
+          ] else
+            for (final GrammarTableGroup group in type.tableGroups) ...<Widget>[
+              _TypeSubheading(title: group.title, icon: Icons.table_chart_outlined),
+              _GrammarTable(columns: group.columns, rows: group.rows),
+            ],
           if (type.rules.isNotEmpty) ...<Widget>[
             const _TypeSubheading(title: 'Rules', icon: Icons.rule),
             for (int i = 0; i < type.rules.length; i++)
@@ -653,10 +655,48 @@ class GrammarTypeContent extends StatelessWidget {
   }
 }
 
+class _CompactTableSection extends StatelessWidget {
+  const _CompactTableSection({required this.group});
+
+  final GrammarTableGroup group;
+
+  @override
+  Widget build(BuildContext context) {
+    final ThemeData theme = Theme.of(context);
+    return Card(
+      margin: const EdgeInsets.only(bottom: 8),
+      elevation: 0,
+      color: theme.colorScheme.surfaceContainerHighest.withValues(alpha: 0.45),
+      child: Padding(
+        padding: const EdgeInsets.fromLTRB(8, 8, 8, 3),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: <Widget>[
+            Text(
+              group.title,
+              style: theme.textTheme.titleSmall?.copyWith(
+                color: theme.colorScheme.primary,
+                fontWeight: FontWeight.w800,
+              ),
+            ),
+            const SizedBox(height: 4),
+            _GrammarTable(
+              columns: group.columns,
+              rows: group.rows,
+              compact: true,
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
 class _GrammarTable extends StatelessWidget {
-  const _GrammarTable({required this.columns, required this.rows});
+  const _GrammarTable({required this.columns, required this.rows, this.compact = false});
   final List<String> columns;
   final List<GrammarTableRow> rows;
+  final bool compact;
 
   @override
   Widget build(BuildContext context) {
@@ -664,20 +704,20 @@ class _GrammarTable extends StatelessWidget {
     final ColorScheme scheme = theme.colorScheme;
     final List<String> safeColumns = columns.isEmpty ? List<String>.generate(rows.first.cells.length, (int i) => 'Column ${i + 1}') : columns;
     return Card(
-      margin: const EdgeInsets.only(bottom: 14),
+      margin: EdgeInsets.only(bottom: compact ? 4 : 14),
       elevation: 0,
       color: scheme.surfaceContainerHighest.withValues(alpha: 0.55),
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(14)),
       child: SingleChildScrollView(
         scrollDirection: Axis.horizontal,
-        padding: const EdgeInsets.all(10),
+        padding: EdgeInsets.all(compact ? 4 : 10),
         child: DataTable(
           headingRowColor: WidgetStatePropertyAll<Color>(scheme.primary.withValues(alpha: 0.12)),
-          dataRowMinHeight: 44,
-          dataRowMaxHeight: 86,
-          columnSpacing: 18,
-          columns: safeColumns.map((String column) => DataColumn(label: Text(column, style: theme.textTheme.labelMedium?.copyWith(fontWeight: FontWeight.w700)))).toList(),
-          rows: rows.map((GrammarTableRow row) => DataRow(cells: List<DataCell>.generate(safeColumns.length, (int i) => DataCell(Text(i < row.cells.length ? row.cells[i] : '', style: theme.textTheme.bodySmall?.copyWith(height: 1.3)))))).toList(),
+          dataRowMinHeight: compact ? 27 : 44,
+          dataRowMaxHeight: compact ? 38 : 86,
+          columnSpacing: compact ? 10 : 18,
+          columns: safeColumns.map((String column) => DataColumn(label: Text(column, style: theme.textTheme.labelMedium?.copyWith(fontSize: compact ? 10 : null, fontWeight: FontWeight.w700)))).toList(),
+          rows: rows.map((GrammarTableRow row) => DataRow(cells: List<DataCell>.generate(safeColumns.length, (int i) => DataCell(Text(i < row.cells.length ? row.cells[i] : '', style: theme.textTheme.bodySmall?.copyWith(fontSize: compact ? 11 : null, height: compact ? 1.05 : 1.3)))))).toList(),
         ),
       ),
     );
@@ -797,6 +837,121 @@ List<TextSpan> _boldMarkedSpans(String text) {
   ];
 }
 
+class _VerbFormsAwareText extends StatelessWidget {
+  const _VerbFormsAwareText({
+    required this.label,
+    required this.text,
+    this.labelStyle,
+    this.italic = false,
+  });
+
+  final String label;
+  final String text;
+  final TextStyle? labelStyle;
+  final bool italic;
+
+  @override
+  Widget build(BuildContext context) {
+    final ThemeData theme = Theme.of(context);
+    final TextStyle baseStyle = (theme.textTheme.bodySmall ?? const TextStyle()).copyWith(
+      color: theme.colorScheme.primary,
+      fontStyle: italic ? FontStyle.italic : null,
+      height: 1.4,
+    );
+    final List<String> parts = text.split(';');
+    final bool hasForms = parts.any((String part) => _verbFormValues(part) != null);
+    if (!hasForms) {
+      return Text.rich(
+        TextSpan(
+          style: baseStyle,
+          children: <InlineSpan>[
+            TextSpan(text: label, style: labelStyle),
+            ..._boldMarkedSpans(text),
+          ],
+        ),
+      );
+    }
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: <Widget>[
+        Text(label, style: baseStyle.copyWith(fontWeight: labelStyle?.fontWeight)),
+        const SizedBox(height: 3),
+        for (final String part in parts)
+          if (part.trim().isNotEmpty)
+            _VerbFormPart(part: part, style: baseStyle),
+      ],
+    );
+  }
+}
+
+class _VerbFormPart extends StatelessWidget {
+  const _VerbFormPart({required this.part, required this.style});
+
+  final String part;
+  final TextStyle style;
+
+  @override
+  Widget build(BuildContext context) {
+    final List<String>? forms = _verbFormValues(part);
+    if (forms != null) {
+      return Padding(
+        padding: const EdgeInsets.only(bottom: 3),
+        child: _VerbFormsRow(forms: forms),
+      );
+    }
+    return Text.rich(
+      TextSpan(style: style, children: _boldMarkedSpans(part.trim())),
+    );
+  }
+}
+
+List<String>? _verbFormValues(String value) {
+  final List<String> forms = value
+      .trim()
+      .replaceAll('→', '>')
+      .split('>')
+      .map((String item) => item.trim())
+      .where((String item) => item.isNotEmpty)
+      .toList(growable: false);
+  return forms.length == 3 ? forms : null;
+}
+
+class _VerbFormsRow extends StatelessWidget {
+  const _VerbFormsRow({required this.forms});
+  final List<String> forms;
+
+  @override
+  Widget build(BuildContext context) {
+    final ThemeData theme = Theme.of(context);
+    return Container(
+      width: double.infinity,
+      decoration: BoxDecoration(
+        color: theme.colorScheme.primary.withValues(alpha: 0.08),
+        borderRadius: BorderRadius.circular(8),
+        border: Border.all(color: theme.colorScheme.primary.withValues(alpha: 0.22)),
+      ),
+      child: Row(
+        children: <Widget>[
+          for (int index = 0; index < forms.length; index++)
+            Expanded(
+              child: Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 5, vertical: 3),
+                child: Text(
+                  forms[index],
+                  textAlign: TextAlign.center,
+                  style: theme.textTheme.bodySmall?.copyWith(
+                    color: theme.colorScheme.primary,
+                    fontWeight: FontWeight.w700,
+                  ),
+                ),
+              ),
+            ),
+        ],
+      ),
+    );
+  }
+}
+
 class _RuleItem extends StatelessWidget {
   const _RuleItem({required this.rule, this.example});
   final String rule;
@@ -819,15 +974,11 @@ class _RuleItem extends StatelessWidget {
                 Text.rich(TextSpan(style: theme.textTheme.bodyMedium?.copyWith(height: 1.4), children: spans)),
                 if (example != null && example!.isNotEmpty) ...<Widget>[
                   const SizedBox(height: 3),
-                  Text.rich(
-                  TextSpan(
-                    style: theme.textTheme.bodySmall?.copyWith(color: theme.colorScheme.primary, fontStyle: FontStyle.italic),
-                    children: <InlineSpan>[
-                      const TextSpan(text: 'Example: '),
-                      ..._boldMarkedSpans(example!),
-                    ],
+                  _VerbFormsAwareText(
+                    label: 'Example: ',
+                    text: example!,
+                    italic: true,
                   ),
-                ),
                 ],
               ],
             ),
