@@ -43,11 +43,6 @@ jobs:
       - name: Generate code (Drift)
         run: dart run build_runner build
 
-      - name: Ensure Gradle wrapper
-        # The wrapper jar is intentionally not committed (binary-free repo);
-        # regenerate it to match the pinned Gradle version before building.
-        run: cd android && gradle wrapper --gradle-version 9.1.0
-
       - name: Set up release signing
         # Release builds must never fall back to the Android debug key. The
         # check lives in the shell script because GitHub Actions does not
@@ -73,6 +68,11 @@ jobs:
           keyAlias=$ANDROID_KEY_ALIAS
           storeFile=upload-keystore.jks
           EOF
+
+      - name: Ensure Gradle wrapper
+        # The wrapper jar is intentionally not committed (binary-free repo);
+        # regenerate it to match the pinned Gradle version before building.
+        run: cd android && gradle wrapper --gradle-version 9.1.0
 
       - name: Analyze
         run: flutter analyze --no-fatal-infos --no-fatal-warnings
