@@ -138,14 +138,130 @@
           ]
         },
         {
-          "name": "Numeral Adjective",
-          "description": "Shows the number or order of nouns.",
-          "exampleWords": "one, three, first"
+          "name": "Adjective of Number",
+          "description": "An adjective of number is a word that tells us how many persons or things are meant or in what order they occur.",
+          "urduExplanation": "صفتِ عدد وہ لفظ ہے جو کسی اسم کی تعداد یا ترتیب کو ظاہر کرے۔",
+          "exampleWords": "one, two, many, few, several, first, second",
+          "rules": [
+            "It tells us how many persons or things there are.",
+            "It is generally used with countable nouns.",
+            "**Few** and **a few** have different meanings."
+          ],
+          "ruleExamples": [
+            "Five students passed the test.\nSeveral candidates applied for the job. > An adjective of number answers **\"How many?\"**",
+            "Three books\nMany students\nTwo cars > Adjectives of number generally describe countable nouns.",
+            "Few students passed the test. > Almost none.\nA few students passed the test. > Some students.\n**Few** = almost none\n**A few** = some"
+          ],
+          "examples": [
+            {
+              "text": "Five students passed the test.",
+              "urdu": "پانچ طلبہ امتحان میں کامیاب ہوئے۔",
+              "note": "**Five** tells us how many students passed."
+            },
+            {
+              "text": "Several candidates applied for the job.",
+              "urdu": "کئی امیدواروں نے ملازمت کے لیے درخواست دی۔",
+              "note": "**Several** shows an indefinite number of countable candidates."
+            },
+            {
+              "text": "The first candidate answered the question.",
+              "urdu": "پہلے امیدوار نے سوال کا جواب دیا۔",
+              "note": "**First** shows the order of the candidate."
+            },
+            {
+              "text": "A few students attended the seminar.",
+              "urdu": "چند طلبہ نے سیمینار میں شرکت کی۔",
+              "note": "**A few** means some students, not almost none."
+            }
+          ],
+          "commonMistakes": [
+            {
+              "wrong": "❌ Much students passed the test.",
+              "right": "✅ Many students passed the test.",
+              "urdu": "بہت سے طلبہ امتحان میں کامیاب ہوئے۔",
+              "note": "Students are countable and plural, so use **many** for number, not **much** for quantity."
+            },
+            {
+              "wrong": "❌ Three student passed the test.",
+              "right": "✅ Three students passed the test.",
+              "urdu": "تین طلبہ امتحان میں کامیاب ہوئے۔",
+              "note": "A number greater than one normally takes a plural countable noun."
+            },
+            {
+              "wrong": "❌ Few students passed, so the hall was full.",
+              "right": "✅ A few students passed, so the hall was not empty.",
+              "urdu": "چند طلبہ کامیاب ہوئے، اس لیے ہال خالی نہیں تھا۔",
+              "note": "**Few** means almost none, while **a few** means some."
+            },
+            {
+              "wrong": "❌ First students entered the room.",
+              "right": "✅ The first student entered the room.",
+              "urdu": "پہلا طالب علم کمرے میں داخل ہوا۔",
+              "note": "A singular ordinal noun usually needs a determiner such as **the** before it."
+            }
+          ]
         },
         {
           "name": "Demonstrative Adjective",
-          "description": "Points out a specific noun.",
-          "exampleWords": "this, that, these, those"
+          "description": "A demonstrative adjective is a word used before a noun to point out a specific person, place, animal, or thing.",
+          "urduExplanation": "صفتِ اشارہ وہ لفظ ہے جو کسی مخصوص شخص، جگہ، جانور یا چیز کی طرف اشارہ کرے اور عموماً اسم سے پہلے آئے۔",
+          "exampleWords": "This, That, Those, These",
+          "rules": [
+            "A demonstrative adjective must come before a noun.",
+            "Do not confuse demonstrative adjectives with demonstrative pronouns."
+          ],
+          "ruleExamples": [
+            "This book is useful.\nThose students are hardworking. > **This**, **those** + noun = demonstrative adjective.",
+            "This book is interesting. > **This** = adjective\nThis is interesting. > **This** = pronoun\nIf the demonstrative is followed by a noun, it is a demonstrative adjective; if it stands alone, it is a demonstrative pronoun."
+          ],
+          "examples": [
+            {
+              "text": "This book is useful.",
+              "urdu": "یہ کتاب مفید ہے۔",
+              "note": "**This** comes before the noun book, so it is a demonstrative adjective."
+            },
+            {
+              "text": "Those students are hardworking.",
+              "urdu": "وہ طلبہ محنتی ہیں۔",
+              "note": "**Those** comes before the noun students, so it points out specific students."
+            },
+            {
+              "text": "These questions are important for the examination.",
+              "urdu": "یہ سوالات امتحان کے لیے اہم ہیں۔",
+              "note": "**These** points out specific questions and comes before the noun questions."
+            },
+            {
+              "text": "That building is the examination hall.",
+              "urdu": "وہ عمارت امتحانی ہال ہے۔",
+              "note": "**That** points out one specific building."
+            }
+          ],
+          "commonMistakes": [
+            {
+              "wrong": "❌ This is useful book.",
+              "right": "✅ This is a useful book.",
+              "urdu": "یہ ایک مفید کتاب ہے۔",
+              "note": "A singular countable noun needs an article. **This** is a demonstrative adjective, and book needs **a**."
+            },
+            {
+              "wrong": "❌ Those is my books.",
+              "right": "✅ Those are my books.",
+              "urdu": "وہ میری کتابیں ہیں۔",
+              "note": "**Those** refers to plural books, so use the plural verb **are**, not **is**."
+            },
+            {
+              "wrong": "❌ These book is expensive.",
+              "right": "✅ This book is expensive.",
+              "urdu": "یہ کتاب مہنگی ہے۔",
+              "note": "A singular noun takes **this**, while a plural noun takes **these**."
+            },
+            {
+              "wrong": "❌ That students are ready.",
+              "right": "✅ Those students are ready.",
+              "urdu": "وہ طلبہ تیار ہیں۔",
+              "note": "Students is plural, so use the plural demonstrative **those**."
+            }
+          ]
         },
         {
           "name": "Possessive Adjective",
@@ -154,8 +270,69 @@
         },
         {
           "name": "Interrogative Adjective",
-          "description": "Is used with a noun to ask a question.",
-          "exampleWords": "what, which, whose"
+          "description": "An interrogative adjective is used with a noun to ask a question.",
+          "urduExplanation": "صفتِ استفہام اسم کے ساتھ مل کر سوال پوچھنے کے لیے استعمال ہوتی ہے۔",
+          "exampleWords": "what, which, whose",
+          "rules": [
+            "An interrogative adjective is used with a noun to ask a question.",
+            "**Whose** asks about possession or ownership.",
+            "Do not confuse an interrogative adjective with an interrogative pronoun.",
+            "Exam Shortcut: Question word + noun = Interrogative Adjective. Question word without a noun = Interrogative Pronoun."
+          ],
+          "ruleExamples": [
+            "**Which book** do you want?\n**What subject** do you study? > **What**, **which**, and **whose** are common interrogative adjectives when they come before a noun.",
+            "**Whose pen** is this?\n**Whose car** is parked outside? > **Whose + noun** asks who owns something.",
+            "**Which book** is yours? > **Which** = interrogative adjective because it modifies book.\n**Which** is yours? > **Which** = interrogative pronoun because it stands alone.",
+            "Question word + noun > Interrogative Adjective\nQuestion word without a noun > Interrogative Pronoun"
+          ],
+          "examples": [
+            {
+              "text": "Which book do you want?",
+              "urdu": "آپ کون سی کتاب چاہتے ہیں؟",
+              "note": "**Which** comes before the noun book, so it is an interrogative adjective."
+            },
+            {
+              "text": "What subject do you study?",
+              "urdu": "آپ کون سا مضمون پڑھتے ہیں؟",
+              "note": "**What** comes before the noun subject and asks about it."
+            },
+            {
+              "text": "Whose pen is this?",
+              "urdu": "یہ قلم کس کا ہے؟",
+              "note": "**Whose** comes before pen and asks about ownership."
+            },
+            {
+              "text": "Which book is yours?",
+              "urdu": "آپ کی کتاب کون سی ہے؟",
+              "note": "**Which** modifies book, so it is an interrogative adjective."
+            }
+          ],
+          "commonMistakes": [
+            {
+              "wrong": "❌ Which do you want book?",
+              "right": "✅ Which book do you want?",
+              "urdu": "آپ کون سی کتاب چاہتے ہیں؟",
+              "note": "The interrogative adjective must come before the noun: **which book**."
+            },
+            {
+              "wrong": "❌ Whose is this pen?",
+              "right": "✅ Whose pen is this?",
+              "urdu": "یہ قلم کس کا ہے؟",
+              "note": "When **whose** comes before a noun, it is an interrogative adjective."
+            },
+            {
+              "wrong": "❌ What you study subject?",
+              "right": "✅ What subject do you study?",
+              "urdu": "آپ کون سا مضمون پڑھتے ہیں؟",
+              "note": "The question word comes before the noun subject, followed by the helping verb and subject."
+            },
+            {
+              "wrong": "❌ Which is yours book?",
+              "right": "✅ Which book is yours?",
+              "urdu": "آپ کی کتاب کون سی ہے؟",
+              "note": "**Which** must directly come before the noun it modifies."
+            }
+          ]
         },
         {
           "name": "Distributive Adjective",
