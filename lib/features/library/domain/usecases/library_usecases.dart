@@ -10,6 +10,7 @@ import 'package:lexiora/core/utils/result.dart';
 import 'package:lexiora/core/utils/typedefs.dart';
 import 'package:lexiora/features/annotations/domain/repositories/annotations_repository.dart';
 import 'package:lexiora/features/bookmarks/domain/repositories/bookmarks_repository.dart';
+import 'package:lexiora/features/library/data/services/google_drive_service.dart';
 import 'package:lexiora/features/library/domain/entities/library_document.dart';
 import 'package:lexiora/features/library/domain/repositories/library_repository.dart';
 import 'package:lexiora/features/notes/domain/repositories/notes_repository.dart';
@@ -261,6 +262,44 @@ class ImportPdfs implements UseCase<ImportOutcome, NoParams> {
       AppLogger.w('Import: could not discard duplicate copy $path: $e');
     }
   }
+}
+
+/// Downloads one selected Drive PDF into app-private cache and indexes it in
+/// the same managed-file pipeline as a system-picker import.
+class ImportDrivePdf {
+  const ImportDrivePdf(this._repo, this._drive, this._cover);
+
+  final LibraryRepository _repo;
+  final GoogleDriveService _drive;
+  final PdfCoverService _cover;
+
+  ResultFuture<ImportOutcome> call(GoogleDrivePdf pdf) => guard(() async {
+        final Set<String> keys = await _repo.existingKeys();
+        final String title = _titleOf(pdf.name);
+        final String key = libraryDedupKey(title, pdf.size);
+        if (keys.contains(key)) {
+          return const ImportOutcome(picked: 1, added: 0, duplicates: 1);
+        }
+        final File cached = await _drive.downloadPdf(pdf);
+        final String id = _uuid.v4();
+        final String? cover =
+            await _cover.generateCover(documentId: id, pdfPath: cached.path);
+        await _repo.insert(
+          LibraryDocument(
+            id: id,
+            title: title,
+            fileName: pdf.name,
+            filePath: cached.path,
+            fileSize: pdf.size > 0 ? pdf.size : await cached.length(),
+            pageCount: 0,
+            isFavorite: false,
+            importedAt: DateTime.now(),
+            coverPath: cover,
+            isManaged: true,
+          ),
+        );
+        return const ImportOutcome(picked: 1, added: 1, duplicates: 0);
+      });
 }
 
 /// Same import flow as [ImportPdfs], but assigns every newly-imported

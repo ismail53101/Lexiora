@@ -281,8 +281,8 @@
         },
         {
           "name": "Possessive Adjective",
-          "description": "Shows ownership or possession.",
-          "exampleWords": "my, your, his, her, our, their",
+          "description": "A Possessive Adjective is a word that shows ownership, possession, or relationship and is used before a noun.",
+          "exampleWords": "my, your, his, her, its, our, their",
           "tableRows": [
             [
               "I",
@@ -365,6 +365,23 @@
           "tableColumns": [
             "Person",
             "Possessive Adjective"
+          ],
+          "urduExplanation": "صفت ملکی وہ لفظ ہے جو کسی شخص یا چیز کے ساتھ ملکیت، تعلق یا وابستگی ظاہر کرے اور عموماً اسم سے پہلے آئے۔",
+          "rules": [
+            "A Possessive Adjective shows ownership, possession, or relationship.",
+            "A Possessive Adjective comes before a noun.",
+            "Do not use an article before a possessive adjective.",
+            "Do not use an apostrophe (') with possessive adjectives.",
+            "Be careful with **its** and **it's**.",
+            "Do not confuse possessive adjectives with possessive pronouns."
+          ],
+          "ruleExamples": [
+            "**My** book is new.\n**Her** brother is a doctor.\nRule: It tells us **whose** person or thing is being discussed.",
+            "**His** car is expensive.\n**Their** house is large.\nRule: Possessive Adjective + noun.",
+            "Incorrect: The my book\nCorrect: my book\nRule: Do not normally use **a, an, or the** directly before a possessive adjective.",
+            "Incorrect: Her's car.\nCorrect: Her car.\nRule: **my, your, his, her, its, our, their** do not take an apostrophe.",
+            "The cat cleaned it's paw. > Possession\nIt's raining. > It is\nRule: **Its** = Possession; **It's** = It is / It has.",
+            "This is my book. > **My** = Possessive Adjective\nThis book is mine. > **Mine** = Possessive Pronoun\nRule: Possessive Adjective + noun; possessive pronoun stands alone."
           ]
         },
         {
@@ -435,7 +452,7 @@
         },
         {
           "name": "Distributive Adjective",
-          "description": "Refers to members of a group individually.",
+          "description": "Distributive Adjective refers to each person or thing in a group individually.",
           "exampleWords": "each, every, either, neither",
           "tableRows": [
             [
@@ -512,6 +529,21 @@
             "Word",
             "Meaning",
             "Noun"
+          ],
+          "urduExplanation": "صفت تقسیمی وہ لفظ ہے جو کسی گروہ کے افراد یا چیزوں کو ایک ایک کرکے ظاہر کرے۔",
+          "rules": [
+            "**Each** is used for individual members in a group.",
+            "**Every** refers to all members individually.",
+            "Use **of + plural noun/pronoun** after **each, either, and neither**.",
+            "Distributive Adjectives normally take a singular noun.",
+            "Do not confuse **each** and **all**."
+          ],
+          "ruleExamples": [
+            "**Each** student has an identity card.\n**Each** player received a medal.\nRule: Each + singular countable noun + singular verb.",
+            "**Every** student must attend the class.\n**Every** candidate needs an admit card.\nRule: Every + singular countable noun + singular verb.",
+            "**Each of** the students has a book.\n**Either of** the answers is acceptable.\n**Neither of** the candidates was selected.\nRule: Each/Either/Neither + of + plural noun/pronoun.",
+            "Incorrect: Every students\nCorrect: Every student\nIncorrect: Each books\nCorrect: Each book\nRule: Each/Every/Either/Neither + singular countable noun.",
+            "**Each** student received a certificate. > one by one\n**All** of the students received certificates. > group as a whole\nRule: Each = Individually; All = Collectively."
           ]
         },
         {

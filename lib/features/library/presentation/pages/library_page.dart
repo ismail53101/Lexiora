@@ -8,6 +8,7 @@ import 'package:lexiora/core/services/permission_service.dart';
 import 'package:lexiora/core/usecase/usecase.dart';
 import 'package:lexiora/core/utils/result.dart';
 import 'package:lexiora/core/widgets/empty_state.dart';
+import 'package:lexiora/features/library/data/services/google_drive_service.dart';
 import 'package:lexiora/features/library/domain/entities/category.dart';
 import 'package:lexiora/features/library/domain/entities/library_document.dart';
 import 'package:lexiora/features/library/domain/usecases/library_usecases.dart';
@@ -124,7 +125,7 @@ class _LibraryPageState extends ConsumerState<LibraryPage> {
         ],
       ),
       floatingActionButton: FloatingActionButton.extended(
-        onPressed: _importing ? null : _import,
+        onPressed: _importing ? null : _showImportOptions,
         icon: _importing
             ? const SizedBox(
                 width: 18,
@@ -132,7 +133,7 @@ class _LibraryPageState extends ConsumerState<LibraryPage> {
                 child: CircularProgressIndicator(strokeWidth: 2),
               )
             : const Icon(Icons.file_upload_outlined),
-        label: Text(_importing ? 'Importing…' : 'Import PDF'),
+        label: Text(_importing ? 'Importing…' : 'Add PDF'),
       ),
       body: Column(
         children: [
@@ -352,6 +353,99 @@ class _LibraryPageState extends ConsumerState<LibraryPage> {
         );
       },
     );
+  }
+
+  Future<void> _showImportOptions() async {
+    await showModalBottomSheet<void>(
+      context: context,
+      showDragHandle: true,
+      builder: (BuildContext sheetContext) => SafeArea(
+        child: Wrap(
+          children: [
+            ListTile(
+              leading: const Icon(Icons.phone_android_outlined),
+              title: const Text('From Device'),
+              subtitle: const Text('Pick PDFs already stored on this phone'),
+              onTap: () {
+                Navigator.of(sheetContext).pop();
+                _import();
+              },
+            ),
+            ListTile(
+              leading: const Icon(Icons.cloud_outlined),
+              title: const Text('From Google Drive'),
+              subtitle: const Text('Browse your private Drive PDFs'),
+              onTap: () {
+                Navigator.of(sheetContext).pop();
+                _browseGoogleDrive();
+              },
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
+  Future<void> _browseGoogleDrive() async {
+    final ScaffoldMessengerState messenger = ScaffoldMessenger.of(context);
+    try {
+      final GoogleDriveService drive = ref.read(googleDriveServiceProvider);
+      await drive.connect();
+      final List<GoogleDrivePdf> files = await drive.listPdfs();
+      if (!mounted) return;
+      final GoogleDrivePdf? selected = await showModalBottomSheet<GoogleDrivePdf>(
+        context: context,
+        showDragHandle: true,
+        isScrollControlled: true,
+        builder: (BuildContext sheetContext) => SafeArea(
+          child: SizedBox(
+            height: MediaQuery.sizeOf(sheetContext).height * 0.72,
+            child: files.isEmpty
+                ? const Center(child: Text('No PDF files found in Google Drive.'))
+                : ListView.separated(
+                    padding: const EdgeInsets.fromLTRB(16, 8, 16, 24),
+                    itemCount: files.length,
+                    separatorBuilder: (_, __) => const Divider(height: 1),
+                    itemBuilder: (BuildContext context, int index) {
+                      final GoogleDrivePdf file = files[index];
+                      return ListTile(
+                        leading: const Icon(Icons.picture_as_pdf_outlined),
+                        title: Text(file.name),
+                        subtitle: Text(file.modifiedTime == null
+                            ? 'Google Drive'
+                            : 'Google Drive · ${file.modifiedTime!.toLocal()}'),
+                        onTap: () => Navigator.of(sheetContext).pop(file),
+                      );
+                    },
+                  ),
+          ),
+        ),
+      );
+      if (selected == null || !mounted) return;
+      setState(() => _importing = true);
+      final Result<ImportOutcome> result =
+          await ref.read(importDrivePdfProvider).call(selected);
+      if (!mounted) return;
+      result.fold(
+        (failure) => messenger.showSnackBar(
+          SnackBar(content: Text('Google Drive import failed: ${failure.message}')),
+        ),
+        (ImportOutcome outcome) => messenger.showSnackBar(
+          SnackBar(
+            content: Text(outcome.duplicates > 0
+                ? 'That Drive PDF is already in your library'
+                : 'Added from Google Drive'),
+          ),
+        ),
+      );
+    } on Object catch (error) {
+      if (!mounted) return;
+      messenger.showSnackBar(
+        SnackBar(content: Text('Google Drive unavailable: $error')),
+      );
+    } finally {
+      if (mounted) setState(() => _importing = false);
+    }
   }
 
   /// Manual import via the system file picker (one or several PDFs). Imported

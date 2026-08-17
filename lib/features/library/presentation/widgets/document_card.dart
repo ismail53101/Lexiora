@@ -88,6 +88,29 @@ class DocumentCard extends StatelessWidget {
                     ),
                   ),
                   const SizedBox(height: 4),
+                  Row(
+                    children: [
+                      Icon(
+                        document.isFromGoogleDrive
+                            ? Icons.cloud_outlined
+                            : Icons.phone_android_outlined,
+                        size: 13,
+                        color: theme.colorScheme.onSurfaceVariant,
+                      ),
+                      const SizedBox(width: 4),
+                      Expanded(
+                        child: Text(
+                          document.sourceLabel,
+                          maxLines: 1,
+                          overflow: TextOverflow.ellipsis,
+                          style: theme.textTheme.bodySmall?.copyWith(
+                            color: theme.colorScheme.onSurfaceVariant,
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                  const SizedBox(height: 2),
                   Text(
                     document.readableSize,
                     style: theme.textTheme.bodySmall?.copyWith(

@@ -600,14 +600,6 @@ class GrammarTypeContent extends StatelessWidget {
             const _TypeSubheading(title: 'Personal Pronoun Forms', icon: Icons.table_chart_outlined),
             _PronounTable(rows: type.pronounTable),
           ],
-          if (type.tableRows.isNotEmpty) ...<Widget>[
-            _TypeSubheading(title: type.tableTitle.isEmpty ? 'Verb Forms' : type.tableTitle, icon: Icons.table_chart_outlined),
-            _GrammarTable(
-              columns: type.tableColumns,
-              rows: type.tableRows,
-              compact: type.name == 'Regular Verbs Table' || type.name == 'Irregular Verbs Table',
-            ),
-          ],
           if (type.name == 'Verb Forms Tables' && type.tableGroups.isNotEmpty) ...<Widget>[
             for (final GrammarTableGroup group in type.tableGroups)
               _CompactTableSection(group: group),
@@ -652,6 +644,18 @@ class GrammarTypeContent extends StatelessWidget {
             ),
             for (final GrammarMistake mistake in type.commonMistakes)
               _MistakeItem(mistake: mistake),
+          ],
+          if (type.tableRows.isNotEmpty) ...<Widget>[
+            _TypeSubheading(title: type.tableTitle.isEmpty ? 'Verb Forms' : type.tableTitle, icon: Icons.table_chart_outlined),
+            _GrammarTable(
+              columns: type.tableColumns,
+              rows: type.tableRows,
+              compact: type.name == 'Regular Verbs Table' ||
+                  type.name == 'Irregular Verbs Table' ||
+                  type.name == 'Possessive Adjective' ||
+                  type.name == 'Distributive Adjective' ||
+                  type.name == 'Proper Adjective',
+            ),
           ],
           if (type.practice.isNotEmpty) ...<Widget>[
             const _TypeSubheading(title: 'Practice', icon: Icons.edit_note),

@@ -6,6 +6,7 @@ import 'package:lexiora/core/services/pdf_import_service.dart';
 import 'package:lexiora/core/services/permission_service.dart';
 import 'package:lexiora/features/annotations/domain/repositories/annotations_repository.dart';
 import 'package:lexiora/features/bookmarks/domain/repositories/bookmarks_repository.dart';
+import 'package:lexiora/features/library/data/services/google_drive_service.dart';
 import 'package:lexiora/features/library/domain/entities/category.dart';
 import 'package:lexiora/features/library/domain/entities/library_document.dart';
 import 'package:lexiora/features/library/domain/repositories/library_repository.dart';
@@ -72,6 +73,17 @@ final Provider<ImportPdfs> importPdfsProvider = Provider<ImportPdfs>(
   (Ref ref) => ImportPdfs(
     ref.watch(libraryRepositoryProvider),
     sl<PdfImportService>(),
+    sl<PdfCoverService>(),
+  ),
+);
+
+final Provider<GoogleDriveService> googleDriveServiceProvider =
+    Provider<GoogleDriveService>((Ref ref) => GoogleDriveService());
+
+final Provider<ImportDrivePdf> importDrivePdfProvider = Provider<ImportDrivePdf>(
+  (Ref ref) => ImportDrivePdf(
+    ref.watch(libraryRepositoryProvider),
+    ref.watch(googleDriveServiceProvider),
     sl<PdfCoverService>(),
   ),
 );
