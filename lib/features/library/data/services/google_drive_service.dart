@@ -8,6 +8,8 @@ import 'package:path_provider/path_provider.dart';
 
 const String sapioraAndroidOAuthClientId =
     '201143865879-gvgqcnsec1nj1g9drva2mu52bgcvd402.apps.googleusercontent.com';
+const String sapioraWebOAuthClientId =
+    '201143865879-g6e2o0jgl71uuf2qeah4589vs45ousmi.apps.googleusercontent.com';
 const String googleDriveReadonlyScope =
     'https://www.googleapis.com/auth/drive.readonly';
 
@@ -38,7 +40,10 @@ class GoogleDriveService {
 
   Future<void> _ensureInitialized() async {
     if (_initialized) return;
-    await _signIn.initialize(clientId: sapioraAndroidOAuthClientId);
+    await _signIn.initialize(
+      clientId: sapioraAndroidOAuthClientId,
+      serverClientId: sapioraWebOAuthClientId,
+    );
     _initialized = true;
   }
 
