@@ -391,6 +391,15 @@ class _NounLandingView extends StatelessWidget {
             accent: accents[index % accents.length],
             lessonId: lesson.id,
           ),
+        if (lesson.id == 'pos/verb' && lesson.additionalTypes.isNotEmpty)
+          const _LandingSectionLabel(title: 'Additional Verb Topics'),
+        for (int index = 0; index < lesson.additionalTypes.length; index++)
+          _NounTypeRow(
+            type: lesson.additionalTypes[index],
+            number: index + 1,
+            accent: accents[(index + lesson.types.length) % accents.length],
+            lessonId: lesson.id,
+          ),
         if (lesson.id == 'pos/adjective' && lesson.degreeTypes.isNotEmpty)
           _DegreeFolderCard(
             lesson: lesson,
@@ -591,6 +600,10 @@ class GrammarTypeContent extends StatelessWidget {
             _TypeSubheading(title: type.tableTitle.isEmpty ? 'Verb Forms' : type.tableTitle, icon: Icons.table_chart_outlined),
             _GrammarTable(columns: type.tableColumns, rows: type.tableRows),
           ],
+          for (final GrammarTableGroup group in type.tableGroups) ...<Widget>[
+            _TypeSubheading(title: group.title, icon: Icons.table_chart_outlined),
+            _GrammarTable(columns: group.columns, rows: group.rows),
+          ],
           if (type.rules.isNotEmpty) ...<Widget>[
             const _TypeSubheading(title: 'Rules', icon: Icons.rule),
             for (int i = 0; i < type.rules.length; i++)
@@ -778,7 +791,7 @@ List<TextSpan> _boldMarkedSpans(String text) {
   return <TextSpan>[
     for (int i = 0; i < parts.length; i++)
       TextSpan(
-        text: parts[i],
+        text: parts[i].replaceAll(' > ', ' → '),
         style: i.isOdd ? const TextStyle(fontWeight: FontWeight.w800) : null,
       ),
   ];

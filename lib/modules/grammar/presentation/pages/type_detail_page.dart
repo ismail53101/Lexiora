@@ -44,6 +44,7 @@ class TypeDetailPage extends ConsumerWidget {
           GrammarType? selected;
           for (final GrammarType type in <GrammarType>[
             ...lesson.types,
+            ...lesson.additionalTypes,
             ...lesson.degreeTypes,
           ]) {
             if (type.name == typeName) {

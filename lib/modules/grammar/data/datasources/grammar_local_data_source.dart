@@ -274,6 +274,7 @@ class GrammarLocalDataSource {
       urduExplanation: _str(o['urduExplanation']),
       englishExplanation: _str(o['englishExplanation']),
       types: _types(o['types']),
+      additionalTypes: _types(o['additionalTypes']),
       degreeTypes: _types(o['degreeTypes']),
       degreeNote: _str(o['degreeNote']),
       degreeExamples: _strList(o['degreeExamples']),
@@ -322,6 +323,7 @@ class GrammarLocalDataSource {
             tableTitle: _str(e['tableTitle']),
             tableColumns: _strList(e['tableColumns']),
             tableRows: _tableRows(e['tableRows']),
+            tableGroups: _tableGroups(e['tableGroups']),
             subjectVerbAgreement: _str(e['subjectVerbAgreement']),
             subjectVerbAgreementUrdu: _str(e['subjectVerbAgreementUrdu']),
             examples: _examples(e['examples']),
@@ -334,6 +336,15 @@ class GrammarLocalDataSource {
       }
     }
     return out;
+  }
+
+  static List<GrammarTableGroup> _tableGroups(Object? v) {
+    if (v is! List) return const <GrammarTableGroup>[];
+    return v.whereType<Map>().map((Map e) => GrammarTableGroup(
+      title: _str(e['title']),
+      columns: _strList(e['columns']),
+      rows: _tableRows(e['rows']),
+    )).where((GrammarTableGroup group) => group.title.isNotEmpty).toList(growable: false);
   }
 
   static List<GrammarTableRow> _tableRows(Object? v) {

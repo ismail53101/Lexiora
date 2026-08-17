@@ -4394,6 +4394,655 @@
       "examTips": [
         "Identify the subject and auxiliary before choosing the main-verb form.",
         "In competitive exams, check modal + base verb, auxiliary + correct participle, transitive-object patterns, and subject–verb agreement."
+      ],
+      "additionalTypes": [
+        {
+          "name": "Regular Verb",
+          "description": "A **regular verb** is a verb that forms it's **past tense and third form by following the normal -ed or -d rule**.",
+          "urduExplanation": "باقاعدہ فعل وہ فعل ہے جو اپنی ماضی اور تیسری شکل بنانے کے لیے عام طور پر d or ed کا وعدہ اپناتا ہے۔",
+          "exampleWords": "Play > played > played; Work > worked > worked; Clean > cleaned > cleaned; Love > loved > loved",
+          "wordFocus": "Regular verbs form their past tense and third form by following the normal -ed or -d rule.",
+          "rules": [
+            "Normally, add **-ed** to form the past tense and third form.",
+            "If the verb already ends in **e**, add only **-d**.",
+            "If a verb ends in consonant + **y**, change **y** to **i** and add **-ed**.",
+            "If a verb ends in vowel + **y**, keep the **y** and add **-ed**.",
+            "Use the base/first form of the verb after **did**."
+          ],
+          "ruleExamples": [
+            "play > played > played",
+            "love > loved > loved; live > lived; close > closed",
+            "study > studied; carry > carried; try > tried",
+            "play > played; enjoy > enjoyed; stay > stayed",
+            "I did not play cricket. Did you play cricket?"
+          ],
+          "examples": [
+            {
+              "text": "I play cricket. > I played cricket yesterday.",
+              "note": "The verb play changes to played in the past tense by following the regular -ed rule."
+            },
+            {
+              "text": "Ali played cricket yesterday.",
+              "note": "play > played follows the regular **-d** pattern."
+            },
+            {
+              "text": "Jameela Studied English last night.",
+              "note": "study > studied changes y > i before adding **-ed**."
+            },
+            {
+              "text": "Ahmed loved his new book.",
+              "note": "love > loved takes only **-d** because the verb already ends in **e**."
+            }
+          ],
+          "commonMistakes": [
+            {
+              "wrong": "He **play** cricket yesterday.",
+              "right": "He **played** cricket yesterday.",
+              "note": "A regular verb uses its V2 form in a simple past affirmative sentence."
+            },
+            {
+              "wrong": "She **studyed** English last night.",
+              "right": "She **studied** English last night.",
+              "note": "After consonant + y, change y to i before adding -ed."
+            },
+            {
+              "wrong": "Ahmed **loveded** his new book.",
+              "right": "Ahmed **loved** his new book.",
+              "note": "A verb ending in e takes only -d."
+            },
+            {
+              "wrong": "He did not **played** cricket.",
+              "right": "He did not **play** cricket.",
+              "note": "After did, use the base/first form because did already shows the past tense."
+            }
+          ]
+        },
+        {
+          "name": "Irregular Verb",
+          "description": "An irregular verb is a verb that does not follow the regular **-d/-ed pattern** when forming its past tense and third form.",
+          "urduExplanation": "بے قاعدہ فعل وہ فعل ہے جو اپنی ماضی اور تیسری شکل بنانے کے لیے ed or d کے عام قاعدے کی پیروی نہیں کرتا۔",
+          "exampleWords": "go > went > gone; Eat > ate > eaten; Write > wrote > written; Take > took > taken",
+          "wordFocus": "Irregular verbs must be learned because their V2 and V3 forms do not normally follow the -d/-ed rule.",
+          "rules": [
+            "Irregular verbs do not normally take **-d** to form V2 and V3.",
+            "Some irregular verbs have the same V2 and V3 forms.",
+            "Some irregular verbs have the same V2 and V3 forms, but they are still irregular.",
+            "After **did not**, use V1, not V2, because did is the second form of the **do** verb."
+          ],
+          "ruleExamples": [
+            "Go > went > gone; not Go > goed > goed.",
+            "cut > cut > cut; put > put > put; hit > hit > hit",
+            "buy > bought > bought; bring > brought > brought; teach > taught > taught; keep > kept > kept",
+            "They did not eat dinner. Use eat, not ate."
+          ],
+          "examples": [
+            {
+              "text": "Ali went to Peshawar yesterday.",
+              "note": "Go > went is an irregular verb. Went (V2) is used for the simple past."
+            },
+            {
+              "text": "Balaach has written a letter.",
+              "note": "Write > wrote > written is irregular. Written (V3) is used after has."
+            },
+            {
+              "text": "They did not eat dinner.",
+              "note": "Eat > ate > eaten is irregular. After did not, we use V1 (eat), not V2 (ate), because did also shows the past tense."
+            },
+            {
+              "text": "She has taken the examination.",
+              "note": "Take > took > taken is irregular. Taken (V3) is used after has."
+            }
+          ],
+          "commonMistakes": [
+            {
+              "wrong": "He **goed** to school.",
+              "right": "He **went** to school.",
+              "note": "Go is irregular; its V2 form is went, not goed."
+            },
+            {
+              "wrong": "She has **wrote** a letter.",
+              "right": "She has **written** a letter.",
+              "note": "After has, use V3 written."
+            },
+            {
+              "wrong": "They did not **ate** dinner.",
+              "right": "They did not **eat** dinner.",
+              "note": "After did, use V1 eat, not V2 ate."
+            },
+            {
+              "wrong": "I have **buyed** a book.",
+              "right": "I have **bought** a book.",
+              "note": "Buy is irregular; its V2 and V3 form is bought."
+            }
+          ]
+        },
+        {
+          "name": "Verb Forms Tables",
+          "description": "Two separate tables of common regular and irregular verbs for competitive exams, composition papers, one-paper exams, and English MCQs.",
+          "exampleWords": "V1: First Form > V2: Second Form > V3: Third Form",
+          "tableGroups": [
+            {
+              "title": "Regular Verbs Table",
+              "columns": [
+                "V1: First Form",
+                "V2: Second Form",
+                "V3: Third Form"
+              ],
+              "rows": [
+                [
+                  "accept",
+                  "accepted",
+                  "accepted"
+                ],
+                [
+                  "add",
+                  "added",
+                  "added"
+                ],
+                [
+                  "admit",
+                  "admitted",
+                  "admitted"
+                ],
+                [
+                  "advise",
+                  "advised",
+                  "advised"
+                ],
+                [
+                  "agree",
+                  "agreed",
+                  "agreed"
+                ],
+                [
+                  "allow",
+                  "allowed",
+                  "allowed"
+                ],
+                [
+                  "answer",
+                  "answered",
+                  "answered"
+                ],
+                [
+                  "arrive",
+                  "arrived",
+                  "arrived"
+                ],
+                [
+                  "ask",
+                  "asked",
+                  "asked"
+                ],
+                [
+                  "avoid",
+                  "avoided",
+                  "avoided"
+                ],
+                [
+                  "believe",
+                  "believed",
+                  "believed"
+                ],
+                [
+                  "call",
+                  "called",
+                  "called"
+                ],
+                [
+                  "carry",
+                  "carried",
+                  "carried"
+                ],
+                [
+                  "change",
+                  "changed",
+                  "changed"
+                ],
+                [
+                  "clean",
+                  "cleaned",
+                  "cleaned"
+                ],
+                [
+                  "close",
+                  "closed",
+                  "closed"
+                ],
+                [
+                  "compare",
+                  "compared",
+                  "compared"
+                ],
+                [
+                  "complete",
+                  "completed",
+                  "completed"
+                ],
+                [
+                  "consider",
+                  "considered",
+                  "considered"
+                ],
+                [
+                  "continue",
+                  "continued",
+                  "continued"
+                ],
+                [
+                  "decide",
+                  "decided",
+                  "decided"
+                ],
+                [
+                  "describe",
+                  "described",
+                  "described"
+                ],
+                [
+                  "develop",
+                  "developed",
+                  "developed"
+                ],
+                [
+                  "die",
+                  "died",
+                  "died"
+                ],
+                [
+                  "discuss",
+                  "discussed",
+                  "discussed"
+                ],
+                [
+                  "enjoy",
+                  "enjoyed",
+                  "enjoyed"
+                ],
+                [
+                  "explain",
+                  "explained",
+                  "explained"
+                ],
+                [
+                  "finish",
+                  "finished",
+                  "finished"
+                ],
+                [
+                  "follow",
+                  "followed",
+                  "followed"
+                ],
+                [
+                  "happen",
+                  "happened",
+                  "happened"
+                ],
+                [
+                  "help",
+                  "helped",
+                  "helped"
+                ],
+                [
+                  "hope",
+                  "hoped",
+                  "hoped"
+                ],
+                [
+                  "improve",
+                  "improved",
+                  "improved"
+                ],
+                [
+                  "include",
+                  "included",
+                  "included"
+                ],
+                [
+                  "invite",
+                  "invited",
+                  "invited"
+                ],
+                [
+                  "join",
+                  "joined",
+                  "joined"
+                ],
+                [
+                  "learn",
+                  "learned",
+                  "learned"
+                ],
+                [
+                  "like",
+                  "liked",
+                  "liked"
+                ],
+                [
+                  "listen",
+                  "listened",
+                  "listened"
+                ],
+                [
+                  "live",
+                  "lived",
+                  "lived"
+                ],
+                [
+                  "love",
+                  "loved",
+                  "loved"
+                ],
+                [
+                  "manage",
+                  "managed",
+                  "managed"
+                ],
+                [
+                  "need",
+                  "needed",
+                  "needed"
+                ],
+                [
+                  "notice",
+                  "noticed",
+                  "noticed"
+                ],
+                [
+                  "offer",
+                  "offered",
+                  "offered"
+                ],
+                [
+                  "open",
+                  "opened",
+                  "opened"
+                ],
+                [
+                  "play",
+                  "played",
+                  "played"
+                ],
+                [
+                  "prepare",
+                  "prepared",
+                  "prepared"
+                ],
+                [
+                  "receive",
+                  "received",
+                  "received"
+                ],
+                [
+                  "study",
+                  "studied",
+                  "studied"
+                ]
+              ]
+            },
+            {
+              "title": "Irregular Verbs Table",
+              "columns": [
+                "V1: First Form",
+                "V2: Second Form",
+                "V3: Third Form"
+              ],
+              "rows": [
+                [
+                  "be",
+                  "was/were",
+                  "been"
+                ],
+                [
+                  "become",
+                  "became",
+                  "become"
+                ],
+                [
+                  "begin",
+                  "began",
+                  "begun"
+                ],
+                [
+                  "break",
+                  "broke",
+                  "broken"
+                ],
+                [
+                  "bring",
+                  "brought",
+                  "brought"
+                ],
+                [
+                  "build",
+                  "built",
+                  "built"
+                ],
+                [
+                  "buy",
+                  "bought",
+                  "bought"
+                ],
+                [
+                  "catch",
+                  "caught",
+                  "caught"
+                ],
+                [
+                  "choose",
+                  "chose",
+                  "chosen"
+                ],
+                [
+                  "come",
+                  "came",
+                  "come"
+                ],
+                [
+                  "cost",
+                  "cost",
+                  "cost"
+                ],
+                [
+                  "cut",
+                  "cut",
+                  "cut"
+                ],
+                [
+                  "deal",
+                  "dealt",
+                  "dealt"
+                ],
+                [
+                  "do",
+                  "did",
+                  "done"
+                ],
+                [
+                  "draw",
+                  "drew",
+                  "drawn"
+                ],
+                [
+                  "drink",
+                  "drank",
+                  "drunk"
+                ],
+                [
+                  "drive",
+                  "drove",
+                  "driven"
+                ],
+                [
+                  "eat",
+                  "ate",
+                  "eaten"
+                ],
+                [
+                  "fall",
+                  "fell",
+                  "fallen"
+                ],
+                [
+                  "feel",
+                  "felt",
+                  "felt"
+                ],
+                [
+                  "find",
+                  "found",
+                  "found"
+                ],
+                [
+                  "fly",
+                  "flew",
+                  "flown"
+                ],
+                [
+                  "forget",
+                  "forgot",
+                  "forgotten"
+                ],
+                [
+                  "forgive",
+                  "forgave",
+                  "forgiven"
+                ],
+                [
+                  "get",
+                  "got",
+                  "got/gotten"
+                ],
+                [
+                  "give",
+                  "gave",
+                  "given"
+                ],
+                [
+                  "go",
+                  "went",
+                  "gone"
+                ],
+                [
+                  "grow",
+                  "grew",
+                  "grown"
+                ],
+                [
+                  "have",
+                  "had",
+                  "had"
+                ],
+                [
+                  "hear",
+                  "heard",
+                  "heard"
+                ],
+                [
+                  "hold",
+                  "held",
+                  "held"
+                ],
+                [
+                  "keep",
+                  "kept",
+                  "kept"
+                ],
+                [
+                  "know",
+                  "knew",
+                  "known"
+                ],
+                [
+                  "leave",
+                  "left",
+                  "left"
+                ],
+                [
+                  "lose",
+                  "lost",
+                  "lost"
+                ],
+                [
+                  "make",
+                  "made",
+                  "made"
+                ],
+                [
+                  "meet",
+                  "met",
+                  "met"
+                ],
+                [
+                  "pay",
+                  "paid",
+                  "paid"
+                ],
+                [
+                  "put",
+                  "put",
+                  "put"
+                ],
+                [
+                  "read",
+                  "read",
+                  "read"
+                ],
+                [
+                  "run",
+                  "ran",
+                  "run"
+                ],
+                [
+                  "say",
+                  "said",
+                  "said"
+                ],
+                [
+                  "see",
+                  "saw",
+                  "seen"
+                ],
+                [
+                  "sell",
+                  "sold",
+                  "sold"
+                ],
+                [
+                  "send",
+                  "sent",
+                  "sent"
+                ],
+                [
+                  "sing",
+                  "sang",
+                  "sung"
+                ],
+                [
+                  "speak",
+                  "spoke",
+                  "spoken"
+                ],
+                [
+                  "take",
+                  "took",
+                  "taken"
+                ],
+                [
+                  "teach",
+                  "taught",
+                  "taught"
+                ],
+                [
+                  "write",
+                  "wrote",
+                  "written"
+                ]
+              ]
+            }
+          ]
+        }
       ]
     }
   },

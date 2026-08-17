@@ -84,6 +84,21 @@ class GrammarTableRow extends Equatable {
 
 /// A named sub-type or structural note within a lesson (e.g. "Proper Noun",
 /// or a tense's "Structure").
+class GrammarTableGroup extends Equatable {
+  const GrammarTableGroup({
+    required this.title,
+    this.columns = const <String>[],
+    this.rows = const <GrammarTableRow>[],
+  });
+
+  final String title;
+  final List<String> columns;
+  final List<GrammarTableRow> rows;
+
+  @override
+  List<Object?> get props => <Object?>[title, columns, rows];
+}
+
 class GrammarType extends Equatable {
   const GrammarType({
     required this.name,
@@ -95,6 +110,7 @@ class GrammarType extends Equatable {
     this.tableTitle = '',
     this.tableColumns = const <String>[],
     this.tableRows = const <GrammarTableRow>[],
+    this.tableGroups = const <GrammarTableGroup>[],
     this.subjectVerbAgreement = '',
     this.subjectVerbAgreementUrdu = '',
     this.examples = const <GrammarExample>[],
@@ -114,6 +130,7 @@ class GrammarType extends Equatable {
   final String tableTitle;
   final List<String> tableColumns;
   final List<GrammarTableRow> tableRows;
+  final List<GrammarTableGroup> tableGroups;
   final String subjectVerbAgreement;
   final String subjectVerbAgreementUrdu;
   final List<GrammarExample> examples;
@@ -128,6 +145,7 @@ class GrammarType extends Equatable {
       wordFocus.isNotEmpty ||
       pronounTable.isNotEmpty ||
       tableRows.isNotEmpty ||
+      tableGroups.isNotEmpty ||
       subjectVerbAgreement.isNotEmpty ||
       examples.isNotEmpty ||
       rules.isNotEmpty ||
@@ -145,6 +163,7 @@ class GrammarType extends Equatable {
         tableTitle,
         tableColumns,
         tableRows,
+        tableGroups,
         subjectVerbAgreement,
         subjectVerbAgreementUrdu,
         examples,
@@ -165,6 +184,7 @@ class GrammarLesson extends Equatable {
     this.urduExplanation = '',
     this.englishExplanation = '',
     this.types = const <GrammarType>[],
+    this.additionalTypes = const <GrammarType>[],
     this.degreeTypes = const <GrammarType>[],
     this.degreeNote = '',
     this.degreeExamples = const <String>[],
@@ -184,6 +204,7 @@ class GrammarLesson extends Equatable {
   final String urduExplanation;
   final String englishExplanation;
   final List<GrammarType> types;
+  final List<GrammarType> additionalTypes;
   final List<GrammarType> degreeTypes;
   final String degreeNote;
   final List<String> degreeExamples;
@@ -209,6 +230,7 @@ class GrammarLesson extends Equatable {
         urduExplanation,
         englishExplanation,
         types,
+        additionalTypes,
         degreeTypes,
         degreeNote,
         degreeExamples,
