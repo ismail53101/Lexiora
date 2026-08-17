@@ -6,16 +6,19 @@ plugins {
     id("dev.flutter.flutter-gradle-plugin")
 }
 
-// Release signing: reads android/key.properties if present (never committed —
-// see .gitignore). Falls back to the debug key when it's absent, so local/CI
-// builds keep working before a real upload keystore has been set up. See
-// android/KEYSTORE.md for how to generate one and wire it into CI.
+// Release signing reads android/key.properties (never committed — see
+// .gitignore). Release builds fail when the production keystore is absent;
+// they never fall back to the Android debug key. See android/KEYSTORE.md.
 val keystorePropertiesFile = rootProject.file("key.properties")
 val keystoreProperties = Properties()
 val hasReleaseKeystore = keystorePropertiesFile.exists()
-if (hasReleaseKeystore) {
-    keystoreProperties.load(keystorePropertiesFile.inputStream())
+if (!hasReleaseKeystore) {
+    throw GradleException(
+        "Missing android/key.properties. A production release keystore is required; " +
+            "release builds must never use the Android debug key.",
+    )
 }
+keystoreProperties.load(keystorePropertiesFile.inputStream())
 
 android {
     namespace = "com.sapiora.app"
@@ -64,12 +67,9 @@ android {
 
     buildTypes {
         release {
-            // Uses the real upload keystore once android/key.properties exists
-            // (see android/KEYSTORE.md); until then, signs with the debug key
-            // so every build stays installable for testing.
-            signingConfig = signingConfigs.getByName(
-                if (hasReleaseKeystore) "release" else "debug",
-            )
+            // Always use the real production/upload keystore. The build fails
+            // above if android/key.properties is absent.
+            signingConfig = signingConfigs.getByName("release")
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro",

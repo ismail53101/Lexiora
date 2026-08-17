@@ -49,24 +49,24 @@ jobs:
         run: cd android && gradle wrapper --gradle-version 9.1.0
 
       - name: Set up release signing
-        # Runs every time, but only actually does anything when the keystore
-        # secret exists -- see android/KEYSTORE.md. Until then, the build
-        # falls back to debug signing automatically (see
-        # android/app/build.gradle.kts), so this step doing nothing never
-        # breaks the build. The check has to live in the shell script, not a
-        # YAML `if:`, because GitHub Actions doesn't allow referencing
-        # `secrets` directly in step-level `if:` conditions.
+        # Release builds must never fall back to the Android debug key. The
+        # check lives in the shell script because GitHub Actions does not
+        # allow referencing secrets directly in step-level `if:` conditions.
         env:
           ANDROID_KEYSTORE_BASE64: ${{ secrets.ANDROID_KEYSTORE_BASE64 }}
           ANDROID_KEYSTORE_PASSWORD: ${{ secrets.ANDROID_KEYSTORE_PASSWORD }}
           ANDROID_KEY_PASSWORD: ${{ secrets.ANDROID_KEY_PASSWORD }}
           ANDROID_KEY_ALIAS: ${{ secrets.ANDROID_KEY_ALIAS }}
         run: |
-          if [ -z "$ANDROID_KEYSTORE_BASE64" ]; then
-            echo "No ANDROID_KEYSTORE_BASE64 secret set -- building with debug signing."
-            exit 0
-          fi
+          set -euo pipefail
+          for required in ANDROID_KEYSTORE_BASE64 ANDROID_KEYSTORE_PASSWORD ANDROID_KEY_PASSWORD ANDROID_KEY_ALIAS; do
+            if [ -z "${!required:-}" ]; then
+              echo "Missing required release-signing secret: $required" >&2
+              exit 1
+            fi
+          done
           echo "$ANDROID_KEYSTORE_BASE64" | base64 -d > android/app/upload-keystore.jks
+          test -s android/app/upload-keystore.jks
           cat > android/key.properties <<EOF
           storePassword=$ANDROID_KEYSTORE_PASSWORD
           keyPassword=$ANDROID_KEY_PASSWORD
