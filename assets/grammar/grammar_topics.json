@@ -4519,10 +4519,10 @@
           ],
           "ruleExamples": [
             "play > played > played",
-            "love > loved > loved; live > lived; close > closed",
-            "study > studied; carry > carried; try > tried",
-            "play > played; enjoy > enjoyed; stay > stayed",
-            "I did not play cricket. Did you play cricket?"
+            "love > loved > loved; live > lived > lived; close > closed > closed",
+            "study > studied > studied; carry > carried > carried; try > tried > tried",
+            "play > played > played; enjoy > enjoyed > enjoyed; stay > stayed > stayed",
+            "I did not play cricket.\nDid you play cricket?"
           ],
           "examples": [
             {
@@ -4581,7 +4581,7 @@
             "Go > went > gone; not Go > goed > goed.",
             "cut > cut > cut; put > put > put; hit > hit > hit",
             "buy > bought > bought; bring > brought > brought; teach > taught > taught; keep > kept > kept",
-            "They did not eat dinner. Use eat, not ate."
+            "They did not eat dinner.\nUse eat, not ate."
           ],
           "examples": [
             {

@@ -583,11 +583,17 @@ class GrammarTypeContent extends StatelessWidget {
           if (type.exampleWords.isNotEmpty) ...<Widget>[
             Padding(
               padding: const EdgeInsets.only(top: 12, bottom: 8),
-              child: _MarkedLessonText(
-                label: 'E.g.: ',
-                text: type.exampleWords,
-                labelStyle: const TextStyle(fontWeight: FontWeight.w800),
-              ),
+              child: type.name == 'Regular Verb' || type.name == 'Irregular Verb'
+                  ? _VerbFormsAwareText(
+                      label: 'E.g.: ',
+                      text: type.exampleWords,
+                      labelStyle: const TextStyle(fontWeight: FontWeight.w800),
+                    )
+                  : _MarkedLessonText(
+                      label: 'E.g.: ',
+                      text: type.exampleWords,
+                      labelStyle: const TextStyle(fontWeight: FontWeight.w800),
+                    ),
             ),
           ],
           if (type.pronounTable.isNotEmpty) ...<Widget>[
