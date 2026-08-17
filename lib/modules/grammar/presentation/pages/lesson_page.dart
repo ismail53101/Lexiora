@@ -583,7 +583,7 @@ class GrammarTypeContent extends StatelessWidget {
           if (type.exampleWords.isNotEmpty) ...<Widget>[
             Padding(
               padding: const EdgeInsets.only(top: 12, bottom: 8),
-              child: _VerbFormsAwareText(
+              child: _MarkedLessonText(
                 label: 'E.g.: ',
                 text: type.exampleWords,
                 labelStyle: const TextStyle(fontWeight: FontWeight.w800),
@@ -616,6 +616,7 @@ class GrammarTypeContent extends StatelessWidget {
               _RuleItem(
                 rule: type.rules[i],
                 example: i < type.ruleExamples.length ? type.ruleExamples[i] : null,
+                verbFormRows: type.name == 'Regular Verb' || type.name == 'Irregular Verb',
               ),
           ],
           if (type.subjectVerbAgreement.isNotEmpty) ...<Widget>[
@@ -841,6 +842,31 @@ List<TextSpan> _boldMarkedSpans(String text) {
   ];
 }
 
+class _MarkedLessonText extends StatelessWidget {
+  const _MarkedLessonText({required this.label, required this.text, this.labelStyle});
+
+  final String label;
+  final String text;
+  final TextStyle? labelStyle;
+
+  @override
+  Widget build(BuildContext context) {
+    final ThemeData theme = Theme.of(context);
+    return Text.rich(
+      TextSpan(
+        style: theme.textTheme.bodySmall?.copyWith(
+          color: theme.colorScheme.primary,
+          height: 1.45,
+        ),
+        children: <InlineSpan>[
+          TextSpan(text: label, style: labelStyle),
+          ..._boldMarkedSpans(text),
+        ],
+      ),
+    );
+  }
+}
+
 class _VerbFormsAwareText extends StatelessWidget {
   const _VerbFormsAwareText({
     required this.label,
@@ -957,9 +983,10 @@ class _VerbFormsRow extends StatelessWidget {
 }
 
 class _RuleItem extends StatelessWidget {
-  const _RuleItem({required this.rule, this.example});
+  const _RuleItem({required this.rule, this.example, this.verbFormRows = false});
   final String rule;
   final String? example;
+  final bool verbFormRows;
 
   @override
   Widget build(BuildContext context) {
@@ -978,11 +1005,17 @@ class _RuleItem extends StatelessWidget {
                 Text.rich(TextSpan(style: theme.textTheme.bodyMedium?.copyWith(height: 1.4), children: spans)),
                 if (example != null && example!.isNotEmpty) ...<Widget>[
                   const SizedBox(height: 3),
-                  _VerbFormsAwareText(
-                    label: 'Example: ',
-                    text: example!,
-                    italic: true,
-                  ),
+                  if (verbFormRows)
+                    _VerbFormsAwareText(
+                      label: 'Example: ',
+                      text: example!,
+                      italic: true,
+                    )
+                  else
+                    _MarkedLessonText(
+                      label: 'Example: ',
+                      text: example!,
+                    ),
                 ],
               ],
             ),

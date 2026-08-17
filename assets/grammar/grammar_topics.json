@@ -20,14 +20,122 @@
       "englishExplanation": "Adjectives modify nouns and pronouns, answering questions like which one, what kind, or how many. They typically appear before the noun they describe or after a linking verb as a subject complement. Adjectives have three degrees of comparison: positive (tall), comparative (taller), and superlative (tallest), used to compare two or more things. Some adjectives are descriptive (happy, red), while others indicate quantity (few, many), possession (my, her), or demonstration (this, those). Correct comparative and superlative forms, along with proper word order, are essential for accurate English.",
       "types": [
         {
-          "name": "Descriptive Adjective",
-          "description": "Describes the quality or characteristic of a noun.",
-          "exampleWords": "beautiful, tall, honest"
+          "name": "Adjective of Quality",
+          "description": "Adjective of Quality tells us about the quality or kind of a person or thing.",
+          "urduExplanation": "Adjective of quality ہمیں کسی شخص یا چیز کی خاصیت یا قسم کے بارے میں بتاتا ہے۔",
+          "exampleWords": "honest, brave, beautiful, intelligent, difficult",
+          "rules": [
+            "Ask **\"What kind?\"** to identify it.",
+            "It can describe a person, place, animal, or thing.",
+            "It can come before a noun.",
+            "It can come after a linking verb."
+          ],
+          "ruleExamples": [
+            "He is **an honest** man. > What kind of man? **Honest**",
+            "Person: She is **intelligent**.\nPlace: It is a **peaceful** city.\nAnimal: The dog is **loyal**.\nThing: He bought an **expensive** car.",
+            "She is a **beautiful** girl.\nHe bought an **expensive** phone.",
+            "The girl is **beautiful**.\nThe food smells **delicious**.\nThe child became **angry**."
+          ],
+          "examples": [
+            {
+              "text": "Ali is a **brave** soldier.",
+              "note": "**Brave** describes the quality of soldier; it tells us what kind of soldier Ali is."
+            },
+            {
+              "text": "She lives in a **beautiful** house.",
+              "note": "**Beautiful** describes the quality of house."
+            },
+            {
+              "text": "The **difficult** question confused the students.",
+              "note": "**Difficult** tells us what kind of question it is."
+            },
+            {
+              "text": "The loyal dog guarded the peaceful home.",
+              "note": "**Loyal** describes the animal and **peaceful** describes the place."
+            }
+          ],
+          "commonMistakes": [
+            {
+              "wrong": "He is **honest man**.",
+              "right": "He is **an honest man**.",
+              "note": "A singular countable noun needs an article; **honest** begins with a vowel sound, so we use **an**."
+            },
+            {
+              "wrong": "She is a **beauty** girl.",
+              "right": "She is a **beautiful** girl.",
+              "note": "**Beautiful** is the adjective that describes the noun girl; **beauty** is a noun."
+            },
+            {
+              "wrong": "The food smells **deliciously**.",
+              "right": "The food smells **delicious**.",
+              "note": "After a linking verb such as smells, use an adjective to describe the subject, not an adverb."
+            },
+            {
+              "wrong": "He bought an **expensive**.",
+              "right": "He bought an **expensive phone**.",
+              "note": "An adjective normally describes a noun; **expensive** needs the noun it describes here."
+            }
+          ]
         },
         {
-          "name": "Quantitative Adjective",
-          "description": "Shows the amount of something.",
-          "exampleWords": "much, little, enough"
+          "name": "Adjective of Quantity",
+          "description": "An Adjective of Quantity tells us how much of a thing is meant.",
+          "urduExplanation": "صفت مقدار وہ لفظ ہے جو کسی اسم کی مقدار کو ظاہر کرے، یعنی یہ بتائے کہ کسی چیز کی کتنی مقدار ہے۔",
+          "exampleWords": "much, little, some, enough, sufficient, no",
+          "rules": [
+            "It tells the amount of something.",
+            "It is mainly used with **uncountable nouns**.",
+            "Do not confuse quantity with number.",
+            "**little** and **a little** have different meanings.",
+            "Some words can be used with both countable and uncountable nouns, but their meaning changes."
+          ],
+          "ruleExamples": [
+            "I have **some** money.\nThere is **little** water. > An adjective of quantity answers **\"How much?\"**",
+            "**much water**\n**little milk**\n**enough food**",
+            "**much water** > Quantity > How much\n**many books** > Number > How many\n**Uncountable noun** > Quantity\n**Countable noun** > Number",
+            "He has **little** money. > Almost no money.\nHe has **a little** money. > Some money.\n**little** = almost none\n**a little** = some",
+            "**some water** > amount of water.\n**some books** > number of books. > Always look at the noun and ask whether the word indicates amount or number."
+          ],
+          "examples": [
+            {
+              "text": "There is **little** water in the bottle.",
+              "note": "**Little** shows a small amount of an uncountable noun, water."
+            },
+            {
+              "text": "She has **enough** knowledge for the examination.",
+              "note": "**Enough** shows the amount of the uncountable noun knowledge."
+            },
+            {
+              "text": "He has **a little** money for the journey.",
+              "note": "**A little** means some money, not almost no money."
+            },
+            {
+              "text": "There is **some** water in the glass, and there are **some** books on the desk.",
+              "note": "With water, **some** means an amount; with books, **some** means a number."
+            }
+          ],
+          "commonMistakes": [
+            {
+              "wrong": "I do not have **many water**.",
+              "right": "I do not have **much water**.",
+              "note": "Water is uncountable, so use the quantity adjective **much**, not the number adjective **many**."
+            },
+            {
+              "wrong": "There are **much books** on the table.",
+              "right": "There are **many books** on the table.",
+              "note": "Books are countable and plural, so use **many** to show number."
+            },
+            {
+              "wrong": "He has **little money**, so he can buy everything.",
+              "right": "He has **a little money**, so he can buy something.",
+              "note": "**Little** means almost none, while **a little** means some."
+            },
+            {
+              "wrong": "I need **a water**.",
+              "right": "I need **some water**.",
+              "note": "Water is normally uncountable, so we do not usually use a/an directly before it."
+            }
+          ]
         },
         {
           "name": "Numeral Adjective",
