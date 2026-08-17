@@ -8,6 +8,7 @@ import 'package:lexiora/core/services/device_info_service.dart';
 import 'package:lexiora/core/services/pdf_cover_service.dart';
 import 'package:lexiora/core/services/pdf_discovery_service.dart';
 import 'package:lexiora/core/services/pdf_import_service.dart';
+import 'package:lexiora/core/services/pdf_ocr_service.dart';
 import 'package:lexiora/core/services/permission_service.dart';
 import 'package:lexiora/core/services/screen_wake_service.dart';
 import 'package:lexiora/modules/admin/data/services/admin_content_service.dart';
@@ -25,6 +26,7 @@ Future<void> configureDependencies() async {
     ..registerLazySingleton<PdfDiscoveryService>(PdfDiscoveryService.new)
     ..registerLazySingleton<PdfImportService>(PdfImportService.new)
     ..registerLazySingleton<PdfCoverService>(PdfCoverService.new)
+    ..registerLazySingleton<PdfOcrService>(PdfOcrService.new)
     ..registerLazySingleton<AdminContentService>(AdminContentService.new)
     ..registerLazySingleton<PermissionService>(
       () => PermissionService(sl<DeviceInfoService>()),

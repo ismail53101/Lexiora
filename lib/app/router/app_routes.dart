@@ -8,6 +8,7 @@ abstract final class AppRoutes {
   static const String splash = '/splash';
   static const String home = '/';
   static const String library = '/library';
+  static const String driveLibrary = '/library/drive';
   static const String settings = '/settings';
   static const String admin = '/admin';
   static const String profile = '/profile';

@@ -15,6 +15,8 @@ class DocumentCard extends StatelessWidget {
     required this.onOpen,
     this.progress,
     this.onAction,
+    this.metadataLabel,
+    this.showMenu = true,
   });
 
   final LibraryDocument document;
@@ -23,6 +25,8 @@ class DocumentCard extends StatelessWidget {
   /// Reading completion in 0..1, shown as a thin bar when non-null.
   final double? progress;
   final void Function(DocumentCardAction action)? onAction;
+  final String? metadataLabel;
+  final bool showMenu;
 
   @override
   Widget build(BuildContext context) {
@@ -40,14 +44,15 @@ class DocumentCard extends StatelessWidget {
                 fit: StackFit.expand,
                 children: [
                   _CoverImage(coverPath: document.coverPath, title: document.title),
-                  Positioned(
-                    top: 4,
-                    right: 4,
-                    child: _Menu(
-                      isFavorite: document.isFavorite,
-                      onAction: onAction,
+                  if (showMenu)
+                    Positioned(
+                      top: 4,
+                      right: 4,
+                      child: _Menu(
+                        isFavorite: document.isFavorite,
+                        onAction: onAction,
+                      ),
                     ),
-                  ),
                   if (document.isFavorite)
                     const Positioned(
                       top: 10,
@@ -112,7 +117,7 @@ class DocumentCard extends StatelessWidget {
                   ),
                   const SizedBox(height: 2),
                   Text(
-                    document.readableSize,
+                    metadataLabel ?? document.readableSize,
                     style: theme.textTheme.bodySmall?.copyWith(
                       color: theme.colorScheme.onSurfaceVariant,
                     ),

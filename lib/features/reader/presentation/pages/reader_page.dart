@@ -9,6 +9,7 @@ import 'package:lexiora/core/reader_engine/pdf_engine.dart';
 import 'package:lexiora/core/reader_engine/pdf_reader_controller.dart';
 import 'package:lexiora/core/reader_engine/reader_models.dart';
 import 'package:lexiora/core/reader_engine/word_action.dart';
+import 'package:lexiora/core/services/pdf_ocr_service.dart';
 import 'package:lexiora/core/services/screen_wake_service.dart';
 import 'package:lexiora/core/utils/logger.dart';
 import 'package:lexiora/core/widgets/error_view.dart';
@@ -62,6 +63,8 @@ class _ReaderPageState extends ConsumerState<ReaderPage> {
   bool _loading = true;
   String? _error;
   String? _errorDetails;
+  String? _temporarySourcePath;
+  bool _hasOcrCache = false;
   int _initialPage = 1;
   int _pageCount = 0;
   PdfTextSelectionData? _selection;
@@ -100,6 +103,7 @@ class _ReaderPageState extends ConsumerState<ReaderPage> {
       // Validate the backing file BEFORE handing it to the PDF engine, so a
       // missing/empty file shows a helpful error instead of a blank viewer.
       final File file = File(doc.filePath);
+      final String sourcePath = doc.filePath;
       final bool exists = await file.exists();
       final int size = exists ? await file.length() : 0;
       AppLogger.i('Reader: file=${doc.filePath} exists=$exists size=$size');
@@ -116,14 +120,36 @@ class _ReaderPageState extends ConsumerState<ReaderPage> {
         return;
       }
 
+      final String searchablePath = await sl<PdfOcrService>().makeSearchable(
+        documentId: _id,
+        sourcePath: sourcePath,
+      );
+      if (_isTemporary) _temporarySourcePath = sourcePath;
+      _hasOcrCache = searchablePath != sourcePath;
+      final LibraryDocument openedDocument = searchablePath == sourcePath
+          ? doc
+          : LibraryDocument(
+              id: doc.id,
+              title: doc.title,
+              fileName: doc.fileName,
+              filePath: searchablePath,
+              fileSize: doc.fileSize,
+              pageCount: doc.pageCount,
+              isFavorite: doc.isFavorite,
+              importedAt: doc.importedAt,
+              coverPath: doc.coverPath,
+              categoryId: doc.categoryId,
+              lastOpenedAt: doc.lastOpenedAt,
+              isManaged: doc.isManaged,
+            );
       final progress = _isTemporary
           ? null
           : await ref.read(readingProgressRepositoryProvider).getProgress(_id);
       _scrollAxis = settings.readingScrollAxis;
       _colorMode = settings.readerColorMode;
       _highlightColors = settings.highlightColors;
-      _document = doc;
-      _pageCount = doc.pageCount;
+      _document = openedDocument;
+      _pageCount = openedDocument.pageCount;
       final int maxPage = doc.pageCount > 0 ? doc.pageCount : 1000000;
       _initialPage = settings.autoResume
           ? (progress?.lastPage ?? 1).clamp(1, maxPage)
@@ -164,7 +190,10 @@ class _ReaderPageState extends ConsumerState<ReaderPage> {
   void dispose() {
     unawaited(sl<ScreenWakeService>().setKeepScreenOn(false));
     if (_isTemporary) {
-      final String? temporaryPath = _document?.filePath;
+      final String? temporaryPath = _temporarySourcePath ?? _document?.filePath;
+      if (_hasOcrCache) {
+        unawaited(sl<PdfOcrService>().deleteSearchable(_id));
+      }
       if (temporaryPath != null) {
         unawaited(
           File(temporaryPath).delete().catchError((Object _) => File(temporaryPath)),

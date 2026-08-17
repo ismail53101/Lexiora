@@ -19,12 +19,14 @@ class GoogleDrivePdf {
     required this.name,
     required this.size,
     required this.modifiedTime,
+    this.thumbnailLink,
   });
 
   final String id;
   final String name;
   final int size;
   final DateTime? modifiedTime;
+  final String? thumbnailLink;
 }
 
 /// Authenticates the current Google user and downloads selected PDFs only into
@@ -72,6 +74,11 @@ class GoogleDriveService {
     final Directory root = await getApplicationSupportDirectory();
     final Directory cache = Directory(p.join(root.path, 'drive_cache'));
     if (await cache.exists()) await cache.delete(recursive: true);
+    final Directory thumbnailCache =
+        Directory(p.join(root.path, 'drive_thumbnail_cache'));
+    if (await thumbnailCache.exists()) {
+      await thumbnailCache.delete(recursive: true);
+    }
   }
 
   Future<String> _accessToken() async {
@@ -94,7 +101,7 @@ class GoogleDriveService {
       'orderBy': 'modifiedTime desc',
       'pageSize': '100',
       'spaces': 'drive',
-      'fields': 'files(id,name,size,modifiedTime,mimeType)',
+      'fields': 'files(id,name,size,modifiedTime,mimeType,thumbnailLink)',
     });
     final http.Response response = await http.get(
       uri,
@@ -118,10 +125,29 @@ class GoogleDriveService {
             name: name,
             size: int.tryParse('${raw['size'] ?? 0}') ?? 0,
             modifiedTime: DateTime.tryParse('${raw['modifiedTime'] ?? ''}'),
+            thumbnailLink: raw['thumbnailLink'] as String?,
           );
         })
         .whereType<GoogleDrivePdf>()
         .toList(growable: false);
+  }
+
+  Future<String> accessToken() => _accessToken();
+
+  Future<File?> downloadThumbnail(GoogleDrivePdf pdf) async {
+    final String? thumbnailLink = pdf.thumbnailLink;
+    if (thumbnailLink == null || thumbnailLink.isEmpty) return null;
+    final String token = await _accessToken();
+    final http.Response response = await http.get(
+      Uri.parse(thumbnailLink),
+      headers: <String, String>{'Authorization': 'Bearer $token'},
+    );
+    if (response.statusCode != 200) return null;
+    final Directory root = await getApplicationSupportDirectory();
+    final Directory cache = Directory(p.join(root.path, 'drive_thumbnail_cache'));
+    await cache.create(recursive: true);
+    final File target = File(p.join(cache.path, '${pdf.id}.png'));
+    return target.writeAsBytes(response.bodyBytes, flush: true);
   }
 
   Future<File> downloadPdf(GoogleDrivePdf pdf) async {
