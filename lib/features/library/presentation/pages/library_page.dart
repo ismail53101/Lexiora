@@ -80,7 +80,23 @@ class _LibraryPageState extends ConsumerState<LibraryPage> {
                 ),
                 onChanged: (String v) => setState(() => _query = v),
               )
-            : const Text('Library'),
+            : Row(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  const Text('Library'),
+                  const SizedBox(width: 8),
+                  IconButton(
+                    tooltip: 'Google Drive',
+                    onPressed: _importing ? null : _browseGoogleDrive,
+                    padding: EdgeInsets.zero,
+                    constraints: const BoxConstraints.tightFor(
+                      width: 38,
+                      height: 38,
+                    ),
+                    icon: const _GoogleDriveToolbarIcon(),
+                  ),
+                ],
+              ),
         actions: [
           IconButton(
             icon: Icon(_searching ? Icons.close : Icons.search),
@@ -559,6 +575,75 @@ class _LibraryPageState extends ConsumerState<LibraryPage> {
       ),
     );
   }
+}
+
+class _GoogleDriveToolbarIcon extends StatelessWidget {
+  const _GoogleDriveToolbarIcon();
+
+  @override
+  Widget build(BuildContext context) {
+    return CustomPaint(
+      size: const Size.square(25),
+      painter: _GoogleDriveToolbarPainter(
+        borderColor: Theme.of(context).colorScheme.outlineVariant,
+      ),
+    );
+  }
+}
+
+class _GoogleDriveToolbarPainter extends CustomPainter {
+  const _GoogleDriveToolbarPainter({required this.borderColor});
+
+  final Color borderColor;
+
+  @override
+  void paint(Canvas canvas, Size size) {
+    final double scale = size.shortestSide / 25;
+    canvas.save();
+    canvas.scale(scale, scale);
+
+    final Paint border = Paint()
+      ..color = borderColor.withValues(alpha: 0.7)
+      ..style = PaintingStyle.stroke
+      ..strokeWidth = 1.2;
+    final RRect background = RRect.fromRectAndRadius(
+      const Rect.fromLTWH(0.5, 0.5, 24, 24),
+      const Radius.circular(7),
+    );
+    canvas.drawRRect(background, border);
+
+    final Path green = Path()
+      ..moveTo(8.5, 5)
+      ..lineTo(12.5, 5)
+      ..lineTo(20.5, 18.5)
+      ..lineTo(16.5, 18.5)
+      ..close();
+    final Path yellow = Path()
+      ..moveTo(8.5, 5)
+      ..lineTo(4.5, 12)
+      ..lineTo(8.5, 19)
+      ..lineTo(12.5, 12)
+      ..close();
+    final Path blue = Path()
+      ..moveTo(4.5, 12)
+      ..lineTo(8.5, 19)
+      ..lineTo(16.5, 19)
+      ..lineTo(20.5, 12)
+      ..lineTo(16.5, 12)
+      ..lineTo(14.5, 15.5)
+      ..lineTo(10.5, 15.5)
+      ..lineTo(8.5, 12)
+      ..close();
+
+    canvas.drawPath(green, Paint()..color = const Color(0xFF34A853));
+    canvas.drawPath(yellow, Paint()..color = const Color(0xFFFBBC04));
+    canvas.drawPath(blue, Paint()..color = const Color(0xFF4285F4));
+    canvas.restore();
+  }
+
+  @override
+  bool shouldRepaint(_GoogleDriveToolbarPainter oldDelegate) =>
+      oldDelegate.borderColor != borderColor;
 }
 
 class _CategoryBar extends StatelessWidget {
