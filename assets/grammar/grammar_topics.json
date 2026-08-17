@@ -15,8 +15,8 @@
     "order": 4,
     "isLeaf": true,
     "content": {
-      "introduction": "An adjective is a word that describes or modifies a noun or pronoun by giving more information about its quality, quantity, or state. Adjectives make writing more vivid and precise, which is highly valued in CSS essays, PMS answers, and IELTS writing tasks. Correct placement and comparison of adjectives are common areas tested in grammar exams.",
-      "urduExplanation": "Adjective وہ لفظ ہے جو noun یا pronoun کی خصوصیت بیان کرتا ہے، جیسے 'beautiful', 'tall' یا 'three'۔ یہ ہمیں بتاتا ہے کہ کوئی چیز کیسی ہے، کتنی ہے یا کس قسم کی ہے۔ adjectives عام طور پر noun سے پہلے آتے ہیں، جیسے 'a tall building'، لیکن linking verb کے بعد بھی آ سکتے ہیں، جیسے 'the building is tall'۔ comparative اور superlative degrees کا صحیح استعمال جملوں کو مؤثر بناتا ہے۔",
+      "introduction": "An adjective is a word that describes or gives information about a noun or pronoun.",
+      "urduExplanation": "اسم صفت وہ لفظ ہے جو کسی اسم یا اسم ضمیر کی خصوصیت، مقدار، تعداد، ملکیت یا نشاندہی کے بارے میں معلومات دے۔",
       "englishExplanation": "Adjectives modify nouns and pronouns, answering questions like which one, what kind, or how many. They typically appear before the noun they describe or after a linking verb as a subject complement. Adjectives have three degrees of comparison: positive (tall), comparative (taller), and superlative (tallest), used to compare two or more things. Some adjectives are descriptive (happy, red), while others indicate quantity (few, many), possession (my, her), or demonstration (this, those). Correct comparative and superlative forms, along with proper word order, are essential for accurate English.",
       "types": [
         {
@@ -39,41 +39,49 @@
           "examples": [
             {
               "text": "Ali is a **brave** soldier.",
-              "note": "**Brave** describes the quality of soldier; it tells us what kind of soldier Ali is."
+              "urdu": "علی ایک بہادر سپاہی ہے۔",
+              "note": "**Brave** describes the quality of the soldier."
             },
             {
               "text": "She lives in a **beautiful** house.",
-              "note": "**Beautiful** describes the quality of house."
+              "urdu": "وہ ایک خوبصورت گھر میں رہتی ہے۔",
+              "note": "**Beautiful** describes the quality of the house."
             },
             {
               "text": "The **difficult** question confused the students.",
-              "note": "**Difficult** tells us what kind of question it is."
+              "urdu": "مشکل سوال نے طلبہ کو الجھن میں ڈال دیا۔",
+              "note": "**Difficult** describes the question."
             },
             {
               "text": "The loyal dog guarded the peaceful home.",
-              "note": "**Loyal** describes the animal and **peaceful** describes the place."
+              "urdu": "وفادار کتے نے پُرامن گھر کی حفاظت کی۔",
+              "note": "**Loyal** and **peaceful** describe qualities."
             }
           ],
           "commonMistakes": [
             {
               "wrong": "He is **honest man**.",
               "right": "He is **an honest man**.",
-              "note": "A singular countable noun needs an article; **honest** begins with a vowel sound, so we use **an**."
+              "urdu": "وہ ایک ایماندار آدمی ہے۔",
+              "note": "A singular countable noun needs the article **an** before the adjective and noun."
             },
             {
               "wrong": "She is a **beauty** girl.",
               "right": "She is a **beautiful** girl.",
-              "note": "**Beautiful** is the adjective that describes the noun girl; **beauty** is a noun."
+              "urdu": "وہ ایک خوبصورت لڑکی ہے۔",
+              "note": "**Beautiful** is the adjective used to describe the girl; **beauty** is a noun."
             },
             {
               "wrong": "The food smells **deliciously**.",
               "right": "The food smells **delicious**.",
-              "note": "After a linking verb such as smells, use an adjective to describe the subject, not an adverb."
+              "urdu": "کھانا مزیدار خوشبو دے رہا ہے۔",
+              "note": "After the linking verb **smells**, use the adjective **delicious**, not the adverb **deliciously**."
             },
             {
               "wrong": "He bought an **expensive**.",
               "right": "He bought an **expensive phone**.",
-              "note": "An adjective normally describes a noun; **expensive** needs the noun it describes here."
+              "urdu": "اس نے ایک مہنگا فون خریدا۔",
+              "note": "The adjective must describe a noun; **expensive** needs a noun such as phone."
             }
           ]
         },
@@ -99,41 +107,49 @@
           "examples": [
             {
               "text": "There is **little** water in the bottle.",
-              "note": "**Little** shows a small amount of an uncountable noun, water."
+              "urdu": "بوتل میں تھوڑا پانی ہے۔",
+              "note": "**Little** shows a small amount of uncountable water."
             },
             {
               "text": "She has **enough** knowledge for the examination.",
-              "note": "**Enough** shows the amount of the uncountable noun knowledge."
+              "urdu": "اس کے پاس امتحان کے لیے کافی علم ہے۔",
+              "note": "**Enough** shows a sufficient amount of knowledge."
             },
             {
               "text": "He has **a little** money for the journey.",
-              "note": "**A little** means some money, not almost no money."
+              "urdu": "اس کے پاس سفر کے لیے کچھ رقم ہے۔",
+              "note": "**A little** means some amount, though not much."
             },
             {
               "text": "There is **some** water in the glass, and there are **some** books on the desk.",
-              "note": "With water, **some** means an amount; with books, **some** means a number."
+              "urdu": "گلاس میں کچھ پانی ہے اور میز پر کچھ کتابیں ہیں۔",
+              "note": "**Some** can show an amount with water and a number with books."
             }
           ],
           "commonMistakes": [
             {
               "wrong": "I do not have **many water**.",
               "right": "I do not have **much water**.",
-              "note": "Water is uncountable, so use the quantity adjective **much**, not the number adjective **many**."
+              "urdu": "میرے پاس زیادہ پانی نہیں ہے۔",
+              "note": "Water is uncountable, so use **much** for its amount."
             },
             {
               "wrong": "There are **much books** on the table.",
               "right": "There are **many books** on the table.",
-              "note": "Books are countable and plural, so use **many** to show number."
+              "urdu": "میز پر بہت سی کتابیں ہیں۔",
+              "note": "Books are countable and plural, so use **many** for their number."
             },
             {
               "wrong": "He has **little money**, so he can buy everything.",
               "right": "He has **a little money**, so he can buy something.",
+              "urdu": "اس کے پاس کچھ رقم ہے، اس لیے وہ کچھ خرید سکتا ہے۔",
               "note": "**Little** means almost none, while **a little** means some."
             },
             {
               "wrong": "I need **a water**.",
               "right": "I need **some water**.",
-              "note": "Water is normally uncountable, so we do not usually use a/an directly before it."
+              "urdu": "مجھے کچھ پانی چاہیے۔",
+              "note": "Water is normally uncountable, so do not use **a** directly before it."
             }
           ]
         },
@@ -266,7 +282,90 @@
         {
           "name": "Possessive Adjective",
           "description": "Shows ownership or possession.",
-          "exampleWords": "my, your, his, her, our, their"
+          "exampleWords": "my, your, his, her, our, their",
+          "tableRows": [
+            [
+              "I",
+              "my"
+            ],
+            [
+              "You",
+              "your"
+            ],
+            [
+              "He",
+              "his"
+            ],
+            [
+              "She",
+              "her"
+            ],
+            [
+              "It",
+              "its"
+            ],
+            [
+              "We",
+              "our"
+            ],
+            [
+              "They",
+              "their"
+            ]
+          ],
+          "examples": [
+            {
+              "text": "My book is new.",
+              "urdu": "میری کتاب نئی ہے.",
+              "note": "**My** shows whose book is being discussed."
+            },
+            {
+              "text": "Her brother is a doctor.",
+              "urdu": "اس کا بھائی ڈاکٹر ہے۔",
+              "note": "**Her** shows the relationship with the brother."
+            },
+            {
+              "text": "His car is expensive.",
+              "urdu": "اس کی گاڑی مہنگی ہے۔",
+              "note": "**His** comes before the noun car."
+            },
+            {
+              "text": "This is my book. > **My** = Possessive Adjective",
+              "urdu": "یہ میری کتاب ہے۔ > **My** = صفتِ ملکی",
+              "note": "**My** comes before book."
+            }
+          ],
+          "commonMistakes": [
+            {
+              "wrong": "The my book is new.",
+              "right": "My book is new.",
+              "urdu": "میری کتاب نئی ہے۔",
+              "note": "Do not normally use **a, an, or the** directly before a possessive adjective."
+            },
+            {
+              "wrong": "Her's car is expensive.",
+              "right": "Her car is expensive.",
+              "urdu": "اس کی گاڑی مہنگی ہے۔",
+              "note": "Possessive adjectives do not take an apostrophe."
+            },
+            {
+              "wrong": "The cat cleaned it's paw.",
+              "right": "The cat cleaned its paw.",
+              "urdu": "بلی نے اپنا پنجہ صاف کیا۔",
+              "note": "**Its** shows possession; **it’s** means it is or it has."
+            },
+            {
+              "wrong": "This book is mine. > **Mine** = Possessive Adjective",
+              "right": "This book is mine. > **Mine** = Possessive Pronoun",
+              "urdu": "یہ کتاب میری ہے۔ > **Mine** = اسمِ ضمیرِ ملکی",
+              "note": "**Mine** stands alone, so it is a possessive pronoun."
+            }
+          ],
+          "tableTitle": "Possessive Adjective Quick Table",
+          "tableColumns": [
+            "Person",
+            "Possessive Adjective"
+          ]
         },
         {
           "name": "Interrogative Adjective",
@@ -337,7 +436,166 @@
         {
           "name": "Distributive Adjective",
           "description": "Refers to members of a group individually.",
-          "exampleWords": "each, every, either, neither"
+          "exampleWords": "each, every, either, neither",
+          "tableRows": [
+            [
+              "Each",
+              "one by one",
+              "singular"
+            ],
+            [
+              "Every",
+              "all individually",
+              "singular"
+            ],
+            [
+              "Either",
+              "one of two",
+              "singular"
+            ],
+            [
+              "Neither",
+              "not one of two",
+              "singular"
+            ]
+          ],
+          "examples": [
+            {
+              "text": "Each student has an identity card.",
+              "urdu": "ہر طالب علم کے پاس شناختی کارڈ ہے۔",
+              "note": "**Each** refers to students one by one and takes a singular verb."
+            },
+            {
+              "text": "Each player received a medal.",
+              "urdu": "ہر کھلاڑی نے تمغہ حاصل کیا۔",
+              "note": "**Each** refers to every player individually."
+            },
+            {
+              "text": "Every candidate needs an admit card.",
+              "urdu": "ہر امیدوار کو داخلہ کارڈ کی ضرورت ہے۔",
+              "note": "**Every** refers to all candidates individually."
+            },
+            {
+              "text": "Each of the students has a book.",
+              "urdu": "طلبہ میں سے ہر ایک کے پاس ایک کتاب ہے۔",
+              "note": "**Each of** is followed by a plural noun, but the verb is singular."
+            }
+          ],
+          "commonMistakes": [
+            {
+              "wrong": "Each student have an identity card.",
+              "right": "Each student has an identity card.",
+              "urdu": "ہر طالب علم کے پاس شناختی کارڈ ہے۔",
+              "note": "**Each + singular noun** takes a singular verb."
+            },
+            {
+              "wrong": "Every student are ready.",
+              "right": "Every student is ready.",
+              "urdu": "ہر طالب علم تیار ہے۔",
+              "note": "**Every + singular noun** takes **is**, not **are**."
+            },
+            {
+              "wrong": "Every students must attend.",
+              "right": "Every student must attend.",
+              "urdu": "ہر طالب علم کو حاضر ہونا چاہیے۔",
+              "note": "Distributive adjectives normally take a singular countable noun."
+            },
+            {
+              "wrong": "Each books is useful.",
+              "right": "Each book is useful.",
+              "urdu": "ہر کتاب مفید ہے۔",
+              "note": "Use a singular noun after **each**."
+            }
+          ],
+          "tableTitle": "Competitive Exams Shortcut",
+          "tableColumns": [
+            "Word",
+            "Meaning",
+            "Noun"
+          ]
+        },
+        {
+          "name": "Proper Adjective",
+          "description": "A proper adjective is an adjective derived from a proper noun and used to describe a person, place, culture, country, or thing.",
+          "urduExplanation": "صفتِ خاص وہ صفت ہے جو کسی اسمِ خاص سے بنائی جائے اور کسی مخصوص شخص، جگہ، قوم، ملک یا ثقافت سے تعلق ظاہر کرے۔",
+          "exampleWords": "Pakistani, Chinese, American",
+          "tableRows": [
+            [
+              "Pakistan",
+              "Pakistani"
+            ],
+            [
+              "America",
+              "American"
+            ],
+            [
+              "Shakespeare",
+              "Shakespearean"
+            ]
+          ],
+          "rules": [
+            "A proper adjective is derived from a proper noun.",
+            "Proper adjectives can show nationality or origin.",
+            "Do not confuse a proper noun with a proper adjective."
+          ],
+          "ruleExamples": [
+            "Pakistan > Pakistani\nChina > Chinese > If an adjective is formed from a specific name, it is a proper adjective.",
+            "Pakistani people\nJapanese technology\nAmerican history > Proper adjectives can indicate where a person, thing, or idea comes from.",
+            "Pakistan is a country. > **Pakistan** = Proper Noun\nPakistani culture is diverse. > **Pakistani** = Proper Adjective"
+          ],
+          "examples": [
+            {
+              "text": "Pakistani people are known for their hospitality.",
+              "urdu": "پاکستانی لوگ اپنی مہمان نوازی کے لیے مشہور ہیں۔",
+              "note": "**Pakistani** is derived from Pakistan and describes people."
+            },
+            {
+              "text": "We study American history.",
+              "urdu": "ہم امریکی تاریخ پڑھتے ہیں۔",
+              "note": "**American** is derived from America."
+            },
+            {
+              "text": "She enjoys Chinese food.",
+              "urdu": "وہ چینی کھانا پسند کرتی ہے۔",
+              "note": "**Chinese** describes food connected with China."
+            },
+            {
+              "text": "Shakespearean drama is studied in literature classes.",
+              "urdu": "ادب کی کلاسوں میں شیکسپیئر کے ڈرامے کا مطالعہ کیا جاتا ہے۔",
+              "note": "**Shakespearean** is derived from Shakespeare."
+            }
+          ],
+          "commonMistakes": [
+            {
+              "wrong": "Pakistan culture is diverse.",
+              "right": "Pakistani culture is diverse.",
+              "urdu": "پاکستانی ثقافت متنوع ہے۔",
+              "note": "Use the proper adjective **Pakistani** to describe the noun culture."
+            },
+            {
+              "wrong": "I like Pakistani’s history.",
+              "right": "I like Pakistani history.",
+              "urdu": "مجھے پاکستانی تاریخ پسند ہے۔",
+              "note": "A proper adjective does not take an apostrophe."
+            },
+            {
+              "wrong": "She studies America literature.",
+              "right": "She studies American literature.",
+              "urdu": "وہ امریکی ادب پڑھتی ہے۔",
+              "note": "Use the adjective **American**, not the proper noun America, before literature."
+            },
+            {
+              "wrong": "He bought a chinese phone.",
+              "right": "He bought a Chinese phone.",
+              "urdu": "اس نے ایک چینی فون خریدا۔",
+              "note": "Proper adjectives derived from countries or cultures begin with a capital letter."
+            }
+          ],
+          "tableTitle": "Proper Noun and Proper Adjective",
+          "tableColumns": [
+            "Proper Noun",
+            "Proper Adjective"
+          ]
         }
       ],
       "rules": [
@@ -350,32 +608,7 @@
       ],
       "examples": [
         {
-          "text": "She wore a beautiful red dress to the ceremony.",
-          "note": "descriptive adjective"
-        },
-        {
-          "text": "There are several students waiting outside.",
-          "note": "quantitative adjective"
-        },
-        {
-          "text": "This book belongs to the library.",
-          "note": "demonstrative adjective"
-        },
-        {
-          "text": "My father works as an engineer.",
-          "note": "possessive adjective"
-        },
-        {
-          "text": "Karachi is larger than Multan.",
-          "note": "comparative adjective"
-        },
-        {
-          "text": "Mount Everest is the highest peak in the world.",
-          "note": "superlative adjective"
-        },
-        {
-          "text": "The exam was more difficult than expected.",
-          "note": "comparative with 'more'"
+          "text": "**Brave** Soldier, **Three** books, **Some** water, **This** pen"
         }
       ],
       "commonMistakes": [
@@ -4704,41 +4937,49 @@
           "examples": [
             {
               "text": "I play cricket. > I played cricket yesterday.",
-              "note": "The verb play changes to played in the past tense by following the regular -ed rule."
+              "note": "The verb play changes to played in the past tense by following the regular -ed rule.",
+              "urdu": "میں ہر روز کرکٹ کھیلتا ہوں، میں نے کل کرکٹ کھیلی۔"
             },
             {
               "text": "Ali played cricket yesterday.",
-              "note": "play > played follows the regular **-d** pattern."
+              "note": "play > played follows the regular **-d** pattern.",
+              "urdu": "علی نے کل کرکٹ کھیلی۔"
             },
             {
               "text": "Jameela Studied English last night.",
-              "note": "study > studied changes y > i before adding **-ed**."
+              "note": "study > studied changes y > i before adding **-ed**.",
+              "urdu": "جمیلہ نے گزشتہ رات انگریزی کا مطالعہ کیا۔"
             },
             {
               "text": "Ahmed loved his new book.",
-              "note": "love > loved takes only **-d** because the verb already ends in **e**."
+              "note": "love > loved takes only **-d** because the verb already ends in **e**.",
+              "urdu": "احمد کو اپنی نئی کتاب پسند آئی۔"
             }
           ],
           "commonMistakes": [
             {
               "wrong": "He **play** cricket yesterday.",
               "right": "He **played** cricket yesterday.",
-              "note": "A regular verb uses its V2 form in a simple past affirmative sentence."
+              "note": "A regular verb uses its V2 form in a simple past affirmative sentence.",
+              "urdu": "وہ کل کرکٹ کھیلا۔"
             },
             {
               "wrong": "She **studyed** English last night.",
               "right": "She **studied** English last night.",
-              "note": "After consonant + y, change y to i before adding -ed."
+              "note": "After consonant + y, change y to i before adding -ed.",
+              "urdu": "اس نے گزشتہ رات انگریزی کا مطالعہ کیا۔"
             },
             {
               "wrong": "Ahmed **loveded** his new book.",
               "right": "Ahmed **loved** his new book.",
-              "note": "A verb ending in e takes only -d."
+              "note": "A verb ending in e takes only -d.",
+              "urdu": "احمد کو اپنی نئی کتاب پسند آئی۔"
             },
             {
               "wrong": "He did not **played** cricket.",
               "right": "He did not **play** cricket.",
-              "note": "After did, use the base/first form because did already shows the past tense."
+              "note": "After did, use the base/first form because did already shows the past tense.",
+              "urdu": "اس نے کرکٹ نہیں کھیلی۔"
             }
           ]
         },
@@ -4763,41 +5004,49 @@
           "examples": [
             {
               "text": "Ali went to Peshawar yesterday.",
-              "note": "Go > went is an irregular verb. Went (V2) is used for the simple past."
+              "note": "Go > went is an irregular verb. Went (V2) is used for the simple past.",
+              "urdu": "علی کل پشاور گیا۔"
             },
             {
               "text": "Balaach has written a letter.",
-              "note": "Write > wrote > written is irregular. Written (V3) is used after has."
+              "note": "Write > wrote > written is irregular. Written (V3) is used after has.",
+              "urdu": "بالاچ نے ایک خط لکھا ہے۔"
             },
             {
               "text": "They did not eat dinner.",
-              "note": "Eat > ate > eaten is irregular. After did not, we use V1 (eat), not V2 (ate), because did also shows the past tense."
+              "note": "Eat > ate > eaten is irregular. After did not, we use V1 (eat), not V2 (ate), because did also shows the past tense.",
+              "urdu": "انہوں نے رات کا کھانا نہیں کھایا۔"
             },
             {
               "text": "She has taken the examination.",
-              "note": "Take > took > taken is irregular. Taken (V3) is used after has."
+              "note": "Take > took > taken is irregular. Taken (V3) is used after has.",
+              "urdu": "اس نے امتحان دے لیا ہے۔"
             }
           ],
           "commonMistakes": [
             {
               "wrong": "He **goed** to school.",
               "right": "He **went** to school.",
-              "note": "Go is irregular; its V2 form is went, not goed."
+              "note": "Go is irregular; its V2 form is went, not goed.",
+              "urdu": "وہ اسکول گیا۔"
             },
             {
               "wrong": "She has **wrote** a letter.",
               "right": "She has **written** a letter.",
-              "note": "After has, use V3 written."
+              "note": "After has, use V3 written.",
+              "urdu": "اس نے ایک خط لکھا ہے۔"
             },
             {
               "wrong": "They did not **ate** dinner.",
               "right": "They did not **eat** dinner.",
-              "note": "After did, use V1 eat, not V2 ate."
+              "note": "After did, use V1 eat, not V2 ate.",
+              "urdu": "انہوں نے رات کا کھانا نہیں کھایا۔"
             },
             {
               "wrong": "I have **buyed** a book.",
               "right": "I have **bought** a book.",
-              "note": "Buy is irregular; its V2 and V3 form is bought."
+              "note": "Buy is irregular; its V2 and V3 form is bought.",
+              "urdu": "میں نے ایک کتاب خریدی ہے۔"
             }
           ]
         },
