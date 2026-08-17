@@ -45,23 +45,38 @@ class GoogleDriveService {
       serverClientId: sapioraWebOAuthClientId,
     );
     _initialized = true;
+    // Restore the previously selected account from the SDK's secure platform
+    // session. This is silent and does not show the account picker.
+    _account = await _signIn.attemptLightweightAuthentication();
   }
 
   Future<GoogleSignInAccount> connect() async {
     await _ensureInitialized();
+    final GoogleSignInAccount? restored = _account;
+    if (restored != null) return restored;
+    // Interactive authentication is used only for the first connection, after
+    // disconnect, account switching, or when the saved session is unavailable.
     final GoogleSignInAccount account = await _signIn.authenticate();
     _account = account;
     return account;
   }
+
+  bool get isConnected => _account != null;
 
   Future<void> disconnect() async {
     _account = null;
     await _signIn.signOut();
   }
 
+  Future<void> clearDriveCache() async {
+    final Directory root = await getApplicationSupportDirectory();
+    final Directory cache = Directory(p.join(root.path, 'drive_cache'));
+    if (await cache.exists()) await cache.delete(recursive: true);
+  }
+
   Future<String> _accessToken() async {
     await _ensureInitialized();
-    final GoogleSignInAccount account = _account ?? await connect();
+    final GoogleSignInAccount account = await connect();
     final GoogleSignInClientAuthorization authorization = await account
         .authorizationClient
         .authorizeScopes(const <String>[googleDriveReadonlyScope]);

@@ -38,9 +38,17 @@ import 'package:lexiora/features/settings/presentation/providers/settings_provid
 /// and load failures show an explained [ErrorView] with Retry/Back — so the
 /// reader can never present a blank, chromeless screen.
 class ReaderPage extends ConsumerStatefulWidget {
-  const ReaderPage({super.key, required this.documentId});
+  const ReaderPage({
+    super.key,
+    required this.documentId,
+    this.temporaryDocument,
+  });
 
   final String documentId;
+
+  /// Non-null for a Drive PDF opened directly from temporary app-private cache.
+  /// It is intentionally never inserted into the Library database.
+  final LibraryDocument? temporaryDocument;
 
   @override
   ConsumerState<ReaderPage> createState() => _ReaderPageState();
@@ -63,6 +71,7 @@ class _ReaderPageState extends ConsumerState<ReaderPage> {
   List<int> _highlightColors = const <int>[0xFFFFF176];
 
   String get _id => widget.documentId;
+  bool get _isTemporary => widget.temporaryDocument != null;
 
   @override
   void initState() {
@@ -75,7 +84,7 @@ class _ReaderPageState extends ConsumerState<ReaderPage> {
     AppLogger.i('Reader._load documentId=$_id');
     try {
       final settings = await ref.read(settingsRepositoryProvider).getSettings();
-      final LibraryDocument? doc =
+      final LibraryDocument? doc = widget.temporaryDocument ??
           await ref.read(libraryRepositoryProvider).getById(_id);
       if (doc == null) {
         AppLogger.w('Reader: document not found ($_id)');
@@ -107,8 +116,9 @@ class _ReaderPageState extends ConsumerState<ReaderPage> {
         return;
       }
 
-      final progress =
-          await ref.read(readingProgressRepositoryProvider).getProgress(_id);
+      final progress = _isTemporary
+          ? null
+          : await ref.read(readingProgressRepositoryProvider).getProgress(_id);
       _scrollAxis = settings.readingScrollAxis;
       _colorMode = settings.readerColorMode;
       _highlightColors = settings.highlightColors;
@@ -122,10 +132,12 @@ class _ReaderPageState extends ConsumerState<ReaderPage> {
       // Honor the "keep screen awake" preference while reading.
       await sl<ScreenWakeService>().setKeepScreenOn(settings.keepScreenAwake);
 
-      await ref.read(markDocumentOpenedProvider).call(_id);
-      await ref.read(logReadingSessionProvider).call(
-            LogSessionParams(documentId: _id, pageNumber: _initialPage),
-          );
+      if (!_isTemporary) {
+        await ref.read(markDocumentOpenedProvider).call(_id);
+        await ref.read(logReadingSessionProvider).call(
+              LogSessionParams(documentId: _id, pageNumber: _initialPage),
+            );
+      }
       if (mounted) setState(() => _loading = false);
     } on Object catch (e, s) {
       AppLogger.e('Reader._load failed', error: e, stackTrace: s);
@@ -151,6 +163,14 @@ class _ReaderPageState extends ConsumerState<ReaderPage> {
   @override
   void dispose() {
     unawaited(sl<ScreenWakeService>().setKeepScreenOn(false));
+    if (_isTemporary) {
+      final String? temporaryPath = _document?.filePath;
+      if (temporaryPath != null) {
+        unawaited(
+          File(temporaryPath).delete().catchError((Object _) => File(temporaryPath)),
+        );
+      }
+    }
     _controller.dispose();
     _searchField.dispose();
     super.dispose();
@@ -171,6 +191,7 @@ class _ReaderPageState extends ConsumerState<ReaderPage> {
       .toList();
 
   void _onPageChanged(int page) {
+    if (_isTemporary) return;
     ref.read(saveReadingProgressProvider).call(
           SaveProgressParams(
             documentId: _id,

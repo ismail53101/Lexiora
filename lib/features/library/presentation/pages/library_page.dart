@@ -1,5 +1,7 @@
 import 'dart:async';
 
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
@@ -439,20 +441,22 @@ class _LibraryPageState extends ConsumerState<LibraryPage> {
       );
       if (selected == null || !mounted) return;
       setState(() => _importing = true);
-      final Result<ImportOutcome> result =
-          await ref.read(importDrivePdfProvider).call(selected);
+      final File cached = await drive.downloadPdf(selected);
       if (!mounted) return;
-      result.fold(
-        (failure) => messenger.showSnackBar(
-          SnackBar(content: Text('Google Drive import failed: ${failure.message}')),
-        ),
-        (ImportOutcome outcome) => messenger.showSnackBar(
-          SnackBar(
-            content: Text(outcome.duplicates > 0
-                ? 'That Drive PDF is already in your library'
-                : 'Added from Google Drive'),
-          ),
-        ),
+      final LibraryDocument temporaryDocument = LibraryDocument(
+        id: 'drive_${selected.id}',
+        title: selected.name.replaceFirst(RegExp(r'\.pdf$', caseSensitive: false), ''),
+        fileName: selected.name,
+        filePath: cached.path,
+        fileSize: selected.size > 0 ? selected.size : await cached.length(),
+        pageCount: 0,
+        isFavorite: false,
+        importedAt: DateTime.now(),
+        isManaged: false,
+      );
+      await context.push(
+        AppRoutes.driveReader,
+        extra: temporaryDocument,
       );
     } on Object catch (error) {
       if (!mounted) return;

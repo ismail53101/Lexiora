@@ -99,6 +99,8 @@ abstract final class AppRoutes {
 
   static const String readerName = 'reader';
   static const String readerPattern = '/reader/:id';
+  static const String driveReaderName = 'driveReader';
+  static const String driveReader = '/drive-reader';
   static String reader(String documentId) => '/reader/$documentId';
 
   static const String bookmarksName = 'bookmarks';
