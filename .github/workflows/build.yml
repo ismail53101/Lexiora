@@ -165,13 +165,26 @@ jobs:
 
       - name: Publish APK to GitHub Release
         if: github.ref == 'refs/heads/main'
-        uses: softprops/action-gh-release@v2
-        with:
-          tag_name: v${{ steps.ver.outputs.v }}
-          name: Sapiora v${{ steps.ver.outputs.v }}
-          body: Automated release build of Sapiora.
-          files: |
-            build/app/outputs/flutter-apk/app-release.apk
-            build/app/outputs/bundle/release/app-release.aab
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          RELEASE_TAG: v${{ steps.ver.outputs.v }}
+        run: |
+          set -euo pipefail
+          for attempt in 1 2 3 4 5; do
+            if gh release view "$RELEASE_TAG" >/dev/null 2>&1; then
+              gh release upload "$RELEASE_TAG" \
+                build/app/outputs/flutter-apk/app-release.apk \
+                build/app/outputs/bundle/release/app-release.aab \
+                --clobber && exit 0
+            else
+              gh release create "$RELEASE_TAG" \
+                build/app/outputs/flutter-apk/app-release.apk \
+                build/app/outputs/bundle/release/app-release.aab \
+                --title "Sapiora $RELEASE_TAG" \
+                --notes "Automated release build of Sapiora." && exit 0
+            fi
+            echo "GitHub Release API unavailable; retry $attempt/5 in 20 seconds..."
+            sleep 20
+          done
+          echo "Failed to publish GitHub Release after 5 attempts." >&2
+          exit 1
