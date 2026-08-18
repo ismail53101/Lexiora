@@ -20,6 +20,7 @@ import 'package:lexiora/features/home/domain/entities/latest_update.dart';
 import 'package:lexiora/features/home/presentation/pages/current_affairs_page.dart';
 import 'package:lexiora/features/home/presentation/providers/current_affairs_providers.dart';
 import 'package:lexiora/features/home/presentation/widgets/latest_update_card.dart';
+import 'package:lexiora/features/home/presentation/widgets/word_of_day_card.dart';
 import 'package:lexiora/features/library/domain/entities/library_document.dart';
 import 'package:lexiora/features/library/domain/usecases/library_usecases.dart';
 import 'package:lexiora/features/library/presentation/providers/library_providers.dart';
@@ -194,6 +195,12 @@ class _HomePageState extends ConsumerState<HomePage>
                     ),
                   ),
                 ),
+              ),
+            ),
+            const SliverToBoxAdapter(
+              child: Padding(
+                padding: EdgeInsets.fromLTRB(20, 16, 20, 0),
+                child: WordOfDayCard(),
               ),
             ),
             SliverToBoxAdapter(

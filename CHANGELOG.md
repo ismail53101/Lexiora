@@ -5,6 +5,36 @@ All notable changes to Sapiora are documented here.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.23.1] — 2026-08-15
+
+### Fixed
+
+- **Nonsense usage sentences eliminated from the Dictionary word details.**
+  WordNet's synset examples frequently illustrate a *different* word than the
+  headword (e.g. `elevate` → "John was kicked upstairs when a replacement was
+  hired"), which read as nonsense in English and machine-translated into
+  nonsense Urdu. The Usage card now only ever shows a sentence that actually
+  contains the headword (or one of its inflections — plurals, -ed/-ing,
+  y→ies, plus an irregular-verb table so "We came back…" still matches
+  "come back"); otherwise the card is hidden instead of showing garbage.
+  This covers all ~8,400 affected words — including words users have already
+  seen on installed builds, since the check runs at render time, not at seed
+  time. Copy-to-clipboard uses the same filtered resolution so copied text
+  matches what's displayed.
+- **Curated example sentences + Urdu for 112 words whose old usage lines
+  were wrong.** That includes every word users hit in screenshots
+  (`elevate` → "The company decided to elevate her to the position of
+  manager" → کمپنی نے اسے مینیجر کے عہدے پر ترقی دینے کا فیصلہ کیا),
+  plus the common words pinned in earlier releases (`have`, `create`,
+  `education`, `schedule`, `process`, `develop`, `achieve`, …) and a sweep
+  of all remaining curated entries whose sentence illustrated a different
+  word — `autumn`→"the leaves turn brown in autumn", `paradise`→"the
+  island looked like paradise", `spicy`→"the spicy food made my mouth
+  burn", and 84 more, replacing off-topic/placeholder examples (e.g. the
+  "(please add an English translation…)" stubs) with clean sentences + real
+  Urdu. Only sentences about the headword can ever be shown or auto-
+  translated now.
+
 ## [0.23.0] — 2026-08-12
 
 ### Changed

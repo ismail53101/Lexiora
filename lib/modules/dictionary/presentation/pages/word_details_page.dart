@@ -117,7 +117,8 @@ class _WordDetailsPageState extends ConsumerState<WordDetailsPage> {
     if (e != null) {
       if (e.synonyms.isNotEmpty) b.writeln('Synonyms: ${e.synonyms.join(', ')}');
       if (e.antonyms.isNotEmpty) b.writeln('Antonyms: ${e.antonyms.join(', ')}');
-      final WordUsage? u = e.usage;
+      // Same filtered resolution as the Usage card, so copy matches display.
+      final WordUsage? u = _ProfileView._resolveUsage(p);
       if (u != null) {
         b.writeln('Usage (${u.context}): ${u.english}');
         if (u.urdu.isNotEmpty) b.writeln(u.urdu);
@@ -329,7 +330,12 @@ class _ProfileView extends StatelessWidget {
   }
 
   /// Best usage example: the curated exam sentence, else the base dictionary's
-  /// primary example sentence (when it reads like a real sentence).
+  /// primary example sentence — but only when the sentence is a *real* example
+  /// that actually contains the headword. WordNet's synset examples often
+  /// illustrate a different word entirely (e.g. "elevate" → "John was kicked
+  /// upstairs when a replacement was hired"), which reads as nonsense and
+  /// machine-translates into nonsense Urdu, so those sentences are filtered out
+  /// here and the Usage card is hidden instead.
   static WordUsage? _resolveUsage(WordProfile profile) {
     final ExamWordData? e = profile.exam;
     final WordUsage? curated = validatedUsage(profile.wordLower, e?.usage);
