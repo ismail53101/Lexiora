@@ -13,7 +13,6 @@ import 'package:lexiora/core/services/pdf_ocr_service.dart';
 import 'package:lexiora/core/services/screen_wake_service.dart';
 import 'package:lexiora/core/utils/logger.dart';
 import 'package:lexiora/core/widgets/error_view.dart';
-import 'package:lexiora/core/widgets/loading_indicator.dart';
 import 'package:lexiora/features/annotations/domain/entities/highlight.dart';
 import 'package:lexiora/features/annotations/domain/usecases/annotations_usecases.dart';
 import 'package:lexiora/features/annotations/presentation/providers/annotations_providers.dart';
@@ -86,7 +85,9 @@ class _ReaderPageState extends ConsumerState<ReaderPage> {
   Future<void> _load() async {
     AppLogger.i('Reader._load documentId=$_id');
     try {
-      final settings = await ref.read(settingsRepositoryProvider).getSettings();
+      // Resolve the document path before loading settings or other reader
+      // metadata. This lets the actual PDF viewer shell appear immediately
+      // instead of showing a separate full-screen loading page.
       final LibraryDocument? doc = widget.temporaryDocument ??
           await ref.read(libraryRepositoryProvider).getById(_id);
       if (doc == null) {
@@ -99,6 +100,9 @@ class _ReaderPageState extends ConsumerState<ReaderPage> {
         }
         return;
       }
+      if (mounted) setState(() => _document = doc);
+
+      final settings = await ref.read(settingsRepositoryProvider).getSettings();
 
       // Validate the backing file BEFORE handing it to the PDF engine, so a
       // missing/empty file shows a helpful error instead of a blank viewer.
@@ -419,14 +423,13 @@ class _ReaderPageState extends ConsumerState<ReaderPage> {
 
   @override
   Widget build(BuildContext context) {
-    if (_loading) {
-      return Scaffold(
-        appBar: AppBar(title: Text(_document?.title ?? 'Opening…')),
-        body: const LoadingIndicator(message: 'Opening…'),
+    if (_document == null && _error == null) {
+      return const Scaffold(
+        body: SizedBox.expand(),
       );
     }
 
-    if (_error != null || _document == null) {
+    if (_error != null) {
       return Scaffold(
         appBar: AppBar(title: Text(_document?.title ?? 'Reader')),
         body: ErrorView(
