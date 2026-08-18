@@ -120,12 +120,18 @@ class _ReaderPageState extends ConsumerState<ReaderPage> {
         return;
       }
 
-      final String searchablePath = await sl<PdfOcrService>().makeSearchable(
-        documentId: _id,
-        sourcePath: sourcePath,
-      );
+      // Device PDFs already have a stable local path and must open directly.
+      // Only the temporary Drive-reader path enters OCR preprocessing, so a
+      // normal local document never gets stuck behind an unnecessary scan.
+      final bool isDriveDocument = _isTemporary && doc.isFromGoogleDrive;
+      final String searchablePath = isDriveDocument
+          ? await sl<PdfOcrService>().makeSearchable(
+              documentId: _id,
+              sourcePath: sourcePath,
+            )
+          : sourcePath;
       if (_isTemporary) _temporarySourcePath = sourcePath;
-      _hasOcrCache = searchablePath != sourcePath;
+      _hasOcrCache = isDriveDocument && searchablePath != sourcePath;
       final LibraryDocument openedDocument = searchablePath == sourcePath
           ? doc
           : LibraryDocument(
@@ -191,10 +197,14 @@ class _ReaderPageState extends ConsumerState<ReaderPage> {
     unawaited(sl<ScreenWakeService>().setKeepScreenOn(false));
     if (_isTemporary) {
       final String? temporaryPath = _temporarySourcePath ?? _document?.filePath;
-      if (_hasOcrCache) {
+      final bool persistentDriveCache =
+          temporaryPath?.replaceAll('\\', '/').contains('/drive_cache/') ?? false;
+      // Drive PDFs are temporary reader documents but their downloaded source
+      // and OCR copy are persistent caches. Only delete truly transient files.
+      if (!persistentDriveCache && _hasOcrCache) {
         unawaited(sl<PdfOcrService>().deleteSearchable(_id));
       }
-      if (temporaryPath != null) {
+      if (!persistentDriveCache && temporaryPath != null) {
         unawaited(
           File(temporaryPath).delete().catchError((Object _) => File(temporaryPath)),
         );
