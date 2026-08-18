@@ -21,7 +21,7 @@ class WordOfDayService {
 
     // Deterministic index: days since Unix epoch mod entry count.
     final int dayIndex =
-        DateTime.now().toUtc().difference(DateTime.utc(1970, 1, 1)).inDays;
+        DateTime.now().toUtc().difference(DateTime.utc(1970)).inDays;
     final int index = dayIndex % entries.length;
     return entries[index];
   }
@@ -31,7 +31,7 @@ class WordOfDayService {
     try {
       final String raw =
           await rootBundle.loadString('assets/dictionary/gre_high_frequency.json');
-      final List<dynamic> decoded = jsonDecode(raw);
+      final List<dynamic> decoded = jsonDecode(raw) as List<dynamic>;
       _cache = decoded
           .whereType<Map<String, dynamic>>()
           .where((Map<String, dynamic> e) {

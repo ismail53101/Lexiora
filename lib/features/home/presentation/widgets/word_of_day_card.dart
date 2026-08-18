@@ -90,7 +90,6 @@ class _WordOfDayCardState extends State<WordOfDayCard> {
           borderRadius: BorderRadius.circular(20),
           border: Border.all(
             color: scheme.primary.withValues(alpha: 0.30),
-            width: 1,
           ),
         ),
         child: Padding(
