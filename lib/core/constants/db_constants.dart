@@ -58,6 +58,9 @@ abstract final class QuizConstants {
 
   /// Bank/subject `source` tag marking rows created by the demo seeder.
   static const String demoSource = 'demo';
+
+  /// Compatibility name used by the Quiz seeder for bundled demo content.
+  static const String bundledSource = demoSource;
 }
 
 /// Constants for the AI Assistant module (Phase v0.10.0).
@@ -96,6 +99,9 @@ abstract final class AiConstants {
 
 /// Constants for the bundled offline translation data set.
 abstract final class TranslationConstants {
+  /// Directory containing optional translation JSON packs.
+  static const String assetDir = 'assets/translations/';
+
   /// Bundled, gzip-compressed JSON-Lines data set (see assets/translations).
   static const String assetPath = 'assets/translations/translations.jsonl.gz';
 
