@@ -42,28 +42,22 @@ abstract final class DbConstants {
   /// Purely additive; existing v14 quiz data remains valid.
   /// v15 → v16 (Phase v0.10.0): AI Assistant — adds `ai_conversations` and
   /// `ai_messages` (offline chat persistence), plus indexes. Purely additive.
-  /// v16 → v17 (Phase v0.11.0): Staged Quiz — adds `quiz_stage_progress`
-  /// (best result per subject/stage, driving the unlock ladder). Purely
-  /// additive; all existing quiz data remains valid.
-  static const int schemaVersion = 17;
+  static const int schemaVersion = 16;
 }
 
-/// Constants for the Quiz Engine's bundled content seed.
+/// Constants for the Quiz Engine's one-time demo seed.
 ///
-/// Real exam banks ship as JSON under `assets/quiz/` (see the
-/// `LocalJsonQuestionProvider` and `QuizJsonParser` schema) and are seeded once
-/// into the normal quiz tables as published content the app consumes; the app
-/// never authors content. Bumping [datasetVersion] re-seeds the bundled banks
-/// and removes the legacy demo rows, never user attempt history.
+/// The demo ships a handful of bundled sample subjects/topics/quizzes so the
+/// subject-first learning workflow is visible out of the box. It is seeded once
+/// into the normal quiz tables as read-only published content the app consumes;
+/// the app never authors content. Bumping [datasetVersion] re-seeds ONLY the
+/// demo rows (tagged by source 'demo'), never user attempt history.
 abstract final class QuizConstants {
   static const String seedVersionKey = 'quiz_demo_seed_version';
-  static const String datasetVersion = 'quiz-bundled-2026.08-v24';
+  static const String datasetVersion = 'quiz-demo-2026.07-v1';
 
-  /// Bank/subject `source` tag marking rows created by the old demo seeder.
+  /// Bank/subject `source` tag marking rows created by the demo seeder.
   static const String demoSource = 'demo';
-
-  /// Bank/subject `source` tag for content seeded from `assets/quiz/`.
-  static const String bundledSource = 'bundled';
 }
 
 /// Constants for the AI Assistant module (Phase v0.10.0).
@@ -81,7 +75,8 @@ abstract final class AiConstants {
   static const String envProvider = 'SAPIORA_AI_PROVIDER';
 
   /// Defaults used when the corresponding define is not provided.
-  static const String defaultBaseUrl = 'https://api.hcnsec.cn';
+  static const String defaultBaseUrl =
+      'https://sapiora-ai-worker.ismaillasharibaloch53.workers.dev';
   static const String defaultModel = 'auto';
   /// 'auto' means the Cloudflare Worker itself picks/falls back between its
   /// configured upstream providers — the app never needs to know which
@@ -104,19 +99,11 @@ abstract final class TranslationConstants {
   /// Bundled, gzip-compressed JSON-Lines data set (see assets/translations).
   static const String assetPath = 'assets/translations/translations.jsonl.gz';
 
-  /// Directory scanned for extra translation packs (every `*.json` file within,
-  /// e.g. `urdu_wiktionary_extra.json`). Mirrors the exam/vocabulary multi-pack
-  /// loader pattern: drop a new file in and rebuild — no Dart change needed.
-  static const String assetDir = 'assets/translations/';
-
   /// Version tag of the bundled data set. Seeding re-runs whenever the value
   /// stored in settings differs from this. Bumped when the English→Urdu data
   /// was significantly expanded (academic/newspaper/exam vocabulary), so
-  /// existing installs re-seed to pick up the larger set. The effective seed
-  /// version appends a content signature of the extra packs, so a new/edited
-  /// pack re-seeds automatically without bumping this.
-  static const String datasetVersion =
-      'freedict+wiktionary-ur-2026.07-exam+urduwiktionary';
+  /// existing installs re-seed to pick up the larger set.
+  static const String datasetVersion = 'freedict+wiktionary-ur-2026.07-exam';
 
   /// Settings key under which the seeded translation data-set version is kept.
   static const String seedVersionKey = 'translation_seed_version';
@@ -129,16 +116,13 @@ abstract final class TranslationConstants {
   /// Endpoint of the default online translation provider. It is abstracted
   /// behind `RemoteTranslationService`, so swapping providers (e.g. to
   /// LibreTranslate or a paid API) is a one-line binding change and requires no
-  /// UI changes. Default is Google Translate's keyless web endpoint — far
-  /// better single-word and sentence quality than the previous default
-  /// (MyMemory), which regularly returned the wrong sense for isolated words
-  /// (e.g. "execution" → "پھانسی" instead of "عملدرآمد").
+  /// UI changes. Default is MyMemory — free and keyless.
   static const String remoteEndpoint =
-      'https://translate.googleapis.com/translate_a/single';
+      'https://api.mymemory.translated.net/get';
 
   /// Human-readable provider name (diagnostics/logs only; the UI shows a
   /// generic "Online" source label).
-  static const String remoteProviderName = 'Google Translate';
+  static const String remoteProviderName = 'MyMemory';
 
   /// Network timeout for a single online translation request.
   static const Duration remoteTimeout = Duration(seconds: 8);
