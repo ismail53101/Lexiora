@@ -737,112 +737,375 @@
       ],
       "summary": "Adjectives describe or modify nouns and pronouns, showing quality, quantity, or possession, and change form to express comparison. Short adjectives use -er/-est while longer ones use more/most, and irregular forms like good/better/best must be memorized. Correct adjective order and comparison forms are frequently tested and easy to master with practice.",
       "degreeTypes": [
-        {
-          "name": "Positive Degree",
-          "description": "Shows the basic quality of one person, place, or thing without comparison.",
-          "exampleWords": "tall, bright, honest",
-          "rules": [
-            "Use the positive form when no comparison is made.",
-            "Use the adjective before a noun or after a linking verb."
-          ],
-          "ruleExamples": [
-            "**Ali** is **tall**.",
-            "The **bright** student answered the question."
-          ],
-          "examples": [
-            {
-              "text": "The honest officer reported the facts.",
-              "note": "Honest describes one officer; no comparison is made."
-            },
-            {
-              "text": "The room is clean.",
-              "note": "Clean shows the quality of one room."
-            }
-          ],
-          "commonMistakes": [
-            {
-              "wrong": "Ali is taller.",
-              "right": "Ali is tall.",
-              "note": "Use taller only when comparing Ali with another person or thing."
-            },
-            {
-              "wrong": "The sky is more blue.",
-              "right": "The sky is blue.",
-              "note": "Use the positive form when no comparison is intended."
-            }
-          ]
-        },
-        {
-          "name": "Comparative Degree",
-          "description": "Compares two people, places, or things.",
-          "exampleWords": "taller, brighter, more useful",
-          "rules": [
-            "Use -er with many short adjectives and use than after the comparative form.",
-            "Use more before many longer adjectives when comparing two things."
-          ],
-          "ruleExamples": [
-            "Ali is **taller than** Ahmed.",
-            "This method is **more useful than** the old method."
-          ],
-          "examples": [
-            {
-              "text": "Karachi is larger than Multan.",
-              "note": "Larger compares two cities, Karachi and Multan."
-            },
-            {
-              "text": "This answer is more accurate than that answer.",
-              "note": "More accurate compares two answers."
-            }
-          ],
-          "commonMistakes": [
-            {
-              "wrong": "Ali is more taller than Ahmed.",
-              "right": "Ali is taller than Ahmed.",
-              "note": "Do not use more with an adjective that already uses -er."
-            },
-            {
-              "wrong": "This book is better that one.",
-              "right": "This book is better than that one.",
-              "note": "Use than after a comparative adjective."
-            }
-          ]
-        },
-        {
-          "name": "Superlative Degree",
-          "description": "Shows the highest or lowest quality among three or more people, places, or things.",
-          "exampleWords": "tallest, brightest, most useful",
-          "rules": [
-            "Use the before a superlative adjective in a normal sentence.",
-            "Use -est with many short adjectives and most with many longer adjectives."
-          ],
-          "ruleExamples": [
-            "Ali is **the tallest** boy in the class.",
-            "This is **the most useful** book in the library."
-          ],
-          "examples": [
-            {
-              "text": "Mount Everest is the highest peak in the world.",
-              "note": "Highest compares Mount Everest with all other peaks."
-            },
-            {
-              "text": "She is the most careful student in the class.",
-              "note": "Most careful shows the highest degree among the students."
-            }
-          ],
-          "commonMistakes": [
-            {
-              "wrong": "He is most tallest in the team.",
-              "right": "He is the tallest in the team.",
-              "note": "Use the with the superlative and do not combine most with -est."
-            },
-            {
-              "wrong": "This is the better answer of all.",
-              "right": "This is the best answer of all.",
-              "note": "Use the superlative form when comparing more than two answers."
-            }
-          ]
-        }
-      ],
+      {
+            "name": "Positive Degree",
+            "description": "The Positive Degree is the basic form of an adjective. It describes the quality of a person, thing, or place without comparing it with another.",
+            "urduExplanation": "مثبت درجہ صفت کی بنیادی صورت ہے۔ جس میں کسی شخص، چیز یا جگہ کی خوبی یا خصوصیات بیان کی جاتی ہیں، لیکن اس کا کسی دوسرے سے موازنہ نہیں کیا جاتا۔",
+            "exampleWords": "Tall, clever, intelligent, wide etc",
+            "rules": [
+                  "Use the basic form of the adjective.",
+                  "It normally does not make a direct comparison.",
+                  "Use \"as + adjective + as\" to show equality."
+            ],
+            "ruleExamples": [
+                  "Ali is **tall**.\nShe is **intelligent**.",
+                  "The boy is **clever**.\nThe flower is **beautiful**.",
+                  "Ali is **as tall as** Ahmed.\nSara is **as intelligent as** Ayesha."
+            ],
+            "examples": [
+                  {
+                        "text": "Ali is **tall**.",
+                        "urdu": "علی لمبا ہے۔",
+                        "note": "**Tall** is the basic form of the adjective. It describes Ali without comparing him with another person."
+                  },
+                  {
+                        "text": "The flower is **beautiful**.",
+                        "urdu": "پھول خوبصورت ہے۔",
+                        "note": "**Beautiful** describes the quality of one flower, so no comparative or superlative form is needed."
+                  },
+                  {
+                        "text": "Sara is **as intelligent as** Ayesha.",
+                        "urdu": "سارہ عائشہ جتنی ذہین ہے۔",
+                        "note": "**As intelligent as** shows that Sara and Ayesha have an equal degree of intelligence."
+                  }
+            ],
+            "commonMistakes": [
+                  {
+                        "wrong": "Ali is **taller**.",
+                        "right": "Ali is **tall**.",
+                        "urdu": "علی لمبا ہے۔",
+                        "note": "No person or thing is being compared, so use the basic Positive form **tall**, not **taller**."
+                  },
+                  {
+                        "wrong": "The boy is **more clever**.",
+                        "right": "The boy is **clever**.",
+                        "urdu": "لڑکا ہوشیار ہے۔",
+                        "note": "The sentence describes one boy only. Without a comparison, use the Positive form."
+                  },
+                  {
+                        "wrong": "Ali is **as tall than** Ahmed.",
+                        "right": "Ali is **as tall as** Ahmed.",
+                        "urdu": "علی احمد جتنا لمبا ہے۔",
+                        "note": "Equality uses the fixed structure **as + adjective + as**, not **as + adjective + than**."
+                  },
+                  {
+                        "wrong": "Sara is **intelligent as** Ayesha.",
+                        "right": "Sara is **as intelligent as** Ayesha.",
+                        "urdu": "سارہ عائشہ جتنی ذہین ہے۔",
+                        "note": "Both **as** words are required to show equal quality."
+                  },
+                  {
+                        "wrong": "The flower is **more beautiful**.",
+                        "right": "The flower is **beautiful**.",
+                        "urdu": "پھول خوبصورت ہے۔",
+                        "note": "The sentence gives a description without a comparison, so the basic adjective form is appropriate."
+                  }
+            ]
+      },
+      {
+            "name": "Comparative Degree",
+            "description": "The Comparative Degree is the form of an adjective used to compare two people, things, or places and show that one has a greater or lesser quality than the other.",
+            "urduExplanation": "تقابلی درجہ صفت کی وہ صورت ہے جس کے ذریعے دو اشخاص، چیزوں یا جگہوں کے درمیان موازنہ کر کے یہ ظاہر کیا جاتا ہے کہ ایک میں کسی صفت کی مقدار دوسرے کے مقابلے میں زیادہ یا کم ہے۔",
+            "exampleWords": "Taller, cleverer, more intelligent, wider etc",
+            "rules": [
+                  "Compare two people, things, or places.",
+                  "Use **than** after the comparative degree.",
+                  "Use **more** with many longer adjectives.",
+                  "Use **less** to show a lower degree.",
+                  "Do not use a double comparative.",
+                  "Use **than that of** when the compared singular noun is understood.",
+                  "Use **those of** when the compared noun is plural."
+            ],
+            "ruleExamples": [
+                  "Ali is **taller than** Ahmed.\nKarachi is **larger than** Quetta.",
+                  "She is **more intelligent than** her sister.\nThis book is **better than** that book.",
+                  "**beautiful → more beautiful**\n**important → more important**\n**difficult → more difficult**",
+                  "Ali is **less experienced than** Ahmed.\nThis road is **less crowded than** that road.",
+                  "Incorrect: **more taller**\nCorrect: **taller**",
+                  "The population of Karachi is greater than **that of** Quetta.",
+                  "The natural **resources** of Pakistan are greater than **those of** many countries."
+            ],
+            "examples": [
+                  {
+                        "text": "Ali is **taller than** Ahmed.",
+                        "urdu": "علی احمد سے زیادہ لمبا ہے۔",
+                        "note": "**Taller than** compares two people, Ali and Ahmed, so the Comparative Degree is used."
+                  },
+                  {
+                        "text": "This question is **more difficult than** the previous one.",
+                        "urdu": "یہ سوال پچھلے سوال سے زیادہ مشکل ہے۔",
+                        "note": "**More difficult than** is used because **difficult** is a longer adjective and two questions are being compared."
+                  },
+                  {
+                        "text": "The population of Karachi is greater than **that of** Quetta.",
+                        "urdu": "کراچی کی آبادی کوئٹہ کی آبادی سے زیادہ ہے۔",
+                        "note": "**That of Quetta** replaces **the population of Quetta** and avoids repeating the singular noun **population**."
+                  }
+            ],
+            "commonMistakes": [
+                  {
+                        "wrong": "Ali is **more taller than** Ahmed.",
+                        "right": "Ali is **taller than** Ahmed.",
+                        "urdu": "علی احمد سے زیادہ لمبا ہے۔",
+                        "note": "**Taller** already contains the Comparative ending **-er**, so do not add **more**."
+                  },
+                  {
+                        "wrong": "This book is **better that** one.",
+                        "right": "This book is **better than** that one.",
+                        "urdu": "یہ کتاب اس کتاب سے بہتر ہے۔",
+                        "note": "Use **than** after a comparative adjective; **that** alone is not the comparison marker."
+                  },
+                  {
+                        "wrong": "This road is **less crowded that** road.",
+                        "right": "This road is **less crowded than** that road.",
+                        "urdu": "یہ سڑک اس سڑک سے کم بھیڑ والی ہے۔",
+                        "note": "The lower degree uses **less + adjective + than** when comparing two roads."
+                  },
+                  {
+                        "wrong": "The population of Karachi is greater than **Quetta**.",
+                        "right": "The population of Karachi is greater than **that of Quetta**.",
+                        "urdu": "کراچی کی آبادی کوئٹہ کی آبادی سے زیادہ ہے۔",
+                        "note": "Use **that of** to represent the repeated singular noun **population**."
+                  },
+                  {
+                        "wrong": "Pakistan’s resources are greater than **that of** many countries.",
+                        "right": "Pakistan’s resources are greater than **those of** many countries.",
+                        "urdu": "پاکستان کے وسائل بہت سے ممالک کے وسائل سے زیادہ ہیں۔",
+                        "note": "Use plural **those of** because **resources** is plural."
+                  }
+            ]
+      },
+      {
+            "name": "Superlative Degree",
+            "description": "The Superlative Degree is the form of an adjective used to show the highest or lowest degree of a quality among three or more people, things, or places.",
+            "urduExplanation": "اعلیٰ ترین درجہ صفت کی وہ صورت ہے جس کے ذریعے تین یا تین سے زیادہ اشخاص، چیزوں یا جگہوں میں کسی صفت کی سب سے زیادہ یا سب سے کم مقدار ظاہر کی جاتی ہے۔",
+            "exampleWords": "Tallest, shortest, smartest, highest, most beautiful, most attractive",
+            "rules": [
+                  "Compare three or more people, things, or places.",
+                  "Generally use **the** before the Superlative adjective.",
+                  "Short adjectives usually take **-est**.",
+                  "Use **most** with many longer adjectives.",
+                  "Use **least** to show the lowest degree.",
+                  "Use **in** or **of** to identify the group.",
+                  "Do not use a double superlative."
+            ],
+            "ruleExamples": [
+                  "Ali is **the tallest** boy in the class.\nThis is **the most expensive** car in the showroom.",
+                  "She is **the smartest** student in the class.\nHe is **the best** player on the team.",
+                  "**tall → tallest**\n**small → smallest**\n**fast → fastest**",
+                  "**beautiful → most beautiful**\n**important → most important**\n**difficult → most difficult**",
+                  "He is **the least experienced** member of the team.\nThis is **the least expensive** option.",
+                  "He is the best student **in** the class.\nHe is the tallest **of** the three brothers.",
+                  "Incorrect: **the most tallest**\nCorrect: **the tallest**"
+            ],
+            "examples": [
+                  {
+                        "text": "Ali is **the tallest** boy in the class.",
+                        "urdu": "علی جماعت کا سب سے لمبا لڑکا ہے۔",
+                        "note": "**The tallest** compares Ali with three or more boys, so the Superlative Degree is used."
+                  },
+                  {
+                        "text": "This is **the most expensive** car in the showroom.",
+                        "urdu": "یہ شوروم کی سب سے مہنگی گاڑی ہے۔",
+                        "note": "**Most expensive** is used with the longer adjective **expensive**, and **the** comes before the superlative."
+                  },
+                  {
+                        "text": "He is **the tallest of** the three brothers.",
+                        "urdu": "وہ تین بھائیوں میں سب سے لمبا ہے۔",
+                        "note": "**Of the three brothers** identifies the group being compared, while **the tallest** shows the highest degree."
+                  }
+            ],
+            "commonMistakes": [
+                  {
+                        "wrong": "Ali is **most tallest** boy in the class.",
+                        "right": "Ali is **the tallest** boy in the class.",
+                        "urdu": "علی جماعت کا سب سے لمبا لڑکا ہے۔",
+                        "note": "Use **the** before a normal superlative and do not combine **most** with an adjective already ending in **-est**."
+                  },
+                  {
+                        "wrong": "This is **the more expensive** car in the showroom.",
+                        "right": "This is **the most expensive** car in the showroom.",
+                        "urdu": "یہ شوروم کی سب سے مہنگی گاڑی ہے۔",
+                        "note": "For a longer adjective compared with all cars, use **most**, not the Comparative word **more**."
+                  },
+                  {
+                        "wrong": "He is **the best student of** the class.",
+                        "right": "He is **the best student in** the class.",
+                        "urdu": "وہ جماعت کا بہترین طالب علم ہے۔",
+                        "note": "Use **in** commonly with a place or group such as a class."
+                  },
+                  {
+                        "wrong": "She is the tallest **in the three sisters**.",
+                        "right": "She is the tallest **of the three sisters**.",
+                        "urdu": "وہ تین بہنوں میں سب سے لمبی ہے۔",
+                        "note": "Use **of** when the superlative is followed by a specific number of people or things."
+                  },
+                  {
+                        "wrong": "This is the **better answer of all**.",
+                        "right": "This is the **best answer of all**.",
+                        "urdu": "یہ سب میں بہترین جواب ہے۔",
+                        "note": "When more than two answers are compared, use the Superlative form **best**, not the Comparative form **better**."
+                  }
+            ]
+      },
+      {
+            "name": "Irregular Degrees Table",
+            "description": "Some adjectives do not form their comparative and superlative degrees by adding -er or -est. Memorize these important irregular forms for competitive examinations.",
+            "urduExplanation": "کچھ صفات کے تقابلی اور اعلیٰ ترین درجات عام اصول کے مطابق -er یا -est لگا کر نہیں بنتے۔ مسابقتی امتحانات کے لیے ان صورتوں کو یاد رکھنا ضروری ہے۔",
+            "tableTitle": "Irregular Degrees of Comparison",
+            "tableColumns": [
+                  "Positive",
+                  "Comparative",
+                  "Superlative"
+            ],
+            "tableRows": [
+                  [
+                        "good",
+                        "better",
+                        "best"
+                  ],
+                  [
+                        "well",
+                        "better",
+                        "best"
+                  ],
+                  [
+                        "bad",
+                        "worse",
+                        "worst"
+                  ],
+                  [
+                        "ill",
+                        "worse",
+                        "worst"
+                  ],
+                  [
+                        "little",
+                        "less",
+                        "least"
+                  ],
+                  [
+                        "much",
+                        "more",
+                        "most"
+                  ],
+                  [
+                        "many",
+                        "more",
+                        "most"
+                  ],
+                  [
+                        "few",
+                        "fewer",
+                        "fewest"
+                  ],
+                  [
+                        "far",
+                        "farther",
+                        "farthest"
+                  ],
+                  [
+                        "far",
+                        "further",
+                        "furthest"
+                  ],
+                  [
+                        "old",
+                        "older",
+                        "oldest"
+                  ],
+                  [
+                        "old",
+                        "elder",
+                        "eldest"
+                  ],
+                  [
+                        "late",
+                        "later",
+                        "latest"
+                  ],
+                  [
+                        "late",
+                        "latter",
+                        "last"
+                  ],
+                  [
+                        "near",
+                        "nearer",
+                        "nearest"
+                  ],
+                  [
+                        "fore",
+                        "former",
+                        "foremost"
+                  ],
+                  [
+                        "in",
+                        "inner",
+                        "innermost"
+                  ],
+                  [
+                        "out",
+                        "outer",
+                        "outermost"
+                  ],
+                  [
+                        "up",
+                        "upper",
+                        "uppermost"
+                  ]
+            ],
+            "examples": [
+                  {
+                        "text": "Sara is the **best** student in the class.",
+                        "urdu": "سارہ جماعت کی بہترین طالبہ ہے۔",
+                        "note": "**Best** is the irregular Superlative form of **good** because Sara is compared with all the students."
+                  },
+                  {
+                        "text": "Ahmed is **better** at mathematics than Ali.",
+                        "urdu": "احمد علی کی نسبت ریاضی میں بہتر ہے۔",
+                        "note": "**Better** is the irregular Comparative form of **good** and is followed by **than**."
+                  },
+                  {
+                        "text": "We need **further** information about the examination.",
+                        "urdu": "ہمیں امتحان کے بارے میں مزید معلومات درکار ہیں۔",
+                        "note": "**Further** is used here to mean additional information, not a physical distance."
+                  }
+            ],
+            "commonMistakes": [
+                  {
+                        "wrong": "Ali is **more better** than Ahmed.",
+                        "right": "Ali is **better** than Ahmed.",
+                        "urdu": "علی احمد سے بہتر ہے۔",
+                        "note": "**Better** is already the Comparative form of **good**, so do not use **more** before it."
+                  },
+                  {
+                        "wrong": "She is the **most best** player.",
+                        "right": "She is the **best** player.",
+                        "urdu": "وہ بہترین کھلاڑی ہے۔",
+                        "note": "**Best** is already the Superlative form, so do not add **most**."
+                  },
+                  {
+                        "wrong": "Ali is **elder than** Ahmed.",
+                        "right": "Ali is **older than** Ahmed.",
+                        "urdu": "علی احمد سے بڑا ہے۔",
+                        "note": "Use **older than** for a normal age comparison; **elder** is generally used before a family noun, such as elder brother."
+                  },
+                  {
+                        "wrong": "I need **farther** explanation.",
+                        "right": "I need **further** explanation.",
+                        "urdu": "مجھے مزید وضاحت درکار ہے۔",
+                        "note": "Use **further** for additional information; **farther** usually refers to physical distance."
+                  },
+                  {
+                        "wrong": "This is the **latter** news report published today.",
+                        "right": "This is the **latest** news report published today.",
+                        "urdu": "یہ آج شائع ہونے والی تازہ ترین خبر ہے۔",
+                        "note": "Use **latest** for the newest item. **Latter** means the second of two previously mentioned items."
+                  }
+            ]
+      }
+],
       "degreeNote": "Kinds of Adjective tell us what type of adjective it is.\nDegrees of Comparison show the level of comparison of an adjective."
     }
   },
