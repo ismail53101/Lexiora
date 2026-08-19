@@ -1,7 +1,10 @@
+import 'dart:convert';
+
 import 'package:drift/drift.dart' show Value;
 import 'package:drift/native.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:lexiora/core/database/app_database.dart';
+import 'package:lexiora/core/database/tables.dart';
 import 'package:lexiora/modules/dictionary/data/datasources/dictionary_local_data_source.dart';
 import 'package:lexiora/modules/dictionary/domain/entities/dictionary_entry.dart';
 
@@ -110,7 +113,54 @@ void main() {
   test('entryCount reflects the number of inserted senses', () async {
     expect(await ds.entryCount(), 6);
   });
+
+  test('search includes curated GRE-only words and deduplicates overlap', () async {
+    await ds.insertExamEntries(<DictionaryExamEntriesCompanion>[
+      _examEntry('abjure', urdu: 'ترک کرنا', definition: 'to renounce formally'),
+      _examEntry('run', urdu: 'دوڑنا', definition: 'to move quickly on foot'),
+    ]);
+
+    final List<DictionaryResult> abjure = await ds.search('abjure');
+    expect(abjure.map((r) => r.wordLower), contains('abjure'));
+    expect(abjure.single.meaning, 'to renounce formally');
+    expect(abjure.single.partOfSpeech, 'verb');
+
+    final List<DictionaryResult> run = await ds.search('run');
+    expect(run.where((r) => r.wordLower == 'run'), hasLength(1));
+    expect(run.firstWhere((r) => r.wordLower == 'run').senseCount, 2);
+  });
+
+  test('search matches Urdu meanings in curated entries', () async {
+    await ds.insertExamEntries(<DictionaryExamEntriesCompanion>[
+      _examEntry('abjure', urdu: 'ترک کرنا', definition: 'to renounce formally'),
+    ]);
+
+    final List<DictionaryResult> results = await ds.search('ترک');
+    expect(results.map((r) => r.wordLower), contains('abjure'));
+  });
 }
+
+DictionaryExamEntriesCompanion _examEntry(
+  String word, {
+  required String urdu,
+  required String definition,
+}) =>
+    DictionaryExamEntriesCompanion.insert(
+      wordLower: word.toLowerCase(),
+      word: word,
+      contentJson: jsonEncode(<String, dynamic>{
+        'word': word,
+        'urduMeanings': <String>[urdu],
+        'englishDefinition': definition,
+        'partOfSpeech': 'verb',
+        'synonyms': <String>['renounce'],
+        'antonyms': <String>['accept'],
+        'usage': <String, dynamic>{
+          'english': '$word is used in an exam sentence.',
+          'urdu': urdu,
+        },
+      }),
+    );
 
 DictionaryEntriesCompanion _entry(
   String word,

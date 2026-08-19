@@ -413,6 +413,936 @@
       "urdu": "بسم اللہ ہی غلط",
       "meaning": "Doomed from the start.",
       "pos": "Idiom"
+    },
+    {
+      "word": "Carry out.",
+      "urdu": "مکمل کرنا؛ انجام تک پہنچانا؛ عمل میں لانا",
+      "meaning": "Accomplish, bring to a conclusion; put into practice or effect.",
+      "pos": "Idiom"
+    },
+    {
+      "word": "Take over.",
+      "urdu": "کنٹرول، انتظام یا قبضہ سنبھالنا",
+      "meaning": "Assume control, management, or possession of.",
+      "pos": "Idiom"
+    },
+    {
+      "word": "Bring about.",
+      "urdu": "سبب بنانا؛ وقوع پذیر کرنا",
+      "meaning": "Cause.",
+      "pos": "Idiom"
+    },
+    {
+      "word": "Beat out.",
+      "urdu": "کسی چیز کو پیٹ کر شکل دینا؛ کسی پر سبقت حاصل کرنا/شکست دینا؛ کسی کو دھوکہ دے کر محروم کرنا",
+      "meaning": "Knock into shape by beating; surpass or defeat someone (be chosen over someone); cheat someone of something.",
+      "pos": "Idiom"
+    },
+    {
+      "word": "Bear with.",
+      "urdu": "برداشت کرنا؛ رعایت کرنا",
+      "meaning": "Put up with; make allowance for.",
+      "pos": "Idiom"
+    },
+    {
+      "word": "Fall back on.",
+      "urdu": "انحصار کرنا؛ رجوع کرنا",
+      "meaning": "Rely on; have recourse to.",
+      "pos": "Idiom"
+    },
+    {
+      "word": "Fall through.",
+      "urdu": "ناکام ہونا؛ عمل میں نہ آنا",
+      "meaning": "Fail; miscarry.",
+      "pos": "Idiom"
+    },
+    {
+      "word": "Vested interests.",
+      "urdu": "ذاتی مفاد؛ کسی چیز میں ذاتی حصہ یا دلچسپی",
+      "meaning": "A personal stake in something.",
+      "pos": "Idiom"
+    },
+    {
+      "word": "Turn to account.",
+      "urdu": "اپنے فائدے کے لیے استعمال کرنا",
+      "meaning": "Use for one's benefit.",
+      "pos": "Idiom"
+    },
+    {
+      "word": "Beat the air.",
+      "urdu": "بے نتیجہ کوششیں کرنا؛ بے مقصد جدوجہد کرنا",
+      "meaning": "Continue to make futile attempts; fight to no purpose.",
+      "pos": "Idiom"
+    },
+    {
+      "word": "Break a lance with.",
+      "urdu": "کسی کے ساتھ مقابلہ یا جھڑپ میں حصہ لینا",
+      "meaning": "To engage in a tilt or contest.",
+      "pos": "Idiom"
+    },
+    {
+      "word": "Foul play.",
+      "urdu": "ناانصافی یا دغا؛ خاص طور پر تشدد سے متعلق کارروائی",
+      "meaning": "Unfair or treacherous action, especially involving violence.",
+      "pos": "Idiom"
+    },
+    {
+      "word": "Keep open house.",
+      "urdu": "ہمہ وقت مہمان نوازی کرنا؛ ہر وقت مہمانوں کا استقبال کرنا",
+      "meaning": "To entertain friends at all times; to be hospitable.",
+      "pos": "Idiom"
+    },
+    {
+      "word": "Have a finger in the pie.",
+      "urdu": "کسی معاملے میں دخل دینا؛ کسی کام میں دلچسپی یا مداخلت رکھنا",
+      "meaning": "Have an interest in or meddle in something.",
+      "pos": "Idiom"
+    },
+    {
+      "word": "When all is said and done.",
+      "urdu": "آخر کار؛ بہرحال",
+      "meaning": "In the end; nevertheless.",
+      "pos": "Idiom"
+    },
+    {
+      "word": "An axe to grind.",
+      "urdu": "ذاتی مفاد؛ خودغرضانہ مقصد",
+      "meaning": "A selfish aim or motive.",
+      "pos": "Idiom"
+    },
+    {
+      "word": "Turn over a new leaf.",
+      "urdu": "نیا آغاز کرنا؛ برتاؤ یا رویے کو بہتر بنانا",
+      "meaning": "Make a fresh start, change one's conduct or attitude for the better",
+      "pos": "Idiom"
+    },
+    {
+      "word": "Burn the candle at both ends.",
+      "urdu": "طاقت یا وسائل ختم کرنا؛ انتہائی مصروف طرزِ زندگی گزارنا",
+      "meaning": "Exhaust one's energies or resources by leading a hectic life",
+      "pos": "Idiom"
+    },
+    {
+      "word": "Leave in the lurch.",
+      "urdu": "مشکل میں اکیلا چھوڑ دینا؛ مدد یا تعاون سے انکار کرنا",
+      "meaning": "Desert or leave alone and in trouble, refuse to help or support someone",
+      "pos": "Idiom"
+    },
+    {
+      "word": "Goes without saying.",
+      "urdu": "بات خود واضح ہونا؛ فطری طور پر سمجھاجانا",
+      "meaning": "Be self-evident, a matter of course",
+      "pos": "Idiom"
+    },
+    {
+      "word": "Like a red rag to a bull.",
+      "urdu": "ایسی چیز جو لازماً کسی کو غصہ دلا دے",
+      "meaning": "If something is a red rag to a bull, it is something that will inevitably make somebody angry or cross",
+      "pos": "Idiom"
+    },
+    {
+      "word": "Not a leg to stand on.",
+      "urdu": "کامیابی یا حمایت کا کوئی امکان نہ ہونا؛ دلیل یا سہارا موجود نہ ہونا",
+      "meaning": "With no chance of success",
+      "pos": "Idiom"
+    },
+    {
+      "word": "Under someone's thumb.",
+      "urdu": "کسی کے زیرِِ کنٹرول یا تسلط میں ہونا",
+      "meaning": "Controlled or dominated by someone",
+      "pos": "Idiom"
+    },
+    {
+      "word": "The handwriting on the wall.",
+      "urdu": "ناکامی یا نقصان کی واضح علامت؛ خطرے کی پیش گوئی",
+      "meaning": "If the writing's on the wall for something, it is doomed to fail; a warning or presentiment of danger",
+      "pos": "Idiom"
+    },
+    {
+      "word": "To sow one's wild oats.",
+      "urdu": "جوانی میں بے پرواہی، بے ضبطی یا جنسی بے راہ روی اختیار کرنا",
+      "meaning": "Behave foolishly, immoderately or promiscuously when young",
+      "pos": "Idiom"
+    },
+    {
+      "word": "A storm in a teacup.",
+      "urdu": "چھوٹی بات کو بڑھا چڑھا کر ہنگامہ کھڑا کرنا",
+      "meaning": "If someone exaggerates a problem or makes a small problem seem far greater than it really is, then they are making a storm in a teacup",
+      "pos": "Idiom"
+    },
+    {
+      "word": "Keep late hours.",
+      "urdu": "رات دیر تک جاگنا؛ دیر تک جاگ کر رہنا",
+      "meaning": "Stay awake until late at night",
+      "pos": "Idiom"
+    },
+    {
+      "word": "Throw cold water on.",
+      "urdu": "حوصلہ شکنی کرنا؛ کسی خیال یا منصوبے کو مایوس کرنا",
+      "meaning": "To discourage, to remove hope, deter",
+      "pos": "Idiom"
+    },
+    {
+      "word": "A cock and bull story.",
+      "urdu": "ناقابلِِِ یقین یا دھوکے باز کہانی؛ مبالغہ آمیز جھوٹی بات",
+      "meaning": "An unbelievable tale that is intended to deceive; a tall tale",
+      "pos": "Idiom"
+    },
+    {
+      "word": "Bear the brunt of.",
+      "urdu": "بدترین اثر یا نقصان کا زیادہ حصہ برداشت کرنا",
+      "meaning": "Put up with the worst of some bad circumstance",
+      "pos": "Idiom"
+    },
+    {
+      "word": "Tied to someone's apron strings.",
+      "urdu": "کسی (عموماً والدہ یا بیوی) کے مکمل تابع یا محتاج ہونا",
+      "meaning": "Wholly dependent on or controlled by a woman, especially one's mother or wife",
+      "pos": "Idiom"
+    },
+    {
+      "word": "Move heaven and earth.",
+      "urdu": "ہر ممکن کوشش کرنا؛ بڑے پیمانے پر کوششیں بروئے کار لانا",
+      "meaning": "Exert the utmost effort",
+      "pos": "Idiom"
+    },
+    {
+      "word": "Blow one's own horn.",
+      "urdu": "اپنی خود تعریف کرنا؛ خود ستائی یا بڑائی کرنا",
+      "meaning": "Boast in a boastful, self-promoting manner; brag about oneself",
+      "pos": "Idiom"
+    },
+    {
+      "word": "Rest on one's laurels.",
+      "urdu": "ماضی کی کامیابیوں پر انحصار کرنا اور مزید محنت سے گریز کرنا",
+      "meaning": "Rely on one's past achievements, especially as a way of avoiding the work needed to advance one's status",
+      "pos": "Idiom"
+    },
+    {
+      "word": "Point-blank.",
+      "urdu": "قریب یا براہِ راست حدف کے قریب؛ بلواسطہ طور پر قریب",
+      "meaning": "Close enough to go directly to a target",
+      "pos": "Idiom"
+    },
+    {
+      "word": "In the doldrums.",
+      "urdu": "مایوسی، سستی اور بے حوصلگی کا شکار ہونا",
+      "meaning": "Depressed, dull and listless",
+      "pos": "Idiom"
+    },
+    {
+      "word": "At cross purposes.",
+      "urdu": "ایک دوسرے کو غلط سمجھنا یا متضاد اہداف/مقاصد ہونا",
+      "meaning": "When people are at cross purposes, they misunderstand each other or have different or opposing objectives",
+      "pos": "Idiom"
+    },
+    {
+      "word": "Cheek by jowl.",
+      "urdu": "بہت قریب یا ساتھ ساتھ ہونا؛ نزدیکِِِِِِِ جدا",
+      "meaning": "In close intimacy, side by side (very near one another)",
+      "pos": "Idiom"
+    },
+    {
+      "word": "Plain sailing.",
+      "urdu": "آسان، بے پیچ و خم؛ بلا رکاوٹ پیش رفت",
+      "meaning": "Easy going; straightforward, unobstructed progress. The first few months were difficult, but I think it's plain sailing from here on. Alluding to navigating waters free of hazards, such as rocks or other obstructions, this term was transferred to other activities in the early 1800s.",
+      "pos": "Idiom"
+    },
+    {
+      "word": "Call a spade a spade.",
+      "urdu": "صاف گوئی سے بات کرنا؛ حقیقت بلا پردہ بیان کرنا",
+      "meaning": "A person who calls a spade a spade is one who speaks frankly and makes little or no attempt to conceal their opinions or to spare the feelings of their audience.",
+      "pos": "Idiom"
+    },
+    {
+      "word": "Fight shy of.",
+      "urdu": "کسی سے ملنے یا مقابلہ کرنے سے گریز کرنا/اجتناب کرنا",
+      "meaning": "Avoid meeting or confronting someone. (Example from Washington Irving: \"I have had to fight shy of invitations that would exhaust time and spirits\".)",
+      "pos": "Idiom"
+    },
+    {
+      "word": "Cry over spilt milk.",
+      "urdu": "ہو گئی بات پر افسوس کرنا بے فائدہ ہے؛ پچھتاوے میں وقت ضائع کرنا",
+      "meaning": "This idiom means that getting upset after something has gone wrong is pointless; it can't be changed so it should be accepted.",
+      "pos": "Idiom"
+    },
+    {
+      "word": "Rob Peter to pay Paul.",
+      "urdu": "ایک مسئلے کو حل کرنے کے لیے دوسرے کا نقصان کرنا؛ وقتی حل جو نیا مسئلہ پیدا کرے",
+      "meaning": "If you rob Peter to pay Paul, you try to solve one problem, but create another in doing so, often through short-term planning.",
+      "pos": "Idiom"
+    },
+    {
+      "word": "Take the bull by the horns.",
+      "urdu": "مسئلے کا بہادری سے اور براہِ راست سامنا کرنا",
+      "meaning": "Taking a bull by its horns would be the most direct but also the most dangerous way to try to compete with such an animal. When we use the phrase in everyday talk, we mean that the person we are talking about tackles their problems directly and is not worried about any risks involved.",
+      "pos": "Idiom"
+    },
+    {
+      "word": "Play to the gallery.",
+      "urdu": "لوگوں کی توجہ یا پسند جیتنے کے لیے سطحی یا دکھاوے کے انداز میں کام کرنا",
+      "meaning": "If someone plays to the gallery, they say or do things that will make them popular at the expense of more important issues.",
+      "pos": "Idiom"
+    },
+    {
+      "word": "Hold out the olive branch.",
+      "urdu": "صلح یا مفاہمت کی پیشکش کرنا؛ مصالحت کا اشارہ دینا",
+      "meaning": "If you hold out or offer an olive branch, you make a gesture to indicate that you want peace.",
+      "pos": "Idiom"
+    },
+    {
+      "word": "Make out.",
+      "urdu": "مختلف معانی: مشکل سے دیکھنا/مشاہدہ کرنا، گزارا کرنا یا نمٹانا، سمجھنا، ثابت کرنا، تحریری طور پر فارم یا دستاویز بنانا",
+      "meaning": "Various senses: Discern or see, especially with difficulty (\"I can hardly make out the number on the door\"); Manage, get along (\"How did you make out with the accountant?\"); Understand (\"I can't make out what she is trying to say\"); Establish or prove (\"He made out that he was innocent\"); Apply or suggest (often with an infinitive, e.g. \"Are you making me out to be a liar?\"); Write out, draw up; fill in a written form (\"He made out the invoices\").",
+      "pos": "Idiom"
+    },
+    {
+      "word": "The acid test.",
+      "urdu": "کسی چیز کی حقیقت یا معیار ثابت کرنے والا فیصلہ کن امتحان/آزمائش",
+      "meaning": "An acid test is something that proves whether something is good, effective, etc.",
+      "pos": "Idiom"
+    },
+    {
+      "word": "Bad hat.",
+      "urdu": "شر پسندی کرنے والا؛ جان بوجھ کر جھگڑا یا ہنگامہ کھڑا کرنے والا شخص",
+      "meaning": "Someone who deliberately stirs up trouble.",
+      "pos": "Idiom"
+    },
+    {
+      "word": "In a blue funk.",
+      "urdu": "خوف یا گھبراہٹ کی حالت؛ یا اداسی و ملال کی کیفیت",
+      "meaning": "In a state of panic or terror. Also in a state of dejection or sadness (two related usages given).",
+      "pos": "Idiom"
+    },
+    {
+      "word": "On someone's heels.",
+      "urdu": "قریباً پیچھے ہونا؛ کسی کا سختی سے پیچھا کرنا/قریب بندوبست رہنا",
+      "meaning": "Immediately behind, in close pursuit. (Also expressed as 'at one's heels'; sometimes intensified as 'hard on someone's heels' or 'hot on someone's heels'.)",
+      "pos": "Idiom"
+    },
+    {
+      "word": "Die in harness.",
+      "urdu": "کام کرتے ہوئے مر جانا؛ کام میں ہی آخر تک محنت کرتے رہنا",
+      "meaning": "Expire while working; keep working to the end. (Both this phrase and 'die with his boots on' allude to soldiers who died on active duty.)",
+      "pos": "Idiom"
+    },
+    {
+      "word": "Dead as a doornail.",
+      "urdu": "بالکل مردہ یا قطعی طور پر ختم ہو چکا/بالکل ناکارہ",
+      "meaning": "Totally or assuredly dead; also finished. (PDF notes variants 'dead as a dodo' and 'dead as a herring' but 'dead as a doornail' is the oldest and most common.)",
+      "pos": "Idiom"
+    },
+    {
+      "word": "Carry the day.",
+      "urdu": "فتح یاب ہونا؛ غالب آنا",
+      "meaning": "Win, prevail. (Example: At auctions the wealthiest bidders usually carry the day.)",
+      "pos": "Idiom"
+    },
+    {
+      "word": "Take down a peg.",
+      "urdu": "اپنا مقام یا وقار کھونا؛ دوسروں کی نظر میں حیثیت کم ہو جانا",
+      "meaning": "If someone is taken down a peg (or a peg or two), they lose status in the eyes of others because of something they have done wrong or badly.",
+      "pos": "Idiom"
+    },
+    {
+      "word": "In hot water.",
+      "urdu": "مصیبت میں پڑ جانا",
+      "meaning": "in trouble",
+      "pos": "Idiom"
+    },
+    {
+      "word": "Pull oneself together.",
+      "urdu": "اپنے آپ کو سنبھالنا، خود پر قابو پا لینا",
+      "meaning": "Regain one's composure or self-control",
+      "pos": "Idiom"
+    },
+    {
+      "word": "Rise through the ranks.",
+      "urdu": "محنت کر کے آہستہ آہستہ اعلیٰ عہدے تک پہنچنا",
+      "meaning": "Work one's way to the top",
+      "pos": "Idiom"
+    },
+    {
+      "word": "Rub shoulders with.",
+      "urdu": "خاص طور پر بااثر یا مشہور لوگوں کے ساتھ مل جل کر وقت گزارنا",
+      "meaning": "If you rub shoulders with people, you meet and spend time with them, especially when they are powerful or famous.",
+      "pos": "Idiom"
+    },
+    {
+      "word": "The thin end of the wedge.",
+      "urdu": "ایسی چھوٹی بات جو بعد میں کسی بڑے اور سنگین مسئلے کی وجہ بن جائے",
+      "meaning": "The thin end of the wedge is something small and seemingly unimportant that will lead to something much bigger and more serious.",
+      "pos": "Idiom"
+    },
+    {
+      "word": "Flash in the pan.",
+      "urdu": "عارضی شہرت یا کامیابی جو دیرپا نہ ہو",
+      "meaning": "If something is a flash in the pan, it is very noticeable but doesn't last long.",
+      "pos": "Idiom"
+    },
+    {
+      "word": "Keep at.",
+      "urdu": "کوشش جاری رکھنا؛ کسی کو بار بار تنگ کرنا/دباؤ ڈالنا",
+      "meaning": "Persevere or persist at doing something. (Also: Keep at someone — Nag, harass, or annoy someone.)",
+      "pos": "Idiom"
+    },
+    {
+      "word": "At one's beck and call.",
+      "urdu": "کسی کی ہر حکم یا خواہش پر فوری عمل کے لیے تیار ہونا",
+      "meaning": "Ready to comply with any wish or command",
+      "pos": "Idiom"
+    },
+    {
+      "word": "Go against the grain.",
+      "urdu": "روایتی طریقے کے برخلاف عمل کرنا",
+      "meaning": "A person who does things in an unconventional manner, especially if their methods are not generally approved of, is said to go against the grain.",
+      "pos": "Idiom"
+    },
+    {
+      "word": "Grist to the mill.",
+      "urdu": "کسی فائدے کے لیے قابلِ استعمال چیز",
+      "meaning": "Something that you can use to your advantage is grist for the mill. ('Grist to the mill' is also used.)",
+      "pos": "Idiom"
+    },
+    {
+      "word": "Upset the apple cart.",
+      "urdu": "احتیاط سے بنے منصوبے برباد کرنا",
+      "meaning": "Spoil carefully laid plans",
+      "pos": "Idiom"
+    },
+    {
+      "word": "Hoist with one's own petard.",
+      "urdu": "اپنے ہی بنائے ہوئے پھندے میں خود پھنس جانا",
+      "meaning": "If you are hoist with your own petard, you get into trouble or are caught in a trap that you had set for someone else.",
+      "pos": "Idiom"
+    },
+    {
+      "word": "Live off the fat of the land.",
+      "urdu": "دولت و آسائش میں زندگی بسر کرنا",
+      "meaning": "The best or richest of anything (used of living in great wealth or comfort).",
+      "pos": "Idiom"
+    },
+    {
+      "word": "Have one's cake and eat it too.",
+      "urdu": "ایک ہی وقت میں سب کچھ چاہنا، حتیٰ کہ متضاد خواہشیں بھی",
+      "meaning": "If someone wants to have their cake and eat it too, they want everything their way, especially when their wishes are contradictory.",
+      "pos": "Idiom"
+    },
+    {
+      "word": "Between the devil and the deep blue sea.",
+      "urdu": "دو مشکل یا نقصان دہ انتخابوں کے درمیان پھنس جانا",
+      "meaning": "If you are caught between the devil and the deep blue sea, you are in a dilemma; a difficult choice.",
+      "pos": "Idiom"
+    },
+    {
+      "word": "Be in hot water.",
+      "urdu": "مشکل یا مصیبت میں پڑ جانا",
+      "meaning": "If you get into hot water, you get into trouble.",
+      "pos": "Idiom"
+    },
+    {
+      "word": "Be on the carpet.",
+      "urdu": "کسی اختیار رکھنے والے کے سامنے سزا یا سرزنش کے لیے بلایا جانا",
+      "meaning": "Summoned before someone in authority for punishment",
+      "pos": "Idiom"
+    },
+    {
+      "word": "It never rains but it pours.",
+      "urdu": "مصیبتیں اکیلی نہیں آتیں، اکثر ایک ساتھ آ جاتی ہیں",
+      "meaning": "When things go wrong, they go very wrong.",
+      "pos": "Idiom"
+    },
+    {
+      "word": "A miss is as good as a mile.",
+      "urdu": "قریب ناکامی بھی مکمل ناکامی کے برابر ہے",
+      "meaning": "Coming close to success but failing is no better than failing by a lot.",
+      "pos": "Idiom"
+    },
+    {
+      "word": "Give oneself airs.",
+      "urdu": "خود کو بڑا ظاہر کرنا یا تکبر دکھانا",
+      "meaning": "Assume a haughty manner, pretend to be better than one is.",
+      "pos": "Idiom"
+    },
+    {
+      "word": "Have the courage of one's convictions.",
+      "urdu": "اپنے عقائد کے مطابق عمل کرنا، اپنی رائے پر ثابت قدم رہنا",
+      "meaning": "Behave according to one's beliefs",
+      "pos": "Idiom"
+    },
+    {
+      "word": "Out of sight, out of mind.",
+      "urdu": "نظروں سے دور، دل سے دور؛ جو چیز دکھائی نہ دے اس کے بارے میں فکر یا یاد نہ رکھنا۔",
+      "meaning": "Used to suggest that someone will not think about or worry about something if it isn't directly visible or available to them.",
+      "pos": "Idiom"
+    },
+    {
+      "word": "Come to a dead end.",
+      "urdu": "بند راستے یا بنبستہ صورتِ حال تک پہنچ جانا؛ ایسی صورت جہاں پیش رفت ممکن نہ ہو۔",
+      "meaning": "Reach a passage, situation, or course of action that has no exit or allows no progress; an impasse or blind alley.",
+      "pos": "Idiom"
+    },
+    {
+      "word": "Turn a deaf ear.",
+      "urdu": "غیر متوجہ رہنا؛ کسی کی بات کو نظر انداز کرنا یا نہ سننا۔",
+      "meaning": "To ignore someone; not listen to or heed what is being said.",
+      "pos": "Idiom"
+    },
+    {
+      "word": "Every cloud has a silver lining.",
+      "urdu": "ہر بُری صورت میں بھی کوئی روشنی یا اُمید ہوتی ہے۔",
+      "meaning": "There is an element of hope or a redeeming quality in an otherwise bad situation.",
+      "pos": "Idiom"
+    },
+    {
+      "word": "Blow hot and cold.",
+      "urdu": "مزاج بدلنا؛ غیر مستحکم ہونا یا بار بار رائے بدلنا۔",
+      "meaning": "To change one's mind frequently; to vacillate or be inconsistent in attitude.",
+      "pos": "Idiom"
+    },
+    {
+      "word": "Let the cat out of the bag.",
+      "urdu": "راز فاش کر دینا؛ خفیہ بات باہر بتا دینا۔",
+      "meaning": "To reveal a secret accidentally or prematurely; give away a secret.",
+      "pos": "Idiom"
+    },
+    {
+      "word": "Put the cart before the horse.",
+      "urdu": "چیزوں کو الٹ ترتیب میں کرنا؛ کام غلط ترتیب سے کرنا۔",
+      "meaning": "To reverse the proper order of things or events; to do things in the wrong sequence.",
+      "pos": "Idiom"
+    },
+    {
+      "word": "In the same boat.",
+      "urdu": "ایک ہی مشکل میں ہونا؛ ایک جیسی صورتحال کا سامنا کرنا۔",
+      "meaning": "To be in the same predicament or trouble as someone else.",
+      "pos": "Idiom"
+    },
+    {
+      "word": "A swan song.",
+      "urdu": "آخری کارکردگی یا انجام؛ آخری پیش کاری۔",
+      "meaning": "A final accomplishment or performance; one's last work.",
+      "pos": "Idiom"
+    },
+    {
+      "word": "Back out.",
+      "urdu": "پیچھے ہٹ جانا؛ کسی صورت حال یا معاہدے سے دستبردار ہو جانا۔",
+      "meaning": "To withdraw from a situation or agreement; to retreat or break an engagement.",
+      "pos": "Idiom"
+    },
+    {
+      "word": "Bang into.",
+      "urdu": "زور سے ٹکرانا یا جا ٹکرانا؛ زور سے مارنا یا کسی بات کو جبراً سمجھانا/منوانا۔",
+      "meaning": "Crash noisily into or collide with; also, strike heavily so as to drive in, and figuratively, to try hard to persuade or impress.",
+      "pos": "Idiom"
+    },
+    {
+      "word": "Smell a rat.",
+      "urdu": "کچھ غلط ہونے کا شک محسوس کرنا؛ دھوکہ ہونے کا اندازہ لگانا۔",
+      "meaning": "To sense instinctively that something is wrong or that someone is being dishonest.",
+      "pos": "Idiom"
+    },
+    {
+      "word": "Burn one's fingers.",
+      "urdu": "خود کو نقصان پہنچانا؛ خطرناک کام کرنے کے سبب نقصان اٹھانا۔",
+      "meaning": "To harm oneself, especially by getting involved in a risky or unfortunate enterprise.",
+      "pos": "Idiom"
+    },
+    {
+      "word": "Null and void.",
+      "urdu": "باطل و منسوخ؛ غیر مؤثر یا قانونی طور پر غلط۔",
+      "meaning": "Cancelled or invalid; legally ineffective.",
+      "pos": "Idiom"
+    },
+    {
+      "word": "Catch up with.",
+      "urdu": "پِیچھا کر پکڑنا/پہنچ جانا؛ کسی چیز میں مگن ہو جانا؛ پیچھے رہ جانے والے امور کو پورا یا تازہ کرنا۔",
+      "meaning": "Have several senses: to overtake; to come from behind and reach; to become involved with or enthralled by; and (catch up on/with) to bring up to date.",
+      "pos": "Idiom"
+    },
+    {
+      "word": "Bear out.",
+      "urdu": "تصدیق کرنا یا ثبوت دینا؛ بات کی تائید کرنا۔",
+      "meaning": "To back up or confirm; to show something to be true.",
+      "pos": "Idiom"
+    },
+    {
+      "word": "Carry over.",
+      "urdu": "آگے منتقل کرنا یا برقرار رکھنا؛ کسی چیز کو بعد کی مدت کے لیے رکھنا یا کیفیت کا برقرار رہنا۔",
+      "meaning": "To keep something (often merchandise) for a subsequent period; also, to persist from one time or situation to another.",
+      "pos": "Idiom"
+    },
+    {
+      "word": "Come off.",
+      "urdu": "واقع ہونا/پیش آنا؛ خود کو ثابت کرنا یا نتیجہ اخذ کرنا؛ کامیاب ہونا۔",
+      "meaning": "To happen or occur; to acquit oneself or reach an outcome (usually with a modifier); and to succeed (e.g., an event coming off successfully).",
+      "pos": "Idiom"
+    },
+    {
+      "word": "Fall back.",
+      "urdu": "پیچھے ہٹ جانا؛ پسپائی اختیار کرنا یا پیچھے ہونا۔",
+      "meaning": "To give ground or retreat; to recede.",
+      "pos": "Idiom"
+    },
+    {
+      "word": "Figure out.",
+      "urdu": "پتہ لگانا، حل کرنا یا سمجھ جانا",
+      "meaning": "Discover or determine; (also) solve or decipher; begin to comprehend or come to understand someone or something",
+      "pos": "Idiom"
+    },
+    {
+      "word": "Learn to live with.",
+      "urdu": "کسی تکلیف یا ناگوار چیز کے عادی ہو جانا",
+      "meaning": "Get used to or accustom oneself to something that is painful, annoying, or unpleasant",
+      "pos": "Idiom"
+    },
+    {
+      "word": "Set in.",
+      "urdu": "داخل کرنا یا لگانا؛ وقوع پذیر ہونا/ظاہر ہونا؛ (ہوا یا پانی کے بارے میں) کنارے کی طرف بڑھنا",
+      "meaning": "Insert or put in; begin to happen or become apparent; (also) move toward the shore, said of wind or water",
+      "pos": "Idiom"
+    },
+    {
+      "word": "Cover up.",
+      "urdu": "ڈھانپنا/محفوظ کرنا؛ (خاص طور پر جرم کو) چھپانا",
+      "meaning": "Wrap up or enfold in order to protect; (also) conceal something, especially a crime",
+      "pos": "Idiom"
+    },
+    {
+      "word": "Iron out.",
+      "urdu": "مسئلے حل کرنا یا اختلافات طے کرنا",
+      "meaning": "Work out, resolve, settle",
+      "pos": "Idiom"
+    },
+    {
+      "word": "Last ditch.",
+      "urdu": "آخری ناامیدانہ کوشش",
+      "meaning": "A desperate final attempt",
+      "pos": "Idiom"
+    },
+    {
+      "word": "A square meal.",
+      "urdu": "مکمل اور توانائی بخش کھانا",
+      "meaning": "A substantial or complete meal",
+      "pos": "Idiom"
+    },
+    {
+      "word": "Go public.",
+      "urdu": "عوامی کمپنی بننا (شیئر جاری کرنا)",
+      "meaning": "Become a publicly held company (issue ownership shares as stock)",
+      "pos": "Idiom"
+    },
+    {
+      "word": "Run riot.",
+      "urdu": "بے قابو یا پرجوش انداز میں برتاؤ کرنا",
+      "meaning": "Behave in a frenzied, out-of-control, or unrestrained manner",
+      "pos": "Idiom"
+    },
+    {
+      "word": "Backroom boy.",
+      "urdu": "دکان کے پچھلے کمرے میں پوکر کھیلنے اور سگریٹ پینے والا آدمی/افراد",
+      "meaning": "Men who play poker and smoke in a room at the back of the store (colloquial usage)",
+      "pos": "Idiom"
+    },
+    {
+      "word": "Foot the bill.",
+      "urdu": "بل ادا کرنا، خرچ برداشت کرنا",
+      "meaning": "Pay the bill for everybody; settle the accounts",
+      "pos": "Idiom"
+    },
+    {
+      "word": "Set the pace.",
+      "urdu": "دوسروں کے لیے معیار یا رفتار مقرر کرنا",
+      "meaning": "Establish a standard for others to follow",
+      "pos": "Idiom"
+    },
+    {
+      "word": "At times.",
+      "urdu": "کبھی کبھار",
+      "meaning": "Occasionally, sometimes",
+      "pos": "Idiom"
+    },
+    {
+      "word": "Steal the show.",
+      "urdu": "توجہ کا مرکز بن جانا، سب سے زیادہ متاثر کن ہونا",
+      "meaning": "Be the center of attention (outshine others)",
+      "pos": "Idiom"
+    },
+    {
+      "word": "Grey matter.",
+      "urdu": "انسانی دماغ",
+      "meaning": "The human brain (i.e., brain tissue)",
+      "pos": "Idiom"
+    },
+    {
+      "word": "Set one's cap at.",
+      "urdu": "رومانوی طور پر کسی کا پیچھا کرنا/کوشش کرنا",
+      "meaning": "Pursue someone romantically",
+      "pos": "Idiom"
+    },
+    {
+      "word": "Draw the long bow.",
+      "urdu": "جھوٹ بولنا یا مبالغہ آرائی کرنا",
+      "meaning": "Lie or exaggerate",
+      "pos": "Idiom"
+    },
+    {
+      "word": "Send (someone) to Coventry.",
+      "urdu": "کسی کو اجتماعی طور پر نظر انداز کرنا/بائیکاٹ کرنا",
+      "meaning": "Ostracize, or systematically ignore someone",
+      "pos": "Idiom"
+    },
+    {
+      "word": "Beer and skittles.",
+      "urdu": "زندگی صرف خود غرضی اور تفریح و راحت تک محدود نہیں ہوتی",
+      "meaning": "(Used in 'life is not all beer and skittles') Not solely about self-indulgence and pleasure",
+      "pos": "Idiom"
+    },
+    {
+      "word": "A skeleton in the cupboard.",
+      "urdu": "ایسا خفیہ راز جو معلوم ہونے پر نقصان پہنچا سکتا ہو",
+      "meaning": "A secret in your past which could damage you if it became known",
+      "pos": "Idiom"
+    },
+    {
+      "word": "Make for.",
+      "urdu": "کسی چیز کے حصول میں مدد دینا؛ سبب بننا",
+      "meaning": "to help to bring about Your cooperation will make for the success of our project This class will make for the Auditorium now.",
+      "pos": "Idiom"
+    },
+    {
+      "word": "Yeoman's service.",
+      "urdu": "مفید اور وفادار خدمت؛ سخت محنت",
+      "meaning": "Efficient, useful or loyal service; arduous work Tipu sultan rendered yeoman service for the the Islam",
+      "pos": "Idiom"
+    },
+    {
+      "word": "Discretion is the better part of valour.",
+      "urdu": "یہ کہاوت ظاہر کرتی ہے کہ عمل کرنے سے پہلے محتاط رہنا اور سوچنا بہادری اور خطرہ مول لینے سے بہتر ہے۔",
+      "meaning": "something that you say which means that it is better to be careful and think before you act than it is to be brave and take risks She decided not to voice her opposition to the Chairman's remarks. Perhaps discretion was the better part of valour",
+      "pos": "Idiom"
+    },
+    {
+      "word": "Out of the woods.",
+      "urdu": "خطرناک مرحلے سے نکل جانا؛ مشکلات سے باہر ہونا",
+      "meaning": "past a critical phase; out of the unknown. When the patient got out of the woods, everyone relaxed. THE CSS POINT I can give you a better prediction for your future health when you are out of the woods.",
+      "pos": "Idiom"
+    },
+    {
+      "word": "Casting vote.",
+      "urdu": "فیصلہ کن ووٹ",
+      "meaning": "decisive vote The speaker used his casting vote in the favour of proposition",
+      "pos": "Idiom"
+    },
+    {
+      "word": "Look down upon.",
+      "urdu": "حقارت سے دیکھنا",
+      "meaning": "think nothing of, be contemptuous of Do not look down upon the poor",
+      "pos": "Idiom"
+    },
+    {
+      "word": "Eat one's words.",
+      "urdu": "اپنے کہے ہوئے الفاظ واپس لینا؛ اپنی غلطی کا اعتراف کرنا",
+      "meaning": "To eat one's words means to admit that you are or were mistaken, especially after a strong or public expression of opinion. Sentence: I told everyone to invest in that company, and now it's bankrupt – I'll have to eat my words.",
+      "pos": "Idiom"
+    },
+    {
+      "word": "Dog in the manger.",
+      "urdu": "کسی چیز کو رکھ کر دوسروں کو اسے استعمال کرنے سے روکنا حالانکہ اسے خود ضرورت نہ ہو",
+      "meaning": "Someone who keeps something that they do not really want in order to prevent anyone else from having it. Sentence: Stop being such a dog in the manger and let your brother ride your bike if you're not using it.",
+      "pos": "Idiom"
+    },
+    {
+      "word": "A close shave.",
+      "urdu": "بہت کم فرق سے بچ جانا؛ خطرے سے قریبی بچاؤ",
+      "meaning": "A narrow escape. Sentence: Wow, that was a close shave. I thought the guard would spot us.",
+      "pos": "Idiom"
+    },
+    {
+      "word": "Freudian slip.",
+      "urdu": "زبان سے نکلا ایسا غلط لفظ جو دبے ہوئے خیالات یا جذبات ظاہر کرے",
+      "meaning": "A verbal mistake that is thought to reveal a repressed belief, thought, or emotion.",
+      "pos": "Idiom"
+    },
+    {
+      "word": "Gordian knot.",
+      "urdu": "ایک پیچیدہ اور حل مشکل مسئلہ",
+      "meaning": "A Difficult Problem Sentence: Homelessness in the inner cities has become a real Gordian knot.",
+      "pos": "Idiom"
+    },
+    {
+      "word": "Cog in the machine.",
+      "urdu": "کسی بڑے نظام کا معمولی حصہ",
+      "meaning": "One part of a large system or organization. Sentence: He was just a small cog in the large wheel of organised crime.",
+      "pos": "Idiom"
+    },
+    {
+      "word": "Sugar daddy.",
+      "urdu": "ایک امیر، اکثر عمر رسیدہ مرد جو رشتے یا سنگت کے بدلے نوجوان کو قیمتی تحائف دیتا ہے",
+      "meaning": "A wealthy, usually older man who gives expensive gifts to a young person in return for sexual favors or companionship.",
+      "pos": "Idiom"
+    },
+    {
+      "word": "Wet blanket.",
+      "urdu": "محفل کا مزہ خراب کرنے والا شخص",
+      "meaning": "Someone who does or says something that stops other people from enjoying themselves. Sentence: I don't want to be a wet blanket, but you really must play your music more quietly or you'll disturb the people next door.",
+      "pos": "Idiom"
+    },
+    {
+      "word": "Woolgathering.",
+      "urdu": "خیالی اور بے مقصد خوابوں میں کھو جانا",
+      "meaning": "To engage in fanciful daydreaming.",
+      "pos": "Idiom"
+    },
+    {
+      "word": "Under the harrow.",
+      "urdu": "شدید عذاب یا ظلم و ستم کا شکار ہونا",
+      "meaning": "Subjected to actual torture with a toothed instrument, or to great affliction or oppression.",
+      "pos": "Idiom"
+    },
+    {
+      "word": "Cold comfort.",
+      "urdu": "کوئی تسلی یا آرام نہیں؛ تسلی دینے والی بات نہیں",
+      "meaning": "No comfort or consolation at all. Sentence: She knows there are others worse off than her, but that's cold comfort.",
+      "pos": "Idiom"
+    },
+    {
+      "word": "Gold digger.",
+      "urdu": "وہ عورت جو امیروں کے ساتھ تعلق قائم کر کے پیسے حاصل کرتی ہے",
+      "meaning": "A woman who has relationships with rich men so that they will give her money. Sentence: I'm not saying she's a gold digger, but how come all her boyfriends have been rich?",
+      "pos": "Idiom"
+    },
+    {
+      "word": "Walk with God.",
+      "urdu": "خدا کے احکام کی اطاعت میں زندگی گزارنا اور اس کے ساتھ تعلق رکھنا",
+      "meaning": "To live in obedience to his commands, and have communion with him.",
+      "pos": "Idiom"
+    },
+    {
+      "word": "On thin ice.",
+      "urdu": "رسک یا غیر یقینی حالت میں ہونا؛ خطرے میں ہونا",
+      "meaning": "In an uncertain condition. Sentence: My brother was already on thin ice with the coach when he injured his knee.",
+      "pos": "Idiom"
+    },
+    {
+      "word": "A queer fish.",
+      "urdu": "ایک عجیب و غریب شخص",
+      "meaning": "A strange person.",
+      "pos": "Idiom"
+    },
+    {
+      "word": "The milk of human kindness.",
+      "urdu": "انسانی ہمدردی اور فطری مہربانی",
+      "meaning": "Natural kindness and sympathy shown to others.",
+      "pos": "Idiom"
+    },
+    {
+      "word": "A rule of thumb.",
+      "urdu": "تقریباً درست اندازہ لگانے کا طریقہ/عام قاعدہ",
+      "meaning": "A way of calculating something which is not exact but which will help you to be correct enough.",
+      "pos": "Idiom"
+    },
+    {
+      "word": "Out-and-out.",
+      "urdu": "بالکل مکمل/پوری طرح",
+      "meaning": "Complete; thoroughgoing",
+      "pos": "Idiom"
+    },
+    {
+      "word": "To air one's dirty linen in public.",
+      "urdu": "ذاتی یا شرمندہ کن باتیں کھلے عام بیان کرنا",
+      "meaning": "To discuss private or embarrassing matters in public, especially when quarreling.",
+      "pos": "Idiom"
+    },
+    {
+      "word": "Pay through the nose.",
+      "urdu": "بہت زیادہ قیمت ادا کرنا",
+      "meaning": "To pay too much for something.",
+      "pos": "Idiom"
+    },
+    {
+      "word": "Lose face.",
+      "urdu": "عزت یا وقار کھونا",
+      "meaning": "To lose status; to become less respectable.",
+      "pos": "Idiom"
+    },
+    {
+      "word": "Keep one's fingers crossed.",
+      "urdu": "کسی کے لیے نیک خواہشات رکھنا/اچھی قسمت کی دعا کرنا",
+      "meaning": "To wish for luck for someone or something.",
+      "pos": "Idiom"
+    },
+    {
+      "word": "Tongue in cheek.",
+      "urdu": "طنزیہ یا مزاحیہ انداز میں کہنا؛ حالانکہ سنجیدہ معلوم ہو",
+      "meaning": "If you say something tongue in cheek, what you have said is a joke, although it might seem to be serious.",
+      "pos": "Idiom"
+    },
+    {
+      "word": "Talk through one's hat.",
+      "urdu": "بے علم ہو کر بڑے انداز میں بات کرنا/غیر مستند باتیں کہنا",
+      "meaning": "To be talking about a subject as if you know a lot about it when in fact you know very little.",
+      "pos": "Idiom"
+    },
+    {
+      "word": "Hem and haw.",
+      "urdu": "جھجک یا ہچکچاہٹ سے بات ٹالنا/براہِ راست نہ کہنا",
+      "meaning": "To pause a lot and avoid saying something directly.",
+      "pos": "Idiom"
+    },
+    {
+      "word": "Let the grass grow under one's feet.",
+      "urdu": "تاخیر کرنا/وقت ضائع کرنا",
+      "meaning": "To waste time by delaying doing something.",
+      "pos": "Idiom"
+    },
+    {
+      "word": "Penny wise and pound foolish.",
+      "urdu": "چھوٹی بچت کے چکر میں بڑا نقصان کرنا",
+      "meaning": "Unwise because doing something small now would prevent much more trouble later.",
+      "pos": "Idiom"
+    },
+    {
+      "word": "Itchy palm.",
+      "urdu": "پیسے کی خواہش/لالچ؛ رشوت لینے کا شوق",
+      "meaning": "A desire for money, greed; also, wanting a bribe.",
+      "pos": "Idiom"
+    },
+    {
+      "word": "The primrose path.",
+      "urdu": "لذت بھرا، خوشگوار طریقۂ زندگی",
+      "meaning": "A pleasurable way of life",
+      "pos": "Idiom"
+    },
+    {
+      "word": "To break one's fall.",
+      "urdu": "گرنے/پھسلنے کو روک دینا",
+      "meaning": "Interrupt a tumble or descent",
+      "pos": "Idiom"
+    },
+    {
+      "word": "Wash one's hands of.",
+      "urdu": "کسی چیز یا مسئلے سے اپنی ذمہ داری ختم کر دینا",
+      "meaning": "To absolve oneself of responsibility or future blame for; to refuse to have any further involvement with",
+      "pos": "Idiom"
+    },
+    {
+      "word": "Become reconciled to.",
+      "urdu": "کسی چیز کو ہم آہنگ یا مطابقت میں لانا؛ قبول کر لینا",
+      "meaning": "To bring something into harmony, accord, or balance with something.",
+      "pos": "Idiom"
+    },
+    {
+      "word": "Militate against.",
+      "urdu": "کسی چیز کے خلاف کام کرنا/رکاوٹ بننا",
+      "meaning": "To work against something.",
+      "pos": "Idiom"
+    },
+    {
+      "word": "Be cognizant of.",
+      "urdu": "کسی چیز سے باخبر/واقف ہونا",
+      "meaning": "Fully informed; conscious",
+      "pos": "Idiom"
     }
   ]
 }
