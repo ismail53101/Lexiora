@@ -355,7 +355,7 @@ class GrammarLocalDataSource {
 
   static List<GrammarPronounRow> _pronounRows(Object? v) {
     if (v is! List) return const <GrammarPronounRow>[];
-    return v.whereType<Map>().map((Map e) => GrammarPronounRow(
+    return v.whereType<Map<String, dynamic>>().map((Map<String, dynamic> e) => GrammarPronounRow(
       person: _str(e['person']),
       subject: _str(e['subject']),
       object: _str(e['object']),

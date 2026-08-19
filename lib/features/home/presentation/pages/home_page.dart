@@ -997,31 +997,31 @@ class _HomeBackgroundDecor extends StatelessWidget {
           fit: StackFit.expand,
           children: <Widget>[
             ColoredBox(color: scheme.surface),
-            const _PastelBlob(
+            _PastelBlob(
               color: const Color(0xFFB9F2C6),
               size: 320,
               top: -115,
               left: -105,
             ),
-            const _PastelBlob(
+            _PastelBlob(
               color: const Color(0xFFB9E7FF),
               size: 370,
               top: 10,
               right: -150,
             ),
-            const _PastelBlob(
+            _PastelBlob(
               color: const Color(0xFFFFC6DF),
               size: 330,
               top: 410,
               right: -155,
             ),
-            const _PastelBlob(
+            _PastelBlob(
               color: const Color(0xFFBDEFFF),
               size: 290,
               top: 780,
               left: -170,
             ),
-            const _PastelBlob(
+            _PastelBlob(
               color: const Color(0xFFE5C8FF),
               size: 310,
               top: 1160,

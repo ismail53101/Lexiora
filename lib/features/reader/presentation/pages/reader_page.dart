@@ -112,7 +112,6 @@ class _ReaderPageState extends ConsumerState<ReaderPage> {
       if (!exists || size == 0) {
         if (mounted) {
           setState(() {
-            _loading = false;
             _document = doc;
             _error = 'The file for "${doc.title}" is missing or empty. '
                 'It may have been moved or deleted — try re-importing it.';

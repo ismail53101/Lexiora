@@ -46,9 +46,9 @@ class DictionaryLocalDataSource {
         '  GROUP BY e.word_lower'
         '), curated AS ('
         '  SELECT e.word AS word, e.word_lower AS word_lower, '
-        r"         json_extract(e.content_json, '$.partOfSpeech') AS pos, ",
+        r"         json_extract(e.content_json, '$.partOfSpeech') AS pos, "
         '         COALESCE('
-        r"           json_extract(e.content_json, '$.englishDefinition'), ",
+        r"           json_extract(e.content_json, '$.englishDefinition'), "
         r"           json_extract(e.content_json, '$.meaning'), e.word"
         '         ) AS meaning, 0 AS rid, 1 AS sense_count '
         '  FROM dictionary_exam_entries e '

@@ -120,7 +120,7 @@ class GoogleDriveService {
         .authorizationClient
         .authorizeScopes(const <String>[googleDriveReadonlyScope]);
     final String token = authorization.accessToken;
-    if (token == null || token.isEmpty) {
+    if (token.isEmpty) {
       throw StateError('Google Drive authorization did not return an access token.');
     }
     return token;

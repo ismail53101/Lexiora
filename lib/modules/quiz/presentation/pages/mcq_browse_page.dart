@@ -176,6 +176,7 @@ class _McqBrowsePageState extends ConsumerState<McqBrowsePage> {
   }
 
   Widget _typeChip() {
+    final ThemeData theme = Theme.of(context);
     return Padding(
       padding: const EdgeInsets.only(right: 8),
       child: PopupMenuButton<QuestionType?>(
@@ -232,7 +233,6 @@ class _McqBrowsePageState extends ConsumerState<McqBrowsePage> {
 
   @override
   Widget build(BuildContext context) {
-    final ThemeData theme = Theme.of(context);
     return Scaffold(
       appBar: AppBar(title: Text(widget.title ?? 'MCQs')),
       body: Column(

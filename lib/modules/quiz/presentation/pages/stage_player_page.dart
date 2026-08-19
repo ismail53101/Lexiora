@@ -401,7 +401,7 @@ class _StagePlayerPageState extends ConsumerState<StagePlayerPage> {
                   ? 'Correct ✓'
                   : 'Correct answer: ${q.answerTexts.join(', ')}',
               style: theme.textTheme.bodyMedium?.copyWith(
-                color: q.isCorrect(given!)
+                color: q.isCorrect(given)
                     ? quizCorrectColor
                     : theme.colorScheme.error,
                 fontWeight: FontWeight.w700,

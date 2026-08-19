@@ -8,8 +8,8 @@ import 'package:lexiora/modules/dictionary/data/repositories/dictionary_reposito
 import 'package:lexiora/modules/dictionary/data/services/online_dictionary_service.dart';
 import 'package:lexiora/modules/dictionary/domain/entities/dictionary_entry.dart';
 import 'package:lexiora/modules/translation/data/datasources/translation_local_data_source.dart';
-import 'package:lexiora/modules/translation/data/services/word_meaning_service.dart';
 import 'package:lexiora/modules/translation/data/repositories/translation_repository_impl.dart';
+import 'package:lexiora/modules/translation/data/services/word_meaning_service.dart';
 import 'package:lexiora/modules/translation/domain/entities/translation.dart';
 import 'package:lexiora/modules/translation/domain/entities/translation_outcome.dart';
 import 'package:lexiora/modules/translation/domain/services/remote_translation_service.dart';
