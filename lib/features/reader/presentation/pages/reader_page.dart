@@ -175,7 +175,6 @@ class _ReaderPageState extends ConsumerState<ReaderPage> {
       AppLogger.e('Reader._load failed', error: e, stackTrace: s);
       if (mounted) {
         setState(() {
-          _loading = false;
           _error = 'Failed to open this document.';
           _errorDetails = '$e';
         });
