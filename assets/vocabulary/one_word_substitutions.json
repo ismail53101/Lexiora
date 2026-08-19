@@ -7,10 +7,87 @@
   },
   "words": [
     {
+      "word": "Abdicate",
+      "ipa": "/ˈæbdɪkeɪt/",
+      "urdu": "عہدہ چھوڑ دینا",
+      "meaning": "To formally give up a high office, throne, or responsibility.",
+      "pos": "verb"
+    },
+    {
+      "word": "Aborigines",
+      "ipa": "/ˌæbəˈrɪdʒɪniːz/",
+      "urdu": "مقامی باشندے",
+      "meaning": "The people who originally inhabited a country at the time of earliest known settlement.",
+      "pos": "noun (plural)"
+    },
+    {
+      "word": "Abrogate",
+      "ipa": "/ˈæbrəɡeɪt/",
+      "urdu": "منسوخ کرنا",
+      "meaning": "To formally abolish, annul, or do away with a law, agreement, or custom.",
+      "pos": "verb"
+    },
+    {
+      "word": "Accelerate",
+      "ipa": "/əkˈsɛləreɪt/",
+      "urdu": "رفتار بڑھانا",
+      "meaning": "To increase the speed of something or cause it to happen more rapidly.",
+      "pos": "verb"
+    },
+    {
+      "word": "Acclimatize",
+      "ipa": "/əˈklaɪməˌtaɪz/",
+      "urdu": "ماحول کے مطابق ڈھل جانا",
+      "meaning": "To adjust or become accustomed to a new climate, environment, or conditions.",
+      "pos": "verb"
+    },
+    {
+      "word": "Aggravate",
+      "ipa": "/ˈæɡrəveɪt/",
+      "urdu": "شدت میں اضافہ کرنا",
+      "meaning": "To make a situation, offence, or illness more severe or intense.",
+      "pos": "verb"
+    },
+    {
+      "word": "Agnostic",
+      "ipa": "/æɡˈnɒstɪk/",
+      "urdu": "خدا کے وجود کے بارے میں غیر یقینی عقیدہ رکھنے والا",
+      "meaning": "A person who believes that the existence of God is unknown or unknowable; neither affirms nor denies God's existence.",
+      "pos": "noun"
+    },
+    {
+      "word": "Agoraphobia",
+      "ipa": "/ˌæɡərəˈfoʊbiə/",
+      "urdu": "عوامی جگہوں کا خوف",
+      "meaning": "An anxiety disorder characterized by a fear of public or open places and avoidance of situations perceived as difficult to escape.",
+      "pos": "noun"
+    },
+    {
+      "word": "Alimony",
+      "ipa": "/ˈælɪməni/",
+      "urdu": "نفقہ",
+      "meaning": "A court-ordered financial allowance paid by one former spouse to the other for support after divorce.",
+      "pos": "noun"
+    },
+    {
+      "word": "Altruism",
+      "ipa": "/ˈæltruːɪzəm/",
+      "urdu": "ایثار",
+      "meaning": "Unselfish concern for the welfare of others; selfless behavior or motive.",
+      "pos": "noun"
+    },
+    {
       "word": "Altruist",
       "ipa": "/ˈæltruɪst/",
       "urdu": "دوسروں کی بھلائی چاہنے والا",
       "meaning": "a person who thinks of the welfare of others",
+      "pos": "noun"
+    },
+    {
+      "word": "Amateur",
+      "ipa": "/ˈæmətə/",
+      "urdu": "شوقیہ",
+      "meaning": "one who does something for pleasure, not as a profession",
       "pos": "noun"
     },
     {
@@ -28,10 +105,10 @@
       "pos": "adjective"
     },
     {
-      "word": "Amateur",
-      "ipa": "/ˈæmətə/",
-      "urdu": "شوقیہ",
-      "meaning": "one who does something for pleasure, not as a profession",
+      "word": "Amphibians",
+      "ipa": "/æmˈfɪbiənz/",
+      "urdu": "زمین و پانی دونوں ماحول میں رہنے والے جانور",
+      "meaning": "Animals that are adapted to live both on land and in water, such as frogs and salamanders.",
       "pos": "noun"
     },
     {
@@ -39,6 +116,20 @@
       "ipa": "/ˈænəkɪst/",
       "urdu": "انتشار پسند",
       "meaning": "one who wants to abolish all government",
+      "pos": "noun"
+    },
+    {
+      "word": "Annihilate",
+      "ipa": "/əˈnaɪəleɪt/",
+      "urdu": "مکمل طور پر تباہ کرنا",
+      "meaning": "To destroy completely; to reduce something to nothing or render it nonexistent.",
+      "pos": "verb"
+    },
+    {
+      "word": "Anomaly",
+      "ipa": "/əˈnɒməli/",
+      "urdu": "انحراف",
+      "meaning": "A deviation or departure from the common rule, standard, or expected pattern.",
       "pos": "noun"
     },
     {
@@ -56,6 +147,13 @@
       "pos": "noun"
     },
     {
+      "word": "Anthology",
+      "ipa": "/ænˈθɒlədʒi/",
+      "urdu": "ادبی مجموعہ",
+      "meaning": "A published collection of literary pieces such as poems, short stories, or plays.",
+      "pos": "noun"
+    },
+    {
       "word": "Antique",
       "ipa": "/ænˈtiːk/",
       "urdu": "قدیم",
@@ -63,10 +161,45 @@
       "pos": "adjective"
     },
     {
+      "word": "Antiquity",
+      "ipa": "/ænˈtɪkwɪti/",
+      "urdu": "قدیم زمانہ",
+      "meaning": "The ancient past; ancient times or great age.",
+      "pos": "noun"
+    },
+    {
+      "word": "Apostate",
+      "ipa": "/əˈpɒsteɪt/",
+      "urdu": "مرتد",
+      "meaning": "A person who renounces a religious faith or political allegiance; a renegade.",
+      "pos": "noun"
+    },
+    {
       "word": "Apostle",
       "ipa": "/əˈpɒsəl/",
       "urdu": "حواری",
       "meaning": "a follower sent on a holy mission",
+      "pos": "noun"
+    },
+    {
+      "word": "Aquarium",
+      "ipa": "/əˈkwɛəriəm/",
+      "urdu": "ماہی خانہ",
+      "meaning": "A tank or building where fish and other aquatic organisms are kept for study or display.",
+      "pos": "noun"
+    },
+    {
+      "word": "Aquatic",
+      "ipa": "/əˈkwætɪk/",
+      "urdu": "آبی",
+      "meaning": "Living in or relating to water; water-dwelling.",
+      "pos": "adjective"
+    },
+    {
+      "word": "Arbitrator",
+      "ipa": "/ˈɑːrbɪtreɪtər/",
+      "urdu": "ثالث",
+      "meaning": "A neutral person chosen by disputing parties to hear their case and make a binding decision.",
       "pos": "noun"
     },
     {
@@ -98,11 +231,25 @@
       "pos": "noun"
     },
     {
+      "word": "Assimilate",
+      "ipa": "/əˈsɪməleɪt/",
+      "urdu": "ضم کرنا",
+      "meaning": "To absorb or incorporate into a larger whole; to make similar or part of a group.",
+      "pos": "verb"
+    },
+    {
       "word": "Atheist",
       "ipa": "/ˈeɪθiɪst/",
       "urdu": "ملحد",
       "meaning": "one who does not believe in God",
       "pos": "noun"
+    },
+    {
+      "word": "Attenuate",
+      "ipa": "/əˈtɛnjuːeɪt/",
+      "urdu": "کم کرنا",
+      "meaning": "To reduce the strength, intensity, or force of something; to weaken or lessen.",
+      "pos": "verb"
     },
     {
       "word": "Audible",
@@ -140,6 +287,27 @@
       "pos": "noun"
     },
     {
+      "word": "Aviary",
+      "ipa": "/ˈeɪviəri/",
+      "urdu": "پرندہ خانہ",
+      "meaning": "An enclosure or large cage in which birds are kept.",
+      "pos": "noun"
+    },
+    {
+      "word": "Bellicose",
+      "ipa": "/ˈbelɪkoʊs/",
+      "urdu": "جنگ پسند",
+      "meaning": "Demonstrating aggression and willingness to fight; warlike in temperament.",
+      "pos": "adjective"
+    },
+    {
+      "word": "Belligerent",
+      "ipa": "/bəˈlɪdʒərənt/",
+      "urdu": "جنگ میں ملوث ریاست",
+      "meaning": "A state or nation engaged in war.",
+      "pos": "noun"
+    },
+    {
       "word": "Bibliophile",
       "ipa": "/ˈbɪbliəfaɪl/",
       "urdu": "کتابوں کا شوقین",
@@ -147,10 +315,38 @@
       "pos": "noun"
     },
     {
+      "word": "Bicameral",
+      "ipa": "/baɪˈkæmərəl/",
+      "urdu": "دو ایوانی",
+      "meaning": "Having two separate legislative chambers or houses.",
+      "pos": "adjective"
+    },
+    {
+      "word": "Biennial",
+      "ipa": "/baɪˈɛn.i.əl/",
+      "urdu": "ہر دو سال بعد ہونے والا",
+      "meaning": "Occurring every two years.",
+      "pos": "adjective"
+    },
+    {
+      "word": "Biennium",
+      "ipa": "/baɪˈniːəm/",
+      "urdu": "دو سالہ مدت",
+      "meaning": "A period of two consecutive years.",
+      "pos": "noun"
+    },
+    {
       "word": "Bigamy",
       "ipa": "/ˈbɪɡəmi/",
       "urdu": "دو شادی",
       "meaning": "the crime of marrying two persons at the same time",
+      "pos": "noun"
+    },
+    {
+      "word": "Bigot",
+      "ipa": "/ˈbɪɡət/",
+      "urdu": "متعصب",
+      "meaning": "A person intolerantly devoted to their own opinions or prejudices, especially in religion or politics.",
       "pos": "noun"
     },
     {
@@ -168,10 +364,73 @@
       "pos": "noun"
     },
     {
+      "word": "Blasphemy",
+      "ipa": "/ˈblæsfəmi/",
+      "urdu": "توہینِ مذہب",
+      "meaning": "The act of speaking or writing disrespectfully about sacred things or religious beliefs.",
+      "pos": "noun"
+    },
+    {
+      "word": "Blistering",
+      "ipa": "/ˈblɪstərɪŋ/",
+      "urdu": "شدید گرم",
+      "meaning": "Extremely hot; intensely heated.",
+      "pos": "adjective"
+    },
+    {
+      "word": "Blonde",
+      "ipa": "/blɒnd/",
+      "urdu": "سنہری بال",
+      "meaning": "A person having fair or light golden hair (often with fair complexion).",
+      "pos": "noun"
+    },
+    {
+      "word": "Brunette",
+      "ipa": "/bruːˈnɛt/",
+      "urdu": "بھوری بال",
+      "meaning": "A person having dark brown hair (often with darker complexion).",
+      "pos": "noun"
+    },
+    {
+      "word": "Bureaucracy",
+      "ipa": "/bjʊˈrɒkrəsi/",
+      "urdu": "بیوروکریسی",
+      "meaning": "Government administration carried out through departments and non‑elected officials; the collective body of such departments and officials.",
+      "pos": "noun"
+    },
+    {
+      "word": "Cacophony",
+      "ipa": "/kəˈkɒfəni/",
+      "urdu": "بدآہنگی",
+      "meaning": "A harsh, discordant mixture of sounds; a disagreeable noise.",
+      "pos": "noun"
+    },
+    {
       "word": "Calligraphy",
       "ipa": "/kəˈlɪɡrəfi/",
       "urdu": "خطاطی",
       "meaning": "the art of beautiful handwriting",
+      "pos": "noun"
+    },
+    {
+      "word": "Callous",
+      "ipa": "/ˈkæləs/",
+      "urdu": "بے حس",
+      "meaning": "Insensitive to the feelings of others; emotionally hardened.",
+      "pos": "adjective"
+    },
+    {
+      "word": "Calumniate",
+      "ipa": "/kəˈlʌmneɪt/",
+      "urdu": "بدنام کرنا",
+      "meaning": "To make false and malicious statements about someone in order to damage their reputation; to slander.",
+      "pos": "verb"
+    },
+    {
+      "word": "Carnivore",
+      "ipa": "/ˈkɑːrnɪvɔːr/",
+      "urdu": "گوشت خور",
+      "meaning": "An animal that feeds primarily on the flesh of other animals.",
       "pos": "noun"
     },
     {
@@ -189,6 +448,27 @@
       "pos": "noun"
     },
     {
+      "word": "Casting vote",
+      "ipa": "/ˈkæstɪŋ voʊt/",
+      "urdu": "فیصلہ کن ووٹ",
+      "meaning": "The vote cast by a presiding officer to break a tie in a deliberative assembly.",
+      "pos": "noun phrase"
+    },
+    {
+      "word": "Catastrophe",
+      "ipa": "/kəˈtæstrəfi/",
+      "urdu": "تباہی",
+      "meaning": "A sudden event causing great destruction, loss, or suffering.",
+      "pos": "noun"
+    },
+    {
+      "word": "Celibacy",
+      "ipa": "/ˈsɛlɪbəsi/",
+      "urdu": "ازدواجی یا جنسی تعلقات سے پرہیز",
+      "meaning": "The state of abstaining from marriage and sexual relations, often for personal or religious reasons.",
+      "pos": "noun"
+    },
+    {
       "word": "Celibate",
       "ipa": "/ˈsɛlɪbət/",
       "urdu": "بے نکاح رہنے والا",
@@ -196,10 +476,24 @@
       "pos": "noun"
     },
     {
+      "word": "Censorious",
+      "ipa": "/sɛnˈsɔːriəs/",
+      "urdu": "تنقید پسند",
+      "meaning": "Highly critical; inclined to find fault readily.",
+      "pos": "adjective"
+    },
+    {
       "word": "Centenarian",
       "ipa": "/ˌsɛntɪˈnɛəriən/",
       "urdu": "سو سالہ",
       "meaning": "a person who is a hundred years old",
+      "pos": "noun"
+    },
+    {
+      "word": "Chaos",
+      "ipa": "/ˈkeɪɒs/",
+      "urdu": "افراتفری",
+      "meaning": "A state of complete disorder and confusion.",
       "pos": "noun"
     },
     {
@@ -217,11 +511,88 @@
       "pos": "adjective"
     },
     {
+      "word": "Circumlocution",
+      "ipa": "/ˌsɜːrkəmloʊˈkjuːʃən/",
+      "urdu": "گول مول اندازِ بیان",
+      "meaning": "The use of many words where fewer would do; indirect or roundabout speech.",
+      "pos": "noun"
+    },
+    {
+      "word": "Coerce",
+      "ipa": "/koʊˈɜːrs/",
+      "urdu": "زبردستی کرنا",
+      "meaning": "To compel someone to act by force, threats, or undue pressure.",
+      "pos": "verb"
+    },
+    {
+      "word": "Collaborator",
+      "ipa": "/kəˈlæbəreɪtər/",
+      "urdu": "شریکِ کار",
+      "meaning": "A person who works jointly with others on a project or enterprise.",
+      "pos": "noun"
+    },
+    {
+      "word": "Colleagues",
+      "ipa": "/ˈkɒliːɡz/",
+      "urdu": "ہمکار",
+      "meaning": "People who work in the same department or organization.",
+      "pos": "noun"
+    },
+    {
+      "word": "Colonialism",
+      "ipa": "/kəˈləʊniəlɪzəm/",
+      "urdu": "نوآبادیات",
+      "meaning": "The policy or practice by which a powerful country rules, exploits, and imposes its trade and culture on a weaker territory.",
+      "pos": "noun"
+    },
+    {
+      "word": "Colossus",
+      "ipa": "/kəˈlɒsəs/",
+      "urdu": "دیوقامت مجسمہ",
+      "meaning": "A very large statue; by extension, an enormous or dominant person or thing.",
+      "pos": "noun"
+    },
+    {
+      "word": "Compatriot",
+      "ipa": "/kəmˈpeɪtriət/",
+      "urdu": "ہم وطن",
+      "meaning": "A person from the same country; someone sharing the same national allegiance and sympathies.",
+      "pos": "noun"
+    },
+    {
+      "word": "Consummate",
+      "ipa": "/kənˈsʌmeɪt/",
+      "urdu": "مکمل کرنا",
+      "meaning": "To complete or bring to perfection; to finish what was intended.",
+      "pos": "verb"
+    },
+    {
+      "word": "Contagious",
+      "ipa": "/kənˈteɪdʒəs/",
+      "urdu": "قابلِ انتقال",
+      "meaning": "Capable of being transmitted from one person to another by direct or indirect contact.",
+      "pos": "adjective"
+    },
+    {
       "word": "Contemporary",
       "ipa": "/kənˈtɛmpərəri/",
       "urdu": "ہم عصر",
       "meaning": "living or occurring at the same time",
       "pos": "adjective"
+    },
+    {
+      "word": "Contiguous",
+      "ipa": "/kənˈtɪɡjuəs/",
+      "urdu": "متصل",
+      "meaning": "Sharing a common border; adjacent or neighboring.",
+      "pos": "adjective"
+    },
+    {
+      "word": "Contumacy",
+      "ipa": "/ˈkɒntjʊməsi/",
+      "urdu": "سرکشی",
+      "meaning": "Willful and persistent resistance to lawful authority.",
+      "pos": "noun"
     },
     {
       "word": "Cosmopolitan",
@@ -231,11 +602,46 @@
       "pos": "noun"
     },
     {
+      "word": "Credulous",
+      "ipa": "/ˈkrɛdʒʊləs/",
+      "urdu": "سادہ لوح",
+      "meaning": "Too ready to believe things; easily deceived or gullible.",
+      "pos": "adjective"
+    },
+    {
+      "word": "Cutlery",
+      "ipa": "/ˈkʌtləri/",
+      "urdu": "کھانے کے اوزار",
+      "meaning": "Knives, forks, spoons, and other utensils used for eating.",
+      "pos": "noun"
+    },
+    {
       "word": "Cynic",
       "ipa": "/ˈsɪnɪk/",
       "urdu": "بدگمان",
       "meaning": "one who believes people act only for selfish reasons",
       "pos": "noun"
+    },
+    {
+      "word": "Defame",
+      "ipa": "/dɪˈfeɪm/",
+      "urdu": "بدنام کرنا",
+      "meaning": "To utter or publish false statements that harm a person's reputation; to slander or libel.",
+      "pos": "verb"
+    },
+    {
+      "word": "Delegate",
+      "ipa": "/ˈdɛlɪɡeɪt/",
+      "urdu": "اختیار سونپنا",
+      "meaning": "To entrust authority or responsibility to another person.",
+      "pos": "verb"
+    },
+    {
+      "word": "Deliberate",
+      "ipa": "/dɪˈlɪbəreɪt/",
+      "urdu": "غور و فکر کرنا",
+      "meaning": "To carefully consider or think about a matter, especially before making a decision.",
+      "pos": "verb"
     },
     {
       "word": "Democrat",
@@ -252,10 +658,45 @@
       "pos": "noun"
     },
     {
+      "word": "Deprecate",
+      "ipa": "/ˈdɛprɪkeɪt/",
+      "urdu": "ناراضگی ظاہر کرنا",
+      "meaning": "To express disapproval of; to criticize or speak against.",
+      "pos": "verb"
+    },
+    {
+      "word": "Depreciate",
+      "ipa": "/dɪˈpriːʃieɪt/",
+      "urdu": "قدر گھٹانا",
+      "meaning": "To reduce or lower the monetary or assessed value of something.",
+      "pos": "verb"
+    },
+    {
+      "word": "Desecrate",
+      "ipa": "/ˈdɛsɪkreɪt/",
+      "urdu": "تقدس پامال کرنا",
+      "meaning": "To violate, profane, or treat a sacred place or object with disrespect.",
+      "pos": "verb"
+    },
+    {
       "word": "Dictator",
       "ipa": "/dɪkˈteɪtə/",
       "urdu": "آمر",
       "meaning": "a ruler with absolute power",
+      "pos": "noun"
+    },
+    {
+      "word": "Digress",
+      "ipa": "/daɪˈɡrɛs/",
+      "urdu": "موضوع سے ہٹ جانا",
+      "meaning": "To deviate temporarily from the main subject or line of argument.",
+      "pos": "verb"
+    },
+    {
+      "word": "Diplomacy",
+      "ipa": "/dɪˈploʊməsi/",
+      "urdu": "سفارت کاری",
+      "meaning": "The art and practice of conducting negotiations and managing relations between states.",
       "pos": "noun"
     },
     {
@@ -266,10 +707,52 @@
       "pos": "noun"
     },
     {
+      "word": "Dogmatic",
+      "ipa": "/dɒɡˈmætɪk/",
+      "urdu": "قاطع الرائے",
+      "meaning": "Holding beliefs rigidly and asserting opinions as incontrovertible facts without room for discussion.",
+      "pos": "adjective"
+    },
+    {
+      "word": "Dotage",
+      "ipa": "/ˈdoʊtɪdʒ/",
+      "urdu": "بڑھاپے میں ذہنی کمزوری",
+      "meaning": "A state of senile decline or mental weakness associated with extreme old age.",
+      "pos": "noun"
+    },
+    {
+      "word": "Drought",
+      "ipa": "/draʊt/",
+      "urdu": "خشک سالی",
+      "meaning": "A prolonged period of unusually low rainfall causing water shortage and crop failure.",
+      "pos": "noun"
+    },
+    {
+      "word": "Eccentric",
+      "ipa": "/ɪkˈsɛntrɪk/",
+      "urdu": "انوکھا",
+      "meaning": "one whose behaviour is odd or unusual",
+      "pos": "noun"
+    },
+    {
       "word": "Edible",
       "ipa": "/ˈɛdɪbəl/",
       "urdu": "کھانے کے قابل",
       "meaning": "that can be eaten",
+      "pos": "adjective"
+    },
+    {
+      "word": "Effeminate",
+      "ipa": "/ɪˈfɛmənət/",
+      "urdu": "عورتوں سے منسوب صفات ظاہر کرنے والا",
+      "meaning": "Displaying traits culturally associated with women.",
+      "pos": "adjective"
+    },
+    {
+      "word": "Efficacious",
+      "ipa": "/ˌɛfɪˈkeɪʃəs/",
+      "urdu": "موثر، نتیجہ خیز",
+      "meaning": "Capable of producing the intended or desired result; effective.",
       "pos": "adjective"
     },
     {
@@ -280,6 +763,34 @@
       "pos": "noun"
     },
     {
+      "word": "Elaborate",
+      "ipa": "/ɪˈlæbəreɪt/",
+      "urdu": "تفصیل سے بیان کرنا",
+      "meaning": "To work out or explain something in full detail.",
+      "pos": "verb"
+    },
+    {
+      "word": "Eligible",
+      "ipa": "/ˈɛlɪdʒəbəl/",
+      "urdu": "منتخب ہونے کے لیے اہل",
+      "meaning": "Qualified or entitled to be chosen, selected, or to participate.",
+      "pos": "adjective"
+    },
+    {
+      "word": "Elucidate",
+      "ipa": "/ɪˈluːsɪdeɪt/",
+      "urdu": "واضح کرنا",
+      "meaning": "To make something clear; to explain in detail.",
+      "pos": "verb"
+    },
+    {
+      "word": "Emancipationist",
+      "ipa": "/ɪˌmæn.sɪˈpeɪ.ʃən.ɪst/",
+      "urdu": "آزادی پسند",
+      "meaning": "A person who advocates freeing disadvantaged classes from legal, social, or political disabilities.",
+      "pos": "noun"
+    },
+    {
       "word": "Emigrant",
       "ipa": "/ˈɛmɪɡrənt/",
       "urdu": "وطن چھوڑنے والا",
@@ -287,10 +798,38 @@
       "pos": "noun"
     },
     {
-      "word": "Immigrant",
-      "ipa": "/ˈɪmɪɡrənt/",
-      "urdu": "مہاجر",
-      "meaning": "one who comes into a foreign country to settle",
+      "word": "Empiric",
+      "ipa": "/ɛmˈpɪrɪk/",
+      "urdu": "تجربہ کار",
+      "meaning": "A person who relies chiefly on practical experience and observation rather than theory.",
+      "pos": "noun"
+    },
+    {
+      "word": "Endemic",
+      "ipa": "/ɛnˈdɛmɪk/",
+      "urdu": "مقامی",
+      "meaning": "Naturally prevalent in or peculiar to a particular locality or group (often said of a disease).",
+      "pos": "adjective"
+    },
+    {
+      "word": "Ennui",
+      "ipa": "/ɒnˈwiː/",
+      "urdu": "بوریت",
+      "meaning": "A feeling of mental weariness or dissatisfaction arising from lack of occupation or interest; boredom.",
+      "pos": "noun"
+    },
+    {
+      "word": "Entomology",
+      "ipa": "/ˌɛntəˈmɒlədʒi/",
+      "urdu": "حشراتیات",
+      "meaning": "The scientific study of insects.",
+      "pos": "noun"
+    },
+    {
+      "word": "Epicure",
+      "ipa": "/ˈɛpɪkjʊər/",
+      "urdu": "ذائقہ شناس",
+      "meaning": "A person who takes special pleasure in fine food and other sensual enjoyments.",
       "pos": "noun"
     },
     {
@@ -299,6 +838,20 @@
       "urdu": "کتبہ",
       "meaning": "words inscribed on a tombstone",
       "pos": "noun"
+    },
+    {
+      "word": "Equilibrium",
+      "ipa": "/ˌiːkwɪˈlɪbrɪəm/",
+      "urdu": "توازن",
+      "meaning": "A state of balance between opposing forces or influences; stability.",
+      "pos": "noun"
+    },
+    {
+      "word": "Eradicate",
+      "ipa": "/ɪˈrædɪkeɪt/",
+      "urdu": "جڑ سے اکھاڑ پھینکنا",
+      "meaning": "To remove or destroy completely, especially an evil, disease, or problem.",
+      "pos": "verb"
     },
     {
       "word": "Eternal",
@@ -315,11 +868,39 @@
       "pos": "noun"
     },
     {
-      "word": "Eccentric",
-      "ipa": "/ɪkˈsɛntrɪk/",
-      "urdu": "انوکھا",
-      "meaning": "one whose behaviour is odd or unusual",
+      "word": "Etymology",
+      "ipa": "/ˌɛtɪˈmɒlədʒi/",
+      "urdu": "علمِ اشتقاق",
+      "meaning": "The study of the origin, history, and development of words and their meanings.",
       "pos": "noun"
+    },
+    {
+      "word": "Excavate",
+      "ipa": "/ˈɛkskəveɪt/",
+      "urdu": "کھودنا",
+      "meaning": "To remove earth carefully from (an area) in order to find buried remains or artifacts; to dig out.",
+      "pos": "verb"
+    },
+    {
+      "word": "Exculpated",
+      "ipa": "/ɪkˈskʌlpeɪtɪd/",
+      "urdu": "بے قصور قرار دیا گیا",
+      "meaning": "Cleared of blame or proven not guilty of wrongdoing (past participle).",
+      "pos": "verb"
+    },
+    {
+      "word": "Executive",
+      "ipa": "/ɪɡˈzɛkjʊtɪv/",
+      "urdu": "انتظامیہ",
+      "meaning": "The branch or body of government responsible for implementing and enforcing laws and maintaining public order.",
+      "pos": "noun"
+    },
+    {
+      "word": "Exonerate",
+      "ipa": "/ɪɡˈzɒnəreɪt/",
+      "urdu": "بے قصور قرار دینا",
+      "meaning": "To officially clear someone from blame or fault in a matter.",
+      "pos": "verb"
     },
     {
       "word": "Expatriate",
@@ -329,10 +910,52 @@
       "pos": "noun"
     },
     {
+      "word": "Expiate",
+      "ipa": "/ˈɛkspieɪt/",
+      "urdu": "کفارہ ادا کرنا",
+      "meaning": "To make amends or atone for wrongdoing or sin.",
+      "pos": "verb"
+    },
+    {
+      "word": "Explicit",
+      "ipa": "/ɪkˈsplɪsɪt/",
+      "urdu": "صریح، واضح",
+      "meaning": "Clearly and fully expressed, leaving no room for doubt or ambiguity.",
+      "pos": "adjective"
+    },
+    {
+      "word": "Expurgate",
+      "ipa": "/ˈekspəɡeɪt/",
+      "urdu": "ناپسندیدہ حصے حذف کرنا",
+      "meaning": "To remove material considered offensive or unsuitable from a text or publication.",
+      "pos": "verb"
+    },
+    {
       "word": "Extempore",
       "ipa": "/ɪkˈstɛmpəri/",
       "urdu": "بے ساختہ",
       "meaning": "a speech made without preparation",
+      "pos": "adjective"
+    },
+    {
+      "word": "Extradite",
+      "ipa": "/ˈɛkstrədaɪt/",
+      "urdu": "مجرم کو حوالہ کرنا",
+      "meaning": "To hand over a suspected or convicted criminal to the legal jurisdiction of another country or state.",
+      "pos": "verb"
+    },
+    {
+      "word": "Fanatic",
+      "ipa": "/fəˈnætɪk/",
+      "urdu": "انتہاپسند",
+      "meaning": "A person with excessive, often irrational zeal or devotion, especially in religion or politics.",
+      "pos": "noun"
+    },
+    {
+      "word": "Fastidious",
+      "ipa": "/fæˈstɪdiəs/",
+      "urdu": "مشکل پسند",
+      "meaning": "Very attentive to detail and hard to please; overly particular about cleanliness or standards.",
       "pos": "adjective"
     },
     {
@@ -364,10 +987,38 @@
       "pos": "noun"
     },
     {
+      "word": "Frustrate",
+      "ipa": "/frʌˈstreɪt/",
+      "urdu": "ناکام بنانا",
+      "meaning": "To prevent someone from accomplishing a purpose or fulfilling a desire; to thwart.",
+      "pos": "verb"
+    },
+    {
+      "word": "Fumigate",
+      "ipa": "/ˈfjuːmɪɡeɪt/",
+      "urdu": "دھواں دے کر جراثیم کش کرنا",
+      "meaning": "To disinfect or purify an area or object by using smoke or fumes, especially to kill pests or germs.",
+      "pos": "verb"
+    },
+    {
+      "word": "Gala-day",
+      "ipa": "/ˈɡeɪləˌdeɪ/",
+      "urdu": "یومِ جشن",
+      "meaning": "A day marked by public celebration, gaiety, or festivity.",
+      "pos": "noun"
+    },
+    {
       "word": "Genocide",
       "ipa": "/ˈdʒɛnəsaɪd/",
       "urdu": "نسل کشی",
       "meaning": "the killing of a whole race",
+      "pos": "noun"
+    },
+    {
+      "word": "Germicide",
+      "ipa": "/ˈdʒɜːrmɪsaɪd/",
+      "urdu": "جراثیم کش",
+      "meaning": "A substance or agent that kills germs or microorganisms.",
       "pos": "noun"
     },
     {
@@ -399,6 +1050,13 @@
       "pos": "adjective"
     },
     {
+      "word": "Homicide",
+      "ipa": "/ˈhɒmɪsaɪd/",
+      "urdu": "انسان کا قتل",
+      "meaning": "The act of killing a human being by another; killing of a person (may be lawful or unlawful).",
+      "pos": "noun"
+    },
+    {
       "word": "Homogeneous",
       "ipa": "/ˌhɒməˈdʒiːniəs/",
       "urdu": "یکساں",
@@ -413,6 +1071,13 @@
       "pos": "noun"
     },
     {
+      "word": "Hygienist",
+      "ipa": "/ˈhaɪdʒɪnɪst/",
+      "urdu": "ماہرِ حفظانِ صحت",
+      "meaning": "A person who practices or promotes hygiene and public health.",
+      "pos": "noun"
+    },
+    {
       "word": "Hypocrite",
       "ipa": "/ˈhɪpəkrɪt/",
       "urdu": "منافق",
@@ -420,11 +1085,25 @@
       "pos": "noun"
     },
     {
-      "word": "Illiterate",
-      "ipa": "/ɪˈlɪtərət/",
-      "urdu": "ناخواندہ",
-      "meaning": "one who cannot read or write",
-      "pos": "adjective"
+      "word": "Iconoclast",
+      "ipa": "/aɪˈkɒnəklæst/",
+      "urdu": "قدامت شکن",
+      "meaning": "A person who attacks or criticizes cherished beliefs, institutions, or traditions.",
+      "pos": "noun"
+    },
+    {
+      "word": "Idiosyncrasy",
+      "ipa": "/ˌɪdiəˈsɪŋkrəsi/",
+      "urdu": "ذاتی خاصیت",
+      "meaning": "A distinctive or peculiar habit, characteristic, or temperament specific to an individual.",
+      "pos": "noun"
+    },
+    {
+      "word": "Idolatry",
+      "ipa": "/aɪˈdɒlətri/",
+      "urdu": "بت پرستی",
+      "meaning": "The worship of idols or excessive devotion to an object or person.",
+      "pos": "noun"
     },
     {
       "word": "Illegible",
@@ -434,10 +1113,38 @@
       "pos": "adjective"
     },
     {
+      "word": "Illicit",
+      "ipa": "/ɪˈlɪsɪt/",
+      "urdu": "غیرقانونی",
+      "meaning": "Forbidden by law or rules; illegal or unauthorized.",
+      "pos": "adjective"
+    },
+    {
+      "word": "Illiterate",
+      "ipa": "/ɪˈlɪtərət/",
+      "urdu": "ناخواندہ",
+      "meaning": "one who cannot read or write",
+      "pos": "adjective"
+    },
+    {
+      "word": "Immigrant",
+      "ipa": "/ˈɪmɪɡrənt/",
+      "urdu": "مہاجر",
+      "meaning": "one who comes into a foreign country to settle",
+      "pos": "noun"
+    },
+    {
       "word": "Immortal",
       "ipa": "/ɪˈmɔːtəl/",
       "urdu": "لافانی",
       "meaning": "that cannot die",
+      "pos": "adjective"
+    },
+    {
+      "word": "Immutable",
+      "ipa": "/ɪˈmjuːtəbl/",
+      "urdu": "ناقابلِ تبدیل",
+      "meaning": "Not subject to change; unchanging over time.",
       "pos": "adjective"
     },
     {
@@ -448,10 +1155,38 @@
       "pos": "adjective"
     },
     {
+      "word": "Imperialism",
+      "ipa": "/ɪmˈpɪəriəlɪzəm/",
+      "urdu": "سامراجیت",
+      "meaning": "The policy of extending a nation's authority by territorial acquisition or by economic and political domination of other countries.",
+      "pos": "noun"
+    },
+    {
+      "word": "Impracticable",
+      "ipa": "/ɪmˈpræktɪkəbəl/",
+      "urdu": "غیر عملی",
+      "meaning": "Not capable of being put into practice; unworkable.",
+      "pos": "adjective"
+    },
+    {
       "word": "Impromptu",
       "ipa": "/ɪmˈprɒmptjuː/",
       "urdu": "بے ساختہ",
       "meaning": "without preparation",
+      "pos": "adjective"
+    },
+    {
+      "word": "Inapt",
+      "ipa": "/ɪnˈæpt/",
+      "urdu": "نامناسب",
+      "meaning": "Unsuitable or inappropriate; not apt for the situation.",
+      "pos": "adjective"
+    },
+    {
+      "word": "Inaudible",
+      "ipa": "/ɪnˈɔːdəbl/",
+      "urdu": "ناقابلِ سماعت",
+      "meaning": "Unable to be heard; too quiet to be perceived by ear.",
       "pos": "adjective"
     },
     {
@@ -460,6 +1195,20 @@
       "urdu": "ناقابلِ اصلاح",
       "meaning": "a person who cannot be corrected",
       "pos": "adjective"
+    },
+    {
+      "word": "Incredible",
+      "ipa": "/ɪnˈkrɛdəbəl/",
+      "urdu": "ناقابلِ یقین",
+      "meaning": "Difficult to believe; extraordinary or astonishing.",
+      "pos": "adjective"
+    },
+    {
+      "word": "Incriminate",
+      "ipa": "/ɪnˈkrɪmɪneɪt/",
+      "urdu": "ملزم ٹھہرانا",
+      "meaning": "To accuse or show involvement in a crime or wrongdoing.",
+      "pos": "verb"
     },
     {
       "word": "Indefatigable",
@@ -473,6 +1222,20 @@
       "ipa": "/ɪnˈdɛlɪbəl/",
       "urdu": "ناقابلِ مٹانے",
       "meaning": "that cannot be erased",
+      "pos": "adjective"
+    },
+    {
+      "word": "Ineligible",
+      "ipa": "/ɪnˈɛlɪdʒəbəl/",
+      "urdu": "اہل نہیں",
+      "meaning": "Not meeting required qualifications or rules; disqualified from eligibility.",
+      "pos": "adjective"
+    },
+    {
+      "word": "Infallible",
+      "ipa": "/ɪnˈfæləbl/",
+      "urdu": "ناقابلِ خطا",
+      "meaning": "Incapable of making mistakes or being wrong.",
       "pos": "adjective"
     },
     {
@@ -497,11 +1260,39 @@
       "pos": "adjective"
     },
     {
+      "word": "Inimitable",
+      "ipa": "/ɪˈnɪmɪtəbəl/",
+      "urdu": "ناقابلِ تقلید",
+      "meaning": "So good or unusual as to be impossible to copy; unique.",
+      "pos": "adjective"
+    },
+    {
+      "word": "Insoluble",
+      "ipa": "/ɪnˈsɒljəbl/",
+      "urdu": "ناقابلِ حل",
+      "meaning": "Not capable of being solved or resolved.",
+      "pos": "adjective"
+    },
+    {
+      "word": "Insolvent",
+      "ipa": "/ɪnˈsɒlvənt/",
+      "urdu": "دیوالیہ",
+      "meaning": "Unable to pay debts; bankrupt or financially ruined.",
+      "pos": "adjective"
+    },
+    {
       "word": "Insomnia",
       "ipa": "/ɪnˈsɒmniə/",
       "urdu": "بے خوابی",
       "meaning": "inability to sleep",
       "pos": "noun"
+    },
+    {
+      "word": "Instigate",
+      "ipa": "/ˈɪnstɪɡeɪt/",
+      "urdu": "بھڑکانا",
+      "meaning": "To provoke or urge someone to take action, often to commit wrongdoing.",
+      "pos": "verb"
     },
     {
       "word": "Interpreter",
@@ -525,10 +1316,31 @@
       "pos": "adjective"
     },
     {
+      "word": "Irrelevant",
+      "ipa": "/ɪˈrɛlɪvənt/",
+      "urdu": "غیر متعلقہ",
+      "meaning": "Not related or applicable to the matter under consideration.",
+      "pos": "adjective"
+    },
+    {
       "word": "Irremediable",
       "ipa": "/ˌɪrɪˈmiːdiəbəl/",
       "urdu": "ناقابلِ علاج",
       "meaning": "that cannot be cured",
+      "pos": "adjective"
+    },
+    {
+      "word": "Irrepressible",
+      "ipa": "/ˌɪrɪˈprɛsəbəl/",
+      "urdu": "ناقابلِ قابو",
+      "meaning": "Impossible to restrain or suppress; irresistibly expressive or active.",
+      "pos": "adjective"
+    },
+    {
+      "word": "Itinerant",
+      "ipa": "/aɪˈtɪnərənt/",
+      "urdu": "عارضی کارکن",
+      "meaning": "Working for short periods at different places, especially as a casual or temporary worker.",
       "pos": "adjective"
     },
     {
@@ -553,10 +1365,31 @@
       "pos": "noun"
     },
     {
+      "word": "Loquacious",
+      "ipa": "/ləˈkweɪʃəs/",
+      "urdu": "باتونی",
+      "meaning": "Excessively talkative; given to lengthy or frequent speech.",
+      "pos": "adjective"
+    },
+    {
       "word": "Magnanimous",
       "ipa": "/mæɡˈnænɪməs/",
       "urdu": "فراخ دل",
       "meaning": "generous in forgiving",
+      "pos": "adjective"
+    },
+    {
+      "word": "Magnetic",
+      "ipa": "/mæɡˈnɛtɪk/",
+      "urdu": "مقناطیسی",
+      "meaning": "Having the properties of a magnet; able to attract iron or produce attraction.",
+      "pos": "adjective"
+    },
+    {
+      "word": "Maiden",
+      "ipa": "/ˈmeɪdən/",
+      "urdu": "پہلا",
+      "meaning": "Denoting the first occurrence (as in maiden speech or maiden voyage).",
       "pos": "adjective"
     },
     {
@@ -574,11 +1407,32 @@
       "pos": "noun"
     },
     {
+      "word": "Materialistic",
+      "ipa": "/məˌtɪəriəˈlɪstɪk/",
+      "urdu": "مادی پرست",
+      "meaning": "Placing primary importance on money and material possessions rather than spiritual or intellectual values.",
+      "pos": "adjective"
+    },
+    {
+      "word": "Matinee",
+      "ipa": "/ˈmætɪneɪ/",
+      "urdu": "دوپہر کا شو",
+      "meaning": "An afternoon performance or showing of a film, play, or concert.",
+      "pos": "noun"
+    },
+    {
       "word": "Matricide",
       "ipa": "/ˈmeɪtrɪsaɪd/",
       "urdu": "ماں کا قتل",
       "meaning": "the killing of one's mother",
       "pos": "noun"
+    },
+    {
+      "word": "Medieval",
+      "ipa": "/ˌmɛdiˈiːvəl/",
+      "urdu": "قرونِ وسطیٰ سے متعلق",
+      "meaning": "Relating to the Middle Ages (approximately the 5th to the 15th century).",
+      "pos": "adjective"
     },
     {
       "word": "Meticulous",
@@ -595,6 +1449,13 @@
       "pos": "noun"
     },
     {
+      "word": "Misalliance",
+      "ipa": "/ˌmɪsəˈlaɪəns/",
+      "urdu": "طبقاتی لحاظ سے نا برابر شادی",
+      "meaning": "Marriage between persons of unequal social status.",
+      "pos": "noun"
+    },
+    {
       "word": "Misanthrope",
       "ipa": "/ˈmɪsənθrəʊp/",
       "urdu": "انسان سے نفرت کرنے والا",
@@ -602,10 +1463,31 @@
       "pos": "noun"
     },
     {
+      "word": "Misanthropist",
+      "ipa": "/ˌmɪzənˈθrɒpɪst/",
+      "urdu": "انسان دشمن",
+      "meaning": "A person who hates or distrusts humankind.",
+      "pos": "noun"
+    },
+    {
+      "word": "Misogamist",
+      "ipa": "/mɪˈsɒɡəmɪst/",
+      "urdu": "ازدواج مخالف",
+      "meaning": "A person who hates or opposes the institution of marriage.",
+      "pos": "noun"
+    },
+    {
       "word": "Misogynist",
       "ipa": "/mɪˈsɒdʒɪnɪst/",
       "urdu": "عورتوں سے نفرت کرنے والا",
       "meaning": "one who hates women",
+      "pos": "noun"
+    },
+    {
+      "word": "Mobocracy",
+      "ipa": "/məˈbɒkrəsi/",
+      "urdu": "ہجوم کی حکومت",
+      "meaning": "Government or rule by a mob; political control exercised by a disorderly crowd.",
       "pos": "noun"
     },
     {
@@ -637,10 +1519,38 @@
       "pos": "noun"
     },
     {
+      "word": "Mortuary",
+      "ipa": "/ˈmɔːrtʃəri/",
+      "urdu": "لاش خانہ",
+      "meaning": "A building or room where dead bodies are kept, especially before burial or autopsy.",
+      "pos": "noun"
+    },
+    {
       "word": "Narcissist",
       "ipa": "/ˈnɑːsɪsɪst/",
       "urdu": "خود پسند",
       "meaning": "one who loves himself excessively",
+      "pos": "noun"
+    },
+    {
+      "word": "Naturalization",
+      "ipa": "/ˌnætʃrələˈzeɪʃən/",
+      "urdu": "شہریت کا حصول",
+      "meaning": "The legal process by which a non‑citizen is granted the citizenship of a state.",
+      "pos": "noun"
+    },
+    {
+      "word": "Nepotism",
+      "ipa": "/ˈnɛpəˌtɪzəm/",
+      "urdu": "اقربا پروری",
+      "meaning": "Undue favour shown by a person in authority to relatives or friends.",
+      "pos": "noun"
+    },
+    {
+      "word": "Neurotic",
+      "ipa": "/njʊˈrɒtɪk/",
+      "urdu": "عصبی شخص",
+      "meaning": "A person suffering from a nervous or emotional disorder; overly anxious or emotionally unstable.",
       "pos": "noun"
     },
     {
@@ -663,6 +1573,13 @@
       "urdu": "متروک",
       "meaning": "no longer in use",
       "pos": "adjective"
+    },
+    {
+      "word": "Oligarchy",
+      "ipa": "/ˈɒlɪɡɑːrki/",
+      "urdu": "حکومتِ اقلیت",
+      "meaning": "A form of government in which power is held by a small group of people.",
+      "pos": "noun"
     },
     {
       "word": "Omnipotent",
@@ -693,6 +1610,13 @@
       "pos": "noun"
     },
     {
+      "word": "Optimistic",
+      "ipa": "/ˌɒptɪˈmɪstɪk/",
+      "urdu": "پر امید",
+      "meaning": "Having a positive or hopeful outlook about future outcomes.",
+      "pos": "adjective"
+    },
+    {
       "word": "Orator",
       "ipa": "/ˈɒrətə/",
       "urdu": "خطیب",
@@ -707,10 +1631,45 @@
       "pos": "adjective"
     },
     {
+      "word": "Ostracize",
+      "ipa": "/ˈɒstrəˌsaɪz/",
+      "urdu": "الگ تھلگ کرنا",
+      "meaning": "To exclude, shun, or banish someone from a group or society.",
+      "pos": "verb"
+    },
+    {
       "word": "Pacifist",
       "ipa": "/ˈpæsɪfɪst/",
       "urdu": "امن پسند",
       "meaning": "one who is against war",
+      "pos": "noun"
+    },
+    {
+      "word": "Panacea",
+      "ipa": "/ˌpænəˈsiːə/",
+      "urdu": "جامع علاج",
+      "meaning": "A remedy or solution for all problems or difficulties.",
+      "pos": "noun"
+    },
+    {
+      "word": "Pantomime",
+      "ipa": "/ˈpæntəmaɪm/",
+      "urdu": "خاموش اداکاری",
+      "meaning": "A dramatic performance expressed entirely by gesture and movement without spoken words.",
+      "pos": "noun"
+    },
+    {
+      "word": "Paragon",
+      "ipa": "/ˈpærəɡən/",
+      "urdu": "نمونۂ کمال",
+      "meaning": "A model or example of outstanding excellence or perfection of a kind.",
+      "pos": "noun"
+    },
+    {
+      "word": "Parasite",
+      "ipa": "/ˈpærəsaɪt/",
+      "urdu": "پرجیوی",
+      "meaning": "An organism that lives on or in another organism and benefits at the host's expense; by extension, a person who exploits others' resources.",
       "pos": "noun"
     },
     {
@@ -721,10 +1680,45 @@
       "pos": "noun"
     },
     {
+      "word": "Patrimony",
+      "ipa": "/ˈpætrɪməni/",
+      "urdu": "والدی میراث",
+      "meaning": "Property, assets, or heritage inherited from one's father or ancestors.",
+      "pos": "noun"
+    },
+    {
+      "word": "Peculate",
+      "ipa": "/ˈpɛkjuleɪt/",
+      "urdu": "اختلاس کرنا",
+      "meaning": "To embezzle or misappropriate public funds entrusted to one's care.",
+      "pos": "verb"
+    },
+    {
+      "word": "Pedestrian",
+      "ipa": "/pəˈdɛstriən/",
+      "urdu": "پیادہ چلنے والا",
+      "meaning": "A person who travels on foot; someone walking rather than using a vehicle.",
+      "pos": "noun"
+    },
+    {
+      "word": "Perpetuate",
+      "ipa": "/pəˈpɛtʃueɪt/",
+      "urdu": "قائم رکھنا",
+      "meaning": "To cause something (an idea, institution, or situation) to continue for a long time.",
+      "pos": "verb"
+    },
+    {
       "word": "Pessimist",
       "ipa": "/ˈpɛsɪmɪst/",
       "urdu": "مایوسی پسند",
       "meaning": "one who sees the dark side of things",
+      "pos": "noun"
+    },
+    {
+      "word": "Philanderer",
+      "ipa": "/fɪˈlændərə/",
+      "urdu": "غیر سنجیدہ محبت کرنے والا",
+      "meaning": "A person who engages in casual or transient romantic or sexual relationships.",
       "pos": "noun"
     },
     {
@@ -742,6 +1736,55 @@
       "pos": "noun"
     },
     {
+      "word": "Philistine",
+      "ipa": "/ˈfɪlɪstiːn/",
+      "urdu": "ادب و فن سے بے خبر یا غیر دلچسپی رکھنے والا شخص",
+      "meaning": "A person indifferent or hostile to culture, literature, or the arts; an uncultured person.",
+      "pos": "noun"
+    },
+    {
+      "word": "Philogynist",
+      "ipa": "/fɪˈlɒdʒɪnɪst/",
+      "urdu": "عورتوں کا پرستار",
+      "meaning": "A person who has a strong admiration or love for women.",
+      "pos": "noun"
+    },
+    {
+      "word": "Plagiarist",
+      "ipa": "/ˈpleɪdʒərɪst/",
+      "urdu": "دوسروں کے خیالات یا الفاظ چرانے والا",
+      "meaning": "A writer or creator who presents another person's words, ideas, or work as their own without proper attribution.",
+      "pos": "noun"
+    },
+    {
+      "word": "Platitudes",
+      "ipa": "/ˈplætɪtjuːdz/",
+      "urdu": "عام و کلیشی باتیں",
+      "meaning": "Worn-out, commonplace remarks or clichés that lack originality or depth.",
+      "pos": "noun"
+    },
+    {
+      "word": "Plutocracy",
+      "ipa": "/pluːˈtɒkrəsi/",
+      "urdu": "امیروں کی حکومت",
+      "meaning": "A system of government in which power is effectively held by the wealthy.",
+      "pos": "noun"
+    },
+    {
+      "word": "Polyandry",
+      "ipa": "/ˌpɒlɪˈændri/",
+      "urdu": "کئی شوہروں سے شادی",
+      "meaning": "The custom or practice of a woman being married to more than one husband at the same time.",
+      "pos": "noun"
+    },
+    {
+      "word": "Polygamy",
+      "ipa": "/pəˈlɪɡəmi/",
+      "urdu": "کئی شریکِ حیات سے شادی",
+      "meaning": "The practice of having more than one spouse (husband or wife) simultaneously.",
+      "pos": "noun"
+    },
+    {
       "word": "Posthumous",
       "ipa": "/ˈpɒstjʊməs/",
       "urdu": "بعد از وفات",
@@ -749,10 +1792,31 @@
       "pos": "adjective"
     },
     {
+      "word": "Postmortem",
+      "ipa": "/ˈpəʊstmɔːtəm/",
+      "urdu": "موت کے بعد طبی معائنہ",
+      "meaning": "A medical examination of a body conducted after death to determine cause of death (autopsy).",
+      "pos": "noun"
+    },
+    {
       "word": "Preamble",
       "ipa": "/priˈæmbəl/",
       "urdu": "دیباچہ",
       "meaning": "the introductory part of a constitution",
+      "pos": "noun"
+    },
+    {
+      "word": "Precursor",
+      "ipa": "/prɪˈkɜːsə/",
+      "urdu": "پیش خیمہ",
+      "meaning": "Something or someone that comes before and signals or paves the way for a later event or development; a forerunner.",
+      "pos": "noun"
+    },
+    {
+      "word": "Protagonist",
+      "ipa": "/prəˈtæɡənɪst/",
+      "urdu": "مرکزی کردار",
+      "meaning": "The principal character or leading figure in a drama, novel, or story; the main actor in an event or movement.",
       "pos": "noun"
     },
     {
@@ -770,6 +1834,13 @@
       "pos": "noun"
     },
     {
+      "word": "Pugnacity",
+      "ipa": "/pʌɡˈnæsɪti/",
+      "urdu": "جھگڑالاپن",
+      "meaning": "A tendency to be quarrelsome, combative, or eager to fight.",
+      "pos": "noun"
+    },
+    {
       "word": "Pyromaniac",
       "ipa": "/ˌpaɪrəˈmeɪniæk/",
       "urdu": "آتش زنی کا عادی",
@@ -777,10 +1848,31 @@
       "pos": "noun"
     },
     {
+      "word": "Pyrrhic victory",
+      "ipa": "/ˈpɪrɪk ˈvɪktəri/",
+      "urdu": "مہنگی فتح",
+      "meaning": "A victory won at such a great cost that it is tantamount to defeat; success achieved with devastating losses.",
+      "pos": "phrase"
+    },
+    {
       "word": "Realist",
       "ipa": "/ˈrɪəlɪst/",
       "urdu": "حقیقت پسند",
       "meaning": "one who looks at things as they are",
+      "pos": "noun"
+    },
+    {
+      "word": "Reanimate",
+      "ipa": "/riːˈænəmeɪt/",
+      "urdu": "دوبارہ زندہ کرنا",
+      "meaning": "To restore to life or to reactivate something that has become inactive.",
+      "pos": "verb"
+    },
+    {
+      "word": "Red-tapism",
+      "ipa": "/ˈrɛdˌtæpɪzəm/",
+      "urdu": "کاغذبازی",
+      "meaning": "Excessive adherence to official rules and formalities that delays action.",
       "pos": "noun"
     },
     {
@@ -791,10 +1883,24 @@
       "pos": "noun"
     },
     {
+      "word": "Remuneration",
+      "ipa": "/rɪˌmjuːnəˈreɪʃən/",
+      "urdu": "معاوضہ",
+      "meaning": "Payment or compensation given for work or services.",
+      "pos": "noun"
+    },
+    {
       "word": "Reticent",
       "ipa": "/ˈrɛtɪsənt/",
       "urdu": "کم گو",
       "meaning": "reserved; not talking much",
+      "pos": "adjective"
+    },
+    {
+      "word": "Retrospective",
+      "ipa": "/ˌrɛtrəˈspɛktɪv/",
+      "urdu": "ماضی سے متعلق",
+      "meaning": "Relating to or looking back on past events.",
       "pos": "adjective"
     },
     {
@@ -826,6 +1932,34 @@
       "pos": "noun"
     },
     {
+      "word": "Somnambulist",
+      "ipa": "/sɒmˈnæmbjʊlɪst/",
+      "urdu": "نیند میں چلنے والا",
+      "meaning": "A person who walks while asleep (a sleepwalker).",
+      "pos": "noun"
+    },
+    {
+      "word": "Somniloquist",
+      "ipa": "/sɒmˈnɪləkwɪst/",
+      "urdu": "نیند میں بات کرنے والا",
+      "meaning": "A person who talks while asleep (a sleep‑talker).",
+      "pos": "noun"
+    },
+    {
+      "word": "Sterilize",
+      "ipa": "/ˈstɛrɪlaɪz/",
+      "urdu": "جراثیم سے پاک کرنا",
+      "meaning": "To make free of germs or microorganisms.",
+      "pos": "verb"
+    },
+    {
+      "word": "Stoic / Stoicism",
+      "ipa": "/ˈstoʊ.ɪk/ /ˈstoʊ.ɪ.sɪ.zəm/",
+      "urdu": "غم و لذت سے بے پروا / خود ضبطی کا فلسفہ",
+      "meaning": "Stoic: a person indifferent to pleasure or pain; Stoicism: the practice or philosophy of self‑denial and endurance.",
+      "pos": "noun / noun (abstract)"
+    },
+    {
       "word": "Suicide",
       "ipa": "/ˈsuːɪsaɪd/",
       "urdu": "خودکشی",
@@ -838,6 +1972,13 @@
       "urdu": "فالتو",
       "meaning": "more than what is needed",
       "pos": "adjective"
+    },
+    {
+      "word": "Synchronize",
+      "ipa": "/ˈsɪŋkrənaɪz/",
+      "urdu": "ہم وقت کرنا",
+      "meaning": "To cause two or more events to occur at the same time.",
+      "pos": "verb"
     },
     {
       "word": "Synchronous",
@@ -875,6 +2016,13 @@
       "pos": "adjective"
     },
     {
+      "word": "Untamable",
+      "ipa": "/ʌnˈteɪməbəl/",
+      "urdu": "رام نہ ہونے والا",
+      "meaning": "Not able to be tamed or domesticated.",
+      "pos": "adjective"
+    },
+    {
       "word": "Utopia",
       "ipa": "/juːˈtəʊpiə/",
       "urdu": "مثالی معاشرہ",
@@ -882,11 +2030,32 @@
       "pos": "noun"
     },
     {
+      "word": "Vacillate",
+      "ipa": "/ˈvæsəleɪt/",
+      "urdu": "ذبذب کرنا",
+      "meaning": "To waver between options or opinions; to be indecisive.",
+      "pos": "verb"
+    },
+    {
       "word": "Vandal",
       "ipa": "/ˈvændəl/",
       "urdu": "تخریب کار",
       "meaning": "one who destroys public property",
       "pos": "noun"
+    },
+    {
+      "word": "Venal",
+      "ipa": "/ˈviːnəl/",
+      "urdu": "بدعنوان",
+      "meaning": "Open to bribery; corrupt.",
+      "pos": "adjective"
+    },
+    {
+      "word": "Venial",
+      "ipa": "/ˈviːniəl/",
+      "urdu": "قابلِ بخشش",
+      "meaning": "A minor fault or offense that can be forgiven.",
+      "pos": "adjective"
     },
     {
       "word": "Venomous",
@@ -903,6 +2072,13 @@
       "pos": "adverb"
     },
     {
+      "word": "Verbose",
+      "ipa": "/vərˈboʊs/",
+      "urdu": "لمبا بیان کرنے والا",
+      "meaning": "Using more words than necessary; wordy in style.",
+      "pos": "adjective"
+    },
+    {
       "word": "Veteran",
       "ipa": "/ˈvɛtərən/",
       "urdu": "تجربہ کار",
@@ -915,6 +2091,13 @@
       "urdu": "چوکس",
       "meaning": "watchful",
       "pos": "adjective"
+    },
+    {
+      "word": "Vindicate",
+      "ipa": "/ˈvɪndɪkeɪt/",
+      "urdu": "جواز ثابت کرنا",
+      "meaning": "To show that something or someone is right, justified, or free from blame.",
+      "pos": "verb"
     },
     {
       "word": "Virtuoso",
