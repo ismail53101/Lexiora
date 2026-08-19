@@ -22,7 +22,8 @@
       "sourcePages": [
         49
       ],
-      "order": 0
+      "order": 0,
+      "ipa": "/ˈækˌsɛs/ — /ˈɛkˌsɛs/"
     },
     {
       "word": "Accident — Incident",
@@ -40,7 +41,8 @@
       "sourcePages": [
         38
       ],
-      "order": 1
+      "order": 1,
+      "ipa": "/ˈæksədənt/ — /ˈɪnsədənt/"
     },
     {
       "word": "Acculturate — Acclimatize",
@@ -58,7 +60,8 @@
       "sourcePages": [
         36
       ],
-      "order": 2
+      "order": 2,
+      "ipa": "/acculturate*/ — /acclimatize*/"
     },
     {
       "word": "Adapt — Adopt",
@@ -76,7 +79,8 @@
       "sourcePages": [
         23
       ],
-      "order": 3
+      "order": 3,
+      "ipa": "/əˈdæpt/ — /əˈdɑpt/"
     },
     {
       "word": "Addict — Edict",
@@ -94,7 +98,8 @@
       "sourcePages": [
         29
       ],
-      "order": 4
+      "order": 4,
+      "ipa": "/ˈæˌdɪkt/ — /ˈidɪkt/"
     },
     {
       "word": "Adjoin — Adjourn",
@@ -112,7 +117,8 @@
       "sourcePages": [
         93
       ],
-      "order": 5
+      "order": 5,
+      "ipa": "/əˈʤɔɪn/ — /əˈʤərn/"
     },
     {
       "word": "Adverse — Averse",
@@ -130,7 +136,8 @@
       "sourcePages": [
         88
       ],
-      "order": 6
+      "order": 6,
+      "ipa": "/ˌædˈvərs/ — /əˈvərs/"
     },
     {
       "word": "Affection — Affectation",
@@ -148,7 +155,8 @@
       "sourcePages": [
         13
       ],
-      "order": 7
+      "order": 7,
+      "ipa": "/əˈfɛkʃən/ — /ˌæfɛkˈteɪʃən/"
     },
     {
       "word": "Affluence — Effluence",
@@ -166,7 +174,8 @@
       "sourcePages": [
         82
       ],
-      "order": 8
+      "order": 8,
+      "ipa": "/ˈæfluəns/ — /ˈɛfluəns/"
     },
     {
       "word": "Affluent — Effluent",
@@ -184,7 +193,8 @@
       "sourcePages": [
         125
       ],
-      "order": 9
+      "order": 9,
+      "ipa": "/ˈæfluənt/ — /ˈɛfluənt/"
     },
     {
       "word": "All — Awl",
@@ -202,7 +212,8 @@
       "sourcePages": [
         59
       ],
-      "order": 10
+      "order": 10,
+      "ipa": "/ɔl/ — /awl*/"
     },
     {
       "word": "Allay — Ally",
@@ -220,7 +231,8 @@
       "sourcePages": [
         93
       ],
-      "order": 11
+      "order": 11,
+      "ipa": "/əˈleɪ/ — /ˈælaɪ/"
     },
     {
       "word": "Allude — Elude",
@@ -238,7 +250,8 @@
       "sourcePages": [
         99
       ],
-      "order": 12
+      "order": 12,
+      "ipa": "/əˈlud/ — /ɪˈlud/"
     },
     {
       "word": "Allusive — Elusive",
@@ -256,7 +269,8 @@
       "sourcePages": [
         61
       ],
-      "order": 13
+      "order": 13,
+      "ipa": "/əˈlusɪv/ — /ɪˈlusɪv/"
     },
     {
       "word": "Altar — Alter",
@@ -275,7 +289,8 @@
         10,
         11
       ],
-      "order": 14
+      "order": 14,
+      "ipa": "/ˈɔltər/ — /ˈɔltər/"
     },
     {
       "word": "Alteration — Altercation",
@@ -293,7 +308,8 @@
       "sourcePages": [
         125
       ],
-      "order": 15
+      "order": 15,
+      "ipa": "/ˌɔltərˈeɪʃən/ — /ˌɑltərˈkeɪʃən/"
     },
     {
       "word": "Altogether — All together",
@@ -311,7 +327,8 @@
       "sourcePages": [
         62
       ],
-      "order": 16
+      "order": 16,
+      "ipa": "/ˌɔltəˈgɛðər/ — /ɔl təˈgɛðər/"
     },
     {
       "word": "Amateur — Professional",
@@ -329,7 +346,8 @@
       "sourcePages": [
         125
       ],
-      "order": 17
+      "order": 17,
+      "ipa": "/ˈæməˌʧər/ — /prəˈfɛʃənəl/"
     },
     {
       "word": "Ambiguous — Ambivalent",
@@ -347,7 +365,8 @@
       "sourcePages": [
         62
       ],
-      "order": 18
+      "order": 18,
+      "ipa": "/æmˈbɪgjuəs/ — /æmˈbɪvələnt/"
     },
     {
       "word": "Amiable — Amicable",
@@ -365,7 +384,8 @@
       "sourcePages": [
         5
       ],
-      "order": 19
+      "order": 19,
+      "ipa": "/ˈeɪmiəbəl/ — /ˈæmɪkəbəl/"
     },
     {
       "word": "Amoral — Immoral",
@@ -383,7 +403,8 @@
       "sourcePages": [
         82
       ],
-      "order": 20
+      "order": 20,
+      "ipa": "/eɪˈmɔrəl/ — /ˌɪˈmɔrəl/"
     },
     {
       "word": "Annalist — Analyst",
@@ -401,7 +422,8 @@
       "sourcePages": [
         109
       ],
-      "order": 21
+      "order": 21,
+      "ipa": "/annalist*/ — /ˈænəlɪst/"
     },
     {
       "word": "Antic — Antique",
@@ -419,7 +441,8 @@
       "sourcePages": [
         111
       ],
-      "order": 22
+      "order": 22,
+      "ipa": "/ˈæntɪk/ — /ænˈtik/"
     },
     {
       "word": "Apposite — Opposite",
@@ -437,7 +460,8 @@
       "sourcePages": [
         23
       ],
-      "order": 23
+      "order": 23,
+      "ipa": "/apposite*/ — /ˈɑpəzɪt/"
     },
     {
       "word": "Appraise — Apprise",
@@ -455,7 +479,8 @@
       "sourcePages": [
         21
       ],
-      "order": 24
+      "order": 24,
+      "ipa": "/əˈpreɪz/ — /əˈpraɪz/"
     },
     {
       "word": "Ardor — Order",
@@ -473,7 +498,8 @@
       "sourcePages": [
         27
       ],
-      "order": 25
+      "order": 25,
+      "ipa": "/ˈɑrdər/ — /ˈɔrdər/"
     },
     {
       "word": "Artist — Artiste",
@@ -491,7 +517,8 @@
       "sourcePages": [
         23
       ],
-      "order": 26
+      "order": 26,
+      "ipa": "/ˈɑrtɪst/ — /artiste*/"
     },
     {
       "word": "Ascent — Accent",
@@ -510,7 +537,8 @@
         49,
         50
       ],
-      "order": 27
+      "order": 27,
+      "ipa": "/əˈsɛnt/ — /ˈækˌsɛnt/"
     },
     {
       "word": "Ascent — Assent",
@@ -528,7 +556,8 @@
       "sourcePages": [
         38
       ],
-      "order": 28
+      "order": 28,
+      "ipa": "/əˈsɛnt/ — /əˈsɛnt/"
     },
     {
       "word": "Aspire — Expire",
@@ -546,7 +575,8 @@
       "sourcePages": [
         19
       ],
-      "order": 29
+      "order": 29,
+      "ipa": "/əˈspaɪr/ — /ɪkˈspaɪr/"
     },
     {
       "word": "Assay — Essay",
@@ -564,7 +594,8 @@
       "sourcePages": [
         90
       ],
-      "order": 30
+      "order": 30,
+      "ipa": "/ˈæsi/ — /ˈɛˌseɪ/"
     },
     {
       "word": "Atheist — Agnostic",
@@ -582,7 +613,8 @@
       "sourcePages": [
         57
       ],
-      "order": 31
+      "order": 31,
+      "ipa": "/ˈeɪθiəst/ — /ægˈnɑstɪk/"
     },
     {
       "word": "Auger — Augur",
@@ -600,7 +632,8 @@
       "sourcePages": [
         75
       ],
-      "order": 32
+      "order": 32,
+      "ipa": "/ˈɔgər/ — /ˈɔgər/"
     },
     {
       "word": "Avenge — Revenge",
@@ -618,7 +651,8 @@
       "sourcePages": [
         66
       ],
-      "order": 33
+      "order": 33,
+      "ipa": "/əˈvɛnʤ/ — /riˈvɛnʤ/"
     },
     {
       "word": "Aviary — Apiary",
@@ -637,7 +671,8 @@
         67,
         68
       ],
-      "order": 34
+      "order": 34,
+      "ipa": "/ˈeɪviˌɛri/ — /apiary*/"
     },
     {
       "word": "Bad — Badly",
@@ -655,7 +690,8 @@
       "sourcePages": [
         62
       ],
-      "order": 35
+      "order": 35,
+      "ipa": "/bæd/ — /ˈbædli/"
     },
     {
       "word": "Ballot — Ballet",
@@ -673,7 +709,8 @@
       "sourcePages": [
         53
       ],
-      "order": 36
+      "order": 36,
+      "ipa": "/ˈbælət/ — /bæˈleɪ/"
     },
     {
       "word": "Banned — Band",
@@ -691,7 +728,8 @@
       "sourcePages": [
         70
       ],
-      "order": 37
+      "order": 37,
+      "ipa": "/bænd/ — /bænd/"
     },
     {
       "word": "Barbarism — Barbarity",
@@ -709,7 +747,8 @@
       "sourcePages": [
         17
       ],
-      "order": 38
+      "order": 38,
+      "ipa": "/ˈbɑrbərˌɪzəm/ — /bɑrˈbɛrəti/"
     },
     {
       "word": "Barmy — Balmy",
@@ -727,7 +766,8 @@
       "sourcePages": [
         107
       ],
-      "order": 39
+      "order": 39,
+      "ipa": "/barmy*/ — /ˈbɑmi/"
     },
     {
       "word": "Barred — Bard",
@@ -745,7 +785,8 @@
       "sourcePages": [
         71
       ],
-      "order": 40
+      "order": 40,
+      "ipa": "/bɑrd/ — /bɑrd/"
     },
     {
       "word": "Bases — Basis",
@@ -764,7 +805,8 @@
         93,
         94
       ],
-      "order": 41
+      "order": 41,
+      "ipa": "/ˈbeɪsɪz/ — /ˈbeɪsɪs/"
     },
     {
       "word": "Bear — Bare",
@@ -782,7 +824,8 @@
       "sourcePages": [
         11
       ],
-      "order": 42
+      "order": 42,
+      "ipa": "/bɛr/ — /bɛr/"
     },
     {
       "word": "Below — Beneath",
@@ -801,7 +844,8 @@
         8,
         9
       ],
-      "order": 43
+      "order": 43,
+      "ipa": "/bɪˈloʊ/ — /bɪˈniθ/"
     },
     {
       "word": "Beneficent — Beneficial",
@@ -820,7 +864,8 @@
         97,
         98
       ],
-      "order": 44
+      "order": 44,
+      "ipa": "/ˌbɛnəˈfɪʃənt/ — /ˌbɛnəˈfɪʃəl/"
     },
     {
       "word": "Berth — Birth",
@@ -838,7 +883,8 @@
       "sourcePages": [
         23
       ],
-      "order": 45
+      "order": 45,
+      "ipa": "/bərθ/ — /bərθ/"
     },
     {
       "word": "Beside — Besides",
@@ -856,7 +902,8 @@
       "sourcePages": [
         15
       ],
-      "order": 46
+      "order": 46,
+      "ipa": "/ˌbiˈsaɪd/ — /ˌbiˈsaɪdz/"
     },
     {
       "word": "Bolster — Prop",
@@ -874,7 +921,8 @@
       "sourcePages": [
         125
       ],
-      "order": 47
+      "order": 47,
+      "ipa": "/ˈboʊlstər/ — /prɑp/"
     },
     {
       "word": "Bony — Bonny",
@@ -892,7 +940,8 @@
       "sourcePages": [
         103
       ],
-      "order": 48
+      "order": 48,
+      "ipa": "/ˈboʊni/ — /ˈbɑni/"
     },
     {
       "word": "Born — Borne",
@@ -910,7 +959,8 @@
       "sourcePages": [
         104
       ],
-      "order": 49
+      "order": 49,
+      "ipa": "/bɔrn/ — /bɔrn/"
     },
     {
       "word": "Boy — Buoy",
@@ -928,7 +978,8 @@
       "sourcePages": [
         59
       ],
-      "order": 50
+      "order": 50,
+      "ipa": "/bɔɪ/ — /bui/"
     },
     {
       "word": "Braise — Braze",
@@ -946,7 +997,8 @@
       "sourcePages": [
         99
       ],
-      "order": 51
+      "order": 51,
+      "ipa": "/breɪz/ — /braze*/"
     },
     {
       "word": "Brawl — Bawl",
@@ -964,7 +1016,8 @@
       "sourcePages": [
         106
       ],
-      "order": 52
+      "order": 52,
+      "ipa": "/brɔl/ — /bɔl/"
     },
     {
       "word": "Briefing — Debriefing",
@@ -983,7 +1036,8 @@
         57,
         58
       ],
-      "order": 53
+      "order": 53,
+      "ipa": "/ˈbrifɪŋ/ — /dɪˈbrifɪŋ/"
     },
     {
       "word": "Callous — Callus",
@@ -1001,7 +1055,8 @@
       "sourcePages": [
         104
       ],
-      "order": 54
+      "order": 54,
+      "ipa": "/ˈkæləs/ — /ˈkæləs/"
     },
     {
       "word": "Canon — Cannon",
@@ -1019,7 +1074,8 @@
       "sourcePages": [
         17
       ],
-      "order": 55
+      "order": 55,
+      "ipa": "/ˈkænən/ — /ˈkænən/"
     },
     {
       "word": "Canvas — Canvass",
@@ -1037,7 +1093,8 @@
       "sourcePages": [
         21
       ],
-      "order": 56
+      "order": 56,
+      "ipa": "/ˈkænvəs/ — /ˈkænvəs/"
     },
     {
       "word": "Capital — Capitol",
@@ -1055,7 +1112,8 @@
       "sourcePages": [
         90
       ],
-      "order": 57
+      "order": 57,
+      "ipa": "/ˈkæpɪtəl/ — /ˈkæpɪtəl/"
     },
     {
       "word": "Career — Carrier",
@@ -1074,7 +1132,8 @@
         34,
         35
       ],
-      "order": 58
+      "order": 58,
+      "ipa": "/kərɪr/ — /ˈkɛriər/"
     },
     {
       "word": "Caret — Carat",
@@ -1092,7 +1151,8 @@
       "sourcePages": [
         66
       ],
-      "order": 59
+      "order": 59,
+      "ipa": "/caret*/ — /ˈkɛrət/"
     },
     {
       "word": "Cast — Caste",
@@ -1110,7 +1170,8 @@
       "sourcePages": [
         21
       ],
-      "order": 60
+      "order": 60,
+      "ipa": "/kæst/ — /kæst/"
     },
     {
       "word": "Casual — Causal",
@@ -1128,7 +1189,8 @@
       "sourcePages": [
         15
       ],
-      "order": 61
+      "order": 61,
+      "ipa": "/ˈkæʒəwəl/ — /ˈkɔzəl/"
     },
     {
       "word": "Cease — Seize",
@@ -1146,7 +1208,8 @@
       "sourcePages": [
         34
       ],
-      "order": 62
+      "order": 62,
+      "ipa": "/sis/ — /siz/"
     },
     {
       "word": "Cession — Session",
@@ -1164,7 +1227,8 @@
       "sourcePages": [
         17
       ],
-      "order": 63
+      "order": 63,
+      "ipa": "/cession*/ — /ˈsɛʃən/"
     },
     {
       "word": "Choice — Preference",
@@ -1182,7 +1246,8 @@
       "sourcePages": [
         38
       ],
-      "order": 64
+      "order": 64,
+      "ipa": "/ʧɔɪs/ — /ˈprɛfərəns/"
     },
     {
       "word": "Choral — Coral",
@@ -1201,7 +1266,8 @@
         68,
         69
       ],
-      "order": 65
+      "order": 65,
+      "ipa": "/ˈkɔrəl/ — /ˈkɔrəl/"
     },
     {
       "word": "Cite — Site",
@@ -1219,7 +1285,8 @@
       "sourcePages": [
         29
       ],
-      "order": 66
+      "order": 66,
+      "ipa": "/saɪt/ — /saɪt/"
     },
     {
       "word": "Click — Clique",
@@ -1237,7 +1304,8 @@
       "sourcePages": [
         94
       ],
-      "order": 67
+      "order": 67,
+      "ipa": "/klɪk/ — /klik/"
     },
     {
       "word": "Coign — Coin",
@@ -1255,7 +1323,8 @@
       "sourcePages": [
         110
       ],
-      "order": 68
+      "order": 68,
+      "ipa": "/coign*/ — /kɔɪn/"
     },
     {
       "word": "Collision — Collusion",
@@ -1273,7 +1342,8 @@
       "sourcePages": [
         19
       ],
-      "order": 69
+      "order": 69,
+      "ipa": "/kəˈlɪʒən/ — /kəˈluʒən/"
     },
     {
       "word": "Compare — Contrast",
@@ -1291,7 +1361,8 @@
       "sourcePages": [
         62
       ],
-      "order": 70
+      "order": 70,
+      "ipa": "/kəmˈpɛr/ — /ˈkɑntræst/"
     },
     {
       "word": "Complacent — Complaisant",
@@ -1309,7 +1380,8 @@
       "sourcePages": [
         7
       ],
-      "order": 71
+      "order": 71,
+      "ipa": "/kəmˈpleɪsənt/ — /kəmˈpleɪsənt/"
     },
     {
       "word": "Compliment — Complement",
@@ -1327,7 +1399,8 @@
       "sourcePages": [
         7
       ],
-      "order": 72
+      "order": 72,
+      "ipa": "/ˈkɑmpləmɛnt/ — /ˈkɑmpləmənt/"
     },
     {
       "word": "Conduct — Character",
@@ -1346,7 +1419,8 @@
         40,
         41
       ],
-      "order": 73
+      "order": 73,
+      "ipa": "/ˈkɑndəkt/ — /ˈkɛrɪktər/"
     },
     {
       "word": "Confidant — Confidante",
@@ -1364,7 +1438,8 @@
       "sourcePages": [
         57
       ],
-      "order": 74
+      "order": 74,
+      "ipa": "/ˈkɑnfəˌdɑnt/ — /ˈkɑnfəˌdænt/"
     },
     {
       "word": "Confident — Confidant",
@@ -1382,7 +1457,8 @@
       "sourcePages": [
         11
       ],
-      "order": 75
+      "order": 75,
+      "ipa": "/ˈkɑnfədənt/ — /ˈkɑnfəˌdɑnt/"
     },
     {
       "word": "Conquer — Concur",
@@ -1402,7 +1478,8 @@
         28,
         29
       ],
-      "order": 76
+      "order": 76,
+      "ipa": "/ˈkɑŋkər/ — /kənˈkər/"
     },
     {
       "word": "Conscious — Conscience",
@@ -1420,7 +1497,8 @@
       "sourcePages": [
         57
       ],
-      "order": 77
+      "order": 77,
+      "ipa": "/ˈkɑnʃəs/ — /ˈkɑnʃəns/"
     },
     {
       "word": "Conscious — Conscientious",
@@ -1439,7 +1517,8 @@
         51,
         53
       ],
-      "order": 78
+      "order": 78,
+      "ipa": "/ˈkɑnʃəs/ — /ˌkɑnʃiˈɛnʃəs/"
     },
     {
       "word": "Consciousness — Conscientiousness",
@@ -1457,7 +1536,8 @@
       "sourcePages": [
         1
       ],
-      "order": 79
+      "order": 79,
+      "ipa": "/ˈkɑnʃəsnəs/ — /conscientiousness*/"
     },
     {
       "word": "Considerable — Considerate",
@@ -1475,7 +1555,8 @@
       "sourcePages": [
         5
       ],
-      "order": 80
+      "order": 80,
+      "ipa": "/kənˈsɪdərəbəl/ — /kənˈsɪdərət/"
     },
     {
       "word": "Contemptible — Contemptuous",
@@ -1493,7 +1574,8 @@
       "sourcePages": [
         32
       ],
-      "order": 81
+      "order": 81,
+      "ipa": "/kənˈtɛmptəbəl/ — /kənˈtɛmpʧuəs/"
     },
     {
       "word": "Continual — Continuous",
@@ -1511,7 +1593,8 @@
       "sourcePages": [
         23
       ],
-      "order": 82
+      "order": 82,
+      "ipa": "/kənˈtɪnjuəl/ — /kənˈtɪnjuəs/"
     },
     {
       "word": "Corporal — Corporeal",
@@ -1529,7 +1612,8 @@
       "sourcePages": [
         74
       ],
-      "order": 83
+      "order": 83,
+      "ipa": "/ˈkɔrpərəl/ — /corporeal*/"
     },
     {
       "word": "Corps — Corpse",
@@ -1547,7 +1631,8 @@
       "sourcePages": [
         53
       ],
-      "order": 84
+      "order": 84,
+      "ipa": "/kɔrz/ — /kɔrps/"
     },
     {
       "word": "Counsel — Council",
@@ -1566,7 +1651,8 @@
         19,
         20
       ],
-      "order": 85
+      "order": 85,
+      "ipa": "/ˈkaʊnsəl/ — /ˈkaʊnsəl/"
     },
     {
       "word": "Cow — Mooch",
@@ -1584,7 +1670,8 @@
       "sourcePages": [
         125
       ],
-      "order": 86
+      "order": 86,
+      "ipa": "/kaʊ/ — /mooch*/"
     },
     {
       "word": "Creak — Creek",
@@ -1602,7 +1689,8 @@
       "sourcePages": [
         118
       ],
-      "order": 87
+      "order": 87,
+      "ipa": "/krik/ — /krik/"
     },
     {
       "word": "Crepuscular — Crepitation",
@@ -1620,7 +1708,8 @@
       "sourcePages": [
         123
       ],
-      "order": 88
+      "order": 88,
+      "ipa": "/crepuscular*/ — /crepitation*/"
     },
     {
       "word": "Crevice — Crevasse",
@@ -1638,7 +1727,8 @@
       "sourcePages": [
         97
       ],
-      "order": 89
+      "order": 89,
+      "ipa": "/ˈkrɛvəs/ — /krəˈvæs/"
     },
     {
       "word": "Crib — Crypt",
@@ -1657,7 +1747,8 @@
         106,
         107
       ],
-      "order": 90
+      "order": 90,
+      "ipa": "/krɪb/ — /krɪpt/"
     },
     {
       "word": "Custom — Habit",
@@ -1675,7 +1766,8 @@
       "sourcePages": [
         36
       ],
-      "order": 91
+      "order": 91,
+      "ipa": "/ˈkəstəm/ — /ˈhæbət/"
     },
     {
       "word": "Decree — Degree",
@@ -1693,7 +1785,8 @@
       "sourcePages": [
         91
       ],
-      "order": 92
+      "order": 92,
+      "ipa": "/dɪˈkri/ — /dɪˈgri/"
     },
     {
       "word": "Deduce — Imply",
@@ -1711,7 +1804,8 @@
       "sourcePages": [
         132
       ],
-      "order": 93
+      "order": 93,
+      "ipa": "/dɪˈdus/ — /ˌɪmˈplaɪ/"
     },
     {
       "word": "Deface — Efface",
@@ -1729,7 +1823,8 @@
       "sourcePages": [
         40
       ],
-      "order": 94
+      "order": 94,
+      "ipa": "/dɪˈfeɪs/ — /ɪˈfeɪs/"
     },
     {
       "word": "Defenestration — Dénouement",
@@ -1747,7 +1842,8 @@
       "sourcePages": [
         122
       ],
-      "order": 95
+      "order": 95,
+      "ipa": "/diˌfɛnɛˈstreɪʃən/ — /dénouement*/"
     },
     {
       "word": "Deference — Difference",
@@ -1765,7 +1861,8 @@
       "sourcePages": [
         30
       ],
-      "order": 96
+      "order": 96,
+      "ipa": "/ˈdɛfərəns/ — /ˈdɪfərəns/"
     },
     {
       "word": "Degrade — Denigrate",
@@ -1783,7 +1880,8 @@
       "sourcePages": [
         83
       ],
-      "order": 97
+      "order": 97,
+      "ipa": "/dɪˈgreɪd/ — /ˈdɛnəˌgreɪt/"
     },
     {
       "word": "Demesne — Demean",
@@ -1801,7 +1899,8 @@
       "sourcePages": [
         68
       ],
-      "order": 98
+      "order": 98,
+      "ipa": "/demesne*/ — /dɪˈmin/"
     },
     {
       "word": "Deprecate — Depreciate",
@@ -1819,7 +1918,8 @@
       "sourcePages": [
         78
       ],
-      "order": 99
+      "order": 99,
+      "ipa": "/ˈdɛprəˌkeɪt/ — /dɪˈpriʃiˌeɪt/"
     },
     {
       "word": "Desolate — Dissolute",
@@ -1837,7 +1937,8 @@
       "sourcePages": [
         91
       ],
-      "order": 100
+      "order": 100,
+      "ipa": "/ˈdɛzələt/ — /dissolute*/"
     },
     {
       "word": "Diary — Dairy",
@@ -1855,7 +1956,8 @@
       "sourcePages": [
         55
       ],
-      "order": 101
+      "order": 101,
+      "ipa": "/ˈdaɪəri/ — /ˈdɛri/"
     },
     {
       "word": "Differ — Defer",
@@ -1873,7 +1975,8 @@
       "sourcePages": [
         40
       ],
-      "order": 102
+      "order": 102,
+      "ipa": "/ˈdɪfər/ — /dɪˈfər/"
     },
     {
       "word": "Differ from — Differ with",
@@ -1891,7 +1994,8 @@
       "sourcePages": [
         64
       ],
-      "order": 103
+      "order": 103,
+      "ipa": "/ˈdɪfər frəm/ — /ˈdɪfər wɪθ/"
     },
     {
       "word": "Dinghy — Dingy",
@@ -1910,7 +2014,8 @@
         103,
         104
       ],
-      "order": 104
+      "order": 104,
+      "ipa": "/ˈdɪŋi/ — /ˈdɪnʤi/"
     },
     {
       "word": "Disclosure — Exposure",
@@ -1928,7 +2033,8 @@
       "sourcePages": [
         36
       ],
-      "order": 105
+      "order": 105,
+      "ipa": "/dɪˈskloʊʒər/ — /ɪkˈspoʊʒər/"
     },
     {
       "word": "Discrete — Discreet",
@@ -1946,7 +2052,8 @@
       "sourcePages": [
         70
       ],
-      "order": 106
+      "order": 106,
+      "ipa": "/dɪˈskrit/ — /dɪˈskrit/"
     },
     {
       "word": "Disease — Decease",
@@ -1964,7 +2071,8 @@
       "sourcePages": [
         11
       ],
-      "order": 107
+      "order": 107,
+      "ipa": "/dɪˈziz/ — /dɪˈsis/"
     },
     {
       "word": "Dissonance — Harmony",
@@ -1982,7 +2090,8 @@
       "sourcePages": [
         124
       ],
-      "order": 108
+      "order": 108,
+      "ipa": "/ˈdɪsənəns/ — /ˈhɑrməni/"
     },
     {
       "word": "Distinct — Distinctive",
@@ -2000,7 +2109,8 @@
       "sourcePages": [
         78
       ],
-      "order": 109
+      "order": 109,
+      "ipa": "/dɪˈstɪŋkt/ — /dɪˈstɪŋktɪv/"
     },
     {
       "word": "Distract — Detract",
@@ -2018,7 +2128,8 @@
       "sourcePages": [
         94
       ],
-      "order": 110
+      "order": 110,
+      "ipa": "/dɪˈstrækt/ — /dɪˈtrækt/"
     },
     {
       "word": "Dose — Doze",
@@ -2036,7 +2147,8 @@
       "sourcePages": [
         117
       ],
-      "order": 111
+      "order": 111,
+      "ipa": "/doʊs/ — /doʊz/"
     },
     {
       "word": "Draught — Drought",
@@ -2055,7 +2167,8 @@
         111,
         114
       ],
-      "order": 112
+      "order": 112,
+      "ipa": "/dræft/ — /draʊt/"
     },
     {
       "word": "Dual — Duel",
@@ -2073,7 +2186,8 @@
       "sourcePages": [
         59
       ],
-      "order": 113
+      "order": 113,
+      "ipa": "/duəl/ — /duəl/"
     },
     {
       "word": "Due — Dew",
@@ -2092,7 +2206,8 @@
         53,
         54
       ],
-      "order": 114
+      "order": 114,
+      "ipa": "/du/ — /du/"
     },
     {
       "word": "Elicit — Illicit",
@@ -2111,7 +2226,8 @@
         118,
         119
       ],
-      "order": 115
+      "order": 115,
+      "ipa": "/ɪˈlɪsɪt/ — /ˌɪˈlɪsət/"
     },
     {
       "word": "Eligible — Illegible",
@@ -2129,7 +2245,8 @@
       "sourcePages": [
         30
       ],
-      "order": 116
+      "order": 116,
+      "ipa": "/ˈɛlɪʤəbəl/ — /ˌɪˈlɛʤəbəl/"
     },
     {
       "word": "Emigrate — Immigrate",
@@ -2148,7 +2265,8 @@
         75,
         76
       ],
-      "order": 117
+      "order": 117,
+      "ipa": "/ˈɛməˌgreɪt/ — /ˈɪməˌgreɪt/"
     },
     {
       "word": "Eminent — Imminent",
@@ -2166,7 +2284,8 @@
       "sourcePages": [
         30
       ],
-      "order": 118
+      "order": 118,
+      "ipa": "/ˈɛmənənt/ — /ˈɪmənənt/"
     },
     {
       "word": "Eminent — Prominent",
@@ -2185,7 +2304,8 @@
         7,
         8
       ],
-      "order": 119
+      "order": 119,
+      "ipa": "/ˈɛmənənt/ — /ˈprɑmənənt/"
     },
     {
       "word": "Envelop — Envelope",
@@ -2203,7 +2323,8 @@
       "sourcePages": [
         90
       ],
-      "order": 120
+      "order": 120,
+      "ipa": "/ɪnˈvɛləp/ — /ˈɛnvəˌloʊp/"
     },
     {
       "word": "Enviable — Envious",
@@ -2221,7 +2342,8 @@
       "sourcePages": [
         42
       ],
-      "order": 121
+      "order": 121,
+      "ipa": "/ˈɛnviəbəl/ — /ˈɛnviəs/"
     },
     {
       "word": "Envy — Jealousy",
@@ -2239,7 +2361,8 @@
       "sourcePages": [
         76
       ],
-      "order": 122
+      "order": 122,
+      "ipa": "/ˈɛnvi/ — /ˈʤɛləsi/"
     },
     {
       "word": "Epic — Epoch",
@@ -2257,7 +2380,8 @@
       "sourcePages": [
         70
       ],
-      "order": 123
+      "order": 123,
+      "ipa": "/ˈɛpɪk/ — /ˈɛpək/"
     },
     {
       "word": "Epigram — Epigraph",
@@ -2275,7 +2399,8 @@
       "sourcePages": [
         106
       ],
-      "order": 124
+      "order": 124,
+      "ipa": "/ˈɛpəˌgræm/ — /epigraph*/"
     },
     {
       "word": "Euphemistic — Euphuistic",
@@ -2293,7 +2418,8 @@
       "sourcePages": [
         82
       ],
-      "order": 125
+      "order": 125,
+      "ipa": "/ˌjufəˈmɪstɪk/ — /euphuistic*/"
     },
     {
       "word": "Exceptional — Exceptionable",
@@ -2311,7 +2437,8 @@
       "sourcePages": [
         27
       ],
-      "order": 126
+      "order": 126,
+      "ipa": "/ɪkˈsɛpʃənəl/ — /exceptionable*/"
     },
     {
       "word": "Excite — Incite",
@@ -2329,7 +2456,8 @@
       "sourcePages": [
         25
       ],
-      "order": 127
+      "order": 127,
+      "ipa": "/ɪkˈsaɪt/ — /ˌɪnˈsaɪt/"
     },
     {
       "word": "Expedient — Expeditious",
@@ -2348,7 +2476,8 @@
         20,
         21
       ],
-      "order": 128
+      "order": 128,
+      "ipa": "/ɪkˈspidiənt/ — /ˌɛkspəˈdɪʃəs/"
     },
     {
       "word": "Facilitate — Felicitate",
@@ -2366,7 +2495,8 @@
       "sourcePages": [
         34
       ],
-      "order": 129
+      "order": 129,
+      "ipa": "/fəˈsɪləˌteɪt/ — /fəˈlɪsɪˌteɪt/"
     },
     {
       "word": "Fain — Feign",
@@ -2384,7 +2514,8 @@
       "sourcePages": [
         71
       ],
-      "order": 130
+      "order": 130,
+      "ipa": "/feɪn/ — /feɪn/"
     },
     {
       "word": "Faint — Feint",
@@ -2402,7 +2533,8 @@
       "sourcePages": [
         104
       ],
-      "order": 131
+      "order": 131,
+      "ipa": "/feɪnt/ — /feɪnt/"
     },
     {
       "word": "Fair — Fare",
@@ -2420,7 +2552,8 @@
       "sourcePages": [
         42
       ],
-      "order": 132
+      "order": 132,
+      "ipa": "/fɛr/ — /fɛr/"
     },
     {
       "word": "Fallow — Fellow",
@@ -2438,7 +2571,8 @@
       "sourcePages": [
         128
       ],
-      "order": 133
+      "order": 133,
+      "ipa": "/ˈfæˌloʊ/ — /ˈfɛloʊ/"
     },
     {
       "word": "Fantastic — Fanatical",
@@ -2456,7 +2590,8 @@
       "sourcePages": [
         1
       ],
-      "order": 134
+      "order": 134,
+      "ipa": "/fænˈtæstɪk/ — /fəˈnætɪkəl/"
     },
     {
       "word": "Farther — Further",
@@ -2474,7 +2609,8 @@
       "sourcePages": [
         64
       ],
-      "order": 135
+      "order": 135,
+      "ipa": "/ˈfɑrðər/ — /ˈfərðər/"
     },
     {
       "word": "Faze — Phase",
@@ -2492,7 +2628,8 @@
       "sourcePages": [
         100
       ],
-      "order": 136
+      "order": 136,
+      "ipa": "/feɪz/ — /feɪz/"
     },
     {
       "word": "Feet — Feat",
@@ -2510,7 +2647,8 @@
       "sourcePages": [
         42
       ],
-      "order": 137
+      "order": 137,
+      "ipa": "/fit/ — /fit/"
     },
     {
       "word": "Flagrant — Fragrant",
@@ -2528,7 +2666,8 @@
       "sourcePages": [
         124
       ],
-      "order": 138
+      "order": 138,
+      "ipa": "/ˈfleɪgrənt/ — /ˈfreɪgrənt/"
     },
     {
       "word": "Flatter — Flutter",
@@ -2546,7 +2685,8 @@
       "sourcePages": [
         45
       ],
-      "order": 139
+      "order": 139,
+      "ipa": "/ˈflætər/ — /ˈflətər/"
     },
     {
       "word": "Functional — Dysfunctional",
@@ -2564,7 +2704,8 @@
       "sourcePages": [
         61
       ],
-      "order": 140
+      "order": 140,
+      "ipa": "/ˈfəŋkʃənəl/ — /dɪsˈfəŋkʃənəl/"
     },
     {
       "word": "Furor — Furore",
@@ -2582,7 +2723,8 @@
       "sourcePages": [
         103
       ],
-      "order": 141
+      "order": 141,
+      "ipa": "/fˈjʊrɔr/ — /furore*/"
     },
     {
       "word": "Gest — Jest",
@@ -2600,7 +2742,8 @@
       "sourcePages": [
         109
       ],
-      "order": 142
+      "order": 142,
+      "ipa": "/ʤɛst/ — /ʤɛst/"
     },
     {
       "word": "Ghostly — Ghastly",
@@ -2618,7 +2761,8 @@
       "sourcePages": [
         87
       ],
-      "order": 143
+      "order": 143,
+      "ipa": "/ˈgoʊstli/ — /ˈgæstli/"
     },
     {
       "word": "Gibe — Jibe",
@@ -2636,7 +2780,8 @@
       "sourcePages": [
         106
       ],
-      "order": 144
+      "order": 144,
+      "ipa": "/ʤaɪb/ — /ʤaɪb/"
     },
     {
       "word": "Grateful — Gratified",
@@ -2654,7 +2799,8 @@
       "sourcePages": [
         3
       ],
-      "order": 145
+      "order": 145,
+      "ipa": "/ˈgreɪtfəl/ — /ˈgrætəˌfaɪd/"
     },
     {
       "word": "Hew — Hue",
@@ -2672,7 +2818,8 @@
       "sourcePages": [
         87
       ],
-      "order": 146
+      "order": 146,
+      "ipa": "/hju/ — /hju/"
     },
     {
       "word": "Hoard — Horde",
@@ -2690,7 +2837,8 @@
       "sourcePages": [
         72
       ],
-      "order": 147
+      "order": 147,
+      "ipa": "/hɔrd/ — /hɔrd/"
     },
     {
       "word": "Honourable — Honorary",
@@ -2708,7 +2856,8 @@
       "sourcePages": [
         1
       ],
-      "order": 148
+      "order": 148,
+      "ipa": "/ˈɑnərəbəl/ — /ˈɑnərˌɛri/"
     },
     {
       "word": "Humiliation — Humility",
@@ -2727,7 +2876,8 @@
         15,
         16
       ],
-      "order": 149
+      "order": 149,
+      "ipa": "/hjuˌmɪliˈeɪʃən/ — /hjuˈmɪlɪti/"
     },
     {
       "word": "Illusion — Allusion",
@@ -2745,7 +2895,8 @@
       "sourcePages": [
         19
       ],
-      "order": 150
+      "order": 150,
+      "ipa": "/ˌɪˈluʒən/ — /əˈluʒən/"
     },
     {
       "word": "Illusion — Delusion",
@@ -2763,7 +2914,8 @@
       "sourcePages": [
         72
       ],
-      "order": 151
+      "order": 151,
+      "ipa": "/ˌɪˈluʒən/ — /dɪˈluʒən/"
     },
     {
       "word": "Imaginary — Imaginative",
@@ -2781,7 +2933,8 @@
       "sourcePages": [
         3
       ],
-      "order": 152
+      "order": 152,
+      "ipa": "/ˌɪˈmæʤəˌnɛri/ — /ˌɪˈmæʤənətɪv/"
     },
     {
       "word": "Immigrant — Emigrant",
@@ -2799,7 +2952,8 @@
       "sourcePages": [
         32
       ],
-      "order": 153
+      "order": 153,
+      "ipa": "/ˈɪməgrənt/ — /ˈɛməgrənt/"
     },
     {
       "word": "Imperial — Imperious",
@@ -2818,7 +2972,8 @@
         82,
         83
       ],
-      "order": 154
+      "order": 154,
+      "ipa": "/ˌɪmˈpɪriəl/ — /ˌɪmˈpɪriəs/"
     },
     {
       "word": "Industrial — Industrious",
@@ -2836,7 +2991,8 @@
       "sourcePages": [
         117
       ],
-      "order": 155
+      "order": 155,
+      "ipa": "/ˌɪnˈdəstriəl/ — /ˌɪnˈdəstriəs/"
     },
     {
       "word": "Ingenious — Ingenuous",
@@ -2854,7 +3010,8 @@
       "sourcePages": [
         1
       ],
-      "order": 156
+      "order": 156,
+      "ipa": "/ˌɪnˈʤinjəs/ — /ˌɪnˈʤɛnjuəs/"
     },
     {
       "word": "Invade — Attack",
@@ -2872,7 +3029,8 @@
       "sourcePages": [
         76
       ],
-      "order": 157
+      "order": 157,
+      "ipa": "/ˌɪnˈveɪd/ — /əˈtæk/"
     },
     {
       "word": "Jewry — Jury",
@@ -2890,7 +3048,8 @@
       "sourcePages": [
         61
       ],
-      "order": 158
+      "order": 158,
+      "ipa": "/ˈʤuri/ — /ˈʤʊri/"
     },
     {
       "word": "Judicial — Judicious",
@@ -2908,7 +3067,8 @@
       "sourcePages": [
         13
       ],
-      "order": 159
+      "order": 159,
+      "ipa": "/ʤuˈdɪʃəl/ — /ʤuˈdɪʃəs/"
     },
     {
       "word": "Kerb — Curb",
@@ -2926,7 +3086,8 @@
       "sourcePages": [
         99
       ],
-      "order": 160
+      "order": 160,
+      "ipa": "/kərb/ — /kərb/"
     },
     {
       "word": "Key — Quay",
@@ -2944,7 +3105,8 @@
       "sourcePages": [
         110
       ],
-      "order": 161
+      "order": 161,
+      "ipa": "/ki/ — /ki/"
     },
     {
       "word": "Ladylike — Ladyship",
@@ -2962,7 +3124,8 @@
       "sourcePages": [
         61
       ],
-      "order": 162
+      "order": 162,
+      "ipa": "/ˈleɪdiˌlaɪk/ — /ladyship*/"
     },
     {
       "word": "Layout — Outlay",
@@ -2980,7 +3143,8 @@
       "sourcePages": [
         34
       ],
-      "order": 163
+      "order": 163,
+      "ipa": "/leɪaʊt/ — /ˈaʊˌtleɪ/"
     },
     {
       "word": "Leek — Leak",
@@ -2998,7 +3162,8 @@
       "sourcePages": [
         110
       ],
-      "order": 164
+      "order": 164,
+      "ipa": "/lik/ — /lik/"
     },
     {
       "word": "Less — Lest",
@@ -3016,7 +3181,8 @@
       "sourcePages": [
         49
       ],
-      "order": 165
+      "order": 165,
+      "ipa": "/lɛs/ — /lɛst/"
     },
     {
       "word": "Liable — Libel",
@@ -3035,7 +3201,8 @@
         94,
         95
       ],
-      "order": 166
+      "order": 166,
+      "ipa": "/ˈlaɪəbəl/ — /ˈlaɪbɛl/"
     },
     {
       "word": "Libel — Liable",
@@ -3053,7 +3220,8 @@
       "sourcePages": [
         70
       ],
-      "order": 167
+      "order": 167,
+      "ipa": "/ˈlaɪbɛl/ — /ˈlaɪəbəl/"
     },
     {
       "word": "Loath — Loathe",
@@ -3071,7 +3239,8 @@
       "sourcePages": [
         81
       ],
-      "order": 168
+      "order": 168,
+      "ipa": "/loʊθ/ — /loʊð/"
     },
     {
       "word": "Loose — Lose",
@@ -3089,7 +3258,8 @@
       "sourcePages": [
         57
       ],
-      "order": 169
+      "order": 169,
+      "ipa": "/lus/ — /luz/"
     },
     {
       "word": "Lose — Loose",
@@ -3108,7 +3278,8 @@
         104,
         105
       ],
-      "order": 170
+      "order": 170,
+      "ipa": "/luz/ — /lus/"
     },
     {
       "word": "Luxuriant — Luxurious",
@@ -3126,7 +3297,8 @@
       "sourcePages": [
         86
       ],
-      "order": 171
+      "order": 171,
+      "ipa": "/ləgˈʒəriənt/ — /ləgˈʒəriəs/"
     },
     {
       "word": "Mail — Male",
@@ -3144,7 +3316,8 @@
       "sourcePages": [
         70
       ],
-      "order": 172
+      "order": 172,
+      "ipa": "/meɪl/ — /meɪl/"
     },
     {
       "word": "Maize — Maze",
@@ -3162,7 +3335,8 @@
       "sourcePages": [
         88
       ],
-      "order": 173
+      "order": 173,
+      "ipa": "/meɪz/ — /meɪz/"
     },
     {
       "word": "Maybe — May be",
@@ -3180,7 +3354,8 @@
       "sourcePages": [
         100
       ],
-      "order": 174
+      "order": 174,
+      "ipa": "/ˈmeɪbi/ — /meɪ bi/"
     },
     {
       "word": "Mean — Mien",
@@ -3198,7 +3373,8 @@
       "sourcePages": [
         86
       ],
-      "order": 175
+      "order": 175,
+      "ipa": "/min/ — /min/"
     },
     {
       "word": "Medal — Meddle",
@@ -3216,7 +3392,8 @@
       "sourcePages": [
         88
       ],
-      "order": 176
+      "order": 176,
+      "ipa": "/ˈmɛdəl/ — /ˈmɛdəl/"
     },
     {
       "word": "Minute — Minuet",
@@ -3234,7 +3411,8 @@
       "sourcePages": [
         101
       ],
-      "order": 177
+      "order": 177,
+      "ipa": "/ˈmɪnət/ — /mɪnˌjuˈɛt/"
     },
     {
       "word": "Mitigate — Alleviate",
@@ -3252,7 +3430,8 @@
       "sourcePages": [
         25
       ],
-      "order": 178
+      "order": 178,
+      "ipa": "/ˈmɪtəˌgeɪt/ — /əˈliviˌeɪt/"
     },
     {
       "word": "Moat — Mote",
@@ -3270,7 +3449,8 @@
       "sourcePages": [
         80
       ],
-      "order": 179
+      "order": 179,
+      "ipa": "/moʊt/ — /moʊt/"
     },
     {
       "word": "Momentary — Momentous",
@@ -3288,7 +3468,8 @@
       "sourcePages": [
         5
       ],
-      "order": 180
+      "order": 180,
+      "ipa": "/ˈmoʊmənˌtɛri/ — /moʊˈmɛntəs/"
     },
     {
       "word": "Monitor — Mentor",
@@ -3306,7 +3487,8 @@
       "sourcePages": [
         96
       ],
-      "order": 181
+      "order": 181,
+      "ipa": "/ˈmɑnətər/ — /ˈmɛnˌtɔr/"
     },
     {
       "word": "Monogamous — Monogenous",
@@ -3325,7 +3507,8 @@
         107,
         108
       ],
-      "order": 182
+      "order": 182,
+      "ipa": "/məˈnɑgəməs/ — /monogenous*/"
     },
     {
       "word": "Naughty — Knotty",
@@ -3343,7 +3526,8 @@
       "sourcePages": [
         87
       ],
-      "order": 183
+      "order": 183,
+      "ipa": "/ˈnɔti/ — /ˈnɑti/"
     },
     {
       "word": "Need — Knead",
@@ -3361,7 +3545,8 @@
       "sourcePages": [
         68
       ],
-      "order": 184
+      "order": 184,
+      "ipa": "/nid/ — /nid/"
     },
     {
       "word": "Negligent — Negligible",
@@ -3379,7 +3564,8 @@
       "sourcePages": [
         3
       ],
-      "order": 185
+      "order": 185,
+      "ipa": "/ˈnɛglɪʤənt/ — /ˈnɛglɪʤəbəl/"
     },
     {
       "word": "Observation — Observance",
@@ -3397,7 +3583,8 @@
       "sourcePages": [
         86
       ],
-      "order": 186
+      "order": 186,
+      "ipa": "/ˌɑbzərˈveɪʃən/ — /əbˈzərvəns/"
     },
     {
       "word": "Occlude — Occult",
@@ -3415,7 +3602,8 @@
       "sourcePages": [
         64
       ],
-      "order": 187
+      "order": 187,
+      "ipa": "/occlude*/ — /əˈkəlt/"
     },
     {
       "word": "Official — Officious",
@@ -3433,7 +3621,8 @@
       "sourcePages": [
         15
       ],
-      "order": 188
+      "order": 188,
+      "ipa": "/əˈfɪʃəl/ — /officious*/"
     },
     {
       "word": "Ordinance — Ordnance",
@@ -3451,7 +3640,8 @@
       "sourcePages": [
         89
       ],
-      "order": 189
+      "order": 189,
+      "ipa": "/ˈɔrdənəns/ — /ˈɔrdnəns/"
     },
     {
       "word": "Outbreak — Breakout",
@@ -3469,7 +3659,8 @@
       "sourcePages": [
         34
       ],
-      "order": 190
+      "order": 190,
+      "ipa": "/ˈaʊtˌbreɪk/ — /ˈbreɪˌkaʊt/"
     },
     {
       "word": "Pair — Pare",
@@ -3487,7 +3678,8 @@
       "sourcePages": [
         126
       ],
-      "order": 191
+      "order": 191,
+      "ipa": "/pɛr/ — /pɛr/"
     },
     {
       "word": "Palate — Palette",
@@ -3505,7 +3697,8 @@
       "sourcePages": [
         118
       ],
-      "order": 192
+      "order": 192,
+      "ipa": "/ˈpælɪt/ — /ˈpælət/"
     },
     {
       "word": "Par — At a par",
@@ -3523,7 +3716,8 @@
       "sourcePages": [
         7
       ],
-      "order": 193
+      "order": 193,
+      "ipa": "/pɑr/ — /æt ə pɑr/"
     },
     {
       "word": "Peal — Peel",
@@ -3541,7 +3735,8 @@
       "sourcePages": [
         119
       ],
-      "order": 194
+      "order": 194,
+      "ipa": "/pil/ — /pil/"
     },
     {
       "word": "Peat — Petite",
@@ -3559,7 +3754,8 @@
       "sourcePages": [
         107
       ],
-      "order": 195
+      "order": 195,
+      "ipa": "/pit/ — /pəˈtit/"
     },
     {
       "word": "Penitence — Penance",
@@ -3577,7 +3773,8 @@
       "sourcePages": [
         97
       ],
-      "order": 196
+      "order": 196,
+      "ipa": "/penitence*/ — /ˈpɛnəns/"
     },
     {
       "word": "Persecute — Prosecute",
@@ -3595,7 +3792,8 @@
       "sourcePages": [
         25
       ],
-      "order": 197
+      "order": 197,
+      "ipa": "/ˈpərsəˌkjut/ — /ˈprɑsəˌkjut/"
     },
     {
       "word": "Placable — Placeable",
@@ -3613,7 +3811,8 @@
       "sourcePages": [
         3
       ],
-      "order": 198
+      "order": 198,
+      "ipa": "/placable*/ — /placeable*/"
     },
     {
       "word": "Plaintiff — Plaintive",
@@ -3631,7 +3830,8 @@
       "sourcePages": [
         95
       ],
-      "order": 199
+      "order": 199,
+      "ipa": "/ˈpleɪnəf/ — /ˈpleɪnɪv/"
     },
     {
       "word": "Politician — Statesman",
@@ -3650,7 +3850,8 @@
         1,
         2
       ],
-      "order": 200
+      "order": 200,
+      "ipa": "/ˌpɑləˈtɪʃən/ — /ˈsteɪtsmən/"
     },
     {
       "word": "Popular — Populace",
@@ -3668,7 +3869,8 @@
       "sourcePages": [
         25
       ],
-      "order": 201
+      "order": 201,
+      "ipa": "/ˈpɑpjələr/ — /ˈpɑpjələs/"
     },
     {
       "word": "Portly — Comely",
@@ -3686,7 +3888,8 @@
       "sourcePages": [
         9
       ],
-      "order": 202
+      "order": 202,
+      "ipa": "/ˈpɔrtli/ — /ˈkəmli/"
     },
     {
       "word": "Postilion — Posterior",
@@ -3704,7 +3907,8 @@
       "sourcePages": [
         108
       ],
-      "order": 203
+      "order": 203,
+      "ipa": "/postilion*/ — /ˌpɔˈstɪrjər/"
     },
     {
       "word": "Pour — Pore",
@@ -3722,7 +3926,8 @@
       "sourcePages": [
         15
       ],
-      "order": 204
+      "order": 204,
+      "ipa": "/pɔr/ — /pɔr/"
     },
     {
       "word": "Practical — Practicable",
@@ -3740,7 +3945,8 @@
       "sourcePages": [
         64
       ],
-      "order": 205
+      "order": 205,
+      "ipa": "/ˈpræktɪkəl/ — /ˈpræktəkəbəl/"
     },
     {
       "word": "Precipitate — Precipitous",
@@ -3758,7 +3964,8 @@
       "sourcePages": [
         83
       ],
-      "order": 206
+      "order": 206,
+      "ipa": "/prɪˈsɪpɪˌteɪt/ — /prɪˈsɪpɪtəs/"
     },
     {
       "word": "Premier — Premiere",
@@ -3776,7 +3983,8 @@
       "sourcePages": [
         51
       ],
-      "order": 207
+      "order": 207,
+      "ipa": "/prɛˈmɪr/ — /prɛˈmɪr/"
     },
     {
       "word": "Prescribe — Proscribe",
@@ -3794,7 +4002,8 @@
       "sourcePages": [
         38
       ],
-      "order": 208
+      "order": 208,
+      "ipa": "/prəˈskraɪb/ — /proʊˈskraɪb/"
     },
     {
       "word": "President — Precedent",
@@ -3812,7 +4021,8 @@
       "sourcePages": [
         30
       ],
-      "order": 209
+      "order": 209,
+      "ipa": "/ˈprɛzɪdənt/ — /ˈprɛsɪdənt/"
     },
     {
       "word": "Proceed — Precede",
@@ -3830,7 +4040,8 @@
       "sourcePages": [
         29
       ],
-      "order": 210
+      "order": 210,
+      "ipa": "/pərˈsid/ — /prɪˈsid/"
     },
     {
       "word": "Punctual — Punctilious",
@@ -3848,7 +4059,8 @@
       "sourcePages": [
         79
       ],
-      "order": 211
+      "order": 211,
+      "ipa": "/ˈpəŋkʧuəl/ — /pəŋkˈtɪliəs/"
     },
     {
       "word": "Quaint — Queer",
@@ -3866,7 +4078,8 @@
       "sourcePages": [
         114
       ],
-      "order": 212
+      "order": 212,
+      "ipa": "/kweɪnt/ — /kwɪr/"
     },
     {
       "word": "Quarts — Quartz",
@@ -3884,7 +4097,8 @@
       "sourcePages": [
         68
       ],
-      "order": 213
+      "order": 213,
+      "ipa": "/kwɔrts/ — /kwɔrts/"
     },
     {
       "word": "Queue — Cue",
@@ -3902,7 +4116,8 @@
       "sourcePages": [
         68
       ],
-      "order": 214
+      "order": 214,
+      "ipa": "/kju/ — /kju/"
     },
     {
       "word": "Quiet — Quite",
@@ -3920,7 +4135,8 @@
       "sourcePages": [
         49
       ],
-      "order": 215
+      "order": 215,
+      "ipa": "/kwaɪət/ — /kwaɪt/"
     },
     {
       "word": "Ravel — Reveal",
@@ -3938,7 +4154,8 @@
       "sourcePages": [
         134
       ],
-      "order": 216
+      "order": 216,
+      "ipa": "/ˈrævəl/ — /rɪˈvil/"
     },
     {
       "word": "Raze — Raise",
@@ -3957,7 +4174,8 @@
         64,
         66
       ],
-      "order": 217
+      "order": 217,
+      "ipa": "/reɪz/ — /reɪz/"
     },
     {
       "word": "Resister — Resistor",
@@ -3975,7 +4193,8 @@
       "sourcePages": [
         105
       ],
-      "order": 218
+      "order": 218,
+      "ipa": "/resister*/ — /resistor*/"
     },
     {
       "word": "Resources — Recourse",
@@ -3993,7 +4212,8 @@
       "sourcePages": [
         51
       ],
-      "order": 219
+      "order": 219,
+      "ipa": "/ˈrisɔrsɪz/ — /ˈrikɔrs/"
     },
     {
       "word": "Restive — Restless",
@@ -4012,7 +4232,8 @@
         3,
         4
       ],
-      "order": 220
+      "order": 220,
+      "ipa": "/ˈrɛstɪv/ — /ˈrɛstləs/"
     },
     {
       "word": "Restless — Restive",
@@ -4030,7 +4251,8 @@
       "sourcePages": [
         127
       ],
-      "order": 221
+      "order": 221,
+      "ipa": "/ˈrɛstləs/ — /ˈrɛstɪv/"
     },
     {
       "word": "Retenue — Retinue",
@@ -4048,7 +4270,8 @@
       "sourcePages": [
         101
       ],
-      "order": 222
+      "order": 222,
+      "ipa": "/retenue*/ — /ˈrɛtəˌnu/"
     },
     {
       "word": "Revel — Reveal",
@@ -4066,7 +4289,8 @@
       "sourcePages": [
         66
       ],
-      "order": 223
+      "order": 223,
+      "ipa": "/ˈrɛvəl/ — /rɪˈvil/"
     },
     {
       "word": "Rheum — Room",
@@ -4084,7 +4308,8 @@
       "sourcePages": [
         120
       ],
-      "order": 224
+      "order": 224,
+      "ipa": "/rheum*/ — /rum/"
     },
     {
       "word": "Right — Rite",
@@ -4102,7 +4327,8 @@
       "sourcePages": [
         29
       ],
-      "order": 225
+      "order": 225,
+      "ipa": "/raɪt/ — /raɪt/"
     },
     {
       "word": "Rightful — Righteous",
@@ -4120,7 +4346,8 @@
       "sourcePages": [
         32
       ],
-      "order": 226
+      "order": 226,
+      "ipa": "/ˈraɪtfəl/ — /ˈraɪʧəs/"
     },
     {
       "word": "Rigorous — Vigorous",
@@ -4138,7 +4365,8 @@
       "sourcePages": [
         36
       ],
-      "order": 227
+      "order": 227,
+      "ipa": "/ˈrɪgərəs/ — /ˈvɪgərəs/"
     },
     {
       "word": "Route — Rout",
@@ -4156,7 +4384,8 @@
       "sourcePages": [
         55
       ],
-      "order": 228
+      "order": 228,
+      "ipa": "/rut/ — /raʊt/"
     },
     {
       "word": "Salutary — Salubrious",
@@ -4174,7 +4403,8 @@
       "sourcePages": [
         79
       ],
-      "order": 229
+      "order": 229,
+      "ipa": "/ˈsæljəˌtɛri/ — /salubrious*/"
     },
     {
       "word": "Sanguine — Sanguinary",
@@ -4192,7 +4422,8 @@
       "sourcePages": [
         124
       ],
-      "order": 230
+      "order": 230,
+      "ipa": "/ˈsæŋgwɪn/ — /sanguinary*/"
     },
     {
       "word": "Sere — Seer",
@@ -4210,7 +4441,8 @@
       "sourcePages": [
         123
       ],
-      "order": 231
+      "order": 231,
+      "ipa": "/sɪr/ — /sir/"
     },
     {
       "word": "Serendipity — Misfortune",
@@ -4228,7 +4460,8 @@
       "sourcePages": [
         124
       ],
-      "order": 232
+      "order": 232,
+      "ipa": "/ˌsɛrənˈdɪpɪti/ — /mɪsˈfɔrʧən/"
     },
     {
       "word": "Setup — Set upon",
@@ -4246,7 +4479,8 @@
       "sourcePages": [
         9
       ],
-      "order": 233
+      "order": 233,
+      "ipa": "/ˈsɛˌtəp/ — /sɛt əˈpɑn/"
     },
     {
       "word": "Shall — Will",
@@ -4264,7 +4498,8 @@
       "sourcePages": [
         9
       ],
-      "order": 234
+      "order": 234,
+      "ipa": "/ʃæl/ — /wɪl/"
     },
     {
       "word": "Shear — Sheer",
@@ -4282,7 +4517,8 @@
       "sourcePages": [
         105
       ],
-      "order": 235
+      "order": 235,
+      "ipa": "/ʃɪr/ — /ʃɪr/"
     },
     {
       "word": "Shoot — Chute",
@@ -4300,7 +4536,8 @@
       "sourcePages": [
         109
       ],
-      "order": 236
+      "order": 236,
+      "ipa": "/ʃut/ — /ʃut/"
     },
     {
       "word": "Simulation — Dissimulation",
@@ -4318,7 +4555,8 @@
       "sourcePages": [
         77
       ],
-      "order": 237
+      "order": 237,
+      "ipa": "/ˌsɪmjəˈleɪʃən/ — /dissimulation*/"
     },
     {
       "word": "Sinecure — Honorary",
@@ -4336,7 +4574,8 @@
       "sourcePages": [
         125
       ],
-      "order": 238
+      "order": 238,
+      "ipa": "/sinecure*/ — /ˈɑnərˌɛri/"
     },
     {
       "word": "Sink — Drown",
@@ -4354,7 +4593,8 @@
       "sourcePages": [
         9
       ],
-      "order": 239
+      "order": 239,
+      "ipa": "/sɪŋk/ — /draʊn/"
     },
     {
       "word": "Sleigh — Slay",
@@ -4372,7 +4612,8 @@
       "sourcePages": [
         109
       ],
-      "order": 240
+      "order": 240,
+      "ipa": "/sleɪ/ — /sleɪ/"
     },
     {
       "word": "Sow — Sough",
@@ -4391,7 +4632,8 @@
         122,
         123
       ],
-      "order": 241
+      "order": 241,
+      "ipa": "/soʊ/ — /sough*/"
     },
     {
       "word": "Species — Specie",
@@ -4410,7 +4652,8 @@
         91,
         92
       ],
-      "order": 242
+      "order": 242,
+      "ipa": "/ˈspiʃiz/ — /specie*/"
     },
     {
       "word": "State — Government",
@@ -4428,7 +4671,8 @@
       "sourcePages": [
         7
       ],
-      "order": 243
+      "order": 243,
+      "ipa": "/steɪt/ — /ˈgəvərnmənt/"
     },
     {
       "word": "Straight — Strait",
@@ -4446,7 +4690,8 @@
       "sourcePages": [
         126
       ],
-      "order": 244
+      "order": 244,
+      "ipa": "/streɪt/ — /streɪt/"
     },
     {
       "word": "Subtler — Sutler",
@@ -4465,7 +4710,8 @@
         101,
         102
       ],
-      "order": 245
+      "order": 245,
+      "ipa": "/ˈsətələr/ — /sutler*/"
     },
     {
       "word": "Superficial — Superfluous",
@@ -4484,7 +4730,8 @@
         31,
         32
       ],
-      "order": 246
+      "order": 246,
+      "ipa": "/ˌsupərˈfɪʃəl/ — /ˈsupərflˌwəs/"
     },
     {
       "word": "Taut — Taught",
@@ -4502,7 +4749,8 @@
       "sourcePages": [
         119
       ],
-      "order": 247
+      "order": 247,
+      "ipa": "/tɔt/ — /tɔt/"
     },
     {
       "word": "Temporal — Temporary",
@@ -4520,7 +4768,8 @@
       "sourcePages": [
         17
       ],
-      "order": 248
+      "order": 248,
+      "ipa": "/ˈtɛmpərəl/ — /ˈtɛmpərˌɛri/"
     },
     {
       "word": "Tortuous — Torturous",
@@ -4538,7 +4787,8 @@
       "sourcePages": [
         92
       ],
-      "order": 249
+      "order": 249,
+      "ipa": "/ˈtɔrʧəwəs/ — /ˈtɔˌrʧuəs/"
     },
     {
       "word": "Trifling — Trivial",
@@ -4557,7 +4807,8 @@
         76,
         77
       ],
-      "order": 250
+      "order": 250,
+      "ipa": "/ˈtraɪflɪŋ/ — /ˈtrɪviəl/"
     },
     {
       "word": "Urban — Urbane",
@@ -4577,7 +4828,8 @@
         14,
         15
       ],
-      "order": 251
+      "order": 251,
+      "ipa": "/ˈərbən/ — /ərˈbeɪn/"
     },
     {
       "word": "Uxoricide — Uxorious",
@@ -4596,7 +4848,8 @@
         123,
         124
       ],
-      "order": 252
+      "order": 252,
+      "ipa": "/uxoricide*/ — /uxorious*/"
     },
     {
       "word": "Valet — Varlet",
@@ -4615,7 +4868,8 @@
         95,
         96
       ],
-      "order": 253
+      "order": 253,
+      "ipa": "/væˈleɪ/ — /varlet*/"
     },
     {
       "word": "Vallum — Vellum",
@@ -4633,7 +4887,8 @@
       "sourcePages": [
         122
       ],
-      "order": 254
+      "order": 254,
+      "ipa": "/vallum*/ — /vellum*/"
     },
     {
       "word": "Veil — Vale",
@@ -4651,7 +4906,8 @@
       "sourcePages": [
         55
       ],
-      "order": 255
+      "order": 255,
+      "ipa": "/veɪl/ — /veɪl/"
     },
     {
       "word": "Venal — Venial",
@@ -4669,7 +4925,8 @@
       "sourcePages": [
         77
       ],
-      "order": 256
+      "order": 256,
+      "ipa": "/ˈvinəl/ — /venial*/"
     },
     {
       "word": "Veracity — Deceit",
@@ -4687,7 +4944,8 @@
       "sourcePages": [
         124
       ],
-      "order": 257
+      "order": 257,
+      "ipa": "/vərˈæsɪti/ — /dɪˈsit/"
     },
     {
       "word": "Veracity — Voracity",
@@ -4705,7 +4963,8 @@
       "sourcePages": [
         101
       ],
-      "order": 258
+      "order": 258,
+      "ipa": "/vərˈæsɪti/ — /vɔˈræsəti/"
     },
     {
       "word": "Verbal — Verbose",
@@ -4723,7 +4982,8 @@
       "sourcePages": [
         43
       ],
-      "order": 259
+      "order": 259,
+      "ipa": "/ˈvərbəl/ — /verbose*/"
     },
     {
       "word": "Virtuous — Virtual",
@@ -4742,7 +5002,8 @@
         5,
         6
       ],
-      "order": 260
+      "order": 260,
+      "ipa": "/ˈvərʧuəs/ — /ˈvərʧuəl/"
     },
     {
       "word": "Voracity — Veracity",
@@ -4761,7 +5022,8 @@
         26,
         27
       ],
-      "order": 261
+      "order": 261,
+      "ipa": "/vɔˈræsəti/ — /vərˈæsɪti/"
     },
     {
       "word": "Waive — Wave",
@@ -4779,7 +5041,8 @@
       "sourcePages": [
         124
       ],
-      "order": 262
+      "order": 262,
+      "ipa": "/weɪv/ — /weɪv/"
     },
     {
       "word": "Waiver — Waver",
@@ -4797,7 +5060,8 @@
       "sourcePages": [
         105
       ],
-      "order": 263
+      "order": 263,
+      "ipa": "/ˈweɪvər/ — /ˈweɪvər/"
     },
     {
       "word": "Wave — Waive",
@@ -4815,7 +5079,8 @@
       "sourcePages": [
         43
       ],
-      "order": 264
+      "order": 264,
+      "ipa": "/weɪv/ — /weɪv/"
     },
     {
       "word": "Weather — Whether",
@@ -4833,7 +5098,8 @@
       "sourcePages": [
         29
       ],
-      "order": 265
+      "order": 265,
+      "ipa": "/ˈwɛðər/ — /ˈwɛðər/"
     },
     {
       "word": "Wet — Whet",
@@ -4851,7 +5117,8 @@
       "sourcePages": [
         92
       ],
-      "order": 266
+      "order": 266,
+      "ipa": "/wɛt/ — /wɛt/"
     },
     {
       "word": "Wile — While",
@@ -4869,7 +5136,8 @@
       "sourcePages": [
         110
       ],
-      "order": 267
+      "order": 267,
+      "ipa": "/waɪl/ — /waɪl/"
     },
     {
       "word": "Willing — Willful",
@@ -4887,7 +5155,8 @@
       "sourcePages": [
         89
       ],
-      "order": 268
+      "order": 268,
+      "ipa": "/ˈwɪlɪŋ/ — /ˈwɪlfəl/"
     },
     {
       "word": "Wrath — Wroth",
@@ -4905,7 +5174,8 @@
       "sourcePages": [
         101
       ],
-      "order": 269
+      "order": 269,
+      "ipa": "/ræθ/ — /wroth*/"
     },
     {
       "word": "Wreak — Reek",
@@ -4923,7 +5193,8 @@
       "sourcePages": [
         114
       ],
-      "order": 270
+      "order": 270,
+      "ipa": "/rik/ — /rik/"
     },
     {
       "word": "Wreak — Wreck",
@@ -4941,7 +5212,8 @@
       "sourcePages": [
         124
       ],
-      "order": 271
+      "order": 271,
+      "ipa": "/rik/ — /rɛk/"
     },
     {
       "word": "Wreck — Reek",
@@ -4960,7 +5232,8 @@
         16,
         17
       ],
-      "order": 272
+      "order": 272,
+      "ipa": "/rɛk/ — /rik/"
     },
     {
       "word": "Wreck — Wreak",
@@ -4978,7 +5251,8 @@
       "sourcePages": [
         43
       ],
-      "order": 273
+      "order": 273,
+      "ipa": "/rɛk/ — /rik/"
     },
     {
       "word": "Wretch — Retch",
@@ -4996,7 +5270,8 @@
       "sourcePages": [
         82
       ],
-      "order": 274
+      "order": 274,
+      "ipa": "/rɛʧ/ — /retch*/"
     },
     {
       "word": "Yew — Eue",
@@ -5014,7 +5289,8 @@
       "sourcePages": [
         129
       ],
-      "order": 275
+      "order": 275,
+      "ipa": "/ju/ — /eue*/"
     },
     {
       "word": "Yoke — Yolk",
@@ -5032,7 +5308,8 @@
       "sourcePages": [
         13
       ],
-      "order": 276
+      "order": 276,
+      "ipa": "/joʊk/ — /joʊk/"
     }
   ]
 }
