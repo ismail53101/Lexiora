@@ -84,12 +84,9 @@ jobs:
         # SAPIORA_AI_API_KEY / SAPIORA_AI_BASE_URL / SAPIORA_AI_PROVIDER come
         # from repo secrets (Settings -> Secrets and variables -> Actions) so
         # the AI Assistant is configured in the built APK without any of
-        # them being committed to the repo. SAPIORA_AI_BASE_URL is optional --
-        # when unset, this step omits that define and the app falls back to
-        # its compiled-in default (https://api.hcnsec.cn); set it to point
-        # the app at the Cloudflare Worker gateway instead (see
-        # cloudflare-worker/README.md), which holds the real upstream
-        # provider keys. SAPIORA_AI_PROVIDER is optional too -- leave it
+        # them being committed to the repo. If SAPIORA_AI_BASE_URL is unset,
+        # the build uses the verified Sapiora Worker gateway below, which holds
+        # the real upstream provider keys. SAPIORA_AI_PROVIDER is optional too -- leave it
         # unset for "auto" (the Worker decides, with automatic fallback).
         # If SAPIORA_AI_API_KEY isn't set, the build still succeeds -- the
         # app simply shows its existing "not configured" screen.
@@ -106,9 +103,8 @@ jobs:
           SAPIORA_ENABLE_ADMIN: ${{ secrets.SAPIORA_ENABLE_ADMIN }}
         run: |
           DEFINES="--dart-define=SAPIORA_AI_API_KEY=$SAPIORA_AI_API_KEY"
-          if [ -n "$SAPIORA_AI_BASE_URL" ]; then
-            DEFINES="$DEFINES --dart-define=SAPIORA_AI_BASE_URL=$SAPIORA_AI_BASE_URL"
-          fi
+          AI_BASE_URL="${SAPIORA_AI_BASE_URL:-https://sapiora-ai-worker.ismaillasharibaloch53.workers.dev}"
+          DEFINES="$DEFINES --dart-define=SAPIORA_AI_BASE_URL=$AI_BASE_URL"
           if [ -n "$SAPIORA_AI_PROVIDER" ]; then
             DEFINES="$DEFINES --dart-define=SAPIORA_AI_PROVIDER=$SAPIORA_AI_PROVIDER"
           fi
@@ -125,9 +121,8 @@ jobs:
           SAPIORA_ENABLE_ADMIN: ${{ secrets.SAPIORA_ENABLE_ADMIN }}
         run: |
           DEFINES="--dart-define=SAPIORA_AI_API_KEY=$SAPIORA_AI_API_KEY"
-          if [ -n "$SAPIORA_AI_BASE_URL" ]; then
-            DEFINES="$DEFINES --dart-define=SAPIORA_AI_BASE_URL=$SAPIORA_AI_BASE_URL"
-          fi
+          AI_BASE_URL="${SAPIORA_AI_BASE_URL:-https://sapiora-ai-worker.ismaillasharibaloch53.workers.dev}"
+          DEFINES="$DEFINES --dart-define=SAPIORA_AI_BASE_URL=$AI_BASE_URL"
           if [ -n "$SAPIORA_AI_PROVIDER" ]; then
             DEFINES="$DEFINES --dart-define=SAPIORA_AI_PROVIDER=$SAPIORA_AI_PROVIDER"
           fi

@@ -75,7 +75,8 @@ abstract final class AiConstants {
   static const String envProvider = 'SAPIORA_AI_PROVIDER';
 
   /// Defaults used when the corresponding define is not provided.
-  static const String defaultBaseUrl = 'https://api.hcnsec.cn';
+  static const String defaultBaseUrl =
+      'https://sapiora-ai-worker.ismaillasharibaloch53.workers.dev';
   static const String defaultModel = 'auto';
   /// 'auto' means the Cloudflare Worker itself picks/falls back between its
   /// configured upstream providers — the app never needs to know which
