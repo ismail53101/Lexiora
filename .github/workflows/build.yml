@@ -1,6 +1,6 @@
-name: Build Lexiora APK
+name: Build Sapiora APK
 
-# Builds, analyzes and tests Lexiora on every push to main, then produces a
+# Builds, analyzes and tests Sapiora on every push to main, then produces a
 # release APK — uploaded both as a workflow artifact and as an asset on a
 # GitHub Release whose tag is derived from the pubspec version (e.g. v0.1.5).
 on:
@@ -28,11 +28,12 @@ jobs:
           java-version: "17"
 
       - name: Set up Flutter (stable)
-        uses: subosito/flutter-action@v2
+        uses: flutter-actions/setup-flutter@v4
         with:
           channel: stable
-          flutter-version: 3.44.8
-          cache: true # caches the Flutter SDK and pub packages
+          version: 3.44.8
+          cache: true
+          cache-sdk: true
 
       - name: Print versions
         run: flutter --version
@@ -43,36 +44,36 @@ jobs:
       - name: Generate code (Drift)
         run: dart run build_runner build
 
-      - name: Ensure Gradle wrapper
-        # The wrapper jar is intentionally not committed (binary-free repo);
-        # regenerate it to match the pinned Gradle version before building.
-        run: cd android && gradle wrapper --gradle-version 9.1.0
-
       - name: Set up release signing
-        # Runs every time, but only actually does anything when the keystore
-        # secret exists -- see android/KEYSTORE.md. Until then, the build
-        # falls back to debug signing automatically (see
-        # android/app/build.gradle.kts), so this step doing nothing never
-        # breaks the build. The check has to live in the shell script, not a
-        # YAML `if:`, because GitHub Actions doesn't allow referencing
-        # `secrets` directly in step-level `if:` conditions.
+        # Release builds must never fall back to the Android debug key. The
+        # check lives in the shell script because GitHub Actions does not
+        # allow referencing secrets directly in step-level `if:` conditions.
         env:
           ANDROID_KEYSTORE_BASE64: ${{ secrets.ANDROID_KEYSTORE_BASE64 }}
           ANDROID_KEYSTORE_PASSWORD: ${{ secrets.ANDROID_KEYSTORE_PASSWORD }}
           ANDROID_KEY_PASSWORD: ${{ secrets.ANDROID_KEY_PASSWORD }}
           ANDROID_KEY_ALIAS: ${{ secrets.ANDROID_KEY_ALIAS }}
         run: |
-          if [ -z "$ANDROID_KEYSTORE_BASE64" ]; then
-            echo "No ANDROID_KEYSTORE_BASE64 secret set -- building with debug signing."
-            exit 0
-          fi
+          set -euo pipefail
+          for required in ANDROID_KEYSTORE_BASE64 ANDROID_KEYSTORE_PASSWORD ANDROID_KEY_PASSWORD ANDROID_KEY_ALIAS; do
+            if [ -z "${!required:-}" ]; then
+              echo "Missing required release-signing secret: $required" >&2
+              exit 1
+            fi
+          done
           echo "$ANDROID_KEYSTORE_BASE64" | base64 -d > android/app/upload-keystore.jks
+          test -s android/app/upload-keystore.jks
           cat > android/key.properties <<EOF
           storePassword=$ANDROID_KEYSTORE_PASSWORD
           keyPassword=$ANDROID_KEY_PASSWORD
           keyAlias=$ANDROID_KEY_ALIAS
           storeFile=upload-keystore.jks
           EOF
+
+      - name: Ensure Gradle wrapper
+        # The wrapper jar is intentionally not committed (binary-free repo);
+        # regenerate it to match the pinned Gradle version before building.
+        run: cd android && gradle wrapper --gradle-version 9.1.0
 
       - name: Analyze
         run: flutter analyze --no-fatal-infos --no-fatal-warnings
@@ -100,9 +101,13 @@ jobs:
           SAPIORA_AI_API_KEY: ${{ secrets.SAPIORA_AI_API_KEY }}
           SAPIORA_AI_BASE_URL: ${{ secrets.SAPIORA_AI_BASE_URL }}
           SAPIORA_AI_PROVIDER: ${{ secrets.SAPIORA_AI_PROVIDER }}
+          SAPIORA_CURRENT_AFFAIRS_BASE_URL: https://sapiora-ai-worker.ismaillasharibaloch53.workers.dev
           SAPIORA_ENABLE_ADMIN: ${{ secrets.SAPIORA_ENABLE_ADMIN }}
         run: |
           DEFINES="--dart-define=SAPIORA_AI_API_KEY=$SAPIORA_AI_API_KEY"
+          if [ -n "$SAPIORA_CURRENT_AFFAIRS_BASE_URL" ]; then
+            DEFINES="$DEFINES --dart-define=SAPIORA_CURRENT_AFFAIRS_BASE_URL=$SAPIORA_CURRENT_AFFAIRS_BASE_URL"
+          fi
           AI_BASE_URL="${SAPIORA_AI_BASE_URL:-https://sapiora-ai-worker.ismaillasharibaloch53.workers.dev}"
           DEFINES="$DEFINES --dart-define=SAPIORA_AI_BASE_URL=$AI_BASE_URL"
           if [ -n "$SAPIORA_AI_PROVIDER" ]; then
@@ -118,9 +123,13 @@ jobs:
           SAPIORA_AI_API_KEY: ${{ secrets.SAPIORA_AI_API_KEY }}
           SAPIORA_AI_BASE_URL: ${{ secrets.SAPIORA_AI_BASE_URL }}
           SAPIORA_AI_PROVIDER: ${{ secrets.SAPIORA_AI_PROVIDER }}
+          SAPIORA_CURRENT_AFFAIRS_BASE_URL: https://sapiora-ai-worker.ismaillasharibaloch53.workers.dev
           SAPIORA_ENABLE_ADMIN: ${{ secrets.SAPIORA_ENABLE_ADMIN }}
         run: |
           DEFINES="--dart-define=SAPIORA_AI_API_KEY=$SAPIORA_AI_API_KEY"
+          if [ -n "$SAPIORA_CURRENT_AFFAIRS_BASE_URL" ]; then
+            DEFINES="$DEFINES --dart-define=SAPIORA_CURRENT_AFFAIRS_BASE_URL=$SAPIORA_CURRENT_AFFAIRS_BASE_URL"
+          fi
           AI_BASE_URL="${SAPIORA_AI_BASE_URL:-https://sapiora-ai-worker.ismaillasharibaloch53.workers.dev}"
           DEFINES="$DEFINES --dart-define=SAPIORA_AI_BASE_URL=$AI_BASE_URL"
           if [ -n "$SAPIORA_AI_PROVIDER" ]; then
@@ -151,13 +160,26 @@ jobs:
 
       - name: Publish APK to GitHub Release
         if: github.ref == 'refs/heads/main'
-        uses: softprops/action-gh-release@v2
-        with:
-          tag_name: v${{ steps.ver.outputs.v }}
-          name: Lexiora v${{ steps.ver.outputs.v }}
-          body: Automated Phase 1 release build of Lexiora.
-          files: |
-            build/app/outputs/flutter-apk/app-release.apk
-            build/app/outputs/bundle/release/app-release.aab
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          RELEASE_TAG: v${{ steps.ver.outputs.v }}
+        run: |
+          set -euo pipefail
+          for attempt in 1 2 3 4 5; do
+            if gh release view "$RELEASE_TAG" >/dev/null 2>&1; then
+              gh release upload "$RELEASE_TAG" \
+                build/app/outputs/flutter-apk/app-release.apk \
+                build/app/outputs/bundle/release/app-release.aab \
+                --clobber && exit 0
+            else
+              gh release create "$RELEASE_TAG" \
+                build/app/outputs/flutter-apk/app-release.apk \
+                build/app/outputs/bundle/release/app-release.aab \
+                --title "Sapiora $RELEASE_TAG" \
+                --notes "Automated release build of Sapiora." && exit 0
+            fi
+            echo "GitHub Release API unavailable; retry $attempt/5 in 20 seconds..."
+            sleep 20
+          done
+          echo "Failed to publish GitHub Release after 5 attempts." >&2
+          exit 1
