@@ -59,7 +59,6 @@ class _ReaderPageState extends ConsumerState<ReaderPage> {
   final TextEditingController _searchField = TextEditingController();
 
   LibraryDocument? _document;
-  bool _loading = true;
   String? _error;
   String? _errorDetails;
   String? _temporarySourcePath;
@@ -94,7 +93,6 @@ class _ReaderPageState extends ConsumerState<ReaderPage> {
         AppLogger.w('Reader: document not found ($_id)');
         if (mounted) {
           setState(() {
-            _loading = false;
             _error = 'This document is no longer in your library.';
           });
         }
@@ -174,7 +172,6 @@ class _ReaderPageState extends ConsumerState<ReaderPage> {
               LogSessionParams(documentId: _id, pageNumber: _initialPage),
             );
       }
-      if (mounted) setState(() => _loading = false);
     } on Object catch (e, s) {
       AppLogger.e('Reader._load failed', error: e, stackTrace: s);
       if (mounted) {
@@ -189,7 +186,6 @@ class _ReaderPageState extends ConsumerState<ReaderPage> {
 
   void _retry() {
     setState(() {
-      _loading = true;
       _error = null;
       _errorDetails = null;
     });

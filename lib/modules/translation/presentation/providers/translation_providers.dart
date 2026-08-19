@@ -98,7 +98,7 @@ final hybridTranslationProvider =
     // Falls back to the base dictionary / online.
   }
   try {
-    await ref.watch(vocabularySeedProvider);
+    ref.watch(vocabularySeedProvider);
   } on Object {
     // Falls back to the base dictionary / online.
   }

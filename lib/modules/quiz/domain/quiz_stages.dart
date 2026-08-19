@@ -6,6 +6,8 @@
 /// feature is a thin layer over the existing question store: no new content,
 /// no duplicate-prevention impact.
 
+library;
+
 /// Questions per stage.
 const int quizStagePerStage = 10;
 

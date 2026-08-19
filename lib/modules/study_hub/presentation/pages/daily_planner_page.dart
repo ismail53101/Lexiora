@@ -100,7 +100,6 @@ class _DailyPlannerPageState extends State<DailyPlannerPage> {
               child: DayPlannerSection(
                 day: dayKey(_selected),
                 title: '',
-                subtitle: null,
               ),
             ),
           ),

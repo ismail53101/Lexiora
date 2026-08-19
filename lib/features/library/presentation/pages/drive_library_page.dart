@@ -62,8 +62,8 @@ class _DriveLibraryPageState extends ConsumerState<DriveLibraryPage> {
         pageCount: 0,
         isFavorite: false,
         importedAt: DateTime.now(),
-        isManaged: false,
       );
+      if (!mounted) return;
       await context.push(AppRoutes.driveReader, extra: temporaryDocument);
     } catch (error) {
       if (!mounted) return;
@@ -211,7 +211,6 @@ class _DriveCardState extends State<_DriveCard> {
           isFavorite: false,
           importedAt: widget.pdf.modifiedTime ?? DateTime.now(),
           coverPath: snapshot.data?.path,
-          isManaged: false,
         );
         final DateTime? modified = widget.pdf.modifiedTime?.toLocal();
         final String metadata = modified == null

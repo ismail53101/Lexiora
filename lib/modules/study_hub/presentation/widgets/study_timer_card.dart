@@ -112,7 +112,6 @@ class _PomodoroBody extends ConsumerWidget {
           child: ProgressRing(
             value: state.progress,
             size: 132,
-            strokeWidth: 10,
             color: state.isFocus
                 ? theme.colorScheme.primary
                 : theme.colorScheme.tertiary,

@@ -52,7 +52,7 @@ class QuizHomePage extends StatelessWidget {
       body: ListView(
         padding: const EdgeInsets.all(16),
         children: <Widget>[
-          _QuizHeroBanner(),
+          const _QuizHeroBanner(),
           const SizedBox(height: 18),
           Text(
             'Master every subject, one level at a time',

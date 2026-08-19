@@ -150,7 +150,6 @@ class _SessionEditorState extends ConsumerState<_SessionEditor> {
               startMinute: breakStart,
               endMinute: breakEnd,
               kind: SessionKind.breakTime,
-              status: TaskStatus.pending,
               createdAt: now,
               updatedAt: now,
             ),

@@ -7,8 +7,8 @@ import 'package:lexiora/modules/dictionary/data/datasources/dictionary_local_dat
 import 'package:lexiora/modules/dictionary/data/repositories/dictionary_repository_impl.dart';
 import 'package:lexiora/modules/dictionary/data/services/online_dictionary_service.dart';
 import 'package:lexiora/modules/dictionary/domain/entities/dictionary_entry.dart';
-import 'package:lexiora/modules/translation/data/services/word_meaning_service.dart';
 import 'package:lexiora/modules/translation/data/datasources/translation_local_data_source.dart';
+import 'package:lexiora/modules/translation/data/services/word_meaning_service.dart';
 import 'package:lexiora/modules/translation/data/repositories/translation_repository_impl.dart';
 import 'package:lexiora/modules/translation/domain/entities/translation.dart';
 import 'package:lexiora/modules/translation/domain/entities/translation_outcome.dart';
@@ -57,13 +57,10 @@ class _FakeRemote implements RemoteTranslationService {
 
 /// Online dictionary stub — returns a canned definition or none at all.
 class _FakeOnlineDictionary extends OnlineDictionaryService {
-  _FakeOnlineDictionary({this.definition});
-  final String? definition;
+  _FakeOnlineDictionary();
 
   @override
-  Future<OnlineDefinition?> define(String word) async => definition == null
-      ? null
-      : OnlineDefinition(meaning: definition!);
+  Future<OnlineDefinition?> define(String word) async => null;
 }
 
 /// Vocabulary-pack stub — delegates lookups to a callback (receives each base

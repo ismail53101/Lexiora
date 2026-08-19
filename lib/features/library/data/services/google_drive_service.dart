@@ -119,7 +119,7 @@ class GoogleDriveService {
     final GoogleSignInClientAuthorization authorization = await account
         .authorizationClient
         .authorizeScopes(const <String>[googleDriveReadonlyScope]);
-    final String? token = authorization.accessToken;
+    final String token = authorization.accessToken;
     if (token == null || token.isEmpty) {
       throw StateError('Google Drive authorization did not return an access token.');
     }
@@ -247,7 +247,7 @@ class GoogleDriveService {
     _activeDownloads[pdf.id] = future;
     future.then<void>(
       (_) => _activeDownloads.remove(pdf.id),
-      onError: (Object _, StackTrace __) => _activeDownloads.remove(pdf.id),
+      onError: (Object _, StackTrace _) => _activeDownloads.remove(pdf.id),
     );
     return future;
   }

@@ -534,7 +534,7 @@ class _NounTypeRow extends StatelessWidget {
 }
 
 class GrammarTypeContent extends StatelessWidget {
-  const GrammarTypeContent({required this.type});
+  const GrammarTypeContent({super.key, required this.type});
   final GrammarType type;
 
   @override

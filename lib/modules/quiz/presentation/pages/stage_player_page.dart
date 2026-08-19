@@ -397,7 +397,7 @@ class _StagePlayerPageState extends ConsumerState<StagePlayerPage> {
           if (answered) ...<Widget>[
             const SizedBox(height: 10),
             Text(
-              q.isCorrect(given!)
+              q.isCorrect(given)
                   ? 'Correct ✓'
                   : 'Correct answer: ${q.answerTexts.join(', ')}',
               style: theme.textTheme.bodyMedium?.copyWith(

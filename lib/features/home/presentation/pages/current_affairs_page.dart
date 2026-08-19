@@ -623,7 +623,7 @@ class _StoryImage extends StatelessWidget {
             : Image.network(
                 story.imageUrl!,
                 fit: BoxFit.cover,
-                errorBuilder: (_, __, ___) => fallback,
+                errorBuilder: (_, _, _) => fallback,
               ),
       ),
     );

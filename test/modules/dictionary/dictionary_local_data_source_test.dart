@@ -4,7 +4,6 @@ import 'package:drift/drift.dart' show Value;
 import 'package:drift/native.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:lexiora/core/database/app_database.dart';
-import 'package:lexiora/core/database/tables.dart';
 import 'package:lexiora/modules/dictionary/data/datasources/dictionary_local_data_source.dart';
 import 'package:lexiora/modules/dictionary/domain/entities/dictionary_entry.dart';
 

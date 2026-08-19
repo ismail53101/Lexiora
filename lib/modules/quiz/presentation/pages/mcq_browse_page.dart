@@ -94,7 +94,7 @@ class _McqBrowsePageState extends ConsumerState<McqBrowsePage> {
       final QuizRepository repo = ref.read(quizRepositoryProvider);
       final int total = await repo.countQuestions(_filter);
       final List<QuizQuestion> qs =
-          await repo.questions(_filter, limit: _pageSize, offset: 0);
+          await repo.questions(_filter, limit: _pageSize);
       if (!mounted) return;
       setState(() {
         _total = total;
@@ -176,7 +176,6 @@ class _McqBrowsePageState extends ConsumerState<McqBrowsePage> {
   }
 
   Widget _typeChip() {
-    final ThemeData theme = Theme.of(context);
     return Padding(
       padding: const EdgeInsets.only(right: 8),
       child: PopupMenuButton<QuestionType?>(

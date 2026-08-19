@@ -410,7 +410,6 @@ class PlannerTaskRow extends ConsumerWidget {
                     child: task.isBreak
                         ? _breakContent(theme)
                         : Row(
-                            crossAxisAlignment: CrossAxisAlignment.center,
                             children: <Widget>[
                               Expanded(
                                 child: Column(

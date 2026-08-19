@@ -20,14 +20,14 @@ class PrivacyPolicyPage extends StatelessWidget {
       body: ListView(
         padding: const EdgeInsets.fromLTRB(20, 12, 20, 32),
         children: [
-          _Section(
+          const _Section(
             title: 'No account, no ads, no tracking',
             body:
                 'Sapiora does not require an account and does not collect your '
                 'name, email or phone number. It shows no ads and uses no '
                 'analytics, advertising identifiers or third-party trackers.',
           ),
-          _Section(
+          const _Section(
             title: 'Data stored on your device',
             body:
                 'Your library, highlights, notes, bookmarks, reading progress '
@@ -35,7 +35,7 @@ class PrivacyPolicyPage extends StatelessWidget {
                 'storage. PDFs you read are referenced in place, never copied. '
                 'Your AI Assistant conversations are stored locally too.',
           ),
-          _Section(
+          const _Section(
             title: 'When information leaves your device',
             body:
                 'Only when you actively use a networked feature: if a word has '
@@ -45,7 +45,7 @@ class PrivacyPolicyPage extends StatelessWidget {
                 'to the AI service configured by the developer to generate a '
                 'reply. Nothing is sold or shared.',
           ),
-          _Section(
+          const _Section(
             title: 'Permissions',
             body:
                 'All-files access lists the PDFs already on your device so you '
@@ -54,13 +54,13 @@ class PrivacyPolicyPage extends StatelessWidget {
                 'AI Assistant. Internet is used only for Translation and the AI '
                 'Assistant.',
           ),
-          _Section(
+          const _Section(
             title: 'Children\u2019s privacy',
             body:
                 'Sapiora is not directed at children under 13 and does not '
                 'knowingly collect personal information from them.',
           ),
-          _Section(
+          const _Section(
             title: 'Contact',
             body:
                 'Questions about this policy or the app? Contact us at '

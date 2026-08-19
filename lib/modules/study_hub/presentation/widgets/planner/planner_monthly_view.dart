@@ -166,7 +166,6 @@ class PlannerMonthlyViewState extends State<PlannerMonthlyView> {
                     style: theme.textTheme.titleSmall?.copyWith(fontWeight: FontWeight.w700)),
                 const SizedBox(height: 12),
                 Row(
-                  crossAxisAlignment: CrossAxisAlignment.center,
                   children: <Widget>[
                     PlannerDonut(
                       segments: <DonutSegment>[

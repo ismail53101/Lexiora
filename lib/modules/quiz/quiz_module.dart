@@ -70,7 +70,7 @@ class QuizModule extends FeatureModule {
         GoRoute(
           path: AppRoutes.quizMcqs,
           builder: (_, _) =>
-              const SubjectsPage(variant: QuizSubjectsVariant.mcqs),
+              const SubjectsPage(),
         ),
         GoRoute(
           path: AppRoutes.quizStages,
