@@ -39,6 +39,7 @@ android {
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_17
         targetCompatibility = JavaVersion.VERSION_17
+        isCoreLibraryDesugaringEnabled = true
     }
 
     defaultConfig {
@@ -85,6 +86,7 @@ kotlin {
 }
 
 dependencies {
+    coreLibraryDesugaring("com.android.tools:desugar_jdk_libs:2.1.5")
     // On-device text recognition (OCR) for scanned/photographed PDF pages.
     // Fully on-device: the recognition model downloads once via Google Play
     // Services on first use, then runs completely offline — no API key, no
