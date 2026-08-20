@@ -15,9 +15,10 @@ import 'package:uuid/uuid.dart';
 /// Maps Drift rows to domain entities and computes the streak. Backward
 /// compatible: pre-v0.7.1 rows (no topic/notes/status/kind) map cleanly.
 class StudyHubRepositoryImpl implements StudyHubRepository {
-  StudyHubRepositoryImpl(this._local);
+  StudyHubRepositoryImpl(this._local, {this.onTasksChanged});
 
   final StudyHubLocalDataSource _local;
+  final Future<void> Function()? onTasksChanged;
   static const Uuid _uuid = Uuid();
 
   // ── Planner ─────────────────────────────────────────────────────────────────
@@ -53,6 +54,7 @@ class StudyHubRepositoryImpl implements StudyHubRepository {
       throw StudyScheduleOverlapException(ownConflict);
     }
     await _persistDay(t.day, all, recalculated);
+    await onTasksChanged?.call();
   }
 
   @override
@@ -64,6 +66,7 @@ class StudyHubRepositoryImpl implements StudyHubRepository {
         (await _local.getTasks(row.day)).map(_toTask).toList();
     final List<StudyTask> recalculated = StudyScheduleService.recalculate(remaining);
     await _persistDay(row.day, remaining, recalculated);
+    await onTasksChanged?.call();
   }
 
   StudyTask _prepareIncoming(StudyTask task, List<StudyTask> existing) {

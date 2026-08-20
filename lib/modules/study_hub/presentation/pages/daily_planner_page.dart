@@ -17,14 +17,18 @@ const List<String> _months = <String>[
 /// at a time. Shares [DayPlannerSection] with the Weekly/Monthly planners,
 /// so add/edit/complete behaviour is identical everywhere.
 class DailyPlannerPage extends StatefulWidget {
-  const DailyPlannerPage({super.key});
+  const DailyPlannerPage({super.key, this.initialDay});
+
+  final DateTime? initialDay;
 
   @override
   State<DailyPlannerPage> createState() => _DailyPlannerPageState();
 }
 
 class _DailyPlannerPageState extends State<DailyPlannerPage> {
-  late DateTime _selected = _dateOnly(DateTime.now());
+  late DateTime _selected = _dateOnly(
+    widget.initialDay ?? DateTime.now(),
+  );
 
   static DateTime _dateOnly(DateTime d) => DateTime(d.year, d.month, d.day);
   static DateTime _mondayOf(DateTime d) =>

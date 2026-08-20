@@ -1,11 +1,15 @@
 import 'dart:async';
 
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:lexiora/app/app.dart';
+import 'package:lexiora/app/di/injector.dart';
 import 'package:lexiora/app/di/injector_config.dart';
 import 'package:lexiora/app/router/app_router.dart';
+import 'package:lexiora/core/services/notification_service.dart';
 import 'package:lexiora/core/utils/logger.dart';
 import 'package:pdfrx/pdfrx.dart';
 
@@ -42,13 +46,41 @@ Future<void> main() async {
       await pdfrxFlutterInitialize();
       await configureDependencies();
       final GoRouter router = createAppRouter();
+      final NotificationService notifications = sl<NotificationService>();
+      await notifications.initialize(
+        onTap: (String payload) => _handleNotificationPayload(router, payload),
+      );
+      await notifications.requestPermission();
+      await notifications.rescheduleAll();
 
       runApp(ProviderScope(child: SapioraApp(router: router)));
+      final String? pendingPayload = notifications.takePendingPayload();
+      if (pendingPayload != null) {
+        WidgetsBinding.instance.addPostFrameCallback((_) {
+          _handleNotificationPayload(router, pendingPayload);
+        });
+      }
     },
     (Object error, StackTrace stack) {
       AppLogger.e('Uncaught zone error', error: error, stackTrace: stack);
     },
   );
+}
+
+void _handleNotificationPayload(GoRouter router, String payload) {
+  try {
+    final Object? decoded = jsonDecode(payload);
+    if (decoded is Map<String, dynamic>) {
+      final String? route = decoded['route'] as String?;
+      if (route != null && route.isNotEmpty) router.go(route);
+    }
+  } on Object catch (error, stack) {
+    AppLogger.e(
+      'Notification payload could not be opened',
+      error: error,
+      stackTrace: stack,
+    );
+  }
 }
 
 /// Self-contained fallback rendered by [ErrorWidget.builder]. It shows the real

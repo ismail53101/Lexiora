@@ -38,6 +38,8 @@ abstract final class AppRoutes {
   // Study Hub (Phase v0.7.0 / v0.7.1)
   static const String studyHub = '/study-hub';
   static const String studyHubDaily = '/study-hub/daily';
+  static String studyHubDailyFor(String day, String taskId) =>
+      '$studyHubDaily?day=${Uri.encodeQueryComponent(day)}&taskId=${Uri.encodeQueryComponent(taskId)}';
   static const String studyHubWeekly = '/study-hub/weekly';
   static const String studyHubMonthly = '/study-hub/monthly';
   static const String studyHubTemplates = '/study-hub/templates';
@@ -93,6 +95,10 @@ abstract final class AppRoutes {
 
   // Vocabulary (Phase v0.6.0)
   static const String vocabulary = '/vocabulary';
+  static const String vocabularyWordName = 'vocabularyWord';
+  static const String vocabularyWordPattern = '/vocabulary/word/:word';
+  static String vocabularyWord(String word) =>
+      '/vocabulary/word/${Uri.encodeComponent(word)}';
   static const String vocabularyListName = 'vocabularyList';
   static const String vocabularyListPattern = '/vocabulary/list/:id';
   static String vocabularyList(String id) =>

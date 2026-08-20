@@ -21,6 +21,15 @@ class AppSettings extends Equatable {
     this.translationLanguage = kDefaultTranslationLanguage,
     this.displayName = '',
     this.dailyTopicsGoal = 5,
+    this.studyRemindersEnabled = true,
+    this.studyReminderMinutes = 10,
+    this.breakRemindersEnabled = false,
+    this.dailyWordEnabled = true,
+    this.dailyWordHour = 8,
+    this.dailyWordMinute = 0,
+    this.notificationSoundEnabled = true,
+    this.notificationVibrationEnabled = true,
+    this.dailyWordHistory = const <String>[],
   });
 
   final ThemeMode themeMode;
@@ -53,6 +62,16 @@ class AppSettings extends Equatable {
   /// The denominator in Home's "Today's Goal — x / y Topics" card.
   final int dailyTopicsGoal;
 
+  final bool studyRemindersEnabled;
+  final int studyReminderMinutes;
+  final bool breakRemindersEnabled;
+  final bool dailyWordEnabled;
+  final int dailyWordHour;
+  final int dailyWordMinute;
+  final bool notificationSoundEnabled;
+  final bool notificationVibrationEnabled;
+  final List<String> dailyWordHistory;
+
   AppSettings copyWith({
     ThemeMode? themeMode,
     double? fontScale,
@@ -65,6 +84,15 @@ class AppSettings extends Equatable {
     String? translationLanguage,
     String? displayName,
     int? dailyTopicsGoal,
+    bool? studyRemindersEnabled,
+    int? studyReminderMinutes,
+    bool? breakRemindersEnabled,
+    bool? dailyWordEnabled,
+    int? dailyWordHour,
+    int? dailyWordMinute,
+    bool? notificationSoundEnabled,
+    bool? notificationVibrationEnabled,
+    List<String>? dailyWordHistory,
   }) =>
       AppSettings(
         themeMode: themeMode ?? this.themeMode,
@@ -79,6 +107,20 @@ class AppSettings extends Equatable {
         translationLanguage: translationLanguage ?? this.translationLanguage,
         displayName: displayName ?? this.displayName,
         dailyTopicsGoal: dailyTopicsGoal ?? this.dailyTopicsGoal,
+        studyRemindersEnabled:
+            studyRemindersEnabled ?? this.studyRemindersEnabled,
+        studyReminderMinutes:
+            studyReminderMinutes ?? this.studyReminderMinutes,
+        breakRemindersEnabled:
+            breakRemindersEnabled ?? this.breakRemindersEnabled,
+        dailyWordEnabled: dailyWordEnabled ?? this.dailyWordEnabled,
+        dailyWordHour: dailyWordHour ?? this.dailyWordHour,
+        dailyWordMinute: dailyWordMinute ?? this.dailyWordMinute,
+        notificationSoundEnabled:
+            notificationSoundEnabled ?? this.notificationSoundEnabled,
+        notificationVibrationEnabled:
+            notificationVibrationEnabled ?? this.notificationVibrationEnabled,
+        dailyWordHistory: dailyWordHistory ?? this.dailyWordHistory,
       );
 
   @override
@@ -94,5 +136,14 @@ class AppSettings extends Equatable {
         translationLanguage,
         displayName,
         dailyTopicsGoal,
+        studyRemindersEnabled,
+        studyReminderMinutes,
+        breakRemindersEnabled,
+        dailyWordEnabled,
+        dailyWordHour,
+        dailyWordMinute,
+        notificationSoundEnabled,
+        notificationVibrationEnabled,
+        dailyWordHistory,
       ];
 }

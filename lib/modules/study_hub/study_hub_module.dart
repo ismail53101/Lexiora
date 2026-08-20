@@ -5,6 +5,7 @@ import 'package:lexiora/app/router/app_routes.dart';
 import 'package:lexiora/core/database/app_database.dart';
 import 'package:lexiora/core/module/feature_module.dart';
 import 'package:lexiora/core/navigation/home_destination.dart';
+import 'package:lexiora/core/services/notification_service.dart';
 import 'package:lexiora/modules/study_hub/data/datasources/study_hub_local_data_source.dart';
 import 'package:lexiora/modules/study_hub/data/repositories/study_hub_repository_impl.dart';
 import 'package:lexiora/modules/study_hub/domain/repositories/study_hub_repository.dart';
@@ -38,7 +39,10 @@ class StudyHubModule extends FeatureModule {
         () => StudyHubLocalDataSource(getIt<AppDatabase>()),
       )
       ..registerLazySingleton<StudyHubRepository>(
-        () => StudyHubRepositoryImpl(getIt<StudyHubLocalDataSource>()),
+        () => StudyHubRepositoryImpl(
+          getIt<StudyHubLocalDataSource>(),
+          onTasksChanged: () => getIt<NotificationService>().rescheduleAll(),
+        ),
       );
   }
 
@@ -50,7 +54,9 @@ class StudyHubModule extends FeatureModule {
         ),
         GoRoute(
           path: AppRoutes.studyHubDaily,
-          builder: (_, _) => const DailyPlannerPage(),
+          builder: (_, GoRouterState state) => DailyPlannerPage(
+            initialDay: _parseDay(state.uri.queryParameters['day']),
+          ),
         ),
         GoRoute(
           path: AppRoutes.studyHubWeekly,
@@ -90,4 +96,15 @@ class StudyHubModule extends FeatureModule {
           order: 1,
         ),
       ];
+}
+
+DateTime? _parseDay(String? value) {
+  if (value == null) return null;
+  final List<String> parts = value.split('-');
+  if (parts.length != 3) return null;
+  final int? year = int.tryParse(parts[0]);
+  final int? month = int.tryParse(parts[1]);
+  final int? day = int.tryParse(parts[2]);
+  if (year == null || month == null || day == null) return null;
+  return DateTime(year, month, day);
 }

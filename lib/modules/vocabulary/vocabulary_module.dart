@@ -12,6 +12,7 @@ import 'package:lexiora/modules/vocabulary/data/vocabulary_seeder.dart';
 import 'package:lexiora/modules/vocabulary/domain/repositories/vocabulary_repository.dart';
 import 'package:lexiora/modules/vocabulary/presentation/pages/vocabulary_lists_page.dart';
 import 'package:lexiora/modules/vocabulary/presentation/pages/vocabulary_words_page.dart';
+import 'package:lexiora/modules/vocabulary/presentation/pages/vocabulary_word_page.dart';
 
 /// Phase v0.6.0 — the offline Vocabulary module.
 ///
@@ -55,6 +56,12 @@ class VocabularyModule extends FeatureModule {
         GoRoute(
           path: AppRoutes.vocabulary,
           builder: (_, _) => const VocabularyListsPage(),
+        ),
+        GoRoute(
+          name: AppRoutes.vocabularyWordName,
+          path: AppRoutes.vocabularyWordPattern,
+          builder: (BuildContext context, GoRouterState state) =>
+              VocabularyWordPage(word: state.pathParameters['word'] ?? ''),
         ),
         GoRoute(
           name: AppRoutes.vocabularyListName,

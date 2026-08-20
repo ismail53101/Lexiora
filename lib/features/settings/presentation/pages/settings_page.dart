@@ -6,6 +6,7 @@ import 'package:lexiora/app/router/app_routes.dart';
 import 'package:lexiora/core/config/build_flags.dart';
 import 'package:lexiora/core/constants/app_constants.dart';
 import 'package:lexiora/core/constants/translation_languages.dart';
+import 'package:lexiora/core/services/notification_service.dart';
 import 'package:lexiora/core/reader_engine/reader_models.dart';
 import 'package:lexiora/core/services/permission_service.dart';
 import 'package:lexiora/features/settings/domain/entities/app_settings.dart';
@@ -164,6 +165,7 @@ class _SettingsBody extends ConsumerWidget {
             ),
           ],
         ),
+        _NotificationSection(settings: settings, controller: controller),
         _SectionCard(
           title: 'Translation',
           children: [
@@ -301,6 +303,146 @@ class _SettingsBody extends ConsumerWidget {
       ..showSnackBar(
         SnackBar(content: Text('$feature will arrive in a future update.')),
       );
+  }
+}
+
+class _NotificationSection extends StatelessWidget {
+  const _NotificationSection({required this.settings, required this.controller});
+
+  final AppSettings settings;
+  final SettingsController controller;
+
+  Future<void> _chooseWordTime(BuildContext context) async {
+    final TimeOfDay? picked = await showTimePicker(
+      context: context,
+      initialTime: TimeOfDay(
+        hour: settings.dailyWordHour,
+        minute: settings.dailyWordMinute,
+      ),
+    );
+    if (picked != null) {
+      await controller.setDailyWordTime(
+        hour: picked.hour,
+        minute: picked.minute,
+      );
+    }
+  }
+
+  Future<void> _requestPermission(BuildContext context) async {
+    final bool granted = await sl<NotificationService>().requestPermission();
+    if (!context.mounted) return;
+    if (granted) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(content: Text('Notifications are enabled.')),
+      );
+    } else {
+      await showDialog<void>(
+        context: context,
+        builder: (BuildContext dialogContext) => AlertDialog(
+          title: const Text('Notifications are disabled'),
+          content: const Text(
+            'Enable notifications in Android settings to receive planner and '
+            'Word-of-the-Day reminders.',
+          ),
+          actions: <Widget>[
+            TextButton(
+              onPressed: () => Navigator.pop(dialogContext),
+              child: const Text('Not now'),
+            ),
+            FilledButton(
+              onPressed: () async {
+                Navigator.pop(dialogContext);
+                await sl<NotificationService>().openNotificationSettings();
+              },
+              child: const Text('Open settings'),
+            ),
+          ],
+        ),
+      );
+    }
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return _SectionCard(
+      title: 'Notifications',
+      children: <Widget>[
+        SwitchListTile(
+          contentPadding: EdgeInsets.zero,
+          title: const Text('Study reminders'),
+          subtitle: const Text('Remind me before scheduled study sessions'),
+          value: settings.studyRemindersEnabled,
+          onChanged: controller.setStudyRemindersEnabled,
+        ),
+        if (settings.studyRemindersEnabled)
+          DropdownButtonFormField<int>(
+            initialValue: settings.studyReminderMinutes,
+            decoration: const InputDecoration(
+              labelText: 'Reminder time',
+              border: OutlineInputBorder(),
+              isDense: true,
+            ),
+            items: const <int>[5, 10, 15, 30]
+                .map(
+                  (int value) => DropdownMenuItem<int>(
+                    value: value,
+                    child: Text('$value minutes before'),
+                  ),
+                )
+                .toList(),
+            onChanged: (int? value) {
+              if (value != null) controller.setStudyReminderMinutes(value);
+            },
+          ),
+        SwitchListTile(
+          contentPadding: EdgeInsets.zero,
+          title: const Text('Break reminders'),
+          subtitle: const Text('Notify me when a planned break starts'),
+          value: settings.breakRemindersEnabled,
+          onChanged: controller.setBreakRemindersEnabled,
+        ),
+        SwitchListTile(
+          contentPadding: EdgeInsets.zero,
+          title: const Text('Daily Word of the Day'),
+          subtitle: const Text('Receive one GRE word notification every day'),
+          value: settings.dailyWordEnabled,
+          onChanged: controller.setDailyWordEnabled,
+        ),
+        ListTile(
+          contentPadding: EdgeInsets.zero,
+          enabled: settings.dailyWordEnabled,
+          title: const Text('Word notification time'),
+          subtitle: Text(
+            TimeOfDay(
+              hour: settings.dailyWordHour,
+              minute: settings.dailyWordMinute,
+            ).format(context),
+          ),
+          trailing: const Icon(Icons.schedule_outlined),
+          onTap: settings.dailyWordEnabled
+              ? () => _chooseWordTime(context)
+              : null,
+        ),
+        SwitchListTile(
+          contentPadding: EdgeInsets.zero,
+          title: const Text('Sound'),
+          value: settings.notificationSoundEnabled,
+          onChanged: controller.setNotificationSoundEnabled,
+        ),
+        SwitchListTile(
+          contentPadding: EdgeInsets.zero,
+          title: const Text('Vibration'),
+          value: settings.notificationVibrationEnabled,
+          onChanged: controller.setNotificationVibrationEnabled,
+        ),
+        const SizedBox(height: 4),
+        OutlinedButton.icon(
+          onPressed: () => _requestPermission(context),
+          icon: const Icon(Icons.notifications_active_outlined),
+          label: const Text('Check notification permission'),
+        ),
+      ],
+    );
   }
 }
 

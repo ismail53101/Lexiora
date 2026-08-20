@@ -11,6 +11,7 @@ import 'package:lexiora/core/services/pdf_import_service.dart';
 import 'package:lexiora/core/services/pdf_ocr_service.dart';
 import 'package:lexiora/core/services/permission_service.dart';
 import 'package:lexiora/core/services/screen_wake_service.dart';
+import 'package:lexiora/core/services/notification_service.dart';
 import 'package:lexiora/modules/admin/data/services/admin_content_service.dart';
 
 /// Configures the GetIt service locator.
@@ -40,6 +41,16 @@ Future<void> configureDependencies() async {
   for (final FeatureModule module in appModules) {
     module.registerDependencies(sl);
   }
+
+  sl.registerLazySingleton<NotificationService>(
+    () => NotificationService(
+      sl(),
+      sl(),
+      sl(),
+      sl(),
+      sl(),
+    ),
+  );
 
   // ── Aggregate Home dashboard destinations ──────────────────────────────
   final List<HomeDestination> destinations = <HomeDestination>[];
