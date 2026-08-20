@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:lexiora/modules/study_hub/domain/entities/study_task.dart';
+import 'package:lexiora/modules/study_hub/domain/scheduling/study_schedule_service.dart';
 import 'package:lexiora/modules/study_hub/domain/study_dates.dart';
 import 'package:lexiora/modules/study_hub/presentation/providers/study_hub_providers.dart';
 import 'package:uuid/uuid.dart';
@@ -72,6 +73,7 @@ class _SessionEditorState extends ConsumerState<_SessionEditor> {
   late TaskStatus _status = widget.existing?.status ?? TaskStatus.pending;
   bool _addBreak = false;
   int _breakMinutes = 10;
+  late bool _automatic = widget.existing?.autoScheduled ?? true;
 
   @override
   void dispose() {
@@ -92,6 +94,7 @@ class _SessionEditorState extends ConsumerState<_SessionEditor> {
     final int m = picked.hour * 60 + picked.minute;
     setState(() {
       if (start) {
+        _automatic = false;
         _start = m;
       } else {
         _end = m;
@@ -129,6 +132,8 @@ class _SessionEditorState extends ConsumerState<_SessionEditor> {
       priority: _priority,
       status: _status,
       kind: SessionKind.session,
+      durationMinutes: _start != null && _end != null ? _end! - _start! : null,
+      autoScheduled: _automatic,
       updatedAt: now,
       completedAt: _status == TaskStatus.completed ? now : null,
       clearTopic: _topic.text.trim().isEmpty,
@@ -150,6 +155,7 @@ class _SessionEditorState extends ConsumerState<_SessionEditor> {
               startMinute: breakStart,
               endMinute: breakEnd,
               kind: SessionKind.breakTime,
+              autoScheduled: true,
               createdAt: now,
               updatedAt: now,
             ),
@@ -161,6 +167,16 @@ class _SessionEditorState extends ConsumerState<_SessionEditor> {
   @override
   Widget build(BuildContext context) {
     final ThemeData theme = Theme.of(context);
+    final List<StudyTask> dayTasks = ref
+        .watch(studyDayTasksProvider(widget.day))
+        .maybeWhen(
+          data: (List<StudyTask> tasks) => tasks,
+          orElse: () => const <StudyTask>[],
+        );
+    final int? nextAvailable = StudyScheduleService.nextAvailableMinute(
+      dayTasks,
+      excludeId: widget.existing?.id,
+    );
     List<String> data(AsyncValue<List<String>> v) => v.maybeWhen(
           data: (List<String> s) => s,
           orElse: () => const <String>[],
@@ -217,6 +233,17 @@ class _SessionEditorState extends ConsumerState<_SessionEditor> {
               ),
             ),
             const SizedBox(height: 16),
+            SwitchListTile.adaptive(
+              contentPadding: EdgeInsets.zero,
+              value: _automatic,
+              onChanged: (bool value) => setState(() => _automatic = value),
+              title: const Text('Automatic scheduling'),
+              subtitle: Text(
+                _automatic && nextAvailable != null
+                    ? 'Next available: ${formatMinuteOfDay(nextAvailable)}'
+                    : 'Choose a custom start time manually',
+              ),
+            ),
             Row(
               children: <Widget>[
                 Expanded(
@@ -224,7 +251,10 @@ class _SessionEditorState extends ConsumerState<_SessionEditor> {
                     onPressed: () => _pickTime(start: true),
                     icon: const Icon(Icons.schedule, size: 18),
                     label: Text(
-                        _start == null ? 'Start' : formatMinuteOfDay(_start)),
+                      _automatic && nextAvailable != null
+                          ? formatMinuteOfDay(nextAvailable)
+                          : (_start == null ? 'Start' : formatMinuteOfDay(_start)),
+                    ),
                   ),
                 ),
                 const SizedBox(width: 12),
@@ -380,6 +410,7 @@ class _BreakEditorState extends ConsumerState<_BreakEditor> {
       endMinute: _end,
       kind: SessionKind.breakTime,
       status: TaskStatus.pending,
+      durationMinutes: _start != null && _end != null ? _end! - _start! : null,
       updatedAt: now,
       clearSubject: true,
       clearTopic: true,

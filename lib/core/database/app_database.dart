@@ -174,6 +174,11 @@ class AppDatabase extends _$AppDatabase {
           if (from < 17) {
             await m.createTable(quizStageProgress);
           }
+          // v17 → v18: Study Planner automatic/manual scheduling state.
+          // Existing rows remain manual and retain their stored times.
+          if (from < 18) {
+            await m.addColumn(studyTasks, studyTasks.autoScheduled);
+          }
         },
         beforeOpen: (OpeningDetails details) async {
           await customStatement('PRAGMA foreign_keys = ON');

@@ -24,6 +24,7 @@ void main() {
     String? day,
     int? start,
     int? end,
+    bool autoScheduled = false,
   }) {
     final DateTime now = DateTime.now();
     return StudyTask(
@@ -35,13 +36,20 @@ void main() {
       status: status,
       startMinute: start,
       endMinute: end,
+      autoScheduled: autoScheduled,
+      durationMinutes: start != null && end != null ? end - start : null,
       completedAt: status == TaskStatus.completed ? now : null,
       createdAt: now,
       updatedAt: now,
     );
   }
 
-  StudyTask brk(String id, {required int start, required int end, String? day}) {
+  StudyTask brk(String id, {
+    required int start,
+    required int end,
+    String? day,
+    bool autoScheduled = false,
+  }) {
     final DateTime now = DateTime.now();
     return StudyTask(
       id: id,
@@ -50,6 +58,8 @@ void main() {
       kind: SessionKind.breakTime,
       startMinute: start,
       endMinute: end,
+      autoScheduled: autoScheduled,
+      durationMinutes: end - start,
       createdAt: now,
       updatedAt: now,
     );
@@ -183,6 +193,24 @@ void main() {
     expect(t.status, TaskStatus.completed);
     expect(t.isBreak, isFalse, reason: 'defaults to session');
     expect(t.displaySubject, 'Legacy task');
+  });
+
+  test('automatic schedule is recalculated and persisted through save and delete', () async {
+    await repo.saveTask(session('first', start: 540, end: 600));
+    await repo.saveTask(
+        brk('pause', start: 600, end: 610, autoScheduled: true));
+    await repo.saveTask(session('next', start: 0, end: 60, autoScheduled: true));
+
+    List<StudyTask> rows = await repo.watchTasks(today).first;
+    expect(rows.firstWhere((StudyTask t) => t.id == 'next').startMinute, 610);
+
+    await repo.saveTask(session('first', start: 540, end: 630));
+    rows = await repo.watchTasks(today).first;
+    expect(rows.firstWhere((StudyTask t) => t.id == 'next').startMinute, 640);
+
+    await repo.deleteTask('pause');
+    rows = await repo.watchTasks(today).first;
+    expect(rows.firstWhere((StudyTask t) => t.id == 'next').startMinute, 630);
   });
 
   test('streak counts consecutive active days', () async {

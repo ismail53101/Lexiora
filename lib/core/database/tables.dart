@@ -463,6 +463,10 @@ class StudyTasks extends Table {
   /// Actual studied minutes recorded for this session (via a timer); optional.
   IntColumn get durationMinutes => integer().nullable()();
 
+  /// Whether this row may move when an earlier automatically scheduled row changes.
+  /// Existing rows default to manual so user-created times are preserved.
+  BoolColumn get autoScheduled => boolean().withDefault(const Constant(false))();
+
   /// 'session' or 'break' (mirrors SessionKind.key). Existing rows default to
   /// 'session'. Breaks store their name in [title] and never count as sessions.
   TextColumn get kind =>
