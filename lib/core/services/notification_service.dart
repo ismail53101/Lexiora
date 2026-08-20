@@ -77,7 +77,9 @@ class NotificationService {
     }
 
     await _plugin.initialize(
-      settings: const AndroidInitializationSettings('@mipmap/ic_launcher'),
+      settings: InitializationSettings(
+        android: const AndroidInitializationSettings('@mipmap/ic_launcher'),
+      ),
       onDidReceiveNotificationResponse: (NotificationResponse response) {
         final String? payload = response.payload;
         if (payload == null || payload.isEmpty) return;
@@ -100,7 +102,7 @@ class NotificationService {
 
   Future<bool> requestPermission() async {
     await initialize();
-    final bool? granted = await _plugin.requestNotificationsPermission();
+    final bool? granted = await _androidPlugin?.requestNotificationsPermission();
     return granted ?? await _isEnabled();
   }
 
@@ -110,11 +112,15 @@ class NotificationService {
   }
 
   Future<bool> _isEnabled() async =>
-      await _plugin.areNotificationsEnabled() ?? true;
+      await _androidPlugin?.areNotificationsEnabled() ?? true;
+
+  AndroidFlutterLocalNotificationsPlugin? get _androidPlugin =>
+      _plugin.resolvePlatformSpecificImplementation<
+          AndroidFlutterLocalNotificationsPlugin>();
 
   Future<void> openNotificationSettings() async {
     await initialize();
-    await _plugin.openAppNotificationSettings();
+    await _androidPlugin?.openAppNotificationSettings();
   }
 
   /// Reschedules the complete notification set from persisted settings and
@@ -181,12 +187,14 @@ class NotificationService {
           'day': task.day,
           'route': AppRoutes.studyHubDailyFor(task.day, task.id),
         }),
-        notificationDetails: _details(
-          channelId: studyChannelId,
-          channelName: 'Study Planner',
-          settings: settings,
+        notificationDetails: NotificationDetails(
+          android: _details(
+            channelId: studyChannelId,
+            channelName: 'Study Planner',
+            settings: settings,
+          ),
         ),
-        scheduleMode: AndroidScheduleMode.inexactAllowWhileIdle,
+        androidScheduleMode: AndroidScheduleMode.inexactAllowWhileIdle,
       );
     }
   }
@@ -252,12 +260,14 @@ class NotificationService {
           'listId': word.listId,
           'route': AppRoutes.vocabularyWord(word.word),
         }),
-        notificationDetails: _details(
-          channelId: wordChannelId,
-          channelName: 'Word of the Day',
-          settings: settings,
+        notificationDetails: NotificationDetails(
+          android: _details(
+            channelId: wordChannelId,
+            channelName: 'Word of the Day',
+            settings: settings,
+          ),
         ),
-        scheduleMode: AndroidScheduleMode.inexactAllowWhileIdle,
+        androidScheduleMode: AndroidScheduleMode.inexactAllowWhileIdle,
       );
     }
 
