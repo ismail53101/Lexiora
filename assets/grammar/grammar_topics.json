@@ -1117,39 +1117,9 @@
     "order": 5,
     "isLeaf": true,
     "content": {
-      "introduction": "An adverb is a word that modifies a verb, adjective, or another adverb by adding information about how, when, where, or to what extent something happens. Adverbs add precision and detail to sentences, which strengthens argumentative writing for CSS and PMS essays and enhances fluency in IELTS speaking. Recognizing adverb types and their correct placement is a key grammar skill tested in most English exams.",
-      "urduExplanation": "Adverb وہ لفظ ہے جو verb، adjective یا کسی دوسرے adverb کے بارے میں مزید معلومات دیتا ہے، جیسے 'quickly', 'very' یا 'yesterday'۔ یہ بتاتا ہے کہ کوئی کام کیسے، کب، کہاں یا کس حد تک ہوا۔ زیادہ تر adverbs adjective میں '-ly' لگا کر بنائے جاتے ہیں، جیسے 'quick' سے 'quickly'۔ صحیح جگہ پر adverb کا استعمال جملے کے معنی کو واضح اور درست بناتا ہے۔",
-      "englishExplanation": "Adverbs answer questions such as how, when, where, and to what degree, and they can modify verbs, adjectives, or other adverbs. Many adverbs of manner are formed by adding -ly to an adjective (slow becomes slowly), though some adverbs, like fast and well, do not follow this pattern. Adverbs are categorized into manner, time, place, frequency, and degree, each serving a distinct descriptive purpose. Their position in a sentence can shift meaning or emphasis, so correct placement is important, especially with frequency adverbs like always, often, and never, which usually appear before the main verb but after the verb 'to be'.",
-      "types": [
-        {
-          "name": "Adverb of Manner",
-          "description": "Describes how an action is performed, e.g., quickly, carefully, well."
-        },
-        {
-          "name": "Adverb of Time",
-          "description": "Describes when an action happens, e.g., yesterday, now, soon."
-        },
-        {
-          "name": "Adverb of Place",
-          "description": "Describes where an action happens, e.g., here, there, outside."
-        },
-        {
-          "name": "Adverb of Frequency",
-          "description": "Describes how often an action happens, e.g., always, often, rarely, never."
-        },
-        {
-          "name": "Adverb of Degree",
-          "description": "Describes the intensity or extent of an action or quality, e.g., very, quite, almost, too."
-        }
-      ],
-      "rules": [
-        "Adverbs of manner are usually placed after the main verb or after the object if there is one (She sings beautifully).",
-        "Adverbs of frequency are placed before the main verb but after auxiliary verbs and the verb 'to be' (He always arrives on time; She is often late).",
-        "Adverbs of time are typically placed at the beginning or end of a sentence, not in the middle (Yesterday, I finished my homework).",
-        "Do not confuse adjectives and adverbs; adjectives describe nouns while adverbs describe verbs, adjectives, or other adverbs (She is a careful driver vs. She drives carefully).",
-        "Some words ending in -ly, like friendly and lovely, are actually adjectives, not adverbs, so check meaning carefully.",
-        "Adverbs of degree usually appear directly before the adjective or adverb they modify (The exam was extremely difficult)."
-      ],
+      "introduction": "An adverb is a word that gives more information about a verb, adjective, another adverb, or a whole sentence.",
+      "urduExplanation": "حرفِ حال وہ لفظ ہے جو کسی فعل، صفت، دوسرے حرفِ حال یا پورے جملے کے بارے میں مزید معلومات فراہم کرے۔",
+      "englishExplanation": "Adverbs modify verbs, adjectives, and other adverbs, answering questions like how, where, when, and how often. They add precision to our descriptions and help clarify the circumstances of an action or quality. While many adverbs end in -ly, some do not, and their placement in a sentence can vary depending on their type and the emphasis intended.",
       "examples": [
         {
           "text": "The research team carefully analysed the survey data before presenting its findings.",
@@ -1187,6 +1157,824 @@
           "note": "'Rarely' is an adverb of frequency; it is placed before the main verb 'revises' to show how seldom the action occurs."
         }
       ],
+      "types": [
+        {
+          "name": "Adverb of Manner",
+          "description": "An Adverb of Manner tells us how an action is performed.",
+          "urduExplanation": "حرفِ حالِ طریقہ وہ لفظ ہے جو یہ بتاتا ہے کہ کوئی کام کس طرح یا کس انداز سے کیا گیا۔",
+          "exampleWords": "slowly, quickly, carefully, politely, beautifully, loudly",
+          "rules": [
+            "1: It tells us how an action happens.",
+            "2: It usually modifies an action verb.",
+            "3: Many adverbs of manner are formed by adding **-ly** to an adjective.",
+            "4: Not every adverb of manner ends in **-ly**.",
+            "5: Be careful with adjectives and adverbs that look similar."
+          ],
+          "ruleExamples": [
+            "He speaks **politely**.\nShe writes **carefully**. > Test: Ask **\"How?\"** after the verb.",
+            "The boy ran **quickly**.\nShe answered **correctly**. > **Quickly** tells us how he ran, while **correctly** tells us how she answered.",
+            "careful → **carefully**\nslow → **slowly**\nquick → **quickly**\npolite → **politely** > **Adjective + -ly → Adverb**.",
+            "He works **hard**.\nShe runs **fast**.\nThey arrived **late**. > **Hard**, **fast**, and **late** function as adverbs of manner.",
+            "❌ He runs **quick**.\n✅ He runs **quickly**.\n❌ She speaks **polite**.\n✅ She speaks **politely**. > Use the adverb form for actions."
+          ],
+          "examples": [
+            {
+              "text": "He speaks **politely**.",
+              "urdu": "وہ شائستگی سے بولتا ہے۔",
+              "note": "**Politely** describes how he speaks."
+            },
+            {
+              "text": "She writes **carefully**.",
+              "urdu": "وہ احتیاط سے لکھتی ہے۔",
+              "note": "**Carefully** describes how she writes."
+            },
+            {
+              "text": "The boy ran **quickly**.",
+              "urdu": "لڑکا تیزی سے بھاگا۔",
+              "note": "**Quickly** describes how he ran."
+            },
+            {
+              "text": "She answered **correctly**.",
+              "urdu": "اس نے صحیح جواب دیا۔",
+              "note": "**Correctly** tells us how she answered."
+            },
+            {
+              "text": "He works **hard**.",
+              "urdu": "وہ سخت محنت کرتا ہے۔",
+              "note": "**Hard** is an adverb here."
+            }
+          ],
+          "commonMistakes": [
+            {
+              "wrong": "He runs **quick**.",
+              "right": "He runs **quickly**.",
+              "urdu": "وہ تیزی سے بھاگتا ہے۔",
+              "note": "Use the adverb **quickly** to describe the action of running."
+            },
+            {
+              "wrong": "She speaks **polite**.",
+              "right": "She speaks **politely**.",
+              "urdu": "وہ شائستگی سے بولتی ہے۔",
+              "note": "Use the adverb **politely** to describe how she speaks."
+            },
+            {
+              "wrong": "He works **hardly**.",
+              "right": "He works **hard**.",
+              "urdu": "وہ سخت محنت کرتا ہے۔",
+              "note": "**Hardly** means 'almost not', while **hard** is the adverb for 'with effort'."
+            },
+            {
+              "wrong": "She runs **fastly**.",
+              "right": "She runs **fast**.",
+              "urdu": "وہ تیز بھاگتی ہے۔",
+              "note": "**Fastly** is not a word; **fast** is both adjective and adverb."
+            },
+            {
+              "wrong": "He speaks **beautiful**.",
+              "right": "He speaks **beautifully**.",
+              "urdu": "وہ خوبصورتی سے بولتا ہے۔",
+              "note": "Modify the verb with an adverb."
+            }
+          ]
+        },
+        {
+          "name": "Adverb of Place",
+          "description": "An Adverb of Place tells us where an action happens or where someone or something is located.",
+          "urduExplanation": "حرفِ حالِ مکان وہ لفظ ہے جو یہ بتاتا ہے کہ کوئی کام کہاں ہوتا ہے یا کوئی شخص یا چیز کہاں موجود ہے۔",
+          "exampleWords": "here, there, everywhere, outside, inside, nearby, abroad",
+          "rules": [
+            "1: It answers the question **\"Where?\"**.",
+            "2: It usually modifies a verb.",
+            "3: It can come before or after the verb depending on the sentence.",
+            "4: Some adverbs of place indicate direction or movement.",
+            "5: Do not confuse an adverb of place with a prepositional phrase."
+          ],
+          "ruleExamples": [
+            "Come **here**.\nThe children are playing **outside**. > Where should you come? → **Here**.",
+            "She looked **everywhere**.\nHe lives **nearby**. > **Everywhere** tells us where she looked.",
+            "Come **here**.\n**Here** comes the bus.\nThe children are playing **outside**.\n**Outside**, the weather is cold. > Positions are flexible.",
+            "The boy went **inside**.\nShe walked **away**.\nThe bird flew **upstairs**. > These tell us where someone moves.",
+            "He lives **here**. → **here** = adverb\nHe lives **in Quetta**. → **in Quetta** = prepositional phrase. > Adverbs of place can stand alone."
+          ],
+          "examples": [
+            {
+              "text": "Come **here**.",
+              "urdu": "یہاں آؤ۔",
+              "note": "**Here** is an adverb of place."
+            },
+            {
+              "text": "The children are playing **outside**.",
+              "urdu": "بچے باہر کھیل رہے ہیں۔",
+              "note": "**Outside** tells us where they are playing."
+            },
+            {
+              "text": "She looked **everywhere**.",
+              "urdu": "اس نے ہر جگہ دیکھا۔",
+              "note": "**Everywhere** is an adverb of place."
+            },
+            {
+              "text": "He lives **nearby**.",
+              "urdu": "وہ قریب ہی رہتا ہے۔",
+              "note": "**Nearby** tells us where he lives."
+            },
+            {
+              "text": "The boy went **inside**.",
+              "urdu": "لڑکا اندر چلا گیا۔",
+              "note": "**Inside** indicates the direction."
+            }
+          ],
+          "commonMistakes": [
+            {
+              "wrong": "He lives **in here**.",
+              "right": "He lives **here**.",
+              "urdu": "وہ یہاں رہتا ہے۔",
+              "note": "**Here** is an adverb and does not need a preposition like **in**."
+            },
+            {
+              "wrong": "She went to **abroad**.",
+              "right": "She went **abroad**.",
+              "urdu": "وہ بیرون ملک چلی گئی۔",
+              "note": "**Abroad** is an adverb, so we don't use 'to' before it."
+            },
+            {
+              "wrong": "Come to **there**.",
+              "right": "Go **there**.",
+              "urdu": "وہاں جاؤ۔",
+              "note": "Don't use 'to' with the adverb **there**."
+            },
+            {
+              "wrong": "He is **in outside**.",
+              "right": "He is **outside**.",
+              "urdu": "وہ باہر ہے۔",
+              "note": "**Outside** functions as an adverb here."
+            },
+            {
+              "wrong": "She is **at upstairs**.",
+              "right": "She is **upstairs**.",
+              "urdu": "وہ اوپر ہے۔",
+              "note": "**Upstairs** does not need the preposition 'at'."
+            }
+          ]
+        },
+        {
+          "name": "Adverb of Time",
+          "description": "An Adverb of Time tells us when an action happens, happened, or will happen.",
+          "urduExplanation": "حرفِ حالِ زمان وہ لفظ ہے جو یہ بتاتا ہے کہ کوئی کام کب ہوتا ہے، ہوا، یا ہوگا۔",
+          "exampleWords": "now, today, yesterday, tomorrow, soon, later, already, recently",
+          "rules": [
+            "1: It answers **\"When?\"**.",
+            "2: It usually modifies a verb or the action of the sentence.",
+            "3: Adverbs of time can occur at the beginning or end of a sentence.",
+            "4: Some adverbs of time show a specific time.",
+            "5: Some adverbs of time show an indefinite time.",
+            "6: Do not confuse **ago** and **before**."
+          ],
+          "ruleExamples": [
+            "He arrived **yesterday**.\nI will call you **tomorrow**. > When did he arrive? → **Yesterday**.",
+            "She finished her work **early**.\nThey arrived **late**. > **Early** tells us when she finished.",
+            "**Today**, I am studying English.\nI am studying English **today**. > Position can change.",
+            "He came **yesterday**.\nWe will leave **tomorrow**. > These identify a particular time.",
+            "She has **already** finished her work.\nHe will arrive **soon**. > These indicate time without giving an exact time.",
+            "He left two days **ago**.\nI had seen him **before**. > **Ago** is for time from now; **before** is for time earlier than another point."
+          ],
+          "examples": [
+            {
+              "text": "He arrived **yesterday**.",
+              "urdu": "وہ کل پہنچا۔",
+              "note": "**Yesterday** is an adverb of time."
+            },
+            {
+              "text": "I will call you **tomorrow**.",
+              "urdu": "میں آپ کو کل فون کروں گا۔",
+              "note": "**Tomorrow** tells us when."
+            },
+            {
+              "text": "She finished her work **early**.",
+              "urdu": "اس نے اپنا کام جلدی ختم کر لیا۔",
+              "note": "**Early** is an adverb of time."
+            },
+            {
+              "text": "They arrived **late**.",
+              "urdu": "وہ دیر سے پہنچے۔",
+              "note": "**Late** tells us when they arrived."
+            },
+            {
+              "text": "He left two days **ago**.",
+              "urdu": "وہ دو دن پہلے چلا گیا۔",
+              "note": "**Ago** refers to a period back from now."
+            }
+          ],
+          "commonMistakes": [
+            {
+              "wrong": "He arrived **before two days**.",
+              "right": "He arrived **two days ago**.",
+              "urdu": "وہ دو دن پہلے پہنچا۔",
+              "note": "Use **ago** when counting back from the present."
+            },
+            {
+              "wrong": "I have **already** finished it **yesterday**.",
+              "right": "I finished it **yesterday**.",
+              "urdu": "میں نے اسے کل ختم کر لیا تھا۔",
+              "note": "Don't use **already** with a specific past time like **yesterday**."
+            },
+            {
+              "wrong": "He will come **yesterday**.",
+              "right": "He came **yesterday**.",
+              "urdu": "وہ کل آیا تھا۔",
+              "note": "Use the correct tense with time adverbs."
+            },
+            {
+              "wrong": "I **tomorrow** will go.",
+              "right": "I will go **tomorrow**.",
+              "urdu": "میں کل جاؤں گا۔",
+              "note": "Place time adverbs at the end or beginning of the sentence."
+            },
+            {
+              "wrong": "He is coming **recently**.",
+              "right": "He has arrived **recently**.",
+              "urdu": "وہ حال ہی میں آیا ہے۔",
+              "note": "**Recently** is usually used with the present perfect tense."
+            }
+          ]
+        },
+        {
+          "name": "Adverb of Frequency",
+          "description": "An Adverb of Frequency tells us how often an action happens.",
+          "urduExplanation": "حرفِ حالِ تکرار وہ لفظ ہے جو یہ بتاتا ہے کہ کوئی کام کتنی بار یا کتنی کثرت سے ہوتا ہے۔",
+          "exampleWords": "always, usually, often, sometimes, rarely, seldom, never",
+          "rules": [
+            "1: It answers **\"How often?\"**.",
+            "2: Adverbs of frequency usually come before the main verb.",
+            "3: With the verb **to be**, the adverb usually comes after **be**.",
+            "4: With auxiliary or modal verbs, the adverb usually comes after the first auxiliary/modal.",
+            "5: **Never** already has a negative meaning.",
+            "6: Frequency adverbs can indicate different levels of frequency."
+          ],
+          "ruleExamples": [
+            "He **always** studies.\nShe **often** reads newspapers. > How often does he study? → **Always**.",
+            "He **always** works hard.\nThey **often** visit us. > **Subject + frequency adverb + main verb**.",
+            "He is **always** punctual.\nShe is **never** late. > **Subject + be + frequency adverb**.",
+            "She has **always** worked hard.\nHe can **often** help us. > After the first auxiliary/modal.",
+            "He **never** lies. ✅\n❌ He doesn't **never** lie. > Avoid double negatives.",
+            "High: **always, usually, often**\nLow: **sometimes, occasionally, rarely, seldom**\nZero: **never**."
+          ],
+          "examples": [
+            {
+              "text": "He **always** studies.",
+              "urdu": "وہ ہمیشہ پڑھتا ہے۔",
+              "note": "**Always** is a high-frequency adverb."
+            },
+            {
+              "text": "She **often** reads newspapers.",
+              "urdu": "وہ اکثر اخبارات پڑھتی ہے۔",
+              "note": "**Often** tells us the frequency."
+            },
+            {
+              "text": "He is **always** punctual.",
+              "urdu": "وہ ہمیشہ وقت کا پابند رہتا ہے۔",
+              "note": "The adverb comes after the verb **is**."
+            },
+            {
+              "text": "They **sometimes** go for a walk.",
+              "urdu": "وہ کبھی کبھی سیر کے لیے جاتے ہیں۔",
+              "note": "**Sometimes** is a low-frequency adverb."
+            },
+            {
+              "text": "He **never** lies.",
+              "urdu": "وہ کبھی جھوٹ نہیں بولتا۔",
+              "note": "**Never** indicates zero frequency."
+            }
+          ],
+          "commonMistakes": [
+            {
+              "wrong": "He **always is** punctual.",
+              "right": "He **is always** punctual.",
+              "urdu": "وہ ہمیشہ وقت کا پابند رہتا ہے۔",
+              "note": "With the verb **to be**, the adverb comes after the verb."
+            },
+            {
+              "wrong": "He **doesn't never** lie.",
+              "right": "He **never** lies.",
+              "urdu": "وہ کبھی جھوٹ نہیں بولتا۔",
+              "note": "**Never** is already negative, so don't use **doesn't**."
+            },
+            {
+              "wrong": "I **always have** worked hard.",
+              "right": "I **have always** worked hard.",
+              "urdu": "میں نے ہمیشہ سخت محنت کی ہے۔",
+              "note": "Place the adverb after the first auxiliary verb."
+            },
+            {
+              "wrong": "She **reads often** books.",
+              "right": "She **often reads** books.",
+              "urdu": "وہ اکثر کتابیں پڑھتی ہے۔",
+              "note": "The adverb should come before the main verb."
+            },
+            {
+              "wrong": "He **goes sometimes** to the gym.",
+              "right": "He **sometimes goes** to the gym.",
+              "urdu": "وہ کبھی کبھی جم جاتا ہے۔",
+              "note": "The adverb should come before the main verb."
+            }
+          ]
+        },
+        {
+          "name": "Adverb of Degree",
+          "description": "An Adverb of Degree tells us the intensity or extent of an action, adjective, or another adverb.",
+          "urduExplanation": "حرفِ حالِ مقدار یا شدت وہ لفظ ہے جو کسی فعل، صفت یا دوسرے حرفِ حال کی مقدار، شدت یا درجے کو ظاہر کرے۔",
+          "exampleWords": "very, too, quite, extremely, almost, enough, completely, rather",
+          "rules": [
+            "1: It answers **\"To what extent?\"** or **\"How much?\"**.",
+            "2: It can modify an adjective.",
+            "3: It can modify another adverb.",
+            "4: Some adverbs of degree can modify verbs.",
+            "5: Do not confuse **very** and **too**.",
+            "6: **Enough** usually comes after an adjective or adverb, but before a noun."
+          ],
+          "ruleExamples": [
+            "She is **very** intelligent.\nHe was **extremely** tired. > How intelligent? → **Very**. To what extent tired? → **Extremely**.",
+            "The exam was **very** difficult.\nShe is **extremely** intelligent. > **Adverb of Degree + Adjective**.",
+            "He runs **very** quickly.\nShe speaks **quite** slowly. > **Very** modifies quickly, while **quite** modifies slowly.",
+            "I **completely** agree with you.\nShe **almost** fell. > **Completely** shows the extent of agree, while **almost** shows proximity.",
+            "The bag is **very** heavy. (Highly heavy)\nThe bag is **too** heavy to carry. (Excessively heavy) > **Very** increases intensity; **too** indicates excess.",
+            "The room is large **enough**.\nHe runs quickly **enough**.\nWe have **enough** food. > **Adjective/Adverb + enough**; **Enough + noun**."
+          ],
+          "examples": [
+            {
+              "text": "She is **very** intelligent.",
+              "urdu": "وہ بہت ذہین ہے۔",
+              "note": "**Very** answers 'To what extent?'"
+            },
+            {
+              "text": "The exam was **very** difficult.",
+              "urdu": "امتحان بہت مشکل تھا۔",
+              "note": "**Very** modifies the adjective difficult."
+            },
+            {
+              "text": "He runs **very** quickly.",
+              "urdu": "وہ بہت تیزی سے بھاگتا ہے۔",
+              "note": "**Very** modifies the adverb quickly."
+            },
+            {
+              "text": "I **completely** agree with you.",
+              "urdu": "میں آپ سے مکمل طور پر متفق ہوں۔",
+              "note": "**Completely** modifies the verb agree."
+            },
+            {
+              "text": "The room is large **enough**.",
+              "urdu": "کمرہ کافی بڑا ہے۔",
+              "note": "**Enough** follows the adjective large."
+            },
+            {
+              "text": "We have **enough** food.",
+              "urdu": "ہمارے پاس کافی کھانا ہے۔",
+              "note": "**Enough** comes before the noun food."
+            }
+          ],
+          "commonMistakes": [
+            {
+              "wrong": "The coffee is **too** hot. (when you just mean it's very hot)",
+              "right": "The coffee is **very** hot.",
+              "urdu": "کافی بہت گرم ہے۔",
+              "note": "**Too** implies a negative excess (e.g., I cannot drink it)."
+            },
+            {
+              "wrong": "He is **enough** strong to lift it.",
+              "right": "He is strong **enough** to lift it.",
+              "urdu": "وہ اسے اٹھانے کے لیے کافی مضبوط ہے۔",
+              "note": "**Enough** must follow the adjective strong."
+            },
+            {
+              "wrong": "The bag is **too** heavy to carry. (incorrectly used for just high intensity)",
+              "right": "The bag is **very** heavy.",
+              "urdu": "بیگ بہت بھاری ہے۔",
+              "note": "Use **very** for high intensity and **too** for excessive intensity."
+            },
+            {
+              "wrong": "She runs **enough** quickly.",
+              "right": "She runs quickly **enough**.",
+              "urdu": "وہ کافی تیزی سے بھاگتی ہے۔",
+              "note": "**Enough** follows the adverb quickly."
+            },
+            {
+              "wrong": "I **agree completely** with you. (awkward placement)",
+              "right": "I **completely** agree with you.",
+              "urdu": "میں آپ سے مکمل طور پر متفق ہوں۔",
+              "note": "The adverb of degree usually comes before the verb it modifies."
+            }
+          ]
+        },
+        {
+          "name": "Adverb of Affirmation and Negation",
+          "description": "An Adverb of Affirmation expresses agreement, certainty, or confirmation, while an Adverb of Negation expresses denial or refusal.",
+          "urduExplanation": "حرفِ حالِ اثبات و نفی وہ لفظ ہے جو کسی بات کے یقینی، درست یا تسلیم شدہ ہونے یا اس کے انکار یا نفی کو ظاہر کرے۔",
+          "exampleWords": "certainly, surely, definitely, indeed, not, never, nowhere, hardly",
+          "rules": [
+            "1: Adverbs of affirmation show certainty or confirmation.",
+            "2: Adverbs of negation make a statement negative.",
+            "3: **Not** usually comes after an auxiliary or helping verb.",
+            "4: **Never** means **\"at no time\"** and already carries a negative meaning.",
+            "5: Do not use two negatives to express one negative idea.",
+            "6: Some adverbs can strongly emphasize certainty."
+          ],
+          "ruleExamples": [
+            "He will **certainly** succeed.\nShe is **definitely** coming. > These show confidence in the truth.",
+            "He is **not** ready.\nShe **never** lies. > These deny or negate the statement.",
+            "He is **not** ready.\nThey do **not** agree.\nShe has **not** finished. > **Auxiliary verb + not + main verb**.",
+            "He **never** wastes his time.\nShe **never** misses her class. > ❌ He doesn't **never** study. ✅ He **never** studies.",
+            "❌ I don't know **nothing**.\n✅ I don't know **anything**. OR ✅ I know **nothing**. > Avoid double negatives.",
+            "He will **definitely** pass.\nShe has **certainly** worked hard. > These strengthen the speaker's certainty."
+          ],
+          "examples": [
+            {
+              "text": "He will **certainly** succeed.",
+              "urdu": "وہ یقیناً کامیاب ہوگا۔",
+              "note": "**Certainly** confirms the action."
+            },
+            {
+              "text": "He is **not** ready.",
+              "urdu": "وہ تیار نہیں ہے۔",
+              "note": "**Not** negates the statement."
+            },
+            {
+              "text": "They do **not** agree.",
+              "urdu": "وہ متفق نہیں ہیں۔",
+              "note": "**Not** follows the auxiliary verb do."
+            },
+            {
+              "text": "He **never** wastes his time.",
+              "urdu": "وہ کبھی اپنا وقت ضائع نہیں کرتا۔",
+              "note": "**Never** means at no time."
+            },
+            {
+              "text": "He will **definitely** pass.",
+              "urdu": "وہ یقیناً پاس ہو جائے گا۔",
+              "note": "**Definitely** emphasizes certainty."
+            }
+          ],
+          "commonMistakes": [
+            {
+              "wrong": "He **doesn't never** study.",
+              "right": "He **never** studies.",
+              "urdu": "وہ کبھی نہیں پڑھتا۔",
+              "note": "**Never** is already negative; don't use it with **doesn't**."
+            },
+            {
+              "wrong": "I don't know **nothing**.",
+              "right": "I don't know **anything**.",
+              "urdu": "مجھے کچھ نہیں معلوم۔",
+              "note": "Avoid double negatives in standard English."
+            },
+            {
+              "wrong": "She **certainly is** coming.",
+              "right": "She is **certainly** coming.",
+              "urdu": "وہ یقیناً آ رہی ہے۔",
+              "note": "The adverb usually follows the verb 'to be'."
+            },
+            {
+              "wrong": "They **not** agree.",
+              "right": "They **do not** agree.",
+              "urdu": "وہ متفق نہیں ہیں۔",
+              "note": "**Not** needs an auxiliary verb like **do**."
+            },
+            {
+              "wrong": "I **no** know.",
+              "right": "I do **not** know.",
+              "urdu": "مجھے نہیں معلوم۔",
+              "note": "Use **not** with an auxiliary verb for negation."
+            }
+          ]
+        },
+        {
+          "name": "Interrogative Adverb",
+          "description": "An Interrogative Adverb is a word used to ask questions about the time, place, manner, or reason of an action.",
+          "urduExplanation": "حرفِ حالِ استفہام وہ لفظ ہے جو کسی کام کے وقت، جگہ، طریقے یا وجہ کے بارے میں سوال پوچھنے کے لیے استعمال ہوتا ہے۔",
+          "exampleWords": "when, where, why, how",
+          "rules": [
+            "1: **When** asks about time.",
+            "2: **Where** asks about place.",
+            "3: **Why** asks about reason or cause.",
+            "4: **How** asks about manner or method.",
+            "5: An interrogative adverb is used to form a question.",
+            "6: Do not confuse an interrogative adverb with an interrogative adjective."
+          ],
+          "ruleExamples": [
+            "**When** will you arrive?\n**When** did he leave? > Asks at what time.",
+            "**Where** do you live?\n**Where** did they go? > Asks at what place.",
+            "**Why** are you late?\n**Why** did she leave? > Asks for the reason.",
+            "**How** did you solve the problem?\n**How** does he work? > Asks in what way.",
+            "**When** will the exam begin?\n**Where** is your college? > Introduces a question.",
+            "**How** did you solve the problem? (**How** = Adverb)\n**Which** book did you read? (**Which** = Adjective) > Adjectives modify nouns."
+          ],
+          "examples": [
+            {
+              "text": "**When** will you arrive?",
+              "urdu": "آپ کب پہنچیں گے؟",
+              "note": "**When** asks about time."
+            },
+            {
+              "text": "**Where** do you live?",
+              "urdu": "آپ کہاں رہتے ہیں؟",
+              "note": "**Where** asks about place."
+            },
+            {
+              "text": "**Why** are you late?",
+              "urdu": "آپ کو دیر کیوں ہوئی؟",
+              "note": "**Why** asks for the reason."
+            },
+            {
+              "text": "**How** did you solve the problem?",
+              "urdu": "آپ نے مسئلہ کیسے حل کیا؟",
+              "note": "**How** asks about the manner."
+            },
+            {
+              "text": "**Where** is your college?",
+              "urdu": "آپ کا کالج کہاں ہے؟",
+              "note": "**Where** forms a question about location."
+            }
+          ],
+          "commonMistakes": [
+            {
+              "wrong": "**When** you will arrive?",
+              "right": "**When** will you arrive?",
+              "urdu": "آپ کب پہنچیں گے؟",
+              "note": "In questions, the auxiliary verb comes before the subject."
+            },
+            {
+              "wrong": "**Why** you are late?",
+              "right": "**Why** are you late?",
+              "urdu": "آپ کو دیر کیوں ہوئی؟",
+              "note": "Place the verb 'are' before the subject 'you'."
+            },
+            {
+              "wrong": "**How** he does work?",
+              "right": "**How** does he work?",
+              "urdu": "وہ کیسے کام کرتا ہے؟",
+              "note": "Use the auxiliary 'does' before the subject."
+            },
+            {
+              "wrong": "**Where** they did go?",
+              "right": "**Where** did they go?",
+              "urdu": "وہ کہاں گئے؟",
+              "note": "Use 'did' before the subject 'they'."
+            },
+            {
+              "wrong": "**Which** did you solve?",
+              "right": "**How** did you solve it?",
+              "urdu": "آپ نے اسے کیسے حل کیا؟",
+              "note": "Use **how** for manner, not **which** (unless referring to a specific item)."
+            }
+          ]
+        },
+        {
+          "name": "Relative Adverb",
+          "description": "A Relative Adverb is a word that connects a clause to a noun or idea mentioned earlier and gives information about place, time, or reason.",
+          "urduExplanation": "حرفِ حالِ موصولہ وہ لفظ ہے جو کسی پہلے بیان کیے گئے اسم یا خیال کو ایک تابع جملے سے جوڑتا ہے اور جگہ، وقت یا وجہ کے بارے میں معلومات دیتا ہے۔",
+          "exampleWords": "where, when, why",
+          "rules": [
+            "1: **Where** refers to a place.",
+            "2: **When** refers to a time.",
+            "3: **Why** refers to a reason.",
+            "4: A relative adverb connects two parts of a sentence.",
+            "5: Do not confuse a relative adverb with an interrogative adverb."
+          ],
+          "ruleExamples": [
+            "This is the place **where** I was born. > Connects clause with the noun 'place'.",
+            "I remember the day **when** we first met. > Connects clause with the noun 'day'.",
+            "I know the reason **why** he left. > Connects clause with the noun 'reason'.",
+            "This is the house **where** Ali lives.\nI remember the year **when** Pakistan was created. > Acts as a link.",
+            "Interrogative: **Where** do you live? (Asks a question)\nRelative: This is the city **where** I live. (Connects clauses) > Check for question mark vs. connection."
+          ],
+          "examples": [
+            {
+              "text": "This is the place **where** I was born.",
+              "urdu": "یہ وہ جگہ ہے جہاں میں پیدا ہوا تھا۔",
+              "note": "**Where** refers to the place."
+            },
+            {
+              "text": "I remember the day **when** we first met.",
+              "urdu": "مجھے وہ دن یاد ہے جب ہم پہلی بار ملے تھے۔",
+              "note": "**When** refers to the time (day)."
+            },
+            {
+              "text": "I know the reason **why** he left.",
+              "urdu": "مجھے وہ وجہ معلوم ہے کہ وہ کیوں چلا گیا۔",
+              "note": "**Why** refers to the reason."
+            },
+            {
+              "text": "This is the house **where** Ali lives.",
+              "urdu": "یہ وہ گھر ہے جہاں علی رہتا ہے۔",
+              "note": "**Where** connects the two parts of the sentence."
+            },
+            {
+              "text": "I remember the year **when** Pakistan was created.",
+              "urdu": "مجھے وہ سال یاد ہے جب پاکستان بنا تھا۔",
+              "note": "**When** acts as a link to the year."
+            }
+          ],
+          "commonMistakes": [
+            {
+              "wrong": "This is the place **which** I was born.",
+              "right": "This is the place **where** I was born.",
+              "urdu": "یہ وہ جگہ ہے جہاں میں پیدا ہوا تھا۔",
+              "note": "Use **where** for places, not **which**."
+            },
+            {
+              "wrong": "I remember the day **which** we met.",
+              "right": "I remember the day **when** we met.",
+              "urdu": "مجھے وہ دن یاد ہے جب ہم ملے تھے۔",
+              "note": "Use **when** for time, not **which**."
+            },
+            {
+              "wrong": "I know the reason **that** he left.",
+              "right": "I know the reason **why** he left.",
+              "urdu": "مجھے وہ وجہ معلوم ہے کہ وہ کیوں چلا گیا۔",
+              "note": "Use **why** for reasons."
+            },
+            {
+              "wrong": "This is the city **where** do I live.",
+              "right": "This is the city **where** I live.",
+              "urdu": "یہ وہ شہر ہے جہاں میں رہتا ہوں۔",
+              "note": "In a relative clause, do not use question word order (do I)."
+            },
+            {
+              "wrong": "I know the year **where** it happened.",
+              "right": "I know the year **when** it happened.",
+              "urdu": "مجھے وہ سال معلوم ہے جب یہ ہوا تھا۔",
+              "note": "Use **when** for time (year)."
+            }
+          ]
+        },
+        {
+          "name": "Conjunctive Adverb",
+          "description": "A Conjunctive Adverb is a word or phrase that connects two ideas or clauses and shows their relationship, such as contrast, result, addition, or sequence.",
+          "urduExplanation": "حرفِ حالِ رابط وہ لفظ یا فقرہ ہے جو دو خیالات یا جملوں کو آپس میں جوڑتا ہے اور ان کے درمیان تعلق، جیسے اختلاف، نتیجہ، اضافہ یا ترتیب، ظاہر کرتا ہے۔",
+          "exampleWords": "however, therefore, moreover, nevertheless, consequently, otherwise",
+          "rules": [
+            "1: It connects two related ideas or clauses.",
+            "2: It can show contrast.",
+            "3: It can show result or consequence.",
+            "4: It can show addition.",
+            "5: Pay attention to punctuation.",
+            "6: Do not confuse a conjunctive adverb with a coordinating conjunction."
+          ],
+          "ruleExamples": [
+            "He worked hard; **therefore**, he passed.\nShe was tired; **however**, she continued studying. > Shows result and contrast.",
+            "He is poor; **however**, he is honest. > Words like **however**, **nevertheless** show contrast.",
+            "It was raining; **therefore**, we stayed home. > Words like **therefore**, **consequently** show a result.",
+            "He is intelligent; **moreover**, he is hardworking. > Words like **moreover**, **furthermore** add ideas.",
+            "He was tired; **however**, he continued working.\nHe was tired. **However**, he continued working. > Use a semicolon or full stop before, and a comma after.",
+            "He was tired, **but** he continued working. (**but** = conjunction)\nHe was tired; **however**, he continued working. (**however** = conjunctive adverb) > **but** directly joins; **however** shows relationship."
+          ],
+          "examples": [
+            {
+              "text": "He worked hard; **therefore**, he passed.",
+              "urdu": "اس نے سخت محنت کی، اس لیے وہ پاس ہو گیا۔",
+              "note": "**Therefore** shows the result."
+            },
+            {
+              "text": "He is poor; **however**, he is honest.",
+              "urdu": "وہ غریب ہے، تاہم وہ ایماندار ہے۔",
+              "note": "**However** shows contrast."
+            },
+            {
+              "text": "It was raining; **therefore**, we stayed home.",
+              "urdu": "بارش ہو رہی تھی، اس لیے ہم گھر پر رہے۔",
+              "note": "**Therefore** shows consequence."
+            },
+            {
+              "text": "He is intelligent; **moreover**, he is hardworking.",
+              "urdu": "وہ ذہین ہے، مزید یہ کہ وہ محنتی ہے۔",
+              "note": "**Moreover** adds a related idea."
+            },
+            {
+              "text": "He was tired; **however**, he continued working.",
+              "urdu": "وہ تھکا ہوا تھا، تاہم اس نے کام جاری رکھا۔",
+              "note": "Note the semicolon and comma punctuation."
+            }
+          ],
+          "commonMistakes": [
+            {
+              "wrong": "He was tired **however** he worked.",
+              "right": "He was tired; **however**, he worked.",
+              "urdu": "وہ تھکا ہوا تھا، تاہم اس نے کام کیا۔",
+              "note": "Conjunctive adverbs need proper punctuation (semicolon and comma)."
+            },
+            {
+              "wrong": "He was tired, **however**, he worked.",
+              "right": "He was tired; **however**, he worked.",
+              "urdu": "وہ تھکا ہوا تھا، تاہم اس نے کام کیا۔",
+              "note": "A comma alone (comma splice) is incorrect before a conjunctive adverb."
+            },
+            {
+              "wrong": "He is rich, **but however** he is unhappy.",
+              "right": "He is rich; **however**, he is unhappy.",
+              "urdu": "وہ امیر ہے، تاہم وہ ناخوش ہے۔",
+              "note": "Do not use a coordinating conjunction (**but**) and a conjunctive adverb (**however**) together."
+            },
+            {
+              "wrong": "It rained **therefore** we stayed.",
+              "right": "It rained; **therefore**, we stayed.",
+              "urdu": "بارش ہوئی، اس لیے ہم رک گئے۔",
+              "note": "Missing punctuation makes the sentence hard to read."
+            },
+            {
+              "wrong": "He failed, **consequently** he cried.",
+              "right": "He failed; **consequently**, he cried.",
+              "urdu": "وہ ناکام ہو گیا، نتیجتاً وہ رویا۔",
+              "note": "Use a semicolon before **consequently** when joining two independent clauses."
+            }
+          ]
+        },
+        {
+          "name": "Adverb of Reason/Result",
+          "description": "An Adverb of Reason/Result shows the reason, result, or consequence of an action or situation.",
+          "urduExplanation": "حرفِ حالِ وجہ/نتیجہ وہ لفظ ہے جو کسی کام یا صورتِ حال کی وجہ یا اس کے نتیجے کو ظاہر کرے۔",
+          "exampleWords": "therefore, hence, thus, consequently, accordingly",
+          "rules": [
+            "1: It shows a result or consequence.",
+            "2: It can show the result of a previous statement.",
+            "3: **Therefore** means **\"for that reason\"** or **\"as a result.\"**",
+            "4: **Hence** can mean **\"therefore\"** or **\"for this reason.\"**",
+            "5: Do not confuse reason with result."
+          ],
+          "ruleExamples": [
+            "He worked hard; **therefore**, he succeeded. > Shows the result of working hard.",
+            "The road was blocked; **consequently**, we took another route. > Introduces the result of the blocked road.",
+            "He was ill; **therefore**, he could not attend the class. > Use when the second idea is the logical result.",
+            "He was the senior officer; **hence**, he made the final decision. > Introduces the result or conclusion.",
+            "He was ill **because** he had a fever. (**because** = reason)\nHe had a fever; **therefore**, he stayed home. (**therefore** = result) > **Because** gives reason; **Therefore** gives result."
+          ],
+          "examples": [
+            {
+              "text": "He worked hard; **therefore**, he succeeded.",
+              "urdu": "اس نے سخت محنت کی، اس لیے وہ کامیاب ہو گیا۔",
+              "note": "**Therefore** shows the result."
+            },
+            {
+              "text": "The road was blocked; **consequently**, we took another route.",
+              "urdu": "سڑک بند تھی، نتیجتاً ہم نے دوسرا راستہ اختیار کیا۔",
+              "note": "**Consequently** shows the result of the situation."
+            },
+            {
+              "text": "He was ill; **therefore**, he could not attend the class.",
+              "urdu": "وہ بیمار تھا، اس لیے وہ کلاس میں حاضر نہ ہو سکا۔",
+              "note": "**Therefore** explains the logical result of illness."
+            },
+            {
+              "text": "He was the senior officer; **hence**, he made the final decision.",
+              "urdu": "وہ سینئر افسر تھا، اس لیے اس نے حتمی فیصلہ کیا۔",
+              "note": "**Hence** introduces the conclusion."
+            },
+            {
+              "text": "It was late; **thus**, we decided to leave.",
+              "urdu": "دیر ہو چکی تھی، اس لیے ہم نے جانے کا فیصلہ کیا۔",
+              "note": "**Thus** indicates the result."
+            }
+          ],
+          "commonMistakes": [
+            {
+              "wrong": "He stayed home **because** he was ill. (when you mean result)",
+              "right": "He was ill; **therefore**, he stayed home.",
+              "urdu": "وہ بیمار تھا، اس لیے وہ گھر پر رہا۔",
+              "note": "Use **therefore** for the result, not **because**."
+            },
+            {
+              "wrong": "He worked hard **hence** he passed.",
+              "right": "He worked hard; **hence**, he passed.",
+              "urdu": "اس نے سخت محنت کی، اس لیے وہ پاس ہو گیا۔",
+              "note": "Use proper punctuation with adverbs of result."
+            },
+            {
+              "wrong": "He is rich **therefore** he is happy. (without punctuation)",
+              "right": "He is rich; **therefore**, he is happy.",
+              "urdu": "وہ امیر ہے، اس لیے وہ خوش ہے۔",
+              "note": "Semicolon and comma are needed for clarity."
+            },
+            {
+              "wrong": "I was hungry **consequently** I ate.",
+              "right": "I was hungry; **consequently**, I ate.",
+              "urdu": "میں بھوکا تھا، نتیجتاً میں نے کھایا۔",
+              "note": "Punctuation helps separate the two independent clauses."
+            },
+            {
+              "wrong": "He lied **therefore** I am angry. (missing punctuation)",
+              "right": "He lied; **therefore**, I am angry.",
+              "urdu": "اس نے جھوٹ بولا، اس لیے میں ناراض ہوں۔",
+              "note": "Use a semicolon before the result adverb."
+            }
+          ]
+        }
+      ],
+      "footerImage": "assets/grammar/images/adverbs_reference_guide.png",
+      "rules": [
+        "Adverbs of manner are usually placed after the main verb or after the object if there is one (She sings beautifully).",
+        "Adverbs of frequency are placed before the main verb but after auxiliary verbs and the verb 'to be' (He always arrives on time; She is often late).",
+        "Adverbs of time are typically placed at the beginning or end of a sentence, not in the middle (Yesterday, I finished my homework).",
+        "Do not confuse adjectives and adverbs; adjectives describe nouns while adverbs describe verbs, adjectives, or other adverbs (She is a careful driver vs. She drives carefully).",
+        "Some words ending in -ly, like friendly and lovely, are actually adjectives, not adverbs, so check meaning carefully.",
+        "Adverbs of degree usually appear directly before the adjective or adverb they modify (The exam was extremely difficult)."
+      ],
       "commonMistakes": [
         {
           "wrong": "The committee reviewed the proposal careful before approving it.",
@@ -1218,78 +2006,7 @@
           "urdu": "سینئر محقق نے انٹرویو کے دوران شرکا سے دوستانہ انداز میں بات کی۔",
           "note": "'Friendly' is an adjective, not a standard adverb; the phrase 'in a friendly manner' correctly modifies the verb 'spoke'."
         }
-      ],
-      "practice": [
-        {
-          "question": "Choose the sentence with the adverb placed correctly.",
-          "options": [
-            "Often she studies at night.",
-            "She often studies at night.",
-            "She studies often at night.",
-            "She studies at night often always."
-          ],
-          "answerIndex": 1,
-          "explanation": "Adverbs of frequency like 'often' are placed before the main verb in a simple present sentence."
-        },
-        {
-          "question": "Which word correctly completes: 'He answered the question ___.'?",
-          "options": [
-            "confident",
-            "confidence",
-            "confidently",
-            "confidential"
-          ],
-          "answerIndex": 2,
-          "explanation": "'Confidently' is the adverb form needed to modify the verb 'answered'."
-        },
-        {
-          "question": "Identify the adverb of degree in: 'The test was quite challenging.'",
-          "options": [
-            "test",
-            "was",
-            "quite",
-            "challenging"
-          ],
-          "answerIndex": 2,
-          "explanation": "'Quite' modifies the adjective 'challenging' by showing its intensity, making it an adverb of degree."
-        }
-      ],
-      "quiz": [
-        {
-          "question": "Choose the correctly formed sentence.",
-          "options": [
-            "She is always on time for meetings.",
-            "She always is on time for meetings.",
-            "Always she is on time for meetings.",
-            "She is on time always for meetings."
-          ],
-          "answerIndex": 0,
-          "explanation": "With the verb 'to be', the frequency adverb comes after it: 'is always'."
-        },
-        {
-          "question": "Which sentence correctly uses an adverb instead of an adjective?",
-          "options": [
-            "He performed the task perfect.",
-            "He performed the task perfectly.",
-            "He performed the perfectly task.",
-            "He perfect performed the task."
-          ],
-          "answerIndex": 1,
-          "explanation": "'Perfectly' correctly modifies the verb 'performed', while 'perfect' would incorrectly be used as an adverb."
-        },
-        {
-          "question": "Identify the adverb of time in: 'We will meet again next week.'",
-          "options": [
-            "meet",
-            "again",
-            "next week",
-            "we"
-          ],
-          "answerIndex": 2,
-          "explanation": "'Next week' tells us when the meeting will happen, making it an adverb of time."
-        }
-      ],
-      "summary": "Adverbs modify verbs, adjectives, or other adverbs to express manner, time, place, frequency, or degree. Correct placement, especially for frequency adverbs before the main verb and after 'to be', is essential for natural and accurate English. Always distinguish adverbs from adjectives, since only adverbs can properly modify verbs and other adverbs."
+      ]
     }
   },
   {
