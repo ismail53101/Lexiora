@@ -131,12 +131,16 @@ class _WordOfDayCardState extends State<WordOfDayCard> {
                     Row(
                       children: <Widget>[
                         Flexible(
-                          child: Text(
-                            word,
-                            maxLines: 1,
-                            overflow: TextOverflow.ellipsis,
-                            style: theme.textTheme.titleMedium?.copyWith(
-                              fontWeight: FontWeight.w800,
+                          child: FittedBox(
+                            fit: BoxFit.scaleDown,
+                            alignment: Alignment.centerLeft,
+                            child: Text(
+                              word,
+                              maxLines: 1,
+                              softWrap: false,
+                              style: theme.textTheme.titleMedium?.copyWith(
+                                fontWeight: FontWeight.w800,
+                              ),
                             ),
                           ),
                         ),

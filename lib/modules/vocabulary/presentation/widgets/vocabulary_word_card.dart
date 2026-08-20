@@ -40,12 +40,16 @@ class VocabularyWordCard extends StatelessWidget {
                   Row(
                     children: <Widget>[
                       Flexible(
-                        child: Text(
-                          word.word,
-                          maxLines: 1,
-                          overflow: TextOverflow.ellipsis,
-                          style: theme.textTheme.titleMedium
-                              ?.copyWith(fontWeight: FontWeight.w700),
+                        child: FittedBox(
+                          fit: BoxFit.scaleDown,
+                          alignment: Alignment.centerLeft,
+                          child: Text(
+                            word.word,
+                            maxLines: 1,
+                            softWrap: false,
+                            style: theme.textTheme.titleMedium
+                                ?.copyWith(fontWeight: FontWeight.w700),
+                          ),
                         ),
                       ),
                       if (word.partOfSpeech != null &&

@@ -36,16 +36,10 @@ class HttpTranslationService implements RemoteTranslationService {
     final String q = word.trim();
     if (q.isEmpty || targetLanguageCode.isEmpty) return null;
 
-    // Google-style query parameters. If the configured endpoint is a
-    // different provider, only this block needs adjusting.
-    final Uri uri = Uri.parse(_endpoint).replace(
-      queryParameters: <String, String>{
-        'client': 'gtx',
-        'sl': 'en',
-        'tl': targetLanguageCode,
-        'dt': 't',
-        'q': q,
-      },
+    final Uri uri = buildRequestUri(
+      endpoint: _endpoint,
+      query: q,
+      targetLanguageCode: targetLanguageCode,
     );
 
     final HttpClientRequest request = await _client.getUrl(uri).timeout(_timeout);
@@ -58,7 +52,67 @@ class HttpTranslationService implements RemoteTranslationService {
     }
     final String body =
         await response.transform(utf8.decoder).join().timeout(_timeout);
-    return parseTranslation(body);
+    final String? parsed = parseTranslation(body);
+    if (parsed != null) return parsed;
+
+    // A valid MyMemory error response must not be reported as a genuine
+    // translation miss. HybridTranslate uses exceptions to distinguish provider
+    // failures from an actual empty translation.
+    final Object? decoded = _decode(body);
+    if (decoded is Map<String, dynamic>) {
+      final Object? responseStatus = decoded['responseStatus'];
+      if (responseStatus is num && responseStatus != 200) {
+        throw HttpException(
+          'Translation provider returned responseStatus $responseStatus',
+          uri: uri,
+        );
+      }
+      final Object? responseData = decoded['responseData'];
+      if (responseData is Map<String, dynamic> &&
+          responseData['translatedText'] is String) {
+        // HTTP 200 with an empty translatedText is a genuine provider miss.
+        return null;
+      }
+    }
+    if (decoded is List) {
+      // An empty Google-style sentence list is a genuine provider miss.
+      return null;
+    }
+    throw const FormatException('Invalid translation provider response');
+  }
+
+  /// Builds a provider-compatible request without exposing provider details to
+  /// the hybrid translation use case. MyMemory requires `langpair`; the
+  /// Google-compatible endpoint requires `sl`, `tl`, and `dt`.
+  static Uri buildRequestUri({
+    required String endpoint,
+    required String query,
+    required String targetLanguageCode,
+  }) {
+    final Uri base = Uri.parse(endpoint);
+    final bool isMyMemory = base.host.contains('mymemory.translated.net') ||
+        base.path.endsWith('/get');
+    final Map<String, String> parameters = isMyMemory
+        ? <String, String>{
+            'q': query,
+            'langpair': 'en|$targetLanguageCode',
+          }
+        : <String, String>{
+            'client': 'gtx',
+            'sl': 'en',
+            'tl': targetLanguageCode,
+            'dt': 't',
+            'q': query,
+          };
+    return base.replace(queryParameters: parameters);
+  }
+
+  static Object? _decode(String body) {
+    try {
+      return jsonDecode(body);
+    } on FormatException {
+      return null;
+    }
   }
 
   /// Parses a translation response, returning the translated text or `null`
