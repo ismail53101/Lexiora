@@ -200,6 +200,7 @@ class GrammarLesson extends Equatable {
     this.practice = const <GrammarQuestion>[],
     this.quiz = const <GrammarQuestion>[],
     this.summary = '',
+    this.footerImage = '',
   });
 
   final String id;
@@ -225,6 +226,8 @@ class GrammarLesson extends Equatable {
   final List<GrammarQuestion> practice;
   final List<GrammarQuestion> quiz;
   final String summary;
+  /// Optional footer illustration asset used by selected grammar lessons.
+  final String footerImage;
 
   @override
   List<Object?> get props => <Object?>[
@@ -246,5 +249,6 @@ class GrammarLesson extends Equatable {
         practice,
         quiz,
         summary,
+        footerImage,
       ];
 }
