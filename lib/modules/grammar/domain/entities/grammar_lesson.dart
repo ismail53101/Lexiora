@@ -200,6 +200,7 @@ class GrammarLesson extends Equatable {
     this.practice = const <GrammarQuestion>[],
     this.quiz = const <GrammarQuestion>[],
     this.summary = '',
+    this.footerImage = '',
   });
 
   final String id;
@@ -246,5 +247,6 @@ class GrammarLesson extends Equatable {
         practice,
         quiz,
         summary,
+        footerImage,
       ];
 }

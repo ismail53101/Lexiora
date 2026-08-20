@@ -404,6 +404,18 @@ class _NounLandingView extends StatelessWidget {
             lesson: lesson,
             accents: accents,
           ),
+        if (lesson.footerImage.isNotEmpty) ...<Widget>[
+          const SizedBox(height: 12),
+          const _LandingSectionLabel(title: 'Quick Reference Guide'),
+          Card(
+            clipBehavior: Clip.antiAlias,
+            margin: const EdgeInsets.only(bottom: 24),
+            child: Image.asset(
+              lesson.footerImage,
+              fit: BoxFit.contain,
+            ),
+          ),
+        ],
       ],
     );
   }
