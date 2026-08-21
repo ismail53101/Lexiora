@@ -173,9 +173,23 @@ class QuizRepositoryImpl implements QuizRepository {
   @override
   Future<List<QuizQuestion>> stageQuestions(String subjectId, int stageIndex,
       {int perStage = quizStagePerStage}) async {
-    final List<QuizQuestionRow> rows = await _local.stageQuestions(subjectId,
-        offset: stageIndex * perStage, limit: perStage);
-    return rows.map(_toQuestion).toList();
+    final List<QuizQuestionRow> rows = await _local.stageQuestions(
+      subjectId,
+      offset: 0,
+      limit: 10000,
+    );
+    final List<QuizQuestion> pool = rows.map(_toQuestion).toList();
+    final int stageStart = stageIndex * perStage;
+    if (stageIndex < 0 || stageStart >= pool.length) {
+      return <QuizQuestion>[];
+    }
+    final int stageLimit = math.min(perStage, pool.length - stageStart);
+    if (pool.length <= stageLimit) return pool;
+    return MixedQuizSelector.select(
+      pool,
+      limit: stageLimit,
+      random: math.Random(),
+    );
   }
 
   @override
@@ -234,10 +248,6 @@ class QuizRepositoryImpl implements QuizRepository {
   }) async {
     final QuizFilter f =
         (filter ?? const QuizFilter()).copyWith(bankId: bankId);
-    final List<QuizQuestion> questions = (await _local
-            .session(f, limit: limit, shuffle: shuffle))
-        .map(_toQuestion)
-        .toList();
     final bool general =
         f.bankId == null &&
         f.subjectId == null &&
@@ -247,11 +257,16 @@ class QuizRepositoryImpl implements QuizRepository {
         (f.tag == null || f.tag!.trim().isEmpty) &&
         f.type == null &&
         f.difficulty == null;
+    final List<QuizQuestion> questions = (await _local
+            .session(f, limit: general ? 10000 : limit, shuffle: general || shuffle))
+        .map(_toQuestion)
+        .toList();
     if (!general) return questions;
+
     return MixedQuizSelector.select(
       questions,
       limit: limit,
-      shuffle: shuffle,
+      shuffle: true,
     );
   }
 

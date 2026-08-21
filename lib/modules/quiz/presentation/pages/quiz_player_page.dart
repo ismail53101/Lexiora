@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:math' as math;
 
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -37,6 +38,8 @@ class QuizPlayerPage extends ConsumerStatefulWidget {
 class _QuizPlayerPageState extends ConsumerState<QuizPlayerPage> {
   List<QuizQuestion> _questions = <QuizQuestion>[];
   final Map<int, QuizGivenAnswer> _answers = <int, QuizGivenAnswer>{};
+  final math.Random _random = math.Random();
+  List<int> _displayOrder = <int>[];
   final Set<int> _revealed = <int>{};
   final Map<int, int> _timeMs = <int, int>{};
   final TextEditingController _blank = TextEditingController();
@@ -77,11 +80,24 @@ class _QuizPlayerPageState extends ConsumerState<QuizPlayerPage> {
     setState(() {
       _settings = s;
       _questions = qs;
+      _prepareQuestion();
       _loading = false;
       _shownAt = DateTime.now();
       _startedAt = DateTime.now();
       _syncBlank();
     });
+  }
+
+  void _prepareQuestion() {
+    if (_questions.isEmpty) {
+      _displayOrder = <int>[];
+      return;
+    }
+    _displayOrder = shuffleOptions(
+      _questions[_index].options,
+      _questions[_index].answerIndex,
+      _random,
+    ).order;
   }
 
   void _syncBlank() {
@@ -109,6 +125,7 @@ class _QuizPlayerPageState extends ConsumerState<QuizPlayerPage> {
     _accrueTime();
     setState(() {
       _index = to.clamp(0, _questions.length - 1);
+      _prepareQuestion();
       _shownAt = DateTime.now();
       _syncBlank();
     });
@@ -279,8 +296,15 @@ class _QuizPlayerPageState extends ConsumerState<QuizPlayerPage> {
     switch (q.type) {
       case QuestionType.mcqSingle:
         return <Widget>[
-          for (int i = 0; i < q.options.length; i++)
-            _choice(q, i, q.options[i], revealed),
+          for (int displayIndex = 0;
+              displayIndex < _displayOrder.length;
+              displayIndex++)
+            _choice(
+              q,
+              _displayOrder[displayIndex],
+              q.options[_displayOrder[displayIndex]],
+              revealed,
+            ),
         ];
       case QuestionType.trueFalse:
         return <Widget>[
@@ -334,10 +358,10 @@ class _QuizPlayerPageState extends ConsumerState<QuizPlayerPage> {
     }
   }
 
-  Widget _choice(QuizQuestion q, int i, String text, bool revealed) {
+  Widget _choice(QuizQuestion q, int originalIndex, String text, bool revealed) {
     final int? selected = _answers[_index]?.index;
-    final bool isSelected = selected == i;
-    final bool isAnswer = q.answerIndex == i;
+    final bool isSelected = selected == originalIndex;
+    final bool isAnswer = q.answerIndex == originalIndex;
 
     final QuizOptionState state;
     if (revealed && isAnswer) {
@@ -352,7 +376,9 @@ class _QuizPlayerPageState extends ConsumerState<QuizPlayerPage> {
     return QuizOptionCard(
       text: text,
       state: state,
-      onTap: revealed ? null : () => _select(QuizGivenAnswer.choice(i)),
+      onTap: revealed
+          ? null
+          : () => _select(QuizGivenAnswer.choice(originalIndex)),
     );
   }
 

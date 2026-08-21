@@ -10,7 +10,10 @@ import 'package:lexiora/app/di/injector.dart';
 import 'package:lexiora/app/di/injector_config.dart';
 import 'package:lexiora/app/router/app_router.dart';
 import 'package:lexiora/core/services/notification_service.dart';
+import 'package:lexiora/core/services/permission_service.dart';
 import 'package:lexiora/core/utils/logger.dart';
+import 'package:lexiora/features/settings/domain/entities/app_settings.dart';
+import 'package:lexiora/features/settings/domain/repositories/settings_repository.dart';
 import 'package:pdfrx/pdfrx.dart';
 
 /// Sapiora entry point.
@@ -50,7 +53,21 @@ Future<void> main() async {
       await notifications.initialize(
         onTap: (String payload) => _handleNotificationPayload(router, payload),
       );
-      await notifications.requestPermission();
+      final SettingsRepository settings = sl<SettingsRepository>();
+      final AppSettings currentSettings = await settings.getSettings();
+      if (!currentSettings.initialPermissionFlowCompleted) {
+        final bool notificationsEnabled =
+            await notifications.notificationsEnabled();
+        if (!notificationsEnabled) await notifications.requestPermission();
+
+        final PermissionService filePermission = sl<PermissionService>();
+        if (!await filePermission.isGrantedForDiscovery()) {
+          await filePermission.requestForDiscovery();
+        }
+        await settings.updateSettings(
+          currentSettings.copyWith(initialPermissionFlowCompleted: true),
+        );
+      }
       await notifications.rescheduleAll();
 
       runApp(ProviderScope(child: SapioraApp(router: router)));

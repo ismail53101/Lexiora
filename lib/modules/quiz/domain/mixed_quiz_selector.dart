@@ -16,20 +16,22 @@ class MixedQuizSelector {
     List<QuizQuestion> questions, {
     required int limit,
     bool shuffle = true,
+    math.Random? random,
   }) {
     if (questions.isEmpty || limit <= 0) return <QuizQuestion>[];
     if (!shuffle) return questions.take(limit).toList(growable: false);
 
+    final math.Random rng = random ?? _random;
     final Map<String, List<QuizQuestion>> buckets = <String, List<QuizQuestion>>{};
     for (final QuizQuestion question in questions) {
       final String category = _categoryOf(question);
       (buckets[category] ??= <QuizQuestion>[]).add(question);
     }
     for (final List<QuizQuestion> bucket in buckets.values) {
-      bucket.shuffle(_random);
+      bucket.shuffle(rng);
     }
 
-    final List<String> categories = buckets.keys.toList()..shuffle(_random);
+    final List<String> categories = buckets.keys.toList()..shuffle(rng);
     final List<QuizQuestion> mixed = <QuizQuestion>[];
     String? previousCategory;
     while (mixed.length < limit && categories.isNotEmpty) {
@@ -44,7 +46,7 @@ class MixedQuizSelector {
           : eligible;
       if (candidates.isEmpty) break;
 
-      final String category = candidates[_random.nextInt(candidates.length)];
+      final String category = candidates[rng.nextInt(candidates.length)];
       mixed.add(buckets[category]!.removeLast());
       previousCategory = category;
     }

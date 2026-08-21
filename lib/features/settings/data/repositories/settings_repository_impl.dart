@@ -35,6 +35,8 @@ class SettingsRepositoryImpl implements SettingsRepository {
   static const String _kNotificationVibrationEnabled =
       'notificationVibrationEnabled';
   static const String _kDailyWordHistory = 'dailyWordHistory';
+  static const String _kInitialPermissionFlowCompleted =
+      'initialPermissionFlowCompleted';
 
   @override
   Stream<AppSettings> watchSettings() =>
@@ -100,6 +102,8 @@ class SettingsRepositoryImpl implements SettingsRepository {
       notificationVibrationEnabled:
           _bool(map[_kNotificationVibrationEnabled], true),
       dailyWordHistory: _history(map[_kDailyWordHistory]),
+      initialPermissionFlowCompleted:
+          _bool(map[_kInitialPermissionFlowCompleted], false),
     );
   }
 
@@ -127,6 +131,8 @@ class SettingsRepositoryImpl implements SettingsRepository {
         _kNotificationVibrationEnabled:
             s.notificationVibrationEnabled ? '1' : '0',
         _kDailyWordHistory: s.dailyWordHistory.join('\\n'),
+        _kInitialPermissionFlowCompleted:
+            s.initialPermissionFlowCompleted ? '1' : '0',
       };
 
   String _language(String? v) => (v != null && isSupportedTranslationLanguage(v))

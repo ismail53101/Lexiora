@@ -9,7 +9,7 @@ import 'package:lexiora/modules/quiz/domain/entities/quiz_subject.dart';
 import 'package:lexiora/modules/quiz/domain/quiz_stages.dart';
 
 /// Verifies the staged-quiz data path against a real in-memory database:
-/// deterministic 10-question stage slices and the best-result merge on
+/// fresh sampled stages with preserved sizes and the best-result merge on
 /// `saveStageResult` (best score/stars kept, attempt count incremented,
 /// passed latches true).
 void main() {
@@ -49,7 +49,7 @@ void main() {
     }
   }
 
-  test('stage slicing is deterministic and exact', () async {
+  test('stage sampling preserves exact ladder sizes', () async {
     await seedSubject(25);
 
     expect(await repo.stageQuestionCount('sub'), 25);
@@ -65,16 +65,12 @@ void main() {
     expect(s2.length, 5);
     expect(s3, isEmpty);
 
-    // Buckets are disjoint and ordered: first bucket holds questions 0–9.
-    expect(s0.first.prompt, 'Question 0');
-    expect(s0.last.prompt, 'Question 9');
-    expect(s2.first.prompt, 'Question 20');
-    final Set<String> all = <String>{
-      ...s0.map((QuizQuestion q) => q.id),
-      ...s1.map((QuizQuestion q) => q.id),
-      ...s2.map((QuizQuestion q) => q.id),
-    };
-    expect(all.length, 25);
+    expect(s0.every((QuizQuestion q) => q.subjectId == 'sub'), isTrue);
+    expect(s1.every((QuizQuestion q) => q.subjectId == 'sub'), isTrue);
+    expect(s2.every((QuizQuestion q) => q.subjectId == 'sub'), isTrue);
+    expect(<String>{...s0.map((QuizQuestion q) => q.id)}.length, 10);
+    expect(<String>{...s1.map((QuizQuestion q) => q.id)}.length, 10);
+    expect(<String>{...s2.map((QuizQuestion q) => q.id)}.length, 5);
   });
 
   test('saveStageResult records the result and keeps the best', () async {
