@@ -194,7 +194,8 @@ class NotificationService {
       final String day = dayKey(date);
       final Map<String, dynamic>? entry =
           await WordOfDayService.forDate(date);
-      final String? word = (entry?['word'] as String?)?.trim();
+      if (entry == null) continue;
+      final String? word = (entry['word'] as String?)?.trim();
       if (word == null || word.isEmpty) continue;
       retainedRecords.add('$day|$word');
 
