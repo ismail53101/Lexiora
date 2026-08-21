@@ -46,9 +46,6 @@ Future<void> configureDependencies() async {
     () => NotificationService(
       sl(),
       sl(),
-      sl(),
-      sl(),
-      sl(),
     ),
   );
 

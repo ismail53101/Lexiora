@@ -4,16 +4,12 @@ import 'dart:convert';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:flutter_timezone/flutter_timezone.dart';
 import 'package:lexiora/app/router/app_routes.dart';
+import 'package:lexiora/features/home/domain/services/word_of_day_service.dart';
 import 'package:lexiora/features/settings/domain/entities/app_settings.dart';
 import 'package:lexiora/features/settings/domain/repositories/settings_repository.dart';
-import 'package:lexiora/modules/dictionary/domain/entities/word_profile.dart';
-import 'package:lexiora/modules/dictionary/domain/repositories/dictionary_repository.dart';
 import 'package:lexiora/modules/study_hub/domain/entities/study_task.dart';
 import 'package:lexiora/modules/study_hub/domain/repositories/study_hub_repository.dart';
 import 'package:lexiora/modules/study_hub/domain/study_dates.dart';
-import 'package:lexiora/modules/vocabulary/data/vocabulary_seeder.dart';
-import 'package:lexiora/modules/vocabulary/domain/entities/vocabulary_word.dart';
-import 'package:lexiora/modules/vocabulary/domain/repositories/vocabulary_repository.dart';
 import 'package:timezone/data/latest.dart' as tz_data;
 import 'package:timezone/timezone.dart' as tz;
 
@@ -21,17 +17,10 @@ import 'package:timezone/timezone.dart' as tz;
 /// vocabulary learning. It owns only notification scheduling; the planner's
 /// existing persistence and automatic scheduling remain the source of truth.
 class NotificationService {
-  NotificationService(
-    this._settings,
-    this._studyHub,
-    this._vocabulary,
-    this._vocabularySeeder,
-    this._dictionary,
-  );
+  NotificationService(this._settings, this._studyHub);
 
   static const String studyChannelId = 'study_reminders';
   static const String wordChannelId = 'word_of_the_day';
-  static const String _greListId = 'gre';
   static const int _studyIdBase = 100000;
   static const int _breakIdBase = 200000;
   static const int _wordIdBase = 300000;
@@ -39,9 +28,6 @@ class NotificationService {
 
   final SettingsRepository _settings;
   final StudyHubRepository _studyHub;
-  final VocabularyRepository _vocabulary;
-  final VocabularySeeder _vocabularySeeder;
-  final DictionaryRepository _dictionary;
   final FlutterLocalNotificationsPlugin _plugin =
       FlutterLocalNotificationsPlugin();
 
@@ -200,46 +186,18 @@ class NotificationService {
   }
 
   Future<void> _scheduleWordOfDay(AppSettings settings) async {
-    await _vocabularySeeder.ensureSeeded();
-    final List<VocabularyWord> pool =
-        await _vocabulary.watchWords(_greListId).first;
-    if (pool.isEmpty) return;
-
-    final Map<String, String> assignments = <String, String>{};
-    final Set<String> used = <String>{};
-    for (final String record in settings.dailyWordHistory) {
-      final int separator = record.indexOf('|');
-      if (separator <= 0 || separator >= record.length - 1) continue;
-      final String assignedDay = record.substring(0, separator);
-      final String assignedWord = record.substring(separator + 1);
-      assignments[assignedDay] = assignedWord;
-      used.add(assignedWord.toLowerCase());
-    }
-
-    final DateTime today = DateTime.now();
+    final DateTime now = DateTime.now();
+    final DateTime firstDay = DateTime(now.year, now.month, now.day);
     final List<String> retainedRecords = <String>[];
     for (int offset = 0; offset < _lookAheadDays; offset++) {
-      final DateTime date = DateTime(today.year, today.month, today.day)
-          .add(Duration(days: offset));
+      final DateTime date = firstDay.add(Duration(days: offset));
       final String day = dayKey(date);
-      String? selected = assignments[day];
-      if (selected == null) {
-        final VocabularyWord? unused = _firstUnused(pool, used);
-        selected = unused?.word ?? pool[offset % pool.length].word;
-        assignments[day] = selected;
-        used.add(selected.toLowerCase());
-      }
-      retainedRecords.add('$day|$selected');
+      final Map<String, dynamic>? entry =
+          await WordOfDayService.forDate(date);
+      final String? word = (entry?['word'] as String?)?.trim();
+      if (word == null || word.isEmpty) continue;
+      retainedRecords.add('$day|$word');
 
-      final VocabularyWord word = pool.firstWhere(
-        (VocabularyWord item) =>
-            item.word.toLowerCase() == selected!.toLowerCase(),
-        orElse: () => pool.first,
-      );
-      final ExamWordData? exam =
-          await _dictionary.examData(word.word.toLowerCase());
-      final String example = exam?.usage?.english ??
-          'The word ${word.word} is useful in competitive examinations.';
       final DateTime localDate = DateTime(
         date.year,
         date.month,
@@ -247,18 +205,23 @@ class NotificationService {
         settings.dailyWordHour,
         settings.dailyWordMinute,
       );
-      if (!localDate.isAfter(today)) continue;
-
+      if (!localDate.isAfter(now)) continue;
+      final List<dynamic> urduMeanings =
+          (entry['urduMeanings'] as List<dynamic>?) ?? const <dynamic>[];
+      final String urdu = urduMeanings.isNotEmpty
+          ? urduMeanings.first.toString()
+          : 'See the vocabulary detail for the full meaning.';
+      final String definition =
+          (entry['englishDefinition'] as String?)?.trim() ?? '';
       await _plugin.zonedSchedule(
         id: _wordIdBase + offset,
-        title: 'Word of the Day — ${word.word}',
-        body: 'Meaning: ${word.urduMeaning}\nExample: $example',
+        title: 'Word of the Day — $word',
+        body: 'Meaning: $urdu\n$definition',
         scheduledDate: _toTz(localDate),
         payload: jsonEncode(<String, String>{
           'type': 'wordOfDay',
-          'word': word.word,
-          'listId': word.listId,
-          'route': AppRoutes.vocabularyWord(word.word),
+          'word': word,
+          'route': AppRoutes.dictionaryWord(word),
         }),
         notificationDetails: NotificationDetails(
           android: _details(
@@ -274,16 +237,6 @@ class NotificationService {
     await _settings.updateSettings(
       settings.copyWith(dailyWordHistory: retainedRecords),
     );
-  }
-
-  VocabularyWord? _firstUnused(
-    List<VocabularyWord> pool,
-    Set<String> used,
-  ) {
-    for (final VocabularyWord word in pool) {
-      if (!used.contains(word.word.toLowerCase())) return word;
-    }
-    return null;
   }
 
   AndroidNotificationDetails _details({

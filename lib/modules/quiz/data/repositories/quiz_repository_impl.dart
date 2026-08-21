@@ -14,6 +14,7 @@ import 'package:lexiora/modules/quiz/domain/entities/quiz_subject.dart';
 import 'package:lexiora/modules/quiz/domain/entities/quiz_topic.dart';
 import 'package:lexiora/modules/quiz/domain/quiz_dates.dart';
 import 'package:lexiora/modules/quiz/domain/quiz_grading.dart';
+import 'package:lexiora/modules/quiz/domain/mixed_quiz_selector.dart';
 import 'package:lexiora/modules/quiz/domain/quiz_stages.dart';
 import 'package:lexiora/modules/quiz/domain/repositories/quiz_repository.dart';
 import 'package:uuid/uuid.dart';
@@ -233,9 +234,25 @@ class QuizRepositoryImpl implements QuizRepository {
   }) async {
     final QuizFilter f =
         (filter ?? const QuizFilter()).copyWith(bankId: bankId);
-    return (await _local.session(f, limit: limit, shuffle: shuffle))
+    final List<QuizQuestion> questions = (await _local
+            .session(f, limit: limit, shuffle: shuffle))
         .map(_toQuestion)
         .toList();
+    final bool general =
+        f.bankId == null &&
+        f.subjectId == null &&
+        f.topicId == null &&
+        (f.subject == null || f.subject!.trim().isEmpty) &&
+        (f.topic == null || f.topic!.trim().isEmpty) &&
+        (f.tag == null || f.tag!.trim().isEmpty) &&
+        f.type == null &&
+        f.difficulty == null;
+    if (!general) return questions;
+    return MixedQuizSelector.select(
+      questions,
+      limit: limit,
+      shuffle: shuffle,
+    );
   }
 
   @override

@@ -15,15 +15,19 @@ class WordOfDayService {
   /// Returns today's word as a map with keys:
   /// `word`, `englishDefinition`, `urduMeanings`, `partOfSpeech`.
   /// Returns `null` if the asset can't be loaded.
-  static Future<Map<String, dynamic>?> today() async {
+  static Future<Map<String, dynamic>?> today() async =>
+      forDate(DateTime.now());
+
+  /// Returns the same deterministic entry that [today] would use for [date].
+  /// The calendar day is normalized in UTC to match the Home card's existing
+  /// day boundary and avoid device-timezone-dependent selection changes.
+  static Future<Map<String, dynamic>?> forDate(DateTime date) async {
     final List<Map<String, dynamic>> entries = await _load();
     if (entries.isEmpty) return null;
 
-    // Deterministic index: days since Unix epoch mod entry count.
-    final int dayIndex =
-        DateTime.now().toUtc().difference(DateTime.utc(1970)).inDays;
-    final int index = dayIndex % entries.length;
-    return entries[index];
+    final DateTime utcDay = DateTime.utc(date.year, date.month, date.day);
+    final int dayIndex = utcDay.difference(DateTime.utc(1970)).inDays;
+    return entries[dayIndex % entries.length];
   }
 
   static Future<List<Map<String, dynamic>>> _load() async {
