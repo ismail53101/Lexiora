@@ -25,9 +25,16 @@ class WordOfDayService {
     final List<Map<String, dynamic>> entries = await _load();
     if (entries.isEmpty) return null;
 
+    return entries[indexForDate(date, entries.length)];
+  }
+
+  /// Returns the deterministic entry index for a calendar date and pool size.
+  /// Kept pure so the date contract can be verified without asset loading.
+  static int indexForDate(DateTime date, int poolLength) {
+    if (poolLength <= 0) return 0;
     final DateTime utcDay = DateTime.utc(date.year, date.month, date.day);
     final int dayIndex = utcDay.difference(DateTime.utc(1970)).inDays;
-    return entries[dayIndex % entries.length];
+    return dayIndex % poolLength;
   }
 
   static Future<List<Map<String, dynamic>>> _load() async {
