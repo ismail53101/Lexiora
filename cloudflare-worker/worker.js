@@ -2,24 +2,24 @@
  * Sapiora AI Assistant gateway.
  *
  * The Flutter app talks ONLY to this Worker (SAPIORA_AI_BASE_URL points
- * here). This Worker holds the real Forge AI / HCNSEC credentials as
- * Worker secrets and is the only thing that ever calls them — neither key
- * exists in the app, in git, or in any client-visible place.
+ * here). This Worker holds the real upstream provider credentials as Worker
+ * secrets and is the only thing that ever calls them — no provider key exists
+ * in the app, in git, or in any client-visible place.
  *
  * Endpoint:  POST /v1/chat/completions   (OpenAI-compatible body)
  *
  * Provider selection (checked in this order — first one present wins):
- *   1. HTTP header  X-AI-Provider: forge | hcnsec | tokenrouter | auto
- *   2. JSON body    { "provider": "forge" | "hcnsec" | "tokenrouter" | "auto" }
+ *   1. HTTP header  X-AI-Provider: forge | hcnsec | tokenrouter | openrouter | auto
+ *   2. JSON body    { "provider": "forge" | "hcnsec" | "tokenrouter" | "openrouter" | "auto" }
  *   3. env.DEFAULT_PROVIDER (falls back to "hcnsec" if unset)
  *
- * "auto" (the app's default) tries the default provider first and — only if
- * that attempt fails before any response body has been sent to the client
- * (connection error, timeout, or a non-2xx status) — automatically retries
- * with the other provider. Once a provider's response has started streaming
+ * "auto" (the app's default) tries every configured provider in a deterministic
+ * order, starting with env.DEFAULT_PROVIDER when configured and then trying
+ * the remaining configured providers if an attempt fails before any response
+ * body has been sent to the client (connection error, timeout, or non-2xx).
+ * Once a provider's response has started streaming
  * to the client, the response is never switched mid-stream (that's not a
- * meaningful retry point, and matches how every other OpenAI-compatible
- * proxy behaves).
+ * meaningful retry point for an OpenAI-compatible proxy).
  *
  * ── Adding a new provider later ────────────────────────────────────────────
  * 1. Add its base URL + secret name to PROVIDERS below.
@@ -44,6 +44,13 @@ const PROVIDERS = {
     // substituted in whenever this provider is used (see providerModel()).
     modelEnv: "TOKENROUTER_MODEL",
     defaultModel: "moonshotai/kimi-k3-free",
+  },
+  openrouter: {
+    baseUrlEnv: "OPENROUTER_BASE_URL",
+    apiKeyEnv: "OPENROUTER_API_KEY",
+    defaultBaseUrl: "https://openrouter.ai/api/v1",
+    modelEnv: "OPENROUTER_MODEL",
+    defaultModel: "stealth/ox-alpha",
   },
 };
 

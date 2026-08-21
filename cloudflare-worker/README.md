@@ -1,8 +1,8 @@
 # Sapiora AI gateway (Cloudflare Worker)
 
-Routes the app's AI Assistant requests to **Forge AI** or **HCNSEC**, or lets
+Routes the app's AI Assistant requests to **Forge AI**, **HCNSEC**, or **OpenRouter**, or lets
 the Worker pick automatically with fallback. The app only ever talks to this
-Worker — it never sees, sends, or stores either provider's real API key.
+Worker — it never sees, sends, or stores any provider's real API key.
 
 ## Deploy
 
@@ -22,6 +22,9 @@ This publishes the Worker at `https://sapiora-ai-worker.<your-subdomain>.workers
 # The real upstream provider keys:
 wrangler secret put FORGE_API_KEY
 wrangler secret put HCNSEC_API_KEY
+wrangler secret put OPENROUTER_API_KEY
+# Optional model override; defaults to stealth/ox-alpha.
+wrangler secret put OPENROUTER_MODEL
 
 # The key the *app* authenticates with (this is what goes into the
 # SAPIORA_AI_API_KEY GitHub secret — NOT either provider's real key):
@@ -46,7 +49,7 @@ In GitHub → **Settings → Secrets and variables → Actions**:
 |---|---|
 | `SAPIORA_AI_BASE_URL` | Your Worker's URL, e.g. `https://sapiora-ai-worker.<subdomain>.workers.dev` |
 | `SAPIORA_AI_API_KEY` | The `WORKER_SHARED_KEY` value you set above |
-| `SAPIORA_AI_PROVIDER` *(optional)* | `auto` (default), `forge`, or `hcnsec` — normally leave unset |
+| `SAPIORA_AI_PROVIDER` *(optional)* | `auto` (default), `forge`, `hcnsec`, or `openrouter` — normally leave unset |
 
 ## Test it directly
 
@@ -64,8 +67,8 @@ curl -N https://YOUR_WORKER_URL/v1/chat/completions \
 
 You should see a stream of `data: {...}` lines ending in `data: [DONE]`.
 
-Try forcing a specific provider with `-H "X-AI-Provider: forge"` or
-`-H "X-AI-Provider: hcnsec"` to test each one individually.
+Try forcing a specific provider with `-H "X-AI-Provider: forge"`,
+`-H "X-AI-Provider: hcnsec"`, or `-H "X-AI-Provider: openrouter"` to test each one individually.
 
 ## Testing checklist
 
@@ -75,6 +78,7 @@ Try forcing a specific provider with `-H "X-AI-Provider: forge"` or
 - [ ] Explicit `X-AI-Provider: forge` → only calls Forge (fails if its key is wrong,
       does *not* silently fall back to HCNSEC)
 - [ ] Explicit `X-AI-Provider: hcnsec` → only calls HCNSEC
+- [ ] Explicit `X-AI-Provider: openrouter` → only calls OpenRouter with `OPENROUTER_MODEL` or `stealth/ox-alpha`
 - [ ] Missing/invalid `Authorization` header → `401` from the Worker itself,
       before either provider is ever called
 - [ ] Streaming works end-to-end in the app (tokens appear incrementally, not
@@ -83,7 +87,11 @@ Try forcing a specific provider with `-H "X-AI-Provider: forge"` or
       cancellation — unchanged, the Worker doesn't need to know)
 - [ ] Both providers down/misconfigured → app shows a normal error, not a crash
 
-## Adding another provider later (e.g. Gemini, Claude, Groq, OpenRouter, ...)
+## Provider configuration
+
+For OpenRouter, use `OPENROUTER_API_KEY` as the Cloudflare Worker secret. The default upstream is `https://openrouter.ai/api/v1` and the default model is `stealth/ox-alpha`; set `OPENROUTER_MODEL` only when you want a different OpenRouter model. Set `DEFAULT_PROVIDER=openrouter` for OpenRouter-first automatic routing, or send `X-AI-Provider: openrouter` for an explicit request. Keep `DEFAULT_PROVIDER=auto` to retain automatic fallback across all configured providers.
+
+## Adding another provider later (e.g. Gemini, Claude, Groq, ...)
 
 1. In `worker.js`, add an entry to the `PROVIDERS` map with its base-URL env
    var name and API-key env var name. If it needs a specific model id rather

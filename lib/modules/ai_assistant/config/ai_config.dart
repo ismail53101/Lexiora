@@ -11,7 +11,9 @@ enum AiProvider {
   /// all requests — this is the default.
   auto,
   forge,
-  hcnsec;
+  hcnsec,
+  tokenrouter,
+  openrouter;
 
   /// The exact string sent in the `X-AI-Provider` header.
   String get wireValue => name;
@@ -19,6 +21,8 @@ enum AiProvider {
   static AiProvider fromWireValue(String value) => switch (value.trim().toLowerCase()) {
         'forge' => AiProvider.forge,
         'hcnsec' => AiProvider.hcnsec,
+        'tokenrouter' => AiProvider.tokenrouter,
+        'openrouter' => AiProvider.openrouter,
         _ => AiProvider.auto,
       };
 }
@@ -31,12 +35,13 @@ enum AiProvider {
 ///   flutter build apk --dart-define=SAPIORA_AI_API_KEY=sk-xxxx \
 ///     [--dart-define=SAPIORA_AI_BASE_URL=https://your-worker.workers.dev] \
 ///     [--dart-define=SAPIORA_AI_MODEL=auto] \
-///     [--dart-define=SAPIORA_AI_PROVIDER=auto|forge|hcnsec]
+///     [--dart-define=SAPIORA_AI_PROVIDER=auto|forge|hcnsec|tokenrouter|openrouter]
 ///
 /// [baseUrl] must always point at the Cloudflare Worker gateway, never at a
 /// provider directly — the Worker is the only thing that holds Forge/HCNSEC
 /// credentials (as Worker secrets) and is the only thing that ever calls
-/// them.
+/// them. With `auto`, the Worker tries every configured provider in its
+/// fallback order; with an explicit value, it uses that provider only.
 class AiConfig {
   const AiConfig({
     required this.baseUrl,
