@@ -47,14 +47,16 @@ abstract interface class QuizRepository {
 
   // ── Stage quizzes (v0.11.0) ────────────────────────────────────────────────
   Future<List<QuizQuestion>> stageQuestions(String subjectId, int stageIndex,
-      {int perStage = 10});
-  Future<int> stageQuestionCount(String subjectId);
-  Stream<List<QuizStageProgress>> watchStageProgress(String subjectId);
+      {int perStage = 10, String? topicId});
+  Future<int> stageQuestionCount(String subjectId, {String? topicId});
+  Stream<List<QuizStageProgress>> watchStageProgress(String subjectId,
+      {String? topicId});
   Future<void> saveStageResult({
     required String subjectId,
     required int stageIndex,
     required int correct,
     required int total,
+    String? topicId,
   });
 
   // ── Play / attempts ─────────────────────────────────────────────────────────

@@ -14,6 +14,7 @@ class StageResultsPage extends ConsumerWidget {
     super.key,
     required this.subjectId,
     required this.subjectName,
+    this.topicId,
     required this.stageIndex,
     required this.attempt,
     required this.outcomes,
@@ -21,6 +22,7 @@ class StageResultsPage extends ConsumerWidget {
 
   final String subjectId;
   final String subjectName;
+  final String? topicId;
   final int stageIndex;
   final QuizAttempt attempt;
   final List<QuestionOutcome> outcomes;
@@ -31,7 +33,10 @@ class StageResultsPage extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final ThemeData theme = Theme.of(context);
     final int stageCount =
-        ref.watch(quizStageCountProvider(subjectId)).maybeWhen(
+        ref.watch(quizStageCountProvider(QuizStageScope(
+          subjectId: subjectId,
+          topicId: topicId,
+        ))).maybeWhen(
               data: (int n) => n,
               orElse: () => -1,
             );
@@ -178,6 +183,7 @@ class StageResultsPage extends ConsumerWidget {
                 builder: (_) => StagePlayerPage(
                   subjectId: subjectId,
                   subjectName: subjectName,
+                  topicId: topicId,
                   stageIndex: stageIndex + 1,
                 ),
               ));
@@ -215,6 +221,7 @@ class StageResultsPage extends ConsumerWidget {
               builder: (_) => StagePlayerPage(
                 subjectId: subjectId,
                 subjectName: subjectName,
+                topicId: topicId,
                 stageIndex: stageIndex,
               ),
             )),

@@ -15,9 +15,16 @@ import 'package:lexiora/modules/quiz/presentation/providers/quiz_providers.dart'
 /// attempts are shown per stage, and the grid is paginated so even 200+ stage
 /// subjects stay clean.
 class StageMapPage extends ConsumerStatefulWidget {
-  const StageMapPage({super.key, required this.subjectId});
+  const StageMapPage({
+    super.key,
+    required this.subjectId,
+    this.topicId,
+    this.title,
+  });
 
   final String subjectId;
+  final String? topicId;
+  final String? title;
 
   @override
   ConsumerState<StageMapPage> createState() => _StageMapPageState();
@@ -44,26 +51,31 @@ class _StageMapPageState extends ConsumerState<StageMapPage> {
     }
     final Color color = subject?.colorValue ?? theme.colorScheme.primary;
 
+    final QuizStageScope scope = QuizStageScope(
+      subjectId: widget.subjectId,
+      topicId: widget.topicId,
+    );
     final int stageCount =
-        ref.watch(quizStageCountProvider(widget.subjectId)).maybeWhen(
+        ref.watch(quizStageCountProvider(scope)).maybeWhen(
               data: (int n) => n,
               orElse: () => -1,
             );
     final List<QuizStageProgress> progress =
-        ref.watch(quizStageProgressProvider(widget.subjectId)).maybeWhen(
+        ref.watch(quizStageProgressProvider(scope)).maybeWhen(
               data: (List<QuizStageProgress> p) => p,
               orElse: () => const <QuizStageProgress>[],
             );
+    final String pageTitle = widget.title ?? subject?.name ?? 'Quiz';
 
     if (stageCount < 0) {
       return Scaffold(
-        appBar: AppBar(title: Text(subject?.name ?? 'Quiz')),
+        appBar: AppBar(title: Text(pageTitle)),
         body: const Center(child: CircularProgressIndicator()),
       );
     }
     if (stageCount == 0) {
       return Scaffold(
-        appBar: AppBar(title: Text(subject?.name ?? 'Quiz')),
+        appBar: AppBar(title: Text(pageTitle)),
         body: const EmptyState(
           icon: Icons.flag_outlined,
           title: 'No stages yet',
@@ -166,7 +178,7 @@ class _StageMapPageState extends ConsumerState<StageMapPage> {
       return;
     }
     context.push(
-        '${AppRoutes.quizStagePlay}?subjectId=${Uri.encodeComponent(widget.subjectId)}&stage=$stage');
+        '${AppRoutes.quizStagePlay}?subjectId=${Uri.encodeComponent(widget.subjectId)}${widget.topicId == null ? '' : '&topicId=${Uri.encodeComponent(widget.topicId!)}'}${widget.title == null ? '' : '&title=${Uri.encodeComponent(widget.title!)}'}&stage=$stage');
   }
 }
 

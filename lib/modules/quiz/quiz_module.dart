@@ -93,8 +93,14 @@ class QuizModule extends FeatureModule {
         GoRoute(
           path: AppRoutes.quizStageMapPattern,
           name: AppRoutes.quizStageMapName,
-          builder: (BuildContext context, GoRouterState state) => StageMapPage(
-              subjectId: state.pathParameters['subjectId'] ?? ''),
+          builder: (BuildContext context, GoRouterState state) {
+            final Map<String, String> q = state.uri.queryParameters;
+            return StageMapPage(
+              subjectId: state.pathParameters['subjectId'] ?? '',
+              topicId: q['topic'],
+              title: q['title'],
+            );
+          },
         ),
         GoRoute(
           path: AppRoutes.quizStagePlay,
@@ -102,6 +108,8 @@ class QuizModule extends FeatureModule {
             final Map<String, String> q = state.uri.queryParameters;
             return StagePlayerPage(
               subjectId: q['subjectId'] ?? '',
+              topicId: q['topicId'],
+              subjectName: q['title'] ?? '',
               stageIndex: int.tryParse(q['stage'] ?? '') ?? 0,
             );
           },

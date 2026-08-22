@@ -26,11 +26,13 @@ class StagePlayerPage extends ConsumerStatefulWidget {
     required this.subjectId,
     required this.stageIndex,
     this.subjectName = '',
+    this.topicId,
   });
 
   final String subjectId;
   final int stageIndex;
   final String subjectName;
+  final String? topicId;
 
   @override
   ConsumerState<StagePlayerPage> createState() => _StagePlayerPageState();
@@ -70,7 +72,7 @@ class _StagePlayerPageState extends ConsumerState<StagePlayerPage> {
   Future<void> _load() async {
     final List<QuizQuestion> qs = await ref
         .read(quizRepositoryProvider)
-        .stageQuestions(widget.subjectId, widget.stageIndex);
+        .stageQuestions(widget.subjectId, widget.stageIndex, topicId: widget.topicId);
     if (!mounted) return;
     setState(() {
       _questions = qs;
@@ -199,6 +201,7 @@ class _StagePlayerPageState extends ConsumerState<StagePlayerPage> {
     final int total = attempt.totalQuestions;
     await ref.read(quizRepositoryProvider).saveStageResult(
           subjectId: widget.subjectId,
+          topicId: widget.topicId,
           stageIndex: widget.stageIndex,
           correct: correct,
           total: total,
@@ -209,6 +212,7 @@ class _StagePlayerPageState extends ConsumerState<StagePlayerPage> {
       builder: (_) => StageResultsPage(
         subjectId: widget.subjectId,
         subjectName: widget.subjectName,
+        topicId: widget.topicId,
         stageIndex: widget.stageIndex,
         attempt: attempt,
         outcomes: outcomes,

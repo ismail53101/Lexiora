@@ -70,6 +70,20 @@ void main() {
     });
   });
 
+  group('QuizStageScope', () {
+    test('keeps topic ladders isolated from subject ladders', () {
+      const QuizStageScope grammar = QuizStageScope(
+        subjectId: 'english',
+        topicId: 'english-grammar',
+      );
+      const QuizStageScope subject = QuizStageScope(subjectId: 'english');
+
+      expect(grammar.progressSubjectId, 'english::english-grammar');
+      expect(subject.progressSubjectId, 'english');
+      expect(grammar, isNot(subject));
+    });
+  });
+
   group('quizStageUnlocked', () {
     test('stage 1 is always unlocked', () {
       expect(quizStageUnlocked(0, const <int>{}), isTrue);

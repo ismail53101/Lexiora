@@ -80,15 +80,17 @@ final quizSubjectByIdProvider = FutureProvider.family<QuizSubject?, String>(
 
 /// Per-stage best results for a subject (drives the stage map + unlock ladder).
 final quizStageProgressProvider =
-    StreamProvider.family<List<QuizStageProgress>, String>(
-        (Ref ref, String subjectId) =>
-            ref.watch(quizRepositoryProvider).watchStageProgress(subjectId));
+    StreamProvider.family<List<QuizStageProgress>, QuizStageScope>(
+        (Ref ref, QuizStageScope scope) => ref
+            .watch(quizRepositoryProvider)
+            .watchStageProgress(scope.subjectId, topicId: scope.topicId));
 
-/// Number of stages a subject's question pool splits into (10 per stage).
-final quizStageCountProvider = FutureProvider.family<int, String>(
-    (Ref ref, String subjectId) async {
-  final int questions =
-      await ref.watch(quizRepositoryProvider).stageQuestionCount(subjectId);
+/// Number of stages in a subject or topic-specific question pool.
+final quizStageCountProvider = FutureProvider.family<int, QuizStageScope>(
+    (Ref ref, QuizStageScope scope) async {
+  final int questions = await ref
+      .watch(quizRepositoryProvider)
+      .stageQuestionCount(scope.subjectId, topicId: scope.topicId);
   return quizStageCount(questions);
 });
 

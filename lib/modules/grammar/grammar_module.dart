@@ -12,6 +12,7 @@ import 'package:lexiora/modules/grammar/domain/repositories/grammar_repository.d
 import 'package:lexiora/modules/grammar/presentation/pages/grammar_page.dart';
 import 'package:lexiora/modules/grammar/presentation/pages/lesson_page.dart';
 import 'package:lexiora/modules/grammar/presentation/pages/topic_page.dart';
+import 'package:lexiora/modules/quiz/presentation/pages/stage_map_page.dart';
 import 'package:lexiora/modules/grammar/presentation/pages/type_detail_page.dart';
 
 /// Phase v0.4.0 — the offline Grammar module.
@@ -58,9 +59,17 @@ class GrammarModule extends FeatureModule {
         GoRoute(
           name: AppRoutes.grammarLessonName,
           path: AppRoutes.grammarLessonPattern,
-          builder: (BuildContext context, GoRouterState state) => LessonPage(
-            lessonId: state.pathParameters['id'] ?? '',
-          ),
+          builder: (BuildContext context, GoRouterState state) {
+            final String lessonId = state.pathParameters['id'] ?? '';
+            if (lessonId == 'pos/quiz') {
+              return const StageMapPage(
+                subjectId: 'english',
+                topicId: 'english-grammar',
+                title: 'Grammar Quiz',
+              );
+            }
+            return LessonPage(lessonId: lessonId);
+          },
         ),
         GoRoute(
           name: AppRoutes.grammarTypeName,

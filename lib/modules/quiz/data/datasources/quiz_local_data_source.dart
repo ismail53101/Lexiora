@@ -252,17 +252,20 @@ class QuizLocalDataSource {
   // quiz_stage_progress table; attempts still feed the normal quiz tables.
 
   Future<List<QuizQuestionRow>> stageQuestions(String subjectId,
-      {required int offset, required int limit}) async {
+      {String? topicId, required int offset, required int limit}) async {
+    final String topicClause = topicId == null ? '' : ' AND topic_id = ?';
+    final List<Variable<Object>> variables = <Variable<Object>>[
+      Variable.withString(subjectId),
+      if (topicId != null) Variable.withString(topicId),
+      Variable.withInt(limit),
+      Variable.withInt(offset),
+    ];
     final List<QueryRow> rows = await _db
         .customSelect(
-          'SELECT * FROM quiz_questions WHERE subject_id = ? '
+          'SELECT * FROM quiz_questions WHERE subject_id = ?$topicClause '
           "ORDER BY COALESCE(topic_id, ''), bank_id, created_at, id "
           'LIMIT ? OFFSET ?',
-          variables: <Variable<Object>>[
-            Variable.withString(subjectId),
-            Variable.withInt(limit),
-            Variable.withInt(offset),
-          ],
+          variables: variables,
           readsFrom: <ResultSetImplementation<dynamic, dynamic>>{
             _db.quizQuestions,
           },

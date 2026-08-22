@@ -8,6 +8,29 @@
 
 library;
 
+/// Identifies the question pool and progress namespace for a staged quiz.
+///
+/// A topic scope is used by Grammar so its ladder does not mix with the other
+/// English banks or share progress with an unrelated subject ladder.
+class QuizStageScope {
+  const QuizStageScope({required this.subjectId, this.topicId});
+
+  final String subjectId;
+  final String? topicId;
+
+  String get progressSubjectId =>
+      topicId == null ? subjectId : '$subjectId::$topicId';
+
+  @override
+  bool operator ==(Object other) =>
+      other is QuizStageScope &&
+      other.subjectId == subjectId &&
+      other.topicId == topicId;
+
+  @override
+  int get hashCode => Object.hash(subjectId, topicId);
+}
+
 /// Questions per stage.
 const int quizStagePerStage = 10;
 

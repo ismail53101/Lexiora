@@ -2268,6 +2268,166 @@
               "note": "Maintain parallel structure (infinitive with infinitive, or gerund with gerund)."
             }
           ]
+        },
+        {
+          "name": "Conjunctive Adverbs",
+          "description": "Conjunctive adverbs connect ideas by showing a logical relationship such as contrast, result, addition, sequence, or alternative. They are adverbs, not coordinating conjunctions.",
+          "urduExplanation": "Conjunctive Adverbs ایسے ظروف ہیں جو دو خیالات یا آزاد جملوں کے درمیان منطقی تعلق ظاہر کرتے ہیں، جیسے مخالفت، نتیجہ، اضافہ، ترتیب یا متبادل۔ یہ حروفِ عطف نہیں بلکہ قید کی ایک قسم ہیں۔",
+          "wordFocus": "however, therefore, moreover, furthermore, consequently, nevertheless, otherwise, meanwhile, similarly, indeed",
+          "tableTitle": "Punctuation and Function Reference",
+          "tableColumns": [
+            "Function",
+            "Conjunctive Adverbs",
+            "Correct Pattern",
+            "Example"
+          ],
+          "tableRows": [
+            {
+              "cells": [
+                "Contrast",
+                "however, nevertheless, nonetheless, still",
+                "Clause; however, clause.",
+                "He was tired; however, he continued working."
+              ]
+            },
+            {
+              "cells": [
+                "Result",
+                "therefore, thus, consequently, accordingly",
+                "Clause; therefore, clause.",
+                "It rained heavily; therefore, the match was postponed."
+              ]
+            },
+            {
+              "cells": [
+                "Addition",
+                "moreover, furthermore, besides, likewise",
+                "Clause; moreover, clause.",
+                "She is honest; moreover, she is hardworking."
+              ]
+            },
+            {
+              "cells": [
+                "Alternative",
+                "otherwise, instead",
+                "Clause; otherwise, clause.",
+                "Hurry up; otherwise, you will miss the bus."
+              ]
+            },
+            {
+              "cells": [
+                "Time/sequence",
+                "meanwhile, afterward, subsequently, then",
+                "Clause. Meanwhile, clause.",
+                "The committee met; meanwhile, the secretary prepared the report."
+              ]
+            },
+            {
+              "cells": [
+                "Emphasis",
+                "indeed, certainly, undoubtedly",
+                "Subject + adverb + verb.",
+                "He is indeed a capable officer."
+              ]
+            }
+          ],
+          "examples": [
+            {
+              "text": "The road was blocked; **however,** we found another route.",
+              "urdu": "سڑک بند تھی؛ تاہم، ہمیں ایک دوسرا راستہ مل گیا۔",
+              "note": "**However** shows contrast between two independent clauses."
+            },
+            {
+              "text": "She worked consistently; **therefore,** she secured the highest marks.",
+              "urdu": "اس نے مستقل مزاجی سے محنت کی؛ لہٰذا، اس نے سب سے زیادہ نمبر حاصل کیے۔",
+              "note": "**Therefore** introduces a result."
+            },
+            {
+              "text": "The proposal is practical; **moreover,** it is affordable.",
+              "urdu": "یہ تجویز عملی ہے؛ مزید یہ کہ یہ کم خرچ بھی ہے۔",
+              "note": "**Moreover** adds a stronger supporting point."
+            },
+            {
+              "text": "You must submit the form today; **otherwise,** your application will be rejected.",
+              "urdu": "آپ کو آج فارم جمع کرانا ہوگا؛ بصورتِ دیگر، آپ کی درخواست مسترد کر دی جائے گی۔",
+              "note": "**Otherwise** presents an alternative consequence."
+            },
+            {
+              "text": "The principal addressed the students; **meanwhile,** the teachers arranged the examination hall.",
+              "urdu": "پرنسپل نے طلبہ سے خطاب کیا؛ اسی دوران، اساتذہ نے امتحانی ہال کا انتظام کیا۔",
+              "note": "**Meanwhile** shows simultaneous time."
+            },
+            {
+              "text": "The evidence was **indeed** sufficient to support the argument.",
+              "urdu": "ثبوت واقعی دلیل کی حمایت کے لیے کافی تھا۔",
+              "note": "**Indeed** adds emphasis."
+            },
+            {
+              "text": "The first method is costly; **similarly,** the second method requires special equipment.",
+              "urdu": "پہلا طریقہ مہنگا ہے؛ اسی طرح، دوسرے طریقے کے لیے خصوصی آلات درکار ہیں۔",
+              "note": "**Similarly** introduces a comparable point."
+            }
+          ],
+          "rules": [
+            "A conjunctive adverb is an adverbial connector; it is not one of the coordinating conjunctions in FANBOYS.",
+            "When it joins two independent clauses, place a semicolon before it and usually a comma after it: Clause; however, clause.",
+            "A full stop may replace the semicolon: Clause. However, clause.",
+            "Do not join two independent clauses with only a comma before a conjunctive adverb; that creates a comma splice.",
+            "Use a comma when a conjunctive adverb interrupts one independent clause: The answer is, therefore, correct.",
+            "Choose the adverb according to the intended relationship: however for contrast, therefore for result, and moreover for addition."
+          ],
+          "ruleExamples": [
+            "He was poor; however, he was honest.",
+            "He was poor. However, he was honest.",
+            "The evidence was incomplete; therefore, the judge postponed the decision.",
+            "Incorrect: He was poor, however he was honest. Correct: He was poor; however, he was honest.",
+            "The plan is, moreover, financially sound.",
+            "The machine failed; consequently, production stopped."
+          ],
+          "commonMistakes": [
+            {
+              "wrong": "He was tired, however he continued working.",
+              "right": "He was tired; however, he continued working.",
+              "urdu": "وہ تھکا ہوا تھا؛ تاہم، وہ کام کرتا رہا۔",
+              "note": "Do not use only a comma to join two independent clauses."
+            },
+            {
+              "wrong": "It was raining, therefore the match was cancelled.",
+              "right": "It was raining; therefore, the match was cancelled.",
+              "urdu": "بارش ہو رہی تھی؛ لہٰذا، میچ منسوخ کر دیا گیا۔",
+              "note": "Use a semicolon before **therefore** when it joins complete clauses."
+            },
+            {
+              "wrong": "Although he was ill; however, he attended the exam.",
+              "right": "Although he was ill, he attended the exam.",
+              "urdu": "اگرچہ وہ بیمار تھا، پھر بھی وہ امتحان میں شریک ہوا۔",
+              "note": "Do not unnecessarily combine **although** with **however** in the same structure."
+            },
+            {
+              "wrong": "He did not study; moreover he failed.",
+              "right": "He did not study; moreover, he failed.",
+              "urdu": "اس نے مطالعہ نہیں کیا؛ مزید یہ کہ وہ ناکام ہو گیا۔",
+              "note": "Use a comma after a conjunctive adverb placed between clauses."
+            },
+            {
+              "wrong": "She is however capable of doing the work.",
+              "right": "She is, however, capable of doing the work.",
+              "urdu": "تاہم، وہ یہ کام کرنے کی اہل ہے۔",
+              "note": "An interrupting conjunctive adverb is normally set off with commas."
+            },
+            {
+              "wrong": "He worked hard, therefore he passed.",
+              "right": "He worked hard; therefore, he passed.",
+              "urdu": "اس نے سخت محنت کی؛ لہٰذا، وہ کامیاب ہو گیا۔",
+              "note": "A comma splice is incorrect between two independent clauses."
+            },
+            {
+              "wrong": "The first answer is correct; otherwise, the second answer is also correct.",
+              "right": "The first answer is correct; similarly, the second answer is also correct.",
+              "urdu": "پہلا جواب درست ہے؛ اسی طرح، دوسرا جواب بھی درست ہے۔",
+              "note": "Use **similarly** for similarity and **otherwise** for an alternative or negative consequence."
+            }
+          ]
         }
       ]
     }
@@ -5365,6 +5525,649 @@
               "right": "The match was canceled **because** it rained (or **due to** the rain).",
               "urdu": "بارش کی وجہ سے میچ منسوخ ہو گیا۔",
               "note": "**Due to** must be followed by a noun, not a clause."
+            }
+          ]
+        },
+        {
+          "name": "Fixed Prepositions",
+          "description": "Fixed prepositions, also called dependent prepositions, are prepositions conventionally required after particular verbs, adjectives, nouns, or expressions. The preposition cannot normally be changed freely without changing standard usage or meaning.",
+          "urduExplanation": "Fixed Prepositions، جنہیں Dependent Prepositions بھی کہا جاتا ہے، وہ حروفِ جار ہیں جو مخصوص افعال، صفات، اسماء یا تراکیب کے بعد مقررہ طور پر استعمال ہوتے ہیں۔ ان کے ساتھ دوسرا حرفِ جار لگانا عموماً غلط یا غیر فطری ہوتا ہے۔",
+          "exampleWords": "60 high-frequency expressions grouped as Verb + Preposition, Adjective + Preposition, Noun + Preposition, and Fixed Phrases/Zero-Preposition Traps.",
+          "tableTitle": "Complete Categorized Fixed Prepositions Reference",
+          "tableColumns": [],
+          "tableRows": [],
+          "examples": [
+            {
+              "text": "Good citizens **abide by** the law.",
+              "urdu": "اچھے شہری قانون کی پابندی کرتے ہیں۔",
+              "note": "**Abide** is followed by **by**, not with or on."
+            },
+            {
+              "text": "The final result **depends on** accurate evidence.",
+              "urdu": "حتمی نتیجہ درست ثبوت پر منحصر ہوتا ہے۔",
+              "note": "**Depend on** means to rely on."
+            },
+            {
+              "text": "The witness **insisted on** telling the truth.",
+              "urdu": "گواہ نے سچ بتانے پر اصرار کیا۔",
+              "note": "After a preposition, use a gerund: **insisted on telling**."
+            },
+            {
+              "text": "The department **complied with** the court order.",
+              "urdu": "محکمے نے عدالتی حکم کی تعمیل کی۔",
+              "note": "**Comply with** means to act according to a rule or order."
+            },
+            {
+              "text": "She is **capable of** handling difficult questions.",
+              "urdu": "وہ مشکل سوالات حل کرنے کی اہل ہے۔",
+              "note": "Use **of** after **capable**, followed by a noun or gerund."
+            },
+            {
+              "text": "He is **responsible for** checking the documents.",
+              "urdu": "وہ دستاویزات کی جانچ کا ذمہ دار ہے۔",
+              "note": "Use **for**, not to, after **responsible** in this meaning."
+            },
+            {
+              "text": "Every student should have **access to** reliable books.",
+              "urdu": "ہر طالب علم کو قابلِ اعتماد کتابوں تک رسائی ہونی چاہیے۔",
+              "note": "The noun **access** takes **to**."
+            },
+            {
+              "text": "The committee found a **solution to** the problem.",
+              "urdu": "کمیٹی نے مسئلے کا حل تلاش کر لیا۔",
+              "note": "Use **to**, not of, after **solution**."
+            }
+          ],
+          "rules": [
+            "Learn the complete combination rather than memorizing the word alone: depend on, not depend of.",
+            "A fixed preposition normally remains unchanged even when the tense or subject changes: depended on, is depending on.",
+            "When a verb is followed by a preposition, use a noun, pronoun, or gerund after it: insist on going.",
+            "Some adjectives require a particular preposition: afraid of, interested in, superior to, and responsible for.",
+            "Some nouns also take dependent prepositions: access to, demand for, reason for, and solution to.",
+            "Do not confuse fixed prepositions with freely chosen prepositions of time or place; fixed combinations must be learned as units."
+          ],
+          "ruleExamples": [
+            "The answer depends on the context.",
+            "She insisted on speaking to the officer.",
+            "They objected to the proposed change.",
+            "He is interested in learning English.",
+            "The reason for the absence was recorded.",
+            "The committee searched for a solution to the dispute."
+          ],
+          "commonMistakes": [
+            {
+              "wrong": "Success depends **of** hard work.",
+              "right": "Success depends **on** hard work.",
+              "urdu": "کامیابی سخت محنت پر منحصر ہوتی ہے۔",
+              "note": "Use **depend on**."
+            },
+            {
+              "wrong": "She insisted **to** go alone.",
+              "right": "She insisted **on going** alone.",
+              "urdu": "اس نے اکیلے جانے پر اصرار کیا۔",
+              "note": "Use **insist on + gerund**, not insist to + verb."
+            },
+            {
+              "wrong": "He is capable **to solve** the problem.",
+              "right": "He is capable **of solving** the problem.",
+              "urdu": "وہ مسئلہ حل کرنے کے قابل ہے۔",
+              "note": "Use **capable of + gerund/noun**."
+            },
+            {
+              "wrong": "She is interested **on** science.",
+              "right": "She is interested **in** science.",
+              "urdu": "وہ سائنس میں دلچسپی رکھتی ہے۔",
+              "note": "The correct combination is **interested in**."
+            },
+            {
+              "wrong": "The officer is responsible **to** the project.",
+              "right": "The officer is responsible **for** the project.",
+              "urdu": "افسر منصوبے کا ذمہ دار ہے۔",
+              "note": "Use **responsible for** when assigning responsibility."
+            },
+            {
+              "wrong": "The students have access **of** the library.",
+              "right": "The students have access **to** the library.",
+              "urdu": "طلبہ کو کتب خانے تک رسائی حاصل ہے۔",
+              "note": "The noun **access** takes **to**."
+            },
+            {
+              "wrong": "We need a solution **of** this problem.",
+              "right": "We need a solution **to** this problem.",
+              "urdu": "ہمیں اس مسئلے کا حل درکار ہے۔",
+              "note": "Use **solution to**."
+            },
+            {
+              "wrong": "The company complied **to** the regulation.",
+              "right": "The company complied **with** the regulation.",
+              "urdu": "کمپنی نے ضابطے کی تعمیل کی۔",
+              "note": "The correct combination is **comply with**."
+            }
+          ],
+          "tableGroups": [
+            {
+              "title": "Verb + Fixed Preposition",
+              "columns": [
+                "Expression",
+                "Definition",
+                "Urdu meaning",
+                "Example"
+              ],
+              "rows": [
+                {
+                  "cells": [
+                    "abide by",
+                    "follow or obey a rule",
+                    "قانون کی پابندی کرنا",
+                    "Citizens must abide by the law."
+                  ]
+                },
+                {
+                  "cells": [
+                    "accuse someone of",
+                    "charge someone with wrongdoing",
+                    "کسی پر الزام لگانا",
+                    "They accused him of cheating."
+                  ]
+                },
+                {
+                  "cells": [
+                    "apologize to someone for",
+                    "say sorry to a person for something",
+                    "کسی سے کسی بات پر معذرت کرنا",
+                    "She apologized to the teacher for being late."
+                  ]
+                },
+                {
+                  "cells": [
+                    "apply for / apply to",
+                    "request a post; submit to an institution",
+                    "درخواست دینا؛ کسی ادارے سے رجوع کرنا",
+                    "He applied for the post and applied to the university."
+                  ]
+                },
+                {
+                  "cells": [
+                    "approve of",
+                    "consider acceptable",
+                    "پسند یا منظور کرنا",
+                    "I do not approve of dishonest conduct."
+                  ]
+                },
+                {
+                  "cells": [
+                    "believe in",
+                    "have faith in",
+                    "یقین رکھنا",
+                    "We believe in equal opportunity."
+                  ]
+                },
+                {
+                  "cells": [
+                    "belong to",
+                    "be owned by or associated with",
+                    "ملکیت یا تعلق ہونا",
+                    "This reference book belongs to Sara."
+                  ]
+                },
+                {
+                  "cells": [
+                    "comply with",
+                    "act according to a rule or order",
+                    "تعمیل کرنا",
+                    "The company complied with the court order."
+                  ]
+                },
+                {
+                  "cells": [
+                    "consist of",
+                    "be made up of",
+                    "پر مشتمل ہونا",
+                    "The committee consists of five members."
+                  ]
+                },
+                {
+                  "cells": [
+                    "contribute to",
+                    "help to cause or develop",
+                    "حصہ ڈالنا یا سبب بننا",
+                    "Education contributes to national progress."
+                  ]
+                },
+                {
+                  "cells": [
+                    "deal with",
+                    "handle or discuss",
+                    "نمٹنا یا بحث کرنا",
+                    "The report deals with unemployment."
+                  ]
+                },
+                {
+                  "cells": [
+                    "depend on",
+                    "rely on",
+                    "انحصار کرنا",
+                    "Success depends on hard work."
+                  ]
+                },
+                {
+                  "cells": [
+                    "differ from",
+                    "be unlike",
+                    "مختلف ہونا",
+                    "This result differs from the earlier one."
+                  ]
+                },
+                {
+                  "cells": [
+                    "insist on",
+                    "demand firmly",
+                    "اصرار کرنا",
+                    "She insisted on telling the truth."
+                  ]
+                },
+                {
+                  "cells": [
+                    "object to",
+                    "express opposition to",
+                    "اعتراض کرنا",
+                    "The residents objected to the proposal."
+                  ]
+                }
+              ]
+            },
+            {
+              "title": "Adjective + Fixed Preposition",
+              "columns": [
+                "Expression",
+                "Definition",
+                "Urdu meaning",
+                "Example"
+              ],
+              "rows": [
+                {
+                  "cells": [
+                    "afraid of",
+                    "feeling fear of someone or something",
+                    "سے خوف زدہ",
+                    "The child is afraid of darkness."
+                  ]
+                },
+                {
+                  "cells": [
+                    "accustomed to",
+                    "used to something through experience",
+                    "کا عادی",
+                    "She is accustomed to working under pressure."
+                  ]
+                },
+                {
+                  "cells": [
+                    "addicted to",
+                    "unable to stop using or doing something",
+                    "کا عادی یا نشے میں مبتلا",
+                    "He is addicted to social media."
+                  ]
+                },
+                {
+                  "cells": [
+                    "aware of",
+                    "knowing about something",
+                    "سے باخبر",
+                    "Are you aware of the consequences?"
+                  ]
+                },
+                {
+                  "cells": [
+                    "beneficial to",
+                    "producing a good effect for",
+                    "کے لیے فائدہ مند",
+                    "Exercise is beneficial to health."
+                  ]
+                },
+                {
+                  "cells": [
+                    "capable of",
+                    "having the ability to do something",
+                    "کے قابل",
+                    "She is capable of solving difficult questions."
+                  ]
+                },
+                {
+                  "cells": [
+                    "committed to",
+                    "dedicated to a person, cause, or action",
+                    "کے لیے پُرعزم",
+                    "The officer is committed to serving the public."
+                  ]
+                },
+                {
+                  "cells": [
+                    "confident of",
+                    "certain about a success or result",
+                    "کے بارے میں پُراعتماد",
+                    "The candidate is confident of success."
+                  ]
+                },
+                {
+                  "cells": [
+                    "dependent on",
+                    "relying on someone or something",
+                    "پر منحصر",
+                    "The region is dependent on rainfall."
+                  ]
+                },
+                {
+                  "cells": [
+                    "different from",
+                    "not the same as",
+                    "سے مختلف",
+                    "Your answer is different from mine."
+                  ]
+                },
+                {
+                  "cells": [
+                    "eligible for",
+                    "qualified to receive or do something",
+                    "کا اہل",
+                    "She is eligible for the scholarship."
+                  ]
+                },
+                {
+                  "cells": [
+                    "famous for",
+                    "well known because of something",
+                    "کے لیے مشہور",
+                    "The city is famous for its gardens."
+                  ]
+                },
+                {
+                  "cells": [
+                    "guilty of",
+                    "responsible for an offence",
+                    "کا قصوروار",
+                    "He was found guilty of fraud."
+                  ]
+                },
+                {
+                  "cells": [
+                    "interested in",
+                    "wanting to know about or take part in",
+                    "میں دلچسپی رکھنے والا",
+                    "He is interested in constitutional law."
+                  ]
+                },
+                {
+                  "cells": [
+                    "responsible for / superior to",
+                    "accountable for; better than",
+                    "کا ذمہ دار؛ سے برتر",
+                    "The manager is responsible for the project, and this method is superior to the old one."
+                  ]
+                }
+              ]
+            },
+            {
+              "title": "Noun + Fixed Preposition",
+              "columns": [
+                "Expression",
+                "Definition",
+                "Urdu meaning",
+                "Example"
+              ],
+              "rows": [
+                {
+                  "cells": [
+                    "access to",
+                    "the right or opportunity to use",
+                    "تک رسائی",
+                    "Students have access to the library."
+                  ]
+                },
+                {
+                  "cells": [
+                    "alternative to",
+                    "a replacement for something",
+                    "کا متبادل",
+                    "We need an alternative to this plan."
+                  ]
+                },
+                {
+                  "cells": [
+                    "cause of",
+                    "the reason something happens",
+                    "کی وجہ",
+                    "The cause of the accident is unknown."
+                  ]
+                },
+                {
+                  "cells": [
+                    "demand for",
+                    "a need or desire for something",
+                    "کی طلب",
+                    "There is a demand for skilled workers."
+                  ]
+                },
+                {
+                  "cells": [
+                    "effect on",
+                    "a result or influence on something",
+                    "پر اثر",
+                    "Pollution has a harmful effect on health."
+                  ]
+                },
+                {
+                  "cells": [
+                    "increase in",
+                    "a rise in amount or level",
+                    "میں اضافہ",
+                    "There has been an increase in prices."
+                  ]
+                },
+                {
+                  "cells": [
+                    "influence on",
+                    "power to affect someone or something",
+                    "پر اثر و رسوخ",
+                    "Parents have a strong influence on children."
+                  ]
+                },
+                {
+                  "cells": [
+                    "interest in",
+                    "attention or concern about something",
+                    "میں دلچسپی",
+                    "She has a deep interest in history."
+                  ]
+                },
+                {
+                  "cells": [
+                    "lack of",
+                    "absence or shortage of something",
+                    "کی کمی",
+                    "The project failed because of a lack of funds."
+                  ]
+                },
+                {
+                  "cells": [
+                    "need for",
+                    "requirement for something",
+                    "کی ضرورت",
+                    "There is a need for educational reform."
+                  ]
+                },
+                {
+                  "cells": [
+                    "opposition to",
+                    "disagreement or resistance to something",
+                    "کی مخالفت",
+                    "There was opposition to the bill."
+                  ]
+                },
+                {
+                  "cells": [
+                    "preference for",
+                    "greater liking for one thing",
+                    "کے لیے ترجیح",
+                    "He has a preference for clear evidence."
+                  ]
+                },
+                {
+                  "cells": [
+                    "reason for",
+                    "explanation or cause of something",
+                    "کی وجہ",
+                    "What is the reason for the delay?"
+                  ]
+                },
+                {
+                  "cells": [
+                    "response to",
+                    "answer or reaction to something",
+                    "کا جواب یا ردِعمل",
+                    "The response to the policy was positive."
+                  ]
+                },
+                {
+                  "cells": [
+                    "solution to / threat to",
+                    "answer to a problem; danger to something",
+                    "کا حل؛ کے لیے خطرہ",
+                    "We need a solution to this problem, because pollution is a threat to health."
+                  ]
+                }
+              ]
+            },
+            {
+              "title": "Fixed Phrases and Zero-Preposition Traps",
+              "columns": [
+                "Expression",
+                "Definition",
+                "Urdu meaning",
+                "Example"
+              ],
+              "rows": [
+                {
+                  "cells": [
+                    "according to",
+                    "as stated by a source or rule",
+                    "کے مطابق",
+                    "According to the report, exports increased."
+                  ]
+                },
+                {
+                  "cells": [
+                    "in accordance with",
+                    "in agreement with a rule or standard",
+                    "کے مطابق",
+                    "The decision was made in accordance with the law."
+                  ]
+                },
+                {
+                  "cells": [
+                    "in addition to",
+                    "besides or as well as",
+                    "کے علاوہ",
+                    "In addition to English, she studies Urdu."
+                  ]
+                },
+                {
+                  "cells": [
+                    "in charge of",
+                    "responsible for controlling something",
+                    "کا نگران یا ذمہ دار",
+                    "He is in charge of the examination hall."
+                  ]
+                },
+                {
+                  "cells": [
+                    "in favor of",
+                    "supporting someone or something",
+                    "کے حق میں",
+                    "The committee voted in favor of the amendment."
+                  ]
+                },
+                {
+                  "cells": [
+                    "in spite of",
+                    "despite a difficulty or fact",
+                    "کے باوجود",
+                    "In spite of the rain, the match continued."
+                  ]
+                },
+                {
+                  "cells": [
+                    "on behalf of",
+                    "as a representative of",
+                    "کی طرف سے",
+                    "She spoke on behalf of the students."
+                  ]
+                },
+                {
+                  "cells": [
+                    "with regard to",
+                    "concerning or about",
+                    "کے بارے میں",
+                    "With regard to your application, a decision is pending."
+                  ]
+                },
+                {
+                  "cells": [
+                    "by means of",
+                    "through the use of",
+                    "کے ذریعے",
+                    "The message was sent by means of an encrypted channel."
+                  ]
+                },
+                {
+                  "cells": [
+                    "instead of",
+                    "in place of",
+                    "کی بجائے",
+                    "Use evidence instead of speculation."
+                  ]
+                },
+                {
+                  "cells": [
+                    "regardless of",
+                    "without being affected by",
+                    "سے قطع نظر",
+                    "The rule applies regardless of age."
+                  ]
+                },
+                {
+                  "cells": [
+                    "discuss (no preposition)",
+                    "talk or write about a subject",
+                    "کسی موضوع پر بحث کرنا",
+                    "The committee discussed the proposal."
+                  ]
+                },
+                {
+                  "cells": [
+                    "enter (no preposition)",
+                    "go into a place",
+                    "داخل ہونا",
+                    "The candidates entered the room quietly."
+                  ]
+                },
+                {
+                  "cells": [
+                    "resemble (no preposition)",
+                    "look or be like someone",
+                    "مشابہ ہونا",
+                    "The child resembles his mother."
+                  ]
+                },
+                {
+                  "cells": [
+                    "comprise (no preposition)",
+                    "consist of or include",
+                    "پر مشتمل ہونا",
+                    "The panel comprises three experts."
+                  ]
+                }
+              ]
             }
           ]
         }
@@ -22123,6 +22926,966 @@
           "answerIndex": 2,
           "explanation": "When two different auxiliary verbs are used, the main verb must be provided for both if they require different forms.",
           "examTip": null
+        },
+        {
+          "question": "Identify the noun in: 'The committee approved the proposal.'",
+          "options": [
+            "approved",
+            "the",
+            "committee",
+            "proposal"
+          ],
+          "answerIndex": 2,
+          "explanation": "'Committee' is a collective noun naming a group of people; 'proposal' is also a noun, but the intended subject noun is committee.",
+          "examTip": "A noun names a person, place, thing, or idea."
+        },
+        {
+          "question": "Which word is an abstract noun in 'Honesty earns respect'?",
+          "options": [
+            "earns",
+            "Honesty",
+            "respect",
+            "the"
+          ],
+          "answerIndex": 1,
+          "explanation": "'Honesty' names a quality that cannot be physically touched, so it is an abstract noun.",
+          "examTip": "Qualities, states, and ideas are commonly abstract nouns."
+        },
+        {
+          "question": "Choose the correct plural of 'criterion'.",
+          "options": [
+            "criterions",
+            "criteria",
+            "criteriones",
+            "criterias"
+          ],
+          "answerIndex": 1,
+          "explanation": "The Greek-derived plural of criterion is 'criteria'.",
+          "examTip": "Do not add regular -s to irregular academic plurals."
+        },
+        {
+          "question": "Which sentence contains a proper noun?",
+          "options": [
+            "The river is wide.",
+            "She reads novels.",
+            "Ali submitted the form.",
+            "The officer smiled."
+          ],
+          "answerIndex": 2,
+          "explanation": "'Ali' is a specific person’s name and therefore a proper noun.",
+          "examTip": "Proper nouns begin with capital letters in English."
+        },
+        {
+          "question": "In 'The rich should help the poor', what is 'rich'?",
+          "options": [
+            "Adjective only",
+            "Noun formed from an adjective",
+            "Adverb",
+            "Preposition"
+          ],
+          "answerIndex": 1,
+          "explanation": "With the definite article 'the', an adjective can represent a whole class of people and function as a plural noun.",
+          "examTip": "The + adjective can refer to a social group: the rich, the poor."
+        },
+        {
+          "question": "Select the correctly formed possessive noun.",
+          "options": [
+            "the womens department",
+            "the women's department",
+            "the womens' department",
+            "the woman department"
+          ],
+          "answerIndex": 1,
+          "explanation": "'Women' is an irregular plural that does not end in s, so its possessive is 'women’s'.",
+          "examTip": "Use ’s with irregular plurals."
+        },
+        {
+          "question": "Which is a countable noun?",
+          "options": [
+            "advice",
+            "furniture",
+            "information",
+            "suggestion"
+          ],
+          "answerIndex": 3,
+          "explanation": "'Suggestion' can be counted: one suggestion, two suggestions; the others are generally uncountable in standard usage.",
+          "examTip": "Countable nouns take singular/plural forms and can follow numbers."
+        },
+        {
+          "question": "Choose the correct sentence.",
+          "options": [
+            "The sceneries are beautiful.",
+            "The scenery is beautiful.",
+            "The sceneries is beautiful.",
+            "The scenery are beautiful."
+          ],
+          "answerIndex": 1,
+          "explanation": "'Scenery' is an uncountable noun and takes a singular verb; use 'scenes' for separate views.",
+          "examTip": "Avoid pluralizing uncountable nouns with -s."
+        },
+        {
+          "question": "What kind of noun is 'team' in 'The team won the match'?",
+          "options": [
+            "Material",
+            "Collective",
+            "Abstract",
+            "Proper"
+          ],
+          "answerIndex": 1,
+          "explanation": "'Team' names a collection of individuals acting as one unit, so it is a collective noun.",
+          "examTip": "Collective nouns name groups: team, jury, committee, audience."
+        },
+        {
+          "question": "Choose the correct pronoun: 'Between you and ____, the plan is risky.'",
+          "options": [
+            "I",
+            "me",
+            "myself",
+            "mine"
+          ],
+          "answerIndex": 1,
+          "explanation": "The preposition 'between' requires an object pronoun: 'me'.",
+          "examTip": "Use object pronouns after prepositions."
+        },
+        {
+          "question": "Identify the relative pronoun in: 'The book that you lent me is useful.'",
+          "options": [
+            "book",
+            "that",
+            "you",
+            "me"
+          ],
+          "answerIndex": 1,
+          "explanation": "'That' introduces the relative clause 'that you lent me' and refers back to 'book'.",
+          "examTip": "Relative pronouns connect a relative clause to its antecedent."
+        },
+        {
+          "question": "Choose the correct sentence.",
+          "options": [
+            "Each student must bring their pen.",
+            "Each student must bring his or her pen.",
+            "Each students must bring his pen.",
+            "Each student must brings his pen."
+          ],
+          "answerIndex": 1,
+          "explanation": "In formal exam-oriented agreement, singular 'each student' is matched with 'his or her' unless an accepted singular-they style is specified.",
+          "examTip": "Each, either, and neither are grammatically singular."
+        },
+        {
+          "question": "What is the antecedent of 'which' in 'The bridge, which was old, collapsed'?",
+          "options": [
+            "collapsed",
+            "old",
+            "bridge",
+            "was"
+          ],
+          "answerIndex": 2,
+          "explanation": "The relative pronoun 'which' refers back to the noun 'bridge'.",
+          "examTip": "An antecedent is the noun a pronoun refers to."
+        },
+        {
+          "question": "Select the correct emphatic pronoun: 'I ____ completed the application.'",
+          "options": [
+            "me",
+            "mine",
+            "myself",
+            "I"
+          ],
+          "answerIndex": 2,
+          "explanation": "'Myself' emphasizes that the speaker personally completed the action.",
+          "examTip": "Emphatic pronouns add emphasis but are not the subject themselves."
+        },
+        {
+          "question": "Choose the correct form: 'The manager spoke to Ahmed and ____.'",
+          "options": [
+            "I",
+            "me",
+            "my",
+            "myself"
+          ],
+          "answerIndex": 1,
+          "explanation": "The pronoun is the object of 'to', so the objective form 'me' is required.",
+          "examTip": "Remove the other person to test the pronoun: spoke to me."
+        },
+        {
+          "question": "Which sentence uses a demonstrative pronoun?",
+          "options": [
+            "This is the correct answer.",
+            "This answer is correct.",
+            "He answered correctly.",
+            "Who answered correctly?"
+          ],
+          "answerIndex": 0,
+          "explanation": "'This' stands alone and points to an answer, so it functions as a demonstrative pronoun.",
+          "examTip": "A demonstrative is a pronoun when it stands without a following noun."
+        },
+        {
+          "question": "Choose the correct reciprocal pronoun: 'The two candidates congratulated ____.'",
+          "options": [
+            "each other",
+            "one another",
+            "themselves",
+            "their"
+          ],
+          "answerIndex": 0,
+          "explanation": "For two people, 'each other' is the traditional reciprocal pronoun.",
+          "examTip": "Each other traditionally refers to two; one another to more than two."
+        },
+        {
+          "question": "Identify the indefinite pronoun: 'Someone has left a message.'",
+          "options": [
+            "has",
+            "left",
+            "someone",
+            "message"
+          ],
+          "answerIndex": 2,
+          "explanation": "'Someone' refers to an unspecified person and is an indefinite pronoun.",
+          "examTip": "Indefinite pronouns refer to people or things without naming them specifically."
+        },
+        {
+          "question": "Choose the correct form: 'Neither the teacher nor the students ____ ready.'",
+          "options": [
+            "is",
+            "was",
+            "are",
+            "has"
+          ],
+          "answerIndex": 2,
+          "explanation": "With 'neither...nor', the verb generally agrees with the nearer subject 'students', which is plural: 'are'.",
+          "examTip": "In neither...nor constructions, check the subject nearest the verb."
+        },
+        {
+          "question": "Identify the auxiliary verb in: 'They have completed the task.'",
+          "options": [
+            "They",
+            "have",
+            "completed",
+            "task"
+          ],
+          "answerIndex": 1,
+          "explanation": "'Have' is the auxiliary helping to form the present perfect tense; 'completed' is the main verb.",
+          "examTip": "Auxiliaries help form tense, voice, questions, and negation."
+        },
+        {
+          "question": "Choose the correct past participle of 'write'.",
+          "options": [
+            "wrote",
+            "written",
+            "writing",
+            "writes"
+          ],
+          "answerIndex": 1,
+          "explanation": "'Written' is the past participle used with have or be: has written, was written.",
+          "examTip": "Irregular verbs may have different past and participle forms."
+        },
+        {
+          "question": "Which sentence is in the passive voice?",
+          "options": [
+            "The judge announced the decision.",
+            "The decision was announced by the judge.",
+            "The judge is announcing the decision.",
+            "The judge will announce the decision."
+          ],
+          "answerIndex": 1,
+          "explanation": "The subject 'decision' receives the action and is followed by 'was announced', forming the passive voice.",
+          "examTip": "Passive voice uses a form of be plus a past participle."
+        },
+        {
+          "question": "Choose the correct form: 'If he ____ earlier, he would have caught the train.'",
+          "options": [
+            "leaves",
+            "left",
+            "had left",
+            "has left"
+          ],
+          "answerIndex": 2,
+          "explanation": "This is a third conditional; the if-clause takes past perfect 'had left'.",
+          "examTip": "Third conditional: if + had + past participle, would have + past participle."
+        },
+        {
+          "question": "In 'She enjoys reading novels', what is 'reading'?",
+          "options": [
+            "Finite verb",
+            "Gerund",
+            "Adjective",
+            "Infinitive"
+          ],
+          "answerIndex": 1,
+          "explanation": "'Reading' functions as the object of 'enjoys', so it is a gerund.",
+          "examTip": "An -ing form functioning as a noun is a gerund."
+        },
+        {
+          "question": "Choose the correct sentence.",
+          "options": [
+            "He suggested to revise the plan.",
+            "He suggested revising the plan.",
+            "He suggested revise the plan.",
+            "He suggested that revising the plan."
+          ],
+          "answerIndex": 1,
+          "explanation": "The verb 'suggest' is followed by a gerund or a that-clause, not normally by to + infinitive.",
+          "examTip": "Memorize common verb complementation patterns."
+        },
+        {
+          "question": "Which modal expresses strong obligation?",
+          "options": [
+            "might",
+            "could",
+            "must",
+            "would"
+          ],
+          "answerIndex": 2,
+          "explanation": "'Must' expresses strong obligation or necessity.",
+          "examTip": "Modals express meanings such as ability, permission, possibility, and obligation."
+        },
+        {
+          "question": "Choose the correct sequence: 'By next June, she ____ here for ten years.'",
+          "options": [
+            "works",
+            "worked",
+            "will have worked",
+            "has worked"
+          ],
+          "answerIndex": 2,
+          "explanation": "The future perfect marks an action completed over a period before a future time: 'will have worked'.",
+          "examTip": "Use future perfect for completion before a stated future point."
+        },
+        {
+          "question": "Identify the adjective in: 'The ambitious student won the scholarship.'",
+          "options": [
+            "student",
+            "won",
+            "ambitious",
+            "scholarship"
+          ],
+          "answerIndex": 2,
+          "explanation": "'Ambitious' describes the noun 'student', so it is an adjective.",
+          "examTip": "Adjectives qualify or describe nouns and pronouns."
+        },
+        {
+          "question": "Choose the correct comparative form of 'little' for quantity.",
+          "options": [
+            "littler",
+            "less",
+            "least",
+            "few"
+          ],
+          "answerIndex": 1,
+          "explanation": "For quantity, the comparative of 'little' is 'less'; 'least' is the superlative.",
+          "examTip": "Use less/least with uncountable quantity."
+        },
+        {
+          "question": "Select the correct sentence.",
+          "options": [
+            "This is the most unique design.",
+            "This is a unique design.",
+            "This is more unique design.",
+            "This design is very uniqueless."
+          ],
+          "answerIndex": 1,
+          "explanation": "'Unique' means one of a kind and is normally treated as a non-gradable adjective; 'a unique design' is the precise form.",
+          "examTip": "Avoid unnecessary degree words with absolute adjectives."
+        },
+        {
+          "question": "What type of adjective is 'three' in 'three difficult questions'?",
+          "options": [
+            "Demonstrative",
+            "Numeral",
+            "Possessive",
+            "Interrogative"
+          ],
+          "answerIndex": 1,
+          "explanation": "'Three' expresses an exact number and is a numeral adjective.",
+          "examTip": "Numeral adjectives express number or order."
+        },
+        {
+          "question": "Choose the correct order: 'She bought a ____ table.'",
+          "options": [
+            "wooden large round",
+            "round large wooden",
+            "large round wooden",
+            "wooden round large"
+          ],
+          "answerIndex": 2,
+          "explanation": "A common adjective order is size, shape, then material: 'large round wooden table'.",
+          "examTip": "Adjective order is usually opinion, size, age, shape, color, origin, material, purpose."
+        },
+        {
+          "question": "Identify the predicative adjective in: 'The examination was difficult.'",
+          "options": [
+            "examination",
+            "was",
+            "difficult",
+            "the"
+          ],
+          "answerIndex": 2,
+          "explanation": "'Difficult' follows the linking verb 'was' and describes the subject, so it is predicative.",
+          "examTip": "Predicative adjectives commonly follow linking verbs."
+        },
+        {
+          "question": "Choose the correct form: 'The lecture was ____.'",
+          "options": [
+            "bored",
+            "boring",
+            "bore",
+            "bores"
+          ],
+          "answerIndex": 1,
+          "explanation": "The lecture causes boredom, so the -ing adjective 'boring' is correct.",
+          "examTip": "Use -ing for the cause and -ed for the person experiencing the feeling."
+        },
+        {
+          "question": "Which sentence contains a possessive adjective?",
+          "options": [
+            "That is mine.",
+            "This is my book.",
+            "Someone called.",
+            "Who came?"
+          ],
+          "answerIndex": 1,
+          "explanation": "'My' modifies the noun 'book', so it is a possessive adjective.",
+          "examTip": "Possessive adjectives precede nouns; possessive pronouns stand alone."
+        },
+        {
+          "question": "Choose the correct sentence.",
+          "options": [
+            "She is senior than me.",
+            "She is senior to me.",
+            "She is more senior than me.",
+            "She is senior from me."
+          ],
+          "answerIndex": 1,
+          "explanation": "The adjective 'senior' takes the fixed preposition 'to': 'senior to me'.",
+          "examTip": "Some comparative adjectives use to rather than than."
+        },
+        {
+          "question": "Identify the adverb in: 'The athlete ran extremely quickly.'",
+          "options": [
+            "athlete",
+            "ran",
+            "extremely",
+            "quickly"
+          ],
+          "answerIndex": 3,
+          "explanation": "'Quickly' modifies the verb 'ran' and is the main adverb of manner; 'extremely' modifies 'quickly'.",
+          "examTip": "Adverbs can modify verbs, adjectives, other adverbs, or whole clauses."
+        },
+        {
+          "question": "Which word is an adverb of frequency?",
+          "options": [
+            "carefully",
+            "often",
+            "there",
+            "very"
+          ],
+          "answerIndex": 1,
+          "explanation": "'Often' answers how frequently an action occurs.",
+          "examTip": "Frequency adverbs include always, often, sometimes, rarely, and never."
+        },
+        {
+          "question": "Choose the correct sentence.",
+          "options": [
+            "He speaks English fluent.",
+            "He speaks English fluently.",
+            "He speaks fluent Englishly.",
+            "He speaks fluency English."
+          ],
+          "answerIndex": 1,
+          "explanation": "The adverb 'fluently' modifies the verb 'speaks'.",
+          "examTip": "Use an adverb, not an adjective, to modify most action verbs."
+        },
+        {
+          "question": "Identify the conjunctive adverb: 'The evidence was weak; therefore, the case failed.'",
+          "options": [
+            "evidence",
+            "weak",
+            "therefore",
+            "failed"
+          ],
+          "answerIndex": 2,
+          "explanation": "'Therefore' connects the logical result between two independent clauses.",
+          "examTip": "A conjunctive adverb needs suitable punctuation when joining independent clauses."
+        },
+        {
+          "question": "Choose the correct placement: 'She ____ visits the library.'",
+          "options": [
+            "quickly",
+            "often",
+            "there",
+            "very"
+          ],
+          "answerIndex": 1,
+          "explanation": "'Often' is a frequency adverb and naturally appears before the main verb 'visits'.",
+          "examTip": "Frequency adverbs usually come before the main verb but after be."
+        },
+        {
+          "question": "Which sentence contains an adverb of degree?",
+          "options": [
+            "He arrived yesterday.",
+            "He is very confident.",
+            "He waited outside.",
+            "She sings beautifully."
+          ],
+          "answerIndex": 1,
+          "explanation": "'Very' modifies the adjective 'confident' and expresses degree.",
+          "examTip": "Degree adverbs answer how much or to what extent."
+        },
+        {
+          "question": "Choose the correct form: 'The committee acted ____.'",
+          "options": [
+            "wise",
+            "wisely",
+            "wiser",
+            "wisdom"
+          ],
+          "answerIndex": 1,
+          "explanation": "'Wisely' is the adverb modifying the verb 'acted'.",
+          "examTip": "Some -ly adverbs change spelling: wise becomes wisely."
+        },
+        {
+          "question": "What does 'only' modify in 'Only Sara answered the question'?",
+          "options": [
+            "answered",
+            "question",
+            "Sara",
+            "the"
+          ],
+          "answerIndex": 2,
+          "explanation": "Placed before 'Sara', 'only' limits the subject and means nobody else answered.",
+          "examTip": "The position of only can change the meaning of a sentence."
+        },
+        {
+          "question": "Choose the correct sentence.",
+          "options": [
+            "Hardly had he arrived when the bell rang.",
+            "Hardly he had arrived when the bell rang.",
+            "Hardly had he arrived than the bell rang.",
+            "Hard he had arrived when the bell rang."
+          ],
+          "answerIndex": 0,
+          "explanation": "After negative or restrictive adverbs such as 'hardly', inversion occurs, and the pair is 'hardly...when'.",
+          "examTip": "Remember the exam pairs hardly...when and no sooner...than."
+        },
+        {
+          "question": "Choose the correct fixed preposition: 'Success depends ____ preparation.'",
+          "options": [
+            "of",
+            "at",
+            "on",
+            "with"
+          ],
+          "answerIndex": 2,
+          "explanation": "The fixed combination is 'depend on'.",
+          "examTip": "Learn dependent prepositions as complete expressions."
+        },
+        {
+          "question": "Choose the correct sentence.",
+          "options": [
+            "She is interested on history.",
+            "She is interested in history.",
+            "She is interested at history.",
+            "She is interested for history."
+          ],
+          "answerIndex": 1,
+          "explanation": "The adjective 'interested' takes the fixed preposition 'in'.",
+          "examTip": "Interested in means having curiosity or concern about something."
+        },
+        {
+          "question": "Choose the correct form: 'He insisted ____ paying the bill.'",
+          "options": [
+            "to",
+            "for",
+            "on",
+            "at"
+          ],
+          "answerIndex": 2,
+          "explanation": "The fixed pattern is 'insist on + noun/gerund': 'insisted on paying'.",
+          "examTip": "A preposition is followed by a noun, pronoun, or gerund."
+        },
+        {
+          "question": "Choose the correct sentence.",
+          "options": [
+            "The committee complied to the order.",
+            "The committee complied with the order.",
+            "The committee complied on the order.",
+            "The committee complied of the order."
+          ],
+          "answerIndex": 1,
+          "explanation": "The verb 'comply' takes 'with'.",
+          "examTip": "Comply with means act according to a rule or order."
+        },
+        {
+          "question": "Choose the correct form: 'She is capable ____ solving the problem.'",
+          "options": [
+            "to",
+            "for",
+            "of",
+            "with"
+          ],
+          "answerIndex": 2,
+          "explanation": "The adjective 'capable' takes 'of' followed by a noun or gerund.",
+          "examTip": "Use capable of doing, not capable to do."
+        },
+        {
+          "question": "Choose the correct sentence.",
+          "options": [
+            "We discussed about the issue.",
+            "We discussed the issue.",
+            "We discussed on the issue.",
+            "We discussed for the issue."
+          ],
+          "answerIndex": 1,
+          "explanation": "'Discuss' is transitive and normally takes its object directly without 'about'.",
+          "examTip": "Some verbs take no preposition before their direct object."
+        },
+        {
+          "question": "Choose the correct phrase: 'The students have access ____ the digital library.'",
+          "options": [
+            "of",
+            "with",
+            "to",
+            "for"
+          ],
+          "answerIndex": 2,
+          "explanation": "The noun 'access' takes the fixed preposition 'to'.",
+          "examTip": "Remember access to, not access of."
+        },
+        {
+          "question": "Choose the correct sentence.",
+          "options": [
+            "He arrived in the airport at noon.",
+            "He arrived at the airport at noon.",
+            "He arrived on the airport at noon.",
+            "He arrived to the airport at noon."
+          ],
+          "answerIndex": 1,
+          "explanation": "Use 'arrive at' for a specific point or building; use 'arrive in' with cities and countries.",
+          "examTip": "Arrive at a place; arrive in a city, country, or large area."
+        },
+        {
+          "question": "Choose the correct phrase: 'The report was prepared ____ accordance with the rules.'",
+          "options": [
+            "at",
+            "by",
+            "in",
+            "on"
+          ],
+          "answerIndex": 2,
+          "explanation": "The fixed phrase is 'in accordance with'.",
+          "examTip": "Memorize multi-word prepositional phrases as units."
+        },
+        {
+          "question": "Choose the correct sentence.",
+          "options": [
+            "In spite the rain, the match continued.",
+            "In spite of the rain, the match continued.",
+            "In spite from the rain, the match continued.",
+            "In spite to the rain, the match continued."
+          ],
+          "answerIndex": 1,
+          "explanation": "The fixed phrase is 'in spite of + noun/gerund'.",
+          "examTip": "Despite does not take of; in spite always requires of."
+        },
+        {
+          "question": "Choose the coordinating conjunction: 'The plan is simple but effective.'",
+          "options": [
+            "plan",
+            "simple",
+            "but",
+            "effective"
+          ],
+          "answerIndex": 2,
+          "explanation": "'But' joins two contrasting adjectives and is a coordinating conjunction.",
+          "examTip": "The FANBOYS coordinating conjunctions are for, and, nor, but, or, yet, so."
+        },
+        {
+          "question": "Choose the correct sentence.",
+          "options": [
+            "Although he was tired, but he continued.",
+            "Although he was tired, he continued.",
+            "Although he was tired, so he continued.",
+            "Although he tired, he continued."
+          ],
+          "answerIndex": 1,
+          "explanation": "'Although' already expresses concession; do not pair it with 'but' in the same clause structure.",
+          "examTip": "Avoid double conjunctions: although...but and because...so."
+        },
+        {
+          "question": "Choose the correct pair: '____ Ali ____ Ahmed attended the meeting.'",
+          "options": [
+            "Either...nor",
+            "Neither...or",
+            "Both...and",
+            "Whether...nor"
+          ],
+          "answerIndex": 2,
+          "explanation": "'Both...and' joins two included subjects.",
+          "examTip": "Correlative conjunctions work in fixed pairs."
+        },
+        {
+          "question": "Choose the correct sentence.",
+          "options": [
+            "Because it rained, so we stayed home.",
+            "Because it rained, we stayed home.",
+            "Because it rained, but we stayed home.",
+            "Because it rained, and we stayed home."
+          ],
+          "answerIndex": 1,
+          "explanation": "'Because' introduces the reason; 'so' is unnecessary in the same structure.",
+          "examTip": "Use either because...clause or clause, so...clause."
+        },
+        {
+          "question": "Which conjunction expresses condition?",
+          "options": [
+            "unless",
+            "whereas",
+            "since",
+            "although"
+          ],
+          "answerIndex": 0,
+          "explanation": "'Unless' means 'if not' and introduces a condition.",
+          "examTip": "Unless normally introduces a negative condition."
+        },
+        {
+          "question": "Choose the correct conjunction of purpose: 'Study hard ____ you may succeed.'",
+          "options": [
+            "so that",
+            "although",
+            "whereas",
+            "unless"
+          ],
+          "answerIndex": 0,
+          "explanation": "'So that' introduces the purpose or intended result of studying hard.",
+          "examTip": "Purpose clauses commonly use so that or in order that."
+        },
+        {
+          "question": "Which word is a conjunctive adverb rather than a coordinating conjunction?",
+          "options": [
+            "and",
+            "but",
+            "therefore",
+            "or"
+          ],
+          "answerIndex": 2,
+          "explanation": "'Therefore' is a conjunctive adverb that expresses result; it is not a member of FANBOYS.",
+          "examTip": "Conjunctive adverbs require punctuation suited to independent clauses."
+        },
+        {
+          "question": "Choose the correctly punctuated sentence.",
+          "options": [
+            "He was late, however he entered quietly.",
+            "He was late; however, he entered quietly.",
+            "He was late however, he entered quietly.",
+            "He was late; however he entered quietly."
+          ],
+          "answerIndex": 1,
+          "explanation": "Two independent clauses joined by 'however' take a semicolon before and usually a comma after it.",
+          "examTip": "Pattern: independent clause; however, independent clause."
+        },
+        {
+          "question": "Choose the correct pair: 'No sooner had the bell rung ____ the students left.'",
+          "options": [
+            "when",
+            "than",
+            "but",
+            "so"
+          ],
+          "answerIndex": 1,
+          "explanation": "The fixed correlative pattern is 'no sooner...than'.",
+          "examTip": "Memorize no sooner...than and hardly/scarcely...when."
+        },
+        {
+          "question": "Which conjunction expresses concession?",
+          "options": [
+            "provided that",
+            "even though",
+            "so that",
+            "as soon as"
+          ],
+          "answerIndex": 1,
+          "explanation": "'Even though' introduces a fact that contrasts with the main clause.",
+          "examTip": "Concession means an unexpected contrast."
+        },
+        {
+          "question": "Identify the interjection: 'Alas! The old building has collapsed.'",
+          "options": [
+            "old",
+            "building",
+            "Alas",
+            "collapsed"
+          ],
+          "answerIndex": 2,
+          "explanation": "'Alas' expresses sorrow or pity and is an interjection.",
+          "examTip": "Interjections express sudden emotion and are often followed by !."
+        },
+        {
+          "question": "Which interjection expresses surprise?",
+          "options": [
+            "Hurrah!",
+            "Bravo!",
+            "Oh!",
+            "Alas!"
+          ],
+          "answerIndex": 2,
+          "explanation": "'Oh!' commonly expresses surprise, realization, or sudden emotion.",
+          "examTip": "Interpret an interjection from the emotion expressed in context."
+        },
+        {
+          "question": "Choose the best punctuation: '____ We have won the match.'",
+          "options": [
+            "Hurrah!",
+            "Hurrah,",
+            "Hurrah;",
+            "Hurrah:"
+          ],
+          "answerIndex": 0,
+          "explanation": "'Hurrah!' expresses joy and is naturally followed by an exclamation mark.",
+          "examTip": "Use an exclamation mark for strong sudden emotion."
+        },
+        {
+          "question": "What emotion does 'Bravo!' express?",
+          "options": [
+            "Pain",
+            "Approval or praise",
+            "Sorrow",
+            "Doubt"
+          ],
+          "answerIndex": 1,
+          "explanation": "'Bravo!' is used to praise an excellent performance.",
+          "examTip": "Common interjections can be identified by their emotional function."
+        },
+        {
+          "question": "Which sentence uses 'well' as an interjection?",
+          "options": [
+            "She sings well.",
+            "Well, I agree with your point.",
+            "The well is deep.",
+            "He worked well."
+          ],
+          "answerIndex": 1,
+          "explanation": "At the beginning of the utterance, 'Well' signals a reaction or transition and functions as an interjection.",
+          "examTip": "The same word can belong to different parts of speech by context."
+        },
+        {
+          "question": "Choose the correct determiner: 'I need ____ information before deciding.'",
+          "options": [
+            "many",
+            "a few",
+            "some",
+            "several"
+          ],
+          "answerIndex": 2,
+          "explanation": "'Information' is uncountable, so 'some' is appropriate.",
+          "examTip": "Use many/few with plural countable nouns and much/little with uncountable nouns."
+        },
+        {
+          "question": "Choose the correct sentence.",
+          "options": [
+            "She bought a umbrella.",
+            "She bought an umbrella.",
+            "She bought the umbrella.",
+            "She bought umbrella."
+          ],
+          "answerIndex": 1,
+          "explanation": "'Umbrella' begins with a vowel sound, so the indefinite article is 'an'.",
+          "examTip": "Choose a/an by sound, not simply by spelling."
+        },
+        {
+          "question": "Choose the correct determiner: 'There are ____ students in the hall.'",
+          "options": [
+            "much",
+            "a little",
+            "many",
+            "less"
+          ],
+          "answerIndex": 2,
+          "explanation": "'Students' is plural and countable, so 'many' is correct.",
+          "examTip": "Many modifies plural countable nouns."
+        },
+        {
+          "question": "Choose the correct sentence.",
+          "options": [
+            "Each of the answers are correct.",
+            "Each of the answers is correct.",
+            "Each of answer is correct.",
+            "Each answers is correct."
+          ],
+          "answerIndex": 1,
+          "explanation": "'Each' is singular and takes 'is', although it is followed by the plural phrase 'of the answers'.",
+          "examTip": "The head determiner controls agreement, not the noun after of."
+        },
+        {
+          "question": "Which determiner expresses possession?",
+          "options": [
+            "these",
+            "whose",
+            "my",
+            "several"
+          ],
+          "answerIndex": 2,
+          "explanation": "'My' identifies possession before the noun it modifies.",
+          "examTip": "Possessive determiners include my, your, his, her, its, our, and their."
+        },
+        {
+          "question": "Choose the correct sentence.",
+          "options": [
+            "Neither answer is correct.",
+            "Neither answers are correct.",
+            "Neither answer are correct.",
+            "Neither of answer is correct."
+          ],
+          "answerIndex": 0,
+          "explanation": "'Neither' is singular in formal agreement and modifies the singular noun 'answer'.",
+          "examTip": "Neither means not one and not the other."
+        },
+        {
+          "question": "Choose the correct article: 'The Nile is ____ longest river in Africa.'",
+          "options": [
+            "a",
+            "an",
+            "the",
+            "no article"
+          ],
+          "answerIndex": 2,
+          "explanation": "Superlative adjectives normally take 'the': 'the longest'.",
+          "examTip": "Use the with superlatives and unique geographical names where required."
+        },
+        {
+          "question": "Choose the correct phrase: 'There is ____ milk left in the jug.'",
+          "options": [
+            "a few",
+            "few",
+            "a little",
+            "many"
+          ],
+          "answerIndex": 2,
+          "explanation": "'Milk' is uncountable; 'a little' means a small amount and is grammatically affirmative.",
+          "examTip": "A little means some; little means hardly any."
+        },
+        {
+          "question": "Choose the correct sentence.",
+          "options": [
+            "I have less books than you.",
+            "I have fewer books than you.",
+            "I have few book than you.",
+            "I have lesser books than you."
+          ],
+          "answerIndex": 1,
+          "explanation": "Use 'fewer' with plural countable nouns such as 'books'; use 'less' with uncountable nouns.",
+          "examTip": "Fewer books, less time."
+        },
+        {
+          "question": "Which determiner is used for two items?",
+          "options": [
+            "either",
+            "every",
+            "each",
+            "all"
+          ],
+          "answerIndex": 0,
+          "explanation": "'Either' refers to one of two choices or items.",
+          "examTip": "Either and neither are traditionally used for two; any and none can cover more than two."
         }
       ],
       "practice": [

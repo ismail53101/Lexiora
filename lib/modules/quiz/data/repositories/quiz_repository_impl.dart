@@ -172,36 +172,33 @@ class QuizRepositoryImpl implements QuizRepository {
 
   @override
   Future<List<QuizQuestion>> stageQuestions(String subjectId, int stageIndex,
-      {int perStage = quizStagePerStage}) async {
+      {int perStage = quizStagePerStage, String? topicId}) async {
+    if (stageIndex < 0) return <QuizQuestion>[];
+    final int stageStart = stageIndex * perStage;
     final List<QuizQuestionRow> rows = await _local.stageQuestions(
       subjectId,
-      offset: 0,
-      limit: 10000,
+      topicId: topicId,
+      offset: stageStart,
+      limit: perStage,
     );
-    final List<QuizQuestion> pool = rows.map(_toQuestion).toList();
-    final int stageStart = stageIndex * perStage;
-    if (stageIndex < 0 || stageStart >= pool.length) {
-      return <QuizQuestion>[];
-    }
-    final int stageLimit = math.min(perStage, pool.length - stageStart);
-    if (pool.length <= stageLimit) return pool;
-    return MixedQuizSelector.select(
-      pool,
-      limit: stageLimit,
-      random: math.Random(),
-    );
+    return rows.map(_toQuestion).toList(growable: false);
   }
 
   @override
-  Future<int> stageQuestionCount(String subjectId) =>
-      _local.countQuestions(QuizFilter(subjectId: subjectId));
+  Future<int> stageQuestionCount(String subjectId, {String? topicId}) =>
+      _local.countQuestions(
+          QuizFilter(subjectId: subjectId, topicId: topicId));
+
+  String _stageProgressKey(String subjectId, String? topicId) =>
+      topicId == null ? subjectId : '$subjectId::$topicId';
 
   @override
-  Stream<List<QuizStageProgress>> watchStageProgress(String subjectId) => _local
-      .watchStageProgress(subjectId)
+  Stream<List<QuizStageProgress>> watchStageProgress(String subjectId,
+      {String? topicId}) => _local
+      .watchStageProgress(_stageProgressKey(subjectId, topicId))
       .map((List<QuizStageProgressRow> rows) => rows
           .map((QuizStageProgressRow r) => QuizStageProgress(
-                subjectId: r.subjectId,
+                subjectId: subjectId,
                 stageIndex: r.stageIndex,
                 bestScore: r.bestScore,
                 bestStars: r.bestStars,
@@ -217,13 +214,15 @@ class QuizRepositoryImpl implements QuizRepository {
     required int stageIndex,
     required int correct,
     required int total,
+    String? topicId,
   }) async {
+    final String progressKey = _stageProgressKey(subjectId, topicId);
     final QuizStageProgressRow? existing =
-        await _local.stageProgress(subjectId, stageIndex);
+        await _local.stageProgress(progressKey, stageIndex);
     final int score = total == 0 ? 0 : (correct * 100 / total).round();
     final DateTime now = DateTime.now();
     await _local.upsertStageProgress(QuizStageProgressCompanion(
-      subjectId: Value<String>(subjectId),
+      subjectId: Value<String>(progressKey),
       stageIndex: Value<int>(stageIndex),
       bestScore: Value<int>(math.max(existing?.bestScore ?? 0, score)),
       bestStars: Value<int>(math.max(existing?.bestStars ?? 0,

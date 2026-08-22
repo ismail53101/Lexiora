@@ -9,7 +9,7 @@ import 'package:lexiora/modules/quiz/domain/entities/quiz_subject.dart';
 import 'package:lexiora/modules/quiz/domain/quiz_stages.dart';
 
 /// Verifies the staged-quiz data path against a real in-memory database:
-/// fresh sampled stages with preserved sizes and the best-result merge on
+/// deterministic stages with preserved sizes and the best-result merge on
 /// `saveStageResult` (best score/stars kept, attempt count incremented,
 /// passed latches true).
 void main() {
@@ -49,7 +49,7 @@ void main() {
     }
   }
 
-  test('stage sampling preserves exact ladder sizes', () async {
+  test('stage slicing preserves exact ladder sizes without overlap', () async {
     await seedSubject(25);
 
     expect(await repo.stageQuestionCount('sub'), 25);
