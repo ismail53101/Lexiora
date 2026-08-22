@@ -21408,6 +21408,726 @@
           "answerIndex": 0,
           "explanation": "When each/every precedes nouns joined by 'and', the verb is singular.",
           "examTip": null
+        },
+        {
+          "question": "Identify the part of speech of 'but': 'None **but** the brave deserve the fair.'",
+          "options": [
+            "Conjunction",
+            "Preposition",
+            "Adverb",
+            "Relative Pronoun"
+          ],
+          "answerIndex": 1,
+          "explanation": "**Preposition**. Here, 'but' means 'except'. When 'but' means 'except', it functions as a preposition.",
+          "examTip": null
+        },
+        {
+          "question": "Identify the part of speech of 'round': 'The earth moves **round** the sun.'",
+          "options": [
+            "Adjective",
+            "Adverb",
+            "Preposition",
+            "Noun"
+          ],
+          "answerIndex": 2,
+          "explanation": "**Preposition**. It shows the relationship between the movement and the sun.",
+          "examTip": null
+        },
+        {
+          "question": "Identify the part of speech of 'round': 'He has a **round** face.'",
+          "options": [
+            "Adjective",
+            "Adverb",
+            "Preposition",
+            "Noun"
+          ],
+          "answerIndex": 0,
+          "explanation": "**Adjective**. It describes the noun 'face'.",
+          "examTip": null
+        },
+        {
+          "question": "Identify the part of speech of 'after': 'They arrived soon **after**.'",
+          "options": [
+            "Preposition",
+            "Conjunction",
+            "Adverb",
+            "Adjective"
+          ],
+          "answerIndex": 2,
+          "explanation": "**Adverb**. It modifies the verb 'arrived' and doesn't have an object following it.",
+          "examTip": null
+        },
+        {
+          "question": "Identify the part of speech of 'that': 'I know **that** he is honest.'",
+          "options": [
+            "Relative Pronoun",
+            "Demonstrative Pronoun",
+            "Conjunction",
+            "Adjective"
+          ],
+          "answerIndex": 2,
+          "explanation": "**Conjunction**. It introduces a subordinate noun clause.",
+          "examTip": null
+        },
+        {
+          "question": "The majority of the students ___ in favor of the proposal.",
+          "options": [
+            "is",
+            "are",
+            "was",
+            "has"
+          ],
+          "answerIndex": 1,
+          "explanation": "When 'majority' refers to a number of individuals, it takes a plural verb.",
+          "examTip": null
+        },
+        {
+          "question": "Two-thirds of the city ___ in ruins.",
+          "options": [
+            "is",
+            "are",
+            "were",
+            "have"
+          ],
+          "answerIndex": 0,
+          "explanation": "With fractions, the verb agrees with the noun ('city' is singular).",
+          "examTip": null
+        },
+        {
+          "question": "Three-fourths of the apples ___ rotten.",
+          "options": [
+            "is",
+            "are",
+            "was",
+            "has"
+          ],
+          "answerIndex": 1,
+          "explanation": "With fractions, the verb agrees with the noun ('apples' is plural).",
+          "examTip": null
+        },
+        {
+          "question": "The cattle ___ grazing in the field.",
+          "options": [
+            "is",
+            "are",
+            "was",
+            "has"
+          ],
+          "answerIndex": 1,
+          "explanation": "'Cattle' is a collective noun that is always treated as plural.",
+          "examTip": null
+        },
+        {
+          "question": "Neither of the two plans ___ to be feasible.",
+          "options": [
+            "seem",
+            "seems",
+            "seeming",
+            "has seem"
+          ],
+          "answerIndex": 1,
+          "explanation": "'Neither' (referring to one of two) takes a singular verb 'seems'.",
+          "examTip": null
+        },
+        {
+          "question": "The great poet and dramatist ___ dead.",
+          "options": [
+            "is",
+            "are",
+            "were",
+            "have"
+          ],
+          "answerIndex": 0,
+          "explanation": "When two titles refer to the same person (indicated by one article 'the'), use a singular verb.",
+          "examTip": null
+        },
+        {
+          "question": "The poet and the dramatist ___ dead.",
+          "options": [
+            "is",
+            "are",
+            "was",
+            "has"
+          ],
+          "answerIndex": 1,
+          "explanation": "When two titles refer to different people (indicated by two articles), use a plural verb.",
+          "examTip": null
+        },
+        {
+          "question": "He died ___ overwork.",
+          "options": [
+            "of",
+            "from",
+            "by",
+            "with"
+          ],
+          "answerIndex": 1,
+          "explanation": "Use **died from** for external causes like overwork, hunger, or injury. (Use **died of** for diseases).",
+          "examTip": null
+        },
+        {
+          "question": "I am angry ___ his behavior.",
+          "options": [
+            "with",
+            "at",
+            "to",
+            "for"
+          ],
+          "answerIndex": 1,
+          "explanation": "Use **angry at** something (behavior, remark) and **angry with** someone.",
+          "examTip": null
+        },
+        {
+          "question": "He is blind ___ his own faults.",
+          "options": [
+            "to",
+            "of",
+            "with",
+            "in"
+          ],
+          "answerIndex": 0,
+          "explanation": "Use **blind to** (metaphorical) and **blind of/in** an eye (physical).",
+          "examTip": null
+        },
+        {
+          "question": "Compare Akbar ___ Aurangzeb.",
+          "options": [
+            "to",
+            "with",
+            "by",
+            "for"
+          ],
+          "answerIndex": 1,
+          "explanation": "Use **compare with** when comparing similar things; **compare to** when comparing dissimilar things.",
+          "examTip": null
+        },
+        {
+          "question": "He is not capable ___ doing such a thing.",
+          "options": [
+            "to",
+            "of",
+            "for",
+            "at"
+          ],
+          "answerIndex": 1,
+          "explanation": "The adjective 'capable' is followed by the preposition 'of'.",
+          "examTip": null
+        },
+        {
+          "question": "The house consists ___ four rooms.",
+          "options": [
+            "in",
+            "of",
+            "with",
+            "by"
+          ],
+          "answerIndex": 1,
+          "explanation": "Use **consists of** to mean 'is made up of'.",
+          "examTip": null
+        },
+        {
+          "question": "He was prohibited ___ entering the room.",
+          "options": [
+            "to",
+            "from",
+            "for",
+            "by"
+          ],
+          "answerIndex": 1,
+          "explanation": "The verb 'prohibit' is followed by 'from' + gerund (-ing).",
+          "examTip": null
+        },
+        {
+          "question": "I have ___ money than you.",
+          "options": [
+            "few",
+            "fewer",
+            "less",
+            "lesser"
+          ],
+          "answerIndex": 1,
+          "explanation": "Wait, the answer is **less**. Use 'less' for uncountable nouns (money) and 'fewer' for countable nouns.",
+          "examTip": "Wait, let me re-check: money is uncountable. Correct answer is **less**."
+        },
+        {
+          "question": "I have ___ books than you.",
+          "options": [
+            "less",
+            "fewer",
+            "least",
+            "fewest"
+          ],
+          "answerIndex": 1,
+          "explanation": "Use **fewer** for countable nouns (books) and **less** for uncountable nouns.",
+          "examTip": null
+        },
+        {
+          "question": "___ knowledge is a dangerous thing.",
+          "options": [
+            "Little",
+            "A little",
+            "The little",
+            "Few"
+          ],
+          "answerIndex": 1,
+          "explanation": "**A little** means 'some' (positive sense). The proverb refers to having only a small amount of knowledge.",
+          "examTip": null
+        },
+        {
+          "question": "He spent ___ money he had.",
+          "options": [
+            "little",
+            "a little",
+            "the little",
+            "few"
+          ],
+          "answerIndex": 2,
+          "explanation": "**The little** means 'all that is there, though not much'.",
+          "examTip": null
+        },
+        {
+          "question": "___ student was given a task.",
+          "options": [
+            "Each",
+            "Every",
+            "All",
+            "Many"
+          ],
+          "answerIndex": 0,
+          "explanation": "**Each** is preferred when referring to individuals in a specific, limited group.",
+          "examTip": null
+        },
+        {
+          "question": "Correct the sentence: 'He is as tall, if not taller than, his brother.'",
+          "options": [
+            "He is as tall, if not taller than, his brother.",
+            "He is as tall as, if not taller than, his brother.",
+            "He is as tall, if not taller, his brother.",
+            "He is tall as, if not taller than, his brother."
+          ],
+          "answerIndex": 1,
+          "explanation": "The first part of the comparison 'as tall as' must be complete.",
+          "examTip": null
+        },
+        {
+          "question": "Correct the sentence: 'Walking in the garden, a snake bit him.'",
+          "options": [
+            "Walking in the garden, a snake bit him.",
+            "While he was walking in the garden, a snake bit him.",
+            "A snake bit him walking in the garden.",
+            "In the garden walking, a snake bit him."
+          ],
+          "answerIndex": 1,
+          "explanation": "Avoid a dangling modifier. 'Walking' should refer to 'he', not the 'snake'.",
+          "examTip": null
+        },
+        {
+          "question": "Correct the sentence: 'She likes singing and to dance.'",
+          "options": [
+            "She likes singing and to dance.",
+            "She likes singing and dancing.",
+            "She likes to sing and dancing.",
+            "She likes sing and dance."
+          ],
+          "answerIndex": 1,
+          "explanation": "Maintain parallelism: use two gerunds or two infinitives.",
+          "examTip": null
+        },
+        {
+          "question": "Correct the sentence: 'The climate of Quetta is better than Karachi.'",
+          "options": [
+            "The climate of Quetta is better than Karachi.",
+            "The climate of Quetta is better than that of Karachi.",
+            "The climate of Quetta is better than Karachi's climate.",
+            "Quetta's climate is better than Karachi."
+          ],
+          "answerIndex": 1,
+          "explanation": "Avoid faulty comparison. Compare climate with climate ('that of Karachi'), not climate with a city.",
+          "examTip": null
+        },
+        {
+          "question": "Choose the correct sentence:",
+          "options": [
+            "He is very weak to walk.",
+            "He is too weak to walk.",
+            "He is so weak to walk.",
+            "He is weak to walk."
+          ],
+          "answerIndex": 1,
+          "explanation": "The structure 'too + adjective + to-infinitive' expresses a negative result.",
+          "examTip": null
+        },
+        {
+          "question": "Choose the correct sentence:",
+          "options": [
+            "It is I who is to blame.",
+            "It is I who am to blame.",
+            "It is me who is to blame.",
+            "It is me who am to blame."
+          ],
+          "answerIndex": 1,
+          "explanation": "The relative pronoun 'who' refers to 'I', so the verb must be 'am'.",
+          "examTip": null
+        },
+        {
+          "question": "Identify the part of speech of 'near': 'He lives **near** the post office.'",
+          "options": [
+            "Adverb",
+            "Preposition",
+            "Adjective",
+            "Verb"
+          ],
+          "answerIndex": 1,
+          "explanation": "**Preposition**. It has an object 'the post office'.",
+          "examTip": null
+        },
+        {
+          "question": "Identify the part of speech of 'near': 'The time is drawing **near**.'",
+          "options": [
+            "Adverb",
+            "Preposition",
+            "Adjective",
+            "Verb"
+          ],
+          "answerIndex": 0,
+          "explanation": "**Adverb**. It modifies the verb 'drawing' and has no object.",
+          "examTip": null
+        },
+        {
+          "question": "Identify the part of speech of 'up': 'The price of oil is **up**.'",
+          "options": [
+            "Adjective",
+            "Adverb",
+            "Preposition",
+            "Noun"
+          ],
+          "answerIndex": 0,
+          "explanation": "**Adjective**. Here it functions as a complement describing the state of 'price'.",
+          "examTip": null
+        },
+        {
+          "question": "Identify the part of speech of 'well': 'Let **well** alone.'",
+          "options": [
+            "Adverb",
+            "Adjective",
+            "Noun",
+            "Verb"
+          ],
+          "answerIndex": 2,
+          "explanation": "**Noun**. Here it means 'good things' or 'the state of being well'.",
+          "examTip": null
+        },
+        {
+          "question": "Identify the part of speech of 'while': 'They sat **while** the music played.'",
+          "options": [
+            "Conjunction",
+            "Noun",
+            "Verb",
+            "Adverb"
+          ],
+          "answerIndex": 0,
+          "explanation": "**Conjunction**. It connects two clauses.",
+          "examTip": null
+        },
+        {
+          "question": "Identify the part of speech of 'while': 'Sit down for a **while**.'",
+          "options": [
+            "Conjunction",
+            "Noun",
+            "Verb",
+            "Adverb"
+          ],
+          "answerIndex": 1,
+          "explanation": "**Noun**. It is preceded by the article 'a' and means a period of time.",
+          "examTip": null
+        },
+        {
+          "question": "Many a student ___ failed in the examination.",
+          "options": [
+            "have",
+            "has",
+            "are",
+            "were"
+          ],
+          "answerIndex": 1,
+          "explanation": "'Many a' is always followed by a singular noun and a singular verb.",
+          "examTip": null
+        },
+        {
+          "question": "The United States ___ a powerful country.",
+          "options": [
+            "is",
+            "are",
+            "were",
+            "have"
+          ],
+          "answerIndex": 0,
+          "explanation": "Names of countries are treated as singular even if they look plural.",
+          "examTip": null
+        },
+        {
+          "question": "The news he brought ___ shocking.",
+          "options": [
+            "was",
+            "were",
+            "are",
+            "have"
+          ],
+          "answerIndex": 0,
+          "explanation": "'News' is always uncountable and singular.",
+          "examTip": null
+        },
+        {
+          "question": "Either the teacher or the students ___ to blame.",
+          "options": [
+            "is",
+            "are",
+            "was",
+            "has"
+          ],
+          "answerIndex": 1,
+          "explanation": "In 'either...or', the verb agrees with the closer subject ('students').",
+          "examTip": null
+        },
+        {
+          "question": "None of the money ___ spent.",
+          "options": [
+            "was",
+            "were",
+            "are",
+            "have"
+          ],
+          "answerIndex": 0,
+          "explanation": "With 'none of', if the noun is uncountable (money), use a singular verb.",
+          "examTip": null
+        },
+        {
+          "question": "He is suffering ___ fever.",
+          "options": [
+            "of",
+            "from",
+            "with",
+            "by"
+          ],
+          "answerIndex": 1,
+          "explanation": "Standard usage is **suffering from**.",
+          "examTip": null
+        },
+        {
+          "question": "He is addicted ___ gambling.",
+          "options": [
+            "to",
+            "with",
+            "for",
+            "in"
+          ],
+          "answerIndex": 0,
+          "explanation": "The adjective 'addicted' is followed by the preposition 'to'.",
+          "examTip": null
+        },
+        {
+          "question": "She is good ___ English.",
+          "options": [
+            "in",
+            "at",
+            "with",
+            "for"
+          ],
+          "answerIndex": 1,
+          "explanation": "Use **good at** a subject.",
+          "examTip": null
+        },
+        {
+          "question": "He was accused ___ theft.",
+          "options": [
+            "for",
+            "of",
+            "with",
+            "by"
+          ],
+          "answerIndex": 1,
+          "explanation": "The verb 'accuse' is followed by 'of'.",
+          "examTip": null
+        },
+        {
+          "question": "I am confident ___ success.",
+          "options": [
+            "for",
+            "of",
+            "in",
+            "with"
+          ],
+          "answerIndex": 1,
+          "explanation": "The adjective 'confident' is followed by 'of'.",
+          "examTip": null
+        },
+        {
+          "question": "He is married ___ my sister.",
+          "options": [
+            "with",
+            "to",
+            "by",
+            "for"
+          ],
+          "answerIndex": 1,
+          "explanation": "Use **married to**.",
+          "examTip": null
+        },
+        {
+          "question": "We should abide ___ the rules.",
+          "options": [
+            "with",
+            "by",
+            "to",
+            "for"
+          ],
+          "answerIndex": 1,
+          "explanation": "The verb 'abide' is followed by 'by'.",
+          "examTip": null
+        },
+        {
+          "question": "He apologized ___ his mistake.",
+          "options": [
+            "for",
+            "to",
+            "with",
+            "by"
+          ],
+          "answerIndex": 0,
+          "explanation": "Use **apologize for** something.",
+          "examTip": null
+        },
+        {
+          "question": "He apologized ___ the teacher.",
+          "options": [
+            "for",
+            "to",
+            "with",
+            "by"
+          ],
+          "answerIndex": 1,
+          "explanation": "Use **apologize to** someone.",
+          "examTip": null
+        },
+        {
+          "question": "Correct the sentence: 'He has no any money.'",
+          "options": [
+            "He has no any money.",
+            "He has no money.",
+            "He has not no money.",
+            "He has any no money."
+          ],
+          "answerIndex": 1,
+          "explanation": "Do not use 'no' and 'any' together.",
+          "examTip": null
+        },
+        {
+          "question": "Correct the sentence: 'He is the most unique person.'",
+          "options": [
+            "He is the most unique person.",
+            "He is a unique person.",
+            "He is the more unique person.",
+            "He is unique person."
+          ],
+          "answerIndex": 1,
+          "explanation": "Adjectives like 'unique', 'perfect', 'dead', 'round' do not have degrees of comparison.",
+          "examTip": null
+        },
+        {
+          "question": "Correct the sentence: 'I have a five-rupees note.'",
+          "options": [
+            "I have a five-rupees note.",
+            "I have a five-rupee note.",
+            "I have five-rupee notes.",
+            "I have a five-rupees notes."
+          ],
+          "answerIndex": 1,
+          "explanation": "In hyphenated compound adjectives, the noun (rupee) is always singular.",
+          "examTip": null
+        },
+        {
+          "question": "Correct the sentence: 'The both brothers are here.'",
+          "options": [
+            "The both brothers are here.",
+            "Both the brothers are here.",
+            "Both brothers is here.",
+            "The brothers both are here."
+          ],
+          "answerIndex": 1,
+          "explanation": "The word 'both' should come before the article 'the'.",
+          "examTip": null
+        },
+        {
+          "question": "Correct the sentence: 'He is taller than any boy in the class.'",
+          "options": [
+            "He is taller than any boy in the class.",
+            "He is taller than any other boy in the class.",
+            "He is taller than all boy in the class.",
+            "He is more taller than any boy."
+          ],
+          "answerIndex": 1,
+          "explanation": "When comparing one person with the rest of the group, use 'any other' to exclude that person from the group.",
+          "examTip": null
+        },
+        {
+          "question": "Correct the sentence: 'Scarcely had he gone than it began to rain.'",
+          "options": [
+            "Scarcely had he gone than it began to rain.",
+            "Scarcely had he gone when it began to rain.",
+            "Scarcely he had gone when it began to rain.",
+            "Scarcely had he gone then it began to rain."
+          ],
+          "answerIndex": 1,
+          "explanation": "'Scarcely' and 'Hardly' are followed by 'when', not 'than'.",
+          "examTip": null
+        },
+        {
+          "question": "Correct the sentence: 'No sooner had he reached the station when the train left.'",
+          "options": [
+            "No sooner had he reached the station when the train left.",
+            "No sooner had he reached the station than the train left.",
+            "No sooner he reached the station than the train left.",
+            "No sooner had he reached the station then the train left."
+          ],
+          "answerIndex": 1,
+          "explanation": "'No sooner' is followed by 'than'.",
+          "examTip": null
+        },
+        {
+          "question": "Correct the sentence: 'I will wait for you until you do not return.'",
+          "options": [
+            "I will wait for you until you do not return.",
+            "I will wait for you until you return.",
+            "I will wait for you till you not return.",
+            "I will wait for you until you will return."
+          ],
+          "answerIndex": 1,
+          "explanation": "'Until' already has a negative meaning.",
+          "examTip": null
+        },
+        {
+          "question": "Correct the sentence: 'He asked me that where I lived.'",
+          "options": [
+            "He asked me that where I lived.",
+            "He asked me where I lived.",
+            "He asked me where did I live.",
+            "He asked me that where did I live."
+          ],
+          "answerIndex": 1,
+          "explanation": "In indirect questions, do not use 'that' before the question word.",
+          "examTip": null
+        },
+        {
+          "question": "Correct the sentence: 'He did not and will not go there.'",
+          "options": [
+            "He did not and will not go there.",
+            "He has not and will not go there.",
+            "He did not go and will not go there.",
+            "He not go and will not go there."
+          ],
+          "answerIndex": 2,
+          "explanation": "When two different auxiliary verbs are used, the main verb must be provided for both if they require different forms.",
+          "examTip": null
         }
       ],
       "practice": [
