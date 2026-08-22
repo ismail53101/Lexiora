@@ -61,18 +61,20 @@ class GrammarQuestion extends Equatable {
     required this.options,
     required this.answerIndex,
     this.explanation,
+    this.examTip,
   });
   final String question;
   final List<String> options;
   final int answerIndex;
   final String? explanation;
+  final String? examTip;
 
   String get answer =>
       (answerIndex >= 0 && answerIndex < options.length) ? options[answerIndex] : '';
 
   @override
   List<Object?> get props =>
-      <Object?>[question, options, answerIndex, explanation];
+      <Object?>[question, options, answerIndex, explanation, examTip];
 }
 
 class GrammarTableRow extends Equatable {

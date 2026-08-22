@@ -78,7 +78,12 @@ class _PracticeQuestionCardState extends State<PracticeQuestionCard> {
             ),
           if (_answered) ...<Widget>[
             const SizedBox(height: 6),
-            _ResultBanner(isCorrect: _isCorrect, explanation: q.explanation),
+            _ResultBanner(
+              isCorrect: _isCorrect,
+              explanation: q.explanation,
+              examTip: q.examTip,
+              correctAnswer: q.answer,
+            ),
             Align(
               alignment: Alignment.centerRight,
               child: TextButton.icon(
@@ -185,10 +190,17 @@ class _OptionTile extends StatelessWidget {
 }
 
 class _ResultBanner extends StatelessWidget {
-  const _ResultBanner({required this.isCorrect, this.explanation});
+  const _ResultBanner({
+    required this.isCorrect,
+    this.explanation,
+    this.examTip,
+    required this.correctAnswer,
+  });
 
   final bool isCorrect;
   final String? explanation;
+  final String? examTip;
+  final String correctAnswer;
 
   @override
   Widget build(BuildContext context) {
@@ -196,41 +208,107 @@ class _ResultBanner extends StatelessWidget {
     const Color correct = Color(0xFF2E7D32);
     final Color color = isCorrect ? correct : theme.colorScheme.error;
 
-    return Container(
-      width: double.infinity,
-      margin: const EdgeInsets.only(top: 8, bottom: 4),
-      padding: const EdgeInsets.all(12),
-      decoration: BoxDecoration(
-        color: color.withValues(alpha: 0.10),
-        borderRadius: BorderRadius.circular(12),
-      ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: <Widget>[
-          Row(
+    return Column(
+      children: [
+        Container(
+          width: double.infinity,
+          margin: const EdgeInsets.only(top: 8, bottom: 4),
+          padding: const EdgeInsets.all(12),
+          decoration: BoxDecoration(
+            color: color.withValues(alpha: 0.10),
+            borderRadius: BorderRadius.circular(12),
+            border: Border.all(color: color.withValues(alpha: 0.2)),
+          ),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
-              Icon(
-                isCorrect ? Icons.check_circle : Icons.info_outline,
-                size: 18,
-                color: color,
+              Row(
+                children: <Widget>[
+                  Icon(
+                    isCorrect ? Icons.check_circle : Icons.info_outline,
+                    size: 18,
+                    color: color,
+                  ),
+                  const SizedBox(width: 8),
+                  Text(
+                    isCorrect ? 'Correct' : 'Not quite',
+                    style: theme.textTheme.labelLarge
+                        ?.copyWith(color: color, fontWeight: FontWeight.w700),
+                  ),
+                ],
               ),
-              const SizedBox(width: 8),
-              Text(
-                isCorrect ? 'Correct' : 'Not quite',
-                style: theme.textTheme.labelLarge
-                    ?.copyWith(color: color, fontWeight: FontWeight.w700),
-              ),
+              if (explanation != null && explanation!.isNotEmpty) ...<Widget>[
+                const SizedBox(height: 8),
+                Text.rich(
+                  TextSpan(
+                    style: theme.textTheme.bodyMedium?.copyWith(height: 1.35),
+                    children: [
+                      if (!isCorrect) ...[
+                        TextSpan(
+                          text: 'Correct Answer: $correctAnswer\n\n',
+                          style: const TextStyle(fontWeight: FontWeight.w800),
+                        ),
+                      ],
+                      const TextSpan(
+                        text: 'Explanation:\n',
+                        style: TextStyle(fontWeight: FontWeight.w800),
+                      ),
+                      ..._boldMarkedSpans(explanation!),
+                    ],
+                  ),
+                ),
+              ],
             ],
           ),
-          if (explanation != null && explanation!.isNotEmpty) ...<Widget>[
-            const SizedBox(height: 8),
-            Text(
-              explanation!,
-              style: theme.textTheme.bodyMedium?.copyWith(height: 1.35),
+        ),
+        if (examTip != null && examTip!.isNotEmpty)
+          Container(
+            width: double.infinity,
+            margin: const EdgeInsets.only(top: 4, bottom: 4),
+            padding: const EdgeInsets.all(12),
+            decoration: BoxDecoration(
+              color: theme.colorScheme.tertiary.withValues(alpha: 0.08),
+              borderRadius: BorderRadius.circular(12),
+              border: Border.all(color: theme.colorScheme.tertiary.withValues(alpha: 0.2)),
             ),
-          ],
-        ],
-      ),
+            child: Row(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Icon(Icons.tips_and_updates_outlined, 
+                  size: 18, color: theme.colorScheme.tertiary),
+                const SizedBox(width: 8),
+                Expanded(
+                  child: Text.rich(
+                    TextSpan(
+                      style: theme.textTheme.bodyMedium?.copyWith(
+                        height: 1.35,
+                        color: theme.colorScheme.tertiary,
+                      ),
+                      children: [
+                        const TextSpan(
+                          text: 'Exam Tip: ',
+                          style: TextStyle(fontWeight: FontWeight.w800),
+                        ),
+                        ..._boldMarkedSpans(examTip!),
+                      ],
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ),
+      ],
     );
   }
+}
+
+List<TextSpan> _boldMarkedSpans(String text) {
+  final List<String> parts = text.split('**');
+  return <TextSpan>[
+    for (int i = 0; i < parts.length; i++)
+      TextSpan(
+        text: parts[i].replaceAll(' > ', ' → '),
+        style: i.isOdd ? const TextStyle(fontWeight: FontWeight.w800) : null,
+      ),
+  ];
 }

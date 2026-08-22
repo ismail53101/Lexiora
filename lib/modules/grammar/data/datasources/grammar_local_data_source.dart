@@ -422,6 +422,7 @@ class GrammarLocalDataSource {
           options: options,
           answerIndex: idx.clamp(0, options.length - 1),
           explanation: _nullStr(e['explanation']),
+          examTip: _nullStr(e['examTip']),
         ));
       }
     }
