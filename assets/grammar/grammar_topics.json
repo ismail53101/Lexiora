@@ -15,618 +15,77 @@
     "order": 4,
     "isLeaf": true,
     "content": {
-      "introduction": "An adjective is a word that describes or gives information about a noun or pronoun.",
-      "urduExplanation": "اسم صفت وہ لفظ ہے جو کسی اسم یا اسم ضمیر کی خصوصیت، مقدار، تعداد، ملکیت یا نشاندہی کے بارے میں معلومات دے۔",
+      "introduction": "An adjective is a word that describes or modifies a noun or pronoun.",
+      "urduExplanation": "صفت وہ لفظ ہے جو کسی اسم یا اسمِ ضمیر کی خصوصیت بیان کرے۔",
       "englishExplanation": "Adjectives modify nouns and pronouns, answering questions like which one, what kind, or how many. They typically appear before the noun they describe or after a linking verb as a subject complement. Adjectives have three degrees of comparison: positive (tall), comparative (taller), and superlative (tallest), used to compare two or more things. Some adjectives are descriptive (happy, red), while others indicate quantity (few, many), possession (my, her), or demonstration (this, those). Correct comparative and superlative forms, along with proper word order, are essential for accurate English.",
       "types": [
         {
           "name": "Adjective of Quality",
-          "description": "Adjective of Quality tells us about the quality or kind of a person or thing.",
-          "urduExplanation": "Adjective of quality ہمیں کسی شخص یا چیز کی خاصیت یا قسم کے بارے میں بتاتا ہے۔",
-          "exampleWords": "honest, brave, beautiful, intelligent, difficult",
+          "description": "Describes the kind or quality of a noun.",
+          "urduExplanation": "کسی اسم کی خوبی یا صفت بیان کرنے والے الفاظ۔",
+          "exampleWords": "good, brave, beautiful, large, red",
           "rules": [
-            "Ask **\"What kind?\"** to identify it.",
-            "It can describe a person, place, animal, or thing.",
-            "It can come before a noun.",
-            "It can come after a linking verb."
-          ],
-          "ruleExamples": [
-            "He is **an honest** man. > What kind of man? **Honest**",
-            "Person: She is **intelligent**.\nPlace: It is a **peaceful** city.\nAnimal: The dog is **loyal**.\nThing: He bought an **expensive** car.",
-            "She is a **beautiful** girl.\nHe bought an **expensive** phone.",
-            "The girl is **beautiful**.\nThe food smells **delicious**.\nThe child became **angry**."
+            "1: Usually placed before the noun they modify.",
+            "2: Can follow a linking verb (is, am, are)."
           ],
           "examples": [
             {
-              "text": "Ali is a **brave** soldier.",
-              "urdu": "علی ایک بہادر سپاہی ہے۔",
-              "note": "**Brave** describes the quality of the soldier."
+              "text": "He is a **brave** soldier.",
+              "urdu": "وہ ایک بہادر سپاہی ہے۔",
+              "note": null
             },
             {
-              "text": "She lives in a **beautiful** house.",
-              "urdu": "وہ ایک خوبصورت گھر میں رہتی ہے۔",
-              "note": "**Beautiful** describes the quality of the house."
+              "text": "She is **beautiful**.",
+              "urdu": "وہ خوبصورت ہے۔",
+              "note": null
             },
             {
-              "text": "The **difficult** question confused the students.",
-              "urdu": "مشکل سوال نے طلبہ کو الجھن میں ڈال دیا۔",
-              "note": "**Difficult** describes the question."
+              "text": "I have a **red** pen.",
+              "urdu": "میرے پاس ایک سرخ قلم ہے۔",
+              "note": null
             },
             {
-              "text": "The loyal dog guarded the peaceful home.",
-              "urdu": "وفادار کتے نے پُرامن گھر کی حفاظت کی۔",
-              "note": "**Loyal** and **peaceful** describe qualities."
+              "text": "This is a **large** house.",
+              "urdu": "یہ ایک بڑا گھر ہے۔",
+              "note": null
+            },
+            {
+              "text": "The food was **delicious**.",
+              "urdu": "کھانا لذیذ تھا۔",
+              "note": null
             }
           ],
           "commonMistakes": [
             {
-              "wrong": "He is **honest man**.",
-              "right": "He is **an honest man**.",
-              "urdu": "وہ ایک ایماندار آدمی ہے۔",
-              "note": "A singular countable noun needs the article **an** before the adjective and noun."
+              "wrong": "He is a soldier brave.",
+              "right": "He is a **brave** soldier.",
+              "urdu": "وہ ایک بہادر سپاہی ہے۔",
+              "note": "Adjectives usually come before the noun."
             },
             {
-              "wrong": "She is a **beauty** girl.",
-              "right": "She is a **beautiful** girl.",
-              "urdu": "وہ ایک خوبصورت لڑکی ہے۔",
-              "note": "**Beautiful** is the adjective used to describe the girl; **beauty** is a noun."
+              "wrong": "She is more beautifuler.",
+              "right": "She is **more beautiful**.",
+              "urdu": "وہ زیادہ خوبصورت ہے۔",
+              "note": "Do not use double comparatives."
             },
             {
-              "wrong": "The food smells **deliciously**.",
-              "right": "The food smells **delicious**.",
-              "urdu": "کھانا مزیدار خوشبو دے رہا ہے۔",
-              "note": "After the linking verb **smells**, use the adjective **delicious**, not the adverb **deliciously**."
+              "wrong": "This is a redder pen.",
+              "right": "This is a **red** pen.",
+              "urdu": "یہ ایک سرخ قلم ہے۔",
+              "note": null
             },
             {
-              "wrong": "He bought an **expensive**.",
-              "right": "He bought an **expensive phone**.",
-              "urdu": "اس نے ایک مہنگا فون خریدا۔",
-              "note": "The adjective must describe a noun; **expensive** needs a noun such as phone."
+              "wrong": "He is very **goodly**.",
+              "right": "He is very **good**.",
+              "urdu": "وہ بہت اچھا ہے۔",
+              "note": null
+            },
+            {
+              "wrong": "The flowers smells **sweetly**.",
+              "right": "The flowers smell **sweet**.",
+              "urdu": "پھولوں کی خوشبو میٹھی ہے۔",
+              "note": "Use adjectives after linking verbs."
             }
-          ]
-        },
-        {
-          "name": "Adjective of Quantity",
-          "description": "An Adjective of Quantity tells us how much of a thing is meant.",
-          "urduExplanation": "صفت مقدار وہ لفظ ہے جو کسی اسم کی مقدار کو ظاہر کرے، یعنی یہ بتائے کہ کسی چیز کی کتنی مقدار ہے۔",
-          "exampleWords": "much, little, some, enough, sufficient, no",
-          "rules": [
-            "It tells the amount of something.",
-            "It is mainly used with **uncountable nouns**.",
-            "Do not confuse quantity with number.",
-            "**little** and **a little** have different meanings.",
-            "Some words can be used with both countable and uncountable nouns, but their meaning changes."
-          ],
-          "ruleExamples": [
-            "I have **some** money.\nThere is **little** water. > An adjective of quantity answers **\"How much?\"**",
-            "**much water**\n**little milk**\n**enough food**",
-            "**much water** > Quantity > How much\n**many books** > Number > How many\n**Uncountable noun** > Quantity\n**Countable noun** > Number",
-            "He has **little** money. > Almost no money.\nHe has **a little** money. > Some money.\n**little** = almost none\n**a little** = some",
-            "**some water** > amount of water.\n**some books** > number of books. > Always look at the noun and ask whether the word indicates amount or number."
-          ],
-          "examples": [
-            {
-              "text": "There is **little** water in the bottle.",
-              "urdu": "بوتل میں تھوڑا پانی ہے۔",
-              "note": "**Little** shows a small amount of uncountable water."
-            },
-            {
-              "text": "She has **enough** knowledge for the examination.",
-              "urdu": "اس کے پاس امتحان کے لیے کافی علم ہے۔",
-              "note": "**Enough** shows a sufficient amount of knowledge."
-            },
-            {
-              "text": "He has **a little** money for the journey.",
-              "urdu": "اس کے پاس سفر کے لیے کچھ رقم ہے۔",
-              "note": "**A little** means some amount, though not much."
-            },
-            {
-              "text": "There is **some** water in the glass, and there are **some** books on the desk.",
-              "urdu": "گلاس میں کچھ پانی ہے اور میز پر کچھ کتابیں ہیں۔",
-              "note": "**Some** can show an amount with water and a number with books."
-            }
-          ],
-          "commonMistakes": [
-            {
-              "wrong": "I do not have **many water**.",
-              "right": "I do not have **much water**.",
-              "urdu": "میرے پاس زیادہ پانی نہیں ہے۔",
-              "note": "Water is uncountable, so use **much** for its amount."
-            },
-            {
-              "wrong": "There are **much books** on the table.",
-              "right": "There are **many books** on the table.",
-              "urdu": "میز پر بہت سی کتابیں ہیں۔",
-              "note": "Books are countable and plural, so use **many** for their number."
-            },
-            {
-              "wrong": "He has **little money**, so he can buy everything.",
-              "right": "He has **a little money**, so he can buy something.",
-              "urdu": "اس کے پاس کچھ رقم ہے، اس لیے وہ کچھ خرید سکتا ہے۔",
-              "note": "**Little** means almost none, while **a little** means some."
-            },
-            {
-              "wrong": "I need **a water**.",
-              "right": "I need **some water**.",
-              "urdu": "مجھے کچھ پانی چاہیے۔",
-              "note": "Water is normally uncountable, so do not use **a** directly before it."
-            }
-          ]
-        },
-        {
-          "name": "Adjective of Number",
-          "description": "An adjective of number is a word that tells us how many persons or things are meant or in what order they occur.",
-          "urduExplanation": "صفتِ عدد وہ لفظ ہے جو کسی اسم کی تعداد یا ترتیب کو ظاہر کرے۔",
-          "exampleWords": "one, two, many, few, several, first, second",
-          "rules": [
-            "It tells us how many persons or things there are.",
-            "It is generally used with countable nouns.",
-            "**Few** and **a few** have different meanings."
-          ],
-          "ruleExamples": [
-            "Five students passed the test.\nSeveral candidates applied for the job. > An adjective of number answers **\"How many?\"**",
-            "Three books\nMany students\nTwo cars > Adjectives of number generally describe countable nouns.",
-            "Few students passed the test. > Almost none.\nA few students passed the test. > Some students.\n**Few** = almost none\n**A few** = some"
-          ],
-          "examples": [
-            {
-              "text": "Five students passed the test.",
-              "urdu": "پانچ طلبہ امتحان میں کامیاب ہوئے۔",
-              "note": "**Five** tells us how many students passed."
-            },
-            {
-              "text": "Several candidates applied for the job.",
-              "urdu": "کئی امیدواروں نے ملازمت کے لیے درخواست دی۔",
-              "note": "**Several** shows an indefinite number of countable candidates."
-            },
-            {
-              "text": "The first candidate answered the question.",
-              "urdu": "پہلے امیدوار نے سوال کا جواب دیا۔",
-              "note": "**First** shows the order of the candidate."
-            },
-            {
-              "text": "A few students attended the seminar.",
-              "urdu": "چند طلبہ نے سیمینار میں شرکت کی۔",
-              "note": "**A few** means some students, not almost none."
-            }
-          ],
-          "commonMistakes": [
-            {
-              "wrong": "❌ Much students passed the test.",
-              "right": "✅ Many students passed the test.",
-              "urdu": "بہت سے طلبہ امتحان میں کامیاب ہوئے۔",
-              "note": "Students are countable and plural, so use **many** for number, not **much** for quantity."
-            },
-            {
-              "wrong": "❌ Three student passed the test.",
-              "right": "✅ Three students passed the test.",
-              "urdu": "تین طلبہ امتحان میں کامیاب ہوئے۔",
-              "note": "A number greater than one normally takes a plural countable noun."
-            },
-            {
-              "wrong": "❌ Few students passed, so the hall was full.",
-              "right": "✅ A few students passed, so the hall was not empty.",
-              "urdu": "چند طلبہ کامیاب ہوئے، اس لیے ہال خالی نہیں تھا۔",
-              "note": "**Few** means almost none, while **a few** means some."
-            },
-            {
-              "wrong": "❌ First students entered the room.",
-              "right": "✅ The first student entered the room.",
-              "urdu": "پہلا طالب علم کمرے میں داخل ہوا۔",
-              "note": "A singular ordinal noun usually needs a determiner such as **the** before it."
-            }
-          ]
-        },
-        {
-          "name": "Demonstrative Adjective",
-          "description": "A demonstrative adjective is a word used before a noun to point out a specific person, place, animal, or thing.",
-          "urduExplanation": "صفتِ اشارہ وہ لفظ ہے جو کسی مخصوص شخص، جگہ، جانور یا چیز کی طرف اشارہ کرے اور عموماً اسم سے پہلے آئے۔",
-          "exampleWords": "This, That, Those, These",
-          "rules": [
-            "A demonstrative adjective must come before a noun.",
-            "Do not confuse demonstrative adjectives with demonstrative pronouns."
-          ],
-          "ruleExamples": [
-            "This book is useful.\nThose students are hardworking. > **This**, **those** + noun = demonstrative adjective.",
-            "This book is interesting. > **This** = adjective\nThis is interesting. > **This** = pronoun\nIf the demonstrative is followed by a noun, it is a demonstrative adjective; if it stands alone, it is a demonstrative pronoun."
-          ],
-          "examples": [
-            {
-              "text": "This book is useful.",
-              "urdu": "یہ کتاب مفید ہے۔",
-              "note": "**This** comes before the noun book, so it is a demonstrative adjective."
-            },
-            {
-              "text": "Those students are hardworking.",
-              "urdu": "وہ طلبہ محنتی ہیں۔",
-              "note": "**Those** comes before the noun students, so it points out specific students."
-            },
-            {
-              "text": "These questions are important for the examination.",
-              "urdu": "یہ سوالات امتحان کے لیے اہم ہیں۔",
-              "note": "**These** points out specific questions and comes before the noun questions."
-            },
-            {
-              "text": "That building is the examination hall.",
-              "urdu": "وہ عمارت امتحانی ہال ہے۔",
-              "note": "**That** points out one specific building."
-            }
-          ],
-          "commonMistakes": [
-            {
-              "wrong": "❌ This is useful book.",
-              "right": "✅ This is a useful book.",
-              "urdu": "یہ ایک مفید کتاب ہے۔",
-              "note": "A singular countable noun needs an article. **This** is a demonstrative adjective, and book needs **a**."
-            },
-            {
-              "wrong": "❌ Those is my books.",
-              "right": "✅ Those are my books.",
-              "urdu": "وہ میری کتابیں ہیں۔",
-              "note": "**Those** refers to plural books, so use the plural verb **are**, not **is**."
-            },
-            {
-              "wrong": "❌ These book is expensive.",
-              "right": "✅ This book is expensive.",
-              "urdu": "یہ کتاب مہنگی ہے۔",
-              "note": "A singular noun takes **this**, while a plural noun takes **these**."
-            },
-            {
-              "wrong": "❌ That students are ready.",
-              "right": "✅ Those students are ready.",
-              "urdu": "وہ طلبہ تیار ہیں۔",
-              "note": "Students is plural, so use the plural demonstrative **those**."
-            }
-          ]
-        },
-        {
-          "name": "Possessive Adjective",
-          "description": "A Possessive Adjective is a word that shows ownership, possession, or relationship and is used before a noun.",
-          "exampleWords": "my, your, his, her, its, our, their",
-          "tableRows": [
-            [
-              "I",
-              "my"
-            ],
-            [
-              "You",
-              "your"
-            ],
-            [
-              "He",
-              "his"
-            ],
-            [
-              "She",
-              "her"
-            ],
-            [
-              "It",
-              "its"
-            ],
-            [
-              "We",
-              "our"
-            ],
-            [
-              "They",
-              "their"
-            ]
-          ],
-          "examples": [
-            {
-              "text": "My book is new.",
-              "urdu": "میری کتاب نئی ہے.",
-              "note": "**My** shows whose book is being discussed."
-            },
-            {
-              "text": "Her brother is a doctor.",
-              "urdu": "اس کا بھائی ڈاکٹر ہے۔",
-              "note": "**Her** shows the relationship with the brother."
-            },
-            {
-              "text": "His car is expensive.",
-              "urdu": "اس کی گاڑی مہنگی ہے۔",
-              "note": "**His** comes before the noun car."
-            },
-            {
-              "text": "This is my book. > **My** = Possessive Adjective",
-              "urdu": "یہ میری کتاب ہے۔ > **My** = صفتِ ملکی",
-              "note": "**My** comes before book."
-            }
-          ],
-          "commonMistakes": [
-            {
-              "wrong": "The my book is new.",
-              "right": "My book is new.",
-              "urdu": "میری کتاب نئی ہے۔",
-              "note": "Do not normally use **a, an, or the** directly before a possessive adjective."
-            },
-            {
-              "wrong": "Her's car is expensive.",
-              "right": "Her car is expensive.",
-              "urdu": "اس کی گاڑی مہنگی ہے۔",
-              "note": "Possessive adjectives do not take an apostrophe."
-            },
-            {
-              "wrong": "The cat cleaned it's paw.",
-              "right": "The cat cleaned its paw.",
-              "urdu": "بلی نے اپنا پنجہ صاف کیا۔",
-              "note": "**Its** shows possession; **it’s** means it is or it has."
-            },
-            {
-              "wrong": "This book is mine. > **Mine** = Possessive Adjective",
-              "right": "This book is mine. > **Mine** = Possessive Pronoun",
-              "urdu": "یہ کتاب میری ہے۔ > **Mine** = اسمِ ضمیرِ ملکی",
-              "note": "**Mine** stands alone, so it is a possessive pronoun."
-            }
-          ],
-          "tableTitle": "Possessive Adjective Quick Table",
-          "tableColumns": [
-            "Person",
-            "Possessive Adjective"
-          ],
-          "urduExplanation": "صفت ملکی وہ لفظ ہے جو کسی شخص یا چیز کے ساتھ ملکیت، تعلق یا وابستگی ظاہر کرے اور عموماً اسم سے پہلے آئے۔",
-          "rules": [
-            "A Possessive Adjective shows ownership, possession, or relationship.",
-            "A Possessive Adjective comes before a noun.",
-            "Do not use an article before a possessive adjective.",
-            "Do not use an apostrophe (') with possessive adjectives.",
-            "Be careful with **its** and **it's**.",
-            "Do not confuse possessive adjectives with possessive pronouns."
-          ],
-          "ruleExamples": [
-            "**My** book is new.\n**Her** brother is a doctor.\nRule: It tells us **whose** person or thing is being discussed.",
-            "**His** car is expensive.\n**Their** house is large.\nRule: Possessive Adjective + noun.",
-            "Incorrect: The my book\nCorrect: my book\nRule: Do not normally use **a, an, or the** directly before a possessive adjective.",
-            "Incorrect: Her's car.\nCorrect: Her car.\nRule: **my, your, his, her, its, our, their** do not take an apostrophe.",
-            "The cat cleaned it's paw. > Possession\nIt's raining. > It is\nRule: **Its** = Possession; **It's** = It is / It has.",
-            "This is my book. > **My** = Possessive Adjective\nThis book is mine. > **Mine** = Possessive Pronoun\nRule: Possessive Adjective + noun; possessive pronoun stands alone."
-          ]
-        },
-        {
-          "name": "Interrogative Adjective",
-          "description": "An interrogative adjective is used with a noun to ask a question.",
-          "urduExplanation": "صفتِ استفہام اسم کے ساتھ مل کر سوال پوچھنے کے لیے استعمال ہوتی ہے۔",
-          "exampleWords": "what, which, whose",
-          "rules": [
-            "An interrogative adjective is used with a noun to ask a question.",
-            "**Whose** asks about possession or ownership.",
-            "Do not confuse an interrogative adjective with an interrogative pronoun.",
-            "Exam Shortcut: Question word + noun = Interrogative Adjective. Question word without a noun = Interrogative Pronoun."
-          ],
-          "ruleExamples": [
-            "**Which book** do you want?\n**What subject** do you study? > **What**, **which**, and **whose** are common interrogative adjectives when they come before a noun.",
-            "**Whose pen** is this?\n**Whose car** is parked outside? > **Whose + noun** asks who owns something.",
-            "**Which book** is yours? > **Which** = interrogative adjective because it modifies book.\n**Which** is yours? > **Which** = interrogative pronoun because it stands alone.",
-            "Question word + noun > Interrogative Adjective\nQuestion word without a noun > Interrogative Pronoun"
-          ],
-          "examples": [
-            {
-              "text": "Which book do you want?",
-              "urdu": "آپ کون سی کتاب چاہتے ہیں؟",
-              "note": "**Which** comes before the noun book, so it is an interrogative adjective."
-            },
-            {
-              "text": "What subject do you study?",
-              "urdu": "آپ کون سا مضمون پڑھتے ہیں؟",
-              "note": "**What** comes before the noun subject and asks about it."
-            },
-            {
-              "text": "Whose pen is this?",
-              "urdu": "یہ قلم کس کا ہے؟",
-              "note": "**Whose** comes before pen and asks about ownership."
-            },
-            {
-              "text": "Which book is yours?",
-              "urdu": "آپ کی کتاب کون سی ہے؟",
-              "note": "**Which** modifies book, so it is an interrogative adjective."
-            }
-          ],
-          "commonMistakes": [
-            {
-              "wrong": "❌ Which do you want book?",
-              "right": "✅ Which book do you want?",
-              "urdu": "آپ کون سی کتاب چاہتے ہیں؟",
-              "note": "The interrogative adjective must come before the noun: **which book**."
-            },
-            {
-              "wrong": "❌ Whose is this pen?",
-              "right": "✅ Whose pen is this?",
-              "urdu": "یہ قلم کس کا ہے؟",
-              "note": "When **whose** comes before a noun, it is an interrogative adjective."
-            },
-            {
-              "wrong": "❌ What you study subject?",
-              "right": "✅ What subject do you study?",
-              "urdu": "آپ کون سا مضمون پڑھتے ہیں؟",
-              "note": "The question word comes before the noun subject, followed by the helping verb and subject."
-            },
-            {
-              "wrong": "❌ Which is yours book?",
-              "right": "✅ Which book is yours?",
-              "urdu": "آپ کی کتاب کون سی ہے؟",
-              "note": "**Which** must directly come before the noun it modifies."
-            }
-          ]
-        },
-        {
-          "name": "Distributive Adjective",
-          "description": "Distributive Adjective refers to each person or thing in a group individually.",
-          "exampleWords": "each, every, either, neither",
-          "tableRows": [
-            [
-              "Each",
-              "one by one",
-              "singular"
-            ],
-            [
-              "Every",
-              "all individually",
-              "singular"
-            ],
-            [
-              "Either",
-              "one of two",
-              "singular"
-            ],
-            [
-              "Neither",
-              "not one of two",
-              "singular"
-            ]
-          ],
-          "examples": [
-            {
-              "text": "Each student has an identity card.",
-              "urdu": "ہر طالب علم کے پاس شناختی کارڈ ہے۔",
-              "note": "**Each** refers to students one by one and takes a singular verb."
-            },
-            {
-              "text": "Each player received a medal.",
-              "urdu": "ہر کھلاڑی نے تمغہ حاصل کیا۔",
-              "note": "**Each** refers to every player individually."
-            },
-            {
-              "text": "Every candidate needs an admit card.",
-              "urdu": "ہر امیدوار کو داخلہ کارڈ کی ضرورت ہے۔",
-              "note": "**Every** refers to all candidates individually."
-            },
-            {
-              "text": "Each of the students has a book.",
-              "urdu": "طلبہ میں سے ہر ایک کے پاس ایک کتاب ہے۔",
-              "note": "**Each of** is followed by a plural noun, but the verb is singular."
-            }
-          ],
-          "commonMistakes": [
-            {
-              "wrong": "Each student have an identity card.",
-              "right": "Each student has an identity card.",
-              "urdu": "ہر طالب علم کے پاس شناختی کارڈ ہے۔",
-              "note": "**Each + singular noun** takes a singular verb."
-            },
-            {
-              "wrong": "Every student are ready.",
-              "right": "Every student is ready.",
-              "urdu": "ہر طالب علم تیار ہے۔",
-              "note": "**Every + singular noun** takes **is**, not **are**."
-            },
-            {
-              "wrong": "Every students must attend.",
-              "right": "Every student must attend.",
-              "urdu": "ہر طالب علم کو حاضر ہونا چاہیے۔",
-              "note": "Distributive adjectives normally take a singular countable noun."
-            },
-            {
-              "wrong": "Each books is useful.",
-              "right": "Each book is useful.",
-              "urdu": "ہر کتاب مفید ہے۔",
-              "note": "Use a singular noun after **each**."
-            }
-          ],
-          "tableTitle": "Competitive Exams Shortcut",
-          "tableColumns": [
-            "Word",
-            "Meaning",
-            "Noun"
-          ],
-          "urduExplanation": "صفت تقسیمی وہ لفظ ہے جو کسی گروہ کے افراد یا چیزوں کو ایک ایک کرکے ظاہر کرے۔",
-          "rules": [
-            "**Each** is used for individual members in a group.",
-            "**Every** refers to all members individually.",
-            "Use **of + plural noun/pronoun** after **each, either, and neither**.",
-            "Distributive Adjectives normally take a singular noun.",
-            "Do not confuse **each** and **all**."
-          ],
-          "ruleExamples": [
-            "**Each** student has an identity card.\n**Each** player received a medal.\nRule: Each + singular countable noun + singular verb.",
-            "**Every** student must attend the class.\n**Every** candidate needs an admit card.\nRule: Every + singular countable noun + singular verb.",
-            "**Each of** the students has a book.\n**Either of** the answers is acceptable.\n**Neither of** the candidates was selected.\nRule: Each/Either/Neither + of + plural noun/pronoun.",
-            "Incorrect: Every students\nCorrect: Every student\nIncorrect: Each books\nCorrect: Each book\nRule: Each/Every/Either/Neither + singular countable noun.",
-            "**Each** student received a certificate. > one by one\n**All** of the students received certificates. > group as a whole\nRule: Each = Individually; All = Collectively."
-          ]
-        },
-        {
-          "name": "Proper Adjective",
-          "description": "A proper adjective is an adjective derived from a proper noun and used to describe a person, place, culture, country, or thing.",
-          "urduExplanation": "صفتِ خاص وہ صفت ہے جو کسی اسمِ خاص سے بنائی جائے اور کسی مخصوص شخص، جگہ، قوم، ملک یا ثقافت سے تعلق ظاہر کرے۔",
-          "exampleWords": "Pakistani, Chinese, American",
-          "tableRows": [
-            [
-              "Pakistan",
-              "Pakistani"
-            ],
-            [
-              "America",
-              "American"
-            ],
-            [
-              "Shakespeare",
-              "Shakespearean"
-            ]
-          ],
-          "rules": [
-            "A proper adjective is derived from a proper noun.",
-            "Proper adjectives can show nationality or origin.",
-            "Do not confuse a proper noun with a proper adjective."
-          ],
-          "ruleExamples": [
-            "Pakistan > Pakistani\nChina > Chinese > If an adjective is formed from a specific name, it is a proper adjective.",
-            "Pakistani people\nJapanese technology\nAmerican history > Proper adjectives can indicate where a person, thing, or idea comes from.",
-            "Pakistan is a country. > **Pakistan** = Proper Noun\nPakistani culture is diverse. > **Pakistani** = Proper Adjective"
-          ],
-          "examples": [
-            {
-              "text": "Pakistani people are known for their hospitality.",
-              "urdu": "پاکستانی لوگ اپنی مہمان نوازی کے لیے مشہور ہیں۔",
-              "note": "**Pakistani** is derived from Pakistan and describes people."
-            },
-            {
-              "text": "We study American history.",
-              "urdu": "ہم امریکی تاریخ پڑھتے ہیں۔",
-              "note": "**American** is derived from America."
-            },
-            {
-              "text": "She enjoys Chinese food.",
-              "urdu": "وہ چینی کھانا پسند کرتی ہے۔",
-              "note": "**Chinese** describes food connected with China."
-            },
-            {
-              "text": "Shakespearean drama is studied in literature classes.",
-              "urdu": "ادب کی کلاسوں میں شیکسپیئر کے ڈرامے کا مطالعہ کیا جاتا ہے۔",
-              "note": "**Shakespearean** is derived from Shakespeare."
-            }
-          ],
-          "commonMistakes": [
-            {
-              "wrong": "Pakistan culture is diverse.",
-              "right": "Pakistani culture is diverse.",
-              "urdu": "پاکستانی ثقافت متنوع ہے۔",
-              "note": "Use the proper adjective **Pakistani** to describe the noun culture."
-            },
-            {
-              "wrong": "I like Pakistani’s history.",
-              "right": "I like Pakistani history.",
-              "urdu": "مجھے پاکستانی تاریخ پسند ہے۔",
-              "note": "A proper adjective does not take an apostrophe."
-            },
-            {
-              "wrong": "She studies America literature.",
-              "right": "She studies American literature.",
-              "urdu": "وہ امریکی ادب پڑھتی ہے۔",
-              "note": "Use the adjective **American**, not the proper noun America, before literature."
-            },
-            {
-              "wrong": "He bought a chinese phone.",
-              "right": "He bought a Chinese phone.",
-              "urdu": "اس نے ایک چینی فون خریدا۔",
-              "note": "Proper adjectives derived from countries or cultures begin with a capital letter."
-            }
-          ],
-          "tableTitle": "Proper Noun and Proper Adjective",
-          "tableColumns": [
-            "Proper Noun",
-            "Proper Adjective"
           ]
         }
       ],
@@ -640,7 +99,9 @@
       ],
       "examples": [
         {
-          "text": "**Brave** Soldier, **Three** books, **Some** water, **This** pen"
+          "text": "Good, bad, red, tall, brave",
+          "urdu": "اچھا، برا، سرخ، لمبا، بہادر",
+          "note": null
         }
       ],
       "commonMistakes": [
@@ -1106,7 +567,8 @@
           ]
         }
       ],
-      "degreeNote": "Kinds of Adjective tell us what type of adjective it is.\nDegrees of Comparison show the level of comparison of an adjective."
+      "degreeNote": "Kinds of Adjective tell us what type of adjective it is.\nDegrees of Comparison show the level of comparison of an adjective.",
+      "footerImage": "assets/grammar/images/adjectives_master_table.png"
     }
   },
   {
@@ -3427,1187 +2889,147 @@
     "order": 1,
     "isLeaf": true,
     "content": {
-      "introduction": "A noun is the name of a person, place, animal, thing, substance, or idea.",
-      "urduExplanation": "کسی شخص، جگہ، جانور، چیز، مادے یا خیال کے نام کو اسم یعنی Noun کہتے ہیں۔",
+      "introduction": "A noun is a word that names a person, place, thing, or idea.",
+      "urduExplanation": "اسم وہ لفظ ہے جو کسی شخص، جگہ، چیز یا خیال کا نام ہو۔",
       "englishExplanation": "The main noun categories in this lesson are proper, common, collective, abstract, countable, uncountable, material, and compound nouns. A noun may belong to more than one category: information is both common and uncountable, while Islamabad is both proper and countable in some contexts. Always judge the noun from its use in the sentence.",
       "types": [
         {
           "name": "Proper Noun",
-          "description": "A Proper Noun is the special name of a particular person, place, day, country, or institution.",
-          "urduExplanation": "اسمِ خاص کسی خاص شخص، جگہ، دن، ملک یا ادارے کا مخصوص نام ہوتا ہے۔",
+          "description": "Names of specific people, places, or things.",
+          "urduExplanation": "کسی خاص شخص، جگہ یا چیز کا نام۔",
+          "exampleWords": "Ali, Lahore, Pakistan, Monday",
+          "rules": [
+            "1: Always capitalize the first letter of a proper noun.",
+            "2: Do not use articles (a, an, the) before most proper nouns."
+          ],
           "examples": [
             {
-              "text": "Fatima Jinnah was the sister of Mohammad Ali Jinnah.",
-              "urdu": "فاطمہ جناح، محمد علی جناح کی بہن تھیں۔",
-              "note": "Fatima Jinnah and Mohammad Ali Jinnah are specific people, so they are Proper Nouns and begin with capital letters."
+              "text": "**Ali** is a good boy.",
+              "urdu": "علی ایک اچھا لڑکا ہے۔",
+              "note": null
             },
             {
-              "text": "The Indus River flows through Pakistan.",
-              "urdu": "دریائے سندھ پاکستان سے ہو کر گزرتا ہے۔",
-              "note": "Indus River is the specific name of a river, and Pakistan is the specific name of a country; both are Proper Nouns."
+              "text": "I live in **Lahore**.",
+              "urdu": "میں لاہور میں رہتا ہوں۔",
+              "note": null
             },
             {
-              "text": "The Faisal Mosque is beautiful.",
-              "urdu": "فیصل مسجد خوبصورت ہے۔",
-              "note": "Faisal Mosque names one particular mosque, so it is a Proper Noun and begins with capital letters."
+              "text": "**Pakistan** is my country.",
+              "urdu": "پاکستان میرا ملک ہے۔",
+              "note": null
             },
             {
-              "text": "The commission will meet on Monday in Quetta.",
-              "urdu": "کمیشن پیر کے روز کوئٹہ میں اجلاس کرے گا۔",
-              "note": "Monday and Quetta are specific names of a day and a place, so both are Proper Nouns."
+              "text": "We met on **Monday**.",
+              "urdu": "ہم پیر کو ملے تھے۔",
+              "note": null
+            },
+            {
+              "text": "**K2** is a high mountain.",
+              "urdu": "کے ٹو ایک اونچا پہاڑ ہے۔",
+              "note": null
             }
-          ],
-          "rules": [
-            "Always begin a **Proper Noun** with a **capital letter**.",
-            "A Proper Noun names one **specific person, place, day, country, or institution**.",
-            "Do not use **a** or **an** before most Proper Nouns."
           ],
           "commonMistakes": [
             {
-              "wrong": "I will meet you on monday.",
-              "right": "I will meet you on Monday.",
-              "urdu": "میں آپ سے پیر کے روز ملوں گا۔",
-              "note": "Days and months are Proper Nouns, so they begin with capital letters."
+              "wrong": "i live in lahore.",
+              "right": "I live in **Lahore**.",
+              "urdu": "میں لاہور میں رہتا ہوں۔",
+              "note": "Always capitalize proper nouns."
             },
             {
-              "wrong": "I bought a Book yesterday.",
-              "right": "I bought a book yesterday.",
-              "urdu": "میں نے کل ایک کتاب خریدی۔",
-              "note": "Book is a Common Noun here because it does not name one specific book; it should be lowercase."
+              "wrong": "The Ali is coming.",
+              "right": "Ali is coming.",
+              "urdu": "علی آ رہا ہے۔",
+              "note": "Do not use 'the' before personal names."
             },
             {
-              "wrong": "I visited the city Karachi.",
-              "right": "I visited Karachi.",
-              "urdu": "میں کراچی گیا۔",
-              "note": "Karachi already gives the specific city name, so city is unnecessary in ordinary usage. The city of Karachi is also correct when emphasis is needed."
+              "wrong": "we went to the Karachi.",
+              "right": "We went to **Karachi**.",
+              "urdu": "ہم کراچی گئے۔",
+              "note": null
             },
             {
-              "wrong": "A Ali is my friend.",
-              "right": "Ali is my friend.",
-              "urdu": "علی میرا دوست ہے۔",
-              "note": "Most Proper Nouns do not take a or an because Ali is already a specific name."
+              "wrong": "monday is a holiday.",
+              "right": "**Monday** is a holiday.",
+              "urdu": "پیر کو چھٹی ہے۔",
+              "note": null
+            },
+            {
+              "wrong": "the Pakistan is beautiful.",
+              "right": "**Pakistan** is beautiful.",
+              "urdu": "پاکستان خوبصورت ہے۔",
+              "note": null
             }
-          ],
-          "practice": [
-            {
-              "question": "Which word is a proper noun in “The students visited Taxila”?",
-              "options": [
-                "students",
-                "visited",
-                "Taxila",
-                "the"
-              ],
-              "answerIndex": 2,
-              "explanation": "Taxila is the specific name of a place."
-            },
-            {
-              "question": "Choose the correctly capitalized form.",
-              "options": [
-                "pakistan studies",
-                "Pakistan Studies",
-                "Pakistan studies",
-                "pakistan Studies"
-              ],
-              "answerIndex": 1,
-              "explanation": "The name of the subject is written as Pakistan Studies."
-            }
-          ],
-          "subjectVerbAgreement": "",
-          "quiz": [
-            {
-              "question": "Which is a proper noun in “Ayesha visited Lahore”?",
-              "options": [
-                "visited",
-                "Lahore",
-                "Ayesha",
-                "the"
-              ],
-              "answerIndex": 2,
-              "explanation": "Ayesha is a specific name; Lahore is also proper."
-            },
-            {
-              "question": "Choose the correct form.",
-              "options": [
-                "I live in pakistan.",
-                "I live in Pakistan.",
-                "I live in PAKISTAN city.",
-                "I live in pakistan city."
-              ],
-              "answerIndex": 1,
-              "explanation": "Pakistan begins with a capital letter."
-            },
-            {
-              "question": "Which contains only proper nouns?",
-              "options": [
-                "river, city",
-                "Karachi, Monday",
-                "teacher, Pakistan",
-                "book, July"
-              ],
-              "answerIndex": 1,
-              "explanation": "Karachi and Monday are specific names."
-            },
-            {
-              "question": "Which noun is proper in “The Indus River flows”?",
-              "options": [
-                "flows",
-                "river",
-                "Indus River",
-                "the"
-              ],
-              "answerIndex": 2,
-              "explanation": "Indus River names one particular river."
-            },
-            {
-              "question": "Choose the correct sentence.",
-              "options": [
-                "The css test is difficult.",
-                "The CSS test is difficult.",
-                "The Css test is difficult.",
-                "The cSS test is difficult."
-              ],
-              "answerIndex": 1,
-              "explanation": "CSS is an official abbreviation written in capitals."
-            }
-          ],
-          "subjectVerbAgreementUrdu": "",
-          "wordFocus": "",
-          "tableTitle": "",
-          "tableColumns": [],
-          "tableRows": [],
-          "ruleExamples": [
-            "**Islamabad** is the capital of Pakistan.",
-            "**Monday** is the first day of the examination.",
-            "**Ali** is my friend."
-          ],
-          "exampleWords": "Rashid, Quetta, Monday, Pakistan, Supreme Court"
+          ]
         },
         {
           "name": "Common Noun",
-          "description": "A Common Noun is a general name given to every person, place, animal, or thing of the same class or kind.",
-          "urduExplanation": "اسمِ عام ایک ہی قسم کے عام شخص، جگہ، جانور یا چیز کے لیے استعمال ہونے والا نام ہے۔",
+          "description": "General names for people, places, or things.",
+          "urduExplanation": "کسی عام شخص، جگہ یا چیز کا نام۔",
+          "exampleWords": "boy, city, country, day, book",
+          "rules": [
+            "1: Do not capitalize unless they start a sentence.",
+            "2: Can be used with articles (a, an, the)."
+          ],
           "examples": [
             {
-              "text": "A boy is running on the road.",
-              "urdu": "ایک لڑکا سڑک پر دوڑ رہا ہے۔",
-              "note": "Boy and road are Common Nouns because they name a general person and place, not specific names."
+              "text": "The **boy** is playing.",
+              "urdu": "لڑکا کھیل رہا ہے۔",
+              "note": null
             },
             {
-              "text": "The teacher is in the classroom.",
-              "urdu": "استاد کلاس روم میں ہے۔",
-              "note": "Teacher and classroom are Common Nouns. The article the makes these general nouns specific in this context."
+              "text": "This is a big **city**.",
+              "urdu": "یہ ایک بڑا شہر ہے۔",
+              "note": null
             },
             {
-              "text": "The student is reading a book.",
-              "urdu": "طالب علم ایک کتاب پڑھ رہا ہے۔",
-              "note": "Student and book are Common Nouns. Student is the subject, and book is the object of reading."
+              "text": "I love my **country**.",
+              "urdu": "مجھے اپنے ملک سے محبت ہے۔",
+              "note": null
             },
             {
-              "text": "The river passes through the town.",
-              "urdu": "دریا قصبے سے گزرتا ہے۔",
-              "note": "River and town are Common Nouns because they name general kinds of places or things."
+              "text": "It was a long **day**.",
+              "urdu": "یہ ایک طویل دن تھا۔",
+              "note": null
+            },
+            {
+              "text": "Give me that **book**.",
+              "urdu": "مجھے وہ کتاب دیں۔",
+              "note": null
             }
-          ],
-          "rules": [
-            "A **Common Noun** names a **general person, place, animal, or thing**.",
-            "Use **a** or **an** with one **singular countable Common Noun** when needed.",
-            "Use **the** when the context makes a Common Noun **specific**."
           ],
           "commonMistakes": [
             {
-              "wrong": "I bought a Book yesterday.",
-              "right": "I bought a book yesterday.",
-              "urdu": "میں نے کل ایک کتاب خریدی۔",
-              "note": "Book is a Common Noun, so it normally begins with a lowercase letter."
+              "wrong": "He is a good Boy.",
+              "right": "He is a good **boy**.",
+              "urdu": "وہ ایک اچھا لڑکا ہے۔",
+              "note": "Do not capitalize common nouns in the middle of a sentence."
             },
             {
-              "wrong": "The Student is reading.",
-              "right": "The student is reading.",
-              "urdu": "طالب علم پڑھ رہا ہے۔",
-              "note": "Student is a Common Noun. It is not capitalized merely because it follows the article the."
+              "wrong": "City is very big.",
+              "right": "The **city** is very big.",
+              "urdu": "شہر بہت بڑا ہے۔",
+              "note": "Use an article for specific common nouns."
             },
             {
-              "wrong": "I bought book.",
-              "right": "I bought a book.",
-              "urdu": "میں نے ایک کتاب خریدی۔",
-              "note": "A singular countable Common Noun normally needs a determiner such as a, an, the, my, or this."
+              "wrong": "I saw a Country.",
+              "right": "I saw a **country**.",
+              "urdu": "میں نے ایک ملک دیکھا۔",
+              "note": null
             },
             {
-              "wrong": "I need a water.",
-              "right": "I need some water.",
-              "urdu": "مجھے کچھ پانی چاہیے۔",
-              "note": "Water is normally an Uncountable Noun, so a or an is not used directly before it."
+              "wrong": "Book is on table.",
+              "right": "The **book** is on the table.",
+              "urdu": "کتاب میز پر ہے۔",
+              "note": null
             },
             {
-              "wrong": "There are many childs in the park.",
-              "right": "There are many children in the park.",
-              "urdu": "پارک میں بہت سے بچے ہیں۔",
-              "note": "Child has the irregular plural form children, not childs."
+              "wrong": "A Boys are playing.",
+              "right": "**Boys** are playing.",
+              "urdu": "لڑکے کھیل رہے ہیں۔",
+              "note": null
             }
-          ],
-          "practice": [
-            {
-              "question": "Which word is a common noun in “The officer read the report”?",
-              "options": [
-                "officer",
-                "The",
-                "read",
-                "the"
-              ],
-              "answerIndex": 0,
-              "explanation": "Officer is a general name for a person."
-            },
-            {
-              "question": "Choose the correct sentence.",
-              "options": [
-                "He bought book.",
-                "He bought a book.",
-                "He bought an books.",
-                "He bought books a."
-              ],
-              "answerIndex": 1,
-              "explanation": "Book is singular and countable, so it needs a."
-            }
-          ],
-          "subjectVerbAgreement": "",
-          "quiz": [
-            {
-              "question": "Which is common in “The teacher entered”?",
-              "options": [
-                "teacher",
-                "The",
-                "entered",
-                "the"
-              ],
-              "answerIndex": 0,
-              "explanation": "Teacher is a general name."
-            },
-            {
-              "question": "Choose the correct sentence.",
-              "options": [
-                "The candidate work hard.",
-                "The candidate works hard.",
-                "The candidate working hard.",
-                "The candidate work hards."
-              ],
-              "answerIndex": 1,
-              "explanation": "The singular candidate takes works."
-            },
-            {
-              "question": "Which uses a common noun?",
-              "options": [
-                "Lahore is large.",
-                "The child is reading.",
-                "Monday is busy.",
-                "Pakistan is large."
-              ],
-              "answerIndex": 1,
-              "explanation": "Child is a general name."
-            },
-            {
-              "question": "Choose the correct article.",
-              "options": [
-                "He bought book.",
-                "He bought a book.",
-                "He bought an book.",
-                "He bought books one."
-              ],
-              "answerIndex": 1,
-              "explanation": "Book is singular and countable."
-            },
-            {
-              "question": "Which is common in “The doctor examined Ali”?",
-              "options": [
-                "doctor",
-                "Ali",
-                "examined",
-                "the"
-              ],
-              "answerIndex": 0,
-              "explanation": "Doctor is a general profession."
-            }
-          ],
-          "subjectVerbAgreementUrdu": "",
-          "wordFocus": "",
-          "tableTitle": "",
-          "tableColumns": [],
-          "tableRows": [],
-          "ruleExamples": [
-            "The **boy** goes to **school**.",
-            "A **candidate** submitted an application.",
-            "The **book** on the table is mine."
-          ],
-          "exampleWords": "boy, school, hospital, book, river"
-        },
-        {
-          "name": "Collective Noun",
-          "description": "A Collective Noun names a group of people, animals, or things as one unit.",
-          "urduExplanation": "اسمِ مجموعہ لوگوں، جانوروں یا چیزوں کے ایسے گروہ کا نام ہے جسے ایک اکائی سمجھا جائے۔",
-          "examples": [
-            {
-              "text": "The committee approved the plan.",
-              "urdu": "کمیٹی نے منصوبے کی منظوری دی۔",
-              "note": "Committee names a group acting as one unit, so it is a Collective Noun. It takes the singular verb approved in the past tense."
-            },
-            {
-              "text": "The team won the match.",
-              "urdu": "ٹیم نے میچ جیت لیا۔",
-              "note": "Team names several people as one group, so it is a Collective Noun. It acts as one unit here."
-            },
-            {
-              "text": "The jury reached a decision.",
-              "urdu": "جیوری ایک فیصلے پر پہنچی۔",
-              "note": "Jury names a group of people. It is singular here because the jury reached one decision as a unit."
-            },
-            {
-              "text": "The staff are checking their files.",
-              "urdu": "عملہ اپنی فائلیں چیک کر رہا ہے۔",
-              "note": "Staff is a Collective Noun. It takes are here because the members are acting separately."
-            }
-          ],
-          "rules": [
-            "A **Collective Noun** names a **group** of people, animals, or things.",
-            "Use a **singular verb** when the group acts as **one unit**.",
-            "A **plural verb** may be used when the **members act separately**."
-          ],
-          "commonMistakes": [
-            {
-              "wrong": "The committee approve the plan.",
-              "right": "The committee approves the plan.",
-              "urdu": "کمیٹی منصوبے کی منظوری دیتی ہے۔",
-              "note": "Committee acts as one unit here, so the singular verb approves is needed."
-            },
-            {
-              "wrong": "The team are winning the match.",
-              "right": "The team is winning the match.",
-              "urdu": "ٹیم میچ جیت رہی ہے۔",
-              "note": "Team is treated as one unit in this sentence, so use is."
-            },
-            {
-              "wrong": "The jury have reached one decision.",
-              "right": "The jury has reached one decision.",
-              "urdu": "جیوری ایک فیصلے پر پہنچ چکی ہے۔",
-              "note": "One decision shows that the jury acts as a single unit, so use has."
-            }
-          ],
-          "practice": [
-            {
-              "question": "Choose the correct sentence.",
-              "options": [
-                "The committee have agreed as one body.",
-                "The committee has agreed as one body.",
-                "The committee agreeing.",
-                "The committee are agrees."
-              ],
-              "answerIndex": 1,
-              "explanation": "The committee acts as one unit, so has is correct."
-            },
-            {
-              "question": "Which word is a collective noun?",
-              "options": [
-                "soldiers",
-                "flock",
-                "bird",
-                "field"
-              ],
-              "answerIndex": 1,
-              "explanation": "Flock names a group of birds."
-            }
-          ],
-          "subjectVerbAgreement": "",
-          "quiz": [
-            {
-              "question": "Choose the correct sentence.",
-              "options": [
-                "The committee are one body.",
-                "The committee is one body.",
-                "The committee be one body.",
-                "The committee were one body."
-              ],
-              "answerIndex": 1,
-              "explanation": "Committee acts as one unit."
-            },
-            {
-              "question": "Which is collective in “The army defended”?",
-              "options": [
-                "defended",
-                "border",
-                "army",
-                "the"
-              ],
-              "answerIndex": 2,
-              "explanation": "Army names a group."
-            },
-            {
-              "question": "Choose the correct pronoun.",
-              "options": [
-                "The jury announced their decision as one body.",
-                "The jury announced its decision as one body.",
-                "The jury announced it decision.",
-                "The jury announced them decision."
-              ],
-              "answerIndex": 1,
-              "explanation": "A single group takes its."
-            },
-            {
-              "question": "Which shows separate action?",
-              "options": [
-                "The team is united.",
-                "The team has won.",
-                "The team are arguing among themselves.",
-                "The team celebrates together."
-              ],
-              "answerIndex": 2,
-              "explanation": "Are shows members acting separately."
-            },
-            {
-              "question": "Choose the correct verb.",
-              "options": [
-                "The flock of birds is moving south.",
-                "The flock of birds are moving souths.",
-                "The flock of birds moveing south.",
-                "The flock of birds be moving south."
-              ],
-              "answerIndex": 0,
-              "explanation": "Flock is the singular head noun."
-            }
-          ],
-          "subjectVerbAgreementUrdu": "",
-          "wordFocus": "",
-          "tableTitle": "",
-          "tableColumns": [],
-          "tableRows": [],
-          "ruleExamples": [
-            "A **jury** reached one decision.",
-            "The **committee approves** the plan.",
-            "The **family are sitting** in different rooms."
-          ],
-          "exampleWords": "family, team, jury, committee, staff"
-        },
-        {
-          "name": "Abstract Noun",
-          "description": "An Abstract Noun names an idea, quality, feeling, or state that cannot be touched.",
-          "urduExplanation": "اسمِ کیفیت کسی خیال، خوبی، احساس یا حالت کا نام ہے جسے چھوا نہیں جا سکتا۔",
-          "examples": [
-            {
-              "text": "Honesty builds public trust.",
-              "urdu": "ایمان داری عوامی اعتماد پیدا کرتی ہے۔",
-              "note": "Honesty and trust are Abstract Nouns because they name qualities or ideas. Honesty is singular, so the verb is builds."
-            },
-            {
-              "text": "Justice protects citizens.",
-              "urdu": "انصاف شہریوں کی حفاظت کرتا ہے۔",
-              "note": "Justice is an Abstract Noun naming an idea. It is singular, so it takes protects."
-            },
-            {
-              "text": "The policy brought hope to families.",
-              "urdu": "پالیسی خاندانوں کے لیے امید لائی۔",
-              "note": "Hope is an Abstract Noun naming a feeling. It is the object of brought."
-            },
-            {
-              "text": "Courage helps a candidate face difficulty.",
-              "urdu": "حوصلہ امیدوار کو مشکل کا سامنا کرنے میں مدد دیتا ہے۔",
-              "note": "Courage and difficulty are Abstract Nouns. Courage is the singular subject and takes helps."
-            }
-          ],
-          "rules": [
-            "An **Abstract Noun** names an **idea, quality, feeling, or state**.",
-            "Abstract Nouns are often **uncountable** and take a **singular verb**.",
-            "Use an Abstract Noun to discuss an **idea or quality**, not a physical object."
-          ],
-          "commonMistakes": [
-            {
-              "wrong": "Honest is important in public service.",
-              "right": "Honesty is important in public service.",
-              "urdu": "عوامی خدمت میں ایمانداری اہم ہے۔",
-              "note": "Honesty is the noun naming the quality; honest is an adjective."
-            },
-            {
-              "wrong": "Justice are necessary.",
-              "right": "Justice is necessary.",
-              "urdu": "انصاف ضروری ہے۔",
-              "note": "Justice is one Abstract Noun, so it takes is."
-            },
-            {
-              "wrong": "The policy gave many hopes.",
-              "right": "The policy gave hope.",
-              "urdu": "پالیسی نے امید دی۔",
-              "note": "Hope is normally uncountable when it means a general feeling."
-            }
-          ],
-          "practice": [
-            {
-              "question": "Which is an abstract noun?",
-              "options": [
-                "table",
-                "honesty",
-                "teacher",
-                "river"
-              ],
-              "answerIndex": 1,
-              "explanation": "Honesty names a quality that cannot be touched."
-            },
-            {
-              "question": "Choose the noun formed from “brave”.",
-              "options": [
-                "braveness",
-                "bravery",
-                "bravely",
-                "braveful"
-              ],
-              "answerIndex": 1,
-              "explanation": "Bravery is the standard abstract noun."
-            }
-          ],
-          "subjectVerbAgreement": "",
-          "quiz": [
-            {
-              "question": "Which is abstract in “Justice should be equal”?",
-              "options": [
-                "Justice",
-                "equal",
-                "all",
-                "should"
-              ],
-              "answerIndex": 0,
-              "explanation": "Justice names an idea."
-            },
-            {
-              "question": "Choose the correct verb.",
-              "options": [
-                "Knowledge are valuable.",
-                "Knowledge is valuable.",
-                "Knowledge be valuable.",
-                "Knowledge were valuable."
-              ],
-              "answerIndex": 1,
-              "explanation": "Knowledge is singular and uncountable."
-            },
-            {
-              "question": "Which sentence has an abstract noun?",
-              "options": [
-                "The chair is broken.",
-                "Her courage impressed us.",
-                "The boy opened the door.",
-                "The river is wide."
-              ],
-              "answerIndex": 1,
-              "explanation": "Courage names a quality."
-            },
-            {
-              "question": "Choose the correct form.",
-              "options": [
-                "She gave me advices.",
-                "She gave me some advice.",
-                "She gave me an advice.",
-                "She gave me many advice."
-              ],
-              "answerIndex": 1,
-              "explanation": "Advice is uncountable."
-            },
-            {
-              "question": "Which names a feeling?",
-              "options": [
-                "improves",
-                "health",
-                "Happiness",
-                "improves health"
-              ],
-              "answerIndex": 2,
-              "explanation": "Happiness names a feeling."
-            }
-          ],
-          "subjectVerbAgreementUrdu": "",
-          "wordFocus": "",
-          "tableTitle": "",
-          "tableColumns": [],
-          "tableRows": [],
-          "ruleExamples": [
-            "**Honesty** is a valuable quality.",
-            "**Justice** is important in every court.",
-            "**Courage** helped the candidate face the interview."
-          ],
-          "exampleWords": "honesty, courage, justice, freedom, wisdom"
-        },
-        {
-          "name": "Countable Noun",
-          "description": "A Countable Noun can be counted and has singular and plural forms.",
-          "urduExplanation": "قابلِ شمار اسم کو گنا جا سکتا ہے اور اس کی واحد اور جمع شکلیں ہوتی ہیں۔",
-          "examples": [
-            {
-              "text": "One candidate submitted a form.",
-              "urdu": "ایک امیدوار نے فارم جمع کرایا۔",
-              "note": "Candidate and form are Countable Nouns. The singular subject one candidate takes submitted in the past tense."
-            },
-            {
-              "text": "Three candidates passed the test.",
-              "urdu": "تین امیدوار امتحان میں کامیاب ہوئے۔",
-              "note": "Candidates is the plural form of the Countable Noun candidate. The plural subject takes passed in the past tense."
-            },
-            {
-              "text": "The examiner checked two answers.",
-              "urdu": "ممتحن نے دو جوابات چیک کیے۔",
-              "note": "Answers is a plural Countable Noun because two answers can be counted."
-            },
-            {
-              "text": "Several questions appeared in the paper.",
-              "urdu": "پرچے میں کئی سوالات آئے۔",
-              "note": "Questions is a plural Countable Noun. Several is used with a plural countable noun."
-            }
-          ],
-          "rules": [
-            "A singular **Countable Noun** can take **a** or **an**.",
-            "Use **numbers** such as one, two, or several with Countable Nouns.",
-            "Plural Countable Nouns can take **many**, **few**, or **several**."
-          ],
-          "commonMistakes": [
-            {
-              "wrong": "She bought two book.",
-              "right": "She bought two books.",
-              "urdu": "اس نے دو کتابیں خریدیں۔",
-              "note": "A number greater than one needs the plural form books."
-            },
-            {
-              "wrong": "There is many candidates.",
-              "right": "There are many candidates.",
-              "urdu": "وہاں بہت سے امیدوار ہیں۔",
-              "note": "Candidates is plural, so use are."
-            },
-            {
-              "wrong": "I saw an candidates.",
-              "right": "I saw a candidate.",
-              "urdu": "میں نے ایک امیدوار دیکھا۔",
-              "note": "A singular noun takes a before the consonant sound in candidate."
-            }
-          ],
-          "practice": [
-            {
-              "question": "Which phrase is correct?",
-              "options": [
-                "an university",
-                "a university",
-                "many university",
-                "much universities"
-              ],
-              "answerIndex": 1,
-              "explanation": "University begins with a consonant sound, so a university is correct."
-            },
-            {
-              "question": "Choose the correct plural form.",
-              "options": [
-                "criterions",
-                "criterionses",
-                "criteria",
-                "criterias"
-              ],
-              "answerIndex": 2,
-              "explanation": "Criteria is the plural of criterion in formal English."
-            }
-          ],
-          "subjectVerbAgreement": "",
-          "quiz": [
-            {
-              "question": "Choose the correct sentence.",
-              "options": [
-                "There is five books.",
-                "There are five books.",
-                "There are five book.",
-                "There be five books."
-              ],
-              "answerIndex": 1,
-              "explanation": "Books is plural and takes are."
-            },
-            {
-              "question": "Which fits “___ candidate passed”?",
-              "options": [
-                "Much",
-                "An",
-                "Many",
-                "A lot"
-              ],
-              "answerIndex": 1,
-              "explanation": "Candidate is singular with a vowel sound."
-            },
-            {
-              "question": "Choose the correct question.",
-              "options": [
-                "How much questions?",
-                "How many questions?",
-                "How many question?",
-                "How few information?"
-              ],
-              "answerIndex": 1,
-              "explanation": "Questions are plural countable nouns."
-            },
-            {
-              "question": "Which contains a countable noun?",
-              "options": [
-                "water",
-                "three pens",
-                "advice",
-                "information"
-              ],
-              "answerIndex": 1,
-              "explanation": "Pens can be counted."
-            },
-            {
-              "question": "Choose the correct verb.",
-              "options": [
-                "The students is ready.",
-                "The students are ready.",
-                "The students be ready.",
-                "The students was ready."
-              ],
-              "answerIndex": 1,
-              "explanation": "Students is plural."
-            }
-          ],
-          "subjectVerbAgreementUrdu": "",
-          "wordFocus": "",
-          "tableTitle": "",
-          "tableColumns": [],
-          "tableRows": [],
-          "ruleExamples": [
-            "A **candidate** submitted a form.",
-            "Two **reports** reached the office.",
-            "Several **questions** appeared in the test."
-          ],
-          "exampleWords": "book, candidate, question, report, document"
-        },
-        {
-          "name": "Uncountable Noun",
-          "description": "An Uncountable Noun names a substance, idea, or mass that is not counted separately.",
-          "urduExplanation": "ناقابلِ شمار اسم ایسی چیز، مادے یا خیال کا نام ہے جسے الگ الگ نہیں گنا جاتا۔",
-          "examples": [
-            {
-              "text": "The research is useful for the examination.",
-              "urdu": "تحقیق امتحان کے لیے مفید ہے۔",
-              "note": "Research is an Uncountable Noun, so it takes the singular verb is. It is not normally written as researches for general research."
-            },
-            {
-              "text": "The information was accurate.",
-              "urdu": "معلومات درست تھیں۔",
-              "note": "Information is Uncountable and takes the singular verb was. Do not write informations."
-            },
-            {
-              "text": "The equipment is new.",
-              "urdu": "آلات نئے ہیں۔",
-              "note": "Equipment is Uncountable in English and takes is. Use pieces of equipment when counting items."
-            },
-            {
-              "text": "The committee needs more evidence.",
-              "urdu": "کمیٹی کو مزید شواہد کی ضرورت ہے۔",
-              "note": "Evidence is Uncountable here, so more is used without a plural s."
-            }
-          ],
-          "rules": [
-            "An **Uncountable Noun** names a substance, idea, or mass that is not normally counted separately.",
-            "Uncountable Nouns normally take a **singular verb**.",
-            "Use **much**, **little**, or **some**, not **a** or **an**, with many Uncountable Nouns."
-          ],
-          "commonMistakes": [
-            {
-              "wrong": "The information are useful.",
-              "right": "The information is useful.",
-              "urdu": "معلومات مفید ہیں۔",
-              "note": "Information is Uncountable in English, so it takes is."
-            },
-            {
-              "wrong": "The researcher gave me many advices.",
-              "right": "The researcher gave me much advice.",
-              "urdu": "محقق نے مجھے بہت سے مشورے دیے۔",
-              "note": "Advice is Uncountable; use much advice or pieces of advice."
-            },
-            {
-              "wrong": "The laboratory bought new equipments.",
-              "right": "The laboratory bought new equipment.",
-              "urdu": "لیبارٹری نے نئے آلات خریدے۔",
-              "note": "Equipment is Uncountable and does not normally take plural s."
-            }
-          ],
-          "practice": [
-            {
-              "question": "Choose the correct phrase.",
-              "options": [
-                "an information",
-                "many information",
-                "some information",
-                "informations"
-              ],
-              "answerIndex": 2,
-              "explanation": "Information is uncountable and can be used with some."
-            },
-            {
-              "question": "Which sentence is correct?",
-              "options": [
-                "The furniture are new.",
-                "The furniture is new.",
-                "The furnitures is new.",
-                "A furniture is new."
-              ],
-              "answerIndex": 1,
-              "explanation": "Furniture is uncountable and takes a singular verb."
-            }
-          ],
-          "subjectVerbAgreement": "",
-          "quiz": [
-            {
-              "question": "Choose the correct sentence.",
-              "options": [
-                "The information are useful.",
-                "The information is useful.",
-                "The informations are useful.",
-                "An information is useful."
-              ],
-              "answerIndex": 1,
-              "explanation": "Information takes is."
-            },
-            {
-              "question": "Which phrase is correct?",
-              "options": [
-                "an advice",
-                "many advice",
-                "a piece of advice",
-                "advices"
-              ],
-              "answerIndex": 2,
-              "explanation": "A piece of advice is countable."
-            },
-            {
-              "question": "Choose the correct determiner.",
-              "options": [
-                "many water",
-                "much water",
-                "a water",
-                "waters"
-              ],
-              "answerIndex": 1,
-              "explanation": "Water is uncountable."
-            },
-            {
-              "question": "Which is uncountable in “The equipment is new”?",
-              "options": [
-                "equipment",
-                "new",
-                "is",
-                "the"
-              ],
-              "answerIndex": 0,
-              "explanation": "Equipment is uncountable."
-            },
-            {
-              "question": "Choose the correct verb.",
-              "options": [
-                "The furniture are old.",
-                "The furniture is old.",
-                "The furnitures is old.",
-                "The furniture be old."
-              ],
-              "answerIndex": 1,
-              "explanation": "Furniture takes is."
-            }
-          ],
-          "subjectVerbAgreementUrdu": "",
-          "wordFocus": "",
-          "tableTitle": "",
-          "tableColumns": [],
-          "tableRows": [],
-          "ruleExamples": [
-            "**Information** is useful for candidates.",
-            "The **research** supports the policy.",
-            "The office needs **some equipment**."
-          ],
-          "exampleWords": "water, advice, information, furniture, equipment"
-        },
-        {
-          "name": "Material Noun",
-          "description": "A Material Noun names a substance from which things are made.",
-          "urduExplanation": "اسمِ مادہ اس چیز یا مادے کا نام ہے جس سے دوسری چیزیں بنائی جاتی ہیں۔",
-          "examples": [
-            {
-              "text": "The bridge is made of steel.",
-              "urdu": "پل فولاد سے بنا ہوا ہے۔",
-              "note": "Steel is a Material Noun naming the substance. Made of shows the material used; made by would name the maker."
-            },
-            {
-              "text": "The table is made of wood.",
-              "urdu": "میز لکڑی سے بنی ہوئی ہے۔",
-              "note": "Wood is a Material Noun. Made of is correct because wood remains the material of the table."
-            },
-            {
-              "text": "The officer wore a gold badge.",
-              "urdu": "افسر نے سونے کا بیج پہنا۔",
-              "note": "Gold is a Material Noun naming the substance used in the badge."
-            },
-            {
-              "text": "The bottle is made from recycled plastic.",
-              "urdu": "بوتل ری سائیکل شدہ پلاسٹک سے بنی ہے۔",
-              "note": "Plastic is a Material Noun. Made from is used because the original material changes during production."
-            }
-          ],
-          "rules": [
-            "A **Material Noun** names a **substance or material**.",
-            "Material Nouns are usually **uncountable** when they refer to material in general.",
-            "Use **made of** when the material is still easy to recognize."
-          ],
-          "commonMistakes": [
-            {
-              "wrong": "The chair is made for wood.",
-              "right": "The chair is made of wood.",
-              "urdu": "کرسی لکڑی سے بنی ہوئی ہے۔",
-              "note": "Made of names the material; made for means purpose, not material."
-            },
-            {
-              "wrong": "The bridge is made by steel.",
-              "right": "The bridge is made of steel.",
-              "urdu": "پل فولاد سے بنا ہوا ہے۔",
-              "note": "Made by normally names the maker, while made of names the material."
-            },
-            {
-              "wrong": "The badge is made with gold.",
-              "right": "The badge is made of gold.",
-              "urdu": "بیج سونے سے بنا ہوا ہے۔",
-              "note": "Made of is the standard expression for the material of an object."
-            }
-          ],
-          "practice": [
-            {
-              "question": "Which is a material noun?",
-              "options": [
-                "honesty",
-                "committee",
-                "copper",
-                "teacher"
-              ],
-              "answerIndex": 2,
-              "explanation": "Copper names a material."
-            },
-            {
-              "question": "Choose the correct sentence.",
-              "options": [
-                "Water are essential.",
-                "Water is essential.",
-                "A water is essential.",
-                "Waters is essential."
-              ],
-              "answerIndex": 1,
-              "explanation": "Water is normally uncountable and takes is."
-            }
-          ],
-          "subjectVerbAgreement": "",
-          "quiz": [
-            {
-              "question": "Which is material in “The ring is silver”?",
-              "options": [
-                "ring",
-                "made",
-                "silver",
-                "of"
-              ],
-              "answerIndex": 2,
-              "explanation": "Silver names the material."
-            },
-            {
-              "question": "Choose the correct sentence.",
-              "options": [
-                "Gold are expensive.",
-                "Gold is expensive.",
-                "Golds is expensive.",
-                "A gold is expensive."
-              ],
-              "answerIndex": 1,
-              "explanation": "Gold is uncountable."
-            },
-            {
-              "question": "Which is material in “The shirt is cotton”?",
-              "options": [
-                "shirt",
-                "made",
-                "cotton",
-                "is"
-              ],
-              "answerIndex": 2,
-              "explanation": "Cotton names the substance."
-            },
-            {
-              "question": "Choose the correct expression.",
-              "options": [
-                "three steels",
-                "three pieces of steel",
-                "three steelings",
-                "three steel"
-              ],
-              "answerIndex": 1,
-              "explanation": "Use a unit to count steel."
-            },
-            {
-              "question": "Which uses a material noun correctly?",
-              "options": [
-                "The chair is made of wood.",
-                "The wood are chairs.",
-                "A wood is on the table.",
-                "Woods is hard."
-              ],
-              "answerIndex": 0,
-              "explanation": "Wood is an uncountable material."
-            }
-          ],
-          "subjectVerbAgreementUrdu": "",
-          "wordFocus": "",
-          "tableTitle": "",
-          "tableColumns": [],
-          "tableRows": [],
-          "ruleExamples": [
-            "**Gold** is used in jewellery.",
-            "**Wood** is a useful material.",
-            "The chair is **made of wood**."
-          ],
-          "exampleWords": "gold, wood, iron, cotton, silver"
-        },
-        {
-          "name": "Compound Noun",
-          "description": "A Compound Noun is made by joining two or more words to name one person, place, thing, or idea.",
-          "urduExplanation": "مرکب اسم دو یا دو سے زیادہ الفاظ کو ملا کر ایک شخص، جگہ، چیز یا خیال کا نام بناتا ہے۔",
-          "examples": [
-            {
-              "text": "The examination hall opens at eight o’clock.",
-              "urdu": "امتحانی ہال آٹھ بجے کھلتا ہے۔",
-              "note": "Examination hall is a Compound Noun made from examination and hall. It names one place, so the singular verb opens is used."
-            },
-            {
-              "text": "The research report is complete.",
-              "urdu": "تحقیقی رپورٹ مکمل ہے۔",
-              "note": "Research report is a Compound Noun made from research and report. It names one document."
-            },
-            {
-              "text": "The policymaker announced a new plan.",
-              "urdu": "پالیسی ساز نے نیا منصوبہ سنایا۔",
-              "note": "Policymaker is a Compound Noun made from policy and maker. It names one person."
-            },
-            {
-              "text": "The civil-service exam begins tomorrow.",
-              "urdu": "سول سروس کا امتحان کل شروع ہوتا ہے۔",
-              "note": "Civil-service exam is a Compound Noun phrase naming one examination."
-            }
-          ],
-          "rules": [
-            "A **Compound Noun** joins **two or more words** to give one meaning.",
-            "Compound Nouns may be written as **one word, two words, or with a hyphen**.",
-            "In a compound noun, identify the **complete expression**, not only one word."
-          ],
-          "commonMistakes": [
-            {
-              "wrong": "The examination halls opens early.",
-              "right": "The examination hall opens early.",
-              "urdu": "امتحانی ہال جلد کھلتا ہے۔",
-              "note": "One hall is singular, so use hall and opens."
-            },
-            {
-              "wrong": "The policymaker make a plan.",
-              "right": "The policymaker makes a plan.",
-              "urdu": "پالیسی ساز منصوبہ بناتا ہے۔",
-              "note": "Policymaker is one singular Compound Noun, so the verb is makes."
-            },
-            {
-              "wrong": "The civil service exam are difficult.",
-              "right": "The civil-service exam is difficult.",
-              "urdu": "سول سروس کا امتحان مشکل ہے۔",
-              "note": "One exam is singular, so use is; the compound may be written with a hyphen."
-            }
-          ],
-          "practice": [
-            {
-              "question": "Which is a compound noun?",
-              "options": [
-                "quickly",
-                "blackboard",
-                "honest",
-                "under"
-              ],
-              "answerIndex": 1,
-              "explanation": "Blackboard joins black and board to form one noun."
-            },
-            {
-              "question": "Choose the correct plural.",
-              "options": [
-                "brother-in-laws",
-                "brothers-in-law",
-                "brother-in-lawes",
-                "brothers-in-laws"
-              ],
-              "answerIndex": 1,
-              "explanation": "The main noun brother takes the plural form."
-            }
-          ],
-          "subjectVerbAgreement": "",
-          "quiz": [
-            {
-              "question": "Choose the correct plural.",
-              "options": [
-                "brother-in-laws",
-                "brothers-in-law",
-                "brother-in-lawes",
-                "brothers-in-laws"
-              ],
-              "answerIndex": 1,
-              "explanation": "The main noun brother takes the plural."
-            },
-            {
-              "question": "Which is compound in “The classroom is bright”?",
-              "options": [
-                "bright",
-                "is",
-                "classroom",
-                "the"
-              ],
-              "answerIndex": 2,
-              "explanation": "Classroom combines class and room."
-            },
-            {
-              "question": "Choose the correct sentence.",
-              "options": [
-                "The bus stop are crowded.",
-                "The bus stop is crowded.",
-                "The bus stops is crowded.",
-                "The bus stop be crowded."
-              ],
-              "answerIndex": 1,
-              "explanation": "One bus stop is singular."
-            },
-            {
-              "question": "Correct plural of toothbrush?",
-              "options": [
-                "toothbrushs",
-                "toothbrushes",
-                "teethbrush",
-                "toothsbrush"
-              ],
-              "answerIndex": 1,
-              "explanation": "Toothbrush takes -es."
-            },
-            {
-              "question": "Main noun in “mothers-in-law”?",
-              "options": [
-                "mothers",
-                "in",
-                "law",
-                "mother-in-law"
-              ],
-              "answerIndex": 0,
-              "explanation": "Mother receives the plural ending."
-            }
-          ],
-          "subjectVerbAgreementUrdu": "",
-          "wordFocus": "",
-          "tableTitle": "",
-          "tableColumns": [],
-          "tableRows": [],
-          "ruleExamples": [
-            "The **classroom** is ready for the lesson.",
-            "The **examination hall** opens at eight o’clock.",
-            "The **civil-service exam** begins tomorrow."
-          ],
-          "exampleWords": "classroom, examination hall, policymaker, research report, civil-service exam"
+          ]
         }
       ],
       "rules": [
@@ -4618,9 +3040,9 @@
       "structure": [],
       "examples": [
         {
-          "text": "Ali is carrying a pen to school.",
-          "urdu": "علی ایک قلم لے کر اسکول جا رہا ہے۔",
-          "note": "Ali is a person, pen is a thing, and school is a place; all are Nouns."
+          "text": "Ali, Lahore, Book, Love",
+          "urdu": "علی، لاہور، کتاب، محبت",
+          "note": null
         }
       ],
       "commonMistakes": [
@@ -4715,7 +3137,8 @@
           "explanation": "Information is uncountable and takes a singular verb."
         }
       ],
-      "summary": "Nouns name people, places, animals, things, materials, or ideas. For exam questions, identify the noun type, then check capitalization, articles, number, plural formation, possessive form, and subject–verb agreement. Context matters because one noun can have different classifications in different sentences."
+      "summary": "Nouns name people, places, animals, things, materials, or ideas. For exam questions, identify the noun type, then check capitalization, articles, number, plural formation, possessive form, and subject–verb agreement. Context matters because one noun can have different classifications in different sentences.",
+      "footerImage": "assets/grammar/images/nouns_master_table.png"
     }
   },
   {
@@ -5384,1365 +3807,77 @@
     "order": 2,
     "isLeaf": true,
     "content": {
-      "introduction": "Such words which are used for or instead of nouns are called pronouns.",
-      "urduExplanation": "وہ لفظ جو کسی اسم کی جگہ استعمال ہو اسمِ ضمیر کہلاتا ہے۔",
+      "introduction": "A pronoun is a word used in place of a noun.",
+      "urduExplanation": "اسمِ ضمیر وہ لفظ ہے جو اسم کی جگہ استعمال ہو۔",
       "englishExplanation": "Pronouns must clearly refer to an antecedent and agree with it. They must use the correct subject, object, possessive, reflexive, or relative form.",
       "types": [
         {
           "name": "Personal Pronoun",
-          "description": "A Personal Pronoun is used instead of the name of a person, animal, or thing.",
-          "urduExplanation": "ضمیرِ شخصی کسی شخص، جانور یا چیز کے نام کی جگہ استعمال ہوتا ہے۔",
-          "subjectVerbAgreement": "",
+          "description": "Used in place of specific people or things.",
+          "urduExplanation": "مخصوص لوگوں یا چیزوں کی جگہ استعمال ہونے والے الفاظ۔",
+          "exampleWords": "I, you, he, she, it, we, they",
+          "rules": [
+            "1: Use 'I' as a subject and 'me' as an object.",
+            "2: Use 'he' for males and 'she' for females."
+          ],
           "examples": [
             {
-              "referenceText": "Ahmed is my friend. Ahmed lives in Quetta.",
-              "referenceUrdu": "احمد میرا دوست ہے۔ احمد کوئٹہ میں رہتا ہے۔",
-              "text": "Ahmed is my friend. He lives in Quetta.",
-              "urdu": "احمد میرا دوست ہے۔ وہ کوئٹہ میں رہتا ہے۔",
-              "note": "**He** replaces the noun **Ahmed** and refers to one male person."
+              "text": "**I** am a student.",
+              "urdu": "میں ایک طالب علم ہوں۔",
+              "note": null
             },
             {
-              "referenceText": "Nimra is a teacher. Nimra teaches English.",
-              "referenceUrdu": "نمرہ ایک استاد ہے۔ نمرہ انگریزی پڑھاتی ہے۔",
-              "text": "Nimra is a teacher. She teaches English.",
-              "urdu": "نمرہ ایک استاد ہے۔ وہ انگریزی پڑھاتی ہے۔",
-              "note": "**She** replaces **Nimra** and refers to one female person."
+              "text": "**She** is my sister.",
+              "urdu": "وہ میری بہن ہے۔",
+              "note": null
             },
             {
-              "referenceText": "Ayesha invited the students to her house.",
-              "referenceUrdu": "عائشہ نے طلبہ کو اپنے گھر بلایا۔",
-              "text": "Ayesha invited us to her house.",
-              "urdu": "عائشہ نے ہمیں اپنے گھر بلایا۔",
-              "note": "**Us** is an object pronoun referring to more than one person."
+              "text": "**We** are going home.",
+              "urdu": "ہم گھر جا رہے ہیں۔",
+              "note": null
             },
             {
-              "referenceText": "The candidates submitted the candidates’ forms, and the candidates received confirmation.",
-              "referenceUrdu": "امیدواروں نے امیدواروں کے فارم جمع کرائے اور امیدواروں کو تصدیق موصول ہوئی۔",
-              "text": "The candidates submitted their forms, and they received confirmation.",
-              "urdu": "امیدواروں نے اپنے فارم جمع کرائے اور انہیں تصدیق موصول ہوئی۔",
-              "note": "**They** is a plural subject pronoun and **their** shows possession."
+              "text": "Give it to **me**.",
+              "urdu": "یہ مجھے دیں۔",
+              "note": null
+            },
+            {
+              "text": "**They** are playing.",
+              "urdu": "وہ کھیل رہے ہیں۔",
+              "note": null
             }
-          ],
-          "rules": [
-            "A **Personal Pronoun** replaces a person’s or thing’s name to avoid repetition.",
-            "Use a pronoun according to **number**: singular or plural.",
-            "After a **preposition**, use the object form of the pronoun."
           ],
           "commonMistakes": [
             {
-              "wrong": "This gift is for **I**.",
-              "right": "This gift is for **me**.",
-              "urdu": "یہ تحفہ میرے لیے ہے۔",
-              "note": "**For** is a preposition, so the object form **me** is required."
+              "wrong": "**Me** am a student.",
+              "right": "**I** am a student.",
+              "urdu": "میں ایک طالب علم ہوں۔",
+              "note": "Use 'I' for subjects."
             },
             {
-              "wrong": "**They is** ready for the interview.",
-              "right": "**They are** ready for the interview.",
-              "urdu": "وہ انٹرویو کے لیے تیار ہیں۔",
-              "note": "**They** is plural, so it takes **are**."
+              "wrong": "He told **I** a story.",
+              "right": "He told **me** a story.",
+              "urdu": "اس نے مجھے ایک کہانی سنائی۔",
+              "note": "Use 'me' for objects."
             },
             {
-              "wrong": "The committee invited **he**.",
-              "right": "The committee invited **him**.",
-              "urdu": "کمیٹی نے اسے بلایا۔",
-              "note": "**Him** is the object of **invited**."
+              "wrong": "Between you and **I**.",
+              "right": "Between you and **me**.",
+              "urdu": "تمہارے اور میرے درمیان۔",
+              "note": null
             },
             {
-              "wrong": "**Me** submitted the application.",
-              "right": "**I** submitted the application.",
-              "urdu": "میں نے درخواست جمع کرائی۔",
-              "note": "**I** is the subject, so the subject form is needed."
+              "wrong": "**Him** is my friend.",
+              "right": "**He** is my friend.",
+              "urdu": "وہ میرا دوست ہے۔",
+              "note": null
+            },
+            {
+              "wrong": "It is **me** who did it.",
+              "right": "It is **I** who did it.",
+              "urdu": "یہ میں ہوں جس نے یہ کیا۔",
+              "note": null
             }
-          ],
-          "practice": [
-            {
-              "question": "Choose the correct pronoun form in a competitive-exam sentence.",
-              "options": [
-                "he",
-                "him",
-                "they",
-                "them"
-              ],
-              "answerIndex": 0,
-              "explanation": "The correct form must fit the pronoun type and sentence role."
-            },
-            {
-              "question": "Choose the correct verb: Each candidate ___ prepared.",
-              "options": [
-                "have",
-                "has",
-                "are",
-                "were"
-              ],
-              "answerIndex": 1,
-              "explanation": "Each is singular, so has is required."
-            },
-            {
-              "question": "Which sentence is grammatically correct?",
-              "options": [
-                "The commission interviewed the candidate.",
-                "The candidates was ready.",
-                "Him submitted the form.",
-                "The policy are effective."
-              ],
-              "answerIndex": 0,
-              "explanation": "The first sentence follows the relevant pronoun and agreement rule."
-            },
-            {
-              "question": "Select the correct object pronoun: The panel invited ___.",
-              "options": [
-                "I",
-                "we",
-                "me",
-                "he"
-              ],
-              "answerIndex": 2,
-              "explanation": "Me is an object pronoun after invited."
-            },
-            {
-              "question": "What must a pronoun agree with?",
-              "options": [
-                "Only punctuation",
-                "Its antecedent and sentence role",
-                "Only the last noun",
-                "Nothing"
-              ],
-              "answerIndex": 1,
-              "explanation": "A pronoun must agree with its antecedent and fit its grammatical role."
-            }
-          ],
-          "subjectVerbAgreementUrdu": "",
-          "wordFocus": "",
-          "pronounTable": [
-            {
-              "person": "First person singular",
-              "subject": "I",
-              "object": "me"
-            },
-            {
-              "person": "Second person singular/plural",
-              "subject": "you",
-              "object": "you"
-            },
-            {
-              "person": "Third person singular (male)",
-              "subject": "he",
-              "object": "him"
-            },
-            {
-              "person": "Third person singular (female)",
-              "subject": "she",
-              "object": "her"
-            },
-            {
-              "person": "Third person singular (thing/animal)",
-              "subject": "it",
-              "object": "it"
-            },
-            {
-              "person": "First person plural",
-              "subject": "we",
-              "object": "us"
-            },
-            {
-              "person": "Third person plural",
-              "subject": "they",
-              "object": "them"
-            }
-          ],
-          "exampleWords": "I, me, you, he, him, she, her, it, we, us, they, them",
-          "ruleExamples": [
-            "**Ali** is hardworking. **He** studies every day.",
-            "**He** is a student. **They** are students.",
-            "The officer spoke with **me**, not **I**."
-          ]
-        },
-        {
-          "name": "Possessive Pronoun",
-          "description": "A Possessive Pronoun shows ownership without repeating the noun.",
-          "urduExplanation": "ضمیرِ ملکی کسی چیز کی ملکیت ظاہر کرتا ہے اور اسم کو دوبارہ دہرانے سے بچاتا ہے۔",
-          "subjectVerbAgreement": "",
-          "examples": [
-            {
-              "referenceText": "The commission published the commission’s report.",
-              "referenceUrdu": "کمیشن نے کمیشن کی رپورٹ شائع کی۔",
-              "text": "The commission published its report. The report is theirs.",
-              "urdu": "کمیشن نے اپنی رپورٹ شائع کی۔ رپورٹ ان کی ہے۔",
-              "note": "**Theirs** shows ownership and replaces “the commission’s report.”"
-            },
-            {
-              "referenceText": "This is my seat.",
-              "referenceUrdu": "یہ میری نشست ہے۔",
-              "text": "This seat belongs to me. It is mine.",
-              "urdu": "یہ نشست میری ہے۔",
-              "note": "**Mine** shows that the seat belongs to the speaker."
-            },
-            {
-              "referenceText": "The research team completed the team’s work.",
-              "referenceUrdu": "تحقیقی ٹیم نے ٹیم کا کام مکمل کیا۔",
-              "text": "The research team completed its work; the final results are theirs.",
-              "urdu": "تحقیقی ٹیم نے اپنا کام مکمل کیا؛ حتمی نتائج ان کے ہیں۔",
-              "note": "**Theirs** refers to the research team’s results."
-            },
-            {
-              "referenceText": "That is her office, not his office.",
-              "referenceUrdu": "وہ اس کا دفتر ہے، اس کا دفتر نہیں۔",
-              "text": "That office is hers, not his.",
-              "urdu": "وہ دفتر اس کا ہے، اس کا نہیں۔",
-              "note": "**Hers** and **his** show ownership without a following noun."
-            }
-          ],
-          "rules": [
-            "A **Possessive Pronoun** stands alone and does not take a noun after it.",
-            "Do not confuse **its** with **it’s**.",
-            "Use the form that agrees with the owner, not with the owned thing."
-          ],
-          "commonMistakes": [
-            {
-              "wrong": "This file is **her**.",
-              "right": "This file is **hers**.",
-              "urdu": "یہ فائل اس کی ہے۔",
-              "note": "**Hers** stands alone as a Possessive Pronoun."
-            },
-            {
-              "wrong": "The decision was **their’s**.",
-              "right": "The decision was **theirs**.",
-              "urdu": "فیصلہ ان کا تھا۔",
-              "note": "Possessive Pronouns do not take an apostrophe."
-            },
-            {
-              "wrong": "The ministry changed **it’s** policy.",
-              "right": "The ministry changed **its** policy.",
-              "urdu": "وزارت نے اپنی پالیسی تبدیل کی۔",
-              "note": "**Its** shows possession; **it’s** means “it is.”"
-            },
-            {
-              "wrong": "This is **our**.",
-              "right": "This is **ours**.",
-              "urdu": "یہ ہمارا ہے۔",
-              "note": "**Ours** is used without a noun after it."
-            }
-          ],
-          "practice": [
-            {
-              "question": "Choose the correct pronoun form in a competitive-exam sentence.",
-              "options": [
-                "he",
-                "him",
-                "they",
-                "them"
-              ],
-              "answerIndex": 0,
-              "explanation": "The correct form must fit the pronoun type and sentence role."
-            },
-            {
-              "question": "Choose the correct verb: Each candidate ___ prepared.",
-              "options": [
-                "have",
-                "has",
-                "are",
-                "were"
-              ],
-              "answerIndex": 1,
-              "explanation": "Each is singular, so has is required."
-            },
-            {
-              "question": "Which sentence is grammatically correct?",
-              "options": [
-                "This seat is mine.",
-                "The candidates was ready.",
-                "Him submitted the form.",
-                "The policy are effective."
-              ],
-              "answerIndex": 0,
-              "explanation": "The first sentence follows the relevant pronoun and agreement rule."
-            },
-            {
-              "question": "Select the correct object pronoun: The panel invited ___.",
-              "options": [
-                "I",
-                "we",
-                "me",
-                "he"
-              ],
-              "answerIndex": 2,
-              "explanation": "Me is an object pronoun after invited."
-            },
-            {
-              "question": "What must a pronoun agree with?",
-              "options": [
-                "Only punctuation",
-                "Its antecedent and sentence role",
-                "Only the last noun",
-                "Nothing"
-              ],
-              "answerIndex": 1,
-              "explanation": "A pronoun must agree with its antecedent and fit its grammatical role."
-            }
-          ],
-          "subjectVerbAgreementUrdu": "",
-          "wordFocus": "",
-          "exampleWords": "mine, yours, his, hers, ours, theirs",
-          "ruleExamples": [
-            "This policy file is **mine**.",
-            "**Its** cover is blue, but **it’s** useful.",
-            "The report is **theirs**, not **ours**."
-          ]
-        },
-        {
-          "name": "Reflexive Pronoun",
-          "description": "A Reflexive Pronoun refers back to the subject of the sentence.",
-          "urduExplanation": "ضمیرِ انعکاسی دوبارہ اسی فاعل کی طرف اشارہ کرتا ہے۔",
-          "subjectVerbAgreement": "",
-          "examples": [
-            {
-              "referenceText": "The officer blamed the officer for the error.",
-              "referenceUrdu": "افسر نے افسر کو غلطی کا ذمہ دار ٹھہرایا۔",
-              "text": "The officer blamed himself for the error.",
-              "urdu": "افسر نے غلطی کا ذمہ دار خود کو ٹھہرایا۔",
-              "note": "**Himself** refers back to the subject **officer**."
-            },
-            {
-              "referenceText": "The students introduced the students to the panel.",
-              "referenceUrdu": "طلبہ نے طلبہ کا پینل سے تعارف کرایا۔",
-              "text": "The students introduced themselves to the panel.",
-              "urdu": "طلبہ نے پینل سے اپنا تعارف کرایا۔",
-              "note": "**Themselves** refers back to the plural subject **students**."
-            },
-            {
-              "referenceText": "I taught me to use the software.",
-              "referenceUrdu": "میں نے مجھے سافٹ ویئر استعمال کرنا سکھایا۔",
-              "text": "I taught myself to use the software.",
-              "urdu": "میں نے خود سافٹ ویئر استعمال کرنا سیکھا۔",
-              "note": "**Myself** refers back to the subject **I**."
-            },
-            {
-              "referenceText": "The machine switched the machine off.",
-              "referenceUrdu": "مشین نے مشین کو بند کیا۔",
-              "text": "The machine switched itself off.",
-              "urdu": "مشین خود بند ہو گئی۔",
-              "note": "**Itself** refers back to the subject **machine**."
-            }
-          ],
-          "rules": [
-            "Use a **Reflexive Pronoun** when the subject and object are the same.",
-            "The Reflexive Pronoun must agree with the **subject** in person and number.",
-            "Do not use a Reflexive Pronoun as the ordinary subject of a sentence."
-          ],
-          "commonMistakes": [
-            {
-              "wrong": "**Myself** submitted the form.",
-              "right": "**I** submitted the form.",
-              "urdu": "میں نے فارم جمع کرایا۔",
-              "note": "Use **I** as the subject; **myself** is not an ordinary subject pronoun."
-            },
-            {
-              "wrong": "The candidate prepared **him** for the interview.",
-              "right": "The candidate prepared **himself** for the interview.",
-              "urdu": "امیدوار نے خود کو انٹرویو کے لیے تیار کیا۔",
-              "note": "The subject and object are the same, so **himself** is needed."
-            },
-            {
-              "wrong": "The students blamed **himself**.",
-              "right": "The students blamed **themselves**.",
-              "urdu": "طلبہ نے خود کو قصوروار ٹھہرایا۔",
-              "note": "**Themselves** agrees with the plural subject **students**."
-            },
-            {
-              "wrong": "The officer spoke to **her** about the case.",
-              "right": "The officer spoke to **herself** about the case.",
-              "urdu": "افسر نے مقدمے کے بارے میں خود سے بات کی۔",
-              "note": "The officer is speaking to the same person, so the Reflexive Pronoun **herself** is required."
-            }
-          ],
-          "practice": [
-            {
-              "question": "Choose the correct pronoun form in a competitive-exam sentence.",
-              "options": [
-                "he",
-                "him",
-                "they",
-                "them"
-              ],
-              "answerIndex": 0,
-              "explanation": "The correct form must fit the pronoun type and sentence role."
-            },
-            {
-              "question": "Choose the correct verb: Each candidate ___ prepared.",
-              "options": [
-                "have",
-                "has",
-                "are",
-                "were"
-              ],
-              "answerIndex": 1,
-              "explanation": "Each is singular, so has is required."
-            },
-            {
-              "question": "Which sentence is grammatically correct?",
-              "options": [
-                "The researcher blamed herself for the error.",
-                "The candidates was ready.",
-                "Him submitted the form.",
-                "The policy are effective."
-              ],
-              "answerIndex": 0,
-              "explanation": "The first sentence follows the relevant pronoun and agreement rule."
-            },
-            {
-              "question": "Select the correct object pronoun: The panel invited ___.",
-              "options": [
-                "I",
-                "we",
-                "me",
-                "he"
-              ],
-              "answerIndex": 2,
-              "explanation": "Me is an object pronoun after invited."
-            },
-            {
-              "question": "What must a pronoun agree with?",
-              "options": [
-                "Only punctuation",
-                "Its antecedent and sentence role",
-                "Only the last noun",
-                "Nothing"
-              ],
-              "answerIndex": 1,
-              "explanation": "A pronoun must agree with its antecedent and fit its grammatical role."
-            }
-          ],
-          "subjectVerbAgreementUrdu": "",
-          "wordFocus": "",
-          "exampleWords": "myself, yourself, himself, herself, itself, ourselves, themselves",
-          "ruleExamples": [
-            "The candidate prepared **himself** for the interview.",
-            "We reminded **ourselves** about the deadline.",
-            "**I** submitted the form, not **myself**."
-          ]
-        },
-        {
-          "name": "Relative Pronoun",
-          "description": "A Relative Pronoun connects a noun with a clause that gives more information about it.",
-          "urduExplanation": "ضمیرِ موصولہ اسم کو ایسے جملے سے ملاتا ہے جو اس کے بارے میں مزید معلومات دیتا ہے۔",
-          "subjectVerbAgreement": "",
-          "examples": [
-            {
-              "referenceText": "The officer prepared the report. The officer received an award.",
-              "referenceUrdu": "افسر نے رپورٹ تیار کی۔ افسر کو انعام ملا۔",
-              "text": "The officer who prepared the report received an award.",
-              "urdu": "جس افسر نے رپورٹ تیار کی اسے انعام ملا۔",
-              "note": "**Who** refers to the person **officer** and joins the clause."
-            },
-            {
-              "referenceText": "The cabinet approved the policy. The policy is effective.",
-              "referenceUrdu": "کابینہ نے پالیسی منظور کی۔ پالیسی مؤثر ہے۔",
-              "text": "The policy that the cabinet approved is effective.",
-              "urdu": "وہ پالیسی مؤثر ہے جسے کابینہ نے منظور کیا۔",
-              "note": "**That** refers to the thing **policy**."
-            },
-            {
-              "referenceText": "The researcher wrote an article. The article won the prize.",
-              "referenceUrdu": "محقق نے مضمون لکھا۔ مضمون نے انعام جیتا۔",
-              "text": "The researcher whose article won the prize thanked the university.",
-              "urdu": "جس محقق کے مضمون نے انعام جیتا اس نے یونیورسٹی کا شکریہ ادا کیا۔",
-              "note": "**Whose** shows possession and refers to **researcher**."
-            },
-            {
-              "referenceText": "The board recommended the candidate. The committee interviewed the candidate.",
-              "referenceUrdu": "بورڈ نے امیدوار کی سفارش کی۔ کمیٹی نے امیدوار کا انٹرویو کیا۔",
-              "text": "The committee interviewed the candidate whom the board recommended.",
-              "urdu": "کمیٹی نے اس امیدوار کا انٹرویو کیا جس کی سفارش بورڈ نے کی تھی۔",
-              "note": "**Whom** is the object of **recommended** in formal English."
-            }
-          ],
-          "rules": [
-            "Use **who** for people.",
-            "Use **which** or **that** for things and animals in appropriate clauses.",
-            "Use **whose** to show possession."
-          ],
-          "commonMistakes": [
-            {
-              "wrong": "The officer **which** prepared the report was promoted.",
-              "right": "The officer **who** prepared the report was promoted.",
-              "urdu": "جس افسر نے رپورٹ تیار کی اسے ترقی دی گئی۔",
-              "note": "Use **who** for a person."
-            },
-            {
-              "wrong": "The policy **who** was approved is effective.",
-              "right": "The policy **that** was approved is effective.",
-              "urdu": "جو پالیسی منظور ہوئی وہ مؤثر ہے۔",
-              "note": "Use **that** or **which** for a thing."
-            },
-            {
-              "wrong": "The candidate **who** the panel selected thanked them.",
-              "right": "The candidate **whom** the panel selected thanked them.",
-              "urdu": "جس امیدوار کو پینل نے منتخب کیا اس نے ان کا شکریہ ادا کیا۔",
-              "note": "**Whom** is the formal object form here."
-            },
-            {
-              "wrong": "The officer **whose** prepared the report was praised.",
-              "right": "The officer **who** prepared the report was praised.",
-              "urdu": "جس افسر نے رپورٹ تیار کی اسے سراہا گیا۔",
-              "note": "Use **who** for a subject; **whose** must show possession."
-            }
-          ],
-          "practice": [
-            {
-              "question": "Choose the correct pronoun form in a competitive-exam sentence.",
-              "options": [
-                "he",
-                "him",
-                "they",
-                "them"
-              ],
-              "answerIndex": 0,
-              "explanation": "The correct form must fit the pronoun type and sentence role."
-            },
-            {
-              "question": "Choose the correct verb: Each candidate ___ prepared.",
-              "options": [
-                "have",
-                "has",
-                "are",
-                "were"
-              ],
-              "answerIndex": 1,
-              "explanation": "Each is singular, so has is required."
-            },
-            {
-              "question": "Which sentence is grammatically correct?",
-              "options": [
-                "The policy that the cabinet approved is effective.",
-                "The candidates was ready.",
-                "Him submitted the form.",
-                "The policy are effective."
-              ],
-              "answerIndex": 0,
-              "explanation": "The first sentence follows the relevant pronoun and agreement rule."
-            },
-            {
-              "question": "Select the correct object pronoun: The panel invited ___.",
-              "options": [
-                "I",
-                "we",
-                "me",
-                "he"
-              ],
-              "answerIndex": 2,
-              "explanation": "Me is an object pronoun after invited."
-            },
-            {
-              "question": "What must a pronoun agree with?",
-              "options": [
-                "Only punctuation",
-                "Its antecedent and sentence role",
-                "Only the last noun",
-                "Nothing"
-              ],
-              "answerIndex": 1,
-              "explanation": "A pronoun must agree with its antecedent and fit its grammatical role."
-            }
-          ],
-          "subjectVerbAgreementUrdu": "",
-          "wordFocus": "",
-          "exampleWords": "who, whom, whose, which, that",
-          "ruleExamples": [
-            "The officer **who** prepared the report received an award.",
-            "The policy **that** the commission approved is effective.",
-            "The candidate **whose** form was incomplete submitted it again."
-          ]
-        },
-        {
-          "name": "Demonstrative Pronoun",
-          "description": "A Demonstrative Pronoun points to a person, thing, or idea.",
-          "urduExplanation": "اسمِ اشارہ کسی شخص، چیز یا خیال کی طرف اشارہ کرتا ہے۔",
-          "subjectVerbAgreement": "",
-          "examples": [
-            {
-              "referenceText": "This policy was approved today.",
-              "referenceUrdu": "یہ پالیسی آج منظور ہوئی۔",
-              "text": "This is the policy approved today.",
-              "urdu": "یہ آج منظور کی گئی پالیسی ہے۔",
-              "note": "**This** points to one nearby policy."
-            },
-            {
-              "referenceText": "Those recommendations were rejected.",
-              "referenceUrdu": "وہ سفارشات مسترد کر دی گئیں۔",
-              "text": "Those were rejected by the commission.",
-              "urdu": "وہ کمیشن نے مسترد کر دیے تھے۔",
-              "note": "**Those** points to several distant recommendations."
-            },
-            {
-              "referenceText": "These documents are ready.",
-              "referenceUrdu": "یہ دستاویزات تیار ہیں۔",
-              "text": "These are ready for the examination.",
-              "urdu": "یہ امتحان کے لیے تیار ہیں۔",
-              "note": "**These** refers to several nearby documents."
-            },
-            {
-              "referenceText": "That decision is final.",
-              "referenceUrdu": "وہ فیصلہ حتمی ہے۔",
-              "text": "That is the final decision.",
-              "urdu": "وہ حتمی فیصلہ ہے۔",
-              "note": "**That** points to one specific decision farther away."
-            }
-          ],
-          "rules": [
-            "Use **this** and **that** for singular meaning.",
-            "Use **these** and **those** for plural meaning.",
-            "**This/these** usually point to something near, while **that/those** point to something farther away."
-          ],
-          "commonMistakes": [
-            {
-              "wrong": "**These is** the final report.",
-              "right": "**This is** the final report.",
-              "urdu": "یہ حتمی رپورٹ ہے۔",
-              "note": "A singular report takes **this**, not **these**."
-            },
-            {
-              "wrong": "**That are** the approved files.",
-              "right": "**Those are** the approved files.",
-              "urdu": "وہ منظور شدہ فائلیں ہیں۔",
-              "note": "Plural files take **those** and **are**."
-            },
-            {
-              "wrong": "**This** documents are confidential.",
-              "right": "**These** documents are confidential.",
-              "urdu": "یہ دستاویزات خفیہ ہیں۔",
-              "note": "Plural documents take **these**."
-            },
-            {
-              "wrong": "**Those is** the correct answer.",
-              "right": "**That is** the correct answer.",
-              "urdu": "وہ درست جواب ہے۔",
-              "note": "A singular answer takes **that** and **is**."
-            }
-          ],
-          "practice": [
-            {
-              "question": "Choose the correct pronoun form in a competitive-exam sentence.",
-              "options": [
-                "he",
-                "him",
-                "they",
-                "them"
-              ],
-              "answerIndex": 0,
-              "explanation": "The correct form must fit the pronoun type and sentence role."
-            },
-            {
-              "question": "Choose the correct verb: Each candidate ___ prepared.",
-              "options": [
-                "have",
-                "has",
-                "are",
-                "were"
-              ],
-              "answerIndex": 1,
-              "explanation": "Each is singular, so has is required."
-            },
-            {
-              "question": "Which sentence is grammatically correct?",
-              "options": [
-                "This is the official notice.",
-                "The candidates was ready.",
-                "Him submitted the form.",
-                "The policy are effective."
-              ],
-              "answerIndex": 0,
-              "explanation": "The first sentence follows the relevant pronoun and agreement rule."
-            },
-            {
-              "question": "Select the correct object pronoun: The panel invited ___.",
-              "options": [
-                "I",
-                "we",
-                "me",
-                "he"
-              ],
-              "answerIndex": 2,
-              "explanation": "Me is an object pronoun after invited."
-            },
-            {
-              "question": "What must a pronoun agree with?",
-              "options": [
-                "Only punctuation",
-                "Its antecedent and sentence role",
-                "Only the last noun",
-                "Nothing"
-              ],
-              "answerIndex": 1,
-              "explanation": "A pronoun must agree with its antecedent and fit its grammatical role."
-            }
-          ],
-          "subjectVerbAgreementUrdu": "",
-          "wordFocus": "",
-          "exampleWords": "this, that, these, those",
-          "ruleExamples": [
-            "**This** is the final policy.",
-            "**These** are the approved guidelines.",
-            "**Those** were the previous recommendations."
-          ]
-        },
-        {
-          "name": "Interrogative Pronoun",
-          "description": "An Interrogative Pronoun asks about a person, thing, choice, or possession.",
-          "urduExplanation": "ضمیرِ استفہام کسی شخص، چیز، انتخاب یا ملکیت کے بارے میں سوال کرتا ہے۔",
-          "subjectVerbAgreement": "",
-          "examples": [
-            {
-              "referenceText": "The commission approved the policy.",
-              "referenceUrdu": "کمیشن نے پالیسی منظور کی۔",
-              "text": "Who approved the policy?",
-              "urdu": "پالیسی کس نے منظور کی؟",
-              "note": "**Who** is the subject asking about the person who acted."
-            },
-            {
-              "referenceText": "The panel invited the candidate.",
-              "referenceUrdu": "پینل نے امیدوار کو بلایا۔",
-              "text": "Whom did the panel invite?",
-              "urdu": "پینل نے کسے بلایا؟",
-              "note": "**Whom** is the formal object of **invite**."
-            },
-            {
-              "referenceText": "This is the officer’s report.",
-              "referenceUrdu": "یہ افسر کی رپورٹ ہے۔",
-              "text": "Whose is this report?",
-              "urdu": "یہ رپورٹ کس کی ہے؟",
-              "note": "**Whose** asks about ownership."
-            },
-            {
-              "referenceText": "The commission approved one policy.",
-              "referenceUrdu": "کمیشن نے ایک پالیسی منظور کی۔",
-              "text": "Which did the commission approve?",
-              "urdu": "کمیشن نے کون سا منظور کیا؟",
-              "note": "**Which** asks the listener to choose one known item."
-            }
-          ],
-          "rules": [
-            "Use **who** as the subject of a question.",
-            "Use **whom** as the object in formal English.",
-            "Use **whose** to ask about possession."
-          ],
-          "commonMistakes": [
-            {
-              "wrong": "**Whom** is responsible for the decision?",
-              "right": "**Who** is responsible for the decision?",
-              "urdu": "فیصلے کا ذمہ دار کون ہے؟",
-              "note": "**Who** is the subject of **is responsible**."
-            },
-            {
-              "wrong": "**Who** did the panel invite?",
-              "right": "**Whom** did the panel invite?",
-              "urdu": "پینل نے کسے بلایا؟",
-              "note": "In formal English, **whom** is the object of **invite**."
-            },
-            {
-              "wrong": "**Who’s** report is this?",
-              "right": "**Whose** report is this?",
-              "urdu": "یہ کس کی رپورٹ ہے؟",
-              "note": "**Whose** asks about possession; **who’s** means “who is.”"
-            },
-            {
-              "wrong": "**Which candidate did the commission select him?**",
-              "right": "**Which candidate did the commission select?**",
-              "urdu": "کمیشن نے کس امیدوار کو منتخب کیا؟",
-              "note": "Do not add an extra object pronoun after the noun phrase."
-            }
-          ],
-          "practice": [
-            {
-              "question": "Choose the correct pronoun form in a competitive-exam sentence.",
-              "options": [
-                "he",
-                "him",
-                "they",
-                "them"
-              ],
-              "answerIndex": 0,
-              "explanation": "The correct form must fit the pronoun type and sentence role."
-            },
-            {
-              "question": "Choose the correct verb: Each candidate ___ prepared.",
-              "options": [
-                "have",
-                "has",
-                "are",
-                "were"
-              ],
-              "answerIndex": 1,
-              "explanation": "Each is singular, so has is required."
-            },
-            {
-              "question": "Which sentence is grammatically correct?",
-              "options": [
-                "Whom did the commission invite?",
-                "The candidates was ready.",
-                "Him submitted the form.",
-                "The policy are effective."
-              ],
-              "answerIndex": 0,
-              "explanation": "The first sentence follows the relevant pronoun and agreement rule."
-            },
-            {
-              "question": "Select the correct object pronoun: The panel invited ___.",
-              "options": [
-                "I",
-                "we",
-                "me",
-                "he"
-              ],
-              "answerIndex": 2,
-              "explanation": "Me is an object pronoun after invited."
-            },
-            {
-              "question": "What must a pronoun agree with?",
-              "options": [
-                "Only punctuation",
-                "Its antecedent and sentence role",
-                "Only the last noun",
-                "Nothing"
-              ],
-              "answerIndex": 1,
-              "explanation": "A pronoun must agree with its antecedent and fit its grammatical role."
-            }
-          ],
-          "subjectVerbAgreementUrdu": "",
-          "wordFocus": "",
-          "exampleWords": "who, whom, whose, which, what",
-          "ruleExamples": [
-            "**Who** submitted the application?",
-            "The panel invited **whom**?",
-            "**Whose** is this file?"
-          ]
-        },
-        {
-          "name": "Indefinite Pronoun",
-          "description": "An Indefinite Pronoun refers to a person or thing without naming exactly who or what.",
-          "urduExplanation": "ضمیرِ غیر معین کسی غیر مخصوص شخص یا چیز کی طرف اشارہ کرتا ہے۔",
-          "subjectVerbAgreement": "",
-          "examples": [
-            {
-              "referenceText": "All candidates must bring identity cards.",
-              "referenceUrdu": "تمام امیدواروں کو شناختی کارڈ لانے ہوں گے۔",
-              "text": "Everyone must bring an identity card.",
-              "urdu": "ہر شخص کو شناختی کارڈ لانا ہوگا۔",
-              "note": "**Everyone** refers to all people individually and takes a singular verb."
-            },
-            {
-              "referenceText": "An unknown candidate left a file.",
-              "referenceUrdu": "ایک نامعلوم امیدوار نے فائل چھوڑی۔",
-              "text": "Someone left a file on the desk.",
-              "urdu": "کسی نے میز پر فائل چھوڑی ہے۔",
-              "note": "**Someone** refers to one unknown person."
-            },
-            {
-              "referenceText": "Several candidates were selected.",
-              "referenceUrdu": "کئی امیدوار منتخب ہوئے۔",
-              "text": "Several were selected for the interview.",
-              "urdu": "کئی افراد کو انٹرویو کے لیے منتخب کیا گیا۔",
-              "note": "**Several** refers to more than one person."
-            },
-            {
-              "referenceText": "No item was missing from the record.",
-              "referenceUrdu": "ریکارڈ سے کوئی چیز غائب نہیں تھی۔",
-              "text": "Nothing was missing from the record.",
-              "urdu": "ریکارڈ میں کچھ بھی غائب نہیں تھا۔",
-              "note": "**Nothing** refers to no thing and takes a singular verb."
-            }
-          ],
-          "rules": [
-            "Words such as **everyone, someone, nobody,** and **each** usually take singular verbs.",
-            "Use a plural form with **many, several,** and **few**.",
-            "Avoid a double negative with indefinite pronouns such as **nobody** and **nothing**."
-          ],
-          "commonMistakes": [
-            {
-              "wrong": "**Everyone have** a duty.",
-              "right": "**Everyone has** a duty.",
-              "urdu": "ہر شخص کی ایک ذمہ داری ہے۔",
-              "note": "**Everyone** is grammatically singular."
-            },
-            {
-              "wrong": "**Several was** absent.",
-              "right": "**Several were** absent.",
-              "urdu": "کئی غیر حاضر تھے۔",
-              "note": "**Several** has plural meaning, so use **were**."
-            },
-            {
-              "wrong": "I did not see **nobody**.",
-              "right": "I did not see **anybody**.",
-              "urdu": "میں نے کسی کو نہیں دیکھا۔",
-              "note": "Avoid the double negative **did not + nobody**."
-            },
-            {
-              "wrong": "**Each candidates** submitted a form.",
-              "right": "**Each candidate** submitted a form.",
-              "urdu": "ہر امیدوار نے فارم جمع کرایا۔",
-              "note": "**Each** is followed by a singular noun."
-            }
-          ],
-          "practice": [
-            {
-              "question": "Choose the correct pronoun form in a competitive-exam sentence.",
-              "options": [
-                "he",
-                "him",
-                "they",
-                "them"
-              ],
-              "answerIndex": 0,
-              "explanation": "The correct form must fit the pronoun type and sentence role."
-            },
-            {
-              "question": "Choose the correct verb: Each candidate ___ prepared.",
-              "options": [
-                "have",
-                "has",
-                "are",
-                "were"
-              ],
-              "answerIndex": 1,
-              "explanation": "Each is singular, so has is required."
-            },
-            {
-              "question": "Which sentence is grammatically correct?",
-              "options": [
-                "Each of the candidates has an admit card.",
-                "The candidates was ready.",
-                "Him submitted the form.",
-                "The policy are effective."
-              ],
-              "answerIndex": 0,
-              "explanation": "The first sentence follows the relevant pronoun and agreement rule."
-            },
-            {
-              "question": "Select the correct object pronoun: The panel invited ___.",
-              "options": [
-                "I",
-                "we",
-                "me",
-                "he"
-              ],
-              "answerIndex": 2,
-              "explanation": "Me is an object pronoun after invited."
-            },
-            {
-              "question": "What must a pronoun agree with?",
-              "options": [
-                "Only punctuation",
-                "Its antecedent and sentence role",
-                "Only the last noun",
-                "Nothing"
-              ],
-              "answerIndex": 1,
-              "explanation": "A pronoun must agree with its antecedent and fit its grammatical role."
-            }
-          ],
-          "subjectVerbAgreementUrdu": "",
-          "wordFocus": "",
-          "exampleWords": "someone, anyone, everyone, nobody, something, nothing, each",
-          "ruleExamples": [
-            "**Everyone has** submitted the form.",
-            "**Several are** waiting outside.",
-            "**Nobody knows** the answer."
-          ]
-        },
-        {
-          "name": "Reciprocal Pronoun",
-          "description": "A Reciprocal Pronoun shows a mutual action between two or more people or groups.",
-          "urduExplanation": "ضمیرِ باہمی دو یا زیادہ افراد یا گروہوں کے درمیان باہمی عمل ظاہر کرتا ہے۔",
-          "subjectVerbAgreement": "",
-          "examples": [
-            {
-              "referenceText": "Department A consulted Department B, and Department B consulted Department A.",
-              "referenceUrdu": "محکمہ الف نے محکمہ ب سے مشورہ کیا اور محکمہ ب نے محکمہ الف سے مشورہ کیا۔",
-              "text": "The two departments consulted each other.",
-              "urdu": "دونوں محکموں نے ایک دوسرے سے مشورہ کیا۔",
-              "note": "**Each other** shows mutual action between two departments."
-            },
-            {
-              "referenceText": "Each candidate congratulated the other candidates.",
-              "referenceUrdu": "ہر امیدوار نے دوسرے امیدواروں کو مبارک باد دی۔",
-              "text": "The three candidates congratulated one another.",
-              "urdu": "تینوں امیدواروں نے ایک دوسرے کو مبارک باد دی۔",
-              "note": "**One another** shows a mutual action among three people."
-            },
-            {
-              "referenceText": "The first witness helped the second, and the second helped the first.",
-              "referenceUrdu": "پہلے گواہ نے دوسرے کی مدد کی اور دوسرے نے پہلے کی مدد کی۔",
-              "text": "The two witnesses helped each other during the inquiry.",
-              "urdu": "دونوں گواہوں نے تحقیقات کے دوران ایک دوسرے کی مدد کی۔",
-              "note": "**Each other** is the object of **helped**."
-            },
-            {
-              "referenceText": "The organizations shared information mutually.",
-              "referenceUrdu": "اداروں نے باہمی طور پر معلومات بانٹیں۔",
-              "text": "The partner organizations shared information with one another.",
-              "urdu": "شراکت دار اداروں نے ایک دوسرے کے ساتھ معلومات بانٹیں۔",
-              "note": "**One another** expresses cooperation among the organizations."
-            }
-          ],
-          "rules": [
-            "Use **each other** or **one another** when the members act mutually.",
-            "A Reciprocal Pronoun needs a plural subject.",
-            "Do not use a Reflexive Pronoun for a mutual action."
-          ],
-          "commonMistakes": [
-            {
-              "wrong": "The two teams helped **themselves**.",
-              "right": "The two teams helped **each other**.",
-              "urdu": "دونوں ٹیموں نے ایک دوسرے کی مدد کی۔",
-              "note": "The action is mutual, so use **each other**."
-            },
-            {
-              "wrong": "The committee members blamed **each other** himself.",
-              "right": "The committee members blamed **each other**.",
-              "urdu": "کمیٹی کے ارکان نے ایک دوسرے کو قصوروار ٹھہرایا۔",
-              "note": "Do not add a Reflexive Pronoun after a Reciprocal Pronoun."
-            },
-            {
-              "wrong": "The officer helped **each other**.",
-              "right": "The officers helped **each other**.",
-              "urdu": "افسروں نے ایک دوسرے کی مدد کی۔",
-              "note": "A Reciprocal Pronoun needs a plural subject."
-            },
-            {
-              "wrong": "The two departments supports **each other**.",
-              "right": "The two departments support **each other**.",
-              "urdu": "دونوں محکمے ایک دوسرے کی حمایت کرتے ہیں۔",
-              "note": "The plural subject **departments** takes **support**."
-            }
-          ],
-          "practice": [
-            {
-              "question": "Choose the correct pronoun form in a competitive-exam sentence.",
-              "options": [
-                "he",
-                "him",
-                "they",
-                "them"
-              ],
-              "answerIndex": 0,
-              "explanation": "The correct form must fit the pronoun type and sentence role."
-            },
-            {
-              "question": "Choose the correct verb: Each candidate ___ prepared.",
-              "options": [
-                "have",
-                "has",
-                "are",
-                "were"
-              ],
-              "answerIndex": 1,
-              "explanation": "Each is singular, so has is required."
-            },
-            {
-              "question": "Which sentence is grammatically correct?",
-              "options": [
-                "The candidates helped one another during the workshop.",
-                "The candidates was ready.",
-                "Him submitted the form.",
-                "The policy are effective."
-              ],
-              "answerIndex": 0,
-              "explanation": "The first sentence follows the relevant pronoun and agreement rule."
-            },
-            {
-              "question": "Select the correct object pronoun: The panel invited ___.",
-              "options": [
-                "I",
-                "we",
-                "me",
-                "he"
-              ],
-              "answerIndex": 2,
-              "explanation": "Me is an object pronoun after invited."
-            },
-            {
-              "question": "What must a pronoun agree with?",
-              "options": [
-                "Only punctuation",
-                "Its antecedent and sentence role",
-                "Only the last noun",
-                "Nothing"
-              ],
-              "answerIndex": 1,
-              "explanation": "A pronoun must agree with its antecedent and fit its grammatical role."
-            }
-          ],
-          "subjectVerbAgreementUrdu": "",
-          "wordFocus": "",
-          "exampleWords": "each other, one another",
-          "ruleExamples": [
-            "The two departments supported **each other**.",
-            "The three teams congratulated **one another**.",
-            "The candidates helped **each other**."
-          ]
-        },
-        {
-          "name": "Distributive Pronoun",
-          "description": "A Distributive Pronoun refers to members of a group separately, one at a time.",
-          "urduExplanation": "ضمیرِ تقسیمی گروہ کے افراد کی طرف الگ الگ اشارہ کرتا ہے۔",
-          "subjectVerbAgreement": "",
-          "examples": [
-            {
-              "referenceText": "The candidates submitted forms one by one.",
-              "referenceUrdu": "امیدواروں نے ایک ایک کر کے فارم جمع کرائے۔",
-              "text": "Each of the candidates submitted a form.",
-              "urdu": "ہر امیدوار نے ایک فارم جمع کرایا۔",
-              "note": "**Each** considers the candidates separately and takes **submitted** for the singular meaning."
-            },
-            {
-              "referenceText": "One of these two routes is suitable.",
-              "referenceUrdu": "ان دو راستوں میں سے ایک مناسب ہے۔",
-              "text": "Either of these routes is suitable.",
-              "urdu": "ان دونوں راستوں میں سے کوئی ایک مناسب ہے۔",
-              "note": "**Either** refers to one of two choices and takes **is**."
-            },
-            {
-              "referenceText": "Not one of the two answers is correct.",
-              "referenceUrdu": "دونوں میں سے کوئی ایک جواب درست نہیں ہے۔",
-              "text": "Neither of the answers is correct.",
-              "urdu": "دونوں میں سے کوئی جواب درست نہیں ہے۔",
-              "note": "**Neither** means not one of two and takes the singular verb **is**."
-            },
-            {
-              "referenceText": "Each candidate was given a separate time.",
-              "referenceUrdu": "ہر امیدوار کو الگ وقت دیا گیا۔",
-              "text": "Each was given a separate interview time.",
-              "urdu": "ہر ایک کو انٹرویو کا الگ وقت دیا گیا۔",
-              "note": "**Each** refers to people individually without repeating the noun."
-            }
-          ],
-          "rules": [
-            "**Each** refers to members separately and usually takes a singular verb.",
-            "**Either** means one of two, while **neither** means not one of two.",
-            "Use a singular noun after **each, either,** and **neither**."
-          ],
-          "commonMistakes": [
-            {
-              "wrong": "**Each of the candidates have** a form.",
-              "right": "**Each of the candidates has** a form.",
-              "urdu": "ہر امیدوار کے پاس ایک فارم ہے۔",
-              "note": "**Each** takes a singular verb."
-            },
-            {
-              "wrong": "**Either of the options are** acceptable.",
-              "right": "**Either of the options is** acceptable.",
-              "urdu": "دونوں اختیارات میں سے کوئی ایک قابل قبول ہے۔",
-              "note": "**Either** is singular in this structure."
-            },
-            {
-              "wrong": "**Neither answers are** correct.",
-              "right": "**Neither answer is** correct.",
-              "urdu": "دونوں میں سے کوئی جواب درست نہیں ہے۔",
-              "note": "Use a singular noun and singular verb after **neither**."
-            },
-            {
-              "wrong": "**Each candidates** received a card.",
-              "right": "**Each candidate** received a card.",
-              "urdu": "ہر امیدوار کو ایک کارڈ ملا۔",
-              "note": "**Each** is followed by a singular noun."
-            }
-          ],
-          "practice": [
-            {
-              "question": "Choose the correct pronoun form in a competitive-exam sentence.",
-              "options": [
-                "he",
-                "him",
-                "they",
-                "them"
-              ],
-              "answerIndex": 0,
-              "explanation": "The correct form must fit the pronoun type and sentence role."
-            },
-            {
-              "question": "Choose the correct verb: Each candidate ___ prepared.",
-              "options": [
-                "have",
-                "has",
-                "are",
-                "were"
-              ],
-              "answerIndex": 1,
-              "explanation": "Each is singular, so has is required."
-            },
-            {
-              "question": "Which sentence is grammatically correct?",
-              "options": [
-                "Neither of the answers is correct.",
-                "The candidates was ready.",
-                "Him submitted the form.",
-                "The policy are effective."
-              ],
-              "answerIndex": 0,
-              "explanation": "The first sentence follows the relevant pronoun and agreement rule."
-            },
-            {
-              "question": "Select the correct object pronoun: The panel invited ___.",
-              "options": [
-                "I",
-                "we",
-                "me",
-                "he"
-              ],
-              "answerIndex": 2,
-              "explanation": "Me is an object pronoun after invited."
-            },
-            {
-              "question": "What must a pronoun agree with?",
-              "options": [
-                "Only punctuation",
-                "Its antecedent and sentence role",
-                "Only the last noun",
-                "Nothing"
-              ],
-              "answerIndex": 1,
-              "explanation": "A pronoun must agree with its antecedent and fit its grammatical role."
-            }
-          ],
-          "subjectVerbAgreementUrdu": "",
-          "wordFocus": "",
-          "exampleWords": "each, either, neither",
-          "ruleExamples": [
-            "**Each** of the candidates has a form.",
-            "**Either** of the routes is safe.",
-            "**Neither** answer is correct."
-          ]
-        },
-        {
-          "name": "Intensive/Emphatic Pronoun",
-          "description": "An Intensive Pronoun emphasizes a noun or pronoun but does not add a new action.",
-          "urduExplanation": "ضمیرِ تاکیدی کسی اسم یا ضمیر پر زور دیتا ہے لیکن نیا عمل ظاہر نہیں کرتا۔",
-          "subjectVerbAgreement": "",
-          "examples": [
-            {
-              "referenceText": "The director announced the decision.",
-              "referenceUrdu": "ڈائریکٹر نے فیصلے کا اعلان کیا۔",
-              "text": "The director himself announced the decision.",
-              "urdu": "ڈائریکٹر نے خود فیصلے کا اعلان کیا۔",
-              "note": "**Himself** emphasizes the subject **director**."
-            },
-            {
-              "referenceText": "The committee approved the policy.",
-              "referenceUrdu": "کمیٹی نے پالیسی منظور کی۔",
-              "text": "The committee itself approved the policy.",
-              "urdu": "کمیٹی نے خود پالیسی منظور کی۔",
-              "note": "**Itself** adds emphasis to **committee**."
-            },
-            {
-              "referenceText": "The researchers checked the data.",
-              "referenceUrdu": "محققین نے اعداد و شمار کی جانچ کی۔",
-              "text": "The researchers themselves checked the data.",
-              "urdu": "محققین نے خود اعداد و شمار کی جانچ کی۔",
-              "note": "**Themselves** emphasizes the plural subject **researchers**."
-            },
-            {
-              "referenceText": "I prepared the presentation.",
-              "referenceUrdu": "میں نے پریزنٹیشن تیار کی۔",
-              "text": "I myself prepared the presentation.",
-              "urdu": "میں نے خود پریزنٹیشن تیار کی۔",
-              "note": "**Myself** emphasizes the subject **I**."
-            }
-          ],
-          "rules": [
-            "An **Intensive Pronoun** can be removed without destroying the basic sentence.",
-            "It usually comes directly after the noun or at the end for emphasis.",
-            "Do not confuse an Intensive Pronoun with a Reflexive Pronoun that is needed as an object."
-          ],
-          "commonMistakes": [
-            {
-              "wrong": "**Myself** prepared the report.",
-              "right": "**I** prepared the report.",
-              "urdu": "میں نے رپورٹ تیار کی۔",
-              "note": "An Intensive Pronoun cannot replace the ordinary subject **I**."
-            },
-            {
-              "wrong": "The officer blamed **him** for the error himself.",
-              "right": "The officer blamed **himself** for the error.",
-              "urdu": "افسر نے خود کو غلطی کا ذمہ دار ٹھہرایا۔",
-              "note": "The intended emphasis is on the officer as the doer, so the natural sentence uses **himself** as the object."
-            },
-            {
-              "wrong": "The committee **itself approved** the policy itself.",
-              "right": "The committee itself approved the policy.",
-              "urdu": "کمیٹی نے خود پالیسی منظور کی۔",
-              "note": "Use emphasis once; the repeated form is unnecessary."
-            },
-            {
-              "wrong": "The researchers **themselves checked** the data themselves.",
-              "right": "The researchers themselves checked the data.",
-              "urdu": "محققین نے خود اعداد و شمار کی جانچ کی۔",
-              "note": "Do not repeat the same emphasis at both positions."
-            }
-          ],
-          "practice": [
-            {
-              "question": "Choose the correct pronoun form in a competitive-exam sentence.",
-              "options": [
-                "he",
-                "him",
-                "they",
-                "them"
-              ],
-              "answerIndex": 0,
-              "explanation": "The correct form must fit the pronoun type and sentence role."
-            },
-            {
-              "question": "Choose the correct verb: Each candidate ___ prepared.",
-              "options": [
-                "have",
-                "has",
-                "are",
-                "were"
-              ],
-              "answerIndex": 1,
-              "explanation": "Each is singular, so has is required."
-            },
-            {
-              "question": "Which sentence is grammatically correct?",
-              "options": [
-                "The director herself signed the notification.",
-                "The candidates was ready.",
-                "Him submitted the form.",
-                "The policy are effective."
-              ],
-              "answerIndex": 0,
-              "explanation": "The first sentence follows the relevant pronoun and agreement rule."
-            },
-            {
-              "question": "Select the correct object pronoun: The panel invited ___.",
-              "options": [
-                "I",
-                "we",
-                "me",
-                "he"
-              ],
-              "answerIndex": 2,
-              "explanation": "Me is an object pronoun after invited."
-            },
-            {
-              "question": "What must a pronoun agree with?",
-              "options": [
-                "Only punctuation",
-                "Its antecedent and sentence role",
-                "Only the last noun",
-                "Nothing"
-              ],
-              "answerIndex": 1,
-              "explanation": "A pronoun must agree with its antecedent and fit its grammatical role."
-            }
-          ],
-          "subjectVerbAgreementUrdu": "",
-          "wordFocus": "",
-          "exampleWords": "myself, yourself, himself, herself, itself, ourselves, themselves",
-          "ruleExamples": [
-            "The director **himself** announced the decision.",
-            "The committee approved the policy **itself**.",
-            "The minister **herself** addressed the candidates."
           ]
         }
       ],
@@ -6755,9 +3890,9 @@
       ],
       "examples": [
         {
-          "text": "Ahmed is my friend. He lives in Quetta.",
-          "urdu": "احمد میرا دوست ہے۔ وہ کوئٹہ میں رہتا ہے۔",
-          "note": "**He** replaces **Ahmed** and refers to one male person."
+          "text": "I, you, he, she, it, we, they",
+          "urdu": "میں، آپ، وہ، ہم، وہ",
+          "note": null
         }
       ],
       "commonMistakes": [
@@ -6804,7 +3939,8 @@
           "explanation": "Candidates is plural, so their and the plural structure are correct."
         }
       ],
-      "summary": "Pronouns replace nouns to avoid repetition and must agree in number, gender, and case with their antecedent. Key categories include personal, possessive, reflexive, relative, demonstrative, and interrogative pronouns. Careful attention to subject/object forms and clear antecedents prevents the most common pronoun errors in exams."
+      "summary": "Pronouns replace nouns to avoid repetition and must agree in number, gender, and case with their antecedent. Key categories include personal, possessive, reflexive, relative, demonstrative, and interrogative pronouns. Careful attention to subject/object forms and clear antecedents prevents the most common pronoun errors in exams.",
+      "footerImage": "assets/grammar/images/pronouns_master_table.png"
     }
   },
   {
@@ -6815,448 +3951,77 @@
     "order": 3,
     "isLeaf": true,
     "content": {
-      "introduction": "The verb is a word which is used to show an action of a person, an animal or thing.",
-      "urduExplanation": "فعل وہ لفظ ہے جو ہمیں کسی شخص یا چیز کے کام کے بارے میں بتاتا ہے۔",
+      "introduction": "A verb is a word that expresses an action, occurrence, or state of being.",
+      "urduExplanation": "فعل وہ لفظ ہے جو کسی کام، وقوعہ یا حالت کو ظاہر کرے۔",
       "englishExplanation": "Verbs are the core of a sentence, showing what the subject does, is, or experiences. They can be classified as action verbs (run, write), linking verbs (be, seem, become), auxiliary verbs (is, have, will), and modal verbs (can, must, should) that express ability, permission, or necessity. Verbs are also classified as transitive (requiring a direct object) or intransitive (not requiring one). Verb tense, subject-verb agreement, and correct use of modals are frequently tested because small errors here change the meaning or correctness of a sentence significantly.",
       "types": [
         {
-          "name": "Action Verb",
-          "description": "An action verb shows what a person, animal, or thing does.",
-          "urduExplanation": "فعلِ عمل وہ لفظ ہے جو کسی شخص، جانور یا چیز کے کسی کام کرنے کو ظاہر کرے۔",
-          "wordFocus": "In 'The commission reviewed the appeals', 'reviewed' is the action verb, 'commission' is the subject, and 'appeals' is the direct object.",
-          "subjectVerbAgreement": "The commission reviewed the candidates' appeals. 'Reviewed' is an action verb showing a completed action; the singular subject 'commission' performs it, and the plural object 'appeals' does not control the verb.",
-          "rules": [
-            "Action verbs can describe **physical** and **mental** actions.",
-            "Action verbs can show actions in different **tenses**.",
-            "Some action verbs take an **object**.",
-            "Some action verbs do not need an **object**."
-          ],
-          "examples": [
-            {
-              "text": "Ali plays cricket every evening.",
-              "urdu": "علی ہر شام کرکٹ کھیلتا ہے۔",
-              "note": "**Plays** is an action verb. The subject **Ali** is singular, so the present verb takes **-s**."
-            },
-            {
-              "text": "The boy kicks the ball.",
-              "urdu": "لڑکا گیند کو لات مارتا ہے۔",
-              "note": "**Kicks** is a physical action verb. The ball is the object receiving the action."
-            },
-            {
-              "text": "I remember his name.",
-              "urdu": "مجھے اس کا نام یاد ہے۔",
-              "note": "**Remember** is a mental action verb because the action happens in the mind."
-            },
-            {
-              "text": "The baby cried loudly.",
-              "urdu": "بچہ زور سے رویا۔",
-              "note": "**Cried** is an action verb, and the sentence is complete without an object."
-            }
-          ],
-          "commonMistakes": [
-            {
-              "wrong": "He **play** cricket every day.",
-              "right": "He **plays** cricket every day.",
-              "urdu": "وہ ہر روز کرکٹ کھیلتا ہے۔",
-              "note": "With **he, she, it**, or a singular noun in the simple present, the action verb usually takes **-s/-es**."
-            },
-            {
-              "wrong": "They **studies** every day.",
-              "right": "They **study** every day.",
-              "urdu": "وہ ہر روز پڑھتے ہیں۔",
-              "note": "With **they, you, we**, or a plural noun, use the base form **study**."
-            },
-            {
-              "wrong": "He does not **plays** cricket.",
-              "right": "He does not **play** cricket.",
-              "urdu": "وہ کرکٹ نہیں کھیلتا۔",
-              "note": "After **does**, use the base form of the action verb."
-            },
-            {
-              "wrong": "He did not **went** to school.",
-              "right": "He did not **go** to school.",
-              "urdu": "وہ اسکول نہیں گیا۔",
-              "note": "After **did**, always use the base form **go**, not the past form **went**."
-            }
-          ],
-          "examTips": [
-            "In error detection, locate the subject and time marker before choosing the action-verb form.",
-            "After a modal such as should or must, use the base form of the action verb."
-          ],
-          "tableTitle": "",
-          "tableColumns": [],
-          "tableRows": [],
-          "exampleWords": "run, write, eat, speak, jump",
-          "ruleExamples": [
-            "**Physical:** The boy **kicks** the ball. **Mental:** I **remember** his name.",
-            "He **plays** cricket. He **played** cricket. He **will play** cricket.",
-            "Ali **opened** the door. Sara **wrote** a letter.",
-            "The baby **cried**. The children **laughed**."
-          ]
-        },
-        {
-          "name": "Linking Verb",
-          "description": "A linking verb connects the subject to a subject complement that identifies or describes it; it does not show an action performed on an object.",
-          "urduExplanation": "فعلِ ربط فاعل کو اس کی شناخت یا صفت بیان کرنے والے لفظ سے ملاتا ہے؛ یہ کسی مفعول پر ہونے والا عمل ظاہر نہیں کرتا۔",
-          "wordFocus": "In 'The revised policy is effective', 'is' links the subject 'policy' to the adjective complement 'effective'.",
-          "subjectVerbAgreement": "The revised policy is effective. 'Is' is a linking verb connecting the singular subject 'policy' with the adjective 'effective'; it does not take a direct object.",
-          "rules": [
-            "A linking verb connects the **subject** with a word that describes it.",
-            "Use a form of **be** that agrees with the subject.",
-            "Some verbs such as **look** and **feel** can be linking or action verbs depending on the sentence."
-          ],
-          "examples": [
-            {
-              "text": "The new examination policy seems equitable to all candidates.",
-              "urdu": "نئی امتحانی پالیسی تمام امیدواروں کے لیے منصفانہ معلوم ہوتی ہے۔",
-              "note": "'Seems' links the singular subject 'policy' to the adjective complement 'equitable'."
-            },
-            {
-              "text": "The committee became confident after reviewing the evidence.",
-              "urdu": "شواہد کا جائزہ لینے کے بعد کمیٹی پُراعتماد ہو گئی۔",
-              "note": "'Became' links 'committee' to the adjective 'confident'; 'after reviewing' is a participial phrase."
-            },
-            {
-              "text": "The main objective is public accountability.",
-              "urdu": "بنیادی مقصد عوامی جواب دہی ہے۔",
-              "note": "'Is' links the subject 'objective' to the noun complement 'accountability'."
-            },
-            {
-              "text": "The results remained uncertain until the commission verified the records.",
-              "urdu": "کمیشن کی طرف سے ریکارڈ کی تصدیق تک نتائج غیر یقینی رہے۔",
-              "note": "'Remained' links 'results' to the adjective 'uncertain'; the until-clause gives the time limit."
-            }
-          ],
-          "commonMistakes": [
-            {
-              "wrong": "The policy seems effectively.",
-              "right": "The policy seems effective.",
-              "urdu": "پالیسی مؤثر معلوم ہوتی ہے۔",
-              "note": "After the linking verb 'seems', an adjective complement 'effective' describes the policy; the adverb 'effectively' is incorrect here."
-            },
-            {
-              "wrong": "The committee became successfully after the reform.",
-              "right": "The committee became successful after the reform.",
-              "urdu": "اصلاح کے بعد کمیٹی کامیاب ہو گئی۔",
-              "note": "'Became' requires an adjective complement 'successful', not the adverb 'successfully'."
-            },
-            {
-              "wrong": "The main purpose is to improve accountability.",
-              "right": "The main purpose is improving accountability.",
-              "urdu": "بنیادی مقصد جواب دہی کو بہتر بنانا ہے۔",
-              "note": "In this intended noun-complement pattern, the gerund phrase 'improving accountability' names the purpose; the infinitive construction changes the structure and emphasis."
-            },
-            {
-              "wrong": "The policy **are** effective.",
-              "right": "The policy **is** effective.",
-              "urdu": "پالیسی مؤثر ہے۔",
-              "note": "The singular subject **policy** takes **is**."
-            }
-          ],
-          "examTips": [
-            "Do not mistake a subject complement for a direct object after a linking verb.",
-            "Use an adjective after linking verbs when it describes the subject."
-          ],
-          "tableTitle": "",
-          "tableColumns": [],
-          "tableRows": [],
-          "exampleWords": "be, seem, become, appear, remain, feel, look",
-          "ruleExamples": [
-            "The policy **is** effective.",
-            "The results **are** uncertain.",
-            "The officer **looked** tired, but she **looked at** the report."
-          ]
-        },
-        {
-          "name": "Auxiliary Verb",
-          "description": "An auxiliary verb helps a main verb form tense, aspect, voice, questions, or negatives.",
-          "urduExplanation": "معاون فعل مرکزی فعل کے ساتھ مل کر زمانہ، پہلو، مجہول ساخت، سوال یا نفی بناتا ہے۔",
-          "wordFocus": "In 'The commission has approved the policy', 'has' is the auxiliary and 'approved' is the main verb.",
-          "subjectVerbAgreement": "The commission has approved the policy. 'Has' is the singular auxiliary agreeing with 'commission', while 'approved' remains the past participle in the present perfect tense.",
-          "rules": [
-            "Use **do, does,** or **did** for questions and negatives.",
-            "After **do, does,** or **did**, use the **base verb**.",
-            "Use **has/have + past participle** for the perfect tense."
-          ],
-          "examples": [
-            {
-              "text": "The commission has approved the revised policy.",
-              "urdu": "کمیشن نے نظرثانی شدہ پالیسی منظور کر لی ہے۔",
-              "note": "'Has' is the auxiliary and 'approved' is the past participle forming the present perfect."
-            },
-            {
-              "text": "Did the examiner verify the candidate’s documents?",
-              "urdu": "کیا ممتحن نے امیدوار کی دستاویزات کی تصدیق کی؟",
-              "note": "'Did' forms the past question, so the main verb returns to the base form 'verify'."
-            },
-            {
-              "text": "The recommendations are being reviewed by the ministry.",
-              "urdu": "وزارت کی طرف سے سفارشات کا جائزہ لیا جا رہا ہے۔",
-              "note": "'Are being' are auxiliaries forming the present progressive passive, and 'reviewed' is the past participle."
-            },
-            {
-              "text": "The administration had completed the reform before the audit began.",
-              "urdu": "آڈٹ شروع ہونے سے پہلے انتظامیہ اصلاح مکمل کر چکی تھی۔",
-              "note": "'Had' forms the past perfect and is followed by the past participle 'completed'."
-            }
-          ],
-          "commonMistakes": [
-            {
-              "wrong": "The commission did not approved the policy.",
-              "right": "The commission did not approve the policy.",
-              "urdu": "کمیشن نے پالیسی منظور نہیں کی۔",
-              "note": "After the auxiliary 'did', the main verb must be the base form 'approve'."
-            },
-            {
-              "wrong": "The ministry has announce the result.",
-              "right": "The ministry has announced the result.",
-              "urdu": "وزارت نے نتیجے کا اعلان کر دیا ہے۔",
-              "note": "The present perfect auxiliary 'has' requires the past participle 'announced'."
-            },
-            {
-              "wrong": "The reports is being reviewed.",
-              "right": "The reports are being reviewed.",
-              "urdu": "رپورٹس کا جائزہ لیا جا رہا ہے۔",
-              "note": "The plural subject 'reports' requires the plural auxiliary 'are'."
-            },
-            {
-              "wrong": "The committee **has approve** the policy.",
-              "right": "The committee **has approved** the policy.",
-              "urdu": "کمیٹی نے پالیسی منظور کر لی ہے۔",
-              "note": "After **has**, use the past participle **approved**."
-            }
-          ],
-          "examTips": [
-            "Auxiliary verbs often reveal tense and voice; check the form of the main verb that follows them.",
-            "After do/does/did, never add the past or third-person singular ending to the main verb."
-          ],
-          "tableTitle": "",
-          "tableColumns": [],
-          "tableRows": [],
-          "exampleWords": "is, are, was, have, has, do, does, did, will",
-          "ruleExamples": [
-            "The candidate **does not submit** late.",
-            "The commission **did not approve** the proposal.",
-            "The panel **has reviewed** the report."
-          ]
-        },
-        {
-          "name": "Modal Verb",
-          "description": "A modal verb expresses ability, permission, possibility, necessity, advice, or obligation and is followed by a base verb.",
-          "urduExplanation": "فعلِ امکانی صلاحیت، اجازت، امکان، ضرورت، مشورے یا پابندی کو ظاہر کرتا ہے اور اس کے بعد فعل کی بنیادی شکل آتی ہے۔",
-          "wordFocus": "In 'Candidates must submit original documents', 'must' is the modal and 'submit' is the base main verb.",
-          "subjectVerbAgreement": "Candidates must submit the original documents. The modal 'must' is unchanged for every subject, and it is followed by the base verb 'submit', not 'submits' or 'submitted'.",
-          "rules": [
-            "A modal is followed by the **base verb**.",
-            "A modal does not take **-s** for he, she, or it.",
-            "Use **must** for strong obligation and **should** for advice."
-          ],
-          "examples": [
-            {
-              "text": "Candidates must submit the original documents before the interview.",
-              "urdu": "امیدواروں کو انٹرویو سے پہلے اصل دستاویزات جمع کرانی ہوں گی۔",
-              "note": "'Must' expresses obligation and is followed by the base verb 'submit'."
-            },
-            {
-              "text": "The commission may revise the policy after public consultation.",
-              "urdu": "عوامی مشاورت کے بعد کمیشن پالیسی میں ترمیم کر سکتا ہے۔",
-              "note": "'May' expresses possibility and 'revise' remains in the base form."
-            },
-            {
-              "text": "The administration should address the security concerns immediately.",
-              "urdu": "انتظامیہ کو سکیورٹی کے خدشات کا فوری ازالہ کرنا چاہیے۔",
-              "note": "'Should' expresses advice and takes the base verb 'address'."
-            },
-            {
-              "text": "A transparent procedure can improve public confidence.",
-              "urdu": "شفاف طریقہ کار عوامی اعتماد کو بہتر بنا سکتا ہے۔",
-              "note": "'Can' expresses possibility or ability and is followed by the base verb 'improve'."
-            }
-          ],
-          "commonMistakes": [
-            {
-              "wrong": "The candidate must submits the form.",
-              "right": "The candidate must submit the form.",
-              "urdu": "امیدوار کو فارم جمع کرانا ہوگا۔",
-              "note": "A modal is followed by the base verb, so 'must submit' is correct."
-            },
-            {
-              "wrong": "The ministry should to revise the policy.",
-              "right": "The ministry should revise the policy.",
-              "urdu": "وزارت کو پالیسی میں ترمیم کرنی چاہیے۔",
-              "note": "A modal is not followed by 'to'; use 'should revise'."
-            },
-            {
-              "wrong": "Candidates can achieved better results.",
-              "right": "Candidates can achieve better results.",
-              "urdu": "امیدوار بہتر نتائج حاصل کر سکتے ہیں۔",
-              "note": "After 'can', use the base form 'achieve', not the past form 'achieved'."
-            },
-            {
-              "wrong": "The candidate **must submits** the form.",
-              "right": "The candidate **must submit** the form.",
-              "urdu": "امیدوار کو فارم جمع کرانا ہوگا۔",
-              "note": "After the modal **must**, use the base verb **submit**."
-            }
-          ],
-          "examTips": [
-            "The pattern modal + base verb is a frequent sentence-correction question.",
-            "Do not add -s, -ed, or to after a modal unless another structure requires it."
-          ],
-          "tableTitle": "",
-          "tableColumns": [],
-          "tableRows": [],
-          "exampleWords": "can, could, may, might, must, should, will, would",
-          "ruleExamples": [
-            "Candidates **must submit** the form.",
-            "The policy **may improve** public services.",
-            "The ministry **should revise** the rule."
-          ]
-        },
-        {
           "name": "Transitive Verb",
-          "description": "A transitive verb transfers its action to a direct object, which answers what or whom after the verb.",
-          "urduExplanation": "فعلِ متعدی کا عمل براہِ راست مفعول تک پہنچتا ہے، جو فعل کے بعد کیا یا کسے کے سوال کا جواب دیتا ہے۔",
-          "wordFocus": "In 'The examiner evaluated the answer scripts', 'evaluated' is transitive and 'answer scripts' is its direct object.",
-          "subjectVerbAgreement": "The examiner evaluated the answer scripts. 'Evaluated' is a transitive verb, 'examiner' is the singular subject, and 'answer scripts' is the direct object receiving the action.",
+          "description": "Requires an object to complete its meaning.",
+          "urduExplanation": "وہ فعل جسے اپنا معنی مکمل کرنے کے لیے مفعول (object) کی ضرورت ہوتی ہے۔",
+          "exampleWords": "eat, buy, tell, give, hit",
           "rules": [
-            "A transitive verb normally needs a **direct object**.",
-            "The direct object answers **what** or **whom** after the verb.",
-            "Do not add an unnecessary preposition before the object of verbs such as **discuss**."
+            "1: Always followed by a direct object.",
+            "2: Do not use prepositions between the verb and its direct object."
           ],
           "examples": [
             {
-              "text": "The examiner evaluated the answer scripts within two days.",
-              "urdu": "ممتحن نے دو دن کے اندر جوابی کاپیوں کا جائزہ لیا۔",
-              "note": "'Evaluated' is transitive and takes 'answer scripts' as its direct object."
+              "text": "I **ate** an apple.",
+              "urdu": "میں نے ایک سیب کھایا۔",
+              "note": null
             },
             {
-              "text": "The commission approved the recruitment policy.",
-              "urdu": "کمیشن نے بھرتی کی پالیسی منظور کی۔",
-              "note": "'Approved' transfers its action to the direct object 'recruitment policy'."
+              "text": "He **bought** a car.",
+              "urdu": "اس نے ایک گاڑی خریدی۔",
+              "note": null
             },
             {
-              "text": "The report highlighted serious gaps in public healthcare.",
-              "urdu": "رپورٹ نے عوامی صحت کے نظام میں سنگین خامیوں کو نمایاں کیا۔",
-              "note": "'Highlighted' is followed by the direct object 'serious gaps'."
+              "text": "She **told** a story.",
+              "urdu": "اس نے ایک کہانی سنائی۔",
+              "note": null
             },
             {
-              "text": "The court rejected the petition because it lacked legal grounds.",
-              "urdu": "عدالت نے درخواست مسترد کر دی کیونکہ اس میں قانونی بنیادیں نہیں تھیں۔",
-              "note": "'Rejected' takes 'petition' as its direct object; the because-clause gives the reason."
+              "text": "They **hit** the ball.",
+              "urdu": "انہوں نے گیند کو مارا۔",
+              "note": null
+            },
+            {
+              "text": "Give **me** the book.",
+              "urdu": "مجھے کتاب دیں۔",
+              "note": null
             }
           ],
           "commonMistakes": [
             {
-              "wrong": "The committee discussed about the proposal.",
-              "right": "The committee discussed the proposal.",
-              "urdu": "کمیٹی نے تجویز پر بحث کی۔",
-              "note": "'Discuss' is transitive and takes a direct object without 'about'."
+              "wrong": "He told **to** me a story.",
+              "right": "He **told** me a story.",
+              "urdu": "اس نے مجھے ایک کہانی سنائی۔",
+              "note": "Do not use 'to' after 'tell'."
             },
             {
-              "wrong": "The policy affects on public confidence.",
-              "right": "The policy affects public confidence.",
-              "urdu": "پالیسی عوامی اعتماد کو متاثر کرتی ہے۔",
-              "note": "'Affect' takes the direct object directly and does not require 'on'."
+              "wrong": "I ate.",
+              "right": "I **ate** an apple.",
+              "urdu": "میں نے ایک سیب کھایا۔",
+              "note": "Transitive verbs need an object."
             },
             {
-              "wrong": "The examiner explained the candidates the rule.",
-              "right": "The examiner explained the rule to the candidates.",
-              "urdu": "ممتحن نے امیدواروں کو قاعدہ سمجھایا۔",
-              "note": "With 'explain', the thing explained is the direct object; use 'to' before the recipient."
+              "wrong": "He discussed **about** the matter.",
+              "right": "He **discussed** the matter.",
+              "urdu": "اس نے معاملے پر بحث کی۔",
+              "note": null
             },
             {
-              "wrong": "The committee **discussed about** the proposal.",
-              "right": "The committee **discussed** the proposal.",
-              "urdu": "کمیٹی نے تجویز پر بحث کی۔",
-              "note": "The transitive verb **discuss** takes a direct object without **about**."
+              "wrong": "She reached **to** the station.",
+              "right": "She **reached** the station.",
+              "urdu": "وہ اسٹیشن پہنچی۔",
+              "note": null
+            },
+            {
+              "wrong": "I ordered **for** a pizza.",
+              "right": "I **ordered** a pizza.",
+              "urdu": "میں نے پیزا کا آرڈر دیا۔",
+              "note": null
             }
-          ],
-          "examTips": [
-            "Ask what or whom after the verb to locate the direct object.",
-            "Do not add a preposition after transitive verbs such as discuss, affect, and enter."
-          ],
-          "tableTitle": "",
-          "tableColumns": [],
-          "tableRows": [],
-          "exampleWords": "open, write, evaluate, approve, discuss, submit",
-          "ruleExamples": [
-            "The examiner **evaluated the scripts**.",
-            "The commission approved **what? The policy**.",
-            "The committee **discussed the proposal**, not discussed about the proposal."
-          ]
-        },
-        {
-          "name": "Intransitive Verb",
-          "description": "An intransitive verb expresses a complete action or state without requiring a direct object.",
-          "urduExplanation": "فعلِ لازم ایسا عمل یا حالت ظاہر کرتا ہے جو براہِ راست مفعول کے بغیر بھی مکمل معنی دیتی ہے۔",
-          "wordFocus": "In 'The delegation arrived before the hearing', 'arrived' is complete without a direct object; the remaining phrase gives time.",
-          "subjectVerbAgreement": "The delegation arrived before the hearing. 'Arrived' is an intransitive verb with no direct object; 'before the hearing' is a prepositional phrase, and 'delegation' is the subject.",
-          "rules": [
-            "An intransitive verb can complete its meaning without a **direct object**.",
-            "A phrase after a preposition is not a **direct object**.",
-            "Some intransitive verbs cannot normally be changed into the **passive voice**."
-          ],
-          "examples": [
-            {
-              "text": "The delegation arrived before the hearing began.",
-              "urdu": "وفد سماعت شروع ہونے سے پہلے پہنچ گیا۔",
-              "note": "'Arrived' is intransitive and complete without an object; 'before the hearing began' is a time clause."
-            },
-            {
-              "text": "The candidates waited outside the examination hall.",
-              "urdu": "امیدوار امتحانی ہال کے باہر انتظار کرتے رہے۔",
-              "note": "'Waited' is intransitive; 'outside the examination hall' is a prepositional phrase, not an object."
-            },
-            {
-              "text": "The evidence disappeared during the investigation.",
-              "urdu": "تحقیقات کے دوران شواہد غائب ہو گئے۔",
-              "note": "'Disappeared' is intransitive and does not transfer an action to a direct object."
-            },
-            {
-              "text": "The administration responded promptly to the public’s concerns.",
-              "urdu": "انتظامیہ نے عوام کے خدشات کا فوری جواب دیا۔",
-              "note": "'Responded' is used intransitively here; 'to the concerns' is a prepositional phrase."
-            }
-          ],
-          "commonMistakes": [
-            {
-              "wrong": "The delegation arrived the venue on time.",
-              "right": "The delegation arrived at the venue on time.",
-              "urdu": "وفد وقت پر مقام پر پہنچ گیا۔",
-              "note": "'Arrive' does not take a direct object; use the preposition 'at' before a specific place."
-            },
-            {
-              "wrong": "The candidates entered into the examination hall.",
-              "right": "The candidates entered the examination hall.",
-              "urdu": "امیدوار امتحانی ہال میں داخل ہوئے۔",
-              "note": "'Enter' is transitive and takes the place directly, so 'into' is unnecessary here."
-            },
-            {
-              "wrong": "The evidence disappeared it during the audit.",
-              "right": "The evidence disappeared during the audit.",
-              "urdu": "آڈٹ کے دوران شواہد غائب ہو گئے۔",
-              "note": "'Disappeared' is complete without an object; the extra pronoun 'it' is grammatically unnecessary."
-            },
-            {
-              "wrong": "The delegation **arrived the venue** on time.",
-              "right": "The delegation **arrived at the venue** on time.",
-              "urdu": "وفد وقت پر مقام پر پہنچ گیا۔",
-              "note": "The intransitive verb **arrive** needs **at** before a specific place; the place is not a direct object."
-            }
-          ],
-          "examTips": [
-            "Do not treat every noun after an intransitive verb as an object; check whether a preposition introduces it.",
-            "Remember that some verbs change category with context, especially enter, open, run, and grow."
-          ],
-          "tableTitle": "",
-          "tableColumns": [],
-          "tableRows": [],
-          "exampleWords": "arrive, cry, laugh, sleep, occur, disappear",
-          "ruleExamples": [
-            "The delegation **arrived** on time.",
-            "The baby **cried** in the room.",
-            "The problem **occurred** during the audit."
           ]
         }
       ],
@@ -7270,9 +4035,9 @@
       ],
       "examples": [
         {
-          "text": "I eat an apple.",
-          "urdu": "میں ایک سیب کھاتا ہوں۔",
-          "note": "**Eat** is the verb because it shows the action performed by the speaker."
+          "text": "Run, eat, sleep, is, am, are",
+          "urdu": "دوڑنا، کھانا، سونا، ہے، ہوں، ہیں",
+          "note": null
         }
       ],
       "commonMistakes": [
@@ -8044,7 +4809,8 @@
             }
           ]
         }
-      ]
+      ],
+      "footerImage": "assets/grammar/images/verbs_master_table.png"
     }
   },
   {

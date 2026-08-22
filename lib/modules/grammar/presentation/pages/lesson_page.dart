@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:vector_math/vector_math_64.dart' show Vector3;
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:lexiora/app/router/app_routes.dart';
@@ -1224,8 +1225,8 @@ class _ZoomableFooterImageState extends State<_ZoomableFooterImage> {
     } else {
       final position = _doubleTapDetails!.localPosition;
       _transformationController.value = Matrix4.identity()
-        ..translate(-position.dx * 1.5, -position.dy * 1.5)
-        ..scale(2.5);
+        ..translateByVector3(Vector3(-position.dx * 1.5, -position.dy * 1.5, 0))
+        ..scaleByDouble(2.5);
     }
   }
 

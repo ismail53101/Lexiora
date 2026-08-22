@@ -11,6 +11,7 @@ class PracticeQuestionCard extends StatefulWidget {
     super.key,
     required this.question,
     this.index,
+    this.onAnswer,
   });
 
   final GrammarQuestion question;
