@@ -50,9 +50,9 @@ void main() {
     final List<GrammarTopicSummary> categories = await ds.children(null);
     expect(categories.length, greaterThanOrEqualTo(14));
 
-    // Parts of Speech → 9 leaves.
+    // Parts of Speech → 9 grammar leaves plus the dedicated Quiz item.
     final List<GrammarTopicSummary> pos = await ds.children('parts-of-speech');
-    expect(pos.length, 9);
+    expect(pos.length, 10);
     expect(pos.every((GrammarTopicSummary t) => t.isLeaf), isTrue);
 
     // Tenses → 3 time branches → 4 tenses each.
