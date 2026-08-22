@@ -144,6 +144,9 @@ class _LessonView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final ThemeData theme = Theme.of(context);
+    if (lesson.id == 'pos/quiz') {
+      return _AllInOneQuizView(lesson: lesson);
+    }
     if (lesson.id == 'pos/noun' ||
         lesson.id == 'pos/pronoun' ||
         lesson.id == 'pos/verb' ||
@@ -1242,6 +1245,227 @@ class _ZoomableFooterImageState extends State<_ZoomableFooterImage> {
             widget.imagePath,
             fit: BoxFit.contain,
           ),
+        ),
+      ),
+    );
+  }
+}
+
+class _AllInOneQuizView extends StatefulWidget {
+  const _AllInOneQuizView({required this.lesson});
+  final GrammarLesson lesson;
+
+  @override
+  State<_AllInOneQuizView> createState() => _AllInOneQuizViewState();
+}
+
+class _AllInOneQuizViewState extends State<_AllInOneQuizView> {
+  late List<GrammarQuestion> _questions;
+  int _currentIndex = 0;
+  int _score = 0;
+  bool _answered = false;
+  bool _finished = false;
+  final List<bool> _results = [];
+
+  @override
+  void initState() {
+    super.initState();
+    _startQuiz();
+  }
+
+  void _startQuiz() {
+    setState(() {
+      _questions = List.from(widget.lesson.quiz)..shuffle();
+      if (_questions.length > 20) {
+        _questions = _questions.take(20).toList();
+      }
+      _currentIndex = 0;
+      _score = 0;
+      _answered = false;
+      _finished = false;
+      _results.clear();
+    });
+  }
+
+  void _handleAnswer(int index, bool isCorrect) {
+    if (_answered) return;
+    setState(() {
+      _answered = true;
+      if (isCorrect) _score++;
+      _results.add(isCorrect);
+    });
+  }
+
+  void _next() {
+    setState(() {
+      if (_currentIndex < _questions.length - 1) {
+        _currentIndex++;
+        _answered = false;
+      } else {
+        _finished = true;
+      }
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final ThemeData theme = Theme.of(context);
+
+    if (_finished) {
+      return _QuizResultView(
+        score: _score,
+        total: _questions.length,
+        onRetry: _startQuiz,
+      );
+    }
+
+    if (_questions.isEmpty) {
+      return const Center(child: Text('No questions available.'));
+    }
+
+    final q = _questions[_currentIndex];
+
+    return ListView(
+      padding: const EdgeInsets.fromLTRB(16, 16, 16, 24),
+      children: [
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Text(
+              'Question ${_currentIndex + 1} of ${_questions.length}',
+              style: theme.textTheme.titleMedium?.copyWith(fontWeight: FontWeight.bold),
+            ),
+            Text(
+              'Score: $_score',
+              style: theme.textTheme.titleMedium?.copyWith(
+                color: theme.colorScheme.primary,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+          ],
+        ),
+        const SizedBox(height: 12),
+        LinearProgressIndicator(
+          value: (_currentIndex + 1) / _questions.length,
+          backgroundColor: theme.colorScheme.surfaceContainerHighest,
+          borderRadius: BorderRadius.circular(8),
+        ),
+        const SizedBox(height: 24),
+        PracticeQuestionCard(
+          key: ValueKey('q_$_currentIndex'),
+          question: q,
+          onAnswer: _handleAnswer,
+        ),
+        const SizedBox(height: 16),
+        if (_answered)
+          ElevatedButton(
+            onPressed: _next,
+            style: ElevatedButton.styleFrom(
+              minimumSize: const Size(double.infinity, 50),
+              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+            ),
+            child: Text(_currentIndex < _questions.length - 1 ? 'Next Question' : 'See Results'),
+          ),
+      ],
+    );
+  }
+}
+
+class _QuizResultView extends StatelessWidget {
+  const _QuizResultView({
+    required this.score,
+    required this.total,
+    required this.onRetry,
+  });
+
+  final int score;
+  final int total;
+  final VoidCallback onRetry;
+
+  @override
+  Widget build(BuildContext context) {
+    final ThemeData theme = Theme.of(context);
+    final double percentage = (score / total) * 100;
+    
+    String performance;
+    Color color;
+    if (percentage >= 90) {
+      performance = 'Excellent';
+      color = Colors.green;
+    } else if (percentage >= 75) {
+      performance = 'Very Good';
+      color = Colors.blue;
+    } else if (percentage >= 60) {
+      performance = 'Good';
+      color = Colors.orange;
+    } else if (percentage >= 40) {
+      performance = 'Needs Improvement';
+      color = Colors.deepOrange;
+    } else {
+      performance = 'More Practice Needed';
+      color = Colors.red;
+    }
+
+    return Center(
+      child: SingleChildScrollView(
+        padding: const EdgeInsets.all(24),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Icon(Icons.emoji_events_outlined, size: 80, color: color),
+            const SizedBox(height: 24),
+            Text(
+              'Quiz Completed!',
+              style: theme.textTheme.headlineMedium?.copyWith(fontWeight: FontWeight.bold),
+            ),
+            const SizedBox(height: 16),
+            Text(
+              'Your Score',
+              style: theme.textTheme.titleMedium,
+            ),
+            Text(
+              '$score / $total',
+              style: theme.textTheme.displayMedium?.copyWith(
+                color: color,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+            Text(
+              '${percentage.toStringAsFixed(0)}%',
+              style: theme.textTheme.titleLarge?.copyWith(color: color),
+            ),
+            const SizedBox(height: 24),
+            Container(
+              padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
+              decoration: BoxDecoration(
+                color: color.withValues(alpha: 0.1),
+                borderRadius: BorderRadius.circular(30),
+                border: Border.all(color: color.withValues(alpha: 0.5)),
+              ),
+              child: Text(
+                performance,
+                style: theme.textTheme.titleMedium?.copyWith(
+                  color: color,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+            ),
+            const SizedBox(height: 48),
+            ElevatedButton.icon(
+              onPressed: onRetry,
+              icon: const Icon(Icons.refresh),
+              label: const Text('Retry Quiz'),
+              style: ElevatedButton.styleFrom(
+                minimumSize: const Size(200, 50),
+              ),
+            ),
+            const SizedBox(height: 12),
+            TextButton.icon(
+              onPressed: () => Navigator.of(context).pop(),
+              icon: const Icon(Icons.arrow_back),
+              label: const Text('Back to Parts of Speech'),
+            ),
+          ],
         ),
       ),
     );

@@ -20687,7 +20687,851 @@
     "content": {
       "introduction": "Test your knowledge of all Parts of Speech.",
       "urduExplanation": "تمام پارٹس آف اسپیچ کے بارے میں اپنے علم کا امتحان لیں۔",
-      "englishExplanation": "This quiz covers Nouns, Pronouns, Verbs, Adjectives, Adverbs, Prepositions, Conjunctions, Interjections, and Determiners."
+      "englishExplanation": "This quiz covers Nouns, Pronouns, Verbs, Adjectives, Adverbs, Prepositions, Conjunctions, Interjections, and Determiners.",
+      "quiz": [
+        {
+          "question": "Identify the part of speech of the underlined word: 'He runs **very** fast.'",
+          "options": [
+            "Adjective",
+            "Adverb",
+            "Verb",
+            "Noun"
+          ],
+          "answerIndex": 1,
+          "explanation": "**Adverb**. 'Very' modifies the adverb 'fast', and words that modify adverbs are also adverbs.",
+          "examTip": null
+        },
+        {
+          "question": "Identify the part of speech of 'fast' in: 'He is a **fast** runner.'",
+          "options": [
+            "Adjective",
+            "Adverb",
+            "Verb",
+            "Noun"
+          ],
+          "answerIndex": 0,
+          "explanation": "**Adjective**. Here, 'fast' modifies the noun 'runner'.",
+          "examTip": null
+        },
+        {
+          "question": "Identify the part of speech of 'fast' in: 'He runs **fast**.'",
+          "options": [
+            "Adjective",
+            "Adverb",
+            "Verb",
+            "Noun"
+          ],
+          "answerIndex": 1,
+          "explanation": "**Adverb**. Here, 'fast' modifies the verb 'runs'.",
+          "examTip": null
+        },
+        {
+          "question": "In the sentence 'The **book** is on the table', 'book' is a:",
+          "options": [
+            "Proper Noun",
+            "Common Noun",
+            "Collective Noun",
+            "Abstract Noun"
+          ],
+          "answerIndex": 1,
+          "explanation": "**Common Noun**. It refers to a general class of objects.",
+          "examTip": null
+        },
+        {
+          "question": "Identify the part of speech: 'Alas! The king is dead.'",
+          "options": [
+            "Conjunction",
+            "Preposition",
+            "Interjection",
+            "Adverb"
+          ],
+          "answerIndex": 2,
+          "explanation": "**Interjection**. 'Alas' expresses a sudden emotion of sorrow.",
+          "examTip": null
+        },
+        {
+          "question": "Identify the part of speech: 'He worked hard, **but** he failed.'",
+          "options": [
+            "Preposition",
+            "Conjunction",
+            "Adverb",
+            "Adjective"
+          ],
+          "answerIndex": 1,
+          "explanation": "**Conjunction**. 'But' connects two independent clauses.",
+          "examTip": null
+        },
+        {
+          "question": "Identify the part of speech: 'The cat is **under** the table.'",
+          "options": [
+            "Adverb",
+            "Conjunction",
+            "Preposition",
+            "Adjective"
+          ],
+          "answerIndex": 2,
+          "explanation": "**Preposition**. 'Under' shows the relationship between the cat and the table.",
+          "examTip": null
+        },
+        {
+          "question": "Identify the part of speech: 'This is **my** book.'",
+          "options": [
+            "Pronoun",
+            "Determiner",
+            "Adjective",
+            "Noun"
+          ],
+          "answerIndex": 1,
+          "explanation": "**Determiner** (specifically a possessive determiner). It comes before the noun 'book' to specify possession.",
+          "examTip": null
+        },
+        {
+          "question": "Identify the part of speech: 'She **herself** told me the news.'",
+          "options": [
+            "Relative Pronoun",
+            "Reflexive Pronoun",
+            "Emphatic Pronoun",
+            "Personal Pronoun"
+          ],
+          "answerIndex": 2,
+          "explanation": "**Emphatic Pronoun**. It is used for emphasis and can be removed without changing the basic meaning.",
+          "examTip": null
+        },
+        {
+          "question": "Identify the part of speech: 'I have **some** milk.'",
+          "options": [
+            "Adjective",
+            "Pronoun",
+            "Determiner",
+            "Adverb"
+          ],
+          "answerIndex": 2,
+          "explanation": "**Determiner** (Quantifier). It specifies the quantity of the noun 'milk'.",
+          "examTip": null
+        },
+        {
+          "question": "Each of the students ____ responsible for completing the assignment.",
+          "options": [
+            "are",
+            "were",
+            "is",
+            "have"
+          ],
+          "answerIndex": 2,
+          "explanation": "'Each' is always singular and takes a singular verb 'is'.",
+          "examTip": "Exam Tip: 'Each' and 'every' always take singular verbs."
+        },
+        {
+          "question": "Neither of the candidates ____ qualified for the position.",
+          "options": [
+            "are",
+            "were",
+            "is",
+            "have"
+          ],
+          "answerIndex": 2,
+          "explanation": "'Neither' is treated as singular in formal grammar, so 'is' is correct.",
+          "examTip": null
+        },
+        {
+          "question": "The quality of the apples ____ not good.",
+          "options": [
+            "are",
+            "were",
+            "is",
+            "have"
+          ],
+          "answerIndex": 2,
+          "explanation": "The subject is 'quality' (singular), not 'apples'. Therefore, the verb must be 'is'.",
+          "examTip": null
+        },
+        {
+          "question": "Politics ____ a dirty game.",
+          "options": [
+            "are",
+            "were",
+            "is",
+            "have"
+          ],
+          "answerIndex": 2,
+          "explanation": "Some nouns like 'politics', 'news', 'mathematics' end in -s but are singular in meaning.",
+          "examTip": null
+        },
+        {
+          "question": "A number of students ____ present today.",
+          "options": [
+            "is",
+            "are",
+            "was",
+            "has"
+          ],
+          "answerIndex": 1,
+          "explanation": "'A number of' is followed by a plural verb 'are'.",
+          "examTip": "Exam Tip: 'A number of' + Plural Verb; 'The number of' + Singular Verb."
+        },
+        {
+          "question": "The number of students in this class ____ twenty.",
+          "options": [
+            "is",
+            "are",
+            "were",
+            "have"
+          ],
+          "answerIndex": 0,
+          "explanation": "'The number of' is followed by a singular verb 'is'.",
+          "examTip": null
+        },
+        {
+          "question": "Bread and butter ____ my favorite breakfast.",
+          "options": [
+            "are",
+            "is",
+            "were",
+            "have"
+          ],
+          "answerIndex": 1,
+          "explanation": "When two nouns represent a single idea or unit, they take a singular verb.",
+          "examTip": null
+        },
+        {
+          "question": "Either Ali or his friends ____ going to the party.",
+          "options": [
+            "is",
+            "are",
+            "was",
+            "has"
+          ],
+          "answerIndex": 1,
+          "explanation": "When subjects are joined by 'either...or', the verb agrees with the closer subject ('friends').",
+          "examTip": null
+        },
+        {
+          "question": "Neither the teacher nor the students ____ reached yet.",
+          "options": [
+            "has",
+            "have",
+            "is",
+            "was"
+          ],
+          "answerIndex": 1,
+          "explanation": "The verb agrees with the closer subject 'students' (plural), so 'have' is correct.",
+          "examTip": null
+        },
+        {
+          "question": "Ten miles ____ a long distance to walk.",
+          "options": [
+            "are",
+            "is",
+            "were",
+            "have"
+          ],
+          "answerIndex": 1,
+          "explanation": "Plural-looking nouns of measurement, time, or money are treated as singular units.",
+          "examTip": null
+        },
+        {
+          "question": "Choose the correct sentence:",
+          "options": [
+            "He discussed about the matter.",
+            "He discussed the matter.",
+            "He discussed on the matter.",
+            "He discussed for the matter."
+          ],
+          "answerIndex": 1,
+          "explanation": "The verb 'discuss' is transitive and does not take the preposition 'about'.",
+          "examTip": null
+        },
+        {
+          "question": "Choose the correct sentence:",
+          "options": [
+            "He entered into the room.",
+            "He entered the room.",
+            "He entered in the room.",
+            "He entered inside the room."
+          ],
+          "answerIndex": 1,
+          "explanation": "We 'enter a room', not 'enter into' it (unless referring to an agreement or contract).",
+          "examTip": null
+        },
+        {
+          "question": "I prefer tea ____ coffee.",
+          "options": [
+            "than",
+            "to",
+            "over",
+            "from"
+          ],
+          "answerIndex": 1,
+          "explanation": "The verb 'prefer' is always followed by the preposition 'to'.",
+          "examTip": "Exam Tip: Prefer X to Y (NOT than)."
+        },
+        {
+          "question": "He is senior ____ me by two years.",
+          "options": [
+            "than",
+            "to",
+            "from",
+            "of"
+          ],
+          "answerIndex": 1,
+          "explanation": "Adjectives ending in -ior (senior, junior, superior, inferior) take 'to' instead of 'than'.",
+          "examTip": null
+        },
+        {
+          "question": "She is capable ____ doing this work.",
+          "options": [
+            "to",
+            "of",
+            "for",
+            "in"
+          ],
+          "answerIndex": 1,
+          "explanation": "'Capable' is followed by 'of' + gerund (-ing).",
+          "examTip": null
+        },
+        {
+          "question": "I am interested ____ learning English.",
+          "options": [
+            "to",
+            "in",
+            "for",
+            "at"
+          ],
+          "answerIndex": 1,
+          "explanation": "'Interested' is followed by the preposition 'in'.",
+          "examTip": null
+        },
+        {
+          "question": "He is good ____ Mathematics.",
+          "options": [
+            "in",
+            "at",
+            "for",
+            "with"
+          ],
+          "answerIndex": 1,
+          "explanation": "We use 'good at' a subject or skill, not 'good in'.",
+          "examTip": null
+        },
+        {
+          "question": "The committee consists ____ five members.",
+          "options": [
+            "of",
+            "in",
+            "with",
+            "from"
+          ],
+          "answerIndex": 0,
+          "explanation": "'Consist' is followed by 'of'.",
+          "examTip": null
+        },
+        {
+          "question": "Your book is different ____ mine.",
+          "options": [
+            "than",
+            "from",
+            "to",
+            "with"
+          ],
+          "answerIndex": 1,
+          "explanation": "In standard exam English, 'different from' is the preferred construction.",
+          "examTip": null
+        },
+        {
+          "question": "He was married ____ my cousin.",
+          "options": [
+            "with",
+            "to",
+            "by",
+            "for"
+          ],
+          "answerIndex": 1,
+          "explanation": "The correct preposition after 'married' is 'to', not 'with'.",
+          "examTip": null
+        },
+        {
+          "question": "Correct the sentence: 'Neither of the boys have completed his assignment.'",
+          "options": [
+            "Neither of the boys have completed his assignment.",
+            "Neither of the boys has completed his assignment.",
+            "Neither of the boys are completing his assignment.",
+            "Neither of the boys were completed his assignment."
+          ],
+          "answerIndex": 1,
+          "explanation": "'Neither' is singular, so it takes the singular verb 'has'.",
+          "examTip": null
+        },
+        {
+          "question": "Correct the sentence: 'If I will go to Lahore, I will bring a gift for you.'",
+          "options": [
+            "If I will go to Lahore, I will bring a gift for you.",
+            "If I go to Lahore, I will bring a gift for you.",
+            "If I would go to Lahore, I will bring a gift for you.",
+            "If I went to Lahore, I will bring a gift for you."
+          ],
+          "answerIndex": 1,
+          "explanation": "In first conditional sentences, the if-clause uses the present simple tense.",
+          "examTip": null
+        },
+        {
+          "question": "Correct the sentence: 'He is more taller than his brother.'",
+          "options": [
+            "He is more taller than his brother.",
+            "He is taller than his brother.",
+            "He is most taller than his brother.",
+            "He is as taller as his brother."
+          ],
+          "answerIndex": 1,
+          "explanation": "Avoid double comparatives. 'Taller' is already comparative; 'more' is unnecessary.",
+          "examTip": null
+        },
+        {
+          "question": "Correct the sentence: 'I don't know nothing about it.'",
+          "options": [
+            "I don't know nothing about it.",
+            "I don't know anything about it.",
+            "I know anything about it.",
+            "I not know nothing about it."
+          ],
+          "answerIndex": 1,
+          "explanation": "Avoid double negatives. 'Don't' and 'nothing' create an incorrect construction.",
+          "examTip": null
+        },
+        {
+          "question": "Correct the sentence: 'She has been living here since two years.'",
+          "options": [
+            "She has been living here since two years.",
+            "She has been living here for two years.",
+            "She is living here since two years.",
+            "She was living here for two years."
+          ],
+          "answerIndex": 1,
+          "explanation": "Use 'for' for duration (two years) and 'since' for a starting point.",
+          "examTip": null
+        },
+        {
+          "question": "Correct the sentence: 'He told to me a story.'",
+          "options": [
+            "He told to me a story.",
+            "He told me a story.",
+            "He said me a story.",
+            "He told with me a story."
+          ],
+          "answerIndex": 1,
+          "explanation": "The verb 'tell' is followed by an indirect object without the preposition 'to'.",
+          "examTip": null
+        },
+        {
+          "question": "Correct the sentence: 'The scenery of Swat are beautiful.'",
+          "options": [
+            "The scenery of Swat are beautiful.",
+            "The sceneries of Swat are beautiful.",
+            "The scenery of Swat is beautiful.",
+            "The scenery of Swat were beautiful."
+          ],
+          "answerIndex": 2,
+          "explanation": "'Scenery' is an uncountable noun and always takes a singular verb 'is'.",
+          "examTip": null
+        },
+        {
+          "question": "Correct the sentence: 'One should do his duty.'",
+          "options": [
+            "One should do his duty.",
+            "One should do one's duty.",
+            "One should do their duty.",
+            "One should do her duty."
+          ],
+          "answerIndex": 1,
+          "explanation": "The pronoun 'one' should be followed by 'one's', not 'his' or 'her'.",
+          "examTip": null
+        },
+        {
+          "question": "Correct the sentence: 'I saw a dead man walking in the park.' (Misplaced Modifier)",
+          "options": [
+            "I saw a dead man walking in the park.",
+            "Walking in the park, I saw a dead man.",
+            "I saw walking in the park a dead man.",
+            "A dead man was seen by me walking in the park."
+          ],
+          "answerIndex": 1,
+          "explanation": "The modifier 'Walking in the park' should be close to the person doing the action ('I').",
+          "examTip": null
+        },
+        {
+          "question": "Correct the sentence: 'He is the most cleverest boy.'",
+          "options": [
+            "He is the most cleverest boy.",
+            "He is the cleverest boy.",
+            "He is cleverest boy.",
+            "He is more cleverest boy."
+          ],
+          "answerIndex": 1,
+          "explanation": "Avoid double superlatives. 'Cleverest' is already superlative.",
+          "examTip": null
+        },
+        {
+          "question": "Choose the correct sentence:",
+          "options": [
+            "He is more clever than his brother.",
+            "He is cleverer than his brother.",
+            "He is cleverest than his brother.",
+            "He is clever than his brother."
+          ],
+          "answerIndex": 1,
+          "explanation": "For two-syllable adjectives ending in -y or -er, the comparative is usually formed by adding -er.",
+          "examTip": null
+        },
+        {
+          "question": "I have been waiting here ___ 9 o'clock.",
+          "options": [
+            "for",
+            "since",
+            "from",
+            "at"
+          ],
+          "answerIndex": 1,
+          "explanation": "Use **since** for a specific point in time (9 o'clock).",
+          "examTip": null
+        },
+        {
+          "question": "He is ___ European.",
+          "options": [
+            "a",
+            "an",
+            "the",
+            "no article"
+          ],
+          "answerIndex": 0,
+          "explanation": "Use **a** because 'European' starts with a consonant sound (yoo).",
+          "examTip": null
+        },
+        {
+          "question": "Neither of my parents ___ at home.",
+          "options": [
+            "is",
+            "are",
+            "were",
+            "have"
+          ],
+          "answerIndex": 0,
+          "explanation": "'Neither' takes a singular verb 'is'.",
+          "examTip": null
+        },
+        {
+          "question": "One of my friends ___ coming today.",
+          "options": [
+            "is",
+            "are",
+            "were",
+            "have"
+          ],
+          "answerIndex": 0,
+          "explanation": "The subject is 'one' (singular), so the verb is 'is'.",
+          "examTip": null
+        },
+        {
+          "question": "The news ___ true.",
+          "options": [
+            "is",
+            "are",
+            "were",
+            "have"
+          ],
+          "answerIndex": 0,
+          "explanation": "'News' is uncountable and takes a singular verb.",
+          "examTip": null
+        },
+        {
+          "question": "He as well as his friends ___ responsible.",
+          "options": [
+            "is",
+            "are",
+            "were",
+            "have"
+          ],
+          "answerIndex": 0,
+          "explanation": "When subjects are joined by 'as well as', the verb agrees with the first subject ('He').",
+          "examTip": null
+        },
+        {
+          "question": "A lot of work ___ still to be done.",
+          "options": [
+            "remains",
+            "remain",
+            "remaining",
+            "has remain"
+          ],
+          "answerIndex": 0,
+          "explanation": "With 'a lot of', the verb agrees with the noun ('work' is uncountable/singular).",
+          "examTip": null
+        },
+        {
+          "question": "Many a man ___ died in the war.",
+          "options": [
+            "has",
+            "have",
+            "is",
+            "are"
+          ],
+          "answerIndex": 0,
+          "explanation": "The phrase 'Many a' is followed by a singular noun and a singular verb.",
+          "examTip": null
+        },
+        {
+          "question": "Either of the two books ___ good.",
+          "options": [
+            "is",
+            "are",
+            "were",
+            "have"
+          ],
+          "answerIndex": 0,
+          "explanation": "'Either' refers to one of two and takes a singular verb.",
+          "examTip": null
+        },
+        {
+          "question": "The captain with all his sailors ___ drowned.",
+          "options": [
+            "was",
+            "were",
+            "are",
+            "have"
+          ],
+          "answerIndex": 0,
+          "explanation": "The verb agrees with the first subject 'captain' (singular).",
+          "examTip": null
+        },
+        {
+          "question": "Slow and steady ___ the race.",
+          "options": [
+            "wins",
+            "win",
+            "winning",
+            "won"
+          ],
+          "answerIndex": 0,
+          "explanation": "When two nouns express one idea, they take a singular verb.",
+          "examTip": null
+        },
+        {
+          "question": "None of the students ___ done their homework.",
+          "options": [
+            "has",
+            "have",
+            "is",
+            "are"
+          ],
+          "answerIndex": 0,
+          "explanation": "In formal English, 'none' (not one) takes a singular verb.",
+          "examTip": null
+        },
+        {
+          "question": "My spectacles ___ broken.",
+          "options": [
+            "is",
+            "are",
+            "was",
+            "has"
+          ],
+          "answerIndex": 1,
+          "explanation": "Some nouns like 'spectacles', 'trousers', 'scissors' are always plural.",
+          "examTip": null
+        },
+        {
+          "question": "The committee ___ divided in their opinion.",
+          "options": [
+            "is",
+            "are",
+            "was",
+            "has"
+          ],
+          "answerIndex": 1,
+          "explanation": "When a collective noun shows disagreement among members, it takes a plural verb.",
+          "examTip": null
+        },
+        {
+          "question": "The number of books in the library ___ increasing.",
+          "options": [
+            "is",
+            "are",
+            "were",
+            "have"
+          ],
+          "answerIndex": 0,
+          "explanation": "'The number of' takes a singular verb.",
+          "examTip": null
+        },
+        {
+          "question": "I wish I ___ a king.",
+          "options": [
+            "am",
+            "was",
+            "were",
+            "is"
+          ],
+          "answerIndex": 2,
+          "explanation": "In hypothetical/wish sentences, 'were' is used for all subjects.",
+          "examTip": null
+        },
+        {
+          "question": "He works as if he ___ mad.",
+          "options": [
+            "is",
+            "was",
+            "were",
+            "be"
+          ],
+          "answerIndex": 2,
+          "explanation": "Use 'were' for imaginary conditions.",
+          "examTip": null
+        },
+        {
+          "question": "Physics ___ my favorite subject.",
+          "options": [
+            "is",
+            "are",
+            "were",
+            "have"
+          ],
+          "answerIndex": 0,
+          "explanation": "Subjects like Physics, Mathematics, etc., are singular.",
+          "examTip": null
+        },
+        {
+          "question": "Each man and each woman ___ given a gift.",
+          "options": [
+            "was",
+            "were",
+            "are",
+            "have"
+          ],
+          "answerIndex": 0,
+          "explanation": "When each/every precedes nouns joined by 'and', the verb is singular.",
+          "examTip": null
+        }
+      ],
+      "practice": [
+        {
+          "question": "Identify the part of speech of the underlined word: 'He runs **very** fast.'",
+          "options": [
+            "Adjective",
+            "Adverb",
+            "Verb",
+            "Noun"
+          ],
+          "answerIndex": 1,
+          "explanation": "**Adverb**. 'Very' modifies the adverb 'fast', and words that modify adverbs are also adverbs.",
+          "examTip": null
+        },
+        {
+          "question": "Identify the part of speech of 'fast' in: 'He is a **fast** runner.'",
+          "options": [
+            "Adjective",
+            "Adverb",
+            "Verb",
+            "Noun"
+          ],
+          "answerIndex": 0,
+          "explanation": "**Adjective**. Here, 'fast' modifies the noun 'runner'.",
+          "examTip": null
+        },
+        {
+          "question": "Identify the part of speech of 'fast' in: 'He runs **fast**.'",
+          "options": [
+            "Adjective",
+            "Adverb",
+            "Verb",
+            "Noun"
+          ],
+          "answerIndex": 1,
+          "explanation": "**Adverb**. Here, 'fast' modifies the verb 'runs'.",
+          "examTip": null
+        },
+        {
+          "question": "In the sentence 'The **book** is on the table', 'book' is a:",
+          "options": [
+            "Proper Noun",
+            "Common Noun",
+            "Collective Noun",
+            "Abstract Noun"
+          ],
+          "answerIndex": 1,
+          "explanation": "**Common Noun**. It refers to a general class of objects.",
+          "examTip": null
+        },
+        {
+          "question": "Identify the part of speech: 'Alas! The king is dead.'",
+          "options": [
+            "Conjunction",
+            "Preposition",
+            "Interjection",
+            "Adverb"
+          ],
+          "answerIndex": 2,
+          "explanation": "**Interjection**. 'Alas' expresses a sudden emotion of sorrow.",
+          "examTip": null
+        },
+        {
+          "question": "Identify the part of speech: 'He worked hard, **but** he failed.'",
+          "options": [
+            "Preposition",
+            "Conjunction",
+            "Adverb",
+            "Adjective"
+          ],
+          "answerIndex": 1,
+          "explanation": "**Conjunction**. 'But' connects two independent clauses.",
+          "examTip": null
+        },
+        {
+          "question": "Identify the part of speech: 'The cat is **under** the table.'",
+          "options": [
+            "Adverb",
+            "Conjunction",
+            "Preposition",
+            "Adjective"
+          ],
+          "answerIndex": 2,
+          "explanation": "**Preposition**. 'Under' shows the relationship between the cat and the table.",
+          "examTip": null
+        },
+        {
+          "question": "Identify the part of speech: 'This is **my** book.'",
+          "options": [
+            "Pronoun",
+            "Determiner",
+            "Adjective",
+            "Noun"
+          ],
+          "answerIndex": 1,
+          "explanation": "**Determiner** (specifically a possessive determiner). It comes before the noun 'book' to specify possession.",
+          "examTip": null
+        },
+        {
+          "question": "Identify the part of speech: 'She **herself** told me the news.'",
+          "options": [
+            "Relative Pronoun",
+            "Reflexive Pronoun",
+            "Emphatic Pronoun",
+            "Personal Pronoun"
+          ],
+          "answerIndex": 2,
+          "explanation": "**Emphatic Pronoun**. It is used for emphasis and can be removed without changing the basic meaning.",
+          "examTip": null
+        },
+        {
+          "question": "Identify the part of speech: 'I have **some** milk.'",
+          "options": [
+            "Adjective",
+            "Pronoun",
+            "Determiner",
+            "Adverb"
+          ],
+          "answerIndex": 2,
+          "explanation": "**Determiner** (Quantifier). It specifies the quantity of the noun 'milk'.",
+          "examTip": null
+        }
+      ]
     }
   }
 ]

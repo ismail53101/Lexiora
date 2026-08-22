@@ -17,6 +17,7 @@ class PracticeQuestionCard extends StatefulWidget {
 
   /// Optional 1-based number shown as "Question N".
   final int? index;
+  final void Function(int selectedIndex, bool isCorrect)? onAnswer;
 
   @override
   State<PracticeQuestionCard> createState() => _PracticeQuestionCardState();
@@ -31,6 +32,7 @@ class _PracticeQuestionCardState extends State<PracticeQuestionCard> {
   void _select(int i) {
     if (_answered) return;
     setState(() => _selected = i);
+    widget.onAnswer?.call(i, i == widget.question.answerIndex);
   }
 
   void _reset() => setState(() => _selected = null);
