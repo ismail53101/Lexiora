@@ -2017,154 +2017,261 @@
     "order": 7,
     "isLeaf": true,
     "content": {
-      "introduction": "A conjunction is a word that connects words, phrases, or clauses within a sentence, allowing writers to build complex and well-structured ideas. Conjunctions are essential for essay writing in CSS and PMS, where logical flow and connected arguments are heavily rewarded, and for coherence in IELTS writing and speaking. Understanding coordinating, subordinating, and correlative conjunctions helps avoid sentence fragments and run-on sentences.",
-      "urduExplanation": "Conjunction وہ لفظ ہے جو دو الفاظ، phrases یا جملوں کو آپس میں جوڑتا ہے، جیسے 'and', 'but' یا 'because'۔ یہ ہمیں اپنے خیالات کو منطقی انداز میں جوڑنے میں مدد دیتا ہے، جس سے تحریر زیادہ روانی والی اور واضح بنتی ہے۔ coordinating conjunctions برابر حیثیت رکھنے والے جملوں کو جوڑتے ہیں، جبکہ subordinating conjunctions ایک اہم جملے کو دوسرے کم اہم جملے سے جوڑتے ہیں۔ صحیح conjunction کا انتخاب جملے کے معنی کو درست اور واضح بناتا ہے۔",
-      "englishExplanation": "Conjunctions link words, phrases, or clauses to show relationships such as addition, contrast, cause, condition, or time. Coordinating conjunctions (and, but, or, nor, for, so, yet) join elements of equal grammatical rank, while subordinating conjunctions (because, although, if, since, when) join a dependent clause to an independent clause. Correlative conjunctions work in pairs, such as either...or and not only...but also, and require parallel structure on both sides. Using the correct conjunction and punctuation prevents run-on sentences, comma splices, and sentence fragments, which are common errors in exam writing.",
-      "types": [
-        {
-          "name": "Coordinating Conjunction",
-          "description": "Joins words, phrases, or independent clauses of equal importance, e.g., and, but, or, so, yet, for, nor."
-        },
-        {
-          "name": "Subordinating Conjunction",
-          "description": "Joins a dependent clause to an independent clause, showing cause, condition, contrast, or time, e.g., because, although, if, when, since."
-        },
-        {
-          "name": "Correlative Conjunction",
-          "description": "Works in pairs to connect balanced words or phrases, e.g., either...or, neither...nor, not only...but also, both...and."
-        }
-      ],
-      "rules": [
-        "Use a comma before a coordinating conjunction when it joins two independent clauses (She studied hard, so she passed the exam).",
-        "Do not use a comma when a coordinating conjunction joins only two words or phrases, not two full clauses (She studied hard and passed the exam).",
-        "Subordinating conjunctions can begin a sentence; when they do, a comma follows the dependent clause (Although it rained, we continued the match).",
-        "Correlative conjunctions require parallel grammatical structure on both sides (Not only did she study, but she also revised thoroughly).",
-        "Avoid using two conjunctions with the same meaning together (avoid 'Although the exam was hard, but I passed it'; choose one).",
-        "Choose the subordinating conjunction that accurately reflects the logical relationship: because (reason), although (contrast), if (condition), when (time)."
-      ],
+      "introduction": "A conjunction is a word that connects words, phrases, or clauses in a sentence.",
+      "urduExplanation": "حرفِ عطف وہ لفظ ہے جو جملے میں الفاظ، فقروں یا جملوں کے حصوں کو آپس میں جوڑتا ہے۔",
+      "englishExplanation": "Conjunctions are the 'glue' of language. They allow us to form complex sentences by linking different ideas together. There are three main types: Coordinating (joining equal parts), Subordinating (joining dependent parts to independent ones), and Correlative (working in pairs). Proper use of conjunctions is vital for cohesion and flow in writing, especially in formal essays and competitive examinations.",
       "examples": [
         {
-          "text": "She wanted to travel abroad, but she could not afford it.",
-          "note": "coordinating conjunction"
-        },
-        {
-          "text": "Although he was tired, he finished his assignment.",
-          "note": "subordinating conjunction"
-        },
-        {
-          "text": "Either you submit the form today, or you will miss the deadline.",
-          "note": "correlative conjunction"
-        },
-        {
-          "text": "He studies English and Urdu at the academy.",
-          "note": "coordinating conjunction (joining words)"
-        },
-        {
-          "text": "Because the roads were blocked, the exam was delayed.",
-          "note": "subordinating conjunction (reason)"
-        },
-        {
-          "text": "Not only did she pass, but she also topped the merit list.",
-          "note": "correlative conjunction"
-        },
-        {
-          "text": "We stayed indoors since it was raining heavily.",
-          "note": "subordinating conjunction (reason)"
+          "text": "and, but, or, so, because, although, if, either...or, neither...nor",
+          "note": "Common examples of conjunctions."
         }
       ],
-      "commonMistakes": [
+      "footerImage": "assets/grammar/images/conjunctions_master_table.jpg",
+      "types": [
         {
-          "wrong": "Although she was busy, but she helped her friend.",
-          "right": "Although she was busy, she helped her friend.",
-          "note": "do not use both 'although' and 'but' together to express the same contrast"
+          "name": "Coordinating Conjunctions",
+          "description": "Coordinating conjunctions connect words, phrases, or independent clauses of equal grammatical importance.",
+          "urduExplanation": "ہم رتبہ حروفِ عطف وہ الفاظ ہیں جو برابر کی گرامر کی اہمیت رکھنے والے الفاظ، فقروں یا آزاد جملوں کو آپس میں جوڑتے ہیں۔",
+          "exampleWords": "for, and, nor, but, or, yet, so (FANBOYS)",
+          "rules": [
+            "1: Use **and** to add one thing to another.",
+            "2: Use **but** to show contrast or difference.",
+            "3: Use **or** to show a choice or alternative.",
+            "4: Use **so** to show a result or consequence.",
+            "5: Use **for** to show a reason (similar to because).",
+            "6: Use a comma before a coordinating conjunction when it joins two independent clauses."
+          ],
+          "ruleExamples": [
+            "I like tea **and** coffee.\nHe bought a pen **and** a notebook. > Addition: **and**.",
+            "He is poor **but** honest.\nI wanted to go, **but** it was raining. > Contrast: **but**.",
+            "Do you want tea **or** coffee?\nYou can go by bus **or** by train. > Choice: **or**.",
+            "He was tired, **so** he went to sleep.\nIt was raining, **so** we stayed home. > Result: **so**.",
+            "He was happy, **for** he had passed the exam.\nI believed him, **for** he had never lied. > Reason: **for**.",
+            "She is intelligent, **and** she is also very kind.\nHe worked hard, **but** he failed. > Punctuation rule."
+          ],
+          "examples": [
+            {
+              "text": "I like tea **and** coffee.",
+              "urdu": "مجھے چائے اور کافی پسند ہے۔",
+              "note": "**And** connects two similar things."
+            },
+            {
+              "text": "He is poor **but** honest.",
+              "urdu": "وہ غریب ہے لیکن ایماندار ہے۔",
+              "note": "**But** shows contrast."
+            },
+            {
+              "text": "Do you want tea **or** coffee?",
+              "urdu": "کیا آپ چائے چاہتے ہیں یا کافی؟",
+              "note": "**Or** shows a choice."
+            },
+            {
+              "text": "He was tired, **so** he went to sleep.",
+              "urdu": "وہ تھکا ہوا تھا، اس لیے وہ سو گیا۔",
+              "note": "**So** shows the result."
+            },
+            {
+              "text": "She is intelligent, **yet** she is very humble.",
+              "urdu": "وہ ذہین ہے، پھر بھی وہ بہت عاجز ہے۔",
+              "note": "**Yet** shows contrast like but."
+            }
+          ],
+          "commonMistakes": [
+            {
+              "wrong": "He is poor **and** honest. (when you want to show contrast)",
+              "right": "He is poor **but** honest.",
+              "urdu": "وہ غریب ہے لیکن ایماندار ہے۔",
+              "note": "Use **but** to show the contrast between being poor and honest."
+            },
+            {
+              "wrong": "I will go, **or** I will stay. (without a comma joining long clauses)",
+              "right": "I will go, **or** I will stay.",
+              "urdu": "میں جاؤں گا، یا میں رکوں گا۔",
+              "note": "Always use a comma when joining two full sentences."
+            },
+            {
+              "wrong": "He worked hard **so** he passed. (without comma)",
+              "right": "He worked hard, **so** he passed.",
+              "urdu": "اس نے سخت محنت کی، اس لیے وہ پاس ہو گیا۔",
+              "note": "Use a comma before **so** when it connects two clauses."
+            },
+            {
+              "wrong": "Do you want tea **but** coffee?",
+              "right": "Do you want tea **or** coffee?",
+              "urdu": "کیا آپ چائے چاہتے ہیں یا کافی؟",
+              "note": "Use **or** for choices, not **but**."
+            },
+            {
+              "wrong": "He was late **for** he missed the bus. (without comma)",
+              "right": "He was late, **for** he missed the bus.",
+              "urdu": "اسے دیر ہو گئی کیونکہ اس کی بس چھوٹ گئی تھی۔",
+              "note": "When **for** means because, use a comma before it."
+            }
+          ]
         },
         {
-          "wrong": "Neither he nor his friends is coming to the party.",
-          "right": "Neither he nor his friends are coming to the party.",
-          "note": "the verb agrees with the noun closest to it, here the plural 'friends'"
+          "name": "Subordinating Conjunctions",
+          "description": "Subordinating conjunctions connect a dependent (subordinate) clause to an independent clause.",
+          "urduExplanation": "ماتحت حروفِ عطف وہ الفاظ ہیں جو ایک تابع جملے کو ایک آزاد جملے سے جوڑتے ہیں۔",
+          "exampleWords": "because, although, if, since, while, unless, until, after, before",
+          "rules": [
+            "1: Use **because** to show a reason.",
+            "2: Use **although** or **though** to show contrast or concession.",
+            "3: Use **if** or **unless** to show a condition.",
+            "4: Use **since** to show a reason or a point in time.",
+            "5: Use **while** or **as** to show actions happening at the same time.",
+            "6: If the subordinating conjunction starts the sentence, use a comma after the dependent clause."
+          ],
+          "ruleExamples": [
+            "I stayed home **because** it was raining.\nShe cried **because** she was sad. > Reason: **because**.",
+            "**Although** he is rich, he is unhappy.\nHe went out **though** it was cold. > Contrast: **although/though**.",
+            "I will go **if** you come.\nYou will fail **unless** you work hard. > Condition: **if/unless**.",
+            "I have been here **since** morning.\n**Since** you are here, let's start. > Reason/Time: **since**.",
+            "I saw him **while** I was walking.\nShe sang **as** she worked. > Simultaneous actions: **while/as**.",
+            "**Because** it was raining, I stayed home.\n**If** you work hard, you will pass. > Punctuation rule."
+          ],
+          "examples": [
+            {
+              "text": "I stayed home **because** it was raining.",
+              "urdu": "میں گھر پر رہا کیونکہ بارش ہو رہی تھی۔",
+              "note": "**Because** introduces the reason."
+            },
+            {
+              "text": "**Although** he is rich, he is unhappy.",
+              "urdu": "اگرچہ وہ امیر ہے، وہ ناخوش ہے۔",
+              "note": "**Although** shows contrast."
+            },
+            {
+              "text": "I will go **if** you come.",
+              "urdu": "اگر تم آؤ گے تو میں جاؤں گا۔",
+              "note": "**If** shows a condition."
+            },
+            {
+              "text": "You will fail **unless** you work hard.",
+              "urdu": "تم ناکام ہو جاؤ گے جب تک کہ تم محنت نہیں کرو گے۔",
+              "note": "**Unless** means 'if not'."
+            },
+            {
+              "text": "I saw him **while** I was walking.",
+              "urdu": "میں نے اسے دیکھا جب میں چل رہا تھا۔",
+              "note": "**While** shows time."
+            }
+          ],
+          "commonMistakes": [
+            {
+              "wrong": "**Although** he is poor **but** he is honest.",
+              "right": "**Although** he is poor, he is honest. (OR He is poor **but** he is honest.)",
+              "urdu": "اگرچہ وہ غریب ہے، وہ ایماندار ہے۔",
+              "note": "Do not use **although** and **but** in the same sentence."
+            },
+            {
+              "wrong": "**Because** he was ill **so** he stayed home.",
+              "right": "**Because** he was ill, he stayed home. (OR He was ill, **so** he stayed home.)",
+              "urdu": "چونکہ وہ بیمار تھا، وہ گھر پر رہا۔",
+              "note": "Do not use **because** and **so** together."
+            },
+            {
+              "wrong": "I will not go **if** you **will** not come.",
+              "right": "I will not go **if** you **do** not come.",
+              "urdu": "اگر تم نہیں آؤ گے تو میں نہیں جاؤں گا۔",
+              "note": "Do not use 'will' in the if-clause for future conditions."
+            },
+            {
+              "wrong": "Wait here **until** I **don't** come back.",
+              "right": "Wait here **until** I come back.",
+              "urdu": "یہاں انتظار کرو جب تک میں واپس نہ آ جاؤں۔",
+              "note": "**Until** already has a negative meaning; don't use 'not' with it."
+            },
+            {
+              "wrong": "**Unless** you **don't** work hard, you will fail.",
+              "right": "**Unless** you work hard, you will fail.",
+              "urdu": "جب تک تم محنت نہیں کرو گے، تم ناکام ہو جاؤ گے۔",
+              "note": "**Unless** means 'if not', so don't add another 'not'."
+            }
+          ]
         },
         {
-          "wrong": "She is not only intelligent but also she is hardworking.",
-          "right": "She is not only intelligent but also hardworking.",
-          "note": "correlative conjunctions require parallel structure on both sides"
-        },
-        {
-          "wrong": "I like tea, and coffee I also like.",
-          "right": "I like tea, and I also like coffee.",
-          "note": "coordinating conjunctions should join clauses in a natural, parallel word order"
+          "name": "Correlative Conjunctions",
+          "description": "Correlative conjunctions are pairs of words that work together to connect balanced parts of a sentence.",
+          "urduExplanation": "لازمی جوڑی دار حروفِ عطف وہ الفاظ کے جوڑے ہیں جو جملے کے متوازن حصوں کو جوڑنے کے لیے مل کر کام کرتے ہیں۔",
+          "exampleWords": "either...or, neither...nor, both...and, not only...but also, whether...or",
+          "rules": [
+            "1: Use **either...or** to show a choice between two things.",
+            "2: Use **neither...nor** to reject both options.",
+            "3: Use **both...and** to include two things or people.",
+            "4: Use **not only...but also** to emphasize that two things are true.",
+            "5: Ensure parallel structure (use the same grammatical form after both parts of the pair).",
+            "6: When joining subjects, the verb usually agrees with the closer subject."
+          ],
+          "ruleExamples": [
+            "You can **either** stay **or** leave.\n**Either** Ali **or** his friends are coming. > Choice: **either...or**.",
+            "**Neither** Ali **nor** Ahmed is present.\nI like **neither** tea **nor** coffee. > Rejection: **neither...nor**.",
+            "**Both** Ali **and** Ahmed are coming.\nHe is **both** intelligent **and** hardworking. > Inclusion: **both...and**.",
+            "He is **not only** intelligent **but also** kind.\nShe **not only** sings **but also** dances. > Emphasis: **not only...but also**.",
+            "❌ He is **either** intelligent **or** a fool. ✅ He is **either** intelligent **or** foolish. > Parallelism: Use two adjectives.",
+            "**Neither** the teacher **nor** the students **are** here.\n**Neither** the students **nor** the teacher **is** here. > Verb agreement."
+          ],
+          "examples": [
+            {
+              "text": "You can **either** stay **or** leave.",
+              "urdu": "آپ یا تو رک سکتے ہیں یا جا سکتے ہیں۔",
+              "note": "**Either...or** shows a choice."
+            },
+            {
+              "text": "**Neither** Ali **nor** Ahmed is present.",
+              "urdu": "نہ علی اور نہ ہی احمد حاضر ہے۔",
+              "note": "**Neither...nor** negates both."
+            },
+            {
+              "text": "**Both** Ali **and** Ahmed are coming.",
+              "urdu": "علی اور احمد دونوں آ رہے ہیں۔",
+              "note": "**Both...and** includes both."
+            },
+            {
+              "text": "He is **not only** intelligent **but also** kind.",
+              "urdu": "وہ نہ صرف ذہین ہے بلکہ مہربان بھی ہے۔",
+              "note": "**Not only...but also** adds emphasis."
+            },
+            {
+              "text": "**Whether** you like it **or** not, you have to do it.",
+              "urdu": "چاہے آپ کو پسند ہو یا نہ ہو، آپ کو یہ کرنا پڑے گا۔",
+              "note": "**Whether...or** shows two possibilities."
+            }
+          ],
+          "commonMistakes": [
+            {
+              "wrong": "**Neither** Ali **or** Ahmed is here.",
+              "right": "**Neither** Ali **nor** Ahmed is here.",
+              "urdu": "نہ علی اور نہ احمد یہاں ہیں۔",
+              "note": "Always pair **neither** with **nor**, not **or**."
+            },
+            {
+              "wrong": "**Either** you stay **nor** you leave.",
+              "right": "**Either** you stay **or** you leave.",
+              "urdu": "یا تو تم رکو یا تم جاؤ۔",
+              "note": "Always pair **either** with **or**, not **nor**."
+            },
+            {
+              "wrong": "He is **not only** a singer **but** a dancer.",
+              "right": "He is **not only** a singer **but also** a dancer.",
+              "urdu": "وہ نہ صرف ایک گلوکار ہے بلکہ ایک ڈانسر بھی ہے۔",
+              "note": "Don't forget the **also** in **not only...but also**."
+            },
+            {
+              "wrong": "**Both** Ali **as well as** Ahmed came.",
+              "right": "**Both** Ali **and** Ahmed came.",
+              "urdu": "علی اور احمد دونوں آئے۔",
+              "note": "Always pair **both** with **and**, not **as well as**."
+            },
+            {
+              "wrong": "He likes **neither** to swim **nor** running.",
+              "right": "He likes **neither** to swim **nor** to run (OR **neither** swimming **nor** running).",
+              "urdu": "اسے نہ تیرنا پسند ہے اور نہ ہی دوڑنا۔",
+              "note": "Maintain parallel structure (infinitive with infinitive, or gerund with gerund)."
+            }
+          ]
         }
-      ],
-      "practice": [
-        {
-          "question": "Choose the sentence with correct comma usage.",
-          "options": [
-            "She was tired and, she kept working.",
-            "She was tired, and she kept working.",
-            "She was tired and she, kept working.",
-            "She was tired, and, she kept working."
-          ],
-          "answerIndex": 1,
-          "explanation": "A comma is placed before the coordinating conjunction 'and' because it joins two independent clauses."
-        },
-        {
-          "question": "Which sentence uses correlative conjunctions correctly?",
-          "options": [
-            "Both my sister and my brother is studying abroad.",
-            "Both my sister and my brother are studying abroad.",
-            "Both my sister and brother is study abroad.",
-            "Both my sister as well my brother are studying abroad."
-          ],
-          "answerIndex": 1,
-          "explanation": "'Both...and' requires a plural verb, and the sentence must maintain parallel structure."
-        },
-        {
-          "question": "Choose the correct subordinating conjunction: '___ it was raining, the match continued.'",
-          "options": [
-            "Because",
-            "Although",
-            "So",
-            "And"
-          ],
-          "answerIndex": 1,
-          "explanation": "'Although' correctly shows contrast between the rain and the match continuing despite it."
-        }
-      ],
-      "quiz": [
-        {
-          "question": "Which sentence avoids a redundant conjunction pair?",
-          "options": [
-            "Because he was late, so he missed the bus.",
-            "Because he was late, he missed the bus.",
-            "Although he was late, so he missed the bus.",
-            "Since he was late, so he missed the bus."
-          ],
-          "answerIndex": 1,
-          "explanation": "Using only 'because' avoids the redundant pairing with 'so', which repeats the same logical relationship."
-        },
-        {
-          "question": "Choose the sentence with correct correlative conjunction agreement.",
-          "options": [
-            "Neither the teacher nor the students was ready.",
-            "Neither the teacher nor the students were ready.",
-            "Neither the teacher or the students were ready.",
-            "Neither the teacher nor students is ready."
-          ],
-          "answerIndex": 1,
-          "explanation": "The verb agrees with 'students', the noun closest to it, requiring the plural verb 'were'."
-        },
-        {
-          "question": "Which subordinating conjunction best completes: '___ you finish your homework, you cannot watch television.'?",
-          "options": [
-            "Unless",
-            "Because",
-            "So",
-            "But"
-          ],
-          "answerIndex": 0,
-          "explanation": "'Unless' correctly expresses the condition needed to allow watching television."
-        }
-      ],
-      "summary": "Conjunctions connect words, phrases, and clauses to build logical, well-structured sentences, and they fall into coordinating, subordinating, and correlative types. Correct comma placement with coordinating conjunctions and parallel structure with correlative conjunctions are frequently tested points. Avoiding redundant conjunction pairs and matching subject-verb agreement in correlative structures leads to clearer, more accurate writing."
+      ]
     }
   },
   {
