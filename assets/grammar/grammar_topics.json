@@ -2448,140 +2448,413 @@
     "order": 8,
     "isLeaf": true,
     "content": {
-      "introduction": "An interjection is a word or short phrase used to express sudden emotion, such as surprise, joy, pain, or excitement, and it usually stands apart from the rest of the sentence. Interjections are common in spoken English and informal writing, adding natural expressiveness to conversation, which is useful for IELTS speaking fluency. Although rarely tested directly in CSS or PMS grammar sections, understanding interjections helps learners recognize and correctly punctuate expressive language.",
-      "urduExplanation": "Interjection ایک ایسا لفظ یا مختصر جملہ ہے جو اچانک جذبات کا اظہار کرتا ہے، جیسے خوشی، درد، حیرانی یا جوش، مثلاً 'Wow!', 'Ouch!' یا 'Alas!'۔ یہ عام طور پر جملے کے باقی حصے سے الگ ہوتا ہے اور اکثر exclamation mark (!) کے ساتھ استعمال ہوتا ہے۔ interjections زیادہ تر بول چال اور غیر رسمی تحریر میں استعمال ہوتے ہیں تاکہ جذبات کو زیادہ فطری انداز میں ظاہر کیا جا سکے۔",
-      "englishExplanation": "Interjections are short exclamatory words or phrases that express strong or sudden feelings and are grammatically independent from the rest of the sentence. They are typically followed by an exclamation mark when expressing strong emotion, or by a comma when the emotion is mild and part of a longer sentence. Common interjections include Wow, Oh, Alas, Hurray, Ouch, and Well. Because interjections do not perform a grammatical function like other parts of speech, they are mainly used in dialogue, informal writing, and spoken English rather than formal academic writing.",
-      "types": [],
-      "rules": [
-        "Use an exclamation mark after an interjection that expresses strong emotion (Wow! That is an amazing achievement.).",
-        "Use a comma after a mild interjection that is followed by the rest of the sentence (Well, I suppose we should start now.).",
-        "Interjections do not have grammatical connections to the rest of the sentence and can be removed without affecting sentence structure.",
-        "Avoid using interjections in formal academic writing such as CSS or PMS essays, as they are considered too informal.",
-        "Choose an interjection appropriate to the emotion being expressed, since different interjections suit different feelings (Ouch for pain, Alas for sorrow, Hurray for joy)."
-      ],
+      "introduction": "An interjection is a word or short phrase used to express sudden emotion, such as surprise, joy, pain, or excitement.",
+      "urduExplanation": "حرفِ ندا وہ لفظ یا مختصر جملہ ہے جو اچانک جذبات جیسے حیرانی، خوشی، درد یا جوش کے اظہار کے لیے استعمال ہوتا ہے۔",
+      "englishExplanation": "Interjections are unique because they are grammatically independent from the rest of the sentence. They are mainly used in spoken English and informal writing to add emotional depth and naturalness. In competitive exams, they are important for understanding dialogue and narrative passages, as well as for correct punctuation (exclamation marks vs. commas).",
       "examples": [
         {
-          "text": "Wow! You scored the highest marks in the class.",
-          "note": "interjection of surprise"
-        },
-        {
-          "text": "Ouch! That really hurt.",
-          "note": "interjection of pain"
-        },
-        {
-          "text": "Alas! The team lost the final match.",
-          "note": "interjection of sorrow"
-        },
-        {
-          "text": "Hurray! We won the debate competition.",
-          "note": "interjection of joy"
-        },
-        {
-          "text": "Well, I guess we should leave now.",
-          "note": "mild interjection with comma"
-        },
-        {
-          "text": "Oh! I did not expect to see you here.",
-          "note": "interjection of surprise"
-        },
-        {
-          "text": "Bravo! That was an excellent performance.",
-          "note": "interjection of praise"
+          "text": "Wow!, Alas!, Hurrah!, Bravo!, Hello!, Ouch!, Hey!, Hush!",
+          "note": "Common examples of interjections."
         }
       ],
-      "commonMistakes": [
+      "footerImage": "assets/grammar/images/interjections_master_table.png",
+      "types": [
         {
-          "wrong": "Wow you did a great job.",
-          "right": "Wow! You did a great job.",
-          "note": "a strong interjection needs an exclamation mark to separate it from the sentence"
+          "name": "Interjection of Joy",
+          "description": "These interjections express sudden happiness, pleasure, or excitement.",
+          "urduExplanation": "حرفِ ندا برائے خوشی وہ الفاظ ہیں جو اچانک خوشی، مسرت یا جوش کے اظہار کے لیے استعمال ہوتے ہیں۔",
+          "exampleWords": "Hurrah, Wow, Yay, Yippee, Ha-ha",
+          "rules": [
+            "1: Use **Hurrah** to celebrate a victory or achievement.",
+            "2: Use **Wow** to show sudden delight or pleasure.",
+            "3: Use **Yay** or **Yippee** to express excitement, especially among friends.",
+            "4: Use **Ha-ha** to express joy accompanied by laughter.",
+            "5: Always use an exclamation mark (!) to show the intensity of the joy."
+          ],
+          "ruleExamples": [
+            "**Hurrah!** We won the match.\n**Hurrah!** The holidays have started. > Celebration: **Hurrah!**.",
+            "**Wow!** This place is beautiful.\n**Wow!** What a pleasant surprise. > Delight: **Wow!**.",
+            "**Yay!** We are going to the picnic.\n**Yippee!** I got the first prize. > Excitement: **Yay!/Yippee!**.",
+            "**Ha-ha!** That was a funny joke.\n**Ha-ha!** I can't stop laughing. > Laughter: **Ha-ha!**.",
+            "**Hurrah!** Our team is at the top.\n**Wow!** You look great today. > Punctuation rule."
+          ],
+          "examples": [
+            {
+              "text": "**Hurrah!** We won the match.",
+              "urdu": "ہاہا! ہم میچ جیت گئے۔",
+              "note": "**Hurrah** shows the joy of victory."
+            },
+            {
+              "text": "**Wow!** This place is beautiful.",
+              "urdu": "واہ! یہ جگہ خوبصورت ہے۔",
+              "note": "**Wow** shows delight."
+            },
+            {
+              "text": "**Yay!** We are going to the picnic.",
+              "urdu": "واہ! ہم پکنک پر جا رہے ہیں۔",
+              "note": "**Yay** shows excitement."
+            },
+            {
+              "text": "**Yippee!** I got the first prize.",
+              "urdu": "ہمارے! مجھے پہلا انعام ملا۔",
+              "note": "**Yippee** shows extreme happiness."
+            },
+            {
+              "text": "**Ha-ha!** That was a funny joke.",
+              "urdu": "ہاہا! وہ ایک مضحکہ خیز لطیفہ تھا۔",
+              "note": "**Ha-ha** shows joy with laughter."
+            }
+          ],
+          "commonMistakes": [
+            {
+              "wrong": "**Alas!** We won the match.",
+              "right": "**Hurrah!** We won the match.",
+              "urdu": "ہاہا! ہم میچ جیت گئے۔",
+              "note": "Don't use a sorrowful interjection for a happy occasion."
+            },
+            {
+              "wrong": "**Hurrah** we won the match. (without exclamation mark)",
+              "right": "**Hurrah!** We won the match.",
+              "urdu": "ہاہا! ہم میچ جیت گئے۔",
+              "note": "Interjections of strong emotion need an exclamation mark."
+            },
+            {
+              "wrong": "**Ouch!** I am so happy today.",
+              "right": "**Wow!** I am so happy today.",
+              "urdu": "واہ! میں آج بہت خوش ہوں۔",
+              "note": "**Ouch** is for pain, not joy."
+            },
+            {
+              "wrong": "**Yay,** I passed the exam.",
+              "right": "**Yay!** I passed the exam.",
+              "urdu": "واہ! میں نے امتحان پاس کر لیا۔",
+              "note": "Use an exclamation mark for strong excitement instead of a comma."
+            },
+            {
+              "wrong": "**Ha-ha** I am sad.",
+              "right": "**Alas!** I am sad.",
+              "urdu": "افسوس! میں اداس ہوں۔",
+              "note": "Laughter interjections are for joy only."
+            }
+          ]
         },
         {
-          "wrong": "Alas, We use interjections frequently in our CSS essay.",
-          "right": "We should avoid interjections in formal CSS essays.",
-          "note": "interjections are too informal for academic exam writing"
+          "name": "Interjection of Sorrow",
+          "description": "These interjections express sadness, grief, regret, or disappointment.",
+          "urduExplanation": "حرفِ ندا برائے افسوس وہ الفاظ ہیں جو اداسی، غم، پچھتاوے یا مایوسی کے اظہار کے لیے استعمال ہوتے ہیں۔",
+          "exampleWords": "Alas, Oh, Ah, Oh no, Woe",
+          "rules": [
+            "1: Use **Alas** to express deep grief or regret.",
+            "2: Use **Oh no** to show disappointment or bad news.",
+            "3: Use **Ah** to show pity or sadness.",
+            "4: Use **Oh** to express a sudden realization of sorrow.",
+            "5: These interjections are usually followed by an exclamation mark to show the depth of the feeling."
+          ],
+          "ruleExamples": [
+            "**Alas!** He is no more.\n**Alas!** I failed the exam. > Deep grief: **Alas!**.",
+            "**Oh no!** I lost my keys.\n**Oh no!** The shop is closed. > Disappointment: **Oh no!**.",
+            "**Ah!** What a pity.\n**Ah!** The poor man is suffering. > Pity: **Ah!**.",
+            "**Oh!** I am so sorry for your loss.\n**Oh!** That is terrible news. > Realization of sorrow: **Oh!**.",
+            "**Alas!** The old man died.\n**Oh no!** I forgot my wallet. > Punctuation rule."
+          ],
+          "examples": [
+            {
+              "text": "**Alas!** He is no more.",
+              "urdu": "افسوس! وہ اب نہیں رہے۔",
+              "note": "**Alas** shows deep grief."
+            },
+            {
+              "text": "**Oh no!** I lost my keys.",
+              "urdu": "اوہ نہیں! میں نے اپنی چابیاں کھو دیں۔",
+              "note": "**Oh no** shows disappointment."
+            },
+            {
+              "text": "**Ah!** What a pity.",
+              "urdu": "آہ! کتنے افسوس کی بات ہے۔",
+              "note": "**Ah** shows pity."
+            },
+            {
+              "text": "**Oh!** I am so sorry for your loss.",
+              "urdu": "اوہ! مجھے آپ کے نقصان پر بہت افسوس ہے۔",
+              "note": "**Oh** shows sympathy and sorrow."
+            },
+            {
+              "text": "**Woe!** Woe is me.",
+              "urdu": "ہائے افسوس! میری شامت آگئی۔",
+              "note": "**Woe** is a literary interjection for grief."
+            }
+          ],
+          "commonMistakes": [
+            {
+              "wrong": "**Hurrah!** My friend died.",
+              "right": "**Alas!** My friend died.",
+              "urdu": "افسوس! میرا دوست فوت ہو گیا۔",
+              "note": "Use sorrowful interjections for sad news."
+            },
+            {
+              "wrong": "**Alas** I am happy.",
+              "right": "**Hurrah!** I am happy.",
+              "urdu": "ہاہا! میں خوش ہوں۔",
+              "note": "**Alas** is only for sadness."
+            },
+            {
+              "wrong": "**Wow!** I lost my money.",
+              "right": "**Oh no!** I lost my money.",
+              "urdu": "اوہ نہیں! میرے پیسے کھو گئے۔",
+              "note": "**Wow** is for delight, not loss."
+            },
+            {
+              "wrong": "**Alas,** he is dead.",
+              "right": "**Alas!** He is dead.",
+              "urdu": "افسوس! وہ مر گیا ہے۔",
+              "note": "Strong sorrow needs an exclamation mark."
+            },
+            {
+              "wrong": "**Yay!** The accident was terrible.",
+              "right": "**Oh!** The accident was terrible.",
+              "urdu": "اوہ! حادثہ بہت خوفناک تھا۔",
+              "note": "Don't use joy interjections for accidents."
+            }
+          ]
         },
         {
-          "wrong": "Ouch. that hurts a lot",
-          "right": "Ouch! That hurts a lot.",
-          "note": "the sentence following an interjection should start with a capital letter and proper punctuation"
+          "name": "Interjection of Surprise",
+          "description": "These interjections express sudden amazement, wonder, or shock.",
+          "urduExplanation": "حرفِ ندا برائے حیرت وہ الفاظ ہیں جو اچانک حیرانی، تعجب یا صدمے کے اظہار کے لیے استعمال ہوتے ہیں۔",
+          "exampleWords": "What, Ha, Oh, Gosh, My goodness, Wow",
+          "rules": [
+            "1: Use **What** to show disbelief or shock.",
+            "2: Use **Ha** to show a sudden discovery or surprise.",
+            "3: Use **Gosh** or **My goodness** for mild surprise or amazement.",
+            "4: Use **Wow** to show surprise mixed with admiration.",
+            "5: Use **Oh** for a sudden shock or unexpected news."
+          ],
+          "ruleExamples": [
+            "**What!** You failed again?\n**What!** Is it already 10 PM? > Shock: **What!**.",
+            "**Ha!** I found you.\n**Ha!** So that's how it works. > Discovery: **Ha!**.",
+            "**Gosh!** That's a huge cake.\n**My goodness!** You have grown so tall. > Amazement: **Gosh!**.",
+            "**Wow!** Did you really do that?\n**Wow!** Look at that view. > Admiration/Surprise: **Wow!**.",
+            "**Oh!** I didn't see you there.\n**Oh!** Is that true? > Unexpected news: **Oh!**."
+          ],
+          "examples": [
+            {
+              "text": "**What!** You failed again?",
+              "urdu": "کیا! تم دوبارہ فیل ہو گئے؟",
+              "note": "**What** shows disbelief."
+            },
+            {
+              "text": "**Ha!** I found you.",
+              "urdu": "ہاہا! میں نے تمہیں ڈھونڈ لیا۔",
+              "note": "**Ha** shows the surprise of discovery."
+            },
+            {
+              "text": "**My goodness!** You have grown so tall.",
+              "urdu": "میرے خدا! تم اتنے لمبے ہو گئے ہو۔",
+              "note": "**My goodness** shows amazement."
+            },
+            {
+              "text": "**Wow!** Did you really do that?",
+              "urdu": "واہ! کیا تم نے واقعی یہ کیا؟",
+              "note": "**Wow** shows surprise and admiration."
+            },
+            {
+              "text": "**Gosh!** That's a huge cake.",
+              "urdu": "اوہ! یہ ایک بہت بڑا کیک ہے۔",
+              "note": "**Gosh** shows mild surprise."
+            }
+          ],
+          "commonMistakes": [
+            {
+              "wrong": "**Alas!** You won a million dollars.",
+              "right": "**Wow!** You won a million dollars.",
+              "urdu": "واہ! آپ نے دس لاکھ ڈالر جیت لیے۔",
+              "note": "Use surprise/joy interjections for good news."
+            },
+            {
+              "wrong": "**What** you are here. (without exclamation mark)",
+              "right": "**What!** You are here.",
+              "urdu": "کیا! تم یہاں ہو؟",
+              "note": "Interjections of shock need an exclamation mark."
+            },
+            {
+              "wrong": "**Hurrah!** I didn't know you were coming.",
+              "right": "**Oh!** I didn't know you were coming.",
+              "urdu": "اوہ! مجھے نہیں معلوم تھا کہ تم آ رہے ہو۔",
+              "note": "**Oh** is better for sudden realization/surprise."
+            },
+            {
+              "wrong": "**Ouch!** That is a beautiful painting.",
+              "right": "**Wow!** That is a beautiful painting.",
+              "urdu": "واہ! یہ ایک خوبصورت پینٹنگ ہے۔",
+              "note": "**Ouch** is for pain, not beauty."
+            },
+            {
+              "wrong": "**Yay!** Is it really true?",
+              "right": "**What!** Is it really true?",
+              "urdu": "کیا! کیا یہ واقعی سچ ہے؟",
+              "note": "**What** is better for questioning surprise."
+            }
+          ]
         },
         {
-          "wrong": "Well I think we should go now",
-          "right": "Well, I think we should go now.",
-          "note": "a mild interjection is followed by a comma before the rest of the sentence"
+          "name": "Interjection of Approval or Praise",
+          "description": "These interjections express appreciation, admiration, or encouragement for someone's work or behavior.",
+          "urduExplanation": "حرفِ ندا برائے شاباش وہ الفاظ ہیں جو کسی کے کام یا رویے کی تعریف، تحسین یا حوصلہ افزائی کے لیے استعمال ہوتے ہیں۔",
+          "exampleWords": "Bravo, Well done, Splendid, Good, Brilliant",
+          "rules": [
+            "1: Use **Bravo** to applaud a great performance or act.",
+            "2: Use **Well done** to encourage someone who has finished a task successfully.",
+            "3: Use **Splendid** or **Brilliant** to show high admiration for something excellent.",
+            "4: Use **Good** for mild approval or agreement.",
+            "5: These are often used to boost someone's confidence."
+          ],
+          "ruleExamples": [
+            "**Bravo!** You played exceptionally well.\n**Bravo!** That was a courageous act. > Applaud: **Bravo!**.",
+            "**Well done!** You passed with flying colors.\n**Well done!** Keep it up. > Encouragement: **Well done!**.",
+            "**Splendid!** Your idea is perfect.\n**Brilliant!** That's a great solution. > High admiration: **Splendid!/Brilliant!**.",
+            "**Good!** Now we can move forward.\n**Good!** I agree with you. > Mild approval: **Good!**.",
+            "**Bravo!** You made us proud.\n**Well done!** I knew you could do it. > Confidence boost."
+          ],
+          "examples": [
+            {
+              "text": "**Bravo!** You played exceptionally well.",
+              "urdu": "شاباش! تم نے غیر معمولی طور پر اچھا کھیلا۔",
+              "note": "**Bravo** shows high praise."
+            },
+            {
+              "text": "**Well done!** You passed with flying colors.",
+              "urdu": "بہت خوب! تم نے شاندار کامیابی حاصل کی۔",
+              "note": "**Well done** encourages the person."
+            },
+            {
+              "text": "**Splendid!** Your idea is perfect.",
+              "urdu": "شاندار! آپ کا خیال بہترین ہے۔",
+              "note": "**Splendid** shows high admiration."
+            },
+            {
+              "text": "**Brilliant!** That's a great solution.",
+              "urdu": "بہت شاندار! یہ ایک بہترین حل ہے۔",
+              "note": "**Brilliant** shows appreciation for intelligence."
+            },
+            {
+              "text": "**Good!** Now we can move forward.",
+              "urdu": "اچھا! اب ہم آگے بڑھ سکتے ہیں۔",
+              "note": "**Good** shows mild approval."
+            }
+          ],
+          "commonMistakes": [
+            {
+              "wrong": "**Alas!** You did a great job.",
+              "right": "**Well done!** You did a great job.",
+              "urdu": "بہت خوب! تم نے بہت اچھا کام کیا۔",
+              "note": "Use praise interjections for achievements."
+            },
+            {
+              "wrong": "**Ouch!** You won the prize.",
+              "right": "**Bravo!** You won the prize.",
+              "urdu": "شاباش! تم نے انعام جیتا۔",
+              "note": "**Ouch** is for pain."
+            },
+            {
+              "wrong": "**Bravo** you did it. (without exclamation mark)",
+              "right": "**Bravo!** You did it.",
+              "urdu": "شاباش! تم نے کر دکھایا۔",
+              "note": "Strong praise needs an exclamation mark."
+            },
+            {
+              "wrong": "**What!** You are so smart.",
+              "right": "**Brilliant!** You are so smart.",
+              "urdu": "شاندار! تم بہت ذہین ہو۔",
+              "note": "**Brilliant** is better for praising intelligence."
+            },
+            {
+              "wrong": "**Oh no!** You sang beautifully.",
+              "right": "**Splendid!** You sang beautifully.",
+              "urdu": "شاندار! تم نے بہت خوبصورتی سے گایا۔",
+              "note": "Don't use disappointment interjections for praise."
+            }
+          ]
+        },
+        {
+          "name": "Interjection of Greeting and Attention",
+          "description": "These interjections are used to address someone, start a conversation, or call for attention.",
+          "urduExplanation": "حرفِ ندا برائے سلام و توجہ وہ الفاظ ہیں جو کسی کو مخاطب کرنے، بات چیت شروع کرنے یا توجہ حاصل کرنے کے لیے استعمال ہوتے ہیں۔",
+          "exampleWords": "Hello, Hi, Hey, Listen, Look, Behold, Hush",
+          "rules": [
+            "1: Use **Hello** or **Hi** for a standard greeting.",
+            "2: Use **Hey** to get someone's attention informally.",
+            "3: Use **Listen** or **Look** to direct someone's focus to something specific.",
+            "4: Use **Behold** (literary) to call attention to something remarkable.",
+            "5: Use **Hush** or **Shh** to call for silence."
+          ],
+          "ruleExamples": [
+            "**Hello!** How are you today?\n**Hi!** Nice to see you. > Greeting: **Hello!/Hi!**.",
+            "**Hey!** Can you help me?\n**Hey!** Watch where you are going. > Attention: **Hey!**.",
+            "**Listen!** I have something important to tell you.\n**Look!** There is a rainbow. > Focus: **Listen!/Look!**.",
+            "**Behold!** The king has arrived.\n**Behold!** A miracle has happened. > Remarkable attention: **Behold!**.",
+            "**Hush!** The baby is sleeping.\n**Shh!** Be quiet in the library. > Silence: **Hush!/Shh!**."
+          ],
+          "examples": [
+            {
+              "text": "**Hello!** How are you today?",
+              "urdu": "ہیلو! آج آپ کیسے ہیں؟",
+              "note": "**Hello** is a standard greeting."
+            },
+            {
+              "text": "**Hey!** Can you help me?",
+              "urdu": "ارے! کیا آپ میری مدد کر سکتے ہیں؟",
+              "note": "**Hey** calls for attention."
+            },
+            {
+              "text": "**Listen!** I have something important to tell you.",
+              "urdu": "سنو! مجھے تمہیں ایک اہم بات بتانی ہے۔",
+              "note": "**Listen** directs focus to the speaker."
+            },
+            {
+              "text": "**Look!** There is a rainbow.",
+              "urdu": "دیکھو! وہاں ایک دھنک ہے۔",
+              "note": "**Look** directs focus to an object."
+            },
+            {
+              "text": "**Hush!** The baby is sleeping.",
+              "urdu": "خاموش! بچہ سو رہا ہے۔",
+              "note": "**Hush** calls for silence."
+            }
+          ],
+          "commonMistakes": [
+            {
+              "wrong": "**Alas!** How are you?",
+              "right": "**Hello!** How are you?",
+              "urdu": "ہیلو! آپ کیسے ہیں؟",
+              "note": "Use greetings to start a conversation."
+            },
+            {
+              "wrong": "**Bravo!** Can you hear me?",
+              "right": "**Hey!** Can you hear me?",
+              "urdu": "ارے! کیا آپ مجھے سن سکتے ہیں؟",
+              "note": "Use attention interjections to call someone."
+            },
+            {
+              "wrong": "**Hush!** Look at that.",
+              "right": "**Look!** Look at that.",
+              "urdu": "دیکھو! اسے دیکھو۔",
+              "note": "**Hush** is for silence, not for showing something."
+            },
+            {
+              "wrong": "**Hi** how are you. (without punctuation)",
+              "right": "**Hi!** How are you?",
+              "urdu": "ہیلو! آپ کیسے ہیں؟",
+              "note": "Greetings usually take an exclamation mark or comma."
+            },
+            {
+              "wrong": "**Ouch!** Listen to me.",
+              "right": "**Listen!** Listen to me.",
+              "urdu": "سنو! میری بات سنو۔",
+              "note": "**Ouch** is for pain, not for calling attention."
+            }
+          ]
         }
-      ],
-      "practice": [
-        {
-          "question": "Which sentence uses an interjection correctly?",
-          "options": [
-            "Wow you passed the exam.",
-            "Wow! You passed the exam.",
-            "Wow, You Passed The Exam!",
-            "Wow. you passed the exam"
-          ],
-          "answerIndex": 1,
-          "explanation": "A strong interjection like 'Wow' is followed by an exclamation mark, and the next sentence starts with a capital letter."
-        },
-        {
-          "question": "Choose the interjection that best expresses pain.",
-          "options": [
-            "Hurray",
-            "Alas",
-            "Ouch",
-            "Bravo"
-          ],
-          "answerIndex": 2,
-          "explanation": "'Ouch' is the standard interjection used to express sudden physical pain."
-        },
-        {
-          "question": "Which type of writing should generally avoid interjections?",
-          "options": [
-            "Casual conversation",
-            "Formal CSS or PMS essays",
-            "Informal text messages",
-            "Dialogue in a story"
-          ],
-          "answerIndex": 1,
-          "explanation": "Interjections are too informal and are avoided in formal academic essays like those for CSS or PMS."
-        }
-      ],
-      "quiz": [
-        {
-          "question": "Which sentence correctly punctuates a mild interjection?",
-          "options": [
-            "Well I am not sure about this.",
-            "Well, I am not sure about this.",
-            "Well! I am not sure about this.",
-            "Well; I am not sure about this."
-          ],
-          "answerIndex": 1,
-          "explanation": "A comma is used after a mild interjection like 'well' before continuing with the rest of the sentence."
-        },
-        {
-          "question": "Choose the interjection that expresses sorrow.",
-          "options": [
-            "Alas",
-            "Hurray",
-            "Wow",
-            "Bravo"
-          ],
-          "answerIndex": 0,
-          "explanation": "'Alas' is traditionally used to express sadness or regret."
-        },
-        {
-          "question": "What is a key feature of interjections?",
-          "options": [
-            "They must agree with the subject of the sentence.",
-            "They connect two independent clauses.",
-            "They are grammatically independent from the rest of the sentence.",
-            "They always require a direct object."
-          ],
-          "answerIndex": 2,
-          "explanation": "Interjections stand apart grammatically and can be removed without changing the sentence's core structure."
-        }
-      ],
-      "summary": "Interjections are short words or phrases that express sudden emotion and stand grammatically apart from the rest of the sentence. Strong interjections take an exclamation mark, while mild ones are followed by a comma, and both should be avoided in formal academic writing. Recognizing common interjections like Wow, Alas, Ouch, and Hurray helps learners understand expressive spoken and informal English."
+      ]
     }
   },
   {
