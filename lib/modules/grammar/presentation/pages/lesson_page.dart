@@ -1226,7 +1226,7 @@ class _ZoomableFooterImageState extends State<_ZoomableFooterImage> {
       final position = _doubleTapDetails!.localPosition;
       _transformationController.value = Matrix4.identity()
         ..translateByVector3(Vector3(-position.dx * 1.5, -position.dy * 1.5, 0))
-        ..scaleByDouble(2.5);
+        ..scaleByDouble(2.5, 2.5, 2.5, 1.0);
     }
   }
 
