@@ -2775,6 +2775,230 @@
             }
           ]
         }
+      ],
+      "quiz": [
+        {
+          "question": "I have ___ umbrella in my bag.",
+          "options": [
+            "a",
+            "an",
+            "the",
+            "no article"
+          ],
+          "answerIndex": 1,
+          "explanation": "Use **an** before singular countable nouns starting with a vowel sound (u in umbrella). **Urdu:** لفظ 'umbrella' وول (vowel) آواز سے شروع ہوتا ہے، اس لیے اس سے پہلے 'an' استعمال ہوگا۔"
+        },
+        {
+          "question": "He is ___ honest man.",
+          "options": [
+            "a",
+            "an",
+            "the",
+            "some"
+          ],
+          "answerIndex": 1,
+          "explanation": "Use **an** because 'honest' starts with a vowel sound (h is silent). **Urdu:** لفظ 'honest' میں 'h' خاموش ہے اور یہ وول آواز سے شروع ہوتا ہے، اس لیے 'an' استعمال ہوگا۔"
+        },
+        {
+          "question": "___ sun rises in the east.",
+          "options": [
+            "A",
+            "An",
+            "The",
+            "Any"
+          ],
+          "answerIndex": 2,
+          "explanation": "Use **the** for unique objects like the sun. **Urdu:** سورج جیسی منفرد چیزوں کے لیے 'the' استعمال کیا جاتا ہے۔"
+        },
+        {
+          "question": "He is ___ tallest boy in the class.",
+          "options": [
+            "a",
+            "an",
+            "the",
+            "more"
+          ],
+          "answerIndex": 2,
+          "explanation": "Use **the** before superlative adjectives (tallest). **Urdu:** صفت کی تیسری ڈگری (superlative) سے پہلے ہمیشہ 'the' لگایا جاتا ہے۔"
+        },
+        {
+          "question": "I don't have ___ money in my pocket.",
+          "options": [
+            "some",
+            "any",
+            "many",
+            "few"
+          ],
+          "answerIndex": 1,
+          "explanation": "Use **any** in negative sentences with uncountable nouns like money. **Urdu:** منفی جملوں میں 'any' استعمال ہوتا ہے۔"
+        },
+        {
+          "question": "How ___ time do we have left?",
+          "options": [
+            "many",
+            "much",
+            "few",
+            "a few"
+          ],
+          "answerIndex": 1,
+          "explanation": "Use **much** with uncountable nouns like time. **Urdu:** غیر شمار شدہ اسم (uncountable nouns) جیسے وقت کے لیے 'much' استعمال ہوتا ہے۔"
+        },
+        {
+          "question": "There are ___ students in the library.",
+          "options": [
+            "much",
+            "many",
+            "little",
+            "a little"
+          ],
+          "answerIndex": 1,
+          "explanation": "Use **many** with plural countable nouns like students. **Urdu:** شمار شدہ اسم (countable nouns) کی جمع کے لیے 'many' استعمال ہوتا ہے۔"
+        },
+        {
+          "question": "I have ___ friends, so I am never lonely.",
+          "options": [
+            "few",
+            "a few",
+            "little",
+            "a little"
+          ],
+          "answerIndex": 1,
+          "explanation": "**A few** has a positive meaning (some), while **few** means almost none. **Urdu:** 'A few' کا مطلب ہے 'کچھ' (مثبت معنوں میں)۔"
+        },
+        {
+          "question": "Can you give me ___ water?",
+          "options": [
+            "a",
+            "an",
+            "some",
+            "many"
+          ],
+          "answerIndex": 2,
+          "explanation": "Use **some** for uncountable nouns in requests or positive sentences. **Urdu:** درخواست یا مثبت جملوں میں غیر شمار شدہ اسم کے لیے 'some' استعمال ہوتا ہے۔"
+        },
+        {
+          "question": "___ book on the table is mine.",
+          "options": [
+            "This",
+            "These",
+            "Those",
+            "Some"
+          ],
+          "answerIndex": 0,
+          "explanation": "Use **this** for a singular noun nearby. **Urdu:** قریب کی ایک چیز کے لیے 'this' استعمال ہوتا ہے۔"
+        },
+        {
+          "question": "___ students over there are playing football.",
+          "options": [
+            "This",
+            "That",
+            "These",
+            "Those"
+          ],
+          "answerIndex": 3,
+          "explanation": "Use **those** for plural nouns at a distance. **Urdu:** دور کی زیادہ چیزوں کے لیے 'those' استعمال ہوتا ہے۔"
+        },
+        {
+          "question": "___ of the two sisters is a doctor.",
+          "options": [
+            "Every",
+            "Each",
+            "All",
+            "Many"
+          ],
+          "answerIndex": 1,
+          "explanation": "Use **each** when referring to a small, specific number like two. **Urdu:** دو یا دو سے زیادہ مخصوص افراد میں سے ہر ایک کے لیے 'each' استعمال ہوتا ہے۔"
+        },
+        {
+          "question": "___ answer is correct; both are wrong.",
+          "options": [
+            "Either",
+            "Neither",
+            "Each",
+            "Every"
+          ],
+          "answerIndex": 1,
+          "explanation": "Use **neither** to reject both options. **Urdu:** جب دونوں آپشنز غلط ہوں تو 'neither' استعمال ہوتا ہے۔"
+        },
+        {
+          "question": "I need to buy ___ milk.",
+          "options": [
+            "a",
+            "an",
+            "some",
+            "many"
+          ],
+          "answerIndex": 2,
+          "explanation": "Use **some** with uncountable nouns in positive sentences. **Urdu:** مثبت جملوں میں 'some' استعمال ہوتا ہے۔"
+        },
+        {
+          "question": "She is ___ university student.",
+          "options": [
+            "a",
+            "an",
+            "the",
+            "any"
+          ],
+          "answerIndex": 0,
+          "explanation": "Use **a** because 'university' starts with a consonant sound (yoo). **Urdu:** اگرچہ 'university' 'u' سے شروع ہوتا ہے، لیکن اس کی آواز کونسوننٹ (consonant) ہے، اس لیے 'a' آئے گا۔"
+        }
+      ],
+      "practice": [
+        {
+          "question": "I have ___ umbrella in my bag.",
+          "options": [
+            "a",
+            "an",
+            "the",
+            "no article"
+          ],
+          "answerIndex": 1,
+          "explanation": "Use **an** before singular countable nouns starting with a vowel sound (u in umbrella). **Urdu:** لفظ 'umbrella' وول (vowel) آواز سے شروع ہوتا ہے، اس لیے اس سے پہلے 'an' استعمال ہوگا۔"
+        },
+        {
+          "question": "He is ___ honest man.",
+          "options": [
+            "a",
+            "an",
+            "the",
+            "some"
+          ],
+          "answerIndex": 1,
+          "explanation": "Use **an** because 'honest' starts with a vowel sound (h is silent). **Urdu:** لفظ 'honest' میں 'h' خاموش ہے اور یہ وول آواز سے شروع ہوتا ہے، اس لیے 'an' استعمال ہوگا۔"
+        },
+        {
+          "question": "___ sun rises in the east.",
+          "options": [
+            "A",
+            "An",
+            "The",
+            "Any"
+          ],
+          "answerIndex": 2,
+          "explanation": "Use **the** for unique objects like the sun. **Urdu:** سورج جیسی منفرد چیزوں کے لیے 'the' استعمال کیا جاتا ہے۔"
+        },
+        {
+          "question": "He is ___ tallest boy in the class.",
+          "options": [
+            "a",
+            "an",
+            "the",
+            "more"
+          ],
+          "answerIndex": 2,
+          "explanation": "Use **the** before superlative adjectives (tallest). **Urdu:** صفت کی تیسری ڈگری (superlative) سے پہلے ہمیشہ 'the' لگایا جاتا ہے۔"
+        },
+        {
+          "question": "I don't have ___ money in my pocket.",
+          "options": [
+            "some",
+            "any",
+            "many",
+            "few"
+          ],
+          "answerIndex": 1,
+          "explanation": "Use **any** in negative sentences with uncountable nouns like money. **Urdu:** منفی جملوں میں 'any' استعمال ہوتا ہے۔"
+        }
       ]
     }
   },
@@ -20451,6 +20675,19 @@
         }
       ],
       "summary": "The semicolon links two independent clauses more tightly than a full stop and without the addition of a conjunction. It is also required before conjunctive adverbs (followed by a comma) and between complex list items that contain internal commas. The key test: both sides of a semicolon must be independent clauses. In CSS, PMS, and IELTS writing, correct semicolon use signals maturity and grammatical range."
+    }
+  },
+  {
+    "id": "pos/quiz",
+    "parentId": "parts-of-speech",
+    "title": "Quiz",
+    "subtitle": null,
+    "order": 10,
+    "isLeaf": true,
+    "content": {
+      "introduction": "Test your knowledge of all Parts of Speech.",
+      "urduExplanation": "تمام پارٹس آف اسپیچ کے بارے میں اپنے علم کا امتحان لیں۔",
+      "englishExplanation": "This quiz covers Nouns, Pronouns, Verbs, Adjectives, Adverbs, Prepositions, Conjunctions, Interjections, and Determiners."
     }
   }
 ]
