@@ -408,14 +408,7 @@ class _NounLandingView extends StatelessWidget {
         if (lesson.footerImage.isNotEmpty) ...<Widget>[
           const SizedBox(height: 12),
           const _LandingSectionLabel(title: 'Quick Reference Guide'),
-          Card(
-            clipBehavior: Clip.antiAlias,
-            margin: const EdgeInsets.only(bottom: 24),
-            child: Image.asset(
-              lesson.footerImage,
-              fit: BoxFit.contain,
-            ),
-          ),
+          _ZoomableFooterImage(imagePath: lesson.footerImage),
         ],
       ],
     );
@@ -1198,6 +1191,55 @@ class _MistakeItem extends StatelessWidget {
             ),
           ],
         ],
+      ),
+    );
+  }
+}
+
+class _ZoomableFooterImage extends StatefulWidget {
+  const _ZoomableFooterImage({required this.imagePath});
+  final String imagePath;
+
+  @override
+  State<_ZoomableFooterImage> createState() => _ZoomableFooterImageState();
+}
+
+class _ZoomableFooterImageState extends State<_ZoomableFooterImage> {
+  final TransformationController _transformationController = TransformationController();
+  TapDownDetails? _doubleTapDetails;
+
+  void _handleDoubleTapDown(TapDownDetails details) {
+    _doubleTapDetails = details;
+  }
+
+  void _handleDoubleTap() {
+    if (_transformationController.value != Matrix4.identity()) {
+      _transformationController.value = Matrix4.identity();
+    } else {
+      final position = _doubleTapDetails!.localPosition;
+      _transformationController.value = Matrix4.identity()
+        ..translate(-position.dx * 1.5, -position.dy * 1.5)
+        ..scale(2.5);
+    }
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Card(
+      clipBehavior: Clip.antiAlias,
+      margin: const EdgeInsets.only(bottom: 24),
+      child: GestureDetector(
+        onDoubleTapDown: _handleDoubleTapDown,
+        onDoubleTap: _handleDoubleTap,
+        child: InteractiveViewer(
+          transformationController: _transformationController,
+          minScale: 0.1,
+          maxScale: 10.0,
+          child: Image.asset(
+            widget.imagePath,
+            fit: BoxFit.contain,
+          ),
+        ),
       ),
     );
   }
