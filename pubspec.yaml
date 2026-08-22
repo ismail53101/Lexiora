@@ -61,7 +61,6 @@ flutter:
     - assets/translations/
     - assets/idioms/
     - assets/grammar/
-    - assets/grammar/images/
     - assets/vocabulary/
     - assets/fonts/
     # NOTE: Flutter's asset bundler only includes files directly inside a
