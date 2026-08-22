@@ -148,7 +148,8 @@ class _LessonView extends StatelessWidget {
         lesson.id == 'pos/pronoun' ||
         lesson.id == 'pos/verb' ||
         lesson.id == 'pos/adjective' ||
-        lesson.id == 'pos/adverb') {
+        lesson.id == 'pos/adverb' ||
+        lesson.id == 'pos/preposition') {
       return _NounLandingView(lesson: lesson);
     }
     return ListView(

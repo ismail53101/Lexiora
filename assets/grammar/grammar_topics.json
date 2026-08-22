@@ -3784,162 +3784,653 @@
     "order": 6,
     "isLeaf": true,
     "content": {
-      "introduction": "A preposition is a word that shows the relationship between a noun or pronoun and another word in the sentence, often indicating place, time, direction, or manner. Prepositions are small words but they cause frequent errors because their usage often does not translate directly between Urdu and English. Mastering common prepositional patterns is essential for accurate writing in CSS, PMS, and IELTS exams.",
-      "urduExplanation": "Preposition وہ لفظ ہے جو noun یا pronoun کا کسی دوسرے لفظ سے تعلق ظاہر کرتا ہے، جیسے جگہ، وقت یا سمت بتانے کے لیے 'in', 'on', 'at' جیسے الفاظ استعمال ہوتے ہیں۔ یہ ہمیشہ noun یا pronoun سے پہلے آتا ہے، جیسے 'on the table' یا 'at school'۔ چونکہ اردو اور انگریزی میں prepositions کا استعمال مختلف ہوتا ہے، اس لیے طلبہ کو اکثر ان میں غلطی لگ جاتی ہے۔ اس لیے مخصوص phrases اور idioms کے ساتھ صحیح preposition یاد کرنا بہت ضروری ہے۔",
-      "englishExplanation": "Prepositions connect nouns or pronouns to other words in a sentence, showing relationships of time, place, direction, cause, or manner. Common prepositions include in, on, at, by, with, for, from, and to, each used in specific contexts that often must simply be memorized. Prepositions are always followed by a noun, pronoun, or gerund (a verb form ending in -ing), never by a bare infinitive. Many errors occur because prepositions do not translate word-for-word between languages, so it is important to learn fixed prepositional phrases like 'interested in', 'good at', and 'depend on' as whole units.",
+      "introduction": "A preposition is a word that shows the relationship between a noun or pronoun and another word in the sentence, often indicating place, time, direction, or manner.",
+      "urduExplanation": "حرفِ جار وہ لفظ ہے جو کسی اسم یا اسمِ ضمیر کا جملے کے دوسرے الفاظ سے تعلق ظاہر کرتا ہے، جیسے جگہ، وقت، سمت یا طریقے کو بتانے کے لیے استعمال ہوتا ہے۔",
+      "englishExplanation": "Prepositions are essential for connecting ideas in a sentence. They typically precede a noun or pronoun (the object of the preposition) and show how that noun/pronoun relates to the rest of the sentence. Mastering prepositions is one of the most challenging aspects of English grammar for competitive exams because their usage often depends on fixed patterns and idioms rather than simple rules.",
+      "examples": [
+        {
+          "text": "in, on, at, by, with, for, from, to, into, between, among",
+          "note": "Common examples of prepositions."
+        }
+      ],
       "types": [
         {
           "name": "Preposition of Time",
-          "description": "Shows when something happens, e.g., at 6 o'clock, on Monday, in July."
+          "description": "A Preposition of Time allows you to discuss a specific time period such as a date on the calendar, one of the days of the week, or the actual time something takes place.",
+          "urduExplanation": "حرفِ جارِ زمان وہ لفظ ہے جو وقت، تاریخ، دن یا کسی خاص مدت کو ظاہر کرنے کے لیے استعمال ہوتا ہے۔",
+          "exampleWords": "at, on, in, since, for, during, until, by",
+          "rules": [
+            "1: Use **at** for precise times.",
+            "2: Use **on** for days and dates.",
+            "3: Use **in** for months, years, centuries, and long periods.",
+            "4: Use **since** to show a starting point in time.",
+            "5: Use **for** to show a duration or length of time.",
+            "6: Use **during** to show an action happening within a period."
+          ],
+          "ruleExamples": [
+            "I will meet you **at** 5 PM.\nThe train arrives **at** noon. > Precise time: **at**.",
+            "My birthday is **on** Monday.\nWe met **on** 15th August. > Days/Dates: **on**.",
+            "He was born **in** 1995.\nIt is cold **in** winter. > Months/Years/Seasons: **in**.",
+            "I have been here **since** morning.\nShe has lived here **since** 2010. > Starting point: **since**.",
+            "I waited **for** two hours.\nThey have been married **for** ten years. > Duration: **for**.",
+            "He fell asleep **during** the movie.\nIt rained **during** the night. > Within a period: **during**."
+          ],
+          "examples": [
+            {
+              "text": "I will meet you **at** 5 PM.",
+              "urdu": "میں آپ سے شام 5 بجے ملوں گا۔",
+              "note": "**At** is used for exact time."
+            },
+            {
+              "text": "My birthday is **on** Monday.",
+              "urdu": "میری سالگرہ پیر کو ہے۔",
+              "note": "**On** is used for days of the week."
+            },
+            {
+              "text": "He was born **in** 1995.",
+              "urdu": "وہ 1995 میں پیدا ہوا تھا۔",
+              "note": "**In** is used for years."
+            },
+            {
+              "text": "I have been here **since** morning.",
+              "urdu": "میں صبح سے یہاں ہوں۔",
+              "note": "**Since** shows the starting point."
+            },
+            {
+              "text": "I waited **for** two hours.",
+              "urdu": "میں نے دو گھنٹے انتظار کیا۔",
+              "note": "**For** shows the total duration."
+            }
+          ],
+          "commonMistakes": [
+            {
+              "wrong": "I will meet you **in** 5 PM.",
+              "right": "I will meet you **at** 5 PM.",
+              "urdu": "میں آپ سے 5 بجے ملوں گا۔",
+              "note": "Use **at** for specific clock times."
+            },
+            {
+              "wrong": "My birthday is **in** Monday.",
+              "right": "My birthday is **on** Monday.",
+              "urdu": "میری سالگرہ پیر کو ہے۔",
+              "note": "Use **on** for specific days."
+            },
+            {
+              "wrong": "He was born **on** 1995.",
+              "right": "He was born **in** 1995.",
+              "urdu": "وہ 1995 میں پیدا ہوا تھا۔",
+              "note": "Use **in** for years."
+            },
+            {
+              "wrong": "I have been here **for** morning.",
+              "right": "I have been here **since** morning.",
+              "urdu": "میں صبح سے یہاں ہوں۔",
+              "note": "Use **since** for a specific starting point."
+            },
+            {
+              "wrong": "I waited **since** two hours.",
+              "right": "I waited **for** two hours.",
+              "urdu": "میں نے دو گھنٹے انتظار کیا۔",
+              "note": "Use **for** for a period of time."
+            }
+          ]
         },
         {
-          "name": "Preposition of Place",
-          "description": "Shows where something is located, e.g., at the station, on the table, in the room."
+          "name": "Preposition of Place and Direction",
+          "description": "These prepositions indicate where someone or something is located or the direction in which they are moving.",
+          "urduExplanation": "حرفِ جارِ مکان و سمت وہ الفاظ ہیں جو کسی چیز کی جگہ، مقام یا حرکت کی سمت کو ظاہر کرتے ہیں۔",
+          "exampleWords": "at, in, on, to, into, across, through, towards",
+          "rules": [
+            "1: Use **at** for a specific point or location.",
+            "2: Use **in** for an enclosed space or large area.",
+            "3: Use **on** for a surface.",
+            "4: Use **to** to show destination or direction.",
+            "5: Use **into** to show movement toward the inside of something.",
+            "6: Use **across** to show movement from one side to the other."
+          ],
+          "ruleExamples": [
+            "He is standing **at** the door.\nWait for me **at** the bus stop. > Specific point: **at**.",
+            "The keys are **in** the box.\nHe lives **in** London. > Enclosed space/Large area: **in**.",
+            "The book is **on** the table.\nThere is a picture **on** the wall. > Surface: **on**.",
+            "I am going **to** school.\nHe walked **to** the park. > Destination: **to**.",
+            "He jumped **into** the river.\nShe walked **into** the room. > Movement to inside: **into**.",
+            "They walked **across** the bridge.\nHe ran **across** the road. > Side to side: **across**."
+          ],
+          "examples": [
+            {
+              "text": "He is standing **at** the door.",
+              "urdu": "وہ دروازے پر کھڑا ہے۔",
+              "note": "**At** indicates a specific spot."
+            },
+            {
+              "text": "The keys are **in** the box.",
+              "urdu": "چابیاں ڈبے میں ہیں۔",
+              "note": "**In** indicates being inside."
+            },
+            {
+              "text": "The book is **on** the table.",
+              "urdu": "کتاب میز پر ہے۔",
+              "note": "**On** indicates a surface."
+            },
+            {
+              "text": "He jumped **into** the river.",
+              "urdu": "اس نے دریا میں چھلانگ لگا دی۔",
+              "note": "**Into** shows movement into a space."
+            },
+            {
+              "text": "They walked **across** the bridge.",
+              "urdu": "وہ پل کے پار گئے۔",
+              "note": "**Across** means from one side to another."
+            }
+          ],
+          "commonMistakes": [
+            {
+              "wrong": "He is **in** the door.",
+              "right": "He is **at** the door.",
+              "urdu": "وہ دروازے پر ہے۔",
+              "note": "Use **at** for a specific point like a door."
+            },
+            {
+              "wrong": "The book is **in** the table.",
+              "right": "The book is **on** the table.",
+              "urdu": "کتاب میز پر ہے۔",
+              "note": "Use **on** for surfaces."
+            },
+            {
+              "wrong": "He jumped **in** the river.",
+              "right": "He jumped **into** the river.",
+              "urdu": "اس نے دریا میں چھلانگ لگائی۔",
+              "note": "Use **into** to show movement towards the inside."
+            },
+            {
+              "wrong": "I am going **at** school.",
+              "right": "I am going **to** school.",
+              "urdu": "میں سکول جا رہا ہوں۔",
+              "note": "Use **to** for destination."
+            },
+            {
+              "wrong": "He lives **at** London.",
+              "right": "He lives **in** London.",
+              "urdu": "وہ لندن میں رہتا ہے۔",
+              "note": "Use **in** for large cities or countries."
+            }
+          ]
         },
         {
-          "name": "Preposition of Direction",
-          "description": "Shows movement toward or away from something, e.g., to school, into the room, out of the house."
+          "name": "Preposition of Agency or Instrument",
+          "description": "These prepositions show the relationship between the doer of an action and the action itself, or the tool used to perform an action.",
+          "urduExplanation": "حرفِ جارِ ذریعہ یا آلہ وہ الفاظ ہیں جو کسی کام کے کرنے والے یا اس کام کے لیے استعمال ہونے والے آلے کے درمیان تعلق کو ظاہر کرتے ہیں۔",
+          "exampleWords": "by, with, through, via",
+          "rules": [
+            "1: Use **by** for the person or agent who performs the action (usually in passive voice).",
+            "2: Use **with** for the instrument or tool used to perform the action.",
+            "3: Use **by** for means of transportation.",
+            "4: Use **through** to show the medium or process.",
+            "5: Use **via** to show the route or intermediate point."
+          ],
+          "ruleExamples": [
+            "The letter was written **by** Ali.\nThis book was published **by** a famous company. > Agent: **by**.",
+            "He wrote the letter **with** a pen.\nShe cut the apple **with** a knife. > Instrument: **with**.",
+            "I go to work **by** bus.\nThey traveled **by** air. > Transportation: **by**.",
+            "I learned the news **through** a friend.\nWater flows **through** the pipe. > Medium: **through**.",
+            "We traveled to London **via** Dubai.\nSend the file **via** email. > Route/Method: **via**."
+          ],
+          "examples": [
+            {
+              "text": "The letter was written **by** Ali.",
+              "urdu": "خط علی نے لکھا تھا۔",
+              "note": "**By** shows the agent (Ali)."
+            },
+            {
+              "text": "He wrote the letter **with** a pen.",
+              "urdu": "اس نے قلم سے خط لکھا۔",
+              "note": "**With** shows the instrument (pen)."
+            },
+            {
+              "text": "I go to work **by** bus.",
+              "urdu": "میں بس کے ذریعے کام پر جاتا ہوں۔",
+              "note": "**By** shows the means of transport."
+            },
+            {
+              "text": "I learned the news **through** a friend.",
+              "urdu": "مجھے ایک دوست کے ذریعے خبر ملی۔",
+              "note": "**Through** shows the source/medium."
+            },
+            {
+              "text": "We traveled to London **via** Dubai.",
+              "urdu": "ہم دبئی کے راستے لندن گئے۔",
+              "note": "**Via** shows the route."
+            }
+          ],
+          "commonMistakes": [
+            {
+              "wrong": "The letter was written **with** Ali.",
+              "right": "The letter was written **by** Ali.",
+              "urdu": "خط علی نے لکھا تھا۔",
+              "note": "Use **by** for the person who does the work."
+            },
+            {
+              "wrong": "He cut the cake **by** a knife.",
+              "right": "He cut the cake **with** a knife.",
+              "urdu": "اس نے چاقو سے کیک کاٹا۔",
+              "note": "Use **with** for tools or instruments."
+            },
+            {
+              "wrong": "I go to work **in** bus.",
+              "right": "I go to work **by** bus.",
+              "urdu": "میں بس سے جاتا ہوں۔",
+              "note": "Use **by** for general means of transport (without articles)."
+            },
+            {
+              "wrong": "He killed the bird **by** a gun.",
+              "right": "He killed the bird **with** a gun.",
+              "urdu": "اس نے بندوق سے پرندے کو مارا۔",
+              "note": "Use **with** for the weapon/instrument."
+            },
+            {
+              "wrong": "The cake was made **with** my mother.",
+              "right": "The cake was made **by** my mother.",
+              "urdu": "کیک میری امی نے بنایا تھا۔",
+              "note": "Use **by** for the person performing the action."
+            }
+          ]
+        },
+        {
+          "name": "Preposition of Possession",
+          "description": "These prepositions indicate ownership or a relationship of belonging between two nouns.",
+          "urduExplanation": "حرفِ جارِ ملکیت وہ الفاظ ہیں جو کسی چیز کی ملکیت یا دو چیزوں کے درمیان تعلق کو ظاہر کرتے ہیں۔",
+          "exampleWords": "of, with, to",
+          "rules": [
+            "1: Use **of** to show belonging or connection (especially for non-living things).",
+            "2: Use **with** to show a feature or quality someone or something possesses.",
+            "3: Use **to** to show belonging to a person or group.",
+            "4: Use **of** for parts of a whole.",
+            "5: **Of** is often used in titles or descriptions."
+          ],
+          "ruleExamples": [
+            "The color **of** the car is red.\nThe legs **of** the table are broken. > Belonging (non-living): **of**.",
+            "The boy **with** blue eyes is my brother.\nA girl **with** long hair. > Possession of a feature: **with**.",
+            "This book belongs **to** me.\nHe is a member **to** the club (often **of**). > Belonging to a person/group: **to**.",
+            "A piece **of** cake.\nThe handle **of** the door. > Part of a whole: **of**.",
+            "The King **of** Jordan.\nThe city **of** lights. > Titles/Descriptions: **of**."
+          ],
+          "examples": [
+            {
+              "text": "The color **of** the car is red.",
+              "urdu": "گاڑی کا رنگ سرخ ہے۔",
+              "note": "**Of** shows the relationship between color and car."
+            },
+            {
+              "text": "The boy **with** blue eyes is my brother.",
+              "urdu": "نیلی آنکھوں والا لڑکا میرا بھائی ہے۔",
+              "note": "**With** describes a feature he has."
+            },
+            {
+              "text": "This book belongs **to** me.",
+              "urdu": "یہ کتاب میری ہے۔",
+              "note": "**To** shows ownership."
+            },
+            {
+              "text": "The legs **of** the table are broken.",
+              "urdu": "میز کی ٹانگیں ٹوٹی ہوئی ہیں۔",
+              "note": "**Of** connects the legs to the table."
+            },
+            {
+              "text": "A man **with** a red hat.",
+              "urdu": "سرخ ٹوپی والا آدمی۔",
+              "note": "**With** shows what he is carrying/wearing."
+            }
+          ],
+          "commonMistakes": [
+            {
+              "wrong": "The car **of** my brother.",
+              "right": "My brother's car (or the car **of** my brother - less common).",
+              "urdu": "میرے بھائی کی گاڑی۔",
+              "note": "Use possessive 's for people more often than **of**."
+            },
+            {
+              "wrong": "The boy **of** blue eyes.",
+              "right": "The boy **with** blue eyes.",
+              "urdu": "نیلی آنکھوں والا لڑکا۔",
+              "note": "Use **with** for physical features."
+            },
+            {
+              "wrong": "This pen belongs **of** me.",
+              "right": "This pen belongs **to** me.",
+              "urdu": "یہ قلم میرا ہے۔",
+              "note": "The verb 'belong' always takes **to**."
+            },
+            {
+              "wrong": "The roof **with** the house.",
+              "right": "The roof **of** the house.",
+              "urdu": "گھر کی چھت۔",
+              "note": "Use **of** for parts of non-living things."
+            },
+            {
+              "wrong": "A man **of** a beard.",
+              "right": "A man **with** a beard.",
+              "urdu": "داڑھی والا آدمی۔",
+              "note": "Use **with** for physical attributes."
+            }
+          ]
         },
         {
           "name": "Preposition of Manner",
-          "description": "Shows how something is done, e.g., by bus, with care, in silence."
+          "description": "These prepositions describe how an action is performed or the manner in which something happens.",
+          "urduExplanation": "حرفِ جارِ طریقہ وہ الفاظ ہیں جو یہ بتاتے ہیں کہ کوئی کام کس طرح یا کس انداز سے کیا گیا۔",
+          "exampleWords": "by, with, like, in",
+          "rules": [
+            "1: Use **by** to show the method or means of doing something.",
+            "2: Use **with** to show the feeling or attitude during an action.",
+            "3: Use **like** to show similarity or comparison.",
+            "4: Use **in** with certain phrases to show manner.",
+            "5: Use **with** to show the accompaniment of a quality."
+          ],
+          "ruleExamples": [
+            "He succeeded **by** working hard.\nShe escaped **by** jumping out. > Method: **by**.",
+            "He fought **with** courage.\nShe spoke **with** confidence. > Attitude/Feeling: **with**.",
+            "She sings **like** an angel.\nHe acts **like** a child. > Comparison: **like**.",
+            "He spoke **in** a loud voice.\nThey walked **in** silence. > Phrase-based manner: **in**.",
+            "He handled the situation **with** care.\nShe looked at him **with** anger. > Quality: **with**."
+          ],
+          "examples": [
+            {
+              "text": "He succeeded **by** working hard.",
+              "urdu": "وہ سخت محنت کر کے کامیاب ہوا۔",
+              "note": "**By** shows the method of success."
+            },
+            {
+              "text": "He fought **with** courage.",
+              "urdu": "وہ بہادری سے لڑا۔",
+              "note": "**With** shows the manner (courage)."
+            },
+            {
+              "text": "She sings **like** an angel.",
+              "urdu": "وہ فرشتے کی طرح گاتی ہے۔",
+              "note": "**Like** shows comparison."
+            },
+            {
+              "text": "He spoke **in** a loud voice.",
+              "urdu": "وہ اونچی آواز میں بولا۔",
+              "note": "**In** shows the manner of speaking."
+            },
+            {
+              "text": "He handled the situation **with** care.",
+              "urdu": "اس نے احتیاط سے صورتحال کو سنبھالا۔",
+              "note": "**With** shows the quality of the action."
+            }
+          ],
+          "commonMistakes": [
+            {
+              "wrong": "He succeeded **with** working hard.",
+              "right": "He succeeded **by** working hard.",
+              "urdu": "وہ سخت محنت سے کامیاب ہوا۔",
+              "note": "Use **by** for methods involving gerunds (-ing)."
+            },
+            {
+              "wrong": "He fought **by** courage.",
+              "right": "He fought **with** courage.",
+              "urdu": "وہ بہادری سے لڑا۔",
+              "note": "Use **with** for abstract qualities like courage."
+            },
+            {
+              "wrong": "She sings **as** an angel.",
+              "right": "She sings **like** an angel.",
+              "urdu": "وہ فرشتے کی طرح گاتی ہے۔",
+              "note": "Use **like** for comparison with a noun."
+            },
+            {
+              "wrong": "He spoke **with** a loud voice.",
+              "right": "He spoke **in** a loud voice.",
+              "urdu": "وہ اونچی آواز میں بولا۔",
+              "note": "The standard phrase is **in a ... voice**."
+            },
+            {
+              "wrong": "He did it **by** care.",
+              "right": "He did it **with** care.",
+              "urdu": "اس نے یہ احتیاط سے کیا۔",
+              "note": "Use **with** for care, precision, etc."
+            }
+          ]
         },
         {
-          "name": "Preposition of Agent/Instrument",
-          "description": "Shows who or what performs or is used for an action, e.g., written by the author, cut with a knife."
+          "name": "Compound Prepositions",
+          "description": "Compound prepositions (also called Phrasal Prepositions) consist of two or more words that function as a single preposition.",
+          "urduExplanation": "مرکب حروفِ جار وہ الفاظ ہیں جو دو یا دو سے زیادہ الفاظ پر مشتمل ہوتے ہیں لیکن ایک ہی حرفِ جار کے طور پر کام کرتے ہیں۔",
+          "exampleWords": "in front of, instead of, because of, in spite of, according to",
+          "rules": [
+            "1: They function as a single unit to show relationships.",
+            "2: **Because of** shows a reason.",
+            "3: **Instead of** shows a substitution.",
+            "4: **In spite of** shows contrast or concession.",
+            "5: **According to** shows a source or standard."
+          ],
+          "ruleExamples": [
+            "He is sitting **in front of** the TV.\nThe car is parked **in front of** the house. > Position: **in front of**.",
+            "He was late **because of** the rain.\nI am happy **because of** you. > Reason: **because of**.",
+            "Take tea **instead of** coffee.\nHe stayed home **instead of** going out. > Substitution: **instead of**.",
+            "He succeeded **in spite of** the difficulties.\nThey went out **in spite of** the rain. > Contrast: **in spite of**.",
+            "**According to** the news, it will rain.\nEverything went **according to** plan. > Source/Standard: **according to**."
+          ],
+          "examples": [
+            {
+              "text": "He is sitting **in front of** the TV.",
+              "urdu": "وہ ٹی وی کے سامنے بیٹھا ہے۔",
+              "note": "**In front of** shows position."
+            },
+            {
+              "text": "He was late **because of** the rain.",
+              "urdu": "وہ بارش کی وجہ سے لیٹ ہو گیا تھا۔",
+              "note": "**Because of** shows the reason."
+            },
+            {
+              "text": "Take tea **instead of** coffee.",
+              "urdu": "کافی کے بجائے چائے پیو۔",
+              "note": "**Instead of** shows substitution."
+            },
+            {
+              "text": "He succeeded **in spite of** the difficulties.",
+              "urdu": "وہ مشکلات کے باوجود کامیاب ہوا۔",
+              "note": "**In spite of** shows contrast."
+            },
+            {
+              "text": "Everything went **according to** plan.",
+              "urdu": "سب کچھ منصوبے کے مطابق ہوا۔",
+              "note": "**According to** shows the standard."
+            }
+          ],
+          "commonMistakes": [
+            {
+              "wrong": "He was late **because** the rain.",
+              "right": "He was late **because of** the rain.",
+              "urdu": "وہ بارش کی وجہ سے لیٹ ہوا۔",
+              "note": "**Because** is a conjunction; **because of** is a preposition."
+            },
+            {
+              "wrong": "He is sitting **in front** the TV.",
+              "right": "He is sitting **in front of** the TV.",
+              "urdu": "وہ ٹی وی کے سامنے بیٹھا ہے۔",
+              "note": "Don't forget the **of** in **in front of**."
+            },
+            {
+              "wrong": "Take tea **instead** coffee.",
+              "right": "Take tea **instead of** coffee.",
+              "urdu": "کافی کے بجائے چائے لیں۔",
+              "note": "Always use **of** with **instead** when followed by a noun."
+            },
+            {
+              "wrong": "He succeeded **despite of** the difficulties.",
+              "right": "He succeeded **despite** the difficulties (OR **in spite of**).",
+              "urdu": "وہ مشکلات کے باوجود کامیاب ہوا۔",
+              "note": "**Despite** does not take **of**; **in spite** does."
+            },
+            {
+              "wrong": "Everything went **according** plan.",
+              "right": "Everything went **according to** plan.",
+              "urdu": "سب کچھ منصوبے کے مطابق ہوا۔",
+              "note": "Don't forget the **to** in **according to**."
+            }
+          ]
+        },
+        {
+          "name": "Participle Prepositions",
+          "description": "These are verbs ending in -ing or -ed that function as prepositions in a sentence.",
+          "urduExplanation": "فعلی حروفِ جار وہ الفاظ ہیں جو دراصل فعل کی صورتیں (ing یا ed والی) ہیں لیکن جملے میں حرفِ جار کے طور پر کام کرتے ہیں۔",
+          "exampleWords": "concerning, regarding, including, following, considering",
+          "rules": [
+            "1: They act as connectors like other prepositions.",
+            "2: **Regarding** and **concerning** mean 'about'.",
+            "3: **Including** shows that something is part of a group.",
+            "4: **Following** means 'after'.",
+            "5: **Considering** means 'taking into account'."
+          ],
+          "ruleExamples": [
+            "I have a question **regarding** the project.\nHe wrote a letter **concerning** the issue. > About: **regarding/concerning**.",
+            "The price is $50, **including** tax.\nEveryone came, **including** Ali. > Part of group: **including**.",
+            "**Following** the meeting, we had lunch.\nHe left **following** the argument. > After: **following**.",
+            "**Considering** his age, he is very active.\nHe did well, **considering** the circumstances. > Taking into account: **considering**.",
+            "I am **provided** with everything I need. (often functions as a participle preposition pattern)."
+          ],
+          "examples": [
+            {
+              "text": "I have a question **regarding** the project.",
+              "urdu": "مجھے پروجیکٹ کے بارے میں ایک سوال پوچھنا ہے۔",
+              "note": "**Regarding** functions as a preposition meaning 'about'."
+            },
+            {
+              "text": "The price is $50, **including** tax.",
+              "urdu": "ٹیکس سمیت قیمت 50 ڈالر ہے۔",
+              "note": "**Including** shows tax is part of the total."
+            },
+            {
+              "text": "Everyone came, **including** Ali.",
+              "urdu": "علی سمیت سب آئے۔",
+              "note": "**Including** adds Ali to the group."
+            },
+            {
+              "text": "He left **following** the argument.",
+              "urdu": "وہ بحث کے بعد چلا گیا۔",
+              "note": "**Following** means 'after'."
+            },
+            {
+              "text": "**Considering** his age, he is very active.",
+              "urdu": "اپنی عمر کے لحاظ سے، وہ بہت فعال ہے۔",
+              "note": "**Considering** means taking his age into account."
+            }
+          ],
+          "commonMistakes": [
+            {
+              "wrong": "I have a question **regard** the project.",
+              "right": "I have a question **regarding** the project.",
+              "urdu": "مجھے پروجیکٹ کے بارے میں سوال ہے۔",
+              "note": "Use the participle form **regarding**."
+            },
+            {
+              "wrong": "The price is $50, **include** tax.",
+              "right": "The price is $50, **including** tax.",
+              "urdu": "ٹیکس سمیت قیمت 50 ڈالر ہے۔",
+              "note": "Use the participle form **including**."
+            },
+            {
+              "wrong": "He left **follow** the meeting.",
+              "right": "He left **following** the meeting.",
+              "urdu": "وہ میٹنگ کے بعد چلا گیا۔",
+              "note": "Use **following** as a preposition."
+            },
+            {
+              "wrong": "Everyone came, **include** Ali.",
+              "right": "Everyone came, **including** Ali.",
+              "urdu": "علی سمیت سب آئے۔",
+              "note": "Use **including** to connect the noun."
+            },
+            {
+              "wrong": "I wrote a letter **concern** the matter.",
+              "right": "I wrote a letter **concerning** the matter.",
+              "urdu": "میں نے معاملے کے بارے میں خط لکھا۔",
+              "note": "Use **concerning** meaning 'about'."
+            }
+          ]
+        },
+        {
+          "name": "Preposition of Reason or Purpose",
+          "description": "These prepositions indicate why an action is performed or the purpose behind it.",
+          "urduExplanation": "حرفِ جارِ وجہ یا مقصد وہ الفاظ ہیں جو یہ بتاتے ہیں کہ کوئی کام کیوں کیا گیا یا اس کے پیچھے کیا مقصد تھا۔",
+          "exampleWords": "for, of, from, because of, due to",
+          "rules": [
+            "1: Use **for** to show purpose or reason.",
+            "2: Use **of** to show the cause of death or illness.",
+            "3: Use **from** to show the source of a cause.",
+            "4: Use **because of** to introduce a reason (followed by a noun).",
+            "5: Use **due to** to show the cause (often following the verb 'to be')."
+          ],
+          "ruleExamples": [
+            "I went there **for** a meeting.\nShe studies **for** knowledge. > Purpose: **for**.",
+            "He died **of** cancer.\nShe is sick **of** waiting. > Cause (illness/death): **of**.",
+            "He is suffering **from** fever.\nShe is tired **from** working. > Source of cause: **from**.",
+            "We stayed home **because of** the cold.\nThe flight was canceled **because of** fog. > Reason: **because of**.",
+            "The delay was **due to** heavy traffic.\nHis success is **due to** hard work. > Cause: **due to**."
+          ],
+          "examples": [
+            {
+              "text": "I went there **for** a meeting.",
+              "urdu": "میں وہاں میٹنگ کے لیے گیا تھا۔",
+              "note": "**For** shows the purpose of going."
+            },
+            {
+              "text": "He died **of** cancer.",
+              "urdu": "وہ کینسر کی وجہ سے فوت ہو گیا۔",
+              "note": "**Of** is used for diseases."
+            },
+            {
+              "text": "He is suffering **from** fever.",
+              "urdu": "وہ بخار میں مبتلا ہے۔",
+              "note": "**From** is used with 'suffering'."
+            },
+            {
+              "text": "We stayed home **because of** the cold.",
+              "urdu": "ہم سردی کی وجہ سے گھر پر رہے۔",
+              "note": "**Because of** shows the reason."
+            },
+            {
+              "text": "The delay was **due to** heavy traffic.",
+              "urdu": "تاخیر ٹریفک کے رش کی وجہ سے تھی۔",
+              "note": "**Due to** shows the cause."
+            }
+          ],
+          "commonMistakes": [
+            {
+              "wrong": "He died **from** cancer.",
+              "right": "He died **of** cancer.",
+              "urdu": "وہ کینسر سے فوت ہوا۔",
+              "note": "Standard usage is **died of** for diseases."
+            },
+            {
+              "wrong": "He is suffering **of** fever.",
+              "right": "He is suffering **from** fever.",
+              "urdu": "وہ بخار میں مبتلا ہے۔",
+              "note": "The verb 'suffer' takes the preposition **from**."
+            },
+            {
+              "wrong": "I went there **because** the meeting.",
+              "right": "I went there **for** the meeting (or **because of**).",
+              "urdu": "میں میٹنگ کے لیے وہاں گیا۔",
+              "note": "Use **for** or **because of** before a noun."
+            },
+            {
+              "wrong": "He is tired **of** working. (when you mean exhausted)",
+              "right": "He is tired **from** working.",
+              "urdu": "وہ کام کرنے سے تھک گیا ہے۔",
+              "note": "**Tired of** means bored; **tired from** means exhausted."
+            },
+            {
+              "wrong": "The match was canceled **due to** it rained.",
+              "right": "The match was canceled **because** it rained (or **due to** the rain).",
+              "urdu": "بارش کی وجہ سے میچ منسوخ ہو گیا۔",
+              "note": "**Due to** must be followed by a noun, not a clause."
+            }
+          ]
         }
-      ],
-      "rules": [
-        "Use 'at' for exact times and specific points (at 5 p.m., at the bus stop), 'on' for days and dates (on Monday, on 14 August), and 'in' for longer periods and enclosed spaces (in 2026, in the room).",
-        "A preposition is always followed by a noun, pronoun, or gerund, never by the base form of a verb (interested in learning, not interested in learn).",
-        "Many verbs and adjectives are fixed with specific prepositions and must be memorized, such as 'good at', 'afraid of', 'depend on', and 'listen to'.",
-        "Do not drop necessary prepositions that exist in English even if the Urdu sentence structure does not require an equivalent word.",
-        "In formal writing, avoid ending a sentence with a preposition when a more formal structure is available (To whom did you give the letter? rather than Who did you give the letter to?).",
-        "Do not confuse similar prepositions like 'in time' (before a deadline) and 'on time' (exactly at the scheduled time)."
-      ],
-      "examples": [
-        {
-          "text": "The meeting is scheduled at 10 a.m. on Friday.",
-          "note": "preposition of time"
-        },
-        {
-          "text": "The keys are on the table near the door.",
-          "note": "preposition of place"
-        },
-        {
-          "text": "She walked into the examination hall confidently.",
-          "note": "preposition of direction"
-        },
-        {
-          "text": "He solved the problem with great patience.",
-          "note": "preposition of manner"
-        },
-        {
-          "text": "The novel was written by a famous Pakistani author.",
-          "note": "preposition of agent"
-        },
-        {
-          "text": "I am interested in learning new languages.",
-          "note": "fixed preposition after adjective"
-        },
-        {
-          "text": "Success depends on consistent hard work.",
-          "note": "fixed preposition after verb"
-        }
-      ],
-      "commonMistakes": [
-        {
-          "wrong": "I am good in mathematics.",
-          "right": "I am good at mathematics.",
-          "note": "the fixed expression uses 'good at', not 'good in'"
-        },
-        {
-          "wrong": "She arrived to the airport late.",
-          "right": "She arrived at the airport late.",
-          "note": "'arrive' takes 'at' for specific places, not 'to'"
-        },
-        {
-          "wrong": "He is married with a doctor.",
-          "right": "He is married to a doctor.",
-          "note": "the correct fixed preposition after 'married' is 'to'"
-        },
-        {
-          "wrong": "We discussed about the plan yesterday.",
-          "right": "We discussed the plan yesterday.",
-          "note": "'discuss' is directly transitive in English and does not need 'about'"
-        }
-      ],
-      "practice": [
-        {
-          "question": "Choose the correct preposition: 'The exam will be held ___ Monday.'",
-          "options": [
-            "at",
-            "in",
-            "on",
-            "by"
-          ],
-          "answerIndex": 2,
-          "explanation": "'On' is used with specific days of the week, such as Monday."
-        },
-        {
-          "question": "Select the correct sentence.",
-          "options": [
-            "She is afraid from spiders.",
-            "She is afraid of spiders.",
-            "She is afraid on spiders.",
-            "She is afraid to spiders."
-          ],
-          "answerIndex": 1,
-          "explanation": "The fixed prepositional phrase is 'afraid of', not 'afraid from' or other combinations."
-        },
-        {
-          "question": "Choose the correctly completed sentence: 'He is responsible ___ managing the entire project.'",
-          "options": [
-            "of",
-            "for",
-            "with",
-            "at"
-          ],
-          "answerIndex": 1,
-          "explanation": "'Responsible for' is the correct fixed prepositional phrase in English."
-        }
-      ],
-      "quiz": [
-        {
-          "question": "Which sentence uses the preposition of time correctly?",
-          "options": [
-            "The event will happen in 6 p.m.",
-            "The event will happen at 6 p.m.",
-            "The event will happen on 6 p.m.",
-            "The event will happen by 6 p.m. sharp only."
-          ],
-          "answerIndex": 1,
-          "explanation": "'At' is used with exact clock times such as 6 p.m."
-        },
-        {
-          "question": "Choose the correct sentence.",
-          "options": [
-            "He is capable to solve this problem.",
-            "He is capable of solving this problem.",
-            "He is capable for solving this problem.",
-            "He is capable at solving this problem."
-          ],
-          "answerIndex": 1,
-          "explanation": "'Capable of' followed by a gerund is the correct fixed prepositional structure."
-        },
-        {
-          "question": "Select the sentence with the correct preposition of place.",
-          "options": [
-            "She is waiting in the bus stop.",
-            "She is waiting on the bus stop.",
-            "She is waiting at the bus stop.",
-            "She is waiting to the bus stop."
-          ],
-          "answerIndex": 2,
-          "explanation": "'At' is used for specific points like a bus stop."
-        }
-      ],
-      "summary": "Prepositions show relationships of time, place, direction, or manner between words in a sentence and are always followed by a noun, pronoun, or gerund. Many prepositions are fixed with specific verbs and adjectives, such as 'good at' and 'depend on', and must be memorized rather than translated directly from Urdu. Careful attention to at/on/in distinctions and fixed phrases prevents the most frequent prepositional errors."
+      ]
     }
   },
   {
