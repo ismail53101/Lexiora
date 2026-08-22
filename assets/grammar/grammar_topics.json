@@ -2282,162 +2282,500 @@
     "order": 9,
     "isLeaf": true,
     "content": {
-      "introduction": "A determiner is a word placed before a noun to clarify what the noun refers to, indicating specificity, quantity, or possession. Determiners include articles, demonstratives, possessives, and quantifiers, and choosing the right one is one of the most common challenges for Urdu-speaking learners of English. Correct use of determiners, especially articles, is heavily tested in CSS, PMS, and IELTS grammar and writing sections.",
-      "urduExplanation": "Determiner وہ لفظ ہے جو noun سے پہلے آ کر یہ واضح کرتا ہے کہ ہم کس چیز، کتنی مقدار یا کس کی ملکیت کی بات کر رہے ہیں، جیسے 'a', 'the', 'this', 'my' یا 'some'۔ چونکہ اردو میں articles (a, an, the) کا کوئی براہ راست متبادل نہیں ہوتا، اس لیے طلبہ کو اکثر یہ استعمال کرنے میں دشواری ہوتی ہے۔ articles کے علاوہ determiners میں demonstratives (this, that)، possessives (my, your) اور quantifiers (some, many, few) شامل ہیں۔ صحیح determiner کا انتخاب جملے کے معنی کو واضح اور درست بناتا ہے۔",
-      "englishExplanation": "Determiners are words that come before nouns to specify which one, how many, or whose it is, and they include articles, demonstratives, possessives, and quantifiers. The articles 'a' and 'an' are indefinite, used for non-specific or first-mentioned singular countable nouns, while 'the' is definite, used for specific or previously mentioned nouns. Demonstrative determiners (this, that, these, those) point to specific nouns based on distance or number, and possessive determiners (my, your, his, her, its, our, their) show ownership. Quantifiers such as some, any, much, many, few, and little indicate amount, and the correct choice depends on whether the noun is countable or uncountable.",
-      "types": [
-        {
-          "name": "Article",
-          "description": "Indicates definiteness or indefiniteness of a noun, e.g., a, an (indefinite) and the (definite)."
-        },
-        {
-          "name": "Demonstrative Determiner",
-          "description": "Points to specific nouns based on distance and number, e.g., this, that, these, those."
-        },
-        {
-          "name": "Possessive Determiner",
-          "description": "Shows ownership before a noun, e.g., my, your, his, her, its, our, their."
-        },
-        {
-          "name": "Quantifier",
-          "description": "Indicates the amount or quantity of a noun, e.g., some, any, many, much, few, little, several."
-        },
-        {
-          "name": "Numeral Determiner",
-          "description": "Specifies exact number before a noun, e.g., one, two, first, second."
-        }
-      ],
-      "rules": [
-        "Use 'a' before words beginning with a consonant sound and 'an' before words beginning with a vowel sound (a university, an hour).",
-        "Use 'the' when referring to a specific noun already known to the listener or mentioned earlier in the conversation (I bought a pen. The pen is blue.).",
-        "Do not use articles before uncountable nouns when speaking generally (Water is essential for life, not The water is essential for life, unless referring to specific water).",
-        "Use 'many' and 'few' with countable plural nouns, and 'much' and 'little' with uncountable nouns (many books, much time).",
-        "Demonstrative determiners must agree in number with the noun they modify: this/that with singular nouns, these/those with plural nouns.",
-        "Possessive determiners are always followed directly by a noun and never stand alone (my book, not my is on the table)."
-      ],
+      "introduction": "A determiner is a word placed before a noun to clarify what the noun refers to, indicating specificity, quantity, or possession.",
+      "urduExplanation": "حرفِ تعین وہ لفظ ہے جو کسی اسم سے پہلے آ کر یہ واضح کرتا ہے کہ وہ اسم کس چیز، کتنی مقدار یا کس کی ملکیت کی طرف اشارہ کر رہا ہے۔",
+      "englishExplanation": "Determiners are essential for defining nouns. They help the reader understand if we are talking about something specific (the book) or general (a book), how many things we are talking about (some books), or who owns them (my books). In competitive exams, the correct use of determiners—especially articles and quantifiers—is a key marker of advanced English proficiency.",
       "examples": [
         {
-          "text": "She bought a laptop and an umbrella yesterday.",
-          "note": "indefinite articles"
-        },
-        {
-          "text": "The teacher who taught us mathematics has retired.",
-          "note": "definite article"
-        },
-        {
-          "text": "This essay is better than that one.",
-          "note": "demonstrative determiner"
-        },
-        {
-          "text": "Our school won the inter-college competition.",
-          "note": "possessive determiner"
-        },
-        {
-          "text": "There is little time left before the exam.",
-          "note": "quantifier with uncountable noun"
-        },
-        {
-          "text": "Many students applied for the scholarship this year.",
-          "note": "quantifier with countable noun"
-        },
-        {
-          "text": "These books belong to the university library.",
-          "note": "demonstrative determiner (plural)"
+          "text": "a, an, the, this, that, my, your, some, any, each, every, which",
+          "note": "Common examples of determiners."
         }
       ],
-      "commonMistakes": [
+      "footerImage": "assets/grammar/images/determiners_master_table.png",
+      "types": [
         {
-          "wrong": "She is an university student.",
-          "right": "She is a university student.",
-          "note": "'university' starts with a consonant sound /j/, so it takes 'a', not 'an'"
+          "name": "Articles",
+          "description": "Articles are the most common determiners. They indicate whether a noun is specific or general.",
+          "urduExplanation": "آرٹیکلز سب سے زیادہ استعمال ہونے والے ڈٹرمینرز ہیں۔ یہ بتاتے ہیں کہ کوئی اسم خاص ہے یا عام۔",
+          "exampleWords": "a, an, the",
+          "rules": [
+            "1: Use **a** before singular countable nouns starting with a consonant sound.",
+            "2: Use **an** before singular countable nouns starting with a vowel sound.",
+            "3: Use **the** for specific nouns that the listener already knows about.",
+            "4: Use **the** for unique things (e.g., the sun, the sky).",
+            "5: Use **the** before superlative adjectives (e.g., the best, the tallest).",
+            "6: Do not use **a/an** with uncountable nouns."
+          ],
+          "ruleExamples": [
+            "I have **a** book.\nHe is **a** doctor. > Consonant sound: **a**.",
+            "She ate **an** apple.\nHe is **an** honest man. > Vowel sound: **an**.",
+            "I saw a movie. **The** movie was great.\nOpen **the** door. > Specific/Previously mentioned: **the**.",
+            "**The** sun rises in the east.\n**The** earth is round. > Unique things: **the**.",
+            "He is **the** best student in the class.\nThis is **the** most beautiful flower. > Superlatives: **the**.",
+            "❌ I need **a** water. ✅ I need **some** water. > Uncountable nouns rule."
+          ],
+          "examples": [
+            {
+              "text": "I have **a** book.",
+              "urdu": "میرے پاس ایک کتاب ہے۔",
+              "note": "**A** is used for a non-specific singular noun."
+            },
+            {
+              "text": "She ate **an** apple.",
+              "urdu": "اس نے ایک سیب کھایا۔",
+              "note": "**An** is used because 'apple' starts with a vowel sound."
+            },
+            {
+              "text": "**The** sun is shining.",
+              "urdu": "سورج چمک رہا ہے۔",
+              "note": "**The** is used for unique objects."
+            },
+            {
+              "text": "He is **the** tallest boy in the school.",
+              "urdu": "وہ سکول کا سب سے لمبا لڑکا ہے۔",
+              "note": "**The** is used with superlative adjectives."
+            },
+            {
+              "text": "Give me **the** pen on the table.",
+              "urdu": "مجھے وہ قلم دیں جو میز پر ہے۔",
+              "note": "**The** refers to a specific pen."
+            }
+          ],
+          "commonMistakes": [
+            {
+              "wrong": "He is **a** honest man.",
+              "right": "He is **an** honest man.",
+              "urdu": "وہ ایک ایماندار آدمی ہے۔",
+              "note": "Use **an** because 'honest' starts with a vowel sound (h is silent)."
+            },
+            {
+              "wrong": "I saw **the** cat yesterday. (first mention)",
+              "right": "I saw **a** cat yesterday.",
+              "urdu": "میں نے کل ایک بلی دیکھی۔",
+              "note": "Use **a** for the first time you mention something non-specific."
+            },
+            {
+              "wrong": "He is **best** player.",
+              "right": "He is **the best** player.",
+              "urdu": "وہ بہترین کھلاڑی ہے۔",
+              "note": "Always use **the** before superlative adjectives."
+            },
+            {
+              "wrong": "I love **the** music. (general sense)",
+              "right": "I love music.",
+              "urdu": "مجھے موسیقی سے محبت ہے۔",
+              "note": "Do not use **the** when talking about something in general."
+            },
+            {
+              "wrong": "She is **university** student.",
+              "right": "She is **a** university student.",
+              "urdu": "وہ یونیورسٹی کی طالبہ ہے۔",
+              "note": "Use **a** because 'university' starts with a consonant sound (yoo)."
+            }
+          ]
         },
         {
-          "wrong": "I have much books to read this month.",
-          "right": "I have many books to read this month.",
-          "note": "'books' is countable, so it takes 'many', not 'much'"
+          "name": "Demonstratives",
+          "description": "Demonstratives point to specific nouns and indicate their distance from the speaker.",
+          "urduExplanation": "اشارہ کرنے والے الفاظ مخصوص اسموں کی طرف اشارہ کرتے ہیں اور بولنے والے سے ان کے فاصلے کو ظاہر کرتے ہیں۔",
+          "exampleWords": "this, that, these, those",
+          "rules": [
+            "1: Use **this** for a singular noun that is near the speaker.",
+            "2: Use **that** for a singular noun that is far from the speaker.",
+            "3: Use **these** for plural nouns that are near the speaker.",
+            "4: Use **those** for plural nouns that are far from the speaker.",
+            "5: Demonstratives must agree in number with the noun they modify."
+          ],
+          "ruleExamples": [
+            "**This** book is mine.\n**This** pen is blue. > Singular near: **this**.",
+            "**That** house is beautiful.\n**That** star is bright. > Singular far: **that**.",
+            "**These** flowers are fresh.\n**These** boys are my friends. > Plural near: **these**.",
+            "**Those** birds are flying south.\n**Those** mountains are high. > Plural far: **those**.",
+            "❌ **This** books are new. ✅ **These** books are new. > Agreement rule."
+          ],
+          "examples": [
+            {
+              "text": "**This** book is mine.",
+              "urdu": "یہ کتاب میری ہے۔",
+              "note": "**This** refers to a singular object nearby."
+            },
+            {
+              "text": "**That** house is beautiful.",
+              "urdu": "وہ گھر خوبصورت ہے۔",
+              "note": "**That** refers to a singular object at a distance."
+            },
+            {
+              "text": "**These** flowers are fresh.",
+              "urdu": "یہ پھول تازہ ہیں۔",
+              "note": "**These** refers to plural objects nearby."
+            },
+            {
+              "text": "**Those** birds are flying.",
+              "urdu": "وہ پرندے اڑ رہے ہیں۔",
+              "note": "**Those** refers to plural objects at a distance."
+            },
+            {
+              "text": "I like **this** car.",
+              "urdu": "مجھے یہ گاڑی پسند ہے۔",
+              "note": "**This** specifies which car."
+            }
+          ],
+          "commonMistakes": [
+            {
+              "wrong": "**These** book is new.",
+              "right": "**This** book is new.",
+              "urdu": "یہ کتاب نئی ہے۔",
+              "note": "Use **this** for singular nouns."
+            },
+            {
+              "wrong": "**That** apples are sweet.",
+              "right": "**Those** apples are sweet.",
+              "urdu": "وہ سیب میٹھے ہیں۔",
+              "note": "Use **those** for plural nouns at a distance."
+            },
+            {
+              "wrong": "Look at **this** stars. (far)",
+              "right": "Look at **those** stars.",
+              "urdu": "ان ستاروں کو دیکھو۔",
+              "note": "Use **those** for plural objects that are far away."
+            },
+            {
+              "wrong": "**This** children are playing.",
+              "right": "**These** children are playing.",
+              "urdu": "یہ بچے کھیل رہے ہیں۔",
+              "note": "Use **these** for plural nouns nearby."
+            },
+            {
+              "wrong": "I want **that** one books.",
+              "right": "I want **that** book.",
+              "urdu": "مجھے وہ کتاب چاہیے۔",
+              "note": "Demonstratives directly modify the noun."
+            }
+          ]
         },
         {
-          "wrong": "The honesty is the best policy.",
-          "right": "Honesty is the best policy.",
-          "note": "abstract nouns used in general statements do not take 'the'"
+          "name": "Possessives",
+          "description": "Possessive determiners show who owns or possesses a noun.",
+          "urduExplanation": "ملکیتی الفاظ یہ ظاہر کرتے ہیں کہ کسی اسم کا مالک کون ہے یا وہ کس کی ملکیت میں ہے۔",
+          "exampleWords": "my, your, his, her, its, our, their",
+          "rules": [
+            "1: Use **my** for something belonging to me.",
+            "2: Use **your** for something belonging to you.",
+            "3: Use **his** for a male and **her** for a female possessor.",
+            "4: Use **its** for animals or non-living things.",
+            "5: Use **our** for something belonging to us and **their** for something belonging to them.",
+            "6: Do not confuse possessive determiners with possessive pronouns (e.g., my vs. mine)."
+          ],
+          "ruleExamples": [
+            "This is **my** bag.\n**My** father is a teacher. > Belonging to me: **my**.",
+            "Is this **your** pen?\n**Your** house is big. > Belonging to you: **your**.",
+            "**His** name is Ali.\n**Her** dress is pink. > Male/Female possession.",
+            "The dog wagged **its** tail.\nThe tree lost **its** leaves. > Animal/Thing: **its**.",
+            "**Our** team won.\n**Their** parents are here. > We/They possession.",
+            "❌ This is **mine** bag. ✅ This is **my** bag. > Determiner vs. Pronoun."
+          ],
+          "examples": [
+            {
+              "text": "This is **my** bag.",
+              "urdu": "یہ میرا بیگ ہے۔",
+              "note": "**My** shows my possession."
+            },
+            {
+              "text": "**His** name is Ali.",
+              "urdu": "اس کا نام علی ہے۔",
+              "note": "**His** refers to a male possessor."
+            },
+            {
+              "text": "The dog wagged **its** tail.",
+              "urdu": "کتے نے اپنی دم ہلائی۔",
+              "note": "**Its** refers to the dog's tail."
+            },
+            {
+              "text": "**Our** team won the match.",
+              "urdu": "ہماری ٹیم میچ جیت گئی۔",
+              "note": "**Our** shows our possession."
+            },
+            {
+              "text": "Where are **their** books?",
+              "urdu": "ان کی کتابیں کہاں ہیں؟",
+              "note": "**Their** refers to their possession."
+            }
+          ],
+          "commonMistakes": [
+            {
+              "wrong": "The dog wagged **it's** tail.",
+              "right": "The dog wagged **its** tail.",
+              "urdu": "کتے نے اپنی دم ہلائی۔",
+              "note": "**Its** is possessive; **it's** is a contraction of 'it is'."
+            },
+            {
+              "wrong": "This is **mine** house.",
+              "right": "This is **my** house.",
+              "urdu": "یہ میرا گھر ہے۔",
+              "note": "Use **my** before a noun; **mine** stands alone."
+            },
+            {
+              "wrong": "She lost **his** purse. (referring to her own)",
+              "right": "She lost **her** purse.",
+              "urdu": "اس نے اپنا پرس کھو دیا۔",
+              "note": "Use **her** for a female possessor."
+            },
+            {
+              "wrong": "Is this **you** book?",
+              "right": "Is this **your** book?",
+              "urdu": "کیا یہ آپ کی کتاب ہے؟",
+              "note": "Use the possessive form **your** before a noun."
+            },
+            {
+              "wrong": "They love **there** country.",
+              "right": "They love **their** country.",
+              "urdu": "وہ اپنے ملک سے محبت کرتے ہیں۔",
+              "note": "**Their** is possessive; **there** refers to a place."
+            }
+          ]
         },
         {
-          "wrong": "This are my favorite books.",
-          "right": "These are my favorite books.",
-          "note": "the demonstrative determiner must agree in number with the plural noun 'books'"
+          "name": "Quantifiers",
+          "description": "Quantifiers indicate the amount or quantity of a noun.",
+          "urduExplanation": "مقداری الفاظ کسی اسم کی مقدار یا تعداد کو ظاہر کرتے ہیں۔",
+          "exampleWords": "some, any, much, many, few, little, a lot of, several",
+          "rules": [
+            "1: Use **some** in positive sentences and **any** in negative/question sentences.",
+            "2: Use **many** with countable nouns and **much** with uncountable nouns.",
+            "3: Use **few** (negative sense) and **a few** (positive sense) with countable nouns.",
+            "4: Use **little** (negative sense) and **a little** (positive sense) with uncountable nouns.",
+            "5: Use **a lot of** or **lots of** with both countable and uncountable nouns.",
+            "6: Use **several** for a number that is more than two but not many."
+          ],
+          "ruleExamples": [
+            "I have **some** milk.\nDo you have **any** milk? > Positive vs. Question: **some/any**.",
+            "I have **many** friends.\nI don't have **much** time. > Countable vs. Uncountable: **many/much**.",
+            "He has **few** friends. (Not many)\nHe has **a few** friends. (Some) > Countable quantity: **few/a few**.",
+            "There is **little** water. (Not much)\nThere is **a little** water. (Some) > Uncountable quantity: **little/a little**.",
+            "I have **a lot of** work.\nThere are **a lot of** books. > Both types: **a lot of**.",
+            "He has written **several** books.\n**Several** people were injured. > More than two: **several**."
+          ],
+          "examples": [
+            {
+              "text": "I have **some** milk.",
+              "urdu": "میرے پاس کچھ دودھ ہے۔",
+              "note": "**Some** is used in positive sentences."
+            },
+            {
+              "text": "I don't have **much** time.",
+              "urdu": "میرے پاس زیادہ وقت نہیں ہے۔",
+              "note": "**Much** is used with uncountable nouns like time."
+            },
+            {
+              "text": "There are **many** students in the class.",
+              "urdu": "کلاس میں بہت سے طلبہ ہیں۔",
+              "note": "**Many** is used with countable nouns."
+            },
+            {
+              "text": "He has **a few** friends.",
+              "urdu": "اس کے چند دوست ہیں۔",
+              "note": "**A few** means a small number but enough."
+            },
+            {
+              "text": "I have **a lot of** work to do.",
+              "urdu": "مجھے بہت کام کرنا ہے۔",
+              "note": "**A lot of** works with uncountable nouns."
+            }
+          ],
+          "commonMistakes": [
+            {
+              "wrong": "I have **much** friends.",
+              "right": "I have **many** friends.",
+              "urdu": "میرے بہت سے دوست ہیں۔",
+              "note": "Use **many** with countable nouns like friends."
+            },
+            {
+              "wrong": "How **many** money do you have?",
+              "right": "How **much** money do you have?",
+              "urdu": "آپ کے پاس کتنے پیسے ہیں؟",
+              "note": "Use **much** with uncountable nouns like money."
+            },
+            {
+              "wrong": "I don't have **some** pens.",
+              "right": "I don't have **any** pens.",
+              "urdu": "میرے پاس کوئی قلم نہیں ہے۔",
+              "note": "Use **any** in negative sentences."
+            },
+            {
+              "wrong": "He has **a little** books.",
+              "right": "He has **a few** books.",
+              "urdu": "اس کے پاس چند کتابیں ہیں۔",
+              "note": "Use **a few** with countable nouns."
+            },
+            {
+              "wrong": "There is **few** water in the jug.",
+              "right": "There is **little** water in the jug.",
+              "urdu": "جگ میں تھوڑا سا پانی ہے۔",
+              "note": "Use **little** with uncountable nouns like water."
+            }
+          ]
+        },
+        {
+          "name": "Numbers and Distributives",
+          "description": "Numbers indicate exact quantity, while distributives refer to individual members of a group.",
+          "urduExplanation": "اعداد صحیح تعداد کو ظاہر کرتے ہیں، جبکہ تقسیم کرنے والے الفاظ کسی گروہ کے انفرادی ارکان کی طرف اشارہ کرتے ہیں۔",
+          "exampleWords": "one, two, first, second, each, every, either, neither",
+          "rules": [
+            "1: Use **cardinal numbers** (one, two) for counting.",
+            "2: Use **ordinal numbers** (first, second) for order or position.",
+            "3: Use **each** when referring to individuals in a small, specific group.",
+            "4: Use **every** when referring to all members of a large, general group.",
+            "5: Use **either** for one of two and **neither** for none of two.",
+            "6: Distributives are usually followed by a singular verb."
+          ],
+          "ruleExamples": [
+            "I have **two** sisters.\nThere are **ten** students. > Counting: **one, two...**.",
+            "He came **first** in the race.\nThis is the **second** time. > Order: **first, second...**.",
+            "**Each** student got a prize.\n**Each** of the two boys was tall. > Specific individuals: **each**.",
+            "**Every** child loves toys.\nI go there **every** day. > General group: **every**.",
+            "You can take **either** path.\n**Neither** answer is correct. > One of two / None of two.",
+            "**Each** student **is** present.\n**Neither** plan **works**. > Singular verb rule."
+          ],
+          "examples": [
+            {
+              "text": "I have **two** sisters.",
+              "urdu": "میری دو بہنیں ہیں۔",
+              "note": "**Two** is a cardinal number."
+            },
+            {
+              "text": "He came **first** in the race.",
+              "urdu": "وہ ریس میں پہلے نمبر پر آیا۔",
+              "note": "**First** is an ordinal number."
+            },
+            {
+              "text": "**Each** student got a prize.",
+              "urdu": "ہر طالب علم کو انعام ملا۔",
+              "note": "**Each** refers to individual students."
+            },
+            {
+              "text": "**Every** child loves toys.",
+              "urdu": "ہر بچہ کھلونوں سے محبت کرتا ہے۔",
+              "note": "**Every** refers to children in general."
+            },
+            {
+              "text": "**Neither** answer is correct.",
+              "urdu": "کوئی بھی جواب صحیح نہیں ہے۔",
+              "note": "**Neither** means none of the two."
+            }
+          ],
+          "commonMistakes": [
+            {
+              "wrong": "**Each** students got a prize.",
+              "right": "**Each** student got a prize.",
+              "urdu": "ہر طالب علم کو انعام ملا۔",
+              "note": "**Each** is followed by a singular noun."
+            },
+            {
+              "wrong": "**Every** of the two boys is here.",
+              "right": "**Each** of the two boys is here.",
+              "urdu": "دونوں لڑکوں میں سے ہر ایک یہاں ہے۔",
+              "note": "Use **each** for a small, specific number like two."
+            },
+            {
+              "wrong": "**Neither** of them **are** coming.",
+              "right": "**Neither** of them **is** coming.",
+              "urdu": "ان میں سے کوئی نہیں آ رہا۔",
+              "note": "Distributives like **neither** take a singular verb."
+            },
+            {
+              "wrong": "He is the **one** boy in the line. (position)",
+              "right": "He is the **first** boy in the line.",
+              "urdu": "وہ لائن میں پہلا لڑکا ہے۔",
+              "note": "Use ordinal numbers for position."
+            },
+            {
+              "wrong": "I like **every** of these books.",
+              "right": "I like **each** of these books.",
+              "urdu": "مجھے ان میں سے ہر کتاب پسند ہے۔",
+              "note": "Use **each** when followed by 'of'."
+            }
+          ]
+        },
+        {
+          "name": "Interrogative Determiners",
+          "description": "Interrogative determiners are used to ask questions about a noun.",
+          "urduExplanation": "سوالیہ ڈٹرمینرز کسی اسم کے بارے میں سوال پوچھنے کے لیے استعمال ہوتے ہیں۔",
+          "exampleWords": "which, what, whose",
+          "rules": [
+            "1: Use **which** when there is a limited choice.",
+            "2: Use **what** when asking for general information (unlimited choice).",
+            "3: Use **whose** to ask about possession.",
+            "4: Interrogative determiners must be followed immediately by a noun.",
+            "5: Do not confuse interrogative determiners with interrogative pronouns."
+          ],
+          "ruleExamples": [
+            "**Which** color do you prefer, red or blue?\n**Which** way should we go? > Limited choice: **which**.",
+            "**What** time is it?\n**What** subjects are you studying? > General info: **what**.",
+            "**Whose** bag is this?\n**Whose** car are we taking? > Possession: **whose**.",
+            "**Which** book (noun) is yours?\n**Whose** pen (noun) is this? > Followed by noun.",
+            "**Which** is yours? (Pronoun)\n**Which** book is yours? (Determiner) > Determiner vs. Pronoun."
+          ],
+          "examples": [
+            {
+              "text": "**Which** color do you prefer?",
+              "urdu": "آپ کو کون سا رنگ پسند ہے؟",
+              "note": "**Which** is used for a limited choice."
+            },
+            {
+              "text": "**What** time is it?",
+              "urdu": "کیا وقت ہوا ہے؟",
+              "note": "**What** asks for general information."
+            },
+            {
+              "text": "**Whose** bag is this?",
+              "urdu": "یہ کس کا بیگ ہے؟",
+              "note": "**Whose** asks about ownership."
+            },
+            {
+              "text": "**Which** way should we go?",
+              "urdu": "ہمیں کس راستے پر جانا چاہیے؟",
+              "note": "**Which** specifies the choice of path."
+            },
+            {
+              "text": "**What** subjects are you studying?",
+              "urdu": "آپ کون سے مضامین پڑھ رہے ہیں؟",
+              "note": "**What** modifies the noun 'subjects'."
+            }
+          ],
+          "commonMistakes": [
+            {
+              "wrong": "**What** way should we go, left or right?",
+              "right": "**Which** way should we go, left or right?",
+              "urdu": "ہمیں کس راستے پر جانا چاہیے، بائیں یا دائیں؟",
+              "note": "Use **which** for limited choices."
+            },
+            {
+              "wrong": "**Whose** is this pen?",
+              "right": "**Whose** pen is this?",
+              "urdu": "یہ کس کا قلم ہے؟",
+              "note": "As a determiner, **whose** must be followed by a noun."
+            },
+            {
+              "wrong": "**Which** you like?",
+              "right": "**Which** one do you like? (or **Which** book do you like?)",
+              "urdu": "آپ کو کون سا پسند ہے؟",
+              "note": "A determiner needs a noun or 'one' to modify."
+            },
+            {
+              "wrong": "**What** book is yours? (when pointing to two)",
+              "right": "**Which** book is yours?",
+              "urdu": "آپ کی کتاب کون سی ہے؟",
+              "note": "Use **which** when the options are known or limited."
+            },
+            {
+              "wrong": "**Who's** bag is this?",
+              "right": "**Whose** bag is this?",
+              "urdu": "یہ کس کا بیگ ہے؟",
+              "note": "**Whose** is possessive; **who's** is 'who is'."
+            }
+          ]
         }
-      ],
-      "practice": [
-        {
-          "question": "Choose the correct article: 'He is ___ honest man.'",
-          "options": [
-            "a",
-            "an",
-            "the",
-            "no article needed"
-          ],
-          "answerIndex": 1,
-          "explanation": "'Honest' begins with a silent 'h', producing a vowel sound, so it takes 'an'."
-        },
-        {
-          "question": "Select the correct quantifier: 'There isn't ___ sugar left in the jar.'",
-          "options": [
-            "many",
-            "few",
-            "much",
-            "several"
-          ],
-          "answerIndex": 2,
-          "explanation": "'Sugar' is uncountable, so it correctly pairs with the quantifier 'much'."
-        },
-        {
-          "question": "Choose the correct demonstrative determiner: '___ shoes over there belong to Ahmed.'",
-          "options": [
-            "This",
-            "That",
-            "These",
-            "Those"
-          ],
-          "answerIndex": 3,
-          "explanation": "'Those' agrees with the plural noun 'shoes' and indicates distance ('over there')."
-        }
-      ],
-      "quiz": [
-        {
-          "question": "Which sentence uses the article correctly?",
-          "options": [
-            "I saw an unicorn in my dream.",
-            "I saw a unicorn in my dream.",
-            "I saw the unicorn in my dream first time.",
-            "I saw unicorn in my dream."
-          ],
-          "answerIndex": 1,
-          "explanation": "'Unicorn' begins with a consonant sound /j/, so it correctly takes 'a', not 'an'."
-        },
-        {
-          "question": "Choose the sentence with the correct possessive determiner.",
-          "options": [
-            "The dog wagged it's tail happily.",
-            "The dog wagged its tail happily.",
-            "The dog wagged their tail happily.",
-            "The dog wagged his self tail happily."
-          ],
-          "answerIndex": 1,
-          "explanation": "'Its' is the correct possessive determiner showing the dog's ownership of the tail, with no apostrophe."
-        },
-        {
-          "question": "Select the correctly completed sentence: 'There are ___ students absent today.'",
-          "options": [
-            "much",
-            "little",
-            "a few",
-            "less"
-          ],
-          "answerIndex": 2,
-          "explanation": "'A few' is used with countable plural nouns like 'students' to indicate a small positive number."
-        }
-      ],
-      "summary": "Determiners, including articles, demonstratives, possessives, and quantifiers, come before nouns to specify identity, ownership, or quantity. Correct article choice (a/an/the) and matching quantifiers to countable or uncountable nouns are the most common problem areas for Urdu-speaking learners. Practicing these patterns closely improves accuracy in both formal exam writing and everyday English."
+      ]
     }
   },
   {
