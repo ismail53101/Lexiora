@@ -57,7 +57,7 @@ abstract final class DbConstants {
 /// demo rows (tagged by source 'demo'), never user attempt history.
 abstract final class QuizConstants {
   static const String seedVersionKey = 'quiz_demo_seed_version';
-  static const String datasetVersion = 'quiz-demo-2026.07-v1';
+  static const String datasetVersion = 'quiz-demo-2026.08-grammar-bank-v2';
 
   /// Bank/subject `source` tag marking rows created by the demo seeder.
   static const String demoSource = 'demo';
