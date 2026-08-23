@@ -78,13 +78,45 @@ class GrammarBullet extends StatelessWidget {
           ),
           const SizedBox(width: 12),
           Expanded(
-            child: Text(
-              text,
-              style: theme.textTheme.bodyLarge?.copyWith(height: 1.4),
+            child: Text.rich(
+              TextSpan(
+                style: theme.textTheme.bodyLarge?.copyWith(height: 1.4),
+                children: _highlightRuleDetails(
+                  text,
+                  const Color(0xFF42A5F5),
+                ),
+              ),
             ),
           ),
         ],
       ),
     );
   }
+}
+
+
+List<TextSpan> _highlightRuleDetails(String text, Color highlightColor) {
+  final List<TextSpan> spans = <TextSpan>[];
+  final RegExp marker = RegExp(r'(Example|Examples|Explanation):');
+  int cursor = 0;
+
+  for (final RegExpMatch match in marker.allMatches(text)) {
+    if (match.start > cursor) {
+      spans.add(TextSpan(text: text.substring(cursor, match.start)));
+    }
+    spans.add(TextSpan(
+      text: text.substring(match.start, match.end),
+      style: TextStyle(color: highlightColor, fontWeight: FontWeight.w700),
+    ));
+    cursor = match.end;
+  }
+
+  if (cursor < text.length) {
+    spans.add(TextSpan(
+      text: text.substring(cursor),
+      style: spans.isNotEmpty ? TextStyle(color: highlightColor) : null,
+    ));
+  }
+
+  return spans.isEmpty ? <TextSpan>[TextSpan(text: text)] : spans;
 }
