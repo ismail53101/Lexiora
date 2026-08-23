@@ -8854,6 +8854,61 @@
     "isLeaf": false
   },
   {
+    "id": "tenses/overview",
+    "parentId": "tenses",
+    "title": "Tense Overview",
+    "subtitle": "Definition and the three main times",
+    "order": 0,
+    "isLeaf": true,
+    "content": {
+      "introduction": "Tense is the form of a verb that shows the time of an action or state.",
+      "urduExplanation": "زمانہ (Tense) فعل کی وہ شکل ہے جو کسی کام کے ہونے یا کسی حالت کے موجود ہونے کا وقت ظاہر کرتی ہے۔",
+      "englishExplanation": "English has three main times: present, past, and future. Each time has four forms that show whether an action is simple, continuing, completed, or continuing over a period.",
+      "types": [
+        {
+          "name": "Present Time",
+          "description": "Ali plays cricket."
+        },
+        {
+          "name": "Past Time",
+          "description": "Ali played cricket."
+        },
+        {
+          "name": "Future Time",
+          "description": "Ali will play cricket."
+        }
+      ],
+      "examples": [
+        {
+          "text": "Ali plays cricket.",
+          "urdu": "علی کرکٹ کھیلتا ہے۔",
+          "note": "Present time: a present habit or regular action."
+        },
+        {
+          "text": "Ali played cricket.",
+          "urdu": "علی نے کرکٹ کھیلی۔",
+          "note": "Past time: an action completed in the past."
+        },
+        {
+          "text": "Ali will play cricket.",
+          "urdu": "علی کرکٹ کھیلے گا۔",
+          "note": "Future time: an action expected to happen later."
+        }
+      ],
+      "rules": [
+        "Present tense relates an action or state to the present time.",
+        "Past tense relates an action or state to a completed or earlier time.",
+        "Future tense relates an action or state to a time after now.",
+        "The tense must agree with the time expression and the intended meaning of the sentence."
+      ],
+      "examTips": [
+        "Do not choose a tense only from one word; read the complete sentence and identify the time relationship.",
+        "In sentence correction, check the auxiliary verb, the main verb form, and the time expression together."
+      ],
+      "summary": "Tense shows the time of an action or state. The twelve tenses are arranged under Present, Past, and Future Tense."
+    }
+  },
+  {
     "id": "tenses/present",
     "parentId": "tenses",
     "title": "Present Tense",
@@ -8885,9 +8940,9 @@
     "order": 2,
     "isLeaf": true,
     "content": {
-      "introduction": "The Future Continuous tense is used to describe an action that will be in progress at a specific time in the future. It helps to picture what will be happening at a particular future moment.",
-      "urduExplanation": "Future Continuous Tense اس وقت استعمال ہوتا ہے جب کسی کام کے مستقبل میں کسی خاص وقت پر جاری ہونے کی بات کی جائے، جیسے 'کل اس وقت میں سفر کر رہا ہوں گا'۔ اس میں will be کے ساتھ فعل کی ing صورت استعمال ہوتی ہے۔ یہ اکثر یہ بتانے کے لیے استعمال ہوتا ہے کہ مستقبل کے کسی مخصوص لمحے پر کیا ہو رہا ہو گا۔",
-      "englishExplanation": "Future Continuous describes an action that will be happening at a specific point in the future, often used to set the scene for future events or describe parallel future actions. It is formed with 'will be' plus the verb's -ing form. It is also used politely to ask about someone's future plans without sounding like a direct request, e.g., 'Will you be using the car tonight?' Signal words include at this time tomorrow, this time next week, and by (a future time) combined with 'still'. It contrasts with Future Simple by focusing on an ongoing process rather than a single completed action.",
+      "introduction": "Future Continuous Tense is used for an action that will be in progress at a particular future time.",
+      "urduExplanation": "مستقبل جاری زمانہ ایسے کام کو ظاہر کرتا ہے جو مستقبل کے کسی خاص وقت میں جاری ہوگا۔",
+      "englishExplanation": "Future Continuous describes an action that will be happening at a specific point in the future, often used to set the scene for future events or describe parallel future actions. It is formed with 'will be' plus the verb's -ing form. It is also used politely to ask about someone's future plans without sounding like a direct request, e.g., 'Will you be using the car tonight?' Signal words include at this time tomorrow, this time next week, and by (a future time) combined with 'still'. It contrasts with Future Simple by focusing on an ongoing process rather than a single completed action. The central exam formula is will be + verb-ing. Always match the auxiliary and verb form with the subject and time expression.",
       "types": [
         {
           "name": "Structure",
@@ -8938,6 +8993,21 @@
         {
           "text": "The team will be practicing throughout the weekend.",
           "note": "future action spread over time"
+        },
+        {
+          "text": "At this time tomorrow, the candidates will be attempting the paper.",
+          "urdu": "کل اس وقت امیدوار پرچہ حل کر رہے ہوں گے۔",
+          "note": "This sentence demonstrates Future Continuous in an academic context."
+        },
+        {
+          "text": "The delegation will be meeting officials next week.",
+          "urdu": "وفد اگلے ہفتے حکام سے ملاقات کر رہا ہوگا۔",
+          "note": "This sentence demonstrates Future Continuous in an academic context."
+        },
+        {
+          "text": "She will be presenting the findings at noon.",
+          "urdu": "وہ دوپہر کو نتائج پیش کر رہی ہوگی۔",
+          "note": "This sentence demonstrates Future Continuous in an academic context."
         }
       ],
       "commonMistakes": [
@@ -8960,6 +9030,36 @@
           "wrong": "Will you working at 5 pm?",
           "right": "Will you be working at 5 pm?",
           "note": "missing 'be' in the question structure"
+        },
+        {
+          "wrong": "The candidate has submit the form.",
+          "right": "The candidate has submitted the form.",
+          "urdu": "امیدوار نے فارم جمع کر دیا ہے۔",
+          "note": "After has/have, use V3."
+        },
+        {
+          "wrong": "They was preparing the report.",
+          "right": "They were preparing the report.",
+          "urdu": "وہ رپورٹ تیار کر رہے تھے۔",
+          "note": "Plural subjects take were in the continuous past."
+        },
+        {
+          "wrong": "She did not wrote the answer.",
+          "right": "She did not write the answer.",
+          "urdu": "اس نے جواب نہیں لکھا۔",
+          "note": "After did not, use V1."
+        },
+        {
+          "wrong": "He will completed the task.",
+          "right": "He will complete the task.",
+          "urdu": "وہ کام مکمل کرے گا۔",
+          "note": "After will, use V1."
+        },
+        {
+          "wrong": "The panel have reached a decision.",
+          "right": "The panel has reached a decision.",
+          "urdu": "پینل ایک فیصلے پر پہنچ چکا ہے۔",
+          "note": "A singular collective subject takes has in this meaning."
         }
       ],
       "practice": [
@@ -9032,7 +9132,11 @@
           "explanation": "'At this time tomorrow' points to a specific future moment, typical of Future Continuous."
         }
       ],
-      "summary": "Future Continuous describes an action that will be happening at a specific future time, formed with will be + verb-ing. Signal phrases include at this time tomorrow, this time next week, and by (future time), and it is also used to politely ask about someone's plans."
+      "summary": "Future Continuous describes an action that will be happening at a specific future time, formed with will be + verb-ing. Signal phrases include at this time tomorrow, this time next week, and by (future time), and it is also used to politely ask about someone's plans.",
+      "examTips": [
+        "Exam Trap: Do not use the wrong verb form with will be + verb-ing.",
+        "Read the time expression and the relationship between actions before selecting the tense."
+      ]
     }
   },
   {
@@ -9043,9 +9147,9 @@
     "order": 4,
     "isLeaf": true,
     "content": {
-      "introduction": "The Future Perfect Continuous tense emphasizes the duration of an action that will have been continuing up until a specific point in the future. It is used to highlight how long something will have been happening by a future time.",
-      "urduExplanation": "Future Perfect Continuous Tense اس وقت استعمال ہوتا ہے جب کسی کام کے مستقبل کے کسی خاص وقت تک مسلسل جاری رہنے کی بات کی جائے، جیسے 'اگلے مہینے تک، میں یہاں پانچ سال سے کام کر رہا ہوں گا'۔ اس میں will have been کے ساتھ فعل کی ing صورت استعمال ہوتی ہے۔ یہ خاص طور پر مدت (duration) پر زور دینے کے لیے استعمال ہوتا ہے۔",
-      "englishExplanation": "Future Perfect Continuous stresses the length of time an action will have been in progress by a certain point in the future. It is formed with 'will have been' plus the verb's -ing form. It is typically used with 'for' to express duration and 'by' to mark the future reference point, such as 'By next month, she will have been teaching for ten years.' Signal words include for, by, and by the time. This tense is less common in everyday speech but important for expressing continuous processes leading up to a future milestone.",
+      "introduction": "Future Perfect Continuous Tense is used for an action that will have continued for a period up to a future time.",
+      "urduExplanation": "مستقبل مکمل جاری زمانہ ایسے کام کو ظاہر کرتا ہے جو مستقبل کے کسی وقت تک ایک مدت سے جاری ہوگا۔",
+      "englishExplanation": "Future Perfect Continuous stresses the length of time an action will have been in progress by a certain point in the future. It is formed with 'will have been' plus the verb's -ing form. It is typically used with 'for' to express duration and 'by' to mark the future reference point, such as 'By next month, she will have been teaching for ten years.' Signal words include for, by, and by the time. This tense is less common in everyday speech but important for expressing continuous processes leading up to a future milestone. The central exam formula is will have been + verb-ing. Always match the auxiliary and verb form with the subject and time expression.",
       "types": [
         {
           "name": "Structure",
@@ -9096,6 +9200,21 @@
         {
           "text": "I will have been driving for eight hours by the time I reach Multan.",
           "note": "duration of a continuous journey"
+        },
+        {
+          "text": "By June, the researchers will have been studying the issue for two years.",
+          "urdu": "جون تک محققین دو سال سے اس مسئلے کا مطالعہ کر رہے ہوں گے۔",
+          "note": "This sentence demonstrates Future Perfect Continuous in an academic context."
+        },
+        {
+          "text": "By noon, she will have been preparing the briefing for five hours.",
+          "urdu": "دوپہر تک وہ پانچ گھنٹے سے بریفنگ تیار کر رہی ہوگی۔",
+          "note": "This sentence demonstrates Future Perfect Continuous in an academic context."
+        },
+        {
+          "text": "Next year, the institute will have been training officers for a decade.",
+          "urdu": "اگلے سال ادارہ ایک دہائی سے افسران کو تربیت دے رہا ہوگا۔",
+          "note": "This sentence demonstrates Future Perfect Continuous in an academic context."
         }
       ],
       "commonMistakes": [
@@ -9118,6 +9237,36 @@
           "wrong": "By next year, I work here for five years.",
           "right": "By next year, I will have been working here for five years.",
           "note": "'by next year' with duration requires Future Perfect Continuous"
+        },
+        {
+          "wrong": "The candidate has submit the form.",
+          "right": "The candidate has submitted the form.",
+          "urdu": "امیدوار نے فارم جمع کر دیا ہے۔",
+          "note": "After has/have, use V3."
+        },
+        {
+          "wrong": "They was preparing the report.",
+          "right": "They were preparing the report.",
+          "urdu": "وہ رپورٹ تیار کر رہے تھے۔",
+          "note": "Plural subjects take were in the continuous past."
+        },
+        {
+          "wrong": "She did not wrote the answer.",
+          "right": "She did not write the answer.",
+          "urdu": "اس نے جواب نہیں لکھا۔",
+          "note": "After did not, use V1."
+        },
+        {
+          "wrong": "He will completed the task.",
+          "right": "He will complete the task.",
+          "urdu": "وہ کام مکمل کرے گا۔",
+          "note": "After will, use V1."
+        },
+        {
+          "wrong": "The panel have reached a decision.",
+          "right": "The panel has reached a decision.",
+          "urdu": "پینل ایک فیصلے پر پہنچ چکا ہے۔",
+          "note": "A singular collective subject takes has in this meaning."
         }
       ],
       "practice": [
@@ -9190,7 +9339,11 @@
           "explanation": "'For' expresses duration and 'by' marks the future point, both essential to Future Perfect Continuous."
         }
       ],
-      "summary": "Future Perfect Continuous highlights how long an action will have been happening by a specific future time, using will have been + verb-ing. It typically appears with 'for' to show duration and 'by' to mark the future reference point, such as by next year or by the time."
+      "summary": "Future Perfect Continuous highlights how long an action will have been happening by a specific future time, using will have been + verb-ing. It typically appears with 'for' to show duration and 'by' to mark the future reference point, such as by next year or by the time.",
+      "examTips": [
+        "Exam Trap: Do not use the wrong verb form with will have been + verb-ing.",
+        "Read the time expression and the relationship between actions before selecting the tense."
+      ]
     }
   },
   {
@@ -9201,9 +9354,9 @@
     "order": 3,
     "isLeaf": true,
     "content": {
-      "introduction": "The Future Perfect tense is used to show that an action will be completed before a specific time or event in the future. It looks back from a future point to confirm that something will already be finished.",
-      "urduExplanation": "Future Perfect Tense اس وقت استعمال ہوتا ہے جب کسی کام کے مستقبل کے کسی خاص وقت یا واقعے سے پہلے مکمل ہو جانے کی بات کی جائے، جیسے 'میں اگلے سال تک اپنی ڈگری مکمل کر چکا ہوں گا'۔ اس میں will have کے ساتھ فعل کی تیسری صورت (past participle) استعمال ہوتی ہے۔ یہ اکثر by کے ساتھ استعمال ہوتا ہے، جیسے by 2027, by next month۔",
-      "englishExplanation": "Future Perfect indicates that an action will have been completed by a certain future time or before another future action takes place. It is formed with 'will have' plus the past participle of the main verb. It is almost always used with 'by' followed by a time expression, such as 'by next year', 'by the time', or 'by Friday'. Signal words include by, by the time, and before (a future point). It helps express confidence that a task will be done ahead of a deadline or another future event.",
+      "introduction": "Future Perfect Tense is used for an action that will have been completed before a specified future time.",
+      "urduExplanation": "مستقبل مکمل زمانہ ایسے کام کو ظاہر کرتا ہے جو مستقبل کے کسی خاص وقت سے پہلے مکمل ہو چکا ہوگا۔",
+      "englishExplanation": "Future Perfect indicates that an action will have been completed by a certain future time or before another future action takes place. It is formed with 'will have' plus the past participle of the main verb. It is almost always used with 'by' followed by a time expression, such as 'by next year', 'by the time', or 'by Friday'. Signal words include by, by the time, and before (a future point). It helps express confidence that a task will be done ahead of a deadline or another future event. The central exam formula is will have + V3. Always match the auxiliary and verb form with the subject and time expression.",
       "types": [
         {
           "name": "Structure",
@@ -9254,6 +9407,21 @@
         {
           "text": "By the time the movie starts, we will have eaten dinner.",
           "note": "action finished before a specific future event"
+        },
+        {
+          "text": "By Friday, the committee will have completed its review.",
+          "urdu": "جمعہ تک کمیٹی اپنا جائزہ مکمل کر چکی ہوگی۔",
+          "note": "This sentence demonstrates Future Perfect in an academic context."
+        },
+        {
+          "text": "The candidate will have submitted the application by noon.",
+          "urdu": "امیدوار دوپہر تک درخواست جمع کر چکا ہوگا۔",
+          "note": "This sentence demonstrates Future Perfect in an academic context."
+        },
+        {
+          "text": "By next month, the department will have issued the final report.",
+          "urdu": "اگلے ماہ تک محکمہ حتمی رپورٹ جاری کر چکا ہوگا۔",
+          "note": "This sentence demonstrates Future Perfect in an academic context."
         }
       ],
       "commonMistakes": [
@@ -9276,6 +9444,36 @@
           "wrong": "By next year, I finish my studies.",
           "right": "By next year, I will have finished my studies.",
           "note": "'by next year' signals Future Perfect, not Present Simple"
+        },
+        {
+          "wrong": "The candidate has submit the form.",
+          "right": "The candidate has submitted the form.",
+          "urdu": "امیدوار نے فارم جمع کر دیا ہے۔",
+          "note": "After has/have, use V3."
+        },
+        {
+          "wrong": "They was preparing the report.",
+          "right": "They were preparing the report.",
+          "urdu": "وہ رپورٹ تیار کر رہے تھے۔",
+          "note": "Plural subjects take were in the continuous past."
+        },
+        {
+          "wrong": "She did not wrote the answer.",
+          "right": "She did not write the answer.",
+          "urdu": "اس نے جواب نہیں لکھا۔",
+          "note": "After did not, use V1."
+        },
+        {
+          "wrong": "He will completed the task.",
+          "right": "He will complete the task.",
+          "urdu": "وہ کام مکمل کرے گا۔",
+          "note": "After will, use V1."
+        },
+        {
+          "wrong": "The panel have reached a decision.",
+          "right": "The panel has reached a decision.",
+          "urdu": "پینل ایک فیصلے پر پہنچ چکا ہے۔",
+          "note": "A singular collective subject takes has in this meaning."
         }
       ],
       "practice": [
@@ -9348,7 +9546,11 @@
           "explanation": "'By the time' points to completion before a future event, typical of Future Perfect."
         }
       ],
-      "summary": "Future Perfect expresses that an action will be completed before a specific future time or event, using will have + past participle. It is almost always signaled by 'by' or 'by the time' plus a future reference point."
+      "summary": "Future Perfect expresses that an action will be completed before a specific future time or event, using will have + past participle. It is almost always signaled by 'by' or 'by the time' plus a future reference point.",
+      "examTips": [
+        "Exam Trap: Do not use the wrong verb form with will have + V3.",
+        "Read the time expression and the relationship between actions before selecting the tense."
+      ]
     }
   },
   {
@@ -9359,9 +9561,9 @@
     "order": 1,
     "isLeaf": true,
     "content": {
-      "introduction": "The Future Simple tense is used to talk about actions, decisions, predictions, and promises that will happen in the future. It is often the first future tense learners encounter, using 'will' plus the base verb.",
-      "urduExplanation": "Future Simple Tense اس وقت استعمال ہوتا ہے جب کسی کام کے مستقبل میں ہونے کی بات کی جائے، جیسے فیصلے، وعدے، پیشین گوئیاں یا مدد کی پیشکش۔ اس میں will کے ساتھ فعل کی پہلی صورت (base form) استعمال ہوتی ہے۔ یہ Tense اکثر tomorrow, next week, soon جیسے الفاظ کے ساتھ آتا ہے۔",
-      "englishExplanation": "Future Simple expresses spontaneous decisions made at the moment of speaking, predictions about the future (with or without evidence), promises, offers, and threats. It is formed with 'will' (or 'shall' for formal I/we) plus the base form of the verb. Signal words include tomorrow, next week, next year, soon, and in the future. It is also used in the first conditional to express likely future outcomes, e.g., 'If it rains, I will stay home.' Unlike 'going to', 'will' often expresses a decision made right now rather than a pre-planned intention.",
+      "introduction": "Future Indefinite Tense is used for an action that will happen after the present time.",
+      "urduExplanation": "مستقبل سادہ زمانہ ایسے کام کو ظاہر کرتا ہے جو موجودہ وقت کے بعد ہوگا۔",
+      "englishExplanation": "Future Simple expresses spontaneous decisions made at the moment of speaking, predictions about the future (with or without evidence), promises, offers, and threats. It is formed with 'will' (or 'shall' for formal I/we) plus the base form of the verb. Signal words include tomorrow, next week, next year, soon, and in the future. It is also used in the first conditional to express likely future outcomes, e.g., 'If it rains, I will stay home.' Unlike 'going to', 'will' often expresses a decision made right now rather than a pre-planned intention. The central exam formula is will + V1. Always match the auxiliary and verb form with the subject and time expression.",
       "types": [
         {
           "name": "Structure",
@@ -9412,6 +9614,21 @@
         {
           "text": "If you study hard, you will succeed.",
           "note": "conditional future outcome"
+        },
+        {
+          "text": "The government will announce the policy tomorrow.",
+          "urdu": "حکومت کل پالیسی کا اعلان کرے گی۔",
+          "note": "This sentence demonstrates Future Simple in an academic context."
+        },
+        {
+          "text": "The candidates will submit their forms before the deadline.",
+          "urdu": "امیدوار آخری تاریخ سے پہلے اپنے فارم جمع کرائیں گے۔",
+          "note": "This sentence demonstrates Future Simple in an academic context."
+        },
+        {
+          "text": "The tribunal will examine the evidence carefully.",
+          "urdu": "ٹربیونل شواہد کا بغور جائزہ لے گا۔",
+          "note": "This sentence demonstrates Future Simple in an academic context."
         }
       ],
       "commonMistakes": [
@@ -9434,6 +9651,36 @@
           "wrong": "Will you to help me?",
           "right": "Will you help me?",
           "note": "no 'to' is needed after will in questions"
+        },
+        {
+          "wrong": "The candidate has submit the form.",
+          "right": "The candidate has submitted the form.",
+          "urdu": "امیدوار نے فارم جمع کر دیا ہے۔",
+          "note": "After has/have, use V3."
+        },
+        {
+          "wrong": "They was preparing the report.",
+          "right": "They were preparing the report.",
+          "urdu": "وہ رپورٹ تیار کر رہے تھے۔",
+          "note": "Plural subjects take were in the continuous past."
+        },
+        {
+          "wrong": "She did not wrote the answer.",
+          "right": "She did not write the answer.",
+          "urdu": "اس نے جواب نہیں لکھا۔",
+          "note": "After did not, use V1."
+        },
+        {
+          "wrong": "He will completed the task.",
+          "right": "He will complete the task.",
+          "urdu": "وہ کام مکمل کرے گا۔",
+          "note": "After will, use V1."
+        },
+        {
+          "wrong": "The panel have reached a decision.",
+          "right": "The panel has reached a decision.",
+          "urdu": "پینل ایک فیصلے پر پہنچ چکا ہے۔",
+          "note": "A singular collective subject takes has in this meaning."
         }
       ],
       "practice": [
@@ -9506,7 +9753,11 @@
           "explanation": "'Tomorrow' points to a future time, matching Future Simple usage."
         }
       ],
-      "summary": "Future Simple uses will + base verb to express spontaneous decisions, predictions, promises, and offers about the future. Common signal words include tomorrow, next week, soon, and in the future, and 'will' remains unchanged regardless of the subject."
+      "summary": "Future Simple uses will + base verb to express spontaneous decisions, predictions, promises, and offers about the future. Common signal words include tomorrow, next week, soon, and in the future, and 'will' remains unchanged regardless of the subject.",
+      "examTips": [
+        "Exam Trap: Do not use the wrong verb form with will + V1.",
+        "Read the time expression and the relationship between actions before selecting the tense."
+      ]
     }
   },
   {
@@ -9517,9 +9768,9 @@
     "order": 2,
     "isLeaf": true,
     "content": {
-      "introduction": "The Past Continuous tense is used to describe an action that was in progress at a specific moment in the past, often interrupted by another action. It shows the background or setting of a past story.",
-      "urduExplanation": "Past Continuous Tense اس وقت استعمال ہوتا ہے جب کوئی کام ماضی کے کسی خاص وقت پر جاری تھا، جیسے 'میں کل شام کھانا بنا رہا تھا'۔ اس میں was یا were کے ساتھ فعل کی ing صورت استعمال ہوتی ہے۔ یہ اکثر یہ بتانے کے لیے استعمال ہوتا ہے کہ ایک کام جاری تھا کہ اتنے میں دوسرا کام ہو گیا۔",
-      "englishExplanation": "Past Continuous describes an action that was ongoing at a particular time in the past, or two actions happening simultaneously in the past. It is formed with was/were plus the verb's -ing form. It is frequently used with 'when' or 'while' to show that one action was interrupted by another shorter action in Past Simple, such as 'I was sleeping when the phone rang.' Signal words include while, when, at that time, and all day/night yesterday. It also sets the scene or background for a narrative.",
+      "introduction": "Past Continuous Tense is used for an action that was in progress at a particular time in the past.",
+      "urduExplanation": "ماضی جاری زمانہ ایسے کام کو ظاہر کرتا ہے جو ماضی کے کسی خاص وقت میں جاری تھا۔",
+      "englishExplanation": "Past Continuous describes an action that was ongoing at a particular time in the past, or two actions happening simultaneously in the past. It is formed with was/were plus the verb's -ing form. It is frequently used with 'when' or 'while' to show that one action was interrupted by another shorter action in Past Simple, such as 'I was sleeping when the phone rang.' Signal words include while, when, at that time, and all day/night yesterday. It also sets the scene or background for a narrative. The central exam formula is was/were + verb-ing. Always match the auxiliary and verb form with the subject and time expression.",
       "types": [
         {
           "name": "Structure",
@@ -9570,6 +9821,21 @@
         {
           "text": "He was driving to work when the accident happened.",
           "note": "background action interrupted by an event"
+        },
+        {
+          "text": "The panel was discussing the evidence when the witness arrived.",
+          "urdu": "جب گواہ آیا تو پینل شواہد پر بحث کر رہا تھا۔",
+          "note": "This sentence demonstrates Past Continuous in an academic context."
+        },
+        {
+          "text": "The students were revising their notes at midnight.",
+          "urdu": "طلبہ نصف شب اپنے نوٹس دہرا رہے تھے۔",
+          "note": "This sentence demonstrates Past Continuous in an academic context."
+        },
+        {
+          "text": "I was preparing the answer when the bell rang.",
+          "urdu": "جب گھنٹی بجی تو میں جواب تیار کر رہا تھا۔",
+          "note": "This sentence demonstrates Past Continuous in an academic context."
         }
       ],
       "commonMistakes": [
@@ -9592,6 +9858,36 @@
           "wrong": "While I was walk, it started raining.",
           "right": "While I was walking, it started raining.",
           "note": "missing -ing on the verb after 'was'"
+        },
+        {
+          "wrong": "The candidate has submit the form.",
+          "right": "The candidate has submitted the form.",
+          "urdu": "امیدوار نے فارم جمع کر دیا ہے۔",
+          "note": "After has/have, use V3."
+        },
+        {
+          "wrong": "They was preparing the report.",
+          "right": "They were preparing the report.",
+          "urdu": "وہ رپورٹ تیار کر رہے تھے۔",
+          "note": "Plural subjects take were in the continuous past."
+        },
+        {
+          "wrong": "She did not wrote the answer.",
+          "right": "She did not write the answer.",
+          "urdu": "اس نے جواب نہیں لکھا۔",
+          "note": "After did not, use V1."
+        },
+        {
+          "wrong": "He will completed the task.",
+          "right": "He will complete the task.",
+          "urdu": "وہ کام مکمل کرے گا۔",
+          "note": "After will, use V1."
+        },
+        {
+          "wrong": "The panel have reached a decision.",
+          "right": "The panel has reached a decision.",
+          "urdu": "پینل ایک فیصلے پر پہنچ چکا ہے۔",
+          "note": "A singular collective subject takes has in this meaning."
         }
       ],
       "practice": [
@@ -9664,7 +9960,11 @@
           "explanation": "'When' typically introduces the shorter interrupting action in Past Simple."
         }
       ],
-      "summary": "Past Continuous describes an action in progress at a specific past moment, formed with was/were + verb-ing, and is often paired with Past Simple using 'when' or 'while' for interrupted or parallel actions. Signal words include while, when, and at that time yesterday."
+      "summary": "Past Continuous describes an action in progress at a specific past moment, formed with was/were + verb-ing, and is often paired with Past Simple using 'when' or 'while' for interrupted or parallel actions. Signal words include while, when, and at that time yesterday.",
+      "examTips": [
+        "Exam Trap: Do not use the wrong verb form with was/were + verb-ing.",
+        "Read the time expression and the relationship between actions before selecting the tense."
+      ]
     }
   },
   {
@@ -9675,9 +9975,9 @@
     "order": 4,
     "isLeaf": true,
     "content": {
-      "introduction": "The Past Perfect Continuous tense emphasizes the duration of an action that was in progress before another action or point in the past. It shows how long something had been happening up until a specific past moment.",
-      "urduExplanation": "Past Perfect Continuous Tense اس وقت استعمال ہوتا ہے جب کوئی کام ماضی کے کسی خاص لمحے تک مسلسل جاری رہا ہو، اور اس کے بعد کوئی اور کام ہوا ہو۔ اس میں had been کے ساتھ فعل کی ing صورت استعمال ہوتی ہے۔ یہ خاص طور پر یہ بتانے کے لیے استعمال ہوتا ہے کہ کوئی کام کتنی دیر سے جاری تھا، جیسے 'وہ تین گھنٹے سے انتظار کر رہا تھا جب بس آئی'۔",
-      "englishExplanation": "Past Perfect Continuous highlights the length of time an action had been continuing before another past action or moment interrupted it. It is formed with 'had been' plus the verb's -ing form. It is often used with 'for' and 'since' to show duration, and paired with a Past Simple action to show what happened after the continuous action. Signal words include for, since, before, and how long. It closely resembles Past Perfect but places more emphasis on the ongoing process rather than just the completed result.",
+      "introduction": "Past Perfect Continuous Tense is used for an action that continued for a period before another past event.",
+      "urduExplanation": "ماضی مکمل جاری زمانہ ایسے کام کو ظاہر کرتا ہے جو ماضی کے کسی دوسرے واقعے سے پہلے ایک مدت تک جاری رہا تھا۔",
+      "englishExplanation": "Past Perfect Continuous highlights the length of time an action had been continuing before another past action or moment interrupted it. It is formed with 'had been' plus the verb's -ing form. It is often used with 'for' and 'since' to show duration, and paired with a Past Simple action to show what happened after the continuous action. Signal words include for, since, before, and how long. It closely resembles Past Perfect but places more emphasis on the ongoing process rather than just the completed result. The central exam formula is had been + verb-ing. Always match the auxiliary and verb form with the subject and time expression.",
       "types": [
         {
           "name": "Structure",
@@ -9728,6 +10028,21 @@
         {
           "text": "The workers had been building the bridge for two years when it collapsed.",
           "note": "duration before an unexpected past event"
+        },
+        {
+          "text": "The experts had been examining the data for weeks before they announced the result.",
+          "urdu": "ماہرین نتیجہ ظاہر کرنے سے پہلے کئی ہفتوں سے اعداد و شمار کا جائزہ لے رہے تھے۔",
+          "note": "This sentence demonstrates Past Perfect Continuous in an academic context."
+        },
+        {
+          "text": "He had been preparing for the interview since dawn.",
+          "urdu": "وہ صبح سویرے سے انٹرویو کی تیاری کر رہا تھا۔",
+          "note": "This sentence demonstrates Past Perfect Continuous in an academic context."
+        },
+        {
+          "text": "The department had been facing a shortage before reforms began.",
+          "urdu": "اصلاحات شروع ہونے سے پہلے محکمہ قلت کا سامنا کر رہا تھا۔",
+          "note": "This sentence demonstrates Past Perfect Continuous in an academic context."
         }
       ],
       "commonMistakes": [
@@ -9750,6 +10065,36 @@
           "wrong": "He had been knowing her for years before they married.",
           "right": "He had known her for years before they married.",
           "note": "stative verb 'know' is not used in continuous form"
+        },
+        {
+          "wrong": "The candidate has submit the form.",
+          "right": "The candidate has submitted the form.",
+          "urdu": "امیدوار نے فارم جمع کر دیا ہے۔",
+          "note": "After has/have, use V3."
+        },
+        {
+          "wrong": "They was preparing the report.",
+          "right": "They were preparing the report.",
+          "urdu": "وہ رپورٹ تیار کر رہے تھے۔",
+          "note": "Plural subjects take were in the continuous past."
+        },
+        {
+          "wrong": "She did not wrote the answer.",
+          "right": "She did not write the answer.",
+          "urdu": "اس نے جواب نہیں لکھا۔",
+          "note": "After did not, use V1."
+        },
+        {
+          "wrong": "He will completed the task.",
+          "right": "He will complete the task.",
+          "urdu": "وہ کام مکمل کرے گا۔",
+          "note": "After will, use V1."
+        },
+        {
+          "wrong": "The panel have reached a decision.",
+          "right": "The panel has reached a decision.",
+          "urdu": "پینل ایک فیصلے پر پہنچ چکا ہے۔",
+          "note": "A singular collective subject takes has in this meaning."
         }
       ],
       "practice": [
@@ -9822,7 +10167,11 @@
           "explanation": "'For' and 'since' both express duration, which is central to Past Perfect Continuous."
         }
       ],
-      "summary": "Past Perfect Continuous emphasizes how long an action had been happening before another past action or moment, using had been + verb-ing. Common signal words are for, since, before, and how long, distinguishing it from Past Perfect by its focus on ongoing duration rather than simple completion."
+      "summary": "Past Perfect Continuous emphasizes how long an action had been happening before another past action or moment, using had been + verb-ing. Common signal words are for, since, before, and how long, distinguishing it from Past Perfect by its focus on ongoing duration rather than simple completion.",
+      "examTips": [
+        "Exam Trap: Do not use the wrong verb form with had been + verb-ing.",
+        "Read the time expression and the relationship between actions before selecting the tense."
+      ]
     }
   },
   {
@@ -9833,9 +10182,9 @@
     "order": 3,
     "isLeaf": true,
     "content": {
-      "introduction": "The Past Perfect tense is used to show that one action happened before another action in the past. It helps clarify the order of two past events by marking the earlier one.",
-      "urduExplanation": "Past Perfect Tense اس وقت استعمال ہوتا ہے جب ماضی میں دو کام ہوئے ہوں اور ان میں سے ایک کام دوسرے سے پہلے مکمل ہو چکا ہو۔ اس میں had کے ساتھ فعل کی تیسری صورت (past participle) استعمال ہوتی ہے۔ یہ بتاتا ہے کہ 'پہلے یہ کام ہوا، پھر وہ کام ہوا'، جیسے 'ٹرین جا چکی تھی جب میں پہنچا'۔",
-      "englishExplanation": "Past Perfect describes an action that was completed before another action or time in the past, establishing a clear sequence between two past events. It is formed with 'had' plus the past participle of the main verb. It is commonly used with time expressions like before, after, by the time, and already to show which action happened first. Signal words also include 'when' combined with Past Simple for the later action. It is essential for reported speech and complex narratives that move between different past time frames.",
+      "introduction": "Past Perfect Tense is used for an action completed before another past action or time.",
+      "urduExplanation": "ماضی مکمل زمانہ ایسے کام کو ظاہر کرتا ہے جو ماضی کے کسی دوسرے کام سے پہلے مکمل ہو چکا تھا۔",
+      "englishExplanation": "Past Perfect describes an action that was completed before another action or time in the past, establishing a clear sequence between two past events. It is formed with 'had' plus the past participle of the main verb. It is commonly used with time expressions like before, after, by the time, and already to show which action happened first. Signal words also include 'when' combined with Past Simple for the later action. It is essential for reported speech and complex narratives that move between different past time frames. The central exam formula is had + V3. Always match the auxiliary and verb form with the subject and time expression.",
       "types": [
         {
           "name": "Structure",
@@ -9886,6 +10235,21 @@
         {
           "text": "I realized I had forgotten my keys at home.",
           "note": "past action discovered later in the past"
+        },
+        {
+          "text": "The committee had approved the proposal before the session began.",
+          "urdu": "اجلاس شروع ہونے سے پہلے کمیٹی تجویز منظور کر چکی تھی۔",
+          "note": "This sentence demonstrates Past Perfect in an academic context."
+        },
+        {
+          "text": "She had completed the report when the director called.",
+          "urdu": "جب ڈائریکٹر نے فون کیا تو وہ رپورٹ مکمل کر چکی تھی۔",
+          "note": "This sentence demonstrates Past Perfect in an academic context."
+        },
+        {
+          "text": "The candidates had revised the topic before the test started.",
+          "urdu": "ٹیسٹ شروع ہونے سے پہلے امیدوار موضوع دہرا چکے تھے۔",
+          "note": "This sentence demonstrates Past Perfect in an academic context."
         }
       ],
       "commonMistakes": [
@@ -9908,6 +10272,36 @@
           "wrong": "By the time she came, we finish the work.",
           "right": "By the time she came, we had finished the work.",
           "note": "the earlier action needs Past Perfect (had finished)"
+        },
+        {
+          "wrong": "The candidate has submit the form.",
+          "right": "The candidate has submitted the form.",
+          "urdu": "امیدوار نے فارم جمع کر دیا ہے۔",
+          "note": "After has/have, use V3."
+        },
+        {
+          "wrong": "They was preparing the report.",
+          "right": "They were preparing the report.",
+          "urdu": "وہ رپورٹ تیار کر رہے تھے۔",
+          "note": "Plural subjects take were in the continuous past."
+        },
+        {
+          "wrong": "She did not wrote the answer.",
+          "right": "She did not write the answer.",
+          "urdu": "اس نے جواب نہیں لکھا۔",
+          "note": "After did not, use V1."
+        },
+        {
+          "wrong": "He will completed the task.",
+          "right": "He will complete the task.",
+          "urdu": "وہ کام مکمل کرے گا۔",
+          "note": "After will, use V1."
+        },
+        {
+          "wrong": "The panel have reached a decision.",
+          "right": "The panel has reached a decision.",
+          "urdu": "پینل ایک فیصلے پر پہنچ چکا ہے۔",
+          "note": "A singular collective subject takes has in this meaning."
         }
       ],
       "practice": [
@@ -9980,7 +10374,11 @@
           "explanation": "'Before' indicates the sequence where one past action precedes another, matching Past Perfect."
         }
       ],
-      "summary": "Past Perfect shows which of two past actions happened first, using had + past participle, while the later action is usually in Past Simple. Key signal words include before, after, by the time, and already, helping to clarify the order of past events."
+      "summary": "Past Perfect shows which of two past actions happened first, using had + past participle, while the later action is usually in Past Simple. Key signal words include before, after, by the time, and already, helping to clarify the order of past events.",
+      "examTips": [
+        "Exam Trap: Do not use the wrong verb form with had + V3.",
+        "Read the time expression and the relationship between actions before selecting the tense."
+      ]
     }
   },
   {
@@ -9991,9 +10389,9 @@
     "order": 1,
     "isLeaf": true,
     "content": {
-      "introduction": "The Past Simple tense is used to talk about completed actions that happened at a specific, known time in the past. It is the most common tense for narrating past events, stories, and historical facts.",
-      "urduExplanation": "Past Simple Tense اس وقت استعمال ہوتا ہے جب کوئی کام ماضی میں کسی مخصوص وقت پر مکمل ہو چکا ہو، جیسے yesterday, last week, in 2010۔ اس میں فعل کی دوسری صورت (past form) استعمال ہوتی ہے، جیسے went, ate, played۔ یہ کہانیاں سنانے اور تاریخی واقعات بیان کرنے کے لیے سب سے زیادہ استعمال ہونے والا Tense ہے۔",
-      "englishExplanation": "Past Simple describes actions or events that started and finished at a definite time in the past, such as yesterday, last year, or two hours ago. Regular verbs form the past tense by adding -ed, while irregular verbs have unique past forms like went, saw, and ate. Signal words include yesterday, last night, ago, in (a past year), and specific dates. It is used for single completed actions, a series of past actions in a story, and past habits (often with 'used to'). Unlike Present Perfect, it always specifies or implies a particular time in the past.",
+      "introduction": "Past Indefinite Tense is used for an action completed at a definite time in the past.",
+      "urduExplanation": "ماضی سادہ زمانہ ایسے کام کو ظاہر کرتا ہے جو ماضی میں مکمل ہو چکا ہو۔",
+      "englishExplanation": "Past Simple describes actions or events that started and finished at a definite time in the past, such as yesterday, last year, or two hours ago. Regular verbs form the past tense by adding -ed, while irregular verbs have unique past forms like went, saw, and ate. Signal words include yesterday, last night, ago, in (a past year), and specific dates. It is used for single completed actions, a series of past actions in a story, and past habits (often with 'used to'). Unlike Present Perfect, it always specifies or implies a particular time in the past. The central exam formula is V2; did + V1 in negatives and questions. Always match the auxiliary and verb form with the subject and time expression.",
       "types": [
         {
           "name": "Structure",
@@ -10044,6 +10442,21 @@
         {
           "text": "Pakistan became independent in 1947.",
           "note": "historical fact"
+        },
+        {
+          "text": "The commission issued its findings last year.",
+          "urdu": "کمیشن نے گزشتہ سال اپنی سفارشات جاری کیں۔",
+          "note": "This sentence demonstrates Past Simple in an academic context."
+        },
+        {
+          "text": "The candidate answered the question accurately.",
+          "urdu": "امیدوار نے سوال کا درست جواب دیا۔",
+          "note": "This sentence demonstrates Past Simple in an academic context."
+        },
+        {
+          "text": "The court dismissed the petition yesterday.",
+          "urdu": "عدالت نے کل درخواست خارج کر دی۔",
+          "note": "This sentence demonstrates Past Simple in an academic context."
         }
       ],
       "commonMistakes": [
@@ -10066,6 +10479,36 @@
           "wrong": "He visit Karachi last year.",
           "right": "He visited Karachi last year.",
           "note": "past time marker requires past tense form of the verb"
+        },
+        {
+          "wrong": "The candidate has submit the form.",
+          "right": "The candidate has submitted the form.",
+          "urdu": "امیدوار نے فارم جمع کر دیا ہے۔",
+          "note": "After has/have, use V3."
+        },
+        {
+          "wrong": "They was preparing the report.",
+          "right": "They were preparing the report.",
+          "urdu": "وہ رپورٹ تیار کر رہے تھے۔",
+          "note": "Plural subjects take were in the continuous past."
+        },
+        {
+          "wrong": "She did not wrote the answer.",
+          "right": "She did not write the answer.",
+          "urdu": "اس نے جواب نہیں لکھا۔",
+          "note": "After did not, use V1."
+        },
+        {
+          "wrong": "He will completed the task.",
+          "right": "He will complete the task.",
+          "urdu": "وہ کام مکمل کرے گا۔",
+          "note": "After will, use V1."
+        },
+        {
+          "wrong": "The panel have reached a decision.",
+          "right": "The panel has reached a decision.",
+          "urdu": "پینل ایک فیصلے پر پہنچ چکا ہے۔",
+          "note": "A singular collective subject takes has in this meaning."
         }
       ],
       "practice": [
@@ -10138,7 +10581,11 @@
           "explanation": "'Ago' refers to a specific point in the past, matching Past Simple usage."
         }
       ],
-      "summary": "Past Simple describes completed actions at a specific past time using the verb's past form (regular -ed or irregular forms). Common signal words are yesterday, last week, ago, and specific past dates, and 'did' is used as the helper for negatives and questions."
+      "summary": "Past Simple describes completed actions at a specific past time using the verb's past form (regular -ed or irregular forms). Common signal words are yesterday, last week, ago, and specific past dates, and 'did' is used as the helper for negatives and questions.",
+      "examTips": [
+        "Exam Trap: Do not use the wrong verb form with V2; did + V1 in negatives and questions.",
+        "Read the time expression and the relationship between actions before selecting the tense."
+      ]
     }
   },
   {
@@ -10149,9 +10596,9 @@
     "order": 2,
     "isLeaf": true,
     "content": {
-      "introduction": "The Present Continuous tense is used to describe actions happening right now, temporary situations, and definite future plans that have already been arranged. It shows an action in progress at the moment of speaking.",
-      "urduExplanation": "Present Continuous Tense اس وقت استعمال ہوتا ہے جب کوئی کام ابھی، اسی وقت جاری ہو۔ اس میں فعل کے ساتھ ing لگایا جاتا ہے اور is, am, are مدد کے طور پر استعمال ہوتے ہیں۔ یہ عارضی کاموں اور طے شدہ مستقبل کے پروگراموں کے لیے بھی استعمال ہوتا ہے، جیسے 'میں کل لاہور جا رہا ہوں'۔",
-      "englishExplanation": "Present Continuous describes an action that is happening at the moment of speaking, an ongoing temporary activity, or a fixed future arrangement. It is formed with am/is/are plus the verb's -ing form. Signal words such as now, right now, at the moment, currently, and Look!/Listen! often accompany this tense. It also expresses changing or developing situations, like 'The weather is getting colder.' Unlike Present Simple, it does not describe permanent facts or habits.",
+      "introduction": "Present Continuous Tense is used for an action happening now or around the present time.",
+      "urduExplanation": "حال جاری زمانہ ایسے کام کو ظاہر کرتا ہے جو اس وقت یا موجودہ عرصے میں جاری ہو۔",
+      "englishExplanation": "Present Continuous describes an action that is happening at the moment of speaking, an ongoing temporary activity, or a fixed future arrangement. It is formed with am/is/are plus the verb's -ing form. Signal words such as now, right now, at the moment, currently, and Look!/Listen! often accompany this tense. It also expresses changing or developing situations, like 'The weather is getting colder.' Unlike Present Simple, it does not describe permanent facts or habits. The central exam formula is am/is/are + verb-ing. Always match the auxiliary and verb form with the subject and time expression.",
       "types": [
         {
           "name": "Structure",
@@ -10202,6 +10649,21 @@
         {
           "text": "Is it raining outside?",
           "note": "question about current action"
+        },
+        {
+          "text": "The committee is reviewing the evidence for the examination report.",
+          "urdu": "کمیٹی امتحانی رپورٹ کے لیے شواہد کا جائزہ لے رہی ہے۔",
+          "note": "This sentence demonstrates Present Continuous in an academic context."
+        },
+        {
+          "text": "The candidates are preparing for the competitive examination.",
+          "urdu": "امیدوار مسابقتی امتحان کی تیاری کر رہے ہیں۔",
+          "note": "This sentence demonstrates Present Continuous in an academic context."
+        },
+        {
+          "text": "I am writing an answer on constitutional reform.",
+          "urdu": "میں آئینی اصلاحات پر جواب لکھ رہا ہوں۔",
+          "note": "This sentence demonstrates Present Continuous in an academic context."
         }
       ],
       "commonMistakes": [
@@ -10224,6 +10686,36 @@
           "wrong": "They is coming today.",
           "right": "They are coming today.",
           "note": "wrong auxiliary verb for plural subject"
+        },
+        {
+          "wrong": "The candidate has submit the form.",
+          "right": "The candidate has submitted the form.",
+          "urdu": "امیدوار نے فارم جمع کر دیا ہے۔",
+          "note": "After has/have, use V3."
+        },
+        {
+          "wrong": "They was preparing the report.",
+          "right": "They were preparing the report.",
+          "urdu": "وہ رپورٹ تیار کر رہے تھے۔",
+          "note": "Plural subjects take were in the continuous past."
+        },
+        {
+          "wrong": "She did not wrote the answer.",
+          "right": "She did not write the answer.",
+          "urdu": "اس نے جواب نہیں لکھا۔",
+          "note": "After did not, use V1."
+        },
+        {
+          "wrong": "He will completed the task.",
+          "right": "He will complete the task.",
+          "urdu": "وہ کام مکمل کرے گا۔",
+          "note": "After will, use V1."
+        },
+        {
+          "wrong": "The panel have reached a decision.",
+          "right": "The panel has reached a decision.",
+          "urdu": "پینل ایک فیصلے پر پہنچ چکا ہے۔",
+          "note": "A singular collective subject takes has in this meaning."
         }
       ],
       "practice": [
@@ -10296,7 +10788,11 @@
           "explanation": "'Right now' indicates an action happening at this moment, typical of Present Continuous."
         }
       ],
-      "summary": "Present Continuous shows actions happening at the moment of speaking, temporary situations, and fixed future plans, formed with am/is/are + verb-ing. Watch for signal words like now, at the moment, currently, and today, and remember that stative verbs (know, love, want) usually stay in Present Simple."
+      "summary": "Present Continuous shows actions happening at the moment of speaking, temporary situations, and fixed future plans, formed with am/is/are + verb-ing. Watch for signal words like now, at the moment, currently, and today, and remember that stative verbs (know, love, want) usually stay in Present Simple.",
+      "examTips": [
+        "Exam Trap: Do not use the wrong verb form with am/is/are + verb-ing.",
+        "Read the time expression and the relationship between actions before selecting the tense."
+      ]
     }
   },
   {
@@ -10307,9 +10803,9 @@
     "order": 4,
     "isLeaf": true,
     "content": {
-      "introduction": "The Present Perfect Continuous tense emphasizes the duration of an action that started in the past and either continues now or has just stopped, with visible results in the present. It highlights how long something has been happening.",
-      "urduExplanation": "Present Perfect Continuous Tense اس وقت استعمال ہوتا ہے جب کوئی کام ماضی میں شروع ہوا ہو اور یا تو ابھی تک جاری ہو یا ابھی ابھی ختم ہوا ہو، اور اس کا اثر حال میں نظر آئے۔ اس میں have/has been کے ساتھ فعل کی ing صورت استعمال ہوتی ہے۔ یہ خاص طور پر یہ بتانے کے لیے استعمال ہوتا ہے کہ کوئی کام کتنی دیر سے ہو رہا ہے، جیسے 'میں دو گھنٹے سے پڑھ رہا ہوں'۔",
-      "englishExplanation": "Present Perfect Continuous stresses the duration and continuity of an action from the past up to the present moment, or an action that has just recently finished but whose effects are still visible. It is formed with have/has been plus the verb's -ing form. Signal words include since, for, how long, lately, and recently. It is often used to explain a present result, such as tiredness or a mess, caused by a recent continuous activity. Unlike Present Perfect, it focuses more on the ongoing process than the completed result.",
+      "introduction": "Present Perfect Continuous Tense is used for an action that began in the past and has continued up to the present.",
+      "urduExplanation": "حال مکمل جاری زمانہ ایسے کام کو ظاہر کرتا ہے جو ماضی میں شروع ہوا اور اب تک جاری ہے۔",
+      "englishExplanation": "Present Perfect Continuous stresses the duration and continuity of an action from the past up to the present moment, or an action that has just recently finished but whose effects are still visible. It is formed with have/has been plus the verb's -ing form. Signal words include since, for, how long, lately, and recently. It is often used to explain a present result, such as tiredness or a mess, caused by a recent continuous activity. Unlike Present Perfect, it focuses more on the ongoing process than the completed result. The central exam formula is has/have been + verb-ing. Always match the auxiliary and verb form with the subject and time expression.",
       "types": [
         {
           "name": "Structure",
@@ -10360,6 +10856,21 @@
         {
           "text": "It has been raining since last night.",
           "note": "action continuing from a starting point"
+        },
+        {
+          "text": "The scholar has been researching public administration for three years.",
+          "urdu": "محقق تین سال سے پبلک ایڈمنسٹریشن پر تحقیق کر رہا ہے۔",
+          "note": "This sentence demonstrates Present Perfect Continuous in an academic context."
+        },
+        {
+          "text": "They have been preparing the policy brief since Monday.",
+          "urdu": "وہ پیر سے پالیسی بریف تیار کر رہے ہیں۔",
+          "note": "This sentence demonstrates Present Perfect Continuous in an academic context."
+        },
+        {
+          "text": "She has been studying constitutional law for several months.",
+          "urdu": "وہ کئی ماہ سے آئینی قانون پڑھ رہی ہے۔",
+          "note": "This sentence demonstrates Present Perfect Continuous in an academic context."
         }
       ],
       "commonMistakes": [
@@ -10382,6 +10893,36 @@
           "wrong": "He has been knowing her for years.",
           "right": "He has known her for years.",
           "note": "stative verb 'know' is not used in continuous form"
+        },
+        {
+          "wrong": "The candidate has submit the form.",
+          "right": "The candidate has submitted the form.",
+          "urdu": "امیدوار نے فارم جمع کر دیا ہے۔",
+          "note": "After has/have, use V3."
+        },
+        {
+          "wrong": "They was preparing the report.",
+          "right": "They were preparing the report.",
+          "urdu": "وہ رپورٹ تیار کر رہے تھے۔",
+          "note": "Plural subjects take were in the continuous past."
+        },
+        {
+          "wrong": "She did not wrote the answer.",
+          "right": "She did not write the answer.",
+          "urdu": "اس نے جواب نہیں لکھا۔",
+          "note": "After did not, use V1."
+        },
+        {
+          "wrong": "He will completed the task.",
+          "right": "He will complete the task.",
+          "urdu": "وہ کام مکمل کرے گا۔",
+          "note": "After will, use V1."
+        },
+        {
+          "wrong": "The panel have reached a decision.",
+          "right": "The panel has reached a decision.",
+          "urdu": "پینل ایک فیصلے پر پہنچ چکا ہے۔",
+          "note": "A singular collective subject takes has in this meaning."
         }
       ],
       "practice": [
@@ -10454,7 +10995,11 @@
           "explanation": "'How long' asks about duration, which is the focus of Present Perfect Continuous."
         }
       ],
-      "summary": "Present Perfect Continuous highlights the duration of an action from the past to the present, or a recently stopped action with visible present effects, using have/has been + verb-ing. Look for signal words like since, for, how long, and lately to identify this tense."
+      "summary": "Present Perfect Continuous highlights the duration of an action from the past to the present, or a recently stopped action with visible present effects, using have/has been + verb-ing. Look for signal words like since, for, how long, and lately to identify this tense.",
+      "examTips": [
+        "Exam Trap: Do not use the wrong verb form with has/have been + verb-ing.",
+        "Read the time expression and the relationship between actions before selecting the tense."
+      ]
     }
   },
   {
@@ -10465,9 +11010,9 @@
     "order": 3,
     "isLeaf": true,
     "content": {
-      "introduction": "The Present Perfect tense connects the past with the present, showing actions that happened at an unspecified time before now or that started in the past and continue to affect the present. It is often used for experiences, recent actions, and unfinished time periods.",
-      "urduExplanation": "Present Perfect Tense اس وقت استعمال ہوتا ہے جب کوئی کام ماضی میں ہوا ہو لیکن اس کا اثر یا نتیجہ حال تک موجود ہو۔ اس میں have یا has کے ساتھ فعل کی تیسری صورت (past participle) استعمال ہوتی ہے۔ یہ تجربات، ابھی ابھی ہونے والے کاموں، اور ایسے وقت کے لیے استعمال ہوتا ہے جو ابھی ختم نہیں ہوا، جیسے today, this week۔",
-      "englishExplanation": "Present Perfect describes actions completed at an indefinite time in the past whose result matters now, or actions that began in the past and continue into the present. It is formed with have/has plus the past participle of the main verb. Signal words include already, just, yet, ever, never, since, for, and recently. It differs from Past Simple because it does not specify exactly when the action occurred. It is commonly used for life experiences, news, and unfinished time periods like today or this year.",
+      "introduction": "Present Perfect Tense is used for a completed action connected with the present or an experience up to now.",
+      "urduExplanation": "حال مکمل زمانہ ایسے کام کو ظاہر کرتا ہے جو مکمل ہو چکا ہو لیکن اس کا تعلق موجودہ وقت سے ہو۔",
+      "englishExplanation": "Present Perfect describes actions completed at an indefinite time in the past whose result matters now, or actions that began in the past and continue into the present. It is formed with have/has plus the past participle of the main verb. Signal words include already, just, yet, ever, never, since, for, and recently. It differs from Past Simple because it does not specify exactly when the action occurred. It is commonly used for life experiences, news, and unfinished time periods like today or this year. The central exam formula is has/have + V3. Always match the auxiliary and verb form with the subject and time expression.",
       "types": [
         {
           "name": "Structure",
@@ -10518,6 +11063,21 @@
         {
           "text": "The price of petrol has increased recently.",
           "note": "recent change with present effect"
+        },
+        {
+          "text": "The researchers have published a significant report.",
+          "urdu": "محققین نے ایک اہم رپورٹ شائع کی ہے۔",
+          "note": "This sentence demonstrates Present Perfect in an academic context."
+        },
+        {
+          "text": "She has completed the assigned analysis.",
+          "urdu": "اس نے مقرر کردہ تجزیہ مکمل کر لیا ہے۔",
+          "note": "This sentence demonstrates Present Perfect in an academic context."
+        },
+        {
+          "text": "They have never ignored the constitutional principle.",
+          "urdu": "انہوں نے کبھی آئینی اصول کو نظر انداز نہیں کیا۔",
+          "note": "This sentence demonstrates Present Perfect in an academic context."
         }
       ],
       "commonMistakes": [
@@ -10540,6 +11100,36 @@
           "wrong": "He has live here for ten years.",
           "right": "He has lived here for ten years.",
           "note": "past participle form 'lived' is required after has"
+        },
+        {
+          "wrong": "The candidate has submit the form.",
+          "right": "The candidate has submitted the form.",
+          "urdu": "امیدوار نے فارم جمع کر دیا ہے۔",
+          "note": "After has/have, use V3."
+        },
+        {
+          "wrong": "They was preparing the report.",
+          "right": "They were preparing the report.",
+          "urdu": "وہ رپورٹ تیار کر رہے تھے۔",
+          "note": "Plural subjects take were in the continuous past."
+        },
+        {
+          "wrong": "She did not wrote the answer.",
+          "right": "She did not write the answer.",
+          "urdu": "اس نے جواب نہیں لکھا۔",
+          "note": "After did not, use V1."
+        },
+        {
+          "wrong": "He will completed the task.",
+          "right": "He will complete the task.",
+          "urdu": "وہ کام مکمل کرے گا۔",
+          "note": "After will, use V1."
+        },
+        {
+          "wrong": "The panel have reached a decision.",
+          "right": "The panel has reached a decision.",
+          "urdu": "پینل ایک فیصلے پر پہنچ چکا ہے۔",
+          "note": "A singular collective subject takes has in this meaning."
         }
       ],
       "practice": [
@@ -10612,7 +11202,11 @@
           "explanation": "'For' expresses duration (for two years) and commonly pairs with Present Perfect."
         }
       ],
-      "summary": "Present Perfect links the past to the present using have/has + past participle, showing experiences, recent completions, and actions continuing to now. Key signal words are already, just, yet, ever, never, since, and for, and it avoids specific past time markers like yesterday or last year."
+      "summary": "Present Perfect links the past to the present using have/has + past participle, showing experiences, recent completions, and actions continuing to now. Key signal words are already, just, yet, ever, never, since, and for, and it avoids specific past time markers like yesterday or last year.",
+      "examTips": [
+        "Exam Trap: Do not use the wrong verb form with has/have + V3.",
+        "Read the time expression and the relationship between actions before selecting the tense."
+      ]
     }
   },
   {
@@ -10623,30 +11217,30 @@
     "order": 1,
     "isLeaf": true,
     "content": {
-      "introduction": "The Present Simple tense is used to talk about habits, routines, permanent facts, and general truths. It describes actions that happen regularly or things that are always true, not actions happening right now.",
-      "urduExplanation": "Present Simple Tense ka istemal روزمرہ کے معمولات، عادات اور ہمیشہ سچ رہنے والی باتوں کے لیے ہوتا ہے۔ یہ Tense بتاتا ہے کہ کوئی کام عام طور پر یا ہمیشہ ہوتا ہے، نہ کہ صرف اسی وقت۔ جملے کے آخر میں فعل کے ساتھ he, she, it کے لیے s یا es لگایا جاتا ہے۔",
-      "englishExplanation": "Present Simple describes actions that are habitual, repeated, or permanent, such as daily routines, facts of nature, and scheduled events. It is also used for feelings, opinions, and states that do not change quickly. With third person singular subjects (he, she, it), the verb takes an added -s or -es. Signal words like always, usually, often, every day, and never commonly appear with this tense. It is one of the most frequently used tenses in everyday English.",
+      "introduction": "Present Indefinite Tense is used to express habits, routines, general truths, permanent situations, and repeated actions.",
+      "urduExplanation": "حال سادہ زمانہ ایسے کاموں، عادات، معمولات، عمومی حقائق اور مستقل حالتوں کو ظاہر کرتا ہے جو عموماً موجودہ وقت میں درست ہوں۔",
+      "englishExplanation": "Present Indefinite Tense is used to express habits, routines, general truths, permanent situations, and repeated actions. It is especially important in competitive-exam sentence correction because the subject, auxiliary, and base verb must be selected correctly.",
       "types": [
         {
           "name": "Affirmative Structure",
-          "description": "Subject + base verb (+s/es for he/she/it) + object"
+          "description": "Subject + Verb's 1st form + Object; He/She/It + Verb's 1st form + s/es + Object"
         },
         {
           "name": "Negative Structure",
-          "description": "Subject + do/does + not + base verb + object"
+          "description": "Subject + do/does + not + Verb's 1st form + Object"
         },
         {
           "name": "Interrogative Structure",
-          "description": "Do/Does + subject + base verb + object?"
+          "description": "Do/Does + Subject + Verb's 1st form + Object?"
         }
       ],
       "rules": [
-        "Affirmative: S + base verb (+s/es) — e.g., She walks to school.",
-        "Negative: S + do/does + not + base verb — e.g., They do not (don't) play cricket.",
-        "Interrogative: Do/Does + S + base verb...? — e.g., Does he speak Urdu?",
-        "Add -s to most verbs for he/she/it; add -es after verbs ending in s, x, ch, sh, o (e.g., watches, goes).",
-        "Verbs ending in a consonant + y change y to ies (e.g., study → studies), but not after a vowel (plays).",
-        "Use it for habits, routines, permanent facts, timetables, and general truths."
+        "Affirmative — Subject + Verb's 1st form + Object. For a singular subject: He/She/It + Verb's 1st form + s/es + Object.",
+        "In the Present Indefinite Tense, add -s or -es when the subject is He, She, It, or a singular noun. Example: She likes cooking. Explanation: She is singular, so like becomes likes.",
+        "I, You, We, They, and plural nouns take Verb's first form. Example: The boys go to school. Explanation: boys is plural, so the verb remains unchanged.",
+        "Negative — Subject + do/does + not + Verb's 1st form + Object. Example: Ali does not study regularly. Explanation: Ali is singular, so we use does not; after does not, study remains V1.",
+        "Interrogative — Do/Does + Subject + Verb's 1st form + Object? Example: Does he play cricket? Explanation: after does, the main verb remains V1: play, not plays.",
+        "Use the Present Indefinite for habits, routines, general truths, permanent situations, and repeated actions."
       ],
       "examples": [
         {
@@ -10676,6 +11270,26 @@
         {
           "text": "Do you like tea?",
           "note": "question about preference"
+        },
+        {
+          "text": "He plays cricket.",
+          "urdu": "وہ کرکٹ کھیلتا ہے۔",
+          "note": "He is singular, so play takes -s."
+        },
+        {
+          "text": "She goes to college every day.",
+          "urdu": "وہ ہر روز کالج جاتی ہے۔",
+          "note": "The routine marker every day supports Present Indefinite."
+        },
+        {
+          "text": "I play cricket.",
+          "urdu": "میں کرکٹ کھیلتا ہوں۔",
+          "note": "I takes the first form of the verb."
+        },
+        {
+          "text": "They study English.",
+          "urdu": "وہ انگریزی پڑھتے ہیں۔",
+          "note": "They takes the base verb study."
         }
       ],
       "commonMistakes": [
@@ -10698,6 +11312,36 @@
           "wrong": "I am agree with you.",
           "right": "I agree with you.",
           "note": "agree is a simple present verb, no 'am' needed"
+        },
+        {
+          "wrong": "He does not plays cricket.",
+          "right": "He does not play cricket.",
+          "urdu": "وہ کرکٹ نہیں کھیلتا۔",
+          "note": "Does not already carries the singular marking; the main verb stays in V1."
+        },
+        {
+          "wrong": "Does he plays cricket?",
+          "right": "Does he play cricket?",
+          "urdu": "کیا وہ کرکٹ کھیلتا ہے؟",
+          "note": "After does, use the first form play."
+        },
+        {
+          "wrong": "We The boys go to school.",
+          "right": "The boys go to school.",
+          "urdu": "لڑکے اسکول جاتے ہیں۔",
+          "note": "Remove the extra subject; the sentence must have one clear subject."
+        },
+        {
+          "wrong": "Ali do not study regularly.",
+          "right": "Ali does not study regularly.",
+          "urdu": "علی باقاعدگی سے مطالعہ نہیں کرتا۔",
+          "note": "Ali is singular, so use does not."
+        },
+        {
+          "wrong": "The students studies English.",
+          "right": "The students study English.",
+          "urdu": "طلبہ انگریزی پڑھتے ہیں۔",
+          "note": "Plural students takes the base verb study."
         }
       ],
       "practice": [
@@ -10770,7 +11414,11 @@
           "explanation": "'Usually' signals a habitual action, typical of Present Simple."
         }
       ],
-      "summary": "Present Simple expresses habits, routines, facts, and permanent situations using the base verb (with -s/-es for he/she/it). Common signal words include always, usually, often, every day, and never, which point to repeated or general actions rather than something happening right now."
+      "summary": "Present Simple expresses habits, routines, facts, and permanent situations using the base verb (with -s/-es for he/she/it). Common signal words include always, usually, often, every day, and never, which point to repeated or general actions rather than something happening right now.",
+      "examTips": [
+        "Exam Trap: Do not write does not plays or Does he plays. After does, the main verb always remains in V1.",
+        "Check whether the subject is singular or plural before choosing do/does and the verb ending."
+      ]
     }
   },
   {

@@ -63,11 +63,13 @@ class _PracticeQuestionCardState extends State<PracticeQuestionCard> {
               ),
             ),
           const SizedBox(height: 4),
-          Text(
-            q.question,
-            style: theme.textTheme.titleSmall?.copyWith(
-              fontWeight: FontWeight.w600,
-              height: 1.35,
+          Text.rich(
+            TextSpan(
+              style: theme.textTheme.titleSmall?.copyWith(
+                fontWeight: FontWeight.w600,
+                height: 1.35,
+              ),
+              children: _boldMarkedSpans(q.question),
             ),
           ),
           const SizedBox(height: 12),
@@ -188,6 +190,17 @@ class _OptionTile extends StatelessWidget {
       ),
     );
   }
+}
+
+List<TextSpan> _boldMarkedSpans(String text) {
+  final List<String> parts = text.split('**');
+  return <TextSpan>[
+    for (int i = 0; i < parts.length; i++)
+      TextSpan(
+        text: parts[i].replaceAll(' > ', ' → '),
+        style: i.isOdd ? const TextStyle(fontWeight: FontWeight.w800) : null,
+      ),
+  ];
 }
 
 class _ResultBanner extends StatelessWidget {
