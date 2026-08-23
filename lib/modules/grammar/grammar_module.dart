@@ -11,6 +11,7 @@ import 'package:lexiora/modules/grammar/data/repositories/grammar_repository_imp
 import 'package:lexiora/modules/grammar/domain/repositories/grammar_repository.dart';
 import 'package:lexiora/modules/grammar/presentation/pages/grammar_page.dart';
 import 'package:lexiora/modules/grammar/presentation/pages/lesson_page.dart';
+import 'package:lexiora/modules/grammar/presentation/pages/pos_quiz_stage_map_page.dart';
 import 'package:lexiora/modules/grammar/presentation/pages/topic_page.dart';
 import 'package:lexiora/modules/grammar/presentation/pages/type_detail_page.dart';
 
@@ -60,8 +61,9 @@ class GrammarModule extends FeatureModule {
           path: AppRoutes.grammarLessonPattern,
           builder: (BuildContext context, GoRouterState state) {
             final String lessonId = state.pathParameters['id'] ?? '';
-            // The Parts of Speech Quiz folder opens the original all-in-one
-            // quiz view, while the staged quiz remains available elsewhere.
+            if (lessonId == 'pos/quiz') {
+              return const PosQuizStageMapPage();
+            }
             return LessonPage(lessonId: lessonId);
           },
         ),
