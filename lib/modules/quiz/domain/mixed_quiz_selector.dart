@@ -46,7 +46,18 @@ class MixedQuizSelector {
           : eligible;
       if (candidates.isEmpty) break;
 
-      final String category = candidates[rng.nextInt(candidates.length)];
+      // Prefer categories with the largest remaining pool. This preserves
+      // random tie-breaking while preventing one category from being
+      // exhausted too early and producing a long same-category tail.
+      final int maxRemaining = candidates
+          .map((String category) => buckets[category]!.length)
+          .reduce((int a, int b) => a > b ? a : b);
+      final List<String> balancedCandidates = candidates
+          .where((String category) =>
+              buckets[category]!.length == maxRemaining)
+          .toList();
+      final String category =
+          balancedCandidates[rng.nextInt(balancedCandidates.length)];
       mixed.add(buckets[category]!.removeLast());
       previousCategory = category;
     }

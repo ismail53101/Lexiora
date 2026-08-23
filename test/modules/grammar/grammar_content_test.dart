@@ -55,11 +55,13 @@ void main() {
     expect(pos.length, 10);
     expect(pos.every((GrammarTopicSummary t) => t.isLeaf), isTrue);
 
-    // Tenses → introduction + 3 time branches + master table.
+    // Tenses → overview + 3 time branches; legacy Introduction and Master Table are removed.
     final List<GrammarTopicSummary> tenses = await ds.children('tenses');
-    expect(tenses.length, 5);
+    expect(tenses.length, 4);
     expect(tenses.where((GrammarTopicSummary t) => !t.isLeaf).length, 3);
-    expect(tenses.where((GrammarTopicSummary t) => t.isLeaf).length, 2);
+    expect(tenses.where((GrammarTopicSummary t) => t.isLeaf).length, 1);
+    expect(tenses.singleWhere((GrammarTopicSummary t) => t.isLeaf).title,
+        'Tense Overview');
     final List<GrammarTopicSummary> present =
         await ds.children('tenses/present');
     expect(present.length, 4);
