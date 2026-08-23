@@ -325,8 +325,11 @@ class _NounLandingView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final ThemeData theme = Theme.of(context);
-    final GrammarExample? overviewExample =
-        lesson.examples.isEmpty ? null : lesson.examples.first;
+    final List<GrammarExample> overviewExamples = lesson.id == 'tenses/overview'
+        ? lesson.examples
+        : (lesson.examples.isEmpty
+            ? const <GrammarExample>[]
+            : <GrammarExample>[lesson.examples.first]);
     const List<Color> accents = <Color>[
       Color(0xFF35B85A),
       Color(0xFF287BE8),
@@ -361,29 +364,56 @@ class _NounLandingView extends StatelessWidget {
                   ),
                 ),
               ],
-              if (overviewExample != null) ...<Widget>[
+              if (overviewExamples.isNotEmpty) ...<Widget>[
                 const Divider(height: 24),
-                Text('Example',
+                Text('Examples',
                     style: theme.textTheme.titleSmall?.copyWith(
                       color: theme.colorScheme.primary,
                       fontWeight: FontWeight.w800,
                     )),
                 const SizedBox(height: 6),
-                Text.rich(
-                  TextSpan(
-                    style: theme.textTheme.bodyMedium?.copyWith(height: 1.35),
-                    children: _boldMarkedSpans(overviewExample.text),
-                  ),
-                ),
-                if (overviewExample.urdu?.isNotEmpty ?? false) ...<Widget>[
-                  const SizedBox(height: 5),
-                  Directionality(
-                    textDirection: TextDirection.rtl,
-                    child: Text(
-                      overviewExample.urdu!,
-                      textAlign: TextAlign.right,
-                      style: theme.textTheme.bodySmall?.copyWith(height: 1.45),
-                    ),
+                for (int index = 0; index < overviewExamples.length; index++) ...<Widget>[
+                  if (index > 0) const Divider(height: 20),
+                  Row(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: <Widget>[
+                      Text('• ', style: TextStyle(color: theme.colorScheme.primary)),
+                      Expanded(
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: <Widget>[
+                            Text.rich(
+                              TextSpan(
+                                style: theme.textTheme.bodyMedium?.copyWith(height: 1.35),
+                                children: _boldMarkedSpans(overviewExamples[index].text),
+                              ),
+                            ),
+                            if (overviewExamples[index].urdu?.isNotEmpty ?? false) ...<Widget>[
+                              const SizedBox(height: 5),
+                              Directionality(
+                                textDirection: TextDirection.rtl,
+                                child: Text(
+                                  overviewExamples[index].urdu!,
+                                  textAlign: TextAlign.right,
+                                  style: theme.textTheme.bodySmall?.copyWith(height: 1.45),
+                                ),
+                              ),
+                            ],
+                            if (lesson.id == 'tenses/overview' &&
+                                (overviewExamples[index].note?.isNotEmpty ?? false)) ...<Widget>[
+                              const SizedBox(height: 4),
+                              Text(
+                                overviewExamples[index].note!,
+                                style: theme.textTheme.bodySmall?.copyWith(
+                                  color: theme.colorScheme.primary,
+                                  fontStyle: FontStyle.italic,
+                                ),
+                              ),
+                            ],
+                          ],
+                        ),
+                      ),
+                    ],
                   ),
                 ],
               ],

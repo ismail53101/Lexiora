@@ -8856,7 +8856,7 @@
   {
     "id": "tenses/overview",
     "parentId": "tenses",
-    "title": "Tense Overview",
+    "title": "Tense:",
     "subtitle": "Definition and the three main times",
     "order": 0,
     "isLeaf": true,
@@ -8882,17 +8882,17 @@
         {
           "text": "Ali plays cricket.",
           "urdu": "علی کرکٹ کھیلتا ہے۔",
-          "note": "Present time: a present habit or regular action."
+          "note": "→ حال (Present)"
         },
         {
           "text": "Ali played cricket.",
           "urdu": "علی نے کرکٹ کھیلی۔",
-          "note": "Past time: an action completed in the past."
+          "note": "→ ماضی (Past)"
         },
         {
           "text": "Ali will play cricket.",
           "urdu": "علی کرکٹ کھیلے گا۔",
-          "note": "Future time: an action expected to happen later."
+          "note": "→ مستقبل (Future)"
         }
       ],
       "rules": [
@@ -8968,45 +8968,52 @@
       "examples": [
         {
           "text": "At 8 pm tonight, I will be studying for my exam.",
-          "note": "action in progress at a specific future time"
+          "note": "action in progress at a specific future time",
+          "urdu": "آج رات 8 بجے میں اپنے امتحان کی تیاری کر رہا ہوں گا۔"
         },
         {
           "text": "This time next week, we will be traveling to Karachi.",
-          "note": "future action at a set moment"
+          "note": "future action at a set moment",
+          "urdu": "اگلے ہفتے اسی وقت ہم کراچی کے لیے سفر کر رہے ہوں گے۔"
         },
         {
           "text": "She will be working on the project all day tomorrow.",
-          "note": "ongoing future action"
+          "note": "ongoing future action",
+          "urdu": "وہ کل سارا دن پروجیکٹ پر کام کر رہی ہوگی۔"
         },
         {
           "text": "They will not be joining us during the meeting.",
-          "note": "negative ongoing future action"
+          "note": "negative ongoing future action",
+          "urdu": "وہ میٹنگ کے دوران ہمارے ساتھ شامل نہیں ہوں گے۔"
         },
         {
           "text": "Will you be using the printer this afternoon?",
-          "note": "polite question about future plans"
+          "note": "polite question about future plans",
+          "urdu": "کیا آپ آج دوپہر پرنٹر استعمال کر رہے ہوں گے؟"
         },
         {
           "text": "He will be sleeping when we arrive.",
-          "note": "future action happening at the moment of another event"
+          "note": "future action happening at the moment of another event",
+          "urdu": "جب ہم پہنچیں گے تو وہ سو رہا ہوگا."
         },
         {
           "text": "The team will be practicing throughout the weekend.",
-          "note": "future action spread over time"
+          "note": "future action spread over time",
+          "urdu": "ٹیم پورے ویک اینڈ کے دوران پریکٹس کر رہی ہوگی."
         },
         {
           "text": "At this time tomorrow, the candidates will be attempting the paper.",
-          "urdu": "کل اس وقت امیدوار پرچہ حل کر رہے ہوں گے۔",
+          "urdu": "کل اس وقت امیدوار پرچہ حل کر رہے ہوں گے.",
           "note": "This sentence demonstrates Future Continuous in an academic context."
         },
         {
           "text": "The delegation will be meeting officials next week.",
-          "urdu": "وفد اگلے ہفتے حکام سے ملاقات کر رہا ہوگا۔",
+          "urdu": "وفد اگلے ہفتے حکام سے ملاقات کر رہا ہوگا.",
           "note": "This sentence demonstrates Future Continuous in an academic context."
         },
         {
           "text": "She will be presenting the findings at noon.",
-          "urdu": "وہ دوپہر کو نتائج پیش کر رہی ہوگی۔",
+          "urdu": "وہ دوپہر کو نتائج پیش کر رہی ہوگی.",
           "note": "This sentence demonstrates Future Continuous in an academic context."
         }
       ],
@@ -9014,52 +9021,44 @@
         {
           "wrong": "I will studying at that time.",
           "right": "I will be studying at that time.",
-          "note": "missing 'be' before the -ing verb"
+          "note": "missing 'be' before the -ing verb",
+          "urdu": "میں اس وقت پڑھ رہا ہوں گا۔"
         },
         {
           "wrong": "She will be work tomorrow at noon.",
           "right": "She will be working tomorrow at noon.",
-          "note": "main verb needs -ing after will be"
+          "note": "main verb needs -ing after will be",
+          "urdu": "وہ کل دوپہر کو کام کر رہی ہوگی۔"
         },
         {
           "wrong": "They will being traveling next week.",
           "right": "They will be traveling next week.",
-          "note": "correct form is 'be', not 'being', after will"
+          "note": "correct form is 'be', not 'being', after will",
+          "urdu": "وہ اگلے ہفتے سفر کر رہے ہوں گے۔"
         },
         {
           "wrong": "Will you working at 5 pm?",
           "right": "Will you be working at 5 pm?",
-          "note": "missing 'be' in the question structure"
+          "note": "missing 'be' in the question structure",
+          "urdu": "کیا آپ 5 بجے کام کر رہے ہوں گے؟"
         },
         {
           "wrong": "The candidate has submit the form.",
           "right": "The candidate has submitted the form.",
-          "urdu": "امیدوار نے فارم جمع کر دیا ہے۔",
+          "urdu": "امیدوار نے فارم جمع کروایا ہے۔",
           "note": "After has/have, use V3."
         },
         {
           "wrong": "They was preparing the report.",
           "right": "They were preparing the report.",
-          "urdu": "وہ رپورٹ تیار کر رہے تھے۔",
+          "urdu": "وہ رپورٹ تیار کر رہے تھے.",
           "note": "Plural subjects take were in the continuous past."
         },
         {
           "wrong": "She did not wrote the answer.",
           "right": "She did not write the answer.",
-          "urdu": "اس نے جواب نہیں لکھا۔",
+          "urdu": "اس نے جواب نہیں لکھا.",
           "note": "After did not, use V1."
-        },
-        {
-          "wrong": "He will completed the task.",
-          "right": "He will complete the task.",
-          "urdu": "وہ کام مکمل کرے گا۔",
-          "note": "After will, use V1."
-        },
-        {
-          "wrong": "The panel have reached a decision.",
-          "right": "The panel has reached a decision.",
-          "urdu": "پینل ایک فیصلے پر پہنچ چکا ہے۔",
-          "note": "A singular collective subject takes has in this meaning."
         }
       ],
       "practice": [
@@ -9175,45 +9174,52 @@
       "examples": [
         {
           "text": "By next month, she will have been teaching for ten years.",
-          "note": "duration continuing up to a future point"
+          "note": "duration continuing up to a future point",
+          "urdu": "اگلے مہینے تک، وہ دس سال سے پڑھا رہی ہوگی۔"
         },
         {
           "text": "By the time you arrive, we will have been waiting for two hours.",
-          "note": "emphasis on duration before a future event"
+          "note": "emphasis on duration before a future event",
+          "urdu": "جب تک آپ پہنچیں گے، ہم دو گھنٹے سے انتظار کر رہے ہوں گے۔"
         },
         {
           "text": "He will have been working here for six years by December.",
-          "note": "ongoing action measured up to a future date"
+          "note": "ongoing action measured up to a future date",
+          "urdu": "دسمبر تک وہ یہاں چھ سال سے کام کر رہا ہوگا۔"
         },
         {
           "text": "They will not have been living here long by next spring.",
-          "note": "negative duration statement"
+          "note": "negative duration statement",
+          "urdu": "اگلی بہار تک وہ یہاں زیادہ عرصہ سے مقیم نہیں ہوں گے۔"
         },
         {
           "text": "Will you have been studying all night by the time the exam starts?",
-          "note": "question about future duration"
+          "note": "question about future duration",
+          "urdu": "کیا آپ امتحان شروع ہونے تک ساری رات پڑھ رہے ہوں گے؟"
         },
         {
           "text": "By 2030, the company will have been operating for fifty years.",
-          "note": "long-term duration up to a future milestone"
+          "note": "long-term duration up to a future milestone",
+          "urdu": "2030 تک، کمپنی پچاس سال سے کام کر رہی ہوگی۔"
         },
         {
           "text": "I will have been driving for eight hours by the time I reach Multan.",
-          "note": "duration of a continuous journey"
+          "note": "duration of a continuous journey",
+          "urdu": "میں ملتان پہنچنے تک آٹھ گھنٹے سے گاڑی چلا رہا ہوں گا۔"
         },
         {
           "text": "By June, the researchers will have been studying the issue for two years.",
-          "urdu": "جون تک محققین دو سال سے اس مسئلے کا مطالعہ کر رہے ہوں گے۔",
+          "urdu": "جون تک، محققین اس مسئلے کا مطالعہ دو سال سے کر رہے ہوں گے۔",
           "note": "This sentence demonstrates Future Perfect Continuous in an academic context."
         },
         {
           "text": "By noon, she will have been preparing the briefing for five hours.",
-          "urdu": "دوپہر تک وہ پانچ گھنٹے سے بریفنگ تیار کر رہی ہوگی۔",
+          "urdu": "دوپہر تک، وہ پانچ گھنٹے سے بریفنگ تیار کر رہی ہوگی۔",
           "note": "This sentence demonstrates Future Perfect Continuous in an academic context."
         },
         {
           "text": "Next year, the institute will have been training officers for a decade.",
-          "urdu": "اگلے سال ادارہ ایک دہائی سے افسران کو تربیت دے رہا ہوگا۔",
+          "urdu": "اگلے سال، ادارہ ایک دہائی سے افسروں کی تربیت کر رہا ہوگا۔",
           "note": "This sentence demonstrates Future Perfect Continuous in an academic context."
         }
       ],
@@ -9221,52 +9227,44 @@
         {
           "wrong": "She will have been work here for ten years.",
           "right": "She will have been working here for ten years.",
-          "note": "main verb needs -ing after will have been"
+          "note": "main verb needs -ing after will have been",
+          "urdu": "تب تک وہ یہاں دس سال سے کام کر رہی ہوگی."
         },
         {
           "wrong": "They will has been waiting for hours.",
           "right": "They will have been waiting for hours.",
-          "note": "correct auxiliary is 'have', not 'has', after will"
+          "note": "correct auxiliary is 'have', not 'has', after will",
+          "urdu": "وہ کئی گھنٹوں سے انتظار کر رہے ہوں گے."
         },
         {
           "wrong": "I will have being studying by then.",
           "right": "I will have been studying by then.",
-          "note": "correct form is 'been', not 'being', after will have"
+          "note": "correct form is 'been', not 'being', after will have",
+          "urdu": "اس وقت تک میں پڑھ رہا ہوں گا."
         },
         {
           "wrong": "By next year, I work here for five years.",
           "right": "By next year, I will have been working here for five years.",
-          "note": "'by next year' with duration requires Future Perfect Continuous"
+          "note": "'by next year' with duration requires Future Perfect Continuous",
+          "urdu": "اگلے سال تک، میں یہاں پانچ سال سے کام کر رہا ہوں گا."
         },
         {
           "wrong": "The candidate has submit the form.",
           "right": "The candidate has submitted the form.",
-          "urdu": "امیدوار نے فارم جمع کر دیا ہے۔",
+          "urdu": "امیدوار نے فارم جمع کر دیا ہے.",
           "note": "After has/have, use V3."
         },
         {
           "wrong": "They was preparing the report.",
           "right": "They were preparing the report.",
-          "urdu": "وہ رپورٹ تیار کر رہے تھے۔",
+          "urdu": "وہ رپورٹ تیار کر رہے تھے.",
           "note": "Plural subjects take were in the continuous past."
         },
         {
           "wrong": "She did not wrote the answer.",
           "right": "She did not write the answer.",
-          "urdu": "اس نے جواب نہیں لکھا۔",
+          "urdu": "اس نے جواب نہیں لکھا.",
           "note": "After did not, use V1."
-        },
-        {
-          "wrong": "He will completed the task.",
-          "right": "He will complete the task.",
-          "urdu": "وہ کام مکمل کرے گا۔",
-          "note": "After will, use V1."
-        },
-        {
-          "wrong": "The panel have reached a decision.",
-          "right": "The panel has reached a decision.",
-          "urdu": "پینل ایک فیصلے پر پہنچ چکا ہے۔",
-          "note": "A singular collective subject takes has in this meaning."
         }
       ],
       "practice": [
@@ -9382,45 +9380,52 @@
       "examples": [
         {
           "text": "By next year, I will have completed my CSS preparation.",
-          "note": "action completed before a future time"
+          "note": "action completed before a future time",
+          "urdu": "اگلے سال تک میری CSS کی تیاری مکمل ہو چکی ہوگی۔"
         },
         {
           "text": "She will have finished cooking by the time guests arrive.",
-          "note": "completion before another future event"
+          "note": "completion before another future event",
+          "urdu": "مہمانوں کے پہنچنے تک وہ کھانا تیار کر چکی ہوگی۔"
         },
         {
           "text": "They will have built the new bridge by 2028.",
-          "note": "prediction of future completion"
+          "note": "prediction of future completion",
+          "urdu": "وہ 2028 تک نیا پل تعمیر کر چکے ہوں گے۔"
         },
         {
           "text": "He will not have paid the fee by the deadline.",
-          "note": "negative future completion"
+          "note": "negative future completion",
+          "urdu": "وہ آخری تاریخ تک فیس ادا نہیں کر چکا ہوگا۔"
         },
         {
           "text": "Will you have graduated by next summer?",
-          "note": "question about future completion"
+          "note": "question about future completion",
+          "urdu": "کیا آپ اگلے موسمِ گرما تک فارغ التحصیل ہو چکے ہوں گے؟"
         },
         {
           "text": "We will have lived here for ten years by December.",
-          "note": "duration completed by a future point"
+          "note": "duration completed by a future point",
+          "urdu": "دسمبر تک ہم یہاں دس سال رہ چکے ہوں گے۔"
         },
         {
           "text": "By the time the movie starts, we will have eaten dinner.",
-          "note": "action finished before a specific future event"
+          "note": "action finished before a specific future event",
+          "urdu": "جب فلم شروع ہوگی، تب تک ہم کھانا کھا چکے ہوں گے۔"
         },
         {
           "text": "By Friday, the committee will have completed its review.",
-          "urdu": "جمعہ تک کمیٹی اپنا جائزہ مکمل کر چکی ہوگی۔",
+          "urdu": "جمعے تک، کمیٹی اپنا جائزہ مکمل کر چکی ہوگی۔",
           "note": "This sentence demonstrates Future Perfect in an academic context."
         },
         {
           "text": "The candidate will have submitted the application by noon.",
-          "urdu": "امیدوار دوپہر تک درخواست جمع کر چکا ہوگا۔",
+          "urdu": "امیدوار دوپہر تک درخواست جمع کرا چکا ہوگا۔",
           "note": "This sentence demonstrates Future Perfect in an academic context."
         },
         {
           "text": "By next month, the department will have issued the final report.",
-          "urdu": "اگلے ماہ تک محکمہ حتمی رپورٹ جاری کر چکا ہوگا۔",
+          "urdu": "اگلے مہینے تک، محکمہ حتمی رپورٹ جاری کر چکا ہوگا۔",
           "note": "This sentence demonstrates Future Perfect in an academic context."
         }
       ],
@@ -9428,22 +9433,26 @@
         {
           "wrong": "I will have finish the work by Friday.",
           "right": "I will have finished the work by Friday.",
-          "note": "past participle 'finished' is needed after will have"
+          "note": "past participle 'finished' is needed after will have",
+          "urdu": "میں جمعہ تک کام ختم کر چکا ہوں گا."
         },
         {
           "wrong": "She will has completed the task by then.",
           "right": "She will have completed the task by then.",
-          "note": "correct auxiliary is 'have', not 'has', after will"
+          "note": "correct auxiliary is 'have', not 'has', after will",
+          "urdu": "وہ تب تک کام مکمل کر چکی ہوگی."
         },
         {
           "wrong": "They will have went home by 6 pm.",
           "right": "They will have gone home by 6 pm.",
-          "note": "use past participle 'gone', not past simple 'went'"
+          "note": "use past participle 'gone', not past simple 'went'",
+          "urdu": "وہ شام 6 بجے تک گھر جا چکے ہوں گے۔"
         },
         {
           "wrong": "By next year, I finish my studies.",
           "right": "By next year, I will have finished my studies.",
-          "note": "'by next year' signals Future Perfect, not Present Simple"
+          "note": "'by next year' signals Future Perfect, not Present Simple",
+          "urdu": "اگلے سال تک، میں اپنی پڑھائی ختم کر چکا ہوں گا۔"
         },
         {
           "wrong": "The candidate has submit the form.",
@@ -9454,26 +9463,14 @@
         {
           "wrong": "They was preparing the report.",
           "right": "They were preparing the report.",
-          "urdu": "وہ رپورٹ تیار کر رہے تھے۔",
+          "urdu": "وہ رپورٹ تیار کر رہے تھے.",
           "note": "Plural subjects take were in the continuous past."
         },
         {
           "wrong": "She did not wrote the answer.",
           "right": "She did not write the answer.",
-          "urdu": "اس نے جواب نہیں لکھا۔",
+          "urdu": "اس نے جواب نہیں لکھا.",
           "note": "After did not, use V1."
-        },
-        {
-          "wrong": "He will completed the task.",
-          "right": "He will complete the task.",
-          "urdu": "وہ کام مکمل کرے گا۔",
-          "note": "After will, use V1."
-        },
-        {
-          "wrong": "The panel have reached a decision.",
-          "right": "The panel has reached a decision.",
-          "urdu": "پینل ایک فیصلے پر پہنچ چکا ہے۔",
-          "note": "A singular collective subject takes has in this meaning."
         }
       ],
       "practice": [
@@ -9589,31 +9586,38 @@
       "examples": [
         {
           "text": "I will call you as soon as I reach home.",
-          "note": "spontaneous decision"
+          "note": "spontaneous decision",
+          "urdu": "میں گھر پہنچتے ہی آپ کو فون کروں گا."
         },
         {
           "text": "She will pass the exam; I am sure.",
-          "note": "prediction/opinion"
+          "note": "prediction/opinion",
+          "urdu": "وہ امتحان پاس کر لے گی; مجھے یقین ہے."
         },
         {
           "text": "We will help you move the furniture.",
-          "note": "offer of help"
+          "note": "offer of help",
+          "urdu": "ہم آپ کو فرنیچر منتقل کرنے میں مدد کریں گے."
         },
         {
           "text": "They will not join us for dinner tonight.",
-          "note": "negative future action"
+          "note": "negative future action",
+          "urdu": "وہ آج رات کھانے میں ہمارے ساتھ شامل نہیں ہوں گے."
         },
         {
           "text": "Will you marry me?",
-          "note": "question involving a promise-like decision"
+          "note": "question involving a promise-like decision",
+          "urdu": "کیا آپ مجھ سے شادی کریں گے?"
         },
         {
           "text": "It will rain tomorrow, according to the forecast.",
-          "note": "prediction based on evidence"
+          "note": "prediction based on evidence",
+          "urdu": "کل بارش ہوگی، پیش گوئی کے مطابق۔"
         },
         {
           "text": "If you study hard, you will succeed.",
-          "note": "conditional future outcome"
+          "note": "conditional future outcome",
+          "urdu": "اگر آپ محنت سے پڑھیں گے، تو آپ کامیاب ہو جائیں گے۔"
         },
         {
           "text": "The government will announce the policy tomorrow.",
@@ -9622,12 +9626,12 @@
         },
         {
           "text": "The candidates will submit their forms before the deadline.",
-          "urdu": "امیدوار آخری تاریخ سے پہلے اپنے فارم جمع کرائیں گے۔",
+          "urdu": "امیدوار اپنے فارم آخری تاریخ سے پہلے جمع کروائیں گے۔",
           "note": "This sentence demonstrates Future Simple in an academic context."
         },
         {
           "text": "The tribunal will examine the evidence carefully.",
-          "urdu": "ٹربیونل شواہد کا بغور جائزہ لے گا۔",
+          "urdu": "ٹریبونل شواہد کا بغور جائزہ لے گا۔",
           "note": "This sentence demonstrates Future Simple in an academic context."
         }
       ],
@@ -9635,22 +9639,26 @@
         {
           "wrong": "I will to call you later.",
           "right": "I will call you later.",
-          "note": "no 'to' is used after will; base verb comes directly after"
+          "note": "no 'to' is used after will; base verb comes directly after",
+          "urdu": "میں آپ کو بعد میں فون کروں گا."
         },
         {
           "wrong": "She will calls you tomorrow.",
           "right": "She will call you tomorrow.",
-          "note": "base verb only, no -s, after will"
+          "note": "base verb only, no -s, after will",
+          "urdu": "وہ آپ کو کل فون کرے گی."
         },
         {
           "wrong": "They wills join the party.",
           "right": "They will join the party.",
-          "note": "'will' never changes form for any subject"
+          "note": "'will' never changes form for any subject",
+          "urdu": "وہ پارٹی میں شامل ہوں گے۔"
         },
         {
           "wrong": "Will you to help me?",
           "right": "Will you help me?",
-          "note": "no 'to' is needed after will in questions"
+          "note": "no 'to' is needed after will in questions",
+          "urdu": "کیا آپ میری مدد کریں گے؟"
         },
         {
           "wrong": "The candidate has submit the form.",
@@ -9669,18 +9677,6 @@
           "right": "She did not write the answer.",
           "urdu": "اس نے جواب نہیں لکھا۔",
           "note": "After did not, use V1."
-        },
-        {
-          "wrong": "He will completed the task.",
-          "right": "He will complete the task.",
-          "urdu": "وہ کام مکمل کرے گا۔",
-          "note": "After will, use V1."
-        },
-        {
-          "wrong": "The panel have reached a decision.",
-          "right": "The panel has reached a decision.",
-          "urdu": "پینل ایک فیصلے پر پہنچ چکا ہے۔",
-          "note": "A singular collective subject takes has in this meaning."
         }
       ],
       "practice": [
@@ -9796,45 +9792,52 @@
       "examples": [
         {
           "text": "I was studying when the lights went out.",
-          "note": "interrupted action"
+          "note": "interrupted action",
+          "urdu": "میں پڑھ رہا تھا جب بتیوں کی روشنی بجھ گئی۔"
         },
         {
           "text": "They were playing cricket at 5 pm yesterday.",
-          "note": "action in progress at a specific time"
+          "note": "action in progress at a specific time",
+          "urdu": "وہ کل شام پانچ بجے کرکٹ کھیل رہے تھے۔"
         },
         {
           "text": "She was cooking while he was cleaning the house.",
-          "note": "two parallel past actions"
+          "note": "two parallel past actions",
+          "urdu": "وہ کھانا بنا رہی تھی جبکہ وہ گھر صاف کر رہا تھا۔"
         },
         {
           "text": "We were not watching the news last night.",
-          "note": "negative ongoing action"
+          "note": "negative ongoing action",
+          "urdu": "ہم کل رات خبریں نہیں دیکھ رہے تھے۔"
         },
         {
           "text": "Were you sleeping when I called you?",
-          "note": "question about an interrupted action"
+          "note": "question about an interrupted action",
+          "urdu": "کیا آپ سو رہے تھے جب میں نے آپ کو فون کیا؟"
         },
         {
           "text": "It was raining heavily all night.",
-          "note": "continuous action over a period"
+          "note": "continuous action over a period",
+          "urdu": "ساری رات تیز بارش ہو رہی تھی."
         },
         {
           "text": "He was driving to work when the accident happened.",
-          "note": "background action interrupted by an event"
+          "note": "background action interrupted by an event",
+          "urdu": "وہ کام پر گاڑی چلا رہا تھا جب حادثہ ہوا."
         },
         {
           "text": "The panel was discussing the evidence when the witness arrived.",
-          "urdu": "جب گواہ آیا تو پینل شواہد پر بحث کر رہا تھا۔",
+          "urdu": "پینل شواہد پر بحث کر رہا تھا جب گواہ پہنچا.",
           "note": "This sentence demonstrates Past Continuous in an academic context."
         },
         {
           "text": "The students were revising their notes at midnight.",
-          "urdu": "طلبہ نصف شب اپنے نوٹس دہرا رہے تھے۔",
+          "urdu": "طلبہ آدھی رات کو اپنے نوٹس دہر رہے تھے.",
           "note": "This sentence demonstrates Past Continuous in an academic context."
         },
         {
           "text": "I was preparing the answer when the bell rang.",
-          "urdu": "جب گھنٹی بجی تو میں جواب تیار کر رہا تھا۔",
+          "urdu": "میں جواب تیار کر رہا تھا جب گھنٹی بجی.",
           "note": "This sentence demonstrates Past Continuous in an academic context."
         }
       ],
@@ -9842,27 +9845,31 @@
         {
           "wrong": "I was study when he came.",
           "right": "I was studying when he came.",
-          "note": "main verb needs -ing after was/were"
+          "note": "main verb needs -ing after was/were",
+          "urdu": "جب وہ آیا تو میں پڑھ رہا تھا."
         },
         {
           "wrong": "They was playing football.",
           "right": "They were playing football.",
-          "note": "plural subject 'they' requires 'were', not 'was'"
+          "note": "plural subject 'they' requires 'were', not 'was'",
+          "urdu": "وہ فٹ بال کھیل رہے تھے."
         },
         {
           "wrong": "She were cooking dinner.",
           "right": "She was cooking dinner.",
-          "note": "singular subject 'she' requires 'was', not 'were'"
+          "note": "singular subject 'she' requires 'was', not 'were'",
+          "urdu": "وہ رات کا کھانا پکا رہی تھی۔"
         },
         {
           "wrong": "While I was walk, it started raining.",
           "right": "While I was walking, it started raining.",
-          "note": "missing -ing on the verb after 'was'"
+          "note": "missing -ing on the verb after 'was'",
+          "urdu": "جب میں چل رہا تھا، بارش شروع ہو گئی۔"
         },
         {
           "wrong": "The candidate has submit the form.",
           "right": "The candidate has submitted the form.",
-          "urdu": "امیدوار نے فارم جمع کر دیا ہے۔",
+          "urdu": "امیدوار نے فارم جمع کروا دیا ہے۔",
           "note": "After has/have, use V3."
         },
         {
@@ -9876,18 +9883,6 @@
           "right": "She did not write the answer.",
           "urdu": "اس نے جواب نہیں لکھا۔",
           "note": "After did not, use V1."
-        },
-        {
-          "wrong": "He will completed the task.",
-          "right": "He will complete the task.",
-          "urdu": "وہ کام مکمل کرے گا۔",
-          "note": "After will, use V1."
-        },
-        {
-          "wrong": "The panel have reached a decision.",
-          "right": "The panel has reached a decision.",
-          "urdu": "پینل ایک فیصلے پر پہنچ چکا ہے۔",
-          "note": "A singular collective subject takes has in this meaning."
         }
       ],
       "practice": [
@@ -10003,45 +9998,52 @@
       "examples": [
         {
           "text": "He had been studying for three hours before he took a break.",
-          "note": "duration before another past action"
+          "note": "duration before another past action",
+          "urdu": "وہ وقفہ لینے سے پہلے تین گھنٹے سے پڑھ رہا تھا۔"
         },
         {
           "text": "She had been waiting for the bus when it finally arrived.",
-          "note": "ongoing action interrupted by a past event"
+          "note": "ongoing action interrupted by a past event",
+          "urdu": "وہ بس کے انتظار میں تھی جب بس آخرکار پہنچی۔"
         },
         {
           "text": "They had been playing football all afternoon before it started raining.",
-          "note": "emphasis on duration"
+          "note": "emphasis on duration",
+          "urdu": "بارش شروع ہونے سے پہلے وہ سارا دوپہر فٹبال کھیل رہے تھے۔"
         },
         {
           "text": "We had not been sleeping well before the exams.",
-          "note": "negative ongoing state"
+          "note": "negative ongoing state",
+          "urdu": "امتحانات سے پہلے ہم اچھی طرح سو نہیں رہے تھے۔"
         },
         {
           "text": "Had you been living there long before you moved?",
-          "note": "question about past duration"
+          "note": "question about past duration",
+          "urdu": "کیا تم منتقل ہونے سے پہلے کافی عرصے تک وہاں رہ رہے تھے؟"
         },
         {
           "text": "I had been feeling tired for days before I saw the doctor.",
-          "note": "state leading up to a past event"
+          "note": "state leading up to a past event",
+          "urdu": "ڈاکٹر کو دیکھنے سے پہلے میں کئی دنوں سے تھکا ہوا محسوس کر رہا تھا۔"
         },
         {
           "text": "The workers had been building the bridge for two years when it collapsed.",
-          "note": "duration before an unexpected past event"
+          "note": "duration before an unexpected past event",
+          "urdu": "جب پل گر پڑا تو مزدور دو سال سے اسے بنا رہے تھے۔"
         },
         {
           "text": "The experts had been examining the data for weeks before they announced the result.",
-          "urdu": "ماہرین نتیجہ ظاہر کرنے سے پہلے کئی ہفتوں سے اعداد و شمار کا جائزہ لے رہے تھے۔",
+          "urdu": "نتیجہ کا اعلان کرنے سے پہلے ماہرین کئی ہفتوں سے ڈیٹا کا جائزہ لے رہے تھے۔",
           "note": "This sentence demonstrates Past Perfect Continuous in an academic context."
         },
         {
           "text": "He had been preparing for the interview since dawn.",
-          "urdu": "وہ صبح سویرے سے انٹرویو کی تیاری کر رہا تھا۔",
+          "urdu": "وہ صبح صادق سے انٹرویو کی تیاری کر رہا تھا۔",
           "note": "This sentence demonstrates Past Perfect Continuous in an academic context."
         },
         {
           "text": "The department had been facing a shortage before reforms began.",
-          "urdu": "اصلاحات شروع ہونے سے پہلے محکمہ قلت کا سامنا کر رہا تھا۔",
+          "urdu": "اصلاحات کے آغاز سے پہلے محکمہ کمی کا سامنا کر رہا تھا۔",
           "note": "This sentence demonstrates Past Perfect Continuous in an academic context."
         }
       ],
@@ -10049,22 +10051,26 @@
         {
           "wrong": "I had been study for hours.",
           "right": "I had been studying for hours.",
-          "note": "main verb needs -ing after had been"
+          "note": "main verb needs -ing after had been",
+          "urdu": "میں کئی گھنٹے سے پڑھ رہا تھا۔"
         },
         {
           "wrong": "She had being waiting for an hour.",
           "right": "She had been waiting for an hour.",
-          "note": "correct spelling is 'been', not 'being'"
+          "note": "correct spelling is 'been', not 'being'",
+          "urdu": "وہ ایک گھنٹہ سے انتظار کر رہی تھی۔"
         },
         {
           "wrong": "They had been work since morning.",
           "right": "They had been working since morning.",
-          "note": "missing -ing on the main verb"
+          "note": "missing -ing on the main verb",
+          "urdu": "وہ صبح سے کام کر رہے تھے۔"
         },
         {
           "wrong": "He had been knowing her for years before they married.",
           "right": "He had known her for years before they married.",
-          "note": "stative verb 'know' is not used in continuous form"
+          "note": "stative verb 'know' is not used in continuous form",
+          "urdu": "وہ شادی سے پہلے کئی سالوں سے اسے جانتا تھا۔"
         },
         {
           "wrong": "The candidate has submit the form.",
@@ -10075,26 +10081,14 @@
         {
           "wrong": "They was preparing the report.",
           "right": "They were preparing the report.",
-          "urdu": "وہ رپورٹ تیار کر رہے تھے۔",
+          "urdu": "وہ رپورٹ تیار کر رہے تھے.",
           "note": "Plural subjects take were in the continuous past."
         },
         {
           "wrong": "She did not wrote the answer.",
           "right": "She did not write the answer.",
-          "urdu": "اس نے جواب نہیں لکھا۔",
+          "urdu": "اس نے جواب نہیں لکھا.",
           "note": "After did not, use V1."
-        },
-        {
-          "wrong": "He will completed the task.",
-          "right": "He will complete the task.",
-          "urdu": "وہ کام مکمل کرے گا۔",
-          "note": "After will, use V1."
-        },
-        {
-          "wrong": "The panel have reached a decision.",
-          "right": "The panel has reached a decision.",
-          "urdu": "پینل ایک فیصلے پر پہنچ چکا ہے۔",
-          "note": "A singular collective subject takes has in this meaning."
         }
       ],
       "practice": [
@@ -10210,45 +10204,52 @@
       "examples": [
         {
           "text": "The train had already left when I reached the station.",
-          "note": "earlier action before another past event"
+          "note": "earlier action before another past event",
+          "urdu": "جب میں اسٹیشن پہنچا تو ٹرین پہلے ہی روانہ ہو چکی تھی."
         },
         {
           "text": "She had finished her homework before dinner.",
-          "note": "sequence of past actions"
+          "note": "sequence of past actions",
+          "urdu": "اس نے رات کے کھانے سے پہلے اپنا ہوم ورک ختم کر لیا تھا."
         },
         {
           "text": "They had never visited Islamabad before that trip.",
-          "note": "experience before a past point"
+          "note": "experience before a past point",
+          "urdu": "اس سفر سے پہلے وہ کبھی Islamabad نہیں گئے تھے."
         },
         {
           "text": "He had not studied for the test, so he failed.",
-          "note": "negative earlier action"
+          "note": "negative earlier action",
+          "urdu": "اس نے ٹیسٹ کے لیے پڑھائی نہیں کی تھی، اس لیے وہ فیل ہو گیا."
         },
         {
           "text": "Had you met him before the conference?",
-          "note": "question about prior experience"
+          "note": "question about prior experience",
+          "urdu": "کیا آپ کانفرنس سے پہلے اس سے ملے تھے?"
         },
         {
           "text": "By the time the doctor arrived, the patient had recovered.",
-          "note": "action completed before a past time reference"
+          "note": "action completed before a past time reference",
+          "urdu": "جب ڈاکٹر پہنچے، تب تک مریض پہلے ہی صحت یاب ہو چکا تھا۔"
         },
         {
           "text": "I realized I had forgotten my keys at home.",
-          "note": "past action discovered later in the past"
+          "note": "past action discovered later in the past",
+          "urdu": "مجھے احساس ہوا کہ میں نے اپنی چابیاں گھر پر بھول گیا تھا۔"
         },
         {
           "text": "The committee had approved the proposal before the session began.",
-          "urdu": "اجلاس شروع ہونے سے پہلے کمیٹی تجویز منظور کر چکی تھی۔",
+          "urdu": "کمیٹی نے اجلاس شروع ہونے سے پہلے تجویز کی منظوری دے دی تھی۔",
           "note": "This sentence demonstrates Past Perfect in an academic context."
         },
         {
           "text": "She had completed the report when the director called.",
-          "urdu": "جب ڈائریکٹر نے فون کیا تو وہ رپورٹ مکمل کر چکی تھی۔",
+          "urdu": "جب ڈائریکٹر نے کال کی تو اُس نے رپورٹ مکمل کر چکی تھی۔",
           "note": "This sentence demonstrates Past Perfect in an academic context."
         },
         {
           "text": "The candidates had revised the topic before the test started.",
-          "urdu": "ٹیسٹ شروع ہونے سے پہلے امیدوار موضوع دہرا چکے تھے۔",
+          "urdu": "امیدواروں نے امتحان شروع ہونے سے پہلے موضوع کی نظرِ ثانی کر لی تھی۔",
           "note": "This sentence demonstrates Past Perfect in an academic context."
         }
       ],
@@ -10256,22 +10257,26 @@
         {
           "wrong": "She had went home before he called.",
           "right": "She had gone home before he called.",
-          "note": "use past participle 'gone', not past simple 'went'"
+          "note": "use past participle 'gone', not past simple 'went'",
+          "urdu": "وہ اس کے فون کرنے سے پہلے گھر جا چکی تھی۔"
         },
         {
           "wrong": "I had ate dinner when they arrived.",
           "right": "I had eaten dinner when they arrived.",
-          "note": "past participle 'eaten' is required after had"
+          "note": "past participle 'eaten' is required after had",
+          "urdu": "جب وہ پہنچے تو میں کھانا کھا چکا تھا۔"
         },
         {
           "wrong": "They has had left before we came.",
           "right": "They had left before we came.",
-          "note": "only one auxiliary 'had' is needed, not 'has had'"
+          "note": "only one auxiliary 'had' is needed, not 'has had'",
+          "urdu": "وہ ہمارے آنے سے پہلے جا چکے تھے۔"
         },
         {
           "wrong": "By the time she came, we finish the work.",
           "right": "By the time she came, we had finished the work.",
-          "note": "the earlier action needs Past Perfect (had finished)"
+          "note": "the earlier action needs Past Perfect (had finished)",
+          "urdu": "جب وہ آئی، تب تک ہم نے کام ختم کر لیا تھا۔"
         },
         {
           "wrong": "The candidate has submit the form.",
@@ -10282,26 +10287,14 @@
         {
           "wrong": "They was preparing the report.",
           "right": "They were preparing the report.",
-          "urdu": "وہ رپورٹ تیار کر رہے تھے۔",
+          "urdu": "وہ رپورٹ تیار کر رہے تھے.",
           "note": "Plural subjects take were in the continuous past."
         },
         {
           "wrong": "She did not wrote the answer.",
           "right": "She did not write the answer.",
-          "urdu": "اس نے جواب نہیں لکھا۔",
+          "urdu": "اس نے جواب نہیں لکھا.",
           "note": "After did not, use V1."
-        },
-        {
-          "wrong": "He will completed the task.",
-          "right": "He will complete the task.",
-          "urdu": "وہ کام مکمل کرے گا۔",
-          "note": "After will, use V1."
-        },
-        {
-          "wrong": "The panel have reached a decision.",
-          "right": "The panel has reached a decision.",
-          "urdu": "پینل ایک فیصلے پر پہنچ چکا ہے۔",
-          "note": "A singular collective subject takes has in this meaning."
         }
       ],
       "practice": [
@@ -10417,45 +10410,52 @@
       "examples": [
         {
           "text": "I visited Quetta last summer.",
-          "note": "completed action at a specific time"
+          "note": "completed action at a specific time",
+          "urdu": "میں نے پچھلی گرمیوں میں کوئٹہ کا دورہ کیا۔"
         },
         {
           "text": "She finished her project yesterday.",
-          "note": "completed action"
+          "note": "completed action",
+          "urdu": "اس نے کل اپنا پروجیکٹ مکمل کیا۔"
         },
         {
           "text": "They went to the market two hours ago.",
-          "note": "specific past time"
+          "note": "specific past time",
+          "urdu": "وہ دو گھنٹے پہلے بازار گئے۔"
         },
         {
           "text": "He did not call me last night.",
-          "note": "negative past action"
+          "note": "negative past action",
+          "urdu": "اس نے مجھے کل رات فون نہیں کیا۔"
         },
         {
           "text": "Did you watch the match yesterday?",
-          "note": "question about past action"
+          "note": "question about past action",
+          "urdu": "کیا تم نے کل میچ دیکھا؟"
         },
         {
           "text": "We studied together when we were in school.",
-          "note": "past habit"
+          "note": "past habit",
+          "urdu": "جب ہم اسکول میں تھے تو ہم اکٹھے پڑھتے تھے۔"
         },
         {
           "text": "Pakistan became independent in 1947.",
-          "note": "historical fact"
+          "note": "historical fact",
+          "urdu": "پاکستان 1947 میں آزاد ہوا۔"
         },
         {
           "text": "The commission issued its findings last year.",
-          "urdu": "کمیشن نے گزشتہ سال اپنی سفارشات جاری کیں۔",
+          "urdu": "کمیشن نے گزشتہ سال اپنے نتائج جاری کیے۔",
           "note": "This sentence demonstrates Past Simple in an academic context."
         },
         {
           "text": "The candidate answered the question accurately.",
-          "urdu": "امیدوار نے سوال کا درست جواب دیا۔",
+          "urdu": "امیدوار نے سوال کا جواب درست طور پر دیا۔",
           "note": "This sentence demonstrates Past Simple in an academic context."
         },
         {
           "text": "The court dismissed the petition yesterday.",
-          "urdu": "عدالت نے کل درخواست خارج کر دی۔",
+          "urdu": "عدالت نے کل درخواست مسترد کر دی۔",
           "note": "This sentence demonstrates Past Simple in an academic context."
         }
       ],
@@ -10463,22 +10463,26 @@
         {
           "wrong": "I goed to the market yesterday.",
           "right": "I went to the market yesterday.",
-          "note": "irregular verb 'go' becomes 'went', not 'goed'"
+          "note": "irregular verb 'go' becomes 'went', not 'goed'",
+          "urdu": "میں کل مارکیٹ گیا۔"
         },
         {
           "wrong": "She didn't went to school.",
           "right": "She didn't go to school.",
-          "note": "base verb needed after didn't, not past form"
+          "note": "base verb needed after didn't, not past form",
+          "urdu": "وہ اسکول نہیں گئی۔"
         },
         {
           "wrong": "Did you finished your work?",
           "right": "Did you finish your work?",
-          "note": "base verb needed after did, not past form"
+          "note": "base verb needed after did, not past form",
+          "urdu": "کیا آپ نے اپنا کام ختم کیا؟"
         },
         {
           "wrong": "He visit Karachi last year.",
           "right": "He visited Karachi last year.",
-          "note": "past time marker requires past tense form of the verb"
+          "note": "past time marker requires past tense form of the verb",
+          "urdu": "وہ پچھلے سال کراچی گیا۔"
         },
         {
           "wrong": "The candidate has submit the form.",
@@ -10497,18 +10501,6 @@
           "right": "She did not write the answer.",
           "urdu": "اس نے جواب نہیں لکھا۔",
           "note": "After did not, use V1."
-        },
-        {
-          "wrong": "He will completed the task.",
-          "right": "He will complete the task.",
-          "urdu": "وہ کام مکمل کرے گا۔",
-          "note": "After will, use V1."
-        },
-        {
-          "wrong": "The panel have reached a decision.",
-          "right": "The panel has reached a decision.",
-          "urdu": "پینل ایک فیصلے پر پہنچ چکا ہے۔",
-          "note": "A singular collective subject takes has in this meaning."
         }
       ],
       "practice": [
@@ -10624,31 +10616,38 @@
       "examples": [
         {
           "text": "I am writing an email right now.",
-          "note": "action happening now"
+          "note": "action happening now",
+          "urdu": "میں ابھی ایک ای میل لکھ رہا ہوں۔"
         },
         {
           "text": "She is studying for her CSS exam these days.",
-          "note": "temporary situation"
+          "note": "temporary situation",
+          "urdu": "وہ ان دنوں اپنے CSS کے امتحان کی تیاری کر رہی ہے۔"
         },
         {
           "text": "They are watching a cricket match at the moment.",
-          "note": "ongoing action"
+          "note": "ongoing action",
+          "urdu": "وہ اس وقت کرکٹ کا میچ دیکھ رہے ہیں۔"
         },
         {
           "text": "We are meeting the director tomorrow.",
-          "note": "fixed future plan"
+          "note": "fixed future plan",
+          "urdu": "ہم کل ڈائریکٹر سے مل رہے ہیں۔"
         },
         {
           "text": "The children are playing in the garden.",
-          "note": "action in progress"
+          "note": "action in progress",
+          "urdu": "بچے باغ میں کھیل رہے ہیں۔"
         },
         {
           "text": "He is not listening to me.",
-          "note": "negative ongoing action"
+          "note": "negative ongoing action",
+          "urdu": "وہ میری بات نہیں سن رہا ہے۔"
         },
         {
           "text": "Is it raining outside?",
-          "note": "question about current action"
+          "note": "question about current action",
+          "urdu": "کیا باہر بارش ہو رہی ہے؟"
         },
         {
           "text": "The committee is reviewing the evidence for the examination report.",
@@ -10657,12 +10656,12 @@
         },
         {
           "text": "The candidates are preparing for the competitive examination.",
-          "urdu": "امیدوار مسابقتی امتحان کی تیاری کر رہے ہیں۔",
+          "urdu": "امیدوار مقابلہ جاتی امتحان کی تیاری کر رہے ہیں۔",
           "note": "This sentence demonstrates Present Continuous in an academic context."
         },
         {
           "text": "I am writing an answer on constitutional reform.",
-          "urdu": "میں آئینی اصلاحات پر جواب لکھ رہا ہوں۔",
+          "urdu": "میں آئینی اصلاحات پر ایک جواب لکھ رہا ہوں۔",
           "note": "This sentence demonstrates Present Continuous in an academic context."
         }
       ],
@@ -10670,52 +10669,44 @@
         {
           "wrong": "I am knowing the answer.",
           "right": "I know the answer.",
-          "note": "stative verbs like know are not used in continuous form"
+          "note": "stative verbs like know are not used in continuous form",
+          "urdu": "میں جواب جانتا ہوں۔"
         },
         {
           "wrong": "She is study now.",
           "right": "She is studying now.",
-          "note": "missing -ing on the main verb"
+          "note": "missing -ing on the main verb",
+          "urdu": "وہ ابھی پڑھ رہی ہے۔"
         },
         {
           "wrong": "He are playing football.",
           "right": "He is playing football.",
-          "note": "wrong auxiliary verb for he/she/it"
+          "note": "wrong auxiliary verb for he/she/it",
+          "urdu": "وہ فٹبال کھیل رہا ہے."
         },
         {
           "wrong": "They is coming today.",
           "right": "They are coming today.",
-          "note": "wrong auxiliary verb for plural subject"
+          "note": "wrong auxiliary verb for plural subject",
+          "urdu": "وہ آج آ رہے ہیں."
         },
         {
           "wrong": "The candidate has submit the form.",
           "right": "The candidate has submitted the form.",
-          "urdu": "امیدوار نے فارم جمع کر دیا ہے۔",
+          "urdu": "امیدوار نے فارم جمع کرایا ہے.",
           "note": "After has/have, use V3."
         },
         {
           "wrong": "They was preparing the report.",
           "right": "They were preparing the report.",
-          "urdu": "وہ رپورٹ تیار کر رہے تھے۔",
+          "urdu": "وہ رپورٹ تیار کر رہے تھے.",
           "note": "Plural subjects take were in the continuous past."
         },
         {
           "wrong": "She did not wrote the answer.",
           "right": "She did not write the answer.",
-          "urdu": "اس نے جواب نہیں لکھا۔",
+          "urdu": "اس نے جواب نہیں لکھا.",
           "note": "After did not, use V1."
-        },
-        {
-          "wrong": "He will completed the task.",
-          "right": "He will complete the task.",
-          "urdu": "وہ کام مکمل کرے گا۔",
-          "note": "After will, use V1."
-        },
-        {
-          "wrong": "The panel have reached a decision.",
-          "right": "The panel has reached a decision.",
-          "urdu": "پینل ایک فیصلے پر پہنچ چکا ہے۔",
-          "note": "A singular collective subject takes has in this meaning."
         }
       ],
       "practice": [
@@ -10831,35 +10822,42 @@
       "examples": [
         {
           "text": "I have been reading this novel for two weeks.",
-          "note": "duration of ongoing action"
+          "note": "duration of ongoing action",
+          "urdu": "میں اس ناول کو دو ہفتوں سے پڑھ رہا ہوں۔"
         },
         {
           "text": "She has been crying; her eyes are red.",
-          "note": "recent action with visible present result"
+          "note": "recent action with visible present result",
+          "urdu": "وہ رو رہی ہے؛ اس کی آنکھیں سرخ ہیں۔"
         },
         {
           "text": "They have been playing cricket since morning.",
-          "note": "action continuing up to now"
+          "note": "action continuing up to now",
+          "urdu": "وہ صبح سے کرکٹ کھیل رہے ہیں۔"
         },
         {
           "text": "He has not been feeling well lately.",
-          "note": "negative ongoing state"
+          "note": "negative ongoing state",
+          "urdu": "وہ حال ہی میں ٹھیک محسوس نہیں کر رہا ہے۔"
         },
         {
           "text": "How long have you been learning English?",
-          "note": "question about duration"
+          "note": "question about duration",
+          "urdu": "آپ کتنے عرصے سے انگریزی سیکھ رہے ہیں؟"
         },
         {
           "text": "We have been waiting for the bus for twenty minutes.",
-          "note": "emphasis on duration"
+          "note": "emphasis on duration",
+          "urdu": "ہم بیس منٹ سے بس کا انتظار کر رہے ہیں۔"
         },
         {
           "text": "It has been raining since last night.",
-          "note": "action continuing from a starting point"
+          "note": "action continuing from a starting point",
+          "urdu": "گزشتہ رات سے بارش ہو رہی ہے۔"
         },
         {
           "text": "The scholar has been researching public administration for three years.",
-          "urdu": "محقق تین سال سے پبلک ایڈمنسٹریشن پر تحقیق کر رہا ہے۔",
+          "urdu": "وہ محقق تین سال سے عوامی انتظامیہ پر تحقیق کر رہا ہے۔",
           "note": "This sentence demonstrates Present Perfect Continuous in an academic context."
         },
         {
@@ -10869,7 +10867,7 @@
         },
         {
           "text": "She has been studying constitutional law for several months.",
-          "urdu": "وہ کئی ماہ سے آئینی قانون پڑھ رہی ہے۔",
+          "urdu": "وہ کئی ماہ سے آئینی قانون کا مطالعہ کر رہی ہے۔",
           "note": "This sentence demonstrates Present Perfect Continuous in an academic context."
         }
       ],
@@ -10877,22 +10875,26 @@
         {
           "wrong": "I have been study for two hours.",
           "right": "I have been studying for two hours.",
-          "note": "main verb must take -ing form"
+          "note": "main verb must take -ing form",
+          "urdu": "میں دو گھنٹے سے پڑھ رہا ہوں۔"
         },
         {
           "wrong": "She has been work since 9 am.",
           "right": "She has been working since 9 am.",
-          "note": "missing -ing on the verb after has been"
+          "note": "missing -ing on the verb after has been",
+          "urdu": "وہ صبح 9 بجے سے کام کر رہی ہے۔"
         },
         {
           "wrong": "They has been waiting for an hour.",
           "right": "They have been waiting for an hour.",
-          "note": "'they' requires 'have', not 'has'"
+          "note": "'they' requires 'have', not 'has'",
+          "urdu": "وہ ایک گھنٹہ سے انتظار کر رہے ہیں۔"
         },
         {
           "wrong": "He has been knowing her for years.",
           "right": "He has known her for years.",
-          "note": "stative verb 'know' is not used in continuous form"
+          "note": "stative verb 'know' is not used in continuous form",
+          "urdu": "وہ اسے برسوں سے جانتا ہے۔"
         },
         {
           "wrong": "The candidate has submit the form.",
@@ -10903,26 +10905,14 @@
         {
           "wrong": "They was preparing the report.",
           "right": "They were preparing the report.",
-          "urdu": "وہ رپورٹ تیار کر رہے تھے۔",
+          "urdu": "وہ رپورٹ تیار کر رہے تھے.",
           "note": "Plural subjects take were in the continuous past."
         },
         {
           "wrong": "She did not wrote the answer.",
           "right": "She did not write the answer.",
-          "urdu": "اس نے جواب نہیں لکھا۔",
+          "urdu": "اس نے جواب نہیں لکھا.",
           "note": "After did not, use V1."
-        },
-        {
-          "wrong": "He will completed the task.",
-          "right": "He will complete the task.",
-          "urdu": "وہ کام مکمل کرے گا۔",
-          "note": "After will, use V1."
-        },
-        {
-          "wrong": "The panel have reached a decision.",
-          "right": "The panel has reached a decision.",
-          "urdu": "پینل ایک فیصلے پر پہنچ چکا ہے۔",
-          "note": "A singular collective subject takes has in this meaning."
         }
       ],
       "practice": [
@@ -11038,45 +11028,52 @@
       "examples": [
         {
           "text": "I have visited Istanbul twice.",
-          "note": "life experience"
+          "note": "life experience",
+          "urdu": "میں Istanbul دو بار گیا ہوں."
         },
         {
           "text": "She has just finished her assignment.",
-          "note": "recently completed action"
+          "note": "recently completed action",
+          "urdu": "اس نے ابھی اپنا اسائنمنٹ مکمل کر لیا ہے."
         },
         {
           "text": "They have lived in Karachi since 2015.",
-          "note": "action continuing from past to present"
+          "note": "action continuing from past to present",
+          "urdu": "وہ 2015 سے Karachi میں رہ رہے ہیں."
         },
         {
           "text": "He has not called me yet.",
-          "note": "negative, unfinished expectation"
+          "note": "negative, unfinished expectation",
+          "urdu": "اس نے مجھے ابھی تک فون نہیں کیا ہے."
         },
         {
           "text": "Have you ever eaten biryani in Karachi?",
-          "note": "question about experience"
+          "note": "question about experience",
+          "urdu": "کیا آپ نے کبھی Karachi میں بریانی کھائی ہے؟"
         },
         {
           "text": "We have already submitted the report.",
-          "note": "completed before now"
+          "note": "completed before now",
+          "urdu": "ہم نے رپورٹ پہلے ہی جمع کر دی ہے."
         },
         {
           "text": "The price of petrol has increased recently.",
-          "note": "recent change with present effect"
+          "note": "recent change with present effect",
+          "urdu": "پٹرول کی قیمت حال ہی میں بڑھ گئی ہے."
         },
         {
           "text": "The researchers have published a significant report.",
-          "urdu": "محققین نے ایک اہم رپورٹ شائع کی ہے۔",
+          "urdu": "محققین نے ایک اہم رپورٹ شائع کی ہے.",
           "note": "This sentence demonstrates Present Perfect in an academic context."
         },
         {
           "text": "She has completed the assigned analysis.",
-          "urdu": "اس نے مقرر کردہ تجزیہ مکمل کر لیا ہے۔",
+          "urdu": "اس نے سونپا گیا تجزیہ مکمل کر لیا ہے.",
           "note": "This sentence demonstrates Present Perfect in an academic context."
         },
         {
           "text": "They have never ignored the constitutional principle.",
-          "urdu": "انہوں نے کبھی آئینی اصول کو نظر انداز نہیں کیا۔",
+          "urdu": "انہوں نے کبھی آئینی اصول کو نظر انداز نہیں کیا ہے.",
           "note": "This sentence demonstrates Present Perfect in an academic context."
         }
       ],
@@ -11084,27 +11081,31 @@
         {
           "wrong": "I have went to Multan.",
           "right": "I have gone to Multan.",
-          "note": "use past participle (gone), not past simple (went)"
+          "note": "use past participle (gone), not past simple (went)",
+          "urdu": "میں ملتان جا چکا ہوں۔"
         },
         {
           "wrong": "She has finish her work.",
           "right": "She has finished her work.",
-          "note": "past participle needed after has"
+          "note": "past participle needed after has",
+          "urdu": "اس نے اپنا کام ختم کیا ہے۔"
         },
         {
           "wrong": "I have seen him yesterday.",
           "right": "I saw him yesterday.",
-          "note": "specific past time (yesterday) requires Past Simple, not Present Perfect"
+          "note": "specific past time (yesterday) requires Past Simple, not Present Perfect",
+          "urdu": "میں نے اسے کل دیکھا۔"
         },
         {
           "wrong": "He has live here for ten years.",
           "right": "He has lived here for ten years.",
-          "note": "past participle form 'lived' is required after has"
+          "note": "past participle form 'lived' is required after has",
+          "urdu": "وہ یہاں دس سال سے رہ رہا ہے۔"
         },
         {
           "wrong": "The candidate has submit the form.",
           "right": "The candidate has submitted the form.",
-          "urdu": "امیدوار نے فارم جمع کر دیا ہے۔",
+          "urdu": "امیدوار نے فارم جمع کرایا ہے۔",
           "note": "After has/have, use V3."
         },
         {
@@ -11118,18 +11119,6 @@
           "right": "She did not write the answer.",
           "urdu": "اس نے جواب نہیں لکھا۔",
           "note": "After did not, use V1."
-        },
-        {
-          "wrong": "He will completed the task.",
-          "right": "He will complete the task.",
-          "urdu": "وہ کام مکمل کرے گا۔",
-          "note": "After will, use V1."
-        },
-        {
-          "wrong": "The panel have reached a decision.",
-          "right": "The panel has reached a decision.",
-          "urdu": "پینل ایک فیصلے پر پہنچ چکا ہے۔",
-          "note": "A singular collective subject takes has in this meaning."
         }
       ],
       "practice": [
@@ -11244,46 +11233,53 @@
       ],
       "examples": [
         {
-          "text": "The sun rises in the east.",
-          "note": "general truth"
-        },
-        {
-          "text": "I brush my teeth twice a day.",
-          "note": "habit"
-        },
-        {
-          "text": "She works in a bank.",
-          "note": "permanent fact"
-        },
-        {
-          "text": "The train leaves at 6 pm every evening.",
-          "note": "fixed schedule"
-        },
-        {
-          "text": "Water boils at 100 degrees Celsius.",
-          "note": "scientific fact"
-        },
-        {
-          "text": "He does not eat meat.",
-          "note": "negative habit"
-        },
-        {
-          "text": "Do you like tea?",
-          "note": "question about preference"
-        },
-        {
           "text": "He plays cricket.",
           "urdu": "وہ کرکٹ کھیلتا ہے۔",
-          "note": "He is singular, so play takes -s."
+          "note": "“He” is singular, so the verb “play” takes -s."
         },
         {
           "text": "She goes to college every day.",
           "urdu": "وہ ہر روز کالج جاتی ہے۔",
-          "note": "The routine marker every day supports Present Indefinite."
+          "note": "“Every day” shows a routine, so the Present Indefinite Tense is used."
+        },
+        {
+          "text": "The sun rises in the east.",
+          "urdu": "سورج مشرق سے طلوع ہوتا ہے۔",
+          "note": "This is a general truth, so the Present Indefinite Tense is used."
+        },
+        {
+          "text": "I brush my teeth twice a day.",
+          "note": "habit",
+          "urdu": "میں دن میں دو بار اپنے دانت صاف کرتا ہوں."
+        },
+        {
+          "text": "She works in a bank.",
+          "note": "permanent fact",
+          "urdu": "وہ ایک بینک میں کام کرتی ہے."
+        },
+        {
+          "text": "The train leaves at 6 pm every evening.",
+          "note": "fixed schedule",
+          "urdu": "ٹرین ہر شام 6 بجے روانہ ہوتی ہے."
+        },
+        {
+          "text": "Water boils at 100 degrees Celsius.",
+          "note": "scientific fact",
+          "urdu": "پانی 100 ڈگری سیلسیئس پر ابلتا ہے."
+        },
+        {
+          "text": "He does not eat meat.",
+          "note": "negative habit",
+          "urdu": "وہ گوشت نہیں کھاتا."
+        },
+        {
+          "text": "Do you like tea?",
+          "note": "question about preference",
+          "urdu": "کیا آپ چائے پسند کرتے ہیں?"
         },
         {
           "text": "I play cricket.",
-          "urdu": "میں کرکٹ کھیلتا ہوں۔",
+          "urdu": "میں کرکٹ کھیلتا ہوں.",
           "note": "I takes the first form of the verb."
         },
         {
@@ -11296,22 +11292,26 @@
         {
           "wrong": "She go to school daily.",
           "right": "She goes to school daily.",
-          "note": "missing -s for third person singular"
+          "note": "missing -s for third person singular",
+          "urdu": "وہ روزانہ اسکول جاتی ہے."
         },
         {
           "wrong": "He don't like coffee.",
           "right": "He doesn't like coffee.",
-          "note": "use doesn't, not don't, with he/she/it"
+          "note": "use doesn't, not don't, with he/she/it",
+          "urdu": "وہ کافی پسند نہیں کرتا."
         },
         {
           "wrong": "Does she goes there?",
           "right": "Does she go there?",
-          "note": "no -s on the main verb after does"
+          "note": "no -s on the main verb after does",
+          "urdu": "کیا وہ وہاں جاتی ہے؟"
         },
         {
           "wrong": "I am agree with you.",
           "right": "I agree with you.",
-          "note": "agree is a simple present verb, no 'am' needed"
+          "note": "agree is a simple present verb, no 'am' needed",
+          "urdu": "میں آپ سے متفق ہوں۔"
         },
         {
           "wrong": "He does not plays cricket.",
@@ -11328,20 +11328,8 @@
         {
           "wrong": "We The boys go to school.",
           "right": "The boys go to school.",
-          "urdu": "لڑکے اسکول جاتے ہیں۔",
+          "urdu": "لڑکے اسکول جاتے ہیں.",
           "note": "Remove the extra subject; the sentence must have one clear subject."
-        },
-        {
-          "wrong": "Ali do not study regularly.",
-          "right": "Ali does not study regularly.",
-          "urdu": "علی باقاعدگی سے مطالعہ نہیں کرتا۔",
-          "note": "Ali is singular, so use does not."
-        },
-        {
-          "wrong": "The students studies English.",
-          "right": "The students study English.",
-          "urdu": "طلبہ انگریزی پڑھتے ہیں۔",
-          "note": "Plural students takes the base verb study."
         }
       ],
       "practice": [

@@ -311,7 +311,9 @@ List<TextSpan> _boldMarkedSpans(String text) {
     for (int i = 0; i < parts.length; i++)
       TextSpan(
         text: parts[i].replaceAll(' > ', ' → '),
-        style: i.isOdd ? const TextStyle(fontWeight: FontWeight.w800) : null,
+        style: i.isOdd
+            ? const TextStyle(decoration: TextDecoration.underline)
+            : null,
       ),
   ];
 }
