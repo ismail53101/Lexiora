@@ -61,7 +61,7 @@ void main() {
     expect(tenses.where((GrammarTopicSummary t) => !t.isLeaf).length, 3);
     expect(tenses.where((GrammarTopicSummary t) => t.isLeaf).length, 1);
     expect(tenses.singleWhere((GrammarTopicSummary t) => t.isLeaf).title,
-        'Tense Overview');
+        'Tense:');
     final List<GrammarTopicSummary> present =
         await ds.children('tenses/present');
     expect(present.length, 4);
