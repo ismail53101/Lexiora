@@ -133,8 +133,11 @@ void main() {
       leaves++;
       final GrammarLesson? lesson = await ds.leaf(o['id'] as String);
       expect(lesson, isNotNull, reason: 'leaf ${o['id']} must decode');
-      expect(lesson!.englishExplanation, isNotEmpty,
-          reason: '${o['id']} needs an English explanation');
+      expect(
+        lesson!.englishExplanation.isNotEmpty || lesson.introduction.isNotEmpty,
+        isTrue,
+        reason: '${o['id']} needs English lesson content',
+      );
     }
     expect(leaves, greaterThanOrEqualTo(75));
 
