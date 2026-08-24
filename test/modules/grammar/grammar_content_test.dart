@@ -61,7 +61,9 @@ void main() {
     expect(tenses.every((GrammarTopicSummary t) => !t.isLeaf), isTrue);
     final List<GrammarTopicSummary> present =
         await ds.children('tenses/present');
-    expect(present, isEmpty);
+    expect(present.length, 1);
+    expect(present.single.title, 'Present Indefinite Tense — حال سادہ');
+    expect(present.single.isLeaf, isTrue);
 
     // Clauses → Independent (leaf) + Dependent (branch) → 3 clause types.
     final List<GrammarTopicSummary> clauses = await ds.children('clauses');
@@ -134,7 +136,7 @@ void main() {
       expect(lesson!.englishExplanation, isNotEmpty,
           reason: '${o['id']} needs an English explanation');
     }
-    expect(leaves, greaterThanOrEqualTo(74));
+    expect(leaves, greaterThanOrEqualTo(75));
 
     // Flagship leaves across the split categories decode with full sections
     // (Urdu + rules + practice + quiz + summary), proving each type has its

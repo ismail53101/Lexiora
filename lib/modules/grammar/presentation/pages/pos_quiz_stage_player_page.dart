@@ -118,8 +118,12 @@ class _PosQuizStagePlayerPageState extends State<PosQuizStagePlayerPage> {
             ),
             child: Padding(
               padding: const EdgeInsets.all(20),
-              child: Text(_question.question,
-                  style: theme.textTheme.titleLarge?.copyWith(fontWeight: FontWeight.w700)),
+              child: Text.rich(
+                TextSpan(
+                  style: theme.textTheme.titleLarge?.copyWith(fontWeight: FontWeight.w700),
+                  children: _boldMarkedSpans(_question.question),
+                ),
+              ),
             ),
           ),
           const SizedBox(height: 14),
@@ -221,4 +225,25 @@ class _PosQuizStagePlayerPageState extends State<PosQuizStagePlayerPage> {
       ),
     );
   }
+}
+
+
+List<TextSpan> _boldMarkedSpans(String text) {
+  final List<TextSpan> spans = <TextSpan>[];
+  final RegExp marker = RegExp(r'\*\*(.+?)\*\*');
+  int cursor = 0;
+  for (final RegExpMatch match in marker.allMatches(text)) {
+    if (match.start > cursor) {
+      spans.add(TextSpan(text: text.substring(cursor, match.start)));
+    }
+    spans.add(TextSpan(
+      text: match.group(1),
+      style: const TextStyle(fontWeight: FontWeight.w900),
+    ));
+    cursor = match.end;
+  }
+  if (cursor < text.length) {
+    spans.add(TextSpan(text: text.substring(cursor)));
+  }
+  return spans.isEmpty ? <TextSpan>[TextSpan(text: text)] : spans;
 }

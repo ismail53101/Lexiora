@@ -234,7 +234,7 @@ class _LessonView extends StatelessWidget {
         if (lesson.structure.isNotEmpty)
           GrammarSectionCard(
             icon: Icons.architecture,
-            title: 'Structure',
+            title: 'Structure / Formula',
             child: Column(
               children: <Widget>[
                 for (final String s in lesson.structure) GrammarBullet(text: s),

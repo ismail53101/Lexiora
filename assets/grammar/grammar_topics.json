@@ -8862,6 +8862,129 @@
     "isLeaf": false
   },
   {
+    "id": "tenses/present/simple",
+    "parentId": "tenses/present",
+    "title": "Present Indefinite Tense — حال سادہ",
+    "subtitle": "Habits, routines, general truths, permanent situations, and repeated actions.",
+    "order": 1,
+    "isLeaf": true,
+    "content": {
+      "introduction": "Present Indefinite Tense is used to express habits, routines, general truths, permanent situations, and repeated actions.",
+      "urduExplanation": "حال سادہ زمانہ ایسے کاموں، عادات، معمولات، عمومی حقائق اور مستقل حالتوں کو ظاہر کرتا ہے جو عموماً موجودہ وقت میں درست ہوں۔",
+      "englishExplanation": "Present Indefinite Tense is used to express habits, routines, general truths, permanent situations, and repeated actions.",
+      "types": [],
+      "structure": [
+        "Affirmative — مثبت جملہ\nSubject + Verb's 1st form + Object\nFor Singular Subject:\nHe/She/It + Verb's 1st form + s/es + Object\nExamples:\nI play cricket. — میں کرکٹ کھیلتا ہوں۔\nHe plays cricket. — وہ کرکٹ کھیلتا ہے۔\nThey study English. — وہ انگریزی پڑھتے ہیں۔\nShe studies English. — وہ انگریزی پڑھتی ہے۔",
+        "Negative — منفی جملہ\nSubject + do/does + not + Verb's 1st form + Object\nExamples:\nI do not play cricket. — میں کرکٹ نہیں کھیلتا۔\nHe does not play cricket. — وہ کرکٹ نہیں کھیلتا۔",
+        "Interrogative — سوالیہ جملہ\nDo/Does + Subject + Verb's 1st form + Object?\nExamples:\nDo you play cricket? — کیا تم کرکٹ کھیلتے ہو؟\nDoes he play cricket? — کیا وہ کرکٹ کھیلتا ہے؟"
+      ],
+      "rules": [
+        "1: In the Present Indefinite Tense, we add -s or -es to the verb when the subject is He, She, It, or a singular noun.\nExample: She likes cooking.\nExplanation: \"She\" is a singular subject, so the verb like takes -s and becomes likes.",
+        "2: I, You, We, They, and plural nouns take Verb's first form.\nExample: The boys go to school.\nExplanation: \"The boys\" is a plural subject, so the verb remains unchanged.",
+        "3: In negative sentences, use do not (don't) with I, You, We, They, and plural nouns, and does not (doesn't) with He, She, It, and singular nouns, followed by Verb's first form.\nExample: Ali does not study regularly.\nExplanation: \"Ali\" is a singular subject, so we use does not. After does not, the main verb must remain in its base form (V1), so we use study, not studies.\nExample: The students do not study regularly.\nExplanation: \"The students\" is a plural subject, so we use do not. After do not, the main verb remains in its base form (V1), so we use study, not studies.",
+        "4: In interrogative sentences, use do with plural subjects and does with singular subjects, followed by Verb's first form.\nExample: Do the students study regularly?\nExplanation: \"The students\" is a plural subject, so we use do. After do, the main verb remains in its base form (V1), so we use study, not studies.\nExample: Does he play cricket?\nExplanation: \"He\" is a singular subject, so we use does. After does, the main verb remains in its base form (V1), so we use play, not plays."
+      ],
+      "examples": [
+        {
+          "text": "He plays cricket.",
+          "urdu": "وہ کرکٹ کھیلتا ہے۔",
+          "note": "The singular subject He takes the verb with -s."
+        },
+        {
+          "text": "She goes to college every day.",
+          "urdu": "وہ ہر روز کالج جاتی ہے۔",
+          "note": "Every day shows a routine."
+        },
+        {
+          "text": "The sun rises in the east.",
+          "urdu": "سورج مشرق سے طلوع ہوتا ہے۔",
+          "note": "This is a general truth."
+        },
+        {
+          "text": "I brush my teeth twice a day.",
+          "urdu": "میں دن میں دو بار اپنے دانت صاف کرتا ہوں۔",
+          "note": "This expresses a habit."
+        },
+        {
+          "text": "She works in a bank.",
+          "urdu": "وہ ایک بینک میں کام کرتی ہے۔",
+          "note": "This expresses a permanent situation."
+        },
+        {
+          "text": "The train leaves at 6 pm every evening.",
+          "urdu": "ٹرین ہر شام 6 بجے روانہ ہوتی ہے۔",
+          "note": "This expresses a fixed schedule."
+        },
+        {
+          "text": "Water boils at 100 degrees Celsius.",
+          "urdu": "پانی 100 ڈگری سیلسیئس پر ابلتا ہے۔",
+          "note": "This is a scientific fact."
+        },
+        {
+          "text": "He does not eat meat.",
+          "urdu": "وہ گوشت نہیں کھاتا۔",
+          "note": "This expresses a negative habit."
+        },
+        {
+          "text": "Do you like tea?",
+          "urdu": "کیا آپ چائے پسند کرتے ہیں؟",
+          "note": "This asks about a preference."
+        }
+      ],
+      "commonMistakes": [
+        {
+          "wrong": "She go to school daily.",
+          "right": "She goes to school daily.",
+          "urdu": "وہ روزانہ اسکول جاتی ہے۔",
+          "note": "The singular subject She requires goes, not go."
+        },
+        {
+          "wrong": "He don't like coffee.",
+          "right": "He doesn't like coffee.",
+          "urdu": "وہ کافی پسند نہیں کرتا۔",
+          "note": "Use does not or does not with He, not do not."
+        },
+        {
+          "wrong": "Does she goes there?",
+          "right": "Does she go there?",
+          "urdu": "کیا وہ وہاں جاتی ہے؟",
+          "note": "After does, the main verb must remain in V1."
+        },
+        {
+          "wrong": "I am agree with you.",
+          "right": "I agree with you.",
+          "urdu": "میں آپ سے متفق ہوں۔",
+          "note": "Agree is a verb; do not use am before it."
+        },
+        {
+          "wrong": "He does not plays cricket.",
+          "right": "He does not play cricket.",
+          "urdu": "وہ کرکٹ نہیں کھیلتا۔",
+          "note": "Does not already carries the singular marking; the main verb stays in V1."
+        },
+        {
+          "wrong": "Does he plays cricket?",
+          "right": "Does he play cricket?",
+          "urdu": "کیا وہ کرکٹ کھیلتا ہے؟",
+          "note": "After does, use the first form play."
+        },
+        {
+          "wrong": "We The boys go to school.",
+          "right": "The boys go to school.",
+          "urdu": "لڑکے اسکول جاتے ہیں۔",
+          "note": "Remove the extra subject; the sentence must have one clear subject."
+        }
+      ],
+      "examTips": [
+        "Exam Trap: Do not write does not plays or Does he plays. After does, the main verb always remains in V1.",
+        "Reason: Does کے بعد main verb ہمیشہ V1 میں آتا ہے."
+      ],
+      "practice": [],
+      "quiz": [],
+      "summary": ""
+    }
+  },
+  {
     "id": "tenses/past",
     "parentId": "tenses",
     "title": "Past Tense",
