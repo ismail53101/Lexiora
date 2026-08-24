@@ -45,7 +45,7 @@ void main() {
   });
 
   test('the hierarchy has the expected shape', () async {
-    expect(await ds.topicCount(), greaterThanOrEqualTo(35));
+    expect(await ds.topicCount(), greaterThanOrEqualTo(22));
 
     final List<GrammarTopicSummary> categories = await ds.children(null);
     expect(categories.length, greaterThanOrEqualTo(14));
@@ -55,17 +55,13 @@ void main() {
     expect(pos.length, 10);
     expect(pos.every((GrammarTopicSummary t) => t.isLeaf), isTrue);
 
-    // Tenses → overview + 3 time branches; legacy Introduction and Master Table are removed.
+    // Tenses retains only the root and its three time folders; all lessons are removed.
     final List<GrammarTopicSummary> tenses = await ds.children('tenses');
-    expect(tenses.length, 4);
-    expect(tenses.where((GrammarTopicSummary t) => !t.isLeaf).length, 3);
-    expect(tenses.where((GrammarTopicSummary t) => t.isLeaf).length, 1);
-    expect(tenses.singleWhere((GrammarTopicSummary t) => t.isLeaf).title,
-        'Tense:');
+    expect(tenses.length, 3);
+    expect(tenses.every((GrammarTopicSummary t) => !t.isLeaf), isTrue);
     final List<GrammarTopicSummary> present =
         await ds.children('tenses/present');
-    expect(present.length, 4);
-    expect(present.every((GrammarTopicSummary t) => t.isLeaf), isTrue);
+    expect(present, isEmpty);
 
     // Clauses → Independent (leaf) + Dependent (branch) → 3 clause types.
     final List<GrammarTopicSummary> clauses = await ds.children('clauses');
