@@ -61,9 +61,17 @@ void main() {
     expect(tenses.every((GrammarTopicSummary t) => !t.isLeaf), isTrue);
     final List<GrammarTopicSummary> present =
         await ds.children('tenses/present');
-    expect(present.length, 1);
-    expect(present.single.title, 'Present Indefinite Tense — حال سادہ');
-    expect(present.single.isLeaf, isTrue);
+    expect(present.length, 4);
+    expect(present.every((GrammarTopicSummary t) => t.isLeaf), isTrue);
+    expect(
+      present.map((GrammarTopicSummary t) => t.title),
+      containsAll(<String>[
+        'Present Indefinite Tense — حال سادہ',
+        'Present Continuous Tense — حال جاری',
+        'Present Perfect Tense — حال مکمل',
+        'Present Perfect Continuous Tense — حال مکمل جاری',
+      ]),
+    );
 
     // Clauses → Independent (leaf) + Dependent (branch) → 3 clause types.
     final List<GrammarTopicSummary> clauses = await ds.children('clauses');
