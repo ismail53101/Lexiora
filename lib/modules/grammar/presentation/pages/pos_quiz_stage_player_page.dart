@@ -238,7 +238,11 @@ List<TextSpan> _boldMarkedSpans(String text) {
     }
     spans.add(TextSpan(
       text: match.group(1),
-      style: const TextStyle(fontWeight: FontWeight.w900),
+      style: const TextStyle(
+        fontWeight: FontWeight.w900,
+        decoration: TextDecoration.underline,
+        decorationThickness: 2,
+      ),
     ));
     cursor = match.end;
   }
