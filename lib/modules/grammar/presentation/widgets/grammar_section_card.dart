@@ -112,10 +112,7 @@ List<TextSpan> _highlightRuleDetails(String text, Color highlightColor) {
   }
 
   if (cursor < text.length) {
-    spans.add(TextSpan(
-      text: text.substring(cursor),
-      style: spans.isNotEmpty ? TextStyle(color: highlightColor) : null,
-    ));
+    spans.add(TextSpan(text: text.substring(cursor)));
   }
 
   return spans.isEmpty ? <TextSpan>[TextSpan(text: text)] : spans;
