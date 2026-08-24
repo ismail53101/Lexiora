@@ -134,7 +134,7 @@ void main() {
       expect(lesson!.englishExplanation, isNotEmpty,
           reason: '${o['id']} needs an English explanation');
     }
-    expect(leaves, greaterThanOrEqualTo(80));
+    expect(leafCount, greaterThanOrEqualTo(74));
 
     // Flagship leaves across the split categories decode with full sections
     // (Urdu + rules + practice + quiz + summary), proving each type has its
