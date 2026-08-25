@@ -9751,85 +9751,91 @@
     "order": 4,
     "isLeaf": true,
     "content": {
-      "introduction": "Past Perfect Continuous describes an action continuing for a period before another past event.",
-      "urduExplanation": "ماضی مکمل جاری ایسے کام کو ظاہر کرتا ہے جو ماضی کے دوسرے واقعے سے پہلے کچھ عرصے سے جاری تھا۔",
+      "introduction": "1. Definition\n\nPast Perfect Continuous Tense is used to describe an action that had been continuing for a period of time before another action or time in the past.\n\nماضی مکمل جاری زمانہ ایسے کام کو ظاہر کرتا ہے جو ماضی میں کسی دوسرے کام یا وقت سے پہلے ایک خاص مدت سے جاری تھا۔",
+      "urduExplanation": "",
       "englishExplanation": "",
       "types": [],
       "structure": [
-        "***Affirmative — مثبت***\n***Formula:*** Subject + had been + V-ing + Object\nHe had been studying for three hours before the exam. — وہ امتحان سے پہلے تین گھنٹے سے پڑھ رہا تھا۔",
-        "***Negative — منفی***\n***Formula:*** Subject + had been + V-ing + Object\nShe had not finished her work. — وہ اپنا کام مکمل نہیں کر چکی تھی۔",
-        "***Interrogative — سوالیہ***\n***Formula:*** Had been + v-ing + Subject + Object?\nHad she finished her work? — کیا وہ اپنا کام مکمل کر چکی تھی؟",
-        "***Helping verbs:*** had: all subjects\n***Verb form:*** had been + V-ing"
+        "Affirmative — مثبت\n\nSubject + had + been + V-ing + Object\n\nAli had been studying for three hours.\nعلی تین گھنٹے سے پڑھ رہا تھا۔\nNegative — منفی\n\nSubject + had + not + been + V-ing + Object\n\nAli had not been studying for three hours.\nعلی تین گھنٹے سے نہیں پڑھ رہا تھا۔\nInterrogative — سوالیہ\n\nHad + Subject + been + V-ing + Object?\n\nHad Ali been studying for three hours?\nکیا علی تین گھنٹے سے پڑھ رہا تھا؟"
       ],
       "rules": [
-        "1: Use the helping verb and main verb form **had been + V-ing**.\nExample: He had been studying for three hours before the exam. — وہ امتحان سے پہلے تین گھنٹے سے پڑھ رہا تھا۔\nExplanation: The formula identifies this tense.",
-        "2: Keep the subject and helping verb agreement correct.\nExample: She visited her aunt. — اس نے اپنی خالہ سے ملاقات کی۔\nExplanation: The subject matches the helping verb.",
-        "3: Use the tense for its specific time relationship.\nExample: He had been studying for three hours before the exam. — وہ امتحان سے پہلے تین گھنٹے سے پڑھ رہا تھا۔\nExplanation: The sentence expresses the intended time relationship.",
-        "4: Use the negative formula carefully.\nExample: She had not finished her work. — وہ اپنا کام مکمل نہیں کر چکی تھی۔\nExplanation: The negative marker is placed in the correct position.",
-        "5: Form questions by placing the helping verb before the subject.\nExample: Had she finished her work? — کیا وہ اپنا کام مکمل کر چکی تھی؟\nExplanation: The question follows the interrogative pattern."
+        "1: Had with All Subjects\n\nI, You, He, She, It, We, They, singular and plural nouns → had\n\nExplanation: Had is used with all subjects, whether singular or plural.\n2: Always Use “Been + V-ing”\n\nThe structure is:\n\nhad + been + V-ing\n\nHe had been studying.\nThey had been working.\n\nExplanation: Past Perfect Continuous always requires been + V-ing after had.\n3: Since and For\n\nSince → the starting point of an action\nاردو: کسی کام کے شروع ہونے کا وقت\n\nFor → the duration of an action\nاردو: کسی کام کے جاری رہنے کا دورانیہ\n\nHe had been studying since morning.\nوہ صبح سے پڑھ رہا تھا۔\nHe had been studying for three hours.\nوہ تین گھنٹے سے پڑھ رہا تھا۔\n\nExplanation: Since tells us when the action started, while for tells us how long it continued.\n4: Duration Before a Past Event\n\nUse Past Perfect Continuous when an action continued for some time before another past action or time.\n\nShe had been waiting for an hour before the bus arrived.\nبس کے پہنچنے سے پہلے وہ ایک گھنٹے سے انتظار کر رہی تھی۔\n\nExplanation: The waiting continued for one hour before the bus arrived.\nExample: \nAli had been studying for three hours before I arrived.\nمیرے پہنچنے سے پہلے علی تین گھنٹے سے پڑھ رہا تھا۔\nExplanation: The action continued for three hours before another past action occurred.\nThey had been working since morning when the manager arrived.\nجب مینیجر پہنچا تو وہ صبح سے کام کر رہے تھے۔\nExplanation: The work had started earlier and continued until another past event.\nThey had not been working since morning.\nوہ صبح سے کام نہیں کر رہے تھے۔\nExplanation: The action was not continuing from the stated past time.\nHad they been waiting since morning?\nکیا وہ صبح سے انتظار کر رہے تھے؟\nExplanation: Had + subject + been + V-ing forms the interrogative."
       ],
       "examples": [
         {
-          "text": "He had been studying for three hours before the exam.",
-          "urdu": "وہ امتحان سے پہلے تین گھنٹے سے پڑھ رہا تھا۔",
-          "note": "The sentence follows the had been + V-ing pattern."
+          "text": "Structure / Formula",
+          "urdu": "Affirmative — مثبت"
         },
         {
-          "text": "She visited her aunt.",
-          "urdu": "اس نے اپنی خالہ سے ملاقات کی۔",
-          "note": "The subject and tense form agree."
+          "text": "Ali had been studying for three hours.",
+          "urdu": "علی تین گھنٹے سے پڑھ رہا تھا۔"
         },
         {
-          "text": "They completed the work.",
-          "urdu": "انہوں نے کام مکمل کیا۔",
-          "note": "The plural subject uses the correct tense structure."
+          "text": "Ali had not been studying for three hours.",
+          "urdu": "علی تین گھنٹے سے نہیں پڑھ رہا تھا۔"
         },
         {
-          "text": "We had finished dinner.",
-          "urdu": "ہم رات کا کھانا کھا چکے تھے۔",
-          "note": "The sentence shows the tense in context."
+          "text": "Had Ali been studying for three hours?",
+          "urdu": "کیا علی تین گھنٹے سے پڑھ رہا تھا؟"
         },
         {
-          "text": "Had she finished her work?",
-          "urdu": "کیا وہ اپنا کام مکمل کر چکی تھی؟",
-          "note": "The helping verb comes before the subject in a question."
+          "text": "Since → the starting point of an action",
+          "urdu": "اردو: کسی کام کے شروع ہونے کا وقت"
+        },
+        {
+          "text": "For → the duration of an action",
+          "urdu": "اردو: کسی کام کے جاری رہنے کا دورانیہ"
+        },
+        {
+          "text": "He had been studying since morning.",
+          "urdu": "وہ صبح سے پڑھ رہا تھا۔"
+        },
+        {
+          "text": "He had been studying for three hours.",
+          "urdu": "وہ تین گھنٹے سے پڑھ رہا تھا۔"
+        },
+        {
+          "text": "She had been waiting for an hour before the bus arrived.",
+          "urdu": "بس کے پہنچنے سے پہلے وہ ایک گھنٹے سے انتظار کر رہی تھی۔"
+        },
+        {
+          "text": "Ali had been studying for three hours before I arrived.",
+          "urdu": "میرے پہنچنے سے پہلے علی تین گھنٹے سے پڑھ رہا تھا۔"
+        },
+        {
+          "text": "They had been working since morning when the manager arrived.",
+          "urdu": "جب مینیجر پہنچا تو وہ صبح سے کام کر رہے تھے۔"
+        },
+        {
+          "text": "They had not been working since morning.",
+          "urdu": "وہ صبح سے کام نہیں کر رہے تھے۔"
+        },
+        {
+          "text": "Had they been waiting since morning?",
+          "urdu": "کیا وہ صبح سے انتظار کر رہے تھے؟"
+        },
+        {
+          "text": "Shows the starting point of an action.\tShows the duration of an action.",
+          "urdu": "کسی کام کے شروع ہونے کا وقت\tکسی کام کے جاری رہنے کا دورانیہ"
         }
       ],
-      "commonMistakes": [
-        {
-          "wrong": "He had been study.",
-          "right": "He had been studying.",
-          "urdu": "وہ امتحان سے پہلے تین گھنٹے سے پڑھ رہا تھا۔",
-          "note": "Use the correct had been + V-ing form."
-        },
-        {
-          "wrong": "Did she visited her aunt?",
-          "right": "Had she finished her work?",
-          "urdu": "کیا وہ اپنا کام مکمل کر چکی تھی؟",
-          "note": "Use the required verb form after the helping verb."
-        },
-        {
-          "wrong": "He do not work.",
-          "right": "They had finished.",
-          "urdu": "وہ امتحان سے پہلے تین گھنٹے سے پڑھ رہا تھا۔",
-          "note": "Choose the correct helping verb."
-        },
-        {
-          "wrong": "He had been work for two hours.",
-          "right": "He had been studying for three hours before the exam.",
-          "urdu": "وہ امتحان سے پہلے تین گھنٹے سے پڑھ رہا تھا۔",
-          "note": "Keep the main verb in the required form."
-        },
-        {
-          "wrong": "Did they completed the task?",
-          "right": "Had she finished her work?",
-          "urdu": "کیا وہ اپنا کام مکمل کر چکی تھی؟",
-          "note": "Do not use an incorrect past form after the helping verb."
-        }
-      ],
+      "commonMistakes": [],
       "examTips": [
-        "***Exam Shortcut:*** had been + V-ing.",
-        "Check the helping verb, time expression, and main verb form before selecting an answer."
+        "Affirmative → Subject + had + been + V-ing",
+        "Negative → Subject + had not + been + V-ing",
+        "Interrogative → Had + Subject + been + V-ing?",
+        "Key idea: An action continued for some time before another past action or time.",
+        "Since vs For",
+        "Since\tFor",
+        "Shows the starting point of an action.\tShows the duration of an action.",
+        "کسی کام کے شروع ہونے کا وقت\tکسی کام کے جاری رہنے کا دورانیہ",
+        "since morning\tfor three hours",
+        "since Monday\tfor two days",
+        "since 2020\tfor five years",
+        "since 8 o’clock\tfor a long time",
+        "Easy way to remember:",
+        "Since = When did it start?",
+        "For = How long?"
       ],
       "practice": [],
       "quiz": [],
@@ -9844,85 +9850,64 @@
     "order": 3,
     "isLeaf": true,
     "content": {
-      "introduction": "Past Perfect describes an action completed before another past action.",
-      "urduExplanation": "ماضی مکمل ایسے کام کو ظاہر کرتا ہے جو ماضی کے دوسرے کام سے پہلے مکمل ہو چکا تھا۔",
+      "introduction": "1. Definition\n\nPast Perfect Tense is used to describe an action that had been completed before another action or time in the past.\n\n\nماضی مکمل زمانہ ایسے کام کو ظاہر کرتا ہے جو ماضی میں کسی دوسرے کام یا وقت سے پہلے مکمل ہو چکا تھا۔",
+      "urduExplanation": "",
       "englishExplanation": "",
       "types": [],
       "structure": [
-        "***Affirmative — مثبت***\n***Formula:*** Subject + had + V3 + Object\nThe train had left before we arrived. — ہمارے پہنچنے سے پہلے ٹرین جا چکی تھی۔",
-        "***Negative — منفی***\n***Formula:*** Subject + had + V3; had not + V3 + Object\nShe had not finished her work. — وہ اپنا کام مکمل نہیں کر چکی تھی۔",
-        "***Interrogative — سوالیہ***\n***Formula:*** Had + v3 + Subject + Object?\nHad she finished her work? — کیا وہ اپنا کام مکمل کر چکی تھی؟",
-        "***Helping verbs:*** had: all subjects\n***Verb form:*** had + V3"
+        "Affirmative — مثبت\n\nSubject + had + V3 + Object\n\nAli had completed his work.\nعلی اپنا کام مکمل کر چکا تھا۔\nNegative — منفی\n\nSubject + had + not + V3 + Object\n\nAli had not completed his work.\nعلی نے اپنا کام مکمل نہیں کیا تھا۔\nInterrogative — سوالیہ\n\nHad + Subject + V3 + Object?\n\nHad Ali completed his work?\nکیا علی نے اپنا کام مکمل کر لیا تھا؟"
       ],
       "rules": [
-        "1: Use the helping verb and main verb form **had + V3**.\nExample: The train had left before we arrived. — ہمارے پہنچنے سے پہلے ٹرین جا چکی تھی۔\nExplanation: The formula identifies this tense.",
-        "2: Keep the subject and helping verb agreement correct.\nExample: She visited her aunt. — اس نے اپنی خالہ سے ملاقات کی۔\nExplanation: The subject matches the helping verb.",
-        "3: Use the tense for its specific time relationship.\nExample: The train had left before we arrived. — ہمارے پہنچنے سے پہلے ٹرین جا چکی تھی۔\nExplanation: The sentence expresses the intended time relationship.",
-        "4: Use the negative formula carefully.\nExample: She had not finished her work. — وہ اپنا کام مکمل نہیں کر چکی تھی۔\nExplanation: The negative marker is placed in the correct position.",
-        "5: Form questions by placing the helping verb before the subject.\nExample: Had she finished her work? — کیا وہ اپنا کام مکمل کر چکی تھی؟\nExplanation: The question follows the interrogative pattern."
+        "1: Had with All Subjects\n\nI, You, He, She, It, We, They, singular and plural nouns → had\n\nExplanation: Had is used with all subjects, whether singular or plural\n2: Always Use V3\n\nThe structure is:\n\nhad + V3\n\ngo → gone\nwrite → written\neat → eaten\n❌ He had went home.\n✅ He had gone home.\n\nExplanation: Had must be followed by the past participle (V3).\n3:Two Past Actions\n\nWhen two actions happened in the past, Past Perfect is generally used for the action that happened first, while Past Simple is used for the later action.\n\nAli had left before I arrived.\nمیرے پہنچنے سے پہلے علی جا چکا تھا۔\n\nExplanation: Had left happened first; arrived happened later.\nBefore / After\n\nPast Perfect is commonly used with before, after, when, by the time to show the order of past events.\n\nShe had left before I arrived.\nمیرے پہنچنے سے پہلے وہ جا چکی تھی۔\nBy the time we reached, the train had left.\nجب تک ہم پہنچے، ٹرین جا چکی تھی۔\n\nExplanation: These expressions help show which past action happened first.\nexample:\nShe had finished her work before dinner.\nوہ کھانے سے پہلے اپنا کام مکمل کر چکی تھی۔\nExplanation: The work was completed before another past time.\n. They had reached the station when the train arrived.\nجب ٹرین پہنچی تو وہ اسٹیشن پہنچ چکے تھے۔\nExplanation: Their arrival happened before the train arrived.\nThey had not reached the station when the train arrived.\nجب ٹرین پہنچی تو وہ اسٹیشن نہیں پہنچے تھے۔\nExplanation: The action had not been completed before the other past action."
       ],
       "examples": [
         {
-          "text": "The train had left before we arrived.",
-          "urdu": "ہمارے پہنچنے سے پہلے ٹرین جا چکی تھی۔",
-          "note": "The sentence follows the had + V3 pattern."
+          "text": "Structure / Formula:",
+          "urdu": "Affirmative — مثبت"
         },
         {
-          "text": "She visited her aunt.",
-          "urdu": "اس نے اپنی خالہ سے ملاقات کی۔",
-          "note": "The subject and tense form agree."
+          "text": "Ali had completed his work.",
+          "urdu": "علی اپنا کام مکمل کر چکا تھا۔"
         },
         {
-          "text": "They completed the work.",
-          "urdu": "انہوں نے کام مکمل کیا۔",
-          "note": "The plural subject uses the correct tense structure."
+          "text": "Ali had not completed his work.",
+          "urdu": "علی نے اپنا کام مکمل نہیں کیا تھا۔"
         },
         {
-          "text": "We had finished dinner.",
-          "urdu": "ہم رات کا کھانا کھا چکے تھے۔",
-          "note": "The sentence shows the tense in context."
+          "text": "Had Ali completed his work?",
+          "urdu": "کیا علی نے اپنا کام مکمل کر لیا تھا؟"
         },
         {
-          "text": "Had she finished her work?",
-          "urdu": "کیا وہ اپنا کام مکمل کر چکی تھی؟",
-          "note": "The helping verb comes before the subject in a question."
+          "text": "Ali had left before I arrived.",
+          "urdu": "میرے پہنچنے سے پہلے علی جا چکا تھا۔"
+        },
+        {
+          "text": "She had left before I arrived.",
+          "urdu": "میرے پہنچنے سے پہلے وہ جا چکی تھی۔"
+        },
+        {
+          "text": "By the time we reached, the train had left.",
+          "urdu": "جب تک ہم پہنچے، ٹرین جا چکی تھی۔"
+        },
+        {
+          "text": "She had finished her work before dinner.",
+          "urdu": "وہ کھانے سے پہلے اپنا کام مکمل کر چکی تھی۔"
+        },
+        {
+          "text": ". They had reached the station when the train arrived.",
+          "urdu": "جب ٹرین پہنچی تو وہ اسٹیشن پہنچ چکے تھے۔"
+        },
+        {
+          "text": "They had not reached the station when the train arrived.",
+          "urdu": "جب ٹرین پہنچی تو وہ اسٹیشن نہیں پہنچے تھے۔"
         }
       ],
-      "commonMistakes": [
-        {
-          "wrong": "She had finish the work.",
-          "right": "She had finished the work.",
-          "urdu": "ہمارے پہنچنے سے پہلے ٹرین جا چکی تھی۔",
-          "note": "Use the correct had + V3 form."
-        },
-        {
-          "wrong": "Did she visited her aunt?",
-          "right": "Had she finished her work?",
-          "urdu": "کیا وہ اپنا کام مکمل کر چکی تھی؟",
-          "note": "Use the required verb form after the helping verb."
-        },
-        {
-          "wrong": "They has finished.",
-          "right": "They had finished.",
-          "urdu": "ہمارے پہنچنے سے پہلے ٹرین جا چکی تھی۔",
-          "note": "Choose the correct helping verb."
-        },
-        {
-          "wrong": "She did not went.",
-          "right": "The train had left before we arrived.",
-          "urdu": "ہمارے پہنچنے سے پہلے ٹرین جا چکی تھی۔",
-          "note": "Keep the main verb in the required form."
-        },
-        {
-          "wrong": "Did they completed the task?",
-          "right": "Had she finished her work?",
-          "urdu": "کیا وہ اپنا کام مکمل کر چکی تھی؟",
-          "note": "Do not use an incorrect past form after the helping verb."
-        }
-      ],
+      "commonMistakes": [],
       "examTips": [
-        "***Exam Shortcut:*** had + V3.",
-        "Check the helping verb, time expression, and main verb form before selecting an answer."
+        "Affirmative → Subject + had + V3",
+        "Negative → Subject + had not + V3",
+        "Interrogative → Had + Subject + V3?",
+        "Key idea: Earlier past action → Past Perfect; later past action → Past Simple."
       ],
       "practice": [],
       "quiz": [],
@@ -9937,85 +9922,80 @@
     "order": 2,
     "isLeaf": true,
     "content": {
-      "introduction": "Past Continuous describes an action that was in progress at a particular past time.",
-      "urduExplanation": "ماضی جاری ایسے کام کو ظاہر کرتا ہے جو ماضی کے کسی وقت جاری تھا۔",
+      "introduction": "1. Definition\nPast Continuous Tense is used to describe an action that was in progress at a particular time in the past.\n\nماضی جاری زمانہ ایسے کام کو ظاہر کرتا ہے جو ماضی میں کسی خاص وقت جاری تھا۔",
+      "urduExplanation": "",
       "englishExplanation": "",
       "types": [],
       "structure": [
-        "***Affirmative — مثبت***\n***Formula:*** Subject + was/were + V-ing + Object\nI was reading at eight o’clock. — میں آٹھ بجے پڑھ رہا تھا۔",
-        "***Negative — منفی***\n***Formula:*** Subject + was/were + V-ing; was/were + not + V-ing + Object\nHe was not reading a book. — وہ کتاب نہیں پڑھ رہا تھا۔",
-        "***Interrogative — سوالیہ***\n***Formula:*** Was/were + v-ing + Subject + Object?\nWas he reading a book? — کیا وہ کتاب پڑھ رہا تھا؟",
-        "***Helping verbs:*** was: I/He/She/It; were: You/We/They\n***Verb form:*** was/were + V-ing"
+        "Affirmative — مثبت\n\nSubject + was/were + V-ing + Object\n\nWas → I, He, She, It, Singular noun\nWere → You, We, They, Plural noun\n\nHe was reading a book.\nوہ ایک کتاب پڑھ رہا تھا۔\nThey were playing cricket.\nوہ کرکٹ کھیل رہے تھے۔\n\nNegative — منفی\n\nSubject + was/were + not + V-ing + Object\n\nHe was not reading a book.\nوہ ایک کتاب نہیں پڑھ رہا تھا۔\nThey were not playing cricket.\nوہ کرکٹ نہیں کھیل رہے تھے۔\nInterrogative — سوالیہ\n\nWas/Were + Subject + V-ing + Object?\n\nWas he reading a book?\nکیا وہ ایک کتاب پڑھ رہا تھا؟\nWere they playing cricket?\nکیا وہ کرکٹ کھیل رہے تھے؟"
       ],
       "rules": [
-        "1: Use the helping verb and main verb form **was/were + V-ing**.\nExample: I was reading at eight o’clock. — میں آٹھ بجے پڑھ رہا تھا۔\nExplanation: The formula identifies this tense.",
-        "2: Keep the subject and helping verb agreement correct.\nExample: She visited her aunt. — اس نے اپنی خالہ سے ملاقات کی۔\nExplanation: The subject matches the helping verb.",
-        "3: Use the tense for its specific time relationship.\nExample: I was reading at eight o’clock. — میں آٹھ بجے پڑھ رہا تھا۔\nExplanation: The sentence expresses the intended time relationship.",
-        "4: Use the negative formula carefully.\nExample: He was not reading a book. — وہ کتاب نہیں پڑھ رہا تھا۔\nExplanation: The negative marker is placed in the correct position.",
-        "5: Form questions by placing the helping verb before the subject.\nExample: Was he reading a book? — کیا وہ کتاب پڑھ رہا تھا؟\nExplanation: The question follows the interrogative pattern."
+        "1: Was / Were\n\nI, He, She, It, and singular nouns → was\nYou, We, They, and plural nouns → were\nExplanation: Use was with singular subjects and were with plural subjects; you always takes were.\n\n2: Use V-ing\n\nThe main verb always takes the -ing form.\n\nHe was reading.\nThey were playing.\n\nExplanation: Past Continuous is formed with was/were + V-ing.\n3: Interrupted Action\n\nPast Continuous is often used for an action that was in progress when another past action occurred.\n\nI was sleeping when the phone rang.\nجب فون کی گھنٹی بجی تو میں سو رہا تھا۔\n\nExplanation: Was sleeping was the ongoing action, while rang was the shorter action that interrupted it.\n4: Two Actions in Progress\n\nWhen two actions were happening at the same time in the past, Past Continuous can be used for both.\n\nWhile I was studying, my brother was watching TV.\nجب میں پڑھ رہا تھا، میرا بھائی ٹی وی دیکھ رہا تھا۔\n\nExplanation: Both actions were in progress at the same time.\n\nExample: \nThey were playing cricket when it started to rain.\nجب بارش شروع ہوئی تو وہ کرکٹ کھیل رہے تھے۔\nExplanation: The ongoing action were playing was interrupted by another past action.\nAli was not studying at 8 p.m.\nعلی رات آٹھ بجے نہیں پڑھ رہا تھا۔\nExplanation: “Ali” is singular, so we use was not + V-ing.\nWere they playing cricket?\nکیا وہ کرکٹ کھیل رہے تھے؟\nExplanation: “They” is plural, so we use were before the subject."
       ],
       "examples": [
         {
-          "text": "I was reading at eight o’clock.",
-          "urdu": "میں آٹھ بجے پڑھ رہا تھا۔",
-          "note": "The sentence follows the was/were + V-ing pattern."
+          "text": "Structure / Formula:",
+          "urdu": "Affirmative — مثبت"
         },
         {
-          "text": "She visited her aunt.",
-          "urdu": "اس نے اپنی خالہ سے ملاقات کی۔",
-          "note": "The subject and tense form agree."
+          "text": "He was reading a book.",
+          "urdu": "وہ ایک کتاب پڑھ رہا تھا۔"
         },
         {
-          "text": "They completed the work.",
-          "urdu": "انہوں نے کام مکمل کیا۔",
-          "note": "The plural subject uses the correct tense structure."
+          "text": "They were playing cricket.",
+          "urdu": "وہ کرکٹ کھیل رہے تھے۔"
         },
         {
-          "text": "We were waiting outside.",
-          "urdu": "ہم باہر انتظار کر رہے تھے۔",
-          "note": "The sentence shows the tense in context."
+          "text": "He was not reading a book.",
+          "urdu": "وہ ایک کتاب نہیں پڑھ رہا تھا۔"
+        },
+        {
+          "text": "They were not playing cricket.",
+          "urdu": "وہ کرکٹ نہیں کھیل رہے تھے۔"
         },
         {
           "text": "Was he reading a book?",
-          "urdu": "کیا وہ کتاب پڑھ رہا تھا؟",
-          "note": "The helping verb comes before the subject in a question."
+          "urdu": "کیا وہ ایک کتاب پڑھ رہا تھا؟"
+        },
+        {
+          "text": "Were they playing cricket?",
+          "urdu": "کیا وہ کرکٹ کھیل رہے تھے؟"
+        },
+        {
+          "text": "I was sleeping when the phone rang.",
+          "urdu": "جب فون کی گھنٹی بجی تو میں سو رہا تھا۔"
+        },
+        {
+          "text": "While I was studying, my brother was watching TV.",
+          "urdu": "جب میں پڑھ رہا تھا، میرا بھائی ٹی وی دیکھ رہا تھا۔"
+        },
+        {
+          "text": "They were playing cricket when it started to rain.",
+          "urdu": "جب بارش شروع ہوئی تو وہ کرکٹ کھیل رہے تھے۔"
+        },
+        {
+          "text": "Ali was not studying at 8 p.m.",
+          "urdu": "علی رات آٹھ بجے نہیں پڑھ رہا تھا۔"
         }
       ],
       "commonMistakes": [
         {
-          "wrong": "He was play cricket.",
-          "right": "He was playing cricket.",
-          "urdu": "میں آٹھ بجے پڑھ رہا تھا۔",
-          "note": "Use the correct was/were + V-ing form."
+          "wrong": "They was playing cricket.",
+          "right": "They were playing cricket.",
+          "urdu": "وہ کرکٹ کھیل رہے تھے۔",
+          "note": null
         },
         {
-          "wrong": "Did she visited her aunt?",
-          "right": "Was he reading a book?",
-          "urdu": "کیا وہ کتاب پڑھ رہا تھا؟",
-          "note": "Use the required verb form after the helping verb."
-        },
-        {
-          "wrong": "They was working.",
-          "right": "They were working.",
-          "urdu": "میں آٹھ بجے پڑھ رہا تھا۔",
-          "note": "Choose the correct helping verb."
-        },
-        {
-          "wrong": "She did not went.",
-          "right": "I was reading at eight o’clock.",
-          "urdu": "میں آٹھ بجے پڑھ رہا تھا۔",
-          "note": "Keep the main verb in the required form."
-        },
-        {
-          "wrong": "Did they completed the task?",
-          "right": "Was he reading a book?",
-          "urdu": "کیا وہ کتاب پڑھ رہا تھا؟",
-          "note": "Do not use an incorrect past form after the helping verb."
+          "wrong": "She were studying.",
+          "right": "She was studying.",
+          "urdu": "وہ پڑھ رہی تھی۔",
+          "note": null
         }
       ],
       "examTips": [
-        "***Exam Shortcut:*** was/were + V-ing.",
-        "Check the helping verb, time expression, and main verb form before selecting an answer."
+        "Affirmative → Subject + was/were + V-ing",
+        "Negative → Subject + was/were + not + V-ing",
+        "Interrogative → Was/Were + Subject + V-ing?"
       ],
       "practice": [],
       "quiz": [],
@@ -10030,85 +10010,58 @@
     "order": 1,
     "isLeaf": true,
     "content": {
-      "introduction": "Past Indefinite describes completed actions in the past.",
-      "urduExplanation": "ماضی سادہ ایسے مکمل کاموں کو ظاہر کرتا ہے جو ماضی میں ہوئے۔",
+      "introduction": "1. Definition\n\nPast Indefinite Tense is used to describe an action that was completed at a definite or known time in the past.\n\nماضی سادہ زمانہ ایسے کام کو ظاہر کرتا ہے جو ماضی میں کسی وقت مکمل ہو چکا ہو۔",
+      "urduExplanation": "",
       "englishExplanation": "",
       "types": [],
       "structure": [
-        "***Affirmative — مثبت***\n***Formula:*** Subject + V2 + Object\nI played cricket yesterday. — میں نے کل کرکٹ کھیلی۔",
-        "***Negative — منفی***\n***Formula:*** Subject + V2; did + V1 + Object\nShe did not visit her aunt. — اس نے اپنی خالہ سے ملاقات نہیں کی۔",
-        "***Interrogative — سوالیہ***\n***Formula:*** V2 + Subject + Object?\nDid she visit her aunt? — کیا اس نے اپنی خالہ سے ملاقات کی؟",
-        "***Helping verbs:*** had: all subjects\n***Verb form:*** did + V1"
+        "Affirmative مثبت\n\nSubject + V2 + Object\n\nHe played cricket.\nShe visited Lahore.\n\nNegative منفی\n\nSubject + did not + V1 + Object\n\nHe did not play cricket.\nShe did not visit Lahore.\n\nInterrogative سوالیہ\n\nDid + Subject + V1 + Object?\n\nDid he play cricket?\nDid she visit Lahore?"
       ],
       "rules": [
-        "1: Use the helping verb and main verb form **did + V1**.\nExample: I played cricket yesterday. — میں نے کل کرکٹ کھیلی۔\nExplanation: The formula identifies this tense.",
-        "2: Keep the subject and helping verb agreement correct.\nExample: She visited her aunt. — اس نے اپنی خالہ سے ملاقات کی۔\nExplanation: The subject matches the helping verb.",
-        "3: Use the tense for its specific time relationship.\nExample: I played cricket yesterday. — میں نے کل کرکٹ کھیلی۔\nExplanation: The sentence expresses the intended time relationship.",
-        "4: Use the negative formula carefully.\nExample: She did not visit her aunt. — اس نے اپنی خالہ سے ملاقات نہیں کی۔\nExplanation: The negative marker is placed in the correct position.",
-        "5: Form questions by placing the helping verb before the subject.\nExample: Did she visit her aunt? — کیا اس نے اپنی خالہ سے ملاقات کی؟\nExplanation: The question follows the interrogative pattern."
+        "1: Use V2 in Affirmative Sentences\n\nIn affirmative sentences, the main verb changes to its past form (V2).\n\ngo → went\nplay → played\nwrite → wrote\n2: Did + V1\n\nAfter did or did not, always use V1.\n\n❌ He did not went to school.\n✅ He did not go to school.\n\nExplanation: Did already shows the past tense, so the main verb remains in V1.\n3: Same “did” for All Subjects\n\nI, You, He, She, It, We, They, singular and plural nouns → did\n\n\n\nDid he go? \n\nDid they go? \n\n He did not go. \n\n They did not go. \nExplanation: Did is used with all subjects in negative and interrogative sentences, whether singular or plural.\n\n4: Common Past-Time Expressions\n\nPast Indefinite is commonly used with:\n\nyesterday, last night, last week, last year, ago, in 2020, once, when I was young\n\nHe visited Lahore last year.\nShe left two hours ago.\nExplanation: These expressions indicate a completed action at a specific or finished time in the past, so we use the Past Indefinite Tense.\nExample: Ali visited Lahore yesterday.\nعلی نے کل لاہور کا دورہ کیا۔\nExplanation: The action was completed in the past, and “yesterday” shows a past time.\nShe passed the examination last year.\nاس نے گزشتہ سال امتحان پاس کیا۔\nExplanation: The action was completed at a specific time in the past.\nAli did not visit Lahore yesterday.\nعلی نے کل لاہور کا دورہ نہیں کیا۔\nExplanation: “Ali” is singular, but after did not, we use the base verb visit (V1).\nDid they play cricket yesterday?\nکیا انہوں نے کل کرکٹ کھیلی؟\nExplanation: After did, the main verb remains in its base form play (V1)."
       ],
       "examples": [
         {
-          "text": "I played cricket yesterday.",
-          "urdu": "میں نے کل کرکٹ کھیلی۔",
-          "note": "The sentence follows the did + V1 pattern."
+          "text": "Example: Ali visited Lahore yesterday.",
+          "urdu": "علی نے کل لاہور کا دورہ کیا۔"
         },
         {
-          "text": "She visited her aunt.",
-          "urdu": "اس نے اپنی خالہ سے ملاقات کی۔",
-          "note": "The subject and tense form agree."
+          "text": "She passed the examination last year.",
+          "urdu": "اس نے گزشتہ سال امتحان پاس کیا۔"
         },
         {
-          "text": "They completed the work.",
-          "urdu": "انہوں نے کام مکمل کیا۔",
-          "note": "The plural subject uses the correct tense structure."
+          "text": "Ali did not visit Lahore yesterday.",
+          "urdu": "علی نے کل لاہور کا دورہ نہیں کیا۔"
         },
         {
-          "text": "We had finished dinner.",
-          "urdu": "ہم رات کا کھانا کھا چکے تھے۔",
-          "note": "The sentence shows the tense in context."
-        },
-        {
-          "text": "Did she visit her aunt?",
-          "urdu": "کیا اس نے اپنی خالہ سے ملاقات کی؟",
-          "note": "The helping verb comes before the subject in a question."
+          "text": "Did they play cricket yesterday?",
+          "urdu": "کیا انہوں نے کل کرکٹ کھیلی؟"
         }
       ],
       "commonMistakes": [
         {
-          "wrong": "I did played cricket.",
-          "right": "I played cricket yesterday.",
-          "urdu": "میں نے کل کرکٹ کھیلی۔",
-          "note": "Use the correct did + V1 form."
+          "wrong": "He did not went to school.",
+          "right": "He did not go to school.",
+          "urdu": "وہ اسکول نہیں گیا۔",
+          "note": null
         },
         {
-          "wrong": "Did she visited her aunt?",
-          "right": "Did she visit her aunt?",
-          "urdu": "کیا اس نے اپنی خالہ سے ملاقات کی؟",
-          "note": "Use the required verb form after the helping verb."
+          "wrong": "Did she went home?",
+          "right": "Did she go home?",
+          "urdu": "کیا وہ گھر گئی؟",
+          "note": null
         },
         {
-          "wrong": "He do not work.",
-          "right": "They had finished.",
-          "urdu": "میں نے کل کرکٹ کھیلی۔",
-          "note": "Choose the correct helping verb."
-        },
-        {
-          "wrong": "She did not went.",
-          "right": "I played cricket yesterday.",
-          "urdu": "میں نے کل کرکٹ کھیلی۔",
-          "note": "Keep the main verb in the required form."
-        },
-        {
-          "wrong": "Did they completed the task?",
-          "right": "Did she visit her aunt?",
-          "urdu": "کیا اس نے اپنی خالہ سے ملاقات کی؟",
-          "note": "Do not use an incorrect past form after the helping verb."
+          "wrong": "He go to Lahore yesterday.",
+          "right": "He went to Lahore yesterday.",
+          "urdu": "وہ کل لاہور گیا۔",
+          "note": null
         }
       ],
       "examTips": [
-        "***Exam Shortcut:*** did + V1.",
-        "Check the helping verb, time expression, and main verb form before selecting an answer."
+        "Affirmative → Subject + V2",
+        "Negative → Subject + did not + V1",
+        "Interrogative → Did + Subject + V1? ["
       ],
       "practice": [],
       "quiz": [],
@@ -10131,85 +10084,95 @@
     "order": 4,
     "isLeaf": true,
     "content": {
-      "introduction": "Future Perfect Continuous describes an action continuing up to a specified future time.",
-      "urduExplanation": "مستقبل مکمل جاری ایسے کام کو ظاہر کرتا ہے جو مستقبل کے کسی وقت تک جاری رہتا ہوگا۔",
+      "introduction": "1. Definition\n\nFuture Perfect Continuous Tense is used to describe an action that will have been continuing for a period of time up to a specific time in the future.\n\nمستقبل مکمل جاری زمانہ ایسے کام کو ظاہر کرتا ہے جو مستقبل میں کسی خاص وقت تک ایک مخصوص مدت سے جاری ہوگا۔",
+      "urduExplanation": "",
       "englishExplanation": "",
       "types": [],
       "structure": [
-        "***Affirmative — مثبت***\n***Formula:*** Subject + will have been + V-ing + Object\nBy June, I will have been working here for two years. — جون تک مجھے یہاں کام کرتے ہوئے دو سال ہو چکے ہوں گے۔",
-        "***Negative — منفی***\n***Formula:*** Subject + will have been + V-ing + Object\nShe will not have finished her work. — وہ اپنا کام مکمل نہیں کر چکی ہوگی۔",
-        "***Interrogative — سوالیہ***\n***Formula:*** Will have been + v-ing + Subject + Object?\nWill she have finished her work? — کیا وہ اپنا کام مکمل کر چکی ہوگی؟",
-        "***Helping verbs:*** will have: all subjects\n***Verb form:*** will have been + V-ing"
+        "Affirmative — مثبت\n\nSubject + will have been + V-ing + Object\n\nAli will have been studying for three hours.\nعلی تین گھنٹے سے پڑھ رہا ہوگا۔\nNegative — منفی\n\nSubject + will not have been + V-ing + Object\n\nAli will not have been studying for three hours.\nعلی تین گھنٹے سے نہیں پڑھ رہا ہوگا۔\nInterrogative — سوالیہ\n\nWill + Subject + have been + V-ing + Object?\n\nWill Ali have been studying for three hours?\nکیا علی تین گھنٹے سے پڑھ رہا ہوگا؟"
       ],
       "rules": [
-        "1: Use the helping verb and main verb form **will have been + V-ing**.\nExample: By June, I will have been working here for two years. — جون تک مجھے یہاں کام کرتے ہوئے دو سال ہو چکے ہوں گے۔\nExplanation: The formula identifies this tense.",
-        "2: Keep the subject and helping verb agreement correct.\nExample: She will join the class. — وہ کلاس میں شامل ہوگی۔\nExplanation: The subject matches the helping verb.",
-        "3: Use the tense for its specific time relationship.\nExample: By June, I will have been working here for two years. — جون تک مجھے یہاں کام کرتے ہوئے دو سال ہو چکے ہوں گے۔\nExplanation: The sentence expresses the intended time relationship.",
-        "4: Use the negative formula carefully.\nExample: She will not have finished her work. — وہ اپنا کام مکمل نہیں کر چکی ہوگی۔\nExplanation: The negative marker is placed in the correct position.",
-        "5: Form questions by placing the helping verb before the subject.\nExample: Will she have finished her work? — کیا وہ اپنا کام مکمل کر چکی ہوگی؟\nExplanation: The question follows the interrogative pattern."
+        "1: Will Have Been + V-ing\n\nAll subjects → will have been + V-ing\n\nExplanation: Future Perfect Continuous uses will have been + V-ing with all subjects.\n2: Always Use V-ing\nstudy → studying\nwork → working\nplay → playing\n\n❌ He will have been study.\n✅ He will have been studying.\n\nExplanation: The main verb must be in the -ing form.\n3: Since and For\n\nSince → the starting point of an action\nاردو: کسی کام کے شروع ہونے کا وقت\n\nFor → the duration of an action\nاردو: کسی کام کے جاری رہنے کا دورانیہ\n\nHe will have been studying since morning.\nوہ صبح سے پڑھ رہا ہوگا۔\nHe will have been studying for three hours.\nوہ تین گھنٹے سے پڑھ رہا ہوگا۔\n\nExplanation: Since tells when the action started, while for tells how long it has continued.\n4: Duration Up to a Future Time\n\nUse Future Perfect Continuous when an action will continue for a period of time up to a specific future time or event.\n\nShe will have been waiting for two hours by 6 p.m.\nوہ شام چھ بجے تک دو گھنٹے سے انتظار کر رہی ہوگی۔\n\nExplanation: The sentence focuses on the duration of the ongoing action up to a future point.\nCommon Time Expressions\n\nfor two hours, for five years, since morning, since Monday, by tomorrow, by next year, by the time\n\nBy next year, he will have been teaching for ten years.\nاگلے سال تک اسے پڑھاتے ہوئے دس سال ہو چکے ہوں گے۔\n\nExplanation: “For ten years” shows the duration, while “by next year” gives the future point.\nAli will have been studying for three hours by 8 p.m.\nعلی رات آٹھ بجے تک تین گھنٹے سے پڑھ رہا ہوگا۔\nExplanation: The action will continue for three hours up to a specific future time.\nShe will have been waiting for an hour by the time the bus arrives.\nجب بس پہنچے گی تو اسے انتظار کرتے ہوئے ایک گھنٹہ ہو چکا ہوگا۔\nExplanation: The waiting will continue for one hour before the future event.\nThey will not have been working here for five years by next month.\nاگلے ماہ تک انہیں یہاں کام کرتے ہوئے پانچ سال نہیں ہوئے ہوں گے۔\nExplanation: The required duration will not have been completed by the future point.\nWill Ali have been studying for three hours by 8 p.m.?\nکیا علی رات آٹھ بجے تک تین گھنٹے سے پڑھ رہا ہوگا؟\nExplanation: Will comes before the subject, followed by have been + V-ing."
       ],
       "examples": [
         {
-          "text": "By June, I will have been working here for two years.",
-          "urdu": "جون تک مجھے یہاں کام کرتے ہوئے دو سال ہو چکے ہوں گے۔",
-          "note": "The sentence follows the will have been + V-ing pattern."
+          "text": "Structure / Formula",
+          "urdu": "Affirmative — مثبت"
         },
         {
-          "text": "She will join the class.",
-          "urdu": "وہ کلاس میں شامل ہوگی۔",
-          "note": "The subject and tense form agree."
+          "text": "Ali will have been studying for three hours.",
+          "urdu": "علی تین گھنٹے سے پڑھ رہا ہوگا۔"
         },
         {
-          "text": "They will complete the work.",
-          "urdu": "وہ کام مکمل کریں گے۔",
-          "note": "The plural subject uses the correct tense structure."
+          "text": "Ali will not have been studying for three hours.",
+          "urdu": "علی تین گھنٹے سے نہیں پڑھ رہا ہوگا۔"
         },
         {
-          "text": "We will finish dinner.",
-          "urdu": "ہم رات کا کھانا مکمل کریں گے۔",
-          "note": "The sentence shows the tense in context."
+          "text": "Will Ali have been studying for three hours?",
+          "urdu": "کیا علی تین گھنٹے سے پڑھ رہا ہوگا؟"
         },
         {
-          "text": "Will she have finished her work?",
-          "urdu": "کیا وہ اپنا کام مکمل کر چکی ہوگی؟",
-          "note": "The helping verb comes before the subject in a question."
+          "text": "Since → the starting point of an action",
+          "urdu": "اردو: کسی کام کے شروع ہونے کا وقت"
+        },
+        {
+          "text": "For → the duration of an action",
+          "urdu": "اردو: کسی کام کے جاری رہنے کا دورانیہ"
+        },
+        {
+          "text": "He will have been studying since morning.",
+          "urdu": "وہ صبح سے پڑھ رہا ہوگا۔"
+        },
+        {
+          "text": "He will have been studying for three hours.",
+          "urdu": "وہ تین گھنٹے سے پڑھ رہا ہوگا۔"
+        },
+        {
+          "text": "She will have been waiting for two hours by 6 p.m.",
+          "urdu": "وہ شام چھ بجے تک دو گھنٹے سے انتظار کر رہی ہوگی۔"
+        },
+        {
+          "text": "By next year, he will have been teaching for ten years.",
+          "urdu": "اگلے سال تک اسے پڑھاتے ہوئے دس سال ہو چکے ہوں گے۔"
+        },
+        {
+          "text": "Ali will have been studying for three hours by 8 p.m.",
+          "urdu": "علی رات آٹھ بجے تک تین گھنٹے سے پڑھ رہا ہوگا۔"
+        },
+        {
+          "text": "She will have been waiting for an hour by the time the bus arrives.",
+          "urdu": "جب بس پہنچے گی تو اسے انتظار کرتے ہوئے ایک گھنٹہ ہو چکا ہوگا۔"
+        },
+        {
+          "text": "They will not have been working here for five years by next month.",
+          "urdu": "اگلے ماہ تک انہیں یہاں کام کرتے ہوئے پانچ سال نہیں ہوئے ہوں گے۔"
+        },
+        {
+          "text": "Will Ali have been studying for three hours by 8 p.m.?",
+          "urdu": "کیا علی رات آٹھ بجے تک تین گھنٹے سے پڑھ رہا ہوگا؟"
+        },
+        {
+          "text": "Shows the starting point of an action.\tShows the duration of an action.",
+          "urdu": "کسی کام کے شروع ہونے کا وقت\tکسی کام کے جاری رہنے کا دورانیہ"
         }
       ],
-      "commonMistakes": [
-        {
-          "wrong": "He will have been work.",
-          "right": "He will have been working.",
-          "urdu": "جون تک مجھے یہاں کام کرتے ہوئے دو سال ہو چکے ہوں گے۔",
-          "note": "Use the correct will have been + V-ing form."
-        },
-        {
-          "wrong": "Will she joined the class?",
-          "right": "Will she have finished her work?",
-          "urdu": "کیا وہ اپنا کام مکمل کر چکی ہوگی؟",
-          "note": "Use the required verb form after the helping verb."
-        },
-        {
-          "wrong": "He do not work.",
-          "right": "He will not work.",
-          "urdu": "جون تک مجھے یہاں کام کرتے ہوئے دو سال ہو چکے ہوں گے۔",
-          "note": "Choose the correct helping verb."
-        },
-        {
-          "wrong": "She did not went.",
-          "right": "By June, I will have been working here for two years.",
-          "urdu": "جون تک مجھے یہاں کام کرتے ہوئے دو سال ہو چکے ہوں گے۔",
-          "note": "Keep the main verb in the required form."
-        },
-        {
-          "wrong": "Will they completed the task?",
-          "right": "Will she have finished her work?",
-          "urdu": "کیا وہ اپنا کام مکمل کر چکی ہوگی؟",
-          "note": "Do not use an incorrect past form after the helping verb."
-        }
-      ],
+      "commonMistakes": [],
       "examTips": [
-        "***Exam Shortcut:*** will have been + V-ing.",
-        "Check the helping verb, time expression, and main verb form before selecting an answer."
+        "Affirmative → Subject + will have been + V-ing",
+        "Negative → Subject + will not have been + V-ing",
+        "Interrogative → Will + Subject + have been + V-ing?",
+        "Key idea: An action that will continue for a period of time up to a specific point in the future.",
+        "Since vs For",
+        "Since\tFor",
+        "Shows the starting point of an action.\tShows the duration of an action.",
+        "کسی کام کے شروع ہونے کا وقت\tکسی کام کے جاری رہنے کا دورانیہ",
+        "since morning\tfor three hours",
+        "since Monday\tfor two days",
+        "since 2020\tfor five years",
+        "since 8 o’clock\tfor a long time",
+        "Easy Rule:",
+        "Since = When did it start?",
+        "For = How long?"
       ],
       "practice": [],
       "quiz": [],
@@ -10224,86 +10187,64 @@
     "order": 3,
     "isLeaf": true,
     "content": {
-      "introduction": "Future Perfect describes an action that will be completed before a future time.",
-      "urduExplanation": "مستقبل مکمل ایسے کام کو ظاہر کرتا ہے جو مستقبل کے کسی وقت سے پہلے مکمل ہو چکا ہوگا۔",
+      "introduction": "1. Definition\n\nFuture Perfect Tense is used to describe an action that will have been completed before a specific time or another action in the future.\nمستقبل مکمل زمانہ ایسے کام کو ظاہر کرتا ہے جو مستقبل میں کسی خاص وقت یا دوسرے کام سے پہلے مکمل ہو چکا ہوگا۔\n\n. Structure / Formula\nAffirmative — مثبت\n\nSubject + will have + V3 + Object\n\nAli will have completed his work.\nعلی اپنا کام مکمل کر چکا ہوگا۔\nNegative — منفی\n\nSubject + will not have + V3 + Object\n\nAli will not have completed his work.\nعلی اپنا کام مکمل نہیں کر چکا ہوگا۔\nInterrogative — سوالیہ\n\nWill + Subject + have + V3 + Object?\n\nWill Ali have completed his work?\nکیا علی اپنا کام مکمل کر چکا ہوگا؟\n\nRules: \n1: Will Have + V3\n\nAll subjects → will have + V3\n\nExplanation: Future Perfect uses will have + V3 with all subjects. [Certain]\n\nHe will have finished.\nThey will have finished.\n2:Always Use V3\ngo → gone\nwrite → written\ncomplete → completed\n\n❌ He will have went home.\n✅ He will have gone home.\n\nExplanation: The verb after will have must be in its V3 form.\n3: By + Future Time\n\nFuture Perfect is commonly used with by to show the deadline or future point before which an action will be completed.\n\nShe will have finished the work by Monday.\nوہ پیر تک کام مکمل کر چکی ہوگی۔\n\nExplanation: “By Monday” means the action will be completed on or before Monday.\n4: Before Another Future Action\n\nThey will have left before we arrive.\nہمارے پہنچنے سے پہلے وہ جا چکے ہوں گے۔\n\nExplanation: Will have left shows the action that will be completed first.\n5: Common Time Expressions\n\nby tomorrow, by next week, by next year, by 8 p.m., before, by the time\n\nHe will have returned by next week.\nوہ اگلے ہفتے تک واپس آ چکا ہوگا۔\n\nExplanation: These expressions indicate the future point by which the action will be completed.\nExample:\nAli will have completed his assignment by tomorrow.\nعلی کل تک اپنا اسائنمنٹ مکمل کر چکا ہوگا۔\nExplanation: The action will be completed before a specific future time, “tomorrow.”\n. They will have finished the project before the deadline.\nوہ مقررہ وقت سے پہلے منصوبہ مکمل کر چکے ہوں گے۔\nExplanation: The project will be completed before another future point.\nThey will not have finished the project by Friday.\nوہ جمعہ تک منصوبہ مکمل نہیں کر چکے ہوں گے۔\nExplanation: The completion will not have happened by Friday.\nWill Ali have completed his assignment by tomorrow?\nکیا علی کل تک اپنا اسائنمنٹ مکمل کر چکا ہوگا؟\nExplanation: Will comes before the subject, followed by have + V3.\nadd Common Mistakes Sengences here\n\n⭐ Exam Shortcut\n\nAffirmative → Subject + will have + V3\nNegative → Subject + will not have + V3\nInterrogative → Will + Subject + have + V3?\n\nKey idea: An action that will be completed before a specific future time or another future action.",
+      "urduExplanation": "",
       "englishExplanation": "",
       "types": [],
-      "structure": [
-        "***Affirmative — مثبت***\n***Formula:*** Subject + will have + V3 + Object\nI will have finished the work by Monday. — میں پیر تک کام مکمل کر چکا ہوں گا۔",
-        "***Negative — منفی***\n***Formula:*** Subject + will have + V3 + Object\nShe will not have finished her work. — وہ اپنا کام مکمل نہیں کر چکی ہوگی۔",
-        "***Interrogative — سوالیہ***\n***Formula:*** Will have + v3 + Subject + Object?\nWill she have finished her work? — کیا وہ اپنا کام مکمل کر چکی ہوگی؟",
-        "***Helping verbs:*** will have: all subjects\n***Verb form:*** will have + V3"
-      ],
-      "rules": [
-        "1: Use the helping verb and main verb form **will have + V3**.\nExample: I will have finished the work by Monday. — میں پیر تک کام مکمل کر چکا ہوں گا۔\nExplanation: The formula identifies this tense.",
-        "2: Keep the subject and helping verb agreement correct.\nExample: She will join the class. — وہ کلاس میں شامل ہوگی۔\nExplanation: The subject matches the helping verb.",
-        "3: Use the tense for its specific time relationship.\nExample: I will have finished the work by Monday. — میں پیر تک کام مکمل کر چکا ہوں گا۔\nExplanation: The sentence expresses the intended time relationship.",
-        "4: Use the negative formula carefully.\nExample: She will not have finished her work. — وہ اپنا کام مکمل نہیں کر چکی ہوگی۔\nExplanation: The negative marker is placed in the correct position.",
-        "5: Form questions by placing the helping verb before the subject.\nExample: Will she have finished her work? — کیا وہ اپنا کام مکمل کر چکی ہوگی؟\nExplanation: The question follows the interrogative pattern."
-      ],
+      "structure": [],
+      "rules": [],
       "examples": [
         {
-          "text": "I will have finished the work by Monday.",
-          "urdu": "میں پیر تک کام مکمل کر چکا ہوں گا۔",
-          "note": "The sentence follows the will have + V3 pattern."
+          "text": "Future Perfect Tense is used to describe an action that will have been completed before a specific time or another action in the future.",
+          "urdu": "مستقبل مکمل زمانہ ایسے کام کو ظاہر کرتا ہے جو مستقبل میں کسی خاص وقت یا دوسرے کام سے پہلے مکمل ہو چکا ہوگا۔"
         },
         {
-          "text": "She will join the class.",
-          "urdu": "وہ کلاس میں شامل ہوگی۔",
-          "note": "The subject and tense form agree."
+          "text": ". Structure / Formula",
+          "urdu": "Affirmative — مثبت"
         },
         {
-          "text": "They will complete the work.",
-          "urdu": "وہ کام مکمل کریں گے۔",
-          "note": "The plural subject uses the correct tense structure."
+          "text": "Ali will have completed his work.",
+          "urdu": "علی اپنا کام مکمل کر چکا ہوگا۔"
         },
         {
-          "text": "We will finish dinner.",
-          "urdu": "ہم رات کا کھانا مکمل کریں گے۔",
-          "note": "The sentence shows the tense in context."
+          "text": "Ali will not have completed his work.",
+          "urdu": "علی اپنا کام مکمل نہیں کر چکا ہوگا۔"
         },
         {
-          "text": "Will she have finished her work?",
-          "urdu": "کیا وہ اپنا کام مکمل کر چکی ہوگی؟",
-          "note": "The helping verb comes before the subject in a question."
+          "text": "Will Ali have completed his work?",
+          "urdu": "کیا علی اپنا کام مکمل کر چکا ہوگا؟"
+        },
+        {
+          "text": "She will have finished the work by Monday.",
+          "urdu": "وہ پیر تک کام مکمل کر چکی ہوگی۔"
+        },
+        {
+          "text": "They will have left before we arrive.",
+          "urdu": "ہمارے پہنچنے سے پہلے وہ جا چکے ہوں گے۔"
+        },
+        {
+          "text": "He will have returned by next week.",
+          "urdu": "وہ اگلے ہفتے تک واپس آ چکا ہوگا۔"
+        },
+        {
+          "text": "Ali will have completed his assignment by tomorrow.",
+          "urdu": "علی کل تک اپنا اسائنمنٹ مکمل کر چکا ہوگا۔"
+        },
+        {
+          "text": ". They will have finished the project before the deadline.",
+          "urdu": "وہ مقررہ وقت سے پہلے منصوبہ مکمل کر چکے ہوں گے۔"
+        },
+        {
+          "text": "They will not have finished the project by Friday.",
+          "urdu": "وہ جمعہ تک منصوبہ مکمل نہیں کر چکے ہوں گے۔"
+        },
+        {
+          "text": "Will Ali have completed his assignment by tomorrow?",
+          "urdu": "کیا علی کل تک اپنا اسائنمنٹ مکمل کر چکا ہوگا؟"
         }
       ],
-      "commonMistakes": [
-        {
-          "wrong": "She will have finish.",
-          "right": "She will have finished.",
-          "urdu": "میں پیر تک کام مکمل کر چکا ہوں گا۔",
-          "note": "Use the correct will have + V3 form."
-        },
-        {
-          "wrong": "Will she joined the class?",
-          "right": "Will she have finished her work?",
-          "urdu": "کیا وہ اپنا کام مکمل کر چکی ہوگی؟",
-          "note": "Use the required verb form after the helping verb."
-        },
-        {
-          "wrong": "They will has finished.",
-          "right": "They will have finished.",
-          "urdu": "میں پیر تک کام مکمل کر چکا ہوں گا۔",
-          "note": "Choose the correct helping verb."
-        },
-        {
-          "wrong": "She did not went.",
-          "right": "I will have finished the work by Monday.",
-          "urdu": "میں پیر تک کام مکمل کر چکا ہوں گا۔",
-          "note": "Keep the main verb in the required form."
-        },
-        {
-          "wrong": "Will they completed the task?",
-          "right": "Will she have finished her work?",
-          "urdu": "کیا وہ اپنا کام مکمل کر چکی ہوگی؟",
-          "note": "Do not use an incorrect past form after the helping verb."
-        }
-      ],
-      "examTips": [
-        "***Exam Shortcut:*** will have + V3.",
-        "Check the helping verb, time expression, and main verb form before selecting an answer."
-      ],
+      "commonMistakes": [],
+      "examTips": [],
       "practice": [],
       "quiz": [],
       "summary": ""
@@ -10317,85 +10258,60 @@
     "order": 2,
     "isLeaf": true,
     "content": {
-      "introduction": "Future Continuous describes an action that will be in progress at a future time.",
-      "urduExplanation": "مستقبل جاری ایسے کام کو ظاہر کرتا ہے جو مستقبل کے کسی وقت جاری ہوگا۔",
+      "introduction": "1. Definition\n\nFuture Continuous Tense is used to describe an action that will be in progress at a particular time in the future.\n\nمستقبل جاری زمانہ ایسے کام کو ظاہر کرتا ہے جو مستقبل میں کسی خاص وقت جاری ہوگا۔",
+      "urduExplanation": "",
       "englishExplanation": "",
       "types": [],
       "structure": [
-        "***Affirmative — مثبت***\n***Formula:*** Subject + will be + V-ing + Object\nI will be studying at nine o’clock. — میں نو بجے پڑھ رہا ہوں گا۔",
-        "***Negative — منفی***\n***Formula:*** Subject + will be + V-ing + Object\nHe will not be reading a book. — وہ کتاب نہیں پڑھ رہا ہوگا۔",
-        "***Interrogative — سوالیہ***\n***Formula:*** Will be + v-ing + Subject + Object?\nWill he be reading a book? — کیا وہ کتاب پڑھ رہا ہوگا؟",
-        "***Helping verbs:*** will be: all subjects\n***Verb form:*** will be + V-ing"
+        "Affirmative — مثبت\n\nSubject + will be + V-ing + Object\n\nI will be studying English.\nمیں انگریزی پڑھ رہا ہوں گا۔\nNegative — منفی\n\nSubject + will not be + V-ing + Object\n\nThey will not be playing cricket.\nوہ کرکٹ نہیں کھیل رہے ہوں گے۔\n\nInterrogative — سوالیہ\n\nWill + Subject + be + V-ing + Object?\n\nWill you be studying English?\nکیا آپ انگریزی پڑھ رہے ہوں گے؟"
       ],
       "rules": [
-        "1: Use the helping verb and main verb form **will be + V-ing**.\nExample: I will be studying at nine o’clock. — میں نو بجے پڑھ رہا ہوں گا۔\nExplanation: The formula identifies this tense.",
-        "2: Keep the subject and helping verb agreement correct.\nExample: She will join the class. — وہ کلاس میں شامل ہوگی۔\nExplanation: The subject matches the helping verb.",
-        "3: Use the tense for its specific time relationship.\nExample: I will be studying at nine o’clock. — میں نو بجے پڑھ رہا ہوں گا۔\nExplanation: The sentence expresses the intended time relationship.",
-        "4: Use the negative formula carefully.\nExample: He will not be reading a book. — وہ کتاب نہیں پڑھ رہا ہوگا۔\nExplanation: The negative marker is placed in the correct position.",
-        "5: Form questions by placing the helping verb before the subject.\nExample: Will he be reading a book? — کیا وہ کتاب پڑھ رہا ہوگا؟\nExplanation: The question follows the interrogative pattern."
+        "Rule 1 — Will Be + V-ing\n\nAll subjects → will be + V-ing\n\nExplanation: Future Continuous uses will be + V-ing with all subjects.\nSpecific Future Time\n\nFuture Continuous commonly describes an action that will be in progress at a particular time in the future.\n\nAt 10 p.m. tonight, I will be studying.\nآج رات دس بجے میں پڑھ رہا ہوں گا۔\n\nExplanation: “At 10 p.m. tonight” specifies the future time when the action will be in progress.\nExample:\nAli will be studying at 8 p.m.\nعلی رات آٹھ بجے پڑھ رہا ہوگا۔\nExplanation: The action will be in progress at a specific time in the future.\nShe will be preparing for the exam next week.\nوہ اگلے ہفتے امتحان کی تیاری کر رہی ہوگی۔\nExplanation: The action will be in progress during a future period.\nThey will not be travelling tomorrow morning.\nوہ کل صبح سفر نہیں کر رہے ہوں گے۔\nExplanation: The action will not be in progress at that future time.\nWill Ali be studying at 8 p.m.?\nکیا علی رات آٹھ بجے پڑھ رہا ہوگا؟\nExplanation: Will comes before the subject, followed by be + V-ing."
       ],
       "examples": [
         {
-          "text": "I will be studying at nine o’clock.",
-          "urdu": "میں نو بجے پڑھ رہا ہوں گا۔",
-          "note": "The sentence follows the will be + V-ing pattern."
+          "text": "Structure / Formula",
+          "urdu": "Affirmative — مثبت"
         },
         {
-          "text": "She will join the class.",
-          "urdu": "وہ کلاس میں شامل ہوگی۔",
-          "note": "The subject and tense form agree."
+          "text": "I will be studying English.",
+          "urdu": "میں انگریزی پڑھ رہا ہوں گا۔"
         },
         {
-          "text": "They will complete the work.",
-          "urdu": "وہ کام مکمل کریں گے۔",
-          "note": "The plural subject uses the correct tense structure."
+          "text": "They will not be playing cricket.",
+          "urdu": "وہ کرکٹ نہیں کھیل رہے ہوں گے۔"
         },
         {
-          "text": "We will finish dinner.",
-          "urdu": "ہم رات کا کھانا مکمل کریں گے۔",
-          "note": "The sentence shows the tense in context."
+          "text": "Will you be studying English?",
+          "urdu": "کیا آپ انگریزی پڑھ رہے ہوں گے؟"
         },
         {
-          "text": "Will he be reading a book?",
-          "urdu": "کیا وہ کتاب پڑھ رہا ہوگا؟",
-          "note": "The helping verb comes before the subject in a question."
+          "text": "At 10 p.m. tonight, I will be studying.",
+          "urdu": "آج رات دس بجے میں پڑھ رہا ہوں گا۔"
+        },
+        {
+          "text": "Ali will be studying at 8 p.m.",
+          "urdu": "علی رات آٹھ بجے پڑھ رہا ہوگا۔"
+        },
+        {
+          "text": "She will be preparing for the exam next week.",
+          "urdu": "وہ اگلے ہفتے امتحان کی تیاری کر رہی ہوگی۔"
+        },
+        {
+          "text": "They will not be travelling tomorrow morning.",
+          "urdu": "وہ کل صبح سفر نہیں کر رہے ہوں گے۔"
+        },
+        {
+          "text": "Will Ali be studying at 8 p.m.?",
+          "urdu": "کیا علی رات آٹھ بجے پڑھ رہا ہوگا؟"
         }
       ],
-      "commonMistakes": [
-        {
-          "wrong": "I will be study.",
-          "right": "I will be studying.",
-          "urdu": "میں نو بجے پڑھ رہا ہوں گا۔",
-          "note": "Use the correct will be + V-ing form."
-        },
-        {
-          "wrong": "Will she joined the class?",
-          "right": "Will he be reading a book?",
-          "urdu": "کیا وہ کتاب پڑھ رہا ہوگا؟",
-          "note": "Use the required verb form after the helping verb."
-        },
-        {
-          "wrong": "He do not work.",
-          "right": "He will not work.",
-          "urdu": "میں نو بجے پڑھ رہا ہوں گا۔",
-          "note": "Choose the correct helping verb."
-        },
-        {
-          "wrong": "He will be work tomorrow.",
-          "right": "I will be studying at nine o’clock.",
-          "urdu": "میں نو بجے پڑھ رہا ہوں گا۔",
-          "note": "Keep the main verb in the required form."
-        },
-        {
-          "wrong": "Will they completed the task?",
-          "right": "Will he be reading a book?",
-          "urdu": "کیا وہ کتاب پڑھ رہا ہوگا؟",
-          "note": "Do not use an incorrect past form after the helping verb."
-        }
-      ],
+      "commonMistakes": [],
       "examTips": [
-        "***Exam Shortcut:*** will be + V-ing.",
-        "Check the helping verb, time expression, and main verb form before selecting an answer."
+        "Affirmative → Subject + will be + V-ing",
+        "Negative → Subject + will not be + V-ing",
+        "Interrogative → Will + Subject + be + V-ing?",
+        "Key idea: An action that will be in progress at a particular time in the future."
       ],
       "practice": [],
       "quiz": [],
@@ -10410,85 +10326,81 @@
     "order": 1,
     "isLeaf": true,
     "content": {
-      "introduction": "Future Indefinite describes an action that will happen in the future.",
-      "urduExplanation": "مستقبل سادہ ایسے کام کو ظاہر کرتا ہے جو مستقبل میں ہوگا۔",
+      "introduction": "1. Definition\n\nFuture Indefinite Tense is used to describe an action that will happen or take place in the future.\n\nمستقبل سادہ زمانہ ایسے کام کو ظاہر کرتا ہے جو آنے والے وقت میں ہوگا یا کیا جائے گا۔",
+      "urduExplanation": "",
       "englishExplanation": "",
       "types": [],
       "structure": [
-        "***Affirmative — مثبت***\n***Formula:*** Subject + will + V1 + Object\nI will help you tomorrow. — میں کل تمہاری مدد کروں گا۔",
-        "***Negative — منفی***\n***Formula:*** Subject + will + V1; will not + V1 + Object\nShe will not join the class. — وہ کلاس میں شامل نہیں ہوگی۔",
-        "***Interrogative — سوالیہ***\n***Formula:*** Will + v1 + Subject + Object?\nWill she join the class? — کیا وہ کلاس میں شامل ہوگی؟",
-        "***Helping verbs:*** will: all subjects\n***Verb form:*** will + V1"
+        "Affirmative — مثبت\n\nSubject + will + V1 + Object\n\nI will study English.\nمیں انگریزی پڑھوں گا۔\nThey will play cricket.\nوہ کرکٹ کھیلیں گے۔\nNegative — منفی\n\nSubject + will not + V1 + Object\n\nI will not study English.\nمیں انگریزی نہیں پڑھوں گا۔\nThey will not play cricket.\nوہ کرکٹ نہیں کھیلیں گے۔\nInterrogative — سوالیہ\n\nWill + Subject + V1 + Object?\n\nWill you study English?\nکیا آپ انگریزی پڑھیں گے؟\nWill they play cricket?\nکیا وہ کرکٹ کھیلیں گے؟"
       ],
       "rules": [
-        "1: Use the helping verb and main verb form **will + V1**.\nExample: I will help you tomorrow. — میں کل تمہاری مدد کروں گا۔\nExplanation: The formula identifies this tense.",
-        "2: Keep the subject and helping verb agreement correct.\nExample: She will join the class. — وہ کلاس میں شامل ہوگی۔\nExplanation: The subject matches the helping verb.",
-        "3: Use the tense for its specific time relationship.\nExample: I will help you tomorrow. — میں کل تمہاری مدد کروں گا۔\nExplanation: The sentence expresses the intended time relationship.",
-        "4: Use the negative formula carefully.\nExample: She will not join the class. — وہ کلاس میں شامل نہیں ہوگی۔\nExplanation: The negative marker is placed in the correct position.",
-        "5: Form questions by placing the helping verb before the subject.\nExample: Will she join the class? — کیا وہ کلاس میں شامل ہوگی؟\nExplanation: The question follows the interrogative pattern."
+        "1: Will + V1\n\nUse will + V1 for all subjects.\n\nI, You, He, She, It, We, They → will + V1\n\nExplanation: Will is used with all subjects, and the main verb remains in its base form (V1).\n\nFuture Time Expressions\n\nCommon expressions include:\n\ntomorrow, next week, next month, next year, soon, later, in the future\n\nShe will arrive tomorrow.\nWe will meet next week.\n\nExplanation: These expressions commonly indicate future time.\nExample: \nAli will visit Lahore next week.\nعلی اگلے ہفتے لاہور جائے گا۔\nExplanation: The action is expected to happen in the future, so we use will + V1.\nThey will complete the project soon.\nوہ جلد ہی منصوبہ مکمل کریں گے۔\nExplanation: The action will take place in the future.\nAli will not visit Lahore next week.\nعلی اگلے ہفتے لاہور نہیں جائے گا۔\nExplanation: Will not makes the future action negative.\nWill they attend the meeting?\nکیا وہ اجلاس میں شرکت کریں گے؟\nExplanation: The question is formed with will + subject + V1."
       ],
       "examples": [
         {
-          "text": "I will help you tomorrow.",
-          "urdu": "میں کل تمہاری مدد کروں گا۔",
-          "note": "The sentence follows the will + V1 pattern."
+          "text": "Structure / Formula",
+          "urdu": "Affirmative — مثبت"
         },
         {
-          "text": "She will join the class.",
-          "urdu": "وہ کلاس میں شامل ہوگی۔",
-          "note": "The subject and tense form agree."
+          "text": "I will study English.",
+          "urdu": "میں انگریزی پڑھوں گا۔"
         },
         {
-          "text": "They will complete the work.",
-          "urdu": "وہ کام مکمل کریں گے۔",
-          "note": "The plural subject uses the correct tense structure."
+          "text": "They will play cricket.",
+          "urdu": "وہ کرکٹ کھیلیں گے۔"
         },
         {
-          "text": "We will finish dinner.",
-          "urdu": "ہم رات کا کھانا مکمل کریں گے۔",
-          "note": "The sentence shows the tense in context."
+          "text": "I will not study English.",
+          "urdu": "میں انگریزی نہیں پڑھوں گا۔"
         },
         {
-          "text": "Will she join the class?",
-          "urdu": "کیا وہ کلاس میں شامل ہوگی؟",
-          "note": "The helping verb comes before the subject in a question."
+          "text": "They will not play cricket.",
+          "urdu": "وہ کرکٹ نہیں کھیلیں گے۔"
+        },
+        {
+          "text": "Will you study English?",
+          "urdu": "کیا آپ انگریزی پڑھیں گے؟"
+        },
+        {
+          "text": "Will they play cricket?",
+          "urdu": "کیا وہ کرکٹ کھیلیں گے؟"
+        },
+        {
+          "text": "Ali will visit Lahore next week.",
+          "urdu": "علی اگلے ہفتے لاہور جائے گا۔"
+        },
+        {
+          "text": "They will complete the project soon.",
+          "urdu": "وہ جلد ہی منصوبہ مکمل کریں گے۔"
+        },
+        {
+          "text": "Ali will not visit Lahore next week.",
+          "urdu": "علی اگلے ہفتے لاہور نہیں جائے گا۔"
+        },
+        {
+          "text": "Will they attend the meeting?",
+          "urdu": "کیا وہ اجلاس میں شرکت کریں گے؟"
         }
       ],
       "commonMistakes": [
         {
-          "wrong": "She will joined the class.",
-          "right": "She will join the class.",
-          "urdu": "میں کل تمہاری مدد کروں گا۔",
-          "note": "Use the correct will + V1 form."
+          "wrong": "He will goes to school.",
+          "right": "He will go to school.",
+          "urdu": "وہ اسکول جائے گا۔",
+          "note": null
         },
         {
-          "wrong": "Will she joined the class?",
-          "right": "Will she join the class?",
-          "urdu": "کیا وہ کلاس میں شامل ہوگی؟",
-          "note": "Use the required verb form after the helping verb."
-        },
-        {
-          "wrong": "He do not work.",
-          "right": "He will not work.",
-          "urdu": "میں کل تمہاری مدد کروں گا۔",
-          "note": "Choose the correct helping verb."
-        },
-        {
-          "wrong": "She did not went.",
-          "right": "I will help you tomorrow.",
-          "urdu": "میں کل تمہاری مدد کروں گا۔",
-          "note": "Keep the main verb in the required form."
-        },
-        {
-          "wrong": "Will they completed the task?",
-          "right": "Will she join the class?",
-          "urdu": "کیا وہ کلاس میں شامل ہوگی؟",
-          "note": "Do not use an incorrect past form after the helping verb."
+          "wrong": "She will went home.",
+          "right": "She will go home.",
+          "urdu": "وہ گھر جائے گی۔",
+          "note": null
         }
       ],
       "examTips": [
-        "***Exam Shortcut:*** will + V1.",
-        "Check the helping verb, time expression, and main verb form before selecting an answer."
+        "Affirmative → Subject + will + V1",
+        "Negative → Subject + will not + V1",
+        "Interrogative → Will + Subject + V1?",
+        "Key rule: Will + V1 — never V2 or V1+s/es."
       ],
       "practice": [],
       "quiz": [],
