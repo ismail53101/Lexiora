@@ -130,7 +130,7 @@ List<TextSpan> _highlightRuleDetails(String text, Color highlightColor) {
   if (cursor < text.length) {
     spans.addAll(_markupSpans(
       text.substring(cursor),
-      inHighlightedDetail ? detailColor : null,
+      detailColor,
     ));
   }
 
