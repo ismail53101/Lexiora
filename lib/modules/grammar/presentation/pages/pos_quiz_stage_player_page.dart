@@ -155,9 +155,11 @@ class _PosQuizStagePlayerPageState extends State<PosQuizStagePlayerPage> {
     final ThemeData theme = Theme.of(context);
     final bool selected = _selectedIndex == index;
     final bool correct = index == _question.answerIndex;
+    const Color correctColor = Color(0xFF2E7D32);
+    const Color incorrectColor = Color(0xFFC62828);
     Color? color;
-    if (_answered && correct) color = Colors.green.withValues(alpha: 0.18);
-    if (_answered && selected && !correct) color = theme.colorScheme.error.withValues(alpha: 0.18);
+    if (_answered && correct) color = correctColor.withValues(alpha: 0.16);
+    if (_answered && selected && !correct) color = incorrectColor.withValues(alpha: 0.16);
     return Card(
       color: color,
       child: RadioListTile<int>(
@@ -177,21 +179,51 @@ class _PosQuizStagePlayerPageState extends State<PosQuizStagePlayerPage> {
         : correct
             ? 'Correct'
             : 'Incorrect';
+    const Color correctColor = Color(0xFF2E7D32);
+    const Color incorrectColor = Color(0xFFC62828);
     return Card(
-      color: (correct ? Colors.green : Theme.of(context).colorScheme.error).withValues(alpha: 0.12),
+      color: (correct ? correctColor : incorrectColor).withValues(alpha: 0.12),
       child: Padding(
         padding: const EdgeInsets.all(14),
         child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: <Widget>[
-          Text(title, style: const TextStyle(fontWeight: FontWeight.w800)),
+          Text(
+            title,
+            style: TextStyle(
+              color: correct ? const Color(0xFF2E7D32) : const Color(0xFFC62828),
+              fontWeight: FontWeight.w800,
+            ),
+          ),
           const SizedBox(height: 5),
-          Text('Answer: ${_question.answer}'),
+          Text(
+            'Answer: ${_question.answer}',
+            style: TextStyle(
+              color: correct ? const Color(0xFF2E7D32) : const Color(0xFFC62828),
+              fontWeight: FontWeight.w700,
+            ),
+          ),
           if (_question.explanation?.isNotEmpty ?? false) ...<Widget>[
             const SizedBox(height: 5),
-            Text(_question.explanation!),
+            Text.rich(
+              TextSpan(
+                style: Theme.of(context).textTheme.bodyMedium?.copyWith(height: 1.35),
+                children: _boldMarkedSpans(_question.explanation!),
+              ),
+            ),
           ],
           if (_question.examTip?.isNotEmpty ?? false) ...<Widget>[
             const SizedBox(height: 5),
-            Text('Exam tip: ${_question.examTip!}'),
+            Text.rich(
+              TextSpan(
+                style: Theme.of(context).textTheme.bodyMedium?.copyWith(height: 1.35),
+                children: <TextSpan>[
+                  const TextSpan(
+                    text: 'Exam tip: ',
+                    style: TextStyle(fontWeight: FontWeight.w800),
+                  ),
+                  ..._boldMarkedSpans(_question.examTip!),
+                ],
+              ),
+            ),
           ],
         ]),
       ),

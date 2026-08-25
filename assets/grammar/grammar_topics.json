@@ -9349,85 +9349,80 @@
     "order": 4,
     "isLeaf": true,
     "content": {
-      "introduction": "Present Perfect Continuous Tense is used for an action that started in the past and is still continuing or has recently stopped with a present result.",
+      "introduction": "Present Perfect Continuous Tense is used to describe an action that started in the past and is still continuing or has recently stopped with a present result.",
       "urduExplanation": "حال مکمل جاری زمانہ ایسے کام کو ظاہر کرتا ہے جو ماضی میں شروع ہوا ہو اور اب تک جاری ہو، یا ابھی کچھ دیر پہلے ختم ہوا ہو اور اس کا اثر موجودہ وقت میں ظاہر ہو۔",
       "englishExplanation": "",
       "types": [],
       "structure": [
-        "***Affirmative — مثبت***\n***Formula:*** Subject + has/have + been + V-ing + Object\nHe has been studying English. — وہ انگریزی پڑھتا آ رہا ہے۔",
-        "***Negative — منفی***\n***Formula:*** Subject + has/have + not + been + V-ing + Object\nHe has not been studying English. — وہ انگریزی نہیں پڑھتا آ رہا ہے۔",
-        "***Interrogative — سوالیہ***\n***Formula:*** Has/Have + Subject + been + V-ing + Object?\nHas he been studying English? — کیا وہ انگریزی پڑھتا آ رہا ہے؟",
-        "***Helping verbs:*** has been → He/She/It/Singular noun; have been → I/You/We/They/Plural noun\n***Verb form:*** been + V-ing"
+        "***Affirmative — مثبت***\n***Formula:*** Subject + has/have + been + V-ing + Object\nHe has been studying English. — وہ انگریزی پڑھتا آ رہا ہے۔\nThey have been working hard. — وہ محنت کرتے آ رہے ہیں۔",
+        "***Negative — منفی***\n***Formula:*** Subject + has/have + not + been + V-ing + Object\nHe has not been studying English. — وہ انگریزی نہیں پڑھتا آ رہا ہے۔\nThey have not been working hard. — وہ محنت نہیں کرتے آ رہے ہیں۔",
+        "***Interrogative — سوالیہ***\n***Formula:*** Has/Have + Subject + been + V-ing + Object?\nHas he been studying English? — کیا وہ انگریزی پڑھتا آ رہا ہے؟\nHave they been working hard? — کیا وہ محنت کرتے آ رہے ہیں؟"
       ],
       "rules": [
-        "1: Always use **been + V-ing** after has or have.\nExample: He has been studying. — وہ پڑھتا آ رہا ہے۔\nExplanation: This tense requires been followed by the -ing form.",
-        "2: Use since for a starting point and for for a duration.\nExample: He has been studying since morning. — وہ صبح سے پڑھ رہا ہے۔\nExplanation: Since tells when; for tells how long.",
-        "3: Use has with singular subjects and have with plural subjects.\nExample: They have been playing. — وہ کھیلتے آ رہے ہیں۔\nExplanation: The helping verb agrees with the subject.",
-        "4: Use the tense for an action continuing up to now.\nExample: I have been studying for two hours. — میں دو گھنٹے سے پڑھ رہا ہوں۔\nExplanation: The action began earlier and continues now.",
-        "5: Use it when a recent action has a visible present result.\nExample: She has been working hard. — وہ محنت کرتی آ رہی ہے۔\nExplanation: The ongoing effort has a present effect."
+        "1: Always use “been + V-ing”\nThe structure is: has/have + been + V-ing\nSingular Subject: He, She, It, and singular nouns → has\nPlural Subjects: I, You, We, They, and plural nouns → have\nExample: He has been studying. — وہ پڑھتا آ رہا ہے۔\nExample: They have been playing. — وہ کھیلتے آ رہے ہیں۔\nExplanation: Present Perfect Continuous always requires been + V-ing after has/have.",
+        "2: Since → starting point of an action کام کے شروع ہونے کا وقت\nFor → duration of an action کسی کام کے جاری رہنے کا دورانیہ\nExample: He has been studying since morning. — وہ صبح سے پڑھتا آ رہا ہے۔\nExample: He has been studying for three hours. — وہ تین گھنٹے سے پڑھتا آ رہا ہے۔\nEnglish: Since tells us when an action started, while for tells us how long the action has continued.\nاردو: Since بتاتا ہے کہ کام کب شروع ہوا، جبکہ for بتاتا ہے کہ کام کتنے عرصے سے جاری ہے۔"
       ],
       "examples": [
         {
           "text": "He has been studying English.",
           "urdu": "وہ انگریزی پڑھتا آ رہا ہے۔",
-          "note": "The action started earlier and continues now."
+          "note": "The action started in the past and is continuing now."
         },
         {
           "text": "They have been working hard.",
           "urdu": "وہ محنت کرتے آ رہے ہیں۔",
-          "note": "They is plural, so use have been."
+          "note": "The action has continued for a period of time."
         },
         {
-          "text": "He has been studying since morning.",
-          "urdu": "وہ صبح سے پڑھ رہا ہے۔",
-          "note": "Since gives the starting point."
+          "text": "She has been cooking since morning.",
+          "urdu": "وہ صبح سے کھانا پکا رہی ہے۔",
+          "note": "Since shows the starting point of the action."
         },
         {
-          "text": "He has been studying for three hours.",
-          "urdu": "وہ تین گھنٹے سے پڑھ رہا ہے۔",
-          "note": "For gives the duration."
+          "text": "We have been waiting for two hours.",
+          "urdu": "ہم دو گھنٹے سے انتظار کر رہے ہیں۔",
+          "note": "For shows the duration of the action."
         },
         {
-          "text": "Have they been playing cricket?",
-          "urdu": "کیا وہ کرکٹ کھیلتے آ رہے ہیں؟",
-          "note": "Have comes before the plural subject they."
+          "text": "Has he been studying English?",
+          "urdu": "کیا وہ انگریزی پڑھتا آ رہا ہے؟",
+          "note": "Has is used with the singular subject he."
         }
       ],
       "commonMistakes": [
         {
-          "wrong": "I have been study for two hours.",
-          "right": "I have been studying for two hours.",
-          "urdu": "میں دو گھنٹے سے پڑھ رہا ہوں۔",
+          "wrong": "He has been study English.",
+          "right": "He has been studying English.",
+          "urdu": "وہ انگریزی پڑھتا آ رہا ہے۔",
           "note": "Use been + V-ing."
         },
         {
-          "wrong": "He has been work since morning.",
-          "right": "He has been working since morning.",
-          "urdu": "وہ صبح سے کام کر رہا ہے۔",
-          "note": "The main verb must end in -ing."
-        },
-        {
-          "wrong": "They has been playing.",
-          "right": "They have been playing.",
-          "urdu": "وہ کھیلتے آ رہے ہیں۔",
+          "wrong": "They has been working hard.",
+          "right": "They have been working hard.",
+          "urdu": "وہ محنت کرتے آ رہے ہیں۔",
           "note": "They is plural, so use have."
         },
         {
-          "wrong": "She has been studying since three hours.",
-          "right": "She has been studying for three hours.",
-          "urdu": "وہ تین گھنٹے سے پڑھ رہی ہے۔",
-          "note": "Use for with a duration."
+          "wrong": "She has been cook since morning.",
+          "right": "She has been cooking since morning.",
+          "urdu": "وہ صبح سے کھانا پکا رہی ہے۔",
+          "note": "The main verb must be in the -ing form."
         },
         {
-          "wrong": "Has they been working?",
-          "right": "Have they been working?",
-          "urdu": "کیا وہ کام کرتے آ رہے ہیں؟",
-          "note": "Use have with they."
+          "wrong": "He has been studying for morning.",
+          "right": "He has been studying since morning.",
+          "urdu": "وہ صبح سے پڑھتا آ رہا ہے۔",
+          "note": "Use since with a starting point."
+        },
+        {
+          "wrong": "We have been waiting since two hours.",
+          "right": "We have been waiting for two hours.",
+          "urdu": "ہم دو گھنٹے سے انتظار کر رہے ہیں۔",
+          "note": "Use for with a duration."
         }
       ],
       "examTips": [
-        "***Exam Shortcut:*** has/have + been + V-ing.",
-        "Since = starting point; for = duration."
+        "***Exam Shortcut:*** has/have + been + V-ing. Use since for a starting point and for for a duration."
       ],
       "practice": [],
       "quiz": [],
@@ -9442,53 +9437,50 @@
     "order": 3,
     "isLeaf": true,
     "content": {
-      "introduction": "Present Perfect Tense is used for an action completed recently or whose result or effect is connected to the present.",
+      "introduction": "Present Perfect Tense is used for an action that has been completed recently or whose result or effect is connected to the present.",
       "urduExplanation": "حال مکمل زمانہ ایسے کام کو ظاہر کرتا ہے جو مکمل ہو چکا ہو اور جس کا تعلق اس کے نتیجے یا اثر کے ذریعے موجودہ وقت سے ہو۔",
       "englishExplanation": "",
       "types": [],
       "structure": [
-        "***Affirmative — مثبت***\n***Formula:*** Subject + has/have + V3 + Object\nHas → He/She/It/Singular noun; Have → I/You/We/They/Plural noun\nShe has finished her work. — وہ اپنا کام مکمل کر چکی ہے۔",
-        "***Negative — منفی***\n***Formula:*** Subject + has/have + not + V3 + Object\nShe has not finished her work. — وہ اپنا کام مکمل نہیں کر چکی ہے۔",
-        "***Interrogative — سوالیہ***\n***Formula:*** Has/Have + Subject + V3 + Object?\nHas she finished her work? — کیا وہ اپنا کام مکمل کر چکی ہے؟",
-        "***Helping verbs:*** has → He/She/It/Singular noun; have → I/You/We/They/Plural noun\n***Verb form:*** V3 (past participle)"
+        "***Affirmative — مثبت***\n***Formula:*** Subject + has/have + V3 + Object\nHas → He, She, It, Singular noun\nHave → I, You, We, They, Plural noun\nShe has finished her work. — وہ اپنا کام مکمل کر چکی ہے۔\nThey have finished their work. — وہ اپنا کام مکمل کر چکے ہیں۔",
+        "***Negative — منفی***\n***Formula:*** Subject + has/have + not + V3 + Object\nShe has not finished her work. — وہ اپنا کام مکمل نہیں کر چکی ہے۔\nThey have not finished their work. — انہوں نے اپنا کام مکمل نہیں کیا ہے۔",
+        "***Interrogative — سوالیہ***\n***Formula:*** Has/Have + Subject + V3 + Object?\nHas she finished her work? — کیا وہ اپنا کام مکمل کر چکی ہے؟\nHave they finished their work? — کیا انہوں نے اپنا کام مکمل کر لیا ہے؟"
       ],
       "rules": [
-        "1: Use has with He, She, It, and singular nouns; use have with I, You, We, They, and plural nouns.\nExample: She has finished her work. — وہ اپنا کام مکمل کر چکی ہے۔\nExplanation: The helping verb agrees with the subject.",
-        "2: Always use the past participle **V3** after has or have.\nExample: He has gone home. — وہ گھر جا چکا ہے۔\nExplanation: Present Perfect requires V3, not V2.",
-        "3: Use already, just, yet, ever, never, recently, so far, since, and for when suitable.\nExample: He has just arrived. — وہ ابھی پہنچا ہے۔\nExplanation: “Just” shows a recent action.",
-        "4: Do not normally use Present Perfect with a specific finished past time.\nExample: I visited Lahore yesterday. — میں نے کل لاہور کا دورہ کیا۔\nExplanation: “Yesterday” requires Past Simple.",
-        "5: Use Present Perfect when the present result is important.\nExample: Ali has completed his assignment. — علی اپنا اسائنمنٹ مکمل کر چکا ہے۔\nExplanation: The completed assignment has a result now."
+        "1: Has / Have\nHe, She, It, and singular nouns → has\nI, You, We, They, and plural nouns → have\nاردو: He، She، It اور واحد اسم کے ساتھ has، جبکہ I، You، We، They اور جمع اسم کے ساتھ have استعمال ہوتا ہے۔",
+        "2: Always use V3\nPresent Perfect is formed with: has/have + V3\neat → eaten\nwrite → written\ngo → gone\n❌ He has went home.\n✅ He has gone home.\nExplanation: Present Perfect always requires the past participle (V3) after has/have.",
+        "3: Common Time Expressions\nPresent Perfect is often used with words that show an unfinished time period, a recent action, or a connection with the present.\nCommon expressions: already, just, yet, ever, never, recently, so far, since, for\nExample: She has already finished her work.\nExplanation: “Already” shows that the work was completed before now.\nExample: He has just arrived.\nExplanation: “Just” shows that he arrived a short time ago.\nExample: Have you ever visited Lahore?\nExplanation: “Ever” asks whether something has happened at any time up to now.\nDo not normally use Present Perfect with a specific, finished time in the past, such as yesterday, last year, last week, or in 2020. Use Past Simple instead.\n❌ I have visited Lahore yesterday.\n✅ I visited Lahore yesterday.\nExplanation: “Yesterday” is a specific finished time in the past, so Past Simple is required, not Present Perfect."
       ],
       "examples": [
         {
           "text": "Ali has completed his assignment.",
           "urdu": "علی اپنا اسائنمنٹ مکمل کر چکا ہے۔",
-          "note": "Ali is singular, so use has + V3."
+          "note": "The assignment is completed, and the result is relevant now, so we use has + V3."
         },
         {
           "text": "They have won the match.",
           "urdu": "انہوں نے میچ جیت لیا ہے۔",
-          "note": "They is plural, so use have + V3."
+          "note": "The match has been won, and the result is important now, so we use have + V3."
         },
         {
-          "text": "She has already finished her work.",
-          "urdu": "وہ اپنا کام پہلے ہی مکمل کر چکی ہے۔",
-          "note": "“Already” shows completion before now."
+          "text": "Ali has not completed his assignment.",
+          "urdu": "علی نے اپنا اسائنمنٹ مکمل نہیں کیا ہے۔",
+          "note": "“Ali” is singular, so we use has not + V3."
         },
         {
-          "text": "He has just arrived.",
-          "urdu": "وہ ابھی پہنچا ہے۔",
-          "note": "“Just” shows a recent action."
+          "text": "They have not won the match.",
+          "urdu": "انہوں نے میچ نہیں جیتا ہے۔",
+          "note": "“They” is plural, so we use have not + V3."
         },
         {
-          "text": "Have you ever visited Lahore?",
-          "urdu": "کیا تم نے کبھی لاہور کا دورہ کیا ہے؟",
-          "note": "“Ever” asks about any time up to now."
+          "text": "Have they won the match?",
+          "urdu": "کیا انہوں نے میچ جیت لیا ہے؟",
+          "note": "“They” is plural, so we use have before the subject."
         },
         {
-          "text": "I visited Lahore yesterday.",
-          "urdu": "میں نے کل لاہور کا دورہ کیا۔",
-          "note": "A finished past time takes Past Simple."
+          "text": "Has Ali completed his assignment?",
+          "urdu": "کیا علی نے اپنا اسائنمنٹ مکمل کر لیا ہے؟",
+          "note": "“Ali” is singular, so we use has before the subject."
         }
       ],
       "commonMistakes": [
@@ -9499,33 +9491,32 @@
           "note": "Use V3 gone after has."
         },
         {
-          "wrong": "I have finish my work.",
-          "right": "I have finished my work.",
-          "urdu": "میں اپنا کام مکمل کر چکا ہوں۔",
-          "note": "Present Perfect needs V3 finished."
+          "wrong": "I have visited Lahore yesterday.",
+          "right": "I visited Lahore yesterday.",
+          "urdu": "میں کل لاہور گیا تھا۔",
+          "note": "Use Past Simple with a specific finished time."
         },
         {
-          "wrong": "She have visited Lahore.",
-          "right": "She has visited Lahore.",
-          "urdu": "وہ لاہور کا دورہ کر چکی ہے۔",
+          "wrong": "She have finished her work.",
+          "right": "She has finished her work.",
+          "urdu": "وہ اپنا کام مکمل کر چکی ہے۔",
           "note": "She is singular, so use has."
         },
         {
-          "wrong": "I have visited Lahore yesterday.",
-          "right": "I visited Lahore yesterday.",
-          "urdu": "میں نے کل لاہور کا دورہ کیا۔",
-          "note": "Yesterday is a finished past time."
+          "wrong": "They has won the match.",
+          "right": "They have won the match.",
+          "urdu": "انہوں نے میچ جیت لیا ہے۔",
+          "note": "They is plural, so use have."
         },
         {
-          "wrong": "Has they won the match?",
-          "right": "Have they won the match?",
-          "urdu": "کیا انہوں نے میچ جیت لیا ہے؟",
-          "note": "They is plural, so use have."
+          "wrong": "Did he has completed the task?",
+          "right": "Has he completed the task?",
+          "urdu": "کیا اس نے کام مکمل کر لیا ہے؟",
+          "note": "Use has before the subject in a Present Perfect question."
         }
       ],
       "examTips": [
-        "***Exam Shortcut:*** has/have + V3. Do not use V2 after has or have.",
-        "Use Past Simple with yesterday, last week, last year, or a finished year."
+        "***Exam Shortcut:*** has/have + V3. Do not use V2 after has or have."
       ],
       "practice": [],
       "quiz": [],
@@ -9547,41 +9538,38 @@
       "structure": [
         "***Affirmative — مثبت***\n***Formula:*** Subject + am/is/are + V-ing + Object\nI am reading a book. — میں ایک کتاب پڑھ رہا ہوں۔",
         "***Negative — منفی***\n***Formula:*** Subject + am/is/are + not + V-ing + Object\nHe is not reading a book. — وہ کتاب نہیں پڑھ رہا ہے۔",
-        "***Interrogative — سوالیہ***\n***Formula:*** Am/Is/Are + Subject + V-ing + Object?\nIs he reading a book? — کیا وہ کتاب پڑھ رہا ہے؟",
-        "***Helping verbs:*** I → am; He/She/It/Singular noun → is; You/We/They/Plural noun → are\n***Verb form:*** V-ing"
+        "***Interrogative — سوالیہ***\n***Formula:*** Am/Is/Are + Subject + V-ing + Object?\nIs he reading a book? — کیا وہ کتاب پڑھ رہا ہے؟"
       ],
       "rules": [
-        "1: Use am, is, or are before the main verb.\nExample: Ali is studying. — علی پڑھ رہا ہے۔\nExplanation: The helping verb agrees with the subject.",
-        "2: Use the **V-ing** form after am, is, or are.\nExample: She is cooking dinner. — وہ رات کا کھانا پکا رہی ہے۔\nExplanation: Present Continuous requires a present participle.",
-        "3: Use Present Continuous for an action happening now.\nExample: He is talking to his friend now. — وہ ابھی اپنے دوست سے بات کر رہا ہے۔\nExplanation: “Now” shows the action is happening at present.",
-        "4: Use Present Continuous for an action around the present time.\nExample: The students are preparing for the exam. — طلبہ امتحان کی تیاری کر رہے ہیں۔\nExplanation: The preparation is an ongoing action.",
-        "5: Use now, right now, at the moment, or currently when suitable.\nExample: They are working hard. — وہ محنت کر رہے ہیں۔\nExplanation: These expressions commonly signal a current action."
+        "1: Use of am/is/are\nI → am | He/She/It/Singular noun → is | You/We/They/Plural noun → are\nExample: Ali is studying. — علی پڑھ رہا ہے۔\nExample: The boys are playing. — لڑکے کھیل رہے ہیں۔",
+        "2: Use V-ing\nThe main verb must be in the -ing form.\nExample: She is cooking dinner. — وہ رات کا کھانا پکا رہی ہے۔\nExample: They are working hard. — وہ محنت کر رہے ہیں۔\nExplanation: Present Continuous is formed with am/is/are + Verb-ing.",
+        "5: Action happening now\nPresent Continuous is commonly used with now, right now, at the moment, currently, etc.\nExample: He is talking to his friend now. — وہ ابھی اپنے دوست سے بات کر رہا ہے۔\nExplanation: “Now” shows that the action is happening at the present time."
       ],
       "examples": [
         {
           "text": "She is reading a book.",
           "urdu": "وہ ایک کتاب پڑھ رہی ہے۔",
-          "note": "The action is happening now, so Present Continuous is used."
+          "note": "The action is happening now, so the Present Continuous Tense is used."
         },
         {
           "text": "The students are preparing for the exam.",
           "urdu": "طلبہ امتحان کی تیاری کر رہے ہیں۔",
-          "note": "The preparation is an ongoing action."
+          "note": "The preparation is an ongoing action, so the Present Continuous Tense is used."
         },
         {
           "text": "They are not playing cricket.",
           "urdu": "وہ کرکٹ نہیں کھیل رہے ہیں۔",
-          "note": "They takes are, followed by not + V-ing."
+          "note": "“They” takes are, followed by not + V-ing."
         },
         {
           "text": "I am not watching television.",
           "urdu": "میں ٹیلی ویژن نہیں دیکھ رہا ہوں۔",
-          "note": "I takes am, followed by not + V-ing."
+          "note": "“I” takes am, followed by not + V-ing."
         },
         {
           "text": "Are they playing cricket?",
           "urdu": "کیا وہ کرکٹ کھیل رہے ہیں؟",
-          "note": "They is plural, so are comes before the subject."
+          "note": "“They” is plural, so we use are before the subject."
         }
       ],
       "commonMistakes": [
@@ -9589,36 +9577,35 @@
           "wrong": "He is play cricket.",
           "right": "He is playing cricket.",
           "urdu": "وہ کرکٹ کھیل رہا ہے۔",
-          "note": "Present Continuous requires am/is/are + V-ing."
+          "note": "Present Continuous requires am/is/are + V-ing, so play must be changed to playing."
         },
         {
           "wrong": "They is studying English.",
           "right": "They are studying English.",
           "urdu": "وہ انگریزی پڑھ رہے ہیں۔",
-          "note": "They is plural, so use are, not is."
+          "note": "“They” is a plural subject, so we use are, not is."
         },
         {
           "wrong": "She does not studying English.",
           "right": "She is not studying English.",
           "urdu": "وہ انگریزی نہیں پڑھ رہی ہے۔",
-          "note": "Use is/am/are + not + V-ing, not do/does + V-ing."
+          "note": "Present Continuous uses is/am/are + not + V-ing, not do/does + V-ing."
         },
         {
           "wrong": "Is they playing cricket?",
           "right": "Are they playing cricket?",
           "urdu": "کیا وہ کرکٹ کھیل رہے ہیں؟",
-          "note": "They is plural, so use are."
+          "note": "“They” is plural, so the correct helping verb is are."
         },
         {
           "wrong": "I is reading a book.",
           "right": "I am reading a book.",
           "urdu": "میں ایک کتاب پڑھ رہا ہوں۔",
-          "note": "I always takes am."
+          "note": "I always takes am in the Present Continuous Tense."
         }
       ],
       "examTips": [
-        "***Exam Shortcut:*** I → am + V-ing; He/She/It/Singular noun → is + V-ing; You/We/They/Plural noun → are + V-ing.",
-        "Negative: Subject + am/is/are + not + V-ing. Question: Am/Is/Are + Subject + V-ing?"
+        "***Exam Shortcut:*** I → am + V-ing\nHe/She/It/Singular noun → is + V-ing\nYou/We/They/Plural noun → are + V-ing\nNegative: Subject + am/is/are + not + V-ing\nQuestion: Am/Is/Are + Subject + V-ing?"
       ],
       "practice": [],
       "quiz": [],

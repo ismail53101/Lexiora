@@ -679,6 +679,8 @@ class GrammarTypeContent extends StatelessWidget {
           if (type.name == 'Verb Forms Tables' && type.tableGroups.isNotEmpty) ...<Widget>[
             for (final GrammarTableGroup group in type.tableGroups)
               _CompactTableSection(group: group),
+          ] else if (type.name == 'Fixed Prepositions' && type.tableGroups.isNotEmpty) ...<Widget>[
+            _SwipeableTableGroups(groups: type.tableGroups),
           ] else
             for (final GrammarTableGroup group in type.tableGroups) ...<Widget>[
               _TypeSubheading(title: group.title, icon: Icons.table_chart_outlined),
@@ -746,6 +748,97 @@ class GrammarTypeContent extends StatelessWidget {
   }
 }
 
+class _SwipeableTableGroups extends StatefulWidget {
+  const _SwipeableTableGroups({required this.groups});
+
+  final List<GrammarTableGroup> groups;
+
+  @override
+  State<_SwipeableTableGroups> createState() => _SwipeableTableGroupsState();
+}
+
+class _SwipeableTableGroupsState extends State<_SwipeableTableGroups> {
+  int _page = 0;
+
+  @override
+  Widget build(BuildContext context) {
+    final ThemeData theme = Theme.of(context);
+    final int count = widget.groups.length;
+    return Column(
+      children: <Widget>[
+        SizedBox(
+          height: 470,
+          child: PageView.builder(
+            itemCount: count,
+            onPageChanged: (int index) => setState(() => _page = index),
+            itemBuilder: (BuildContext context, int index) {
+              final GrammarTableGroup group = widget.groups[index];
+              return Card(
+                margin: const EdgeInsets.only(bottom: 6),
+                elevation: 0,
+                color: theme.colorScheme.surfaceContainerHighest.withValues(alpha: 0.45),
+                child: Padding(
+                  padding: const EdgeInsets.fromLTRB(8, 8, 8, 4),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: <Widget>[
+                      Text(
+                        group.title,
+                        maxLines: 2,
+                        overflow: TextOverflow.ellipsis,
+                        style: theme.textTheme.titleSmall?.copyWith(
+                          color: theme.colorScheme.primary,
+                          fontWeight: FontWeight.w800,
+                        ),
+                      ),
+                      const SizedBox(height: 4),
+                      Expanded(
+                        child: SingleChildScrollView(
+                          child: _GrammarTable(
+                            columns: group.columns,
+                            rows: group.rows,
+                            compact: true,
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              );
+            },
+          ),
+        ),
+        const SizedBox(height: 2),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: List<Widget>.generate(
+            count,
+            (int index) => AnimatedContainer(
+              duration: const Duration(milliseconds: 180),
+              margin: const EdgeInsets.symmetric(horizontal: 3),
+              width: index == _page ? 18 : 7,
+              height: 7,
+              decoration: BoxDecoration(
+                color: index == _page
+                    ? theme.colorScheme.primary
+                    : theme.colorScheme.outlineVariant,
+                borderRadius: BorderRadius.circular(8),
+              ),
+            ),
+          ),
+        ),
+        const SizedBox(height: 4),
+        Text(
+          'Swipe left or right to view the next category',
+          style: theme.textTheme.labelSmall?.copyWith(
+            color: theme.colorScheme.onSurfaceVariant,
+          ),
+        ),
+      ],
+    );
+  }
+}
+
 class _CompactTableSection extends StatelessWidget {
   const _CompactTableSection({required this.group});
 
@@ -804,11 +897,11 @@ class _GrammarTable extends StatelessWidget {
         padding: EdgeInsets.all(compact ? 4 : 10),
         child: DataTable(
           headingRowColor: WidgetStatePropertyAll<Color>(scheme.primary.withValues(alpha: 0.12)),
-          dataRowMinHeight: compact ? 27 : 44,
-          dataRowMaxHeight: compact ? 38 : 86,
-          columnSpacing: compact ? 10 : 18,
-          columns: safeColumns.map((String column) => DataColumn(label: Text(column, style: theme.textTheme.labelMedium?.copyWith(fontSize: compact ? 10 : null, fontWeight: FontWeight.w700)))).toList(),
-          rows: rows.map((GrammarTableRow row) => DataRow(cells: List<DataCell>.generate(safeColumns.length, (int i) => DataCell(Text(i < row.cells.length ? row.cells[i] : '', style: theme.textTheme.bodySmall?.copyWith(fontSize: compact ? 11 : null, height: compact ? 1.05 : 1.3)))))).toList(),
+          dataRowMinHeight: compact ? 25 : 44,
+          dataRowMaxHeight: compact ? 34 : 86,
+          columnSpacing: compact ? 8 : 18,
+          columns: safeColumns.map((String column) => DataColumn(label: Text(column, style: theme.textTheme.labelMedium?.copyWith(fontSize: compact ? 9 : null, fontWeight: FontWeight.w700)))).toList(),
+          rows: rows.map((GrammarTableRow row) => DataRow(cells: List<DataCell>.generate(safeColumns.length, (int i) => DataCell(Text(i < row.cells.length ? row.cells[i] : '', style: theme.textTheme.bodySmall?.copyWith(fontSize: compact ? 10 : null, height: compact ? 1.0 : 1.3)))))).toList(),
         ),
       ),
     );
