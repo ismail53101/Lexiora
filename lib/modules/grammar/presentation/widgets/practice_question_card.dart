@@ -127,7 +127,7 @@ class _OptionTile extends StatelessWidget {
     final ThemeData theme = Theme.of(context);
     final ColorScheme scheme = theme.colorScheme;
 
-    const Color correct = Color(0xFF2E7D32); // green 800
+    const Color correct = Color(0xFF43A047); // readable green
     final Color border;
     final Color? fill;
     final IconData icon;
@@ -208,8 +208,9 @@ class _ResultBanner extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final ThemeData theme = Theme.of(context);
-    const Color correct = Color(0xFF2E7D32);
-    final Color color = isCorrect ? correct : theme.colorScheme.error;
+    const Color correct = Color(0xFF43A047);
+    const Color incorrect = Color(0xFFE57373);
+    final Color color = isCorrect ? correct : incorrect;
 
     return Column(
       children: [
@@ -306,14 +307,29 @@ class _ResultBanner extends StatelessWidget {
 }
 
 List<TextSpan> _boldMarkedSpans(String text) {
-  final List<String> parts = text.split('**');
-  return <TextSpan>[
-    for (int i = 0; i < parts.length; i++)
-      TextSpan(
-        text: parts[i].replaceAll(' > ', ' → '),
-        style: i.isOdd
-            ? const TextStyle(decoration: TextDecoration.underline)
-            : null,
+  final List<TextSpan> spans = <TextSpan>[];
+  final RegExp marker = RegExp(r'(\*\*\*(.+?)\*\*\*|\*\*(.+?)\*\*|__(.+?)__)');
+  int cursor = 0;
+  for (final RegExpMatch match in marker.allMatches(text)) {
+    if (match.start > cursor) {
+      spans.add(TextSpan(text: text.substring(cursor, match.start).replaceAll(' > ', ' → ')));
+    }
+    final String value = match.group(2) ?? match.group(3) ?? match.group(4)!;
+    final bool both = match.group(2) != null;
+    final bool bold = both || match.group(3) != null;
+    final bool underline = both || match.group(4) != null;
+    spans.add(TextSpan(
+      text: value.replaceAll(' > ', ' → '),
+      style: TextStyle(
+        fontWeight: bold ? FontWeight.w800 : null,
+        decoration: underline ? TextDecoration.underline : null,
+        decorationThickness: underline ? 2 : null,
       ),
-  ];
+    ));
+    cursor = match.end;
+  }
+  if (cursor < text.length) {
+    spans.add(TextSpan(text: text.substring(cursor).replaceAll(' > ', ' → ')));
+  }
+  return spans.isEmpty ? <TextSpan>[TextSpan(text: text)] : spans;
 }

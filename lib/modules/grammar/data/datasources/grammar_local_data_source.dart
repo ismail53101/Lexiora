@@ -351,7 +351,22 @@ class GrammarLocalDataSource {
 
   static List<GrammarTableRow> _tableRows(Object? v) {
     if (v is! List) return const <GrammarTableRow>[];
-    return v.whereType<List<dynamic>>().map((List<dynamic> row) => GrammarTableRow(cells: row.map((e) => e.toString()).toList())).toList();
+    return v.map((Object? row) {
+      if (row is List) {
+        return GrammarTableRow(
+          cells: row.map((Object? cell) => cell?.toString() ?? '').toList(),
+        );
+      }
+      if (row is Map) {
+        final Object? cells = row['cells'];
+        if (cells is List) {
+          return GrammarTableRow(
+            cells: cells.map((Object? cell) => cell?.toString() ?? '').toList(),
+          );
+        }
+      }
+      return null;
+    }).whereType<GrammarTableRow>().where((GrammarTableRow row) => row.cells.isNotEmpty).toList();
   }
 
   static List<GrammarPronounRow> _pronounRows(Object? v) {

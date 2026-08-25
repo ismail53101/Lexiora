@@ -175,9 +175,9 @@ class _LessonView extends StatelessWidget {
             title: 'Introduction',
             child: Text(lesson.introduction,
                 style: (lesson.id.startsWith('tenses/')
-                        ? theme.textTheme.bodyMedium
+                        ? theme.textTheme.bodySmall
                         : theme.textTheme.bodyLarge)
-                    ?.copyWith(height: lesson.id.startsWith('tenses/') ? 1.4 : 1.5)),
+                    ?.copyWith(height: lesson.id.startsWith('tenses/') ? 1.3 : 1.5)),
           ),
 
         if (lesson.urduExplanation.isNotEmpty)
@@ -190,9 +190,9 @@ class _LessonView extends StatelessWidget {
                 lesson.urduExplanation,
                 textAlign: TextAlign.right,
                 style: (lesson.id.startsWith('tenses/')
-                        ? theme.textTheme.bodyLarge
+                        ? theme.textTheme.bodyMedium
                         : theme.textTheme.titleMedium)
-                    ?.copyWith(height: lesson.id.startsWith('tenses/') ? 1.5 : 1.7),
+                    ?.copyWith(height: lesson.id.startsWith('tenses/') ? 1.4 : 1.7),
               ),
             ),
           ),
@@ -203,9 +203,9 @@ class _LessonView extends StatelessWidget {
             title: 'English Explanation',
             child: Text(lesson.englishExplanation,
                 style: (lesson.id.startsWith('tenses/')
-                        ? theme.textTheme.bodyMedium
+                        ? theme.textTheme.bodySmall
                         : theme.textTheme.bodyLarge)
-                    ?.copyWith(height: lesson.id.startsWith('tenses/') ? 1.4 : 1.5)),
+                    ?.copyWith(height: lesson.id.startsWith('tenses/') ? 1.3 : 1.5)),
           ),
 
         if (lesson.types.isNotEmpty) ...<Widget>[
@@ -231,21 +231,6 @@ class _LessonView extends StatelessWidget {
             ),
         ],
 
-        if (lesson.rules.isNotEmpty)
-          GrammarSectionCard(
-            icon: Icons.rule,
-            title: 'Rules',
-            child: Column(
-              children: <Widget>[
-                for (final String r in lesson.rules)
-                  GrammarBullet(
-                    text: r,
-                    compact: lesson.id.startsWith('tenses/'),
-                  ),
-              ],
-            ),
-          ),
-
         if (lesson.structure.isNotEmpty)
           GrammarSectionCard(
             icon: Icons.architecture,
@@ -255,6 +240,21 @@ class _LessonView extends StatelessWidget {
                 for (final String s in lesson.structure)
                   GrammarBullet(
                     text: s,
+                    compact: lesson.id.startsWith('tenses/'),
+                  ),
+              ],
+            ),
+          ),
+
+        if (lesson.rules.isNotEmpty)
+          GrammarSectionCard(
+            icon: Icons.rule,
+            title: 'Rules',
+            child: Column(
+              children: <Widget>[
+                for (final String r in lesson.rules)
+                  GrammarBullet(
+                    text: r,
                     compact: lesson.id.startsWith('tenses/'),
                   ),
               ],
@@ -340,9 +340,9 @@ class _LessonView extends StatelessWidget {
             accent: theme.colorScheme.tertiary,
             child: Text(lesson.summary,
                 style: (lesson.id.startsWith('tenses/')
-                        ? theme.textTheme.bodyMedium
+                        ? theme.textTheme.bodySmall
                         : theme.textTheme.bodyLarge)
-                    ?.copyWith(height: lesson.id.startsWith('tenses/') ? 1.4 : 1.5)),
+                    ?.copyWith(height: lesson.id.startsWith('tenses/') ? 1.3 : 1.5)),
           ),
       ],
     );
@@ -1146,8 +1146,8 @@ class _ExampleItem extends StatelessWidget {
           ],
           Text.rich(
             TextSpan(
-              style: (compact ? theme.textTheme.bodyMedium : theme.textTheme.bodyLarge)
-                  ?.copyWith(height: compact ? 1.32 : 1.4),
+              style: (compact ? theme.textTheme.bodySmall : theme.textTheme.bodyLarge)
+                  ?.copyWith(height: compact ? 1.25 : 1.4),
               children: _boldMarkedSpans(example.text),
             ),
           ),
@@ -1158,9 +1158,10 @@ class _ExampleItem extends StatelessWidget {
               child: Text(
                 example.urdu!,
                 textAlign: TextAlign.right,
-                style: theme.textTheme.bodyMedium?.copyWith(
-                    height: compact ? 1.45 : 1.6,
-                    color: theme.colorScheme.onSurfaceVariant),
+                style: (compact ? theme.textTheme.bodySmall : theme.textTheme.bodyMedium)
+                    ?.copyWith(
+                        height: compact ? 1.35 : 1.6,
+                        color: theme.colorScheme.onSurfaceVariant),
               ),
             ),
           ],

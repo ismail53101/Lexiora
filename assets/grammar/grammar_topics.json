@@ -5530,9 +5530,9 @@
         },
         {
           "name": "Fixed Prepositions",
-          "description": "Fixed prepositions, also called dependent prepositions, are prepositions conventionally required after particular verbs, adjectives, nouns, or expressions. The preposition cannot normally be changed freely without changing standard usage or meaning.",
+          "description": "Fixed prepositions, also called dependent prepositions, are prepositions conventionally required after particular verbs, adjectives, nouns, or expressions. This complete 120-expression reference groups common exam combinations by category. The preposition cannot normally be changed freely without changing standard usage or meaning.",
           "urduExplanation": "Fixed Prepositions، جنہیں Dependent Prepositions بھی کہا جاتا ہے، وہ حروفِ جار ہیں جو مخصوص افعال، صفات، اسماء یا تراکیب کے بعد مقررہ طور پر استعمال ہوتے ہیں۔ ان کے ساتھ دوسرا حرفِ جار لگانا عموماً غلط یا غیر فطری ہوتا ہے۔",
-          "exampleWords": "60 high-frequency expressions grouped as Verb + Preposition, Adjective + Preposition, Noun + Preposition, and Fixed Phrases/Zero-Preposition Traps.",
+          "exampleWords": "120 high-frequency expressions grouped as Verb + Preposition, Adjective + Preposition, Noun + Preposition, and Fixed Phrases/Zero-Preposition Traps.",
           "tableTitle": "Complete Categorized Fixed Prepositions Reference",
           "tableColumns": [],
           "tableRows": [],
@@ -5773,6 +5773,126 @@
                     "اعتراض کرنا",
                     "The residents objected to the proposal."
                   ]
+                },
+                {
+                  "cells": [
+                    "account for",
+                    "explain or represent",
+                    "کی وضاحت کرنا؛ حصہ ہونا",
+                    "The report accounts for the missing funds."
+                  ]
+                },
+                {
+                  "cells": [
+                    "adapt to",
+                    "adjust to a new situation",
+                    "مطابقت پیدا کرنا",
+                    "Children adapt to new environments quickly."
+                  ]
+                },
+                {
+                  "cells": [
+                    "agree with",
+                    "have the same opinion as",
+                    "سے اتفاق کرنا",
+                    "I agree with your opinion."
+                  ]
+                },
+                {
+                  "cells": [
+                    "aim at",
+                    "direct an effort toward",
+                    "کا مقصد رکھنا",
+                    "The campaign aims at reducing pollution."
+                  ]
+                },
+                {
+                  "cells": [
+                    "answer for",
+                    "be responsible for",
+                    "کا ذمہ دار ہونا",
+                    "The manager must answer for the decision."
+                  ]
+                },
+                {
+                  "cells": [
+                    "benefit from",
+                    "gain an advantage from",
+                    "سے فائدہ اٹھانا",
+                    "Students benefit from regular practice."
+                  ]
+                },
+                {
+                  "cells": [
+                    "concentrate on",
+                    "focus attention on",
+                    "پر توجہ مرکوز کرنا",
+                    "Please concentrate on the question."
+                  ]
+                },
+                {
+                  "cells": [
+                    "congratulate someone on",
+                    "praise someone for an achievement",
+                    "کسی کو کسی کامیابی پر مبارک دینا",
+                    "We congratulated her on her success."
+                  ]
+                },
+                {
+                  "cells": [
+                    "cope with",
+                    "manage a difficult situation",
+                    "سے نمٹنا",
+                    "He learned to cope with pressure."
+                  ]
+                },
+                {
+                  "cells": [
+                    "correspond to",
+                    "match or be similar to",
+                    "کے مطابق ہونا",
+                    "The figures correspond to the official record."
+                  ]
+                },
+                {
+                  "cells": [
+                    "derive from",
+                    "come or obtain from",
+                    "سے اخذ کرنا",
+                    "Many English words derive from Latin."
+                  ]
+                },
+                {
+                  "cells": [
+                    "engage in",
+                    "take part in an activity",
+                    "میں مشغول ہونا",
+                    "They engage in useful research."
+                  ]
+                },
+                {
+                  "cells": [
+                    "forgive someone for",
+                    "stop blaming someone for something",
+                    "کسی کو کسی بات پر معاف کرنا",
+                    "She forgave him for his mistake."
+                  ]
+                },
+                {
+                  "cells": [
+                    "hope for",
+                    "want and expect something",
+                    "کی امید کرنا",
+                    "We hope for better results."
+                  ]
+                },
+                {
+                  "cells": [
+                    "refer to",
+                    "mention or direct attention to",
+                    "کا حوالہ دینا",
+                    "The note refers to an important rule."
+                  ]
                 }
               ]
             },
@@ -5903,6 +6023,126 @@
                     "accountable for; better than",
                     "کا ذمہ دار؛ سے برتر",
                     "The manager is responsible for the project, and this method is superior to the old one."
+                  ]
+                },
+                {
+                  "cells": [
+                    "absent from",
+                    "not present at a place",
+                    "سے غیر حاضر",
+                    "He was absent from class."
+                  ]
+                },
+                {
+                  "cells": [
+                    "acceptable to",
+                    "satisfactory to someone",
+                    "کے لیے قابل قبول",
+                    "The proposal is acceptable to the committee."
+                  ]
+                },
+                {
+                  "cells": [
+                    "analogous to",
+                    "similar in an important way",
+                    "کے مشابہ",
+                    "This case is analogous to the earlier case."
+                  ]
+                },
+                {
+                  "cells": [
+                    "anxious about",
+                    "worried about something",
+                    "کے بارے میں فکرمند",
+                    "She is anxious about the result."
+                  ]
+                },
+                {
+                  "cells": [
+                    "ashamed of",
+                    "feeling guilt or embarrassment about",
+                    "پر شرمندہ",
+                    "He is ashamed of his careless remark."
+                  ]
+                },
+                {
+                  "cells": [
+                    "compatible with",
+                    "able to exist or work together",
+                    "کے ساتھ مطابقت رکھنے والا",
+                    "This device is compatible with the software."
+                  ]
+                },
+                {
+                  "cells": [
+                    "contrary to",
+                    "opposite to",
+                    "کے برخلاف",
+                    "His actions were contrary to the rules."
+                  ]
+                },
+                {
+                  "cells": [
+                    "keen on",
+                    "very interested in",
+                    "میں بہت دلچسپی رکھنے والا",
+                    "She is keen on learning languages."
+                  ]
+                },
+                {
+                  "cells": [
+                    "known for",
+                    "famous because of",
+                    "کی وجہ سے مشہور",
+                    "The city is known for its gardens."
+                  ]
+                },
+                {
+                  "cells": [
+                    "liable to",
+                    "likely to experience or do something",
+                    "کا امکان رکھنے والا",
+                    "Careless drivers are liable to cause accidents."
+                  ]
+                },
+                {
+                  "cells": [
+                    "pleased with",
+                    "satisfied or happy with",
+                    "سے خوش یا مطمئن",
+                    "The teacher was pleased with her progress."
+                  ]
+                },
+                {
+                  "cells": [
+                    "proud of",
+                    "feeling satisfaction about",
+                    "پر فخر کرنا",
+                    "They are proud of their achievement."
+                  ]
+                },
+                {
+                  "cells": [
+                    "related to",
+                    "connected with",
+                    "سے متعلق",
+                    "The question is related to grammar."
+                  ]
+                },
+                {
+                  "cells": [
+                    "satisfied with",
+                    "content with something",
+                    "سے مطمئن",
+                    "The examiner was satisfied with the answer."
+                  ]
+                },
+                {
+                  "cells": [
+                    "sensitive to",
+                    "easily affected by",
+                    "کے لیے حساس",
+                    "Some people are sensitive to criticism."
                   ]
                 }
               ]
@@ -6035,6 +6275,126 @@
                     "کا حل؛ کے لیے خطرہ",
                     "We need a solution to this problem, because pollution is a threat to health."
                   ]
+                },
+                {
+                  "cells": [
+                    "admiration for",
+                    "respect or approval for someone",
+                    "کے لیے تحسین",
+                    "She has great admiration for her mentor."
+                  ]
+                },
+                {
+                  "cells": [
+                    "advantage of",
+                    "a benefit or favourable condition",
+                    "کا فائدہ",
+                    "The advantage of practice is clear."
+                  ]
+                },
+                {
+                  "cells": [
+                    "appeal to",
+                    "a request or attraction directed toward",
+                    "سے اپیل؛ کو پسند آنا",
+                    "The idea has strong appeal to young learners."
+                  ]
+                },
+                {
+                  "cells": [
+                    "attack on",
+                    "an act of violence or criticism against",
+                    "پر حملہ",
+                    "The attack on the village was condemned."
+                  ]
+                },
+                {
+                  "cells": [
+                    "belief in",
+                    "trust or faith in something",
+                    "پر یقین",
+                    "His belief in hard work is strong."
+                  ]
+                },
+                {
+                  "cells": [
+                    "candidate for",
+                    "a person being considered for",
+                    "کے لیے امیدوار",
+                    "She is a candidate for the scholarship."
+                  ]
+                },
+                {
+                  "cells": [
+                    "comparison with",
+                    "an examination of similarities or differences",
+                    "کے ساتھ موازنہ",
+                    "The comparison with earlier results is useful."
+                  ]
+                },
+                {
+                  "cells": [
+                    "contact with",
+                    "communication or connection with",
+                    "سے رابطہ",
+                    "Keep regular contact with your teacher."
+                  ]
+                },
+                {
+                  "cells": [
+                    "control over",
+                    "power to direct or manage",
+                    "پر قابو",
+                    "The manager has control over the budget."
+                  ]
+                },
+                {
+                  "cells": [
+                    "conviction of",
+                    "a formal finding of guilt",
+                    "کا جرم ثابت ہونا",
+                    "His conviction of fraud was reported."
+                  ]
+                },
+                {
+                  "cells": [
+                    "dependence on",
+                    "reliance on someone or something",
+                    "پر انحصار",
+                    "Dependence on technology can be risky."
+                  ]
+                },
+                {
+                  "cells": [
+                    "invitation to",
+                    "a request to attend or join",
+                    "کی دعوت",
+                    "We received an invitation to the ceremony."
+                  ]
+                },
+                {
+                  "cells": [
+                    "objection to",
+                    "a reason for opposing something",
+                    "پر اعتراض",
+                    "There was no objection to the plan."
+                  ]
+                },
+                {
+                  "cells": [
+                    "participation in",
+                    "the act of taking part in",
+                    "میں شرکت",
+                    "Participation in the contest is voluntary."
+                  ]
+                },
+                {
+                  "cells": [
+                    "trust in",
+                    "confidence in someone or something",
+                    "پر اعتماد",
+                    "The public has trust in the institution."
+                  ]
                 }
               ]
             },
@@ -6165,6 +6525,126 @@
                     "consist of or include",
                     "پر مشتمل ہونا",
                     "The panel comprises three experts."
+                  ]
+                },
+                {
+                  "cells": [
+                    "at risk",
+                    "in danger of harm or loss",
+                    "خطرے میں",
+                    "The old bridge is at risk of collapse."
+                  ]
+                },
+                {
+                  "cells": [
+                    "at once",
+                    "immediately",
+                    "فوراً",
+                    "The doctor came at once."
+                  ]
+                },
+                {
+                  "cells": [
+                    "at random",
+                    "without a planned order",
+                    "بے ترتیب طور پر",
+                    "The names were selected at random."
+                  ]
+                },
+                {
+                  "cells": [
+                    "in advance",
+                    "before a particular time",
+                    "پیشگی",
+                    "Please book your seat in advance."
+                  ]
+                },
+                {
+                  "cells": [
+                    "in exchange for",
+                    "as a trade for something",
+                    "کے بدلے میں",
+                    "He received training in exchange for his service."
+                  ]
+                },
+                {
+                  "cells": [
+                    "in line with",
+                    "in agreement with",
+                    "کے مطابق",
+                    "The decision is in line with the policy."
+                  ]
+                },
+                {
+                  "cells": [
+                    "in response to",
+                    "as an answer or reaction to",
+                    "کے جواب میں",
+                    "The rule changed in response to public concern."
+                  ]
+                },
+                {
+                  "cells": [
+                    "on account of",
+                    "because of",
+                    "کی وجہ سے",
+                    "The match was delayed on account of rain."
+                  ]
+                },
+                {
+                  "cells": [
+                    "under pressure",
+                    "in a stressful situation",
+                    "دباؤ میں",
+                    "She works well under pressure."
+                  ]
+                },
+                {
+                  "cells": [
+                    "without regard to",
+                    "without considering",
+                    "کی پروا کیے بغیر",
+                    "The law applies without regard to status."
+                  ]
+                },
+                {
+                  "cells": [
+                    "pay attention to",
+                    "give careful notice to",
+                    "پر توجہ دینا",
+                    "Pay attention to the instructions."
+                  ]
+                },
+                {
+                  "cells": [
+                    "take advantage of",
+                    "use a situation or person for benefit",
+                    "فائدہ اٹھانا",
+                    "Do not take advantage of the poor."
+                  ]
+                },
+                {
+                  "cells": [
+                    "take part in",
+                    "participate in",
+                    "میں حصہ لینا",
+                    "Many students took part in the debate."
+                  ]
+                },
+                {
+                  "cells": [
+                    "make use of",
+                    "use something effectively",
+                    "استعمال کرنا",
+                    "Make use of the reference book."
+                  ]
+                },
+                {
+                  "cells": [
+                    "by virtue of",
+                    "because of a particular quality or position",
+                    "کی بدولت",
+                    "She succeeded by virtue of her dedication."
                   ]
                 }
               ]
@@ -8869,36 +9349,48 @@
     "order": 4,
     "isLeaf": true,
     "content": {
-      "introduction": "Present Perfect Continuous Tense is used to express completed actions connected with the presentContinuous .",
-      "urduExplanation": "حال مکمل جاری زمانہ ایسے کام کو ظاہر کرتا ہے جو ماضی میں شروع ہوا اور اب تک جاری ہے یا ابھی ختم ہوا ہے۔",
+      "introduction": "Present Perfect Continuous Tense is used for an action that started in the past and is still continuing or has recently stopped with a present result.",
+      "urduExplanation": "حال مکمل جاری زمانہ ایسے کام کو ظاہر کرتا ہے جو ماضی میں شروع ہوا ہو اور اب تک جاری ہو، یا ابھی کچھ دیر پہلے ختم ہوا ہو اور اس کا اثر موجودہ وقت میں ظاہر ہو۔",
       "englishExplanation": "",
       "types": [],
       "structure": [
-        "***Affirmative —*** مثبت جملہ\nSubject + **has/have** been + **V-ing** + Object\n***Helping verb:*** **has been**: He/She/It; **have been**: I/You/We/They\n***Examples:***\nI **have been** studying for two hours. — میں دو گھنٹے سے پڑھ رہا ہوں۔\nHe **has been** working since morning. — وہ صبح سے کام کر رہا ہے۔",
-        "***Negative —*** منفی جملہ\nSubject + helping verb + not + main verb + Object\n***Example:***\nI have not been studying for two hours. — میں دو گھنٹے سے نہیں پڑھ رہا ہوں۔",
-        "***Interrogative —*** سوالیہ جملہ\nHelping verb + Subject + main verb + Object?\n***Example:***\nHas he been working since morning? — کیا وہ صبح سے کام کر رہا ہے؟",
-        "***Verb forms —*** افعال کی شکلیں\n***Formula:*** Subject + **has/have** been + **V-ing** + Object\n***Helping verb:*** **has been**: He/She/It; **have been**: I/You/We/They\n***Example:*** They **have been** waiting for the bus. — وہ بس کا انتظار کر رہے ہیں۔"
+        "***Affirmative — مثبت***\n***Formula:*** Subject + has/have + been + V-ing + Object\nHe has been studying English. — وہ انگریزی پڑھتا آ رہا ہے۔",
+        "***Negative — منفی***\n***Formula:*** Subject + has/have + not + been + V-ing + Object\nHe has not been studying English. — وہ انگریزی نہیں پڑھتا آ رہا ہے۔",
+        "***Interrogative — سوالیہ***\n***Formula:*** Has/Have + Subject + been + V-ing + Object?\nHas he been studying English? — کیا وہ انگریزی پڑھتا آ رہا ہے؟",
+        "***Helping verbs:*** has been → He/She/It/Singular noun; have been → I/You/We/They/Plural noun\n***Verb form:*** been + V-ing"
       ],
       "rules": [
-        "1: Use **for** with a period and **since** with a starting point.\nExample: I **have been** studying **for** two hours.\nExplanation: The helping verb and verb form match this tense.",
-        "2: The main verb remains in the -ing form after been.\nExample: He **has been** working **since** morning.\nExplanation: The main verb stays in the required form.",
-        "3: Use the helping verb pattern consistently with every subject.\nExample: They **have been** waiting **for** the bus.\nExplanation: The subject and formula are correct."
+        "1: Always use **been + V-ing** after has or have.\nExample: He has been studying. — وہ پڑھتا آ رہا ہے۔\nExplanation: This tense requires been followed by the -ing form.",
+        "2: Use since for a starting point and for for a duration.\nExample: He has been studying since morning. — وہ صبح سے پڑھ رہا ہے۔\nExplanation: Since tells when; for tells how long.",
+        "3: Use has with singular subjects and have with plural subjects.\nExample: They have been playing. — وہ کھیلتے آ رہے ہیں۔\nExplanation: The helping verb agrees with the subject.",
+        "4: Use the tense for an action continuing up to now.\nExample: I have been studying for two hours. — میں دو گھنٹے سے پڑھ رہا ہوں۔\nExplanation: The action began earlier and continues now.",
+        "5: Use it when a recent action has a visible present result.\nExample: She has been working hard. — وہ محنت کرتی آ رہی ہے۔\nExplanation: The ongoing effort has a present effect."
       ],
       "examples": [
         {
-          "text": "I have been studying for two hours.",
-          "urdu": "میں دو گھنٹے سے پڑھ رہا ہوں۔",
-          "note": "This sentence follows the standard tense formula."
+          "text": "He has been studying English.",
+          "urdu": "وہ انگریزی پڑھتا آ رہا ہے۔",
+          "note": "The action started earlier and continues now."
         },
         {
-          "text": "He has been working since morning.",
-          "urdu": "وہ صبح سے کام کر رہا ہے۔",
-          "note": "This example shows the tense in a practical sentence."
+          "text": "They have been working hard.",
+          "urdu": "وہ محنت کرتے آ رہے ہیں۔",
+          "note": "They is plural, so use have been."
         },
         {
-          "text": "They have been waiting for the bus.",
-          "urdu": "وہ بس کا انتظار کر رہے ہیں۔",
-          "note": "The verb form and helping verb agree with the tense."
+          "text": "He has been studying since morning.",
+          "urdu": "وہ صبح سے پڑھ رہا ہے۔",
+          "note": "Since gives the starting point."
+        },
+        {
+          "text": "He has been studying for three hours.",
+          "urdu": "وہ تین گھنٹے سے پڑھ رہا ہے۔",
+          "note": "For gives the duration."
+        },
+        {
+          "text": "Have they been playing cricket?",
+          "urdu": "کیا وہ کرکٹ کھیلتے آ رہے ہیں؟",
+          "note": "Have comes before the plural subject they."
         }
       ],
       "commonMistakes": [
@@ -8906,18 +9398,36 @@
           "wrong": "I have been study for two hours.",
           "right": "I have been studying for two hours.",
           "urdu": "میں دو گھنٹے سے پڑھ رہا ہوں۔",
-          "note": "Use the correct verb form for this tense."
+          "note": "Use been + V-ing."
         },
         {
           "wrong": "He has been work since morning.",
           "right": "He has been working since morning.",
           "urdu": "وہ صبح سے کام کر رہا ہے۔",
-          "note": "Follow the helping verb and main verb formula carefully."
+          "note": "The main verb must end in -ing."
+        },
+        {
+          "wrong": "They has been playing.",
+          "right": "They have been playing.",
+          "urdu": "وہ کھیلتے آ رہے ہیں۔",
+          "note": "They is plural, so use have."
+        },
+        {
+          "wrong": "She has been studying since three hours.",
+          "right": "She has been studying for three hours.",
+          "urdu": "وہ تین گھنٹے سے پڑھ رہی ہے۔",
+          "note": "Use for with a duration."
+        },
+        {
+          "wrong": "Has they been working?",
+          "right": "Have they been working?",
+          "urdu": "کیا وہ کام کرتے آ رہے ہیں؟",
+          "note": "Use have with they."
         }
       ],
       "examTips": [
-        "***Exam Tip:*** Remember the formula has/have been + V-ing.",
-        "Check the helping verb and the form of the main verb before selecting an answer."
+        "***Exam Shortcut:*** has/have + been + V-ing.",
+        "Since = starting point; for = duration."
       ],
       "practice": [],
       "quiz": [],
@@ -8932,55 +9442,90 @@
     "order": 3,
     "isLeaf": true,
     "content": {
-      "introduction": "Present Perfect Tense is used to express completed actions connected with the present.",
-      "urduExplanation": "حال مکمل زمانہ ایسے کام کو ظاہر کرتا ہے جو مکمل ہو چکا ہو اور اس کا تعلق موجودہ وقت سے ہو۔",
+      "introduction": "Present Perfect Tense is used for an action completed recently or whose result or effect is connected to the present.",
+      "urduExplanation": "حال مکمل زمانہ ایسے کام کو ظاہر کرتا ہے جو مکمل ہو چکا ہو اور جس کا تعلق اس کے نتیجے یا اثر کے ذریعے موجودہ وقت سے ہو۔",
       "englishExplanation": "",
       "types": [],
       "structure": [
-        "***Affirmative —*** مثبت جملہ\nSubject + **has/have** + **V3** + Object\n***Helping verb:*** has: He/She/It; have: I/You/We/They\n***Examples:***\nI have finished my work. — میں اپنا کام مکمل کر چکا ہوں۔\nShe has visited Lahore. — وہ لاہور کا دورہ کر چکی ہے۔",
-        "***Negative —*** منفی جملہ\nSubject + helping verb + not + main verb + Object\n***Example:***\nI have not finished my work. — میں اپنا کام مکمل نہیں کر چکا ہوں۔",
-        "***Interrogative —*** سوالیہ جملہ\nHelping verb + Subject + main verb + Object?\n***Example:***\nHas she visited Lahore? — کیا وہ لاہور کا دورہ کر چکی ہے؟",
-        "***Verb forms —*** افعال کی شکلیں\n***Formula:*** Subject + **has/have** + **V3** + Object\n***Helping verb:*** has: He/She/It; have: I/You/We/They\n***Example:*** They have won the match. — وہ میچ جیت چکے ہیں۔"
+        "***Affirmative — مثبت***\n***Formula:*** Subject + has/have + V3 + Object\nHas → He/She/It/Singular noun; Have → I/You/We/They/Plural noun\nShe has finished her work. — وہ اپنا کام مکمل کر چکی ہے۔",
+        "***Negative — منفی***\n***Formula:*** Subject + has/have + not + V3 + Object\nShe has not finished her work. — وہ اپنا کام مکمل نہیں کر چکی ہے۔",
+        "***Interrogative — سوالیہ***\n***Formula:*** Has/Have + Subject + V3 + Object?\nHas she finished her work? — کیا وہ اپنا کام مکمل کر چکی ہے؟",
+        "***Helping verbs:*** has → He/She/It/Singular noun; have → I/You/We/They/Plural noun\n***Verb form:*** V3 (past participle)"
       ],
       "rules": [
-        "1: Use **has or have** with the past participle **V3**.\nExample: I have finished my work.\nExplanation: The helping verb and verb form match this tense.",
-        "2: Do not use a finished past-time expression such as yesterday with Present Perfect.\nExample: She has visited Lahore.\nExplanation: The main verb stays in the required form.",
-        "3: Use the helping verb pattern consistently with every subject.\nExample: They have won the match.\nExplanation: The subject and formula are correct."
+        "1: Use has with He, She, It, and singular nouns; use have with I, You, We, They, and plural nouns.\nExample: She has finished her work. — وہ اپنا کام مکمل کر چکی ہے۔\nExplanation: The helping verb agrees with the subject.",
+        "2: Always use the past participle **V3** after has or have.\nExample: He has gone home. — وہ گھر جا چکا ہے۔\nExplanation: Present Perfect requires V3, not V2.",
+        "3: Use already, just, yet, ever, never, recently, so far, since, and for when suitable.\nExample: He has just arrived. — وہ ابھی پہنچا ہے۔\nExplanation: “Just” shows a recent action.",
+        "4: Do not normally use Present Perfect with a specific finished past time.\nExample: I visited Lahore yesterday. — میں نے کل لاہور کا دورہ کیا۔\nExplanation: “Yesterday” requires Past Simple.",
+        "5: Use Present Perfect when the present result is important.\nExample: Ali has completed his assignment. — علی اپنا اسائنمنٹ مکمل کر چکا ہے۔\nExplanation: The completed assignment has a result now."
       ],
       "examples": [
         {
-          "text": "I have finished my work.",
-          "urdu": "میں اپنا کام مکمل کر چکا ہوں۔",
-          "note": "This sentence follows the standard tense formula."
-        },
-        {
-          "text": "She has visited Lahore.",
-          "urdu": "وہ لاہور کا دورہ کر چکی ہے۔",
-          "note": "This example shows the tense in a practical sentence."
+          "text": "Ali has completed his assignment.",
+          "urdu": "علی اپنا اسائنمنٹ مکمل کر چکا ہے۔",
+          "note": "Ali is singular, so use has + V3."
         },
         {
           "text": "They have won the match.",
-          "urdu": "وہ میچ جیت چکے ہیں۔",
-          "note": "The verb form and helping verb agree with the tense."
+          "urdu": "انہوں نے میچ جیت لیا ہے۔",
+          "note": "They is plural, so use have + V3."
+        },
+        {
+          "text": "She has already finished her work.",
+          "urdu": "وہ اپنا کام پہلے ہی مکمل کر چکی ہے۔",
+          "note": "“Already” shows completion before now."
+        },
+        {
+          "text": "He has just arrived.",
+          "urdu": "وہ ابھی پہنچا ہے۔",
+          "note": "“Just” shows a recent action."
+        },
+        {
+          "text": "Have you ever visited Lahore?",
+          "urdu": "کیا تم نے کبھی لاہور کا دورہ کیا ہے؟",
+          "note": "“Ever” asks about any time up to now."
+        },
+        {
+          "text": "I visited Lahore yesterday.",
+          "urdu": "میں نے کل لاہور کا دورہ کیا۔",
+          "note": "A finished past time takes Past Simple."
         }
       ],
       "commonMistakes": [
         {
+          "wrong": "He has went home.",
+          "right": "He has gone home.",
+          "urdu": "وہ گھر جا چکا ہے۔",
+          "note": "Use V3 gone after has."
+        },
+        {
           "wrong": "I have finish my work.",
           "right": "I have finished my work.",
           "urdu": "میں اپنا کام مکمل کر چکا ہوں۔",
-          "note": "Use the correct verb form for this tense."
+          "note": "Present Perfect needs V3 finished."
         },
         {
           "wrong": "She have visited Lahore.",
           "right": "She has visited Lahore.",
           "urdu": "وہ لاہور کا دورہ کر چکی ہے۔",
-          "note": "Follow the helping verb and main verb formula carefully."
+          "note": "She is singular, so use has."
+        },
+        {
+          "wrong": "I have visited Lahore yesterday.",
+          "right": "I visited Lahore yesterday.",
+          "urdu": "میں نے کل لاہور کا دورہ کیا۔",
+          "note": "Yesterday is a finished past time."
+        },
+        {
+          "wrong": "Has they won the match?",
+          "right": "Have they won the match?",
+          "urdu": "کیا انہوں نے میچ جیت لیا ہے؟",
+          "note": "They is plural, so use have."
         }
       ],
       "examTips": [
-        "***Exam Tip:*** Remember the formula has/have + V3.",
-        "Check the helping verb and the form of the main verb before selecting an answer."
+        "***Exam Shortcut:*** has/have + V3. Do not use V2 after has or have.",
+        "Use Past Simple with yesterday, last week, last year, or a finished year."
       ],
       "practice": [],
       "quiz": [],
@@ -8995,55 +9540,85 @@
     "order": 2,
     "isLeaf": true,
     "content": {
-      "introduction": "Present Continuous Tense is used to express actions in progress.",
-      "urduExplanation": "حال جاری زمانہ اس کام کو ظاہر کرتا ہے جو بولنے کے وقت جاری ہو یا عارضی طور پر ہو رہا ہو۔",
+      "introduction": "Present Continuous Tense is used to describe an action that is happening now or around the present time.",
+      "urduExplanation": "حال جاری زمانہ ایسے کام کو ظاہر کرتا ہے جو اس وقت جاری ہو یا موجودہ زمانے کے آس پاس ہو رہا ہو۔",
       "englishExplanation": "",
       "types": [],
       "structure": [
-        "***Affirmative —*** مثبت جملہ\nSubject + **am/is/are** + **V-ing** + Object\n***Helping verb:*** am: I; is: He/She/It; are: You/We/They\n***Examples:***\nI am reading a book. — میں ایک کتاب پڑھ رہا ہوں۔\nShe is cooking dinner. — وہ رات کا کھانا پکا رہی ہے۔",
-        "***Negative —*** منفی جملہ\nSubject + helping verb + not + main verb + Object\n***Example:***\nI am not reading a book. — میں ایک کتاب نہیں پڑھ رہا ہوں۔",
-        "***Interrogative —*** سوالیہ جملہ\nHelping verb + Subject + main verb + Object?\n***Example:***\nIs she cooking dinner? — کیا وہ رات کا کھانا پکا رہی ہے؟",
-        "***Verb forms —*** افعال کی شکلیں\n***Formula:*** Subject + **am/is/are** + **V-ing** + Object\n***Helping verb:*** am: I; is: He/She/It; are: You/We/They\n***Example:*** They are playing cricket. — وہ کرکٹ کھیل رہے ہیں۔"
+        "***Affirmative — مثبت***\n***Formula:*** Subject + am/is/are + V-ing + Object\nI am reading a book. — میں ایک کتاب پڑھ رہا ہوں۔",
+        "***Negative — منفی***\n***Formula:*** Subject + am/is/are + not + V-ing + Object\nHe is not reading a book. — وہ کتاب نہیں پڑھ رہا ہے۔",
+        "***Interrogative — سوالیہ***\n***Formula:*** Am/Is/Are + Subject + V-ing + Object?\nIs he reading a book? — کیا وہ کتاب پڑھ رہا ہے؟",
+        "***Helping verbs:*** I → am; He/She/It/Singular noun → is; You/We/They/Plural noun → are\n***Verb form:*** V-ing"
       ],
       "rules": [
-        "1: Use **am, is, or are** before **V-ing**.\nExample: I am reading a book.\nExplanation: The helping verb and verb form match this tense.",
-        "2: Do not use the base verb alone after am/is/are.\nExample: She is cooking dinner.\nExplanation: The main verb stays in the required form.",
-        "3: Use the helping verb pattern consistently with every subject.\nExample: They are playing cricket.\nExplanation: The subject and formula are correct."
+        "1: Use am, is, or are before the main verb.\nExample: Ali is studying. — علی پڑھ رہا ہے۔\nExplanation: The helping verb agrees with the subject.",
+        "2: Use the **V-ing** form after am, is, or are.\nExample: She is cooking dinner. — وہ رات کا کھانا پکا رہی ہے۔\nExplanation: Present Continuous requires a present participle.",
+        "3: Use Present Continuous for an action happening now.\nExample: He is talking to his friend now. — وہ ابھی اپنے دوست سے بات کر رہا ہے۔\nExplanation: “Now” shows the action is happening at present.",
+        "4: Use Present Continuous for an action around the present time.\nExample: The students are preparing for the exam. — طلبہ امتحان کی تیاری کر رہے ہیں۔\nExplanation: The preparation is an ongoing action.",
+        "5: Use now, right now, at the moment, or currently when suitable.\nExample: They are working hard. — وہ محنت کر رہے ہیں۔\nExplanation: These expressions commonly signal a current action."
       ],
       "examples": [
         {
-          "text": "I am reading a book.",
-          "urdu": "میں ایک کتاب پڑھ رہا ہوں۔",
-          "note": "This sentence follows the standard tense formula."
+          "text": "She is reading a book.",
+          "urdu": "وہ ایک کتاب پڑھ رہی ہے۔",
+          "note": "The action is happening now, so Present Continuous is used."
         },
         {
-          "text": "She is cooking dinner.",
-          "urdu": "وہ رات کا کھانا پکا رہی ہے۔",
-          "note": "This example shows the tense in a practical sentence."
+          "text": "The students are preparing for the exam.",
+          "urdu": "طلبہ امتحان کی تیاری کر رہے ہیں۔",
+          "note": "The preparation is an ongoing action."
         },
         {
-          "text": "They are playing cricket.",
-          "urdu": "وہ کرکٹ کھیل رہے ہیں۔",
-          "note": "The verb form and helping verb agree with the tense."
+          "text": "They are not playing cricket.",
+          "urdu": "وہ کرکٹ نہیں کھیل رہے ہیں۔",
+          "note": "They takes are, followed by not + V-ing."
+        },
+        {
+          "text": "I am not watching television.",
+          "urdu": "میں ٹیلی ویژن نہیں دیکھ رہا ہوں۔",
+          "note": "I takes am, followed by not + V-ing."
+        },
+        {
+          "text": "Are they playing cricket?",
+          "urdu": "کیا وہ کرکٹ کھیل رہے ہیں؟",
+          "note": "They is plural, so are comes before the subject."
         }
       ],
       "commonMistakes": [
         {
-          "wrong": "I reading a book.",
-          "right": "I am reading a book.",
-          "urdu": "میں ایک کتاب پڑھ رہا ہوں۔",
-          "note": "Use the correct verb form for this tense."
+          "wrong": "He is play cricket.",
+          "right": "He is playing cricket.",
+          "urdu": "وہ کرکٹ کھیل رہا ہے۔",
+          "note": "Present Continuous requires am/is/are + V-ing."
         },
         {
-          "wrong": "She is cook dinner.",
-          "right": "She is cooking dinner.",
-          "urdu": "وہ رات کا کھانا پکا رہی ہے۔",
-          "note": "Follow the helping verb and main verb formula carefully."
+          "wrong": "They is studying English.",
+          "right": "They are studying English.",
+          "urdu": "وہ انگریزی پڑھ رہے ہیں۔",
+          "note": "They is plural, so use are, not is."
+        },
+        {
+          "wrong": "She does not studying English.",
+          "right": "She is not studying English.",
+          "urdu": "وہ انگریزی نہیں پڑھ رہی ہے۔",
+          "note": "Use is/am/are + not + V-ing, not do/does + V-ing."
+        },
+        {
+          "wrong": "Is they playing cricket?",
+          "right": "Are they playing cricket?",
+          "urdu": "کیا وہ کرکٹ کھیل رہے ہیں؟",
+          "note": "They is plural, so use are."
+        },
+        {
+          "wrong": "I is reading a book.",
+          "right": "I am reading a book.",
+          "urdu": "میں ایک کتاب پڑھ رہا ہوں۔",
+          "note": "I always takes am."
         }
       ],
       "examTips": [
-        "***Exam Tip:*** Remember the formula am/is/are + V-ing.",
-        "Check the helping verb and the form of the main verb before selecting an answer."
+        "***Exam Shortcut:*** I → am + V-ing; He/She/It/Singular noun → is + V-ing; You/We/They/Plural noun → are + V-ing.",
+        "Negative: Subject + am/is/are + not + V-ing. Question: Am/Is/Are + Subject + V-ing?"
       ],
       "practice": [],
       "quiz": [],
@@ -9189,55 +9764,85 @@
     "order": 4,
     "isLeaf": true,
     "content": {
-      "introduction": "Past Perfect Continuous Tense is used to express the earlier of two past actionsContinuous .",
-      "urduExplanation": "ماضی مکمل جاری زمانہ ماضی میں کسی دوسرے وقت یا واقعے سے پہلے جاری رہنے والے کام کو ظاہر کرتا ہے۔",
+      "introduction": "Past Perfect Continuous describes an action continuing for a period before another past event.",
+      "urduExplanation": "ماضی مکمل جاری ایسے کام کو ظاہر کرتا ہے جو ماضی کے دوسرے واقعے سے پہلے کچھ عرصے سے جاری تھا۔",
       "englishExplanation": "",
       "types": [],
       "structure": [
-        "***Affirmative —*** مثبت جملہ\nSubject + **had been** + **V-ing** + Object\n***Helping verb:*** **had been**: all subjects\n***Examples:***\nHe **had been** studying for three hours before the exam. — امتحان سے پہلے وہ تین گھنٹے سے پڑھ رہا تھا۔\nThey **had been** waiting since noon. — وہ دوپہر سے انتظار کر رہے تھے۔",
-        "***Negative —*** منفی جملہ\nSubject + helping verb + not + main verb + Object\n***Example:***\nHe had not been studying for three hours. — وہ تین گھنٹے سے نہیں پڑھ رہا تھا۔",
-        "***Interrogative —*** سوالیہ جملہ\nHelping verb + Subject + main verb + Object?\n***Example:***\nHad they been waiting since noon? — کیا وہ دوپہر سے انتظار کر رہے تھے؟",
-        "***Verb forms —*** افعال کی شکلیں\n***Formula:*** Subject + **had been** + **V-ing** + Object\n***Helping verb:*** **had been**: all subjects\n***Example:*** She **had been** working there for five years. — وہ وہاں پانچ سال سے کام کر رہی تھی۔"
+        "***Affirmative — مثبت***\n***Formula:*** Subject + had been + V-ing + Object\nHe had been studying for three hours before the exam. — وہ امتحان سے پہلے تین گھنٹے سے پڑھ رہا تھا۔",
+        "***Negative — منفی***\n***Formula:*** Subject + had been + V-ing + Object\nShe had not finished her work. — وہ اپنا کام مکمل نہیں کر چکی تھی۔",
+        "***Interrogative — سوالیہ***\n***Formula:*** Had been + v-ing + Subject + Object?\nHad she finished her work? — کیا وہ اپنا کام مکمل کر چکی تھی؟",
+        "***Helping verbs:*** had: all subjects\n***Verb form:*** had been + V-ing"
       ],
       "rules": [
-        "1: Use **for** **for** duration and **since** **for** the starting point.\nExample: He **had been** studying **for** three hours before the exam.\nExplanation: The helping verb and verb form match this tense.",
-        "2: Use **V-ing** after **had been**.\nExample: They **had been** waiting **since** noon.\nExplanation: The main verb stays in the required form.",
-        "3: Use the helping verb pattern consistently with every subject.\nExample: She **had been** working there **for** five years.\nExplanation: The subject and formula are correct."
+        "1: Use the helping verb and main verb form **had been + V-ing**.\nExample: He had been studying for three hours before the exam. — وہ امتحان سے پہلے تین گھنٹے سے پڑھ رہا تھا۔\nExplanation: The formula identifies this tense.",
+        "2: Keep the subject and helping verb agreement correct.\nExample: She visited her aunt. — اس نے اپنی خالہ سے ملاقات کی۔\nExplanation: The subject matches the helping verb.",
+        "3: Use the tense for its specific time relationship.\nExample: He had been studying for three hours before the exam. — وہ امتحان سے پہلے تین گھنٹے سے پڑھ رہا تھا۔\nExplanation: The sentence expresses the intended time relationship.",
+        "4: Use the negative formula carefully.\nExample: She had not finished her work. — وہ اپنا کام مکمل نہیں کر چکی تھی۔\nExplanation: The negative marker is placed in the correct position.",
+        "5: Form questions by placing the helping verb before the subject.\nExample: Had she finished her work? — کیا وہ اپنا کام مکمل کر چکی تھی؟\nExplanation: The question follows the interrogative pattern."
       ],
       "examples": [
         {
           "text": "He had been studying for three hours before the exam.",
-          "urdu": "امتحان سے پہلے وہ تین گھنٹے سے پڑھ رہا تھا۔",
-          "note": "This sentence follows the standard tense formula."
+          "urdu": "وہ امتحان سے پہلے تین گھنٹے سے پڑھ رہا تھا۔",
+          "note": "The sentence follows the had been + V-ing pattern."
         },
         {
-          "text": "They had been waiting since noon.",
-          "urdu": "وہ دوپہر سے انتظار کر رہے تھے۔",
-          "note": "This example shows the tense in a practical sentence."
+          "text": "She visited her aunt.",
+          "urdu": "اس نے اپنی خالہ سے ملاقات کی۔",
+          "note": "The subject and tense form agree."
         },
         {
-          "text": "She had been working there for five years.",
-          "urdu": "وہ وہاں پانچ سال سے کام کر رہی تھی۔",
-          "note": "The verb form and helping verb agree with the tense."
+          "text": "They completed the work.",
+          "urdu": "انہوں نے کام مکمل کیا۔",
+          "note": "The plural subject uses the correct tense structure."
+        },
+        {
+          "text": "We had finished dinner.",
+          "urdu": "ہم رات کا کھانا کھا چکے تھے۔",
+          "note": "The sentence shows the tense in context."
+        },
+        {
+          "text": "Had she finished her work?",
+          "urdu": "کیا وہ اپنا کام مکمل کر چکی تھی؟",
+          "note": "The helping verb comes before the subject in a question."
         }
       ],
       "commonMistakes": [
         {
-          "wrong": "He had been study for three hours.",
-          "right": "He had been studying for three hours.",
-          "urdu": "امتحان سے پہلے وہ تین گھنٹے سے پڑھ رہا تھا۔",
-          "note": "Use the correct verb form for this tense."
+          "wrong": "He had been study.",
+          "right": "He had been studying.",
+          "urdu": "وہ امتحان سے پہلے تین گھنٹے سے پڑھ رہا تھا۔",
+          "note": "Use the correct had been + V-ing form."
         },
         {
-          "wrong": "They had been wait since noon.",
-          "right": "They had been waiting since noon.",
-          "urdu": "وہ دوپہر سے انتظار کر رہے تھے۔",
-          "note": "Follow the helping verb and main verb formula carefully."
+          "wrong": "Did she visited her aunt?",
+          "right": "Had she finished her work?",
+          "urdu": "کیا وہ اپنا کام مکمل کر چکی تھی؟",
+          "note": "Use the required verb form after the helping verb."
+        },
+        {
+          "wrong": "He do not work.",
+          "right": "They had finished.",
+          "urdu": "وہ امتحان سے پہلے تین گھنٹے سے پڑھ رہا تھا۔",
+          "note": "Choose the correct helping verb."
+        },
+        {
+          "wrong": "He had been work for two hours.",
+          "right": "He had been studying for three hours before the exam.",
+          "urdu": "وہ امتحان سے پہلے تین گھنٹے سے پڑھ رہا تھا۔",
+          "note": "Keep the main verb in the required form."
+        },
+        {
+          "wrong": "Did they completed the task?",
+          "right": "Had she finished her work?",
+          "urdu": "کیا وہ اپنا کام مکمل کر چکی تھی؟",
+          "note": "Do not use an incorrect past form after the helping verb."
         }
       ],
       "examTips": [
-        "***Exam Tip:*** Remember the formula had been + V-ing.",
-        "Check the helping verb and the form of the main verb before selecting an answer."
+        "***Exam Shortcut:*** had been + V-ing.",
+        "Check the helping verb, time expression, and main verb form before selecting an answer."
       ],
       "practice": [],
       "quiz": [],
@@ -9252,55 +9857,85 @@
     "order": 3,
     "isLeaf": true,
     "content": {
-      "introduction": "Past Perfect Tense is used to express the earlier of two past actions.",
-      "urduExplanation": "ماضی مکمل زمانہ ماضی کے دو کاموں میں پہلے مکمل ہونے والے کام کو ظاہر کرتا ہے۔",
+      "introduction": "Past Perfect describes an action completed before another past action.",
+      "urduExplanation": "ماضی مکمل ایسے کام کو ظاہر کرتا ہے جو ماضی کے دوسرے کام سے پہلے مکمل ہو چکا تھا۔",
       "englishExplanation": "",
       "types": [],
       "structure": [
-        "***Affirmative —*** مثبت جملہ\nSubject + had + **V3** + Object\n***Helping verb:*** had: all subjects\n***Examples:***\nThe train had left before we arrived. — ہمارے پہنچنے سے پہلے ٹرین جا چکی تھی۔\nShe had finished the test. — وہ ٹیسٹ مکمل کر چکی تھی۔",
-        "***Negative —*** منفی جملہ\nSubject + helping verb + not + main verb + Object\n***Example:***\nShe had not finished the test. — وہ ٹیسٹ مکمل نہیں کر چکی تھی۔",
-        "***Interrogative —*** سوالیہ جملہ\nHelping verb + Subject + main verb + Object?\n***Example:***\nHad they eaten dinner? — کیا وہ رات کا کھانا کھا چکے تھے؟",
-        "***Verb forms —*** افعال کی شکلیں\n***Formula:*** Subject + had + **V3** + Object\n***Helping verb:*** had: all subjects\n***Example:*** They had eaten dinner before the guests came. — مہمانوں کے آنے سے پہلے وہ رات کا کھانا کھا چکے تھے۔"
+        "***Affirmative — مثبت***\n***Formula:*** Subject + had + V3 + Object\nThe train had left before we arrived. — ہمارے پہنچنے سے پہلے ٹرین جا چکی تھی۔",
+        "***Negative — منفی***\n***Formula:*** Subject + had + V3; had not + V3 + Object\nShe had not finished her work. — وہ اپنا کام مکمل نہیں کر چکی تھی۔",
+        "***Interrogative — سوالیہ***\n***Formula:*** Had + v3 + Subject + Object?\nHad she finished her work? — کیا وہ اپنا کام مکمل کر چکی تھی؟",
+        "***Helping verbs:*** had: all subjects\n***Verb form:*** had + V3"
       ],
       "rules": [
-        "1: Use had + **V3** **for** the earlier past action.\nExample: The train had left before we arrived.\nExplanation: The helping verb and verb form match this tense.",
-        "2: Do not use **V2** after had.\nExample: She had finished the test.\nExplanation: The main verb stays in the required form.",
-        "3: Use the helping verb pattern consistently with every subject.\nExample: They had eaten dinner before the guests came.\nExplanation: The subject and formula are correct."
+        "1: Use the helping verb and main verb form **had + V3**.\nExample: The train had left before we arrived. — ہمارے پہنچنے سے پہلے ٹرین جا چکی تھی۔\nExplanation: The formula identifies this tense.",
+        "2: Keep the subject and helping verb agreement correct.\nExample: She visited her aunt. — اس نے اپنی خالہ سے ملاقات کی۔\nExplanation: The subject matches the helping verb.",
+        "3: Use the tense for its specific time relationship.\nExample: The train had left before we arrived. — ہمارے پہنچنے سے پہلے ٹرین جا چکی تھی۔\nExplanation: The sentence expresses the intended time relationship.",
+        "4: Use the negative formula carefully.\nExample: She had not finished her work. — وہ اپنا کام مکمل نہیں کر چکی تھی۔\nExplanation: The negative marker is placed in the correct position.",
+        "5: Form questions by placing the helping verb before the subject.\nExample: Had she finished her work? — کیا وہ اپنا کام مکمل کر چکی تھی؟\nExplanation: The question follows the interrogative pattern."
       ],
       "examples": [
         {
           "text": "The train had left before we arrived.",
           "urdu": "ہمارے پہنچنے سے پہلے ٹرین جا چکی تھی۔",
-          "note": "This sentence follows the standard tense formula."
+          "note": "The sentence follows the had + V3 pattern."
         },
         {
-          "text": "She had finished the test.",
-          "urdu": "وہ ٹیسٹ مکمل کر چکی تھی۔",
-          "note": "This example shows the tense in a practical sentence."
+          "text": "She visited her aunt.",
+          "urdu": "اس نے اپنی خالہ سے ملاقات کی۔",
+          "note": "The subject and tense form agree."
         },
         {
-          "text": "They had eaten dinner before the guests came.",
-          "urdu": "مہمانوں کے آنے سے پہلے وہ رات کا کھانا کھا چکے تھے۔",
-          "note": "The verb form and helping verb agree with the tense."
+          "text": "They completed the work.",
+          "urdu": "انہوں نے کام مکمل کیا۔",
+          "note": "The plural subject uses the correct tense structure."
+        },
+        {
+          "text": "We had finished dinner.",
+          "urdu": "ہم رات کا کھانا کھا چکے تھے۔",
+          "note": "The sentence shows the tense in context."
+        },
+        {
+          "text": "Had she finished her work?",
+          "urdu": "کیا وہ اپنا کام مکمل کر چکی تھی؟",
+          "note": "The helping verb comes before the subject in a question."
         }
       ],
       "commonMistakes": [
         {
-          "wrong": "She had finish the test.",
-          "right": "She had finished the test.",
+          "wrong": "She had finish the work.",
+          "right": "She had finished the work.",
           "urdu": "ہمارے پہنچنے سے پہلے ٹرین جا چکی تھی۔",
-          "note": "Use the correct verb form for this tense."
+          "note": "Use the correct had + V3 form."
         },
         {
-          "wrong": "They had ate dinner.",
-          "right": "They had eaten dinner.",
-          "urdu": "وہ ٹیسٹ مکمل کر چکی تھی۔",
-          "note": "Follow the helping verb and main verb formula carefully."
+          "wrong": "Did she visited her aunt?",
+          "right": "Had she finished her work?",
+          "urdu": "کیا وہ اپنا کام مکمل کر چکی تھی؟",
+          "note": "Use the required verb form after the helping verb."
+        },
+        {
+          "wrong": "They has finished.",
+          "right": "They had finished.",
+          "urdu": "ہمارے پہنچنے سے پہلے ٹرین جا چکی تھی۔",
+          "note": "Choose the correct helping verb."
+        },
+        {
+          "wrong": "She did not went.",
+          "right": "The train had left before we arrived.",
+          "urdu": "ہمارے پہنچنے سے پہلے ٹرین جا چکی تھی۔",
+          "note": "Keep the main verb in the required form."
+        },
+        {
+          "wrong": "Did they completed the task?",
+          "right": "Had she finished her work?",
+          "urdu": "کیا وہ اپنا کام مکمل کر چکی تھی؟",
+          "note": "Do not use an incorrect past form after the helping verb."
         }
       ],
       "examTips": [
-        "***Exam Tip:*** Remember the formula had + V3.",
-        "Check the helping verb and the form of the main verb before selecting an answer."
+        "***Exam Shortcut:*** had + V3.",
+        "Check the helping verb, time expression, and main verb form before selecting an answer."
       ],
       "practice": [],
       "quiz": [],
@@ -9315,55 +9950,85 @@
     "order": 2,
     "isLeaf": true,
     "content": {
-      "introduction": "Past Continuous Tense is used to express actions in progress at a past time.",
-      "urduExplanation": "ماضی جاری زمانہ ماضی کے کسی خاص وقت پر جاری کام کو ظاہر کرتا ہے۔",
+      "introduction": "Past Continuous describes an action that was in progress at a particular past time.",
+      "urduExplanation": "ماضی جاری ایسے کام کو ظاہر کرتا ہے جو ماضی کے کسی وقت جاری تھا۔",
       "englishExplanation": "",
       "types": [],
       "structure": [
-        "***Affirmative —*** مثبت جملہ\nSubject + **was/were** + **V-ing** + Object\n***Helping verb:*** was: I/He/She/It; were: You/We/They\n***Examples:***\nI was reading at eight o’clock. — میں آٹھ بجے پڑھ رہا تھا۔\nShe was cooking when I arrived. — جب میں پہنچا تو وہ کھانا پکا رہی تھی۔",
-        "***Negative —*** منفی جملہ\nSubject + helping verb + not + main verb + Object\n***Example:***\nI was not reading at eight o’clock. — میں آٹھ بجے نہیں پڑھ رہا تھا۔",
-        "***Interrogative —*** سوالیہ جملہ\nHelping verb + Subject + main verb + Object?\n***Example:***\nWere they playing in the park? — کیا وہ پارک میں کھیل رہے تھے؟",
-        "***Verb forms —*** افعال کی شکلیں\n***Formula:*** Subject + **was/were** + **V-ing** + Object\n***Helping verb:*** was: I/He/She/It; were: You/We/They\n***Example:*** They were playing in the park. — وہ پارک میں کھیل رہے تھے۔"
+        "***Affirmative — مثبت***\n***Formula:*** Subject + was/were + V-ing + Object\nI was reading at eight o’clock. — میں آٹھ بجے پڑھ رہا تھا۔",
+        "***Negative — منفی***\n***Formula:*** Subject + was/were + V-ing; was/were + not + V-ing + Object\nHe was not reading a book. — وہ کتاب نہیں پڑھ رہا تھا۔",
+        "***Interrogative — سوالیہ***\n***Formula:*** Was/were + v-ing + Subject + Object?\nWas he reading a book? — کیا وہ کتاب پڑھ رہا تھا؟",
+        "***Helping verbs:*** was: I/He/She/It; were: You/We/They\n***Verb form:*** was/were + V-ing"
       ],
       "rules": [
-        "1: Use **was or were** according to the subject.\nExample: I was reading at eight o’clock.\nExplanation: The helping verb and verb form match this tense.",
-        "2: Use **V-ing** after **was or were**.\nExample: She was cooking when I arrived.\nExplanation: The main verb stays in the required form.",
-        "3: Use the helping verb pattern consistently with every subject.\nExample: They were playing in the park.\nExplanation: The subject and formula are correct."
+        "1: Use the helping verb and main verb form **was/were + V-ing**.\nExample: I was reading at eight o’clock. — میں آٹھ بجے پڑھ رہا تھا۔\nExplanation: The formula identifies this tense.",
+        "2: Keep the subject and helping verb agreement correct.\nExample: She visited her aunt. — اس نے اپنی خالہ سے ملاقات کی۔\nExplanation: The subject matches the helping verb.",
+        "3: Use the tense for its specific time relationship.\nExample: I was reading at eight o’clock. — میں آٹھ بجے پڑھ رہا تھا۔\nExplanation: The sentence expresses the intended time relationship.",
+        "4: Use the negative formula carefully.\nExample: He was not reading a book. — وہ کتاب نہیں پڑھ رہا تھا۔\nExplanation: The negative marker is placed in the correct position.",
+        "5: Form questions by placing the helping verb before the subject.\nExample: Was he reading a book? — کیا وہ کتاب پڑھ رہا تھا؟\nExplanation: The question follows the interrogative pattern."
       ],
       "examples": [
         {
           "text": "I was reading at eight o’clock.",
           "urdu": "میں آٹھ بجے پڑھ رہا تھا۔",
-          "note": "This sentence follows the standard tense formula."
+          "note": "The sentence follows the was/were + V-ing pattern."
         },
         {
-          "text": "She was cooking when I arrived.",
-          "urdu": "جب میں پہنچا تو وہ کھانا پکا رہی تھی۔",
-          "note": "This example shows the tense in a practical sentence."
+          "text": "She visited her aunt.",
+          "urdu": "اس نے اپنی خالہ سے ملاقات کی۔",
+          "note": "The subject and tense form agree."
         },
         {
-          "text": "They were playing in the park.",
-          "urdu": "وہ پارک میں کھیل رہے تھے۔",
-          "note": "The verb form and helping verb agree with the tense."
+          "text": "They completed the work.",
+          "urdu": "انہوں نے کام مکمل کیا۔",
+          "note": "The plural subject uses the correct tense structure."
+        },
+        {
+          "text": "We were waiting outside.",
+          "urdu": "ہم باہر انتظار کر رہے تھے۔",
+          "note": "The sentence shows the tense in context."
+        },
+        {
+          "text": "Was he reading a book?",
+          "urdu": "کیا وہ کتاب پڑھ رہا تھا؟",
+          "note": "The helping verb comes before the subject in a question."
         }
       ],
       "commonMistakes": [
         {
-          "wrong": "I was read at eight o’clock.",
-          "right": "I was reading at eight o’clock.",
+          "wrong": "He was play cricket.",
+          "right": "He was playing cricket.",
           "urdu": "میں آٹھ بجے پڑھ رہا تھا۔",
-          "note": "Use the correct verb form for this tense."
+          "note": "Use the correct was/were + V-ing form."
         },
         {
-          "wrong": "They was playing in the park.",
-          "right": "They were playing in the park.",
-          "urdu": "جب میں پہنچا تو وہ کھانا پکا رہی تھی۔",
-          "note": "Follow the helping verb and main verb formula carefully."
+          "wrong": "Did she visited her aunt?",
+          "right": "Was he reading a book?",
+          "urdu": "کیا وہ کتاب پڑھ رہا تھا؟",
+          "note": "Use the required verb form after the helping verb."
+        },
+        {
+          "wrong": "They was working.",
+          "right": "They were working.",
+          "urdu": "میں آٹھ بجے پڑھ رہا تھا۔",
+          "note": "Choose the correct helping verb."
+        },
+        {
+          "wrong": "She did not went.",
+          "right": "I was reading at eight o’clock.",
+          "urdu": "میں آٹھ بجے پڑھ رہا تھا۔",
+          "note": "Keep the main verb in the required form."
+        },
+        {
+          "wrong": "Did they completed the task?",
+          "right": "Was he reading a book?",
+          "urdu": "کیا وہ کتاب پڑھ رہا تھا؟",
+          "note": "Do not use an incorrect past form after the helping verb."
         }
       ],
       "examTips": [
-        "***Exam Tip:*** Remember the formula was/were + V-ing.",
-        "Check the helping verb and the form of the main verb before selecting an answer."
+        "***Exam Shortcut:*** was/were + V-ing.",
+        "Check the helping verb, time expression, and main verb form before selecting an answer."
       ],
       "practice": [],
       "quiz": [],
@@ -9378,55 +10043,85 @@
     "order": 1,
     "isLeaf": true,
     "content": {
-      "introduction": "Past Indefinite Tense is used to express completed past actions.",
-      "urduExplanation": "ماضی سادہ زمانہ ماضی میں مکمل ہونے والے کام یا واقعے کو ظاہر کرتا ہے۔",
+      "introduction": "Past Indefinite describes completed actions in the past.",
+      "urduExplanation": "ماضی سادہ ایسے مکمل کاموں کو ظاہر کرتا ہے جو ماضی میں ہوئے۔",
       "englishExplanation": "",
       "types": [],
       "structure": [
-        "***Affirmative —*** مثبت جملہ\nSubject + **V2** + Object; Negative/Question: did + **V1** + Object\n***Helping verb:*** did: all subjects in negative and interrogative sentences\n***Examples:***\nI played cricket yesterday. — میں نے کل کرکٹ کھیلی۔\nShe visited her aunt. — اس نے اپنی خالہ سے ملاقات کی۔",
-        "***Negative —*** منفی جملہ\nSubject + helping verb + not + main verb + Object\n***Example:***\nI did not play cricket yesterday. — میں نے کل کرکٹ نہیں کھیلی۔",
-        "***Interrogative —*** سوالیہ جملہ\nHelping verb + Subject + main verb + Object?\n***Example:***\nDid she visit her aunt? — کیا اس نے اپنی خالہ سے ملاقات کی؟",
-        "***Verb forms —*** افعال کی شکلیں\n***Formula:*** Subject + **V2** + Object; Negative/Question: did + **V1** + Object\n***Helping verb:*** did: all subjects in negative and interrogative sentences\n***Example:*** They went to school. — وہ اسکول گئے۔"
+        "***Affirmative — مثبت***\n***Formula:*** Subject + V2 + Object\nI played cricket yesterday. — میں نے کل کرکٹ کھیلی۔",
+        "***Negative — منفی***\n***Formula:*** Subject + V2; did + V1 + Object\nShe did not visit her aunt. — اس نے اپنی خالہ سے ملاقات نہیں کی۔",
+        "***Interrogative — سوالیہ***\n***Formula:*** V2 + Subject + Object?\nDid she visit her aunt? — کیا اس نے اپنی خالہ سے ملاقات کی؟",
+        "***Helping verbs:*** had: all subjects\n***Verb form:*** did + V1"
       ],
       "rules": [
-        "1: Use **V2** in affirmative sentences and did + **V1** in negatives and questions.\nExample: I played cricket yesterday.\nExplanation: The helping verb and verb form match this tense.",
-        "2: After did or did not, never use **V2**.\nExample: She visited her aunt.\nExplanation: The main verb stays in the required form.",
-        "3: Use the helping verb pattern consistently with every subject.\nExample: They went to school.\nExplanation: The subject and formula are correct."
+        "1: Use the helping verb and main verb form **did + V1**.\nExample: I played cricket yesterday. — میں نے کل کرکٹ کھیلی۔\nExplanation: The formula identifies this tense.",
+        "2: Keep the subject and helping verb agreement correct.\nExample: She visited her aunt. — اس نے اپنی خالہ سے ملاقات کی۔\nExplanation: The subject matches the helping verb.",
+        "3: Use the tense for its specific time relationship.\nExample: I played cricket yesterday. — میں نے کل کرکٹ کھیلی۔\nExplanation: The sentence expresses the intended time relationship.",
+        "4: Use the negative formula carefully.\nExample: She did not visit her aunt. — اس نے اپنی خالہ سے ملاقات نہیں کی۔\nExplanation: The negative marker is placed in the correct position.",
+        "5: Form questions by placing the helping verb before the subject.\nExample: Did she visit her aunt? — کیا اس نے اپنی خالہ سے ملاقات کی؟\nExplanation: The question follows the interrogative pattern."
       ],
       "examples": [
         {
           "text": "I played cricket yesterday.",
           "urdu": "میں نے کل کرکٹ کھیلی۔",
-          "note": "This sentence follows the standard tense formula."
+          "note": "The sentence follows the did + V1 pattern."
         },
         {
           "text": "She visited her aunt.",
           "urdu": "اس نے اپنی خالہ سے ملاقات کی۔",
-          "note": "This example shows the tense in a practical sentence."
+          "note": "The subject and tense form agree."
         },
         {
-          "text": "They went to school.",
-          "urdu": "وہ اسکول گئے۔",
-          "note": "The verb form and helping verb agree with the tense."
+          "text": "They completed the work.",
+          "urdu": "انہوں نے کام مکمل کیا۔",
+          "note": "The plural subject uses the correct tense structure."
+        },
+        {
+          "text": "We had finished dinner.",
+          "urdu": "ہم رات کا کھانا کھا چکے تھے۔",
+          "note": "The sentence shows the tense in context."
+        },
+        {
+          "text": "Did she visit her aunt?",
+          "urdu": "کیا اس نے اپنی خالہ سے ملاقات کی؟",
+          "note": "The helping verb comes before the subject in a question."
         }
       ],
       "commonMistakes": [
         {
-          "wrong": "I did played cricket yesterday.",
+          "wrong": "I did played cricket.",
           "right": "I played cricket yesterday.",
           "urdu": "میں نے کل کرکٹ کھیلی۔",
-          "note": "Use the correct verb form for this tense."
+          "note": "Use the correct did + V1 form."
         },
         {
           "wrong": "Did she visited her aunt?",
           "right": "Did she visit her aunt?",
-          "urdu": "اس نے اپنی خالہ سے ملاقات کی۔",
-          "note": "Follow the helping verb and main verb formula carefully."
+          "urdu": "کیا اس نے اپنی خالہ سے ملاقات کی؟",
+          "note": "Use the required verb form after the helping verb."
+        },
+        {
+          "wrong": "He do not work.",
+          "right": "They had finished.",
+          "urdu": "میں نے کل کرکٹ کھیلی۔",
+          "note": "Choose the correct helping verb."
+        },
+        {
+          "wrong": "She did not went.",
+          "right": "I played cricket yesterday.",
+          "urdu": "میں نے کل کرکٹ کھیلی۔",
+          "note": "Keep the main verb in the required form."
+        },
+        {
+          "wrong": "Did they completed the task?",
+          "right": "Did she visit her aunt?",
+          "urdu": "کیا اس نے اپنی خالہ سے ملاقات کی؟",
+          "note": "Do not use an incorrect past form after the helping verb."
         }
       ],
       "examTips": [
-        "***Exam Tip:*** Remember the formula Subject + V2 + Object; Negative/Question: did + V1.",
-        "Check the helping verb and the form of the main verb before selecting an answer."
+        "***Exam Shortcut:*** did + V1.",
+        "Check the helping verb, time expression, and main verb form before selecting an answer."
       ],
       "practice": [],
       "quiz": [],
@@ -9449,55 +10144,85 @@
     "order": 4,
     "isLeaf": true,
     "content": {
-      "introduction": "Future Perfect Continuous Tense is used to express actions completed before a future timeContinuous .",
-      "urduExplanation": "مستقبل مکمل جاری زمانہ مستقبل کے کسی وقت تک جاری رہنے والے کام کی مدت کو ظاہر کرتا ہے۔",
+      "introduction": "Future Perfect Continuous describes an action continuing up to a specified future time.",
+      "urduExplanation": "مستقبل مکمل جاری ایسے کام کو ظاہر کرتا ہے جو مستقبل کے کسی وقت تک جاری رہتا ہوگا۔",
       "englishExplanation": "",
       "types": [],
       "structure": [
-        "***Affirmative —*** مثبت جملہ\nSubject + will **have been** + **V-ing** + Object\n***Helping verb:*** will **have been**: all subjects\n***Examples:***\nBy June, I will **have been** working here for two years. — جون تک مجھے یہاں کام کرتے ہوئے دو سال ہو جائیں گے۔\nShe will **have been** teaching for ten years. — اسے پڑھاتے ہوئے دس سال ہو چکے ہوں گے۔",
-        "***Negative —*** منفی جملہ\nSubject + helping verb + not + main verb + Object\n***Example:***\nI will not **have been** working here for two years by June. — جون تک مجھے یہاں کام کرتے ہوئے دو سال نہیں ہوئے ہوں گے۔",
-        "***Interrogative —*** سوالیہ جملہ\nHelping verb + Subject + main verb + Object?\n***Example:***\nWill she **have been** teaching for ten years? — کیا اسے پڑھاتے ہوئے دس سال ہو چکے ہوں گے؟",
-        "***Verb forms —*** افعال کی شکلیں\n***Formula:*** Subject + will **have been** + **V-ing** + Object\n***Helping verb:*** will **have been**: all subjects\n***Example:*** They will **have been** travelling since morning. — وہ صبح سے سفر کر رہے ہوں گے۔"
+        "***Affirmative — مثبت***\n***Formula:*** Subject + will have been + V-ing + Object\nBy June, I will have been working here for two years. — جون تک مجھے یہاں کام کرتے ہوئے دو سال ہو چکے ہوں گے۔",
+        "***Negative — منفی***\n***Formula:*** Subject + will have been + V-ing + Object\nShe will not have finished her work. — وہ اپنا کام مکمل نہیں کر چکی ہوگی۔",
+        "***Interrogative — سوالیہ***\n***Formula:*** Will have been + v-ing + Subject + Object?\nWill she have finished her work? — کیا وہ اپنا کام مکمل کر چکی ہوگی؟",
+        "***Helping verbs:*** will have: all subjects\n***Verb form:*** will have been + V-ing"
       ],
       "rules": [
-        "1: Use **for** to show duration up to a future point.\nExample: By June, I will **have been** working here **for** two years.\nExplanation: The helping verb and verb form match this tense.",
-        "2: Use **V-ing** after will **have been**.\nExample: She will **have been** teaching **for** ten years.\nExplanation: The main verb stays in the required form.",
-        "3: Use the helping verb pattern consistently with every subject.\nExample: They will **have been** travelling **since** morning.\nExplanation: The subject and formula are correct."
+        "1: Use the helping verb and main verb form **will have been + V-ing**.\nExample: By June, I will have been working here for two years. — جون تک مجھے یہاں کام کرتے ہوئے دو سال ہو چکے ہوں گے۔\nExplanation: The formula identifies this tense.",
+        "2: Keep the subject and helping verb agreement correct.\nExample: She will join the class. — وہ کلاس میں شامل ہوگی۔\nExplanation: The subject matches the helping verb.",
+        "3: Use the tense for its specific time relationship.\nExample: By June, I will have been working here for two years. — جون تک مجھے یہاں کام کرتے ہوئے دو سال ہو چکے ہوں گے۔\nExplanation: The sentence expresses the intended time relationship.",
+        "4: Use the negative formula carefully.\nExample: She will not have finished her work. — وہ اپنا کام مکمل نہیں کر چکی ہوگی۔\nExplanation: The negative marker is placed in the correct position.",
+        "5: Form questions by placing the helping verb before the subject.\nExample: Will she have finished her work? — کیا وہ اپنا کام مکمل کر چکی ہوگی؟\nExplanation: The question follows the interrogative pattern."
       ],
       "examples": [
         {
           "text": "By June, I will have been working here for two years.",
-          "urdu": "جون تک مجھے یہاں کام کرتے ہوئے دو سال ہو جائیں گے۔",
-          "note": "This sentence follows the standard tense formula."
+          "urdu": "جون تک مجھے یہاں کام کرتے ہوئے دو سال ہو چکے ہوں گے۔",
+          "note": "The sentence follows the will have been + V-ing pattern."
         },
         {
-          "text": "She will have been teaching for ten years.",
-          "urdu": "اسے پڑھاتے ہوئے دس سال ہو چکے ہوں گے۔",
-          "note": "This example shows the tense in a practical sentence."
+          "text": "She will join the class.",
+          "urdu": "وہ کلاس میں شامل ہوگی۔",
+          "note": "The subject and tense form agree."
         },
         {
-          "text": "They will have been travelling since morning.",
-          "urdu": "وہ صبح سے سفر کر رہے ہوں گے۔",
-          "note": "The verb form and helping verb agree with the tense."
+          "text": "They will complete the work.",
+          "urdu": "وہ کام مکمل کریں گے۔",
+          "note": "The plural subject uses the correct tense structure."
+        },
+        {
+          "text": "We will finish dinner.",
+          "urdu": "ہم رات کا کھانا مکمل کریں گے۔",
+          "note": "The sentence shows the tense in context."
+        },
+        {
+          "text": "Will she have finished her work?",
+          "urdu": "کیا وہ اپنا کام مکمل کر چکی ہوگی؟",
+          "note": "The helping verb comes before the subject in a question."
         }
       ],
       "commonMistakes": [
         {
-          "wrong": "I will have been work here for two years.",
-          "right": "I will have been working here for two years.",
-          "urdu": "جون تک مجھے یہاں کام کرتے ہوئے دو سال ہو جائیں گے۔",
-          "note": "Use the correct verb form for this tense."
+          "wrong": "He will have been work.",
+          "right": "He will have been working.",
+          "urdu": "جون تک مجھے یہاں کام کرتے ہوئے دو سال ہو چکے ہوں گے۔",
+          "note": "Use the correct will have been + V-ing form."
         },
         {
-          "wrong": "She will have been teach for ten years.",
-          "right": "She will have been teaching for ten years.",
-          "urdu": "اسے پڑھاتے ہوئے دس سال ہو چکے ہوں گے۔",
-          "note": "Follow the helping verb and main verb formula carefully."
+          "wrong": "Will she joined the class?",
+          "right": "Will she have finished her work?",
+          "urdu": "کیا وہ اپنا کام مکمل کر چکی ہوگی؟",
+          "note": "Use the required verb form after the helping verb."
+        },
+        {
+          "wrong": "He do not work.",
+          "right": "He will not work.",
+          "urdu": "جون تک مجھے یہاں کام کرتے ہوئے دو سال ہو چکے ہوں گے۔",
+          "note": "Choose the correct helping verb."
+        },
+        {
+          "wrong": "She did not went.",
+          "right": "By June, I will have been working here for two years.",
+          "urdu": "جون تک مجھے یہاں کام کرتے ہوئے دو سال ہو چکے ہوں گے۔",
+          "note": "Keep the main verb in the required form."
+        },
+        {
+          "wrong": "Will they completed the task?",
+          "right": "Will she have finished her work?",
+          "urdu": "کیا وہ اپنا کام مکمل کر چکی ہوگی؟",
+          "note": "Do not use an incorrect past form after the helping verb."
         }
       ],
       "examTips": [
-        "***Exam Tip:*** Remember the formula will have been + V-ing.",
-        "Check the helping verb and the form of the main verb before selecting an answer."
+        "***Exam Shortcut:*** will have been + V-ing.",
+        "Check the helping verb, time expression, and main verb form before selecting an answer."
       ],
       "practice": [],
       "quiz": [],
@@ -9512,55 +10237,85 @@
     "order": 3,
     "isLeaf": true,
     "content": {
-      "introduction": "Future Perfect Tense is used to express actions completed before a future time.",
-      "urduExplanation": "مستقبل مکمل زمانہ مستقبل کے کسی خاص وقت سے پہلے مکمل ہو جانے والے کام کو ظاہر کرتا ہے۔",
+      "introduction": "Future Perfect describes an action that will be completed before a future time.",
+      "urduExplanation": "مستقبل مکمل ایسے کام کو ظاہر کرتا ہے جو مستقبل کے کسی وقت سے پہلے مکمل ہو چکا ہوگا۔",
       "englishExplanation": "",
       "types": [],
       "structure": [
-        "***Affirmative —*** مثبت جملہ\nSubject + **will have** + **V3** + Object\n***Helping verb:*** **will have**: all subjects\n***Examples:***\nI **will have** finished the work by Monday. — میں پیر تک کام مکمل کر چکا ہوں گا۔\nShe **will have** reached home by six. — وہ چھ بجے تک گھر پہنچ چکی ہو گی۔",
-        "***Negative —*** منفی جملہ\nSubject + helping verb + not + main verb + Object\n***Example:***\nI will not have finished the work by Monday. — میں پیر تک کام مکمل نہیں کر چکا ہوں گا۔",
-        "***Interrogative —*** سوالیہ جملہ\nHelping verb + Subject + main verb + Object?\n***Example:***\nWill she have reached home by six? — کیا وہ چھ بجے تک گھر پہنچ چکی ہو گی؟",
-        "***Verb forms —*** افعال کی شکلیں\n***Formula:*** Subject + **will have** + **V3** + Object\n***Helping verb:*** **will have**: all subjects\n***Example:*** They **will have** completed the course. — وہ کورس مکمل کر چکے ہوں گے۔"
+        "***Affirmative — مثبت***\n***Formula:*** Subject + will have + V3 + Object\nI will have finished the work by Monday. — میں پیر تک کام مکمل کر چکا ہوں گا۔",
+        "***Negative — منفی***\n***Formula:*** Subject + will have + V3 + Object\nShe will not have finished her work. — وہ اپنا کام مکمل نہیں کر چکی ہوگی۔",
+        "***Interrogative — سوالیہ***\n***Formula:*** Will have + v3 + Subject + Object?\nWill she have finished her work? — کیا وہ اپنا کام مکمل کر چکی ہوگی؟",
+        "***Helping verbs:*** will have: all subjects\n***Verb form:*** will have + V3"
       ],
       "rules": [
-        "1: Use **by** with a deadline or future point.\nExample: I **will have** finished the work **by** Monday.\nExplanation: The helping verb and verb form match this tense.",
-        "2: Use **V3** after **will have**.\nExample: She **will have** reached home **by** six.\nExplanation: The main verb stays in the required form.",
-        "3: Use the helping verb pattern consistently with every subject.\nExample: They **will have** completed the course.\nExplanation: The subject and formula are correct."
+        "1: Use the helping verb and main verb form **will have + V3**.\nExample: I will have finished the work by Monday. — میں پیر تک کام مکمل کر چکا ہوں گا۔\nExplanation: The formula identifies this tense.",
+        "2: Keep the subject and helping verb agreement correct.\nExample: She will join the class. — وہ کلاس میں شامل ہوگی۔\nExplanation: The subject matches the helping verb.",
+        "3: Use the tense for its specific time relationship.\nExample: I will have finished the work by Monday. — میں پیر تک کام مکمل کر چکا ہوں گا۔\nExplanation: The sentence expresses the intended time relationship.",
+        "4: Use the negative formula carefully.\nExample: She will not have finished her work. — وہ اپنا کام مکمل نہیں کر چکی ہوگی۔\nExplanation: The negative marker is placed in the correct position.",
+        "5: Form questions by placing the helping verb before the subject.\nExample: Will she have finished her work? — کیا وہ اپنا کام مکمل کر چکی ہوگی؟\nExplanation: The question follows the interrogative pattern."
       ],
       "examples": [
         {
           "text": "I will have finished the work by Monday.",
           "urdu": "میں پیر تک کام مکمل کر چکا ہوں گا۔",
-          "note": "This sentence follows the standard tense formula."
+          "note": "The sentence follows the will have + V3 pattern."
         },
         {
-          "text": "She will have reached home by six.",
-          "urdu": "وہ چھ بجے تک گھر پہنچ چکی ہو گی۔",
-          "note": "This example shows the tense in a practical sentence."
+          "text": "She will join the class.",
+          "urdu": "وہ کلاس میں شامل ہوگی۔",
+          "note": "The subject and tense form agree."
         },
         {
-          "text": "They will have completed the course.",
-          "urdu": "وہ کورس مکمل کر چکے ہوں گے۔",
-          "note": "The verb form and helping verb agree with the tense."
+          "text": "They will complete the work.",
+          "urdu": "وہ کام مکمل کریں گے۔",
+          "note": "The plural subject uses the correct tense structure."
+        },
+        {
+          "text": "We will finish dinner.",
+          "urdu": "ہم رات کا کھانا مکمل کریں گے۔",
+          "note": "The sentence shows the tense in context."
+        },
+        {
+          "text": "Will she have finished her work?",
+          "urdu": "کیا وہ اپنا کام مکمل کر چکی ہوگی؟",
+          "note": "The helping verb comes before the subject in a question."
         }
       ],
       "commonMistakes": [
         {
-          "wrong": "I will have finish the work by Monday.",
-          "right": "I will have finished the work by Monday.",
+          "wrong": "She will have finish.",
+          "right": "She will have finished.",
           "urdu": "میں پیر تک کام مکمل کر چکا ہوں گا۔",
-          "note": "Use the correct verb form for this tense."
+          "note": "Use the correct will have + V3 form."
         },
         {
-          "wrong": "She will have reach home by six.",
-          "right": "She will have reached home by six.",
-          "urdu": "وہ چھ بجے تک گھر پہنچ چکی ہو گی۔",
-          "note": "Follow the helping verb and main verb formula carefully."
+          "wrong": "Will she joined the class?",
+          "right": "Will she have finished her work?",
+          "urdu": "کیا وہ اپنا کام مکمل کر چکی ہوگی؟",
+          "note": "Use the required verb form after the helping verb."
+        },
+        {
+          "wrong": "They will has finished.",
+          "right": "They will have finished.",
+          "urdu": "میں پیر تک کام مکمل کر چکا ہوں گا۔",
+          "note": "Choose the correct helping verb."
+        },
+        {
+          "wrong": "She did not went.",
+          "right": "I will have finished the work by Monday.",
+          "urdu": "میں پیر تک کام مکمل کر چکا ہوں گا۔",
+          "note": "Keep the main verb in the required form."
+        },
+        {
+          "wrong": "Will they completed the task?",
+          "right": "Will she have finished her work?",
+          "urdu": "کیا وہ اپنا کام مکمل کر چکی ہوگی؟",
+          "note": "Do not use an incorrect past form after the helping verb."
         }
       ],
       "examTips": [
-        "***Exam Tip:*** Remember the formula will have + V3.",
-        "Check the helping verb and the form of the main verb before selecting an answer."
+        "***Exam Shortcut:*** will have + V3.",
+        "Check the helping verb, time expression, and main verb form before selecting an answer."
       ],
       "practice": [],
       "quiz": [],
@@ -9575,55 +10330,85 @@
     "order": 2,
     "isLeaf": true,
     "content": {
-      "introduction": "Future Continuous Tense is used to express actions in progress at a future time.",
-      "urduExplanation": "مستقبل جاری زمانہ مستقبل کے کسی خاص وقت پر جاری ہونے والے کام کو ظاہر کرتا ہے۔",
+      "introduction": "Future Continuous describes an action that will be in progress at a future time.",
+      "urduExplanation": "مستقبل جاری ایسے کام کو ظاہر کرتا ہے جو مستقبل کے کسی وقت جاری ہوگا۔",
       "englishExplanation": "",
       "types": [],
       "structure": [
-        "***Affirmative —*** مثبت جملہ\nSubject + **will be** + **V-ing** + Object\n***Helping verb:*** **will be**: all subjects\n***Examples:***\nI **will be** studying at nine o’clock. — میں نو بجے پڑھ رہا ہوں گا۔\nShe **will be** travelling tomorrow. — وہ کل سفر کر رہی ہو گی۔",
-        "***Negative —*** منفی جملہ\nSubject + helping verb + not + main verb + Object\n***Example:***\nI will not be studying at nine o’clock. — میں نو بجے نہیں پڑھ رہا ہوں گا۔",
-        "***Interrogative —*** سوالیہ جملہ\nHelping verb + Subject + main verb + Object?\n***Example:***\nWill she be travelling tomorrow? — کیا وہ کل سفر کر رہی ہو گی؟",
-        "***Verb forms —*** افعال کی شکلیں\n***Formula:*** Subject + **will be** + **V-ing** + Object\n***Helping verb:*** **will be**: all subjects\n***Example:*** They **will be** waiting for us. — وہ ہمارا انتظار کر رہے ہوں گے۔"
+        "***Affirmative — مثبت***\n***Formula:*** Subject + will be + V-ing + Object\nI will be studying at nine o’clock. — میں نو بجے پڑھ رہا ہوں گا۔",
+        "***Negative — منفی***\n***Formula:*** Subject + will be + V-ing + Object\nHe will not be reading a book. — وہ کتاب نہیں پڑھ رہا ہوگا۔",
+        "***Interrogative — سوالیہ***\n***Formula:*** Will be + v-ing + Subject + Object?\nWill he be reading a book? — کیا وہ کتاب پڑھ رہا ہوگا؟",
+        "***Helping verbs:*** will be: all subjects\n***Verb form:*** will be + V-ing"
       ],
       "rules": [
-        "1: Use **will be** followed **by** **V-ing**.\nExample: I **will be** studying at nine o’clock.\nExplanation: The helping verb and verb form match this tense.",
-        "2: Do not use **V1** alone after **will be**.\nExample: She **will be** travelling tomorrow.\nExplanation: The main verb stays in the required form.",
-        "3: Use the helping verb pattern consistently with every subject.\nExample: They **will be** waiting **for** us.\nExplanation: The subject and formula are correct."
+        "1: Use the helping verb and main verb form **will be + V-ing**.\nExample: I will be studying at nine o’clock. — میں نو بجے پڑھ رہا ہوں گا۔\nExplanation: The formula identifies this tense.",
+        "2: Keep the subject and helping verb agreement correct.\nExample: She will join the class. — وہ کلاس میں شامل ہوگی۔\nExplanation: The subject matches the helping verb.",
+        "3: Use the tense for its specific time relationship.\nExample: I will be studying at nine o’clock. — میں نو بجے پڑھ رہا ہوں گا۔\nExplanation: The sentence expresses the intended time relationship.",
+        "4: Use the negative formula carefully.\nExample: He will not be reading a book. — وہ کتاب نہیں پڑھ رہا ہوگا۔\nExplanation: The negative marker is placed in the correct position.",
+        "5: Form questions by placing the helping verb before the subject.\nExample: Will he be reading a book? — کیا وہ کتاب پڑھ رہا ہوگا؟\nExplanation: The question follows the interrogative pattern."
       ],
       "examples": [
         {
           "text": "I will be studying at nine o’clock.",
           "urdu": "میں نو بجے پڑھ رہا ہوں گا۔",
-          "note": "This sentence follows the standard tense formula."
+          "note": "The sentence follows the will be + V-ing pattern."
         },
         {
-          "text": "She will be travelling tomorrow.",
-          "urdu": "وہ کل سفر کر رہی ہو گی۔",
-          "note": "This example shows the tense in a practical sentence."
+          "text": "She will join the class.",
+          "urdu": "وہ کلاس میں شامل ہوگی۔",
+          "note": "The subject and tense form agree."
         },
         {
-          "text": "They will be waiting for us.",
-          "urdu": "وہ ہمارا انتظار کر رہے ہوں گے۔",
-          "note": "The verb form and helping verb agree with the tense."
+          "text": "They will complete the work.",
+          "urdu": "وہ کام مکمل کریں گے۔",
+          "note": "The plural subject uses the correct tense structure."
+        },
+        {
+          "text": "We will finish dinner.",
+          "urdu": "ہم رات کا کھانا مکمل کریں گے۔",
+          "note": "The sentence shows the tense in context."
+        },
+        {
+          "text": "Will he be reading a book?",
+          "urdu": "کیا وہ کتاب پڑھ رہا ہوگا؟",
+          "note": "The helping verb comes before the subject in a question."
         }
       ],
       "commonMistakes": [
         {
-          "wrong": "I will be study at nine o’clock.",
-          "right": "I will be studying at nine o’clock.",
+          "wrong": "I will be study.",
+          "right": "I will be studying.",
           "urdu": "میں نو بجے پڑھ رہا ہوں گا۔",
-          "note": "Use the correct verb form for this tense."
+          "note": "Use the correct will be + V-ing form."
         },
         {
-          "wrong": "She will travelling tomorrow.",
-          "right": "She will be travelling tomorrow.",
-          "urdu": "وہ کل سفر کر رہی ہو گی۔",
-          "note": "Follow the helping verb and main verb formula carefully."
+          "wrong": "Will she joined the class?",
+          "right": "Will he be reading a book?",
+          "urdu": "کیا وہ کتاب پڑھ رہا ہوگا؟",
+          "note": "Use the required verb form after the helping verb."
+        },
+        {
+          "wrong": "He do not work.",
+          "right": "He will not work.",
+          "urdu": "میں نو بجے پڑھ رہا ہوں گا۔",
+          "note": "Choose the correct helping verb."
+        },
+        {
+          "wrong": "He will be work tomorrow.",
+          "right": "I will be studying at nine o’clock.",
+          "urdu": "میں نو بجے پڑھ رہا ہوں گا۔",
+          "note": "Keep the main verb in the required form."
+        },
+        {
+          "wrong": "Will they completed the task?",
+          "right": "Will he be reading a book?",
+          "urdu": "کیا وہ کتاب پڑھ رہا ہوگا؟",
+          "note": "Do not use an incorrect past form after the helping verb."
         }
       ],
       "examTips": [
-        "***Exam Tip:*** Remember the formula will be + V-ing.",
-        "Check the helping verb and the form of the main verb before selecting an answer."
+        "***Exam Shortcut:*** will be + V-ing.",
+        "Check the helping verb, time expression, and main verb form before selecting an answer."
       ],
       "practice": [],
       "quiz": [],
@@ -9638,55 +10423,85 @@
     "order": 1,
     "isLeaf": true,
     "content": {
-      "introduction": "Future Indefinite Tense is used to express future actions and predictions.",
-      "urduExplanation": "مستقبل سادہ زمانہ مستقبل میں ہونے والے کام، ارادے یا پیش گوئی کو ظاہر کرتا ہے۔",
+      "introduction": "Future Indefinite describes an action that will happen in the future.",
+      "urduExplanation": "مستقبل سادہ ایسے کام کو ظاہر کرتا ہے جو مستقبل میں ہوگا۔",
       "englishExplanation": "",
       "types": [],
       "structure": [
-        "***Affirmative —*** مثبت جملہ\nSubject + will + **V1** + Object\n***Helping verb:*** will: all subjects\n***Examples:***\nI will help you tomorrow. — میں کل آپ کی مدد کروں گا۔\nShe will join the class. — وہ کلاس میں شامل ہو گی۔",
-        "***Negative —*** منفی جملہ\nSubject + helping verb + not + main verb + Object\n***Example:***\nI will not help you tomorrow. — میں کل آپ کی مدد نہیں کروں گا۔",
-        "***Interrogative —*** سوالیہ جملہ\nHelping verb + Subject + main verb + Object?\n***Example:***\nWill she join the class? — کیا وہ کلاس میں شامل ہو گی؟",
-        "***Verb forms —*** افعال کی شکلیں\n***Formula:*** Subject + will + **V1** + Object\n***Helping verb:*** will: all subjects\n***Example:*** They will complete the project. — وہ منصوبہ مکمل کریں گے۔"
+        "***Affirmative — مثبت***\n***Formula:*** Subject + will + V1 + Object\nI will help you tomorrow. — میں کل تمہاری مدد کروں گا۔",
+        "***Negative — منفی***\n***Formula:*** Subject + will + V1; will not + V1 + Object\nShe will not join the class. — وہ کلاس میں شامل نہیں ہوگی۔",
+        "***Interrogative — سوالیہ***\n***Formula:*** Will + v1 + Subject + Object?\nWill she join the class? — کیا وہ کلاس میں شامل ہوگی؟",
+        "***Helping verbs:*** will: all subjects\n***Verb form:*** will + V1"
       ],
       "rules": [
-        "1: Use will + **V1** **for** all subjects.\nExample: I will help you tomorrow.\nExplanation: The helping verb and verb form match this tense.",
-        "2: Do not add s/es after will.\nExample: She will join the class.\nExplanation: The main verb stays in the required form.",
-        "3: Use the helping verb pattern consistently with every subject.\nExample: They will complete the project.\nExplanation: The subject and formula are correct."
+        "1: Use the helping verb and main verb form **will + V1**.\nExample: I will help you tomorrow. — میں کل تمہاری مدد کروں گا۔\nExplanation: The formula identifies this tense.",
+        "2: Keep the subject and helping verb agreement correct.\nExample: She will join the class. — وہ کلاس میں شامل ہوگی۔\nExplanation: The subject matches the helping verb.",
+        "3: Use the tense for its specific time relationship.\nExample: I will help you tomorrow. — میں کل تمہاری مدد کروں گا۔\nExplanation: The sentence expresses the intended time relationship.",
+        "4: Use the negative formula carefully.\nExample: She will not join the class. — وہ کلاس میں شامل نہیں ہوگی۔\nExplanation: The negative marker is placed in the correct position.",
+        "5: Form questions by placing the helping verb before the subject.\nExample: Will she join the class? — کیا وہ کلاس میں شامل ہوگی؟\nExplanation: The question follows the interrogative pattern."
       ],
       "examples": [
         {
           "text": "I will help you tomorrow.",
-          "urdu": "میں کل آپ کی مدد کروں گا۔",
-          "note": "This sentence follows the standard tense formula."
+          "urdu": "میں کل تمہاری مدد کروں گا۔",
+          "note": "The sentence follows the will + V1 pattern."
         },
         {
           "text": "She will join the class.",
-          "urdu": "وہ کلاس میں شامل ہو گی۔",
-          "note": "This example shows the tense in a practical sentence."
+          "urdu": "وہ کلاس میں شامل ہوگی۔",
+          "note": "The subject and tense form agree."
         },
         {
-          "text": "They will complete the project.",
-          "urdu": "وہ منصوبہ مکمل کریں گے۔",
-          "note": "The verb form and helping verb agree with the tense."
+          "text": "They will complete the work.",
+          "urdu": "وہ کام مکمل کریں گے۔",
+          "note": "The plural subject uses the correct tense structure."
+        },
+        {
+          "text": "We will finish dinner.",
+          "urdu": "ہم رات کا کھانا مکمل کریں گے۔",
+          "note": "The sentence shows the tense in context."
+        },
+        {
+          "text": "Will she join the class?",
+          "urdu": "کیا وہ کلاس میں شامل ہوگی؟",
+          "note": "The helping verb comes before the subject in a question."
         }
       ],
       "commonMistakes": [
         {
-          "wrong": "I will helps you tomorrow.",
-          "right": "I will help you tomorrow.",
-          "urdu": "میں کل آپ کی مدد کروں گا۔",
-          "note": "Use the correct verb form for this tense."
-        },
-        {
           "wrong": "She will joined the class.",
           "right": "She will join the class.",
-          "urdu": "وہ کلاس میں شامل ہو گی۔",
-          "note": "Follow the helping verb and main verb formula carefully."
+          "urdu": "میں کل تمہاری مدد کروں گا۔",
+          "note": "Use the correct will + V1 form."
+        },
+        {
+          "wrong": "Will she joined the class?",
+          "right": "Will she join the class?",
+          "urdu": "کیا وہ کلاس میں شامل ہوگی؟",
+          "note": "Use the required verb form after the helping verb."
+        },
+        {
+          "wrong": "He do not work.",
+          "right": "He will not work.",
+          "urdu": "میں کل تمہاری مدد کروں گا۔",
+          "note": "Choose the correct helping verb."
+        },
+        {
+          "wrong": "She did not went.",
+          "right": "I will help you tomorrow.",
+          "urdu": "میں کل تمہاری مدد کروں گا۔",
+          "note": "Keep the main verb in the required form."
+        },
+        {
+          "wrong": "Will they completed the task?",
+          "right": "Will she join the class?",
+          "urdu": "کیا وہ کلاس میں شامل ہوگی؟",
+          "note": "Do not use an incorrect past form after the helping verb."
         }
       ],
       "examTips": [
-        "***Exam Tip:*** Remember the formula will + V1.",
-        "Check the helping verb and the form of the main verb before selecting an answer."
+        "***Exam Shortcut:*** will + V1.",
+        "Check the helping verb, time expression, and main verb form before selecting an answer."
       ],
       "practice": [],
       "quiz": [],
@@ -20480,6 +21295,54 @@
           "examTip": null
         },
         {
+          "question": "Choose the correct fixed expression for this meaning: 'follow or obey a rule'. Context: Citizens must abide by the law.",
+          "options": [
+            "abide by",
+            "accuse someone of",
+            "apologize to someone for",
+            "apply for / apply to"
+          ],
+          "answerIndex": 0,
+          "explanation": "**abide by** means follow or obey a rule. Urdu meaning: قانون کی پابندی کرنا Example: Citizens must abide by the law.",
+          "examTip": "Learn **abide by** as a complete fixed combination; do not replace its preposition."
+        },
+        {
+          "question": "Choose the correct fixed expression for this meaning: 'charge someone with wrongdoing'. Context: They accused him of cheating.",
+          "options": [
+            "apologize to someone for",
+            "accuse someone of",
+            "apply for / apply to",
+            "approve of"
+          ],
+          "answerIndex": 1,
+          "explanation": "**accuse someone of** means charge someone with wrongdoing. Urdu meaning: کسی پر الزام لگانا Example: They accused him of cheating.",
+          "examTip": "Learn **accuse someone of** as a complete fixed combination; do not replace its preposition."
+        },
+        {
+          "question": "Choose the correct fixed expression for this meaning: 'say sorry to a person for something'. Context: She apologized to the teacher for being late.",
+          "options": [
+            "apply for / apply to",
+            "approve of",
+            "apologize to someone for",
+            "believe in"
+          ],
+          "answerIndex": 2,
+          "explanation": "**apologize to someone for** means say sorry to a person for something. Urdu meaning: کسی سے کسی بات پر معذرت کرنا Example: She apologized to the teacher for being late.",
+          "examTip": "Learn **apologize to someone for** as a complete fixed combination; do not replace its preposition."
+        },
+        {
+          "question": "Choose the correct fixed expression for this meaning: 'request a post; submit to an institution'. Context: He applied for the post and applied to the university.",
+          "options": [
+            "approve of",
+            "believe in",
+            "belong to",
+            "apply for / apply to"
+          ],
+          "answerIndex": 3,
+          "explanation": "**apply for / apply to** means request a post; submit to an institution. Urdu meaning: درخواست دینا؛ کسی ادارے سے رجوع کرنا Example: He applied for the post and applied to the university.",
+          "examTip": "Learn **apply for / apply to** as a complete fixed combination; do not replace its preposition."
+        },
+        {
           "question": "Identify the part of speech: 'The cat is **under** the table.'",
           "options": [
             "Adverb",
@@ -20550,6 +21413,54 @@
           "answerIndex": 2,
           "explanation": "'Neither' is treated as singular in formal grammar, so 'is' is correct.",
           "examTip": null
+        },
+        {
+          "question": "Choose the correct fixed expression for this meaning: 'consider acceptable'. Context: I do not approve of dishonest conduct.",
+          "options": [
+            "approve of",
+            "believe in",
+            "belong to",
+            "comply with"
+          ],
+          "answerIndex": 0,
+          "explanation": "**approve of** means consider acceptable. Urdu meaning: پسند یا منظور کرنا Example: I do not approve of dishonest conduct.",
+          "examTip": "Learn **approve of** as a complete fixed combination; do not replace its preposition."
+        },
+        {
+          "question": "Choose the correct fixed expression for this meaning: 'have faith in'. Context: We believe in equal opportunity.",
+          "options": [
+            "belong to",
+            "believe in",
+            "comply with",
+            "consist of"
+          ],
+          "answerIndex": 1,
+          "explanation": "**believe in** means have faith in. Urdu meaning: یقین رکھنا Example: We believe in equal opportunity.",
+          "examTip": "Learn **believe in** as a complete fixed combination; do not replace its preposition."
+        },
+        {
+          "question": "Choose the correct fixed expression for this meaning: 'be owned by or associated with'. Context: This reference book belongs to Sara.",
+          "options": [
+            "comply with",
+            "consist of",
+            "belong to",
+            "contribute to"
+          ],
+          "answerIndex": 2,
+          "explanation": "**belong to** means be owned by or associated with. Urdu meaning: ملکیت یا تعلق ہونا Example: This reference book belongs to Sara.",
+          "examTip": "Learn **belong to** as a complete fixed combination; do not replace its preposition."
+        },
+        {
+          "question": "Choose the correct fixed expression for this meaning: 'act according to a rule or order'. Context: The company complied with the court order.",
+          "options": [
+            "consist of",
+            "contribute to",
+            "deal with",
+            "comply with"
+          ],
+          "answerIndex": 3,
+          "explanation": "**comply with** means act according to a rule or order. Urdu meaning: تعمیل کرنا Example: The company complied with the court order.",
+          "examTip": "Learn **comply with** as a complete fixed combination; do not replace its preposition."
         },
         {
           "question": "The quality of the apples ____ not good.",
@@ -20624,6 +21535,54 @@
           "examTip": null
         },
         {
+          "question": "Choose the correct fixed expression for this meaning: 'be made up of'. Context: The committee consists of five members.",
+          "options": [
+            "consist of",
+            "contribute to",
+            "deal with",
+            "depend on"
+          ],
+          "answerIndex": 0,
+          "explanation": "**consist of** means be made up of. Urdu meaning: پر مشتمل ہونا Example: The committee consists of five members.",
+          "examTip": "Learn **consist of** as a complete fixed combination; do not replace its preposition."
+        },
+        {
+          "question": "Choose the correct fixed expression for this meaning: 'help to cause or develop'. Context: Education contributes to national progress.",
+          "options": [
+            "deal with",
+            "contribute to",
+            "depend on",
+            "differ from"
+          ],
+          "answerIndex": 1,
+          "explanation": "**contribute to** means help to cause or develop. Urdu meaning: حصہ ڈالنا یا سبب بننا Example: Education contributes to national progress.",
+          "examTip": "Learn **contribute to** as a complete fixed combination; do not replace its preposition."
+        },
+        {
+          "question": "Choose the correct fixed expression for this meaning: 'handle or discuss'. Context: The report deals with unemployment.",
+          "options": [
+            "depend on",
+            "differ from",
+            "deal with",
+            "insist on"
+          ],
+          "answerIndex": 2,
+          "explanation": "**deal with** means handle or discuss. Urdu meaning: نمٹنا یا بحث کرنا Example: The report deals with unemployment.",
+          "examTip": "Learn **deal with** as a complete fixed combination; do not replace its preposition."
+        },
+        {
+          "question": "Choose the correct fixed expression for this meaning: 'rely on'. Context: Success depends on hard work.",
+          "options": [
+            "differ from",
+            "insist on",
+            "object to",
+            "depend on"
+          ],
+          "answerIndex": 3,
+          "explanation": "**depend on** means rely on. Urdu meaning: انحصار کرنا Example: Success depends on hard work.",
+          "examTip": "Learn **depend on** as a complete fixed combination; do not replace its preposition."
+        },
+        {
           "question": "Neither the teacher nor the students ____ reached yet.",
           "options": [
             "has",
@@ -20694,6 +21653,54 @@
           "answerIndex": 1,
           "explanation": "Adjectives ending in -ior (senior, junior, superior, inferior) take 'to' instead of 'than'.",
           "examTip": null
+        },
+        {
+          "question": "Choose the correct fixed expression for this meaning: 'be unlike'. Context: This result differs from the earlier one.",
+          "options": [
+            "differ from",
+            "insist on",
+            "object to",
+            "account for"
+          ],
+          "answerIndex": 0,
+          "explanation": "**differ from** means be unlike. Urdu meaning: مختلف ہونا Example: This result differs from the earlier one.",
+          "examTip": "Learn **differ from** as a complete fixed combination; do not replace its preposition."
+        },
+        {
+          "question": "Choose the correct fixed expression for this meaning: 'demand firmly'. Context: She insisted on telling the truth.",
+          "options": [
+            "object to",
+            "insist on",
+            "account for",
+            "adapt to"
+          ],
+          "answerIndex": 1,
+          "explanation": "**insist on** means demand firmly. Urdu meaning: اصرار کرنا Example: She insisted on telling the truth.",
+          "examTip": "Learn **insist on** as a complete fixed combination; do not replace its preposition."
+        },
+        {
+          "question": "Choose the correct fixed expression for this meaning: 'express opposition to'. Context: The residents objected to the proposal.",
+          "options": [
+            "account for",
+            "adapt to",
+            "object to",
+            "agree with"
+          ],
+          "answerIndex": 2,
+          "explanation": "**object to** means express opposition to. Urdu meaning: اعتراض کرنا Example: The residents objected to the proposal.",
+          "examTip": "Learn **object to** as a complete fixed combination; do not replace its preposition."
+        },
+        {
+          "question": "Choose the correct fixed expression for this meaning: 'explain or represent'. Context: The report accounts for the missing funds.",
+          "options": [
+            "adapt to",
+            "agree with",
+            "aim at",
+            "account for"
+          ],
+          "answerIndex": 3,
+          "explanation": "**account for** means explain or represent. Urdu meaning: کی وضاحت کرنا؛ حصہ ہونا Example: The report accounts for the missing funds.",
+          "examTip": "Learn **account for** as a complete fixed combination; do not replace its preposition."
         },
         {
           "question": "She is capable ____ doing this work.",
@@ -20768,6 +21775,54 @@
           "examTip": null
         },
         {
+          "question": "Choose the correct fixed expression for this meaning: 'adjust to a new situation'. Context: Children adapt to new environments quickly.",
+          "options": [
+            "adapt to",
+            "agree with",
+            "aim at",
+            "answer for"
+          ],
+          "answerIndex": 0,
+          "explanation": "**adapt to** means adjust to a new situation. Urdu meaning: مطابقت پیدا کرنا Example: Children adapt to new environments quickly.",
+          "examTip": "Learn **adapt to** as a complete fixed combination; do not replace its preposition."
+        },
+        {
+          "question": "Choose the correct fixed expression for this meaning: 'have the same opinion as'. Context: I agree with your opinion.",
+          "options": [
+            "aim at",
+            "agree with",
+            "answer for",
+            "benefit from"
+          ],
+          "answerIndex": 1,
+          "explanation": "**agree with** means have the same opinion as. Urdu meaning: سے اتفاق کرنا Example: I agree with your opinion.",
+          "examTip": "Learn **agree with** as a complete fixed combination; do not replace its preposition."
+        },
+        {
+          "question": "Choose the correct fixed expression for this meaning: 'direct an effort toward'. Context: The campaign aims at reducing pollution.",
+          "options": [
+            "answer for",
+            "benefit from",
+            "aim at",
+            "concentrate on"
+          ],
+          "answerIndex": 2,
+          "explanation": "**aim at** means direct an effort toward. Urdu meaning: کا مقصد رکھنا Example: The campaign aims at reducing pollution.",
+          "examTip": "Learn **aim at** as a complete fixed combination; do not replace its preposition."
+        },
+        {
+          "question": "Choose the correct fixed expression for this meaning: 'be responsible for'. Context: The manager must answer for the decision.",
+          "options": [
+            "benefit from",
+            "concentrate on",
+            "congratulate someone on",
+            "answer for"
+          ],
+          "answerIndex": 3,
+          "explanation": "**answer for** means be responsible for. Urdu meaning: کا ذمہ دار ہونا Example: The manager must answer for the decision.",
+          "examTip": "Learn **answer for** as a complete fixed combination; do not replace its preposition."
+        },
+        {
           "question": "Correct the sentence: 'Neither of the boys have completed his assignment.'",
           "options": [
             "Neither of the boys have completed his assignment.",
@@ -20838,6 +21893,54 @@
           "answerIndex": 1,
           "explanation": "The verb 'tell' is followed by an indirect object without the preposition 'to'.",
           "examTip": null
+        },
+        {
+          "question": "Choose the correct fixed expression for this meaning: 'gain an advantage from'. Context: Students benefit from regular practice.",
+          "options": [
+            "benefit from",
+            "concentrate on",
+            "congratulate someone on",
+            "cope with"
+          ],
+          "answerIndex": 0,
+          "explanation": "**benefit from** means gain an advantage from. Urdu meaning: سے فائدہ اٹھانا Example: Students benefit from regular practice.",
+          "examTip": "Learn **benefit from** as a complete fixed combination; do not replace its preposition."
+        },
+        {
+          "question": "Choose the correct fixed expression for this meaning: 'focus attention on'. Context: Please concentrate on the question.",
+          "options": [
+            "congratulate someone on",
+            "concentrate on",
+            "cope with",
+            "correspond to"
+          ],
+          "answerIndex": 1,
+          "explanation": "**concentrate on** means focus attention on. Urdu meaning: پر توجہ مرکوز کرنا Example: Please concentrate on the question.",
+          "examTip": "Learn **concentrate on** as a complete fixed combination; do not replace its preposition."
+        },
+        {
+          "question": "Choose the correct fixed expression for this meaning: 'praise someone for an achievement'. Context: We congratulated her on her success.",
+          "options": [
+            "cope with",
+            "correspond to",
+            "congratulate someone on",
+            "derive from"
+          ],
+          "answerIndex": 2,
+          "explanation": "**congratulate someone on** means praise someone for an achievement. Urdu meaning: کسی کو کسی کامیابی پر مبارک دینا Example: We congratulated her on her success.",
+          "examTip": "Learn **congratulate someone on** as a complete fixed combination; do not replace its preposition."
+        },
+        {
+          "question": "Choose the correct fixed expression for this meaning: 'manage a difficult situation'. Context: He learned to cope with pressure.",
+          "options": [
+            "correspond to",
+            "derive from",
+            "engage in",
+            "cope with"
+          ],
+          "answerIndex": 3,
+          "explanation": "**cope with** means manage a difficult situation. Urdu meaning: سے نمٹنا Example: He learned to cope with pressure.",
+          "examTip": "Learn **cope with** as a complete fixed combination; do not replace its preposition."
         },
         {
           "question": "Correct the sentence: 'The scenery of Swat are beautiful.'",
@@ -20912,6 +22015,54 @@
           "examTip": null
         },
         {
+          "question": "Choose the correct fixed expression for this meaning: 'match or be similar to'. Context: The figures correspond to the official record.",
+          "options": [
+            "correspond to",
+            "derive from",
+            "engage in",
+            "forgive someone for"
+          ],
+          "answerIndex": 0,
+          "explanation": "**correspond to** means match or be similar to. Urdu meaning: کے مطابق ہونا Example: The figures correspond to the official record.",
+          "examTip": "Learn **correspond to** as a complete fixed combination; do not replace its preposition."
+        },
+        {
+          "question": "Choose the correct fixed expression for this meaning: 'come or obtain from'. Context: Many English words derive from Latin.",
+          "options": [
+            "engage in",
+            "derive from",
+            "forgive someone for",
+            "hope for"
+          ],
+          "answerIndex": 1,
+          "explanation": "**derive from** means come or obtain from. Urdu meaning: سے اخذ کرنا Example: Many English words derive from Latin.",
+          "examTip": "Learn **derive from** as a complete fixed combination; do not replace its preposition."
+        },
+        {
+          "question": "Choose the correct fixed expression for this meaning: 'take part in an activity'. Context: They engage in useful research.",
+          "options": [
+            "forgive someone for",
+            "hope for",
+            "engage in",
+            "refer to"
+          ],
+          "answerIndex": 2,
+          "explanation": "**engage in** means take part in an activity. Urdu meaning: میں مشغول ہونا Example: They engage in useful research.",
+          "examTip": "Learn **engage in** as a complete fixed combination; do not replace its preposition."
+        },
+        {
+          "question": "Choose the correct fixed expression for this meaning: 'stop blaming someone for something'. Context: She forgave him for his mistake.",
+          "options": [
+            "hope for",
+            "refer to",
+            "abide by",
+            "forgive someone for"
+          ],
+          "answerIndex": 3,
+          "explanation": "**forgive someone for** means stop blaming someone for something. Urdu meaning: کسی کو کسی بات پر معاف کرنا Example: She forgave him for his mistake.",
+          "examTip": "Learn **forgive someone for** as a complete fixed combination; do not replace its preposition."
+        },
+        {
           "question": "He is ___ European.",
           "options": [
             "a",
@@ -20982,6 +22133,54 @@
           "answerIndex": 0,
           "explanation": "With 'a lot of', the verb agrees with the noun ('work' is uncountable/singular).",
           "examTip": null
+        },
+        {
+          "question": "Choose the correct fixed expression for this meaning: 'want and expect something'. Context: We hope for better results.",
+          "options": [
+            "hope for",
+            "refer to",
+            "abide by",
+            "accuse someone of"
+          ],
+          "answerIndex": 0,
+          "explanation": "**hope for** means want and expect something. Urdu meaning: کی امید کرنا Example: We hope for better results.",
+          "examTip": "Learn **hope for** as a complete fixed combination; do not replace its preposition."
+        },
+        {
+          "question": "Choose the correct fixed expression for this meaning: 'mention or direct attention to'. Context: The note refers to an important rule.",
+          "options": [
+            "abide by",
+            "refer to",
+            "accuse someone of",
+            "apologize to someone for"
+          ],
+          "answerIndex": 1,
+          "explanation": "**refer to** means mention or direct attention to. Urdu meaning: کا حوالہ دینا Example: The note refers to an important rule.",
+          "examTip": "Learn **refer to** as a complete fixed combination; do not replace its preposition."
+        },
+        {
+          "question": "Choose the correct fixed expression for this meaning: 'feeling fear of someone or something'. Context: The child is afraid of darkness.",
+          "options": [
+            "afraid of",
+            "accustomed to",
+            "addicted to",
+            "aware of"
+          ],
+          "answerIndex": 0,
+          "explanation": "**afraid of** means feeling fear of someone or something. Urdu meaning: سے خوف زدہ Example: The child is afraid of darkness.",
+          "examTip": "Learn **afraid of** as a complete fixed combination; do not replace its preposition."
+        },
+        {
+          "question": "Choose the correct fixed expression for this meaning: 'used to something through experience'. Context: She is accustomed to working under pressure.",
+          "options": [
+            "addicted to",
+            "accustomed to",
+            "aware of",
+            "beneficial to"
+          ],
+          "answerIndex": 1,
+          "explanation": "**accustomed to** means used to something through experience. Urdu meaning: کا عادی Example: She is accustomed to working under pressure.",
+          "examTip": "Learn **accustomed to** as a complete fixed combination; do not replace its preposition."
         },
         {
           "question": "Many a man ___ died in the war.",
@@ -21056,6 +22255,54 @@
           "examTip": null
         },
         {
+          "question": "Choose the correct fixed expression for this meaning: 'unable to stop using or doing something'. Context: He is addicted to social media.",
+          "options": [
+            "aware of",
+            "beneficial to",
+            "addicted to",
+            "capable of"
+          ],
+          "answerIndex": 2,
+          "explanation": "**addicted to** means unable to stop using or doing something. Urdu meaning: کا عادی یا نشے میں مبتلا Example: He is addicted to social media.",
+          "examTip": "Learn **addicted to** as a complete fixed combination; do not replace its preposition."
+        },
+        {
+          "question": "Choose the correct fixed expression for this meaning: 'knowing about something'. Context: Are you aware of the consequences?",
+          "options": [
+            "beneficial to",
+            "capable of",
+            "committed to",
+            "aware of"
+          ],
+          "answerIndex": 3,
+          "explanation": "**aware of** means knowing about something. Urdu meaning: سے باخبر Example: Are you aware of the consequences?",
+          "examTip": "Learn **aware of** as a complete fixed combination; do not replace its preposition."
+        },
+        {
+          "question": "Choose the correct fixed expression for this meaning: 'producing a good effect for'. Context: Exercise is beneficial to health.",
+          "options": [
+            "beneficial to",
+            "capable of",
+            "committed to",
+            "confident of"
+          ],
+          "answerIndex": 0,
+          "explanation": "**beneficial to** means producing a good effect for. Urdu meaning: کے لیے فائدہ مند Example: Exercise is beneficial to health.",
+          "examTip": "Learn **beneficial to** as a complete fixed combination; do not replace its preposition."
+        },
+        {
+          "question": "Choose the correct fixed expression for this meaning: 'having the ability to do something'. Context: She is capable of solving difficult questions.",
+          "options": [
+            "committed to",
+            "capable of",
+            "confident of",
+            "dependent on"
+          ],
+          "answerIndex": 1,
+          "explanation": "**capable of** means having the ability to do something. Urdu meaning: کے قابل Example: She is capable of solving difficult questions.",
+          "examTip": "Learn **capable of** as a complete fixed combination; do not replace its preposition."
+        },
+        {
           "question": "The committee ___ divided in their opinion.",
           "options": [
             "is",
@@ -21126,6 +22373,54 @@
           "answerIndex": 0,
           "explanation": "When each/every precedes nouns joined by 'and', the verb is singular.",
           "examTip": null
+        },
+        {
+          "question": "Choose the correct fixed expression for this meaning: 'dedicated to a person, cause, or action'. Context: The officer is committed to serving the public.",
+          "options": [
+            "confident of",
+            "dependent on",
+            "committed to",
+            "different from"
+          ],
+          "answerIndex": 2,
+          "explanation": "**committed to** means dedicated to a person, cause, or action. Urdu meaning: کے لیے پُرعزم Example: The officer is committed to serving the public.",
+          "examTip": "Learn **committed to** as a complete fixed combination; do not replace its preposition."
+        },
+        {
+          "question": "Choose the correct fixed expression for this meaning: 'certain about a success or result'. Context: The candidate is confident of success.",
+          "options": [
+            "dependent on",
+            "different from",
+            "eligible for",
+            "confident of"
+          ],
+          "answerIndex": 3,
+          "explanation": "**confident of** means certain about a success or result. Urdu meaning: کے بارے میں پُراعتماد Example: The candidate is confident of success.",
+          "examTip": "Learn **confident of** as a complete fixed combination; do not replace its preposition."
+        },
+        {
+          "question": "Choose the correct fixed expression for this meaning: 'relying on someone or something'. Context: The region is dependent on rainfall.",
+          "options": [
+            "dependent on",
+            "different from",
+            "eligible for",
+            "famous for"
+          ],
+          "answerIndex": 0,
+          "explanation": "**dependent on** means relying on someone or something. Urdu meaning: پر منحصر Example: The region is dependent on rainfall.",
+          "examTip": "Learn **dependent on** as a complete fixed combination; do not replace its preposition."
+        },
+        {
+          "question": "Choose the correct fixed expression for this meaning: 'not the same as'. Context: Your answer is different from mine.",
+          "options": [
+            "eligible for",
+            "different from",
+            "famous for",
+            "guilty of"
+          ],
+          "answerIndex": 1,
+          "explanation": "**different from** means not the same as. Urdu meaning: سے مختلف Example: Your answer is different from mine.",
+          "examTip": "Learn **different from** as a complete fixed combination; do not replace its preposition."
         },
         {
           "question": "Identify the part of speech of 'but': 'None **but** the brave deserve the fair.'",
@@ -21200,6 +22495,54 @@
           "examTip": null
         },
         {
+          "question": "Choose the correct fixed expression for this meaning: 'qualified to receive or do something'. Context: She is eligible for the scholarship.",
+          "options": [
+            "famous for",
+            "guilty of",
+            "eligible for",
+            "interested in"
+          ],
+          "answerIndex": 2,
+          "explanation": "**eligible for** means qualified to receive or do something. Urdu meaning: کا اہل Example: She is eligible for the scholarship.",
+          "examTip": "Learn **eligible for** as a complete fixed combination; do not replace its preposition."
+        },
+        {
+          "question": "Choose the correct fixed expression for this meaning: 'well known because of something'. Context: The city is famous for its gardens.",
+          "options": [
+            "guilty of",
+            "interested in",
+            "responsible for / superior to",
+            "famous for"
+          ],
+          "answerIndex": 3,
+          "explanation": "**famous for** means well known because of something. Urdu meaning: کے لیے مشہور Example: The city is famous for its gardens.",
+          "examTip": "Learn **famous for** as a complete fixed combination; do not replace its preposition."
+        },
+        {
+          "question": "Choose the correct fixed expression for this meaning: 'responsible for an offence'. Context: He was found guilty of fraud.",
+          "options": [
+            "guilty of",
+            "interested in",
+            "responsible for / superior to",
+            "absent from"
+          ],
+          "answerIndex": 0,
+          "explanation": "**guilty of** means responsible for an offence. Urdu meaning: کا قصوروار Example: He was found guilty of fraud.",
+          "examTip": "Learn **guilty of** as a complete fixed combination; do not replace its preposition."
+        },
+        {
+          "question": "Choose the correct fixed expression for this meaning: 'wanting to know about or take part in'. Context: He is interested in constitutional law.",
+          "options": [
+            "responsible for / superior to",
+            "interested in",
+            "absent from",
+            "acceptable to"
+          ],
+          "answerIndex": 1,
+          "explanation": "**interested in** means wanting to know about or take part in. Urdu meaning: میں دلچسپی رکھنے والا Example: He is interested in constitutional law.",
+          "examTip": "Learn **interested in** as a complete fixed combination; do not replace its preposition."
+        },
+        {
           "question": "Two-thirds of the city ___ in ruins.",
           "options": [
             "is",
@@ -21270,6 +22613,54 @@
           "answerIndex": 1,
           "explanation": "When two titles refer to different people (indicated by two articles), use a plural verb.",
           "examTip": null
+        },
+        {
+          "question": "Choose the correct fixed expression for this meaning: 'accountable for; better than'. Context: The manager is responsible for the project, and this method is superior to the old one.",
+          "options": [
+            "absent from",
+            "acceptable to",
+            "responsible for / superior to",
+            "analogous to"
+          ],
+          "answerIndex": 2,
+          "explanation": "**responsible for / superior to** means accountable for; better than. Urdu meaning: کا ذمہ دار؛ سے برتر Example: The manager is responsible for the project, and this method is superior to the old one.",
+          "examTip": "Learn **responsible for / superior to** as a complete fixed combination; do not replace its preposition."
+        },
+        {
+          "question": "Choose the correct fixed expression for this meaning: 'not present at a place'. Context: He was absent from class.",
+          "options": [
+            "acceptable to",
+            "analogous to",
+            "anxious about",
+            "absent from"
+          ],
+          "answerIndex": 3,
+          "explanation": "**absent from** means not present at a place. Urdu meaning: سے غیر حاضر Example: He was absent from class.",
+          "examTip": "Learn **absent from** as a complete fixed combination; do not replace its preposition."
+        },
+        {
+          "question": "Choose the correct fixed expression for this meaning: 'satisfactory to someone'. Context: The proposal is acceptable to the committee.",
+          "options": [
+            "acceptable to",
+            "analogous to",
+            "anxious about",
+            "ashamed of"
+          ],
+          "answerIndex": 0,
+          "explanation": "**acceptable to** means satisfactory to someone. Urdu meaning: کے لیے قابل قبول Example: The proposal is acceptable to the committee.",
+          "examTip": "Learn **acceptable to** as a complete fixed combination; do not replace its preposition."
+        },
+        {
+          "question": "Choose the correct fixed expression for this meaning: 'similar in an important way'. Context: This case is analogous to the earlier case.",
+          "options": [
+            "anxious about",
+            "analogous to",
+            "ashamed of",
+            "compatible with"
+          ],
+          "answerIndex": 1,
+          "explanation": "**analogous to** means similar in an important way. Urdu meaning: کے مشابہ Example: This case is analogous to the earlier case.",
+          "examTip": "Learn **analogous to** as a complete fixed combination; do not replace its preposition."
         },
         {
           "question": "He died ___ overwork.",
@@ -21344,6 +22735,54 @@
           "examTip": null
         },
         {
+          "question": "Choose the correct fixed expression for this meaning: 'worried about something'. Context: She is anxious about the result.",
+          "options": [
+            "ashamed of",
+            "compatible with",
+            "anxious about",
+            "contrary to"
+          ],
+          "answerIndex": 2,
+          "explanation": "**anxious about** means worried about something. Urdu meaning: کے بارے میں فکرمند Example: She is anxious about the result.",
+          "examTip": "Learn **anxious about** as a complete fixed combination; do not replace its preposition."
+        },
+        {
+          "question": "Choose the correct fixed expression for this meaning: 'feeling guilt or embarrassment about'. Context: He is ashamed of his careless remark.",
+          "options": [
+            "compatible with",
+            "contrary to",
+            "keen on",
+            "ashamed of"
+          ],
+          "answerIndex": 3,
+          "explanation": "**ashamed of** means feeling guilt or embarrassment about. Urdu meaning: پر شرمندہ Example: He is ashamed of his careless remark.",
+          "examTip": "Learn **ashamed of** as a complete fixed combination; do not replace its preposition."
+        },
+        {
+          "question": "Choose the correct fixed expression for this meaning: 'able to exist or work together'. Context: This device is compatible with the software.",
+          "options": [
+            "compatible with",
+            "contrary to",
+            "keen on",
+            "known for"
+          ],
+          "answerIndex": 0,
+          "explanation": "**compatible with** means able to exist or work together. Urdu meaning: کے ساتھ مطابقت رکھنے والا Example: This device is compatible with the software.",
+          "examTip": "Learn **compatible with** as a complete fixed combination; do not replace its preposition."
+        },
+        {
+          "question": "Choose the correct fixed expression for this meaning: 'opposite to'. Context: His actions were contrary to the rules.",
+          "options": [
+            "keen on",
+            "contrary to",
+            "known for",
+            "liable to"
+          ],
+          "answerIndex": 1,
+          "explanation": "**contrary to** means opposite to. Urdu meaning: کے برخلاف Example: His actions were contrary to the rules.",
+          "examTip": "Learn **contrary to** as a complete fixed combination; do not replace its preposition."
+        },
+        {
           "question": "He was prohibited ___ entering the room.",
           "options": [
             "to",
@@ -21414,6 +22853,54 @@
           "answerIndex": 0,
           "explanation": "**Each** is preferred when referring to individuals in a specific, limited group.",
           "examTip": null
+        },
+        {
+          "question": "Choose the correct fixed expression for this meaning: 'very interested in'. Context: She is keen on learning languages.",
+          "options": [
+            "known for",
+            "liable to",
+            "keen on",
+            "pleased with"
+          ],
+          "answerIndex": 2,
+          "explanation": "**keen on** means very interested in. Urdu meaning: میں بہت دلچسپی رکھنے والا Example: She is keen on learning languages.",
+          "examTip": "Learn **keen on** as a complete fixed combination; do not replace its preposition."
+        },
+        {
+          "question": "Choose the correct fixed expression for this meaning: 'famous because of'. Context: The city is known for its gardens.",
+          "options": [
+            "liable to",
+            "pleased with",
+            "proud of",
+            "known for"
+          ],
+          "answerIndex": 3,
+          "explanation": "**known for** means famous because of. Urdu meaning: کی وجہ سے مشہور Example: The city is known for its gardens.",
+          "examTip": "Learn **known for** as a complete fixed combination; do not replace its preposition."
+        },
+        {
+          "question": "Choose the correct fixed expression for this meaning: 'likely to experience or do something'. Context: Careless drivers are liable to cause accidents.",
+          "options": [
+            "liable to",
+            "pleased with",
+            "proud of",
+            "related to"
+          ],
+          "answerIndex": 0,
+          "explanation": "**liable to** means likely to experience or do something. Urdu meaning: کا امکان رکھنے والا Example: Careless drivers are liable to cause accidents.",
+          "examTip": "Learn **liable to** as a complete fixed combination; do not replace its preposition."
+        },
+        {
+          "question": "Choose the correct fixed expression for this meaning: 'satisfied or happy with'. Context: The teacher was pleased with her progress.",
+          "options": [
+            "proud of",
+            "pleased with",
+            "related to",
+            "satisfied with"
+          ],
+          "answerIndex": 1,
+          "explanation": "**pleased with** means satisfied or happy with. Urdu meaning: سے خوش یا مطمئن Example: The teacher was pleased with her progress.",
+          "examTip": "Learn **pleased with** as a complete fixed combination; do not replace its preposition."
         },
         {
           "question": "Correct the sentence: 'He is as tall, if not taller than, his brother.'",
@@ -21488,6 +22975,54 @@
           "examTip": null
         },
         {
+          "question": "Choose the correct fixed expression for this meaning: 'feeling satisfaction about'. Context: They are proud of their achievement.",
+          "options": [
+            "related to",
+            "satisfied with",
+            "proud of",
+            "sensitive to"
+          ],
+          "answerIndex": 2,
+          "explanation": "**proud of** means feeling satisfaction about. Urdu meaning: پر فخر کرنا Example: They are proud of their achievement.",
+          "examTip": "Learn **proud of** as a complete fixed combination; do not replace its preposition."
+        },
+        {
+          "question": "Choose the correct fixed expression for this meaning: 'connected with'. Context: The question is related to grammar.",
+          "options": [
+            "satisfied with",
+            "sensitive to",
+            "afraid of",
+            "related to"
+          ],
+          "answerIndex": 3,
+          "explanation": "**related to** means connected with. Urdu meaning: سے متعلق Example: The question is related to grammar.",
+          "examTip": "Learn **related to** as a complete fixed combination; do not replace its preposition."
+        },
+        {
+          "question": "Choose the correct fixed expression for this meaning: 'content with something'. Context: The examiner was satisfied with the answer.",
+          "options": [
+            "satisfied with",
+            "sensitive to",
+            "afraid of",
+            "accustomed to"
+          ],
+          "answerIndex": 0,
+          "explanation": "**satisfied with** means content with something. Urdu meaning: سے مطمئن Example: The examiner was satisfied with the answer.",
+          "examTip": "Learn **satisfied with** as a complete fixed combination; do not replace its preposition."
+        },
+        {
+          "question": "Choose the correct fixed expression for this meaning: 'easily affected by'. Context: Some people are sensitive to criticism.",
+          "options": [
+            "afraid of",
+            "sensitive to",
+            "accustomed to",
+            "addicted to"
+          ],
+          "answerIndex": 1,
+          "explanation": "**sensitive to** means easily affected by. Urdu meaning: کے لیے حساس Example: Some people are sensitive to criticism.",
+          "examTip": "Learn **sensitive to** as a complete fixed combination; do not replace its preposition."
+        },
+        {
           "question": "Identify the part of speech of 'near': 'He lives **near** the post office.'",
           "options": [
             "Adverb",
@@ -21558,6 +23093,54 @@
           "answerIndex": 1,
           "explanation": "**Noun**. It is preceded by the article 'a' and means a period of time.",
           "examTip": null
+        },
+        {
+          "question": "Choose the correct fixed expression for this meaning: 'the right or opportunity to use'. Context: Students have access to the library.",
+          "options": [
+            "access to",
+            "alternative to",
+            "cause of",
+            "demand for"
+          ],
+          "answerIndex": 0,
+          "explanation": "**access to** means the right or opportunity to use. Urdu meaning: تک رسائی Example: Students have access to the library.",
+          "examTip": "Learn **access to** as a complete fixed combination; do not replace its preposition."
+        },
+        {
+          "question": "Choose the correct fixed expression for this meaning: 'a replacement for something'. Context: We need an alternative to this plan.",
+          "options": [
+            "cause of",
+            "alternative to",
+            "demand for",
+            "effect on"
+          ],
+          "answerIndex": 1,
+          "explanation": "**alternative to** means a replacement for something. Urdu meaning: کا متبادل Example: We need an alternative to this plan.",
+          "examTip": "Learn **alternative to** as a complete fixed combination; do not replace its preposition."
+        },
+        {
+          "question": "Choose the correct fixed expression for this meaning: 'the reason something happens'. Context: The cause of the accident is unknown.",
+          "options": [
+            "demand for",
+            "effect on",
+            "cause of",
+            "increase in"
+          ],
+          "answerIndex": 2,
+          "explanation": "**cause of** means the reason something happens. Urdu meaning: کی وجہ Example: The cause of the accident is unknown.",
+          "examTip": "Learn **cause of** as a complete fixed combination; do not replace its preposition."
+        },
+        {
+          "question": "Choose the correct fixed expression for this meaning: 'a need or desire for something'. Context: There is a demand for skilled workers.",
+          "options": [
+            "effect on",
+            "increase in",
+            "influence on",
+            "demand for"
+          ],
+          "answerIndex": 3,
+          "explanation": "**demand for** means a need or desire for something. Urdu meaning: کی طلب Example: There is a demand for skilled workers.",
+          "examTip": "Learn **demand for** as a complete fixed combination; do not replace its preposition."
         },
         {
           "question": "Many a student ___ failed in the examination.",
@@ -21632,6 +23215,54 @@
           "examTip": null
         },
         {
+          "question": "Choose the correct fixed expression for this meaning: 'a result or influence on something'. Context: Pollution has a harmful effect on health.",
+          "options": [
+            "effect on",
+            "increase in",
+            "influence on",
+            "interest in"
+          ],
+          "answerIndex": 0,
+          "explanation": "**effect on** means a result or influence on something. Urdu meaning: پر اثر Example: Pollution has a harmful effect on health.",
+          "examTip": "Learn **effect on** as a complete fixed combination; do not replace its preposition."
+        },
+        {
+          "question": "Choose the correct fixed expression for this meaning: 'a rise in amount or level'. Context: There has been an increase in prices.",
+          "options": [
+            "influence on",
+            "increase in",
+            "interest in",
+            "lack of"
+          ],
+          "answerIndex": 1,
+          "explanation": "**increase in** means a rise in amount or level. Urdu meaning: میں اضافہ Example: There has been an increase in prices.",
+          "examTip": "Learn **increase in** as a complete fixed combination; do not replace its preposition."
+        },
+        {
+          "question": "Choose the correct fixed expression for this meaning: 'power to affect someone or something'. Context: Parents have a strong influence on children.",
+          "options": [
+            "interest in",
+            "lack of",
+            "influence on",
+            "need for"
+          ],
+          "answerIndex": 2,
+          "explanation": "**influence on** means power to affect someone or something. Urdu meaning: پر اثر و رسوخ Example: Parents have a strong influence on children.",
+          "examTip": "Learn **influence on** as a complete fixed combination; do not replace its preposition."
+        },
+        {
+          "question": "Choose the correct fixed expression for this meaning: 'attention or concern about something'. Context: She has a deep interest in history.",
+          "options": [
+            "lack of",
+            "need for",
+            "opposition to",
+            "interest in"
+          ],
+          "answerIndex": 3,
+          "explanation": "**interest in** means attention or concern about something. Urdu meaning: میں دلچسپی Example: She has a deep interest in history.",
+          "examTip": "Learn **interest in** as a complete fixed combination; do not replace its preposition."
+        },
+        {
           "question": "He is addicted ___ gambling.",
           "options": [
             "to",
@@ -21702,6 +23333,54 @@
           "answerIndex": 1,
           "explanation": "The verb 'abide' is followed by 'by'.",
           "examTip": null
+        },
+        {
+          "question": "Choose the correct fixed expression for this meaning: 'absence or shortage of something'. Context: The project failed because of a lack of funds.",
+          "options": [
+            "lack of",
+            "need for",
+            "opposition to",
+            "preference for"
+          ],
+          "answerIndex": 0,
+          "explanation": "**lack of** means absence or shortage of something. Urdu meaning: کی کمی Example: The project failed because of a lack of funds.",
+          "examTip": "Learn **lack of** as a complete fixed combination; do not replace its preposition."
+        },
+        {
+          "question": "Choose the correct fixed expression for this meaning: 'requirement for something'. Context: There is a need for educational reform.",
+          "options": [
+            "opposition to",
+            "need for",
+            "preference for",
+            "reason for"
+          ],
+          "answerIndex": 1,
+          "explanation": "**need for** means requirement for something. Urdu meaning: کی ضرورت Example: There is a need for educational reform.",
+          "examTip": "Learn **need for** as a complete fixed combination; do not replace its preposition."
+        },
+        {
+          "question": "Choose the correct fixed expression for this meaning: 'disagreement or resistance to something'. Context: There was opposition to the bill.",
+          "options": [
+            "preference for",
+            "reason for",
+            "opposition to",
+            "response to"
+          ],
+          "answerIndex": 2,
+          "explanation": "**opposition to** means disagreement or resistance to something. Urdu meaning: کی مخالفت Example: There was opposition to the bill.",
+          "examTip": "Learn **opposition to** as a complete fixed combination; do not replace its preposition."
+        },
+        {
+          "question": "Choose the correct fixed expression for this meaning: 'greater liking for one thing'. Context: He has a preference for clear evidence.",
+          "options": [
+            "reason for",
+            "response to",
+            "solution to / threat to",
+            "preference for"
+          ],
+          "answerIndex": 3,
+          "explanation": "**preference for** means greater liking for one thing. Urdu meaning: کے لیے ترجیح Example: He has a preference for clear evidence.",
+          "examTip": "Learn **preference for** as a complete fixed combination; do not replace its preposition."
         },
         {
           "question": "He apologized ___ his mistake.",
@@ -21776,6 +23455,54 @@
           "examTip": null
         },
         {
+          "question": "Choose the correct fixed expression for this meaning: 'explanation or cause of something'. Context: What is the reason for the delay?",
+          "options": [
+            "reason for",
+            "response to",
+            "solution to / threat to",
+            "admiration for"
+          ],
+          "answerIndex": 0,
+          "explanation": "**reason for** means explanation or cause of something. Urdu meaning: کی وجہ Example: What is the reason for the delay?",
+          "examTip": "Learn **reason for** as a complete fixed combination; do not replace its preposition."
+        },
+        {
+          "question": "Choose the correct fixed expression for this meaning: 'answer or reaction to something'. Context: The response to the policy was positive.",
+          "options": [
+            "solution to / threat to",
+            "response to",
+            "admiration for",
+            "advantage of"
+          ],
+          "answerIndex": 1,
+          "explanation": "**response to** means answer or reaction to something. Urdu meaning: کا جواب یا ردِعمل Example: The response to the policy was positive.",
+          "examTip": "Learn **response to** as a complete fixed combination; do not replace its preposition."
+        },
+        {
+          "question": "Choose the correct fixed expression for this meaning: 'answer to a problem; danger to something'. Context: We need a solution to this problem, because pollution is a threat to health.",
+          "options": [
+            "admiration for",
+            "advantage of",
+            "solution to / threat to",
+            "appeal to"
+          ],
+          "answerIndex": 2,
+          "explanation": "**solution to / threat to** means answer to a problem; danger to something. Urdu meaning: کا حل؛ کے لیے خطرہ Example: We need a solution to this problem, because pollution is a threat to health.",
+          "examTip": "Learn **solution to / threat to** as a complete fixed combination; do not replace its preposition."
+        },
+        {
+          "question": "Choose the correct fixed expression for this meaning: 'respect or approval for someone'. Context: She has great admiration for her mentor.",
+          "options": [
+            "advantage of",
+            "appeal to",
+            "attack on",
+            "admiration for"
+          ],
+          "answerIndex": 3,
+          "explanation": "**admiration for** means respect or approval for someone. Urdu meaning: کے لیے تحسین Example: She has great admiration for her mentor.",
+          "examTip": "Learn **admiration for** as a complete fixed combination; do not replace its preposition."
+        },
+        {
           "question": "Correct the sentence: 'He is taller than any boy in the class.'",
           "options": [
             "He is taller than any boy in the class.",
@@ -21846,6 +23573,54 @@
           "answerIndex": 2,
           "explanation": "When two different auxiliary verbs are used, the main verb must be provided for both if they require different forms.",
           "examTip": null
+        },
+        {
+          "question": "Choose the correct fixed expression for this meaning: 'a benefit or favourable condition'. Context: The advantage of practice is clear.",
+          "options": [
+            "advantage of",
+            "appeal to",
+            "attack on",
+            "belief in"
+          ],
+          "answerIndex": 0,
+          "explanation": "**advantage of** means a benefit or favourable condition. Urdu meaning: کا فائدہ Example: The advantage of practice is clear.",
+          "examTip": "Learn **advantage of** as a complete fixed combination; do not replace its preposition."
+        },
+        {
+          "question": "Choose the correct fixed expression for this meaning: 'a request or attraction directed toward'. Context: The idea has strong appeal to young learners.",
+          "options": [
+            "attack on",
+            "appeal to",
+            "belief in",
+            "candidate for"
+          ],
+          "answerIndex": 1,
+          "explanation": "**appeal to** means a request or attraction directed toward. Urdu meaning: سے اپیل؛ کو پسند آنا Example: The idea has strong appeal to young learners.",
+          "examTip": "Learn **appeal to** as a complete fixed combination; do not replace its preposition."
+        },
+        {
+          "question": "Choose the correct fixed expression for this meaning: 'an act of violence or criticism against'. Context: The attack on the village was condemned.",
+          "options": [
+            "belief in",
+            "candidate for",
+            "attack on",
+            "comparison with"
+          ],
+          "answerIndex": 2,
+          "explanation": "**attack on** means an act of violence or criticism against. Urdu meaning: پر حملہ Example: The attack on the village was condemned.",
+          "examTip": "Learn **attack on** as a complete fixed combination; do not replace its preposition."
+        },
+        {
+          "question": "Choose the correct fixed expression for this meaning: 'trust or faith in something'. Context: His belief in hard work is strong.",
+          "options": [
+            "candidate for",
+            "comparison with",
+            "contact with",
+            "belief in"
+          ],
+          "answerIndex": 3,
+          "explanation": "**belief in** means trust or faith in something. Urdu meaning: پر یقین Example: His belief in hard work is strong.",
+          "examTip": "Learn **belief in** as a complete fixed combination; do not replace its preposition."
         },
         {
           "question": "Identify the noun in: 'The committee approved the proposal.'",
@@ -21920,6 +23695,54 @@
           "examTip": "Use ’s with irregular plurals."
         },
         {
+          "question": "Choose the correct fixed expression for this meaning: 'a person being considered for'. Context: She is a candidate for the scholarship.",
+          "options": [
+            "candidate for",
+            "comparison with",
+            "contact with",
+            "control over"
+          ],
+          "answerIndex": 0,
+          "explanation": "**candidate for** means a person being considered for. Urdu meaning: کے لیے امیدوار Example: She is a candidate for the scholarship.",
+          "examTip": "Learn **candidate for** as a complete fixed combination; do not replace its preposition."
+        },
+        {
+          "question": "Choose the correct fixed expression for this meaning: 'an examination of similarities or differences'. Context: The comparison with earlier results is useful.",
+          "options": [
+            "contact with",
+            "comparison with",
+            "control over",
+            "conviction of"
+          ],
+          "answerIndex": 1,
+          "explanation": "**comparison with** means an examination of similarities or differences. Urdu meaning: کے ساتھ موازنہ Example: The comparison with earlier results is useful.",
+          "examTip": "Learn **comparison with** as a complete fixed combination; do not replace its preposition."
+        },
+        {
+          "question": "Choose the correct fixed expression for this meaning: 'communication or connection with'. Context: Keep regular contact with your teacher.",
+          "options": [
+            "control over",
+            "conviction of",
+            "contact with",
+            "dependence on"
+          ],
+          "answerIndex": 2,
+          "explanation": "**contact with** means communication or connection with. Urdu meaning: سے رابطہ Example: Keep regular contact with your teacher.",
+          "examTip": "Learn **contact with** as a complete fixed combination; do not replace its preposition."
+        },
+        {
+          "question": "Choose the correct fixed expression for this meaning: 'power to direct or manage'. Context: The manager has control over the budget.",
+          "options": [
+            "conviction of",
+            "dependence on",
+            "invitation to",
+            "control over"
+          ],
+          "answerIndex": 3,
+          "explanation": "**control over** means power to direct or manage. Urdu meaning: پر قابو Example: The manager has control over the budget.",
+          "examTip": "Learn **control over** as a complete fixed combination; do not replace its preposition."
+        },
+        {
           "question": "Which is a countable noun?",
           "options": [
             "advice",
@@ -21990,6 +23813,54 @@
           "answerIndex": 1,
           "explanation": "In formal exam-oriented agreement, singular 'each student' is matched with 'his or her' unless an accepted singular-they style is specified.",
           "examTip": "Each, either, and neither are grammatically singular."
+        },
+        {
+          "question": "Choose the correct fixed expression for this meaning: 'a formal finding of guilt'. Context: His conviction of fraud was reported.",
+          "options": [
+            "conviction of",
+            "dependence on",
+            "invitation to",
+            "objection to"
+          ],
+          "answerIndex": 0,
+          "explanation": "**conviction of** means a formal finding of guilt. Urdu meaning: کا جرم ثابت ہونا Example: His conviction of fraud was reported.",
+          "examTip": "Learn **conviction of** as a complete fixed combination; do not replace its preposition."
+        },
+        {
+          "question": "Choose the correct fixed expression for this meaning: 'reliance on someone or something'. Context: Dependence on technology can be risky.",
+          "options": [
+            "invitation to",
+            "dependence on",
+            "objection to",
+            "participation in"
+          ],
+          "answerIndex": 1,
+          "explanation": "**dependence on** means reliance on someone or something. Urdu meaning: پر انحصار Example: Dependence on technology can be risky.",
+          "examTip": "Learn **dependence on** as a complete fixed combination; do not replace its preposition."
+        },
+        {
+          "question": "Choose the correct fixed expression for this meaning: 'a request to attend or join'. Context: We received an invitation to the ceremony.",
+          "options": [
+            "objection to",
+            "participation in",
+            "invitation to",
+            "trust in"
+          ],
+          "answerIndex": 2,
+          "explanation": "**invitation to** means a request to attend or join. Urdu meaning: کی دعوت Example: We received an invitation to the ceremony.",
+          "examTip": "Learn **invitation to** as a complete fixed combination; do not replace its preposition."
+        },
+        {
+          "question": "Choose the correct fixed expression for this meaning: 'a reason for opposing something'. Context: There was no objection to the plan.",
+          "options": [
+            "participation in",
+            "trust in",
+            "access to",
+            "objection to"
+          ],
+          "answerIndex": 3,
+          "explanation": "**objection to** means a reason for opposing something. Urdu meaning: پر اعتراض Example: There was no objection to the plan.",
+          "examTip": "Learn **objection to** as a complete fixed combination; do not replace its preposition."
         },
         {
           "question": "What is the antecedent of 'which' in 'The bridge, which was old, collapsed'?",
@@ -22064,6 +23935,54 @@
           "examTip": "Indefinite pronouns refer to people or things without naming them specifically."
         },
         {
+          "question": "Choose the correct fixed expression for this meaning: 'the act of taking part in'. Context: Participation in the contest is voluntary.",
+          "options": [
+            "participation in",
+            "trust in",
+            "access to",
+            "alternative to"
+          ],
+          "answerIndex": 0,
+          "explanation": "**participation in** means the act of taking part in. Urdu meaning: میں شرکت Example: Participation in the contest is voluntary.",
+          "examTip": "Learn **participation in** as a complete fixed combination; do not replace its preposition."
+        },
+        {
+          "question": "Choose the correct fixed expression for this meaning: 'confidence in someone or something'. Context: The public has trust in the institution.",
+          "options": [
+            "access to",
+            "trust in",
+            "alternative to",
+            "cause of"
+          ],
+          "answerIndex": 1,
+          "explanation": "**trust in** means confidence in someone or something. Urdu meaning: پر اعتماد Example: The public has trust in the institution.",
+          "examTip": "Learn **trust in** as a complete fixed combination; do not replace its preposition."
+        },
+        {
+          "question": "Choose the correct fixed expression for this meaning: 'as stated by a source or rule'. Context: According to the report, exports increased.",
+          "options": [
+            "according to",
+            "in accordance with",
+            "in addition to",
+            "in charge of"
+          ],
+          "answerIndex": 0,
+          "explanation": "**according to** means as stated by a source or rule. Urdu meaning: کے مطابق Example: According to the report, exports increased.",
+          "examTip": "Learn **according to** as a complete fixed combination; do not replace its preposition."
+        },
+        {
+          "question": "Choose the correct fixed expression for this meaning: 'in agreement with a rule or standard'. Context: The decision was made in accordance with the law.",
+          "options": [
+            "in addition to",
+            "in accordance with",
+            "in charge of",
+            "in favor of"
+          ],
+          "answerIndex": 1,
+          "explanation": "**in accordance with** means in agreement with a rule or standard. Urdu meaning: کے مطابق Example: The decision was made in accordance with the law.",
+          "examTip": "Learn **in accordance with** as a complete fixed combination; do not replace its preposition."
+        },
+        {
           "question": "Choose the correct form: 'Neither the teacher nor the students ____ ready.'",
           "options": [
             "is",
@@ -22134,6 +24053,54 @@
           "answerIndex": 1,
           "explanation": "'Reading' functions as the object of 'enjoys', so it is a gerund.",
           "examTip": "An -ing form functioning as a noun is a gerund."
+        },
+        {
+          "question": "Choose the correct fixed expression for this meaning: 'besides or as well as'. Context: In addition to English, she studies Urdu.",
+          "options": [
+            "in charge of",
+            "in favor of",
+            "in addition to",
+            "in spite of"
+          ],
+          "answerIndex": 2,
+          "explanation": "**in addition to** means besides or as well as. Urdu meaning: کے علاوہ Example: In addition to English, she studies Urdu.",
+          "examTip": "Learn **in addition to** as a complete fixed combination; do not replace its preposition."
+        },
+        {
+          "question": "Choose the correct fixed expression for this meaning: 'responsible for controlling something'. Context: He is in charge of the examination hall.",
+          "options": [
+            "in favor of",
+            "in spite of",
+            "on behalf of",
+            "in charge of"
+          ],
+          "answerIndex": 3,
+          "explanation": "**in charge of** means responsible for controlling something. Urdu meaning: کا نگران یا ذمہ دار Example: He is in charge of the examination hall.",
+          "examTip": "Learn **in charge of** as a complete fixed combination; do not replace its preposition."
+        },
+        {
+          "question": "Choose the correct fixed expression for this meaning: 'supporting someone or something'. Context: The committee voted in favor of the amendment.",
+          "options": [
+            "in favor of",
+            "in spite of",
+            "on behalf of",
+            "with regard to"
+          ],
+          "answerIndex": 0,
+          "explanation": "**in favor of** means supporting someone or something. Urdu meaning: کے حق میں Example: The committee voted in favor of the amendment.",
+          "examTip": "Learn **in favor of** as a complete fixed combination; do not replace its preposition."
+        },
+        {
+          "question": "Choose the correct fixed expression for this meaning: 'despite a difficulty or fact'. Context: In spite of the rain, the match continued.",
+          "options": [
+            "on behalf of",
+            "in spite of",
+            "with regard to",
+            "by means of"
+          ],
+          "answerIndex": 1,
+          "explanation": "**in spite of** means despite a difficulty or fact. Urdu meaning: کے باوجود Example: In spite of the rain, the match continued.",
+          "examTip": "Learn **in spite of** as a complete fixed combination; do not replace its preposition."
         },
         {
           "question": "Choose the correct sentence.",
@@ -22220,6 +24187,42 @@
           "examTip": "Numeral adjectives express number or order."
         },
         {
+          "question": "Choose the correct fixed expression for this meaning: 'as a representative of'. Context: She spoke on behalf of the students.",
+          "options": [
+            "with regard to",
+            "by means of",
+            "on behalf of",
+            "instead of"
+          ],
+          "answerIndex": 2,
+          "explanation": "**on behalf of** means as a representative of. Urdu meaning: کی طرف سے Example: She spoke on behalf of the students.",
+          "examTip": "Learn **on behalf of** as a complete fixed combination; do not replace its preposition."
+        },
+        {
+          "question": "Choose the correct fixed expression for this meaning: 'concerning or about'. Context: With regard to your application, a decision is pending.",
+          "options": [
+            "by means of",
+            "instead of",
+            "regardless of",
+            "with regard to"
+          ],
+          "answerIndex": 3,
+          "explanation": "**with regard to** means concerning or about. Urdu meaning: کے بارے میں Example: With regard to your application, a decision is pending.",
+          "examTip": "Learn **with regard to** as a complete fixed combination; do not replace its preposition."
+        },
+        {
+          "question": "Choose the correct fixed expression for this meaning: 'through the use of'. Context: The message was sent by means of an encrypted channel.",
+          "options": [
+            "by means of",
+            "instead of",
+            "regardless of",
+            "discuss (no preposition)"
+          ],
+          "answerIndex": 0,
+          "explanation": "**by means of** means through the use of. Urdu meaning: کے ذریعے Example: The message was sent by means of an encrypted channel.",
+          "examTip": "Learn **by means of** as a complete fixed combination; do not replace its preposition."
+        },
+        {
           "question": "Choose the correct order: 'She bought a ____ table.'",
           "options": [
             "wooden large round",
@@ -22302,6 +24305,42 @@
           "answerIndex": 1,
           "explanation": "'Often' answers how frequently an action occurs.",
           "examTip": "Frequency adverbs include always, often, sometimes, rarely, and never."
+        },
+        {
+          "question": "Choose the correct fixed expression for this meaning: 'in place of'. Context: Use evidence instead of speculation.",
+          "options": [
+            "regardless of",
+            "instead of",
+            "discuss (no preposition)",
+            "enter (no preposition)"
+          ],
+          "answerIndex": 1,
+          "explanation": "**instead of** means in place of. Urdu meaning: کی بجائے Example: Use evidence instead of speculation.",
+          "examTip": "Learn **instead of** as a complete fixed combination; do not replace its preposition."
+        },
+        {
+          "question": "Choose the correct fixed expression for this meaning: 'without being affected by'. Context: The rule applies regardless of age.",
+          "options": [
+            "discuss (no preposition)",
+            "enter (no preposition)",
+            "regardless of",
+            "resemble (no preposition)"
+          ],
+          "answerIndex": 2,
+          "explanation": "**regardless of** means without being affected by. Urdu meaning: سے قطع نظر Example: The rule applies regardless of age.",
+          "examTip": "Learn **regardless of** as a complete fixed combination; do not replace its preposition."
+        },
+        {
+          "question": "Choose the correct fixed expression for this meaning: 'talk or write about a subject'. Context: The committee discussed the proposal.",
+          "options": [
+            "enter (no preposition)",
+            "resemble (no preposition)",
+            "comprise (no preposition)",
+            "discuss (no preposition)"
+          ],
+          "answerIndex": 3,
+          "explanation": "**discuss (no preposition)** means talk or write about a subject. Urdu meaning: کسی موضوع پر بحث کرنا Example: The committee discussed the proposal.",
+          "examTip": "Learn **discuss (no preposition)** as a complete fixed combination; do not replace its preposition."
         },
         {
           "question": "Choose the correct sentence.",
@@ -22388,6 +24427,42 @@
           "examTip": "Remember the exam pairs hardly...when and no sooner...than."
         },
         {
+          "question": "Choose the correct fixed expression for this meaning: 'go into a place'. Context: The candidates entered the room quietly.",
+          "options": [
+            "enter (no preposition)",
+            "resemble (no preposition)",
+            "comprise (no preposition)",
+            "at risk"
+          ],
+          "answerIndex": 0,
+          "explanation": "**enter (no preposition)** means go into a place. Urdu meaning: داخل ہونا Example: The candidates entered the room quietly.",
+          "examTip": "Learn **enter (no preposition)** as a complete fixed combination; do not replace its preposition."
+        },
+        {
+          "question": "Choose the correct fixed expression for this meaning: 'look or be like someone'. Context: The child resembles his mother.",
+          "options": [
+            "comprise (no preposition)",
+            "resemble (no preposition)",
+            "at risk",
+            "at once"
+          ],
+          "answerIndex": 1,
+          "explanation": "**resemble (no preposition)** means look or be like someone. Urdu meaning: مشابہ ہونا Example: The child resembles his mother.",
+          "examTip": "Learn **resemble (no preposition)** as a complete fixed combination; do not replace its preposition."
+        },
+        {
+          "question": "Choose the correct fixed expression for this meaning: 'consist of or include'. Context: The panel comprises three experts.",
+          "options": [
+            "at risk",
+            "at once",
+            "comprise (no preposition)",
+            "at random"
+          ],
+          "answerIndex": 2,
+          "explanation": "**comprise (no preposition)** means consist of or include. Urdu meaning: پر مشتمل ہونا Example: The panel comprises three experts.",
+          "examTip": "Learn **comprise (no preposition)** as a complete fixed combination; do not replace its preposition."
+        },
+        {
           "question": "Choose the correct fixed preposition: 'Success depends ____ preparation.'",
           "options": [
             "of",
@@ -22470,6 +24545,42 @@
           "answerIndex": 2,
           "explanation": "The noun 'access' takes the fixed preposition 'to'.",
           "examTip": "Remember access to, not access of."
+        },
+        {
+          "question": "Choose the correct fixed expression for this meaning: 'in danger of harm or loss'. Context: The old bridge is at risk of collapse.",
+          "options": [
+            "at once",
+            "at random",
+            "in advance",
+            "at risk"
+          ],
+          "answerIndex": 3,
+          "explanation": "**at risk** means in danger of harm or loss. Urdu meaning: خطرے میں Example: The old bridge is at risk of collapse.",
+          "examTip": "Learn **at risk** as a complete fixed combination; do not replace its preposition."
+        },
+        {
+          "question": "Choose the correct fixed expression for this meaning: 'immediately'. Context: The doctor came at once.",
+          "options": [
+            "at once",
+            "at random",
+            "in advance",
+            "in exchange for"
+          ],
+          "answerIndex": 0,
+          "explanation": "**at once** means immediately. Urdu meaning: فوراً Example: The doctor came at once.",
+          "examTip": "Learn **at once** as a complete fixed combination; do not replace its preposition."
+        },
+        {
+          "question": "Choose the correct fixed expression for this meaning: 'without a planned order'. Context: The names were selected at random.",
+          "options": [
+            "in advance",
+            "at random",
+            "in exchange for",
+            "in line with"
+          ],
+          "answerIndex": 1,
+          "explanation": "**at random** means without a planned order. Urdu meaning: بے ترتیب طور پر Example: The names were selected at random.",
+          "examTip": "Learn **at random** as a complete fixed combination; do not replace its preposition."
         },
         {
           "question": "Choose the correct sentence.",
@@ -22556,6 +24667,42 @@
           "examTip": "Use either because...clause or clause, so...clause."
         },
         {
+          "question": "Choose the correct fixed expression for this meaning: 'before a particular time'. Context: Please book your seat in advance.",
+          "options": [
+            "in exchange for",
+            "in line with",
+            "in advance",
+            "in response to"
+          ],
+          "answerIndex": 2,
+          "explanation": "**in advance** means before a particular time. Urdu meaning: پیشگی Example: Please book your seat in advance.",
+          "examTip": "Learn **in advance** as a complete fixed combination; do not replace its preposition."
+        },
+        {
+          "question": "Choose the correct fixed expression for this meaning: 'as a trade for something'. Context: He received training in exchange for his service.",
+          "options": [
+            "in line with",
+            "in response to",
+            "on account of",
+            "in exchange for"
+          ],
+          "answerIndex": 3,
+          "explanation": "**in exchange for** means as a trade for something. Urdu meaning: کے بدلے میں Example: He received training in exchange for his service.",
+          "examTip": "Learn **in exchange for** as a complete fixed combination; do not replace its preposition."
+        },
+        {
+          "question": "Choose the correct fixed expression for this meaning: 'in agreement with'. Context: The decision is in line with the policy.",
+          "options": [
+            "in line with",
+            "in response to",
+            "on account of",
+            "under pressure"
+          ],
+          "answerIndex": 0,
+          "explanation": "**in line with** means in agreement with. Urdu meaning: کے مطابق Example: The decision is in line with the policy.",
+          "examTip": "Learn **in line with** as a complete fixed combination; do not replace its preposition."
+        },
+        {
           "question": "Which conjunction expresses condition?",
           "options": [
             "unless",
@@ -22638,6 +24785,42 @@
           "answerIndex": 2,
           "explanation": "'Alas' expresses sorrow or pity and is an interjection.",
           "examTip": "Interjections express sudden emotion and are often followed by !."
+        },
+        {
+          "question": "Choose the correct fixed expression for this meaning: 'as an answer or reaction to'. Context: The rule changed in response to public concern.",
+          "options": [
+            "on account of",
+            "in response to",
+            "under pressure",
+            "without regard to"
+          ],
+          "answerIndex": 1,
+          "explanation": "**in response to** means as an answer or reaction to. Urdu meaning: کے جواب میں Example: The rule changed in response to public concern.",
+          "examTip": "Learn **in response to** as a complete fixed combination; do not replace its preposition."
+        },
+        {
+          "question": "Choose the correct fixed expression for this meaning: 'because of'. Context: The match was delayed on account of rain.",
+          "options": [
+            "under pressure",
+            "without regard to",
+            "on account of",
+            "pay attention to"
+          ],
+          "answerIndex": 2,
+          "explanation": "**on account of** means because of. Urdu meaning: کی وجہ سے Example: The match was delayed on account of rain.",
+          "examTip": "Learn **on account of** as a complete fixed combination; do not replace its preposition."
+        },
+        {
+          "question": "Choose the correct fixed expression for this meaning: 'in a stressful situation'. Context: She works well under pressure.",
+          "options": [
+            "without regard to",
+            "pay attention to",
+            "take advantage of",
+            "under pressure"
+          ],
+          "answerIndex": 3,
+          "explanation": "**under pressure** means in a stressful situation. Urdu meaning: دباؤ میں Example: She works well under pressure.",
+          "examTip": "Learn **under pressure** as a complete fixed combination; do not replace its preposition."
         },
         {
           "question": "Which interjection expresses surprise?",
@@ -22724,6 +24907,42 @@
           "examTip": "Many modifies plural countable nouns."
         },
         {
+          "question": "Choose the correct fixed expression for this meaning: 'without considering'. Context: The law applies without regard to status.",
+          "options": [
+            "without regard to",
+            "pay attention to",
+            "take advantage of",
+            "take part in"
+          ],
+          "answerIndex": 0,
+          "explanation": "**without regard to** means without considering. Urdu meaning: کی پروا کیے بغیر Example: The law applies without regard to status.",
+          "examTip": "Learn **without regard to** as a complete fixed combination; do not replace its preposition."
+        },
+        {
+          "question": "Choose the correct fixed expression for this meaning: 'give careful notice to'. Context: Pay attention to the instructions.",
+          "options": [
+            "take advantage of",
+            "pay attention to",
+            "take part in",
+            "make use of"
+          ],
+          "answerIndex": 1,
+          "explanation": "**pay attention to** means give careful notice to. Urdu meaning: پر توجہ دینا Example: Pay attention to the instructions.",
+          "examTip": "Learn **pay attention to** as a complete fixed combination; do not replace its preposition."
+        },
+        {
+          "question": "Choose the correct fixed expression for this meaning: 'use a situation or person for benefit'. Context: Do not take advantage of the poor.",
+          "options": [
+            "take part in",
+            "make use of",
+            "take advantage of",
+            "by virtue of"
+          ],
+          "answerIndex": 2,
+          "explanation": "**take advantage of** means use a situation or person for benefit. Urdu meaning: فائدہ اٹھانا Example: Do not take advantage of the poor.",
+          "examTip": "Learn **take advantage of** as a complete fixed combination; do not replace its preposition."
+        },
+        {
           "question": "Choose the correct sentence.",
           "options": [
             "Each of the answers are correct.",
@@ -22806,6 +25025,42 @@
           "answerIndex": 0,
           "explanation": "'Either' refers to one of two choices or items.",
           "examTip": "Either and neither are traditionally used for two; any and none can cover more than two."
+        },
+        {
+          "question": "Choose the correct fixed expression for this meaning: 'participate in'. Context: Many students took part in the debate.",
+          "options": [
+            "make use of",
+            "by virtue of",
+            "according to",
+            "take part in"
+          ],
+          "answerIndex": 3,
+          "explanation": "**take part in** means participate in. Urdu meaning: میں حصہ لینا Example: Many students took part in the debate.",
+          "examTip": "Learn **take part in** as a complete fixed combination; do not replace its preposition."
+        },
+        {
+          "question": "Choose the correct fixed expression for this meaning: 'use something effectively'. Context: Make use of the reference book.",
+          "options": [
+            "make use of",
+            "by virtue of",
+            "according to",
+            "in accordance with"
+          ],
+          "answerIndex": 0,
+          "explanation": "**make use of** means use something effectively. Urdu meaning: استعمال کرنا Example: Make use of the reference book.",
+          "examTip": "Learn **make use of** as a complete fixed combination; do not replace its preposition."
+        },
+        {
+          "question": "Choose the correct fixed expression for this meaning: 'because of a particular quality or position'. Context: She succeeded by virtue of her dedication.",
+          "options": [
+            "according to",
+            "by virtue of",
+            "in accordance with",
+            "in addition to"
+          ],
+          "answerIndex": 1,
+          "explanation": "**by virtue of** means because of a particular quality or position. Urdu meaning: کی بدولت Example: She succeeded by virtue of her dedication.",
+          "examTip": "Learn **by virtue of** as a complete fixed combination; do not replace its preposition."
         }
       ],
       "practice": [

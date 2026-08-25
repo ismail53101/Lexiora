@@ -85,8 +85,8 @@ class GrammarBullet extends StatelessWidget {
           Expanded(
             child: Text.rich(
               TextSpan(
-                style: (compact ? theme.textTheme.bodyMedium : theme.textTheme.bodyLarge)?.copyWith(
-                  height: compact ? 1.32 : 1.4,
+                style: (compact ? theme.textTheme.bodySmall : theme.textTheme.bodyLarge)?.copyWith(
+                  height: compact ? 1.25 : 1.4,
                 ),
                 children: _highlightRuleDetails(
                   text,
