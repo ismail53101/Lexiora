@@ -163,7 +163,9 @@ class _LessonView extends StatelessWidget {
       padding: const EdgeInsets.fromLTRB(16, 16, 16, 24),
       children: <Widget>[
         Text(lesson.title,
-            style: theme.textTheme.headlineSmall
+            style: (lesson.id.startsWith('tenses/')
+                    ? theme.textTheme.titleLarge
+                    : theme.textTheme.headlineSmall)
                 ?.copyWith(fontWeight: FontWeight.w800)),
         const SizedBox(height: 14),
 
@@ -172,7 +174,10 @@ class _LessonView extends StatelessWidget {
             icon: Icons.info_outline,
             title: 'Introduction',
             child: Text(lesson.introduction,
-                style: theme.textTheme.bodyLarge?.copyWith(height: 1.5)),
+                style: (lesson.id.startsWith('tenses/')
+                        ? theme.textTheme.bodyMedium
+                        : theme.textTheme.bodyLarge)
+                    ?.copyWith(height: lesson.id.startsWith('tenses/') ? 1.4 : 1.5)),
           ),
 
         if (lesson.urduExplanation.isNotEmpty)
@@ -184,7 +189,10 @@ class _LessonView extends StatelessWidget {
               child: Text(
                 lesson.urduExplanation,
                 textAlign: TextAlign.right,
-                style: theme.textTheme.titleMedium?.copyWith(height: 1.7),
+                style: (lesson.id.startsWith('tenses/')
+                        ? theme.textTheme.bodyLarge
+                        : theme.textTheme.titleMedium)
+                    ?.copyWith(height: lesson.id.startsWith('tenses/') ? 1.5 : 1.7),
               ),
             ),
           ),
@@ -194,7 +202,10 @@ class _LessonView extends StatelessWidget {
             icon: Icons.menu_book_outlined,
             title: 'English Explanation',
             child: Text(lesson.englishExplanation,
-                style: theme.textTheme.bodyLarge?.copyWith(height: 1.5)),
+                style: (lesson.id.startsWith('tenses/')
+                        ? theme.textTheme.bodyMedium
+                        : theme.textTheme.bodyLarge)
+                    ?.copyWith(height: lesson.id.startsWith('tenses/') ? 1.4 : 1.5)),
           ),
 
         if (lesson.types.isNotEmpty) ...<Widget>[
@@ -226,7 +237,11 @@ class _LessonView extends StatelessWidget {
             title: 'Rules',
             child: Column(
               children: <Widget>[
-                for (final String r in lesson.rules) GrammarBullet(text: r),
+                for (final String r in lesson.rules)
+                  GrammarBullet(
+                    text: r,
+                    compact: lesson.id.startsWith('tenses/'),
+                  ),
               ],
             ),
           ),
@@ -237,7 +252,11 @@ class _LessonView extends StatelessWidget {
             title: 'Structure / Formula',
             child: Column(
               children: <Widget>[
-                for (final String s in lesson.structure) GrammarBullet(text: s),
+                for (final String s in lesson.structure)
+                  GrammarBullet(
+                    text: s,
+                    compact: lesson.id.startsWith('tenses/'),
+                  ),
               ],
             ),
           ),
@@ -249,7 +268,10 @@ class _LessonView extends StatelessWidget {
             child: Column(
               children: <Widget>[
                 for (final GrammarExample e in lesson.examples)
-                  _ExampleItem(example: e),
+                  _ExampleItem(
+                    example: e,
+                    compact: lesson.id.startsWith('tenses/'),
+                  ),
               ],
             ),
           ),
@@ -262,7 +284,10 @@ class _LessonView extends StatelessWidget {
             child: Column(
               children: <Widget>[
                 for (final GrammarMistake m in lesson.commonMistakes)
-                  _MistakeItem(mistake: m),
+                  _MistakeItem(
+                    mistake: m,
+                    compact: lesson.id.startsWith('tenses/'),
+                  ),
               ],
             ),
           ),
@@ -274,7 +299,11 @@ class _LessonView extends StatelessWidget {
             accent: theme.colorScheme.tertiary,
             child: Column(
               children: <Widget>[
-                for (final String t in lesson.examTips) GrammarBullet(text: t),
+                for (final String t in lesson.examTips)
+                  GrammarBullet(
+                    text: t,
+                    compact: lesson.id.startsWith('tenses/'),
+                  ),
               ],
             ),
           ),
@@ -310,7 +339,10 @@ class _LessonView extends StatelessWidget {
             title: 'Summary',
             accent: theme.colorScheme.tertiary,
             child: Text(lesson.summary,
-                style: theme.textTheme.bodyLarge?.copyWith(height: 1.5)),
+                style: (lesson.id.startsWith('tenses/')
+                        ? theme.textTheme.bodyMedium
+                        : theme.textTheme.bodyLarge)
+                    ?.copyWith(height: lesson.id.startsWith('tenses/') ? 1.4 : 1.5)),
           ),
       ],
     );
@@ -1081,16 +1113,17 @@ class _RuleItem extends StatelessWidget {
 }
 
 class _ExampleItem extends StatelessWidget {
-  const _ExampleItem({required this.example});
+  const _ExampleItem({required this.example, this.compact = false});
   final GrammarExample example;
+  final bool compact;
 
   @override
   Widget build(BuildContext context) {
     final ThemeData theme = Theme.of(context);
     return Container(
       width: double.infinity,
-      margin: const EdgeInsets.only(bottom: 10),
-      padding: const EdgeInsets.all(12),
+      margin: EdgeInsets.only(bottom: compact ? 8 : 10),
+      padding: EdgeInsets.all(compact ? 10 : 12),
       decoration: BoxDecoration(
         color: theme.colorScheme.surfaceContainerHighest.withValues(alpha: 0.5),
         borderRadius: BorderRadius.circular(10),
@@ -1113,7 +1146,8 @@ class _ExampleItem extends StatelessWidget {
           ],
           Text.rich(
             TextSpan(
-              style: theme.textTheme.bodyLarge?.copyWith(height: 1.4),
+              style: (compact ? theme.textTheme.bodyMedium : theme.textTheme.bodyLarge)
+                  ?.copyWith(height: compact ? 1.32 : 1.4),
               children: _boldMarkedSpans(example.text),
             ),
           ),
@@ -1125,7 +1159,8 @@ class _ExampleItem extends StatelessWidget {
                 example.urdu!,
                 textAlign: TextAlign.right,
                 style: theme.textTheme.bodyMedium?.copyWith(
-                    height: 1.6, color: theme.colorScheme.onSurfaceVariant),
+                    height: compact ? 1.45 : 1.6,
+                    color: theme.colorScheme.onSurfaceVariant),
               ),
             ),
           ],
@@ -1147,8 +1182,9 @@ class _ExampleItem extends StatelessWidget {
 }
 
 class _MistakeItem extends StatelessWidget {
-  const _MistakeItem({required this.mistake});
+  const _MistakeItem({required this.mistake, this.compact = false});
   final GrammarMistake mistake;
+  final bool compact;
 
   @override
   Widget build(BuildContext context) {
@@ -1169,7 +1205,7 @@ class _MistakeItem extends StatelessWidget {
                 Expanded(
                   child: Text.rich(
                     TextSpan(
-                      style: theme.textTheme.bodyMedium?.copyWith(
+                      style: (compact ? theme.textTheme.bodySmall : theme.textTheme.bodyMedium)?.copyWith(
                           color: scheme.error,
                           decoration: TextDecoration.lineThrough),
                       children: _boldMarkedSpans(mistake.wrong),
@@ -1188,7 +1224,7 @@ class _MistakeItem extends StatelessWidget {
                 Expanded(
                   child: Text.rich(
                     TextSpan(
-                      style: theme.textTheme.bodyMedium
+                      style: (compact ? theme.textTheme.bodySmall : theme.textTheme.bodyMedium)
                           ?.copyWith(color: right, fontWeight: FontWeight.w600),
                       children: _boldMarkedSpans(mistake.right),
                     ),

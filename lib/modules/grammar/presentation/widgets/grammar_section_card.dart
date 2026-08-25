@@ -55,16 +55,21 @@ class GrammarSectionCard extends StatelessWidget {
 /// A simple leading-bullet row used inside section cards for rules, notes and
 /// tips lists.
 class GrammarBullet extends StatelessWidget {
-  const GrammarBullet({super.key, required this.text, this.icon});
-
+    const GrammarBullet({
+    super.key,
+    required this.text,
+    this.icon,
+    this.compact = false,
+  });
   final String text;
   final IconData? icon;
+  final bool compact;
 
   @override
   Widget build(BuildContext context) {
     final ThemeData theme = Theme.of(context);
     return Padding(
-      padding: const EdgeInsets.only(bottom: 10),
+      padding: EdgeInsets.only(bottom: compact ? 8 : 10),
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
@@ -72,15 +77,17 @@ class GrammarBullet extends StatelessWidget {
             padding: const EdgeInsets.only(top: 2),
             child: Icon(
               icon ?? Icons.circle,
-              size: icon != null ? 18 : 7,
+              size: compact ? (icon != null ? 17 : 6) : (icon != null ? 18 : 7),
               color: theme.colorScheme.primary,
             ),
           ),
-          const SizedBox(width: 12),
+          SizedBox(width: compact ? 10 : 12),
           Expanded(
             child: Text.rich(
               TextSpan(
-                style: theme.textTheme.bodyLarge?.copyWith(height: 1.4),
+                style: (compact ? theme.textTheme.bodyMedium : theme.textTheme.bodyLarge)?.copyWith(
+                  height: compact ? 1.32 : 1.4,
+                ),
                 children: _highlightRuleDetails(
                   text,
                   const Color(0xFF42A5F5),
@@ -97,23 +104,61 @@ class GrammarBullet extends StatelessWidget {
 
 List<TextSpan> _highlightRuleDetails(String text, Color highlightColor) {
   final List<TextSpan> spans = <TextSpan>[];
+  const Color detailColor = Color(0xFF90CAF9);
   final RegExp marker = RegExp(r'(Example|Examples|Explanation):');
   int cursor = 0;
+  bool inHighlightedDetail = false;
 
   for (final RegExpMatch match in marker.allMatches(text)) {
     if (match.start > cursor) {
-      spans.add(TextSpan(text: text.substring(cursor, match.start)));
+      spans.addAll(_markupSpans(
+        text.substring(cursor, match.start),
+        inHighlightedDetail ? detailColor : null,
+      ));
     }
     spans.add(TextSpan(
       text: text.substring(match.start, match.end),
       style: TextStyle(color: highlightColor, fontWeight: FontWeight.w700),
     ));
     cursor = match.end;
+    inHighlightedDetail = true;
   }
 
   if (cursor < text.length) {
-    spans.add(TextSpan(text: text.substring(cursor)));
+    spans.addAll(_markupSpans(
+      text.substring(cursor),
+      inHighlightedDetail ? detailColor : null,
+    ));
   }
 
-  return spans.isEmpty ? <TextSpan>[TextSpan(text: text)] : spans;
+  return spans.isEmpty ? _markupSpans(text, null) : spans;
+}
+
+List<TextSpan> _markupSpans(String text, Color? color) {
+  final List<TextSpan> spans = <TextSpan>[];
+  final RegExp markup = RegExp(r'(\*\*\*(.+?)\*\*\*|\*\*(.+?)\*\*|__(.+?)__)');
+  int cursor = 0;
+  for (final RegExpMatch match in markup.allMatches(text)) {
+    if (match.start > cursor) {
+      spans.add(TextSpan(text: text.substring(cursor, match.start), style: color == null ? null : TextStyle(color: color)));
+    }
+    final String value = match.group(2) ?? match.group(3) ?? match.group(4)!;
+    final bool both = match.group(2) != null;
+    final bool bold = both || match.group(3) != null;
+    final bool underline = both || match.group(4) != null;
+    spans.add(TextSpan(
+      text: value,
+      style: TextStyle(
+        color: color,
+        fontWeight: bold ? FontWeight.w800 : null,
+        decoration: underline ? TextDecoration.underline : null,
+        decorationThickness: underline ? 2 : null,
+      ),
+    ));
+    cursor = match.end;
+  }
+  if (cursor < text.length) {
+    spans.add(TextSpan(text: text.substring(cursor), style: color == null ? null : TextStyle(color: color)));
+  }
+  return spans.isEmpty ? <TextSpan>[TextSpan(text: text, style: color == null ? null : TextStyle(color: color))] : spans;
 }
