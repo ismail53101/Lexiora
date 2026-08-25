@@ -104,16 +104,17 @@ class GrammarBullet extends StatelessWidget {
 
 List<TextSpan> _highlightRuleDetails(String text, Color highlightColor) {
   final List<TextSpan> spans = <TextSpan>[];
-  const Color detailColor = Color(0xFF90CAF9);
+  const Color exampleColor = Color(0xFF64B5F6);
+  const Color explanationColor = Color(0xFFCE93D8);
   final RegExp marker = RegExp(r'(Example|Examples|Explanation):');
   int cursor = 0;
-  bool inHighlightedDetail = false;
+  Color? detailColor;
 
   for (final RegExpMatch match in marker.allMatches(text)) {
     if (match.start > cursor) {
       spans.addAll(_markupSpans(
         text.substring(cursor, match.start),
-        inHighlightedDetail ? detailColor : null,
+        detailColor,
       ));
     }
     spans.add(TextSpan(
@@ -121,7 +122,9 @@ List<TextSpan> _highlightRuleDetails(String text, Color highlightColor) {
       style: TextStyle(color: highlightColor, fontWeight: FontWeight.w700),
     ));
     cursor = match.end;
-    inHighlightedDetail = true;
+    detailColor = match.group(1)!.startsWith('Explanation')
+        ? explanationColor
+        : exampleColor;
   }
 
   if (cursor < text.length) {
