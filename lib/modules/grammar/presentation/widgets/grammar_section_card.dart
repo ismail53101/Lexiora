@@ -54,6 +54,23 @@ class GrammarSectionCard extends StatelessWidget {
 
 /// A simple leading-bullet row used inside section cards for rules, notes and
 /// tips lists.
+class TenseRichText extends StatelessWidget {
+  const TenseRichText({required this.text, this.style});
+  final String text;
+  final TextStyle? style;
+
+  @override
+  Widget build(BuildContext context) {
+    final ThemeData theme = Theme.of(context);
+    return Text.rich(
+      TextSpan(
+        style: style ?? theme.textTheme.bodySmall?.copyWith(height: 1.3),
+        children: _highlightRuleDetails(text, const Color(0xFF42A5F5)),
+      ),
+    );
+  }
+}
+
 class GrammarBullet extends StatelessWidget {
     const GrammarBullet({
     super.key,
@@ -91,7 +108,7 @@ class GrammarBullet extends StatelessWidget {
                 children: _highlightRuleDetails(
                   text,
                   const Color(0xFF42A5F5),
-                  defaultColor: compact ? const Color(0xFF64B5F6) : null,
+                  defaultColor: null,
                 ),
               ),
             ),
@@ -119,10 +136,6 @@ List<TextSpan> _highlightRuleDetails(
       continue;
     }
     if (!marker.hasMatch(line) && _looksLikeExampleLine(line)) {
-      spans.add(TextSpan(
-        text: 'Example: ',
-        style: TextStyle(color: highlightColor, fontWeight: FontWeight.w700),
-      ));
       spans.addAll(_markupSpans(line, exampleColor));
       spans.add(const TextSpan(text: '\n'));
       continue;
@@ -159,10 +172,11 @@ List<TextSpan> _highlightRuleDetails(
 }
 
 bool _looksLikeExampleLine(String line) {
-  final String value = line.trim();
+  final String value = line.trim().replaceFirst(RegExp(r'^[.•]+\s*'), '');
   if (value.isEmpty || RegExp(r'[\u0600-\u06FF]').hasMatch(value)) return false;
   if (value.startsWith('❌') || value.startsWith('✅')) return true;
   if (!RegExp(r'[.!?]$').hasMatch(value)) return false;
+  if (RegExp(r'(Subject\s*\+|Formula:|\bV[123](?:-ing)?\b|\bAffirmative\b|\bNegative\b|\bInterrogative\b)').hasMatch(value)) return false;
   return RegExp(r'^(I|He|She|It|We|They|You|Ali|Sara|John|The students|The boy|The girl|Did |Does |Do |Has |Have |Had |Will |Am |Is |Are |Was |Were )').hasMatch(value);
 }
 

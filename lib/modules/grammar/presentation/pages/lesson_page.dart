@@ -173,11 +173,15 @@ class _LessonView extends StatelessWidget {
           GrammarSectionCard(
             icon: Icons.info_outline,
             title: 'Introduction',
-            child: Text(lesson.introduction,
-                style: (lesson.id.startsWith('tenses/')
-                        ? theme.textTheme.bodySmall
-                        : theme.textTheme.bodyLarge)
-                    ?.copyWith(height: lesson.id.startsWith('tenses/') ? 1.3 : 1.5)),
+            child: lesson.id.startsWith('tenses/')
+                ? TenseRichText(
+                    text: lesson.introduction,
+                    style: theme.textTheme.bodySmall?.copyWith(height: 1.3),
+                  )
+                : Text(
+                    lesson.introduction,
+                    style: theme.textTheme.bodyLarge?.copyWith(height: 1.5),
+                  ),
           ),
 
         if (lesson.urduExplanation.isNotEmpty)
@@ -201,11 +205,15 @@ class _LessonView extends StatelessWidget {
           GrammarSectionCard(
             icon: Icons.menu_book_outlined,
             title: 'English Explanation',
-            child: Text(lesson.englishExplanation,
-                style: (lesson.id.startsWith('tenses/')
-                        ? theme.textTheme.bodySmall
-                        : theme.textTheme.bodyLarge)
-                    ?.copyWith(height: lesson.id.startsWith('tenses/') ? 1.3 : 1.5)),
+            child: lesson.id.startsWith('tenses/')
+                ? TenseRichText(
+                    text: lesson.englishExplanation,
+                    style: theme.textTheme.bodySmall?.copyWith(height: 1.3),
+                  )
+                : Text(
+                    lesson.englishExplanation,
+                    style: theme.textTheme.bodyLarge?.copyWith(height: 1.5),
+                  ),
           ),
 
         if (lesson.types.isNotEmpty) ...<Widget>[
@@ -485,6 +493,13 @@ class _NounLandingView extends StatelessWidget {
             lesson: lesson,
             accents: accents,
           ),
+        if (lesson.id == 'tenses/overview') ...<Widget>[
+          const SizedBox(height: 12),
+          const _LandingSectionLabel(title: 'Tenses at a Glance'),
+          const _ZoomableFooterImage(
+            imagePath: 'assets/grammar/images/english_tenses_at_a_glance.png',
+          ),
+        ],
         if (lesson.footerImage.isNotEmpty) ...<Widget>[
           const SizedBox(height: 12),
           const _LandingSectionLabel(title: 'Quick Reference Guide'),
