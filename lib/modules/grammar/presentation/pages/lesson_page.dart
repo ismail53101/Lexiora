@@ -261,6 +261,17 @@ class _LessonView extends StatelessWidget {
             ),
           ),
 
+        if (lesson.tableRows.isNotEmpty)
+          GrammarSectionCard(
+            icon: Icons.table_chart_outlined,
+            title: lesson.tableTitle.isEmpty ? 'Comparison Table' : lesson.tableTitle,
+            child: _GrammarTable(
+              columns: lesson.tableColumns,
+              rows: lesson.tableRows,
+              compact: lesson.id.startsWith('tenses/'),
+            ),
+          ),
+
         if (lesson.examples.isNotEmpty)
           GrammarSectionCard(
             icon: Icons.format_quote,
@@ -1010,13 +1021,16 @@ class _TypeSubheading extends StatelessWidget {
   }
 }
 
-List<TextSpan> _boldMarkedSpans(String text) {
+List<TextSpan> _boldMarkedSpans(String text, {Color? color}) {
   final List<String> parts = text.split('**');
   return <TextSpan>[
     for (int i = 0; i < parts.length; i++)
       TextSpan(
         text: parts[i].replaceAll(' > ', ' → '),
-        style: i.isOdd ? const TextStyle(fontWeight: FontWeight.w800) : null,
+        style: TextStyle(
+          color: color,
+          fontWeight: i.isOdd ? FontWeight.w800 : null,
+        ),
       ),
   ];
 }
@@ -1241,7 +1255,10 @@ class _ExampleItem extends StatelessWidget {
             TextSpan(
               style: (compact ? theme.textTheme.bodySmall : theme.textTheme.bodyLarge)
                   ?.copyWith(height: compact ? 1.25 : 1.4),
-              children: _boldMarkedSpans(example.text),
+              children: _boldMarkedSpans(
+                example.text,
+                color: compact ? const Color(0xFF64B5F6) : null,
+              ),
             ),
           ),
           if (example.urdu != null && example.urdu!.isNotEmpty) ...<Widget>[
@@ -1265,7 +1282,10 @@ class _ExampleItem extends StatelessWidget {
                 style: theme.textTheme.labelMedium?.copyWith(
                     color: theme.colorScheme.primary,
                     fontStyle: FontStyle.italic),
-                children: _boldMarkedSpans(example.note!),
+                children: _boldMarkedSpans(
+                  example.note!,
+                  color: compact ? const Color(0xFFCE93D8) : null,
+                ),
               ),
             ),
           ],

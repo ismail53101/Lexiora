@@ -9364,61 +9364,61 @@
       ],
       "examples": [
         {
-          "text": "He has been studying English.",
-          "urdu": "وہ انگریزی پڑھتا آ رہا ہے۔",
-          "note": "The action started in the past and is continuing now."
+          "text": "I have been studying for two hours.",
+          "urdu": "میں دو گھنٹے سے پڑھ رہا ہوں۔",
+          "note": "This sentence follows the tense formula and shows its use in context."
         },
         {
-          "text": "They have been working hard.",
-          "urdu": "وہ محنت کرتے آ رہے ہیں۔",
-          "note": "The action has continued for a period of time."
+          "text": "She has been working since morning.",
+          "urdu": "وہ صبح سے کام کر رہی ہے۔",
+          "note": "This sentence follows the tense formula and shows its use in context."
         },
         {
-          "text": "She has been cooking since morning.",
-          "urdu": "وہ صبح سے کھانا پکا رہی ہے۔",
-          "note": "Since shows the starting point of the action."
+          "text": "They have been playing cricket.",
+          "urdu": "وہ کرکٹ کھیل رہے ہیں۔",
+          "note": "This sentence follows the tense formula and shows its use in context."
         },
         {
-          "text": "We have been waiting for two hours.",
-          "urdu": "ہم دو گھنٹے سے انتظار کر رہے ہیں۔",
-          "note": "For shows the duration of the action."
+          "text": "He has been waiting for an hour.",
+          "urdu": "وہ ایک گھنٹے سے انتظار کر رہا ہے۔",
+          "note": "This sentence follows the tense formula and shows its use in context."
         },
         {
-          "text": "Has he been studying English?",
-          "urdu": "کیا وہ انگریزی پڑھتا آ رہا ہے؟",
-          "note": "Has is used with the singular subject he."
+          "text": "We have been living here since 2020.",
+          "urdu": "ہم 2020 سے یہاں رہ رہے ہیں۔",
+          "note": "This sentence follows the tense formula and shows its use in context."
         }
       ],
       "commonMistakes": [
         {
-          "wrong": "He has been study English.",
-          "right": "He has been studying English.",
-          "urdu": "وہ انگریزی پڑھتا آ رہا ہے۔",
-          "note": "Use been + V-ing."
+          "wrong": "He have been studying.",
+          "right": "He has been studying.",
+          "urdu": "وہ پڑھ رہا ہے۔",
+          "note": "Explanation: He takes has."
         },
         {
-          "wrong": "They has been working hard.",
-          "right": "They have been working hard.",
-          "urdu": "وہ محنت کرتے آ رہے ہیں۔",
-          "note": "They is plural, so use have."
+          "wrong": "They has been working.",
+          "right": "They have been working.",
+          "urdu": "وہ کام کر رہے ہیں۔",
+          "note": "Explanation: They takes have."
         },
         {
-          "wrong": "She has been cook since morning.",
-          "right": "She has been cooking since morning.",
-          "urdu": "وہ صبح سے کھانا پکا رہی ہے۔",
-          "note": "The main verb must be in the -ing form."
+          "wrong": "She has been study.",
+          "right": "She has been studying.",
+          "urdu": "وہ پڑھ رہی ہے۔",
+          "note": "Explanation: Use V-ing after been."
         },
         {
-          "wrong": "He has been studying for morning.",
-          "right": "He has been studying since morning.",
-          "urdu": "وہ صبح سے پڑھتا آ رہا ہے۔",
-          "note": "Use since with a starting point."
+          "wrong": "I have been working since two hours.",
+          "right": "I have been working for two hours.",
+          "urdu": "میں دو گھنٹے سے کام کر رہا ہوں۔",
+          "note": "Explanation: Use for with a duration."
         },
         {
-          "wrong": "We have been waiting since two hours.",
-          "right": "We have been waiting for two hours.",
-          "urdu": "ہم دو گھنٹے سے انتظار کر رہے ہیں۔",
-          "note": "Use for with a duration."
+          "wrong": "He has been waiting for Monday.",
+          "right": "He has been waiting since Monday.",
+          "urdu": "وہ پیر سے انتظار کر رہا ہے۔",
+          "note": "Explanation: Use since with a starting point."
         }
       ],
       "examTips": [
@@ -9426,7 +9426,38 @@
       ],
       "practice": [],
       "quiz": [],
-      "summary": ""
+      "summary": "",
+      "tableTitle": "Since vs For",
+      "tableColumns": [
+        "Since",
+        "For"
+      ],
+      "tableRows": [
+        [
+          "Shows the starting point of an action.",
+          "Shows the duration of an action."
+        ],
+        [
+          "کسی کام کے شروع ہونے کا وقت",
+          "کسی کام کے جاری رہنے کا دورانیہ"
+        ],
+        [
+          "since morning",
+          "for three hours"
+        ],
+        [
+          "since Monday",
+          "for two days"
+        ],
+        [
+          "since 2020",
+          "for five years"
+        ],
+        [
+          "since 8 o’clock",
+          "for a long time"
+        ]
+      ]
     }
   },
   {
@@ -9453,66 +9484,61 @@
       ],
       "examples": [
         {
-          "text": "Ali has completed his assignment.",
-          "urdu": "علی اپنا اسائنمنٹ مکمل کر چکا ہے۔",
-          "note": "The assignment is completed, and the result is relevant now, so we use has + V3."
+          "text": "I have finished my work.",
+          "urdu": "میں اپنا کام مکمل کر چکا ہوں۔",
+          "note": "This sentence follows the tense formula and shows its use in context."
         },
         {
-          "text": "They have won the match.",
-          "urdu": "انہوں نے میچ جیت لیا ہے۔",
-          "note": "The match has been won, and the result is important now, so we use have + V3."
+          "text": "She has visited Lahore.",
+          "urdu": "وہ لاہور جا چکی ہے۔",
+          "note": "This sentence follows the tense formula and shows its use in context."
         },
         {
-          "text": "Ali has not completed his assignment.",
-          "urdu": "علی نے اپنا اسائنمنٹ مکمل نہیں کیا ہے۔",
-          "note": "“Ali” is singular, so we use has not + V3."
+          "text": "They have eaten dinner.",
+          "urdu": "وہ رات کا کھانا کھا چکے ہیں۔",
+          "note": "This sentence follows the tense formula and shows its use in context."
         },
         {
-          "text": "They have not won the match.",
-          "urdu": "انہوں نے میچ نہیں جیتا ہے۔",
-          "note": "“They” is plural, so we use have not + V3."
+          "text": "He has written a letter.",
+          "urdu": "وہ خط لکھ چکا ہے۔",
+          "note": "This sentence follows the tense formula and shows its use in context."
         },
         {
-          "text": "Have they won the match?",
-          "urdu": "کیا انہوں نے میچ جیت لیا ہے؟",
-          "note": "“They” is plural, so we use have before the subject."
-        },
-        {
-          "text": "Has Ali completed his assignment?",
-          "urdu": "کیا علی نے اپنا اسائنمنٹ مکمل کر لیا ہے؟",
-          "note": "“Ali” is singular, so we use has before the subject."
+          "text": "We have completed the task.",
+          "urdu": "ہم کام مکمل کر چکے ہیں۔",
+          "note": "This sentence follows the tense formula and shows its use in context."
         }
       ],
       "commonMistakes": [
         {
-          "wrong": "He has went home.",
-          "right": "He has gone home.",
-          "urdu": "وہ گھر جا چکا ہے۔",
-          "note": "Use V3 gone after has."
+          "wrong": "He have finished.",
+          "right": "He has finished.",
+          "urdu": "وہ مکمل کر چکا ہے۔",
+          "note": "Explanation: He takes has."
         },
         {
-          "wrong": "I have visited Lahore yesterday.",
-          "right": "I visited Lahore yesterday.",
-          "urdu": "میں کل لاہور گیا تھا۔",
-          "note": "Use Past Simple with a specific finished time."
+          "wrong": "They has arrived.",
+          "right": "They have arrived.",
+          "urdu": "وہ پہنچ چکے ہیں۔",
+          "note": "Explanation: Plural subjects take have."
         },
         {
-          "wrong": "She have finished her work.",
-          "right": "She has finished her work.",
-          "urdu": "وہ اپنا کام مکمل کر چکی ہے۔",
-          "note": "She is singular, so use has."
+          "wrong": "She has went home.",
+          "right": "She has gone home.",
+          "urdu": "وہ گھر جا چکی ہے۔",
+          "note": "Explanation: Use V3 after has."
         },
         {
-          "wrong": "They has won the match.",
-          "right": "They have won the match.",
-          "urdu": "انہوں نے میچ جیت لیا ہے۔",
-          "note": "They is plural, so use have."
+          "wrong": "I have saw the film.",
+          "right": "I have seen the film.",
+          "urdu": "میں فلم دیکھ چکا ہوں۔",
+          "note": "Explanation: Use the past participle V3."
         },
         {
-          "wrong": "Did he has completed the task?",
-          "right": "Has he completed the task?",
-          "urdu": "کیا اس نے کام مکمل کر لیا ہے؟",
-          "note": "Use has before the subject in a Present Perfect question."
+          "wrong": "Did he has finished?",
+          "right": "Has he finished?",
+          "urdu": "کیا وہ مکمل کر چکا ہے؟",
+          "note": "Explanation: Form a Present Perfect question with has/have."
         }
       ],
       "examTips": [
@@ -9547,61 +9573,61 @@
       ],
       "examples": [
         {
-          "text": "She is reading a book.",
-          "urdu": "وہ ایک کتاب پڑھ رہی ہے۔",
-          "note": "The action is happening now, so the Present Continuous Tense is used."
+          "text": "I am studying English.",
+          "urdu": "میں انگریزی پڑھ رہا ہوں۔",
+          "note": "This sentence follows the tense formula and shows its use in context."
         },
         {
-          "text": "The students are preparing for the exam.",
-          "urdu": "طلبہ امتحان کی تیاری کر رہے ہیں۔",
-          "note": "The preparation is an ongoing action, so the Present Continuous Tense is used."
+          "text": "She is cooking dinner.",
+          "urdu": "وہ رات کا کھانا پکا رہی ہے۔",
+          "note": "This sentence follows the tense formula and shows its use in context."
         },
         {
-          "text": "They are not playing cricket.",
-          "urdu": "وہ کرکٹ نہیں کھیل رہے ہیں۔",
-          "note": "“They” takes are, followed by not + V-ing."
+          "text": "They are playing cricket.",
+          "urdu": "وہ کرکٹ کھیل رہے ہیں۔",
+          "note": "This sentence follows the tense formula and shows its use in context."
         },
         {
-          "text": "I am not watching television.",
-          "urdu": "میں ٹیلی ویژن نہیں دیکھ رہا ہوں۔",
-          "note": "“I” takes am, followed by not + V-ing."
+          "text": "We are watching a film.",
+          "urdu": "ہم فلم دیکھ رہے ہیں۔",
+          "note": "This sentence follows the tense formula and shows its use in context."
         },
         {
-          "text": "Are they playing cricket?",
-          "urdu": "کیا وہ کرکٹ کھیل رہے ہیں؟",
-          "note": "“They” is plural, so we use are before the subject."
+          "text": "He is writing a letter.",
+          "urdu": "وہ خط لکھ رہا ہے۔",
+          "note": "This sentence follows the tense formula and shows its use in context."
         }
       ],
       "commonMistakes": [
         {
-          "wrong": "He is play cricket.",
-          "right": "He is playing cricket.",
-          "urdu": "وہ کرکٹ کھیل رہا ہے۔",
-          "note": "Present Continuous requires am/is/are + V-ing, so play must be changed to playing."
+          "wrong": "He are studying.",
+          "right": "He is studying.",
+          "urdu": "وہ پڑھ رہا ہے۔",
+          "note": "Explanation: He takes is."
         },
         {
-          "wrong": "They is studying English.",
-          "right": "They are studying English.",
-          "urdu": "وہ انگریزی پڑھ رہے ہیں۔",
-          "note": "“They” is a plural subject, so we use are, not is."
+          "wrong": "They is playing.",
+          "right": "They are playing.",
+          "urdu": "وہ کھیل رہے ہیں۔",
+          "note": "Explanation: They takes are."
         },
         {
-          "wrong": "She does not studying English.",
-          "right": "She is not studying English.",
-          "urdu": "وہ انگریزی نہیں پڑھ رہی ہے۔",
-          "note": "Present Continuous uses is/am/are + not + V-ing, not do/does + V-ing."
+          "wrong": "She is cook dinner.",
+          "right": "She is cooking dinner.",
+          "urdu": "وہ کھانا پکا رہی ہے۔",
+          "note": "Explanation: Use V-ing after is."
         },
         {
-          "wrong": "Is they playing cricket?",
-          "right": "Are they playing cricket?",
-          "urdu": "کیا وہ کرکٹ کھیل رہے ہیں؟",
-          "note": "“They” is plural, so the correct helping verb is are."
+          "wrong": "I am write a letter.",
+          "right": "I am writing a letter.",
+          "urdu": "میں خط لکھ رہا ہوں۔",
+          "note": "Explanation: Use V-ing after am."
         },
         {
-          "wrong": "I is reading a book.",
-          "right": "I am reading a book.",
-          "urdu": "میں ایک کتاب پڑھ رہا ہوں۔",
-          "note": "I always takes am in the Present Continuous Tense."
+          "wrong": "Are he working?",
+          "right": "Is he working?",
+          "urdu": "کیا وہ کام کر رہا ہے؟",
+          "note": "Explanation: Use is with he."
         }
       ],
       "examTips": [
@@ -9637,93 +9663,61 @@
       ],
       "examples": [
         {
-          "text": "He plays cricket.",
-          "urdu": "وہ کرکٹ کھیلتا ہے۔",
-          "note": "The singular subject He takes the verb with -s."
+          "text": "I play cricket.",
+          "urdu": "میں کرکٹ کھیلتا ہوں۔",
+          "note": "This sentence follows the tense formula and shows its use in context."
         },
         {
-          "text": "She goes to college every day.",
-          "urdu": "وہ ہر روز کالج جاتی ہے۔",
-          "note": "Every day shows a routine."
+          "text": "He plays cricket.",
+          "urdu": "وہ کرکٹ کھیلتا ہے۔",
+          "note": "This sentence follows the tense formula and shows its use in context."
+        },
+        {
+          "text": "They study English.",
+          "urdu": "وہ انگریزی پڑھتے ہیں۔",
+          "note": "This sentence follows the tense formula and shows its use in context."
+        },
+        {
+          "text": "She studies English.",
+          "urdu": "وہ انگریزی پڑھتی ہے۔",
+          "note": "This sentence follows the tense formula and shows its use in context."
         },
         {
           "text": "The sun rises in the east.",
           "urdu": "سورج مشرق سے طلوع ہوتا ہے۔",
-          "note": "This is a general truth."
-        },
-        {
-          "text": "I brush my teeth twice a day.",
-          "urdu": "میں دن میں دو بار اپنے دانت صاف کرتا ہوں۔",
-          "note": "This expresses a habit."
-        },
-        {
-          "text": "She works in a bank.",
-          "urdu": "وہ ایک بینک میں کام کرتی ہے۔",
-          "note": "This expresses a permanent situation."
-        },
-        {
-          "text": "The train leaves at 6 pm every evening.",
-          "urdu": "ٹرین ہر شام 6 بجے روانہ ہوتی ہے۔",
-          "note": "This expresses a fixed schedule."
-        },
-        {
-          "text": "Water boils at 100 degrees Celsius.",
-          "urdu": "پانی 100 ڈگری سیلسیئس پر ابلتا ہے۔",
-          "note": "This is a scientific fact."
-        },
-        {
-          "text": "He does not eat meat.",
-          "urdu": "وہ گوشت نہیں کھاتا۔",
-          "note": "This expresses a negative habit."
-        },
-        {
-          "text": "Do you like tea?",
-          "urdu": "کیا آپ چائے پسند کرتے ہیں؟",
-          "note": "This asks about a preference."
+          "note": "This sentence follows the tense formula and shows its use in context."
         }
       ],
       "commonMistakes": [
         {
-          "wrong": "She go to school daily.",
-          "right": "She goes to school daily.",
-          "urdu": "وہ روزانہ اسکول جاتی ہے۔",
-          "note": "The singular subject She requires goes, not go."
+          "wrong": "He play cricket.",
+          "right": "He plays cricket.",
+          "urdu": "وہ کرکٹ کھیلتا ہے۔",
+          "note": "Explanation: He is singular, so the verb takes -s."
         },
         {
-          "wrong": "He don't like coffee.",
-          "right": "He doesn't like coffee.",
-          "urdu": "وہ کافی پسند نہیں کرتا۔",
-          "note": "Use does not or does not with He, not do not."
-        },
-        {
-          "wrong": "Does she goes there?",
-          "right": "Does she go there?",
-          "urdu": "کیا وہ وہاں جاتی ہے؟",
-          "note": "After does, the main verb must remain in V1."
-        },
-        {
-          "wrong": "I am agree with you.",
-          "right": "I agree with you.",
-          "urdu": "میں آپ سے متفق ہوں۔",
-          "note": "Agree is a verb; do not use am before it."
+          "wrong": "She study English.",
+          "right": "She studies English.",
+          "urdu": "وہ انگریزی پڑھتی ہے۔",
+          "note": "Explanation: A verb ending in consonant + y changes y to i and takes -es."
         },
         {
           "wrong": "He does not plays cricket.",
           "right": "He does not play cricket.",
           "urdu": "وہ کرکٹ نہیں کھیلتا۔",
-          "note": "Does not already carries the singular marking; the main verb stays in V1."
+          "note": "Explanation: After does not, use the base verb V1."
         },
         {
           "wrong": "Does he plays cricket?",
           "right": "Does he play cricket?",
           "urdu": "کیا وہ کرکٹ کھیلتا ہے؟",
-          "note": "After does, use the first form play."
+          "note": "Explanation: After does, use the base verb V1."
         },
         {
-          "wrong": "We The boys go to school.",
-          "right": "The boys go to school.",
-          "urdu": "لڑکے اسکول جاتے ہیں۔",
-          "note": "Remove the extra subject; the sentence must have one clear subject."
+          "wrong": "They goes to school.",
+          "right": "They go to school.",
+          "urdu": "وہ اسکول جاتے ہیں۔",
+          "note": "Explanation: Plural subjects take the base verb without -s or -es."
         }
       ],
       "examTips": [
@@ -9763,63 +9757,63 @@
       ],
       "examples": [
         {
-          "text": "Structure / Formula",
-          "urdu": "Affirmative — مثبت"
-        },
-        {
           "text": "Ali had been studying for three hours.",
-          "urdu": "علی تین گھنٹے سے پڑھ رہا تھا۔"
-        },
-        {
-          "text": "Ali had not been studying for three hours.",
-          "urdu": "علی تین گھنٹے سے نہیں پڑھ رہا تھا۔"
-        },
-        {
-          "text": "Had Ali been studying for three hours?",
-          "urdu": "کیا علی تین گھنٹے سے پڑھ رہا تھا؟"
-        },
-        {
-          "text": "Since → the starting point of an action",
-          "urdu": "اردو: کسی کام کے شروع ہونے کا وقت"
-        },
-        {
-          "text": "For → the duration of an action",
-          "urdu": "اردو: کسی کام کے جاری رہنے کا دورانیہ"
+          "urdu": "علی تین گھنٹے سے پڑھ رہا تھا۔",
+          "note": "This sentence follows the tense formula and shows its use in context."
         },
         {
           "text": "He had been studying since morning.",
-          "urdu": "وہ صبح سے پڑھ رہا تھا۔"
-        },
-        {
-          "text": "He had been studying for three hours.",
-          "urdu": "وہ تین گھنٹے سے پڑھ رہا تھا۔"
+          "urdu": "وہ صبح سے پڑھ رہا تھا۔",
+          "note": "This sentence follows the tense formula and shows its use in context."
         },
         {
           "text": "She had been waiting for an hour before the bus arrived.",
-          "urdu": "بس کے پہنچنے سے پہلے وہ ایک گھنٹے سے انتظار کر رہی تھی۔"
-        },
-        {
-          "text": "Ali had been studying for three hours before I arrived.",
-          "urdu": "میرے پہنچنے سے پہلے علی تین گھنٹے سے پڑھ رہا تھا۔"
+          "urdu": "بس کے پہنچنے سے پہلے وہ ایک گھنٹے سے انتظار کر رہی تھی۔",
+          "note": "This sentence follows the tense formula and shows its use in context."
         },
         {
           "text": "They had been working since morning when the manager arrived.",
-          "urdu": "جب مینیجر پہنچا تو وہ صبح سے کام کر رہے تھے۔"
+          "urdu": "جب مینیجر پہنچا تو وہ صبح سے کام کر رہے تھے۔",
+          "note": "This sentence follows the tense formula and shows its use in context."
         },
         {
-          "text": "They had not been working since morning.",
-          "urdu": "وہ صبح سے کام نہیں کر رہے تھے۔"
-        },
-        {
-          "text": "Had they been waiting since morning?",
-          "urdu": "کیا وہ صبح سے انتظار کر رہے تھے؟"
-        },
-        {
-          "text": "Shows the starting point of an action.\tShows the duration of an action.",
-          "urdu": "کسی کام کے شروع ہونے کا وقت\tکسی کام کے جاری رہنے کا دورانیہ"
+          "text": "They had been working for five hours before sunset.",
+          "urdu": "غروب آفتاب سے پہلے وہ پانچ گھنٹے سے کام کر رہے تھے۔",
+          "note": "This sentence follows the tense formula and shows its use in context."
         }
       ],
-      "commonMistakes": [],
+      "commonMistakes": [
+        {
+          "wrong": "He had been study.",
+          "right": "He had been studying.",
+          "urdu": "وہ پڑھ رہا تھا۔",
+          "note": "Explanation: Use V-ing after had been."
+        },
+        {
+          "wrong": "They had been work since morning.",
+          "right": "They had been working since morning.",
+          "urdu": "وہ صبح سے کام کر رہے تھے۔",
+          "note": "Explanation: Use the -ing form."
+        },
+        {
+          "wrong": "She had been waiting since two hours.",
+          "right": "She had been waiting for two hours.",
+          "urdu": "وہ دو گھنٹے سے انتظار کر رہی تھی۔",
+          "note": "Explanation: Use for with a duration."
+        },
+        {
+          "wrong": "He had been working for Monday.",
+          "right": "He had been working since Monday.",
+          "urdu": "وہ پیر سے کام کر رہا تھا۔",
+          "note": "Explanation: Use since with a starting point."
+        },
+        {
+          "wrong": "Had they been wait?",
+          "right": "Had they been waiting?",
+          "urdu": "کیا وہ انتظار کر رہے تھے؟",
+          "note": "Explanation: Use V-ing after had been."
+        }
+      ],
       "examTips": [
         "Affirmative → Subject + had + been + V-ing",
         "Negative → Subject + had not + been + V-ing",
@@ -9839,7 +9833,38 @@
       ],
       "practice": [],
       "quiz": [],
-      "summary": ""
+      "summary": "",
+      "tableTitle": "Since vs For",
+      "tableColumns": [
+        "Since",
+        "For"
+      ],
+      "tableRows": [
+        [
+          "Shows the starting point of an action.",
+          "Shows the duration of an action."
+        ],
+        [
+          "کسی کام کے شروع ہونے کا وقت",
+          "کسی کام کے جاری رہنے کا دورانیہ"
+        ],
+        [
+          "since morning",
+          "for three hours"
+        ],
+        [
+          "since Monday",
+          "for two days"
+        ],
+        [
+          "since 2020",
+          "for five years"
+        ],
+        [
+          "since 8 o’clock",
+          "for a long time"
+        ]
+      ]
     }
   },
   {
@@ -9862,47 +9887,63 @@
       ],
       "examples": [
         {
-          "text": "Structure / Formula:",
-          "urdu": "Affirmative — مثبت"
-        },
-        {
           "text": "Ali had completed his work.",
-          "urdu": "علی اپنا کام مکمل کر چکا تھا۔"
-        },
-        {
-          "text": "Ali had not completed his work.",
-          "urdu": "علی نے اپنا کام مکمل نہیں کیا تھا۔"
-        },
-        {
-          "text": "Had Ali completed his work?",
-          "urdu": "کیا علی نے اپنا کام مکمل کر لیا تھا؟"
+          "urdu": "علی اپنا کام مکمل کر چکا تھا۔",
+          "note": "This sentence follows the tense formula and shows its use in context."
         },
         {
           "text": "Ali had left before I arrived.",
-          "urdu": "میرے پہنچنے سے پہلے علی جا چکا تھا۔"
+          "urdu": "میرے پہنچنے سے پہلے علی جا چکا تھا۔",
+          "note": "This sentence follows the tense formula and shows its use in context."
         },
         {
           "text": "She had left before I arrived.",
-          "urdu": "میرے پہنچنے سے پہلے وہ جا چکی تھی۔"
+          "urdu": "میرے پہنچنے سے پہلے وہ جا چکی تھی۔",
+          "note": "This sentence follows the tense formula and shows its use in context."
         },
         {
           "text": "By the time we reached, the train had left.",
-          "urdu": "جب تک ہم پہنچے، ٹرین جا چکی تھی۔"
+          "urdu": "جب تک ہم پہنچے، ٹرین جا چکی تھی۔",
+          "note": "This sentence follows the tense formula and shows its use in context."
         },
         {
-          "text": "She had finished her work before dinner.",
-          "urdu": "وہ کھانے سے پہلے اپنا کام مکمل کر چکی تھی۔"
-        },
-        {
-          "text": ". They had reached the station when the train arrived.",
-          "urdu": "جب ٹرین پہنچی تو وہ اسٹیشن پہنچ چکے تھے۔"
-        },
-        {
-          "text": "They had not reached the station when the train arrived.",
-          "urdu": "جب ٹرین پہنچی تو وہ اسٹیشن نہیں پہنچے تھے۔"
+          "text": "They had finished the project before the deadline.",
+          "urdu": "انہوں نے مقررہ وقت سے پہلے منصوبہ مکمل کر لیا تھا۔",
+          "note": "This sentence follows the tense formula and shows its use in context."
         }
       ],
-      "commonMistakes": [],
+      "commonMistakes": [
+        {
+          "wrong": "He had went home.",
+          "right": "He had gone home.",
+          "urdu": "وہ گھر جا چکا تھا۔",
+          "note": "Explanation: Use V3 after had."
+        },
+        {
+          "wrong": "She had finish the work.",
+          "right": "She had finished the work.",
+          "urdu": "وہ کام مکمل کر چکی تھی۔",
+          "note": "Explanation: Use the past participle V3."
+        },
+        {
+          "wrong": "They has finished.",
+          "right": "They had finished.",
+          "urdu": "وہ مکمل کر چکے تھے۔",
+          "note": "Explanation: Past Perfect uses had with all subjects."
+        },
+        {
+          "wrong": "Did she visited her aunt?",
+          "right": "Had she visited her aunt?",
+          "urdu": "کیا وہ اپنی خالہ سے مل چکی تھی؟",
+          "note": "Explanation: Use had + V3 for the earlier past action."
+        },
+        {
+          "wrong": "He had ate dinner.",
+          "right": "He had eaten dinner.",
+          "urdu": "وہ کھانا کھا چکا تھا۔",
+          "note": "Explanation: Use eaten, the V3 form of eat."
+        }
+      ],
       "examTips": [
         "Affirmative → Subject + had + V3",
         "Negative → Subject + had not + V3",
@@ -9934,48 +9975,29 @@
       ],
       "examples": [
         {
-          "text": "Structure / Formula:",
-          "urdu": "Affirmative — مثبت"
-        },
-        {
           "text": "He was reading a book.",
-          "urdu": "وہ ایک کتاب پڑھ رہا تھا۔"
+          "urdu": "وہ ایک کتاب پڑھ رہا تھا۔",
+          "note": "This sentence follows the tense formula and shows its use in context."
         },
         {
           "text": "They were playing cricket.",
-          "urdu": "وہ کرکٹ کھیل رہے تھے۔"
-        },
-        {
-          "text": "He was not reading a book.",
-          "urdu": "وہ ایک کتاب نہیں پڑھ رہا تھا۔"
-        },
-        {
-          "text": "They were not playing cricket.",
-          "urdu": "وہ کرکٹ نہیں کھیل رہے تھے۔"
-        },
-        {
-          "text": "Was he reading a book?",
-          "urdu": "کیا وہ ایک کتاب پڑھ رہا تھا؟"
-        },
-        {
-          "text": "Were they playing cricket?",
-          "urdu": "کیا وہ کرکٹ کھیل رہے تھے؟"
+          "urdu": "وہ کرکٹ کھیل رہے تھے۔",
+          "note": "This sentence follows the tense formula and shows its use in context."
         },
         {
           "text": "I was sleeping when the phone rang.",
-          "urdu": "جب فون کی گھنٹی بجی تو میں سو رہا تھا۔"
+          "urdu": "جب فون کی گھنٹی بجی تو میں سو رہا تھا۔",
+          "note": "This sentence follows the tense formula and shows its use in context."
         },
         {
           "text": "While I was studying, my brother was watching TV.",
-          "urdu": "جب میں پڑھ رہا تھا، میرا بھائی ٹی وی دیکھ رہا تھا۔"
+          "urdu": "جب میں پڑھ رہا تھا، میرا بھائی ٹی وی دیکھ رہا تھا۔",
+          "note": "This sentence follows the tense formula and shows its use in context."
         },
         {
           "text": "They were playing cricket when it started to rain.",
-          "urdu": "جب بارش شروع ہوئی تو وہ کرکٹ کھیل رہے تھے۔"
-        },
-        {
-          "text": "Ali was not studying at 8 p.m.",
-          "urdu": "علی رات آٹھ بجے نہیں پڑھ رہا تھا۔"
+          "urdu": "جب بارش شروع ہوئی تو وہ کرکٹ کھیل رہے تھے۔",
+          "note": "This sentence follows the tense formula and shows its use in context."
         }
       ],
       "commonMistakes": [
@@ -9983,13 +10005,31 @@
           "wrong": "They was playing cricket.",
           "right": "They were playing cricket.",
           "urdu": "وہ کرکٹ کھیل رہے تھے۔",
-          "note": null
+          "note": "Explanation: They is plural, so use were."
         },
         {
           "wrong": "She were studying.",
           "right": "She was studying.",
           "urdu": "وہ پڑھ رہی تھی۔",
-          "note": null
+          "note": "Explanation: She is singular, so use was."
+        },
+        {
+          "wrong": "He was read a book.",
+          "right": "He was reading a book.",
+          "urdu": "وہ کتاب پڑھ رہا تھا۔",
+          "note": "Explanation: Use V-ing after was."
+        },
+        {
+          "wrong": "Were he working?",
+          "right": "Was he working?",
+          "urdu": "کیا وہ کام کر رہا تھا؟",
+          "note": "Explanation: Use was with he."
+        },
+        {
+          "wrong": "I were sleeping.",
+          "right": "I was sleeping.",
+          "urdu": "میں سو رہا تھا۔",
+          "note": "Explanation: Use was with I."
         }
       ],
       "examTips": [
@@ -10022,20 +10062,29 @@
       ],
       "examples": [
         {
-          "text": "Example: Ali visited Lahore yesterday.",
-          "urdu": "علی نے کل لاہور کا دورہ کیا۔"
+          "text": "Ali visited Lahore yesterday.",
+          "urdu": "علی نے کل لاہور کا دورہ کیا۔",
+          "note": "This sentence follows the tense formula and shows its use in context."
         },
         {
           "text": "She passed the examination last year.",
-          "urdu": "اس نے گزشتہ سال امتحان پاس کیا۔"
+          "urdu": "اس نے گزشتہ سال امتحان پاس کیا۔",
+          "note": "This sentence follows the tense formula and shows its use in context."
         },
         {
           "text": "Ali did not visit Lahore yesterday.",
-          "urdu": "علی نے کل لاہور کا دورہ نہیں کیا۔"
+          "urdu": "علی نے کل لاہور کا دورہ نہیں کیا۔",
+          "note": "This sentence follows the tense formula and shows its use in context."
         },
         {
           "text": "Did they play cricket yesterday?",
-          "urdu": "کیا انہوں نے کل کرکٹ کھیلی؟"
+          "urdu": "کیا انہوں نے کل کرکٹ کھیلی؟",
+          "note": "This sentence follows the tense formula and shows its use in context."
+        },
+        {
+          "text": "He went to school last week.",
+          "urdu": "وہ گزشتہ ہفتے اسکول گیا۔",
+          "note": "This sentence follows the tense formula and shows its use in context."
         }
       ],
       "commonMistakes": [
@@ -10043,19 +10092,31 @@
           "wrong": "He did not went to school.",
           "right": "He did not go to school.",
           "urdu": "وہ اسکول نہیں گیا۔",
-          "note": null
+          "note": "Explanation: After did not, use V1."
         },
         {
           "wrong": "Did she went home?",
           "right": "Did she go home?",
           "urdu": "کیا وہ گھر گئی؟",
-          "note": null
+          "note": "Explanation: After did, use V1."
         },
         {
           "wrong": "He go to Lahore yesterday.",
           "right": "He went to Lahore yesterday.",
           "urdu": "وہ کل لاہور گیا۔",
-          "note": null
+          "note": "Explanation: Affirmative Past Indefinite uses V2."
+        },
+        {
+          "wrong": "They did not played cricket.",
+          "right": "They did not play cricket.",
+          "urdu": "انہوں نے کرکٹ نہیں کھیلی۔",
+          "note": "Explanation: After did not, use V1."
+        },
+        {
+          "wrong": "Did he visited Lahore?",
+          "right": "Did he visit Lahore?",
+          "urdu": "کیا اس نے لاہور کا دورہ کیا؟",
+          "note": "Explanation: After did, use the base verb."
         }
       ],
       "examTips": [
@@ -10096,67 +10157,63 @@
       ],
       "examples": [
         {
-          "text": "Structure / Formula",
-          "urdu": "Affirmative — مثبت"
-        },
-        {
           "text": "Ali will have been studying for three hours.",
-          "urdu": "علی تین گھنٹے سے پڑھ رہا ہوگا۔"
-        },
-        {
-          "text": "Ali will not have been studying for three hours.",
-          "urdu": "علی تین گھنٹے سے نہیں پڑھ رہا ہوگا۔"
-        },
-        {
-          "text": "Will Ali have been studying for three hours?",
-          "urdu": "کیا علی تین گھنٹے سے پڑھ رہا ہوگا؟"
-        },
-        {
-          "text": "Since → the starting point of an action",
-          "urdu": "اردو: کسی کام کے شروع ہونے کا وقت"
-        },
-        {
-          "text": "For → the duration of an action",
-          "urdu": "اردو: کسی کام کے جاری رہنے کا دورانیہ"
+          "urdu": "علی تین گھنٹے سے پڑھ رہا ہوگا۔",
+          "note": "This sentence follows the tense formula and shows its use in context."
         },
         {
           "text": "He will have been studying since morning.",
-          "urdu": "وہ صبح سے پڑھ رہا ہوگا۔"
-        },
-        {
-          "text": "He will have been studying for three hours.",
-          "urdu": "وہ تین گھنٹے سے پڑھ رہا ہوگا۔"
+          "urdu": "وہ صبح سے پڑھ رہا ہوگا۔",
+          "note": "This sentence follows the tense formula and shows its use in context."
         },
         {
           "text": "She will have been waiting for two hours by 6 p.m.",
-          "urdu": "وہ شام چھ بجے تک دو گھنٹے سے انتظار کر رہی ہوگی۔"
+          "urdu": "وہ شام چھ بجے تک دو گھنٹے سے انتظار کر رہی ہوگی۔",
+          "note": "This sentence follows the tense formula and shows its use in context."
         },
         {
           "text": "By next year, he will have been teaching for ten years.",
-          "urdu": "اگلے سال تک اسے پڑھاتے ہوئے دس سال ہو چکے ہوں گے۔"
-        },
-        {
-          "text": "Ali will have been studying for three hours by 8 p.m.",
-          "urdu": "علی رات آٹھ بجے تک تین گھنٹے سے پڑھ رہا ہوگا۔"
+          "urdu": "اگلے سال تک اسے پڑھاتے ہوئے دس سال ہو چکے ہوں گے۔",
+          "note": "This sentence follows the tense formula and shows its use in context."
         },
         {
           "text": "She will have been waiting for an hour by the time the bus arrives.",
-          "urdu": "جب بس پہنچے گی تو اسے انتظار کرتے ہوئے ایک گھنٹہ ہو چکا ہوگا۔"
-        },
-        {
-          "text": "They will not have been working here for five years by next month.",
-          "urdu": "اگلے ماہ تک انہیں یہاں کام کرتے ہوئے پانچ سال نہیں ہوئے ہوں گے۔"
-        },
-        {
-          "text": "Will Ali have been studying for three hours by 8 p.m.?",
-          "urdu": "کیا علی رات آٹھ بجے تک تین گھنٹے سے پڑھ رہا ہوگا؟"
-        },
-        {
-          "text": "Shows the starting point of an action.\tShows the duration of an action.",
-          "urdu": "کسی کام کے شروع ہونے کا وقت\tکسی کام کے جاری رہنے کا دورانیہ"
+          "urdu": "جب بس پہنچے گی تو اسے انتظار کرتے ہوئے ایک گھنٹہ ہو چکا ہوگا۔",
+          "note": "This sentence follows the tense formula and shows its use in context."
         }
       ],
-      "commonMistakes": [],
+      "commonMistakes": [
+        {
+          "wrong": "He will have been study.",
+          "right": "He will have been studying.",
+          "urdu": "وہ پڑھ رہا ہوگا۔",
+          "note": "Explanation: Use V-ing after will have been."
+        },
+        {
+          "wrong": "They will have been work for five years.",
+          "right": "They will have been working for five years.",
+          "urdu": "وہ پانچ سال سے کام کر رہے ہوں گے۔",
+          "note": "Explanation: Use the -ing form."
+        },
+        {
+          "wrong": "She will have been waiting since two hours.",
+          "right": "She will have been waiting for two hours.",
+          "urdu": "وہ دو گھنٹے سے انتظار کر رہی ہوگی۔",
+          "note": "Explanation: Use for with a duration."
+        },
+        {
+          "wrong": "He will have been working for Monday.",
+          "right": "He will have been working since Monday.",
+          "urdu": "وہ پیر سے کام کر رہا ہوگا۔",
+          "note": "Explanation: Use since with a starting point."
+        },
+        {
+          "wrong": "Will they have been wait by noon?",
+          "right": "Will they have been waiting by noon?",
+          "urdu": "کیا وہ دوپہر تک انتظار کر رہے ہوں گے؟",
+          "note": "Explanation: Use V-ing after have been."
+        }
+      ],
       "examTips": [
         "Affirmative → Subject + will have been + V-ing",
         "Negative → Subject + will not have been + V-ing",
@@ -10176,7 +10233,38 @@
       ],
       "practice": [],
       "quiz": [],
-      "summary": ""
+      "summary": "",
+      "tableTitle": "Since vs For",
+      "tableColumns": [
+        "Since",
+        "For"
+      ],
+      "tableRows": [
+        [
+          "Shows the starting point of an action.",
+          "Shows the duration of an action."
+        ],
+        [
+          "کسی کام کے شروع ہونے کا وقت",
+          "کسی کام کے جاری رہنے کا دورانیہ"
+        ],
+        [
+          "since morning",
+          "for three hours"
+        ],
+        [
+          "since Monday",
+          "for two days"
+        ],
+        [
+          "since 2020",
+          "for five years"
+        ],
+        [
+          "since 8 o’clock",
+          "for a long time"
+        ]
+      ]
     }
   },
   {
@@ -10195,55 +10283,63 @@
       "rules": [],
       "examples": [
         {
-          "text": "Future Perfect Tense is used to describe an action that will have been completed before a specific time or another action in the future.",
-          "urdu": "مستقبل مکمل زمانہ ایسے کام کو ظاہر کرتا ہے جو مستقبل میں کسی خاص وقت یا دوسرے کام سے پہلے مکمل ہو چکا ہوگا۔"
-        },
-        {
-          "text": ". Structure / Formula",
-          "urdu": "Affirmative — مثبت"
-        },
-        {
-          "text": "Ali will have completed his work.",
-          "urdu": "علی اپنا کام مکمل کر چکا ہوگا۔"
-        },
-        {
-          "text": "Ali will not have completed his work.",
-          "urdu": "علی اپنا کام مکمل نہیں کر چکا ہوگا۔"
-        },
-        {
-          "text": "Will Ali have completed his work?",
-          "urdu": "کیا علی اپنا کام مکمل کر چکا ہوگا؟"
-        },
-        {
-          "text": "She will have finished the work by Monday.",
-          "urdu": "وہ پیر تک کام مکمل کر چکی ہوگی۔"
-        },
-        {
-          "text": "They will have left before we arrive.",
-          "urdu": "ہمارے پہنچنے سے پہلے وہ جا چکے ہوں گے۔"
-        },
-        {
-          "text": "He will have returned by next week.",
-          "urdu": "وہ اگلے ہفتے تک واپس آ چکا ہوگا۔"
-        },
-        {
           "text": "Ali will have completed his assignment by tomorrow.",
-          "urdu": "علی کل تک اپنا اسائنمنٹ مکمل کر چکا ہوگا۔"
+          "urdu": "علی کل تک اپنا اسائنمنٹ مکمل کر چکا ہوگا۔",
+          "note": "This sentence follows the tense formula and shows its use in context."
         },
         {
-          "text": ". They will have finished the project before the deadline.",
-          "urdu": "وہ مقررہ وقت سے پہلے منصوبہ مکمل کر چکے ہوں گے۔"
+          "text": "They will have finished the project before the deadline.",
+          "urdu": "وہ مقررہ وقت سے پہلے منصوبہ مکمل کر چکے ہوں گے۔",
+          "note": "This sentence follows the tense formula and shows its use in context."
         },
         {
           "text": "They will not have finished the project by Friday.",
-          "urdu": "وہ جمعہ تک منصوبہ مکمل نہیں کر چکے ہوں گے۔"
+          "urdu": "وہ جمعہ تک منصوبہ مکمل نہیں کر چکے ہوں گے۔",
+          "note": "This sentence follows the tense formula and shows its use in context."
         },
         {
           "text": "Will Ali have completed his assignment by tomorrow?",
-          "urdu": "کیا علی کل تک اپنا اسائنمنٹ مکمل کر چکا ہوگا؟"
+          "urdu": "کیا علی کل تک اپنا اسائنمنٹ مکمل کر چکا ہوگا؟",
+          "note": "This sentence follows the tense formula and shows its use in context."
+        },
+        {
+          "text": "He will have returned by next week.",
+          "urdu": "وہ اگلے ہفتے تک واپس آ چکا ہوگا۔",
+          "note": "This sentence follows the tense formula and shows its use in context."
         }
       ],
-      "commonMistakes": [],
+      "commonMistakes": [
+        {
+          "wrong": "He will have went home.",
+          "right": "He will have gone home.",
+          "urdu": "وہ گھر جا چکا ہوگا۔",
+          "note": "Explanation: Use V3 after will have."
+        },
+        {
+          "wrong": "She will have finish the work.",
+          "right": "She will have finished the work.",
+          "urdu": "وہ کام مکمل کر چکی ہوگی۔",
+          "note": "Explanation: Use the past participle V3."
+        },
+        {
+          "wrong": "They will has completed the task.",
+          "right": "They will have completed the task.",
+          "urdu": "وہ کام مکمل کر چکے ہوں گے۔",
+          "note": "Explanation: Future Perfect uses will have."
+        },
+        {
+          "wrong": "Will he has arrived?",
+          "right": "Will he have arrived?",
+          "urdu": "کیا وہ پہنچ چکا ہوگا؟",
+          "note": "Explanation: Use will + subject + have + V3."
+        },
+        {
+          "wrong": "I will have ate dinner.",
+          "right": "I will have eaten dinner.",
+          "urdu": "میں کھانا کھا چکا ہوں گا۔",
+          "note": "Explanation: Use eaten, the V3 form of eat."
+        }
+      ],
       "examTips": [],
       "practice": [],
       "quiz": [],
@@ -10270,43 +10366,63 @@
       ],
       "examples": [
         {
-          "text": "Structure / Formula",
-          "urdu": "Affirmative — مثبت"
-        },
-        {
           "text": "I will be studying English.",
-          "urdu": "میں انگریزی پڑھ رہا ہوں گا۔"
+          "urdu": "میں انگریزی پڑھ رہا ہوں گا۔",
+          "note": "This sentence follows the tense formula and shows its use in context."
         },
         {
           "text": "They will not be playing cricket.",
-          "urdu": "وہ کرکٹ نہیں کھیل رہے ہوں گے۔"
+          "urdu": "وہ کرکٹ نہیں کھیل رہے ہوں گے۔",
+          "note": "This sentence follows the tense formula and shows its use in context."
         },
         {
           "text": "Will you be studying English?",
-          "urdu": "کیا آپ انگریزی پڑھ رہے ہوں گے؟"
-        },
-        {
-          "text": "At 10 p.m. tonight, I will be studying.",
-          "urdu": "آج رات دس بجے میں پڑھ رہا ہوں گا۔"
+          "urdu": "کیا آپ انگریزی پڑھ رہے ہوں گے؟",
+          "note": "This sentence follows the tense formula and shows its use in context."
         },
         {
           "text": "Ali will be studying at 8 p.m.",
-          "urdu": "علی رات آٹھ بجے پڑھ رہا ہوگا۔"
+          "urdu": "علی رات آٹھ بجے پڑھ رہا ہوگا۔",
+          "note": "This sentence follows the tense formula and shows its use in context."
         },
         {
           "text": "She will be preparing for the exam next week.",
-          "urdu": "وہ اگلے ہفتے امتحان کی تیاری کر رہی ہوگی۔"
-        },
-        {
-          "text": "They will not be travelling tomorrow morning.",
-          "urdu": "وہ کل صبح سفر نہیں کر رہے ہوں گے۔"
-        },
-        {
-          "text": "Will Ali be studying at 8 p.m.?",
-          "urdu": "کیا علی رات آٹھ بجے پڑھ رہا ہوگا؟"
+          "urdu": "وہ اگلے ہفتے امتحان کی تیاری کر رہی ہوگی۔",
+          "note": "This sentence follows the tense formula and shows its use in context."
         }
       ],
-      "commonMistakes": [],
+      "commonMistakes": [
+        {
+          "wrong": "He will be study.",
+          "right": "He will be studying.",
+          "urdu": "وہ پڑھ رہا ہوگا۔",
+          "note": "Explanation: Use V-ing after will be."
+        },
+        {
+          "wrong": "They will be plays cricket.",
+          "right": "They will be playing cricket.",
+          "urdu": "وہ کرکٹ کھیل رہے ہوں گے۔",
+          "note": "Explanation: Use the -ing form."
+        },
+        {
+          "wrong": "Will she studying?",
+          "right": "Will she be studying?",
+          "urdu": "کیا وہ پڑھ رہی ہوگی؟",
+          "note": "Explanation: Include be before V-ing."
+        },
+        {
+          "wrong": "I will is working.",
+          "right": "I will be working.",
+          "urdu": "میں کام کر رہا ہوں گا۔",
+          "note": "Explanation: Use will be with all subjects."
+        },
+        {
+          "wrong": "He will be work tomorrow.",
+          "right": "He will be working tomorrow.",
+          "urdu": "وہ کل کام کر رہا ہوگا۔",
+          "note": "Explanation: Use V-ing after be."
+        }
+      ],
       "examTips": [
         "Affirmative → Subject + will be + V-ing",
         "Negative → Subject + will not be + V-ing",
@@ -10338,48 +10454,29 @@
       ],
       "examples": [
         {
-          "text": "Structure / Formula",
-          "urdu": "Affirmative — مثبت"
-        },
-        {
-          "text": "I will study English.",
-          "urdu": "میں انگریزی پڑھوں گا۔"
-        },
-        {
-          "text": "They will play cricket.",
-          "urdu": "وہ کرکٹ کھیلیں گے۔"
-        },
-        {
-          "text": "I will not study English.",
-          "urdu": "میں انگریزی نہیں پڑھوں گا۔"
-        },
-        {
-          "text": "They will not play cricket.",
-          "urdu": "وہ کرکٹ نہیں کھیلیں گے۔"
-        },
-        {
-          "text": "Will you study English?",
-          "urdu": "کیا آپ انگریزی پڑھیں گے؟"
-        },
-        {
-          "text": "Will they play cricket?",
-          "urdu": "کیا وہ کرکٹ کھیلیں گے؟"
-        },
-        {
           "text": "Ali will visit Lahore next week.",
-          "urdu": "علی اگلے ہفتے لاہور جائے گا۔"
+          "urdu": "علی اگلے ہفتے لاہور جائے گا۔",
+          "note": "This sentence follows the tense formula and shows its use in context."
         },
         {
           "text": "They will complete the project soon.",
-          "urdu": "وہ جلد ہی منصوبہ مکمل کریں گے۔"
+          "urdu": "وہ جلد ہی منصوبہ مکمل کریں گے۔",
+          "note": "This sentence follows the tense formula and shows its use in context."
         },
         {
           "text": "Ali will not visit Lahore next week.",
-          "urdu": "علی اگلے ہفتے لاہور نہیں جائے گا۔"
+          "urdu": "علی اگلے ہفتے لاہور نہیں جائے گا۔",
+          "note": "This sentence follows the tense formula and shows its use in context."
         },
         {
           "text": "Will they attend the meeting?",
-          "urdu": "کیا وہ اجلاس میں شرکت کریں گے؟"
+          "urdu": "کیا وہ اجلاس میں شرکت کریں گے؟",
+          "note": "This sentence follows the tense formula and shows its use in context."
+        },
+        {
+          "text": "She will arrive tomorrow.",
+          "urdu": "وہ کل پہنچے گی۔",
+          "note": "This sentence follows the tense formula and shows its use in context."
         }
       ],
       "commonMistakes": [
@@ -10387,13 +10484,31 @@
           "wrong": "He will goes to school.",
           "right": "He will go to school.",
           "urdu": "وہ اسکول جائے گا۔",
-          "note": null
+          "note": "Explanation: After will, use V1."
         },
         {
           "wrong": "She will went home.",
           "right": "She will go home.",
           "urdu": "وہ گھر جائے گی۔",
-          "note": null
+          "note": "Explanation: After will, use the base form."
+        },
+        {
+          "wrong": "They will plays cricket.",
+          "right": "They will play cricket.",
+          "urdu": "وہ کرکٹ کھیلیں گے۔",
+          "note": "Explanation: Will is followed by V1."
+        },
+        {
+          "wrong": "Will he comes tomorrow?",
+          "right": "Will he come tomorrow?",
+          "urdu": "کیا وہ کل آئے گا؟",
+          "note": "Explanation: Use V1 after will."
+        },
+        {
+          "wrong": "I will studying English.",
+          "right": "I will study English.",
+          "urdu": "میں انگریزی پڑھوں گا۔",
+          "note": "Explanation: Future Indefinite uses will + V1."
         }
       ],
       "examTips": [

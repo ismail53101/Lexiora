@@ -91,6 +91,7 @@ class GrammarBullet extends StatelessWidget {
                 children: _highlightRuleDetails(
                   text,
                   const Color(0xFF42A5F5),
+                  defaultColor: compact ? const Color(0xFF64B5F6) : null,
                 ),
               ),
             ),
@@ -102,7 +103,11 @@ class GrammarBullet extends StatelessWidget {
 }
 
 
-List<TextSpan> _highlightRuleDetails(String text, Color highlightColor) {
+List<TextSpan> _highlightRuleDetails(
+  String text,
+  Color highlightColor, {
+  Color? defaultColor,
+}) {
   final List<TextSpan> spans = <TextSpan>[];
   const Color exampleColor = Color(0xFF64B5F6);
   const Color explanationColor = Color(0xFFCE93D8);
@@ -134,7 +139,7 @@ List<TextSpan> _highlightRuleDetails(String text, Color highlightColor) {
     ));
   }
 
-  return spans.isEmpty ? _markupSpans(text, null) : spans;
+  return spans.isEmpty ? _markupSpans(text, defaultColor) : spans;
 }
 
 List<TextSpan> _markupSpans(String text, Color? color) {

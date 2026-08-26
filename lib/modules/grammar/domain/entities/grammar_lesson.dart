@@ -203,6 +203,9 @@ class GrammarLesson extends Equatable {
     this.quiz = const <GrammarQuestion>[],
     this.summary = '',
     this.footerImage = '',
+    this.tableTitle = '',
+    this.tableColumns = const <String>[],
+    this.tableRows = const <GrammarTableRow>[],
   });
 
   final String id;
@@ -230,7 +233,10 @@ class GrammarLesson extends Equatable {
   final String summary;
   /// Optional footer illustration asset used by selected grammar lessons.
   final String footerImage;
-
+  /// Optional lesson-level comparison table, used by tense reference sections.
+  final String tableTitle;
+  final List<String> tableColumns;
+  final List<GrammarTableRow> tableRows;
   @override
   List<Object?> get props => <Object?>[
         id,
@@ -252,5 +258,8 @@ class GrammarLesson extends Equatable {
         quiz,
         summary,
         footerImage,
+        tableTitle,
+        tableColumns,
+        tableRows,
       ];
 }
