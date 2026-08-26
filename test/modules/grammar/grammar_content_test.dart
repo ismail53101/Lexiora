@@ -48,7 +48,7 @@ void main() {
     expect(await ds.topicCount(), greaterThanOrEqualTo(22));
 
     final List<GrammarTopicSummary> categories = await ds.children(null);
-    expect(categories.length, greaterThanOrEqualTo(14));
+    expect(categories.length, greaterThanOrEqualTo(10));
 
     // Parts of Speech → 9 grammar leaves plus the dedicated Quiz item.
     final List<GrammarTopicSummary> pos = await ds.children('parts-of-speech');
@@ -102,12 +102,10 @@ void main() {
     expect(narration.length, 6);
     expect(narration.every((GrammarTopicSummary t) => t.isLeaf), isTrue);
 
-    // Final split: the six remaining multi-type categories each became a
-    // branch with a dedicated leaf per type.
+    // Final split: the remaining multi-type categories each became a
+    // branch with a dedicated leaf per type. Articles, Prepositions, and
+    // Conjunctions were intentionally removed from the Grammar hierarchy.
     final Map<String, int> expectedChildren = <String, int>{
-      'articles': 4,
-      'prepositions': 4,
-      'conjunctions': 3,
       'modals': 10,
       'conditional-sentences': 5,
       'punctuation': 9,
@@ -121,7 +119,6 @@ void main() {
 
     // The three cohesive categories stay single lessons (not split).
     for (final String id in <String>[
-      'sentence-structure',
       'subject-verb-agreement',
       'common-errors',
     ]) {
@@ -147,7 +144,7 @@ void main() {
         reason: '${o['id']} needs English lesson content',
       );
     }
-    expect(leaves, greaterThanOrEqualTo(75));
+    expect(leaves, greaterThanOrEqualTo(74));
 
     // Flagship leaves across the split categories decode with full sections
     // (Urdu + rules + practice + quiz + summary), proving each type has its
@@ -158,9 +155,6 @@ void main() {
       'phrases/participial',
       'active-passive-voice/interrogative',
       'direct-indirect-speech/universal-truth',
-      'articles/an',
-      'prepositions/confusing',
-      'conjunctions/correlative',
       'modals/must',
       'conditional-sentences/third',
       'punctuation/semicolon',
