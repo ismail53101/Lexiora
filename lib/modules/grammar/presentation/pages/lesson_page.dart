@@ -376,7 +376,8 @@ class _NounLandingView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final ThemeData theme = Theme.of(context);
-    final List<GrammarExample> overviewExamples = lesson.id == 'tenses/overview'
+    final bool isTensesOverview = lesson.id == 'tenses' || lesson.id == 'tenses/overview';
+    final List<GrammarExample> overviewExamples = isTensesOverview
         ? lesson.examples
         : (lesson.examples.isEmpty
             ? const <GrammarExample>[]
@@ -450,7 +451,7 @@ class _NounLandingView extends StatelessWidget {
                                 ),
                               ),
                             ],
-                            if (lesson.id == 'tenses/overview' &&
+                            if (isTensesOverview &&
                                 (overviewExamples[index].note?.isNotEmpty ?? false)) ...<Widget>[
                               const SizedBox(height: 4),
                               Text(
@@ -493,7 +494,7 @@ class _NounLandingView extends StatelessWidget {
             lesson: lesson,
             accents: accents,
           ),
-        if (lesson.id == 'tenses/overview') ...<Widget>[
+        if (isTensesOverview) ...<Widget>[
           const SizedBox(height: 12),
           const _LandingSectionLabel(title: 'Tenses at a Glance'),
           const _ZoomableFooterImage(
