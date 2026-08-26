@@ -129,14 +129,14 @@ List<TextSpan> _highlightRuleDetails(
   const Color explanationColor = Color(0xFFCE93D8);
   final List<TextSpan> spans = <TextSpan>[];
   final RegExp marker = RegExp(r'(Example|Examples|Explanation):');
-
-  for (final String line in text.split('\n')) {
+  for (final String rawLine in text.split('\n')) {
+    final String line = _normalizeLabelMarkup(rawLine);
     if (line.isEmpty) {
       spans.add(const TextSpan(text: '\n'));
       continue;
     }
     if (!marker.hasMatch(line) && _looksLikeExampleLine(line)) {
-      spans.addAll(_markupSpans(line, exampleColor));
+      spans.addAll(_exampleLineSpans(line, exampleColor));
       spans.add(const TextSpan(text: '\n'));
       continue;
     }
@@ -173,11 +173,28 @@ List<TextSpan> _highlightRuleDetails(
 
 bool _looksLikeExampleLine(String line) {
   final String value = line.trim().replaceFirst(RegExp(r'^[.•]+\s*'), '');
-  if (value.isEmpty || RegExp(r'[\u0600-\u06FF]').hasMatch(value)) return false;
+  final String englishPart = value.split(RegExp(r'\s+[—–-]\s+')).first.trim();
+  if (englishPart.isEmpty) return false;
   if (value.startsWith('❌') || value.startsWith('✅')) return true;
-  if (!RegExp(r'[.!?]$').hasMatch(value)) return false;
-  if (RegExp(r'(Subject\s*\+|Formula:|\bV[123](?:-ing)?\b|\bAffirmative\b|\bNegative\b|\bInterrogative\b)').hasMatch(value)) return false;
-  return RegExp(r'^(I|He|She|It|We|They|You|Ali|Sara|John|The students|The boy|The girl|Did |Does |Do |Has |Have |Had |Will |Am |Is |Are |Was |Were )').hasMatch(value);
+  if (!RegExp(r'[.!?]$').hasMatch(englishPart)) return false;
+  if (RegExp(r'(Subject\s*\+|Formula:|\bV[123](?:-ing)?\b|\bAffirmative\b|\bNegative\b|\bInterrogative\b)').hasMatch(englishPart)) return false;
+  return RegExp(r'^(I|He|She|It|We|They|You|Ali|Sara|John|The students|The boy|The girl|Did |Does |Do |Has |Have |Had |Will |Am |Is |Are |Was |Were )').hasMatch(englishPart);
+}
+
+String _normalizeLabelMarkup(String line) {
+  return line.replaceAllMapped(
+    RegExp(r'(?:\*{2,3}|__)(Examples?|Explanation):(?:\*{2,3}|__)'),
+    (Match match) => '${match.group(1)}:',
+  );
+}
+
+List<TextSpan> _exampleLineSpans(String line, Color color) {
+  final RegExpMatch? separator = RegExp(r'\s+[—–-]\s+').firstMatch(line);
+  if (separator == null) return _markupSpans(line, color);
+  return <TextSpan>[
+    ..._markupSpans(line.substring(0, separator.start), color),
+    ..._markupSpans(line.substring(separator.start), null),
+  ];
 }
 
 List<TextSpan> _markupSpans(String text, Color? color) {

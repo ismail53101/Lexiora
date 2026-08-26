@@ -9366,27 +9366,27 @@
         {
           "text": "I have been studying for two hours.",
           "urdu": "میں دو گھنٹے سے پڑھ رہا ہوں۔",
-          "note": "Example 1: This sentence correctly follows the perfect continuous tense structure."
+          "note": "Explanation: Sentence “I have been studying for two hours.” — “I” takes “have been”; the main verb uses -ing to show an action continuing up to now."
         },
         {
           "text": "She has been working since morning.",
           "urdu": "وہ صبح سے کام کر رہی ہے۔",
-          "note": "Example 2: This sentence correctly follows the perfect continuous tense structure."
+          "note": "Explanation: Sentence “She has been working since morning.” — “She” takes “has been”; the main verb uses -ing to show an action continuing up to now."
         },
         {
           "text": "They have been playing cricket.",
           "urdu": "وہ کرکٹ کھیل رہے ہیں۔",
-          "note": "Example 3: This sentence correctly follows the perfect continuous tense structure."
+          "note": "Explanation: Sentence “They have been playing cricket.” — “They” takes “have been”; the main verb uses -ing to show an action continuing up to now."
         },
         {
           "text": "He has been waiting for an hour.",
           "urdu": "وہ ایک گھنٹے سے انتظار کر رہا ہے۔",
-          "note": "Example 4: This sentence correctly follows the perfect continuous tense structure."
+          "note": "Explanation: Sentence “He has been waiting for an hour.” — “He” takes “has been”; the main verb uses -ing to show an action continuing up to now."
         },
         {
           "text": "We have been living here since 2020.",
           "urdu": "ہم 2020 سے یہاں رہ رہے ہیں۔",
-          "note": "Example 5: This sentence correctly follows the perfect continuous tense structure."
+          "note": "Explanation: Sentence “We have been living here since 2020.” — “We” takes “have been”; the main verb uses -ing to show an action continuing up to now."
         }
       ],
       "commonMistakes": [
@@ -9394,31 +9394,31 @@
           "wrong": "He have been studying.",
           "right": "He has been studying.",
           "urdu": "وہ پڑھ رہا ہے۔",
-          "note": "Correction: “He has been studying.” — Use has/have + been + the verb with -ing."
+          "note": "Explanation: Correct form “He has been studying.” — “He” takes “has been”; the main verb uses -ing to show an action continuing up to now."
         },
         {
           "wrong": "They has been working.",
           "right": "They have been working.",
           "urdu": "وہ کام کر رہے ہیں۔",
-          "note": "Correction: “They have been working.” — Use has/have + been + the verb with -ing."
+          "note": "Explanation: Correct form “They have been working.” — “They” takes “have been”; the main verb uses -ing to show an action continuing up to now."
         },
         {
           "wrong": "She has been study.",
           "right": "She has been studying.",
           "urdu": "وہ پڑھ رہی ہے۔",
-          "note": "Correction: “She has been studying.” — Use has/have + been + the verb with -ing."
+          "note": "Explanation: Correct form “She has been studying.” — “She” takes “has been”; the main verb uses -ing to show an action continuing up to now."
         },
         {
           "wrong": "I have been working since two hours.",
           "right": "I have been working for two hours.",
           "urdu": "میں دو گھنٹے سے کام کر رہا ہوں۔",
-          "note": "Correction: “I have been working for two hours.” — Use since for a starting point and for for a period of time."
+          "note": "Explanation: Correct form “I have been working for two hours.” — “I” takes “have been”; the main verb uses -ing to show an action continuing up to now."
         },
         {
           "wrong": "He has been waiting for Monday.",
           "right": "He has been waiting since Monday.",
           "urdu": "وہ پیر سے انتظار کر رہا ہے۔",
-          "note": "Correction: “He has been waiting since Monday.” — Use since for a starting point and for for a period of time."
+          "note": "Explanation: Correct form “He has been waiting since Monday.” — “He” takes “has been”; the main verb uses -ing to show an action continuing up to now."
         }
       ],
       "examTips": [
@@ -9486,27 +9486,27 @@
         {
           "text": "I have finished my work.",
           "urdu": "میں اپنا کام مکمل کر چکا ہوں۔",
-          "note": "Example 1: This sentence correctly follows the perfect tense structure."
+          "note": "Explanation: Sentence “I have finished my work.” — “I” takes “have”; the main verb must be the past participle V3."
         },
         {
           "text": "She has visited Lahore.",
           "urdu": "وہ لاہور جا چکی ہے۔",
-          "note": "Example 2: This sentence correctly follows the perfect tense structure."
+          "note": "Explanation: Sentence “She has visited Lahore.” — “She” takes “has”; the main verb must be the past participle V3."
         },
         {
           "text": "They have eaten dinner.",
           "urdu": "وہ رات کا کھانا کھا چکے ہیں۔",
-          "note": "Example 3: This sentence correctly follows the perfect tense structure."
+          "note": "Explanation: Sentence “They have eaten dinner.” — “They” takes “have”; the main verb must be the past participle V3."
         },
         {
           "text": "He has written a letter.",
           "urdu": "وہ خط لکھ چکا ہے۔",
-          "note": "Example 4: This sentence correctly follows the perfect tense structure."
+          "note": "Explanation: Sentence “He has written a letter.” — “He” takes “has”; the main verb must be the past participle V3."
         },
         {
           "text": "We have completed the task.",
           "urdu": "ہم کام مکمل کر چکے ہیں۔",
-          "note": "Example 5: This sentence correctly follows the perfect tense structure."
+          "note": "Explanation: Sentence “We have completed the task.” — “We” takes “have”; the main verb must be the past participle V3."
         }
       ],
       "commonMistakes": [
@@ -9514,31 +9514,31 @@
           "wrong": "He have finished.",
           "right": "He has finished.",
           "urdu": "وہ مکمل کر چکا ہے۔",
-          "note": "Correction: “He has finished.” — Use has with he, she, and it; use have with I, you, we, and they."
+          "note": "Explanation: Correct form “He has finished.” — “He” takes “has”; the main verb must be the past participle V3."
         },
         {
           "wrong": "They has arrived.",
           "right": "They have arrived.",
           "urdu": "وہ پہنچ چکے ہیں۔",
-          "note": "Correction: “They have arrived.” — Use has with he, she, and it; use have with I, you, we, and they."
+          "note": "Explanation: Correct form “They have arrived.” — “They” takes “have”; the main verb must be the past participle V3."
         },
         {
           "wrong": "She has went home.",
           "right": "She has gone home.",
           "urdu": "وہ گھر جا چکی ہے۔",
-          "note": "Correction: “She has gone home.” — Use has with he, she, and it; use have with I, you, we, and they."
+          "note": "Explanation: Correct form “She has gone home.” — “She” takes “has”; the main verb must be the past participle V3."
         },
         {
           "wrong": "I have saw the film.",
           "right": "I have seen the film.",
           "urdu": "میں فلم دیکھ چکا ہوں۔",
-          "note": "Correction: “I have seen the film.” — Use has with he, she, and it; use have with I, you, we, and they."
+          "note": "Explanation: Correct form “I have seen the film.” — “I” takes “have”; the main verb must be the past participle V3."
         },
         {
           "wrong": "Did he has finished?",
           "right": "Has he finished?",
           "urdu": "کیا وہ مکمل کر چکا ہے؟",
-          "note": "Correction: “Has he finished?” — Use has with he, she, and it; use have with I, you, we, and they."
+          "note": "Explanation: Correct form “Has he finished?” — “Has” takes “has”; the main verb must be the past participle V3."
         }
       ],
       "examTips": [
@@ -9575,27 +9575,27 @@
         {
           "text": "I am studying English.",
           "urdu": "میں انگریزی پڑھ رہا ہوں۔",
-          "note": "Example 1: This sentence correctly follows the continuous tense structure."
+          "note": "Explanation: Sentence “I am studying English.” — “I” takes “am”; the main verb must use its -ing form for an action happening now."
         },
         {
           "text": "She is cooking dinner.",
           "urdu": "وہ رات کا کھانا پکا رہی ہے۔",
-          "note": "Example 2: This sentence correctly follows the continuous tense structure."
+          "note": "Explanation: Sentence “She is cooking dinner.” — “She” takes “is”; the main verb must use its -ing form for an action happening now."
         },
         {
           "text": "They are playing cricket.",
           "urdu": "وہ کرکٹ کھیل رہے ہیں۔",
-          "note": "Example 3: This sentence correctly follows the continuous tense structure."
+          "note": "Explanation: Sentence “They are playing cricket.” — “They” takes “are”; the main verb must use its -ing form for an action happening now."
         },
         {
           "text": "We are watching a film.",
           "urdu": "ہم فلم دیکھ رہے ہیں۔",
-          "note": "Example 4: This sentence correctly follows the continuous tense structure."
+          "note": "Explanation: Sentence “We are watching a film.” — “We” takes “are”; the main verb must use its -ing form for an action happening now."
         },
         {
           "text": "He is writing a letter.",
           "urdu": "وہ خط لکھ رہا ہے۔",
-          "note": "Example 5: This sentence correctly follows the continuous tense structure."
+          "note": "Explanation: Sentence “He is writing a letter.” — “He” takes “is”; the main verb must use its -ing form for an action happening now."
         }
       ],
       "commonMistakes": [
@@ -9603,31 +9603,31 @@
           "wrong": "He are studying.",
           "right": "He is studying.",
           "urdu": "وہ پڑھ رہا ہے۔",
-          "note": "Correction: “He is studying.” — Use the verb with -ing after the helping verb."
+          "note": "Explanation: Correct form “He is studying.” — “He” takes “is”; the main verb must use its -ing form for an action happening now."
         },
         {
           "wrong": "They is playing.",
           "right": "They are playing.",
           "urdu": "وہ کھیل رہے ہیں۔",
-          "note": "Correction: “They are playing.” — Use the verb with -ing after the helping verb."
+          "note": "Explanation: Correct form “They are playing.” — “They” takes “are”; the main verb must use its -ing form for an action happening now."
         },
         {
           "wrong": "She is cook dinner.",
           "right": "She is cooking dinner.",
           "urdu": "وہ کھانا پکا رہی ہے۔",
-          "note": "Correction: “She is cooking dinner.” — Use the verb with -ing after the helping verb."
+          "note": "Explanation: Correct form “She is cooking dinner.” — “She” takes “is”; the main verb must use its -ing form for an action happening now."
         },
         {
           "wrong": "I am write a letter.",
           "right": "I am writing a letter.",
           "urdu": "میں خط لکھ رہا ہوں۔",
-          "note": "Correction: “I am writing a letter.” — Use the verb with -ing after the helping verb."
+          "note": "Explanation: Correct form “I am writing a letter.” — “I” takes “am”; the main verb must use its -ing form for an action happening now."
         },
         {
           "wrong": "Are he working?",
           "right": "Is he working?",
           "urdu": "کیا وہ کام کر رہا ہے؟",
-          "note": "Correction: “Is he working?” — Use the verb with -ing after the helping verb."
+          "note": "Explanation: Correct form “Is he working?” — “Is” takes “is”; the main verb must use its -ing form for an action happening now."
         }
       ],
       "examTips": [
@@ -9665,27 +9665,27 @@
         {
           "text": "I play cricket.",
           "urdu": "میں کرکٹ کھیلتا ہوں۔",
-          "note": "Example 1: This sentence correctly follows the simple tense structure."
+          "note": "Explanation: Sentence “I play cricket.” — “I” is I, you, we, they, or plural, so the verb “play” stays in its base form V1 without -s/-es."
         },
         {
           "text": "He plays cricket.",
           "urdu": "وہ کرکٹ کھیلتا ہے۔",
-          "note": "Example 2: This sentence correctly follows the simple tense structure."
+          "note": "Explanation: Sentence “He plays cricket.” — “He” is a singular subject, so the base verb “play” takes -s and becomes “plays”."
         },
         {
           "text": "They study English.",
           "urdu": "وہ انگریزی پڑھتے ہیں۔",
-          "note": "Example 3: This sentence correctly follows the simple tense structure."
+          "note": "Explanation: Sentence “They study English.” — “They” is I, you, we, they, or plural, so the verb “study” stays in its base form V1 without -s/-es."
         },
         {
           "text": "She studies English.",
           "urdu": "وہ انگریزی پڑھتی ہے۔",
-          "note": "Example 4: This sentence correctly follows the simple tense structure."
+          "note": "Explanation: Sentence “She studies English.” — “She” is a singular subject, so the base verb “study” takes -s and becomes “studies”."
         },
         {
           "text": "The sun rises in the east.",
           "urdu": "سورج مشرق سے طلوع ہوتا ہے۔",
-          "note": "Example 5: This sentence correctly follows the simple tense structure."
+          "note": "Explanation: Sentence “The sun rises in the east.” — “The sun” is a singular subject, so the base verb “sun” takes -s and becomes “sun”."
         }
       ],
       "commonMistakes": [
@@ -9693,31 +9693,31 @@
           "wrong": "He play cricket.",
           "right": "He plays cricket.",
           "urdu": "وہ کرکٹ کھیلتا ہے۔",
-          "note": "Correction: “He plays cricket.” — The corrected sentence follows the tense structure."
+          "note": "Explanation: Correct form “He plays cricket.” — “He” is a singular subject, so the base verb “play” takes -s and becomes “plays”."
         },
         {
           "wrong": "She study English.",
           "right": "She studies English.",
           "urdu": "وہ انگریزی پڑھتی ہے۔",
-          "note": "Correction: “She studies English.” — The corrected sentence follows the tense structure."
+          "note": "Explanation: Correct form “She studies English.” — “She” is a singular subject, so the base verb “study” takes -s and becomes “studies”."
         },
         {
           "wrong": "He does not plays cricket.",
           "right": "He does not play cricket.",
           "urdu": "وہ کرکٹ نہیں کھیلتا۔",
-          "note": "Correction: “He does not play cricket.” — The corrected sentence follows the tense structure."
+          "note": "Explanation: Correct form “He does not play cricket.” — “He” is used with do/does, so the main verb “play” stays in V1."
         },
         {
           "wrong": "Does he plays cricket?",
           "right": "Does he play cricket?",
           "urdu": "کیا وہ کرکٹ کھیلتا ہے؟",
-          "note": "Correction: “Does he play cricket?” — The corrected sentence follows the tense structure."
+          "note": "Explanation: Correct form “Does he play cricket?” — “Does” is used with do/does, so the main verb “he” stays in V1."
         },
         {
           "wrong": "They goes to school.",
           "right": "They go to school.",
           "urdu": "وہ اسکول جاتے ہیں۔",
-          "note": "Correction: “They go to school.” — The corrected sentence follows the tense structure."
+          "note": "Explanation: Correct form “They go to school.” — “They” is I, you, we, they, or plural, so the verb “go” stays in its base form V1 without -s/-es."
         }
       ],
       "examTips": [
@@ -9759,27 +9759,27 @@
         {
           "text": "Ali had been studying for three hours.",
           "urdu": "علی تین گھنٹے سے پڑھ رہا تھا۔",
-          "note": "Example 1: This sentence correctly follows the perfect continuous tense structure."
+          "note": "Explanation: Sentence “Ali had been studying for three hours.” — All subjects take “had been”; the main verb uses -ing for an action continuing up to a past time."
         },
         {
           "text": "He had been studying since morning.",
           "urdu": "وہ صبح سے پڑھ رہا تھا۔",
-          "note": "Example 2: This sentence correctly follows the perfect continuous tense structure."
+          "note": "Explanation: Sentence “He had been studying since morning.” — All subjects take “had been”; the main verb uses -ing for an action continuing up to a past time."
         },
         {
           "text": "She had been waiting for an hour before the bus arrived.",
           "urdu": "بس کے پہنچنے سے پہلے وہ ایک گھنٹے سے انتظار کر رہی تھی۔",
-          "note": "Example 3: This sentence correctly follows the perfect continuous tense structure."
+          "note": "Explanation: Sentence “She had been waiting for an hour before the bus arrived.” — All subjects take “had been”; the main verb uses -ing for an action continuing up to a past time."
         },
         {
           "text": "They had been working since morning when the manager arrived.",
           "urdu": "جب مینیجر پہنچا تو وہ صبح سے کام کر رہے تھے۔",
-          "note": "Example 4: This sentence correctly follows the perfect continuous tense structure."
+          "note": "Explanation: Sentence “They had been working since morning when the manager arrived.” — All subjects take “had been”; the main verb uses -ing for an action continuing up to a past time."
         },
         {
           "text": "They had been working for five hours before sunset.",
           "urdu": "غروب آفتاب سے پہلے وہ پانچ گھنٹے سے کام کر رہے تھے۔",
-          "note": "Example 5: This sentence correctly follows the perfect continuous tense structure."
+          "note": "Explanation: Sentence “They had been working for five hours before sunset.” — All subjects take “had been”; the main verb uses -ing for an action continuing up to a past time."
         }
       ],
       "commonMistakes": [
@@ -9787,31 +9787,31 @@
           "wrong": "He had been study.",
           "right": "He had been studying.",
           "urdu": "وہ پڑھ رہا تھا۔",
-          "note": "Correction: “He had been studying.” — After had been, use the verb with -ing."
+          "note": "Explanation: Correct form “He had been studying.” — All subjects take “had been”; the main verb uses -ing for an action continuing up to a past time."
         },
         {
           "wrong": "They had been work since morning.",
           "right": "They had been working since morning.",
           "urdu": "وہ صبح سے کام کر رہے تھے۔",
-          "note": "Correction: “They had been working since morning.” — Use since for a starting point and for for a period of time."
+          "note": "Explanation: Correct form “They had been working since morning.” — All subjects take “had been”; the main verb uses -ing for an action continuing up to a past time."
         },
         {
           "wrong": "She had been waiting since two hours.",
           "right": "She had been waiting for two hours.",
           "urdu": "وہ دو گھنٹے سے انتظار کر رہی تھی۔",
-          "note": "Correction: “She had been waiting for two hours.” — Use since for a starting point and for for a period of time."
+          "note": "Explanation: Correct form “She had been waiting for two hours.” — All subjects take “had been”; the main verb uses -ing for an action continuing up to a past time."
         },
         {
           "wrong": "He had been working for Monday.",
           "right": "He had been working since Monday.",
           "urdu": "وہ پیر سے کام کر رہا تھا۔",
-          "note": "Correction: “He had been working since Monday.” — Use since for a starting point and for for a period of time."
+          "note": "Explanation: Correct form “He had been working since Monday.” — All subjects take “had been”; the main verb uses -ing for an action continuing up to a past time."
         },
         {
           "wrong": "Had they been wait?",
           "right": "Had they been waiting?",
           "urdu": "کیا وہ انتظار کر رہے تھے؟",
-          "note": "Correction: “Had they been waiting?” — After had been, use the verb with -ing."
+          "note": "Explanation: Correct form “Had they been waiting?” — All subjects take “had been”; the main verb uses -ing for an action continuing up to a past time."
         }
       ],
       "examTips": [
@@ -9889,27 +9889,27 @@
         {
           "text": "Ali had completed his work.",
           "urdu": "علی اپنا کام مکمل کر چکا تھا۔",
-          "note": "Example 1: This sentence correctly follows the perfect tense structure."
+          "note": "Explanation: Sentence “Ali had completed his work.” — All subjects take “had”; the main verb in “Ali had completed his work.” must be the past participle V3."
         },
         {
           "text": "Ali had left before I arrived.",
           "urdu": "میرے پہنچنے سے پہلے علی جا چکا تھا۔",
-          "note": "Example 2: This sentence correctly follows the perfect tense structure."
+          "note": "Explanation: Sentence “Ali had left before I arrived.” — All subjects take “had”; the main verb in “Ali had left before I arrived.” must be the past participle V3."
         },
         {
           "text": "She had left before I arrived.",
           "urdu": "میرے پہنچنے سے پہلے وہ جا چکی تھی۔",
-          "note": "Example 3: This sentence correctly follows the perfect tense structure."
+          "note": "Explanation: Sentence “She had left before I arrived.” — All subjects take “had”; the main verb in “She had left before I arrived.” must be the past participle V3."
         },
         {
           "text": "By the time we reached, the train had left.",
           "urdu": "جب تک ہم پہنچے، ٹرین جا چکی تھی۔",
-          "note": "Example 4: This sentence correctly follows the perfect tense structure."
+          "note": "Explanation: Sentence “By the time we reached, the train had left.” — All subjects take “had”; the main verb in “By the time we reached, the train had left.” must be the past participle V3."
         },
         {
           "text": "They had finished the project before the deadline.",
           "urdu": "انہوں نے مقررہ وقت سے پہلے منصوبہ مکمل کر لیا تھا۔",
-          "note": "Example 5: This sentence correctly follows the perfect tense structure."
+          "note": "Explanation: Sentence “They had finished the project before the deadline.” — All subjects take “had”; the main verb in “They had finished the project before the deadline.” must be the past participle V3."
         }
       ],
       "commonMistakes": [
@@ -9917,31 +9917,31 @@
           "wrong": "He had went home.",
           "right": "He had gone home.",
           "urdu": "وہ گھر جا چکا تھا۔",
-          "note": "Correction: “He had gone home.” — After had, use the past participle V3."
+          "note": "Explanation: Correct form “He had gone home.” — All subjects take “had”; the main verb in “He had gone home.” must be the past participle V3."
         },
         {
           "wrong": "She had finish the work.",
           "right": "She had finished the work.",
           "urdu": "وہ کام مکمل کر چکی تھی۔",
-          "note": "Correction: “She had finished the work.” — After had, use the past participle V3."
+          "note": "Explanation: Correct form “She had finished the work.” — All subjects take “had”; the main verb in “She had finished the work.” must be the past participle V3."
         },
         {
           "wrong": "They has finished.",
           "right": "They had finished.",
           "urdu": "وہ مکمل کر چکے تھے۔",
-          "note": "Correction: “They had finished.” — After had, use the past participle V3."
+          "note": "Explanation: Correct form “They had finished.” — All subjects take “had”; the main verb in “They had finished.” must be the past participle V3."
         },
         {
           "wrong": "Did she visited her aunt?",
           "right": "Had she visited her aunt?",
           "urdu": "کیا وہ اپنی خالہ سے مل چکی تھی؟",
-          "note": "Correction: “Had she visited her aunt?” — After had, use the past participle V3."
+          "note": "Explanation: Correct form “Had she visited her aunt?” — All subjects take “had”; the main verb in “Had she visited her aunt?” must be the past participle V3."
         },
         {
           "wrong": "He had ate dinner.",
           "right": "He had eaten dinner.",
           "urdu": "وہ کھانا کھا چکا تھا۔",
-          "note": "Correction: “He had eaten dinner.” — After had, use the past participle V3."
+          "note": "Explanation: Correct form “He had eaten dinner.” — All subjects take “had”; the main verb in “He had eaten dinner.” must be the past participle V3."
         }
       ],
       "examTips": [
@@ -9977,27 +9977,27 @@
         {
           "text": "He was reading a book.",
           "urdu": "وہ ایک کتاب پڑھ رہا تھا۔",
-          "note": "Example 1: This sentence correctly follows the continuous tense structure."
+          "note": "Explanation: Sentence “He was reading a book.” — “He” takes “was”; the main verb uses -ing for an action in progress in the past."
         },
         {
           "text": "They were playing cricket.",
           "urdu": "وہ کرکٹ کھیل رہے تھے۔",
-          "note": "Example 2: This sentence correctly follows the continuous tense structure."
+          "note": "Explanation: Sentence “They were playing cricket.” — “They” takes “were”; the main verb uses -ing for an action in progress in the past."
         },
         {
           "text": "I was sleeping when the phone rang.",
           "urdu": "جب فون کی گھنٹی بجی تو میں سو رہا تھا۔",
-          "note": "Example 3: This sentence correctly follows the continuous tense structure."
+          "note": "Explanation: Sentence “I was sleeping when the phone rang.” — “I” takes “were”; the main verb uses -ing for an action in progress in the past."
         },
         {
           "text": "While I was studying, my brother was watching TV.",
           "urdu": "جب میں پڑھ رہا تھا، میرا بھائی ٹی وی دیکھ رہا تھا۔",
-          "note": "Example 4: This sentence correctly follows the continuous tense structure."
+          "note": "Explanation: Sentence “While I was studying, my brother was watching TV.” — “While” takes “was”; the main verb uses -ing for an action in progress in the past."
         },
         {
           "text": "They were playing cricket when it started to rain.",
           "urdu": "جب بارش شروع ہوئی تو وہ کرکٹ کھیل رہے تھے۔",
-          "note": "Example 5: This sentence correctly follows the continuous tense structure."
+          "note": "Explanation: Sentence “They were playing cricket when it started to rain.” — “They” takes “were”; the main verb uses -ing for an action in progress in the past."
         }
       ],
       "commonMistakes": [
@@ -10005,31 +10005,31 @@
           "wrong": "They was playing cricket.",
           "right": "They were playing cricket.",
           "urdu": "وہ کرکٹ کھیل رہے تھے۔",
-          "note": "Correction: “They were playing cricket.” — Use was with I, he, she, and it; use were with you, we, and they."
+          "note": "Explanation: Correct form “They were playing cricket.” — “They” takes “were”; the main verb uses -ing for an action in progress in the past."
         },
         {
           "wrong": "She were studying.",
           "right": "She was studying.",
           "urdu": "وہ پڑھ رہی تھی۔",
-          "note": "Correction: “She was studying.” — Use was with I, he, she, and it; use were with you, we, and they."
+          "note": "Explanation: Correct form “She was studying.” — “She” takes “was”; the main verb uses -ing for an action in progress in the past."
         },
         {
           "wrong": "He was read a book.",
           "right": "He was reading a book.",
           "urdu": "وہ کتاب پڑھ رہا تھا۔",
-          "note": "Correction: “He was reading a book.” — Use was with I, he, she, and it; use were with you, we, and they."
+          "note": "Explanation: Correct form “He was reading a book.” — “He” takes “was”; the main verb uses -ing for an action in progress in the past."
         },
         {
           "wrong": "Were he working?",
           "right": "Was he working?",
           "urdu": "کیا وہ کام کر رہا تھا؟",
-          "note": "Correction: “Was he working?” — Use was with I, he, she, and it; use were with you, we, and they."
+          "note": "Explanation: Correct form “Was he working?” — “Was” takes “was”; the main verb uses -ing for an action in progress in the past."
         },
         {
           "wrong": "I were sleeping.",
           "right": "I was sleeping.",
           "urdu": "میں سو رہا تھا۔",
-          "note": "Correction: “I was sleeping.” — Use was with I, he, she, and it; use were with you, we, and they."
+          "note": "Explanation: Correct form “I was sleeping.” — “I” takes “were”; the main verb uses -ing for an action in progress in the past."
         }
       ],
       "examTips": [
@@ -10064,27 +10064,27 @@
         {
           "text": "Ali visited Lahore yesterday.",
           "urdu": "علی نے کل لاہور کا دورہ کیا۔",
-          "note": "Example 1: This sentence correctly follows the simple tense structure."
+          "note": "Explanation: Sentence “Ali visited Lahore yesterday.” — “Ali” performs a completed past action, so the main verb in “Ali visited Lahore yesterday.” uses its correct V2 form."
         },
         {
           "text": "She passed the examination last year.",
           "urdu": "اس نے گزشتہ سال امتحان پاس کیا۔",
-          "note": "Example 2: This sentence correctly follows the simple tense structure."
+          "note": "Explanation: Sentence “She passed the examination last year.” — “She” performs a completed past action, so the main verb in “She passed the examination last year.” uses its correct V2 form."
         },
         {
           "text": "Ali did not visit Lahore yesterday.",
           "urdu": "علی نے کل لاہور کا دورہ نہیں کیا۔",
-          "note": "Example 3: This sentence correctly follows the simple tense structure."
+          "note": "Explanation: Sentence “Ali did not visit Lahore yesterday.” — After “did” or “did not”, the main verb in “Ali did not visit Lahore yesterday.” must stay in V1."
         },
         {
           "text": "Did they play cricket yesterday?",
           "urdu": "کیا انہوں نے کل کرکٹ کھیلی؟",
-          "note": "Example 4: This sentence correctly follows the simple tense structure."
+          "note": "Explanation: Sentence “Did they play cricket yesterday?” — After “did” or “did not”, the main verb in “Did they play cricket yesterday?” must stay in V1."
         },
         {
           "text": "He went to school last week.",
           "urdu": "وہ گزشتہ ہفتے اسکول گیا۔",
-          "note": "Example 5: This sentence correctly follows the simple tense structure."
+          "note": "Explanation: Sentence “He went to school last week.” — “He” performs a completed past action, so the main verb in “He went to school last week.” uses its correct V2 form."
         }
       ],
       "commonMistakes": [
@@ -10092,31 +10092,31 @@
           "wrong": "He did not went to school.",
           "right": "He did not go to school.",
           "urdu": "وہ اسکول نہیں گیا۔",
-          "note": "Correction: “He did not go to school.” — Did already shows the past, so the main verb stays in V1."
+          "note": "Explanation: Correct form “He did not go to school.” — After “did” or “did not”, the main verb in “He did not go to school.” must stay in V1."
         },
         {
           "wrong": "Did she went home?",
           "right": "Did she go home?",
           "urdu": "کیا وہ گھر گئی؟",
-          "note": "Correction: “Did she go home?” — Did already shows the past, so the main verb stays in V1."
+          "note": "Explanation: Correct form “Did she go home?” — After “did” or “did not”, the main verb in “Did she go home?” must stay in V1."
         },
         {
           "wrong": "He go to Lahore yesterday.",
           "right": "He went to Lahore yesterday.",
           "urdu": "وہ کل لاہور گیا۔",
-          "note": "Correction: “He went to Lahore yesterday.” — The corrected sentence follows the tense structure."
+          "note": "Explanation: Correct form “He went to Lahore yesterday.” — “He” performs a completed past action, so the main verb in “He went to Lahore yesterday.” uses its correct V2 form."
         },
         {
           "wrong": "They did not played cricket.",
           "right": "They did not play cricket.",
           "urdu": "انہوں نے کرکٹ نہیں کھیلی۔",
-          "note": "Correction: “They did not play cricket.” — Did already shows the past, so the main verb stays in V1."
+          "note": "Explanation: Correct form “They did not play cricket.” — After “did” or “did not”, the main verb in “They did not play cricket.” must stay in V1."
         },
         {
           "wrong": "Did he visited Lahore?",
           "right": "Did he visit Lahore?",
           "urdu": "کیا اس نے لاہور کا دورہ کیا؟",
-          "note": "Correction: “Did he visit Lahore?” — Did already shows the past, so the main verb stays in V1."
+          "note": "Explanation: Correct form “Did he visit Lahore?” — After “did” or “did not”, the main verb in “Did he visit Lahore?” must stay in V1."
         }
       ],
       "examTips": [
@@ -10159,27 +10159,27 @@
         {
           "text": "Ali will have been studying for three hours.",
           "urdu": "علی تین گھنٹے سے پڑھ رہا ہوگا۔",
-          "note": "Example 1: This sentence correctly follows the perfect continuous tense structure."
+          "note": "Explanation: Sentence “Ali will have been studying for three hours.” — All subjects take “will have been”; the main verb in “Ali will have been studying for three hours.” uses -ing for an action continuing up to a future time."
         },
         {
           "text": "He will have been studying since morning.",
           "urdu": "وہ صبح سے پڑھ رہا ہوگا۔",
-          "note": "Example 2: This sentence correctly follows the perfect continuous tense structure."
+          "note": "Explanation: Sentence “He will have been studying since morning.” — All subjects take “will have been”; the main verb in “He will have been studying since morning.” uses -ing for an action continuing up to a future time."
         },
         {
           "text": "She will have been waiting for two hours by 6 p.m.",
           "urdu": "وہ شام چھ بجے تک دو گھنٹے سے انتظار کر رہی ہوگی۔",
-          "note": "Example 3: This sentence correctly follows the perfect continuous tense structure."
+          "note": "Explanation: Sentence “She will have been waiting for two hours by 6 p.m.” — All subjects take “will have been”; the main verb in “She will have been waiting for two hours by 6 p.m.” uses -ing for an action continuing up to a future time."
         },
         {
           "text": "By next year, he will have been teaching for ten years.",
           "urdu": "اگلے سال تک اسے پڑھاتے ہوئے دس سال ہو چکے ہوں گے۔",
-          "note": "Example 4: This sentence correctly follows the perfect continuous tense structure."
+          "note": "Explanation: Sentence “By next year, he will have been teaching for ten years.” — All subjects take “will have been”; the main verb in “By next year, he will have been teaching for ten years.” uses -ing for an action continuing up to a future time."
         },
         {
           "text": "She will have been waiting for an hour by the time the bus arrives.",
           "urdu": "جب بس پہنچے گی تو اسے انتظار کرتے ہوئے ایک گھنٹہ ہو چکا ہوگا۔",
-          "note": "Example 5: This sentence correctly follows the perfect continuous tense structure."
+          "note": "Explanation: Sentence “She will have been waiting for an hour by the time the bus arrives.” — All subjects take “will have been”; the main verb in “She will have been waiting for an hour by the time the bus arrives.” uses -ing for an action continuing up to a future time."
         }
       ],
       "commonMistakes": [
@@ -10187,31 +10187,31 @@
           "wrong": "He will have been study.",
           "right": "He will have been studying.",
           "urdu": "وہ پڑھ رہا ہوگا۔",
-          "note": "Correction: “He will have been studying.” — After will have been, use the verb with -ing."
+          "note": "Explanation: Correct form “He will have been studying.” — All subjects take “will have been”; the main verb in “He will have been studying.” uses -ing for an action continuing up to a future time."
         },
         {
           "wrong": "They will have been work for five years.",
           "right": "They will have been working for five years.",
           "urdu": "وہ پانچ سال سے کام کر رہے ہوں گے۔",
-          "note": "Correction: “They will have been working for five years.” — Use since for a starting point and for for a period of time."
+          "note": "Explanation: Correct form “They will have been working for five years.” — All subjects take “will have been”; the main verb in “They will have been working for five years.” uses -ing for an action continuing up to a future time."
         },
         {
           "wrong": "She will have been waiting since two hours.",
           "right": "She will have been waiting for two hours.",
           "urdu": "وہ دو گھنٹے سے انتظار کر رہی ہوگی۔",
-          "note": "Correction: “She will have been waiting for two hours.” — Use since for a starting point and for for a period of time."
+          "note": "Explanation: Correct form “She will have been waiting for two hours.” — All subjects take “will have been”; the main verb in “She will have been waiting for two hours.” uses -ing for an action continuing up to a future time."
         },
         {
           "wrong": "He will have been working for Monday.",
           "right": "He will have been working since Monday.",
           "urdu": "وہ پیر سے کام کر رہا ہوگا۔",
-          "note": "Correction: “He will have been working since Monday.” — Use since for a starting point and for for a period of time."
+          "note": "Explanation: Correct form “He will have been working since Monday.” — All subjects take “will have been”; the main verb in “He will have been working since Monday.” uses -ing for an action continuing up to a future time."
         },
         {
           "wrong": "Will they have been wait by noon?",
           "right": "Will they have been waiting by noon?",
           "urdu": "کیا وہ دوپہر تک انتظار کر رہے ہوں گے؟",
-          "note": "Correction: “Will they have been waiting by noon?” — After will have been, use the verb with -ing."
+          "note": "Explanation: Correct form “Will they have been waiting by noon?” — All subjects take “will have been”; the main verb in “Will they have been waiting by noon?” uses -ing for an action continuing up to a future time."
         }
       ],
       "examTips": [
@@ -10289,27 +10289,27 @@
         {
           "text": "Ali will have completed his assignment by tomorrow.",
           "urdu": "علی کل تک اپنا اسائنمنٹ مکمل کر چکا ہوگا۔",
-          "note": "Example 1: This sentence correctly follows the perfect tense structure."
+          "note": "Explanation: Sentence “Ali will have completed his assignment by tomorrow.” — All subjects take “will have”; the main verb in “Ali will have completed his assignment by tomorrow.” must be the past participle V3."
         },
         {
           "text": "They will have finished the project before the deadline.",
           "urdu": "وہ مقررہ وقت سے پہلے منصوبہ مکمل کر چکے ہوں گے۔",
-          "note": "Example 2: This sentence correctly follows the perfect tense structure."
+          "note": "Explanation: Sentence “They will have finished the project before the deadline.” — All subjects take “will have”; the main verb in “They will have finished the project before the deadline.” must be the past participle V3."
         },
         {
           "text": "They will not have finished the project by Friday.",
           "urdu": "وہ جمعہ تک منصوبہ مکمل نہیں کر چکے ہوں گے۔",
-          "note": "Example 3: This sentence correctly follows the perfect tense structure."
+          "note": "Explanation: Sentence “They will not have finished the project by Friday.” — All subjects take “will have”; the main verb in “They will not have finished the project by Friday.” must be the past participle V3."
         },
         {
           "text": "Will Ali have completed his assignment by tomorrow?",
           "urdu": "کیا علی کل تک اپنا اسائنمنٹ مکمل کر چکا ہوگا؟",
-          "note": "Example 4: This sentence correctly follows the perfect tense structure."
+          "note": "Explanation: Sentence “Will Ali have completed his assignment by tomorrow?” — All subjects take “will have”; the main verb in “Will Ali have completed his assignment by tomorrow?” must be the past participle V3."
         },
         {
           "text": "He will have returned by next week.",
           "urdu": "وہ اگلے ہفتے تک واپس آ چکا ہوگا۔",
-          "note": "Example 5: This sentence correctly follows the perfect tense structure."
+          "note": "Explanation: Sentence “He will have returned by next week.” — All subjects take “will have”; the main verb in “He will have returned by next week.” must be the past participle V3."
         }
       ],
       "commonMistakes": [
@@ -10317,31 +10317,31 @@
           "wrong": "He will have went home.",
           "right": "He will have gone home.",
           "urdu": "وہ گھر جا چکا ہوگا۔",
-          "note": "Correction: “He will have gone home.” — After will have, use the past participle V3."
+          "note": "Explanation: Correct form “He will have gone home.” — All subjects take “will have”; the main verb in “He will have gone home.” must be the past participle V3."
         },
         {
           "wrong": "She will have finish the work.",
           "right": "She will have finished the work.",
           "urdu": "وہ کام مکمل کر چکی ہوگی۔",
-          "note": "Correction: “She will have finished the work.” — After will have, use the past participle V3."
+          "note": "Explanation: Correct form “She will have finished the work.” — All subjects take “will have”; the main verb in “She will have finished the work.” must be the past participle V3."
         },
         {
           "wrong": "They will has completed the task.",
           "right": "They will have completed the task.",
           "urdu": "وہ کام مکمل کر چکے ہوں گے۔",
-          "note": "Correction: “They will have completed the task.” — After will have, use the past participle V3."
+          "note": "Explanation: Correct form “They will have completed the task.” — All subjects take “will have”; the main verb in “They will have completed the task.” must be the past participle V3."
         },
         {
           "wrong": "Will he has arrived?",
           "right": "Will he have arrived?",
           "urdu": "کیا وہ پہنچ چکا ہوگا؟",
-          "note": "Correction: “Will he have arrived?” — After will have, use the past participle V3."
+          "note": "Explanation: Correct form “Will he have arrived?” — All subjects take “will have”; the main verb in “Will he have arrived?” must be the past participle V3."
         },
         {
           "wrong": "I will have ate dinner.",
           "right": "I will have eaten dinner.",
           "urdu": "میں کھانا کھا چکا ہوں گا۔",
-          "note": "Correction: “I will have eaten dinner.” — After will have, use the past participle V3."
+          "note": "Explanation: Correct form “I will have eaten dinner.” — All subjects take “will have”; the main verb in “I will have eaten dinner.” must be the past participle V3."
         }
       ],
       "examTips": [
@@ -10374,27 +10374,27 @@
         {
           "text": "I will be studying English.",
           "urdu": "میں انگریزی پڑھ رہا ہوں گا۔",
-          "note": "Example 1: This sentence correctly follows the continuous tense structure."
+          "note": "Explanation: Sentence “I will be studying English.” — All subjects take “will be”; the main verb in “I will be studying English.” uses -ing for an action in progress in the future."
         },
         {
           "text": "They will not be playing cricket.",
           "urdu": "وہ کرکٹ نہیں کھیل رہے ہوں گے۔",
-          "note": "Example 2: This sentence correctly follows the continuous tense structure."
+          "note": "Explanation: Sentence “They will not be playing cricket.” — All subjects take “will be”; the main verb in “They will not be playing cricket.” uses -ing for an action in progress in the future."
         },
         {
           "text": "Will you be studying English?",
           "urdu": "کیا آپ انگریزی پڑھ رہے ہوں گے؟",
-          "note": "Example 3: This sentence correctly follows the continuous tense structure."
+          "note": "Explanation: Sentence “Will you be studying English?” — All subjects take “will be”; the main verb in “Will you be studying English?” uses -ing for an action in progress in the future."
         },
         {
           "text": "Ali will be studying at 8 p.m.",
           "urdu": "علی رات آٹھ بجے پڑھ رہا ہوگا۔",
-          "note": "Example 4: This sentence correctly follows the continuous tense structure."
+          "note": "Explanation: Sentence “Ali will be studying at 8 p.m.” — All subjects take “will be”; the main verb in “Ali will be studying at 8 p.m.” uses -ing for an action in progress in the future."
         },
         {
           "text": "She will be preparing for the exam next week.",
           "urdu": "وہ اگلے ہفتے امتحان کی تیاری کر رہی ہوگی۔",
-          "note": "Example 5: This sentence correctly follows the continuous tense structure."
+          "note": "Explanation: Sentence “She will be preparing for the exam next week.” — All subjects take “will be”; the main verb in “She will be preparing for the exam next week.” uses -ing for an action in progress in the future."
         }
       ],
       "commonMistakes": [
@@ -10402,31 +10402,31 @@
           "wrong": "He will be study.",
           "right": "He will be studying.",
           "urdu": "وہ پڑھ رہا ہوگا۔",
-          "note": "Correction: “He will be studying.” — After will be, use the verb with -ing."
+          "note": "Explanation: Correct form “He will be studying.” — All subjects take “will be”; the main verb in “He will be studying.” uses -ing for an action in progress in the future."
         },
         {
           "wrong": "They will be plays cricket.",
           "right": "They will be playing cricket.",
           "urdu": "وہ کرکٹ کھیل رہے ہوں گے۔",
-          "note": "Correction: “They will be playing cricket.” — After will be, use the verb with -ing."
+          "note": "Explanation: Correct form “They will be playing cricket.” — All subjects take “will be”; the main verb in “They will be playing cricket.” uses -ing for an action in progress in the future."
         },
         {
           "wrong": "Will she studying?",
           "right": "Will she be studying?",
           "urdu": "کیا وہ پڑھ رہی ہوگی؟",
-          "note": "Correction: “Will she be studying?” — After will be, use the verb with -ing."
+          "note": "Explanation: Correct form “Will she be studying?” — All subjects take “will be”; the main verb in “Will she be studying?” uses -ing for an action in progress in the future."
         },
         {
           "wrong": "I will is working.",
           "right": "I will be working.",
           "urdu": "میں کام کر رہا ہوں گا۔",
-          "note": "Correction: “I will be working.” — After will be, use the verb with -ing."
+          "note": "Explanation: Correct form “I will be working.” — All subjects take “will be”; the main verb in “I will be working.” uses -ing for an action in progress in the future."
         },
         {
           "wrong": "He will be work tomorrow.",
           "right": "He will be working tomorrow.",
           "urdu": "وہ کل کام کر رہا ہوگا۔",
-          "note": "Correction: “He will be working tomorrow.” — After will be, use the verb with -ing."
+          "note": "Explanation: Correct form “He will be working tomorrow.” — All subjects take “will be”; the main verb in “He will be working tomorrow.” uses -ing for an action in progress in the future."
         }
       ],
       "examTips": [
@@ -10462,27 +10462,27 @@
         {
           "text": "Ali will visit Lahore next week.",
           "urdu": "علی اگلے ہفتے لاہور جائے گا۔",
-          "note": "Example 1: This sentence correctly follows the simple tense structure."
+          "note": "Explanation: Sentence “Ali will visit Lahore next week.” — All subjects take “will”; the main verb in “Ali will visit Lahore next week.” stays in the base form V1."
         },
         {
           "text": "They will complete the project soon.",
           "urdu": "وہ جلد ہی منصوبہ مکمل کریں گے۔",
-          "note": "Example 2: This sentence correctly follows the simple tense structure."
+          "note": "Explanation: Sentence “They will complete the project soon.” — All subjects take “will”; the main verb in “They will complete the project soon.” stays in the base form V1."
         },
         {
           "text": "Ali will not visit Lahore next week.",
           "urdu": "علی اگلے ہفتے لاہور نہیں جائے گا۔",
-          "note": "Example 3: This sentence correctly follows the simple tense structure."
+          "note": "Explanation: Sentence “Ali will not visit Lahore next week.” — All subjects take “will”; the main verb in “Ali will not visit Lahore next week.” stays in the base form V1."
         },
         {
           "text": "Will they attend the meeting?",
           "urdu": "کیا وہ اجلاس میں شرکت کریں گے؟",
-          "note": "Example 4: This sentence correctly follows the simple tense structure."
+          "note": "Explanation: Sentence “Will they attend the meeting?” — All subjects take “will”; the main verb in “Will they attend the meeting?” stays in the base form V1."
         },
         {
           "text": "She will arrive tomorrow.",
           "urdu": "وہ کل پہنچے گی۔",
-          "note": "Example 5: This sentence correctly follows the simple tense structure."
+          "note": "Explanation: Sentence “She will arrive tomorrow.” — All subjects take “will”; the main verb in “She will arrive tomorrow.” stays in the base form V1."
         }
       ],
       "commonMistakes": [
@@ -10490,31 +10490,31 @@
           "wrong": "He will goes to school.",
           "right": "He will go to school.",
           "urdu": "وہ اسکول جائے گا۔",
-          "note": "Correction: “He will go to school.” — After will, use the base verb V1."
+          "note": "Explanation: Correct form “He will go to school.” — All subjects take “will”; the main verb in “He will go to school.” stays in the base form V1."
         },
         {
           "wrong": "She will went home.",
           "right": "She will go home.",
           "urdu": "وہ گھر جائے گی۔",
-          "note": "Correction: “She will go home.” — After will, use the base verb V1."
+          "note": "Explanation: Correct form “She will go home.” — All subjects take “will”; the main verb in “She will go home.” stays in the base form V1."
         },
         {
           "wrong": "They will plays cricket.",
           "right": "They will play cricket.",
           "urdu": "وہ کرکٹ کھیلیں گے۔",
-          "note": "Correction: “They will play cricket.” — After will, use the base verb V1."
+          "note": "Explanation: Correct form “They will play cricket.” — All subjects take “will”; the main verb in “They will play cricket.” stays in the base form V1."
         },
         {
           "wrong": "Will he comes tomorrow?",
           "right": "Will he come tomorrow?",
           "urdu": "کیا وہ کل آئے گا؟",
-          "note": "Correction: “Will he come tomorrow?” — After will, use the base verb V1."
+          "note": "Explanation: Correct form “Will he come tomorrow?” — All subjects take “will”; the main verb in “Will he come tomorrow?” stays in the base form V1."
         },
         {
           "wrong": "I will studying English.",
           "right": "I will study English.",
           "urdu": "میں انگریزی پڑھوں گا۔",
-          "note": "Correction: “I will study English.” — After will, use the base verb V1."
+          "note": "Explanation: Correct form “I will study English.” — All subjects take “will”; the main verb in “I will study English.” stays in the base form V1."
         }
       ],
       "examTips": [
