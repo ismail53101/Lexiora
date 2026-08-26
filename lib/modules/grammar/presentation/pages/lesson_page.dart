@@ -1022,17 +1022,37 @@ class _TypeSubheading extends StatelessWidget {
 }
 
 List<TextSpan> _boldMarkedSpans(String text, {Color? color}) {
-  final List<String> parts = text.split('**');
-  return <TextSpan>[
-    for (int i = 0; i < parts.length; i++)
-      TextSpan(
-        text: parts[i].replaceAll(' > ', ' → '),
-        style: TextStyle(
-          color: color,
-          fontWeight: i.isOdd ? FontWeight.w800 : null,
-        ),
+  final List<TextSpan> spans = <TextSpan>[];
+  final RegExp markup = RegExp(r'(\*\*\*(.+?)\*\*\*|\*\*(.+?)\*\*|__(.+?)__)');
+  int cursor = 0;
+  for (final RegExpMatch match in markup.allMatches(text)) {
+    if (match.start > cursor) {
+      spans.add(TextSpan(
+        text: text.substring(cursor, match.start).replaceAll(' > ', ' → '),
+        style: TextStyle(color: color),
+      ));
+    }
+    final String value = (match.group(2) ?? match.group(3) ?? match.group(4)!)
+        .replaceAll(' > ', ' → ');
+    final bool both = match.group(2) != null;
+    spans.add(TextSpan(
+      text: value,
+      style: TextStyle(
+        color: color,
+        fontWeight: both || match.group(3) != null ? FontWeight.w800 : null,
+        decoration: match.group(4) != null || both ? TextDecoration.underline : null,
+        decorationThickness: match.group(4) != null || both ? 2 : null,
       ),
-  ];
+    ));
+    cursor = match.end;
+  }
+  if (cursor < text.length) {
+    spans.add(TextSpan(
+      text: text.substring(cursor).replaceAll(' > ', ' → '),
+      style: TextStyle(color: color),
+    ));
+  }
+  return spans.isEmpty ? <TextSpan>[TextSpan(text: text, style: TextStyle(color: color))] : spans;
 }
 
 class _MarkedLessonText extends StatelessWidget {

@@ -108,38 +108,62 @@ List<TextSpan> _highlightRuleDetails(
   Color highlightColor, {
   Color? defaultColor,
 }) {
-  final List<TextSpan> spans = <TextSpan>[];
   const Color exampleColor = Color(0xFF64B5F6);
   const Color explanationColor = Color(0xFFCE93D8);
+  final List<TextSpan> spans = <TextSpan>[];
   final RegExp marker = RegExp(r'(Example|Examples|Explanation):');
-  int cursor = 0;
-  Color? detailColor;
 
-  for (final RegExpMatch match in marker.allMatches(text)) {
-    if (match.start > cursor) {
-      spans.addAll(_markupSpans(
-        text.substring(cursor, match.start),
-        detailColor,
-      ));
+  for (final String line in text.split('\n')) {
+    if (line.isEmpty) {
+      spans.add(const TextSpan(text: '\n'));
+      continue;
     }
-    spans.add(TextSpan(
-      text: text.substring(match.start, match.end),
-      style: TextStyle(color: highlightColor, fontWeight: FontWeight.w700),
-    ));
-    cursor = match.end;
-    detailColor = match.group(1)!.startsWith('Explanation')
-        ? explanationColor
-        : exampleColor;
+    if (!marker.hasMatch(line) && _looksLikeExampleLine(line)) {
+      spans.add(TextSpan(
+        text: 'Example: ',
+        style: TextStyle(color: highlightColor, fontWeight: FontWeight.w700),
+      ));
+      spans.addAll(_markupSpans(line, exampleColor));
+      spans.add(const TextSpan(text: '\n'));
+      continue;
+    }
+    int cursor = 0;
+    for (final RegExpMatch match in marker.allMatches(line)) {
+      if (match.start > cursor) {
+        spans.addAll(_markupSpans(
+          line.substring(cursor, match.start),
+          defaultColor,
+        ));
+      }
+      final bool explanation = match.group(1)!.startsWith('Explanation');
+      spans.add(TextSpan(
+        text: line.substring(match.start, match.end),
+        style: TextStyle(color: highlightColor, fontWeight: FontWeight.w700),
+      ));
+      cursor = match.end;
+      final RegExpMatch? next = marker.firstMatch(line.substring(cursor));
+      final int end = next == null ? line.length : cursor + next.start;
+      spans.addAll(_markupSpans(
+        line.substring(cursor, end),
+        explanation ? explanationColor : exampleColor,
+      ));
+      cursor = end;
+    }
+    if (cursor < line.length) {
+      spans.addAll(_markupSpans(line.substring(cursor), defaultColor));
+    }
+    spans.add(const TextSpan(text: '\n'));
   }
+  if (spans.isNotEmpty) spans.removeLast();
+  return spans;
+}
 
-  if (cursor < text.length) {
-    spans.addAll(_markupSpans(
-      text.substring(cursor),
-      detailColor,
-    ));
-  }
-
-  return spans.isEmpty ? _markupSpans(text, defaultColor) : spans;
+bool _looksLikeExampleLine(String line) {
+  final String value = line.trim();
+  if (value.isEmpty || RegExp(r'[\u0600-\u06FF]').hasMatch(value)) return false;
+  if (value.startsWith('❌') || value.startsWith('✅')) return true;
+  if (!RegExp(r'[.!?]$').hasMatch(value)) return false;
+  return RegExp(r'^(I|He|She|It|We|They|You|Ali|Sara|John|The students|The boy|The girl|Did |Does |Do |Has |Have |Had |Will |Am |Is |Are |Was |Were )').hasMatch(value);
 }
 
 List<TextSpan> _markupSpans(String text, Color? color) {
