@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:vector_math/vector_math_64.dart';
 import 'package:go_router/go_router.dart';
 import 'package:lexiora/app/router/app_routes.dart';
 import 'package:lexiora/core/widgets/empty_state.dart';
@@ -48,13 +49,67 @@ class TopicPage extends ConsumerWidget {
               message: 'This topic has no lessons yet.',
             );
           }
+          final bool isTensesOverview = topicId == 'tenses';
           return ListView.separated(
-            itemCount: list.length,
+            padding: const EdgeInsets.only(bottom: 24),
+            itemCount: list.length + (isTensesOverview ? 1 : 0),
             separatorBuilder: (_, _) => const Divider(height: 1),
-            itemBuilder: (BuildContext context, int i) =>
-                GrammarTopicTile(topic: list[i], onTap: () => _open(context, list[i])),
+            itemBuilder: (BuildContext context, int i) {
+              if (isTensesOverview && i == list.length) {
+                return const _TensesReferenceImage();
+              }
+              return GrammarTopicTile(
+                topic: list[i],
+                onTap: () => _open(context, list[i]),
+              );
+            },
           );
         },
+      ),
+    );
+  }
+}
+
+class _TensesReferenceImage extends StatefulWidget {
+  const _TensesReferenceImage();
+
+  @override
+  State<_TensesReferenceImage> createState() => _TensesReferenceImageState();
+}
+
+class _TensesReferenceImageState extends State<_TensesReferenceImage> {
+  final TransformationController _controller = TransformationController();
+
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.fromLTRB(16, 20, 16, 0),
+      child: Card(
+        clipBehavior: Clip.antiAlias,
+        child: GestureDetector(
+          onDoubleTap: () {
+            if (_controller.value != Matrix4.identity()) {
+              _controller.value = Matrix4.identity();
+            } else {
+              _controller.value = Matrix4.identity()..scale(2.0);
+            }
+          },
+          child: InteractiveViewer(
+            transformationController: _controller,
+            minScale: 1,
+            maxScale: 4,
+            child: Image.asset(
+              'assets/grammar/images/english_tenses_at_a_glance.png',
+              fit: BoxFit.contain,
+            ),
+          ),
+        ),
       ),
     );
   }
