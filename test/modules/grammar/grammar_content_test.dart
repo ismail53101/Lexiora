@@ -164,8 +164,6 @@ void main() {
       'pos/noun',
       'clauses/dependent/adverb',
       'phrases/participial',
-      'phrases/absolute',
-      'comparison/phrase-vs-clause',
       'active-passive-voice/interrogative',
       'direct-indirect-speech/universal-truth',
       'modals/must',
@@ -179,6 +177,22 @@ void main() {
       expect(lesson.practice, isNotEmpty, reason: '$id needs practice');
       expect(lesson.quiz, isNotEmpty, reason: '$id needs a quiz');
       expect(lesson.summary, isNotEmpty, reason: '$id needs a summary');
+    }
+
+    // New Phrase/Comparison topics follow the TXT requirements: Urdu,
+    // rules, examples, mistakes, and exam guidance. They do not need the
+    // older optional practice/quiz sections.
+    for (final String id in <String>[
+      'phrases/absolute',
+      'comparison/phrase-vs-clause',
+    ]) {
+      final GrammarLesson? lesson = await ds.leaf(id);
+      expect(lesson, isNotNull, reason: '$id must decode');
+      expect(lesson!.urduExplanation, isNotEmpty, reason: '$id needs Urdu');
+      expect(lesson.rules, isNotEmpty, reason: '$id needs rules');
+      expect(lesson.examples, isNotEmpty, reason: '$id needs examples');
+      expect(lesson.commonMistakes, isNotEmpty, reason: '$id needs common mistakes');
+      expect(lesson.examTips, isNotEmpty, reason: '$id needs exam tips');
     }
 
     // The expanded schema decodes: Exam Tips, Structure, and Urdu
