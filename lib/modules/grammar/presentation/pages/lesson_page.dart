@@ -707,7 +707,7 @@ class GrammarTypeContent extends StatelessWidget {
             for (final GrammarTableGroup group in type.tableGroups)
               _CompactTableSection(group: group),
           ] else if (type.name == 'Fixed Prepositions' && type.tableGroups.isNotEmpty) ...<Widget>[
-            _SwipeableTableGroups(groups: type.tableGroups),
+            _FixedPrepositionsGroups(groups: type.tableGroups),
           ] else
             for (final GrammarTableGroup group in type.tableGroups) ...<Widget>[
               _TypeSubheading(title: group.title, icon: Icons.table_chart_outlined),
@@ -775,93 +775,155 @@ class GrammarTypeContent extends StatelessWidget {
   }
 }
 
-class _SwipeableTableGroups extends StatefulWidget {
-  const _SwipeableTableGroups({required this.groups});
+class _FixedPrepositionsGroups extends StatelessWidget {
+  const _FixedPrepositionsGroups({required this.groups});
 
   final List<GrammarTableGroup> groups;
 
   @override
-  State<_SwipeableTableGroups> createState() => _SwipeableTableGroupsState();
+  Widget build(BuildContext context) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: <Widget>[
+        for (final GrammarTableGroup group in groups) ...<Widget>[
+          _TypeSubheading(title: group.title, icon: Icons.table_chart_outlined),
+          _FixedPrepositionGroup(group: group),
+        ],
+      ],
+    );
+  }
 }
 
-class _SwipeableTableGroupsState extends State<_SwipeableTableGroups> {
-  int _page = 0;
+class _FixedPrepositionGroup extends StatelessWidget {
+  const _FixedPrepositionGroup({required this.group});
+
+  final GrammarTableGroup group;
 
   @override
   Widget build(BuildContext context) {
     final ThemeData theme = Theme.of(context);
-    final int count = widget.groups.length;
-    return Column(
-      children: <Widget>[
-        SizedBox(
-          height: 470,
-          child: PageView.builder(
-            itemCount: count,
-            onPageChanged: (int index) => setState(() => _page = index),
-            itemBuilder: (BuildContext context, int index) {
-              final GrammarTableGroup group = widget.groups[index];
-              return Card(
-                margin: const EdgeInsets.only(bottom: 6),
-                elevation: 0,
-                color: theme.colorScheme.surfaceContainerHighest.withValues(alpha: 0.45),
-                child: Padding(
-                  padding: const EdgeInsets.fromLTRB(8, 8, 8, 4),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: <Widget>[
-                      Text(
-                        group.title,
-                        maxLines: 2,
-                        overflow: TextOverflow.ellipsis,
-                        style: theme.textTheme.titleSmall?.copyWith(
-                          color: theme.colorScheme.primary,
-                          fontWeight: FontWeight.w800,
-                        ),
-                      ),
-                      const SizedBox(height: 4),
-                      Expanded(
-                        child: SingleChildScrollView(
-                          child: _GrammarTable(
-                            columns: group.columns,
-                            rows: group.rows,
-                            compact: true,
-                          ),
-                        ),
-                      ),
-                    ],
+    final ColorScheme scheme = theme.colorScheme;
+    return Card(
+      margin: const EdgeInsets.only(bottom: 8),
+      elevation: 0,
+      color: scheme.surfaceContainerHighest.withValues(alpha: 0.45),
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(14)),
+      child: Padding(
+        padding: const EdgeInsets.all(8),
+        child: Column(
+          children: <Widget>[
+            for (int index = 0; index < group.rows.length; index++) ...<Widget>[
+              _FixedPrepositionEntry(
+                row: group.rows[index],
+                index: index,
+              ),
+              if (index < group.rows.length - 1)
+                Divider(height: 12, color: scheme.outlineVariant.withValues(alpha: 0.7)),
+            ],
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class _FixedPrepositionEntry extends StatelessWidget {
+  const _FixedPrepositionEntry({required this.row, required this.index});
+
+  final GrammarTableRow row;
+  final int index;
+
+  @override
+  Widget build(BuildContext context) {
+    final ThemeData theme = Theme.of(context);
+    final ColorScheme scheme = theme.colorScheme;
+    String cell(int position) => position < row.cells.length ? row.cells[position] : '';
+
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 4, vertical: 3),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: <Widget>[
+          Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: <Widget>[
+              Container(
+                width: 24,
+                height: 24,
+                alignment: Alignment.center,
+                decoration: BoxDecoration(
+                  color: scheme.primary.withValues(alpha: 0.12),
+                  borderRadius: BorderRadius.circular(7),
+                ),
+                child: Text(
+                  '${index + 1}',
+                  style: theme.textTheme.labelSmall?.copyWith(
+                    color: scheme.primary,
+                    fontWeight: FontWeight.w800,
                   ),
                 ),
-              );
-            },
+              ),
+              const SizedBox(width: 8),
+              Expanded(
+                child: Text(
+                  cell(0),
+                  style: theme.textTheme.titleSmall?.copyWith(
+                    color: scheme.primary,
+                    fontWeight: FontWeight.w800,
+                  ),
+                ),
+              ),
+            ],
           ),
-        ),
-        const SizedBox(height: 2),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: List<Widget>.generate(
-            count,
-            (int index) => AnimatedContainer(
-              duration: const Duration(milliseconds: 180),
-              margin: const EdgeInsets.symmetric(horizontal: 3),
-              width: index == _page ? 18 : 7,
-              height: 7,
-              decoration: BoxDecoration(
-                color: index == _page
-                    ? theme.colorScheme.primary
-                    : theme.colorScheme.outlineVariant,
-                borderRadius: BorderRadius.circular(8),
+          const SizedBox(height: 5),
+          _FixedPrepositionLabelValue(label: 'Definition', value: cell(1)),
+          if (cell(2).isNotEmpty) ...<Widget>[
+            const SizedBox(height: 4),
+            Directionality(
+              textDirection: TextDirection.rtl,
+              child: _FixedPrepositionLabelValue(
+                label: 'اردو',
+                value: cell(2),
+                textAlign: TextAlign.right,
               ),
             ),
+          ],
+          if (cell(3).isNotEmpty) ...<Widget>[
+            const SizedBox(height: 4),
+            _FixedPrepositionLabelValue(label: 'Example', value: cell(3)),
+          ],
+        ],
+      ),
+    );
+  }
+}
+
+class _FixedPrepositionLabelValue extends StatelessWidget {
+  const _FixedPrepositionLabelValue({
+    required this.label,
+    required this.value,
+    this.textAlign,
+  });
+
+  final String label;
+  final String value;
+  final TextAlign? textAlign;
+
+  @override
+  Widget build(BuildContext context) {
+    final ThemeData theme = Theme.of(context);
+    return RichText(
+      textAlign: textAlign ?? TextAlign.start,
+      text: TextSpan(
+        style: theme.textTheme.bodySmall?.copyWith(height: 1.35),
+        children: <InlineSpan>[
+          TextSpan(
+            text: '$label: ',
+            style: const TextStyle(fontWeight: FontWeight.w800),
           ),
-        ),
-        const SizedBox(height: 4),
-        Text(
-          'Swipe left or right to view the next category',
-          style: theme.textTheme.labelSmall?.copyWith(
-            color: theme.colorScheme.onSurfaceVariant,
-          ),
-        ),
-      ],
+          TextSpan(text: value),
+        ],
+      ),
     );
   }
 }
