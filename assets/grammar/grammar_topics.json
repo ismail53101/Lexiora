@@ -10545,15 +10545,499 @@
     "id": "clauses",
     "parentId": null,
     "title": "Clauses",
-    "subtitle": "Independent & dependent (noun, adjective, adverb)",
+    "subtitle": null,
     "order": 5,
     "isLeaf": false,
-    "summary": "A complete exam-oriented guide to clause structure, finite verbs, clause functions, identification, and common errors.",
     "keywords": [
-      "clause identification",
-      "finite verb",
-      "subject and verb"
-    ]
+      "clauses",
+      "grammar"
+    ],
+    "content": {}
+  },
+  {
+    "id": "clauses/introduction",
+    "parentId": "clauses",
+    "title": "Introduction",
+    "subtitle": null,
+    "order": 1,
+    "isLeaf": true,
+    "keywords": [
+      "clause introduction"
+    ],
+    "content": {
+      "introduction": "A clause is a group of words that contains a subject and a verb and forms part of a sentence.",
+      "urduExplanation": "Clause (جملے کا جز) الفاظ کا ایسا مجموعہ ہے جس میں عموماً Subject اور Verb ہوتے ہیں اور جو جملے کا ایک حصہ ہوتا ہے۔",
+      "rules": [
+        "Clause = Subject + Verb.",
+        "A clause forms part of a sentence and contains a subject and a verb.",
+        "A clause may express a complete or incomplete thought depending on its type."
+      ],
+      "examples": [
+        {
+          "text": "**She is studying for the exam.**",
+          "note": "She → Subject; is studying → Verb; She is studying → Clause."
+        },
+        {
+          "text": "**I know that he is honest.**"
+        },
+        {
+          "text": "**When the rain stopped, we went outside.**"
+        }
+      ],
+      "commonMistakes": [],
+      "examTips": [
+        "A clause is a group of words with a subject and a verb.",
+        "First find the subject and verb before identifying the clause type."
+      ],
+      "structure": [
+        "Subject + Verb",
+        "Example: **She is studying for the exam.**",
+        "She → Subject; is studying → Verb; She is studying → Clause"
+      ],
+      "summary": "Clause = Subject + Verb. A clause is a group of words that forms part of a sentence."
+    }
+  },
+  {
+    "id": "clauses/by-independence",
+    "parentId": "clauses",
+    "title": "By Independence",
+    "subtitle": null,
+    "order": 2,
+    "isLeaf": false,
+    "keywords": [
+      "independent clause",
+      "dependent clause"
+    ],
+    "content": {}
+  },
+  {
+    "id": "clauses/by-independence/independent",
+    "parentId": "clauses/by-independence",
+    "title": "Independent Clause",
+    "subtitle": null,
+    "order": 1,
+    "isLeaf": true,
+    "keywords": [
+      "independent clause"
+    ],
+    "content": {
+      "introduction": "An independent clause is a group of words that contains a subject and a verb and expresses a complete thought.",
+      "urduExplanation": "Independent Clause (مکمل جملے کا جز) الفاظ کا ایسا مجموعہ ہے جس میں Subject اور Verb ہوتے ہیں اور جو مکمل خیال بیان کرتا ہے۔",
+      "rules": [
+        "An independent clause contains a subject and a verb.",
+        "It expresses a complete thought.",
+        "It can stand alone as a complete sentence.",
+        "Independent Clause = Subject + Verb + Complete Thought.",
+        "Ask: Does it have a subject and a verb? Does it express a complete thought?"
+      ],
+      "examples": [
+        {
+          "text": "**She is studying for the exam.**",
+          "note": "The clause has a subject and a verb and gives a complete meaning."
+        },
+        {
+          "text": "**Ali plays football every evening.**",
+          "note": "The clause has subject **Ali**, verb **plays**, and a complete thought."
+        },
+        {
+          "text": "**We went to the market yesterday.**",
+          "note": "The clause can stand alone as a complete sentence."
+        },
+        {
+          "text": "**The students completed their work.**",
+          "note": "Subject: **The students**; Verb: **completed**; Complete thought: **The students completed their work.**"
+        },
+        {
+          "text": "**She went home.** ✓",
+          "note": "It gives a complete thought and is an Independent Clause."
+        }
+      ],
+      "commonMistakes": [],
+      "examTips": [
+        "If a clause can stand alone as a complete sentence, it is an Independent Clause.",
+        "Check both structure and complete meaning."
+      ],
+      "structure": [
+        "Subject + Verb + Complete Idea",
+        "Examples: **She + is studying + for the exam.**; **Ali + plays + football every evening.**; **We + went + to the market yesterday.**"
+      ],
+      "summary": "An independent clause has a subject and a verb, expresses a complete thought, and can stand alone as a sentence.",
+      "tableTitle": "Independent Clause — Identification",
+      "tableColumns": [
+        "Test",
+        "Result"
+      ],
+      "tableRows": [
+        [
+          "Subject and verb present",
+          "Yes"
+        ],
+        [
+          "Complete thought",
+          "Yes"
+        ],
+        [
+          "Can stand alone",
+          "Yes"
+        ],
+        [
+          "Example",
+          "She went home. ✓"
+        ]
+      ]
+    }
+  },
+  {
+    "id": "clauses/by-independence/dependent",
+    "parentId": "clauses/by-independence",
+    "title": "Dependent Clause",
+    "subtitle": null,
+    "order": 2,
+    "isLeaf": true,
+    "keywords": [
+      "dependent clause"
+    ],
+    "content": {
+      "introduction": "A dependent clause is a group of words that contains a subject and a verb but does not express a complete thought by itself.",
+      "urduExplanation": "Dependent Clause (نامکمل جملے کا جز) الفاظ کا ایسا مجموعہ ہے جس میں Subject اور Verb ہوتے ہیں، لیکن یہ اکیلا مکمل خیال بیان نہیں کرتا۔",
+      "rules": [
+        "A dependent clause contains a subject and a verb.",
+        "It does not express a complete thought by itself.",
+        "It cannot stand alone and must be connected to an independent clause.",
+        "It often begins with a subordinating word.",
+        "Dependent Clause = Subject + Verb + Incomplete Thought."
+      ],
+      "examples": [
+        {
+          "text": "**because she was tired**, she went home.",
+          "note": "The bold clause has a subject and verb but cannot stand alone."
+        },
+        {
+          "text": "I will call you **when I reach home**.",
+          "note": "The clause explains when the call will happen."
+        },
+        {
+          "text": "**Although he studied hard**, he failed the exam.",
+          "note": "The clause begins with **Although** and needs the main clause to complete its meaning."
+        },
+        {
+          "text": "**Because she was tired**, she went home.",
+          "note": "Dependent Clause: **Because she was tired**; Independent Clause: **she went home**; the dependent clause explains why she went home."
+        },
+        {
+          "text": "**Because she was tired.** ✗",
+          "note": "It leaves the reader asking: What happened because she was tired?"
+        }
+      ],
+      "commonMistakes": [],
+      "examTips": [
+        "If a group of words has a subject and verb but cannot stand alone, it is a Dependent Clause.",
+        "Connect it to an independent clause to form a complete sentence."
+      ],
+      "structure": [
+        "Subordinating Word + Subject + Verb + Incomplete Idea",
+        "Examples: **because + she + was tired**; **when + I + reach home**; **although + he + studied hard**",
+        "Common words: **because, although, if, when, while, before, after, unless, since, that, who, which**"
+      ],
+      "summary": "A dependent clause contains a subject and verb but cannot stand alone as a complete sentence.",
+      "tableTitle": "Dependent Clause — Identification",
+      "tableColumns": [
+        "Question",
+        "Dependent-clause test"
+      ],
+      "tableRows": [
+        [
+          "Subject and verb present?",
+          "Yes"
+        ],
+        [
+          "Can it stand alone?",
+          "No"
+        ],
+        [
+          "Complete thought?",
+          "No"
+        ],
+        [
+          "Example",
+          "Because she was tired. ✗"
+        ]
+      ]
+    }
+  },
+  {
+    "id": "clauses/by-function",
+    "parentId": "clauses",
+    "title": "By Function",
+    "subtitle": null,
+    "order": 3,
+    "isLeaf": false,
+    "keywords": [
+      "noun clause",
+      "adjective clause",
+      "adverb clause"
+    ],
+    "content": {}
+  },
+  {
+    "id": "clauses/by-function/noun",
+    "parentId": "clauses/by-function",
+    "title": "Noun Clause",
+    "subtitle": null,
+    "order": 1,
+    "isLeaf": true,
+    "keywords": [
+      "noun clause"
+    ],
+    "content": {
+      "introduction": "A noun clause is a group of words that contains a subject and a verb and works like a noun in a sentence.",
+      "urduExplanation": "Noun Clause (اسمی جملے کا جز) الفاظ کا ایسا مجموعہ ہے جس میں Subject اور Verb ہوتے ہیں اور جو جملے میں Noun (اسم) کی طرح کام کرتا ہے۔",
+      "rules": [
+        "A noun clause contains a subject and a verb.",
+        "It works like a noun in the main sentence.",
+        "It may function as a subject, object, subject complement, or object of a preposition.",
+        "It can begin with **that, what, who, why, where, when, how, whether,** or **if**.",
+        "Noun Clause = Subject + Verb + works like a Noun."
+      ],
+      "examples": [
+        {
+          "text": "I know **that he is honest**.",
+          "urdu": "میں جانتا ہوں کہ وہ ایماندار ہے۔",
+          "note": "The bold clause works like a noun and is the object of **know**."
+        },
+        {
+          "text": "**What she said** was true.",
+          "urdu": "اس نے جو کہا وہ سچ تھا۔",
+          "note": "The bold noun clause works as the subject."
+        },
+        {
+          "text": "She explained **why she was late**.",
+          "urdu": "اس نے وضاحت کی کہ وہ دیر سے کیوں آئی۔",
+          "note": "The bold clause works as the object of **explained**."
+        },
+        {
+          "text": "I don't know **where he lives**.",
+          "note": "Subject: **he**; Verb: **lives**; Function: object of **know**."
+        },
+        {
+          "text": "I know **what the answer is**.",
+          "note": "**the answer** is a noun; **what the answer is** is a noun clause. Both work as the object of **know**."
+        }
+      ],
+      "commonMistakes": [],
+      "examTips": [
+        "Ask: “Is this clause doing the job of a noun?” If yes, it is a Noun Clause.",
+        "Compare the clause with a simple noun: **I know the answer** → **I know what the answer is**."
+      ],
+      "structure": [
+        "Subject + Verb + Noun Clause",
+        "Examples: **I know that he is honest.**; **She explained why she was late.**; **We do not know where he lives.**",
+        "Opening words: **that, what, who, why, where, when, how, whether, if**"
+      ],
+      "summary": "A noun clause contains a subject and verb and performs the grammatical work of a noun.",
+      "tableTitle": "Functions of a Noun Clause",
+      "tableColumns": [
+        "Function",
+        "Example"
+      ],
+      "tableRows": [
+        [
+          "Subject",
+          "What he said was true."
+        ],
+        [
+          "Object",
+          "I know that she is honest."
+        ],
+        [
+          "Subject Complement",
+          "The problem is that we are late."
+        ],
+        [
+          "Object of a Preposition",
+          "We talked about what he had done."
+        ]
+      ]
+    }
+  },
+  {
+    "id": "clauses/by-function/adjective",
+    "parentId": "clauses/by-function",
+    "title": "Adjective Clause",
+    "subtitle": null,
+    "order": 2,
+    "isLeaf": true,
+    "keywords": [
+      "adjective clause",
+      "relative clause"
+    ],
+    "content": {
+      "introduction": "An adjective clause is a group of words that contains a subject and a verb and describes or gives more information about a noun or pronoun.",
+      "urduExplanation": "Adjective Clause (صفتی جملے کا جز) الفاظ کا ایسا مجموعہ ہے جس میں Subject اور Verb ہوتے ہیں اور جو کسی Noun یا Pronoun کے بارے میں مزید معلومات دیتا ہے۔",
+      "rules": [
+        "An adjective clause contains a subject and a verb.",
+        "It describes or identifies a noun or pronoun.",
+        "It usually begins with a relative word such as **who, whom, whose, which, that, where,** or **when**.",
+        "Find the noun or pronoun described by the clause.",
+        "Adjective Clause = Subject + Verb + describes a Noun or Pronoun."
+      ],
+      "examples": [
+        {
+          "text": "The boy **who won the race** is my brother.",
+          "urdu": "وہ لڑکا جس نے دوڑ جیتی میرا بھائی ہے۔",
+          "note": "The bold clause describes **boy**."
+        },
+        {
+          "text": "I met a woman **who works at the hospital**.",
+          "urdu": "میں ایک ایسی عورت سے ملا جو ہسپتال میں کام کرتی ہے۔",
+          "note": "The bold clause gives more information about **woman**."
+        },
+        {
+          "text": "This is the book **that I bought yesterday**.",
+          "urdu": "یہ وہ کتاب ہے جو میں نے کل خریدی تھی۔",
+          "note": "The bold clause describes **book**."
+        },
+        {
+          "text": "The student **who studies regularly** gets good marks.",
+          "note": "Subject: **who**; Verb: **studies**; Describes: **student**."
+        },
+        {
+          "text": "I met a girl **who won the competition**.",
+          "note": "**girl** is the main noun; the clause tells us which girl."
+        }
+      ],
+      "commonMistakes": [],
+      "examTips": [
+        "Ask: “Which noun or pronoun does this clause describe?” If it describes one, it is an Adjective Clause.",
+        "The clause makes a noun more specific."
+      ],
+      "structure": [
+        "Noun + Relative Word + Subject + Verb",
+        "Examples: **the boy who won the race**; **the woman who works at the hospital**; **the book that I bought yesterday**",
+        "Common words: **who, whom, whose, which, that, where, when**"
+      ],
+      "summary": "An adjective clause contains a subject and verb and describes or identifies a noun or pronoun.",
+      "tableTitle": "Functions of an Adjective Clause",
+      "tableColumns": [
+        "Function",
+        "Example"
+      ],
+      "tableRows": [
+        [
+          "Describe a person",
+          "The girl who is wearing a red dress is my sister."
+        ],
+        [
+          "Describe a thing",
+          "I read the book that you recommended."
+        ],
+        [
+          "Identify a place",
+          "This is the school where I studied."
+        ],
+        [
+          "Identify a time",
+          "I remember the day when we first met."
+        ]
+      ]
+    }
+  },
+  {
+    "id": "clauses/by-function/adverb",
+    "parentId": "clauses/by-function",
+    "title": "Adverb Clause",
+    "subtitle": null,
+    "order": 3,
+    "isLeaf": true,
+    "keywords": [
+      "adverb clause"
+    ],
+    "content": {
+      "introduction": "An adverb clause is a group of words that contains a subject and a verb and gives more information about a verb, adjective, or the whole main clause.",
+      "urduExplanation": "Adverb Clause (حالیہ جملے کا جز) الفاظ کا ایسا مجموعہ ہے جس میں Subject اور Verb ہوتے ہیں اور جو جملے میں وقت، وجہ، شرط، مقصد، نتیجہ یا تضاد جیسی معلومات دیتا ہے۔",
+      "rules": [
+        "An adverb clause contains a subject and a verb.",
+        "It gives information about the main action or situation.",
+        "It can show time, reason, condition, contrast, purpose, result, or manner.",
+        "It often begins with a subordinating conjunction.",
+        "Ask when, why, under what condition, or despite what."
+      ],
+      "examples": [
+        {
+          "text": "We stayed inside **because it was raining**.",
+          "urdu": "ہم اندر رہے کیونکہ بارش ہو رہی تھی۔",
+          "note": "The bold clause shows reason."
+        },
+        {
+          "text": "**When the teacher arrived**, the students became quiet.",
+          "urdu": "جب استاد آئے، طلبہ خاموش ہو گئے۔",
+          "note": "The bold clause shows time."
+        },
+        {
+          "text": "I will help you **if you need me**.",
+          "urdu": "میں آپ کی مدد کروں گا اگر آپ کو میری ضرورت ہو۔",
+          "note": "The bold clause shows condition."
+        },
+        {
+          "text": "We stayed home **because it was raining**.",
+          "note": "Subject: **it**; Verb: **was raining**; Function: shows reason for staying home."
+        },
+        {
+          "text": "I will call you **when I reach home**.",
+          "note": "The main clause is **I will call you**; the adverb clause tells when I will call."
+        }
+      ],
+      "commonMistakes": [],
+      "examTips": [
+        "Ask “When? Why? Under what condition? or Despite what?”",
+        "If the clause answers one of these questions about the main clause, it is likely an Adverb Clause."
+      ],
+      "structure": [
+        "Subordinating Conjunction + Subject + Verb",
+        "Examples: **because + it was raining**; **when + the teacher arrived**; **if + you need me**",
+        "Common words: **because, when, while, before, after, if, unless, although, since, as, so that**"
+      ],
+      "summary": "An adverb clause contains a subject and verb and gives information about the main action or situation.",
+      "tableTitle": "Functions of an Adverb Clause",
+      "tableColumns": [
+        "Function",
+        "Example"
+      ],
+      "tableRows": [
+        [
+          "Time",
+          "I will call you when I reach home."
+        ],
+        [
+          "Reason",
+          "We stayed inside because it was raining."
+        ],
+        [
+          "Condition",
+          "I will help you if you need me."
+        ],
+        [
+          "Contrast",
+          "Although he was tired, he continued working."
+        ],
+        [
+          "Purpose",
+          "She studies hard so that she can pass the exam."
+        ]
+      ]
+    }
+  },
+  {
+    "id": "clauses/phrase-vs-clause",
+    "parentId": "clauses",
+    "title": "Phrase vs Clause",
+    "subtitle": null,
+    "order": 4,
+    "isLeaf": true,
+    "keywords": [
+      "phrase vs clause"
+    ],
+    "content": {}
   },
   {
     "id": "subject-verb-agreement",
@@ -10829,90 +11313,6 @@
       "quiz": [],
       "summary": ""
     }
-  },
-  {
-    "id": "clauses/dependent",
-    "parentId": "clauses",
-    "title": "Dependent Clause",
-    "subtitle": "Noun, adjective & adverb clauses",
-    "order": 2,
-    "isLeaf": false
-  },
-  {
-    "id": "clauses/dependent/adjective",
-    "parentId": "clauses/dependent",
-    "title": "Adjective (Relative) Clause",
-    "subtitle": null,
-    "order": 2,
-    "isLeaf": true,
-    "keywords": [
-      "adjective clause",
-      "relative clause",
-      "relative pronoun",
-      "who whom whose",
-      "restrictive clause",
-      "non-restrictive clause",
-      "defining clause",
-      "relative adverb"
-    ],
-    "content": {}
-  },
-  {
-    "id": "clauses/dependent/adverb",
-    "parentId": "clauses/dependent",
-    "title": "Adverb Clause",
-    "subtitle": null,
-    "order": 3,
-    "isLeaf": true,
-    "keywords": [
-      "adverb clause",
-      "subordinating conjunction",
-      "conditional clause",
-      "concession clause",
-      "time clause",
-      "cause clause",
-      "purpose clause",
-      "complex sentence"
-    ],
-    "content": {}
-  },
-  {
-    "id": "clauses/independent",
-    "parentId": "clauses",
-    "title": "Independent Clause",
-    "subtitle": null,
-    "order": 1,
-    "isLeaf": true,
-    "keywords": [
-      "independent clause",
-      "main clause",
-      "compound sentence",
-      "comma splice",
-      "run-on",
-      "fanboys",
-      "semicolon",
-      "coordinating conjunction"
-    ],
-    "content": {}
-  },
-  {
-    "id": "clauses/dependent/noun",
-    "parentId": "clauses/dependent",
-    "title": "Noun Clause",
-    "subtitle": null,
-    "order": 1,
-    "isLeaf": true,
-    "keywords": [
-      "noun clause",
-      "dependent clause",
-      "that clause",
-      "wh-clause",
-      "subject clause",
-      "object clause",
-      "embedded question",
-      "subordinator"
-    ],
-    "content": {}
   },
   {
     "id": "phrases/adjective",

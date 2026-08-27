@@ -184,6 +184,8 @@ class _LessonView extends StatelessWidget {
   Widget build(BuildContext context) {
     final ThemeData theme = Theme.of(context);
     final bool isPhraseLesson = lesson.id.startsWith('phrases/');
+    final bool isPhraseOrClauseLesson =
+        isPhraseLesson || lesson.id.startsWith('clauses/');
     if (lesson.id == 'pos/quiz') {
       return _AllInOneQuizView(lesson: lesson);
     }
@@ -295,7 +297,7 @@ class _LessonView extends StatelessWidget {
                 for (final String s in lesson.structure)
                   GrammarBullet(
                     text: s,
-                    compact: lesson.id.startsWith('tenses/') || isPhraseLesson,
+                    compact: lesson.id.startsWith('tenses/') || isPhraseOrClauseLesson,
                   ),
               ],
             ),
@@ -310,7 +312,7 @@ class _LessonView extends StatelessWidget {
                 for (final String r in lesson.rules)
                   GrammarBullet(
                     text: r,
-                    compact: lesson.id.startsWith('tenses/') || isPhraseLesson,
+                    compact: lesson.id.startsWith('tenses/') || isPhraseOrClauseLesson,
                   ),
               ],
             ),
@@ -323,7 +325,7 @@ class _LessonView extends StatelessWidget {
             child: _GrammarTable(
               columns: lesson.tableColumns,
               rows: lesson.tableRows,
-              compact: lesson.id.startsWith('tenses/') || isPhraseLesson,
+              compact: lesson.id.startsWith('tenses/') || isPhraseOrClauseLesson,
             ),
           ),
         if (lesson.examples.isNotEmpty)
@@ -335,7 +337,7 @@ class _LessonView extends StatelessWidget {
                 for (final GrammarExample e in lesson.examples)
                   _ExampleItem(
                     example: e,
-                    compact: lesson.id.startsWith('tenses/') || isPhraseLesson,
+                    compact: lesson.id.startsWith('tenses/') || isPhraseOrClauseLesson,
                   ),
               ],
             ),
@@ -351,7 +353,7 @@ class _LessonView extends StatelessWidget {
                 for (final GrammarMistake m in lesson.commonMistakes)
                   _MistakeItem(
                     mistake: m,
-                    compact: lesson.id.startsWith('tenses/') || isPhraseLesson,
+                    compact: lesson.id.startsWith('tenses/') || isPhraseOrClauseLesson,
                   ),
               ],
             ),
@@ -367,7 +369,7 @@ class _LessonView extends StatelessWidget {
                 for (final String t in lesson.examTips)
                   GrammarBullet(
                     text: t,
-                    compact: lesson.id.startsWith('tenses/') || isPhraseLesson,
+                    compact: lesson.id.startsWith('tenses/') || isPhraseOrClauseLesson,
                   ),
               ],
             ),

@@ -73,26 +73,30 @@ void main() {
       ]),
     );
 
-    // Clauses → overview + Independent (leaf) + Dependent (branch).
+    // Clauses → Introduction, two independence/function branches, and the
+    // intentionally empty Phrase vs Clause lesson.
     final List<GrammarTopicSummary> clauses = await ds.children('clauses');
-    expect(clauses.length, 3);
+    expect(clauses.length, 4);
     expect(clauses.where((GrammarTopicSummary t) => t.isLeaf).length, 2,
-        reason: 'Clause Overview and Independent Clause are direct leaves');
-    expect(clauses.where((GrammarTopicSummary t) => !t.isLeaf).length, 1,
-        reason: 'Dependent Clause is a sub-branch');
-    final List<GrammarTopicSummary> dependent =
-        await ds.children('clauses/dependent');
-    expect(dependent.length, 3);
-    expect(dependent.every((GrammarTopicSummary t) => t.isLeaf), isTrue);
+        reason: 'Introduction and Phrase vs Clause are direct leaves');
+    expect(clauses.where((GrammarTopicSummary t) => !t.isLeaf).length, 2,
+        reason: 'By Independence and By Function are branches');
+    final List<GrammarTopicSummary> byIndependence =
+        await ds.children('clauses/by-independence');
+    expect(byIndependence.length, 2);
+    expect(byIndependence.every((GrammarTopicSummary t) => t.isLeaf), isTrue);
+    final List<GrammarTopicSummary> byFunction =
+        await ds.children('clauses/by-function');
+    expect(byFunction.length, 3);
+    expect(byFunction.every((GrammarTopicSummary t) => t.isLeaf), isTrue);
 
-    // Phrases → existing types plus overview and Absolute Phrase.
+    // Phrases → the nine requested Phrase lessons; the separate Overview
+    // entry was intentionally removed.
     final List<GrammarTopicSummary> phrases = await ds.children('phrases');
-    expect(phrases.length, 10);
+    expect(phrases.length, 9);
     expect(phrases.every((GrammarTopicSummary t) => t.isLeaf), isTrue);
-    expect(
-      phrases.map((GrammarTopicSummary t) => t.title),
-      containsAll(<String>['Phrase Overview', 'Absolute Phrase']),
-    );
+    expect(phrases.map((GrammarTopicSummary t) => t.title),
+        contains('Absolute Phrase'));
 
     // Comparison is the only new top-level folder and has seven comparisons
     // plus two reference topics.
@@ -147,12 +151,14 @@ void main() {
       final Map<String, dynamic> o = e as Map<String, dynamic>;
       if (o['isLeaf'] != true) continue;
       leaves++;
-      final GrammarLesson? lesson = await ds.leaf(o['id'] as String);
-      expect(lesson, isNotNull, reason: 'leaf ${o['id']} must decode');
+      final String id = o['id'] as String;
+      final GrammarLesson? lesson = await ds.leaf(id);
+      expect(lesson, isNotNull, reason: 'leaf $id must decode');
+      if (id == 'clauses/phrase-vs-clause') continue;
       expect(
         lesson!.englishExplanation.isNotEmpty || lesson.introduction.isNotEmpty,
         isTrue,
-        reason: '${o['id']} needs English lesson content',
+        reason: '$id needs English lesson content',
       );
     }
     expect(leaves, greaterThanOrEqualTo(86));
@@ -162,7 +168,7 @@ void main() {
     // own dedicated lesson rather than a merged page.
     for (final String id in <String>[
       'pos/noun',
-      'clauses/dependent/adverb',
+      'clauses/by-function/adverb',
       'phrases/participial',
       'active-passive-voice/interrogative',
       'direct-indirect-speech/universal-truth',
@@ -193,6 +199,23 @@ void main() {
       expect(lesson.examples, isNotEmpty, reason: '$id needs examples');
       expect(lesson.commonMistakes, isNotEmpty, reason: '$id needs common mistakes');
       expect(lesson.examTips, isNotEmpty, reason: '$id needs exam tips');
+    }
+
+    // Clause lessons supplied by the user use the expanded lesson schema but
+    // intentionally do not require the legacy practice/quiz sections.
+    for (final String id in <String>[
+      'clauses/introduction',
+      'clauses/by-independence/independent',
+      'clauses/by-independence/dependent',
+      'clauses/by-function/noun',
+      'clauses/by-function/adjective',
+      'clauses/by-function/adverb',
+    ]) {
+      final GrammarLesson? lesson = await ds.leaf(id);
+      expect(lesson, isNotNull, reason: '$id must decode');
+      expect(lesson!.urduExplanation, isNotEmpty, reason: '$id needs Urdu');
+      expect(lesson.examples, isNotEmpty, reason: '$id needs examples');
+      expect(lesson.rules, isNotEmpty, reason: '$id needs rules');
     }
 
     // The expanded schema decodes: Exam Tips, Structure, and Urdu
