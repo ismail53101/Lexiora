@@ -50,21 +50,75 @@ class TopicPage extends ConsumerWidget {
             );
           }
           final bool isTensesOverview = topicId == 'tenses';
+          final bool isPhrasesFolder = topicId == 'phrases';
+          final int extraItems = (isTensesOverview ? 1 : 0) +
+              (isPhrasesFolder ? 1 : 0);
           return ListView.separated(
             padding: const EdgeInsets.only(bottom: 24),
-            itemCount: list.length + (isTensesOverview ? 1 : 0),
+            itemCount: list.length + extraItems,
             separatorBuilder: (_, _) => const Divider(height: 1),
             itemBuilder: (BuildContext context, int i) {
-              if (isTensesOverview && i == list.length) {
+              if (isPhrasesFolder && i == 0) {
+                return const _PhraseIntroduction();
+              }
+              final int topicIndex = isPhrasesFolder ? i - 1 : i;
+              if (isTensesOverview && topicIndex == list.length) {
                 return const _TensesReferenceImage();
               }
               return GrammarTopicTile(
-                topic: list[i],
-                onTap: () => _open(context, list[i]),
+                topic: list[topicIndex],
+                onTap: () => _open(context, list[topicIndex]),
               );
             },
           );
         },
+      ),
+    );
+  }
+}
+
+class _PhraseIntroduction extends StatelessWidget {
+  const _PhraseIntroduction();
+
+  @override
+  Widget build(BuildContext context) {
+    final ThemeData theme = Theme.of(context);
+    final TextStyle body = theme.textTheme.bodyMedium ?? const TextStyle();
+    return Card(
+      margin: const EdgeInsets.fromLTRB(16, 16, 16, 8),
+      child: Padding(
+        padding: const EdgeInsets.all(16),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: <Widget>[
+            Text('Phrase', style: theme.textTheme.titleLarge?.copyWith(fontWeight: FontWeight.bold)),
+            const SizedBox(height: 12),
+            Text('Definition', style: theme.textTheme.titleMedium?.copyWith(fontWeight: FontWeight.bold)),
+            const SizedBox(height: 6),
+            Text('English:', style: theme.textTheme.labelLarge?.copyWith(color: theme.colorScheme.primary, fontWeight: FontWeight.bold)),
+            const SizedBox(height: 3),
+            Text('A phrase is a group of words that works together as a unit but does not express a complete thought by itself.', style: body),
+            const SizedBox(height: 10),
+            Text('Urdu:', style: theme.textTheme.labelLarge?.copyWith(color: theme.colorScheme.primary, fontWeight: FontWeight.bold)),
+            const SizedBox(height: 3),
+            Directionality(
+              textDirection: TextDirection.rtl,
+              child: Text(
+                'Phrase (فقرہ) الفاظ کا ایسا مجموعہ ہے جو جملے میں ایک اکائی کے طور پر کام کرتا ہے، لیکن اکیلا مکمل خیال بیان نہیں کرتا۔',
+                textAlign: TextAlign.right,
+                style: body.copyWith(height: 1.7),
+              ),
+            ),
+            const SizedBox(height: 12),
+            Text('Examples', style: theme.textTheme.titleMedium?.copyWith(fontWeight: FontWeight.bold)),
+            const SizedBox(height: 4),
+            Text('in the morning — صبح کے وقت\na beautiful girl — ایک خوبصورت لڑکی\nafter the class — کلاس کے بعد', style: body),
+            const SizedBox(height: 12),
+            Text('Quick Tip', style: theme.textTheme.titleMedium?.copyWith(fontWeight: FontWeight.bold)),
+            const SizedBox(height: 4),
+            Text('A phrase adds meaning or detail to a sentence but cannot normally stand alone as a complete sentence.', style: body),
+          ],
+        ),
       ),
     );
   }

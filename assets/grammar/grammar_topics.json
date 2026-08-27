@@ -10855,165 +10855,7 @@
       "defining clause",
       "relative adverb"
     ],
-    "content": {
-      "introduction": "An adjective (relative) clause is a dependent clause that modifies a noun or pronoun, answering questions like 'which one?' or 'what kind?'. It is introduced by relative pronouns (who, whom, whose, which, that) or relative adverbs (when, where, why). The critical distinction between restrictive and non-restrictive clauses — and the comma rules they carry — is heavily tested in CSS English grammar, IELTS, and PMS papers. Precise use of relative clauses allows writers to pack complex information into a single, elegant sentence.",
-      "urduExplanation": "Adjective clause — جسے relative clause بھی کہتے ہیں — ایک dependent clause ہوتا ہے جو کسی noun یا pronoun کی وضاحت یا تعریف کرتا ہے۔ اسے relative pronouns (who, whom, whose, which, that) یا relative adverbs (when, where, why) سے شروع کیا جاتا ہے۔ اس کی دو اہم اقسام ہیں: restrictive clause (جو noun کی شناخت کے لیے ضروری ہو، commas نہیں لگتے) اور non-restrictive clause (جو اضافی معلومات دے، commas لگتے ہیں)۔ مثال: 'The officer who solved the case was promoted.' — یہاں 'who solved the case' ایک restrictive clause ہے کیونکہ یہ بتاتا ہے کہ کون سا officer۔ CSS اور IELTS میں restrictive اور non-restrictive clauses کے درمیان فرق اور ان کے commas کے قواعد بہت اہم ہیں۔",
-      "englishExplanation": "An adjective clause immediately follows the noun or pronoun it modifies (its antecedent) and functions exactly like an adjective — describing, limiting, or identifying that noun. Relative pronouns serve a dual role: they introduce the clause AND fill a grammatical slot within it (subject, object, or possessive). The choice of pronoun is governed by the antecedent: 'who/whom/whose' for people, 'which' for things and animals, 'that' for people or things in restrictive clauses. Case matters for 'who' vs. 'whom': use 'who' when it is the subject of the relative clause; use 'whom' when it is the object. Restrictive (defining) clauses are essential to the meaning of the sentence — they identify which specific noun is meant — and take no commas. Non-restrictive (non-defining) clauses add supplementary information about an already-identified noun; they are set off by commas and cannot use 'that'. Relative adverbs 'when', 'where', and 'why' introduce clauses modifying time nouns, place nouns, and the noun 'reason' respectively, and can often be replaced by a preposition + which.",
-      "types": [
-        {
-          "name": "Restrictive (Defining) Relative Clause",
-          "description": "Identifies which specific noun is meant; essential to the sentence's meaning. No commas. Can use 'that' or 'who/which'. Example: 'The candidate that scored highest was selected.'"
-        },
-        {
-          "name": "Non-Restrictive (Non-Defining) Relative Clause",
-          "description": "Adds extra, non-essential information about an already-identified noun. Set off by commas. Cannot use 'that'. Example: 'The Chief Justice, who retired last year, authored a memoir.'"
-        },
-        {
-          "name": "Clause with Relative Pronoun as Subject",
-          "description": "The relative pronoun (who, which, that) is the grammatical subject of the relative clause verb. Example: 'The policy which governs exports needs revision.' 'which' is the subject of 'governs'."
-        },
-        {
-          "name": "Clause with Relative Pronoun as Object",
-          "description": "The relative pronoun (whom, which, that) is the object of the verb or preposition within the clause. The pronoun may be omitted in restrictive clauses. Example: 'The official whom the PM appointed resigned.' / 'The official the PM appointed resigned.'"
-        },
-        {
-          "name": "Clause with Relative Adverb",
-          "description": "Introduced by 'when' (time), 'where' (place), or 'why' (reason). Example: 'The era when colonial laws dominated is past.' Equivalent: 'The era in which colonial laws dominated.'"
-        },
-        {
-          "name": "Possessive Relative Clause (whose)",
-          "description": "'Whose' indicates possession and can refer to people or things. Example: 'The minister whose portfolio includes finance addressed the press.' 'Whose' can also modify things: 'a country whose GDP is growing'."
-        }
-      ],
-      "rules": [
-        "Place the adjective clause immediately after the noun it modifies to avoid a dangling or misplaced modifier.",
-        "Use 'who' or 'whom' for people and 'which' for things/animals; 'that' may substitute for 'who' or 'which' only in restrictive clauses.",
-        "Use 'whom' (not 'who') when the relative pronoun is the object of a verb or preposition within the clause: 'The colleague whom I advised passed the exam.'",
-        "Non-restrictive clauses must be enclosed in commas and cannot use 'that' as the relative pronoun — use 'who' or 'which' instead.",
-        "The relative pronoun (that, whom, which) may be omitted when it is the object within a restrictive clause but NEVER when it is the subject: 'The report [that] she submitted was accepted.' vs. 'The report that shocked everyone was leaked.' (cannot delete 'that').",
-        "A relative adverb (when/where/why) can be replaced by a preposition + which: 'the place where he was born' = 'the place in which he was born'.",
-        "Never use 'that' after a comma (in non-restrictive clauses) or after indefinite pronouns like 'those', 'all', 'everyone': use 'who' or 'which'."
-      ],
-      "examples": [
-        {
-          "text": "The student who consistently scores above 80 percent deserves a merit scholarship.",
-          "note": "Restrictive clause — 'who' is the subject of 'scores'. No commas because the clause identifies which student."
-        },
-        {
-          "text": "Quaid-e-Azam Muhammad Ali Jinnah, who founded Pakistan in 1947, remains a revered figure.",
-          "note": "Non-restrictive clause — the noun is already uniquely identified; commas frame the extra information. 'That' cannot replace 'who' here."
-        },
-        {
-          "text": "The legislation that parliament passed last month has already faced a constitutional challenge.",
-          "note": "Restrictive clause with 'that'. The clause identifies which legislation. 'That' could be omitted ('legislation parliament passed')."
-        },
-        {
-          "text": "The foreign minister, whose diplomatic experience spans three decades, is leading the negotiations.",
-          "note": "Non-restrictive possessive clause with 'whose'. Commas enclose it; it adds background, not identification."
-        },
-        {
-          "text": "Lahore is the city where the Pakistan Resolution was passed in 1940.",
-          "note": "Relative adverb 'where' modifies the place noun 'city'. Equivalent: 'the city in which the Pakistan Resolution was passed'."
-        },
-        {
-          "text": "The reason why the policy failed is that it lacked a proper implementation framework.",
-          "note": "Relative adverb 'why' modifies the noun 'reason'. Formal alternative: 'the reason for which the policy failed'."
-        }
-      ],
-      "commonMistakes": [
-        {
-          "wrong": "The chief justice that retired recently wrote a book.",
-          "right": "The chief justice who retired recently wrote a book.",
-          "note": "For a specific, named human antecedent that is non-restrictively identified, use 'who'. 'That' is not preferred for people in formal writing, and especially not in non-restrictive clauses."
-        },
-        {
-          "wrong": "The officer, that investigated the case, was transferred.",
-          "right": "The officer, who investigated the case, was transferred.",
-          "note": "Non-restrictive clauses (marked by commas) cannot use 'that'. Use 'who' for a human antecedent."
-        },
-        {
-          "wrong": "She is the candidate who the committee selected her for the post.",
-          "right": "She is the candidate whom the committee selected for the post.",
-          "note": "Two errors: (1) use 'whom' because it is the object of 'selected'; (2) do not repeat the pronoun 'her' — the relative pronoun already fills that slot."
-        },
-        {
-          "wrong": "This is the place where I visited last year.",
-          "right": "This is the place that / which I visited last year.",
-          "note": "'Where' introduces place clauses only when the place functions as an adverb of location (where something happens). When the place is the direct object of a verb ('visited'), use 'that' or 'which'."
-        }
-      ],
-      "practice": [
-        {
-          "question": "Which sentence correctly uses a restrictive relative clause (no commas)?",
-          "options": [
-            "The policy that the government implemented has reduced inflation.",
-            "The policy, that the government implemented, has reduced inflation.",
-            "The policy, which the government implemented has reduced inflation.",
-            "The policy which the government implemented, has reduced inflation."
-          ],
-          "answerIndex": 0,
-          "explanation": "A restrictive clause identifies which specific noun is meant and takes no commas. Option A correctly uses 'that' (appropriate for a restrictive clause) with no commas. Option B incorrectly places commas around 'that' — 'that' cannot be used in a non-restrictive clause. Options C and D have incorrect comma placement."
-        },
-        {
-          "question": "Choose the correct relative pronoun: 'The committee selected the candidate ___ qualifications were most impressive.'",
-          "options": [
-            "who",
-            "whom",
-            "whose",
-            "which"
-          ],
-          "answerIndex": 2,
-          "explanation": "The blank precedes the noun 'qualifications', indicating possession. 'Whose' is the possessive relative pronoun. 'Who' and 'whom' are not possessive; 'which' does not show possession."
-        },
-        {
-          "question": "In which sentence can the relative pronoun be omitted without creating an error?",
-          "options": [
-            "The scientist who discovered the vaccine won the Nobel Prize.",
-            "The report that shocked the committee was leaked.",
-            "The policy that the government implemented is working.",
-            "The minister whose portfolio covers finance resigned."
-          ],
-          "answerIndex": 2,
-          "explanation": "In option C, 'that' is the object of 'implemented' (the government implemented [that] policy), so it may be omitted. In A and B, 'who' and 'that' are subjects of their clauses and cannot be deleted. In D, 'whose' shows possession and cannot be omitted."
-        }
-      ],
-      "quiz": [
-        {
-          "question": "Which sentence contains a correctly punctuated non-restrictive relative clause?",
-          "options": [
-            "My sister who lives in Karachi is a doctor.",
-            "My sister, who lives in Karachi, is a doctor.",
-            "My sister, that lives in Karachi, is a doctor.",
-            "My sister who, lives in Karachi is a doctor."
-          ],
-          "answerIndex": 1,
-          "explanation": "I have only one sister (implied by 'My sister'), so the clause is non-restrictive (supplementary). It must be enclosed in commas and use 'who' not 'that'. Only option B is correct."
-        },
-        {
-          "question": "'The era ___ colonial administrators imposed draconian laws is well documented.' Which relative adverb best fills the blank?",
-          "options": [
-            "where",
-            "why",
-            "when",
-            "which"
-          ],
-          "answerIndex": 2,
-          "explanation": "'Era' is a time noun, so the relative adverb 'when' is correct. 'Where' modifies place nouns; 'why' modifies the noun 'reason'; 'which' is a relative pronoun, not a relative adverb, and would need a preposition ('during which')."
-        },
-        {
-          "question": "Which sentence uses the relative adverb 'where' correctly?",
-          "options": [
-            "This is the museum where I visited on Saturday.",
-            "This is the era where colonial rule began.",
-            "That is the reason where he resigned.",
-            "Lahore is the city where the Pakistan Resolution was signed."
-          ],
-          "answerIndex": 3,
-          "explanation": "'Where' is a relative adverb that modifies a place noun when the place functions as a location (adverbial), not as a direct object. In option D, 'Lahore is the city' — the clause 'where the Pakistan Resolution was signed' correctly indicates location (it was signed there). Option A misuses 'where' because 'museum' is the direct object of 'visited' (use 'that/which'). Option B misapplies 'where' to a time noun ('era'). Option C uses 'where' with the noun 'reason' — the correct choice there is 'why'."
-        }
-      ],
-      "summary": "An adjective clause modifies a noun using a relative pronoun (who, whom, whose, which, that) or relative adverb (when, where, why), and immediately follows its antecedent. Restrictive clauses are essential, take no commas, and may use 'that'; non-restrictive clauses add extra information, are enclosed in commas, and must use 'who' or 'which'. Use 'who' for the subject role, 'whom' for the object role, and 'whose' for possession; relative adverbs signal place, time, or reason. Correct punctuation of restrictive vs. non-restrictive clauses is one of the most frequently tested grammar points in CSS and IELTS."
-    }
+    "content": {}
   },
   {
     "id": "clauses/dependent/adverb",
@@ -11032,169 +10874,7 @@
       "purpose clause",
       "complex sentence"
     ],
-    "content": {
-      "introduction": "An adverb clause is a dependent clause that modifies a verb, an adjective, or another adverb — telling us when, where, why, how, under what condition, or to what extent something occurs. Adverb clauses are introduced by subordinating conjunctions such as although, because, if, when, since, unless, so that, and as long as. They are indispensable in CSS essay writing for expressing concession, condition, cause, and purpose, and their correct punctuation (comma when they precede the main clause) is a tested point in grammar papers. The ability to manipulate adverb clauses flexibly is a strong indicator of writing maturity.",
-      "urduExplanation": "Adverb clause ایک dependent clause ہوتا ہے جو کسی verb، adjective، یا adverb کی وضاحت کرتا ہے — یہ بتاتا ہے کہ کام کب، کہاں، کیوں، کیسے، کس حالت میں، یا کس حد تک ہوا۔ اسے subordinating conjunctions سے شروع کیا جاتا ہے جیسے although، because، if، when، since، unless، so that وغیرہ۔ اہم قاعدہ یہ ہے: اگر adverb clause جملے کے شروع میں آئے تو main clause سے پہلے comma ضروری ہے — جیسے 'Although it rained, the match continued.'۔ اگر adverb clause بعد میں آئے تو عام طور پر comma نہیں لگتا — 'The match continued although it rained.'۔ CSS اور IELTS کے مضامین میں concession (although, even though) اور condition (if, unless) کے clauses خاص طور پر اہم ہیں کیونکہ یہ دلیل کو متوازن اور پختہ بناتے ہیں۔",
-      "englishExplanation": "An adverb clause is a subordinate clause that performs the function of an adverb, typically modifying the main verb of the sentence. Every adverb clause is introduced by a subordinating conjunction that signals the semantic relationship: time (when, before, after, until, as soon as), cause/reason (because, since, as), condition (if, unless, provided that, as long as), concession/contrast (although, even though, while, whereas, despite the fact that), purpose (so that, in order that), result (so … that, such … that), and manner (as if, as though). An adverb clause can appear before or after the main clause; when it comes first (fronted), a comma separates it from the main clause. The subject of the adverb clause and the main clause may differ; however, when they are the same, the clause can often be reduced to a participial or prepositional phrase (a higher-level writing strategy). Unlike adverb clauses of condition and concession (which can be fronted for rhetorical effect), adverb clauses of result typically follow the main clause. Subordinating conjunctions bind the adverb clause to the main clause, making the adverb clause incapable of standing alone — a fragment if punctuated as a full stop.",
-      "types": [
-        {
-          "name": "Adverb Clause of Time",
-          "description": "Indicates when the main action occurs. Conjunctions: when, before, after, since, until, as soon as, whenever, while. Example: 'After the session concluded, the delegates issued a joint statement.'"
-        },
-        {
-          "name": "Adverb Clause of Cause / Reason",
-          "description": "Explains why the main action occurs. Conjunctions: because, since, as. Example: 'Because the infrastructure is outdated, industrial growth remains sluggish.' Note: 'because' gives direct cause; 'since/as' are milder and often used when the reason is already known."
-        },
-        {
-          "name": "Adverb Clause of Condition",
-          "description": "States the condition under which the main action takes place. Conjunctions: if, unless, provided (that), as long as, in case. Example: 'Unless corruption is addressed systematically, development targets will remain elusive.'"
-        },
-        {
-          "name": "Adverb Clause of Concession / Contrast",
-          "description": "Concedes a point while asserting the opposite in the main clause. Conjunctions: although, even though, though, while, whereas. Example: 'Although the GDP has grown, income inequality has widened.' The contrast is a hallmark of balanced CSS argumentation."
-        },
-        {
-          "name": "Adverb Clause of Purpose",
-          "description": "States the goal of the main action. Conjunctions: so that, in order that. Example: 'The government subsidised fertilisers so that small farmers could afford them.'"
-        },
-        {
-          "name": "Adverb Clause of Result",
-          "description": "States the outcome or consequence of the main action. Pattern: 'so + adjective/adverb + that' or 'such + noun phrase + that'. Example: 'The disaster was so severe that entire districts were evacuated.'"
-        },
-        {
-          "name": "Adverb Clause of Manner",
-          "description": "Describes how the action is performed, often implying a hypothetical comparison. Conjunctions: as, as if, as though. Example: 'He spoke as though he had witnessed the event personally.'"
-        }
-      ],
-      "rules": [
-        "Place a comma after a fronted adverb clause (one that precedes the main clause): 'If the government reforms taxation, revenue will increase.' No comma is required when the adverb clause follows the main clause: 'Revenue will increase if the government reforms taxation.'",
-        "An adverb clause cannot stand alone as a sentence — it is a fragment. Writing 'Because corruption is rampant.' as a sentence is a serious error in formal writing.",
-        "Use 'although / even though' for factual concession and 'even if' for hypothetical concession: 'Although he tried (= he did try), he failed.' vs. 'Even if he tries (= whether or not he does), he may fail.'",
-        "Do not use 'because' and 'so' in the same sentence to express the same relationship (double-marking): write either 'Because it rained, the match was cancelled.' OR 'It rained, so the match was cancelled.' — not 'Because it rained so the match was cancelled.'",
-        "In zero conditional sentences (general truth), use simple present in both clauses: 'If water reaches 100°C, it boils.' In first conditional (real future), use present in the 'if' clause and will/can in the main clause: 'If parliament passes the bill, it will become law.'",
-        "Use 'unless' to mean 'if not'; avoid writing 'unless … not': 'Unless the reform is implemented (= if the reform is not implemented), the crisis will deepen.' Adding 'not' to 'unless' creates a double negative.",
-        "After time conjunctions (when, after, before, until, as soon as) referring to the future, use the present tense (not 'will') in the adverb clause: 'We will proceed after the committee releases its report.' (not 'will release')."
-      ],
-      "examples": [
-        {
-          "text": "Before the budget session began, the finance minister consulted all provincial governments.",
-          "note": "Adverb clause of time, fronted. Comma follows the adverb clause."
-        },
-        {
-          "text": "Pakistan cannot achieve sustainable development unless it addresses the education deficit.",
-          "note": "Adverb clause of condition with 'unless' (= if it does not address). Placed after the main clause — no comma."
-        },
-        {
-          "text": "Although significant progress has been made in polio eradication, the country has not yet been certified polio-free.",
-          "note": "Adverb clause of concession, fronted. Comma required. Demonstrates balanced argument — a CSS essay hallmark."
-        },
-        {
-          "text": "The government increased defence spending so that border security could be strengthened.",
-          "note": "Adverb clause of purpose with 'so that'. Follows the main clause."
-        },
-        {
-          "text": "The relief operation was so poorly coordinated that thousands of displaced families received no assistance.",
-          "note": "Adverb clause of result. Pattern: 'so + adjective + that'."
-        },
-        {
-          "text": "Whereas developed nations export high-value manufactured goods, Pakistan's exports remain commodity-dependent.",
-          "note": "Adverb clause of contrast with 'whereas', fronted. Comma required."
-        }
-      ],
-      "commonMistakes": [
-        {
-          "wrong": "Because the election was controversial. The results were disputed.",
-          "right": "Because the election was controversial, the results were disputed.",
-          "note": "An adverb clause cannot stand alone as a sentence. Attach it to the main clause with a comma."
-        },
-        {
-          "wrong": "Because the roads were flooded so the army deployed boats.",
-          "right": "Because the roads were flooded, the army deployed boats.",
-          "note": "Double-marking of cause-and-effect: 'because' and 'so' cannot both appear in the same sentence expressing the same relationship. Use one or the other."
-        },
-        {
-          "wrong": "Unless you don't submit the form, you won't be registered.",
-          "right": "Unless you submit the form, you won't be registered.",
-          "note": "'Unless' already means 'if not'; adding 'don't' creates a double negative that reverses the intended meaning."
-        },
-        {
-          "wrong": "We will leave after the ceremony will end.",
-          "right": "We will leave after the ceremony ends.",
-          "note": "After time conjunctions referring to the future, the adverb clause uses simple present tense, not 'will + verb'."
-        }
-      ],
-      "practice": [
-        {
-          "question": "Which sentence is punctuated correctly?",
-          "options": [
-            "Although the reforms were necessary the parliament resisted them.",
-            "Although the reforms were necessary, the parliament resisted them.",
-            "The parliament resisted them, although the reforms were necessary.",
-            "Although, the reforms were necessary, the parliament resisted them."
-          ],
-          "answerIndex": 1,
-          "explanation": "When the adverb clause is fronted (comes before the main clause), a comma must follow it. Option B correctly places the comma after the adverb clause. Option C is also grammatically acceptable (no comma needed when the adverb clause follows), but option B is the one with a fronted clause that needs a comma. Option A omits the required comma; option D inserts an incorrect comma after 'Although'."
-        },
-        {
-          "question": "Identify the type of adverb clause in: 'The government subsidised fertilisers so that crop yields could improve.'",
-          "options": [
-            "Clause of condition",
-            "Clause of concession",
-            "Clause of purpose",
-            "Clause of result"
-          ],
-          "answerIndex": 2,
-          "explanation": "'So that' introduces a clause of purpose — it states the goal or intention of the main action (subsidising fertilisers). A result clause would use the pattern 'so … that' with an adjective or adverb between 'so' and 'that'."
-        },
-        {
-          "question": "Which sentence correctly applies the rule for time conjunctions referring to the future?",
-          "options": [
-            "We will announce the results after the commission will complete its review.",
-            "We will announce the results after the commission completes its review.",
-            "We announce the results after the commission will complete its review.",
-            "We will announce the results after the commission completed its review."
-          ],
-          "answerIndex": 1,
-          "explanation": "After time conjunctions (after, when, before, until) referring to the future, the adverb clause uses simple present tense. Option B correctly uses 'completes' (simple present) while retaining 'will announce' in the main clause."
-        }
-      ],
-      "quiz": [
-        {
-          "question": "Which of the following is an adverb clause of concession?",
-          "options": [
-            "… because the policy lacked funding",
-            "… so that the deficit could be reduced",
-            "… even though the opposition voted against it",
-            "… if the senate approves the legislation"
-          ],
-          "answerIndex": 2,
-          "explanation": "'Even though' signals concession — it acknowledges an opposing fact while the main clause asserts a contrasting truth. 'Because' signals cause; 'so that' signals purpose; 'if' signals condition."
-        },
-        {
-          "question": "Which sentence contains a FRAGMENT error?",
-          "options": [
-            "Although the country faces debt, growth continues.",
-            "Unless the government acts, the crisis will worsen.",
-            "Since reforms are essential for progress.",
-            "The bill passed after months of deliberation."
-          ],
-          "answerIndex": 2,
-          "explanation": "Option C is an adverb clause (introduced by 'Since') punctuated as a complete sentence — a fragment error. It has no main clause. Options A, B, and D are complete sentences with both a main clause and (where present) a correctly attached dependent clause."
-        },
-        {
-          "question": "Select the sentence that avoids the double-marking error:",
-          "options": [
-            "Because inflation rose sharply so the central bank hiked rates.",
-            "Because inflation rose sharply, the central bank hiked rates.",
-            "Inflation rose sharply because so the central bank hiked rates.",
-            "Due to inflation rose sharply, so the central bank hiked rates."
-          ],
-          "answerIndex": 1,
-          "explanation": "Option B correctly uses 'because' alone to signal cause-and-effect. Option A uses both 'because' and 'so' — double-marking the same causal relationship. Options C and D are structurally incoherent."
-        }
-      ],
-      "summary": "An adverb clause is a subordinate clause that modifies a verb, adjective, or adverb, and is introduced by a subordinating conjunction that signals its semantic role: time, cause, condition, concession, purpose, result, or manner. A fronted adverb clause (before the main clause) requires a comma; when it follows the main clause no comma is normally needed. Key errors to avoid: treating an adverb clause as a standalone sentence (fragment), double-marking cause with both 'because' and 'so', using 'unless … not' (double negative), and placing 'will' in a future time clause. Flexible command of adverb clauses — especially condition and concession — is essential for achieving high scores in CSS, PMS, and IELTS written components."
-    }
+    "content": {}
   },
   {
     "id": "clauses/independent",
@@ -11213,156 +10893,7 @@
       "semicolon",
       "coordinating conjunction"
     ],
-    "content": {
-      "introduction": "An independent clause is a group of words that contains a subject and a finite verb and expresses a complete thought — it can stand alone as a sentence. Understanding independent clauses is foundational for CSS and IELTS writing because every grammatically correct sentence must contain at least one. Examiners deduct marks for comma splices and run-on sentences, both of which arise from mishandling independent clauses. Mastering how to join or separate them correctly raises both accuracy and band scores.",
-      "urduExplanation": "ایک independent clause وہ گروہِ الفاظ ہوتا ہے جس میں subject اور finite verb دونوں موجود ہوں اور وہ ایک مکمل خیال بیان کرے۔ یہ اکیلے ایک جملہ بن سکتا ہے، جیسے 'Pakistan is a developing country.'۔ جب دو independent clauses کو غلط طریقے سے صرف comma سے جوڑا جائے تو اسے comma splice کہتے ہیں، جو ایک عام غلطی ہے۔ دو independent clauses کو FANBOYS (for, and, nor, but, or, yet, so) یا semicolon کے ذریعے صحیح طریقے سے جوڑا جا سکتا ہے۔ CSS اور IELTS میں اعلیٰ نمبر حاصل کرنے کے لیے ضروری ہے کہ آپ independent clauses کو درست طریقے سے پہچانیں اور استعمال کریں۔",
-      "englishExplanation": "An independent clause — also called a main clause — must have three elements: a subject (who or what the clause is about), a finite verb (a verb marked for tense and agreement), and a complete thought that does not leave the reader expecting more information. A single independent clause forms a simple sentence; two or more independent clauses joined correctly form a compound sentence. The two principal ways to join independent clauses are: (1) a comma followed by a coordinating conjunction (FANBOYS: for, and, nor, but, or, yet, so), or (2) a semicolon, optionally followed by a conjunctive adverb such as 'however' or 'therefore' and a comma. Joining two independent clauses with only a comma (no conjunction) creates a comma splice — a serious grammatical error. Writing two independent clauses with no punctuation or conjunction at all creates a run-on (fused) sentence. Both errors are penalised in formal examinations including CSS précis, IELTS Task 2, and PMS essays.",
-      "types": [
-        {
-          "name": "Simple Sentence (Single Independent Clause)",
-          "description": "A sentence consisting of exactly one independent clause with one subject and one predicate. Example: 'The government implemented new policies.'"
-        },
-        {
-          "name": "Compound Sentence (Two Independent Clauses)",
-          "description": "Two independent clauses joined by a comma + coordinating conjunction or by a semicolon. Example: 'Inflation rose sharply, but the central bank intervened.'"
-        },
-        {
-          "name": "Coordinating Conjunction (FANBOYS) Join",
-          "description": "Using for, and, nor, but, or, yet, or so preceded by a comma to link two independent clauses. The comma is placed before the conjunction, not after."
-        },
-        {
-          "name": "Semicolon Join",
-          "description": "A semicolon alone, or a semicolon + conjunctive adverb + comma, can join two closely related independent clauses. Example: 'The bill passed; however, it faced strong opposition.'"
-        },
-        {
-          "name": "Compound-Complex Sentence",
-          "description": "Contains at least two independent clauses AND at least one dependent clause, demonstrating the highest level of syntactic control valued in CSS essays."
-        }
-      ],
-      "rules": [
-        "Every independent clause must have a subject and a finite (tensed) verb; a participial phrase alone does not form an independent clause.",
-        "Never join two independent clauses with only a comma — this creates a comma splice, which is a grammatical error.",
-        "Use a comma BEFORE (not after) the coordinating conjunction when joining two independent clauses (e.g., 'She studied hard, so she passed.').",
-        "A semicolon can join two independent clauses only when they are closely related in meaning; do not capitalise the word after the semicolon unless it is a proper noun.",
-        "Conjunctive adverbs (however, therefore, moreover, nevertheless) are NOT coordinating conjunctions; when used to join two independent clauses they require a semicolon before and a comma after.",
-        "A sentence may contain multiple independent clauses but must not become a run-on; use appropriate punctuation or conjunctions to separate each clause."
-      ],
-      "examples": [
-        {
-          "text": "Pakistan ratified the Paris Agreement, and it pledged to reduce carbon emissions by 50 percent.",
-          "note": "Two independent clauses joined by a comma + 'and' (coordinating conjunction). Remove the comma and 'and' and both halves still stand alone."
-        },
-        {
-          "text": "The judiciary upheld the Constitution; the government was obliged to comply.",
-          "note": "Semicolon joins two closely related independent clauses without any conjunction."
-        },
-        {
-          "text": "Corruption weakens institutions; therefore, accountability mechanisms must be strengthened.",
-          "note": "Semicolon + conjunctive adverb 'therefore' + comma. 'Therefore' is NOT a coordinating conjunction."
-        },
-        {
-          "text": "She prepared meticulously for the CSS examination, yet she found the essay paper challenging.",
-          "note": "'Yet' is a coordinating conjunction (FANBOYS). Comma precedes it."
-        },
-        {
-          "text": "Literacy rates have improved significantly over the past decade.",
-          "note": "A single independent clause forming a complete simple sentence — one subject ('rates'), one finite verb ('have improved')."
-        }
-      ],
-      "commonMistakes": [
-        {
-          "wrong": "The economy is recovering, the stock market is rising.",
-          "right": "The economy is recovering, and the stock market is rising.",
-          "note": "Comma splice: two independent clauses cannot be joined by a comma alone; a coordinating conjunction is required."
-        },
-        {
-          "wrong": "The minister delivered the speech however the audience was unimpressed.",
-          "right": "The minister delivered the speech; however, the audience was unimpressed.",
-          "note": "'However' is a conjunctive adverb, not a coordinating conjunction. It requires a semicolon before it and a comma after it."
-        },
-        {
-          "wrong": "Running through the park every morning makes him healthy.",
-          "right": "He runs through the park every morning, which keeps him healthy.",
-          "note": "Not an error per se, but a frequent confusion: 'Running through the park' is a gerund phrase acting as subject, not an independent clause — there is no finite verb clause here. (Correct as written but students misidentify gerund phrases as independent clauses.)"
-        },
-        {
-          "wrong": "She studied hard for the exam but she failed.",
-          "right": "She studied hard for the exam, but she failed.",
-          "note": "A comma is required before the coordinating conjunction 'but' when both clauses are independent."
-        }
-      ],
-      "practice": [
-        {
-          "question": "Which of the following is a comma splice?",
-          "options": [
-            "The prime minister addressed the nation, and peace was restored.",
-            "The prime minister addressed the nation, peace was restored.",
-            "The prime minister addressed the nation; peace was restored.",
-            "The prime minister addressed the nation after peace was restored."
-          ],
-          "answerIndex": 1,
-          "explanation": "Option B joins two independent clauses with only a comma and no coordinating conjunction — the definition of a comma splice. Options A and C use correct joining methods; option D uses a subordinating conjunction, making it a complex sentence."
-        },
-        {
-          "question": "Which sentence correctly joins two independent clauses?",
-          "options": [
-            "Inflation rose sharply however the bank intervened.",
-            "Inflation rose sharply, however the bank intervened.",
-            "Inflation rose sharply; however, the bank intervened.",
-            "Inflation rose sharply; however the bank intervened."
-          ],
-          "answerIndex": 2,
-          "explanation": "When a conjunctive adverb like 'however' connects two independent clauses, a semicolon must precede it and a comma must follow it. Only option C has both."
-        },
-        {
-          "question": "Identify the type of sentence: 'Pakistan exports textiles, yet it imports machinery.'",
-          "options": [
-            "Simple sentence",
-            "Complex sentence",
-            "Compound-complex sentence",
-            "Compound sentence"
-          ],
-          "answerIndex": 3,
-          "explanation": "The sentence contains two independent clauses ('Pakistan exports textiles' and 'it imports machinery') joined by the coordinating conjunction 'yet' — the definition of a compound sentence."
-        }
-      ],
-      "quiz": [
-        {
-          "question": "Which word, when inserted in the blank, correctly joins the two independent clauses? 'The bill was controversial ___ it passed with a two-thirds majority.'",
-          "options": [
-            "because",
-            "although",
-            ", yet",
-            "since"
-          ],
-          "answerIndex": 2,
-          "explanation": "', yet' (comma + coordinating conjunction) correctly joins two independent clauses. Options A, B, and D are subordinating conjunctions, which would make the second clause dependent — and the resulting sentence would then have only one independent clause."
-        },
-        {
-          "question": "How many independent clauses does this sentence contain? 'Although poverty persists, literacy has improved, and infant mortality has declined.'",
-          "options": [
-            "Three",
-            "One",
-            "Two",
-            "None"
-          ],
-          "answerIndex": 2,
-          "explanation": "'Although poverty persists' is a dependent clause. 'Literacy has improved' and 'infant mortality has declined' are both independent clauses joined by 'and'. So the sentence contains two independent clauses."
-        },
-        {
-          "question": "Which correction best fixes the run-on sentence: 'The candidate scored high marks he was selected for the interview.'?",
-          "options": [
-            "The candidate scored high marks, he was selected for the interview.",
-            "The candidate scored high marks; he was selected for the interview.",
-            "The candidate scored high marks and, he was selected for the interview.",
-            "The candidate scored high marks he was selected, for the interview."
-          ],
-          "answerIndex": 1,
-          "explanation": "A semicolon correctly separates two closely related independent clauses. Option A creates a comma splice; option C misplaces the comma; option D moves the comma illogically."
-        }
-      ],
-      "summary": "An independent clause is the grammatical backbone of every English sentence: it must have a subject, a finite verb, and express a complete thought. Two independent clauses may be joined by a comma + coordinating conjunction (FANBOYS) or by a semicolon (with or without a conjunctive adverb). Joining them with only a comma produces a comma splice; writing them with no connector at all produces a run-on — both are penalised in CSS, PMS, and IELTS. Consistent command of independent clause boundaries is one of the clearest signals of grammatical maturity in formal writing."
-    }
+    "content": {}
   },
   {
     "id": "clauses/dependent/noun",
@@ -11381,160 +10912,7 @@
       "embedded question",
       "subordinator"
     ],
-    "content": {
-      "introduction": "A noun clause is a dependent clause that functions exactly as a noun does — it can be a subject, direct object, indirect object, subject complement, or object of a preposition. Noun clauses are introduced by subordinators such as that, whether, if, and wh-words (who, what, which, when, where, why, how). They appear heavily in CSS comprehension passages, IELTS Reading, and academic essay writing, where complex ideas are embedded inside larger sentences. Recognising and using noun clauses correctly signals sophisticated grammatical control.",
-      "urduExplanation": "Noun clause ایک dependent clause ہوتا ہے جو جملے میں noun کا کام کرتا ہے — یعنی یہ subject، object، یا complement کی جگہ آ سکتا ہے۔ اسے that، whether، if، اور wh-words (who، what، which، when، where، why، how) سے شروع کیا جاتا ہے۔ مثال کے طور پر: 'What the government decides will affect millions.' اس جملے میں 'What the government decides' ایک noun clause ہے جو subject کا کام کر رہا ہے۔ CSS اور IELTS کے مضامین میں noun clauses کا استعمال جملوں کو زیادہ علمی اور پیچیدہ بناتا ہے، جو نمبر بڑھانے میں مددگار ہے۔ یاد رہے کہ noun clause کے اندر word order براہ راست سوال والا نہیں ہوتا — 'I know where he lives.' نہ کہ 'I know where does he live.'۔",
-      "englishExplanation": "A noun clause performs the syntactic role of a noun phrase within a sentence, yet it has the internal structure of a clause — containing its own subject and verb. Noun clauses are introduced by: (a) the subordinator 'that' (often omissible in informal contexts), (b) 'whether' or 'if' for yes/no embedded questions, and (c) wh-words (who, whom, whose, what, which, when, where, why, how) for content embedded questions. A critical rule is that the word order inside a noun clause is declarative (subject + verb), not interrogative — this is the most common student error. They can occupy five positions in a sentence: subject, direct object, subject complement (predicate nominative), object of a preposition, and appositive. The subordinator 'that' may be deleted when the clause is a direct object, but it must be retained when the clause is the subject or follows certain verbs of reporting. In academic writing, noun clauses allow writers to embed claims, findings, and reported speech elegantly within complex sentences.",
-      "types": [
-        {
-          "name": "Noun Clause as Subject",
-          "description": "The entire clause functions as the subject of the main verb. Example: 'What the commission found shocked the nation.' The clause 'What the commission found' is the subject of 'shocked'."
-        },
-        {
-          "name": "Noun Clause as Direct Object",
-          "description": "The most frequent function — the clause is the object of a transitive verb. Example: 'The analyst believes (that) inflation will moderate.' The 'that' is often omissible here."
-        },
-        {
-          "name": "Noun Clause as Subject Complement",
-          "description": "Follows a linking verb and renames or describes the subject. Example: 'The issue is that accountability is absent.' 'That accountability is absent' complements 'the issue'."
-        },
-        {
-          "name": "Noun Clause as Object of a Preposition",
-          "description": "Follows a preposition as its object. Example: 'The policy depends on whether the bill passes.' Note: 'if' cannot replace 'whether' after a preposition."
-        },
-        {
-          "name": "Noun Clause as Appositive",
-          "description": "Renames an adjacent noun. Example: 'The rumour that he had resigned proved false.' The clause explains the noun 'rumour'."
-        }
-      ],
-      "rules": [
-        "The word order inside a noun clause is always declarative (Subject + Verb + Object), never the inverted order used in direct questions: write 'I know where the office is' — NOT 'I know where is the office.'",
-        "Use 'whether' (not 'if') when the noun clause is the subject of the sentence, comes after a preposition, or immediately follows certain verbs (e.g., discuss, decide, wonder): 'Whether he attends is irrelevant.' / 'It depends on whether funding is available.'",
-        "The subordinator 'that' may be omitted when the noun clause is a direct object but must be retained when (a) the clause is the subject, (b) it follows a preposition, or (c) the clause is far from the main verb: 'It is obvious that hard work pays.' (cannot delete 'that' here).",
-        "When a noun clause is the subject, it is singular in agreement even if it contains plural nouns: 'What students need is better resources.' (verb is 'is', not 'are').",
-        "Do not confuse noun clause subordinators with relative pronouns: 'what' in a noun clause has no antecedent (it includes its own noun meaning), whereas 'which' or 'that' in a relative clause refers back to a stated noun.",
-        "In reported speech, tense usually shifts back (sequence of tenses rule): 'She said that she was preparing for the exam.' (not 'is preparing' after past-tense 'said', in formal writing)."
-      ],
-      "examples": [
-        {
-          "text": "What the investigative committee revealed alarmed the entire parliament.",
-          "note": "Noun clause as subject. 'What the committee revealed' = the subject of 'alarmed'. Word order is declarative."
-        },
-        {
-          "text": "Most economists believe that a single-digit inflation rate is achievable.",
-          "note": "Noun clause as direct object of 'believe'. 'That' is retained for formality — acceptable to omit in speech."
-        },
-        {
-          "text": "The fundamental challenge is that institutions lack the capacity to enforce the law.",
-          "note": "Noun clause as subject complement after the linking verb 'is'."
-        },
-        {
-          "text": "The panel debated whether the election results should be accepted without an audit.",
-          "note": "'Whether' introduces a yes/no embedded question functioning as direct object of 'debated'. 'If' would also be possible here but 'whether' is preferred in formal registers."
-        },
-        {
-          "text": "The government's stance depends on what the international community decides.",
-          "note": "Noun clause as object of the preposition 'on'. Note declarative word order: 'what the community decides', not 'what does the community decide'."
-        },
-        {
-          "text": "The allegation that the minister had accepted bribes was never proven.",
-          "note": "Noun clause as appositive explaining 'allegation'. 'That' cannot be omitted in this appositive function."
-        }
-      ],
-      "commonMistakes": [
-        {
-          "wrong": "I wonder where does the prime minister stand on this issue.",
-          "right": "I wonder where the prime minister stands on this issue.",
-          "note": "Inside a noun clause the word order is declarative, not interrogative. Remove the auxiliary inversion used in direct questions."
-        },
-        {
-          "wrong": "It depends on if the senate approves the bill.",
-          "right": "It depends on whether the senate approves the bill.",
-          "note": "'If' cannot serve as the object of a preposition. Use 'whether' when the noun clause follows a preposition."
-        },
-        {
-          "wrong": "That he will succeed are uncertain.",
-          "right": "That he will succeed is uncertain.",
-          "note": "A noun clause used as subject takes a singular verb regardless of the internal content of the clause."
-        },
-        {
-          "wrong": "The report confirmed what did the auditors find.",
-          "right": "The report confirmed what the auditors found.",
-          "note": "Again, no question inversion inside a noun clause. Use declarative order and the correct tense (past 'found')."
-        }
-      ],
-      "practice": [
-        {
-          "question": "Identify the function of the noun clause in: 'The commission revealed that billions had been embezzled.'",
-          "options": [
-            "Subject",
-            "Direct object",
-            "Subject complement",
-            "Object of a preposition"
-          ],
-          "answerIndex": 1,
-          "explanation": "'That billions had been embezzled' is the object of the transitive verb 'revealed' — answering the question 'Revealed what?' Hence it is the direct object."
-        },
-        {
-          "question": "Which sentence uses the correct word order inside the noun clause?",
-          "options": [
-            "She asked where was the examination centre.",
-            "She asked where the examination centre was.",
-            "She asked where is the examination centre.",
-            "She asked where examination centre the was."
-          ],
-          "answerIndex": 1,
-          "explanation": "Inside a noun clause the word order must be declarative (subject + verb): 'where the examination centre was'. The other options use interrogative inversion, which is incorrect."
-        },
-        {
-          "question": "In 'The truth is that institutional reform takes decades', the noun clause functions as:",
-          "options": [
-            "Subject",
-            "Direct object",
-            "Object of a preposition",
-            "Subject complement"
-          ],
-          "answerIndex": 3,
-          "explanation": "'That institutional reform takes decades' follows the linking verb 'is' and renames or describes the subject 'the truth' — making it a subject complement (predicate nominative). It is not the subject itself, nor a direct object, nor the object of a preposition."
-        }
-      ],
-      "quiz": [
-        {
-          "question": "In 'What motivates civil servants matters enormously to policymakers', the noun clause functions as:",
-          "options": [
-            "Direct object",
-            "Object of a preposition",
-            "Subject",
-            "Appositive"
-          ],
-          "answerIndex": 2,
-          "explanation": "'What motivates civil servants' is the subject of the main verb 'matters'. It occupies the subject position of the sentence."
-        },
-        {
-          "question": "Which of the following sentences is grammatically correct?",
-          "options": [
-            "The fact is whether he failed.",
-            "The issue is that corruption is systemic.",
-            "The problem is what is he doing.",
-            "The truth is if she lied."
-          ],
-          "answerIndex": 1,
-          "explanation": "'The issue is that corruption is systemic' — noun clause with 'that' as subject complement is correct. Option A misuses 'whether' (which signals choice, not identification). Options C and D use interrogative inversion and wrong subordinators respectively."
-        },
-        {
-          "question": "The reporter asked _____ the accused had confessed to the charges.",
-          "options": [
-            "that",
-            "what",
-            "whether",
-            "which"
-          ],
-          "answerIndex": 2,
-          "explanation": "The embedded question is a yes/no type (had the accused confessed or not?), so 'whether' is the correct subordinator. 'That' introduces a declarative content clause; 'what' and 'which' are used for content (wh-) questions, not yes/no questions."
-        }
-      ],
-      "summary": "A noun clause is a dependent clause that fills a noun slot: subject, direct object, subject complement, object of a preposition, or appositive. It is introduced by 'that', 'whether/if', or a wh-word, and its internal word order is always declarative — never inverted as in a direct question. Use 'whether' (not 'if') after prepositions and when the clause is a subject; 'that' may be omitted only in the direct-object position. Precise use of noun clauses is a hallmark of academic writing and is directly rewarded in CSS, IELTS, and PMS written components."
-    }
+    "content": {}
   },
   {
     "id": "phrases/adjective",
@@ -11554,154 +10932,77 @@
       "comparison"
     ],
     "content": {
-      "introduction": "An adjective phrase is a group of words headed by an adjective that together modify a noun or function as a subject/object complement. It may include intensifiers, adverbs of degree, or complements that follow the adjective. In CSS/PMS sentence-correction questions and IELTS writing, adjective phrases contribute to precise description and sentence variety. Like all phrases, it contains no subject–verb pair.",
-      "urduExplanation": "Adjective phrase الفاظ کا وہ گروہ ہے جس کے مرکز میں ایک adjective ہو اور باقی الفاظ (جیسے intensifiers) اسے اور طاقتور بنائیں۔ مثلاً 'extremely proud of his achievement' ایک adjective phrase ہے جہاں 'proud' head adjective ہے۔ یہ phrase کسی noun کو modify کر سکتا ہے (attributive) یا subject complement کے طور پر آ سکتا ہے (predicative)۔ اس میں اپنا subject اور verb نہیں ہوتا — یہی اسے clause سے الگ کرتا ہے۔ CSS کے امتحانات میں adjective phrases کی صحیح پہچان sentence analysis کے سوالات میں مددگار ہوتی ہے۔",
-      "englishExplanation": "An adjective phrase (AdjP) has a head adjective as its central element, which may be preceded by degree adverbs (very, quite, rather, extremely) and followed by complements such as prepositional phrases ('proud of her work') or infinitive phrases ('eager to learn'). Adjective phrases perform two main functions: attributive (directly before a noun: 'a remarkably talented student') and predicative (after a linking verb as subject complement: 'She is remarkably talented'). Some adjective phrases can only be used predicatively ('She is afraid'; *'an afraid woman' is ungrammatical). Others are only attributive ('the main reason'; *'the reason is main' is ungrammatical). Degree adverbs within the phrase (intensifiers) do not themselves form a separate phrase but are pre-modifiers of the adjective head. Adjective phrases must not be confused with adjective clauses (relative clauses), which contain a subject and verb.",
-      "types": [
-        {
-          "name": "Simple Adjective Phrase",
-          "description": "A single adjective or adjective + intensifier: 'tall', 'very tall', 'quite impressive'."
-        },
-        {
-          "name": "Adjective Phrase with Prepositional Complement",
-          "description": "The head adjective is followed by a prepositional phrase: 'proud of her achievement', 'fond of poetry', 'guilty of negligence'."
-        },
-        {
-          "name": "Adjective Phrase with Infinitive Complement",
-          "description": "The head adjective is followed by an infinitive phrase: 'eager to serve', 'difficult to understand', 'ready to leave'."
-        },
-        {
-          "name": "Comparative Adjective Phrase",
-          "description": "Uses comparative form + than: 'more competent than her peers', 'far better than expected'."
-        },
-        {
-          "name": "Superlative Adjective Phrase",
-          "description": "Uses superlative form: 'the most comprehensive report ever written', 'the least expensive option available'."
-        }
-      ],
+      "introduction": "An adjective phrase is a group of words that works like an adjective and gives more information about a noun or pronoun.",
+      "urduExplanation": "Adjective Phrase (صفتی فقرہ) الفاظ کا ایسا مجموعہ ہے جو جملے میں Adjective (صفت) کی طرح کام کرتا ہے اور کسی noun یا pronoun کے بارے میں مزید معلومات دیتا ہے۔",
       "rules": [
-        "The head adjective is the obligatory core of an adjective phrase; degree adverbs and complements are optional modifiers.",
-        "Degree adverbs (very, quite, rather, extremely, somewhat) always precede the head adjective, never follow it.",
-        "Some adjectives are exclusively predicative (afraid, asleep, awake, alive, alone) and cannot be used attributively before a noun.",
-        "Some adjectives are exclusively attributive (main, utter, mere, sheer) and cannot be used predicatively after a linking verb.",
-        "When an adjective phrase acts as a post-modifier of a noun, it typically follows the noun: 'the best solution available', 'a method easy to apply'.",
-        "In comparisons, 'more/most' is used with adjectives of two or more syllables; '-er/-est' is used with one-syllable and most two-syllable adjectives."
+        "An adjective phrase describes a noun or pronoun.",
+        "It can describe quality, appearance, condition, or another characteristic.",
+        "Find the noun or pronoun that the phrase describes.",
+        "An adjective phrase may appear before or after the noun it describes.",
+        "The phrase can act as a complement after a linking verb."
       ],
       "examples": [
         {
-          "text": "The officer was extremely diligent in his duties.",
-          "note": "'Extremely diligent' is the adjective phrase (predicative), serving as subject complement after the linking verb 'was'. Head = 'diligent'."
+          "text": "The girl **with long hair** is my sister.",
+          "urdu": "لمبے بالوں والی لڑکی میری بہن ہے۔",
+          "note": "The bold words describe the noun **girl**."
         },
         {
-          "text": "She presented a remarkably well-structured argument.",
-          "note": "'Remarkably well-structured' is an attributive adjective phrase modifying 'argument'."
+          "text": "He is a man **full of courage**.",
+          "urdu": "وہ ہمت سے بھرپور آدمی ہے۔",
+          "note": "The bold words describe the noun **man**."
         },
         {
-          "text": "He is proud of his country's progress.",
-          "note": "'Proud of his country's progress' — adjective phrase with prepositional complement, functioning predicatively."
+          "text": "I bought a dress **very suitable for the party**.",
+          "urdu": "میں نے ایک ایسا لباس خریدا جو پارٹی کے لیے بہت موزوں ہے۔",
+          "note": "The bold words give more information about the noun **dress**."
         },
         {
-          "text": "The candidate was eager to demonstrate her skills.",
-          "note": "'Eager to demonstrate her skills' — adjective + infinitive complement, predicative adjective phrase."
+          "text": "Someone **very close to me** called today.",
+          "urdu": "میرے بہت قریبی کسی شخص نے آج فون کیا۔",
+          "note": "The phrase describes the pronoun **someone**."
         },
         {
-          "text": "This is the most challenging exam I have ever taken.",
-          "note": "'The most challenging' is a superlative adjective phrase pre-modifying 'exam'."
+          "text": "We visited a place **rich in history**.",
+          "urdu": "ہم نے تاریخ سے مالا مال جگہ کا دورہ کیا۔",
+          "note": "The phrase describes the noun **place**."
+        },
+        {
+          "text": "She is **very happy with her results**.",
+          "urdu": "وہ اپنے نتائج سے بہت خوش ہے۔",
+          "note": "The phrase acts as a complement after the linking verb **is**."
+        },
+        {
+          "text": "She lives in a house **full of beautiful paintings**.",
+          "urdu": "وہ خوبصورت پینٹنگز سے بھرے گھر میں رہتی ہے۔",
+          "note": "The phrase describes the noun **house** and adds information."
         }
       ],
       "commonMistakes": [
         {
-          "wrong": "She is more prettier than her sister.",
-          "right": "She is prettier than her sister.",
-          "note": "Double comparative: 'more' and '-er' cannot both be used. 'Pretty' takes '-er' in comparative."
+          "wrong": "The girl with long hairs is my sister.",
+          "right": "The girl with long hair is my sister.",
+          "urdu": "لمبے بالوں والی لڑکی میری بہن ہے۔",
+          "note": "In this expression, the uncountable noun **hair** is normally used without plural **s**."
         },
         {
-          "wrong": "He is an afraid man.",
-          "right": "He is afraid.",
-          "note": "'Afraid' is a predicative-only adjective; it cannot be placed attributively before a noun."
-        },
-        {
-          "wrong": "She gave a very unique answer.",
-          "right": "She gave a unique answer.",
-          "note": "'Unique' is an absolute adjective (it cannot be graded); 'very unique' is illogical."
-        },
-        {
-          "wrong": "The main reason is not main anymore.",
-          "right": "The main reason is no longer relevant.",
-          "note": "'Main' is an attributive-only adjective and cannot be used as a predicative complement."
+          "wrong": "She is very happily with her results.",
+          "right": "She is very happy with her results.",
+          "urdu": "وہ اپنے نتائج سے بہت خوش ہے۔",
+          "note": "After the linking verb **is**, use the adjective **happy**, not the adverb **happily**."
         }
       ],
-      "practice": [
-        {
-          "question": "Identify the adjective phrase in: 'The minister seemed deeply concerned about the crisis.'",
-          "options": [
-            "The minister",
-            "deeply concerned about the crisis",
-            "seemed deeply",
-            "about the crisis"
-          ],
-          "answerIndex": 1,
-          "explanation": "'Deeply concerned about the crisis' is the adjective phrase (predicative complement of 'seemed'): degree adverb 'deeply' + head adjective 'concerned' + prepositional complement 'about the crisis'."
-        },
-        {
-          "question": "Which sentence contains an error in the use of an adjective phrase?",
-          "options": [
-            "She is very fond of classical music.",
-            "He is the most capable officer in the department.",
-            "The child is alone in the house.",
-            "He is the most tallest student."
-          ],
-          "answerIndex": 3,
-          "explanation": "'Most tallest' is a double superlative. Use either 'tallest' or 'most tall' (though 'tallest' is standard for one-syllable adjectives)."
-        },
-        {
-          "question": "Which adjective can ONLY be used predicatively (after a linking verb), not attributively (before a noun)?",
-          "options": [
-            "main",
-            "utter",
-            "asleep",
-            "former"
-          ],
-          "answerIndex": 2,
-          "explanation": "'Asleep' is predicative-only: 'The baby is asleep' (correct); 'an asleep baby' (incorrect). 'Main', 'utter', and 'former' are attributive-only."
-        }
+      "examTips": [
+        "Ask: “Which noun or pronoun does this group of words describe?”",
+        "If it describes a noun or pronoun, it may be an Adjective Phrase.",
+        "Separate the phrase from the noun it modifies when identifying its function."
       ],
-      "quiz": [
-        {
-          "question": "In 'It is difficult to master all the rules', 'difficult to master all the rules' is an adjective phrase functioning as:",
-          "options": [
-            "attributive modifier of a noun",
-            "adverbial modifier",
-            "subject complement after a linking verb",
-            "direct object"
-          ],
-          "answerIndex": 2,
-          "explanation": "'Difficult to master all the rules' is the predicative adjective phrase — subject complement after the linking verb 'is', describing the subject 'It'."
-        },
-        {
-          "question": "Which sentence correctly uses a comparative adjective phrase?",
-          "options": [
-            "This policy is more better than the previous one.",
-            "This policy is much more effective than the previous one.",
-            "This policy is more effective more than the previous one.",
-            "This policy is most effective than the previous one."
-          ],
-          "answerIndex": 1,
-          "explanation": "'Much more effective than' is the correct comparative adjective phrase. 'More better' is a double comparative; 'most...than' mixes superlative with comparative."
-        },
-        {
-          "question": "Which of the following is an adjective phrase, not an adjective clause?",
-          "options": [
-            "who passed the test",
-            "that was submitted yesterday",
-            "deeply committed to public service",
-            "which the board approved"
-          ],
-          "answerIndex": 2,
-          "explanation": "'Deeply committed to public service' is an adjective phrase (no subject–verb pair). The others are relative clauses with subject and verb."
-        }
-      ],
-      "summary": "An adjective phrase is headed by an adjective and may include degree adverbs before it and prepositional or infinitive complements after it. It functions attributively (before a noun) or predicatively (after a linking verb as subject complement). Some adjectives are restricted to one position only, and absolute adjectives cannot be graded. Unlike adjective clauses, adjective phrases contain no subject–verb pair."
+      "summary": "An adjective phrase describes or gives more information about a noun or pronoun.",
+      "structure": [
+        "Adjective + Modifier(s)",
+        "Examples: **very beautiful**; **extremely intelligent**; **full of confidence**; **rich in experience**",
+        "Other examples: **full of hope**; **very proud of his son**; **extremely useful for students**"
+      ]
     }
   },
   {
@@ -11722,154 +11023,77 @@
       "modification"
     ],
     "content": {
-      "introduction": "An adverb phrase is a group of words built around an adverb that collectively modifies a verb, adjective, another adverb, or an entire clause. It answers questions such as how, when, where, to what extent, or why. Adverb phrases are tested in CSS/PMS sentence-improvement tasks and appear frequently in IELTS reading passages where nuance of meaning depends on them. Like all phrases, an adverb phrase contains no subject–verb pair.",
-      "urduExplanation": "Adverb phrase الفاظ کا وہ گروہ ہے جس کا مرکز ایک adverb ہو اور یہ پورا گروہ verb، adjective یا کسی دوسرے adverb کو modify کرے۔ یہ بتاتا ہے کہ کام کیسے (manner)، کب (time)، کہاں (place) یا کس حد تک (degree) ہوا۔ مثلاً 'very quickly' میں 'very' intensifier ہے اور 'quickly' head adverb ہے۔ Adverb phrase میں اپنا subject اور verb نہیں ہوتا — یہی اسے adverbial clause سے الگ کرتا ہے۔ CSS کے امتحانات میں adverb phrase کی پہچان اور اس کی صحیح جگہ سمجھنا ضروری ہے۔",
-      "englishExplanation": "An adverb phrase (AdvP) consists of a head adverb optionally preceded by degree modifiers (very, quite, rather, far, too, enough) and/or followed by complements (e.g. 'quickly enough to escape', 'soon after the announcement'). Adverb phrases modify: (1) verbs — 'She spoke very clearly'; (2) adjectives — 'quite remarkably talented'; (3) other adverbs — 'far too frequently'; (4) entire sentences — 'Fortunately for us, the rain stopped'. They answer the semantic questions of manner (how?), place (where?), time (when/how long?), frequency (how often?), and degree (how much?). Adverb phrases are typically mobile — they can occupy front, mid, or end position in a clause — though position affects emphasis. An adverb phrase is different from an adverbial clause: an adverb phrase has no subject or verb, while a clause does ('when she arrived' is a clause).",
-      "types": [
-        {
-          "name": "Adverb Phrase of Manner",
-          "description": "Describes how an action is performed: 'extremely carefully', 'quite smoothly', 'rather hastily'."
-        },
-        {
-          "name": "Adverb Phrase of Time",
-          "description": "Indicates when or for how long: 'very recently', 'just now', 'not yet', 'soon after the meeting'."
-        },
-        {
-          "name": "Adverb Phrase of Place",
-          "description": "Indicates where: 'right here', 'far away', 'just outside'. (Note: prepositional phrases also serve this role.)"
-        },
-        {
-          "name": "Adverb Phrase of Degree",
-          "description": "Modifies the extent of an adjective or adverb: 'far too quickly', 'not nearly enough', 'almost certainly'."
-        },
-        {
-          "name": "Adverb Phrase of Frequency",
-          "description": "Shows how often: 'very often', 'quite frequently', 'hardly ever', 'not always'."
-        }
-      ],
+      "introduction": "An adverb phrase is a group of words that works like an adverb and gives more information about a verb, adjective, or another adverb.",
+      "urduExplanation": "Adverb Phrase (حالیہ فقرہ) الفاظ کا ایسا مجموعہ ہے جو جملے میں Adverb (حال) کی طرح کام کرتا ہے اور verb، adjective یا دوسرے adverb کے بارے میں مزید معلومات دیتا ہے۔",
       "rules": [
-        "The head adverb is the obligatory core; degree adverbs and complements are optional pre- or post-modifiers.",
-        "Degree adverbs (very, quite, too, rather, fairly, extremely) precede the head adverb: 'very quickly', not 'quickly very'.",
-        "Adverb phrases are syntactically mobile but placement affects meaning: 'Only she signed the petition' (nobody else signed) vs. 'She signed only the petition' (nothing else was signed).",
-        "Adverb phrases can modify whole clauses (sentence adverbials) and are typically set off by commas when fronted: 'Clearly, the policy has failed.'",
-        "Do not confuse an adverb phrase (no subject/verb) with an adverbial clause, which has both: 'as quickly as possible' (phrase) vs. 'as quickly as she could' (clause).",
-        "Some adverbs have the same form as adjectives (fast, hard, early, late, long); context determines whether they are head of an adverb phrase or adjective phrase."
+        "An adverb phrase can modify a verb, adjective, or another adverb.",
+        "It can tell how, when, where, why, or to what degree something happens.",
+        "Find the action, quality, or adverb that the phrase gives more information about.",
+        "An adverb phrase may have an adverb with modifiers or another structure such as a prepositional phrase.",
+        "Function tells you what the phrase does; structure helps you identify it correctly."
       ],
       "examples": [
         {
-          "text": "She completed the examination paper quite remarkably fast.",
-          "note": "'Quite remarkably fast' is an adverb phrase of manner modifying the verb 'completed'. Head = 'fast', pre-modified by 'quite remarkably'."
+          "text": "He speaks **with great confidence**.",
+          "urdu": "وہ بہت اعتماد کے ساتھ بات کرتا ہے۔",
+          "note": "The bold words tell how he speaks."
         },
         {
-          "text": "The results were announced very recently.",
-          "note": "'Very recently' is an adverb phrase of time, modifying the passive verb 'were announced'."
+          "text": "She arrived **very early in the morning**.",
+          "urdu": "وہ صبح بہت سویرے پہنچی۔",
+          "note": "The bold words tell when she arrived."
         },
         {
-          "text": "He drives far too recklessly for a government officer.",
-          "note": "'Far too recklessly' — adverb phrase of degree/manner; 'far' intensifies 'too', which in turn modifies 'recklessly'."
+          "text": "They worked **with great care**.",
+          "urdu": "انہوں نے بہت احتیاط سے کام کیا۔",
+          "note": "The bold words tell how they worked."
         },
         {
-          "text": "Fortunately for the candidates, the exam was postponed.",
-          "note": "'Fortunately for the candidates' is a sentence adverb phrase commenting on the entire clause."
+          "text": "They waited **near the gate**.",
+          "urdu": "انہوں نے دروازے کے قریب انتظار کیا۔",
+          "note": "The phrase tells where they waited."
         },
         {
-          "text": "She works not nearly hard enough to pass the competitive examination.",
-          "note": "'Not nearly hard enough' — complex adverb phrase of degree, post-modifying the verb phrase."
+          "text": "He went there **to meet his friend**.",
+          "urdu": "وہ اپنے دوست سے ملنے وہاں گیا۔",
+          "note": "The phrase tells the purpose of going."
+        },
+        {
+          "text": "She is **very happy**.",
+          "urdu": "وہ بہت خوش ہے۔",
+          "note": "The phrase gives the degree of the adjective **happy**."
+        },
+        {
+          "text": "She arrived **early in the morning**.",
+          "urdu": "وہ صبح سویرے پہنچی۔",
+          "note": "The phrase tells when she arrived."
         }
       ],
       "commonMistakes": [
         {
-          "wrong": "She sings very beautiful.",
-          "right": "She sings very beautifully.",
-          "note": "Adverbs, not adjectives, modify verbs. The head of the adverb phrase should be 'beautifully', not 'beautiful'."
+          "wrong": "He speaks with great confident.",
+          "right": "He speaks with great confidence.",
+          "urdu": "وہ بہت اعتماد کے ساتھ بات کرتا ہے۔",
+          "note": "After **with great**, use the noun **confidence**, not the adjective **confident**."
         },
         {
-          "wrong": "He works hardly in the office.",
-          "right": "He works hard in the office.",
-          "note": "'Hardly' means 'barely/almost not'; 'hard' is the adverb meaning 'with effort'. These are different words."
-        },
-        {
-          "wrong": "The officer spoke quite confident.",
-          "right": "The officer spoke quite confidently.",
-          "note": "After a verb of action, an adverb form is required, not an adjective."
-        },
-        {
-          "wrong": "When she arrived quickly is an adverb phrase.",
-          "right": "'When she arrived' is an adverbial clause, not an adverb phrase, because it contains a subject and verb.",
-          "note": "A phrase has no subject–verb pair; 'when she arrived' has both 'she' (subject) and 'arrived' (verb)."
+          "wrong": "She arrived in very early.",
+          "right": "She arrived very early.",
+          "urdu": "وہ بہت سویرے پہنچی۔",
+          "note": "The adverb phrase **very early** does not need the extra preposition **in**."
         }
       ],
-      "practice": [
-        {
-          "question": "Identify the adverb phrase in: 'The speaker responded quite confidently to all questions.'",
-          "options": [
-            "The speaker",
-            "quite confidently",
-            "to all questions",
-            "responded to"
-          ],
-          "answerIndex": 1,
-          "explanation": "'Quite confidently' is the adverb phrase of manner: degree adverb 'quite' + head adverb 'confidently', modifying the verb 'responded'."
-        },
-        {
-          "question": "Which sentence contains an error in adverb phrase usage?",
-          "options": [
-            "She speaks very fluently.",
-            "He arrived rather late for the interview.",
-            "They solved the problem quite easy.",
-            "The team performed extremely well."
-          ],
-          "answerIndex": 2,
-          "explanation": "'Quite easy' uses an adjective after the verb 'solved'. The correct adverb form is 'quite easily'."
-        },
-        {
-          "question": "In 'Almost certainly, the new regulation will be implemented', what does the adverb phrase 'almost certainly' modify?",
-          "options": [
-            "Only the noun 'regulation'",
-            "The entire following clause",
-            "Only the verb 'implemented'",
-            "The adjective 'new'"
-          ],
-          "answerIndex": 1,
-          "explanation": "'Almost certainly' is a sentence adverbial modifying the speaker's attitude toward the entire proposition expressed in the clause."
-        }
+      "examTips": [
+        "Ask: “How? When? Where? or Why?”",
+        "If the phrase answers one of these questions about an action, it may be an Adverb Phrase.",
+        "A phrase may have the same function as an adverb even when its structure is prepositional or infinitive."
       ],
-      "quiz": [
-        {
-          "question": "Which of the following is an adverb phrase rather than an adverbial clause?",
-          "options": [
-            "because he was late",
-            "after she submitted the form",
-            "very smoothly indeed",
-            "whenever the results are announced"
-          ],
-          "answerIndex": 2,
-          "explanation": "'Very smoothly indeed' is an adverb phrase (degree adverb + head adverb + emphasiser, no subject or verb). The other three are subordinate clauses with subjects and verbs."
-        },
-        {
-          "question": "What semantic role does 'not nearly often enough' play in: 'The committee meets not nearly often enough'?",
-          "options": [
-            "Manner",
-            "Place",
-            "Degree/Frequency",
-            "Time"
-          ],
-          "answerIndex": 2,
-          "explanation": "'Not nearly often enough' modifies the frequency ('often') and degree to which the frequency is adequate — a combined degree/frequency adverb phrase."
-        },
-        {
-          "question": "Identify the incorrect statement about adverb phrases.",
-          "options": [
-            "They can modify adjectives, adverbs, and whole clauses.",
-            "They contain no subject–verb pair.",
-            "They always appear at the end of a sentence.",
-            "They can be pre-modified by degree adverbs."
-          ],
-          "answerIndex": 2,
-          "explanation": "Adverb phrases are syntactically mobile and can appear at the front, middle, or end of a sentence. They are NOT restricted to end position."
-        }
-      ],
-      "summary": "An adverb phrase is headed by an adverb and may include degree pre-modifiers and various complements. It modifies verbs, adjectives, other adverbs, or entire clauses, answering questions of manner, time, place, frequency, or degree. It is mobile within the sentence, and its placement can affect meaning. The key distinction from an adverbial clause is the absence of a subject–verb pair."
+      "summary": "An adverb phrase gives more information about a verb, adjective, or another adverb by showing manner, time, place, reason, purpose, or degree.",
+      "structure": [
+        "Adverb + Modifier(s)",
+        "Examples: **very quickly**; **quite carefully**; **extremely slowly**; **very carefully**",
+        "Other structures: **with great care**; **in the morning**; **after the meeting**; **with great confidence**"
+      ]
     }
   },
   {
@@ -11890,154 +11114,100 @@
       "non-finite"
     ],
     "content": {
-      "introduction": "A gerund phrase consists of a gerund (a verb ending in -ing used as a noun) together with its objects, complements, and modifiers. The entire phrase functions as a noun in the sentence — as subject, object, or complement. Gerund phrases are a frequent source of errors in CSS/PMS sentence-correction and IELTS Writing Task 2. Like all phrases, a gerund phrase contains no subject–verb pair.",
-      "urduExplanation": "Gerund phrase میں ایک gerund (یعنی -ing form جو noun کا کام کرے) اور اس کے objects یا modifiers شامل ہوتے ہیں۔ یہ پورا گروہ جملے میں noun کی طرح کام کرتا ہے — subject، object یا complement کے طور پر۔ مثلاً 'Reading difficult books' ایک gerund phrase ہے جو جملے میں subject کا کام کر رہا ہے: 'Reading difficult books improves vocabulary.'۔ Gerund کے subject کو possessive form میں لانا ضروری ہے: 'His arriving late annoyed everyone.'۔ CSS اور PMS میں gerund اور infinitive کے درمیان فرق اور صحیح استعمال بہت اہم امتحانی نکتہ ہے۔",
-      "englishExplanation": "A gerund phrase is a non-finite verb phrase headed by a gerund (-ing form functioning as a noun). It can be the subject of a sentence ('Swimming in cold rivers requires endurance'), a direct object ('She enjoys reading classic novels'), an indirect object, the object of a preposition ('He was praised for submitting the report on time'), or a subject complement ('Her hobby is collecting rare stamps'). The gerund itself can take objects, subject complements, adverbials, and even its own implied subject, which is expressed in the possessive case when stated explicitly: 'We appreciated him/his arriving early.' Gerunds differ from present participles in function: gerunds act as nouns, participles act as adjectives. Both look identical in form (-ing); only context and function distinguish them. Some verbs take only gerunds as objects (enjoy, avoid, deny, finish, consider, suggest, postpone), while others take only infinitives (want, hope, decide, agree, refuse). A few take both with different meanings (stop, remember, try).",
-      "types": [
-        {
-          "name": "Gerund Phrase as Subject",
-          "description": "The entire phrase acts as the grammatical subject: 'Writing concise answers helps in CSS examinations.'"
-        },
-        {
-          "name": "Gerund Phrase as Direct Object",
-          "description": "Follows verbs that take gerund objects: 'She avoided making unnecessary comments.'"
-        },
-        {
-          "name": "Gerund Phrase as Object of a Preposition",
-          "description": "Follows a preposition: 'He was fined for crossing the red light.'"
-        },
-        {
-          "name": "Gerund Phrase as Subject Complement",
-          "description": "Follows a linking verb and describes the subject: 'His main weakness is procrastinating on important tasks.'"
-        },
-        {
-          "name": "Gerund Phrase with Possessive Subject",
-          "description": "When the logical subject of the gerund is expressed, it appears in the possessive case: 'The teacher disapproved of the student's cheating on the test.'"
-        }
-      ],
+      "introduction": "A gerund phrase is a group of words that begins with a gerund (-ing form of a verb) and works like a noun in a sentence.",
+      "urduExplanation": "Gerund Phrase (مصدرِ اسمی فقرہ) الفاظ کا ایسا مجموعہ ہے جو Gerund (-ing والی verb) سے شروع ہوتا ہے اور جملے میں Noun (اسم) کی طرح کام کرتا ہے۔",
       "rules": [
-        "A gerund phrase always begins with an -ing verb form functioning as a noun; it performs all noun roles in the sentence.",
-        "Certain verbs are always followed by a gerund, never an infinitive: enjoy, avoid, finish, deny, suggest, consider, postpone, practise, risk, mind, keep.",
-        "The implied or stated logical subject of a gerund should be in the possessive case in formal writing: 'We object to their changing the rules.'",
-        "A gerund phrase at the beginning of a sentence is treated as a singular noun for subject–verb agreement purposes.",
-        "A gerund phrase as object of a preposition must immediately follow the preposition ('interested in applying', not 'interested to apply').",
-        "Do not confuse the gerund phrase with the present participial phrase: if the -ing phrase acts as a noun, it is a gerund phrase; if it acts as an adjective or begins a modifying phrase, it is participial."
+        "A gerund phrase begins with an -ing form of a verb.",
+        "The -ing word acts like a noun, not like the main finite verb.",
+        "The whole group can work as a subject, object, object of a preposition, or subject complement.",
+        "A gerund phrase can contain an object and modifiers.",
+        "Do not identify every -ing word as a gerund; check its function."
       ],
       "examples": [
         {
-          "text": "Practising past papers regularly is the most effective preparation strategy.",
-          "note": "'Practising past papers regularly' is the gerund phrase functioning as the subject. The gerund 'practising' takes the object 'past papers' and the adverb 'regularly'."
+          "text": "**Swimming in the morning** is good for health.",
+          "urdu": "صبح تیراکی کرنا صحت کے لیے اچھا ہے۔",
+          "note": "The bold gerund phrase works as the subject."
         },
         {
-          "text": "She suggested postponing the meeting until the report was ready.",
-          "note": "'Postponing the meeting until the report was ready' is the gerund phrase (direct object of 'suggested')."
+          "text": "I enjoy **reading interesting books**.",
+          "urdu": "مجھے دلچسپ کتابیں پڑھنا پسند ہے۔",
+          "note": "The phrase works as the object of **enjoy**."
         },
         {
-          "text": "He was penalised for submitting the form after the deadline.",
-          "note": "'Submitting the form after the deadline' — gerund phrase as object of the preposition 'for'."
+          "text": "She likes **helping poor people**.",
+          "urdu": "وہ غریب لوگوں کی مدد کرنا پسند کرتی ہے۔",
+          "note": "The phrase works as a noun and is the object of **likes**."
         },
         {
-          "text": "The board's insisting on transparency improved public trust.",
-          "note": "'The board's insisting on transparency' — gerund phrase with possessive subject 'the board's', functioning as the subject of the main clause."
+          "text": "**Learning English every day** improves your skills.",
+          "urdu": "روزانہ انگریزی سیکھنا آپ کی مہارتیں بہتر کرتا ہے۔",
+          "note": "Gerund: **Learning**; object: **English**; modifier: **every day**; function: subject."
         },
         {
-          "text": "His greatest accomplishment was solving the long-standing water crisis.",
-          "note": "'Solving the long-standing water crisis' is the gerund phrase used as subject complement."
+          "text": "She is interested in **learning English**.",
+          "urdu": "وہ انگریزی سیکھنے میں دلچسپی رکھتی ہے۔",
+          "note": "The gerund phrase is the object of the preposition **in**."
+        },
+        {
+          "text": "His favorite activity is **playing football**.",
+          "urdu": "اس کی پسندیدہ سرگرمی فٹبال کھیلنا ہے۔",
+          "note": "The phrase works as a subject complement."
+        },
+        {
+          "text": "I enjoy **cooking delicious meals for my family**.",
+          "urdu": "مجھے اپنے خاندان کے لیے مزیدار کھانے پکانا پسند ہے۔",
+          "note": "The phrase adds the object, quality, and purpose details to **cooking**."
         }
       ],
       "commonMistakes": [
         {
-          "wrong": "She is interested to apply for the position.",
-          "right": "She is interested in applying for the position.",
-          "note": "After prepositions, a gerund (not an infinitive) is required: 'interested in applying'."
+          "wrong": "Reading books are useful.",
+          "right": "Reading books is useful.",
+          "urdu": "کتابیں پڑھنا مفید ہے۔",
+          "note": "The gerund phrase **Reading books** works as one singular subject, so use **is**."
         },
         {
-          "wrong": "I appreciate you to help me with the project.",
-          "right": "I appreciate your helping me with the project.",
-          "note": "'Appreciate' takes a gerund object; the logical subject of the gerund must be in the possessive case in formal writing."
-        },
-        {
-          "wrong": "Swim in the sea are dangerous.",
-          "right": "Swimming in the sea is dangerous.",
-          "note": "A gerund phrase subject requires the -ing form and takes a singular verb."
-        },
-        {
-          "wrong": "He avoided to make mistakes.",
-          "right": "He avoided making mistakes.",
-          "note": "'Avoid' is a verb that takes a gerund object, never an infinitive."
+          "wrong": "The boy is reading books is useful.",
+          "right": "Reading books is useful.",
+          "urdu": "کتابیں پڑھنا مفید ہے۔",
+          "note": "Do not confuse a verb phrase with a gerund phrase used as a subject."
         }
       ],
-      "practice": [
-        {
-          "question": "Identify the gerund phrase in: 'The government considered implementing stricter environmental regulations.'",
-          "options": [
-            "The government considered",
-            "implementing stricter environmental regulations",
-            "stricter environmental regulations",
-            "The government"
-          ],
-          "answerIndex": 1,
-          "explanation": "'Implementing stricter environmental regulations' is the gerund phrase (direct object of 'considered'). 'Implementing' is the gerund head, taking 'stricter environmental regulations' as its object."
-        },
-        {
-          "question": "Which verb CANNOT be followed by a gerund?",
-          "options": [
-            "avoid",
-            "suggest",
-            "want",
-            "finish"
-          ],
-          "answerIndex": 2,
-          "explanation": "'Want' takes an infinitive object: 'I want to go', never 'I want going'. The other three (avoid, suggest, finish) take gerund objects."
-        },
-        {
-          "question": "Choose the correct sentence using a gerund phrase as a subject.",
-          "options": [
-            "To read widely are important for CSS.",
-            "Reading widely are important for CSS.",
-            "Reading widely is important for CSS.",
-            "Read widely is important for CSS."
-          ],
-          "answerIndex": 2,
-          "explanation": "A gerund phrase subject ('Reading widely') takes a singular verb ('is'). 'To read widely' is an infinitive phrase; a bare infinitive 'Read' cannot be a subject."
-        }
+      "examTips": [
+        "Gerund Phrase = Gerund (-ing) + other words, working like a noun.",
+        "Check the function of the -ing form.",
+        "Compare: **Swimming every morning** is healthy (gerund phrase); The boy **is swimming** (verb phrase)."
       ],
-      "quiz": [
-        {
-          "question": "In 'The teacher disapproved of the student's copying during the test', 'the student's copying during the test' is:",
-          "options": [
-            "A participial phrase modifying 'teacher'",
-            "A gerund phrase acting as object of the preposition 'of'",
-            "A noun clause",
-            "An infinitive phrase"
-          ],
-          "answerIndex": 1,
-          "explanation": "'The student's copying during the test' is a gerund phrase (gerund 'copying' + adverbial 'during the test') with possessive subject 'student's', serving as the object of the preposition 'of'."
-        },
-        {
-          "question": "Which sentence correctly uses a gerund phrase?",
-          "options": [
-            "She enjoys to read historical novels.",
-            "He finished to write the essay.",
-            "They suggested to postpone the vote.",
-            "Maintaining accurate records is essential for good governance."
-          ],
-          "answerIndex": 3,
-          "explanation": "'Maintaining accurate records' is a correctly formed gerund phrase as subject, with singular verb 'is'. 'Enjoy', 'finish', and 'suggest' all require gerund (not infinitive) objects."
-        },
-        {
-          "question": "Identify the difference: 'Running is good exercise' vs. 'The man running the race is my brother.' What are 'running' in each?",
-          "options": [
-            "Both are gerunds.",
-            "Both are present participles.",
-            "First is a gerund (noun); second is a present participle (adjective).",
-            "First is a present participle; second is a gerund."
-          ],
-          "answerIndex": 2,
-          "explanation": "In 'Running is good exercise', 'running' is a gerund (subject noun). In 'the man running the race', 'running the race' is a participial phrase modifying 'man' adjectivally."
-        }
+      "structure": [
+        "Gerund + Object / Modifier(s)",
+        "Examples: **reading books**; **playing football**; **helping poor people**; **studying English every day**; **walking in the park**",
+        "A gerund phrase can contain gerund + object + modifiers: **Reading English books every day**."
       ],
-      "summary": "A gerund phrase is headed by an -ing verb form acting as a noun, and includes its objects, complements, and modifiers. It can serve as subject, direct object, object of a preposition, or subject complement. Certain verbs (enjoy, avoid, finish, suggest) always take gerund objects; the logical subject of a gerund is expressed in the possessive case. The gerund phrase contains no subject–verb pair and is distinguished from a participial phrase by its noun function."
+      "tableTitle": "Functions of a Gerund Phrase",
+      "tableColumns": [
+        "Function",
+        "Example"
+      ],
+      "tableRows": [
+        [
+          "Subject",
+          "Reading books improves vocabulary."
+        ],
+        [
+          "Object",
+          "I enjoy reading books."
+        ],
+        [
+          "Object of a Preposition",
+          "She is interested in learning English."
+        ],
+        [
+          "Subject Complement",
+          "His favorite activity is playing football."
+        ]
+      ],
+      "summary": "A gerund phrase turns an action into a noun idea and can add details about that action."
     }
   },
   {
@@ -12058,158 +11228,91 @@
       "non-finite"
     ],
     "content": {
-      "introduction": "An infinitive phrase consists of 'to' + the base form of a verb, along with any objects, complements, or modifiers. It is highly versatile: it can function as a noun (subject or object), an adjective (modifying a noun), or an adverb (modifying a verb, adjective, or clause). Infinitive phrases appear throughout CSS/PMS grammar tasks and IELTS writing, and are a key topic in verb-complementation questions. They have no subject–verb pair and are therefore phrases, not clauses.",
-      "urduExplanation": "Infinitive phrase 'to' اور base verb کا مجموعہ ہے، جس میں objects اور modifiers بھی شامل ہو سکتے ہیں۔ یہ تین طرح کام کر سکتا ہے: noun (subject یا object)، adjective (noun کو modify کرے) اور adverb (verb یا adjective کو modify کرے)۔ مثلاً 'To serve the nation' noun function میں subject ہے؛ 'a chance to succeed' میں adjective function ہے؛ 'She studied to pass the exam' میں adverb function ہے۔ Infinitive phrase میں اپنا subject اور verb نہیں ہوتا — یہی اسے clause سے الگ کرتا ہے۔ CSS/PMS میں split infinitive اور bare infinitive کے صحیح استعمال سے متعلق سوالات اکثر آتے ہیں۔",
-      "englishExplanation": "An infinitive phrase is a non-finite construction built on 'to + base verb' (the to-infinitive). It can contain a direct object, a subject complement, adverbials, and even its own logical subject introduced by 'for': 'It is important for candidates to read the instructions carefully.' As a noun: 'To lead effectively requires vision' (subject); 'She hopes to secure a promotion' (object). As an adjective: 'She had several documents to review' (post-modifying 'documents'). As an adverb: 'He trained hard to qualify for the final stage' (purpose); 'She was relieved to hear the news' (cause/reason). The bare infinitive (without 'to') follows modal verbs and certain verbs (make, let, have, see, hear, feel, watch, help). A split infinitive places an adverb between 'to' and the base verb: 'to boldly go'; while not ungrammatical, it is avoided in formal writing. Do not confuse the infinitive phrase with a prepositional phrase: 'to the market' has a noun object (prepositional phrase); 'to buy groceries' has a verb (infinitive phrase).",
-      "types": [
-        {
-          "name": "Infinitive Phrase Functioning as Noun (Subject)",
-          "description": "The phrase acts as the grammatical subject: 'To speak clearly is a vital skill for a civil servant.'"
-        },
-        {
-          "name": "Infinitive Phrase Functioning as Noun (Object)",
-          "description": "The phrase acts as the direct object of the main verb: 'She decided to contest the election.'"
-        },
-        {
-          "name": "Infinitive Phrase Functioning as Adjective",
-          "description": "Post-modifies a noun or pronoun: 'The last candidate to arrive missed the briefing.'"
-        },
-        {
-          "name": "Infinitive Phrase Functioning as Adverb (Purpose)",
-          "description": "Expresses the purpose of the action: 'He studied relentlessly to pass the CSS examination.'"
-        },
-        {
-          "name": "Infinitive Phrase Functioning as Adverb (Cause/Result/Condition)",
-          "description": "Expresses cause, result, or condition: 'She was fortunate to receive a scholarship'; 'The task proved too difficult to complete.'"
-        },
-        {
-          "name": "Infinitive Phrase with Explicit Subject (for + noun/pronoun + to-infinitive)",
-          "description": "The logical subject is introduced by 'for': 'It is essential for every candidate to understand the syllabus.'"
-        }
-      ],
+      "introduction": "An infinitive phrase is a group of words that begins with to + base verb and works as a noun, adjective, or adverb in a sentence.",
+      "urduExplanation": "Infinitive Phrase (مصدر فقرہ) الفاظ کا ایسا مجموعہ ہے جو to + verb کی پہلی شکل سے شروع ہوتا ہے اور جملے میں Noun، Adjective یا Adverb کی طرح کام کرتا ہے۔",
       "rules": [
-        "The infinitive phrase always begins with 'to' + base verb (uninflected); it cannot be changed to match tense (*'to walked', *'to runs').",
-        "Modal verbs (can, could, will, would, may, might, shall, should, must) and certain catenative verbs (make, let, have, see, hear, feel) are followed by the bare infinitive (without 'to').",
-        "When an infinitive phrase is the subject, the sentence often uses a 'dummy it' subject and moves the infinitive to the end: 'It is impossible to overstate the importance of this rule.'",
-        "The logical subject of an infinitive phrase introduced by 'for' must be in the objective case: 'for them to decide', not 'for they to decide'.",
-        "Avoid splitting infinitives in formal/exam writing: write 'to examine carefully' rather than 'to carefully examine'.",
-        "The perfect infinitive ('to have done') indicates an action that was completed before the time of the main verb or a hypothetical past: 'She appears to have passed.'; 'He ought to have submitted the form.'"
+        "An infinitive phrase begins with **to + base verb**.",
+        "The words after the infinitive marker complete the phrase.",
+        "The whole phrase may work as a noun, adjective, or adverb.",
+        "An infinitive phrase can add information about an action, purpose, or thing.",
+        "Always check the function of the whole phrase, not only the word **to**."
       ],
       "examples": [
         {
-          "text": "To master English grammar thoroughly requires consistent daily practice.",
-          "note": "'To master English grammar thoroughly' is the infinitive phrase acting as subject; 'grammar' is its object, 'thoroughly' is its adverb."
+          "text": "**To learn English** takes time.",
+          "urdu": "انگریزی سیکھنے میں وقت لگتا ہے۔",
+          "note": "The infinitive phrase works as the subject."
         },
         {
-          "text": "The government plans to introduce a new policy on digital infrastructure.",
-          "note": "'To introduce a new policy on digital infrastructure' is the infinitive phrase (direct object of 'plans')."
+          "text": "I want **to buy a new phone**.",
+          "urdu": "میں ایک نیا فون خریدنا چاہتا ہوں۔",
+          "note": "The infinitive phrase works as the object of **want**."
         },
         {
-          "text": "She was the first female officer to command the division.",
-          "note": "'To command the division' is an infinitive phrase functioning as an adjective, post-modifying 'officer'."
+          "text": "She went to the market **to buy some vegetables**.",
+          "urdu": "وہ کچھ سبزیاں خریدنے کے لیے بازار گئی۔",
+          "note": "The phrase works as an adverb and tells why she went."
         },
         {
-          "text": "He worked overtime to meet the project deadline.",
-          "note": "'To meet the project deadline' is an infinitive phrase of purpose, modifying the verb 'worked' adverbially."
+          "text": "**To study English every day** is beneficial.",
+          "urdu": "روزانہ انگریزی پڑھنا فائدہ مند ہے۔",
+          "note": "Infinitive marker: **to**; base verb: **study**; modifier: **every day**."
         },
         {
-          "text": "It is crucial for all FPSC aspirants to review past papers carefully.",
-          "note": "'For all FPSC aspirants to review past papers carefully' — infinitive phrase with explicit logical subject introduced by 'for'."
+          "text": "I need a book **to read during the journey**.",
+          "urdu": "مجھے سفر کے دوران پڑھنے کے لیے ایک کتاب چاہیے۔",
+          "note": "The phrase describes what the book is for, so it works adjectivally."
+        },
+        {
+          "text": "She went to the library **to study**.",
+          "urdu": "وہ پڑھنے کے لیے کتب خانے گئی۔",
+          "note": "The phrase tells the purpose of going."
         }
       ],
       "commonMistakes": [
         {
-          "wrong": "She made him to apologise to the committee.",
-          "right": "She made him apologise to the committee.",
-          "note": "After causative 'make', the bare infinitive (without 'to') is required."
+          "wrong": "I want to learning English.",
+          "right": "I want to learn English.",
+          "urdu": "میں انگریزی سیکھنا چاہتا ہوں۔",
+          "note": "After infinitive **to**, use the base verb **learn**, not **learning**."
         },
         {
-          "wrong": "He ought to submitted the form before the deadline.",
-          "right": "He ought to have submitted the form before the deadline.",
-          "note": "When the infinitive refers to a past unfulfilled obligation, use the perfect infinitive 'to have + past participle'."
-        },
-        {
-          "wrong": "To running in the park is her hobby.",
-          "right": "Running in the park is her hobby.",
-          "note": "'To running' is not a valid infinitive form. For a noun function, either use the plain infinitive 'To run...' or the gerund 'Running...'. The gerund is more natural as subject here."
-        },
-        {
-          "wrong": "I want for you to come to the ceremony.",
-          "right": "I want you to come to the ceremony.",
-          "note": "After 'want', the infinitive phrase with explicit subject does not use 'for': it is 'want + object + to-infinitive'."
+          "wrong": "She went to the market for buy vegetables.",
+          "right": "She went to the market to buy vegetables.",
+          "urdu": "وہ سبزیاں خریدنے بازار گئی۔",
+          "note": "Use **to + base verb** to express purpose in this infinitive phrase."
         }
       ],
-      "practice": [
-        {
-          "question": "In 'The judge was the last person to deliver a verdict', what is the function of 'to deliver a verdict'?",
-          "options": [
-            "Noun phrase (subject)",
-            "Adverb phrase (purpose)",
-            "Adjective phrase (modifying 'person')",
-            "Verb phrase (predicate)"
-          ],
-          "answerIndex": 2,
-          "explanation": "'To deliver a verdict' post-modifies the noun 'person', answering 'which person?' — adjectival infinitive phrase."
-        },
-        {
-          "question": "Which sentence correctly uses the perfect infinitive?",
-          "options": [
-            "She seems to be working hard before the exam.",
-            "He appears to have submitted the form yesterday.",
-            "They claim to work on the project last year.",
-            "We need to have arriving early."
-          ],
-          "answerIndex": 1,
-          "explanation": "'To have submitted' is the perfect infinitive, correctly indicating that the submission occurred before the present moment. 'To be working' is progressive; 'to work' in option C is not past enough; option D is ungrammatical."
-        },
-        {
-          "question": "Which verb takes the BARE infinitive (without 'to')?",
-          "options": [
-            "decide",
-            "hope",
-            "let",
-            "plan"
-          ],
-          "answerIndex": 2,
-          "explanation": "'Let' is a causative verb that takes the bare infinitive: 'Let him speak.' 'Decide', 'hope', and 'plan' take the to-infinitive."
-        }
+      "examTips": [
+        "Infinitive Phrase = to + Base Verb + other words.",
+        "Find **to + base verb** first.",
+        "Then check whether the whole group acts as a noun, adjective, or adverb."
       ],
-      "quiz": [
-        {
-          "question": "In 'It is necessary for every civil servant to file the annual declaration', 'for every civil servant to file the annual declaration' is:",
-          "options": [
-            "A gerund phrase",
-            "A noun clause",
-            "An infinitive phrase with an explicit logical subject",
-            "A relative clause"
-          ],
-          "answerIndex": 2,
-          "explanation": "The construction 'for + noun phrase + to-infinitive' is an infinitive phrase with an explicit logical subject. 'Every civil servant' is the logical subject of 'to file'."
-        },
-        {
-          "question": "Identify the sentence in which the infinitive phrase functions as an adverb of purpose.",
-          "options": [
-            "To err is human.",
-            "He has the ability to analyse complex issues.",
-            "She studied intensively to clear the CSS written exam.",
-            "His plan is to restructure the department."
-          ],
-          "answerIndex": 2,
-          "explanation": "'To clear the CSS written exam' answers 'why did she study?' — purpose. Option A is noun (subject); B is adjectival; D is noun (subject complement)."
-        },
-        {
-          "question": "Which sentence contains an error in infinitive usage?",
-          "options": [
-            "She let the candidate answer the question.",
-            "He helped them to complete the project.",
-            "They made him to sign the document.",
-            "I saw her leave the building."
-          ],
-          "answerIndex": 2,
-          "explanation": "'Made him to sign' is incorrect. After causative 'make', the bare infinitive is required: 'made him sign'. 'Let', 'see', and 'help' may take bare or to-infinitive."
-        }
+      "structure": [
+        "to + Base Verb + Object / Modifier(s)",
+        "Examples: **to read books**; **to learn English**; **to win the match**; **to help poor people**; **to study hard for the exam**",
+        "Example: **to study English every day** — **to** is the infinitive marker, **study** is the base verb, **English** is the object, and **every day** is the modifier."
       ],
-      "summary": "An infinitive phrase consists of 'to + base verb' together with its objects, complements, and modifiers. It functions as a noun (subject/object), adjective (post-modifier of a noun), or adverb (expressing purpose, cause, or result). Modal and certain causative verbs require the bare infinitive; the perfect infinitive ('to have + past participle') signals a completed or hypothetical past action. Split infinitives are avoided in formal writing, and infinitive phrases contain no subject–verb pair."
+      "tableTitle": "Functions of an Infinitive Phrase",
+      "tableColumns": [
+        "Function",
+        "Example"
+      ],
+      "tableRows": [
+        [
+          "Noun",
+          "To learn English is important."
+        ],
+        [
+          "Adjective",
+          "I have a book to read."
+        ],
+        [
+          "Adverb",
+          "She went to the library to study."
+        ]
+      ],
+      "summary": "An infinitive phrase begins with to + base verb and may function as a noun, adjective, or adverb."
     }
   },
   {
@@ -12230,154 +11333,78 @@
       "phrase"
     ],
     "content": {
-      "introduction": "A noun phrase is a group of words built around a noun or pronoun that together act as a single noun in a sentence. It can function as the subject, object, complement, or appositive of a clause. Recognising noun phrases is essential for CSS/PMS sentence-correction tasks and IELTS reading comprehension. Unlike a clause, a noun phrase has no subject–verb pair of its own.",
-      "urduExplanation": "Noun phrase الفاظ کا وہ گروہ ہے جس کے مرکز میں ایک noun یا pronoun ہو اور باقی الفاظ اسے modify کریں۔ یہ پورا گروہ جملے میں subject، object یا complement کا کام کرتا ہے۔ مثال کے طور پر 'the hardworking student from Lahore' ایک noun phrase ہے جہاں 'student' head noun ہے۔ یاد رہے کہ noun phrase میں اپنا subject اور verb نہیں ہوتا، ورنہ وہ clause بن جائے گا۔ CSS اور IELTS کے امتحانات میں noun phrases کی پہچان sentence structure سمجھنے کے لیے بہت ضروری ہے۔",
-      "englishExplanation": "A noun phrase (NP) consists of a head noun and all the words that modify or determine it — determiners (the, a, this), adjectives, participial phrases, prepositional phrases, and even relative clauses. The head word is always a noun or pronoun; every other element exists to restrict or describe it. Noun phrases perform the same grammatical roles as a single noun: subject ('The tall old man sat down'), direct object ('She read the lengthy government report'), indirect object, or subject complement. They have no internal subject–verb pair, which distinguishes them from noun clauses (e.g. 'what he said'). Pre-modifiers come before the head (articles, adjectives, nouns used as adjectives), while post-modifiers follow it (prepositional phrases, relative clauses, participial phrases). In IELTS and competitive exams, noun phrases create information density and must be parsed accurately.",
-      "types": [
-        {
-          "name": "Simple Noun Phrase",
-          "description": "Contains only a determiner and a head noun, e.g. 'a book', 'the government'. Minimal but complete."
-        },
-        {
-          "name": "Extended Noun Phrase (Pre-modified)",
-          "description": "One or more adjectives or other nouns placed before the head, e.g. 'the new five-year economic plan'."
-        },
-        {
-          "name": "Extended Noun Phrase (Post-modified)",
-          "description": "The head noun is followed by a prepositional phrase, participial phrase, or relative clause, e.g. 'the report published last year'."
-        },
-        {
-          "name": "Pronoun as Noun Phrase",
-          "description": "A single pronoun (he, she, they, it) stands alone as a complete noun phrase with no additional modifiers."
-        },
-        {
-          "name": "Appositive Noun Phrase",
-          "description": "A noun phrase placed beside another to rename or describe it, e.g. 'Dr. Khan, the chief examiner, announced the results'."
-        }
-      ],
+      "introduction": "A noun phrase is a group of words that works like a noun in a sentence.",
+      "urduExplanation": "Noun Phrase (اسمی فقرہ) الفاظ کا ایسا مجموعہ ہے جو جملے میں Noun (اسم) کی طرح کام کرتا ہے۔",
       "rules": [
-        "A noun phrase must have a head noun or pronoun; all other elements are modifiers that depend on this head.",
-        "Pre-modifiers appear in a fixed order before the head: determiner → opinion adjective → size → age → shape → colour → origin → material → noun modifier → head.",
-        "Post-modifiers (prepositional phrases, participial phrases, relative clauses) follow the head noun in the order they appear.",
-        "A noun phrase, however long, has no subject–verb pair; if it contains one, it becomes a clause.",
-        "Noun phrases can be nested: the head of one NP may itself be modified by another NP ('a [basket of [fresh garden vegetables]]').",
-        "When a noun phrase is the subject of a sentence, the main verb must agree with the head noun, not with any modifier."
+        "A noun phrase is built around a main noun, called the head noun.",
+        "A noun phrase does not always contain every part of the common structure.",
+        "The phrase may work as a subject, object, complement, or object of a preposition.",
+        "Find the main noun and include the words that describe or identify it.",
+        "A noun phrase makes a noun more specific by adding words that describe or identify it."
       ],
       "examples": [
         {
-          "text": "The extremely dedicated civil servant from Islamabad received the award.",
-          "note": "'The extremely dedicated civil servant from Islamabad' is the noun phrase functioning as subject; head noun = 'servant'."
+          "text": "The **little boy** is playing.",
+          "urdu": "چھوٹا لڑکا کھیل رہا ہے۔",
+          "note": "The bold words work like a noun and function as the subject."
         },
         {
-          "text": "She submitted a lengthy, well-researched essay on economic policy.",
-          "note": "'a lengthy, well-researched essay on economic policy' is the noun phrase (direct object); head = 'essay'."
+          "text": "I bought **a new laptop**.",
+          "urdu": "میں نے ایک نیا لیپ ٹاپ خریدا۔",
+          "note": "The bold words work like a noun and function as the object."
         },
         {
-          "text": "Dr. Ayesha, the principal of the college, addressed the students.",
-          "note": "'the principal of the college' is an appositive noun phrase renaming 'Dr. Ayesha'."
+          "text": "She is **a talented teacher**.",
+          "urdu": "وہ ایک قابل استاد ہے۔",
+          "note": "The bold words work like a noun and function as a complement."
         },
         {
-          "text": "All the candidates who passed the written test were called for interview.",
-          "note": "'All the candidates who passed the written test' — the relative clause 'who passed the written test' post-modifies the head 'candidates'."
+          "text": "The **very intelligent student in my class** won the prize.",
+          "urdu": "میری جماعت کے انتہائی ذہین طالب علم نے انعام جیتا۔",
+          "note": "The head noun is **student**; the complete phrase functions as the subject."
         },
         {
-          "text": "Reading good literature broadens the mind.",
-          "note": "Here 'Reading good literature' is a gerund phrase acting as a noun phrase (subject)."
+          "text": "She sat beside **the old man**.",
+          "urdu": "وہ بوڑھے آدمی کے پاس بیٹھی۔",
+          "note": "The bold noun phrase is the object of the preposition **beside**."
+        },
+        {
+          "text": "I saw **a tall man with a long beard**.",
+          "urdu": "میں نے لمبی داڑھی والے ایک لمبے آدمی کو دیکھا۔",
+          "note": "The head noun is **man**; the other words give more information about him."
+        },
+        {
+          "text": "She bought **a beautiful red dress for the party**.",
+          "urdu": "اس نے پارٹی کے لیے ایک خوبصورت سرخ لباس خریدا۔",
+          "note": "The head noun is **dress**; adjectives and a phrase add details."
         }
       ],
       "commonMistakes": [
         {
-          "wrong": "The informations provided by the committee were incorrect.",
-          "right": "The information provided by the committee was incorrect.",
-          "note": "'Information' is uncountable; the head noun governs subject–verb agreement, not the post-modifier."
+          "wrong": "The little boy are playing.",
+          "right": "The little boy is playing.",
+          "urdu": "چھوٹا لڑکا کھیل رہا ہے۔",
+          "note": "The head noun **boy** is singular, so the singular verb **is** is required."
         },
         {
-          "wrong": "She is a very beauty girl.",
-          "right": "She is a very beautiful girl.",
-          "note": "Adjectives, not nouns, modify the head noun inside a noun phrase."
-        },
-        {
-          "wrong": "He bought a leather brown old belt.",
-          "right": "He bought an old brown leather belt.",
-          "note": "Pre-modifiers must follow the fixed order: opinion → age → colour → material."
-        },
-        {
-          "wrong": "The team of players are ready.",
-          "right": "The team of players is ready.",
-          "note": "Subject–verb agreement is determined by the head noun 'team', not the post-modifier 'players'."
+          "wrong": "I bought a new.",
+          "right": "I bought a new laptop.",
+          "urdu": "میں نے ایک نیا لیپ ٹاپ خریدا۔",
+          "note": "The adjective **new** needs a noun such as **laptop** to complete the noun phrase."
         }
       ],
-      "practice": [
-        {
-          "question": "Identify the noun phrase functioning as the subject in: 'The newly appointed district commissioner addressed the crowd.'",
-          "options": [
-            "The newly appointed district commissioner",
-            "addressed the crowd",
-            "the crowd",
-            "newly appointed"
-          ],
-          "answerIndex": 0,
-          "explanation": "'The newly appointed district commissioner' is the noun phrase; it contains the head noun 'commissioner' with pre-modifiers and functions as the subject."
-        },
-        {
-          "question": "Which sentence uses the correct adjective order within a noun phrase?",
-          "options": [
-            "She wore a red beautiful large dress.",
-            "She wore a beautiful large red dress.",
-            "She wore a large beautiful red dress.",
-            "She wore a red large beautiful dress."
-          ],
-          "answerIndex": 1,
-          "explanation": "The correct pre-modifier order is opinion (beautiful) → size (large) → colour (red) → head noun (dress)."
-        },
-        {
-          "question": "In 'The report of the committee was tabled in parliament', which is the head noun of the subject noun phrase?",
-          "options": [
-            "committee",
-            "parliament",
-            "report",
-            "The"
-          ],
-          "answerIndex": 2,
-          "explanation": "'Report' is the head noun; 'of the committee' is a post-modifying prepositional phrase. Subject–verb agreement ('was') is with 'report'."
-        }
+      "examTips": [
+        "If a group of words works like a noun, it is a Noun Phrase.",
+        "Find the head noun first.",
+        "Then identify the phrase function: subject, object, complement, or object of a preposition."
       ],
-      "quiz": [
-        {
-          "question": "Which of the following is NOT a noun phrase?",
-          "options": [
-            "the old wooden bridge",
-            "several important policy decisions",
-            "because she arrived late",
-            "Pakistan's rapidly growing economy"
-          ],
-          "answerIndex": 2,
-          "explanation": "'Because she arrived late' is a subordinate adverbial clause (it has a subject 'she' and verb 'arrived'), not a noun phrase."
-        },
-        {
-          "question": "In 'He gave the poor farmer a bag of wheat', 'the poor farmer' is a noun phrase functioning as:",
-          "options": [
-            "direct object",
-            "subject complement",
-            "indirect object",
-            "appositive"
-          ],
-          "answerIndex": 2,
-          "explanation": "'The poor farmer' is the indirect object (recipient of the giving); 'a bag of wheat' is the direct object."
-        },
-        {
-          "question": "Which sentence demonstrates correct subject–verb agreement when a post-modified noun phrase is the subject?",
-          "options": [
-            "The quality of the essays were poor.",
-            "The quality of the essays was poor.",
-            "The quality of the essays are poor.",
-            "The quality of the essays have been poor."
-          ],
-          "answerIndex": 1,
-          "explanation": "The head noun of the subject NP is 'quality' (singular), so the verb must be singular: 'was'."
-        }
-      ],
-      "summary": "A noun phrase is a noun or pronoun together with all its pre- and post-modifiers, functioning as a single noun unit in a sentence. Its head noun determines grammatical agreement; the phrase itself has no internal subject–verb pair. Pre-modifiers follow a strict order (determiner → opinion → size → age → shape → colour → origin → material → noun), while post-modifiers (prepositional phrases, relative clauses) follow the head."
+      "summary": "A noun phrase works like a noun and adds information by making a person, place, thing, or idea more specific.",
+      "structure": [
+        "Determiner + Adjective(s) + Noun + Modifier",
+        "Examples: **the smart student**; **a beautiful garden**; **the three intelligent students in my class**",
+        "A noun phrase does not always contain all these parts.",
+        "Short examples: **students**; **my friend**; **the boy**; **the very intelligent student**"
+      ]
     }
   },
   {
@@ -12398,154 +11425,96 @@
       "verbal"
     ],
     "content": {
-      "introduction": "A participial phrase is a non-finite verb phrase headed by a present participle (-ing) or past participle (-ed/-en) that functions as an adjective, modifying a noun or pronoun. It adds descriptive information efficiently and is a mark of sophisticated writing. Dangling and misplaced participial phrases are among the most tested error types in CSS/PMS and IELTS grammar correction tasks. A participial phrase contains no subject–verb pair, which is why misattribution of its implied subject is such a common error.",
-      "urduExplanation": "Participial phrase ایک non-finite phrase ہے جس کا head present participle (-ing) یا past participle (-ed/-en) ہو اور یہ کسی noun یا pronoun کو adjective کی طرح modify کرے۔ یہ sentence کو مختصر اور معنی خیز بناتا ہے۔ مثلاً 'Walking along the river, she noticed the pollution' میں 'Walking along the river' subject 'she' کو modify کر رہا ہے۔ سب سے بڑی غلطی 'dangling participle' ہے — جب participial phrase کا منطقی subject اصل sentence میں موجود نہ ہو۔ CSS اور PMS کے Error Detection سوالات میں dangling اور misplaced participial phrases کثرت سے آتے ہیں۔",
-      "englishExplanation": "A participial phrase (PP) is headed by a present participle (verb + -ing; e.g. 'running', 'having completed') or a past participle (e.g. 'written', 'defeated'). It functions exclusively as an adjective, modifying the nearest noun or pronoun. When placed at the beginning of a sentence, it must logically modify the grammatical subject of the main clause. Present participial phrases indicate an action simultaneous with or immediately preceding the main verb's action. Past participial phrases typically indicate a passive or completed quality of the modified noun. Perfect participial phrases ('Having reviewed the evidence') stress that the participial action was completed before the main verb's action. A dangling participle occurs when the implied subject of the participial phrase does not match the grammatical subject of the main clause — a major formal error. A misplaced participle occurs when the phrase is positioned too far from the noun it modifies, creating ambiguity or absurdity. Participial phrases have no internal subject–verb pair, which is the structural reason for dangling-modifier errors.",
-      "types": [
-        {
-          "name": "Present Participial Phrase",
-          "description": "Headed by -ing form; indicates an action ongoing or simultaneous with the main verb: 'Carrying several files, she entered the office.'"
-        },
-        {
-          "name": "Past Participial Phrase",
-          "description": "Headed by past participle (-ed/-en); usually passive or adjectival: 'Exhausted by the long journey, the diplomat cancelled the meeting.'"
-        },
-        {
-          "name": "Perfect Participial Phrase",
-          "description": "Headed by 'having + past participle'; indicates completion before the main clause action: 'Having submitted the report, he left the office.'"
-        },
-        {
-          "name": "Passive Perfect Participial Phrase",
-          "description": "Headed by 'having been + past participle': 'Having been informed of the decision, the committee members dispersed.'"
-        },
-        {
-          "name": "Absolute Phrase (Nominative Absolute)",
-          "description": "A special participial construction with its own subject: 'Weather permitting, the ceremony will be held outdoors.' This is not a dangling participle because it has its own stated subject."
-        }
-      ],
+      "introduction": "A participle phrase is a group of words that begins with a present participle (-ing) or past participle (-ed, -en, etc.) and works like an adjective to describe a noun or pronoun.",
+      "urduExplanation": "Participle Phrase (اسمِ صفتی فقرہ) الفاظ کا ایسا مجموعہ ہے جو Present Participle (-ing) یا Past Participle (-ed, -en وغیرہ) سے شروع ہوتا ہے اور جملے میں Adjective کی طرح کسی noun یا pronoun کی وضاحت کرتا ہے۔",
       "rules": [
-        "A participial phrase must be placed as close as possible to the noun it modifies, normally immediately before or after it.",
-        "When a participial phrase opens a sentence, its implied subject must be the grammatical subject of the main clause — any mismatch creates a dangling participle.",
-        "Present participial phrases indicate an action concurrent with or just preceding the main verb; past participial phrases indicate a completed or passive quality.",
-        "Perfect participial phrases ('Having + past participle') signal that the participial action was fully completed before the main clause action began.",
-        "A participial phrase must not be confused with a gerund phrase: if the -ing phrase modifies a noun (adjective function), it is participial; if it acts as a noun, it is a gerund.",
-        "Absolute phrases (subject + participle) are not dangling because they have their own stated subject and modify the entire clause, not just the subject."
+        "A participle phrase begins with a present participle or past participle.",
+        "It describes a noun or pronoun.",
+        "It gives additional information without creating a separate sentence.",
+        "A present participle normally ends in -ing; a past participle may end in -ed, -en, or another form.",
+        "Check that the phrase is placed near the noun or pronoun it describes."
       ],
       "examples": [
         {
-          "text": "Inspired by the speech, the volunteers worked with renewed energy.",
-          "note": "'Inspired by the speech' is a past participial phrase modifying 'volunteers' (the grammatical subject). The phrase is correctly placed."
+          "text": "The boy **wearing a blue shirt** is my brother.",
+          "urdu": "نیلی قمیض پہنے ہوئے لڑکا میرا بھائی ہے۔",
+          "note": "The bold phrase describes **boy**."
         },
         {
-          "text": "Having secured the highest marks, she was offered a scholarship.",
-          "note": "'Having secured the highest marks' — perfect participial phrase; the action of securing marks was completed before the scholarship was offered."
+          "text": "**Tired after the long journey**, the travelers rested.",
+          "urdu": "طویل سفر کے بعد تھکے ہوئے، مسافروں نے آرام کیا۔",
+          "note": "The phrase describes the travelers."
         },
         {
-          "text": "The report submitted by the commission revealed serious irregularities.",
-          "note": "'Submitted by the commission' — past participial phrase post-modifying 'report'. It functions adjectivally: which report?"
+          "text": "The books **written by Shakespeare** are famous.",
+          "urdu": "شیکسپیئر کی لکھی ہوئی کتابیں مشہور ہیں۔",
+          "note": "The phrase describes **books**."
         },
         {
-          "text": "Walking through the old city, he noticed the blend of ancient and modern architecture.",
-          "note": "'Walking through the old city' — present participial phrase modifying the subject 'he'. The subject of the main clause correctly matches the implied subject of the phrase."
+          "text": "The girl **wearing a red dress** is my sister.",
+          "urdu": "سرخ لباس پہنے لڑکی میری بہن ہے۔",
+          "note": "The phrase describes the noun **girl**."
         },
         {
-          "text": "The officer, thoroughly exhausted by the lengthy proceedings, requested a recess.",
-          "note": "'Thoroughly exhausted by the lengthy proceedings' — past participial phrase embedded mid-sentence as a post-modifier of 'officer'. The adverb 'thoroughly' modifies the participle 'exhausted'."
+          "text": "**Feeling tired**, he went to bed.",
+          "urdu": "تھکا ہوا محسوس کرتے ہوئے، وہ بستر پر چلا گیا۔",
+          "note": "The phrase describes the pronoun **he**."
+        },
+        {
+          "text": "The car **damaged in the accident** was repaired.",
+          "urdu": "حادثے میں خراب ہونے والی گاڑی کی مرمت کی گئی۔",
+          "note": "The phrase describes **car**."
+        },
+        {
+          "text": "The man **standing near the door** is my teacher.",
+          "urdu": "دروازے کے پاس کھڑا آدمی میرا استاد ہے۔",
+          "note": "Participle: **standing**; it describes **man** and functions as an adjective."
         }
       ],
       "commonMistakes": [
         {
-          "wrong": "Walking down the street, the rain began to fall.",
-          "right": "Walking down the street, she noticed that the rain had begun to fall.",
-          "note": "DANGLING PARTICIPLE: 'Walking down the street' implies a human subject, but the main clause's subject is 'the rain', which cannot walk. Rewrite to align the subjects."
+          "wrong": "Wearing a blue shirt, the boy is my brother.",
+          "right": "The boy wearing a blue shirt is my brother.",
+          "urdu": "نیلی قمیض پہنے لڑکا میرا بھائی ہے۔",
+          "note": "Place the phrase clearly beside the noun it describes to avoid confusion."
         },
         {
-          "wrong": "Exhausted from the journey, the bed looked very inviting.",
-          "right": "Exhausted from the journey, she found the bed very inviting.",
-          "note": "DANGLING PARTICIPLE: 'Exhausted' implies a person as subject, but the main clause's subject is 'the bed'. Correct by making the person the grammatical subject."
-        },
-        {
-          "wrong": "Having been reviewed, the committee accepted the proposal.",
-          "right": "Having reviewed the proposal, the committee accepted it.",
-          "note": "If the committee did the reviewing, the phrase should be active: 'Having reviewed'. 'Having been reviewed' implies the committee was reviewed, not the proposal."
-        },
-        {
-          "wrong": "She submitted a report written hurried.",
-          "right": "She submitted a hurriedly written report.",
-          "note": "Adverbs, not adjectives, modify participles. 'Hurried' is an adjective; 'hurriedly' is the correct adverb form to modify the participle 'written'."
+          "wrong": "The books writing by Shakespeare are famous.",
+          "right": "The books written by Shakespeare are famous.",
+          "urdu": "شیکسپیئر کی لکھی ہوئی کتابیں مشہور ہیں۔",
+          "note": "Use the past participle **written**, not the base form **writing**, for books receiving the action."
         }
       ],
-      "practice": [
-        {
-          "question": "Identify the dangling participial phrase in the following sentences:",
-          "options": [
-            "Determined to succeed, she prepared rigorously for the exam.",
-            "Having read the brief, the minister gave a detailed response.",
-            "Driving through Lahore, the Badshahi Mosque came into view.",
-            "Exhausted by the heat, the officers requested shade."
-          ],
-          "answerIndex": 2,
-          "explanation": "'Driving through Lahore' implies a human driver, but the main clause's subject is 'the Badshahi Mosque', which cannot drive. This is a classic dangling participle. The other three correctly align the participial phrase with a human subject."
-        },
-        {
-          "question": "What is the function of the participial phrase in: 'The documents signed by the minister were sent to Islamabad'?",
-          "options": [
-            "It acts as the subject of the sentence.",
-            "It acts as an adjective modifying 'documents'.",
-            "It acts as an adverb modifying 'sent'.",
-            "It acts as the main verb of the sentence."
-          ],
-          "answerIndex": 1,
-          "explanation": "'Signed by the minister' is a past participial phrase post-modifying the noun 'documents' (which documents? — those signed by the minister). It functions adjectivally."
-        },
-        {
-          "question": "Which sentence uses a perfect participial phrase correctly?",
-          "options": [
-            "Having been submitting the form, she felt relieved.",
-            "Having submitted the form, she felt relieved.",
-            "Having submit the form, she felt relieved.",
-            "Have submitted the form, she felt relieved."
-          ],
-          "answerIndex": 1,
-          "explanation": "The perfect participial phrase is formed with 'having + past participle': 'Having submitted'. This correctly indicates that submitting was completed before feeling relieved."
-        }
+      "examTips": [
+        "Participle Phrase = Participle + other words, working like an adjective.",
+        "If a participle phrase describes a noun or pronoun, it functions as an adjective.",
+        "Compare: **The boy wearing a blue shirt** (participle phrase); The boy **is wearing a blue shirt** (verb phrase)."
       ],
-      "quiz": [
-        {
-          "question": "In 'Weather permitting, the convocation will be held in the open ground', what type of construction is 'Weather permitting'?",
-          "options": [
-            "A dangling participial phrase",
-            "A present participial phrase modifying the subject",
-            "An absolute phrase with its own stated subject",
-            "A gerund phrase"
-          ],
-          "answerIndex": 2,
-          "explanation": "'Weather permitting' is an absolute phrase — it has its own stated subject ('Weather') and its own participle ('permitting'). It modifies the entire main clause and is not a dangling participle."
-        },
-        {
-          "question": "Which correctly distinguishes a participial phrase from a gerund phrase?",
-          "options": [
-            "A participial phrase uses -ing; a gerund phrase uses -ed.",
-            "A participial phrase functions as a noun; a gerund phrase functions as an adjective.",
-            "A participial phrase functions as an adjective; a gerund phrase functions as a noun.",
-            "They are identical in function and differ only in position."
-          ],
-          "answerIndex": 2,
-          "explanation": "A participial phrase always modifies a noun (adjective function). A gerund phrase always acts as a noun (subject, object, complement). Both can begin with an -ing word."
-        },
-        {
-          "question": "Correct the dangling participle: 'Having lost the key, the door could not be opened.'",
-          "options": [
-            "Having lost the key, nobody could open the door.",
-            "Having lost the key, the door was locked by nobody.",
-            "The door could not be opened having lost the key.",
-            "Having been losing the key, the door refused to open."
-          ],
-          "answerIndex": 0,
-          "explanation": "The phrase 'Having lost the key' implies a person as subject. The corrected sentence makes 'nobody' (a person) the grammatical subject: 'Having lost the key, nobody could open the door.'"
-        }
+      "structure": [
+        "Participle + Object / Modifier(s)",
+        "Examples: **wearing a blue shirt**; **running very quickly**; **tired after the journey**; **written by Shakespeare**; **broken by the child**",
+        "A participle phrase can contain a participle + object + modifiers: **Wearing a blue shirt**; **Written by Shakespeare**."
       ],
-      "summary": "A participial phrase is headed by a present or past participle and functions exclusively as an adjective modifying a noun or pronoun. It must be placed immediately adjacent to the noun it modifies; when fronted, its implied subject must match the main clause's grammatical subject. Dangling participles (mismatched implied subject) and misplaced participles (wrong position) are major CSS/PMS error types. Absolute phrases have their own stated subject and are not dangling. A participial phrase has no subject–verb pair."
+      "tableTitle": "Functions of a Participle Phrase",
+      "tableColumns": [
+        "Function",
+        "Example"
+      ],
+      "tableRows": [
+        [
+          "Describe a noun",
+          "The girl wearing a red dress is my sister."
+        ],
+        [
+          "Describe a pronoun",
+          "Feeling tired, he went to bed."
+        ],
+        [
+          "Give additional information",
+          "The car damaged in the accident was repaired."
+        ]
+      ],
+      "summary": "A participle phrase adds descriptive information about a noun or pronoun without creating a separate sentence."
     }
   },
   {
@@ -12566,158 +11535,99 @@
       "complement"
     ],
     "content": {
-      "introduction": "A prepositional phrase consists of a preposition followed by its object (a noun phrase, pronoun, gerund, or noun clause) and any modifiers of that object. Prepositional phrases are among the most frequent phrase types in English and function either adjectivally (modifying nouns) or adverbially (modifying verbs/clauses). They are heavily tested in CSS/PMS, IELTS, and all competitive exam grammar sections. A prepositional phrase has no subject–verb pair and thus is not a clause.",
-      "urduExplanation": "Prepositional phrase میں ایک preposition اور اس کے بعد کا object (noun phrase یا pronoun) شامل ہوتا ہے۔ یہ phrase دو طرح کام کرتا ہے: noun کو modify کرے تو adjectival اور verb کو modify کرے تو adverbial۔ مثلاً 'in the morning' adverbial prepositional phrase ہے (وقت بتا رہا ہے) اور 'the book on the table' میں 'on the table' adjectival ہے (کون سی کتاب؟)۔ اس میں اپنا subject اور verb نہیں ہوتا۔ CSS کے Grammar اور Comprehension کے سوالات میں prepositional phrases بہت زیادہ آتے ہیں۔",
-      "englishExplanation": "A prepositional phrase (PP) is formed by a preposition (in, on, at, by, for, with, through, under, between, etc.) followed by a noun phrase as its object. The object is called the object of the preposition. Prepositional phrases function adjectivally when they post-modify a noun: 'the officer in charge', 'a student from Lahore'. They function adverbially when they modify a verb, adjective, or clause: 'She arrived at noon', 'He is good at mathematics'. Complex prepositions combine two or three words: 'because of', 'in spite of', 'on behalf of', 'according to', 'in front of'. The object of a preposition must be in the objective case (pronoun): 'between you and me', NOT 'between you and I'. Prepositional phrases may be stacked or embedded: 'the man at the top of the ladder in the corner of the room'. They do not contain a subject–verb pair; 'after she left' is an adverbial clause, while 'after the meeting' is a prepositional phrase.",
-      "types": [
-        {
-          "name": "Adjectival Prepositional Phrase",
-          "description": "Post-modifies a noun or pronoun: 'the policy on taxation', 'something of great value'. Answers 'which one?' or 'what kind?'."
-        },
-        {
-          "name": "Adverbial Prepositional Phrase (Manner)",
-          "description": "Modifies a verb showing how: 'He spoke with great confidence', 'She acted in a professional manner'."
-        },
-        {
-          "name": "Adverbial Prepositional Phrase (Time)",
-          "description": "Indicates when or duration: 'at dawn', 'during the examination', 'for three years', 'since independence'."
-        },
-        {
-          "name": "Adverbial Prepositional Phrase (Place)",
-          "description": "Indicates where: 'in Islamabad', 'at the Ministry of Finance', 'behind the court building'."
-        },
-        {
-          "name": "Prepositional Phrase as Subject Complement",
-          "description": "Follows a linking verb and describes the subject: 'The book is on the shelf', 'She is in charge of the project'."
-        },
-        {
-          "name": "Complex Preposition Phrase",
-          "description": "Uses multi-word prepositions: 'in accordance with the rules', 'on behalf of the government', 'in spite of the obstacles'."
-        }
-      ],
+      "introduction": "A prepositional phrase is a group of words that begins with a preposition and ends with its object.",
+      "urduExplanation": "Prepositional Phrase (حرفِ جار کا فقرہ) الفاظ کا ایسا مجموعہ ہے جو Preposition سے شروع ہوتا ہے اور اس کے Object پر ختم ہوتا ہے۔",
       "rules": [
-        "A prepositional phrase always begins with a preposition and must have a noun phrase (or pronoun/gerund) as its object; a preposition cannot stand alone.",
-        "The object of a preposition must be in the objective (accusative) case: 'for him/her/them/me', never 'for he/she/they/I'.",
-        "When a prepositional phrase functions adjectivally, it must immediately follow the noun it modifies to avoid ambiguity.",
-        "Prepositional phrases used adverbially can be fronted for emphasis and should then be followed by a comma: 'In times of crisis, leadership matters.'",
-        "Do not end a sentence with a preposition in formal writing when a more natural construction is available; however, in speech and informal writing it is widely accepted.",
-        "Stacked prepositional phrases can create ambiguity; restructuring is preferred for clarity in formal register."
+        "A prepositional phrase starts with a preposition and includes its object.",
+        "The object of the preposition may itself be a noun phrase.",
+        "A prepositional phrase can show place, time, direction, manner, or relationship.",
+        "It can describe a noun or give additional information about an action.",
+        "Find the preposition first, then include its object and any modifiers."
       ],
       "examples": [
         {
-          "text": "The minister of finance presented the budget in the National Assembly.",
-          "note": "'of finance' (adjectival, modifying 'minister') and 'in the National Assembly' (adverbial of place)."
+          "text": "The book is **on the table**.",
+          "urdu": "کتاب میز پر ہے۔",
+          "note": "The bold words begin with the preposition **on** and show place."
         },
         {
-          "text": "She was appointed on behalf of the provincial government.",
-          "note": "'on behalf of the provincial government' is a complex prepositional phrase functioning adverbially."
+          "text": "She walked **through the park**.",
+          "urdu": "وہ پارک میں سے گزرتی ہوئی چلی۔",
+          "note": "The phrase begins with **through** and ends with its object **park**."
         },
         {
-          "text": "In spite of numerous obstacles, the project was completed on schedule.",
-          "note": "'In spite of numerous obstacles' (adverbial of concession) is fronted and followed by a comma."
+          "text": "I met him **after the class**.",
+          "urdu": "میں اس سے کلاس کے بعد ملا۔",
+          "note": "The phrase shows when I met him."
         },
         {
-          "text": "The report on the economic crisis was submitted to the committee.",
-          "note": "'on the economic crisis' — adjectival PP modifying 'report'; 'to the committee' — adverbial PP of direction."
+          "text": "The girl **in the blue dress** is my sister.",
+          "urdu": "نیلے لباس والی لڑکی میری بہن ہے۔",
+          "note": "The phrase describes the noun **girl**."
         },
         {
-          "text": "Between you and me, the decision was poorly made.",
-          "note": "Correct use of objective pronouns 'you' and 'me' as objects of the preposition 'between'."
+          "text": "He spoke **with confidence**.",
+          "urdu": "اس نے اعتماد کے ساتھ بات کی۔",
+          "note": "The phrase describes how he spoke."
+        },
+        {
+          "text": "The students are sitting **under the tree**.",
+          "urdu": "طلبہ درخت کے نیچے بیٹھے ہیں۔",
+          "note": "Preposition: **under**; object: **tree**; function: shows place."
         }
       ],
       "commonMistakes": [
         {
-          "wrong": "Between you and I, this is a mistake.",
-          "right": "Between you and me, this is a mistake.",
-          "note": "The object of a preposition must be in the objective case: 'me', not 'I'."
+          "wrong": "The book is on.",
+          "right": "The book is on the table.",
+          "urdu": "کتاب میز پر ہے۔",
+          "note": "The preposition **on** needs its object **the table** to form the complete phrase."
         },
         {
-          "wrong": "She is interested for classical music.",
-          "right": "She is interested in classical music.",
-          "note": "Adjectives take fixed prepositions. 'Interested' collocates with 'in', not 'for'."
-        },
-        {
-          "wrong": "I will meet you on Monday morning at 9 AM in morning.",
-          "right": "I will meet you on Monday morning at 9 AM.",
-          "note": "Redundant prepositional phrases: 'in morning' is incorrect and duplicates 'Monday morning'. Use 'in the morning' only when the day is unspecified."
-        },
-        {
-          "wrong": "The student which I told you sits at the back.",
-          "right": "The student whom I told you about sits at the back.",
-          "note": "'About' completes the prepositional phrase; stranding is acceptable in speech, but 'which' must not refer to a person."
+          "wrong": "She walked through.",
+          "right": "She walked through the park.",
+          "urdu": "وہ پارک میں سے گزرتی ہوئی چلی۔",
+          "note": "The preposition **through** must be followed by its object."
         }
       ],
-      "practice": [
-        {
-          "question": "In 'The officials from the northern districts attended the conference in Islamabad', which prepositional phrase is adjectival?",
-          "options": [
-            "in Islamabad",
-            "from the northern districts",
-            "at the conference",
-            "during the conference"
-          ],
-          "answerIndex": 1,
-          "explanation": "'From the northern districts' post-modifies the noun 'officials' (which officials? — those from the northern districts), making it adjectival."
-        },
-        {
-          "question": "Which sentence contains an error in the use of a prepositional phrase?",
-          "options": [
-            "The decision was made in accordance with the law.",
-            "She is capable of handling complex cases.",
-            "He distributed the prizes between the three winners.",
-            "She is married with a doctor."
-          ],
-          "answerIndex": 3,
-          "explanation": "The fixed collocation is 'married to', not 'married with'. Prepositional collocations are frequently tested in CSS/PMS."
-        },
-        {
-          "question": "Which option correctly uses the objective case after a preposition?",
-          "options": [
-            "This is a matter between he and the director.",
-            "The agreement is between she and the board.",
-            "The credit goes to her and the team.",
-            "Give the award to they who worked hardest."
-          ],
-          "answerIndex": 2,
-          "explanation": "'To her' correctly uses the objective pronoun as object of the preposition 'to'. 'He', 'she', and 'they' are subjective and incorrect after prepositions."
-        }
+      "examTips": [
+        "Prepositional Phrase = Preposition + Object.",
+        "Find the preposition first.",
+        "Include the preposition, its object, and any words modifying the object."
       ],
-      "quiz": [
-        {
-          "question": "In 'A student of great determination will succeed in any exam', identify the adjectival prepositional phrase.",
-          "options": [
-            "in any exam",
-            "will succeed",
-            "of great determination",
-            "A student"
-          ],
-          "answerIndex": 2,
-          "explanation": "'Of great determination' post-modifies the noun 'student' (what kind of student?), making it an adjectival prepositional phrase."
-        },
-        {
-          "question": "Which of the following is a complex preposition?",
-          "options": [
-            "in",
-            "on",
-            "according to",
-            "at"
-          ],
-          "answerIndex": 2,
-          "explanation": "'According to' is a complex (multi-word) preposition consisting of two words. The others are simple one-word prepositions."
-        },
-        {
-          "question": "Identify the sentence where the prepositional phrase is incorrectly placed (causing ambiguity).",
-          "options": [
-            "She submitted the report on government corruption to the committee.",
-            "He noticed the man with a telescope in the park.",
-            "In the morning, the candidates arrived at the exam center.",
-            "The minister addressed the crowd from the stage."
-          ],
-          "answerIndex": 1,
-          "explanation": "'With a telescope' is ambiguously placed — it could modify 'man' (he had a telescope) or 'noticed' (he used a telescope). It should be repositioned: 'Using a telescope, he noticed the man in the park.'"
-        }
+      "structure": [
+        "Preposition + Object",
+        "Examples: **in the room**; **on the table**; **under the chair**; **with my friend**; **after the class**; **near the school**",
+        "The object can itself be a noun phrase: **in the large classroom**. Here, **in** is the preposition and **the large classroom** is its object."
       ],
-      "summary": "A prepositional phrase begins with a preposition followed by a noun phrase object; it functions adjectivally (modifying nouns) or adverbially (modifying verbs, adjectives, or clauses), and sometimes as a subject complement. Objects of prepositions must be in the objective case. Complex prepositions (in spite of, on behalf of, according to) are common in formal register and frequently tested in CSS/PMS. Prepositional phrases have no subject–verb pair, distinguishing them from adverbial clauses."
+      "tableTitle": "Functions of a Prepositional Phrase",
+      "tableColumns": [
+        "Function",
+        "Example"
+      ],
+      "tableRows": [
+        [
+          "Show place",
+          "The keys are on the table."
+        ],
+        [
+          "Show time",
+          "We arrived after the class."
+        ],
+        [
+          "Show direction",
+          "He walked toward the door."
+        ],
+        [
+          "Describe a noun",
+          "The girl in the blue dress is my sister."
+        ],
+        [
+          "Describe an action",
+          "He spoke with confidence."
+        ]
+      ],
+      "summary": "A prepositional phrase follows the pattern preposition + object and adds information about place, time, direction, manner, or relationship."
     }
   },
   {
@@ -12738,154 +11648,78 @@
       "verb group"
     ],
     "content": {
-      "introduction": "A verb phrase is the complete verb element of a clause, consisting of a main verb and any auxiliary or modal verbs that accompany it. It expresses tense, aspect, voice, and modality — the core of what a clause predicates. For CSS/PMS grammar sections and IELTS writing, mastering verb phrases is crucial for accurate tense usage and error identification. A verb phrase does not include a subject; it is strictly the verbal part of the predicate.",
-      "urduExplanation": "Verb phrase کسی clause کا وہ حصہ ہے جس میں main verb اور اس کے ساتھ آنے والے auxiliaries یا modals شامل ہوتے ہیں۔ مثال کے طور پر 'has been working' ایک verb phrase ہے جس میں 'has been' auxiliary اور 'working' main verb ہے۔ یہ tense، aspect اور voice ظاہر کرتا ہے — یعنی بتاتا ہے کہ کام کب، کیسے اور کس نے کیا۔ یاد رہے کہ verb phrase میں subject نہیں ہوتا؛ subject باہر noun phrase میں ہوتا ہے۔ CSS کے Error Detection اور IELTS Writing میں verb phrases کی غلطیاں بہت عام ہیں، اس لیے ان کی پہچان ضروری ہے۔",
-      "englishExplanation": "A verb phrase (VP) consists of a head main verb preceded by one or more auxiliary verbs (be, have, do) and/or modal verbs (will, would, can, could, may, might, shall, should, must, ought to). The structure follows a fixed order: (modal) + (have + past participle) + (be + present participle/past participle) + main verb. Verb phrases encode four grammatical categories: tense (past/present), aspect (simple/progressive/perfect/perfect-progressive), voice (active/passive), and modality (possibility, permission, obligation). Example: 'must have been being questioned' — modal + perfect aspect + progressive passive (rare but grammatically valid). A verb phrase is distinct from a verbal phrase (gerund, infinitive, participial phrases) in that it IS the finite verb of a clause, not a non-finite construction. In error-detection questions, candidates must identify the correct auxiliary sequence, tense consistency, and subject–verb agreement.",
-      "types": [
-        {
-          "name": "Simple Verb Phrase",
-          "description": "Contains only the main verb in present or past tense, e.g. 'writes', 'arrived'. No auxiliaries."
-        },
-        {
-          "name": "Auxiliary + Main Verb",
-          "description": "One auxiliary precedes the main verb: 'is writing', 'has written', 'did arrive'. Expresses aspect or emphasis."
-        },
-        {
-          "name": "Modal Verb Phrase",
-          "description": "A modal precedes the main verb or an auxiliary: 'can speak', 'should have submitted', 'might be waiting'."
-        },
-        {
-          "name": "Passive Verb Phrase",
-          "description": "Formed with be + past participle: 'was appointed', 'has been approved', 'will be announced'."
-        },
-        {
-          "name": "Perfect Progressive Verb Phrase",
-          "description": "Combines perfect and progressive aspects: 'has been working', 'had been studying'. Shows ongoing action up to a reference point."
-        }
-      ],
+      "introduction": "A verb phrase is a group of words that works together as the verb in a sentence.",
+      "urduExplanation": "Verb Phrase (فعلی فقرہ) الفاظ کا ایسا مجموعہ ہے جو جملے میں Verb (فعل) کی طرح کام کرتا ہے اور عمل یا حالت کو ظاہر کرتا ہے۔",
       "rules": [
-        "In a verb phrase, the auxiliaries always precede the main verb; the main verb always comes last in the chain.",
-        "Modals (will, shall, can, may, must, etc.) are followed by the bare infinitive (base form without 'to').",
-        "The auxiliary 'have' is followed by the past participle; the auxiliary 'be' is followed by the present participle (-ing) for progressive or past participle for passive.",
-        "Tense is marked only on the first word of the verb phrase (modal or first auxiliary), never on the main verb when auxiliaries are present.",
-        "In negative sentences, 'not' is inserted after the first auxiliary: 'has not been approved', 'could not have known'.",
-        "In questions, the first auxiliary is inverted with the subject: 'Has she been informed?' not 'She has been informed?'"
+        "A verb phrase contains a main verb and may contain one or more helping verbs.",
+        "Helping verbs can show tense, time, possibility, ability, or necessity.",
+        "Find the main verb and all helping verbs that work with it.",
+        "The complete group, not only the main verb, forms the verb phrase.",
+        "A verb phrase can show an action, state, condition, or time."
       ],
       "examples": [
         {
-          "text": "The committee has been reviewing the proposals for three weeks.",
-          "note": "'has been reviewing' is the verb phrase: 'has' (auxiliary/perfect) + 'been' (auxiliary/progressive) + 'reviewing' (main verb)."
+          "text": "He **is playing football**.",
+          "urdu": "وہ فٹبال کھیل رہا ہے۔",
+          "note": "The bold words work together as the verb of the sentence."
         },
         {
-          "text": "The budget will be announced next month.",
-          "note": "'will be announced' — modal + passive: future passive verb phrase."
+          "text": "She **has finished her work**.",
+          "urdu": "اس نے اپنا کام مکمل کر لیا ہے۔",
+          "note": "The verb phrase **has finished** shows a completed action."
         },
         {
-          "text": "She might not have submitted the form in time.",
-          "note": "'might not have submitted' — modal + negative + perfect aspect."
+          "text": "They **will be traveling tomorrow**.",
+          "urdu": "وہ کل سفر کر رہے ہوں گے۔",
+          "note": "The verb phrase **will be traveling** shows a future ongoing action."
         },
         {
-          "text": "The suspect was being interrogated when the lawyer arrived.",
-          "note": "'was being interrogated' — past progressive passive verb phrase."
+          "text": "She **has been studying English for two hours**.",
+          "urdu": "وہ دو گھنٹے سے انگریزی پڑھ رہی ہے۔",
+          "note": "Main verb: **studying**; helping verbs: **has, been**; the phrase shows an ongoing action."
         },
         {
-          "text": "He could have been waiting for hours.",
-          "note": "'could have been waiting' — modal + perfect + progressive (modal perfect progressive)."
+          "text": "You **should study harder**.",
+          "urdu": "آپ کو زیادہ محنت سے پڑھنا چاہیے۔",
+          "note": "The verb phrase shows advice or necessity."
+        },
+        {
+          "text": "He **has been ill for two days**.",
+          "urdu": "وہ دو دن سے بیمار ہے۔",
+          "note": "The verb phrase shows a state or condition."
+        },
+        {
+          "text": "They **will have finished the work**.",
+          "urdu": "وہ کام مکمل کر چکے ہوں گے۔",
+          "note": "The verb phrase shows future completion."
         }
       ],
       "commonMistakes": [
         {
-          "wrong": "She has wrote the report.",
-          "right": "She has written the report.",
-          "note": "After 'have/has', use the past participle ('written'), not the simple past ('wrote')."
+          "wrong": "She has finish her work.",
+          "right": "She has finished her work.",
+          "urdu": "اس نے اپنا کام مکمل کر لیا ہے۔",
+          "note": "After **has**, use the past participle **finished** in this verb phrase."
         },
         {
-          "wrong": "He did not went to the office.",
-          "right": "He did not go to the office.",
-          "note": "After auxiliary 'did', use the bare infinitive (base form), not the past tense."
-        },
-        {
-          "wrong": "They must to submit the form.",
-          "right": "They must submit the form.",
-          "note": "Modal verbs are followed by the bare infinitive, never 'to + verb'."
-        },
-        {
-          "wrong": "The decision will announced tomorrow.",
-          "right": "The decision will be announced tomorrow.",
-          "note": "Passive voice requires 'be' before the past participle: 'will be announced'."
+          "wrong": "They will traveling tomorrow.",
+          "right": "They will be traveling tomorrow.",
+          "urdu": "وہ کل سفر کر رہے ہوں گے۔",
+          "note": "The future continuous verb phrase needs **will + be + -ing form**."
         }
       ],
-      "practice": [
-        {
-          "question": "Which sentence contains a verb phrase in the present perfect passive?",
-          "options": [
-            "She has been waiting since morning.",
-            "The application has been approved.",
-            "They will have completed the task.",
-            "He was writing a letter."
-          ],
-          "answerIndex": 1,
-          "explanation": "'Has been approved' = have + been (passive auxiliary) + past participle. This is present perfect passive. Option A is present perfect progressive (active)."
-        },
-        {
-          "question": "Identify the error in: 'The minister should has informed parliament.'",
-          "options": [
-            "should has — modal must be followed by bare infinitive 'have'",
-            "has informed — wrong tense",
-            "parliament — wrong word",
-            "The minister — wrong subject"
-          ],
-          "answerIndex": 0,
-          "explanation": "After a modal verb, the auxiliary 'have' must be in its base form: 'should have informed'."
-        },
-        {
-          "question": "Which option correctly completes: 'By next year, he ___ in this department for a decade.'?",
-          "options": [
-            "will work",
-            "has been working",
-            "will have been working",
-            "would work"
-          ],
-          "answerIndex": 2,
-          "explanation": "The time marker 'By next year' signals the future perfect progressive: 'will have been working'."
-        }
+      "examTips": [
+        "Find the main verb and the helping verbs; together they form the Verb Phrase.",
+        "Do not identify only the first helping verb as the complete phrase.",
+        "Use the verb phrase to understand action, state, tense, duration, possibility, ability, or necessity."
       ],
-      "quiz": [
-        {
-          "question": "In 'The results could not have been declared before verification', which part is the verb phrase?",
-          "options": [
-            "could not have been declared",
-            "have been declared",
-            "been declared before verification",
-            "results could not"
-          ],
-          "answerIndex": 0,
-          "explanation": "'Could not have been declared' is the complete verb phrase: modal + negative + perfect auxiliary + passive auxiliary + main verb."
-        },
-        {
-          "question": "Which sequence correctly describes the structure of 'was being examined'?",
-          "options": [
-            "present tense + active progressive",
-            "past tense + passive progressive",
-            "past tense + active perfect",
-            "modal + passive"
-          ],
-          "answerIndex": 1,
-          "explanation": "'Was being examined' = past tense of 'be' + present participle of 'be' + past participle → past progressive passive."
-        },
-        {
-          "question": "Which rule is violated in: 'He has went to Karachi'?",
-          "options": [
-            "Modal must be followed by bare infinitive.",
-            "Subject–verb agreement is wrong.",
-            "'Have' must be followed by the past participle, not simple past.",
-            "Progressive aspect requires -ing form."
-          ],
-          "answerIndex": 2,
-          "explanation": "After 'has', the past participle 'gone' is required, not the simple past form 'went'."
-        }
-      ],
-      "summary": "A verb phrase consists of a main verb and its accompanying auxiliaries and/or modals, encoding tense, aspect, voice, and modality. The fixed order is: (modal) → (have + past participle) → (be + -ing/past participle) → main verb, with tense marked only on the first element. Common exam errors include using simple past after 'have', adding 'to' after modals, and omitting 'be' in passive constructions."
+      "summary": "A verb phrase is a group of words that works together to show an action, state, condition, or time.",
+      "structure": [
+        "Main Verb + Helping Verb(s) + Other Verb Forms",
+        "Examples: **is playing**; **has finished**; **will be traveling**; **has been studying**",
+        "A verb phrase may contain one or more helping verbs with a main verb.",
+        "More examples: **is working**; **was sleeping**; **has arrived**; **will have completed**; **could have been waiting**"
+      ]
     }
   },
   {
@@ -23149,116 +21983,6 @@
     }
   },
   {
-    "id": "phrases/overview",
-    "parentId": "phrases",
-    "title": "Phrase Overview",
-    "subtitle": null,
-    "order": 0,
-    "isLeaf": true,
-    "keywords": [
-      "phrase overview",
-      "grammar",
-      "exam preparation"
-    ],
-    "content": {
-      "introduction": "A phrase is a group of related words that works as one grammatical unit but does not normally contain a subject–finite-verb combination. It cannot stand alone as a complete sentence. Key characteristics are a head word, a grammatical function, and an incomplete thought. To identify a phrase, find the unit, look for its head word, and check whether it has a subject and finite verb. A phrase differs from a complete sentence because a sentence expresses a complete thought and normally contains an independent clause.",
-      "urduExplanation": "Phrase الفاظ کا ایسا مجموعہ ہے جو جملے میں ایک grammatical unit کا کام کرتا ہے، لیکن اس میں عموماً subject اور finite verb کا مکمل جوڑا نہیں ہوتا۔ Phrase اکیلا مکمل جملہ نہیں بن سکتا۔",
-      "rules": [
-        "A phrase may contain a noun, verb, adjective, adverb, or preposition as its head.",
-        "A phrase has a function such as subject, object, modifier, complement, or adverbial.",
-        "A phrase normally lacks its own subject + finite verb combination.",
-        "A complete sentence must express a complete thought; a phrase does not.",
-        "Ask “Does this group have a subject and a finite verb?” to distinguish a phrase from a clause."
-      ],
-      "examples": [
-        {
-          "text": "The very old building collapsed.",
-          "urdu": "بہت پرانی عمارت گر گئی۔",
-          "note": "**The very old building** is a noun phrase functioning as the subject."
-        },
-        {
-          "text": "She spoke with great confidence.",
-          "urdu": "اس نے بہت اعتماد کے ساتھ بات کی۔",
-          "note": "**with great confidence** is a prepositional phrase modifying the verb."
-        },
-        {
-          "text": "To solve the problem requires patience.",
-          "urdu": "مسئلہ حل کرنے کے لیے صبر درکار ہے۔",
-          "note": "**To solve the problem** is an infinitive phrase functioning as the subject."
-        }
-      ],
-      "commonMistakes": [
-        {
-          "wrong": "Because the rain stopped.",
-          "right": "After the rain stopped, the players returned.",
-          "urdu": "بارش رکنے کے بعد کھلاڑی واپس آئے۔",
-          "note": "The first group is a dependent clause, not a phrase, because it contains subject **the rain** and finite verb **stopped**."
-        }
-      ],
-      "examTips": [
-        "Find the head word first.",
-        "Then check for a subject + finite verb combination.",
-        "Do not confuse a long phrase with a clause merely because it contains many words."
-      ],
-      "summary": "A phrase is a grammatical unit without its own subject–finite-verb combination; its function depends on its head word and position in the sentence."
-    }
-  },
-  {
-    "id": "clauses/overview",
-    "parentId": "clauses",
-    "title": "Clause Overview",
-    "subtitle": null,
-    "order": 0,
-    "isLeaf": true,
-    "keywords": [
-      "clause overview",
-      "grammar",
-      "exam preparation"
-    ],
-    "content": {
-      "introduction": "A clause is a group of words containing a subject and a finite verb. An independent clause expresses a complete thought and can stand alone. A dependent or subordinate clause also contains a subject and finite verb but depends on another clause. To identify a clause, locate the subject, identify the finite verb, and decide whether the group can stand alone.",
-      "urduExplanation": "Clause الفاظ کا ایسا مجموعہ ہے جس میں subject اور finite verb موجود ہوں۔ Independent clause مکمل خیال دیتا ہے، جبکہ dependent clause مکمل معنی کے لیے دوسرے clause پر منحصر ہوتا ہے۔",
-      "rules": [
-        "A clause contains a subject and a finite verb.",
-        "A finite verb shows tense or agrees with a subject, such as **works**, **worked**, or **is working**.",
-        "An independent clause can stand alone as a complete sentence.",
-        "A dependent clause begins or functions in a way that makes it dependent on another clause.",
-        "Subordinators and relative words often signal dependent clauses: because, although, if, when, who, which, and that."
-      ],
-      "examples": [
-        {
-          "text": "The students completed the assignment.",
-          "urdu": "طلبہ نے اسائنمنٹ مکمل کر لیا۔",
-          "note": "**The students** is the subject and **completed** is the finite verb; the clause is independent."
-        },
-        {
-          "text": "because the teacher explained the rule",
-          "urdu": "کیونکہ استاد نے قاعدہ سمجھایا۔",
-          "note": "**the teacher** is the subject and **explained** is the finite verb; **because** makes the clause dependent."
-        },
-        {
-          "text": "The book that I borrowed is useful.",
-          "urdu": "وہ کتاب جو میں نے ادھار لی تھی مفید ہے۔",
-          "note": "**that I borrowed** is a relative clause modifying **book**."
-        }
-      ],
-      "commonMistakes": [
-        {
-          "wrong": "Although the exam was difficult.",
-          "right": "Although the exam was difficult, the candidates remained calm.",
-          "urdu": "اگرچہ امتحان مشکل تھا، امیدوار پُرسکون رہے۔",
-          "note": "An adverb clause beginning with **although** cannot stand alone as a complete sentence."
-        }
-      ],
-      "examTips": [
-        "Underline the subject and finite verb.",
-        "Read the clause alone to test independence.",
-        "Identify the word that connects the clause to the rest of the sentence."
-      ],
-      "summary": "A clause contains a subject and a finite verb; its classification depends on whether it can stand alone and what function it performs."
-    }
-  },
-  {
     "id": "phrases/absolute",
     "parentId": "phrases",
     "title": "Absolute Phrase",
@@ -23271,45 +21995,91 @@
       "exam preparation"
     ],
     "content": {
-      "introduction": "An absolute phrase is a noun or pronoun followed by a participle or other modifier. It modifies the whole independent clause rather than one single word. It is grammatically separate from the main clause and is usually set off by a comma.",
-      "urduExplanation": "Absolute phrase اسم یا pronoun کے ساتھ participle یا modifier پر مشتمل ہوتا ہے اور پورے main clause کی کیفیت یا حالت بیان کرتا ہے۔",
+      "introduction": "An absolute phrase is a group of words that usually contains a noun or pronoun + participle and adds extra information to the main sentence.",
+      "urduExplanation": "Absolute Phrase (مطلق فقرہ) الفاظ کا ایسا مجموعہ ہے جس میں عموماً Noun یا Pronoun + Participle ہوتا ہے اور یہ جملے کے main idea کے بارے میں اضافی معلومات دیتا ہے۔",
       "rules": [
-        "Pattern: noun/pronoun + participle or modifier.",
-        "It modifies the whole main clause, not merely one noun.",
-        "It has no finite verb of its own; its participle is non-finite.",
-        "It is commonly placed at the beginning or end and separated by a comma."
+        "An absolute phrase usually contains its own noun or pronoun.",
+        "It usually contains a participle.",
+        "It does not form a complete sentence by itself.",
+        "It adds information about the condition or circumstances surrounding the main action.",
+        "It normally does not contain a finite verb and is often separated by a comma."
       ],
       "examples": [
         {
-          "text": "The meeting over, the delegates left the hall.",
-          "urdu": "اجلاس ختم ہونے کے بعد نمائندے ہال سے نکل گئے۔",
-          "note": "**The meeting over** describes the condition surrounding the whole main clause."
+          "text": "**His work finished**, he went home.",
+          "urdu": "اپنا کام مکمل ہونے کے بعد، وہ گھر چلا گیا۔",
+          "note": "The absolute phrase gives the background condition for the main action."
         },
         {
-          "text": "Her work completed, Sana submitted the report.",
-          "urdu": "اپنا کام مکمل کر کے ثنا نے رپورٹ جمع کرائی۔",
-          "note": "**Her work completed** modifies the whole action **Sana submitted the report**."
+          "text": "**The sun having set**, we returned home.",
+          "urdu": "سورج غروب ہونے کے بعد، ہم گھر واپس آگئے۔",
+          "note": "The phrase contains noun **sun** and participle **having set**."
         },
         {
-          "text": "The weather being clear, we continued our journey.",
-          "urdu": "موسم صاف ہونے کی وجہ سے ہم نے اپنا سفر جاری رکھا۔",
-          "note": "**The weather being clear** gives the circumstance for the whole clause."
+          "text": "**Her eyes filled with tears**, she left the room.",
+          "urdu": "اس کی آنکھیں آنسوؤں سے بھر گئیں، وہ کمرے سے چلی گئی۔",
+          "note": "The phrase adds background information about her leaving."
+        },
+        {
+          "text": "**The weather being cold**, we stayed inside.",
+          "urdu": "موسم سرد ہونے کی وجہ سے ہم اندر رہے۔",
+          "note": "Noun: **weather**; participle: **being**; function: condition/reason."
+        },
+        {
+          "text": "**The sun having set**, they returned home.",
+          "urdu": "سورج غروب ہونے کے بعد، وہ گھر واپس آئے۔",
+          "note": "The absolute phrase shows time and circumstance."
+        },
+        {
+          "text": "**The weather being cold**, we stayed inside.",
+          "urdu": "موسم سرد ہونے کی وجہ سے ہم اندر رہے۔",
+          "note": "The phrase gives the reason or circumstance for staying inside."
         }
       ],
       "commonMistakes": [
         {
-          "wrong": "The meeting was over, the delegates left.",
-          "right": "The meeting being over, the delegates left.",
-          "urdu": "اجلاس ختم ہو چکا تھا، اس لیے نمائندے نکل گئے۔",
-          "note": "Two independent clauses joined only by a comma create a comma splice; use an absolute phrase or a conjunction."
+          "wrong": "The weather being cold we stayed inside.",
+          "right": "The weather being cold, we stayed inside.",
+          "urdu": "موسم سرد ہونے کی وجہ سے ہم اندر رہے۔",
+          "note": "Use a comma to separate the absolute phrase from the main sentence."
+        },
+        {
+          "wrong": "Feeling tired, Ali went home. (called an absolute phrase)",
+          "right": "Feeling tired, Ali went home. (a participle phrase)",
+          "urdu": "تھکا ہوا محسوس کرتے ہوئے علی گھر چلا گیا۔",
+          "note": "The participle **feeling** describes Ali; there is no separate noun in the phrase. **Ali feeling tired, we went home** is an absolute phrase."
         }
       ],
       "examTips": [
-        "Look for a noun/pronoun plus a non-finite modifier.",
-        "Ask whether the phrase describes the whole situation.",
-        "Do not confuse an absolute phrase with a finite dependent clause."
+        "Absolute Phrase = Noun/Pronoun + Participle + extra information.",
+        "Look for its own noun or pronoun.",
+        "Compare: **Feeling tired, Ali went home** (participle phrase); **Ali feeling tired, we went home** (absolute phrase)."
       ],
-      "summary": "An absolute phrase gives the circumstance of a whole clause and usually contains a noun/pronoun plus a non-finite modifier."
+      "structure": [
+        "Noun / Pronoun + Participle + Modifier(s)",
+        "Examples: **His work finished**; **The sun having set**; **Her eyes filled with tears**; **The weather being cold**",
+        "An absolute phrase does not normally have a finite verb."
+      ],
+      "tableTitle": "Functions of an Absolute Phrase",
+      "tableColumns": [
+        "Function",
+        "Example"
+      ],
+      "tableRows": [
+        [
+          "Show condition",
+          "The weather being cold, we stayed inside."
+        ],
+        [
+          "Show time/circumstance",
+          "The sun having set, they returned home."
+        ],
+        [
+          "Add background information",
+          "His work finished, he went home."
+        ]
+      ],
+      "summary": "An absolute phrase adds background information or circumstances to the main sentence and has its own noun or pronoun."
     }
   },
   {

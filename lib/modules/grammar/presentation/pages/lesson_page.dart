@@ -137,6 +137,44 @@ class _CompleteBar extends ConsumerWidget {
   }
 }
 
+class _BilingualText extends StatelessWidget {
+  const _BilingualText({required this.text, required this.style});
+
+  final String text;
+  final TextStyle style;
+
+  @override
+  Widget build(BuildContext context) {
+    final ThemeData theme = Theme.of(context);
+    final List<InlineSpan> spans = <InlineSpan>[];
+    final RegExp latin = RegExp(r'[A-Za-z][A-Za-z0-9+\-]*(?:[&/][A-Za-z0-9+\-]+)*');
+    int cursor = 0;
+    for (final RegExpMatch match in latin.allMatches(text)) {
+      if (match.start > cursor) {
+        spans.add(TextSpan(text: text.substring(cursor, match.start)));
+      }
+      spans.add(TextSpan(
+        text: match.group(0),
+        style: style.copyWith(
+          color: theme.colorScheme.primary,
+          fontWeight: FontWeight.w700,
+        ),
+      ));
+      cursor = match.end;
+    }
+    if (cursor < text.length) {
+      spans.add(TextSpan(text: text.substring(cursor)));
+    }
+    return Directionality(
+      textDirection: TextDirection.rtl,
+      child: Text.rich(
+        TextSpan(style: style, children: spans),
+        textAlign: TextAlign.right,
+      ),
+    );
+  }
+}
+
 class _LessonView extends StatelessWidget {
   const _LessonView({required this.lesson});
 
@@ -145,6 +183,7 @@ class _LessonView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final ThemeData theme = Theme.of(context);
+    final bool isPhraseLesson = lesson.id.startsWith('phrases/');
     if (lesson.id == 'pos/quiz') {
       return _AllInOneQuizView(lesson: lesson);
     }
@@ -163,10 +202,11 @@ class _LessonView extends StatelessWidget {
       padding: const EdgeInsets.fromLTRB(16, 16, 16, 24),
       children: <Widget>[
         Text(lesson.title,
-            style: (lesson.id.startsWith('tenses/')
-                    ? theme.textTheme.titleLarge
-                    : theme.textTheme.headlineSmall)
-                ?.copyWith(fontWeight: FontWeight.w800)),
+            style: lesson.id.startsWith('tenses/')
+                ? theme.textTheme.titleLarge?.copyWith(fontWeight: FontWeight.w800)
+                : (isPhraseLesson
+                    ? theme.textTheme.titleLarge?.copyWith(fontWeight: FontWeight.w800)
+                    : theme.textTheme.headlineSmall?.copyWith(fontWeight: FontWeight.w800))),
         const SizedBox(height: 14),
 
         if (lesson.introduction.isNotEmpty)
@@ -180,7 +220,10 @@ class _LessonView extends StatelessWidget {
                   )
                 : Text(
                     lesson.introduction,
-                    style: theme.textTheme.bodyLarge?.copyWith(height: 1.5),
+                    style: (isPhraseLesson
+                            ? theme.textTheme.bodyMedium
+                            : theme.textTheme.bodyLarge)
+                        ?.copyWith(height: isPhraseLesson ? 1.4 : 1.5),
                   ),
           ),
 
@@ -188,16 +231,17 @@ class _LessonView extends StatelessWidget {
           GrammarSectionCard(
             icon: Icons.translate,
             title: 'Urdu Explanation',
-            child: Directionality(
-              textDirection: TextDirection.rtl,
-              child: Text(
-                lesson.urduExplanation,
-                textAlign: TextAlign.right,
-                style: (lesson.id.startsWith('tenses/')
-                        ? theme.textTheme.bodyMedium
-                        : theme.textTheme.titleMedium)
-                    ?.copyWith(height: lesson.id.startsWith('tenses/') ? 1.4 : 1.7),
-              ),
+            child: _BilingualText(
+              text: lesson.urduExplanation,
+              style: ((lesson.id.startsWith('tenses/')
+                          ? theme.textTheme.bodyMedium
+                          : (isPhraseLesson
+                              ? theme.textTheme.bodyMedium
+                              : theme.textTheme.titleMedium)) ??
+                      const TextStyle())
+                  .copyWith(height: lesson.id.startsWith('tenses/')
+                      ? 1.4
+                      : (isPhraseLesson ? 1.55 : 1.7)),
             ),
           ),
 
@@ -212,7 +256,10 @@ class _LessonView extends StatelessWidget {
                   )
                 : Text(
                     lesson.englishExplanation,
-                    style: theme.textTheme.bodyLarge?.copyWith(height: 1.5),
+                    style: (isPhraseLesson
+                            ? theme.textTheme.bodyMedium
+                            : theme.textTheme.bodyLarge)
+                        ?.copyWith(height: isPhraseLesson ? 1.4 : 1.5),
                   ),
           ),
 
@@ -248,7 +295,7 @@ class _LessonView extends StatelessWidget {
                 for (final String s in lesson.structure)
                   GrammarBullet(
                     text: s,
-                    compact: lesson.id.startsWith('tenses/'),
+                    compact: lesson.id.startsWith('tenses/') || isPhraseLesson,
                   ),
               ],
             ),
@@ -263,7 +310,7 @@ class _LessonView extends StatelessWidget {
                 for (final String r in lesson.rules)
                   GrammarBullet(
                     text: r,
-                    compact: lesson.id.startsWith('tenses/'),
+                    compact: lesson.id.startsWith('tenses/') || isPhraseLesson,
                   ),
               ],
             ),
@@ -276,10 +323,9 @@ class _LessonView extends StatelessWidget {
             child: _GrammarTable(
               columns: lesson.tableColumns,
               rows: lesson.tableRows,
-              compact: lesson.id.startsWith('tenses/'),
+              compact: lesson.id.startsWith('tenses/') || isPhraseLesson,
             ),
           ),
-
         if (lesson.examples.isNotEmpty)
           GrammarSectionCard(
             icon: Icons.format_quote,
@@ -289,7 +335,7 @@ class _LessonView extends StatelessWidget {
                 for (final GrammarExample e in lesson.examples)
                   _ExampleItem(
                     example: e,
-                    compact: lesson.id.startsWith('tenses/'),
+                    compact: lesson.id.startsWith('tenses/') || isPhraseLesson,
                   ),
               ],
             ),
@@ -305,7 +351,7 @@ class _LessonView extends StatelessWidget {
                 for (final GrammarMistake m in lesson.commonMistakes)
                   _MistakeItem(
                     mistake: m,
-                    compact: lesson.id.startsWith('tenses/'),
+                    compact: lesson.id.startsWith('tenses/') || isPhraseLesson,
                   ),
               ],
             ),
@@ -321,7 +367,7 @@ class _LessonView extends StatelessWidget {
                 for (final String t in lesson.examTips)
                   GrammarBullet(
                     text: t,
-                    compact: lesson.id.startsWith('tenses/'),
+                    compact: lesson.id.startsWith('tenses/') || isPhraseLesson,
                   ),
               ],
             ),
@@ -1468,9 +1514,15 @@ class _MistakeItem extends StatelessWidget {
               padding: const EdgeInsets.only(left: 26),
               child: Text.rich(
                 TextSpan(
-                  style: theme.textTheme.bodySmall
-                      ?.copyWith(color: scheme.onSurfaceVariant),
-                  children: _boldMarkedSpans(mistake.note!),
+                  style: theme.textTheme.bodySmall?.copyWith(
+                    color: compact
+                        ? const Color(0xFFCE93D8)
+                        : scheme.onSurfaceVariant,
+                  ),
+                  children: _boldMarkedSpans(
+                    mistake.note!,
+                    color: compact ? const Color(0xFFCE93D8) : null,
+                  ),
                 ),
               ),
             ),
