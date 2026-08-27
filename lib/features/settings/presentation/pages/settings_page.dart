@@ -221,12 +221,23 @@ class _SettingsBody extends ConsumerWidget {
             ),
             ListTile(
               contentPadding: EdgeInsets.zero,
-              leading: const Icon(Icons.privacy_tip_outlined),
-              title: const Text('App permissions'),
-              subtitle:
-                  const Text('Manage the storage access used to find your PDFs'),
+              leading: const Icon(Icons.folder_open_outlined),
+              title: const Text('PDF Access'),
+              subtitle: const Text(
+                'Allow access to find and import PDF files on your device',
+              ),
               trailing: const Icon(Icons.open_in_new),
               onTap: () => sl<PermissionService>().openSystemSettings(),
+            ),
+            ListTile(
+              contentPadding: EdgeInsets.zero,
+              leading: const Icon(Icons.notifications_active_outlined),
+              title: const Text('Notification Access'),
+              subtitle: const Text(
+                'Allow study and Word-of-the-Day reminders',
+              ),
+              trailing: const Icon(Icons.open_in_new),
+              onTap: () => sl<NotificationService>().openNotificationSettings(),
             ),
           ],
         ),

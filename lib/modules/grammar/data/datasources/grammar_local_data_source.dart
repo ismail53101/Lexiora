@@ -286,6 +286,7 @@ class GrammarLocalDataSource {
       practice: _questions(o['practice']),
       quiz: _questions(o['quiz']),
       summary: _str(o['summary']),
+      providedMaterial: _str(o['providedMaterial']),
       footerImage: _str(o['footerImage']),
       tableTitle: _str(o['tableTitle']),
       tableColumns: _strList(o['tableColumns']),

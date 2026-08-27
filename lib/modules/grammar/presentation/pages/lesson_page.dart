@@ -211,6 +211,16 @@ class _LessonView extends StatelessWidget {
                     : theme.textTheme.headlineSmall?.copyWith(fontWeight: FontWeight.w800))),
         const SizedBox(height: 14),
 
+        if (lesson.providedMaterial.isNotEmpty)
+          GrammarSectionCard(
+            icon: Icons.article_outlined,
+            title: 'Original Provided Material',
+            child: TenseRichText(
+              text: lesson.providedMaterial,
+              style: theme.textTheme.bodySmall?.copyWith(height: 1.35),
+            ),
+          ),
+
         if (lesson.introduction.isNotEmpty)
           GrammarSectionCard(
             icon: Icons.info_outline,

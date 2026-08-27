@@ -202,6 +202,7 @@ class GrammarLesson extends Equatable {
     this.practice = const <GrammarQuestion>[],
     this.quiz = const <GrammarQuestion>[],
     this.summary = '',
+    this.providedMaterial = '',
     this.footerImage = '',
     this.tableTitle = '',
     this.tableColumns = const <String>[],
@@ -231,6 +232,8 @@ class GrammarLesson extends Equatable {
   final List<GrammarQuestion> practice;
   final List<GrammarQuestion> quiz;
   final String summary;
+  /// Original user-provided lesson material, preserved verbatim when supplied.
+  final String providedMaterial;
   /// Optional footer illustration asset used by selected grammar lessons.
   final String footerImage;
   /// Optional lesson-level comparison table, used by tense reference sections.
@@ -257,6 +260,7 @@ class GrammarLesson extends Equatable {
         practice,
         quiz,
         summary,
+        providedMaterial,
         footerImage,
         tableTitle,
         tableColumns,
