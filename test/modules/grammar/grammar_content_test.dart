@@ -168,8 +168,6 @@ void main() {
     // own dedicated lesson rather than a merged page.
     for (final String id in <String>[
       'pos/noun',
-      'clauses/by-function/adverb',
-      'phrases/participial',
       'active-passive-voice/interrogative',
       'direct-indirect-speech/universal-truth',
       'modals/must',
