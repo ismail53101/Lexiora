@@ -73,11 +73,11 @@ void main() {
       ]),
     );
 
-    // Clauses → Independent (leaf) + Dependent (branch) → 3 clause types.
+    // Clauses → overview + Independent (leaf) + Dependent (branch).
     final List<GrammarTopicSummary> clauses = await ds.children('clauses');
-    expect(clauses.length, 2);
-    expect(clauses.where((GrammarTopicSummary t) => t.isLeaf).length, 1,
-        reason: 'Independent Clause is the only direct leaf under Clauses');
+    expect(clauses.length, 3);
+    expect(clauses.where((GrammarTopicSummary t) => t.isLeaf).length, 2,
+        reason: 'Clause Overview and Independent Clause are direct leaves');
     expect(clauses.where((GrammarTopicSummary t) => !t.isLeaf).length, 1,
         reason: 'Dependent Clause is a sub-branch');
     final List<GrammarTopicSummary> dependent =
@@ -85,10 +85,21 @@ void main() {
     expect(dependent.length, 3);
     expect(dependent.every((GrammarTopicSummary t) => t.isLeaf), isTrue);
 
-    // Phrases → 8 leaf types.
+    // Phrases → existing types plus overview and Absolute Phrase.
     final List<GrammarTopicSummary> phrases = await ds.children('phrases');
-    expect(phrases.length, 8);
+    expect(phrases.length, 10);
     expect(phrases.every((GrammarTopicSummary t) => t.isLeaf), isTrue);
+    expect(
+      phrases.map((GrammarTopicSummary t) => t.title),
+      containsAll(<String>['Phrase Overview', 'Absolute Phrase']),
+    );
+
+    // Comparison is the only new top-level folder and has seven comparisons
+    // plus two reference topics.
+    final List<GrammarTopicSummary> comparison =
+        await ds.children('comparison');
+    expect(comparison.length, 9);
+    expect(comparison.every((GrammarTopicSummary t) => t.isLeaf), isTrue);
 
     // Active & Passive Voice → 8 leaf sections.
     final List<GrammarTopicSummary> voice =
@@ -144,7 +155,7 @@ void main() {
         reason: '${o['id']} needs English lesson content',
       );
     }
-    expect(leaves, greaterThanOrEqualTo(74));
+    expect(leaves, greaterThanOrEqualTo(87));
 
     // Flagship leaves across the split categories decode with full sections
     // (Urdu + rules + practice + quiz + summary), proving each type has its
@@ -153,6 +164,8 @@ void main() {
       'pos/noun',
       'clauses/dependent/adverb',
       'phrases/participial',
+      'phrases/absolute',
+      'comparison/phrase-vs-clause',
       'active-passive-voice/interrogative',
       'direct-indirect-speech/universal-truth',
       'modals/must',

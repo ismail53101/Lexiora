@@ -243,7 +243,7 @@ abstract final class SearchHistoryConstants {
 abstract final class GrammarConstants {
   /// Bundled hierarchical topics tree (Category → Subcategory → Lesson).
   static const String topicsAssetPath = 'assets/grammar/grammar_topics.json';
-  static const String topicsDatasetVersion = 'grammar-topics-2026.08-pos-quiz-fixed-prepositions-mixed-v47';
+  static const String topicsDatasetVersion = 'grammar-topics-2026.08-phrases-clauses-comparison-v48';
   static const String topicsSeedVersionKey = 'grammar_topics_seed_version';
 
   /// Bundled JSON lessons data set (legacy flat model; superseded by the tree).

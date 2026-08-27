@@ -10534,7 +10534,12 @@
     "title": "Phrases",
     "subtitle": "8 phrase types and how to spot them",
     "order": 4,
-    "isLeaf": false
+    "isLeaf": false,
+    "summary": "A complete exam-oriented guide to phrase structure, functions, identification, examples, and common errors.",
+    "keywords": [
+      "phrase identification",
+      "phrase vs sentence"
+    ]
   },
   {
     "id": "clauses",
@@ -10542,7 +10547,13 @@
     "title": "Clauses",
     "subtitle": "Independent & dependent (noun, adjective, adverb)",
     "order": 5,
-    "isLeaf": false
+    "isLeaf": false,
+    "summary": "A complete exam-oriented guide to clause structure, finite verbs, clause functions, identification, and common errors.",
+    "keywords": [
+      "clause identification",
+      "finite verb",
+      "subject and verb"
+    ]
   },
   {
     "id": "subject-verb-agreement",
@@ -23135,6 +23146,799 @@
           "examTip": null
         }
       ]
+    }
+  },
+  {
+    "id": "phrases/overview",
+    "parentId": "phrases",
+    "title": "Phrase Overview",
+    "subtitle": null,
+    "order": 0,
+    "isLeaf": true,
+    "keywords": [
+      "phrase overview",
+      "grammar",
+      "exam preparation"
+    ],
+    "content": {
+      "introduction": "A phrase is a group of related words that works as one grammatical unit but does not normally contain a subject–finite-verb combination. It cannot stand alone as a complete sentence. Key characteristics are a head word, a grammatical function, and an incomplete thought. To identify a phrase, find the unit, look for its head word, and check whether it has a subject and finite verb. A phrase differs from a complete sentence because a sentence expresses a complete thought and normally contains an independent clause.",
+      "urduExplanation": "Phrase الفاظ کا ایسا مجموعہ ہے جو جملے میں ایک grammatical unit کا کام کرتا ہے، لیکن اس میں عموماً subject اور finite verb کا مکمل جوڑا نہیں ہوتا۔ Phrase اکیلا مکمل جملہ نہیں بن سکتا۔",
+      "rules": [
+        "A phrase may contain a noun, verb, adjective, adverb, or preposition as its head.",
+        "A phrase has a function such as subject, object, modifier, complement, or adverbial.",
+        "A phrase normally lacks its own subject + finite verb combination.",
+        "A complete sentence must express a complete thought; a phrase does not.",
+        "Ask “Does this group have a subject and a finite verb?” to distinguish a phrase from a clause."
+      ],
+      "examples": [
+        {
+          "text": "The very old building collapsed.",
+          "urdu": "بہت پرانی عمارت گر گئی۔",
+          "note": "**The very old building** is a noun phrase functioning as the subject."
+        },
+        {
+          "text": "She spoke with great confidence.",
+          "urdu": "اس نے بہت اعتماد کے ساتھ بات کی۔",
+          "note": "**with great confidence** is a prepositional phrase modifying the verb."
+        },
+        {
+          "text": "To solve the problem requires patience.",
+          "urdu": "مسئلہ حل کرنے کے لیے صبر درکار ہے۔",
+          "note": "**To solve the problem** is an infinitive phrase functioning as the subject."
+        }
+      ],
+      "commonMistakes": [
+        {
+          "wrong": "Because the rain stopped.",
+          "right": "After the rain stopped, the players returned.",
+          "urdu": "بارش رکنے کے بعد کھلاڑی واپس آئے۔",
+          "note": "The first group is a dependent clause, not a phrase, because it contains subject **the rain** and finite verb **stopped**."
+        }
+      ],
+      "examTips": [
+        "Find the head word first.",
+        "Then check for a subject + finite verb combination.",
+        "Do not confuse a long phrase with a clause merely because it contains many words."
+      ],
+      "summary": "A phrase is a grammatical unit without its own subject–finite-verb combination; its function depends on its head word and position in the sentence."
+    }
+  },
+  {
+    "id": "clauses/overview",
+    "parentId": "clauses",
+    "title": "Clause Overview",
+    "subtitle": null,
+    "order": 0,
+    "isLeaf": true,
+    "keywords": [
+      "clause overview",
+      "grammar",
+      "exam preparation"
+    ],
+    "content": {
+      "introduction": "A clause is a group of words containing a subject and a finite verb. An independent clause expresses a complete thought and can stand alone. A dependent or subordinate clause also contains a subject and finite verb but depends on another clause. To identify a clause, locate the subject, identify the finite verb, and decide whether the group can stand alone.",
+      "urduExplanation": "Clause الفاظ کا ایسا مجموعہ ہے جس میں subject اور finite verb موجود ہوں۔ Independent clause مکمل خیال دیتا ہے، جبکہ dependent clause مکمل معنی کے لیے دوسرے clause پر منحصر ہوتا ہے۔",
+      "rules": [
+        "A clause contains a subject and a finite verb.",
+        "A finite verb shows tense or agrees with a subject, such as **works**, **worked**, or **is working**.",
+        "An independent clause can stand alone as a complete sentence.",
+        "A dependent clause begins or functions in a way that makes it dependent on another clause.",
+        "Subordinators and relative words often signal dependent clauses: because, although, if, when, who, which, and that."
+      ],
+      "examples": [
+        {
+          "text": "The students completed the assignment.",
+          "urdu": "طلبہ نے اسائنمنٹ مکمل کر لیا۔",
+          "note": "**The students** is the subject and **completed** is the finite verb; the clause is independent."
+        },
+        {
+          "text": "because the teacher explained the rule",
+          "urdu": "کیونکہ استاد نے قاعدہ سمجھایا۔",
+          "note": "**the teacher** is the subject and **explained** is the finite verb; **because** makes the clause dependent."
+        },
+        {
+          "text": "The book that I borrowed is useful.",
+          "urdu": "وہ کتاب جو میں نے ادھار لی تھی مفید ہے۔",
+          "note": "**that I borrowed** is a relative clause modifying **book**."
+        }
+      ],
+      "commonMistakes": [
+        {
+          "wrong": "Although the exam was difficult.",
+          "right": "Although the exam was difficult, the candidates remained calm.",
+          "urdu": "اگرچہ امتحان مشکل تھا، امیدوار پُرسکون رہے۔",
+          "note": "An adverb clause beginning with **although** cannot stand alone as a complete sentence."
+        }
+      ],
+      "examTips": [
+        "Underline the subject and finite verb.",
+        "Read the clause alone to test independence.",
+        "Identify the word that connects the clause to the rest of the sentence."
+      ],
+      "summary": "A clause contains a subject and a finite verb; its classification depends on whether it can stand alone and what function it performs."
+    }
+  },
+  {
+    "id": "phrases/absolute",
+    "parentId": "phrases",
+    "title": "Absolute Phrase",
+    "subtitle": null,
+    "order": 9,
+    "isLeaf": true,
+    "keywords": [
+      "absolute phrase",
+      "grammar",
+      "exam preparation"
+    ],
+    "content": {
+      "introduction": "An absolute phrase is a noun or pronoun followed by a participle or other modifier. It modifies the whole independent clause rather than one single word. It is grammatically separate from the main clause and is usually set off by a comma.",
+      "urduExplanation": "Absolute phrase اسم یا pronoun کے ساتھ participle یا modifier پر مشتمل ہوتا ہے اور پورے main clause کی کیفیت یا حالت بیان کرتا ہے۔",
+      "rules": [
+        "Pattern: noun/pronoun + participle or modifier.",
+        "It modifies the whole main clause, not merely one noun.",
+        "It has no finite verb of its own; its participle is non-finite.",
+        "It is commonly placed at the beginning or end and separated by a comma."
+      ],
+      "examples": [
+        {
+          "text": "The meeting over, the delegates left the hall.",
+          "urdu": "اجلاس ختم ہونے کے بعد نمائندے ہال سے نکل گئے۔",
+          "note": "**The meeting over** describes the condition surrounding the whole main clause."
+        },
+        {
+          "text": "Her work completed, Sana submitted the report.",
+          "urdu": "اپنا کام مکمل کر کے ثنا نے رپورٹ جمع کرائی۔",
+          "note": "**Her work completed** modifies the whole action **Sana submitted the report**."
+        },
+        {
+          "text": "The weather being clear, we continued our journey.",
+          "urdu": "موسم صاف ہونے کی وجہ سے ہم نے اپنا سفر جاری رکھا۔",
+          "note": "**The weather being clear** gives the circumstance for the whole clause."
+        }
+      ],
+      "commonMistakes": [
+        {
+          "wrong": "The meeting was over, the delegates left.",
+          "right": "The meeting being over, the delegates left.",
+          "urdu": "اجلاس ختم ہو چکا تھا، اس لیے نمائندے نکل گئے۔",
+          "note": "Two independent clauses joined only by a comma create a comma splice; use an absolute phrase or a conjunction."
+        }
+      ],
+      "examTips": [
+        "Look for a noun/pronoun plus a non-finite modifier.",
+        "Ask whether the phrase describes the whole situation.",
+        "Do not confuse an absolute phrase with a finite dependent clause."
+      ],
+      "summary": "An absolute phrase gives the circumstance of a whole clause and usually contains a noun/pronoun plus a non-finite modifier."
+    }
+  },
+  {
+    "id": "comparison",
+    "category": "Foundations",
+    "order": 28,
+    "title": "Comparison",
+    "summary": "Practical comparisons for distinguishing phrases, clauses, and sentences in examinations.",
+    "keywords": [
+      "phrase vs clause",
+      "phrase vs sentence",
+      "clause vs sentence",
+      "comparison",
+      "identification rules",
+      "exam traps"
+    ],
+    "isLeaf": false
+  },
+  {
+    "id": "comparison/phrase-vs-clause",
+    "parentId": "comparison",
+    "title": "Phrase vs Clause",
+    "subtitle": null,
+    "order": 1,
+    "isLeaf": true,
+    "keywords": [
+      "phrase vs clause",
+      "grammar",
+      "exam preparation"
+    ],
+    "content": {
+      "introduction": "A phrase is a word group without its own subject–finite-verb combination. A clause contains a subject and a finite verb; it may be independent or dependent.",
+      "urduExplanation": "Phrase میں عموماً subject اور finite verb کا جوڑا نہیں ہوتا، جبکہ clause میں subject اور finite verb موجود ہوتے ہیں۔",
+      "rules": [
+        "Check whether the unit contains a subject and a finite verb.",
+        "Check whether it expresses a complete thought or depends on another unit.",
+        "Use the comparison table and the paired examples together; do not identify a form from one word alone."
+      ],
+      "examples": [
+        {
+          "text": "after the meeting → Phrase",
+          "urdu": "اجلاس کے بعد۔",
+          "note": "No subject + finite verb combination."
+        },
+        {
+          "text": "after the meeting ended → Clause",
+          "urdu": "جب اجلاس ختم ہوا۔",
+          "note": "Subject **the meeting** + finite verb **ended** are present."
+        }
+      ],
+      "commonMistakes": [
+        {
+          "wrong": "Calling every group of words a phrase.",
+          "right": "Check for a subject + finite verb combination first.",
+          "urdu": "ہر الفاظ کے گروہ کو phrase نہ کہیں؛ پہلے subject اور finite verb دیکھیں۔",
+          "note": "A prepositional phrase may look meaningful, but it is not a clause without a subject + finite verb combination."
+        }
+      ],
+      "examTips": [
+        "Find the subject and finite verb before deciding.",
+        "A phrase may be part of a clause, but a clause is structurally larger."
+      ],
+      "summary": "A phrase is a word group without its own subject–finite-verb combination. A clause contains a subject and a finite verb; it may be independent or dependent.",
+      "tableTitle": "Phrase vs Clause — Comparison Table",
+      "tableColumns": [
+        "Feature",
+        "First concept",
+        "Second concept"
+      ],
+      "tableRows": [
+        [
+          "Subject + finite verb",
+          "Normally absent",
+          "Present"
+        ],
+        [
+          "Meaning",
+          "Usually incomplete",
+          "Complete or incomplete"
+        ],
+        [
+          "Example",
+          "after the meeting",
+          "after the meeting ended"
+        ]
+      ]
+    }
+  },
+  {
+    "id": "comparison/phrase-vs-sentence",
+    "parentId": "comparison",
+    "title": "Phrase vs Sentence",
+    "subtitle": null,
+    "order": 2,
+    "isLeaf": true,
+    "keywords": [
+      "phrase vs sentence",
+      "grammar",
+      "exam preparation"
+    ],
+    "content": {
+      "introduction": "A phrase is only a grammatical unit; a sentence expresses a complete thought and normally contains an independent clause.",
+      "urduExplanation": "Phrase مکمل خیال نہیں دیتا، جبکہ sentence مکمل خیال بیان کرتا ہے۔",
+      "rules": [
+        "Check whether the unit contains a subject and a finite verb.",
+        "Check whether it expresses a complete thought or depends on another unit.",
+        "Use the comparison table and the paired examples together; do not identify a form from one word alone."
+      ],
+      "examples": [
+        {
+          "text": "in the library → Phrase",
+          "urdu": "کتب خانے میں۔",
+          "note": "It gives place but not a complete thought."
+        },
+        {
+          "text": "The students studied in the library. → Sentence",
+          "urdu": "طلبہ نے کتب خانے میں مطالعہ کیا۔",
+          "note": "It contains a subject, finite verb, and complete meaning."
+        }
+      ],
+      "commonMistakes": [
+        {
+          "wrong": "Calling every group of words a phrase.",
+          "right": "Check for a subject + finite verb combination first.",
+          "urdu": "ہر الفاظ کے گروہ کو phrase نہ کہیں؛ پہلے subject اور finite verb دیکھیں۔",
+          "note": "A short sentence is not necessarily a phrase; length does not decide the category."
+        }
+      ],
+      "examTips": [
+        "Ask whether the words communicate a complete thought.",
+        "Use the full-stop test: a phrase cannot normally take a full stop as a sentence."
+      ],
+      "summary": "A phrase is only a grammatical unit; a sentence expresses a complete thought and normally contains an independent clause.",
+      "tableTitle": "Phrase vs Sentence — Comparison Table",
+      "tableColumns": [
+        "Feature",
+        "First concept",
+        "Second concept"
+      ],
+      "tableRows": [
+        [
+          "Complete thought",
+          "No",
+          "Yes"
+        ],
+        [
+          "Can stand alone",
+          "No",
+          "Yes, if it is a complete sentence"
+        ],
+        [
+          "Example",
+          "in the library",
+          "The students studied in the library"
+        ]
+      ]
+    }
+  },
+  {
+    "id": "comparison/clause-vs-sentence",
+    "parentId": "comparison",
+    "title": "Clause vs Sentence",
+    "subtitle": null,
+    "order": 3,
+    "isLeaf": true,
+    "keywords": [
+      "clause vs sentence",
+      "grammar",
+      "exam preparation"
+    ],
+    "content": {
+      "introduction": "A clause is a grammatical unit with a subject and finite verb. A sentence is a complete written or spoken unit; an independent clause can function as a sentence.",
+      "urduExplanation": "Clause میں subject اور finite verb ہوتے ہیں، لیکن ہر clause مکمل sentence نہیں ہوتا۔",
+      "rules": [
+        "Check whether the unit contains a subject and a finite verb.",
+        "Check whether it expresses a complete thought or depends on another unit.",
+        "Use the comparison table and the paired examples together; do not identify a form from one word alone."
+      ],
+      "examples": [
+        {
+          "text": "because she was tired → Clause, not sentence",
+          "urdu": "کیونکہ وہ تھکی ہوئی تھی۔",
+          "note": "It has subject **she** and finite verb **was**, but **because** makes it dependent."
+        },
+        {
+          "text": "She went home. → Clause and sentence",
+          "urdu": "وہ گھر چلی گئی۔",
+          "note": "It is an independent clause and expresses a complete thought."
+        }
+      ],
+      "commonMistakes": [
+        {
+          "wrong": "Calling every group of words a phrase.",
+          "right": "Check for a subject + finite verb combination first.",
+          "urdu": "ہر الفاظ کے گروہ کو phrase نہ کہیں؛ پہلے subject اور finite verb دیکھیں۔",
+          "note": "A dependent clause has a subject and finite verb but is still a sentence fragment."
+        }
+      ],
+      "examTips": [
+        "Check both structure and independence.",
+        "Every independent clause can stand as a sentence, but every clause cannot."
+      ],
+      "summary": "A clause is a grammatical unit with a subject and finite verb. A sentence is a complete written or spoken unit; an independent clause can function as a sentence.",
+      "tableTitle": "Clause vs Sentence — Comparison Table",
+      "tableColumns": [
+        "Feature",
+        "First concept",
+        "Second concept"
+      ],
+      "tableRows": [
+        [
+          "Complete meaning",
+          "May be complete or incomplete",
+          "Must be complete"
+        ],
+        [
+          "Types",
+          "Independent or dependent",
+          "Simple, compound, complex, or compound-complex"
+        ],
+        [
+          "Example",
+          "because she was tired",
+          "She went home because she was tired"
+        ]
+      ]
+    }
+  },
+  {
+    "id": "comparison/independent-vs-dependent",
+    "parentId": "comparison",
+    "title": "Independent Clause vs Dependent Clause",
+    "subtitle": null,
+    "order": 4,
+    "isLeaf": true,
+    "keywords": [
+      "independent clause vs dependent clause",
+      "grammar",
+      "exam preparation"
+    ],
+    "content": {
+      "introduction": "An independent clause expresses a complete thought and can stand alone. A dependent clause has a subject and finite verb but needs an independent clause.",
+      "urduExplanation": "Independent clause مکمل خیال دیتا ہے؛ dependent clause دوسرے clause کے بغیر مکمل نہیں ہوتا۔",
+      "rules": [
+        "Check whether the unit contains a subject and a finite verb.",
+        "Check whether it expresses a complete thought or depends on another unit.",
+        "Use the comparison table and the paired examples together; do not identify a form from one word alone."
+      ],
+      "examples": [
+        {
+          "text": "The bell rang. → Independent clause",
+          "urdu": "گھنٹی بجی۔",
+          "note": "It is complete on its own."
+        },
+        {
+          "text": "when the bell rang → Dependent clause",
+          "urdu": "جب گھنٹی بجی۔",
+          "note": "The word **when** makes it dependent."
+        }
+      ],
+      "commonMistakes": [
+        {
+          "wrong": "Calling every group of words a phrase.",
+          "right": "Check for a subject + finite verb combination first.",
+          "urdu": "ہر الفاظ کے گروہ کو phrase نہ کہیں؛ پہلے subject اور finite verb دیکھیں۔",
+          "note": "A dependent clause is not a complete sentence merely because it contains a subject and verb."
+        }
+      ],
+      "examTips": [
+        "Remove the linker and test whether the thought can stand alone.",
+        "Subordinating conjunctions are strong clues, but always check meaning."
+      ],
+      "summary": "An independent clause expresses a complete thought and can stand alone. A dependent clause has a subject and finite verb but needs an independent clause.",
+      "tableTitle": "Independent Clause vs Dependent Clause — Comparison Table",
+      "tableColumns": [
+        "Feature",
+        "First concept",
+        "Second concept"
+      ],
+      "tableRows": [
+        [
+          "Can stand alone",
+          "Yes",
+          "No"
+        ],
+        [
+          "Common signals",
+          "Coordinators or no linker",
+          "because, although, if, when, who, that"
+        ],
+        [
+          "Example",
+          "The bell rang.",
+          "when the bell rang"
+        ]
+      ]
+    }
+  },
+  {
+    "id": "comparison/noun-phrase-vs-noun-clause",
+    "parentId": "comparison",
+    "title": "Noun Phrase vs Noun Clause",
+    "subtitle": null,
+    "order": 5,
+    "isLeaf": true,
+    "keywords": [
+      "noun phrase vs noun clause",
+      "grammar",
+      "exam preparation"
+    ],
+    "content": {
+      "introduction": "A noun phrase functions as a noun without its own subject–finite-verb combination. A noun clause also functions as a noun but contains a subject and finite verb.",
+      "urduExplanation": "Noun phrase میں اپنا subject اور finite verb نہیں ہوتا؛ noun clause میں دونوں موجود ہوتے ہیں اور پورا clause noun کا کام کرتا ہے۔",
+      "rules": [
+        "Check whether the unit contains a subject and a finite verb.",
+        "Check whether it expresses a complete thought or depends on another unit.",
+        "Use the comparison table and the paired examples together; do not identify a form from one word alone."
+      ],
+      "examples": [
+        {
+          "text": "I understood the answer to the question. → Noun phrase",
+          "urdu": "میں سوال کا جواب سمجھ گیا۔",
+          "note": "The phrase has head noun **answer** and no internal finite verb."
+        },
+        {
+          "text": "I understood what the answer was. → Noun clause",
+          "urdu": "میں سمجھ گیا کہ جواب کیا تھا۔",
+          "note": "The clause has subject **the answer** and finite verb **was**."
+        }
+      ],
+      "commonMistakes": [
+        {
+          "wrong": "Calling every group of words a phrase.",
+          "right": "Check for a subject + finite verb combination first.",
+          "urdu": "ہر الفاظ کے گروہ کو phrase نہ کہیں؛ پہلے subject اور finite verb دیکھیں۔",
+          "note": "The presence of a question word does not by itself prove a noun clause; find the subject and finite verb."
+        }
+      ],
+      "examTips": [
+        "Compare the internal structure, not only the grammatical function.",
+        "If it acts like a noun and contains a subject + finite verb, it is a noun clause."
+      ],
+      "summary": "A noun phrase functions as a noun without its own subject–finite-verb combination. A noun clause also functions as a noun but contains a subject and finite verb.",
+      "tableTitle": "Noun Phrase vs Noun Clause — Comparison Table",
+      "tableColumns": [
+        "Feature",
+        "First concept",
+        "Second concept"
+      ],
+      "tableRows": [
+        [
+          "Internal structure",
+          "Head noun and modifiers",
+          "Subject + finite verb"
+        ],
+        [
+          "Function",
+          "Subject, object, complement",
+          "Subject, object, complement"
+        ],
+        [
+          "Example",
+          "the answer to the question",
+          "what the answer is"
+        ]
+      ]
+    }
+  },
+  {
+    "id": "comparison/adjective-phrase-vs-adjective-clause",
+    "parentId": "comparison",
+    "title": "Adjective Phrase vs Adjective Clause",
+    "subtitle": null,
+    "order": 6,
+    "isLeaf": true,
+    "keywords": [
+      "adjective phrase vs adjective clause",
+      "grammar",
+      "exam preparation"
+    ],
+    "content": {
+      "introduction": "An adjective phrase modifies a noun without its own subject–finite-verb combination. An adjective clause modifies a noun and contains a subject and finite verb.",
+      "urduExplanation": "Adjective phrase noun کی وضاحت کرتا ہے مگر اپنا subject اور finite verb نہیں رکھتا؛ adjective clause noun کو modify کرتا ہے اور subject و finite verb رکھتا ہے۔",
+      "rules": [
+        "Check whether the unit contains a subject and a finite verb.",
+        "Check whether it expresses a complete thought or depends on another unit.",
+        "Use the comparison table and the paired examples together; do not identify a form from one word alone."
+      ],
+      "examples": [
+        {
+          "text": "The book full of useful ideas won the prize. → Adjective phrase",
+          "urdu": "مفید خیالات سے بھری کتاب نے انعام جیتا۔",
+          "note": "The phrase modifies **book** and has no finite verb."
+        },
+        {
+          "text": "The book that contains useful ideas won the prize. → Adjective clause",
+          "urdu": "وہ کتاب جس میں مفید خیالات ہیں انعام جیت گئی۔",
+          "note": "The clause has subject **that** and finite verb **contains**."
+        }
+      ],
+      "commonMistakes": [
+        {
+          "wrong": "Calling every group of words a phrase.",
+          "right": "Check for a subject + finite verb combination first.",
+          "urdu": "ہر الفاظ کے گروہ کو phrase نہ کہیں؛ پہلے subject اور finite verb دیکھیں۔",
+          "note": "A word such as **that** may be a determiner or relative marker; inspect the entire structure."
+        }
+      ],
+      "examTips": [
+        "Find the noun being modified, then look for a subject + finite verb.",
+        "Phrase = modifier without clause structure; clause = modifier with clause structure."
+      ],
+      "summary": "An adjective phrase modifies a noun without its own subject–finite-verb combination. An adjective clause modifies a noun and contains a subject and finite verb.",
+      "tableTitle": "Adjective Phrase vs Adjective Clause — Comparison Table",
+      "tableColumns": [
+        "Feature",
+        "First concept",
+        "Second concept"
+      ],
+      "tableRows": [
+        [
+          "Internal structure",
+          "Adjective and modifiers",
+          "Subject + finite verb"
+        ],
+        [
+          "Common marker",
+          "very, extremely, full of",
+          "who, which, that, whose"
+        ],
+        [
+          "Example",
+          "full of useful ideas",
+          "that contains useful ideas"
+        ]
+      ]
+    }
+  },
+  {
+    "id": "comparison/adverb-phrase-vs-adverb-clause",
+    "parentId": "comparison",
+    "title": "Adverb Phrase vs Adverb Clause",
+    "subtitle": null,
+    "order": 7,
+    "isLeaf": true,
+    "keywords": [
+      "adverb phrase vs adverb clause",
+      "grammar",
+      "exam preparation"
+    ],
+    "content": {
+      "introduction": "An adverb phrase modifies a verb, adjective, or adverb without its own subject–finite-verb combination. An adverb clause performs the same broad function but contains a subject and finite verb.",
+      "urduExplanation": "Adverb phrase فعل یا کیفیت کی وضاحت کرتا ہے مگر اپنا subject اور finite verb نہیں رکھتا؛ adverb clause میں دونوں موجود ہوتے ہیں۔",
+      "rules": [
+        "Check whether the unit contains a subject and a finite verb.",
+        "Check whether it expresses a complete thought or depends on another unit.",
+        "Use the comparison table and the paired examples together; do not identify a form from one word alone."
+      ],
+      "examples": [
+        {
+          "text": "She completed the task with great care. → Adverb phrase",
+          "urdu": "اس نے کام بہت احتیاط سے مکمل کیا۔",
+          "note": "The phrase tells how but has no subject + finite verb combination."
+        },
+        {
+          "text": "She completed the task because she worked carefully. → Adverb clause",
+          "urdu": "اس نے کام مکمل کیا کیونکہ اس نے احتیاط سے کام کیا۔",
+          "note": "The clause has subject **she** and finite verb **worked**."
+        }
+      ],
+      "commonMistakes": [
+        {
+          "wrong": "Calling every group of words a phrase.",
+          "right": "Check for a subject + finite verb combination first.",
+          "urdu": "ہر الفاظ کے گروہ کو phrase نہ کہیں؛ پہلے subject اور finite verb دیکھیں۔",
+          "note": "A phrase may answer the same question as a clause; the difference is structural, not only functional."
+        }
+      ],
+      "examTips": [
+        "Ask the adverb question, then check whether the answer contains a subject and finite verb.",
+        "Function tells you “adverb”; structure tells you “phrase” or “clause”."
+      ],
+      "summary": "An adverb phrase modifies a verb, adjective, or adverb without its own subject–finite-verb combination. An adverb clause performs the same broad function but contains a subject and finite verb.",
+      "tableTitle": "Adverb Phrase vs Adverb Clause — Comparison Table",
+      "tableColumns": [
+        "Feature",
+        "First concept",
+        "Second concept"
+      ],
+      "tableRows": [
+        [
+          "Internal structure",
+          "Adverb or modifier group",
+          "Subject + finite verb"
+        ],
+        [
+          "Common markers",
+          "very quickly, with care",
+          "because, when, although, if"
+        ],
+        [
+          "Example",
+          "with great care",
+          "because she worked carefully"
+        ]
+      ]
+    }
+  },
+  {
+    "id": "comparison/quick-identification",
+    "parentId": "comparison",
+    "title": "Quick Identification Rules",
+    "subtitle": null,
+    "order": 8,
+    "isLeaf": true,
+    "keywords": [
+      "quick identification rules",
+      "grammar",
+      "exam preparation"
+    ],
+    "content": {
+      "introduction": "Use structure first and meaning second: identify the subject, finite verb, and completeness of the thought.",
+      "urduExplanation": "پہلے structure دیکھیں، پھر meaning: subject، finite verb اور مکمل خیال کی پہچان کریں۔",
+      "rules": [
+        "Phrase: a word group without its own subject + finite verb combination.",
+        "Clause: a word group with a subject + finite verb.",
+        "Independent clause: a clause that can stand alone.",
+        "Dependent clause: a clause that cannot stand alone and depends on another clause.",
+        "Sentence: a complete thought, normally containing at least one independent clause.",
+        "Subject: the person, thing, or idea the clause is about.",
+        "Verb: a word showing action, state, or occurrence.",
+        "Finite verb: a verb form marked for tense or subject agreement, such as works, worked, or is."
+      ],
+      "examples": [
+        {
+          "text": "The careful student answered quickly.",
+          "urdu": "محتاط طالب علم نے جلدی جواب دیا۔",
+          "note": "**student** is the subject, **answered** is the finite verb, and the full unit is a sentence."
+        },
+        {
+          "text": "after the lesson ended",
+          "urdu": "جب سبق ختم ہوا۔",
+          "note": "**lesson** is the subject and **ended** is the finite verb; **after** makes it a dependent clause."
+        }
+      ],
+      "commonMistakes": [
+        {
+          "wrong": "To identify a clause, search only for any verb form.",
+          "right": "Search for a subject + finite verb combination.",
+          "urdu": "Clause پہچاننے کے لیے subject اور finite verb دونوں تلاش کریں۔",
+          "note": "A non-finite form such as **to study** or **studying** alone does not create a finite clause."
+        }
+      ],
+      "examTips": [
+        "First underline the subject.",
+        "Circle the finite verb.",
+        "Check whether the unit can stand alone.",
+        "Finally identify its function: noun, adjective, or adverb."
+      ],
+      "summary": "The fastest reliable method is subject → finite verb → independence → function."
+    }
+  },
+  {
+    "id": "comparison/common-exam-traps",
+    "parentId": "comparison",
+    "title": "Common Exam Traps",
+    "subtitle": null,
+    "order": 9,
+    "isLeaf": true,
+    "keywords": [
+      "common exam traps",
+      "grammar",
+      "exam preparation"
+    ],
+    "content": {
+      "introduction": "These traps occur when learners identify a form from one word instead of checking the full structure.",
+      "urduExplanation": "یہ امتحانی غلطیاں اس وقت ہوتی ہیں جب طالب علم پورا structure دیکھنے کے بجائے صرف ایک لفظ سے فیصلہ کرتا ہے۔",
+      "rules": [
+        "A phrase mistaken for a clause: check for subject + finite verb.",
+        "A clause mistaken for a phrase: a finite verb and subject make the structure a clause.",
+        "Noun phrase vs noun clause: compare internal subject + finite verb structure.",
+        "Adjective phrase vs adjective clause: check whether the modifier contains a clause.",
+        "Adverb phrase vs adverb clause: function may be the same, structure differs.",
+        "A dependent clause mistaken for a complete sentence: test whether it can stand alone.",
+        "Sentence fragment: a phrase or dependent clause incorrectly punctuated as a sentence.",
+        "Subject + non-finite verb confusion: studying, to study, and written are not automatically finite verbs.",
+        "Prepositional phrase mistaken for a clause: a preposition plus noun is not enough to form a clause."
+      ],
+      "examples": [
+        {
+          "text": "in the classroom → Phrase",
+          "urdu": "کلاس روم میں۔",
+          "note": "It is a prepositional phrase; it has no subject + finite verb combination."
+        },
+        {
+          "text": "when the class ended → Clause",
+          "urdu": "جب کلاس ختم ہوئی۔",
+          "note": "It has subject **the class** and finite verb **ended**."
+        },
+        {
+          "text": "what she decided → Noun clause",
+          "urdu": "جو اس نے فیصلہ کیا۔",
+          "note": "It acts as a noun and contains subject **she** + finite verb **decided**."
+        },
+        {
+          "text": "full of energy → Adjective phrase",
+          "urdu": "توانائی سے بھرپور۔",
+          "note": "It modifies a noun but has no finite verb."
+        },
+        {
+          "text": "because he was late → Dependent clause",
+          "urdu": "کیونکہ وہ دیر سے آیا۔",
+          "note": "It contains subject + finite verb but cannot stand alone."
+        }
+      ],
+      "commonMistakes": [
+        {
+          "wrong": "Because the candidates were tired. They stopped.",
+          "right": "Because the candidates were tired, they stopped.",
+          "urdu": "کیونکہ امیدوار تھکے ہوئے تھے، وہ رک گئے۔",
+          "note": "The first version wrongly treats a dependent clause as a complete sentence."
+        }
+      ],
+      "examTips": [
+        "Underline all possible subjects and verbs.",
+        "Distinguish finite verbs from participles and infinitives.",
+        "Do not rely only on punctuation or the first word."
+      ],
+      "summary": "In exam questions, structure is more reliable than length, punctuation, or a single linking word."
     }
   }
 ]
