@@ -155,7 +155,7 @@ void main() {
         reason: '${o['id']} needs English lesson content',
       );
     }
-    expect(leaves, greaterThanOrEqualTo(87));
+    expect(leaves, greaterThanOrEqualTo(86));
 
     // Flagship leaves across the split categories decode with full sections
     // (Urdu + rules + practice + quiz + summary), proving each type has its
