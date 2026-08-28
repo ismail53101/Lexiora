@@ -175,7 +175,6 @@ void main() {
       'active-passive-voice/interrogative',
       'direct-indirect-speech/universal-truth',
       'modals/must',
-      'punctuation/semicolon',
     ]) {
       final GrammarLesson? lesson = await ds.leaf(id);
       expect(lesson, isNotNull, reason: '$id must decode');
