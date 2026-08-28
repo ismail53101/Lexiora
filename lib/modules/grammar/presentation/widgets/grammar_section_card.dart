@@ -128,7 +128,7 @@ List<TextSpan> _highlightRuleDetails(
   const Color exampleColor = Color(0xFF64B5F6);
   const Color explanationColor = Color(0xFFCE93D8);
   final List<TextSpan> spans = <TextSpan>[];
-  final RegExp marker = RegExp(r'(Example|Examples|Explanation):');
+  final RegExp marker = RegExp(r'(Example|Examples|Explanation|Here):');
   for (final String rawLine in text.split('\n')) {
     final String line = _normalizeLabelMarkup(rawLine);
     if (line.isEmpty) {
@@ -148,7 +148,7 @@ List<TextSpan> _highlightRuleDetails(
           defaultColor,
         ));
       }
-      final bool explanation = match.group(1)!.startsWith('Explanation');
+      final bool explanation = match.group(1)!.startsWith('Explanation') || match.group(1) == 'Here';
       spans.add(TextSpan(
         text: line.substring(match.start, match.end),
         style: TextStyle(color: highlightColor, fontWeight: FontWeight.w700),

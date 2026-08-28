@@ -156,7 +156,9 @@ void main() {
       expect(lesson, isNotNull, reason: 'leaf $id must decode');
       if (id == 'clauses/phrase-vs-clause') continue;
       expect(
-        lesson!.englishExplanation.isNotEmpty || lesson.introduction.isNotEmpty,
+        lesson!.englishExplanation.isNotEmpty ||
+            lesson.introduction.isNotEmpty ||
+            lesson.providedMaterial.isNotEmpty,
         isTrue,
         reason: '$id needs English lesson content',
       );
@@ -183,21 +185,29 @@ void main() {
       expect(lesson.summary, isNotEmpty, reason: '$id needs a summary');
     }
 
-    // New Phrase/Comparison topics follow the TXT requirements: Urdu,
-    // rules, examples, mistakes, and exam guidance. They do not need the
-    // older optional practice/quiz sections.
+    // Phrase material is preserved verbatim from the supplied TXT file. The
+    // structured fields remain optional because the original source includes
+    // its own headings, examples, explanations, and Urdu lines.
     for (final String id in <String>[
+      'phrases/noun',
+      'phrases/verb',
+      'phrases/adjective',
+      'phrases/adverb',
+      'phrases/prepositional',
+      'phrases/gerund',
+      'phrases/infinitive',
+      'phrases/participial',
       'phrases/absolute',
-      'comparison/phrase-vs-clause',
     ]) {
       final GrammarLesson? lesson = await ds.leaf(id);
       expect(lesson, isNotNull, reason: '$id must decode');
-      expect(lesson!.urduExplanation, isNotEmpty, reason: '$id needs Urdu');
-      expect(lesson.rules, isNotEmpty, reason: '$id needs rules');
-      expect(lesson.examples, isNotEmpty, reason: '$id needs examples');
-      expect(lesson.commonMistakes, isNotEmpty, reason: '$id needs common mistakes');
-      expect(lesson.examTips, isNotEmpty, reason: '$id needs exam tips');
+      expect(lesson!.providedMaterial, isNotEmpty,
+          reason: '$id needs the supplied material verbatim');
     }
+    final GrammarLesson? phraseVsClause =
+        await ds.leaf('clauses/phrase-vs-clause');
+    expect(phraseVsClause, isNotNull);
+    expect(phraseVsClause!.providedMaterial, isEmpty);
 
     // Clause lessons supplied by the user use the expanded lesson schema but
     // intentionally do not require the legacy practice/quiz sections.
