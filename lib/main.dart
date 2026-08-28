@@ -16,6 +16,8 @@ import 'package:lexiora/features/settings/domain/entities/app_settings.dart';
 import 'package:lexiora/features/settings/domain/repositories/settings_repository.dart';
 import 'package:pdfrx/pdfrx.dart';
 
+const String _initialPermissionFlowVersion = '2026.08.28-permissions-v2';
+
 /// Sapiora entry point.
 ///
 /// Runs inside a guarded zone with a friendly [ErrorWidget.builder] so a build
@@ -55,7 +57,11 @@ Future<void> main() async {
       );
       final SettingsRepository settings = sl<SettingsRepository>();
       final AppSettings currentSettings = await settings.getSettings();
-      if (!currentSettings.initialPermissionFlowCompleted) {
+      final bool needsPermissionFlow =
+          !currentSettings.initialPermissionFlowCompleted ||
+          currentSettings.initialPermissionFlowVersion !=
+              _initialPermissionFlowVersion;
+      if (needsPermissionFlow) {
         final bool notificationsEnabled =
             await notifications.notificationsEnabled();
         if (!notificationsEnabled) await notifications.requestPermission();
@@ -65,7 +71,10 @@ Future<void> main() async {
           await filePermission.requestForDiscovery();
         }
         await settings.updateSettings(
-          currentSettings.copyWith(initialPermissionFlowCompleted: true),
+          currentSettings.copyWith(
+            initialPermissionFlowCompleted: true,
+            initialPermissionFlowVersion: _initialPermissionFlowVersion,
+          ),
         );
       }
       await notifications.rescheduleAll();

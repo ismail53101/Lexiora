@@ -228,7 +228,7 @@ void main() {
         isTrue,
         reason: 'examples carry Urdu translations');
     // Conditional lessons preserve the supplied source material verbatim,
-    // including formulas and exam tips inside the provided-material field.
+    // including formulas and exam tips inside the source-material field.
     for (final String id in <String>[
       'conditional-sentences/zero',
       'conditional-sentences/first',

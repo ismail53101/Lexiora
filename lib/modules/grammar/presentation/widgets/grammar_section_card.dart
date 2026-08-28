@@ -10,6 +10,7 @@ class GrammarSectionCard extends StatelessWidget {
     required this.title,
     required this.child,
     this.accent,
+    this.showHeader = true,
   });
 
   final IconData icon;
@@ -18,6 +19,9 @@ class GrammarSectionCard extends StatelessWidget {
 
   /// Optional accent color for the header (defaults to the theme primary).
   final Color? accent;
+
+  /// Hides only the title/icon row while preserving the card and its content.
+  final bool showHeader;
 
   @override
   Widget build(BuildContext context) {
@@ -30,20 +34,22 @@ class GrammarSectionCard extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
-            Row(
-              children: <Widget>[
-                Icon(icon, size: 20, color: headerColor),
-                const SizedBox(width: 10),
-                Text(
-                  title,
-                  style: theme.textTheme.titleMedium?.copyWith(
-                    fontWeight: FontWeight.w700,
-                    color: headerColor,
+            if (showHeader) ...<Widget>[
+              Row(
+                children: <Widget>[
+                  Icon(icon, size: 20, color: headerColor),
+                  const SizedBox(width: 10),
+                  Text(
+                    title,
+                    style: theme.textTheme.titleMedium?.copyWith(
+                      fontWeight: FontWeight.w700,
+                      color: headerColor,
+                    ),
                   ),
-                ),
-              ],
-            ),
-            const SizedBox(height: 14),
+                ],
+              ),
+              const SizedBox(height: 14),
+            ],
             child,
           ],
         ),
@@ -87,7 +93,26 @@ class _BilingualRichText extends StatelessWidget {
   Widget build(BuildContext context) {
     final List<Widget> lines = <Widget>[];
     Color? carriedColor;
-    for (final String rawLine in text.split('\n')) {
+    final List<String> rawLines = text.split('\n');
+    for (int lineIndex = 0; lineIndex < rawLines.length; lineIndex++) {
+      final String rawLine = rawLines[lineIndex];
+      if (rawLine.trim().startsWith('|') &&
+          lineIndex + 1 < rawLines.length &&
+          rawLines[lineIndex + 1].trim().startsWith('|')) {
+        final List<String> tableLines = <String>[];
+        while (lineIndex < rawLines.length &&
+            rawLines[lineIndex].trim().startsWith('|')) {
+          tableLines.add(rawLines[lineIndex].trim());
+          lineIndex++;
+        }
+        lineIndex--;
+        final List<List<String>> rows = _markdownTableRows(tableLines);
+        if (rows.length > 1) {
+          carriedColor = null;
+          lines.add(_CompactMarkdownTable(rows: rows));
+          continue;
+        }
+      }
       final String line = _normalizeLabelMarkup(rawLine);
       if (line.isEmpty) {
         carriedColor = null;
@@ -141,6 +166,77 @@ class _BilingualRichText extends StatelessWidget {
       );
     }
     return Column(crossAxisAlignment: CrossAxisAlignment.stretch, children: lines);
+  }
+}
+
+List<List<String>> _markdownTableRows(List<String> lines) {
+  final List<List<String>> rows = <List<String>>[];
+  for (final String line in lines) {
+    final List<String> cells = line
+        .split('|')
+        .map((String cell) => cell.trim())
+        .toList();
+    if (cells.isNotEmpty && cells.first.isEmpty) cells.removeAt(0);
+    if (cells.isNotEmpty && cells.last.isEmpty) cells.removeLast();
+    if (cells.isEmpty || cells.every((String cell) => RegExp(r'^:?-{2,}:?$').hasMatch(cell))) {
+      continue;
+    }
+    rows.add(cells);
+  }
+  return rows;
+}
+
+class _CompactMarkdownTable extends StatelessWidget {
+  const _CompactMarkdownTable({required this.rows});
+  static const Color _exampleColor = Color(0xFF64B5F6);
+  final List<List<String>> rows;
+
+  @override
+  Widget build(BuildContext context) {
+    final ThemeData theme = Theme.of(context);
+    final List<String> header = rows.first;
+    final List<List<String>> body = rows.skip(1).toList();
+    return Card(
+      margin: const EdgeInsets.symmetric(vertical: 6),
+      elevation: 0,
+      color: theme.colorScheme.surfaceContainerHighest.withValues(alpha: 0.45),
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+      child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+        child: Column(
+          children: <Widget>[
+            _tableRow(header, theme, isHeader: true),
+            for (final List<String> row in body) ...<Widget>[
+              Divider(height: 10, color: theme.colorScheme.outlineVariant.withValues(alpha: 0.65)),
+              _tableRow(row, theme),
+            ],
+          ],
+        ),
+      ),
+    );
+  }
+
+  Widget _tableRow(List<String> cells, ThemeData theme, {bool isHeader = false}) {
+    final String left = cells.isNotEmpty ? cells[0] : '';
+    final String right = cells.length > 1 ? cells[1] : '';
+    final TextStyle leftStyle = (theme.textTheme.bodySmall ?? const TextStyle()).copyWith(
+      fontWeight: FontWeight.w800,
+      color: isHeader ? theme.colorScheme.primary : null,
+      height: 1.2,
+    );
+    final TextStyle rightStyle = (theme.textTheme.bodySmall ?? const TextStyle()).copyWith(
+      color: isHeader ? theme.colorScheme.primary : _exampleColor,
+      fontWeight: isHeader ? FontWeight.w800 : null,
+      height: 1.2,
+    );
+    return Row(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: <Widget>[
+        Expanded(child: Text.rich(TextSpan(style: leftStyle, children: _markupSpans(left, leftStyle.color)))),
+        const SizedBox(width: 10),
+        Expanded(flex: 2, child: Text.rich(TextSpan(style: rightStyle, children: _markupSpans(right, rightStyle.color)))),
+      ],
+    );
   }
 }
 

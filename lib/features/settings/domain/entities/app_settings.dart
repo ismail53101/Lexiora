@@ -31,6 +31,7 @@ class AppSettings extends Equatable {
     this.notificationVibrationEnabled = true,
     this.dailyWordHistory = const <String>[],
     this.initialPermissionFlowCompleted = false,
+    this.initialPermissionFlowVersion = '',
   });
 
   final ThemeMode themeMode;
@@ -77,6 +78,9 @@ class AppSettings extends Equatable {
   /// already presented. Permission state itself remains owned by Android.
   final bool initialPermissionFlowCompleted;
 
+  /// Version of the one-time notification + PDF permission flow last shown.
+  final String initialPermissionFlowVersion;
+
   AppSettings copyWith({
     ThemeMode? themeMode,
     double? fontScale,
@@ -99,6 +103,7 @@ class AppSettings extends Equatable {
     bool? notificationVibrationEnabled,
     List<String>? dailyWordHistory,
     bool? initialPermissionFlowCompleted,
+    String? initialPermissionFlowVersion,
   }) =>
       AppSettings(
         themeMode: themeMode ?? this.themeMode,
@@ -129,6 +134,8 @@ class AppSettings extends Equatable {
         dailyWordHistory: dailyWordHistory ?? this.dailyWordHistory,
         initialPermissionFlowCompleted:
             initialPermissionFlowCompleted ?? this.initialPermissionFlowCompleted,
+        initialPermissionFlowVersion:
+            initialPermissionFlowVersion ?? this.initialPermissionFlowVersion,
       );
 
   @override
@@ -154,5 +161,6 @@ class AppSettings extends Equatable {
         notificationVibrationEnabled,
         dailyWordHistory,
         initialPermissionFlowCompleted,
+        initialPermissionFlowVersion,
       ];
 }

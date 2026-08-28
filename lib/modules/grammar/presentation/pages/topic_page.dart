@@ -53,10 +53,12 @@ class TopicPage extends ConsumerWidget {
           final bool isPhrasesFolder = topicId == 'phrases';
           final bool isClausesFolder = topicId == 'clauses';
           final bool isConditionalsFolder = topicId == 'conditional-sentences';
+          final bool isPunctuationFolder = topicId == 'punctuation';
           final int extraItems = (isTensesOverview ? 1 : 0) +
               (isPhrasesFolder ? 1 : 0) +
               (isClausesFolder ? 1 : 0) +
-              (isConditionalsFolder ? 1 : 0);
+              (isConditionalsFolder ? 1 : 0) +
+              (isPunctuationFolder ? 1 : 0);
           return ListView.separated(
             padding: const EdgeInsets.only(bottom: 24),
             itemCount: list.length + extraItems,
@@ -71,7 +73,10 @@ class TopicPage extends ConsumerWidget {
               if (isConditionalsFolder && i == 0) {
                 return const _ConditionalIntroduction();
               }
-              final int topicIndex = (isPhrasesFolder || isClausesFolder || isConditionalsFolder) ? i - 1 : i;
+              if (isPunctuationFolder && i == 0) {
+                return const _PunctuationIntroduction();
+              }
+              final int topicIndex = (isPhrasesFolder || isClausesFolder || isConditionalsFolder || isPunctuationFolder) ? i - 1 : i;
               if (isTensesOverview && topicIndex == list.length) {
                 return const _TensesReferenceImage();
               }
@@ -262,6 +267,47 @@ class _ConditionalIntroduction extends StatelessWidget {
             Text('Types of Conditional Sentences', style: heading),
             const SizedBox(height: 4),
             Text('Zero Conditional, First Conditional, Second Conditional, Third Conditional, and Mixed Conditional.', style: body),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class _PunctuationIntroduction extends StatelessWidget {
+  const _PunctuationIntroduction();
+
+  @override
+  Widget build(BuildContext context) {
+    final ThemeData theme = Theme.of(context);
+    final TextStyle body = theme.textTheme.bodyMedium ?? const TextStyle();
+    final TextStyle heading = theme.textTheme.titleMedium?.copyWith(fontWeight: FontWeight.bold) ?? const TextStyle(fontWeight: FontWeight.bold);
+    const Color exampleColor = Color(0xFF64B5F6);
+    return Card(
+      margin: const EdgeInsets.fromLTRB(16, 16, 16, 8),
+      child: Padding(
+        padding: const EdgeInsets.all(16),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: <Widget>[
+            Text('Punctuation', style: theme.textTheme.titleLarge?.copyWith(fontWeight: FontWeight.bold)),
+            const SizedBox(height: 12),
+            Text('Definition', style: heading),
+            const SizedBox(height: 6),
+            Text('Punctuation is the use of special marks in writing to make sentences clear, organized, and easy to understand.', style: body),
+            const SizedBox(height: 8),
+            Directionality(
+              textDirection: TextDirection.rtl,
+              child: Text('Punctuation (علاماتِ ترقیم) تحریر میں استعمال ہونے والی مخصوص علامات ہیں جو جملوں کو واضح، منظم اور آسانی سے سمجھنے کے قابل بناتی ہیں۔', textAlign: TextAlign.right, style: body.copyWith(height: 1.7)),
+            ),
+            const SizedBox(height: 12),
+            Text('Examples', style: heading),
+            const SizedBox(height: 4),
+            Text('Without punctuation:\nLets eat Ali\n\nWith punctuation:\nLet\'s eat, Ali.\n\nWithout punctuation:\nShe asked where are you going\n\nWith punctuation:\nShe asked, “Where are you going?”', style: body.copyWith(color: exampleColor, height: 1.35)),
+            const SizedBox(height: 12),
+            Text('Quick Tip', style: heading),
+            const SizedBox(height: 4),
+            Text('Punctuation = marks that organize writing and make meaning clear.', style: body.copyWith(color: exampleColor, fontWeight: FontWeight.w700)),
           ],
         ),
       ),

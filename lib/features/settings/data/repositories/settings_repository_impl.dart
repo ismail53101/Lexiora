@@ -37,6 +37,8 @@ class SettingsRepositoryImpl implements SettingsRepository {
   static const String _kDailyWordHistory = 'dailyWordHistory';
   static const String _kInitialPermissionFlowCompleted =
       'initialPermissionFlowCompleted';
+  static const String _kInitialPermissionFlowVersion =
+      'initialPermissionFlowVersion';
 
   @override
   Stream<AppSettings> watchSettings() =>
@@ -104,6 +106,8 @@ class SettingsRepositoryImpl implements SettingsRepository {
       dailyWordHistory: _history(map[_kDailyWordHistory]),
       initialPermissionFlowCompleted:
           _bool(map[_kInitialPermissionFlowCompleted], false),
+      initialPermissionFlowVersion:
+          map[_kInitialPermissionFlowVersion] ?? '',
     );
   }
 
@@ -133,6 +137,7 @@ class SettingsRepositoryImpl implements SettingsRepository {
         _kDailyWordHistory: s.dailyWordHistory.join('\\n'),
         _kInitialPermissionFlowCompleted:
             s.initialPermissionFlowCompleted ? '1' : '0',
+        _kInitialPermissionFlowVersion: s.initialPermissionFlowVersion,
       };
 
   String _language(String? v) => (v != null && isSupportedTranslationLanguage(v))
