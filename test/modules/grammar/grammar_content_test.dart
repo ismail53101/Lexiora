@@ -173,7 +173,6 @@ void main() {
       'active-passive-voice/interrogative',
       'direct-indirect-speech/universal-truth',
       'modals/must',
-      'conditional-sentences/third',
       'punctuation/semicolon',
     ]) {
       final GrammarLesson? lesson = await ds.leaf(id);
@@ -228,9 +227,19 @@ void main() {
     expect(must.examples.any((GrammarExample e) => (e.urdu ?? '').isNotEmpty),
         isTrue,
         reason: 'examples carry Urdu translations');
-    final GrammarLesson cond = (await ds.leaf('conditional-sentences/third'))!;
-    expect(cond.structure, isNotEmpty,
-        reason: 'conditionals carry the if/main-clause formula');
-    expect(cond.examTips, isNotEmpty);
+    // Conditional lessons preserve the supplied source material verbatim,
+    // including formulas and exam tips inside the provided-material field.
+    for (final String id in <String>[
+      'conditional-sentences/zero',
+      'conditional-sentences/first',
+      'conditional-sentences/second',
+      'conditional-sentences/third',
+      'conditional-sentences/mixed',
+    ]) {
+      final GrammarLesson? cond = await ds.leaf(id);
+      expect(cond, isNotNull, reason: '$id must decode');
+      expect(cond!.providedMaterial, isNotEmpty,
+          reason: '$id needs the supplied material verbatim');
+    }
   });
 }
