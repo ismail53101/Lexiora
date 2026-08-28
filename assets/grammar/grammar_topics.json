@@ -10555,50 +10555,6 @@
     "content": {}
   },
   {
-    "id": "clauses/introduction",
-    "parentId": "clauses",
-    "title": "Introduction",
-    "subtitle": null,
-    "order": 1,
-    "isLeaf": true,
-    "keywords": [
-      "clause introduction"
-    ],
-    "content": {
-      "introduction": "A clause is a group of words that contains a subject and a verb and forms part of a sentence.",
-      "urduExplanation": "Clause (جملے کا جز) الفاظ کا ایسا مجموعہ ہے جس میں عموماً Subject اور Verb ہوتے ہیں اور جو جملے کا ایک حصہ ہوتا ہے۔",
-      "rules": [
-        "Clause = Subject + Verb.",
-        "A clause forms part of a sentence and contains a subject and a verb.",
-        "A clause may express a complete or incomplete thought depending on its type."
-      ],
-      "examples": [
-        {
-          "text": "**She is studying for the exam.**",
-          "note": "She → Subject; is studying → Verb; She is studying → Clause."
-        },
-        {
-          "text": "**I know that he is honest.**"
-        },
-        {
-          "text": "**When the rain stopped, we went outside.**"
-        }
-      ],
-      "commonMistakes": [],
-      "examTips": [
-        "A clause is a group of words with a subject and a verb.",
-        "First find the subject and verb before identifying the clause type."
-      ],
-      "structure": [
-        "Subject + Verb",
-        "Example: **She is studying for the exam.**",
-        "She → Subject; is studying → Verb; She is studying → Clause"
-      ],
-      "summary": "Clause = Subject + Verb. A clause is a group of words that forms part of a sentence.",
-      "providedMaterial": "Clause\nDefinition\n\nA clause is a group of words that contains a subject and a verb and forms part of a sentence.\n\nClause (جملے کا جز) الفاظ کا ایسا مجموعہ ہے جس میں عموماً Subject اور Verb ہوتے ہیں اور جو جملے کا ایک حصہ ہوتا ہے۔\n\nExamples\nShe is studying for the exam.\nI know that he is honest.\nWhen the rain stopped, we went outside.\nQuick Tip\n\nClause = Subject + Verb\nExample:\n\nShe is studying for the exam.\n\nHere:\n\nShe → Subject\nis studying → Verb\nShe is studying → Clause"
-    }
-  },
-  {
     "id": "clauses/by-independence",
     "parentId": "clauses",
     "title": "By Independence",
@@ -10622,70 +10578,6 @@
       "independent clause"
     ],
     "content": {
-      "introduction": "An independent clause is a group of words that contains a subject and a verb and expresses a complete thought.",
-      "urduExplanation": "Independent Clause (مکمل جملے کا جز) الفاظ کا ایسا مجموعہ ہے جس میں Subject اور Verb ہوتے ہیں اور جو مکمل خیال بیان کرتا ہے۔",
-      "rules": [
-        "An independent clause contains a subject and a verb.",
-        "It expresses a complete thought.",
-        "It can stand alone as a complete sentence.",
-        "Independent Clause = Subject + Verb + Complete Thought.",
-        "Ask: Does it have a subject and a verb? Does it express a complete thought?"
-      ],
-      "examples": [
-        {
-          "text": "**She is studying for the exam.**",
-          "note": "The clause has a subject and a verb and gives a complete meaning."
-        },
-        {
-          "text": "**Ali plays football every evening.**",
-          "note": "The clause has subject **Ali**, verb **plays**, and a complete thought."
-        },
-        {
-          "text": "**We went to the market yesterday.**",
-          "note": "The clause can stand alone as a complete sentence."
-        },
-        {
-          "text": "**The students completed their work.**",
-          "note": "Subject: **The students**; Verb: **completed**; Complete thought: **The students completed their work.**"
-        },
-        {
-          "text": "**She went home.** ✓",
-          "note": "It gives a complete thought and is an Independent Clause."
-        }
-      ],
-      "commonMistakes": [],
-      "examTips": [
-        "If a clause can stand alone as a complete sentence, it is an Independent Clause.",
-        "Check both structure and complete meaning."
-      ],
-      "structure": [
-        "Subject + Verb + Complete Idea",
-        "Examples: **She + is studying + for the exam.**; **Ali + plays + football every evening.**; **We + went + to the market yesterday.**"
-      ],
-      "summary": "An independent clause has a subject and a verb, expresses a complete thought, and can stand alone as a sentence.",
-      "tableTitle": "Independent Clause — Identification",
-      "tableColumns": [
-        "Test",
-        "Result"
-      ],
-      "tableRows": [
-        [
-          "Subject and verb present",
-          "Yes"
-        ],
-        [
-          "Complete thought",
-          "Yes"
-        ],
-        [
-          "Can stand alone",
-          "Yes"
-        ],
-        [
-          "Example",
-          "She went home. ✓"
-        ]
-      ],
       "providedMaterial": "Independent Clause\nDefinition\n\nEnglish:\nAn independent clause is a group of words that contains a subject and a verb and expresses a complete thought.\n\nUrdu:\nIndependent Clause (مکمل جملے کا جز) الفاظ کا ایسا مجموعہ ہے جس میں Subject اور Verb ہوتے ہیں اور جو مکمل خیال بیان کرتا ہے۔\n\nExamples\nShe is studying for the exam.\nAli plays football every evening.\nWe went to the market yesterday.\n\nIn each example, the clause has a subject and a verb and gives a complete meaning.\n\nStructure\n\nSubject + Verb + Complete Idea\n\nExamples:\n\nShe + is studying + for the exam.\nAli + plays + football every evening.\nWe + went + to the market yesterday.\nMain Function\n\nAn independent clause can stand alone as a complete sentence.\n\nExample:\n\nThe students completed their work.\n\nThis is an independent clause because it has:\n\nSubject: The students\nVerb: completed\nComplete thought: The students completed their work.\nHow to Identify an Independent Clause\n\nAsk these two questions:\n\nDoes it have a subject and a verb?\nDoes it express a complete thought?\n\nIf the answer to both is yes, it is an Independent Clause.\n\nCompare\n\nIndependent Clause:\n\nShe went home. ✓\n\nIt gives a complete thought.\n\nNot Independent:\n\nBecause she was tired ✗\n\nIt has a subject (she) and verb (was), but it does not give a complete thought by itself.\n\nEasy Rule\n\nIndependent Clause = Subject + Verb + Complete Thought\n\nExam Tip\n\nIf a clause can stand alone as a complete sentence, it is an Independent Clause."
     }
   },
@@ -10700,71 +10592,6 @@
       "dependent clause"
     ],
     "content": {
-      "introduction": "A dependent clause is a group of words that contains a subject and a verb but does not express a complete thought by itself.",
-      "urduExplanation": "Dependent Clause (نامکمل جملے کا جز) الفاظ کا ایسا مجموعہ ہے جس میں Subject اور Verb ہوتے ہیں، لیکن یہ اکیلا مکمل خیال بیان نہیں کرتا۔",
-      "rules": [
-        "A dependent clause contains a subject and a verb.",
-        "It does not express a complete thought by itself.",
-        "It cannot stand alone and must be connected to an independent clause.",
-        "It often begins with a subordinating word.",
-        "Dependent Clause = Subject + Verb + Incomplete Thought."
-      ],
-      "examples": [
-        {
-          "text": "**because she was tired**, she went home.",
-          "note": "The bold clause has a subject and verb but cannot stand alone."
-        },
-        {
-          "text": "I will call you **when I reach home**.",
-          "note": "The clause explains when the call will happen."
-        },
-        {
-          "text": "**Although he studied hard**, he failed the exam.",
-          "note": "The clause begins with **Although** and needs the main clause to complete its meaning."
-        },
-        {
-          "text": "**Because she was tired**, she went home.",
-          "note": "Dependent Clause: **Because she was tired**; Independent Clause: **she went home**; the dependent clause explains why she went home."
-        },
-        {
-          "text": "**Because she was tired.** ✗",
-          "note": "It leaves the reader asking: What happened because she was tired?"
-        }
-      ],
-      "commonMistakes": [],
-      "examTips": [
-        "If a group of words has a subject and verb but cannot stand alone, it is a Dependent Clause.",
-        "Connect it to an independent clause to form a complete sentence."
-      ],
-      "structure": [
-        "Subordinating Word + Subject + Verb + Incomplete Idea",
-        "Examples: **because + she + was tired**; **when + I + reach home**; **although + he + studied hard**",
-        "Common words: **because, although, if, when, while, before, after, unless, since, that, who, which**"
-      ],
-      "summary": "A dependent clause contains a subject and verb but cannot stand alone as a complete sentence.",
-      "tableTitle": "Dependent Clause — Identification",
-      "tableColumns": [
-        "Question",
-        "Dependent-clause test"
-      ],
-      "tableRows": [
-        [
-          "Subject and verb present?",
-          "Yes"
-        ],
-        [
-          "Can it stand alone?",
-          "No"
-        ],
-        [
-          "Complete thought?",
-          "No"
-        ],
-        [
-          "Example",
-          "Because she was tired. ✗"
-        ]
-      ],
       "providedMaterial": "Dependent Clause\nDefinition\n\nEnglish:\nA dependent clause is a group of words that contains a subject and a verb but does not express a complete thought by itself.\n\nUrdu:\nDependent Clause (نامکمل جملے کا جز) الفاظ کا ایسا مجموعہ ہے جس میں Subject اور Verb ہوتے ہیں، لیکن یہ اکیلا مکمل خیال بیان نہیں کرتا۔\n\nExamples\nbecause she was tired, she went home.\nI will call you when I reach home.\nAlthough he studied hard, he failed the exam.\n\nIn each example, the bold words have a subject and a verb but cannot stand alone as a complete sentence.\n\nStructure\n\nSubordinating Word + Subject + Verb + Incomplete Idea\n\nExamples:\n\nbecause + she + was tired\nwhen + I + reach home\nalthough + he + studied hard\nMain Function\n\nA dependent clause cannot stand alone. It must be connected to an independent clause to form a complete sentence.\n\nExample:\n\nBecause she was tired, she went home.\n\nDependent Clause: Because she was tired\nIndependent Clause: she went home\n\nThe dependent clause explains why she went home.\n\nHow to Identify a Dependent Clause\n\nAsk these two questions:\n\nDoes it have a subject and a verb?\nCan it stand alone as a complete sentence?\n\nIf it has a subject and verb but cannot stand alone, it is a Dependent Clause.\n\nCompare\n\nIndependent Clause:\n\nShe went home. ✓\n\nComplete thought.\n\nDependent Clause:\n\nBecause she was tired. ✗\n\nIt leaves the reader asking: What happened because she was tired?\n\nCommon Words That Introduce Dependent Clauses\nbecause\nalthough\nif\nwhen\nwhile\nbefore\nafter\nunless\nsince\nthat\nwho\nwhich\nEasy Rule\n\nDependent Clause = Subject + Verb + Incomplete Thought\n\nExam Tip\n\nIf a group of words has a subject and verb but cannot stand alone, it is a Dependent Clause."
     }
   },
@@ -10793,75 +10620,7 @@
       "noun clause"
     ],
     "content": {
-      "introduction": "A noun clause is a group of words that contains a subject and a verb and works like a noun in a sentence.",
-      "urduExplanation": "Noun Clause (اسمی جملے کا جز) الفاظ کا ایسا مجموعہ ہے جس میں Subject اور Verb ہوتے ہیں اور جو جملے میں Noun (اسم) کی طرح کام کرتا ہے۔",
-      "rules": [
-        "A noun clause contains a subject and a verb.",
-        "It works like a noun in the main sentence.",
-        "It may function as a subject, object, subject complement, or object of a preposition.",
-        "It can begin with **that, what, who, why, where, when, how, whether,** or **if**.",
-        "Noun Clause = Subject + Verb + works like a Noun."
-      ],
-      "examples": [
-        {
-          "text": "I know **that he is honest**.",
-          "urdu": "میں جانتا ہوں کہ وہ ایماندار ہے۔",
-          "note": "The bold clause works like a noun and is the object of **know**."
-        },
-        {
-          "text": "**What she said** was true.",
-          "urdu": "اس نے جو کہا وہ سچ تھا۔",
-          "note": "The bold noun clause works as the subject."
-        },
-        {
-          "text": "She explained **why she was late**.",
-          "urdu": "اس نے وضاحت کی کہ وہ دیر سے کیوں آئی۔",
-          "note": "The bold clause works as the object of **explained**."
-        },
-        {
-          "text": "I don't know **where he lives**.",
-          "note": "Subject: **he**; Verb: **lives**; Function: object of **know**."
-        },
-        {
-          "text": "I know **what the answer is**.",
-          "note": "**the answer** is a noun; **what the answer is** is a noun clause. Both work as the object of **know**."
-        }
-      ],
-      "commonMistakes": [],
-      "examTips": [
-        "Ask: “Is this clause doing the job of a noun?” If yes, it is a Noun Clause.",
-        "Compare the clause with a simple noun: **I know the answer** → **I know what the answer is**."
-      ],
-      "structure": [
-        "Subject + Verb + Noun Clause",
-        "Examples: **I know that he is honest.**; **She explained why she was late.**; **We do not know where he lives.**",
-        "Opening words: **that, what, who, why, where, when, how, whether, if**"
-      ],
-      "summary": "A noun clause contains a subject and verb and performs the grammatical work of a noun.",
-      "tableTitle": "Functions of a Noun Clause",
-      "tableColumns": [
-        "Function",
-        "Example"
-      ],
-      "tableRows": [
-        [
-          "Subject",
-          "What he said was true."
-        ],
-        [
-          "Object",
-          "I know that she is honest."
-        ],
-        [
-          "Subject Complement",
-          "The problem is that we are late."
-        ],
-        [
-          "Object of a Preposition",
-          "We talked about what he had done."
-        ]
-      ],
-      "providedMaterial": "Noun Clause\nDefinition\n\nEnglish:\nA noun clause is a group of words that contains a subject and a verb and works like a noun in a sentence.\n\nUrdu:\nNoun Clause (اسمی جملے کا جز) الفاظ کا ایسا مجموعہ ہے جس میں Subject اور Verb ہوتے ہیں اور جو جملے میں Noun (اسم) کی طرح کام کرتا ہے۔\n\nExamples\n\nI know that he is honest.\nمیں جانتا ہوں کہ وہ ایماندار ہے۔\n\nWhat she said was true.\nاس نے جو کہا وہ سچ تھا۔\n\nShe explained why she was late.\nاس نے وضاحت کی کہ وہ دیر سے کیوں آئی۔\n\nIn each example, the bold words contain a subject and a verb and work like a noun.\n\nCommon Structure\n\nSubject + Verb + Noun Clause\n\nExamples:\n\nI know that he is honest.\nShe explained why she was late.\nWe don't know where he lives.\n\nA noun clause can begin with words such as:\n\nthat, what, who, why, where, when, how, whether, if\n\nFunctions of a Noun Clause\n\nA noun clause can work as:\n\nExample\nWhat he said was true.\nI know that she is honest.\nThe problem is that we are late.\nWe talked about what he had done.\nHow to Identify a Noun Clause\n\nLook for a group of words that:\n\nContains a subject and a verb.\nCannot normally stand alone as a complete sentence.\nWorks like a noun in the main sentence.\n\nExample:\n\nI don't know where he lives.\n\nNoun Clause: where he lives\nSubject: he\nVerb: lives\nFunction: Object of know\nHow a Noun Clause Adds Information\n\nA noun clause can replace a simple noun and express a complete idea as a thing, fact, question, or information.\n\nSimple:\n\nI know the answer.\n\nMore information:\n\nI know what the answer is.\n\nHere:\n\nthe answer → noun\nwhat the answer is → noun clause\nBoth work as the object of know.\nEasy Rule\n\nNoun Clause = Subject + Verb + works like a Noun\n\nExam Tip\n\nAsk: “Is this clause doing the job of a noun?” If yes, it is a Noun Clause."
+      "providedMaterial": "Noun Clause\nDefinition\n\nEnglish:\nA noun clause is a group of words that contains a subject and a verb and works like a noun in a sentence.\n\nUrdu:\nNoun Clause (اسمی جملے کا جز) الفاظ کا ایسا مجموعہ ہے جس میں Subject اور Verb ہوتے ہیں اور جو جملے میں Noun (اسم) کی طرح کام کرتا ہے۔\n\nExamples\n\nI know that he is honest.\nمیں جانتا ہوں کہ وہ ایماندار ہے۔\n\nWhat she said was true.\nاس نے جو کہا وہ سچ تھا۔\n\nShe explained why she was late.\nاس نے وضاحت کی کہ وہ دیر سے کیوں آئی۔\n\nIn each example, the bold words contain a subject and a verb and work like a noun.\n\nCommon Structure\n\nSubject + Verb + Noun Clause\n\nExamples:\n\nI know that he is honest.\nShe explained why she was late.\nWe don't know where he lives.\n\nA noun clause can begin with words such as:\n\nthat, what, who, why, where, when, how, whether, if\n\nFunctions of a Noun Clause\n\nA noun clause can work as:\n\nFunction\tExample\nSubject\tWhat he said was true.\nObject\tI know that she is honest.\nSubject Complement\tThe problem is that we are late.\nObject of a Preposition\tWe talked about what he had done.\nHow to Identify a Noun Clause\n\nLook for a group of words that:\n\nContains a subject and a verb.\nCannot normally stand alone as a complete sentence.\nWorks like a noun in the main sentence.\n\nExample:\n\nI don't know where he lives.\n\nNoun Clause: where he lives\nSubject: he\nVerb: lives\nFunction: Object of know\nHow a Noun Clause Adds Information\n\nA noun clause can replace a simple noun and express a complete idea as a thing, fact, question, or information.\n\nSimple:\n\nI know the answer.\n\nMore information:\n\nI know what the answer is.\n\nHere:\n\nthe answer → noun\nwhat the answer is → noun clause\nBoth work as the object of know.\nEasy Rule\n\nNoun Clause = Subject + Verb + works like a Noun\n\nExam Tip\n\nAsk: “Is this clause doing the job of a noun?” If yes, it is a Noun Clause."
     }
   },
   {
@@ -10876,75 +10635,7 @@
       "relative clause"
     ],
     "content": {
-      "introduction": "An adjective clause is a group of words that contains a subject and a verb and describes or gives more information about a noun or pronoun.",
-      "urduExplanation": "Adjective Clause (صفتی جملے کا جز) الفاظ کا ایسا مجموعہ ہے جس میں Subject اور Verb ہوتے ہیں اور جو کسی Noun یا Pronoun کے بارے میں مزید معلومات دیتا ہے۔",
-      "rules": [
-        "An adjective clause contains a subject and a verb.",
-        "It describes or identifies a noun or pronoun.",
-        "It usually begins with a relative word such as **who, whom, whose, which, that, where,** or **when**.",
-        "Find the noun or pronoun described by the clause.",
-        "Adjective Clause = Subject + Verb + describes a Noun or Pronoun."
-      ],
-      "examples": [
-        {
-          "text": "The boy **who won the race** is my brother.",
-          "urdu": "وہ لڑکا جس نے دوڑ جیتی میرا بھائی ہے۔",
-          "note": "The bold clause describes **boy**."
-        },
-        {
-          "text": "I met a woman **who works at the hospital**.",
-          "urdu": "میں ایک ایسی عورت سے ملا جو ہسپتال میں کام کرتی ہے۔",
-          "note": "The bold clause gives more information about **woman**."
-        },
-        {
-          "text": "This is the book **that I bought yesterday**.",
-          "urdu": "یہ وہ کتاب ہے جو میں نے کل خریدی تھی۔",
-          "note": "The bold clause describes **book**."
-        },
-        {
-          "text": "The student **who studies regularly** gets good marks.",
-          "note": "Subject: **who**; Verb: **studies**; Describes: **student**."
-        },
-        {
-          "text": "I met a girl **who won the competition**.",
-          "note": "**girl** is the main noun; the clause tells us which girl."
-        }
-      ],
-      "commonMistakes": [],
-      "examTips": [
-        "Ask: “Which noun or pronoun does this clause describe?” If it describes one, it is an Adjective Clause.",
-        "The clause makes a noun more specific."
-      ],
-      "structure": [
-        "Noun + Relative Word + Subject + Verb",
-        "Examples: **the boy who won the race**; **the woman who works at the hospital**; **the book that I bought yesterday**",
-        "Common words: **who, whom, whose, which, that, where, when**"
-      ],
-      "summary": "An adjective clause contains a subject and verb and describes or identifies a noun or pronoun.",
-      "tableTitle": "Functions of an Adjective Clause",
-      "tableColumns": [
-        "Function",
-        "Example"
-      ],
-      "tableRows": [
-        [
-          "Describe a person",
-          "The girl who is wearing a red dress is my sister."
-        ],
-        [
-          "Describe a thing",
-          "I read the book that you recommended."
-        ],
-        [
-          "Identify a place",
-          "This is the school where I studied."
-        ],
-        [
-          "Identify a time",
-          "I remember the day when we first met."
-        ]
-      ],
-      "providedMaterial": "Adjective Clause\nDefinition\n\nEnglish:\nAn adjective clause is a group of words that contains a subject and a verb and describes or gives more information about a noun or pronoun.\n\nUrdu:\nAdjective Clause (صفتی جملے کا جز) الفاظ کا ایسا مجموعہ ہے جس میں Subject اور Verb ہوتے ہیں اور جو کسی Noun یا Pronoun کے بارے میں مزید معلومات دیتا ہے۔\n\nExamples\n\nThe boy who won the race is my brother.\nوہ لڑکا جس نے دوڑ جیتی میرا بھائی ہے۔\n\nI met a woman who works at the hospital.\nمیں ایک ایسی عورت سے ملا جو ہسپتال میں کام کرتی ہے۔\n\nThis is the book that I bought yesterday.\nیہ وہ کتاب ہے جو میں نے کل خریدی تھی۔\n\nIn each example, the bold clause describes or identifies a noun.\n\nCommon Structure\n\nNoun + Relative Word + Subject + Verb\n\nExamples:\n\nthe boy who won the race\nthe woman who works at the hospital\nthe book that I bought yesterday\n\nCommon words used to introduce adjective clauses:\n\nwho, whom, whose, which, that, where, when\n\nFunction of an Adjective Clause\n\nAn adjective clause mainly describes or identifies a noun or pronoun.\n\nExample\nThe girl who is wearing a red dress is my sister.\nI read the book that you recommended.\nThis is the school where I studied.\nI remember the day when we first met.\nHow to Identify an Adjective Clause\n\nLook for a group of words that:\n\nContains a subject and a verb.\nGives information about a noun or pronoun.\nUsually begins with a relative word such as who, which, that, whose, where, or when.\n\nExample:\n\nThe student who studies regularly gets good marks.\n\nAdjective Clause: who studies regularly\nSubject: who\nVerb: studies\nDescribes: student\nFunction: Gives more information about the noun student.\nHow an Adjective Clause Adds Information\n\nAn adjective clause makes a noun more specific by telling us which person or thing we mean.\n\nSimple:\n\nI met a girl.\n\nMore information:\n\nI met a girl who won the competition.\n\nHere:\n\ngirl → main noun\nwho won the competition → describes the girl\nThe clause tells us which girl.\nEasy Rule\n\nAdjective Clause = Subject + Verb + describes a Noun or Pronoun\n\nExam Tip\n\nAsk: “Which noun or pronoun does this clause describe?” If it describes a noun or pronoun, it is an Adjective Clause."
+      "providedMaterial": "Adjective Clause\nDefinition\n\nEnglish:\nAn adjective clause is a group of words that contains a subject and a verb and describes or gives more information about a noun or pronoun.\n\nUrdu:\nAdjective Clause (صفتی جملے کا جز) الفاظ کا ایسا مجموعہ ہے جس میں Subject اور Verb ہوتے ہیں اور جو کسی Noun یا Pronoun کے بارے میں مزید معلومات دیتا ہے۔\n\nExamples\n\nThe boy who won the race is my brother.\nوہ لڑکا جس نے دوڑ جیتی میرا بھائی ہے۔\n\nI met a woman who works at the hospital.\nمیں ایک ایسی عورت سے ملا جو ہسپتال میں کام کرتی ہے۔\n\nThis is the book that I bought yesterday.\nیہ وہ کتاب ہے جو میں نے کل خریدی تھی۔\n\nIn each example, the bold clause describes or identifies a noun.\n\nCommon Structure\n\nNoun + Relative Word + Subject + Verb\n\nExamples:\n\nthe boy who won the race\nthe woman who works at the hospital\nthe book that I bought yesterday\n\nCommon words used to introduce adjective clauses:\n\nwho, whom, whose, which, that, where, when\n\nFunction of an Adjective Clause\n\nAn adjective clause mainly describes or identifies a noun or pronoun.\n\nFunction\tExample\nDescribe a person\tThe girl who is wearing a red dress is my sister.\nDescribe a thing\tI read the book that you recommended.\nIdentify a place\tThis is the school where I studied.\nIdentify a time\tI remember the day when we first met.\nHow to Identify an Adjective Clause\n\nLook for a group of words that:\n\nContains a subject and a verb.\nGives information about a noun or pronoun.\nUsually begins with a relative word such as who, which, that, whose, where, or when.\n\nExample:\n\nThe student who studies regularly gets good marks.\n\nAdjective Clause: who studies regularly\nSubject: who\nVerb: studies\nDescribes: student\nFunction: Gives more information about the noun student.\nHow an Adjective Clause Adds Information\n\nAn adjective clause makes a noun more specific by telling us which person or thing we mean.\n\nSimple:\n\nI met a girl.\n\nMore information:\n\nI met a girl who won the competition.\n\nHere:\n\ngirl → main noun\nwho won the competition → describes the girl\nThe clause tells us which girl.\nEasy Rule\n\nAdjective Clause = Subject + Verb + describes a Noun or Pronoun\n\nExam Tip\n\nAsk: “Which noun or pronoun does this clause describe?” If it describes a noun or pronoun, it is an Adjective Clause."
     }
   },
   {
@@ -10958,79 +10649,7 @@
       "adverb clause"
     ],
     "content": {
-      "introduction": "An adverb clause is a group of words that contains a subject and a verb and gives more information about a verb, adjective, or the whole main clause.",
-      "urduExplanation": "Adverb Clause (حالیہ جملے کا جز) الفاظ کا ایسا مجموعہ ہے جس میں Subject اور Verb ہوتے ہیں اور جو جملے میں وقت، وجہ، شرط، مقصد، نتیجہ یا تضاد جیسی معلومات دیتا ہے۔",
-      "rules": [
-        "An adverb clause contains a subject and a verb.",
-        "It gives information about the main action or situation.",
-        "It can show time, reason, condition, contrast, purpose, result, or manner.",
-        "It often begins with a subordinating conjunction.",
-        "Ask when, why, under what condition, or despite what."
-      ],
-      "examples": [
-        {
-          "text": "We stayed inside **because it was raining**.",
-          "urdu": "ہم اندر رہے کیونکہ بارش ہو رہی تھی۔",
-          "note": "The bold clause shows reason."
-        },
-        {
-          "text": "**When the teacher arrived**, the students became quiet.",
-          "urdu": "جب استاد آئے، طلبہ خاموش ہو گئے۔",
-          "note": "The bold clause shows time."
-        },
-        {
-          "text": "I will help you **if you need me**.",
-          "urdu": "میں آپ کی مدد کروں گا اگر آپ کو میری ضرورت ہو۔",
-          "note": "The bold clause shows condition."
-        },
-        {
-          "text": "We stayed home **because it was raining**.",
-          "note": "Subject: **it**; Verb: **was raining**; Function: shows reason for staying home."
-        },
-        {
-          "text": "I will call you **when I reach home**.",
-          "note": "The main clause is **I will call you**; the adverb clause tells when I will call."
-        }
-      ],
-      "commonMistakes": [],
-      "examTips": [
-        "Ask “When? Why? Under what condition? or Despite what?”",
-        "If the clause answers one of these questions about the main clause, it is likely an Adverb Clause."
-      ],
-      "structure": [
-        "Subordinating Conjunction + Subject + Verb",
-        "Examples: **because + it was raining**; **when + the teacher arrived**; **if + you need me**",
-        "Common words: **because, when, while, before, after, if, unless, although, since, as, so that**"
-      ],
-      "summary": "An adverb clause contains a subject and verb and gives information about the main action or situation.",
-      "tableTitle": "Functions of an Adverb Clause",
-      "tableColumns": [
-        "Function",
-        "Example"
-      ],
-      "tableRows": [
-        [
-          "Time",
-          "I will call you when I reach home."
-        ],
-        [
-          "Reason",
-          "We stayed inside because it was raining."
-        ],
-        [
-          "Condition",
-          "I will help you if you need me."
-        ],
-        [
-          "Contrast",
-          "Although he was tired, he continued working."
-        ],
-        [
-          "Purpose",
-          "She studies hard so that she can pass the exam."
-        ]
-      ],
-      "providedMaterial": "Adverb Clause\nDefinition\n\nEnglish:\nAn adverb clause is a group of words that contains a subject and a verb and gives more information about a verb, adjective, or the whole main clause.\n\nUrdu:\nAdverb Clause (حالیہ جملے کا جز) الفاظ کا ایسا مجموعہ ہے جس میں Subject اور Verb ہوتے ہیں اور جو جملے میں وقت، وجہ، شرط، مقصد، نتیجہ یا تضاد جیسی معلومات دیتا ہے۔\n\nExamples\n\nWe stayed inside because it was raining.\nہم اندر رہے کیونکہ بارش ہو رہی تھی۔\n\nWhen the teacher arrived, the students became quiet.\nجب استاد آئے، طلبہ خاموش ہو گئے۔\n\nI will help you if you need me.\nمیں آپ کی مدد کروں گا اگر آپ کو میری ضرورت ہو۔\n\nIn each example, the bold clause gives additional information about the main action.\n\nCommon Structure\n\nSubordinating Conjunction + Subject + Verb\n\nExamples:\n\nbecause + it was raining\nwhen + the teacher arrived\nif + you need me\n\nCommon words that introduce adverb clauses:\n\nbecause, when, while, before, after, if, unless, although, since, as, so that\n\nFunctions of an Adverb Clause\n\nAn adverb clause can show:\n\nExample\nI will call you when I reach home.\nWe stayed inside because it was raining.\nI will help you if you need me.\nAlthough he was tired, he continued working.\nShe studies hard so that she can pass the exam.\nHow to Identify an Adverb Clause\n\nLook for a group of words that:\n\nContains a subject and a verb.\nCannot normally stand alone as a complete sentence.\nGives information about the main action or situation.\nOften answers when, why, under what condition, or despite what.\n\nExample:\n\nWe stayed home because it was raining.\n\nAdverb Clause: because it was raining\nSubject: it\nVerb: was raining\nFunction: Shows reason\nDescribes: Why we stayed home\nHow an Adverb Clause Adds Information\n\nAn adverb clause gives additional information about when, why, how, or under what condition something happens.\n\nSimple:\n\nWe stayed home.\n\nMore information:\n\nWe stayed home because it was raining.\n\nHere:\n\nWe stayed home → main clause\nbecause it was raining → tells why we stayed home\n\nAnother example:\n\nSimple:\n\nI will call you.\n\nMore information:\n\nI will call you when I reach home.\n\nHere:\n\nI will call you → main clause\nwhen I reach home → tells when I will call\nEasy Rule\n\nAdverb Clause = Subject + Verb + gives information about the main action or situation.\n\nExam Tip\n\nAsk “When? Why? Under what condition? or Despite what?” If the clause answers one of these questions about the main clause, it is likely an Adverb Clause.\n\n\nAdverb Clause\nDefinition\n\nEnglish:\nAn adverb clause is a group of words that contains a subject and a verb and gives more information about a verb, adjective, or the whole main clause.\n\nUrdu:\nAdverb Clause (حالیہ جملے کا جز) الفاظ کا ایسا مجموعہ ہے جس میں Subject اور Verb ہوتے ہیں اور جو جملے میں وقت، وجہ، شرط، مقصد، نتیجہ یا تضاد جیسی معلومات دیتا ہے۔\n\nExamples\n\nWe stayed inside because it was raining.\nہم اندر رہے کیونکہ بارش ہو رہی تھی۔\n\nWhen the teacher arrived, the students became quiet.\nجب استاد آئے، طلبہ خاموش ہو گئے۔\n\nI will help you if you need me.\nمیں آپ کی مدد کروں گا اگر آپ کو میری ضرورت ہو۔\n\nIn each example, the bold clause gives additional information about the main action.\n\nCommon Structure\n\nSubordinating Conjunction + Subject + Verb\n\nExamples:\n\nbecause + it was raining\nwhen + the teacher arrived\nif + you need me\n\nCommon words that introduce adverb clauses:\n\nbecause, when, while, before, after, if, unless, although, since, as, so that\n\nFunctions of an Adverb Clause\n\nAn adverb clause can show:\n\nExample\nI will call you when I reach home.\nWe stayed inside because it was raining.\nI will help you if you need me.\nAlthough he was tired, he continued working.\nShe studies hard so that she can pass the exam.\nHow to Identify an Adverb Clause\n\nLook for a group of words that:\n\nContains a subject and a verb.\nCannot normally stand alone as a complete sentence.\nGives information about the main action or situation.\nOften answers when, why, under what condition, or despite what.\n\nExample:\n\nWe stayed home because it was raining.\n\nAdverb Clause: because it was raining\nSubject: it\nVerb: was raining\nFunction: Shows reason\nDescribes: Why we stayed home\nHow an Adverb Clause Adds Information\n\nAn adverb clause gives additional information about when, why, how, or under what condition something happens.\n\nSimple:\n\nWe stayed home.\n\nMore information:\n\nWe stayed home because it was raining.\n\nHere:\n\nWe stayed home → main clause\nbecause it was raining → tells why we stayed home\n\nAnother example:\n\nSimple:\n\nI will call you.\n\nMore information:\n\nI will call you when I reach home.\n\nHere:\n\nI will call you → main clause\nwhen I reach home → tells when I will call\nEasy Rule\n\nAdverb Clause = Subject + Verb + gives information about the main action or situation.\n\nExam Tip\n\nAsk “When? Why? Under what condition? or Despite what?” If the clause answers one of these questions about the main clause, it is likely an Adverb Clause."
+      "providedMaterial": "Adverb Clause\nDefinition\n\nEnglish:\nAn adverb clause is a group of words that contains a subject and a verb and gives more information about a verb, adjective, or the whole main clause.\n\nUrdu:\nAdverb Clause (حالیہ جملے کا جز) الفاظ کا ایسا مجموعہ ہے جس میں Subject اور Verb ہوتے ہیں اور جو جملے میں وقت، وجہ، شرط، مقصد، نتیجہ یا تضاد جیسی معلومات دیتا ہے۔\n\nExamples\n\nWe stayed inside because it was raining.\nہم اندر رہے کیونکہ بارش ہو رہی تھی۔\n\nWhen the teacher arrived, the students became quiet.\nجب استاد آئے، طلبہ خاموش ہو گئے۔\n\nI will help you if you need me.\nمیں آپ کی مدد کروں گا اگر آپ کو میری ضرورت ہو۔\n\nIn each example, the bold clause gives additional information about the main action.\n\nCommon Structure\n\nSubordinating Conjunction + Subject + Verb\n\nExamples:\n\nbecause + it was raining\nwhen + the teacher arrived\nif + you need me\n\nCommon words that introduce adverb clauses:\n\nbecause, when, while, before, after, if, unless, although, since, as, so that\n\nFunctions of an Adverb Clause\n\nAn adverb clause can show:\n\nFunction\tExample\nTime\tI will call you when I reach home.\nReason\tWe stayed inside because it was raining.\nCondition\tI will help you if you need me.\nContrast\tAlthough he was tired, he continued working.\nPurpose\tShe studies hard so that she can pass the exam.\nHow to Identify an Adverb Clause\n\nLook for a group of words that:\n\nContains a subject and a verb.\nCannot normally stand alone as a complete sentence.\nGives information about the main action or situation.\nOften answers when, why, under what condition, or despite what.\n\nExample:\n\nWe stayed home because it was raining.\n\nAdverb Clause: because it was raining\nSubject: it\nVerb: was raining\nFunction: Shows reason\nDescribes: Why we stayed home\nHow an Adverb Clause Adds Information\n\nAn adverb clause gives additional information about when, why, how, or under what condition something happens.\n\nSimple:\n\nWe stayed home.\n\nMore information:\n\nWe stayed home because it was raining.\n\nHere:\n\nWe stayed home → main clause\nbecause it was raining → tells why we stayed home\n\nAnother example:\n\nSimple:\n\nI will call you.\n\nMore information:\n\nI will call you when I reach home.\n\nHere:\n\nI will call you → main clause\nwhen I reach home → tells when I will call\nEasy Rule\n\nAdverb Clause = Subject + Verb + gives information about the main action or situation.\n\nExam Tip\n\nAsk “When? Why? Under what condition? or Despite what?” If the clause answers one of these questions about the main clause, it is likely an Adverb Clause."
     }
   },
   {
@@ -11043,7 +10662,9 @@
     "keywords": [
       "phrase vs clause"
     ],
-    "content": {}
+    "content": {
+      "providedMaterial": "Phrase vs Clause\nBasic Difference\n\nA phrase does not normally contain a complete subject–verb combination, while a clause contains a subject and a verb.\n\n| Phrase                                                 | Clause                                                     |\n| ------------------------------------------------------ | ---------------------------------------------------------- |\n| Does not normally contain a subject + verb combination | Contains a subject + verb                                  |\n| Does not express a complete thought by itself          | May express a complete thought or depend on another clause |\n| Works as a part of a sentence                          | Can form part or all of a sentence                         |\n| **in the morning**                                     | **when the morning came**                                  |\n| **after the class**                                    | **after the class ended**                                  |\n| **the intelligent student**                            | **the student who studies hard**                           |\n\n\nExamples\n\nPhrase:\n\nWe met after the class.\n\nafter the class → Phrase\nNo subject + verb combination\n\nClause:\n\nWe met after the class ended.\n\nafter the class ended → Clause\nthe class → Subject\nended → Verb\nEasy Rule\n\nPhrase → No complete Subject + Verb\nClause → Subject + Verb\n\nExam Tip\n\nWhen you see a group of words in an exam, first look for the subject and verb. [Certain]\n\nNo subject + verb → likely a Phrase\nSubject + verb → Clause"
+    }
   },
   {
     "id": "subject-verb-agreement",
@@ -11338,7 +10959,7 @@
       "comparison"
     ],
     "content": {
-      "providedMaterial": "Adjective Phrase\nDefinition\n\nEnglish:\nAn adjective phrase is a group of words that works like an adjective and gives more information about a noun or pronoun.\n\nUrdu:\nAdjective Phrase (صفتی فقرہ) الفاظ کا ایسا مجموعہ ہے جو جملے میں Adjective (صفت) کی طرح کام کرتا ہے اور کسی noun یا pronoun کے بارے میں مزید معلومات دیتا ہے۔\n\nExamples\n\nThe girl with long hair is my sister.\nلمبے بالوں والی لڑکی میری بہن ہے۔\n\nHe is a man full of courage.\nوہ ہمت سے بھرپور آدمی ہے۔\n\nI bought a dress very suitable for the party.\nمیں نے ایک ایسا لباس خریدا جو پارٹی کے لیے بہت موزوں ہے۔\n\nIn each example, the bold words describe or give more information about a noun.\n\nCommon Structure\n\nAdjective + Modifier(s)\n\nExamples:\n\nvery beautiful\nextremely intelligent\nfull of confidence\nrich in experience\n\nNote: An adjective phrase does not always follow only the Adjective + Modifier pattern. It can contain other words that work together to describe a noun.\n\nExamples:\n\nfull of hope\nvery proud of his son\nextremely useful for students\nFunctions of an Adjective Phrase\n\nAn adjective phrase can:\n\nExample\nThe girl with long hair is my sister.\nSomeone very close to me called today.\nWe visited a place rich in history.\nShe is very happy with her results.\nHow to Identify an Adjective Phrase\n\nLook for a group of words that describes or gives more information about a noun or pronoun.\n\nExample:\n\nThe man with a long beard is my uncle.\n\nAdjective Phrase: with a long beard\nDescribes: man\nFunction: Gives more information about the noun man\nHow an Adjective Phrase Adds Information\n\nAn adjective phrase makes a noun more specific by describing its quality, appearance, condition, or other characteristics.\n\nSimple:\n\nI saw a man.\n\nMore information:\n\nI saw a man with a long beard.\n\nHere:\n\nman → main noun\nwith a long beard → describes the man\nThe adjective phrase makes the noun more specific.\n\nAnother example:\n\nSimple:\n\nShe lives in a house.\n\nMore information:\n\nShe lives in a house full of beautiful paintings.\n\nHere:\n\nhouse → main noun\nfull of beautiful paintings → describes the house\nThe phrase gives more information about the house.\nEasy Rule\n\nAn adjective phrase describes or gives more information about a noun or pronoun.\n\nExam Tip\n\nAsk: “Which noun or pronoun does this group of words describe?” If it describes a noun or pronoun, it"
+      "providedMaterial": "Adjective Phrase\nDefinition\n\nEnglish:\nAn adjective phrase is a group of words that works like an adjective and gives more information about a noun or pronoun.\n\nUrdu:\nایسے الفاظ کے مجموعے کو صفتی فقرہ (Adjective Phrase) کہتے ہیں جو اسم (Noun) یا ضمیر (Pronoun) کے بارے میں مزید معلومات فراہم کرے۔\n\nExamples\n\nThe girl with long hair is my sister.\nلمبے بالوں والی لڑکی میری بہن ہے۔\n\nHe is a man full of courage.\nوہ ہمت سے بھرپور آدمی ہے۔\n\nI bought a dress very suitable for the party.\nمیں نے ایک ایسا لباس خریدا جو پارٹی کے لیے بہت موزوں ہے۔\n\nIn each example, the bold words describe or give more information about a noun.\n\nCommon Structure\n\nAdjective + Modifier(s)\n\nExamples:\n\nvery beautiful\nextremely intelligent\nfull of confidence\nrich in experience\n\nNote: An adjective phrase does not always follow only the Adjective + Modifier pattern. It can contain other words that work together to describe a noun.\n\nExamples:\n\nfull of hope\nvery proud of his son\nextremely useful for students\nFunctions of an Adjective Phrase\n\nAn adjective phrase can:\n\nExample\nThe girl with long hair is my sister.\nSomeone very close to me called today.\nWe visited a place rich in history.\nShe is very happy with her results.\nHow to Identify an Adjective Phrase\n\nLook for a group of words that describes or gives more information about a noun or pronoun.\n\nExample:\n\nThe man with a long beard is my uncle.\n\nAdjective Phrase: with a long beard\nDescribes: man\nFunction: Gives more information about the noun man\nHow an Adjective Phrase Adds Information\n\nAn adjective phrase makes a noun more specific by describing its quality, appearance, condition, or other characteristics.\n\nSimple:\n\nI saw a man.\n\nMore information:\n\nI saw a man with a long beard.\n\nHere:\n\nman → main noun\nwith a long beard → describes the man\nThe adjective phrase makes the noun more specific.\n\nAnother example:\n\nSimple:\n\nShe lives in a house.\n\nMore information:\n\nShe lives in a house full of beautiful paintings.\n\nHere:\n\nhouse → main noun\nfull of beautiful paintings → describes the house\nThe phrase gives more information about the house.\nEasy Rule\n\nAn adjective phrase describes or gives more information about a noun or pronoun.\n\nExam Tip\n\nAsk: “Which noun or pronoun does this group of words describe?” If it describes a noun or pronoun, it"
     }
   },
   {
@@ -11359,7 +10980,7 @@
       "modification"
     ],
     "content": {
-      "providedMaterial": "Adverb Phrase\nDefinition\n\nEnglish:\nAn adverb phrase is a group of words that works like an adverb and gives more information about a verb, adjective, or another adverb.\n\nUrdu:\nAdverb Phrase (حالیہ فقرہ) الفاظ کا ایسا مجموعہ ہے جو جملے میں Adverb (حال) کی طرح کام کرتا ہے اور verb، adjective یا دوسرے adverb کے بارے میں مزید معلومات دیتا ہے۔\n\nExamples\n\nHe speaks with great confidence.\nوہ بہت اعتماد کے ساتھ بات کرتا ہے۔\n\nShe arrived very early in the morning.\nوہ صبح بہت سویرے پہنچی۔\n\nThey worked with great care.\nانہوں نے بہت احتیاط سے کام کیا۔\n\nIn each example, the bold words give more information about the action.\n\nCommon Structure\n\nAdverb + Modifier(s)\n\nExamples:\n\nvery quickly\nquite carefully\nextremely slowly\nvery carefully\n\nAn adverb phrase can also have other structures:\n\nwith great care\nin the morning\nafter the meeting\nwith great confidence\nFunctions of an Adverb Phrase\n\nAn adverb phrase can tell us:\n\nExample\nHe spoke with great confidence.\nShe arrived in the morning.\nThey waited near the gate.\nHe went there to meet his friend.\nShe is very happy.\nHow to Identify an Adverb Phrase\n\nLook for a group of words that gives more information about a verb, adjective, or another adverb.\n\nExample:\n\nHe completed the work with great care.\n\nAdverb Phrase: with great care\nDescribes: completed\nFunction: Tells how he completed the work.\nHow an Adverb Phrase Adds Information\n\nAn adverb phrase adds details about how, when, where, or why an action happens.\n\nSimple:\n\nHe worked.\n\nMore information:\n\nHe worked with great care.\n\nHere:\n\nworked → action\nwith great care → tells how he worked\n\nAnother example:\n\nSimple:\n\nShe arrived.\n\nMore information:\n\nShe arrived early in the morning.\n\nHere:\n\narrived → action\nearly in the morning → tells when she arrived\nEasy Rule\n\nAn adverb phrase gives more information about a verb, adjective, or another adverb.\n\nExam Tip\n\nAsk: “How? When? Where? or Why?” If the phrase answers one of these questions about the action, it may be an Adverb Phrase."
+      "providedMaterial": "Adverb Phrase\nDefinition\n\nEnglish:\nAn adverb phrase is a group of words that works like an adverb and gives more information about a verb, adjective, or another adverb.\n\nUrdu:\nایسے الفاظ کے مجموعے کو حالی فقرہ (Adverb Phrase) کہتے ہیں جو فعل (Verb)، صفت (Adjective) یا دوسرے حال (Adverb) کے بارے میں مزید معلومات فراہم کرے۔\n\nExamples\n\nHe speaks with great confidence.\nوہ بہت اعتماد کے ساتھ بات کرتا ہے۔\n\nShe arrived very early in the morning.\nوہ صبح بہت سویرے پہنچی۔\n\nThey worked with great care.\nانہوں نے بہت احتیاط سے کام کیا۔\n\nIn each example, the bold words give more information about the action.\n\nCommon Structure\n\nAdverb + Modifier(s)\n\nExamples:\n\nvery quickly\nquite carefully\nextremely slowly\nvery carefully\n\nAn adverb phrase can also have other structures:\n\nwith great care\nin the morning\nafter the meeting\nwith great confidence\nFunctions of an Adverb Phrase\n\nAn adverb phrase can tell us:\n\nExample\nHe spoke with great confidence.\nShe arrived in the morning.\nThey waited near the gate.\nHe went there to meet his friend.\nShe is very happy.\nHow to Identify an Adverb Phrase\n\nLook for a group of words that gives more information about a verb, adjective, or another adverb.\n\nExample:\n\nHe completed the work with great care.\n\nAdverb Phrase: with great care\nDescribes: completed\nFunction: Tells how he completed the work.\nHow an Adverb Phrase Adds Information\n\nAn adverb phrase adds details about how, when, where, or why an action happens.\n\nSimple:\n\nHe worked.\n\nMore information:\n\nHe worked with great care.\n\nHere:\n\nworked → action\nwith great care → tells how he worked\n\nAnother example:\n\nSimple:\n\nShe arrived.\n\nMore information:\n\nShe arrived early in the morning.\n\nHere:\n\narrived → action\nearly in the morning → tells when she arrived\nEasy Rule\n\nAn adverb phrase gives more information about a verb, adjective, or another adverb.\n\nExam Tip\n\nAsk: “How? When? Where? or Why?” If the phrase answers one of these questions about the action, it may be an Adverb Phrase."
     }
   },
   {
@@ -11380,7 +11001,7 @@
       "non-finite"
     ],
     "content": {
-      "providedMaterial": "Gerund Phrase\nDefinition\n\nEnglish:\nA gerund phrase is a group of words that begins with a gerund (-ing form of a verb) and works like a noun in a sentence.\n\nUrdu:\nGerund Phrase (مصدرِ اسمی فقرہ) الفاظ کا ایسا مجموعہ ہے جو Gerund (-ing والی verb) سے شروع ہوتا ہے اور جملے میں Noun (اسم) کی طرح کام کرتا ہے۔\n\nExamples\n\nSwimming in the morning is good for health.\nصبح تیراکی کرنا صحت کے لیے اچھا ہے۔\n\nI enjoy reading interesting books.\nمجھے دلچسپ کتابیں پڑھنا پسند ہے۔\n\nShe likes helping poor people.\nوہ غریب لوگوں کی مدد کرنا پسند کرتی ہے۔\n\nIn each example, the bold words begin with a gerund and work like a noun.\n\nCommon Structure\n\nGerund + Object / Modifier(s)\n\nExamples:\n\nreading books\nplaying football\nhelping poor people\nstudying English every day\nwalking in the park\n\nA gerund phrase can contain:\n\nGerund + Object + Modifiers\n\nReading English books every day\n\nReading → Gerund\nEnglish books → Object\nevery day → Modifier\nFunctions of a Gerund Phrase\n\nA gerund phrase can work as:\n\nExample\nReading books improves vocabulary.\nI enjoy reading books.\nShe is interested in learning English.\nHis favorite activity is playing football.\nHow to Identify a Gerund Phrase\n\nLook for a group of words that:\n\nBegins with an -ing form of a verb.\nThe -ing word acts like a noun.\nThe whole group works as a noun in the sentence.\n\nExample:\n\nLearning English every day improves your skills.\n\nGerund Phrase: Learning English every day\nGerund: Learning\nObject: English\nModifier: every day\nFunction: Subject\nHow a Gerund Phrase Adds Information\n\nA gerund phrase turns an action into a noun idea and can add details about that action.\n\nSimple:\n\nReading is useful.\n\nMore information:\n\nReading English books every day is useful.\n\nHere:\n\nReading → Gerund\nEnglish books → tells what is being read\nevery day → tells when/how often\nThe whole phrase works as the subject.\n\nAnother example:\n\nSimple:\n\nI enjoy cooking.\n\nMore information:\n\nI enjoy cooking delicious meals for my family.\n\nHere:\n\ncooking → Gerund\ndelicious meals → tells what is being cooked\nfor my family → tells for whom\nEasy Rule\n\nGerund Phrase = Gerund (-ing) + other words, working like a noun.\n\nExam Tip\n\nDo not identify every -ing word as a gerund. Check its function. If the -ing form works like a noun, it is a gerund.\n\nCompare:\n\nSwimming every morning is healthy. → Gerund Phrase (noun function)\nThe boy is swimming in the pool. → Verb Phrase (part of the verb)"
+      "providedMaterial": "Gerund Phrase\nDefinition\n\nEnglish:\nA gerund phrase is a group of words that begins with a gerund (-ing form of a verb) and works like a noun in a sentence.\n\nUrdu:\nایسے الفاظ کے مجموعے کو اسمِ مصدر فقرہ (Gerund Phrase) کہتے ہیں جو جملے میں اسم (Noun) کا کام کرے اور عموماً فعل کی ing شکل (Gerund) سے شروع ہو۔\n\nExamples\n\nSwimming in the morning is good for health.\nصبح تیراکی کرنا صحت کے لیے اچھا ہے۔\n\nI enjoy reading interesting books.\nمجھے دلچسپ کتابیں پڑھنا پسند ہے۔\n\nShe likes helping poor people.\nوہ غریب لوگوں کی مدد کرنا پسند کرتی ہے۔\n\nIn each example, the bold words begin with a gerund and work like a noun.\n\nCommon Structure\n\nGerund + Object / Modifier(s)\n\nExamples:\n\nreading books\nplaying football\nhelping poor people\nstudying English every day\nwalking in the park\n\nA gerund phrase can contain:\n\nGerund + Object + Modifiers\n\nReading English books every day\n\nReading → Gerund\nEnglish books → Object\nevery day → Modifier\nFunctions of a Gerund Phrase\n\nA gerund phrase can work as:\n\nExample\nReading books improves vocabulary.\nI enjoy reading books.\nShe is interested in learning English.\nHis favorite activity is playing football.\nHow to Identify a Gerund Phrase\n\nLook for a group of words that:\n\nBegins with an -ing form of a verb.\nThe -ing word acts like a noun.\nThe whole group works as a noun in the sentence.\n\nExample:\n\nLearning English every day improves your skills.\n\nGerund Phrase: Learning English every day\nGerund: Learning\nObject: English\nModifier: every day\nFunction: Subject\nHow a Gerund Phrase Adds Information\n\nA gerund phrase turns an action into a noun idea and can add details about that action.\n\nSimple:\n\nReading is useful.\n\nMore information:\n\nReading English books every day is useful.\n\nHere:\n\nReading → Gerund\nEnglish books → tells what is being read\nevery day → tells when/how often\nThe whole phrase works as the subject.\n\nAnother example:\n\nSimple:\n\nI enjoy cooking.\n\nMore information:\n\nI enjoy cooking delicious meals for my family.\n\nHere:\n\ncooking → Gerund\ndelicious meals → tells what is being cooked\nfor my family → tells for whom\nEasy Rule\n\nGerund Phrase = Gerund (-ing) + other words, working like a noun.\n\nExam Tip\n\nDo not identify every -ing word as a gerund. Check its function. If the -ing form works like a noun, it is a gerund.\n\nCompare:\n\nSwimming every morning is healthy. → Gerund Phrase (noun function)\nThe boy is swimming in the pool. → Verb Phrase (part of the verb)"
     }
   },
   {
@@ -11401,7 +11022,7 @@
       "non-finite"
     ],
     "content": {
-      "providedMaterial": "Infinitive Phrase\nDefinition\n\nEnglish:\nAn infinitive phrase is a group of words that begins with to + base verb and works as a noun, adjective, or adverb in a sentence.\n\nUrdu:\nInfinitive Phrase (مصدر فقرہ) الفاظ کا ایسا مجموعہ ہے جو to + verb کی پہلی شکل سے شروع ہوتا ہے اور جملے میں Noun، Adjective یا Adverb کی طرح کام کرتا ہے۔\n\nExamples\n\nTo learn English takes time.\nانگریزی سیکھنے میں وقت لگتا ہے۔\n\nI want to buy a new phone.\nمیں ایک نیا فون خریدنا چاہتا ہوں۔\n\nShe went to the market to buy some vegetables.\nوہ کچھ سبزیاں خریدنے کے لیے بازار گئی۔\n\nIn each example, the bold words begin with an infinitive and work together as a unit.\n\nCommon Structure\n\nto + Base Verb + Object / Modifier(s)\n\nExamples:\n\nto read books\nto learn English\nto win the match\nto help poor people\nto study hard for the exam\n\nExample:\n\nto study English every day\n\nto → infinitive marker\nstudy → base verb\nEnglish → object\nevery day → modifier\nFunctions of an Infinitive Phrase\n\nAn infinitive phrase can work as:\n\nExample\nTo learn English is important.\nI have a book to read.\nShe went to the library to study.\nHow to Identify an Infinitive Phrase\n\nLook for:\n\nto + base verb\nThe words that follow it and complete the phrase.\nCheck what function the whole phrase performs.\n\nExample:\n\nShe went to the market to buy some vegetables.\n\nInfinitive Phrase: to buy some vegetables\nInfinitive: to buy\nObject: some vegetables\nFunction: Adverb — tells why she went to the market.\nHow an Infinitive Phrase Adds Information\n\nAn infinitive phrase can add information about an action, purpose, or thing.\n\nSimple:\n\nShe went to the market.\n\nMore information:\n\nShe went to the market to buy some vegetables.\n\nHere:\n\nwent → main action\nto buy some vegetables → tells why she went\n\nAnother example:\n\nSimple:\n\nI need a book.\n\nMore information:\n\nI need a book to read during the journey.\n\nHere:\n\nbook → noun\nto read during the journey → tells what the book is for\nEasy Rule\n\nInfinitive Phrase = to + Base Verb + other words\n\nExam Tip\n\nFind “to + base verb” first, then check the function of the whole group.\n\nCompare:\n\nI want to learn English. → Infinitive Phrase\nShe went there to meet her friend. → Infinitive Phrase\nTo exercise regularly is beneficial. → Infinitive Phrase"
+      "providedMaterial": "Infinitive Phrase\nDefinition\n\nEnglish:\nAn infinitive phrase is a group of words that begins with to + base verb and works as a noun, adjective, or adverb in a sentence.\n\nUrdu:\nایسے الفاظ کے مجموعے کو مصدر فقرہ (Infinitive Phrase) کہتے ہیں جو to کے ساتھ فعل کی پہلی شکل (Base Verb) سے شروع ہو کر اسم (Noun)، صفت (Adjective) یا حال (Adverb) کا کام کرے۔\n\nExamples\n\nTo learn English takes time.\nانگریزی سیکھنے میں وقت لگتا ہے۔\n\nI want to buy a new phone.\nمیں ایک نیا فون خریدنا چاہتا ہوں۔\n\nShe went to the market to buy some vegetables.\nوہ کچھ سبزیاں خریدنے کے لیے بازار گئی۔\n\nIn each example, the bold words begin with an infinitive and work together as a unit.\n\nCommon Structure\n\nto + Base Verb + Object / Modifier(s)\n\nExamples:\n\nto read books\nto learn English\nto win the match\nto help poor people\nto study hard for the exam\n\nExample:\n\nto study English every day\n\nto → infinitive marker\nstudy → base verb\nEnglish → object\nevery day → modifier\nFunctions of an Infinitive Phrase\n\nAn infinitive phrase can work as:\n\nExample\nTo learn English is important.\nI have a book to read.\nShe went to the library to study.\nHow to Identify an Infinitive Phrase\n\nLook for:\n\nto + base verb\nThe words that follow it and complete the phrase.\nCheck what function the whole phrase performs.\n\nExample:\n\nShe went to the market to buy some vegetables.\n\nInfinitive Phrase: to buy some vegetables\nInfinitive: to buy\nObject: some vegetables\nFunction: Adverb — tells why she went to the market.\nHow an Infinitive Phrase Adds Information\n\nAn infinitive phrase can add information about an action, purpose, or thing.\n\nSimple:\n\nShe went to the market.\n\nMore information:\n\nShe went to the market to buy some vegetables.\n\nHere:\n\nwent → main action\nto buy some vegetables → tells why she went\n\nAnother example:\n\nSimple:\n\nI need a book.\n\nMore information:\n\nI need a book to read during the journey.\n\nHere:\n\nbook → noun\nto read during the journey → tells what the book is for\nEasy Rule\n\nInfinitive Phrase = to + Base Verb + other words\n\nExam Tip\n\nFind “to + base verb” first, then check the function of the whole group.\n\nCompare:\n\nI want to learn English. → Infinitive Phrase\nShe went there to meet her friend. → Infinitive Phrase\nTo exercise regularly is beneficial. → Infinitive Phrase"
     }
   },
   {
@@ -11422,7 +11043,7 @@
       "phrase"
     ],
     "content": {
-      "providedMaterial": "Noun Phrase\nDefinition\n\nEnglish:\nA noun phrase is a group of words that works like a noun in a sentence.\n\nUrdu:\nNoun Phrase (اسمی فقرہ) الفاظ کا ایسا مجموعہ ہے جو جملے میں Noun (اسم) کی طرح کام کرتا ہے۔\n\nExamples\n\nThe little boy is playing.\nچھوٹا لڑکا کھیل رہا ہے۔\n\nI bought a new laptop.\nمیں نے ایک نیا لیپ ٹاپ خریدا۔\n\nShe is a talented teacher.\nوہ ایک قابل استاد ہے۔\n\nIn each example, the bold words work like a noun.\n\nCommon Structure\n\nDeterminer + Adjective(s) + Noun + Modifier\n\nExamples:\n\nthe smart student\na beautiful garden\nthe three intelligent students in my class\n\nNote: A noun phrase does not always contain all these parts.\n\nExamples:\n\nstudents\nmy friend\nthe boy\nthe very intelligent student\nFunctions of a Noun Phrase\nExample\nThe little girl cried.\nI met the new teacher.\nAli is a good student.\nShe sat beside the old man.\nHow to Identify a Noun Phrase\n\nLook for the main noun and the words that describe or identify it.\n\nExample:\n\nThe very intelligent student in my class won the prize.\n\nNoun Phrase: The very intelligent student in my class\nHead noun: student\nFunction: Subject\nHow a Noun Phrase Adds Information\n\nA noun phrase adds information by giving more details about a noun.\n\nSimple:\n\nI saw a man.\n\nMore information:\n\nI saw a tall man with a long beard.\n\nHere:\n\nman → main noun\ntall → describes the man\nwith a long beard → gives more information about the man\n\nAnother example:\n\nSimple:\n\nShe bought a dress.\n\nMore information:\n\nShe bought a beautiful red dress for the party.\n\nHere:\n\ndress → main noun\nbeautiful, red → describe the dress\nfor the party → gives additional information\nEasy Rule\n\nA noun phrase makes a noun more specific by adding words that describe or identify it.\n\nExam Tip\n\nIf a group of words works like a noun, it is a Noun Phrase."
+      "providedMaterial": "Noun Phrase\nDefinition\n\nEnglish:\nA noun phrase is a group of words that works like a noun in a sentence.\n\nUrdu:\nایسے الفاظ کے مجموعے کو اسمی فقرہ (Noun Phrase) کہتے ہیں جو جملے میں اسم (Noun) کا کام کرے۔\n\nExamples\n\nThe little boy is playing.\nچھوٹا لڑکا کھیل رہا ہے۔\n\nI bought a new laptop.\nمیں نے ایک نیا لیپ ٹاپ خریدا۔\n\nShe is a talented teacher.\nوہ ایک قابل استاد ہے۔\n\nIn each example, the bold words work like a noun.\n\nCommon Structure\n\nDeterminer + Adjective(s) + Noun + Modifier\n\nExamples:\n\nthe smart student\na beautiful garden\nthe three intelligent students in my class\n\nNote: A noun phrase does not always contain all these parts.\n\nExamples:\n\nstudents\nmy friend\nthe boy\nthe very intelligent student\nFunctions of a Noun Phrase\nExample\nThe little girl cried.\nI met the new teacher.\nAli is a good student.\nShe sat beside the old man.\nHow to Identify a Noun Phrase\n\nLook for the main noun and the words that describe or identify it.\n\nExample:\n\nThe very intelligent student in my class won the prize.\n\nNoun Phrase: The very intelligent student in my class\nHead noun: student\nFunction: Subject\nHow a Noun Phrase Adds Information\n\nA noun phrase adds information by giving more details about a noun.\n\nSimple:\n\nI saw a man.\n\nMore information:\n\nI saw a tall man with a long beard.\n\nHere:\n\nman → main noun\ntall → describes the man\nwith a long beard → gives more information about the man\n\nAnother example:\n\nSimple:\n\nShe bought a dress.\n\nMore information:\n\nShe bought a beautiful red dress for the party.\n\nHere:\n\ndress → main noun\nbeautiful, red → describe the dress\nfor the party → gives additional information\nEasy Rule\n\nA noun phrase makes a noun more specific by adding words that describe or identify it.\n\nExam Tip\n\nIf a group of words works like a noun, it is a Noun Phrase."
     }
   },
   {
@@ -11443,7 +11064,7 @@
       "verbal"
     ],
     "content": {
-      "providedMaterial": "Participle Phrase\nDefinition\n\nEnglish:\nA participle phrase is a group of words that begins with a present participle (-ing) or past participle (-ed, -en, etc.) and works like an adjective to describe a noun or pronoun.\n\nUrdu:\nParticiple Phrase (اسمِ صفتی فقرہ) الفاظ کا ایسا مجموعہ ہے جو Present Participle (-ing) یا Past Participle (-ed, -en وغیرہ) سے شروع ہوتا ہے اور جملے میں Adjective کی طرح کسی noun یا pronoun کی وضاحت کرتا ہے۔\n\nExamples\n\nThe boy wearing a blue shirt is my brother.\nنیلی قمیض پہنے ہوئے لڑکا میرا بھائی ہے۔\n\nTired after the long journey, the travelers rested.\nطویل سفر کے بعد تھکے ہوئے، مسافروں نے آرام کیا۔\n\nThe books written by Shakespeare are famous.\nشیکسپیئر کی لکھی ہوئی کتابیں مشہور ہیں۔\n\nIn each example, the bold phrase describes a noun or pronoun.\n\nCommon Structure\n\nParticiple + Object / Modifier(s)\n\nExamples:\n\nwearing a blue shirt\nrunning very quickly\ntired after the journey\nwritten by Shakespeare\nbroken by the child\n\nA participle phrase can contain:\n\nParticiple + Object + Modifiers\n\nWearing a blue shirt\n\nWearing → Present participle\na blue shirt → Object\n\nWritten by Shakespeare\n\nWritten → Past participle\nby Shakespeare → Modifier\nFunctions of a Participle Phrase\n\nA participle phrase mainly works as an adjective.\n\nExample\nThe girl wearing a red dress is my sister.\nFeeling tired, he went to bed.\nThe car damaged in the accident was repaired.\nHow to Identify a Participle Phrase\n\nLook for a group of words that:\n\nBegins with a present participle (-ing) or past participle.\nDescribes a noun or pronoun.\nGives additional information about that noun or pronoun.\n\nExample:\n\nThe man standing near the door is my teacher.\n\nParticiple Phrase: standing near the door\nParticiple: standing\nDescribes: man\nFunction: Adjective\nHow a Participle Phrase Adds Information\n\nA participle phrase adds descriptive information about a noun or pronoun without creating a separate sentence.\n\nSimple:\n\nThe girl won the race.\n\nMore information:\n\nThe girl wearing a blue dress won the race.\n\nHere:\n\ngirl → main noun\nwearing a blue dress → describes the girl\nThe phrase tells us which girl.\n\nAnother example:\n\nSimple:\n\nThe car was repaired.\n\nMore information:\n\nThe car damaged in the accident was repaired.\n\nHere:\n\ncar → main noun\ndamaged in the accident → describes the car\nThe phrase tells us which car.\nEasy Rule\n\nParticiple Phrase = Participle + other words, working like an adjective.\n\nExam Tip\n\nIf a participle phrase describes a noun or pronoun, it is functioning as an adjective.\n\nCompare:\n\nThe boy wearing a blue shirt is my brother. → Participle Phrase (describes boy)\nThe boy is wearing a blue shirt. → Verb Phrase (is wearing is the verb)"
+      "providedMaterial": "Participle Phrase\nDefinition\n\nEnglish:\nA participle phrase is a group of words that begins with a present participle (-ing) or past participle (-ed, -en, etc.) and works like an adjective to describe a noun or pronoun.\n\nUrdu:\nایسے الفاظ کے مجموعے کو وصفی فعلی فقرہ (Participial Phrase) کہتے ہیں جو اسم (Noun) یا ضمیر (Pronoun) کی وضاحت کرے اور فعل کی وصفی شکل (Participle) سے شروع ہو۔\n\nExamples\n\nThe boy wearing a blue shirt is my brother.\nنیلی قمیض پہنے ہوئے لڑکا میرا بھائی ہے۔\n\nTired after the long journey, the travelers rested.\nطویل سفر کے بعد تھکے ہوئے، مسافروں نے آرام کیا۔\n\nThe books written by Shakespeare are famous.\nشیکسپیئر کی لکھی ہوئی کتابیں مشہور ہیں۔\n\nIn each example, the bold phrase describes a noun or pronoun.\n\nCommon Structure\n\nParticiple + Object / Modifier(s)\n\nExamples:\n\nwearing a blue shirt\nrunning very quickly\ntired after the journey\nwritten by Shakespeare\nbroken by the child\n\nA participle phrase can contain:\n\nParticiple + Object + Modifiers\n\nWearing a blue shirt\n\nWearing → Present participle\na blue shirt → Object\n\nWritten by Shakespeare\n\nWritten → Past participle\nby Shakespeare → Modifier\nFunctions of a Participle Phrase\n\nA participle phrase mainly works as an adjective.\n\nExample\nThe girl wearing a red dress is my sister.\nFeeling tired, he went to bed.\nThe car damaged in the accident was repaired.\nHow to Identify a Participle Phrase\n\nLook for a group of words that:\n\nBegins with a present participle (-ing) or past participle.\nDescribes a noun or pronoun.\nGives additional information about that noun or pronoun.\n\nExample:\n\nThe man standing near the door is my teacher.\n\nParticiple Phrase: standing near the door\nParticiple: standing\nDescribes: man\nFunction: Adjective\nHow a Participle Phrase Adds Information\n\nA participle phrase adds descriptive information about a noun or pronoun without creating a separate sentence.\n\nSimple:\n\nThe girl won the race.\n\nMore information:\n\nThe girl wearing a blue dress won the race.\n\nHere:\n\ngirl → main noun\nwearing a blue dress → describes the girl\nThe phrase tells us which girl.\n\nAnother example:\n\nSimple:\n\nThe car was repaired.\n\nMore information:\n\nThe car damaged in the accident was repaired.\n\nHere:\n\ncar → main noun\ndamaged in the accident → describes the car\nThe phrase tells us which car.\nEasy Rule\n\nParticiple Phrase = Participle + other words, working like an adjective.\n\nExam Tip\n\nIf a participle phrase describes a noun or pronoun, it is functioning as an adjective.\n\nCompare:\n\nThe boy wearing a blue shirt is my brother. → Participle Phrase (describes boy)\nThe boy is wearing a blue shirt. → Verb Phrase (is wearing is the verb)"
     }
   },
   {
@@ -11464,7 +11085,7 @@
       "complement"
     ],
     "content": {
-      "providedMaterial": "Prepositional Phrase\nDefinition\n\nEnglish:\nA prepositional phrase is a group of words that begins with a preposition and ends with its object.\n\nUrdu:\nPrepositional Phrase (حرفِ جار کا فقرہ) الفاظ کا ایسا مجموعہ ہے جو Preposition سے شروع ہوتا ہے اور اس کے Object پر ختم ہوتا ہے۔\n\nExamples\n\nThe book is on the table.\nکتاب میز پر ہے۔\n\nShe walked through the park.\nوہ پارک میں سے گزرتی ہوئی چلی۔\n\nI met him after the class.\nمیں اس سے کلاس کے بعد ملا۔\n\nIn each example, the bold words begin with a preposition and form a complete phrase.\n\nCommon Structure\n\nPreposition + Object\n\nExamples:\n\nin the room\non the table\nunder the chair\nwith my friend\nafter the class\nnear the school\n\nThe object of the preposition can itself be a noun phrase:\n\nin the large classroom\n\nin → Preposition\nthe large classroom → Object of the preposition\nFunctions of a Prepositional Phrase\n\nA prepositional phrase can:\n\nExample\nThe keys are on the table.\nWe arrived after the class.\nHe walked toward the door.\nThe girl in the blue dress is my sister.\nHe spoke with confidence.\nHow to Identify a Prepositional Phrase\n\nLook for a group of words that starts with a preposition and includes its object.\n\nExample:\n\nThe students are sitting under the tree.\n\nPrepositional Phrase: under the tree\nPreposition: under\nObject: tree\nFunction: Shows place\nHow a Prepositional Phrase Adds Information\n\nA prepositional phrase adds information about place, time, direction, manner, or relationship.\n\nSimple:\n\nThe book is.\n\nMore information:\n\nThe book is on the table.\n\nHere:\n\nbook → noun\nis → verb\non the table → tells where the book is\n\nAnother example:\n\nSimple:\n\nWe arrived.\n\nMore information:\n\nWe arrived after the meeting.\n\nHere:\n\narrived → action\nafter the meeting → tells when we arrived\nEasy Rule\n\nPrepositional Phrase = Preposition + Object\n\nExam Tip\n\nFind the preposition first. Then include the preposition, its object, and any words modifying the object.\n\nExample:\n\nShe sat on the wooden chair.\n\nThe complete prepositional phrase is on the wooden chair, not just on or chair."
+      "providedMaterial": "Prepositional Phrase\nDefinition\n\nEnglish:\nA prepositional phrase is a group of words that begins with a preposition and ends with its object.\n\nUrdu:\nایسے الفاظ کے مجموعے کو حرفِ جار کا فقرہ (Prepositional Phrase) کہتے ہیں جو حرفِ جار (Preposition) سے شروع ہو اور اس کے مفعول (Object) پر ختم ہو۔\n\nExamples\n\nThe book is on the table.\nکتاب میز پر ہے۔\n\nShe walked through the park.\nوہ پارک میں سے گزرتی ہوئی چلی۔\n\nI met him after the class.\nمیں اس سے کلاس کے بعد ملا۔\n\nIn each example, the bold words begin with a preposition and form a complete phrase.\n\nCommon Structure\n\nPreposition + Object\n\nExamples:\n\nin the room\non the table\nunder the chair\nwith my friend\nafter the class\nnear the school\n\nThe object of the preposition can itself be a noun phrase:\n\nin the large classroom\n\nin → Preposition\nthe large classroom → Object of the preposition\nFunctions of a Prepositional Phrase\n\nA prepositional phrase can:\n\nExample\nThe keys are on the table.\nWe arrived after the class.\nHe walked toward the door.\nThe girl in the blue dress is my sister.\nHe spoke with confidence.\nHow to Identify a Prepositional Phrase\n\nLook for a group of words that starts with a preposition and includes its object.\n\nExample:\n\nThe students are sitting under the tree.\n\nPrepositional Phrase: under the tree\nPreposition: under\nObject: tree\nFunction: Shows place\nHow a Prepositional Phrase Adds Information\n\nA prepositional phrase adds information about place, time, direction, manner, or relationship.\n\nSimple:\n\nThe book is.\n\nMore information:\n\nThe book is on the table.\n\nHere:\n\nbook → noun\nis → verb\non the table → tells where the book is\n\nAnother example:\n\nSimple:\n\nWe arrived.\n\nMore information:\n\nWe arrived after the meeting.\n\nHere:\n\narrived → action\nafter the meeting → tells when we arrived\nEasy Rule\n\nPrepositional Phrase = Preposition + Object\n\nExam Tip\n\nFind the preposition first. Then include the preposition, its object, and any words modifying the object.\n\nExample:\n\nShe sat on the wooden chair.\n\nThe complete prepositional phrase is on the wooden chair, not just on or chair."
     }
   },
   {
@@ -11485,7 +11106,7 @@
       "verb group"
     ],
     "content": {
-      "providedMaterial": "Verb Phrase\nDefinition\n\nEnglish:\nA verb phrase is a group of words that works together as the verb in a sentence.\n\nUrdu:\nVerb Phrase (فعلی فقرہ) الفاظ کا ایسا مجموعہ ہے جو جملے میں Verb (فعل) کی طرح کام کرتا ہے اور عمل یا حالت کو ظاہر کرتا ہے۔\n\nExamples\n\nis playing football.\nفٹبال کھیل رہا ہے۔\n\nShe has finished her work.\nاس نے اپنا کام مکمل کر لیا ہے۔\n\nThey will be traveling tomorrow.\nوہ کل سفر کر رہے ہوں گے۔\n\nIn each example, the bold words work together as the verb of the sentence.\n\nCommon Structure\n\nMain Verb + Helping Verb(s) + Other Verb Forms\n\nExamples:\n\nis playing\nhas finished\nwill be traveling\nhas been studying\n\nNote: A verb phrase may contain one or more helping verbs with a main verb.\n\nExamples:\n\nis working\nwas sleeping\nhas arrived\nwill have completed\ncould have been waiting\nFunctions of a Verb Phrase\n\nA verb phrase can:\n\nExample\nShe is writing a letter.\nHe has been ill for two days.\nThey will have finished the work.\nYou should study harder.\nHow to Identify a Verb Phrase\n\nLook for the main verb and any helping verbs that work with it.\n\nExample:\n\nShe has been studying English for two hours.\n\nVerb Phrase: has been studying\nMain verb: studying\nHelping verbs: has, been\nFunction: Shows an ongoing action\nHow a Verb Phrase Adds Information\n\nA verb phrase gives more information about an action or state, such as time, duration, possibility, ability, or necessity.\n\nSimple:\n\nShe studies English.\n\nMore information:\n\nShe has been studying English for two hours.\n\nHere:\n\nstudies → shows the action\nhas been studying → shows the action has continued over a period of time\nfor two hours → gives the duration\n\nAnother example:\n\nSimple:\n\nThey travel.\n\nMore information:\n\nThey will be traveling tomorrow.\n\nHere:\n\ntravel → shows the action\nwill be traveling → shows a future ongoing action\ntomorrow → gives the time\nEasy Rule\n\nA verb phrase is a group of words that works together to show an action, state, or condition.\n\nExam Tip\n\nFind the main verb and the helping verbs that work with it. Together, they form the Verb Phrase."
+      "providedMaterial": "Verb Phrase\nDefinition\n\nEnglish:\nA verb phrase is a group of words that works together as the verb in a sentence.\n\nUrdu:\nایسے الفاظ کے مجموعے کو فعلی فقرہ (Verb Phrase) کہتے ہیں جو جملے میں فعل (Verb) کا کام کرے اور عمل یا حالت کو ظاہر کرے۔\n\nExamples\n\nis playing football.\nفٹبال کھیل رہا ہے۔\n\nShe has finished her work.\nاس نے اپنا کام مکمل کر لیا ہے۔\n\nThey will be traveling tomorrow.\nوہ کل سفر کر رہے ہوں گے۔\n\nIn each example, the bold words work together as the verb of the sentence.\n\nCommon Structure\n\nMain Verb + Helping Verb(s) + Other Verb Forms\n\nExamples:\n\nis playing\nhas finished\nwill be traveling\nhas been studying\n\nNote: A verb phrase may contain one or more helping verbs with a main verb.\n\nExamples:\n\nis working\nwas sleeping\nhas arrived\nwill have completed\ncould have been waiting\nFunctions of a Verb Phrase\n\nA verb phrase can:\n\nExample\nShe is writing a letter.\nHe has been ill for two days.\nThey will have finished the work.\nYou should study harder.\nHow to Identify a Verb Phrase\n\nLook for the main verb and any helping verbs that work with it.\n\nExample:\n\nShe has been studying English for two hours.\n\nVerb Phrase: has been studying\nMain verb: studying\nHelping verbs: has, been\nFunction: Shows an ongoing action\nHow a Verb Phrase Adds Information\n\nA verb phrase gives more information about an action or state, such as time, duration, possibility, ability, or necessity.\n\nSimple:\n\nShe studies English.\n\nMore information:\n\nShe has been studying English for two hours.\n\nHere:\n\nstudies → shows the action\nhas been studying → shows the action has continued over a period of time\nfor two hours → gives the duration\n\nAnother example:\n\nSimple:\n\nThey travel.\n\nMore information:\n\nThey will be traveling tomorrow.\n\nHere:\n\ntravel → shows the action\nwill be traveling → shows a future ongoing action\ntomorrow → gives the time\nEasy Rule\n\nA verb phrase is a group of words that works together to show an action, state, or condition.\n\nExam Tip\n\nFind the main verb and the helping verbs that work with it. Together, they form the Verb Phrase."
     }
   },
   {
@@ -15522,143 +15143,7 @@
       "if-clause"
     ],
     "content": {
-      "introduction": "The First Conditional expresses real and likely future possibilities — situations that may genuinely happen. The if-clause uses the present simple tense, while the main clause uses 'will' (or 'can'/'may'/'might') followed by the base verb. It is used when the speaker believes the condition is realistically achievable. This form is fundamental to academic writing, persuasive essays, and everyday communication tested in CSS, PMS, and IELTS.",
-      "urduExplanation": "First Conditional مستقبل کے ان حالات کے بارے میں بات کرتا ہے جو واقعی پیش آ سکتے ہیں۔ If-clause میں present simple tense ہوتی ہے اور main clause میں will + base verb استعمال ہوتا ہے۔ مثلاً: اگر کل بارش ہوئی، تو ہم گھر رہیں گے — یہ ایک حقیقی امکان ہے۔ اس میں can اور may بھی will کی جگہ استعمال ہو سکتے ہیں جب امکان یا اجازت ظاہر کرنی ہو۔ CSS اور IELTS مضامین میں دلائل پیش کرتے وقت First Conditional بہت مؤثر ہوتا ہے۔",
-      "englishExplanation": "The First Conditional is used for real, possible situations in the future — unlike the Second Conditional, the speaker considers the condition genuinely achievable. The if-clause always takes the present simple (never 'will'): 'If it rains...' not 'If it will rain...'. The main clause takes 'will + base verb' as the default, but 'can', 'may', or 'might' may substitute 'will' to express ability, permission, or lower probability respectively. A comma follows the if-clause when it opens the sentence; no comma is needed when the main clause comes first. Inversion is possible in formal registers: 'Should it rain, we will cancel the event.' ('Should' replaces 'if' and the subject follows the auxiliary.) 'Unless' can replace 'if...not': 'Unless you apply, you will not get the job.' First Conditional is essential in IELTS Task 2 for making predictions and CSS essays for policy recommendations.",
-      "rules": [
-        "If-clause: If + subject + present simple (base verb ±s). NEVER use 'will' inside the if-clause.",
-        "Main clause: subject + will/can/may/might + base verb (infinitive without 'to').",
-        "Use 'will' for near-certain results, 'may/might' for less certain outcomes, 'can' for ability or permission.",
-        "Place a comma after the if-clause when it opens the sentence: 'If you study hard, you will pass.'",
-        "When the main clause leads, no comma is used: 'You will pass if you study hard.'",
-        "'Unless' replaces 'if...not': 'Unless you leave now, you will miss the train.'",
-        "Formal inversion: omit 'if' and invert subject and auxiliary: 'Should you need help, call me.' (= 'If you should need help, call me.')"
-      ],
-      "structure": [
-        "If + present simple, will/can/may/might + base verb.  (e.g., 'If it rains, we will stay home.')",
-        "Comma rule: comma after the if-clause when it leads; no comma when main clause leads: 'We will stay home if it rains.' | Inversion (formal): 'Should it rain, we will stay home.'"
-      ],
-      "examples": [
-        {
-          "text": "If it rains tomorrow, we will stay home.",
-          "urdu": "اگر کل بارش ہوئی تو ہم گھر رہیں گے۔",
-          "note": "Near-certain result with 'will'"
-        },
-        {
-          "text": "You will pass the exam if you study every day.",
-          "urdu": "اگر آپ روزانہ پڑھیں تو امتحان پاس کریں گے۔",
-          "note": "Main clause first — no comma"
-        },
-        {
-          "text": "If the government reduces taxes, businesses may invest more.",
-          "urdu": "اگر حکومت ٹیکس کم کرے تو کاروبار زیادہ سرمایہ کاری کر سکتے ہیں۔",
-          "note": "'May' for lower certainty — good for CSS essays"
-        },
-        {
-          "text": "Unless you submit the form today, you will lose your place.",
-          "urdu": "جب تک آپ آج فارم جمع نہ کریں، آپ اپنی جگہ کھو دیں گے۔",
-          "note": "'Unless' = 'if...not'"
-        },
-        {
-          "text": "Should the candidate qualify, he will be shortlisted.",
-          "urdu": "اگر امیدوار کوالیفائی کرے تو اسے شارٹ لسٹ کر لیا جائے گا۔",
-          "note": "Formal inversion — common in CSS formal writing"
-        }
-      ],
-      "commonMistakes": [
-        {
-          "wrong": "If it will rain, we will stay home.",
-          "right": "If it rains, we will stay home.",
-          "note": "Never use 'will' in the if-clause of a First Conditional. Use present simple instead."
-        },
-        {
-          "wrong": "If you will study, you can pass.",
-          "right": "If you study, you can pass.",
-          "note": "The if-clause must be in the present simple, regardless of whether the main clause uses 'will', 'can', or 'may'."
-        },
-        {
-          "wrong": "We will pass the exam if we will work hard.",
-          "right": "We will pass the exam if we work hard.",
-          "note": "'Will' must never appear in the if-clause even when it follows the main clause."
-        }
-      ],
-      "examTips": [
-        "CSS/PMS Essay: Deploy First Conditional for policy recommendations: 'If the government invests in education, literacy rates will improve.' This shows conditional reasoning and grammatical sophistication.",
-        "IELTS Writing Task 2: Use First Conditional for predictions based on evidence; avoid overusing 'will' — substitute 'may' or 'might' to show hedging and academic tone.",
-        "Error correction MCQs frequently trap candidates with 'If it will rain...' — always remember: present simple only in the if-clause.",
-        "Know the formal inversion 'Should + subject + base verb...' as it appears in advanced MCQs and reading comprehension for CSS English."
-      ],
-      "practice": [
-        {
-          "question": "Complete the First Conditional: 'If you _____ hard, you _____ the CSS exam.'",
-          "options": [
-            "work / will pass",
-            "will work / will pass",
-            "worked / would pass",
-            "work / pass"
-          ],
-          "answerIndex": 0,
-          "explanation": "First Conditional: present simple in the if-clause ('work') and 'will + base verb' in the main clause ('will pass')."
-        },
-        {
-          "question": "Which sentence correctly uses the First Conditional?",
-          "options": [
-            "If she will call, I answer.",
-            "If she calls, I will answer.",
-            "If she called, I would answer.",
-            "If she had called, I would have answered."
-          ],
-          "answerIndex": 1,
-          "explanation": "'If she calls' (present simple) + 'I will answer' (will + base verb) is the correct First Conditional pattern."
-        },
-        {
-          "question": "Identify the formal inversion of: 'If you need assistance, please contact us.'",
-          "options": [
-            "Should you need assistance, please contact us.",
-            "Were you to need assistance, please contact us.",
-            "Had you needed assistance, please contact us.",
-            "Do you need assistance, please contact us."
-          ],
-          "answerIndex": 0,
-          "explanation": "Formal inversion of a First Conditional uses 'Should + subject + base verb': 'Should you need assistance...'"
-        }
-      ],
-      "quiz": [
-        {
-          "question": "Why is 'If it will rain, cancel the match.' incorrect?",
-          "options": [
-            "'Will' cannot appear anywhere near 'if'",
-            "'Will' must not be used in the if-clause; use present simple: 'If it rains'",
-            "The main clause should use 'would'",
-            "The sentence needs a comma after 'rain'"
-          ],
-          "answerIndex": 1,
-          "explanation": "In a First Conditional, the if-clause takes the present simple ('if it rains'), never 'will'. The main clause carries 'will'."
-        },
-        {
-          "question": "'Unless the policy changes, unemployment _____ rise.' — Best completion?",
-          "options": [
-            "would",
-            "will",
-            "would have",
-            "has"
-          ],
-          "answerIndex": 1,
-          "explanation": "'Unless' introduces a real future condition (First Conditional), so the main clause needs 'will + base verb': 'will rise'."
-        },
-        {
-          "question": "Which modal makes the result sound LESS certain in a First Conditional?",
-          "options": [
-            "will",
-            "shall",
-            "might",
-            "must"
-          ],
-          "answerIndex": 2,
-          "explanation": "'Might' expresses a lower degree of probability than 'will', making the predicted result sound less certain — useful for hedging in academic writing."
-        }
-      ],
-      "summary": "The First Conditional describes real, likely future scenarios using present simple in the if-clause and 'will/can/may/might + base verb' in the main clause. Never use 'will' inside the if-clause. A comma follows the if-clause when it comes first; no comma is needed when the main clause leads. Formal inversions ('Should you...') and 'unless' substitutions are important for CSS and IELTS."
+      "providedMaterial": "First Conditional\nDefinition:\n\nThe First Conditional is used to talk about real or possible situations in the future and their possible results.\n\nFirst Conditional:\n\n(پہلا شرطیہ) ایسے حقیقی یا ممکنہ مستقبل کے حالات کے لیے استعمال ہوتا ہے جن میں شرط پوری ہونے کی صورت میں کوئی نتیجہ سامنے آ سکتا ہے۔\n\nExamples Sentences:\n\nIf you study hard, you will pass the exam.\nاگر تم محنت سے پڑھو گے تو امتحان پاس کر لو گے۔\n\nIf it rains tomorrow, we will stay at home.\nاگر کل بارش ہوئی تو ہم گھر پر رہیں گے۔\n\nCommon Structure:\n\nIf + Present Simple, will + Base Verb\n\nExample:\nIf you study hard, you will pass the exam.\n\nIf you study hard → Condition\nyou will pass the exam → Result\nstudy → Present Simple\nwill pass → Future Simple\n\nUsage\n\nFirst Conditional is mainly used for:\n| Use                  | Example                                    |\n| -------------------- | ------------------------------------------ |\n| **Real possibility** | If it rains, we will stay home.            |\n| **Future situation** | If she comes tomorrow, I will meet her.    |\n| **Warning**          | If you touch that wire, you will get hurt. |\n| **Promise / Offer**  | If you need help, I will help you.         |\n\nExam Tip\n\nIf the sentence describes a real or possible future condition and its possible result, it is usually First Conditional.\n"
     }
   },
   {
@@ -15679,143 +15164,7 @@
       "advanced grammar"
     ],
     "content": {
-      "introduction": "Mixed Conditionals combine elements of the Second and Third Conditionals to link different time frames. There are two main types: (a) a past condition with a present result, and (b) a present condition with a past result. They are used when the condition and the result belong to different times — one is past and the other is present (or vice versa). Mixed Conditionals demonstrate advanced grammatical command and are highly valued in CSS, PMS, and IELTS Band 7+ writing.",
-      "urduExplanation": "Mixed Conditional میں if-clause اور main clause کے زمانے مختلف ہوتے ہیں — ایک ماضی اور دوسرا حال۔ پہلی قسم میں: ماضی کی شرط + حال کا نتیجہ — اگر ماضی میں کچھ ہوا ہوتا تو ابھی صورتحال مختلف ہوتی۔ مثلاً: اگر میں نے وہ نوکری لی ہوتی تو ابھی زیادہ امیر ہوتا۔ دوسری قسم میں: حال کی شرط + ماضی کا نتیجہ — اگر میں ابھی زیادہ محتاط ہوتا تو ماضی میں وہ غلطی نہ کرتا۔ یہ دونوں اقسام CSS کے مضامین میں شخصیت تجزیہ اور تاریخی تناظر کے لیے بہت مفید ہیں۔",
-      "englishExplanation": "A Mixed Conditional occurs when the time frame of the if-clause and the main clause are different. Type A (Past condition → Present result): The if-clause uses the past perfect (Third Conditional pattern) but the main clause uses 'would + base verb' (Second Conditional pattern). This describes a past event whose effects continue in the present. Example: 'If I had taken that job, I would be richer now.' — the job opportunity was in the past; being rich refers to the present state. Type B (Present condition → Past result): The if-clause uses the past simple/subjunctive (Second Conditional pattern) but the main clause uses 'would have + past participle' (Third Conditional pattern). This describes how a present characteristic would have affected a past event. Example: 'If I were more careful, I wouldn't have made that mistake.' — 'were more careful' describes a present trait; 'wouldn't have made' refers to a specific past event. Recognising which type applies requires attention to the time references in context. Mixed Conditionals are a reliable marker of advanced grammatical range in IELTS and CSS essays.",
-      "rules": [
-        "Type A (Past condition, Present result): If + past perfect (had + V3), would + base verb. The if-clause describes something that did NOT happen in the past; the main clause describes how the present would be different.",
-        "Type B (Present condition, Past result): If + past simple/subjunctive (were/had etc.), would have + past participle. The if-clause describes an unreal present trait; the main clause describes how a past event would have been different.",
-        "The key signal for Type A is a present-time adverbial in the main clause: 'now', 'today', 'currently', 'at this moment'.",
-        "The key signal for Type B is a past-time adverbial in the main clause: 'yesterday', 'last year', 'then', or a specific past event.",
-        "Place a comma after the if-clause when it comes first; no comma when the main clause leads.",
-        "Both clauses must be internally consistent with their own time frame: do not mix past perfect with 'will', or past simple with 'would have' arbitrarily.",
-        "Inversion is possible: Type A: 'Had I taken that job, I would be richer now.' | Type B: 'Were I more organised, I wouldn't have missed the deadline.'"
-      ],
-      "structure": [
-        "Type A — Past condition, Present result: If + past perfect (had + V3), would + base verb [+ now/today].  (e.g., 'If I had taken the job, I would be richer now.')",
-        "Type B — Present condition, Past result: If + past simple/were, would have + past participle [past time ref].  (e.g., 'If I were more careful, I wouldn't have made that mistake.') | Comma rule: comma after if-clause when it leads; no comma otherwise."
-      ],
-      "examples": [
-        {
-          "text": "If I had taken that job, I would be richer now.",
-          "urdu": "اگر میں نے وہ نوکری لی ہوتی تو ابھی میں زیادہ امیر ہوتا۔",
-          "note": "Type A: past perfect if-clause + 'would + base verb' + 'now' in main clause"
-        },
-        {
-          "text": "If she had studied medicine, she would be a doctor today.",
-          "urdu": "اگر اس نے طب پڑھی ہوتی تو آج وہ ڈاکٹر ہوتی۔",
-          "note": "Type A: 'today' signals a present result"
-        },
-        {
-          "text": "If I were more disciplined, I wouldn't have failed last semester.",
-          "urdu": "اگر میں زیادہ نظم و ضبط والا ہوتا تو پچھلے سمسٹر میں فیل نہ ہوتا۔",
-          "note": "Type B: present trait (were) → past result (wouldn't have failed)"
-        },
-        {
-          "text": "If he were a better planner, he wouldn't have wasted the budget last year.",
-          "urdu": "اگر وہ بہتر منصوبہ ساز ہوتا تو پچھلے سال بجٹ ضائع نہ ہوتا۔",
-          "note": "Type B: present character flaw → past consequence"
-        },
-        {
-          "text": "Had Pakistan invested in water management decades ago, water scarcity would not be a crisis today.",
-          "urdu": "اگر پاکستان نے دہائیوں پہلے آبی انتظام میں سرمایہ کاری کی ہوتی تو آج پانی کا بحران نہ ہوتا۔",
-          "note": "Type A with formal inversion 'Had...' — excellent for CSS policy essays"
-        }
-      ],
-      "commonMistakes": [
-        {
-          "wrong": "If I had taken that job, I would have been richer now.",
-          "right": "If I had taken that job, I would be richer now.",
-          "note": "In Type A Mixed Conditional, the main clause uses 'would + base verb' (not 'would have + V3') because the result is a present state, not a past event."
-        },
-        {
-          "wrong": "If I were more careful, I wouldn't make that mistake yesterday.",
-          "right": "If I were more careful, I wouldn't have made that mistake yesterday.",
-          "note": "In Type B, the past result requires 'would have + past participle'. 'Would make' (without 'have') refers to the present/future, not a past event."
-        },
-        {
-          "wrong": "If I had more patience, I would have finished the project on time last year.",
-          "right": "If I were more patient, I would have finished the project on time last year.",
-          "note": "Type B: the present condition should use past simple/subjunctive ('were more patient'), not past perfect."
-        }
-      ],
-      "examTips": [
-        "CSS/PMS Essay: Use Type A Mixed Conditional for historical policy analysis: 'Had Pakistan prioritised industrialisation, it would be among middle-income countries today.' This demonstrates temporal precision and grammatical sophistication.",
-        "IELTS Band 7+: Mixing conditional types accurately is a key Band 7–9 grammatical range indicator. One correctly used Mixed Conditional in Task 2 can significantly lift the GRA (Grammatical Range and Accuracy) score.",
-        "Identify the type by locating time adverbials: 'now/today/currently' in the main clause → Type A; 'last year/yesterday/then' in the main clause → Type B.",
-        "In MCQs, distinguish Mixed from Pure Third: 'would be now' (Mixed Type A) vs 'would have been' (Pure Third). The presence of a present-time adverb is the giveaway."
-      ],
-      "practice": [
-        {
-          "question": "Which sentence is a correct Type A Mixed Conditional (past condition → present result)?",
-          "options": [
-            "If I had chosen medicine, I would be a doctor today.",
-            "If I chose medicine, I would be a doctor today.",
-            "If I had chosen medicine, I would have been a doctor today.",
-            "If I had chosen medicine, I will be a doctor today."
-          ],
-          "answerIndex": 0,
-          "explanation": "Type A: 'If I had chosen' (past perfect) + 'I would be a doctor today' (would + base verb + present time marker). This correctly links a past choice to a present state."
-        },
-        {
-          "question": "Complete the Type B Mixed Conditional: 'If she _____ more organised, she _____ the deadline last month.'",
-          "options": [
-            "were / wouldn't have missed",
-            "had been / wouldn't miss",
-            "were / wouldn't miss",
-            "had been / wouldn't have missed"
-          ],
-          "answerIndex": 0,
-          "explanation": "Type B: past simple/subjunctive 'were' in the if-clause (present trait) + 'wouldn't have missed' (would have + V3) for the past result."
-        },
-        {
-          "question": "Which option correctly completes this Type B Mixed Conditional? 'If he _____ a better communicator, he _____ the deal last quarter.'",
-          "options": [
-            "had been / wouldn't miss",
-            "is / wouldn't have missed",
-            "were / wouldn't have missed",
-            "had been / wouldn't have missed"
-          ],
-          "answerIndex": 2,
-          "explanation": "Type B Mixed Conditional: present condition uses past simple/subjunctive 'were' in the if-clause; past result uses 'wouldn't have missed' (would have + V3). Option D uses past perfect ('had been') which would make it a pure Third Conditional, not Mixed Type B."
-        }
-      ],
-      "quiz": [
-        {
-          "question": "What distinguishes a Type A Mixed Conditional from a pure Third Conditional in the main clause?",
-          "options": [
-            "Type A uses 'would have + V3'; Third uses 'would + base verb'",
-            "Type A uses 'would + base verb' (present result); Third uses 'would have + V3' (past result)",
-            "Type A uses past simple; Third uses past perfect",
-            "There is no difference — they are the same"
-          ],
-          "answerIndex": 1,
-          "explanation": "Type A Mixed Conditional main clause: 'would + base verb' because the result is in the present. Pure Third Conditional main clause: 'would have + V3' because the result is also in the past."
-        },
-        {
-          "question": "'Had Pakistan reformed its tax system in the 1990s, the economy _____ more resilient today.' — Best completion?",
-          "options": [
-            "would have been",
-            "would be",
-            "will be",
-            "had been"
-          ],
-          "answerIndex": 1,
-          "explanation": "This is Type A Mixed Conditional: formal inversion 'Had Pakistan reformed...' (past perfect if-clause) + 'would be' (present result) because 'today' signals a present outcome."
-        },
-        {
-          "question": "Which time adverbial in the main clause signals a Type B Mixed Conditional (present condition → past result)?",
-          "options": [
-            "'now'",
-            "'today'",
-            "'currently'",
-            "'last year'"
-          ],
-          "answerIndex": 3,
-          "explanation": "Type B Mixed Conditional has a past result, signalled by past-time adverbials like 'last year', 'yesterday', or 'then'. Present-time adverbials ('now', 'today', 'currently') signal Type A."
-        }
-      ],
-      "summary": "Mixed Conditionals combine different time frames: Type A links a past condition (past perfect) to a present result ('would + base verb'), while Type B links a present condition (past simple/subjunctive) to a past result ('would have + V3'). Time adverbials ('now', 'today' vs 'last year', 'then') are the key to identifying the type. Formal inversions ('Had I...', 'Were I...') are available for both types in formal writing. Accurate use of Mixed Conditionals is a hallmark of advanced English proficiency valued in CSS essays and IELTS Band 7+ responses."
+      "providedMaterial": "Mixed Conditional\nDefinition:\n\nA Mixed Conditional is used when the condition and the result refer to different times, usually a past condition with a present result or a present condition with a past result.\n\nMixed Conditional:\n\n(مخلوط شرطیہ) ایسے فرضی حالات کے لیے استعمال ہوتا ہے جن میں شرط اور نتیجہ مختلف زمانوں سے تعلق رکھتے ہوں، مثلاً ماضی کی شرط کا نتیجہ حال میں ہو یا حال کی شرط کا نتیجہ ماضی میں ہو۔\n\nExamples Sentences:\n\nIf I had studied medicine, I would be a doctor now.\nاگر میں نے طب کی تعلیم حاصل کی ہوتی تو آج میں ڈاکٹر ہوتا۔\n\nIf she were more careful, she would not have made that mistake yesterday.\nاگر وہ زیادہ محتاط ہوتی تو کل وہ غلطی نہ کرتی۔\n\nCommon Structures:\n\nPast Perfect + would + Base Verb\n\nIf + Past Perfect, would + Base Verb\n\nExample:\nIf I had studied medicine, I would be a doctor now.\n\nPast Simple + would have + V3\n\nIf + Past Simple, would have + V3\n\nExample:\nIf she were more careful, she would not have made that mistake yesterday.\n\nUsage\n\nMixed Conditional is mainly used for:\n| Use                                 | Example                                                                 |\n| ----------------------------------- | ----------------------------------------------------------------------- |\n| **Past condition → Present result** | If I had taken that job, I would be rich now.                           |\n| **Present condition → Past result** | If he were more responsible, he would have finished the work yesterday. |\n\nExam Tip\n\nIf the condition and result refer to different times, it is a Mixed Conditional.\n"
     }
   },
   {
@@ -15836,144 +15185,7 @@
       "imaginary"
     ],
     "content": {
-      "introduction": "The Second Conditional expresses unreal, hypothetical, or imaginary situations in the present or future. The if-clause uses the past simple tense, while the main clause uses 'would/could/might + base verb'. The situation described is not happening and is unlikely or impossible in reality. Crucially, 'were' is used for all persons in formal writing — 'If I were rich...' not 'If I was rich...' — because the subjunctive mood applies.",
-      "urduExplanation": "Second Conditional ان حالات کو ظاہر کرتا ہے جو ابھی حقیقت نہیں ہیں — یہ صرف ایک تصوراتی یا ناممکن صورتحال ہے۔ If-clause میں past simple tense ہوتی ہے لیکن اس کا مطلب ماضی نہیں بلکہ ایک خیالی حال ہے۔ Main clause میں would/could/might + base verb آتا ہے۔ اہم بات: subjunctive mood میں تمام ضمائر کے ساتھ 'were' استعمال ہوتا ہے — 'If I were' نہ کہ 'If I was'۔ CSS مضامین اور IELTS میں خیالی پالیسیوں یا فرضی حالات پر بحث کرتے وقت یہ conditional بہت کام آتا ہے۔",
-      "englishExplanation": "The Second Conditional refers to imaginary, hypothetical, or contrary-to-fact situations in the present or future — the speaker does not expect the condition to be true. The if-clause uses the past simple tense, but this is a 'modal past', not a real past — it signals unreality rather than time. The main clause uses 'would + base verb' (or 'could/might + base verb' for ability or reduced certainty). The subjunctive 'were' is required for all subjects in formal written English: 'If I were', 'If he were', 'If she were' — never 'was' in formal registers. This distinction is a classic CSS/PMS error-correction target. Inversion is possible: 'Were I the Prime Minister, I would reform taxation.' (formal, used in official writing and formal essays). The Second Conditional is ideal for discussing personal wishes, policy alternatives, and advisory writing.",
-      "rules": [
-        "If-clause: If + subject + past simple (NOT a real past — it signals an unreal present/future).",
-        "Main clause: subject + would/could/might + base verb (infinitive without 'to').",
-        "Subjunctive rule: use 'were' for ALL persons (I, he, she, it, we, they) in the if-clause — 'If I were', 'If he were'.",
-        "In informal spoken English 'was' is heard, but 'were' is required in formal/written English and CSS/PMS exams.",
-        "Place a comma after the if-clause when it comes first: 'If I were rich, I would travel the world.'",
-        "When the main clause leads, no comma is used: 'I would travel the world if I were rich.'",
-        "Formal inversion: omit 'if' and place 'were' before the subject: 'Were I the Prime Minister, I would reform taxation.'",
-        "'Unless' = 'if...not': 'Unless she were more careful, she would make mistakes.'"
-      ],
-      "structure": [
-        "If + past simple (were for all persons), would/could/might + base verb.  (e.g., 'If I were rich, I would travel the world.')",
-        "Comma rule: comma after the if-clause when it leads; no comma when main clause leads. Inversion (formal): 'Were I the Prime Minister, I would act differently.'"
-      ],
-      "examples": [
-        {
-          "text": "If I were rich, I would travel the world.",
-          "urdu": "اگر میں امیر ہوتا تو دنیا کی سیر کرتا۔",
-          "note": "Subjunctive 'were' — classic Second Conditional"
-        },
-        {
-          "text": "If she were the CEO, she would restructure the company.",
-          "urdu": "اگر وہ سی ای او ہوتی تو وہ کمپنی کو نئے سرے سے ترتیب دیتی۔",
-          "note": "'Were' with third-person singular"
-        },
-        {
-          "text": "I would learn three languages if I had more time.",
-          "urdu": "اگر میرے پاس زیادہ وقت ہوتا تو میں تین زبانیں سیکھتا۔",
-          "note": "Main clause first — no comma"
-        },
-        {
-          "text": "If the government invested in renewable energy, pollution could decrease significantly.",
-          "urdu": "اگر حکومت قابل تجدید توانائی میں سرمایہ کاری کرے تو آلودگی نمایاں طور پر کم ہو سکتی ہے۔",
-          "note": "'Could' for possibility — CSS essay style"
-        },
-        {
-          "text": "Were I the Prime Minister, I would reform the education system.",
-          "urdu": "اگر میں وزیرِ اعظم ہوتا تو تعلیمی نظام کو بدل دیتا۔",
-          "note": "Formal inversion — no 'if'"
-        }
-      ],
-      "commonMistakes": [
-        {
-          "wrong": "If I was rich, I would travel the world.",
-          "right": "If I were rich, I would travel the world.",
-          "note": "Formal/written English requires the subjunctive 'were' for all persons in the Second Conditional if-clause."
-        },
-        {
-          "wrong": "If I were rich, I will travel the world.",
-          "right": "If I were rich, I would travel the world.",
-          "note": "The main clause of a Second Conditional takes 'would' (not 'will'); 'will' belongs to the First Conditional."
-        },
-        {
-          "wrong": "If she would study more, she would pass.",
-          "right": "If she studied more, she would pass.",
-          "note": "'Would' must not appear in the if-clause of any conditional. Use past simple in the if-clause."
-        }
-      ],
-      "examTips": [
-        "CSS/PMS Error Correction: 'If I was...' vs 'If I were...' is a top-tested distinction. Always choose 'were' in formal writing for all subjects.",
-        "IELTS Task 2: Use Second Conditional for hypothetical policy analysis — 'If governments were to invest in public transport, carbon emissions would fall.' This demonstrates grammatical range.",
-        "Formal inversion 'Were + subject + ...' appears in CSS reading passages and MCQs; recognise it as a Second Conditional variant.",
-        "Never use 'would' in the if-clause — the answer to 'If I ___ rich' is always 'were', not 'would be'."
-      ],
-      "practice": [
-        {
-          "question": "Choose the correct Second Conditional: 'If I _____ the director, I _____ the policy.'",
-          "options": [
-            "were / would change",
-            "was / will change",
-            "am / would change",
-            "were / will change"
-          ],
-          "answerIndex": 0,
-          "explanation": "Second Conditional: 'were' (subjunctive) in the if-clause and 'would + base verb' in the main clause."
-        },
-        {
-          "question": "Which sentence is the correct formal inversion of 'If she were the minister, she would act differently'?",
-          "options": [
-            "Had she been the minister, she would act differently.",
-            "Were she the minister, she would act differently.",
-            "Should she be the minister, she would act differently.",
-            "Was she the minister, she would act differently."
-          ],
-          "answerIndex": 1,
-          "explanation": "Second Conditional inversion uses 'Were + subject + complement...': 'Were she the minister, she would act differently.'"
-        },
-        {
-          "question": "Identify the error: 'If he was more careful, he would make fewer mistakes.'",
-          "options": [
-            "No error",
-            "'was' should be 'were' (subjunctive)",
-            "'would make' should be 'will make'",
-            "'more careful' should be 'most careful'"
-          ],
-          "answerIndex": 1,
-          "explanation": "In formal Second Conditional, the subjunctive 'were' is required for all persons including 'he': 'If he were more careful...'"
-        }
-      ],
-      "quiz": [
-        {
-          "question": "Complete the Second Conditional: 'If the students _____ harder, they _____ the competition.'",
-          "options": [
-            "studied / could win",
-            "will study / will win",
-            "had studied / would have won",
-            "study / win"
-          ],
-          "answerIndex": 0,
-          "explanation": "Second Conditional: past simple 'studied' in the if-clause; 'could + base verb' (could win) in the main clause for a hypothetical present."
-        },
-        {
-          "question": "Complete correctly: 'If the country _____ more on healthcare, life expectancy _____ improve.'",
-          "options": [
-            "spends / will",
-            "spent / could",
-            "had spent / would have",
-            "will spend / would"
-          ],
-          "answerIndex": 1,
-          "explanation": "Second Conditional: past simple 'spent' in the if-clause, 'could + base verb' in the main clause for a hypothetical present."
-        },
-        {
-          "question": "'Were the economy to stabilise, foreign investors _____ return.' — Which modal fits best?",
-          "options": [
-            "will",
-            "have",
-            "had",
-            "would"
-          ],
-          "answerIndex": 3,
-          "explanation": "This is a formal Second Conditional inversion. The main clause requires 'would + base verb': 'would return'."
-        }
-      ],
-      "summary": "The Second Conditional uses past simple (with subjunctive 'were' for all persons) in the if-clause and 'would/could/might + base verb' in the main clause to describe unreal or hypothetical present/future situations. Never use 'will' or 'would' in the if-clause. Formal inversion ('Were I...') and comma placement rules follow the same principles as other conditionals. Mastery of 'were' vs 'was' is critical for CSS, PMS, and IELTS error-correction tasks."
+      "providedMaterial": "Second Conditional\nDefinition:\n\nThe Second Conditional is used to talk about unreal, imaginary, or unlikely situations in the present or future and their possible results.\n\nSecond Conditional:\n\n(دوسرا شرطیہ) ایسے فرضی، غیر حقیقی یا کم امکان والے حالات کے لیے استعمال ہوتا ہے جو حال یا مستقبل سے متعلق ہوں اور جن کا نتیجہ بھی فرضی ہو۔\n\nExamples Sentences:\n\nIf I had more money, I would buy a new car.\nاگر میرے پاس زیادہ پیسے ہوتے تو میں نئی گاڑی خرید لیتا۔\n\nIf I were you, I would study harder.\nاگر میں تمہاری جگہ ہوتا تو زیادہ محنت سے پڑھتا۔\n\nIf she lived near us, we would visit her often.\nاگر وہ ہمارے قریب رہتی تو ہم اکثر اس سے ملنے جاتے۔\n\nCommon Structure:\n\nIf + Past Simple, would + Base Verb\n\nExample:\n\nIf I had more money, I would buy a new car.\n\nIf I had more money → Condition\nI would buy a new car → Result\nhad → Past Simple\nwould buy → would + Base Verb\n\nUsage\n\nSecond Conditional is mainly used for:\n| Use                     | Example                                    |\n| ----------------------- | ------------------------------------------ |\n| **Imaginary situation** | If I were rich, I would travel the world.  |\n| **Unlikely situation**  | If I won the lottery, I would buy a house. |\n| **Present situation**   | If I had more time, I would learn Spanish. |\n| **Advice**              | If I were you, I would apologize.          |\n\nExam Tip\n\nIf the sentence describes an unreal, imaginary, or unlikely present/future situation, it is usually Second Conditional.\n"
     }
   },
   {
@@ -15994,144 +15206,7 @@
       "inversion"
     ],
     "content": {
-      "introduction": "The Third Conditional expresses unreal or hypothetical situations in the past — things that did not happen and whose results also did not occur. The if-clause uses the past perfect tense, and the main clause uses 'would/could/might + have + past participle'. It is commonly used to express regret, criticism, or speculation about past events. This is one of the most frequently tested conditional forms in CSS, PMS, and IELTS grammar sections.",
-      "urduExplanation": "Third Conditional ماضی کی ان غیر حقیقی صورتحالوں کو ظاہر کرتا ہے جو اصل میں پیش نہیں آئیں۔ If-clause میں past perfect tense (had + past participle) استعمال ہوتی ہے۔ Main clause میں would/could/might + have + past participle آتا ہے۔ مثلاً: اگر میں نے پڑھائی کی ہوتی تو میں امتحان پاس کر لیتا — لیکن میں نے نہیں پڑھا اس لیے پاس نہ ہوا۔ یہ پچھتاوے اور ماضی کی غلطیوں پر تبصرے کے لیے بھی استعمال ہوتا ہے، جو CSS مضامین میں تاریخی تجزیے کے لیے مفید ہے۔",
-      "englishExplanation": "The Third Conditional talks about a past situation that did not happen, imagining what the result would have been if it had. The if-clause uses 'had + past participle' (past perfect tense). The main clause uses 'would have + past participle' as the default, or 'could have + past participle' (unrealised possibility) or 'might have + past participle' (speculative past result). Both the condition and the result are contrary to fact: neither occurred in reality. Third Conditional is used for regret ('If I had prepared, I would have succeeded'), criticism ('If you had listened, this wouldn't have happened'), and historical speculation. Formal inversion: omit 'if' and begin with 'Had': 'Had I studied harder, I would have passed the exam.' Comma placement follows the same rule: comma after the if-clause (or 'Had...' clause) when it leads the sentence.",
-      "rules": [
-        "If-clause: If + subject + had + past participle (past perfect tense).",
-        "Main clause: subject + would/could/might + have + past participle.",
-        "Both the condition and the result are unreal and contrary to past fact.",
-        "Use 'would have' for the definite unreal result, 'could have' for an unrealised possibility, 'might have' for speculation.",
-        "Place a comma after the if-clause when it comes first: 'If I had studied, I would have passed.'",
-        "When the main clause leads, no comma is used: 'I would have passed if I had studied.'",
-        "Formal inversion: omit 'if' and begin with 'Had + subject + past participle...': 'Had I studied harder, I would have passed.' — common in formal CSS essays and reports.",
-        "Negative Third Conditional: 'If she hadn't intervened, the situation would have worsened.'"
-      ],
-      "structure": [
-        "If + past perfect (had + V3), would/could/might + have + past participle.  (e.g., 'If I had studied, I would have passed.')",
-        "Comma rule: comma after the if-clause when it leads; no comma when main clause leads. Inversion (formal): 'Had I studied harder, I would have passed.'"
-      ],
-      "examples": [
-        {
-          "text": "If I had studied harder, I would have passed the exam.",
-          "urdu": "اگر میں نے زیادہ محنت سے پڑھا ہوتا تو میں امتحان پاس کر لیتا۔",
-          "note": "Classic Third Conditional — regret"
-        },
-        {
-          "text": "She would have been promoted if she had met the deadline.",
-          "urdu": "اگر اس نے وقت پر کام مکمل کیا ہوتا تو اسے ترقی ملتی۔",
-          "note": "Main clause first — no comma"
-        },
-        {
-          "text": "If Pakistan had invested in education earlier, literacy rates could have improved dramatically.",
-          "urdu": "اگر پاکستان نے پہلے تعلیم میں سرمایہ کاری کی ہوتی تو شرحِ خواندگی 劇نمایاں طور پر بہتر ہو سکتی تھی۔",
-          "note": "'Could have' — unrealised possibility; CSS historical analysis"
-        },
-        {
-          "text": "Had the government acted swiftly, the crisis might have been averted.",
-          "urdu": "اگر حکومت نے فوری اقدام کیا ہوتا تو بحران ٹل سکتا تھا۔",
-          "note": "Formal inversion 'Had...' — no 'if'"
-        },
-        {
-          "text": "If she hadn't called for help, the situation would have worsened.",
-          "urdu": "اگر اس نے مدد نہ مانگی ہوتی تو صورتحال اور بگڑ جاتی۔",
-          "note": "Negative Third Conditional"
-        }
-      ],
-      "commonMistakes": [
-        {
-          "wrong": "If I would have studied, I would have passed.",
-          "right": "If I had studied, I would have passed.",
-          "note": "'Would have' must never appear in the if-clause. Use 'had + past participle' (past perfect) in the if-clause."
-        },
-        {
-          "wrong": "If I had studied, I would pass.",
-          "right": "If I had studied, I would have passed.",
-          "note": "The main clause of the Third Conditional requires 'would/could/might + have + past participle', not just 'would + base verb'."
-        },
-        {
-          "wrong": "Had I studied harder, I had passed the exam.",
-          "right": "Had I studied harder, I would have passed the exam.",
-          "note": "In the formal inversion, the main clause still requires 'would/could/might + have + past participle'."
-        }
-      ],
-      "examTips": [
-        "CSS/PMS MCQs frequently test 'If I would have...' (wrong) vs 'If I had...' (correct). 'Would have' belongs in the main clause, never the if-clause.",
-        "IELTS Writing Task 2: Use Third Conditional for historical analysis — 'If colonialism had not occurred, African economies would have developed differently.' This elevates band score.",
-        "Formal inversion 'Had + subject + past participle...' is a hallmark of formal English; recognising and producing it impresses CSS examiners.",
-        "In error correction, check both clauses: if-clause needs past perfect; main clause needs 'would/could/might + have + V3'."
-      ],
-      "practice": [
-        {
-          "question": "Complete correctly: 'If she _____ the instructions, she _____ the mistake.'",
-          "options": [
-            "had followed / wouldn't have made",
-            "would have followed / wouldn't make",
-            "followed / wouldn't have made",
-            "had followed / wouldn't make"
-          ],
-          "answerIndex": 0,
-          "explanation": "Third Conditional: 'had followed' (past perfect) in the if-clause; 'wouldn't have made' (would + not + have + V3) in the main clause."
-        },
-        {
-          "question": "Identify the formal inversion of: 'If the committee had reviewed the data, errors would have been caught.'",
-          "options": [
-            "Were the committee to review the data, errors would have been caught.",
-            "Should the committee review the data, errors would have been caught.",
-            "Had the committee reviewed the data, errors would have been caught.",
-            "If the committee reviewed the data, errors would be caught."
-          ],
-          "answerIndex": 2,
-          "explanation": "Third Conditional inversion: begin with 'Had + subject + past participle' (dropping 'if'): 'Had the committee reviewed the data...'"
-        },
-        {
-          "question": "Which sentence contains an error?",
-          "options": [
-            "If she had applied earlier, she would have been selected.",
-            "Had the doctor arrived sooner, the patient might have survived.",
-            "If I would have left early, I would have caught the train.",
-            "The project would have succeeded if the team had communicated better."
-          ],
-          "answerIndex": 2,
-          "explanation": "'If I would have left' is incorrect. The if-clause of a Third Conditional requires past perfect: 'If I had left early...'"
-        }
-      ],
-      "quiz": [
-        {
-          "question": "What tense is used in the if-clause of the Third Conditional?",
-          "options": [
-            "Present perfect",
-            "Past simple",
-            "Past perfect",
-            "Future perfect"
-          ],
-          "answerIndex": 2,
-          "explanation": "The Third Conditional if-clause always uses the past perfect tense: 'had + past participle'."
-        },
-        {
-          "question": "'If they had planned better, the project _____ failed.' — Best completion?",
-          "options": [
-            "wouldn't have",
-            "wouldn't",
-            "hadn't",
-            "won't have"
-          ],
-          "answerIndex": 0,
-          "explanation": "Third Conditional main clause: 'would/could/might + have + past participle'. Here: 'wouldn't have failed'."
-        },
-        {
-          "question": "Which of these is a correct formal inversion of a Third Conditional?",
-          "options": [
-            "Were I studied harder, I would have passed.",
-            "Should I have studied harder, I would pass.",
-            "Had I studied harder, I would have passed.",
-            "If had I studied harder, I would have passed."
-          ],
-          "answerIndex": 2,
-          "explanation": "Third Conditional formal inversion: 'Had + subject + past participle, subject + would/could/might + have + V3'. Only option C follows this pattern."
-        }
-      ],
-      "summary": "The Third Conditional uses past perfect ('had + V3') in the if-clause and 'would/could/might + have + past participle' in the main clause to describe unreal past situations and their hypothetical results. Neither the condition nor the result occurred in reality. Formal inversion begins with 'Had + subject + V3' without 'if'. Never use 'would have' in the if-clause — this is a top-tested error in CSS, PMS, and IELTS."
+      "providedMaterial": "Third Conditional\nDefinition:\n\nThe Third Conditional is used to talk about unreal situations in the past and their imaginary results.\n\nThird Conditional:\n\n(تیسرا شرطیہ) ایسے غیر حقیقی ماضی کے حالات کے لیے استعمال ہوتا ہے جن میں شرط پوری نہیں ہوئی اور اس کا نتیجہ بھی ماضی میں حاصل نہیں ہوا۔\n\nExamples Sentences:\n\nIf I had studied harder, I would have passed the exam.\nاگر میں نے زیادہ محنت سے پڑھا ہوتا تو میں امتحان پاس کر لیتا۔\n\nIf she had left earlier, she would have caught the bus.\nاگر وہ پہلے روانہ ہوئی ہوتی تو وہ بس پکڑ لیتی۔\n\nIf they had invited me, I would have attended the party.\nاگر انہوں نے مجھے دعوت دی ہوتی تو میں تقریب میں شریک ہوتا۔\n\nCommon Structure:\n\nIf + Past Perfect, would have + V3\n\nExample:\n\nIf I had studied harder, I would have passed the exam.\n\nIf I had studied harder → Condition\nI would have passed the exam → Result\nhad studied → Past Perfect\nwould have passed → would + have + V3\n\nUsage\n\nThird Conditional is mainly used for:\n\n| Use                       | Example                                                          |\n| ------------------------- | ---------------------------------------------------------------- |\n| **Unreal past situation** | If I had known, I would have helped you.                         |\n| **Regret**                | If I had studied, I would have passed.                           |\n| **Imaginary past result** | If she had left early, she would have caught the train.          |\n| **Criticism**             | If you had listened to me, you would not have made this mistake. |\n\nExam Tip\n\nIf the sentence describes an unreal past condition and its imaginary past result, it is Third Conditional.\n"
     }
   },
   {
@@ -16152,143 +15227,7 @@
       "law of nature"
     ],
     "content": {
-      "introduction": "The Zero Conditional expresses general truths, scientific laws, and habitual facts that are always true. Both the if-clause and the main clause use the present simple tense. It describes conditions whose results are certain and universal, not hypothetical. It is also used to state cause-and-effect relationships that hold at all times.",
-      "urduExplanation": "Zero Conditional ان حالات کو ظاہر کرتا ہے جو ہمیشہ سچ ہوتے ہیں، جیسے سائنسی قوانین اور عام حقائق۔ اس میں if-clause اور main clause دونوں میں present simple tense استعمال ہوتی ہے۔ مثلاً: اگر آپ پانی کو گرم کریں، تو وہ ابلتا ہے — یہ ہمیشہ سچ ہے۔ یہ conditional hypothesis نہیں بلکہ ایک یقینی حقیقت بیان کرتا ہے۔ CSS اور IELTS امتحانات میں اسے عام حقائق اور سائنسی بیانات لکھنے کے لیے استعمال کیا جاتا ہے۔",
-      "englishExplanation": "The Zero Conditional is used to talk about situations where the result always follows the condition — there is no element of doubt or hypothesis. Both clauses take the present simple tense (base form for third person with -s). The if-clause states the condition, and the main clause states the inevitable result. This form is commonly used in scientific writing, instructions, and expressions of habitual behavior. Unlike other conditionals, the Zero Conditional does not use 'would', 'will', or any modal verb; the bare present simple suffices. When the if-clause comes first, a comma separates it from the main clause; when the main clause comes first, no comma is needed. 'When' can often replace 'if' in Zero Conditionals without changing the meaning, since the result is guaranteed.",
-      "rules": [
-        "Both clauses use the present simple tense: If + subject + base verb (±s), subject + base verb (±s).",
-        "No modal verbs (will, would, should) are used in the main clause of the Zero Conditional.",
-        "The condition is always true or habitually true; the result is certain, not probable.",
-        "Place a comma after the if-clause when it begins the sentence: 'If you freeze water, it turns to ice.'",
-        "When the main clause comes first, no comma is used: 'Water turns to ice if you freeze it.'",
-        "'When' can replace 'if' in Zero Conditionals because the outcome is universal: 'When you heat metal, it expands.'",
-        "'Unless' means 'if...not': 'Unless you water plants, they die' = 'If you do not water plants, they die.'"
-      ],
-      "structure": [
-        "If + present simple, present simple.  (e.g., 'If you heat ice, it melts.')",
-        "Comma rule: comma after the if-clause when it leads the sentence; no comma when the main clause leads: 'Ice melts if you heat it.'"
-      ],
-      "examples": [
-        {
-          "text": "If you heat ice, it melts.",
-          "urdu": "اگر آپ برف کو گرم کریں، تو وہ پگھل جاتی ہے۔",
-          "note": "Scientific fact"
-        },
-        {
-          "text": "Water boils if you heat it to 100°C.",
-          "urdu": "اگر آپ پانی کو سو درجے سینٹی گریڈ تک گرم کریں تو وہ ابلتا ہے۔",
-          "note": "Main clause first — no comma"
-        },
-        {
-          "text": "If children eat too much sugar, they get hyperactive.",
-          "urdu": "اگر بچے بہت زیادہ چینی کھائیں، تو وہ بے قابو ہو جاتے ہیں۔",
-          "note": "Habitual truth"
-        },
-        {
-          "text": "Plants die if they do not get sunlight.",
-          "urdu": "اگر پودوں کو سورج کی روشنی نہ ملے تو وہ مر جاتے ہیں۔",
-          "note": "'Unless' paraphrase possible"
-        },
-        {
-          "text": "If you press this button, the alarm rings.",
-          "urdu": "اگر آپ یہ بٹن دبائیں تو الارم بجتا ہے۔",
-          "note": "Instruction / operational fact"
-        }
-      ],
-      "commonMistakes": [
-        {
-          "wrong": "If you heat ice, it will melt.",
-          "right": "If you heat ice, it melts.",
-          "note": "'Will' is incorrect in the Zero Conditional; use present simple for a universal truth."
-        },
-        {
-          "wrong": "If you heated ice, it melts.",
-          "right": "If you heat ice, it melts.",
-          "note": "Both clauses must be in the present simple; mixing tenses breaks the Zero Conditional pattern."
-        },
-        {
-          "wrong": "Ice melts, if you heat it.",
-          "right": "Ice melts if you heat it.",
-          "note": "No comma is used when the main clause comes before the if-clause."
-        }
-      ],
-      "examTips": [
-        "CSS/PMS Essay: Use the Zero Conditional to state scientific laws, economic principles, and social facts (e.g., 'If inflation rises, purchasing power falls.') — it adds academic authority.",
-        "IELTS Task 1/2: When describing processes or natural phenomena, prefer Zero Conditional over vague phrasing to show grammatical range.",
-        "Error correction questions often test whether candidates incorrectly insert 'will' in a Zero Conditional main clause — remember: present simple only.",
-        "Know that 'when' and 'if' are interchangeable in Zero Conditionals; examiners sometimes test this substitution in MCQs."
-      ],
-      "practice": [
-        {
-          "question": "Choose the correct Zero Conditional form: 'If you _____ salt in water, it _____ .'",
-          "options": [
-            "dissolve / disappears",
-            "will dissolve / will disappear",
-            "dissolved / disappeared",
-            "dissolving / disappearing"
-          ],
-          "answerIndex": 0,
-          "explanation": "Zero Conditional requires present simple in both clauses: 'dissolve' and 'disappears'."
-        },
-        {
-          "question": "Which sentence is a correct Zero Conditional?",
-          "options": [
-            "If it rains, the ground will get wet.",
-            "If it rains, the ground gets wet.",
-            "If it rained, the ground got wet.",
-            "If it had rained, the ground gets wet."
-          ],
-          "answerIndex": 1,
-          "explanation": "'The ground gets wet' uses present simple, making this a correct Zero Conditional expressing a universal truth."
-        },
-        {
-          "question": "'Unless you study, you _____ the exam.' — Choose the correct option.",
-          "options": [
-            "fail",
-            "will fail",
-            "would fail",
-            "have failed"
-          ],
-          "answerIndex": 0,
-          "explanation": "'Unless' = 'if...not', and this is a habitual/universal truth, so present simple 'fail' is correct."
-        }
-      ],
-      "quiz": [
-        {
-          "question": "Which word can replace 'if' in a Zero Conditional without changing the meaning?",
-          "options": [
-            "Although",
-            "Unless",
-            "When",
-            "Whereas"
-          ],
-          "answerIndex": 2,
-          "explanation": "'When' can replace 'if' in Zero Conditionals because the result is always guaranteed."
-        },
-        {
-          "question": "Identify the error: 'If you mix red and blue, you will get purple.'",
-          "options": [
-            "No error",
-            "'will get' should be 'got'",
-            "'will get' should be 'get'",
-            "'mix' should be 'mixed'"
-          ],
-          "answerIndex": 2,
-          "explanation": "This is a universal fact (Zero Conditional), so the main clause must use present simple 'get', not 'will get'."
-        },
-        {
-          "question": "Where does the comma go? 'Water turns to steam ___ you heat it to 100°C'",
-          "options": [
-            "After 'steam': 'Water turns to steam, if you heat it to 100°C'",
-            "No comma needed here",
-            "After 'if': 'if, you heat it'",
-            "After '100°C': 'if you heat it to 100°C,'"
-          ],
-          "answerIndex": 1,
-          "explanation": "When the main clause comes first, no comma is used between the main clause and the if-clause."
-        }
-      ],
-      "summary": "The Zero Conditional uses present simple in both clauses to express universal truths, scientific laws, and habitual facts. No modal verb appears in the main clause. A comma follows the if-clause only when it begins the sentence; otherwise no comma is needed. 'When' may replace 'if', and 'unless' replaces 'if...not'."
+      "providedMaterial": "Zero Conditional:\nDefinition:\n\nThe Zero Conditional is used to talk about general truths, facts, rules, and things that always happen when a condition is met.\n\nZero Conditional:\n (صفر شرطیہ) ایسے عمومی حقائق، سائنسی حقائق، اصول یا مستقل نتائج کے لیے استعمال ہوتا ہے جو شرط پوری ہونے پر عموماً یا ہمیشہ ایک ہی طرح واقع ہوتے ہیں۔\n\nExamples Sentences:\nIf you heat water to 100°C, it boils.\nاگر آپ پانی کو 100 ڈگری سینٹی گریڈ تک گرم کریں تو وہ ابلتا ہے۔\nIf you don't water plants, they die.\nاگر آپ پودوں کو پانی نہیں دیتے تو وہ مر جاتے ہیں۔\nIf people eat too much, they gain weight.\nاگر لوگ بہت زیادہ کھاتے ہیں تو ان کا وزن بڑھ جاتا ہے۔\n\nCommon Structure:\n\nIf + Present Simple, Present Simple\n\nExample:\nIf you heat ice, it melts.\nIf you heat ice → Condition\nit melts → Result\nheat → Present Simple\nmelts → Present Simple\n\nUsage\n\nZero Conditional is mainly used for:\n| Use                 | Example                                           |\n| ------------------- | ------------------------------------------------- |\n| **General truth**   | If you heat ice, it melts.                        |\n| **Scientific fact** | If water reaches 100°C, it boils.                 |\n| **General rule**    | If you don't follow the rules, you get a penalty. |\n| **Habitual result** | If I drink coffee at night, I can't sleep.        |\n\nExam Tip\n\nIf the sentence expresses a general truth, fact, rule, or repeated result, and both clauses normally use the Present Simple, it is Zero Conditional.\n"
     }
   },
   {
@@ -21761,7 +20700,7 @@
       "exam preparation"
     ],
     "content": {
-      "providedMaterial": "Absolute Phrase\nDefinition\n\nEnglish:\nAn absolute phrase is a group of words that usually contains a noun or pronoun + participle and adds extra information to the main sentence.\n\nUrdu:\nAbsolute Phrase (مطلق فقرہ) الفاظ کا ایسا مجموعہ ہے جس میں عموماً Noun یا Pronoun + Participle ہوتا ہے اور یہ جملے کے main idea کے بارے میں اضافی معلومات دیتا ہے۔\n\nExamples\n\nHis work finished, he went home.\nاپنا کام مکمل ہونے کے بعد، وہ گھر چلا گیا۔\n\nThe sun having set, we returned home.\nسورج غروب ہونے کے بعد، ہم گھر واپس آگئے۔\n\nHer eyes filled with tears, she left the room.\nاس کی آنکھیں آنسوؤں سے بھر گئیں، وہ کمرے سے چلی گئی۔\n\nIn each example, the bold phrase adds extra information about the main sentence.\n\nCommon Structure\n\nNoun / Pronoun + Participle + Modifier(s)\n\nExamples:\n\nHis work finished\nThe sun having set\nHer eyes filled with tears\nThe weather being cold\n\nAn absolute phrase does not normally have a finite verb.\n\nFunctions of an Absolute Phrase\n\nAn absolute phrase adds information about the condition or circumstances surrounding the main action.\n\nExample\nThe weather being cold, we stayed inside.\nThe sun having set, they returned home.\nHis work finished, he went home.\nHow to Identify an Absolute Phrase\n\nLook for a group of words that:\n\nContains its own noun or pronoun.\nUsually contains a participle.\nDoes not form a complete sentence by itself.\nAdds information about the main sentence.\n\nExample:\n\nThe weather being cold, we stayed inside.\n\nAbsolute Phrase: The weather being cold\nNoun: weather\nParticiple: being\nFunction: Gives the circumstance/reason for staying inside.\nHow an Absolute Phrase Adds Information\n\nAn absolute phrase adds background information or circumstances to the main sentence.\n\nSimple:\n\nWe went home.\n\nMore information:\n\nThe sun having set, we went home.\n\nHere:\n\nwe went home → main sentence\nthe sun having set → gives the circumstance\nIt tells us what had happened before we went home.\n\nAnother example:\n\nSimple:\n\nWe stayed inside.\n\nMore information:\n\nThe weather being cold, we stayed inside.\n\nHere:\n\nwe stayed inside → main sentence\nthe weather being cold → gives the reason/circumstance\nEasy Rule\n\nAbsolute Phrase = Noun/Pronoun + Participle + extra information\n\nExam Tip\n\nAn absolute phrase has its own noun or pronoun and adds background information to the main sentence.\n\nCompare:\n\nFeeling tired, Ali went home. → Participle Phrase; feeling describes Ali.\nAli feeling tired, we went home. → Absolute Phrase; Ali has its own participle feeling."
+      "providedMaterial": "Absolute Phrase\nDefinition\n\nEnglish:\nAn absolute phrase is a group of words that usually contains a noun or pronoun + participle and adds extra information to the main sentence.\n\nUrdu:\nایسے الفاظ کے مجموعے کو مستقل فقرہ (Absolute Phrase) کہتے ہیں جس میں اسم (Noun) یا ضمیر (Pronoun) کے ساتھ فعل کی وصفی شکل (Participle) آتی ہے اور جو پورے جملے کے بارے میں اضافی معلومات فراہم کرتا ہے۔\n\nExamples\n\nHis work finished, he went home.\nاپنا کام مکمل ہونے کے بعد، وہ گھر چلا گیا۔\n\nThe sun having set, we returned home.\nسورج غروب ہونے کے بعد، ہم گھر واپس آگئے۔\n\nHer eyes filled with tears, she left the room.\nاس کی آنکھیں آنسوؤں سے بھر گئیں، وہ کمرے سے چلی گئی۔\n\nIn each example, the bold phrase adds extra information about the main sentence.\n\nCommon Structure\n\nNoun / Pronoun + Participle + Modifier(s)\n\nExamples:\n\nHis work finished\nThe sun having set\nHer eyes filled with tears\nThe weather being cold\n\nAn absolute phrase does not normally have a finite verb.\n\nFunctions of an Absolute Phrase\n\nAn absolute phrase adds information about the condition or circumstances surrounding the main action.\n\nExample\nThe weather being cold, we stayed inside.\nThe sun having set, they returned home.\nHis work finished, he went home.\nHow to Identify an Absolute Phrase\n\nLook for a group of words that:\n\nContains its own noun or pronoun.\nUsually contains a participle.\nDoes not form a complete sentence by itself.\nAdds information about the main sentence.\n\nExample:\n\nThe weather being cold, we stayed inside.\n\nAbsolute Phrase: The weather being cold\nNoun: weather\nParticiple: being\nFunction: Gives the circumstance/reason for staying inside.\nHow an Absolute Phrase Adds Information\n\nAn absolute phrase adds background information or circumstances to the main sentence.\n\nSimple:\n\nWe went home.\n\nMore information:\n\nThe sun having set, we went home.\n\nHere:\n\nwe went home → main sentence\nthe sun having set → gives the circumstance\nIt tells us what had happened before we went home.\n\nAnother example:\n\nSimple:\n\nWe stayed inside.\n\nMore information:\n\nThe weather being cold, we stayed inside.\n\nHere:\n\nwe stayed inside → main sentence\nthe weather being cold → gives the reason/circumstance\nEasy Rule\n\nAbsolute Phrase = Noun/Pronoun + Participle + extra information\n\nExam Tip\n\nAn absolute phrase has its own noun or pronoun and adds background information to the main sentence.\n\nCompare:\n\nFeeling tired, Ali went home. → Participle Phrase; feeling describes Ali.\nAli feeling tired, we went home. → Absolute Phrase; Ali has its own participle feeling."
     }
   },
   {

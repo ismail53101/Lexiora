@@ -55,19 +55,92 @@ class GrammarSectionCard extends StatelessWidget {
 /// A simple leading-bullet row used inside section cards for rules, notes and
 /// tips lists.
 class TenseRichText extends StatelessWidget {
-  const TenseRichText({required this.text, this.style});
+  const TenseRichText({required this.text, this.style, this.bilingual = false});
   final String text;
   final TextStyle? style;
+  final bool bilingual;
 
   @override
   Widget build(BuildContext context) {
     final ThemeData theme = Theme.of(context);
+    final TextStyle baseStyle =
+        style ?? theme.textTheme.bodySmall?.copyWith(height: 1.3) ?? const TextStyle();
+    if (bilingual) {
+      return _BilingualRichText(text: text, style: baseStyle);
+    }
     return Text.rich(
       TextSpan(
-        style: style ?? theme.textTheme.bodySmall?.copyWith(height: 1.3),
+        style: baseStyle,
         children: _highlightRuleDetails(text, const Color(0xFF42A5F5)),
       ),
     );
+  }
+}
+
+class _BilingualRichText extends StatelessWidget {
+  const _BilingualRichText({required this.text, required this.style});
+
+  final String text;
+  final TextStyle style;
+
+  @override
+  Widget build(BuildContext context) {
+    final List<Widget> lines = <Widget>[];
+    Color? carriedColor;
+    for (final String rawLine in text.split('\n')) {
+      final String line = _normalizeLabelMarkup(rawLine);
+      if (line.isEmpty) {
+        carriedColor = null;
+        lines.add(const SizedBox(height: 10));
+        continue;
+      }
+      final bool isUrdu = RegExp(r'[\u0600-\u06ff]').hasMatch(line);
+      final bool isExample = _looksLikeExampleLine(line) || _looksLikeConditionalExampleLine(line);
+      final bool startsExplanation = RegExp(r'^(Explanation|Here):').hasMatch(line);
+      final bool startsExample = RegExp(r'^(Example|Examples):').hasMatch(line);
+      if (startsExplanation) {
+        carriedColor = const Color(0xFFCE93D8);
+      } else if (startsExample) {
+        carriedColor = const Color(0xFF64B5F6);
+      } else if (carriedColor == const Color(0xFF64B5F6) &&
+          !isUrdu &&
+          !isExample &&
+          line.trim().startsWith('In each example')) {
+        carriedColor = null;
+      }
+      final Color? lineColor = startsExplanation ||
+              line.startsWith('Here:') ||
+              carriedColor == const Color(0xFFCE93D8)
+          ? const Color(0xFFCE93D8)
+          : (startsExample ||
+                  isExample ||
+                  (isUrdu && carriedColor == const Color(0xFF64B5F6)))
+              ? const Color(0xFF64B5F6)
+              : null;
+      final bool heading = RegExp(
+        r'^(Definition|English:|Urdu:|Example:|Examples:|Explanation:|Here:|Quick Tip|Types of Clauses|Types of Conditional Sentences|Basic Structure|Structure|Common Structure|Main Function|How to Identify|Compare|Easy Rule|Exam Tip|Functions of|Function|Usage|Common Words|Common Structures|Conditional Sentence:|Zero Conditional:|First Conditional:|Second Conditional:|Third Conditional:|Mixed Conditional:|Past Perfect|Past Simple|If \+|Subject:|Verb:|Complete thought:|Condition|Result|Noun Clause:|Adjective Clause:|Adverb Clause:|Independent Clause:|Dependent Clause:)',
+      ).hasMatch(line.trim());
+      final List<TextSpan> spans = _markupSpans(line, lineColor);
+      if (heading && spans.isNotEmpty) {
+        spans[0] = TextSpan(
+          text: spans[0].text,
+          style: (spans[0].style ?? const TextStyle()).copyWith(
+            fontWeight: FontWeight.w800,
+          ),
+          children: spans[0].children,
+        );
+      }
+      lines.add(
+        Directionality(
+          textDirection: isUrdu ? TextDirection.rtl : TextDirection.ltr,
+          child: Text.rich(
+            TextSpan(style: style, children: spans),
+            textAlign: isUrdu ? TextAlign.right : TextAlign.left,
+          ),
+        ),
+      );
+    }
+    return Column(crossAxisAlignment: CrossAxisAlignment.stretch, children: lines);
   }
 }
 
@@ -169,6 +242,21 @@ List<TextSpan> _highlightRuleDetails(
   }
   if (spans.isNotEmpty) spans.removeLast();
   return spans;
+}
+
+bool _looksLikeConditionalExampleLine(String line) {
+  final String value = line.trim();
+  if (value.startsWith('|')) {
+    return RegExp(r'\bIf\b.*[.!?]\s*\|?$').hasMatch(value);
+  }
+  if (value.contains('→') && value.contains('Condition') ||
+      value.contains('→') && value.contains('Result')) {
+    return true;
+  }
+  if (RegExp(r'^(If\s+.+[.!?]|[a-z]+\s+→\s+(Condition|Result))$').hasMatch(value)) {
+    return true;
+  }
+  return false;
 }
 
 bool _looksLikeExampleLine(String line) {

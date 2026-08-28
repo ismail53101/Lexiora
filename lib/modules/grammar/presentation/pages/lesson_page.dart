@@ -184,8 +184,11 @@ class _LessonView extends StatelessWidget {
   Widget build(BuildContext context) {
     final ThemeData theme = Theme.of(context);
     final bool isPhraseLesson = lesson.id.startsWith('phrases/');
-    final bool isPhraseOrClauseLesson =
-        isPhraseLesson || lesson.id.startsWith('clauses/');
+    final bool isConditionalLesson =
+        lesson.id.startsWith('conditional-sentences/');
+    final bool isPhraseOrClauseLesson = isPhraseLesson ||
+        lesson.id.startsWith('clauses/') ||
+        isConditionalLesson;
     if (lesson.id == 'pos/quiz') {
       return _AllInOneQuizView(lesson: lesson);
     }
@@ -218,6 +221,7 @@ class _LessonView extends StatelessWidget {
             child: TenseRichText(
               text: lesson.providedMaterial,
               style: theme.textTheme.bodySmall?.copyWith(height: 1.35),
+              bilingual: isPhraseOrClauseLesson,
             ),
           ),
 
