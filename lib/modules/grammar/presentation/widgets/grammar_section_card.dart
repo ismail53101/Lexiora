@@ -71,7 +71,7 @@ class TenseRichText extends StatelessWidget {
     final ThemeData theme = Theme.of(context);
     final TextStyle baseStyle =
         style ?? theme.textTheme.bodySmall?.copyWith(height: 1.3) ?? const TextStyle();
-    if (bilingual) {
+    if (bilingual || _containsMarkdownTable(text)) {
       return _BilingualRichText(text: text, style: baseStyle);
     }
     return Text.rich(
@@ -167,6 +167,24 @@ class _BilingualRichText extends StatelessWidget {
     }
     return Column(crossAxisAlignment: CrossAxisAlignment.stretch, children: lines);
   }
+}
+
+bool _containsMarkdownTable(String text) {
+  final List<String> lines = text.split('\n');
+  for (int index = 0; index + 1 < lines.length; index++) {
+    if (!lines[index].trim().startsWith('|') ||
+        !lines[index + 1].trim().startsWith('|')) {
+      continue;
+    }
+    final List<String> rows = <String>[];
+    int cursor = index;
+    while (cursor < lines.length && lines[cursor].trim().startsWith('|')) {
+      rows.add(lines[cursor].trim());
+      cursor++;
+    }
+    if (_markdownTableRows(rows).length > 1) return true;
+  }
+  return false;
 }
 
 List<List<String>> _markdownTableRows(List<String> lines) {
