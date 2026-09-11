@@ -105,11 +105,45 @@ void main() {
     expect(comparison.length, 9);
     expect(comparison.every((GrammarTopicSummary t) => t.isLeaf), isTrue);
 
-    // Active & Passive Voice → 8 leaf sections.
+    // Active & Passive Voice → structure-only hierarchy: two direct leaves,
+    // three tense branches, Modal Verbs and Imperative Sentences branches,
+    // and the Practice Quiz leaf. Lesson content is added in a later pass.
     final List<GrammarTopicSummary> voice =
         await ds.children('active-passive-voice');
     expect(voice.length, 8);
-    expect(voice.every((GrammarTopicSummary t) => t.isLeaf), isTrue);
+    expect(
+      voice.map((GrammarTopicSummary t) => t.title).toList(),
+      <String>[
+        'Introduction to Voice',
+        'General Rules of Conversion',
+        'Present Tense',
+        'Past Tense',
+        'Future Tense',
+        'Modal Verbs',
+        'Imperative Sentences',
+        'Practice Quiz',
+      ],
+    );
+    expect(voice.where((GrammarTopicSummary t) => !t.isLeaf).length, 5,
+        reason: 'the three tense groups plus Modal Verbs and Imperative are branches');
+    expect(
+      (await ds.children('active-passive-voice/present'))
+          .map((GrammarTopicSummary t) => t.title)
+          .toList(),
+      <String>['Simple Present', 'Present Continuous', 'Present Perfect'],
+    );
+    expect(
+      (await ds.children('active-passive-voice/past'))
+          .map((GrammarTopicSummary t) => t.title)
+          .toList(),
+      <String>['Simple Past', 'Past Continuous', 'Past Perfect'],
+    );
+    expect(
+      (await ds.children('active-passive-voice/future'))
+          .map((GrammarTopicSummary t) => t.title)
+          .toList(),
+      <String>['Simple Future', 'Future Perfect'],
+    );
 
     // Narration → 6 leaf sections.
     final List<GrammarTopicSummary> narration =
@@ -155,7 +189,10 @@ void main() {
       final GrammarLesson? lesson = await ds.leaf(id);
       expect(lesson, isNotNull, reason: 'leaf $id must decode');
 
-      if (id != 'punctuation/parentheses') {
+      // Active & Passive Voice intentionally ships as an empty structure;
+      // its lessons receive content in a later pass.
+      if (id != 'punctuation/parentheses' &&
+          !id.startsWith('active-passive-voice/')) {
         expect(
           lesson!.englishExplanation.isNotEmpty ||
               lesson.introduction.isNotEmpty ||
@@ -172,9 +209,9 @@ void main() {
     // own dedicated lesson rather than a merged page.
     for (final String id in <String>[
       'pos/noun',
-      'active-passive-voice/interrogative',
       'direct-indirect-speech/universal-truth',
       'modals/must',
+      'modals/should',
     ]) {
       final GrammarLesson? lesson = await ds.leaf(id);
       expect(lesson, isNotNull, reason: '$id must decode');

@@ -203,6 +203,40 @@ class _LessonView extends StatelessWidget {
         lesson.id == 'pos/determiner') {
       return _NounLandingView(lesson: lesson);
     }
+    // Structure-only lessons (content arrives in a later pass) show a friendly
+    // placeholder instead of an empty page.
+    final bool hasNoContent = lesson.providedMaterial.isEmpty &&
+        lesson.introduction.isEmpty &&
+        lesson.urduExplanation.isEmpty &&
+        lesson.englishExplanation.isEmpty &&
+        lesson.types.isEmpty &&
+        lesson.additionalTypes.isEmpty &&
+        lesson.degreeTypes.isEmpty &&
+        lesson.rules.isEmpty &&
+        lesson.structure.isEmpty &&
+        lesson.examples.isEmpty &&
+        lesson.commonMistakes.isEmpty &&
+        lesson.examTips.isEmpty &&
+        lesson.practice.isEmpty &&
+        lesson.quiz.isEmpty &&
+        lesson.summary.isEmpty &&
+        lesson.tableRows.isEmpty;
+    if (hasNoContent) {
+      return ListView(
+        padding: const EdgeInsets.fromLTRB(16, 16, 16, 24),
+        children: <Widget>[
+          Text(lesson.title,
+              style: theme.textTheme.headlineSmall
+                  ?.copyWith(fontWeight: FontWeight.w800)),
+          const SizedBox(height: 48),
+          const EmptyState(
+            icon: Icons.menu_book_outlined,
+            title: 'Content coming soon',
+            message: 'Lesson material for this section will be added soon.',
+          ),
+        ],
+      );
+    }
     return ListView(
       padding: const EdgeInsets.fromLTRB(16, 16, 16, 24),
       children: <Widget>[

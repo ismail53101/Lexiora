@@ -11112,10 +11112,10 @@
   {
     "id": "active-passive-voice/future",
     "parentId": "active-passive-voice",
-    "title": "Future Tenses",
+    "title": "Future Tense",
     "subtitle": null,
     "order": 5,
-    "isLeaf": true,
+    "isLeaf": false,
     "keywords": [
       "simple future passive",
       "future perfect passive",
@@ -11125,158 +11125,23 @@
       "shall be",
       "going to passive",
       "future passive"
-    ],
-    "content": {
-      "introduction": "Future tense passive constructions are straightforward but require careful use of 'will be' or 'will have been'. Future Continuous and Future Perfect Continuous passive forms are not used in standard English. CSS and PMS exams frequently test Simple Future passive and Future Perfect passive.",
-      "urduExplanation": "Future Tenses میں Passive Voice بنانے کے دو اہم طریقے ہیں۔ Simple Future میں 'will be + V3' یا 'shall be + V3' آتا ہے، جیسے 'She will write the letter' → 'The letter will be written by her'۔ Future Perfect میں 'will have been + V3' استعمال ہوتا ہے، جیسے 'They will have completed the project' → 'The project will have been completed by them'۔ Future Continuous اور Future Perfect Continuous کا Passive Voice عام طور پر نہیں بنایا جاتا اور انہیں امتحانات میں passive میں تبدیل کرنے کی کوشش نہیں کرنی چاہیے۔ 'Going to' کا Passive 'is/am/are going to be + V3' کی شکل میں بنتا ہے، جیسے 'They are going to build a hospital' → 'A hospital is going to be built by them'۔",
-      "englishExplanation": "Future tenses have two primary passive forms in standard English. Simple Future Passive uses 'will be + V3' (or 'shall be + V3' in formal British usage). Formula: New subject + will be + V3 + (by + agent). Future Perfect Passive uses 'will have been + V3', indicating completion of an action before a future point. Formula: New subject + will have been + V3 + (by + agent). 'Going to' future also has a passive: 'is/am/are going to be + V3'. Future Continuous ('will be + V-ing') and Future Perfect Continuous ('will have been + V-ing') do not have standard passive forms and are not tested in this form. Negative future passive: insert 'not' after 'will' → 'will not be + V3'; 'will not have been + V3'.",
-      "types": [
-        {
-          "name": "Simple Future Passive",
-          "description": "Active: S + will + V1 + O → Passive: O + will be + V3 + by + agent. Example: 'The company will launch a new product.' → 'A new product will be launched by the company.'"
-        },
-        {
-          "name": "Future Perfect Passive",
-          "description": "Active: S + will have + V3 + O → Passive: O + will have been + V3 + by + agent. Example: 'She will have finished the report by Monday.' → 'The report will have been finished by her by Monday.'"
-        },
-        {
-          "name": "'Going to' Future Passive",
-          "description": "Active: S + is/am/are going to + V1 + O → Passive: O + is/am/are going to be + V3 + by + agent. Example: 'They are going to renovate the office.' → 'The office is going to be renovated by them.'"
-        },
-        {
-          "name": "Future Continuous & Future Perfect Continuous (No Passive)",
-          "description": "Future Continuous ('will be V-ing') and Future Perfect Continuous ('will have been V-ing') do not form standard passive constructions. Avoid converting them to passive."
-        },
-        {
-          "name": "Negative Simple Future Passive",
-          "description": "Active: S + will not + V1 + O → Passive: O + will not be + V3 + by + agent. Example: 'He will not sign the document.' → 'The document will not be signed by him.'"
-        }
-      ],
-      "rules": [
-        "Simple Future passive: will be + V3. 'Will' is invariable for all subjects.",
-        "Future Perfect passive: will have been + V3. The time reference is retained after the verb phrase.",
-        "'Going to' future passive: is/am/are going to be + V3.",
-        "Future Continuous and Future Perfect Continuous do not have standard passive forms — do not attempt to passivise them.",
-        "Negative future passive: 'will not be + V3'; the contraction 'won't be + V3' is also acceptable in informal contexts.",
-        "The past participle (V3) must be correct regardless of the future auxiliary used.",
-        "Time expressions ('by next Monday', 'soon', 'before noon') are retained in the passive sentence."
-      ],
-      "examples": [
-        {
-          "text": "Active: The government will build a new highway. / Passive: A new highway will be built by the government.",
-          "note": "Simple Future passive: 'will build' → 'will be built'. 'A new highway' becomes the subject."
-        },
-        {
-          "text": "Active: She will have submitted the report by Friday. / Passive: The report will have been submitted by her by Friday.",
-          "note": "Future Perfect passive: 'will have submitted' → 'will have been submitted'. 'She' → 'her'. Time phrase retained."
-        },
-        {
-          "text": "Active: They are going to announce the results tomorrow. / Passive: The results are going to be announced by them tomorrow.",
-          "note": "'Going to' passive: 'are going to announce' → 'are going to be announced'."
-        },
-        {
-          "text": "Active: The company will not refund the money. / Passive: The money will not be refunded by the company.",
-          "note": "Negative Simple Future: 'will not refund' → 'will not be refunded'."
-        },
-        {
-          "text": "Active: Scientists will have discovered a cure by 2030. / Passive: A cure will have been discovered by scientists by 2030.",
-          "note": "Future Perfect: 'will have discovered' → 'will have been discovered'. Time phrase 'by 2030' retained."
-        }
-      ],
-      "commonMistakes": [
-        {
-          "wrong": "The letter will written by her.",
-          "right": "The letter will be written by her.",
-          "note": "The auxiliary 'be' cannot be omitted in Simple Future passive. Must have 'will be + V3'."
-        },
-        {
-          "wrong": "The project will have been complete by the team.",
-          "right": "The project will have been completed by the team.",
-          "note": "After 'will have been', the past participle V3 is required: 'complete' → 'completed'."
-        },
-        {
-          "wrong": "The report will be being written by her.",
-          "right": "Rephrase: The report will be written by her. (Future Continuous has no standard passive.)",
-          "note": "Future Continuous passive is not standard. Use Simple Future passive instead."
-        },
-        {
-          "wrong": "A hospital will going to be built by them.",
-          "right": "A hospital is going to be built by them.",
-          "note": "'Going to' passive uses 'is/am/are going to be + V3', not 'will going to be'."
-        }
-      ],
-      "practice": [
-        {
-          "question": "Change to passive: 'The authorities will announce the decision tomorrow.'",
-          "options": [
-            "The decision will be announced by the authorities tomorrow.",
-            "The decision will have been announced by the authorities tomorrow.",
-            "The decision is announced by the authorities tomorrow.",
-            "The decision would be announced by the authorities tomorrow."
-          ],
-          "answerIndex": 0,
-          "explanation": "Simple Future passive: 'will announce' → 'will be announced'. Time adverb 'tomorrow' is retained. Option a is correct."
-        },
-        {
-          "question": "Change to passive: 'She will have completed the task before noon.'",
-          "options": [
-            "The task will be completed by her before noon.",
-            "The task has been completed by her before noon.",
-            "The task will have been completed by her before noon.",
-            "The task had been completed by her before noon."
-          ],
-          "answerIndex": 2,
-          "explanation": "Future Perfect passive: 'will have completed' → 'will have been completed'. 'She' → 'her'. Time phrase retained. Option c is correct."
-        },
-        {
-          "question": "Active: 'They are going to repair the road.' Which passive is correct?",
-          "options": [
-            "The road will be repaired by them.",
-            "The road is going to be repaired by them.",
-            "The road is going to been repaired by them.",
-            "The road was going to be repaired by them."
-          ],
-          "answerIndex": 1,
-          "explanation": "'Going to' passive: 'are going to repair' → 'is going to be repaired'. 'Road' is singular; 'is'. Option b is correct."
-        }
-      ],
-      "quiz": [
-        {
-          "question": "Which passive form is correct for Simple Future tense?",
-          "options": [
-            "will + V3",
-            "will be + V3",
-            "will been + V3",
-            "will have been + V3"
-          ],
-          "answerIndex": 1,
-          "explanation": "Simple Future passive requires 'will be + V3'. Option a omits 'be'; option c has wrong form; option d is Future Perfect passive."
-        },
-        {
-          "question": "Active: 'Scientists will have found a vaccine.' Correct passive: ___",
-          "options": [
-            "A vaccine will be found by scientists.",
-            "A vaccine has been found by scientists.",
-            "A vaccine will have been found by scientists.",
-            "A vaccine would have been found by scientists."
-          ],
-          "answerIndex": 2,
-          "explanation": "Future Perfect active 'will have found' → Future Perfect passive 'will have been found'. Option c is correct."
-        },
-        {
-          "question": "Which sentence correctly converts Future Continuous to passive?",
-          "options": [
-            "The project will be being finished by them.",
-            "The project will have been finished by them.",
-            "The project will be finished by them. (Rephrase — Future Continuous has no standard passive.)",
-            "The project was being finished by them."
-          ],
-          "answerIndex": 2,
-          "explanation": "Future Continuous ('will be finishing') has no standard passive form. The best approach is to rephrase as Simple Future passive: 'will be finished'."
-        }
-      ],
-      "summary": "Future tense passives use: Simple Future → will be + V3; Future Perfect → will have been + V3; 'Going to' future → is/am/are going to be + V3. Future Continuous and Future Perfect Continuous have no standard passive forms. Always retain time expressions and use the correct past participle (V3)."
-    }
+    ]
+  },
+  {
+    "id": "active-passive-voice/future/simple-future",
+    "parentId": "active-passive-voice/future",
+    "title": "Simple Future",
+    "subtitle": null,
+    "order": 1,
+    "isLeaf": true
+  },
+  {
+    "id": "active-passive-voice/future/future-perfect",
+    "parentId": "active-passive-voice/future",
+    "title": "Future Perfect",
+    "subtitle": null,
+    "order": 2,
+    "isLeaf": true
   },
   {
     "id": "active-passive-voice/imperative",
@@ -11284,7 +11149,7 @@
     "title": "Imperative Sentences",
     "subtitle": null,
     "order": 7,
-    "isLeaf": true,
+    "isLeaf": false,
     "keywords": [
       "imperative passive",
       "let the object be",
@@ -11294,335 +11159,15 @@
       "advice passive",
       "let be v3",
       "imperative voice"
-    ],
-    "content": {
-      "introduction": "Imperative sentences express commands, orders, requests, or advice. They have no stated subject — the subject 'you' is implied. Converting imperative sentences to passive voice is a unique and frequently tested skill in Pakistani competitive exams.",
-      "urduExplanation": "Imperative Sentences وہ جملے ہوتے ہیں جن میں حکم، درخواست یا مشورہ دیا جاتا ہے، اور ان کا Subject 'you' چھپا ہوتا ہے۔ ان کا Passive بنانے کے دو طریقے ہیں: پہلا طریقہ: 'Let + Object + be + V3'، جیسے 'Open the door' → 'Let the door be opened'۔ دوسرا طریقہ: 'You are requested/advised/ordered to + V1 + Object'، جیسے 'Please sit down' → 'You are requested to sit down'۔ منفی حکم (Don't/Never) کی صورت میں: 'Let + Object + not + be + V3'، جیسے 'Don't waste time' → 'Let time not be wasted'۔ یاد رہے کہ Imperative کا Subject 'you' Passive میں عام طور پر ظاہر نہیں ہوتا۔",
-      "englishExplanation": "Imperative sentences are commands or requests where the subject 'you' is understood but not stated. Because there is no explicit object that becomes the subject in the usual way, imperative passives use two specialised patterns. Pattern 1 – 'Let + object + be + V3': This is the primary exam-accepted form. The object of the active command becomes the focus, introduced by 'let'. Example: 'Shut the window.' → 'Let the window be shut.' Pattern 2 – 'You are requested/advised/ordered/told to + V1 + (object)': Used when expressing polite requests or formal orders. Example: 'Please submit your forms.' → 'You are requested to submit your forms.' Negative imperatives ('Do not', 'Never', 'Don't') are converted as: 'Let + object + not + be + V3' or 'You are advised/requested not to + V1'. Example: 'Don't litter the streets.' → 'Let the streets not be littered.' OR 'You are requested not to litter the streets.' The choice of 'requested', 'advised', 'ordered', or 'told' depends on the tone and context of the original command.",
-      "types": [
-        {
-          "name": "Pattern 1: Let + Object + be + V3",
-          "description": "The primary passive form for imperatives. Active: 'V1 + object.' → Passive: 'Let + object + be + V3.' Example: 'Close the door.' → 'Let the door be closed.'"
-        },
-        {
-          "name": "Pattern 2: You are requested/advised/ordered to + V1",
-          "description": "Used for polite or formal requests. Example: 'Please help the poor.' → 'You are requested to help the poor.' OR 'The poor should be helped.' "
-        },
-        {
-          "name": "Negative Imperative Passive (Pattern 1)",
-          "description": "Active: 'Do not / Never + V1 + object.' → Passive: 'Let + object + not + be + V3.' Example: 'Don't waste water.' → 'Let water not be wasted.'"
-        },
-        {
-          "name": "Negative Imperative Passive (Pattern 2)",
-          "description": "Active: 'Do not + V1 + object.' → Passive: 'You are requested/advised not to + V1 + object.' Example: 'Do not make noise.' → 'You are requested not to make noise.'"
-        },
-        {
-          "name": "Choosing the Right Verb (requested / advised / ordered / told)",
-          "description": "Use 'requested' for polite requests, 'advised' for suggestions, 'ordered' or 'commanded' for strong directives, 'told' for instructions."
-        }
-      ],
-      "rules": [
-        "The primary passive of an imperative is: Let + object + be + V3.",
-        "An alternative form is: You are requested/advised/ordered/told to + V1 + (object).",
-        "For negative imperatives ('Do not/Never + V1'): Let + object + not + be + V3 OR You are requested/advised not to + V1.",
-        "The implied subject 'you' is NOT written as 'by you' in the passive of imperatives — it is omitted.",
-        "Select 'requested', 'advised', 'ordered', or 'told' based on the strength and formality of the original command.",
-        "If the imperative has no direct object (e.g., 'Go away', 'Sit down'), it generally cannot be passivised using Pattern 1; use Pattern 2 instead.",
-        "The past participle (V3) must be correctly formed after 'be' in Pattern 1."
-      ],
-      "examples": [
-        {
-          "text": "Active: Open the window. / Passive: Let the window be opened.",
-          "note": "Pattern 1: 'the window' becomes subject of 'let' construction; 'open' → 'be opened'."
-        },
-        {
-          "text": "Active: Help the poor. / Passive: Let the poor be helped. / OR: You are requested to help the poor.",
-          "note": "Both Pattern 1 and Pattern 2 are acceptable. Pattern 2 uses 'requested' for a polite tone."
-        },
-        {
-          "text": "Active: Do not waste time. / Passive: Let time not be wasted. / OR: You are advised not to waste time.",
-          "note": "Negative imperative: 'not' is placed after 'Let + object' or after 'not to' in Pattern 2."
-        },
-        {
-          "text": "Active: Never tell a lie. / Passive: Let a lie never be told. / OR: You are advised never to tell a lie.",
-          "note": "Adverb 'never' is retained and placed appropriately in the passive."
-        },
-        {
-          "text": "Active: Please submit your application. / Passive: You are requested to submit your application.",
-          "note": "Polite imperative with 'please': use 'requested'. Pattern 2 is most natural here."
-        },
-        {
-          "text": "Active: Follow the traffic rules. / Passive: Let the traffic rules be followed. / OR: You are ordered to follow the traffic rules.",
-          "note": "Both patterns work; 'ordered' suits a directive context."
-        }
-      ],
-      "commonMistakes": [
-        {
-          "wrong": "Let the door be close.",
-          "right": "Let the door be closed.",
-          "note": "After 'be' in passive, the past participle V3 is required: 'close' (V1) → 'closed' (V3)."
-        },
-        {
-          "wrong": "Let not be wasted time.",
-          "right": "Let time not be wasted.",
-          "note": "The object must immediately follow 'let': 'Let + object (time) + not + be + V3'."
-        },
-        {
-          "wrong": "You are requested to not make noise.",
-          "right": "You are requested not to make noise.",
-          "note": "In formal English, 'not' precedes 'to' in the infinitive: 'not to make', not 'to not make'."
-        },
-        {
-          "wrong": "Let the children be played. (Active: 'Play, children!')",
-          "right": "Let the children play. (This is already a 'let' sentence, not a passive.)",
-          "note": "When the imperative begins with 'Let + noun + V1', it is already a permission/suggestion — do not add 'be' unless converting to passive."
-        }
-      ],
-      "practice": [
-        {
-          "question": "Change to passive: 'Clean the room immediately.'",
-          "options": [
-            "Let the room be cleaned immediately.",
-            "Let the room be clean immediately.",
-            "The room must be cleaned immediately.",
-            "You are advised to clean the room immediately."
-          ],
-          "answerIndex": 0,
-          "explanation": "Pattern 1 imperative passive: 'Let + the room + be + cleaned'. V3 of 'clean' is 'cleaned'. Adverb 'immediately' is retained. Both a and d are acceptable but a is the primary exam answer. Option a is the most standard Pattern 1 response."
-        },
-        {
-          "question": "Change to passive: 'Do not park your car here.'",
-          "options": [
-            "Let your car not parked here.",
-            "Let your car not be parked here.",
-            "You are requested to not park your car here.",
-            "Your car must not be parked here."
-          ],
-          "answerIndex": 1,
-          "explanation": "Negative imperative Pattern 1: 'Let + your car + not + be + parked'. V3 of 'park' is 'parked'. Option b is correct. Option c has incorrect infinitive placement."
-        },
-        {
-          "question": "Which is the most appropriate passive for: 'Please respect your teachers.'?",
-          "options": [
-            "Let your teachers be respected.",
-            "You are requested to respect your teachers.",
-            "Your teachers must be respected.",
-            "Both a and b are acceptable."
-          ],
-          "answerIndex": 3,
-          "explanation": "Both Pattern 1 ('Let your teachers be respected') and Pattern 2 ('You are requested to respect your teachers') are grammatically correct passives for a polite imperative. Option d is correct."
-        }
-      ],
-      "quiz": [
-        {
-          "question": "Identify the correct passive of: 'Never break the law.'",
-          "options": [
-            "The law should never be broken.",
-            "Let the law never be broken.",
-            "Let the law not be broken never.",
-            "You are requested to never break the law."
-          ],
-          "answerIndex": 1,
-          "explanation": "Imperative Pattern 1: 'Let + the law + never + be + broken'. 'Never' is placed before 'be'. Option b is the most standard exam answer."
-        },
-        {
-          "question": "Active: 'Switch off the lights before leaving.' Passive (Pattern 1): ___",
-          "options": [
-            "Let the lights be switched off before leaving.",
-            "Let the lights be switch off before leaving.",
-            "Let the lights are switched off before leaving.",
-            "The lights should be switched off before leaving."
-          ],
-          "answerIndex": 0,
-          "explanation": "Pattern 1: 'Let + the lights + be + switched off'. V3 of 'switch off' is 'switched off'. Time phrase retained. Option a is correct."
-        },
-        {
-          "question": "Which of the following is the Pattern 2 passive of: 'Obey the orders.'?",
-          "options": [
-            "Let the orders be obeyed.",
-            "You are ordered to obey the orders.",
-            "The orders are to be obeyed.",
-            "Orders must be obeyed by you."
-          ],
-          "answerIndex": 1,
-          "explanation": "Pattern 2: 'You are ordered/requested to + V1 + object'. 'Obey the orders' → 'You are ordered to obey the orders.' Option b is Pattern 2."
-        }
-      ],
-      "summary": "Imperative sentences convert to passive using two patterns: Pattern 1 – 'Let + object + be + V3' (primary form); Pattern 2 – 'You are requested/advised/ordered to + V1 + object'. Negative imperatives use 'Let + object + not + be + V3' or 'You are advised/requested not to + V1'. The implied subject 'you' is not written as agent in imperative passives."
-    }
+    ]
   },
   {
-    "id": "active-passive-voice/interrogative",
+    "id": "active-passive-voice/practice-quiz",
     "parentId": "active-passive-voice",
-    "title": "Interrogative Sentences",
+    "title": "Practice Quiz",
     "subtitle": null,
     "order": 8,
-    "isLeaf": true,
-    "keywords": [
-      "interrogative passive",
-      "question passive",
-      "wh question passive",
-      "by whom",
-      "did passive",
-      "question voice",
-      "yes no question passive",
-      "interrogative voice"
-    ],
-    "content": {
-      "introduction": "Interrogative sentences (questions) can be converted to passive voice, but the question structure must be preserved. Yes/No questions (using auxiliaries) and Wh-questions each have their own passive conversion pattern. The most tested form on competitive exams is the 'Who/Whom' question conversion.",
-      "urduExplanation": "سوالیہ جملوں کو Passive Voice میں تبدیل کرنا ذرا مختلف ہوتا ہے لیکن قابل فہم ہے۔ Yes/No سوالات میں Auxiliary Verb (helping verb) کو آگے رکھا جاتا ہے، جیسے 'Did she write the letter?' → 'Was the letter written by her?'۔ Wh-Questions میں Wh-Word کو آگے رکھا جاتا ہے، جیسے 'What did he buy?' → 'What was bought by him?'۔ خاص اہمیت 'Who' سوالات کی ہے: 'Who wrote this letter?' → 'By whom was this letter written?' یا 'Who was this letter written by?'۔ یاد رہے کہ Passive Question میں بھی سوالیہ شکل (inversion) برقرار رہتی ہے۔",
-      "englishExplanation": "Interrogative passive sentences maintain the question word order: auxiliary verb before subject. For Yes/No questions, the structure is: Passive auxiliary (is/are/was/were/will be + V3) + new subject + (by + agent) + ? For Wh-questions (what, which, when, where, why, how), the Wh-word is placed first, followed by the passive auxiliary inversion. The most important special case is 'Who' questions: 'Who' as subject of an active question converts to 'By whom' in passive (formal) or 'Who ... by?' (informal). Formula for 'Who' questions: Active: 'Who + V2 + object?' → Passive: 'By whom + was/were + object + V3?' For 'Whom' as object in active: 'Whom did she invite?' → 'Who was invited by her?' — here 'whom' (old object) becomes the new subject 'who'. The tense of the passive auxiliary must match the tense of the original active question.",
-      "types": [
-        {
-          "name": "Yes/No Question Passive",
-          "description": "Active: Auxiliary + subject + V1 + object? → Passive: Passive auxiliary (was/were/is/are + V3) + new subject + by + agent? Example: 'Did he solve the problem?' → 'Was the problem solved by him?'"
-        },
-        {
-          "name": "Wh-Question Passive (Object Wh-word)",
-          "description": "Active: Wh-word (as object) + auxiliary + subject + V1? → Passive: Wh-word + passive auxiliary + new subject + V3 + by + agent? Example: 'What did she buy?' → 'What was bought by her?'"
-        },
-        {
-          "name": "'Who' as Subject (Active) → 'By whom' (Passive)",
-          "description": "Active: 'Who + V2 + object?' → Passive: 'By whom + was/were + object + V3?' (formal) OR 'Who was [object] V3 by?' (informal). Example: 'Who wrote this letter?' → 'By whom was this letter written?'"
-        },
-        {
-          "name": "'Whom' as Object (Active) → 'Who' as Subject (Passive)",
-          "description": "Active: 'Whom did + subject + V1?' → Passive: 'Who + was/were + V3 + by + agent?' Example: 'Whom did the teacher punish?' → 'Who was punished by the teacher?'"
-        },
-        {
-          "name": "Wh-Question with Subject Wh-word (What/Which)",
-          "description": "Active: 'What + V2 + object?' → Passive retains 'What' and inverts: 'What + was/were + V3 + by + agent?' Example: 'What surprised him?' → 'By what was he surprised?' (formal) or 'What was he surprised by?'"
-        }
-      ],
-      "rules": [
-        "The question form (inversion of auxiliary and subject) must be preserved in the passive.",
-        "Yes/No questions: replace active auxiliary with passive auxiliary (was/were/is/are + V3) and maintain question order.",
-        "'Who' as active subject → 'By whom' at the start of the passive question (formal) or 'Who ... by?' (informal).",
-        "'Whom' as active object → becomes 'Who' (new subject) at the start of the passive question.",
-        "For Wh-questions where the Wh-word is the object, keep it at the front and convert the rest: 'What did he bring?' → 'What was brought by him?'",
-        "Tense of the passive auxiliary must match the tense of the original question auxiliary.",
-        "The question mark (?) must be retained in all passive interrogative sentences."
-      ],
-      "examples": [
-        {
-          "text": "Active: Did she write the letter? / Passive: Was the letter written by her?",
-          "note": "Simple Past Yes/No: 'Did + she + write' → 'Was + the letter + written'. 'she' → 'her'."
-        },
-        {
-          "text": "Active: Who broke the window? / Passive: By whom was the window broken?",
-          "note": "'Who' (active subject) → 'By whom' at the start. Simple Past passive."
-        },
-        {
-          "text": "Active: What did the manager say? / Passive: What was said by the manager?",
-          "note": "Wh-word 'What' is the object in active; retained at front. 'did say' → 'was said'."
-        },
-        {
-          "text": "Active: Whom did the officer arrest? / Passive: Who was arrested by the officer?",
-          "note": "'Whom' (active object) → 'Who' (new passive subject) at the front."
-        },
-        {
-          "text": "Active: Will the government build a new hospital? / Passive: Will a new hospital be built by the government?",
-          "note": "Future Yes/No question: 'will build' → 'will be built'. Inversion maintained."
-        },
-        {
-          "text": "Active: Has she completed the assignment? / Passive: Has the assignment been completed by her?",
-          "note": "Present Perfect question: 'has completed' → 'has been completed'. 'she' → 'her'."
-        }
-      ],
-      "commonMistakes": [
-        {
-          "wrong": "Was the letter written by she?",
-          "right": "Was the letter written by her?",
-          "note": "After 'by', use object pronouns: 'she' → 'her'."
-        },
-        {
-          "wrong": "By who was the letter written?",
-          "right": "By whom was the letter written?",
-          "note": "After a preposition like 'by', the objective form 'whom' is used in formal/exam English, not 'who'."
-        },
-        {
-          "wrong": "What did he buy? → What was bought?",
-          "right": "What was bought by him?",
-          "note": "The agent 'by him' is important information from the original sentence and should be retained if the original subject is specific."
-        },
-        {
-          "wrong": "Did the problem solve by him?",
-          "right": "Was the problem solved by him?",
-          "note": "Passive of a Simple Past question uses 'was/were + V3', not the active auxiliary 'did'."
-        }
-      ],
-      "practice": [
-        {
-          "question": "Change to passive: 'Did the police catch the criminal?'",
-          "options": [
-            "Was the criminal caught by the police?",
-            "Was the criminal catched by the police?",
-            "Is the criminal caught by the police?",
-            "Did the criminal caught by the police?"
-          ],
-          "answerIndex": 0,
-          "explanation": "Simple Past Yes/No passive: 'Did + catch' → 'Was + caught' (V3). Singular 'criminal' takes 'was'. Option a is correct. 'catched' in b is wrong (V3 of 'catch' is 'caught')."
-        },
-        {
-          "question": "Change to passive: 'Who wrote this poem?'",
-          "options": [
-            "Who was this poem written by?",
-            "By whom was this poem written?",
-            "By who was this poem written?",
-            "Both a and b are acceptable."
-          ],
-          "answerIndex": 3,
-          "explanation": "Both 'By whom was this poem written?' (formal) and 'Who was this poem written by?' (informal/acceptable) are correct. Option d is the best answer. Option c ('By who') is incorrect; 'by' requires 'whom'."
-        },
-        {
-          "question": "Change to passive: 'Whom did the teacher scold?'",
-          "options": [
-            "By whom was the teacher scolded?",
-            "Who was scolded by the teacher?",
-            "Whom was scolded by the teacher?",
-            "Who did the teacher scold?"
-          ],
-          "answerIndex": 1,
-          "explanation": "'Whom' is the object in the active question — it becomes the new subject 'Who' (subjective case) in the passive. Passive: 'Who was scolded by the teacher?' Option b is correct."
-        }
-      ],
-      "quiz": [
-        {
-          "question": "Active: 'Has the committee reviewed the proposal?' Passive: ___",
-          "options": [
-            "Has the proposal reviewed by the committee?",
-            "Has the proposal been reviewed by the committee?",
-            "Was the proposal reviewed by the committee?",
-            "Is the proposal been reviewed by the committee?"
-          ],
-          "answerIndex": 1,
-          "explanation": "Present Perfect Yes/No question: 'Has + reviewed' → 'Has + been + reviewed'. Auxiliary 'has' is retained and inverted. Option b is correct."
-        },
-        {
-          "question": "Active: 'What did she say?' Passive: ___",
-          "options": [
-            "What was said by her?",
-            "What is said by her?",
-            "What had been said by her?",
-            "By what was said by her?"
-          ],
-          "answerIndex": 0,
-          "explanation": "'What' is the object in active; it stays at the front in passive. 'did say' (Simple Past) → 'was said'. 'she' → 'her'. Option a is correct."
-        },
-        {
-          "question": "Which passive of 'Who built the Taj Mahal?' is most formal and grammatically preferred?",
-          "options": [
-            "Who was the Taj Mahal built by?",
-            "By whom the Taj Mahal was built?",
-            "By whom was the Taj Mahal built?",
-            "Whom was the Taj Mahal built by?"
-          ],
-          "answerIndex": 2,
-          "explanation": "Formal passive: 'By whom + was + subject + V3?' Option c maintains correct inversion and uses formal 'By whom' at the start. Option b lacks inversion. Options a and d are less formal or incorrect."
-        }
-      ],
-      "summary": "Interrogative passive sentences maintain question word order (auxiliary before subject). Yes/No questions: replace active auxiliary with passive auxiliary (was/were/is/are/will be + V3). 'Who' as active subject becomes 'By whom' at the start of the formal passive question. 'Whom' as active object becomes 'Who' as the new passive subject. Wh-word objects are retained at the front, and all question marks are preserved."
-    }
+    "isLeaf": true
   },
   {
     "id": "active-passive-voice/introduction",
@@ -11640,162 +11185,15 @@
       "verb",
       "grammar",
       "introduction"
-    ],
-    "content": {
-      "introduction": "Voice is a grammatical category that describes the relationship between the verb and its subject and object. In active voice, the subject performs the action. In passive voice, the subject receives the action. Understanding voice is essential for CSS, PMS, IELTS, and all competitive exams in Pakistan.",
-      "urduExplanation": "Voice گرامر کی وہ اصطلاح ہے جو فعل اور فاعل کے درمیان تعلق کو ظاہر کرتی ہے۔ Active Voice میں فاعل (Subject) خود کام کرتا ہے، جیسے 'Ali writes a letter'۔ Passive Voice میں فاعل کام کرنے والا نہیں بلکہ کام سہنے والا ہوتا ہے، جیسے 'A letter is written by Ali'۔ Passive Voice اس وقت استعمال ہوتی ہے جب کام کرنے والا معلوم نہ ہو یا اہم نہ ہو، یا جب سرکاری، سائنسی یا رسمی تحریر لکھنی ہو۔ Object کو Subject کی جگہ پر رکھا جاتا ہے اور فعل کی شکل 'be + past participle' میں بدل جاتی ہے۔",
-      "englishExplanation": "Voice in English grammar refers to the form of a verb that shows whether the subject performs or receives the action. In active voice, the subject is the doer: 'The manager signed the contract.' In passive voice, the subject is the receiver: 'The contract was signed by the manager.' Passive voice is preferred when the agent (doer) is unknown ('My wallet was stolen'), unimportant, or deliberately withheld for style. It is heavily used in scientific writing ('The experiment was conducted'), official documents, and journalistic reporting. The fundamental transformation rule is: the object of the active sentence becomes the subject of the passive sentence, the verb changes to the appropriate form of 'be' plus the past participle (V3), and the original subject becomes the agent introduced by 'by'.",
-      "types": [
-        {
-          "name": "Active Voice",
-          "description": "The subject performs the action. Structure: Subject + Verb + Object. Example: 'The teacher explains the lesson.'"
-        },
-        {
-          "name": "Passive Voice",
-          "description": "The subject receives the action. Structure: Object (new subject) + be + V3 + by + agent. Example: 'The lesson is explained by the teacher.'"
-        },
-        {
-          "name": "When Agent is Unknown",
-          "description": "If the doer is unknown or unimportant, the 'by + agent' phrase is omitted. Example: 'The window was broken.' (we do not know who broke it)"
-        },
-        {
-          "name": "Formal / Scientific Passive",
-          "description": "Academic and official writing frequently uses passive to maintain objectivity. Example: 'The results were analysed.' / 'The policy was reviewed.'"
-        }
-      ],
-      "rules": [
-        "The object of the active sentence becomes the subject of the passive sentence.",
-        "The verb changes to 'be' (in the appropriate tense) + past participle (V3).",
-        "The original subject becomes the agent, introduced by 'by' (e.g., 'by Ali', 'by the government').",
-        "If the agent is unknown, unimportant, or obvious from context, 'by + agent' may be omitted.",
-        "Only transitive verbs (verbs that take an object) can be converted to passive voice.",
-        "The tense of the auxiliary 'be' must match the tense of the original active verb.",
-        "Subject pronouns change to object pronouns when they become agents: I→me, he→him, she→her, they→them, we→us."
-      ],
-      "examples": [
-        {
-          "text": "Active: She writes a letter. / Passive: A letter is written by her.",
-          "note": "'a letter' (object) becomes the subject; 'writes' becomes 'is written'; 'she' becomes 'her'."
-        },
-        {
-          "text": "Active: The police arrested the thief. / Passive: The thief was arrested by the police.",
-          "note": "'the thief' moves to subject position; 'arrested' becomes 'was arrested'."
-        },
-        {
-          "text": "Active: Someone broke the window. / Passive: The window was broken.",
-          "note": "'Someone' is vague, so 'by someone' is omitted in the passive."
-        },
-        {
-          "text": "Active: They will announce the results. / Passive: The results will be announced (by them).",
-          "note": "Future tense: 'will announce' → 'will be announced'."
-        },
-        {
-          "text": "Active: People speak English all over the world. / Passive: English is spoken all over the world.",
-          "note": "'People' is a general agent and is typically omitted."
-        }
-      ],
-      "commonMistakes": [
-        {
-          "wrong": "The letter was wrote by her.",
-          "right": "The letter was written by her.",
-          "note": "'wrote' is simple past, not past participle. Use V3 ('written') after 'be'."
-        },
-        {
-          "wrong": "The cake eaten by him.",
-          "right": "The cake was eaten by him.",
-          "note": "The auxiliary verb 'be' (here 'was') must not be omitted in passive constructions."
-        },
-        {
-          "wrong": "He was written a letter by her.",
-          "right": "A letter was written to him by her. / He was given a letter by her.",
-          "note": "With ditransitive verbs, restructure carefully; 'write' does not passivise the indirect object this way."
-        },
-        {
-          "wrong": "The work is doing by him.",
-          "right": "The work is being done by him.",
-          "note": "Present Continuous passive requires 'is/am/are being + V3', not 'is doing'."
-        }
-      ],
-      "practice": [
-        {
-          "question": "Change to passive: 'Ali reads the newspaper every morning.'",
-          "options": [
-            "The newspaper is read by Ali every morning.",
-            "The newspaper was read by Ali every morning.",
-            "The newspaper has been read by Ali every morning.",
-            "The newspaper is being read by Ali every morning."
-          ],
-          "answerIndex": 0,
-          "explanation": "Simple Present active uses 'reads'; passive uses 'is + read (V3)'. Result: 'The newspaper is read by Ali every morning.'"
-        },
-        {
-          "question": "Which sentence is correctly converted to passive voice? Active: 'The government announced new policies.'",
-          "options": [
-            "New policies announced by the government.",
-            "New policies were announced by the government.",
-            "New policies are announced by the government.",
-            "New policies have announced by the government."
-          ],
-          "answerIndex": 1,
-          "explanation": "'announced' is Simple Past; passive requires 'were + announced (V3)'. Option b is correct."
-        },
-        {
-          "question": "Why is passive voice preferred in: 'Mistakes were made'?",
-          "options": [
-            "To make the sentence longer",
-            "Because the subject is plural",
-            "Because the agent is unknown or deliberately withheld",
-            "Because it is always more polite"
-          ],
-          "answerIndex": 2,
-          "explanation": "Passive is used here to avoid naming the agent — the doer of 'mistakes' is unknown or the writer prefers not to assign blame."
-        }
-      ],
-      "quiz": [
-        {
-          "question": "Which of the following is a correct passive sentence?",
-          "options": [
-            "The book was read by he.",
-            "The book was read by him.",
-            "The book were read by him.",
-            "The book is read by him yesterday."
-          ],
-          "answerIndex": 1,
-          "explanation": "After 'by', subject pronouns change to object form: 'he' → 'him'. 'was read' is correct Simple Past passive. Options a, c, and d each contain errors."
-        },
-        {
-          "question": "Active: 'No one has solved this problem.' Which passive is correct?",
-          "options": [
-            "This problem has not been solved by anyone.",
-            "This problem was not solved by no one.",
-            "This problem is not solved by anyone.",
-            "This problem had not been solved by anyone."
-          ],
-          "answerIndex": 0,
-          "explanation": "Present Perfect active ('has solved') → passive 'has been solved'. 'No one' becomes 'by anyone' (avoid double negative). Tense stays Present Perfect."
-        },
-        {
-          "question": "Intransitive verbs (verbs without an object) ______ be converted to passive voice.",
-          "options": [
-            "can always",
-            "can sometimes",
-            "cannot",
-            "must"
-          ],
-          "answerIndex": 2,
-          "explanation": "Passive voice requires an object to move to the subject position. Intransitive verbs like 'sleep', 'arrive', 'go' have no object, so they cannot form a passive."
-        }
-      ],
-      "summary": "Voice describes whether the subject acts (active) or is acted upon (passive). Converting active to passive involves moving the object to the subject position, changing the verb to 'be + V3' in the same tense, and placing the original subject after 'by'. Passive is preferred when the agent is unknown, unimportant, or in formal and scientific contexts."
-    }
+    ]
   },
   {
     "id": "active-passive-voice/modals",
     "parentId": "active-passive-voice",
-    "title": "Modals",
+    "title": "Modal Verbs",
     "subtitle": null,
     "order": 6,
-    "isLeaf": true,
+    "isLeaf": false,
     "keywords": [
       "modal passive",
       "can be",
@@ -11806,170 +11204,15 @@
       "could be",
       "modal verb voice",
       "ought to"
-    ],
-    "content": {
-      "introduction": "Modal verbs (can, could, may, might, must, shall, should, will, would, ought to) express necessity, possibility, permission, or ability. All modals follow the same passive pattern: modal + be + past participle (V3). Modal passives are extensively tested in CSS, PMS, and IELTS writing and grammar sections.",
-      "urduExplanation": "Modal Verbs جیسے can, could, may, might, must, should, would وغیرہ کے ساتھ Passive Voice بنانا بہت آسان ہے۔ فارمولا ہمیشہ یہی رہتا ہے: Modal + be + V3 (past participle)۔ مثال کے طور پر: 'She can solve this problem' → 'This problem can be solved by her'۔ 'You must obey the rules' → 'The rules must be obeyed by you'۔ 'They should complete the report' → 'The report should be completed by them'۔ یاد رہے کہ Modal کے بعد ہمیشہ 'be' آتا ہے، نہ کہ 'been' یا 'being'، اور پھر V3 لگتی ہے۔",
-      "englishExplanation": "Passive voice with modal verbs follows a single universal formula regardless of which modal is used. Active Formula: Subject + modal + base verb (V1) + object. Passive Formula: Object (new subject) + modal + be + V3 + (by + agent). The word 'be' is always in base form after the modal — never 'been' or 'being' (those are reserved for perfect and progressive constructions). For 'ought to', the passive is: ought to be + V3. Negative modal passives insert 'not' between the modal and 'be': 'cannot be done', 'should not be ignored', 'must not be wasted'. Perfect modals ('could have done', 'should have done') also passivise: 'could have been done', 'should have been completed'. This is an important distinction: simple modal passive uses 'modal + be + V3'; perfect modal passive uses 'modal + have + been + V3'.",
-      "types": [
-        {
-          "name": "Simple Modal Passive",
-          "description": "Active: S + modal + V1 + O → Passive: O + modal + be + V3 + by + agent. Works for: can, could, may, might, must, shall, should, will, would. Example: 'She can finish it.' → 'It can be finished by her.'"
-        },
-        {
-          "name": "Negative Modal Passive",
-          "description": "Active: S + modal + not + V1 + O → Passive: O + modal + not + be + V3. Example: 'You must not waste time.' → 'Time must not be wasted.' (agent 'by you' is omitted as it is obvious)."
-        },
-        {
-          "name": "'Ought to' Passive",
-          "description": "Active: S + ought to + V1 + O → Passive: O + ought to be + V3 + by + agent. Example: 'We ought to respect our elders.' → 'Our elders ought to be respected by us.'"
-        },
-        {
-          "name": "Perfect Modal Passive",
-          "description": "Active: S + modal + have + V3 + O → Passive: O + modal + have + been + V3 + by + agent. Example: 'She should have submitted the form.' → 'The form should have been submitted by her.'"
-        },
-        {
-          "name": "Common Modal Passive Forms Quick Reference",
-          "description": "can be done | could be done | may be done | might be done | must be done | should be done | would be done | will be done | shall be done | ought to be done"
-        }
-      ],
-      "rules": [
-        "Universal modal passive formula: modal + be + V3. The base verb 'be' never changes after a modal.",
-        "Do NOT use 'been' or 'being' directly after a modal in simple modal passive (those are for perfect/continuous forms).",
-        "Negative modal passive: modal + not + be + V3 (e.g., 'cannot be used', 'should not be ignored').",
-        "Perfect modal passive: modal + have + been + V3 (e.g., 'could have been done', 'must have been completed').",
-        "'Ought to' passive: ought to be + V3 (same formula, but note the 'to' is retained).",
-        "The agent 'by + noun/pronoun' is retained when important; omit when vague, obvious, or unknown.",
-        "Subject pronoun becomes object pronoun if retained as agent: he→him, she→her, they→them, we→us, I→me."
-      ],
-      "examples": [
-        {
-          "text": "Active: The doctor can treat this disease. / Passive: This disease can be treated by the doctor.",
-          "note": "'can treat' → 'can be treated'. Object 'this disease' becomes new subject."
-        },
-        {
-          "text": "Active: Students must complete the assignment. / Passive: The assignment must be completed by the students.",
-          "note": "'must complete' → 'must be completed'. Singular 'assignment' with 'be'."
-        },
-        {
-          "text": "Active: You should not waste water. / Passive: Water should not be wasted.",
-          "note": "Negative: 'should not waste' → 'should not be wasted'. 'You' is obvious agent, omitted."
-        },
-        {
-          "text": "Active: The government may review the policy. / Passive: The policy may be reviewed by the government.",
-          "note": "'may review' → 'may be reviewed'. Possibility maintained."
-        },
-        {
-          "text": "Active: He could have prevented the accident. / Passive: The accident could have been prevented by him.",
-          "note": "Perfect modal passive: 'could have prevented' → 'could have been prevented'. 'He' → 'him'."
-        },
-        {
-          "text": "Active: We ought to preserve our national heritage. / Passive: Our national heritage ought to be preserved by us.",
-          "note": "'ought to preserve' → 'ought to be preserved'. 'To' is retained with 'ought'."
-        }
-      ],
-      "commonMistakes": [
-        {
-          "wrong": "The work can been done by him.",
-          "right": "The work can be done by him.",
-          "note": "After a modal, always use the base form 'be', not 'been'. 'been' is for perfect constructions."
-        },
-        {
-          "wrong": "The problem must be solve immediately.",
-          "right": "The problem must be solved immediately.",
-          "note": "After 'be' in passive, always use the past participle V3 ('solved'), not V1 ('solve')."
-        },
-        {
-          "wrong": "The rules should have be followed.",
-          "right": "The rules should have been followed.",
-          "note": "Perfect modal passive: 'modal + have + been + V3'. 'be' must be 'been' here."
-        },
-        {
-          "wrong": "This ought be respected.",
-          "right": "This ought to be respected.",
-          "note": "'Ought' always requires 'to' before the following verb: 'ought to be + V3'."
-        }
-      ],
-      "practice": [
-        {
-          "question": "Change to passive: 'You should finish the work before sunset.'",
-          "options": [
-            "The work should be finished before sunset by you.",
-            "The work must be finished before sunset by you.",
-            "The work should have been finished before sunset by you.",
-            "The work will be finished before sunset by you."
-          ],
-          "answerIndex": 0,
-          "explanation": "Modal passive: 'should finish' → 'should be finished'. 'You' retained as agent. Time expression preserved. Option a is correct."
-        },
-        {
-          "question": "Change to passive: 'They could have solved this problem easily.'",
-          "options": [
-            "This problem could be solved easily by them.",
-            "This problem could have been solved easily by them.",
-            "This problem could have solved easily by them.",
-            "This problem should have been solved easily by them."
-          ],
-          "answerIndex": 1,
-          "explanation": "Perfect modal passive: 'could have solved' → 'could have been solved'. Adverb 'easily' is retained. Option b is correct."
-        },
-        {
-          "question": "Active: 'We must not pollute the environment.' Which passive is correct?",
-          "options": [
-            "The environment must not be polluted by us.",
-            "The environment must not pollute by us.",
-            "The environment can not be polluted by us.",
-            "The environment must not been polluted by us."
-          ],
-          "answerIndex": 0,
-          "explanation": "Negative modal passive: 'must not pollute' → 'must not be polluted'. Option a correctly uses 'must not be + V3'."
-        }
-      ],
-      "quiz": [
-        {
-          "question": "Which is the correct passive of: 'The manager might approve the proposal'?",
-          "options": [
-            "The proposal might be approved by the manager.",
-            "The proposal might been approved by the manager.",
-            "The proposal might have approved by the manager.",
-            "The proposal may be approving by the manager."
-          ],
-          "answerIndex": 0,
-          "explanation": "Simple modal passive: 'might approve' → 'might be approved'. V3 'approved' is correct. Option a is correct."
-        },
-        {
-          "question": "Active: 'She should have informed the committee.' Passive: ___",
-          "options": [
-            "The committee should be informed by her.",
-            "The committee should have been informed by her.",
-            "The committee must have been informed by her.",
-            "The committee should have be informed by her."
-          ],
-          "answerIndex": 1,
-          "explanation": "Perfect modal passive: 'should have informed' → 'should have been informed'. Option b is correct. Option d wrongly uses 'be' instead of 'been'."
-        },
-        {
-          "question": "Which sentence correctly uses 'ought to' passive?",
-          "options": [
-            "The poor ought be helped by the rich.",
-            "The poor ought to been helped by the rich.",
-            "The poor ought to have help by the rich.",
-            "The poor ought to be helped by the rich."
-          ],
-          "answerIndex": 3,
-          "explanation": "'Ought to' passive requires 'ought to be + V3'. Option d is correct. Options a (missing 'to'), b (wrong 'been'), and c (wrong 'have help') all have structural errors."
-        }
-      ],
-      "summary": "All modal verbs follow the same passive pattern: modal + be + V3. Negative modal passives insert 'not' between the modal and 'be'. Perfect modal passives use 'modal + have + been + V3'. 'Ought to' retains its 'to': ought to be + V3. Never use 'been' or 'being' directly after a modal in a simple modal passive."
-    }
+    ]
   },
   {
     "id": "active-passive-voice/past",
     "parentId": "active-passive-voice",
-    "title": "Past Tenses",
+    "title": "Past Tense",
     "subtitle": null,
     "order": 4,
-    "isLeaf": true,
+    "isLeaf": false,
     "keywords": [
       "simple past passive",
       "past continuous passive",
@@ -11979,166 +11222,39 @@
       "had been",
       "past tense voice",
       "v3"
-    ],
-    "content": {
-      "introduction": "Past tense passive constructions are among the most tested voice conversion topics in CSS, PMS, and IELTS. Each past sub-tense has a specific passive formula using 'was/were' or 'had been' as the auxiliary. Past Perfect Continuous passive is not standard and is avoided in formal writing.",
-      "urduExplanation": "Past Tenses میں Passive Voice تین طریقوں سے بنتی ہے۔ Simple Past میں 'was/were + V3' آتا ہے، جیسے 'He wrote the letter' → 'The letter was written by him'۔ Past Continuous میں 'was/were + being + V3' استعمال ہوتا ہے، جیسے 'She was cooking food' → 'Food was being cooked by her'۔ Past Perfect میں 'had + been + V3' لگتا ہے، جیسے 'They had finished the work' → 'The work had been finished by them'۔ Past Perfect Continuous کا Passive نہیں بنتا — یہ اصول یاد رکھیں کیونکہ یہ امتحانات میں ایک عام غلطی ہے۔",
-      "englishExplanation": "The three standard past passive forms correspond to Simple Past, Past Continuous, and Past Perfect. Simple Past Passive uses 'was/were + V3'. 'Was' is used with singular subjects (I, he, she, it, singular nouns); 'were' is used with plural subjects (we, they, plural nouns) and 'you'. Formula: New subject + was/were + V3 + (by + agent). Past Continuous Passive uses 'was/were + being + V3', signalling that an action was ongoing at a past moment. Formula: New subject + was/were + being + V3 + (by + agent). Past Perfect Passive uses 'had + been + V3', indicating that the action was completed before another past event. Formula: New subject + had + been + V3 + (by + agent). Past Perfect Continuous passive ('had been being + V3') is not used in standard English — rephrase using Past Perfect passive.",
-      "types": [
-        {
-          "name": "Simple Past Passive",
-          "description": "Active: S + V2 + O → Passive: O + was/were + V3 + by + agent. Example: 'The manager signed the letter.' → 'The letter was signed by the manager.'"
-        },
-        {
-          "name": "Past Continuous Passive",
-          "description": "Active: S + was/were + V-ing + O → Passive: O + was/were + being + V3 + by + agent. Example: 'Workers were building the bridge.' → 'The bridge was being built by the workers.'"
-        },
-        {
-          "name": "Past Perfect Passive",
-          "description": "Active: S + had + V3 + O → Passive: O + had + been + V3 + by + agent. Example: 'She had completed the project before the deadline.' → 'The project had been completed by her before the deadline.'"
-        },
-        {
-          "name": "Past Perfect Continuous (No Passive Form)",
-          "description": "Past Perfect Continuous ('had been V-ing') has no standard passive form. Avoid it. If needed, rephrase using Past Perfect passive."
-        },
-        {
-          "name": "was vs. were in Simple Past Passive",
-          "description": "'Was' → singular new subject (I, he, she, it, singular noun). 'Were' → plural new subject (they, we, you, plural noun). Example: 'The book was read.' vs. 'The books were read.'"
-        }
-      ],
-      "rules": [
-        "Simple Past passive: was/were + V3. Use 'was' for singular, 'were' for plural new subjects.",
-        "Past Continuous passive: was/were + being + V3. Never omit 'being'.",
-        "Past Perfect passive: had + been + V3. 'Had' is invariable for all subjects in Past Perfect.",
-        "Past Perfect Continuous has no standard passive form; it must be rephrased.",
-        "The past participle (V3) is the same form regardless of whether the tense is Simple Past, Continuous, or Perfect passive.",
-        "Negative: insert 'not' after the first auxiliary: 'was not written', 'were not being repaired', 'had not been sent'.",
-        "Time expressions and adverbs of the active sentence are retained in the passive."
-      ],
-      "examples": [
-        {
-          "text": "Active: The police caught the thief. / Passive: The thief was caught by the police.",
-          "note": "Simple Past: 'caught' (V2 of 'catch') → 'was caught' (singular subject 'thief')."
-        },
-        {
-          "text": "Active: Workers were repairing the road. / Passive: The road was being repaired by the workers.",
-          "note": "Past Continuous: 'were repairing' → 'was being repaired' (singular 'road')."
-        },
-        {
-          "text": "Active: She had already submitted the form. / Passive: The form had already been submitted by her.",
-          "note": "Past Perfect: 'had submitted' → 'had been submitted'. Adverb 'already' is retained."
-        },
-        {
-          "text": "Active: They did not invite him. / Passive: He was not invited by them.",
-          "note": "Simple Past negative: 'did not invite' → 'was not invited'. 'him' (object) → 'he' (new subject)."
-        },
-        {
-          "text": "Active: The teacher was explaining the lesson when I arrived. / Passive: The lesson was being explained by the teacher when I arrived.",
-          "note": "Past Continuous: 'was explaining' → 'was being explained'. The time clause 'when I arrived' is unchanged."
-        }
-      ],
-      "commonMistakes": [
-        {
-          "wrong": "The letter were written by him.",
-          "right": "The letter was written by him.",
-          "note": "'Letter' is singular; 'was' must be used, not 'were'."
-        },
-        {
-          "wrong": "The bridge was being build by the workers.",
-          "right": "The bridge was being built by the workers.",
-          "note": "'build' is the base form (V1); the past participle (V3) of 'build' is 'built'."
-        },
-        {
-          "wrong": "The work had been being done by them.",
-          "right": "The work had been done by them.",
-          "note": "Past Perfect Continuous passive is not standard. Use Past Perfect passive 'had been done'."
-        },
-        {
-          "wrong": "The documents was stolen.",
-          "right": "The documents were stolen.",
-          "note": "'Documents' is plural; 'were' must be used, not 'was'."
-        }
-      ],
-      "practice": [
-        {
-          "question": "Change to passive: 'The workers were constructing the dam.'",
-          "options": [
-            "The dam was being constructed by the workers.",
-            "The dam was constructed by the workers.",
-            "The dam had been constructed by the workers.",
-            "The dam is being constructed by the workers."
-          ],
-          "answerIndex": 0,
-          "explanation": "Past Continuous passive: 'were constructing' → 'was being constructed'. Singular 'dam' takes 'was'. Option a is correct."
-        },
-        {
-          "question": "Change to passive: 'The jury had announced the verdict before noon.'",
-          "options": [
-            "The verdict was announced before noon by the jury.",
-            "The verdict had been announced before noon by the jury.",
-            "The verdict had announced before noon by the jury.",
-            "The verdict has been announced before noon by the jury."
-          ],
-          "answerIndex": 1,
-          "explanation": "Past Perfect passive: 'had announced' → 'had been announced'. The time phrase 'before noon' is retained. Option b is correct."
-        },
-        {
-          "question": "Active: 'She did not complete the task.' Which passive is correct?",
-          "options": [
-            "The task is not completed by her.",
-            "The task has not been completed by her.",
-            "The task was not completed by her.",
-            "The task were not completed by her."
-          ],
-          "answerIndex": 2,
-          "explanation": "Simple Past negative: 'did not complete' → 'was not completed'. Singular 'task' takes 'was'. Option c is correct."
-        }
-      ],
-      "quiz": [
-        {
-          "question": "Identify the passive tense: 'The letter had been delivered before he arrived.'",
-          "options": [
-            "Simple Past Passive",
-            "Past Continuous Passive",
-            "Past Perfect Passive",
-            "Present Perfect Passive"
-          ],
-          "answerIndex": 2,
-          "explanation": "The structure 'had been + V3' identifies this as Past Perfect Passive."
-        },
-        {
-          "question": "Active: 'The chef was preparing the meal.' Correct passive: ___",
-          "options": [
-            "The meal was prepared by the chef.",
-            "The meal had been prepared by the chef.",
-            "The meal was being prepared by the chef.",
-            "The meal were being prepared by the chef."
-          ],
-          "answerIndex": 2,
-          "explanation": "Past Continuous: 'was preparing' → 'was being prepared'. Singular 'meal' takes 'was'. Option c is correct."
-        },
-        {
-          "question": "Which sentence contains a voice conversion error?",
-          "options": [
-            "The books were returned by the students.",
-            "The bridge was being built by the engineers.",
-            "The report had been submitted by the officer.",
-            "The cake were baked by my mother."
-          ],
-          "answerIndex": 3,
-          "explanation": "'Cake' is singular; 'was' must be used, not 'were'. All other options have correct number agreement."
-        }
-      ],
-      "summary": "Past tense passive constructions use: Simple Past → was/were + V3; Past Continuous → was/were + being + V3; Past Perfect → had + been + V3. Past Perfect Continuous has no standard passive form. Use 'was' for singular and 'were' for plural new subjects in Simple Past and Past Continuous passives."
-    }
+    ]
+  },
+  {
+    "id": "active-passive-voice/past/simple-past",
+    "parentId": "active-passive-voice/past",
+    "title": "Simple Past",
+    "subtitle": null,
+    "order": 1,
+    "isLeaf": true
+  },
+  {
+    "id": "active-passive-voice/past/past-continuous",
+    "parentId": "active-passive-voice/past",
+    "title": "Past Continuous",
+    "subtitle": null,
+    "order": 2,
+    "isLeaf": true
+  },
+  {
+    "id": "active-passive-voice/past/past-perfect",
+    "parentId": "active-passive-voice/past",
+    "title": "Past Perfect",
+    "subtitle": null,
+    "order": 3,
+    "isLeaf": true
   },
   {
     "id": "active-passive-voice/present",
     "parentId": "active-passive-voice",
-    "title": "Present Tenses",
+    "title": "Present Tense",
     "subtitle": null,
     "order": 3,
-    "isLeaf": true,
+    "isLeaf": false,
     "keywords": [
       "simple present passive",
       "present continuous passive",
@@ -12148,154 +11264,31 @@
       "been",
       "present tense voice",
       "v3"
-    ],
-    "content": {
-      "introduction": "The present tenses in English include Simple Present, Present Continuous, and Present Perfect, each with its own passive structure. Present Perfect Continuous is rarely used in passive voice and is generally avoided in formal writing. Knowing the exact passive formula for each present tense is a high-frequency exam requirement.",
-      "urduExplanation": "Present Tenses میں Passive Voice بنانے کے تین اہم طریقے ہیں۔ Simple Present میں 'am/is/are + V3' استعمال ہوتا ہے، جیسے 'She writes letters' → 'Letters are written by her'۔ Present Continuous میں 'am/is/are + being + V3' آتا ہے، جیسے 'He is reading the book' → 'The book is being read by him'۔ Present Perfect میں 'has/have + been + V3' لگتا ہے، جیسے 'They have completed the work' → 'The work has been completed by them'۔ Present Perfect Continuous کا Passive Voice عام طور پر نہیں بنایا جاتا کیونکہ یہ بہت بوجھل ہو جاتا ہے۔",
-      "englishExplanation": "There are three present tenses that regularly form passive voice constructions. Simple Present Passive uses 'am/is/are + V3'. The choice of am/is/are depends on the new subject: singular third-person takes 'is', plural takes 'are', and first-person singular takes 'am'. Formula: Subject + am/is/are + V3 + (by + agent). Present Continuous Passive uses 'am/is/are + being + V3'. The 'being' marker signals the continuous aspect in passive. Formula: Subject + am/is/are + being + V3 + (by + agent). Present Perfect Passive uses 'has/have + been + V3'. 'has' is used with singular third-person subjects; 'have' with plural or first/second-person subjects. Formula: Subject + has/have + been + V3 + (by + agent). Present Perfect Continuous passive ('has/have been being + V3') is grammatically possible but extremely rare and avoided in standard usage.",
-      "types": [
-        {
-          "name": "Simple Present Passive",
-          "description": "Active: Subject + V1(s/es) + Object → Passive: Object + am/is/are + V3 + by + agent. Example: 'The teacher explains the lesson.' → 'The lesson is explained by the teacher.'"
-        },
-        {
-          "name": "Present Continuous Passive",
-          "description": "Active: Subject + am/is/are + V1-ing + Object → Passive: Object + am/is/are + being + V3 + by + agent. Example: 'She is writing a report.' → 'A report is being written by her.'"
-        },
-        {
-          "name": "Present Perfect Passive",
-          "description": "Active: Subject + has/have + V3 + Object → Passive: Object + has/have + been + V3 + by + agent. Example: 'He has finished the assignment.' → 'The assignment has been finished by him.'"
-        },
-        {
-          "name": "Present Perfect Continuous (Passive – Not Standard)",
-          "description": "Present Perfect Continuous passive is not used in standard English. If you see 'She has been writing the report for two hours', it remains in active or is rephrased."
-        }
-      ],
-      "rules": [
-        "Simple Present passive: am/is/are + V3. Match the auxiliary to the new subject's number and person.",
-        "Present Continuous passive: am/is/are + being + V3. Never omit 'being' in this form.",
-        "Present Perfect passive: has/have + been + V3. Use 'has' for singular third-person new subjects; 'have' otherwise.",
-        "Present Perfect Continuous does NOT have a standard passive form; avoid it in exams.",
-        "The past participle (V3) must be correct — irregular verbs must be memorised (write→written, take→taken, do→done).",
-        "Number agreement: singular new subject → is/was/has; plural new subject → are/were/have.",
-        "Negative: insert 'not' after the first auxiliary (is not written, are not being reviewed, has not been completed)."
-      ],
-      "examples": [
-        {
-          "text": "Active: The government announces new policies every year. / Passive: New policies are announced by the government every year.",
-          "note": "Simple Present: 'announces' → 'are announced' (plural subject 'new policies')."
-        },
-        {
-          "text": "Active: She is teaching the students. / Passive: The students are being taught by her.",
-          "note": "Present Continuous: 'is teaching' → 'are being taught' (plural 'students'). 'She' → 'her'."
-        },
-        {
-          "text": "Active: He has written three books. / Passive: Three books have been written by him.",
-          "note": "Present Perfect: 'has written' → 'have been written' (plural subject 'three books')."
-        },
-        {
-          "text": "Active: I am not reading this novel. / Passive: This novel is not being read by me.",
-          "note": "Negative Present Continuous: 'am not reading' → 'is not being read'. 'I' → 'me'."
-        },
-        {
-          "text": "Active: The committee has not yet approved the budget. / Passive: The budget has not yet been approved by the committee.",
-          "note": "Present Perfect negative: 'has not yet approved' → 'has not yet been approved'. Adverb 'yet' stays."
-        }
-      ],
-      "commonMistakes": [
-        {
-          "wrong": "The lesson are explained by the teacher.",
-          "right": "The lesson is explained by the teacher.",
-          "note": "'Lesson' is singular; must use 'is', not 'are'."
-        },
-        {
-          "wrong": "The work is been completed by them.",
-          "right": "The work has been completed by them.",
-          "note": "Present Perfect passive requires 'has/have been + V3', not 'is been + V3'."
-        },
-        {
-          "wrong": "The report is being wrote by her.",
-          "right": "The report is being written by her.",
-          "note": "'wrote' is simple past, not V3. The correct past participle of 'write' is 'written'."
-        },
-        {
-          "wrong": "He has been being taught by her for years.",
-          "right": "He has been taught by her for years. (Rephrase to Present Perfect passive.)",
-          "note": "Present Perfect Continuous passive is not standard. Use Present Perfect passive instead."
-        }
-      ],
-      "practice": [
-        {
-          "question": "Change to passive: 'The students are solving the problems.'",
-          "options": [
-            "The problems are being solved by the students.",
-            "The problems were being solved by the students.",
-            "The problems are solved by the students.",
-            "The problems have been solved by the students."
-          ],
-          "answerIndex": 0,
-          "explanation": "Present Continuous passive: 'are solving' → 'are being solved'. The object 'problems' (plural) becomes the subject, taking 'are'. Option a is correct."
-        },
-        {
-          "question": "Change to passive: 'She has not completed her homework.'",
-          "options": [
-            "Her homework is not completed by her.",
-            "Her homework has not been completed by her.",
-            "Her homework was not completed by her.",
-            "Her homework had not been completed by her."
-          ],
-          "answerIndex": 1,
-          "explanation": "Present Perfect negative: 'has not completed' → 'has not been completed'. Tense stays Present Perfect. Option b is correct."
-        },
-        {
-          "question": "Active: 'People speak French in many countries.' Which passive is correct?",
-          "options": [
-            "French is spoken in many countries.",
-            "French is speaking in many countries.",
-            "French was spoken in many countries.",
-            "French has been speaking in many countries."
-          ],
-          "answerIndex": 0,
-          "explanation": "Simple Present passive: 'speak' → 'is spoken'. The agent 'people' is vague and omitted. Option a is correct."
-        }
-      ],
-      "quiz": [
-        {
-          "question": "Which is the correct Present Perfect passive of: 'They have destroyed many forests'?",
-          "options": [
-            "Many forests have destroyed by them.",
-            "Many forests are destroyed by them.",
-            "Many forests have been destroyed by them.",
-            "Many forests had been destroyed by them."
-          ],
-          "answerIndex": 2,
-          "explanation": "Present Perfect passive = have/has + been + V3. 'have destroyed' → 'have been destroyed'. Plural subject 'forests' takes 'have'. Option c is correct."
-        },
-        {
-          "question": "Identify the tense of this passive sentence: 'The application is being processed.'",
-          "options": [
-            "Simple Present Passive",
-            "Present Continuous Passive",
-            "Present Perfect Passive",
-            "Simple Past Passive"
-          ],
-          "answerIndex": 1,
-          "explanation": "The structure 'is being + V3' is the marker of Present Continuous Passive."
-        },
-        {
-          "question": "Active: 'I am reading a novel.' Correct passive is ___",
-          "options": [
-            "A novel was read by me.",
-            "A novel is being read by me.",
-            "A novel has been read by me.",
-            "A novel is read by me."
-          ],
-          "answerIndex": 1,
-          "explanation": "Present Continuous: 'am reading' → 'is being read'. 'I' → 'me'. Singular 'novel' takes 'is'. Option b is correct."
-        }
-      ],
-      "summary": "Present tenses form passive using: Simple Present → am/is/are + V3; Present Continuous → am/is/are + being + V3; Present Perfect → has/have + been + V3. Present Perfect Continuous has no standard passive form and should be avoided. Always match the auxiliary number to the new subject and use the correct past participle (V3)."
-    }
+    ]
+  },
+  {
+    "id": "active-passive-voice/present/simple-present",
+    "parentId": "active-passive-voice/present",
+    "title": "Simple Present",
+    "subtitle": null,
+    "order": 1,
+    "isLeaf": true
+  },
+  {
+    "id": "active-passive-voice/present/present-continuous",
+    "parentId": "active-passive-voice/present",
+    "title": "Present Continuous",
+    "subtitle": null,
+    "order": 2,
+    "isLeaf": true
+  },
+  {
+    "id": "active-passive-voice/present/present-perfect",
+    "parentId": "active-passive-voice/present",
+    "title": "Present Perfect",
+    "subtitle": null,
+    "order": 3,
+    "isLeaf": true
   },
   {
     "id": "active-passive-voice/rules",
@@ -12313,163 +11306,7 @@
       "transitive",
       "be verb",
       "voice rules"
-    ],
-    "content": {
-      "introduction": "Converting a sentence from active to passive voice requires following a precise set of rules. These rules cover how to reposition the object, how to change the verb form, how to introduce the agent, and how to adjust pronoun cases correctly. Mastering these rules is essential for competitive exams.",
-      "urduExplanation": "Active سے Passive Voice بنانے کے لیے چند اہم اصول یاد رکھنے ضروری ہیں۔ پہلا اصول: Active کا Object، Passive کا Subject بنتا ہے۔ دوسرا اصول: Verb کی شکل 'be (اسی tense میں) + V3 (past participle)' میں بدل جاتی ہے۔ تیسرا اصول: Active کا Subject، 'by' لگا کر آخر میں آتا ہے، اور اگر وہ Pronoun ہو تو object case استعمال ہوتا ہے (I→me, he→him, she→her, they→them, we→us)۔ چوتھا اصول: صرف Transitive Verbs (وہ افعال جن کا Object ہو) ہی Passive میں بدل سکتے ہیں۔",
-      "englishExplanation": "The general rules of active-to-passive conversion apply across all tenses and sentence types. Rule 1 – Object becomes Subject: The direct object of the active verb moves to the subject position of the passive clause. Rule 2 – Verb changes to 'be + V3': The main verb is replaced by the appropriate form of 'be' (matching the original tense) followed by the past participle. Rule 3 – Subject becomes 'by + agent': The original subject is placed after the verb phrase, preceded by 'by'. If it is a pronoun, it must change to the object case. Rule 4 – Pronoun case changes: I→me, we→us, he→him, she→her, they→them, you and it remain unchanged. Rule 5 – Omit the agent when it is 'someone', 'people', 'they' (vague) or when contextually obvious. Rule 6 – Only transitive verbs can be passivised; intransitive verbs ('go', 'sleep', 'arrive') cannot. Rule 7 – Number agreement: The new subject (old object) determines the number of the 'be' auxiliary.",
-      "types": [
-        {
-          "name": "Object → Subject",
-          "description": "The direct object of the active sentence is repositioned as the subject of the passive sentence. Example: 'Ali wrote [a letter]' → '[A letter] was written by Ali.'"
-        },
-        {
-          "name": "Verb → be + V3 (same tense)",
-          "description": "The active main verb is replaced with the appropriate tense of 'be' plus the past participle. Example: 'writes'(Simple Present) → 'is written'; 'wrote'(Simple Past) → 'was written'."
-        },
-        {
-          "name": "Subject → by + agent (object pronoun)",
-          "description": "The original subject becomes the agent phrase. Pronouns change case: I→me, he→him, she→her, we→us, they→them. Example: 'She ate it' → 'It was eaten by her.'"
-        },
-        {
-          "name": "Pronoun Case Conversion Table",
-          "description": "I → me | We → us | He → him | She → her | They → them | You → you | It → it"
-        },
-        {
-          "name": "Omitting the Agent",
-          "description": "When the agent is vague (someone, people, they) or unknown, the 'by + agent' phrase is dropped. Example: 'Someone stole my bag.' → 'My bag was stolen.'"
-        },
-        {
-          "name": "Number Agreement of 'be'",
-          "description": "The auxiliary 'be' must agree in number with the new subject (original object). 'The letters were sent.' (plural) vs. 'The letter was sent.' (singular)"
-        }
-      ],
-      "rules": [
-        "Object of active sentence → Subject of passive sentence.",
-        "Active verb → appropriate tense of 'be' + past participle (V3).",
-        "Subject of active sentence → 'by' + agent (in object pronoun form if a pronoun).",
-        "Pronoun changes: I→me, we→us, he→him, she→her, they→them; you, it remain same.",
-        "If agent is vague (someone/people/they/everyone) or unknown, omit 'by + agent'.",
-        "Only transitive verbs (those taking a direct object) can be converted to passive voice.",
-        "The auxiliary 'be' must agree in number and person with the new passive subject.",
-        "Negative sentences: place 'not' after the first auxiliary. 'He did not write it.' → 'It was not written by him.'"
-      ],
-      "examples": [
-        {
-          "text": "Active: I wrote this letter. / Passive: This letter was written by me.",
-          "note": "'I' (subject pronoun) changes to 'me' (object pronoun) after 'by'."
-        },
-        {
-          "text": "Active: They built the bridge. / Passive: The bridge was built (by them).",
-          "note": "'They' is a general/vague agent; 'by them' may be omitted. 'built' is V3 of 'build'."
-        },
-        {
-          "text": "Active: He does not trust her. / Passive: She is not trusted by him.",
-          "note": "Negative retained; 'does not trust' → 'is not trusted'. 'her' (object) becomes 'she' (new subject)."
-        },
-        {
-          "text": "Active: The teacher praises the students. / Passive: The students are praised by the teacher.",
-          "note": "Plural object 'students' → plural subject; 'are' used instead of 'is'."
-        },
-        {
-          "text": "Active: We have completed the project. / Passive: The project has been completed by us.",
-          "note": "Present Perfect; 'We' → 'us'; 'have completed' → 'has been completed' (new subject is singular)."
-        }
-      ],
-      "commonMistakes": [
-        {
-          "wrong": "The letter was wrote by I.",
-          "right": "The letter was written by me.",
-          "note": "Two errors: V3 must be used ('written' not 'wrote'); subject pronoun 'I' → object pronoun 'me' after 'by'."
-        },
-        {
-          "wrong": "The books is given to him.",
-          "right": "The books are given to him.",
-          "note": "'Books' is plural, so the auxiliary must be 'are', not 'is'."
-        },
-        {
-          "wrong": "She is slept by him.",
-          "right": "No passive form — 'sleep' is intransitive.",
-          "note": "Intransitive verbs cannot be made passive. 'Sleep' takes no object."
-        },
-        {
-          "wrong": "The cake was ate by the children.",
-          "right": "The cake was eaten by the children.",
-          "note": "'ate' is simple past tense, not the past participle. The correct V3 is 'eaten'."
-        }
-      ],
-      "practice": [
-        {
-          "question": "Change to passive: 'She teaches us English.'",
-          "options": [
-            "English is taught to us by her.",
-            "English was taught to us by her.",
-            "English is taught to we by she.",
-            "English is teaching by her to us."
-          ],
-          "answerIndex": 0,
-          "explanation": "Simple Present: 'teaches' → 'is taught'. 'us' stays 'us' (object pronoun, unchanged). 'She' → 'her' after 'by'. Correct: 'English is taught to us by her.'"
-        },
-        {
-          "question": "Which pronoun correctly completes the passive: 'The report was submitted by ___.'?",
-          "options": [
-            "he",
-            "they",
-            "him",
-            "his"
-          ],
-          "answerIndex": 2,
-          "explanation": "After 'by', use object pronouns. 'he' is a subject pronoun; 'him' is the correct object pronoun form."
-        },
-        {
-          "question": "Active: 'They did not invite her to the party.' Passive: ___",
-          "options": [
-            "She is not invited to the party by them.",
-            "She was not invited to the party by they.",
-            "Her was not invited to the party by them.",
-            "She was not invited to the party by them."
-          ],
-          "answerIndex": 3,
-          "explanation": "Simple Present passive: 'speak' → 'is spoken'. The agent 'people' is vague and omitted. Option d is correct."
-        }
-      ],
-      "quiz": [
-        {
-          "question": "Active: 'He admires her courage.' Which passive is correct?",
-          "options": [
-            "Her courage is admired by him.",
-            "Her courage was admired by him.",
-            "His courage is admired by her.",
-            "Her courage is admired by he."
-          ],
-          "answerIndex": 0,
-          "explanation": "Simple Present 'admires' → 'is admired'. The object 'her courage' becomes subject. 'He' → 'him' after 'by'. Option a is correct."
-        },
-        {
-          "question": "Which of the following CANNOT be converted to passive voice?",
-          "options": [
-            "She reads books.",
-            "They built the dam.",
-            "He arrived late.",
-            "The chef cooks the meal."
-          ],
-          "answerIndex": 2,
-          "explanation": "'Arrive' is an intransitive verb — it has no direct object. Only transitive verbs can form passive constructions."
-        },
-        {
-          "question": "Active: 'We are painting the wall.' Passive: ___",
-          "options": [
-            "The wall is being painted by us.",
-            "The wall was being painted by us.",
-            "The wall is painted by us.",
-            "The wall has been painted by us."
-          ],
-          "answerIndex": 0,
-          "explanation": "Present Continuous passive: 'am/is/are being + V3'. 'are painting' → 'is being painted'. 'We' → 'us'. Option a is correct."
-        }
-      ],
-      "summary": "The core rules of active-to-passive conversion are: object becomes subject, verb changes to 'be + V3' in the same tense, and the original subject becomes 'by + agent' (using object pronoun form). The agent is omitted when vague or unknown, and only transitive verbs can be passivised. Number agreement between the new subject and the 'be' auxiliary is mandatory."
-    }
+    ]
   },
   {
     "id": "direct-indirect-speech/commands",
