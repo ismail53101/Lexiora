@@ -319,7 +319,9 @@ class _LessonView extends StatelessWidget {
             icon: Icons.account_tree_outlined,
             title: lesson.id == 'pos/adjective'
                 ? 'Kinds of Adjective'
-                : 'Types of Noun',
+                : lesson.id.startsWith('pos/')
+                    ? 'Types of Noun'
+                    : 'Key Concepts',
             child: Wrap(
               spacing: 8,
               runSpacing: 8,
