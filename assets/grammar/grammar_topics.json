@@ -10798,318 +10798,6 @@
     "isLeaf": false
   },
   {
-    "id": "active-passive-voice/introduction",
-    "parentId": "active-passive-voice",
-    "title": "Introduction to Voice",
-    "subtitle": null,
-    "order": 1,
-    "isLeaf": true,
-    "keywords": [
-      "active voice",
-      "passive voice",
-      "voice",
-      "grammar"
-    ],
-    "content": {
-      "introduction": "Voice tells us whether the subject does an action or receives an action."
-    }
-  },
-  {
-    "id": "active-passive-voice/active",
-    "parentId": "active-passive-voice",
-    "title": "1. Active Voice",
-    "subtitle": null,
-    "order": 2,
-    "isLeaf": true,
-    "keywords": [
-      "active voice",
-      "passive voice",
-      "voice",
-      "grammar"
-    ],
-    "content": {
-      "introduction": "In active voice, the subject performs the action.\n\nThe sentence focuses on who does something.",
-      "urduExplanation": "Active voice میں subject خود کام کرتا ہے۔\n\nاس میں توجہ اس شخص یا چیز پر ہوتی ہے جو کام کر رہی ہو۔",
-      "types": [
-        {
-          "name": "Example",
-          "description": "Ali writes a letter.",
-          "urduExplanation": "علی ایک خط لکھتا ہے۔",
-          "tableGroups": [
-            {
-              "title": "Here",
-              "columns": [
-                "Part",
-                "Explanation"
-              ],
-              "rows": [
-                [
-                  "Ali",
-                  "subject"
-                ],
-                [
-                  "writes",
-                  "action"
-                ],
-                [
-                  "a letter",
-                  "object"
-                ]
-              ]
-            }
-          ],
-          "rules": [
-            "Ali is doing the action, so the sentence is in active voice."
-          ],
-          "ruleExamples": [
-            "چونکہ علی خود خط لکھ رہا ہے، اس لیے یہ active voice ہے۔"
-          ]
-        }
-      ],
-      "examples": [
-        {
-          "text": "The teacher explains the lesson."
-        },
-        {
-          "text": "Sara cooks dinner."
-        },
-        {
-          "text": "The boy opened the door."
-        },
-        {
-          "text": "The students completed their homework."
-        }
-      ]
-    }
-  },
-  {
-    "id": "active-passive-voice/passive",
-    "parentId": "active-passive-voice",
-    "title": "2. Passive Voice",
-    "subtitle": null,
-    "order": 3,
-    "isLeaf": true,
-    "keywords": [
-      "active voice",
-      "passive voice",
-      "voice",
-      "grammar"
-    ],
-    "content": {
-      "introduction": "In passive voice, the subject receives the action.\n\nThe sentence focuses on what happens to someone or something, rather than who performs the action.",
-      "urduExplanation": "Passive voice میں subject خود کام نہیں کرتا بلکہ اس پر کام کیا جاتا ہے۔\n\nاس میں توجہ اس شخص یا چیز پر ہوتی ہے جس کے ساتھ کوئی کام کیا جاتا ہے، نہ کہ کام کرنے والے پر۔",
-      "types": [
-        {
-          "name": "Example",
-          "description": "A letter is written by Ali.",
-          "urduExplanation": "ایک خط علی کے ذریعے لکھا جاتا ہے۔",
-          "tableGroups": [
-            {
-              "title": "Here",
-              "columns": [
-                "Part",
-                "Explanation"
-              ],
-              "rows": [
-                [
-                  "A letter",
-                  "subject"
-                ],
-                [
-                  "is written",
-                  "action received"
-                ],
-                [
-                  "by Ali",
-                  "person who performs the action"
-                ]
-              ]
-            }
-          ],
-          "rules": [
-            "The letter does not write anything. It receives the action of being written, so the sentence is in passive voice."
-          ],
-          "ruleExamples": [
-            "خط خود نہیں لکھتا بلکہ خط لکھا جاتا ہے، اس لیے یہ passive voice ہے۔"
-          ]
-        }
-      ],
-      "examples": [
-        {
-          "text": "The lesson is explained by the teacher."
-        },
-        {
-          "text": "Dinner is cooked by Sara."
-        },
-        {
-          "text": "The door was opened by the boy."
-        },
-        {
-          "text": "The homework was completed by the students."
-        }
-      ]
-    }
-  },
-  {
-    "id": "active-passive-voice/easy-way-to-remember",
-    "parentId": "active-passive-voice",
-    "title": "3. Easy Way to Remember",
-    "subtitle": null,
-    "order": 4,
-    "isLeaf": true,
-    "keywords": [
-      "active voice",
-      "passive voice",
-      "voice",
-      "grammar"
-    ],
-    "content": {
-      "introduction": "In active voice, we usually focus on the doer. In passive voice, we usually focus on the action or receiver.",
-      "tableTitle": "Voice — Explanation — Example",
-      "tableColumns": [
-        "Voice",
-        "Explanation",
-        "Example"
-      ],
-      "tableRows": [
-        [
-          "Active Voice",
-          "The subject does the action.",
-          "Ali writes a letter."
-        ],
-        [
-          "Passive Voice",
-          "The subject receives the action.",
-          "A letter is written by Ali."
-        ]
-      ]
-    }
-  },
-  {
-    "id": "active-passive-voice/general-rules",
-    "parentId": "active-passive-voice",
-    "title": "General Rules of Conversion",
-    "subtitle": null,
-    "order": 5,
-    "isLeaf": true,
-    "keywords": [
-      "active voice",
-      "passive voice",
-      "voice",
-      "grammar"
-    ],
-    "content": {
-      "introduction": "General Rules of Conversion",
-      "rules": [
-        "Object of the Active Voice becomes the Subject of the Passive Voice.",
-        "Active: Ali writes a letter.",
-        "Passive: A letter is written by Ali.",
-        "Subject of the Active Voice becomes the Object after “by.”",
-        "Active: Sara helps me.",
-        "Passive: I am helped by Sara.",
-        "Use the third form of the verb (past participle).",
-        "Change the helping verb according to the tense.",
-        "Keep the tense of the sentence unchanged.",
-        "Present remains present.",
-        "Past remains past.",
-        "Future remains future.",
-        "Use “by” before the doer when necessary.",
-        "Active: The teacher teaches English.",
-        "Passive: English is taught by the teacher.",
-        "Only transitive verbs can normally be changed into the Passive Voice. Transitive verbs have an object.",
-        "He plays cricket. → Passive is possible.",
-        "He sleeps. → Passive is not normally possible."
-      ],
-      "tableTitle": "Helping Verb According to the Tense",
-      "tableColumns": [
-        "Tense/Form",
-        "Helping Verb"
-      ],
-      "tableRows": [
-        [
-          "Present Simple",
-          "is/am/are"
-        ],
-        [
-          "Past Simple",
-          "was/were"
-        ],
-        [
-          "Perfect Tenses",
-          "has/have been"
-        ],
-        [
-          "Future",
-          "will be"
-        ],
-        [
-          "Modal Verbs",
-          "can be, may be, must be, etc."
-        ]
-      ],
-      "types": [
-        {
-          "name": "Verb Forms (V1 → V3)",
-          "description": "Use the third form of the verb (past participle).",
-          "tableGroups": [
-            {
-              "title": "V1 → V3",
-              "columns": [
-                "V1",
-                "V3"
-              ],
-              "rows": [
-                [
-                  "write",
-                  "written"
-                ],
-                [
-                  "eat",
-                  "eaten"
-                ],
-                [
-                  "make",
-                  "made"
-                ]
-              ]
-            }
-          ]
-        }
-      ]
-    }
-  },
-  {
-    "id": "active-passive-voice/general-formula",
-    "parentId": "active-passive-voice",
-    "title": "5. General Formula",
-    "subtitle": null,
-    "order": 6,
-    "isLeaf": true,
-    "keywords": [
-      "active voice",
-      "passive voice",
-      "voice",
-      "grammar"
-    ],
-    "content": {
-      "tableTitle": "Formula",
-      "tableColumns": [
-        "Voice",
-        "Formula"
-      ],
-      "tableRows": [
-        [
-          "Active Voice",
-          "Subject + Verb + Object"
-        ],
-        [
-          "Passive Voice",
-          "Object + Helping Verb + 3rd Form of Verb + by + Subject"
-        ]
-      ]
-    }
-  },
-  {
     "id": "direct-indirect-speech",
     "parentId": null,
     "title": "Direct & Indirect Speech",
@@ -11426,7 +11114,7 @@
     "parentId": "active-passive-voice",
     "title": "Future Tense",
     "subtitle": null,
-    "order": 10,
+    "order": 5,
     "isLeaf": false,
     "keywords": [
       "simple future passive",
@@ -11460,7 +11148,7 @@
     "parentId": "active-passive-voice",
     "title": "Imperative Sentences",
     "subtitle": null,
-    "order": 12,
+    "order": 7,
     "isLeaf": false,
     "keywords": [
       "imperative passive",
@@ -11478,15 +11166,142 @@
     "parentId": "active-passive-voice",
     "title": "Practice Quiz",
     "subtitle": null,
-    "order": 13,
+    "order": 8,
     "isLeaf": true
+  },
+  {
+    "id": "active-passive-voice/introduction",
+    "parentId": "active-passive-voice",
+    "title": "Introduction to Voice",
+    "subtitle": null,
+    "order": 1,
+    "isLeaf": true,
+    "keywords": [
+      "active voice",
+      "passive voice",
+      "voice",
+      "subject",
+      "object",
+      "verb",
+      "grammar",
+      "introduction"
+    ],
+    "content": {
+      "introduction": "Voice tells us whether the subject does an action or receives an action.",
+      "types": [
+        {
+          "name": "Active Voice",
+          "description": "In active voice, the subject performs the action.\nThe sentence focuses on who does something.",
+          "urduExplanation": "Active voice میں subject خود کام کرتا ہے۔\nاس میں توجہ اس شخص یا چیز پر ہوتی ہے جو کام کر رہی ہو۔",
+          "tableGroups": [
+            {
+              "title": "Example Breakdown",
+              "columns": [
+                "Part",
+                "Explanation"
+              ],
+              "rows": [
+                [
+                  "Ali writes a letter.",
+                  "علی ایک خط لکھتا ہے۔"
+                ],
+                [
+                  "Ali",
+                  "subject"
+                ],
+                [
+                  "writes",
+                  "action"
+                ],
+                [
+                  "a letter",
+                  "object"
+                ],
+                [
+                  "Here",
+                  "Ali is doing the action, so the sentence is in active voice. چونکہ علی خود خط لکھ رہا ہے، اس لیے یہ active voice ہے۔"
+                ]
+              ]
+            }
+          ],
+          "examples": [
+            {
+              "text": "The teacher explains the lesson."
+            },
+            {
+              "text": "Sara cooks dinner."
+            },
+            {
+              "text": "The boy opened the door."
+            },
+            {
+              "text": "The students completed their homework."
+            }
+          ]
+        },
+        {
+          "name": "Passive Voice",
+          "description": "In passive voice, the subject receives the action.\nThe sentence focuses on what happens to someone or something, rather than who performs the action.",
+          "urduExplanation": "Passive voice میں subject خود کام نہیں کرتا بلکہ اس پر کام کیا جاتا ہے۔\nاس میں توجہ اس شخص یا چیز پر ہوتی ہے جس کے ساتھ کوئی کام کیا جاتا ہے، نہ کہ کام کرنے والے پر۔",
+          "tableGroups": [
+            {
+              "title": "Example Breakdown",
+              "columns": [
+                "Part",
+                "Explanation"
+              ],
+              "rows": [
+                [
+                  "A letter is written by Ali.",
+                  "ایک خط علی کے ذریعے لکھا جاتا ہے۔"
+                ],
+                [
+                  "A letter",
+                  "subject"
+                ],
+                [
+                  "is written",
+                  "action received"
+                ],
+                [
+                  "by Ali",
+                  "person who performs the action"
+                ],
+                [
+                  "Here",
+                  "The letter does not write anything. It receives the action of being written, so the sentence is in passive voice. خط خود نہیں لکھتا بلکہ خط لکھا جاتا ہے، اس لیے یہ passive voice ہے۔"
+                ]
+              ]
+            }
+          ],
+          "examples": [
+            {
+              "text": "The lesson is explained by the teacher."
+            },
+            {
+              "text": "Dinner is cooked by Sara."
+            },
+            {
+              "text": "The door was opened by the boy."
+            },
+            {
+              "text": "The homework was completed by the students."
+            }
+          ]
+        },
+        {
+          "name": "Easy Way to Remember",
+          "description": "Active Voice: The subject does the action. Ali writes a letter.\n\nPassive Voice: The subject receives the action. A letter is written by Ali.\n\nIn active voice, we usually focus on the doer. In passive voice, we usually focus on the action or receiver."
+        }
+      ]
+    }
   },
   {
     "id": "active-passive-voice/modals",
     "parentId": "active-passive-voice",
     "title": "Modal Verbs",
     "subtitle": null,
-    "order": 11,
+    "order": 6,
     "isLeaf": false,
     "keywords": [
       "modal passive",
@@ -11505,7 +11320,7 @@
     "parentId": "active-passive-voice",
     "title": "Past Tense",
     "subtitle": null,
-    "order": 9,
+    "order": 4,
     "isLeaf": false,
     "keywords": [
       "simple past passive",
@@ -11547,7 +11362,7 @@
     "parentId": "active-passive-voice",
     "title": "Present Tense",
     "subtitle": null,
-    "order": 8,
+    "order": 3,
     "isLeaf": false,
     "keywords": [
       "simple present passive",
@@ -11563,14 +11378,14 @@
   {
     "id": "active-passive-voice/present/simple-present",
     "parentId": "active-passive-voice/present",
-    "title": "Simple Present — Active Voice to Passive Voice",
+    "title": "Simple Present",
     "subtitle": null,
     "order": 1,
     "isLeaf": true,
     "content": {
-      "introduction": "Present Simple:",
+      "introduction": "Present Simple",
       "structure": [
-        "Structure:"
+        "Structure"
       ],
       "tableTitle": "Simple Sentences",
       "tableColumns": [
@@ -11592,7 +11407,7 @@
       ],
       "types": [
         {
-          "name": "2. Negative Sentences",
+          "name": "Negative Sentences",
           "description": "",
           "tableGroups": [
             {
@@ -11618,7 +11433,7 @@
           ]
         },
         {
-          "name": "3. Interrogative Sentences",
+          "name": "Interrogative Sentences",
           "description": "",
           "tableGroups": [
             {
@@ -11644,7 +11459,7 @@
           ]
         },
         {
-          "name": "2. Main Rule",
+          "name": "Main Rule",
           "description": "In Present Simple Passive Voice:",
           "rules": [
             "Remove do/does, if used.",
@@ -11654,7 +11469,7 @@
           ]
         },
         {
-          "name": "3. Examples",
+          "name": "Examples",
           "description": "",
           "tableGroups": [
             {
@@ -11704,26 +11519,6 @@
             }
           ]
         }
-      ],
-      "examples": [
-        {
-          "text": "They play cricket."
-        },
-        {
-          "text": "Cricket is played by them."
-        },
-        {
-          "text": "He does not write a letter."
-        },
-        {
-          "text": "A letter is not written by him."
-        },
-        {
-          "text": "Does he write a letter?"
-        },
-        {
-          "text": "Is a letter written by him?"
-        }
       ]
     }
   },
@@ -11742,6 +11537,123 @@
     "subtitle": null,
     "order": 3,
     "isLeaf": true
+  },
+  {
+    "id": "active-passive-voice/rules",
+    "parentId": "active-passive-voice",
+    "title": "General Rules of Conversion",
+    "subtitle": null,
+    "order": 2,
+    "isLeaf": true,
+    "keywords": [
+      "conversion rules",
+      "object to subject",
+      "by agent",
+      "pronoun case",
+      "past participle",
+      "transitive",
+      "be verb",
+      "voice rules"
+    ],
+    "content": {
+      "introduction": "General Rules of Conversion",
+      "rules": [
+        "1. Object of the Active Voice becomes the Subject of the Passive Voice.",
+        "Active: Ali writes a letter.",
+        "Passive: A letter is written by Ali.",
+        "2. Subject of the Active Voice becomes the Object after “by.”",
+        "Active: Sara helps me.",
+        "Passive: I am helped by Sara.",
+        "3. Use the third form of the verb (past participle).",
+        "write → written",
+        "eat → eaten",
+        "make → made",
+        "4. Change the helping verb according to the tense.",
+        "5. Keep the tense of the sentence unchanged.",
+        "Present remains present.",
+        "Past remains past.",
+        "Future remains future.",
+        "6. Use “by” before the doer when necessary.",
+        "Active: The teacher teaches English.",
+        "Passive: English is taught by the teacher.",
+        "7. Only transitive verbs can normally be changed into the Passive Voice. Transitive verbs have an object.",
+        "He plays cricket. → Passive is possible.",
+        "He sleeps. → Passive is not normally possible."
+      ],
+      "tableTitle": "Helping Verb According to the Tense",
+      "tableColumns": [
+        "Tense/Form",
+        "Helping Verb"
+      ],
+      "tableRows": [
+        [
+          "Present",
+          "is/am/are"
+        ],
+        [
+          "Past",
+          "was/were"
+        ],
+        [
+          "Perfect",
+          "has/have been"
+        ],
+        [
+          "Future",
+          "will be"
+        ],
+        [
+          "Modal Verbs",
+          "can be, may be, must be, etc."
+        ]
+      ],
+      "types": [
+        {
+          "name": "General Formula",
+          "description": "",
+          "tableGroups": [
+            {
+              "title": "Verb Forms",
+              "columns": [
+                "V1",
+                "V3"
+              ],
+              "rows": [
+                [
+                  "write",
+                  "written"
+                ],
+                [
+                  "eat",
+                  "eaten"
+                ],
+                [
+                  "make",
+                  "made"
+                ]
+              ]
+            },
+            {
+              "title": "Formula",
+              "columns": [
+                "Voice",
+                "Formula"
+              ],
+              "rows": [
+                [
+                  "Active Voice",
+                  "Subject + Verb + Object"
+                ],
+                [
+                  "Passive Voice",
+                  "Object + Helping Verb + 3rd Form of Verb + by + Subject"
+                ]
+              ]
+            }
+          ]
+        }
+      ]
+    }
   },
   {
     "id": "direct-indirect-speech/commands",
