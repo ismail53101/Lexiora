@@ -319,9 +319,7 @@ class _LessonView extends StatelessWidget {
             icon: Icons.account_tree_outlined,
             title: lesson.id == 'pos/adjective'
                 ? 'Kinds of Adjective'
-                : lesson.id.startsWith('pos/')
-                    ? 'Types of Noun'
-                    : 'Key Concepts',
+                : 'Types of Noun',
             child: Wrap(
               spacing: 8,
               runSpacing: 8,
@@ -810,7 +808,7 @@ class GrammarTypeContent extends StatelessWidget {
           ] else
             for (final GrammarTableGroup group in type.tableGroups) ...<Widget>[
               _TypeSubheading(title: group.title, icon: Icons.table_chart_outlined),
-              _GrammarTable(columns: group.columns, rows: group.rows),
+              _CompactTypeTable(columns: group.columns, rows: group.rows),
             ],
           if (type.rules.isNotEmpty) ...<Widget>[
             const _TypeSubheading(title: 'Rules', icon: Icons.rule),
@@ -819,6 +817,7 @@ class GrammarTypeContent extends StatelessWidget {
                 rule: type.rules[i],
                 example: i < type.ruleExamples.length ? type.ruleExamples[i] : null,
                 verbFormRows: type.name == 'Regular Verb' || type.name == 'Irregular Verb',
+                colored: true,
               ),
           ],
           if (type.subjectVerbAgreement.isNotEmpty) ...<Widget>[
@@ -1064,6 +1063,73 @@ class _CompactTableSection extends StatelessWidget {
   }
 }
 
+class _CompactTypeTable extends StatelessWidget {
+  const _CompactTypeTable({required this.columns, required this.rows});
+
+  final List<String> columns;
+  final List<GrammarTableRow> rows;
+
+  @override
+  Widget build(BuildContext context) {
+    final ThemeData theme = Theme.of(context);
+    final ColorScheme scheme = theme.colorScheme;
+    return Container(
+      width: double.infinity,
+      margin: const EdgeInsets.only(bottom: 8),
+      padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+      decoration: BoxDecoration(
+        color: scheme.surfaceContainerHighest.withValues(alpha: 0.45),
+        borderRadius: BorderRadius.circular(10),
+      ),
+      child: Column(
+        children: <Widget>[
+          _row(
+            columns,
+            theme,
+            color: scheme.primary,
+            bold: true,
+          ),
+          for (final GrammarTableRow row in rows) ...<Widget>[
+            Divider(height: 10, color: scheme.outlineVariant.withValues(alpha: 0.65)),
+            _row(row.cells, theme),
+          ],
+        ],
+      ),
+    );
+  }
+
+  Widget _row(
+    List<String> cells,
+    ThemeData theme, {
+    Color? color,
+    bool bold = false,
+  }) {
+    final int count = cells.length.clamp(1, 3);
+    return Row(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: <Widget>[
+        for (int i = 0; i < count; i++)
+          Expanded(
+            flex: i == 0 ? 1 : 2,
+            child: Text.rich(
+              TextSpan(
+                style: (theme.textTheme.bodySmall ?? const TextStyle()).copyWith(
+                  color: color,
+                  fontWeight: bold ? FontWeight.w800 : null,
+                  height: 1.2,
+                ),
+                children: _boldMarkedSpans(
+                  i < cells.length ? cells[i] : '',
+                  color: color,
+                ),
+              ),
+            ),
+          ),
+      ],
+    );
+  }
+}
+
 class _GrammarTable extends StatelessWidget {
   const _GrammarTable({required this.columns, required this.rows, this.compact = false});
   final List<String> columns;
@@ -1196,6 +1262,42 @@ class _TypeSubheading extends StatelessWidget {
       ),
     );
   }
+}
+
+/// Colors a rule string the way the previous lesson-level Rules design did:
+/// sentences after an **Example:/Examples:** label render in the blue example
+/// color, sentences after **Explanation:/Here:** in the purple color, and the
+/// label itself in the given highlight color. Everything else keeps `color`.
+List<TextSpan> _coloredRuleSpans(String text) {
+  const Color exampleColor = Color(0xFF64B5F6);
+  const Color explanationColor = Color(0xFFCE93D8);
+  const Color labelColor = Color(0xFF42A5F5);
+  final RegExp marker = RegExp(r'(Example|Examples|Explanation|Here):');
+  final List<TextSpan> spans = <TextSpan>[];
+  int cursor = 0;
+  for (final RegExpMatch match in marker.allMatches(text)) {
+    if (match.start > cursor) {
+      spans.addAll(_boldMarkedSpans(text.substring(cursor, match.start)));
+    }
+    final bool explanation =
+        match.group(1)!.startsWith('Explanation') || match.group(1) == 'Here';
+    spans.add(TextSpan(
+      text: text.substring(match.start, match.end),
+      style: const TextStyle(color: labelColor, fontWeight: FontWeight.w700),
+    ));
+    cursor = match.end;
+    final RegExpMatch? next = marker.firstMatch(text.substring(cursor));
+    final int end = next == null ? text.length : cursor + next.start;
+    spans.addAll(_boldMarkedSpans(
+      text.substring(cursor, end),
+      color: explanation ? explanationColor : exampleColor,
+    ));
+    cursor = end;
+  }
+  if (cursor < text.length) {
+    spans.addAll(_boldMarkedSpans(text.substring(cursor)));
+  }
+  return spans.isEmpty ? <TextSpan>[TextSpan(text: text)] : spans;
 }
 
 List<TextSpan> _boldMarkedSpans(String text, {Color? color}) {
@@ -1373,15 +1475,25 @@ class _VerbFormsRow extends StatelessWidget {
 }
 
 class _RuleItem extends StatelessWidget {
-  const _RuleItem({required this.rule, this.example, this.verbFormRows = false});
+  const _RuleItem({
+    required this.rule,
+    this.example,
+    this.verbFormRows = false,
+    this.colored = false,
+  });
   final String rule;
   final String? example;
   final bool verbFormRows;
 
+  /// Colors every Example/Explanation sentence inside the rule, matching the
+  /// colored rendering used by the lesson-level Rules sections.
+  final bool colored;
+
   @override
   Widget build(BuildContext context) {
     final ThemeData theme = Theme.of(context);
-    final List<TextSpan> spans = _boldMarkedSpans(rule);
+    final List<TextSpan> spans =
+        colored ? _coloredRuleSpans(rule) : _boldMarkedSpans(rule);
     return Padding(
       padding: const EdgeInsets.only(bottom: 10),
       child: Row(
@@ -1400,6 +1512,11 @@ class _RuleItem extends StatelessWidget {
                       label: 'Example: ',
                       text: example!,
                       italic: true,
+                    )
+                  else if (colored)
+                    TenseRichText(
+                      text: 'Example: ${example!}',
+                      style: theme.textTheme.bodySmall?.copyWith(height: 1.4),
                     )
                   else
                     _MarkedLessonText(

@@ -11395,125 +11395,6 @@
               ]
             }
           ]
-        },
-        {
-          "name": "6. Present Simple Tense — Active Voice to Passive Voice",
-          "description": "The four sentence forms of the Present Simple tense converted from active to passive voice, with a worked example bank.",
-          "tableGroups": [
-            {
-              "title": "1. Simple Sentences",
-              "columns": [
-                "Voice",
-                "Pattern",
-                "Example"
-              ],
-              "rows": [
-                [
-                  "Active Voice",
-                  "Subject + V1(s/es) + Object",
-                  "They play cricket."
-                ],
-                [
-                  "Passive Voice",
-                  "Object + is/am/are + V3 + by + Subject",
-                  "Cricket is played by them."
-                ]
-              ]
-            },
-            {
-              "title": "2. Negative Sentences",
-              "columns": [
-                "Voice",
-                "Pattern",
-                "Example"
-              ],
-              "rows": [
-                [
-                  "Active Voice",
-                  "Subject + do/does not + V1 + Object",
-                  "He does not write a letter."
-                ],
-                [
-                  "Passive Voice",
-                  "Object + is/am/are not + V3 + by + Subject",
-                  "A letter is not written by him."
-                ]
-              ]
-            },
-            {
-              "title": "3. Interrogative Sentences",
-              "columns": [
-                "Voice",
-                "Pattern",
-                "Example"
-              ],
-              "rows": [
-                [
-                  "Active Voice",
-                  "Do/Does + Subject + V1 + Object?",
-                  "Does he write a letter?"
-                ],
-                [
-                  "Passive Voice",
-                  "Is/Am/Are + Object + V3 + by + Subject?",
-                  "Is a letter written by him?"
-                ]
-              ]
-            }
-          ],
-          "rules": [
-            "Remove **do/does**, if used.",
-            "Use **is/am/are**.",
-            "Change the main verb into its third form (**V3**).",
-            "Use **by** before the doer."
-          ],
-          "examples": [
-            {
-              "text": "He writes a letter.",
-              "urdu": "وہ خط لکھتا ہے۔",
-              "note": "Passive: A letter is written by him."
-            },
-            {
-              "text": "She cleans the room.",
-              "urdu": "وہ کمرہ صاف کرتی ہے۔",
-              "note": "Passive: The room is cleaned by her."
-            },
-            {
-              "text": "They play cricket.",
-              "urdu": "وہ کرکٹ کھیلتے ہیں۔",
-              "note": "Passive: Cricket is played by them."
-            },
-            {
-              "text": "He does not write a letter.",
-              "urdu": "وہ خط نہیں لکھتا۔",
-              "note": "Passive: A letter is not written by him."
-            },
-            {
-              "text": "She does not clean the room.",
-              "urdu": "وہ کمرہ نہیں صاف کرتی۔",
-              "note": "Passive: The room is not cleaned by her."
-            },
-            {
-              "text": "They do not play cricket.",
-              "urdu": "وہ کرکٹ نہیں کھیلتے۔",
-              "note": "Passive: Cricket is not played by them."
-            },
-            {
-              "text": "Do they play cricket?",
-              "urdu": "کیا وہ کرکٹ کھیلتے ہیں؟",
-              "note": "Passive: Is cricket played by them?"
-            },
-            {
-              "text": "Does Ali help Ahmed?",
-              "urdu": "کیا علی احمد کی مدد کرتا ہے؟",
-              "note": "Passive: Is Ahmed helped by Ali?"
-            },
-            {
-              "text": "Do we teach English?",
-              "urdu": "کیا ہم انگریزی پڑھاتے ہیں؟",
-              "note": "Passive: Is English taught by us?"
-            }
-          ]
         }
       ]
     }
@@ -11603,7 +11484,146 @@
     "title": "Simple Present",
     "subtitle": null,
     "order": 1,
-    "isLeaf": true
+    "isLeaf": true,
+    "keywords": [
+      "present simple",
+      "simple present",
+      "active voice",
+      "passive voice",
+      "voice",
+      "structure",
+      "negative",
+      "interrogative",
+      "grammar"
+    ],
+    "content": {
+      "types": [
+        {
+          "name": "Present Simple",
+          "tableGroups": [
+            {
+              "title": "1. Simple Sentences",
+              "columns": [
+                "Voice",
+                "Pattern",
+                "Example"
+              ],
+              "rows": [
+                [
+                  "Active Voice",
+                  "Subject + V1(s/es) + Object",
+                  "They play cricket."
+                ],
+                [
+                  "Passive Voice",
+                  "Object + is/am/are + V3 + by + Subject",
+                  "Cricket is played by them."
+                ]
+              ]
+            },
+            {
+              "title": "2. Negative Sentences",
+              "columns": [
+                "Voice",
+                "Pattern",
+                "Example"
+              ],
+              "rows": [
+                [
+                  "Active Voice",
+                  "Subject + do/does not + V1 + Object",
+                  "He does not write a letter."
+                ],
+                [
+                  "Passive Voice",
+                  "Object + is/am/are not + V3 + by + Subject",
+                  "A letter is not written by him."
+                ]
+              ]
+            },
+            {
+              "title": "3. Interrogative Sentences",
+              "columns": [
+                "Voice",
+                "Pattern",
+                "Example"
+              ],
+              "rows": [
+                [
+                  "Active Voice",
+                  "Do/Does + Subject + V1 + Object?",
+                  "Does he write a letter?"
+                ],
+                [
+                  "Passive Voice",
+                  "Is/Am/Are + Object + V3 + by + Subject?",
+                  "Is a letter written by him?"
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Main Rule",
+          "rules": [
+            "Remove **do/does**, if used.",
+            "Use **is/am/are**.",
+            "Change the main verb into its third form (**V3**).",
+            "Use **by** before the doer."
+          ]
+        },
+        {
+          "name": "Example Sentences",
+          "examples": [
+            {
+              "text": "He writes a letter.",
+              "urdu": "وہ خط لکھتا ہے۔",
+              "note": "Passive: A letter is written by him."
+            },
+            {
+              "text": "She cleans the room.",
+              "urdu": "وہ کمرہ صاف کرتی ہے۔",
+              "note": "Passive: The room is cleaned by her."
+            },
+            {
+              "text": "They play cricket.",
+              "urdu": "وہ کرکٹ کھیلتے ہیں۔",
+              "note": "Passive: Cricket is played by them."
+            },
+            {
+              "text": "He does not write a letter.",
+              "urdu": "وہ خط نہیں لکھتا۔",
+              "note": "Passive: A letter is not written by him."
+            },
+            {
+              "text": "She does not clean the room.",
+              "urdu": "وہ کمرہ نہیں صاف کرتی۔",
+              "note": "Passive: The room is not cleaned by her."
+            },
+            {
+              "text": "They do not play cricket.",
+              "urdu": "وہ کرکٹ نہیں کھیلتے۔",
+              "note": "Passive: Cricket is not played by them."
+            },
+            {
+              "text": "Do they play cricket?",
+              "urdu": "کیا وہ کرکٹ کھیلتے ہیں؟",
+              "note": "Passive: Is cricket played by them?"
+            },
+            {
+              "text": "Does Ali help Ahmed?",
+              "urdu": "کیا علی احمد کی مدد کرتا ہے؟",
+              "note": "Passive: Is Ahmed helped by Ali?"
+            },
+            {
+              "text": "Do we teach English?",
+              "urdu": "کیا ہم انگریزی پڑھاتے ہیں؟",
+              "note": "Passive: Is English taught by us?"
+            }
+          ]
+        }
+      ]
+    }
   },
   {
     "id": "active-passive-voice/present/present-continuous",
