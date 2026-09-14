@@ -203,6 +203,14 @@ class _LessonView extends StatelessWidget {
         lesson.id == 'pos/determiner') {
       return _NounLandingView(lesson: lesson);
     }
+    // Two-column voice comparison layout (Active vs Passive Voice).
+    if (lesson.voiceComparison != null && lesson.voiceComparison!.isNotEmpty) {
+      return _VoiceComparisonView(
+        lessonId: lesson.id,
+        title: lesson.title,
+        data: lesson.voiceComparison!,
+      );
+    }
     // Structure-only lessons (content arrives in a later pass) show a friendly
     // placeholder instead of an empty page.
     final bool hasNoContent = lesson.providedMaterial.isEmpty &&
@@ -461,6 +469,415 @@ class _LessonView extends StatelessWidget {
                     ?.copyWith(height: lesson.id.startsWith('tenses/') ? 1.3 : 1.5)),
           ),
       ],
+    );
+  }
+}
+
+class _VoiceComparisonView extends StatelessWidget {
+  const _VoiceComparisonView({
+    required this.lessonId,
+    required this.title,
+    required this.data,
+  });
+
+  final String lessonId;
+  final String title;
+  final Map<String, dynamic> data;
+
+  @override
+  Widget build(BuildContext context) {
+    final ThemeData theme = Theme.of(context);
+    final ColorScheme scheme = theme.colorScheme;
+    final TextStyle bodyStyle =
+        theme.textTheme.bodySmall?.copyWith(height: 1.4, color: scheme.onSurface) ??
+            const TextStyle();
+    final TextStyle urduStyle = bodyStyle.copyWith(height: 1.65);
+
+    final String intro = (data['intro'] as String?) ?? '';
+    final List<dynamic> columns = (data['columns'] as List<dynamic>?) ?? [];
+    final Map<String, dynamic>? bottom =
+        data['bottom'] as Map<String, dynamic>?;
+
+    return ListView(
+      padding: const EdgeInsets.fromLTRB(16, 16, 16, 24),
+      children: <Widget>[
+        // ── Intro ──────────────────────────────────────────────────────
+        if (intro.isNotEmpty) ...<Widget>[
+          _VoiceLabel(
+            label: title,
+            icon: Icons.info_outline,
+            color: const Color(0xFF42A5F5),
+          ),
+          const SizedBox(height: 6),
+          Text(intro, style: bodyStyle),
+          const SizedBox(height: 18),
+        ],
+
+        // ── Two-column comparison ──────────────────────────────────────
+        if (columns.length >= 2) ...<Widget>[
+          IntrinsicHeight(
+            child: Row(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: <Widget>[
+                Expanded(
+                  child: _VoiceColumn(
+                    column: columns[0] as Map<String, dynamic>,
+                    bodyStyle: bodyStyle,
+                    urduStyle: urduStyle,
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 6),
+                  child: VerticalDivider(
+                    width: 1,
+                    color: scheme.outlineVariant.withValues(alpha: 0.5),
+                  ),
+                ),
+                Expanded(
+                  child: _VoiceColumn(
+                    column: columns[1] as Map<String, dynamic>,
+                    bodyStyle: bodyStyle,
+                    urduStyle: urduStyle,
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ],
+
+        // ── Bottom section (Easy Way to Remember) ──────────────────────
+        if (bottom != null) ...<Widget>[
+          const SizedBox(height: 20),
+          _VoiceLabel(
+            label: (bottom['title'] as String?) ?? '',
+            icon: Icons.lightbulb_outline,
+            color: scheme.tertiary,
+          ),
+          const SizedBox(height: 8),
+          for (final dynamic b
+              in (bottom['blocks'] as List<dynamic>?) ?? [])
+            _VoiceBlockWidget(
+              block: b as Map<String, dynamic>,
+              bodyStyle: bodyStyle,
+              urduStyle: urduStyle,
+              fullWidth: true,
+            ),
+        ],
+      ],
+    );
+  }
+}
+
+/// Purple section label with icon (e.g. "Introduction to Voice", "Easy Way to Remember").
+class _VoiceLabel extends StatelessWidget {
+  const _VoiceLabel({
+    required this.label,
+    required this.icon,
+    required this.color,
+  });
+
+  final String label;
+  final IconData icon;
+  final Color color;
+
+  @override
+  Widget build(BuildContext context) {
+    final ThemeData theme = Theme.of(context);
+    return Row(
+      children: <Widget>[
+        Icon(icon, size: 18, color: color),
+        const SizedBox(width: 6),
+        Expanded(
+          child: Text(
+            label,
+            style: theme.textTheme.titleSmall?.copyWith(
+              color: color,
+              fontWeight: FontWeight.w800,
+            ),
+          ),
+        ),
+      ],
+    );
+  }
+}
+
+/// A single column inside the two-column comparison (Passive or Active Voice).
+class _VoiceColumn extends StatelessWidget {
+  const _VoiceColumn({
+    required this.column,
+    required this.bodyStyle,
+    required this.urduStyle,
+  });
+
+  final Map<String, dynamic> column;
+  final TextStyle bodyStyle;
+  final TextStyle urduStyle;
+
+  @override
+  Widget build(BuildContext context) {
+    final String title = (column['title'] as String?) ?? '';
+    final List<dynamic> blocks = (column['blocks'] as List<dynamic>?) ?? [];
+
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: <Widget>[
+        // Column title
+        _VoiceLabel(
+          label: title,
+          icon: title.toLowerCase().contains('passive')
+              ? Icons.link
+              : Icons.volume_up,
+          color: const Color(0xFFAB47BC),
+        ),
+        const SizedBox(height: 8),
+        for (final dynamic b in blocks)
+          _VoiceBlockWidget(
+            block: b as Map<String, dynamic>,
+            bodyStyle: bodyStyle,
+            urduStyle: urduStyle,
+            fullWidth: false,
+          ),
+      ],
+    );
+  }
+}
+
+/// Renders a single content block inside a voice comparison column.
+class _VoiceBlockWidget extends StatelessWidget {
+  const _VoiceBlockWidget({
+    required this.block,
+    required this.bodyStyle,
+    required this.urduStyle,
+    required this.fullWidth,
+  });
+
+  final Map<String, dynamic> block;
+  final TextStyle bodyStyle;
+  final TextStyle urduStyle;
+  final bool fullWidth;
+
+  @override
+  Widget build(BuildContext context) {
+    final ThemeData theme = Theme.of(context);
+    final ColorScheme scheme = theme.colorScheme;
+    final String type = (block['type'] as String?) ?? 'text';
+
+    switch (type) {
+      case 'text':
+        return Padding(
+          padding: const EdgeInsets.only(bottom: 6),
+          child: Text.rich(
+            TextSpan(
+              style: bodyStyle,
+              children: _boldMarkedSpans(
+                (block['text'] as String?) ?? '',
+              ),
+            ),
+          ),
+        );
+
+      case 'urdu':
+        return Padding(
+          padding: const EdgeInsets.only(bottom: 6),
+          child: Directionality(
+            textDirection: TextDirection.rtl,
+            child: Text(
+              (block['text'] as String?) ?? '',
+              textAlign: TextAlign.right,
+              style: urduStyle,
+            ),
+          ),
+        );
+
+      case 'example':
+        final String label = (block['label'] as String?) ?? 'Example';
+        final String text = (block['text'] as String?) ?? '';
+        final String exampleUrdu = (block['urdu'] as String?) ?? '';
+        return Padding(
+          padding: const EdgeInsets.only(bottom: 8),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: <Widget>[
+              // "Example" label with quote icon
+              Row(
+                children: <Widget>[
+                  Icon(Icons.format_quote,
+                      size: 16, color: const Color(0xFF42A5F5)),
+                  const SizedBox(width: 4),
+                  Text(
+                    label,
+                    style: bodyStyle.copyWith(
+                      color: const Color(0xFF42A5F5),
+                      fontWeight: FontWeight.w700,
+                    ),
+                  ),
+                ],
+              ),
+              const SizedBox(height: 4),
+              // Colored example sentence
+              Text.rich(
+                TextSpan(
+                  style: bodyStyle.copyWith(height: 1.35),
+                  children: _boldMarkedSpans(
+                    text,
+                    color: const Color(0xFF64B5F6),
+                  ),
+                ),
+              ),
+              if (exampleUrdu.isNotEmpty) ...<Widget>[
+                const SizedBox(height: 3),
+                Directionality(
+                  textDirection: TextDirection.rtl,
+                  child: Text(
+                    exampleUrdu,
+                    textAlign: TextAlign.right,
+                    style: urduStyle.copyWith(
+                      color: scheme.onSurfaceVariant,
+                    ),
+                  ),
+                ),
+              ],
+            ],
+          ),
+        );
+
+      case 'breakdown':
+        final String label = (block['label'] as String?) ?? 'Here:';
+        final List<dynamic> rows = (block['rows'] as List<dynamic>?) ?? [];
+        return Padding(
+          padding: const EdgeInsets.only(bottom: 8),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: <Widget>[
+              Text(
+                label,
+                style: bodyStyle.copyWith(fontWeight: FontWeight.w700),
+              ),
+              const SizedBox(height: 4),
+              for (final dynamic row in rows)
+                _VoiceBreakdownRow(
+                  cells: (row as List<dynamic>).map((e) => e.toString()).toList(),
+                  bodyStyle: bodyStyle,
+                ),
+            ],
+          ),
+        );
+
+      case 'bullets':
+        final String label =
+            (block['label'] as String?) ?? '';
+        final List<dynamic> items =
+            (block['items'] as List<dynamic>?) ?? [];
+        return Padding(
+          padding: const EdgeInsets.only(bottom: 6),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: <Widget>[
+              if (label.isNotEmpty) ...<Widget>[
+                Row(
+                  children: <Widget>[
+                    Icon(Icons.format_quote,
+                        size: 16, color: const Color(0xFF42A5F5)),
+                    const SizedBox(width: 4),
+                    Text(
+                      label,
+                      style: bodyStyle.copyWith(
+                        color: const Color(0xFF42A5F5),
+                        fontWeight: FontWeight.w700,
+                      ),
+                    ),
+                  ],
+                ),
+                const SizedBox(height: 4),
+              ],
+              for (final dynamic item in items)
+                Padding(
+                  padding: const EdgeInsets.only(bottom: 3),
+                  child: Row(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: <Widget>[
+                      Container(
+                        width: 6,
+                        height: 6,
+                        margin: const EdgeInsets.only(top: 5, right: 6),
+                        decoration: const BoxDecoration(
+                          shape: BoxShape.circle,
+                          color: Color(0xFF42A5F5),
+                        ),
+                      ),
+                      Expanded(
+                        child: Text.rich(
+                          TextSpan(
+                            style: bodyStyle.copyWith(height: 1.35),
+                            children: _boldMarkedSpans(
+                              item.toString(),
+                              color: const Color(0xFF64B5F6),
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+            ],
+          ),
+        );
+
+      default:
+        return const SizedBox.shrink();
+    }
+  }
+}
+
+/// Renders a single row of the breakdown table (e.g. "A letter = subject").
+class _VoiceBreakdownRow extends StatelessWidget {
+  const _VoiceBreakdownRow({
+    required this.cells,
+    required this.bodyStyle,
+  });
+
+  final List<String> cells;
+  final TextStyle bodyStyle;
+
+  @override
+  Widget build(BuildContext context) {
+    if (cells.isEmpty) return const SizedBox.shrink();
+    // Layout: [label] = [description]
+    final String left = cells.length >= 1 ? cells[0] : '';
+    final String mid = cells.length >= 2 ? cells[1] : '';
+    final String right = cells.length >= 3 ? cells[2] : '';
+    return Padding(
+      padding: const EdgeInsets.only(bottom: 2),
+      child: Row(
+        children: <Widget>[
+          // Left cell (colored label)
+          Expanded(
+            flex: 2,
+            child: Text.rich(
+              TextSpan(
+                style: bodyStyle.copyWith(height: 1.3),
+                children: _boldMarkedSpans(
+                  left,
+                  color: const Color(0xFFCE93D8),
+                ),
+              ),
+            ),
+          ),
+          // Equals sign
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 4),
+            child: Text('=', style: bodyStyle.copyWith(height: 1.3)),
+          ),
+          // Right cell (description)
+          Expanded(
+            flex: 3,
+            child: Text(
+              right,
+              style: bodyStyle.copyWith(height: 1.3),
+            ),
+          ),
+        ],
+      ),
     );
   }
 }

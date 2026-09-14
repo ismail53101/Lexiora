@@ -207,6 +207,7 @@ class GrammarLesson extends Equatable {
     this.tableTitle = '',
     this.tableColumns = const <String>[],
     this.tableRows = const <GrammarTableRow>[],
+    this.voiceComparison,
   });
 
   final String id;
@@ -240,6 +241,8 @@ class GrammarLesson extends Equatable {
   final String tableTitle;
   final List<String> tableColumns;
   final List<GrammarTableRow> tableRows;
+  /// Optional two-column voice comparison layout (Active vs Passive Voice).
+  final Map<String, dynamic>? voiceComparison;
   @override
   List<Object?> get props => <Object?>[
         id,
@@ -265,5 +268,6 @@ class GrammarLesson extends Equatable {
         tableTitle,
         tableColumns,
         tableRows,
+        voiceComparison,
       ];
 }
