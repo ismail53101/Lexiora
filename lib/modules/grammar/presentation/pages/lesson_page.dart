@@ -11,6 +11,7 @@ import 'package:lexiora/modules/grammar/domain/entities/grammar_lesson.dart';
 import 'package:lexiora/modules/grammar/domain/usecases/grammar_usecases.dart';
 import 'package:lexiora/modules/grammar/presentation/providers/grammar_providers.dart';
 import 'package:lexiora/modules/grammar/presentation/widgets/grammar_section_card.dart';
+import 'package:lexiora/modules/grammar/presentation/widgets/grammar_voice_colors.dart';
 import 'package:lexiora/modules/grammar/presentation/widgets/practice_question_card.dart';
 
 /// A single dedicated grammar lesson (a tree leaf): Introduction, Urdu & English
@@ -202,6 +203,14 @@ class _LessonView extends StatelessWidget {
         lesson.id == 'pos/interjection' ||
         lesson.id == 'pos/determiner') {
       return _NounLandingView(lesson: lesson);
+    }
+    // Numbered vertical rules layout (General Rules of Conversion).
+    if (lesson.rulesConversion != null && lesson.rulesConversion!.isNotEmpty) {
+      return _RulesConversionView(
+        lessonId: lesson.id,
+        title: lesson.title,
+        data: lesson.rulesConversion!,
+      );
     }
     // Two-column voice comparison layout (Active vs Passive Voice).
     if (lesson.voiceComparison != null && lesson.voiceComparison!.isNotEmpty) {
@@ -473,6 +482,357 @@ class _LessonView extends StatelessWidget {
   }
 }
 
+/// Numbered vertical rules layout for "General Rules of Conversion".
+/// Matches the reference image: heading, purple circular markers 1–7,
+/// bold white rule headings, blue example sentences, and a compact formula
+/// table at the bottom. Single-column vertical flow — no boxes, no slides.
+class _RulesConversionView extends StatelessWidget {
+  const _RulesConversionView({
+    required this.lessonId,
+    required this.title,
+    required this.data,
+  });
+
+  final String lessonId;
+  final String title;
+  final Map<String, dynamic> data;
+
+  // Reference-image palette (matches the two-column voice layout).
+  static const Color _purple = Color(0xFFAB47BC);
+  static const Color _markerPurple = Color(0xFF7E57C2);
+
+  @override
+  Widget build(BuildContext context) {
+    final ThemeData theme = Theme.of(context);
+    final ColorScheme scheme = theme.colorScheme;
+    final TextStyle bodyStyle =
+        theme.textTheme.bodySmall?.copyWith(height: 1.4, color: scheme.onSurface) ??
+            const TextStyle();
+
+    final String heading = (data['heading'] as String?) ?? title;
+    final List<dynamic> rules = (data['rules'] as List<dynamic>?) ?? [];
+    final Map<String, dynamic>? formula = data['formula'] as Map<String, dynamic>?;
+
+    return ListView(
+      padding: const EdgeInsets.fromLTRB(16, 12, 16, 24),
+      children: <Widget>[
+        // ── Section heading (e.g. "2. General Rules of Conversion") ────
+        Text(
+          heading,
+          style: theme.textTheme.headlineSmall?.copyWith(
+            fontWeight: FontWeight.w800,
+            color: scheme.onSurface,
+          ),
+        ),
+        const SizedBox(height: 14),
+
+        // ── Numbered rules, vertical flow ───────────────────────────────
+        for (final dynamic r in rules)
+          _ConversionRule(
+            rule: r as Map<String, dynamic>,
+            index: rules.indexOf(r) + 1,
+            bodyStyle: bodyStyle,
+          ),
+
+        // ── General Formula (compact table) ─────────────────────────────
+        if (formula != null) ...<Widget>[
+          const SizedBox(height: 10),
+          Row(
+            children: <Widget>[
+              Icon(Icons.calculate_outlined, size: 20, color: _purple),
+              const SizedBox(width: 8),
+              Text(
+                (formula['title'] as String?) ?? 'General Formula',
+                style: theme.textTheme.titleMedium?.copyWith(
+                  color: _purple,
+                  fontWeight: FontWeight.w800,
+                ),
+              ),
+            ],
+          ),
+          const SizedBox(height: 8),
+          _FormulaTable(
+            rows: (formula['rows'] as List<dynamic>? ?? [])
+                .whereType<Map<String, dynamic>>()
+                .toList(growable: false),
+            bodyStyle: bodyStyle,
+            borderColor: scheme.outlineVariant.withValues(alpha: 0.45),
+            headerFill: scheme.surfaceContainerHighest.withValues(alpha: 0.25),
+          ),
+        ],
+      ],
+    );
+  }
+}
+
+/// One numbered rule: purple circle marker + bold heading + body lines.
+class _ConversionRule extends StatelessWidget {
+  const _ConversionRule({
+    required this.rule,
+    required this.index,
+    required this.bodyStyle,
+  });
+
+  final Map<String, dynamic> rule;
+  final int index;
+  final TextStyle bodyStyle;
+
+  @override
+  Widget build(BuildContext context) {
+    final ThemeData theme = Theme.of(context);
+    final ColorScheme scheme = theme.colorScheme;
+    final String heading = (rule['heading'] as String?) ?? '';
+    final List<dynamic> lines = (rule['lines'] as List<dynamic>?) ?? [];
+
+    return Padding(
+      padding: const EdgeInsets.only(bottom: 14),
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: <Widget>[
+          // Numbered purple circular marker.
+          Container(
+            width: 26,
+            height: 26,
+            margin: const EdgeInsets.only(top: 1),
+            decoration: const BoxDecoration(
+              color: _RulesConversionView._markerPurple,
+              shape: BoxShape.circle,
+            ),
+            alignment: Alignment.center,
+            child: Text(
+              '$index',
+              style: theme.textTheme.labelMedium?.copyWith(
+                color: Colors.white,
+                fontWeight: FontWeight.w700,
+              ),
+            ),
+          ),
+          const SizedBox(width: 10),
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: <Widget>[
+                // Bold white rule heading.
+                if (heading.isNotEmpty)
+                  Text(
+                    heading,
+                    style: bodyStyle.copyWith(
+                      fontWeight: FontWeight.w700,
+                      color: scheme.onSurface,
+                    ),
+                  ),
+                if (heading.isNotEmpty) const SizedBox(height: 4),
+                // Body lines (active/passive pairs, lists, arrow rows).
+                for (final dynamic ln in lines)
+                  _ConversionRuleLine(line: ln as Map<String, dynamic>, bodyStyle: bodyStyle),
+              ],
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+/// A single line inside a numbered rule.
+/// Types: label-pair (Active:/Passive:), arrow (write → written),
+/// bullet, plain, and arrow-note (sentence → note).
+class _ConversionRuleLine extends StatelessWidget {
+  const _ConversionRuleLine({required this.line, required this.bodyStyle});
+
+  final Map<String, dynamic> line;
+  final TextStyle bodyStyle;
+
+  static const Color _purple = _RulesConversionView._purple;
+
+  @override
+  Widget build(BuildContext context) {
+    final ThemeData theme = Theme.of(context);
+    final ColorScheme scheme = theme.colorScheme;
+    final TextStyle labelStyle = bodyStyle.copyWith(color: scheme.onSurfaceVariant);
+    final String type = (line['type'] as String?) ?? 'plain';
+
+    switch (type) {
+      // "Active:" / "Passive:" labeled pair — voice-colored sentence after
+      // gray label (blue for Active, theme-aware green for Passive).
+      case 'pair':
+        final String labelText = (line['label'] as String?) ?? '';
+        final bool passivePair = labelText.toLowerCase().contains('passive');
+        return Padding(
+          padding: const EdgeInsets.only(bottom: 3),
+          child: Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: <Widget>[
+              SizedBox(
+                width: 68,
+                child: Text(
+                  labelText,
+                  style: labelStyle,
+                ),
+              ),
+              Expanded(
+                child: Text(
+                  (line['text'] as String?) ?? '',
+                  style: bodyStyle.copyWith(
+                    color: passivePair
+                        ? passiveVoiceColor(context)
+                        : activeVoiceColor(context),
+                  ),
+                ),
+              ),
+            ],
+          ),
+        );
+
+      // "write → written" transformation rows.
+      case 'arrow':
+        final String from = (line['from'] as String?) ?? '';
+        final String to = (line['to'] as String?) ?? '';
+        return Padding(
+          padding: const EdgeInsets.only(bottom: 3),
+          child: Row(
+            children: <Widget>[
+              SizedBox(
+                width: 64,
+                child: Text(from, style: bodyStyle),
+              ),
+              Icon(Icons.arrow_forward, size: 14, color: scheme.onSurfaceVariant),
+              const SizedBox(width: 10),
+              Expanded(child: Text(to, style: bodyStyle)),
+            ],
+          ),
+        );
+
+      // Simple bullet item.
+      case 'bullet':
+        return Padding(
+          padding: const EdgeInsets.only(bottom: 3),
+          child: Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: <Widget>[
+              Container(
+                width: 5,
+                height: 5,
+                margin: const EdgeInsets.only(top: 7, right: 10),
+                decoration: BoxDecoration(
+                  color: _purple,
+                  shape: BoxShape.circle,
+                ),
+              ),
+              Expanded(
+                child: Text(
+                  (line['text'] as String?) ?? '',
+                  style: bodyStyle,
+                ),
+              ),
+            ],
+          ),
+        );
+
+      // Supporting plain sentence (e.g. "Transitive verbs have an object.").
+      case 'plain':
+        return Padding(
+          padding: const EdgeInsets.only(bottom: 3),
+          child: Text((line['text'] as String?) ?? '', style: bodyStyle),
+        );
+
+      // "He plays cricket. → Passive is possible." (active sentence → blue)
+      case 'arrow-note':
+        return Padding(
+          padding: const EdgeInsets.only(bottom: 3),
+          child: Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: <Widget>[
+              SizedBox(
+                width: 128,
+                child: Text(
+                  (line['text'] as String?) ?? '',
+                  style: bodyStyle.copyWith(color: activeVoiceColor(context)),
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.only(top: 1),
+                child: Icon(Icons.arrow_forward,
+                    size: 14, color: scheme.onSurfaceVariant),
+              ),
+              const SizedBox(width: 8),
+              Expanded(
+                child: Text(
+                  (line['note'] as String?) ?? '',
+                  style: bodyStyle,
+                ),
+              ),
+            ],
+          ),
+        );
+
+      default:
+        return const SizedBox.shrink();
+    }
+  }
+}
+
+/// Compact two-column formula table (Voice | Formula).
+class _FormulaTable extends StatelessWidget {
+  const _FormulaTable({
+    required this.rows,
+    required this.bodyStyle,
+    required this.borderColor,
+    required this.headerFill,
+  });
+
+  final List<Map<String, dynamic>> rows;
+  final TextStyle bodyStyle;
+  final Color borderColor;
+  final Color headerFill;
+
+  static const Color _purple = _RulesConversionView._purple;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      width: double.infinity,
+      decoration: BoxDecoration(
+        border: Border.all(color: borderColor),
+        borderRadius: BorderRadius.circular(8),
+      ),
+      clipBehavior: Clip.antiAlias,
+      child: Column(
+        children: <Widget>[
+          for (int i = 0; i < rows.length; i++) ...<Widget>[
+            if (i > 0) Divider(height: 1, color: borderColor),
+            Container(
+              color: headerFill,
+              padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 8),
+              child: Row(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: <Widget>[
+                  SizedBox(
+                    width: 96,
+                    child: Text(
+                      (rows[i]['voice'] as String?) ?? '',
+                      style: bodyStyle.copyWith(
+                        color: _purple,
+                        fontWeight: FontWeight.w700,
+                      ),
+                    ),
+                  ),
+                  Expanded(
+                    child: Text(
+                      (rows[i]['formula'] as String?) ?? '',
+                      style: bodyStyle,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ],
+      ),
+    );
+  }
+}
+
 class _VoiceComparisonView extends StatelessWidget {
   const _VoiceComparisonView({
     required this.lessonId,
@@ -617,16 +977,15 @@ class _VoiceColumn extends StatelessWidget {
   Widget build(BuildContext context) {
     final String title = (column['title'] as String?) ?? '';
     final List<dynamic> blocks = (column['blocks'] as List<dynamic>?) ?? [];
+    final bool isPassive = title.toLowerCase().contains('passive');
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
-        // Column title
+        // Column title stays purple (headings are always purple).
         _VoiceLabel(
           label: title,
-          icon: title.toLowerCase().contains('passive')
-              ? Icons.link
-              : Icons.volume_up,
+          icon: isPassive ? Icons.link : Icons.volume_up,
           color: const Color(0xFFAB47BC),
         ),
         const SizedBox(height: 8),
@@ -636,6 +995,7 @@ class _VoiceColumn extends StatelessWidget {
             bodyStyle: bodyStyle,
             urduStyle: urduStyle,
             fullWidth: false,
+            voiceColor: isPassive ? passiveVoiceColor(context) : null,
           ),
       ],
     );
@@ -649,6 +1009,7 @@ class _VoiceBlockWidget extends StatelessWidget {
     required this.bodyStyle,
     required this.urduStyle,
     required this.fullWidth,
+    this.voiceColor,
   });
 
   final Map<String, dynamic> block;
@@ -656,11 +1017,16 @@ class _VoiceBlockWidget extends StatelessWidget {
   final TextStyle urduStyle;
   final bool fullWidth;
 
+  /// Optional fixed sentence color for this block's example sentences
+  /// (green inside the Passive Voice column, blue inside Active).
+  final Color? voiceColor;
+
   @override
   Widget build(BuildContext context) {
     final ThemeData theme = Theme.of(context);
     final ColorScheme scheme = theme.colorScheme;
     final String type = (block['type'] as String?) ?? 'text';
+    final Color sentenceColor = voiceColor ?? activeVoiceColor(context);
 
     switch (type) {
       case 'text':
@@ -671,6 +1037,9 @@ class _VoiceBlockWidget extends StatelessWidget {
               style: bodyStyle,
               children: _boldMarkedSpans(
                 (block['text'] as String?) ?? '',
+                // Passive sentences render green, standalone Active example
+                // sentences blue; ordinary text keeps its style.
+                color: _voiceTextColor(context, (block['text'] as String?) ?? ''),
               ),
             ),
           ),
@@ -720,7 +1089,7 @@ class _VoiceBlockWidget extends StatelessWidget {
                   style: bodyStyle.copyWith(height: 1.35),
                   children: _boldMarkedSpans(
                     text,
-                    color: const Color(0xFF64B5F6),
+                    color: sentenceColor,
                   ),
                 ),
               ),
@@ -800,9 +1169,9 @@ class _VoiceBlockWidget extends StatelessWidget {
                         width: 6,
                         height: 6,
                         margin: const EdgeInsets.only(top: 5, right: 6),
-                        decoration: const BoxDecoration(
+                        decoration: BoxDecoration(
                           shape: BoxShape.circle,
-                          color: Color(0xFF42A5F5),
+                          color: sentenceColor,
                         ),
                       ),
                       Expanded(
@@ -811,7 +1180,7 @@ class _VoiceBlockWidget extends StatelessWidget {
                             style: bodyStyle.copyWith(height: 1.35),
                             children: _boldMarkedSpans(
                               item.toString(),
-                              color: const Color(0xFF64B5F6),
+                              color: sentenceColor,
                             ),
                           ),
                         ),
@@ -1502,13 +1871,14 @@ class _CompactTypeTable extends StatelessWidget {
         children: <Widget>[
           _row(
             columns,
-            theme,
+            headers: columns,
+            theme: theme,
             color: scheme.primary,
             bold: true,
           ),
           for (final GrammarTableRow row in rows) ...<Widget>[
             Divider(height: 10, color: scheme.outlineVariant.withValues(alpha: 0.65)),
-            _row(row.cells, theme),
+            _row(row.cells, headers: columns, theme: theme, voiceAware: true),
           ],
         ],
       ),
@@ -1516,11 +1886,14 @@ class _CompactTypeTable extends StatelessWidget {
   }
 
   Widget _row(
-    List<String> cells,
-    ThemeData theme, {
+    List<String> cells, {
+    List<String> headers = const <String>[],
+    required ThemeData theme,
     Color? color,
     bool bold = false,
+    bool voiceAware = false,
   }) {
+    final ThemeData effectiveTheme = theme;
     final int count = cells.length.clamp(1, 3);
     return Row(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -1528,18 +1901,28 @@ class _CompactTypeTable extends StatelessWidget {
         for (int i = 0; i < count; i++)
           Expanded(
             flex: i == 0 ? 1 : 2,
-            child: Text.rich(
-              TextSpan(
-                style: (theme.textTheme.bodySmall ?? const TextStyle()).copyWith(
-                  color: color,
-                  fontWeight: bold ? FontWeight.w800 : null,
-                  height: 1.2,
-                ),
-                children: _boldMarkedSpans(
-                  i < cells.length ? cells[i] : '',
-                  color: color,
-                ),
-              ),
+            child: Builder(
+              builder: (BuildContext rowContext) {
+                // rowContext resolves the theme for voice-aware colors.
+                final String cell = i < cells.length ? cells[i] : '';
+                final Color? cellColor = voiceAware
+                    ? (grammarTableCellColor(rowContext, headers, i, cell) ?? color)
+                    : color;
+                return Text.rich(
+                  TextSpan(
+                    style: (effectiveTheme.textTheme.bodySmall ?? const TextStyle()).copyWith(
+                      color: cellColor,
+                      fontWeight: bold
+                          ? FontWeight.w800
+                          : (cellColor == kGrammarHeadingPurple
+                              ? FontWeight.w700
+                              : null),
+                      height: 1.2,
+                    ),
+                    children: _boldMarkedSpans(cell, color: cellColor),
+                  ),
+                );
+              },
             ),
           ),
       ],
@@ -1572,7 +1955,27 @@ class _GrammarTable extends StatelessWidget {
           dataRowMaxHeight: compact ? 34 : 86,
           columnSpacing: compact ? 8 : 18,
           columns: safeColumns.map((String column) => DataColumn(label: Text(column, style: theme.textTheme.labelMedium?.copyWith(fontSize: compact ? 9 : null, fontWeight: FontWeight.w700)))).toList(),
-          rows: rows.map((GrammarTableRow row) => DataRow(cells: List<DataCell>.generate(safeColumns.length, (int i) => DataCell(Text(i < row.cells.length ? row.cells[i] : '', style: theme.textTheme.bodySmall?.copyWith(fontSize: compact ? 10 : null, height: compact ? 1.0 : 1.3)))))).toList(),
+          rows: rows.map((GrammarTableRow row) {
+            return DataRow(
+              cells: List<DataCell>.generate(safeColumns.length, (int i) {
+                final String cell = i < row.cells.length ? row.cells[i] : '';
+                final Color? cellColor = grammarTableCellColor(context, safeColumns, i, cell);
+                return DataCell(
+                  Text(
+                    cell,
+                    style: theme.textTheme.bodySmall?.copyWith(
+                      fontSize: compact ? 10 : null,
+                      height: compact ? 1.0 : 1.3,
+                      color: cellColor,
+                      fontWeight: cellColor != null && cellColor == kGrammarHeadingPurple
+                          ? FontWeight.w700
+                          : null,
+                    ),
+                  ),
+                );
+              }),
+            );
+          }).toList(),
         ),
       ),
     );
@@ -1685,8 +2088,9 @@ class _TypeSubheading extends StatelessWidget {
 /// sentences after an **Example:/Examples:** label render in the blue example
 /// color, sentences after **Explanation:/Here:** in the purple color, and the
 /// label itself in the given highlight color. Everything else keeps `color`.
-List<TextSpan> _coloredRuleSpans(String text) {
-  const Color exampleColor = Color(0xFF64B5F6);
+List<TextSpan> _coloredRuleSpans(String text, {required Brightness brightness}) {
+  final Color exampleColor = activeVoiceColorFor(brightness);
+  final Color passiveColor = passiveVoiceColorFor(brightness);
   const Color explanationColor = Color(0xFFCE93D8);
   const Color labelColor = Color(0xFF42A5F5);
   final RegExp marker = RegExp(r'(Example|Examples|Explanation|Here):');
@@ -1705,9 +2109,12 @@ List<TextSpan> _coloredRuleSpans(String text) {
     cursor = match.end;
     final RegExpMatch? next = marker.firstMatch(text.substring(cursor));
     final int end = next == null ? text.length : cursor + next.start;
+    final String chunk = text.substring(cursor, end);
     spans.addAll(_boldMarkedSpans(
-      text.substring(cursor, end),
-      color: explanation ? explanationColor : exampleColor,
+      chunk,
+      color: explanation
+          ? explanationColor
+          : (isPassiveVoiceSentence(chunk) ? passiveColor : exampleColor),
     ));
     cursor = end;
   }
@@ -1715,6 +2122,14 @@ List<TextSpan> _coloredRuleSpans(String text) {
     spans.addAll(_boldMarkedSpans(text.substring(cursor)));
   }
   return spans.isEmpty ? <TextSpan>[TextSpan(text: text)] : spans;
+}
+
+/// Sentence color for free-form text blocks: passive green, active blue for
+/// standalone example sentences, otherwise null (default text color).
+Color? _voiceTextColor(BuildContext context, String text) {
+  if (isPassiveVoiceSentence(text)) return passiveVoiceColor(context);
+  if (looksLikeExampleSentence(text)) return activeVoiceColor(context);
+  return null;
 }
 
 List<TextSpan> _boldMarkedSpans(String text, {Color? color}) {
@@ -1909,8 +2324,9 @@ class _RuleItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final ThemeData theme = Theme.of(context);
-    final List<TextSpan> spans =
-        colored ? _coloredRuleSpans(rule) : _boldMarkedSpans(rule);
+    final List<TextSpan> spans = colored
+        ? _coloredRuleSpans(rule, brightness: theme.brightness)
+        : _boldMarkedSpans(rule);
     return Padding(
       padding: const EdgeInsets.only(bottom: 10),
       child: Row(
@@ -1988,7 +2404,9 @@ class _ExampleItem extends StatelessWidget {
                   ?.copyWith(height: compact ? 1.25 : 1.4),
               children: _boldMarkedSpans(
                 example.text,
-                color: compact ? const Color(0xFF64B5F6) : null,
+                color: compact
+                    ? voiceSentenceColor(context, example.text)
+                    : null,
               ),
             ),
           ),

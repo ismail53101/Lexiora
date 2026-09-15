@@ -11436,7 +11436,146 @@
     "title": "Simple Present",
     "subtitle": null,
     "order": 1,
-    "isLeaf": true
+    "isLeaf": true,
+    "content": {
+      "introduction": "Present Simple",
+      "structure": [
+        "Structure"
+      ],
+      "tableTitle": "Simple Sentences",
+      "tableColumns": [
+        "Voice",
+        "Pattern",
+        "Example"
+      ],
+      "tableRows": [
+        [
+          "Active Voice",
+          "Subject + V1(s/es) + Object",
+          "They play cricket."
+        ],
+        [
+          "Passive Voice",
+          "Object + is/am/are + V3 + by + Subject",
+          "Cricket is played by them."
+        ]
+      ],
+      "types": [
+        {
+          "name": "Negative Sentences",
+          "description": "",
+          "tableGroups": [
+            {
+              "title": "Negative Sentences",
+              "columns": [
+                "Voice",
+                "Pattern",
+                "Example"
+              ],
+              "rows": [
+                [
+                  "Active Voice",
+                  "Subject + do/does not + V1 + Object",
+                  "He does not write a letter."
+                ],
+                [
+                  "Passive Voice",
+                  "Object + is/am/are not + V3 + by + Subject",
+                  "A letter is not written by him."
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Interrogative Sentences",
+          "description": "",
+          "tableGroups": [
+            {
+              "title": "Interrogative Sentences",
+              "columns": [
+                "Voice",
+                "Pattern",
+                "Example"
+              ],
+              "rows": [
+                [
+                  "Active Voice",
+                  "Do/Does + Subject + V1 + Object?",
+                  "Does he write a letter?"
+                ],
+                [
+                  "Passive Voice",
+                  "Is/Am/Are + Object + V3 + by + Subject?",
+                  "Is a letter written by him?"
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Main Rule",
+          "description": "In Present Simple Passive Voice:\nPresent Simple Passive Voice میں بنیادی اصول یہ ہیں۔",
+          "rules": [
+            "Remove do/does, if used.\nاگر do/does استعمال ہوا ہو تو اسے ختم کر دیں۔",
+            "Use is/am/are.\nاستعمال is/am/are",
+            "Change the main verb into its third form (V3).\nمرکزی فعل کو اس کی تیسری شکل (V3) میں تبدیل کریں۔",
+            "Use by before the doer.\nکام کرنے والے کے نام سے پہلے by استعمال کریں۔"
+          ]
+        },
+        {
+          "name": "Examples",
+          "description": "",
+          "tableGroups": [
+            {
+              "title": "Active Voice | Passive Voice",
+              "columns": [
+                "Active Voice",
+                "Passive Voice"
+              ],
+              "rows": [
+                [
+                  "He writes a letter.",
+                  "A letter is written by him."
+                ],
+                [
+                  "She cleans the room.",
+                  "The room is cleaned by her."
+                ],
+                [
+                  "They play cricket.",
+                  "Cricket is played by them."
+                ],
+                [
+                  "He does not write a letter.",
+                  "A letter is not written by him."
+                ],
+                [
+                  "She does not clean the room.",
+                  "The room is not cleaned by her."
+                ],
+                [
+                  "They do not play cricket.",
+                  "Cricket is not played by them."
+                ],
+                [
+                  "Do they play cricket?",
+                  "Is cricket played by them?"
+                ],
+                [
+                  "Does Ali help Ahmed?",
+                  "Is Ahmed helped by Ali?"
+                ],
+                [
+                  "Do we teach English?",
+                  "Is English taught by us?"
+                ]
+              ]
+            }
+          ]
+        }
+      ]
+    }
   },
   {
     "id": "active-passive-voice/present/present-continuous",
@@ -11470,7 +11609,153 @@
       "transitive",
       "be verb",
       "voice rules"
-    ]
+    ],
+    "content": {
+      "rulesConversion": {
+        "heading": "2. General Rules of Conversion",
+        "rules": [
+          {
+            "heading": "Object of the Active Voice becomes the Subject of the Passive Voice.",
+            "lines": [
+              {
+                "type": "pair",
+                "label": "Active:",
+                "text": "Ali writes a letter."
+              },
+              {
+                "type": "pair",
+                "label": "Passive:",
+                "text": "A letter is written by Ali."
+              }
+            ]
+          },
+          {
+            "heading": "Subject of the Active Voice becomes the Object after “by.”",
+            "lines": [
+              {
+                "type": "pair",
+                "label": "Active:",
+                "text": "Sara helps me."
+              },
+              {
+                "type": "pair",
+                "label": "Passive:",
+                "text": "I am helped by Sara."
+              }
+            ]
+          },
+          {
+            "heading": "Use the third form of the verb (past participle).",
+            "lines": [
+              {
+                "type": "arrow",
+                "from": "write",
+                "to": "written"
+              },
+              {
+                "type": "arrow",
+                "from": "eat",
+                "to": "eaten"
+              },
+              {
+                "type": "arrow",
+                "from": "make",
+                "to": "made"
+              }
+            ]
+          },
+          {
+            "heading": "Change the helping verb according to the tense.",
+            "lines": [
+              {
+                "type": "bullet",
+                "text": "is/am/are"
+              },
+              {
+                "type": "bullet",
+                "text": "was/were"
+              },
+              {
+                "type": "bullet",
+                "text": "has/have been"
+              },
+              {
+                "type": "bullet",
+                "text": "will be"
+              },
+              {
+                "type": "bullet",
+                "text": "can be, may be, must be, etc."
+              }
+            ]
+          },
+          {
+            "heading": "Keep the tense of the sentence unchanged.",
+            "lines": [
+              {
+                "type": "bullet",
+                "text": "Present remains present."
+              },
+              {
+                "type": "bullet",
+                "text": "Past remains past."
+              },
+              {
+                "type": "bullet",
+                "text": "Future remains future."
+              }
+            ]
+          },
+          {
+            "heading": "Use “by” before the doer when necessary.",
+            "lines": [
+              {
+                "type": "pair",
+                "label": "Active:",
+                "text": "The teacher teaches English."
+              },
+              {
+                "type": "pair",
+                "label": "Passive:",
+                "text": "English is taught by the teacher."
+              }
+            ]
+          },
+          {
+            "heading": "Only transitive verbs can normally be changed into the Passive Voice.",
+            "lines": [
+              {
+                "type": "plain",
+                "text": "Transitive verbs have an object."
+              },
+              {
+                "type": "arrow-note",
+                "text": "He plays cricket.",
+                "note": "Passive is possible."
+              },
+              {
+                "type": "arrow-note",
+                "text": "He sleeps.",
+                "note": "Passive is not normally possible."
+              }
+            ]
+          }
+        ],
+        "formula": {
+          "title": "General Formula",
+          "rows": [
+            {
+              "voice": "Active Voice:",
+              "formula": "Subject + Verb + Object"
+            },
+            {
+              "voice": "Passive Voice:",
+              "formula": "Object + Helping Verb + 3rd Form of Verb + by + Subject"
+            }
+          ]
+        }
+      }
+    }
   },
   {
     "id": "direct-indirect-speech/commands",

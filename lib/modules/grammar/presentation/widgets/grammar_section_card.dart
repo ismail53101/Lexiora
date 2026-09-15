@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'package:lexiora/modules/grammar/presentation/widgets/grammar_voice_colors.dart';
+
 /// A titled card used to group a lesson section (Explanation, Rules, Examples,
 /// Notes, Tips, Common Mistakes, Practice). Keeps the Lesson screen visually
 /// consistent and readable for long-form study.
@@ -77,7 +79,11 @@ class TenseRichText extends StatelessWidget {
     return Text.rich(
       TextSpan(
         style: baseStyle,
-        children: _highlightRuleDetails(text, const Color(0xFF42A5F5)),
+        children: _highlightRuleDetails(
+          text,
+          const Color(0xFF42A5F5),
+          brightness: theme.brightness,
+        ),
       ),
     );
   }
@@ -93,6 +99,8 @@ class _BilingualRichText extends StatelessWidget {
   Widget build(BuildContext context) {
     final List<Widget> lines = <Widget>[];
     Color? carriedColor;
+    final Brightness brightness = Theme.of(context).brightness;
+    final Color activeExample = activeVoiceColorFor(brightness);
     final List<String> rawLines = text.split('\n');
     for (int lineIndex = 0; lineIndex < rawLines.length; lineIndex++) {
       final String rawLine = rawLines[lineIndex];
@@ -126,8 +134,8 @@ class _BilingualRichText extends StatelessWidget {
       if (startsExplanation) {
         carriedColor = const Color(0xFFCE93D8);
       } else if (startsExample) {
-        carriedColor = const Color(0xFF64B5F6);
-      } else if (carriedColor == const Color(0xFF64B5F6) &&
+        carriedColor = activeExample;
+      } else if (carriedColor == activeExample &&
           !isUrdu &&
           !isExample &&
           line.trim().startsWith('In each example')) {
@@ -139,8 +147,8 @@ class _BilingualRichText extends StatelessWidget {
           ? const Color(0xFFCE93D8)
           : (startsExample ||
                   isExample ||
-                  (isUrdu && carriedColor == const Color(0xFF64B5F6)))
-              ? const Color(0xFF64B5F6)
+                  (isUrdu && carriedColor == activeExample))
+              ? _voiceLineColor(line, activeExample, brightness)
               : null;
       final bool heading = RegExp(
         r'^(Definition|English:|Urdu:|Example:|Examples:|Explanation:|Here:|Quick Tip|Types of Clauses|Types of Conditional Sentences|Basic Structure|Structure|Common Structure|Main Function|How to Identify|Compare|Easy Rule|Exam Tip|Functions of|Function|Usage|Common Words|Common Structures|Conditional Sentence:|Zero Conditional:|First Conditional:|Second Conditional:|Third Conditional:|Mixed Conditional:|Past Perfect|Past Simple|If \+|Subject:|Verb:|Complete thought:|Condition|Result|Noun Clause:|Adjective Clause:|Adverb Clause:|Independent Clause:|Dependent Clause:)',
@@ -206,7 +214,6 @@ List<List<String>> _markdownTableRows(List<String> lines) {
 
 class _CompactMarkdownTable extends StatelessWidget {
   const _CompactMarkdownTable({required this.rows});
-  static const Color _exampleColor = Color(0xFF64B5F6);
   final List<List<String>> rows;
 
   @override
@@ -223,10 +230,10 @@ class _CompactMarkdownTable extends StatelessWidget {
         padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
         child: Column(
           children: <Widget>[
-            _tableRow(header, theme, isHeader: true),
+            _tableRow(context, header, theme, isHeader: true),
             for (final List<String> row in body) ...<Widget>[
               Divider(height: 10, color: theme.colorScheme.outlineVariant.withValues(alpha: 0.65)),
-              _tableRow(row, theme),
+              _tableRow(context, row, theme),
             ],
           ],
         ),
@@ -234,16 +241,23 @@ class _CompactMarkdownTable extends StatelessWidget {
     );
   }
 
-  Widget _tableRow(List<String> cells, ThemeData theme, {bool isHeader = false}) {
+  Widget _tableRow(BuildContext context, List<String> cells, ThemeData theme, {bool isHeader = false}) {
     final String left = cells.isNotEmpty ? cells[0] : '';
     final String right = cells.length > 1 ? cells[1] : '';
+    final Color? rightColor = isHeader
+        ? theme.colorScheme.primary
+        : (isPassiveVoiceSentence(right)
+            ? passiveVoiceColor(context)
+            : (looksLikeEnglishSentence(right)
+                ? activeVoiceColor(context)
+                : null));
     final TextStyle leftStyle = (theme.textTheme.bodySmall ?? const TextStyle()).copyWith(
       fontWeight: FontWeight.w800,
       color: isHeader ? theme.colorScheme.primary : null,
       height: 1.2,
     );
     final TextStyle rightStyle = (theme.textTheme.bodySmall ?? const TextStyle()).copyWith(
-      color: isHeader ? theme.colorScheme.primary : _exampleColor,
+      color: isHeader ? theme.colorScheme.primary : rightColor,
       fontWeight: isHeader ? FontWeight.w800 : null,
       height: 1.2,
     );
@@ -296,6 +310,7 @@ class GrammarBullet extends StatelessWidget {
                   text,
                   const Color(0xFF42A5F5),
                   defaultColor: null,
+                  brightness: theme.brightness,
                 ),
               ),
             ),
@@ -311,8 +326,11 @@ List<TextSpan> _highlightRuleDetails(
   String text,
   Color highlightColor, {
   Color? defaultColor,
+  Brightness? brightness,
 }) {
-  const Color exampleColor = Color(0xFF64B5F6);
+  final Color exampleColor = brightness == null
+      ? const Color(0xFF64B5F6)
+      : activeVoiceColorFor(brightness);
   const Color explanationColor = Color(0xFFCE93D8);
   final List<TextSpan> spans = <TextSpan>[];
   final RegExp marker = RegExp(r'(Example|Examples|Explanation|Here):');
@@ -323,7 +341,7 @@ List<TextSpan> _highlightRuleDetails(
       continue;
     }
     if (!marker.hasMatch(line) && _looksLikeExampleLine(line)) {
-      spans.addAll(_exampleLineSpans(line, exampleColor));
+      spans.addAll(_exampleLineSpans(line, _voiceLineColor(line, exampleColor, brightness)));
       spans.add(const TextSpan(text: '\n'));
       continue;
     }
@@ -345,7 +363,9 @@ List<TextSpan> _highlightRuleDetails(
       final int end = next == null ? line.length : cursor + next.start;
       spans.addAll(_markupSpans(
         line.substring(cursor, end),
-        explanation ? explanationColor : exampleColor,
+        explanation
+            ? explanationColor
+            : _voiceLineColor(line.substring(cursor, end), exampleColor, brightness),
       ));
       cursor = end;
     }
@@ -356,6 +376,14 @@ List<TextSpan> _highlightRuleDetails(
   }
   if (spans.isNotEmpty) spans.removeLast();
   return spans;
+}
+
+/// Voice-aware line color: passive-voice sentences render green, other text
+/// keeps [fallback] (the active blue). When [brightness] is null (no theme
+/// context available) the fallback is returned unchanged.
+Color _voiceLineColor(String line, Color fallback, Brightness? brightness) {
+  if (brightness == null) return fallback;
+  return isPassiveVoiceSentence(line) ? passiveVoiceColorFor(brightness) : fallback;
 }
 
 bool _looksLikeConditionalExampleLine(String line) {
