@@ -1292,11 +1292,17 @@ class _TenseSectionsView extends StatelessWidget {
       padding: const EdgeInsets.fromLTRB(16, 12, 16, 24),
       children: <Widget>[
         // ── Page heading (e.g. "3. Present Simple") ─────────────────────
-        Text(
-          heading,
-          style: theme.textTheme.headlineSmall?.copyWith(
-            fontWeight: FontWeight.w800,
-            color: scheme.onSurface,
+        Text.rich(
+          TextSpan(
+            style: theme.textTheme.headlineSmall?.copyWith(
+              fontWeight: FontWeight.w800,
+              color: scheme.onSurface,
+            ),
+            children: _boldMarkedSpans(
+              heading,
+              color: scheme.onSurface,
+              highlightColor: highlightYellowColor(context),
+            ),
           ),
         ),
         const SizedBox(height: 12),
@@ -1336,6 +1342,7 @@ class _TenseSection extends StatelessWidget {
     final String title = (section['title'] as String?) ?? '';
     final String type = (section['type'] as String?) ?? 'plain';
     final String intro = (section['intro'] as String?) ?? '';
+    final String note = (section['note'] as String?) ?? '';
 
     return Padding(
       padding: const EdgeInsets.only(bottom: 16),
@@ -1363,17 +1370,36 @@ class _TenseSection extends StatelessWidget {
               ),
               const SizedBox(width: 10),
               Expanded(
-                child: Text(
-                  title,
-                  style: theme.textTheme.titleLarge?.copyWith(
-                    color: purple,
-                    fontWeight: FontWeight.w800,
+                child: Text.rich(
+                  TextSpan(
+                    style: theme.textTheme.titleLarge?.copyWith(
+                      color: purple,
+                      fontWeight: FontWeight.w800,
+                    ),
+                    children: _boldMarkedSpans(
+                      title,
+                      color: purple,
+                      highlightColor: highlightYellowColor(context),
+                    ),
                   ),
                 ),
               ),
             ],
           ),
           const SizedBox(height: 8),
+
+          // ── Optional gray note under the title (Special Prepositions) ──
+          if (note.isNotEmpty)
+            Padding(
+              padding: const EdgeInsets.only(bottom: 6),
+              child: Text(
+                note,
+                style: theme.textTheme.bodySmall?.copyWith(
+                  color: scheme.onSurfaceVariant,
+                  height: 1.3,
+                ),
+              ),
+            ),
 
           // ── Optional intro line (Main Rule) ─────────────────────────
           if (intro.isNotEmpty)
@@ -1523,19 +1549,28 @@ class _TenseGroupTable extends StatelessWidget {
     final ColorScheme scheme = theme.colorScheme;
     final Color? voiceColor = header
         ? null
-        : grammarTableCellColor(context, headers, headerIndex, text);
+        : grammarTableCellColor(
+            context, headers, headerIndex, stripHighlightMarkup(text));
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 7),
-      child: Text(
-        text,
-        style: (header ? theme.textTheme.labelMedium : bodyStyle)?.copyWith(
-          color: header
-              ? scheme.onSurface
-              : (voiceColor ?? scheme.onSurface),
-          fontWeight: header
-              ? FontWeight.w800
-              : (voiceColor == kGrammarHeadingPurple ? FontWeight.w700 : null),
-          height: 1.25,
+      child: Text.rich(
+        TextSpan(
+          style: (header ? theme.textTheme.labelMedium : bodyStyle)?.copyWith(
+            color: header
+                ? scheme.onSurface
+                : (voiceColor ?? scheme.onSurface),
+            fontWeight: header
+                ? FontWeight.w800
+                : (voiceColor == kGrammarHeadingPurple ? FontWeight.w700 : null),
+            height: 1.25,
+          ),
+          children: _boldMarkedSpans(
+            text,
+            color: header
+                ? scheme.onSurface
+                : (voiceColor ?? scheme.onSurface),
+            highlightColor: highlightYellowColor(context),
+          ),
         ),
       ),
     );
@@ -1570,12 +1605,18 @@ class _TenseRuleBullet extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
-                Text(
-                  text,
-                  style: bodyStyle.copyWith(
-                    fontWeight: FontWeight.w700,
-                    color: scheme.onSurface,
-                    fontSize: (bodyStyle.fontSize ?? 13) + 1,
+                Text.rich(
+                  TextSpan(
+                    style: bodyStyle.copyWith(
+                      fontWeight: FontWeight.w700,
+                      color: scheme.onSurface,
+                      fontSize: (bodyStyle.fontSize ?? 13) + 1,
+                    ),
+                    children: _boldMarkedSpans(
+                      text,
+                      color: scheme.onSurface,
+                      highlightColor: highlightYellowColor(context),
+                    ),
                   ),
                 ),
                 if (urdu.isNotEmpty) ...<Widget>[
@@ -2478,9 +2519,11 @@ Color? _voiceTextColor(BuildContext context, String text) {
   return null;
 }
 
-List<TextSpan> _boldMarkedSpans(String text, {Color? color}) {
+List<TextSpan> _boldMarkedSpans(String text,
+    {Color? color, Color? highlightColor}) {
   final List<TextSpan> spans = <TextSpan>[];
-  final RegExp markup = RegExp(r'(\*\*\*(.+?)\*\*\*|\*\*(.+?)\*\*|__(.+?)__)');
+  final RegExp markup =
+      RegExp(r'(@@(.+?)@@|\*\*\*(.+?)\*\*\*|\*\*(.+?)\*\*|__(.+?)__)');
   int cursor = 0;
   for (final RegExpMatch match in markup.allMatches(text)) {
     if (match.start > cursor) {
@@ -2489,18 +2532,29 @@ List<TextSpan> _boldMarkedSpans(String text, {Color? color}) {
         style: TextStyle(color: color),
       ));
     }
-    final String value = (match.group(2) ?? match.group(3) ?? match.group(4)!)
+    final String value = (match.group(2) ?? match.group(3) ?? match.group(4) ?? match.group(5)!)
         .replaceAll(' > ', ' → ');
-    final bool both = match.group(2) != null;
-    spans.add(TextSpan(
-      text: value,
-      style: TextStyle(
-        color: color,
-        fontWeight: both || match.group(3) != null ? FontWeight.w800 : null,
-        decoration: match.group(4) != null || both ? TextDecoration.underline : null,
-        decorationThickness: match.group(4) != null || both ? 2 : null,
-      ),
-    ));
+    if (match.group(2) != null) {
+      // @@yellow highlight@@ — bold theme-aware amber for important words.
+      spans.add(TextSpan(
+        text: value,
+        style: TextStyle(
+          color: highlightColor,
+          fontWeight: FontWeight.w800,
+        ),
+      ));
+    } else {
+      final bool both = match.group(3) != null;
+      spans.add(TextSpan(
+        text: value,
+        style: TextStyle(
+          color: color,
+          fontWeight: both || match.group(4) != null ? FontWeight.w800 : null,
+          decoration: match.group(5) != null || both ? TextDecoration.underline : null,
+          decorationThickness: match.group(5) != null || both ? 2 : null,
+        ),
+      ));
+    }
     cursor = match.end;
   }
   if (cursor < text.length) {

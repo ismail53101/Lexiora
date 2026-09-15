@@ -11,9 +11,24 @@ const Color _activeBlueDark = Color(0xFF64B5F6); // light blue on dark bg
 const Color _activeBlueLight = Color(0xFF1976D2); // deeper blue on white bg
 const Color _passiveGreenDark = Color(0xFF4ADE80); // soft bright green on dark
 const Color _passiveGreenLight = Color(0xFF15803D); // deep green on white bg
+const Color _highlightYellowDark = Color(0xFFFFD54F); // amber on dark bg
+const Color _highlightYellowLight = Color(0xFFB45309); // amber-800 on white bg
 
 /// Purple used for grammar headings and voice labels in tables.
 const Color kGrammarHeadingPurple = Color(0xFFAB47BC);
+
+/// Yellow used for highlighted/important grammar words (will have, V3, been,
+/// by, is/am/are, …). Theme-aware: amber on dark, deep amber on light.
+Color highlightYellowColor(BuildContext context) =>
+    highlightYellowColorFor(Theme.of(context).brightness);
+
+Color highlightYellowColorFor(Brightness brightness) =>
+    brightness == Brightness.dark ? _highlightYellowDark : _highlightYellowLight;
+
+/// Strips the @@highlight@@ markup so plain-text checks (Urdu detection,
+/// passive detection, sorting) see the raw sentence.
+String stripHighlightMarkup(String text) =>
+    text.replaceAllMapped(RegExp(r'@@(.+?)@@'), (RegExpMatch m) => m.group(1)!);
 
 /// Color for Active Voice example sentences in the current theme.
 Color activeVoiceColor(BuildContext context) =>
@@ -42,7 +57,8 @@ final RegExp _byAgent = RegExp(r'\bby\s+\S+', caseSensitive: false);
 /// Pattern/formula cells ("Object + is/am/are + V3 + by + Subject") never
 /// match — they contain '+' and stay uncolored.
 bool isPassiveVoiceSentence(String text) {
-  final String value = text.replaceAll('**', '').replaceAll('__', '').trim();
+  final String value =
+      stripHighlightMarkup(text).replaceAll('**', '').replaceAll('__', '').trim();
   if (value.isEmpty || _urduChars.hasMatch(value) || value.contains('+')) {
     return false;
   }
@@ -52,7 +68,8 @@ bool isPassiveVoiceSentence(String text) {
 /// True when the text reads like a plain English example sentence
 /// (not a pattern/formula cell such as "Subject + V1 + Object").
 bool looksLikeEnglishSentence(String text) {
-  final String value = text.replaceAll('**', '').replaceAll('__', '').trim();
+  final String value =
+      stripHighlightMarkup(text).replaceAll('**', '').replaceAll('__', '').trim();
   if (value.isEmpty || _urduChars.hasMatch(value)) return false;
   if (value.contains('+') || value.contains('|')) return false;
   return value.endsWith('.') || value.endsWith('?') || value.endsWith('!');
@@ -66,7 +83,8 @@ final RegExp _pronounStart = RegExp(
 /// (pronoun/name/typical subject) — used to keep Active examples blue in
 /// free-form text blocks without coloring ordinary explanations.
 bool looksLikeExampleSentence(String text) {
-  final String value = text.replaceAll('**', '').replaceAll('__', '').trim();
+  final String value =
+      stripHighlightMarkup(text).replaceAll('**', '').replaceAll('__', '').trim();
   if (value.isEmpty || _urduChars.hasMatch(value)) return false;
   return _pronounStart.hasMatch(value) &&
       (value.endsWith('.') || value.endsWith('?') || value.endsWith('!'));

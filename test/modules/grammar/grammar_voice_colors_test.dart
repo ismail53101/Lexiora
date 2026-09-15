@@ -63,5 +63,27 @@ void main() {
       expect(looksLikeEnglishSentence('Object + is/am/are + V3 + by + Subject'), isFalse);
       expect(looksLikeEnglishSentence('He writes a letter.'), isTrue);
     });
+
+    test('highlight yellow is theme-aware and distinct', () {
+      final Color dark = highlightYellowColorFor(Brightness.dark);
+      final Color light = highlightYellowColorFor(Brightness.light);
+      expect(dark, isNot(light));
+      expect(dark, const Color(0xFFFFD54F)); // amber on dark
+      expect(light, const Color(0xFFB45309)); // deep amber on light
+    });
+
+    test('@@ markup is stripped before sentence detection', () {
+      // Highlighted pattern cells stay uncolored (formula, not sentence).
+      expect(looksLikeEnglishSentence('Subject + @@will have@@ + @@V3@@ + Object'), isFalse);
+      expect(isPassiveVoiceSentence('Object + @@will have been@@ + @@V3@@ + by + Subject'), isFalse);
+
+      // Highlighted real sentences still detect their voice.
+      expect(isPassiveVoiceSentence('Cricket @@will have been@@ played by them.'), isTrue);
+      expect(looksLikeEnglishSentence('They @@will have@@ played cricket.'), isTrue);
+
+      // Stripping returns the raw words.
+      expect(stripHighlightMarkup('Use @@will have@@ according to the subject.'),
+          'Use will have according to the subject.');
+    });
   });
 }

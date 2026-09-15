@@ -11133,7 +11133,155 @@
     "title": "Simple Future",
     "subtitle": null,
     "order": 1,
-    "isLeaf": true
+    "isLeaf": true,
+    "content": {
+      "tenseSections": {
+        "heading": "Simple Future Tense (Will)",
+        "sections": [
+          {
+            "number": 1,
+            "title": "Simple Sentences",
+            "type": "table",
+            "columns": [
+              "Voice",
+              "Pattern",
+              "Example"
+            ],
+            "rows": [
+              [
+                "Active Voice",
+                "Subject + @@will@@ + @@V1@@ + Object",
+                "They will play cricket."
+              ],
+              [
+                "Passive Voice",
+                "Object + @@will be@@ + @@V3@@ + by + Subject",
+                "Cricket will be played by them."
+              ]
+            ]
+          },
+          {
+            "number": 2,
+            "title": "Negative Sentences",
+            "type": "table",
+            "columns": [
+              "Voice",
+              "Pattern",
+              "Example"
+            ],
+            "rows": [
+              [
+                "Active Voice",
+                "Subject + @@will not@@ + @@V1@@ + Object",
+                "He will not write a letter."
+              ],
+              [
+                "Passive Voice",
+                "Object + @@will not be@@ + @@V3@@ + by + Subject",
+                "A letter will not be written by him."
+              ]
+            ]
+          },
+          {
+            "number": 3,
+            "title": "Interrogative Sentences",
+            "type": "table",
+            "columns": [
+              "Voice",
+              "Pattern",
+              "Example"
+            ],
+            "rows": [
+              [
+                "Active Voice",
+                "@@Will@@ + Subject + @@V1@@ + Object?",
+                "Will he write a letter?"
+              ],
+              [
+                "Passive Voice",
+                "@@Will@@ + Object + @@be@@ + @@V3@@ + by + Subject?",
+                "Will a letter be written by him?"
+              ]
+            ]
+          },
+          {
+            "number": 4,
+            "title": "Main Rule",
+            "type": "rules",
+            "intro": "In Simple Future Passive Voice:",
+            "rules": [
+              {
+                "text": "Use @@will@@ according to the subject.",
+                "urdu": "فاعل کے مطابق will استعمال کریں۔"
+              },
+              {
+                "text": "Change the main verb into its third form (@@V3@@).",
+                "urdu": "مرکزی فعل کو اس کی تیسری شکل (V3) میں تبدیل کریں۔"
+              },
+              {
+                "text": "Use @@be@@ after @@will@@ (will be).",
+                "urdu": "will کے بعد be یعنی will be استعمال کریں۔"
+              },
+              {
+                "text": "Use @@by@@ before the doer.",
+                "urdu": "کام کرنے والے کے نام سے پہلے by استعمال کریں۔"
+              }
+            ]
+          },
+          {
+            "number": 5,
+            "title": "Examples",
+            "type": "table",
+            "columns": [
+              "Active Voice",
+              "Passive Voice"
+            ],
+            "rows": [
+              [
+                "He will write a letter.",
+                "A letter will be written by him."
+              ],
+              [
+                "She will clean the room.",
+                "The room will be cleaned by her."
+              ],
+              [
+                "They will play cricket.",
+                "Cricket will be played by them."
+              ],
+              [
+                "We will teach English.",
+                "English will be taught by us."
+              ],
+              [
+                "He will not write a letter.",
+                "A letter will not be written by him."
+              ],
+              [
+                "She will not clean the room.",
+                "The room will not be cleaned by her."
+              ],
+              [
+                "They will not play cricket.",
+                "Cricket will not be played by them."
+              ],
+              [
+                "Will he write a letter?",
+                "Will a letter be written by him?"
+              ],
+              [
+                "Will they play cricket?",
+                "Will cricket be played by them?"
+              ],
+              [
+                "Will Ali help Ahmed?",
+                "Will Ahmed be helped by Ali?"
+              ]
+            ]
+          }
+        ]
+      }
+    }
   },
   {
     "id": "active-passive-voice/future/future-perfect",
@@ -11141,7 +11289,155 @@
     "title": "Future Perfect",
     "subtitle": null,
     "order": 2,
-    "isLeaf": true
+    "isLeaf": true,
+    "content": {
+      "tenseSections": {
+        "heading": "Future Perfect Tense",
+        "sections": [
+          {
+            "number": 1,
+            "title": "Simple Sentences",
+            "type": "table",
+            "columns": [
+              "Voice",
+              "Pattern",
+              "Example"
+            ],
+            "rows": [
+              [
+                "Active Voice",
+                "Subject + @@will have@@ + @@V3@@ + Object",
+                "They will have played cricket."
+              ],
+              [
+                "Passive Voice",
+                "Object + @@will have been@@ + @@V3@@ + by + Subject",
+                "Cricket will have been played by them."
+              ]
+            ]
+          },
+          {
+            "number": 2,
+            "title": "Negative Sentences",
+            "type": "table",
+            "columns": [
+              "Voice",
+              "Pattern",
+              "Example"
+            ],
+            "rows": [
+              [
+                "Active Voice",
+                "Subject + @@will not have@@ + @@V3@@ + Object",
+                "He will not have written a letter."
+              ],
+              [
+                "Passive Voice",
+                "Object + @@will not have been@@ + @@V3@@ + by + Subject",
+                "A letter will not have been written by him."
+              ]
+            ]
+          },
+          {
+            "number": 3,
+            "title": "Interrogative Sentences",
+            "type": "table",
+            "columns": [
+              "Voice",
+              "Pattern",
+              "Example"
+            ],
+            "rows": [
+              [
+                "Active Voice",
+                "@@Will@@ + Subject + @@have@@ + @@V3@@ + Object?",
+                "Will he have written a letter?"
+              ],
+              [
+                "Passive Voice",
+                "@@Will@@ + Object + @@have been@@ + @@V3@@ + by + Subject?",
+                "Will a letter have been written by him?"
+              ]
+            ]
+          },
+          {
+            "number": 4,
+            "title": "Main Rule",
+            "type": "rules",
+            "intro": "In Future Perfect Passive Voice:",
+            "rules": [
+              {
+                "text": "Use @@will have@@ according to the subject.",
+                "urdu": "فاعل کے مطابق will have استعمال کریں۔"
+              },
+              {
+                "text": "Change the main verb into its third form (@@V3@@).",
+                "urdu": "مرکزی فعل کو اس کی تیسری شکل (V3) میں تبدیل کریں۔"
+              },
+              {
+                "text": "Use @@been@@ after @@will have@@.",
+                "urdu": "will have کے بعد been استعمال کریں۔"
+              },
+              {
+                "text": "Use @@by@@ before the doer.",
+                "urdu": "کام کرنے والے کے نام سے پہلے by استعمال کریں۔"
+              }
+            ]
+          },
+          {
+            "number": 5,
+            "title": "Examples",
+            "type": "table",
+            "columns": [
+              "Active Voice",
+              "Passive Voice"
+            ],
+            "rows": [
+              [
+                "He will have written a letter.",
+                "A letter will have been written by him."
+              ],
+              [
+                "She will have cleaned the room.",
+                "The room will have been cleaned by her."
+              ],
+              [
+                "They will have played cricket.",
+                "Cricket will have been played by them."
+              ],
+              [
+                "We will have taught English.",
+                "English will have been taught by us."
+              ],
+              [
+                "He will not have written a letter.",
+                "A letter will not have been written by him."
+              ],
+              [
+                "She will not have cleaned the room.",
+                "The room will not have been cleaned by her."
+              ],
+              [
+                "They will not have played cricket.",
+                "Cricket will not have been played by them."
+              ],
+              [
+                "Will he have written a letter?",
+                "Will a letter have been written by him?"
+              ],
+              [
+                "Will they have played cricket?",
+                "Will cricket have been played by them?"
+              ],
+              [
+                "Will Ali have helped Ahmed?",
+                "Will Ahmed have been helped by Ali?"
+              ]
+            ]
+          }
+        ]
+      }
+    }
   },
   {
     "id": "active-passive-voice/imperative",
@@ -11159,14 +11455,399 @@
       "advice passive",
       "let be v3",
       "imperative voice"
-    ]
+    ],
+    "content": {
+      "tenseSections": {
+        "heading": "Imperative Sentences",
+        "sections": [
+          {
+            "number": 1,
+            "title": "Simple Sentences",
+            "type": "table",
+            "columns": [
+              "Voice",
+              "Pattern",
+              "Example"
+            ],
+            "rows": [
+              [
+                "Active Voice",
+                "@@Verb (V1)@@ + Object",
+                "Open the door."
+              ],
+              [
+                "Passive Voice",
+                "@@Let@@ + Object + @@be@@ + @@V3@@ + (by + Subject)",
+                "Let the door be opened (by you)."
+              ]
+            ]
+          },
+          {
+            "number": 2,
+            "title": "Negative Sentences",
+            "type": "table",
+            "columns": [
+              "Voice",
+              "Pattern",
+              "Example"
+            ],
+            "rows": [
+              [
+                "Active Voice",
+                "@@Do not@@ + @@Verb (V1)@@ + Object",
+                "Do not open the door."
+              ],
+              [
+                "Passive Voice",
+                "@@Let@@ + Object + @@not be@@ + @@V3@@ + (by + Subject)",
+                "Let the door not be opened (by you)."
+              ]
+            ]
+          },
+          {
+            "number": 3,
+            "title": "Interrogative Sentences",
+            "type": "table",
+            "columns": [
+              "Voice",
+              "Pattern",
+              "Example"
+            ],
+            "rows": [
+              [
+                "Active Voice",
+                "@@Verb (V1)@@ + Object?",
+                "Open the door?"
+              ],
+              [
+                "Passive Voice",
+                "@@Let@@ + Object + @@be@@ + @@V3@@ + (by + Subject)?",
+                "Let the door be opened (by you)?"
+              ]
+            ]
+          },
+          {
+            "number": 4,
+            "title": "Main Rule",
+            "type": "rules",
+            "intro": "In Imperative Sentences (Passive Voice):",
+            "rules": [
+              {
+                "text": "Use @@let@@ at the beginning.",
+                "urdu": "شروع میں let استعمال کریں۔"
+              },
+              {
+                "text": "Use @@be@@ (is/am/are) according to the object.",
+                "urdu": "object کے مطابق is/am/are استعمال کریں۔"
+              },
+              {
+                "text": "Change the main verb into its third form (@@V3@@).",
+                "urdu": "مرکزی فعل کو اس کی تیسری شکل (V3) میں تبدیل کریں۔"
+              },
+              {
+                "text": "Use @@not@@ after the object for negative sentences.",
+                "urdu": "منفی جملوں میں object کے بعد not استعمال کریں۔"
+              },
+              {
+                "text": "Use @@by@@ + subject when the doer is mentioned (optional).",
+                "urdu": "اگر کرنے والے کا نام دیا جائے تو by استعمال کریں (ضروری نہیں)۔"
+              }
+            ]
+          },
+          {
+            "number": 5,
+            "title": "Examples",
+            "type": "table",
+            "columns": [
+              "Active Voice",
+              "Passive Voice"
+            ],
+            "rows": [
+              [
+                "Open the door.",
+                "Let the door be opened (by you)."
+              ],
+              [
+                "Close the window.",
+                "Let the window be closed (by you)."
+              ],
+              [
+                "Help the poor.",
+                "Let the poor be helped (by you)."
+              ],
+              [
+                "Do not open the door.",
+                "Let the door not be opened (by you)."
+              ],
+              [
+                "Do not disturb me.",
+                "Let me not be disturbed (by you)."
+              ],
+              [
+                "Open the door?",
+                "Let the door be opened (by you)?"
+              ],
+              [
+                "Close the window?",
+                "Let the window be closed (by you)?"
+              ],
+              [
+                "Help him?",
+                "Let him be helped (by you)?"
+              ]
+            ]
+          }
+        ]
+      }
+    }
+  },
+  {
+    "id": "active-passive-voice/special-prepositions",
+    "parentId": "active-passive-voice",
+    "title": "Special Prepositions",
+    "subtitle": null,
+    "order": 8,
+    "isLeaf": false,
+    "keywords": [
+      "special prepositions",
+      "verbs with prepositions",
+      "instead of by",
+      "known to",
+      "filled with",
+      "surprised at",
+      "interested in",
+      "worried about"
+    ],
+    "content": {}
+  },
+  {
+    "id": "active-passive-voice/special-prepositions/verbs-with-prepositions",
+    "parentId": "active-passive-voice/special-prepositions",
+    "title": "Verbs with Prepositions Instead of “By”",
+    "subtitle": null,
+    "order": 1,
+    "isLeaf": true,
+    "content": {
+      "tenseSections": {
+        "heading": "Verbs with Prepositions Instead of @@“By”@@",
+        "sections": [
+          {
+            "number": 1,
+            "title": "Verbs that take @@“To”@@",
+            "note": "These verbs usually relate to knowledge, relationships, or marriage.",
+            "type": "table",
+            "columns": [
+              "Active Voice",
+              "Passive Voice"
+            ],
+            "rows": [
+              [
+                "Everyone @@knows@@ the Prime Minister.",
+                "The Prime Minister is known @@to@@ everyone."
+              ],
+              [
+                "The actor @@married@@ a doctor.",
+                "A doctor was married @@to@@ the actor."
+              ],
+              [
+                "That answer @@addicted@@ him @@to@@ gaming.",
+                "He was addicted @@to@@ gaming."
+              ]
+            ]
+          },
+          {
+            "number": 2,
+            "title": "Verbs that take @@“With”@@",
+            "note": "These verbs involve fillings, crowds, satisfaction, or tools.",
+            "type": "table",
+            "columns": [
+              "Active Voice",
+              "Passive Voice"
+            ],
+            "rows": [
+              [
+                "Water @@filled@@ the glass.",
+                "The glass was filled @@with@@ water."
+              ],
+              [
+                "Thousands of fans @@thronged@@ the stadium.",
+                "The stadium was thronged @@with@@ thousands of fans."
+              ],
+              [
+                "Your progress @@pleases@@ me.",
+                "I am pleased @@with@@ your progress."
+              ],
+              [
+                "The dark room @@frightened@@ the child.",
+                "The child was frightened @@with@@ the dark room."
+              ]
+            ]
+          },
+          {
+            "number": 3,
+            "title": "Verbs that take @@“At”@@",
+            "note": "These verbs relate to sudden emotions, surprise, shock, or annoyance.",
+            "type": "table",
+            "columns": [
+              "Active Voice",
+              "Passive Voice"
+            ],
+            "rows": [
+              [
+                "Her sudden arrival @@surprised@@ us.",
+                "We were surprised @@at@@ her sudden arrival."
+              ],
+              [
+                "The loud noise @@alarmed@@ the birds.",
+                "The birds were alarmed @@at@@ the loud noise."
+              ],
+              [
+                "His rude behaviour @@annoyed@@ the teacher.",
+                "The teacher was annoyed @@at@@ his rude behaviour."
+              ]
+            ]
+          },
+          {
+            "number": 4,
+            "title": "Verbs that take @@“In”@@ or @@“About”@@",
+            "note": "These verbs involve containment, interest, or mental worry.",
+            "type": "table",
+            "columns": [
+              "Active Voice",
+              "Passive Voice"
+            ],
+            "rows": [
+              [
+                "This book @@interests@@ me.",
+                "I am interested @@in@@ this book."
+              ],
+              [
+                "The bag @@contains@@ gold coins.",
+                "Gold coins are contained @@in@@ the bag."
+              ],
+              [
+                "The rude news @@worried@@ his mother.",
+                "His mother was worried @@about@@ the bad news."
+              ]
+            ]
+          },
+          {
+            "number": 5,
+            "title": "Main Rule",
+            "type": "rules",
+            "intro": "",
+            "rules": [
+              {
+                "text": "Some passive sentences do not use the word @@by@@. They use other prepositions like @@to@@, @@with@@, @@at@@, @@in@@ or @@about@@."
+              },
+              {
+                "text": "Use the correct preposition according to the verb and its meaning."
+              },
+              {
+                "text": "Common prepositions: @@to@@, @@with@@, @@at@@, @@in@@, @@about@@."
+              },
+              {
+                "text": "Not every passive sentence takes @@“by.”@@"
+              }
+            ]
+          },
+          {
+            "number": 6,
+            "title": "More Examples",
+            "type": "table",
+            "columns": [
+              "Active Voice",
+              "Passive Voice"
+            ],
+            "rows": [
+              [
+                "Everyone knows the Prime Minister.",
+                "The Prime Minister is known @@to@@ everyone."
+              ],
+              [
+                "The actor married a doctor.",
+                "A doctor was married @@to@@ the actor."
+              ],
+              [
+                "That answer addicted him to gaming.",
+                "He was addicted @@to@@ gaming."
+              ],
+              [
+                "Water filled the glass.",
+                "The glass was filled @@with@@ water."
+              ],
+              [
+                "Thousands of fans thronged the stadium.",
+                "The stadium was thronged @@with@@ thousands of fans."
+              ],
+              [
+                "Your progress pleases me.",
+                "I am pleased @@with@@ your progress."
+              ],
+              [
+                "The dark room frightened the child.",
+                "The child was frightened @@with@@ the dark room."
+              ],
+              [
+                "Her sudden arrival surprised us.",
+                "We were surprised @@at@@ her sudden arrival."
+              ],
+              [
+                "The loud noise alarmed the birds.",
+                "The birds were alarmed @@at@@ the loud noise."
+              ],
+              [
+                "His rude behaviour annoyed the teacher.",
+                "The teacher was annoyed @@at@@ his rude behaviour."
+              ],
+              [
+                "This book interests me.",
+                "I am interested @@in@@ this book."
+              ],
+              [
+                "The bag contains gold coins.",
+                "Gold coins are contained @@in@@ the bag."
+              ],
+              [
+                "The bad news worried his mother.",
+                "His mother was worried @@about@@ the bad news."
+              ],
+              [
+                "The movie entertained the audience.",
+                "The audience was entertained @@by@@ the movie."
+              ],
+              [
+                "His story shocked the world.",
+                "The world was shocked @@by@@ his story."
+              ],
+              [
+                "Your mistakes concern me.",
+                "I am concerned @@about@@ your mistakes."
+              ],
+              [
+                "The results satisfied the committee.",
+                "The committee was satisfied @@with@@ the results."
+              ],
+              [
+                "Her silence confused everyone.",
+                "Everyone was confused @@by@@ her silence."
+              ],
+              [
+                "This opportunity benefits the whole team.",
+                "The whole team is benefited @@by@@ this opportunity."
+              ]
+            ]
+          }
+        ]
+      }
+    }
   },
   {
     "id": "active-passive-voice/practice-quiz",
     "parentId": "active-passive-voice",
     "title": "Practice Quiz",
     "subtitle": null,
-    "order": 8,
+    "order": 9,
     "isLeaf": true
   },
   {
@@ -11394,7 +12075,151 @@
     "title": "Simple Past",
     "subtitle": null,
     "order": 1,
-    "isLeaf": true
+    "isLeaf": true,
+    "content": {
+      "tenseSections": {
+        "heading": "Past Simple Tense (Past)",
+        "sections": [
+          {
+            "number": 1,
+            "title": "Simple Sentences",
+            "type": "table",
+            "columns": [
+              "Voice",
+              "Pattern",
+              "Example"
+            ],
+            "rows": [
+              [
+                "Active Voice",
+                "Subject + @@V2@@ + Object",
+                "They played cricket."
+              ],
+              [
+                "Passive Voice",
+                "Object + @@was/were@@ + @@V3@@ + by + Subject",
+                "Cricket was played by them."
+              ]
+            ]
+          },
+          {
+            "number": 2,
+            "title": "Negative Sentences",
+            "type": "table",
+            "columns": [
+              "Voice",
+              "Pattern",
+              "Example"
+            ],
+            "rows": [
+              [
+                "Active Voice",
+                "Subject + @@did not@@ + @@V1@@ + Object",
+                "He did not write a letter."
+              ],
+              [
+                "Passive Voice",
+                "Object + @@was/were not@@ + @@V3@@ + by + Subject",
+                "A letter was not written by him."
+              ]
+            ]
+          },
+          {
+            "number": 3,
+            "title": "Interrogative Sentences",
+            "type": "table",
+            "columns": [
+              "Voice",
+              "Pattern",
+              "Example"
+            ],
+            "rows": [
+              [
+                "Active Voice",
+                "@@Did@@ + Subject + @@V1@@ + Object?",
+                "Did he write a letter?"
+              ],
+              [
+                "Passive Voice",
+                "@@Was/Were@@ + Object + @@V3@@ + by + Subject?",
+                "Was a letter written by him?"
+              ]
+            ]
+          },
+          {
+            "number": 4,
+            "title": "Main Rule",
+            "type": "rules",
+            "intro": "In Past Simple Passive Voice:",
+            "rules": [
+              {
+                "text": "Use @@was/were@@ according to the subject.",
+                "urdu": "فاعل کے مطابق was/were استعمال کریں۔"
+              },
+              {
+                "text": "Change the main verb into its third form (@@V3@@).",
+                "urdu": "مرکزی فعل کو اس کی تیسری شکل (V3) میں تبدیل کریں۔"
+              },
+              {
+                "text": "Use @@by@@ before the doer.",
+                "urdu": "کام کرنے والے کے نام سے پہلے by استعمال کریں۔"
+              }
+            ]
+          },
+          {
+            "number": 5,
+            "title": "Examples",
+            "type": "table",
+            "columns": [
+              "Active Voice",
+              "Passive Voice"
+            ],
+            "rows": [
+              [
+                "He wrote a letter.",
+                "A letter was written by him."
+              ],
+              [
+                "She cleaned the room.",
+                "The room was cleaned by her."
+              ],
+              [
+                "They played cricket.",
+                "Cricket was played by them."
+              ],
+              [
+                "We taught English.",
+                "English was taught by us."
+              ],
+              [
+                "He did not write a letter.",
+                "A letter was not written by him."
+              ],
+              [
+                "She did not clean the room.",
+                "The room was not cleaned by her."
+              ],
+              [
+                "They did not play cricket.",
+                "Cricket was not played by them."
+              ],
+              [
+                "Did he write a letter?",
+                "Was a letter written by him?"
+              ],
+              [
+                "Did they play cricket?",
+                "Was cricket played by them?"
+              ],
+              [
+                "Did Ali help Ahmed?",
+                "Was Ahmed helped by Ali?"
+              ]
+            ]
+          }
+        ]
+      }
+    }
   },
   {
     "id": "active-passive-voice/past/past-continuous",
@@ -11402,7 +12227,159 @@
     "title": "Past Continuous",
     "subtitle": null,
     "order": 2,
-    "isLeaf": true
+    "isLeaf": true,
+    "content": {
+      "tenseSections": {
+        "heading": "Past Continuous Tense",
+        "sections": [
+          {
+            "number": 1,
+            "title": "Simple Sentences",
+            "type": "table",
+            "columns": [
+              "Voice",
+              "Pattern",
+              "Example"
+            ],
+            "rows": [
+              [
+                "Active Voice",
+                "Subject + @@was/were@@ + @@V1-ing@@ + Object",
+                "They were playing cricket."
+              ],
+              [
+                "Passive Voice",
+                "Object + @@was/were@@ + @@being@@ + @@V3@@ + by + Subject",
+                "Cricket was being played by them."
+              ]
+            ]
+          },
+          {
+            "number": 2,
+            "title": "Negative Sentences",
+            "type": "table",
+            "columns": [
+              "Voice",
+              "Pattern",
+              "Example"
+            ],
+            "rows": [
+              [
+                "Active Voice",
+                "Subject + @@was/were not@@ + @@V1-ing@@ + Object",
+                "He was not writing a letter."
+              ],
+              [
+                "Passive Voice",
+                "Object + @@was/were not@@ + @@being@@ + @@V3@@ + by + Subject",
+                "A letter was not being written by him."
+              ]
+            ]
+          },
+          {
+            "number": 3,
+            "title": "Interrogative Sentences",
+            "type": "table",
+            "columns": [
+              "Voice",
+              "Pattern",
+              "Example"
+            ],
+            "rows": [
+              [
+                "Active Voice",
+                "@@Was/Were@@ + Subject + @@V1-ing@@ + Object?",
+                "Was he writing a letter?"
+              ],
+              [
+                "Passive Voice",
+                "@@Was/Were@@ + Object + @@being@@ + @@V3@@ + by + Subject?",
+                "Was a letter being written by him?"
+              ]
+            ]
+          },
+          {
+            "number": 4,
+            "title": "Main Rule",
+            "type": "rules",
+            "intro": "In Past Continuous Passive Voice:",
+            "rules": [
+              {
+                "text": "Use @@was/were@@ according to the subject.",
+                "urdu": "فاعل کے مطابق was/were استعمال کریں۔"
+              },
+              {
+                "text": "Change the main verb into its third form (@@V3@@).",
+                "urdu": "مرکزی فعل کو اس کی تیسری شکل (V3) میں تبدیل کریں۔"
+              },
+              {
+                "text": "Use @@being@@ before @@V3@@.",
+                "urdu": "V3 سے پہلے being استعمال کریں۔"
+              },
+              {
+                "text": "Use @@by@@ before the doer.",
+                "urdu": "کام کرنے والے کے نام سے پہلے by استعمال کریں۔"
+              },
+              {
+                "text": "Keep the sentence in the @@continuous form@@.",
+                "urdu": "جملے کو مسلسل (continuous) شکل میں رکھیں۔"
+              }
+            ]
+          },
+          {
+            "number": 5,
+            "title": "Examples",
+            "type": "table",
+            "columns": [
+              "Active Voice",
+              "Passive Voice"
+            ],
+            "rows": [
+              [
+                "He was writing a letter.",
+                "A letter was being written by him."
+              ],
+              [
+                "She was cleaning the room.",
+                "The room was being cleaned by her."
+              ],
+              [
+                "They were playing cricket.",
+                "Cricket was being played by them."
+              ],
+              [
+                "We were teaching English.",
+                "English was being taught by us."
+              ],
+              [
+                "He was not writing a letter.",
+                "A letter was not being written by him."
+              ],
+              [
+                "She was not cleaning the room.",
+                "The room was not being cleaned by her."
+              ],
+              [
+                "They were not playing cricket.",
+                "Cricket was not being played by them."
+              ],
+              [
+                "Was he writing a letter?",
+                "Was a letter being written by him?"
+              ],
+              [
+                "Were they playing cricket?",
+                "Was cricket being played by them?"
+              ],
+              [
+                "Was Ali helping Ahmed?",
+                "Was Ahmed being helped by Ali?"
+              ]
+            ]
+          }
+        ]
+      }
+    }
   },
   {
     "id": "active-passive-voice/past/past-perfect",
@@ -11410,7 +12387,159 @@
     "title": "Past Perfect",
     "subtitle": null,
     "order": 3,
-    "isLeaf": true
+    "isLeaf": true,
+    "content": {
+      "tenseSections": {
+        "heading": "Past Perfect Tense",
+        "sections": [
+          {
+            "number": 1,
+            "title": "Simple Sentences",
+            "type": "table",
+            "columns": [
+              "Voice",
+              "Pattern",
+              "Example"
+            ],
+            "rows": [
+              [
+                "Active Voice",
+                "Subject + @@had@@ + @@V3@@ + Object",
+                "They had played cricket."
+              ],
+              [
+                "Passive Voice",
+                "Object + @@had been@@ + @@V3@@ + by + Subject",
+                "Cricket had been played by them."
+              ]
+            ]
+          },
+          {
+            "number": 2,
+            "title": "Negative Sentences",
+            "type": "table",
+            "columns": [
+              "Voice",
+              "Pattern",
+              "Example"
+            ],
+            "rows": [
+              [
+                "Active Voice",
+                "Subject + @@had not@@ + @@V3@@ + Object",
+                "He had not written a letter."
+              ],
+              [
+                "Passive Voice",
+                "Object + @@had not been@@ + @@V3@@ + by + Subject",
+                "A letter had not been written by him."
+              ]
+            ]
+          },
+          {
+            "number": 3,
+            "title": "Interrogative Sentences",
+            "type": "table",
+            "columns": [
+              "Voice",
+              "Pattern",
+              "Example"
+            ],
+            "rows": [
+              [
+                "Active Voice",
+                "@@Had@@ + Subject + @@V3@@ + Object?",
+                "Had he written a letter?"
+              ],
+              [
+                "Passive Voice",
+                "@@Had@@ + Object + @@been@@ + @@V3@@ + by + Subject?",
+                "Had a letter been written by him?"
+              ]
+            ]
+          },
+          {
+            "number": 4,
+            "title": "Main Rule",
+            "type": "rules",
+            "intro": "In Past Perfect Passive Voice:",
+            "rules": [
+              {
+                "text": "Use @@had@@ according to the subject.",
+                "urdu": "فاعل کے مطابق had استعمال کریں۔"
+              },
+              {
+                "text": "Change the main verb into its third form (@@V3@@).",
+                "urdu": "مرکزی فعل کو اس کی تیسری شکل (V3) میں تبدیل کریں۔"
+              },
+              {
+                "text": "Use @@been@@ before @@V3@@.",
+                "urdu": "V3 سے پہلے been استعمال کریں۔"
+              },
+              {
+                "text": "Use @@by@@ before the doer.",
+                "urdu": "کام کرنے والے کے نام سے پہلے by استعمال کریں۔"
+              },
+              {
+                "text": "Keep the sentence in the @@perfect form@@.",
+                "urdu": "جملے کو مکمل شکل (perfect) میں رکھیں۔"
+              }
+            ]
+          },
+          {
+            "number": 5,
+            "title": "Examples",
+            "type": "table",
+            "columns": [
+              "Active Voice",
+              "Passive Voice"
+            ],
+            "rows": [
+              [
+                "He had written a letter.",
+                "A letter had been written by him."
+              ],
+              [
+                "She had cleaned the room.",
+                "The room had been cleaned by her."
+              ],
+              [
+                "They had played cricket.",
+                "Cricket had been played by them."
+              ],
+              [
+                "We had taught English.",
+                "English had been taught by us."
+              ],
+              [
+                "He had not written a letter.",
+                "A letter had not been written by him."
+              ],
+              [
+                "She had not cleaned the room.",
+                "The room had not been cleaned by her."
+              ],
+              [
+                "They had not played cricket.",
+                "Cricket had not been played by them."
+              ],
+              [
+                "Had he written a letter?",
+                "Had a letter been written by him?"
+              ],
+              [
+                "Had they played cricket?",
+                "Had cricket been played by them?"
+              ],
+              [
+                "Had Ali helped Ahmed?",
+                "Had Ahmed been helped by Ali?"
+              ]
+            ]
+          }
+        ]
+      }
+    }
   },
   {
     "id": "active-passive-voice/present",
@@ -11589,7 +12718,159 @@
     "title": "Present Continuous",
     "subtitle": null,
     "order": 2,
-    "isLeaf": true
+    "isLeaf": true,
+    "content": {
+      "tenseSections": {
+        "heading": "Present Continuous Tense",
+        "sections": [
+          {
+            "number": 1,
+            "title": "Simple Sentences",
+            "type": "table",
+            "columns": [
+              "Voice",
+              "Pattern",
+              "Example"
+            ],
+            "rows": [
+              [
+                "Active Voice",
+                "Subject + @@is/am/are@@ + @@V1-ing@@ + Object",
+                "They are playing cricket."
+              ],
+              [
+                "Passive Voice",
+                "Object + @@is/am/are@@ + @@being@@ + @@V3@@ + by + Subject",
+                "Cricket is being played by them."
+              ]
+            ]
+          },
+          {
+            "number": 2,
+            "title": "Negative Sentences",
+            "type": "table",
+            "columns": [
+              "Voice",
+              "Pattern",
+              "Example"
+            ],
+            "rows": [
+              [
+                "Active Voice",
+                "Subject + @@is/am/are not@@ + @@V1-ing@@ + Object",
+                "He is not writing a letter."
+              ],
+              [
+                "Passive Voice",
+                "Object + @@is/am/are not@@ + @@being@@ + @@V3@@ + by + Subject",
+                "A letter is not being written by him."
+              ]
+            ]
+          },
+          {
+            "number": 3,
+            "title": "Interrogative Sentences",
+            "type": "table",
+            "columns": [
+              "Voice",
+              "Pattern",
+              "Example"
+            ],
+            "rows": [
+              [
+                "Active Voice",
+                "@@Is/Am/Are@@ + Subject + @@V1-ing@@ + Object?",
+                "Is he writing a letter?"
+              ],
+              [
+                "Passive Voice",
+                "@@Is/Am/Are@@ + Object + @@being@@ + @@V3@@ + by + Subject?",
+                "Is a letter being written by him?"
+              ]
+            ]
+          },
+          {
+            "number": 4,
+            "title": "Main Rule",
+            "type": "rules",
+            "intro": "In Present Continuous Passive Voice:",
+            "rules": [
+              {
+                "text": "Use @@is/am/are@@ according to the subject.",
+                "urdu": "فاعل کے مطابق is/am/are استعمال کریں۔"
+              },
+              {
+                "text": "Change the main verb into its third form (@@V3@@).",
+                "urdu": "مرکزی فعل کو اس کی تیسری شکل (V3) میں تبدیل کریں۔"
+              },
+              {
+                "text": "Use @@being@@ before @@V3@@.",
+                "urdu": "V3 سے پہلے being استعمال کریں۔"
+              },
+              {
+                "text": "Use @@by@@ before the doer.",
+                "urdu": "کام کرنے والے کے نام سے پہلے by استعمال کریں۔"
+              },
+              {
+                "text": "Keep the sentence in the @@continuous form@@.",
+                "urdu": "جملے کو مسلسل (continuous) شکل میں رکھیں۔"
+              }
+            ]
+          },
+          {
+            "number": 5,
+            "title": "Examples",
+            "type": "table",
+            "columns": [
+              "Active Voice",
+              "Passive Voice"
+            ],
+            "rows": [
+              [
+                "He is writing a letter.",
+                "A letter is being written by him."
+              ],
+              [
+                "She is cleaning the room.",
+                "The room is being cleaned by her."
+              ],
+              [
+                "They are playing cricket.",
+                "Cricket is being played by them."
+              ],
+              [
+                "We are teaching English.",
+                "English is being taught by us."
+              ],
+              [
+                "He is not writing a letter.",
+                "A letter is not being written by him."
+              ],
+              [
+                "She is not cleaning the room.",
+                "The room is not being cleaned by her."
+              ],
+              [
+                "They are not playing cricket.",
+                "Cricket is not being played by them."
+              ],
+              [
+                "Is he writing a letter?",
+                "Is a letter being written by him?"
+              ],
+              [
+                "Are they playing cricket?",
+                "Is cricket being played by them?"
+              ],
+              [
+                "Is Ali helping Ahmed?",
+                "Is Ahmed being helped by Ali?"
+              ]
+            ]
+          }
+        ]
+      }
+    }
   },
   {
     "id": "active-passive-voice/present/present-perfect",
@@ -11597,7 +12878,159 @@
     "title": "Present Perfect",
     "subtitle": null,
     "order": 3,
-    "isLeaf": true
+    "isLeaf": true,
+    "content": {
+      "tenseSections": {
+        "heading": "Present Perfect Tense",
+        "sections": [
+          {
+            "number": 1,
+            "title": "Simple Sentences",
+            "type": "table",
+            "columns": [
+              "Voice",
+              "Pattern",
+              "Example"
+            ],
+            "rows": [
+              [
+                "Active Voice",
+                "Subject + @@has/have@@ + @@V3@@ + Object",
+                "They have played cricket."
+              ],
+              [
+                "Passive Voice",
+                "Object + @@has/have@@ + @@been@@ + @@V3@@ + by + Subject",
+                "Cricket has been played by them."
+              ]
+            ]
+          },
+          {
+            "number": 2,
+            "title": "Negative Sentences",
+            "type": "table",
+            "columns": [
+              "Voice",
+              "Pattern",
+              "Example"
+            ],
+            "rows": [
+              [
+                "Active Voice",
+                "Subject + @@has/have not@@ + @@V3@@ + Object",
+                "He has not written a letter."
+              ],
+              [
+                "Passive Voice",
+                "Object + @@has/have not@@ + @@been@@ + @@V3@@ + by + Subject",
+                "A letter has not been written by him."
+              ]
+            ]
+          },
+          {
+            "number": 3,
+            "title": "Interrogative Sentences",
+            "type": "table",
+            "columns": [
+              "Voice",
+              "Pattern",
+              "Example"
+            ],
+            "rows": [
+              [
+                "Active Voice",
+                "@@Has/Have@@ + Subject + @@V3@@ + Object?",
+                "Has he written a letter?"
+              ],
+              [
+                "Passive Voice",
+                "@@Has/Have@@ + Object + @@been@@ + @@V3@@ + by + Subject?",
+                "Has a letter been written by him?"
+              ]
+            ]
+          },
+          {
+            "number": 4,
+            "title": "Main Rule",
+            "type": "rules",
+            "intro": "In Present Perfect Passive Voice:",
+            "rules": [
+              {
+                "text": "Use @@has/have@@ according to the subject.",
+                "urdu": "فاعل کے مطابق has/have استعمال کریں۔"
+              },
+              {
+                "text": "Change the main verb into its third form (@@V3@@).",
+                "urdu": "مرکزی فعل کو اس کی تیسری شکل (V3) میں تبدیل کریں۔"
+              },
+              {
+                "text": "Use @@been@@ before @@V3@@.",
+                "urdu": "V3 سے پہلے been استعمال کریں۔"
+              },
+              {
+                "text": "Use @@by@@ before the doer.",
+                "urdu": "کام کرنے والے کے نام سے پہلے by استعمال کریں۔"
+              },
+              {
+                "text": "Keep the sentence in the @@perfect form@@.",
+                "urdu": "جملے کو مکمل شکل (perfect) میں رکھیں۔"
+              }
+            ]
+          },
+          {
+            "number": 5,
+            "title": "Examples",
+            "type": "table",
+            "columns": [
+              "Active Voice",
+              "Passive Voice"
+            ],
+            "rows": [
+              [
+                "He has written a letter.",
+                "A letter has been written by him."
+              ],
+              [
+                "She has cleaned the room.",
+                "The room has been cleaned by her."
+              ],
+              [
+                "They have played cricket.",
+                "Cricket has been played by them."
+              ],
+              [
+                "We have taught English.",
+                "English has been taught by us."
+              ],
+              [
+                "He has not written a letter.",
+                "A letter has not been written by him."
+              ],
+              [
+                "She has not cleaned the room.",
+                "The room has not been cleaned by her."
+              ],
+              [
+                "They have not played cricket.",
+                "Cricket has not been played by them."
+              ],
+              [
+                "Has he written a letter?",
+                "Has a letter been written by him?"
+              ],
+              [
+                "Have they played cricket?",
+                "Has cricket been played by them?"
+              ],
+              [
+                "Has Ali helped Ahmed?",
+                "Has Ahmed been helped by Ali?"
+              ]
+            ]
+          }
+        ]
+      }
+    }
   },
   {
     "id": "active-passive-voice/rules",

@@ -106,11 +106,12 @@ void main() {
     expect(comparison.every((GrammarTopicSummary t) => t.isLeaf), isTrue);
 
     // Active & Passive Voice → structure-only hierarchy: two direct leaves,
-    // three tense branches, Modal Verbs and Imperative Sentences branches,
-    // and the Practice Quiz leaf. Lesson content is added in a later pass.
+    // three tense branches, Modal Verbs, Imperative Sentences and Special
+    // Prepositions branches, and the Practice Quiz leaf. Lesson content is
+    // added in a later pass.
     final List<GrammarTopicSummary> voice =
         await ds.children('active-passive-voice');
-    expect(voice.length, 8);
+    expect(voice.length, 9);
     expect(
       voice.map((GrammarTopicSummary t) => t.title).toList(),
       <String>[
@@ -121,11 +122,12 @@ void main() {
         'Future Tense',
         'Modal Verbs',
         'Imperative Sentences',
+        'Special Prepositions',
         'Practice Quiz',
       ],
     );
-    expect(voice.where((GrammarTopicSummary t) => !t.isLeaf).length, 5,
-        reason: 'the three tense groups plus Modal Verbs and Imperative are branches');
+    expect(voice.where((GrammarTopicSummary t) => !t.isLeaf).length, 6,
+        reason: 'the three tense groups plus Modal Verbs, Imperative and Special Prepositions are branches');
     expect(
       (await ds.children('active-passive-voice/present'))
           .map((GrammarTopicSummary t) => t.title)
