@@ -293,6 +293,7 @@ class GrammarLocalDataSource {
       tableRows: _tableRows(o['tableRows']),
       voiceComparison: o['voiceComparison'] as Map<String, dynamic>?,
       rulesConversion: o['rulesConversion'] as Map<String, dynamic>?,
+      tenseSections: o['tenseSections'] as Map<String, dynamic>?,
     );
   }
 

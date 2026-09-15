@@ -212,6 +212,14 @@ class _LessonView extends StatelessWidget {
         data: lesson.rulesConversion!,
       );
     }
+    // Numbered tense-section layout (Structure → Main Rule → Examples).
+    if (lesson.tenseSections != null && lesson.tenseSections!.isNotEmpty) {
+      return _TenseSectionsView(
+        lessonId: lesson.id,
+        title: lesson.title,
+        data: lesson.tenseSections!,
+      );
+    }
     // Two-column voice comparison layout (Active vs Passive Voice).
     if (lesson.voiceComparison != null && lesson.voiceComparison!.isNotEmpty) {
       return _VoiceComparisonView(
@@ -1243,6 +1251,345 @@ class _VoiceBreakdownRow extends StatelessWidget {
             child: Text(
               right,
               style: bodyStyle.copyWith(height: 1.3),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+/// Numbered tense-section layout for the Active & Passive Voice tense
+/// lessons (e.g. Present Simple): "1 Structure" with proper tables,
+/// "2 Main Rule" with bilingual bullets, "3 Examples" with a two-column
+/// Active/Passive table. Matches the reference screenshot exactly.
+class _TenseSectionsView extends StatelessWidget {
+  const _TenseSectionsView({
+    required this.lessonId,
+    required this.title,
+    required this.data,
+  });
+
+  final String lessonId;
+  final String title;
+  final Map<String, dynamic> data;
+
+  // Reference-image palette (shared with the other APV views).
+  static const Color _purple = Color(0xFFAB47BC);
+  static const Color _markerPurple = Color(0xFF7E57C2);
+
+  @override
+  Widget build(BuildContext context) {
+    final ThemeData theme = Theme.of(context);
+    final ColorScheme scheme = theme.colorScheme;
+    final TextStyle bodyStyle =
+        theme.textTheme.bodySmall?.copyWith(height: 1.4, color: scheme.onSurface) ??
+            const TextStyle();
+
+    final String heading = (data['heading'] as String?) ?? title;
+    final List<dynamic> sections = (data['sections'] as List<dynamic>?) ?? [];
+
+    return ListView(
+      padding: const EdgeInsets.fromLTRB(16, 12, 16, 24),
+      children: <Widget>[
+        // ── Page heading (e.g. "3. Present Simple") ─────────────────────
+        Text(
+          heading,
+          style: theme.textTheme.headlineSmall?.copyWith(
+            fontWeight: FontWeight.w800,
+            color: scheme.onSurface,
+          ),
+        ),
+        const SizedBox(height: 12),
+
+        // ── Numbered sections, vertical flow ────────────────────────────
+        for (final dynamic s in sections)
+          _TenseSection(
+            section: s as Map<String, dynamic>,
+            bodyStyle: bodyStyle,
+            purple: _purple,
+            markerPurple: _markerPurple,
+          ),
+      ],
+    );
+  }
+}
+
+/// One numbered section: purple circle marker + purple title + content.
+class _TenseSection extends StatelessWidget {
+  const _TenseSection({
+    required this.section,
+    required this.bodyStyle,
+    required this.purple,
+    required this.markerPurple,
+  });
+
+  final Map<String, dynamic> section;
+  final TextStyle bodyStyle;
+  final Color purple;
+  final Color markerPurple;
+
+  @override
+  Widget build(BuildContext context) {
+    final ThemeData theme = Theme.of(context);
+    final ColorScheme scheme = theme.colorScheme;
+    final int number = (section['number'] as num?)?.toInt() ?? 0;
+    final String title = (section['title'] as String?) ?? '';
+    final String type = (section['type'] as String?) ?? 'plain';
+    final String intro = (section['intro'] as String?) ?? '';
+
+    return Padding(
+      padding: const EdgeInsets.only(bottom: 16),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: <Widget>[
+          // ── Marker + purple section title ──────────────────────────
+          Row(
+            children: <Widget>[
+              Container(
+                width: 26,
+                height: 26,
+                decoration: BoxDecoration(
+                  color: markerPurple,
+                  shape: BoxShape.circle,
+                ),
+                alignment: Alignment.center,
+                child: Text(
+                  '$number',
+                  style: theme.textTheme.labelMedium?.copyWith(
+                    color: Colors.white,
+                    fontWeight: FontWeight.w700,
+                  ),
+                ),
+              ),
+              const SizedBox(width: 10),
+              Expanded(
+                child: Text(
+                  title,
+                  style: theme.textTheme.titleLarge?.copyWith(
+                    color: purple,
+                    fontWeight: FontWeight.w800,
+                  ),
+                ),
+              ),
+            ],
+          ),
+          const SizedBox(height: 8),
+
+          // ── Optional intro line (Main Rule) ─────────────────────────
+          if (intro.isNotEmpty)
+            Padding(
+              padding: const EdgeInsets.only(bottom: 8),
+              child: Text(
+                intro,
+                style: theme.textTheme.bodyLarge?.copyWith(
+                  height: 1.4,
+                  color: scheme.onSurface,
+                ),
+              ),
+            ),
+
+          // ── Content by section type ──────────────────────────────────
+          if (type == 'tables')
+            for (final dynamic t in (section['tables'] as List<dynamic>? ?? []))
+              _TenseGroupTable(
+                table: t as Map<String, dynamic>,
+                bodyStyle: bodyStyle,
+              )
+          else if (type == 'rules')
+            for (final dynamic r in (section['rules'] as List<dynamic>? ?? []))
+              _TenseRuleBullet(rule: r as Map<String, dynamic>, bodyStyle: bodyStyle)
+          else if (type == 'table')
+            _TenseGroupTable(
+              table: <String, dynamic>{
+                'columns': section['columns'],
+                'rows': section['rows'],
+              },
+              bodyStyle: bodyStyle,
+              hideHeading: true,
+            ),
+        ],
+      ),
+    );
+  }
+}
+
+/// A proper compact bordered table with an optional bold heading above it.
+class _TenseGroupTable extends StatelessWidget {
+  const _TenseGroupTable({
+    required this.table,
+    required this.bodyStyle,
+    this.hideHeading = false,
+  });
+
+  final Map<String, dynamic> table;
+  final TextStyle bodyStyle;
+  final bool hideHeading;
+
+  @override
+  Widget build(BuildContext context) {
+    final ThemeData theme = Theme.of(context);
+    final ColorScheme scheme = theme.colorScheme;
+    final String heading = (table['heading'] as String?) ?? '';
+    final List<String> columns =
+        (table['columns'] as List<dynamic>? ?? []).cast<String>();
+    final List<List<String>> rows = (table['rows'] as List<dynamic>? ?? [])
+        .map<List<String>>((dynamic row) =>
+            (row as List<dynamic>).cast<String>())
+        .toList(growable: false);
+    final Color borderColor = scheme.outlineVariant.withValues(alpha: 0.6);
+
+    return Padding(
+      padding: const EdgeInsets.only(bottom: 12),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: <Widget>[
+          if (!hideHeading && heading.isNotEmpty)
+            Padding(
+              padding: const EdgeInsets.only(bottom: 6),
+              child: Text(
+                heading,
+                style: theme.textTheme.titleSmall?.copyWith(
+                  color: scheme.onSurface,
+                  fontWeight: FontWeight.w800,
+                ),
+              ),
+            ),
+          Container(
+            width: double.infinity,
+            decoration: BoxDecoration(
+              border: Border.all(color: borderColor),
+              borderRadius: BorderRadius.circular(8),
+            ),
+            child: ClipRRect(
+              borderRadius: BorderRadius.circular(8),
+              child: Table(
+                border: TableBorder(
+                  horizontalInside: BorderSide(color: borderColor),
+                  verticalInside: BorderSide(color: borderColor),
+                ),
+                // Adaptive widths: voice column narrower, pattern/example
+                // columns wider (2-col tables split evenly).
+                columnWidths: columns.length >= 3
+                    ? const <int, TableColumnWidth>{
+                        0: FlexColumnWidth(2),
+                        1: FlexColumnWidth(3),
+                        2: FlexColumnWidth(3),
+                      }
+                    : null,
+                defaultVerticalAlignment: TableCellVerticalAlignment.middle,
+                children: <TableRow>[
+                  TableRow(
+                    decoration: BoxDecoration(
+                      color: scheme.surfaceContainerHighest.withValues(alpha: 0.45),
+                    ),
+                    children: <Widget>[
+                      for (final String column in columns)
+                        _tableCell(
+                          context,
+                          column,
+                          header: true,
+                        ),
+                    ],
+                  ),
+                  for (final List<String> row in rows)
+                    TableRow(
+                      children: <Widget>[
+                        for (int i = 0; i < row.length; i++)
+                          _tableCell(
+                            context,
+                            row[i],
+                            headerIndex: i < columns.length ? i : -1,
+                            headers: columns,
+                          ),
+                      ],
+                    ),
+                ],
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget _tableCell(
+    BuildContext context,
+    String text, {
+    bool header = false,
+    int headerIndex = -1,
+    List<String> headers = const <String>[],
+  }) {
+    final ThemeData theme = Theme.of(context);
+    final ColorScheme scheme = theme.colorScheme;
+    final Color? voiceColor = header
+        ? null
+        : grammarTableCellColor(context, headers, headerIndex, text);
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 7),
+      child: Text(
+        text,
+        style: (header ? theme.textTheme.labelMedium : bodyStyle).copyWith(
+          color: header
+              ? scheme.onSurface
+              : (voiceColor ?? scheme.onSurface),
+          fontWeight: header
+              ? FontWeight.w800
+              : (voiceColor == kGrammarHeadingPurple ? FontWeight.w700 : null),
+          height: 1.25,
+        ),
+      ),
+    );
+  }
+}
+
+/// One Main Rule bullet: purple dot + bold English + Urdu below (LTR wrap).
+class _TenseRuleBullet extends StatelessWidget {
+  const _TenseRuleBullet({required this.rule, required this.bodyStyle});
+
+  final Map<String, dynamic> rule;
+  final TextStyle bodyStyle;
+
+  @override
+  Widget build(BuildContext context) {
+    final ThemeData theme = Theme.of(context);
+    final ColorScheme scheme = theme.colorScheme;
+    final String text = (rule['text'] as String?) ?? '';
+    final String urdu = (rule['urdu'] as String?) ?? '';
+
+    return Padding(
+      padding: const EdgeInsets.only(bottom: 10),
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: <Widget>[
+          Padding(
+            padding: const EdgeInsets.only(top: 6),
+            child: Icon(Icons.circle, size: 8, color: _TenseSectionsView._markerPurple),
+          ),
+          const SizedBox(width: 10),
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: <Widget>[
+                Text(
+                  text,
+                  style: bodyStyle.copyWith(
+                    fontWeight: FontWeight.w700,
+                    color: scheme.onSurface,
+                    fontSize: (bodyStyle.fontSize ?? 13) + 1,
+                  ),
+                ),
+                if (urdu.isNotEmpty) ...<Widget>[
+                  const SizedBox(height: 3),
+                  Text(
+                    urdu,
+                    style: bodyStyle.copyWith(
+                      color: scheme.onSurface,
+                      height: 1.6,
+                    ),
+                  ),
+                ],
+              ],
             ),
           ),
         ],

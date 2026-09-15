@@ -209,6 +209,7 @@ class GrammarLesson extends Equatable {
     this.tableRows = const <GrammarTableRow>[],
     this.voiceComparison,
     this.rulesConversion,
+    this.tenseSections,
   });
 
   final String id;
@@ -247,6 +248,11 @@ class GrammarLesson extends Equatable {
 
   /// Optional numbered vertical rules layout (General Rules of Conversion).
   final Map<String, dynamic>? rulesConversion;
+
+  /// Numbered tense-section layout (Structure → Main Rule → Examples),
+  /// used by the Active & Passive Voice tense lessons.
+  final Map<String, dynamic>? tenseSections;
+
   @override
   List<Object?> get props => <Object?>[
         id,
@@ -274,5 +280,6 @@ class GrammarLesson extends Equatable {
         tableRows,
         voiceComparison,
         rulesConversion,
+        tenseSections,
       ];
 }
