@@ -28,7 +28,7 @@ Color highlightYellowColorFor(Brightness brightness) =>
 /// Strips the @@highlight@@ markup so plain-text checks (Urdu detection,
 /// passive detection, sorting) see the raw sentence.
 String stripHighlightMarkup(String text) =>
-    text.replaceAllMapped(RegExp(r'@@(.+?)@@'), (RegExpMatch m) => m.group(1)!);
+    text.replaceAllMapped(RegExp(r'@@(.+?)@@'), (Match m) => m.group(1)!);
 
 /// Color for Active Voice example sentences in the current theme.
 Color activeVoiceColor(BuildContext context) =>
