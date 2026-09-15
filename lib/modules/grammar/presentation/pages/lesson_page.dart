@@ -1221,7 +1221,6 @@ class _VoiceBreakdownRow extends StatelessWidget {
     if (cells.isEmpty) return const SizedBox.shrink();
     // Layout: [label] = [description]
     final String left = cells.length >= 1 ? cells[0] : '';
-    final String mid = cells.length >= 2 ? cells[1] : '';
     final String right = cells.length >= 3 ? cells[2] : '';
     return Padding(
       padding: const EdgeInsets.only(bottom: 2),
@@ -1529,7 +1528,7 @@ class _TenseGroupTable extends StatelessWidget {
       padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 7),
       child: Text(
         text,
-        style: (header ? theme.textTheme.labelMedium : bodyStyle).copyWith(
+        style: (header ? theme.textTheme.labelMedium : bodyStyle)?.copyWith(
           color: header
               ? scheme.onSurface
               : (voiceColor ?? scheme.onSurface),
