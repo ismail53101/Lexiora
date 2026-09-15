@@ -11191,72 +11191,6 @@
         "intro": "Voice tells us whether the subject does an action or receives an action.",
         "columns": [
           {
-            "title": "Passive Voice",
-            "blocks": [
-              {
-                "type": "text",
-                "text": "In passive voice, the subject **receives** the action."
-              },
-              {
-                "type": "urdu",
-                "text": "Passive voice میں subject خود کام نہیں کرتا بلکہ اس پر کام کیا جاتا ہے۔"
-              },
-              {
-                "type": "text",
-                "text": "The sentence focuses on **what happens to someone or something**, rather than who performs the action."
-              },
-              {
-                "type": "urdu",
-                "text": "اس میں توجہ اس شخص یا چیز پر ہوتی ہے جس کے ساتھ کوئی کام کیا جاتا ہے، نہ کہ کام کرنے والے پر۔"
-              },
-              {
-                "type": "example",
-                "label": "Example",
-                "text": "A letter **is written** by Ali.",
-                "urdu": "ایک خط علی کے ذریعے لکھا جاتا ہے۔"
-              },
-              {
-                "type": "breakdown",
-                "label": "Here:",
-                "rows": [
-                  [
-                    "**A letter**",
-                    "=",
-                    "subject"
-                  ],
-                  [
-                    "**is written**",
-                    "=",
-                    "action received"
-                  ],
-                  [
-                    "**by Ali**",
-                    "=",
-                    "person who performs the action"
-                  ]
-                ]
-              },
-              {
-                "type": "text",
-                "text": "The letter does not write anything. It receives the action of being written, so the sentence is in **passive voice**."
-              },
-              {
-                "type": "urdu",
-                "text": "خط خود نہیں لکھتا بلکہ خط لکھا جاتا ہے، اس لیے یہ **passive voice** ہے۔"
-              },
-              {
-                "type": "bullets",
-                "label": "More examples",
-                "items": [
-                  "The lesson **is explained** by the teacher.",
-                  "Dinner **is cooked** by Sara.",
-                  "The door **was opened** by the boy.",
-                  "The homework **was completed** by the students."
-                ]
-              }
-            ]
-          },
-          {
             "title": "Active Voice",
             "blocks": [
               {
@@ -11318,6 +11252,72 @@
                   "Sara **cooks** dinner.",
                   "The boy **opened** the door.",
                   "The students **completed** their homework."
+                ]
+              }
+            ]
+          },
+          {
+            "title": "Passive Voice",
+            "blocks": [
+              {
+                "type": "text",
+                "text": "In passive voice, the subject **receives** the action."
+              },
+              {
+                "type": "urdu",
+                "text": "Passive voice میں subject خود کام نہیں کرتا بلکہ اس پر کام کیا جاتا ہے۔"
+              },
+              {
+                "type": "text",
+                "text": "The sentence focuses on **what happens to someone or something**, rather than who performs the action."
+              },
+              {
+                "type": "urdu",
+                "text": "اس میں توجہ اس شخص یا چیز پر ہوتی ہے جس کے ساتھ کوئی کام کیا جاتا ہے، نہ کہ کام کرنے والے پر۔"
+              },
+              {
+                "type": "example",
+                "label": "Example",
+                "text": "A letter **is written** by Ali.",
+                "urdu": "ایک خط علی کے ذریعے لکھا جاتا ہے۔"
+              },
+              {
+                "type": "breakdown",
+                "label": "Here:",
+                "rows": [
+                  [
+                    "**A letter**",
+                    "=",
+                    "subject"
+                  ],
+                  [
+                    "**is written**",
+                    "=",
+                    "action received"
+                  ],
+                  [
+                    "**by Ali**",
+                    "=",
+                    "person who performs the action"
+                  ]
+                ]
+              },
+              {
+                "type": "text",
+                "text": "The letter does not write anything. It receives the action of being written, so the sentence is in **passive voice**."
+              },
+              {
+                "type": "urdu",
+                "text": "خط خود نہیں لکھتا بلکہ خط لکھا جاتا ہے، اس لیے یہ **passive voice** ہے۔"
+              },
+              {
+                "type": "bullets",
+                "label": "More examples",
+                "items": [
+                  "The lesson **is explained** by the teacher.",
+                  "Dinner **is cooked** by Sara.",
+                  "The door **was opened** by the boy.",
+                  "The homework **was completed** by the students."
                 ]
               }
             ]
