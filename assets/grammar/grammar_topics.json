@@ -11621,6 +11621,63 @@
           "explanation": "Past Continuous back-shifts to Past Perfect Continuous."
         }
       ],
+      "quiz": [
+        {
+          "question": "\"I go to school daily.\" → He said that he ______ to school daily.",
+          "options": [
+            "goes",
+            "went",
+            "had gone",
+            "has gone"
+          ],
+          "answerIndex": 1,
+          "explanation": "Simple Present back-shifts to Simple Past (V₁ → V₂)."
+        },
+        {
+          "question": "\"I will help you.\" → She said that she ______ help me.",
+          "options": [
+            "will",
+            "would",
+            "shall",
+            "can"
+          ],
+          "answerIndex": 1,
+          "explanation": "will back-shifts to would after a past reporting verb."
+        },
+        {
+          "question": "\"I have finished my work.\" → He said that he ______ his work.",
+          "options": [
+            "has finished",
+            "have finished",
+            "had finished",
+            "will have finished"
+          ],
+          "answerIndex": 2,
+          "explanation": "Present Perfect back-shifts to Past Perfect (had + V₃)."
+        },
+        {
+          "question": "\"I can swim.\" → He said that he ______ swim.",
+          "options": [
+            "can",
+            "could",
+            "may",
+            "might"
+          ],
+          "answerIndex": 1,
+          "explanation": "can back-shifts to could after a past reporting verb."
+        },
+        {
+          "question": "In indirect speech, the Past Perfect tense becomes:",
+          "options": [
+            "Simple Past",
+            "Past Perfect (no change)",
+            "Present Perfect",
+            "Past Perfect Continuous"
+          ],
+          "answerIndex": 1,
+          "explanation": "Past Perfect never moves back further — it stays as it is."
+        }
+      ],
       "examTips": [
         "If the reporting verb is past, there is almost always a tense change — find it before answering.",
         "Past Perfect is the \"end of the line\": it never moves back further.",
