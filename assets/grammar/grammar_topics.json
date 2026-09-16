@@ -12506,6 +12506,7 @@
       "reported speech quiz"
     ],
     "content": {
+      "introduction": "Test everything you learned in this course with 100 multiple-choice questions covering all seven lessons: statements, tense backshift, pronoun changes, time and place expressions, Yes/No and WH-questions, commands and requests, and the exception rules. Every question shows the correct answer with a short explanation, so you learn from every attempt. Aim for 80+ correct answers to master Direct & Indirect Speech.",
       "quiz": [
         {
           "question": "He said, \"I am busy.\" → He said that ______ busy.",
