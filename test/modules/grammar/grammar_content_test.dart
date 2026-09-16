@@ -149,7 +149,7 @@ void main() {
 
     // Active & Passive Voice → Practice Quiz: 100 unique MCQs across all
     // seven voice topics (no Introduction / General Rules questions).
-    final GrammarLesson? apvQuiz = await ds.lesson('active-passive-voice/practice-quiz');
+    final GrammarLesson? apvQuiz = await ds.leaf('active-passive-voice/practice-quiz');
     expect(apvQuiz, isNotNull);
     expect(apvQuiz!.quiz.length, 100);
     final Set<String> seenQuestions = <String>{};
