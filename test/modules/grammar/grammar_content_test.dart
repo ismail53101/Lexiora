@@ -147,6 +147,21 @@ void main() {
       <String>['Simple Future', 'Future Perfect'],
     );
 
+    // Active & Passive Voice → Practice Quiz: 100 unique MCQs across all
+    // seven voice topics (no Introduction / General Rules questions).
+    final GrammarLesson? apvQuiz = await ds.lesson('active-passive-voice/practice-quiz');
+    expect(apvQuiz, isNotNull);
+    expect(apvQuiz!.quiz.length, 100);
+    final Set<String> seenQuestions = <String>{};
+    for (final GrammarQuestion q in apvQuiz.quiz) {
+      expect(q.options.length, 4, reason: 'every question has exactly 4 options');
+      expect(q.answerIndex, inInclusiveRange(0, 3));
+      expect(seenQuestions.add(q.question), isTrue,
+          reason: 'no duplicate questions');
+      final Set<String> opts = Set<String>.from(q.options);
+      expect(opts.length, 4, reason: 'options are unique within a question');
+    }
+
     // Narration → 6 leaf sections.
     final List<GrammarTopicSummary> narration =
         await ds.children('direct-indirect-speech');

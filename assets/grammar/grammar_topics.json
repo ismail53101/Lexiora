@@ -11456,6 +11456,25 @@
       "let be v3",
       "imperative voice"
     ],
+    "content": {}
+  },
+  {
+    "id": "active-passive-voice/imperative/imperative-lesson",
+    "parentId": "active-passive-voice/imperative",
+    "title": "Imperative Sentences",
+    "subtitle": null,
+    "order": 1,
+    "isLeaf": true,
+    "keywords": [
+      "imperative passive",
+      "let the object be",
+      "you are requested",
+      "command passive",
+      "order passive",
+      "advice passive",
+      "let be v3",
+      "imperative voice"
+    ],
     "content": {
       "tenseSections": {
         "heading": "Imperative Sentences",
@@ -11813,28 +11832,12 @@
                 "His mother was worried @@about@@ the bad news."
               ],
               [
-                "The movie entertained the audience.",
-                "The audience was entertained @@by@@ the movie."
-              ],
-              [
-                "His story shocked the world.",
-                "The world was shocked @@by@@ his story."
-              ],
-              [
                 "Your mistakes concern me.",
                 "I am concerned @@about@@ your mistakes."
               ],
               [
                 "The results satisfied the committee.",
                 "The committee was satisfied @@with@@ the results."
-              ],
-              [
-                "Her silence confused everyone.",
-                "Everyone was confused @@by@@ her silence."
-              ],
-              [
-                "This opportunity benefits the whole team.",
-                "The whole team is benefited @@by@@ this opportunity."
               ]
             ]
           }
@@ -11848,7 +11851,1211 @@
     "title": "Practice Quiz",
     "subtitle": null,
     "order": 9,
-    "isLeaf": true
+    "isLeaf": true,
+    "content": {
+      "quiz": [
+        {
+          "question": "Ali writes a letter. Change into passive voice.",
+          "options": [
+            "A letter is written by Ali.",
+            "A letter was written by Ali.",
+            "A letter has written by Ali.",
+            "A letter is being written by Ali."
+          ],
+          "answerIndex": 0,
+          "explanation": null,
+          "examTip": null
+        },
+        {
+          "question": "The teacher teaches English. Change into passive voice.",
+          "options": [
+            "English was taught by the teacher.",
+            "English is taught by the teacher.",
+            "English has been taught by the teacher.",
+            "English is being taught by the teacher."
+          ],
+          "answerIndex": 1,
+          "explanation": null,
+          "examTip": null
+        },
+        {
+          "question": "The boy is eating an apple. Change into passive voice.",
+          "options": [
+            "An apple was eaten by the boy.",
+            "An apple is eaten by the boy.",
+            "An apple is being eaten by the boy.",
+            "An apple has been eaten by the boy."
+          ],
+          "answerIndex": 2,
+          "explanation": null,
+          "examTip": null
+        },
+        {
+          "question": "She is washing the clothes. Change into passive voice.",
+          "options": [
+            "The clothes are washed by her.",
+            "The clothes were washed by her.",
+            "The clothes have been washed by her.",
+            "The clothes are being washed by her."
+          ],
+          "answerIndex": 3,
+          "explanation": null,
+          "examTip": null
+        },
+        {
+          "question": "They have completed the work. Change into passive voice.",
+          "options": [
+            "The work is completed by them.",
+            "The work has been completed by them.",
+            "The work was completed by them.",
+            "The work is being completed by them."
+          ],
+          "answerIndex": 1,
+          "explanation": null,
+          "examTip": null
+        },
+        {
+          "question": "He has not finished his homework. Change into passive voice.",
+          "options": [
+            "His homework was not finished by him.",
+            "His homework is not finished by him.",
+            "His homework has not been finished by him.",
+            "His homework is not being finished by him."
+          ],
+          "answerIndex": 2,
+          "explanation": null,
+          "examTip": null
+        },
+        {
+          "question": "Does Ali play cricket? Change into passive voice.",
+          "options": [
+            "Is cricket played by Ali?",
+            "Was cricket played by Ali?",
+            "Has cricket been played by Ali?",
+            "Is cricket being played by Ali?"
+          ],
+          "answerIndex": 0,
+          "explanation": null,
+          "examTip": null
+        },
+        {
+          "question": "Are they cleaning the room? Change into passive voice.",
+          "options": [
+            "Is the room cleaned by them?",
+            "Was the room cleaned by them?",
+            "Has the room been cleaned by them?",
+            "Is the room being cleaned by them?"
+          ],
+          "answerIndex": 3,
+          "explanation": null,
+          "examTip": null
+        },
+        {
+          "question": "Who teaches you English? Change into passive voice.",
+          "options": [
+            "By whom are you taught English?",
+            "By whom were you taught English?",
+            "Who is taught English by you?",
+            "By whom have you taught English?"
+          ],
+          "answerIndex": 0,
+          "explanation": null,
+          "examTip": null
+        },
+        {
+          "question": "The letter is written by Sara. Change into active voice.",
+          "options": [
+            "Sara writes the letter.",
+            "Sara wrote the letter.",
+            "Sara is writing the letter.",
+            "Sara has written the letter."
+          ],
+          "answerIndex": 0,
+          "explanation": null,
+          "examTip": null
+        },
+        {
+          "question": "The car is being repaired by the mechanic. Change into active voice.",
+          "options": [
+            "The mechanic repairs the car.",
+            "The mechanic repaired the car.",
+            "The mechanic is repairing the car.",
+            "The mechanic has repaired the car."
+          ],
+          "answerIndex": 2,
+          "explanation": null,
+          "examTip": null
+        },
+        {
+          "question": "The room has been cleaned by the maid. Change into active voice.",
+          "options": [
+            "The maid cleans the room.",
+            "The maid cleaned the room.",
+            "The maid is cleaning the room.",
+            "The maid has cleaned the room."
+          ],
+          "answerIndex": 3,
+          "explanation": null,
+          "examTip": null
+        },
+        {
+          "question": "Choose the correct passive voice of: “The sun gives us light.”",
+          "options": [
+            "We are given light by the sun.",
+            "We were given light by the sun.",
+            "We have given light by the sun.",
+            "We are being given light by the sun."
+          ],
+          "answerIndex": 0,
+          "explanation": null,
+          "examTip": null
+        },
+        {
+          "question": "Choose the correct passive voice of: “She does not help me.”",
+          "options": [
+            "I was not helped by her.",
+            "I am not helped by her.",
+            "I have not helped by her.",
+            "I am not being helped by her."
+          ],
+          "answerIndex": 1,
+          "explanation": null,
+          "examTip": null
+        },
+        {
+          "question": "Choose the correct passive voice of: “They are playing football.”",
+          "options": [
+            "Football is played by them.",
+            "Football was played by them.",
+            "Football is being played by them.",
+            "Football has been played by them."
+          ],
+          "answerIndex": 2,
+          "explanation": null,
+          "examTip": null
+        },
+        {
+          "question": "Choose the correct active voice of: “The books are sold by the shopkeeper.”",
+          "options": [
+            "The shopkeeper sold the books.",
+            "The shopkeeper sells the books.",
+            "The shopkeeper is selling the books.",
+            "The shopkeeper has sold the books."
+          ],
+          "answerIndex": 1,
+          "explanation": null,
+          "examTip": null
+        },
+        {
+          "question": "Choose the correct passive voice of: “The farmer grows wheat.”",
+          "options": [
+            "Wheat was grown by the farmer.",
+            "Wheat is grown by the farmer.",
+            "Wheat has been grown by the farmer.",
+            "Wheat is being grown by the farmer."
+          ],
+          "answerIndex": 1,
+          "explanation": null,
+          "examTip": null
+        },
+        {
+          "question": "Choose the correct passive voice of: “The students have solved the questions.”",
+          "options": [
+            "The questions are solved by the students.",
+            "The questions were solved by the students.",
+            "The questions have been solved by the students.",
+            "The questions are being solved by the students."
+          ],
+          "answerIndex": 2,
+          "explanation": null,
+          "examTip": null
+        },
+        {
+          "question": "Choose the correct active voice of: “A song is being sung by the girl.”",
+          "options": [
+            "The girl sings a song.",
+            "The girl sang a song.",
+            "The girl is singing a song.",
+            "The girl has sung a song."
+          ],
+          "answerIndex": 2,
+          "explanation": null,
+          "examTip": null
+        },
+        {
+          "question": "Choose the correct passive voice of: “Do you know him?”",
+          "options": [
+            "Is he known to you?",
+            "Was he known to you?",
+            "Has he been known to you?",
+            "Is he being known to you?"
+          ],
+          "answerIndex": 0,
+          "explanation": null,
+          "examTip": null
+        },
+        {
+          "question": "Ali wrote a letter. Change into passive voice.",
+          "options": [
+            "A letter is written by Ali.",
+            "A letter was written by Ali.",
+            "A letter has been written by Ali.",
+            "A letter is being written by Ali."
+          ],
+          "answerIndex": 1,
+          "explanation": null,
+          "examTip": null
+        },
+        {
+          "question": "She was reading a book. Change into passive voice.",
+          "options": [
+            "A book was read by her.",
+            "A book is read by her.",
+            "A book was being read by her.",
+            "A book had been read by her."
+          ],
+          "answerIndex": 2,
+          "explanation": null,
+          "examTip": null
+        },
+        {
+          "question": "They had finished the work. Change into passive voice.",
+          "options": [
+            "The work was finished by them.",
+            "The work is finished by them.",
+            "The work had been finished by them.",
+            "The work was being finished by them."
+          ],
+          "answerIndex": 2,
+          "explanation": null,
+          "examTip": null
+        },
+        {
+          "question": "The teacher taught English. Change into passive voice.",
+          "options": [
+            "English is taught by the teacher.",
+            "English was taught by the teacher.",
+            "English has been taught by the teacher.",
+            "English was being taught by the teacher."
+          ],
+          "answerIndex": 1,
+          "explanation": null,
+          "examTip": null
+        },
+        {
+          "question": "The police arrested the thief. Change into passive voice.",
+          "options": [
+            "The thief is arrested by the police.",
+            "The thief was arrested by the police.",
+            "The thief had been arrested by the police.",
+            "The thief was being arrested by the police."
+          ],
+          "answerIndex": 1,
+          "explanation": null,
+          "examTip": null
+        },
+        {
+          "question": "He was writing a letter. Change into passive voice.",
+          "options": [
+            "A letter was written by him.",
+            "A letter is being written by him.",
+            "A letter was being written by him.",
+            "A letter had been written by him."
+          ],
+          "answerIndex": 2,
+          "explanation": null,
+          "examTip": null
+        },
+        {
+          "question": "She had cooked the food. Change into passive voice.",
+          "options": [
+            "The food was cooked by her.",
+            "The food is cooked by her.",
+            "The food had been cooked by her.",
+            "The food was being cooked by her."
+          ],
+          "answerIndex": 2,
+          "explanation": null,
+          "examTip": null
+        },
+        {
+          "question": "Did Ali open the door? Change into passive voice.",
+          "options": [
+            "Is the door opened by Ali?",
+            "Was the door opened by Ali?",
+            "Had the door been opened by Ali?",
+            "Was the door being opened by Ali?"
+          ],
+          "answerIndex": 1,
+          "explanation": null,
+          "examTip": null
+        },
+        {
+          "question": "Was the boy flying a kite? Change into passive voice.",
+          "options": [
+            "Was a kite flown by the boy?",
+            "Is a kite being flown by the boy?",
+            "Was a kite being flown by the boy?",
+            "Had a kite been flown by the boy?"
+          ],
+          "answerIndex": 2,
+          "explanation": null,
+          "examTip": null
+        },
+        {
+          "question": "Who broke the window? Change into passive voice.",
+          "options": [
+            "By whom was the window broken?",
+            "By whom is the window broken?",
+            "By whom was the window being broken?",
+            "Who was broken by the window?"
+          ],
+          "answerIndex": 0,
+          "explanation": null,
+          "examTip": null
+        },
+        {
+          "question": "The letter was written by Sara. Change into active voice.",
+          "options": [
+            "Sara writes the letter.",
+            "Sara wrote the letter.",
+            "Sara was writing the letter.",
+            "Sara had written the letter."
+          ],
+          "answerIndex": 1,
+          "explanation": null,
+          "examTip": null
+        },
+        {
+          "question": "The car was being repaired by the mechanic. Change into active voice.",
+          "options": [
+            "The mechanic repairs the car.",
+            "The mechanic repaired the car.",
+            "The mechanic was repairing the car.",
+            "The mechanic had repaired the car."
+          ],
+          "answerIndex": 2,
+          "explanation": null,
+          "examTip": null
+        },
+        {
+          "question": "The work had been completed by them. Change into active voice.",
+          "options": [
+            "They complete the work.",
+            "They completed the work.",
+            "They were completing the work.",
+            "They had completed the work."
+          ],
+          "answerIndex": 3,
+          "explanation": null,
+          "examTip": null
+        },
+        {
+          "question": "The thief was caught by the police. Change into active voice.",
+          "options": [
+            "The police catch the thief.",
+            "The police caught the thief.",
+            "The police were catching the thief.",
+            "The police had caught the thief."
+          ],
+          "answerIndex": 1,
+          "explanation": null,
+          "examTip": null
+        },
+        {
+          "question": "Choose the correct passive voice of: “The boy did not break the glass.”",
+          "options": [
+            "The glass is not broken by the boy.",
+            "The glass was not broken by the boy.",
+            "The glass had not been broken by the boy.",
+            "The glass was not being broken by the boy."
+          ],
+          "answerIndex": 1,
+          "explanation": null,
+          "examTip": null
+        },
+        {
+          "question": "Choose the correct passive voice of: “They were watching a movie.”",
+          "options": [
+            "A movie was watched by them.",
+            "A movie is being watched by them.",
+            "A movie was being watched by them.",
+            "A movie had been watched by them."
+          ],
+          "answerIndex": 2,
+          "explanation": null,
+          "examTip": null
+        },
+        {
+          "question": "Choose the correct active voice of: “The food had been cooked by the chef.”",
+          "options": [
+            "The chef cooks the food.",
+            "The chef cooked the food.",
+            "The chef was cooking the food.",
+            "The chef had cooked the food."
+          ],
+          "answerIndex": 3,
+          "explanation": null,
+          "examTip": null
+        },
+        {
+          "question": "Choose the correct passive voice of: “The students solved the problem.”",
+          "options": [
+            "The problem is solved by the students.",
+            "The problem was solved by the students.",
+            "The problem had been solved by the students.",
+            "The problem was being solved by the students."
+          ],
+          "answerIndex": 1,
+          "explanation": null,
+          "examTip": null
+        },
+        {
+          "question": "Choose the correct active voice of: “The match was being played by the teams.”",
+          "options": [
+            "The teams play the match.",
+            "The teams played the match.",
+            "The teams were playing the match.",
+            "The teams had played the match."
+          ],
+          "answerIndex": 2,
+          "explanation": null,
+          "examTip": null
+        },
+        {
+          "question": "Choose the correct passive voice of: “The students had not completed the assignment.”",
+          "options": [
+            "The assignment was not completed by the students.",
+            "The assignment is not completed by the students.",
+            "The assignment had not been completed by the students.",
+            "The assignment was not being completed by the students."
+          ],
+          "answerIndex": 2,
+          "explanation": null,
+          "examTip": null
+        },
+        {
+          "question": "Ali will write a letter. Change into passive voice.",
+          "options": [
+            "A letter is written by Ali.",
+            "A letter was written by Ali.",
+            "A letter will be written by Ali.",
+            "A letter will have been written by Ali."
+          ],
+          "answerIndex": 2,
+          "explanation": null,
+          "examTip": null
+        },
+        {
+          "question": "She will cook the food. Change into passive voice.",
+          "options": [
+            "The food will be cooked by her.",
+            "The food will have been cooked by her.",
+            "The food is cooked by her.",
+            "The food was cooked by her."
+          ],
+          "answerIndex": 0,
+          "explanation": null,
+          "examTip": null
+        },
+        {
+          "question": "They will complete the work. Change into passive voice.",
+          "options": [
+            "The work will have been completed by them.",
+            "The work will be completed by them.",
+            "The work was completed by them.",
+            "The work is being completed by them."
+          ],
+          "answerIndex": 1,
+          "explanation": null,
+          "examTip": null
+        },
+        {
+          "question": "He will have finished his homework. Change into passive voice.",
+          "options": [
+            "His homework will be finished by him.",
+            "His homework will have been finished by him.",
+            "His homework was finished by him.",
+            "His homework is finished by him."
+          ],
+          "answerIndex": 1,
+          "explanation": null,
+          "examTip": null
+        },
+        {
+          "question": "Will Ali help you? Change into passive voice.",
+          "options": [
+            "Are you helped by Ali?",
+            "Were you helped by Ali?",
+            "Will you be helped by Ali?",
+            "Will you have been helped by Ali?"
+          ],
+          "answerIndex": 2,
+          "explanation": null,
+          "examTip": null
+        },
+        {
+          "question": "They will not play the match. Change into passive voice.",
+          "options": [
+            "The match will not be played by them.",
+            "The match will not have been played by them.",
+            "The match was not played by them.",
+            "The match is not played by them."
+          ],
+          "answerIndex": 0,
+          "explanation": null,
+          "examTip": null
+        },
+        {
+          "question": "Who will teach you English? Change into passive voice.",
+          "options": [
+            "By whom will you be taught English?",
+            "By whom were you taught English?",
+            "Who will be taught English by you?",
+            "By whom will you have taught English?"
+          ],
+          "answerIndex": 0,
+          "explanation": null,
+          "examTip": null
+        },
+        {
+          "question": "The teacher will check the papers. Change into passive voice.",
+          "options": [
+            "The papers are checked by the teacher.",
+            "The papers will be checked by the teacher.",
+            "The papers will have been checked by the teacher.",
+            "The papers were checked by the teacher."
+          ],
+          "answerIndex": 1,
+          "explanation": null,
+          "examTip": null
+        },
+        {
+          "question": "She will have written a book. Change into passive voice.",
+          "options": [
+            "A book will be written by her.",
+            "A book was written by her.",
+            "A book will have been written by her.",
+            "A book is written by her."
+          ],
+          "answerIndex": 2,
+          "explanation": null,
+          "examTip": null
+        },
+        {
+          "question": "The letter will be sent by Ali. Change into active voice.",
+          "options": [
+            "Ali sends the letter.",
+            "Ali sent the letter.",
+            "Ali will send the letter.",
+            "Ali will have sent the letter."
+          ],
+          "answerIndex": 2,
+          "explanation": null,
+          "examTip": null
+        },
+        {
+          "question": "The work will have been completed by the workers. Change into active voice.",
+          "options": [
+            "The workers complete the work.",
+            "The workers completed the work.",
+            "The workers will complete the work.",
+            "The workers will have completed the work."
+          ],
+          "answerIndex": 3,
+          "explanation": null,
+          "examTip": null
+        },
+        {
+          "question": "Choose the correct passive voice of: “We shall plant trees.”",
+          "options": [
+            "Trees are planted by us.",
+            "Trees were planted by us.",
+            "Trees shall be planted by us.",
+            "Trees shall have been planted by us."
+          ],
+          "answerIndex": 2,
+          "explanation": null,
+          "examTip": null
+        },
+        {
+          "question": "Choose the correct passive voice of: “He will have completed the project by Monday.”",
+          "options": [
+            "The project will be completed by him by Monday.",
+            "The project will have been completed by him by Monday.",
+            "The project was completed by him by Monday.",
+            "The project is completed by him by Monday."
+          ],
+          "answerIndex": 1,
+          "explanation": null,
+          "examTip": null
+        },
+        {
+          "question": "Choose the correct active voice of: “The prize will be given to the winner.”",
+          "options": [
+            "The judges give the prize to the winner.",
+            "The judges gave the prize to the winner.",
+            "The judges will give the prize to the winner.",
+            "The judges will have given the prize to the winner."
+          ],
+          "answerIndex": 2,
+          "explanation": null,
+          "examTip": null
+        },
+        {
+          "question": "Choose the correct passive voice of: “The company will launch a new product.”",
+          "options": [
+            "A new product is launched by the company.",
+            "A new product was launched by the company.",
+            "A new product will be launched by the company.",
+            "A new product will have been launched by the company."
+          ],
+          "answerIndex": 2,
+          "explanation": null,
+          "examTip": null
+        },
+        {
+          "question": "You can solve the problem. Change into passive voice.",
+          "options": [
+            "The problem can be solved by you.",
+            "The problem could be solved by you.",
+            "The problem is solved by you.",
+            "The problem can have solved by you."
+          ],
+          "answerIndex": 0,
+          "explanation": null,
+          "examTip": null
+        },
+        {
+          "question": "We should obey the rules. Change into passive voice.",
+          "options": [
+            "The rules should be obeyed by us.",
+            "The rules should have obeyed by us.",
+            "The rules are obeyed by us.",
+            "The rules were obeyed by us."
+          ],
+          "answerIndex": 0,
+          "explanation": null,
+          "examTip": null
+        },
+        {
+          "question": "He must finish the work. Change into passive voice.",
+          "options": [
+            "The work must have finished by him.",
+            "The work must be finished by him.",
+            "The work is finished by him.",
+            "The work was finished by him."
+          ],
+          "answerIndex": 1,
+          "explanation": null,
+          "examTip": null
+        },
+        {
+          "question": "She may write a letter. Change into passive voice.",
+          "options": [
+            "A letter may have written by her.",
+            "A letter may be written by her.",
+            "A letter is written by her.",
+            "A letter was written by her."
+          ],
+          "answerIndex": 1,
+          "explanation": null,
+          "examTip": null
+        },
+        {
+          "question": "They might have completed the work. Change into passive voice.",
+          "options": [
+            "The work might be completed by them.",
+            "The work might have been completed by them.",
+            "The work was completed by them.",
+            "The work has been completed by them."
+          ],
+          "answerIndex": 1,
+          "explanation": null,
+          "examTip": null
+        },
+        {
+          "question": "You should not waste time. Change into passive voice.",
+          "options": [
+            "Time should not be wasted by you.",
+            "Time should not have wasted by you.",
+            "Time is not wasted by you.",
+            "Time was not wasted by you."
+          ],
+          "answerIndex": 0,
+          "explanation": null,
+          "examTip": null
+        },
+        {
+          "question": "Can you lift this box? Change into passive voice.",
+          "options": [
+            "Can this box be lifted by you?",
+            "Could this box be lifted by you?",
+            "Is this box lifted by you?",
+            "Can this box have lifted by you?"
+          ],
+          "answerIndex": 0,
+          "explanation": null,
+          "examTip": null
+        },
+        {
+          "question": "The students must obey the teacher. Change into passive voice.",
+          "options": [
+            "The teacher must obey the students.",
+            "The teacher must be obeyed by the students.",
+            "The teacher is obeyed by the students.",
+            "The teacher was obeyed by the students."
+          ],
+          "answerIndex": 1,
+          "explanation": null,
+          "examTip": null
+        },
+        {
+          "question": "The work can be done by Ali. Change into active voice.",
+          "options": [
+            "Ali could do the work.",
+            "Ali can do the work.",
+            "Ali must do the work.",
+            "Ali should do the work."
+          ],
+          "answerIndex": 1,
+          "explanation": null,
+          "examTip": null
+        },
+        {
+          "question": "The letter should be posted by Sara. Change into active voice.",
+          "options": [
+            "Sara should post the letter.",
+            "Sara should have posted the letter.",
+            "Sara posts the letter.",
+            "Sara posted the letter."
+          ],
+          "answerIndex": 0,
+          "explanation": null,
+          "examTip": null
+        },
+        {
+          "question": "He must have finished the task. Change into passive voice.",
+          "options": [
+            "The task must be finished by him.",
+            "The task must have been finished by him.",
+            "The task is finished by him.",
+            "The task was finished by him."
+          ],
+          "answerIndex": 1,
+          "explanation": null,
+          "examTip": null
+        },
+        {
+          "question": "Who can solve this question? Change into passive voice.",
+          "options": [
+            "By whom can this question be solved?",
+            "By whom could this question be solved?",
+            "Who can be solved by this question?",
+            "By whom is this question solved?"
+          ],
+          "answerIndex": 0,
+          "explanation": null,
+          "examTip": null
+        },
+        {
+          "question": "You ought to respect your parents. Change into passive voice.",
+          "options": [
+            "Your parents ought to be respected by you.",
+            "Your parents ought to have respected by you.",
+            "Your parents are respected by you.",
+            "Your parents were respected by you."
+          ],
+          "answerIndex": 0,
+          "explanation": null,
+          "examTip": null
+        },
+        {
+          "question": "The rules have to be followed by everyone. Change into active voice.",
+          "options": [
+            "Everyone follows the rules.",
+            "Everyone has to follow the rules.",
+            "Everyone had to follow the rules.",
+            "Everyone can follow the rules."
+          ],
+          "answerIndex": 1,
+          "explanation": null,
+          "examTip": null
+        },
+        {
+          "question": "The homework should have been completed by the students. Change into active voice.",
+          "options": [
+            "The students should complete the homework.",
+            "The students should have completed the homework.",
+            "The students completed the homework.",
+            "The students can complete the homework."
+          ],
+          "answerIndex": 1,
+          "explanation": null,
+          "examTip": null
+        },
+        {
+          "question": "Open the door. Change into passive voice.",
+          "options": [
+            "Let the door be opened.",
+            "Let the door is opened.",
+            "The door was opened.",
+            "The door has been opened."
+          ],
+          "answerIndex": 0,
+          "explanation": null,
+          "examTip": null
+        },
+        {
+          "question": "Close the window. Change into passive voice.",
+          "options": [
+            "Let the window be closed.",
+            "Let the window is closed.",
+            "The window was closed.",
+            "The window has been closed."
+          ],
+          "answerIndex": 0,
+          "explanation": null,
+          "examTip": null
+        },
+        {
+          "question": "Do not waste water. Change into passive voice.",
+          "options": [
+            "Let water not be wasted.",
+            "Let water not is wasted.",
+            "Water was not wasted.",
+            "Water has not been wasted."
+          ],
+          "answerIndex": 0,
+          "explanation": null,
+          "examTip": null
+        },
+        {
+          "question": "Please help the poor. Change into passive voice.",
+          "options": [
+            "Let the poor be helped.",
+            "Let the poor is helped.",
+            "The poor were helped.",
+            "The poor have been helped."
+          ],
+          "answerIndex": 0,
+          "explanation": null,
+          "examTip": null
+        },
+        {
+          "question": "Write your name. Change into passive voice.",
+          "options": [
+            "Let your name be written.",
+            "Let your name is written.",
+            "Your name was written.",
+            "Your name has been written."
+          ],
+          "answerIndex": 0,
+          "explanation": null,
+          "examTip": null
+        },
+        {
+          "question": "Let him do the work. Change into passive voice.",
+          "options": [
+            "Let the work be done by him.",
+            "Let the work is done by him.",
+            "Let him be done by the work.",
+            "The work was done by him."
+          ],
+          "answerIndex": 0,
+          "explanation": null,
+          "examTip": null
+        },
+        {
+          "question": "Do not touch the wire. Change into passive voice.",
+          "options": [
+            "Let the wire not be touched.",
+            "Let the wire not is touched.",
+            "The wire was not touched.",
+            "The wire has not been touched."
+          ],
+          "answerIndex": 0,
+          "explanation": null,
+          "examTip": null
+        },
+        {
+          "question": "Let us play cricket. Change into passive voice.",
+          "options": [
+            "Let cricket be played by us.",
+            "Let cricket is played by us.",
+            "Cricket was played by us.",
+            "Cricket has been played by us."
+          ],
+          "answerIndex": 0,
+          "explanation": null,
+          "examTip": null
+        },
+        {
+          "question": "Bring me a glass of water. Change into passive voice.",
+          "options": [
+            "Let a glass of water be brought to me.",
+            "Let a glass of water is brought to me.",
+            "A glass of water was brought to me.",
+            "A glass of water has been brought to me."
+          ],
+          "answerIndex": 0,
+          "explanation": null,
+          "examTip": null
+        },
+        {
+          "question": "Let the book be read by Ali. Change into active voice.",
+          "options": [
+            "Ali reads the book.",
+            "Ali read the book.",
+            "Ali is reading the book.",
+            "Ali has read the book."
+          ],
+          "answerIndex": 1,
+          "explanation": null,
+          "examTip": null
+        },
+        {
+          "question": "He gave me a book. Change into passive voice.",
+          "options": [
+            "I was given a book by him.",
+            "I am given a book by him.",
+            "I have given a book by him.",
+            "I was being given a book by him."
+          ],
+          "answerIndex": 0,
+          "explanation": null,
+          "examTip": null
+        },
+        {
+          "question": "She bought a gift for me. Change into passive voice.",
+          "options": [
+            "A gift was bought for me by her.",
+            "A gift is bought for me by her.",
+            "A gift has been bought for me by her.",
+            "A gift was being bought for me by her."
+          ],
+          "answerIndex": 0,
+          "explanation": null,
+          "examTip": null
+        },
+        {
+          "question": "They laughed at the poor man. Change into passive voice.",
+          "options": [
+            "The poor man was laughed at by them.",
+            "The poor man was laughed by them.",
+            "The poor man is laughed at by them.",
+            "The poor man had laughed at by them."
+          ],
+          "answerIndex": 0,
+          "explanation": null,
+          "examTip": null
+        },
+        {
+          "question": "The teacher looked after the children. Change into passive voice.",
+          "options": [
+            "The children were looked after by the teacher.",
+            "The children were looked by the teacher.",
+            "The children are looked after by the teacher.",
+            "The children had looked after by the teacher."
+          ],
+          "answerIndex": 0,
+          "explanation": null,
+          "examTip": null
+        },
+        {
+          "question": "We should take care of the environment. Change into passive voice.",
+          "options": [
+            "The environment should be taken care of by us.",
+            "The environment should be taken care by us.",
+            "The environment is taken care of by us.",
+            "The environment was taken care of by us."
+          ],
+          "answerIndex": 0,
+          "explanation": null,
+          "examTip": null
+        },
+        {
+          "question": "The students listened to the teacher. Change into passive voice.",
+          "options": [
+            "The teacher was listened to by the students.",
+            "The teacher was listened by the students.",
+            "The teacher is listened to by the students.",
+            "The teacher had listened to by the students."
+          ],
+          "answerIndex": 0,
+          "explanation": null,
+          "examTip": null
+        },
+        {
+          "question": "He is known to me. Change into active voice.",
+          "options": [
+            "I know him.",
+            "I knew him.",
+            "I am knowing him.",
+            "I have known him."
+          ],
+          "answerIndex": 0,
+          "explanation": null,
+          "examTip": null
+        },
+        {
+          "question": "She was laughed at by the children. Change into active voice.",
+          "options": [
+            "The children laugh at her.",
+            "The children laughed at her.",
+            "The children were laughing at her.",
+            "The children had laughed at her."
+          ],
+          "answerIndex": 1,
+          "explanation": null,
+          "examTip": null
+        },
+        {
+          "question": "He was given a prize by the teacher. Change into active voice.",
+          "options": [
+            "The teacher gives him a prize.",
+            "The teacher gave him a prize.",
+            "The teacher was giving him a prize.",
+            "The teacher had given him a prize."
+          ],
+          "answerIndex": 1,
+          "explanation": null,
+          "examTip": null
+        },
+        {
+          "question": "The patient was looked after by the nurse. Change into active voice.",
+          "options": [
+            "The nurse looks after the patient.",
+            "The nurse looked after the patient.",
+            "The nurse was looking after the patient.",
+            "The nurse had looked after the patient."
+          ],
+          "answerIndex": 1,
+          "explanation": null,
+          "examTip": null
+        },
+        {
+          "question": "Who wrote this letter? Change into passive voice.",
+          "options": [
+            "By whom was this letter written?",
+            "By whom is this letter written?",
+            "By whom was this letter being written?",
+            "Who was written by this letter?"
+          ],
+          "answerIndex": 0,
+          "explanation": null,
+          "examTip": null
+        },
+        {
+          "question": "Whom did you invite? Change into passive voice.",
+          "options": [
+            "Who was invited by you?",
+            "Who is invited by you?",
+            "Who had been invited by you?",
+            "Whom invited you?"
+          ],
+          "answerIndex": 0,
+          "explanation": null,
+          "examTip": null
+        },
+        {
+          "question": "Whom did Sara meet yesterday? Change into passive voice.",
+          "options": [
+            "Who was met by Sara yesterday?",
+            "Who is met by Sara yesterday?",
+            "Who had met Sara yesterday?",
+            "Whom met Sara yesterday?"
+          ],
+          "answerIndex": 0,
+          "explanation": null,
+          "examTip": null
+        },
+        {
+          "question": "Whom did Ali help? Change into passive voice.",
+          "options": [
+            "Who is helped by Ali?",
+            "Who was helped by Ali?",
+            "Who had been helped by Ali?",
+            "Whom helped Ali?"
+          ],
+          "answerIndex": 1,
+          "explanation": null,
+          "examTip": null
+        },
+        {
+          "question": "Who will complete the work? Change into passive voice.",
+          "options": [
+            "By whom will the work be completed?",
+            "By whom was the work completed?",
+            "By whom is the work completed?",
+            "Who will be completed by the work?"
+          ],
+          "answerIndex": 0,
+          "explanation": null,
+          "examTip": null
+        },
+        {
+          "question": "Whom did the teacher punish? Change into passive voice.",
+          "options": [
+            "Who is punished by the teacher?",
+            "Who was punished by the teacher?",
+            "Who had punished the teacher?",
+            "Whom punished the teacher?"
+          ],
+          "answerIndex": 1,
+          "explanation": null,
+          "examTip": null
+        },
+        {
+          "question": "Who can solve this problem? Change into passive voice.",
+          "options": [
+            "By whom can this problem be solved?",
+            "By whom could this problem be solved?",
+            "Who can be solved by this problem?",
+            "By whom is this problem solved?"
+          ],
+          "answerIndex": 0,
+          "explanation": null,
+          "examTip": null
+        },
+        {
+          "question": "By whom was the window broken? Change into active voice.",
+          "options": [
+            "Who breaks the window?",
+            "Who broke the window?",
+            "Who was breaking the window?",
+            "Who had broken the window?"
+          ],
+          "answerIndex": 1,
+          "explanation": null,
+          "examTip": null
+        },
+        {
+          "question": "By whom is this book written? Change into active voice.",
+          "options": [
+            "Who writes this book?",
+            "Who wrote this book?",
+            "Who is writing this book?",
+            "Who has written this book?"
+          ],
+          "answerIndex": 1,
+          "explanation": null,
+          "examTip": null
+        },
+        {
+          "question": "By whom will the prize be given? Change into active voice.",
+          "options": [
+            "Who gives the prize?",
+            "Who gave the prize?",
+            "Who will give the prize?",
+            "Who will have given the prize?"
+          ],
+          "answerIndex": 2,
+          "explanation": null,
+          "examTip": null
+        }
+      ]
+    }
   },
   {
     "id": "active-passive-voice/introduction",
@@ -12050,6 +13257,188 @@
       "modal verb voice",
       "ought to"
     ]
+  },
+  {
+    "id": "active-passive-voice/modals/modal-verbs-lesson",
+    "parentId": "active-passive-voice/modals",
+    "title": "Modal Verbs",
+    "subtitle": null,
+    "order": 1,
+    "isLeaf": true,
+    "keywords": [
+      "modal passive",
+      "can be",
+      "must be",
+      "should be",
+      "may be",
+      "might be",
+      "could be",
+      "modal verb voice",
+      "ought to"
+    ],
+    "content": {
+      "tenseSections": {
+        "heading": "Modal Verbs",
+        "badge": "All Modal Verbs have Same Pattern.",
+        "definition": "Modal verbs are helping verbs that express ability, permission, possibility, necessity, advice, or obligation.",
+        "sections": [
+          {
+            "number": 1,
+            "title": "Simple Sentences",
+            "type": "table",
+            "columns": [
+              "Voice",
+              "Pattern",
+              "Example"
+            ],
+            "rows": [
+              [
+                "Active Voice",
+                "Subject + @@modal@@ + @@V1@@ + Object",
+                "He can write a letter."
+              ],
+              [
+                "Passive Voice",
+                "Object + @@modal@@ + @@be@@ + @@V3@@ + by + Subject",
+                "A letter can be written by him."
+              ]
+            ]
+          },
+          {
+            "number": 2,
+            "title": "Negative Sentences",
+            "type": "table",
+            "columns": [
+              "Voice",
+              "Pattern",
+              "Example"
+            ],
+            "rows": [
+              [
+                "Active Voice",
+                "Subject + @@modal@@ + @@not@@ + @@V1@@ + Object",
+                "He cannot write a letter."
+              ],
+              [
+                "Passive Voice",
+                "Object + @@modal@@ + @@not@@ + @@be@@ + @@V3@@ + by + Subject",
+                "A letter cannot be written by him."
+              ]
+            ]
+          },
+          {
+            "number": 3,
+            "title": "Interrogative Sentences",
+            "type": "table",
+            "columns": [
+              "Voice",
+              "Pattern",
+              "Example"
+            ],
+            "rows": [
+              [
+                "Active Voice",
+                "@@Modal@@ + Subject + @@V1@@ + Object ?",
+                "Can he write a letter?"
+              ],
+              [
+                "Passive Voice",
+                "@@Modal@@ + Object + @@be@@ + @@V3@@ + by + Subject ?",
+                "Can a letter be written by him?"
+              ]
+            ]
+          },
+          {
+            "number": 4,
+            "title": "Main Rule",
+            "type": "rules",
+            "boxed": true,
+            "intro": "In Modal Verb Passive Voice:",
+            "rules": [
+              {
+                "text": "Use the @@modal verb@@ according to the meaning of the sentence.",
+                "urdu": "جملے کے مطلب کے مطابق modal verb استعمال کریں۔"
+              },
+              {
+                "text": "Use @@be@@ after the modal verb.",
+                "urdu": "modal verb کے بعد be استعمال کریں۔"
+              },
+              {
+                "text": "Change the main verb into its third form (@@V3@@).",
+                "urdu": "مرکزی فعل کو اس کی تیسری شکل (V3) میں تبدیل کریں۔"
+              },
+              {
+                "text": "Use @@by@@ before the doer when necessary.",
+                "urdu": "ضرورت کے مطابق کام کرنے والے سے پہلے by استعمال کریں۔"
+              },
+              {
+                "text": "In negative sentences, use @@not@@ after the modal verb.",
+                "urdu": "منفی جملوں میں modal verb کے بعد not استعمال کریں۔"
+              }
+            ]
+          },
+          {
+            "number": 5,
+            "title": "Examples",
+            "type": "table",
+            "columns": [
+              "Active Voice",
+              "Passive Voice"
+            ],
+            "rows": [
+              [
+                "He can write a letter.",
+                "A letter can be written by him."
+              ],
+              [
+                "She can clean the room.",
+                "The room can be cleaned by her."
+              ],
+              [
+                "They can play cricket.",
+                "Cricket can be played by them."
+              ],
+              [
+                "We must follow the rules.",
+                "The rules must be followed by us."
+              ],
+              [
+                "You should help your friend.",
+                "Your friend should be helped by you."
+              ],
+              [
+                "He cannot write a letter.",
+                "A letter cannot be written by him."
+              ],
+              [
+                "She should not waste time.",
+                "Time should not be wasted by her."
+              ],
+              [
+                "Can he write a letter?",
+                "Can a letter be written by him?"
+              ],
+              [
+                "Should we help Ahmed?",
+                "Should Ahmed be helped by us?"
+              ],
+              [
+                "Must they obey the teacher?",
+                "Must the teacher be obeyed by them?"
+              ],
+              [
+                "Could she solve the problem?",
+                "Could the problem be solved by her?"
+              ],
+              [
+                "May I ask a question?",
+                "May a question be asked by me?"
+              ]
+            ]
+          }
+        ]
+      }
+    }
   },
   {
     "id": "active-passive-voice/past",

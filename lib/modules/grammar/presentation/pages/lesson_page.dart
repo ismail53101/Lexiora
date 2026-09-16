@@ -1286,25 +1286,80 @@ class _TenseSectionsView extends StatelessWidget {
             const TextStyle();
 
     final String heading = (data['heading'] as String?) ?? title;
+    final String badge = (data['badge'] as String?) ?? '';
+    final String definition = (data['definition'] as String?) ?? '';
     final List<dynamic> sections = (data['sections'] as List<dynamic>?) ?? [];
 
     return ListView(
       padding: const EdgeInsets.fromLTRB(16, 12, 16, 24),
       children: <Widget>[
         // ── Page heading (e.g. "3. Present Simple") ─────────────────────
-        Text.rich(
-          TextSpan(
-            style: theme.textTheme.headlineSmall?.copyWith(
-              fontWeight: FontWeight.w800,
-              color: scheme.onSurface,
+        Row(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: <Widget>[
+            Flexible(
+              child: Text.rich(
+                TextSpan(
+                  style: theme.textTheme.headlineSmall?.copyWith(
+                    fontWeight: FontWeight.w800,
+                    color: scheme.onSurface,
+                  ),
+                  children: _boldMarkedSpans(
+                    heading,
+                    color: scheme.onSurface,
+                    highlightColor: highlightYellowColor(context),
+                  ),
+                ),
+              ),
             ),
-            children: _boldMarkedSpans(
-              heading,
-              color: scheme.onSurface,
-              highlightColor: highlightYellowColor(context),
+            if (badge.isNotEmpty) ...<Widget>[
+              const SizedBox(width: 10),
+              Flexible(
+                child: Container(
+                  padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+                  decoration: BoxDecoration(
+                    border: Border.all(color: highlightYellowColor(context), width: 1.4),
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                  child: Text(
+                    badge,
+                    style: theme.textTheme.labelMedium?.copyWith(
+                      color: highlightYellowColor(context),
+                      fontWeight: FontWeight.w700,
+                      height: 1.2,
+                    ),
+                  ),
+                ),
+              ),
+            ],
+          ],
+        ),
+        if (definition.isNotEmpty)
+          Padding(
+            padding: const EdgeInsets.only(top: 8),
+            child: Text.rich(
+              TextSpan(
+                style: theme.textTheme.bodySmall?.copyWith(
+                  color: scheme.onSurface,
+                  height: 1.35,
+                ),
+                children: <TextSpan>[
+                  TextSpan(
+                    text: 'Definition: ',
+                    style: TextStyle(
+                      color: _TenseSectionsView._purple,
+                      fontWeight: FontWeight.w800,
+                    ),
+                  ),
+                  ..._boldMarkedSpans(
+                    definition,
+                    color: scheme.onSurface,
+                    highlightColor: highlightYellowColor(context),
+                  ),
+                ],
+              ),
             ),
           ),
-        ),
         const SizedBox(height: 12),
 
         // ── Numbered sections, vertical flow ────────────────────────────
@@ -1421,6 +1476,22 @@ class _TenseSection extends StatelessWidget {
                 table: t as Map<String, dynamic>,
                 bodyStyle: bodyStyle,
               )
+          else if (type == 'rules' && (section['boxed'] == true))
+            Container(
+              width: double.infinity,
+              padding: const EdgeInsets.all(12),
+              decoration: BoxDecoration(
+                border: Border.all(color: purple, width: 1.2),
+                borderRadius: BorderRadius.circular(10),
+              ),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: <Widget>[
+                  for (final dynamic r in (section['rules'] as List<dynamic>? ?? []))
+                    _TenseRuleBullet(rule: r as Map<String, dynamic>, bodyStyle: bodyStyle),
+                ],
+              ),
+            )
           else if (type == 'rules')
             for (final dynamic r in (section['rules'] as List<dynamic>? ?? []))
               _TenseRuleBullet(rule: r as Map<String, dynamic>, bodyStyle: bodyStyle)

@@ -6,7 +6,14 @@ import 'package:lexiora/modules/grammar/presentation/providers/grammar_providers
 
 /// Staged ladder for the Parts of Speech quiz. Each stage contains ten questions.
 class PosQuizStageMapPage extends ConsumerStatefulWidget {
-  const PosQuizStageMapPage({super.key});
+  const PosQuizStageMapPage({
+    super.key,
+    this.lessonId = 'pos/quiz',
+    this.title = 'Parts of Speech Quiz',
+  });
+
+  final String lessonId;
+  final String title;
 
   @override
   ConsumerState<PosQuizStageMapPage> createState() => _PosQuizStageMapPageState();
@@ -35,9 +42,9 @@ class _PosQuizStageMapPageState extends ConsumerState<PosQuizStageMapPage> {
   @override
   Widget build(BuildContext context) {
     final AsyncValue<GrammarLesson?> lessonValue =
-        ref.watch(grammarLeafProvider('pos/quiz'));
+        ref.watch(grammarLeafProvider(widget.lessonId));
     return Scaffold(
-      appBar: AppBar(title: const Text('Parts of Speech Quiz')),
+      appBar: AppBar(title: Text(widget.title)),
       body: lessonValue.when(
         loading: () => const Center(child: CircularProgressIndicator()),
         error: (_, _) => const Center(child: Text('Could not load quiz questions.')),

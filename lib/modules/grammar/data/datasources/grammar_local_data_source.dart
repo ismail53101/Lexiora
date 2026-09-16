@@ -103,7 +103,10 @@ class GrammarLocalDataSource {
 
   Stream<List<GrammarTopicSummary>> watchContinueLearning() => _db
       .customSelect(
+        // Only lessons actually opened before (a real view timestamp), never
+        // untouched completion flags.
         '$_summarySelect WHERE t.is_leaf = 1 AND p.status = 1 '
+        'AND p.last_viewed_at IS NOT NULL '
         'ORDER BY p.last_viewed_at DESC',
         readsFrom: _reads,
       )

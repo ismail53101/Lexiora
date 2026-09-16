@@ -64,6 +64,12 @@ class GrammarModule extends FeatureModule {
             if (lessonId == 'pos/quiz') {
               return const PosQuizStageMapPage();
             }
+            if (lessonId == 'active-passive-voice/practice-quiz') {
+              return const PosQuizStageMapPage(
+                lessonId: 'active-passive-voice/practice-quiz',
+                title: 'Active & Passive Voice Quiz',
+              );
+            }
             return LessonPage(lessonId: lessonId);
           },
         ),
