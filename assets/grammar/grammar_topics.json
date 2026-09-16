@@ -11445,35 +11445,16 @@
     "title": "Imperative Sentences",
     "subtitle": null,
     "order": 7,
-    "isLeaf": false,
-    "keywords": [
-      "imperative passive",
-      "let the object be",
-      "you are requested",
-      "command passive",
-      "order passive",
-      "advice passive",
-      "let be v3",
-      "imperative voice"
-    ],
-    "content": {}
-  },
-  {
-    "id": "active-passive-voice/imperative/imperative-lesson",
-    "parentId": "active-passive-voice/imperative",
-    "title": "Imperative Sentences",
-    "subtitle": null,
-    "order": 1,
     "isLeaf": true,
     "keywords": [
-      "imperative passive",
-      "let the object be",
-      "you are requested",
-      "command passive",
-      "order passive",
       "advice passive",
+      "command passive",
+      "imperative passive",
+      "imperative voice",
       "let be v3",
-      "imperative voice"
+      "let the object be",
+      "order passive",
+      "you are requested"
     ],
     "content": {
       "tenseSections": {
@@ -11626,7 +11607,7 @@
     "title": "Special Prepositions",
     "subtitle": null,
     "order": 8,
-    "isLeaf": false,
+    "isLeaf": true,
     "keywords": [
       "special prepositions",
       "verbs with prepositions",
@@ -11637,15 +11618,6 @@
       "interested in",
       "worried about"
     ],
-    "content": {}
-  },
-  {
-    "id": "active-passive-voice/special-prepositions/verbs-with-prepositions",
-    "parentId": "active-passive-voice/special-prepositions",
-    "title": "Verbs with Prepositions Instead of “By”",
-    "subtitle": null,
-    "order": 1,
-    "isLeaf": true,
     "content": {
       "tenseSections": {
         "heading": "Verbs with Prepositions Instead of @@“By”@@",
@@ -13245,36 +13217,17 @@
     "title": "Modal Verbs",
     "subtitle": null,
     "order": 6,
-    "isLeaf": false,
-    "keywords": [
-      "modal passive",
-      "can be",
-      "must be",
-      "should be",
-      "may be",
-      "might be",
-      "could be",
-      "modal verb voice",
-      "ought to"
-    ]
-  },
-  {
-    "id": "active-passive-voice/modals/modal-verbs-lesson",
-    "parentId": "active-passive-voice/modals",
-    "title": "Modal Verbs",
-    "subtitle": null,
-    "order": 1,
     "isLeaf": true,
     "keywords": [
-      "modal passive",
       "can be",
-      "must be",
-      "should be",
+      "could be",
       "may be",
       "might be",
-      "could be",
+      "modal passive",
       "modal verb voice",
-      "ought to"
+      "must be",
+      "ought to",
+      "should be"
     ],
     "content": {
       "tenseSections": {

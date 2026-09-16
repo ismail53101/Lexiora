@@ -239,6 +239,13 @@ class GrammarLocalDataSource {
 
   Future<void> clearTopics() => _db.delete(_db.grammarTopics).go();
 
+  /// Removes stale in-progress rows so the "Continue learning" section
+  /// starts empty after a content re-seed. Completed and favorited rows are
+  /// untouched.
+  Future<void> clearStaleInProgress() => _db.customStatement(
+        'DELETE FROM grammar_progress WHERE status = 1',
+      );
+
   Future<void> insertTopics(List<GrammarTopicsCompanion> batch) =>
       _db.batch((Batch b) => b.insertAll(_db.grammarTopics, batch));
 
