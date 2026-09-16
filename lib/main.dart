@@ -16,7 +16,7 @@ import 'package:lexiora/features/settings/domain/entities/app_settings.dart';
 import 'package:lexiora/features/settings/domain/repositories/settings_repository.dart';
 import 'package:pdfrx/pdfrx.dart';
 
-const String _initialPermissionFlowVersion = '2026.08.28-permissions-v2';
+const String _initialPermissionFlowVersion = '2026.09.16-permissions-v3';
 
 /// Sapiora entry point.
 ///
