@@ -10801,9 +10801,2814 @@
     "id": "direct-indirect-speech",
     "parentId": null,
     "title": "Direct & Indirect Speech",
-    "subtitle": "Reported speech: statements, questions, commands & more",
+    "subtitle": "Reported speech: rules, examples & quiz",
     "order": 12,
     "isLeaf": false
+  },
+  {
+    "id": "direct-indirect-speech/introduction",
+    "parentId": "direct-indirect-speech",
+    "title": "Introduction & Basic Difference",
+    "subtitle": null,
+    "order": 1,
+    "isLeaf": true,
+    "keywords": [
+      "direct indirect speech",
+      "narration",
+      "reported speech",
+      "direct speech",
+      "indirect speech"
+    ],
+    "content": {
+      "introduction": "Speech is reported in two ways. Direct Speech gives the speaker's exact words inside quotation marks. Indirect Speech (Reported Speech) gives the meaning in the reporter's own words. To convert Direct into Indirect, four things usually change: the tense, the pronouns, the time/place words, and the punctuation. Remember the order T-P-T-P: Tense, Pronoun, Time words, Punctuation.",
+      "urduExplanation": "براہِ راست تقریر (Direct Speech) میں مقرر کے اصل الفاظ جوں کے توں اقتباس کے نشانوں کے اندر لکھے جاتے ہیں۔ بالواسطہ تقریر (Indirect Speech) میں ہم وہی بات اپنے الفاظ میں بیان کرتے ہیں۔ اس کے لیے اقتباس کے نشان ہٹا دیے جاتے ہیں، فعل کا زمانہ ایک قدم پیچھے لے جاتا ہے، ضمائر مقرر یا سُننے والے کے مطابق بدلے جاتے ہیں اور وقت و مقام کے الفاظ بھی بدل جاتے ہیں۔ یادی رکھیں: T-P-T-P — زمانہ، ضمیر، وقت کے الفاظ، رموزِ اوقاف۔",
+      "englishExplanation": "Direct speech repeats the speaker's exact words, marked by a comma before the quote and quotation marks around it, with a capital letter at the start of the quote. Indirect speech removes the quotation marks and the comma, adds a conjunction (that, if, whether, to, or a wh-word), back-shifts the tense one step into the past when the reporting verb is in the past, adjusts pronouns to the new point of view, and replaces near time/place words (now, today, here) with distant ones (then, that day, there). Universal truths, habitual facts, and sentences with a present-tense reporting verb usually keep their original tense.",
+      "voiceComparison": {
+        "intro": "The same sentence in both forms:",
+        "columns": [
+          {
+            "title": "Direct Speech",
+            "blocks": [
+              {
+                "type": "text",
+                "text": "Reports the speaker's **exact words**."
+              },
+              {
+                "type": "urdu",
+                "text": "مقرر کے اصل الفاظ جوں کے توں لکھے جاتے ہیں۔"
+              },
+              {
+                "type": "example",
+                "label": "Example",
+                "text": "Ali said, \"I am happy.\"",
+                "urdu": "علی نے کہا، \"میں خوش ہوں۔\""
+              },
+              {
+                "type": "breakdown",
+                "label": "Changes shown",
+                "rows": [
+                  [
+                    "**\" \" quotation marks**",
+                    "=",
+                    "speaker's exact words"
+                  ],
+                  [
+                    "**comma (,)**",
+                    "=",
+                    "before the spoken words"
+                  ],
+                  [
+                    "**I / am**",
+                    "=",
+                    "speaker's own pronoun + present tense"
+                  ]
+                ]
+              },
+              {
+                "type": "text",
+                "text": "Inside the quotation marks nothing changes — it is exactly what was said."
+              },
+              {
+                "type": "urdu",
+                "text": "اقتباس کے نشانوں کے اندر کے الفاظ بالکل نہیں بدلتے۔"
+              },
+              {
+                "type": "bullets",
+                "label": "More examples",
+                "items": [
+                  "Sara said, \"I am writing a letter.\"",
+                  "He said, \"We will come tomorrow.\"",
+                  "The teacher said, \"Honesty is the best policy.\""
+                ]
+              }
+            ]
+          },
+          {
+            "title": "Indirect Speech",
+            "blocks": [
+              {
+                "type": "text",
+                "text": "Reports the **meaning** in the reporter's own words."
+              },
+              {
+                "type": "urdu",
+                "text": "وہی بات اپنے الفاظ میں بیان کی جاتی ہے۔"
+              },
+              {
+                "type": "example",
+                "label": "Example",
+                "text": "Ali said that he was happy.",
+                "urdu": "علی نے کہا کہ وہ خوش تھا۔"
+              },
+              {
+                "type": "breakdown",
+                "label": "Changes shown",
+                "rows": [
+                  [
+                    "**that**",
+                    "=",
+                    "conjunction added"
+                  ],
+                  [
+                    "**I → he**",
+                    "=",
+                    "pronoun follows the speaker"
+                  ],
+                  [
+                    "**am → was**",
+                    "=",
+                    "tense back-shifts one step"
+                  ],
+                  [
+                    "**\" \" and comma**",
+                    "=",
+                    "removed"
+                  ]
+                ]
+              },
+              {
+                "type": "text",
+                "text": "Tense moves one step back, pronouns follow the new point of view, and the sentence ends with a **full stop**."
+              },
+              {
+                "type": "urdu",
+                "text": "زمانہ ایک قدم پیچھے جاتا ہے اور جملہ فُل سٹاپ پر ختم ہوتا ہے۔"
+              },
+              {
+                "type": "bullets",
+                "label": "More examples",
+                "items": [
+                  "Sara said that she was writing a letter.",
+                  "He said that they would come the next day.",
+                  "The teacher said that honesty is the best policy."
+                ]
+              }
+            ]
+          }
+        ],
+        "bottom": {
+          "title": "Easy Way to Remember (T-P-T-P)",
+          "blocks": [
+            {
+              "type": "text",
+              "text": "**T** — Tense: move one step into the past."
+            },
+            {
+              "type": "text",
+              "text": "**P** — Pronoun: match the speaker and the listener."
+            },
+            {
+              "type": "text",
+              "text": "**T** — Time words: now → then, today → that day, here → there."
+            },
+            {
+              "type": "text",
+              "text": "**P** — Punctuation: drop the quotes and the comma; end with a full stop."
+            },
+            {
+              "type": "text",
+              "text": "Universal truths and habitual facts usually keep their tense."
+            }
+          ]
+        }
+      },
+      "types": [
+        {
+          "name": "The Four Changes",
+          "description": "When the reporting verb is in the past, four things change: tense (one step back), pronouns (speaker/listener point of view), time and place words (near becomes far), and punctuation (no quotes, no comma).",
+          "urduExplanation": "فعلِ ماضی کے ساتھ چار چیزیں بدلتی ہیں: زمانہ، ضمیر، وقت و مقام کے الفاظ اور رموزِ اوقاف۔"
+        },
+        {
+          "name": "What Does Not Change",
+          "description": "The meaning of the sentence never changes. Question words (what, where, when) stay the same. Universal truths, habitual facts, and sentences reported with a present-tense verb keep their original tense.",
+          "urduExplanation": "جملے کا مطلب کبھی نہیں بدلتا۔ سوال کے الفاظ (what, where) ویسے ہی رہتے ہیں اور اکثر سچائیوں کا زمانہ نہیں بدلتا۔"
+        },
+        {
+          "name": "How to Convert (4 Steps)",
+          "description": "Every conversion follows the same four steps used in every lesson of this course.",
+          "urduExplanation": "ہر جملے کی تبدیلی انہی چار مرحلوں سے ہوتی ہے۔",
+          "rules": [
+            "Identify the sentence type (statement, question, command, request).",
+            "Remove the quotation marks and comma; choose the correct reporting verb (said / told / asked).",
+            "Add the right connector (that / if / whether / to / wh-word).",
+            "Apply T-P-T-P: change the tense, pronouns, time/place words and punctuation."
+          ]
+        }
+      ],
+      "rules": [
+        "Direct speech = exact words inside quotation marks; Indirect speech = the meaning in the reporter's words.",
+        "Remove the quotation marks and the comma, and join the clauses with a suitable connector.",
+        "Back-shift the tense when the reporting verb is in the past.",
+        "Change pronouns according to the speaker and the listener.",
+        "Change time and place words: now → then, today → that day, here → there.",
+        "End the indirect sentence with a full stop (or keep ? only in the direct form)."
+      ],
+      "examples": [
+        {
+          "text": "Ali said, \"I am happy.\" → Ali said that he was happy.",
+          "note": "am → was, I → he, quotes removed, **that** added."
+        },
+        {
+          "text": "He said, \"We will come tomorrow.\" → He said that they would come the next day.",
+          "note": "will → would, we → they, tomorrow → the next day."
+        },
+        {
+          "text": "The teacher said, \"Honesty is the best policy.\" → The teacher said that honesty is the best policy.",
+          "note": "Universal truth: the tense does not change."
+        }
+      ],
+      "commonMistakes": [
+        {
+          "wrong": "He said, \"I am happy\" that he was happy.",
+          "right": "He said that he was happy.",
+          "note": "Remove the quotation marks completely in indirect speech."
+        },
+        {
+          "wrong": "Ali said that he is happy. (reporting a past remark)",
+          "right": "Ali said that he was happy.",
+          "note": "Back-shift the tense when the reporting verb \"said\" is past."
+        }
+      ],
+      "practice": [
+        {
+          "question": "What is Direct Speech?",
+          "options": [
+            "The speaker's exact words in quotation marks",
+            "A summary of the speech in our own words",
+            "A sentence without any reporting verb",
+            "A sentence that always stays in the present"
+          ],
+          "answerIndex": 0,
+          "explanation": "Direct speech repeats the exact words inside quotation marks."
+        },
+        {
+          "question": "In She said, \"I am tired.\", which part is the direct speech?",
+          "options": [
+            "She said",
+            "\"I am tired.\"",
+            "tired",
+            "She"
+          ],
+          "answerIndex": 1,
+          "explanation": "The words inside the quotation marks are the direct (reported) speech."
+        },
+        {
+          "question": "In indirect speech, the quotation marks are…",
+          "options": [
+            "kept as they are",
+            "doubled",
+            "removed",
+            "moved to the end"
+          ],
+          "answerIndex": 2,
+          "explanation": "Quotation marks and the comma before them are removed."
+        },
+        {
+          "question": "The mnemonic T-P-T-P stands for:",
+          "options": [
+            "Tense, Person, Place, Past",
+            "Tense, Pronoun, Time words, Punctuation",
+            "Topic, Phrase, Tense, Pronoun",
+            "Today, Past, Tomorrow, Present"
+          ],
+          "answerIndex": 1,
+          "explanation": "Tense → Pronoun → Time words → Punctuation is the conversion order."
+        },
+        {
+          "question": "Which direct sentence gives \"Ali said that he was happy.\"?",
+          "options": [
+            "Ali said, \"He is happy.\"",
+            "Ali said, \"I am happy.\"",
+            "Ali said, \"I was happy.\"",
+            "Ali said, \"I will be happy.\""
+          ],
+          "answerIndex": 1,
+          "explanation": "he was ← I am: the speaker used \"I am happy.\""
+        }
+      ],
+      "examTips": [
+        "First identify the sentence type — statements, questions, commands and requests each use a different connector.",
+        "Back-shift the tense only when the reporting verb is in the past; \"says\" and \"will say\" need no change.",
+        "Exam papers love the T-P-T-P order: check tense, then pronouns, then time words, then punctuation."
+      ],
+      "summary": "Direct speech quotes the exact words; indirect speech reports the meaning. Conversion changes the tense (one step back), the pronouns, the time/place words and the punctuation — remember T-P-T-P. Meaning, question words and universal truths stay the same."
+    }
+  },
+  {
+    "id": "direct-indirect-speech/statements",
+    "parentId": "direct-indirect-speech",
+    "title": "Statements",
+    "subtitle": null,
+    "order": 2,
+    "isLeaf": true,
+    "keywords": [
+      "statements",
+      "assertive",
+      "said",
+      "told",
+      "that",
+      "backshift"
+    ],
+    "content": {
+      "introduction": "A statement (assertive sentence) states a fact, opinion or piece of information. It is the most common type of reported speech. The formula is simple: Direct — Subject + said, \"Statement.\" ; Indirect — Subject + said/told + that + reported statement, with the tense back-shifted and the pronouns adjusted.",
+      "urduExplanation": "بیانیہ جملے (Statements) میں براہِ راست تقریر کا فارمولا ہے: Subject + said, \"جملہ\"۔ بالواسطہ تقریر میں اقتباس کے نشان ہٹا کر 'that' لگایا جاتا ہے اور زمانہ ایک قدم پیچھے لے جایا جاتا ہے۔ اگر سامنے کوئی سننے والا موجود ہو (said **to me/him**) تو said کی جگہ **told** استعمال ہوتا ہے — یاد رکھیں، told کے بعد ہمیشہ کوئی object آتا ہے۔ ضمائر بھی مقرر اور سننے والے کے مطابق بدل جاتے ہیں۔",
+      "englishExplanation": "For statements, keep the reporting verb \"said\" when there is no listener, and change \"said to + object\" into \"told + object\". Insert the conjunction \"that\" after the reporting verb and remove the quotation marks. Back-shift the reported verb one step into the past (Simple Present → Simple Past, Present Continuous → Past Continuous, Present Perfect / Simple Past → Past Perfect, will → would, can → could, may → might, shall → should/would, must → had to). Change first-person pronouns according to the subject of the reporting verb and second-person pronouns according to its object; third-person pronouns stay unchanged. Time and place words shift too: now → then, today → that day, yesterday → the previous day, tomorrow → the next day, here → there. If the reporting verb is in the present or future, the tense does not back-shift.",
+      "structure": [
+        "Direct: Subject + said, \"Statement.\"",
+        "Indirect: Subject + said / told + object + that + reported statement (back-shifted)"
+      ],
+      "types": [
+        {
+          "name": "said (no object)",
+          "description": "When no listener is mentioned, \"said\" stays \"said\": He said, \"I am tired.\" → He said that he was tired.",
+          "urduExplanation": "جب کوئی سننے والا ذکر نہ ہو تو said ویسے ہی رہتا ہے۔"
+        },
+        {
+          "name": "said to → told (with object)",
+          "description": "When \"said to + object\" is used, it becomes \"told + object\": She said to me, \"You are right.\" → She told me that I was right.",
+          "urduExplanation": "said to کے ساتھ سننے والا ہو تو told ہو جاتا ہے۔"
+        },
+        {
+          "name": "Said vs Told",
+          "description": "said + no object ; told + object. \"Told\" must always be followed by a listener.",
+          "urduExplanation": "told کے بعد ہمیشہ سننے والا آتا ہے، said کے بعد کچھ نہیں۔",
+          "tableGroups": [
+            {
+              "title": "Said vs Told",
+              "columns": [
+                "said + no object",
+                "told + object"
+              ],
+              "rows": [
+                [
+                  "Riya said that she was ready.",
+                  "Riya told me that she was ready."
+                ]
+              ]
+            },
+            {
+              "title": "Common Error",
+              "columns": [
+                "Incorrect ✗",
+                "Correct ✓"
+              ],
+              "rows": [
+                [
+                  "Riya told that she was ready.",
+                  "Riya told me that she was ready."
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Tense back-shift",
+          "description": "The reported verb moves one step into the past: Simple Present → Simple Past, Present Continuous → Past Continuous, Present Perfect / Simple Past → Past Perfect, will → would, can → could, may → might, shall → should/would.",
+          "urduExplanation": "رپورٹڈ فعل کا زمانہ ایک قدم ماضی کی طرف لے جایا جاتا ہے۔"
+        },
+        {
+          "name": "Pronoun and time-word changes",
+          "description": "First-person pronouns follow the subject of the reporting verb, second-person pronouns follow its object, third-person pronouns do not change. Now → then, today → that day, yesterday → the previous day, tomorrow → the next day, here → there.",
+          "urduExplanation": "ضمائر مقرر اور سننے والے کے مطابق بدلتے ہیں اور وقت و مقام کے الفاظ بھی بدل جاتے ہیں۔"
+        }
+      ],
+      "rules": [
+        "Remove the quotation marks and insert the conjunction \"that\" after the reporting verb.",
+        "Keep \"said\" when there is no listener; change \"said to + object\" into \"told + object\".",
+        "Back-shift the reported tense one step into the past (unless the reporting verb is present/future).",
+        "Change first-person pronouns according to the subject of the reporting verb.",
+        "Change second-person pronouns according to the object of the reporting verb; third-person pronouns stay unchanged.",
+        "Replace time/place words: now → then, today → that day, yesterday → the previous day, tomorrow → the next day, here → there.",
+        "End the indirect sentence with a full stop."
+      ],
+      "examples": [
+        {
+          "text": "Riya said, \"I am happy.\" → Riya said that she was happy.",
+          "note": "I → she ; am → was ; quotation marks removed ; that added."
+        },
+        {
+          "text": "Aman said, \"I have completed my work.\" → Aman said that he had completed his work.",
+          "note": "I → he ; my → his ; have completed → had completed."
+        },
+        {
+          "text": "She said, \"I work hard.\" → She said that she worked hard.",
+          "note": "Simple Present → Simple Past."
+        },
+        {
+          "text": "She said to me, \"You are right.\" → She told me that I was right.",
+          "note": "said to → told me ; you → I (the listener) ; are → was."
+        },
+        {
+          "text": "He said, \"I will help you.\" → He said that he would help me.",
+          "note": "will → would ; you → me."
+        }
+      ],
+      "commonMistakes": [
+        {
+          "wrong": "Riya told that she was ready.",
+          "right": "Riya told me that she was ready.",
+          "urdu": "told کے بعد سننے والے کا ذکر لازمی ہوتا ہے۔",
+          "note": "\"Told\" must be followed by the listener (object)."
+        },
+        {
+          "wrong": "He said that he **has** finished his work.",
+          "right": "He said that he **had** finished his work.",
+          "urdu": "حالِ مکمل ماضیِ مکمل بن جاتا ہے۔",
+          "note": "Present Perfect back-shifts to Past Perfect."
+        },
+        {
+          "wrong": "She told me that **I am** right.",
+          "right": "She told me that I was right.",
+          "urdu": "فعلِ ماضی کے ساتھ زمانہ پیچھے ہٹانا ضروری ہے۔",
+          "note": "Back-shift \"am\" to \"was\" after the past reporting verb."
+        }
+      ],
+      "practice": [
+        {
+          "question": "Choose the Direct Speech formula for a statement:",
+          "options": [
+            "Subject + said, \"Statement.\"",
+            "Subject + asked, \"Statement.\"",
+            "Subject + said to + that",
+            "Subject + told, \"Statement.\""
+          ],
+          "answerIndex": 0,
+          "explanation": "Statements use said + comma + quoted sentence."
+        },
+        {
+          "question": "He said, \"I work hard.\" → He said that he ______ hard.",
+          "options": [
+            "works",
+            "worked",
+            "had worked",
+            "is working"
+          ],
+          "answerIndex": 1,
+          "explanation": "Simple Present \"work\" back-shifts to Simple Past \"worked\"."
+        },
+        {
+          "question": "Which sentence is correct?",
+          "options": [
+            "Riya told that she was ready.",
+            "Riya said me that she was ready.",
+            "Riya told me that she was ready.",
+            "Riya told to me that she was ready."
+          ],
+          "answerIndex": 2,
+          "explanation": "told takes a direct listener: told me; said never takes \"me\"."
+        },
+        {
+          "question": "She said to me, \"You are right.\" → She told me that ______ right.",
+          "options": [
+            "you are",
+            "I was",
+            "I am",
+            "she was"
+          ],
+          "answerIndex": 1,
+          "explanation": "you (the listener = me) becomes I, and are back-shifts to was."
+        },
+        {
+          "question": "Which conjunction is added when converting a statement?",
+          "options": [
+            "if",
+            "whether",
+            "that",
+            "to"
+          ],
+          "answerIndex": 2,
+          "explanation": "Statements take \"that\"; if/whether are for Yes/No questions and to for commands."
+        }
+      ],
+      "examTips": [
+        "If the reporting clause has \"to + listener\" (said to me), replace said with told + listener.",
+        "Watch double changes: pronoun AND tense in the same sentence (I am → he was).",
+        "Present or future reporting verbs (says / will say) block the back-shift — read the reporting verb first."
+      ],
+      "summary": "Statements follow: said (no listener) or told + listener, plus \"that\", plus back-shifted tense and adjusted pronouns. Time words shift (now→then, today→that day). No back-shift when the reporting verb is present or future."
+    }
+  },
+  {
+    "id": "direct-indirect-speech/tense-changes",
+    "parentId": "direct-indirect-speech",
+    "title": "Tense Changes (Backshift of Tenses)",
+    "subtitle": null,
+    "order": 3,
+    "isLeaf": true,
+    "keywords": [
+      "tense changes",
+      "backshift",
+      "was were",
+      "had",
+      "would could might"
+    ],
+    "content": {
+      "introduction": "When the reporting verb is in the past (said, told, asked), the tense of the reported clause usually moves one step back into the past. This is called the back-shift of tenses. Present forms become past forms, and past forms become past perfect. Modals change too: will → would, can → could, may → might, shall → should/would, must → had to. Tenses that are already past perfect — and would/should/could/might — stay as they are.",
+      "urduExplanation": "جب رپورٹنگ فعل ماضی میں ہو (said, told, asked) تو رپورٹڈ جملے کا زمانہ ایک قدم پیچھے لے جایا جاتا ہے، یعنی حال کی شکلیں ماضی بن جاتی ہیں اور ماضی ماضیِ مکمل بن جاتا ہے۔ مثلاً am/is → was، V₁ → V₂، has/have + V₃ → had + V₃، will → would، can → could، may → might، shall → should/would، must → had to۔ یاد رہے کہ Past Perfect اور would, should, could, might کا زمانہ نہیں بدلتا۔",
+      "englishExplanation": "Back-shift applies when the reporting verb is past. Simple Present (V₁/V₁+s) becomes Simple Past (V₂); Present Continuous becomes Past Continuous; Present Perfect and Simple Past both become Past Perfect; Past Continuous becomes Past Perfect Continuous; will/can/may/shall become would/could/might/should-would; must becomes had to. Past Perfect never changes, and the conditionals would, should, could and might stay unchanged. No back-shift happens when the reporting verb is in the present or future tense, or when the sentence is a universal truth or habitual fact.",
+      "tableTitle": "Backshift of Tenses",
+      "tableColumns": [
+        "Direct Speech",
+        "Indirect Speech"
+      ],
+      "tableRows": [
+        [
+          "am / is",
+          "was"
+        ],
+        [
+          "are",
+          "were"
+        ],
+        [
+          "V₁ / V₁ + s",
+          "V₂ (Simple Past)"
+        ],
+        [
+          "am / is / are + V-ing",
+          "was / were + V-ing"
+        ],
+        [
+          "has / have + V₃",
+          "had + V₃"
+        ],
+        [
+          "V₂ (Simple Past)",
+          "had + V₃ (Past Perfect)"
+        ],
+        [
+          "was / were + V-ing",
+          "had been + V-ing"
+        ],
+        [
+          "will",
+          "would"
+        ],
+        [
+          "can",
+          "could"
+        ],
+        [
+          "may",
+          "might"
+        ],
+        [
+          "shall",
+          "should / would"
+        ],
+        [
+          "must",
+          "had to"
+        ],
+        [
+          "Past Perfect",
+          "Past Perfect (no change)"
+        ],
+        [
+          "would / should / could / might",
+          "no change"
+        ]
+      ],
+      "types": [
+        {
+          "name": "Simple tenses",
+          "description": "Simple Present becomes Simple Past; Simple Past becomes Past Perfect.",
+          "urduExplanation": "حالِ سادہ ماضیِ سادہ اور ماضیِ سادہ ماضیِ مکمل بن جاتا ہے۔",
+          "tableGroups": [
+            {
+              "title": "Simple Tenses",
+              "columns": [
+                "Direct",
+                "Indirect"
+              ],
+              "rows": [
+                [
+                  "work / works",
+                  "worked"
+                ],
+                [
+                  "worked",
+                  "had worked"
+                ]
+              ]
+            }
+          ],
+          "examples": [
+            {
+              "text": "She said, \"I work hard.\" → She said that she worked hard."
+            },
+            {
+              "text": "She said, \"I bought a book.\" → She said that she had bought a book."
+            }
+          ]
+        },
+        {
+          "name": "Continuous tenses",
+          "description": "Present Continuous becomes Past Continuous; Past Continuous becomes Past Perfect Continuous.",
+          "urduExplanation": "حالِ جاری ماضیِ جاری اور ماضیِ جاری ماضیِ مکمل جاری بن جاتا ہے۔",
+          "tableGroups": [
+            {
+              "title": "Continuous Tenses",
+              "columns": [
+                "Direct",
+                "Indirect"
+              ],
+              "rows": [
+                [
+                  "am / is / are + V-ing",
+                  "was / were + V-ing"
+                ],
+                [
+                  "was / were + V-ing",
+                  "had been + V-ing"
+                ]
+              ]
+            }
+          ],
+          "examples": [
+            {
+              "text": "She said, \"I am studying.\" → She said that she was studying."
+            },
+            {
+              "text": "He said, \"I was waiting for you.\" → He said that he had been waiting for me."
+            }
+          ]
+        },
+        {
+          "name": "Perfect tenses",
+          "description": "Present Perfect (has/have + V₃) becomes Past Perfect (had + V₃). Past Perfect stays Past Perfect.",
+          "urduExplanation": "حالِ مکمل ماضیِ مکمل بن جاتا ہے اور ماضیِ مکمل ویسے ہی رہتا ہے۔",
+          "tableGroups": [
+            {
+              "title": "Perfect Tenses",
+              "columns": [
+                "Direct",
+                "Indirect"
+              ],
+              "rows": [
+                [
+                  "has / have + V₃",
+                  "had + V₃"
+                ],
+                [
+                  "had + V₃",
+                  "had + V₃ (no change)"
+                ]
+              ]
+            }
+          ],
+          "examples": [
+            {
+              "text": "She said, \"I have finished.\" → She said that she had finished."
+            },
+            {
+              "text": "He said, \"I had already eaten.\" → He said that he had already eaten."
+            }
+          ]
+        },
+        {
+          "name": "Modals",
+          "description": "will → would, can → could, may → might, shall → should/would, must → had to. Would, should, could and might do not change.",
+          "urduExplanation": "will → would، can → could، may → might، shall → should/would، must → had to۔ باقی ماڈلز نہیں بدلتے۔",
+          "tableGroups": [
+            {
+              "title": "Modals",
+              "columns": [
+                "Direct",
+                "Indirect"
+              ],
+              "rows": [
+                [
+                  "will",
+                  "would"
+                ],
+                [
+                  "can",
+                  "could"
+                ],
+                [
+                  "may",
+                  "might"
+                ],
+                [
+                  "shall",
+                  "should / would"
+                ],
+                [
+                  "must",
+                  "had to"
+                ],
+                [
+                  "would / should / could / might",
+                  "no change"
+                ]
+              ]
+            }
+          ],
+          "examples": [
+            {
+              "text": "She said, \"I will help you.\" → She said that she would help me."
+            },
+            {
+              "text": "He said, \"I can swim.\" → He said that he could swim."
+            }
+          ]
+        }
+      ],
+      "rules": [
+        "Back-shift the tense only when the reporting verb is in the past (said / told / asked).",
+        "Simple Present → Simple Past; Present Continuous → Past Continuous.",
+        "Present Perfect and Simple Past → Past Perfect.",
+        "Past Continuous → Past Perfect Continuous; Past Perfect → no change.",
+        "will → would, can → could, may → might, shall → should/would, must → had to.",
+        "would / should / could / might never change.",
+        "Universal truths, habitual facts and present/future reporting verbs block the back-shift."
+      ],
+      "examples": [
+        {
+          "text": "She said, \"I work hard.\" → She said that she worked hard.",
+          "note": "V₁ → V₂."
+        },
+        {
+          "text": "She said, \"I am studying.\" → She said that she was studying.",
+          "note": "Present Continuous → Past Continuous."
+        },
+        {
+          "text": "She said, \"I have finished.\" → She said that she had finished.",
+          "note": "Present Perfect → Past Perfect."
+        },
+        {
+          "text": "She said, \"I bought a book.\" → She said that she had bought a book.",
+          "note": "Simple Past → Past Perfect."
+        },
+        {
+          "text": "She said, \"I will help you.\" → She said that she would help me.",
+          "note": "will → would ; you → me."
+        }
+      ],
+      "commonMistakes": [
+        {
+          "wrong": "She said that she **is** busy.",
+          "right": "She said that she **was** busy.",
+          "urdu": "فعلِ ماضی کے ساتھ is کو was بنانا ضروری ہے۔",
+          "note": "am/is back-shifts to was after \"said\"."
+        },
+        {
+          "wrong": "He said that he **wrote** a letter yesterday. (for \"I wrote a letter.\")",
+          "right": "He said that he **had written** a letter the previous day.",
+          "note": "Simple Past back-shifts to Past Perfect, not to another Simple Past."
+        },
+        {
+          "wrong": "He said that he **can** swim.",
+          "right": "He said that he **could** swim.",
+          "note": "can back-shifts to could."
+        }
+      ],
+      "practice": [
+        {
+          "question": "\"I am reading a book.\" → She said that she ______ a book.",
+          "options": [
+            "is reading",
+            "was reading",
+            "had been reading",
+            "has read"
+          ],
+          "answerIndex": 1,
+          "explanation": "Present Continuous back-shifts to Past Continuous."
+        },
+        {
+          "question": "In indirect speech, has/have + V₃ becomes:",
+          "options": [
+            "has/have + V₃",
+            "had + V₃",
+            "was + V₃",
+            "will have + V₃"
+          ],
+          "answerIndex": 1,
+          "explanation": "Present Perfect back-shifts to Past Perfect (had + V₃)."
+        },
+        {
+          "question": "\"I bought a pen.\" → He said that he ______ a pen.",
+          "options": [
+            "bought",
+            "buys",
+            "had bought",
+            "has bought"
+          ],
+          "answerIndex": 2,
+          "explanation": "Simple Past back-shifts to Past Perfect."
+        },
+        {
+          "question": "Which modal never changes in indirect speech?",
+          "options": [
+            "will",
+            "can",
+            "may",
+            "might"
+          ],
+          "answerIndex": 3,
+          "explanation": "might is already the past form; would/should/could/might stay unchanged."
+        },
+        {
+          "question": "\"I was waiting for you.\" → They said that they ______ for me.",
+          "options": [
+            "were waiting",
+            "had been waiting",
+            "have been waiting",
+            "are waiting"
+          ],
+          "answerIndex": 1,
+          "explanation": "Past Continuous back-shifts to Past Perfect Continuous."
+        }
+      ],
+      "examTips": [
+        "If the reporting verb is past, there is almost always a tense change — find it before answering.",
+        "Past Perfect is the \"end of the line\": it never moves back further.",
+        "Exception questions (universal truth, \"says\", still-true fact) are examiner favourites — revise lesson 7."
+      ],
+      "summary": "With a past reporting verb, every tense steps back: Present → Past, Past → Past Perfect, Present Perfect → Past Perfect, Past Continuous → Past Perfect Continuous; will/can/may/shall/must become would/could/might/should-would/had to. Past Perfect and would/should/could/might never change."
+    }
+  },
+  {
+    "id": "direct-indirect-speech/pronoun-changes",
+    "parentId": "direct-indirect-speech",
+    "title": "Pronoun Changes",
+    "subtitle": null,
+    "order": 4,
+    "isLeaf": true,
+    "keywords": [
+      "pronoun changes",
+      "SOC rule",
+      "first person",
+      "second person",
+      "third person",
+      "you"
+    ],
+    "content": {
+      "introduction": "Pronouns in the reported clause change according to the speaker, the listener, and the person being discussed. The SOC rule makes this easy: First-person pronouns (I, we, my, our…) follow the Subject of the reporting verb; Second-person pronouns (you, your) follow the Object (the listener); Third-person pronouns (he, she, they, it) do not change.",
+      "urduExplanation": "ضمائر (Pronouns) تین باتوں کے مطابق بدلتے ہیں: مقرر (speaker)، سننے والا (listener) اور جس شخص کا ذکر ہو۔ SOC کا اصول یاد رکھیں: پہلے شخص کے ضمائر (I, we, my, our) رپورٹنگ فعل کے Subject کے مطابق بدلتے ہیں، دوسرے شخص کے ضمائر (you, your) Object یعنی سننے والے کے مطابق بدلتے ہیں، اور تیسرے شخص کے ضمائر (he, she, they) نہیں بدلتے۔ Note: \"you\" کی کوئی ایک مقرر شکل نہیں — یہ ہمیشہ سننے والے کے مطابق بدلتا ہے۔",
+      "englishExplanation": "Apply the SOC rule. Subject rule: first-person pronouns change according to the subject of the reporting verb — I → he/she, we → they, me → him/her, us → them, my → his/her, our → their. Object rule: second-person pronouns change according to the object of the reporting verb — you → I/we/he/she/they and your → my/our/his/her/their, depending on who the listener is; you has no single fixed conversion. Context rule: third-person pronouns (he, she, they, it, him, her) remain unchanged. Reflexive myself changes to himself/herself/themselves as needed, and the demonstratives this → that, these → those.",
+      "tableTitle": "Pronoun Changes",
+      "tableColumns": [
+        "Direct Form",
+        "Indirect Form"
+      ],
+      "tableRows": [
+        [
+          "I",
+          "he / she"
+        ],
+        [
+          "we",
+          "they"
+        ],
+        [
+          "me",
+          "him / her"
+        ],
+        [
+          "us",
+          "them"
+        ],
+        [
+          "my",
+          "his / her"
+        ],
+        [
+          "our",
+          "their"
+        ],
+        [
+          "you",
+          "I / we / he / she / they (the listener)"
+        ],
+        [
+          "your",
+          "my / our / his / her / their (the listener)"
+        ],
+        [
+          "myself",
+          "himself / herself / themselves"
+        ],
+        [
+          "this",
+          "that"
+        ],
+        [
+          "these",
+          "those"
+        ]
+      ],
+      "types": [
+        {
+          "name": "S — First person follows the Subject",
+          "description": "I, me, my, we, us, our change according to the subject of the reporting verb. Riya said, \"I love my school.\" → Riya said that she loved her school. (I → she, my → her)",
+          "urduExplanation": "پہلے شخص کے ضمائر فعل کے فاعل کے مطابق بدلتے ہیں۔"
+        },
+        {
+          "name": "O — Second person follows the Object",
+          "description": "You and your change according to the listener (the object). Aman said to Riya, \"You helped me.\" → Aman told Riya that she had helped him. (you → Riya = she, me → him)",
+          "urduExplanation": "دوسرے شخص کے ضمائر سننے والے کے مطابق بدلتے ہیں۔ \"you\" کی کوئی مقرر شکل نہیں۔"
+        },
+        {
+          "name": "C — Third person does not change",
+          "description": "He, she, they, it and their object forms stay the same: He said, \"She is ill.\" → He said that she was ill.",
+          "urduExplanation": "تیسرے شخص کے ضمائر بالکل نہیں بدلتے۔"
+        },
+        {
+          "name": "Demonstratives and reflexives",
+          "description": "this → that, these → those; myself becomes himself/herself/themselves when the speaker changes.",
+          "urduExplanation": "this → that، these → those اور myself → himself/herself/themselves۔"
+        }
+      ],
+      "rules": [
+        "First-person pronouns (I, we, me, us, my, our) change according to the subject of the reporting verb.",
+        "Second-person pronouns (you, your) change according to the object — the listener.",
+        "Third-person pronouns (he, she, they, it, him, her, them) never change.",
+        "\"You\" has no fixed conversion: identify the listener first.",
+        "myself → himself / herself / themselves.",
+        "this → that ; these → those."
+      ],
+      "examples": [
+        {
+          "text": "Riya said, \"I love my school.\" → Riya said that she loved her school.",
+          "note": "I → she ; my → her (SOC — Subject rule)."
+        },
+        {
+          "text": "Aman said to Riya, \"You helped me.\" → Aman told Riya that she had helped him.",
+          "note": "you → she (Riya) ; me → him (Aman)."
+        },
+        {
+          "text": "The players said, \"We are tired.\" → The players said that they were tired.",
+          "note": "we → they ; are → were."
+        },
+        {
+          "text": "He said, \"I hurt myself.\" → He said that he had hurt himself.",
+          "note": "myself → himself ; I → he."
+        },
+        {
+          "text": "She said, \"These books are mine.\" → She said that those books were hers.",
+          "note": "these → those ; mine → hers."
+        }
+      ],
+      "commonMistakes": [
+        {
+          "wrong": "Riya said that **I** loved my school. (Riya speaking)",
+          "right": "Riya said that **she** loved her school.",
+          "note": "First-person pronouns follow the subject of the reporting verb."
+        },
+        {
+          "wrong": "Aman told Riya that **you** had helped him.",
+          "right": "Aman told Riya that **she** had helped him.",
+          "note": "you must become the listener: Riya → she."
+        },
+        {
+          "wrong": "He said that **I** was ill. (reporting \"She is ill.\")",
+          "right": "He said that **she** was ill.",
+          "note": "Third-person pronouns never change."
+        }
+      ],
+      "practice": [
+        {
+          "question": "Riya said, \"I love my school.\" → Riya said that ______ loved ______ school.",
+          "options": [
+            "I, my",
+            "she, her",
+            "you, your",
+            "they, their"
+          ],
+          "answerIndex": 1,
+          "explanation": "I → she and my → her (first person follows the subject Riya)."
+        },
+        {
+          "question": "\"We are tired.\" → The players said that ______ were tired.",
+          "options": [
+            "we",
+            "you",
+            "they",
+            "he"
+          ],
+          "answerIndex": 2,
+          "explanation": "we → they."
+        },
+        {
+          "question": "The teacher said to me, \"Your answer is wrong.\" → The teacher told me that ______ answer was wrong.",
+          "options": [
+            "your",
+            "his",
+            "my",
+            "her"
+          ],
+          "answerIndex": 2,
+          "explanation": "your follows the listener (me) → my."
+        },
+        {
+          "question": "Which pronouns never change in indirect speech?",
+          "options": [
+            "I and we",
+            "you and your",
+            "he, she, they",
+            "my and our"
+          ],
+          "answerIndex": 2,
+          "explanation": "Third-person pronouns stay unchanged (Context rule)."
+        },
+        {
+          "question": "He said, \"I wrote this poem myself.\" → He said that he had written that poem ______.",
+          "options": [
+            "myself",
+            "himself",
+            "herself",
+            "themselves"
+          ],
+          "answerIndex": 1,
+          "explanation": "myself → himself because I → he."
+        }
+      ],
+      "examTips": [
+        "Use SOC: Subject (1st person), Object (2nd person), Context (3rd person) — one exam question almost always tests this.",
+        "Read the listener first: the answer for \"you/your\" depends entirely on the object of the reporting verb.",
+        "Do not forget demonstratives — this/these are pronoun+place words that become that/those."
+      ],
+      "summary": "Pronouns follow the SOC rule: 1st person → subject of the reporting verb, 2nd person → its object (the listener), 3rd person → unchanged. this → that, these → those, myself → himself/herself/themselves. \"You\" has no fixed form."
+    }
+  },
+  {
+    "id": "direct-indirect-speech/time-place-changes",
+    "parentId": "direct-indirect-speech",
+    "title": "Time and Place Changes",
+    "subtitle": null,
+    "order": 5,
+    "isLeaf": true,
+    "keywords": [
+      "time changes",
+      "place changes",
+      "now then",
+      "today",
+      "yesterday",
+      "tomorrow",
+      "here there",
+      "ago before"
+    ],
+    "content": {
+      "introduction": "When the reporter speaks at a different time or place from the original speaker, near words become far words: now → then, today → that day, yesterday → the previous day, tomorrow → the next day, here → there, this → that, ago → before. Verbs of motion change direction too: come → go and bring → take.",
+      "urduExplanation": "جب رپورٹ کرنے والا کسی اور وقت یا مقام پر بات دہرائے تو قریب کے الفاظ دور کے الفاظ بن جاتے ہیں: now → then، today → that day، yesterday → the previous day، tomorrow → the next day، here → there، this → that، ago → before۔ حرکت کے فعل بھی بدلتے ہیں: come → go اور bring → take۔ اگر رپورٹنگ فعل حال میں ہو یا بات اسی وقت کی ہو تو یہ الفاظ نہیں بدلتے۔",
+      "englishExplanation": "Time and place adverbials shift when the reporting moment differs from the speaking moment: now → then, today → that day, tonight → that night, yesterday → the previous day / the day before, tomorrow → the next day / the following day, last night → the previous night, last week → the previous week, next week → the following week, ago → before, here → there, this → that, these → those. Motion verbs also change perspective: come → go and bring → take. If the reporting verb is in the present tense, or the time expression is still valid (dates, names of days, \"since morning\"), no change is needed.",
+      "tableTitle": "Time and Place Changes",
+      "tableColumns": [
+        "Direct Speech",
+        "Indirect Speech"
+      ],
+      "tableRows": [
+        [
+          "now",
+          "then"
+        ],
+        [
+          "today",
+          "that day"
+        ],
+        [
+          "tonight",
+          "that night"
+        ],
+        [
+          "yesterday",
+          "the previous day / the day before"
+        ],
+        [
+          "tomorrow",
+          "the next day / the following day"
+        ],
+        [
+          "last night",
+          "the previous night"
+        ],
+        [
+          "last week",
+          "the previous week"
+        ],
+        [
+          "next week",
+          "the following week"
+        ],
+        [
+          "ago",
+          "before"
+        ],
+        [
+          "here",
+          "there"
+        ],
+        [
+          "this",
+          "that"
+        ],
+        [
+          "these",
+          "those"
+        ],
+        [
+          "come",
+          "go"
+        ],
+        [
+          "bring",
+          "take"
+        ]
+      ],
+      "types": [
+        {
+          "name": "Time words",
+          "description": "now → then, today → that day, tonight → that night, yesterday → the previous day, tomorrow → the next day, last night → the previous night, last week → the previous week, next week → the following week, ago → before.",
+          "urduExplanation": "وقت کے قریبی الفاظ دور کے الفاظ میں بدل جاتے ہیں۔"
+        },
+        {
+          "name": "Place words and demonstratives",
+          "description": "here → there, this → that, these → those.",
+          "urduExplanation": "مقام اور نشاندہی کے الفاظ بدلتے ہیں۔"
+        },
+        {
+          "name": "Verbs of motion",
+          "description": "come → go and bring → take, because the reporter describes the action from a distance.",
+          "urduExplanation": "come → go اور bring → take ہو جاتے ہیں۔"
+        },
+        {
+          "name": "When words do NOT change",
+          "description": "With a present/future reporting verb (\"She says…\") or a still-true time expression (a date, a day name, since morning), the time words stay as they are.",
+          "urduExplanation": "اگر فعل حال میں ہو یا وقت کی بات آج بھی درست ہو تو الفاظ نہیں بدلتے۔"
+        }
+      ],
+      "rules": [
+        "now → then ; today → that day ; tonight → that night.",
+        "yesterday → the previous day / the day before.",
+        "tomorrow → the next day / the following day.",
+        "last night/week → the previous night/week ; next week → the following week.",
+        "ago → before ; here → there ; this → that ; these → those.",
+        "come → go ; bring → take.",
+        "Keep the original words when the reporting verb is present/future or the time is still true."
+      ],
+      "examples": [
+        {
+          "text": "Riya said, \"I will come here tomorrow.\" → Riya said that she would go there the next day.",
+          "note": "will → would ; come → go ; here → there ; tomorrow → the next day."
+        },
+        {
+          "text": "He said, \"I saw him two years ago.\" → He said that he had seen him two years before.",
+          "note": "ago → before ; saw → had seen."
+        },
+        {
+          "text": "She said, \"We watched a movie last night.\" → She said that they had watched a movie the previous night.",
+          "note": "last night → the previous night ; watched → had watched."
+        },
+        {
+          "text": "Ali says, \"I am busy now.\" → Ali says that he is busy now.",
+          "note": "Present reporting verb: now stays now, tense stays present."
+        },
+        {
+          "text": "Mother said, \"Bring a glass of water.\" → Mother told me to take a glass of water.",
+          "note": "bring → take in a command."
+        }
+      ],
+      "commonMistakes": [
+        {
+          "wrong": "He said that he would come **here tomorrow**.",
+          "right": "He said that he would go **there the next day**.",
+          "note": "here → there and tomorrow → the next day."
+        },
+        {
+          "wrong": "She said that she had seen him two years **ago**.",
+          "right": "She said that she had seen him two years **before**.",
+          "note": "ago becomes before in indirect speech."
+        }
+      ],
+      "practice": [
+        {
+          "question": "\"I am busy now.\" → He said that he was busy ______.",
+          "options": [
+            "now",
+            "then",
+            "that day",
+            "today"
+          ],
+          "answerIndex": 1,
+          "explanation": "now becomes then."
+        },
+        {
+          "question": "\"I came yesterday.\" → She said that she had come ______.",
+          "options": [
+            "yesterday",
+            "the previous day",
+            "the next day",
+            "that day"
+          ],
+          "answerIndex": 1,
+          "explanation": "yesterday → the previous day (or the day before)."
+        },
+        {
+          "question": "\"We will leave tomorrow.\" → They said that they would leave ______.",
+          "options": [
+            "tomorrow",
+            "the previous day",
+            "the next day",
+            "that night"
+          ],
+          "answerIndex": 2,
+          "explanation": "tomorrow → the next day / the following day."
+        },
+        {
+          "question": "\"I live here.\" → He said that he lived ______.",
+          "options": [
+            "here",
+            "there",
+            "everywhere",
+            "that place"
+          ],
+          "answerIndex": 1,
+          "explanation": "here becomes there."
+        },
+        {
+          "question": "\"I will come here tomorrow.\" → Riya said that she would ______ there the next day.",
+          "options": [
+            "come",
+            "went",
+            "go",
+            "gone"
+          ],
+          "answerIndex": 2,
+          "explanation": "come → go when the viewpoint shifts to the reporter."
+        }
+      ],
+      "examTips": [
+        "Memorise the three headline pairs: now→then, today→that day, tomorrow→the next day, yesterday→the previous day.",
+        "come→go and bring→take are the most-forgotten changes — check for motion verbs in every question.",
+        "A present reporting verb (\"She says…\") cancels all time-word changes."
+      ],
+      "summary": "Near words become far words when the reporting moment changes: now→then, today→that day, yesterday→the previous day, tomorrow→the next day, ago→before, here→there, this/these→that/those, come→go, bring→take. Present reporting verbs and still-true times block these changes."
+    }
+  },
+  {
+    "id": "direct-indirect-speech/questions",
+    "parentId": "direct-indirect-speech",
+    "title": "Questions — Yes/No and WH-Questions",
+    "subtitle": null,
+    "order": 6,
+    "isLeaf": true,
+    "keywords": [
+      "questions",
+      "yes no questions",
+      "wh questions",
+      "if whether",
+      "asked"
+    ],
+    "content": {
+      "introduction": "Reported questions use \"asked\" (never \"said\"), and the question becomes a statement: no quotation marks, no question mark, no question word order. Yes/No questions are joined with if or whether; WH-questions keep their question word (what, where, when, why, how). The tense back-shifts and the pronouns and time words change as in statements.",
+      "urduExplanation": "سوالات کی رپورٹ کے لیے ہمیشہ **asked** استعمال ہوتا ہے۔ Haan/Nah والے سوالات (Yes/No) میں if یا whether لگتا ہے، اور WH-سوالات میں سوال کا لفظ (what, where, when) ویسے ہی رہتا ہے۔ سوال کی ترتیب ختم ہو کر عام جملے کی ترتیب (subject + verb) بن جاتی ہے، سوال کا نشان (?) ہٹ جاتا ہے اور do/does/did حذف ہو جاتے ہیں۔ زمانہ، ضمیر اور وقت کے الفاظ پچھلے اصولوں کے مطابق بدلتے ہیں۔",
+      "englishExplanation": "Change the reporting verb to asked. For Yes/No questions, add if or whether and convert to statement order: asked + if/whether + subject + verb. Remove the auxiliary do/does/did and back-shift the main verb. For WH-questions, keep the question word and use statement order: asked + wh-word + subject + verb. Never keep question word order: \"She asked where did I live\" is wrong; \"She asked where I lived\" is correct. Remove the question mark and end with a full stop. If the question word is the subject (Who broke the window?), the order stays the same because it is already subject + verb.",
+      "structure": [
+        "Yes/No: Direct — He said, \"Are you ready?\"",
+        "Yes/No: Indirect — He asked + if/whether + subject + verb (statement order)",
+        "WH: Direct — Riya said, \"Where do you live?\"",
+        "WH: Indirect — asked + wh-word + subject + verb (statement order)"
+      ],
+      "types": [
+        {
+          "name": "Yes/No questions",
+          "description": "Use asked + if/whether + subject + verb. Changes: remove quotation marks, remove ?, use if/whether, change the order. Riya asked, \"Are you ready?\" → Riya asked if I was ready.",
+          "urduExplanation": "Haan/Nah والے سوالات میں if/whether لگتا ہے اور ترتیب عام جملے جیسی ہو جاتی ہے۔",
+          "tableGroups": [
+            {
+              "title": "Changes",
+              "columns": [
+                "Direct",
+                "Indirect"
+              ],
+              "rows": [
+                [
+                  "quotation marks \" \"",
+                  "removed"
+                ],
+                [
+                  "question mark ?",
+                  "removed"
+                ],
+                [
+                  "no connector",
+                  "if / whether"
+                ],
+                [
+                  "Are you…?",
+                  "if I was…"
+                ]
+              ]
+            }
+          ],
+          "examples": [
+            {
+              "text": "He asked, \"Do you like coffee?\" → He asked me whether I liked coffee.",
+              "note": "do removed ; like → liked ; you → I."
+            },
+            {
+              "text": "She asked, \"Can you swim?\" → She asked me if I could swim.",
+              "note": "can → could ; you → I."
+            }
+          ]
+        },
+        {
+          "name": "WH-questions",
+          "description": "Keep the question word and use statement order: asked + wh-word + subject + verb. Riya asked, \"Where do you live?\" → Riya asked where I lived.",
+          "urduExplanation": "WH-لفظ ویسے ہی رہتا ہے مگر ترتیب عام جملے جیسی ہو جاتی ہے۔",
+          "examples": [
+            {
+              "text": "He asked, \"Why are you late?\" → He asked why I was late.",
+              "note": "are → was ; you → I."
+            },
+            {
+              "text": "She asked, \"When will you return?\" → She asked when I would return.",
+              "note": "will → would."
+            },
+            {
+              "text": "She asked, \"How did you do this?\" → She asked how I had done that.",
+              "note": "did removed ; did do → had done ; this → that."
+            }
+          ]
+        },
+        {
+          "name": "Important rule — no question order",
+          "description": "Do not use question word order in the reported clause. Incorrect: She asked where did I live. ✗ Correct: She asked where I lived. ✓",
+          "urduExplanation": "رپورٹڈ سوال میں سوال کی ترتیب نہیں چلتی — subject + verb لگائیں۔"
+        },
+        {
+          "name": "Question word as subject",
+          "description": "When the WH-word is the subject of the question, the order is already subject + verb, so it stays unchanged: \"Who teaches you English?\" → He asked who taught me English.",
+          "urduExplanation": "اگر سوال کا لفظ خود subject ہو تو ترتیب ویسے ہی رہتی ہے۔"
+        }
+      ],
+      "rules": [
+        "Change said to asked (said to + object → asked + object).",
+        "Yes/No questions: add if or whether after asked.",
+        "WH-questions: keep the question word (what, where, when, why, how, who, which).",
+        "Use statement order — subject before verb; no auxiliary inversion.",
+        "Remove do/does/did and back-shift the main verb.",
+        "Remove the quotation marks and the question mark; end with a full stop.",
+        "Back-shift the tense and change pronouns and time words as in statements."
+      ],
+      "examples": [
+        {
+          "text": "Riya asked, \"Are you ready?\" → Riya asked if I was ready.",
+          "note": "Yes/No → if ; are → was ; you → I."
+        },
+        {
+          "text": "He asked, \"Do you like coffee?\" → He asked me whether I liked coffee.",
+          "note": "do removed ; like → liked."
+        },
+        {
+          "text": "Riya asked, \"Where do you live?\" → Riya asked where I lived.",
+          "note": "WH kept ; do removed ; live → lived."
+        },
+        {
+          "text": "She asked, \"When will you return?\" → She asked when I would return.",
+          "note": "will → would ; statement order."
+        },
+        {
+          "text": "The teacher asked, \"Who teaches you English?\" → The teacher asked who taught me English.",
+          "note": "wh-word is the subject: order unchanged."
+        }
+      ],
+      "commonMistakes": [
+        {
+          "wrong": "She asked where did I live.",
+          "right": "She asked where I lived.",
+          "urdu": "رپورٹڈ سوال میں subject پہلے اور فعل بعد میں آتا ہے۔",
+          "note": "Never keep question word order in the reported clause."
+        },
+        {
+          "wrong": "He asked me that did I like coffee.",
+          "right": "He asked me whether I liked coffee.",
+          "note": "Yes/No questions take if/whether, never \"that\" or \"did\"."
+        },
+        {
+          "wrong": "She asked if was I ready.",
+          "right": "She asked if I was ready.",
+          "note": "Statement order: subject (I) before verb (was)."
+        }
+      ],
+      "practice": [
+        {
+          "question": "Which connector joins a reported Yes/No question?",
+          "options": [
+            "that",
+            "to",
+            "if / whether",
+            "because"
+          ],
+          "answerIndex": 2,
+          "explanation": "Yes/No questions take if or whether."
+        },
+        {
+          "question": "\"Are you ready?\" → Riya asked ______ I ______ ready.",
+          "options": [
+            "that, am",
+            "if, was",
+            "if, is",
+            "to, be"
+          ],
+          "answerIndex": 1,
+          "explanation": "if + I + was: connector, listener pronoun, back-shifted tense."
+        },
+        {
+          "question": "\"Where do you live?\" → He asked where ______ lived.",
+          "options": [
+            "do you",
+            "did you",
+            "I",
+            "you do"
+          ],
+          "answerIndex": 2,
+          "explanation": "do is removed, you → I, and the order is subject + verb."
+        },
+        {
+          "question": "Which sentence is correct?",
+          "options": [
+            "She asked where did I live.",
+            "She asked where I lived.",
+            "She asked where do I live.",
+            "She asked did where I live."
+          ],
+          "answerIndex": 1,
+          "explanation": "The reported clause uses statement word order."
+        },
+        {
+          "question": "\"Why are you crying?\" → He asked why ______ crying.",
+          "options": [
+            "are you",
+            "I was",
+            "was I",
+            "you are"
+          ],
+          "answerIndex": 1,
+          "explanation": "you → I and are → was in statement order."
+        }
+      ],
+      "examTips": [
+        "Two checks for every reported question: connector (if/whether vs wh-word) and word order (subject before verb).",
+        "do/does/did always disappear — their tense jumps onto the main verb (did do → had done).",
+        "The question mark disappears: reported questions end with a full stop."
+      ],
+      "summary": "Reported questions use asked + statement order with no question mark. Yes/No questions take if/whether; WH-questions keep the wh-word. do/does/did are removed, tenses back-shift, and pronouns and time words change as in statements."
+    }
+  },
+  {
+    "id": "direct-indirect-speech/commands-requests-punctuation",
+    "parentId": "direct-indirect-speech",
+    "title": "Commands, Requests, Punctuation & Exceptions",
+    "subtitle": null,
+    "order": 7,
+    "isLeaf": true,
+    "keywords": [
+      "commands",
+      "requests",
+      "imperative",
+      "punctuation",
+      "exceptions",
+      "universal truth",
+      "not to"
+    ],
+    "content": {
+      "introduction": "Commands and requests change the bare imperative into an infinitive: told/ordered/asked + object + to + V₁ (positive) or not to + V₁ (negative). Requests use asked/requested politely — the word please disappears. Punctuation changes completely: no quotation marks, no comma, a full stop at the end. And in three situations the tense does NOT change: universal truths, present-tense reporting verbs, and facts that are still true.",
+      "urduExplanation": "حکم (Command) بالواسطہ تقریر میں infinitive بن جاتا ہے: told/ordered + object + **to** + V₁۔ منفی حکم میں **not to** + V₁ لگتا ہے۔ درخواست (Request) کے لیے asked/requested استعمال ہوتا ہے اور \"please\" حذف ہو جاتا ہے۔ رموزِ اوقاف بدل جاتے ہیں: اقتباس کے نشان اور کاما ہٹ جاتے ہیں اور جملہ فُل سٹاپ پر ختم ہوتا ہے۔ زمانہ ان تین صورتوں میں نہیں بدلتا: اکثر سچائی (universal truth)، فعلِ حال میں رپورٹنگ ورب، اور آج بھی درست حقیقت۔",
+      "englishExplanation": "Positive command: told / ordered / asked + object + to + V₁ — Teacher said, \"Sit down.\" → Teacher told the students to sit down. Negative command: told / ordered / asked + object + not to + V₁ — Mother said, \"Do not waste time.\" → Mother told me not to waste time. Request: asked / requested + object + to + V₁, dropping please — Riya said, \"Please help me.\" → Riya asked me to help her. Punctuation: direct speech uses a comma before the spoken words, quotation marks, a capital letter, and ? or ! inside the quotes; indirect speech uses no quotation marks, no comma before the report, a full stop at the end, and that / if / whether / to / a wh-word as the connector. Tense does not change for universal truths, habitual facts, still-true statements, or a present-tense reporting verb. Final checklist: identify the sentence type; remove commas and quotation marks; choose the reporting verb; add that / if / whether / to / wh-word; change the pronoun; change the tense; change time and place words; use normal statement word order — the T-P-T-P order.",
+      "structure": [
+        "Positive command: told / ordered / asked + object + to + V₁",
+        "Negative command: told / ordered / asked + object + not to + V₁",
+        "Request: asked / requested + object + to + V₁ (please removed)",
+        "Statements: said / told + that + clause · Questions: asked + if/whether or wh-word"
+      ],
+      "types": [
+        {
+          "name": "A. Positive command",
+          "description": "The imperative verb becomes to + V₁ after the object. Formula: told / ordered / asked + object + to + V₁. Teacher said, \"Sit down.\" → Teacher told the students to sit down.",
+          "urduExplanation": "حکم کا فعل to + پہلی حالت میں بدلتا ہے۔",
+          "examples": [
+            {
+              "text": "\"Close the door.\" → He told me to close the door."
+            },
+            {
+              "text": "\"Stand up.\" → The teacher ordered the boy to stand up."
+            }
+          ]
+        },
+        {
+          "name": "B. Negative command",
+          "description": "Insert not before to: told / ordered / asked + object + not to + V₁. Mother said, \"Do not waste time.\" → Mother told me not to waste time.",
+          "urduExplanation": "منفی حکم میں not to لگتا ہے۔",
+          "examples": [
+            {
+              "text": "\"Do not touch the wire.\" → The man warned the children not to touch the wire."
+            },
+            {
+              "text": "\"Do not make a noise.\" → She told us not to make a noise."
+            }
+          ]
+        },
+        {
+          "name": "C. Request",
+          "description": "Use asked or requested + object + to + V₁ and drop please/kindly. Riya said, \"Please help me.\" → Riya asked me to help her.",
+          "urduExplanation": "درخواست میں please ہٹا کر asked/requested + object + to + V₁ لگائیں۔",
+          "examples": [
+            {
+              "text": "\"Please lend me your pen.\" → He requested me to lend him my pen."
+            },
+            {
+              "text": "\"Kindly open the door.\" → She requested the peon to open the door."
+            }
+          ]
+        },
+        {
+          "name": "D. Punctuation changes",
+          "description": "Direct speech: comma before the spoken words, quotation marks, capital letter at the beginning, ? or ! inside the quotation marks. Indirect speech: no quotation marks, no comma before the report, full stop at the end, and that / if / whether / to / wh-word as the connector.",
+          "urduExplanation": "اقتباس کے نشان اور کاما ہٹ جاتے ہیں، جملہ فُل سٹاپ پر ختم ہوتا ہے اور that/if/whether/to/wh-لفظ لگتا ہے۔",
+          "tableGroups": [
+            {
+              "title": "Punctuation Changes",
+              "columns": [
+                "Direct Speech",
+                "Indirect Speech"
+              ],
+              "rows": [
+                [
+                  "Comma before spoken words",
+                  "No comma before the report"
+                ],
+                [
+                  "Quotation marks \" \"",
+                  "No quotation marks"
+                ],
+                [
+                  "Capital letter at the beginning",
+                  "Normal statement word order"
+                ],
+                [
+                  "? or ! inside the quotation marks",
+                  "Full stop at the end"
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "name": "E. When the tense does not change",
+          "description": "1. Universal truth: \"The Earth moves around the Sun.\" → Teacher said that the Earth moves around the Sun. 2. Reporting verb in the present: Riya says, \"I am busy.\" → Riya says that she is busy. 3. Fact still true: \"Delhi is the capital of India.\" → Aman said that Delhi is the capital of India.",
+          "urduExplanation": "زمانہ ان صورتوں میں نہیں بدلتا: اکثر سچائی، فعلِ حال کی رپورٹنگ، اور آج بھی درست حقیقت۔"
+        },
+        {
+          "name": "F. Final conversion checklist",
+          "description": "Eight steps cover every conversion in this course.",
+          "urduExplanation": "ہر تبدیلی ان آٹھ مرحلوں سے گزرتی ہے۔",
+          "rules": [
+            "Identify the sentence type.",
+            "Remove commas and quotation marks.",
+            "Choose the correct reporting verb (said / told / asked).",
+            "Add that / if / whether / to / wh-word when needed.",
+            "Change the pronoun.",
+            "Change the tense.",
+            "Change the time and place words.",
+            "Use normal statement word order."
+          ]
+        }
+      ],
+      "rules": [
+        "Positive command: told / ordered / asked + object + to + V₁.",
+        "Negative command: told / ordered / asked + object + not to + V₁.",
+        "Request: asked / requested + object + to + V₁ — drop please and kindly.",
+        "Choose the reporting verb from the tone: ordered (order), requested (polite), advised, warned, forbade.",
+        "Remove quotation marks, the comma, ? and !; end with a full stop.",
+        "Add that (statements), if/whether (Yes/No), wh-word (WH), to (commands/requests).",
+        "No back-shift for universal truths, habitual facts, still-true facts, or a present-tense reporting verb.",
+        "Follow T-P-T-P: Tense, Pronoun, Time words, Punctuation."
+      ],
+      "examples": [
+        {
+          "text": "Teacher said, \"Sit down.\" → Teacher told the students to sit down.",
+          "note": "Positive command: told + object + to + V₁."
+        },
+        {
+          "text": "Mother said, \"Do not waste time.\" → Mother told me not to waste time.",
+          "note": "Negative command: not to + V₁."
+        },
+        {
+          "text": "Riya said, \"Please help me.\" → Riya asked me to help her.",
+          "note": "Request: asked + object + to + V₁ ; please removed."
+        },
+        {
+          "text": "Teacher said, \"The Earth moves around the Sun.\" → Teacher said that the Earth moves around the Sun.",
+          "note": "Universal truth: no back-shift."
+        },
+        {
+          "text": "Riya says, \"I am busy.\" → Riya says that she is busy.",
+          "note": "Present reporting verb: no back-shift."
+        }
+      ],
+      "commonMistakes": [
+        {
+          "wrong": "The teacher told sit down.",
+          "right": "The teacher told **them to** sit down.",
+          "urdu": "حکم میں سننے والے کے ساتھ to لگانا ضروری ہے۔",
+          "note": "Commands need the listener + to + V₁."
+        },
+        {
+          "wrong": "Mother told me **to not** waste time.",
+          "right": "Mother told me **not to** waste time.",
+          "note": "Negative commands use not to + V₁."
+        },
+        {
+          "wrong": "Riya says that she **was** busy.",
+          "right": "Riya says that she **is** busy.",
+          "note": "A present reporting verb blocks the back-shift."
+        }
+      ],
+      "practice": [
+        {
+          "question": "Positive command formula:",
+          "options": [
+            "told + object + to + V₁",
+            "told + object + V₁",
+            "told + to + V₁",
+            "said + object + V-ing"
+          ],
+          "answerIndex": 0,
+          "explanation": "told/ordered/asked + object + to + V₁."
+        },
+        {
+          "question": "\"Please help me.\" → Riya asked me ______ her.",
+          "options": [
+            "help",
+            "helped",
+            "to help",
+            "helping"
+          ],
+          "answerIndex": 2,
+          "explanation": "Requests become to + V₁; please disappears."
+        },
+        {
+          "question": "\"Do not make a noise.\" → She told us ______ a noise.",
+          "options": [
+            "to not make",
+            "not to make",
+            "do not make",
+            "not making"
+          ],
+          "answerIndex": 1,
+          "explanation": "Negative commands use not to + V₁."
+        },
+        {
+          "question": "\"The sun rises in the east.\" → The teacher said that the sun ______ in the east.",
+          "options": [
+            "rose",
+            "had risen",
+            "rises",
+            "would rise"
+          ],
+          "answerIndex": 2,
+          "explanation": "Universal truth: the tense does not change."
+        },
+        {
+          "question": "Which punctuation marks disappear in indirect speech?",
+          "options": [
+            "Full stop only",
+            "Quotation marks and the comma before the quote",
+            "Capital letters",
+            "No punctuation changes"
+          ],
+          "answerIndex": 1,
+          "explanation": "Quotes and the comma go; the sentence ends with a full stop."
+        }
+      ],
+      "examTips": [
+        "Commands never use \"that\" — if the reported idea is an instruction, look for to / not to.",
+        "Match the reporting verb to the tone: ordered, requested, advised, warned, forbade.",
+        "Exception questions (no back-shift) usually show a universal truth, \"says\", or a still-true fact — spot them fast."
+      ],
+      "summary": "Commands: told/ordered + object + (not) to + V₁. Requests: asked/requested + object + to + V₁, dropping please. Punctuation: no quotes, no comma, full stop at the end, connector that/if/whether/to/wh-word. The tense stays when it is a universal truth, a habitual fact, a still-true statement, or the reporting verb is present. Checklist: T-P-T-P."
+    }
+  },
+  {
+    "id": "direct-indirect-speech/practice-quiz",
+    "parentId": "direct-indirect-speech",
+    "title": "Practice Quiz",
+    "subtitle": "100 MCQs with explanations",
+    "order": 8,
+    "isLeaf": true,
+    "keywords": [
+      "quiz",
+      "mcq",
+      "direct indirect practice",
+      "reported speech quiz"
+    ],
+    "content": {
+      "quiz": [
+        {
+          "question": "He said, \"I am busy.\" → He said that ______ busy.",
+          "options": [
+            "he was",
+            "he is",
+            "I was",
+            "he had been"
+          ],
+          "answerIndex": 0,
+          "explanation": "I → he and am → was after the past reporting verb."
+        },
+        {
+          "question": "She said, \"I do not like tea.\" → She said that she did not like tea. Which change is NOT part of the conversion?",
+          "options": [
+            "I → she",
+            "do not → did not",
+            "that added",
+            "tea → coffee"
+          ],
+          "answerIndex": 3,
+          "explanation": "The object words stay; only pronouns, tense and the connector change."
+        },
+        {
+          "question": "They said, \"We are going to the market.\" → They said that ______ going to the market.",
+          "options": [
+            "they was",
+            "they were",
+            "we were",
+            "they are"
+          ],
+          "answerIndex": 1,
+          "explanation": "we → they and are → were."
+        },
+        {
+          "question": "Ali said, \"I have finished my homework.\" → Ali said that he ______ his homework.",
+          "options": [
+            "has finished",
+            "had finished",
+            "finished",
+            "was finishing"
+          ],
+          "answerIndex": 1,
+          "explanation": "Present Perfect back-shifts to Past Perfect."
+        },
+        {
+          "question": "Sara said to me, \"You sing well.\" → Sara ______ well.",
+          "options": [
+            "said me that I sang",
+            "told me that I sang",
+            "told that I sing",
+            "said that you sang"
+          ],
+          "answerIndex": 1,
+          "explanation": "said to me → told me; you → I; sing → sang."
+        },
+        {
+          "question": "He said, \"I bought a car yesterday.\" → He said that he had bought a car ______.",
+          "options": [
+            "yesterday",
+            "the previous day",
+            "the next day",
+            "that day"
+          ],
+          "answerIndex": 1,
+          "explanation": "yesterday becomes the previous day; bought → had bought."
+        },
+        {
+          "question": "The teacher said, \"The earth revolves around the sun.\" → The teacher said that the earth ______ around the sun.",
+          "options": [
+            "revolved",
+            "had revolved",
+            "revolves",
+            "would revolve"
+          ],
+          "answerIndex": 2,
+          "explanation": "Universal truth: the tense does not change."
+        },
+        {
+          "question": "She says, \"I am happy.\" → She says that she ______ happy.",
+          "options": [
+            "was",
+            "is",
+            "had been",
+            "were"
+          ],
+          "answerIndex": 1,
+          "explanation": "A present reporting verb blocks the back-shift: am stays is."
+        },
+        {
+          "question": "Which sentence is correct?",
+          "options": [
+            "Riya told that she was ready.",
+            "Riya said me that she was ready.",
+            "Riya told me that she was ready.",
+            "Riya told to me that she was ready."
+          ],
+          "answerIndex": 2,
+          "explanation": "told must be followed by the listener; said never takes an object."
+        },
+        {
+          "question": "He said to Ali, \"I will help you.\" → He told Ali that he ______ help ______.",
+          "options": [
+            "will, him",
+            "would, him",
+            "would, me",
+            "will, you"
+          ],
+          "answerIndex": 1,
+          "explanation": "will → would; you refers to Ali → him."
+        },
+        {
+          "question": "The boy said, \"I can swim.\" → The boy said that he ______ swim.",
+          "options": [
+            "can",
+            "could",
+            "may",
+            "might"
+          ],
+          "answerIndex": 1,
+          "explanation": "can back-shifts to could."
+        },
+        {
+          "question": "She said, \"I may join the party.\" → She said that she ______ join the party.",
+          "options": [
+            "might",
+            "must",
+            "could",
+            "would"
+          ],
+          "answerIndex": 0,
+          "explanation": "may back-shifts to might."
+        },
+        {
+          "question": "He said, \"I was watching TV.\" → He said that he ______ TV.",
+          "options": [
+            "was watching",
+            "had been watching",
+            "has been watching",
+            "is watching"
+          ],
+          "answerIndex": 1,
+          "explanation": "Past Continuous back-shifts to Past Perfect Continuous."
+        },
+        {
+          "question": "Aman said, \"I shall visit Lahore.\" → Aman said that he ______ visit Lahore.",
+          "options": [
+            "shall",
+            "will",
+            "would",
+            "should"
+          ],
+          "answerIndex": 2,
+          "explanation": "shall becomes would (or should) in indirect speech."
+        },
+        {
+          "question": "She said to them, \"You have won the match.\" → She told them that ______ won the match.",
+          "options": [
+            "we had",
+            "they had",
+            "you had",
+            "they has"
+          ],
+          "answerIndex": 1,
+          "explanation": "you → they (the listeners) and have won → had won."
+        },
+        {
+          "question": "He said, \"I must finish this work today.\" → He said that he ______ finish that work that day.",
+          "options": [
+            "must",
+            "had to",
+            "has to",
+            "should have"
+          ],
+          "answerIndex": 1,
+          "explanation": "must → had to; this → that; today → that day."
+        },
+        {
+          "question": "The students said, \"We have been studying since morning.\" → The students said that they had been studying ______.",
+          "options": [
+            "since morning",
+            "that morning",
+            "the previous morning",
+            "for morning"
+          ],
+          "answerIndex": 0,
+          "explanation": "\"Since morning\" is still the same morning, so it stays unchanged."
+        },
+        {
+          "question": "Which direct speech matches: \"She said that she had seen the film.\"?",
+          "options": [
+            "She said, \"I saw the film.\"",
+            "She said, \"I have seen the film.\"",
+            "She said, \"I had seen the film.\"",
+            "She said, \"I will see the film.\""
+          ],
+          "answerIndex": 1,
+          "explanation": "Present Perfect (have seen) back-shifts to Past Perfect (had seen)."
+        },
+        {
+          "question": "When the reporting verb is past, Simple Present back-shifts to:",
+          "options": [
+            "Past Perfect",
+            "Simple Past",
+            "Past Continuous",
+            "Present Perfect"
+          ],
+          "answerIndex": 1,
+          "explanation": "Simple Present (V₁) becomes Simple Past (V₂)."
+        },
+        {
+          "question": "\"I am cooking dinner.\" → She said that she ______ dinner.",
+          "options": [
+            "is cooking",
+            "was cooking",
+            "had cooked",
+            "has cooked"
+          ],
+          "answerIndex": 1,
+          "explanation": "Present Continuous back-shifts to Past Continuous."
+        },
+        {
+          "question": "\"I have lost my keys.\" → He said that he ______ his keys.",
+          "options": [
+            "have lost",
+            "had lost",
+            "lost",
+            "has lost"
+          ],
+          "answerIndex": 1,
+          "explanation": "Present Perfect back-shifts to Past Perfect."
+        },
+        {
+          "question": "\"We played football.\" → They said that they ______ football.",
+          "options": [
+            "played",
+            "had played",
+            "have played",
+            "were playing"
+          ],
+          "answerIndex": 1,
+          "explanation": "Simple Past back-shifts to Past Perfect."
+        },
+        {
+          "question": "\"I will call you.\" → He said that he ______ call ______.",
+          "options": [
+            "will, me",
+            "would, me",
+            "would, him",
+            "will, you"
+          ],
+          "answerIndex": 1,
+          "explanation": "will → would and you (the listener) → me."
+        },
+        {
+          "question": "\"I can drive.\" → She said that she ______ drive.",
+          "options": [
+            "can",
+            "could",
+            "may",
+            "should"
+          ],
+          "answerIndex": 1,
+          "explanation": "can → could."
+        },
+        {
+          "question": "\"It may rain.\" → He said that it ______ rain.",
+          "options": [
+            "might",
+            "must",
+            "could",
+            "would"
+          ],
+          "answerIndex": 0,
+          "explanation": "may → might."
+        },
+        {
+          "question": "\"I shall return soon.\" → She said that she ______ return soon.",
+          "options": [
+            "shall",
+            "will",
+            "would",
+            "can"
+          ],
+          "answerIndex": 2,
+          "explanation": "shall → would/should; would is the standard answer."
+        },
+        {
+          "question": "\"We were waiting for you.\" → They said that they ______ waiting for me.",
+          "options": [
+            "were",
+            "had been",
+            "have been",
+            "are"
+          ],
+          "answerIndex": 1,
+          "explanation": "Past Continuous back-shifts to Past Perfect Continuous."
+        },
+        {
+          "question": "\"The peon has rung the bell.\" → He said that the peon ______ the bell.",
+          "options": [
+            "has rung",
+            "had rung",
+            "rang",
+            "was ringing"
+          ],
+          "answerIndex": 1,
+          "explanation": "Present Perfect back-shifts to Past Perfect."
+        },
+        {
+          "question": "\"I had already eaten.\" → He said that he ______ already eaten.",
+          "options": [
+            "had",
+            "has",
+            "have",
+            "was"
+          ],
+          "answerIndex": 0,
+          "explanation": "Past Perfect never changes."
+        },
+        {
+          "question": "\"I must go now.\" → He said that he ______ go then.",
+          "options": [
+            "must",
+            "had to",
+            "has to",
+            "may"
+          ],
+          "answerIndex": 1,
+          "explanation": "must → had to; now → then."
+        },
+        {
+          "question": "She says, \"I write stories.\" → She says that she ______ stories.",
+          "options": [
+            "wrote",
+            "writes",
+            "had written",
+            "would write"
+          ],
+          "answerIndex": 1,
+          "explanation": "The reporting verb is present (says): no back-shift."
+        },
+        {
+          "question": "Which tense NEVER back-shifts?",
+          "options": [
+            "Simple Present",
+            "Present Continuous",
+            "Past Perfect",
+            "Simple Past"
+          ],
+          "answerIndex": 2,
+          "explanation": "Past Perfect is already the farthest step back, so it stays unchanged."
+        },
+        {
+          "question": "Riya said, \"I love my school.\" → Riya said that ______ loved ______ school.",
+          "options": [
+            "I, my",
+            "she, her",
+            "you, your",
+            "they, their"
+          ],
+          "answerIndex": 1,
+          "explanation": "First-person pronouns follow the subject: I → she, my → her."
+        },
+        {
+          "question": "\"We are tired.\" → The players said that ______ were tired.",
+          "options": [
+            "we",
+            "you",
+            "they",
+            "he"
+          ],
+          "answerIndex": 2,
+          "explanation": "we → they."
+        },
+        {
+          "question": "Aman said to Riya, \"You helped me.\" → Aman told Riya that ______ had helped ______.",
+          "options": [
+            "she, him",
+            "you, him",
+            "he, her",
+            "she, him self"
+          ],
+          "answerIndex": 0,
+          "explanation": "you → she (Riya) and me → him (Aman)."
+        },
+        {
+          "question": "The teacher said to me, \"Your answer is wrong.\" → The teacher told me that ______ answer was wrong.",
+          "options": [
+            "your",
+            "his",
+            "my",
+            "her"
+          ],
+          "answerIndex": 2,
+          "explanation": "your follows the listener (me) → my."
+        },
+        {
+          "question": "\"Our team won.\" → They said that ______ team had won.",
+          "options": [
+            "our",
+            "their",
+            "his",
+            "her"
+          ],
+          "answerIndex": 1,
+          "explanation": "our → their."
+        },
+        {
+          "question": "He said, \"My brother will meet me at the station.\" → He said that ______ brother would meet ______ at the station.",
+          "options": [
+            "his, him",
+            "her, him",
+            "my, me",
+            "his, them"
+          ],
+          "answerIndex": 0,
+          "explanation": "my → his and me → him (first person follows the subject)."
+        },
+        {
+          "question": "According to the SOC rule, first-person pronouns change according to the:",
+          "options": [
+            "object of the reporting verb",
+            "subject of the reporting verb",
+            "person being discussed",
+            "verb tense"
+          ],
+          "answerIndex": 1,
+          "explanation": "S = Subject: first-person pronouns follow the subject."
+        },
+        {
+          "question": "According to the SOC rule, second-person pronouns (you/your) change according to the:",
+          "options": [
+            "subject",
+            "listener (object)",
+            "reported verb",
+            "none — they never change"
+          ],
+          "answerIndex": 1,
+          "explanation": "O = Object: you/your follow the listener."
+        },
+        {
+          "question": "He said, \"She is ill.\" → He said that ______ was ill.",
+          "options": [
+            "I",
+            "he",
+            "she",
+            "they"
+          ],
+          "answerIndex": 2,
+          "explanation": "Third-person pronouns never change."
+        },
+        {
+          "question": "\"I hurt myself.\" → He said that he had hurt ______.",
+          "options": [
+            "myself",
+            "himself",
+            "herself",
+            "themselves"
+          ],
+          "answerIndex": 1,
+          "explanation": "myself → himself because I → he."
+        },
+        {
+          "question": "\"I am busy now.\" → He said that he was busy ______.",
+          "options": [
+            "now",
+            "then",
+            "today",
+            "just"
+          ],
+          "answerIndex": 1,
+          "explanation": "now → then."
+        },
+        {
+          "question": "\"It is hot today.\" → She said that it was hot ______.",
+          "options": [
+            "today",
+            "that day",
+            "the next day",
+            "yesterday"
+          ],
+          "answerIndex": 1,
+          "explanation": "today → that day."
+        },
+        {
+          "question": "\"I came yesterday.\" → She said that she had come ______.",
+          "options": [
+            "yesterday",
+            "the previous day",
+            "the next day",
+            "that day"
+          ],
+          "answerIndex": 1,
+          "explanation": "yesterday → the previous day / the day before."
+        },
+        {
+          "question": "\"I will leave tomorrow.\" → He said that he would leave ______.",
+          "options": [
+            "tomorrow",
+            "the next day",
+            "the previous day",
+            "that day"
+          ],
+          "answerIndex": 1,
+          "explanation": "tomorrow → the next day / the following day."
+        },
+        {
+          "question": "\"We will meet tonight.\" → They said that they would meet ______.",
+          "options": [
+            "tonight",
+            "that night",
+            "the previous night",
+            "the next night"
+          ],
+          "answerIndex": 1,
+          "explanation": "tonight → that night."
+        },
+        {
+          "question": "\"I saw him two years ago.\" → She said that she had seen him two years ______.",
+          "options": [
+            "ago",
+            "before",
+            "before two years",
+            "since"
+          ],
+          "answerIndex": 1,
+          "explanation": "ago → before."
+        },
+        {
+          "question": "\"I live here.\" → He said that he lived ______.",
+          "options": [
+            "here",
+            "there",
+            "where",
+            "everywhere"
+          ],
+          "answerIndex": 1,
+          "explanation": "here → there."
+        },
+        {
+          "question": "\"I will come here tomorrow.\" → Riya said that she would ______ there the next day.",
+          "options": [
+            "come",
+            "go",
+            "went",
+            "reach here"
+          ],
+          "answerIndex": 1,
+          "explanation": "come → go when the viewpoint shifts to the reporter."
+        },
+        {
+          "question": "Mother said, \"Bring a glass of water.\" → Mother told me to ______ a glass of water.",
+          "options": [
+            "bring",
+            "take",
+            "took",
+            "carry"
+          ],
+          "answerIndex": 1,
+          "explanation": "bring → take in indirect speech."
+        },
+        {
+          "question": "\"We watched a movie last night.\" → They said that they had watched a movie ______.",
+          "options": [
+            "last night",
+            "the previous night",
+            "tonight",
+            "that day"
+          ],
+          "answerIndex": 1,
+          "explanation": "last night → the previous night."
+        },
+        {
+          "question": "Which connector joins a reported Yes/No question?",
+          "options": [
+            "that",
+            "to",
+            "if / whether",
+            "what"
+          ],
+          "answerIndex": 2,
+          "explanation": "Yes/No questions use asked + if/whether."
+        },
+        {
+          "question": "Riya asked, \"Are you ready?\" → Riya asked ______ I ______ ready.",
+          "options": [
+            "that, am",
+            "if, was",
+            "if, is",
+            "to, be"
+          ],
+          "answerIndex": 1,
+          "explanation": "if + I + was: connector, pronoun, back-shift."
+        },
+        {
+          "question": "\"Do you like coffee?\" → He asked me ______ I ______ coffee.",
+          "options": [
+            "that, like",
+            "if, liked",
+            "did, like",
+            "whether, like"
+          ],
+          "answerIndex": 1,
+          "explanation": "do is removed and like back-shifts to liked."
+        },
+        {
+          "question": "\"Is Ali coming today?\" → She asked ______ Ali ______ coming ______.",
+          "options": [
+            "that, is, today",
+            "if, was, that day",
+            "if, is, today",
+            "whether, was, today"
+          ],
+          "answerIndex": 1,
+          "explanation": "if + was + that day: connector, back-shift, time word."
+        },
+        {
+          "question": "\"Have you finished your work?\" → The teacher asked ______ I ______ my work.",
+          "options": [
+            "that, had, finished",
+            "whether, had finished",
+            "if, have finished",
+            "to, had finished"
+          ],
+          "answerIndex": 1,
+          "explanation": "whether + had finished: Present Perfect back-shifts to Past Perfect."
+        },
+        {
+          "question": "\"Can you swim?\" → She asked me ______ I ______ swim.",
+          "options": [
+            "that, could",
+            "if, could",
+            "whether, can",
+            "to, could"
+          ],
+          "answerIndex": 1,
+          "explanation": "if + could."
+        },
+        {
+          "question": "\"Did you see the film?\" → He asked ______ I ______ the film.",
+          "options": [
+            "that, saw",
+            "if, had seen",
+            "did, see",
+            "whether, saw"
+          ],
+          "answerIndex": 1,
+          "explanation": "did disappears and see jumps to had seen."
+        },
+        {
+          "question": "\"Will you help me?\" → She asked me ______ I ______ help ______.",
+          "options": [
+            "that, would, her",
+            "if, would, her",
+            "if, will, her",
+            "to, would, him"
+          ],
+          "answerIndex": 1,
+          "explanation": "if + would + her (me → her)."
+        },
+        {
+          "question": "In a reported WH-question, the question word is:",
+          "options": [
+            "removed",
+            "kept",
+            "replaced by that",
+            "moved to the end"
+          ],
+          "answerIndex": 1,
+          "explanation": "WH-questions keep their question word."
+        },
+        {
+          "question": "\"Where do you live?\" → He asked ______ I lived.",
+          "options": [
+            "where did",
+            "where",
+            "that where",
+            "where do"
+          ],
+          "answerIndex": 1,
+          "explanation": "Keep where, remove do, use statement order."
+        },
+        {
+          "question": "\"Why are you late?\" → He asked ______ I ______ late.",
+          "options": [
+            "why was",
+            "why, was",
+            "that why, was",
+            "why do, was"
+          ],
+          "answerIndex": 1,
+          "explanation": "why + I + was."
+        },
+        {
+          "question": "\"When will you return?\" → She asked ______ I ______ return.",
+          "options": [
+            "when would",
+            "that when, would",
+            "when, will",
+            "when did, would"
+          ],
+          "answerIndex": 0,
+          "explanation": "Keep when; will → would; statement order."
+        },
+        {
+          "question": "\"How did you do this?\" → She asked ______ I ______ done ______.",
+          "options": [
+            "how had, that",
+            "how did, this",
+            "that how, had, that",
+            "how, have, this"
+          ],
+          "answerIndex": 0,
+          "explanation": "Keep how; did do → had done; this → that."
+        },
+        {
+          "question": "\"What is your name?\" → The stranger asked me ______ name ______.",
+          "options": [
+            "what my, was",
+            "that what, is",
+            "what, is your",
+            "what was, my"
+          ],
+          "answerIndex": 0,
+          "explanation": "Keep what; your → my; statement order: what my name was."
+        },
+        {
+          "question": "\"Who teaches you English?\" → He asked ______ English.",
+          "options": [
+            "who taught me",
+            "that who taught me",
+            "who teaches me",
+            "who did teach me"
+          ],
+          "answerIndex": 0,
+          "explanation": "The wh-word is the subject, so the order stays; teach → taught."
+        },
+        {
+          "question": "\"Where does Ali work?\" → She asked where Ali ______.",
+          "options": [
+            "works",
+            "worked",
+            "did work",
+            "does work"
+          ],
+          "answerIndex": 1,
+          "explanation": "does is removed; work back-shifts to worked."
+        },
+        {
+          "question": "\"Which book do you want?\" → He asked me which book I ______.",
+          "options": [
+            "want",
+            "wanted",
+            "did want",
+            "do want"
+          ],
+          "answerIndex": 1,
+          "explanation": "Keep which book; remove do; want → wanted."
+        },
+        {
+          "question": "The formula for a reported WH-question is:",
+          "options": [
+            "asked + wh-word + verb + subject",
+            "asked + wh-word + subject + verb",
+            "asked + that + wh-word + subject",
+            "asked + if + wh-word + subject"
+          ],
+          "answerIndex": 1,
+          "explanation": "asked + wh-word + subject + verb — statement order."
+        },
+        {
+          "question": "\"Where did you go last night?\" -> He asked ______ I ______ gone ______.",
+          "options": [
+            "where had, that night",
+            "that where, had, last night",
+            "where, had, last night",
+            "where did, that night"
+          ],
+          "answerIndex": 0,
+          "explanation": "Keep where; did go -> had gone; last night -> that night."
+        },
+        {
+          "question": "\"How are you?\" → She asked me ______ I ______.",
+          "options": [
+            "how, was",
+            "that how, was",
+            "how, am",
+            "how did, was"
+          ],
+          "answerIndex": 0,
+          "explanation": "Keep how; are → was."
+        },
+        {
+          "question": "The formula for a positive command is:",
+          "options": [
+            "told + object + to + V₁",
+            "told + that + V₁",
+            "told + object + V₁",
+            "said + to + V-ing"
+          ],
+          "answerIndex": 0,
+          "explanation": "told/ordered/asked + object + to + V₁."
+        },
+        {
+          "question": "\"Sit down.\" → The teacher told the students ______ sit down.",
+          "options": [
+            "that",
+            "to",
+            "for",
+            "not to"
+          ],
+          "answerIndex": 1,
+          "explanation": "Positive command: to + V₁."
+        },
+        {
+          "question": "\"Open the window.\" → He ordered the servant ______ the window.",
+          "options": [
+            "open",
+            "opened",
+            "to open",
+            "opening"
+          ],
+          "answerIndex": 2,
+          "explanation": "ordered + object + to + V₁."
+        },
+        {
+          "question": "The formula for a negative command is:",
+          "options": [
+            "not to + V₁",
+            "to not V₁",
+            "do not to V₁",
+            "not V-ing"
+          ],
+          "answerIndex": 0,
+          "explanation": "told/ordered/asked + object + not to + V₁."
+        },
+        {
+          "question": "\"Do not waste time.\" → Mother told me ______ time.",
+          "options": [
+            "to not waste",
+            "not to waste",
+            "do not waste",
+            "not wasting"
+          ],
+          "answerIndex": 1,
+          "explanation": "not to + V₁."
+        },
+        {
+          "question": "\"Do not touch the wire.\" → The man warned the children ______ the wire.",
+          "options": [
+            "to touch not",
+            "not to touch",
+            "do not touch",
+            "not touching"
+          ],
+          "answerIndex": 1,
+          "explanation": "warned + object + not to + V₁."
+        },
+        {
+          "question": "\"Stand up.\" → The teacher ordered the boy ______ up.",
+          "options": [
+            "stand",
+            "to stand",
+            "standing",
+            "stood"
+          ],
+          "answerIndex": 1,
+          "explanation": "ordered + object + to + V₁."
+        },
+        {
+          "question": "\"Do your homework.\" → The mother told her son ______ homework.",
+          "options": [
+            "do his",
+            "to do his",
+            "doing his",
+            "did his"
+          ],
+          "answerIndex": 1,
+          "explanation": "to + V₁ keeps the pronoun: his homework."
+        },
+        {
+          "question": "\"Do not go out in the rain.\" → She told her son ______ out in the rain.",
+          "options": [
+            "not to go",
+            "to not go",
+            "do not go",
+            "not going"
+          ],
+          "answerIndex": 0,
+          "explanation": "Negative command: not to + V₁."
+        },
+        {
+          "question": "In indirect speech, the imperative verb becomes:",
+          "options": [
+            "past simple",
+            "an infinitive with to",
+            "a gerund",
+            "past perfect"
+          ],
+          "answerIndex": 1,
+          "explanation": "Commands/requests always turn the imperative into to + V₁."
+        },
+        {
+          "question": "\"Please help me.\" → Riya asked me ______ her.",
+          "options": [
+            "help",
+            "helped",
+            "to help",
+            "helping"
+          ],
+          "answerIndex": 2,
+          "explanation": "Requests: asked + object + to + V₁; please disappears."
+        },
+        {
+          "question": "Which words disappear when a request is reported?",
+          "options": [
+            "the object",
+            "please / kindly",
+            "the verb",
+            "the reporting verb"
+          ],
+          "answerIndex": 1,
+          "explanation": "please and kindly are replaced by the polite verb asked/requested."
+        },
+        {
+          "question": "\"Please lend me your pen.\" → He requested me ______ him ______ pen.",
+          "options": [
+            "to lend, my",
+            "lend, my",
+            "to lend, your",
+            "lending, his"
+          ],
+          "answerIndex": 0,
+          "explanation": "requested + object + to + V₁; your (the listener) → my."
+        },
+        {
+          "question": "\"Kindly open the door.\" → She requested the peon ______ the door.",
+          "options": [
+            "open",
+            "to open",
+            "opened",
+            "opening"
+          ],
+          "answerIndex": 1,
+          "explanation": "Kindly disappears; requested + object + to + V₁."
+        },
+        {
+          "question": "\"The sun rises in the east.\" → The teacher said that the sun ______ in the east.",
+          "options": [
+            "rose",
+            "had risen",
+            "rises",
+            "would rise"
+          ],
+          "answerIndex": 2,
+          "explanation": "Universal truth: the tense does not change."
+        },
+        {
+          "question": "Riya says, \"I am busy.\" → Riya says that she ______ busy.",
+          "options": [
+            "was",
+            "is",
+            "had been",
+            "were"
+          ],
+          "answerIndex": 1,
+          "explanation": "Present reporting verb: no back-shift."
+        },
+        {
+          "question": "\"Delhi is the capital of India.\" → Aman said that Delhi ______ the capital of India.",
+          "options": [
+            "was",
+            "is",
+            "had been",
+            "were"
+          ],
+          "answerIndex": 1,
+          "explanation": "A fact that is still true keeps its tense."
+        },
+        {
+          "question": "\"The hen lays eggs.\" → She said that the hen ______ eggs.",
+          "options": [
+            "laid",
+            "had laid",
+            "lays",
+            "would lay"
+          ],
+          "answerIndex": 2,
+          "explanation": "Habitual fact: the tense stays present."
+        },
+        {
+          "question": "In which case does the tense NOT back-shift?",
+          "options": [
+            "He said, \"I am tired.\"",
+            "She said, \"I wrote a letter.\"",
+            "The teacher said, \"Water boils at 100°C.\"",
+            "They said, \"We will come.\""
+          ],
+          "answerIndex": 2,
+          "explanation": "Water boiling at 100°C is a universal truth."
+        },
+        {
+          "question": "The teacher said, \"Quaid-e-Azam founded Pakistan.\" → The teacher said that Quaid-e-Azam ______ Pakistan.",
+          "options": [
+            "founded",
+            "had founded",
+            "founds",
+            "would found"
+          ],
+          "answerIndex": 1,
+          "explanation": "Both are accepted in exams, but the standard board answer back-shifts a historical event to Past Perfect. (Some books allow \"founded\" as a still-true fact — the back-shifted form is the safest.)"
+        },
+        {
+          "question": "Which punctuation is removed in indirect speech?",
+          "options": [
+            "Full stop",
+            "Quotation marks and the comma before the quote",
+            "Capital letters",
+            "No punctuation changes"
+          ],
+          "answerIndex": 1,
+          "explanation": "Quotes and the comma go; the sentence ends with a full stop."
+        },
+        {
+          "question": "What is added after the reporting verb in a reported statement?",
+          "options": [
+            "a comma",
+            "the conjunction \"that\"",
+            "a question mark",
+            "quotation marks"
+          ],
+          "answerIndex": 1,
+          "explanation": "Statements add \"that\" after said/told."
+        },
+        {
+          "question": "The mnemonic T-P-T-P stands for:",
+          "options": [
+            "Tense, Person, Place, Past",
+            "Tense, Pronoun, Time words, Punctuation",
+            "Topic, Phrase, Tense, Pronoun",
+            "Today, Past, Tomorrow, Present"
+          ],
+          "answerIndex": 1,
+          "explanation": "The four changes in order: Tense → Pronoun → Time words → Punctuation."
+        },
+        {
+          "question": "An indirect sentence normally ends with:",
+          "options": [
+            "a question mark",
+            "an exclamation mark",
+            "a full stop",
+            "a comma"
+          ],
+          "answerIndex": 2,
+          "explanation": "Reported speech ends with a full stop."
+        },
+        {
+          "question": "She said to Ali, \"You are right.\" → She ______ Ali that he was right.",
+          "options": [
+            "said",
+            "told",
+            "asked",
+            "spoke"
+          ],
+          "answerIndex": 1,
+          "explanation": "said to + object becomes told + object."
+        },
+        {
+          "question": "Which word order is used in all reported speech?",
+          "options": [
+            "Question order",
+            "Statement order (subject + verb)",
+            "Command order",
+            "Random order"
+          ],
+          "answerIndex": 1,
+          "explanation": "Even reported questions use statement order."
+        },
+        {
+          "question": "\"What a beautiful view!\" is best reported as: He exclaimed with wonder that ______ a beautiful view.",
+          "options": [
+            "it was",
+            "it is",
+            "that was",
+            "it were"
+          ],
+          "answerIndex": 0,
+          "explanation": "Exclamations are reported with a past reporting verb and a statement clause."
+        },
+        {
+          "question": "Direct: comma, quotation marks, capital letter, ? or ! inside quotes. Indirect: no quotation marks, no comma, full stop, and…",
+          "options": [
+            "the same words",
+            "a connector such as that / if / whether / to / a wh-word",
+            "an exclamation mark",
+            "double capital letters"
+          ],
+          "answerIndex": 1,
+          "explanation": "A connector joins the reporting clause to the reported clause."
+        }
+      ]
+    }
   },
   {
     "id": "punctuation",
@@ -14536,1030 +17341,6 @@
           ]
         }
       }
-    }
-  },
-  {
-    "id": "direct-indirect-speech/commands",
-    "parentId": "direct-indirect-speech",
-    "title": "Commands (Imperative)",
-    "subtitle": null,
-    "order": 3,
-    "isLeaf": true,
-    "keywords": [
-      "commands",
-      "imperative",
-      "indirect speech",
-      "ordered",
-      "told",
-      "to infinitive",
-      "negative command",
-      "narration"
-    ],
-    "content": {
-      "introduction": "Imperative sentences express commands, instructions, or directions. In Direct Speech they begin with a base verb (e.g., 'Sit down.', 'Do not speak.'). Converting them into Indirect Speech involves replacing 'said' with an appropriate reporting verb and using the infinitive form 'to + base verb'. For negative commands, 'not to + base verb' is used. These forms are tested in every major CSS/PMS grammar section.",
-      "urduExplanation": "حکمیہ جملوں (Imperative Sentences) کو Indirect Speech میں بدلتے وقت Reporting Verb کی جگہ حکم کی نوعیت کے مطابق 'ordered', 'commanded', 'told', 'directed', یا 'instructed' استعمال ہوتا ہے۔ Direct Speech کا base verb 'to + verb' (Infinitive) میں تبدیل ہو جاتا ہے، مثلاً 'Go' → 'to go'۔ منفی حکم (Negative Command) میں 'Do not' یا 'Don't' کی جگہ 'not to + verb' آتا ہے، مثلاً 'Don't shout' → 'not to shout'۔ inverted commas اور exclamatory punctuation ہٹا دی جاتی ہے۔ حکمیہ جملوں میں تنسیخ (Tense Back-shift) لاگو نہیں ہوتی کیونکہ Infinitive (to + verb) کا کوئی زمانہ نہیں ہوتا۔",
-      "englishExplanation": "In Indirect Speech, the imperative sentence loses its base-verb-first structure and is converted using a 'to + infinitive' construction. The reporting verb 'said' is replaced by a verb that conveys the tone of the command: 'ordered' or 'commanded' for strong/military commands, 'told' for general instructions, 'directed' or 'instructed' for formal/official orders, 'warned' for cautionary commands, and 'forbade' for prohibitions. The structure becomes: Reporting Verb + Object + (not) to + base verb + rest of sentence. Because an infinitive has no tense, tense back-shift does not apply to imperative conversions. Pronouns and time/place words do change as per the usual rules. If the command begins with 'Let us / Let's', it converts to 'suggested that they should' or 'proposed that they should'. If the command begins with 'Let him/her/them', it converts to 'said that he/she/they should be allowed to'.",
-      "types": [
-        {
-          "name": "Affirmative command",
-          "description": "Use 'ordered/told/instructed + object + to + base verb': He said to the soldier, 'Stand up.' → He ordered the soldier to stand up."
-        },
-        {
-          "name": "Negative command",
-          "description": "Use 'ordered/told + object + not to + base verb': She said, 'Do not make noise.' → She told them not to make noise."
-        },
-        {
-          "name": "'Let us' proposal",
-          "description": "'Let us/Let's + verb' → 'suggested/proposed that they/we should + verb': He said, 'Let's go.' → He suggested that they should go."
-        },
-        {
-          "name": "'Let him/her/them' permission",
-          "description": "'Let him/her/them + verb' → 'said that he/she/they should be allowed to + verb': She said, 'Let him speak.' → She said that he should be allowed to speak."
-        },
-        {
-          "name": "Reporting verb choice by tone",
-          "description": "Strong/military: 'commanded/ordered'; general: 'told'; formal/official: 'instructed/directed'; caution: 'warned'; prohibition: 'forbade + from + gerund'."
-        }
-      ],
-      "rules": [
-        "Replace 'said' with the appropriate reporting verb: ordered, commanded, told, instructed, directed, warned, or forbade depending on the tone.",
-        "For affirmative commands: use Reporting Verb + Object + to + base verb.",
-        "For negative commands: use Reporting Verb + Object + not to + base verb (do not write 'to not').",
-        "Tense back-shift does NOT apply because the infinitive 'to + verb' has no tense.",
-        "Pronouns still change according to the SOC rule.",
-        "Time and place words (now→then, here→there, today→that day) still change where relevant.",
-        "For 'Let us/Let's' commands, use 'suggested/proposed that they/we should + base verb'.",
-        "For 'Let him/her/them' commands, use 'said that he/she/they should be allowed to + base verb'."
-      ],
-      "examples": [
-        {
-          "text": "Direct: The general said to the soldiers, 'Attack the enemy.' / Indirect: The general ordered the soldiers to attack the enemy.",
-          "note": "'said to' → 'ordered'; affirmative command → 'to attack'; no tense back-shift needed."
-        },
-        {
-          "text": "Direct: The teacher said to the students, 'Do not talk in class.' / Indirect: The teacher told the students not to talk in class.",
-          "note": "Negative command; 'Do not' → 'not to'; 'said to' → 'told'."
-        },
-        {
-          "text": "Direct: The doctor said to the patient, 'Take this medicine twice a day.' / Indirect: The doctor instructed the patient to take that medicine twice a day.",
-          "note": "Formal/medical context → 'instructed'; 'this' → 'that'."
-        },
-        {
-          "text": "Direct: He said, 'Let's start the meeting.' / Indirect: He suggested that they should start the meeting.",
-          "note": "'Let's' → 'suggested that they should'; first-person plural changes from 'us' to 'they'."
-        },
-        {
-          "text": "Direct: She said to him, 'Don't ever lie to me again.' / Indirect: She warned him never to lie to her again.",
-          "note": "Cautionary negative → 'warned'; 'Don't ever' → 'never to'; 'me' → 'her'."
-        }
-      ],
-      "commonMistakes": [
-        {
-          "wrong": "The teacher told the students to not talk in class.",
-          "right": "The teacher told the students not to talk in class.",
-          "note": "In British English (standard for CSS/PMS), 'not to' (split infinitive avoidance) is preferred over 'to not'."
-        },
-        {
-          "wrong": "He ordered the soldiers that they should attack.",
-          "right": "He ordered the soldiers to attack.",
-          "note": "Commands use 'to + base verb' infinitive construction, not 'that + should' (that form is used for 'let us' suggestions)."
-        },
-        {
-          "wrong": "She said to me to come here now.",
-          "right": "She told me to come there then.",
-          "note": "'said to me' → 'told me'; 'here' → 'there'; 'now' → 'then' — place and time words must be changed."
-        },
-        {
-          "wrong": "He suggested that they go.",
-          "right": "He suggested that they should go.",
-          "note": "When converting 'Let's', the modal 'should' is required in the reported clause: 'suggested that + subject + should + verb'."
-        }
-      ],
-      "practice": [
-        {
-          "question": "Change to Indirect Speech: The officer said to the clerk, 'Submit the report immediately.'",
-          "options": [
-            "The officer ordered the clerk to submit the report immediately.",
-            "The officer told the clerk that he should submit the report immediately.",
-            "The officer said the clerk to submit the report immediately.",
-            "The officer commanded the clerk that submit the report."
-          ],
-          "answerIndex": 0,
-          "explanation": "'said to' → 'ordered' (authoritative command); affirmative command → 'to submit'; infinitive construction used."
-        },
-        {
-          "question": "Change to Indirect Speech: She said to him, 'Do not enter this room.'",
-          "options": [
-            "She told him to not enter that room.",
-            "She told him not to enter that room.",
-            "She said him not to enter this room.",
-            "She ordered him that he should not enter that room."
-          ],
-          "answerIndex": 1,
-          "explanation": "'said to him' → 'told him'; negative command → 'not to enter'; 'this' → 'that'; 'not to' preferred over 'to not'."
-        },
-        {
-          "question": "Change to Indirect Speech: He said, 'Let's complete the project today.'",
-          "options": [
-            "He told them to complete the project today.",
-            "He said that they complete the project that day.",
-            "He suggested that they should complete the project that day.",
-            "He proposed to complete the project today."
-          ],
-          "answerIndex": 2,
-          "explanation": "'Let's' → 'suggested that they should'; 'today' → 'that day'; the full structure is: suggested + that + subject + should + verb."
-        }
-      ],
-      "quiz": [
-        {
-          "question": "Which reporting verb is most appropriate for a strong military command in Indirect Speech?",
-          "options": [
-            "requested",
-            "suggested",
-            "ordered / commanded",
-            "told"
-          ],
-          "answerIndex": 2,
-          "explanation": "'Ordered' or 'commanded' conveys the strong, authoritative tone of a military command. 'Told' is used for general instructions."
-        },
-        {
-          "question": "The negative command 'Do not enter' changes to which form in Indirect Speech?",
-          "options": [
-            "to not enter",
-            "not to enter",
-            "that he should not enter (always)",
-            "do not enter (unchanged)"
-          ],
-          "answerIndex": 1,
-          "explanation": "Negative commands use 'not to + base verb'. 'To not enter' is an informal split infinitive avoided in formal/exam writing."
-        },
-        {
-          "question": "'He said, Let us begin.' The correct Indirect Speech is:",
-          "options": [
-            "He told them to begin.",
-            "He said that they should begin.",
-            "He suggested that they should begin.",
-            "He ordered them to begin."
-          ],
-          "answerIndex": 2,
-          "explanation": "'Let us/Let's + verb' converts to 'suggested/proposed that + subject + should + verb'. 'Suggested' is the standard reporting verb for proposals."
-        }
-      ],
-      "summary": "To convert imperative sentences: choose a reporting verb matching the tone (ordered, told, instructed, warned, suggested); use 'to + base verb' for affirmative commands and 'not to + base verb' for negative commands; tense back-shift does not apply because infinitives have no tense; change pronouns and time/place words as usual; and convert 'Let us' to 'suggested that they should + verb'."
-    }
-  },
-  {
-    "id": "direct-indirect-speech/exclamatory",
-    "parentId": "direct-indirect-speech",
-    "title": "Exclamatory Sentences",
-    "subtitle": null,
-    "order": 5,
-    "isLeaf": true,
-    "keywords": [
-      "exclamatory",
-      "indirect speech",
-      "exclaimed",
-      "interjection",
-      "hurrah",
-      "alas",
-      "wow",
-      "narration"
-    ],
-    "content": {
-      "introduction": "Exclamatory sentences express strong emotions: joy, sorrow, surprise, wonder, anger, or disgust. They are introduced by interjections (Hurrah!, Alas!, Bravo!, Oh!, Wow!, What a!, How!) and end with an exclamation mark. In Indirect Speech, the emotion is expressed through an adverbial phrase attached to the reporting verb, the interjection is dropped, and the exclamation mark is removed. These conversions are popular in CSS/PMS objective grammar sections.",
-      "urduExplanation": "جذباتی جملوں (Exclamatory Sentences) میں خوشی، غم، حیرت، یا تعریف کا اظہار ہوتا ہے اور یہ 'Hurrah!', 'Alas!', 'Bravo!', 'What a!', 'How!' جیسے الفاظ سے شروع ہوتے ہیں۔ Indirect Speech میں Reporting Verb کے ساتھ جذبے کا وصف لگاتے ہیں: 'exclaimed with joy' (خوشی)، 'exclaimed with sorrow/grief' (غم)، 'exclaimed with surprise/wonder' (حیرت)، 'exclaimed with admiration' (تعریف)۔ Interjection (Hurrah، Alas وغیرہ) حذف ہو جاتا ہے اور exclamation mark (!) ہٹا دی جاتی ہے۔ جملے کو 'that' کے ذریعے بیانیہ جملے میں بدلتے ہیں اور بقیہ تمام اصول (tense back-shift، ضمیر، وقت کے الفاظ) لاگو ہوتے ہیں۔ 'What a + noun' اور 'How + adjective' والے exclamatory جملے Indirect میں ایک بیانیہ جملے کی صورت اختیار کر لیتے ہیں۔",
-      "englishExplanation": "When converting exclamatory sentences to Indirect Speech, the reporting verb changes from 'said' to 'exclaimed' accompanied by an adverb phrase that captures the emotion: 'exclaimed with joy' (Hurrah, Bravo, Hurray), 'exclaimed with sorrow/grief' (Alas, Oh dear), 'exclaimed with surprise/wonder' (Oh!, What!, How unexpected), 'exclaimed with admiration' (What a lovely/beautiful...), 'exclaimed with disgust' (Ugh!, Fie!), and 'exclaimed with anger' (How dare you!).The interjection itself (Hurrah, Alas, Bravo, Oh, Wow) is omitted completely. The exclamation mark is replaced with a full stop. The conjunction 'that' is inserted after 'exclaimed with [emotion]'. The exclamatory structure 'What a + adjective + noun!' or 'How + adjective!' is rewritten as an assertive clause: 'What a beautiful scene!' → 'exclaimed with admiration that it was a very beautiful scene.' All tense back-shift, pronoun, and time/place word rules apply as normal.",
-      "types": [
-        {
-          "name": "Joy / Happiness (Hurrah!, Hurray!, Bravo!)",
-          "description": "Reporting phrase: 'exclaimed with joy that': He said, 'Hurrah! We have won.' → He exclaimed with joy that they had won."
-        },
-        {
-          "name": "Sorrow / Grief (Alas!, Oh dear!, What a pity!)",
-          "description": "Reporting phrase: 'exclaimed with sorrow that': She said, 'Alas! I have lost everything.' → She exclaimed with sorrow that she had lost everything."
-        },
-        {
-          "name": "Surprise / Wonder (Oh!, What!, How!)",
-          "description": "Reporting phrase: 'exclaimed with surprise that': He said, 'Oh! What a strange coincidence!' → He exclaimed with surprise that it was a very strange coincidence."
-        },
-        {
-          "name": "Admiration / Praise (What a lovely...!, How beautiful...!)",
-          "description": "Reporting phrase: 'exclaimed with admiration that': She said, 'What a beautiful painting!' → She exclaimed with admiration that it was a very beautiful painting."
-        },
-        {
-          "name": "Disgust / Anger (Ugh!, Fie!, How dare you!)",
-          "description": "Reporting phrase: 'exclaimed with disgust/anger that': He said, 'Ugh! How disgusting this is!' → He exclaimed with disgust that it was very disgusting."
-        }
-      ],
-      "rules": [
-        "Change the reporting verb from 'said' to 'exclaimed' with an appropriate emotion adverb (with joy, with sorrow, with surprise, with admiration, with disgust).",
-        "Omit the interjection (Hurrah, Alas, Bravo, Oh, Wow, Ugh) entirely — do not transfer it to Indirect Speech.",
-        "Remove the exclamation mark (!) and replace with a full stop.",
-        "Insert the conjunction 'that' after the reporting phrase ('exclaimed with joy that...').",
-        "Convert exclamatory structures 'What a + adj + noun!' or 'How + adj/adv!' into an assertive clause using 'very': 'What a brave soldier!' → 'that he was a very brave soldier'.",
-        "Apply all tense back-shift rules (present→past, present perfect→past perfect, etc.).",
-        "Apply pronoun changes (SOC rule) and time/place word changes (now→then, here→there, etc.).",
-        "If the emotion is unclear from the interjection, infer from context; when in doubt, 'exclaimed with surprise' is a safe choice for general exclamations."
-      ],
-      "examples": [
-        {
-          "text": "Direct: He said, 'Hurrah! We have won the match.' / Indirect: He exclaimed with joy that they had won the match.",
-          "note": "'Hurrah' → 'exclaimed with joy'; 'We' → 'they'; 'have won' → 'had won' (present perfect → past perfect)."
-        },
-        {
-          "text": "Direct: She said, 'Alas! My brother has failed.' / Indirect: She exclaimed with sorrow that her brother had failed.",
-          "note": "'Alas' → 'exclaimed with sorrow'; 'My' → 'her'; 'has failed' → 'had failed'."
-        },
-        {
-          "text": "Direct: He said, 'What a beautiful scene this is!' / Indirect: He exclaimed with admiration that it was a very beautiful scene.",
-          "note": "'What a beautiful scene!' → assertive 'it was a very beautiful scene'; exclamatory structure dissolved."
-        },
-        {
-          "text": "Direct: She said, 'How clever you are!' / Indirect: She exclaimed with admiration that I was very clever.",
-          "note": "'How + adjective + you are!' → 'very clever'; 'you' → 'I' (reporter is 'me' = object of her exclamation)."
-        },
-        {
-          "text": "Direct: The crowd said, 'Bravo! The player has scored a century.' / Indirect: The crowd exclaimed with joy that the player had scored a century.",
-          "note": "'Bravo' → 'exclaimed with joy'; third person 'the player' unchanged; 'has scored' → 'had scored'."
-        }
-      ],
-      "commonMistakes": [
-        {
-          "wrong": "He exclaimed with joy 'Hurrah!' that they had won.",
-          "right": "He exclaimed with joy that they had won.",
-          "note": "The interjection 'Hurrah' must be removed entirely, not placed within the indirect clause."
-        },
-        {
-          "wrong": "She said with sorrow that her brother had failed.",
-          "right": "She exclaimed with sorrow that her brother had failed.",
-          "note": "The reporting verb must change from 'said' to 'exclaimed'. 'Said with sorrow' is grammatically odd; 'exclaimed with sorrow' is the standard form."
-        },
-        {
-          "wrong": "He exclaimed with admiration that what a beautiful scene it was.",
-          "right": "He exclaimed with admiration that it was a very beautiful scene.",
-          "note": "'What a...' exclamatory structure must be converted to an assertive clause using 'very'; the exclamatory form cannot be retained in Indirect Speech."
-        },
-        {
-          "wrong": "She exclaimed with admiration that you are very clever.",
-          "right": "She exclaimed with admiration that I was very clever.",
-          "note": "'you' → 'I' (object rule, as 'she' exclaimed about the listener); 'are' → 'was' (tense back-shift)."
-        }
-      ],
-      "practice": [
-        {
-          "question": "Change to Indirect Speech: She said, 'Hurray! We have passed the exam.'",
-          "options": [
-            "She exclaimed with joy that they had passed the exam.",
-            "She said with joy that we have passed the exam.",
-            "She exclaimed with joy that we had passed the exam.",
-            "She exclaimed joyfully that they have passed the exam."
-          ],
-          "answerIndex": 0,
-          "explanation": "'Hurray' → 'exclaimed with joy'; 'We' → 'they' (third person, since the reporter is separate); 'have passed' → 'had passed' (back-shift)."
-        },
-        {
-          "question": "Change to Indirect Speech: He said, 'Alas! I have lost my wallet.'",
-          "options": [
-            "He exclaimed with surprise that he had lost his wallet.",
-            "He exclaimed with sorrow that he had lost his wallet.",
-            "He said with sorrow that he has lost his wallet.",
-            "He exclaimed with grief that he lost his wallet."
-          ],
-          "answerIndex": 1,
-          "explanation": "'Alas' signals sorrow → 'exclaimed with sorrow'; 'I' → 'he'; 'my' → 'his'; 'have lost' → 'had lost' (present perfect → past perfect)."
-        },
-        {
-          "question": "Change to Indirect Speech: She said, 'What a wonderful gift this is!'",
-          "options": [
-            "She exclaimed with admiration that what a wonderful gift it was.",
-            "She exclaimed with surprise that it was a wonderful gift.",
-            "She exclaimed with admiration that it was a very wonderful gift.",
-            "She exclaimed that it was a very wonderful gift."
-          ],
-          "answerIndex": 2,
-          "explanation": "'What a + adj + noun!' → 'exclaimed with admiration that it was a very + adj + noun'; 'this' → 'it'; tense back-shifts: 'is' → 'was'."
-        }
-      ],
-      "quiz": [
-        {
-          "question": "Which reporting phrase replaces 'Alas!' in Indirect Speech?",
-          "options": [
-            "exclaimed with joy that",
-            "exclaimed with admiration that",
-            "exclaimed with surprise that",
-            "exclaimed with sorrow that"
-          ],
-          "answerIndex": 3,
-          "explanation": "'Alas' expresses sorrow or grief. Its Indirect Speech equivalent is 'exclaimed with sorrow that' or 'exclaimed with grief that'."
-        },
-        {
-          "question": "How is 'What a brave soldier he is!' converted to Indirect Speech?",
-          "options": [
-            "He exclaimed that what a brave soldier he was.",
-            "He exclaimed with admiration that he was a very brave soldier.",
-            "He exclaimed with admiration that what a brave soldier he was.",
-            "He exclaimed with admiration that he was a brave soldier."
-          ],
-          "answerIndex": 1,
-          "explanation": "'What a + adjective + noun!' converts to an assertive clause: 'he was a very brave soldier'. 'Very' replaces the exclamatory structure. 'Exclaimed with admiration' for praise."
-        },
-        {
-          "question": "What happens to the exclamation mark (!) in Indirect Speech?",
-          "options": [
-            "It is kept at the end of the sentence.",
-            "It is moved after the reporting verb.",
-            "It is replaced with a full stop.",
-            "It is replaced with a question mark."
-          ],
-          "answerIndex": 2,
-          "explanation": "The exclamation mark is always removed in Indirect Speech and replaced with a full stop, since the reported sentence becomes assertive."
-        }
-      ],
-      "summary": "To convert exclamatory sentences: change 'said' to 'exclaimed with [emotion]' (joy, sorrow, surprise, admiration, disgust); omit the interjection entirely; remove the exclamation mark; insert 'that'; convert 'What a...!' and 'How...!' structures to assertive clauses using 'very'; and apply all tense, pronoun, and time/place word changes as normal."
-    }
-  },
-  {
-    "id": "direct-indirect-speech/questions",
-    "parentId": "direct-indirect-speech",
-    "title": "Questions (Interrogative)",
-    "subtitle": null,
-    "order": 2,
-    "isLeaf": true,
-    "keywords": [
-      "questions",
-      "interrogative",
-      "indirect speech",
-      "wh-questions",
-      "yes no questions",
-      "asked",
-      "enquired",
-      "narration"
-    ],
-    "content": {
-      "introduction": "Converting interrogative (question) sentences into Indirect Speech requires special rules beyond those used for statements. There are two categories: Yes/No questions (answered with yes or no) and Wh-questions (beginning with who, what, where, when, why, how, which). Both types use 'asked' or 'enquired' as the reporting verb, and the question mark is always dropped. These rules are frequently tested in CSS/PMS grammar papers and IELTS.",
-      "urduExplanation": "سوالیہ جملوں (Interrogative Sentences) کو Indirect Speech میں بدلتے وقت Reporting Verb 'said' کی جگہ 'asked' یا 'enquired' استعمال ہوتا ہے۔ ہاں/نہیں والے سوالوں (Yes/No Questions) میں inverted commas کی جگہ 'if' یا 'whether' لگاتے ہیں اور جملے کی ترتیب عام بیانیہ جملے جیسی ہو جاتی ہے۔ Wh-Questions میں وہی wh-word conjunction کا کام کرتا ہے — الگ conjunction کی ضرورت نہیں ہوتی۔ دونوں صورتوں میں Helping Verb (do/does/did) ختم ہو جاتی ہے اور Subject پہلے آتا ہے، Verb بعد میں (Statement Order)۔ Question Mark (؟) بھی ہٹا دیتے ہیں اور زمانہ، ضمائر اور وقت کے الفاظ وہی اصولوں کے مطابق بدلتے ہیں جو بیانیہ جملوں میں لاگو ہوتے ہیں۔",
-      "englishExplanation": "When converting an interrogative sentence to Indirect Speech, the reporting verb changes from 'said' to 'asked' (or 'enquired', 'wanted to know', 'wondered'). The question mark is removed and the sentence is restructured into affirmative (statement) word order: Subject + Verb + Object/Complement — the inverted question-word order (Auxiliary + Subject + Verb) is abandoned. Auxiliary verbs do/does/did used only for question formation are dropped; any information they carry is expressed through the back-shifted main verb. For Yes/No questions, the conjunction 'if' or 'whether' is inserted after the reporting verb. For Wh-questions, the wh-word itself (what, where, when, why, who, how, which) serves as the conjunction — no additional conjunction is needed. All tense back-shift, pronoun, and time/place word changes apply exactly as in assertive sentences. A very common CSS exam trap: students keep 'if' for wh-questions or keep inverted word order — both are wrong.",
-      "types": [
-        {
-          "name": "Yes/No Question",
-          "description": "Use 'if' or 'whether' as conjunction; drop the question mark; invert to statement order (subject before verb); drop auxiliary do/does/did."
-        },
-        {
-          "name": "Wh-Question",
-          "description": "The wh-word (what, where, when, why, who, how, which) itself acts as the conjunction; no extra 'if/whether' is added; statement word order applies."
-        },
-        {
-          "name": "Reporting verb change",
-          "description": "'Said' → 'asked', 'enquired', 'wanted to know', or 'wondered'; if an object is named (e.g., 'said to me'), it becomes 'asked me'."
-        },
-        {
-          "name": "Tense back-shift in questions",
-          "description": "Same back-shift rules as assertive sentences apply: present→past, will→would, can→could, etc."
-        },
-        {
-          "name": "Pronoun and time-word change",
-          "description": "Same SOC pronoun rule and time/place word substitution (now→then, today→that day, here→there) as in statements."
-        }
-      ],
-      "rules": [
-        "Change the reporting verb 'said' to 'asked' / 'enquired' / 'wanted to know'; if 'say to + object' was used, write 'asked + object'.",
-        "Remove the question mark and replace the inverted commas with the appropriate conjunction.",
-        "For Yes/No questions: insert 'if' or 'whether' as the conjunction.",
-        "For Wh-questions: use the wh-word itself as the conjunction; do not add 'if' or 'whether'.",
-        "Change the word order from question order (Auxiliary + Subject + Verb) to statement order (Subject + Verb).",
-        "Drop the auxiliary do/does/did that was used purely for forming the question; back-shift the main verb instead.",
-        "Apply all tense back-shift rules (present→past, past→past perfect, will→would, can→could, may→might).",
-        "Apply pronoun (SOC rule) and time/place word changes (now→then, today→that day, yesterday→the previous day, here→there, this→that)."
-      ],
-      "examples": [
-        {
-          "text": "Direct: She said, 'Where do you live?' / Indirect: She asked where I lived.",
-          "note": "'do you live' → statement order 'I lived'; wh-word 'where' is conjunction; 'do' dropped; 'you' → 'I' (object of reporting verb 'she asked')."
-        },
-        {
-          "text": "Direct: He said to her, 'Are you coming to the party?' / Indirect: He asked her if she was coming to the party.",
-          "note": "Yes/No question → conjunction 'if'; 'say to her' → 'asked her'; 'you' → 'she'; 'are coming' → 'was coming'."
-        },
-        {
-          "text": "Direct: The officer said to the candidate, 'Why did you apply late?' / Indirect: The officer asked the candidate why he had applied late.",
-          "note": "Wh-word 'why' is conjunction; 'did you apply' → 'he had applied' (past→past perfect; 'did' dropped)."
-        },
-        {
-          "text": "Direct: She said, 'Can you help me now?' / Indirect: She asked if I could help her then.",
-          "note": "Yes/No → 'if'; 'can' → 'could'; 'you' → 'I' (object rule); 'me' → 'her'; 'now' → 'then'."
-        },
-        {
-          "text": "Direct: The teacher said to the students, 'Have you finished your assignment?' / Indirect: The teacher asked the students if they had finished their assignment.",
-          "note": "Yes/No → 'if'; 'say to the students' → 'asked the students'; 'you' → 'they'; 'have finished' → 'had finished'; 'your' → 'their'."
-        }
-      ],
-      "commonMistakes": [
-        {
-          "wrong": "She asked where did I live.",
-          "right": "She asked where I lived.",
-          "note": "Question word order (did + subject + verb) must change to statement order (subject + verb) in indirect speech. 'Did' is dropped."
-        },
-        {
-          "wrong": "He asked her if why she was crying.",
-          "right": "He asked her why she was crying.",
-          "note": "For Wh-questions, 'if/whether' must NOT be added alongside the wh-word. The wh-word alone is the conjunction."
-        },
-        {
-          "wrong": "He asked to her where she lived.",
-          "right": "He asked her where she lived.",
-          "note": "'Ask' does not take 'to' before its object. It is 'asked + object' not 'asked to + object'."
-        },
-        {
-          "wrong": "The teacher asked the students if they have finished their assignment.",
-          "right": "The teacher asked the students if they had finished their assignment.",
-          "note": "Back-shift must be applied: 'have finished' (present perfect) → 'had finished' (past perfect)."
-        }
-      ],
-      "practice": [
-        {
-          "question": "Change to Indirect Speech: He said to me, 'Do you know the answer?'",
-          "options": [
-            "He asked me if I knew the answer.",
-            "He asked me if you know the answer.",
-            "He asked me whether did I know the answer.",
-            "He said me if I know the answer."
-          ],
-          "answerIndex": 0,
-          "explanation": "'Say to me' → 'asked me'; Yes/No → 'if'; 'you' → 'I' (object rule); 'do you know' → statement order 'I knew' (present→past); 'do' dropped."
-        },
-        {
-          "question": "Change to Indirect Speech: She said to him, 'When will you return?'",
-          "options": [
-            "She asked him when will he return.",
-            "She asked him when he would return.",
-            "She asked him if he would return.",
-            "She enquired him that when he would return."
-          ],
-          "answerIndex": 1,
-          "explanation": "Wh-word 'when' is conjunction (no 'if'); 'say to him' → 'asked him'; 'you' → 'he'; 'will return' → 'would return'; statement order."
-        },
-        {
-          "question": "Change to Indirect Speech: The interviewer said, 'Why have you chosen this field?'",
-          "options": [
-            "The interviewer asked if he had chosen this field.",
-            "The interviewer asked that why he had chosen that field.",
-            "The interviewer asked why he had chosen that field.",
-            "The interviewer asked why has he chosen that field."
-          ],
-          "answerIndex": 2,
-          "explanation": "Wh-word 'why' serves as conjunction alone — no 'that' or 'if' needed; 'you' → 'he'; 'have chosen' → 'had chosen'; 'this' → 'that'; statement order."
-        }
-      ],
-      "quiz": [
-        {
-          "question": "Which conjunction is used in Indirect Speech for Yes/No questions?",
-          "options": [
-            "that",
-            "what",
-            "if / whether",
-            "which"
-          ],
-          "answerIndex": 2,
-          "explanation": "Yes/No questions use 'if' or 'whether' as the conjunction. Wh-questions use the wh-word itself."
-        },
-        {
-          "question": "The teacher said to me, 'Do you understand the lesson?' The correct Indirect Speech is:",
-          "options": [
-            "The teacher asked me that I understood the lesson.",
-            "The teacher asked me if I understood the lesson.",
-            "The teacher said to me if I understood the lesson.",
-            "The teacher asked me whether do I understand the lesson."
-          ],
-          "answerIndex": 1,
-          "explanation": "'Say to me' → 'asked me'; Yes/No → 'if'; 'you' → 'I'; 'do you understand' → statement order 'I understood'; 'do' dropped."
-        },
-        {
-          "question": "What word order is used in the reported clause of an indirect question?",
-          "options": [
-            "Auxiliary + Subject + Verb (question order)",
-            "Subject + Verb + Object (statement order)",
-            "Verb + Subject + Object",
-            "Object + Subject + Verb"
-          ],
-          "answerIndex": 1,
-          "explanation": "Indirect questions always use statement (affirmative) word order: Subject + Verb. Question word order is never retained."
-        }
-      ],
-      "summary": "To convert interrogative sentences: change 'said' to 'asked/enquired'; for Yes/No questions use 'if/whether' as conjunction; for Wh-questions use the wh-word itself as conjunction (never add 'if' alongside it); always switch to statement word order (Subject + Verb) and drop the auxiliary do/does/did; remove the question mark; and apply all standard tense, pronoun, and time/place word changes."
-    }
-  },
-  {
-    "id": "direct-indirect-speech/requests",
-    "parentId": "direct-indirect-speech",
-    "title": "Requests",
-    "subtitle": null,
-    "order": 4,
-    "isLeaf": true,
-    "keywords": [
-      "requests",
-      "indirect speech",
-      "requested",
-      "polite",
-      "please",
-      "to infinitive",
-      "narration",
-      "asked"
-    ],
-    "content": {
-      "introduction": "Requests are polite imperatives — the speaker asks someone to do something rather than ordering. They typically contain the word 'please', or begin with 'Could you', 'Would you', 'Will you', 'Can you', or 'Would you mind'. In Indirect Speech, requests use 'requested' or 'asked' as the reporting verb and retain the infinitive 'to + base verb' structure. Distinguishing requests from commands (and choosing the correct reporting verb) is a recurring CSS/PMS exam question.",
-      "urduExplanation": "درخواستی جملوں (Requests) میں عام طور پر 'please' کا لفظ آتا ہے یا 'Could you', 'Would you' جیسے شائستہ فعل استعمال ہوتے ہیں۔ Indirect Speech میں Reporting Verb کے طور پر 'requested' یا 'asked' استعمال ہوتا ہے — حکم والا 'ordered' یا 'commanded' نہیں۔ 'please' ہٹا دیتے ہیں اور فعل کو 'to + base verb' میں بدل دیتے ہیں، جیسے 'Please help me' → 'requested me to help her'۔ اگر درخواست 'Could you' یا 'Would you' سے شروع ہو تو وہ Yes/No سوال کی طرح نہیں بلکہ درخواست کی طرح Indirect ہوتی ہے۔ ضمائر اور وقت کے الفاظ بدلتے ہیں جبکہ tense back-shift infinitive پر لاگو نہیں ہوتی۔",
-      "englishExplanation": "Requests, though grammatically interrogative or imperative in Direct Speech, are treated as a distinct category in Indirect Speech narration. The reporting verb is 'requested' (most formal) or 'asked' (general), never 'ordered' or 'commanded'. The word 'please' is always omitted in Indirect Speech — its politeness is implied by the reporting verb 'requested'. The structure is: Subject + requested/asked + Object + to + base verb + rest. When the request is phrased as a polite question ('Could you please...', 'Would you kindly...'), it still converts to the request structure (not the yes/no question structure), because the pragmatic function is a request, not a genuine question. Tense back-shift does not apply to the infinitive since it is tenseless; however, other changes (pronouns, time/place words) still apply. Negative requests ('Please do not disturb me') convert to 'requested + object + not to + base verb'.",
-      "types": [
-        {
-          "name": "Request with 'please' (imperative form)",
-          "description": "Drop 'please'; use 'requested + object + to + base verb': She said, 'Please open the window.' → She requested him to open the window."
-        },
-        {
-          "name": "Polite question as request ('Could/Would you')",
-          "description": "Treat as a request, not a yes/no question: He said, 'Could you please bring some water?' → He requested her to bring some water."
-        },
-        {
-          "name": "Negative request",
-          "description": "Use 'requested/asked + object + not to + base verb': She said, 'Please do not disturb me.' → She requested him not to disturb her."
-        },
-        {
-          "name": "'Would you mind + gerund' form",
-          "description": "Converts to 'requested + object + to + base verb': He said, 'Would you mind closing the door?' → He requested her to close the door."
-        },
-        {
-          "name": "Self-directed request ('please let me')",
-          "description": "She said, 'Please let me go.' → She requested him to let her go / She requested to be allowed to go."
-        }
-      ],
-      "rules": [
-        "Use 'requested' or 'asked' as the reporting verb — never 'ordered' or 'commanded' for polite requests.",
-        "Remove the word 'please' entirely — it is not transferred to Indirect Speech.",
-        "For affirmative requests: Reporting Verb + Object + to + base verb.",
-        "For negative requests: Reporting Verb + Object + not to + base verb.",
-        "Polite interrogative requests ('Could you', 'Would you', 'Will you', 'Would you mind') convert using the request structure, not the question (if/whether) structure.",
-        "For 'Would you mind + gerund', the gerund changes to a to-infinitive in Indirect Speech.",
-        "Tense back-shift does not apply to the infinitive (to + verb), but pronoun and time/place changes still apply.",
-        "Use 'asked' when the request is less formal; use 'requested' when it is formal or involves a plea."
-      ],
-      "examples": [
-        {
-          "text": "Direct: She said to him, 'Please help me.' / Indirect: She requested him to help her.",
-          "note": "'please' dropped; 'said to him' → 'requested him'; 'me' → 'her'; to-infinitive 'to help'."
-        },
-        {
-          "text": "Direct: He said to the waiter, 'Could you please bring the menu?' / Indirect: He requested the waiter to bring the menu.",
-          "note": "Polite question treated as request; 'Could you please' → request structure; 'bring' (base verb) stays as 'to bring'."
-        },
-        {
-          "text": "Direct: She said to me, 'Please do not make noise here.' / Indirect: She requested me not to make noise there.",
-          "note": "Negative request → 'not to make'; 'please' dropped; 'here' → 'there'."
-        },
-        {
-          "text": "Direct: The student said to the teacher, 'Would you please explain this again?' / Indirect: The student requested the teacher to explain that again.",
-          "note": "Polite interrogative → request form; 'this' → 'that'; 'to explain' used."
-        },
-        {
-          "text": "Direct: She said, 'Would you mind lending me your pen?' / Indirect: She requested him to lend her his pen.",
-          "note": "'Would you mind + gerund' → 'requested + object + to + base verb'; gerund 'lending' → infinitive 'to lend'; 'me' → 'her'; 'your' → 'his'."
-        }
-      ],
-      "commonMistakes": [
-        {
-          "wrong": "She requested him to please help her.",
-          "right": "She requested him to help her.",
-          "note": "'Please' is always omitted in Indirect Speech. Its meaning is already carried by 'requested'."
-        },
-        {
-          "wrong": "He asked the waiter if he could bring the menu.",
-          "right": "He requested the waiter to bring the menu.",
-          "note": "A polite request ('Could you bring...') should be converted using the request infinitive structure, not the yes/no question (if/whether) structure."
-        },
-        {
-          "wrong": "She requested me not make noise.",
-          "right": "She requested me not to make noise.",
-          "note": "The infinitive marker 'to' must be present even in the negative form: 'not to + base verb', not 'not + base verb'."
-        },
-        {
-          "wrong": "The student requested the teacher that he explain that again.",
-          "right": "The student requested the teacher to explain that again.",
-          "note": "Requests do not use a 'that' clause; the correct structure is 'requested + object + to + base verb'."
-        }
-      ],
-      "practice": [
-        {
-          "question": "Change to Indirect Speech: She said to me, 'Please lend me your book.'",
-          "options": [
-            "She requested me to lend her my book.",
-            "She requested me to please lend her my book.",
-            "She asked me if I would lend her my book.",
-            "She told me to lend her my book."
-          ],
-          "answerIndex": 0,
-          "explanation": "'said to me' → 'requested me'; 'please' dropped; 'lend me your book' → 'to lend her my book' (me→her, your→my using object rule for pronouns)."
-        },
-        {
-          "question": "Change to Indirect Speech: He said to her, 'Would you mind posting this letter?'",
-          "options": [
-            "He asked her if she would post that letter.",
-            "He requested her to post that letter.",
-            "He asked her whether she minded posting that letter.",
-            "He told her to post this letter."
-          ],
-          "answerIndex": 1,
-          "explanation": "'Would you mind + gerund' → 'requested + object + to + base verb'; gerund 'posting' → 'to post'; 'this' → 'that'; request structure, not question."
-        },
-        {
-          "question": "Change to Indirect Speech: The patient said to the nurse, 'Please do not disturb me now.'",
-          "options": [
-            "The patient requested the nurse not to disturb him then.",
-            "The patient asked the nurse to not disturb him now.",
-            "The patient requested the nurse please not to disturb him then.",
-            "The patient told the nurse not to disturb him then."
-          ],
-          "answerIndex": 0,
-          "explanation": "Negative request → 'not to disturb'; 'please' dropped; 'said to the nurse' → 'requested the nurse'; 'me' → 'him'; 'now' → 'then'."
-        }
-      ],
-      "quiz": [
-        {
-          "question": "Which reporting verb is most appropriate for converting a polite request?",
-          "options": [
-            "ordered",
-            "commanded",
-            "requested / asked",
-            "told"
-          ],
-          "answerIndex": 2,
-          "explanation": "'Requested' or 'asked' is used for polite requests. 'Ordered' and 'commanded' imply authority, 'told' implies instruction, not politeness."
-        },
-        {
-          "question": "How is 'please' handled when converting a request to Indirect Speech?",
-          "options": [
-            "It is placed after 'requested'.",
-            "It is kept before the infinitive.",
-            "It is omitted entirely.",
-            "It is changed to 'kindly'."
-          ],
-          "answerIndex": 2,
-          "explanation": "'Please' is always omitted in Indirect Speech. The polite tone is conveyed by the reporting verb 'requested' itself."
-        },
-        {
-          "question": "'Could you please close the door?' in Indirect Speech becomes:",
-          "options": [
-            "He asked if I could close the door.",
-            "He asked whether could I close the door.",
-            "He requested me to close the door.",
-            "He requested me to please close the door."
-          ],
-          "answerIndex": 2,
-          "explanation": "A polite interrogative request converts to the request infinitive structure (requested + object + to + verb), not a yes/no question. 'Please' is dropped."
-        }
-      ],
-      "summary": "Requests in Indirect Speech use 'requested' or 'asked' as the reporting verb; 'please' is always omitted. Affirmative requests use 'to + base verb' and negative requests use 'not to + base verb'. Polite interrogative forms like 'Could you / Would you mind' convert to the request (infinitive) structure, not the question (if/whether) structure. Tense back-shift does not apply to the infinitive, but pronoun and time/place word changes always apply."
-    }
-  },
-  {
-    "id": "direct-indirect-speech/statements",
-    "parentId": "direct-indirect-speech",
-    "title": "Statements (Assertive)",
-    "subtitle": null,
-    "order": 1,
-    "isLeaf": true,
-    "keywords": [
-      "statements",
-      "assertive",
-      "indirect speech",
-      "narration",
-      "said",
-      "told",
-      "tense backshift",
-      "reported speech"
-    ],
-    "content": {
-      "introduction": "Narration is the art of reporting what someone has said, either in the speaker's exact words (Direct Speech) or in the reporter's own words (Indirect Speech). Assertive or declarative sentences — statements of fact, opinion, or information — are the most common type converted in CSS, PMS, and IELTS writing tasks. Mastering the systematic rules of tense back-shift, pronoun change, and time/place-word substitution is essential for full marks.",
-      "urduExplanation": "براہِ راست تقریر (Direct Speech) میں ہم کسی کے الفاظ جوں کے توں نقل کرتے ہیں، جبکہ بالواسطہ تقریر (Indirect Speech) میں ہم انہیں اپنے الفاظ میں بیان کرتے ہیں۔ بیانیہ جملوں (Assertive Sentences) میں Reporting Verb 'say' یا 'said' ہو تو اسے 'said' رہنے دیتے ہیں، لیکن اگر Object موجود ہو تو 'told' استعمال کرتے ہیں۔ Inverted commas ہٹا کر Conjunction 'that' لگاتے ہیں — اگرچہ 'that' حذف بھی ہو سکتا ہے۔ Reported Clause کے فعل کا زمانہ ایک قدم پیچھے کرتے ہیں: Present Simple → Past Simple، Present Continuous → Past Continuous، وغیرہ۔ ضمائر (Pronouns) اور وقت و مقام کے الفاظ بھی بدل جاتے ہیں، مثلاً 'now' → 'then'، 'today' → 'that day'، 'here' → 'there'۔",
-      "englishExplanation": "When converting an assertive (declarative) sentence from Direct to Indirect Speech, the reporting verb 'say' becomes 'say' when the subject remains the same, but if an object is present, 'say to' changes to 'tell/told'. The inverted commas are removed and the conjunction 'that' is inserted (though it may be omitted in informal usage). The tense of the reported clause must be back-shifted: Simple Present → Simple Past, Present Continuous → Past Continuous, Simple Past → Past Perfect, Present Perfect → Past Perfect, and Future (will) → Conditional (would). First and second-person pronouns change according to the subject or object of the reporting verb (the SOC rule: Subject, Object, Context). Time and place adverbials also shift: 'now' → 'then', 'today' → 'that day', 'yesterday' → 'the previous day / the day before', 'tomorrow' → 'the next day / the following day', 'here' → 'there', 'this' → 'that', 'these' → 'those'. If the reporting verb is in the present or future tense, tense back-shift does NOT apply.",
-      "types": [
-        {
-          "name": "say / say that (no object)",
-          "description": "When there is no indirect object, 'said' remains 'said' and 'that' is inserted: He said, 'I am tired.' → He said that he was tired."
-        },
-        {
-          "name": "say to → tell / told (with object)",
-          "description": "When 'say to + object' is used, it changes to 'tell/told + object': She said to me, 'You are right.' → She told me that I was right."
-        },
-        {
-          "name": "Tense back-shift",
-          "description": "All tenses in the reported clause shift one step back: Simple Present → Simple Past, Past Simple → Past Perfect, will → would, can → could, may → might, must → had to / must."
-        },
-        {
-          "name": "Pronoun change (SOC rule)",
-          "description": "First-person pronouns (I/me/my/we/us/our) change according to the Subject of the reporting verb; second-person pronouns (you/your) change according to the Object; third-person pronouns remain unchanged."
-        },
-        {
-          "name": "Time and place word change",
-          "description": "Deictic expressions shift to match the new context: now→then, today→that day, yesterday→the previous day, tomorrow→the next day, here→there, this→that, these→those, ago→before."
-        }
-      ],
-      "rules": [
-        "Remove the inverted commas (quotation marks) and insert the conjunction 'that' after the reporting verb.",
-        "Change 'say to + object' to 'tell/told + object'; keep 'said' if there is no object.",
-        "Back-shift the tense of the reported verb one step into the past (unless the reporting verb is present/future tense).",
-        "Change first-person pronouns according to the subject of the reporting verb (SOC: Subject rule).",
-        "Change second-person pronouns according to the object of the reporting verb (SOC: Object rule).",
-        "Third-person pronouns (he, she, they, it) remain unchanged.",
-        "Replace time/place words: now→then, today→that day, yesterday→the previous day, tomorrow→the next day, here→there, this→that, ago→before.",
-        "Do NOT back-shift if the reported clause states a universal truth, habitual fact, or if the reporting verb is in the present/future tense."
-      ],
-      "examples": [
-        {
-          "text": "Direct: He said, 'I am busy.' / Indirect: He said that he was busy.",
-          "note": "'I' → 'he' (subject rule); 'am' → 'was' (present→past back-shift); 'said' retained (no object)."
-        },
-        {
-          "text": "Direct: She said to me, 'You have done well.' / Indirect: She told me that I had done well.",
-          "note": "'say to me' → 'told me'; 'you' → 'I' (object rule); present perfect 'have done' → past perfect 'had done'."
-        },
-        {
-          "text": "Direct: They said, 'We will leave tomorrow.' / Indirect: They said that they would leave the next day.",
-          "note": "'We' → 'they'; 'will' → 'would'; 'tomorrow' → 'the next day'."
-        },
-        {
-          "text": "Direct: Ali said to his friend, 'I saw you here yesterday.' / Indirect: Ali told his friend that he had seen him there the previous day.",
-          "note": "'saw' → 'had seen'; 'you' → 'him'; 'here' → 'there'; 'yesterday' → 'the previous day'."
-        },
-        {
-          "text": "Direct: The student said, 'I can solve this problem now.' / Indirect: The student said that he could solve that problem then.",
-          "note": "'can' → 'could'; 'this' → 'that'; 'now' → 'then'; 'I' → 'he'."
-        }
-      ],
-      "commonMistakes": [
-        {
-          "wrong": "She said to me that you are right.",
-          "right": "She told me that I was right.",
-          "note": "'say to + object' must become 'tell + object'; 'you' changes to 'I' (object rule); 'are' back-shifts to 'was'."
-        },
-        {
-          "wrong": "He said that he is tired.",
-          "right": "He said that he was tired.",
-          "note": "Tense must back-shift: Simple Present 'is' → Simple Past 'was' when the reporting verb is in the past tense."
-        },
-        {
-          "wrong": "They said that they will come tomorrow.",
-          "right": "They said that they would come the next day.",
-          "note": "'will' → 'would' (future → conditional); 'tomorrow' → 'the next day'."
-        },
-        {
-          "wrong": "She told that she was happy.",
-          "right": "She said that she was happy. / She told me that she was happy.",
-          "note": "'Tell' always requires an object ('told me/him/her'); without an object, use 'said'."
-        }
-      ],
-      "practice": [
-        {
-          "question": "Change to Indirect Speech: He said, 'I am learning French.'",
-          "options": [
-            "He said that he was learning French.",
-            "He said that he is learning French.",
-            "He told that he was learning French.",
-            "He said that I was learning French."
-          ],
-          "answerIndex": 0,
-          "explanation": "'said' retained (no object); 'I' → 'he'; Present Continuous 'am learning' → Past Continuous 'was learning'; conjunction 'that' added."
-        },
-        {
-          "question": "Change to Indirect Speech: She said to him, 'You must work hard.'",
-          "options": [
-            "She told him that he must work hard.",
-            "She told him that you must work hard.",
-            "She said him that he had to work hard.",
-            "She told him that he had to work hard."
-          ],
-          "answerIndex": 3,
-          "explanation": "'say to him' → 'told him'; 'you' → 'he' (object rule); 'must' (obligation) → 'had to' in reported speech past context."
-        },
-        {
-          "question": "Change to Indirect Speech: They said, 'We went to Lahore yesterday.'",
-          "options": [
-            "They said that they had gone to Lahore the previous day.",
-            "They said that they went to Lahore yesterday.",
-            "They said that we had gone to Lahore the previous day.",
-            "They told that they had gone to Lahore the day after."
-          ],
-          "answerIndex": 0,
-          "explanation": "'We' → 'they'; Simple Past 'went' → Past Perfect 'had gone'; 'yesterday' → 'the previous day'; 'said' retained (no object)."
-        }
-      ],
-      "quiz": [
-        {
-          "question": "Which conjunction is used when converting an assertive sentence from Direct to Indirect Speech?",
-          "options": [
-            "if",
-            "whether",
-            "that",
-            "as if"
-          ],
-          "answerIndex": 2,
-          "explanation": "Assertive sentences use the conjunction 'that' (which may be omitted informally). 'If/whether' are used for yes/no questions."
-        },
-        {
-          "question": "He said to her, 'I love your work.' The correct Indirect Speech is:",
-          "options": [
-            "He said to her that he loved her work.",
-            "He told her that he loved her work.",
-            "He told her that I loved your work.",
-            "He said her that he loved her work."
-          ],
-          "answerIndex": 1,
-          "explanation": "'say to her' → 'told her'; 'I' → 'he'; 'your' → 'her'; 'love' → 'loved'. 'Tell' takes an object directly without 'to'."
-        },
-        {
-          "question": "Which time-word correctly replaces 'yesterday' in Indirect Speech?",
-          "options": [
-            "the next day",
-            "that day",
-            "the following day",
-            "the previous day"
-          ],
-          "answerIndex": 3,
-          "explanation": "'Yesterday' shifts to 'the previous day' (or 'the day before') in Indirect Speech. 'The next day' replaces 'tomorrow'."
-        }
-      ],
-      "summary": "To convert assertive sentences from Direct to Indirect Speech: replace 'say to + object' with 'tell/told + object' (keep 'said' when there is no object); add the conjunction 'that'; back-shift the tense one step into the past; change first-person pronouns by the subject rule and second-person pronouns by the object rule; and replace time/place words (now→then, today→that day, yesterday→the previous day, tomorrow→the next day, here→there). Remember: back-shift does not apply to universal truths or when the reporting verb is in the present or future tense."
-    }
-  },
-  {
-    "id": "direct-indirect-speech/universal-truth",
-    "parentId": "direct-indirect-speech",
-    "title": "Universal Truths & Habitual Facts",
-    "subtitle": null,
-    "order": 6,
-    "isLeaf": true,
-    "keywords": [
-      "universal truth",
-      "habitual fact",
-      "no backshift",
-      "indirect speech",
-      "exception",
-      "tense unchanged",
-      "narration",
-      "scientific fact"
-    ],
-    "content": {
-      "introduction": "One of the most important — and most misapplied — exceptions in Narration is the rule for Universal Truths and Habitual Facts. When the reported clause expresses a universal truth (a scientific law or unchanging natural fact) or a habitual fact (a regular, recurring action that is still true), the tense of the reported clause is NOT back-shifted, regardless of whether the reporting verb is past tense. This exception is a favourite trap in CSS, PMS, BPSC, and IELTS grammar questions.",
-      "urduExplanation": "عام اصول یہ ہے کہ Reporting Verb ماضی میں ہو تو Reported Clause کا فعل بھی ایک قدم پیچھے ہوتا ہے — لیکن اس کا ایک اہم استثنا ہے۔ جب Reported Clause میں کوئی ابدی سچائی (Universal Truth) یا سائنسی قانون بیان ہو، تو فعل کو back-shift نہیں کرتے۔ مثلاً: 'The teacher said, \"The earth revolves around the sun.\"' → 'The teacher said that the earth revolves around the sun.' اسی طرح عادتی حقائق (Habitual Facts) جو ابھی بھی درست ہوں، ان کا فعل بھی Present Tense میں رہتا ہے۔ یہ امتحانی جالوں میں سب سے زیادہ استعمال ہونے والا استثنا ہے — اسے اچھی طرح یاد رکھیں!",
-      "englishExplanation": "The standard rule of tense back-shift applies when the reporting verb is in a past tense and the reported content is a personal opinion, action, or event. However, when the reported clause is a universal truth — a scientific law or permanent natural fact — the tense remains in the present tense regardless of the past-tense reporting verb. Examples of universal truths include: 'The sun rises in the east', 'Water boils at 100°C', 'The earth revolves around the sun', 'Light travels faster than sound'. Habitual facts that are still ongoing and true also retain their present tense: 'He said that he gets up at 5 a.m.' (if this is his current habit). Proverbs and well-known sayings are treated the same way: 'She said that honesty is the best policy.' The key test: ask whether the truth expressed is a current, permanent, or ongoing reality. If yes, do not back-shift. If the habit or fact is described as past (no longer true), back-shift is correct.",
-      "types": [
-        {
-          "name": "Universal / Scientific Truth",
-          "description": "Permanent natural laws and scientific facts: tense stays in Simple Present: 'The teacher said that the sun is a star.'"
-        },
-        {
-          "name": "Habitual / Regular Fact (still true)",
-          "description": "Recurring actions still true at the time of reporting: tense stays in Simple Present: 'She said that she walks to school every day.'"
-        },
-        {
-          "name": "Mathematical / Logical Truth",
-          "description": "Mathematical facts: 'The teacher said that two plus two equals four.' — tense unchanged."
-        },
-        {
-          "name": "Proverbs and well-known sayings",
-          "description": "Proverbs retain Simple Present: 'He said that all that glitters is not gold.'"
-        },
-        {
-          "name": "Former habit (no longer true)",
-          "description": "If the habit is no longer current, back-shift IS applied: 'He said that he used to smoke.' or 'He said he went there every day (when he lived there).'"
-        }
-      ],
-      "rules": [
-        "When the reported clause states a universal truth (scientific law, natural fact), the verb does NOT back-shift — it remains in the Simple Present tense.",
-        "When the reported clause states a habitual fact that is still true at the time of reporting, the verb remains in the Simple Present tense.",
-        "Proverbs and well-known sayings retain Simple Present tense in Indirect Speech.",
-        "Mathematical and logical truths retain Simple Present tense in Indirect Speech.",
-        "If the habit or fact described is no longer true (it is a former reality), back-shift is applied as normal.",
-        "All other rules (pronoun changes, time/place word changes, reporting verb change) still apply even when tense is not back-shifted.",
-        "The test for whether to back-shift: Is the truth still universally and permanently valid right now? If yes, keep present tense.",
-        "Do NOT confuse personal opinions or beliefs with universal truths — personal beliefs are back-shifted even if they happen to be true."
-      ],
-      "examples": [
-        {
-          "text": "Direct: The teacher said, 'The earth revolves around the sun.' / Indirect: The teacher said that the earth revolves around the sun.",
-          "note": "Universal scientific truth — 'revolves' stays in Simple Present; no back-shift."
-        },
-        {
-          "text": "Direct: The scientist said, 'Water boils at 100 degrees Celsius.' / Indirect: The scientist said that water boils at 100 degrees Celsius.",
-          "note": "Scientific law — tense unchanged; 'boils' remains Simple Present."
-        },
-        {
-          "text": "Direct: She said, 'Honesty is the best policy.' / Indirect: She said that honesty is the best policy.",
-          "note": "Well-known proverb — 'is' retained in Simple Present."
-        },
-        {
-          "text": "Direct: My father said, 'I wake up at 5 a.m. every day.' / Indirect: My father said that he wakes up at 5 a.m. every day.",
-          "note": "Habitual fact (still true) — 'wake up' → 'wakes up' (pronoun change only); no back-shift to 'woke up'."
-        },
-        {
-          "text": "Direct: The student said, 'I am happy.' / Indirect: The student said that he was happy.",
-          "note": "Personal feeling/opinion — NOT a universal truth — so normal back-shift applies: 'am' → 'was'."
-        },
-        {
-          "text": "Direct: He said, 'Two plus two equals four.' / Indirect: He said that two plus two equals four.",
-          "note": "Mathematical truth — 'equals' stays in Simple Present."
-        }
-      ],
-      "commonMistakes": [
-        {
-          "wrong": "The teacher said that the earth revolved around the sun.",
-          "right": "The teacher said that the earth revolves around the sun.",
-          "note": "This is a universal scientific truth — tense must NOT be back-shifted to 'revolved'. This is the most common exam error."
-        },
-        {
-          "wrong": "She said that honesty was the best policy.",
-          "right": "She said that honesty is the best policy.",
-          "note": "Proverbs retain Simple Present. 'Was' implies the proverb is no longer valid, which is incorrect."
-        },
-        {
-          "wrong": "The student said that he is happy. (treating a personal feeling as a universal truth)",
-          "right": "The student said that he was happy.",
-          "note": "Personal feelings and opinions are NOT universal truths — they must be back-shifted. Only genuine scientific laws and proverbs are exempt."
-        },
-        {
-          "wrong": "He said that the sun rose in the east.",
-          "right": "He said that the sun rises in the east.",
-          "note": "'The sun rises in the east' is a permanent natural truth — 'rises' stays in Simple Present."
-        }
-      ],
-      "practice": [
-        {
-          "question": "Change to Indirect Speech: The professor said, 'Light travels faster than sound.'",
-          "options": [
-            "The professor said that light travels faster than sound.",
-            "The professor said that light travelled faster than sound.",
-            "The professor said that light had travelled faster than sound.",
-            "The professor said that light would travel faster than sound."
-          ],
-          "answerIndex": 0,
-          "explanation": "Universal scientific truth — tense does NOT back-shift. 'travels' remains Simple Present in Indirect Speech."
-        },
-        {
-          "question": "Change to Indirect Speech: He said, 'The sun rises in the east.'",
-          "options": [
-            "He said that the sun rose in the east.",
-            "He said that the sun had risen in the east.",
-            "He said that the sun rises in the east.",
-            "He said that the sun would rise in the east."
-          ],
-          "answerIndex": 2,
-          "explanation": "Universal natural truth — 'rises' stays in Simple Present. Back-shifting to 'rose' would be incorrect."
-        },
-        {
-          "question": "Which sentence correctly applies the universal truth exception?",
-          "options": [
-            "She said that she was tired.",
-            "He said that he was a doctor.",
-            "The teacher said that honesty is the best policy.",
-            "They said that they went to school."
-          ],
-          "answerIndex": 2,
-          "explanation": "Only option C contains a proverb (universal truth), which correctly retains Simple Present 'is'. The other options involve personal states or past actions that require back-shift."
-        }
-      ],
-      "quiz": [
-        {
-          "question": "Which of the following requires tense back-shift in Indirect Speech?",
-          "options": [
-            "The earth orbits the sun.",
-            "Honesty is the best policy.",
-            "Water freezes at 0°C.",
-            "He said that he was feeling unwell."
-          ],
-          "answerIndex": 3,
-          "explanation": "Option D involves a personal feeling, not a universal truth — back-shift applies: 'was feeling' is correct. The other options are universal truths and proverbs that do not require back-shift."
-        },
-        {
-          "question": "The teacher said, 'Two and two make four.' The correct Indirect Speech is:",
-          "options": [
-            "The teacher said that two and two made four.",
-            "The teacher said that two and two had made four.",
-            "The teacher said that two and two make four.",
-            "The teacher said that two and two would make four."
-          ],
-          "answerIndex": 2,
-          "explanation": "Mathematical truth — 'make' stays in Simple Present. Back-shifting to 'made' would incorrectly imply this is no longer true."
-        },
-        {
-          "question": "Which rule determines whether to apply tense back-shift in Indirect Speech?",
-          "options": [
-            "Always back-shift if the reporting verb is in the past tense.",
-            "Never back-shift when 'said' is the reporting verb.",
-            "Back-shift unless the reported clause is a universal truth, habitual fact still true, or proverb.",
-            "Back-shift only when the reported verb is in the present continuous tense."
-          ],
-          "answerIndex": 2,
-          "explanation": "The correct rule: back-shift the tense when the reporting verb is past tense, EXCEPT when the reported clause is a universal truth, a habitual fact still currently true, or a proverb/saying."
-        }
-      ],
-      "summary": "When the reported clause states a universal truth, scientific law, mathematical fact, proverb, or a habitual fact that is still currently valid, the tense of the reported verb is NOT back-shifted — it remains in the Simple Present. This is the most important exception to the tense back-shift rule and a favourite exam trap in CSS, PMS, and IELTS. All other rules (pronoun changes, time/place word changes, reporting verb changes) still apply normally."
     }
   },
   {

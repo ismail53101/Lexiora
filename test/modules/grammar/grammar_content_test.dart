@@ -161,11 +161,50 @@ void main() {
       expect(opts.length, 4, reason: 'options are unique within a question');
     }
 
-    // Narration → 6 leaf sections.
+    // Narration → the new 8-part course: 7 lessons + a 100-MCQ quiz leaf.
     final List<GrammarTopicSummary> narration =
         await ds.children('direct-indirect-speech');
-    expect(narration.length, 6);
+    expect(narration.length, 8);
     expect(narration.every((GrammarTopicSummary t) => t.isLeaf), isTrue);
+    expect(
+      narration.map((GrammarTopicSummary t) => t.title).toList(),
+      <String>[
+        'Introduction & Basic Difference',
+        'Statements',
+        'Tense Changes (Backshift of Tenses)',
+        'Pronoun Changes',
+        'Time and Place Changes',
+        'Questions — Yes/No and WH-Questions',
+        'Commands, Requests, Punctuation & Exceptions',
+        'Practice Quiz',
+      ],
+    );
+    final GrammarLesson? disQuiz =
+        await ds.leaf('direct-indirect-speech/practice-quiz');
+    expect(disQuiz, isNotNull);
+    expect(disQuiz!.quiz.length, 100);
+    for (final String id in <String>[
+      'direct-indirect-speech/introduction',
+      'direct-indirect-speech/statements',
+      'direct-indirect-speech/tense-changes',
+      'direct-indirect-speech/pronoun-changes',
+      'direct-indirect-speech/time-place-changes',
+      'direct-indirect-speech/questions',
+      'direct-indirect-speech/commands-requests-punctuation',
+    ]) {
+      final GrammarLesson? lesson = await ds.leaf(id);
+      expect(lesson, isNotNull, reason: '$id must decode');
+      expect(lesson!.urduExplanation, isNotEmpty, reason: '$id needs Urdu');
+      expect(lesson.rules, isNotEmpty, reason: '$id needs rules');
+      expect(lesson.practice, isNotEmpty, reason: '$id needs practice');
+      expect(lesson.examTips, isNotEmpty, reason: '$id needs exam tips');
+      expect(lesson.summary, isNotEmpty, reason: '$id needs a summary');
+    }
+    expect(
+      (await ds.leaf('direct-indirect-speech/introduction'))!.voiceComparison,
+      isNotNull,
+      reason: 'intro lesson uses the two-column comparison layout',
+    );
 
     // Final split: the remaining multi-type categories each became a
     // branch with a dedicated leaf per type. Articles, Prepositions, and
@@ -225,7 +264,7 @@ void main() {
     // own dedicated lesson rather than a merged page.
     for (final String id in <String>[
       'pos/noun',
-      'direct-indirect-speech/universal-truth',
+      'direct-indirect-speech/tense-changes',
       'modals/must',
       'modals/should',
     ]) {
