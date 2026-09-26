@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
 import 'package:go_router/go_router.dart';
@@ -6,6 +8,7 @@ import 'package:lexiora/core/database/app_database.dart';
 import 'package:lexiora/core/module/feature_module.dart';
 import 'package:lexiora/core/navigation/home_destination.dart';
 import 'package:lexiora/core/services/notification_service.dart';
+import 'package:lexiora/core/utils/logger.dart';
 import 'package:lexiora/modules/study_hub/data/datasources/study_hub_local_data_source.dart';
 import 'package:lexiora/modules/study_hub/data/repositories/study_hub_repository_impl.dart';
 import 'package:lexiora/modules/study_hub/domain/repositories/study_hub_repository.dart';
@@ -41,7 +44,11 @@ class StudyHubModule extends FeatureModule {
       ..registerLazySingleton<StudyHubRepository>(
         () => StudyHubRepositoryImpl(
           getIt<StudyHubLocalDataSource>(),
-          onTasksChanged: () => getIt<NotificationService>().rescheduleAll(),
+          onTasksChanged: () async {
+            // Task persistence should not keep the editor open while the
+            // complete reminder set (including Word of the Day) is rebuilt.
+            unawaited(_rescheduleNotifications(getIt));
+          },
         ),
       );
   }
@@ -96,6 +103,18 @@ class StudyHubModule extends FeatureModule {
           order: 1,
         ),
       ];
+}
+
+Future<void> _rescheduleNotifications(GetIt getIt) async {
+  try {
+    await getIt<NotificationService>().rescheduleAll();
+  } on Object catch (error, stackTrace) {
+    AppLogger.e(
+      'Study Planner notification refresh failed',
+      error: error,
+      stackTrace: stackTrace,
+    );
+  }
 }
 
 DateTime? _parseDay(String? value) {

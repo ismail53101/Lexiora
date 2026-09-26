@@ -9,8 +9,8 @@
  * Endpoint:  POST /v1/chat/completions   (OpenAI-compatible body)
  *
  * Provider selection (checked in this order — first one present wins):
- *   1. HTTP header  X-AI-Provider: forge | hcnsec | tokenrouter | openrouter | auto
- *   2. JSON body    { "provider": "forge" | "hcnsec" | "tokenrouter" | "openrouter" | "auto" }
+ *   1. HTTP header  X-AI-Provider: forge | hcnsec | tokenrouter | openrouter | unorouter | auto
+ *   2. JSON body    { "provider": "forge" | "hcnsec" | "tokenrouter" | "openrouter" | "unorouter" | "auto" }
  *   3. env.DEFAULT_PROVIDER (falls back to "hcnsec" if unset)
  *
  * "auto" (the app's default) tries every configured provider in a deterministic
@@ -21,10 +21,52 @@
  * to the client, the response is never switched mid-stream (that's not a
  * meaningful retry point for an OpenAI-compatible proxy).
  *
- * ── Adding a new provider later ────────────────────────────────────────────
- * 1. Add its base URL + secret name to PROVIDERS below.
- * 2. Set the secret with `wrangler secret put <NAME>_API_KEY`.
- * 3. Nothing else changes — not the Flutter app, not this routing logic.
+ * ── Remotely-configurable, provider-agnostic model pool ("unorouter") ─────
+ * Selecting the "unorouter" slot (via header, body, or DEFAULT_PROVIDER —
+ * same as always) no longer means "call UnoRouter with a fixed model". It
+ * means "run the generic, KV-configured pool": an ordered list of
+ * {provider, model} entries, each pointing at its own OpenAI-compatible
+ * provider (its own base URL + its own Worker Secret), tried in priority
+ * order until one succeeds. UnoRouter and xKiro are just two entries in that
+ * pool, not special cases — a future provider is added the same way they
+ * were.
+ *
+ * Two KV values (binding: MODEL_CONFIG_KV, same namespace as before) drive
+ * this:
+ *   - "provider_config" — WHICH providers exist: name, base URL, and which
+ *     Worker Secret holds its API key. See getProviderConfig() below.
+ *   - "model_config"    — WHICH models to try, in what order, and whether
+ *     each is free or paid. See getModelConfig() below.
+ * A third value, "policy" ({"allow_paid": false}), gates paid models
+ * globally — see getPolicy() and callDynamicPool(). Production defaults to
+ * free-only.
+ *
+ * If KV is unbound/unreadable/empty, the Worker falls back to
+ * DEFAULT_PROVIDER_CONFIG + DEFAULT_MODEL_CONFIG below — the same UnoRouter
+ * + free-model setup that worked before this change — so the Assistant
+ * keeps working either way. The legacy "model_pool" KV key (UnoRouter-only
+ * model list) is still read as a secondary fallback if "model_config" isn't
+ * set yet, so nothing already written to KV is lost.
+ *
+ * See getProviderConfig()/getModelConfig()/getPolicy()/callDynamicPool()
+ * below and README.md for the exact KV formats, examples, and deploy steps.
+ *
+ * ── Adding a future OpenAI-compatible provider (no code, no Flutter, no APK) ─
+ * Write updated "provider_config" and "model_config" JSON to KV (Cloudflare
+ * dashboard or `wrangler kv key put`) and set its Worker Secret. That's it —
+ * see README.md.
+ *
+ * ── Adding a provider that ISN'T fully OpenAI-compatible ──────────────────
+ * Add one small entry to PROVIDER_ADAPTERS below (how to build the outgoing
+ * request for that wire format), reference it as "adapter" in that
+ * provider's KV entry, and set its secret. Still no Flutter change, and the
+ * routing/fallback loop above doesn't change either.
+ *
+ * ── Adding a legacy header-selectable provider (forge/hcnsec/openrouter-style) ─
+ * These are unrelated to the KV pool above — they're chosen explicitly via
+ * `X-AI-Provider: <name>` and read one fixed model from env/secrets. To add
+ * one: add its base URL + secret name to PROVIDERS below, then
+ * `wrangler secret put <NAME>_API_KEY`. Nothing else changes.
  */
 
 /** @type {Record<string, { baseUrlEnv: string, apiKeyEnv: string, defaultBaseUrl?: string, modelEnv?: string, defaultModel?: string }>} */
@@ -52,9 +94,106 @@ const PROVIDERS = {
     modelEnv: "OPENROUTER_MODEL",
     defaultModel: "stealth/ox-alpha",
   },
+  // No modelEnv/defaultModel here on purpose — unlike the providers above,
+  // "unorouter" doesn't send one fixed model. Its model comes from the
+  // remotely-configurable pool in KV; see callUnorouterPool() below.
+  unorouter: {
+    baseUrlEnv: "UNOROUTER_BASE_URL",
+    apiKeyEnv: "UNOROUTER_API_KEY",
+    defaultBaseUrl: "https://api.unorouter.com",
+  },
 };
 
 const CHAT_COMPLETIONS_PATH = "/v1/chat/completions";
+
+function chatCompletionsUrl(baseUrl) {
+  const normalized = baseUrl.replace(/\/+$/, "");
+  if (normalized.endsWith(CHAT_COMPLETIONS_PATH)) return normalized;
+  if (normalized.endsWith("/v1")) return `${normalized}/chat/completions`;
+  return `${normalized}${CHAT_COMPLETIONS_PATH}`;
+}
+
+// ── Generic, remotely-configurable provider/model pool (KV) ────────────────
+// All three live in the same MODEL_CONFIG_KV namespace as before.
+const PROVIDER_CONFIG_KV_KEY = "provider_config"; // which providers exist
+const MODEL_CONFIG_KV_KEY = "model_config";        // which models, in what order
+const POLICY_KV_KEY = "policy";                    // { "allow_paid": false }
+
+// Legacy key from the UnoRouter-only model pool this replaces. Still read as
+// a fallback if "model_config" hasn't been written yet, so an
+// already-deployed KV value keeps working unchanged.
+const LEGACY_MODEL_POOL_KV_KEY = "model_pool";
+
+// Used only if MODEL_CONFIG_KV is unbound, unreadable, or empty/invalid for
+// BOTH "provider_config"/"model_config" and the legacy "model_pool" key —
+// keeps the AI Assistant working even if the remote config can't be read.
+// This is intentionally identical to the UnoRouter setup that worked before
+// this pool became provider-agnostic. Not a permanent list: change it any
+// time via KV, never by editing this file (see README.md).
+const DEFAULT_MODEL_POOL = [
+  "deepseek-v4.1-flash:free",
+  "qwen3.5-122b-a10b:free",
+  "agnes-2.0-flash:free",
+  "glm-4.7-flash:free",
+];
+
+const DEFAULT_PROVIDER_CONFIG = [
+  {
+    name: "unorouter",
+    baseUrl: "https://api.unorouter.com",
+    secretName: "UNOROUTER_API_KEY",
+    enabled: true,
+    adapter: "openai",
+  },
+];
+
+const DEFAULT_MODEL_CONFIG = DEFAULT_MODEL_POOL.map((model, index) => ({
+  provider: "unorouter",
+  model,
+  enabled: true,
+  priority: index + 1,
+  tier: "free",
+}));
+
+// Production default: never call a model marked "paid" unless KV's "policy"
+// value explicitly sets allow_paid: true.
+const DEFAULT_POLICY = { allow_paid: false };
+
+/**
+ * How to build the outgoing request for a given provider's wire format. The
+ * generic pool below (callDynamicPool) looks up a provider's "adapter" field
+ * (defaulting to "openai") in this map — that's the ONLY place a
+ * not-fully-OpenAI-compatible provider needs code. Everything else (KV
+ * schema, routing, fallback, Flutter) is unaffected by adding one.
+ */
+const PROVIDER_ADAPTERS = {
+  openai: {
+    buildRequest(target, apiKey, bodyText, model) {
+      return {
+        url: target,
+        init: {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Accept: "application/json",
+            "User-Agent": "Sapiora-AI-Gateway/1.0 (+Cloudflare-Worker)",
+            Authorization: `Bearer ${apiKey}`,
+          },
+          body: rewriteModel(bodyText, model),
+        },
+      };
+    },
+  },
+};
+
+// Hard ceiling on how many {provider, model} attempts callDynamicPool() will
+// make per request, regardless of how many entries KV contains — keeps
+// fallback bounded even if someone pastes in a huge model_config.
+const MAX_POOL_ATTEMPTS = 20;
+
+// Bounded per-model timeout so one unresponsive free model can't stall the
+// whole request — it's abandoned and the next model in the pool is tried.
+const MODEL_ATTEMPT_TIMEOUT_MS = 25000;
 const NEWS_CACHE_KEY = "https://sapiora.internal/cache/current-affairs/latest-v1";
 const NEWS_CACHE_TTL_MS = 15 * 60 * 1000;
 const NEWS_FRESHNESS_WINDOW_MS = 48 * 60 * 60 * 1000;
@@ -220,14 +359,11 @@ export default {
       lastFailure = { status: upstream.status, message: text || upstream.statusText };
       if (!isLastAttempt) continue;
 
-      const debug = request.headers.get("X-Debug") === "1"
-        ? { debug: debugInfo(providerId, env) }
-        : {};
       return jsonError(
         upstream.status,
         "provider_error",
         lastFailure.message,
-        { provider: providerId, ...debug },
+        { provider: providerId },
       );
     }
 
@@ -492,27 +628,19 @@ function providerModel(id, env) {
   return (cfg.modelEnv && env[cfg.modelEnv]) || cfg.defaultModel || null;
 }
 
-/** Safe-to-return diagnostics — never includes the actual key value. */
-function debugInfo(providerId, env) {
-  const apiKey = providerApiKey(providerId, env) || "";
-  const baseUrl = providerBaseUrl(providerId, env) || "";
-  return {
-    targetUrl: `${baseUrl.replace(/\/+$/, "")}${CHAT_COMPLETIONS_PATH}`,
-    apiKeyConfigured: apiKey.length > 0,
-    apiKeyLength: apiKey.length,
-    apiKeyPrefix: apiKey ? apiKey.slice(0, 5) : null,
-    apiKeyHasWhitespace: /\s/.test(apiKey),
-    model: providerModel(providerId, env),
-  };
-}
-
 async function callProvider(id, bodyText, env) {
+  if (id === "unorouter") {
+    // "unorouter" is the trigger for the generic, KV-configured pool — it
+    // may call UnoRouter, xKiro, or any other configured provider depending
+    // on provider_config/model_config. See callDynamicPool() below.
+    return callDynamicPool(bodyText, env);
+  }
   const baseUrl = providerBaseUrl(id, env);
   if (!baseUrl) {
     throw new Error(`${id}: no base URL configured (set ${PROVIDERS[id].baseUrlEnv})`);
   }
   const apiKey = providerApiKey(id, env);
-  const target = `${baseUrl.replace(/\/+$/, "")}${CHAT_COMPLETIONS_PATH}`;
+  const target = chatCompletionsUrl(baseUrl);
   const outgoingBody = rewriteModel(bodyText, providerModel(id, env));
 
   return fetch(target, {
@@ -531,15 +659,272 @@ async function callProvider(id, bodyText, env) {
   });
 }
 
-/** Returns [bodyText] unchanged if [model] is null, otherwise returns it
- * with the JSON "model" field replaced. Falls back to the original text on
- * any parse error — a provider getting the app's generic model value is far
- * better than the whole request failing to build. */
+/**
+ * The generic, provider-agnostic pool. Reads provider_config + model_config
+ * + policy from KV, builds an ordered, policy-filtered candidate list across
+ * ALL configured providers (not just one), and tries each in turn against
+ * its own base URL + secret until one responds with a 2xx (streamed
+ * straight through, same as any other provider). A candidate that times
+ * out, errors at the network level, has no secret configured, or returns a
+ * non-2xx is not retried — the next candidate is tried immediately, up to
+ * MAX_POOL_ATTEMPTS. If every candidate fails, the *last* HTTP response is
+ * returned (so the caller can report a real status/message) unless every
+ * attempt failed at the network level, in which case an error is thrown so
+ * the outer provider loop (resolveProviderOrder) can fall back to any other
+ * legacy provider configured via env vars (forge/hcnsec/etc.).
+ */
+async function callDynamicPool(bodyText, env) {
+  const [providers, models, policy] = await Promise.all([
+    getProviderConfig(env),
+    getModelConfig(env),
+    getPolicy(env),
+  ]);
+
+  const providerByName = new Map(
+    providers.filter((p) => p.enabled !== false).map((p) => [p.name, p]),
+  );
+
+  const candidates = models
+    .filter((m) => m.enabled !== false)
+    .filter((m) => policy.allow_paid || m.tier !== "paid")
+    .filter((m) => providerByName.has(m.provider))
+    .sort((a, b) => (a.priority ?? 0) - (b.priority ?? 0))
+    .slice(0, MAX_POOL_ATTEMPTS);
+
+  if (candidates.length === 0) {
+    throw new Error(
+      "unorouter: no enabled model is both configured and allowed by the current free/paid policy",
+    );
+  }
+
+  let lastResponse = null;
+  for (const candidate of candidates) {
+    const provider = providerByName.get(candidate.provider);
+    const apiKey = env[provider.secretName];
+    if (!apiKey) {
+      console.log(
+        `[ai-gateway] pool: ${provider.name}/${candidate.model} skipped (secret ${provider.secretName} not set)`,
+      );
+      continue;
+    }
+
+    const adapter = PROVIDER_ADAPTERS[provider.adapter || "openai"] || PROVIDER_ADAPTERS.openai;
+    const target = chatCompletionsUrl(provider.baseUrl);
+    const { url, init } = adapter.buildRequest(target, apiKey, bodyText, candidate.model);
+
+    let response;
+    try {
+      response = await fetchWithTimeout(url, init, MODEL_ATTEMPT_TIMEOUT_MS);
+    } catch (err) {
+      console.log(
+        `[ai-gateway] pool: ${provider.name}/${candidate.model} failed (network/timeout), trying next`,
+      );
+      lastResponse = null;
+      continue;
+    }
+
+    if (response.ok) {
+      console.log(`[ai-gateway] pool: selected ${provider.name}/${candidate.model}`);
+      return response;
+    }
+
+    console.log(
+      `[ai-gateway] pool: ${provider.name}/${candidate.model} failed (status ${response.status}), trying next`,
+    );
+    lastResponse = response;
+  }
+
+  if (lastResponse) return lastResponse;
+  console.log("[ai-gateway] pool: all candidates failed");
+  throw new Error("unorouter: all pool candidates failed");
+}
+
+/**
+ * Reads the list of providers the pool may use. Expected shape:
+ *   { "providers": [
+ *       { "name": "unorouter", "baseUrl": "...", "secretName": "UNOROUTER_API_KEY",
+ *         "enabled": true, "adapter": "openai" },
+ *       ...
+ *   ] }
+ * "adapter" is optional and defaults to "openai" (plain OpenAI-compatible
+ * POST /v1/chat/completions) — see PROVIDER_ADAPTERS. Falls back to
+ * DEFAULT_PROVIDER_CONFIG if the KV binding is missing, the key isn't set,
+ * the value isn't valid JSON, or it contains no usable entries.
+ */
+async function getProviderConfig(env) {
+  const kv = env.MODEL_CONFIG_KV;
+  if (!kv) {
+    console.log("[ai-gateway] MODEL_CONFIG_KV not bound; using default provider config");
+    return DEFAULT_PROVIDER_CONFIG;
+  }
+
+  let raw;
+  try {
+    raw = await kv.get(PROVIDER_CONFIG_KV_KEY);
+  } catch (err) {
+    console.log(`[ai-gateway] provider_config read failed; using default: ${err.message || err}`);
+    return DEFAULT_PROVIDER_CONFIG;
+  }
+  if (!raw) {
+    console.log("[ai-gateway] provider_config not set; using default provider config");
+    return DEFAULT_PROVIDER_CONFIG;
+  }
+
+  try {
+    const parsed = JSON.parse(raw);
+    const providers = Array.isArray(parsed?.providers)
+      ? parsed.providers.filter(
+          (p) =>
+            p &&
+            typeof p.name === "string" && p.name.trim() &&
+            typeof p.baseUrl === "string" && p.baseUrl.trim() &&
+            typeof p.secretName === "string" && p.secretName.trim(),
+        )
+      : [];
+    if (providers.length === 0) {
+      console.log("[ai-gateway] provider_config has no usable entries; using default provider config");
+      return DEFAULT_PROVIDER_CONFIG;
+    }
+    return providers;
+  } catch (err) {
+    console.log(`[ai-gateway] provider_config is not valid JSON; using default: ${err.message || err}`);
+    return DEFAULT_PROVIDER_CONFIG;
+  }
+}
+
+/**
+ * Reads the ordered list of {provider, model} candidates. Expected shape:
+ *   { "models": [
+ *       { "provider": "unorouter", "model": "deepseek-v4.1-flash:free",
+ *         "enabled": true, "priority": 1, "tier": "free" },
+ *       ...
+ *   ] }
+ * "enabled" defaults to true, "priority" defaults to 0 (lower runs first),
+ * "tier" defaults to "free". Falls back, in order, to: the legacy
+ * "model_pool" key (UnoRouter-only list from before this pool became
+ * provider-agnostic, so anything already written there keeps working), then
+ * DEFAULT_MODEL_CONFIG — if the KV binding is missing, "model_config" isn't
+ * set, the value isn't valid JSON, or it contains no usable entries.
+ */
+async function getModelConfig(env) {
+  const kv = env.MODEL_CONFIG_KV;
+  if (!kv) {
+    console.log("[ai-gateway] MODEL_CONFIG_KV not bound; using default model config");
+    return DEFAULT_MODEL_CONFIG;
+  }
+
+  let raw;
+  try {
+    raw = await kv.get(MODEL_CONFIG_KV_KEY);
+  } catch (err) {
+    console.log(`[ai-gateway] model_config read failed, trying legacy key: ${err.message || err}`);
+    raw = null;
+  }
+
+  if (raw) {
+    try {
+      const parsed = JSON.parse(raw);
+      const models = Array.isArray(parsed?.models)
+        ? parsed.models
+            .filter(
+              (m) =>
+                m &&
+                typeof m.provider === "string" && m.provider.trim() &&
+                typeof m.model === "string" && m.model.trim(),
+            )
+            .map((m) => ({
+              provider: m.provider,
+              model: m.model,
+              enabled: m.enabled !== false,
+              priority: typeof m.priority === "number" ? m.priority : 0,
+              tier: m.tier === "paid" ? "paid" : "free",
+            }))
+        : [];
+      if (models.length > 0) return models;
+      console.log("[ai-gateway] model_config has no usable entries; trying legacy key");
+    } catch (err) {
+      console.log(`[ai-gateway] model_config is not valid JSON; trying legacy key: ${err.message || err}`);
+    }
+  } else {
+    console.log("[ai-gateway] model_config not set; trying legacy key");
+  }
+
+  // Legacy fallback: the old UnoRouter-only { "models": ["id", ...] } shape.
+  try {
+    const legacyRaw = await kv.get(LEGACY_MODEL_POOL_KV_KEY);
+    if (legacyRaw) {
+      const parsed = JSON.parse(legacyRaw);
+      const ids = Array.isArray(parsed?.models)
+        ? parsed.models.filter((m) => typeof m === "string" && m.trim().length > 0)
+        : [];
+      if (ids.length > 0) {
+        console.log("[ai-gateway] using legacy model_pool key (unorouter-only)");
+        return ids.map((model, index) => ({
+          provider: "unorouter",
+          model,
+          enabled: true,
+          priority: index + 1,
+          tier: "free",
+        }));
+      }
+    }
+  } catch (err) {
+    console.log(`[ai-gateway] legacy model_pool read failed: ${err.message || err}`);
+  }
+
+  console.log("[ai-gateway] no usable model config found anywhere; using default model config");
+  return DEFAULT_MODEL_CONFIG;
+}
+
+/**
+ * Reads the global free/paid policy. Expected shape: { "allow_paid": false }.
+ * Falls back to DEFAULT_POLICY (allow_paid: false — free-only) if the KV
+ * binding is missing, the key isn't set, or the value isn't valid JSON. This
+ * is a fail-safe default on purpose: an unreadable policy value must never
+ * silently permit paid usage.
+ */
+async function getPolicy(env) {
+  const kv = env.MODEL_CONFIG_KV;
+  if (!kv) return DEFAULT_POLICY;
+
+  let raw;
+  try {
+    raw = await kv.get(POLICY_KV_KEY);
+  } catch (err) {
+    console.log(`[ai-gateway] policy read failed; using default (free-only): ${err.message || err}`);
+    return DEFAULT_POLICY;
+  }
+  if (!raw) return DEFAULT_POLICY;
+
+  try {
+    const parsed = JSON.parse(raw);
+    return { allow_paid: parsed?.allow_paid === true };
+  } catch (err) {
+    console.log(`[ai-gateway] policy is not valid JSON; using default (free-only): ${err.message || err}`);
+    return DEFAULT_POLICY;
+  }
+}
+
+/** fetch() with a bounded timeout, so one hung model attempt can't stall
+ * the whole request past a sensible limit. */
+async function fetchWithTimeout(url, options, timeoutMs) {
+  const controller = new AbortController();
+  const timer = setTimeout(() => controller.abort(), timeoutMs);
+  try {
+    return await fetch(url, { ...options, signal: controller.signal });
+  } finally {
+    clearTimeout(timer);
+  }
+}
+
+/** Removes the Worker's routing-only provider hint before forwarding and
+ * replaces the model selected by the KV pool when one is supplied. Falls back
+ * to the original text on parse error so malformed input is not rewritten. */
 function rewriteModel(bodyText, model) {
-  if (!model) return bodyText;
   try {
     const parsed = JSON.parse(bodyText);
-    parsed.model = model;
+    delete parsed.provider;
+    if (model) parsed.model = model;
     return JSON.stringify(parsed);
   } catch {
     return bodyText;

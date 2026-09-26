@@ -114,24 +114,50 @@ class AiReadAloudController {
       ValueNotifier<Duration>(Duration.zero);
   final ValueNotifier<Duration> playbackDuration =
       ValueNotifier<Duration>(Duration.zero);
+  final ValueNotifier<double> playbackSpeed = ValueNotifier<double>(1.0);
 
   Timer? _progressTimer;
   bool _configured = false;
+  bool _suppressEngineCallbacks = false;
+  String _activeText = '';
+  int _currentChar = 0;
+  int _utteranceStartChar = 0;
 
   Future<void> _ensureConfigured() async {
     if (_configured) return;
     await _tts.awaitSpeakCompletion(true);
-    await _tts.setQueueMode(1);
+    // Flush the previous utterance whenever speed/seek/resume starts a new
+    // segment; queue-add would leave stale speech running behind the player.
+    await _tts.setQueueMode(0);
     await _tts.setVolume(1.0);
-    _tts.setCompletionHandler(_resetState);
-    _tts.setCancelHandler(_resetState);
+    _tts.setCompletionHandler(() {
+      if (!_suppressEngineCallbacks) _resetState();
+    });
+    _tts.setCancelHandler(() {
+      if (!_suppressEngineCallbacks) _resetState();
+    });
     _tts.setPauseHandler(() {
       playbackState.value = AiReadAloudState.paused;
     });
     _tts.setContinueHandler(() {
       playbackState.value = AiReadAloudState.playing;
     });
-    _tts.setErrorHandler((dynamic _) => _resetState());
+    _tts.setProgressHandler((String _, int start, int end, String __) {
+      if (_activeText.isEmpty || activeMessageId.value == null) return;
+      _currentChar =
+          (_utteranceStartChar + end).clamp(0, _activeText.length).toInt();
+      final Duration total = playbackDuration.value;
+      if (total > Duration.zero) {
+        playbackElapsed.value = Duration(
+          milliseconds: (total.inMilliseconds *
+                  (_currentChar / _activeText.length))
+              .round(),
+        );
+      }
+    });
+    _tts.setErrorHandler((dynamic _) {
+      if (!_suppressEngineCallbacks) _resetState();
+    });
     _configured = true;
   }
 
@@ -141,6 +167,10 @@ class AiReadAloudController {
     playbackState.value = AiReadAloudState.idle;
     playbackElapsed.value = Duration.zero;
     playbackDuration.value = Duration.zero;
+    playbackSpeed.value = 1.0;
+    _activeText = '';
+    _currentChar = 0;
+    _utteranceStartChar = 0;
   }
 
   void _stopProgressTimer() {
@@ -155,16 +185,131 @@ class AiReadAloudController {
       final Duration next = playbackElapsed.value + const Duration(seconds: 1);
       final Duration total = playbackDuration.value;
       playbackElapsed.value = total > Duration.zero && next >= total ? total : next;
+      if (_activeText.isNotEmpty && total > Duration.zero) {
+        _currentChar = (_activeText.length *
+                (playbackElapsed.value.inMilliseconds / total.inMilliseconds))
+            .round()
+            .clamp(0, _activeText.length)
+            .toInt();
+      }
     });
   }
 
   void _prepareProgress(String text) {
-    final int words = text.trim().split(RegExp(r'\\s+')).length;
-    // A calm reading estimate keeps the progress bar useful even though the
-    // platform TTS plugin does not expose a cross-platform duration callback.
+    final int words = text.trim().split(RegExp(r'\s+')).length;
+    // Flutter TTS exposes character progress, but not a total duration. This
+    // estimate supplies the seekable timeline while callbacks track speech.
     final int seconds = (words / 2.25).ceil().clamp(3, 3600);
     playbackElapsed.value = Duration.zero;
     playbackDuration.value = Duration(seconds: seconds);
+  }
+
+  void _updateDurationForSpeed() {
+    if (_activeText.isEmpty) return;
+    final Duration previousTotal = playbackDuration.value;
+    if (previousTotal > Duration.zero) {
+      _currentChar = (_activeText.length *
+              (playbackElapsed.value.inMilliseconds /
+                  previousTotal.inMilliseconds))
+          .round()
+          .clamp(0, _activeText.length)
+          .toInt();
+    }
+    final int words = _activeText.trim().split(RegExp(r'\s+')).length;
+    final int seconds =
+        (words / (2.25 * playbackSpeed.value)).ceil().clamp(3, 3600);
+    playbackDuration.value = Duration(seconds: seconds);
+    playbackElapsed.value = Duration(
+      milliseconds: (seconds * 1000 *
+              (_currentChar / _activeText.length).clamp(0.0, 1.0))
+          .round(),
+    );
+  }
+
+  /// Restarts the current utterance at a character position, which provides
+  /// reliable five-second-style seeking across the platform TTS engines.
+  Future<void> seekBy(Duration delta) async {
+    final Duration total = playbackDuration.value;
+    final Duration next = playbackElapsed.value + delta;
+    final Duration target = next < Duration.zero
+        ? Duration.zero
+        : total > Duration.zero && next > total
+            ? total
+            : next;
+    await seekToDuration(target);
+  }
+
+  Future<void> seekToDuration(Duration target) async {
+    final Duration total = playbackDuration.value;
+    if (total <= Duration.zero || _activeText.isEmpty) return;
+    final double fraction =
+        (target.inMilliseconds / total.inMilliseconds).clamp(0.0, 1.0);
+    _currentChar = (_activeText.length * fraction).round();
+    playbackElapsed.value = Duration(
+      milliseconds: (total.inMilliseconds * fraction).round(),
+    );
+    if (playbackState.value == AiReadAloudState.playing) {
+      await _speakFromCurrentChar();
+    }
+  }
+
+  Future<void> seekToFraction(double fraction) async {
+    final Duration total = playbackDuration.value;
+    if (total <= Duration.zero) return;
+    await seekToDuration(
+      Duration(
+        milliseconds: (total.inMilliseconds * fraction.clamp(0.0, 1.0))
+            .round(),
+      ),
+    );
+  }
+
+  Future<void> setSpeed(double speed) async {
+    playbackSpeed.value = speed.clamp(0.75, 2.0).toDouble();
+    if (activeMessageId.value == null) return;
+    _updateDurationForSpeed();
+    if (playbackState.value == AiReadAloudState.playing) {
+      await _speakFromCurrentChar();
+    }
+  }
+
+  Future<void> _speakFromCurrentChar() async {
+    if (_activeText.isEmpty || activeMessageId.value == null) return;
+    await _ensureConfigured();
+
+    _suppressEngineCallbacks = true;
+    try {
+      await _tts.stop();
+      // Android may deliver the old cancel callback on the next event turn.
+      // Let it drain while callbacks are suppressed before starting the new
+      // utterance, otherwise it can hide the still-playing compact strip.
+      await Future<void>.delayed(Duration.zero);
+    } finally {
+      _suppressEngineCallbacks = false;
+    }
+
+    try {
+      final int requestedStart = _currentChar.clamp(0, _activeText.length);
+      final String sourceRemainder = _activeText.substring(requestedStart);
+      final String remaining = sourceRemainder.trimLeft();
+      if (remaining.isEmpty) {
+        _resetState();
+        return;
+      }
+      _utteranceStartChar =
+          requestedStart + sourceRemainder.length - remaining.length;
+      await _tts.setLanguage('en-US');
+      await _tts.setSpeechRate(0.46 * playbackSpeed.value);
+      await _tts.setPitch(1.0);
+      await _tts.setVolume(1.0);
+      final Object? result = await _tts.speak(remaining);
+      if (result is int && result != 1) {
+        throw StateError('Text-to-speech engine returned code $result.');
+      }
+    } on Object {
+      _resetState();
+      rethrow;
+    }
   }
 
   /// Starts reading [text] aloud for [messageId]. Tapping the same active
@@ -180,13 +325,9 @@ class AiReadAloudController {
         _stopProgressTimer();
         playbackState.value = AiReadAloudState.paused;
       } else if (playbackState.value == AiReadAloudState.paused) {
-        // flutter_tts exposes pause but not a cross-platform resume method.
-        // Speaking the retained text again provides a reliable resume action
-        // on Android and iOS instead of leaving the control unresponsive.
-        final String clean = stripMarkdownForPlainText(text);
         playbackState.value = AiReadAloudState.playing;
         _startProgressTimer();
-        await _tts.speak(clean);
+        await _speakFromCurrentChar();
       }
       return;
     }
@@ -198,22 +339,13 @@ class AiReadAloudController {
     // immediately shows that playback is starting, even on a cold TTS engine.
     activeMessageId.value = messageId;
     playbackState.value = AiReadAloudState.playing;
+    playbackSpeed.value = playbackSpeed.value.clamp(0.75, 2.0).toDouble();
+    _activeText = clean;
+    _currentChar = 0;
     _prepareProgress(clean);
     _startProgressTimer();
     try {
-      await _ensureConfigured();
-      await _tts.stop();
-      await _tts.setLanguage('en-US');
-      await _tts.setSpeechRate(0.46);
-      await _tts.setPitch(1.0);
-      await _tts.setVolume(1.0);
-      final Object? result = await _tts.speak(clean);
-      // On Android/iOS flutter_tts returns 1 for success; surface anything
-      // else as a real failure instead of silently doing nothing.
-      if (result is int && result != 1) {
-        _resetState();
-        throw StateError('Text-to-speech engine returned code $result.');
-      }
+      await _speakFromCurrentChar();
     } on Object {
       _resetState();
       rethrow;

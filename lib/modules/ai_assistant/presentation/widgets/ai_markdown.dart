@@ -44,6 +44,10 @@ class AiMarkdown extends StatelessWidget {
       ),
       child: GptMarkdown(
         data,
+        // The parser is intentionally recreated for every complete response
+        // snapshot. This prevents a streamed, temporarily-unclosed `**` pair
+        // from leaving stale inline spans behind on the next update.
+        key: ValueKey<String>(data),
         useDollarSignsForLatex: true,
         style: theme.textTheme.bodyMedium?.copyWith(
           color: textColor,
@@ -120,10 +124,11 @@ class _MarkdownTable extends StatelessWidget {
                   Padding(
                     padding: const EdgeInsets.symmetric(
                         horizontal: 10, vertical: 9),
-                    child: Text(
+                    child: GptMarkdown(
                       '${cell.data}',
+                      key: ValueKey<String>('cell:${cell.data}'),
+                      useDollarSignsForLatex: true,
                       textAlign: cell.alignment as TextAlign?,
-                      softWrap: true,
                       style: textStyle.copyWith(
                         color: color,
                         fontSize: 13,

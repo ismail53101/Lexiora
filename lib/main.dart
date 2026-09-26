@@ -9,9 +9,16 @@ import 'package:lexiora/app/app.dart';
 import 'package:lexiora/app/di/injector.dart';
 import 'package:lexiora/app/di/injector_config.dart';
 import 'package:lexiora/app/router/app_router.dart';
+import 'package:lexiora/app/router/app_routes.dart';
 import 'package:lexiora/core/services/notification_service.dart';
+import 'package:lexiora/core/services/pdf_discovery_service.dart';
+import 'package:lexiora/core/services/pdf_import_service.dart';
 import 'package:lexiora/core/services/permission_service.dart';
 import 'package:lexiora/core/utils/logger.dart';
+import 'package:lexiora/core/utils/result.dart';
+import 'package:lexiora/features/library/domain/entities/library_document.dart';
+import 'package:lexiora/features/library/domain/repositories/library_repository.dart';
+import 'package:lexiora/features/library/domain/usecases/library_usecases.dart';
 import 'package:lexiora/features/settings/domain/entities/app_settings.dart';
 import 'package:lexiora/features/settings/domain/repositories/settings_repository.dart';
 import 'package:pdfrx/pdfrx.dart';
@@ -51,6 +58,20 @@ Future<void> main() async {
       await pdfrxFlutterInitialize();
       await configureDependencies();
       final GoRouter router = createAppRouter();
+      // Optional platform setup must not keep Flutter on the native splash
+      // screen. Notifications, permissions, and PDF intent discovery continue
+      // immediately after the first frame and report failures to the logger.
+      runApp(ProviderScope(child: SapioraApp(router: router)));
+      unawaited(_finishStartup(router));
+    },
+    (Object error, StackTrace stack) {
+      AppLogger.e('Uncaught zone error', error: error, stackTrace: stack);
+    },
+  );
+}
+
+Future<void> _finishStartup(GoRouter router) async {
+  try {
       final NotificationService notifications = sl<NotificationService>();
       await notifications.initialize(
         onTap: (String payload) => _handleNotificationPayload(router, payload),
@@ -77,20 +98,47 @@ Future<void> main() async {
           ),
         );
       }
-      await notifications.rescheduleAll();
+      // Start reminder restoration before PDF intent discovery, so a later PDF
+      // setup failure cannot suppress Word of the Day scheduling. Permission
+      // has already been settled above, avoiding a race with rescheduling.
+      unawaited(_rescheduleNotifications(notifications));
+      final PdfImportService pdfImport = sl<PdfImportService>();
+      pdfImport.registerIncomingPdfHandler(
+        (DeviceFile file) => unawaited(_openIncomingPdf(router, file)),
+      );
+      final DeviceFile? initialIncoming =
+          await pdfImport.takeInitialIncomingPdf();
 
-      runApp(ProviderScope(child: SapioraApp(router: router)));
       final String? pendingPayload = notifications.takePendingPayload();
       if (pendingPayload != null) {
         WidgetsBinding.instance.addPostFrameCallback((_) {
           _handleNotificationPayload(router, pendingPayload);
         });
       }
-    },
-    (Object error, StackTrace stack) {
-      AppLogger.e('Uncaught zone error', error: error, stackTrace: stack);
-    },
-  );
+      if (initialIncoming != null) {
+        WidgetsBinding.instance.addPostFrameCallback((_) {
+          unawaited(_openIncomingPdf(router, initialIncoming));
+        });
+      }
+  } on Object catch (error, stackTrace) {
+    AppLogger.e(
+      'Post-launch platform setup failed',
+      error: error,
+      stackTrace: stackTrace,
+    );
+  }
+}
+
+Future<void> _rescheduleNotifications(NotificationService notifications) async {
+  try {
+    await notifications.rescheduleAll();
+  } on Object catch (error, stackTrace) {
+    AppLogger.e(
+      'Notification rescheduling failed after app startup',
+      error: error,
+      stackTrace: stackTrace,
+    );
+  }
 }
 
 void _handleNotificationPayload(GoRouter router, String payload) {
@@ -103,6 +151,29 @@ void _handleNotificationPayload(GoRouter router, String payload) {
   } on Object catch (error, stack) {
     AppLogger.e(
       'Notification payload could not be opened',
+      error: error,
+      stackTrace: stack,
+    );
+  }
+}
+
+Future<void> _openIncomingPdf(GoRouter router, DeviceFile file) async {
+  try {
+    final Result<LibraryDocument?> result = await ImportIncomingPdf(
+      sl<LibraryRepository>(),
+      sl(),
+    ).call(file);
+    result.fold(
+      (failure) => AppLogger.w(
+        'Incoming PDF could not be imported: ${failure.message}',
+      ),
+      (document) {
+        if (document != null) router.go(AppRoutes.reader(document.id));
+      },
+    );
+  } on Object catch (error, stack) {
+    AppLogger.e(
+      'Incoming PDF could not be opened',
       error: error,
       stackTrace: stack,
     );
