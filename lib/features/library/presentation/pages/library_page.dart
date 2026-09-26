@@ -326,7 +326,13 @@ class _LibraryPageState extends ConsumerState<LibraryPage> {
     final PermissionService perm = ref.read(permissionServiceProvider);
     setState(() => _scanning = true);
 
-    final StorageAccessStatus status = await perm.requestForDiscovery();
+    // The one-time grant is requested by the startup/access flow. When the
+    // Library opens afterward, inspect the existing state instead of invoking
+    // Android's permission screen a second time.
+    final bool alreadyGranted = await perm.isGrantedForDiscovery();
+    final StorageAccessStatus status = alreadyGranted
+        ? StorageAccessStatus.granted
+        : await perm.requestForDiscovery();
     if (!mounted) return;
 
     if (status != StorageAccessStatus.granted) {

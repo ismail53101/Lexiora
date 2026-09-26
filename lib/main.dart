@@ -98,6 +98,10 @@ Future<void> _finishStartup(GoRouter router) async {
           ),
         );
       }
+      // Start reminder restoration before PDF intent discovery, so a later PDF
+      // setup failure cannot suppress Word of the Day scheduling. Permission
+      // has already been settled above, avoiding a race with rescheduling.
+      unawaited(_rescheduleNotifications(notifications));
       final PdfImportService pdfImport = sl<PdfImportService>();
       pdfImport.registerIncomingPdfHandler(
         (DeviceFile file) => unawaited(_openIncomingPdf(router, file)),
@@ -105,10 +109,6 @@ Future<void> _finishStartup(GoRouter router) async {
       final DeviceFile? initialIncoming =
           await pdfImport.takeInitialIncomingPdf();
 
-      // Rendering the app must not depend on Android accepting every pending
-      // notification schedule. A bad channel/resource or a vendor-specific
-      // scheduling failure is logged, while the rest of the app remains usable.
-      unawaited(_rescheduleNotifications(notifications));
       final String? pendingPayload = notifications.takePendingPayload();
       if (pendingPayload != null) {
         WidgetsBinding.instance.addPostFrameCallback((_) {

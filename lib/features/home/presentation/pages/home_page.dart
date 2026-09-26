@@ -45,7 +45,6 @@ class HomePage extends ConsumerStatefulWidget {
 class _HomePageState extends ConsumerState<HomePage>
     with WidgetsBindingObserver {
   bool _discoveryInFlight = false;
-  bool _permissionPromptShown = false;
 
   @override
   void initState() {
@@ -80,10 +79,8 @@ class _HomePageState extends ConsumerState<HomePage>
       await _scanInBackground();
       return;
     }
-    if (!_permissionPromptShown) {
-      _permissionPromptShown = true;
-      _showPermissionPrompt();
-    }
+    // The one-time access flow owns the permission request. Home only scans
+    // after that flow has granted access and never presents a second prompt.
   }
 
   Future<void> _scanInBackground() async {
@@ -102,39 +99,6 @@ class _HomePageState extends ConsumerState<HomePage>
     }
   }
 
-  void _showPermissionPrompt() {
-    final ScaffoldMessengerState messenger = ScaffoldMessenger.of(context);
-    messenger
-      ..hideCurrentSnackBar()
-      ..showSnackBar(
-        SnackBar(
-          content: const Text('Allow file access to discover PDFs automatically.'),
-          action: SnackBarAction(
-            label: 'Allow',
-            onPressed: () => unawaited(_requestPermissionAndScan()),
-          ),
-          duration: const Duration(seconds: 8),
-        ),
-      );
-  }
-
-  Future<void> _requestPermissionAndScan() async {
-    final PermissionService permission = ref.read(permissionServiceProvider);
-    final StorageAccessStatus status = await permission.requestForDiscovery();
-    if (!mounted) return;
-    if (status == StorageAccessStatus.granted) {
-      await _scanInBackground();
-    } else if (status == StorageAccessStatus.permanentlyDenied) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
-          content: const Text('Enable file access in Android Settings to scan PDFs.'),
-          action: SnackBarAction(
-            label: 'Settings',
-            onPressed: () => unawaited(permission.openSystemSettings()),
-          ),
-        ),
-      );
-    }
   }
 
   @override
