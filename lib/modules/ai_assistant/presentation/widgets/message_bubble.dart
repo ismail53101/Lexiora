@@ -353,6 +353,7 @@ class _ActionRow extends StatelessWidget {
         controller.playbackState,
         controller.playbackElapsed,
         controller.playbackDuration,
+        controller.playbackSpeed,
       ]),
       builder: (BuildContext context, Widget? child) {
         final bool active = controller.activeMessageId.value == messageId;
@@ -408,6 +409,8 @@ class _PlaybackBar extends StatelessWidget {
   final String messageId;
   final String text;
 
+  static const List<double> _speeds = <double>[0.75, 1, 1.25, 1.5, 1.75, 2];
+
   static String _clock(Duration value) {
     final int seconds = value.inSeconds;
     final String minutes = (seconds ~/ 60).toString().padLeft(2, '0');
@@ -419,17 +422,20 @@ class _PlaybackBar extends StatelessWidget {
   Widget build(BuildContext context) {
     final AiReadAloudController controller = AiReadAloudController.instance;
     final ColorScheme scheme = Theme.of(context).colorScheme;
-    final AiReadAloudState state = controller.playbackState.value;
-    final bool paused = state == AiReadAloudState.paused;
+    final bool paused = controller.playbackState.value == AiReadAloudState.paused;
     final Duration elapsed = controller.playbackElapsed.value;
     final Duration total = controller.playbackDuration.value;
     final double progress = total.inMilliseconds <= 0
         ? 0
         : (elapsed.inMilliseconds / total.inMilliseconds).clamp(0.0, 1.0);
+    final TextStyle clockStyle = Theme.of(context).textTheme.labelSmall!.copyWith(
+          fontFeatures: const <FontFeature>[FontFeature.tabularFigures()],
+        );
 
     return Container(
       width: double.infinity,
-      padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 5),
+      height: 44,
+      padding: const EdgeInsets.symmetric(horizontal: 5, vertical: 4),
       decoration: BoxDecoration(
         color: scheme.surfaceContainerHighest.withValues(alpha: 0.82),
         borderRadius: BorderRadius.circular(24),
@@ -437,11 +443,16 @@ class _PlaybackBar extends StatelessWidget {
       ),
       child: Row(
         children: <Widget>[
+          _seekButton(
+            icon: Icons.replay_5_rounded,
+            tooltip: 'Rewind 5 seconds',
+            onPressed: () => controller.seekBy(const Duration(seconds: -5)),
+          ),
           IconButton(
             tooltip: paused ? 'Resume reading' : 'Pause reading',
             visualDensity: VisualDensity.compact,
             padding: EdgeInsets.zero,
-            constraints: const BoxConstraints(minWidth: 40, minHeight: 36),
+            constraints: const BoxConstraints(minWidth: 32, minHeight: 32),
             style: IconButton.styleFrom(
               backgroundColor: scheme.primary,
               foregroundColor: scheme.onPrimary,
@@ -449,39 +460,76 @@ class _PlaybackBar extends StatelessWidget {
             icon: Icon(paused ? Icons.play_arrow_rounded : Icons.pause_rounded),
             onPressed: () => controller.toggle(messageId, text),
           ),
-          const SizedBox(width: 8),
-          Text(
-            _clock(elapsed),
-            style: Theme.of(context).textTheme.labelMedium?.copyWith(
-                  fontFeatures: const <FontFeature>[
-                    FontFeature.tabularFigures(),
-                  ],
-                  fontWeight: FontWeight.w700,
-                ),
+          _seekButton(
+            icon: Icons.forward_5_rounded,
+            tooltip: 'Forward 5 seconds',
+            onPressed: () => controller.seekBy(const Duration(seconds: 5)),
           ),
-          const SizedBox(width: 10),
+          const SizedBox(width: 2),
+          Text(_clock(elapsed), style: clockStyle),
+          const SizedBox(width: 2),
           Expanded(
-            child: LinearProgressIndicator(
-              value: progress,
-              minHeight: 3,
-              borderRadius: BorderRadius.circular(3),
-              backgroundColor: scheme.outlineVariant.withValues(alpha: 0.6),
-              valueColor: AlwaysStoppedAnimation<Color>(scheme.primary),
+            child: SliderTheme(
+              data: SliderTheme.of(context).copyWith(
+                trackHeight: 3,
+                thumbShape: const RoundSliderThumbShape(enabledThumbRadius: 5),
+                overlayShape: const RoundSliderOverlayShape(overlayRadius: 10),
+                activeTrackColor: scheme.primary,
+                inactiveTrackColor: scheme.outlineVariant.withValues(alpha: 0.6),
+                thumbColor: scheme.primary,
+              ),
+              child: Slider(
+                value: progress,
+                onChanged: total <= Duration.zero
+                    ? null
+                    : controller.seekToFraction,
+              ),
             ),
           ),
-          const SizedBox(width: 8),
+          const SizedBox(width: 2),
+          Text(_clock(total), style: clockStyle),
+          PopupMenuButton<double>(
+            tooltip: 'Playback speed',
+            padding: EdgeInsets.zero,
+            constraints: const BoxConstraints(minWidth: 38, minHeight: 32),
+            onSelected: controller.setSpeed,
+            itemBuilder: (BuildContext context) => <PopupMenuEntry<double>>[
+              for (final double speed in _speeds)
+                PopupMenuItem<double>(value: speed, child: Text('${speed}×')),
+            ],
+            child: Text(
+              '${controller.playbackSpeed.value}×',
+              style: clockStyle.copyWith(
+                color: scheme.primary,
+                fontWeight: FontWeight.w700,
+              ),
+            ),
+          ),
           IconButton(
             tooltip: 'Stop reading',
             visualDensity: VisualDensity.compact,
             padding: EdgeInsets.zero,
-            constraints: const BoxConstraints(minWidth: 38, minHeight: 36),
-            icon: const Icon(Icons.close_rounded),
+            constraints: const BoxConstraints(minWidth: 28, minHeight: 32),
+            icon: const Icon(Icons.close_rounded, size: 20),
             onPressed: controller.stop,
           ),
         ],
       ),
     );
   }
+
+  static Widget _seekButton({
+    required IconData icon,
+    required String tooltip,
+    required VoidCallback onPressed,
+  }) => IconButton(
+        icon: Icon(icon, size: 19),
+        tooltip: tooltip,
+        visualDensity: VisualDensity.compact,
+        padding: EdgeInsets.zero,
+        constraints: const BoxConstraints(minWidth: 28, minHeight: 32),
+        onPressed: onPressed,
+      );
 }
 
 /// The "Read aloud" toggle — icon and tooltip swap to a stop icon while

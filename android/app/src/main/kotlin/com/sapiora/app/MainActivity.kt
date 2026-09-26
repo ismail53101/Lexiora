@@ -6,6 +6,7 @@ import android.database.Cursor
 import android.graphics.BitmapFactory
 import android.net.Uri
 import android.os.Build
+import android.os.Bundle
 import android.os.Environment
 import android.provider.MediaStore
 import android.provider.OpenableColumns
@@ -51,12 +52,33 @@ class MainActivity : FlutterActivity() {
     private val channelName = "lexiora/platform"
     private val pickPdfsRequest = 0x5A11
     private var pendingResult: MethodChannel.Result? = null
+    private var platformChannel: MethodChannel? = null
+    private var pendingIncomingPdf: Map<String, Any?>? = null
+    private var dartChannelReady = false
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        processIncomingIntent(intent)
+    }
+
+    override fun onNewIntent(intent: Intent) {
+        super.onNewIntent(intent)
+        setIntent(intent)
+        processIncomingIntent(intent)
+    }
 
     override fun configureFlutterEngine(flutterEngine: FlutterEngine) {
         super.configureFlutterEngine(flutterEngine)
-        MethodChannel(flutterEngine.dartExecutor.binaryMessenger, channelName)
+        platformChannel = MethodChannel(flutterEngine.dartExecutor.binaryMessenger, channelName)
+        platformChannel!!
             .setMethodCallHandler { call, result ->
                 when (call.method) {
+                    "takeIncomingPdf" -> {
+                        dartChannelReady = true
+                        val incoming = pendingIncomingPdf
+                        pendingIncomingPdf = null
+                        result.success(incoming)
+                    }
                     "getSdkInt" -> result.success(Build.VERSION.SDK_INT)
                     "setKeepScreenOn" -> {
                         val on = call.argument<Boolean>("on") ?: false
@@ -97,6 +119,44 @@ class MainActivity : FlutterActivity() {
                     else -> result.notImplemented()
                 }
             }
+    }
+
+    /** Copies an incoming content URI immediately, then notifies Dart with a
+     * private, stable path. The reader never receives or assumes a raw URI. */
+    private fun processIncomingIntent(incoming: Intent?) {
+        if (incoming == null) return
+        val action = incoming.action
+        if (action != Intent.ACTION_VIEW && action != Intent.ACTION_SEND) return
+        val uri = incoming.data
+            ?: if (action == Intent.ACTION_SEND) {
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+                    incoming.getParcelableExtra(Intent.EXTRA_STREAM, Uri::class.java)
+                } else {
+                    @Suppress("DEPRECATION")
+                    incoming.getParcelableExtra(Intent.EXTRA_STREAM)
+                }
+            } else null
+            ?: return
+        val mime = incoming.type
+        if (mime != null && mime != "application/pdf" && !uri.toString().lowercase().endsWith(".pdf")) return
+
+        Thread {
+            try {
+                val dir = File(filesDir, "imported").apply { mkdirs() }
+                val copied = copyToImported(uri, dir, 0)
+                if (copied == null) throw IllegalStateException("Could not read the selected PDF")
+                runOnUiThread {
+                    val channel = platformChannel
+                    if (channel == null || !dartChannelReady) {
+                        pendingIncomingPdf = copied
+                    } else {
+                        channel.invokeMethod("incomingPdf", copied)
+                    }
+                }
+            } catch (e: Exception) {
+                Log.w("Lexiora", "Incoming PDF import failed for $uri: ${e.message}")
+            }
+        }.start()
     }
 
     // ── Manual import (system file picker, multi-select) ───────────────────────

@@ -114,6 +114,7 @@ class AiReadAloudController {
       ValueNotifier<Duration>(Duration.zero);
   final ValueNotifier<Duration> playbackDuration =
       ValueNotifier<Duration>(Duration.zero);
+  final ValueNotifier<double> playbackSpeed = ValueNotifier<double>(1.0);
 
   Timer? _progressTimer;
   bool _configured = false;
@@ -141,6 +142,7 @@ class AiReadAloudController {
     playbackState.value = AiReadAloudState.idle;
     playbackElapsed.value = Duration.zero;
     playbackDuration.value = Duration.zero;
+    playbackSpeed.value = 1.0;
   }
 
   void _stopProgressTimer() {
@@ -167,6 +169,33 @@ class AiReadAloudController {
     playbackDuration.value = Duration(seconds: seconds);
   }
 
+  /// Moves the visual TTS position by a small amount. Flutter TTS does not
+  /// expose character-level seeking, so this keeps the compact player honest
+  /// and bounded without pretending that a native audio file is seekable.
+  void seekBy(Duration delta) {
+    final Duration total = playbackDuration.value;
+    final Duration next = playbackElapsed.value + delta;
+    playbackElapsed.value = next < Duration.zero
+        ? Duration.zero
+        : total > Duration.zero && next > total
+            ? total
+            : next;
+  }
+
+  void seekToFraction(double fraction) {
+    final Duration total = playbackDuration.value;
+    if (total <= Duration.zero) return;
+    playbackElapsed.value = Duration(
+      milliseconds: (total.inMilliseconds * fraction.clamp(0.0, 1.0)).round(),
+    );
+  }
+
+  Future<void> setSpeed(double speed) async {
+    playbackSpeed.value = speed;
+    if (activeMessageId.value == null) return;
+    await _tts.setSpeechRate(0.46 * speed);
+  }
+
   /// Starts reading [text] aloud for [messageId]. Tapping the same active
   /// message toggles between pause and resume.
   ///
@@ -186,6 +215,7 @@ class AiReadAloudController {
         final String clean = stripMarkdownForPlainText(text);
         playbackState.value = AiReadAloudState.playing;
         _startProgressTimer();
+        await _tts.setSpeechRate(0.46 * playbackSpeed.value);
         await _tts.speak(clean);
       }
       return;
@@ -198,13 +228,14 @@ class AiReadAloudController {
     // immediately shows that playback is starting, even on a cold TTS engine.
     activeMessageId.value = messageId;
     playbackState.value = AiReadAloudState.playing;
+    playbackSpeed.value = playbackSpeed.value.clamp(0.75, 2.0).toDouble();
     _prepareProgress(clean);
     _startProgressTimer();
     try {
       await _ensureConfigured();
       await _tts.stop();
       await _tts.setLanguage('en-US');
-      await _tts.setSpeechRate(0.46);
+      await _tts.setSpeechRate(0.46 * playbackSpeed.value);
       await _tts.setPitch(1.0);
       await _tts.setVolume(1.0);
       final Object? result = await _tts.speak(clean);
