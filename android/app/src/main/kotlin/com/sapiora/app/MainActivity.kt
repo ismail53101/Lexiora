@@ -127,7 +127,7 @@ class MainActivity : FlutterActivity() {
         if (incoming == null) return
         val action = incoming.action
         if (action != Intent.ACTION_VIEW && action != Intent.ACTION_SEND) return
-        val uri = incoming.data
+        val uri: Uri = incoming.data
             ?: if (action == Intent.ACTION_SEND) {
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
                     incoming.getParcelableExtra(Intent.EXTRA_STREAM, Uri::class.java)
