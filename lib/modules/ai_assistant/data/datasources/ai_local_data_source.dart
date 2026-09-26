@@ -70,6 +70,55 @@ class AiLocalDataSource {
     });
   }
 
+  // ── Projects ────────────────────────────────────────────────────────────────
+
+  /// Projects (newest activity first) with a conversation count and the most
+  /// recent conversation update inside each, optionally filtered by [query].
+  Stream<List<QueryRow>> watchProjectSummaries(String query) {
+    final String q = query.trim().toLowerCase();
+    final bool filtered = q.isNotEmpty;
+    return _db
+        .customSelect(
+          'SELECT p.*, '
+          '(SELECT COUNT(*) FROM ai_conversations c WHERE c.project_id = p.id) '
+          'AS conversation_count, '
+          '(SELECT MAX(c.updated_at) FROM ai_conversations c '
+          '  WHERE c.project_id = p.id) AS last_activity '
+          'FROM ai_projects p '
+          '${filtered ? 'WHERE p.search_text LIKE ?' : ''} '
+          'ORDER BY p.updated_at DESC',
+          variables: <Variable<Object>>[
+            if (filtered) Variable.withString('%$q%'),
+          ],
+          readsFrom: <ResultSetImplementation<dynamic, dynamic>>{
+            _db.aiProjects,
+            _db.aiConversations,
+          },
+        )
+        .watch();
+  }
+
+  AiProjectRow projectRowFrom(QueryRow r) => _db.aiProjects.map(r.data);
+
+  Future<void> upsertProject(AiProjectsCompanion p) =>
+      _db.into(_db.aiProjects).insertOnConflictUpdate(p);
+
+  Future<void> updateProject(String id, AiProjectsCompanion p) =>
+      (_db.update(_db.aiProjects)
+            ..where(($AiProjectsTable t) => t.id.equals(id)))
+          .write(p);
+
+  Future<void> deleteProject(String id) =>
+      (_db.delete(_db.aiProjects)..where(($AiProjectsTable t) => t.id.equals(id)))
+          .go();
+
+  /// Detaches every conversation from the given project (before deleting it).
+  Future<int> clearProjectFromConversations(String projectId) =>
+      (_db.update(_db.aiConversations)
+            ..where(($AiConversationsTable t) => t.projectId.equals(projectId)))
+          .write(const AiConversationsCompanion(
+              projectId: Value<String?>(null)));
+
   // ── Messages ─────────────────────────────────────────────────────────────────
 
   /// The latest [limit] messages, returned ascending (oldest → newest).

@@ -9,12 +9,16 @@ class AiConversation extends Equatable {
     required this.updatedAt,
     this.model,
     this.pinned = false,
+    this.projectId,
   });
 
   final String id;
   final String title;
   final String? model;
   final bool pinned;
+
+  /// The project (folder) this chat belongs to; null = outside every project.
+  final String? projectId;
   final DateTime createdAt;
   final DateTime updatedAt;
 
@@ -22,6 +26,8 @@ class AiConversation extends Equatable {
     String? title,
     String? model,
     bool? pinned,
+    String? projectId,
+    bool clearProjectId = false,
     DateTime? updatedAt,
   }) =>
       AiConversation(
@@ -29,13 +35,15 @@ class AiConversation extends Equatable {
         title: title ?? this.title,
         model: model ?? this.model,
         pinned: pinned ?? this.pinned,
+        projectId:
+            clearProjectId ? null : (projectId ?? this.projectId),
         createdAt: createdAt,
         updatedAt: updatedAt ?? this.updatedAt,
       );
 
   @override
   List<Object?> get props =>
-      <Object?>[id, title, model, pinned, createdAt, updatedAt];
+      <Object?>[id, title, model, pinned, projectId, createdAt, updatedAt];
 }
 
 /// A conversation plus a lightweight preview for the conversation list.

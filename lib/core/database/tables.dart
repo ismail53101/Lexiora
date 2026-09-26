@@ -918,7 +918,26 @@ class AiConversations extends Table {
   TextColumn get model => text().nullable()();
   BoolColumn get pinned => boolean().withDefault(const Constant(false))();
 
+  /// The project (folder) this conversation belongs to, if any. Null = the
+  /// conversation lives outside every project (plain Recents chat).
+  TextColumn get projectId => text().nullable()();
+
   /// Lowercased title (+ optional content) for fast conversation search.
+  TextColumn get searchText => text().withDefault(const Constant(''))();
+  DateTimeColumn get createdAt => dateTime()();
+  DateTimeColumn get updatedAt => dateTime()();
+
+  @override
+  Set<Column<Object>> get primaryKey => {id};
+}
+
+/// One AI Assistant project: a named folder that groups conversations.
+@DataClassName('AiProjectRow')
+class AiProjects extends Table {
+  TextColumn get id => text()();
+  TextColumn get name => text()();
+
+  /// Lowercased name for fast project search.
   TextColumn get searchText => text().withDefault(const Constant(''))();
   DateTimeColumn get createdAt => dateTime()();
   DateTimeColumn get updatedAt => dateTime()();

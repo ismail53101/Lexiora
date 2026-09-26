@@ -58,6 +58,7 @@ part 'app_database.g.dart';
     QuizStageProgress,
     AiConversations,
     AiMessages,
+    AiProjects,
   ],
 )
 class AppDatabase extends _$AppDatabase {
@@ -178,6 +179,13 @@ class AppDatabase extends _$AppDatabase {
           // Existing rows remain manual and retain their stored times.
           if (from < 18) {
             await m.addColumn(studyTasks, studyTasks.autoScheduled);
+          }
+          // v18 → v19: AI Assistant projects (folders) + per-conversation
+          // project linkage. Purely additive; existing chats are untouched and
+          // simply remain outside every project.
+          if (from < 19) {
+            await m.createTable(aiProjects);
+            await m.addColumn(aiConversations, aiConversations.projectId);
           }
         },
         beforeOpen: (OpeningDetails details) async {
@@ -360,6 +368,16 @@ class AppDatabase extends _$AppDatabase {
           await customStatement(
             'CREATE INDEX IF NOT EXISTS idx_ai_conversations_updated '
             'ON ai_conversations (updated_at)',
+          );
+          // AI Assistant projects (v0.23.x): fast project listing, project →
+          // conversation lookups, and name search.
+          await customStatement(
+            'CREATE INDEX IF NOT EXISTS idx_ai_projects_updated '
+            'ON ai_projects (updated_at)',
+          );
+          await customStatement(
+            'CREATE INDEX IF NOT EXISTS idx_ai_conversations_project '
+            'ON ai_conversations (project_id, updated_at)',
           );
         },
       );

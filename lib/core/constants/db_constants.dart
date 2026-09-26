@@ -45,7 +45,11 @@ abstract final class DbConstants {
   /// v16 → v17 (Phase v0.10.1): Staged Quiz progress. Purely additive.
   /// v17 → v18: Study Planner automatic/manual scheduling state. Additive;
   /// existing task rows default to manual scheduling.
-  static const int schemaVersion = 18;
+  /// v18 → v19: AI Assistant projects — adds `ai_projects` (named folders
+  /// grouping conversations) and a nullable `project_id` column on
+  /// `ai_conversations`. Purely additive; all existing chats stay valid and
+  /// simply remain outside every project.
+  static const int schemaVersion = 19;
 }
 
 /// Constants for the Quiz Engine's one-time demo seed.

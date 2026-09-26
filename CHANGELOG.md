@@ -5,6 +5,36 @@ All notable changes to Sapiora are documented here.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.23.6] — 2026-09-26
+
+### Added
+
+- **AI Assistant sidebar redesigned into a ChatGPT-style navigation experience
+  with Projects.** The drawer now has a **Projects** section (named folders
+  that group related conversations) directly below the search bar, followed by
+  a **Recents** section listing every chat, newest first — matching the
+  structure of ChatGPT's sidebar.
+  - **Projects**: compact folder rows with a count of conversations inside,
+    a 3-dot menu (New chat in project · Rename · Delete project) and an
+    easy **New Project** action (+ button on the section header). Tapping a
+    project opens a focused list of its conversations. Chats can be filed
+    into a project from each conversation's 3-dot menu (**Move to project**),
+    and a new chat started from inside a project is filed there
+    automatically on first message. Deleting a project keeps its
+    conversations — they return to plain Recents.
+  - **Recents**: all conversations in chronological order (newest first) with
+    their existing titles, last-message previews and rename/delete menus
+    preserved. Conversations living in a project show a small folder badge.
+  - **Search** now matches both project names and conversation
+    titles/messages, with a clear "no matches" state.
+  - Fully scrollable single surface with section dividers, comfortable
+    spacing, and the existing dark theme, typography and icon language
+    preserved. No existing chat functionality was removed or changed.
+- **Database schema v19** (purely additive): a new `ai_projects` table plus a
+  nullable `ai_conversations.project_id` column with supporting indexes.
+  Existing chats are untouched and simply live outside every project; no
+  data migration or re-seed is needed.
+
 ## [0.23.1] — 2026-08-15
 
 ### Fixed
