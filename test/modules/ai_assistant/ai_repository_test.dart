@@ -212,4 +212,69 @@ void main() {
         reason: 'no conversation may keep pointing at a deleted project');
     expect((await repo.watchMessages(c.id).first).length, 2);
   });
+
+  test('a conversation created with a project stays inside it and chats fully',
+      () async {
+    final AiProject p = await repo.createProject('English');
+    final AiConversation c =
+        await repo.createConversation(projectId: p.id);
+
+    // Conversation created BEFORE any message must still be listed in the
+    // project (so "New chat" inside a project is immediately visible).
+    List<AiConversationSummary> inside = await repo.watchConversations().first;
+    expect(
+        inside.any((AiConversationSummary s) =>
+            s.conversation.id == c.id && s.conversation.projectId == p.id),
+        isTrue);
+
+    // Chatting works exactly like a normal conversation.
+    await repo.sendMessage(conversationId: c.id, userText: 'What is a noun?')
+        .drain<void>();
+    final List<AiMessage> msgs = await repo.watchMessages(c.id).first;
+    expect(msgs.length, 2);
+    expect(msgs.first.role, AiRole.user);
+    expect(msgs.last.role, AiRole.assistant);
+
+    // Still in the project after chatting, with a real last-message preview.
+    inside = await repo.watchConversations().first;
+    final AiConversationSummary summary =
+        inside.firstWhere((AiConversationSummary s) => s.conversation.id == c.id);
+    expect(summary.conversation.projectId, p.id);
+    expect(summary.lastMessage, 'Hello world');
+    expect(summary.messageCount, 2);
+  });
+
+  test('recents contain only real conversations, never search activity',
+      () async {
+    // Searching must not create anything.
+    expect((await repo.watchConversations(query: 'hello').first), isEmpty);
+    expect(await repo.watchConversations().first, isEmpty,
+        reason: 'a search query alone must not appear as a conversation');
+
+    final AiConversation c = await repo.createConversation();
+    await repo.sendMessage(conversationId: c.id, userText: 'Hello world')
+        .drain<void>();
+
+    final List<AiConversationSummary> recents =
+        await repo.watchConversations().first;
+    expect(recents, hasLength(1));
+    expect(recents.single.conversation.id, c.id);
+    expect(recents.single.conversation.title, 'Hello world');
+    expect(recents.single.lastMessage, 'Hello world');
+  });
+
+  test('recents order conversations newest-first', () async {
+    final AiConversation older = await repo.createConversation();
+    await repo.sendMessage(conversationId: older.id, userText: 'first')
+        .drain<void>();
+    final AiConversation newer = await repo.createConversation();
+    await repo.sendMessage(conversationId: newer.id, userText: 'second')
+        .drain<void>();
+
+    final List<AiConversationSummary> recents =
+        await repo.watchConversations().first;
+    expect(recents.first.conversation.id, newer.id,
+        reason: 'the newest conversation is at the top');
+    expect(recents.last.conversation.id, older.id);
+  });
 }

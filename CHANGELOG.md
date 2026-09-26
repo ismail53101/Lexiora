@@ -5,6 +5,32 @@ All notable changes to Sapiora are documented here.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.23.7] — 2026-09-26
+
+### Fixed
+
+- **Projects are now fully conversational workspaces.** Opening a project in
+  the sidebar expands it inline (no more separate limited "project page")
+  showing a **New chat** action plus every conversation that lives in the
+  project. Tapping any of them opens the real AI Assistant chat — streaming
+  replies, attachments, history, rename/delete all behave exactly like normal
+  conversations. A chat started inside a project automatically belongs to it
+  (the welcome state and app bar show the project name until the first
+  message), and the drawer auto-expands the project containing the active
+  chat. The reference-style **+ New project** row closes the section.
+- **Recents contain only real conversations.** Search activity is never
+  recorded as a conversation; with no chats created the section simply stays
+  empty. Conversations inside projects no longer double-list under Recents.
+  Order is strictly newest-first with a deterministic tie-break, showing the
+  title and a one-line preview of the latest message.
+- **Search is a pure results mode.** Typing shows matches only — grouped into
+  **Projects** and **Conversations** so results are distinguishable — and
+  never creates a Recent. A clear (×) button and opening any result exit
+  search and restore the normal Projects + Recents view.
+- Stable "newest-first" ordering for both Recents and Projects
+  (`updated_at` + rowid tie-break) so chats created in the same second keep a
+  consistent, expected order.
+
 ## [0.23.6] — 2026-09-26
 
 ### Added

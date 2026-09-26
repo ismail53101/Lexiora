@@ -23,7 +23,7 @@ class AiLocalDataSource {
           '${filtered ? 'WHERE c.search_text LIKE ? OR EXISTS '
               '(SELECT 1 FROM ai_messages m WHERE m.conversation_id = c.id '
               '  AND LOWER(m.content) LIKE ?)' : ''} '
-          'ORDER BY c.pinned DESC, c.updated_at DESC',
+          'ORDER BY c.pinned DESC, c.updated_at DESC, c.rowid DESC',
           variables: <Variable<Object>>[
             if (filtered) Variable.withString('%$q%'),
             if (filtered) Variable.withString('%$q%'),
@@ -86,7 +86,7 @@ class AiLocalDataSource {
           '  WHERE c.project_id = p.id) AS last_activity '
           'FROM ai_projects p '
           '${filtered ? 'WHERE p.search_text LIKE ?' : ''} '
-          'ORDER BY p.updated_at DESC',
+          'ORDER BY p.updated_at DESC, p.rowid DESC',
           variables: <Variable<Object>>[
             if (filtered) Variable.withString('%$q%'),
           ],

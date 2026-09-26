@@ -4,6 +4,7 @@ import 'package:lexiora/core/widgets/app_bottom_nav.dart';
 import 'package:lexiora/core/widgets/empty_state.dart';
 import 'package:lexiora/modules/ai_assistant/domain/entities/ai_conversation.dart';
 import 'package:lexiora/modules/ai_assistant/domain/entities/ai_message.dart';
+import 'package:lexiora/modules/ai_assistant/domain/entities/ai_project.dart';
 import 'package:lexiora/modules/ai_assistant/presentation/providers/ai_providers.dart';
 import 'package:lexiora/modules/ai_assistant/presentation/widgets/ai_markdown.dart';
 import 'package:lexiora/modules/ai_assistant/presentation/widgets/chat_composer.dart';
@@ -20,6 +21,7 @@ class AiChatPage extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final bool configured = ref.watch(aiConfiguredProvider);
     final String? currentId = ref.watch(currentConversationIdProvider);
+    final String? pendingProjectId = ref.watch(currentProjectIdProvider);
     final String title = ref.watch(aiConversationsProvider).maybeWhen(
           data: (List<AiConversationSummary> list) {
             for (final AiConversationSummary s in list) {
@@ -29,6 +31,19 @@ class AiChatPage extends ConsumerWidget {
           },
           orElse: () => 'AI Assistant',
         );
+    // A chat started from inside a project shows the project name until the
+    // first message creates the conversation.
+    final String effectiveTitle = currentId == null && pendingProjectId != null
+        ? (ref.watch(aiProjectsProvider).maybeWhen(
+              data: (List<AiProjectSummary> list) {
+                for (final AiProjectSummary p in list) {
+                  if (p.project.id == pendingProjectId) return p.project.name;
+                }
+                return 'AI Assistant';
+              },
+              orElse: () => 'AI Assistant',
+            ))
+        : title;
 
     return Scaffold(
       resizeToAvoidBottomInset: true,
@@ -37,7 +52,8 @@ class AiChatPage extends ConsumerWidget {
         title: Row(
           mainAxisSize: MainAxisSize.min,
           children: <Widget>[
-            Flexible(child: Text(title, overflow: TextOverflow.ellipsis)),
+            Flexible(
+                child: Text(effectiveTitle, overflow: TextOverflow.ellipsis)),
             const SizedBox(width: 6),
             Icon(Icons.auto_awesome_rounded,
                 size: 18, color: Theme.of(context).colorScheme.tertiary),
@@ -55,7 +71,7 @@ class AiChatPage extends ConsumerWidget {
             child: !configured
                 ? _notConfigured(context)
                 : (currentId == null
-                    ? const _Welcome()
+                    ? _Welcome(projectId: pendingProjectId)
                     : _MessageList(conversationId: currentId)),
           ),
           ChatComposer(enabled: configured),
@@ -189,13 +205,28 @@ class _HeaderActions extends ConsumerWidget {
   }
 }
 
-class _Welcome extends StatelessWidget {
-  const _Welcome();
+class _Welcome extends ConsumerWidget {
+  const _Welcome({this.projectId});
+
+  /// When a chat was started from inside a project, the welcome state shows
+  /// the project name — reinforcing that the first message lands in it.
+  final String? projectId;
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     final ThemeData theme = Theme.of(context);
     final ColorScheme scheme = theme.colorScheme;
+    final AiProject? project = projectId == null
+        ? null
+        : ref.watch(aiProjectsProvider).maybeWhen(
+              data: (List<AiProjectSummary> list) {
+                for (final AiProjectSummary p in list) {
+                  if (p.project.id == projectId) return p.project;
+                }
+                return null;
+              },
+              orElse: () => null,
+            );
     return Center(
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 32),
@@ -224,11 +255,27 @@ class _Welcome extends StatelessWidget {
             ),
             const SizedBox(height: 20),
             Text(
-              'Hi, how can I assist you?',
+              project == null ? 'Hi, how can I assist you?' : project.name,
               textAlign: TextAlign.center,
               style: theme.textTheme.titleLarge
                   ?.copyWith(fontWeight: FontWeight.w800),
             ),
+            if (project != null) ...<Widget>[
+              const SizedBox(height: 4),
+              Row(
+                mainAxisSize: MainAxisSize.min,
+                children: <Widget>[
+                  Icon(Icons.folder_rounded,
+                      size: 14, color: scheme.primary),
+                  const SizedBox(width: 4),
+                  Text(
+                    'Project chat — messages are filed here',
+                    style: theme.textTheme.bodySmall
+                        ?.copyWith(color: scheme.onSurfaceVariant),
+                  ),
+                ],
+              ),
+            ],
             const SizedBox(height: 10),
             Text(
               'Start a conversation — explanations, summaries, code, '
