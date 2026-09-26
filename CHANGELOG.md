@@ -5,6 +5,39 @@ All notable changes to Sapiora are documented here.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.23.9] — 2026-09-26
+
+### Changed
+
+- **Colorful project folders in the AI Assistant sidebar**, matching the
+  reference design: each project now shows a vivid filled folder icon —
+  blue, purple, amber, green, pink, sky, orange, or lime. Colors are derived
+  deterministically from each project's id, so a project keeps its color
+  across sessions, renames, and reordering. Applied consistently in the
+  Projects list and search results.
+
+## [0.23.8] — 2026-09-26
+
+### Fixed
+
+- **"Read aloud" TTS error eliminated.** Android's text-to-speech engine
+  rejects utterances longer than ~4000 characters, so long replies failed
+  with the white "Could not read this aloud: Bad state: Text-to-speech
+  engine returned code 0" banner. Long texts are now spoken as consecutive
+  chunks (split at sentence/word boundaries), and any remaining engine
+  failure (missing TTS voice, busy engine) resets playback **silently** —
+  the button simply returns to idle; no error banner is ever shown.
+- **Audio player simplified.** The playback bar now holds only play/pause,
+  the progress slider with elapsed/total time, and a close (×) button — the
+  5-second back/forward buttons and the speed (×) menu are removed. The
+  speaker action under the response is unchanged.
+- **Recents stay empty on a fresh state.** Only conversations that actually
+  contain messages are listed (in Recents, inside projects, and in search
+  results) — a chat that was created but never chatted in no longer shows up
+  as fake history. Real conversations appear automatically after the first
+  message. The drawer layout (Chats → Search → Projects → Recents) is
+  unchanged.
+
 ## [0.23.7] — 2026-09-26
 
 ### Fixed

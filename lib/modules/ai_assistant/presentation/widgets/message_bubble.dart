@@ -354,7 +354,6 @@ class _ActionRow extends StatelessWidget {
         controller.playbackState,
         controller.playbackElapsed,
         controller.playbackDuration,
-        controller.playbackSpeed,
       ]),
       builder: (BuildContext context, Widget? child) {
         final bool active = controller.activeMessageId.value == messageId;
@@ -410,8 +409,6 @@ class _PlaybackBar extends StatelessWidget {
   final String messageId;
   final String text;
 
-  static const List<double> _speeds = <double>[0.75, 1, 1.25, 1.5, 1.75, 2];
-
   static String _clock(Duration value) {
     final int seconds = value.inSeconds;
     final String minutes = (seconds ~/ 60).toString().padLeft(2, '0');
@@ -444,13 +441,6 @@ class _PlaybackBar extends StatelessWidget {
       ),
       child: Row(
         children: <Widget>[
-          _seekButton(
-            icon: Icons.replay_5_rounded,
-            tooltip: 'Rewind 5 seconds',
-            onPressed: () {
-              unawaited(controller.seekBy(const Duration(seconds: -5)));
-            },
-          ),
           IconButton(
             tooltip: paused ? 'Resume reading' : 'Pause reading',
             visualDensity: VisualDensity.compact,
@@ -463,14 +453,7 @@ class _PlaybackBar extends StatelessWidget {
             icon: Icon(paused ? Icons.play_arrow_rounded : Icons.pause_rounded),
             onPressed: () => controller.toggle(messageId, text),
           ),
-          _seekButton(
-            icon: Icons.forward_5_rounded,
-            tooltip: 'Forward 5 seconds',
-            onPressed: () {
-              unawaited(controller.seekBy(const Duration(seconds: 5)));
-            },
-          ),
-          const SizedBox(width: 2),
+          const SizedBox(width: 4),
           Text(_clock(elapsed), style: clockStyle),
           const SizedBox(width: 2),
           Expanded(
@@ -495,27 +478,8 @@ class _PlaybackBar extends StatelessWidget {
           ),
           const SizedBox(width: 2),
           Text(_clock(total), style: clockStyle),
-          PopupMenuButton<double>(
-            tooltip: 'Playback speed',
-            padding: EdgeInsets.zero,
-            constraints: const BoxConstraints(minWidth: 38, minHeight: 32),
-            onSelected: (double speed) {
-              unawaited(controller.setSpeed(speed));
-            },
-            itemBuilder: (BuildContext context) => <PopupMenuEntry<double>>[
-              for (final double speed in _speeds)
-                PopupMenuItem<double>(value: speed, child: Text('${speed}×')),
-            ],
-            child: Text(
-              '${controller.playbackSpeed.value}×',
-              style: clockStyle.copyWith(
-                color: scheme.primary,
-                fontWeight: FontWeight.w700,
-              ),
-            ),
-          ),
           IconButton(
-            tooltip: 'Stop reading',
+            tooltip: 'Close player',
             visualDensity: VisualDensity.compact,
             padding: EdgeInsets.zero,
             constraints: const BoxConstraints(minWidth: 28, minHeight: 32),
@@ -526,19 +490,6 @@ class _PlaybackBar extends StatelessWidget {
       ),
     );
   }
-
-  static Widget _seekButton({
-    required IconData icon,
-    required String tooltip,
-    required VoidCallback onPressed,
-  }) => IconButton(
-        icon: Icon(icon, size: 19),
-        tooltip: tooltip,
-        visualDensity: VisualDensity.compact,
-        padding: EdgeInsets.zero,
-        constraints: const BoxConstraints(minWidth: 28, minHeight: 32),
-        onPressed: onPressed,
-      );
 }
 
 /// The "Read aloud" toggle — icon and tooltip swap to a stop icon while
@@ -593,16 +544,10 @@ class _ReadAloudButton extends StatelessWidget {
               padding: EdgeInsets.zero,
               constraints: const BoxConstraints(minWidth: 30, minHeight: 28),
               onPressed: () async {
-                final ScaffoldMessengerState messenger =
-                    ScaffoldMessenger.of(context);
-                try {
-                  await controller.toggle(messageId, text);
-                } on Object catch (e, st) {
-                  debugPrint('Read aloud failed: $e\\n$st');
-                  messenger.showSnackBar(
-                    SnackBar(content: Text('Could not read this aloud: $e')),
-                  );
-                }
+                // TTS failures (missing engine/voice, busy engine) are handled
+                // silently inside the controller — it resets to idle, so the
+                // button just flips back. No error banner is shown.
+                await controller.toggle(messageId, text);
               },
             ),
             if (active)

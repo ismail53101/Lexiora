@@ -114,7 +114,6 @@ class AiReadAloudController {
       ValueNotifier<Duration>(Duration.zero);
   final ValueNotifier<Duration> playbackDuration =
       ValueNotifier<Duration>(Duration.zero);
-  final ValueNotifier<double> playbackSpeed = ValueNotifier<double>(1.0);
 
   Timer? _progressTimer;
   bool _configured = false;
@@ -123,18 +122,34 @@ class AiReadAloudController {
   int _currentChar = 0;
   int _utteranceStartChar = 0;
 
+  /// Bumped on every user-driven state change (new message, pause, stop,
+  /// seek) so an in-flight chunk loop knows it was superseded and exits.
+  int _generation = 0;
+
+  /// True while the chunk loop is inside `speak` — per-chunk engine events
+  /// must not tear the player down mid-text.
+  bool _loopActive = false;
+
+  /// Android's TTS engine rejects utterances longer than ~4000 characters
+  /// (it fails with an error code — previously surfaced as the white
+  /// "engine returned code 0" banner on long replies). Long texts are
+  /// spoken as consecutive chunks, split at sentence or word boundaries.
+  static const int _maxChunkLength = 3800;
+
   Future<void> _ensureConfigured() async {
     if (_configured) return;
     await _tts.awaitSpeakCompletion(true);
-    // Flush the previous utterance whenever speed/seek/resume starts a new
+    // Flush the previous utterance whenever seek/resume starts a new
     // segment; queue-add would leave stale speech running behind the player.
     await _tts.setQueueMode(0);
     await _tts.setVolume(1.0);
     _tts.setCompletionHandler(() {
-      if (!_suppressEngineCallbacks) _resetState();
+      // While the chunk loop is driving playback it owns the state —
+      // per-chunk completion events must not tear the player down mid-text.
+      if (!_suppressEngineCallbacks && !_loopActive) _resetState();
     });
     _tts.setCancelHandler(() {
-      if (!_suppressEngineCallbacks) _resetState();
+      if (!_suppressEngineCallbacks && !_loopActive) _resetState();
     });
     _tts.setPauseHandler(() {
       playbackState.value = AiReadAloudState.paused;
@@ -142,7 +157,7 @@ class AiReadAloudController {
     _tts.setContinueHandler(() {
       playbackState.value = AiReadAloudState.playing;
     });
-    _tts.setProgressHandler((String _, int start, int end, String __) {
+    _tts.setProgressHandler((String _, int start, int end, String _) {
       if (_activeText.isEmpty || activeMessageId.value == null) return;
       _currentChar =
           (_utteranceStartChar + end).clamp(0, _activeText.length).toInt();
@@ -156,7 +171,7 @@ class AiReadAloudController {
       }
     });
     _tts.setErrorHandler((dynamic _) {
-      if (!_suppressEngineCallbacks) _resetState();
+      if (!_suppressEngineCallbacks && !_loopActive) _resetState();
     });
     _configured = true;
   }
@@ -167,7 +182,7 @@ class AiReadAloudController {
     playbackState.value = AiReadAloudState.idle;
     playbackElapsed.value = Duration.zero;
     playbackDuration.value = Duration.zero;
-    playbackSpeed.value = 1.0;
+    _loopActive = false;
     _activeText = '';
     _currentChar = 0;
     _utteranceStartChar = 0;
@@ -204,75 +219,25 @@ class AiReadAloudController {
     playbackDuration.value = Duration(seconds: seconds);
   }
 
-  void _updateDurationForSpeed() {
-    if (_activeText.isEmpty) return;
-    final Duration previousTotal = playbackDuration.value;
-    if (previousTotal > Duration.zero) {
-      _currentChar = (_activeText.length *
-              (playbackElapsed.value.inMilliseconds /
-                  previousTotal.inMilliseconds))
-          .round()
-          .clamp(0, _activeText.length)
-          .toInt();
-    }
-    final int words = _activeText.trim().split(RegExp(r'\s+')).length;
-    final int seconds =
-        (words / (2.25 * playbackSpeed.value)).ceil().clamp(3, 3600);
-    playbackDuration.value = Duration(seconds: seconds);
-    playbackElapsed.value = Duration(
-      milliseconds: (seconds * 1000 *
-              (_currentChar / _activeText.length).clamp(0.0, 1.0))
-          .round(),
-    );
-  }
-
-  /// Restarts the current utterance at a character position, which provides
-  /// reliable five-second-style seeking across the platform TTS engines.
-  Future<void> seekBy(Duration delta) async {
-    final Duration total = playbackDuration.value;
-    final Duration next = playbackElapsed.value + delta;
-    final Duration target = next < Duration.zero
-        ? Duration.zero
-        : total > Duration.zero && next > total
-            ? total
-            : next;
-    await seekToDuration(target);
-  }
-
-  Future<void> seekToDuration(Duration target) async {
-    final Duration total = playbackDuration.value;
-    if (total <= Duration.zero || _activeText.isEmpty) return;
-    final double fraction =
-        (target.inMilliseconds / total.inMilliseconds).clamp(0.0, 1.0);
-    _currentChar = (_activeText.length * fraction).round();
-    playbackElapsed.value = Duration(
-      milliseconds: (total.inMilliseconds * fraction).round(),
-    );
-    if (playbackState.value == AiReadAloudState.playing) {
-      await _speakFromCurrentChar();
-    }
-  }
-
   Future<void> seekToFraction(double fraction) async {
     final Duration total = playbackDuration.value;
-    if (total <= Duration.zero) return;
-    await seekToDuration(
-      Duration(
-        milliseconds: (total.inMilliseconds * fraction.clamp(0.0, 1.0))
-            .round(),
-      ),
+    if (total <= Duration.zero || _activeText.isEmpty) return;
+    final double clamped = fraction.clamp(0.0, 1.0);
+    _currentChar = (_activeText.length * clamped).round();
+    playbackElapsed.value = Duration(
+      milliseconds: (total.inMilliseconds * clamped).round(),
     );
-  }
-
-  Future<void> setSpeed(double speed) async {
-    playbackSpeed.value = speed.clamp(0.75, 2.0).toDouble();
-    if (activeMessageId.value == null) return;
-    _updateDurationForSpeed();
     if (playbackState.value == AiReadAloudState.playing) {
+      _generation++; // invalidate any in-flight chunk loop
       await _speakFromCurrentChar();
     }
   }
 
+  /// Restarts speech at the current character position and keeps speaking
+  /// consecutive chunks until the text ends or playback is superseded (stop,
+  /// pause, seek, or a new message). Chunks stay under [_maxChunkLength] —
+  /// Android's TTS engine silently fails on longer utterances, which used to
+  /// surface as the white "engine returned code 0" banner on long replies.
   Future<void> _speakFromCurrentChar() async {
     if (_activeText.isEmpty || activeMessageId.value == null) return;
     await _ensureConfigured();
@@ -288,39 +253,68 @@ class AiReadAloudController {
       _suppressEngineCallbacks = false;
     }
 
+    final int myGeneration = _generation;
+    _loopActive = true;
     try {
-      final int requestedStart = _currentChar.clamp(0, _activeText.length);
-      final String sourceRemainder = _activeText.substring(requestedStart);
-      final String remaining = sourceRemainder.trimLeft();
-      if (remaining.isEmpty) {
-        _resetState();
-        return;
+      while (true) {
+        if (myGeneration != _generation ||
+            activeMessageId.value == null ||
+            playbackState.value != AiReadAloudState.playing) {
+          return; // superseded (stop/pause/seek/new message)
+        }
+        final int requestedStart = _currentChar.clamp(0, _activeText.length);
+        final String sourceRemainder = _activeText.substring(requestedStart);
+        final String remaining = sourceRemainder.trimLeft();
+        if (remaining.isEmpty) break; // finished the whole text
+        _utteranceStartChar =
+            requestedStart + sourceRemainder.length - remaining.length;
+
+        final String chunk = _nextChunk(remaining);
+        await _tts.setLanguage('en-US');
+        await _tts.setSpeechRate(0.46);
+        await _tts.setPitch(1.0);
+        await _tts.setVolume(1.0);
+        // awaitSpeakCompletion(true) makes this await the chunk's end.
+        final Object? result = await _tts.speak(chunk);
+        if (result is int && result != 1) {
+          // Engine refused the utterance (no TTS engine/voice, engine busy).
+          // Treat as a quiet failure of the whole playback, not a crash.
+          _resetState();
+          return;
+        }
+        _currentChar = _utteranceStartChar + chunk.length;
       }
-      _utteranceStartChar =
-          requestedStart + sourceRemainder.length - remaining.length;
-      await _tts.setLanguage('en-US');
-      await _tts.setSpeechRate(0.46 * playbackSpeed.value);
-      await _tts.setPitch(1.0);
-      await _tts.setVolume(1.0);
-      final Object? result = await _tts.speak(remaining);
-      if (result is int && result != 1) {
-        throw StateError('Text-to-speech engine returned code $result.');
-      }
+      // Reached the end of the text normally.
+      _resetState();
     } on Object {
       _resetState();
-      rethrow;
+    } finally {
+      if (myGeneration == _generation) _loopActive = false;
     }
   }
 
+  /// Splits [text] into a chunk of at most [_maxChunkLength] characters,
+  /// preferring the last sentence end, then word boundary, then a hard cut.
+  String _nextChunk(String text) {
+    if (text.length <= _maxChunkLength) return text;
+    final String window = text.substring(0, _maxChunkLength);
+    final int sentenceEnd = window.lastIndexOf(RegExp(r'[.!?…]\s'));
+    if (sentenceEnd > _maxChunkLength ~/ 2) {
+      return window.substring(0, sentenceEnd + 1);
+    }
+    final int spaceEnd = window.lastIndexOf(' ');
+    if (spaceEnd > _maxChunkLength ~/ 2) return window.substring(0, spaceEnd);
+    return window;
+  }
+
   /// Starts reading [text] aloud for [messageId]. Tapping the same active
-  /// message toggles between pause and resume.
-  ///
-  /// Throws on failure (e.g. no TTS engine/voice installed on the device)
-  /// so the caller can show the real error instead of the tap silently
-  /// doing nothing.
+  /// message toggles between pause and resume. Never throws: engine failures
+  /// (missing TTS engine/voice, busy engine) reset the player quietly — the
+  /// UI simply returns to idle without any error banner.
   Future<void> toggle(Object messageId, String text) async {
     if (activeMessageId.value == messageId) {
       if (playbackState.value == AiReadAloudState.playing) {
+        _generation++;
         await _tts.pause();
         _stopProgressTimer();
         playbackState.value = AiReadAloudState.paused;
@@ -337,22 +331,18 @@ class AiReadAloudController {
 
     // Publish the state before any asynchronous engine setup so the button
     // immediately shows that playback is starting, even on a cold TTS engine.
+    _generation++;
     activeMessageId.value = messageId;
     playbackState.value = AiReadAloudState.playing;
-    playbackSpeed.value = playbackSpeed.value.clamp(0.75, 2.0).toDouble();
     _activeText = clean;
     _currentChar = 0;
     _prepareProgress(clean);
     _startProgressTimer();
-    try {
-      await _speakFromCurrentChar();
-    } on Object {
-      _resetState();
-      rethrow;
-    }
+    await _speakFromCurrentChar();
   }
 
   Future<void> stop() async {
+    _generation++;
     await _tts.stop();
     _resetState();
   }

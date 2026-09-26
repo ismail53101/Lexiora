@@ -51,9 +51,15 @@ class _ConversationDrawerState extends ConsumerState<ConversationDrawer> {
               data: (List<AiProjectSummary> p) => p,
               orElse: () => const <AiProjectSummary>[],
             );
+    // Only conversations that actually contain messages are real history —
+    // an empty shell (created but never chatted in) stays invisible in
+    // Recents and inside projects until the first message lands.
+    final List<AiConversationSummary> realConversations = conversations
+        .where((AiConversationSummary s) => s.messageCount > 0)
+        .toList(growable: false);
     final Map<String, List<AiConversationSummary>> byProject =
         <String, List<AiConversationSummary>>{};
-    for (final AiConversationSummary s in conversations) {
+    for (final AiConversationSummary s in realConversations) {
       final String? pid = s.conversation.projectId;
       if (pid != null) {
         (byProject[pid] ??= <AiConversationSummary>[]).add(s);
@@ -128,7 +134,7 @@ class _ConversationDrawerState extends ConsumerState<ConversationDrawer> {
                   ? _SearchResults(
                       query: query,
                       projects: projects,
-                      conversations: conversations,
+                      conversations: realConversations,
                       currentConversationId: currentId,
                       onOpenConversation: _openConversation,
                       onRenameProject: _renameProject,
@@ -155,7 +161,7 @@ class _ConversationDrawerState extends ConsumerState<ConversationDrawer> {
                           onDeleteConversation: _deleteConversation,
                         ),
                         _RecentsSection(
-                          conversations: conversations
+                          conversations: realConversations
                               .where((AiConversationSummary s) =>
                                   s.conversation.projectId == null)
                               .toList(growable: false),
@@ -451,6 +457,31 @@ class _ProjectsSection extends StatelessWidget {
   }
 }
 
+// ── Project colors ─────────────────────────────────────────────────────────
+
+/// The vivid folder palette from the reference design: blue, purple, amber,
+/// green, … Each project keeps a stable color derived from its id, so colors
+/// never shuffle as projects are renamed, reordered, or recreated.
+const List<Color> _kProjectFolderColors = <Color>[
+  Color(0xFF42A5F5), // blue
+  Color(0xFFAB7DF6), // purple
+  Color(0xFFFBBF24), // amber
+  Color(0xFF34D399), // green
+  Color(0xFFF472B6), // pink
+  Color(0xFF38BDF8), // sky
+  Color(0xFFFB923C), // orange
+  Color(0xFFA3E635), // lime
+];
+
+Color _projectFolderColor(String projectId) {
+  // Simple, stable hash → palette index. Deterministic across sessions.
+  int hash = 0;
+  for (final int code in projectId.codeUnits) {
+    hash = (hash * 31 + code) & 0x7fffffff;
+  }
+  return _kProjectFolderColors[hash % _kProjectFolderColors.length];
+}
+
 // ── Project tile (expandable, conversational) ────────────────────────────────
 
 class _ProjectTile extends StatelessWidget {
@@ -493,18 +524,10 @@ class _ProjectTile extends StatelessWidget {
           contentPadding: const EdgeInsets.only(left: 16, right: 4),
           shape:
               RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
-          leading: Container(
-            width: 34,
-            height: 34,
-            decoration: BoxDecoration(
-              color: scheme.primary.withValues(alpha: 0.14),
-              borderRadius: BorderRadius.circular(9),
-            ),
-            child: Icon(
-              expanded ? Icons.folder_open_rounded : Icons.folder_rounded,
-              size: 19,
-              color: scheme.primary,
-            ),
+          leading: Icon(
+            expanded ? Icons.folder_open_rounded : Icons.folder_rounded,
+            size: 26,
+            color: _projectFolderColor(summary.project.id),
           ),
           title: Text(summary.project.name,
               maxLines: 1, overflow: TextOverflow.ellipsis),
@@ -784,15 +807,10 @@ class _SearchResults extends StatelessWidget {
               contentPadding: const EdgeInsets.only(left: 16, right: 4),
               shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(10)),
-              leading: Container(
-                width: 34,
-                height: 34,
-                decoration: BoxDecoration(
-                  color: scheme.primary.withValues(alpha: 0.14),
-                  borderRadius: BorderRadius.circular(9),
-                ),
-                child:
-                    Icon(Icons.folder_rounded, size: 19, color: scheme.primary),
+              leading: Icon(
+                Icons.folder_rounded,
+                size: 26,
+                color: _projectFolderColor(p.project.id),
               ),
               title: Text(p.project.name,
                   maxLines: 1, overflow: TextOverflow.ellipsis),

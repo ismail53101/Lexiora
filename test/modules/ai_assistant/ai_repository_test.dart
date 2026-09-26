@@ -263,6 +263,32 @@ void main() {
     expect(recents.single.lastMessage, 'Hello world');
   });
 
+  test('conversations with no messages are not real history', () async {
+    // An empty shell (created but never chatted in) must not appear as a
+    // Recent — the UI filters on messageCount, which starts at 0.
+    final AiConversation empty = await repo.createConversation();
+    final List<AiConversationSummary> before =
+        await repo.watchConversations().first;
+    expect(
+        before
+            .where((AiConversationSummary s) => s.conversation.id == empty.id)
+            .single
+            .messageCount,
+        0);
+
+    // After a real message the same conversation becomes visible history.
+    await repo.sendMessage(conversationId: empty.id, userText: 'Hello')
+        .drain<void>();
+    final List<AiConversationSummary> after =
+        await repo.watchConversations().first;
+    expect(
+        after
+            .where((AiConversationSummary s) => s.conversation.id == empty.id)
+            .single
+            .messageCount,
+        2);
+  });
+
   test('recents order conversations newest-first', () async {
     final AiConversation older = await repo.createConversation();
     await repo.sendMessage(conversationId: older.id, userText: 'first')
