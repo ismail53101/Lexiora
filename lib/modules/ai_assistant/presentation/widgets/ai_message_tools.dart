@@ -126,7 +126,9 @@ class AiReadAloudController {
   Future<void> _ensureConfigured() async {
     if (_configured) return;
     await _tts.awaitSpeakCompletion(true);
-    await _tts.setQueueMode(1);
+    // Flush the previous utterance whenever speed/seek/resume starts a new
+    // segment; queue-add would leave stale speech running behind the player.
+    await _tts.setQueueMode(0);
     await _tts.setVolume(1.0);
     _tts.setCompletionHandler(() {
       if (!_suppressEngineCallbacks) _resetState();
@@ -278,6 +280,15 @@ class AiReadAloudController {
     _suppressEngineCallbacks = true;
     try {
       await _tts.stop();
+      // Android may deliver the old cancel callback on the next event turn.
+      // Let it drain while callbacks are suppressed before starting the new
+      // utterance, otherwise it can hide the still-playing compact strip.
+      await Future<void>.delayed(Duration.zero);
+    } finally {
+      _suppressEngineCallbacks = false;
+    }
+
+    try {
       final int requestedStart = _currentChar.clamp(0, _activeText.length);
       final String sourceRemainder = _activeText.substring(requestedStart);
       final String remaining = sourceRemainder.trimLeft();
@@ -295,12 +306,9 @@ class AiReadAloudController {
       if (result is int && result != 1) {
         throw StateError('Text-to-speech engine returned code $result.');
       }
-    } finally {
-      // awaitSpeakCompletion(true) means reaching here is the real end of the
-      // replacement utterance. Cancellation/completion callbacks from the
-      // previous utterance were ignored while this whole restart was active.
-      _suppressEngineCallbacks = false;
-      if (activeMessageId.value != null) _resetState();
+    } on Object {
+      _resetState();
+      rethrow;
     }
   }
 
