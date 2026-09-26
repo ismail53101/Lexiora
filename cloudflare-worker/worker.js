@@ -106,6 +106,13 @@ const PROVIDERS = {
 
 const CHAT_COMPLETIONS_PATH = "/v1/chat/completions";
 
+function chatCompletionsUrl(baseUrl) {
+  const normalized = baseUrl.replace(/\/+$/, "");
+  if (normalized.endsWith(CHAT_COMPLETIONS_PATH)) return normalized;
+  if (normalized.endsWith("/v1")) return `${normalized}/chat/completions`;
+  return `${normalized}${CHAT_COMPLETIONS_PATH}`;
+}
+
 // ── Generic, remotely-configurable provider/model pool (KV) ────────────────
 // All three live in the same MODEL_CONFIG_KV namespace as before.
 const PROVIDER_CONFIG_KV_KEY = "provider_config"; // which providers exist
@@ -352,14 +359,11 @@ export default {
       lastFailure = { status: upstream.status, message: text || upstream.statusText };
       if (!isLastAttempt) continue;
 
-      const debug = request.headers.get("X-Debug") === "1"
-        ? { debug: debugInfo(providerId, env) }
-        : {};
       return jsonError(
         upstream.status,
         "provider_error",
         lastFailure.message,
-        { provider: providerId, ...debug },
+        { provider: providerId },
       );
     }
 
@@ -624,20 +628,6 @@ function providerModel(id, env) {
   return (cfg.modelEnv && env[cfg.modelEnv]) || cfg.defaultModel || null;
 }
 
-/** Safe-to-return diagnostics — never includes the actual key value. */
-function debugInfo(providerId, env) {
-  const apiKey = providerApiKey(providerId, env) || "";
-  const baseUrl = providerBaseUrl(providerId, env) || "";
-  return {
-    targetUrl: `${baseUrl.replace(/\/+$/, "")}${CHAT_COMPLETIONS_PATH}`,
-    apiKeyConfigured: apiKey.length > 0,
-    apiKeyLength: apiKey.length,
-    apiKeyPrefix: apiKey ? apiKey.slice(0, 5) : null,
-    apiKeyHasWhitespace: /\s/.test(apiKey),
-    model: providerModel(providerId, env),
-  };
-}
-
 async function callProvider(id, bodyText, env) {
   if (id === "unorouter") {
     // "unorouter" is the trigger for the generic, KV-configured pool — it
@@ -650,7 +640,7 @@ async function callProvider(id, bodyText, env) {
     throw new Error(`${id}: no base URL configured (set ${PROVIDERS[id].baseUrlEnv})`);
   }
   const apiKey = providerApiKey(id, env);
-  const target = `${baseUrl.replace(/\/+$/, "")}${CHAT_COMPLETIONS_PATH}`;
+  const target = chatCompletionsUrl(baseUrl);
   const outgoingBody = rewriteModel(bodyText, providerModel(id, env));
 
   return fetch(target, {
@@ -719,7 +709,7 @@ async function callDynamicPool(bodyText, env) {
     }
 
     const adapter = PROVIDER_ADAPTERS[provider.adapter || "openai"] || PROVIDER_ADAPTERS.openai;
-    const target = `${provider.baseUrl.replace(/\/+$/, "")}${CHAT_COMPLETIONS_PATH}`;
+    const target = chatCompletionsUrl(provider.baseUrl);
     const { url, init } = adapter.buildRequest(target, apiKey, bodyText, candidate.model);
 
     let response;
@@ -927,15 +917,14 @@ async function fetchWithTimeout(url, options, timeoutMs) {
   }
 }
 
-/** Returns [bodyText] unchanged if [model] is null, otherwise returns it
- * with the JSON "model" field replaced. Falls back to the original text on
- * any parse error — a provider getting the app's generic model value is far
- * better than the whole request failing to build. */
+/** Removes the Worker's routing-only provider hint before forwarding and
+ * replaces the model selected by the KV pool when one is supplied. Falls back
+ * to the original text on parse error so malformed input is not rewritten. */
 function rewriteModel(bodyText, model) {
-  if (!model) return bodyText;
   try {
     const parsed = JSON.parse(bodyText);
-    parsed.model = model;
+    delete parsed.provider;
+    if (model) parsed.model = model;
     return JSON.stringify(parsed);
   } catch {
     return bodyText;
