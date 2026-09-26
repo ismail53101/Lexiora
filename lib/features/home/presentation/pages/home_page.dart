@@ -99,8 +99,6 @@ class _HomePageState extends ConsumerState<HomePage>
     }
   }
 
-  }
-
   @override
   Widget build(BuildContext context) {
     final AsyncValue<List<LibraryEntry>> continueReading =
