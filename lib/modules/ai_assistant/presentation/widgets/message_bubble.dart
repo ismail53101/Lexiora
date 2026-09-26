@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'dart:io';
 
 import 'package:flutter/material.dart';
@@ -446,7 +447,9 @@ class _PlaybackBar extends StatelessWidget {
           _seekButton(
             icon: Icons.replay_5_rounded,
             tooltip: 'Rewind 5 seconds',
-            onPressed: () => controller.seekBy(const Duration(seconds: -5)),
+            onPressed: () {
+              unawaited(controller.seekBy(const Duration(seconds: -5)));
+            },
           ),
           IconButton(
             tooltip: paused ? 'Resume reading' : 'Pause reading',
@@ -463,7 +466,9 @@ class _PlaybackBar extends StatelessWidget {
           _seekButton(
             icon: Icons.forward_5_rounded,
             tooltip: 'Forward 5 seconds',
-            onPressed: () => controller.seekBy(const Duration(seconds: 5)),
+            onPressed: () {
+              unawaited(controller.seekBy(const Duration(seconds: 5)));
+            },
           ),
           const SizedBox(width: 2),
           Text(_clock(elapsed), style: clockStyle),
@@ -482,7 +487,9 @@ class _PlaybackBar extends StatelessWidget {
                 value: progress,
                 onChanged: total <= Duration.zero
                     ? null
-                    : controller.seekToFraction,
+                    : (double value) {
+                        unawaited(controller.seekToFraction(value));
+                      },
               ),
             ),
           ),
@@ -492,7 +499,9 @@ class _PlaybackBar extends StatelessWidget {
             tooltip: 'Playback speed',
             padding: EdgeInsets.zero,
             constraints: const BoxConstraints(minWidth: 38, minHeight: 32),
-            onSelected: controller.setSpeed,
+            onSelected: (double speed) {
+              unawaited(controller.setSpeed(speed));
+            },
             itemBuilder: (BuildContext context) => <PopupMenuEntry<double>>[
               for (final double speed in _speeds)
                 PopupMenuItem<double>(value: speed, child: Text('${speed}×')),
