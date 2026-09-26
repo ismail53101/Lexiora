@@ -278,27 +278,29 @@ class AiReadAloudController {
     _suppressEngineCallbacks = true;
     try {
       await _tts.stop();
+      final int requestedStart = _currentChar.clamp(0, _activeText.length);
+      final String sourceRemainder = _activeText.substring(requestedStart);
+      final String remaining = sourceRemainder.trimLeft();
+      if (remaining.isEmpty) {
+        _resetState();
+        return;
+      }
+      _utteranceStartChar =
+          requestedStart + sourceRemainder.length - remaining.length;
+      await _tts.setLanguage('en-US');
+      await _tts.setSpeechRate(0.46 * playbackSpeed.value);
+      await _tts.setPitch(1.0);
+      await _tts.setVolume(1.0);
+      final Object? result = await _tts.speak(remaining);
+      if (result is int && result != 1) {
+        throw StateError('Text-to-speech engine returned code $result.');
+      }
     } finally {
+      // awaitSpeakCompletion(true) means reaching here is the real end of the
+      // replacement utterance. Cancellation/completion callbacks from the
+      // previous utterance were ignored while this whole restart was active.
       _suppressEngineCallbacks = false;
-    }
-
-    final int requestedStart = _currentChar.clamp(0, _activeText.length);
-    final String sourceRemainder = _activeText.substring(requestedStart);
-    final String remaining = sourceRemainder.trimLeft();
-    if (remaining.isEmpty) {
-      _resetState();
-      return;
-    }
-    _utteranceStartChar =
-        requestedStart + sourceRemainder.length - remaining.length;
-    await _tts.setLanguage('en-US');
-    await _tts.setSpeechRate(0.46 * playbackSpeed.value);
-    await _tts.setPitch(1.0);
-    await _tts.setVolume(1.0);
-    final Object? result = await _tts.speak(remaining);
-    if (result is int && result != 1) {
-      _resetState();
-      throw StateError('Text-to-speech engine returned code $result.');
+      if (activeMessageId.value != null) _resetState();
     }
   }
 
