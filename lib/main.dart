@@ -58,6 +58,20 @@ Future<void> main() async {
       await pdfrxFlutterInitialize();
       await configureDependencies();
       final GoRouter router = createAppRouter();
+      // Optional platform setup must not keep Flutter on the native splash
+      // screen. Notifications, permissions, and PDF intent discovery continue
+      // immediately after the first frame and report failures to the logger.
+      runApp(ProviderScope(child: SapioraApp(router: router)));
+      unawaited(_finishStartup(router));
+    },
+    (Object error, StackTrace stack) {
+      AppLogger.e('Uncaught zone error', error: error, stackTrace: stack);
+    },
+  );
+}
+
+Future<void> _finishStartup(GoRouter router) async {
+  try {
       final NotificationService notifications = sl<NotificationService>();
       await notifications.initialize(
         onTap: (String payload) => _handleNotificationPayload(router, payload),
@@ -84,8 +98,6 @@ Future<void> main() async {
           ),
         );
       }
-      await notifications.rescheduleAll();
-
       final PdfImportService pdfImport = sl<PdfImportService>();
       pdfImport.registerIncomingPdfHandler(
         (DeviceFile file) => unawaited(_openIncomingPdf(router, file)),
@@ -93,7 +105,10 @@ Future<void> main() async {
       final DeviceFile? initialIncoming =
           await pdfImport.takeInitialIncomingPdf();
 
-      runApp(ProviderScope(child: SapioraApp(router: router)));
+      // Rendering the app must not depend on Android accepting every pending
+      // notification schedule. A bad channel/resource or a vendor-specific
+      // scheduling failure is logged, while the rest of the app remains usable.
+      unawaited(_rescheduleNotifications(notifications));
       final String? pendingPayload = notifications.takePendingPayload();
       if (pendingPayload != null) {
         WidgetsBinding.instance.addPostFrameCallback((_) {
@@ -105,11 +120,25 @@ Future<void> main() async {
           unawaited(_openIncomingPdf(router, initialIncoming));
         });
       }
-    },
-    (Object error, StackTrace stack) {
-      AppLogger.e('Uncaught zone error', error: error, stackTrace: stack);
-    },
-  );
+  } on Object catch (error, stackTrace) {
+    AppLogger.e(
+      'Post-launch platform setup failed',
+      error: error,
+      stackTrace: stackTrace,
+    );
+  }
+}
+
+Future<void> _rescheduleNotifications(NotificationService notifications) async {
+  try {
+    await notifications.rescheduleAll();
+  } on Object catch (error, stackTrace) {
+    AppLogger.e(
+      'Notification rescheduling failed after app startup',
+      error: error,
+      stackTrace: stackTrace,
+    );
+  }
 }
 
 void _handleNotificationPayload(GoRouter router, String payload) {
