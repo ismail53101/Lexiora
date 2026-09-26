@@ -127,7 +127,7 @@ class MainActivity : FlutterActivity() {
         if (incoming == null) return
         val action = incoming.action
         if (action != Intent.ACTION_VIEW && action != Intent.ACTION_SEND) return
-        val uri: Uri = incoming.data
+        val uri: Uri? = incoming.data
             ?: if (action == Intent.ACTION_SEND) {
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
                     incoming.getParcelableExtra(Intent.EXTRA_STREAM, Uri::class.java)
@@ -136,14 +136,16 @@ class MainActivity : FlutterActivity() {
                     incoming.getParcelableExtra(Intent.EXTRA_STREAM)
                 }
             } else null
-            ?: return
+        if (uri == null) return
+        val sourceUri: Uri = uri
         val mime = incoming.type
-        if (mime != null && mime != "application/pdf" && !uri.toString().lowercase().endsWith(".pdf")) return
+        if (mime != null && mime != "application/pdf" &&
+            !sourceUri.toString().lowercase().endsWith(".pdf")) return
 
         Thread {
             try {
                 val dir = File(filesDir, "imported").apply { mkdirs() }
-                val copied = copyToImported(uri, dir, 0)
+                val copied = copyToImported(sourceUri, dir, 0)
                 if (copied == null) throw IllegalStateException("Could not read the selected PDF")
                 runOnUiThread {
                     val channel = platformChannel
@@ -154,7 +156,7 @@ class MainActivity : FlutterActivity() {
                     }
                 }
             } catch (e: Exception) {
-                Log.w("Lexiora", "Incoming PDF import failed for $uri: ${e.message}")
+                Log.w("Lexiora", "Incoming PDF import failed for $sourceUri: ${e.message}")
             }
         }.start()
     }
