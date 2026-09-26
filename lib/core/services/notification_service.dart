@@ -19,8 +19,12 @@ import 'package:timezone/timezone.dart' as tz;
 class NotificationService {
   NotificationService(this._settings, this._studyHub);
 
-  static const String studyChannelId = 'study_reminders';
-  static const String wordChannelId = 'word_of_the_day';
+  // Versioned IDs migrate devices away from the original channels, which may
+  // already have been created as silent. The mode suffix is also necessary
+  // because Android persists channel audio settings after first creation.
+  static const String studyChannelId = 'study_reminders_v2';
+  static const String breakChannelId = 'break_reminders_v2';
+  static const String wordChannelId = 'word_of_the_day_v2';
   static const int _studyIdBase = 100000;
   static const int _breakIdBase = 200000;
   static const int _wordIdBase = 300000;
@@ -175,8 +179,8 @@ class NotificationService {
         }),
         notificationDetails: NotificationDetails(
           android: _details(
-            channelId: studyChannelId,
-            channelName: 'Study Planner',
+            channelId: isBreak ? breakChannelId : studyChannelId,
+            channelName: isBreak ? 'Break reminders' : 'Study reminders',
             settings: settings,
           ),
         ),
@@ -245,13 +249,20 @@ class NotificationService {
     required String channelName,
     required AppSettings settings,
   }) {
+    final String soundMode =
+        settings.notificationSoundEnabled ? 'sound' : 'silent';
+    final String vibrationMode =
+        settings.notificationVibrationEnabled ? 'vibrate' : 'quiet';
     return AndroidNotificationDetails(
-      channelId,
+      '${channelId}_${soundMode}_$vibrationMode',
       channelName,
       channelDescription: 'Sapiora learning reminders',
       importance: Importance.high,
       priority: Priority.high,
       playSound: settings.notificationSoundEnabled,
+      sound: settings.notificationSoundEnabled
+          ? const RawResourceAndroidNotificationSound('notification_sound')
+          : null,
       enableVibration: settings.notificationVibrationEnabled,
     );
   }
