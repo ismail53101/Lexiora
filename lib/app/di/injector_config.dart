@@ -3,6 +3,7 @@ import 'package:lexiora/app/di/module_registry.dart';
 import 'package:lexiora/core/database/app_database.dart';
 import 'package:lexiora/core/module/feature_module.dart';
 import 'package:lexiora/core/navigation/home_destination.dart';
+import 'package:lexiora/core/platform/fresh_install_guard.dart';
 import 'package:lexiora/core/reader_engine/word_action.dart';
 import 'package:lexiora/core/services/device_info_service.dart';
 import 'package:lexiora/core/services/pdf_cover_service.dart';
@@ -23,6 +24,7 @@ Future<void> configureDependencies() async {
   // ── Core singletons ────────────────────────────────────────────────────
   sl
     ..registerLazySingleton<AppDatabase>(AppDatabase.new)
+    ..registerLazySingleton<FreshInstallGuard>(FreshInstallGuard.new)
     ..registerLazySingleton<DeviceInfoService>(DeviceInfoService.new)
     ..registerLazySingleton<PdfDiscoveryService>(PdfDiscoveryService.new)
     ..registerLazySingleton<PdfImportService>(PdfImportService.new)

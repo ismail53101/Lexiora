@@ -32,7 +32,10 @@ import java.io.File
  * The channel id and package are kept as-is for backward compatibility; only
  * user-visible branding changed. The bridge exposes:
  *
- *  - getSdkInt / setKeepScreenOn: small platform helpers.
+ * *  - getSdkInt / setKeepScreenOn: small platform helpers.
+ *  - getFirstInstallTime: epoch millis of the current install (Android
+ *    PackageInfo), used to corroborate fresh-install detection before any
+ *    stale-chat purge from a restored backup.
  *  - isExternalStorageManager: whether all-files access is granted (always true
  *    below API 30, where the storage permission covers broad reads).
  *  - scanAllPdfs: discovers every readable *.pdf on the device by combining two
@@ -80,6 +83,13 @@ class MainActivity : FlutterActivity() {
                         result.success(incoming)
                     }
                     "getSdkInt" -> result.success(Build.VERSION.SDK_INT)
+                    "getFirstInstallTime" -> result.success(
+                        try {
+                            packageManager.getPackageInfo(packageName, 0).firstInstallTime
+                        } catch (e: Exception) {
+                            0L
+                        },
+                    )
                     "setKeepScreenOn" -> {
                         val on = call.argument<Boolean>("on") ?: false
                         if (on) {

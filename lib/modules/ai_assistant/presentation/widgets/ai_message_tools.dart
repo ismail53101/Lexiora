@@ -126,9 +126,12 @@ class AiReadAloudController {
   /// seek) so an in-flight chunk loop knows it was superseded and exits.
   int _generation = 0;
 
-  /// True while the chunk loop is inside `speak` — per-chunk engine events
-  /// must not tear the player down mid-text.
-  bool _loopActive = false;
+  /// Generation of the chunk loop that currently "owns" engine events, or
+  /// null when no loop is inside `speak`. Per-chunk completion/cancel/error
+  /// callbacks must not tear the player down mid-text; a superseded loop
+  /// releases ownership in its `finally`, so pausing can never leave the
+  /// flag stuck and later engine events are never suppressed forever.
+  int? _loopActiveGeneration;
 
   /// Android's TTS engine rejects utterances longer than ~4000 characters
   /// (it fails with an error code — previously surfaced as the white
@@ -146,10 +149,21 @@ class AiReadAloudController {
     _tts.setCompletionHandler(() {
       // While the chunk loop is driving playback it owns the state —
       // per-chunk completion events must not tear the player down mid-text.
-      if (!_suppressEngineCallbacks && !_loopActive) _resetState();
+      // Also ignore stray callbacks while paused: some Android engines
+      // deliver a completion/stop event for the interrupted utterance after
+      // a pause, and the paused player must stay visible and resumable.
+      if (!_suppressEngineCallbacks &&
+          _loopActiveGeneration == null &&
+          playbackState.value == AiReadAloudState.playing) {
+        _resetState();
+      }
     });
     _tts.setCancelHandler(() {
-      if (!_suppressEngineCallbacks && !_loopActive) _resetState();
+      if (!_suppressEngineCallbacks &&
+          _loopActiveGeneration == null &&
+          playbackState.value == AiReadAloudState.playing) {
+        _resetState();
+      }
     });
     _tts.setPauseHandler(() {
       playbackState.value = AiReadAloudState.paused;
@@ -171,7 +185,11 @@ class AiReadAloudController {
       }
     });
     _tts.setErrorHandler((dynamic _) {
-      if (!_suppressEngineCallbacks && !_loopActive) _resetState();
+      if (!_suppressEngineCallbacks &&
+          _loopActiveGeneration == null &&
+          playbackState.value == AiReadAloudState.playing) {
+        _resetState();
+      }
     });
     _configured = true;
   }
@@ -182,7 +200,7 @@ class AiReadAloudController {
     playbackState.value = AiReadAloudState.idle;
     playbackElapsed.value = Duration.zero;
     playbackDuration.value = Duration.zero;
-    _loopActive = false;
+    _loopActiveGeneration = null;
     _activeText = '';
     _currentChar = 0;
     _utteranceStartChar = 0;
@@ -254,7 +272,7 @@ class AiReadAloudController {
     }
 
     final int myGeneration = _generation;
-    _loopActive = true;
+    _loopActiveGeneration = myGeneration;
     try {
       while (true) {
         if (myGeneration != _generation ||
@@ -277,8 +295,21 @@ class AiReadAloudController {
         // awaitSpeakCompletion(true) makes this await the chunk's end.
         final Object? result = await _tts.speak(chunk);
         if (result is int && result != 1) {
-          // Engine refused the utterance (no TTS engine/voice, engine busy).
-          // Treat as a quiet failure of the whole playback, not a crash.
+          // The engine did not accept/finish the utterance. Most commonly
+          // this is not an error at all: Android's flutter_tts resolves the
+          // pending speak() future with 0 whenever pause or stop interrupts
+          // the utterance. Only treat it as a real engine failure when this
+          // loop is still the active one and playback is supposed to be
+          // running; otherwise the user paused/stopped on purpose and the
+          // player must stay exactly as they left it (visible, paused,
+          // resumable from the same position).
+          if (myGeneration != _generation ||
+              activeMessageId.value == null ||
+              playbackState.value != AiReadAloudState.playing) {
+            return; // superseded (pause/stop/seek/new message) — keep state
+          }
+          // Genuine refusal (no TTS engine/voice, busy engine): quiet
+          // failure of the whole playback, never a crash or error banner.
           _resetState();
           return;
         }
@@ -289,7 +320,9 @@ class AiReadAloudController {
     } on Object {
       _resetState();
     } finally {
-      if (myGeneration == _generation) _loopActive = false;
+      // Release loop ownership only if this loop is still the registered
+      // one — a newer loop (new message/seek) may already have taken over.
+      if (_loopActiveGeneration == myGeneration) _loopActiveGeneration = null;
     }
   }
 

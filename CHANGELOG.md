@@ -5,6 +5,32 @@ All notable changes to Sapiora are documented here.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.23.10] — 2026-09-27
+
+### Fixed
+
+- **Recents no longer resurrects old chats after a fresh install.** Android's
+  auto-backup was silently copying the whole app database (including AI chat
+  history) to the device's backup and restoring it whenever the app was
+  reinstalled — so an old chat (e.g. "hi") reappeared under Recents on a
+  brand-new install. A fresh-install guard now detects a restored database
+  (an install-time marker stored inside the database plus a cache-dir
+  sentinel that backups never carry, corroborated by the OS install time)
+  and purges the restored AI chats, messages and projects **at the data
+  level**, so Recents starts empty and only fills with chats the user
+  actually creates after installation. Real user data is never touched on
+  regular in-place app updates.
+- **"Read aloud" pause now truly pauses.** Tapping pause previously killed
+  the utterance *and* closed the player: flutter_tts resolves the
+  interrupted speak() call with a failure code, which the playback loop
+  misread as a missing-TTS-engine error and reset the whole player, while a
+  leaked "loop active" flag could permanently suppress later engine
+  callbacks. Pause now keeps the player visible with the current position
+  and progress; resume continues from exactly where it stopped; only the
+  close (×) button tears the player down. Taps elsewhere on the response,
+  screen or input field — and any widget rebuild, focus change, scrolling
+  or state change — no longer dispose or reset the active player.
+
 ## [0.23.9] — 2026-09-26
 
 ### Changed

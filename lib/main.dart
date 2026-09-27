@@ -10,6 +10,8 @@ import 'package:lexiora/app/di/injector.dart';
 import 'package:lexiora/app/di/injector_config.dart';
 import 'package:lexiora/app/router/app_router.dart';
 import 'package:lexiora/app/router/app_routes.dart';
+import 'package:lexiora/core/database/app_database.dart';
+import 'package:lexiora/core/platform/fresh_install_guard.dart';
 import 'package:lexiora/core/services/notification_service.dart';
 import 'package:lexiora/core/services/pdf_discovery_service.dart';
 import 'package:lexiora/core/services/pdf_import_service.dart';
@@ -63,6 +65,15 @@ Future<void> main() async {
       // immediately after the first frame and report failures to the logger.
       runApp(ProviderScope(child: SapioraApp(router: router)));
       unawaited(_finishStartup(router));
+
+  // One-time data hygiene: if Android's auto-backup restored an old database
+  // (e.g. after an uninstall), purge the stale AI chats so Recents starts
+  // empty. Real user data on updates is protected by install markers — see
+  // [FreshInstallGuard]. Best-effort and unawaited: any failure is logged and
+  // must never block startup.
+  unawaited(
+    sl<FreshInstallGuard>().purgeStaleChatData(sl<AppDatabase>()),
+  );
     },
     (Object error, StackTrace stack) {
       AppLogger.e('Uncaught zone error', error: error, stackTrace: stack);
