@@ -683,6 +683,7 @@ class _RecentsSection extends StatelessWidget {
               summary: s,
               active: s.conversation.id == currentConversationId,
               showProjectBadge: true,
+              leadingIcon: Icons.contact_support_outlined,
               onOpen: onOpenConversation,
               onRename: onRenameConversation,
               onDelete: onDeleteConversation,
@@ -702,6 +703,7 @@ class _ConversationTile extends StatelessWidget {
     required this.onOpen,
     required this.onRename,
     required this.onDelete,
+    this.leadingIcon,
   });
 
   final AiConversationSummary summary;
@@ -710,6 +712,11 @@ class _ConversationTile extends StatelessWidget {
   final void Function(AiConversationSummary) onOpen;
   final Future<void> Function(AiConversationSummary) onRename;
   final Future<void> Function(AiConversationSummary) onDelete;
+
+  /// Optional leading-icon override (Recents uses the reference simple
+  /// chat-bubble style); null keeps the default speech-bubble icon used by
+  /// project chats and search results.
+  final IconData? leadingIcon;
 
   @override
   Widget build(BuildContext context) {
@@ -721,7 +728,7 @@ class _ConversationTile extends StatelessWidget {
       selectedTileColor: scheme.secondaryContainer.withValues(alpha: 0.5),
       contentPadding: const EdgeInsets.only(left: 16, right: 4),
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
-      leading: const Icon(Icons.chat_bubble_outline_rounded, size: 20),
+      leading: Icon(leadingIcon ?? Icons.chat_bubble_outline_rounded, size: 20),
       title: Text(summary.conversation.title,
           maxLines: 1, overflow: TextOverflow.ellipsis),
       subtitle: summary.lastMessage == null
