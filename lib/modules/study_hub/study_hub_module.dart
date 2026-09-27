@@ -99,7 +99,7 @@ class StudyHubModule extends FeatureModule {
           subtitle: 'Plan, track & focus',
           icon: Icons.school_outlined,
           routePath: AppRoutes.studyHub,
-          imageAsset: 'assets/branding/study_planner_explore.png',
+          imageAsset: 'assets/branding/study_planner_explore.webp',
           order: 1,
         ),
       ];

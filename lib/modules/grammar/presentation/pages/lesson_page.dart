@@ -1839,7 +1839,7 @@ class _NounLandingView extends StatelessWidget {
           const SizedBox(height: 12),
           const _LandingSectionLabel(title: 'Tenses at a Glance'),
           const _ZoomableFooterImage(
-            imagePath: 'assets/grammar/images/english_tenses_at_a_glance.png',
+            imagePath: 'assets/grammar/images/english_tenses_at_a_glance.webp',
           ),
         ],
         if (lesson.footerImage.isNotEmpty) ...<Widget>[

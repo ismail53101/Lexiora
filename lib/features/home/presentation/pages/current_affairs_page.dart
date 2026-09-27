@@ -62,7 +62,7 @@ class _CurrentAffairsPageState extends ConsumerState<CurrentAffairsPage> {
                 color: scheme.primary.withValues(alpha: 0.14),
                 borderRadius: BorderRadius.circular(11),
               ),
-              child: Image.asset('assets/branding/app_icon.png'),
+              child: Image.asset('assets/branding/app_icon.webp'),
             ),
             const SizedBox(width: 10),
             const Text('Current Affairs'),

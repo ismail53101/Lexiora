@@ -350,7 +350,7 @@ class _TensesReferenceImageState extends State<_TensesReferenceImage> {
             minScale: 1,
             maxScale: 4,
             child: Image.asset(
-              'assets/grammar/images/english_tenses_at_a_glance.png',
+              'assets/grammar/images/english_tenses_at_a_glance.webp',
               fit: BoxFit.contain,
             ),
           ),

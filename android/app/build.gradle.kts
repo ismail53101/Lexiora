@@ -71,6 +71,10 @@ android {
             // Always use the real production/upload keystore. The build fails
             // above if android/key.properties is absent.
             signingConfig = signingConfigs.getByName("release")
+            // Remove unreachable Java/Kotlin bytecode and Android resources
+            // while leaving Flutter/Dart code and declared assets intact.
+            isMinifyEnabled = true
+            isShrinkResources = true
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro",

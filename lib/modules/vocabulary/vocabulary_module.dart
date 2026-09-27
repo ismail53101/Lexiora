@@ -79,7 +79,7 @@ class VocabularyModule extends FeatureModule {
           subtitle: 'Learn word lists A–Z',
           icon: Icons.style_outlined,
           routePath: AppRoutes.vocabulary,
-          imageAsset: 'assets/branding/vocabulary_explore.png',
+          imageAsset: 'assets/branding/vocabulary_explore.webp',
           order: 13,
         ),
       ];

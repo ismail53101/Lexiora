@@ -179,7 +179,7 @@ class _QuizHeroBanner extends StatelessWidget {
             right: -12,
             bottom: -22,
             child: Image.asset(
-              'assets/quiz/branding/quiz_hero.png',
+              'assets/quiz/branding/quiz_hero.webp',
               width: 150,
               height: 150,
               fit: BoxFit.contain,

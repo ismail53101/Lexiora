@@ -249,7 +249,7 @@ class _Welcome extends ConsumerWidget {
               ),
               clipBehavior: Clip.antiAlias,
               child: Image.asset(
-                'assets/branding/ai_assistant_nav.png',
+                'assets/branding/ai_assistant_nav.webp',
                 fit: BoxFit.cover,
               ),
             ),

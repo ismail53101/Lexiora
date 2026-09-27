@@ -146,7 +146,7 @@ class _LatestUpdateCardState extends State<LatestUpdateCard> {
                                   shape: BoxShape.circle,
                                 ),
                                 child: Image.asset(
-                                  'assets/branding/app_icon.png',
+                                  'assets/branding/app_icon.webp',
                                   fit: BoxFit.contain,
                                 ),
                               ),
