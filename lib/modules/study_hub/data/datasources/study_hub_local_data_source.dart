@@ -132,7 +132,7 @@ class StudyHubLocalDataSource {
   // ── Session log ─────────────────────────────────────────────────────────────
 
   Future<void> insertSession(StudySessionsCompanion session) =>
-      _db.into(_db.studySessions).insert(session);
+      _db.into(_db.studySessions).insertOnConflictUpdate(session);
 
   Stream<int> watchStudyMinutes(String day) {
     final Expression<int> total = _db.studySessions.durationMinutes.sum();

@@ -49,7 +49,9 @@ abstract final class DbConstants {
   /// grouping conversations) and a nullable `project_id` column on
   /// `ai_conversations`. Purely additive; all existing chats stay valid and
   /// simply remain outside every project.
-  static const int schemaVersion = 19;
+  /// v19 → v20: Study session linkage — adds optional task/subject/end-time
+  /// metadata to existing `study_sessions` rows. Purely additive.
+  static const int schemaVersion = 20;
 }
 
 /// Constants for the Quiz Engine's one-time demo seed.

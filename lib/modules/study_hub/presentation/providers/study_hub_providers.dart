@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:lexiora/app/di/injector.dart';
 import 'package:lexiora/modules/study_hub/data/services/study_backup_service.dart';
@@ -24,14 +26,61 @@ final StreamProvider<List<StudyTask>> studyTasksProvider =
         .watchTasks(ref.watch(studyTodayProvider)));
 
 final StreamProvider<List<StudyGoal>> studyGoalsProvider =
-    StreamProvider<List<StudyGoal>>((Ref ref) => ref
-        .watch(studyHubRepositoryProvider)
-        .watchGoals(ref.watch(studyTodayProvider)));
+    StreamProvider<List<StudyGoal>>((Ref ref) {
+  final StudyHubRepository repo = ref.watch(studyHubRepositoryProvider);
+  final String day = ref.watch(studyTodayProvider);
+  return Stream<List<StudyGoal>>.multi((MultiStreamController<List<StudyGoal>> out) {
+    List<StudyGoal>? goals;
+    int? minutes;
+    void emit() {
+      if (goals == null || minutes == null) return;
+      out.add(goals!
+          .map((StudyGoal goal) => goal.withStudyMinutes(minutes!))
+          .toList(growable: false));
+    }
+    final StreamSubscription<List<StudyGoal>> goalsSub =
+        repo.watchGoals(day).listen((List<StudyGoal> value) {
+      goals = value;
+      emit();
+    });
+    final StreamSubscription<int> minutesSub =
+        repo.watchStudyMinutes(day).listen((int value) {
+      minutes = value;
+      emit();
+    });
+    out.onCancel = () async {
+      await goalsSub.cancel();
+      await minutesSub.cancel();
+    };
+  });
+});
 
 final StreamProvider<int> studyMinutesTodayProvider =
     StreamProvider<int>((Ref ref) => ref
         .watch(studyHubRepositoryProvider)
         .watchStudyMinutes(ref.watch(studyTodayProvider)));
+
+/// Context carried from a planned task into the existing Pomodoro/manual timer.
+/// It is not a second log: completed timers still write only to study_sessions.
+class ActiveStudyContext {
+  const ActiveStudyContext({this.taskId, this.subject});
+  final String? taskId;
+  final String? subject;
+  static const empty = ActiveStudyContext();
+}
+
+class ActiveStudyContextNotifier extends Notifier<ActiveStudyContext> {
+  @override
+  ActiveStudyContext build() => ActiveStudyContext.empty;
+  void setTask(StudyTask task) =>
+      state = ActiveStudyContext(taskId: task.id, subject: task.displaySubject);
+  void clear() => state = ActiveStudyContext.empty;
+}
+
+final NotifierProvider<ActiveStudyContextNotifier, ActiveStudyContext>
+    activeStudyContextProvider =
+    NotifierProvider<ActiveStudyContextNotifier, ActiveStudyContext>(
+        ActiveStudyContextNotifier.new);
 
 final StreamProvider<StudyStreak> studyStreakProvider =
     StreamProvider<StudyStreak>(

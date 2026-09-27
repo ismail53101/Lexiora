@@ -502,7 +502,10 @@ class StudySessions extends Table {
   TextColumn get id => text()();
   TextColumn get day => text()();
   DateTimeColumn get startedAt => dateTime()();
+  DateTimeColumn get endedAt => dateTime().nullable()();
   IntColumn get durationMinutes => integer()();
+  TextColumn get subject => text().nullable()();
+  TextColumn get taskId => text().nullable()();
 
   /// pomodoro / manual.
   TextColumn get kind => text().withDefault(const Constant('pomodoro'))();

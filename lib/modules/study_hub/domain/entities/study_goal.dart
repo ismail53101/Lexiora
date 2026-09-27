@@ -56,6 +56,18 @@ class StudyGoal extends Equatable {
   double get progress =>
       targetCount <= 0 ? 0 : (currentCount / targetCount).clamp(0.0, 1.0);
 
+  /// Custom goals and goals explicitly measured in minutes represent the shared
+  /// daily study-time goal. Their progress is calculated from study_sessions,
+  /// while vocabulary/reading/grammar/MCQ goals retain their own counters.
+  bool get isStudyTimeGoal {
+    final String normalized = (unit ?? '').trim().toLowerCase();
+    return type == GoalType.custom ||
+        <String>{'m', 'min', 'mins', 'minute', 'minutes'}.contains(normalized);
+  }
+
+  StudyGoal withStudyMinutes(int minutes) =>
+      isStudyTimeGoal ? copyWith(currentCount: minutes) : this;
+
   bool get achieved => targetCount > 0 && currentCount >= targetCount;
 
   StudyGoal copyWith({

@@ -9,6 +9,9 @@ class StudySession extends Equatable {
     required this.durationMinutes,
     required this.createdAt,
     this.kind = 'pomodoro',
+    this.subject,
+    this.taskId,
+    this.endedAt,
   });
 
   final String id;
@@ -16,11 +19,15 @@ class StudySession extends Equatable {
   final DateTime startedAt;
   final int durationMinutes;
   final String kind;
+  final String? subject;
+  final String? taskId;
+  final DateTime? endedAt;
   final DateTime createdAt;
 
   @override
-  List<Object?> get props =>
-      <Object?>[id, day, startedAt, durationMinutes, kind, createdAt];
+  List<Object?> get props => <Object?>[
+        id, day, startedAt, durationMinutes, kind, subject, taskId, endedAt, createdAt
+      ];
 }
 
 /// The user's study streak, in consecutive active days.

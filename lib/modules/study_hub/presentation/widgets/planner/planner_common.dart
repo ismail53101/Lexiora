@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:lexiora/modules/study_hub/domain/entities/study_task.dart';
 import 'package:lexiora/modules/study_hub/domain/study_dates.dart';
+import 'package:lexiora/modules/study_hub/presentation/pages/planner_menu_pages.dart';
 import 'package:lexiora/modules/study_hub/presentation/providers/study_hub_providers.dart';
 import 'package:lexiora/modules/study_hub/presentation/widgets/session_editor.dart';
 import 'package:lexiora/modules/study_hub/presentation/widgets/study_hub_common.dart';
@@ -452,6 +453,26 @@ class PlannerTaskRow extends ConsumerWidget {
                                   ],
                                 ),
                               ),
+                              if (!task.completed)
+                                IconButton(
+                                  tooltip: 'Start study timer',
+                                  visualDensity: VisualDensity.compact,
+                                  onPressed: () {
+                                    ref
+                                        .read(activeStudyContextProvider.notifier)
+                                        .setTask(task);
+                                    ref
+                                        .read(studyHubRepositoryProvider)
+                                        .setTaskStatus(task.id, TaskStatus.inProgress);
+                                    Navigator.of(context).push(
+                                      MaterialPageRoute<void>(
+                                        builder: (_) => const PlannerTimerPage(),
+                                      ),
+                                    );
+                                  },
+                                  icon: Icon(Icons.play_arrow_rounded,
+                                      color: subjectColor),
+                                ),
                               const SizedBox(width: 8),
                               TaskStatusCircle(task: task, ringColor: subjectColor),
                             ],

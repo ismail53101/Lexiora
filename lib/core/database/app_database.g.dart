@@ -9936,6 +9936,17 @@ class $StudySessionsTable extends StudySessions
     type: DriftSqlType.dateTime,
     requiredDuringInsert: true,
   );
+  static const VerificationMeta _endedAtMeta = const VerificationMeta(
+    'endedAt',
+  );
+  @override
+  late final GeneratedColumn<DateTime> endedAt = GeneratedColumn<DateTime>(
+    'ended_at',
+    aliasedName,
+    true,
+    type: DriftSqlType.dateTime,
+    requiredDuringInsert: false,
+  );
   static const VerificationMeta _durationMinutesMeta = const VerificationMeta(
     'durationMinutes',
   );
@@ -9946,6 +9957,26 @@ class $StudySessionsTable extends StudySessions
     false,
     type: DriftSqlType.int,
     requiredDuringInsert: true,
+  );
+  static const VerificationMeta _subjectMeta = const VerificationMeta(
+    'subject',
+  );
+  @override
+  late final GeneratedColumn<String> subject = GeneratedColumn<String>(
+    'subject',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _taskIdMeta = const VerificationMeta('taskId');
+  @override
+  late final GeneratedColumn<String> taskId = GeneratedColumn<String>(
+    'task_id',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
   );
   static const VerificationMeta _kindMeta = const VerificationMeta('kind');
   @override
@@ -9973,7 +10004,10 @@ class $StudySessionsTable extends StudySessions
     id,
     day,
     startedAt,
+    endedAt,
     durationMinutes,
+    subject,
+    taskId,
     kind,
     createdAt,
   ];
@@ -10010,6 +10044,12 @@ class $StudySessionsTable extends StudySessions
     } else if (isInserting) {
       context.missing(_startedAtMeta);
     }
+    if (data.containsKey('ended_at')) {
+      context.handle(
+        _endedAtMeta,
+        endedAt.isAcceptableOrUnknown(data['ended_at']!, _endedAtMeta),
+      );
+    }
     if (data.containsKey('duration_minutes')) {
       context.handle(
         _durationMinutesMeta,
@@ -10020,6 +10060,18 @@ class $StudySessionsTable extends StudySessions
       );
     } else if (isInserting) {
       context.missing(_durationMinutesMeta);
+    }
+    if (data.containsKey('subject')) {
+      context.handle(
+        _subjectMeta,
+        subject.isAcceptableOrUnknown(data['subject']!, _subjectMeta),
+      );
+    }
+    if (data.containsKey('task_id')) {
+      context.handle(
+        _taskIdMeta,
+        taskId.isAcceptableOrUnknown(data['task_id']!, _taskIdMeta),
+      );
     }
     if (data.containsKey('kind')) {
       context.handle(
@@ -10056,10 +10108,22 @@ class $StudySessionsTable extends StudySessions
         DriftSqlType.dateTime,
         data['${effectivePrefix}started_at'],
       )!,
+      endedAt: attachedDatabase.typeMapping.read(
+        DriftSqlType.dateTime,
+        data['${effectivePrefix}ended_at'],
+      ),
       durationMinutes: attachedDatabase.typeMapping.read(
         DriftSqlType.int,
         data['${effectivePrefix}duration_minutes'],
       )!,
+      subject: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}subject'],
+      ),
+      taskId: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}task_id'],
+      ),
       kind: attachedDatabase.typeMapping.read(
         DriftSqlType.string,
         data['${effectivePrefix}kind'],
@@ -10081,7 +10145,10 @@ class StudySessionRow extends DataClass implements Insertable<StudySessionRow> {
   final String id;
   final String day;
   final DateTime startedAt;
+  final DateTime? endedAt;
   final int durationMinutes;
+  final String? subject;
+  final String? taskId;
 
   /// pomodoro / manual.
   final String kind;
@@ -10090,7 +10157,10 @@ class StudySessionRow extends DataClass implements Insertable<StudySessionRow> {
     required this.id,
     required this.day,
     required this.startedAt,
+    this.endedAt,
     required this.durationMinutes,
+    this.subject,
+    this.taskId,
     required this.kind,
     required this.createdAt,
   });
@@ -10100,7 +10170,16 @@ class StudySessionRow extends DataClass implements Insertable<StudySessionRow> {
     map['id'] = Variable<String>(id);
     map['day'] = Variable<String>(day);
     map['started_at'] = Variable<DateTime>(startedAt);
+    if (!nullToAbsent || endedAt != null) {
+      map['ended_at'] = Variable<DateTime>(endedAt);
+    }
     map['duration_minutes'] = Variable<int>(durationMinutes);
+    if (!nullToAbsent || subject != null) {
+      map['subject'] = Variable<String>(subject);
+    }
+    if (!nullToAbsent || taskId != null) {
+      map['task_id'] = Variable<String>(taskId);
+    }
     map['kind'] = Variable<String>(kind);
     map['created_at'] = Variable<DateTime>(createdAt);
     return map;
@@ -10111,7 +10190,16 @@ class StudySessionRow extends DataClass implements Insertable<StudySessionRow> {
       id: Value(id),
       day: Value(day),
       startedAt: Value(startedAt),
+      endedAt: endedAt == null && nullToAbsent
+          ? const Value.absent()
+          : Value(endedAt),
       durationMinutes: Value(durationMinutes),
+      subject: subject == null && nullToAbsent
+          ? const Value.absent()
+          : Value(subject),
+      taskId: taskId == null && nullToAbsent
+          ? const Value.absent()
+          : Value(taskId),
       kind: Value(kind),
       createdAt: Value(createdAt),
     );
@@ -10126,7 +10214,10 @@ class StudySessionRow extends DataClass implements Insertable<StudySessionRow> {
       id: serializer.fromJson<String>(json['id']),
       day: serializer.fromJson<String>(json['day']),
       startedAt: serializer.fromJson<DateTime>(json['startedAt']),
+      endedAt: serializer.fromJson<DateTime?>(json['endedAt']),
       durationMinutes: serializer.fromJson<int>(json['durationMinutes']),
+      subject: serializer.fromJson<String?>(json['subject']),
+      taskId: serializer.fromJson<String?>(json['taskId']),
       kind: serializer.fromJson<String>(json['kind']),
       createdAt: serializer.fromJson<DateTime>(json['createdAt']),
     );
@@ -10138,7 +10229,10 @@ class StudySessionRow extends DataClass implements Insertable<StudySessionRow> {
       'id': serializer.toJson<String>(id),
       'day': serializer.toJson<String>(day),
       'startedAt': serializer.toJson<DateTime>(startedAt),
+      'endedAt': serializer.toJson<DateTime?>(endedAt),
       'durationMinutes': serializer.toJson<int>(durationMinutes),
+      'subject': serializer.toJson<String?>(subject),
+      'taskId': serializer.toJson<String?>(taskId),
       'kind': serializer.toJson<String>(kind),
       'createdAt': serializer.toJson<DateTime>(createdAt),
     };
@@ -10148,14 +10242,20 @@ class StudySessionRow extends DataClass implements Insertable<StudySessionRow> {
     String? id,
     String? day,
     DateTime? startedAt,
+    Value<DateTime?> endedAt = const Value.absent(),
     int? durationMinutes,
+    Value<String?> subject = const Value.absent(),
+    Value<String?> taskId = const Value.absent(),
     String? kind,
     DateTime? createdAt,
   }) => StudySessionRow(
     id: id ?? this.id,
     day: day ?? this.day,
     startedAt: startedAt ?? this.startedAt,
+    endedAt: endedAt.present ? endedAt.value : this.endedAt,
     durationMinutes: durationMinutes ?? this.durationMinutes,
+    subject: subject.present ? subject.value : this.subject,
+    taskId: taskId.present ? taskId.value : this.taskId,
     kind: kind ?? this.kind,
     createdAt: createdAt ?? this.createdAt,
   );
@@ -10164,9 +10264,12 @@ class StudySessionRow extends DataClass implements Insertable<StudySessionRow> {
       id: data.id.present ? data.id.value : this.id,
       day: data.day.present ? data.day.value : this.day,
       startedAt: data.startedAt.present ? data.startedAt.value : this.startedAt,
+      endedAt: data.endedAt.present ? data.endedAt.value : this.endedAt,
       durationMinutes: data.durationMinutes.present
           ? data.durationMinutes.value
           : this.durationMinutes,
+      subject: data.subject.present ? data.subject.value : this.subject,
+      taskId: data.taskId.present ? data.taskId.value : this.taskId,
       kind: data.kind.present ? data.kind.value : this.kind,
       createdAt: data.createdAt.present ? data.createdAt.value : this.createdAt,
     );
@@ -10178,7 +10281,10 @@ class StudySessionRow extends DataClass implements Insertable<StudySessionRow> {
           ..write('id: $id, ')
           ..write('day: $day, ')
           ..write('startedAt: $startedAt, ')
+          ..write('endedAt: $endedAt, ')
           ..write('durationMinutes: $durationMinutes, ')
+          ..write('subject: $subject, ')
+          ..write('taskId: $taskId, ')
           ..write('kind: $kind, ')
           ..write('createdAt: $createdAt')
           ..write(')'))
@@ -10186,8 +10292,17 @@ class StudySessionRow extends DataClass implements Insertable<StudySessionRow> {
   }
 
   @override
-  int get hashCode =>
-      Object.hash(id, day, startedAt, durationMinutes, kind, createdAt);
+  int get hashCode => Object.hash(
+    id,
+    day,
+    startedAt,
+    endedAt,
+    durationMinutes,
+    subject,
+    taskId,
+    kind,
+    createdAt,
+  );
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
@@ -10195,7 +10310,10 @@ class StudySessionRow extends DataClass implements Insertable<StudySessionRow> {
           other.id == this.id &&
           other.day == this.day &&
           other.startedAt == this.startedAt &&
+          other.endedAt == this.endedAt &&
           other.durationMinutes == this.durationMinutes &&
+          other.subject == this.subject &&
+          other.taskId == this.taskId &&
           other.kind == this.kind &&
           other.createdAt == this.createdAt);
 }
@@ -10204,7 +10322,10 @@ class StudySessionsCompanion extends UpdateCompanion<StudySessionRow> {
   final Value<String> id;
   final Value<String> day;
   final Value<DateTime> startedAt;
+  final Value<DateTime?> endedAt;
   final Value<int> durationMinutes;
+  final Value<String?> subject;
+  final Value<String?> taskId;
   final Value<String> kind;
   final Value<DateTime> createdAt;
   final Value<int> rowid;
@@ -10212,7 +10333,10 @@ class StudySessionsCompanion extends UpdateCompanion<StudySessionRow> {
     this.id = const Value.absent(),
     this.day = const Value.absent(),
     this.startedAt = const Value.absent(),
+    this.endedAt = const Value.absent(),
     this.durationMinutes = const Value.absent(),
+    this.subject = const Value.absent(),
+    this.taskId = const Value.absent(),
     this.kind = const Value.absent(),
     this.createdAt = const Value.absent(),
     this.rowid = const Value.absent(),
@@ -10221,7 +10345,10 @@ class StudySessionsCompanion extends UpdateCompanion<StudySessionRow> {
     required String id,
     required String day,
     required DateTime startedAt,
+    this.endedAt = const Value.absent(),
     required int durationMinutes,
+    this.subject = const Value.absent(),
+    this.taskId = const Value.absent(),
     this.kind = const Value.absent(),
     required DateTime createdAt,
     this.rowid = const Value.absent(),
@@ -10234,7 +10361,10 @@ class StudySessionsCompanion extends UpdateCompanion<StudySessionRow> {
     Expression<String>? id,
     Expression<String>? day,
     Expression<DateTime>? startedAt,
+    Expression<DateTime>? endedAt,
     Expression<int>? durationMinutes,
+    Expression<String>? subject,
+    Expression<String>? taskId,
     Expression<String>? kind,
     Expression<DateTime>? createdAt,
     Expression<int>? rowid,
@@ -10243,7 +10373,10 @@ class StudySessionsCompanion extends UpdateCompanion<StudySessionRow> {
       if (id != null) 'id': id,
       if (day != null) 'day': day,
       if (startedAt != null) 'started_at': startedAt,
+      if (endedAt != null) 'ended_at': endedAt,
       if (durationMinutes != null) 'duration_minutes': durationMinutes,
+      if (subject != null) 'subject': subject,
+      if (taskId != null) 'task_id': taskId,
       if (kind != null) 'kind': kind,
       if (createdAt != null) 'created_at': createdAt,
       if (rowid != null) 'rowid': rowid,
@@ -10254,7 +10387,10 @@ class StudySessionsCompanion extends UpdateCompanion<StudySessionRow> {
     Value<String>? id,
     Value<String>? day,
     Value<DateTime>? startedAt,
+    Value<DateTime?>? endedAt,
     Value<int>? durationMinutes,
+    Value<String?>? subject,
+    Value<String?>? taskId,
     Value<String>? kind,
     Value<DateTime>? createdAt,
     Value<int>? rowid,
@@ -10263,7 +10399,10 @@ class StudySessionsCompanion extends UpdateCompanion<StudySessionRow> {
       id: id ?? this.id,
       day: day ?? this.day,
       startedAt: startedAt ?? this.startedAt,
+      endedAt: endedAt ?? this.endedAt,
       durationMinutes: durationMinutes ?? this.durationMinutes,
+      subject: subject ?? this.subject,
+      taskId: taskId ?? this.taskId,
       kind: kind ?? this.kind,
       createdAt: createdAt ?? this.createdAt,
       rowid: rowid ?? this.rowid,
@@ -10282,8 +10421,17 @@ class StudySessionsCompanion extends UpdateCompanion<StudySessionRow> {
     if (startedAt.present) {
       map['started_at'] = Variable<DateTime>(startedAt.value);
     }
+    if (endedAt.present) {
+      map['ended_at'] = Variable<DateTime>(endedAt.value);
+    }
     if (durationMinutes.present) {
       map['duration_minutes'] = Variable<int>(durationMinutes.value);
+    }
+    if (subject.present) {
+      map['subject'] = Variable<String>(subject.value);
+    }
+    if (taskId.present) {
+      map['task_id'] = Variable<String>(taskId.value);
     }
     if (kind.present) {
       map['kind'] = Variable<String>(kind.value);
@@ -10303,7 +10451,10 @@ class StudySessionsCompanion extends UpdateCompanion<StudySessionRow> {
           ..write('id: $id, ')
           ..write('day: $day, ')
           ..write('startedAt: $startedAt, ')
+          ..write('endedAt: $endedAt, ')
           ..write('durationMinutes: $durationMinutes, ')
+          ..write('subject: $subject, ')
+          ..write('taskId: $taskId, ')
           ..write('kind: $kind, ')
           ..write('createdAt: $createdAt, ')
           ..write('rowid: $rowid')
@@ -26595,7 +26746,10 @@ typedef $$StudySessionsTableCreateCompanionBuilder =
       required String id,
       required String day,
       required DateTime startedAt,
+      Value<DateTime?> endedAt,
       required int durationMinutes,
+      Value<String?> subject,
+      Value<String?> taskId,
       Value<String> kind,
       required DateTime createdAt,
       Value<int> rowid,
@@ -26605,7 +26759,10 @@ typedef $$StudySessionsTableUpdateCompanionBuilder =
       Value<String> id,
       Value<String> day,
       Value<DateTime> startedAt,
+      Value<DateTime?> endedAt,
       Value<int> durationMinutes,
+      Value<String?> subject,
+      Value<String?> taskId,
       Value<String> kind,
       Value<DateTime> createdAt,
       Value<int> rowid,
@@ -26635,8 +26792,23 @@ class $$StudySessionsTableFilterComposer
     builder: (column) => ColumnFilters(column),
   );
 
+  ColumnFilters<DateTime> get endedAt => $composableBuilder(
+    column: $table.endedAt,
+    builder: (column) => ColumnFilters(column),
+  );
+
   ColumnFilters<int> get durationMinutes => $composableBuilder(
     column: $table.durationMinutes,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get subject => $composableBuilder(
+    column: $table.subject,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get taskId => $composableBuilder(
+    column: $table.taskId,
     builder: (column) => ColumnFilters(column),
   );
 
@@ -26675,8 +26847,23 @@ class $$StudySessionsTableOrderingComposer
     builder: (column) => ColumnOrderings(column),
   );
 
+  ColumnOrderings<DateTime> get endedAt => $composableBuilder(
+    column: $table.endedAt,
+    builder: (column) => ColumnOrderings(column),
+  );
+
   ColumnOrderings<int> get durationMinutes => $composableBuilder(
     column: $table.durationMinutes,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get subject => $composableBuilder(
+    column: $table.subject,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get taskId => $composableBuilder(
+    column: $table.taskId,
     builder: (column) => ColumnOrderings(column),
   );
 
@@ -26709,10 +26896,19 @@ class $$StudySessionsTableAnnotationComposer
   GeneratedColumn<DateTime> get startedAt =>
       $composableBuilder(column: $table.startedAt, builder: (column) => column);
 
+  GeneratedColumn<DateTime> get endedAt =>
+      $composableBuilder(column: $table.endedAt, builder: (column) => column);
+
   GeneratedColumn<int> get durationMinutes => $composableBuilder(
     column: $table.durationMinutes,
     builder: (column) => column,
   );
+
+  GeneratedColumn<String> get subject =>
+      $composableBuilder(column: $table.subject, builder: (column) => column);
+
+  GeneratedColumn<String> get taskId =>
+      $composableBuilder(column: $table.taskId, builder: (column) => column);
 
   GeneratedColumn<String> get kind =>
       $composableBuilder(column: $table.kind, builder: (column) => column);
@@ -26755,7 +26951,10 @@ class $$StudySessionsTableTableManager
                 Value<String> id = const Value.absent(),
                 Value<String> day = const Value.absent(),
                 Value<DateTime> startedAt = const Value.absent(),
+                Value<DateTime?> endedAt = const Value.absent(),
                 Value<int> durationMinutes = const Value.absent(),
+                Value<String?> subject = const Value.absent(),
+                Value<String?> taskId = const Value.absent(),
                 Value<String> kind = const Value.absent(),
                 Value<DateTime> createdAt = const Value.absent(),
                 Value<int> rowid = const Value.absent(),
@@ -26763,7 +26962,10 @@ class $$StudySessionsTableTableManager
                 id: id,
                 day: day,
                 startedAt: startedAt,
+                endedAt: endedAt,
                 durationMinutes: durationMinutes,
+                subject: subject,
+                taskId: taskId,
                 kind: kind,
                 createdAt: createdAt,
                 rowid: rowid,
@@ -26773,7 +26975,10 @@ class $$StudySessionsTableTableManager
                 required String id,
                 required String day,
                 required DateTime startedAt,
+                Value<DateTime?> endedAt = const Value.absent(),
                 required int durationMinutes,
+                Value<String?> subject = const Value.absent(),
+                Value<String?> taskId = const Value.absent(),
                 Value<String> kind = const Value.absent(),
                 required DateTime createdAt,
                 Value<int> rowid = const Value.absent(),
@@ -26781,7 +26986,10 @@ class $$StudySessionsTableTableManager
                 id: id,
                 day: day,
                 startedAt: startedAt,
+                endedAt: endedAt,
                 durationMinutes: durationMinutes,
+                subject: subject,
+                taskId: taskId,
                 kind: kind,
                 createdAt: createdAt,
                 rowid: rowid,

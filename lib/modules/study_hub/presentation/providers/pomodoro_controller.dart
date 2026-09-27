@@ -56,13 +56,21 @@ class PomodoroController extends Notifier<PomodoroState> {
     state = tick.state;
     if (tick.focusCompleted) {
       final DateTime now = DateTime.now();
+      final ActiveStudyContext context = ref.read(activeStudyContextProvider);
       unawaited(ref.read(studyHubRepositoryProvider).addSession(StudySession(
             id: const Uuid().v4(),
-            day: todayKey(),
+            day: dayKey(now.subtract(Duration(minutes: tick.focusMinutes))),
             startedAt: now.subtract(Duration(minutes: tick.focusMinutes)),
             durationMinutes: tick.focusMinutes,
+            subject: context.subject,
+            taskId: context.taskId,
+            endedAt: now,
             createdAt: now,
           )));
+      if (context.taskId != null) {
+        unawaited(ref.read(studyHubRepositoryProvider).setTaskCompleted(
+            context.taskId!, completed: true));
+      }
     }
     if (!state.running) _stopTimer();
   }

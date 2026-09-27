@@ -57,17 +57,26 @@ class ManualTimerController extends Notifier<ManualTimerState> {
   int finish() {
     _stop();
     final int minutes = state.elapsedSeconds ~/ 60;
+    final ActiveStudyContext context = ref.read(activeStudyContextProvider);
     if (minutes >= 1) {
       final DateTime now = DateTime.now();
       unawaited(ref.read(studyHubRepositoryProvider).addSession(StudySession(
             id: const Uuid().v4(),
-            day: todayKey(),
+            day: dayKey(now.subtract(Duration(minutes: minutes))),
             startedAt: now.subtract(Duration(minutes: minutes)),
             durationMinutes: minutes,
             kind: 'manual',
+            subject: context.subject,
+            taskId: context.taskId,
+            endedAt: now,
             createdAt: now,
           )));
+      if (context.taskId != null) {
+        unawaited(ref.read(studyHubRepositoryProvider).setTaskCompleted(
+            context.taskId!, completed: true));
+      }
     }
+    ref.read(activeStudyContextProvider.notifier).clear();
     state = const ManualTimerState();
     return minutes;
   }

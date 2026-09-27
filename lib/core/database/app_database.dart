@@ -187,6 +187,13 @@ class AppDatabase extends _$AppDatabase {
             await m.createTable(aiProjects);
             await m.addColumn(aiConversations, aiConversations.projectId);
           }
+          // v19 → v20: completed study sessions retain their planned task and
+          // subject, plus the actual end time. Existing sessions remain valid.
+          if (from < 20) {
+            await m.addColumn(studySessions, studySessions.endedAt);
+            await m.addColumn(studySessions, studySessions.subject);
+            await m.addColumn(studySessions, studySessions.taskId);
+          }
         },
         beforeOpen: (OpeningDetails details) async {
           await customStatement('PRAGMA foreign_keys = ON');

@@ -178,16 +178,22 @@ class StudyHubRepositoryImpl implements StudyHubRepository {
   // ── Session log ─────────────────────────────────────────────────────────────
 
   @override
-  Future<void> addSession(StudySession s) => _local.insertSession(
-        StudySessionsCompanion.insert(
-          id: s.id,
-          day: s.day,
-          startedAt: s.startedAt,
-          durationMinutes: s.durationMinutes,
-          kind: Value<String>(s.kind),
-          createdAt: s.createdAt,
-        ),
-      );
+  Future<void> addSession(StudySession s) {
+    if (s.durationMinutes <= 0) return Future<void>.value();
+    return _local.insertSession(
+      StudySessionsCompanion.insert(
+        id: s.id,
+        day: s.day,
+        startedAt: s.startedAt,
+        endedAt: Value<DateTime?>(s.endedAt),
+        durationMinutes: s.durationMinutes,
+        subject: Value<String?>(s.subject),
+        taskId: Value<String?>(s.taskId),
+        kind: Value<String>(s.kind),
+        createdAt: s.createdAt,
+      ),
+    );
+  }
 
   @override
   Stream<int> watchStudyMinutes(String day) => _local.watchStudyMinutes(day);

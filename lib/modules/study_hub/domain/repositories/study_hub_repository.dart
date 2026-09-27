@@ -31,7 +31,9 @@ abstract interface class StudyHubRepository {
   Future<void> deleteGoal(String id);
   Future<void> incrementGoal(String id, int delta);
 
-  // ── Sessions log (Pomodoro / manual timer) ──────────────────────────────────
+  // ── Sessions log (Pomodoro / manual timer / planned task timer) ─────────────
+  /// Persists only completed, positive-duration study sessions. Implementations
+  /// must keep writes idempotent by session id.
   Future<void> addSession(StudySession session);
   Stream<int> watchStudyMinutes(String day);
 
