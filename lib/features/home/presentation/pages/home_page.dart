@@ -440,8 +440,11 @@ class _StatsRow extends ConsumerWidget {
 
     final List<StudyGoal> goals = ref.watch(studyGoalsProvider).maybeWhen(
         data: (List<StudyGoal> g) => g, orElse: () => const <StudyGoal>[]);
-    final int goalTotal = goals.length;
-    final int goalDone = goals.where((StudyGoal g) => g.achieved).length;
+    final List<StudyGoal> studyTimeGoals = goals
+        .where((StudyGoal goal) => goal.isStudyTimeGoal)
+        .toList(growable: false);
+    final StudyGoal? studyGoal =
+        studyTimeGoals.isEmpty ? null : studyTimeGoals.first;
 
     return Padding(
       padding: const EdgeInsets.fromLTRB(20, 6, 20, 0),
@@ -470,13 +473,8 @@ class _StatsRow extends ConsumerWidget {
           ),
           const SizedBox(width: 10),
           Expanded(
-            child: _StatTile(
-              icon: Icons.track_changes_rounded,
-              value: goalTotal == 0 ? '—' : '$goalDone / $goalTotal',
-              label: 'Goal',
-              subLabel: goalTotal == 0
-                  ? 'Set a goal'
-                  : (goalDone >= goalTotal ? 'Completed' : 'In progress'),
+            child: _GoalStatTile(
+              goal: studyGoal,
               color: scheme.primary,
               onTap: () => context.push(AppRoutes.studyHub),
             ),
@@ -484,6 +482,81 @@ class _StatsRow extends ConsumerWidget {
         ],
       ),
     ).animate().fadeIn(duration: 300.ms).slideY(begin: 0.06, end: 0);
+  }
+}
+
+class _GoalStatTile extends StatelessWidget {
+  const _GoalStatTile({required this.goal, required this.color, this.onTap});
+
+  final StudyGoal? goal;
+  final Color color;
+  final VoidCallback? onTap;
+
+  @override
+  Widget build(BuildContext context) {
+    final ThemeData theme = Theme.of(context);
+    final ColorScheme scheme = theme.colorScheme;
+    final double progress = goal?.progress ?? 0;
+    final int current = goal?.currentCount ?? 0;
+    final int target = goal?.targetCount ?? 0;
+    final String goalValue = goal == null ? '— / — min' : '$current / $target min';
+
+    return Material(
+      color: scheme.surfaceContainerHigh,
+      borderRadius: BorderRadius.circular(18),
+      child: InkWell(
+        borderRadius: BorderRadius.circular(18),
+        onTap: onTap,
+        child: Padding(
+          padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 6),
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: <Widget>[
+              SizedBox(
+                width: 66,
+                height: 66,
+                child: Stack(
+                  alignment: Alignment.center,
+                  children: <Widget>[
+                    CircularProgressIndicator(
+                      value: progress,
+                      strokeWidth: 7,
+                      backgroundColor:
+                          scheme.outlineVariant.withValues(alpha: 0.55),
+                      valueColor: AlwaysStoppedAnimation<Color>(color),
+                    ),
+                    Text(
+                      '${(progress * 100).round()}%',
+                      style: theme.textTheme.titleMedium?.copyWith(
+                        fontWeight: FontWeight.w800,
+                        color: color,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              const SizedBox(height: 5),
+              Text(
+                'Goal',
+                maxLines: 1,
+                overflow: TextOverflow.ellipsis,
+                style: theme.textTheme.bodySmall?.copyWith(
+                  fontWeight: FontWeight.w700,
+                ),
+              ),
+              Text(
+                goalValue,
+                maxLines: 1,
+                overflow: TextOverflow.ellipsis,
+                style: theme.textTheme.labelSmall?.copyWith(
+                  color: scheme.onSurfaceVariant,
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
   }
 }
 
