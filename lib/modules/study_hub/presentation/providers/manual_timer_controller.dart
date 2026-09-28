@@ -48,9 +48,11 @@ class ManualTimerController extends Notifier<ManualTimerState> {
   }
 
   void reset() {
-    _stop();
-    state = const ManualTimerState();
+    finish();
   }
+
+  /// Saves the elapsed study time before the timer is reset or its page exits.
+  int stopAndSave() => finish();
 
   /// Stops, logs a session for the elapsed whole minutes, and resets.
   /// Returns the logged minutes (0 if under a minute).

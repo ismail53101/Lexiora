@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:lexiora/modules/study_hub/domain/entities/study_task.dart';
@@ -73,7 +75,40 @@ class _SessionEditorState extends ConsumerState<_SessionEditor> {
   late TaskStatus _status = widget.existing?.status ?? TaskStatus.pending;
   bool _addBreak = false;
   int _breakMinutes = 10;
+  StudyTask? _existingBreak;
+  bool _breakLoaded = false;
   late bool _automatic = widget.existing?.autoScheduled ?? true;
+
+  @override
+  void initState() {
+    super.initState();
+    if (widget.existing != null) {
+      unawaited(_loadExistingBreak());
+    } else {
+      _breakLoaded = true;
+    }
+  }
+
+  Future<void> _loadExistingBreak() async {
+    final StudyTask? sessionValue = widget.existing;
+    if (sessionValue == null) return;
+    final StudyTask session = sessionValue;
+    final List<StudyTask> tasks =
+        await ref.read(studyHubRepositoryProvider).watchTasks(widget.day).first;
+    final Iterable<StudyTask> matches = tasks.where((StudyTask task) =>
+        task.isBreak && task.startMinute == session.endMinute);
+    final StudyTask? breakTask = matches.isEmpty ? null : matches.first;
+    if (!mounted) return;
+    setState(() {
+      _existingBreak = breakTask;
+      _addBreak = breakTask != null;
+      _breakMinutes = breakTask?.durationMinutes ??
+          (breakTask?.startMinute != null && breakTask?.endMinute != null
+              ? breakTask!.endMinute! - breakTask.startMinute!
+              : 10);
+      _breakLoaded = true;
+    });
+  }
 
   @override
   void dispose() {
@@ -114,6 +149,7 @@ class _SessionEditorState extends ConsumerState<_SessionEditor> {
     final String subject = _subject.text.trim();
     if (subject.isEmpty) return;
     final DateTime now = DateTime.now();
+    if (!_breakLoaded) await _loadExistingBreak();
     final StudyTask base = widget.existing ??
         StudyTask(
           id: const Uuid().v4(),
@@ -141,25 +177,33 @@ class _SessionEditorState extends ConsumerState<_SessionEditor> {
       clearTimes: _start == null && _end == null,
     );
     await ref.read(studyHubRepositoryProvider).saveTask(task);
-    // One combined flow: optionally create the break right after this
-    // session's end time, instead of it being a separate "Add break" step —
-    // so a Pomodoro-style focus+break pair can be planned in one go.
-    if (widget.existing == null && _addBreak && _end != null) {
+    // Keep the break attached to this session's end time in both create and
+    // edit flows. Turning the switch off removes the linked break.
+    if (_addBreak && _end != null) {
       final int breakStart = _end!;
       final int breakEnd = (breakStart + _breakMinutes) % (24 * 60);
-      await ref.read(studyHubRepositoryProvider).saveTask(
-            StudyTask(
-              id: const Uuid().v4(),
-              day: widget.day,
-              title: 'Break',
-              startMinute: breakStart,
-              endMinute: breakEnd,
-              kind: SessionKind.breakTime,
-              autoScheduled: true,
-              createdAt: now,
-              updatedAt: now,
-            ),
+      final StudyTask breakTask = _existingBreak?.copyWith(
+            startMinute: breakStart,
+            endMinute: breakEnd,
+            durationMinutes: _breakMinutes,
+            autoScheduled: true,
+            updatedAt: now,
+          ) ??
+          StudyTask(
+            id: const Uuid().v4(),
+            day: widget.day,
+            title: 'Break',
+            startMinute: breakStart,
+            endMinute: breakEnd,
+            durationMinutes: _breakMinutes,
+            kind: SessionKind.breakTime,
+            autoScheduled: true,
+            createdAt: now,
+            updatedAt: now,
           );
+      await ref.read(studyHubRepositoryProvider).saveTask(breakTask);
+    } else if (_existingBreak != null) {
+      await ref.read(studyHubRepositoryProvider).deleteTask(_existingBreak!.id);
     }
     if (mounted) Navigator.of(context).pop();
   }
@@ -268,28 +312,26 @@ class _SessionEditorState extends ConsumerState<_SessionEditor> {
                 ),
               ],
             ),
-            if (widget.existing == null) ...<Widget>[
-              const SizedBox(height: 12),
-              SwitchListTile.adaptive(
-                contentPadding: EdgeInsets.zero,
-                value: _addBreak,
-                onChanged: (bool v) => setState(() => _addBreak = v),
-                title: const Text('Add a break right after this session'),
-                subtitle: const Text('Creates it in the same step — Pomodoro-style'),
+            const SizedBox(height: 12),
+            SwitchListTile.adaptive(
+              contentPadding: EdgeInsets.zero,
+              value: _addBreak,
+              onChanged: (bool v) => setState(() => _addBreak = v),
+              title: const Text('Add a break right after this session'),
+              subtitle: const Text('Creates it in the same step — Pomodoro-style'),
+            ),
+            if (_addBreak)
+              Wrap(
+                spacing: 8,
+                children: <Widget>[
+                  for (final int m in const <int>[5, 10, 15, 20])
+                    ChoiceChip(
+                      label: Text('$m min'),
+                      selected: _breakMinutes == m,
+                      onSelected: (_) => setState(() => _breakMinutes = m),
+                    ),
+                ],
               ),
-              if (_addBreak)
-                Wrap(
-                  spacing: 8,
-                  children: <Widget>[
-                    for (final int m in const <int>[5, 10, 15, 20])
-                      ChoiceChip(
-                        label: Text('$m min'),
-                        selected: _breakMinutes == m,
-                        onSelected: (_) => setState(() => _breakMinutes = m),
-                      ),
-                  ],
-                ),
-            ],
             const SizedBox(height: 16),
             Text('Priority', style: theme.textTheme.labelLarge),
             const SizedBox(height: 8),

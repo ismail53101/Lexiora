@@ -31,9 +31,11 @@ class PomodoroFullscreenPage extends ConsumerWidget {
     final PomodoroController controller = ref.read(pomodoroProvider.notifier);
     final bool running = state.running;
 
-    return AnnotatedRegion<SystemUiOverlayStyle>(
-      value: SystemUiOverlayStyle.light,
-      child: Scaffold(
+    return PopScope(
+      onPopInvokedWithResult: (_, _) => controller.stopAndSave(),
+      child: AnnotatedRegion<SystemUiOverlayStyle>(
+        value: SystemUiOverlayStyle.light,
+        child: Scaffold(
         backgroundColor: theme.colorScheme.surface,
         body: SafeArea(
           child: Column(
@@ -170,6 +172,7 @@ class PomodoroFullscreenPage extends ConsumerWidget {
               ),
             ],
           ),
+        ),
         ),
       ),
     );

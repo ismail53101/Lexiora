@@ -24,6 +24,10 @@ class _ProgressCardState extends ConsumerState<ProgressCard> {
 
   @override
   Widget build(BuildContext context) {
+    final StudyStatistics time = ref.watch(studyStatisticsProvider).maybeWhen(
+          data: (StudyStatistics value) => value,
+          orElse: () => StudyStatistics.empty,
+        );
     final StudyStats s = ref.watch(studyStatsProvider(_range)).maybeWhen(
           data: (StudyStats v) => v,
           orElse: () => StudyStats.empty(_range.days),
@@ -92,6 +96,58 @@ class _ProgressCardState extends ConsumerState<ProgressCard> {
                   label: 'Avg daily'),
             ],
           ),
+          const SizedBox(height: 12),
+          Text('Study time by day',
+              style: Theme.of(context).textTheme.titleSmall?.copyWith(
+                    fontWeight: FontWeight.w700,
+                  )),
+          const SizedBox(height: 8),
+          Text('Yesterday: ${formatDuration(time.yesterdayMinutes)}'),
+          const SizedBox(height: 8),
+          Row(
+            crossAxisAlignment: CrossAxisAlignment.end,
+            children: <Widget>[
+              for (int i = 0; i < time.days.length; i++)
+                Expanded(
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 2),
+                    child: Column(
+                      mainAxisSize: MainAxisSize.min,
+                      children: <Widget>[
+                        Text(formatDuration(time.days[i]),
+                            style: Theme.of(context).textTheme.labelSmall),
+                        const SizedBox(height: 4),
+                        Container(
+                          height: time.days[i] == 0
+                              ? 6
+                              : (12 + (time.days[i].clamp(0, 240) / 240) * 44),
+                          decoration: BoxDecoration(
+                            color: Theme.of(context).colorScheme.primary,
+                            borderRadius: BorderRadius.circular(6),
+                          ),
+                        ),
+                        const SizedBox(height: 4),
+                        Text(_dayLabel(i),
+                            style: Theme.of(context).textTheme.labelSmall),
+                      ],
+                    ),
+                  ),
+                ),
+            ],
+          ),
+          const SizedBox(height: 12),
+          StudyStatGrid(
+            tiles: <Widget>[
+              StudyStatTile(
+                  icon: Icons.date_range,
+                  value: formatDuration(time.weeklyMinutes),
+                  label: 'Last 7 days'),
+              StudyStatTile(
+                  icon: Icons.calendar_month,
+                  value: formatDuration(time.monthlyMinutes),
+                  label: 'This month'),
+            ],
+          ),
           if (subjects.isNotEmpty) ...<Widget>[
             const SizedBox(height: 10),
             Wrap(
@@ -110,5 +166,13 @@ class _ProgressCardState extends ConsumerState<ProgressCard> {
         ],
       ),
     );
+  }
+
+  String _dayLabel(int index) {
+    final DateTime day = DateTime.now().subtract(Duration(days: 6 - index));
+    const List<String> labels = <String>[
+      'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'
+    ];
+    return labels[day.weekday - 1];
   }
 }

@@ -61,6 +61,32 @@ enum StudyRange {
       };
 }
 
+/// Reactive study-time totals backed by the persisted study-session log.
+class StudyStatistics extends Equatable {
+  const StudyStatistics({
+    required this.days,
+    required this.weeklyMinutes,
+    required this.monthlyMinutes,
+  });
+
+  /// Seven entries ordered oldest to newest; the last entry is today.
+  final List<int> days;
+  final int weeklyMinutes;
+  final int monthlyMinutes;
+
+  int get yesterdayMinutes => days.length < 2 ? 0 : days[days.length - 2];
+  int get todayMinutes => days.isEmpty ? 0 : days.last;
+
+  static const StudyStatistics empty = StudyStatistics(
+    days: <int>[0, 0, 0, 0, 0, 0, 0],
+    weeklyMinutes: 0,
+    monthlyMinutes: 0,
+  );
+
+  @override
+  List<Object?> get props => <Object?>[days, weeklyMinutes, monthlyMinutes];
+}
+
 /// Aggregated study statistics over a rolling range.
 class StudyStats extends Equatable {
   const StudyStats({

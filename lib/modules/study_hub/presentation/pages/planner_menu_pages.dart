@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:lexiora/modules/study_hub/presentation/providers/manual_timer_controller.dart';
+import 'package:lexiora/modules/study_hub/presentation/providers/pomodoro_controller.dart';
+import 'package:lexiora/modules/study_hub/presentation/providers/study_hub_providers.dart';
 import 'package:lexiora/modules/study_hub/presentation/widgets/quick_actions_card.dart';
 import 'package:lexiora/modules/study_hub/presentation/widgets/study_progress_cards.dart';
 import 'package:lexiora/modules/study_hub/presentation/widgets/study_timer_card.dart';
@@ -8,16 +12,23 @@ import 'package:lexiora/modules/study_hub/presentation/widgets/study_timer_card.
 /// cards (same providers and behaviour as before), so every feature stays
 /// reachable while the planner home stays focused on the Daily / Weekly /
 /// Monthly views from the planner mockups.
-class PlannerTimerPage extends StatelessWidget {
+class PlannerTimerPage extends ConsumerWidget {
   const PlannerTimerPage({super.key});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     return Scaffold(
       appBar: AppBar(title: const Text('Study Timer')),
-      body: ListView(
-        padding: const EdgeInsets.symmetric(vertical: 6),
-        children: const <Widget>[StudyTimerCard()],
+      body: PopScope(
+        onPopInvokedWithResult: (_, _) {
+          ref.read(pomodoroProvider.notifier).stopAndSave();
+          ref.read(manualTimerProvider.notifier).stopAndSave();
+          ref.read(activeStudyContextProvider.notifier).clear();
+        },
+        child: ListView(
+          padding: const EdgeInsets.symmetric(vertical: 6),
+          children: const <Widget>[StudyTimerCard()],
+        ),
       ),
     );
   }

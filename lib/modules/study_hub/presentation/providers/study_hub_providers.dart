@@ -102,6 +102,60 @@ final studyStatsProvider =
     StreamProvider.family<StudyStats, StudyRange>((Ref ref, StudyRange range) =>
         ref.watch(studyHubRepositoryProvider).watchStats(range));
 
+/// Study-time breakdown for the last seven days plus rolling weekly/monthly
+/// totals. Every value comes from the same persisted study_sessions log used
+/// by the timer, including partially completed sessions.
+final StreamProvider<StudyStatistics> studyStatisticsProvider =
+    StreamProvider<StudyStatistics>((Ref ref) {
+  final StudyHubRepository repo = ref.watch(studyHubRepositoryProvider);
+  final DateTime today = DateTime.now();
+  final List<String> days = <String>[
+    for (int offset = 6; offset >= 0; offset--)
+      dayKey(today.subtract(Duration(days: offset))),
+  ];
+  return Stream<StudyStatistics>.multi(
+    (MultiStreamController<StudyStatistics> out) {
+      final List<int?> daily = List<int?>.filled(days.length, null);
+      int? weekly;
+      int? monthly;
+      void emit() {
+        if (weekly == null || monthly == null || daily.any((int? v) => v == null)) {
+          return;
+        }
+        out.add(StudyStatistics(
+          days: daily.cast<int>(),
+          weeklyMinutes: weekly!,
+          monthlyMinutes: monthly!,
+        ));
+      }
+      final List<StreamSubscription<int>> dailySubs = <StreamSubscription<int>>[
+        for (int i = 0; i < days.length; i++)
+          repo.watchStudyMinutes(days[i]).listen((int value) {
+            daily[i] = value;
+            emit();
+          }),
+      ];
+      final StreamSubscription<StudyStats> weeklySub =
+          repo.watchStats(StudyRange.weekly).listen((StudyStats value) {
+        weekly = value.studyMinutes;
+        emit();
+      });
+      final StreamSubscription<StudyStats> monthlySub =
+          repo.watchStats(StudyRange.monthly).listen((StudyStats value) {
+        monthly = value.studyMinutes;
+        emit();
+      });
+      out.onCancel = () async {
+        await Future.wait(<Future<void>>[
+          for (final StreamSubscription<int> sub in dailySubs) sub.cancel(),
+          weeklySub.cancel(),
+          monthlySub.cancel(),
+        ]);
+      };
+    },
+  );
+});
+
 /// Sessions/breaks for an arbitrary day (Weekly/Monthly planners).
 final studyDayTasksProvider =
     StreamProvider.family<List<StudyTask>, String>((Ref ref, String day) =>

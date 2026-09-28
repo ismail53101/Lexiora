@@ -129,6 +129,23 @@ void main() {
     expect(await repo.topicSuggestions(), containsAll(<String>['Economy', 'Essay']));
   });
 
+  test('linked break can be resized and removed while editing a session', () async {
+    await repo.saveTask(session('s', subject: 'Pakistan Affairs', start: 540, end: 600));
+    await repo.saveTask(brk('b', start: 600, end: 610, autoScheduled: true));
+
+    await repo.saveTask((await repo.watchTasks(today).first)
+        .firstWhere((StudyTask t) => t.id == 'b')
+        .copyWith(endMinute: 620, durationMinutes: 20, updatedAt: DateTime.now()));
+    StudyTask breakTask = (await repo.watchTasks(today).first)
+        .firstWhere((StudyTask t) => t.id == 'b');
+    expect(breakTask.startMinute, 600);
+    expect(breakTask.endMinute, 620);
+    expect(breakTask.durationMinutes, 20);
+
+    await repo.deleteTask('b');
+    expect((await repo.watchTasks(today).first).where((StudyTask t) => t.isBreak), isEmpty);
+  });
+
   test('breaks count as break time, not sessions', () async {
     await repo.saveTask(session('s', status: TaskStatus.completed, subject: 'Maths'));
     await repo.saveTask(brk('b', start: 11 * 60, end: 11 * 60 + 20)); // 20 min
@@ -219,6 +236,16 @@ void main() {
     final StudyStreak streak = await repo.watchStreak().first;
     expect(streak.current, 2);
     expect(streak.best, greaterThanOrEqualTo(2));
+  });
+
+  test('persisted partial minutes are available for previous-day and range stats',
+      () async {
+    await repo.addSession(log('partial-yesterday', minutes: 2, day: yesterday));
+    await repo.addSession(log('today', minutes: 25, day: today));
+
+    expect(await repo.watchStudyMinutes(yesterday).first, 2);
+    expect((await repo.watchStats(StudyRange.weekly).first).studyMinutes, 27);
+    expect((await repo.watchStats(StudyRange.monthly).first).studyMinutes, 27);
   });
 
   test('study-time and achievement goals keep separate progress rules', () {
