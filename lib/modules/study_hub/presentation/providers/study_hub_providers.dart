@@ -32,10 +32,16 @@ final StreamProvider<List<StudyGoal>> studyGoalsProvider =
   return Stream<List<StudyGoal>>.multi((MultiStreamController<List<StudyGoal>> out) {
     List<StudyGoal>? goals;
     int? minutes;
+    List<StudyTask>? tasks;
     void emit() {
-      if (goals == null || minutes == null) return;
+      if (goals == null || minutes == null || tasks == null) return;
+      final int completedTasks = tasks!
+          .where((StudyTask task) => task.completed && !task.isBreak)
+          .length;
       out.add(goals!
-          .map((StudyGoal goal) => goal.withStudyMinutes(minutes!))
+          .map((StudyGoal goal) => goal.isStudyTimeGoal
+              ? goal.withStudyMinutes(minutes!)
+              : goal.withCompletedTasks(completedTasks))
           .toList(growable: false));
     }
     final StreamSubscription<List<StudyGoal>> goalsSub =
@@ -48,9 +54,15 @@ final StreamProvider<List<StudyGoal>> studyGoalsProvider =
       minutes = value;
       emit();
     });
+    final StreamSubscription<List<StudyTask>> tasksSub =
+        repo.watchTasks(day).listen((List<StudyTask> value) {
+      tasks = value;
+      emit();
+    });
     out.onCancel = () async {
       await goalsSub.cancel();
       await minutesSub.cancel();
+      await tasksSub.cancel();
     };
   });
 });

@@ -7,13 +7,18 @@ enum GoalType {
   reading,
   grammar,
   mcq,
-  custom;
+  custom,
+  studyTime,
+  achievement;
 
   static GoalType fromKey(String? key) => switch (key) {
         'vocabulary' => GoalType.vocabulary,
         'reading' => GoalType.reading,
         'grammar' => GoalType.grammar,
         'mcq' => GoalType.mcq,
+        'studyTime' => GoalType.studyTime,
+        'study_time' => GoalType.studyTime,
+        'achievement' => GoalType.achievement,
         _ => GoalType.custom,
       };
 
@@ -25,6 +30,8 @@ enum GoalType {
         GoalType.grammar => 'Grammar',
         GoalType.mcq => 'MCQs',
         GoalType.custom => 'Custom',
+        GoalType.studyTime => 'Study Time',
+        GoalType.achievement => 'Achievement',
       };
 }
 
@@ -54,21 +61,34 @@ class StudyGoal extends Equatable {
 
   /// Progress in the range 0..1.
   double get progress =>
-      targetCount <= 0 ? 0 : (currentCount / targetCount).clamp(0.0, 1.0);
+      targetMinutes <= 0 ? 0 : (currentCount / targetMinutes).clamp(0.0, 1.0);
 
-  /// Custom goals and goals explicitly measured in minutes represent the shared
-  /// daily study-time goal. Their progress is calculated from study_sessions,
-  /// while vocabulary/reading/grammar/MCQ goals retain their own counters.
+  int get targetMinutes {
+    if (!isStudyTimeGoal) return targetCount;
+    final String normalized = (unit ?? '').trim().toLowerCase();
+    return <String>{'h', 'hr', 'hrs', 'hour', 'hours'}.contains(normalized)
+        ? targetCount * 60
+        : targetCount;
+  }
+
+  /// Legacy custom/minute goals and explicit Study Time goals use the shared
+  /// persisted study-session log. Achievement/category goals use task progress.
   bool get isStudyTimeGoal {
     final String normalized = (unit ?? '').trim().toLowerCase();
     return type == GoalType.custom ||
+        type == GoalType.studyTime ||
         <String>{'m', 'min', 'mins', 'minute', 'minutes'}.contains(normalized);
   }
+
+  bool get isAchievementGoal => !isStudyTimeGoal;
 
   StudyGoal withStudyMinutes(int minutes) =>
       isStudyTimeGoal ? copyWith(currentCount: minutes) : this;
 
-  bool get achieved => targetCount > 0 && currentCount >= targetCount;
+  StudyGoal withCompletedTasks(int count) =>
+      isAchievementGoal ? copyWith(currentCount: count) : this;
+
+  bool get achieved => targetMinutes > 0 && currentCount >= targetMinutes;
 
   StudyGoal copyWith({
     String? title,

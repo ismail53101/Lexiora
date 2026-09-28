@@ -220,4 +220,35 @@ void main() {
     expect(streak.current, 2);
     expect(streak.best, greaterThanOrEqualTo(2));
   });
+
+  test('study-time and achievement goals keep separate progress rules', () {
+    final DateTime now = DateTime.now();
+    final StudyGoal studyTime = StudyGoal(
+      id: 'time',
+      day: today,
+      title: 'Daily Study',
+      type: GoalType.studyTime,
+      targetCount: 3,
+      unit: 'hours',
+      createdAt: now,
+      updatedAt: now,
+    ).withStudyMinutes(130);
+    final StudyGoal achievement = StudyGoal(
+      id: 'achievement',
+      day: today,
+      title: 'Complete English Tenses',
+      type: GoalType.achievement,
+      targetCount: 5,
+      unit: 'topics',
+      createdAt: now,
+      updatedAt: now,
+    ).withCompletedTasks(3);
+
+    expect(studyTime.targetMinutes, 180);
+    expect(studyTime.progress, closeTo(130 / 180, 0.001));
+    expect(achievement.currentCount, 3);
+    expect(achievement.progress, closeTo(0.6, 0.001));
+    expect(studyTime.withCompletedTasks(5).currentCount, 130);
+    expect(achievement.withStudyMinutes(130).currentCount, 3);
+  });
 }

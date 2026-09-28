@@ -30,6 +30,7 @@ import 'package:lexiora/features/settings/presentation/providers/settings_provid
 import 'package:lexiora/modules/study_hub/domain/entities/study_goal.dart';
 import 'package:lexiora/modules/study_hub/domain/study_dates.dart';
 import 'package:lexiora/modules/study_hub/presentation/providers/study_hub_providers.dart';
+import 'package:lexiora/modules/study_hub/presentation/widgets/goal_editor.dart';
 
 /// The Home dashboard: a personal greeting + quick search, the Explore
 /// module grid (brought up top so it's visible without scrolling),
@@ -476,7 +477,7 @@ class _StatsRow extends ConsumerWidget {
             child: _GoalStatTile(
               goal: studyGoal,
               color: scheme.primary,
-              onTap: () => context.push(AppRoutes.studyHub),
+              onTap: () => _showGoalsSheet(context, ref, goals),
             ),
           ),
         ],
@@ -498,8 +499,9 @@ class _GoalStatTile extends StatelessWidget {
     final ColorScheme scheme = theme.colorScheme;
     final double progress = goal?.progress ?? 0;
     final int current = goal?.currentCount ?? 0;
-    final int target = goal?.targetCount ?? 0;
-    final String goalValue = goal == null ? '— / — min' : '$current / $target min';
+    final String goalValue = goal == null
+        ? 'Set a goal'
+        : '${formatDuration(current)} / ${formatDuration(goal!.targetMinutes)}';
 
     return Material(
       color: scheme.surfaceContainerHigh,
@@ -555,6 +557,89 @@ class _GoalStatTile extends StatelessWidget {
             ],
           ),
         ),
+      ),
+    );
+  }
+}
+
+void _showGoalsSheet(
+  BuildContext context,
+  WidgetRef ref,
+  List<StudyGoal> goals,
+) {
+  showModalBottomSheet<void>(
+    context: context,
+    showDragHandle: true,
+    builder: (BuildContext sheetContext) {
+      final List<StudyGoal> studyGoals =
+          goals.where((StudyGoal g) => g.isStudyTimeGoal).toList(growable: false);
+      final List<StudyGoal> achievementGoals =
+          goals.where((StudyGoal g) => g.isAchievementGoal).toList(growable: false);
+      return Padding(
+        padding: const EdgeInsets.fromLTRB(20, 0, 20, 20),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: <Widget>[
+            Text('Goals', style: Theme.of(sheetContext).textTheme.titleLarge),
+            const SizedBox(height: 12),
+            if (goals.isEmpty)
+              const Text('No goal set for today.')
+            else ...<Widget>[
+              for (final StudyGoal goal in studyGoals)
+                _GoalSheetRow(
+                  icon: Icons.track_changes,
+                  title: "Today's Study",
+                  value:
+                      '${formatDuration(goal.currentCount)} / ${formatDuration(goal.targetMinutes)} — ${(goal.progress * 100).round()}%',
+                ),
+              for (final StudyGoal goal in achievementGoals)
+                _GoalSheetRow(
+                  icon: Icons.menu_book_outlined,
+                  title: goal.title,
+                  value:
+                      '${goal.currentCount} / ${goal.targetCount} ${goal.unit ?? 'topics'} — ${(goal.progress * 100).round()}%',
+                ),
+            ],
+            const SizedBox(height: 12),
+            Align(
+              alignment: Alignment.centerRight,
+              child: FilledButton.tonalIcon(
+                onPressed: () {
+                  Navigator.of(sheetContext).pop();
+                  showGoalEditor(context, day: ref.read(studyTodayProvider));
+                },
+                icon: const Icon(Icons.add),
+                label: const Text('Add goal'),
+              ),
+            ),
+          ],
+        ),
+      );
+    },
+  );
+}
+
+class _GoalSheetRow extends StatelessWidget {
+  const _GoalSheetRow({required this.icon, required this.title, required this.value});
+  final IconData icon;
+  final String title;
+  final String value;
+
+  @override
+  Widget build(BuildContext context) {
+    final ColorScheme scheme = Theme.of(context).colorScheme;
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 5),
+      child: Row(
+        children: <Widget>[
+          Icon(icon, size: 20, color: scheme.primary),
+          const SizedBox(width: 10),
+          Expanded(
+              child: Text(title,
+                  style: const TextStyle(fontWeight: FontWeight.w700))),
+          Text(value, style: TextStyle(color: scheme.onSurfaceVariant)),
+        ],
       ),
     );
   }
@@ -1305,5 +1390,3 @@ class _ExploreTile extends StatelessWidget {
         .scale(begin: const Offset(0.92, 0.92), end: const Offset(1, 1));
   }
 }
-
-
