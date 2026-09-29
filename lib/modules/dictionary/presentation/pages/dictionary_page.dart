@@ -118,11 +118,9 @@ class _DictionaryPageState extends ConsumerState<DictionaryPage> {
               .onQueryChanged(state.query),
         );
       case DictionarySearchStatus.empty:
-        return EmptyState(
-          icon: Icons.search_off,
-          title: 'No results',
-          message: 'No words match “${state.query}”. Check the spelling and '
-              'try again.',
+        return _NoLocalResult(
+          query: state.query,
+          onAskAi: () => _openAiWord(state.query),
         );
       case DictionarySearchStatus.ready:
         return _ResultsList(
@@ -135,6 +133,59 @@ class _DictionaryPageState extends ConsumerState<DictionaryPage> {
 
   void _openWord(DictionaryResult r) =>
       context.push(AppRoutes.dictionaryWord(r.wordLower));
+
+  void _openAiWord(String query) =>
+      context.push(AppRoutes.dictionaryWord(query.trim().toLowerCase()));
+}
+
+/// A missing local word is not a dead end: opening it invokes the Dictionary's
+/// AI fallback directly on the details page. This is deliberately a button,
+/// rather than an automatic request for every typo, so token usage stays low.
+class _NoLocalResult extends StatelessWidget {
+  const _NoLocalResult({required this.query, required this.onAskAi});
+
+  final String query;
+  final VoidCallback onAskAi;
+
+  @override
+  Widget build(BuildContext context) {
+    final ThemeData theme = Theme.of(context);
+    return Center(
+      child: SingleChildScrollView(
+        padding: const EdgeInsets.all(32),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: <Widget>[
+            Icon(Icons.auto_awesome,
+                size: 54, color: theme.colorScheme.primary),
+            const SizedBox(height: 18),
+            Text('Not in offline dictionary',
+                style: theme.textTheme.titleLarge
+                    ?.copyWith(fontWeight: FontWeight.w700),
+                textAlign: TextAlign.center),
+            const SizedBox(height: 8),
+            Text(
+              '“$query” is not in the local word list. Ask Lexiora AI for its meaning, Urdu translation, synonyms, antonyms, and example.',
+              textAlign: TextAlign.center,
+              style: theme.textTheme.bodyMedium
+                  ?.copyWith(color: theme.colorScheme.onSurfaceVariant),
+            ),
+            const SizedBox(height: 22),
+            FilledButton.icon(
+              onPressed: onAskAi,
+              icon: const Icon(Icons.auto_awesome),
+              label: const Text('Ask AI for this word'),
+            ),
+            const SizedBox(height: 10),
+            Text('Requires internet. Your offline dictionary remains unchanged.',
+                textAlign: TextAlign.center,
+                style: theme.textTheme.labelSmall
+                    ?.copyWith(color: theme.colorScheme.onSurfaceVariant)),
+          ],
+        ),
+      ),
+    );
+  }
 }
 
 class _SearchField extends StatelessWidget {
