@@ -451,23 +451,36 @@ async function fetchGNewsSource(source, env) {
   const apiKey = env.GNEWS_API_KEY;
   if (!apiKey) return [];
 
-  const endpoint = new URL("https://gnews.io/api/v4/top-headlines");
-  endpoint.searchParams.set("lang", "en");
-  endpoint.searchParams.set("max", "100");
-  endpoint.searchParams.set("apikey", apiKey);
-  if (source.country) endpoint.searchParams.set("country", source.country);
-  if (source.categoryParam) endpoint.searchParams.set("category", source.categoryParam);
-
   const controller = new AbortController();
   const timeout = setTimeout(() => controller.abort(), 10000);
   try {
+    const endpoint = new URL("https://gnews.io/api/v4/top-headlines");
+    endpoint.searchParams.set("lang", "en");
+    endpoint.searchParams.set("max", "100");
+    endpoint.searchParams.set("apikey", apiKey);
+    if (source.country) endpoint.searchParams.set("country", source.country);
+    if (source.categoryParam) endpoint.searchParams.set("category", source.categoryParam);
+
     const response = await fetch(endpoint, {
       headers: { "User-Agent": "Sapiora-Current-Affairs/1.0 (+GNews reader)" },
       signal: controller.signal,
     });
-    if (!response.ok) return [];
-    const payload = await response.json();
-    if (!Array.isArray(payload.articles)) return [];
+    let payload = response.ok ? await response.json() : null;
+    if ((!payload || !Array.isArray(payload.articles) || payload.articles.length === 0) &&
+        source.category === "International") {
+      const fallback = new URL("https://gnews.io/api/v4/search");
+      fallback.searchParams.set("q", "international OR world");
+      fallback.searchParams.set("lang", "en");
+      fallback.searchParams.set("max", "100");
+      fallback.searchParams.set("sortby", "publishedAt");
+      fallback.searchParams.set("apikey", apiKey);
+      const fallbackResponse = await fetch(fallback, {
+        headers: { "User-Agent": "Sapiora-Current-Affairs/1.0 (+GNews reader)" },
+        signal: controller.signal,
+      });
+      if (fallbackResponse.ok) payload = await fallbackResponse.json();
+    }
+    if (!payload || !Array.isArray(payload.articles)) return [];
     return payload.articles.map((article) => {
       const title = cleanText(article.title || "");
       const url = typeof article.url === "string" ? article.url : "";
@@ -477,7 +490,7 @@ async function fetchGNewsSource(source, env) {
         title,
         source: cleanText(article.source?.name || "GNews"),
         category: source.category,
-        feedType: source.feedType,
+        feedType: classifyFeedType(source, url, title),
         publishedAt: validDate(article.publishedAt),
         excerpt: cleanText(article.description || article.content || "").slice(0, 500),
         imageUrl: typeof article.image === "string" ? article.image : null,
@@ -506,13 +519,21 @@ function parseFeed(xml, source) {
       title,
       source: source.name,
       category: source.category,
-      feedType: source.feedType,
+      feedType: classifyFeedType(source, url, title),
       publishedAt: validDate(publishedAt),
       excerpt: description,
       imageUrl: readImage(block),
       articleUrl: url,
     };
   }).filter(Boolean);
+}
+
+function classifyFeedType(source, articleUrl, title) {
+  if (source.feedType.toLowerCase() === "opinions") return "Opinions";
+  const text = `${articleUrl} ${title}`.toLowerCase();
+  return /(?:\/|\b)(?:opinion|opinions|editorial|analysis|op-ed)(?:\/|\b)/i.test(text)
+    ? "Opinions"
+    : source.feedType;
 }
 
 function readTag(block, tag) {
