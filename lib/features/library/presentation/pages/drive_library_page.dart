@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
@@ -88,6 +89,34 @@ class _DriveLibraryPageState extends ConsumerState<DriveLibraryPage> {
 
   @override
   Widget build(BuildContext context) {
+    if (kIsWeb) {
+      return Scaffold(
+        appBar: AppBar(title: const Text('Google Drive Library')),
+        body: Center(
+          child: Padding(
+            padding: const EdgeInsets.all(32),
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: <Widget>[
+                Icon(Icons.cloud_off_outlined,
+                    size: 48, color: Theme.of(context).colorScheme.primary),
+                const SizedBox(height: 16),
+                const Text(
+                  'Google Drive browsing is available in the Android app. '
+                  'Use Import PDF to add browser-local documents here.',
+                  textAlign: TextAlign.center,
+                ),
+                const SizedBox(height: 20),
+                FilledButton(
+                  onPressed: () => context.pop(),
+                  child: const Text('Back to Library'),
+                ),
+              ],
+            ),
+          ),
+        ),
+      );
+    }
     return Scaffold(
       appBar: AppBar(
         title: const Text('Google Drive Library'),
