@@ -1,0 +1,1413 @@
+{
+  "bank": {
+    "name": "Hadith & Sunnah",
+    "subject": "Islamic Studies",
+    "topic": "Hadith & Sunnah",
+    "description": "The science of hadith, famous collections, narrators and key hadiths.",
+    "tags": "css,pms,fpsc,ppsc,nts,islamic-studies,hadith,sunnah",
+    "version": "1.0",
+    "id": "islamiat_hadith_sunnah"
+  },
+  "questions": [
+    {
+      "type": "mcq",
+      "prompt": "What does the word 'Hadith' mean?",
+      "options": [
+        "The Quran",
+        "A saying, action or approval of the Prophet (PBUH)",
+        "A prayer",
+        "A pilgrimage"
+      ],
+      "answer": 1,
+      "explanation": "Hadith refers to the recorded sayings, actions and tacit approvals of the Prophet Muhammad (PBUH).",
+      "difficulty": "easy",
+      "id": "q01"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What is a 'Sahih' hadith?",
+      "options": [
+        "A weak hadith",
+        "An authentic hadith",
+        "A fabricated hadith",
+        "A chainless hadith"
+      ],
+      "answer": 1,
+      "explanation": "Sahih means authentic — a hadith with a sound chain of narrators and text.",
+      "difficulty": "medium",
+      "id": "q02"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What is 'Isnad' in hadith terminology?",
+      "options": [
+        "The chain of narrators",
+        "The text of the hadith",
+        "The commentary",
+        "The classification"
+      ],
+      "answer": 0,
+      "explanation": "Isnad is the chain of narrators through whom the hadith was transmitted; Matn is the text.",
+      "difficulty": "medium",
+      "id": "q03"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What is a 'Hadith Qudsi'?",
+      "options": [
+        "A hadith narrated by a king",
+        "A divine saying relayed by the Prophet (PBUH) but not part of the Quran",
+        "A fabricated hadith",
+        "A hadith about angels"
+      ],
+      "answer": 1,
+      "explanation": "Hadith Qudsi is a divine saying of Allah conveyed in the Prophet's (PBUH) words — distinct from the Quran.",
+      "difficulty": "hard",
+      "id": "q04"
+    },
+    {
+      "type": "mcq",
+      "prompt": "How many hadiths does Sahih al-Bukhari contain approximately?",
+      "options": [
+        "About 2,600 (excluding repetitions)",
+        "About 10,000",
+        "About 500",
+        "About 40"
+      ],
+      "answer": 0,
+      "explanation": "Sahih al-Bukhari contains about 2,600 unique hadiths (roughly 7,275 with repetitions).",
+      "difficulty": "medium",
+      "id": "q05"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who is known as 'Ameer-ul-Momineen fil-Hadith' (leader of the faithful in hadith)?",
+      "options": [
+        "Imam Bukhari",
+        "Imam Muslim",
+        "Imam Abu Hanifa",
+        "Imam Ahmad"
+      ],
+      "answer": 0,
+      "explanation": "Imam Bukhari earned this title for his unmatched mastery of hadith.",
+      "difficulty": "medium",
+      "id": "q06"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which hadith collection is called 'Al-Jami al-Sahih' and is second in authenticity after Bukhari?",
+      "options": [
+        "Sahih Muslim",
+        "Sunan Abu Dawood",
+        "Jami al-Tirmidhi",
+        "Sunan Ibn Majah"
+      ],
+      "answer": 0,
+      "explanation": "Sahih Muslim is the second most authentic hadith collection.",
+      "difficulty": "easy",
+      "id": "q07"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What is 'Sunan' in hadith literature?",
+      "options": [
+        "Collections arranged by topics of fiqh",
+        "Collections arranged by narrators",
+        "Collections of weak hadiths",
+        "Biographies of narrators"
+      ],
+      "answer": 0,
+      "explanation": "Sunan collections (Abu Dawood, Nasa'i, Ibn Majah) are arranged by legal topics.",
+      "difficulty": "hard",
+      "id": "q08"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What is a 'Musnad' collection?",
+      "options": [
+        "Arranged by the names of the companions who narrated",
+        "Arranged by topics",
+        "A collection of only weak hadiths",
+        "A commentary on Bukhari"
+      ],
+      "answer": 0,
+      "explanation": "Musnad collections, like Imam Ahmad's Musnad, group hadiths by the narrating companion.",
+      "difficulty": "hard",
+      "id": "q09"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who wrote 'Mishkat al-Masabih', a famous selection of hadiths?",
+      "options": [
+        "Al-Tabrizi",
+        "Imam Nawawi",
+        "Ibn Hajar",
+        "Al-Suyuti"
+      ],
+      "answer": 0,
+      "explanation": "Waliuddin al-Tabrizi compiled Mishkat al-Masabih, widely used in South Asian seminaries.",
+      "difficulty": "hard",
+      "id": "q10"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What is 'Rijal al-Hadith'?",
+      "options": [
+        "The science of evaluating hadith narrators",
+        "The text of hadiths",
+        "The compilation method",
+        "A book of prayers"
+      ],
+      "answer": 0,
+      "explanation": "Ilm al-Rijal is the science of assessing the reliability of hadith narrators.",
+      "difficulty": "hard",
+      "id": "q11"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What is a 'Mursal' hadith?",
+      "options": [
+        "One in which a successor (Tabi'i) narrates directly from the Prophet (PBUH) omitting the companion",
+        "A fabricated hadith",
+        "An authentic hadith",
+        "A hadith about travel"
+      ],
+      "answer": 0,
+      "explanation": "Mursal is a hadith where the Tabi'i drops the companion from the chain, which scholars debate as weaker.",
+      "difficulty": "hard",
+      "id": "q12"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What is 'Maudu' (fabricated) hadith?",
+      "options": [
+        "An authentic hadith",
+        "A hadith invented and falsely attributed to the Prophet (PBUH)",
+        "A weak hadith",
+        "A hadith about mothers"
+      ],
+      "answer": 1,
+      "explanation": "Maudu means fabricated or forged — a hadith falsely attributed to the Prophet (PBUH).",
+      "difficulty": "medium",
+      "id": "q13"
+    },
+    {
+      "type": "mcq",
+      "prompt": "How many hadiths are in the collection 'Riyad al-Salihin'?",
+      "options": [
+        "About 1,900",
+        "About 4,000",
+        "About 500",
+        "About 100"
+      ],
+      "answer": 0,
+      "explanation": "Imam Nawawi's Riyad al-Salihin contains roughly 1,900 hadiths organized by virtue and manners.",
+      "difficulty": "medium",
+      "id": "q14"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which companion is reported to have narrated the most hadiths?",
+      "options": [
+        "Abu Hurairah",
+        "Ali ibn Abi Talib",
+        "Umar ibn al-Khattab",
+        "Zaid bin Thabit"
+      ],
+      "answer": 0,
+      "explanation": "Abu Hurairah (RA) narrated about 5,374 hadiths, the most of any companion.",
+      "difficulty": "medium",
+      "id": "q15"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The famous hadith 'Actions are judged by intentions' (Innamal a'malu bin-niyyah) is found at the beginning of which collection?",
+      "options": [
+        "Sahih al-Bukhari",
+        "Sahih Muslim only",
+        "Sunan Abu Dawood",
+        "Muwatta Malik"
+      ],
+      "answer": 0,
+      "explanation": "It opens Sahih al-Bukhari and is widely considered the first hadith a student memorizes.",
+      "difficulty": "medium",
+      "id": "q16"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What is 'Matn' in hadith terminology?",
+      "options": [
+        "The text of the hadith",
+        "The chain of narrators",
+        "The narrator",
+        "The commentary"
+      ],
+      "answer": 0,
+      "explanation": "Matn is the actual text/content of the hadith, as opposed to the Isnad (chain).",
+      "difficulty": "medium",
+      "id": "q17"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which scholar compiled 'Al-Adab al-Mufrad', dedicated to hadiths on manners and character?",
+      "options": [
+        "Imam Bukhari",
+        "Imam Muslim",
+        "Imam Tirmidhi",
+        "Imam Nasa'i"
+      ],
+      "answer": 0,
+      "explanation": "Imam Bukhari authored Al-Adab al-Mufrad, a collection of hadiths on Islamic manners.",
+      "difficulty": "hard",
+      "id": "q18"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What does 'Muttafaqun Alaih' mean?",
+      "options": [
+        "A hadith agreed upon by Bukhari and Muslim",
+        "A hadith agreed upon by all four Imams",
+        "A disputed hadith",
+        "A weak hadith"
+      ],
+      "answer": 0,
+      "explanation": "Muttafaqun Alaih refers to hadiths recorded by both Sahih al-Bukhari and Sahih Muslim.",
+      "difficulty": "medium",
+      "id": "q19"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who compiled 'Jami al-Tirmidhi'?",
+      "options": [
+        "Imam Abu Isa al-Tirmidhi",
+        "Imam Abu Dawood",
+        "Imam Ibn Majah",
+        "Imam Nasa'i"
+      ],
+      "answer": 0,
+      "explanation": "Imam Abu Isa Muhammad al-Tirmidhi (824-892) compiled Jami al-Tirmidhi, known for grading hadiths.",
+      "difficulty": "easy",
+      "id": "q20"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which hadith book is considered the 'Sahih' of Imam Ibn Khuzaymah?",
+      "options": [
+        "Sahih Ibn Khuzaymah",
+        "Sahih Ibn Hibban",
+        "Mustadrak al-Hakim",
+        "Al-Mu'jam al-Kabir"
+      ],
+      "answer": 0,
+      "explanation": "Ibn Khuzaymah's Sahih is one of the early authentic collections, though partially lost.",
+      "difficulty": "hard",
+      "id": "q21"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The hadith 'Seeking knowledge is obligatory upon every Muslim' is narrated by whom?",
+      "options": [
+        "Ibn Majah",
+        "Bukhari",
+        "Muslim",
+        "Nasa'i"
+      ],
+      "answer": 0,
+      "explanation": "This famous hadith is recorded by Ibn Majah (and others), urging every Muslim to seek knowledge.",
+      "difficulty": "medium",
+      "id": "q22"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What is the 'Isnad' status of a hadith narrated only by one person at some link?",
+      "options": [
+        "Mutawatir",
+        "Ahad",
+        "Maudu",
+        "Munkar"
+      ],
+      "answer": 1,
+      "explanation": "Ahad hadiths are narrated by limited chains, as opposed to Mutawatir (mass-transmitted).",
+      "difficulty": "hard",
+      "id": "q23"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who is known for compiling 'Sunan al-Kubra', a major collection, and died in 1066 CE?",
+      "options": [
+        "Imam al-Bayhaqi",
+        "Imam al-Hakim",
+        "Imam al-Daraqutni",
+        "Imam al-Tabarani"
+      ],
+      "answer": 0,
+      "explanation": "Imam al-Bayhaqi's Sunan al-Kubra is one of the largest hadith compilations.",
+      "difficulty": "hard",
+      "id": "q24"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The 'Forty Hadith' collection (Al-Arba'in) was compiled by which famous scholar?",
+      "options": [
+        "Imam Nawawi",
+        "Imam Bukhari",
+        "Imam Ghazali",
+        "Ibn Taymiyyah"
+      ],
+      "answer": 0,
+      "explanation": "Imam Nawawi's Forty Hadith (Al-Arba'in al-Nawawiyyah) is among the most studied hadith books.",
+      "difficulty": "easy",
+      "id": "q25"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What is 'Ilm-ul-Dirayah' in hadith science?",
+      "options": [
+        "The study of the text (matn) of hadith",
+        "The study of narrators",
+        "The compilation method",
+        "The chain of transmission"
+      ],
+      "answer": 0,
+      "explanation": "Dirayah evaluates the hadith text; Riwayah transmits the reports.",
+      "difficulty": "hard",
+      "id": "q26"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What is 'Al-Jarh wa al-Ta'dil'?",
+      "options": [
+        "The science of declaring narrators reliable or discredited",
+        "The art of compilation",
+        "A book of prayers",
+        "A chapter of fiqh"
+      ],
+      "answer": 0,
+      "explanation": "Al-Jarh wa al-Ta'dil assesses narrator credibility in hadith science.",
+      "difficulty": "hard",
+      "id": "q27"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which of these is a 'Sahih' condition set by Bukhari and Muslim?",
+      "options": [
+        "Continuity of chain, upright narrators, and sound text",
+        "Only many narrators",
+        "Only famous narrators",
+        "Only written reports"
+      ],
+      "answer": 0,
+      "explanation": "Authenticity requires an unbroken chain of trustworthy, precise narrators.",
+      "difficulty": "medium",
+      "id": "q28"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What is a 'Hadith Hasan'?",
+      "options": [
+        "A good hadith with a slight weakness in precision but acceptable",
+        "A fabricated hadith",
+        "A weak hadith",
+        "An unauthenticated hadith"
+      ],
+      "answer": 0,
+      "explanation": "Hasan hadiths are good — their narrators are less precise but still acceptable.",
+      "difficulty": "medium",
+      "id": "q29"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The famous hadith 'The best of you are those who learn the Quran and teach it' is in?",
+      "options": [
+        "Sahih al-Bukhari",
+        "Sahih Muslim only",
+        "Sunan Abu Dawood only",
+        "Muwatta Malik"
+      ],
+      "answer": 0,
+      "explanation": "This hadith is recorded in Sahih al-Bukhari.",
+      "difficulty": "medium",
+      "id": "q30"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What is 'Riwayah' in hadith?",
+      "options": [
+        "The transmission and narration of hadith",
+        "The commentary on hadith",
+        "The grading of hadith",
+        "The compilation of narrators"
+      ],
+      "answer": 0,
+      "explanation": "Riwayah is narrating hadith with its chain; Dirayah is critical evaluation.",
+      "difficulty": "hard",
+      "id": "q31"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The hadith 'Whoever believes in Allah and the Last Day should honour his guest' emphasizes?",
+      "options": [
+        "Good manners and hospitality",
+        "Fasting",
+        "Pilgrimage",
+        "Charity only"
+      ],
+      "answer": 0,
+      "explanation": "This hadith (Bukhari/Muslim) teaches honouring guests as part of faith.",
+      "difficulty": "easy",
+      "id": "q32"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The famous hadith on intentions ('Actions are by intentions') was narrated by which companion?",
+      "options": [
+        "Umar ibn al-Khattab",
+        "Abu Hurairah",
+        "Aisha",
+        "Anas bin Malik"
+      ],
+      "answer": 0,
+      "explanation": "Umar (RA) narrated the hadith of intentions, opening Sahih al-Bukhari.",
+      "difficulty": "medium",
+      "id": "q33"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What is 'Tadlis' in hadith?",
+      "options": [
+        "Concealing a weakness in the chain of narrators",
+        "Adding text",
+        "Exaggeration",
+        "A type of grading"
+      ],
+      "answer": 0,
+      "explanation": "Tadlis is a narrator's concealment of whom they heard from — a criticized practice.",
+      "difficulty": "hard",
+      "id": "q34"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The hadith 'Paradise lies at the feet of mothers' teaches?",
+      "options": [
+        "Respect and care for mothers",
+        "That mothers enter Paradise easily",
+        "Only obedience in childhood",
+        "A geographical fact"
+      ],
+      "answer": 0,
+      "explanation": "The hadith emphasizes the supreme status and honour of mothers.",
+      "difficulty": "easy",
+      "id": "q35"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which companion narrated the 'Hadith of Jibril' defining Islam, Iman and Ihsan?",
+      "options": [
+        "Umar ibn al-Khattab",
+        "Abu Hurairah",
+        "Anas",
+        "Ibn Abbas"
+      ],
+      "answer": 0,
+      "explanation": "Umar (RA) narrated the famous Hadith of Jibril in Sahih Muslim.",
+      "difficulty": "medium",
+      "id": "q36"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What is the 'Khutbat al-Wada' (Farewell Sermon)?",
+      "options": [
+        "The Prophet's (PBUH) final sermon at the Farewell Hajj in 10 AH",
+        "A Friday sermon",
+        "A treaty speech",
+        "A battle address"
+      ],
+      "answer": 0,
+      "explanation": "The Farewell Sermon at Arafat in 10 AH summarized Islam's core teachings.",
+      "difficulty": "easy",
+      "id": "q37"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The hadith 'Religion is sincerity (naseehah)' was said three times, referring to?",
+      "options": [
+        "Sincerity to Allah, His Book, His Messenger, leaders and all Muslims",
+        "Only to Allah",
+        "Only to leaders",
+        "Only to oneself"
+      ],
+      "answer": 0,
+      "explanation": "The hadith defines Naseehah across five spheres — the core of social ethics.",
+      "difficulty": "medium",
+      "id": "q38"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which hadith collection is titled 'Sunan al-Nasa'i' and known for strict narrator standards?",
+      "options": [
+        "Sunan al-Nasa'i",
+        "Sunan Ibn Majah",
+        "Jami al-Tirmidhi",
+        "Sunan Abu Dawood"
+      ],
+      "answer": 0,
+      "explanation": "Imam al-Nasa'i's Sunan is famous for rigorous scrutiny of narrators.",
+      "difficulty": "medium",
+      "id": "q39"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The hadith 'Seek knowledge even unto China' is considered by scholars as?",
+      "options": [
+        "Widely quoted but weak (da'if) in its chain",
+        "Authentic (sahih)",
+        "A Quranic verse",
+        "Fabricated by all accounts"
+      ],
+      "answer": 0,
+      "explanation": "Scholars classify 'Seek knowledge even unto China' as weak but commonly cited.",
+      "difficulty": "hard",
+      "id": "q40"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which hadith book is regarded as the most authentic after the Quran?",
+      "options": [
+        "Sahih al-Bukhari",
+        "Sahih Muslim",
+        "Muwatta",
+        "Sunan Abu Dawood"
+      ],
+      "answer": 0,
+      "explanation": "Sahih al-Bukhari is the most authentic book after the Quran.",
+      "difficulty": "easy",
+      "id": "q41"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The famous hadith on intentions begins with whose narration?",
+      "options": [
+        "Umar ibn al-Khattab (RA)",
+        "Abu Bakr (RA)",
+        "Anas (RA)",
+        "Abu Huraira (RA)"
+      ],
+      "answer": 0,
+      "explanation": "Umar (RA) narrated the hadith 'Actions are by intentions'.",
+      "difficulty": "medium",
+      "id": "q42"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What is a 'Muttawatir' hadith?",
+      "options": [
+        "Narrated by many chains in every generation",
+        "A weak hadith",
+        "A single-narrator hadith",
+        "A fabricated hadith"
+      ],
+      "answer": 0,
+      "explanation": "Muttawatir is transmitted by numerous narrators at every level.",
+      "difficulty": "medium",
+      "id": "q43"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who was the first to collect hadith into a formal book?",
+      "options": [
+        "Umar bin Abdul Aziz ordered the first compilation",
+        "Imam Bukhari",
+        "Imam Malik",
+        "Imam Ahmad"
+      ],
+      "answer": 0,
+      "explanation": "Umar bin Abdul Aziz commissioned the first hadith compilation.",
+      "difficulty": "hard",
+      "id": "q44"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The hadith 'Seeking knowledge is obligatory on every Muslim' highlights:",
+      "options": [
+        "The importance of education",
+        "The importance of prayer",
+        "The importance of fasting",
+        "The importance of charity"
+      ],
+      "answer": 0,
+      "explanation": "The hadith urges the pursuit of knowledge.",
+      "difficulty": "easy",
+      "id": "q45"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who was the companion famous for collecting hadith in the scroll 'Al-Sahifah al-Sadiqah'?",
+      "options": [
+        "Abdullah bin Amr bin Al-As",
+        "Abu Huraira",
+        "Anas",
+        "Jabir"
+      ],
+      "answer": 0,
+      "explanation": "Abdullah bin Amr recorded hadith in a scroll.",
+      "difficulty": "hard",
+      "id": "q46"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The hadith of 'Gabriel' teaches about:",
+      "options": [
+        "Islam, Iman and Ihsan",
+        "Only prayer",
+        "Only fasting",
+        "Only charity"
+      ],
+      "answer": 0,
+      "explanation": "The Hadith of Gabriel explains the three levels of faith.",
+      "difficulty": "medium",
+      "id": "q47"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which hadith collection is known for its 'Muwatta' by the Imam of Madinah?",
+      "options": [
+        "Muwatta Malik",
+        "Sahih Muslim",
+        "Sunan Ibn Majah",
+        "Jami Tirmidhi"
+      ],
+      "answer": 0,
+      "explanation": "Imam Malik's Muwatta is an early Madinan compilation.",
+      "difficulty": "easy",
+      "id": "q48"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The hadith 'None of you truly believes until he loves for his brother what he loves for himself' teaches:",
+      "options": [
+        "Brotherhood and empathy",
+        "Wealth",
+        "Power",
+        "Isolation"
+      ],
+      "answer": 0,
+      "explanation": "It emphasises sincere love for fellow believers.",
+      "difficulty": "easy",
+      "id": "q49"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The hadith 'The best of you are those who learn the Quran and teach it' highlights:",
+      "options": [
+        "Quranic education",
+        "Trade",
+        "Farming",
+        "Warfare"
+      ],
+      "answer": 0,
+      "explanation": "It praises those who learn and teach the Quran.",
+      "difficulty": "easy",
+      "id": "q50"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What is a 'Hasan' hadith?",
+      "options": [
+        "Good and acceptable",
+        "Very weak",
+        "Fabricated",
+        "Contradictory"
+      ],
+      "answer": 0,
+      "explanation": "Hasan denotes a hadith of good, acceptable authenticity.",
+      "difficulty": "medium",
+      "id": "q51"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who was the famous companion called 'the interpreter of the Quran'?",
+      "options": [
+        "Abdullah ibn Abbas (RA)",
+        "Abu Huraira (RA)",
+        "Anas (RA)",
+        "Zaid (RA)"
+      ],
+      "answer": 0,
+      "explanation": "Ibn Abbas was renowned for Quranic interpretation.",
+      "difficulty": "easy",
+      "id": "q52"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The 'Sahih al-Bukhari' contains approximately how many hadith?",
+      "options": [
+        "About 7,275 (with repeats)",
+        "Exactly 100",
+        "About 50,000",
+        "About 1,000"
+      ],
+      "answer": 0,
+      "explanation": "Bukhari compiled around 7,275 hadith including repetitions.",
+      "difficulty": "medium",
+      "id": "q53"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The hadith about 'mercy to animals' teaches Muslims to:",
+      "options": [
+        "Treat animals with kindness",
+        "Hunt freely",
+        "Ignore animals",
+        "Use animals harshly"
+      ],
+      "answer": 0,
+      "explanation": "Islam emphasises compassion for all creatures.",
+      "difficulty": "easy",
+      "id": "q54"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What does 'Sahih Muslim' share with Bukhari besides authenticity?",
+      "options": [
+        "Both are Sahih (authentic) collections",
+        "Both are small",
+        "Both are weak",
+        "Both are tafsir"
+      ],
+      "answer": 0,
+      "explanation": "Both are the two most authentic hadith collections.",
+      "difficulty": "easy",
+      "id": "q55"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The hadith 'Cleanliness is half of faith' refers to:",
+      "options": [
+        "Physical and spiritual purity",
+        "Only wealth",
+        "Only dress",
+        "Only food"
+      ],
+      "answer": 0,
+      "explanation": "Taharah covers both outward and inner cleanliness.",
+      "difficulty": "easy",
+      "id": "q56"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The famous hadith on 'Ummah's unity' says the believers are like:",
+      "options": [
+        "One body (one building)",
+        "Separate islands",
+        "Competing teams",
+        "Unrelated strangers"
+      ],
+      "answer": 0,
+      "explanation": "Believers are likened to one body in mutual care.",
+      "difficulty": "easy",
+      "id": "q57"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who is known as the 'Sahabi of the Quran' who served the Prophet's (PBUH) household?",
+      "options": [
+        "Anas bin Malik (RA)",
+        "Bilal (RA)",
+        "Salman (RA)",
+        "Abu Darda (RA)"
+      ],
+      "answer": 0,
+      "explanation": "Anas served the Prophet (PBUH) for ten years.",
+      "difficulty": "medium",
+      "id": "q58"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What does the hadith 'The strong believer is better than the weak believer' refer to?",
+      "options": [
+        "Strength of faith and character",
+        "Physical power",
+        "Wealth",
+        "Number of followers"
+      ],
+      "answer": 0,
+      "explanation": "It praises strength in faith and resolve.",
+      "difficulty": "easy",
+      "id": "q59"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The 'Sahifa of Hammam bin Munabbih' is a famous early collection narrated by:",
+      "options": [
+        "Abu Huraira (RA)",
+        "Ibn Abbas",
+        "Anas",
+        "Aisha"
+      ],
+      "answer": 0,
+      "explanation": "Hammam's scroll preserves hadith from Abu Huraira.",
+      "difficulty": "hard",
+      "id": "q60"
+    },
+    {
+      "type": "mcq",
+      "prompt": "A 'Jami'' hadith collection covers which scope?",
+      "options": [
+        "All eight subjects of hadith classification",
+        "Only legal rulings",
+        "Only the sayings of companions",
+        "Only the Prophet's (PBUH) battles"
+      ],
+      "answer": 0,
+      "explanation": "A Jami' is arranged to cover all subjects of the Prophet's (PBUH) affairs.",
+      "difficulty": "medium",
+      "id": "q61"
+    },
+    {
+      "type": "mcq",
+      "prompt": "A hadith narrated by a single narrator at some stage is called?",
+      "options": [
+        "Gharib",
+        "Mutawatir",
+        "Mashhur",
+        "Ma'lul"
+      ],
+      "answer": 0,
+      "explanation": "Gharib is a hadith narrated by only one person at some level of the chain.",
+      "difficulty": "hard",
+      "id": "q62"
+    },
+    {
+      "type": "mcq",
+      "prompt": "A 'Shadh' (irregular) hadith is one that?",
+      "options": [
+        "Conflicts with a more reliable narration despite a reliable narrator",
+        "Is fabricated",
+        "Is very short",
+        "Has a missing link"
+      ],
+      "answer": 0,
+      "explanation": "Shadh is narrated by a trustworthy narrator but contradicts a stronger chain.",
+      "difficulty": "hard",
+      "id": "q63"
+    },
+    {
+      "type": "mcq",
+      "prompt": "A 'Munkar' hadith is one that?",
+      "options": [
+        "Comes from a weak narrator and conflicts with reliable reports",
+        "Is well-known",
+        "Is agreed upon",
+        "Is abridged"
+      ],
+      "answer": 0,
+      "explanation": "Munkar is a hadith whose weak narrator opposes a more reliable narration.",
+      "difficulty": "hard",
+      "id": "q64"
+    },
+    {
+      "type": "mcq",
+      "prompt": "A hadith with a missing narrator in its chain is called?",
+      "options": [
+        "Munqati'",
+        "Mutawatir",
+        "Muttafaqun Alaih",
+        "Mawquf"
+      ],
+      "answer": 0,
+      "explanation": "Munqati' means the chain is broken at some point.",
+      "difficulty": "hard",
+      "id": "q65"
+    },
+    {
+      "type": "mcq",
+      "prompt": "A hadith with two consecutive narrators missing is called?",
+      "options": [
+        "Mu'dal",
+        "Mursal",
+        "Munqati'",
+        "Gharib"
+      ],
+      "answer": 0,
+      "explanation": "Mu'dal has a gap of two or more narrators in the chain.",
+      "difficulty": "hard",
+      "id": "q66"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Sahih Muslim contains approximately how many hadith (excluding repetitions)?",
+      "options": [
+        "About 3,000",
+        "About 7,000",
+        "About 1,000",
+        "About 5,000"
+      ],
+      "answer": 0,
+      "explanation": "Sahih Muslim contains roughly 3,000 hadith excluding repetitions.",
+      "difficulty": "medium",
+      "id": "q67"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which companion was called the most knowledgeable of the Ummah about Halal and Haram?",
+      "options": [
+        "Mu'adh bin Jabal (RA)",
+        "Abu Hurairah (RA)",
+        "Abdullah ibn Umar (RA)",
+        "Anas bin Malik (RA)"
+      ],
+      "answer": 0,
+      "explanation": "The Prophet (PBUH) said Mu'adh bin Jabal (RA) was the most learned in Halal and Haram.",
+      "difficulty": "hard",
+      "id": "q68"
+    },
+    {
+      "type": "mcq",
+      "prompt": "'Takhrij' of a hadith refers to?",
+      "options": [
+        "Tracing the hadith to its original sources",
+        "Memorising the hadith",
+        "Abridging the hadith",
+        "Translating the hadith"
+      ],
+      "answer": 0,
+      "explanation": "Takhrij is the process of locating a hadith in its source collections with its chains.",
+      "difficulty": "hard",
+      "id": "q69"
+    },
+    {
+      "type": "mcq",
+      "prompt": "A report attributed to a companion is called?",
+      "options": [
+        "Mawquf",
+        "Marfu'",
+        "Maqtu'",
+        "Mursal"
+      ],
+      "answer": 0,
+      "explanation": "Mawquf is a narration traced back to a companion only.",
+      "difficulty": "hard",
+      "id": "q70"
+    },
+    {
+      "type": "mcq",
+      "prompt": "A report attributed to a successor (Tabi'i) is called?",
+      "options": [
+        "Maqtu'",
+        "Mawquf",
+        "Marfu'",
+        "Mursal"
+      ],
+      "answer": 0,
+      "explanation": "Maqtu' is a narration attributed to a Tabi'i.",
+      "difficulty": "hard",
+      "id": "q71"
+    },
+    {
+      "type": "mcq",
+      "prompt": "A hadith attributed directly to the Prophet (PBUH) is called?",
+      "options": [
+        "Marfu'",
+        "Mawquf",
+        "Maqtu'",
+        "Mu'dal"
+      ],
+      "answer": 0,
+      "explanation": "Marfu' is a report raised to the Prophet (PBUH).",
+      "difficulty": "hard",
+      "id": "q72"
+    },
+    {
+      "type": "mcq",
+      "prompt": "A 'Hasan li-ghayrihi' hadith is?",
+      "options": [
+        "A hadith elevated to Hasan by supporting chains",
+        "A fabricated report",
+        "A very weak report",
+        "A mutawatir report"
+      ],
+      "answer": 0,
+      "explanation": "Hasan li-ghayrihi is strengthened to Hasan through corroborating narrations.",
+      "difficulty": "hard",
+      "id": "q73"
+    },
+    {
+      "type": "mcq",
+      "prompt": "In hadith terminology, a 'Hafiz' is?",
+      "options": [
+        "A scholar who has memorised a vast number of hadith with their chains",
+        "A narrator only",
+        "A judge",
+        "A grammarian"
+      ],
+      "answer": 0,
+      "explanation": "A Hafiz is a master memoriser of hadith and their chains.",
+      "difficulty": "medium",
+      "id": "q74"
+    },
+    {
+      "type": "mcq",
+      "prompt": "A 'Muhaddith' is?",
+      "options": [
+        "A scholar of hadith",
+        "A reciter of the Quran",
+        "A jurist only",
+        "A historian"
+      ],
+      "answer": 0,
+      "explanation": "A Muhaddith is a specialist in the science of hadith.",
+      "difficulty": "easy",
+      "id": "q75"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Imam Nawawi's famous commentary on Sahih Muslim is called?",
+      "options": [
+        "Al-Minhaj",
+        "Fath al-Bari",
+        "Al-Itqan",
+        "Al-Muwatta"
+      ],
+      "answer": 0,
+      "explanation": "Nawawi's Sharh Sahih Muslim is titled Al-Minhaj.",
+      "difficulty": "hard",
+      "id": "q76"
+    },
+    {
+      "type": "mcq",
+      "prompt": "'Bulugh al-Maram', a collection of fiqh hadith, was compiled by?",
+      "options": [
+        "Ibn Hajar al-Asqalani",
+        "Imam Bukhari",
+        "Imam Tirmidhi",
+        "Ibn Majah"
+      ],
+      "answer": 0,
+      "explanation": "Bulugh al-Maram is Ibn Hajar's concise collection of legal hadith.",
+      "difficulty": "hard",
+      "id": "q77"
+    },
+    {
+      "type": "mcq",
+      "prompt": "'Riyad al-Salihin' was compiled by?",
+      "options": [
+        "Imam Nawawi",
+        "Al-Tabrizi",
+        "Imam Bukhari",
+        "Imam Ghazali"
+      ],
+      "answer": 0,
+      "explanation": "Imam Nawawi compiled Riyad al-Salihin, a famous book of hadith.",
+      "difficulty": "medium",
+      "id": "q78"
+    },
+    {
+      "type": "mcq",
+      "prompt": "A 'Silsilah' in hadith refers to?",
+      "options": [
+        "The connected chain of transmission",
+        "The text of the hadith",
+        "A type of prayer",
+        "A commentary"
+      ],
+      "answer": 0,
+      "explanation": "Silsilah is the continuous chain linking the narrator to the Prophet (PBUH).",
+      "difficulty": "medium",
+      "id": "q79"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Among the women, who narrated the most hadith?",
+      "options": [
+        "Aisha (RA)",
+        "Umm Salama (RA)",
+        "Fatimah (RA)",
+        "Hafsa (RA)"
+      ],
+      "answer": 0,
+      "explanation": "Aisha (RA) narrated over two thousand hadith, the most among women.",
+      "difficulty": "medium",
+      "id": "q80"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The four 'Sunan' books are collectively known as?",
+      "options": [
+        "Al-Kutub al-Arba'ah",
+        "Al-Sihah al-Sittah",
+        "Al-Jami' al-Sahih",
+        "Al-Arba'un"
+      ],
+      "answer": 0,
+      "explanation": "The Sunan of Abu Dawood, Tirmidhi, Nasa'i and Ibn Majah form Al-Kutub al-Arba'ah.",
+      "difficulty": "medium",
+      "id": "q81"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which of the four Sunan is generally regarded as the strongest?",
+      "options": [
+        "Sunan Abu Dawood",
+        "Sunan Ibn Majah",
+        "Jami' at-Tirmidhi",
+        "Sunan an-Nasa'i"
+      ],
+      "answer": 0,
+      "explanation": "Sunan Abu Dawood is often ranked highest among the four Sunan.",
+      "difficulty": "medium",
+      "id": "q82"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The study of hidden defects in hadith is called?",
+      "options": [
+        "Ilal al-Hadith",
+        "Rijal al-Hadith",
+        "Dirayah",
+        "Takhrij"
+      ],
+      "answer": 0,
+      "explanation": "Ilal al-Hadith investigates the hidden flaws that weaken a narration.",
+      "difficulty": "hard",
+      "id": "q83"
+    },
+    {
+      "type": "mcq",
+      "prompt": "A hadith with a hidden defect is called?",
+      "options": [
+        "Ma'lul",
+        "Mursal",
+        "Mawquf",
+        "Gharib"
+      ],
+      "answer": 0,
+      "explanation": "Ma'lul is a hadith with an obscure defect despite an apparent soundness.",
+      "difficulty": "hard",
+      "id": "q84"
+    },
+    {
+      "type": "mcq",
+      "prompt": "'Al-Shaykhayn' in hadith science refers to?",
+      "options": [
+        "Imam Bukhari and Imam Muslim",
+        "Imam Abu Hanifa and Imam Malik",
+        "Imam Nawawi and Ibn Hajar",
+        "Imam Ahmad and Imam Shafi'i"
+      ],
+      "answer": 0,
+      "explanation": "The two Shaykhs are Bukhari and Muslim, compilers of the Sahihayn.",
+      "difficulty": "medium",
+      "id": "q85"
+    },
+    {
+      "type": "mcq",
+      "prompt": "'Al-Sahihayn' refers to?",
+      "options": [
+        "Sahih al-Bukhari and Sahih Muslim",
+        "Sahih Ibn Hibban and Sahih Ibn Khuzaymah",
+        "The two Sunan",
+        "The two Muwattas"
+      ],
+      "answer": 0,
+      "explanation": "Al-Sahihayn are the two most authentic collections: Bukhari and Muslim.",
+      "difficulty": "easy",
+      "id": "q86"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The hadith 'A believer is the mirror of his brother' teaches?",
+      "options": [
+        "Mutual care, honesty and advice",
+        "That believers should hide faults",
+        "Competition between believers",
+        "That believers never differ"
+      ],
+      "answer": 0,
+      "explanation": "The hadith encourages believers to sincerely point out each other's faults with care.",
+      "difficulty": "medium",
+      "id": "q87"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The hadith 'Part of the perfection of one's Islam is leaving what does not concern him' teaches?",
+      "options": [
+        "Avoiding unnecessary involvement",
+        "Speaking often",
+        "Seeking fame",
+        "Working hard"
+      ],
+      "answer": 0,
+      "explanation": "This hadith urges believers to avoid what does not benefit them.",
+      "difficulty": "medium",
+      "id": "q88"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which hadith states that the most complete believers are those with the best character?",
+      "options": [
+        "'The most complete of believers in faith are those with the best character'",
+        "'The strong believer is better than the weak'",
+        "'The believer is not bitten twice'",
+        "'The believer is a mirror'"
+      ],
+      "answer": 0,
+      "explanation": "Tirmidhi records that the best in faith are those with the finest character.",
+      "difficulty": "medium",
+      "id": "q89"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which companion narrated the hadith 'Leave what makes you doubt for what does not make you doubt'?",
+      "options": [
+        "Hasan bin Ali (RA)",
+        "Abu Hurairah (RA)",
+        "Anas bin Malik (RA)",
+        "Jabir bin Abdullah (RA)"
+      ],
+      "answer": 0,
+      "explanation": "The hadith on leaving doubts is narrated from Hasan bin Ali (RA).",
+      "difficulty": "hard",
+      "id": "q90"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What is 'Ilm al-Rijal'?",
+      "options": [
+        "The study of the narrators' reliability",
+        "The study of the text",
+        "The study of abrogation",
+        "The study of dialects"
+      ],
+      "answer": 0,
+      "explanation": "Ilm al-Rijal evaluates the narrators in the chains.",
+      "difficulty": "medium",
+      "id": "q91"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The scholar known as 'the father of hadith criticism' is often considered to be?",
+      "options": [
+        "Yahya ibn Ma'in",
+        "Imam Bukhari",
+        "Imam Muslim",
+        "Ibn Hajar"
+      ],
+      "answer": 0,
+      "explanation": "Yahya ibn Ma'in was a pioneer of hadith criticism alongside Ahmad ibn Hanbal.",
+      "difficulty": "hard",
+      "id": "q92"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which of the Prophet's (PBUH) companions is the narrator of the longest hadith on the Day of Judgment?",
+      "options": [
+        "Nu'man bin Bashir (RA)",
+        "Abu Hurairah (RA)",
+        "Jabir (RA)",
+        "Ibn Abbas (RA)"
+      ],
+      "answer": 0,
+      "explanation": "The long hadith on the Hour is reported by Nu'man bin Bashir (RA).",
+      "difficulty": "hard",
+      "id": "q93"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which collection is titled 'Sahih al-Jami'' by Imam al-Albani?",
+      "options": [
+        "A modern authenticated compilation of sahih hadith",
+        "An ancient work",
+        "A fiqh manual",
+        "A biography"
+      ],
+      "answer": 0,
+      "explanation": "Al-Albani's Sahih al-Jami' gathers authentic narrations verified by him.",
+      "difficulty": "hard",
+      "id": "q94"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The hadith 'The world is sweet and green, and Allah has made you vicegerents in it' warns about?",
+      "options": [
+        "Attachment to worldly wealth",
+        "Fasting",
+        "Travelling",
+        "Marriage"
+      ],
+      "answer": 0,
+      "explanation": "The hadith warns against being overcome by the attractions of this world.",
+      "difficulty": "medium",
+      "id": "q95"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which companion was nicknamed 'the one who narrates too much' and had a cloak for spreading hadith?",
+      "options": [
+        "Abu Hurairah (RA)",
+        "Anas bin Malik (RA)",
+        "Jabir (RA)",
+        "Ibn Masud (RA)"
+      ],
+      "answer": 0,
+      "explanation": "Abu Hurairah (RA) spread his cloak to gather the Prophet's (PBUH) words.",
+      "difficulty": "medium",
+      "id": "q96"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The hadith 'The best provision is taqwa' is found in?",
+      "options": [
+        "The Quran (Surah Al-Baqarah)",
+        "Sahih al-Bukhari only",
+        "The Torah",
+        "The Psalms"
+      ],
+      "answer": 0,
+      "explanation": "'The best provision is taqwa' is a Quranic verse (2:197).",
+      "difficulty": "medium",
+      "id": "q97"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who narrated the hadith 'None of you believes until he loves for his brother what he loves for himself'?",
+      "options": [
+        "Anas bin Malik (RA)",
+        "Abu Hurairah (RA)",
+        "Umar (RA)",
+        "Ibn Umar (RA)"
+      ],
+      "answer": 0,
+      "explanation": "Anas bin Malik (RA) narrated this famous hadith of brotherhood.",
+      "difficulty": "medium",
+      "id": "q98"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What is the position of a 'Mawquf' hadith in fiqh?",
+      "options": [
+        "It is a companion's report, not the Prophet's (PBUH) statement",
+        "It is a Quranic verse",
+        "It is fabricated",
+        "It is the strongest type"
+      ],
+      "answer": 0,
+      "explanation": "Mawquf reports stop at a companion and are weaker than marfu' reports.",
+      "difficulty": "hard",
+      "id": "q99"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which scholar is known for compiling 'Al-Kutub al-Sittah' methodology and wrote 'Muqaddimah Ibn al-Salah'?",
+      "options": [
+        "Ibn al-Salah",
+        "Al-Nawawi",
+        "Al-Dhahabi",
+        "Ibn Kathir"
+      ],
+      "answer": 0,
+      "explanation": "Ibn al-Salah's Muqaddimah is a classic introduction to hadith sciences.",
+      "difficulty": "hard",
+      "id": "q100"
+    }
+  ]
+}

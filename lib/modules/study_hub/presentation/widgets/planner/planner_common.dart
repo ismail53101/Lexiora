@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:lexiora/modules/study_hub/domain/entities/study_task.dart';
 import 'package:lexiora/modules/study_hub/domain/study_dates.dart';
+import 'package:lexiora/modules/study_hub/presentation/pages/planner_menu_pages.dart';
 import 'package:lexiora/modules/study_hub/presentation/providers/study_hub_providers.dart';
 import 'package:lexiora/modules/study_hub/presentation/widgets/session_editor.dart';
 import 'package:lexiora/modules/study_hub/presentation/widgets/study_hub_common.dart';
@@ -126,7 +127,7 @@ class PlannerNavHeader extends StatelessWidget {
 
 /// A Mon..Sun strip for the week containing [selected]; tapping a day calls
 /// [onSelect]. Matches the mockup's rounded selected-day pill.
-class PlannerWeekStrip extends StatelessWidget {
+class PlannerWeekStrip extends ConsumerWidget {
   const PlannerWeekStrip({
     super.key,
     required this.weekStart,
@@ -141,10 +142,27 @@ class PlannerWeekStrip extends StatelessWidget {
   static const List<String> _dow = <String>['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     final ThemeData theme = Theme.of(context);
     final String todayK = todayKey();
     final String selectedK = dayKey(selected);
+    final DateTime weekEnd = weekStart.add(const Duration(days: 6));
+    final List<StudyTask> weekTasks = ref
+        .watch(studyRangeTasksProvider('${dayKey(weekStart)}|${dayKey(weekEnd)}'))
+        .maybeWhen(
+            data: (List<StudyTask> t) => t, orElse: () => const <StudyTask>[]);
+    final Map<String, int> subjectColors = ref
+        .watch(subjectColorsProvider)
+        .maybeWhen(
+            data: (Map<String, int> m) => m, orElse: () => const <String, int>{});
+    // Per-day distinct subject colours (up to 3) for the mockup's dot strip.
+    final Map<String, List<Color>> dayColors = <String, List<Color>>{};
+    for (final StudyTask t in weekTasks) {
+      if (t.isBreak) continue;
+      final List<Color> list = dayColors.putIfAbsent(t.day, () => <Color>[]);
+      final Color c = resolveSubjectColor(t.displaySubject, subjectColors);
+      if (!list.contains(c) && list.length < 3) list.add(c);
+    }
     return Row(
       children: <Widget>[
         for (int i = 0; i < 7; i++)
@@ -190,11 +208,38 @@ class PlannerWeekStrip extends StatelessWidget {
                           ),
                         ),
                       ),
+                      const SizedBox(height: 4),
+                      SizedBox(
+                        height: 6,
+                        child: _dayDots(dayColors[k], isSelected, theme),
+                      ),
                     ],
                   ),
                 ),
               );
             }),
+          ),
+      ],
+    );
+  }
+
+  /// The mockup's small subject-colour dots under each day of the strip
+  /// (up to 3 per day); they turn white when that day's pill is selected.
+  Widget _dayDots(List<Color>? colors, bool isSelected, ThemeData theme) {
+    if (colors == null || colors.isEmpty) return const SizedBox.shrink();
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      mainAxisSize: MainAxisSize.min,
+      children: <Widget>[
+        for (final Color c in colors)
+          Container(
+            width: 5,
+            height: 5,
+            margin: const EdgeInsets.symmetric(horizontal: 1),
+            decoration: BoxDecoration(
+              shape: BoxShape.circle,
+              color: isSelected ? theme.colorScheme.onPrimary : c,
+            ),
           ),
       ],
     );
@@ -327,7 +372,7 @@ class PlannerTaskRow extends ConsumerWidget {
                           child: Container(
                             width: 2,
                             color: showConnectorTop
-                                ? theme.colorScheme.outlineVariant
+                                ? subjectColor.withValues(alpha: 0.45)
                                 : Colors.transparent,
                           ),
                         ),
@@ -346,7 +391,7 @@ class PlannerTaskRow extends ConsumerWidget {
                           child: Container(
                             width: 2,
                             color: showConnectorBottom
-                                ? theme.colorScheme.outlineVariant
+                                ? subjectColor.withValues(alpha: 0.45)
                                 : Colors.transparent,
                           ),
                         ),
@@ -366,7 +411,6 @@ class PlannerTaskRow extends ConsumerWidget {
                     child: task.isBreak
                         ? _breakContent(theme)
                         : Row(
-                            crossAxisAlignment: CrossAxisAlignment.center,
                             children: <Widget>[
                               Expanded(
                                 child: Column(
@@ -377,15 +421,27 @@ class PlannerTaskRow extends ConsumerWidget {
                                       maxLines: 1,
                                       overflow: TextOverflow.ellipsis,
                                       style: theme.textTheme.bodyLarge?.copyWith(
-                                        fontWeight: FontWeight.w700,
+                                        fontWeight: FontWeight.w800,
                                         decoration: task.completed
                                             ? TextDecoration.lineThrough
                                             : null,
+                                        // The subject line carries the subject's own
+                                        // colour (auto-assigned per subject), so each
+                                        // subject reads distinctly at a glance.
                                         color: task.completed
                                             ? theme.colorScheme.onSurfaceVariant
-                                            : null,
+                                            : subjectColor,
                                       ),
                                     ),
+                                    if (time.isNotEmpty)
+                                      Text(
+                                        time,
+                                        maxLines: 1,
+                                        overflow: TextOverflow.ellipsis,
+                                        style: theme.textTheme.labelSmall?.copyWith(
+                                            color: subjectColor,
+                                            fontWeight: FontWeight.w700),
+                                      ),
                                     if ((task.topic ?? '').isNotEmpty)
                                       Text(
                                         task.topic!,
@@ -397,6 +453,26 @@ class PlannerTaskRow extends ConsumerWidget {
                                   ],
                                 ),
                               ),
+                              if (!task.completed)
+                                IconButton(
+                                  tooltip: 'Start study timer',
+                                  visualDensity: VisualDensity.compact,
+                                  onPressed: () {
+                                    ref
+                                        .read(activeStudyContextProvider.notifier)
+                                        .setTask(task);
+                                    ref
+                                        .read(studyHubRepositoryProvider)
+                                        .setTaskStatus(task.id, TaskStatus.inProgress);
+                                    Navigator.of(context).push(
+                                      MaterialPageRoute<void>(
+                                        builder: (_) => const PlannerTimerPage(),
+                                      ),
+                                    );
+                                  },
+                                  icon: Icon(Icons.play_arrow_rounded,
+                                      color: subjectColor),
+                                ),
                               const SizedBox(width: 8),
                               TaskStatusCircle(task: task, ringColor: subjectColor),
                             ],
@@ -415,15 +491,39 @@ class PlannerTaskRow extends ConsumerWidget {
     final String time = _timeRange(task);
     return Row(
       children: <Widget>[
-        Icon(Icons.free_breakfast_outlined, size: 18, color: theme.colorScheme.tertiary),
+        Container(
+          width: 34,
+          height: 34,
+          decoration: BoxDecoration(
+            color: theme.colorScheme.tertiary.withValues(alpha: 0.14),
+            borderRadius: BorderRadius.circular(10),
+          ),
+          alignment: Alignment.center,
+          child: Icon(Icons.work_outline,
+              size: 18, color: theme.colorScheme.tertiary),
+        ),
         const SizedBox(width: 10),
         Expanded(
-          child: Text(
-            time.isEmpty ? task.title : '${task.title} · $time',
-            maxLines: 1,
-            overflow: TextOverflow.ellipsis,
-            style: theme.textTheme.bodyMedium?.copyWith(
-                fontStyle: FontStyle.italic, color: theme.colorScheme.onSurfaceVariant),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: <Widget>[
+              Text(
+                task.title.trim().isEmpty ? 'Break' : task.title,
+                maxLines: 1,
+                overflow: TextOverflow.ellipsis,
+                style: theme.textTheme.bodyMedium
+                    ?.copyWith(fontWeight: FontWeight.w700),
+              ),
+              if (time.isNotEmpty)
+                Text(
+                  time,
+                  maxLines: 1,
+                  overflow: TextOverflow.ellipsis,
+                  style: theme.textTheme.labelSmall?.copyWith(
+                      color: theme.colorScheme.tertiary,
+                      fontWeight: FontWeight.w700),
+                ),
+            ],
           ),
         ),
       ],

@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:math' as math;
 
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -8,6 +9,7 @@ import 'package:lexiora/modules/quiz/domain/entities/quiz_settings.dart';
 import 'package:lexiora/modules/quiz/domain/quiz_grading.dart';
 import 'package:lexiora/modules/quiz/presentation/pages/quiz_results_page.dart';
 import 'package:lexiora/modules/quiz/presentation/providers/quiz_providers.dart';
+import 'package:lexiora/modules/quiz/presentation/widgets/quiz_common.dart';
 
 /// The Quiz Player. A fully functional engine shell — it plays whatever
 /// questions it is given and knows nothing about where they came from.
@@ -36,6 +38,8 @@ class QuizPlayerPage extends ConsumerStatefulWidget {
 class _QuizPlayerPageState extends ConsumerState<QuizPlayerPage> {
   List<QuizQuestion> _questions = <QuizQuestion>[];
   final Map<int, QuizGivenAnswer> _answers = <int, QuizGivenAnswer>{};
+  final math.Random _random = math.Random();
+  List<int> _displayOrder = <int>[];
   final Set<int> _revealed = <int>{};
   final Map<int, int> _timeMs = <int, int>{};
   final TextEditingController _blank = TextEditingController();
@@ -76,11 +80,24 @@ class _QuizPlayerPageState extends ConsumerState<QuizPlayerPage> {
     setState(() {
       _settings = s;
       _questions = qs;
+      _prepareQuestion();
       _loading = false;
       _shownAt = DateTime.now();
       _startedAt = DateTime.now();
       _syncBlank();
     });
+  }
+
+  void _prepareQuestion() {
+    if (_questions.isEmpty) {
+      _displayOrder = <int>[];
+      return;
+    }
+    _displayOrder = shuffleOptions(
+      _questions[_index].options,
+      _questions[_index].answerIndex,
+      _random,
+    ).order;
   }
 
   void _syncBlank() {
@@ -108,6 +125,7 @@ class _QuizPlayerPageState extends ConsumerState<QuizPlayerPage> {
     _accrueTime();
     setState(() {
       _index = to.clamp(0, _questions.length - 1);
+      _prepareQuestion();
       _shownAt = DateTime.now();
       _syncBlank();
     });
@@ -278,13 +296,20 @@ class _QuizPlayerPageState extends ConsumerState<QuizPlayerPage> {
     switch (q.type) {
       case QuestionType.mcqSingle:
         return <Widget>[
-          for (int i = 0; i < q.options.length; i++)
-            _choice(theme, q, i, q.options[i], revealed),
+          for (int displayIndex = 0;
+              displayIndex < _displayOrder.length;
+              displayIndex++)
+            _choice(
+              q,
+              _displayOrder[displayIndex],
+              q.options[_displayOrder[displayIndex]],
+              revealed,
+            ),
         ];
       case QuestionType.trueFalse:
         return <Widget>[
-          _boolChoice(theme, q, true, 'True', revealed),
-          _boolChoice(theme, q, false, 'False', revealed),
+          _boolChoice(q, true, 'True', revealed),
+          _boolChoice(q, false, 'False', revealed),
         ];
       case QuestionType.fillBlank:
         return <Widget>[
@@ -316,7 +341,7 @@ class _QuizPlayerPageState extends ConsumerState<QuizPlayerPage> {
                     : 'Correct answer: ${q.answerTexts.join(", ")}',
                 style: theme.textTheme.bodyMedium?.copyWith(
                   color: q.isCorrect(_answers[_index] ?? const QuizGivenAnswer())
-                      ? theme.colorScheme.primary
+                      ? quizCorrectColor
                       : theme.colorScheme.error,
                   fontWeight: FontWeight.w600,
                 ),
@@ -333,94 +358,49 @@ class _QuizPlayerPageState extends ConsumerState<QuizPlayerPage> {
     }
   }
 
-  Widget _choice(
-      ThemeData theme, QuizQuestion q, int i, String text, bool revealed) {
+  Widget _choice(QuizQuestion q, int originalIndex, String text, bool revealed) {
     final int? selected = _answers[_index]?.index;
-    final bool isSelected = selected == i;
-    final bool isAnswer = q.answerIndex == i;
-    Color? bg;
-    if (revealed) {
-      if (isAnswer) {
-        bg = theme.colorScheme.primary.withValues(alpha: 0.15);
-      } else if (isSelected) {
-        bg = theme.colorScheme.error.withValues(alpha: 0.15);
-      }
+    final bool isSelected = selected == originalIndex;
+    final bool isAnswer = q.answerIndex == originalIndex;
+
+    final QuizOptionState state;
+    if (revealed && isAnswer) {
+      state = QuizOptionState.correct;
+    } else if (revealed && isSelected) {
+      state = QuizOptionState.wrong;
     } else if (isSelected) {
-      bg = theme.colorScheme.secondaryContainer;
+      state = QuizOptionState.selected;
+    } else {
+      state = QuizOptionState.normal;
     }
-    return Padding(
-      padding: const EdgeInsets.only(bottom: 10),
-      child: Material(
-        color: bg ?? theme.colorScheme.surfaceContainerHighest.withValues(alpha: 0.4),
-        borderRadius: BorderRadius.circular(12),
-        clipBehavior: Clip.antiAlias,
-        child: InkWell(
-          onTap: revealed ? null : () => _select(QuizGivenAnswer.choice(i)),
-          child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 14),
-            child: Row(
-              children: <Widget>[
-                Icon(
-                  revealed && isAnswer
-                      ? Icons.check_circle
-                      : (isSelected
-                          ? Icons.radio_button_checked
-                          : Icons.radio_button_unchecked),
-                  size: 20,
-                  color: revealed && isAnswer ? theme.colorScheme.primary : null,
-                ),
-                const SizedBox(width: 12),
-                Expanded(child: Text(text)),
-              ],
-            ),
-          ),
-        ),
-      ),
+    return QuizOptionCard(
+      text: text,
+      state: state,
+      onTap: revealed
+          ? null
+          : () => _select(QuizGivenAnswer.choice(originalIndex)),
     );
   }
 
-  Widget _boolChoice(
-      ThemeData theme, QuizQuestion q, bool value, String text, bool revealed) {
+  Widget _boolChoice(QuizQuestion q, bool value, String text, bool revealed) {
     final bool? selected = _answers[_index]?.boolValue;
     final bool isSelected = selected == value;
     final bool isAnswer = q.answerBool == value;
-    Color? bg;
-    if (revealed) {
-      if (isAnswer) {
-        bg = theme.colorScheme.primary.withValues(alpha: 0.15);
-      } else if (isSelected) {
-        bg = theme.colorScheme.error.withValues(alpha: 0.15);
-      }
+
+    final QuizOptionState state;
+    if (revealed && isAnswer) {
+      state = QuizOptionState.correct;
+    } else if (revealed && isSelected) {
+      state = QuizOptionState.wrong;
     } else if (isSelected) {
-      bg = theme.colorScheme.secondaryContainer;
+      state = QuizOptionState.selected;
+    } else {
+      state = QuizOptionState.normal;
     }
-    return Padding(
-      padding: const EdgeInsets.only(bottom: 10),
-      child: Material(
-        color: bg ?? theme.colorScheme.surfaceContainerHighest.withValues(alpha: 0.4),
-        borderRadius: BorderRadius.circular(12),
-        clipBehavior: Clip.antiAlias,
-        child: InkWell(
-          onTap: revealed ? null : () => _select(QuizGivenAnswer.boolean(value)),
-          child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 16),
-            child: Row(
-              children: <Widget>[
-                Icon(
-                    revealed && isAnswer
-                        ? Icons.check_circle
-                        : (isSelected
-                            ? Icons.radio_button_checked
-                            : Icons.radio_button_unchecked),
-                    size: 20,
-                    color: revealed && isAnswer ? theme.colorScheme.primary : null),
-                const SizedBox(width: 12),
-                Text(text),
-              ],
-            ),
-          ),
-        ),
-      ),
+    return QuizOptionCard(
+      text: text,
+      state: state,
+      onTap: revealed ? null : () => _select(QuizGivenAnswer.boolean(value)),
     );
   }
 

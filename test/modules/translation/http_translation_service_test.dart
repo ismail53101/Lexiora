@@ -3,6 +3,28 @@ import 'package:lexiora/modules/translation/data/services/http_translation_servi
 
 /// Unit tests for the pure response parser — no network involved.
 void main() {
+  test('builds a MyMemory-compatible request', () {
+    final Uri uri = HttpTranslationService.buildRequestUri(
+      endpoint: 'https://api.mymemory.translated.net/get',
+      query: 'digitally',
+      targetLanguageCode: 'ur',
+    );
+    expect(uri.queryParameters['q'], 'digitally');
+    expect(uri.queryParameters['langpair'], 'en|ur');
+    expect(uri.queryParameters.containsKey('tl'), isFalse);
+  });
+
+  test('builds a Google-compatible request', () {
+    final Uri uri = HttpTranslationService.buildRequestUri(
+      endpoint: 'https://translate.googleapis.com/translate_a/single',
+      query: 'gargantuan',
+      targetLanguageCode: 'ur',
+    );
+    expect(uri.queryParameters['sl'], 'en');
+    expect(uri.queryParameters['tl'], 'ur');
+    expect(uri.queryParameters['dt'], 't');
+  });
+
   test('parses a valid MyMemory response', () {
     const String body =
         '{"responseData":{"translatedText":"کتاب","match":1},'
@@ -26,6 +48,26 @@ void main() {
     const String body =
         '{"responseData":{"translatedText":"NO QUERY SPECIFIED. EXAMPLE '
         'REQUEST: GET?Q=HELLO"},"responseStatus":403}';
+    expect(HttpTranslationService.parseTranslation(body), isNull);
+  });
+
+  test('parses a valid Google Translate response', () {
+    const String body =
+        '[[["عمل، طریقہ یا عمل کرنے کا انداز","execution",null,null,3]],'
+        'null,"en",null,null,null,null,[]]';
+    expect(HttpTranslationService.parseTranslation(body),
+        'عمل، طریقہ یا عمل کرنے کا انداز');
+  });
+
+  test('joins Google multi-segment responses', () {
+    const String body =
+        '[[["پہلا","first",null,null,3],[" دوسرا","second",null,null,3]],'
+        'null,"en",null,null,null,null,[]]';
+    expect(HttpTranslationService.parseTranslation(body), 'پہلا دوسرا');
+  });
+
+  test('returns null for an empty Google response', () {
+    const String body = '[[],null,"en",null,null,null,null,[]]';
     expect(HttpTranslationService.parseTranslation(body), isNull);
   });
 

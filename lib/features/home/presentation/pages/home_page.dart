@@ -1,4 +1,7 @@
+import 'dart:async';
 import 'dart:io';
+
+import 'dart:ui' as ui;
 
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
@@ -7,9 +10,19 @@ import 'package:go_router/go_router.dart';
 import 'package:lexiora/app/di/injector.dart';
 import 'package:lexiora/app/router/app_routes.dart';
 import 'package:lexiora/core/navigation/home_destination.dart';
+import 'package:lexiora/core/services/permission_service.dart';
+import 'package:lexiora/core/usecase/usecase.dart';
+import 'package:lexiora/core/utils/result.dart';
 import 'package:lexiora/core/widgets/app_bottom_nav.dart';
-import 'package:lexiora/core/widgets/empty_state.dart';
+import 'package:lexiora/features/home/data/latest_update_mock_data.dart';
+import 'package:lexiora/features/home/domain/entities/current_affairs_feed.dart';
+import 'package:lexiora/features/home/domain/entities/latest_update.dart';
+import 'package:lexiora/features/home/presentation/pages/current_affairs_page.dart';
+import 'package:lexiora/features/home/presentation/providers/current_affairs_providers.dart';
+import 'package:lexiora/features/home/presentation/widgets/latest_update_card.dart';
+import 'package:lexiora/features/home/presentation/widgets/word_of_day_card.dart';
 import 'package:lexiora/features/library/domain/entities/library_document.dart';
+import 'package:lexiora/features/library/domain/usecases/library_usecases.dart';
 import 'package:lexiora/features/library/presentation/providers/library_providers.dart';
 import 'package:lexiora/features/library/presentation/widgets/document_card.dart';
 import 'package:lexiora/features/settings/domain/entities/app_settings.dart';
@@ -17,40 +30,111 @@ import 'package:lexiora/features/settings/presentation/providers/settings_provid
 import 'package:lexiora/modules/study_hub/domain/entities/study_goal.dart';
 import 'package:lexiora/modules/study_hub/domain/study_dates.dart';
 import 'package:lexiora/modules/study_hub/presentation/providers/study_hub_providers.dart';
+import 'package:lexiora/modules/study_hub/presentation/widgets/goal_editor.dart';
 
 /// The Home dashboard: a personal greeting + quick search, the Explore
 /// module grid (brought up top so it's visible without scrolling),
 /// followed by Continue reading / Recent documents, Favorites and the
 /// at-a-glance stats row further down — the app's landing tab.
-class HomePage extends ConsumerWidget {
+class HomePage extends ConsumerStatefulWidget {
   const HomePage({super.key});
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
-    final AsyncValue<List<LibraryDocument>> all =
-        ref.watch(allDocumentsProvider);
+  ConsumerState<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends ConsumerState<HomePage>
+    with WidgetsBindingObserver {
+  bool _discoveryInFlight = false;
+
+  @override
+  void initState() {
+    super.initState();
+    WidgetsBinding.instance.addObserver(this);
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      unawaited(_initializePdfDiscovery());
+    });
+  }
+
+  @override
+  void dispose() {
+    WidgetsBinding.instance.removeObserver(this);
+    super.dispose();
+  }
+
+  @override
+  void didChangeAppLifecycleState(AppLifecycleState state) {
+    if (state == AppLifecycleState.resumed) {
+      // This covers returning from Android's All files access settings. If
+      // access was granted there, the scan starts without a restart.
+      unawaited(_initializePdfDiscovery());
+    }
+  }
+
+  Future<void> _initializePdfDiscovery() async {
+    if (!mounted || _discoveryInFlight) return;
+    final PermissionService permission = ref.read(permissionServiceProvider);
+    final bool granted = await permission.isGrantedForDiscovery();
+    if (!mounted) return;
+    if (granted) {
+      await _scanInBackground();
+      return;
+    }
+    // The one-time access flow owns the permission request. Home only scans
+    // after that flow has granted access and never presents a second prompt.
+  }
+
+  Future<void> _scanInBackground() async {
+    if (_discoveryInFlight || !mounted) return;
+    _discoveryInFlight = true;
+    try {
+      final Result<DiscoveryOutcome> result =
+          await ref.read(autoDiscoverProvider).call(const NoParams());
+      if (!mounted) return;
+      result.fold(
+        (failure) => debugPrint('Background PDF discovery failed: ${failure.message}'),
+        (_) {},
+      );
+    } finally {
+      _discoveryInFlight = false;
+    }
+  }
+
+  @override
+  Widget build(BuildContext context) {
     final AsyncValue<List<LibraryEntry>> continueReading =
         ref.watch(continueReadingProvider);
     final AsyncValue<List<LibraryDocument>> recent =
         ref.watch(recentDocumentsProvider);
     final AsyncValue<List<LibraryDocument>> favorites =
         ref.watch(favoriteDocumentsProvider);
+    final AsyncValue<CurrentAffairsFeed?> currentAffairs =
+        ref.watch(currentAffairsProvider);
+    final CurrentAffairsFeed? liveFeed = currentAffairs.maybeWhen(
+      data: (CurrentAffairsFeed? feed) => feed,
+      orElse: () => null,
+    );
+    final List<LatestUpdate> carouselUpdates = liveFeed == null || liveFeed.all.isEmpty
+        ? mockLatestUpdates
+        : liveFeed.all.take(5).toList(growable: false);
+    final LatestUpdate featuredUpdate = carouselUpdates.first;
     final List<HomeDestination> destinations =
         sl<HomeDestinationRegistry>().destinations;
     final String displayName = ref.watch(settingsProvider).maybeWhen(
         data: (AppSettings s) => s.displayName, orElse: () => '');
 
-    final bool isEmpty = all.maybeWhen(
-      data: (List<LibraryDocument> d) => d.isEmpty,
-      orElse: () => false,
-    );
-
     return Scaffold(
       bottomNavigationBar: const AppBottomNav(currentIndex: 0),
       body: SafeArea(
         bottom: false,
-        child: CustomScrollView(
-          slivers: [
+        child: Stack(
+          fit: StackFit.expand,
+          children: <Widget>[
+            _HomeBackgroundDecor(
+              enabled: Theme.of(context).brightness == Brightness.light,
+            ),
+            CustomScrollView(
+              slivers: [
             SliverToBoxAdapter(
               child: Padding(
                 padding: const EdgeInsets.fromLTRB(20, 12, 20, 4),
@@ -61,27 +145,31 @@ class HomePage extends ConsumerWidget {
                 ),
               ),
             ),
-            if (isEmpty)
-              SliverFillRemaining(
-                hasScrollBody: false,
-                child: EmptyState(
-                  icon: Icons.auto_stories_outlined,
-                  title: 'Welcome to Sapiora',
-                  message:
-                      'Sapiora automatically finds the PDF files already on '
-                      'your device — or import your own with the Import PDF '
-                      'button. Everything stays on your device.',
-                  action: FilledButton.icon(
-                    onPressed: () => context.push(AppRoutes.library),
-                    icon: const Icon(Icons.folder_open_outlined),
-                    label: const Text('Open library'),
+            SliverToBoxAdapter(
+              child: Padding(
+                padding: const EdgeInsets.fromLTRB(20, 12, 20, 0),
+                child: LatestUpdateCard(
+                  update: featuredUpdate,
+                  updates: carouselUpdates,
+                  itemCount: carouselUpdates.length,
+                  onTap: () => Navigator.of(context).push(
+                    MaterialPageRoute<void>(
+                      builder: (_) => const CurrentAffairsPage(),
+                    ),
                   ),
                 ),
               ),
+            ),
+            const SliverToBoxAdapter(
+              child: Padding(
+                padding: EdgeInsets.fromLTRB(20, 16, 20, 0),
+                child: WordOfDayCard(),
+              ),
+            ),
             SliverToBoxAdapter(
               child: _ExploreSection(destinations: destinations),
             ),
-            if (!isEmpty) ...[
+            ...[
               _continueAndRecentSection(context, continueReading, recent),
               _docStrip(context, 'Favorites', favorites),
               const SliverToBoxAdapter(
@@ -93,6 +181,8 @@ class HomePage extends ConsumerWidget {
             ],
             const SliverToBoxAdapter(child: _HomeFooter()),
             const SliverToBoxAdapter(child: SizedBox(height: 24)),
+              ],
+            ),
           ],
         ),
       ),
@@ -218,51 +308,68 @@ class _GreetingRow extends StatelessWidget {
     return 'Good Evening';
   }
 
+  String get _greetingIcon {
+    final int hour = DateTime.now().hour;
+    if (hour < 12) return '🌄';
+    if (hour < 17) return '☀️';
+    return '🌇';
+  }
+
   @override
   Widget build(BuildContext context) {
     final ThemeData theme = Theme.of(context);
     final ColorScheme scheme = theme.colorScheme;
     final bool isDark = theme.brightness == Brightness.dark;
 
-    return Row(
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
-        Expanded(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: <Widget>[
-              Text.rich(
+        Row(
+          children: <Widget>[
+            Expanded(
+              child: Text.rich(
+                maxLines: 1,
+                overflow: TextOverflow.ellipsis,
                 TextSpan(
-                  style: theme.textTheme.headlineSmall
-                      ?.copyWith(fontWeight: FontWeight.w800),
+                  style: theme.textTheme.titleLarge?.copyWith(
+                    fontSize: 20,
+                    fontWeight: FontWeight.w800,
+                  ),
                   children: <InlineSpan>[
-                    TextSpan(text: displayName.isEmpty
-                        ? _greeting
-                        : '$_greeting, '),
+                    TextSpan(
+                      text: displayName.isEmpty
+                          ? _greeting
+                          : '$_greeting, ',
+                    ),
                     if (displayName.isNotEmpty)
                       TextSpan(
                         text: displayName,
                         style: TextStyle(color: scheme.primary),
                       ),
-                    const TextSpan(text: ' 👋'),
                   ],
                 ),
               ),
-              const SizedBox(height: 4),
-              Text(
-                'Keep learning, keep growing.',
-                style: theme.textTheme.bodyMedium
-                    ?.copyWith(color: scheme.onSurfaceVariant),
-              ),
-            ],
-          ),
+            ),
+            const SizedBox(width: 4),
+            Text(
+              _greetingIcon,
+              style: const TextStyle(fontSize: 20),
+            ),
+            const SizedBox(width: 4),
+            _GlowIconButton(
+              icon: isDark ? Icons.dark_mode_rounded : Icons.light_mode_rounded,
+              onTap: onThemeTap,
+            ),
+            const SizedBox(width: 6),
+            _GlowIconButton(icon: Icons.search_rounded, onTap: onSearchTap),
+          ],
         ),
-        const SizedBox(width: 6),
-        _GlowIconButton(
-          icon: isDark ? Icons.dark_mode_rounded : Icons.light_mode_rounded,
-          onTap: onThemeTap,
+        const SizedBox(height: 2),
+        Text(
+          'Keep learning, keep growing.',
+          style: theme.textTheme.bodyMedium
+              ?.copyWith(color: scheme.onSurfaceVariant),
         ),
-        const SizedBox(width: 6),
-        _GlowIconButton(icon: Icons.search_rounded, onTap: onSearchTap),
       ],
     ).animate().fadeIn(duration: 320.ms).slideY(begin: -0.08, end: 0);
   }
@@ -334,8 +441,11 @@ class _StatsRow extends ConsumerWidget {
 
     final List<StudyGoal> goals = ref.watch(studyGoalsProvider).maybeWhen(
         data: (List<StudyGoal> g) => g, orElse: () => const <StudyGoal>[]);
-    final int goalTotal = goals.length;
-    final int goalDone = goals.where((StudyGoal g) => g.achieved).length;
+    final List<StudyGoal> studyTimeGoals = goals
+        .where((StudyGoal goal) => goal.isStudyTimeGoal)
+        .toList(growable: false);
+    final StudyGoal? studyGoal =
+        studyTimeGoals.isEmpty ? null : studyTimeGoals.first;
 
     return Padding(
       padding: const EdgeInsets.fromLTRB(20, 6, 20, 0),
@@ -364,20 +474,174 @@ class _StatsRow extends ConsumerWidget {
           ),
           const SizedBox(width: 10),
           Expanded(
-            child: _StatTile(
-              icon: Icons.track_changes_rounded,
-              value: goalTotal == 0 ? '—' : '$goalDone / $goalTotal',
-              label: 'Goal',
-              subLabel: goalTotal == 0
-                  ? 'Set a goal'
-                  : (goalDone >= goalTotal ? 'Completed' : 'In progress'),
+            child: _GoalStatTile(
+              goal: studyGoal,
               color: scheme.primary,
-              onTap: () => context.push(AppRoutes.studyHub),
+              onTap: () => _showGoalsSheet(context, ref, goals),
             ),
           ),
         ],
       ),
     ).animate().fadeIn(duration: 300.ms).slideY(begin: 0.06, end: 0);
+  }
+}
+
+class _GoalStatTile extends StatelessWidget {
+  const _GoalStatTile({required this.goal, required this.color, this.onTap});
+
+  final StudyGoal? goal;
+  final Color color;
+  final VoidCallback? onTap;
+
+  @override
+  Widget build(BuildContext context) {
+    final ThemeData theme = Theme.of(context);
+    final ColorScheme scheme = theme.colorScheme;
+    final double progress = goal?.progress ?? 0;
+    final int current = goal?.currentCount ?? 0;
+    final String goalValue = goal == null
+        ? 'Set a goal'
+        : '${formatDuration(current)} / ${formatDuration(goal!.targetMinutes)}';
+
+    return Material(
+      color: scheme.surfaceContainerHigh,
+      borderRadius: BorderRadius.circular(18),
+      child: InkWell(
+        borderRadius: BorderRadius.circular(18),
+        onTap: onTap,
+        child: Padding(
+          padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 6),
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: <Widget>[
+              SizedBox(
+                width: 66,
+                height: 66,
+                child: Stack(
+                  alignment: Alignment.center,
+                  children: <Widget>[
+                    CircularProgressIndicator(
+                      value: progress,
+                      strokeWidth: 7,
+                      backgroundColor:
+                          scheme.outlineVariant.withValues(alpha: 0.55),
+                      valueColor: AlwaysStoppedAnimation<Color>(color),
+                    ),
+                    Text(
+                      '${(progress * 100).round()}%',
+                      style: theme.textTheme.titleMedium?.copyWith(
+                        fontWeight: FontWeight.w800,
+                        color: color,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              const SizedBox(height: 5),
+              Text(
+                'Goal',
+                maxLines: 1,
+                overflow: TextOverflow.ellipsis,
+                style: theme.textTheme.bodySmall?.copyWith(
+                  fontWeight: FontWeight.w700,
+                ),
+              ),
+              Text(
+                goalValue,
+                maxLines: 1,
+                overflow: TextOverflow.ellipsis,
+                style: theme.textTheme.labelSmall?.copyWith(
+                  color: scheme.onSurfaceVariant,
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+void _showGoalsSheet(
+  BuildContext context,
+  WidgetRef ref,
+  List<StudyGoal> goals,
+) {
+  showModalBottomSheet<void>(
+    context: context,
+    showDragHandle: true,
+    builder: (BuildContext sheetContext) {
+      final List<StudyGoal> studyGoals =
+          goals.where((StudyGoal g) => g.isStudyTimeGoal).toList(growable: false);
+      final List<StudyGoal> achievementGoals =
+          goals.where((StudyGoal g) => g.isAchievementGoal).toList(growable: false);
+      return Padding(
+        padding: const EdgeInsets.fromLTRB(20, 0, 20, 20),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: <Widget>[
+            Text('Goals', style: Theme.of(sheetContext).textTheme.titleLarge),
+            const SizedBox(height: 12),
+            if (goals.isEmpty)
+              const Text('No goal set for today.')
+            else ...<Widget>[
+              for (final StudyGoal goal in studyGoals)
+                _GoalSheetRow(
+                  icon: Icons.track_changes,
+                  title: "Today's Study",
+                  value:
+                      '${formatDuration(goal.currentCount)} / ${formatDuration(goal.targetMinutes)} — ${(goal.progress * 100).round()}%',
+                ),
+              for (final StudyGoal goal in achievementGoals)
+                _GoalSheetRow(
+                  icon: Icons.menu_book_outlined,
+                  title: goal.title,
+                  value:
+                      '${goal.currentCount} / ${goal.targetCount} ${goal.unit ?? 'topics'} — ${(goal.progress * 100).round()}%',
+                ),
+            ],
+            const SizedBox(height: 12),
+            Align(
+              alignment: Alignment.centerRight,
+              child: FilledButton.tonalIcon(
+                onPressed: () {
+                  Navigator.of(sheetContext).pop();
+                  showGoalEditor(context, day: ref.read(studyTodayProvider));
+                },
+                icon: const Icon(Icons.add),
+                label: const Text('Add goal'),
+              ),
+            ),
+          ],
+        ),
+      );
+    },
+  );
+}
+
+class _GoalSheetRow extends StatelessWidget {
+  const _GoalSheetRow({required this.icon, required this.title, required this.value});
+  final IconData icon;
+  final String title;
+  final String value;
+
+  @override
+  Widget build(BuildContext context) {
+    final ColorScheme scheme = Theme.of(context).colorScheme;
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 5),
+      child: Row(
+        children: <Widget>[
+          Icon(icon, size: 20, color: scheme.primary),
+          const SizedBox(width: 10),
+          Expanded(
+              child: Text(title,
+                  style: const TextStyle(fontWeight: FontWeight.w700))),
+          Text(value, style: TextStyle(color: scheme.onSurfaceVariant)),
+        ],
+      ),
+    );
   }
 }
 
@@ -838,6 +1102,94 @@ class _HomeFooter extends StatelessWidget {
   }
 }
 
+class _HomeBackgroundDecor extends StatelessWidget {
+  const _HomeBackgroundDecor({required this.enabled});
+
+  final bool enabled;
+
+  @override
+  Widget build(BuildContext context) {
+    if (!enabled) return const SizedBox.expand();
+    final ColorScheme scheme = Theme.of(context).colorScheme;
+    return IgnorePointer(
+      child: ClipRect(
+        child: Stack(
+          fit: StackFit.expand,
+          children: <Widget>[
+            ColoredBox(color: scheme.surface),
+            _PastelBlob(
+              color: const Color(0xFFB9F2C6),
+              size: 320,
+              top: -115,
+              left: -105,
+            ),
+            _PastelBlob(
+              color: const Color(0xFFB9E7FF),
+              size: 370,
+              top: 10,
+              right: -150,
+            ),
+            _PastelBlob(
+              color: const Color(0xFFFFC6DF),
+              size: 330,
+              top: 410,
+              right: -155,
+            ),
+            _PastelBlob(
+              color: const Color(0xFFBDEFFF),
+              size: 290,
+              top: 780,
+              left: -170,
+            ),
+            _PastelBlob(
+              color: const Color(0xFFE5C8FF),
+              size: 310,
+              top: 1160,
+              right: -160,
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class _PastelBlob extends StatelessWidget {
+  const _PastelBlob({
+    required this.color,
+    required this.size,
+    this.top,
+    this.right,
+    this.left,
+  });
+
+  final Color color;
+  final double size;
+  final double? top;
+  final double? right;
+  final double? left;
+
+  @override
+  Widget build(BuildContext context) {
+    return Positioned(
+      top: top,
+      right: right,
+      left: left,
+      child: ImageFiltered(
+        imageFilter: ui.ImageFilter.blur(sigmaX: 42, sigmaY: 42),
+        child: Container(
+          width: size,
+          height: size,
+          decoration: BoxDecoration(
+            color: color.withValues(alpha: 0.14),
+            shape: BoxShape.circle,
+          ),
+        ),
+      ),
+    );
+  }
+}
+
 /// The Explore module grid — a responsive wrap of square tiles (icon, label,
 /// subtitle), one per [HomeDestination]. The column count adapts to the
 /// available width, so this looks right from a narrow phone up to a wide
@@ -950,7 +1302,29 @@ class _ExploreTile extends StatelessWidget {
               child: Column(
                 mainAxisSize: MainAxisSize.min,
                 children: <Widget>[
-                  Icon(destination.icon, color: accent, size: 20),
+                  if (destination.imageAsset != null)
+                    Container(
+                      width: 42,
+                      height: 42,
+                      padding: const EdgeInsets.all(3),
+                      decoration: BoxDecoration(
+                        color: accent.withValues(alpha: 0.10),
+                        shape: BoxShape.circle,
+                      ),
+                      child: ClipOval(
+                        child: Image.asset(
+                          destination.imageAsset!,
+                          fit: BoxFit.cover,
+                          errorBuilder: (_, _, _) => Icon(
+                            destination.icon,
+                            color: accent,
+                            size: 20,
+                          ),
+                        ),
+                      ),
+                    )
+                  else
+                    Icon(destination.icon, color: accent, size: 20),
                   const SizedBox(height: 5),
                   // FittedBox scales the label down to fit the tile's width
                   // instead of wrapping mid-word or getting cut off with an
@@ -1016,5 +1390,3 @@ class _ExploreTile extends StatelessWidget {
         .scale(begin: const Offset(0.92, 0.92), end: const Offset(1, 1));
   }
 }
-
-

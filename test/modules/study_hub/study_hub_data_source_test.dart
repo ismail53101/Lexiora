@@ -24,6 +24,7 @@ void main() {
     String? day,
     int? start,
     int? end,
+    bool autoScheduled = false,
   }) {
     final DateTime now = DateTime.now();
     return StudyTask(
@@ -35,13 +36,20 @@ void main() {
       status: status,
       startMinute: start,
       endMinute: end,
+      autoScheduled: autoScheduled,
+      durationMinutes: start != null && end != null ? end - start : null,
       completedAt: status == TaskStatus.completed ? now : null,
       createdAt: now,
       updatedAt: now,
     );
   }
 
-  StudyTask brk(String id, {required int start, required int end, String? day}) {
+  StudyTask brk(String id, {
+    required int start,
+    required int end,
+    String? day,
+    bool autoScheduled = false,
+  }) {
     final DateTime now = DateTime.now();
     return StudyTask(
       id: id,
@@ -50,6 +58,8 @@ void main() {
       kind: SessionKind.breakTime,
       startMinute: start,
       endMinute: end,
+      autoScheduled: autoScheduled,
+      durationMinutes: end - start,
       createdAt: now,
       updatedAt: now,
     );
@@ -119,6 +129,23 @@ void main() {
     expect(await repo.topicSuggestions(), containsAll(<String>['Economy', 'Essay']));
   });
 
+  test('linked break can be resized and removed while editing a session', () async {
+    await repo.saveTask(session('s', subject: 'Pakistan Affairs', start: 540, end: 600));
+    await repo.saveTask(brk('b', start: 600, end: 610, autoScheduled: true));
+
+    await repo.saveTask((await repo.watchTasks(today).first)
+        .firstWhere((StudyTask t) => t.id == 'b')
+        .copyWith(endMinute: 620, durationMinutes: 20, updatedAt: DateTime.now()));
+    StudyTask breakTask = (await repo.watchTasks(today).first)
+        .firstWhere((StudyTask t) => t.id == 'b');
+    expect(breakTask.startMinute, 600);
+    expect(breakTask.endMinute, 620);
+    expect(breakTask.durationMinutes, 20);
+
+    await repo.deleteTask('b');
+    expect((await repo.watchTasks(today).first).where((StudyTask t) => t.isBreak), isEmpty);
+  });
+
   test('breaks count as break time, not sessions', () async {
     await repo.saveTask(session('s', status: TaskStatus.completed, subject: 'Maths'));
     await repo.saveTask(brk('b', start: 11 * 60, end: 11 * 60 + 20)); // 20 min
@@ -185,11 +212,70 @@ void main() {
     expect(t.displaySubject, 'Legacy task');
   });
 
+  test('automatic schedule is recalculated and persisted through save and delete', () async {
+    await repo.saveTask(session('first', start: 540, end: 600));
+    await repo.saveTask(
+        brk('pause', start: 600, end: 610, autoScheduled: true));
+    await repo.saveTask(session('next', start: 0, end: 60, autoScheduled: true));
+
+    List<StudyTask> rows = await repo.watchTasks(today).first;
+    expect(rows.firstWhere((StudyTask t) => t.id == 'next').startMinute, 610);
+
+    await repo.saveTask(session('first', start: 540, end: 630));
+    rows = await repo.watchTasks(today).first;
+    expect(rows.firstWhere((StudyTask t) => t.id == 'next').startMinute, 640);
+
+    await repo.deleteTask('pause');
+    rows = await repo.watchTasks(today).first;
+    expect(rows.firstWhere((StudyTask t) => t.id == 'next').startMinute, 630);
+  });
+
   test('streak counts consecutive active days', () async {
     await repo.addSession(log('t', minutes: 25, day: today));
     await repo.addSession(log('y', minutes: 25, day: yesterday));
     final StudyStreak streak = await repo.watchStreak().first;
     expect(streak.current, 2);
     expect(streak.best, greaterThanOrEqualTo(2));
+  });
+
+  test('persisted partial minutes are available for previous-day and range stats',
+      () async {
+    await repo.addSession(log('partial-yesterday', minutes: 2, day: yesterday));
+    await repo.addSession(log('today', minutes: 25, day: today));
+
+    expect(await repo.watchStudyMinutes(yesterday).first, 2);
+    expect((await repo.watchStats(StudyRange.weekly).first).studyMinutes, 27);
+    expect((await repo.watchStats(StudyRange.monthly).first).studyMinutes, 27);
+  });
+
+  test('study-time and achievement goals keep separate progress rules', () {
+    final DateTime now = DateTime.now();
+    final StudyGoal studyTime = StudyGoal(
+      id: 'time',
+      day: today,
+      title: 'Daily Study',
+      type: GoalType.studyTime,
+      targetCount: 3,
+      unit: 'hours',
+      createdAt: now,
+      updatedAt: now,
+    ).withStudyMinutes(130);
+    final StudyGoal achievement = StudyGoal(
+      id: 'achievement',
+      day: today,
+      title: 'Complete English Tenses',
+      type: GoalType.achievement,
+      targetCount: 5,
+      unit: 'topics',
+      createdAt: now,
+      updatedAt: now,
+    ).withCompletedTasks(3);
+
+    expect(studyTime.targetMinutes, 180);
+    expect(studyTime.progress, closeTo(130 / 180, 0.001));
+    expect(achievement.currentCount, 3);
+    expect(achievement.progress, closeTo(0.6, 0.001));
+    expect(studyTime.withCompletedTasks(5).currentCount, 130);
+    expect(achievement.withStudyMinutes(130).currentCount, 3);
   });
 }

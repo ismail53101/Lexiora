@@ -4,6 +4,7 @@ import 'package:lexiora/modules/study_hub/domain/entities/study_task.dart';
 import 'package:lexiora/modules/study_hub/domain/study_dates.dart';
 import 'package:lexiora/modules/study_hub/presentation/providers/study_hub_providers.dart';
 import 'package:lexiora/modules/study_hub/presentation/widgets/planner/planner_common.dart';
+import 'package:lexiora/modules/study_hub/presentation/widgets/today_overview_card.dart';
 
 const List<String> _months = <String>[
   'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',
@@ -52,6 +53,13 @@ class PlannerDailyViewState extends State<PlannerDailyView> {
       return ListView(
         padding: const EdgeInsets.fromLTRB(16, 4, 16, 24),
         children: <Widget>[
+          // 🔥 Streak / 🎯 Today's Goal / ⏱ Study today — the day overview
+          // stays visible on the planner's default tab.
+          const Padding(
+            padding: EdgeInsets.symmetric(horizontal: -16),
+            child: TodayOverviewRow(),
+          ),
+          const SizedBox(height: 6),
           PlannerNavHeader(
             label: label,
             onPrevious: () => _shiftDay(-1),

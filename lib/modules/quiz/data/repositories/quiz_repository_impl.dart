@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:math' as math;
 
 import 'package:drift/drift.dart';
 import 'package:lexiora/core/database/app_database.dart';
@@ -8,10 +9,13 @@ import 'package:lexiora/modules/quiz/domain/entities/quiz_content.dart';
 import 'package:lexiora/modules/quiz/domain/entities/quiz_models.dart';
 import 'package:lexiora/modules/quiz/domain/entities/quiz_question.dart';
 import 'package:lexiora/modules/quiz/domain/entities/quiz_settings.dart';
+import 'package:lexiora/modules/quiz/domain/entities/quiz_stage_progress.dart';
 import 'package:lexiora/modules/quiz/domain/entities/quiz_subject.dart';
 import 'package:lexiora/modules/quiz/domain/entities/quiz_topic.dart';
 import 'package:lexiora/modules/quiz/domain/quiz_dates.dart';
 import 'package:lexiora/modules/quiz/domain/quiz_grading.dart';
+import 'package:lexiora/modules/quiz/domain/mixed_quiz_selector.dart';
+import 'package:lexiora/modules/quiz/domain/quiz_stages.dart';
 import 'package:lexiora/modules/quiz/domain/repositories/quiz_repository.dart';
 import 'package:uuid/uuid.dart';
 
@@ -164,6 +168,74 @@ class QuizRepositoryImpl implements QuizRepository {
           bookmarked: Value<bool>(value),
           updatedAt: Value<DateTime>(DateTime.now())));
 
+  // ── Stage quizzes (v0.11.0) ─────────────────────────────────────────────────
+
+  @override
+  Future<List<QuizQuestion>> stageQuestions(String subjectId, int stageIndex,
+      {int perStage = quizStagePerStage, String? topicId}) async {
+    if (stageIndex < 0) return <QuizQuestion>[];
+    final int stageStart = stageIndex * perStage;
+    final List<QuizQuestionRow> rows = await _local.stageQuestions(
+      subjectId,
+      topicId: topicId,
+      offset: stageStart,
+      limit: perStage,
+    );
+    return rows.map(_toQuestion).toList(growable: false);
+  }
+
+  @override
+  Future<int> stageQuestionCount(String subjectId, {String? topicId}) =>
+      _local.countQuestions(
+          QuizFilter(subjectId: subjectId, topicId: topicId));
+
+  String _stageProgressKey(String subjectId, String? topicId) =>
+      topicId == null ? subjectId : '$subjectId::$topicId';
+
+  @override
+  Stream<List<QuizStageProgress>> watchStageProgress(String subjectId,
+      {String? topicId}) => _local
+      .watchStageProgress(_stageProgressKey(subjectId, topicId))
+      .map((List<QuizStageProgressRow> rows) => rows
+          .map((QuizStageProgressRow r) => QuizStageProgress(
+                subjectId: subjectId,
+                stageIndex: r.stageIndex,
+                bestScore: r.bestScore,
+                bestStars: r.bestStars,
+                attempts: r.attempts,
+                passed: r.passed,
+                lastPlayedAt: r.lastPlayedAt,
+              ))
+          .toList(growable: false));
+
+  @override
+  Future<void> saveStageResult({
+    required String subjectId,
+    required int stageIndex,
+    required int correct,
+    required int total,
+    String? topicId,
+  }) async {
+    final String progressKey = _stageProgressKey(subjectId, topicId);
+    final QuizStageProgressRow? existing =
+        await _local.stageProgress(progressKey, stageIndex);
+    final int score = total == 0 ? 0 : (correct * 100 / total).round();
+    final DateTime now = DateTime.now();
+    await _local.upsertStageProgress(QuizStageProgressCompanion(
+      subjectId: Value<String>(progressKey),
+      stageIndex: Value<int>(stageIndex),
+      bestScore: Value<int>(math.max(existing?.bestScore ?? 0, score)),
+      bestStars: Value<int>(math.max(existing?.bestStars ?? 0,
+          quizStageStars(correct, total))),
+      attempts: Value<int>((existing?.attempts ?? 0) + 1),
+      passed: Value<bool>(
+          (existing?.passed ?? false) || quizStagePassed(correct, total)),
+      lastPlayedAt: Value<DateTime?>(now),
+      createdAt: Value<DateTime>(existing?.createdAt ?? now),
+      updatedAt: Value<DateTime>(now),
+    ));
+  }
+
   // ── Play / attempts ─────────────────────────────────────────────────────────
 
   @override
@@ -175,9 +247,26 @@ class QuizRepositoryImpl implements QuizRepository {
   }) async {
     final QuizFilter f =
         (filter ?? const QuizFilter()).copyWith(bankId: bankId);
-    return (await _local.session(f, limit: limit, shuffle: shuffle))
+    final bool general =
+        f.bankId == null &&
+        f.subjectId == null &&
+        f.topicId == null &&
+        (f.subject == null || f.subject!.trim().isEmpty) &&
+        (f.topic == null || f.topic!.trim().isEmpty) &&
+        (f.tag == null || f.tag!.trim().isEmpty) &&
+        f.type == null &&
+        f.difficulty == null;
+    final List<QuizQuestion> questions = (await _local
+            .session(f, limit: general ? 10000 : limit, shuffle: general || shuffle))
         .map(_toQuestion)
         .toList();
+    if (!general) return questions;
+
+    return MixedQuizSelector.select(
+      questions,
+      limit: limit,
+      shuffle: true,
+    );
   }
 
   @override

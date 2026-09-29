@@ -1,0 +1,1413 @@
+{
+  "bank": {
+    "name": "Islamic Calendar & Special Days",
+    "subject": "Islamic Studies",
+    "topic": "Islamic Calendar & Special Days",
+    "description": "The Hijri lunar calendar, its months, and the special Islamic days and nights.",
+    "tags": "css,pms,fpsc,islamic-studies,calendar",
+    "version": "1.0",
+    "id": "islamiat_islamic_calendar"
+  },
+  "questions": [
+    {
+      "type": "mcq",
+      "prompt": "The Islamic (Hijri) calendar is based on?",
+      "options": [
+        "The cycles of the moon",
+        "The movement of the sun",
+        "Both sun and moon equally",
+        "The stars only"
+      ],
+      "answer": 0,
+      "explanation": "The Hijri calendar is a purely lunar calendar of 12 months.",
+      "difficulty": "easy",
+      "id": "q01"
+    },
+    {
+      "type": "mcq",
+      "prompt": "How many months are there in the Islamic calendar?",
+      "options": [
+        "10",
+        "11",
+        "12",
+        "13"
+      ],
+      "answer": 2,
+      "explanation": "The Islamic year has 12 lunar months.",
+      "difficulty": "easy",
+      "id": "q02"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which is the first month of the Islamic calendar?",
+      "options": [
+        "Muharram",
+        "Safar",
+        "Rajab",
+        "Ramadan"
+      ],
+      "answer": 0,
+      "explanation": "Muharram is the first month of the Hijri year.",
+      "difficulty": "easy",
+      "id": "q03"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which is the ninth month of the Islamic calendar?",
+      "options": [
+        "Shaban",
+        "Shawwal",
+        "Ramadan",
+        "Rajab"
+      ],
+      "answer": 2,
+      "explanation": "Ramadan is the ninth month, the month of fasting.",
+      "difficulty": "medium",
+      "id": "q04"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which is the last month of the Islamic calendar?",
+      "options": [
+        "Shawwal",
+        "Dhul-Qa'dah",
+        "Dhul-Hijjah",
+        "Ramadan"
+      ],
+      "answer": 2,
+      "explanation": "Dhul-Hijjah, the month of Hajj, is the twelfth and final month.",
+      "difficulty": "medium",
+      "id": "q05"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The first year of the Islamic calendar corresponds to which year of the Common Era?",
+      "options": [
+        "610 CE",
+        "622 CE",
+        "632 CE",
+        "638 CE"
+      ],
+      "answer": 1,
+      "explanation": "Year 1 AH began with the Hijrah in 622 CE.",
+      "difficulty": "medium",
+      "id": "q06"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Ashura, the day of fasting, falls on?",
+      "options": [
+        "10 Muharram",
+        "1 Shawwal",
+        "9 Dhul-Hijjah",
+        "27 Rajab"
+      ],
+      "answer": 0,
+      "explanation": "Ashura is the 10th of Muharram.",
+      "difficulty": "medium",
+      "id": "q07"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Isra and Mi'raj (Night Journey) is commemorated on?",
+      "options": [
+        "1 Ramadan",
+        "27 Rajab",
+        "15 Shaban",
+        "12 Rabi-ul-Awwal"
+      ],
+      "answer": 1,
+      "explanation": "The Night Journey is remembered on 27 Rajab.",
+      "difficulty": "medium",
+      "id": "q08"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The birth of the Holy Prophet (PBUH) is commemorated on?",
+      "options": [
+        "27 Rajab",
+        "12 Rabi-ul-Awwal",
+        "10 Muharram",
+        "1 Shawwal"
+      ],
+      "answer": 1,
+      "explanation": "Eid Milad-un-Nabi is observed on 12 Rabi-ul-Awwal.",
+      "difficulty": "easy",
+      "id": "q09"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Shab-e-Barat (the night of freedom from fire) is observed on?",
+      "options": [
+        "15 Shaban",
+        "27 Ramadan",
+        "10 Muharram",
+        "1 Rajab"
+      ],
+      "answer": 0,
+      "explanation": "Shab-e-Barat is the night of the 15th of Shaban.",
+      "difficulty": "medium",
+      "id": "q10"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Laylat-ul-Qadr is most commonly believed to fall on?",
+      "options": [
+        "21 Ramadan",
+        "25 Ramadan",
+        "27 Ramadan",
+        "29 Ramadan"
+      ],
+      "answer": 2,
+      "explanation": "Many believe Laylat-ul-Qadr falls on the 27th night of Ramadan.",
+      "difficulty": "easy",
+      "id": "q11"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Eid-ul-Fitr is celebrated in which month?",
+      "options": [
+        "Ramadan",
+        "Shawwal",
+        "Dhul-Hijjah",
+        "Muharram"
+      ],
+      "answer": 1,
+      "explanation": "Eid-ul-Fitr falls on 1 Shawwal.",
+      "difficulty": "easy",
+      "id": "q12"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Prophet (PBUH) was born in which year, known as the Year of the Elephant?",
+      "options": [
+        "571 CE",
+        "610 CE",
+        "622 CE",
+        "570 CE"
+      ],
+      "answer": 0,
+      "explanation": "The Prophet (PBUH) was born in 571 CE, the Year of the Elephant.",
+      "difficulty": "medium",
+      "id": "q13"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Islamic months begin with the sighting of the?",
+      "options": [
+        "New moon (hilal)",
+        "Full moon",
+        "Sunrise",
+        "Evening star"
+      ],
+      "answer": 0,
+      "explanation": "Each Hijri month starts with the sighting of the new crescent moon.",
+      "difficulty": "easy",
+      "id": "q14"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The month of Dhul-Hijjah is especially sacred because of which event?",
+      "options": [
+        "Fasting and Itikaf",
+        "Hajj and Qurbani",
+        "The Night of Power",
+        "The birthday of the Prophet (PBUH)"
+      ],
+      "answer": 1,
+      "explanation": "Hajj and Qurbani (sacrifice) take place in Dhul-Hijjah.",
+      "difficulty": "easy",
+      "id": "q15"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which month follows Ramadan in the Islamic calendar?",
+      "options": [
+        "Shaban",
+        "Rajab",
+        "Shawwal",
+        "Dhul-Qa'dah"
+      ],
+      "answer": 2,
+      "explanation": "Shawwal comes directly after Ramadan.",
+      "difficulty": "medium",
+      "id": "q16"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Islamic calendar is based on which cycle?",
+      "options": [
+        "The lunar cycle",
+        "The solar cycle",
+        "Both equally",
+        "The seasons"
+      ],
+      "answer": 0,
+      "explanation": "The Hijri calendar is a pure lunar calendar of 354 or 355 days.",
+      "difficulty": "easy",
+      "id": "q17"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which is the second month of the Islamic calendar?",
+      "options": [
+        "Safar",
+        "Muharram",
+        "Rabi-ul-Awwal",
+        "Rajab"
+      ],
+      "answer": 0,
+      "explanation": "The order begins: Muharram, Safar, Rabi-ul-Awwal...",
+      "difficulty": "medium",
+      "id": "q18"
+    },
+    {
+      "type": "mcq",
+      "prompt": "In which month was the Prophet Muhammad (PBUH) born?",
+      "options": [
+        "Rabi-ul-Awwal",
+        "Rabi-ul-Akhir",
+        "Rajab",
+        "Shawwal"
+      ],
+      "answer": 0,
+      "explanation": "The Prophet (PBUH) was born in Rabi-ul-Awwal, in the Year of the Elephant.",
+      "difficulty": "easy",
+      "id": "q19"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which month is called the 'month of Allah'?",
+      "options": [
+        "Muharram",
+        "Ramadan",
+        "Rajab",
+        "Sha'ban"
+      ],
+      "answer": 0,
+      "explanation": "Muharram is called 'Shahrullah' (the month of Allah).",
+      "difficulty": "medium",
+      "id": "q20"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The 27th of Rajab marks which event?",
+      "options": [
+        "Shab-e-Meraj (Isra and Mi'raj)",
+        "Eid-ul-Fitr",
+        "Ashura",
+        "Shab-e-Barat"
+      ],
+      "answer": 0,
+      "explanation": "The 27th of Rajab is observed as the night of the Prophet's (PBUH) journey and ascension.",
+      "difficulty": "medium",
+      "id": "q21"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The 15th of Sha'ban is known as?",
+      "options": [
+        "Shab-e-Barat",
+        "Laylat-ul-Qadr",
+        "Ashura",
+        "Shab-e-Meraj"
+      ],
+      "answer": 0,
+      "explanation": "Shab-e-Barat falls on the 15th night of Sha'ban, observed with prayers and forgiveness.",
+      "difficulty": "easy",
+      "id": "q22"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Fasting in the month of Shawwal (six days) is considered?",
+      "options": [
+        "Recommended (Sunnah)",
+        "Compulsory",
+        "Forbidden",
+        "Disliked"
+      ],
+      "answer": 0,
+      "explanation": "Fasting six days of Shawwal is recommended; with Ramadan it is like fasting the year.",
+      "difficulty": "medium",
+      "id": "q23"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which month follows Dhul-Hijjah?",
+      "options": [
+        "Muharram",
+        "Shawwal",
+        "Safar",
+        "Rajab"
+      ],
+      "answer": 0,
+      "explanation": "Dhul-Hijjah is the 12th month; the new year begins with Muharram.",
+      "difficulty": "medium",
+      "id": "q24"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The first ten days of which month are considered the best days of the year?",
+      "options": [
+        "Dhul-Hijjah",
+        "Muharram",
+        "Ramadan",
+        "Rajab"
+      ],
+      "answer": 0,
+      "explanation": "The first ten days of Dhul-Hijjah are praised in the Quran and hadith as the best days.",
+      "difficulty": "medium",
+      "id": "q25"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The lunar year is shorter than the solar year by about how many days?",
+      "options": [
+        "About 10 to 11 days",
+        "About 1 day",
+        "About 30 days",
+        "About 5 days"
+      ],
+      "answer": 0,
+      "explanation": "The Hijri year (354-355 days) is about 10-11 days shorter than the Gregorian year.",
+      "difficulty": "medium",
+      "id": "q26"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The 1st of Muharram marks what?",
+      "options": [
+        "The Islamic New Year",
+        "Eid-ul-Fitr",
+        "The Day of Arafat",
+        "Laylat-ul-Qadr"
+      ],
+      "answer": 0,
+      "explanation": "1 Muharram is the beginning of the Hijri new year.",
+      "difficulty": "easy",
+      "id": "q27"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Fasting on the 9th and 10th of Muharram is recommended because?",
+      "options": [
+        "It expiates the sins of the previous year",
+        "It is compulsory",
+        "It was the Prophet's habit only",
+        "It aids the Hajj"
+      ],
+      "answer": 0,
+      "explanation": "The Prophet (PBUH) said fasting Ashura expiates the previous year's sins.",
+      "difficulty": "medium",
+      "id": "q28"
+    },
+    {
+      "type": "mcq",
+      "prompt": "In which month is the Umrah recommended and fasting optional (Sha'ban-style)?",
+      "options": [
+        "Rajab was not singled out; Umrah is valid all year",
+        "Only Ramadan",
+        "Only Dhul-Hijjah",
+        "Only Muharram"
+      ],
+      "answer": 0,
+      "explanation": "Umrah can be performed at any time; scholars caution against singling out Rajab as superior.",
+      "difficulty": "hard",
+      "id": "q29"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The nights of the last ten days of Ramadan include?",
+      "options": [
+        "Laylat-ul-Qadr",
+        "Shab-e-Barat",
+        "Shab-e-Meraj",
+        "Ashura"
+      ],
+      "answer": 0,
+      "explanation": "Laylat-ul-Qadr lies in the last ten odd nights of Ramadan.",
+      "difficulty": "easy",
+      "id": "q30"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which month is called the 'month of the Quran'?",
+      "options": [
+        "Ramadan",
+        "Sha'ban",
+        "Rajab",
+        "Muharram"
+      ],
+      "answer": 0,
+      "explanation": "Ramadan is the month in which the Quran was revealed.",
+      "difficulty": "easy",
+      "id": "q31"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The 10th of Dhul-Hijjah is?",
+      "options": [
+        "Eid-ul-Adha",
+        "Day of Arafat",
+        "Ashura",
+        "Eid-ul-Fitr"
+      ],
+      "answer": 0,
+      "explanation": "Eid-ul-Adha falls on 10 Dhul-Hijjah.",
+      "difficulty": "easy",
+      "id": "q32"
+    },
+    {
+      "type": "mcq",
+      "prompt": "In which month do Muslims observe the fast of Ashura?",
+      "options": [
+        "Muharram",
+        "Safar",
+        "Rajab",
+        "Sha'ban"
+      ],
+      "answer": 0,
+      "explanation": "Ashura (10 Muharram) is observed with fasting.",
+      "difficulty": "easy",
+      "id": "q33"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The forbidden months for fighting (in the pre-Islamic and early Islamic tradition) are?",
+      "options": [
+        "Muharram, Rajab, Dhul-Qa'dah and Dhul-Hijjah",
+        "Ramadan and Shawwal",
+        "Safar and Rabi-ul-Awwal",
+        "Sha'ban and Jumada"
+      ],
+      "answer": 0,
+      "explanation": "The four sacred months are Muharram, Rajab, Dhul-Qa'dah and Dhul-Hijjah.",
+      "difficulty": "medium",
+      "id": "q34"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which months are known as the 'Hajj months'?",
+      "options": [
+        "Shawwal, Dhul-Qa'dah and Dhul-Hijjah",
+        "Only Dhul-Hijjah",
+        "Ramadan and Shawwal",
+        "Muharram and Safar"
+      ],
+      "answer": 0,
+      "explanation": "The Hajj months are Shawwal, Dhul-Qa'dah and the first ten of Dhul-Hijjah (2:197).",
+      "difficulty": "hard",
+      "id": "q35"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which month follows Muharram?",
+      "options": [
+        "Safar",
+        "Rabi-ul-Awwal",
+        "Rajab",
+        "Shawwal"
+      ],
+      "answer": 0,
+      "explanation": "Safar is the second month.",
+      "difficulty": "easy",
+      "id": "q36"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Day of Arafah falls in which month?",
+      "options": [
+        "Dhul-Hijjah",
+        "Ramadan",
+        "Shawwal",
+        "Rajab"
+      ],
+      "answer": 0,
+      "explanation": "Arafah is on 9 Dhul-Hijjah.",
+      "difficulty": "easy",
+      "id": "q37"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Islamic New Year begins with:",
+      "options": [
+        "1 Muharram",
+        "1 Ramadan",
+        "1 Shawwal",
+        "1 Rajab"
+      ],
+      "answer": 0,
+      "explanation": "The Hijri year starts on 1 Muharram.",
+      "difficulty": "easy",
+      "id": "q38"
+    },
+    {
+      "type": "mcq",
+      "prompt": "In which month is the Prophet's (PBUH) birth celebrated as Eid Milad-un-Nabi?",
+      "options": [
+        "Rabi-ul-Awwal",
+        "Muharram",
+        "Rajab",
+        "Shawwal"
+      ],
+      "answer": 0,
+      "explanation": "The Prophet (PBUH) was born in Rabi-ul-Awwal.",
+      "difficulty": "easy",
+      "id": "q39"
+    },
+    {
+      "type": "mcq",
+      "prompt": "In which month did the Hijrah (migration) to Madinah take place?",
+      "options": [
+        "Rabi-ul-Awwal",
+        "Muharram",
+        "Ramadan",
+        "Shawwal"
+      ],
+      "answer": 0,
+      "explanation": "The Prophet (PBUH) arrived in Madinah in Rabi-ul-Awwal.",
+      "difficulty": "medium",
+      "id": "q40"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Lailat-ul-Qadr falls in which month?",
+      "options": [
+        "Ramadan",
+        "Shawwal",
+        "Dhul-Hijjah",
+        "Muharram"
+      ],
+      "answer": 0,
+      "explanation": "Lailat-ul-Qadr is in the last ten nights of Ramadan.",
+      "difficulty": "easy",
+      "id": "q41"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which month is called the 'month of migration' (Shahr-ul-Hijrah)?",
+      "options": [
+        "Muharram",
+        "Safar",
+        "Rajab",
+        "Dhul-Hijjah"
+      ],
+      "answer": 0,
+      "explanation": "The Hijri year begins with Muharram, the migration month.",
+      "difficulty": "medium",
+      "id": "q42"
+    },
+    {
+      "type": "mcq",
+      "prompt": "In which month did the Battle of Badr take place?",
+      "options": [
+        "Ramadan",
+        "Shawwal",
+        "Muharram",
+        "Rajab"
+      ],
+      "answer": 0,
+      "explanation": "Badr was fought in Ramadan, 2 AH.",
+      "difficulty": "medium",
+      "id": "q43"
+    },
+    {
+      "type": "mcq",
+      "prompt": "How many days are in an Islamic year?",
+      "options": [
+        "About 354 days",
+        "About 365 days",
+        "About 360 days",
+        "About 300 days"
+      ],
+      "answer": 0,
+      "explanation": "A lunar year is about 354 days.",
+      "difficulty": "easy",
+      "id": "q44"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The month before Ramadan is:",
+      "options": [
+        "Sha'ban",
+        "Shawwal",
+        "Rajab",
+        "Safar"
+      ],
+      "answer": 0,
+      "explanation": "Sha'ban precedes Ramadan.",
+      "difficulty": "easy",
+      "id": "q45"
+    },
+    {
+      "type": "mcq",
+      "prompt": "In which month is Shab-e-Barat observed?",
+      "options": [
+        "Sha'ban",
+        "Ramadan",
+        "Rajab",
+        "Muharram"
+      ],
+      "answer": 0,
+      "explanation": "Shab-e-Barat falls on 15 Sha'ban.",
+      "difficulty": "easy",
+      "id": "q46"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Hajj is performed in which month?",
+      "options": [
+        "Dhul-Hijjah",
+        "Ramadan",
+        "Shawwal",
+        "Muharram"
+      ],
+      "answer": 0,
+      "explanation": "Hajj takes place in Dhul-Hijjah.",
+      "difficulty": "easy",
+      "id": "q47"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which month is known as the 'forbidden month' along with Rajab, Dhul-Qa'dah and Muharram?",
+      "options": [
+        "Dhul-Hijjah",
+        "Shawwal",
+        "Ramadan",
+        "Safar"
+      ],
+      "answer": 0,
+      "explanation": "The four sacred months include Dhul-Hijjah.",
+      "difficulty": "medium",
+      "id": "q48"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Islamic year 1 AH corresponds to which Gregorian year?",
+      "options": [
+        "622 CE",
+        "632 CE",
+        "610 CE",
+        "600 CE"
+      ],
+      "answer": 0,
+      "explanation": "1 AH began in 622 CE, the year of Hijrah.",
+      "difficulty": "medium",
+      "id": "q49"
+    },
+    {
+      "type": "mcq",
+      "prompt": "In which month is the Umrah at its peak during Ramadan?",
+      "options": [
+        "Ramadan",
+        "Shawwal",
+        "Dhul-Hijjah",
+        "Muharram"
+      ],
+      "answer": 0,
+      "explanation": "Umrah in Ramadan carries special reward.",
+      "difficulty": "easy",
+      "id": "q50"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The '10th of Muharram' is known as:",
+      "options": [
+        "Ashura",
+        "Arafah",
+        "Lailat-ul-Qadr",
+        "Mawlid"
+      ],
+      "answer": 0,
+      "explanation": "Ashura falls on 10 Muharram.",
+      "difficulty": "easy",
+      "id": "q51"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which month number is Rabi-ul-Awwal in the Islamic calendar?",
+      "options": [
+        "Third",
+        "First",
+        "Fifth",
+        "Seventh"
+      ],
+      "answer": 0,
+      "explanation": "Rabi-ul-Awwal is the third month of the Hijri year.",
+      "difficulty": "easy",
+      "id": "q52"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which month follows Rabi-ul-Awwal?",
+      "options": [
+        "Rabi-ul-Akhir (Rabi al-Thani)",
+        "Jumada al-Ula",
+        "Safar",
+        "Rajab"
+      ],
+      "answer": 0,
+      "explanation": "Rabi-ul-Akhir, the fourth month, comes after Rabi-ul-Awwal.",
+      "difficulty": "medium",
+      "id": "q53"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which month number is Jumada al-Ula?",
+      "options": [
+        "Fifth",
+        "Third",
+        "Sixth",
+        "Eighth"
+      ],
+      "answer": 0,
+      "explanation": "Jumada al-Ula is the fifth month of the Islamic calendar.",
+      "difficulty": "medium",
+      "id": "q54"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which month follows Jumada al-Ula?",
+      "options": [
+        "Jumada al-Akhirah",
+        "Rajab",
+        "Sha'ban",
+        "Safar"
+      ],
+      "answer": 0,
+      "explanation": "Jumada al-Akhirah, the sixth month, follows Jumada al-Ula.",
+      "difficulty": "medium",
+      "id": "q55"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which month number is Rajab?",
+      "options": [
+        "Seventh",
+        "Ninth",
+        "Fifth",
+        "Eighth"
+      ],
+      "answer": 0,
+      "explanation": "Rajab is the seventh month and one of the four sacred months.",
+      "difficulty": "medium",
+      "id": "q56"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which month comes immediately after Jumada al-Akhirah?",
+      "options": [
+        "Rajab",
+        "Sha'ban",
+        "Ramadan",
+        "Safar"
+      ],
+      "answer": 0,
+      "explanation": "Rajab, the seventh month, follows Jumada al-Akhirah.",
+      "difficulty": "medium",
+      "id": "q57"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which month number is Sha'ban?",
+      "options": [
+        "Eighth",
+        "Seventh",
+        "Ninth",
+        "Sixth"
+      ],
+      "answer": 0,
+      "explanation": "Sha'ban is the eighth month, directly before Ramadan.",
+      "difficulty": "medium",
+      "id": "q58"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which month number is Shawwal?",
+      "options": [
+        "Tenth",
+        "Ninth",
+        "Eleventh",
+        "Eighth"
+      ],
+      "answer": 0,
+      "explanation": "Shawwal, the month of Eid-ul-Fitr, is the tenth month.",
+      "difficulty": "medium",
+      "id": "q59"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which month number is Dhul-Qa'dah?",
+      "options": [
+        "Eleventh",
+        "Tenth",
+        "Twelfth",
+        "Ninth"
+      ],
+      "answer": 0,
+      "explanation": "Dhul-Qa'dah is the eleventh month of the Islamic calendar.",
+      "difficulty": "medium",
+      "id": "q60"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which month precedes Dhul-Hijjah?",
+      "options": [
+        "Dhul-Qa'dah",
+        "Shawwal",
+        "Muharram",
+        "Rajab"
+      ],
+      "answer": 0,
+      "explanation": "Dhul-Qa'dah, the eleventh month, comes before Dhul-Hijjah.",
+      "difficulty": "medium",
+      "id": "q61"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Islamic weekday 'Al-Jumu'ah' corresponds to which day?",
+      "options": [
+        "Friday",
+        "Sunday",
+        "Thursday",
+        "Saturday"
+      ],
+      "answer": 0,
+      "explanation": "Al-Jumu'ah is Friday, the day of congregational prayer.",
+      "difficulty": "easy",
+      "id": "q62"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Islamic weekday 'Al-Ahad' corresponds to which day?",
+      "options": [
+        "Sunday",
+        "Monday",
+        "Saturday",
+        "Friday"
+      ],
+      "answer": 0,
+      "explanation": "Al-Ahad is Sunday, the first day of the Islamic week.",
+      "difficulty": "medium",
+      "id": "q63"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Islamic weekday 'Al-Ithnayn' corresponds to which day?",
+      "options": [
+        "Monday",
+        "Tuesday",
+        "Sunday",
+        "Wednesday"
+      ],
+      "answer": 0,
+      "explanation": "Al-Ithnayn is Monday, meaning 'the second day'.",
+      "difficulty": "medium",
+      "id": "q64"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Islamic weekday 'Ath-Thalatha' corresponds to which day?",
+      "options": [
+        "Tuesday",
+        "Wednesday",
+        "Monday",
+        "Thursday"
+      ],
+      "answer": 0,
+      "explanation": "Ath-Thalatha is Tuesday — 'the third day'.",
+      "difficulty": "medium",
+      "id": "q65"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Islamic weekday 'Al-Arba'a' corresponds to which day?",
+      "options": [
+        "Wednesday",
+        "Tuesday",
+        "Thursday",
+        "Friday"
+      ],
+      "answer": 0,
+      "explanation": "Al-Arba'a is Wednesday — 'the fourth day'.",
+      "difficulty": "medium",
+      "id": "q66"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Islamic weekday 'Al-Khamis' corresponds to which day?",
+      "options": [
+        "Thursday",
+        "Wednesday",
+        "Friday",
+        "Saturday"
+      ],
+      "answer": 0,
+      "explanation": "Al-Khamis is Thursday — 'the fifth day'.",
+      "difficulty": "medium",
+      "id": "q67"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Islamic weekday 'As-Sabt' corresponds to which day?",
+      "options": [
+        "Saturday",
+        "Sunday",
+        "Friday",
+        "Monday"
+      ],
+      "answer": 0,
+      "explanation": "As-Sabt is Saturday, the seventh day of the Islamic week.",
+      "difficulty": "medium",
+      "id": "q68"
+    },
+    {
+      "type": "mcq",
+      "prompt": "In Islamic tradition, when does the new day begin?",
+      "options": [
+        "At sunset (Maghrib)",
+        "At midnight",
+        "At sunrise",
+        "At noon"
+      ],
+      "answer": 0,
+      "explanation": "The Islamic day begins at sunset, so nights precede their days.",
+      "difficulty": "medium",
+      "id": "q69"
+    },
+    {
+      "type": "mcq",
+      "prompt": "How many leap years does the Islamic calendar have in a 30-year cycle?",
+      "options": [
+        "Eleven",
+        "Ten",
+        "Seven",
+        "Twelve"
+      ],
+      "answer": 0,
+      "explanation": "The lunar calendar inserts eleven leap days over each 30-year cycle.",
+      "difficulty": "hard",
+      "id": "q70"
+    },
+    {
+      "type": "mcq",
+      "prompt": "How many days does each month of the Islamic calendar have?",
+      "options": [
+        "29 or 30",
+        "30 or 31",
+        "28 or 29",
+        "Always 30"
+      ],
+      "answer": 0,
+      "explanation": "Lunar months are 29 or 30 days depending on the sighting of the moon.",
+      "difficulty": "easy",
+      "id": "q71"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which caliph introduced the official Islamic (Hijri) calendar?",
+      "options": [
+        "Umar ibn al-Khattab (RA)",
+        "Abu Bakr (RA)",
+        "Uthman (RA)",
+        "Ali (RA)"
+      ],
+      "answer": 0,
+      "explanation": "Umar (RA) established the Hijri calendar, dating from the Hijrah in 622 CE.",
+      "difficulty": "medium",
+      "id": "q72"
+    },
+    {
+      "type": "mcq",
+      "prompt": "In which month did the Prophet (PBUH) pass away?",
+      "options": [
+        "Rabi-ul-Awwal",
+        "Ramadan",
+        "Muharram",
+        "Rajab"
+      ],
+      "answer": 0,
+      "explanation": "The Prophet (PBUH) passed away in Rabi-ul-Awwal, 11 AH.",
+      "difficulty": "medium",
+      "id": "q73"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The 'white days' (Ayyam al-Bid) of each lunar month are which dates?",
+      "options": [
+        "13th, 14th and 15th",
+        "1st, 2nd and 3rd",
+        "27th, 28th and 29th",
+        "10th, 11th and 12th"
+      ],
+      "answer": 0,
+      "explanation": "Ayyam al-Bid are the 13th, 14th and 15th of each lunar month, when the moon is full.",
+      "difficulty": "medium",
+      "id": "q74"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Fasting on the 'white days' of each month is?",
+      "options": [
+        "Recommended (Sunnah)",
+        "Obligatory",
+        "Forbidden",
+        "Only in Ramadan"
+      ],
+      "answer": 0,
+      "explanation": "The Prophet (PBUH) recommended fasting the three white days each month.",
+      "difficulty": "medium",
+      "id": "q75"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which is the only sacred month that falls alone rather than consecutively?",
+      "options": [
+        "Rajab",
+        "Muharram",
+        "Dhul-Qa'dah",
+        "Dhul-Hijjah"
+      ],
+      "answer": 0,
+      "explanation": "Rajab stands alone among the sacred months; the other three follow consecutively.",
+      "difficulty": "hard",
+      "id": "q76"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Quran describes Laylat-ul-Qadr as better than how many months?",
+      "options": [
+        "A thousand months",
+        "A hundred months",
+        "Ten months",
+        "Twelve months"
+      ],
+      "answer": 0,
+      "explanation": "Surah Al-Qadr says the Night of Power is better than a thousand months.",
+      "difficulty": "easy",
+      "id": "q77"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Day of Arafah falls on which date?",
+      "options": [
+        "9 Dhul-Hijjah",
+        "10 Dhul-Hijjah",
+        "8 Dhul-Hijjah",
+        "1 Muharram"
+      ],
+      "answer": 0,
+      "explanation": "The Day of Arafah is the 9th of Dhul-Hijjah, the climax of Hajj.",
+      "difficulty": "medium",
+      "id": "q78"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What is the 8th of Dhul-Hijjah called?",
+      "options": [
+        "Yawm at-Tarwiyah",
+        "Yawm al-Arafah",
+        "Yawm an-Nahr",
+        "Yawm al-Fitr"
+      ],
+      "answer": 0,
+      "explanation": "The 8th of Dhul-Hijjah is Yawm at-Tarwiyah, when pilgrims set out for Mina.",
+      "difficulty": "hard",
+      "id": "q79"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Zakat-ul-Fitr is paid before which prayer?",
+      "options": [
+        "The Eid-ul-Fitr prayer",
+        "The Friday prayer",
+        "The Eid-ul-Adha prayer",
+        "The Maghrib prayer"
+      ],
+      "answer": 0,
+      "explanation": "Zakat-ul-Fitr is given before the Eid-ul-Fitr prayer so the poor may celebrate.",
+      "difficulty": "medium",
+      "id": "q80"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The name 'Muharram' literally means?",
+      "options": [
+        "Sacred or forbidden",
+        "First",
+        "Wet",
+        "Blessed"
+      ],
+      "answer": 0,
+      "explanation": "Muharram comes from the root haram — sacred, forbidden for fighting.",
+      "difficulty": "medium",
+      "id": "q81"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Islamic calendar takes its starting point (epoch) from which event?",
+      "options": [
+        "The Hijrah (migration to Madinah)",
+        "The birth of the Prophet (PBUH)",
+        "The Conquest of Makkah",
+        "The Battle of Badr"
+      ],
+      "answer": 0,
+      "explanation": "Year 1 AH begins with the Hijrah of the Prophet (PBUH) to Madinah in 622 CE.",
+      "difficulty": "medium",
+      "id": "q82"
+    },
+    {
+      "type": "mcq",
+      "prompt": "In which month was the Battle of Uhud fought?",
+      "options": [
+        "Shawwal (3 AH)",
+        "Ramadan (2 AH)",
+        "Muharram (4 AH)",
+        "Rajab (5 AH)"
+      ],
+      "answer": 0,
+      "explanation": "The Battle of Uhud took place in Shawwal, 3 AH.",
+      "difficulty": "hard",
+      "id": "q83"
+    },
+    {
+      "type": "mcq",
+      "prompt": "In which month was the Battle of the Trench (Khandaq) fought?",
+      "options": [
+        "Shawwal (5 AH)",
+        "Ramadan (2 AH)",
+        "Muharram (6 AH)",
+        "Rajab (7 AH)"
+      ],
+      "answer": 0,
+      "explanation": "The Battle of the Trench was fought in Shawwal, 5 AH.",
+      "difficulty": "hard",
+      "id": "q84"
+    },
+    {
+      "type": "mcq",
+      "prompt": "A leap year in the Islamic calendar has how many days?",
+      "options": [
+        "355",
+        "354",
+        "365",
+        "360"
+      ],
+      "answer": 0,
+      "explanation": "A leap Hijri year has 355 days; an ordinary one has 354.",
+      "difficulty": "hard",
+      "id": "q85"
+    },
+    {
+      "type": "mcq",
+      "prompt": "In the Islamic calendar, the extra day of a leap year is added to which month?",
+      "options": [
+        "Dhul-Hijjah",
+        "Muharram",
+        "Ramadan",
+        "Rajab"
+      ],
+      "answer": 0,
+      "explanation": "The leap day is added to the last month, Dhul-Hijjah.",
+      "difficulty": "hard",
+      "id": "q86"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Besides fasting, Ramadan is known as the month of what?",
+      "options": [
+        "Mercy and forgiveness",
+        "Hajj",
+        "Migration",
+        "Harvest"
+      ],
+      "answer": 0,
+      "explanation": "Ramadan is called the month of mercy, forgiveness and the Quran.",
+      "difficulty": "easy",
+      "id": "q87"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Laylat-ul-Qadr is most likely to be found among which nights?",
+      "options": [
+        "The odd nights of the last ten of Ramadan",
+        "The first ten of Ramadan",
+        "The middle ten of Ramadan",
+        "The first five of Ramadan"
+      ],
+      "answer": 0,
+      "explanation": "The Prophet (PBUH) urged seeking Laylat-ul-Qadr in the odd nights of the final ten.",
+      "difficulty": "medium",
+      "id": "q88"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Islamic calendar is also known as the?",
+      "options": [
+        "Hijri (lunar) calendar",
+        "Solar calendar",
+        "Gregorian calendar",
+        "Coptic calendar"
+      ],
+      "answer": 0,
+      "explanation": "The Islamic calendar is the Hijri lunar calendar.",
+      "difficulty": "easy",
+      "id": "q89"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which day of the week is described in hadith as the best day?",
+      "options": [
+        "Friday",
+        "Monday",
+        "Sunday",
+        "Thursday"
+      ],
+      "answer": 0,
+      "explanation": "Friday (Jumu'ah) is described as the best day, on which the sun rises.",
+      "difficulty": "easy",
+      "id": "q90"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The two major Eids of Islam fall in which months?",
+      "options": [
+        "Shawwal and Dhul-Hijjah",
+        "Ramadan and Muharram",
+        "Rajab and Sha'ban",
+        "Safar and Rabi-ul-Awwal"
+      ],
+      "answer": 0,
+      "explanation": "Eid-ul-Fitr is on 1 Shawwal and Eid-ul-Adha on 10 Dhul-Hijjah.",
+      "difficulty": "easy",
+      "id": "q91"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What are the 11th, 12th and 13th of Dhul-Hijjah called?",
+      "options": [
+        "Ayyam at-Tashriq",
+        "Ayyam al-Bid",
+        "Ayyam an-Nahr",
+        "Ayyam al-Jahiliyyah"
+      ],
+      "answer": 0,
+      "explanation": "The 11th-13th of Dhul-Hijjah are Ayyam at-Tashriq, days of remembrance and takbir.",
+      "difficulty": "hard",
+      "id": "q92"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Hijri calendar is primarily used today for what purpose?",
+      "options": [
+        "Determining religious observances such as Ramadan and Hajj",
+        "Civil tax years",
+        "Agricultural seasons",
+        "Weather forecasting"
+      ],
+      "answer": 0,
+      "explanation": "Muslims use the Hijri calendar mainly to fix the times of worship and festivals.",
+      "difficulty": "easy",
+      "id": "q93"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which month comes right after Ramadan in the sequence of the Islamic year?",
+      "options": [
+        "Shawwal",
+        "Dhul-Qa'dah",
+        "Muharram",
+        "Safar"
+      ],
+      "answer": 0,
+      "explanation": "Shawwal, the tenth month, immediately follows Ramadan.",
+      "difficulty": "easy",
+      "id": "q94"
+    },
+    {
+      "type": "mcq",
+      "prompt": "In which month do Muslims offer the six recommended fasts after Ramadan?",
+      "options": [
+        "Shawwal",
+        "Muharram",
+        "Rajab",
+        "Sha'ban"
+      ],
+      "answer": 0,
+      "explanation": "Fasting six days of Shawwal is recommended, completing the reward of a full year.",
+      "difficulty": "medium",
+      "id": "q95"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which month is Safar in relation to Muharram?",
+      "options": [
+        "The month after Muharram",
+        "The month before Muharram",
+        "The last month",
+        "The ninth month"
+      ],
+      "answer": 0,
+      "explanation": "Safar is the second month, immediately after Muharram.",
+      "difficulty": "easy",
+      "id": "q96"
+    },
+    {
+      "type": "mcq",
+      "prompt": "How many months does the Islamic (lunar) year have?",
+      "options": [
+        "Twelve",
+        "Ten",
+        "Thirteen",
+        "Eleven"
+      ],
+      "answer": 0,
+      "explanation": "The Islamic year has twelve lunar months.",
+      "difficulty": "easy",
+      "id": "q97"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which is the fourth month of the Islamic calendar?",
+      "options": [
+        "Rabi-ul-Akhir (Rabi al-Thani)",
+        "Jumada al-Ula",
+        "Safar",
+        "Rabi-ul-Awwal"
+      ],
+      "answer": 0,
+      "explanation": "Rabi-ul-Akhir is the fourth month of the Hijri year.",
+      "difficulty": "medium",
+      "id": "q98"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which month comes after Shawwal?",
+      "options": [
+        "Dhul-Qa'dah",
+        "Dhul-Hijjah",
+        "Ramadan",
+        "Safar"
+      ],
+      "answer": 0,
+      "explanation": "Dhul-Qa'dah, the eleventh month, follows Shawwal.",
+      "difficulty": "medium",
+      "id": "q99"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Apart from Ramadan, the Prophet (PBUH) fasted most in which month?",
+      "options": [
+        "Sha'ban",
+        "Muharram",
+        "Rajab",
+        "Shawwal"
+      ],
+      "answer": 0,
+      "explanation": "Aisha (RA) said the Prophet (PBUH) fasted most in Sha'ban besides Ramadan.",
+      "difficulty": "medium",
+      "id": "q100"
+    }
+  ]
+}

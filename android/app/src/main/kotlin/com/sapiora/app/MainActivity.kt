@@ -6,6 +6,7 @@ import android.database.Cursor
 import android.graphics.BitmapFactory
 import android.net.Uri
 import android.os.Build
+import android.os.Bundle
 import android.os.Environment
 import android.provider.MediaStore
 import android.provider.OpenableColumns
@@ -31,7 +32,10 @@ import java.io.File
  * The channel id and package are kept as-is for backward compatibility; only
  * user-visible branding changed. The bridge exposes:
  *
- *  - getSdkInt / setKeepScreenOn: small platform helpers.
+ * *  - getSdkInt / setKeepScreenOn: small platform helpers.
+ *  - getFirstInstallTime: epoch millis of the current install (Android
+ *    PackageInfo), used to corroborate fresh-install detection before any
+ *    stale-chat purge from a restored backup.
  *  - isExternalStorageManager: whether all-files access is granted (always true
  *    below API 30, where the storage permission covers broad reads).
  *  - scanAllPdfs: discovers every readable *.pdf on the device by combining two
@@ -51,13 +55,41 @@ class MainActivity : FlutterActivity() {
     private val channelName = "lexiora/platform"
     private val pickPdfsRequest = 0x5A11
     private var pendingResult: MethodChannel.Result? = null
+    private var platformChannel: MethodChannel? = null
+    private var pendingIncomingPdf: Map<String, Any?>? = null
+    private var dartChannelReady = false
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        processIncomingIntent(intent)
+    }
+
+    override fun onNewIntent(intent: Intent) {
+        super.onNewIntent(intent)
+        setIntent(intent)
+        processIncomingIntent(intent)
+    }
 
     override fun configureFlutterEngine(flutterEngine: FlutterEngine) {
         super.configureFlutterEngine(flutterEngine)
-        MethodChannel(flutterEngine.dartExecutor.binaryMessenger, channelName)
+        platformChannel = MethodChannel(flutterEngine.dartExecutor.binaryMessenger, channelName)
+        platformChannel!!
             .setMethodCallHandler { call, result ->
                 when (call.method) {
+                    "takeIncomingPdf" -> {
+                        dartChannelReady = true
+                        val incoming = pendingIncomingPdf
+                        pendingIncomingPdf = null
+                        result.success(incoming)
+                    }
                     "getSdkInt" -> result.success(Build.VERSION.SDK_INT)
+                    "getFirstInstallTime" -> result.success(
+                        try {
+                            packageManager.getPackageInfo(packageName, 0).firstInstallTime
+                        } catch (e: Exception) {
+                            0L
+                        },
+                    )
                     "setKeepScreenOn" -> {
                         val on = call.argument<Boolean>("on") ?: false
                         if (on) {
@@ -97,6 +129,46 @@ class MainActivity : FlutterActivity() {
                     else -> result.notImplemented()
                 }
             }
+    }
+
+    /** Copies an incoming content URI immediately, then notifies Dart with a
+     * private, stable path. The reader never receives or assumes a raw URI. */
+    private fun processIncomingIntent(incoming: Intent?) {
+        if (incoming == null) return
+        val action = incoming.action
+        if (action != Intent.ACTION_VIEW && action != Intent.ACTION_SEND) return
+        val uri: Uri? = incoming.data
+            ?: if (action == Intent.ACTION_SEND) {
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+                    incoming.getParcelableExtra(Intent.EXTRA_STREAM, Uri::class.java)
+                } else {
+                    @Suppress("DEPRECATION")
+                    incoming.getParcelableExtra(Intent.EXTRA_STREAM)
+                }
+            } else null
+        if (uri == null) return
+        val sourceUri: Uri = uri
+        val mime = incoming.type
+        if (mime != null && mime != "application/pdf" &&
+            !sourceUri.toString().lowercase().endsWith(".pdf")) return
+
+        Thread {
+            try {
+                val dir = File(filesDir, "imported").apply { mkdirs() }
+                val copied = copyToImported(sourceUri, dir, 0)
+                if (copied == null) throw IllegalStateException("Could not read the selected PDF")
+                runOnUiThread {
+                    val channel = platformChannel
+                    if (channel == null || !dartChannelReady) {
+                        pendingIncomingPdf = copied
+                    } else {
+                        channel.invokeMethod("incomingPdf", copied)
+                    }
+                }
+            } catch (e: Exception) {
+                Log.w("Lexiora", "Incoming PDF import failed for $sourceUri: ${e.message}")
+            }
+        }.start()
     }
 
     // ── Manual import (system file picker, multi-select) ───────────────────────

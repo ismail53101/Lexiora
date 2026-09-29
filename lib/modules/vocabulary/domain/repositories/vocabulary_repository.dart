@@ -9,4 +9,14 @@ abstract interface class VocabularyRepository {
 
   /// All words in [listId], ordered A–Z (letter, then word). Reactive.
   Stream<List<VocabularyWord>> watchWords(String listId);
+
+  /// One-shot, case-insensitive headword lookup across every vocabulary pack
+  /// (used by the reader/translation popup to show the curated meaning of an
+  /// exam word). Returns the first pack containing the word, or `null`.
+  Future<VocabularyWord?> lookupWord(String wordLower);
+
+  /// Like [lookupWord], but also matches common inflected forms against base
+  /// forms (e.g. "contributing" → "Contribute", "focused" → "Focus") so a
+  /// selected word from a PDF still finds the pack's curated meaning.
+  Future<VocabularyWord?> lookupWordFlexible(String wordLower);
 }

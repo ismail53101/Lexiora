@@ -8,15 +8,17 @@ import 'package:lexiora/modules/study_hub/domain/entities/study_subject.dart';
 import 'package:lexiora/modules/study_hub/domain/entities/study_task.dart';
 import 'package:lexiora/modules/study_hub/domain/entities/study_template.dart';
 import 'package:lexiora/modules/study_hub/domain/repositories/study_hub_repository.dart';
+import 'package:lexiora/modules/study_hub/domain/scheduling/study_schedule_service.dart';
 import 'package:lexiora/modules/study_hub/domain/study_dates.dart';
 import 'package:uuid/uuid.dart';
 
 /// Maps Drift rows to domain entities and computes the streak. Backward
 /// compatible: pre-v0.7.1 rows (no topic/notes/status/kind) map cleanly.
 class StudyHubRepositoryImpl implements StudyHubRepository {
-  StudyHubRepositoryImpl(this._local);
+  StudyHubRepositoryImpl(this._local, {this.onTasksChanged});
 
   final StudyHubLocalDataSource _local;
+  final Future<void> Function()? onTasksChanged;
   static const Uuid _uuid = Uuid();
 
   // ── Planner ─────────────────────────────────────────────────────────────────
@@ -32,12 +34,77 @@ class StudyHubRepositoryImpl implements StudyHubRepository {
           (List<StudyTaskRow> r) => r.map(_toTask).toList(growable: false));
 
   @override
-  Future<void> saveTask(StudyTask t) {
+  Future<void> saveTask(StudyTask t) async {
+    final List<StudyTaskRow> storedRows = await _local.getTasks(t.day);
+    final List<StudyTask> existing = storedRows.map(_toTask).toList();
+    final StudyTask prepared = _prepareIncoming(t, existing);
+    final List<StudyTask> all = <StudyTask>[
+      ...existing.where((StudyTask row) => row.id != t.id),
+      prepared,
+    ];
+    final List<StudyTask> recalculated = StudyScheduleService.recalculate(all);
+    final List<StudyScheduleConflict> conflicts =
+        StudyScheduleService.conflicts(recalculated);
+    final List<StudyScheduleConflict> ownConflicts = conflicts
+        .where((StudyScheduleConflict c) => c.item.id == prepared.id)
+        .toList(growable: false);
+    final StudyScheduleConflict? ownConflict =
+        ownConflicts.isEmpty ? null : ownConflicts.first;
+    if (ownConflict != null) {
+      throw StudyScheduleOverlapException(ownConflict);
+    }
+    await _persistDay(t.day, all, recalculated);
+    await onTasksChanged?.call();
+  }
+
+  @override
+  Future<void> deleteTask(String id) async {
+    final StudyTaskRow? row = await _local.getTask(id);
+    if (row == null) return;
+    await _local.deleteTask(id);
+    final List<StudyTask> remaining =
+        (await _local.getTasks(row.day)).map(_toTask).toList();
+    final List<StudyTask> recalculated = StudyScheduleService.recalculate(remaining);
+    await _persistDay(row.day, remaining, recalculated);
+    await onTasksChanged?.call();
+  }
+
+  StudyTask _prepareIncoming(StudyTask task, List<StudyTask> existing) {
+    if (!task.autoScheduled) return task;
+    final int next = StudyScheduleService.nextAvailableMinute(
+      existing,
+      excludeId: task.id,
+    );
+    final int start = next;
+    final int duration = StudyScheduleService.durationOf(task);
+    return task.copyWith(
+      startMinute: start,
+      endMinute: start + duration,
+      durationMinutes: duration,
+    );
+  }
+
+  Future<void> _persistDay(
+    String day,
+    List<StudyTask> original,
+    List<StudyTask> recalculated,
+  ) {
+    final Map<String, StudyTask> scheduled = <String, StudyTask>{
+      for (final StudyTask task in recalculated) task.id: task,
+    };
+    final List<StudyTask> rows = <StudyTask>[
+      ...original.where((StudyTask task) => !scheduled.containsKey(task.id)),
+      ...scheduled.values,
+    ];
+    return _local.upsertTasks(rows.map(_taskCompanion).toList());
+  }
+
+  StudyTasksCompanion _taskCompanion(StudyTask t) {
     final int? duration = t.durationMinutes ??
-        (t.isBreak && t.startMinute != null && t.endMinute != null
+        (t.startMinute != null && t.endMinute != null
             ? t.endMinute! - t.startMinute!
             : null);
-    return _local.upsertTask(StudyTasksCompanion.insert(
+    return StudyTasksCompanion.insert(
       id: t.id,
       day: t.day,
       title: t.title,
@@ -51,15 +118,13 @@ class StudyHubRepositoryImpl implements StudyHubRepository {
       completed: Value<bool>(t.completed),
       kind: Value<String>(t.kind.key),
       durationMinutes: Value<int?>(duration),
+      autoScheduled: Value<bool>(t.autoScheduled),
       orderIndex: Value<int>(t.orderIndex),
       createdAt: t.createdAt,
       updatedAt: t.updatedAt,
       completedAt: Value<DateTime?>(t.completedAt),
-    ));
+    );
   }
-
-  @override
-  Future<void> deleteTask(String id) => _local.deleteTask(id);
 
   @override
   Future<void> setTaskCompleted(String id, {required bool completed}) =>
@@ -113,16 +178,22 @@ class StudyHubRepositoryImpl implements StudyHubRepository {
   // ── Session log ─────────────────────────────────────────────────────────────
 
   @override
-  Future<void> addSession(StudySession s) => _local.insertSession(
-        StudySessionsCompanion.insert(
-          id: s.id,
-          day: s.day,
-          startedAt: s.startedAt,
-          durationMinutes: s.durationMinutes,
-          kind: Value<String>(s.kind),
-          createdAt: s.createdAt,
-        ),
-      );
+  Future<void> addSession(StudySession s) {
+    if (s.durationMinutes <= 0) return Future<void>.value();
+    return _local.insertSession(
+      StudySessionsCompanion.insert(
+        id: s.id,
+        day: s.day,
+        startedAt: s.startedAt,
+        endedAt: Value<DateTime?>(s.endedAt),
+        durationMinutes: s.durationMinutes,
+        subject: Value<String?>(s.subject),
+        taskId: Value<String?>(s.taskId),
+        kind: Value<String>(s.kind),
+        createdAt: s.createdAt,
+      ),
+    );
+  }
 
   @override
   Stream<int> watchStudyMinutes(String day) => _local.watchStudyMinutes(day);
@@ -484,6 +555,7 @@ class StudyHubRepositoryImpl implements StudyHubRepository {
             : TaskStatus.fromIndex(r.status),
         kind: SessionKind.fromKey(r.kind),
         durationMinutes: r.durationMinutes,
+        autoScheduled: r.autoScheduled,
         orderIndex: r.orderIndex,
         createdAt: r.createdAt,
         updatedAt: r.updatedAt,

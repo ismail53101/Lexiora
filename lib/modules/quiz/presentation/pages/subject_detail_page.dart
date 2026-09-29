@@ -7,8 +7,6 @@ import 'package:lexiora/modules/quiz/domain/entities/quiz_models.dart';
 import 'package:lexiora/modules/quiz/domain/entities/quiz_subject.dart';
 import 'package:lexiora/modules/quiz/domain/entities/quiz_topic.dart';
 import 'package:lexiora/modules/quiz/presentation/pages/bookmarks_page.dart';
-import 'package:lexiora/modules/quiz/presentation/pages/subject_stats_page.dart';
-import 'package:lexiora/modules/quiz/presentation/pages/wrong_answers_page.dart';
 import 'package:lexiora/modules/quiz/presentation/providers/quiz_providers.dart';
 import 'package:lexiora/modules/quiz/presentation/widgets/quiz_common.dart';
 import 'package:lexiora/modules/quiz/presentation/widgets/quiz_icons.dart';
@@ -63,7 +61,14 @@ class SubjectDetailPage extends ConsumerWidget {
                       title: Text(t.topic.name),
                       subtitle: Text('${t.questionCount} questions'),
                       trailing: const Icon(Icons.chevron_right),
-                      onTap: () => context.push(AppRoutes.quizTopic(t.topic.id)),
+                      // Topics open the same answers-shown study feed as the
+                      // Practice -> MCQs row, scoped to this topic. The MCQs
+                      // section is a learning surface only; the interactive
+                      // practice player lives in the Quiz section instead.
+                      onTap: () => context.push(
+                          '${AppRoutes.quizMcqBrowse(subjectId)}'
+                          '?topic=${Uri.encodeComponent(t.topic.id)}'
+                          '&title=${Uri.encodeComponent(t.topic.name)}'),
                     ),
                 ],
               ),
@@ -94,23 +99,16 @@ class SubjectDetailPage extends ConsumerWidget {
             title: 'Practice',
             child: Column(
               children: <Widget>[
-                _action(context, Icons.play_circle_outline, 'MCQs',
-                    'Practice every question in this subject',
-                    () => context.push(
-                        '${AppRoutes.quizPlayer}?subject=$subjectId&mode=${QuizMode.practice.name}')),
+                _action(context, Icons.list_alt_rounded, 'MCQs',
+                    'Study every question — answers shown on each card',
+                    () => context.push(AppRoutes.quizMcqBrowse(subjectId))),
                 _action(context, Icons.star_border, 'Bookmarks',
                     'Your saved questions',
                     () => Navigator.of(context).push(MaterialPageRoute<void>(
                         builder: (_) => BookmarksPage(subjectId: subjectId)))),
-                _action(context, Icons.error_outline, 'Wrong Answers',
-                    'Review and retry your mistakes',
-                    () => Navigator.of(context).push(MaterialPageRoute<void>(
-                        builder: (_) => WrongAnswersPage(subjectId: subjectId)))),
-                _action(context, Icons.bar_chart, 'Statistics',
-                    'Your progress in this subject',
-                    () => Navigator.of(context).push(MaterialPageRoute<void>(
-                        builder: (_) =>
-                            SubjectStatsPage(subjectId: subjectId, subjectName: subject?.name ?? 'Subject')))),
+                // Wrong Answers and Statistics were removed from the MCQs
+                // section: it is a pure study surface (MCQs + Bookmarks).
+                // The Quiz section still owns its own wrong-answers notebook.
               ],
             ),
           ),

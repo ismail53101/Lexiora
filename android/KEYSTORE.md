@@ -2,7 +2,9 @@
 
 Play Store rejects debug-signed uploads. This generates your own **upload
 keystore** once, then wires it in so every future release build (local or
-via GitHub Actions) is signed with it automatically.
+via GitHub Actions) is signed with it automatically. Release builds fail
+closed when this keystore is not configured; they never use the Android debug
+keystore.
 
 ⚠️ **Back this file up somewhere safe (password manager, encrypted drive).**
 If you lose it, you can't publish updates to the same Play Store listing —
@@ -35,10 +37,11 @@ keyAlias=upload
 storeFile=/absolute/path/to/sapiora-upload-key.jks
 ```
 
-That's it — `android/app/build.gradle.kts` picks this up automatically and
-release builds will be signed with it instead of the debug key.
+That's it — `android/app/build.gradle.kts` picks this up automatically.
+If `android/key.properties` is missing, the release build fails instead of
+using the debug key.
 
-## 3. GitHub Actions (recommended — so CI builds are Play-Store-ready)
+## 3. GitHub Actions (required for Play-Store-ready CI builds)
 
 The keystore file itself needs to reach the CI runner without ever being
 committed. Standard approach: base64-encode it into a GitHub secret, decode
@@ -64,7 +67,14 @@ base64 -i sapiora-upload-key.jks | tr -d '\n' > keystore_base64.txt
 
 Then delete `keystore_base64.txt` locally — it's served its purpose.
 
-The workflow step that decodes these into `android/key.properties` before
-building is already wired in `.github/workflows/build.yml` — once the four
-secrets above exist, every build automatically becomes properly signed; no
-further code changes needed.
+The workflow step decodes these into `android/key.properties` before
+building. It fails immediately if any of the four secrets is missing, so CI
+cannot silently produce a debug-signed release artifact. Once the four
+secrets exist, every release APK/AAB is signed with this upload keystore.
+
+After configuring the secrets, verify the artifact certificate with:
+```bash
+apksigner verify --print-certs app-release.apk
+```
+The SHA-1 and SHA-256 printed by that command are the production OAuth
+fingerprints for this upload certificate.

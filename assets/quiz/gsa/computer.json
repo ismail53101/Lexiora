@@ -1,0 +1,1833 @@
+{
+  "bank": {
+    "name": "Computer Science",
+    "subject": "General Science & Ability",
+    "topic": "Computer Science",
+    "description": "Computer basics, hardware, software, storage units, the internet and modern technology.",
+    "tags": "css,pms,fpsc,ppsc,nts,gsa,computer",
+    "version": "1.0",
+    "id": "gsa_computer"
+  },
+  "questions": [
+    {
+      "type": "mcq",
+      "prompt": "Who is regarded as the father of the computer?",
+      "options": [
+        "Alan Turing",
+        "Charles Babbage",
+        "John von Neumann",
+        "Bill Gates"
+      ],
+      "answer": 1,
+      "explanation": "Charles Babbage designed the Analytical Engine, the first general-purpose computer concept.",
+      "difficulty": "easy",
+      "id": "q01"
+    },
+    {
+      "type": "mcq",
+      "prompt": "CPU stands for?",
+      "options": [
+        "Central Processing Unit",
+        "Computer Personal Unit",
+        "Central Program Utility",
+        "Core Processing Unit"
+      ],
+      "answer": 0,
+      "explanation": "The CPU is the brain of the computer.",
+      "difficulty": "easy",
+      "id": "q02"
+    },
+    {
+      "type": "mcq",
+      "prompt": "RAM is a type of?",
+      "options": [
+        "Volatile memory",
+        "Permanent storage",
+        "Read-only data",
+        "Backup storage"
+      ],
+      "answer": 0,
+      "explanation": "RAM loses its contents when the power is off, so it is volatile.",
+      "difficulty": "easy",
+      "id": "q03"
+    },
+    {
+      "type": "mcq",
+      "prompt": "ROM is described as?",
+      "options": [
+        "Volatile",
+        "Non-volatile memory",
+        "Temporary cache",
+        "Secondary storage"
+      ],
+      "answer": 1,
+      "explanation": "Read-only memory keeps data even without power.",
+      "difficulty": "medium",
+      "id": "q04"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The smallest unit of data in computing is the?",
+      "options": [
+        "Byte",
+        "Bit",
+        "Nibble",
+        "Word"
+      ],
+      "answer": 1,
+      "explanation": "A bit is the smallest unit, holding a 0 or 1.",
+      "difficulty": "easy",
+      "id": "q05"
+    },
+    {
+      "type": "mcq",
+      "prompt": "How many bits are there in one byte?",
+      "options": [
+        "4",
+        "6",
+        "8",
+        "16"
+      ],
+      "answer": 2,
+      "explanation": "One byte equals 8 bits.",
+      "difficulty": "easy",
+      "id": "q06"
+    },
+    {
+      "type": "mcq",
+      "prompt": "One kilobyte (KB) equals?",
+      "options": [
+        "1,000 bytes",
+        "1,024 bytes",
+        "1,024 bits",
+        "100 bytes"
+      ],
+      "answer": 1,
+      "explanation": "1 KB = 1,024 bytes (2^10).",
+      "difficulty": "medium",
+      "id": "q07"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which of the following is an input device?",
+      "options": [
+        "Monitor",
+        "Printer",
+        "Keyboard",
+        "Speaker"
+      ],
+      "answer": 2,
+      "explanation": "A keyboard feeds data into the computer.",
+      "difficulty": "easy",
+      "id": "q08"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which of the following is an output device?",
+      "options": [
+        "Mouse",
+        "Scanner",
+        "Microphone",
+        "Monitor"
+      ],
+      "answer": 3,
+      "explanation": "A monitor displays output from the computer.",
+      "difficulty": "easy",
+      "id": "q09"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which of the following is a storage device?",
+      "options": [
+        "Monitor",
+        "Hard disk",
+        "Keyboard",
+        "Speaker"
+      ],
+      "answer": 1,
+      "explanation": "The hard disk stores data permanently.",
+      "difficulty": "easy",
+      "id": "q10"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which of the following is an operating system?",
+      "options": [
+        "Windows",
+        "MS Word",
+        "Photoshop",
+        "Chrome"
+      ],
+      "answer": 0,
+      "explanation": "Windows, Linux, macOS and Android are operating systems.",
+      "difficulty": "easy",
+      "id": "q11"
+    },
+    {
+      "type": "mcq",
+      "prompt": "MS Word is an example of?",
+      "options": [
+        "Spreadsheet software",
+        "Word processing software",
+        "Presentation software",
+        "Operating system"
+      ],
+      "answer": 1,
+      "explanation": "MS Word is a word processor.",
+      "difficulty": "easy",
+      "id": "q12"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who invented the World Wide Web?",
+      "options": [
+        "Bill Gates",
+        "Tim Berners-Lee",
+        "Steve Jobs",
+        "Vint Cerf"
+      ],
+      "answer": 1,
+      "explanation": "Tim Berners-Lee invented the WWW in 1989.",
+      "difficulty": "medium",
+      "id": "q13"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Web pages are written in?",
+      "options": [
+        "HTML",
+        "SQL",
+        "Excel",
+        "PPT"
+      ],
+      "answer": 0,
+      "explanation": "HTML structures content on web pages.",
+      "difficulty": "easy",
+      "id": "q14"
+    },
+    {
+      "type": "mcq",
+      "prompt": "A computer virus is?",
+      "options": [
+        "A hardware fault",
+        "Malicious software",
+        "A type of worm only",
+        "An error in Windows"
+      ],
+      "answer": 1,
+      "explanation": "A virus is malware that replicates and harms systems.",
+      "difficulty": "easy",
+      "id": "q15"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Wi-Fi stands for?",
+      "options": [
+        "Wireless Fidelity",
+        "Wide Frequency Internet",
+        "Wired Fiber",
+        "Wireless File transfer"
+      ],
+      "answer": 0,
+      "explanation": "Wi-Fi is a wireless networking technology.",
+      "difficulty": "easy",
+      "id": "q16"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Windows operating system is developed by?",
+      "options": [
+        "Apple",
+        "Microsoft",
+        "Google",
+        "IBM"
+      ],
+      "answer": 1,
+      "explanation": "Microsoft develops Windows.",
+      "difficulty": "easy",
+      "id": "q17"
+    },
+    {
+      "type": "mcq",
+      "prompt": "iPhone and macOS are products of which company?",
+      "options": [
+        "Microsoft",
+        "Google",
+        "Apple",
+        "Samsung"
+      ],
+      "answer": 2,
+      "explanation": "Apple makes iPhone, iPad and macOS.",
+      "difficulty": "easy",
+      "id": "q18"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Artificial Intelligence (AI) refers to?",
+      "options": [
+        "Machines simulating human intelligence",
+        "Faster internet",
+        "Cloud storage",
+        "Encryption"
+      ],
+      "answer": 0,
+      "explanation": "AI enables machines to perform tasks that need human-like intelligence.",
+      "difficulty": "easy",
+      "id": "q19"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which of the following is a search engine?",
+      "options": [
+        "Google",
+        "Windows",
+        "MS Word",
+        "Photoshop"
+      ],
+      "answer": 0,
+      "explanation": "Google, Bing and DuckDuckGo are search engines.",
+      "difficulty": "easy",
+      "id": "q20"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Email was first used on which network?",
+      "options": [
+        "World Wide Web",
+        "ARPANET",
+        "LAN only",
+        "FTP"
+      ],
+      "answer": 1,
+      "explanation": "Email originated on ARPANET in the 1970s.",
+      "difficulty": "hard",
+      "id": "q21"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Cloud computing means?",
+      "options": [
+        "Storing and accessing data over the internet",
+        "Cooling computers",
+        "Wireless charging",
+        "Local backup only"
+      ],
+      "answer": 0,
+      "explanation": "Cloud services provide storage and computing over the internet.",
+      "difficulty": "easy",
+      "id": "q22"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The first electronic general-purpose computer was?",
+      "options": [
+        "ENIAC",
+        "Apple II",
+        "IBM PC",
+        "UNIVAC 1"
+      ],
+      "answer": 0,
+      "explanation": "ENIAC (1945) is considered the first electronic general-purpose computer.",
+      "difficulty": "hard",
+      "id": "q23"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which storage device is volatile (loses data when powered off)?",
+      "options": [
+        "RAM",
+        "ROM",
+        "Hard disk",
+        "SSD"
+      ],
+      "answer": 0,
+      "explanation": "RAM is volatile memory; ROM, hard disks and SSDs retain data.",
+      "difficulty": "easy",
+      "id": "q24"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which of the following is word processing software?",
+      "options": [
+        "MS Word",
+        "Photoshop",
+        "VLC Player",
+        "WinRAR"
+      ],
+      "answer": 0,
+      "explanation": "MS Word is used to create and edit text documents.",
+      "difficulty": "easy",
+      "id": "q25"
+    },
+    {
+      "type": "mcq",
+      "prompt": "In binary, the number 2 is represented as:",
+      "options": [
+        "10",
+        "2",
+        "01",
+        "11"
+      ],
+      "answer": 0,
+      "explanation": "Binary uses only 0 and 1; decimal 2 is written as 10 in binary.",
+      "difficulty": "medium",
+      "id": "q26"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which unit measures computer memory?",
+      "options": [
+        "Byte",
+        "Watt",
+        "Hertz",
+        "Pascal"
+      ],
+      "answer": 0,
+      "explanation": "Memory is measured in bytes (KB, MB, GB); hertz measures speed.",
+      "difficulty": "easy",
+      "id": "q27"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which of these is a web browser?",
+      "options": [
+        "Mozilla Firefox",
+        "Windows",
+        "Linux",
+        "Android"
+      ],
+      "answer": 0,
+      "explanation": "Firefox is a browser; Windows/Linux are OSes, Android a mobile OS.",
+      "difficulty": "easy",
+      "id": "q28"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What is the function of an IP address?",
+      "options": [
+        "To uniquely identify a device on a network",
+        "To store files",
+        "To process graphics",
+        "To cool the computer"
+      ],
+      "answer": 0,
+      "explanation": "An IP address uniquely identifies a device connected to the internet or a network.",
+      "difficulty": "easy",
+      "id": "q29"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which language is directly understood by a computer's CPU?",
+      "options": [
+        "Machine language",
+        "C++",
+        "Python",
+        "Java"
+      ],
+      "answer": 0,
+      "explanation": "Machine language (binary 0s and 1s) is the only code a CPU executes directly.",
+      "difficulty": "medium",
+      "id": "q30"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which of the following is cloud storage?",
+      "options": [
+        "Google Drive",
+        "Hard disk",
+        "USB drive",
+        "RAM"
+      ],
+      "answer": 0,
+      "explanation": "Google Drive stores files on remote servers accessible via the internet.",
+      "difficulty": "easy",
+      "id": "q31"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What does 'Wi-Fi' primarily use to transmit data?",
+      "options": [
+        "Radio waves",
+        "Sound waves",
+        "Light cables",
+        "Infrared only"
+      ],
+      "answer": 0,
+      "explanation": "Wi-Fi transmits data using radio waves in the 2.4/5 GHz bands.",
+      "difficulty": "easy",
+      "id": "q32"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which part of a computer performs arithmetic and logic operations?",
+      "options": [
+        "ALU",
+        "RAM",
+        "ROM",
+        "Monitor"
+      ],
+      "answer": 0,
+      "explanation": "The Arithmetic Logic Unit (ALU) inside the CPU handles calculations and logic.",
+      "difficulty": "medium",
+      "id": "q33"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which device is known as the brain of the computer?",
+      "options": [
+        "CPU",
+        "RAM",
+        "Hard disk",
+        "Monitor"
+      ],
+      "answer": 0,
+      "explanation": "The CPU processes instructions and is the computer's brain.",
+      "difficulty": "easy",
+      "id": "q34"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which of the following is a pointing device?",
+      "options": [
+        "Keyboard",
+        "Mouse",
+        "Scanner",
+        "Microphone"
+      ],
+      "answer": 1,
+      "explanation": "A mouse is a pointing device used to move the cursor.",
+      "difficulty": "easy",
+      "id": "q35"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which operating system is developed by Apple for Mac computers?",
+      "options": [
+        "Windows",
+        "Linux",
+        "macOS",
+        "Android"
+      ],
+      "answer": 2,
+      "explanation": "macOS is the operating system used on Apple Mac computers.",
+      "difficulty": "easy",
+      "id": "q36"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which company developed the Android operating system?",
+      "options": [
+        "Google",
+        "Apple",
+        "Microsoft",
+        "IBM"
+      ],
+      "answer": 0,
+      "explanation": "Google developed Android.",
+      "difficulty": "easy",
+      "id": "q37"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What does 'URL' stand for?",
+      "options": [
+        "Uniform Resource Locator",
+        "Universal Random Link",
+        "United Resource Library",
+        "Uniform Router Link"
+      ],
+      "answer": 0,
+      "explanation": "URL identifies a resource on the web.",
+      "difficulty": "easy",
+      "id": "q38"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which language is used to create web pages?",
+      "options": [
+        "HTML",
+        "C++",
+        "Java",
+        "Python"
+      ],
+      "answer": 0,
+      "explanation": "HTML structures web pages.",
+      "difficulty": "easy",
+      "id": "q39"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The process of booting a computer refers to:",
+      "options": [
+        "Starting the computer",
+        "Shutting it down",
+        "Installing software",
+        "Connecting to the internet"
+      ],
+      "answer": 0,
+      "explanation": "Booting is the startup process of a computer.",
+      "difficulty": "easy",
+      "id": "q40"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which device converts digital signals to analog for internet?",
+      "options": [
+        "Modem",
+        "Router",
+        "Switch",
+        "Hub"
+      ],
+      "answer": 0,
+      "explanation": "A modem modulates and demodulates signals.",
+      "difficulty": "medium",
+      "id": "q41"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which of the following is an example of application software?",
+      "options": [
+        "MS Word",
+        "Linux",
+        "Windows",
+        "BIOS"
+      ],
+      "answer": 0,
+      "explanation": "MS Word is an application, not system software.",
+      "difficulty": "easy",
+      "id": "q42"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The term 'Cloud' in computing refers to:",
+      "options": [
+        "Internet-based services and storage",
+        "Weather apps",
+        "Hardware fans",
+        "Monitor settings"
+      ],
+      "answer": 0,
+      "explanation": "Cloud computing delivers services over the internet.",
+      "difficulty": "easy",
+      "id": "q43"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which file format is used for compressed archives?",
+      "options": [
+        ".zip",
+        ".mp3",
+        ".png",
+        ".pdf"
+      ],
+      "answer": 0,
+      "explanation": "ZIP is a compressed archive format.",
+      "difficulty": "easy",
+      "id": "q44"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What does 'AI' stand for in computer science?",
+      "options": [
+        "Artificial Intelligence",
+        "Automated Input",
+        "Advanced Internet",
+        "Analog Interface"
+      ],
+      "answer": 0,
+      "explanation": "AI is Artificial Intelligence.",
+      "difficulty": "easy",
+      "id": "q45"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which key deletes the character to the left of the cursor?",
+      "options": [
+        "Backspace",
+        "Delete",
+        "Enter",
+        "Tab"
+      ],
+      "answer": 0,
+      "explanation": "Backspace removes the character on the left.",
+      "difficulty": "easy",
+      "id": "q46"
+    },
+    {
+      "type": "mcq",
+      "prompt": "A 'bug' in programming refers to:",
+      "options": [
+        "An error in the code",
+        "A virus",
+        "A hardware fault",
+        "A slow computer"
+      ],
+      "answer": 0,
+      "explanation": "A bug is an error or flaw in software.",
+      "difficulty": "easy",
+      "id": "q47"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which part of the computer stores data permanently?",
+      "options": [
+        "Hard disk",
+        "RAM",
+        "Cache",
+        "Register"
+      ],
+      "answer": 0,
+      "explanation": "The hard disk stores data permanently.",
+      "difficulty": "easy",
+      "id": "q48"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which is the most widely used operating system for personal computers?",
+      "options": [
+        "Windows",
+        "Linux",
+        "MacOS",
+        "Android"
+      ],
+      "answer": 0,
+      "explanation": "Windows dominates the desktop OS market.",
+      "difficulty": "easy",
+      "id": "q49"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What is the main function of an antivirus?",
+      "options": [
+        "Protect against malware",
+        "Speed up the internet",
+        "Clean hardware",
+        "Backup files only"
+      ],
+      "answer": 0,
+      "explanation": "Antivirus software detects and removes malware.",
+      "difficulty": "easy",
+      "id": "q50"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The shortcut Ctrl + Z is used to:",
+      "options": [
+        "Undo an action",
+        "Redo an action",
+        "Save a file",
+        "Copy text"
+      ],
+      "answer": 0,
+      "explanation": "Ctrl+Z undoes the last action.",
+      "difficulty": "easy",
+      "id": "q51"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which of the following is a programming language?",
+      "options": [
+        "Python",
+        "HTML",
+        "HTTP",
+        "PDF"
+      ],
+      "answer": 0,
+      "explanation": "Python is a programming language; HTML is markup.",
+      "difficulty": "easy",
+      "id": "q52"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The 'server' in a network is a computer that:",
+      "options": [
+        "Provides services to other computers",
+        "Only prints documents",
+        "Only stores music",
+        "Connects to the TV"
+      ],
+      "answer": 0,
+      "explanation": "Servers provide resources and services to clients.",
+      "difficulty": "easy",
+      "id": "q53"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which of the following is a social media platform?",
+      "options": [
+        "Facebook",
+        "Linux",
+        "Python",
+        "Windows"
+      ],
+      "answer": 0,
+      "explanation": "Facebook is a social media platform.",
+      "difficulty": "easy",
+      "id": "q54"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What does 'USB' stand for?",
+      "options": [
+        "Universal Serial Bus",
+        "Universal System Board",
+        "United Serial Bus",
+        "Universal Storage Bus"
+      ],
+      "answer": 0,
+      "explanation": "USB is Universal Serial Bus.",
+      "difficulty": "easy",
+      "id": "q55"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which device is used to input text and characters into a computer?",
+      "options": [
+        "Keyboard",
+        "Monitor",
+        "Printer",
+        "Speaker"
+      ],
+      "answer": 0,
+      "explanation": "A keyboard is the primary text input device.",
+      "difficulty": "easy",
+      "id": "q56"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which of the following is used to print documents on paper?",
+      "options": [
+        "Printer",
+        "Scanner",
+        "Mouse",
+        "Microphone"
+      ],
+      "answer": 0,
+      "explanation": "A printer produces a hard copy of documents on paper.",
+      "difficulty": "easy",
+      "id": "q57"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The main circuit board of a computer is called the:",
+      "options": [
+        "Hard disk",
+        "Motherboard",
+        "Power supply",
+        "Expansion card"
+      ],
+      "answer": 1,
+      "explanation": "The motherboard connects all internal components.",
+      "difficulty": "easy",
+      "id": "q58"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which software manages hardware and provides a platform for applications?",
+      "options": [
+        "Word processor",
+        "Web browser",
+        "Operating system",
+        "Antivirus"
+      ],
+      "answer": 2,
+      "explanation": "The OS, e.g. Windows or Android, manages resources.",
+      "difficulty": "easy",
+      "id": "q59"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which unit is used to measure processor speed?",
+      "options": [
+        "Hertz",
+        "Bytes",
+        "Dots per inch",
+        "Pixels"
+      ],
+      "answer": 0,
+      "explanation": "CPU speed is measured in gigahertz (GHz).",
+      "difficulty": "easy",
+      "id": "q60"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The shortcut Ctrl+C is used to:",
+      "options": [
+        "Cut",
+        "Copy",
+        "Paste",
+        "Undo"
+      ],
+      "answer": 1,
+      "explanation": "Ctrl+C copies the selected content.",
+      "difficulty": "easy",
+      "id": "q61"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which protocol is used to transfer web pages on the internet?",
+      "options": [
+        "FTP",
+        "SMTP",
+        "HTTP",
+        "POP3"
+      ],
+      "answer": 2,
+      "explanation": "HTTP (HyperText Transfer Protocol) serves web pages.",
+      "difficulty": "medium",
+      "id": "q62"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which storage device has no moving parts?",
+      "options": [
+        "SSD",
+        "Hard disk drive",
+        "Floppy disk",
+        "Magnetic tape"
+      ],
+      "answer": 0,
+      "explanation": "Solid-state drives use flash memory and have no moving parts.",
+      "difficulty": "medium",
+      "id": "q63"
+    },
+    {
+      "type": "mcq",
+      "prompt": "A gigabyte (GB) is equal to how many megabytes (MB)?",
+      "options": [
+        "100",
+        "1024",
+        "512",
+        "2048"
+      ],
+      "answer": 1,
+      "explanation": "1 GB = 1024 MB in binary computing.",
+      "difficulty": "medium",
+      "id": "q64"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which company operates the Bing search engine?",
+      "options": [
+        "Apple",
+        "Google",
+        "Microsoft",
+        "Amazon"
+      ],
+      "answer": 2,
+      "explanation": "Bing is Microsoft's web search engine.",
+      "difficulty": "easy",
+      "id": "q65"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which of the following is not a type of computer memory?",
+      "options": [
+        "Monitor",
+        "RAM",
+        "ROM",
+        "Cache"
+      ],
+      "answer": 0,
+      "explanation": "A monitor is an output device, not memory.",
+      "difficulty": "easy",
+      "id": "q66"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which device connects a computer to the internet via a telephone line?",
+      "options": [
+        "Monitor",
+        "Modem",
+        "Scanner",
+        "Joystick"
+      ],
+      "answer": 1,
+      "explanation": "A modem modulates and demodulates signals.",
+      "difficulty": "easy",
+      "id": "q67"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which symbol is used to separate a file name from its extension?",
+      "options": [
+        "Dot (.)",
+        "Comma (,)",
+        "Slash (/)",
+        "Dash (-)"
+      ],
+      "answer": 0,
+      "explanation": "The dot separates name and extension, e.g. report.pdf.",
+      "difficulty": "easy",
+      "id": "q68"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which term refers to the physical parts of a computer?",
+      "options": [
+        "Software",
+        "Firmware",
+        "Hardware",
+        "Malware"
+      ],
+      "answer": 2,
+      "explanation": "Hardware includes physical components like the CPU and keyboard.",
+      "difficulty": "easy",
+      "id": "q69"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which shortcut key is used to save a file?",
+      "options": [
+        "Ctrl+S",
+        "Ctrl+P",
+        "Ctrl+O",
+        "Ctrl+N"
+      ],
+      "answer": 0,
+      "explanation": "Ctrl+S saves the current document.",
+      "difficulty": "easy",
+      "id": "q70"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which type of software converts high-level code into machine language?",
+      "options": [
+        "Compiler",
+        "Antivirus",
+        "Browser",
+        "Driver"
+      ],
+      "answer": 0,
+      "explanation": "A compiler translates source code into executable code.",
+      "difficulty": "medium",
+      "id": "q71"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which of the following is used for wireless internet connection?",
+      "options": [
+        "VGA cable",
+        "HDMI cable",
+        "Wi-Fi",
+        "Ethernet cable"
+      ],
+      "answer": 2,
+      "explanation": "Wi-Fi transmits data wirelessly over radio waves.",
+      "difficulty": "easy",
+      "id": "q72"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which of the following is a database management system?",
+      "options": [
+        "MySQL",
+        "Photoshop",
+        "Windows Media Player",
+        "WinRAR"
+      ],
+      "answer": 0,
+      "explanation": "MySQL is a relational database management system.",
+      "difficulty": "medium",
+      "id": "q73"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which unit is used to measure screen resolution?",
+      "options": [
+        "Pixels",
+        "Hertz",
+        "Bytes",
+        "Watts"
+      ],
+      "answer": 0,
+      "explanation": "Resolution is expressed in pixels, e.g. 1920×1080.",
+      "difficulty": "easy",
+      "id": "q74"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which language is used to style web pages?",
+      "options": [
+        "SQL",
+        "Assembly",
+        "CSS",
+        "Machine code"
+      ],
+      "answer": 2,
+      "explanation": "CSS (Cascading Style Sheets) controls web page appearance.",
+      "difficulty": "medium",
+      "id": "q75"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which device is used to convert printed documents into digital form?",
+      "options": [
+        "Plotter",
+        "Scanner",
+        "Projector",
+        "Headphones"
+      ],
+      "answer": 1,
+      "explanation": "A scanner digitises documents and images.",
+      "difficulty": "easy",
+      "id": "q76"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which of the following is a spreadsheet program?",
+      "options": [
+        "Notepad",
+        "Paint",
+        "Microsoft Excel",
+        "Calculator"
+      ],
+      "answer": 2,
+      "explanation": "Excel is used for data tables and calculations.",
+      "difficulty": "easy",
+      "id": "q77"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which of the following is a portable storage device?",
+      "options": [
+        "Monitor",
+        "Printer",
+        "Speaker",
+        "USB flash drive"
+      ],
+      "answer": 3,
+      "explanation": "A USB flash drive is a small, portable storage device.",
+      "difficulty": "easy",
+      "id": "q78"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which of the following is an example of malware?",
+      "options": [
+        "Firewall",
+        "Trojan horse",
+        "Antivirus",
+        "Operating system"
+      ],
+      "answer": 1,
+      "explanation": "A Trojan is malicious software that disguises itself.",
+      "difficulty": "medium",
+      "id": "q79"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which device routes data packets between networks?",
+      "options": [
+        "Hub",
+        "Repeater",
+        "Router",
+        "Modem"
+      ],
+      "answer": 2,
+      "explanation": "A router forwards packets between different networks.",
+      "difficulty": "medium",
+      "id": "q80"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which component stores frequently used data for faster access by the CPU?",
+      "options": [
+        "Hard disk",
+        "ROM",
+        "Cache memory",
+        "Floppy disk"
+      ],
+      "answer": 2,
+      "explanation": "Cache memory is a small, fast memory that sits close to the CPU.",
+      "difficulty": "easy",
+      "id": "q81"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What does RAM stand for?",
+      "options": [
+        "Read Access Memory",
+        "Random Access Memory",
+        "Rapid Action Memory",
+        "Readily Available Memory"
+      ],
+      "answer": 1,
+      "explanation": "RAM (Random Access Memory) temporarily stores data for the running programs.",
+      "difficulty": "easy",
+      "id": "q82"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which key locks all typed letters in capital form when pressed once?",
+      "options": [
+        "Num Lock",
+        "Insert",
+        "Tab",
+        "Caps Lock"
+      ],
+      "answer": 3,
+      "explanation": "Caps Lock toggles the case of typed letters until it is pressed again.",
+      "difficulty": "easy",
+      "id": "q83"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which software is used to send and receive email?",
+      "options": [
+        "Email client",
+        "Web server",
+        "Router",
+        "Modem"
+      ],
+      "answer": 0,
+      "explanation": "An email client such as Outlook or Gmail manages sending and receiving mail.",
+      "difficulty": "easy",
+      "id": "q84"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which file extension indicates a Word document?",
+      "options": [
+        ".docx",
+        ".jpg",
+        ".mp3",
+        ".exe"
+      ],
+      "answer": 0,
+      "explanation": ".docx is the standard extension for Microsoft Word documents.",
+      "difficulty": "easy",
+      "id": "q85"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which protocol is used to receive email from a mail server?",
+      "options": [
+        "HTTP",
+        "FTP",
+        "POP3",
+        "DNS"
+      ],
+      "answer": 2,
+      "explanation": "POP3 and IMAP retrieve email from the server to the client.",
+      "difficulty": "medium",
+      "id": "q86"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which of the following is a markup language?",
+      "options": [
+        "HTML",
+        "Python",
+        "C++",
+        "Java"
+      ],
+      "answer": 0,
+      "explanation": "HTML is a markup language; the others are programming languages.",
+      "difficulty": "medium",
+      "id": "q87"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The file extension for a web page is usually:",
+      "options": [
+        ".doc",
+        ".html",
+        ".xls",
+        ".txt"
+      ],
+      "answer": 1,
+      "explanation": "Web pages usually use the .html (or .htm) file extension.",
+      "difficulty": "easy",
+      "id": "q88"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The 'www' stands for:",
+      "options": [
+        "World Wide Web",
+        "Web Wide World",
+        "World Web Wide",
+        "Wide World Web"
+      ],
+      "answer": 0,
+      "explanation": "WWW stands for World Wide Web.",
+      "difficulty": "easy",
+      "id": "q89"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which of the following is an email service?",
+      "options": [
+        "Gmail",
+        "Photoshop",
+        "Windows",
+        "Chrome"
+      ],
+      "answer": 0,
+      "explanation": "Gmail is an email service; Photoshop is image software and Chrome is a browser.",
+      "difficulty": "easy",
+      "id": "q90"
+    },
+    {
+      "type": "mcq",
+      "prompt": "A network that connects computers within a single building is a:",
+      "options": [
+        "WAN",
+        "LAN",
+        "MAN",
+        "PAN"
+      ],
+      "answer": 1,
+      "explanation": "A LAN (Local Area Network) covers a single building or campus.",
+      "difficulty": "easy",
+      "id": "q91"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which file extension is used for executable files in Windows?",
+      "options": [
+        ".exe",
+        ".jpg",
+        ".mp3",
+        ".pdf"
+      ],
+      "answer": 0,
+      "explanation": "Windows executable files have the .exe extension.",
+      "difficulty": "easy",
+      "id": "q92"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which of the following is a type of printer?",
+      "options": [
+        "Laser printer",
+        "Scanner",
+        "Monitor",
+        "Speaker"
+      ],
+      "answer": 0,
+      "explanation": "Laser and inkjet printers are common types of printers.",
+      "difficulty": "easy",
+      "id": "q93"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which key combination is used to switch between open windows?",
+      "options": [
+        "Ctrl + S",
+        "Alt + Tab",
+        "Ctrl + P",
+        "Alt + F4"
+      ],
+      "answer": 1,
+      "explanation": "Alt + Tab switches between open windows in Windows.",
+      "difficulty": "medium",
+      "id": "q94"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which of the following is a free and open-source operating system?",
+      "options": [
+        "Windows 11",
+        "Linux",
+        "macOS",
+        "MS-DOS"
+      ],
+      "answer": 1,
+      "explanation": "Linux is a free and open-source operating system.",
+      "difficulty": "easy",
+      "id": "q95"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which protocol is used to send email?",
+      "options": [
+        "POP3",
+        "IMAP",
+        "SMTP",
+        "HTTP"
+      ],
+      "answer": 2,
+      "explanation": "SMTP (Simple Mail Transfer Protocol) is used to send email.",
+      "difficulty": "medium",
+      "id": "q96"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which unit is commonly used to measure printer speed?",
+      "options": [
+        "Hertz",
+        "Pages per minute",
+        "Dots per inch",
+        "Bits per second"
+      ],
+      "answer": 1,
+      "explanation": "Printer speed is measured in pages per minute (ppm).",
+      "difficulty": "medium",
+      "id": "q97"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which icon stores deleted files before permanent removal in Windows?",
+      "options": [
+        "My Computer",
+        "Recycle Bin",
+        "Control Panel",
+        "Taskbar"
+      ],
+      "answer": 1,
+      "explanation": "The Recycle Bin temporarily stores deleted files before permanent removal.",
+      "difficulty": "easy",
+      "id": "q98"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which language is used to add interactivity to web pages?",
+      "options": [
+        "HTML",
+        "JavaScript",
+        "CSS",
+        "SQL"
+      ],
+      "answer": 1,
+      "explanation": "JavaScript adds interactivity to web pages, while HTML provides structure.",
+      "difficulty": "medium",
+      "id": "q99"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which sorting algorithm has an average time complexity of O(n log n)?",
+      "options": [
+        "Bubble sort",
+        "Selection sort",
+        "Merge sort",
+        "Insertion sort"
+      ],
+      "answer": 2,
+      "explanation": "Merge sort (and quicksort) have an average time complexity of O(n log n).",
+      "difficulty": "hard",
+      "id": "q100"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The full form of PDF is?",
+      "options": [
+        "Portable Document Format",
+        "Personal Document File",
+        "Program Data Format",
+        "Public Data File"
+      ],
+      "answer": 0,
+      "explanation": "PDF stands for Portable Document Format, developed by Adobe.",
+      "difficulty": "easy",
+      "id": "q101"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which device works as both an input and an output device?",
+      "options": [
+        "Touchscreen",
+        "Keyboard",
+        "Scanner",
+        "Projector"
+      ],
+      "answer": 0,
+      "explanation": "A touchscreen displays output and also accepts touch input.",
+      "difficulty": "medium",
+      "id": "q102"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which of the following is used to connect a computer to a high-definition TV?",
+      "options": [
+        "HDMI cable",
+        "RJ45 cable",
+        "Coaxial cable",
+        "Telephone cable"
+      ],
+      "answer": 0,
+      "explanation": "HDMI carries high-definition audio and video over a single cable.",
+      "difficulty": "easy",
+      "id": "q103"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which chip of a computer is responsible for rendering graphics?",
+      "options": [
+        "GPU",
+        "ALU",
+        "RAM",
+        "ROM"
+      ],
+      "answer": 0,
+      "explanation": "The graphics processing unit (GPU) renders images, video and animations.",
+      "difficulty": "medium",
+      "id": "q104"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The full form of LAN is?",
+      "options": [
+        "Local Area Network",
+        "Large Area Network",
+        "Long Access Network",
+        "Local Access Node"
+      ],
+      "answer": 0,
+      "explanation": "LAN stands for Local Area Network, which covers a small area such as an office.",
+      "difficulty": "easy",
+      "id": "q105"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which protocol is used to browse web pages securely?",
+      "options": [
+        "HTTPS",
+        "FTP",
+        "SMTP",
+        "POP3"
+      ],
+      "answer": 0,
+      "explanation": "HTTPS encrypts web traffic between the browser and the server.",
+      "difficulty": "medium",
+      "id": "q106"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The shortcut key to select all text in a document is?",
+      "options": [
+        "Ctrl+A",
+        "Ctrl+C",
+        "Ctrl+V",
+        "Ctrl+X"
+      ],
+      "answer": 0,
+      "explanation": "Ctrl+A selects the whole document or all items in the current view.",
+      "difficulty": "easy",
+      "id": "q107"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which type of memory is used in USB flash drives?",
+      "options": [
+        "Flash memory",
+        "RAM",
+        "ROM",
+        "Cache memory"
+      ],
+      "answer": 0,
+      "explanation": "Flash memory is non-volatile and retains data without power, making it ideal for USB drives.",
+      "difficulty": "medium",
+      "id": "q108"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which of the following is not an input device?",
+      "options": [
+        "Printer",
+        "Keyboard",
+        "Mouse",
+        "Scanner"
+      ],
+      "answer": 0,
+      "explanation": "A printer produces output on paper; the others feed data into the computer.",
+      "difficulty": "easy",
+      "id": "q109"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which device converts analog signals into digital signals for a computer?",
+      "options": [
+        "Analog-to-digital converter",
+        "Digital-to-analog converter",
+        "Modem",
+        "Amplifier"
+      ],
+      "answer": 0,
+      "explanation": "An ADC samples analog signals such as sound and converts them to digital values.",
+      "difficulty": "hard",
+      "id": "q110"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The full form of GPS is?",
+      "options": [
+        "Global Positioning System",
+        "Global Processing System",
+        "General Positioning Service",
+        "Global Packet System"
+      ],
+      "answer": 0,
+      "explanation": "GPS stands for Global Positioning System, used for location and navigation.",
+      "difficulty": "easy",
+      "id": "q111"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which of the following is a wearable computing device?",
+      "options": [
+        "Smartwatch",
+        "Desktop computer",
+        "Server",
+        "Router"
+      ],
+      "answer": 0,
+      "explanation": "A smartwatch is worn on the wrist and functions as a portable computer.",
+      "difficulty": "easy",
+      "id": "q112"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The full form of JPEG is?",
+      "options": [
+        "Joint Photographic Experts Group",
+        "Joint Picture Experts Group",
+        "Journal Photographic Experts Group",
+        "Joint Photographic Engineering Group"
+      ],
+      "answer": 0,
+      "explanation": "JPEG is a standard image compression format named after its committee.",
+      "difficulty": "medium",
+      "id": "q113"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which key is commonly used to refresh a web page?",
+      "options": [
+        "F5",
+        "F1",
+        "F2",
+        "F12"
+      ],
+      "answer": 0,
+      "explanation": "F5 reloads the current page in most web browsers.",
+      "difficulty": "easy",
+      "id": "q114"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which of the following is an image editing software?",
+      "options": [
+        "Adobe Photoshop",
+        "Google Chrome",
+        "VLC Media Player",
+        "WinRAR"
+      ],
+      "answer": 0,
+      "explanation": "Adobe Photoshop is a professional image editing program.",
+      "difficulty": "easy",
+      "id": "q115"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The standard layout of keys on an English keyboard is called?",
+      "options": [
+        "QWERTY layout",
+        "DVORAK layout",
+        "AZERTY layout",
+        "ASCII layout"
+      ],
+      "answer": 0,
+      "explanation": "Most English keyboards use the QWERTY layout, named after its first six letter keys.",
+      "difficulty": "easy",
+      "id": "q116"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which unit is commonly used to measure internet connection speed?",
+      "options": [
+        "Mbps",
+        "GB",
+        "GHz",
+        "PPI"
+      ],
+      "answer": 0,
+      "explanation": "Internet speed is measured in megabits per second (Mbps).",
+      "difficulty": "easy",
+      "id": "q117"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which of the following is a network topology?",
+      "options": [
+        "Star topology",
+        "Byte topology",
+        "Data topology",
+        "Kernel topology"
+      ],
+      "answer": 0,
+      "explanation": "Star is a common network topology in which all nodes connect to a central hub or switch.",
+      "difficulty": "medium",
+      "id": "q118"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which of the following is a mobile operating system?",
+      "options": [
+        "Android",
+        "Windows 10",
+        "Ubuntu Server",
+        "MS-DOS"
+      ],
+      "answer": 0,
+      "explanation": "Android is a Linux-based operating system designed for smartphones and tablets.",
+      "difficulty": "easy",
+      "id": "q119"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The full form of ISP is?",
+      "options": [
+        "Internet Service Provider",
+        "Internet Server Protocol",
+        "Integrated Service Provider",
+        "International Service Provider"
+      ],
+      "answer": 0,
+      "explanation": "An ISP supplies internet access to homes and businesses.",
+      "difficulty": "easy",
+      "id": "q120"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which component of a computer supplies power to all other components?",
+      "options": [
+        "Power supply unit",
+        "Motherboard",
+        "RAM",
+        "Hard disk"
+      ],
+      "answer": 0,
+      "explanation": "The power supply unit (PSU) converts mains electricity into the voltages the computer needs.",
+      "difficulty": "medium",
+      "id": "q121"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which key deletes the character to the right of the cursor?",
+      "options": [
+        "Delete key",
+        "Backspace",
+        "End",
+        "Insert"
+      ],
+      "answer": 0,
+      "explanation": "Delete removes the character after the cursor; Backspace removes the one before it.",
+      "difficulty": "easy",
+      "id": "q122"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which type of cable is used for very high speed internet connections?",
+      "options": [
+        "Fibre optic cable",
+        "Twisted pair cable",
+        "Coaxial cable",
+        "Telephone line"
+      ],
+      "answer": 0,
+      "explanation": "Fibre optic cables carry data as light pulses at very high speeds.",
+      "difficulty": "easy",
+      "id": "q123"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which of the following is a graphics file format?",
+      "options": [
+        "PNG",
+        "TXT",
+        "DOCX",
+        "MP3"
+      ],
+      "answer": 0,
+      "explanation": "PNG is a lossless raster image format widely used on the web.",
+      "difficulty": "easy",
+      "id": "q124"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which application is used to create slide presentations?",
+      "options": [
+        "Microsoft PowerPoint",
+        "Microsoft Excel",
+        "Notepad",
+        "Paint"
+      ],
+      "answer": 0,
+      "explanation": "PowerPoint is the standard tool for making slide presentations.",
+      "difficulty": "easy",
+      "id": "q125"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which of the following is an antivirus program?",
+      "options": [
+        "Norton Antivirus",
+        "Adobe Reader",
+        "WinZip",
+        "VLC Media Player"
+      ],
+      "answer": 0,
+      "explanation": "Norton Antivirus protects a computer by detecting and removing malware.",
+      "difficulty": "easy",
+      "id": "q126"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which key combination switches between open tabs in a web browser?",
+      "options": [
+        "Ctrl+Tab",
+        "Alt+Tab",
+        "Ctrl+W",
+        "Alt+F4"
+      ],
+      "answer": 0,
+      "explanation": "Ctrl+Tab moves between browser tabs; Alt+Tab switches between open windows.",
+      "difficulty": "medium",
+      "id": "q127"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which program is used to compress and decompress files?",
+      "options": [
+        "WinRAR",
+        "Photoshop",
+        "MS Word",
+        "Chrome"
+      ],
+      "answer": 0,
+      "explanation": "WinRAR creates and extracts compressed archives such as ZIP and RAR files.",
+      "difficulty": "easy",
+      "id": "q128"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which of the following is a spreadsheet file extension?",
+      "options": [
+        ".xlsx",
+        ".docx",
+        ".pptx",
+        ".html"
+      ],
+      "answer": 0,
+      "explanation": ".xlsx is the file extension of Microsoft Excel workbooks.",
+      "difficulty": "medium",
+      "id": "q129"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which operating system is used on iPhones?",
+      "options": [
+        "iOS",
+        "Android",
+        "Windows",
+        "Linux"
+      ],
+      "answer": 0,
+      "explanation": "iOS is the operating system that powers iPhones and iPads.",
+      "difficulty": "easy",
+      "id": "q130"
+    }
+  ]
+}

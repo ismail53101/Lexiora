@@ -1,6 +1,7 @@
 import 'package:lexiora/modules/ai_assistant/domain/entities/ai_chat.dart';
 import 'package:lexiora/modules/ai_assistant/domain/entities/ai_conversation.dart';
 import 'package:lexiora/modules/ai_assistant/domain/entities/ai_message.dart';
+import 'package:lexiora/modules/ai_assistant/domain/entities/ai_project.dart';
 import 'package:lexiora/modules/ai_assistant/domain/repositories/ai_repository.dart';
 
 /// Thin use cases over [AiRepository]. They keep the presentation layer free of
@@ -23,8 +24,8 @@ class WatchMessages {
 class CreateConversation {
   const CreateConversation(this._repo);
   final AiRepository _repo;
-  Future<AiConversation> call({String? title}) =>
-      _repo.createConversation(title: title);
+  Future<AiConversation> call({String? title, String? projectId}) =>
+      _repo.createConversation(title: title, projectId: projectId);
 }
 
 class RenameConversation {
@@ -38,6 +39,38 @@ class DeleteConversation {
   const DeleteConversation(this._repo);
   final AiRepository _repo;
   Future<void> call(String id) => _repo.deleteConversation(id);
+}
+
+class WatchProjects {
+  const WatchProjects(this._repo);
+  final AiRepository _repo;
+  Stream<List<AiProjectSummary>> call({String query = ''}) =>
+      _repo.watchProjects(query: query);
+}
+
+class CreateProject {
+  const CreateProject(this._repo);
+  final AiRepository _repo;
+  Future<AiProject> call(String name) => _repo.createProject(name);
+}
+
+class RenameProject {
+  const RenameProject(this._repo);
+  final AiRepository _repo;
+  Future<void> call(String id, String name) => _repo.renameProject(id, name);
+}
+
+class DeleteProject {
+  const DeleteProject(this._repo);
+  final AiRepository _repo;
+  Future<void> call(String id) => _repo.deleteProject(id);
+}
+
+class SetConversationProject {
+  const SetConversationProject(this._repo);
+  final AiRepository _repo;
+  Future<void> call(String id, String? projectId) =>
+      _repo.setConversationProject(id, projectId);
 }
 
 class SendMessage {

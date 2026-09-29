@@ -6,9 +6,12 @@ import 'package:lexiora/app/router/app_routes.dart';
 import 'package:lexiora/core/config/build_flags.dart';
 import 'package:lexiora/core/constants/app_constants.dart';
 import 'package:lexiora/core/constants/translation_languages.dart';
+import 'package:lexiora/core/services/notification_service.dart';
 import 'package:lexiora/core/reader_engine/reader_models.dart';
 import 'package:lexiora/core/services/permission_service.dart';
 import 'package:lexiora/features/settings/domain/entities/app_settings.dart';
+import 'package:lexiora/features/settings/presentation/pages/licenses_page.dart';
+import 'package:lexiora/features/settings/presentation/pages/privacy_policy_page.dart';
 import 'package:lexiora/features/settings/presentation/providers/settings_providers.dart';
 
 /// The Settings screen. Reads the reactive [settingsProvider] and mutates
@@ -162,6 +165,7 @@ class _SettingsBody extends ConsumerWidget {
             ),
           ],
         ),
+        _NotificationSection(settings: settings, controller: controller),
         _SectionCard(
           title: 'Translation',
           children: [
@@ -217,12 +221,23 @@ class _SettingsBody extends ConsumerWidget {
             ),
             ListTile(
               contentPadding: EdgeInsets.zero,
-              leading: const Icon(Icons.privacy_tip_outlined),
-              title: const Text('App permissions'),
-              subtitle:
-                  const Text('Manage the storage access used to find your PDFs'),
+              leading: const Icon(Icons.folder_open_outlined),
+              title: const Text('PDF Access'),
+              subtitle: const Text(
+                'Allow access to find and import PDF files on your device',
+              ),
               trailing: const Icon(Icons.open_in_new),
               onTap: () => sl<PermissionService>().openSystemSettings(),
+            ),
+            ListTile(
+              contentPadding: EdgeInsets.zero,
+              leading: const Icon(Icons.notifications_active_outlined),
+              title: const Text('Notification Access'),
+              subtitle: const Text(
+                'Allow study and Word-of-the-Day reminders',
+              ),
+              trailing: const Icon(Icons.open_in_new),
+              onTap: () => sl<NotificationService>().openNotificationSettings(),
             ),
           ],
         ),
@@ -240,25 +255,52 @@ class _SettingsBody extends ConsumerWidget {
               ),
             ],
           ),
-        const _SectionCard(
+        _SectionCard(
           title: 'About',
           children: [
-            ListTile(
+            const ListTile(
               contentPadding: EdgeInsets.zero,
               leading: Icon(Icons.info_outline),
               title: Text(AppConstants.appName),
               subtitle: Text('Version ${AppConstants.appVersion}'),
             ),
-            ListTile(
+            const ListTile(
               contentPadding: EdgeInsets.zero,
               leading: Icon(Icons.school_outlined),
               title: Text(AppConstants.appTagline),
               subtitle: Text('Offline-first · No account required'),
             ),
-            ListTile(
+            const ListTile(
               contentPadding: EdgeInsets.zero,
               leading: Icon(Icons.favorite_outline),
               title: Text('Developed by Ismail Lashari'),
+            ),
+            const Divider(),
+            ListTile(
+              contentPadding: EdgeInsets.zero,
+              leading: const Icon(Icons.privacy_tip_outlined),
+              title: const Text('Privacy Policy'),
+              subtitle: const Text('How Sapiora handles your data'),
+              trailing: const Icon(Icons.chevron_right),
+              onTap: () => Navigator.of(context).push(
+                MaterialPageRoute<void>(
+                  builder: (_) => const PrivacyPolicyPage(),
+                ),
+              ),
+            ),
+            ListTile(
+              contentPadding: EdgeInsets.zero,
+              leading: const Icon(Icons.description_outlined),
+              title: const Text('Licenses & Credits'),
+              subtitle: const Text(
+                'Attribution for dictionary & translation data',
+              ),
+              trailing: const Icon(Icons.chevron_right),
+              onTap: () => Navigator.of(context).push(
+                MaterialPageRoute<void>(
+                  builder: (_) => const LicensesPage(),
+                ),
+              ),
             ),
           ],
         ),
@@ -272,6 +314,146 @@ class _SettingsBody extends ConsumerWidget {
       ..showSnackBar(
         SnackBar(content: Text('$feature will arrive in a future update.')),
       );
+  }
+}
+
+class _NotificationSection extends StatelessWidget {
+  const _NotificationSection({required this.settings, required this.controller});
+
+  final AppSettings settings;
+  final SettingsController controller;
+
+  Future<void> _chooseWordTime(BuildContext context) async {
+    final TimeOfDay? picked = await showTimePicker(
+      context: context,
+      initialTime: TimeOfDay(
+        hour: settings.dailyWordHour,
+        minute: settings.dailyWordMinute,
+      ),
+    );
+    if (picked != null) {
+      await controller.setDailyWordTime(
+        hour: picked.hour,
+        minute: picked.minute,
+      );
+    }
+  }
+
+  Future<void> _requestPermission(BuildContext context) async {
+    final bool granted = await sl<NotificationService>().requestPermission();
+    if (!context.mounted) return;
+    if (granted) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(content: Text('Notifications are enabled.')),
+      );
+    } else {
+      await showDialog<void>(
+        context: context,
+        builder: (BuildContext dialogContext) => AlertDialog(
+          title: const Text('Notifications are disabled'),
+          content: const Text(
+            'Enable notifications in Android settings to receive planner and '
+            'Word-of-the-Day reminders.',
+          ),
+          actions: <Widget>[
+            TextButton(
+              onPressed: () => Navigator.pop(dialogContext),
+              child: const Text('Not now'),
+            ),
+            FilledButton(
+              onPressed: () async {
+                Navigator.pop(dialogContext);
+                await sl<NotificationService>().openNotificationSettings();
+              },
+              child: const Text('Open settings'),
+            ),
+          ],
+        ),
+      );
+    }
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return _SectionCard(
+      title: 'Notifications',
+      children: <Widget>[
+        SwitchListTile(
+          contentPadding: EdgeInsets.zero,
+          title: const Text('Study reminders'),
+          subtitle: const Text('Remind me before scheduled study sessions'),
+          value: settings.studyRemindersEnabled,
+          onChanged: controller.setStudyRemindersEnabled,
+        ),
+        if (settings.studyRemindersEnabled)
+          DropdownButtonFormField<int>(
+            initialValue: settings.studyReminderMinutes,
+            decoration: const InputDecoration(
+              labelText: 'Reminder time',
+              border: OutlineInputBorder(),
+              isDense: true,
+            ),
+            items: const <int>[5, 10, 15, 30]
+                .map(
+                  (int value) => DropdownMenuItem<int>(
+                    value: value,
+                    child: Text('$value minutes before'),
+                  ),
+                )
+                .toList(),
+            onChanged: (int? value) {
+              if (value != null) controller.setStudyReminderMinutes(value);
+            },
+          ),
+        SwitchListTile(
+          contentPadding: EdgeInsets.zero,
+          title: const Text('Break reminders'),
+          subtitle: const Text('Notify me when a planned break starts'),
+          value: settings.breakRemindersEnabled,
+          onChanged: controller.setBreakRemindersEnabled,
+        ),
+        SwitchListTile(
+          contentPadding: EdgeInsets.zero,
+          title: const Text('Daily Word of the Day'),
+          subtitle: const Text('Receive one GRE word notification every day'),
+          value: settings.dailyWordEnabled,
+          onChanged: controller.setDailyWordEnabled,
+        ),
+        ListTile(
+          contentPadding: EdgeInsets.zero,
+          enabled: settings.dailyWordEnabled,
+          title: const Text('Word notification time'),
+          subtitle: Text(
+            TimeOfDay(
+              hour: settings.dailyWordHour,
+              minute: settings.dailyWordMinute,
+            ).format(context),
+          ),
+          trailing: const Icon(Icons.schedule_outlined),
+          onTap: settings.dailyWordEnabled
+              ? () => _chooseWordTime(context)
+              : null,
+        ),
+        SwitchListTile(
+          contentPadding: EdgeInsets.zero,
+          title: const Text('Sound'),
+          value: settings.notificationSoundEnabled,
+          onChanged: controller.setNotificationSoundEnabled,
+        ),
+        SwitchListTile(
+          contentPadding: EdgeInsets.zero,
+          title: const Text('Vibration'),
+          value: settings.notificationVibrationEnabled,
+          onChanged: controller.setNotificationVibrationEnabled,
+        ),
+        const SizedBox(height: 4),
+        OutlinedButton.icon(
+          onPressed: () => _requestPermission(context),
+          icon: const Icon(Icons.notifications_active_outlined),
+          label: const Text('Check notification permission'),
+        ),
+      ],
+    );
   }
 }
 

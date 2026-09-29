@@ -3,6 +3,7 @@ import 'package:lexiora/modules/quiz/domain/entities/quiz_content.dart';
 import 'package:lexiora/modules/quiz/domain/entities/quiz_models.dart';
 import 'package:lexiora/modules/quiz/domain/entities/quiz_question.dart';
 import 'package:lexiora/modules/quiz/domain/entities/quiz_settings.dart';
+import 'package:lexiora/modules/quiz/domain/entities/quiz_stage_progress.dart';
 import 'package:lexiora/modules/quiz/domain/entities/quiz_subject.dart';
 import 'package:lexiora/modules/quiz/domain/entities/quiz_topic.dart';
 import 'package:lexiora/modules/quiz/domain/quiz_grading.dart';
@@ -43,6 +44,20 @@ abstract interface class QuizRepository {
   Future<void> saveQuestion(QuizQuestion question);
   Future<void> deleteQuestion(String id);
   Future<void> setBookmarked(String id, bool value);
+
+  // ── Stage quizzes (v0.11.0) ────────────────────────────────────────────────
+  Future<List<QuizQuestion>> stageQuestions(String subjectId, int stageIndex,
+      {int perStage = 10, String? topicId});
+  Future<int> stageQuestionCount(String subjectId, {String? topicId});
+  Stream<List<QuizStageProgress>> watchStageProgress(String subjectId,
+      {String? topicId});
+  Future<void> saveStageResult({
+    required String subjectId,
+    required int stageIndex,
+    required int correct,
+    required int total,
+    String? topicId,
+  });
 
   // ── Play / attempts ─────────────────────────────────────────────────────────
   Future<List<QuizQuestion>> buildSession({

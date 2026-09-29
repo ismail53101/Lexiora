@@ -1,0 +1,1413 @@
+{
+  "bank": {
+    "name": "Salah, Zakat, Hajj & Fasting Details",
+    "subject": "Islamic Studies",
+    "topic": "Salah, Zakat, Hajj & Fasting Details",
+    "description": "Detailed questions on the practical pillars of Islam — prayer, alms, pilgrimage and fasting.",
+    "tags": "css,pms,fpsc,ppsc,nts,islamic-studies,salah,zakat,hajj,fasting,pillars",
+    "version": "1.0",
+    "id": "islamiat_pillars_details"
+  },
+  "questions": [
+    {
+      "type": "mcq",
+      "prompt": "How many obligatory (Fard) prayers are there in a day?",
+      "options": [
+        "3",
+        "5",
+        "7",
+        "10"
+      ],
+      "answer": 1,
+      "explanation": "Muslims pray five obligatory prayers daily: Fajr, Zuhr, Asr, Maghrib and Isha.",
+      "difficulty": "easy",
+      "id": "q01"
+    },
+    {
+      "type": "mcq",
+      "prompt": "How many Rakat are in the Fajr prayer?",
+      "options": [
+        "2 Fard (plus Sunnah)",
+        "4 Fard",
+        "3 Fard",
+        "6 Fard"
+      ],
+      "answer": 0,
+      "explanation": "Fajr consists of 2 Sunnah and 2 Fard rakat.",
+      "difficulty": "easy",
+      "id": "q02"
+    },
+    {
+      "type": "mcq",
+      "prompt": "How many Rakat are in the Maghrib prayer?",
+      "options": [
+        "3 Fard (plus 2 Sunnah)",
+        "2 Fard",
+        "4 Fard",
+        "5 Fard"
+      ],
+      "answer": 0,
+      "explanation": "Maghrib has 3 Fard rakat plus 2 Sunnah, prayed after sunset.",
+      "difficulty": "medium",
+      "id": "q03"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which prayer is prayed in the middle of the night and is optional but highly recommended?",
+      "options": [
+        "Tahajjud",
+        "Fajr",
+        "Asr",
+        "Maghrib"
+      ],
+      "answer": 0,
+      "explanation": "Tahajjud is the voluntary night prayer, praised in the Quran (17:79).",
+      "difficulty": "easy",
+      "id": "q04"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The two Eid prayers are known as?",
+      "options": [
+        "Salat-ul-Eidain (Eid-ul-Fitr and Eid-ul-Adha)",
+        "Salat-ul-Taraweeh",
+        "Salat-ul-Janazah",
+        "Salat-ul-Istikhara"
+      ],
+      "answer": 0,
+      "explanation": "Eid-ul-Fitr follows Ramadan; Eid-ul-Adha follows the Hajj season.",
+      "difficulty": "easy",
+      "id": "q05"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What is 'Tayammum'?",
+      "options": [
+        "Dry ablution with clean earth when water is unavailable",
+        "Washing with water",
+        "Wiping socks",
+        "Bathing fully"
+      ],
+      "answer": 0,
+      "explanation": "Tayammum is the dry ablution performed with clean soil when water is not available.",
+      "difficulty": "medium",
+      "id": "q06"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What is the direction Muslims face during prayer called?",
+      "options": [
+        "Qibla",
+        "Minbar",
+        "Mihrab",
+        "Kaaba"
+      ],
+      "answer": 0,
+      "explanation": "The Qibla is the direction of the Kaaba in Makkah, faced during prayer.",
+      "difficulty": "easy",
+      "id": "q07"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Zakat is how many percent of one's eligible wealth?",
+      "options": [
+        "5%",
+        "2.5%",
+        "10%",
+        "1%"
+      ],
+      "answer": 1,
+      "explanation": "Zakat is 2.5% (1/40) of qualifying wealth held for a lunar year.",
+      "difficulty": "easy",
+      "id": "q08"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Zakat is compulsory on savings above which threshold?",
+      "options": [
+        "Nisab",
+        "Sadaqah",
+        "Fitr",
+        "Kaffarah"
+      ],
+      "answer": 0,
+      "explanation": "Nisab is the minimum wealth threshold above which Zakat becomes obligatory.",
+      "difficulty": "medium",
+      "id": "q09"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Zakat is the ________ pillar of Islam.",
+      "options": [
+        "Second",
+        "Third",
+        "Fourth",
+        "Fifth"
+      ],
+      "answer": 1,
+      "explanation": "The five pillars: Shahadah, Salah, Zakat, Sawm, Hajj — Zakat is the third.",
+      "difficulty": "medium",
+      "id": "q10"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Fasting (Sawm) is the ________ pillar of Islam.",
+      "options": [
+        "Second",
+        "Third",
+        "Fourth",
+        "Fifth"
+      ],
+      "answer": 2,
+      "explanation": "Sawm (fasting in Ramadan) is the fourth pillar of Islam.",
+      "difficulty": "medium",
+      "id": "q11"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What is 'Suhoor'?",
+      "options": [
+        "The pre-dawn meal before fasting",
+        "The meal to break the fast",
+        "A special prayer",
+        "A night vigil"
+      ],
+      "answer": 0,
+      "explanation": "Suhoor is the meal eaten before dawn (Fajr) to prepare for the day's fast.",
+      "difficulty": "easy",
+      "id": "q12"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What is 'Iftar'?",
+      "options": [
+        "The evening meal that breaks the fast",
+        "The pre-dawn meal",
+        "A charity given at Ramadan",
+        "A special Ramadan prayer"
+      ],
+      "answer": 0,
+      "explanation": "Iftar is the meal eaten at sunset to break the day's fast.",
+      "difficulty": "easy",
+      "id": "q13"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What is 'Taraweeh'?",
+      "options": [
+        "The special night prayer in Ramadan",
+        "The Eid prayer",
+        "The Friday sermon",
+        "A funeral prayer"
+      ],
+      "answer": 0,
+      "explanation": "Taraweeh is the voluntary night prayer performed during Ramadan.",
+      "difficulty": "easy",
+      "id": "q14"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Fasting is obligatory for which month?",
+      "options": [
+        "Ramadan",
+        "Shawwal",
+        "Muharram",
+        "Rajab"
+      ],
+      "answer": 0,
+      "explanation": "Fasting in Ramadan is the fourth pillar, prescribed in Surah Al-Baqarah 2:183.",
+      "difficulty": "easy",
+      "id": "q15"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Hajj is the ________ pillar of Islam.",
+      "options": [
+        "Third",
+        "Fourth",
+        "Fifth",
+        "Second"
+      ],
+      "answer": 2,
+      "explanation": "Hajj is the fifth pillar, obligatory once in a lifetime for those who can afford it.",
+      "difficulty": "medium",
+      "id": "q16"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The white garment worn by pilgrims is called?",
+      "options": [
+        "Ihram",
+        "Tawaf",
+        "Rami",
+        "Khutbah"
+      ],
+      "answer": 0,
+      "explanation": "Ihram is the two-piece seamless white garment worn by pilgrims, symbolizing equality.",
+      "difficulty": "easy",
+      "id": "q17"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Circumambulating the Kaaba seven times is called?",
+      "options": [
+        "Tawaf",
+        "Sa'i",
+        "Wuquf",
+        "Rami"
+      ],
+      "answer": 0,
+      "explanation": "Tawaf is the seven circuits around the Kaaba; Sa'i is running between Safa and Marwah.",
+      "difficulty": "easy",
+      "id": "q18"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Running between the hills of Safa and Marwah is called?",
+      "options": [
+        "Sa'i",
+        "Tawaf",
+        "Talbiah",
+        "Ihram"
+      ],
+      "answer": 0,
+      "explanation": "Sa'i commemorates Hajar's search for water for Isma'il (AS).",
+      "difficulty": "easy",
+      "id": "q19"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Standing at Arafat on the 9th of Dhul-Hijjah is called?",
+      "options": [
+        "Wuquf (the standing)",
+        "Tawaf",
+        "Rami",
+        "Ihram"
+      ],
+      "answer": 0,
+      "explanation": "The standing at Arafat is the essence of Hajj — 'Hajj is Arafat'.",
+      "difficulty": "medium",
+      "id": "q20"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What is 'Umrah'?",
+      "options": [
+        "The lesser pilgrimage, performed anytime",
+        "The greater pilgrimage in Dhul-Hijjah",
+        "A prayer at Mina",
+        "A charity during Hajj"
+      ],
+      "answer": 0,
+      "explanation": "Umrah is the lesser pilgrimage, optional and performable at any time of year.",
+      "difficulty": "easy",
+      "id": "q21"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Where do pilgrims sacrifice animals on Eid-ul-Adha?",
+      "options": [
+        "Mina",
+        "Arafat",
+        "Muzdalifah",
+        "Safa"
+      ],
+      "answer": 0,
+      "explanation": "The sacrifice (Qurbani) on 10-12 Dhul-Hijjah is performed in Mina.",
+      "difficulty": "medium",
+      "id": "q22"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Stoning the three pillars (Jamarat) at Mina is called?",
+      "options": [
+        "Rami",
+        "Tawaf",
+        "Sa'i",
+        "Talbiyah"
+      ],
+      "answer": 0,
+      "explanation": "Rami al-Jamarat is the ritual stoning of pillars symbolizing the rejection of Satan.",
+      "difficulty": "medium",
+      "id": "q23"
+    },
+    {
+      "type": "mcq",
+      "prompt": "How many days are the days of Tashreeq?",
+      "options": [
+        "Three days (11-13 Dhul-Hijjah)",
+        "One day",
+        "Seven days",
+        "Ten days"
+      ],
+      "answer": 0,
+      "explanation": "The days of Tashreeq are 11, 12 and 13 Dhul-Hijjah, following Eid-ul-Adha.",
+      "difficulty": "hard",
+      "id": "q24"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What is 'Kaffarah'?",
+      "options": [
+        "A penalty, e.g. for breaking a fast without excuse",
+        "A reward for prayer",
+        "A type of Zakat",
+        "A Hajj ritual"
+      ],
+      "answer": 0,
+      "explanation": "Kaffarah is the expiation/penalty required for certain violations such as breaking a fast deliberately.",
+      "difficulty": "medium",
+      "id": "q25"
+    },
+    {
+      "type": "mcq",
+      "prompt": "How many times does the Adhan call 'Hayya ala-s-Salah' (come to prayer)?",
+      "options": [
+        "Twice",
+        "Once",
+        "Three times",
+        "Four times"
+      ],
+      "answer": 0,
+      "explanation": "'Hayya ala-s-Salah' is said twice in the standard Adhan.",
+      "difficulty": "medium",
+      "id": "q26"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What is said after the Adhan as a recommended supplication?",
+      "options": [
+        "The Dua of Wasilah for the Prophet (PBUH)",
+        "Nothing",
+        "Only Takbir",
+        "The Shahadah only"
+      ],
+      "answer": 0,
+      "explanation": "After the Adhan, believers ask Allah to grant the Prophet (PBUH) the Wasilah.",
+      "difficulty": "medium",
+      "id": "q27"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The minimum number of people for congregational Jumu'ah in Hanafi fiqh is?",
+      "options": [
+        "Three (besides the imam)",
+        "Forty",
+        "Ten",
+        "Two"
+      ],
+      "answer": 0,
+      "explanation": "Hanafi scholars require at least three men besides the imam for Jumu'ah.",
+      "difficulty": "hard",
+      "id": "q28"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What is the reward for fasting the month of Ramadan according to hadith?",
+      "options": [
+        "Forgiveness of past sins",
+        "Only blessings",
+        "No specific reward",
+        "A day off"
+      ],
+      "answer": 0,
+      "explanation": "The Prophet (PBUH) said fasting Ramadan with faith expiates past sins.",
+      "difficulty": "easy",
+      "id": "q29"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What is 'Fidyah' for those unable to fast?",
+      "options": [
+        "Feeding a poor person per missed fast",
+        "Fasting 60 days",
+        "Giving Zakat",
+        "A fine of money"
+      ],
+      "answer": 0,
+      "explanation": "Fidyah is feeding one needy person per unkept fast for the permanently unable.",
+      "difficulty": "medium",
+      "id": "q30"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which act is done during Hajj at Mina on the 10th of Dhul-Hijjah?",
+      "options": [
+        "Rami (stoning the Jamarat) and sacrifice",
+        "Tawaf only",
+        "Standing at Arafat",
+        "Sa'i only"
+      ],
+      "answer": 0,
+      "explanation": "On Eid day, pilgrims stone the Jamarat and offer the sacrifice.",
+      "difficulty": "medium",
+      "id": "q31"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The 'Talbiah' is the chant recited by pilgrims. What is its opening?",
+      "options": [
+        "Labbaik Allahumma Labbaik",
+        "Allahu Akbar",
+        "SubhanAllah",
+        "Alhamdulillah"
+      ],
+      "answer": 0,
+      "explanation": "'Labbaik Allahumma Labbaik' — Here I am, O Allah, here I am — is the Talbiah.",
+      "difficulty": "easy",
+      "id": "q32"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Kaaba is also called?",
+      "options": [
+        "Baitullah (House of Allah)",
+        "Masjid Nabawi",
+        "Al-Aqsa",
+        "Minaret"
+      ],
+      "answer": 0,
+      "explanation": "The Kaaba is Baitullah, the sacred House of Allah in Makkah.",
+      "difficulty": "easy",
+      "id": "q33"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which level of Jannah is mentioned in the Quran and hadith as the highest?",
+      "options": [
+        "Firdaus",
+        "Adn",
+        "Ma'wa",
+        "Khuld"
+      ],
+      "answer": 0,
+      "explanation": "Firdaus is the highest level of Paradise; asking for it is encouraged.",
+      "difficulty": "medium",
+      "id": "q34"
+    },
+    {
+      "type": "mcq",
+      "prompt": "How many gates does Paradise have according to hadith?",
+      "options": [
+        "Eight",
+        "Seven",
+        "Ten",
+        "Five"
+      ],
+      "answer": 0,
+      "explanation": "Paradise has eight gates; Hell has seven gates.",
+      "difficulty": "medium",
+      "id": "q35"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which prayer is the 'middle prayer' (Salat al-Wusta) mentioned in the Quran?",
+      "options": [
+        "Asr (most scholars)",
+        "Fajr",
+        "Isha",
+        "Maghrib"
+      ],
+      "answer": 0,
+      "explanation": "Most scholars identify the middle prayer as Asr (2:238).",
+      "difficulty": "medium",
+      "id": "q36"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What is 'Salat-ul-Eidain'?",
+      "options": [
+        "The two Eid prayers with extra Takbirat",
+        "A funeral prayer",
+        "A night prayer",
+        "A rain prayer"
+      ],
+      "answer": 0,
+      "explanation": "The two Eid prayers include additional Takbirat and a sermon.",
+      "difficulty": "easy",
+      "id": "q37"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Zakat is obligatory on which type of wealth?",
+      "options": [
+        "Savings above Nisab held for a lunar year",
+        "Only salary",
+        "Only gold",
+        "Only crops"
+      ],
+      "answer": 0,
+      "explanation": "Zakat applies to qualifying wealth held above Nisab for one lunar year.",
+      "difficulty": "medium",
+      "id": "q38"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What is 'Ushr'?",
+      "options": [
+        "The 10% due on rain-fed agricultural produce",
+        "A charity",
+        "A tax on salaries",
+        "A prayer"
+      ],
+      "answer": 0,
+      "explanation": "Ushr is one-tenth on land watered by rain; half (5%) on irrigated land.",
+      "difficulty": "hard",
+      "id": "q39"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What is the 'Hajj-e-Ifrad'?",
+      "options": [
+        "Performing Hajj only without Umrah",
+        "Combining Hajj and Umrah with one Ihram",
+        "Umrah only",
+        "A second Hajj"
+      ],
+      "answer": 0,
+      "explanation": "Ifrad is Hajj alone; Qiran combines them in one Ihram; Tamattu' separates them.",
+      "difficulty": "hard",
+      "id": "q40"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The black stone (Hajar-e-Aswad) is located in?",
+      "options": [
+        "The eastern corner of the Kaaba",
+        "The center of the Kaaba",
+        "Above the door",
+        "On the roof"
+      ],
+      "answer": 0,
+      "explanation": "The Hajar-e-Aswad sits in the eastern corner of the Kaaba.",
+      "difficulty": "easy",
+      "id": "q41"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What is 'Multazam'?",
+      "options": [
+        "The area between the Black Stone and the Kaaba door where dua is made",
+        "A hill",
+        "A well",
+        "A gate"
+      ],
+      "answer": 0,
+      "explanation": "Multazam is the space between the Hajar-e-Aswad and the door, a place of supplication.",
+      "difficulty": "hard",
+      "id": "q42"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The 'Zamzam' well is located?",
+      "options": [
+        "Inside the Masjid al-Haram, east of the Kaaba",
+        "In Mina",
+        "On Arafat",
+        "In Madinah"
+      ],
+      "answer": 0,
+      "explanation": "The Zamzam well lies within the Haram complex, about 20 m east of the Kaaba.",
+      "difficulty": "medium",
+      "id": "q43"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which prayer is prayed in congregation at Mina during Hajj?",
+      "options": [
+        "All five daily prayers, shortened (Qasr)",
+        "Only Fajr",
+        "Only Jumu'ah",
+        "No prayers"
+      ],
+      "answer": 0,
+      "explanation": "Pilgrims at Mina pray the five prayers shortened, without combining.",
+      "difficulty": "medium",
+      "id": "q44"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Asr prayer consists of:",
+      "options": [
+        "4 Fard rakat",
+        "2 Fard",
+        "3 Fard",
+        "4 Sunnah only"
+      ],
+      "answer": 0,
+      "explanation": "Asr has 4 Fard rakat.",
+      "difficulty": "easy",
+      "id": "q45"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Maghrib prayer consists of:",
+      "options": [
+        "3 Fard rakat",
+        "2 Fard",
+        "4 Fard",
+        "1 Fard"
+      ],
+      "answer": 0,
+      "explanation": "Maghrib has 3 Fard rakat.",
+      "difficulty": "easy",
+      "id": "q46"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Isha prayer has how many Fard rakat?",
+      "options": [
+        "4 Fard rakat",
+        "2 Fard",
+        "3 Fard",
+        "5 Fard"
+      ],
+      "answer": 0,
+      "explanation": "Isha has 4 Fard rakat plus 3 Witr.",
+      "difficulty": "easy",
+      "id": "q47"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Jumu'ah prayer has how many Fard rakat?",
+      "options": [
+        "2 rakat (in place of Zuhr)",
+        "4 rakat",
+        "3 rakat",
+        "1 rakat"
+      ],
+      "answer": 0,
+      "explanation": "Jumu'ah consists of 2 Fard rakat after the khutbah.",
+      "difficulty": "easy",
+      "id": "q48"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Witr prayer is how many rakat?",
+      "options": [
+        "3 rakat (in Hanafi practice)",
+        "1 rakat only",
+        "5 rakat",
+        "2 rakat"
+      ],
+      "answer": 0,
+      "explanation": "Hanafi fiqh observes Witr as 3 rakat.",
+      "difficulty": "medium",
+      "id": "q49"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Taraweeh prayer has how many rakat in a night of Ramadan?",
+      "options": [
+        "8 or 20 rakat (by practice)",
+        "2 rakat",
+        "4 rakat",
+        "40 rakat"
+      ],
+      "answer": 0,
+      "explanation": "Taraweeh ranges from 8 to 20 rakat by practice.",
+      "difficulty": "easy",
+      "id": "q50"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The 'Adhan' is the:",
+      "options": [
+        "Call to prayer",
+        "Prayer itself",
+        "Charity",
+        "Fasting"
+      ],
+      "answer": 0,
+      "explanation": "Adhan summons Muslims to prayer.",
+      "difficulty": "easy",
+      "id": "q51"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The 'Tasbih' commonly recited after prayer is:",
+      "options": [
+        "SubhanAllah, Alhamdulillah, Allahu Akbar (33 times each)",
+        "Only Allahu Akbar once",
+        "Only Bismillah",
+        "Only Istighfar"
+      ],
+      "answer": 0,
+      "explanation": "The post-prayer Tasbih is 33+33+33.",
+      "difficulty": "easy",
+      "id": "q52"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The 'Khutbah' of Jumu'ah is delivered:",
+      "options": [
+        "Before the two rakat of prayer",
+        "After the prayer",
+        "At night",
+        "On Saturday"
+      ],
+      "answer": 0,
+      "explanation": "The Friday khutbah precedes the prayer.",
+      "difficulty": "easy",
+      "id": "q53"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What is the ruling on missing Fajr prayer intentionally?",
+      "options": [
+        "It is a major sin without valid excuse",
+        "It is fine",
+        "It is only makruh",
+        "It is rewarded"
+      ],
+      "answer": 0,
+      "explanation": "Leaving obligatory prayers is a major sin.",
+      "difficulty": "easy",
+      "id": "q54"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Sajdah in prayer is performed:",
+      "options": [
+        "Twice in each rakat",
+        "Once",
+        "Three times",
+        "Never"
+      ],
+      "answer": 0,
+      "explanation": "Each rakat has two prostrations.",
+      "difficulty": "easy",
+      "id": "q55"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The 'Tashahhud' is recited:",
+      "options": [
+        "While sitting in the prayer",
+        "Standing only",
+        "During Sajdah",
+        "After prayer only"
+      ],
+      "answer": 0,
+      "explanation": "Tashahhud is recited in the sitting position.",
+      "difficulty": "medium",
+      "id": "q56"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Zakat is given to how many categories of recipients?",
+      "options": [
+        "Eight categories (as in Surah Tawbah)",
+        "Three",
+        "Five",
+        "Ten"
+      ],
+      "answer": 0,
+      "explanation": "Surah At-Tawbah lists eight Zakat recipients.",
+      "difficulty": "medium",
+      "id": "q57"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What is the ruling on giving Zakat to one's parents?",
+      "options": [
+        "Not allowed (they are already your responsibility)",
+        "Allowed",
+        "Obligatory",
+        "Only to fathers"
+      ],
+      "answer": 0,
+      "explanation": "Zakat cannot be given to dependants.",
+      "difficulty": "medium",
+      "id": "q58"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The 'Fitr' charity before Eid-ul-Fitr is:",
+      "options": [
+        "Sadaqat-ul-Fitr",
+        "Zakat",
+        "Kaffarah",
+        "Fidya"
+      ],
+      "answer": 0,
+      "explanation": "Sadaqat-ul-Fitr purifies the fast.",
+      "difficulty": "easy",
+      "id": "q59"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The stoning of the pillars at Mina is called:",
+      "options": [
+        "Rami al-Jamarat",
+        "Tawaf",
+        "Sa'i",
+        "Wuquf"
+      ],
+      "answer": 0,
+      "explanation": "Rami symbolises rejecting evil.",
+      "difficulty": "medium",
+      "id": "q60"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The circuit of the Kaaba during Hajj is called:",
+      "options": [
+        "Tawaf",
+        "Sa'i",
+        "Rami",
+        "Wuquf"
+      ],
+      "answer": 0,
+      "explanation": "Tawaf is circling the Kaaba seven times.",
+      "difficulty": "easy",
+      "id": "q61"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The standing at Arafah is known as:",
+      "options": [
+        "Wuquf",
+        "Tawaf",
+        "Sa'i",
+        "Rami"
+      ],
+      "answer": 0,
+      "explanation": "Wuquf at Arafah is the core of Hajj.",
+      "difficulty": "easy",
+      "id": "q62"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Zuhr prayer has how many Fard rakat?",
+      "options": [
+        "Four",
+        "Two",
+        "Three",
+        "Five"
+      ],
+      "answer": 0,
+      "explanation": "Zuhr consists of four Fard rakat.",
+      "difficulty": "easy",
+      "id": "q63"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The time of the Fajr prayer begins at?",
+      "options": [
+        "True dawn",
+        "Sunrise",
+        "Midnight",
+        "Sunset"
+      ],
+      "answer": 0,
+      "explanation": "Fajr begins at the true (second) dawn.",
+      "difficulty": "easy",
+      "id": "q64"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The time of the Isha prayer extends until approximately?",
+      "options": [
+        "Midnight",
+        "Sunrise",
+        "Noon",
+        "Sunset"
+      ],
+      "answer": 0,
+      "explanation": "Isha time lasts until about midnight in the common view.",
+      "difficulty": "medium",
+      "id": "q65"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Qunut supplication in Witr is recited?",
+      "options": [
+        "In the last rakah before or after Ruku",
+        "At the beginning of the prayer",
+        "Between the two sajdahs",
+        "After the Salam"
+      ],
+      "answer": 0,
+      "explanation": "The Qunut of Witr is recited in the final rakah.",
+      "difficulty": "medium",
+      "id": "q66"
+    },
+    {
+      "type": "mcq",
+      "prompt": "According to the Hanafi school, is Zakat due on gold jewellery?",
+      "options": [
+        "Yes, above the Nisab",
+        "Never",
+        "Only on sold jewellery",
+        "Only on imported jewellery"
+      ],
+      "answer": 0,
+      "explanation": "The Hanafi school holds that gold jewellery above Nisab attracts Zakat.",
+      "difficulty": "hard",
+      "id": "q67"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Zakat on trade goods is calculated on?",
+      "options": [
+        "Their market value",
+        "Their cost price only",
+        "The number of items",
+        "The profit only"
+      ],
+      "answer": 0,
+      "explanation": "Zakat on merchandise is based on its market value at the end of the year.",
+      "difficulty": "medium",
+      "id": "q68"
+    },
+    {
+      "type": "mcq",
+      "prompt": "After Arafat, pilgrims spend the night of the 9th at?",
+      "options": [
+        "Muzdalifah",
+        "Mina",
+        "The Kaaba",
+        "Arafat itself"
+      ],
+      "answer": 0,
+      "explanation": "Pilgrims pray Maghrib and Isha combined and sleep at Muzdalifah.",
+      "difficulty": "medium",
+      "id": "q69"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The tent city where pilgrims stay during the days of Tashriq is?",
+      "options": [
+        "Mina",
+        "Muzdalifah",
+        "Arafat",
+        "Ji'ranah"
+      ],
+      "answer": 0,
+      "explanation": "Pilgrims spend the 11th-13th of Dhul-Hijjah in Mina.",
+      "difficulty": "medium",
+      "id": "q70"
+    },
+    {
+      "type": "mcq",
+      "prompt": "On the 10th of Dhul-Hijjah, pilgrims stone which pillar?",
+      "options": [
+        "Jamarat al-Aqabah (the big Jamrah)",
+        "The first Jamrah",
+        "The middle Jamrah",
+        "All three equally"
+      ],
+      "answer": 0,
+      "explanation": "Only Jamarat al-Aqabah is stoned on the Day of Sacrifice.",
+      "difficulty": "hard",
+      "id": "q71"
+    },
+    {
+      "type": "mcq",
+      "prompt": "How many pebbles are thrown at Jamarat al-Aqabah on the 10th?",
+      "options": [
+        "Seven",
+        "Three",
+        "Fourteen",
+        "Twenty-one"
+      ],
+      "answer": 0,
+      "explanation": "Seven pebbles are thrown at the big Jamrah on the 10th.",
+      "difficulty": "medium",
+      "id": "q72"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The essential Tawaf of Hajj performed on the 10th is called?",
+      "options": [
+        "Tawaf al-Ifadah",
+        "Tawaf al-Qudum",
+        "Tawaf al-Wida",
+        "Tawaf al-Umrah"
+      ],
+      "answer": 0,
+      "explanation": "Tawaf al-Ifadah (Ziyarah) is a pillar of Hajj.",
+      "difficulty": "hard",
+      "id": "q73"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The farewell circumambulation before leaving Makkah is called?",
+      "options": [
+        "Tawaf al-Wida",
+        "Tawaf al-Ifadah",
+        "Tawaf al-Qudum",
+        "Tawaf al-Nafl"
+      ],
+      "answer": 0,
+      "explanation": "Tawaf al-Wida is the farewell Tawaf for those leaving Makkah.",
+      "difficulty": "medium",
+      "id": "q74"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The arrival circumambulation for a pilgrim is called?",
+      "options": [
+        "Tawaf al-Qudum",
+        "Tawaf al-Ifadah",
+        "Tawaf al-Wida",
+        "Tawaf al-Tahiyyah"
+      ],
+      "answer": 0,
+      "explanation": "Tawaf al-Qudum is performed upon arriving in Makkah.",
+      "difficulty": "hard",
+      "id": "q75"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The first rite of Umrah is?",
+      "options": [
+        "Entering Ihram at the Miqat",
+        "The Tawaf",
+        "The Sa'i",
+        "The shaving of hair"
+      ],
+      "answer": 0,
+      "explanation": "Umrah begins with entering the state of Ihram at the Miqat.",
+      "difficulty": "medium",
+      "id": "q76"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What is the 'Miqat' in Hajj and Umrah?",
+      "options": [
+        "The boundary where pilgrims enter Ihram",
+        "The gate of the Kaaba",
+        "The black stone",
+        "The well of Zamzam"
+      ],
+      "answer": 0,
+      "explanation": "Miqat is the appointed station where Ihram is assumed.",
+      "difficulty": "medium",
+      "id": "q77"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Pilgrims arriving from the direction of Pakistan enter Ihram at which Miqat?",
+      "options": [
+        "Qarn al-Manazil",
+        "Dhul-Hulayfah",
+        "Al-Juhfah",
+        "Dhat Irq"
+      ],
+      "answer": 0,
+      "explanation": "Qarn al-Manazil serves pilgrims coming from the east, including Pakistan.",
+      "difficulty": "hard",
+      "id": "q78"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Kissing or touching the Black Stone during Tawaf is called?",
+      "options": [
+        "Istilam",
+        "Ihram",
+        "Rami",
+        "Wuquf"
+      ],
+      "answer": 0,
+      "explanation": "Istilam is the salutation of the Black Stone.",
+      "difficulty": "hard",
+      "id": "q79"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The semi-circular wall beside the Kaaba is called?",
+      "options": [
+        "Hateem (Hijr Ismail)",
+        "Multazam",
+        "Rukn Yamani",
+        "Mizab"
+      ],
+      "answer": 0,
+      "explanation": "The Hateem lies within the original foundations of the Kaaba.",
+      "difficulty": "hard",
+      "id": "q80"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The corner of the Kaaba facing Yemen is called?",
+      "options": [
+        "Rukn Yamani",
+        "Rukn Iraqi",
+        "Rukn Shami",
+        "Rukn Aswad"
+      ],
+      "answer": 0,
+      "explanation": "The Rukn Yamani is the corner towards Yemen.",
+      "difficulty": "hard",
+      "id": "q81"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Taking a bath (Ghusl) on Friday before Jumu'ah is?",
+      "options": [
+        "Sunnah (highly recommended)",
+        "Fard",
+        "Wajib",
+        "Makruh"
+      ],
+      "answer": 0,
+      "explanation": "The Friday Ghusl is a strongly recommended Sunnah.",
+      "difficulty": "medium",
+      "id": "q82"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Fasting six days of Shawwal together with Ramadan is like fasting?",
+      "options": [
+        "The whole year",
+        "Two years",
+        "Ten days",
+        "A lifetime"
+      ],
+      "answer": 0,
+      "explanation": "A good deed is multiplied tenfold, making Ramadan plus six days equal a year.",
+      "difficulty": "medium",
+      "id": "q83"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Fasting on Mondays and Thursdays is?",
+      "options": [
+        "Sunnah, as deeds are raised on these days",
+        "Fard",
+        "Forbidden",
+        "Only in Muharram"
+      ],
+      "answer": 0,
+      "explanation": "The Prophet (PBUH) used to fast Mondays and Thursdays.",
+      "difficulty": "medium",
+      "id": "q84"
+    },
+    {
+      "type": "mcq",
+      "prompt": "How many Fard acts are there in Wudu according to the Hanafi school?",
+      "options": [
+        "Four",
+        "Six",
+        "Two",
+        "Seven"
+      ],
+      "answer": 0,
+      "explanation": "The Hanafi Fard acts of wudu are washing the face, arms, wiping the head and washing the feet.",
+      "difficulty": "hard",
+      "id": "q85"
+    },
+    {
+      "type": "mcq",
+      "prompt": "On the days of Tashriq (11-13 Dhul-Hijjah), pilgrims stone?",
+      "options": [
+        "All three Jamarat",
+        "Only the big Jamrah",
+        "Only two Jamarat",
+        "No Jamarah"
+      ],
+      "answer": 0,
+      "explanation": "On the three days of Tashriq all three pillars are stoned.",
+      "difficulty": "medium",
+      "id": "q86"
+    },
+    {
+      "type": "mcq",
+      "prompt": "How many Jamarat (pillars) are stoned during Hajj?",
+      "options": [
+        "Three",
+        "Four",
+        "Two",
+        "Five"
+      ],
+      "answer": 0,
+      "explanation": "The three Jamarat are the small, middle and the big (Aqabah).",
+      "difficulty": "easy",
+      "id": "q87"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The order of rites on the 10th of Dhul-Hijjah is?",
+      "options": [
+        "Stoning, sacrifice, shaving, Tawaf al-Ifadah",
+        "Tawaf, stoning, sacrifice, shaving",
+        "Sacrifice, stoning, shaving, Tawaf",
+        "Shaving, Tawaf, stoning, sacrifice"
+      ],
+      "answer": 0,
+      "explanation": "The Sunnah order is stoning, then sacrifice, then shaving, then Tawaf.",
+      "difficulty": "hard",
+      "id": "q88"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Wiping over the socks (Masah) is valid for how long for a resident?",
+      "options": [
+        "One day and one night",
+        "Three days and nights",
+        "One week",
+        "One month"
+      ],
+      "answer": 0,
+      "explanation": "A resident may wipe over khuffayn for 24 hours; a traveller for three days.",
+      "difficulty": "hard",
+      "id": "q89"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The 20-rakah Taraweeh in congregation was revived by whom?",
+      "options": [
+        "Umar (RA)",
+        "Abu Bakr (RA)",
+        "Ali (RA)",
+        "Uthman (RA)"
+      ],
+      "answer": 0,
+      "explanation": "Umar (RA) revived the congregational Taraweeh of twenty rakat.",
+      "difficulty": "medium",
+      "id": "q90"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Aurah of a man in prayer is?",
+      "options": [
+        "From the navel to the knee",
+        "The whole body",
+        "The chest only",
+        "The arms only"
+      ],
+      "answer": 0,
+      "explanation": "A man's Aurah is from the navel to the knee.",
+      "difficulty": "medium",
+      "id": "q91"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Aurah of a woman in prayer is?",
+      "options": [
+        "The whole body except the face and hands",
+        "The hair only",
+        "From the navel to the knee",
+        "Only the arms"
+      ],
+      "answer": 0,
+      "explanation": "In prayer a woman covers everything except her face and hands.",
+      "difficulty": "medium",
+      "id": "q92"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What is the reward of performing 'Umrah' during Ramadan according to a hadith?",
+      "options": [
+        "It equals the reward of Hajj",
+        "It is forbidden",
+        "It has no reward",
+        "It equals Zakat"
+      ],
+      "answer": 0,
+      "explanation": "The Prophet (PBUH) said Umrah in Ramadan is equivalent to Hajj in reward.",
+      "difficulty": "medium",
+      "id": "q93"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The 'Talbiah' is recited by pilgrims while entering and during?",
+      "options": [
+        "Ihram",
+        "Only at the Kaaba",
+        "Only at Mina",
+        "Only at Arafat"
+      ],
+      "answer": 0,
+      "explanation": "The Talbiah is the chant of Ihram, recited from the Miqat.",
+      "difficulty": "medium",
+      "id": "q94"
+    },
+    {
+      "type": "mcq",
+      "prompt": "How many days does the 'Hajj' essentially last?",
+      "options": [
+        "Five days (8th-12th of Dhul-Hijjah)",
+        "Three days",
+        "Seven days",
+        "Ten days"
+      ],
+      "answer": 0,
+      "explanation": "The Hajj rites span roughly the 8th to the 12th of Dhul-Hijjah.",
+      "difficulty": "medium",
+      "id": "q95"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What is 'Salat-ul-Janazah'?",
+      "options": [
+        "The funeral prayer with no ruku or sajdah",
+        "A prayer with prostration",
+        "A night prayer",
+        "The Eid prayer"
+      ],
+      "answer": 0,
+      "explanation": "The funeral prayer has four takbirs and no bowing or prostration.",
+      "difficulty": "easy",
+      "id": "q96"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The 'Istisqa' prayer is offered for?",
+      "options": [
+        "Rain",
+        "Eclipse",
+        "Battle",
+        "Safe travel"
+      ],
+      "answer": 0,
+      "explanation": "Salat al-Istisqa seeks rain in times of drought.",
+      "difficulty": "medium",
+      "id": "q97"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The 'Khusuf' prayer is offered during?",
+      "options": [
+        "A lunar eclipse",
+        "A solar eclipse only",
+        "An earthquake",
+        "A storm"
+      ],
+      "answer": 0,
+      "explanation": "Khusuf is the prayer of the lunar eclipse; Kusuf is the solar eclipse prayer.",
+      "difficulty": "hard",
+      "id": "q98"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The 'Qasr' of prayers while travelling reduces which prayers?",
+      "options": [
+        "The four-rakah prayers to two",
+        "All prayers to one",
+        "Only Fajr",
+        "Only Maghrib"
+      ],
+      "answer": 0,
+      "explanation": "Zuhr, Asr and Isha are shortened to two rakat during travel.",
+      "difficulty": "medium",
+      "id": "q99"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The 'Fidyah' for a permanently unable fast is?",
+      "options": [
+        "Feeding one poor person per missed fast",
+        "Fasting sixty days",
+        "Paying money only",
+        "No requirement"
+      ],
+      "answer": 0,
+      "explanation": "Those permanently unable to fast feed a poor person for each missed day.",
+      "difficulty": "medium",
+      "id": "q100"
+    }
+  ]
+}

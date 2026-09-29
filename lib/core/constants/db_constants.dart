@@ -42,7 +42,16 @@ abstract final class DbConstants {
   /// Purely additive; existing v14 quiz data remains valid.
   /// v15 → v16 (Phase v0.10.0): AI Assistant — adds `ai_conversations` and
   /// `ai_messages` (offline chat persistence), plus indexes. Purely additive.
-  static const int schemaVersion = 16;
+  /// v16 → v17 (Phase v0.10.1): Staged Quiz progress. Purely additive.
+  /// v17 → v18: Study Planner automatic/manual scheduling state. Additive;
+  /// existing task rows default to manual scheduling.
+  /// v18 → v19: AI Assistant projects — adds `ai_projects` (named folders
+  /// grouping conversations) and a nullable `project_id` column on
+  /// `ai_conversations`. Purely additive; all existing chats stay valid and
+  /// simply remain outside every project.
+  /// v19 → v20: Study session linkage — adds optional task/subject/end-time
+  /// metadata to existing `study_sessions` rows. Purely additive.
+  static const int schemaVersion = 20;
 }
 
 /// Constants for the Quiz Engine's one-time demo seed.
@@ -54,10 +63,13 @@ abstract final class DbConstants {
 /// demo rows (tagged by source 'demo'), never user attempt history.
 abstract final class QuizConstants {
   static const String seedVersionKey = 'quiz_demo_seed_version';
-  static const String datasetVersion = 'quiz-demo-2026.07-v1';
+  static const String datasetVersion = 'quiz-demo-2026.08-grammar-bank-v2';
 
   /// Bank/subject `source` tag marking rows created by the demo seeder.
   static const String demoSource = 'demo';
+
+  /// Compatibility name used by the Quiz seeder for bundled demo content.
+  static const String bundledSource = demoSource;
 }
 
 /// Constants for the AI Assistant module (Phase v0.10.0).
@@ -96,6 +108,9 @@ abstract final class AiConstants {
 
 /// Constants for the bundled offline translation data set.
 abstract final class TranslationConstants {
+  /// Directory containing optional translation JSON packs.
+  static const String assetDir = 'assets/translations/';
+
   /// Bundled, gzip-compressed JSON-Lines data set (see assets/translations).
   static const String assetPath = 'assets/translations/translations.jsonl.gz';
 
@@ -234,7 +249,7 @@ abstract final class SearchHistoryConstants {
 abstract final class GrammarConstants {
   /// Bundled hierarchical topics tree (Category → Subcategory → Lesson).
   static const String topicsAssetPath = 'assets/grammar/grammar_topics.json';
-  static const String topicsDatasetVersion = 'grammar-topics-2026.07-complete';
+  static const String topicsDatasetVersion = 'grammar-topics-2026.09-dis-course-v74';
   static const String topicsSeedVersionKey = 'grammar_topics_seed_version';
 
   /// Bundled JSON lessons data set (legacy flat model; superseded by the tree).

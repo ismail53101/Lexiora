@@ -1,0 +1,1833 @@
+{
+  "bank": {
+    "name": "Culture & Society",
+    "subject": "Pakistan Affairs",
+    "topic": "Culture & Society",
+    "description": "National symbols, languages, sports, literature, heritage sites and cultural figures of Pakistan.",
+    "tags": "css,pms,fpsc,pakistan-affairs,culture",
+    "version": "1.0",
+    "id": "pakistan_affairs_culture_society"
+  },
+  "questions": [
+    {
+      "type": "mcq",
+      "prompt": "Who is the national poet of Pakistan?",
+      "options": [
+        "Faiz Ahmed Faiz",
+        "Allama Iqbal",
+        "Ahmed Faraz",
+        "Habib Jalib"
+      ],
+      "answer": 1,
+      "explanation": "Allama Muhammad Iqbal is the national poet of Pakistan.",
+      "difficulty": "easy",
+      "id": "q01"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who wrote the lyrics of the national anthem of Pakistan?",
+      "options": [
+        "Hafeez Jalandhari",
+        "Ahmed Ghulamali Chagla",
+        "Allama Iqbal",
+        "Josh Malihabadi"
+      ],
+      "answer": 0,
+      "explanation": "The anthem's lyrics were written by Hafeez Jalandhari.",
+      "difficulty": "easy",
+      "id": "q02"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who composed the music of the national anthem of Pakistan?",
+      "options": [
+        "Ahmed Ghulamali Chagla",
+        "Naushad Ali",
+        "Khwaja Khurshid Anwar",
+        "Sohail Rana"
+      ],
+      "answer": 0,
+      "explanation": "Ahmed G. Chagla composed the anthem's music, adopted in 1954.",
+      "difficulty": "hard",
+      "id": "q03"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which language is spoken by the largest number of people in Pakistan?",
+      "options": [
+        "Punjabi",
+        "Sindhi",
+        "Pashto",
+        "Urdu"
+      ],
+      "answer": 0,
+      "explanation": "Punjabi is the most widely spoken first language, though Urdu is the national language.",
+      "difficulty": "medium",
+      "id": "q04"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which animal is the national animal of Pakistan?",
+      "options": [
+        "Lion",
+        "Tiger",
+        "Markhor",
+        "Snow Leopard"
+      ],
+      "answer": 2,
+      "explanation": "The Markhor, a wild mountain goat, is the national animal of Pakistan.",
+      "difficulty": "easy",
+      "id": "q05"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which bird is the national bird of Pakistan?",
+      "options": [
+        "Peacock",
+        "Chukar (Chakor)",
+        "Falcon",
+        "Eagle"
+      ],
+      "answer": 1,
+      "explanation": "The Chukar partridge is the national bird of Pakistan.",
+      "difficulty": "medium",
+      "id": "q06"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which flower is the national flower of Pakistan?",
+      "options": [
+        "Rose",
+        "Sunflower",
+        "Jasmine (Chambeli)",
+        "Tulip"
+      ],
+      "answer": 2,
+      "explanation": "Jasmine, called Chambeli in Urdu, is the national flower.",
+      "difficulty": "medium",
+      "id": "q07"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which tree is the national tree of Pakistan?",
+      "options": [
+        "Banyan",
+        "Neem",
+        "Pine",
+        "Deodar"
+      ],
+      "answer": 3,
+      "explanation": "The Deodar cedar is the national tree of Pakistan.",
+      "difficulty": "hard",
+      "id": "q08"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which fruit is the national fruit of Pakistan?",
+      "options": [
+        "Apple",
+        "Mango",
+        "Orange",
+        "Banana"
+      ],
+      "answer": 1,
+      "explanation": "The mango is the national fruit of Pakistan.",
+      "difficulty": "easy",
+      "id": "q09"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What is the officially declared national sport of Pakistan?",
+      "options": [
+        "Field Hockey",
+        "Cricket",
+        "Squash",
+        "Polo"
+      ],
+      "answer": 0,
+      "explanation": "Field hockey is the official national sport of Pakistan.",
+      "difficulty": "medium",
+      "id": "q10"
+    },
+    {
+      "type": "mcq",
+      "prompt": "In which year did Pakistan win the Olympic gold medal in field hockey?",
+      "options": [
+        "1956",
+        "1960",
+        "1968",
+        "1972"
+      ],
+      "answer": 2,
+      "explanation": "Pakistan won its only Olympic hockey gold at Mexico City in 1968.",
+      "difficulty": "medium",
+      "id": "q11"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who captained Pakistan to victory in the 1992 Cricket World Cup?",
+      "options": [
+        "Javed Miandad",
+        "Imran Khan",
+        "Wasim Akram",
+        "Majid Khan"
+      ],
+      "answer": 1,
+      "explanation": "Imran Khan captained Pakistan to its first World Cup title in 1992.",
+      "difficulty": "easy",
+      "id": "q12"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which Pakistani squash player won a record ten British Open titles?",
+      "options": [
+        "Hashim Khan",
+        "Jahangir Khan",
+        "Jansher Khan",
+        "Qamar Zaman"
+      ],
+      "answer": 1,
+      "explanation": "Jahangir Khan won the British Open ten times (1982-1991).",
+      "difficulty": "medium",
+      "id": "q13"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The archaeological site of Taxila is located in which province?",
+      "options": [
+        "Punjab",
+        "Sindh",
+        "Khyber Pakhtunkhwa",
+        "Balochistan"
+      ],
+      "answer": 0,
+      "explanation": "Taxila, a UNESCO World Heritage site, is in the Punjab province near Rawalpindi.",
+      "difficulty": "medium",
+      "id": "q14"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Badshahi Mosque, built by Aurangzeb, is located in which city?",
+      "options": [
+        "Multan",
+        "Lahore",
+        "Peshawar",
+        "Karachi"
+      ],
+      "answer": 1,
+      "explanation": "The Badshahi Mosque was built in Lahore in 1673.",
+      "difficulty": "easy",
+      "id": "q15"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Rohtas Fort, a UNESCO World Heritage site, was built by which ruler?",
+      "options": [
+        "Akbar",
+        "Sher Shah Suri",
+        "Jahangir",
+        "Aurangzeb"
+      ],
+      "answer": 1,
+      "explanation": "Rohtas Fort near Jhelum was built by Sher Shah Suri in the 16th century.",
+      "difficulty": "hard",
+      "id": "q16"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Minar-e-Pakistan, built to commemorate the Lahore Resolution, stands in which city?",
+      "options": [
+        "Islamabad",
+        "Lahore",
+        "Rawalpindi",
+        "Faisalabad"
+      ],
+      "answer": 1,
+      "explanation": "Minar-e-Pakistan is in Iqbal Park, Lahore.",
+      "difficulty": "easy",
+      "id": "q17"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which Sufi poet of Sindh wrote the famous 'Shah Jo Risalo'?",
+      "options": [
+        "Sachal Sarmast",
+        "Shah Abdul Latif Bhittai",
+        "Bulleh Shah",
+        "Mian Muhammad Bakhsh"
+      ],
+      "answer": 1,
+      "explanation": "Shah Abdul Latif Bhittai composed the Shah Jo Risalo in Sindhi.",
+      "difficulty": "medium",
+      "id": "q18"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Data Darbar shrine in Lahore is dedicated to which Sufi saint?",
+      "options": [
+        "Baba Farid",
+        "Data Ganj Bakhsh (Ali Hujwiri)",
+        "Shah Rukn-e-Alam",
+        "Mian Mir"
+      ],
+      "answer": 1,
+      "explanation": "Data Darbar is the shrine of Syed Ali Hujwiri, known as Data Ganj Bakhsh.",
+      "difficulty": "medium",
+      "id": "q19"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The shrine of Lal Shahbaz Qalandar is located in which city?",
+      "options": [
+        "Sehwan Sharif",
+        "Thatta",
+        "Multan",
+        "Uch Sharif"
+      ],
+      "answer": 0,
+      "explanation": "Lal Shahbaz Qalandar's shrine is at Sehwan Sharif in Sindh.",
+      "difficulty": "medium",
+      "id": "q20"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which ancient civilization flourished in the Indus Valley around 2500 BCE?",
+      "options": [
+        "Mesopotamian",
+        "Indus Valley Civilization",
+        "Egyptian",
+        "Persian"
+      ],
+      "answer": 1,
+      "explanation": "The Indus Valley (Harappan) Civilization flourished in what is now Pakistan.",
+      "difficulty": "easy",
+      "id": "q21"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Kalash people, known for their distinct culture, live in which valley?",
+      "options": [
+        "Swat",
+        "Kaghan",
+        "Chitral",
+        "Neelum"
+      ],
+      "answer": 2,
+      "explanation": "The Kalash community lives in the Chitral district of Khyber Pakhtunkhwa.",
+      "difficulty": "medium",
+      "id": "q22"
+    },
+    {
+      "type": "mcq",
+      "prompt": "How many UNESCO World Heritage Sites are currently listed in Pakistan?",
+      "options": [
+        "4",
+        "5",
+        "6",
+        "8"
+      ],
+      "answer": 2,
+      "explanation": "Pakistan has six UNESCO World Heritage Sites, including Mohenjo-daro, Taxila and the Lahore Fort.",
+      "difficulty": "hard",
+      "id": "q23"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Shalimar Gardens in Lahore were laid out by which Mughal emperor?",
+      "options": [
+        "Akbar",
+        "Shah Jahan",
+        "Jahangir",
+        "Babur"
+      ],
+      "answer": 1,
+      "explanation": "The Shalimar Gardens were built by Shah Jahan in 1642.",
+      "difficulty": "hard",
+      "id": "q24"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Pakistan's traditional national dress for both men and women is?",
+      "options": [
+        "Shalwar Kameez",
+        "Kurta Pyjama",
+        "Sari",
+        "Achkan"
+      ],
+      "answer": 0,
+      "explanation": "The shalwar kameez is the national dress of Pakistan.",
+      "difficulty": "easy",
+      "id": "q25"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which city is famous for its handcrafted sports goods industry?",
+      "options": [
+        "Gujranwala",
+        "Sialkot",
+        "Faisalabad",
+        "Sheikhupura"
+      ],
+      "answer": 1,
+      "explanation": "Sialkot is a world-famous centre for sports goods, especially footballs.",
+      "difficulty": "easy",
+      "id": "q26"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which is the national flower of Pakistan?",
+      "options": [
+        "Jasmine",
+        "Rose",
+        "Tulip",
+        "Sunflower"
+      ],
+      "answer": 0,
+      "explanation": "Jasmine (Chambeli) is the national flower of Pakistan.",
+      "difficulty": "easy",
+      "id": "q27"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The national bird of Pakistan is?",
+      "options": [
+        "Chukar partridge",
+        "Peacock",
+        "Eagle",
+        "Parrot"
+      ],
+      "answer": 0,
+      "explanation": "The chukar partridge (Chakor) is the national bird.",
+      "difficulty": "easy",
+      "id": "q28"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The national poet of Pakistan is?",
+      "options": [
+        "Allama Muhammad Iqbal",
+        "Faiz Ahmad Faiz",
+        "Habib Jalib",
+        "Ahmad Faraz"
+      ],
+      "answer": 0,
+      "explanation": "Allama Iqbal, the poet of the East (Shair-e-Mashriq), is Pakistan's national poet.",
+      "difficulty": "easy",
+      "id": "q29"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The national anthem of Pakistan was adopted in which year?",
+      "options": [
+        "1954",
+        "1947",
+        "1956",
+        "1962"
+      ],
+      "answer": 0,
+      "explanation": "The anthem was officially adopted in 1954.",
+      "difficulty": "medium",
+      "id": "q30"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The national game of Pakistan is?",
+      "options": [
+        "Field hockey",
+        "Cricket",
+        "Squash",
+        "Football"
+      ],
+      "answer": 0,
+      "explanation": "Field hockey is the national sport, though cricket is the most popular.",
+      "difficulty": "easy",
+      "id": "q31"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which Pakistani won the 1992 World Cup as captain?",
+      "options": [
+        "Imran Khan",
+        "Wasim Akram",
+        "Javed Miandad",
+        "Inzamam-ul-Haq"
+      ],
+      "answer": 0,
+      "explanation": "Imran Khan captained Pakistan to its first Cricket World Cup win in 1992.",
+      "difficulty": "easy",
+      "id": "q32"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The famous 'Shalimar Gardens' are located in which city?",
+      "options": [
+        "Lahore",
+        "Multan",
+        "Peshawar",
+        "Hyderabad"
+      ],
+      "answer": 0,
+      "explanation": "Shalimar Gardens in Lahore, built by Shah Jahan, is a UNESCO World Heritage Site.",
+      "difficulty": "easy",
+      "id": "q33"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The 'Moen-jo-Daro' archaeological site is located in?",
+      "options": [
+        "Sindh",
+        "Punjab",
+        "Balochistan",
+        "Khyber Pakhtunkhwa"
+      ],
+      "answer": 0,
+      "explanation": "Moen-jo-Daro, an Indus Valley city, lies in Sindh near Larkana.",
+      "difficulty": "easy",
+      "id": "q34"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The 'Taxila' ruins, a UNESCO site, are near which city?",
+      "options": [
+        "Rawalpindi/Islamabad",
+        "Lahore",
+        "Peshawar",
+        "Quetta"
+      ],
+      "answer": 0,
+      "explanation": "Taxila, an ancient Gandharan city, lies about 30 km northwest of Islamabad.",
+      "difficulty": "easy",
+      "id": "q35"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which language is the lingua franca and national language of Pakistan?",
+      "options": [
+        "Urdu",
+        "Punjabi",
+        "Pashto",
+        "English"
+      ],
+      "answer": 0,
+      "explanation": "Urdu is the national language, with English as the official language.",
+      "difficulty": "easy",
+      "id": "q36"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which Pakistani literary figure is known as the 'Poet of the East'?",
+      "options": [
+        "Allama Iqbal",
+        "Faiz Ahmad Faiz",
+        "Ahmad Faraz",
+        "Habib Jalib"
+      ],
+      "answer": 0,
+      "explanation": "Allama Iqbal is called Shair-e-Mashriq (Poet of the East).",
+      "difficulty": "easy",
+      "id": "q37"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who wrote the famous Urdu nazm 'Hum Dekhenge'?",
+      "options": [
+        "Faiz Ahmad Faiz",
+        "Allama Iqbal",
+        "Habib Jalib",
+        "Josh Malihabadi"
+      ],
+      "answer": 0,
+      "explanation": "'Hum Dekhenge' was written by Faiz Ahmad Faiz.",
+      "difficulty": "medium",
+      "id": "q38"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The 'Lok Virsa' heritage museum is located in?",
+      "options": [
+        "Islamabad",
+        "Lahore",
+        "Karachi",
+        "Peshawar"
+      ],
+      "answer": 0,
+      "explanation": "The National Institute of Folk & Traditional Heritage (Lok Virsa) is in Islamabad.",
+      "difficulty": "medium",
+      "id": "q39"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which traditional craft is Faisalabad famous for?",
+      "options": [
+        "Textile weaving and printing",
+        "Pottery only",
+        "Carpet only",
+        "Jewellery only"
+      ],
+      "answer": 0,
+      "explanation": "Faisalabad is a textile city; Multan is known for pottery and handicrafts.",
+      "difficulty": "medium",
+      "id": "q40"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The 'Ajrak' is a traditional printed shawl associated with which province?",
+      "options": [
+        "Sindh",
+        "Punjab",
+        "Balochistan",
+        "Khyber Pakhtunkhwa"
+      ],
+      "answer": 0,
+      "explanation": "Ajrak, with its distinctive block prints, is a symbol of Sindhi culture.",
+      "difficulty": "easy",
+      "id": "q41"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The 'Truck Art' of Pakistan is famous for?",
+      "options": [
+        "Vibrant painted decorations on trucks and buses",
+        "Modern sculpture",
+        "Graffiti in cities",
+        "Street murals only"
+      ],
+      "answer": 0,
+      "explanation": "Pakistan's flamboyant truck art is a globally recognized cultural export.",
+      "difficulty": "easy",
+      "id": "q42"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which sport has given Pakistan its most Olympic gold medals?",
+      "options": [
+        "Field hockey",
+        "Cricket",
+        "Squash",
+        "Boxing"
+      ],
+      "answer": 0,
+      "explanation": "Pakistan's hockey team won Olympic gold in 1960, 1968 and 1984.",
+      "difficulty": "easy",
+      "id": "q43"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which Pakistani athlete won the 1999 World Championship in snooker?",
+      "options": [
+        "No Pakistani won snooker; Jahangir Khan dominated squash",
+        "Mohammad Yousuf",
+        "Shahid Afridi",
+        "Sania Mirza"
+      ],
+      "answer": 0,
+      "explanation": "Pakistan's global dominance was in squash; Jahangir Khan won 10 World Opens.",
+      "difficulty": "medium",
+      "id": "q44"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The 'Hazrat Data Ganj Bakhsh' shrine is located in?",
+      "options": [
+        "Lahore",
+        "Multan",
+        "Karachi",
+        "Peshawar"
+      ],
+      "answer": 0,
+      "explanation": "Data Darbar, the shrine of Ali Hujwiri, is in Lahore.",
+      "difficulty": "easy",
+      "id": "q45"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The 'Shah Rukn-e-Alam' shrine is in which city?",
+      "options": [
+        "Multan",
+        "Lahore",
+        "Uch Sharif",
+        "Sehwan"
+      ],
+      "answer": 0,
+      "explanation": "The mausoleum of Shah Rukn-e-Alam is a landmark of Multan.",
+      "difficulty": "medium",
+      "id": "q46"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which festival marks the arrival of spring in Punjab?",
+      "options": [
+        "Basant",
+        "Eid",
+        "Shab-e-Barat",
+        "Mela Chiraghan"
+      ],
+      "answer": 0,
+      "explanation": "Basant (kite festival) heralds spring, though now restricted.",
+      "difficulty": "easy",
+      "id": "q47"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The 'Urs' in Sufi tradition refers to?",
+      "options": [
+        "The annual death anniversary of a Sufi saint",
+        "A wedding",
+        "A harvest festival",
+        "A national holiday"
+      ],
+      "answer": 0,
+      "explanation": "Urs commemorates a saint's union with Allah on the death anniversary.",
+      "difficulty": "medium",
+      "id": "q48"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The famous Pakistani classical singer who sang 'Ae Mere Watan Ke Logo' was?",
+      "options": [
+        "Lata Mangeshkar sang it; Pakistani classical greats include Nusrat Fateh Ali Khan",
+        "Nusrat Fateh Ali Khan",
+        "Mehdi Hassan",
+        "Abida Parveen"
+      ],
+      "answer": 0,
+      "explanation": "'Ae Mere Watan Ke Logo' was sung by Lata Mangeshkar; Nusrat and Mehdi Hassan are Pakistan's qawwali/ghazal legends.",
+      "difficulty": "medium",
+      "id": "q49"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who is known as the 'King of Ghazal' in Pakistan?",
+      "options": [
+        "Mehdi Hassan",
+        "Nusrat Fateh Ali Khan",
+        "Ghulam Ali",
+        "Fareed Ayaz"
+      ],
+      "answer": 0,
+      "explanation": "Mehdi Hassan is celebrated as the King of Ghazal.",
+      "difficulty": "easy",
+      "id": "q50"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The 'Lok Mela' festival is held at which venue?",
+      "options": [
+        "Shakarparian, Islamabad (Lok Virsa)",
+        "Lahore Fort",
+        "Mazar-e-Quaid",
+        "Kaghan Valley"
+      ],
+      "answer": 0,
+      "explanation": "Lok Mela showcases folk culture at Shakarparian each year.",
+      "difficulty": "medium",
+      "id": "q51"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which province is known for the 'Kalash' people and their festivals?",
+      "options": [
+        "Khyber Pakhtunkhwa (Chitral)",
+        "Punjab",
+        "Sindh",
+        "Balochistan"
+      ],
+      "answer": 0,
+      "explanation": "The Kalash community lives in the valleys of Chitral, KP.",
+      "difficulty": "easy",
+      "id": "q52"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The 'Sindhi Topi' and 'Ajrak' are symbols of which province's identity?",
+      "options": [
+        "Sindh",
+        "Punjab",
+        "Balochistan",
+        "Gilgit-Baltistan"
+      ],
+      "answer": 0,
+      "explanation": "The Sindhi cap and Ajrak shawl represent Sindhi cultural identity.",
+      "difficulty": "easy",
+      "id": "q53"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which Pakistani film won international acclaim and featured 'Jhoom' by Ali Zafar?",
+      "options": [
+        "The 'Jhoom' song was from the film 'Prince'; Pakistan's acclaimed films include 'Waar'",
+        "Waar",
+        "Khuda Kay Liye",
+        "Bol"
+      ],
+      "answer": 0,
+      "explanation": "'Jhoom' was from the film 'Prince'; Shoaib Mansoor's 'Khuda Kay Liye' and 'Bol' brought global recognition.",
+      "difficulty": "hard",
+      "id": "q54"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which UNESCO site in Pakistan is the ancient capital of the Gandhara kingdom?",
+      "options": [
+        "Taxila",
+        "Moen-jo-Daro",
+        "Takht-e-Bahi",
+        "Rohtas Fort"
+      ],
+      "answer": 0,
+      "explanation": "Taxila was the Gandharan capital and a major Buddhist learning centre.",
+      "difficulty": "easy",
+      "id": "q55"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which Punjabi festival marks the harvest season?",
+      "options": [
+        "Vaisakhi (Baisakhi)",
+        "Eid",
+        "Shab-e-Barat",
+        "Jashn-e-Baharan"
+      ],
+      "answer": 0,
+      "explanation": "Vaisakhi is the spring harvest festival celebrated in Punjab.",
+      "difficulty": "easy",
+      "id": "q56"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The traditional Sindhi embroidery is known as:",
+      "options": [
+        "Ralli",
+        "Gota",
+        "Phulkari",
+        "Zardozi"
+      ],
+      "answer": 0,
+      "explanation": "Ralli is the colourful patchwork and embroidery of Sindh.",
+      "difficulty": "medium",
+      "id": "q57"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Chitrali cap is commonly called:",
+      "options": [
+        "Pakol",
+        "Karakul",
+        "Topi",
+        "Fez"
+      ],
+      "answer": 0,
+      "explanation": "The pakol is the rolled woollen cap of Chitral and Gilgit.",
+      "difficulty": "easy",
+      "id": "q58"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which city is famous for the annual Urs of Shah Abdul Latif Bhittai?",
+      "options": [
+        "Bhit Shah",
+        "Sehwan Sharif",
+        "Thatta",
+        "Sukkur"
+      ],
+      "answer": 0,
+      "explanation": "The Urs of Bhittai is held at Bhit Shah in Sindh.",
+      "difficulty": "easy",
+      "id": "q59"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Pashtun code of honour is known as:",
+      "options": [
+        "Pashtunwali",
+        "Jirga",
+        "Hujra",
+        "Loya Jirga"
+      ],
+      "answer": 0,
+      "explanation": "Pashtunwali is the traditional code of the Pashtuns.",
+      "difficulty": "easy",
+      "id": "q60"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which Pakistani dish is considered the national dish?",
+      "options": [
+        "Nihari",
+        "Biryani",
+        "Karahi",
+        "Haleem"
+      ],
+      "answer": 0,
+      "explanation": "Nihari is commonly regarded as Pakistan's national dish.",
+      "difficulty": "easy",
+      "id": "q61"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Kalash people live in which region of Pakistan?",
+      "options": [
+        "Chitral",
+        "Skardu",
+        "Swat",
+        "Hunza"
+      ],
+      "answer": 0,
+      "explanation": "The Kalash community resides in three valleys of Chitral.",
+      "difficulty": "easy",
+      "id": "q62"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Sufi poet Baba Farid was associated with which city?",
+      "options": [
+        "Pakpattan",
+        "Multan",
+        "Uch Sharif",
+        "Lahore"
+      ],
+      "answer": 0,
+      "explanation": "Baba Fariduddin Ganjshakar is buried at Pakpattan.",
+      "difficulty": "medium",
+      "id": "q63"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Sindhi folk dance performed to the beat of drums is called:",
+      "options": [
+        "Ho Jamalo",
+        "Attan",
+        "Bhangra",
+        "Luddi"
+      ],
+      "answer": 0,
+      "explanation": "Ho Jamalo is a popular Sindhi folk dance.",
+      "difficulty": "medium",
+      "id": "q64"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The traditional Balochi needlework is known as:",
+      "options": [
+        "Balochi embroidery (Khirad)",
+        "Gota Patti",
+        "Phulkari",
+        "Chikankari"
+      ],
+      "answer": 0,
+      "explanation": "Balochi embroidery, called khirad, is famous for its fine mirror work.",
+      "difficulty": "medium",
+      "id": "q65"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The famous Lahore fort was built during the reign of which emperor?",
+      "options": [
+        "Akbar",
+        "Babur",
+        "Aurangzeb",
+        "Jahangir"
+      ],
+      "answer": 0,
+      "explanation": "The Lahore Fort was largely constructed under Emperor Akbar.",
+      "difficulty": "medium",
+      "id": "q66"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The traditional Punjabi embroidery on dupattas is called:",
+      "options": [
+        "Phulkari",
+        "Ralli",
+        "Kashi",
+        "Gulabi"
+      ],
+      "answer": 0,
+      "explanation": "Phulkari is the vibrant floral embroidery of Punjab.",
+      "difficulty": "easy",
+      "id": "q67"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which festival is celebrated by Shia Muslims to commemorate the martyrdom of Imam Hussain (RA)?",
+      "options": [
+        "Ashura (Muharram)",
+        "Eid-ul-Fitr",
+        "Eid-ul-Adha",
+        "Mawlid"
+      ],
+      "answer": 0,
+      "explanation": "Ashura on 10th Muharram commemorates the tragedy of Karbala.",
+      "difficulty": "easy",
+      "id": "q68"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Chaukhandi tombs are an example of which civilisation's funerary art?",
+      "options": [
+        "Sindhi Islamic era",
+        "Indus Valley",
+        "Gandhara",
+        "Mughal"
+      ],
+      "answer": 0,
+      "explanation": "Chaukhandi tombs near Karachi belong to the Islamic-era Sindhi tradition.",
+      "difficulty": "medium",
+      "id": "q69"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which Pakistani city is famous for its blue pottery?",
+      "options": [
+        "Multan",
+        "Lahore",
+        "Peshawar",
+        "Quetta"
+      ],
+      "answer": 0,
+      "explanation": "Multan is renowned for its distinctive blue glazed pottery.",
+      "difficulty": "easy",
+      "id": "q70"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The traditional Pashtun dance performed at weddings is:",
+      "options": [
+        "Attan",
+        "Bhangra",
+        "Jhumar",
+        "Kathak"
+      ],
+      "answer": 0,
+      "explanation": "Attan is the energetic circle dance of the Pashtuns.",
+      "difficulty": "easy",
+      "id": "q71"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The major languages spoken in Gilgit-Baltistan include:",
+      "options": [
+        "Shina, Balti and Burushaski",
+        "Punjabi and Saraiki",
+        "Pashto and Hindko",
+        "Sindhi and Balochi"
+      ],
+      "answer": 0,
+      "explanation": "Shina, Balti and Burushaski are spoken in Gilgit-Baltistan.",
+      "difficulty": "medium",
+      "id": "q72"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The famous annual 'Shandur Polo Festival' is held at:",
+      "options": [
+        "The highest polo ground in the world",
+        "Karachi",
+        "Lahore",
+        "Islamabad"
+      ],
+      "answer": 0,
+      "explanation": "Shandur, at ~3,700 m, is the world's highest polo ground.",
+      "difficulty": "easy",
+      "id": "q73"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The traditional Sindhi cap is called:",
+      "options": [
+        "Sindhi topi",
+        "Pakol",
+        "Karakul",
+        "Kufi"
+      ],
+      "answer": 0,
+      "explanation": "The Sindhi topi, often worn with the ajrak, is a cultural symbol.",
+      "difficulty": "easy",
+      "id": "q74"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Buddhist stupas of Taxila belong to which era?",
+      "options": [
+        "Gandhara civilisation",
+        "Indus Valley",
+        "Mughal",
+        "British"
+      ],
+      "answer": 0,
+      "explanation": "Taxila's stupas date from the Gandhara period.",
+      "difficulty": "easy",
+      "id": "q75"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The famous Nagar Parkar Jain temples are located in which province?",
+      "options": [
+        "Sindh",
+        "Punjab",
+        "Balochistan",
+        "KPK"
+      ],
+      "answer": 0,
+      "explanation": "The Jain temples of Nagar Parkar are in the Tharparkar district of Sindh.",
+      "difficulty": "medium",
+      "id": "q76"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The famous 'Shahbaz Garhi' site is associated with:",
+      "options": [
+        "Ashoka's rock edicts",
+        "Mughal forts",
+        "Sikh temples",
+        "British cantonments"
+      ],
+      "answer": 0,
+      "explanation": "Shahbaz Garhi in KPK holds Ashokan rock edicts.",
+      "difficulty": "hard",
+      "id": "q77"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which traditional Sindhi cloth is dyed with block prints?",
+      "options": [
+        "Ajrak",
+        "Lungi",
+        "Khes",
+        "Chadar"
+      ],
+      "answer": 0,
+      "explanation": "The ajrak is Sindh's iconic block-printed shawl.",
+      "difficulty": "easy",
+      "id": "q78"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The 'Hujra' in Pashtun culture serves as:",
+      "options": [
+        "A guesthouse for men",
+        "A mosque",
+        "A market",
+        "A school"
+      ],
+      "answer": 0,
+      "explanation": "The hujra is a traditional Pashtun guesthouse.",
+      "difficulty": "medium",
+      "id": "q79"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which Pakistani festival celebrates the arrival of spring?",
+      "options": [
+        "Jashn-e-Baharan (Basant historically)",
+        "Eid-ul-Fitr",
+        "Mawlid",
+        "Shab-e-Barat"
+      ],
+      "answer": 0,
+      "explanation": "Jashn-e-Baharan marks spring; Basant was the kite festival.",
+      "difficulty": "easy",
+      "id": "q80"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The famous 'Sassi Punnu' legend belongs to which region?",
+      "options": [
+        "Sindh and Balochistan",
+        "Punjab only",
+        "KPK",
+        "Gilgit-Baltistan"
+      ],
+      "answer": 0,
+      "explanation": "Sassi Punnu is a Sindhi-Balochi folk romance.",
+      "difficulty": "easy",
+      "id": "q81"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The traditional Balochi instrument used in folk music is:",
+      "options": [
+        "Suroz",
+        "Sitar",
+        "Tabla",
+        "Harmonium"
+      ],
+      "answer": 0,
+      "explanation": "The suroz is a bowed instrument of Balochistan.",
+      "difficulty": "hard",
+      "id": "q82"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The 'Urs of Shah Abdul Latif Bhittai' is celebrated in which month?",
+      "options": [
+        "Safar (Islamic calendar)",
+        "Always in December",
+        "Always in August",
+        "During Ramadan"
+      ],
+      "answer": 0,
+      "explanation": "Bhittai's Urs falls in the month of Safar.",
+      "difficulty": "hard",
+      "id": "q83"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The traditional dance of the Kalash people is performed during which festival?",
+      "options": [
+        "Chilam Joshi",
+        "Eid",
+        "Vaisakhi",
+        "Muharram"
+      ],
+      "answer": 0,
+      "explanation": "Chilam Joshi is the Kalash spring festival.",
+      "difficulty": "medium",
+      "id": "q84"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The famous Badshahi Mosque was built by:",
+      "options": [
+        "Aurangzeb",
+        "Shah Jahan",
+        "Akbar",
+        "Jahangir"
+      ],
+      "answer": 0,
+      "explanation": "Aurangzeb built the Badshahi Mosque in 1673.",
+      "difficulty": "easy",
+      "id": "q85"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The 'Minar-e-Pakistan' was built to commemorate:",
+      "options": [
+        "The Lahore Resolution of 1940",
+        "Independence in 1947",
+        "The 1965 war",
+        "The 1973 Constitution"
+      ],
+      "answer": 0,
+      "explanation": "Minar-e-Pakistan marks the site of the 1940 Lahore Resolution.",
+      "difficulty": "easy",
+      "id": "q86"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The traditional music of Sindh features which famous folk singer?",
+      "options": [
+        "Allah Wasayo and Abida Parveen",
+        "Nusrat Fateh Ali Khan",
+        "Mehdi Hassan",
+        "Ghulam Ali"
+      ],
+      "answer": 0,
+      "explanation": "Abida Parveen and Allah Wasayo are iconic Sindhi folk singers.",
+      "difficulty": "medium",
+      "id": "q87"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The 'Sindhi Ajrak' and 'Topi' are symbols of:",
+      "options": [
+        "Sindhi identity",
+        "Punjabi culture",
+        "Balochi culture",
+        "Pashtun culture"
+      ],
+      "answer": 0,
+      "explanation": "The ajrak and topi represent Sindhi cultural identity.",
+      "difficulty": "easy",
+      "id": "q88"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The famous poet 'Waris Shah' is known for which classic?",
+      "options": [
+        "Heer Ranjha",
+        "Sassi Punnu",
+        "Sohni Mahiwal",
+        "Mirza Sahiban"
+      ],
+      "answer": 0,
+      "explanation": "Waris Shah's 'Heer' is a masterpiece of Punjabi literature.",
+      "difficulty": "easy",
+      "id": "q89"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The famous 'Bashir Ahmed' is associated with which traditional craft?",
+      "options": [
+        "Handwoven carpets",
+        "Glass blowing",
+        "Shipbuilding",
+        "Pottery"
+      ],
+      "answer": 0,
+      "explanation": "Bashir Ahmed was a celebrated Pakistani carpet weaver.",
+      "difficulty": "hard",
+      "id": "q90"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The 'Jhumar' dance is traditionally performed in:",
+      "options": [
+        "Sindh (folk dance)",
+        "Gilgit-Baltistan",
+        "Chitral",
+        "Quetta"
+      ],
+      "answer": 0,
+      "explanation": "Jhumar is a popular Sindhi folk dance.",
+      "difficulty": "medium",
+      "id": "q91"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The 'Karakul' cap is traditionally worn in which region?",
+      "options": [
+        "Central and northern Pakistan (also Afghanistan)",
+        "Only Sindh",
+        "Only Balochistan coast",
+        "Only Punjab"
+      ],
+      "answer": 0,
+      "explanation": "The Karakul hat is common in northern Pakistan and Afghanistan.",
+      "difficulty": "medium",
+      "id": "q92"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The famous 'Sheesh Mahal' is located in which fort?",
+      "options": [
+        "Lahore Fort",
+        "Rohtas Fort",
+        "Derawar Fort",
+        "Ranikot Fort"
+      ],
+      "answer": 0,
+      "explanation": "The Sheesh Mahal (Palace of Mirrors) is in Lahore Fort.",
+      "difficulty": "easy",
+      "id": "q93"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who is known as the 'Queen of Melody' in Pakistani music?",
+      "options": [
+        "Noor Jehan",
+        "Nazia Hassan",
+        "Abida Parveen",
+        "Reshma"
+      ],
+      "answer": 0,
+      "explanation": "Noor Jehan was hailed as the Queen of Melody (Malika-e-Tarannum).",
+      "difficulty": "medium",
+      "id": "q94"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The legendary Qawwali singer Nusrat Fateh Ali Khan belonged to which musical tradition?",
+      "options": [
+        "Qawwali",
+        "Ghazal",
+        "Classical raga",
+        "Folk"
+      ],
+      "answer": 0,
+      "explanation": "Nusrat Fateh Ali Khan was a master of Qawwali.",
+      "difficulty": "easy",
+      "id": "q95"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The famous Urdu short story writer Saadat Hasan Manto is associated with which city?",
+      "options": [
+        "Bombay and Lahore",
+        "Karachi only",
+        "Delhi only",
+        "Peshawar"
+      ],
+      "answer": 0,
+      "explanation": "Manto wrote in Bombay and later settled in Lahore.",
+      "difficulty": "medium",
+      "id": "q96"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Allama Iqbal's famous children's poem 'Lab Pe Aati Hai Dua' was written for whom?",
+      "options": [
+        "Children",
+        "Farmers",
+        "Soldiers",
+        "Students of law"
+      ],
+      "answer": 0,
+      "explanation": "'Lab Pe Aati Hai Dua' is a prayer-poem for children.",
+      "difficulty": "medium",
+      "id": "q97"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Mazar-e-Quaid, the mausoleum of Quaid-e-Azam, is located in which city?",
+      "options": [
+        "Karachi",
+        "Lahore",
+        "Islamabad",
+        "Hyderabad"
+      ],
+      "answer": 0,
+      "explanation": "The Mazar-e-Quaid stands in Karachi.",
+      "difficulty": "easy",
+      "id": "q98"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The tomb of Allama Iqbal is located in which city?",
+      "options": [
+        "Lahore",
+        "Karachi",
+        "Sialkot",
+        "Multan"
+      ],
+      "answer": 0,
+      "explanation": "Iqbal's tomb is beside the Badshahi Mosque in Lahore.",
+      "difficulty": "medium",
+      "id": "q99"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Allama Iqbal was born in which year?",
+      "options": [
+        "1877",
+        "1876",
+        "1880",
+        "1875"
+      ],
+      "answer": 0,
+      "explanation": "Iqbal was born in 1877 in Sialkot.",
+      "difficulty": "medium",
+      "id": "q100"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The famous folk romance 'Heer Ranjha' was composed by whom?",
+      "options": [
+        "Waris Shah",
+        "Bulleh Shah",
+        "Shah Abdul Latif",
+        "Mian Muhammad Bakhsh"
+      ],
+      "answer": 0,
+      "explanation": "Waris Shah's 'Heer' is the most celebrated version of the romance.",
+      "difficulty": "medium",
+      "id": "q101"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Punjabi Sufi poet Bulleh Shah was a disciple of which Sufi saint?",
+      "options": [
+        "Shah Inayat Qadiri",
+        "Data Ganj Bakhsh",
+        "Baba Farid",
+        "Shah Rukn-e-Alam"
+      ],
+      "answer": 0,
+      "explanation": "Bulleh Shah was initiated by Shah Inayat Qadiri of Lahore.",
+      "difficulty": "hard",
+      "id": "q102"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Saraiki Sufi poet Khwaja Ghulam Farid is associated with which region?",
+      "options": [
+        "South Punjab",
+        "Sindh",
+        "Balochistan",
+        "Gilgit-Baltistan"
+      ],
+      "answer": 0,
+      "explanation": "Khwaja Ghulam Farid is the great poet of the Saraiki region.",
+      "difficulty": "hard",
+      "id": "q103"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Sindhi Sufi poet Sachal Sarmast is known as the?",
+      "options": [
+        "Shair-e-Haft Zaban",
+        "King of Ghazal",
+        "Poet of the East",
+        "Baba of Sindh"
+      ],
+      "answer": 0,
+      "explanation": "Sachal Sarmast, who wrote in seven languages, is called Shair-e-Haft Zaban.",
+      "difficulty": "hard",
+      "id": "q104"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Pakistan Monument, shaped like a blooming flower, is located in which city?",
+      "options": [
+        "Islamabad",
+        "Lahore",
+        "Karachi",
+        "Peshawar"
+      ],
+      "answer": 0,
+      "explanation": "The Pakistan Monument stands in Islamabad.",
+      "difficulty": "easy",
+      "id": "q105"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Faisal Mosque in Islamabad is named after which king?",
+      "options": [
+        "King Faisal of Saudi Arabia",
+        "King Abdullah",
+        "King Salman",
+        "King Fahd"
+      ],
+      "answer": 0,
+      "explanation": "The Faisal Mosque honours King Faisal of Saudi Arabia.",
+      "difficulty": "easy",
+      "id": "q106"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The National Museum of Pakistan is located in which city?",
+      "options": [
+        "Karachi",
+        "Islamabad",
+        "Lahore",
+        "Peshawar"
+      ],
+      "answer": 0,
+      "explanation": "The National Museum of Pakistan is in Karachi.",
+      "difficulty": "medium",
+      "id": "q107"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The snow leopard, a rare big cat, is found in which region of Pakistan?",
+      "options": [
+        "Northern mountain areas",
+        "Sindh plains",
+        "Balochistan coast",
+        "Thar desert"
+      ],
+      "answer": 0,
+      "explanation": "Snow leopards inhabit the northern mountains of Pakistan.",
+      "difficulty": "medium",
+      "id": "q108"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Indus River dolphin, an endangered species, is found in which river?",
+      "options": [
+        "Indus",
+        "Chenab",
+        "Ravi",
+        "Jhelum"
+      ],
+      "answer": 0,
+      "explanation": "The Indus blind dolphin lives in the Indus River.",
+      "difficulty": "medium",
+      "id": "q109"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Houbara bustard, a migratory bird, winters in which region of Pakistan?",
+      "options": [
+        "Balochistan",
+        "Gilgit-Baltistan",
+        "Azad Kashmir",
+        "Northern Punjab"
+      ],
+      "answer": 0,
+      "explanation": "Houbara bustards winter in Balochistan and southern areas.",
+      "difficulty": "hard",
+      "id": "q110"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Marco Polo sheep, a rare species, is protected in which park of Pakistan?",
+      "options": [
+        "Khunjerab National Park",
+        "Lal Suhanra",
+        "Hingol",
+        "Ayubia"
+      ],
+      "answer": 0,
+      "explanation": "Marco Polo sheep are protected in Khunjerab National Park.",
+      "difficulty": "hard",
+      "id": "q111"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The chinar tree is symbolic of which region of Pakistan?",
+      "options": [
+        "Azad Kashmir",
+        "Sindh",
+        "Punjab plains",
+        "Balochistan"
+      ],
+      "answer": 0,
+      "explanation": "The chinar is a symbol of Kashmir.",
+      "difficulty": "medium",
+      "id": "q112"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Kabaddi, a traditional rural sport, is especially popular in which province?",
+      "options": [
+        "Punjab",
+        "Sindh",
+        "Balochistan",
+        "Gilgit-Baltistan"
+      ],
+      "answer": 0,
+      "explanation": "Kabaddi is a favourite rural sport in Punjab.",
+      "difficulty": "medium",
+      "id": "q113"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The famous Peshawari chappal (sandals) are handcrafted in which city?",
+      "options": [
+        "Peshawar",
+        "Karachi",
+        "Lahore",
+        "Quetta"
+      ],
+      "answer": 0,
+      "explanation": "Peshawari chappals are made in Peshawar.",
+      "difficulty": "medium",
+      "id": "q114"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Swat Valley is often called the?",
+      "options": [
+        "Switzerland of the East",
+        "City of Saints",
+        "Manchester of Pakistan",
+        "Land of Five Rivers"
+      ],
+      "answer": 0,
+      "explanation": "Swat is nicknamed the Switzerland of the East.",
+      "difficulty": "medium",
+      "id": "q115"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The hill station of Malam Jabba, known for its ski resort, is located in which province?",
+      "options": [
+        "Khyber Pakhtunkhwa",
+        "Punjab",
+        "Balochistan",
+        "Sindh"
+      ],
+      "answer": 0,
+      "explanation": "Malam Jabba is in Swat, Khyber Pakhtunkhwa.",
+      "difficulty": "medium",
+      "id": "q116"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The hill station of Murree is located in which mountain range?",
+      "options": [
+        "Himalayas",
+        "Karakoram",
+        "Hindu Kush",
+        "Sulaiman"
+      ],
+      "answer": 0,
+      "explanation": "Murree lies in the Himalayan foothills.",
+      "difficulty": "medium",
+      "id": "q117"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Quaid-e-Azam Residency, where Jinnah spent his last days, is located in which town?",
+      "options": [
+        "Ziarat",
+        "Quetta",
+        "Sibi",
+        "Kalat"
+      ],
+      "answer": 0,
+      "explanation": "The Quaid's Residency is at Ziarat, Balochistan.",
+      "difficulty": "hard",
+      "id": "q118"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Lahore is popularly known as the?",
+      "options": [
+        "City of Gardens",
+        "City of Saints",
+        "City of Flowers",
+        "City of Colleges only"
+      ],
+      "answer": 0,
+      "explanation": "Lahore is called the City of Gardens.",
+      "difficulty": "medium",
+      "id": "q119"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The 'Rubab', a traditional string instrument, is associated with which region?",
+      "options": [
+        "Gilgit-Baltistan and Khyber Pakhtunkhwa",
+        "Sindh",
+        "Punjab",
+        "Balochistan"
+      ],
+      "answer": 0,
+      "explanation": "The rubab is a traditional instrument of the north-west.",
+      "difficulty": "medium",
+      "id": "q120"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The 'Alghoza', a double flute, is a folk instrument of which province?",
+      "options": [
+        "Punjab",
+        "Sindh",
+        "Balochistan",
+        "Gilgit-Baltistan"
+      ],
+      "answer": 0,
+      "explanation": "The alghoza is played in Punjabi folk music.",
+      "difficulty": "hard",
+      "id": "q121"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The 'Dhol' drum is central to the folk music of which region?",
+      "options": [
+        "Punjab",
+        "Balochistan",
+        "Chitral",
+        "Hunza"
+      ],
+      "answer": 0,
+      "explanation": "The dhol is a staple of Punjabi folk music.",
+      "difficulty": "medium",
+      "id": "q122"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Lahore Museum, built in the Indo-Saracenic style, was established in which year?",
+      "options": [
+        "1894",
+        "1885",
+        "1900",
+        "1911"
+      ],
+      "answer": 0,
+      "explanation": "The Lahore Museum was established in 1894.",
+      "difficulty": "hard",
+      "id": "q123"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Faisal Mosque in Islamabad was designed by which architect?",
+      "options": [
+        "Vedat Dalokay",
+        "Nayyar Ali Dada",
+        "Arif Hasan",
+        "Yasmeen Lari"
+      ],
+      "answer": 0,
+      "explanation": "Turkish architect Vedat Dalokay designed the Faisal Mosque.",
+      "difficulty": "hard",
+      "id": "q124"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Urdu literary form 'Ghazal' reached its peak in Pakistan under whom?",
+      "options": [
+        "Faiz Ahmed Faiz",
+        "Ghalib",
+        "Iqbal",
+        "Mir Taqi Mir"
+      ],
+      "answer": 0,
+      "explanation": "Faiz Ahmed Faiz is among the greatest modern ghazal poets.",
+      "difficulty": "medium",
+      "id": "q125"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The traditional wedding night ceremony in Pakistani culture is called?",
+      "options": [
+        "Rukhsati",
+        "Mehndi",
+        "Nikah",
+        "Walima"
+      ],
+      "answer": 0,
+      "explanation": "Rukhsati is the departure of the bride from her parental home after the wedding.",
+      "difficulty": "medium",
+      "id": "q126"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The 'Walima' in Islamic wedding tradition is?",
+      "options": [
+        "The feast hosted by the groom",
+        "The engagement",
+        "The marriage contract",
+        "The dowry"
+      ],
+      "answer": 0,
+      "explanation": "The walima is the wedding feast hosted by the groom.",
+      "difficulty": "easy",
+      "id": "q127"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The folk dance 'Khattak' is performed by which ethnic group?",
+      "options": [
+        "Pashtuns",
+        "Sindhis",
+        "Baloch",
+        "Kashmiris"
+      ],
+      "answer": 0,
+      "explanation": "The Khattak dance is a Pashtun martial folk dance.",
+      "difficulty": "medium",
+      "id": "q128"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The 'Lewa' dance is a traditional dance of which region?",
+      "options": [
+        "Balochistan",
+        "Sindh",
+        "Punjab",
+        "Chitral"
+      ],
+      "answer": 0,
+      "explanation": "The Lewa is a Baloch folk dance.",
+      "difficulty": "hard",
+      "id": "q129"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The 'Bhangra' dance, popular at harvest festivals, originates from which region?",
+      "options": [
+        "Punjab",
+        "Sindh",
+        "Balochistan",
+        "Khyber Pakhtunkhwa"
+      ],
+      "answer": 0,
+      "explanation": "Bhangra originates from the Punjab region.",
+      "difficulty": "easy",
+      "id": "q130"
+    }
+  ]
+}

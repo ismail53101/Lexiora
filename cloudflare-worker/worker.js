@@ -131,6 +131,7 @@ const CHAT_COMPLETIONS_PATH = "/v1/chat/completions";
  */
 function joinChatCompletionsUrl(baseUrl) {
   const trimmed = baseUrl.replace(/\/+$/, "");
+  if (trimmed.endsWith(CHAT_COMPLETIONS_PATH)) return trimmed;
   return /\/v1$/i.test(trimmed)
     ? `${trimmed}${CHAT_COMPLETIONS_PATH.slice(3)}` // baseUrl already ends in "/v1" — don't add a second one
     : `${trimmed}${CHAT_COMPLETIONS_PATH}`;

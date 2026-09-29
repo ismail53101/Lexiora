@@ -9,10 +9,10 @@ import 'package:lexiora/core/reader_engine/pdf_engine.dart';
 import 'package:lexiora/core/reader_engine/pdf_reader_controller.dart';
 import 'package:lexiora/core/reader_engine/reader_models.dart';
 import 'package:lexiora/core/reader_engine/word_action.dart';
+import 'package:lexiora/core/services/pdf_ocr_service.dart';
 import 'package:lexiora/core/services/screen_wake_service.dart';
 import 'package:lexiora/core/utils/logger.dart';
 import 'package:lexiora/core/widgets/error_view.dart';
-import 'package:lexiora/core/widgets/loading_indicator.dart';
 import 'package:lexiora/features/annotations/domain/entities/highlight.dart';
 import 'package:lexiora/features/annotations/domain/usecases/annotations_usecases.dart';
 import 'package:lexiora/features/annotations/presentation/providers/annotations_providers.dart';
@@ -38,9 +38,17 @@ import 'package:lexiora/features/settings/presentation/providers/settings_provid
 /// and load failures show an explained [ErrorView] with Retry/Back — so the
 /// reader can never present a blank, chromeless screen.
 class ReaderPage extends ConsumerStatefulWidget {
-  const ReaderPage({super.key, required this.documentId});
+  const ReaderPage({
+    super.key,
+    required this.documentId,
+    this.temporaryDocument,
+  });
 
   final String documentId;
+
+  /// Non-null for a Drive PDF opened directly from temporary app-private cache.
+  /// It is intentionally never inserted into the Library database.
+  final LibraryDocument? temporaryDocument;
 
   @override
   ConsumerState<ReaderPage> createState() => _ReaderPageState();
@@ -51,9 +59,10 @@ class _ReaderPageState extends ConsumerState<ReaderPage> {
   final TextEditingController _searchField = TextEditingController();
 
   LibraryDocument? _document;
-  bool _loading = true;
   String? _error;
   String? _errorDetails;
+  String? _temporarySourcePath;
+  bool _hasOcrCache = false;
   int _initialPage = 1;
   int _pageCount = 0;
   PdfTextSelectionData? _selection;
@@ -63,6 +72,7 @@ class _ReaderPageState extends ConsumerState<ReaderPage> {
   List<int> _highlightColors = const <int>[0xFFFFF176];
 
   String get _id => widget.documentId;
+  bool get _isTemporary => widget.temporaryDocument != null;
 
   @override
   void initState() {
@@ -74,30 +84,34 @@ class _ReaderPageState extends ConsumerState<ReaderPage> {
   Future<void> _load() async {
     AppLogger.i('Reader._load documentId=$_id');
     try {
-      final settings = await ref.read(settingsRepositoryProvider).getSettings();
-      final LibraryDocument? doc =
+      // Resolve the document path before loading settings or other reader
+      // metadata. This lets the actual PDF viewer shell appear immediately
+      // instead of showing a separate full-screen loading page.
+      final LibraryDocument? doc = widget.temporaryDocument ??
           await ref.read(libraryRepositoryProvider).getById(_id);
       if (doc == null) {
         AppLogger.w('Reader: document not found ($_id)');
         if (mounted) {
           setState(() {
-            _loading = false;
             _error = 'This document is no longer in your library.';
           });
         }
         return;
       }
+      if (mounted) setState(() => _document = doc);
+
+      final settings = await ref.read(settingsRepositoryProvider).getSettings();
 
       // Validate the backing file BEFORE handing it to the PDF engine, so a
       // missing/empty file shows a helpful error instead of a blank viewer.
       final File file = File(doc.filePath);
+      final String sourcePath = doc.filePath;
       final bool exists = await file.exists();
       final int size = exists ? await file.length() : 0;
       AppLogger.i('Reader: file=${doc.filePath} exists=$exists size=$size');
       if (!exists || size == 0) {
         if (mounted) {
           setState(() {
-            _loading = false;
             _document = doc;
             _error = 'The file for "${doc.title}" is missing or empty. '
                 'It may have been moved or deleted — try re-importing it.';
@@ -107,13 +121,42 @@ class _ReaderPageState extends ConsumerState<ReaderPage> {
         return;
       }
 
-      final progress =
-          await ref.read(readingProgressRepositoryProvider).getProgress(_id);
+      // Device PDFs already have a stable local path and must open directly.
+      // Only the temporary Drive-reader path enters OCR preprocessing, so a
+      // normal local document never gets stuck behind an unnecessary scan.
+      final bool isDriveDocument = _isTemporary && doc.isFromGoogleDrive;
+      final String searchablePath = isDriveDocument
+          ? await sl<PdfOcrService>().makeSearchable(
+              documentId: _id,
+              sourcePath: sourcePath,
+            )
+          : sourcePath;
+      if (_isTemporary) _temporarySourcePath = sourcePath;
+      _hasOcrCache = isDriveDocument && searchablePath != sourcePath;
+      final LibraryDocument openedDocument = searchablePath == sourcePath
+          ? doc
+          : LibraryDocument(
+              id: doc.id,
+              title: doc.title,
+              fileName: doc.fileName,
+              filePath: searchablePath,
+              fileSize: doc.fileSize,
+              pageCount: doc.pageCount,
+              isFavorite: doc.isFavorite,
+              importedAt: doc.importedAt,
+              coverPath: doc.coverPath,
+              categoryId: doc.categoryId,
+              lastOpenedAt: doc.lastOpenedAt,
+              isManaged: doc.isManaged,
+            );
+      final progress = _isTemporary
+          ? null
+          : await ref.read(readingProgressRepositoryProvider).getProgress(_id);
       _scrollAxis = settings.readingScrollAxis;
       _colorMode = settings.readerColorMode;
       _highlightColors = settings.highlightColors;
-      _document = doc;
-      _pageCount = doc.pageCount;
+      _document = openedDocument;
+      _pageCount = openedDocument.pageCount;
       final int maxPage = doc.pageCount > 0 ? doc.pageCount : 1000000;
       _initialPage = settings.autoResume
           ? (progress?.lastPage ?? 1).clamp(1, maxPage)
@@ -122,16 +165,16 @@ class _ReaderPageState extends ConsumerState<ReaderPage> {
       // Honor the "keep screen awake" preference while reading.
       await sl<ScreenWakeService>().setKeepScreenOn(settings.keepScreenAwake);
 
-      await ref.read(markDocumentOpenedProvider).call(_id);
-      await ref.read(logReadingSessionProvider).call(
-            LogSessionParams(documentId: _id, pageNumber: _initialPage),
-          );
-      if (mounted) setState(() => _loading = false);
+      if (!_isTemporary) {
+        await ref.read(markDocumentOpenedProvider).call(_id);
+        await ref.read(logReadingSessionProvider).call(
+              LogSessionParams(documentId: _id, pageNumber: _initialPage),
+            );
+      }
     } on Object catch (e, s) {
       AppLogger.e('Reader._load failed', error: e, stackTrace: s);
       if (mounted) {
         setState(() {
-          _loading = false;
           _error = 'Failed to open this document.';
           _errorDetails = '$e';
         });
@@ -141,7 +184,6 @@ class _ReaderPageState extends ConsumerState<ReaderPage> {
 
   void _retry() {
     setState(() {
-      _loading = true;
       _error = null;
       _errorDetails = null;
     });
@@ -151,6 +193,21 @@ class _ReaderPageState extends ConsumerState<ReaderPage> {
   @override
   void dispose() {
     unawaited(sl<ScreenWakeService>().setKeepScreenOn(false));
+    if (_isTemporary) {
+      final String? temporaryPath = _temporarySourcePath ?? _document?.filePath;
+      final bool persistentDriveCache =
+          temporaryPath?.replaceAll('\\', '/').contains('/drive_cache/') ?? false;
+      // Drive PDFs are temporary reader documents but their downloaded source
+      // and OCR copy are persistent caches. Only delete truly transient files.
+      if (!persistentDriveCache && _hasOcrCache) {
+        unawaited(sl<PdfOcrService>().deleteSearchable(_id));
+      }
+      if (!persistentDriveCache && temporaryPath != null) {
+        unawaited(
+          File(temporaryPath).delete().catchError((Object _) => File(temporaryPath)),
+        );
+      }
+    }
     _controller.dispose();
     _searchField.dispose();
     super.dispose();
@@ -171,6 +228,7 @@ class _ReaderPageState extends ConsumerState<ReaderPage> {
       .toList();
 
   void _onPageChanged(int page) {
+    if (_isTemporary) return;
     ref.read(saveReadingProgressProvider).call(
           SaveProgressParams(
             documentId: _id,
@@ -245,6 +303,16 @@ class _ReaderPageState extends ConsumerState<ReaderPage> {
     if (mounted) setState(() => _selection = null);
   }
 
+  /// Trims a PDF selection and strips stray leading/trailing punctuation (PDF
+  /// selections frequently include ":", ",", ".", quotes) so single words are
+  /// recognized — and handed to word actions — as single words.
+  String _cleanSelectedText(String raw) {
+    String text = raw.trim();
+    text = text.replaceFirst(RegExp(r'^[^A-Za-z0-9]+'), '');
+    text = text.replaceFirst(RegExp(r'[^A-Za-z0-9]+$'), '');
+    return text;
+  }
+
   /// The selected text when it is a single word (letters with optional internal
   /// hyphen/apostrophe); otherwise null. Used to classify a selection as
   /// single-word vs phrase — word actions that are not [WordAction.supportsPhrase]
@@ -252,7 +320,7 @@ class _ReaderPageState extends ConsumerState<ReaderPage> {
   String? _selectionSingleWord() {
     final PdfTextSelectionData? sel = _selection;
     if (sel == null) return null;
-    final String text = sel.text.trim();
+    final String text = _cleanSelectedText(sel.text.trim());
     if (text.isEmpty || text.length > 64) return null;
     if (!RegExp(r"^[A-Za-z][A-Za-z'’\-]*$").hasMatch(text)) return null;
     return text;
@@ -263,12 +331,14 @@ class _ReaderPageState extends ConsumerState<ReaderPage> {
   /// Callers combine this with [_selectionSingleWord] and
   /// [WordAction.supportsPhrase] to decide which actions to offer: dictionary
   /// lookups need a single word, while translation accepts a full phrase.
+  /// Single words are returned in their cleaned form so actions never see
+  /// stray punctuation (e.g. "execution," → "execution").
   String? _selectionActionText() {
     final PdfTextSelectionData? sel = _selection;
     if (sel == null) return null;
-    final String text = sel.text.trim();
-    if (text.isEmpty || text.length > 300) return null;
-    return text;
+    final String raw = sel.text.trim();
+    if (raw.isEmpty || raw.length > 300) return null;
+    return _selectionSingleWord() ?? raw;
   }
 
   /// Invokes a registered [WordAction] for the selected word. The reader stays
@@ -347,14 +417,13 @@ class _ReaderPageState extends ConsumerState<ReaderPage> {
 
   @override
   Widget build(BuildContext context) {
-    if (_loading) {
-      return Scaffold(
-        appBar: AppBar(title: Text(_document?.title ?? 'Opening…')),
-        body: const LoadingIndicator(message: 'Opening…'),
+    if (_document == null && _error == null) {
+      return const Scaffold(
+        body: SizedBox.expand(),
       );
     }
 
-    if (_error != null || _document == null) {
+    if (_error != null) {
       return Scaffold(
         appBar: AppBar(title: Text(_document?.title ?? 'Reader')),
         body: ErrorView(

@@ -5,7 +5,8 @@ import 'package:lexiora/modules/quiz/domain/entities/quiz_question.dart';
 /// content and per-mode rules are layered on later.
 enum QuizMode {
   practice,
-  exam;
+  exam,
+  stage;
 
   static QuizMode fromIndex(int? i) =>
       (i == null || i < 0 || i >= QuizMode.values.length)
@@ -15,11 +16,13 @@ enum QuizMode {
   String get label => switch (this) {
         QuizMode.practice => 'Practice',
         QuizMode.exam => 'Exam',
+        QuizMode.stage => 'Stage',
       };
 
   String get description => switch (this) {
         QuizMode.practice => 'Instant feedback, no timer pressure.',
         QuizMode.exam => 'Answer all, then see your score.',
+        QuizMode.stage => 'Timed 10-question level; pass to unlock the next.',
       };
 }
 

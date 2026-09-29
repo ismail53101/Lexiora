@@ -165,18 +165,17 @@ void main() {
   });
 
   test('the bundled packs seed the full A–Z vocabulary', () async {
+    final Directory dir = Directory('assets/vocabulary');
     final Map<String, String> bundleMap = <String, String>{};
     final List<String> paths = <String>[];
-    for (final String path in <String>[
-      'assets/vocabulary/general_vocabulary.json',
-      'assets/vocabulary/business_vocabulary.json',
-    ]) {
-      final File f = File(path);
-      if (f.existsSync()) {
-        bundleMap[path] = f.readAsStringSync();
-        paths.add(path);
-      }
+    for (final File f in dir
+        .listSync()
+        .whereType<File>()
+        .where((File f) => f.path.toLowerCase().endsWith('.json'))) {
+      bundleMap[f.path] = f.readAsStringSync();
+      paths.add(f.path);
     }
+    expect(paths, isNotEmpty, reason: 'bundled vocabulary packs present');
 
     await VocabularySeeder(
       ds,
@@ -184,12 +183,21 @@ void main() {
       listPacks: (AssetBundle _) async => paths,
     ).ensureSeeded();
 
-    expect(await ds.listCount(), greaterThanOrEqualTo(1));
-    expect(await ds.wordCount(), greaterThanOrEqualTo(150));
-    final List<VocabularyWord> general = await repo.watchWords('general').first;
-    expect(general, isNotEmpty);
-    // Sorted A–Z.
-    expect(general.first.letter, 'A');
-    expect(general.last.letter, 'Z');
+    expect(await ds.listCount(), greaterThanOrEqualTo(5));
+    expect(await ds.wordCount(), greaterThanOrEqualTo(1500));
+
+    // The competitive-exam set spans the full alphabet across lists
+    // (CSS/BPSC + GRE + One-Word Substitutions cover A–Y, Proverbs adds Z).
+    final List<VocabularyListSummary> lists = await repo.watchLists().first;
+    final Set<String> letters = <String>{};
+    for (final VocabularyListSummary l in lists) {
+      final List<VocabularyWord> words = await repo.watchWords(l.id).first;
+      for (final VocabularyWord w in words) {
+        letters.add(w.letter);
+      }
+    }
+    for (final String ch in 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('')) {
+      expect(letters, contains(ch), reason: 'letter $ch covered by some list');
+    }
   });
 }

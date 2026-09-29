@@ -5,6 +5,841 @@ All notable changes to Sapiora are documented here.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.23.10] — 2026-09-27
+
+### Fixed
+
+- **Recents no longer resurrects old chats after a fresh install.** Android's
+  auto-backup was silently copying the whole app database (including AI chat
+  history) to the device's backup and restoring it whenever the app was
+  reinstalled — so an old chat (e.g. "hi") reappeared under Recents on a
+  brand-new install. A fresh-install guard now detects a restored database
+  (an install-time marker stored inside the database plus a cache-dir
+  sentinel that backups never carry, corroborated by the OS install time)
+  and purges the restored AI chats, messages and projects **at the data
+  level**, so Recents starts empty and only fills with chats the user
+  actually creates after installation. Real user data is never touched on
+  regular in-place app updates.
+- **"Read aloud" pause now truly pauses.** Tapping pause previously killed
+  the utterance *and* closed the player: flutter_tts resolves the
+  interrupted speak() call with a failure code, which the playback loop
+  misread as a missing-TTS-engine error and reset the whole player, while a
+  leaked "loop active" flag could permanently suppress later engine
+  callbacks. Pause now keeps the player visible with the current position
+  and progress; resume continues from exactly where it stopped; only the
+  close (×) button tears the player down. Taps elsewhere on the response,
+  screen or input field — and any widget rebuild, focus change, scrolling
+  or state change — no longer dispose or reset the active player.
+
+## [0.23.9] — 2026-09-26
+
+### Changed
+
+- **Colorful project folders in the AI Assistant sidebar**, matching the
+  reference design: each project now shows a vivid filled folder icon —
+  blue, purple, amber, green, pink, sky, orange, or lime. Colors are derived
+  deterministically from each project's id, so a project keeps its color
+  across sessions, renames, and reordering. Applied consistently in the
+  Projects list and search results.
+
+## [0.23.8] — 2026-09-26
+
+### Fixed
+
+- **"Read aloud" TTS error eliminated.** Android's text-to-speech engine
+  rejects utterances longer than ~4000 characters, so long replies failed
+  with the white "Could not read this aloud: Bad state: Text-to-speech
+  engine returned code 0" banner. Long texts are now spoken as consecutive
+  chunks (split at sentence/word boundaries), and any remaining engine
+  failure (missing TTS voice, busy engine) resets playback **silently** —
+  the button simply returns to idle; no error banner is ever shown.
+- **Audio player simplified.** The playback bar now holds only play/pause,
+  the progress slider with elapsed/total time, and a close (×) button — the
+  5-second back/forward buttons and the speed (×) menu are removed. The
+  speaker action under the response is unchanged.
+- **Recents stay empty on a fresh state.** Only conversations that actually
+  contain messages are listed (in Recents, inside projects, and in search
+  results) — a chat that was created but never chatted in no longer shows up
+  as fake history. Real conversations appear automatically after the first
+  message. The drawer layout (Chats → Search → Projects → Recents) is
+  unchanged.
+
+## [0.23.7] — 2026-09-26
+
+### Fixed
+
+- **Projects are now fully conversational workspaces.** Opening a project in
+  the sidebar expands it inline (no more separate limited "project page")
+  showing a **New chat** action plus every conversation that lives in the
+  project. Tapping any of them opens the real AI Assistant chat — streaming
+  replies, attachments, history, rename/delete all behave exactly like normal
+  conversations. A chat started inside a project automatically belongs to it
+  (the welcome state and app bar show the project name until the first
+  message), and the drawer auto-expands the project containing the active
+  chat. The reference-style **+ New project** row closes the section.
+- **Recents contain only real conversations.** Search activity is never
+  recorded as a conversation; with no chats created the section simply stays
+  empty. Conversations inside projects no longer double-list under Recents.
+  Order is strictly newest-first with a deterministic tie-break, showing the
+  title and a one-line preview of the latest message.
+- **Search is a pure results mode.** Typing shows matches only — grouped into
+  **Projects** and **Conversations** so results are distinguishable — and
+  never creates a Recent. A clear (×) button and opening any result exit
+  search and restore the normal Projects + Recents view.
+- Stable "newest-first" ordering for both Recents and Projects
+  (`updated_at` + rowid tie-break) so chats created in the same second keep a
+  consistent, expected order.
+
+## [0.23.6] — 2026-09-26
+
+### Added
+
+- **AI Assistant sidebar redesigned into a ChatGPT-style navigation experience
+  with Projects.** The drawer now has a **Projects** section (named folders
+  that group related conversations) directly below the search bar, followed by
+  a **Recents** section listing every chat, newest first — matching the
+  structure of ChatGPT's sidebar.
+  - **Projects**: compact folder rows with a count of conversations inside,
+    a 3-dot menu (New chat in project · Rename · Delete project) and an
+    easy **New Project** action (+ button on the section header). Tapping a
+    project opens a focused list of its conversations. Chats can be filed
+    into a project from each conversation's 3-dot menu (**Move to project**),
+    and a new chat started from inside a project is filed there
+    automatically on first message. Deleting a project keeps its
+    conversations — they return to plain Recents.
+  - **Recents**: all conversations in chronological order (newest first) with
+    their existing titles, last-message previews and rename/delete menus
+    preserved. Conversations living in a project show a small folder badge.
+  - **Search** now matches both project names and conversation
+    titles/messages, with a clear "no matches" state.
+  - Fully scrollable single surface with section dividers, comfortable
+    spacing, and the existing dark theme, typography and icon language
+    preserved. No existing chat functionality was removed or changed.
+- **Database schema v19** (purely additive): a new `ai_projects` table plus a
+  nullable `ai_conversations.project_id` column with supporting indexes.
+  Existing chats are untouched and simply live outside every project; no
+  data migration or re-seed is needed.
+
+## [0.23.1] — 2026-08-15
+
+### Fixed
+
+- **Nonsense usage sentences eliminated from the Dictionary word details.**
+  WordNet's synset examples frequently illustrate a *different* word than the
+  headword (e.g. `elevate` → "John was kicked upstairs when a replacement was
+  hired"), which read as nonsense in English and machine-translated into
+  nonsense Urdu. The Usage card now only ever shows a sentence that actually
+  contains the headword (or one of its inflections — plurals, -ed/-ing,
+  y→ies, plus an irregular-verb table so "We came back…" still matches
+  "come back"); otherwise the card is hidden instead of showing garbage.
+  This covers all ~8,400 affected words — including words users have already
+  seen on installed builds, since the check runs at render time, not at seed
+  time. Copy-to-clipboard uses the same filtered resolution so copied text
+  matches what's displayed.
+- **Curated example sentences + Urdu for 112 words whose old usage lines
+  were wrong.** That includes every word users hit in screenshots
+  (`elevate` → "The company decided to elevate her to the position of
+  manager" → کمپنی نے اسے مینیجر کے عہدے پر ترقی دینے کا فیصلہ کیا),
+  plus the common words pinned in earlier releases (`have`, `create`,
+  `education`, `schedule`, `process`, `develop`, `achieve`, …) and a sweep
+  of all remaining curated entries whose sentence illustrated a different
+  word — `autumn`→"the leaves turn brown in autumn", `paradise`→"the
+  island looked like paradise", `spicy`→"the spicy food made my mouth
+  burn", and 84 more, replacing off-topic/placeholder examples (e.g. the
+  "(please add an English translation…)" stubs) with clean sentences + real
+  Urdu. Only sentences about the headword can ever be shown or auto-
+  translated now.
+
+## [0.23.0] — 2026-08-12
+
+### Changed
+
+- **Vocabulary section trimmed to a competitive-exam focus** (12 lists → 5).
+  Removed General, Business, Oxford 3000/5000, Academic Word List, IELTS,
+  TOEFL, Technology and Medical packs; kept:
+  - **CSS / BPSC Vocabulary** (1,010)
+  - **GRE High Frequency** (121)
+  - **One-Word Substitutions** (new, 134) — classic CSS/BPSC/PMS exam items
+    (Altruist, Ambidextrous, Genocide, Misanthrope, …) with Urdu + IPA
+  - **Idioms** (68) and **Proverbs** (232) — the combined "Idioms & Proverbs"
+    pack is now split into two separate lists using its existing per-entry
+    classification, so idioms and proverbs no longer mix.
+- Pack tests updated for the new list set (5 packs, ≥ 1,500 words, IPA
+  requirement skipped for both phrase lists).
+
+## [0.22.3] — 2026-08-12
+
+### Fixed
+
+- **92 wrong Urdu meanings corrected in one batch** (a full sweep of the
+  high-frequency dictionary section found Hindi/Sanskrit leakage and wrong
+  senses in the kaikki-derived pack). Added to the corrections pack
+  (`zz_curated_corrections.json`, 1,180 → 1,272 entries):
+  - Wrong meaning: `hardship` → مشکل (was محنت "hard work"), `cell` → خلیہ
+    (was خلا "void"), `well` → کنواں (was کلیہ "kidney"), `die` → مرنا
+    (was سونا "sleep"), `ever` → کبھی (was ہرگز "never"), `ride` → سواری
+    کرنا (was جھولا "swing"), `section` → حصہ (was قسمت "fate"), `shoot` →
+    گولی مارنا (was کیل "nail"), `design` → ڈیزائن (was سنسکار "ritual"),
+    `stress` → دباؤ (was آگھات "blow"), `sense` → حس (was ارتھ/مضمون),
+    `charge` → الزام (was حوالہ "reference"), `figure` → شکل (was مورت
+    "idol"), `student` → طالب علم (was معلم "teacher"), `average` → اوسط
+    (was مدھم "dim"), `tall` → لمبا (was اونٹ "camel"), `member` → رکن
+    (was عضو "organ"), `rule` → قاعدہ (was نیم "half"), `father` → باپ
+    (was اب "now"), `neat` → صاف ستھرا (was اجلا "bright"), `stage` →
+    مرحلہ (was اکھاڑا "arena"), `discover` → دریافت کرنا (was پژوہش
+    "research"), `declare` → اعلان کرنا (was نااہل قرار دینا).
+  - Hindi/Sanskrit leakage removed: `war`/`battle`/`sing`/`red`/`power`/
+    `spirit`/`mind`/`community`/`century`/`available`/`enemy`/`evidence`/
+    `material`/`action`/`development`/`mass`/`human`/`local`/`black`/
+    `paper`/`meaning`/`slowly`/`arm`/`leg`/`information`/`establish`/`step`/
+    `observe`/`eye`/`hand`/`four`/`here`/`three`/`home`/`office`/`head`/
+    `foot`/`today`/`government`/`smile`/`horse`/`air`/`much`/`just`/
+    `general`/`complete`/`dark`/`accept`/`view`/`apply`/`develop`/`lie`/
+    `act`/`amount`/`range`/`hit`/`cut`/`function`/`plant`/`product`/
+    `voice`/`even`/`attention`/`admit`/`bear`/`feature`/`reflect`/`space`/
+    `object`/`particular`/`table`/`treat`/`door`/`care`/`swing` — each now
+    carries the common, learner-standard Urdu meaning.
+- The batch is reproducible: `tools/dictionary/fix_urdu_meanings.py` re-applies
+  it, and the packs were regenerated (urdu_wiktionary_pack.json 5,743 → 5,651
+  entries as the corrected words moved to the winning zz pack).
+
+## [0.22.2] — 2026-08-12
+
+### Added
+
+- **Every high-frequency word now has Urdu in the dictionary section.** The
+  corrections pack (`zz_curated_corrections.json`, 732 → 1,180 entries) now
+  hand-pins simple, exam-appropriate Urdu for all of the **top ~2,000 most
+  common English words** (measured by SemCor frequency) that the kaikki
+  sources and old pack missed — have, down, out, create, education, schedule,
+  define, determine, prevent, maintain, approach, conduct, data, term,
+  pattern, sample, select, perform, settle, vary, employ, shift, identify,
+  introduce, advance, award, factor, display, engage, assign, velocity, ...
+  Only genuinely offensive headwords (negro, damn, bastard) and fragments
+  (non, anti, u.s.) are intentionally left English-only. Coverage: **0 real
+  words missing Urdu in the top-1,000**, 0 in the top-2,000.
+- **A second Urdu source in the dictionary pipeline.** `rebuild_dictionary.py`
+  now also ingests the kaikki.org **English** Wiktionary dump (each English
+  headword's curated Urdu `translations`), alongside the existing Urdu dump.
+  The English dump contributes 779 headwords / 1,517 Urdu translations as
+  candidates; **240 words** in the pack (bench, brake, boulevard, biology,
+  chemistry, chicken, beach, ...) get their Urdu from this source alone
+  because the Urdu dump doesn't cover them, and it independently confirms the
+  existing meanings for hundreds more.
+
+### Fixed
+
+- **Gloss-first Urdu extraction.** The old extractor read each Urdu sense's
+  first *link*, which is often a `{{topic|...}}` category tag — that is how
+  wrong pairs like `automotive → شیشہ` (windscreen), `semantics → ضد`
+  (antonym) and `windscreen → شیشہ` mis-pairings were born. The pipeline now
+  takes the sense's English **gloss** (stripping a leading infinitive "to " so
+  `to accept → accept`), and filters offensive senses, digit/vulgar Urdu
+  words, and junk headwords (parentheses, trailing hyphens, phrase glosses).
+- **Common-sense WordNet ordering bug.** Per-lemma SemCor counts were being
+  overwritten by the synset's *last* (rarest) member, so `cat` ranked "to
+  vomit" above "feline mammal". Counts are now per-lemma (with the cntlist's
+  satellite-adjective keys matched via their gloss word).
+- **Stale entries can no longer freeze into the pack.** The pipeline read its
+  own previous output as an input, so one bad row (`have → گلا بیٹھنا`)
+  survived every rebuild. Previous-pack Urdu is now an explicit snapshot
+  (`OLD_URDU_PACK`) used only as a fallback — and it now **defaults to a
+  committed copy** of the pre-pipeline pack
+  (`tools/dictionary/snapshots/urdu_wiktionary_pack.v21.8.json`), so a plain
+  `python3 tools/dictionary/rebuild_dictionary.py` run is reproducible out of
+  the box. The fallback contributes 26 good words the two kaikki sources miss
+  (astronomy, biology, botany, chemistry, geography, linguistics, music,
+  mythology, physics, politics, rooster, ...).
+- **+448 hand-curated corrections** (732 → 1,180): wrong or awkward Urdu
+  meanings and sense-order conflicts (bank, sheik, miss, basic, compulsory,
+  constitutional, fez, semantics, automotive, scared, page, bug, agency,
+  oyster, dissimilar, hearts, union, distressed, fired, participate,
+  establish, thereby, warrant, ...) are pinned in `zz_curated_corrections.json`,
+  which always wins the merge. The last 7 fix mis-pairs the second source
+  surfaced (`union → میتھن`, `distressed → دین`, `participate → بیٹھنا`,
+  `thereby → اس کے علاوہ`, ...), and 3 more fix wrong fallback-only pairs
+  inherited from the pre-pipeline pack (`courtesan → آنٹی "aunt"` → طوائف,
+  `lesbianism → چپٹی "flat"` → ہم جنس پرستی, `oblique → خزاؤں "taxes"` →
+  ترچھا).
+- **Vulgar/sensitive content is blocked in both sources.** The English-dump
+  loader now drops vulgar/sensitive English headwords (arse, ass, anal,
+  condom, crap, fuck, sex, slut, vagina, ...) exactly like the Urdu-dump path
+  already did, and a latent regex bug (`copulat|masturbat|ejaculat` required
+  a word boundary right after the stem, so copulate/copulation,
+  masturbate/masturbation and ejaculate/ejaculation never matched) is fixed.
+  13 such entries were removed from the pack.
+- **Empty entries eliminated:** entries whose Urdu came with no usable English
+  body are kept only when the base Wordset dictionary supplies the definition,
+  so the app never shows a word with "no information".
+
+## [0.22.1] — 2026-08-12
+
+### Changed
+
+- **The dictionary now has a real JSON pipeline** (`tools/dictionary/rebuild_dictionary.py`)
+  instead of one-off scripts. It regenerates the two data packs from raw
+  licensed sources (WordNet 3.1 + kaikki.org Urdu + the bundled Wordset base),
+  picks every word's **most common sense by real frequency data**, and
+  revalidates the output — so expanding or fixing the dictionary from now on
+  is running one script, not hand-editing thousands of entries.
+
+### Added
+
+- **English definition + example sentences for essentially every dictionary
+  word.** The old `000_wordnet_enrichment.json` carried only example sentences
+  (~30k) — 110k words had no definition of their own, so the app fell back to
+  the base dictionary's *first* sense, which for many words was a rare or
+  technical one (`bat` → "a turn at bat", `mother` → "inspiration",
+  `bright` → "full of promise"). The regenerated pack gives all ~112k words a
+  **common-sense-first English definition** (WordNet senses ranked by SemCor
+  frequency) plus example sentences where WordNet has them. Machine-generated
+  synonyms/antonyms are intentionally **not** shipped: the pipeline no longer
+  emits them (v0.21.8 removed the noisy auto-synonyms; only the hand-curated
+  packs carry synonyms).
+- **Urdu coverage expanded ~4,800 → ~5,700 headwords** in the regenerated
+  `urdu_wiktionary_pack.json`, with **common-sense-first Urdu** picked from
+  the primary English gloss of each Urdu Wiktionary sense — the same
+  frequency-aware logic that fixed `abacus → جنت` now applies to every
+  kaikki-derived pairing, not just the 732 hand-corrected words.
+
+### Fixed
+
+- **Wrong-Urdu / wrong-definition regressions the auto-pipeline could have
+  introduced are excluded by design:** headwords owned by the richer
+  hand-curated packs (`exam_words`, `common_words*`, `zz_` corrections) are
+  never touched, suffix fragments (`-ed`, `-ly`) and definitional phrase
+  glosses ("a code of laws") are dropped, and all Urdu is validated as Urdu
+  script (0 Latin leakages).
+
+## [0.22.0] — 2026-08-12
+
+### Fixed
+
+- **732 wrong dictionary meanings corrected (Urdu + English).** The
+  kaikki.org-derived `urdu_wiktionary_pack.json` paired some English headwords
+  with a *rare or technical* Urdu sense — e.g. `angel → سر` (head),
+  `breakfast → حاضری` (attendance), `bright → آئینہ` (mirror), `abacus → جنت`
+  (heaven), `robber → یتیم` (orphan), `squabble → چونچ` (beak) — and showed
+  rare/technical English definitions for many more (e.g. `bat → to wink
+  briefly`, `mother → make children`, `salt → preserve with salt`).
+- A new hand-curated **`zz_curated_corrections.json` corrections pack** (732
+  entries) pins the common, exam-appropriate English definition + simple Urdu
+  meaning for every affected word. Because the exam-pack seeder merges packs
+  alphabetically with the last one winning, the `zz_` pack always overrides
+  the raw kaikki entries — fixing the word profile page in the Dictionary
+  **and** the reader pop-up, fully offline, on next launch (the seed
+  signature changes, so re-seeding happens automatically).
+- Every corrected entry was validated: 0 duplicate headwords, proper Urdu
+  script + non-empty English meaning + part of speech, and an independent
+  Urdu→English reverse audit confirms no remaining misaligned pair.
+
+## [0.21.9] — 2026-08-11
+
+### Added
+
+- **Separate "Idioms & Proverbs" list in the Vocabulary section (300 curated
+  entries).** The English→Urdu idioms/proverbs now have their own dedicated
+  A–Z vocabulary list (`assets/vocabulary/idioms.json`, list id `idioms`) with
+  search by English or Urdu, part-of-speech chips (Idiom / Proverb) and a short
+  simple English meaning per entry. Derived from the licensed Apache-2.0
+  dataset `assets/idioms/idioms.json` (Ehtisham1328/urdu-idioms-with-english-
+  translation); only genuinely useful, correctly-paired idioms/proverbs were
+  kept, deduped, and every entry validated for Urdu script + non-empty meaning.
+  Kept as a separate data structure from normal vocabulary — never merged into
+  the dictionary. Loaded automatically by the pack seeder on next launch.
+
+## [0.21.8] — 2026-08-11
+
+### Fixed
+
+- **Auto-generated synonyms/antonyms removed.** The WordNet-generated
+  Synonyms & Antonyms from 0.21.7 were too noisy for a learner dictionary
+  (e.g. `avoid → face up`, `complain → quetch/kvetch`, `important → of
+  import`). All machine-generated synonyms/antonyms have been eliminated;
+  only the hand-curated ones remain (the 159 exam words + `de-escalation` /
+  `communiqué`). The Synonyms & Antonyms section simply hides for every other
+  word instead of showing wrong data.
+- **Example sentences kept.** The WordNet example sentences (best sense,
+  filtered for inappropriate content) remain for ~34k words — the Usage
+  section still shows a real sentence with Urdu (fetched once online, then
+  cached).
+
+## [0.21.7] — 2026-08-11
+
+### Added
+
+- **Synonyms, antonyms and example sentences for every dictionary word.**
+  New WordNet 3.1 enrichment (`000_wordnet_enrichment.json`, ~111k entries,
+  sense-aligned so the picked synonyms match the word's real meaning) plus
+  in-place enrichment of the curated packs. The Word Details screen now shows
+  Synonyms & Antonyms for ~70k words (previously 159) and an example sentence
+  with Urdu for ~34k words — the Urdu of auto-derived sentences is fetched by
+  the hybrid translator and cached for offline reuse.
+- **Curated exam extras** — `de-escalation` and `communiqué` (with Urdu usage),
+  and `examData` now falls back to base forms + de-accented forms
+  (`insulated` → `insulate`, `communiqué` → `communique`).
+- **English → Urdu idioms (1,874)** — a separate, licensed dataset under
+  `assets/idioms/`, never merged into vocabulary.
+- **Offline translation extras** — `urdu_wiktionary_extra.json` (5,593 rows)
+  and hand-curated `curated_reader_fixes.json`, auto-merged by the translation
+  seeder via content signature.
+
+### Fixed
+
+- **Reader pop-up meanings for the reported NEXA booklet words** — `insulated`
+  (was موصل = conductor), `communiqué` (was بات چیت), `underlining` (was a
+  transliteration) and `internationalising` / `open-ended` / `de-escalation` /
+  `diplomatically` / `wedged` now resolve to curated English + Urdu meanings
+  fully offline.
+
+## [0.21.6] — 2026-08-11
+
+### Added
+
+- **Curated common-word dictionary (642 entries)** — `assets/dictionary/common_words.json`
+  + `common_words_2.json`. Simple English definitions **and** simple Urdu for the
+  everyday words users tap in the reader (connectors, prepositions, common verbs
+  and nouns). Auto-discovered by the exam seeder — no code change needed to grow it.
+
+### Fixed
+
+- **Online fallback now translates the bare word, not the WordNet definition.**
+  Previously, uncached words were machine-translated from their verbose dictionary
+  definition (e.g. `eventually` → "غير متعینہ مدت یا خاص طور پر طویل تاخیر کے بعد").
+  Now the fallback translates just the word itself, producing short, natural Urdu.
+- **Reader pop-up now seeds the curated dictionary before translating.** The
+  curated common-word layer was previously only loaded on the Dictionary page,
+  so reader pop-ups never saw it.
+- **Word-sense heuristic penalises loaded/technical senses** ("notoriety",
+  "pathology", "deficiency") so the offline dictionary picks the everyday sense
+  for the long tail of uncovered words.
+
+## [0.21.5] — 2026-08-11
+
+### Fixed
+
+- **Reader pop-up word meanings are now correct.** The pop-up used the
+  offline dictionary's first sense, which for common words is often the rare
+  or literary one (`attention` → "treatment", `tragedy` → "drama"). Meanings
+  are now resolved through a five-tier system that prioritises the curated
+  exam packs (CSS/BPSC, Oxford, IELTS…) with inflected-form matching
+  (`contributing` → `contribute`), a curated layer for everyday words the raw
+  dictionary gets wrong, and a best-sense heuristic for the long tail — so
+  `attention` → توجہ, `tragedy` → سانحہ, and `contributing` → حصہ ڈالنا. The
+  Urdu translation flows through the same resolution, so English meaning and
+  Urdu are always consistent and curated Urdu is served offline.
+
+### Added
+
+- **Privacy Policy.** New in-app Settings → About → Privacy Policy screen and
+  a hosted policy at `docs/privacy-policy.html` (for the Play Store listing).
+- **Licenses & Credits.** New in-app Settings → About → Licenses & Credits
+  screen that displays the bundled dictionary and translation data licenses
+  (Wordset CC BY-SA, WordNet/Princeton, translation data GPL v2) plus the
+  Flutter package licenses.
+- **Branded splash screen.** The launch screen now uses the Sapiora navy brand
+  colour (Android 12+ gets the matching system splash).
+
+### Changed
+
+- **Sapiora name consistency.** GitHub workflow name/release title, README
+  package line, and the pubspec description all now say Sapiora.
+
+## [0.21.4] — 2026-08-10
+
+### Fixed
+
+- **Double-tap zoom no longer jumps to the first page.** The zoom centre is
+  now converted to true document coordinates — the same conversion pdfrx
+  itself uses for pinch zoom — so double-tapping keeps the tapped content
+  under your finger instead of flinging the view back to page 1.
+- **English meaning now shows in the reader pop-up on fresh installs.** The
+  bundled dictionary seeds lazily and the pop-up never triggered the seed, so
+  on a new install every word's English definition silently disappeared. The
+  pop-up now ensures the dictionary is ready before lookup, falls back to the
+  curated CSS/BPSC exam packs for words the base dictionary doesn't cover,
+  and degrades gracefully (no stuck spinner) if a lookup fails.
+
+### Changed
+
+- **CSS / BPSC Vocabulary is now the first word list.** The combined CSS/BPSC
+  pack (1,010 words) is pinned to the top of the Vocabulary screen so
+  competitive-exam words are the first thing you see.
+
+## [0.21.3] — 2026-08-10
+
+### Added
+
+- **Double-tap zoom in the PDF reader.** Double-tap anywhere on a page zooms
+  to a comfortable close-up centred on your finger (about 1.6×), and
+  double-tapping again zooms back out to fit the screen. Text selection,
+  pinch-zoom and panning are completely unaffected.
+
+### Changed
+
+- **CSS / BPSC Vocabulary expanded to 1,010 exam-oriented words.** The
+  combined CSS/BPSC list now spans Governance, Economy, Education, Climate,
+  Security, International Relations, Society, Technology, Analytical,
+  Solutions, Essay, Connectors and General vocabulary — each word with a
+  simple English meaning and a clear Urdu translation, still A–Z sorted.
+
+### Fixed
+
+- **Sense-correct Urdu translations for single words.** Online translators
+  routinely picked the wrong meaning for isolated words — e.g. "execution"
+  came back as پھانسی ("hanging") instead of عملدرآمد ("carrying out"). The
+  reader now translates the word's English definition instead of the bare
+  word, so the Urdu meaning matches the sense actually used in the text.
+- **Online translation quality switched to Google Translate.** The free,
+  keyless Google web endpoint replaces MyMemory as the online provider —
+  noticeably better for both single words and full phrases/sentences.
+- **English meaning now appears for far more words.** PDF selections often
+  carry a stray trailing punctuation character (e.g. "execution,"), which
+  stopped the pop-up from treating the selection as a single word — so the
+  simple English definition (and the clean word saved to Vocabulary) were
+  missing. Selections are now cleaned before lookup.
+
+## [0.21.2] — 2026-08-10
+
+### Changed
+
+- **Every subject now wears its own colour on the session card itself.** The
+  subject headline on each planner task card is tinted with the subject's
+  colour (auto-assigned per subject — no manual set-up needed), so a row of
+  different subjects reads as a colourful study line instead of one flat
+  colour, while completed sessions still grey out with a strikethrough.
+- **Break cards redesigned to match session cards.** Breaks no longer render
+  as a thin italic "Break · 11:05 AM – 11:10 AM" line that sat oddly under the
+  sessions. Each break is now a proper card with a tinted briefcase chip, a
+  bold title and the time range below in the break colour — consistent with
+  the study sessions around it.
+- **Premium Pomodoro timer interaction.** Tapping the timer ring now starts
+  the countdown and tapping it again pauses it — the separate Start button is
+  gone, leaving just a Reset button and a "tap the ring" hint. Rotating the
+  phone switches to a big-screen layout: a large ring on the left with the
+  mode, hint and Reset on the right.
+- **Picking a start time flows straight into the end time.** Tapping Start
+  opens the time picker; after you confirm it with OK, the End time picker
+  opens automatically (pre-filled with start + 1h) so you only confirm the
+  end — no separate End tap needed. Breaks do the same with start + 15 min.
+
+## [0.21.1] — 2026-08-10
+
+### Changed
+
+- **Study Planner now opens straight into the tabbed planner.** Opening Study
+  Planner lands on the mockup interface: the Daily | Weekly | Monthly pill
+  switcher sits right at the top, with the selected view below it — Daily
+  (led by the 🔥 streak / 🎯 goal / ⏱ study-today overview row), Weekly
+  (collapsible day cards) and Monthly (calendar, stats grid + progress
+  donut). No more separate dashboard before the planner.
+- **Every dashboard feature stays reachable from the planner's ⋮ menu:**
+  Study Timer (Pomodoro + Manual + full screen), Progress (weekly / monthly
+  statistics), Quick Actions, Templates, Manage Subjects and Export &
+  Backup. The old standalone dashboard page and its unused daily-planner
+  card were removed.
+- **Planner views match the mockup's subject-colour look.** Each day of the
+  week strip now shows its subjects as small coloured dots, task rows draw a
+  subject-coloured timeline, every task card shows its time range tinted in
+  the subject's colour, and the break row uses the mockup's briefcase icon.
+
+## [0.21.0] — 2026-08-10
+
+### Added
+
+- **Unified Study Planner with a Daily / Weekly / Monthly switcher.** The
+  planner is now one continuous experience: a segmented Daily | Weekly |
+  Monthly control sits at the top of every planner page (and a redesigned
+  unified Planner page bundles all three views behind a pill switcher with
+  colour-coded subjects, round checkmarks, a collapsible weekly list and a
+  monthly calendar with a stats grid + progress donut).
+  - **Daily** — week date-strip navigation with tappable day pills.
+  - **Weekly** — collapsible day rows that show "Weekday, date · N tasks"
+    and expand to the full day on tap; only today opens by default.
+  - **Monthly** — calendar with task-colour dots, month-at-a-glance stats
+    and a progress ring.
+
+### Fixed
+
+- **Study Planner build restored.** The planner redesign had accidentally
+  removed the shared `day_planner_section.dart` widget while the Daily,
+  Weekly and Monthly pages still used it, which broke `flutter analyze` and
+  the APK build. The widget is restored (unchanged), so the planner ships.
+
+## [0.20.0] — 2026-08-09
+
+### Changed
+
+- **Wrong Answers and Statistics removed from the MCQs section.** The subject
+  page's Practice card is now a pure study surface: MCQs and Bookmarks only.
+  The Wrong Answers row (which previously opened the answers-shown feed or,
+  before that, a practice notebook) and the Statistics row are gone entirely,
+  and the now-unused subject stats page was deleted. The Quiz section still
+  owns its own wrong-answers notebook via the Quiz home menu, untouched.
+
+## [0.19.0] — 2026-08-09
+
+### Changed
+
+- **Wrong Answers is now a study feed, not a practice notebook.** Tapping
+  Wrong Answers on a subject page opens the same answers-shown MCQs feed
+  scoped to that subject's wrong-answer notebook — the correct answer is
+  already marked on every card, with search, filters, bookmarks and
+  "Read more >>" explanations. The old page (a bare list plus a "Retry all"
+  button that launched the interactive practice player) is gone from the
+  MCQs section: that behaviour belongs to the Quiz section only.
+- **Statistics page rebuilt to be useful from day one.** The subject stats
+  page now always shows Questions, Bookmarked and Topics, plus a per-topic
+  breakdown with bookmark counts (tap a topic to open its study feed). Wrong
+  and Accuracy tiles only appear when real data exists, so the page never
+  shows dead zero tiles.
+
+## [0.18.0] — 2026-08-09
+
+### Changed
+
+- **Every MCQs entry opens the answers-shown study feed.** Tapping a topic on
+  a subject page (e.g. English → Synonyms) now opens the same study-mode feed
+  as the Practice → MCQs row: a scrollable list of question cards with the
+  correct answer already marked in the accent colour (bold + faint tint),
+  search, filters, bookmarks and "Read more >>" explanations — scoped to that
+  topic's questions. The interactive practice player (green/red feedback,
+  question counter, Previous/Skip/Next, timer) is no longer reachable from the
+  MCQs section: that behaviour belongs to the Quiz section only, so the two
+  modes can never be mixed. No question data was touched; the Quiz (staged)
+  section is completely unchanged.
+
+## [0.17.0] — 2026-08-09
+
+### Changed
+
+- **Quiz stage player: 50s timer, freeze-on-answer, shuffled options.** The
+  per-question countdown is now 50 seconds (was 30). The timer freezes the
+  instant the user answers — it never keeps counting down to zero while the
+  user reviews the green/red feedback. Pressing NEXT (or FINISH) resets it to
+  50 seconds for the next question. MCQ options are shuffled per question when
+  the question loads (never reshuffled on rebuild), and the correct-answer
+  reference is remapped along with the order, so the correct answer is no
+  longer predictably option A — it lands randomly across A/B/C/D while grading
+  still matches the real answer. Timeout (skipped), scoring, results, QUIT and
+  the MCQs study feed are unchanged.
+
+## [0.16.0] — 2026-08-09
+
+### Changed
+
+- **MCQs section is a pure study/revision feed.** The MCQs browse cards no
+  longer borrow any Quiz-screen furniture: radio icons, check badges and
+  green correct-answer tints are gone. Each card now shows the question in
+  bold, the options A–D beneath it, the correct option quietly marked in the
+  app's accent colour (bold text + faint tint, no icons, no borders), and a
+  bottom-right "Read more >>" link that expands the explanation in place.
+  True/False and fill-in-the-blank rows use the same quiet accent treatment.
+  Bookmarks, search, filters, lazy pagination and all question data are
+  unchanged; the Quiz section is completely untouched.
+
+## [0.15.0] — 2026-08-09
+
+### Changed
+
+- **Quiz stages give instant feedback.** The Quiz (stage) player now behaves
+  like the reference interactive test: select an option and the correct answer
+  turns green immediately, a picked-wrong answer turns red, and the actual
+  correct answer also turns green. All four options lock after answering — no
+  changing, no multiple selections. **NEXT / FINISH is disabled until you
+  answer** (the 30s timer still auto-advances unanswered questions as before),
+  the counter shows `1/10` style numbering, and the question now sits in a
+  prominent rounded, bordered card that wraps long questions. QUIT, the timer,
+  scoring, stage progress and the results screen are unchanged. The MCQs
+  browse section keeps showing answers upfront — the two modes stay separate.
+
+## [0.14.0] — 2026-08-09
+
+### Changed
+
+- **Unmistakable answer feedback across the Quiz screens.** All MCQ surfaces
+  now share one option-card component and a green-correct / red-wrong
+  language (mirroring the classic PAK MCQS reference, inside the dark theme):
+  - **Practice (MCQs) player:** picking an answer instantly fills the correct
+    option solid green with a check + "Correct" pill (bold white text) and the
+    picked-wrong option solid red with a "Wrong" pill; the rest stay muted.
+    Question numbering and the progress bar are unchanged.
+  - **Stage (Quiz) player:** option cards are pixel-identical to practice —
+    picked = purple-tinted fill + filled radio, unpicked = dark surface.
+  - **Review answers:** correct = green, wrong = red, matching the players.
+  - **MCQs browse cards:** the inline correct-answer highlight is green now,
+    so "correct = green" reads consistently in every screen.
+
+## [0.13.0] — 2026-08-09
+
+### Added
+
+- **Search & filters in the MCQs browser.** The study-mode MCQs list now has a
+  search box (matches question text/options, debounced) plus filter chips for
+  question **type** (MCQ / True-False / Fill-blank), **difficulty**
+  (Easy / Medium / Hard) and **bookmarked-only**, with a Reset chip to clear
+  everything. The banner updates to show the number of matching questions.
+
+## [0.12.0] — 2026-08-09
+
+### Added
+
+- **Study-mode MCQs browser.** The MCQs section now mirrors the classic
+  "All MCQs" layout: a scrollable list of question cards where the **correct
+  answer is highlighted right inside the options** (bold, tinted, with a check
+  mark), so answers are always visible while browsing — no tapping needed.
+  Each card shows the question type/difficulty, a bookmark toggle, and a
+  "Read more" expander for the explanation. The list loads lazily in pages
+  (25 at a time) so subjects with 2,200 questions stay smooth.
+
+### Changed
+
+- **Quiz home decluttered.** The redundant "Subjects" list below the MCQs /
+  Quiz cards is gone — subjects are reached from inside either card, exactly
+  like the reference app.
+
+## [0.11.1] — 2026-08-09
+
+### Fixed
+
+- **Quiz home cards no longer disappear.** The MCQs / Quiz cards on the Quiz
+  tab used `CrossAxisAlignment.stretch` inside a `ListView`, which hands the
+  cards an unbounded (infinite) height constraint — Flutter's flex layout then
+  produced an infinite-height child and the whole card row (and everything
+  below it) failed to lay out in the release build. The row is now wrapped in
+  `IntrinsicHeight` so both cards size to a real, equal height.
+
+## [0.11.0] — 2026-08-08
+
+**Staged Quiz — play the existing 5,243-question banks as a premium level
+ladder.** The Quiz tab now opens on two cards — **MCQs** (subject-wise
+practice) and **Quiz** (timed stages). Each stage is 10 questions with a 30s
+per-question countdown, exam-style scoring at the end, star ratings and a
+score ring; passing a stage (≥50%) unlocks the next one, with a paginated
+stage map, per-stage best scores and a next-stage flow. No new content: stages
+are deterministic slices of the bundled banks, and every attempt still feeds
+Analytics, the wrong-answer notebook and Review Answers.
+
+### Added
+- **Quiz tab home** with two premium gradient cards (MCQs / Quiz), replacing
+  the bare subject list as the tab root. Global search, analytics, bookmarks,
+  wrong answers and settings stay in the overflow menu.
+- **Staged Quiz ladder** (`Quiz → Quiz → subject`): every 10-question slice of
+  a subject's pool as a card — locked (padlock), current (PLAY badge) or
+  completed (best-score ring + stars). Paginated so 200+ stage subjects stay
+  clean; header shows passed/total with a progress bar.
+- **Stage player**: 30s countdown per question (auto-skip on timeout),
+  QUIT/NEXT controls, no feedback until the end.
+- **Stage results**: animated score ring, 0–3 stars (3★ ≥90%, 2★ ≥70%, 1★
+  ≥50%), pass/unlock banner, Review answers, Retry and Next-stage actions.
+- **Stage progress persistence**: new `quiz_stage_progress` table (schema v17,
+  additive migration) storing best score/stars, attempt count and passed state
+  per subject/stage; unlock state is derived (stage N+1 needs stage N passed).
+- Unit tests for the stage rules (bucket math, stars, unlock ladder) and for
+  the repository (stage slicing + best-result merge).
+
+### Changed
+- `QuizMode` gains a `stage` mode; stage attempts are recorded like any other
+  quiz, so Analytics / Wrong Answers / Review keep working.
+
+### Notes
+- Data-driven: stages are derived from the subject's question count at runtime,
+  so future bank additions automatically extend the ladder — no data changes
+  needed and the duplicate-prevention rule is untouched.
+
+## [0.10.2] — 2026-08-08
+
+**Fix: quiz banks now actually ship in the APK.** Flutter's asset bundler only
+includes files *directly inside* a declared asset directory — it does not
+recurse into subdirectories. The 46 bank files live in subdirectories of
+`assets/quiz/`, so the previous release packaged only `manifest.json` and the
+seeder failed to load any questions on device (Quiz section showed 0
+questions). Each quiz subdirectory is now declared explicitly in `pubspec.yaml`
+so every bank ships. The seeder was also hardened: a failing bank is logged and
+skipped instead of aborting the whole seed, and a CI regression test asserts
+that every manifest bank file is covered by a declared asset.
+
+## [0.10.1] — 2026-08-08
+
+**Bundled exam question banks.** The Quiz Engine now ships its full curated
+content instead of demo rows: **5,243 deduplicated MCQs across 46 banks** under
+`assets/quiz/` (Pakistan Affairs 130×10, Islamic Studies 100×22, General Science
+& Ability 130×7, English 833), seeded once into the normal quiz tables by a
+manifest-driven seeder. Every generated question is guarded by
+`QuizDuplicateChecker` before it can be saved.
+
+### Added
+- **Quiz duplicate prevention** — `QuizDuplicateChecker` rejects exact,
+  reworded, option-reordered, different-option and same-concept duplicates
+  against the entire corpus before a generated MCQ is saved.
+- **Dataset integrity test** — the full shipped corpus must parse cleanly and
+  pass the duplicate check in CI.
+
+### Changed
+- The legacy demo seed is replaced by the bundled manifest seeder (dataset
+  version `quiz-bundled-2026.08-v24`); existing installs re-seed once
+  automatically.
+
+### Fixed
+- The seeder detects legacy demo rows by their `demo_` id prefix (`source` is
+  an in-memory-only entity field and is never persisted on the row).
+
+## [Unreleased]
+
+### Added
+- **Duplicate prevention for generated MCQs (`QuizDuplicateChecker`).** A pure,
+  deterministic check now guards every generated question before it is saved:
+  the candidate is compared against the ENTIRE question bank and rejected when
+  it is an exact duplicate, a reworded duplicate, the same question with
+  reordered options, the same question with different options, or the same
+  knowledge point (paraphrase). `QuizAdminRepository.addGeneratedQuestions`
+  saves only the questions that pass, never modifies or duplicates existing
+  rows, and reports each rejection with the reason and the colliding question.
+  Uniqueness wins over quantity: if duplicates are found, fewer questions are
+  returned than requested rather than lowering the bar. Unit-tested in
+  `test/modules/quiz/quiz_duplicate_check_test.dart`.
+- **Dataset-level duplicate prevention test**
+  (`test/modules/quiz/quiz_dataset_integrity_test.dart`). Every bundled bank
+  under `assets/quiz/` is parsed with the same `QuizJsonParser` the seeder uses
+  and the whole shipped corpus (~3,750 questions) is run through the real
+  `QuizDuplicateChecker` — any duplicate group (exact, reordered options,
+  different options, reworded or same-concept) fails the suite, so a future
+  edit can never silently re-introduce duplicate questions.
+
+### Changed
+- **Quiz banks deduplicated.** General Science & Ability is now **910 unique
+  MCQs across the 7 banks** — physics (130), chemistry (130), biology (130),
+  computer (130), earth & space (130), inventions & scientists (130), and math &
+  reasoning (130). The GSA banks were expanded from 662 to 910 questions (+248):
+  every new question was pre-checked against the entire bundled corpus with
+  `QuizDuplicateChecker`, and exact, reworded, different-option, reordered-
+  option and same-concept collisions were rejected before anything was saved. English is now **833 unique MCQs across the 7 banks** —
+  antonyms (77), grammar (187), idioms & phrases (117), one-word substitution
+  (103), sentence correction (104), synonyms (127), and vocabulary (118).
+  Islamic Studies is now **2,200 unique MCQs across the 22 banks** and
+  Pakistan Affairs is now **1,300 unique MCQs across the 10 banks** (all
+  re-validated with sequential IDs; see the rebalancing entry below). Every bank was checked against the
+  duplicate-prevention rules in `QuizDuplicateChecker`, and the remaining
+  duplicate and near-duplicate questions (same fact re-worded, same question
+  re-asked with different wording or options, same sentence across banks,
+  identical stems re-asked with reworded answers) were removed so the shipped
+  corpus passes the same check that guards new MCQs. Dataset version bumped
+  (`quiz-bundled-2026.08-v23`) so existing installs re-seed and pick up the
+  expanded, deduplicated set without losing progress.
+- **Quiz bank rebalancing.** Islamic Studies is now **2,200 unique MCQs — 100
+  per bank across all 22 banks** (previously 48–100 per bank, 1,334 total) and
+  Pakistan Affairs is now **1,300 unique MCQs — 130 per bank across all 10
+  banks** (previously 91–130, 910 total). Each new question was authored
+  against its bank's existing content and passed through the same
+  `QuizDuplicateChecker` the app uses: every candidate was compared with the
+  ENTIRE bundled corpus and exact, reworded, different-option,
+  reordered-option and same-concept collisions were rejected before anything
+  was saved (16 near-duplicates were caught and dropped). Banks are capped at
+  their targets with sequential IDs, JSON re-validated, and the whole shipped
+  corpus (~5,243 questions) passes the dataset integrity test. Dataset version
+  bumped (`quiz-bundled-2026.08-v24`) so existing installs re-seed and pick up
+  the balanced set without losing progress.
+
 ## [0.5.0] — 2026-07-25
 
 Phase v0.5.0 — **Grammar hierarchy**: the module now follows a strict

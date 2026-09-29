@@ -34,7 +34,7 @@ class _GoalEditorSheetState extends ConsumerState<_GoalEditorSheet> {
       text: (widget.existing?.targetCount ?? 20).toString());
   late final TextEditingController _unit =
       TextEditingController(text: widget.existing?.unit ?? '');
-  late GoalType _type = widget.existing?.type ?? GoalType.vocabulary;
+  late GoalType _type = widget.existing?.type ?? GoalType.studyTime;
 
   @override
   void dispose() {
@@ -46,7 +46,12 @@ class _GoalEditorSheetState extends ConsumerState<_GoalEditorSheet> {
 
   Future<void> _save() async {
     final String title = _title.text.trim();
-    final int target = int.tryParse(_target.text.trim()) ?? 0;
+    final int enteredTarget = int.tryParse(_target.text.trim()) ?? 0;
+    final String enteredUnit = _unit.text.trim().toLowerCase();
+    final int target = _type == GoalType.studyTime &&
+            <String>{'h', 'hr', 'hrs', 'hour', 'hours'}.contains(enteredUnit)
+        ? enteredTarget * 60
+        : enteredTarget;
     if (title.isEmpty || target <= 0) return;
     final DateTime now = DateTime.now();
     final StudyGoal goal = (widget.existing ??
@@ -62,9 +67,10 @@ class _GoalEditorSheetState extends ConsumerState<_GoalEditorSheet> {
       title: title,
       type: _type,
       targetCount: target,
-      unit: _unit.text.trim().isEmpty ? null : _unit.text.trim(),
+      unit: _type == GoalType.studyTime ? 'minutes' :
+          (_unit.text.trim().isEmpty ? null : _unit.text.trim()),
       updatedAt: now,
-      clearUnit: _unit.text.trim().isEmpty,
+      clearUnit: _type != GoalType.studyTime && _unit.text.trim().isEmpty,
     );
     await ref.read(studyHubRepositoryProvider).saveGoal(goal);
     if (mounted) Navigator.of(context).pop();
@@ -120,8 +126,8 @@ class _GoalEditorSheetState extends ConsumerState<_GoalEditorSheet> {
                   child: TextField(
                     controller: _unit,
                     decoration: const InputDecoration(
-                      labelText: 'Unit (optional)',
-                      hintText: 'words, pages…',
+                      labelText: 'Unit',
+                      hintText: 'minutes, hours, topics…',
                     ),
                   ),
                 ),

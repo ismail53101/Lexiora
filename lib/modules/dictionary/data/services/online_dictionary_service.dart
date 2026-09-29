@@ -1,6 +1,8 @@
 import 'dart:convert';
 import 'dart:io';
 
+import 'package:lexiora/modules/dictionary/data/services/definition_sense.dart';
+
 /// A single online English definition — just enough to display in the
 /// translate popup's "ENGLISH MEANING" section.
 class OnlineDefinition {
@@ -52,9 +54,15 @@ class OnlineDictionaryService {
     }
   }
 
-  /// Parses a Free Dictionary API response, returning the first definition
-  /// (with its part of speech) or `null` when the payload has none. Pure and
-  /// static so it's unit-testable without any network access.
+  /// Parses a Free Dictionary API response, returning the best (most general)
+  /// definition across every sense with its part of speech — or `null` when the
+  /// payload has none. Pure and static so it's unit-testable without any
+  /// network access.
+  ///
+  /// The API orders senses by corpus frequency, which often puts a rare,
+  /// literary or technical sense first ("attention" → "treatment", "tragedy" →
+  /// "a type of drama"). [pickBestDefinitionIndex] re-ranks them so the sense
+  /// shown to CSS/BPSC readers is the general one.
   static OnlineDefinition? parseDefinition(String body) {
     Object? decoded;
     try {
@@ -68,21 +76,30 @@ class OnlineDictionaryService {
 
     final Object? meanings = first['meanings'];
     if (meanings is! List || meanings.isEmpty) return null;
-    final Object? firstMeaning = meanings.first;
-    if (firstMeaning is! Map<String, dynamic>) return null;
 
-    final Object? pos = firstMeaning['partOfSpeech'];
-    final Object? definitions = firstMeaning['definitions'];
-    if (definitions is! List || definitions.isEmpty) return null;
-    final Object? firstDefinition = definitions.first;
-    if (firstDefinition is! Map<String, dynamic>) return null;
-
-    final Object? text = firstDefinition['definition'];
-    if (text is! String || text.trim().isEmpty) return null;
-
+    final List<String> defs = <String>[];
+    final List<String?> poses = <String?>[];
+    for (final Object? m in meanings) {
+      if (m is! Map<String, dynamic>) continue;
+      final Object? pos = m['partOfSpeech'];
+      final String? posStr = pos is String && pos.isNotEmpty ? pos : null;
+      final Object? definitions = m['definitions'];
+      if (definitions is! List) continue;
+      for (final Object? d in definitions) {
+        if (d is! Map<String, dynamic>) continue;
+        final Object? text = d['definition'];
+        if (text is String && text.trim().isNotEmpty) {
+          defs.add(text.trim());
+          poses.add(posStr);
+        }
+      }
+    }
+    if (defs.isEmpty) return null;
+    final int? best = pickBestDefinitionIndex(defs);
+    if (best == null) return null;
     return OnlineDefinition(
-      meaning: text.trim(),
-      partOfSpeech: pos is String && pos.isNotEmpty ? pos : null,
+      meaning: defs[best],
+      partOfSpeech: poses[best],
     );
   }
 }

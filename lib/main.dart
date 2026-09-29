@@ -1,13 +1,31 @@
 import 'dart:async';
 
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:lexiora/app/app.dart';
+import 'package:lexiora/app/di/injector.dart';
 import 'package:lexiora/app/di/injector_config.dart';
 import 'package:lexiora/app/router/app_router.dart';
+import 'package:lexiora/app/router/app_routes.dart';
+import 'package:lexiora/core/database/app_database.dart';
+import 'package:lexiora/core/platform/fresh_install_guard.dart';
+import 'package:lexiora/core/services/notification_service.dart';
+import 'package:lexiora/core/services/pdf_discovery_service.dart';
+import 'package:lexiora/core/services/pdf_import_service.dart';
+import 'package:lexiora/core/services/permission_service.dart';
 import 'package:lexiora/core/utils/logger.dart';
+import 'package:lexiora/core/utils/result.dart';
+import 'package:lexiora/features/library/domain/entities/library_document.dart';
+import 'package:lexiora/features/library/domain/repositories/library_repository.dart';
+import 'package:lexiora/features/library/domain/usecases/library_usecases.dart';
+import 'package:lexiora/features/settings/domain/entities/app_settings.dart';
+import 'package:lexiora/features/settings/domain/repositories/settings_repository.dart';
 import 'package:pdfrx/pdfrx.dart';
+
+const String _initialPermissionFlowVersion = '2026.09.16-permissions-v3';
 
 /// Sapiora entry point.
 ///
@@ -42,13 +60,135 @@ Future<void> main() async {
       await pdfrxFlutterInitialize();
       await configureDependencies();
       final GoRouter router = createAppRouter();
-
+      // Optional platform setup must not keep Flutter on the native splash
+      // screen. Notifications, permissions, and PDF intent discovery continue
+      // immediately after the first frame and report failures to the logger.
       runApp(ProviderScope(child: SapioraApp(router: router)));
+      unawaited(_finishStartup(router));
+
+  // One-time data hygiene: if Android's auto-backup restored an old database
+  // (e.g. after an uninstall), purge the stale AI chats so Recents starts
+  // empty. Real user data on updates is protected by install markers — see
+  // [FreshInstallGuard]. Best-effort and unawaited: any failure is logged and
+  // must never block startup.
+  unawaited(
+    sl<FreshInstallGuard>().purgeStaleChatData(sl<AppDatabase>()),
+  );
     },
     (Object error, StackTrace stack) {
       AppLogger.e('Uncaught zone error', error: error, stackTrace: stack);
     },
   );
+}
+
+Future<void> _finishStartup(GoRouter router) async {
+  try {
+      final NotificationService notifications = sl<NotificationService>();
+      await notifications.initialize(
+        onTap: (String payload) => _handleNotificationPayload(router, payload),
+      );
+      final SettingsRepository settings = sl<SettingsRepository>();
+      final AppSettings currentSettings = await settings.getSettings();
+      final bool needsPermissionFlow =
+          !currentSettings.initialPermissionFlowCompleted ||
+          currentSettings.initialPermissionFlowVersion !=
+              _initialPermissionFlowVersion;
+      if (needsPermissionFlow) {
+        final bool notificationsEnabled =
+            await notifications.notificationsEnabled();
+        if (!notificationsEnabled) await notifications.requestPermission();
+
+        final PermissionService filePermission = sl<PermissionService>();
+        if (!await filePermission.isGrantedForDiscovery()) {
+          await filePermission.requestForDiscovery();
+        }
+        await settings.updateSettings(
+          currentSettings.copyWith(
+            initialPermissionFlowCompleted: true,
+            initialPermissionFlowVersion: _initialPermissionFlowVersion,
+          ),
+        );
+      }
+      // Start reminder restoration before PDF intent discovery, so a later PDF
+      // setup failure cannot suppress Word of the Day scheduling. Permission
+      // has already been settled above, avoiding a race with rescheduling.
+      unawaited(_rescheduleNotifications(notifications));
+      final PdfImportService pdfImport = sl<PdfImportService>();
+      pdfImport.registerIncomingPdfHandler(
+        (DeviceFile file) => unawaited(_openIncomingPdf(router, file)),
+      );
+      final DeviceFile? initialIncoming =
+          await pdfImport.takeInitialIncomingPdf();
+
+      final String? pendingPayload = notifications.takePendingPayload();
+      if (pendingPayload != null) {
+        WidgetsBinding.instance.addPostFrameCallback((_) {
+          _handleNotificationPayload(router, pendingPayload);
+        });
+      }
+      if (initialIncoming != null) {
+        WidgetsBinding.instance.addPostFrameCallback((_) {
+          unawaited(_openIncomingPdf(router, initialIncoming));
+        });
+      }
+  } on Object catch (error, stackTrace) {
+    AppLogger.e(
+      'Post-launch platform setup failed',
+      error: error,
+      stackTrace: stackTrace,
+    );
+  }
+}
+
+Future<void> _rescheduleNotifications(NotificationService notifications) async {
+  try {
+    await notifications.rescheduleAll();
+  } on Object catch (error, stackTrace) {
+    AppLogger.e(
+      'Notification rescheduling failed after app startup',
+      error: error,
+      stackTrace: stackTrace,
+    );
+  }
+}
+
+void _handleNotificationPayload(GoRouter router, String payload) {
+  try {
+    final Object? decoded = jsonDecode(payload);
+    if (decoded is Map<String, dynamic>) {
+      final String? route = decoded['route'] as String?;
+      if (route != null && route.isNotEmpty) router.go(route);
+    }
+  } on Object catch (error, stack) {
+    AppLogger.e(
+      'Notification payload could not be opened',
+      error: error,
+      stackTrace: stack,
+    );
+  }
+}
+
+Future<void> _openIncomingPdf(GoRouter router, DeviceFile file) async {
+  try {
+    final Result<LibraryDocument?> result = await ImportIncomingPdf(
+      sl<LibraryRepository>(),
+      sl(),
+    ).call(file);
+    result.fold(
+      (failure) => AppLogger.w(
+        'Incoming PDF could not be imported: ${failure.message}',
+      ),
+      (document) {
+        if (document != null) router.go(AppRoutes.reader(document.id));
+      },
+    );
+  } on Object catch (error, stack) {
+    AppLogger.e(
+      'Incoming PDF could not be opened',
+      error: error,
+      stackTrace: stack,
+    );
+  }
 }
 
 /// Self-contained fallback rendered by [ErrorWidget.builder]. It shows the real

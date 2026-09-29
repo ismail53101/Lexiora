@@ -1,0 +1,1413 @@
+{
+  "bank": {
+    "name": "Islamic History",
+    "subject": "Islamic Studies",
+    "topic": "Islamic History",
+    "description": "Major Islamic dynasties, conquests and figures: from the Rashidun era to the Ottomans and Muslim South Asia.",
+    "tags": "css,pms,fpsc,islamic-studies,history",
+    "version": "1.0",
+    "id": "islamiat_islamic_history"
+  },
+  "questions": [
+    {
+      "type": "mcq",
+      "prompt": "Islam entered the Indian subcontinent through which conquest in 711 CE?",
+      "options": [
+        "Mahmud of Ghazni",
+        "Muhammad bin Qasim's conquest of Sindh",
+        "Babur's invasion",
+        "Tughlaq invasion"
+      ],
+      "answer": 1,
+      "explanation": "Muhammad bin Qasim conquered Sindh in 711 CE, opening the subcontinent to Islam.",
+      "difficulty": "medium",
+      "id": "q01"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Muhammad bin Qasim defeated which ruler of Sindh?",
+      "options": [
+        "Raja Dahir",
+        "Prithviraj",
+        "Raja Jaipal",
+        "Maharaja Ranjit Singh"
+      ],
+      "answer": 0,
+      "explanation": "Raja Dahir was the Hindu ruler of Sindh defeated by Muhammad bin Qasim.",
+      "difficulty": "medium",
+      "id": "q02"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Umayyad dynasty had its capital in which city?",
+      "options": [
+        "Baghdad",
+        "Damascus",
+        "Cairo",
+        "Kufa"
+      ],
+      "answer": 1,
+      "explanation": "The Umayyads ruled from Damascus (661-750 CE).",
+      "difficulty": "medium",
+      "id": "q03"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who founded the Umayyad dynasty?",
+      "options": [
+        "Uthman (RA)",
+        "Muawiyah (RA)",
+        "Umar ibn Abdul Aziz",
+        "Marwan I"
+      ],
+      "answer": 1,
+      "explanation": "Muawiyah ibn Abi Sufyan (RA) founded the Umayyad dynasty in 661 CE.",
+      "difficulty": "hard",
+      "id": "q04"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Abbasid dynasty ruled from which capital?",
+      "options": [
+        "Damascus",
+        "Cairo",
+        "Baghdad",
+        "Samarkand"
+      ],
+      "answer": 2,
+      "explanation": "The Abbasids ruled from Baghdad (750-1258 CE).",
+      "difficulty": "easy",
+      "id": "q05"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Abbasid Caliphate came to an end in which year, after the Mongol sack of Baghdad?",
+      "options": [
+        "1099",
+        "1258",
+        "1453",
+        "1492"
+      ],
+      "answer": 1,
+      "explanation": "Hulagu Khan's Mongols sacked Baghdad in 1258, ending the Abbasids.",
+      "difficulty": "medium",
+      "id": "q06"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The famous 'House of Wisdom' (Bayt al-Hikmah) was established in?",
+      "options": [
+        "Cordoba",
+        "Baghdad",
+        "Cairo",
+        "Damascus"
+      ],
+      "answer": 1,
+      "explanation": "The House of Wisdom, a great library and translation centre, flourished in Baghdad.",
+      "difficulty": "hard",
+      "id": "q07"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which Abbasid caliph is associated with the Islamic Golden Age and the Arabian Nights?",
+      "options": [
+        "Al-Mansur",
+        "Harun al-Rashid",
+        "Al-Ma'mun",
+        "Al-Mutawakkil"
+      ],
+      "answer": 1,
+      "explanation": "Harun al-Rashid (786-809) ruled during the peak of the Golden Age.",
+      "difficulty": "medium",
+      "id": "q08"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Ottoman Empire was founded by?",
+      "options": [
+        "Osman I",
+        "Mehmed II",
+        "Suleiman I",
+        "Selim I"
+      ],
+      "answer": 0,
+      "explanation": "Osman I (d. 1326) founded the Ottoman dynasty.",
+      "difficulty": "hard",
+      "id": "q09"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Constantinople was conquered by the Ottomans under which Sultan in 1453?",
+      "options": [
+        "Suleiman the Magnificent",
+        "Mehmed II (Fatih)",
+        "Selim I",
+        "Murad II"
+      ],
+      "answer": 1,
+      "explanation": "Mehmed II, the Conqueror, took Constantinople in 1453.",
+      "difficulty": "easy",
+      "id": "q10"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Ottoman Caliphate was formally abolished in which year?",
+      "options": [
+        "1908",
+        "1924",
+        "1935",
+        "1945"
+      ],
+      "answer": 1,
+      "explanation": "Mustafa Kemal Ataturk abolished the caliphate in 1924.",
+      "difficulty": "medium",
+      "id": "q11"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which Ottoman sultan is known as 'the Lawgiver' and 'the Magnificent'?",
+      "options": [
+        "Mehmed II",
+        "Suleiman I",
+        "Selim II",
+        "Abdul Hamid II"
+      ],
+      "answer": 1,
+      "explanation": "Suleiman the Magnificent (1520-1566) is called Kanuni, the Lawgiver.",
+      "difficulty": "medium",
+      "id": "q12"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Sultan Salahuddin Ayyubi recaptured Jerusalem from the Crusaders in which year?",
+      "options": [
+        "1187",
+        "1099",
+        "1258",
+        "1291"
+      ],
+      "answer": 0,
+      "explanation": "Salahuddin (Saladin) liberated Jerusalem in 1187 after the Battle of Hattin.",
+      "difficulty": "easy",
+      "id": "q13"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Battle of Hattin (1187), which opened the way to Jerusalem, was fought between?",
+      "options": [
+        "Muslims and Mongols",
+        "Muslims and Crusaders",
+        "Muslims and Persians",
+        "Ayyubids and Abbasids"
+      ],
+      "answer": 1,
+      "explanation": "Saladin's forces defeated the Crusader army at Hattin.",
+      "difficulty": "hard",
+      "id": "q14"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Muslim rule in Spain (Andalus) came to an end in which year?",
+      "options": [
+        "1212",
+        "1492",
+        "1517",
+        "1609"
+      ],
+      "answer": 1,
+      "explanation": "Granada fell to the Spanish in 1492, ending 781 years of Muslim presence.",
+      "difficulty": "medium",
+      "id": "q15"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who led the Muslim conquest of Spain in 711 CE?",
+      "options": [
+        "Abd al-Rahman I",
+        "Tariq ibn Ziyad",
+        "Musa ibn Nusayr",
+        "Khalid ibn al-Walid"
+      ],
+      "answer": 1,
+      "explanation": "Tariq ibn Ziyad led the crossing into Spain; Gibraltar is named after him (Jabal Tariq).",
+      "difficulty": "medium",
+      "id": "q16"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Mughal Empire in India was founded by Babur after the Battle of Panipat in?",
+      "options": [
+        "1526",
+        "1556",
+        "1605",
+        "1498"
+      ],
+      "answer": 0,
+      "explanation": "Babur defeated Ibrahim Lodi at the First Battle of Panipat in 1526.",
+      "difficulty": "easy",
+      "id": "q17"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which Mughal emperor is known for his policy of religious tolerance and Sulh-i-Kul?",
+      "options": [
+        "Babur",
+        "Akbar",
+        "Shah Jahan",
+        "Aurangzeb"
+      ],
+      "answer": 1,
+      "explanation": "Akbar (1556-1605) promoted universal tolerance.",
+      "difficulty": "easy",
+      "id": "q18"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The first ruler of the Delhi Sultanate was?",
+      "options": [
+        "Alauddin Khilji",
+        "Qutb-ud-din Aibak",
+        "Iltutmish",
+        "Ghiyasuddin Balban"
+      ],
+      "answer": 1,
+      "explanation": "Qutb-ud-din Aibak founded the Delhi Sultanate (Mamluk dynasty) in 1206.",
+      "difficulty": "hard",
+      "id": "q19"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Shah Waliullah, the great 18th-century revivalist scholar, lived in?",
+      "options": [
+        "Lahore",
+        "Delhi",
+        "Lucknow",
+        "Multan"
+      ],
+      "answer": 1,
+      "explanation": "Shah Waliullah Dehlawi (1703-1762) lived and taught in Delhi.",
+      "difficulty": "medium",
+      "id": "q20"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Egypt was conquered by the Muslims during the caliphate of?",
+      "options": [
+        "Abu Bakr (RA)",
+        "Umar (RA)",
+        "Uthman (RA)",
+        "Ali (RA)"
+      ],
+      "answer": 1,
+      "explanation": "Amr ibn al-As conquered Egypt in 640 CE under Umar (RA).",
+      "difficulty": "hard",
+      "id": "q21"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The dynasty founded by Salahuddin Ayyubi is known as?",
+      "options": [
+        "Fatimid",
+        "Ayyubid",
+        "Mamluk",
+        "Abbasid"
+      ],
+      "answer": 1,
+      "explanation": "Salahuddin founded the Ayyubid dynasty of Egypt and Syria.",
+      "difficulty": "medium",
+      "id": "q22"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Great Mosque of Cordoba was begun by?",
+      "options": [
+        "Abd al-Rahman I",
+        "Al-Hakam II",
+        "Abd al-Rahman III",
+        "Tariq ibn Ziyad"
+      ],
+      "answer": 0,
+      "explanation": "Abd al-Rahman I, the Umayyad prince of Spain, began the mosque in 785 CE.",
+      "difficulty": "hard",
+      "id": "q23"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which Abbasid caliph is famous for patronising the translation of Greek works into Arabic?",
+      "options": [
+        "Al-Mansur",
+        "Harun al-Rashid",
+        "Al-Ma'mun",
+        "Al-Amin"
+      ],
+      "answer": 2,
+      "explanation": "Al-Ma'mun (813-833) strongly supported the translation movement.",
+      "difficulty": "hard",
+      "id": "q24"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Battle of Tours (Poitiers) in 732 CE, which halted the Muslim advance in Europe, was fought against?",
+      "options": [
+        "The Byzantines",
+        "The Franks under Charles Martel",
+        "The Vikings",
+        "The Spanish"
+      ],
+      "answer": 1,
+      "explanation": "Charles Martel's Franks stopped the Umayyad advance at Tours in 732.",
+      "difficulty": "hard",
+      "id": "q25"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The city of Baghdad was founded by which Abbasid caliph?",
+      "options": [
+        "Al-Mansur",
+        "Al-Saffah",
+        "Harun al-Rashid",
+        "Al-Ma'mun"
+      ],
+      "answer": 0,
+      "explanation": "Al-Mansur founded Baghdad in 762 CE as the new Abbasid capital.",
+      "difficulty": "hard",
+      "id": "q26"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Seljuk commander Alp Arslan defeated the Byzantines at Manzikert in?",
+      "options": [
+        "1071",
+        "1099",
+        "1187",
+        "1258"
+      ],
+      "answer": 0,
+      "explanation": "The Battle of Manzikert (1071) opened Anatolia to the Turks.",
+      "difficulty": "hard",
+      "id": "q27"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which Muslim ruler of Ghazni led seventeen campaigns into India?",
+      "options": [
+        "Muhammad Ghori",
+        "Mahmud of Ghazni",
+        "Babur",
+        "Aurangzeb"
+      ],
+      "answer": 1,
+      "explanation": "Sultan Mahmud of Ghazni (998-1030) carried out seventeen raids into India.",
+      "difficulty": "medium",
+      "id": "q28"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who was the founder of the Abbasid dynasty?",
+      "options": [
+        "Abu al-Abbas al-Saffah",
+        "Harun al-Rashid",
+        "Al-Mansur",
+        "Al-Mamun"
+      ],
+      "answer": 0,
+      "explanation": "Abu al-Abbas as-Saffah founded the Abbasid dynasty in 750 CE.",
+      "difficulty": "medium",
+      "id": "q29"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Baghdad was sacked by which Mongol leader in 1258, ending the Abbasid caliphate?",
+      "options": [
+        "Hulagu Khan",
+        "Genghis Khan",
+        "Tamerlane",
+        "Kublai Khan"
+      ],
+      "answer": 0,
+      "explanation": "Hulagu Khan sacked Baghdad in 1258, destroying the Abbasid caliphate.",
+      "difficulty": "medium",
+      "id": "q30"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Fatimid dynasty ruled from which city?",
+      "options": [
+        "Cairo",
+        "Damascus",
+        "Baghdad",
+        "Marrakesh"
+      ],
+      "answer": 0,
+      "explanation": "The Fatimids (909-1171) ruled from Cairo, which they founded in 969 CE.",
+      "difficulty": "medium",
+      "id": "q31"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who recaptured Jerusalem from the Crusaders in 1187?",
+      "options": [
+        "Salahuddin Ayyubi",
+        "Nur al-Din",
+        "Al-Mansur",
+        "Baybars"
+      ],
+      "answer": 0,
+      "explanation": "Salahuddin Ayyubi (Saladin) liberated Jerusalem in 1187 at the Battle of Hattin.",
+      "difficulty": "easy",
+      "id": "q32"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Salahuddin belonged to which dynasty?",
+      "options": [
+        "Ayyubid",
+        "Fatimid",
+        "Mamluk",
+        "Umayyad"
+      ],
+      "answer": 0,
+      "explanation": "Salahuddin founded the Ayyubid dynasty (1171-1260).",
+      "difficulty": "medium",
+      "id": "q33"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which Mamluk sultan defeated the Mongols at the Battle of Ain Jalut in 1260?",
+      "options": [
+        "Saif al-Din Qutuz",
+        "Baybars",
+        "Saladin",
+        "Al-Ashraf Khalil"
+      ],
+      "answer": 0,
+      "explanation": "Qutuz led the Mamluks to victory at Ain Jalut, halting the Mongol advance into the Muslim world.",
+      "difficulty": "hard",
+      "id": "q34"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Ottoman Empire reached its peak under which sultan?",
+      "options": [
+        "Suleiman the Magnificent",
+        "Mehmed II",
+        "Selim II",
+        "Abdul Hamid II"
+      ],
+      "answer": 0,
+      "explanation": "Suleiman the Magnificent (1520-1566) ruled at the empire's zenith.",
+      "difficulty": "easy",
+      "id": "q35"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Muslim rule in Spain (Al-Andalus) began in which year?",
+      "options": [
+        "711 CE",
+        "750 CE",
+        "1000 CE",
+        "600 CE"
+      ],
+      "answer": 0,
+      "explanation": "Tariq ibn Ziyad crossed into Spain in 711 CE, beginning Muslim rule of Al-Andalus.",
+      "difficulty": "medium",
+      "id": "q36"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The last Muslim stronghold in Spain, Granada, fell in which year?",
+      "options": [
+        "1492 CE",
+        "1453 CE",
+        "1517 CE",
+        "1600 CE"
+      ],
+      "answer": 0,
+      "explanation": "Granada fell to Ferdinand and Isabella in 1492, ending Muslim rule in Spain.",
+      "difficulty": "medium",
+      "id": "q37"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which dynasty built the famous Alhambra palace in Granada?",
+      "options": [
+        "The Nasrid dynasty",
+        "The Umayyads",
+        "The Almohads",
+        "The Fatimids"
+      ],
+      "answer": 0,
+      "explanation": "The Nasrids built the Alhambra in the 13th-14th centuries.",
+      "difficulty": "hard",
+      "id": "q38"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which ruler of Al-Andalus proclaimed himself caliph, rivaling Baghdad?",
+      "options": [
+        "Abd al-Rahman III",
+        "Abd al-Rahman I",
+        "Al-Hakam II",
+        "Al-Mansur"
+      ],
+      "answer": 0,
+      "explanation": "Abd al-Rahman III declared the Caliphate of Cordoba in 929 CE.",
+      "difficulty": "hard",
+      "id": "q39"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Seljuk Turks defeated the Byzantines at which battle in 1071, opening Anatolia?",
+      "options": [
+        "Battle of Manzikert",
+        "Battle of Yarmuk",
+        "Battle of Ain Jalut",
+        "Battle of Hattin"
+      ],
+      "answer": 0,
+      "explanation": "Alp Arslan's victory at Manzikert (1071) opened Anatolia to Turkish settlement.",
+      "difficulty": "medium",
+      "id": "q40"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who defeated the Byzantines at the Battle of Manzikert?",
+      "options": [
+        "Alp Arslan",
+        "Tughril Beg",
+        "Suleiman Shah",
+        "Osman I"
+      ],
+      "answer": 0,
+      "explanation": "Seljuk sultan Alp Arslan won at Manzikert in 1071.",
+      "difficulty": "medium",
+      "id": "q41"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The First Crusade captured Jerusalem in which year?",
+      "options": [
+        "1099 CE",
+        "1096 CE",
+        "1187 CE",
+        "1204 CE"
+      ],
+      "answer": 0,
+      "explanation": "The First Crusade took Jerusalem in 1099, establishing Crusader states.",
+      "difficulty": "medium",
+      "id": "q42"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which caliphate is known as the 'Golden Age of Islam' for science and learning?",
+      "options": [
+        "The Abbasid caliphate",
+        "The Umayyad caliphate",
+        "The Fatimid caliphate",
+        "The Ottoman sultanate"
+      ],
+      "answer": 0,
+      "explanation": "The Abbasid era (8th-13th centuries) saw the translation movement and great scientific advances.",
+      "difficulty": "medium",
+      "id": "q43"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which European language borrowed many scientific terms from Arabic during the Golden Age?",
+      "options": [
+        "Latin and Spanish",
+        "English only",
+        "German",
+        "French only"
+      ],
+      "answer": 0,
+      "explanation": "Words like algebra, algorithm, alchemy and zero entered Latin and Spanish from Arabic.",
+      "difficulty": "medium",
+      "id": "q44"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Silk Road connected the Muslim world with which region?",
+      "options": [
+        "China and Central Asia",
+        "Africa only",
+        "Europe only",
+        "The Americas"
+      ],
+      "answer": 0,
+      "explanation": "The Silk Road linked China, Central Asia and the Middle East, enriching trade and knowledge.",
+      "difficulty": "easy",
+      "id": "q45"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Umayyad caliphate was overthrown by whom in 750 CE?",
+      "options": [
+        "The Abbasids",
+        "The Fatimids",
+        "The Mongols",
+        "The Ottomans"
+      ],
+      "answer": 0,
+      "explanation": "The Abbasid Revolution replaced the Umayyads in 750 CE.",
+      "difficulty": "easy",
+      "id": "q46"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who was the fifth Umayyad caliph, famous for reforms and the gold dinar?",
+      "options": [
+        "Umar ibn Abd al-Aziz",
+        "Abd al-Malik",
+        "Al-Walid I",
+        "Muawiyah II"
+      ],
+      "answer": 0,
+      "explanation": "Umar ibn Abd al-Aziz (r. 717-720) is famed for justice and reforms; Abd al-Malik introduced the dinar.",
+      "difficulty": "hard",
+      "id": "q47"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which Umayyad caliph built the Dome of the Rock in Jerusalem?",
+      "options": [
+        "Abd al-Malik ibn Marwan",
+        "Al-Walid I",
+        "Umar ibn Abd al-Aziz",
+        "Hisham"
+      ],
+      "answer": 0,
+      "explanation": "Abd al-Malik (r. 685-705) built the Dome of the Rock, completed in 691 CE.",
+      "difficulty": "medium",
+      "id": "q48"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Al-Aqsa Mosque was built during which caliph's reign?",
+      "options": [
+        "Abd al-Malik",
+        "Umar ibn al-Khattab",
+        "Al-Walid I",
+        "Muawiyah"
+      ],
+      "answer": 2,
+      "explanation": "Al-Aqsa was constructed under Umayyad caliph Al-Walid I (r. 705-715).",
+      "difficulty": "hard",
+      "id": "q49"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which Muslim leader fought against the Third Crusade alongside Saladin?",
+      "options": [
+        "Richard the Lionheart was his opponent; no Muslim ally is famed",
+        "Nur al-Din",
+        "Baybars",
+        "Al-Kamil"
+      ],
+      "answer": 0,
+      "explanation": "Saladin faced Richard I in the Third Crusade; the two made the Treaty of Jaffa in 1192.",
+      "difficulty": "medium",
+      "id": "q50"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which event in 1916 saw Arabs revolt against the Ottomans with British support?",
+      "options": [
+        "The Arab Revolt",
+        "The Battle of Gallipoli",
+        "The Treaty of Sevres",
+        "The Suez Crisis"
+      ],
+      "answer": 0,
+      "explanation": "The Arab Revolt of 1916, led by Sharif Hussein, opposed Ottoman rule during World War I.",
+      "difficulty": "medium",
+      "id": "q51"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Battle of Yarmouk resulted in the Muslim conquest of:",
+      "options": [
+        "Syria",
+        "Spain",
+        "Persia",
+        "Egypt"
+      ],
+      "answer": 0,
+      "explanation": "Yarmouk (636 CE) opened Syria to Muslim rule.",
+      "difficulty": "medium",
+      "id": "q52"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Battle of Qadisiyyah led to the conquest of:",
+      "options": [
+        "Persia (Iraq)",
+        "Spain",
+        "Turkey",
+        "North Africa"
+      ],
+      "answer": 0,
+      "explanation": "Qadisiyyah (637 CE) ended Sassanid rule in Iraq.",
+      "difficulty": "medium",
+      "id": "q53"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which caliph established the first Islamic navy?",
+      "options": [
+        "Uthman (RA)",
+        "Umar (RA)",
+        "Abu Bakr (RA)",
+        "Ali (RA)"
+      ],
+      "answer": 0,
+      "explanation": "Under Uthman's reign the Islamic navy was developed.",
+      "difficulty": "hard",
+      "id": "q54"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Abbasid caliphate was established in which year?",
+      "options": [
+        "750 CE",
+        "661 CE",
+        "800 CE",
+        "700 CE"
+      ],
+      "answer": 0,
+      "explanation": "The Abbasids took power in 750 CE.",
+      "difficulty": "medium",
+      "id": "q55"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The capital of the Abbasid caliphate was:",
+      "options": [
+        "Baghdad",
+        "Damascus",
+        "Cairo",
+        "Kufa"
+      ],
+      "answer": 0,
+      "explanation": "Baghdad was founded as the Abbasid capital in 762 CE.",
+      "difficulty": "easy",
+      "id": "q56"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Dome of the Rock was built by:",
+      "options": [
+        "Abdul Malik ibn Marwan",
+        "Umar (RA)",
+        "Muawiyah",
+        "Harun al-Rashid"
+      ],
+      "answer": 0,
+      "explanation": "Abdul Malik built the Dome of the Rock in 691 CE.",
+      "difficulty": "medium",
+      "id": "q57"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Umayyad Caliphate of Spain (Al-Andalus) was founded by:",
+      "options": [
+        "Abdur Rahman I",
+        "Tariq bin Ziyad",
+        "Musa bin Nusair",
+        "Abdur Rahman III"
+      ],
+      "answer": 0,
+      "explanation": "Abdur Rahman I established the Spanish Umayyad state.",
+      "difficulty": "medium",
+      "id": "q58"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Muslim general who conquered Spain was:",
+      "options": [
+        "Tariq bin Ziyad",
+        "Khalid bin Waleed",
+        "Musa bin Nusair",
+        "Muhammad bin Qasim"
+      ],
+      "answer": 0,
+      "explanation": "Tariq bin Ziyad led the conquest of Iberia in 711 CE.",
+      "difficulty": "easy",
+      "id": "q59"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who is known as the 'Umar II of the Umayyads'?",
+      "options": [
+        "Umar bin Abdul Aziz",
+        "Abdul Malik",
+        "Walid I",
+        "Hisham"
+      ],
+      "answer": 0,
+      "explanation": "Umar bin Abdul Aziz was famous for justice and piety.",
+      "difficulty": "medium",
+      "id": "q60"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The 'Battle of Tours' (732 CE) halted Muslim advance into:",
+      "options": [
+        "Western Europe (France)",
+        "China",
+        "India",
+        "Russia"
+      ],
+      "answer": 0,
+      "explanation": "Tours stopped the Muslim advance into France.",
+      "difficulty": "medium",
+      "id": "q61"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Fatimid caliphate was based in:",
+      "options": [
+        "Cairo",
+        "Baghdad",
+        "Damascus",
+        "Kairouan"
+      ],
+      "answer": 0,
+      "explanation": "The Fatimids ruled from Cairo.",
+      "difficulty": "medium",
+      "id": "q62"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Saladin (Salahuddin Ayyubi) recaptured Jerusalem from the Crusaders in:",
+      "options": [
+        "1187 CE",
+        "1099 CE",
+        "1200 CE",
+        "1258 CE"
+      ],
+      "answer": 0,
+      "explanation": "Saladin retook Jerusalem in 1187.",
+      "difficulty": "easy",
+      "id": "q63"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Mongol sack of Baghdad occurred in:",
+      "options": [
+        "1258 CE",
+        "1221 CE",
+        "1299 CE",
+        "1206 CE"
+      ],
+      "answer": 0,
+      "explanation": "Hulagu Khan sacked Baghdad in 1258, ending the Abbasid caliphate.",
+      "difficulty": "easy",
+      "id": "q64"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Constantinople was conquered by the Ottomans in:",
+      "options": [
+        "1453 CE",
+        "1450 CE",
+        "1517 CE",
+        "1402 CE"
+      ],
+      "answer": 0,
+      "explanation": "Mehmed II conquered Constantinople in 1453.",
+      "difficulty": "easy",
+      "id": "q65"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which Ottoman sultan was called 'the Lawgiver' (Kanuni)?",
+      "options": [
+        "Suleiman the Magnificent",
+        "Mehmed II",
+        "Selim I",
+        "Osman II"
+      ],
+      "answer": 0,
+      "explanation": "Suleiman codified laws and expanded the empire.",
+      "difficulty": "medium",
+      "id": "q66"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Mamluk Sultanate was based in:",
+      "options": [
+        "Egypt",
+        "Persia",
+        "Spain",
+        "Turkey"
+      ],
+      "answer": 0,
+      "explanation": "The Mamluks ruled Egypt and Syria.",
+      "difficulty": "easy",
+      "id": "q67"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Ottoman caliphate was abolished in:",
+      "options": [
+        "1924 CE",
+        "1918 CE",
+        "1930 CE",
+        "1900 CE"
+      ],
+      "answer": 0,
+      "explanation": "Ataturk abolished the caliphate in 1924.",
+      "difficulty": "medium",
+      "id": "q68"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Fatimid dynasty was founded by whom?",
+      "options": [
+        "Ubayd Allah al-Mahdi",
+        "Al-Mansur",
+        "Harun al-Rashid",
+        "Abd al-Rahman III"
+      ],
+      "answer": 0,
+      "explanation": "Ubayd Allah al-Mahdi founded the Fatimid dynasty in 909 CE.",
+      "difficulty": "hard",
+      "id": "q69"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Fatimids claimed descent from whom?",
+      "options": [
+        "Fatimah (RA), daughter of the Prophet (PBUH)",
+        "The Umayyads",
+        "The Abbasids",
+        "The Ottomans"
+      ],
+      "answer": 0,
+      "explanation": "The Fatimids traced their lineage to Fatimah (RA) and Ali (RA).",
+      "difficulty": "medium",
+      "id": "q70"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Ayyubid dynasty was replaced by whom?",
+      "options": [
+        "The Mamluks",
+        "The Ottomans",
+        "The Abbasids",
+        "The Safavids"
+      ],
+      "answer": 0,
+      "explanation": "The Mamluks took over Egypt after the Ayyubids in the mid-13th century.",
+      "difficulty": "medium",
+      "id": "q71"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who is regarded as the founder of the Mamluk Sultanate of Egypt?",
+      "options": [
+        "Izz al-Din Aybak",
+        "Saif al-Din Qutuz",
+        "Baybars",
+        "Al-Ashraf Khalil"
+      ],
+      "answer": 0,
+      "explanation": "Aybak founded the Mamluk Sultanate after the Ayyubid collapse.",
+      "difficulty": "hard",
+      "id": "q72"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Umayyad capital in Spain was?",
+      "options": [
+        "Cordoba",
+        "Seville",
+        "Granada",
+        "Toledo"
+      ],
+      "answer": 0,
+      "explanation": "Cordoba was the capital of Muslim Spain.",
+      "difficulty": "medium",
+      "id": "q73"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who was the last Muslim ruler of Granada, who surrendered in 1492?",
+      "options": [
+        "Muhammad XII (Boabdil)",
+        "Abd al-Rahman III",
+        "Al-Mansur",
+        "Tariq ibn Ziyad"
+      ],
+      "answer": 0,
+      "explanation": "Muhammad XII, called Boabdil, handed Granada to Ferdinand and Isabella.",
+      "difficulty": "hard",
+      "id": "q74"
+    },
+    {
+      "type": "mcq",
+      "prompt": "After the fall of Granada in 1492, the Muslims and Jews of Spain were?",
+      "options": [
+        "Forced to convert or expelled",
+        "Left in peace",
+        "Made rulers",
+        "Given special rights"
+      ],
+      "answer": 0,
+      "explanation": "The Reconquista was followed by forced conversions, the Inquisition and expulsions.",
+      "difficulty": "medium",
+      "id": "q75"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Mehmed II, the conqueror of Constantinople, is also known as?",
+      "options": [
+        "Fatih (the Conqueror)",
+        "Kanuni",
+        "Yavuz",
+        "Osman"
+      ],
+      "answer": 0,
+      "explanation": "Mehmed II is called Fatih, the Conqueror.",
+      "difficulty": "medium",
+      "id": "q76"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Ottoman victory at Kosovo took place in which year?",
+      "options": [
+        "1389",
+        "1453",
+        "1071",
+        "1526"
+      ],
+      "answer": 0,
+      "explanation": "The Battle of Kosovo in 1389 opened the Balkans to the Ottomans.",
+      "difficulty": "hard",
+      "id": "q77"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The fall of Constantinople in 1453 ended which empire?",
+      "options": [
+        "The Byzantine Empire",
+        "The Roman Empire of the West",
+        "The Sassanid Empire",
+        "The Mongol Empire"
+      ],
+      "answer": 0,
+      "explanation": "Constantinople's fall ended the Byzantine Empire.",
+      "difficulty": "easy",
+      "id": "q78"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Ottomans rose from the ruins of which Anatolian state?",
+      "options": [
+        "The Seljuk Sultanate of Rum",
+        "The Khwarezmshahs",
+        "The Ilkhanate",
+        "The Ayyubids"
+      ],
+      "answer": 0,
+      "explanation": "The Ottoman beylik grew out of the Seljuk Sultanate of Rum.",
+      "difficulty": "medium",
+      "id": "q79"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which dynasty made Twelver Shi'ism the state religion of Persia?",
+      "options": [
+        "The Safavids",
+        "The Ottomans",
+        "The Mughals",
+        "The Timurids"
+      ],
+      "answer": 0,
+      "explanation": "Shah Ismail I founded the Safavid dynasty and established Shi'ism in Iran.",
+      "difficulty": "medium",
+      "id": "q80"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Ottoman Empire's main eastern rival was?",
+      "options": [
+        "The Safavid Empire",
+        "The Mughal Empire",
+        "The Russian Empire",
+        "The Chinese Empire"
+      ],
+      "answer": 0,
+      "explanation": "The Safavids of Persia were the Ottomans' great eastern rival.",
+      "difficulty": "medium",
+      "id": "q81"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Chishti Sufi order in the Indian subcontinent was founded by?",
+      "options": [
+        "Khwaja Muin-ud-din Chishti",
+        "Data Ganj Bakhsh",
+        "Baha-ud-din Naqshband",
+        "Shah Waliullah"
+      ],
+      "answer": 0,
+      "explanation": "Khwaja Muin-ud-din Chishti founded the Chishti order at Ajmer.",
+      "difficulty": "medium",
+      "id": "q82"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Sufi saint Ali Hajveri of Lahore is popularly known as?",
+      "options": [
+        "Data Ganj Bakhsh",
+        "Muin-ud-din Chishti",
+        "Nizam-ud-din Auliya",
+        "Baha-ud-din Zakariya"
+      ],
+      "answer": 0,
+      "explanation": "Ali Hajveri, buried in Lahore, is called Data Ganj Bakhsh.",
+      "difficulty": "easy",
+      "id": "q83"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Naqshbandi Sufi order is named after whom?",
+      "options": [
+        "Baha-ud-din Naqshband",
+        "Abdul Qadir Jilani",
+        "Jalal-ud-din Rumi",
+        "Shah Waliullah"
+      ],
+      "answer": 0,
+      "explanation": "The Naqshbandi order takes its name from Baha-ud-din Naqshband.",
+      "difficulty": "medium",
+      "id": "q84"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The 18th-century revivalist movement in Arabia was founded by?",
+      "options": [
+        "Muhammad ibn Abd al-Wahhab",
+        "Shah Waliullah",
+        "Muhammad Abduh",
+        "Jamal al-Din al-Afghani"
+      ],
+      "answer": 0,
+      "explanation": "Muhammad ibn Abd al-Wahhab launched the reform movement in Najd.",
+      "difficulty": "medium",
+      "id": "q85"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which institution did Sir Syed Ahmad Khan found in 1875?",
+      "options": [
+        "The MAO College (later Aligarh Muslim University)",
+        "Darul Uloom Deoband",
+        "Jamia Millia Islamia",
+        "Osmania University"
+      ],
+      "answer": 0,
+      "explanation": "Sir Syed founded the Muhammadan Anglo-Oriental College at Aligarh.",
+      "difficulty": "medium",
+      "id": "q86"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Darul Uloom Deoband was founded in 1866 by whom?",
+      "options": [
+        "Maulana Muhammad Qasim Nanautawi",
+        "Sir Syed Ahmad Khan",
+        "Maulana Abul Kalam Azad",
+        "Shah Waliullah"
+      ],
+      "answer": 0,
+      "explanation": "Nanautawi and Rashid Ahmad Gangohi established Darul Uloom Deoband.",
+      "difficulty": "hard",
+      "id": "q87"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Prominent leaders of the Khilafat Movement included?",
+      "options": [
+        "Maulana Muhammad Ali and Shaukat Ali",
+        "Sir Syed and Maulana Shibli",
+        "Iqbal and Jinnah only",
+        "Abul Kalam Azad and Maulana Maududi"
+      ],
+      "answer": 0,
+      "explanation": "The Ali brothers led the Khilafat movement in India.",
+      "difficulty": "medium",
+      "id": "q88"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Ottoman Empire entered World War I in which year?",
+      "options": [
+        "1914",
+        "1916",
+        "1918",
+        "1912"
+      ],
+      "answer": 0,
+      "explanation": "The Ottomans joined the Central Powers in 1914.",
+      "difficulty": "medium",
+      "id": "q89"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Treaty of Sevres (1920) imposed terms on which empire?",
+      "options": [
+        "The Ottoman Empire",
+        "The German Empire",
+        "The Austro-Hungarian Empire",
+        "The Russian Empire"
+      ],
+      "answer": 0,
+      "explanation": "Sevres partitioned the Ottoman lands after WWI.",
+      "difficulty": "hard",
+      "id": "q90"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Ottoman Caliphate was abolished in 1924 by whom?",
+      "options": [
+        "Mustafa Kemal Atatürk",
+        "Mehmed VI",
+        "Enver Pasha",
+        "Suleiman the Magnificent"
+      ],
+      "answer": 0,
+      "explanation": "Atatürk's republic abolished the caliphate in March 1924.",
+      "difficulty": "medium",
+      "id": "q91"
+    },
+    {
+      "type": "mcq",
+      "prompt": "In 1517, the Ottomans defeated the Mamluks at which battle?",
+      "options": [
+        "Ridaniya",
+        "Marj Dabiq",
+        "Manzikert",
+        "Ain Jalut"
+      ],
+      "answer": 0,
+      "explanation": "The victory at Ridaniya brought Egypt and Syria under Ottoman rule.",
+      "difficulty": "hard",
+      "id": "q92"
+    },
+    {
+      "type": "mcq",
+      "prompt": "After the sack of Baghdad, a 'shadow' Abbasid caliphate continued in which city?",
+      "options": [
+        "Cairo",
+        "Damascus",
+        "Cordoba",
+        "Istanbul"
+      ],
+      "answer": 0,
+      "explanation": "The Mamluks hosted a puppet Abbasid caliphate in Cairo until 1517.",
+      "difficulty": "hard",
+      "id": "q93"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Before the Ottomans, the holy cities of Makkah and Madinah were under whom?",
+      "options": [
+        "The Mamluks",
+        "The Safavids",
+        "The Fatimids",
+        "The Mongols"
+      ],
+      "answer": 0,
+      "explanation": "The Mamluks of Egypt protected the Hijaz before 1517.",
+      "difficulty": "medium",
+      "id": "q94"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Ottoman sultan Selim I conquered which regions in 1517?",
+      "options": [
+        "Egypt and the Hijaz",
+        "Persia and Iraq",
+        "Hungary and Austria",
+        "Yemen and Oman"
+      ],
+      "answer": 0,
+      "explanation": "Selim I added Egypt, Syria and the Hijaz to the empire.",
+      "difficulty": "hard",
+      "id": "q95"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Ottoman admiral Khair ad-Din is known in Europe as?",
+      "options": [
+        "Barbarossa",
+        "Suleiman",
+        "Piri Reis",
+        "Uluç Ali"
+      ],
+      "answer": 0,
+      "explanation": "Khair ad-Din Pasha, the great Ottoman admiral, was called Barbarossa.",
+      "difficulty": "hard",
+      "id": "q96"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Khwarezmshah empire was destroyed by whom?",
+      "options": [
+        "Genghis Khan",
+        "Hulagu Khan",
+        "Timur",
+        "Alp Arslan"
+      ],
+      "answer": 0,
+      "explanation": "Genghis Khan's campaigns in 1219-1221 wiped out the Khwarezmshahs.",
+      "difficulty": "hard",
+      "id": "q97"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Mongol invasions under Genghis Khan devastated which regions?",
+      "options": [
+        "Central Asia and Iran",
+        "Spain and Portugal",
+        "Egypt and the Sudan",
+        "India and Ceylon"
+      ],
+      "answer": 0,
+      "explanation": "Genghis Khan's armies ravaged Central Asia, Iran and Afghanistan.",
+      "difficulty": "medium",
+      "id": "q98"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Timurid dynasty was founded by whom?",
+      "options": [
+        "Timur (Tamerlane)",
+        "Babur",
+        "Genghis Khan",
+        "Ulugh Beg"
+      ],
+      "answer": 0,
+      "explanation": "Timur founded the Timurid dynasty in the 14th century.",
+      "difficulty": "medium",
+      "id": "q99"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Ayyubid capital was?",
+      "options": [
+        "Cairo",
+        "Damascus",
+        "Baghdad",
+        "Aleppo"
+      ],
+      "answer": 0,
+      "explanation": "The Ayyubids ruled from Cairo.",
+      "difficulty": "medium",
+      "id": "q100"
+    }
+  ]
+}

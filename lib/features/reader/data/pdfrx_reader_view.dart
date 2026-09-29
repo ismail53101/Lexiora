@@ -134,6 +134,32 @@ class _PdfrxReaderViewState extends State<PdfrxReaderView> {
       textSelectionParams: PdfTextSelectionParams(
         onTextSelectionChange: _onSelectionChange,
       ),
+      // Double-tap zooms to a comfortable close-up on the tapped point (tap
+      // again to zoom back out). PdfOverlayInteractionRegion is pdfrx's
+      // sanctioned overlay for tap-like gestures — it classifies gestures
+      // without competing with the viewer in the gesture arena, so text
+      // selection, pinch-zoom and panning keep working.
+      viewerOverlayBuilder: (
+        BuildContext context,
+        Size size,
+        PdfViewerHandleLinkTap handleLinkTap,
+      ) =>
+          <Widget>[
+            PdfOverlayInteractionRegion(
+              onDoubleTap: (PdfOverlayInteractionDetails details) {
+                // The controller converts the tap to document coordinates
+                // itself — passing the raw position straight to setZoom was
+                // what made the view jump to the first page.
+                widget.controller.toggleDoubleTapZoom(
+                  globalPosition: details.globalPosition,
+                  localPosition: details.localPosition,
+                  viewSize: size,
+                );
+                return true;
+              },
+              child: SizedBox(width: size.width, height: size.height),
+            ),
+          ],
     );
   }
 

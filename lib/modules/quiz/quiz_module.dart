@@ -13,10 +13,14 @@ import 'package:lexiora/modules/quiz/domain/entities/quiz_models.dart';
 import 'package:lexiora/modules/quiz/domain/repositories/quiz_admin_repository.dart';
 import 'package:lexiora/modules/quiz/domain/repositories/quiz_repository.dart';
 import 'package:lexiora/modules/quiz/presentation/pages/bookmarks_page.dart';
+import 'package:lexiora/modules/quiz/presentation/pages/mcq_browse_page.dart';
 import 'package:lexiora/modules/quiz/presentation/pages/quiz_analytics_page.dart';
+import 'package:lexiora/modules/quiz/presentation/pages/quiz_home_page.dart';
 import 'package:lexiora/modules/quiz/presentation/pages/quiz_player_page.dart';
 import 'package:lexiora/modules/quiz/presentation/pages/quiz_search_page.dart';
 import 'package:lexiora/modules/quiz/presentation/pages/quiz_settings_page.dart';
+import 'package:lexiora/modules/quiz/presentation/pages/stage_map_page.dart';
+import 'package:lexiora/modules/quiz/presentation/pages/stage_player_page.dart';
 import 'package:lexiora/modules/quiz/presentation/pages/subject_detail_page.dart';
 import 'package:lexiora/modules/quiz/presentation/pages/subjects_page.dart';
 import 'package:lexiora/modules/quiz/presentation/pages/topic_detail_page.dart';
@@ -61,7 +65,54 @@ class QuizModule extends FeatureModule {
   List<RouteBase> routes(GetIt getIt) => <RouteBase>[
         GoRoute(
           path: AppRoutes.quiz,
-          builder: (_, _) => const SubjectsPage(),
+          builder: (_, _) => const QuizHomePage(),
+        ),
+        GoRoute(
+          path: AppRoutes.quizMcqs,
+          builder: (_, _) =>
+              const SubjectsPage(),
+        ),
+        GoRoute(
+          path: AppRoutes.quizStages,
+          builder: (_, _) =>
+              const SubjectsPage(variant: QuizSubjectsVariant.stages),
+        ),
+        GoRoute(
+          path: AppRoutes.quizMcqBrowsePattern,
+          name: AppRoutes.quizMcqBrowseName,
+          builder: (BuildContext context, GoRouterState state) {
+            final Map<String, String> q = state.uri.queryParameters;
+            return McqBrowsePage(
+              subjectId: state.pathParameters['subjectId'] ?? '',
+              topicId: q['topic'],
+              title: q['title'],
+              onlyWrong: q['wrong'] == '1',
+            );
+          },
+        ),
+        GoRoute(
+          path: AppRoutes.quizStageMapPattern,
+          name: AppRoutes.quizStageMapName,
+          builder: (BuildContext context, GoRouterState state) {
+            final Map<String, String> q = state.uri.queryParameters;
+            return StageMapPage(
+              subjectId: state.pathParameters['subjectId'] ?? '',
+              topicId: q['topic'],
+              title: q['title'],
+            );
+          },
+        ),
+        GoRoute(
+          path: AppRoutes.quizStagePlay,
+          builder: (BuildContext context, GoRouterState state) {
+            final Map<String, String> q = state.uri.queryParameters;
+            return StagePlayerPage(
+              subjectId: q['subjectId'] ?? '',
+              topicId: q['topicId'],
+              subjectName: q['title'] ?? '',
+              stageIndex: int.tryParse(q['stage'] ?? '') ?? 0,
+            );
+          },
         ),
         GoRoute(
           path: AppRoutes.quizSubjectPattern,
@@ -122,6 +173,7 @@ class QuizModule extends FeatureModule {
           label: 'Quiz',
           subtitle: 'Practice by subject',
           icon: Icons.quiz_outlined,
+          imageAsset: 'assets/quiz/branding/quiz_hero.webp',
           routePath: AppRoutes.quiz,
           order: 15,
         ),

@@ -51,3 +51,9 @@ app.*.map.json
 # The Gradle wrapper jar is regenerated in CI (see .github/workflows/build.yml)
 # so the repository stays free of binary blobs.
 /android/gradle/wrapper/gradle-wrapper.jar
+
+# Local source archive (created on request) — not part of the repo.
+/lexiora-v0.10.0-source.zip
+
+# Buffy working tooling (dedup/merge scripts, candidate batches) — not part of the repo.
+/.buffy_tmp/

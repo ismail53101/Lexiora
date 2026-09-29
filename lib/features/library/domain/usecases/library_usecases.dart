@@ -6,9 +6,11 @@ import 'package:lexiora/core/services/pdf_import_service.dart';
 import 'package:lexiora/core/usecase/usecase.dart';
 import 'package:lexiora/core/utils/guard.dart';
 import 'package:lexiora/core/utils/logger.dart';
+import 'package:lexiora/core/utils/result.dart';
 import 'package:lexiora/core/utils/typedefs.dart';
 import 'package:lexiora/features/annotations/domain/repositories/annotations_repository.dart';
 import 'package:lexiora/features/bookmarks/domain/repositories/bookmarks_repository.dart';
+import 'package:lexiora/features/library/data/services/google_drive_service.dart';
 import 'package:lexiora/features/library/domain/entities/library_document.dart';
 import 'package:lexiora/features/library/domain/repositories/library_repository.dart';
 import 'package:lexiora/features/notes/domain/repositories/notes_repository.dart';
@@ -25,9 +27,14 @@ String _titleOf(String fileName) {
 
 /// The result of a discovery run.
 class DiscoveryOutcome {
-  const DiscoveryOutcome({required this.scanned, required this.added});
+  const DiscoveryOutcome({
+    required this.scanned,
+    required this.added,
+    this.removed = 0,
+  });
   final int scanned;
   final int added;
+  final int removed;
 }
 
 /// The result of a manual import run.
@@ -43,58 +50,145 @@ class ImportOutcome {
   final int duplicates;
 }
 
-/// Automatically scans the whole device for PDFs (using all-files access) and
-/// indexes any not already in the library, referencing each file in place (no
-/// copy). Runs on library open and pull-to-refresh; new files appear on the
-/// next scan. Existing entries are never removed automatically — so a transient
-/// scan miss can never delete a user's highlights/notes/bookmarks. A document
-/// whose file has since been deleted surfaces the reader's error page and can
-/// be removed from the library by hand.
+/// Automatically scans the whole device for PDFs and reconciles the current
+/// filesystem with the library, referencing files in place without copying.
+/// Runs after Home opens, on Library open, and on pull-to-refresh. Existing
+/// metadata is retained for matched documents; stale or duplicate rows are
+/// removed through the existing metadata-safe delete use case.
 class AutoDiscoverPdfs implements UseCase<DiscoveryOutcome, NoParams> {
-  const AutoDiscoverPdfs(this._repo, this._discovery, this._cover);
+  const AutoDiscoverPdfs(
+    this._repo,
+    this._discovery,
+    this._cover,
+    this._deleteDocument,
+  );
 
   final LibraryRepository _repo;
   final PdfDiscoveryService _discovery;
   final PdfCoverService _cover;
+  final DeleteDocument _deleteDocument;
 
   @override
   ResultFuture<DiscoveryOutcome> call(NoParams params) => guard(() async {
         final List<DeviceFile> found = await _discovery.scanAll();
+        final List<LibraryDocument> existing = await _repo.watchAll().first;
         AppLogger.i('AutoDiscover: scanned ${found.length} PDF(s)');
-        // De-dup by content key (fileName|size) so an auto-discovered file that
-        // was also manually imported — or vice versa — is never duplicated.
-        final Set<String> keys = await _repo.existingKeys();
+
+        final Map<String, List<LibraryDocument>> byPath =
+            <String, List<LibraryDocument>>{};
+        final Map<String, List<LibraryDocument>> byContent =
+            <String, List<LibraryDocument>>{};
+        for (final LibraryDocument document in existing) {
+          byPath
+              .putIfAbsent(_pathKey(document.filePath), () => <LibraryDocument>[])
+              .add(document);
+          byContent
+              .putIfAbsent(
+                libraryDedupKey(document.fileName, document.fileSize),
+                () => <LibraryDocument>[],
+              )
+              .add(document);
+        }
+
+        final Set<String> matchedIds = <String>{};
+        final Set<String> scannedPaths = <String>{};
         final DateTime now = DateTime.now();
         int added = 0;
-        for (final DeviceFile f in found) {
-          final String title = _titleOf(f.name);
-          final String key = libraryDedupKey(title, f.size);
-          if (keys.contains(key)) continue;
-          AppLogger.i('AutoDiscover: indexing ${f.path}');
+        int removed = 0;
+
+        for (final DeviceFile file in found) {
+          final String pathKey = _pathKey(file.path);
+          if (!scannedPaths.add(pathKey)) continue;
+          final String title = _titleOf(file.name);
+          final String contentKey = libraryDedupKey(title, file.size);
+          LibraryDocument? match = _firstUnmatched(
+            byPath[pathKey],
+            matchedIds,
+          );
+
+          // A renamed or moved in-place PDF can retain its record by matching
+          // the existing name/size key. Never repoint a managed private import
+          // at an external file.
+          match ??= _firstUnmatched(
+            byContent[contentKey],
+            matchedIds,
+            inPlaceOnly: true,
+          );
+
+          if (match != null) {
+            matchedIds.add(match.id);
+            if (_pathKey(match.filePath) != pathKey) {
+              await _repo.updateFilePath(match.id, file.path);
+            }
+            continue;
+          }
+
+          AppLogger.i('AutoDiscover: indexing ${file.path}');
           final String id = _uuid.v4();
-          final String? cover =
-              await _cover.generateCover(documentId: id, pdfPath: f.path);
+          final String? cover = await _cover.generateCover(
+            documentId: id,
+            pdfPath: file.path,
+          );
           await _repo.insert(
             LibraryDocument(
               id: id,
               title: title,
               fileName: title,
-              filePath: f.path,
-              fileSize: f.size,
-              pageCount: 0, // refined the first time the document is opened
+              filePath: file.path,
+              fileSize: file.size,
+              pageCount: 0,
               isFavorite: false,
               importedAt: now,
               coverPath: cover,
-              // isManaged defaults to false: an in-place reference to the
-              // user's own file, which is never auto-deleted.
             ),
           );
-          keys.add(key);
+          matchedIds.add(id);
           added++;
         }
-        AppLogger.i('AutoDiscover: added $added new PDF(s)');
-        return DiscoveryOutcome(scanned: found.length, added: added);
+
+        // Unmatched in-place rows are stale or duplicate records. Managed
+        // imports remain if their private file still exists; missing managed
+        // files are cleaned using the existing metadata-safe delete use case.
+        for (final LibraryDocument document in existing) {
+          if (matchedIds.contains(document.id)) continue;
+          final bool managedFileStillExists =
+              document.isManaged && File(document.filePath).existsSync();
+          if (managedFileStillExists) continue;
+          final Result<void> result = await _deleteDocument.call(document.id);
+          result.fold(
+            (failure) => AppLogger.w(
+              'AutoDiscover: could not remove stale ${document.filePath}: '
+              '${failure.message}',
+            ),
+            (_) => removed++,
+          );
+        }
+
+        AppLogger.i(
+          'AutoDiscover: added $added, removed $removed stale/duplicate PDF(s)',
+        );
+        return DiscoveryOutcome(
+          scanned: scannedPaths.length,
+          added: added,
+          removed: removed,
+        );
       });
+
+  static LibraryDocument? _firstUnmatched(
+    List<LibraryDocument>? candidates,
+    Set<String> matchedIds, {
+    bool inPlaceOnly = false,
+  }) {
+    if (candidates == null) return null;
+    for (final LibraryDocument candidate in candidates) {
+      if (matchedIds.contains(candidate.id)) continue;
+      if (inPlaceOnly && candidate.isManaged) continue;
+      return candidate;
+    }
+    return null;
+  }
+
+  static String _pathKey(String path) => p.normalize(path).trim();
 }
 
 /// Opens the system file picker (multi-select) and imports the chosen PDFs.
@@ -168,6 +262,91 @@ class ImportPdfs implements UseCase<ImportOutcome, NoParams> {
       AppLogger.w('Import: could not discard duplicate copy $path: $e');
     }
   }
+}
+
+/// Imports one PDF delivered by Android's ACTION_VIEW/ACTION_SEND flow into
+/// the same private managed-file pipeline used by the system picker. Existing
+/// documents are reused so opening a PDF never creates a duplicate library row.
+class ImportIncomingPdf {
+  const ImportIncomingPdf(this._repo, this._cover);
+
+  final LibraryRepository _repo;
+  final PdfCoverService _cover;
+
+  ResultFuture<LibraryDocument?> call(DeviceFile file) => guard(() async {
+        final String title = _titleOf(file.name);
+        final String key = libraryDedupKey(title, file.size);
+        final List<LibraryDocument> existing = await _repo.watchAll().first;
+        for (final LibraryDocument document in existing) {
+          if (libraryDedupKey(document.fileName, document.fileSize) == key) {
+            try {
+              final File copy = File(file.path);
+              if (copy.existsSync()) copy.deleteSync();
+            } on Object catch (error) {
+              AppLogger.w('Incoming PDF duplicate cleanup failed: $error');
+            }
+            return document;
+          }
+        }
+
+        final String id = _uuid.v4();
+        final String? cover = await _cover.generateCover(
+          documentId: id,
+          pdfPath: file.path,
+        );
+        final LibraryDocument document = LibraryDocument(
+          id: id,
+          title: title,
+          fileName: title,
+          filePath: file.path,
+          fileSize: file.size,
+          pageCount: 0,
+          isFavorite: false,
+          importedAt: DateTime.now(),
+          coverPath: cover,
+          isManaged: true,
+        );
+        await _repo.insert(document);
+        return document;
+      });
+}
+
+/// Downloads one selected Drive PDF into app-private cache and indexes it in
+/// the same managed-file pipeline as a system-picker import.
+class ImportDrivePdf {
+  const ImportDrivePdf(this._repo, this._drive, this._cover);
+
+  final LibraryRepository _repo;
+  final GoogleDriveService _drive;
+  final PdfCoverService _cover;
+
+  ResultFuture<ImportOutcome> call(GoogleDrivePdf pdf) => guard(() async {
+        final Set<String> keys = await _repo.existingKeys();
+        final String title = _titleOf(pdf.name);
+        final String key = libraryDedupKey(title, pdf.size);
+        if (keys.contains(key)) {
+          return const ImportOutcome(picked: 1, added: 0, duplicates: 1);
+        }
+        final File cached = await _drive.downloadPdf(pdf);
+        final String id = _uuid.v4();
+        final String? cover =
+            await _cover.generateCover(documentId: id, pdfPath: cached.path);
+        await _repo.insert(
+          LibraryDocument(
+            id: id,
+            title: title,
+            fileName: pdf.name,
+            filePath: cached.path,
+            fileSize: pdf.size > 0 ? pdf.size : await cached.length(),
+            pageCount: 0,
+            isFavorite: false,
+            importedAt: DateTime.now(),
+            coverPath: cover,
+            isManaged: true,
+          ),
+        );
+        return const ImportOutcome(picked: 1, added: 1, duplicates: 0);
+      });
 }
 
 /// Same import flow as [ImportPdfs], but assigns every newly-imported

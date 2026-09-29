@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
 import 'package:go_router/go_router.dart';
@@ -5,6 +7,8 @@ import 'package:lexiora/app/router/app_routes.dart';
 import 'package:lexiora/core/database/app_database.dart';
 import 'package:lexiora/core/module/feature_module.dart';
 import 'package:lexiora/core/navigation/home_destination.dart';
+import 'package:lexiora/core/services/notification_service.dart';
+import 'package:lexiora/core/utils/logger.dart';
 import 'package:lexiora/modules/study_hub/data/datasources/study_hub_local_data_source.dart';
 import 'package:lexiora/modules/study_hub/data/repositories/study_hub_repository_impl.dart';
 import 'package:lexiora/modules/study_hub/domain/repositories/study_hub_repository.dart';
@@ -12,8 +16,8 @@ import 'package:lexiora/modules/study_hub/presentation/pages/daily_planner_page.
 import 'package:lexiora/modules/study_hub/presentation/pages/export_backup_page.dart';
 import 'package:lexiora/modules/study_hub/presentation/pages/manage_subjects_page.dart';
 import 'package:lexiora/modules/study_hub/presentation/pages/monthly_planner_page.dart';
+import 'package:lexiora/modules/study_hub/presentation/pages/planner_page.dart';
 import 'package:lexiora/modules/study_hub/presentation/pages/search_page.dart';
-import 'package:lexiora/modules/study_hub/presentation/pages/study_hub_page.dart';
 import 'package:lexiora/modules/study_hub/presentation/pages/templates_page.dart';
 import 'package:lexiora/modules/study_hub/presentation/pages/weekly_planner_page.dart';
 
@@ -38,7 +42,14 @@ class StudyHubModule extends FeatureModule {
         () => StudyHubLocalDataSource(getIt<AppDatabase>()),
       )
       ..registerLazySingleton<StudyHubRepository>(
-        () => StudyHubRepositoryImpl(getIt<StudyHubLocalDataSource>()),
+        () => StudyHubRepositoryImpl(
+          getIt<StudyHubLocalDataSource>(),
+          onTasksChanged: () async {
+            // Task persistence should not keep the editor open while the
+            // complete reminder set (including Word of the Day) is rebuilt.
+            unawaited(_rescheduleNotifications(getIt));
+          },
+        ),
       );
   }
 
@@ -46,11 +57,13 @@ class StudyHubModule extends FeatureModule {
   List<RouteBase> routes(GetIt getIt) => <RouteBase>[
         GoRoute(
           path: AppRoutes.studyHub,
-          builder: (_, _) => const StudyHubPage(),
+          builder: (_, _) => const PlannerPage(),
         ),
         GoRoute(
           path: AppRoutes.studyHubDaily,
-          builder: (_, _) => const DailyPlannerPage(),
+          builder: (_, GoRouterState state) => DailyPlannerPage(
+            initialDay: _parseDay(state.uri.queryParameters['day']),
+          ),
         ),
         GoRoute(
           path: AppRoutes.studyHubWeekly,
@@ -86,7 +99,31 @@ class StudyHubModule extends FeatureModule {
           subtitle: 'Plan, track & focus',
           icon: Icons.school_outlined,
           routePath: AppRoutes.studyHub,
+          imageAsset: 'assets/branding/study_planner_explore.webp',
           order: 1,
         ),
       ];
+}
+
+Future<void> _rescheduleNotifications(GetIt getIt) async {
+  try {
+    await getIt<NotificationService>().rescheduleAll();
+  } on Object catch (error, stackTrace) {
+    AppLogger.e(
+      'Study Planner notification refresh failed',
+      error: error,
+      stackTrace: stackTrace,
+    );
+  }
+}
+
+DateTime? _parseDay(String? value) {
+  if (value == null) return null;
+  final List<String> parts = value.split('-');
+  if (parts.length != 3) return null;
+  final int? year = int.tryParse(parts[0]);
+  final int? month = int.tryParse(parts[1]);
+  final int? day = int.tryParse(parts[2]);
+  if (year == null || month == null || day == null) return null;
+  return DateTime(year, month, day);
 }

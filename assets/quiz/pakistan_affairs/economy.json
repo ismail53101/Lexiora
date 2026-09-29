@@ -1,0 +1,1833 @@
+{
+  "bank": {
+    "name": "Economy",
+    "subject": "Pakistan Affairs",
+    "topic": "Economy",
+    "description": "Pakistan's currency, banking, agriculture, industry, trade and key economic projects such as CPEC.",
+    "tags": "css,pms,fpsc,pakistan-affairs,economy",
+    "version": "1.0",
+    "id": "pakistan_affairs_economy"
+  },
+  "questions": [
+    {
+      "type": "mcq",
+      "prompt": "What is the currency of Pakistan?",
+      "options": [
+        "Rupee",
+        "Taka",
+        "Riyal",
+        "Dinar"
+      ],
+      "answer": 0,
+      "explanation": "The Pakistani Rupee (PKR) is the official currency, issued by the State Bank of Pakistan.",
+      "difficulty": "easy",
+      "id": "q01"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which is the central bank of Pakistan?",
+      "options": [
+        "State Bank of Pakistan",
+        "National Bank of Pakistan",
+        "Habib Bank",
+        "Finance Ministry"
+      ],
+      "answer": 0,
+      "explanation": "The State Bank of Pakistan (SBP), established on 1 July 1948, is the central bank.",
+      "difficulty": "easy",
+      "id": "q02"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which is the largest crop of Pakistan by area cultivated?",
+      "options": [
+        "Wheat",
+        "Rice",
+        "Cotton",
+        "Sugarcane"
+      ],
+      "answer": 0,
+      "explanation": "Wheat is the largest food crop of Pakistan, cultivated on the greatest area.",
+      "difficulty": "medium",
+      "id": "q03"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which crop is known as the 'white gold' of Pakistan?",
+      "options": [
+        "Sugarcane",
+        "Cotton",
+        "Rice",
+        "Maize"
+      ],
+      "answer": 1,
+      "explanation": "Cotton is called 'white gold' because it is the backbone of Pakistan's textile industry.",
+      "difficulty": "medium",
+      "id": "q04"
+    },
+    {
+      "type": "mcq",
+      "prompt": "In which year was the Pakistan Stock Exchange formed by merging the Karachi, Lahore and Islamabad exchanges?",
+      "options": [
+        "2010",
+        "2016",
+        "2018",
+        "2020"
+      ],
+      "answer": 1,
+      "explanation": "The Pakistan Stock Exchange (PSX) was formed in January 2016 by merging KSE, LSE and ISE.",
+      "difficulty": "hard",
+      "id": "q05"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which port is the flagship project of the China-Pakistan Economic Corridor (CPEC)?",
+      "options": [
+        "Karachi Port",
+        "Port Qasim",
+        "Keti Bandar",
+        "Gwadar Port"
+      ],
+      "answer": 3,
+      "explanation": "Gwadar deep-sea port is the flagship project of CPEC.",
+      "difficulty": "easy",
+      "id": "q06"
+    },
+    {
+      "type": "mcq",
+      "prompt": "CPEC is a cooperative project between Pakistan and which country?",
+      "options": [
+        "United States",
+        "Saudi Arabia",
+        "Turkey",
+        "China"
+      ],
+      "answer": 3,
+      "explanation": "CPEC links Gwadar with China's Xinjiang region under the Belt and Road Initiative.",
+      "difficulty": "easy",
+      "id": "q07"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which sector is Pakistan's largest export earner?",
+      "options": [
+        "Textiles",
+        "IT services",
+        "Sports goods",
+        "Pharmaceuticals"
+      ],
+      "answer": 0,
+      "explanation": "Textiles account for roughly half of Pakistan's total exports.",
+      "difficulty": "easy",
+      "id": "q08"
+    },
+    {
+      "type": "mcq",
+      "prompt": "When was the first Five-Year Plan of Pakistan launched?",
+      "options": [
+        "1955-60",
+        "1960-65",
+        "1965-70",
+        "1951-55"
+      ],
+      "answer": 0,
+      "explanation": "The First Five-Year Plan covered 1955-60 and was prepared by the Planning Board.",
+      "difficulty": "hard",
+      "id": "q09"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Under which scheme does Pakistan get preferential access to European Union markets?",
+      "options": [
+        "GATT",
+        "GSP+",
+        "NAFTA",
+        "ASEAN"
+      ],
+      "answer": 1,
+      "explanation": "Pakistan has enjoyed GSP+ preferential trade status with the EU since 2014.",
+      "difficulty": "medium",
+      "id": "q10"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The KSE-100 index is associated with which stock exchange?",
+      "options": [
+        "Bombay Stock Exchange",
+        "Dhaka Stock Exchange",
+        "Pakistan Stock Exchange",
+        "Colombo Stock Exchange"
+      ],
+      "answer": 2,
+      "explanation": "KSE-100 is the benchmark index of the Pakistan Stock Exchange.",
+      "difficulty": "easy",
+      "id": "q11"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Pakistan's national budget is presented in the National Assembly by which minister?",
+      "options": [
+        "Finance Minister",
+        "Interior Minister",
+        "Foreign Minister",
+        "Commerce Minister"
+      ],
+      "answer": 0,
+      "explanation": "The federal budget is presented by the Minister of Finance in the National Assembly.",
+      "difficulty": "easy",
+      "id": "q12"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Pakistan's currency is the?",
+      "options": [
+        "Pakistani Rupee",
+        "Taka",
+        "Afghani",
+        "Riyal"
+      ],
+      "answer": 0,
+      "explanation": "The Pakistani Rupee (PKR) is issued by the State Bank of Pakistan.",
+      "difficulty": "easy",
+      "id": "q13"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The largest source of foreign exchange earnings for Pakistan is?",
+      "options": [
+        "Remittances from overseas Pakistanis",
+        "Textile exports",
+        "Agriculture",
+        "Tourism"
+      ],
+      "answer": 0,
+      "explanation": "Workers' remittances have consistently been Pakistan's largest source of foreign exchange.",
+      "difficulty": "medium",
+      "id": "q14"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which sector contributes the most to Pakistan's GDP?",
+      "options": [
+        "Services",
+        "Agriculture",
+        "Industry",
+        "Mining"
+      ],
+      "answer": 0,
+      "explanation": "The services sector contributes over half of Pakistan's GDP.",
+      "difficulty": "medium",
+      "id": "q15"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Pakistan's major export crop is?",
+      "options": [
+        "Cotton (and textiles)",
+        "Rice only",
+        "Sugarcane",
+        "Wheat"
+      ],
+      "answer": 0,
+      "explanation": "Cotton and textile products are Pakistan's largest exports.",
+      "difficulty": "easy",
+      "id": "q16"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which dam is the largest source of hydroelectric power in Pakistan?",
+      "options": [
+        "Tarbela Dam",
+        "Mangla Dam",
+        "Warsak Dam",
+        "Ghazi Barotha"
+      ],
+      "answer": 0,
+      "explanation": "Tarbela Dam, on the Indus, is Pakistan's largest hydroelectric facility.",
+      "difficulty": "easy",
+      "id": "q17"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The 'China-Pakistan Economic Corridor' (CPEC) is part of which Chinese initiative?",
+      "options": [
+        "Belt and Road Initiative",
+        "New Silk Road Treaty",
+        "Shanghai Cooperation",
+        "ASEAN Plus"
+      ],
+      "answer": 0,
+      "explanation": "CPEC is a flagship project of China's Belt and Road Initiative (BRI).",
+      "difficulty": "easy",
+      "id": "q18"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which stock exchange is the main stock market of Pakistan?",
+      "options": [
+        "Pakistan Stock Exchange (PSX)",
+        "Karachi Stock Exchange only",
+        "Lahore Stock Exchange",
+        "KSE-100 only"
+      ],
+      "answer": 0,
+      "explanation": "The PSX, formed in 2016 by merging Karachi, Lahore and Islamabad exchanges, is Pakistan's bourse.",
+      "difficulty": "easy",
+      "id": "q19"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The main index of the Pakistan Stock Exchange is?",
+      "options": [
+        "KSE-100 Index",
+        "PSX-50",
+        "All Shares Index",
+        "PSX-30"
+      ],
+      "answer": 0,
+      "explanation": "The KSE-100 is the benchmark index of the Pakistan Stock Exchange.",
+      "difficulty": "easy",
+      "id": "q20"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which is the largest bank of Pakistan by assets?",
+      "options": [
+        "Habib Bank Limited (HBL)",
+        "MCB Bank",
+        "National Bank of Pakistan",
+        "Allied Bank"
+      ],
+      "answer": 0,
+      "explanation": "HBL is Pakistan's largest bank by assets and reach.",
+      "difficulty": "medium",
+      "id": "q21"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Pakistan Railways network connects which major city as its headquarters?",
+      "options": [
+        "Lahore",
+        "Karachi",
+        "Islamabad",
+        "Peshawar"
+      ],
+      "answer": 0,
+      "explanation": "Pakistan Railways is headquartered in Lahore.",
+      "difficulty": "medium",
+      "id": "q22"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Pakistan's main sea port handling the bulk of trade is?",
+      "options": [
+        "Port of Karachi",
+        "Gwadar Port",
+        "Port Qasim",
+        "Bin Qasim only"
+      ],
+      "answer": 0,
+      "explanation": "Karachi Port and Port Qasim handle most of Pakistan's sea trade; Gwadar is growing.",
+      "difficulty": "medium",
+      "id": "q23"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which mineral is Pakistan's most important, with large reserves in Balochistan?",
+      "options": [
+        "Natural gas and coal",
+        "Gold only",
+        "Uranium",
+        "Iron ore only"
+      ],
+      "answer": 0,
+      "explanation": "Pakistan has major natural gas reserves and large coal deposits (Thar), plus minerals like copper.",
+      "difficulty": "medium",
+      "id": "q24"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Thar coal project, one of the world's largest, is located in?",
+      "options": [
+        "Sindh",
+        "Punjab",
+        "Balochistan",
+        "Gilgit-Baltistan"
+      ],
+      "answer": 0,
+      "explanation": "The Thar coalfield in Sindh holds vast lignite reserves being developed for power.",
+      "difficulty": "medium",
+      "id": "q25"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which crop is Pakistan among the world's largest producers of?",
+      "options": [
+        "Mangoes and dates",
+        "Coffee",
+        "Tea",
+        "Cocoa"
+      ],
+      "answer": 0,
+      "explanation": "Pakistan is a top producer of mangoes and dates, alongside cotton, wheat and rice.",
+      "difficulty": "medium",
+      "id": "q26"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The 'Roshan Digital Account' was launched by which bank?",
+      "options": [
+        "State Bank of Pakistan",
+        "HBL",
+        "Meezan Bank",
+        "UBL"
+      ],
+      "answer": 0,
+      "explanation": "SBP launched Roshan Digital Accounts in 2020 to let overseas Pakistanis bank digitally.",
+      "difficulty": "medium",
+      "id": "q27"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Pakistan's agricultural sector employs about what share of the labour force?",
+      "options": [
+        "About 37%",
+        "About 10%",
+        "About 60%",
+        "About 5%"
+      ],
+      "answer": 0,
+      "explanation": "Agriculture employs roughly 37% of Pakistan's workforce and contributes about 24% of GDP.",
+      "difficulty": "hard",
+      "id": "q28"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which international financial institution is Pakistan a founding member of?",
+      "options": [
+        "World Bank and IMF",
+        "Only OPEC",
+        "European Union",
+        "OECD"
+      ],
+      "answer": 0,
+      "explanation": "Pakistan joined the World Bank and IMF in 1950 as a founding-era member.",
+      "difficulty": "medium",
+      "id": "q29"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Pakistan's GDP per capita is classified by the World Bank as?",
+      "options": [
+        "Lower-middle income",
+        "High income",
+        "Low income only",
+        "Upper-middle income"
+      ],
+      "answer": 0,
+      "explanation": "The World Bank classifies Pakistan as a lower-middle-income economy.",
+      "difficulty": "medium",
+      "id": "q30"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which sector contributes most to Pakistan's exports?",
+      "options": [
+        "Textiles and garments",
+        "IT services",
+        "Pharmaceuticals",
+        "Automobiles"
+      ],
+      "answer": 0,
+      "explanation": "Textiles account for over half of Pakistan's exports.",
+      "difficulty": "easy",
+      "id": "q31"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The 'SME Bank' and 'Kissan Card' initiatives support which sectors?",
+      "options": [
+        "Small businesses and agriculture",
+        "Only big industry",
+        "Only services",
+        "Defence"
+      ],
+      "answer": 0,
+      "explanation": "SME financing and Kissan Cards target small enterprises and farmers.",
+      "difficulty": "medium",
+      "id": "q32"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Pakistan's largest trading partner is?",
+      "options": [
+        "China",
+        "USA",
+        "UK",
+        "Saudi Arabia"
+      ],
+      "answer": 0,
+      "explanation": "China has been Pakistan's largest trading partner for over a decade.",
+      "difficulty": "medium",
+      "id": "q33"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The 'GSP Plus' status grants Pakistan preferential access to which market?",
+      "options": [
+        "The European Union",
+        "The USA",
+        "China",
+        "The Gulf states"
+      ],
+      "answer": 0,
+      "explanation": "GSP Plus gives Pakistani exports duty-free access to the EU market.",
+      "difficulty": "easy",
+      "id": "q34"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which of these is Pakistan's main export destination?",
+      "options": [
+        "USA and UK for textiles, with China growing",
+        "Only China",
+        "Only the Gulf",
+        "Only Australia"
+      ],
+      "answer": 0,
+      "explanation": "The USA and UK remain top textile buyers; China and the EU are also major.",
+      "difficulty": "medium",
+      "id": "q35"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The 'Pakistan Stock Exchange' is located in which city?",
+      "options": [
+        "Karachi",
+        "Lahore",
+        "Islamabad",
+        "Faisalabad"
+      ],
+      "answer": 0,
+      "explanation": "PSX headquarters is in Karachi, with trading floors in Lahore and Islamabad.",
+      "difficulty": "easy",
+      "id": "q36"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which currency denomination note features Quaid-e-Azam?",
+      "options": [
+        "All notes feature him in various designs",
+        "Only the 10-rupee note",
+        "Only the 1000-rupee note",
+        "Only coins"
+      ],
+      "answer": 0,
+      "explanation": "Jinnah appears on most Pakistani banknotes in different poses.",
+      "difficulty": "easy",
+      "id": "q37"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The 'Tarbela Dam' was completed with assistance from which country?",
+      "options": [
+        "The World Bank and US aid",
+        "China only",
+        "The UK only",
+        "Japan only"
+      ],
+      "answer": 0,
+      "explanation": "Tarbela was funded largely through World Bank and US assistance in the 1970s.",
+      "difficulty": "medium",
+      "id": "q38"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Pakistan's 'K-Electric' supplies power to which city?",
+      "options": [
+        "Karachi and surrounding areas",
+        "Lahore",
+        "Islamabad",
+        "Peshawar"
+      ],
+      "answer": 0,
+      "explanation": "K-Electric is the vertically integrated utility serving Karachi.",
+      "difficulty": "easy",
+      "id": "q39"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which organization publishes the 'Doing Business' report ranking countries?",
+      "options": [
+        "The World Bank",
+        "The IMF",
+        "The UN",
+        "The WTO"
+      ],
+      "answer": 0,
+      "explanation": "The World Bank published Doing Business rankings (discontinued after 2020).",
+      "difficulty": "easy",
+      "id": "q40"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The 'State Bank of Pakistan' was established in?",
+      "options": [
+        "1948",
+        "1947",
+        "1950",
+        "1956"
+      ],
+      "answer": 0,
+      "explanation": "The SBP was inaugurated on 1 July 1948.",
+      "difficulty": "easy",
+      "id": "q41"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The first Governor of the State Bank of Pakistan was?",
+      "options": [
+        "Zahid Husain",
+        "Quaid-e-Azam",
+        "Liaquat Ali Khan",
+        "Ghulam Muhammad"
+      ],
+      "answer": 0,
+      "explanation": "Zahid Husain was SBP's first governor; Quaid-e-Azam inaugurated it.",
+      "difficulty": "hard",
+      "id": "q42"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Pakistan's fiscal year runs from?",
+      "options": [
+        "July to June",
+        "January to December",
+        "April to March",
+        "October to September"
+      ],
+      "answer": 0,
+      "explanation": "Pakistan's fiscal year is July 1 to June 30.",
+      "difficulty": "easy",
+      "id": "q43"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The 'Federal Board of Revenue' (FBR) is responsible for?",
+      "options": [
+        "Collecting federal taxes and customs",
+        "Managing the stock exchange",
+        "Controlling inflation",
+        "Printing currency"
+      ],
+      "answer": 0,
+      "explanation": "The FBR collects income tax, sales tax and customs duties.",
+      "difficulty": "easy",
+      "id": "q44"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which sector is Pakistan's largest employer?",
+      "options": [
+        "Agriculture",
+        "Manufacturing",
+        "IT",
+        "Banking"
+      ],
+      "answer": 0,
+      "explanation": "Agriculture employs the largest share of Pakistan's workforce.",
+      "difficulty": "easy",
+      "id": "q45"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The 'Gwadar Port' is operated under a long-term agreement with?",
+      "options": [
+        "China (China Overseas Port Holding Company)",
+        "The UAE",
+        "Saudi Arabia",
+        "Turkey"
+      ],
+      "answer": 0,
+      "explanation": "COPHC operates Gwadar Port under a 40-year agreement.",
+      "difficulty": "easy",
+      "id": "q46"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which commodity does Pakistan import the most?",
+      "options": [
+        "Petroleum and fuel products",
+        "Cotton",
+        "Wheat",
+        "Electronics only"
+      ],
+      "answer": 0,
+      "explanation": "Crude oil and refined fuels are Pakistan's largest imports.",
+      "difficulty": "easy",
+      "id": "q47"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The 'Remittance' inflows mainly come from overseas Pakistanis in which region?",
+      "options": [
+        "The Gulf (Saudi Arabia, UAE)",
+        "Only the USA",
+        "Only Europe",
+        "Only Australia"
+      ],
+      "answer": 0,
+      "explanation": "Gulf states contribute the largest share of worker remittances.",
+      "difficulty": "easy",
+      "id": "q48"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which banknote in Pakistan features the Badshahi Mosque?",
+      "options": [
+        "The 100-rupee note (and others)",
+        "The 10-rupee note",
+        "The 5000-rupee note",
+        "Coins only"
+      ],
+      "answer": 0,
+      "explanation": "The Badshahi Mosque has appeared on the 100-rupee and other notes.",
+      "difficulty": "hard",
+      "id": "q49"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The first five-year plan of Pakistan was launched in:",
+      "options": [
+        "1955",
+        "1958",
+        "1950",
+        "1960"
+      ],
+      "answer": 0,
+      "explanation": "The First Five-Year Plan ran from 1955 to 1960.",
+      "difficulty": "medium",
+      "id": "q50"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which organisation calculates Pakistan's GDP growth?",
+      "options": [
+        "Pakistan Bureau of Statistics",
+        "SBP",
+        "Ministry of Finance",
+        "SECP"
+      ],
+      "answer": 0,
+      "explanation": "The PBS compiles national accounts and GDP data.",
+      "difficulty": "easy",
+      "id": "q51"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Khushhali Bank is primarily a:",
+      "options": [
+        "Microfinance bank",
+        "Investment bank",
+        "Commercial bank",
+        "Central bank"
+      ],
+      "answer": 0,
+      "explanation": "Khushhali Bank provides microfinance services to low-income groups.",
+      "difficulty": "medium",
+      "id": "q52"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Pakistan's currency was decimalised in which year?",
+      "options": [
+        "1961",
+        "1955",
+        "1972",
+        "1948"
+      ],
+      "answer": 0,
+      "explanation": "The rupee was decimalised on 1 January 1961.",
+      "difficulty": "medium",
+      "id": "q53"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The famous Sui gas field is located in:",
+      "options": [
+        "Balochistan",
+        "Sindh",
+        "Punjab",
+        "KPK"
+      ],
+      "answer": 0,
+      "explanation": "The Sui gas field is in Balochistan.",
+      "difficulty": "easy",
+      "id": "q54"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Karachi Stock Exchange was renamed as:",
+      "options": [
+        "Pakistan Stock Exchange (PSX)",
+        "KSE 100",
+        "LSE",
+        "ISE"
+      ],
+      "answer": 0,
+      "explanation": "KSE merged into the Pakistan Stock Exchange in 2016.",
+      "difficulty": "easy",
+      "id": "q55"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Pakistan's largest export in recent years is:",
+      "options": [
+        "Textiles and garments",
+        "Petroleum",
+        "Rice only",
+        "Sports goods"
+      ],
+      "answer": 0,
+      "explanation": "Textiles remain Pakistan's largest export category.",
+      "difficulty": "easy",
+      "id": "q56"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The CPEC project was launched in which year?",
+      "options": [
+        "2013",
+        "2015",
+        "2010",
+        "2018"
+      ],
+      "answer": 0,
+      "explanation": "CPEC was formally launched in 2013 and accelerated from 2015.",
+      "difficulty": "easy",
+      "id": "q57"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The highest denomination banknote currently issued by Pakistan is:",
+      "options": [
+        "5000 rupees",
+        "1000 rupees",
+        "10000 rupees",
+        "500 rupees"
+      ],
+      "answer": 0,
+      "explanation": "The 5000-rupee note is the highest denomination in circulation.",
+      "difficulty": "easy",
+      "id": "q58"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which ministry handles Pakistan's trade negotiations with the WTO?",
+      "options": [
+        "Ministry of Commerce",
+        "Ministry of Finance",
+        "Foreign Office",
+        "Ministry of Industries"
+      ],
+      "answer": 0,
+      "explanation": "The Ministry of Commerce deals with trade and WTO matters.",
+      "difficulty": "easy",
+      "id": "q59"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The KSE-100 index tracks the performance of:",
+      "options": [
+        "The top 100 companies at the PSX",
+        "All banks",
+        "Government bonds",
+        "Export firms only"
+      ],
+      "answer": 0,
+      "explanation": "KSE-100 is the benchmark index of 100 leading companies.",
+      "difficulty": "easy",
+      "id": "q60"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The annual budget of Pakistan is presented in which month?",
+      "options": [
+        "June",
+        "January",
+        "September",
+        "March"
+      ],
+      "answer": 0,
+      "explanation": "The federal budget is usually presented in June.",
+      "difficulty": "easy",
+      "id": "q61"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Pakistan Remittance Initiative (PRI) encourages:",
+      "options": [
+        "Money sent home by overseas Pakistanis",
+        "Foreign investment",
+        "Exports",
+        "Tourism"
+      ],
+      "answer": 0,
+      "explanation": "PRI promotes formal channels for worker remittances.",
+      "difficulty": "medium",
+      "id": "q62"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The first woman governor of the State Bank of Pakistan was:",
+      "options": [
+        "Dr. Shamshad Akhtar",
+        "Hina Rabbani Khar",
+        "Malala Yousafzai",
+        "Sania Nishtar"
+      ],
+      "answer": 0,
+      "explanation": "Dr. Shamshad Akhtar served as SBP governor from 2006 to 2009.",
+      "difficulty": "medium",
+      "id": "q63"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Benazir Income Support Programme (BISP) was launched in:",
+      "options": [
+        "2008",
+        "2005",
+        "2010",
+        "2002"
+      ],
+      "answer": 0,
+      "explanation": "BISP was launched in 2008 to provide cash transfers to the poor.",
+      "difficulty": "easy",
+      "id": "q64"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which organisation audits the federal accounts of Pakistan?",
+      "options": [
+        "Auditor General of Pakistan",
+        "SBP",
+        "FBR",
+        "SECP"
+      ],
+      "answer": 0,
+      "explanation": "The Auditor General audits federal and provincial accounts.",
+      "difficulty": "easy",
+      "id": "q65"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The 'Bolan' and 'Badr' are examples of Pakistan's:",
+      "options": [
+        "Missiles and space systems",
+        "Textile brands",
+        "Railway lines",
+        "Irrigation canals"
+      ],
+      "answer": 0,
+      "explanation": "Bolan and Badr are missile and space programme names.",
+      "difficulty": "hard",
+      "id": "q66"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Pakistan's main source of foreign exchange earnings is:",
+      "options": [
+        "Remittances",
+        "Tourism",
+        "Software exports",
+        "Agriculture only"
+      ],
+      "answer": 0,
+      "explanation": "Worker remittances are the largest source of foreign exchange.",
+      "difficulty": "easy",
+      "id": "q67"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Securities and Exchange Commission of Pakistan (SECP) regulates:",
+      "options": [
+        "Corporate sector and capital markets",
+        "Banks only",
+        "Insurance only",
+        "Agriculture"
+      ],
+      "answer": 0,
+      "explanation": "SECP regulates companies, securities markets and non-bank financial institutions.",
+      "difficulty": "easy",
+      "id": "q68"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Indus Water Treaty was signed in which year?",
+      "options": [
+        "1960",
+        "1947",
+        "1955",
+        "1965"
+      ],
+      "answer": 0,
+      "explanation": "The Indus Waters Treaty was signed in 1960 with India.",
+      "difficulty": "easy",
+      "id": "q69"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Pakistan's 'Roshan Digital Account' is meant for:",
+      "options": [
+        "Overseas Pakistanis to bank remotely",
+        "Students only",
+        "Farmers only",
+        "Public servants"
+      ],
+      "answer": 0,
+      "explanation": "RDA lets overseas Pakistanis open accounts digitally.",
+      "difficulty": "easy",
+      "id": "q70"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The National Savings schemes are managed by:",
+      "options": [
+        "Central Directorate of National Savings",
+        "SBP",
+        "HBL",
+        "UBL"
+      ],
+      "answer": 0,
+      "explanation": "The CDNS runs National Savings schemes.",
+      "difficulty": "medium",
+      "id": "q71"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The first commercial bank of Pakistan was:",
+      "options": [
+        "Habib Bank (HBL)",
+        "MCB",
+        "Allied Bank",
+        "Bank Alfalah"
+      ],
+      "answer": 0,
+      "explanation": "HBL, founded in 1941, was the first commercial bank of Pakistan.",
+      "difficulty": "medium",
+      "id": "q72"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The 'Khyber Pass Economic Corridor' connects Pakistan with:",
+      "options": [
+        "Afghanistan and Central Asia",
+        "China only",
+        "India",
+        "Iran"
+      ],
+      "answer": 0,
+      "explanation": "The Khyber corridor links Pakistan to Afghanistan and Central Asia.",
+      "difficulty": "medium",
+      "id": "q73"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Pakistan's stock market index is the:",
+      "options": [
+        "KSE-100",
+        "KSE-30",
+        "PSX-50",
+        "LSE-25"
+      ],
+      "answer": 0,
+      "explanation": "KSE-100 is the benchmark index of the PSX.",
+      "difficulty": "easy",
+      "id": "q74"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The 'Green Pakistan' programme focuses on:",
+      "options": [
+        "Afforestation and environment",
+        "Green energy only",
+        "Textile exports",
+        "Tourism"
+      ],
+      "answer": 0,
+      "explanation": "Green Pakistan Initiative promotes forests and environmental restoration.",
+      "difficulty": "easy",
+      "id": "q75"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which organisation issues Pakistan's currency notes?",
+      "options": [
+        "State Bank of Pakistan",
+        "Ministry of Finance",
+        "Treasury",
+        "FBR"
+      ],
+      "answer": 0,
+      "explanation": "The SBP issues and manages currency.",
+      "difficulty": "easy",
+      "id": "q76"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The 'Special Investment Facilitation Council' (SIFC) was formed in:",
+      "options": [
+        "2023",
+        "2019",
+        "2020",
+        "2018"
+      ],
+      "answer": 0,
+      "explanation": "SIFC was established in 2023 to attract investment.",
+      "difficulty": "medium",
+      "id": "q77"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The 'Billion Tree Tsunami' was a project of which province?",
+      "options": [
+        "Khyber Pakhtunkhwa",
+        "Punjab",
+        "Sindh",
+        "Balochistan"
+      ],
+      "answer": 0,
+      "explanation": "The Billion Tree Tsunami was launched in KPK.",
+      "difficulty": "easy",
+      "id": "q78"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Pakistan's 'Export Processing Zones' include which city?",
+      "options": [
+        "Sialkot and Karachi",
+        "Only Lahore",
+        "Only Quetta",
+        "Only Gwadar"
+      ],
+      "answer": 0,
+      "explanation": "EPZs operate in Sialkot, Karachi and other cities.",
+      "difficulty": "medium",
+      "id": "q79"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The 'Pakistan Poverty Alleviation Fund' (PPAF) was established in:",
+      "options": [
+        "1997",
+        "2005",
+        "2000",
+        "2010"
+      ],
+      "answer": 0,
+      "explanation": "PPAF was set up in 1997.",
+      "difficulty": "hard",
+      "id": "q80"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The currency note featuring Allama Iqbal is the:",
+      "options": [
+        "5-rupee note",
+        "10-rupee note",
+        "100-rupee note",
+        "5000-rupee note"
+      ],
+      "answer": 0,
+      "explanation": "Iqbal has appeared on the 5-rupee note.",
+      "difficulty": "medium",
+      "id": "q81"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The 'Sindh Engro Coal Mining' project is located at:",
+      "options": [
+        "Thar",
+        "Chagai",
+        "Sibi",
+        "Khuzdar"
+      ],
+      "answer": 0,
+      "explanation": "The Thar coal project is in Sindh.",
+      "difficulty": "easy",
+      "id": "q82"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The 'Karakoram International University' is a sign of development in:",
+      "options": [
+        "Gilgit-Baltistan",
+        "Sindh",
+        "Punjab",
+        "Balochistan"
+      ],
+      "answer": 0,
+      "explanation": "KIU is located in Gilgit-Baltistan.",
+      "difficulty": "easy",
+      "id": "q83"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The main source of revenue for the federal government is:",
+      "options": [
+        "Taxes (FBR)",
+        "Foreign aid",
+        "Export duties only",
+        "Zakat"
+      ],
+      "answer": 0,
+      "explanation": "The FBR collects the bulk of federal revenue through taxes.",
+      "difficulty": "easy",
+      "id": "q84"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The 'WAPDA' was established in:",
+      "options": [
+        "1958",
+        "1947",
+        "1973",
+        "1965"
+      ],
+      "answer": 0,
+      "explanation": "WAPDA was created in 1958.",
+      "difficulty": "medium",
+      "id": "q85"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The 'Hub Power Company' (Hubco) is located in:",
+      "options": [
+        "Balochistan (near Karachi)",
+        "Punjab",
+        "KPK",
+        "Sindh interior"
+      ],
+      "answer": 0,
+      "explanation": "Hubco is situated at Hub, Balochistan.",
+      "difficulty": "medium",
+      "id": "q86"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Pakistan's first 'IT Park' was established at:",
+      "options": [
+        "Islamabad (NSTP context)",
+        "Lahore only",
+        "Karachi only",
+        "Peshawar"
+      ],
+      "answer": 0,
+      "explanation": "The National Science and Technology Park is in Islamabad.",
+      "difficulty": "hard",
+      "id": "q87"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The 'Green Pakistan' and 'Digital Pakistan' are examples of:",
+      "options": [
+        "National development initiatives",
+        "Military operations",
+        "Provincial schemes only",
+        "Foreign aid projects"
+      ],
+      "answer": 0,
+      "explanation": "Both are national policy initiatives of the government.",
+      "difficulty": "easy",
+      "id": "q88"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Pakistan became a member of the International Monetary Fund (IMF) in which year?",
+      "options": [
+        "1950",
+        "1947",
+        "1958",
+        "1962"
+      ],
+      "answer": 0,
+      "explanation": "Pakistan joined the IMF in 1950.",
+      "difficulty": "hard",
+      "id": "q89"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Asian Development Bank (ADB) was founded in which year, with Pakistan as a founding member?",
+      "options": [
+        "1966",
+        "1960",
+        "1971",
+        "1956"
+      ],
+      "answer": 0,
+      "explanation": "The ADB was established in 1966 with Pakistan among its founding members.",
+      "difficulty": "hard",
+      "id": "q90"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Neelum-Jhelum Hydropower Project is located in which region?",
+      "options": [
+        "Azad Kashmir",
+        "Gilgit-Baltistan",
+        "Khyber Pakhtunkhwa",
+        "Punjab"
+      ],
+      "answer": 0,
+      "explanation": "The Neelum-Jhelum project is in Azad Kashmir.",
+      "difficulty": "medium",
+      "id": "q91"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Diamer-Bhasha Dam is being constructed on which river?",
+      "options": [
+        "Indus",
+        "Jhelum",
+        "Chenab",
+        "Kabul"
+      ],
+      "answer": 0,
+      "explanation": "The Diamer-Bhasha Dam is under construction on the Indus River.",
+      "difficulty": "medium",
+      "id": "q92"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Dasu Hydropower Project is located on which river?",
+      "options": [
+        "Indus",
+        "Swat",
+        "Jhelum",
+        "Panjkora"
+      ],
+      "answer": 0,
+      "explanation": "The Dasu project lies on the Indus River in Khyber Pakhtunkhwa.",
+      "difficulty": "hard",
+      "id": "q93"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Karot Hydropower Project, a CPEC project, is built on which river?",
+      "options": [
+        "Jhelum",
+        "Indus",
+        "Chenab",
+        "Ravi"
+      ],
+      "answer": 0,
+      "explanation": "The Karot project is on the Jhelum River.",
+      "difficulty": "hard",
+      "id": "q94"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Sahiwal Coal Power Project, Pakistan's first CPEC energy project, is located in which province?",
+      "options": [
+        "Punjab",
+        "Sindh",
+        "Balochistan",
+        "Khyber Pakhtunkhwa"
+      ],
+      "answer": 0,
+      "explanation": "The Sahiwal project is in Punjab.",
+      "difficulty": "medium",
+      "id": "q95"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Port Qasim, Pakistan's second-largest port, is located near which city?",
+      "options": [
+        "Karachi",
+        "Hyderabad",
+        "Gwadar",
+        "Thatta"
+      ],
+      "answer": 0,
+      "explanation": "Port Qasim is situated near Karachi.",
+      "difficulty": "medium",
+      "id": "q96"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Basmati, Pakistan's prized export, is a variety of which crop?",
+      "options": [
+        "Rice",
+        "Wheat",
+        "Maize",
+        "Millet"
+      ],
+      "answer": 0,
+      "explanation": "Basmati is a premium aromatic variety of rice.",
+      "difficulty": "easy",
+      "id": "q97"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Pakistan is among the world's top ten producers of which fruit alongside mangoes?",
+      "options": [
+        "Dates",
+        "Apples",
+        "Grapes",
+        "Oranges"
+      ],
+      "answer": 0,
+      "explanation": "Pakistan is one of the world's largest producers of dates.",
+      "difficulty": "medium",
+      "id": "q98"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The financial year of the State Bank of Pakistan follows the fiscal year ending in which month?",
+      "options": [
+        "June",
+        "December",
+        "March",
+        "September"
+      ],
+      "answer": 0,
+      "explanation": "Pakistan's fiscal year ends on 30 June.",
+      "difficulty": "medium",
+      "id": "q99"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Monetary Policy Committee of the State Bank of Pakistan sets which key rate?",
+      "options": [
+        "The policy rate",
+        "The discount on exports",
+        "The KSE-100",
+        "The bank spread"
+      ],
+      "answer": 0,
+      "explanation": "The MPC sets the policy rate that guides interest rates in the economy.",
+      "difficulty": "hard",
+      "id": "q100"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Pakistan was removed from the FATF 'grey list' in which year?",
+      "options": [
+        "2022",
+        "2020",
+        "2023",
+        "2019"
+      ],
+      "answer": 0,
+      "explanation": "Pakistan exited the FATF grey list in October 2022.",
+      "difficulty": "hard",
+      "id": "q101"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Financial Action Task Force (FATF) primarily combats?",
+      "options": [
+        "Money laundering and terror financing",
+        "Inflation",
+        "Trade deficits",
+        "Tax evasion only"
+      ],
+      "answer": 0,
+      "explanation": "FATF sets standards to combat money laundering and terrorist financing.",
+      "difficulty": "medium",
+      "id": "q102"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The first Pakistani bank to be privatised in the 1990s was?",
+      "options": [
+        "Muslim Commercial Bank",
+        "Habib Bank",
+        "United Bank",
+        "Allied Bank"
+      ],
+      "answer": 0,
+      "explanation": "Muslim Commercial Bank (MCB) was the first bank privatised in 1991.",
+      "difficulty": "hard",
+      "id": "q103"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Pakistan Steel Mills is located near which city?",
+      "options": [
+        "Karachi",
+        "Lahore",
+        "Multan",
+        "Peshawar"
+      ],
+      "answer": 0,
+      "explanation": "Pakistan Steel Mills is located near Karachi.",
+      "difficulty": "easy",
+      "id": "q104"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Orange Line is a mass transit project of which city?",
+      "options": [
+        "Lahore",
+        "Karachi",
+        "Islamabad",
+        "Multan"
+      ],
+      "answer": 0,
+      "explanation": "The Orange Line Metro Train serves Lahore.",
+      "difficulty": "easy",
+      "id": "q105"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Main Line-1 (ML-1) railway upgrade is being carried out under which framework?",
+      "options": [
+        "CPEC",
+        "GSP Plus",
+        "Belt and Road only",
+        "SAFTA"
+      ],
+      "answer": 0,
+      "explanation": "The ML-1 project is part of CPEC.",
+      "difficulty": "medium",
+      "id": "q106"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The China-Pakistan Economic Corridor connects Gwadar with which Chinese city?",
+      "options": [
+        "Kashgar",
+        "Beijing",
+        "Shanghai",
+        "Urumqi"
+      ],
+      "answer": 0,
+      "explanation": "CPEC links Gwadar Port with Kashgar in western China.",
+      "difficulty": "medium",
+      "id": "q107"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Kachhi Canal is an irrigation project of which province?",
+      "options": [
+        "Balochistan",
+        "Punjab",
+        "Sindh",
+        "Khyber Pakhtunkhwa"
+      ],
+      "answer": 0,
+      "explanation": "The Kachhi Canal supplies water to Balochistan.",
+      "difficulty": "hard",
+      "id": "q108"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Ehsaas Programme, a poverty alleviation initiative, was launched in which year?",
+      "options": [
+        "2019",
+        "2017",
+        "2020",
+        "2015"
+      ],
+      "answer": 0,
+      "explanation": "The Ehsaas Programme was launched in 2019.",
+      "difficulty": "medium",
+      "id": "q109"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Benazir Income Support Programme provides financial support primarily to?",
+      "options": [
+        "Low-income women",
+        "Industrialists",
+        "Students abroad",
+        "Farmers only"
+      ],
+      "answer": 0,
+      "explanation": "BISP targets financial assistance to low-income women.",
+      "difficulty": "medium",
+      "id": "q110"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Pakistan's largest cement exporter is?",
+      "options": [
+        "Lucky Cement",
+        "Maple Leaf Cement",
+        "Fauji Cement",
+        "DG Khan Cement"
+      ],
+      "answer": 0,
+      "explanation": "Lucky Cement is Pakistan's largest cement exporter.",
+      "difficulty": "hard",
+      "id": "q111"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Fauji Fertiliser and Engro are major producers of which agricultural input?",
+      "options": [
+        "Fertiliser",
+        "Pesticides",
+        "Seeds",
+        "Tractors"
+      ],
+      "answer": 0,
+      "explanation": "Fauji Fertiliser and Engro are leading fertiliser producers.",
+      "difficulty": "medium",
+      "id": "q112"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The General Sales Tax (GST) was introduced in Pakistan in which year?",
+      "options": [
+        "1990",
+        "1985",
+        "1995",
+        "2000"
+      ],
+      "answer": 0,
+      "explanation": "GST was introduced in 1990.",
+      "difficulty": "hard",
+      "id": "q113"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Pakistan's textile sector accounts for approximately what share of total exports?",
+      "options": [
+        "60 percent",
+        "30 percent",
+        "80 percent",
+        "45 percent"
+      ],
+      "answer": 0,
+      "explanation": "Textiles account for about 60 percent of Pakistan's exports.",
+      "difficulty": "medium",
+      "id": "q114"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The largest source of edible oil imports for Pakistan is?",
+      "options": [
+        "Palm oil",
+        "Sunflower oil",
+        "Olive oil",
+        "Canola oil"
+      ],
+      "answer": 0,
+      "explanation": "Pakistan imports most of its edible oil as palm oil.",
+      "difficulty": "medium",
+      "id": "q115"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Pakistan Mint, which produces coins, is located in which city?",
+      "options": [
+        "Lahore",
+        "Karachi",
+        "Islamabad",
+        "Rawalpindi"
+      ],
+      "answer": 0,
+      "explanation": "The Pakistan Mint is in Lahore.",
+      "difficulty": "medium",
+      "id": "q116"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Board of Investment (BOI) of Pakistan promotes?",
+      "options": [
+        "Foreign and domestic investment",
+        "Only exports",
+        "Tourism",
+        "Banking regulation"
+      ],
+      "answer": 0,
+      "explanation": "The BOI facilitates foreign and domestic investment.",
+      "difficulty": "medium",
+      "id": "q117"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The National Tariff Commission of Pakistan advises on?",
+      "options": [
+        "Customs tariffs and trade remedies",
+        "Monetary policy",
+        "Stock trading",
+        "Budget printing"
+      ],
+      "answer": 0,
+      "explanation": "The NTC deals with tariffs and trade remedies.",
+      "difficulty": "hard",
+      "id": "q118"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The KSE-100 index crossed the 100,000-point mark for the first time in which year?",
+      "options": [
+        "2024",
+        "2022",
+        "2020",
+        "2023"
+      ],
+      "answer": 0,
+      "explanation": "The KSE-100 crossed 100,000 points in 2024.",
+      "difficulty": "hard",
+      "id": "q119"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Indus Motor Company and Pak Suzuki manufacture vehicles for the?",
+      "options": [
+        "Automobile market of Pakistan",
+        "Export-only market",
+        "Defence sector",
+        "Railway sector"
+      ],
+      "answer": 0,
+      "explanation": "Indus Motor (Toyota) and Pak Suzuki are major automobile manufacturers in Pakistan.",
+      "difficulty": "easy",
+      "id": "q120"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Pakistan's main import partner for crude oil and petroleum is?",
+      "options": [
+        "Gulf countries",
+        "China",
+        "Europe",
+        "United States"
+      ],
+      "answer": 0,
+      "explanation": "Pakistan imports most crude oil and petroleum from Gulf countries.",
+      "difficulty": "medium",
+      "id": "q121"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The 'Pakistan Poverty Alleviation Fund' works through partner organisations to provide?",
+      "options": [
+        "Microcredit and social services",
+        "Industrial loans only",
+        "Export subsidies",
+        "Housing for civil servants"
+      ],
+      "answer": 0,
+      "explanation": "PPAF channels microcredit and social services through partner organisations.",
+      "difficulty": "medium",
+      "id": "q122"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Gwadar Free Zone is a special economic zone located in which province?",
+      "options": [
+        "Balochistan",
+        "Sindh",
+        "Punjab",
+        "Khyber Pakhtunkhwa"
+      ],
+      "answer": 0,
+      "explanation": "The Gwadar Free Zone lies in Balochistan.",
+      "difficulty": "medium",
+      "id": "q123"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The State Bank of Pakistan was established under which act?",
+      "options": [
+        "The State Bank of Pakistan Act 1956",
+        "The Banking Companies Ordinance 1962",
+        "The SBP Act 1948",
+        "The Companies Act 1913"
+      ],
+      "answer": 0,
+      "explanation": "The SBP operates under the State Bank of Pakistan Act 1956.",
+      "difficulty": "hard",
+      "id": "q124"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Pakistan's largest source of government revenue is?",
+      "options": [
+        "Taxation",
+        "Foreign aid",
+        "State-owned enterprises",
+        "Privatisation proceeds"
+      ],
+      "answer": 0,
+      "explanation": "Taxation is the largest source of government revenue.",
+      "difficulty": "medium",
+      "id": "q125"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The 'Kamyab Jawan' programme supports?",
+      "options": [
+        "Youth entrepreneurship and loans",
+        "Senior citizens",
+        "Civil servants",
+        "Agricultural exports"
+      ],
+      "answer": 0,
+      "explanation": "Kamyab Jawan provides loans and support to young entrepreneurs.",
+      "difficulty": "medium",
+      "id": "q126"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The 'Green Pakistan Programme' was launched in which year?",
+      "options": [
+        "2017",
+        "2015",
+        "2019",
+        "2013"
+      ],
+      "answer": 0,
+      "explanation": "The Green Pakistan Programme was launched in 2017.",
+      "difficulty": "hard",
+      "id": "q127"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Sialkot's major export industry is?",
+      "options": [
+        "Sports goods",
+        "Cement",
+        "Fertiliser",
+        "Electronics"
+      ],
+      "answer": 0,
+      "explanation": "Sialkot is world-famous for sports goods exports.",
+      "difficulty": "easy",
+      "id": "q128"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The 'Pakistan Bait-ul-Mal' is a welfare body that provides?",
+      "options": [
+        "Financial assistance to the needy",
+        "Bank loans",
+        "Export credit",
+        "Pension funds"
+      ],
+      "answer": 0,
+      "explanation": "Pakistan Bait-ul-Mal assists the poor and needy with financial aid.",
+      "difficulty": "medium",
+      "id": "q129"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The fiscal deficit of a country is the excess of what over revenue?",
+      "options": [
+        "Government expenditure",
+        "Private savings",
+        "Exports",
+        "Imports"
+      ],
+      "answer": 0,
+      "explanation": "A fiscal deficit occurs when government spending exceeds revenue.",
+      "difficulty": "easy",
+      "id": "q130"
+    }
+  ]
+}

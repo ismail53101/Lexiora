@@ -2,6 +2,7 @@ import 'package:flutter/material.dart' show ThemeMode;
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:lexiora/app/di/injector.dart';
 import 'package:lexiora/core/reader_engine/reader_models.dart';
+import 'package:lexiora/core/services/notification_service.dart';
 import 'package:lexiora/features/settings/domain/entities/app_settings.dart';
 import 'package:lexiora/features/settings/domain/repositories/settings_repository.dart';
 
@@ -51,11 +52,46 @@ class SettingsController {
   Future<void> setTranslationLanguage(String code) =>
       _mutate((AppSettings s) => s.copyWith(translationLanguage: code));
 
+  Future<void> setStudyRemindersEnabled(bool value) => _mutate(
+        (AppSettings s) => s.copyWith(studyRemindersEnabled: value),
+      );
+
+  Future<void> setStudyReminderMinutes(int value) => _mutate(
+        (AppSettings s) => s.copyWith(studyReminderMinutes: value),
+      );
+
+  Future<void> setBreakRemindersEnabled(bool value) => _mutate(
+        (AppSettings s) => s.copyWith(breakRemindersEnabled: value),
+      );
+
+  Future<void> setDailyWordEnabled(bool value) => _mutate(
+        (AppSettings s) => s.copyWith(dailyWordEnabled: value),
+      );
+
+  Future<void> setDailyWordTime({required int hour, required int minute}) =>
+      _mutate(
+        (AppSettings s) => s.copyWith(
+          dailyWordHour: hour,
+          dailyWordMinute: minute,
+        ),
+      );
+
+  Future<void> setNotificationSoundEnabled(bool value) => _mutate(
+        (AppSettings s) => s.copyWith(notificationSoundEnabled: value),
+      );
+
+  Future<void> setNotificationVibrationEnabled(bool value) => _mutate(
+        (AppSettings s) => s.copyWith(notificationVibrationEnabled: value),
+      );
+
   Future<void> setDisplayName(String name) =>
       _mutate((AppSettings s) => s.copyWith(displayName: name.trim()));
 
   Future<void> _mutate(AppSettings Function(AppSettings) update) async {
     final AppSettings current = await _repo.getSettings();
     await _repo.updateSettings(update(current));
+    if (sl.isRegistered<NotificationService>()) {
+      await sl<NotificationService>().rescheduleAll();
+    }
   }
 }

@@ -1,0 +1,1833 @@
+{
+  "bank": {
+    "name": "Provinces & Regions",
+    "subject": "Pakistan Affairs",
+    "topic": "Provinces & Regions",
+    "description": "Capitals, valleys, cities and notable places across Pakistan's provinces and territories.",
+    "tags": "css,pms,fpsc,pakistan-affairs,provinces,regions",
+    "version": "1.0",
+    "id": "pakistan_affairs_provinces_regions"
+  },
+  "questions": [
+    {
+      "type": "mcq",
+      "prompt": "What is the capital of Punjab?",
+      "options": [
+        "Lahore",
+        "Faisalabad",
+        "Rawalpindi",
+        "Multan"
+      ],
+      "answer": 0,
+      "explanation": "Lahore is the capital of Punjab and Pakistan's cultural heart.",
+      "difficulty": "easy",
+      "id": "q01"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What is the capital of Sindh?",
+      "options": [
+        "Hyderabad",
+        "Sukkur",
+        "Karachi",
+        "Larkana"
+      ],
+      "answer": 2,
+      "explanation": "Karachi is the capital of Sindh province.",
+      "difficulty": "easy",
+      "id": "q02"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What is the capital of Khyber Pakhtunkhwa?",
+      "options": [
+        "Abbottabad",
+        "Mardan",
+        "Swat",
+        "Peshawar"
+      ],
+      "answer": 3,
+      "explanation": "Peshawar is the capital of Khyber Pakhtunkhwa.",
+      "difficulty": "easy",
+      "id": "q03"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What is the capital of Balochistan?",
+      "options": [
+        "Khuzdar",
+        "Turbat",
+        "Ziarat",
+        "Quetta"
+      ],
+      "answer": 3,
+      "explanation": "Quetta is the capital of Balochistan.",
+      "difficulty": "easy",
+      "id": "q04"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What is the capital of Gilgit-Baltistan?",
+      "options": [
+        "Skardu",
+        "Gilgit",
+        "Chilas",
+        "Hunza"
+      ],
+      "answer": 1,
+      "explanation": "Gilgit city is the capital of Gilgit-Baltistan.",
+      "difficulty": "medium",
+      "id": "q05"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What is the capital of Azad Jammu and Kashmir?",
+      "options": [
+        "Mirpur",
+        "Kotli",
+        "Muzaffarabad",
+        "Rawalakot"
+      ],
+      "answer": 2,
+      "explanation": "Muzaffarabad is the capital of Azad Jammu and Kashmir.",
+      "difficulty": "medium",
+      "id": "q06"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The city of Islamabad lies on which plateau?",
+      "options": [
+        "Balochistan Plateau",
+        "Thal Plateau",
+        "Potohar Plateau",
+        "Deccan Plateau"
+      ],
+      "answer": 2,
+      "explanation": "Islamabad is built on the Potohar (Pothwar) Plateau.",
+      "difficulty": "medium",
+      "id": "q07"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Hunza Valley is located in which region?",
+      "options": [
+        "Azad Kashmir",
+        "Gilgit-Baltistan",
+        "Khyber Pakhtunkhwa",
+        "Punjab"
+      ],
+      "answer": 1,
+      "explanation": "Hunza is a famous valley in Gilgit-Baltistan.",
+      "difficulty": "easy",
+      "id": "q08"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Ziarat, where Quaid-e-Azam spent his last days, is in which province?",
+      "options": [
+        "Punjab",
+        "Sindh",
+        "Khyber Pakhtunkhwa",
+        "Balochistan"
+      ],
+      "answer": 3,
+      "explanation": "Ziarat is in Balochistan; the Quaid's Residency there is a national monument.",
+      "difficulty": "medium",
+      "id": "q09"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The hill station of Murree is located in which province?",
+      "options": [
+        "Punjab",
+        "Khyber Pakhtunkhwa",
+        "Gilgit-Baltistan",
+        "Sindh"
+      ],
+      "answer": 0,
+      "explanation": "Murree is in the Rawalpindi district of Punjab.",
+      "difficulty": "medium",
+      "id": "q10"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Naran and Kaghan valleys are situated in which province?",
+      "options": [
+        "Punjab",
+        "Khyber Pakhtunkhwa",
+        "Azad Kashmir",
+        "Balochistan"
+      ],
+      "answer": 1,
+      "explanation": "Naran and Kaghan are in the Mansehra district of Khyber Pakhtunkhwa.",
+      "difficulty": "medium",
+      "id": "q11"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Neelum Valley, one of the most beautiful valleys, is located in?",
+      "options": [
+        "Gilgit-Baltistan",
+        "Khyber Pakhtunkhwa",
+        "Punjab",
+        "Azad Kashmir"
+      ],
+      "answer": 3,
+      "explanation": "The Neelum Valley lies in Azad Jammu and Kashmir.",
+      "difficulty": "medium",
+      "id": "q12"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Makran coastal region belongs to which province?",
+      "options": [
+        "Sindh",
+        "Balochistan",
+        "Punjab",
+        "Khyber Pakhtunkhwa"
+      ],
+      "answer": 1,
+      "explanation": "The Makran coast, including Gwadar, is in Balochistan.",
+      "difficulty": "medium",
+      "id": "q13"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Lake Saiful Muluk is located in which region?",
+      "options": [
+        "Kaghan Valley",
+        "Swat",
+        "Hunza",
+        "Chitral"
+      ],
+      "answer": 0,
+      "explanation": "Saiful Muluk Lake lies in the Kaghan Valley of Khyber Pakhtunkhwa.",
+      "difficulty": "medium",
+      "id": "q14"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Derawar Fort is situated in which desert?",
+      "options": [
+        "Thar",
+        "Cholistan",
+        "Thal",
+        "Kharan"
+      ],
+      "answer": 1,
+      "explanation": "Derawar Fort stands in the Cholistan Desert of Punjab.",
+      "difficulty": "hard",
+      "id": "q15"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The word 'Punjab' literally means?",
+      "options": [
+        "Land of five rivers",
+        "Land of mountains",
+        "Land of the brave",
+        "Land of the pure"
+      ],
+      "answer": 0,
+      "explanation": "'Panj-ab' means land of the five rivers.",
+      "difficulty": "easy",
+      "id": "q16"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which river flows along the western border of the Punjab province?",
+      "options": [
+        "Ravi",
+        "Chenab",
+        "Indus",
+        "Sutlej"
+      ],
+      "answer": 2,
+      "explanation": "The Indus flows along Punjab's western edge.",
+      "difficulty": "medium",
+      "id": "q17"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The historical city of Multan is located in which province?",
+      "options": [
+        "Punjab",
+        "Sindh",
+        "Balochistan",
+        "Khyber Pakhtunkhwa"
+      ],
+      "answer": 0,
+      "explanation": "Multan, the City of Saints, is in southern Punjab.",
+      "difficulty": "easy",
+      "id": "q18"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which territory of Pakistan has its own separate legislative assembly and is disputed between Pakistan and India?",
+      "options": [
+        "Gilgit-Baltistan",
+        "Azad Jammu and Kashmir",
+        "FATA",
+        "Islamabad"
+      ],
+      "answer": 1,
+      "explanation": "Azad Jammu and Kashmir is a self-governing territory administered by Pakistan.",
+      "difficulty": "medium",
+      "id": "q19"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which region is known as the 'Land of Lakes and Valleys'?",
+      "options": [
+        "Gilgit-Baltistan",
+        "Punjab",
+        "Sindh",
+        "Balochistan"
+      ],
+      "answer": 0,
+      "explanation": "Gilgit-Baltistan is famed for its lakes, valleys and high peaks.",
+      "difficulty": "medium",
+      "id": "q20"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which valley is called the 'Fruit Basket of Pakistan'?",
+      "options": [
+        "Swat Valley",
+        "Hunza Valley",
+        "Kaghan Valley",
+        "Neelum Valley"
+      ],
+      "answer": 0,
+      "explanation": "Swat is often called the fruit basket (and Switzerland) of Pakistan.",
+      "difficulty": "medium",
+      "id": "q21"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which city is known as the 'City of Lights' in Pakistan?",
+      "options": [
+        "Karachi",
+        "Lahore",
+        "Islamabad",
+        "Quetta"
+      ],
+      "answer": 0,
+      "explanation": "Karachi is popularly called the City of Lights.",
+      "difficulty": "easy",
+      "id": "q22"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which region borders the Arabian Sea and is famous for the Gwadar port?",
+      "options": [
+        "Balochistan",
+        "Punjab",
+        "Gilgit-Baltistan",
+        "Azad Kashmir"
+      ],
+      "answer": 0,
+      "explanation": "Gwadar, on Balochistan's Makran coast, is a key CPEC port.",
+      "difficulty": "easy",
+      "id": "q23"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The highest plateau of Pakistan, the Potohar, surrounds which city?",
+      "options": [
+        "Rawalpindi/Islamabad",
+        "Karachi",
+        "Multan",
+        "Peshawar"
+      ],
+      "answer": 0,
+      "explanation": "The Potohar Plateau lies around Rawalpindi and Islamabad.",
+      "difficulty": "medium",
+      "id": "q24"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which province has the highest literacy rate in Pakistan?",
+      "options": [
+        "Punjab (and Islamabad has the highest overall)",
+        "Balochistan",
+        "Sindh",
+        "Gilgit-Baltistan"
+      ],
+      "answer": 0,
+      "explanation": "Islamabad territory leads, with Punjab among the highest provinces; Balochistan is the lowest.",
+      "difficulty": "hard",
+      "id": "q25"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The 'Abbottabad' city lies in which province?",
+      "options": [
+        "Khyber Pakhtunkhwa",
+        "Punjab",
+        "Gilgit-Baltistan",
+        "Balochistan"
+      ],
+      "answer": 0,
+      "explanation": "Abbottabad is in the Hazara region of Khyber Pakhtunkhwa.",
+      "difficulty": "easy",
+      "id": "q26"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The 'Skardu' valley is famous for which natural feature?",
+      "options": [
+        "High-altitude lakes and peaks (K2 base)",
+        "Desert dunes",
+        "Coastal beaches",
+        "Rice paddies"
+      ],
+      "answer": 0,
+      "explanation": "Skardu in Gilgit-Baltistan is the gateway to K2 and the Karakoram.",
+      "difficulty": "easy",
+      "id": "q27"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which region of Pakistan is known as 'Little Tibet'?",
+      "options": [
+        "Baltistan (Skardu area)",
+        "Chitral",
+        "Swat",
+        "Hunza"
+      ],
+      "answer": 0,
+      "explanation": "Baltistan is called Little Tibet for its Tibetan-influenced culture and landscape.",
+      "difficulty": "medium",
+      "id": "q28"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The 'Fairy Meadows' trek leads to the base of which peak?",
+      "options": [
+        "Nanga Parbat",
+        "K2",
+        "Broad Peak",
+        "Rakaposhi"
+      ],
+      "answer": 0,
+      "explanation": "Fairy Meadows is the base camp viewpoint for Nanga Parbat.",
+      "difficulty": "medium",
+      "id": "q29"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The 'Quetta' valley is in which province?",
+      "options": [
+        "Balochistan",
+        "Punjab",
+        "Sindh",
+        "Khyber Pakhtunkhwa"
+      ],
+      "answer": 0,
+      "explanation": "Quetta, the provincial capital, sits in Balochistan's valley.",
+      "difficulty": "easy",
+      "id": "q30"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The 'Gilgit-Baltistan' is bounded by which countries?",
+      "options": [
+        "China and India (via Kashmir)",
+        "Only China",
+        "Only Afghanistan",
+        "Only Iran"
+      ],
+      "answer": 0,
+      "explanation": "Gilgit-Baltistan borders China and the disputed Kashmir region.",
+      "difficulty": "medium",
+      "id": "q31"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The 'Keenjhar Lake' is located in which province?",
+      "options": [
+        "Sindh",
+        "Punjab",
+        "Balochistan",
+        "Gilgit-Baltistan"
+      ],
+      "answer": 0,
+      "explanation": "Keenjhar Lake, near Thatta, is in Sindh.",
+      "difficulty": "medium",
+      "id": "q32"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The 'Hanna Lake' is a tourist spot near which city?",
+      "options": [
+        "Quetta",
+        "Peshawar",
+        "Multan",
+        "Sialkot"
+      ],
+      "answer": 0,
+      "explanation": "Hanna Lake is a popular resort near Quetta, Balochistan.",
+      "difficulty": "medium",
+      "id": "q33"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The 'Khunjerab National Park' is in which region?",
+      "options": [
+        "Gilgit-Baltistan",
+        "Balochistan",
+        "Punjab",
+        "Sindh"
+      ],
+      "answer": 0,
+      "explanation": "Khunjerab NP protects Marco Polo sheep and snow leopards in Gilgit-Baltistan.",
+      "difficulty": "medium",
+      "id": "q34"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which region of Pakistan produces the most apples?",
+      "options": [
+        "Balochistan and Khyber Pakhtunkhwa (Quetta and Swat)",
+        "Sindh",
+        "Only Punjab",
+        "Gilgit-Baltistan only"
+      ],
+      "answer": 0,
+      "explanation": "Quetta and Swat are leading apple-producing areas.",
+      "difficulty": "medium",
+      "id": "q35"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The 'Chitral' district is famous for which festival?",
+      "options": [
+        "The Shandur Polo Festival",
+        "Basant",
+        "Lok Mela",
+        "Urs"
+      ],
+      "answer": 0,
+      "explanation": "Shandur, between Chitral and Gilgit, hosts the world's highest polo festival.",
+      "difficulty": "easy",
+      "id": "q36"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The 'Karakoram Highway' crosses which pass into China?",
+      "options": [
+        "Khunjerab Pass",
+        "Khyber Pass",
+        "Bolan Pass",
+        "Lowari Pass"
+      ],
+      "answer": 0,
+      "explanation": "The KKH connects to China via the Khunjerab Pass.",
+      "difficulty": "easy",
+      "id": "q37"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The 'Sindhu' (Indus) river flows through which provinces?",
+      "options": [
+        "Gilgit-Baltistan, KP, Punjab and Sindh",
+        "Only Punjab",
+        "Only Sindh",
+        "Balochistan only"
+      ],
+      "answer": 0,
+      "explanation": "The Indus traverses Gilgit-Baltistan, KP, Punjab and Sindh to the Arabian Sea.",
+      "difficulty": "medium",
+      "id": "q38"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The 'Sialkot' city is famous for which industry?",
+      "options": [
+        "Sports goods and surgical instruments",
+        "Shipbuilding",
+        "Automobiles",
+        "Mining"
+      ],
+      "answer": 0,
+      "explanation": "Sialkot is a global hub for footballs and surgical instruments.",
+      "difficulty": "easy",
+      "id": "q39"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The 'Naran' valley is located in which district?",
+      "options": [
+        "Mansehra",
+        "Swat",
+        "Chitral",
+        "Abbottabad"
+      ],
+      "answer": 0,
+      "explanation": "Naran lies in Mansehra district, Khyber Pakhtunkhwa.",
+      "difficulty": "medium",
+      "id": "q40"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The provincial animal of Sindh is:",
+      "options": [
+        "Indus dolphin",
+        "Markhor",
+        "Snow leopard",
+        "Hoopoe"
+      ],
+      "answer": 0,
+      "explanation": "The Indus river dolphin is Sindh's provincial animal.",
+      "difficulty": "hard",
+      "id": "q41"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Gilgit-Baltistan was given provisional provincial status under which amendment?",
+      "options": [
+        "25th Amendment (2018)",
+        "18th Amendment",
+        "21st Amendment",
+        "17th Amendment"
+      ],
+      "answer": 0,
+      "explanation": "The 25th Amendment (2018) merged FATA with KPK and paved the way for GB's status.",
+      "difficulty": "hard",
+      "id": "q42"
+    },
+    {
+      "type": "mcq",
+      "prompt": "FATA was merged into which province in 2018?",
+      "options": [
+        "Khyber Pakhtunkhwa",
+        "Punjab",
+        "Sindh",
+        "Balochistan"
+      ],
+      "answer": 0,
+      "explanation": "FATA merged with KPK under the 25th Amendment.",
+      "difficulty": "easy",
+      "id": "q43"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The famous 'Derawar Fort' is located in:",
+      "options": [
+        "Cholistan, Punjab",
+        "Thar, Sindh",
+        "Gwadar, Balochistan",
+        "Swat, KPK"
+      ],
+      "answer": 0,
+      "explanation": "Derawar Fort stands in the Cholistan desert of Punjab.",
+      "difficulty": "medium",
+      "id": "q44"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The highest peak of Balochistan is:",
+      "options": [
+        "Zarghun Ghar",
+        "Takht-e-Sulaiman",
+        "K2",
+        "Tirich Mir"
+      ],
+      "answer": 1,
+      "explanation": "Takht-e-Sulaiman is the highest peak in Balochistan.",
+      "difficulty": "hard",
+      "id": "q45"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The city of Faisalabad was formerly known as:",
+      "options": [
+        "Lyallpur",
+        "Montgomery",
+        "Jacobabad",
+        "Bahawalpur"
+      ],
+      "answer": 0,
+      "explanation": "Faisalabad was called Lyallpur before 1977.",
+      "difficulty": "easy",
+      "id": "q46"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The provincial tree of Khyber Pakhtunkhwa is:",
+      "options": [
+        "Deodar (Cedar)",
+        "Banyan",
+        "Neem",
+        "Mango"
+      ],
+      "answer": 0,
+      "explanation": "The deodar cedar is the provincial tree of KPK.",
+      "difficulty": "hard",
+      "id": "q47"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Karakoram, Himalaya and Hindu Kush ranges meet in:",
+      "options": [
+        "Gilgit-Baltistan",
+        "Swat",
+        "Chitral",
+        "Kashmir"
+      ],
+      "answer": 0,
+      "explanation": "The three great ranges converge in Gilgit-Baltistan.",
+      "difficulty": "easy",
+      "id": "q48"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The famous 'Ziarat' valley is located in which province?",
+      "options": [
+        "Balochistan",
+        "Sindh",
+        "Punjab",
+        "KPK"
+      ],
+      "answer": 0,
+      "explanation": "Ziarat, known for juniper forests, is in Balochistan.",
+      "difficulty": "easy",
+      "id": "q49"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The largest city of Khyber Pakhtunkhwa is:",
+      "options": [
+        "Peshawar",
+        "Mardan",
+        "Swat",
+        "Abbottabad"
+      ],
+      "answer": 0,
+      "explanation": "Peshawar is the largest city of KPK.",
+      "difficulty": "easy",
+      "id": "q50"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Indus River enters Pakistan through which region?",
+      "options": [
+        "Gilgit-Baltistan",
+        "Punjab",
+        "Kashmir",
+        "KPK"
+      ],
+      "answer": 0,
+      "explanation": "The Indus enters Pakistan at Gilgit-Baltistan.",
+      "difficulty": "easy",
+      "id": "q51"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The southernmost district of Pakistan is:",
+      "options": [
+        "Gwadar",
+        "Kech",
+        "Badin",
+        "Thatta"
+      ],
+      "answer": 2,
+      "explanation": "Badin in Sindh is Pakistan's southernmost district.",
+      "difficulty": "hard",
+      "id": "q52"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Skardu valley is situated in:",
+      "options": [
+        "Gilgit-Baltistan",
+        "Azad Kashmir",
+        "KPK",
+        "Balochistan"
+      ],
+      "answer": 0,
+      "explanation": "Skardu is a district of Gilgit-Baltistan.",
+      "difficulty": "easy",
+      "id": "q53"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The provincial flower of Punjab is:",
+      "options": [
+        "Jasmine",
+        "Tulip",
+        "Rose",
+        "Sunflower"
+      ],
+      "answer": 0,
+      "explanation": "Jasmine is the provincial flower of Punjab.",
+      "difficulty": "hard",
+      "id": "q54"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The city of Hyderabad is located on the banks of which river?",
+      "options": [
+        "Indus",
+        "Chenab",
+        "Ravi",
+        "Sutlej"
+      ],
+      "answer": 0,
+      "explanation": "Hyderabad lies on the Indus River in Sindh.",
+      "difficulty": "easy",
+      "id": "q55"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Chitral district is famous for which bird?",
+      "options": [
+        "Chitral pheasant (monal)",
+        "Peacock",
+        "Ostrich",
+        "Eagle"
+      ],
+      "answer": 0,
+      "explanation": "The Western tragopan pheasant is associated with Chitral.",
+      "difficulty": "medium",
+      "id": "q56"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The second largest province by area is:",
+      "options": [
+        "Punjab",
+        "Sindh",
+        "KPK",
+        "Balochistan"
+      ],
+      "answer": 1,
+      "explanation": "Sindh is the second largest province by area after Balochistan.",
+      "difficulty": "medium",
+      "id": "q57"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Takht-e-Bahi ruins are located in which province?",
+      "options": [
+        "Khyber Pakhtunkhwa",
+        "Punjab",
+        "Sindh",
+        "Balochistan"
+      ],
+      "answer": 0,
+      "explanation": "Takht-e-Bahi is a Buddhist monastery in KPK.",
+      "difficulty": "easy",
+      "id": "q58"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Khyber Pakhtunkhwa provincial capital was formerly called:",
+      "options": [
+        "Peshawar",
+        "Purushapura",
+        "Bannu",
+        "Kohat"
+      ],
+      "answer": 1,
+      "explanation": "Peshawar's ancient name was Purushapura.",
+      "difficulty": "hard",
+      "id": "q59"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Wakhan Corridor borders Pakistan's which region?",
+      "options": [
+        "Chitral",
+        "Kashmir",
+        "Swat",
+        "Hazara"
+      ],
+      "answer": 0,
+      "explanation": "The Wakhan Corridor touches Chitral.",
+      "difficulty": "medium",
+      "id": "q60"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The city of Bahawalpur is located in:",
+      "options": [
+        "Punjab",
+        "Sindh",
+        "Balochistan",
+        "KPK"
+      ],
+      "answer": 0,
+      "explanation": "Bahawalpur is in southern Punjab.",
+      "difficulty": "easy",
+      "id": "q61"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The highest literacy rate among provinces is generally found in:",
+      "options": [
+        "Punjab",
+        "Sindh",
+        "KPK",
+        "Balochistan"
+      ],
+      "answer": 0,
+      "explanation": "Punjab typically records the highest provincial literacy rate.",
+      "difficulty": "medium",
+      "id": "q62"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The 'Khewra' and 'Warcha' salt mines are located in:",
+      "options": [
+        "Punjab",
+        "Balochistan",
+        "KPK",
+        "Sindh"
+      ],
+      "answer": 0,
+      "explanation": "Both salt mines lie in Punjab's Salt Range.",
+      "difficulty": "medium",
+      "id": "q63"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The tribal district formerly known as 'South Waziristan' is now part of:",
+      "options": [
+        "Khyber Pakhtunkhwa",
+        "Balochistan",
+        "Punjab",
+        "Sindh"
+      ],
+      "answer": 0,
+      "explanation": "After the 2018 merger, all tribal districts became part of KPK.",
+      "difficulty": "easy",
+      "id": "q64"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The famous 'Karakoram Lake' (Attabad Lake) was formed in which region?",
+      "options": [
+        "Hunza, Gilgit-Baltistan",
+        "Swat",
+        "Kashmir",
+        "Chitral"
+      ],
+      "answer": 0,
+      "explanation": "Attabad Lake formed in Hunza after the 2010 landslide.",
+      "difficulty": "easy",
+      "id": "q65"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The province with the smallest area is:",
+      "options": [
+        "Khyber Pakhtunkhwa",
+        "Punjab",
+        "Sindh",
+        "Balochistan"
+      ],
+      "answer": 0,
+      "explanation": "KPK is the smallest province by area.",
+      "difficulty": "medium",
+      "id": "q66"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The 'Pothohar Plateau' is situated in which province?",
+      "options": [
+        "Punjab",
+        "Sindh",
+        "KPK",
+        "Balochistan"
+      ],
+      "answer": 0,
+      "explanation": "The Pothohar Plateau lies in northern Punjab.",
+      "difficulty": "easy",
+      "id": "q67"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The 'Kalam' and 'Ushu' valleys are part of:",
+      "options": [
+        "Swat, KPK",
+        "Hunza, GB",
+        "Chitral",
+        "Kashmir"
+      ],
+      "answer": 0,
+      "explanation": "Kalam and Ushu are in the Swat valley.",
+      "difficulty": "easy",
+      "id": "q68"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The 'Rohri' and 'Sukkur' cities are linked by which bridge?",
+      "options": [
+        "The Lansdowne Bridge",
+        "The Attock Bridge",
+        "The Ayub Bridge",
+        "The Kohala Bridge"
+      ],
+      "answer": 0,
+      "explanation": "The Lansdowne Bridge spans the Indus between Rohri and Sukkur.",
+      "difficulty": "hard",
+      "id": "q69"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The 'Malam Jabba' ski resort is in:",
+      "options": [
+        "Swat, KPK",
+        "Naran",
+        "Murree",
+        "Ziarat"
+      ],
+      "answer": 0,
+      "explanation": "Malam Jabba is a ski resort in Swat.",
+      "difficulty": "easy",
+      "id": "q70"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The 'Ghizer' district belongs to:",
+      "options": [
+        "Gilgit-Baltistan",
+        "Azad Kashmir",
+        "KPK",
+        "Balochistan"
+      ],
+      "answer": 0,
+      "explanation": "Ghizer is a district of Gilgit-Baltistan.",
+      "difficulty": "easy",
+      "id": "q71"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The famous 'Rama Meadow' is located in:",
+      "options": [
+        "Astor, Gilgit-Baltistan",
+        "Swat",
+        "Kaghan",
+        "Chitral"
+      ],
+      "answer": 0,
+      "explanation": "Rama Meadow is in Astore, Gilgit-Baltistan.",
+      "difficulty": "medium",
+      "id": "q72"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The 'Dera Ghazi Khan' district is in which province?",
+      "options": [
+        "Punjab",
+        "Sindh",
+        "Balochistan",
+        "KPK"
+      ],
+      "answer": 0,
+      "explanation": "Dera Ghazi Khan is in southern Punjab.",
+      "difficulty": "easy",
+      "id": "q73"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The 'Kot Addu' power plant is located in which province?",
+      "options": [
+        "Punjab",
+        "Sindh",
+        "Balochistan",
+        "KPK"
+      ],
+      "answer": 0,
+      "explanation": "Kot Addu is in Punjab.",
+      "difficulty": "easy",
+      "id": "q74"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The 'Badin' district is known for which natural resource?",
+      "options": [
+        "Oil and gas fields",
+        "Gold mines",
+        "Coal",
+        "Salt"
+      ],
+      "answer": 0,
+      "explanation": "Badin in Sindh has major oil and gas fields.",
+      "difficulty": "medium",
+      "id": "q75"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The 'Shandur Top' is called the:",
+      "options": [
+        "Roof of the world polo ground",
+        "Killer Mountain",
+        "Gateway to China",
+        "Queen of Valleys"
+      ],
+      "answer": 0,
+      "explanation": "Shandur hosts the world's highest polo ground.",
+      "difficulty": "easy",
+      "id": "q76"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The 'Attock' city is situated at the confluence of which rivers?",
+      "options": [
+        "Indus and Kabul",
+        "Jhelum and Chenab",
+        "Ravi and Sutlej",
+        "Indus and Ravi"
+      ],
+      "answer": 0,
+      "explanation": "Attock lies where the Kabul River meets the Indus.",
+      "difficulty": "medium",
+      "id": "q77"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The 'Mirpur' district is part of:",
+      "options": [
+        "Azad Kashmir",
+        "Gilgit-Baltistan",
+        "Punjab",
+        "KPK"
+      ],
+      "answer": 0,
+      "explanation": "Mirpur is a district of Azad Kashmir.",
+      "difficulty": "easy",
+      "id": "q78"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The 'Lasbela' district is located in:",
+      "options": [
+        "Balochistan",
+        "Sindh",
+        "Punjab",
+        "KPK"
+      ],
+      "answer": 0,
+      "explanation": "Lasbela is in Balochistan.",
+      "difficulty": "easy",
+      "id": "q79"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The 'Bunji' and 'Diamer' areas are associated with which project?",
+      "options": [
+        "Diamer-Bhasha Dam",
+        "Tarbela Dam",
+        "Mangla Dam",
+        "Kotri Barrage"
+      ],
+      "answer": 0,
+      "explanation": "Bunji and Diamer relate to the Diamer-Bhasha Dam project.",
+      "difficulty": "easy",
+      "id": "q80"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Kalash people live in which three valleys of Chitral?",
+      "options": [
+        "Bumburet, Rumbur and Birir",
+        "Naltar, Hoper and Khaplu",
+        "Shigar, Skardu and Kachura",
+        "Astor, Rama and Naran"
+      ],
+      "answer": 0,
+      "explanation": "The Kalash inhabit Bumburet, Rumbur and Birir valleys in Chitral.",
+      "difficulty": "medium",
+      "id": "q81"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The city of Sialkot is famous for which industry?",
+      "options": [
+        "Sports goods",
+        "Cement",
+        "Sugar",
+        "Electronics"
+      ],
+      "answer": 0,
+      "explanation": "Sialkot is the world centre of sports goods.",
+      "difficulty": "easy",
+      "id": "q82"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The district of Tharparkar is located in which province?",
+      "options": [
+        "Sindh",
+        "Punjab",
+        "Balochistan",
+        "Khyber Pakhtunkhwa"
+      ],
+      "answer": 0,
+      "explanation": "Tharparkar is a desert district of Sindh.",
+      "difficulty": "medium",
+      "id": "q83"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The city of Gujranwala is known as the city of?",
+      "options": [
+        "Grain markets",
+        "Silk",
+        "Fertiliser",
+        "Glass"
+      ],
+      "answer": 0,
+      "explanation": "Gujranwala is famous as a grain market city.",
+      "difficulty": "hard",
+      "id": "q84"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The 'Sindh Sagar Doab' lies between which rivers?",
+      "options": [
+        "Indus and Jhelum",
+        "Jhelum and Chenab",
+        "Chenab and Ravi",
+        "Ravi and Sutlej"
+      ],
+      "answer": 0,
+      "explanation": "The Sindh Sagar Doab is the tract between the Indus and Jhelum.",
+      "difficulty": "hard",
+      "id": "q85"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The 'Chaj Doab' lies between which rivers?",
+      "options": [
+        "Jhelum and Chenab",
+        "Ravi and Chenab",
+        "Indus and Jhelum",
+        "Beas and Ravi"
+      ],
+      "answer": 0,
+      "explanation": "The Chaj Doab is between the Jhelum and Chenab.",
+      "difficulty": "hard",
+      "id": "q86"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The 'Bari Doab' lies between which rivers?",
+      "options": [
+        "Ravi and Chenab",
+        "Jhelum and Chenab",
+        "Indus and Jhelum",
+        "Sutlej and Beas"
+      ],
+      "answer": 0,
+      "explanation": "The Bari Doab is the land between the Ravi and Chenab.",
+      "difficulty": "hard",
+      "id": "q87"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The 'Rechna Doab' lies between which rivers?",
+      "options": [
+        "Chenab and Ravi",
+        "Jhelum and Chenab",
+        "Ravi and Sutlej",
+        "Indus and Jhelum"
+      ],
+      "answer": 0,
+      "explanation": "The Rechna Doab lies between the Chenab and Ravi.",
+      "difficulty": "hard",
+      "id": "q88"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The district of Zhob is located in which province?",
+      "options": [
+        "Balochistan",
+        "Sindh",
+        "Punjab",
+        "Khyber Pakhtunkhwa"
+      ],
+      "answer": 0,
+      "explanation": "Zhob is a district of Balochistan.",
+      "difficulty": "medium",
+      "id": "q89"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The city of Turbat is located in which province?",
+      "options": [
+        "Balochistan",
+        "Sindh",
+        "Punjab",
+        "Khyber Pakhtunkhwa"
+      ],
+      "answer": 0,
+      "explanation": "Turbat is a city of Balochistan.",
+      "difficulty": "medium",
+      "id": "q90"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The capital of the Federally Administered Tribal Areas, before merger, was?",
+      "options": [
+        "Peshawar",
+        "Parachinar",
+        "Miranshah",
+        "Bannu"
+      ],
+      "answer": 0,
+      "explanation": "FATA was administered from Peshawar before its merger into KP.",
+      "difficulty": "hard",
+      "id": "q91"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The 'Kalabagh' town lies on the bank of which river?",
+      "options": [
+        "Indus",
+        "Jhelum",
+        "Chenab",
+        "Kabul"
+      ],
+      "answer": 0,
+      "explanation": "Kalabagh is situated on the Indus.",
+      "difficulty": "medium",
+      "id": "q92"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The 'Mianwali' district is located in which province?",
+      "options": [
+        "Punjab",
+        "Khyber Pakhtunkhwa",
+        "Sindh",
+        "Balochistan"
+      ],
+      "answer": 0,
+      "explanation": "Mianwali is a district of Punjab.",
+      "difficulty": "easy",
+      "id": "q93"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The 'Kohistan' district is located in which province?",
+      "options": [
+        "Khyber Pakhtunkhwa",
+        "Punjab",
+        "Sindh",
+        "Balochistan"
+      ],
+      "answer": 0,
+      "explanation": "Kohistan is a district of Khyber Pakhtunkhwa.",
+      "difficulty": "hard",
+      "id": "q94"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The 'Swat' district headquarters is at which city?",
+      "options": [
+        "Mingora",
+        "Saidu Sharif",
+        "Malam Jabba",
+        "Kalam"
+      ],
+      "answer": 0,
+      "explanation": "Swat's administration is centred at Saidu Sharif/Mingora.",
+      "difficulty": "medium",
+      "id": "q95"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The 'Diamer' district of Gilgit-Baltistan is named after which peak?",
+      "options": [
+        "Nanga Parbat",
+        "K2",
+        "Rakaposhi",
+        "Masherbrum"
+      ],
+      "answer": 0,
+      "explanation": "Diamer district is named for Nanga Parbat (Diamer).",
+      "difficulty": "hard",
+      "id": "q96"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The 'Hunza' valley is divided into which three sub-valleys?",
+      "options": [
+        "Upper, Central and Lower Hunza",
+        "Nagar, Gilgit and Skardu",
+        "Ghizer, Astor and Chilas",
+        "Khaplu, Shigar and Kachura"
+      ],
+      "answer": 0,
+      "explanation": "Hunza comprises Upper, Central and Lower Hunza.",
+      "difficulty": "hard",
+      "id": "q97"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The 'Khaplu' town is located in which region?",
+      "options": [
+        "Gilgit-Baltistan",
+        "Azad Kashmir",
+        "Khyber Pakhtunkhwa",
+        "Balochistan"
+      ],
+      "answer": 0,
+      "explanation": "Khaplu is a town of Gilgit-Baltistan.",
+      "difficulty": "medium",
+      "id": "q98"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The 'Ratti Gali' lake is located in which region?",
+      "options": [
+        "Azad Kashmir",
+        "Gilgit-Baltistan",
+        "Khyber Pakhtunkhwa",
+        "Punjab"
+      ],
+      "answer": 0,
+      "explanation": "Ratti Gali Lake is in Azad Kashmir.",
+      "difficulty": "hard",
+      "id": "q99"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The 'Toli Pir' is a tourist destination of which region?",
+      "options": [
+        "Azad Kashmir",
+        "Punjab",
+        "Sindh",
+        "Balochistan"
+      ],
+      "answer": 0,
+      "explanation": "Toli Pir is a hill resort in Azad Kashmir.",
+      "difficulty": "hard",
+      "id": "q100"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The 'Ratti Gali' and 'Dudipatsar' are examples of lakes in which province?",
+      "options": [
+        "Khyber Pakhtunkhwa",
+        "Punjab",
+        "Sindh",
+        "Balochistan"
+      ],
+      "answer": 0,
+      "explanation": "Dudipatsar Lake lies in Kaghan, Khyber Pakhtunkhwa.",
+      "difficulty": "hard",
+      "id": "q101"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The 'Ziarat' forest is known for which type of tree?",
+      "options": [
+        "Juniper",
+        "Deodar",
+        "Chinar",
+        "Pine"
+      ],
+      "answer": 0,
+      "explanation": "Ziarat is famous for its ancient juniper forest.",
+      "difficulty": "medium",
+      "id": "q102"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The 'Kaghan' valley lies in which district?",
+      "options": [
+        "Mansehra",
+        "Abbottabad",
+        "Swat",
+        "Chitral"
+      ],
+      "answer": 0,
+      "explanation": "Kaghan is in the Mansehra district of KP.",
+      "difficulty": "medium",
+      "id": "q103"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The 'Balakot' town is located in which province?",
+      "options": [
+        "Khyber Pakhtunkhwa",
+        "Punjab",
+        "Sindh",
+        "Balochistan"
+      ],
+      "answer": 0,
+      "explanation": "Balakot is in Khyber Pakhtunkhwa.",
+      "difficulty": "easy",
+      "id": "q104"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The 'Manshera' district borders which province?",
+      "options": [
+        "Punjab",
+        "Sindh",
+        "Balochistan",
+        "Azad Kashmir"
+      ],
+      "answer": 0,
+      "explanation": "Mansehra borders Punjab.",
+      "difficulty": "hard",
+      "id": "q105"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The 'Fairy Meadows' is located near which peak?",
+      "options": [
+        "Nanga Parbat",
+        "K2",
+        "Rakaposhi",
+        "Tirich Mir"
+      ],
+      "answer": 0,
+      "explanation": "Fairy Meadows lies at the base of Nanga Parbat.",
+      "difficulty": "medium",
+      "id": "q106"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The 'Astor' valley is situated in which region?",
+      "options": [
+        "Gilgit-Baltistan",
+        "Azad Kashmir",
+        "Khyber Pakhtunkhwa",
+        "Punjab"
+      ],
+      "answer": 0,
+      "explanation": "Astor is a valley of Gilgit-Baltistan.",
+      "difficulty": "medium",
+      "id": "q107"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The 'Deosai' plateau is located in which region?",
+      "options": [
+        "Gilgit-Baltistan",
+        "Azad Kashmir",
+        "Khyber Pakhtunkhwa",
+        "Balochistan"
+      ],
+      "answer": 0,
+      "explanation": "Deosai lies in Gilgit-Baltistan.",
+      "difficulty": "medium",
+      "id": "q108"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The 'Kech' district of Balochistan has its headquarters at which town?",
+      "options": [
+        "Turbat",
+        "Gwadar",
+        "Panjgur",
+        "Khuzdar"
+      ],
+      "answer": 0,
+      "explanation": "Kech district is administered from Turbat.",
+      "difficulty": "hard",
+      "id": "q109"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The 'Makran' region is famous for which fruit?",
+      "options": [
+        "Dates",
+        "Mangoes",
+        "Apples",
+        "Grapes"
+      ],
+      "answer": 0,
+      "explanation": "Makran is famous for its date production.",
+      "difficulty": "medium",
+      "id": "q110"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The 'Chagai' district is famous for which mineral?",
+      "options": [
+        "Copper and gold",
+        "Salt",
+        "Coal",
+        "Iron"
+      ],
+      "answer": 0,
+      "explanation": "Chagai hosts copper and gold deposits at Saindak and Reko Diq.",
+      "difficulty": "medium",
+      "id": "q111"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The 'Muslimbagh' town is famous for which mineral?",
+      "options": [
+        "Chromite",
+        "Coal",
+        "Salt",
+        "Marble"
+      ],
+      "answer": 0,
+      "explanation": "Muslimbagh is a chromite mining town.",
+      "difficulty": "hard",
+      "id": "q112"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The 'Loralai' and 'Ziarat' are districts of which province?",
+      "options": [
+        "Balochistan",
+        "Sindh",
+        "Punjab",
+        "Khyber Pakhtunkhwa"
+      ],
+      "answer": 0,
+      "explanation": "Loralai and Ziarat are districts of Balochistan.",
+      "difficulty": "medium",
+      "id": "q113"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The 'Sukkur' city lies on the bank of which river?",
+      "options": [
+        "Indus",
+        "Chenab",
+        "Ravi",
+        "Jhelum"
+      ],
+      "answer": 0,
+      "explanation": "Sukkur is situated on the Indus River.",
+      "difficulty": "easy",
+      "id": "q114"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The 'Rohri' town is located opposite which city?",
+      "options": [
+        "Sukkur",
+        "Hyderabad",
+        "Khairpur",
+        "Shikarpur"
+      ],
+      "answer": 0,
+      "explanation": "Rohri lies opposite Sukkur across the Indus.",
+      "difficulty": "medium",
+      "id": "q115"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The 'Khairpur' district is famous for which fruit?",
+      "options": [
+        "Dates",
+        "Mangoes",
+        "Oranges",
+        "Pomegranates"
+      ],
+      "answer": 0,
+      "explanation": "Khairpur is renowned for its dates.",
+      "difficulty": "medium",
+      "id": "q116"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The 'Umerkot' district is famous for which temple?",
+      "options": [
+        "Shri Shiv Mandir",
+        "Katas Raj",
+        "Hinglaj",
+        "Sadh Belo"
+      ],
+      "answer": 0,
+      "explanation": "Umerkot hosts the famous Shri Shiv Mandir.",
+      "difficulty": "hard",
+      "id": "q117"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The 'Sadh Belo' temple is located near which city?",
+      "options": [
+        "Sukkur",
+        "Karachi",
+        "Hyderabad",
+        "Thatta"
+      ],
+      "answer": 0,
+      "explanation": "Sadh Belo temple is situated near Sukkur on the Indus.",
+      "difficulty": "hard",
+      "id": "q118"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The 'Ranikot Fort', the world's largest, is located in which province?",
+      "options": [
+        "Sindh",
+        "Punjab",
+        "Balochistan",
+        "Khyber Pakhtunkhwa"
+      ],
+      "answer": 0,
+      "explanation": "Ranikot Fort is in Sindh.",
+      "difficulty": "medium",
+      "id": "q119"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The 'Gorakh Hill' is located in which province?",
+      "options": [
+        "Sindh",
+        "Punjab",
+        "Balochistan",
+        "Khyber Pakhtunkhwa"
+      ],
+      "answer": 0,
+      "explanation": "Gorakh Hill is in the Kirthar range of Sindh.",
+      "difficulty": "hard",
+      "id": "q120"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The 'Bin Qasim' town is named after which historical figure?",
+      "options": [
+        "Muhammad bin Qasim",
+        "Qasim Ali",
+        "Bin Ladin",
+        "Qasim Khan"
+      ],
+      "answer": 0,
+      "explanation": "Bin Qasim town is named after Muhammad bin Qasim.",
+      "difficulty": "medium",
+      "id": "q121"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The 'Karachi' city is located on which sea?",
+      "options": [
+        "Arabian Sea",
+        "Bay of Bengal",
+        "Persian Gulf",
+        "Red Sea"
+      ],
+      "answer": 0,
+      "explanation": "Karachi lies on the Arabian Sea.",
+      "difficulty": "easy",
+      "id": "q122"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The 'Hawksbay' and 'Clifton' are famous beaches of which city?",
+      "options": [
+        "Karachi",
+        "Gwadar",
+        "Hyderabad",
+        "Orrmara"
+      ],
+      "answer": 0,
+      "explanation": "Hawksbay and Clifton are Karachi beaches.",
+      "difficulty": "easy",
+      "id": "q123"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The 'Orrmara' beach is located in which province?",
+      "options": [
+        "Balochistan",
+        "Sindh",
+        "Punjab",
+        "Khyber Pakhtunkhwa"
+      ],
+      "answer": 0,
+      "explanation": "Ormara beach lies in Balochistan.",
+      "difficulty": "hard",
+      "id": "q124"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The 'Sonmiani' is also famous for which activity?",
+      "options": [
+        "Space launch site",
+        "Salt mining",
+        "Textile mills",
+        "Steel plants"
+      ],
+      "answer": 0,
+      "explanation": "Sonmiani hosts Pakistan's rocket launch site.",
+      "difficulty": "hard",
+      "id": "q125"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The 'Gwadar' port lies at the junction of which seas?",
+      "options": [
+        "Arabian Sea and Gulf of Oman",
+        "Red Sea and Gulf of Aden",
+        "Bay of Bengal and Arabian Sea",
+        "Persian Gulf and Gulf of Oman"
+      ],
+      "answer": 0,
+      "explanation": "Gwadar is at the junction of the Arabian Sea and the Gulf of Oman.",
+      "difficulty": "medium",
+      "id": "q126"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The 'Jiwani' is a coastal town of which province?",
+      "options": [
+        "Balochistan",
+        "Sindh",
+        "Punjab",
+        "Khyber Pakhtunkhwa"
+      ],
+      "answer": 0,
+      "explanation": "Jiwani is a coastal town of Balochistan.",
+      "difficulty": "hard",
+      "id": "q127"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The 'Pasni' is a fishing port of which province?",
+      "options": [
+        "Balochistan",
+        "Sindh",
+        "Punjab",
+        "Khyber Pakhtunkhwa"
+      ],
+      "answer": 0,
+      "explanation": "Pasni is a port of Balochistan.",
+      "difficulty": "hard",
+      "id": "q128"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The 'Churnna' and 'Astola' are islands of which province?",
+      "options": [
+        "Balochistan",
+        "Sindh",
+        "Punjab",
+        "Khyber Pakhtunkhwa"
+      ],
+      "answer": 0,
+      "explanation": "Astola and Churna are islands off the Balochistan coast.",
+      "difficulty": "hard",
+      "id": "q129"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The 'Hingol National Park' is located in which province?",
+      "options": [
+        "Balochistan",
+        "Sindh",
+        "Punjab",
+        "Khyber Pakhtunkhwa"
+      ],
+      "answer": 0,
+      "explanation": "Hingol National Park is in Balochistan.",
+      "difficulty": "medium",
+      "id": "q130"
+    }
+  ]
+}

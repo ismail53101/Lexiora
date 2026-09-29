@@ -24,7 +24,7 @@ class GrammarTopicTile extends ConsumerWidget {
       leading: CircleAvatar(
         backgroundColor: scheme.primaryContainer,
         child: Icon(
-          topic.isLeaf ? Icons.article_outlined : Icons.folder_outlined,
+          _iconForTopic(topic),
           color: scheme.onPrimaryContainer,
         ),
       ),
@@ -49,6 +49,20 @@ class GrammarTopicTile extends ConsumerWidget {
           ? _FavoriteButton(topic: topic)
           : const Icon(Icons.chevron_right),
     );
+  }
+
+  IconData _iconForTopic(GrammarTopicSummary topic) {
+    if (topic.isLeaf) return Icons.article_outlined;
+    switch (topic.id) {
+      case 'tenses/present':
+        return Icons.schedule_outlined;
+      case 'tenses/past':
+        return Icons.history_outlined;
+      case 'tenses/future':
+        return Icons.rocket_launch_outlined;
+      default:
+        return Icons.folder_outlined;
+    }
   }
 
   Widget? _subtitle(BuildContext context) {

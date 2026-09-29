@@ -103,7 +103,10 @@ class GrammarLocalDataSource {
 
   Stream<List<GrammarTopicSummary>> watchContinueLearning() => _db
       .customSelect(
+        // Only lessons actually opened before (a real view timestamp), never
+        // untouched completion flags.
         '$_summarySelect WHERE t.is_leaf = 1 AND p.status = 1 '
+        'AND p.last_viewed_at IS NOT NULL '
         'ORDER BY p.last_viewed_at DESC',
         readsFrom: _reads,
       )
@@ -236,6 +239,13 @@ class GrammarLocalDataSource {
 
   Future<void> clearTopics() => _db.delete(_db.grammarTopics).go();
 
+  /// Removes stale in-progress rows so the "Continue learning" section
+  /// starts empty after a content re-seed. Completed and favorited rows are
+  /// untouched.
+  Future<void> clearStaleInProgress() => _db.customStatement(
+        'DELETE FROM grammar_progress WHERE status = 1',
+      );
+
   Future<void> insertTopics(List<GrammarTopicsCompanion> batch) =>
       _db.batch((Batch b) => b.insertAll(_db.grammarTopics, batch));
 
@@ -274,6 +284,10 @@ class GrammarLocalDataSource {
       urduExplanation: _str(o['urduExplanation']),
       englishExplanation: _str(o['englishExplanation']),
       types: _types(o['types']),
+      additionalTypes: _types(o['additionalTypes']),
+      degreeTypes: _types(o['degreeTypes']),
+      degreeNote: _str(o['degreeNote']),
+      degreeExamples: _strList(o['degreeExamples']),
       rules: _strList(o['rules']),
       structure: _strList(o['structure']),
       examples: _examples(o['examples']),
@@ -282,6 +296,14 @@ class GrammarLocalDataSource {
       practice: _questions(o['practice']),
       quiz: _questions(o['quiz']),
       summary: _str(o['summary']),
+      providedMaterial: _str(o['providedMaterial']),
+      footerImage: _str(o['footerImage']),
+      tableTitle: _str(o['tableTitle']),
+      tableColumns: _strList(o['tableColumns']),
+      tableRows: _tableRows(o['tableRows']),
+      voiceComparison: o['voiceComparison'] as Map<String, dynamic>?,
+      rulesConversion: o['rulesConversion'] as Map<String, dynamic>?,
+      tenseSections: o['tenseSections'] as Map<String, dynamic>?,
     );
   }
 
@@ -308,10 +330,69 @@ class GrammarLocalDataSource {
       if (e is Map) {
         final String name = e['name']?.toString().trim() ?? '';
         final String desc = e['description']?.toString().trim() ?? '';
-        if (name.isNotEmpty) out.add(GrammarType(name: name, description: desc));
+        if (name.isNotEmpty) {
+          out.add(GrammarType(
+            name: name,
+            description: desc,
+            urduExplanation: _str(e['urduExplanation']),
+            wordFocus: _str(e['wordFocus']),
+            exampleWords: _str(e['exampleWords']),
+            pronounTable: _pronounRows(e['pronounTable']),
+            tableTitle: _str(e['tableTitle']),
+            tableColumns: _strList(e['tableColumns']),
+            tableRows: _tableRows(e['tableRows']),
+            tableGroups: _tableGroups(e['tableGroups']),
+            childTypes: _types(e['childTypes']),
+            subjectVerbAgreement: _str(e['subjectVerbAgreement']),
+            subjectVerbAgreementUrdu: _str(e['subjectVerbAgreementUrdu']),
+            examples: _examples(e['examples']),
+            rules: _strList(e['rules']),
+            ruleExamples: _strList(e['ruleExamples']),
+            commonMistakes: _mistakes(e['commonMistakes']),
+            practice: _questions(e['practice']),
+          ));
+        }
       }
     }
     return out;
+  }
+
+  static List<GrammarTableGroup> _tableGroups(Object? v) {
+    if (v is! List) return const <GrammarTableGroup>[];
+    return v.whereType<Map<String, dynamic>>().map((Map<String, dynamic> e) => GrammarTableGroup(
+      title: _str(e['title']),
+      columns: _strList(e['columns']),
+      rows: _tableRows(e['rows']),
+    )).where((GrammarTableGroup group) => group.title.isNotEmpty).toList(growable: false);
+  }
+
+  static List<GrammarTableRow> _tableRows(Object? v) {
+    if (v is! List) return const <GrammarTableRow>[];
+    return v.map((Object? row) {
+      if (row is List) {
+        return GrammarTableRow(
+          cells: row.map((Object? cell) => cell?.toString() ?? '').toList(),
+        );
+      }
+      if (row is Map) {
+        final Object? cells = row['cells'];
+        if (cells is List) {
+          return GrammarTableRow(
+            cells: cells.map((Object? cell) => cell?.toString() ?? '').toList(),
+          );
+        }
+      }
+      return null;
+    }).whereType<GrammarTableRow>().where((GrammarTableRow row) => row.cells.isNotEmpty).toList();
+  }
+
+  static List<GrammarPronounRow> _pronounRows(Object? v) {
+    if (v is! List) return const <GrammarPronounRow>[];
+    return v.whereType<Map<String, dynamic>>().map((Map<String, dynamic> e) => GrammarPronounRow(
+      person: _str(e['person']),
+      subject: _str(e['subject']),
+      object: _str(e['object']),
+    )).where((GrammarPronounRow row) => row.person.isNotEmpty).toList(growable: false);
   }
 
   static List<GrammarExample> _examples(Object? v) {
@@ -327,6 +408,8 @@ class GrammarLocalDataSource {
             text: text,
             urdu: _nullStr(e['urdu']),
             note: _nullStr(e['note']),
+            referenceText: _nullStr(e['referenceText']),
+            referenceUrdu: _nullStr(e['referenceUrdu']),
           ));
         }
       }
@@ -343,7 +426,11 @@ class GrammarLocalDataSource {
         final String right = e['right']?.toString() ?? '';
         if (wrong.isNotEmpty || right.isNotEmpty) {
           out.add(GrammarMistake(
-              wrong: wrong, right: right, note: _nullStr(e['note'])));
+              wrong: wrong,
+              right: right,
+              note: _nullStr(e['note']),
+              urdu: _nullStr(e['urdu']),
+            ));
         }
       }
     }
@@ -367,6 +454,7 @@ class GrammarLocalDataSource {
           options: options,
           answerIndex: idx.clamp(0, options.length - 1),
           explanation: _nullStr(e['explanation']),
+          examTip: _nullStr(e['examTip']),
         ));
       }
     }

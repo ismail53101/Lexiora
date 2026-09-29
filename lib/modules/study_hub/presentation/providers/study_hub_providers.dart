@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:lexiora/app/di/injector.dart';
 import 'package:lexiora/modules/study_hub/data/services/study_backup_service.dart';
@@ -24,14 +26,73 @@ final StreamProvider<List<StudyTask>> studyTasksProvider =
         .watchTasks(ref.watch(studyTodayProvider)));
 
 final StreamProvider<List<StudyGoal>> studyGoalsProvider =
-    StreamProvider<List<StudyGoal>>((Ref ref) => ref
-        .watch(studyHubRepositoryProvider)
-        .watchGoals(ref.watch(studyTodayProvider)));
+    StreamProvider<List<StudyGoal>>((Ref ref) {
+  final StudyHubRepository repo = ref.watch(studyHubRepositoryProvider);
+  final String day = ref.watch(studyTodayProvider);
+  return Stream<List<StudyGoal>>.multi((MultiStreamController<List<StudyGoal>> out) {
+    List<StudyGoal>? goals;
+    int? minutes;
+    List<StudyTask>? tasks;
+    void emit() {
+      if (goals == null || minutes == null || tasks == null) return;
+      final int completedTasks = tasks!
+          .where((StudyTask task) => task.completed && !task.isBreak)
+          .length;
+      out.add(goals!
+          .map((StudyGoal goal) => goal.isStudyTimeGoal
+              ? goal.withStudyMinutes(minutes!)
+              : goal.withCompletedTasks(completedTasks))
+          .toList(growable: false));
+    }
+    final StreamSubscription<List<StudyGoal>> goalsSub =
+        repo.watchGoals(day).listen((List<StudyGoal> value) {
+      goals = value;
+      emit();
+    });
+    final StreamSubscription<int> minutesSub =
+        repo.watchStudyMinutes(day).listen((int value) {
+      minutes = value;
+      emit();
+    });
+    final StreamSubscription<List<StudyTask>> tasksSub =
+        repo.watchTasks(day).listen((List<StudyTask> value) {
+      tasks = value;
+      emit();
+    });
+    out.onCancel = () async {
+      await goalsSub.cancel();
+      await minutesSub.cancel();
+      await tasksSub.cancel();
+    };
+  });
+});
 
 final StreamProvider<int> studyMinutesTodayProvider =
     StreamProvider<int>((Ref ref) => ref
         .watch(studyHubRepositoryProvider)
         .watchStudyMinutes(ref.watch(studyTodayProvider)));
+
+/// Context carried from a planned task into the existing Pomodoro/manual timer.
+/// It is not a second log: completed timers still write only to study_sessions.
+class ActiveStudyContext {
+  const ActiveStudyContext({this.taskId, this.subject});
+  final String? taskId;
+  final String? subject;
+  static const empty = ActiveStudyContext();
+}
+
+class ActiveStudyContextNotifier extends Notifier<ActiveStudyContext> {
+  @override
+  ActiveStudyContext build() => ActiveStudyContext.empty;
+  void setTask(StudyTask task) =>
+      state = ActiveStudyContext(taskId: task.id, subject: task.displaySubject);
+  void clear() => state = ActiveStudyContext.empty;
+}
+
+final NotifierProvider<ActiveStudyContextNotifier, ActiveStudyContext>
+    activeStudyContextProvider =
+    NotifierProvider<ActiveStudyContextNotifier, ActiveStudyContext>(
+        ActiveStudyContextNotifier.new);
 
 final StreamProvider<StudyStreak> studyStreakProvider =
     StreamProvider<StudyStreak>(
@@ -40,6 +101,60 @@ final StreamProvider<StudyStreak> studyStreakProvider =
 final studyStatsProvider =
     StreamProvider.family<StudyStats, StudyRange>((Ref ref, StudyRange range) =>
         ref.watch(studyHubRepositoryProvider).watchStats(range));
+
+/// Study-time breakdown for the last seven days plus rolling weekly/monthly
+/// totals. Every value comes from the same persisted study_sessions log used
+/// by the timer, including partially completed sessions.
+final StreamProvider<StudyStatistics> studyStatisticsProvider =
+    StreamProvider<StudyStatistics>((Ref ref) {
+  final StudyHubRepository repo = ref.watch(studyHubRepositoryProvider);
+  final DateTime today = DateTime.now();
+  final List<String> days = <String>[
+    for (int offset = 6; offset >= 0; offset--)
+      dayKey(today.subtract(Duration(days: offset))),
+  ];
+  return Stream<StudyStatistics>.multi(
+    (MultiStreamController<StudyStatistics> out) {
+      final List<int?> daily = List<int?>.filled(days.length, null);
+      int? weekly;
+      int? monthly;
+      void emit() {
+        if (weekly == null || monthly == null || daily.any((int? v) => v == null)) {
+          return;
+        }
+        out.add(StudyStatistics(
+          days: daily.cast<int>(),
+          weeklyMinutes: weekly!,
+          monthlyMinutes: monthly!,
+        ));
+      }
+      final List<StreamSubscription<int>> dailySubs = <StreamSubscription<int>>[
+        for (int i = 0; i < days.length; i++)
+          repo.watchStudyMinutes(days[i]).listen((int value) {
+            daily[i] = value;
+            emit();
+          }),
+      ];
+      final StreamSubscription<StudyStats> weeklySub =
+          repo.watchStats(StudyRange.weekly).listen((StudyStats value) {
+        weekly = value.studyMinutes;
+        emit();
+      });
+      final StreamSubscription<StudyStats> monthlySub =
+          repo.watchStats(StudyRange.monthly).listen((StudyStats value) {
+        monthly = value.studyMinutes;
+        emit();
+      });
+      out.onCancel = () async {
+        await Future.wait(<Future<void>>[
+          for (final StreamSubscription<int> sub in dailySubs) sub.cancel(),
+          weeklySub.cancel(),
+          monthlySub.cancel(),
+        ]);
+      };
+    },
+  );
+});
 
 /// Sessions/breaks for an arbitrary day (Weekly/Monthly planners).
 final studyDayTasksProvider =

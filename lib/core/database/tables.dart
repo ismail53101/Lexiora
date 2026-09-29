@@ -463,6 +463,10 @@ class StudyTasks extends Table {
   /// Actual studied minutes recorded for this session (via a timer); optional.
   IntColumn get durationMinutes => integer().nullable()();
 
+  /// Whether this row may move when an earlier automatically scheduled row changes.
+  /// Existing rows default to manual so user-created times are preserved.
+  BoolColumn get autoScheduled => boolean().withDefault(const Constant(false))();
+
   /// 'session' or 'break' (mirrors SessionKind.key). Existing rows default to
   /// 'session'. Breaks store their name in [title] and never count as sessions.
   TextColumn get kind =>
@@ -498,7 +502,10 @@ class StudySessions extends Table {
   TextColumn get id => text()();
   TextColumn get day => text()();
   DateTimeColumn get startedAt => dateTime()();
+  DateTimeColumn get endedAt => dateTime().nullable()();
   IntColumn get durationMinutes => integer()();
+  TextColumn get subject => text().nullable()();
+  TextColumn get taskId => text().nullable()();
 
   /// pomodoro / manual.
   TextColumn get kind => text().withDefault(const Constant('pomodoro'))();
@@ -868,6 +875,36 @@ class QuizTopics extends Table {
   Set<Column<Object>> get primaryKey => {id};
 }
 
+/// Per-stage progress for the staged Quiz experience (Phase v0.11.0).
+///
+/// One row per (subject, stage): the user's best result on that stage's
+/// 10-question challenge. Unlock logic is derived at read time (a stage is
+/// unlocked once the previous stage is passed), so only the best result is
+/// stored here — attempts/analytics still live in the existing quiz tables.
+@DataClassName('QuizStageProgressRow')
+class QuizStageProgress extends Table {
+  TextColumn get subjectId => text()();
+  IntColumn get stageIndex => integer()();
+
+  /// Best percentage score (0–100) achieved on this stage.
+  IntColumn get bestScore => integer().withDefault(const Constant(0))();
+
+  /// Best star rating (0–3) achieved on this stage.
+  IntColumn get bestStars => integer().withDefault(const Constant(0))();
+
+  /// Total number of completed attempts on this stage.
+  IntColumn get attempts => integer().withDefault(const Constant(0))();
+
+  /// True once the stage was passed (score >= 50%), unlocking the next one.
+  BoolColumn get passed => boolean().withDefault(const Constant(false))();
+  DateTimeColumn get lastPlayedAt => dateTime().nullable()();
+  DateTimeColumn get createdAt => dateTime()();
+  DateTimeColumn get updatedAt => dateTime()();
+
+  @override
+  Set<Column<Object>> get primaryKey => {subjectId, stageIndex};
+}
+
 // ── AI Assistant (Phase v0.10.0) ────────────────────────────────────────────
 //
 // Offline-first chat persistence for the AI Assistant. Two additive tables:
@@ -884,7 +921,26 @@ class AiConversations extends Table {
   TextColumn get model => text().nullable()();
   BoolColumn get pinned => boolean().withDefault(const Constant(false))();
 
+  /// The project (folder) this conversation belongs to, if any. Null = the
+  /// conversation lives outside every project (plain Recents chat).
+  TextColumn get projectId => text().nullable()();
+
   /// Lowercased title (+ optional content) for fast conversation search.
+  TextColumn get searchText => text().withDefault(const Constant(''))();
+  DateTimeColumn get createdAt => dateTime()();
+  DateTimeColumn get updatedAt => dateTime()();
+
+  @override
+  Set<Column<Object>> get primaryKey => {id};
+}
+
+/// One AI Assistant project: a named folder that groups conversations.
+@DataClassName('AiProjectRow')
+class AiProjects extends Table {
+  TextColumn get id => text()();
+  TextColumn get name => text()();
+
+  /// Lowercased name for fast project search.
   TextColumn get searchText => text().withDefault(const Constant(''))();
   DateTimeColumn get createdAt => dateTime()();
   DateTimeColumn get updatedAt => dateTime()();

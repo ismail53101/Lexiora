@@ -55,8 +55,22 @@ class StudyHubLocalDataSource {
             ..orderBy(_plannerOrder))
           .get();
 
+  Future<StudyTaskRow?> getTask(String id) => (_db.select(_db.studyTasks)
+        ..where((t) => t.id.equals(id))
+        ..limit(1))
+      .getSingleOrNull();
+
   Future<void> upsertTask(StudyTasksCompanion task) =>
       _db.into(_db.studyTasks).insertOnConflictUpdate(task);
+
+  Future<void> upsertTasks(List<StudyTasksCompanion> tasks) async {
+    if (tasks.isEmpty) return;
+    await _db.batch((Batch b) {
+      for (final StudyTasksCompanion task in tasks) {
+        b.insert(_db.studyTasks, task, mode: InsertMode.insertOrReplace);
+      }
+    });
+  }
 
   Future<void> deleteTask(String id) =>
       (_db.delete(_db.studyTasks)..where((t) => t.id.equals(id))).go();
@@ -118,7 +132,7 @@ class StudyHubLocalDataSource {
   // ── Session log ─────────────────────────────────────────────────────────────
 
   Future<void> insertSession(StudySessionsCompanion session) =>
-      _db.into(_db.studySessions).insert(session);
+      _db.into(_db.studySessions).insertOnConflictUpdate(session);
 
   Stream<int> watchStudyMinutes(String day) {
     final Expression<int> total = _db.studySessions.durationMinutes.sum();

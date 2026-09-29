@@ -1,0 +1,1791 @@
+{
+  "bank": {
+    "name": "Synonyms",
+    "subject": "English",
+    "topic": "Synonyms",
+    "description": "Choose the word closest in meaning to the given word.",
+    "tags": "css,pms,fpsc,ppsc,nts,english,synonyms",
+    "version": "1.0",
+    "id": "english_synonyms"
+  },
+  "questions": [
+    {
+      "type": "mcq",
+      "prompt": "Choose the synonym of 'happy'.",
+      "options": [
+        "Sad",
+        "Joyful",
+        "Angry",
+        "Tired"
+      ],
+      "answer": 1,
+      "explanation": "Joyful is a synonym of happy.",
+      "difficulty": "easy",
+      "id": "q01"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Choose the synonym of 'begin'.",
+      "options": [
+        "Start",
+        "End",
+        "Stop",
+        "Finish"
+      ],
+      "answer": 0,
+      "explanation": "Start means the same as begin.",
+      "difficulty": "easy",
+      "id": "q02"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Choose the synonym of 'brave'.",
+      "options": [
+        "Cowardly",
+        "Fearful",
+        "Courageous",
+        "Weak"
+      ],
+      "answer": 2,
+      "explanation": "Courageous means brave.",
+      "difficulty": "easy",
+      "id": "q03"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Choose the synonym of 'clever'.",
+      "options": [
+        "Foolish",
+        "Slow",
+        "Intelligent",
+        "Naive"
+      ],
+      "answer": 2,
+      "explanation": "Intelligent is a synonym of clever.",
+      "difficulty": "easy",
+      "id": "q04"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Choose the synonym of 'rich'.",
+      "options": [
+        "Poor",
+        "Wealthy",
+        "Needy",
+        "Broke"
+      ],
+      "answer": 1,
+      "explanation": "Wealthy means rich.",
+      "difficulty": "easy",
+      "id": "q05"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Choose the synonym of 'angry'.",
+      "options": [
+        "Calm",
+        "Pleased",
+        "Furious",
+        "Peaceful"
+      ],
+      "answer": 2,
+      "explanation": "Furious means extremely angry.",
+      "difficulty": "easy",
+      "id": "q06"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Choose the synonym of 'quick'.",
+      "options": [
+        "Slow",
+        "Rapid",
+        "Lazy",
+        "Late"
+      ],
+      "answer": 1,
+      "explanation": "Rapid means quick.",
+      "difficulty": "easy",
+      "id": "q07"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Choose the synonym of 'sad'.",
+      "options": [
+        "Sorrowful",
+        "Cheerful",
+        "Happy",
+        "Glad"
+      ],
+      "answer": 0,
+      "explanation": "Sorrowful means sad.",
+      "difficulty": "easy",
+      "id": "q08"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Choose the synonym of 'famous'.",
+      "options": [
+        "Unknown",
+        "Renowned",
+        "Obscure",
+        "Anonymous"
+      ],
+      "answer": 1,
+      "explanation": "Renowned means widely known and respected.",
+      "difficulty": "medium",
+      "id": "q09"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Choose the synonym of 'difficult'.",
+      "options": [
+        "Easy",
+        "Simple",
+        "Arduous",
+        "Light"
+      ],
+      "answer": 2,
+      "explanation": "Arduous means difficult and demanding.",
+      "difficulty": "medium",
+      "id": "q10"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Choose the synonym of 'beautiful'.",
+      "options": [
+        "Ugly",
+        "Lovely",
+        "Plain",
+        "Dull"
+      ],
+      "answer": 1,
+      "explanation": "Lovely means beautiful.",
+      "difficulty": "easy",
+      "id": "q11"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Choose the synonym of 'strong'.",
+      "options": [
+        "Feeble",
+        "Powerful",
+        "Weak",
+        "Fragile"
+      ],
+      "answer": 1,
+      "explanation": "Powerful means strong.",
+      "difficulty": "easy",
+      "id": "q12"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Choose the synonym of 'bright'.",
+      "options": [
+        "Dim",
+        "Brilliant",
+        "Dark",
+        "Dull"
+      ],
+      "answer": 1,
+      "explanation": "Brilliant means very bright.",
+      "difficulty": "easy",
+      "id": "q13"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Choose the synonym of 'hungry'.",
+      "options": [
+        "Full",
+        "Satisfied",
+        "Famished",
+        "Fed"
+      ],
+      "answer": 2,
+      "explanation": "Famished means very hungry.",
+      "difficulty": "medium",
+      "id": "q14"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Choose the synonym of 'talkative'.",
+      "options": [
+        "Silent",
+        "Quiet",
+        "Loquacious",
+        "Reserved"
+      ],
+      "answer": 2,
+      "explanation": "Loquacious means very talkative.",
+      "difficulty": "hard",
+      "id": "q15"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Choose the synonym of 'generous'.",
+      "options": [
+        "Stingy",
+        "Selfish",
+        "Liberal",
+        "Greedy"
+      ],
+      "answer": 2,
+      "explanation": "Liberal here means generous in giving.",
+      "difficulty": "medium",
+      "id": "q16"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Choose the synonym of 'honest'.",
+      "options": [
+        "Deceitful",
+        "Truthful",
+        "Dishonest",
+        "Crooked"
+      ],
+      "answer": 1,
+      "explanation": "Truthful is a synonym of honest.",
+      "difficulty": "easy",
+      "id": "q17"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Choose the synonym of 'lazy'.",
+      "options": [
+        "Active",
+        "Industrious",
+        "Indolent",
+        "Energetic"
+      ],
+      "answer": 2,
+      "explanation": "Indolent means habitually lazy.",
+      "difficulty": "medium",
+      "id": "q18"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Choose the synonym of 'shy'.",
+      "options": [
+        "Bold",
+        "Timid",
+        "Confident",
+        "Brave"
+      ],
+      "answer": 1,
+      "explanation": "Timid means shy and easily frightened.",
+      "difficulty": "medium",
+      "id": "q19"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Choose the synonym of 'wise'.",
+      "options": [
+        "Foolish",
+        "Sage",
+        "Unwise",
+        "Reckless"
+      ],
+      "answer": 1,
+      "explanation": "Sage means wise.",
+      "difficulty": "medium",
+      "id": "q20"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Choose the synonym of 'old'.",
+      "options": [
+        "Modern",
+        "New",
+        "Ancient",
+        "Fresh"
+      ],
+      "answer": 2,
+      "explanation": "Ancient means very old.",
+      "difficulty": "easy",
+      "id": "q21"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Choose the synonym of 'tired'.",
+      "options": [
+        "Fresh",
+        "Weary",
+        "Rested",
+        "Active"
+      ],
+      "answer": 1,
+      "explanation": "Weary means tired.",
+      "difficulty": "easy",
+      "id": "q22"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Choose the synonym of 'calm'.",
+      "options": [
+        "Agitated",
+        "Peaceful",
+        "Restless",
+        "Nervous"
+      ],
+      "answer": 1,
+      "explanation": "Peaceful is a synonym of calm.",
+      "difficulty": "easy",
+      "id": "q23"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Choose the synonym of 'weak'.",
+      "options": [
+        "Strong",
+        "Powerful",
+        "Feeble",
+        "Robust"
+      ],
+      "answer": 2,
+      "explanation": "Feeble means weak.",
+      "difficulty": "easy",
+      "id": "q24"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Choose the synonym of 'proud'.",
+      "options": [
+        "Humble",
+        "Modest",
+        "Haughty",
+        "Shy"
+      ],
+      "answer": 2,
+      "explanation": "Haughty means arrogantly proud.",
+      "difficulty": "medium",
+      "id": "q25"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Choose the synonym of 'cold'.",
+      "options": [
+        "Warm",
+        "Chilly",
+        "Hot",
+        "Boiling"
+      ],
+      "answer": 1,
+      "explanation": "Chilly means uncomfortably cold.",
+      "difficulty": "easy",
+      "id": "q26"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Choose the synonym of 'hot'.",
+      "options": [
+        "Freezing",
+        "Scorching",
+        "Cold",
+        "Cool"
+      ],
+      "answer": 1,
+      "explanation": "Scorching means extremely hot.",
+      "difficulty": "easy",
+      "id": "q27"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Choose the synonym of 'answer'.",
+      "options": [
+        "Question",
+        "Reply",
+        "Ask",
+        "Puzzle"
+      ],
+      "answer": 1,
+      "explanation": "Reply means answer.",
+      "difficulty": "easy",
+      "id": "q28"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Choose the synonym of 'enemy'.",
+      "options": [
+        "Friend",
+        "Ally",
+        "Foe",
+        "Partner"
+      ],
+      "answer": 2,
+      "explanation": "Foe means enemy.",
+      "difficulty": "easy",
+      "id": "q29"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Synonym of 'abundant':",
+      "options": [
+        "plentiful",
+        "scarce",
+        "small",
+        "weak"
+      ],
+      "answer": 0,
+      "explanation": "Abundant means existing in large quantities; plentiful.",
+      "difficulty": "easy",
+      "id": "q30"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Synonym of 'courageous':",
+      "options": [
+        "brave",
+        "cowardly",
+        "careful",
+        "calm"
+      ],
+      "answer": 0,
+      "explanation": "Courageous means brave or fearless.",
+      "difficulty": "easy",
+      "id": "q31"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Synonym of 'humble':",
+      "options": [
+        "modest",
+        "proud",
+        "angry",
+        "rich"
+      ],
+      "answer": 0,
+      "explanation": "Humble means modest and unassuming.",
+      "difficulty": "easy",
+      "id": "q32"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Synonym of 'vacant':",
+      "options": [
+        "empty",
+        "full",
+        "dark",
+        "busy"
+      ],
+      "answer": 0,
+      "explanation": "Vacant means empty or unoccupied.",
+      "difficulty": "easy",
+      "id": "q33"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Synonym of 'celebrated':",
+      "options": [
+        "famous",
+        "unknown",
+        "boring",
+        "simple"
+      ],
+      "answer": 0,
+      "explanation": "Celebrated means widely known and praised; famous.",
+      "difficulty": "easy",
+      "id": "q34"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Synonym of 'diligent':",
+      "options": [
+        "hardworking",
+        "lazy",
+        "careless",
+        "slow"
+      ],
+      "answer": 0,
+      "explanation": "Diligent means showing steady, careful effort.",
+      "difficulty": "medium",
+      "id": "q35"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Synonym of 'forbid':",
+      "options": [
+        "prohibit",
+        "allow",
+        "encourage",
+        "invite"
+      ],
+      "answer": 0,
+      "explanation": "Forbid means to prohibit or disallow.",
+      "difficulty": "easy",
+      "id": "q36"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Synonym of 'annihilate':",
+      "options": [
+        "destroy completely",
+        "create",
+        "repair",
+        "save"
+      ],
+      "answer": 0,
+      "explanation": "Annihilate means to destroy utterly.",
+      "difficulty": "medium",
+      "id": "q37"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Synonym of 'prompt':",
+      "options": [
+        "punctual",
+        "late",
+        "lazy",
+        "slow"
+      ],
+      "answer": 0,
+      "explanation": "Prompt means on time; punctual.",
+      "difficulty": "easy",
+      "id": "q38"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Synonym of 'witness':",
+      "options": [
+        "observer",
+        "judge",
+        "criminal",
+        "stranger"
+      ],
+      "answer": 0,
+      "explanation": "A witness is someone who observes an event.",
+      "difficulty": "easy",
+      "id": "q39"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Synonym of 'fragile':",
+      "options": [
+        "delicate",
+        "strong",
+        "heavy",
+        "rough"
+      ],
+      "answer": 0,
+      "explanation": "Fragile means easily broken; delicate.",
+      "difficulty": "easy",
+      "id": "q40"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Synonym of 'consume':",
+      "options": [
+        "use up",
+        "save",
+        "produce",
+        "avoid"
+      ],
+      "answer": 0,
+      "explanation": "Consume means to use up or eat/drink.",
+      "difficulty": "easy",
+      "id": "q41"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Synonym of 'controversial':",
+      "options": [
+        "disputed",
+        "settled",
+        "hidden",
+        "agreeable"
+      ],
+      "answer": 0,
+      "explanation": "Controversial means causing disagreement or dispute.",
+      "difficulty": "medium",
+      "id": "q42"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Synonym of 'assist':",
+      "options": [
+        "help",
+        "hinder",
+        "delay",
+        "avoid"
+      ],
+      "answer": 0,
+      "explanation": "Assist means to help or support.",
+      "difficulty": "easy",
+      "id": "q43"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Synonym of 'hasten':",
+      "options": [
+        "hurry",
+        "delay",
+        "stop",
+        "rest"
+      ],
+      "answer": 0,
+      "explanation": "Hasten means to move or act quickly.",
+      "difficulty": "easy",
+      "id": "q44"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Synonym of 'precise':",
+      "options": [
+        "exact",
+        "vague",
+        "rough",
+        "loose"
+      ],
+      "answer": 0,
+      "explanation": "Precise means exact and accurate.",
+      "difficulty": "easy",
+      "id": "q45"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Synonym of 'capture':",
+      "options": [
+        "seize",
+        "release",
+        "free",
+        "lose"
+      ],
+      "answer": 0,
+      "explanation": "Capture means to take into possession; seize.",
+      "difficulty": "easy",
+      "id": "q46"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Synonym of 'dreadful':",
+      "options": [
+        "terrible",
+        "wonderful",
+        "cheerful",
+        "bright"
+      ],
+      "answer": 0,
+      "explanation": "Dreadful means extremely bad or frightening.",
+      "difficulty": "easy",
+      "id": "q47"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Synonym of 'conceal':",
+      "options": [
+        "hide",
+        "reveal",
+        "expose",
+        "show"
+      ],
+      "answer": 0,
+      "explanation": "Conceal means to keep something hidden.",
+      "difficulty": "easy",
+      "id": "q48"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Synonym of 'arduous':",
+      "options": [
+        "difficult and tiring",
+        "easy",
+        "pleasant",
+        "quick"
+      ],
+      "answer": 0,
+      "explanation": "Arduous means involving great effort and difficulty.",
+      "difficulty": "medium",
+      "id": "q49"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Synonym of 'prominent':",
+      "options": [
+        "notable",
+        "hidden",
+        "minor",
+        "unknown"
+      ],
+      "answer": 0,
+      "explanation": "Prominent means important, famous or easily seen.",
+      "difficulty": "easy",
+      "id": "q50"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Synonym of 'severe':",
+      "options": [
+        "harsh",
+        "mild",
+        "gentle",
+        "lenient"
+      ],
+      "answer": 0,
+      "explanation": "Severe means very great, intense or strict.",
+      "difficulty": "easy",
+      "id": "q51"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Synonym of 'adequate':",
+      "options": [
+        "sufficient",
+        "lacking",
+        "scarce",
+        "poor"
+      ],
+      "answer": 0,
+      "explanation": "Adequate means enough or sufficient.",
+      "difficulty": "easy",
+      "id": "q52"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Synonym of 'cautious':",
+      "options": [
+        "careful",
+        "reckless",
+        "hasty",
+        "careless"
+      ],
+      "answer": 0,
+      "explanation": "Cautious means wary and careful to avoid danger.",
+      "difficulty": "easy",
+      "id": "q53"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Synonym of 'prohibit':",
+      "options": [
+        "forbid",
+        "allow",
+        "permit",
+        "encourage"
+      ],
+      "answer": 0,
+      "explanation": "Prohibit means to officially forbid.",
+      "difficulty": "easy",
+      "id": "q54"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Synonym of 'glimpse':",
+      "options": [
+        "a brief look",
+        "a long stare",
+        "complete view",
+        "a glance away"
+      ],
+      "answer": 0,
+      "explanation": "A glimpse is a quick, brief look at something.",
+      "difficulty": "easy",
+      "id": "q55"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Synonym of 'abolish':",
+      "options": [
+        "eliminate",
+        "establish",
+        "create",
+        "introduce"
+      ],
+      "answer": 0,
+      "explanation": "Abolish means to formally put an end to something.",
+      "difficulty": "medium",
+      "id": "q56"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Synonym of 'vivid':",
+      "options": [
+        "lively and clear",
+        "dull",
+        "faded",
+        "dim"
+      ],
+      "answer": 0,
+      "explanation": "Vivid means producing strong, clear impressions.",
+      "difficulty": "easy",
+      "id": "q57"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Synonym of 'relieve':",
+      "options": [
+        "ease",
+        "aggravate",
+        "intensify",
+        "worsen"
+      ],
+      "answer": 0,
+      "explanation": "Relieve means to reduce or remove pain or distress.",
+      "difficulty": "easy",
+      "id": "q58"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Synonym of 'consequence':",
+      "options": [
+        "result",
+        "cause",
+        "beginning",
+        "reason"
+      ],
+      "answer": 0,
+      "explanation": "A consequence is the result or effect of an action.",
+      "difficulty": "easy",
+      "id": "q59"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Synonym of 'obtain':",
+      "options": [
+        "acquire",
+        "lose",
+        "give",
+        "drop"
+      ],
+      "answer": 0,
+      "explanation": "Obtain means to get or acquire.",
+      "difficulty": "easy",
+      "id": "q60"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Synonym of 'swift':",
+      "options": [
+        "quick",
+        "slow",
+        "lazy",
+        "late"
+      ],
+      "answer": 0,
+      "explanation": "Swift means moving or happening quickly.",
+      "difficulty": "easy",
+      "id": "q61"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Synonym of 'peril':",
+      "options": [
+        "danger",
+        "safety",
+        "luck",
+        "rest"
+      ],
+      "answer": 0,
+      "explanation": "Peril means serious and immediate danger.",
+      "difficulty": "medium",
+      "id": "q62"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Synonym of 'tranquil':",
+      "options": [
+        "calm",
+        "noisy",
+        "restless",
+        "agitated"
+      ],
+      "answer": 0,
+      "explanation": "Tranquil means calm and peaceful.",
+      "difficulty": "easy",
+      "id": "q63"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Synonym of 'furious':",
+      "options": [
+        "angry",
+        "calm",
+        "happy",
+        "gentle"
+      ],
+      "answer": 0,
+      "explanation": "Furious means extremely angry.",
+      "difficulty": "easy",
+      "id": "q64"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Synonym of 'sufficient':",
+      "options": [
+        "enough",
+        "lacking",
+        "scarce",
+        "inadequate"
+      ],
+      "answer": 0,
+      "explanation": "Sufficient means as much as is needed; enough.",
+      "difficulty": "easy",
+      "id": "q65"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Synonym of 'opponent':",
+      "options": [
+        "adversary",
+        "ally",
+        "friend",
+        "partner"
+      ],
+      "answer": 0,
+      "explanation": "An opponent is an adversary or rival.",
+      "difficulty": "easy",
+      "id": "q66"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Synonym of 'evident':",
+      "options": [
+        "obvious",
+        "hidden",
+        "unclear",
+        "doubtful"
+      ],
+      "answer": 0,
+      "explanation": "Evident means clearly seen or understood.",
+      "difficulty": "easy",
+      "id": "q67"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Synonym of 'famine':",
+      "options": [
+        "scarcity of food",
+        "abundance",
+        "harvest",
+        "feast"
+      ],
+      "answer": 0,
+      "explanation": "Famine is extreme scarcity of food.",
+      "difficulty": "easy",
+      "id": "q68"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Synonym of 'accurate':",
+      "options": [
+        "correct",
+        "wrong",
+        "approximate",
+        "vague"
+      ],
+      "answer": 0,
+      "explanation": "Accurate means exact and correct.",
+      "difficulty": "easy",
+      "id": "q69"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Synonym of 'deteriorate':",
+      "options": [
+        "worsen",
+        "improve",
+        "repair",
+        "mend"
+      ],
+      "answer": 0,
+      "explanation": "Deteriorate means to become worse.",
+      "difficulty": "medium",
+      "id": "q70"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Synonym of 'praiseworthy':",
+      "options": [
+        "commendable",
+        "blameworthy",
+        "shameful",
+        "disgraceful"
+      ],
+      "answer": 0,
+      "explanation": "Praiseworthy means deserving praise; commendable.",
+      "difficulty": "medium",
+      "id": "q71"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Synonym of 'lament':",
+      "options": [
+        "mourn",
+        "celebrate",
+        "rejoice",
+        "applaud"
+      ],
+      "answer": 0,
+      "explanation": "Lament means to express sorrow; mourn.",
+      "difficulty": "medium",
+      "id": "q72"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Synonym of 'persistent':",
+      "options": [
+        "tenacious",
+        "yielding",
+        "giving up",
+        "irresolute"
+      ],
+      "answer": 0,
+      "explanation": "Persistent means continuing firmly; tenacious.",
+      "difficulty": "medium",
+      "id": "q73"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Synonym of 'obligatory':",
+      "options": [
+        "mandatory",
+        "optional",
+        "voluntary",
+        "elective"
+      ],
+      "answer": 0,
+      "explanation": "Obligatory means required; mandatory.",
+      "difficulty": "easy",
+      "id": "q74"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Synonym of 'verdict':",
+      "options": [
+        "judgement",
+        "question",
+        "argument",
+        "plea"
+      ],
+      "answer": 0,
+      "explanation": "A verdict is a formal judgement or decision.",
+      "difficulty": "medium",
+      "id": "q75"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Synonym of 'foster':",
+      "options": [
+        "nurture",
+        "neglect",
+        "abandon",
+        "ignore"
+      ],
+      "answer": 0,
+      "explanation": "Foster means to encourage or nurture development.",
+      "difficulty": "medium",
+      "id": "q76"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Synonym of 'solicit':",
+      "options": [
+        "request",
+        "refuse",
+        "reject",
+        "deny"
+      ],
+      "answer": 0,
+      "explanation": "Solicit means to ask for or request earnestly.",
+      "difficulty": "hard",
+      "id": "q77"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Synonym of 'scarce':",
+      "options": [
+        "rare",
+        "plentiful",
+        "common",
+        "abundant"
+      ],
+      "answer": 0,
+      "explanation": "Scarce means in short supply; rare.",
+      "difficulty": "easy",
+      "id": "q78"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Synonym of 'concise':",
+      "options": [
+        "brief",
+        "lengthy",
+        "wordy",
+        "verbose"
+      ],
+      "answer": 0,
+      "explanation": "Concise means short and to the point.",
+      "difficulty": "medium",
+      "id": "q79"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Synonym of 'prevail':",
+      "options": [
+        "triumph",
+        "fail",
+        "surrender",
+        "yield"
+      ],
+      "answer": 0,
+      "explanation": "Prevail means to triumph or gain victory.",
+      "difficulty": "medium",
+      "id": "q80"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Synonym of 'endure':",
+      "options": [
+        "tolerate",
+        "reject",
+        "refuse",
+        "quit"
+      ],
+      "answer": 0,
+      "explanation": "Endure means to bear or tolerate hardship.",
+      "difficulty": "easy",
+      "id": "q81"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Synonym of 'prudent':",
+      "options": [
+        "wise",
+        "foolish",
+        "reckless",
+        "careless"
+      ],
+      "answer": 0,
+      "explanation": "Prudent means wise and careful.",
+      "difficulty": "medium",
+      "id": "q82"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Synonym of 'diminish':",
+      "options": [
+        "reduce",
+        "increase",
+        "multiply",
+        "expand"
+      ],
+      "answer": 0,
+      "explanation": "Diminish means to make or become smaller.",
+      "difficulty": "easy",
+      "id": "q83"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Synonym of 'obscure':",
+      "options": [
+        "unclear",
+        "clear",
+        "bright",
+        "obvious"
+      ],
+      "answer": 0,
+      "explanation": "Obscure means not easily understood; unclear.",
+      "difficulty": "medium",
+      "id": "q84"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Synonym of 'confine':",
+      "options": [
+        "restrict",
+        "release",
+        "free",
+        "liberate"
+      ],
+      "answer": 0,
+      "explanation": "Confine means to restrict or keep within limits.",
+      "difficulty": "easy",
+      "id": "q85"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Synonym of 'abrupt':",
+      "options": [
+        "sudden",
+        "gradual",
+        "gentle",
+        "slow"
+      ],
+      "answer": 0,
+      "explanation": "Abrupt means sudden and unexpected.",
+      "difficulty": "easy",
+      "id": "q86"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Synonym of 'elaborate':",
+      "options": [
+        "detailed",
+        "simple",
+        "plain",
+        "basic"
+      ],
+      "answer": 0,
+      "explanation": "Elaborate means involving great detail.",
+      "difficulty": "medium",
+      "id": "q87"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Synonym of 'obstinate':",
+      "options": [
+        "headstrong",
+        "flexible",
+        "compliant",
+        "agreeable"
+      ],
+      "answer": 0,
+      "explanation": "Obstinate means stubbornly refusing to change; headstrong.",
+      "difficulty": "medium",
+      "id": "q88"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Synonym of 'explicit':",
+      "options": [
+        "clear",
+        "vague",
+        "ambiguous",
+        "hidden"
+      ],
+      "answer": 0,
+      "explanation": "Explicit means stated clearly and directly.",
+      "difficulty": "medium",
+      "id": "q89"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Synonym of 'inevitable':",
+      "options": [
+        "unavoidable",
+        "avoidable",
+        "preventable",
+        "optional"
+      ],
+      "answer": 0,
+      "explanation": "Inevitable means certain to happen; unavoidable.",
+      "difficulty": "easy",
+      "id": "q90"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Synonym of 'rival':",
+      "options": [
+        "competitor",
+        "ally",
+        "partner",
+        "supporter"
+      ],
+      "answer": 0,
+      "explanation": "A rival is a competitor or opponent.",
+      "difficulty": "easy",
+      "id": "q91"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Synonym of 'cease':",
+      "options": [
+        "terminate",
+        "start",
+        "begin",
+        "continue"
+      ],
+      "answer": 0,
+      "explanation": "Cease means to stop or terminate.",
+      "difficulty": "easy",
+      "id": "q92"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Synonym of 'apparent':",
+      "options": [
+        "obvious",
+        "hidden",
+        "unclear",
+        "vague"
+      ],
+      "answer": 0,
+      "explanation": "Apparent means clearly visible; obvious.",
+      "difficulty": "easy",
+      "id": "q93"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Synonym of 'praise':",
+      "options": [
+        "commend",
+        "criticise",
+        "blame",
+        "scold"
+      ],
+      "answer": 0,
+      "explanation": "Praise means to express approval; commend.",
+      "difficulty": "easy",
+      "id": "q94"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Synonym of 'permit':",
+      "options": [
+        "allow",
+        "forbid",
+        "ban",
+        "prohibit"
+      ],
+      "answer": 0,
+      "explanation": "Permit means to allow.",
+      "difficulty": "easy",
+      "id": "q95"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Synonym of 'sorrow':",
+      "options": [
+        "grief",
+        "joy",
+        "happiness",
+        "delight"
+      ],
+      "answer": 0,
+      "explanation": "Sorrow means deep sadness; grief.",
+      "difficulty": "easy",
+      "id": "q96"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Synonym of 'demonstrate':",
+      "options": [
+        "show",
+        "hide",
+        "conceal",
+        "cover"
+      ],
+      "answer": 0,
+      "explanation": "Demonstrate means to show or prove clearly.",
+      "difficulty": "easy",
+      "id": "q97"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Synonym of 'hazard':",
+      "options": [
+        "peril",
+        "safety",
+        "comfort",
+        "ease"
+      ],
+      "answer": 0,
+      "explanation": "A hazard is a danger or peril.",
+      "difficulty": "easy",
+      "id": "q98"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Synonym of 'acquire':",
+      "options": [
+        "obtain",
+        "lose",
+        "forfeit",
+        "give"
+      ],
+      "answer": 0,
+      "explanation": "Acquire means to obtain or gain.",
+      "difficulty": "easy",
+      "id": "q99"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Synonym of 'extinguish':",
+      "options": [
+        "quench",
+        "ignite",
+        "kindle",
+        "light"
+      ],
+      "answer": 0,
+      "explanation": "Extinguish means to put out; quench.",
+      "difficulty": "medium",
+      "id": "q100"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Synonym of 'baffle':",
+      "options": [
+        "confuse",
+        "clarify",
+        "explain",
+        "simplify"
+      ],
+      "answer": 0,
+      "explanation": "Baffle means to confuse or puzzle.",
+      "difficulty": "medium",
+      "id": "q101"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Synonym of 'persuade':",
+      "options": [
+        "convince",
+        "dissuade",
+        "discourage",
+        "deter"
+      ],
+      "answer": 0,
+      "explanation": "Persuade means to convince someone.",
+      "difficulty": "easy",
+      "id": "q102"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Synonym of 'diverse':",
+      "options": [
+        "varied",
+        "uniform",
+        "identical",
+        "same"
+      ],
+      "answer": 0,
+      "explanation": "Diverse means showing variety.",
+      "difficulty": "easy",
+      "id": "q103"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Synonym of 'restrain':",
+      "options": [
+        "control",
+        "free",
+        "release",
+        "liberate"
+      ],
+      "answer": 0,
+      "explanation": "Restrain means to hold back or control.",
+      "difficulty": "medium",
+      "id": "q104"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Synonym of 'plentiful':",
+      "options": [
+        "abundant",
+        "scarce",
+        "rare",
+        "sparse"
+      ],
+      "answer": 0,
+      "explanation": "Plentiful means existing in large amounts.",
+      "difficulty": "easy",
+      "id": "q105"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Synonym of 'vanish':",
+      "options": [
+        "disappear",
+        "appear",
+        "emerge",
+        "arrive"
+      ],
+      "answer": 0,
+      "explanation": "Vanish means to disappear suddenly.",
+      "difficulty": "easy",
+      "id": "q106"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Synonym of 'courage':",
+      "options": [
+        "bravery",
+        "cowardice",
+        "fear",
+        "timidity"
+      ],
+      "answer": 0,
+      "explanation": "Courage means bravery.",
+      "difficulty": "easy",
+      "id": "q107"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Synonym of 'transparent':",
+      "options": [
+        "clear",
+        "opaque",
+        "cloudy",
+        "murky"
+      ],
+      "answer": 0,
+      "explanation": "Transparent means clear or see-through.",
+      "difficulty": "easy",
+      "id": "q108"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Synonym of 'deceive':",
+      "options": [
+        "trick",
+        "help",
+        "assist",
+        "support"
+      ],
+      "answer": 0,
+      "explanation": "Deceive means to trick or mislead.",
+      "difficulty": "easy",
+      "id": "q109"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Synonym of 'weary':",
+      "options": [
+        "exhausted",
+        "energetic",
+        "fresh",
+        "lively"
+      ],
+      "answer": 0,
+      "explanation": "Weary means tired or exhausted.",
+      "difficulty": "easy",
+      "id": "q110"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Synonym of 'obstacle':",
+      "options": [
+        "barrier",
+        "aid",
+        "help",
+        "support"
+      ],
+      "answer": 0,
+      "explanation": "An obstacle is a barrier or hindrance.",
+      "difficulty": "easy",
+      "id": "q111"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Synonym of 'comprehend':",
+      "options": [
+        "grasp",
+        "misunderstand",
+        "overlook",
+        "ignore"
+      ],
+      "answer": 0,
+      "explanation": "Comprehend means to grasp or understand.",
+      "difficulty": "medium",
+      "id": "q112"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Synonym of 'abandon':",
+      "options": [
+        "desert",
+        "keep",
+        "retain",
+        "hold"
+      ],
+      "answer": 0,
+      "explanation": "Abandon means to desert or leave behind.",
+      "difficulty": "easy",
+      "id": "q113"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Synonym of 'notion':",
+      "options": [
+        "idea",
+        "object",
+        "machine",
+        "place"
+      ],
+      "answer": 0,
+      "explanation": "A notion is an idea or belief.",
+      "difficulty": "easy",
+      "id": "q114"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Synonym of 'gloomy':",
+      "options": [
+        "dreary",
+        "cheerful",
+        "bright",
+        "sunny"
+      ],
+      "answer": 0,
+      "explanation": "Gloomy means dark and depressing; dreary.",
+      "difficulty": "easy",
+      "id": "q115"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Synonym of 'compel':",
+      "options": [
+        "force",
+        "allow",
+        "permit",
+        "invite"
+      ],
+      "answer": 0,
+      "explanation": "Compel means to force or oblige.",
+      "difficulty": "easy",
+      "id": "q116"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Synonym of 'prosper':",
+      "options": [
+        "thrive",
+        "fail",
+        "wither",
+        "decline"
+      ],
+      "answer": 0,
+      "explanation": "Prosper means to thrive or succeed.",
+      "difficulty": "easy",
+      "id": "q117"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Synonym of 'reluctant':",
+      "options": [
+        "unwilling",
+        "eager",
+        "keen",
+        "ready"
+      ],
+      "answer": 0,
+      "explanation": "Reluctant means unwilling or hesitant.",
+      "difficulty": "easy",
+      "id": "q118"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Synonym of 'hinder':",
+      "options": [
+        "impede",
+        "help",
+        "assist",
+        "aid"
+      ],
+      "answer": 0,
+      "explanation": "Hinder means to impede or obstruct.",
+      "difficulty": "easy",
+      "id": "q119"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Synonym of 'candid':",
+      "options": [
+        "frank",
+        "secretive",
+        "vague",
+        "deceitful"
+      ],
+      "answer": 0,
+      "explanation": "Candid means frank and honest.",
+      "difficulty": "easy",
+      "id": "q120"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Synonym of 'frugal':",
+      "options": [
+        "economical",
+        "wasteful",
+        "extravagant",
+        "lavish"
+      ],
+      "answer": 0,
+      "explanation": "Frugal means economical or sparing.",
+      "difficulty": "medium",
+      "id": "q121"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Synonym of 'hostile':",
+      "options": [
+        "unfriendly",
+        "friendly",
+        "warm",
+        "kind"
+      ],
+      "answer": 0,
+      "explanation": "Hostile means antagonistic or unfriendly.",
+      "difficulty": "easy",
+      "id": "q122"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Synonym of 'immense':",
+      "options": [
+        "huge",
+        "tiny",
+        "small",
+        "narrow"
+      ],
+      "answer": 0,
+      "explanation": "Immense means extremely large; huge.",
+      "difficulty": "easy",
+      "id": "q123"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Synonym of 'justify':",
+      "options": [
+        "validate",
+        "condemn",
+        "criticise",
+        "oppose"
+      ],
+      "answer": 0,
+      "explanation": "Justify means to show something is right; validate.",
+      "difficulty": "medium",
+      "id": "q124"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Synonym of 'keen':",
+      "options": [
+        "eager",
+        "reluctant",
+        "unwilling",
+        "indifferent"
+      ],
+      "answer": 0,
+      "explanation": "Keen means eager or enthusiastic.",
+      "difficulty": "easy",
+      "id": "q125"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Synonym of 'lethal':",
+      "options": [
+        "deadly",
+        "harmless",
+        "safe",
+        "gentle"
+      ],
+      "answer": 0,
+      "explanation": "Lethal means capable of causing death; deadly.",
+      "difficulty": "medium",
+      "id": "q126"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Synonym of 'meticulous':",
+      "options": [
+        "careful",
+        "careless",
+        "sloppy",
+        "hasty"
+      ],
+      "answer": 0,
+      "explanation": "Meticulous means extremely careful about details.",
+      "difficulty": "easy",
+      "id": "q127"
+    }
+  ]
+}

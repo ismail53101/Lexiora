@@ -1,0 +1,2631 @@
+{
+  "bank": {
+    "name": "Grammar",
+    "subject": "English",
+    "topic": "Grammar",
+    "description": "Parts of speech, tenses, subject-verb agreement, articles, prepositions and sentence structure.",
+    "tags": "css,pms,fpsc,ppsc,nts,english,grammar",
+    "version": "1.0",
+    "id": "english_grammar"
+  },
+  "questions": [
+    {
+      "type": "mcq",
+      "prompt": "She ___ to school every day.",
+      "options": [
+        "go",
+        "goes",
+        "going",
+        "gone"
+      ],
+      "answer": 1,
+      "explanation": "Third-person singular needs 'goes' in the simple present tense.",
+      "difficulty": "easy",
+      "id": "q01"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Choose the past tense of 'go'.",
+      "options": [
+        "goed",
+        "gone",
+        "goes",
+        "went"
+      ],
+      "answer": 3,
+      "explanation": "'Went' is the simple past of 'go'.",
+      "difficulty": "easy",
+      "id": "q02"
+    },
+    {
+      "type": "mcq",
+      "prompt": "I have ___ my homework.",
+      "options": [
+        "do",
+        "did",
+        "done",
+        "doing"
+      ],
+      "answer": 2,
+      "explanation": "Present perfect takes the past participle 'done'.",
+      "difficulty": "easy",
+      "id": "q03"
+    },
+    {
+      "type": "mcq",
+      "prompt": "He ___ playing football right now.",
+      "options": [
+        "is",
+        "are",
+        "am",
+        "was"
+      ],
+      "answer": 0,
+      "explanation": "Present continuous uses 'is' with a singular subject.",
+      "difficulty": "easy",
+      "id": "q04"
+    },
+    {
+      "type": "mcq",
+      "prompt": "A noun is a word that names?",
+      "options": [
+        "An action",
+        "A person, place, thing or idea",
+        "A describing word",
+        "A connecting word"
+      ],
+      "answer": 1,
+      "explanation": "Nouns name people, places, things or ideas.",
+      "difficulty": "easy",
+      "id": "q05"
+    },
+    {
+      "type": "mcq",
+      "prompt": "An adjective is a word that describes a?",
+      "options": [
+        "Verb",
+        "Adverb",
+        "Noun",
+        "Preposition"
+      ],
+      "answer": 2,
+      "explanation": "Adjectives modify nouns or pronouns.",
+      "difficulty": "easy",
+      "id": "q06"
+    },
+    {
+      "type": "mcq",
+      "prompt": "An adverb most often modifies a?",
+      "options": [
+        "Noun",
+        "Pronoun",
+        "Verb",
+        "Conjunction"
+      ],
+      "answer": 2,
+      "explanation": "Adverbs modify verbs, adjectives or other adverbs.",
+      "difficulty": "medium",
+      "id": "q07"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which is the correct article for '___ apple'?",
+      "options": [
+        "a",
+        "an",
+        "the only",
+        "no article"
+      ],
+      "answer": 1,
+      "explanation": "'Apple' begins with a vowel sound, so we use 'an'.",
+      "difficulty": "easy",
+      "id": "q08"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which article is used before 'hour'?",
+      "options": [
+        "a",
+        "an",
+        "the",
+        "none"
+      ],
+      "answer": 1,
+      "explanation": "'Hour' begins with a vowel sound (silent h), so 'an hour'.",
+      "difficulty": "medium",
+      "id": "q09"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The plural of 'child' is?",
+      "options": [
+        "childs",
+        "childes",
+        "children",
+        "childrens"
+      ],
+      "answer": 2,
+      "explanation": "'Children' is the irregular plural of 'child'.",
+      "difficulty": "easy",
+      "id": "q10"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The plural of 'mouse' (the animal) is?",
+      "options": [
+        "mouses",
+        "mice",
+        "mices",
+        "mouse"
+      ],
+      "answer": 1,
+      "explanation": "'Mice' is the irregular plural of 'mouse'.",
+      "difficulty": "medium",
+      "id": "q11"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which word has the same form in singular and plural?",
+      "options": [
+        "cat",
+        "sheep",
+        "box",
+        "man"
+      ],
+      "answer": 1,
+      "explanation": "'Sheep' stays 'sheep' in the plural.",
+      "difficulty": "medium",
+      "id": "q12"
+    },
+    {
+      "type": "mcq",
+      "prompt": "He is good ___ mathematics.",
+      "options": [
+        "at",
+        "in",
+        "on",
+        "of"
+      ],
+      "answer": 0,
+      "explanation": "We say 'good at' a subject or skill.",
+      "difficulty": "easy",
+      "id": "q13"
+    },
+    {
+      "type": "mcq",
+      "prompt": "She is afraid ___ dogs.",
+      "options": [
+        "from",
+        "of",
+        "with",
+        "by"
+      ],
+      "answer": 1,
+      "explanation": "'Afraid of' is the correct collocation.",
+      "difficulty": "easy",
+      "id": "q14"
+    },
+    {
+      "type": "mcq",
+      "prompt": "We arrived ___ Lahore at noon.",
+      "options": [
+        "to",
+        "at",
+        "in",
+        "on"
+      ],
+      "answer": 2,
+      "explanation": "We use 'in' before cities and countries: arrive in Lahore.",
+      "difficulty": "medium",
+      "id": "q15"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The cat is sitting ___ the table.",
+      "options": [
+        "on",
+        "in",
+        "at",
+        "among"
+      ],
+      "answer": 0,
+      "explanation": "'On' is used for a surface.",
+      "difficulty": "easy",
+      "id": "q16"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The present continuous tense is formed with?",
+      "options": [
+        "am/is/are + -ing form",
+        "has/have + past participle",
+        "will + base verb",
+        "had + past participle"
+      ],
+      "answer": 0,
+      "explanation": "Present continuous = be verb + present participle.",
+      "difficulty": "medium",
+      "id": "q17"
+    },
+    {
+      "type": "mcq",
+      "prompt": "If it rains, we ___ at home.",
+      "options": [
+        "stay",
+        "stayed",
+        "will stay",
+        "staying"
+      ],
+      "answer": 2,
+      "explanation": "First conditional: if + present, will + base verb.",
+      "difficulty": "medium",
+      "id": "q18"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The letter ___ by him yesterday.",
+      "options": [
+        "wrote",
+        "was written",
+        "is writing",
+        "has written"
+      ],
+      "answer": 1,
+      "explanation": "Passive voice in the past: 'was written'.",
+      "difficulty": "medium",
+      "id": "q19"
+    },
+    {
+      "type": "mcq",
+      "prompt": "He said, 'I am tired.' In reported speech: He said that he ___ tired.",
+      "options": [
+        "is",
+        "was",
+        "has been",
+        "will be"
+      ],
+      "answer": 1,
+      "explanation": "The present 'am' shifts to past 'was' in indirect speech.",
+      "difficulty": "medium",
+      "id": "q20"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which of the following is a conjunction?",
+      "options": [
+        "quickly",
+        "under",
+        "because",
+        "beautiful"
+      ],
+      "answer": 2,
+      "explanation": "'Because' connects clauses; it is a conjunction.",
+      "difficulty": "easy",
+      "id": "q21"
+    },
+    {
+      "type": "mcq",
+      "prompt": "She is taller ___ her sister.",
+      "options": [
+        "then",
+        "than",
+        "that",
+        "as"
+      ],
+      "answer": 1,
+      "explanation": "Comparatives use 'than'.",
+      "difficulty": "easy",
+      "id": "q22"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Neither he ___ I was present.",
+      "options": [
+        "or",
+        "nor",
+        "and",
+        "but"
+      ],
+      "answer": 1,
+      "explanation": "'Neither...nor' is the correct pair.",
+      "difficulty": "medium",
+      "id": "q23"
+    },
+    {
+      "type": "mcq",
+      "prompt": "There ___ many students in the hall.",
+      "options": [
+        "is",
+        "are",
+        "was",
+        "be"
+      ],
+      "answer": 1,
+      "explanation": "'Students' is plural, so 'are' is used.",
+      "difficulty": "easy",
+      "id": "q24"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The news ___ very good.",
+      "options": [
+        "are",
+        "were",
+        "is",
+        "have been"
+      ],
+      "answer": 2,
+      "explanation": "'News' is uncountable and takes a singular verb.",
+      "difficulty": "medium",
+      "id": "q25"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Each of the boys ___ completed the work.",
+      "options": [
+        "have",
+        "has",
+        "are",
+        "were"
+      ],
+      "answer": 1,
+      "explanation": "'Each' is singular and takes 'has'.",
+      "difficulty": "medium",
+      "id": "q26"
+    },
+    {
+      "type": "mcq",
+      "prompt": "I look forward ___ hearing from you.",
+      "options": [
+        "to",
+        "for",
+        "at",
+        "on"
+      ],
+      "answer": 0,
+      "explanation": "'Look forward to' takes the -ing form.",
+      "difficulty": "medium",
+      "id": "q27"
+    },
+    {
+      "type": "mcq",
+      "prompt": "He is interested ___ history.",
+      "options": [
+        "at",
+        "on",
+        "in",
+        "for"
+      ],
+      "answer": 2,
+      "explanation": "'Interested in' is the correct collocation.",
+      "difficulty": "easy",
+      "id": "q28"
+    },
+    {
+      "type": "mcq",
+      "prompt": "In 'Swimming is good exercise', the word 'Swimming' is a?",
+      "options": [
+        "Verb",
+        "Gerund",
+        "Adjective",
+        "Adverb"
+      ],
+      "answer": 1,
+      "explanation": "A gerund is an -ing verb form used as a noun.",
+      "difficulty": "medium",
+      "id": "q29"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which form is an infinitive?",
+      "options": [
+        "running",
+        "to run",
+        "ran",
+        "runs"
+      ],
+      "answer": 1,
+      "explanation": "The infinitive is 'to' + base verb.",
+      "difficulty": "easy",
+      "id": "q30"
+    },
+    {
+      "type": "mcq",
+      "prompt": "___ did you see at the party?",
+      "options": [
+        "Who",
+        "Whom",
+        "Whose",
+        "Which"
+      ],
+      "answer": 1,
+      "explanation": "'Whom' is the object form: you saw him/her.",
+      "difficulty": "hard",
+      "id": "q31"
+    },
+    {
+      "type": "mcq",
+      "prompt": "___ raining heavily outside.",
+      "options": [
+        "Its",
+        "It's",
+        "Its'",
+        "Itself"
+      ],
+      "answer": 1,
+      "explanation": "'It's' is the contraction of 'it is'.",
+      "difficulty": "easy",
+      "id": "q32"
+    },
+    {
+      "type": "mcq",
+      "prompt": "She is coming tomorrow, ___?",
+      "options": [
+        "is she",
+        "isn't she",
+        "does she",
+        "won't she"
+      ],
+      "answer": 1,
+      "explanation": "Positive statement takes a negative tag question.",
+      "difficulty": "medium",
+      "id": "q33"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Hardly had he arrived ___ it started to rain.",
+      "options": [
+        "when",
+        "than",
+        "then",
+        "that"
+      ],
+      "answer": 0,
+      "explanation": "'Hardly...when' is the correct correlative pair.",
+      "difficulty": "hard",
+      "id": "q34"
+    },
+    {
+      "type": "mcq",
+      "prompt": "No sooner had he left ___ the phone rang.",
+      "options": [
+        "when",
+        "than",
+        "then",
+        "while"
+      ],
+      "answer": 1,
+      "explanation": "'No sooner...than' is the correct correlative pair.",
+      "difficulty": "hard",
+      "id": "q35"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which sentence is in the imperative mood?",
+      "options": [
+        "Where are you going?",
+        "Please close the door.",
+        "She sings well.",
+        "I wish I knew."
+      ],
+      "answer": 1,
+      "explanation": "An imperative gives a command or request.",
+      "difficulty": "medium",
+      "id": "q36"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The superlative degree of 'good' is?",
+      "options": [
+        "better",
+        "goodest",
+        "best",
+        "more good"
+      ],
+      "answer": 2,
+      "explanation": "Good - better - best is the correct sequence.",
+      "difficulty": "easy",
+      "id": "q37"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The comparative degree of 'bad' is?",
+      "options": [
+        "badder",
+        "worse",
+        "worst",
+        "more bad"
+      ],
+      "answer": 1,
+      "explanation": "Bad - worse - worst.",
+      "difficulty": "easy",
+      "id": "q38"
+    },
+    {
+      "type": "mcq",
+      "prompt": "A sentence that expresses a strong emotion ends with?",
+      "options": [
+        "A full stop",
+        "A question mark",
+        "An exclamation mark",
+        "A comma"
+      ],
+      "answer": 2,
+      "explanation": "Exclamatory sentences end with an exclamation mark.",
+      "difficulty": "easy",
+      "id": "q39"
+    },
+    {
+      "type": "mcq",
+      "prompt": "'The, a, an' are known as?",
+      "options": [
+        "Prepositions",
+        "Articles",
+        "Conjunctions",
+        "Interjections"
+      ],
+      "answer": 1,
+      "explanation": "'The' is the definite article; 'a/an' are indefinite articles.",
+      "difficulty": "easy",
+      "id": "q40"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Choose the correct sentence:",
+      "options": [
+        "She has gone to school yesterday",
+        "She went to school yesterday",
+        "She has went to school yesterday",
+        "She had go to school yesterday"
+      ],
+      "answer": 1,
+      "explanation": "'Yesterday' requires the simple past tense, so 'went' is correct; 'has gone' needs no time adverb.",
+      "difficulty": "easy",
+      "id": "q41"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Complete: If I _____ rich, I would travel the world.",
+      "options": [
+        "am",
+        "was",
+        "were",
+        "be"
+      ],
+      "answer": 2,
+      "explanation": "Second conditional uses 'were' for all persons: If I were rich, I would travel.",
+      "difficulty": "medium",
+      "id": "q42"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which word is a conjunction?",
+      "options": [
+        "although",
+        "quickly",
+        "under",
+        "beautiful"
+      ],
+      "answer": 0,
+      "explanation": "'Although' is a subordinating conjunction; quickly is an adverb, under a preposition, beautiful an adjective.",
+      "difficulty": "easy",
+      "id": "q43"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Choose the correct passive form: 'They are building a new bridge.'",
+      "options": [
+        "A new bridge is being built",
+        "A new bridge is built",
+        "A new bridge was being built",
+        "A new bridge has built"
+      ],
+      "answer": 0,
+      "explanation": "Present continuous passive: am/is/are + being + past participle → 'is being built'.",
+      "difficulty": "medium",
+      "id": "q44"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Identify the correct conditional: '_____ you study, you will pass.'",
+      "options": [
+        "If",
+        "Unless",
+        "Whether",
+        "Although"
+      ],
+      "answer": 1,
+      "explanation": "'Unless' means 'if not': 'Unless you study, you will pass' means 'If you do not study, you will not pass'.",
+      "difficulty": "hard",
+      "id": "q45"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Fill in the blank: The committee _____ divided on the issue.",
+      "options": [
+        "is",
+        "are",
+        "were",
+        "have"
+      ],
+      "answer": 0,
+      "explanation": "Collective noun 'committee' treated as a single unit takes a singular verb: 'is divided'.",
+      "difficulty": "medium",
+      "id": "q46"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Choose the correct comparative: This is _____ than the other option.",
+      "options": [
+        "better",
+        "best",
+        "good",
+        "more good"
+      ],
+      "answer": 0,
+      "explanation": "'Good' has the irregular comparative 'better' and superlative 'best'.",
+      "difficulty": "easy",
+      "id": "q47"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which sentence is in the future perfect tense?",
+      "options": [
+        "I will have finished by noon",
+        "I will finish by noon",
+        "I am finishing by noon",
+        "I finished by noon"
+      ],
+      "answer": 0,
+      "explanation": "Future perfect uses 'will have + past participle' to express completion before a future time.",
+      "difficulty": "medium",
+      "id": "q48"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Choose the correct preposition: She is good _____ mathematics.",
+      "options": [
+        "at",
+        "in",
+        "on",
+        "with"
+      ],
+      "answer": 0,
+      "explanation": "The idiom is 'good at' something.",
+      "difficulty": "easy",
+      "id": "q49"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Identify the adverb in: 'He spoke very softly.'",
+      "options": [
+        "softly",
+        "spoke",
+        "He",
+        "very"
+      ],
+      "answer": 0,
+      "explanation": "'Softly' modifies the verb 'spoke' and is the adverb; 'very' is an intensifier.",
+      "difficulty": "easy",
+      "id": "q50"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Choose the correct indirect speech: He said, 'I am busy.'",
+      "options": [
+        "He said that he was busy",
+        "He said that I am busy",
+        "He says that he was busy",
+        "He told that he is busy"
+      ],
+      "answer": 0,
+      "explanation": "In reported speech the present 'am' shifts back to past 'was'.",
+      "difficulty": "medium",
+      "id": "q51"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which word is an interjection?",
+      "options": [
+        "Wow",
+        "slowly",
+        "beside",
+        "happiness"
+      ],
+      "answer": 0,
+      "explanation": "'Wow' expresses sudden emotion and is an interjection.",
+      "difficulty": "easy",
+      "id": "q52"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Complete: Neither the students nor the teacher _____ present.",
+      "options": [
+        "was",
+        "were",
+        "are",
+        "have been"
+      ],
+      "answer": 0,
+      "explanation": "With 'neither...nor', the verb agrees with the nearer subject: 'the teacher' → singular 'was'.",
+      "difficulty": "medium",
+      "id": "q53"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Choose the correct form: He is senior _____ me.",
+      "options": [
+        "to",
+        "than",
+        "from",
+        "of"
+      ],
+      "answer": 0,
+      "explanation": "Latin-origin comparatives like 'senior', 'junior', 'inferior' take 'to', not 'than'.",
+      "difficulty": "hard",
+      "id": "q54"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which sentence uses the past perfect correctly?",
+      "options": [
+        "The train had left before we arrived",
+        "The train left before we had arrived",
+        "The train has left before we arrived",
+        "The train had leave before we arrived"
+      ],
+      "answer": 0,
+      "explanation": "Past perfect (had left) shows the earlier action; simple past (arrived) shows the later one.",
+      "difficulty": "medium",
+      "id": "q55"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Choose the correct sentence:",
+      "options": [
+        "I have lived here since 2010",
+        "I live here since 2010",
+        "I am living here since 2010",
+        "I lived here since 2010"
+      ],
+      "answer": 0,
+      "explanation": "'Since 2010' (point in time) with present perfect: 'have lived'.",
+      "difficulty": "easy",
+      "id": "q56"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Complete: She _____ to the market when I saw her.",
+      "options": [
+        "was going",
+        "goes",
+        "is going",
+        "has gone"
+      ],
+      "answer": 0,
+      "explanation": "An action in progress in the past → past continuous 'was going'.",
+      "difficulty": "medium",
+      "id": "q57"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which word is a verb?",
+      "options": [
+        "run",
+        "beautiful",
+        "quickly",
+        "under"
+      ],
+      "answer": 0,
+      "explanation": "'Run' is a verb; beautiful is an adjective, quickly an adverb, under a preposition.",
+      "difficulty": "easy",
+      "id": "q58"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Choose the correct article: He is _____ honest man.",
+      "options": [
+        "an",
+        "a",
+        "the",
+        "no article"
+      ],
+      "answer": 0,
+      "explanation": "'Honest' begins with a vowel sound, so 'an' is used.",
+      "difficulty": "easy",
+      "id": "q59"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Complete: By next year, I _____ in this city for ten years.",
+      "options": [
+        "will have lived",
+        "will live",
+        "have lived",
+        "am living"
+      ],
+      "answer": 0,
+      "explanation": "Future perfect: 'will have lived' expresses completion by a future time.",
+      "difficulty": "medium",
+      "id": "q60"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which sentence is in the passive voice?",
+      "options": [
+        "The letter was written by Ali",
+        "Ali wrote the letter",
+        "Ali is writing the letter",
+        "Ali has written the letter"
+      ],
+      "answer": 0,
+      "explanation": "Passive voice: subject receives the action — 'The letter was written'.",
+      "difficulty": "easy",
+      "id": "q61"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Choose the correct form: Would you mind _____ the window?",
+      "options": [
+        "opening",
+        "to open",
+        "open",
+        "opened"
+      ],
+      "answer": 0,
+      "explanation": "'Would you mind' is followed by a gerund (-ing form).",
+      "difficulty": "medium",
+      "id": "q62"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Identify the pronoun in: 'Ali and I are friends.'",
+      "options": [
+        "I",
+        "Ali",
+        "friends",
+        "are"
+      ],
+      "answer": 0,
+      "explanation": "'I' is a personal pronoun; Ali is a noun.",
+      "difficulty": "easy",
+      "id": "q63"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Complete: He is fond _____ classical music.",
+      "options": [
+        "of",
+        "for",
+        "in",
+        "with"
+      ],
+      "answer": 0,
+      "explanation": "The adjective 'fond' takes the preposition 'of'.",
+      "difficulty": "easy",
+      "id": "q64"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Choose the correct question tag: She is coming, _____?",
+      "options": [
+        "isn't she",
+        "is she",
+        "doesn't she",
+        "won't she"
+      ],
+      "answer": 0,
+      "explanation": "Positive statement takes a negative tag: 'isn't she'.",
+      "difficulty": "easy",
+      "id": "q65"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which word is a collective noun?",
+      "options": [
+        "flock",
+        "child",
+        "water",
+        "courage"
+      ],
+      "answer": 0,
+      "explanation": "'Flock' is a collective noun naming a group (of birds/sheep).",
+      "difficulty": "easy",
+      "id": "q66"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Complete: No sooner did he arrive _____ it started raining.",
+      "options": [
+        "than",
+        "when",
+        "then",
+        "that"
+      ],
+      "answer": 0,
+      "explanation": "'No sooner...than' is the correct correlative pair with inversion.",
+      "difficulty": "medium",
+      "id": "q67"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Choose the correct plural: The _____ are grazing in the field.",
+      "options": [
+        "sheep",
+        "sheeps",
+        "sheepes",
+        "sheep's"
+      ],
+      "answer": 0,
+      "explanation": "'Sheep' has the same form in singular and plural.",
+      "difficulty": "easy",
+      "id": "q68"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Identify the type of sentence: 'Please close the door.'",
+      "options": [
+        "Imperative",
+        "Interrogative",
+        "Exclamatory",
+        "Declarative"
+      ],
+      "answer": 0,
+      "explanation": "A command or request is an imperative sentence.",
+      "difficulty": "easy",
+      "id": "q69"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Complete: Each of the boys _____ given a prize.",
+      "options": [
+        "was",
+        "were",
+        "have been",
+        "are"
+      ],
+      "answer": 0,
+      "explanation": "'Each' is singular and takes a singular verb: 'was given'.",
+      "difficulty": "medium",
+      "id": "q70"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Choose the correct form: He is looking forward _____ you.",
+      "options": [
+        "to meeting",
+        "to meet",
+        "for meeting",
+        "meeting"
+      ],
+      "answer": 0,
+      "explanation": "'Look forward to' is followed by a gerund: 'to meeting'.",
+      "difficulty": "medium",
+      "id": "q71"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which sentence uses a comparative adjective?",
+      "options": [
+        "She is taller than her sister",
+        "She is tall",
+        "She is the tallest",
+        "She is very tall"
+      ],
+      "answer": 0,
+      "explanation": "'Taller than' compares two people — the comparative form.",
+      "difficulty": "easy",
+      "id": "q72"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Choose the correct preposition: The cat jumped _____ the table.",
+      "options": [
+        "onto",
+        "into",
+        "over",
+        "through"
+      ],
+      "answer": 0,
+      "explanation": "'Jumped onto the table' describes movement to a surface.",
+      "difficulty": "easy",
+      "id": "q73"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Complete: I wish I _____ more time yesterday.",
+      "options": [
+        "had had",
+        "have",
+        "had",
+        "would have"
+      ],
+      "answer": 0,
+      "explanation": "Wishing about the past uses past perfect: 'had had'.",
+      "difficulty": "hard",
+      "id": "q74"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Choose the correct indirect speech: She said, 'I will come tomorrow.'",
+      "options": [
+        "She said that she would come the next day",
+        "She said that she will come tomorrow",
+        "She said that she would come tomorrow",
+        "She says that she would come next day"
+      ],
+      "answer": 0,
+      "explanation": "'Will' shifts to 'would' and 'tomorrow' to 'the next day' in reported speech.",
+      "difficulty": "medium",
+      "id": "q75"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Choose the correct form: He speaks English _____.",
+      "options": [
+        "fluently",
+        "fluent",
+        "fluency",
+        "fluentness"
+      ],
+      "answer": 0,
+      "explanation": "'Fluently' is the adverb modifying the verb 'speaks'.",
+      "difficulty": "easy",
+      "id": "q76"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Complete: If you had studied, you _____ the exam.",
+      "options": [
+        "would have passed",
+        "will pass",
+        "would pass",
+        "passed"
+      ],
+      "answer": 0,
+      "explanation": "Third conditional: 'If + past perfect, would have + past participle'.",
+      "difficulty": "medium",
+      "id": "q77"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which word is an abstract noun?",
+      "options": [
+        "happiness",
+        "table",
+        "city",
+        "apple"
+      ],
+      "answer": 0,
+      "explanation": "Abstract nouns name ideas/qualities — 'happiness' is one.",
+      "difficulty": "easy",
+      "id": "q78"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Choose the correct determiner: There is _____ milk in the glass.",
+      "options": [
+        "some",
+        "many",
+        "a few",
+        "several"
+      ],
+      "answer": 0,
+      "explanation": "'Milk' is uncountable, so 'some' (not many/a few) is correct.",
+      "difficulty": "easy",
+      "id": "q79"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Complete: The harder you work, _____ you will succeed.",
+      "options": [
+        "the more likely",
+        "more likely",
+        "the most likely",
+        "most likely"
+      ],
+      "answer": 0,
+      "explanation": "Correlative 'the + comparative, the + comparative': 'the more likely'.",
+      "difficulty": "medium",
+      "id": "q80"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which sentence is correct?",
+      "options": [
+        "He is my cousin brother",
+        "He is my cousin",
+        "He is my cousin's brother",
+        "He is my cousin brother's"
+      ],
+      "answer": 1,
+      "explanation": "'Cousin brother' is an Indian English error; simply 'my cousin' is correct.",
+      "difficulty": "medium",
+      "id": "q81"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Choose the correct form: It is high time you _____ your habits.",
+      "options": [
+        "changed",
+        "change",
+        "will change",
+        "changing"
+      ],
+      "answer": 0,
+      "explanation": "'It is high time' is followed by past subjunctive: 'you changed'.",
+      "difficulty": "hard",
+      "id": "q82"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Complete: Neither Ali nor his friends _____ invited.",
+      "options": [
+        "were",
+        "was",
+        "is",
+        "has been"
+      ],
+      "answer": 0,
+      "explanation": "With 'neither...nor', the verb agrees with the nearer subject (friends) → 'were'.",
+      "difficulty": "medium",
+      "id": "q83"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which word is a linking verb?",
+      "options": [
+        "seems",
+        "runs",
+        "jumps",
+        "writes"
+      ],
+      "answer": 0,
+      "explanation": "'Seems' links the subject to a complement; the others are action verbs.",
+      "difficulty": "medium",
+      "id": "q84"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Choose the correct form: He is better _____ than his brother.",
+      "options": [
+        "at cricket",
+        "in cricket",
+        "on cricket",
+        "for cricket"
+      ],
+      "answer": 0,
+      "explanation": "'Better at' + activity is the correct idiom.",
+      "difficulty": "easy",
+      "id": "q85"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Complete: _____ the weather was bad, we went out.",
+      "options": [
+        "Although",
+        "Because",
+        "So",
+        "Unless"
+      ],
+      "answer": 0,
+      "explanation": "'Although' introduces a contrast: bad weather yet we went out.",
+      "difficulty": "easy",
+      "id": "q86"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Choose the correct tag: They haven't finished, _____?",
+      "options": [
+        "have they",
+        "haven't they",
+        "did they",
+        "do they"
+      ],
+      "answer": 0,
+      "explanation": "Negative statement takes a positive tag: 'have they'.",
+      "difficulty": "easy",
+      "id": "q87"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Identify the participle in: 'The broken window needs repair.'",
+      "options": [
+        "broken",
+        "window",
+        "needs",
+        "repair"
+      ],
+      "answer": 0,
+      "explanation": "'Broken' is a past participle used as an adjective.",
+      "difficulty": "medium",
+      "id": "q88"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Choose the correct order: He is a _____ boy.",
+      "options": [
+        "tall, young, handsome",
+        "handsome, tall, young",
+        "young, handsome, tall",
+        "tall, handsome, young"
+      ],
+      "answer": 0,
+      "explanation": "Opinion→size→age order: 'tall, young, handsome' fits adjective sequencing.",
+      "difficulty": "hard",
+      "id": "q89"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Complete: He talks as if he _____ everything.",
+      "options": [
+        "knew",
+        "knows",
+        "will know",
+        "has known"
+      ],
+      "answer": 0,
+      "explanation": "'As if' takes the past subjunctive 'knew' for unreal situations.",
+      "difficulty": "medium",
+      "id": "q90"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Choose the correct form: I _____ her for a long time.",
+      "options": [
+        "have known",
+        "am knowing",
+        "know",
+        "knew"
+      ],
+      "answer": 0,
+      "explanation": "'Know' is a state verb and with 'for a long time' we use present perfect: 'have known'.",
+      "difficulty": "medium",
+      "id": "q91"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Complete: The book _____ on the table belongs to Ali.",
+      "options": [
+        "lying",
+        "laying",
+        "laid",
+        "lies"
+      ],
+      "answer": 0,
+      "explanation": "'Lying' is the present participle of 'lie' (be in a horizontal position); 'laying' needs an object.",
+      "difficulty": "hard",
+      "id": "q92"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Choose the correct sentence:",
+      "options": [
+        "He is one of the best players in the team",
+        "He is one of the best player in the team",
+        "He is the one of best players",
+        "He is one of best players"
+      ],
+      "answer": 0,
+      "explanation": "'One of the + superlative + plural noun' is the correct structure.",
+      "difficulty": "easy",
+      "id": "q93"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Complete: He did not go to school, _____?",
+      "options": [
+        "did he",
+        "didn't he",
+        "does he",
+        "doesn't he"
+      ],
+      "answer": 0,
+      "explanation": "Negative statement takes a positive tag: 'did he'.",
+      "difficulty": "easy",
+      "id": "q94"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Choose the correct preposition: He is good _____ painting.",
+      "options": [
+        "at",
+        "in",
+        "on",
+        "with"
+      ],
+      "answer": 0,
+      "explanation": "'Good at' + activity is the correct idiom.",
+      "difficulty": "easy",
+      "id": "q95"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Complete: I have been working here _____ 2015.",
+      "options": [
+        "since",
+        "for",
+        "from",
+        "in"
+      ],
+      "answer": 0,
+      "explanation": "'Since' is used with a point in time (2015).",
+      "difficulty": "easy",
+      "id": "q96"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Choose the correct form: She enjoys _____ novels.",
+      "options": [
+        "reading",
+        "to read",
+        "read",
+        "reads"
+      ],
+      "answer": 0,
+      "explanation": "'Enjoy' is followed by a gerund: 'enjoys reading'.",
+      "difficulty": "easy",
+      "id": "q97"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Complete: _____ I reached the station, the train had left.",
+      "options": [
+        "When",
+        "Until",
+        "Unless",
+        "Although"
+      ],
+      "answer": 0,
+      "explanation": "'When' introduces the later action; the past perfect shows the earlier one.",
+      "difficulty": "easy",
+      "id": "q98"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Choose the correct form: He is the _____ of the two.",
+      "options": [
+        "taller",
+        "tallest",
+        "more tall",
+        "most tall"
+      ],
+      "answer": 0,
+      "explanation": "Comparing two people uses the comparative 'taller'.",
+      "difficulty": "easy",
+      "id": "q99"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Complete: She asked me if I _____ help her.",
+      "options": [
+        "could",
+        "can",
+        "will",
+        "may"
+      ],
+      "answer": 0,
+      "explanation": "In reported speech 'can' shifts to 'could'.",
+      "difficulty": "easy",
+      "id": "q100"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Choose the correct sentence:",
+      "options": [
+        "There is many water in the glass",
+        "There is much water in the glass",
+        "There are much water in the glass",
+        "There is many waters in the glass"
+      ],
+      "answer": 1,
+      "explanation": "'Water' is uncountable → 'much water' with singular 'is'.",
+      "difficulty": "easy",
+      "id": "q101"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Complete: It is I who _____ responsible.",
+      "options": [
+        "am",
+        "is",
+        "are",
+        "was"
+      ],
+      "answer": 0,
+      "explanation": "'It is I who' takes the first person verb: 'am responsible'.",
+      "difficulty": "hard",
+      "id": "q102"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Choose the correct form: This is the house _____ I was born.",
+      "options": [
+        "where",
+        "which",
+        "that",
+        "what"
+      ],
+      "answer": 0,
+      "explanation": "'Where' is the relative adverb for a place.",
+      "difficulty": "easy",
+      "id": "q103"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Complete: He has been absent _____ Monday.",
+      "options": [
+        "since",
+        "for",
+        "from",
+        "at"
+      ],
+      "answer": 0,
+      "explanation": "'Since' is used with a specific starting point (Monday).",
+      "difficulty": "easy",
+      "id": "q104"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Choose the correct sentence:",
+      "options": [
+        "The police is coming",
+        "The police are coming",
+        "The police was coming",
+        "A police is coming"
+      ],
+      "answer": 1,
+      "explanation": "'Police' is a plural collective noun: 'The police are coming'.",
+      "difficulty": "medium",
+      "id": "q105"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Complete: Hardly had he left _____ it started raining.",
+      "options": [
+        "when",
+        "than",
+        "then",
+        "that"
+      ],
+      "answer": 0,
+      "explanation": "'Hardly...when' is the correct pair, not 'hardly...than'.",
+      "difficulty": "medium",
+      "id": "q106"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Choose the correct form: I would rather _____ at home than go out.",
+      "options": [
+        "stay",
+        "to stay",
+        "staying",
+        "stayed"
+      ],
+      "answer": 0,
+      "explanation": "'Would rather' is followed by the base form of the verb.",
+      "difficulty": "medium",
+      "id": "q107"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Complete: The number of students _____ increasing.",
+      "options": [
+        "is",
+        "are",
+        "were",
+        "have been"
+      ],
+      "answer": 0,
+      "explanation": "'The number of' is singular → 'is increasing'.",
+      "difficulty": "medium",
+      "id": "q108"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Choose the correct sentence:",
+      "options": [
+        "He came yesterday and went away",
+        "He came yesterday and has gone away",
+        "He had come yesterday and went away",
+        "He comes yesterday and went away"
+      ],
+      "answer": 0,
+      "explanation": "Both actions happened in the past → simple past for both.",
+      "difficulty": "easy",
+      "id": "q109"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Complete: _____ he is rich, he is not happy.",
+      "options": [
+        "Although",
+        "Because",
+        "Since",
+        "So"
+      ],
+      "answer": 0,
+      "explanation": "'Although' introduces a contrast: rich but unhappy.",
+      "difficulty": "easy",
+      "id": "q110"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Choose the correct form: The teacher, along with the students, _____ going.",
+      "options": [
+        "is",
+        "are",
+        "were",
+        "have been"
+      ],
+      "answer": 0,
+      "explanation": "'Along with' doesn't change the subject: subject is 'teacher' (singular) → 'is'.",
+      "difficulty": "medium",
+      "id": "q111"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Complete: I _____ him since our school days.",
+      "options": [
+        "have known",
+        "knew",
+        "am knowing",
+        "know"
+      ],
+      "answer": 0,
+      "explanation": "'Since our school days' with a continuing state → present perfect 'have known'.",
+      "difficulty": "easy",
+      "id": "q112"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Choose the correct sentence:",
+      "options": [
+        "He speaks English good",
+        "He speaks English well",
+        "He speaks good Englishly",
+        "He speaks English goodly"
+      ],
+      "answer": 1,
+      "explanation": "'Well' is the adverb modifying 'speaks'.",
+      "difficulty": "easy",
+      "id": "q113"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Complete: She is interested _____ learning Urdu.",
+      "options": [
+        "in",
+        "for",
+        "on",
+        "at"
+      ],
+      "answer": 0,
+      "explanation": "'Interested in' + gerund is the correct idiom.",
+      "difficulty": "easy",
+      "id": "q114"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Choose the correct form: Neither of the answers _____ correct.",
+      "options": [
+        "is",
+        "are",
+        "were",
+        "have been"
+      ],
+      "answer": 0,
+      "explanation": "'Neither' is singular → 'is correct'.",
+      "difficulty": "easy",
+      "id": "q115"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Complete: He works hard so that he _____ pass.",
+      "options": [
+        "may",
+        "might",
+        "can",
+        "will"
+      ],
+      "answer": 0,
+      "explanation": "'So that' of purpose is followed by 'may' or 'can'.",
+      "difficulty": "medium",
+      "id": "q116"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Choose the correct sentence:",
+      "options": [
+        "I have seen him yesterday",
+        "I saw him yesterday",
+        "I had seen him yesterday",
+        "I have been seeing him yesterday"
+      ],
+      "answer": 1,
+      "explanation": "'Yesterday' needs simple past: 'I saw him yesterday'.",
+      "difficulty": "easy",
+      "id": "q117"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Complete: He is senior _____ me by two years.",
+      "options": [
+        "to",
+        "than",
+        "from",
+        "over"
+      ],
+      "answer": 0,
+      "explanation": "'Senior' takes 'to', not 'than'.",
+      "difficulty": "easy",
+      "id": "q118"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Choose the correct form: It is time we _____ home.",
+      "options": [
+        "went",
+        "go",
+        "will go",
+        "going"
+      ],
+      "answer": 0,
+      "explanation": "'It is time' is followed by the past subjunctive: 'we went'.",
+      "difficulty": "hard",
+      "id": "q119"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Complete: _____ the teacher entered, the students stood up.",
+      "options": [
+        "As soon as",
+        "Unless",
+        "Although",
+        "Because"
+      ],
+      "answer": 0,
+      "explanation": "'As soon as' expresses two actions happening in quick succession.",
+      "difficulty": "easy",
+      "id": "q120"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Choose the correct sentence:",
+      "options": [
+        "He asked me what my name was",
+        "He asked me what was my name",
+        "He asked me what my name is",
+        "He asked that what my name was"
+      ],
+      "answer": 0,
+      "explanation": "Indirect questions keep statement word order: 'what my name was'.",
+      "difficulty": "medium",
+      "id": "q121"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Complete: She has been teaching _____ ten years.",
+      "options": [
+        "for",
+        "since",
+        "from",
+        "at"
+      ],
+      "answer": 0,
+      "explanation": "'For' is used with a duration (ten years).",
+      "difficulty": "easy",
+      "id": "q122"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Choose the correct form: If he had come, I _____ him.",
+      "options": [
+        "would have met",
+        "will meet",
+        "would meet",
+        "met"
+      ],
+      "answer": 0,
+      "explanation": "Third conditional: 'would have + past participle'.",
+      "difficulty": "medium",
+      "id": "q123"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Complete: He is capable _____ doing the work.",
+      "options": [
+        "of",
+        "for",
+        "in",
+        "to"
+      ],
+      "answer": 0,
+      "explanation": "'Capable of' + gerund is the correct idiom.",
+      "difficulty": "easy",
+      "id": "q124"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Choose the correct sentence:",
+      "options": [
+        "Each of the boys were present",
+        "Each of the boys was present",
+        "Each of the boys have been present",
+        "Each boys was present"
+      ],
+      "answer": 1,
+      "explanation": "'Each' takes a singular verb: 'was present'.",
+      "difficulty": "easy",
+      "id": "q125"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Complete: No sooner had he seen me _____ he ran away.",
+      "options": [
+        "than",
+        "when",
+        "then",
+        "that"
+      ],
+      "answer": 0,
+      "explanation": "'No sooner...than' is the correct correlative.",
+      "difficulty": "medium",
+      "id": "q126"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Choose the correct form: There are _____ apples on the table.",
+      "options": [
+        "some",
+        "much",
+        "little",
+        "a little"
+      ],
+      "answer": 0,
+      "explanation": "'Apples' is plural countable → 'some'.",
+      "difficulty": "easy",
+      "id": "q127"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Complete: He is used to _____ early.",
+      "options": [
+        "getting up",
+        "get up",
+        "gets up",
+        "got up"
+      ],
+      "answer": 0,
+      "explanation": "'Used to' + gerund expresses a habit: 'used to getting up'.",
+      "difficulty": "medium",
+      "id": "q128"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Choose the correct sentence:",
+      "options": [
+        "He asked me to not go there",
+        "He asked me not to go there",
+        "He asked me not go there",
+        "He asked me to not going there"
+      ],
+      "answer": 1,
+      "explanation": "Negative infinitive: 'not to go'.",
+      "difficulty": "medium",
+      "id": "q129"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Complete: She sings _____ than her sister.",
+      "options": [
+        "better",
+        "best",
+        "good",
+        "well"
+      ],
+      "answer": 0,
+      "explanation": "Comparing two people → comparative 'better'.",
+      "difficulty": "easy",
+      "id": "q130"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Choose the correct form: He does not know _____ to do.",
+      "options": [
+        "what",
+        "which",
+        "that",
+        "who"
+      ],
+      "answer": 0,
+      "explanation": "'What' is the interrogative pronoun for an unknown thing.",
+      "difficulty": "easy",
+      "id": "q131"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Complete: If you heat ice, it _____.",
+      "options": [
+        "melts",
+        "melted",
+        "would melt",
+        "will have melted"
+      ],
+      "answer": 0,
+      "explanation": "Zero conditional (general truth): simple present in both clauses.",
+      "difficulty": "easy",
+      "id": "q132"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Choose the correct sentence:",
+      "options": [
+        "He is afraid from dogs",
+        "He is afraid of dogs",
+        "He is afraid to dogs",
+        "He is afraid at dogs"
+      ],
+      "answer": 1,
+      "explanation": "'Afraid of' is the correct preposition.",
+      "difficulty": "easy",
+      "id": "q133"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Complete: She prefers tea _____ coffee.",
+      "options": [
+        "to",
+        "than",
+        "from",
+        "over"
+      ],
+      "answer": 0,
+      "explanation": "'Prefer X to Y' is the correct structure.",
+      "difficulty": "easy",
+      "id": "q134"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Choose the correct form: He is the man _____ I met yesterday.",
+      "options": [
+        "whom",
+        "who",
+        "whose",
+        "what"
+      ],
+      "answer": 0,
+      "explanation": "'Whom' is the object of 'met'.",
+      "difficulty": "medium",
+      "id": "q135"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Complete: _____ you work hard, you will not pass.",
+      "options": [
+        "Unless",
+        "If",
+        "Although",
+        "Since"
+      ],
+      "answer": 0,
+      "explanation": "'Unless' means 'if not': unless you work hard, you will not pass.",
+      "difficulty": "medium",
+      "id": "q136"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Choose the correct sentence:",
+      "options": [
+        "He has visited Multan last week",
+        "He visited Multan last week",
+        "He visits Multan last week",
+        "He has been visiting Multan last week"
+      ],
+      "answer": 1,
+      "explanation": "'Last week' is a definite past time → simple past.",
+      "difficulty": "easy",
+      "id": "q137"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Complete: The scenery of Hunza _____ breathtaking.",
+      "options": [
+        "is",
+        "are",
+        "were",
+        "have been"
+      ],
+      "answer": 0,
+      "explanation": "'Scenery' is uncountable → singular verb 'is'.",
+      "difficulty": "easy",
+      "id": "q138"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Choose the correct form: He went to bed after he _____ his homework.",
+      "options": [
+        "had finished",
+        "finished",
+        "finishes",
+        "has finished"
+      ],
+      "answer": 0,
+      "explanation": "Earlier action in the past → past perfect 'had finished'.",
+      "difficulty": "medium",
+      "id": "q139"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Complete: Not only did he fail, _____ he lost his scholarship.",
+      "options": [
+        "but",
+        "and",
+        "also",
+        "yet"
+      ],
+      "answer": 0,
+      "explanation": "'Not only...but (also)' is the correct correlative pair.",
+      "difficulty": "medium",
+      "id": "q140"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Choose the correct form: He has been living here _____ 2010.",
+      "options": [
+        "since",
+        "for",
+        "from",
+        "during"
+      ],
+      "answer": 0,
+      "explanation": "'Since' is used with a point in time (2010).",
+      "difficulty": "easy",
+      "id": "q141"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Complete: The committee _____ not yet reached a decision.",
+      "options": [
+        "has",
+        "have",
+        "are",
+        "were"
+      ],
+      "answer": 0,
+      "explanation": "'Committee' as a single unit takes a singular verb: 'has'.",
+      "difficulty": "medium",
+      "id": "q142"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Choose the correct sentence:",
+      "options": [
+        "He asked me where I was going",
+        "He asked me where was I going",
+        "He asked me where I am going",
+        "He asked that where I was going"
+      ],
+      "answer": 0,
+      "explanation": "Indirect questions use statement word order: 'where I was going'.",
+      "difficulty": "medium",
+      "id": "q143"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Complete: She is very good _____ mathematics.",
+      "options": [
+        "at",
+        "in",
+        "on",
+        "with"
+      ],
+      "answer": 0,
+      "explanation": "'Good at' + subject is the correct idiom.",
+      "difficulty": "easy",
+      "id": "q144"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Choose the correct form: I wish I _____ more careful.",
+      "options": [
+        "had been",
+        "have been",
+        "was",
+        "am"
+      ],
+      "answer": 0,
+      "explanation": "Regret about the past → past perfect: 'had been'.",
+      "difficulty": "medium",
+      "id": "q145"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Complete: This is the girl _____ father is a doctor.",
+      "options": [
+        "whose",
+        "who",
+        "whom",
+        "which"
+      ],
+      "answer": 0,
+      "explanation": "'Whose' shows possession: 'the girl whose father'.",
+      "difficulty": "easy",
+      "id": "q146"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Choose the correct sentence:",
+      "options": [
+        "He is taller than any other boy in the class",
+        "He is taller than any boy in the class",
+        "He is tallest than any boy",
+        "He is more tall than any boy"
+      ],
+      "answer": 0,
+      "explanation": "For comparison within a group, use 'taller than any other boy'.",
+      "difficulty": "medium",
+      "id": "q147"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Complete: He insisted _____ paying the bill.",
+      "options": [
+        "on",
+        "for",
+        "to",
+        "in"
+      ],
+      "answer": 0,
+      "explanation": "'Insist on' + gerund is the correct idiom.",
+      "difficulty": "medium",
+      "id": "q148"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Choose the correct form: I have known him _____ ten years.",
+      "options": [
+        "for",
+        "since",
+        "from",
+        "at"
+      ],
+      "answer": 0,
+      "explanation": "'For' is used with a duration (ten years).",
+      "difficulty": "easy",
+      "id": "q149"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Complete: _____ you like it or not, you must go.",
+      "options": [
+        "Whether",
+        "If",
+        "Unless",
+        "Although"
+      ],
+      "answer": 0,
+      "explanation": "'Whether...or not' expresses alternatives.",
+      "difficulty": "medium",
+      "id": "q150"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Choose the correct sentence:",
+      "options": [
+        "He is suffering from fever",
+        "He is suffering with fever",
+        "He is suffering of fever",
+        "He is suffering at fever"
+      ],
+      "answer": 0,
+      "explanation": "'Suffer from' + illness is the correct idiom.",
+      "difficulty": "easy",
+      "id": "q151"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Complete: He is confident _____ success.",
+      "options": [
+        "of",
+        "for",
+        "in",
+        "at"
+      ],
+      "answer": 0,
+      "explanation": "'Confident of' + noun is the correct idiom.",
+      "difficulty": "medium",
+      "id": "q152"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Choose the correct form: He speaks English _____ than his sister.",
+      "options": [
+        "more fluently",
+        "fluently",
+        "most fluently",
+        "fluent"
+      ],
+      "answer": 0,
+      "explanation": "Comparing two people → comparative adverb 'more fluently'.",
+      "difficulty": "medium",
+      "id": "q153"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Complete: Hardly had we started _____ it began to rain.",
+      "options": [
+        "when",
+        "than",
+        "then",
+        "that"
+      ],
+      "answer": 0,
+      "explanation": "'Hardly...when' is the correct pair.",
+      "difficulty": "medium",
+      "id": "q154"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Choose the correct sentence:",
+      "options": [
+        "He is married to a doctor",
+        "He is married with a doctor",
+        "He is married from a doctor",
+        "He is married at a doctor"
+      ],
+      "answer": 0,
+      "explanation": "'Married to' is the correct idiom.",
+      "difficulty": "easy",
+      "id": "q155"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Complete: The train had left _____ we reached the station.",
+      "options": [
+        "before",
+        "after",
+        "while",
+        "until"
+      ],
+      "answer": 0,
+      "explanation": "'Before' shows the past perfect action came first.",
+      "difficulty": "easy",
+      "id": "q156"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Choose the correct form: Neither of them _____ present.",
+      "options": [
+        "was",
+        "were",
+        "have been",
+        "are"
+      ],
+      "answer": 0,
+      "explanation": "'Neither' is singular → 'was present'.",
+      "difficulty": "easy",
+      "id": "q157"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Complete: She is junior _____ him in service.",
+      "options": [
+        "to",
+        "than",
+        "from",
+        "of"
+      ],
+      "answer": 0,
+      "explanation": "'Junior' takes 'to', like senior/inferior.",
+      "difficulty": "easy",
+      "id": "q158"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Choose the correct sentence:",
+      "options": [
+        "He has returned from Lahore",
+        "He has returned back from Lahore",
+        "He has returned back to Lahore",
+        "He has returned from back Lahore"
+      ],
+      "answer": 0,
+      "explanation": "'Return' already means 'come back'; 'returned back' is redundant.",
+      "difficulty": "medium",
+      "id": "q159"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Complete: It has been raining _____ morning.",
+      "options": [
+        "since",
+        "for",
+        "from",
+        "at"
+      ],
+      "answer": 0,
+      "explanation": "'Since morning' — a point in time.",
+      "difficulty": "easy",
+      "id": "q160"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Choose the correct form: He is the _____ of all the students.",
+      "options": [
+        "brightest",
+        "brighter",
+        "most bright",
+        "bright"
+      ],
+      "answer": 0,
+      "explanation": "Comparing three or more → superlative 'brightest'.",
+      "difficulty": "easy",
+      "id": "q161"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Complete: The manager, not the workers, _____ responsible.",
+      "options": [
+        "is",
+        "are",
+        "were",
+        "have been"
+      ],
+      "answer": 0,
+      "explanation": "Subject is 'manager' (singular) → 'is responsible'.",
+      "difficulty": "medium",
+      "id": "q162"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Choose the correct sentence:",
+      "options": [
+        "He has been ill for two weeks",
+        "He has been ill since two weeks",
+        "He is ill since two weeks",
+        "He is being ill for two weeks"
+      ],
+      "answer": 0,
+      "explanation": "'For two weeks' (duration) with present perfect.",
+      "difficulty": "medium",
+      "id": "q163"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Complete: _____ he is clever, he is lazy.",
+      "options": [
+        "Although",
+        "Because",
+        "Since",
+        "Therefore"
+      ],
+      "answer": 0,
+      "explanation": "'Although' introduces the contrast: clever but lazy.",
+      "difficulty": "easy",
+      "id": "q164"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Choose the correct form: Each of the girls _____ her own uniform.",
+      "options": [
+        "has",
+        "have",
+        "are having",
+        "were having"
+      ],
+      "answer": 0,
+      "explanation": "Each is singular and takes a singular verb: has.",
+      "difficulty": "easy",
+      "id": "q165"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Complete: He is not only intelligent _____ also hardworking.",
+      "options": [
+        "but",
+        "and",
+        "yet",
+        "so"
+      ],
+      "answer": 0,
+      "explanation": "Not only...but also is the correct correlative pair.",
+      "difficulty": "easy",
+      "id": "q166"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Choose the correct sentence:",
+      "options": [
+        "The boy whom you met is my brother",
+        "The boy who you met is my brother",
+        "The boy whose you met is my brother",
+        "The boy which you met is my brother"
+      ],
+      "answer": 0,
+      "explanation": "Whom is the object of the verb met.",
+      "difficulty": "medium",
+      "id": "q167"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Complete: She has been working here _____ five years.",
+      "options": [
+        "for",
+        "since",
+        "from",
+        "during"
+      ],
+      "answer": 0,
+      "explanation": "For is used with a duration such as five years.",
+      "difficulty": "easy",
+      "id": "q168"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Choose the correct form: If it rains, the match _____ cancelled.",
+      "options": [
+        "will be",
+        "would be",
+        "was",
+        "has been"
+      ],
+      "answer": 0,
+      "explanation": "First conditional: if + present, will + base verb.",
+      "difficulty": "easy",
+      "id": "q169"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Complete: He is busy _____ his homework.",
+      "options": [
+        "with",
+        "in",
+        "on",
+        "at"
+      ],
+      "answer": 0,
+      "explanation": "Busy with is the correct idiom.",
+      "difficulty": "easy",
+      "id": "q170"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Choose the correct sentence:",
+      "options": [
+        "He told me that he would come",
+        "He told that he would come",
+        "He told to me that he would come",
+        "He told me that he will come"
+      ],
+      "answer": 0,
+      "explanation": "Tell needs an object, and will shifts to would in reported speech.",
+      "difficulty": "medium",
+      "id": "q171"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Complete: He is looking forward _____ your visit.",
+      "options": [
+        "to",
+        "for",
+        "at",
+        "on"
+      ],
+      "answer": 0,
+      "explanation": "Look forward to is the correct idiom.",
+      "difficulty": "easy",
+      "id": "q172"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Complete: _____ the students finished, they left the hall.",
+      "options": [
+        "After",
+        "Before",
+        "Until",
+        "Unless"
+      ],
+      "answer": 0,
+      "explanation": "After shows that the finished action came first.",
+      "difficulty": "easy",
+      "id": "q173"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Choose the correct sentence:",
+      "options": [
+        "There are less people here today",
+        "There are fewer people here today",
+        "There is fewer people here today",
+        "There are lesser people here today"
+      ],
+      "answer": 1,
+      "explanation": "People is plural countable, so fewer is correct.",
+      "difficulty": "medium",
+      "id": "q174"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Complete: He is senior to me _____ two years.",
+      "options": [
+        "by",
+        "for",
+        "in",
+        "at"
+      ],
+      "answer": 0,
+      "explanation": "Senior by is used with a measure of difference.",
+      "difficulty": "medium",
+      "id": "q175"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Choose the correct sentence:",
+      "options": [
+        "He is capable for doing the work",
+        "He is capable of doing the work",
+        "He is capable to doing the work",
+        "He is capable in doing the work"
+      ],
+      "answer": 1,
+      "explanation": "Capable of is the correct idiom.",
+      "difficulty": "easy",
+      "id": "q176"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Complete: We were prevented _____ attending the function.",
+      "options": [
+        "from",
+        "to",
+        "for",
+        "in"
+      ],
+      "answer": 0,
+      "explanation": "Prevent from is the correct idiom.",
+      "difficulty": "medium",
+      "id": "q177"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Choose the correct sentence:",
+      "options": [
+        "He is married from a rich family",
+        "He is married into a rich family",
+        "He is married with a rich family",
+        "He is married at a rich family"
+      ],
+      "answer": 1,
+      "explanation": "Married into is used for joining a family.",
+      "difficulty": "medium",
+      "id": "q178"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Complete: He is a man _____ great ability.",
+      "options": [
+        "of",
+        "for",
+        "in",
+        "with"
+      ],
+      "answer": 0,
+      "explanation": "A man of ability is the correct phrase.",
+      "difficulty": "easy",
+      "id": "q179"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Choose the correct form: I prefer walking _____ riding.",
+      "options": [
+        "to",
+        "than",
+        "over",
+        "from"
+      ],
+      "answer": 0,
+      "explanation": "Prefer X to Y is the correct structure.",
+      "difficulty": "easy",
+      "id": "q180"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Complete: He is ashamed _____ his conduct.",
+      "options": [
+        "of",
+        "for",
+        "at",
+        "in"
+      ],
+      "answer": 0,
+      "explanation": "Ashamed of is the correct idiom.",
+      "difficulty": "medium",
+      "id": "q181"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Choose the correct sentence:",
+      "options": [
+        "He is different from his brother",
+        "He is different than his brother",
+        "He is different to his brother",
+        "He is different of his brother"
+      ],
+      "answer": 0,
+      "explanation": "Different from is the standard idiom.",
+      "difficulty": "easy",
+      "id": "q182"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Complete: He is angry _____ me for no reason.",
+      "options": [
+        "with",
+        "on",
+        "at",
+        "to"
+      ],
+      "answer": 0,
+      "explanation": "Angry with is used for a person.",
+      "difficulty": "easy",
+      "id": "q183"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Choose the correct form: She is anxious _____ her results.",
+      "options": [
+        "about",
+        "for",
+        "at",
+        "on"
+      ],
+      "answer": 0,
+      "explanation": "Anxious about is the correct idiom.",
+      "difficulty": "medium",
+      "id": "q184"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Complete: He is good _____ solving problems.",
+      "options": [
+        "at",
+        "in",
+        "on",
+        "for"
+      ],
+      "answer": 0,
+      "explanation": "Good at + gerund is the correct idiom.",
+      "difficulty": "easy",
+      "id": "q185"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Choose the correct sentence:",
+      "options": [
+        "He has been suffering from fever since Monday",
+        "He has been suffering with fever since Monday",
+        "He has been suffering of fever since Monday",
+        "He has been suffering at fever since Monday"
+      ],
+      "answer": 0,
+      "explanation": "Suffer from is the correct idiom.",
+      "difficulty": "easy",
+      "id": "q186"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Complete: He is accused _____ theft.",
+      "options": [
+        "of",
+        "for",
+        "in",
+        "with"
+      ],
+      "answer": 0,
+      "explanation": "Accused of is the correct idiom.",
+      "difficulty": "medium",
+      "id": "q187"
+    }
+  ]
+}

@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'dart:io';
 
 import 'package:flutter/material.dart';
@@ -86,6 +87,11 @@ class MessageBubble extends StatelessWidget {
           if (text.isNotEmpty || (_isError && text.isEmpty))
             const SizedBox(height: 8),
         ],
+        if (attachment.hasPdf) ...<Widget>[
+          _AttachedPdf(name: attachment.pdfName ?? 'Attached PDF'),
+          if (text.isNotEmpty || (_isError && text.isEmpty))
+            const SizedBox(height: 8),
+        ],
         Padding(
           padding:
               EdgeInsets.symmetric(horizontal: attachment.hasImage ? 8 : 0),
@@ -141,6 +147,7 @@ class MessageBubble extends StatelessWidget {
               messageId: message.id,
               text: text,
               onCopy: () => _copy(context, text),
+              onShare: () => _share(text),
               onRegenerate: onRegenerate,
               onFeedback: (bool liked) => _feedback(context, liked),
             ),
@@ -318,13 +325,14 @@ class MessageBubble extends StatelessWidget {
 }
 
 
-/// Copy / thumbs-up / thumbs-down / read-aloud / make-PDF quick actions
+/// Copy / thumbs-up / thumbs-down / read-aloud / share quick actions
 /// under an assistant reply.
 class _ActionRow extends StatelessWidget {
   const _ActionRow({
     required this.messageId,
     required this.text,
     required this.onCopy,
+    required this.onShare,
     required this.onFeedback,
     this.onRegenerate,
   });
@@ -332,32 +340,53 @@ class _ActionRow extends StatelessWidget {
   final String messageId;
   final String text;
   final VoidCallback onCopy;
+  final VoidCallback onShare;
   final ValueChanged<bool> onFeedback;
   final VoidCallback? onRegenerate;
 
   @override
   Widget build(BuildContext context) {
     final ColorScheme scheme = Theme.of(context).colorScheme;
-    return Row(
-      mainAxisSize: MainAxisSize.min,
-      children: <Widget>[
-        _icon(context, Icons.copy_outlined, 'Copy', onCopy),
-        _icon(context, Icons.thumb_up_outlined, 'Good response',
-            () => onFeedback(true)),
-        _icon(context, Icons.thumb_down_outlined, 'Bad response',
-            () => onFeedback(false)),
-        _ReadAloudButton(messageId: messageId, text: text),
-        _icon(context, Icons.picture_as_pdf_outlined, 'Make PDF',
-            () => exportMessageAsPdf(context, text: text)),
-        if (onRegenerate != null)
-          _icon(context, Icons.refresh_rounded, 'Regenerate', onRegenerate!),
-      ].map((Widget w) => Padding(
-            padding: const EdgeInsets.only(right: 2),
-            child: IconTheme(
-              data: IconThemeData(color: scheme.onSurfaceVariant, size: 17),
-              child: w,
+    final AiReadAloudController controller = AiReadAloudController.instance;
+    return AnimatedBuilder(
+      animation: Listenable.merge(<Listenable>[
+        controller.activeMessageId,
+        controller.playbackState,
+        controller.playbackElapsed,
+        controller.playbackDuration,
+      ]),
+      builder: (BuildContext context, Widget? child) {
+        final bool active = controller.activeMessageId.value == messageId;
+        return Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: <Widget>[
+            if (active) ...<Widget>[
+              _PlaybackBar(messageId: messageId, text: text),
+              const SizedBox(height: 4),
+            ],
+            Row(
+              mainAxisSize: MainAxisSize.min,
+              children: <Widget>[
+                _icon(context, Icons.copy_outlined, 'Copy', onCopy),
+                _icon(context, Icons.thumb_up_outlined, 'Good response',
+                    () => onFeedback(true)),
+                _icon(context, Icons.thumb_down_outlined, 'Bad response',
+                    () => onFeedback(false)),
+                _ReadAloudButton(messageId: messageId, text: text),
+                _icon(context, Icons.share_outlined, 'Share', onShare),
+                if (onRegenerate != null)
+                  _icon(context, Icons.refresh_rounded, 'Regenerate', onRegenerate!),
+              ].map((Widget w) => Padding(
+                    padding: const EdgeInsets.only(right: 2),
+                    child: IconTheme(
+                      data: IconThemeData(color: scheme.onSurfaceVariant, size: 17),
+                      child: w,
+                    ),
+                  )).toList(),
             ),
-          )).toList(),
+          ],
+        );
+      },
     );
   }
 
@@ -374,6 +403,95 @@ class _ActionRow extends StatelessWidget {
   }
 }
 
+class _PlaybackBar extends StatelessWidget {
+  const _PlaybackBar({required this.messageId, required this.text});
+
+  final String messageId;
+  final String text;
+
+  static String _clock(Duration value) {
+    final int seconds = value.inSeconds;
+    final String minutes = (seconds ~/ 60).toString().padLeft(2, '0');
+    final String remainder = (seconds % 60).toString().padLeft(2, '0');
+    return '$minutes:$remainder';
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final AiReadAloudController controller = AiReadAloudController.instance;
+    final ColorScheme scheme = Theme.of(context).colorScheme;
+    final bool paused = controller.playbackState.value == AiReadAloudState.paused;
+    final Duration elapsed = controller.playbackElapsed.value;
+    final Duration total = controller.playbackDuration.value;
+    final double progress = total.inMilliseconds <= 0
+        ? 0
+        : (elapsed.inMilliseconds / total.inMilliseconds).clamp(0.0, 1.0);
+    final TextStyle clockStyle = Theme.of(context).textTheme.labelSmall!.copyWith(
+          fontFeatures: const <FontFeature>[FontFeature.tabularFigures()],
+        );
+
+    return Container(
+      width: double.infinity,
+      height: 44,
+      padding: const EdgeInsets.symmetric(horizontal: 5, vertical: 4),
+      decoration: BoxDecoration(
+        color: scheme.surfaceContainerHighest.withValues(alpha: 0.82),
+        borderRadius: BorderRadius.circular(24),
+        border: Border.all(color: scheme.outlineVariant.withValues(alpha: 0.7)),
+      ),
+      child: Row(
+        children: <Widget>[
+          IconButton(
+            tooltip: paused ? 'Resume reading' : 'Pause reading',
+            visualDensity: VisualDensity.compact,
+            padding: EdgeInsets.zero,
+            constraints: const BoxConstraints(minWidth: 32, minHeight: 32),
+            style: IconButton.styleFrom(
+              backgroundColor: scheme.primary,
+              foregroundColor: scheme.onPrimary,
+            ),
+            icon: Icon(paused ? Icons.play_arrow_rounded : Icons.pause_rounded),
+            onPressed: () => controller.toggle(messageId, text),
+          ),
+          const SizedBox(width: 4),
+          Text(_clock(elapsed), style: clockStyle),
+          const SizedBox(width: 2),
+          Expanded(
+            child: SliderTheme(
+              data: SliderTheme.of(context).copyWith(
+                trackHeight: 3,
+                thumbShape: const RoundSliderThumbShape(enabledThumbRadius: 5),
+                overlayShape: const RoundSliderOverlayShape(overlayRadius: 10),
+                activeTrackColor: scheme.primary,
+                inactiveTrackColor: scheme.outlineVariant.withValues(alpha: 0.6),
+                thumbColor: scheme.primary,
+              ),
+              child: Slider(
+                value: progress,
+                onChanged: total <= Duration.zero
+                    ? null
+                    : (double value) {
+                        unawaited(controller.seekToFraction(value));
+                      },
+              ),
+            ),
+          ),
+          const SizedBox(width: 2),
+          Text(_clock(total), style: clockStyle),
+          IconButton(
+            tooltip: 'Close player',
+            visualDensity: VisualDensity.compact,
+            padding: EdgeInsets.zero,
+            constraints: const BoxConstraints(minWidth: 28, minHeight: 32),
+            icon: const Icon(Icons.close_rounded, size: 20),
+            onPressed: controller.stop,
+          ),
+        ],
+      ),
+    );
+  }
+}
+
 /// The "Read aloud" toggle — icon and tooltip swap to a stop icon while
 /// this exact message is the one currently playing, and playback
 /// automatically flips back on completion, cancellation, or if a different
@@ -386,30 +504,62 @@ class _ReadAloudButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ValueListenableBuilder<Object?>(
-      valueListenable: AiReadAloudController.instance.activeMessageId,
-      builder: (BuildContext context, Object? activeId, _) {
-        final bool speaking = activeId == messageId;
-        return IconButton(
-          icon: Icon(speaking
-              ? Icons.stop_circle_outlined
-              : Icons.volume_up_outlined),
-          tooltip: speaking ? 'Stop reading' : 'Read aloud',
-          visualDensity: VisualDensity.compact,
-          padding: EdgeInsets.zero,
-          constraints: const BoxConstraints(minWidth: 30, minHeight: 28),
-          onPressed: () async {
-            final ScaffoldMessengerState messenger =
-                ScaffoldMessenger.of(context);
-            try {
-              await AiReadAloudController.instance.toggle(messageId, text);
-            } on Object catch (e, st) {
-              debugPrint('Read aloud failed: $e\n$st');
-              messenger.showSnackBar(
-                SnackBar(content: Text('Could not read this aloud: $e')),
-              );
-            }
-          },
+    final AiReadAloudController controller = AiReadAloudController.instance;
+    return AnimatedBuilder(
+      animation: Listenable.merge(<Listenable>[
+        controller.activeMessageId,
+        controller.playbackState,
+      ]),
+      builder: (BuildContext context, Widget? child) {
+        final bool active = controller.activeMessageId.value == messageId;
+        final AiReadAloudState state = controller.playbackState.value;
+        final bool paused = active && state == AiReadAloudState.paused;
+        final ColorScheme scheme = Theme.of(context).colorScheme;
+        return Row(
+          mainAxisSize: MainAxisSize.min,
+          children: <Widget>[
+            IconButton(
+              icon: AnimatedSwitcher(
+                duration: const Duration(milliseconds: 180),
+                transitionBuilder: (Widget child, Animation<double> animation) =>
+                    FadeTransition(opacity: animation, child: child),
+                child: Icon(
+                  !active
+                      ? Icons.volume_up_rounded
+                      : paused
+                          ? Icons.play_arrow_rounded
+                          : Icons.pause_rounded,
+                  key: ValueKey<String>(
+                    !active ? 'idle' : paused ? 'paused' : 'playing',
+                  ),
+                  color: active ? scheme.primary : scheme.onSurfaceVariant,
+                ),
+              ),
+              tooltip: !active
+                  ? 'Read aloud'
+                  : paused
+                      ? 'Resume reading'
+                      : 'Pause reading',
+              visualDensity: VisualDensity.compact,
+              padding: EdgeInsets.zero,
+              constraints: const BoxConstraints(minWidth: 30, minHeight: 28),
+              onPressed: () async {
+                // TTS failures (missing engine/voice, busy engine) are handled
+                // silently inside the controller — it resets to idle, so the
+                // button just flips back. No error banner is shown.
+                await controller.toggle(messageId, text);
+              },
+            ),
+            if (active)
+              IconButton(
+                icon: Icon(Icons.stop_rounded, color: scheme.error),
+                tooltip: 'Stop reading',
+                visualDensity: VisualDensity.compact,
+                padding: EdgeInsets.zero,
+                constraints: const BoxConstraints(minWidth: 30, minHeight: 28),
+                onPressed: controller.stop,
+              ),
+          ],
         );
       },
     );
@@ -591,6 +741,69 @@ class _ShowMoreToggle extends StatelessWidget {
             ),
           ],
         ),
+      ),
+    );
+  }
+}
+
+class _AttachedPdf extends StatelessWidget {
+  const _AttachedPdf({required this.name});
+
+  final String name;
+
+  @override
+  Widget build(BuildContext context) {
+    final ThemeData theme = Theme.of(context);
+    final ColorScheme scheme = theme.colorScheme;
+    return Container(
+      padding: const EdgeInsets.fromLTRB(7, 6, 10, 6),
+      decoration: BoxDecoration(
+        color: scheme.onPrimary.withValues(alpha: 0.12),
+        borderRadius: BorderRadius.circular(15),
+        border: Border.all(color: scheme.onPrimary.withValues(alpha: 0.25)),
+      ),
+      child: Row(
+        mainAxisSize: MainAxisSize.min,
+        children: <Widget>[
+          Container(
+            width: 36,
+            height: 36,
+            alignment: Alignment.center,
+            decoration: BoxDecoration(
+              color: scheme.onPrimary.withValues(alpha: 0.16),
+              borderRadius: BorderRadius.circular(10),
+            ),
+            child: Icon(
+              Icons.picture_as_pdf_rounded,
+              color: scheme.onPrimary,
+              size: 21,
+            ),
+          ),
+          const SizedBox(width: 8),
+          Flexible(
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: <Widget>[
+                Text(
+                  name,
+                  maxLines: 1,
+                  overflow: TextOverflow.ellipsis,
+                  style: theme.textTheme.labelLarge?.copyWith(
+                    color: scheme.onPrimary,
+                    fontWeight: FontWeight.w700,
+                  ),
+                ),
+                Text(
+                  'PDF document',
+                  style: theme.textTheme.labelSmall?.copyWith(
+                    color: scheme.onPrimary.withValues(alpha: 0.72),
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ],
       ),
     );
   }

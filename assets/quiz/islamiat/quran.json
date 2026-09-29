@@ -1,0 +1,1413 @@
+{
+  "bank": {
+    "name": "The Holy Quran",
+    "subject": "Islamic Studies",
+    "topic": "The Holy Quran",
+    "description": "Revelation, compilation and structure of the Holy Quran, and key concepts related to it.",
+    "tags": "css,pms,fpsc,islamic-studies,quran",
+    "version": "1.0",
+    "id": "islamiat_quran"
+  },
+  "questions": [
+    {
+      "type": "mcq",
+      "prompt": "How many Surahs (chapters) are there in the Holy Quran?",
+      "options": [
+        "100",
+        "112",
+        "114",
+        "120"
+      ],
+      "answer": 2,
+      "explanation": "The Holy Quran contains 114 Surahs.",
+      "difficulty": "easy",
+      "id": "q01"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which Surah was revealed first to the Holy Prophet (PBUH) in the Cave of Hira?",
+      "options": [
+        "Al-Fatiha",
+        "Al-Alaq",
+        "An-Nasr",
+        "Al-Ikhlas"
+      ],
+      "answer": 1,
+      "explanation": "The first revelation was the first five verses of Surah Al-Alaq (96), received in the Cave of Hira.",
+      "difficulty": "easy",
+      "id": "q02"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Over how many years was the Holy Quran revealed?",
+      "options": [
+        "20 years",
+        "22 years",
+        "23 years",
+        "25 years"
+      ],
+      "answer": 2,
+      "explanation": "The Quran was revealed gradually over about 23 years.",
+      "difficulty": "easy",
+      "id": "q03"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Under which Caliph was the Holy Quran first compiled in book form?",
+      "options": [
+        "Abu Bakr (RA)",
+        "Umar (RA)",
+        "Uthman (RA)",
+        "Ali (RA)"
+      ],
+      "answer": 0,
+      "explanation": "The Quran was first compiled during the caliphate of Abu Bakr (RA) on the suggestion of Umar (RA).",
+      "difficulty": "medium",
+      "id": "q04"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who was chosen to compile the Holy Quran during the caliphate of Abu Bakr (RA)?",
+      "options": [
+        "Bilal (RA)",
+        "Zayd ibn Thabit (RA)",
+        "Abu Hurairah (RA)",
+        "Anas ibn Malik (RA)"
+      ],
+      "answer": 1,
+      "explanation": "Zayd ibn Thabit (RA), the chief scribe, compiled the Quran into a single manuscript.",
+      "difficulty": "medium",
+      "id": "q05"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which Caliph sent standardised copies of the Quran to different regions?",
+      "options": [
+        "Abu Bakr (RA)",
+        "Umar (RA)",
+        "Uthman (RA)",
+        "Ali (RA)"
+      ],
+      "answer": 2,
+      "explanation": "Uthman (RA) standardised the text and dispatched copies to Islamic lands.",
+      "difficulty": "medium",
+      "id": "q06"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which is the longest Surah of the Holy Quran?",
+      "options": [
+        "Al-Imran",
+        "Al-Baqarah",
+        "An-Nisa",
+        "Al-Maidah"
+      ],
+      "answer": 1,
+      "explanation": "Surah Al-Baqarah (2) is the longest Surah of the Quran.",
+      "difficulty": "easy",
+      "id": "q07"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which is the shortest Surah of the Holy Quran?",
+      "options": [
+        "Al-Asr",
+        "Al-Kawthar",
+        "Al-Ikhlas",
+        "Al-Falaq"
+      ],
+      "answer": 1,
+      "explanation": "Surah Al-Kawthar (108) is the shortest Surah, with only three verses.",
+      "difficulty": "medium",
+      "id": "q08"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Surah Al-Fatiha, the opening chapter of the Quran, is also known as?",
+      "options": [
+        "Umm-ul-Kitab",
+        "Al-Masad",
+        "At-Tawbah",
+        "Ya-Sin"
+      ],
+      "answer": 0,
+      "explanation": "Al-Fatiha is called Umm-ul-Kitab (the Mother of the Book) because it summarises the Quran.",
+      "difficulty": "medium",
+      "id": "q09"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Into how many Juz (parts) is the Holy Quran divided?",
+      "options": [
+        "28",
+        "30",
+        "32",
+        "40"
+      ],
+      "answer": 1,
+      "explanation": "The Quran is divided into 30 Juz for ease of recitation, e.g. one per day in Ramadan.",
+      "difficulty": "easy",
+      "id": "q10"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What is the commonly cited total number of verses (Ayahs) in the Holy Quran?",
+      "options": [
+        "6,000",
+        "6,200",
+        "6,666",
+        "7,000"
+      ],
+      "answer": 2,
+      "explanation": "The Quran is commonly said to contain 6,666 verses (scholarly counts vary slightly).",
+      "difficulty": "hard",
+      "id": "q11"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Night of Power, better than a thousand months, falls in which month?",
+      "options": [
+        "Ramadan",
+        "Shaban",
+        "Rajab",
+        "Dhul-Hijjah"
+      ],
+      "answer": 0,
+      "explanation": "Laylat-ul-Qadr falls in the last ten nights of Ramadan (Surah Al-Qadr, 97).",
+      "difficulty": "easy",
+      "id": "q12"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which Surah mentions that the Night of Power is better than a thousand months?",
+      "options": [
+        "Al-Baqarah",
+        "Ya-Sin",
+        "Al-Qadr",
+        "Al-Kahf"
+      ],
+      "answer": 2,
+      "explanation": "Surah Al-Qadr (97) describes Laylat-ul-Qadr as better than a thousand months.",
+      "difficulty": "medium",
+      "id": "q13"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Most of the Quranic Surahs were revealed in which city?",
+      "options": [
+        "Madinah",
+        "Makkah",
+        "Taif",
+        "Jerusalem"
+      ],
+      "answer": 1,
+      "explanation": "About 86 Surahs are Meccan and about 28 are Medinan.",
+      "difficulty": "medium",
+      "id": "q14"
+    },
+    {
+      "type": "mcq",
+      "prompt": "In which year of the Islamic calendar was the Qibla changed from Jerusalem to the Kaaba?",
+      "options": [
+        "1 AH",
+        "2 AH",
+        "5 AH",
+        "8 AH"
+      ],
+      "answer": 1,
+      "explanation": "The Qibla was changed to the Kaaba in the second year after Hijrah (2 AH).",
+      "difficulty": "hard",
+      "id": "q15"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Surah Al-Masad (Lahab) was revealed about which enemy of Islam?",
+      "options": [
+        "Abu Jahl",
+        "Umayyah ibn Khalaf",
+        "Abu Lahab",
+        "Walid ibn Mughirah"
+      ],
+      "answer": 2,
+      "explanation": "Surah Al-Masad condemns Abu Lahab, an uncle of the Prophet who opposed Islam.",
+      "difficulty": "medium",
+      "id": "q16"
+    },
+    {
+      "type": "mcq",
+      "prompt": "In which language was the Holy Quran revealed?",
+      "options": [
+        "Hebrew",
+        "Syriac",
+        "Arabic",
+        "Persian"
+      ],
+      "answer": 2,
+      "explanation": "The Quran was revealed in clear Arabic (Surah Ash-Shu'ara 26:195).",
+      "difficulty": "easy",
+      "id": "q17"
+    },
+    {
+      "type": "mcq",
+      "prompt": "People who have memorised the entire Holy Quran are called?",
+      "options": [
+        "Huffaz",
+        "Mujahideen",
+        "Ulama",
+        "Sahabah"
+      ],
+      "answer": 0,
+      "explanation": "A Hafiz (plural Huffaz) is a person who has memorised the whole Quran.",
+      "difficulty": "easy",
+      "id": "q18"
+    },
+    {
+      "type": "mcq",
+      "prompt": "How many words are there approximately in the Holy Quran?",
+      "options": [
+        "About 77,000",
+        "About 10,000",
+        "About 50,000",
+        "About 100,000"
+      ],
+      "answer": 0,
+      "explanation": "The Quran contains about 77,000 words (approximately 77,430).",
+      "difficulty": "medium",
+      "id": "q19"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What is the meaning of the abbreviation 'Alif Lam Meem' (الم)?",
+      "options": [
+        "Mysterious letters whose full meaning is known only to Allah",
+        "The first three surahs",
+        "A type of prayer",
+        "Names of angels"
+      ],
+      "answer": 0,
+      "explanation": "The Muqatta'at (disjointed letters) like Alif Lam Meem are among the verses whose full meaning is known to Allah.",
+      "difficulty": "medium",
+      "id": "q20"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which is the first Surah of the Quran?",
+      "options": [
+        "Al-Fatiha",
+        "Al-Baqarah",
+        "Al-Ikhlas",
+        "An-Nas"
+      ],
+      "answer": 0,
+      "explanation": "Surah Al-Fatiha (The Opening) is the first Surah of the Quran.",
+      "difficulty": "easy",
+      "id": "q21"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which is the last Surah of the Quran?",
+      "options": [
+        "An-Nas",
+        "Al-Falaq",
+        "Al-Ikhlas",
+        "At-Tawbah"
+      ],
+      "answer": 0,
+      "explanation": "Surah An-Nas (Mankind) is the 114th and last Surah of the Quran.",
+      "difficulty": "easy",
+      "id": "q22"
+    },
+    {
+      "type": "mcq",
+      "prompt": "How many letters are there approximately in the Quran?",
+      "options": [
+        "About 323,000",
+        "About 77,000",
+        "About 100,000",
+        "About 500,000"
+      ],
+      "answer": 0,
+      "explanation": "The Quran contains about 323,000 letters.",
+      "difficulty": "hard",
+      "id": "q23"
+    },
+    {
+      "type": "mcq",
+      "prompt": "How many Ruku (sections) are there in the Quran?",
+      "options": [
+        "540",
+        "114",
+        "30",
+        "1,000"
+      ],
+      "answer": 0,
+      "explanation": "The Quran is divided into about 540 Ruku (paragraph-like sections).",
+      "difficulty": "hard",
+      "id": "q24"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which Surah is named after a female figure (Maryam)?",
+      "options": [
+        "Surah Maryam",
+        "Surah Fatimah",
+        "Surah Aisha",
+        "Surah Hajar"
+      ],
+      "answer": 0,
+      "explanation": "Surah Maryam (19th Surah) is named after Maryam (Mary), mother of Isa (AS).",
+      "difficulty": "easy",
+      "id": "q25"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which Surah is known as the 'Surah of the Bees'?",
+      "options": [
+        "An-Nahl",
+        "Al-Ankabut",
+        "Al-Naml",
+        "Al-Fil"
+      ],
+      "answer": 0,
+      "explanation": "Surah An-Nahl (The Bee), the 16th Surah, is named after the bee.",
+      "difficulty": "medium",
+      "id": "q26"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which Surah is called the 'Surah of the Ant'?",
+      "options": [
+        "An-Naml",
+        "An-Nahl",
+        "Al-Ankabut",
+        "Al-Mulk"
+      ],
+      "answer": 0,
+      "explanation": "Surah An-Naml (The Ant), the 27th Surah, mentions the ant in the story of Sulaiman (AS).",
+      "difficulty": "medium",
+      "id": "q27"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which Surah is named after the spider?",
+      "options": [
+        "Al-Ankabut",
+        "An-Nahl",
+        "An-Naml",
+        "Al-Fil"
+      ],
+      "answer": 0,
+      "explanation": "Surah Al-Ankabut (The Spider), the 29th Surah, uses the spider's web as a parable.",
+      "difficulty": "medium",
+      "id": "q28"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which Surah is named after a metal (iron)?",
+      "options": [
+        "Al-Hadid",
+        "An-Nur",
+        "Al-Qamar",
+        "Al-Kahf"
+      ],
+      "answer": 0,
+      "explanation": "Surah Al-Hadid (Iron), the 57th Surah, mentions the sending down of iron.",
+      "difficulty": "medium",
+      "id": "q29"
+    },
+    {
+      "type": "mcq",
+      "prompt": "In which Surah is the 'Verse of the Throne' (Ayat-ul-Kursi) present?",
+      "options": [
+        "Al-Baqarah",
+        "Al-Imran",
+        "An-Nisa",
+        "Al-Maidah"
+      ],
+      "answer": 0,
+      "explanation": "Ayat-ul-Kursi is 2:255 of Surah Al-Baqarah.",
+      "difficulty": "easy",
+      "id": "q30"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Quran describes itself as 'Hudan-lil-Muttaqin' (guidance for the God-conscious) at the start of which Surah?",
+      "options": [
+        "Al-Baqarah",
+        "Al-Fatiha",
+        "Yaseen",
+        "Al-Kahf"
+      ],
+      "answer": 0,
+      "explanation": "Surah Al-Baqarah 2:2 calls the Quran guidance for the Muttaqin (God-conscious).",
+      "difficulty": "medium",
+      "id": "q31"
+    },
+    {
+      "type": "mcq",
+      "prompt": "How many Surahs begin with the 'Muqatta'at' (disjointed letters)?",
+      "options": [
+        "29",
+        "14",
+        "40",
+        "10"
+      ],
+      "answer": 0,
+      "explanation": "29 Surahs begin with disjointed letters like Alif Lam Meem.",
+      "difficulty": "hard",
+      "id": "q32"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which is the 50th Surah of the Quran?",
+      "options": [
+        "Qaf",
+        "Sad",
+        "Al-Hujurat",
+        "Adh-Dhariyat"
+      ],
+      "answer": 0,
+      "explanation": "Surah Qaf (The Letter Qaf) is the 50th Surah.",
+      "difficulty": "medium",
+      "id": "q33"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which Surah contains the story of the two gardens of the wealthy man?",
+      "options": [
+        "Al-Kahf",
+        "Al-An'am",
+        "Yaseen",
+        "Al-Qasas"
+      ],
+      "answer": 0,
+      "explanation": "Surah Al-Kahf narrates the parable of the man with two gardens (18:32-44).",
+      "difficulty": "medium",
+      "id": "q34"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which Surah was revealed in response to the Quraysh's demand to see a sign, and speaks of the moon splitting?",
+      "options": [
+        "Al-Qamar",
+        "Al-Shams",
+        "Al-Fajr",
+        "Al-Lail"
+      ],
+      "answer": 0,
+      "explanation": "Surah Al-Qamar (The Moon) opens with 'The Hour has drawn near, and the moon has split.'",
+      "difficulty": "hard",
+      "id": "q35"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which Surah is entirely about the story of Prophet Hud's people?",
+      "options": [
+        "Hud",
+        "Sad",
+        "Yunus",
+        "Ibrahim"
+      ],
+      "answer": 0,
+      "explanation": "Surah Hud, the 11th Surah, is named after and recounts Prophet Hud (AS).",
+      "difficulty": "medium",
+      "id": "q36"
+    },
+    {
+      "type": "mcq",
+      "prompt": "How many times does the word 'Allah' appear in the Quran?",
+      "options": [
+        "About 2,699",
+        "About 1,000",
+        "About 5,000",
+        "About 500"
+      ],
+      "answer": 0,
+      "explanation": "The word 'Allah' appears about 2,699 times in the Quran.",
+      "difficulty": "hard",
+      "id": "q37"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What is the name of the 36th Surah of the Quran?",
+      "options": [
+        "Yaseen",
+        "Sad",
+        "Ar-Rahman",
+        "Al-Waqi'ah"
+      ],
+      "answer": 0,
+      "explanation": "Surah Yaseen is the 36th Surah.",
+      "difficulty": "easy",
+      "id": "q38"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which Surah mentions the 'Jinn' listening to the Quran?",
+      "options": [
+        "Al-Jinn",
+        "Al-Jathiyah",
+        "Al-Fath",
+        "Al-Ahqaf"
+      ],
+      "answer": 0,
+      "explanation": "Surah Al-Jinn (The Jinn), the 72nd Surah, recounts jinn listening to the recitation.",
+      "difficulty": "medium",
+      "id": "q39"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What is the literal meaning of 'Surah'?",
+      "options": [
+        "A chapter or a rank/degree",
+        "A verse",
+        "A word",
+        "A prayer"
+      ],
+      "answer": 0,
+      "explanation": "Surah means a chapter, and its root also conveys elevation or rank.",
+      "difficulty": "medium",
+      "id": "q40"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which is the 112th Surah of the Quran?",
+      "options": [
+        "Al-Ikhlas",
+        "Al-Falaq",
+        "An-Nas",
+        "Al-Masad"
+      ],
+      "answer": 0,
+      "explanation": "Surah Al-Ikhlas (Sincerity) is the 112th Surah.",
+      "difficulty": "easy",
+      "id": "q41"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which Surah deals with the punishment of Abu Lahab?",
+      "options": [
+        "Al-Masad",
+        "Al-Kafirun",
+        "Al-Humazah",
+        "Al-Ma'un"
+      ],
+      "answer": 0,
+      "explanation": "Surah Al-Masad (The Palm Fiber), the 111th Surah, condemns Abu Lahab and his wife.",
+      "difficulty": "medium",
+      "id": "q42"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which Surah is known as 'Qul Huwallahu Ahad' and is the essence of Tawheed?",
+      "options": [
+        "Al-Ikhlas",
+        "Al-Fatiha",
+        "Al-Kafirun",
+        "An-Nas"
+      ],
+      "answer": 0,
+      "explanation": "Surah Al-Ikhlas begins 'Qul Huwallahu Ahad' — Say: He is Allah, the One.",
+      "difficulty": "easy",
+      "id": "q43"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Quran has how many names of Allah listed in it as attributes?",
+      "options": [
+        "99 names are famously counted",
+        "1000 names",
+        "30 names",
+        "7 names"
+      ],
+      "answer": 0,
+      "explanation": "The '99 Beautiful Names' (Asma-ul-Husna) are drawn from the Quran and hadith.",
+      "difficulty": "medium",
+      "id": "q44"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which Surah discusses the laws of inheritance?",
+      "options": [
+        "An-Nisa",
+        "Al-Baqarah",
+        "Al-Anfal",
+        "Al-Maidah"
+      ],
+      "answer": 0,
+      "explanation": "Surah An-Nisa (Women) contains the detailed laws of inheritance (4:11-12).",
+      "difficulty": "medium",
+      "id": "q45"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which Surah commands the believers to lower their gaze?",
+      "options": [
+        "An-Nur",
+        "Al-Ahzab",
+        "Al-Hujurat",
+        "An-Nisa"
+      ],
+      "answer": 0,
+      "explanation": "Surah An-Nur (24:30-31) commands lowering the gaze and modesty.",
+      "difficulty": "medium",
+      "id": "q46"
+    },
+    {
+      "type": "mcq",
+      "prompt": "In which Surah does Allah address humanity as 'Ya Ayyuhal Nas'?",
+      "options": [
+        "An-Nisa",
+        "Al-Fatiha",
+        "Al-Ikhlas",
+        "Al-Falaq"
+      ],
+      "answer": 0,
+      "explanation": "Surah An-Nisa (4:1) opens with 'O mankind (Ya Ayyuhal Nas)...'",
+      "difficulty": "medium",
+      "id": "q47"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which Surah mentions the Zakat along with Salah most frequently?",
+      "options": [
+        "Al-Baqarah",
+        "Al-Fatiha",
+        "An-Nas",
+        "Al-Kawthar"
+      ],
+      "answer": 0,
+      "explanation": "Surah Al-Baqarah repeatedly couples Salah and Zakat as the foundations of worship and charity.",
+      "difficulty": "medium",
+      "id": "q48"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which is the longest surah of the Quran?",
+      "options": [
+        "Surah Al-Baqarah",
+        "Surah Al-Imran",
+        "Surah An-Nisa",
+        "Surah Al-Araf"
+      ],
+      "answer": 0,
+      "explanation": "Al-Baqarah is the longest surah.",
+      "difficulty": "easy",
+      "id": "q49"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which is the shortest surah of the Quran?",
+      "options": [
+        "Surah Al-Kawthar",
+        "Surah Al-Ikhlas",
+        "Surah Al-Asr",
+        "Surah Al-Falaq"
+      ],
+      "answer": 0,
+      "explanation": "Al-Kawthar is the shortest surah.",
+      "difficulty": "easy",
+      "id": "q50"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The first surah of the Quran is:",
+      "options": [
+        "Surah Al-Fatihah",
+        "Surah Al-Baqarah",
+        "Surah An-Nas",
+        "Surah Al-Ikhlas"
+      ],
+      "answer": 0,
+      "explanation": "Al-Fatihah is the opening surah.",
+      "difficulty": "easy",
+      "id": "q51"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which surah is called the 'Heart of the Quran'?",
+      "options": [
+        "Surah Ya-Sin",
+        "Surah Al-Mulk",
+        "Surah Ar-Rahman",
+        "Surah Al-Fatihah"
+      ],
+      "answer": 0,
+      "explanation": "Ya-Sin is known as the heart of the Quran.",
+      "difficulty": "easy",
+      "id": "q52"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The last surah of the Quran is:",
+      "options": [
+        "Surah An-Nas",
+        "Surah Al-Falaq",
+        "Surah Al-Ikhlas",
+        "Surah Al-Fatihah"
+      ],
+      "answer": 0,
+      "explanation": "An-Nas is the 114th and final surah.",
+      "difficulty": "easy",
+      "id": "q53"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which surah is known as the 'Glory of the Quran'?",
+      "options": [
+        "Surah Ar-Rahman",
+        "Surah Ya-Sin",
+        "Surah Al-Mulk",
+        "Surah Al-Ikhlas"
+      ],
+      "answer": 0,
+      "explanation": "Ar-Rahman is called the glory of the Quran.",
+      "difficulty": "medium",
+      "id": "q54"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Surah Al-Fatihah contains how many verses?",
+      "options": [
+        "7",
+        "5",
+        "9",
+        "10"
+      ],
+      "answer": 0,
+      "explanation": "Al-Fatihah has 7 verses.",
+      "difficulty": "easy",
+      "id": "q55"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Quran was revealed over how many years?",
+      "options": [
+        "About 23 years",
+        "10 years",
+        "30 years",
+        "5 years"
+      ],
+      "answer": 0,
+      "explanation": "Revelation spanned about 23 years.",
+      "difficulty": "easy",
+      "id": "q56"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The first revelation was received in which cave?",
+      "options": [
+        "Cave of Hira",
+        "Cave of Thawr",
+        "Cave of Uhud",
+        "Cave of Nur"
+      ],
+      "answer": 0,
+      "explanation": "The first verses came in the Cave of Hira.",
+      "difficulty": "easy",
+      "id": "q57"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which surah was revealed entirely at once?",
+      "options": [
+        "Surah Al-Fatihah",
+        "Surah Al-Baqarah",
+        "Surah At-Tawbah",
+        "Surah Al-Ma'idah"
+      ],
+      "answer": 0,
+      "explanation": "Al-Fatihah is said to have been revealed complete.",
+      "difficulty": "medium",
+      "id": "q58"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which surah is called the 'Mother of the Book' (Umm-ul-Kitab)?",
+      "options": [
+        "Surah Al-Fatihah",
+        "Surah Al-Baqarah",
+        "Surah Al-Ikhlas",
+        "Surah Ya-Sin"
+      ],
+      "answer": 0,
+      "explanation": "Al-Fatihah is called Umm-ul-Kitab.",
+      "difficulty": "easy",
+      "id": "q59"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Surah Al-Ikhlas is equivalent to:",
+      "options": [
+        "One-third of the Quran",
+        "Half the Quran",
+        "The whole Quran",
+        "One verse"
+      ],
+      "answer": 0,
+      "explanation": "Al-Ikhlas carries the reward of a third of the Quran.",
+      "difficulty": "medium",
+      "id": "q60"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The longest verse of the Quran is in which surah?",
+      "options": [
+        "Surah Al-Baqarah (Ayat-ul-Dayn)",
+        "Surah An-Nisa",
+        "Surah Al-Imran",
+        "Surah At-Tawbah"
+      ],
+      "answer": 0,
+      "explanation": "Ayat-ul-Dayn (2:282) is the longest verse.",
+      "difficulty": "hard",
+      "id": "q61"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Throne Verse (Ayat-ul-Kursi) is in which surah?",
+      "options": [
+        "Surah Al-Baqarah",
+        "Surah Al-Ikhlas",
+        "Surah Ya-Sin",
+        "Surah Al-Mulk"
+      ],
+      "answer": 0,
+      "explanation": "Ayat-ul-Kursi is 2:255 in Al-Baqarah.",
+      "difficulty": "easy",
+      "id": "q62"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which surah describes the Day of Judgment?",
+      "options": [
+        "Surah Al-Qariah",
+        "Surah Al-Fatihah",
+        "Surah Al-Kawthar",
+        "Surah An-Nasr"
+      ],
+      "answer": 0,
+      "explanation": "Al-Qariah vividly describes the Day of Judgment.",
+      "difficulty": "easy",
+      "id": "q63"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The term 'Al-Quran' literally means:",
+      "options": [
+        "The Recitation",
+        "The Book",
+        "The Light",
+        "The Speech"
+      ],
+      "answer": 0,
+      "explanation": "Quran means the recitation.",
+      "difficulty": "easy",
+      "id": "q64"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Quran was first compiled into a single book during the caliphate of:",
+      "options": [
+        "Abu Bakr (RA)",
+        "Umar (RA)",
+        "Uthman (RA)",
+        "Ali (RA)"
+      ],
+      "answer": 0,
+      "explanation": "Abu Bakr ordered the first compilation.",
+      "difficulty": "easy",
+      "id": "q65"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The standardised copies of the Quran were distributed during:",
+      "options": [
+        "Uthman's caliphate",
+        "Abu Bakr's",
+        "Umar's",
+        "Ali's"
+      ],
+      "answer": 0,
+      "explanation": "Uthman standardised the Quranic text.",
+      "difficulty": "easy",
+      "id": "q66"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Surah Ya-Sin begins with which Arabic letters?",
+      "options": [
+        "Ya Seen",
+        "Alif Lam Meem",
+        "Ta Ha",
+        "Kaf Ha Ya Ain Sad"
+      ],
+      "answer": 0,
+      "explanation": "Ya-Sin opens with the letters Ya Seen.",
+      "difficulty": "medium",
+      "id": "q67"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Quran mentions how many times the word 'Allah' appears?",
+      "options": [
+        "About 2,699 times",
+        "100 times",
+        "500 times",
+        "10,000 times"
+      ],
+      "answer": 0,
+      "explanation": "Allah is mentioned about 2,699 times.",
+      "difficulty": "hard",
+      "id": "q68"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Surah Al-Mulk is also called:",
+      "options": [
+        "The Protector (rewards intercession)",
+        "The Cow",
+        "The Opening",
+        "The Victory"
+      ],
+      "answer": 0,
+      "explanation": "Al-Mulk intercedes for its reciter.",
+      "difficulty": "medium",
+      "id": "q69"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which Surah is called the 'Bride of the Quran' (Aroos-ul-Quran)?",
+      "options": [
+        "Surah Ar-Rahman",
+        "Surah Al-Fatiha",
+        "Surah Ya-Sin",
+        "Surah Al-Mulk"
+      ],
+      "answer": 0,
+      "explanation": "Surah Ar-Rahman is popularly known as the Bride of the Quran.",
+      "difficulty": "medium",
+      "id": "q70"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What is the 55th Surah of the Holy Quran?",
+      "options": [
+        "Surah Ar-Rahman",
+        "Surah Al-Waqi'ah",
+        "Surah Al-Hadid",
+        "Surah Qaf"
+      ],
+      "answer": 0,
+      "explanation": "Ar-Rahman is the 55th Surah of the Quran.",
+      "difficulty": "medium",
+      "id": "q71"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which is the second longest Surah of the Holy Quran?",
+      "options": [
+        "Surah Al-Imran",
+        "Surah An-Nisa",
+        "Surah Al-Maidah",
+        "Surah Al-An'am"
+      ],
+      "answer": 0,
+      "explanation": "After Al-Baqarah, Surah Al-Imran is the second longest.",
+      "difficulty": "medium",
+      "id": "q72"
+    },
+    {
+      "type": "mcq",
+      "prompt": "How many Surahs of the Quran are commonly counted as Makki?",
+      "options": [
+        "86",
+        "66",
+        "114",
+        "45"
+      ],
+      "answer": 0,
+      "explanation": "The standard count is 86 Makki and 28 Madani Surahs.",
+      "difficulty": "hard",
+      "id": "q73"
+    },
+    {
+      "type": "mcq",
+      "prompt": "How many Surahs of the Quran are commonly counted as Madani?",
+      "options": [
+        "28",
+        "86",
+        "32",
+        "50"
+      ],
+      "answer": 0,
+      "explanation": "The standard count is 28 Madani and 86 Makki Surahs.",
+      "difficulty": "hard",
+      "id": "q74"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which Surah contains the name of Allah in every single verse?",
+      "options": [
+        "Surah Al-Mujadila",
+        "Surah Al-Ikhlas",
+        "Surah Ar-Rahman",
+        "Surah Al-Fatiha"
+      ],
+      "answer": 0,
+      "explanation": "The name of Allah appears in every verse of Surah Al-Mujadila (58).",
+      "difficulty": "hard",
+      "id": "q75"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Besides Maryam, which Surah of the Quran is named after a woman?",
+      "options": [
+        "Surah Al-Mujadila",
+        "Surah Al-Ankabut",
+        "Surah An-Nahl",
+        "Surah At-Tur"
+      ],
+      "answer": 0,
+      "explanation": "Al-Mujadila is named after the woman who argued with the Prophet (PBUH).",
+      "difficulty": "hard",
+      "id": "q76"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The word 'Wahy' means?",
+      "options": [
+        "Divine revelation and inspiration",
+        "Obligation",
+        "Recitation",
+        "Interpretation"
+      ],
+      "answer": 0,
+      "explanation": "Wahy is the divine revelation sent by Allah to the prophets.",
+      "difficulty": "easy",
+      "id": "q77"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which Surah of the Quran is named after Prophet Nuh (AS)?",
+      "options": [
+        "Surah Nuh",
+        "Surah Yunus",
+        "Surah Hud",
+        "Surah Ibrahim"
+      ],
+      "answer": 0,
+      "explanation": "Surah Nuh is the 71st chapter, named after the Prophet Nuh (AS).",
+      "difficulty": "easy",
+      "id": "q78"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which Surah of the Quran is named after Prophet Ibrahim (AS)?",
+      "options": [
+        "Surah Ibrahim",
+        "Surah Yusuf",
+        "Surah Hud",
+        "Surah Muhammad"
+      ],
+      "answer": 0,
+      "explanation": "Surah Ibrahim is the 14th chapter, named after the Prophet Ibrahim (AS).",
+      "difficulty": "easy",
+      "id": "q79"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The command for the Friday (Jumu'ah) prayer is given in which Surah?",
+      "options": [
+        "Surah Al-Jumu'ah",
+        "Surah Al-Anfal",
+        "Surah An-Nur",
+        "Surah Al-Maidah"
+      ],
+      "answer": 0,
+      "explanation": "Surah Al-Jumu'ah (62:9) commands the believers to hasten to the Friday prayer.",
+      "difficulty": "easy",
+      "id": "q80"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which Surah deals with the conduct of the hypocrites (Munafiqun)?",
+      "options": [
+        "Surah Al-Munafiqun",
+        "Surah Al-Hujurat",
+        "Surah Al-Ahzab",
+        "Surah At-Tawbah"
+      ],
+      "answer": 0,
+      "explanation": "Surah Al-Munafiqun (63) exposes the traits of the hypocrites.",
+      "difficulty": "medium",
+      "id": "q81"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The rules of divorce (Talaq) are laid down in which Surah?",
+      "options": [
+        "Surah At-Talaq",
+        "Surah An-Nisa",
+        "Surah Al-Baqarah",
+        "Surah Al-Ahzab"
+      ],
+      "answer": 0,
+      "explanation": "Surah At-Talaq (65) contains the injunctions of divorce.",
+      "difficulty": "medium",
+      "id": "q82"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What is the 57th Surah of the Holy Quran?",
+      "options": [
+        "Surah Al-Hadid",
+        "Surah Al-Waqi'ah",
+        "Surah Ar-Rahman",
+        "Surah Qaf"
+      ],
+      "answer": 0,
+      "explanation": "Surah Al-Hadid (the Iron) is the 57th chapter.",
+      "difficulty": "medium",
+      "id": "q83"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which Surah is named after the Night Journey of the Prophet (PBUH)?",
+      "options": [
+        "Surah Al-Isra",
+        "Surah Al-Mi'raj",
+        "Surah Al-Qadr",
+        "Surah Al-An'am"
+      ],
+      "answer": 0,
+      "explanation": "Surah Al-Isra (17) is named after the Night Journey.",
+      "difficulty": "easy",
+      "id": "q84"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The shortest Surah, Al-Kawthar, contains how many verses?",
+      "options": [
+        "Three",
+        "Five",
+        "Seven",
+        "Ten"
+      ],
+      "answer": 0,
+      "explanation": "Surah Al-Kawthar consists of only three verses.",
+      "difficulty": "medium",
+      "id": "q85"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which Surah is called the 'Surah of the Women' for its many rulings on family law?",
+      "options": [
+        "Surah An-Nisa",
+        "Surah Maryam",
+        "Surah At-Tahrim",
+        "Surah Al-Mumtahanah"
+      ],
+      "answer": 0,
+      "explanation": "Surah An-Nisa (4) is called the Surah of the Women.",
+      "difficulty": "medium",
+      "id": "q86"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The word 'Ayat' (as used for Quranic verses) literally means?",
+      "options": [
+        "Signs",
+        "Chapters",
+        "Stories",
+        "Commands"
+      ],
+      "answer": 0,
+      "explanation": "Ayat means signs or miracles; each verse is a sign of Allah.",
+      "difficulty": "easy",
+      "id": "q87"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What is the 99th Surah of the Holy Quran?",
+      "options": [
+        "Surah Az-Zalzalah",
+        "Surah Al-Adiyat",
+        "Surah Al-Qariah",
+        "Surah At-Takathur"
+      ],
+      "answer": 0,
+      "explanation": "Az-Zalzalah (the Earthquake) is the 99th chapter.",
+      "difficulty": "hard",
+      "id": "q88"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which Surah mentions the pledge of Ridwan and the victory of the treaty era?",
+      "options": [
+        "Surah Al-Fath",
+        "Surah An-Nasr",
+        "Surah Al-Anfal",
+        "Surah Al-Hashr"
+      ],
+      "answer": 0,
+      "explanation": "Surah Al-Fath (48) was revealed after the Treaty of Hudaybiyyah.",
+      "difficulty": "hard",
+      "id": "q89"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The term 'Juz' literally means?",
+      "options": [
+        "A part or portion",
+        "A chapter",
+        "A verse",
+        "A pause"
+      ],
+      "answer": 0,
+      "explanation": "Juz means a part; the Quran is divided into thirty Juz.",
+      "difficulty": "easy",
+      "id": "q90"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The longest Surah, Al-Baqarah, contains how many verses?",
+      "options": [
+        "286",
+        "200",
+        "176",
+        "129"
+      ],
+      "answer": 0,
+      "explanation": "Surah Al-Baqarah has 286 verses.",
+      "difficulty": "medium",
+      "id": "q91"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What is the 60th Surah of the Holy Quran?",
+      "options": [
+        "Surah Al-Mumtahanah",
+        "Surah Al-Hashr",
+        "Surah As-Saff",
+        "Surah Al-Jumu'ah"
+      ],
+      "answer": 0,
+      "explanation": "Al-Mumtahanah (the Examined Woman) is the 60th chapter.",
+      "difficulty": "hard",
+      "id": "q92"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The literal meaning of 'Al-A'raf' (the 7th Surah) is?",
+      "options": [
+        "The Heights (the elevated place between Paradise and Hell)",
+        "The Cow",
+        "The Spider",
+        "The Cave"
+      ],
+      "answer": 0,
+      "explanation": "Al-A'raf is the Heights between Paradise and Hell mentioned in the Surah.",
+      "difficulty": "medium",
+      "id": "q93"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What is the 78th Surah of the Holy Quran?",
+      "options": [
+        "Surah An-Naba",
+        "Surah Al-Mursalat",
+        "Surah An-Nazi'at",
+        "Surah Abasa"
+      ],
+      "answer": 0,
+      "explanation": "An-Naba (the Great News) is the 78th chapter.",
+      "difficulty": "hard",
+      "id": "q94"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The word 'Tanzil' means?",
+      "options": [
+        "The revelation (what was sent down)",
+        "The collection",
+        "The interpretation",
+        "The recitation"
+      ],
+      "answer": 0,
+      "explanation": "Tanzil refers to the Quran as sent down from Allah.",
+      "difficulty": "medium",
+      "id": "q95"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The literal meaning of 'Al-Baqarah' (the 2nd Surah) is?",
+      "options": [
+        "The Cow",
+        "The Bee",
+        "The Spider",
+        "The Ant"
+      ],
+      "answer": 0,
+      "explanation": "Al-Baqarah means the Cow, from the story of the cow of Bani Israel.",
+      "difficulty": "easy",
+      "id": "q96"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which Surah is named after the private rooms of the Prophet's (PBUH) wives?",
+      "options": [
+        "Surah Al-Hujurat",
+        "Surah Al-Ahzab",
+        "Surah An-Nur",
+        "Surah At-Tahrim"
+      ],
+      "answer": 0,
+      "explanation": "Al-Hujurat (49) is named after the apartments of the Prophet's (PBUH) household.",
+      "difficulty": "medium",
+      "id": "q97"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which Surah is also called 'Al-Bara'ah' (the Repudiation)?",
+      "options": [
+        "Surah At-Tawbah",
+        "Surah Al-Anfal",
+        "Surah Al-Fath",
+        "Surah An-Nasr"
+      ],
+      "answer": 0,
+      "explanation": "At-Tawbah is also known as Al-Bara'ah and is the only Surah without Bismillah.",
+      "difficulty": "medium",
+      "id": "q98"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What is the 4th Surah of the Holy Quran?",
+      "options": [
+        "Surah An-Nisa",
+        "Surah Al-Imran",
+        "Surah Al-Maidah",
+        "Surah Al-An'am"
+      ],
+      "answer": 0,
+      "explanation": "An-Nisa (the Women) is the fourth chapter.",
+      "difficulty": "easy",
+      "id": "q99"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Surah Al-Imran is named after whom?",
+      "options": [
+        "The family of Imran (father of Maryam)",
+        "The tribe of Quraysh",
+        "The companions of the Cave",
+        "The people of Thamud"
+      ],
+      "answer": 0,
+      "explanation": "Al-Imran is named after the family of Imran, ancestors of Maryam and Isa (AS).",
+      "difficulty": "medium",
+      "id": "q100"
+    }
+  ]
+}

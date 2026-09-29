@@ -9,6 +9,9 @@ class StudySession extends Equatable {
     required this.durationMinutes,
     required this.createdAt,
     this.kind = 'pomodoro',
+    this.subject,
+    this.taskId,
+    this.endedAt,
   });
 
   final String id;
@@ -16,11 +19,15 @@ class StudySession extends Equatable {
   final DateTime startedAt;
   final int durationMinutes;
   final String kind;
+  final String? subject;
+  final String? taskId;
+  final DateTime? endedAt;
   final DateTime createdAt;
 
   @override
-  List<Object?> get props =>
-      <Object?>[id, day, startedAt, durationMinutes, kind, createdAt];
+  List<Object?> get props => <Object?>[
+        id, day, startedAt, durationMinutes, kind, subject, taskId, endedAt, createdAt
+      ];
 }
 
 /// The user's study streak, in consecutive active days.
@@ -52,6 +59,32 @@ enum StudyRange {
         StudyRange.weekly => 'Weekly',
         StudyRange.monthly => 'Monthly',
       };
+}
+
+/// Reactive study-time totals backed by the persisted study-session log.
+class StudyStatistics extends Equatable {
+  const StudyStatistics({
+    required this.days,
+    required this.weeklyMinutes,
+    required this.monthlyMinutes,
+  });
+
+  /// Seven entries ordered oldest to newest; the last entry is today.
+  final List<int> days;
+  final int weeklyMinutes;
+  final int monthlyMinutes;
+
+  int get yesterdayMinutes => days.length < 2 ? 0 : days[days.length - 2];
+  int get todayMinutes => days.isEmpty ? 0 : days.last;
+
+  static const StudyStatistics empty = StudyStatistics(
+    days: <int>[0, 0, 0, 0, 0, 0, 0],
+    weeklyMinutes: 0,
+    monthlyMinutes: 0,
+  );
+
+  @override
+  List<Object?> get props => <Object?>[days, weeklyMinutes, monthlyMinutes];
 }
 
 /// Aggregated study statistics over a rolling range.

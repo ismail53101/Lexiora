@@ -11,12 +11,14 @@ class PracticeQuestionCard extends StatefulWidget {
     super.key,
     required this.question,
     this.index,
+    this.onAnswer,
   });
 
   final GrammarQuestion question;
 
   /// Optional 1-based number shown as "Question N".
   final int? index;
+  final void Function(int selectedIndex, bool isCorrect)? onAnswer;
 
   @override
   State<PracticeQuestionCard> createState() => _PracticeQuestionCardState();
@@ -31,6 +33,7 @@ class _PracticeQuestionCardState extends State<PracticeQuestionCard> {
   void _select(int i) {
     if (_answered) return;
     setState(() => _selected = i);
+    widget.onAnswer?.call(i, i == widget.question.answerIndex);
   }
 
   void _reset() => setState(() => _selected = null);
@@ -60,11 +63,13 @@ class _PracticeQuestionCardState extends State<PracticeQuestionCard> {
               ),
             ),
           const SizedBox(height: 4),
-          Text(
-            q.question,
-            style: theme.textTheme.titleSmall?.copyWith(
-              fontWeight: FontWeight.w600,
-              height: 1.35,
+          Text.rich(
+            TextSpan(
+              style: theme.textTheme.titleSmall?.copyWith(
+                fontWeight: FontWeight.w600,
+                height: 1.35,
+              ),
+              children: _boldMarkedSpans(q.question),
             ),
           ),
           const SizedBox(height: 12),
@@ -76,7 +81,12 @@ class _PracticeQuestionCardState extends State<PracticeQuestionCard> {
             ),
           if (_answered) ...<Widget>[
             const SizedBox(height: 6),
-            _ResultBanner(isCorrect: _isCorrect, explanation: q.explanation),
+            _ResultBanner(
+              isCorrect: _isCorrect,
+              explanation: q.explanation,
+              examTip: q.examTip,
+              correctAnswer: q.answer,
+            ),
             Align(
               alignment: Alignment.centerRight,
               child: TextButton.icon(
@@ -117,7 +127,7 @@ class _OptionTile extends StatelessWidget {
     final ThemeData theme = Theme.of(context);
     final ColorScheme scheme = theme.colorScheme;
 
-    const Color correct = Color(0xFF2E7D32); // green 800
+    const Color correct = Color(0xFF43A047); // readable green
     final Color border;
     final Color? fill;
     final IconData icon;
@@ -183,52 +193,143 @@ class _OptionTile extends StatelessWidget {
 }
 
 class _ResultBanner extends StatelessWidget {
-  const _ResultBanner({required this.isCorrect, this.explanation});
+  const _ResultBanner({
+    required this.isCorrect,
+    this.explanation,
+    this.examTip,
+    required this.correctAnswer,
+  });
 
   final bool isCorrect;
   final String? explanation;
+  final String? examTip;
+  final String correctAnswer;
 
   @override
   Widget build(BuildContext context) {
     final ThemeData theme = Theme.of(context);
-    const Color correct = Color(0xFF2E7D32);
-    final Color color = isCorrect ? correct : theme.colorScheme.error;
+    const Color correct = Color(0xFF43A047);
+    const Color incorrect = Color(0xFFE57373);
+    final Color color = isCorrect ? correct : incorrect;
 
-    return Container(
-      width: double.infinity,
-      margin: const EdgeInsets.only(top: 8, bottom: 4),
-      padding: const EdgeInsets.all(12),
-      decoration: BoxDecoration(
-        color: color.withValues(alpha: 0.10),
-        borderRadius: BorderRadius.circular(12),
-      ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: <Widget>[
-          Row(
+    return Column(
+      children: [
+        Container(
+          width: double.infinity,
+          margin: const EdgeInsets.only(top: 8, bottom: 4),
+          padding: const EdgeInsets.all(12),
+          decoration: BoxDecoration(
+            color: color.withValues(alpha: 0.10),
+            borderRadius: BorderRadius.circular(12),
+            border: Border.all(color: color.withValues(alpha: 0.2)),
+          ),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
-              Icon(
-                isCorrect ? Icons.check_circle : Icons.info_outline,
-                size: 18,
-                color: color,
+              Row(
+                children: <Widget>[
+                  Icon(
+                    isCorrect ? Icons.check_circle : Icons.info_outline,
+                    size: 18,
+                    color: color,
+                  ),
+                  const SizedBox(width: 8),
+                  Text(
+                    isCorrect ? 'Correct' : 'Not quite',
+                    style: theme.textTheme.labelLarge
+                        ?.copyWith(color: color, fontWeight: FontWeight.w700),
+                  ),
+                ],
               ),
-              const SizedBox(width: 8),
-              Text(
-                isCorrect ? 'Correct' : 'Not quite',
-                style: theme.textTheme.labelLarge
-                    ?.copyWith(color: color, fontWeight: FontWeight.w700),
-              ),
+              if (explanation != null && explanation!.isNotEmpty) ...<Widget>[
+                const SizedBox(height: 8),
+                Text.rich(
+                  TextSpan(
+                    style: theme.textTheme.bodyMedium?.copyWith(height: 1.35),
+                    children: [
+                      if (!isCorrect) ...[
+                        TextSpan(
+                          text: 'Correct Answer: $correctAnswer\n\n',
+                          style: const TextStyle(fontWeight: FontWeight.w800),
+                        ),
+                      ],
+                      const TextSpan(
+                        text: 'Explanation:\n',
+                        style: TextStyle(fontWeight: FontWeight.w800),
+                      ),
+                      ..._boldMarkedSpans(explanation!),
+                    ],
+                  ),
+                ),
+              ],
             ],
           ),
-          if (explanation != null && explanation!.isNotEmpty) ...<Widget>[
-            const SizedBox(height: 8),
-            Text(
-              explanation!,
-              style: theme.textTheme.bodyMedium?.copyWith(height: 1.35),
+        ),
+        if (examTip != null && examTip!.isNotEmpty)
+          Container(
+            width: double.infinity,
+            margin: const EdgeInsets.only(top: 4, bottom: 4),
+            padding: const EdgeInsets.all(12),
+            decoration: BoxDecoration(
+              color: theme.colorScheme.tertiary.withValues(alpha: 0.08),
+              borderRadius: BorderRadius.circular(12),
+              border: Border.all(color: theme.colorScheme.tertiary.withValues(alpha: 0.2)),
             ),
-          ],
-        ],
-      ),
+            child: Row(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Icon(Icons.tips_and_updates_outlined, 
+                  size: 18, color: theme.colorScheme.tertiary),
+                const SizedBox(width: 8),
+                Expanded(
+                  child: Text.rich(
+                    TextSpan(
+                      style: theme.textTheme.bodyMedium?.copyWith(
+                        height: 1.35,
+                        color: theme.colorScheme.tertiary,
+                      ),
+                      children: [
+                        const TextSpan(
+                          text: 'Exam Tip: ',
+                          style: TextStyle(fontWeight: FontWeight.w800),
+                        ),
+                        ..._boldMarkedSpans(examTip!),
+                      ],
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ),
+      ],
     );
   }
+}
+
+List<TextSpan> _boldMarkedSpans(String text) {
+  final List<TextSpan> spans = <TextSpan>[];
+  final RegExp marker = RegExp(r'(\*\*\*(.+?)\*\*\*|\*\*(.+?)\*\*|__(.+?)__)');
+  int cursor = 0;
+  for (final RegExpMatch match in marker.allMatches(text)) {
+    if (match.start > cursor) {
+      spans.add(TextSpan(text: text.substring(cursor, match.start).replaceAll(' > ', ' → ')));
+    }
+    final String value = match.group(2) ?? match.group(3) ?? match.group(4)!;
+    final bool both = match.group(2) != null;
+    final bool bold = both || match.group(3) != null;
+    final bool underline = both || match.group(4) != null;
+    spans.add(TextSpan(
+      text: value.replaceAll(' > ', ' → '),
+      style: TextStyle(
+        fontWeight: bold ? FontWeight.w800 : null,
+        decoration: underline ? TextDecoration.underline : null,
+        decorationThickness: underline ? 2 : null,
+      ),
+    ));
+    cursor = match.end;
+  }
+  if (cursor < text.length) {
+    spans.add(TextSpan(text: text.substring(cursor).replaceAll(' > ', ' → ')));
+  }
+  return spans.isEmpty ? <TextSpan>[TextSpan(text: text)] : spans;
 }

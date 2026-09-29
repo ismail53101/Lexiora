@@ -4,6 +4,7 @@ import 'package:lexiora/modules/quiz/domain/entities/quiz_bank.dart';
 import 'package:lexiora/modules/quiz/domain/entities/quiz_content.dart';
 import 'package:lexiora/modules/quiz/domain/entities/quiz_models.dart';
 import 'package:lexiora/modules/quiz/domain/entities/quiz_question.dart';
+import 'package:lexiora/modules/quiz/domain/quiz_duplicate_check.dart';
 import 'package:lexiora/modules/quiz/domain/quiz_json.dart';
 import 'package:lexiora/modules/quiz/domain/repositories/quiz_admin_repository.dart';
 import 'package:lexiora/modules/quiz/domain/repositories/quiz_repository.dart';
@@ -79,6 +80,71 @@ class QuizAdminRepositoryImpl implements QuizAdminRepository {
     }
     return _repo.importPayload(payload, strategy,
         subjectId: subjectId, topicId: topicId);
+  }
+
+  static const QuizDuplicateChecker _duplicateChecker = QuizDuplicateChecker();
+
+  @override
+  Future<QuizDedupReport> addGeneratedQuestions({
+    required String bankId,
+    required List<QuizQuestion> candidates,
+  }) async {
+    // The full existing corpus: every question in every bank, so a generated
+    // MCQ is checked against the ENTIRE question bank, not just its target.
+    final List<QuizQuestion> corpus =
+        await _repo.questions(const QuizFilter(), limit: 1 << 30);
+    final DateTime now = DateTime.now();
+
+    final List<QuizQuestion> saved = <QuizQuestion>[];
+    final List<QuizDedupRejection> rejected = <QuizDedupRejection>[];
+
+    for (final QuizQuestion candidate in candidates) {
+      final DuplicateVerdict verdict =
+          _duplicateChecker.check(candidate, corpus);
+      if (verdict.isDuplicate) {
+        rejected.add(QuizDedupRejection(
+          candidate: candidate,
+          kind: verdict.kind,
+          matchedQuestionId: verdict.match?.id,
+          reason: verdict.reason,
+        ));
+        continue;
+      }
+
+      // Fresh row: never reuse the candidate's id (could collide on re-seed)
+      // and never touch existing rows.
+      final QuizQuestion unique = QuizQuestion(
+        id: _uuid.v4(),
+        bankId: bankId,
+        type: candidate.type,
+        prompt: candidate.prompt,
+        options: candidate.options,
+        answerIndex: candidate.answerIndex,
+        answerBool: candidate.answerBool,
+        answerTexts: candidate.answerTexts,
+        answerIndexes: candidate.answerIndexes,
+        explanation: candidate.explanation,
+        subject: candidate.subject,
+        topic: candidate.topic,
+        tags: candidate.tags,
+        difficulty: candidate.difficulty,
+        subjectId: candidate.subjectId,
+        topicId: candidate.topicId,
+        createdAt: now,
+        updatedAt: now,
+      );
+      await _repo.saveQuestion(unique);
+      saved.add(unique);
+      // Accept the newly saved question into the corpus so later candidates
+      // are also checked against it (no intra-batch duplicates).
+      corpus.add(unique);
+    }
+
+    return QuizDedupReport(
+      requested: candidates.length,
+      saved: saved,
+      rejected: rejected,
+    );
   }
 
   @override

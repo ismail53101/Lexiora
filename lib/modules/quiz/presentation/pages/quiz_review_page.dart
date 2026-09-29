@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:lexiora/modules/quiz/domain/entities/quiz_models.dart';
 import 'package:lexiora/modules/quiz/domain/entities/quiz_question.dart';
+import 'package:lexiora/modules/quiz/presentation/widgets/quiz_common.dart';
 
 /// Reviews each answered question: your answer vs. the correct one + explanation.
 class QuizReviewPage extends StatelessWidget {
@@ -35,7 +36,7 @@ class _ReviewCard extends StatelessWidget {
     final QuizQuestion q = item.question;
     final Color statusColor = item.skipped
         ? theme.colorScheme.tertiary
-        : (item.isCorrect ? theme.colorScheme.primary : theme.colorScheme.error);
+        : (item.isCorrect ? quizCorrectColor : theme.colorScheme.error);
     final String status =
         item.skipped ? 'Skipped' : (item.isCorrect ? 'Correct' : 'Wrong');
 
@@ -69,10 +70,9 @@ class _ReviewCard extends StatelessWidget {
             Text(q.prompt, style: theme.textTheme.titleSmall),
             const SizedBox(height: 12),
             _line(theme, 'Your answer', _givenText(q, item.given),
-                item.isCorrect ? theme.colorScheme.primary : theme.colorScheme.error),
+                item.isCorrect ? quizCorrectColor : theme.colorScheme.error),
             const SizedBox(height: 4),
-            _line(theme, 'Correct answer', _correctText(q),
-                theme.colorScheme.primary),
+            _line(theme, 'Correct answer', _correctText(q), quizCorrectColor),
             if (q.explanation != null && q.explanation!.isNotEmpty) ...<Widget>[
               const SizedBox(height: 10),
               Text(q.explanation!,

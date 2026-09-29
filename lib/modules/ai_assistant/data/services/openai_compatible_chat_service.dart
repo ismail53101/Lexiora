@@ -109,7 +109,7 @@ class OpenAiCompatibleChatService implements AiChatService {
     final List<Map<String, dynamic>> wire = <Map<String, dynamic>>[];
     for (final AiMessage m in messages) {
       final AiAttachment att = AiAttachment.parse(m.content);
-      final String text = att.text.trim();
+      final String text = _textWithPdfContext(att);
 
       if (!att.hasImage) {
         if (text.isEmpty) continue;
@@ -141,6 +141,16 @@ class OpenAiCompatibleChatService implements AiChatService {
       });
     }
     return wire;
+  }
+
+  String _textWithPdfContext(AiAttachment attachment) {
+    final String question = attachment.text.trim();
+    final String pdfContext = attachment.pdfText?.trim() ?? '';
+    if (pdfContext.isEmpty) return question;
+    if (question.isEmpty) {
+      return 'Please answer using the attached PDF.\n\nAttached PDF text:\n$pdfContext';
+    }
+    return '$question\n\nAttached PDF text:\n$pdfContext';
   }
 
   Future<String?> _readImageAsDataUrl(String path) async {

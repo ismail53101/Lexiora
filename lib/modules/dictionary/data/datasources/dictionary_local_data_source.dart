@@ -5,6 +5,7 @@ import 'package:lexiora/core/constants/db_constants.dart';
 import 'package:lexiora/core/database/app_database.dart';
 import 'package:lexiora/modules/dictionary/domain/entities/dictionary_entry.dart';
 import 'package:lexiora/modules/dictionary/domain/entities/word_profile.dart';
+import 'package:lexiora/modules/vocabulary/data/base_forms.dart';
 
 /// All local-database access for the dictionary module.
 ///
@@ -20,50 +21,87 @@ class DictionaryLocalDataSource {
 
   Future<List<DictionaryResult>> search(
     String query, {
-    int limit = 50,
-    int offset = 0,
-  }) async {
-    final String q = query.trim().toLowerCase();
-    if (q.isEmpty) return const <DictionaryResult>[];
-    // Upper bound for a prefix range scan: any continuation sorts before this
-    // high sentinel (U+FFFF), so `word_lower >= q AND word_lower < hi` is
-    // exactly "starts with q" — and it uses the word_lower index.
-    final String hi = '$q\u{FFFF}';
+      int limit = 50,
+      int offset = 0,
+    }) async {
+      final String q = query.trim().toLowerCase();
+      if (q.isEmpty) return const <DictionaryResult>[];
+      // Upper bound for a prefix range scan: any continuation sorts before this
+      // high sentinel (U+FFFF), so `word_lower >= q AND word_lower < hi` is
+      // exactly "starts with q" — and it uses the word_lower index.
+      final String hi = '$q\u{FFFF}';
+      // Curated packs store Urdu meanings inside content_json. Only enable the
+      // JSON text fallback for non-Latin queries so English prefix search keeps
+      // its original behavior and does not match arbitrary definition text.
+      final bool isNonLatinQuery = q.runes.any((int rune) => rune > 0x7f);
+      final String curatedTextMatch = isNonLatinQuery ? '%$q%' : '\u{0000}';
 
-    final List<QueryRow> rows = await _db.customSelect(
-      'SELECT e.word AS word, e.word_lower AS word_lower, '
-      'e.part_of_speech AS pos, e.meaning AS meaning, '
-      'MIN(e.id) AS rid, COUNT(*) AS sense_count, '
-      'EXISTS(SELECT 1 FROM dictionary_favorites f '
-      '       WHERE f.word_lower = e.word_lower) AS fav '
-      'FROM dictionary_entries e '
-      'WHERE e.word_lower >= ? AND e.word_lower < ? '
-      'GROUP BY e.word_lower '
-      'ORDER BY (e.word_lower = ?) DESC, e.word_lower ASC '
-      'LIMIT ? OFFSET ?',
-      variables: <Variable<Object>>[
-        Variable<String>(q),
-        Variable<String>(hi),
-        Variable<String>(q),
-        Variable<int>(limit),
-        Variable<int>(offset),
-      ],
-      readsFrom: {_db.dictionaryEntries, _db.dictionaryFavorites},
-    ).get();
+      final List<QueryRow> rows = await _db.customSelect(
+        'WITH base AS ('
+        '  SELECT e.word AS word, e.word_lower AS word_lower, '
+        '         e.part_of_speech AS pos, e.meaning AS meaning, '
+        '         MIN(e.id) AS rid, COUNT(*) AS sense_count '
+        '  FROM dictionary_entries e '
+        '  WHERE e.word_lower >= ? AND e.word_lower < ? '
+        '  GROUP BY e.word_lower'
+        '), curated AS ('
+        '  SELECT e.word AS word, e.word_lower AS word_lower, '
+        r"         json_extract(e.content_json, '$.partOfSpeech') AS pos, "
+        '         COALESCE('
+        r"           json_extract(e.content_json, '$.englishDefinition'), "
+        r"           json_extract(e.content_json, '$.meaning'), e.word"
+        '         ) AS meaning, 0 AS rid, 1 AS sense_count '
+        '  FROM dictionary_exam_entries e '
+        '  WHERE (e.word_lower >= ? AND e.word_lower < ?) '
+        '     OR e.content_json LIKE ?'
+        '), combined AS ('
+        '  SELECT b.word, b.word_lower, b.pos, b.meaning, '
+        '         b.rid, b.sense_count '
+        '  FROM base b '
+        '  UNION ALL '
+        '  SELECT c.word, c.word_lower, c.pos, c.meaning, '
+        '         c.rid, c.sense_count '
+        '  FROM curated c '
+        '  WHERE NOT EXISTS ('
+        '    SELECT 1 FROM base b WHERE b.word_lower = c.word_lower'
+        '  )'
+        ') '
+        'SELECT word, word_lower, pos, meaning, rid, sense_count, '
+        '       EXISTS(SELECT 1 FROM dictionary_favorites f '
+        '              WHERE f.word_lower = combined.word_lower) AS fav '
+        'FROM combined '
+        'ORDER BY (word_lower = ?) DESC, word_lower ASC '
+        'LIMIT ? OFFSET ?',
+        variables: <Variable<Object>>[
+          Variable<String>(q),
+          Variable<String>(hi),
+          Variable<String>(q),
+          Variable<String>(hi),
+          Variable<String>(curatedTextMatch),
+          Variable<String>(q),
+          Variable<int>(limit),
+          Variable<int>(offset),
+        ],
+        readsFrom: {
+          _db.dictionaryEntries,
+          _db.dictionaryExamEntries,
+          _db.dictionaryFavorites,
+        },
+      ).get();
 
-    return rows
-        .map(
-          (QueryRow r) => DictionaryResult(
-            word: r.read<String>('word'),
-            wordLower: r.read<String>('word_lower'),
-            meaning: r.read<String>('meaning'),
-            partOfSpeech: r.readNullable<String>('pos'),
-            senseCount: r.read<int>('sense_count'),
-            isFavorite: r.read<int>('fav') != 0,
-          ),
-        )
-        .toList(growable: false);
-  }
+      return rows
+          .map(
+            (QueryRow r) => DictionaryResult(
+              word: r.read<String>('word'),
+              wordLower: r.read<String>('word_lower'),
+              meaning: r.read<String>('meaning'),
+              partOfSpeech: r.readNullable<String>('pos'),
+              senseCount: r.read<int>('sense_count'),
+              isFavorite: r.read<int>('fav') != 0,
+            ),
+          )
+          .toList(growable: false);
+    }
 
   Future<WordDetails?> wordDetails(String wordLower) async {
     final String wl = wordLower.trim().toLowerCase();
@@ -240,15 +278,54 @@ class DictionaryLocalDataSource {
   // ── Curated exam word pack (Dictionary v2) ──────────────────────────────────
 
   /// The curated exam data for a word, or `null` when it is not in the pack.
+  ///
+  /// Matches the exact headword first, then progressively de-inflected forms
+  /// (e.g. "insulated" → "insulate") and finally the de-accented form
+  /// (e.g. "communiqué" → "communique"), so the WordNet-enriched lemma packs
+  /// also cover inflected and accented words readers select in documents.
   Future<ExamWordData?> examData(String wordLower) async {
     final String wl = wordLower.trim().toLowerCase();
     if (wl.isEmpty) return null;
-    final DictionaryExamEntryRow? row = await (_db.select(_db.dictionaryExamEntries)
-          ..where((t) => t.wordLower.equals(wl))
-          ..limit(1))
-        .getSingleOrNull();
-    if (row == null) return null;
-    return _decodeExam(row.word, row.contentJson);
+    final List<String> candidates = baseForms(wl)..addAll(_accentVariants(wl));
+    for (final String form in candidates) {
+      final DictionaryExamEntryRow? row =
+          await (_db.select(_db.dictionaryExamEntries)
+                ..where((t) => t.wordLower.equals(form))
+                ..limit(1))
+              .getSingleOrNull();
+      if (row != null) return _decodeExam(row.word, row.contentJson);
+    }
+    return null;
+  }
+
+  /// Diacritic-stripped variant of a lowercase headword (é → e, ç → c, …), or
+  /// an empty list when the word has no accents to strip.
+  static List<String> _accentVariants(String wl) {
+    const Map<String, String> map = <String, String>{
+      'à': 'a', 'á': 'a', 'â': 'a', 'ã': 'a', 'ä': 'a', 'å': 'a',
+      'ç': 'c',
+      'è': 'e', 'é': 'e', 'ê': 'e', 'ë': 'e',
+      'ì': 'i', 'í': 'i', 'î': 'i', 'ï': 'i',
+      'ñ': 'n',
+      'ò': 'o', 'ó': 'o', 'ô': 'o', 'õ': 'o', 'ö': 'o',
+      'ù': 'u', 'ú': 'u', 'û': 'u', 'ü': 'u',
+      'ý': 'y', 'ÿ': 'y',
+      'œ': 'oe', 'æ': 'ae', 'ß': 'ss',
+    };
+    final StringBuffer b = StringBuffer();
+    bool changed = false;
+    for (final int rune in wl.runes) {
+      final String ch = String.fromCharCode(rune);
+      final String? rep = map[ch];
+      if (rep != null) {
+        b.write(rep);
+        changed = true;
+      } else {
+        b.write(ch);
+      }
+    }
+    final String out = b.toString();
+    return changed && out != wl ? <String>[out] : const <String>[];
   }
 
   Future<String?> examSeededVersion() async {

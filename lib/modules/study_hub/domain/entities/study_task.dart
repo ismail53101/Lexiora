@@ -69,6 +69,7 @@ class StudyTask extends Equatable {
     this.status = TaskStatus.pending,
     this.kind = SessionKind.session,
     this.durationMinutes,
+    this.autoScheduled = false,
     this.orderIndex = 0,
     this.completedAt,
   });
@@ -85,6 +86,8 @@ class StudyTask extends Equatable {
   final TaskStatus status;
   final SessionKind kind;
   final int? durationMinutes;
+  /// Whether the planner may move this row when an earlier automatic item changes.
+  final bool autoScheduled;
   final int orderIndex;
   final DateTime createdAt;
   final DateTime updatedAt;
@@ -108,6 +111,7 @@ class StudyTask extends Equatable {
     TaskStatus? status,
     SessionKind? kind,
     int? durationMinutes,
+    bool? autoScheduled,
     int? orderIndex,
     DateTime? updatedAt,
     DateTime? completedAt,
@@ -129,6 +133,7 @@ class StudyTask extends Equatable {
       status: status ?? this.status,
       kind: kind ?? this.kind,
       durationMinutes: durationMinutes ?? this.durationMinutes,
+      autoScheduled: autoScheduled ?? this.autoScheduled,
       orderIndex: orderIndex ?? this.orderIndex,
       createdAt: createdAt,
       updatedAt: updatedAt ?? this.updatedAt,
@@ -150,6 +155,7 @@ class StudyTask extends Equatable {
         status,
         kind,
         durationMinutes,
+        autoScheduled,
         orderIndex,
         createdAt,
         updatedAt,

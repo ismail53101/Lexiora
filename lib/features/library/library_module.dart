@@ -7,6 +7,7 @@ import 'package:lexiora/core/module/feature_module.dart';
 import 'package:lexiora/core/navigation/home_destination.dart';
 import 'package:lexiora/features/library/data/repositories/library_repository_impl.dart';
 import 'package:lexiora/features/library/domain/repositories/library_repository.dart';
+import 'package:lexiora/features/library/presentation/pages/drive_library_page.dart';
 import 'package:lexiora/features/library/presentation/pages/library_page.dart';
 
 /// Wires the Library feature: DI, the `/library` route, and a Home tile.
@@ -30,6 +31,10 @@ class LibraryModule extends FeatureModule {
           path: AppRoutes.library,
           builder: (_, _) => const LibraryPage(),
         ),
+        GoRoute(
+          path: AppRoutes.driveLibrary,
+          builder: (_, _) => const DriveLibraryPage(),
+        ),
       ];
 
   @override
@@ -40,6 +45,7 @@ class LibraryModule extends FeatureModule {
           subtitle: 'All your documents',
           icon: Icons.folder_copy_outlined,
           routePath: AppRoutes.library,
+          imageAsset: 'assets/branding/library_explore.webp',
           order: 0,
         ),
       ];

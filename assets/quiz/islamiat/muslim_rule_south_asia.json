@@ -1,0 +1,1413 @@
+{
+  "bank": {
+    "name": "Muslim Rule in South Asia",
+    "subject": "Islamic Studies",
+    "topic": "Muslim Rule in South Asia",
+    "description": "Muslim dynasties, rulers and their legacy in the Indian subcontinent.",
+    "tags": "css,pms,fpsc,ppsc,nts,islamic-studies,south-asia,history",
+    "version": "1.0",
+    "id": "islamiat_muslim_rule_south_asia"
+  },
+  "questions": [
+    {
+      "type": "mcq",
+      "prompt": "Muhammad bin Qasim invaded Sindh during the reign of which caliph?",
+      "options": [
+        "Al-Walid ibn Abd al-Malik",
+        "Umar ibn Abd al-Aziz",
+        "Harun al-Rashid",
+        "Al-Mansur"
+      ],
+      "answer": 0,
+      "explanation": "Muhammad bin Qasim was sent by Hajjaj bin Yusuf during the reign of Umayyad caliph Al-Walid I.",
+      "difficulty": "hard",
+      "id": "q01"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who defeated Raja Dahir, the ruler of Sindh?",
+      "options": [
+        "Muhammad bin Qasim",
+        "Mahmud of Ghazni",
+        "Mohammad Ghori",
+        "Qutubuddin Aibak"
+      ],
+      "answer": 0,
+      "explanation": "Muhammad bin Qasim defeated Raja Dahir in 712 CE.",
+      "difficulty": "easy",
+      "id": "q02"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which ruler invaded India seventeen times and plundered the Somnath temple?",
+      "options": [
+        "Mahmud of Ghazni",
+        "Mohammad Ghori",
+        "Babur",
+        "Tamerlane"
+      ],
+      "answer": 0,
+      "explanation": "Mahmud of Ghazni (971-1030) made 17 raids into India, including the famous Somnath raid of 1025.",
+      "difficulty": "easy",
+      "id": "q03"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who founded the Slave (Mamluk) dynasty of the Delhi Sultanate?",
+      "options": [
+        "Qutubuddin Aibak",
+        "Iltutmish",
+        "Balban",
+        "Alauddin Khalji"
+      ],
+      "answer": 0,
+      "explanation": "Qutubuddin Aibak, a slave-general of Ghori, founded the Slave dynasty in 1206.",
+      "difficulty": "medium",
+      "id": "q04"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Qutub Minar in Delhi was started by which ruler?",
+      "options": [
+        "Qutubuddin Aibak",
+        "Iltutmish",
+        "Alauddin Khalji",
+        "Akbar"
+      ],
+      "answer": 0,
+      "explanation": "Qutubuddin Aibak began the Qutub Minar; Iltutmish completed it.",
+      "difficulty": "medium",
+      "id": "q05"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which Delhi Sultanate ruler introduced the silver coin 'Tanka' and gold 'Jital'?",
+      "options": [
+        "Iltutmish",
+        "Balban",
+        "Alauddin Khalji",
+        "Muhammad bin Tughlaq"
+      ],
+      "answer": 0,
+      "explanation": "Shams-ud-din Iltutmish introduced the Tanka (silver) and Jital (copper) currency.",
+      "difficulty": "hard",
+      "id": "q06"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which Sultan of Delhi is famous for his 'blood and iron' policy and breaking the power of the 'Forty'?",
+      "options": [
+        "Ghiyas-ud-din Balban",
+        "Iltutmish",
+        "Firoz Shah Tughlaq",
+        "Bahlol Lodi"
+      ],
+      "answer": 0,
+      "explanation": "Balban (1266-1287) ruled with an iron hand and crushed the noble council known as the Chahalgani.",
+      "difficulty": "hard",
+      "id": "q07"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which ruler repelled the Mongol invasions of India in the 13th century?",
+      "options": [
+        "Jalal-ud-din Khwarizm Shah",
+        "Alauddin Khalji",
+        "Muhammad bin Tughlaq",
+        "Ibrahim Lodi"
+      ],
+      "answer": 1,
+      "explanation": "Alauddin Khalji (1296-1316) successfully repelled repeated Mongol invasions.",
+      "difficulty": "medium",
+      "id": "q08"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who built the Alai Darwaza and tried to introduce market price controls?",
+      "options": [
+        "Alauddin Khalji",
+        "Firoz Shah Tughlaq",
+        "Sher Shah Suri",
+        "Humayun"
+      ],
+      "answer": 0,
+      "explanation": "Alauddin Khalji introduced market reforms and built the Alai Darwaza in Delhi.",
+      "difficulty": "hard",
+      "id": "q09"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which Tughlaq sultan shifted his capital from Delhi to Daulatabad?",
+      "options": [
+        "Muhammad bin Tughlaq",
+        "Firoz Shah Tughlaq",
+        "Ghiyas-ud-din Tughlaq",
+        "Sikandar Lodi"
+      ],
+      "answer": 0,
+      "explanation": "Muhammad bin Tughlaq (1325-1351) famously moved the capital to Daulatabad (Devagiri).",
+      "difficulty": "easy",
+      "id": "q10"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which ruler is remembered for constructing canals, gardens and cities during the Tughlaq period?",
+      "options": [
+        "Firoz Shah Tughlaq",
+        "Muhammad bin Tughlaq",
+        "Alauddin Khalji",
+        "Sher Shah Suri"
+      ],
+      "answer": 0,
+      "explanation": "Firoz Shah Tughlaq (1351-1388) built canals, gardens, hospitals and the city of Hissar.",
+      "difficulty": "medium",
+      "id": "q11"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who invaded India in 1398 and sacked Delhi, weakening the Tughlaq dynasty?",
+      "options": [
+        "Amir Taimur",
+        "Genghis Khan",
+        "Nadir Shah",
+        "Alexander the Great"
+      ],
+      "answer": 0,
+      "explanation": "Amir Taimur's invasion of 1398 devastated Delhi and left the Sultanate in decline.",
+      "difficulty": "medium",
+      "id": "q12"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who established the Lodi dynasty, the last dynasty of the Delhi Sultanate?",
+      "options": [
+        "Bahlol Lodi",
+        "Sikandar Lodi",
+        "Ibrahim Lodi",
+        "Daulat Khan Lodi"
+      ],
+      "answer": 0,
+      "explanation": "Bahlol Lodi founded the Lodi dynasty in 1451.",
+      "difficulty": "medium",
+      "id": "q13"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who was the last ruler of the Delhi Sultanate, defeated at Panipat in 1526?",
+      "options": [
+        "Ibrahim Lodi",
+        "Sikandar Lodi",
+        "Bahlol Lodi",
+        "Rana Sanga"
+      ],
+      "answer": 0,
+      "explanation": "Ibrahim Lodi was defeated and killed by Babur at the First Battle of Panipat in 1526.",
+      "difficulty": "easy",
+      "id": "q14"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who defeated Ibrahim Lodi at the First Battle of Panipat in 1526?",
+      "options": [
+        "Babur",
+        "Humayun",
+        "Sher Shah Suri",
+        "Akbar"
+      ],
+      "answer": 0,
+      "explanation": "Babur, founder of the Mughal Empire, defeated Ibrahim Lodi at Panipat in 1526.",
+      "difficulty": "easy",
+      "id": "q15"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who defeated Rana Sanga of Mewar at the Battle of Khanwa in 1527?",
+      "options": [
+        "Babur",
+        "Humayun",
+        "Akbar",
+        "Sher Shah Suri"
+      ],
+      "answer": 0,
+      "explanation": "Babur defeated Rana Sanga at Khanwa in 1527, consolidating Mughal rule in North India.",
+      "difficulty": "hard",
+      "id": "q16"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who defeated Humayun and ruled Delhi for five years (1540-1545) as an Afghan ruler?",
+      "options": [
+        "Sher Shah Suri",
+        "Islam Shah",
+        "Adil Shah",
+        "Sikandar Shah"
+      ],
+      "answer": 0,
+      "explanation": "Sher Shah Suri drove Humayun out of India and ruled from 1540 to 1545.",
+      "difficulty": "easy",
+      "id": "q17"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Sher Shah Suri is credited with introducing which famous road?",
+      "options": [
+        "Grand Trunk Road (Shahrah-e-Azam)",
+        "Silk Road",
+        "NH-1",
+        "Karakoram Highway"
+      ],
+      "answer": 0,
+      "explanation": "Sher Shah Suri built the Grand Trunk Road from Bengal to the northwest, still in use today.",
+      "difficulty": "medium",
+      "id": "q18"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The 'Din-i-Ilahi' was introduced by which emperor?",
+      "options": [
+        "Akbar",
+        "Aurangzeb",
+        "Humayun",
+        "Bahadur Shah Zafar"
+      ],
+      "answer": 0,
+      "explanation": "Akbar introduced Din-i-Ilahi in 1582, a syncretic religious movement.",
+      "difficulty": "easy",
+      "id": "q19"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which Mughal emperor issued the 'Farman' of 1857-style religious edicts and is buried in Aurangabad?",
+      "options": [
+        "Aurangzeb Alamgir",
+        "Shah Jahan",
+        "Akbar",
+        "Jahangir"
+      ],
+      "answer": 0,
+      "explanation": "Aurangzeb (1658-1707), the last great Mughal, is buried in Khuldabad, near Aurangabad.",
+      "difficulty": "medium",
+      "id": "q20"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Mughal Empire reached its greatest territorial extent under which emperor?",
+      "options": [
+        "Aurangzeb",
+        "Akbar",
+        "Shah Jahan",
+        "Babur"
+      ],
+      "answer": 0,
+      "explanation": "Aurangzeb expanded the empire to its largest extent, covering almost all of the subcontinent.",
+      "difficulty": "medium",
+      "id": "q21"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The 'Badshahi Mosque' in Lahore was built by which Mughal emperor?",
+      "options": [
+        "Aurangzeb Alamgir",
+        "Akbar",
+        "Shah Jahan",
+        "Babur"
+      ],
+      "answer": 0,
+      "explanation": "Aurangzeb built the Badshahi Mosque in Lahore in 1673.",
+      "difficulty": "easy",
+      "id": "q22"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which ruler is famous for the 'Farman' promoting Urdu and building the Aligarh traditions later?",
+      "options": [
+        "No Mughal did; Sir Syed later promoted Urdu education",
+        "Aurangzeb",
+        "Akbar",
+        "Shah Jahan"
+      ],
+      "answer": 0,
+      "explanation": "Urdu flourished under the later Mughals and was promoted by Sir Syed's Aligarh movement.",
+      "difficulty": "hard",
+      "id": "q23"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who was the first Muslim woman ruler of Delhi?",
+      "options": [
+        "Razia Sultana",
+        "Nur Jahan",
+        "Mumtaz Mahal",
+        "Chand Bibi"
+      ],
+      "answer": 0,
+      "explanation": "Razia Sultana (1236-1240) was the only woman ruler of the Delhi Sultanate.",
+      "difficulty": "easy",
+      "id": "q24"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which Mughal empress wielded great power during Jahangir's reign?",
+      "options": [
+        "Nur Jahan",
+        "Mumtaz Mahal",
+        "Jahanara",
+        "Ruqaiya"
+      ],
+      "answer": 0,
+      "explanation": "Nur Jahan, Jahangir's wife, effectively co-ruled the empire.",
+      "difficulty": "easy",
+      "id": "q25"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who defeated the Marathas at the Third Battle of Panipat in 1761?",
+      "options": [
+        "Ahmad Shah Abdali (Durrani)",
+        "Nadir Shah",
+        "Babur",
+        "Sher Shah Suri"
+      ],
+      "answer": 0,
+      "explanation": "Ahmad Shah Abdali defeated the Marathas at Panipat in 1761.",
+      "difficulty": "easy",
+      "id": "q26"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The 'Sultanate of Bengal' and 'Deccan sultanates' were examples of?",
+      "options": [
+        "Regional Muslim kingdoms of South Asia",
+        "British provinces",
+        "Hindu empires only",
+        "Mongol states"
+      ],
+      "answer": 0,
+      "explanation": "Bengal and the Deccan sultanates were independent Muslim kingdoms before Mughal expansion.",
+      "difficulty": "medium",
+      "id": "q27"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who founded the city of Hyderabad (Deccan)?",
+      "options": [
+        "Muhammad Quli Qutb Shah",
+        "Akbar",
+        "Aurangzeb",
+        "Sher Shah Suri"
+      ],
+      "answer": 0,
+      "explanation": "Muhammad Quli Qutb Shah founded Hyderabad in 1591.",
+      "difficulty": "hard",
+      "id": "q28"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The 'Charminar' monument is located in which city?",
+      "options": [
+        "Hyderabad",
+        "Lahore",
+        "Delhi",
+        "Agra"
+      ],
+      "answer": 0,
+      "explanation": "The Charminar, built in 1591, is Hyderabad's iconic monument.",
+      "difficulty": "easy",
+      "id": "q29"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which ruler built the 'Shalimar Gardens' in Kashmir and Lahore?",
+      "options": [
+        "Shah Jahan (Lahore) and Jahangir (Kashmir)",
+        "Akbar only",
+        "Babur only",
+        "Aurangzeb only"
+      ],
+      "answer": 0,
+      "explanation": "Jahangir laid the Kashmir Shalimar; Shah Jahan built Lahore's Shalimar.",
+      "difficulty": "hard",
+      "id": "q30"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which Muslim ruler of Kashmir is famed for building the 'Mughal Gardens'?",
+      "options": [
+        "The Mughals built them; Jahangir was enamored of Kashmir",
+        "Sher Shah Suri",
+        "Muhammad bin Tughlaq",
+        "Alauddin Khalji"
+      ],
+      "answer": 0,
+      "explanation": "Jahangir and Shah Jahan built Kashmir's terraced Mughal gardens.",
+      "difficulty": "medium",
+      "id": "q31"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The 'Jizya' tax policy of Aurangzeb was notable because?",
+      "options": [
+        "It was reimposed on non-Muslims, unlike Akbar's abolition",
+        "He abolished it",
+        "He invented it",
+        "It applied only to Muslims"
+      ],
+      "answer": 0,
+      "explanation": "Aurangzeb reimposed Jizya, reversing Akbar's policy of abolishing it.",
+      "difficulty": "medium",
+      "id": "q32"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which Muslim ruler's tomb, the 'Taj Mahal', took 22 years to build?",
+      "options": [
+        "Shah Jahan built it for Mumtaz Mahal",
+        "Akbar built it for himself",
+        "Jahangir built it for Nur Jahan",
+        "Aurangzeb built it"
+      ],
+      "answer": 0,
+      "explanation": "Shah Jahan built the Taj Mahal (1632-1653) as Mumtaz Mahal's mausoleum.",
+      "difficulty": "easy",
+      "id": "q33"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who established the Slave Dynasty in Delhi?",
+      "options": [
+        "Qutb-ud-Din Aibak",
+        "Iltutmish",
+        "Balban",
+        "Razia Sultana"
+      ],
+      "answer": 0,
+      "explanation": "Qutb-ud-Din Aibak founded the Slave (Mamluk) Dynasty.",
+      "difficulty": "easy",
+      "id": "q34"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Qutb Minar in Delhi was started by:",
+      "options": [
+        "Qutb-ud-Din Aibak",
+        "Iltutmish",
+        "Alauddin Khalji",
+        "Feroz Shah Tughlaq"
+      ],
+      "answer": 0,
+      "explanation": "Aibak began the Qutb Minar; successors completed it.",
+      "difficulty": "easy",
+      "id": "q35"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which ruler of the Delhi Sultanate introduced the 'Dagh' (branding of horses) system?",
+      "options": [
+        "Alauddin Khalji",
+        "Iltutmish",
+        "Balban",
+        "Muhammad bin Tughlaq"
+      ],
+      "answer": 0,
+      "explanation": "Alauddin Khalji reformed the military with the Dagh.",
+      "difficulty": "medium",
+      "id": "q36"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Tughlaq ruler famous for his ambitious but failed projects was:",
+      "options": [
+        "Muhammad bin Tughlaq",
+        "Ghiyasuddin Tughlaq",
+        "Feroz Shah Tughlaq",
+        "Tughlaq Khan"
+      ],
+      "answer": 0,
+      "explanation": "Muhammad bin Tughlaq is known for his grand experiments.",
+      "difficulty": "easy",
+      "id": "q37"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Delhi Sultanate was defeated at Panipat by Babur in:",
+      "options": [
+        "1526 CE",
+        "1520 CE",
+        "1500 CE",
+        "1556 CE"
+      ],
+      "answer": 0,
+      "explanation": "Babur defeated Ibrahim Lodhi at Panipat in 1526.",
+      "difficulty": "easy",
+      "id": "q38"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The first Mughal emperor was:",
+      "options": [
+        "Babur",
+        "Humayun",
+        "Akbar",
+        "Jahangir"
+      ],
+      "answer": 0,
+      "explanation": "Babur founded the Mughal Empire in 1526.",
+      "difficulty": "easy",
+      "id": "q39"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who was the Mughal emperor that restored the empire after Sher Shah's interregnum?",
+      "options": [
+        "Humayun",
+        "Akbar",
+        "Babur",
+        "Jahangir"
+      ],
+      "answer": 0,
+      "explanation": "Humayun reclaimed the throne in 1555.",
+      "difficulty": "easy",
+      "id": "q40"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Battle of Panipat (1556) was fought between Akbar and:",
+      "options": [
+        "Hemu",
+        "Rana Sanga",
+        "Sher Shah",
+        "Ibrahim Lodhi"
+      ],
+      "answer": 0,
+      "explanation": "Akbar defeated Hemu at the Second Battle of Panipat.",
+      "difficulty": "medium",
+      "id": "q41"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Sher Shah Suri is remembered for:",
+      "options": [
+        "The Grand Trunk Road and land reforms",
+        "Building the Taj",
+        "Abolishing taxes",
+        "The Red Fort"
+      ],
+      "answer": 0,
+      "explanation": "Sher Shah built the GT Road and reformed administration.",
+      "difficulty": "easy",
+      "id": "q42"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The rupee currency system was refined by:",
+      "options": [
+        "Sher Shah Suri",
+        "Akbar",
+        "Babur",
+        "Aurangzeb"
+      ],
+      "answer": 0,
+      "explanation": "Sher Shah issued the standard silver rupiya.",
+      "difficulty": "medium",
+      "id": "q43"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Battle of Plassey (1757) marked the beginning of:",
+      "options": [
+        "British rule in India",
+        "Mughal revival",
+        "Sikh rule",
+        "Maratha dominance"
+      ],
+      "answer": 0,
+      "explanation": "Plassey paved the way for British dominance.",
+      "difficulty": "easy",
+      "id": "q44"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Fatahpur Sikri was built by:",
+      "options": [
+        "Akbar",
+        "Shah Jahan",
+        "Babur",
+        "Jahangir"
+      ],
+      "answer": 0,
+      "explanation": "Akbar founded Fatehpur Sikri in 1571.",
+      "difficulty": "easy",
+      "id": "q45"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Maratha Empire rose after the decline of which power?",
+      "options": [
+        "The Mughal Empire",
+        "The British",
+        "The Sikhs",
+        "The Portuguese"
+      ],
+      "answer": 0,
+      "explanation": "Marathas filled the vacuum left by Mughal decline.",
+      "difficulty": "medium",
+      "id": "q46"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The first Anglo-Sikh War ended with the Treaty of:",
+      "options": [
+        "Lahore (1846)",
+        "Amritsar",
+        "Bharatpur",
+        "Surat"
+      ],
+      "answer": 0,
+      "explanation": "The 1846 Treaty of Lahore ended the first war.",
+      "difficulty": "hard",
+      "id": "q47"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Mughal emperor who banned music at court in later life was:",
+      "options": [
+        "Aurangzeb",
+        "Akbar",
+        "Shah Jahan",
+        "Jahangir"
+      ],
+      "answer": 0,
+      "explanation": "Aurangzeb discouraged music in his later years.",
+      "difficulty": "medium",
+      "id": "q48"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The 'Jharokha Darshan' tradition was started by:",
+      "options": [
+        "Akbar",
+        "Babur",
+        "Humayun",
+        "Shah Jahan"
+      ],
+      "answer": 0,
+      "explanation": "Akbar introduced public appearances at the jharokha.",
+      "difficulty": "hard",
+      "id": "q49"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Muhammad bin Qasim was approximately how old when he conquered Sindh?",
+      "options": [
+        "Seventeen",
+        "Twenty-five",
+        "Thirty",
+        "Forty"
+      ],
+      "answer": 0,
+      "explanation": "Muhammad bin Qasim led the conquest of Sindh at about the age of seventeen.",
+      "difficulty": "medium",
+      "id": "q50"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Arab conquest of Sindh took place in which year?",
+      "options": [
+        "711 CE",
+        "712 CE",
+        "701 CE",
+        "750 CE"
+      ],
+      "answer": 0,
+      "explanation": "Muhammad bin Qasim conquered Sindh in 711 CE.",
+      "difficulty": "medium",
+      "id": "q51"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Hajjaj bin Yusuf, who dispatched Muhammad bin Qasim, was the governor of?",
+      "options": [
+        "Iraq",
+        "Egypt",
+        "Syria",
+        "Persia"
+      ],
+      "answer": 0,
+      "explanation": "Hajjaj bin Yusuf was the powerful Umayyad governor of Iraq.",
+      "difficulty": "hard",
+      "id": "q52"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which is the correct chronological order of the Delhi Sultanate dynasties?",
+      "options": [
+        "Slave, Khalji, Tughlaq, Sayyid, Lodi",
+        "Khalji, Slave, Tughlaq, Lodi, Sayyid",
+        "Slave, Tughlaq, Khalji, Sayyid, Lodi",
+        "Lodi, Sayyid, Tughlaq, Khalji, Slave"
+      ],
+      "answer": 0,
+      "explanation": "The five dynasties ran: Mamluk (Slave), Khalji, Tughlaq, Sayyid and Lodi.",
+      "difficulty": "medium",
+      "id": "q53"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who founded the Khalji dynasty of the Delhi Sultanate?",
+      "options": [
+        "Jalal-ud-din Khalji",
+        "Alauddin Khalji",
+        "Qutb-ud-din Aibak",
+        "Ghiyas-ud-din Balban"
+      ],
+      "answer": 0,
+      "explanation": "Jalal-ud-din Khalji founded the Khalji dynasty in 1290.",
+      "difficulty": "medium",
+      "id": "q54"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Alauddin Khalji was the nephew and son-in-law of whom?",
+      "options": [
+        "Jalal-ud-din Khalji",
+        "Ghiyas-ud-din Balban",
+        "Iltutmish",
+        "Firoz Shah Tughlaq"
+      ],
+      "answer": 0,
+      "explanation": "Alauddin rose against his uncle Jalal-ud-din Khalji and took the throne.",
+      "difficulty": "hard",
+      "id": "q55"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Alauddin Khalji's general Malik Kafur campaigned in which region?",
+      "options": [
+        "The Deccan",
+        "The Punjab",
+        "Bengal",
+        "Kashmir"
+      ],
+      "answer": 0,
+      "explanation": "Malik Kafur led the Deccan campaigns, conquering Devagiri and other states.",
+      "difficulty": "medium",
+      "id": "q56"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who founded the Sayyid dynasty of the Delhi Sultanate?",
+      "options": [
+        "Khizr Khan",
+        "Bahlol Lodi",
+        "Mubarak Shah",
+        "Nasir-ud-din Mahmud"
+      ],
+      "answer": 0,
+      "explanation": "Khizr Khan, formerly a Tughlaq governor, founded the Sayyid dynasty in 1414.",
+      "difficulty": "hard",
+      "id": "q57"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who was the last ruler of the Tughlaq dynasty?",
+      "options": [
+        "Nasir-ud-din Mahmud",
+        "Muhammad bin Tughlaq",
+        "Firoz Shah Tughlaq",
+        "Ghiyas-ud-din Tughlaq"
+      ],
+      "answer": 0,
+      "explanation": "Nasir-ud-din Mahmud was the last Tughlaq ruler, who lost Delhi to Khizr Khan.",
+      "difficulty": "hard",
+      "id": "q58"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Razia Sultana was the daughter of which sultan?",
+      "options": [
+        "Iltutmish",
+        "Qutubuddin Aibak",
+        "Balban",
+        "Alauddin Khalji"
+      ],
+      "answer": 0,
+      "explanation": "Razia Sultana, the first woman ruler of Delhi, was Iltutmish's daughter.",
+      "difficulty": "medium",
+      "id": "q59"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Iltutmish was the slave and successor of whom?",
+      "options": [
+        "Qutubuddin Aibak",
+        "Muhammad Ghori",
+        "Balban",
+        "Bahlol Lodi"
+      ],
+      "answer": 0,
+      "explanation": "Iltutmish, a trusted slave of Aibak, succeeded him as Sultan of Delhi.",
+      "difficulty": "medium",
+      "id": "q60"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Iltutmish shifted the capital of the Delhi Sultanate from Lahore to where?",
+      "options": [
+        "Delhi",
+        "Agra",
+        "Multan",
+        "Daulatabad"
+      ],
+      "answer": 0,
+      "explanation": "Iltutmish moved the capital to Delhi, making it the seat of the sultanate.",
+      "difficulty": "medium",
+      "id": "q61"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Iltutmish obtained a robe of honour from the Abbasid caliph of which city?",
+      "options": [
+        "Baghdad",
+        "Cairo",
+        "Damascus",
+        "Cordoba"
+      ],
+      "answer": 0,
+      "explanation": "Iltutmish received recognition from the Abbasid caliph in Baghdad.",
+      "difficulty": "hard",
+      "id": "q62"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who were the 'Chahalgani' (the Forty)?",
+      "options": [
+        "A group of Turkish nobles of the Slave dynasty",
+        "The Mongol invaders",
+        "The Rajput chiefs",
+        "The Sufi saints"
+      ],
+      "answer": 0,
+      "explanation": "The Forty were the powerful Turkish slave nobles who dominated the early sultanate.",
+      "difficulty": "hard",
+      "id": "q63"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Mahmud of Ghazni was the son of which ruler?",
+      "options": [
+        "Sabuktigin",
+        "Alptigin",
+        "Muhammad Ghori",
+        "Ibrahim Ghaznavi"
+      ],
+      "answer": 0,
+      "explanation": "Mahmud was the son of Sabuktigin, the Ghaznavid ruler.",
+      "difficulty": "medium",
+      "id": "q64"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Muhammad Ghori defeated Prithviraj Chauhan at which battle?",
+      "options": [
+        "The Second Battle of Tarain (1192)",
+        "The First Battle of Tarain (1191)",
+        "The Battle of Khanwa",
+        "The Battle of Panipat"
+      ],
+      "answer": 0,
+      "explanation": "In 1192, Ghori avenged his earlier defeat and crushed Prithviraj at the Second Tarain.",
+      "difficulty": "medium",
+      "id": "q65"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Prithviraj Chauhan defeated Muhammad Ghori at which battle?",
+      "options": [
+        "The First Battle of Tarain (1191)",
+        "The Second Battle of Tarain",
+        "The Battle of Chandwar",
+        "The Battle of Bhilwara"
+      ],
+      "answer": 0,
+      "explanation": "At the First Tarain (1191) Prithviraj defeated Ghori, who returned to conquer in 1192.",
+      "difficulty": "medium",
+      "id": "q66"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Qutubuddin Aibak was the general of which ruler?",
+      "options": [
+        "Muhammad Ghori",
+        "Mahmud of Ghazni",
+        "Alauddin Khalji",
+        "Babur"
+      ],
+      "answer": 0,
+      "explanation": "Aibak served as a general of Muhammad Ghori and later founded the Slave dynasty.",
+      "difficulty": "medium",
+      "id": "q67"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Mamluk dynasty of Delhi is also known as?",
+      "options": [
+        "The Slave dynasty",
+        "The Khalji dynasty",
+        "The Sayyid dynasty",
+        "The Lodi dynasty"
+      ],
+      "answer": 0,
+      "explanation": "The Mamluk or Slave dynasty was founded by Qutubuddin Aibak.",
+      "difficulty": "easy",
+      "id": "q68"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who completed the construction of the Qutub Minar?",
+      "options": [
+        "Iltutmish",
+        "Qutubuddin Aibak",
+        "Alauddin Khalji",
+        "Balban"
+      ],
+      "answer": 0,
+      "explanation": "Iltutmish completed the Qutub Minar begun by Aibak.",
+      "difficulty": "medium",
+      "id": "q69"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Muhammad bin Tughlaq introduced which disastrous economic experiment?",
+      "options": [
+        "Token currency of brass and copper",
+        "Paper money",
+        "Gold standard",
+        "Barter system"
+      ],
+      "answer": 0,
+      "explanation": "His token coinage, without proper control, was forged widely and failed.",
+      "difficulty": "medium",
+      "id": "q70"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which of the following cities was founded by Firoz Shah Tughlaq?",
+      "options": [
+        "Jaunpur",
+        "Agra",
+        "Delhi",
+        "Lahore"
+      ],
+      "answer": 0,
+      "explanation": "Firoz Shah founded cities such as Hissar, Firozabad and Jaunpur.",
+      "difficulty": "hard",
+      "id": "q71"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which Lodi ruler founded the city of Agra?",
+      "options": [
+        "Sikandar Lodi",
+        "Bahlol Lodi",
+        "Ibrahim Lodi",
+        "Khizr Khan"
+      ],
+      "answer": 0,
+      "explanation": "Sikandar Lodi founded Agra in 1504 and shifted his capital there.",
+      "difficulty": "medium",
+      "id": "q72"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Before invading India, Babur ruled which region?",
+      "options": [
+        "Ferghana and later Kabul",
+        "Persia",
+        "Khwarezm",
+        "Anatolia"
+      ],
+      "answer": 0,
+      "explanation": "Babur was the ruler of Ferghana and Kabul before conquering Delhi.",
+      "difficulty": "medium",
+      "id": "q73"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which autobiography did Babur write?",
+      "options": [
+        "Baburnama (Tuzuk-i-Baburi)",
+        "Humayunnama",
+        "Padshahnama",
+        "Akbarnama"
+      ],
+      "answer": 0,
+      "explanation": "Babur's memoirs, the Baburnama, are a celebrated account of his life.",
+      "difficulty": "easy",
+      "id": "q74"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Humayun's tomb in Delhi was built by whom?",
+      "options": [
+        "His widow Haji Begum",
+        "Akbar",
+        "Shah Jahan",
+        "Jahangir"
+      ],
+      "answer": 0,
+      "explanation": "Humayun's widow, Haji Begum, built the garden tomb completed in the 1570s.",
+      "difficulty": "medium",
+      "id": "q75"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who served as Akbar's regent in the early years of his reign?",
+      "options": [
+        "Bairam Khan",
+        "Birbal",
+        "Abul Fazl",
+        "Todar Mal"
+      ],
+      "answer": 0,
+      "explanation": "Bairam Khan guided young Akbar until the emperor assumed full power.",
+      "difficulty": "medium",
+      "id": "q76"
+    },
+    {
+      "type": "mcq",
+      "prompt": "In which year did Akbar abolish the Jizya tax?",
+      "options": [
+        "1564",
+        "1575",
+        "1556",
+        "1582"
+      ],
+      "answer": 0,
+      "explanation": "Akbar abolished the Jizya in 1564.",
+      "difficulty": "hard",
+      "id": "q77"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which of the following was one of Akbar's 'Navratnas' (nine gems)?",
+      "options": [
+        "Tansen",
+        "Amir Khusrau",
+        "Ibn Battuta",
+        "Al-Biruni"
+      ],
+      "answer": 0,
+      "explanation": "The musician Tansen was among Akbar's nine court gems.",
+      "difficulty": "easy",
+      "id": "q78"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Tansen was the celebrated court musician of which emperor?",
+      "options": [
+        "Akbar",
+        "Shah Jahan",
+        "Jahangir",
+        "Aurangzeb"
+      ],
+      "answer": 0,
+      "explanation": "Tansen graced the court of Akbar.",
+      "difficulty": "easy",
+      "id": "q79"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Akbar built the Ibadat Khana (House of Worship) at which place?",
+      "options": [
+        "Fatehpur Sikri",
+        "Agra",
+        "Delhi",
+        "Lahore"
+      ],
+      "answer": 0,
+      "explanation": "The Ibadat Khana at Fatehpur Sikri hosted interfaith religious debates.",
+      "difficulty": "hard",
+      "id": "q80"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Peacock Throne was built by which emperor?",
+      "options": [
+        "Shah Jahan",
+        "Akbar",
+        "Jahangir",
+        "Babur"
+      ],
+      "answer": 0,
+      "explanation": "Shah Jahan commissioned the jewel-encrusted Peacock Throne.",
+      "difficulty": "medium",
+      "id": "q81"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Peacock Throne was later carried away to Persia by whom?",
+      "options": [
+        "Nadir Shah",
+        "Shah Abbas",
+        "Taimur",
+        "Sher Shah"
+      ],
+      "answer": 0,
+      "explanation": "Nadir Shah looted the Peacock Throne after sacking Delhi in 1739.",
+      "difficulty": "hard",
+      "id": "q82"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Aurangzeb ruled for approximately how many years?",
+      "options": [
+        "Forty-nine",
+        "Thirty",
+        "Sixty",
+        "Twenty-five"
+      ],
+      "answer": 0,
+      "explanation": "Aurangzeb reigned from 1658 to 1707 — about 49 years.",
+      "difficulty": "medium",
+      "id": "q83"
+    },
+    {
+      "type": "mcq",
+      "prompt": "In the war of succession, Aurangzeb defeated which brother?",
+      "options": [
+        "Dara Shukoh",
+        "Murad",
+        "Shuja",
+        "Kamran"
+      ],
+      "answer": 0,
+      "explanation": "Aurangzeb defeated Dara Shukoh, Shuja and Murad to take the throne.",
+      "difficulty": "medium",
+      "id": "q84"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Bahadur Shah Zafar was exiled to which city after 1857?",
+      "options": [
+        "Rangoon (Yangon)",
+        "Agra",
+        "Delhi",
+        "Lucknow"
+      ],
+      "answer": 0,
+      "explanation": "The British exiled Zafar to Rangoon, where he died in 1862.",
+      "difficulty": "easy",
+      "id": "q85"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Tipu Sultan ruled which kingdom?",
+      "options": [
+        "Mysore",
+        "Hyderabad",
+        "Awadh",
+        "Bengal"
+      ],
+      "answer": 0,
+      "explanation": "Tipu Sultan ruled the kingdom of Mysore.",
+      "difficulty": "easy",
+      "id": "q86"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Tipu Sultan is popularly known as?",
+      "options": [
+        "The Tiger of Mysore",
+        "The Lion of Punjab",
+        "The Sword of India",
+        "The Falcon of the Deccan"
+      ],
+      "answer": 0,
+      "explanation": "Tipu Sultan earned the title 'Tiger of Mysore'.",
+      "difficulty": "easy",
+      "id": "q87"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What was the capital of Tipu Sultan's kingdom?",
+      "options": [
+        "Srirangapatna",
+        "Hyderabad",
+        "Bijapur",
+        "Pune"
+      ],
+      "answer": 0,
+      "explanation": "Tipu Sultan ruled from Srirangapatna.",
+      "difficulty": "medium",
+      "id": "q88"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Tipu Sultan died fighting in which war?",
+      "options": [
+        "The Fourth Anglo-Mysore War (1799)",
+        "The Third Anglo-Mysore War",
+        "The Battle of Plassey",
+        "The Second Anglo-Sikh War"
+      ],
+      "answer": 0,
+      "explanation": "Tipu Sultan was killed defending Srirangapatna in 1799.",
+      "difficulty": "medium",
+      "id": "q89"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The English East India Company established its first factory in India at?",
+      "options": [
+        "Surat",
+        "Calcutta",
+        "Madras",
+        "Bombay"
+      ],
+      "answer": 0,
+      "explanation": "The Company set up its first factory at Surat in 1612.",
+      "difficulty": "medium",
+      "id": "q90"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Siraj-ud-Daulah was the Nawab of which region?",
+      "options": [
+        "Bengal",
+        "Awadh",
+        "Mysore",
+        "Hyderabad"
+      ],
+      "answer": 0,
+      "explanation": "Siraj-ud-Daulah was the Nawab of Bengal before Plassey.",
+      "difficulty": "easy",
+      "id": "q91"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who betrayed Siraj-ud-Daulah at the Battle of Plassey?",
+      "options": [
+        "Mir Jafar",
+        "Mir Qasim",
+        "Shuja-ud-Daulah",
+        "Nawab of Awadh"
+      ],
+      "answer": 0,
+      "explanation": "Mir Jafar's defection handed the British victory at Plassey in 1757.",
+      "difficulty": "easy",
+      "id": "q92"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Battle of Buxar (1764) was fought by the British against whom?",
+      "options": [
+        "Mir Qasim and his allies",
+        "Tipu Sultan",
+        "The Marathas",
+        "The Sikhs"
+      ],
+      "answer": 0,
+      "explanation": "At Buxar, the British defeated Mir Qasim, Shuja-ud-Daulah and Shah Alam II.",
+      "difficulty": "medium",
+      "id": "q93"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who founded the Mysore dynasty?",
+      "options": [
+        "Hyder Ali",
+        "Tipu Sultan",
+        "Krishnaraja Wodeyar",
+        "Nizam-ul-Mulk"
+      ],
+      "answer": 0,
+      "explanation": "Hyder Ali rose to power and founded the effective Mysore dynasty.",
+      "difficulty": "hard",
+      "id": "q94"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Nizams of Hyderabad belonged to which dynasty?",
+      "options": [
+        "Asaf Jahi",
+        "Qutb Shahi",
+        "Adil Shahi",
+        "Barid Shahi"
+      ],
+      "answer": 0,
+      "explanation": "The Asaf Jahi dynasty ruled Hyderabad from 1724.",
+      "difficulty": "medium",
+      "id": "q95"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who was the first Nizam of Hyderabad?",
+      "options": [
+        "Nizam-ul-Mulk Asaf Jah",
+        "Mir Qasim",
+        "Sikandar Jah",
+        "Afzal-ud-Daulah"
+      ],
+      "answer": 0,
+      "explanation": "Nizam-ul-Mulk Asaf Jah founded the Hyderabad state.",
+      "difficulty": "hard",
+      "id": "q96"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Qutb Shahi dynasty ruled which region?",
+      "options": [
+        "Golconda (Hyderabad)",
+        "Bijapur",
+        "Ahmadnagar",
+        "Delhi"
+      ],
+      "answer": 0,
+      "explanation": "The Qutb Shahis ruled Golconda and founded Hyderabad city.",
+      "difficulty": "medium",
+      "id": "q97"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which Ghurid ruler laid the foundation of lasting Muslim rule in North India?",
+      "options": [
+        "Muhammad Ghori",
+        "Mahmud of Ghazni",
+        "Qutubuddin Aibak",
+        "Babur"
+      ],
+      "answer": 0,
+      "explanation": "Muhammad Ghori's victories set up the Delhi Sultanate under his general Aibak.",
+      "difficulty": "medium",
+      "id": "q98"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The First Battle of Panipat led to the establishment of which empire?",
+      "options": [
+        "The Mughal Empire",
+        "The Delhi Sultanate",
+        "The Sur Empire",
+        "The Maratha Empire"
+      ],
+      "answer": 0,
+      "explanation": "Babur's victory at Panipat (1526) founded Mughal rule in India.",
+      "difficulty": "easy",
+      "id": "q99"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Sher Shah Suri's tomb is located at?",
+      "options": [
+        "Sasaram",
+        "Delhi",
+        "Agra",
+        "Lahore"
+      ],
+      "answer": 0,
+      "explanation": "Sher Shah's red sandstone mausoleum stands at Sasaram, Bihar.",
+      "difficulty": "hard",
+      "id": "q100"
+    }
+  ]
+}

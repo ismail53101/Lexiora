@@ -1,47 +1,94 @@
-/// How an image attachment is carried inside [AiMessage.content].
+import 'dart:convert';
+
+/// How image and PDF attachments are carried inside [AiMessage.content].
 ///
-/// No database column exists for attachments (adding one needs a drift
-/// codegen run this environment can't perform), so the image's on-disk path
-/// is embedded as a hidden first line of the message text instead — a plain
-/// TEXT column already supports that with zero schema change. Everything
-/// that displays or sends a message decodes through [AiAttachment.parse]
-/// rather than reading `content` directly, so this stays an implementation
-/// detail no other code needs to know about.
+/// No database column exists for attachments, so attachment metadata is stored
+/// in hidden control lines before the user-visible message text. The parser
+/// removes those lines before rendering a message, while the AI service can
+/// still use extracted PDF context when constructing the request.
 class AiAttachment {
-  const AiAttachment._({required this.imagePath, required this.text});
+  const AiAttachment._({
+    required this.imagePath,
+    required this.pdfPath,
+    required this.pdfName,
+    required this.pdfText,
+    required this.text,
+  });
 
-  /// Absolute path to the persisted image file, or `null` when the message
-  /// has no attachment.
   final String? imagePath;
-
-  /// The user-visible/sendable text, with the marker line (if any) removed.
+  final String? pdfPath;
+  final String? pdfName;
+  final String? pdfText;
   final String text;
 
-  bool get hasImage => imagePath != null;
+  bool get hasImage => imagePath != null && imagePath!.isNotEmpty;
+  bool get hasPdf => pdfPath != null && pdfPath!.isNotEmpty;
 
-  static const String _prefix = '\u0001ai_image:';
+  static const String _imagePrefix = '\u0001ai_image:';
+  static const String _pdfPrefix = '\u0001ai_pdf:';
+  static const String _pdfNamePrefix = '\u0001ai_pdf_name:';
+  static const String _pdfTextPrefix = '\u0001ai_pdf_text:';
 
-  /// Builds the storable content for a message with an optional image.
-  static String encode({required String? imagePath, required String text}) {
-    if (imagePath == null || imagePath.isEmpty) return text;
-    return '$_prefix$imagePath\n$text';
+  static String encode({
+    required String? imagePath,
+    String? pdfPath,
+    String? pdfName,
+    String? pdfText,
+    required String text,
+  }) {
+    final List<String> headers = <String>[];
+    if (imagePath != null && imagePath.isNotEmpty) {
+      headers.add('$_imagePrefix$imagePath');
+    }
+    if (pdfPath != null && pdfPath.isNotEmpty) {
+      headers.add('$_pdfPrefix$pdfPath');
+      if (pdfName != null && pdfName.isNotEmpty) {
+        headers.add('$_pdfNamePrefix$pdfName');
+      }
+      if (pdfText != null && pdfText.isNotEmpty) {
+        headers.add('$_pdfTextPrefix${base64UrlEncode(utf8.encode(pdfText))}');
+      }
+    }
+    if (headers.isEmpty) return text;
+    return '${headers.join('\n')}\n$text';
   }
 
-  /// Parses stored `content` back into its image path (if any) and text.
   static AiAttachment parse(String content) {
-    if (!content.startsWith(_prefix)) {
-      return AiAttachment._(imagePath: null, text: content);
+    String? imagePath;
+    String? pdfPath;
+    String? pdfName;
+    String? pdfText;
+    final List<String> lines = content.split('\n');
+    int firstVisibleLine = 0;
+
+    while (firstVisibleLine < lines.length) {
+      final String line = lines[firstVisibleLine];
+      if (line.startsWith(_imagePrefix)) {
+        imagePath = line.substring(_imagePrefix.length);
+      } else if (line.startsWith(_pdfPrefix)) {
+        pdfPath = line.substring(_pdfPrefix.length);
+      } else if (line.startsWith(_pdfNamePrefix)) {
+        pdfName = line.substring(_pdfNamePrefix.length);
+      } else if (line.startsWith(_pdfTextPrefix)) {
+        try {
+          pdfText = utf8.decode(
+            base64Url.decode(line.substring(_pdfTextPrefix.length)),
+          );
+        } on FormatException {
+          pdfText = null;
+        }
+      } else {
+        break;
+      }
+      firstVisibleLine++;
     }
-    final int newline = content.indexOf('\n');
-    if (newline == -1) {
-      return AiAttachment._(
-        imagePath: content.substring(_prefix.length),
-        text: '',
-      );
-    }
+
     return AiAttachment._(
-      imagePath: content.substring(_prefix.length, newline),
-      text: content.substring(newline + 1),
+      imagePath: imagePath,
+      pdfPath: pdfPath,
+      pdfName: pdfName,
+      pdfText: pdfText,
+      text: lines.skip(firstVisibleLine).join('\n'),
     );
   }
 }

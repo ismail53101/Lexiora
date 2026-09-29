@@ -4,12 +4,14 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:lexiora/app/di/injector.dart';
 import 'package:lexiora/core/constants/translation_languages.dart';
 import 'package:lexiora/features/settings/presentation/providers/settings_providers.dart';
-import 'package:lexiora/modules/dictionary/data/services/online_dictionary_service.dart';
-import 'package:lexiora/modules/dictionary/domain/entities/dictionary_entry.dart';
+import 'package:lexiora/modules/dictionary/data/dictionary_seeder.dart';
+import 'package:lexiora/modules/dictionary/data/exam_words_seeder.dart';
 import 'package:lexiora/modules/dictionary/domain/repositories/dictionary_repository.dart';
+import 'package:lexiora/modules/translation/data/services/word_meaning_service.dart';
 import 'package:lexiora/modules/translation/domain/entities/translation.dart';
 import 'package:lexiora/modules/translation/domain/entities/translation_outcome.dart';
 import 'package:lexiora/modules/translation/presentation/providers/translation_providers.dart';
+import 'package:lexiora/modules/vocabulary/data/vocabulary_seeder.dart';
 import 'package:lexiora/modules/vocabulary/presentation/widgets/vocab_pronunciation_button.dart';
 
 /// Shows the lightweight reader translation popup for a single selected word.
@@ -28,6 +30,18 @@ Future<void> showTranslationPopup(BuildContext context, String selectedWord) {
   );
 }
 
+/// Strips whitespace and stray leading/trailing punctuation from a reader
+/// selection (PDF selections frequently include ":", ",", ".", quotes) so a
+/// single word is treated as a single word — the English-meaning block and the
+/// dictionary lookup depend on it, and translators render "execution:" quite
+/// differently from "execution".
+String cleanSelectedText(String raw) {
+  String text = raw.trim();
+  text = text.replaceFirst(RegExp(r'^[^A-Za-z0-9]+'), '');
+  text = text.replaceFirst(RegExp(r'[^A-Za-z0-9]+$'), '');
+  return text;
+}
+
 class _TranslationSheet extends ConsumerWidget {
   const _TranslationSheet({required this.selectedWord});
 
@@ -36,7 +50,7 @@ class _TranslationSheet extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final ThemeData theme = Theme.of(context);
-    final String word = selectedWord.trim();
+    final String word = cleanSelectedText(selectedWord);
 
     final String langCode = ref.watch(settingsProvider).maybeWhen(
           data: (s) => s.translationLanguage,
@@ -296,8 +310,9 @@ class _EnglishMeaning extends StatefulWidget {
 }
 
 class _EnglishMeaningState extends State<_EnglishMeaning> {
-  final DictionaryRepository _dictionary = sl<DictionaryRepository>();
-  final OnlineDictionaryService _online = OnlineDictionaryService();
+  final DictionarySeeder _dictionarySeeder = sl<DictionarySeeder>();
+  final VocabularySeeder _vocabularySeeder = sl<VocabularySeeder>();
+  final ExamWordsSeeder _examSeeder = sl<ExamWordsSeeder>();
 
   String? _meaning;
   String? _partOfSpeech;
@@ -311,39 +326,39 @@ class _EnglishMeaningState extends State<_EnglishMeaning> {
   }
 
   Future<void> _load() async {
-    final DictionaryResult? local =
-        await _dictionary.lookup(widget.word.toLowerCase());
-    // Words the Translation module has auto-registered into the dictionary's
-    // search index (so they're findable later) store whatever text the
-    // translation produced — which may be Urdu/Arabic, not an English
-    // definition. Only trust entries whose meaning is actually in Latin
-    // script as a real English meaning.
-    final bool localIsEnglish = local != null &&
-        !RegExp(r'[\u0600-\u06FF\u0750-\u077F]').hasMatch(local.meaning);
+    try {
+      // The bundled dictionary, the exam vocabulary packs and the curated
+      // common-words packs all seed lazily; the reader popup is a first-class
+      // seeding trigger (see DictionarySeeder docs). ensureSeeded is
+      // idempotent (shared future) so this is cheap after the first run.
+      await _dictionarySeeder.ensureSeeded();
+      await _vocabularySeeder.ensureSeeded();
+      await _examSeeder.ensureSeeded();
 
-    if (localIsEnglish) {
+      // Resolve the best exam-appropriate meaning: curated packs first (so
+      // "attention" → "the act of focusing the mind", not "treatment"), then
+      // the base dictionary's most general sense, then the online dictionary.
+      final WordMeaning? m = await sl<WordMeaningService>()
+          .resolve(widget.word.toLowerCase());
       if (mounted) {
         setState(() {
-          _meaning = local.meaning;
-          _partOfSpeech = local.partOfSpeech;
+          _meaning = m?.meaning;
+          _partOfSpeech = m?.partOfSpeech;
+          _fromOnline = m?.fromOnline ?? false;
+          _loading = false;
+        });
+      }
+    } on Object {
+      // A seeder/database/network failure must never strand the popup on a
+      // perpetual spinner — degrade to "no English meaning" instead.
+      if (mounted) {
+        setState(() {
+          _meaning = null;
+          _partOfSpeech = null;
           _fromOnline = false;
           _loading = false;
         });
       }
-      return;
-    }
-
-    // Not in the offline dictionary (or only as a non-English stand-in) —
-    // fall back to a free, keyless online lookup, the same "offline-first,
-    // online-fallback" shape the Urdu translation already uses.
-    final OnlineDefinition? online = await _online.define(widget.word);
-    if (mounted) {
-      setState(() {
-        _meaning = online?.meaning;
-        _partOfSpeech = online?.partOfSpeech;
-        _fromOnline = online != null;
-        _loading = false;
-      });
     }
   }
 

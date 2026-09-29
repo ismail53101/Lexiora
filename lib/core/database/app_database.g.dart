@@ -8497,6 +8497,21 @@ class $StudyTasksTable extends StudyTasks
     type: DriftSqlType.int,
     requiredDuringInsert: false,
   );
+  static const VerificationMeta _autoScheduledMeta = const VerificationMeta(
+    'autoScheduled',
+  );
+  @override
+  late final GeneratedColumn<bool> autoScheduled = GeneratedColumn<bool>(
+    'auto_scheduled',
+    aliasedName,
+    false,
+    type: DriftSqlType.bool,
+    requiredDuringInsert: false,
+    defaultConstraints: GeneratedColumn.constraintIsAlways(
+      'CHECK ("auto_scheduled" IN (0, 1))',
+    ),
+    defaultValue: const Constant(false),
+  );
   static const VerificationMeta _kindMeta = const VerificationMeta('kind');
   @override
   late final GeneratedColumn<String> kind = GeneratedColumn<String>(
@@ -8525,6 +8540,7 @@ class $StudyTasksTable extends StudyTasks
     notes,
     status,
     durationMinutes,
+    autoScheduled,
     kind,
   ];
   @override
@@ -8651,6 +8667,15 @@ class $StudyTasksTable extends StudyTasks
         ),
       );
     }
+    if (data.containsKey('auto_scheduled')) {
+      context.handle(
+        _autoScheduledMeta,
+        autoScheduled.isAcceptableOrUnknown(
+          data['auto_scheduled']!,
+          _autoScheduledMeta,
+        ),
+      );
+    }
     if (data.containsKey('kind')) {
       context.handle(
         _kindMeta,
@@ -8730,6 +8755,10 @@ class $StudyTasksTable extends StudyTasks
         DriftSqlType.int,
         data['${effectivePrefix}duration_minutes'],
       ),
+      autoScheduled: attachedDatabase.typeMapping.read(
+        DriftSqlType.bool,
+        data['${effectivePrefix}auto_scheduled'],
+      )!,
       kind: attachedDatabase.typeMapping.read(
         DriftSqlType.string,
         data['${effectivePrefix}kind'],
@@ -8774,6 +8803,10 @@ class StudyTaskRow extends DataClass implements Insertable<StudyTaskRow> {
   /// Actual studied minutes recorded for this session (via a timer); optional.
   final int? durationMinutes;
 
+  /// Whether this row may move when an earlier automatically scheduled row changes.
+  /// Existing rows default to manual so user-created times are preserved.
+  final bool autoScheduled;
+
   /// 'session' or 'break' (mirrors SessionKind.key). Existing rows default to
   /// 'session'. Breaks store their name in [title] and never count as sessions.
   final String kind;
@@ -8794,6 +8827,7 @@ class StudyTaskRow extends DataClass implements Insertable<StudyTaskRow> {
     this.notes,
     required this.status,
     this.durationMinutes,
+    required this.autoScheduled,
     required this.kind,
   });
   @override
@@ -8829,6 +8863,7 @@ class StudyTaskRow extends DataClass implements Insertable<StudyTaskRow> {
     if (!nullToAbsent || durationMinutes != null) {
       map['duration_minutes'] = Variable<int>(durationMinutes);
     }
+    map['auto_scheduled'] = Variable<bool>(autoScheduled);
     map['kind'] = Variable<String>(kind);
     return map;
   }
@@ -8865,6 +8900,7 @@ class StudyTaskRow extends DataClass implements Insertable<StudyTaskRow> {
       durationMinutes: durationMinutes == null && nullToAbsent
           ? const Value.absent()
           : Value(durationMinutes),
+      autoScheduled: Value(autoScheduled),
       kind: Value(kind),
     );
   }
@@ -8891,6 +8927,7 @@ class StudyTaskRow extends DataClass implements Insertable<StudyTaskRow> {
       notes: serializer.fromJson<String?>(json['notes']),
       status: serializer.fromJson<int>(json['status']),
       durationMinutes: serializer.fromJson<int?>(json['durationMinutes']),
+      autoScheduled: serializer.fromJson<bool>(json['autoScheduled']),
       kind: serializer.fromJson<String>(json['kind']),
     );
   }
@@ -8914,6 +8951,7 @@ class StudyTaskRow extends DataClass implements Insertable<StudyTaskRow> {
       'notes': serializer.toJson<String?>(notes),
       'status': serializer.toJson<int>(status),
       'durationMinutes': serializer.toJson<int?>(durationMinutes),
+      'autoScheduled': serializer.toJson<bool>(autoScheduled),
       'kind': serializer.toJson<String>(kind),
     };
   }
@@ -8935,6 +8973,7 @@ class StudyTaskRow extends DataClass implements Insertable<StudyTaskRow> {
     Value<String?> notes = const Value.absent(),
     int? status,
     Value<int?> durationMinutes = const Value.absent(),
+    bool? autoScheduled,
     String? kind,
   }) => StudyTaskRow(
     id: id ?? this.id,
@@ -8955,6 +8994,7 @@ class StudyTaskRow extends DataClass implements Insertable<StudyTaskRow> {
     durationMinutes: durationMinutes.present
         ? durationMinutes.value
         : this.durationMinutes,
+    autoScheduled: autoScheduled ?? this.autoScheduled,
     kind: kind ?? this.kind,
   );
   StudyTaskRow copyWithCompanion(StudyTasksCompanion data) {
@@ -8983,6 +9023,9 @@ class StudyTaskRow extends DataClass implements Insertable<StudyTaskRow> {
       durationMinutes: data.durationMinutes.present
           ? data.durationMinutes.value
           : this.durationMinutes,
+      autoScheduled: data.autoScheduled.present
+          ? data.autoScheduled.value
+          : this.autoScheduled,
       kind: data.kind.present ? data.kind.value : this.kind,
     );
   }
@@ -9006,6 +9049,7 @@ class StudyTaskRow extends DataClass implements Insertable<StudyTaskRow> {
           ..write('notes: $notes, ')
           ..write('status: $status, ')
           ..write('durationMinutes: $durationMinutes, ')
+          ..write('autoScheduled: $autoScheduled, ')
           ..write('kind: $kind')
           ..write(')'))
         .toString();
@@ -9029,6 +9073,7 @@ class StudyTaskRow extends DataClass implements Insertable<StudyTaskRow> {
     notes,
     status,
     durationMinutes,
+    autoScheduled,
     kind,
   );
   @override
@@ -9051,6 +9096,7 @@ class StudyTaskRow extends DataClass implements Insertable<StudyTaskRow> {
           other.notes == this.notes &&
           other.status == this.status &&
           other.durationMinutes == this.durationMinutes &&
+          other.autoScheduled == this.autoScheduled &&
           other.kind == this.kind);
 }
 
@@ -9071,6 +9117,7 @@ class StudyTasksCompanion extends UpdateCompanion<StudyTaskRow> {
   final Value<String?> notes;
   final Value<int> status;
   final Value<int?> durationMinutes;
+  final Value<bool> autoScheduled;
   final Value<String> kind;
   final Value<int> rowid;
   const StudyTasksCompanion({
@@ -9090,6 +9137,7 @@ class StudyTasksCompanion extends UpdateCompanion<StudyTaskRow> {
     this.notes = const Value.absent(),
     this.status = const Value.absent(),
     this.durationMinutes = const Value.absent(),
+    this.autoScheduled = const Value.absent(),
     this.kind = const Value.absent(),
     this.rowid = const Value.absent(),
   });
@@ -9110,6 +9158,7 @@ class StudyTasksCompanion extends UpdateCompanion<StudyTaskRow> {
     this.notes = const Value.absent(),
     this.status = const Value.absent(),
     this.durationMinutes = const Value.absent(),
+    this.autoScheduled = const Value.absent(),
     this.kind = const Value.absent(),
     this.rowid = const Value.absent(),
   }) : id = Value(id),
@@ -9134,6 +9183,7 @@ class StudyTasksCompanion extends UpdateCompanion<StudyTaskRow> {
     Expression<String>? notes,
     Expression<int>? status,
     Expression<int>? durationMinutes,
+    Expression<bool>? autoScheduled,
     Expression<String>? kind,
     Expression<int>? rowid,
   }) {
@@ -9154,6 +9204,7 @@ class StudyTasksCompanion extends UpdateCompanion<StudyTaskRow> {
       if (notes != null) 'notes': notes,
       if (status != null) 'status': status,
       if (durationMinutes != null) 'duration_minutes': durationMinutes,
+      if (autoScheduled != null) 'auto_scheduled': autoScheduled,
       if (kind != null) 'kind': kind,
       if (rowid != null) 'rowid': rowid,
     });
@@ -9176,6 +9227,7 @@ class StudyTasksCompanion extends UpdateCompanion<StudyTaskRow> {
     Value<String?>? notes,
     Value<int>? status,
     Value<int?>? durationMinutes,
+    Value<bool>? autoScheduled,
     Value<String>? kind,
     Value<int>? rowid,
   }) {
@@ -9196,6 +9248,7 @@ class StudyTasksCompanion extends UpdateCompanion<StudyTaskRow> {
       notes: notes ?? this.notes,
       status: status ?? this.status,
       durationMinutes: durationMinutes ?? this.durationMinutes,
+      autoScheduled: autoScheduled ?? this.autoScheduled,
       kind: kind ?? this.kind,
       rowid: rowid ?? this.rowid,
     );
@@ -9252,6 +9305,9 @@ class StudyTasksCompanion extends UpdateCompanion<StudyTaskRow> {
     if (durationMinutes.present) {
       map['duration_minutes'] = Variable<int>(durationMinutes.value);
     }
+    if (autoScheduled.present) {
+      map['auto_scheduled'] = Variable<bool>(autoScheduled.value);
+    }
     if (kind.present) {
       map['kind'] = Variable<String>(kind.value);
     }
@@ -9280,6 +9336,7 @@ class StudyTasksCompanion extends UpdateCompanion<StudyTaskRow> {
           ..write('notes: $notes, ')
           ..write('status: $status, ')
           ..write('durationMinutes: $durationMinutes, ')
+          ..write('autoScheduled: $autoScheduled, ')
           ..write('kind: $kind, ')
           ..write('rowid: $rowid')
           ..write(')'))
@@ -9879,6 +9936,17 @@ class $StudySessionsTable extends StudySessions
     type: DriftSqlType.dateTime,
     requiredDuringInsert: true,
   );
+  static const VerificationMeta _endedAtMeta = const VerificationMeta(
+    'endedAt',
+  );
+  @override
+  late final GeneratedColumn<DateTime> endedAt = GeneratedColumn<DateTime>(
+    'ended_at',
+    aliasedName,
+    true,
+    type: DriftSqlType.dateTime,
+    requiredDuringInsert: false,
+  );
   static const VerificationMeta _durationMinutesMeta = const VerificationMeta(
     'durationMinutes',
   );
@@ -9889,6 +9957,26 @@ class $StudySessionsTable extends StudySessions
     false,
     type: DriftSqlType.int,
     requiredDuringInsert: true,
+  );
+  static const VerificationMeta _subjectMeta = const VerificationMeta(
+    'subject',
+  );
+  @override
+  late final GeneratedColumn<String> subject = GeneratedColumn<String>(
+    'subject',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _taskIdMeta = const VerificationMeta('taskId');
+  @override
+  late final GeneratedColumn<String> taskId = GeneratedColumn<String>(
+    'task_id',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
   );
   static const VerificationMeta _kindMeta = const VerificationMeta('kind');
   @override
@@ -9916,7 +10004,10 @@ class $StudySessionsTable extends StudySessions
     id,
     day,
     startedAt,
+    endedAt,
     durationMinutes,
+    subject,
+    taskId,
     kind,
     createdAt,
   ];
@@ -9953,6 +10044,12 @@ class $StudySessionsTable extends StudySessions
     } else if (isInserting) {
       context.missing(_startedAtMeta);
     }
+    if (data.containsKey('ended_at')) {
+      context.handle(
+        _endedAtMeta,
+        endedAt.isAcceptableOrUnknown(data['ended_at']!, _endedAtMeta),
+      );
+    }
     if (data.containsKey('duration_minutes')) {
       context.handle(
         _durationMinutesMeta,
@@ -9963,6 +10060,18 @@ class $StudySessionsTable extends StudySessions
       );
     } else if (isInserting) {
       context.missing(_durationMinutesMeta);
+    }
+    if (data.containsKey('subject')) {
+      context.handle(
+        _subjectMeta,
+        subject.isAcceptableOrUnknown(data['subject']!, _subjectMeta),
+      );
+    }
+    if (data.containsKey('task_id')) {
+      context.handle(
+        _taskIdMeta,
+        taskId.isAcceptableOrUnknown(data['task_id']!, _taskIdMeta),
+      );
     }
     if (data.containsKey('kind')) {
       context.handle(
@@ -9999,10 +10108,22 @@ class $StudySessionsTable extends StudySessions
         DriftSqlType.dateTime,
         data['${effectivePrefix}started_at'],
       )!,
+      endedAt: attachedDatabase.typeMapping.read(
+        DriftSqlType.dateTime,
+        data['${effectivePrefix}ended_at'],
+      ),
       durationMinutes: attachedDatabase.typeMapping.read(
         DriftSqlType.int,
         data['${effectivePrefix}duration_minutes'],
       )!,
+      subject: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}subject'],
+      ),
+      taskId: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}task_id'],
+      ),
       kind: attachedDatabase.typeMapping.read(
         DriftSqlType.string,
         data['${effectivePrefix}kind'],
@@ -10024,7 +10145,10 @@ class StudySessionRow extends DataClass implements Insertable<StudySessionRow> {
   final String id;
   final String day;
   final DateTime startedAt;
+  final DateTime? endedAt;
   final int durationMinutes;
+  final String? subject;
+  final String? taskId;
 
   /// pomodoro / manual.
   final String kind;
@@ -10033,7 +10157,10 @@ class StudySessionRow extends DataClass implements Insertable<StudySessionRow> {
     required this.id,
     required this.day,
     required this.startedAt,
+    this.endedAt,
     required this.durationMinutes,
+    this.subject,
+    this.taskId,
     required this.kind,
     required this.createdAt,
   });
@@ -10043,7 +10170,16 @@ class StudySessionRow extends DataClass implements Insertable<StudySessionRow> {
     map['id'] = Variable<String>(id);
     map['day'] = Variable<String>(day);
     map['started_at'] = Variable<DateTime>(startedAt);
+    if (!nullToAbsent || endedAt != null) {
+      map['ended_at'] = Variable<DateTime>(endedAt);
+    }
     map['duration_minutes'] = Variable<int>(durationMinutes);
+    if (!nullToAbsent || subject != null) {
+      map['subject'] = Variable<String>(subject);
+    }
+    if (!nullToAbsent || taskId != null) {
+      map['task_id'] = Variable<String>(taskId);
+    }
     map['kind'] = Variable<String>(kind);
     map['created_at'] = Variable<DateTime>(createdAt);
     return map;
@@ -10054,7 +10190,16 @@ class StudySessionRow extends DataClass implements Insertable<StudySessionRow> {
       id: Value(id),
       day: Value(day),
       startedAt: Value(startedAt),
+      endedAt: endedAt == null && nullToAbsent
+          ? const Value.absent()
+          : Value(endedAt),
       durationMinutes: Value(durationMinutes),
+      subject: subject == null && nullToAbsent
+          ? const Value.absent()
+          : Value(subject),
+      taskId: taskId == null && nullToAbsent
+          ? const Value.absent()
+          : Value(taskId),
       kind: Value(kind),
       createdAt: Value(createdAt),
     );
@@ -10069,7 +10214,10 @@ class StudySessionRow extends DataClass implements Insertable<StudySessionRow> {
       id: serializer.fromJson<String>(json['id']),
       day: serializer.fromJson<String>(json['day']),
       startedAt: serializer.fromJson<DateTime>(json['startedAt']),
+      endedAt: serializer.fromJson<DateTime?>(json['endedAt']),
       durationMinutes: serializer.fromJson<int>(json['durationMinutes']),
+      subject: serializer.fromJson<String?>(json['subject']),
+      taskId: serializer.fromJson<String?>(json['taskId']),
       kind: serializer.fromJson<String>(json['kind']),
       createdAt: serializer.fromJson<DateTime>(json['createdAt']),
     );
@@ -10081,7 +10229,10 @@ class StudySessionRow extends DataClass implements Insertable<StudySessionRow> {
       'id': serializer.toJson<String>(id),
       'day': serializer.toJson<String>(day),
       'startedAt': serializer.toJson<DateTime>(startedAt),
+      'endedAt': serializer.toJson<DateTime?>(endedAt),
       'durationMinutes': serializer.toJson<int>(durationMinutes),
+      'subject': serializer.toJson<String?>(subject),
+      'taskId': serializer.toJson<String?>(taskId),
       'kind': serializer.toJson<String>(kind),
       'createdAt': serializer.toJson<DateTime>(createdAt),
     };
@@ -10091,14 +10242,20 @@ class StudySessionRow extends DataClass implements Insertable<StudySessionRow> {
     String? id,
     String? day,
     DateTime? startedAt,
+    Value<DateTime?> endedAt = const Value.absent(),
     int? durationMinutes,
+    Value<String?> subject = const Value.absent(),
+    Value<String?> taskId = const Value.absent(),
     String? kind,
     DateTime? createdAt,
   }) => StudySessionRow(
     id: id ?? this.id,
     day: day ?? this.day,
     startedAt: startedAt ?? this.startedAt,
+    endedAt: endedAt.present ? endedAt.value : this.endedAt,
     durationMinutes: durationMinutes ?? this.durationMinutes,
+    subject: subject.present ? subject.value : this.subject,
+    taskId: taskId.present ? taskId.value : this.taskId,
     kind: kind ?? this.kind,
     createdAt: createdAt ?? this.createdAt,
   );
@@ -10107,9 +10264,12 @@ class StudySessionRow extends DataClass implements Insertable<StudySessionRow> {
       id: data.id.present ? data.id.value : this.id,
       day: data.day.present ? data.day.value : this.day,
       startedAt: data.startedAt.present ? data.startedAt.value : this.startedAt,
+      endedAt: data.endedAt.present ? data.endedAt.value : this.endedAt,
       durationMinutes: data.durationMinutes.present
           ? data.durationMinutes.value
           : this.durationMinutes,
+      subject: data.subject.present ? data.subject.value : this.subject,
+      taskId: data.taskId.present ? data.taskId.value : this.taskId,
       kind: data.kind.present ? data.kind.value : this.kind,
       createdAt: data.createdAt.present ? data.createdAt.value : this.createdAt,
     );
@@ -10121,7 +10281,10 @@ class StudySessionRow extends DataClass implements Insertable<StudySessionRow> {
           ..write('id: $id, ')
           ..write('day: $day, ')
           ..write('startedAt: $startedAt, ')
+          ..write('endedAt: $endedAt, ')
           ..write('durationMinutes: $durationMinutes, ')
+          ..write('subject: $subject, ')
+          ..write('taskId: $taskId, ')
           ..write('kind: $kind, ')
           ..write('createdAt: $createdAt')
           ..write(')'))
@@ -10129,8 +10292,17 @@ class StudySessionRow extends DataClass implements Insertable<StudySessionRow> {
   }
 
   @override
-  int get hashCode =>
-      Object.hash(id, day, startedAt, durationMinutes, kind, createdAt);
+  int get hashCode => Object.hash(
+    id,
+    day,
+    startedAt,
+    endedAt,
+    durationMinutes,
+    subject,
+    taskId,
+    kind,
+    createdAt,
+  );
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
@@ -10138,7 +10310,10 @@ class StudySessionRow extends DataClass implements Insertable<StudySessionRow> {
           other.id == this.id &&
           other.day == this.day &&
           other.startedAt == this.startedAt &&
+          other.endedAt == this.endedAt &&
           other.durationMinutes == this.durationMinutes &&
+          other.subject == this.subject &&
+          other.taskId == this.taskId &&
           other.kind == this.kind &&
           other.createdAt == this.createdAt);
 }
@@ -10147,7 +10322,10 @@ class StudySessionsCompanion extends UpdateCompanion<StudySessionRow> {
   final Value<String> id;
   final Value<String> day;
   final Value<DateTime> startedAt;
+  final Value<DateTime?> endedAt;
   final Value<int> durationMinutes;
+  final Value<String?> subject;
+  final Value<String?> taskId;
   final Value<String> kind;
   final Value<DateTime> createdAt;
   final Value<int> rowid;
@@ -10155,7 +10333,10 @@ class StudySessionsCompanion extends UpdateCompanion<StudySessionRow> {
     this.id = const Value.absent(),
     this.day = const Value.absent(),
     this.startedAt = const Value.absent(),
+    this.endedAt = const Value.absent(),
     this.durationMinutes = const Value.absent(),
+    this.subject = const Value.absent(),
+    this.taskId = const Value.absent(),
     this.kind = const Value.absent(),
     this.createdAt = const Value.absent(),
     this.rowid = const Value.absent(),
@@ -10164,7 +10345,10 @@ class StudySessionsCompanion extends UpdateCompanion<StudySessionRow> {
     required String id,
     required String day,
     required DateTime startedAt,
+    this.endedAt = const Value.absent(),
     required int durationMinutes,
+    this.subject = const Value.absent(),
+    this.taskId = const Value.absent(),
     this.kind = const Value.absent(),
     required DateTime createdAt,
     this.rowid = const Value.absent(),
@@ -10177,7 +10361,10 @@ class StudySessionsCompanion extends UpdateCompanion<StudySessionRow> {
     Expression<String>? id,
     Expression<String>? day,
     Expression<DateTime>? startedAt,
+    Expression<DateTime>? endedAt,
     Expression<int>? durationMinutes,
+    Expression<String>? subject,
+    Expression<String>? taskId,
     Expression<String>? kind,
     Expression<DateTime>? createdAt,
     Expression<int>? rowid,
@@ -10186,7 +10373,10 @@ class StudySessionsCompanion extends UpdateCompanion<StudySessionRow> {
       if (id != null) 'id': id,
       if (day != null) 'day': day,
       if (startedAt != null) 'started_at': startedAt,
+      if (endedAt != null) 'ended_at': endedAt,
       if (durationMinutes != null) 'duration_minutes': durationMinutes,
+      if (subject != null) 'subject': subject,
+      if (taskId != null) 'task_id': taskId,
       if (kind != null) 'kind': kind,
       if (createdAt != null) 'created_at': createdAt,
       if (rowid != null) 'rowid': rowid,
@@ -10197,7 +10387,10 @@ class StudySessionsCompanion extends UpdateCompanion<StudySessionRow> {
     Value<String>? id,
     Value<String>? day,
     Value<DateTime>? startedAt,
+    Value<DateTime?>? endedAt,
     Value<int>? durationMinutes,
+    Value<String?>? subject,
+    Value<String?>? taskId,
     Value<String>? kind,
     Value<DateTime>? createdAt,
     Value<int>? rowid,
@@ -10206,7 +10399,10 @@ class StudySessionsCompanion extends UpdateCompanion<StudySessionRow> {
       id: id ?? this.id,
       day: day ?? this.day,
       startedAt: startedAt ?? this.startedAt,
+      endedAt: endedAt ?? this.endedAt,
       durationMinutes: durationMinutes ?? this.durationMinutes,
+      subject: subject ?? this.subject,
+      taskId: taskId ?? this.taskId,
       kind: kind ?? this.kind,
       createdAt: createdAt ?? this.createdAt,
       rowid: rowid ?? this.rowid,
@@ -10225,8 +10421,17 @@ class StudySessionsCompanion extends UpdateCompanion<StudySessionRow> {
     if (startedAt.present) {
       map['started_at'] = Variable<DateTime>(startedAt.value);
     }
+    if (endedAt.present) {
+      map['ended_at'] = Variable<DateTime>(endedAt.value);
+    }
     if (durationMinutes.present) {
       map['duration_minutes'] = Variable<int>(durationMinutes.value);
+    }
+    if (subject.present) {
+      map['subject'] = Variable<String>(subject.value);
+    }
+    if (taskId.present) {
+      map['task_id'] = Variable<String>(taskId.value);
     }
     if (kind.present) {
       map['kind'] = Variable<String>(kind.value);
@@ -10246,7 +10451,10 @@ class StudySessionsCompanion extends UpdateCompanion<StudySessionRow> {
           ..write('id: $id, ')
           ..write('day: $day, ')
           ..write('startedAt: $startedAt, ')
+          ..write('endedAt: $endedAt, ')
           ..write('durationMinutes: $durationMinutes, ')
+          ..write('subject: $subject, ')
+          ..write('taskId: $taskId, ')
           ..write('kind: $kind, ')
           ..write('createdAt: $createdAt, ')
           ..write('rowid: $rowid')
@@ -19151,6 +19359,581 @@ class QuizTopicsCompanion extends UpdateCompanion<QuizTopicRow> {
   }
 }
 
+class $QuizStageProgressTable extends QuizStageProgress
+    with TableInfo<$QuizStageProgressTable, QuizStageProgressRow> {
+  @override
+  final GeneratedDatabase attachedDatabase;
+  final String? _alias;
+  $QuizStageProgressTable(this.attachedDatabase, [this._alias]);
+  static const VerificationMeta _subjectIdMeta = const VerificationMeta(
+    'subjectId',
+  );
+  @override
+  late final GeneratedColumn<String> subjectId = GeneratedColumn<String>(
+    'subject_id',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _stageIndexMeta = const VerificationMeta(
+    'stageIndex',
+  );
+  @override
+  late final GeneratedColumn<int> stageIndex = GeneratedColumn<int>(
+    'stage_index',
+    aliasedName,
+    false,
+    type: DriftSqlType.int,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _bestScoreMeta = const VerificationMeta(
+    'bestScore',
+  );
+  @override
+  late final GeneratedColumn<int> bestScore = GeneratedColumn<int>(
+    'best_score',
+    aliasedName,
+    false,
+    type: DriftSqlType.int,
+    requiredDuringInsert: false,
+    defaultValue: const Constant(0),
+  );
+  static const VerificationMeta _bestStarsMeta = const VerificationMeta(
+    'bestStars',
+  );
+  @override
+  late final GeneratedColumn<int> bestStars = GeneratedColumn<int>(
+    'best_stars',
+    aliasedName,
+    false,
+    type: DriftSqlType.int,
+    requiredDuringInsert: false,
+    defaultValue: const Constant(0),
+  );
+  static const VerificationMeta _attemptsMeta = const VerificationMeta(
+    'attempts',
+  );
+  @override
+  late final GeneratedColumn<int> attempts = GeneratedColumn<int>(
+    'attempts',
+    aliasedName,
+    false,
+    type: DriftSqlType.int,
+    requiredDuringInsert: false,
+    defaultValue: const Constant(0),
+  );
+  static const VerificationMeta _passedMeta = const VerificationMeta('passed');
+  @override
+  late final GeneratedColumn<bool> passed = GeneratedColumn<bool>(
+    'passed',
+    aliasedName,
+    false,
+    type: DriftSqlType.bool,
+    requiredDuringInsert: false,
+    defaultConstraints: GeneratedColumn.constraintIsAlways(
+      'CHECK ("passed" IN (0, 1))',
+    ),
+    defaultValue: const Constant(false),
+  );
+  static const VerificationMeta _lastPlayedAtMeta = const VerificationMeta(
+    'lastPlayedAt',
+  );
+  @override
+  late final GeneratedColumn<DateTime> lastPlayedAt = GeneratedColumn<DateTime>(
+    'last_played_at',
+    aliasedName,
+    true,
+    type: DriftSqlType.dateTime,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _createdAtMeta = const VerificationMeta(
+    'createdAt',
+  );
+  @override
+  late final GeneratedColumn<DateTime> createdAt = GeneratedColumn<DateTime>(
+    'created_at',
+    aliasedName,
+    false,
+    type: DriftSqlType.dateTime,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _updatedAtMeta = const VerificationMeta(
+    'updatedAt',
+  );
+  @override
+  late final GeneratedColumn<DateTime> updatedAt = GeneratedColumn<DateTime>(
+    'updated_at',
+    aliasedName,
+    false,
+    type: DriftSqlType.dateTime,
+    requiredDuringInsert: true,
+  );
+  @override
+  List<GeneratedColumn> get $columns => [
+    subjectId,
+    stageIndex,
+    bestScore,
+    bestStars,
+    attempts,
+    passed,
+    lastPlayedAt,
+    createdAt,
+    updatedAt,
+  ];
+  @override
+  String get aliasedName => _alias ?? actualTableName;
+  @override
+  String get actualTableName => $name;
+  static const String $name = 'quiz_stage_progress';
+  @override
+  VerificationContext validateIntegrity(
+    Insertable<QuizStageProgressRow> instance, {
+    bool isInserting = false,
+  }) {
+    final context = VerificationContext();
+    final data = instance.toColumns(true);
+    if (data.containsKey('subject_id')) {
+      context.handle(
+        _subjectIdMeta,
+        subjectId.isAcceptableOrUnknown(data['subject_id']!, _subjectIdMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_subjectIdMeta);
+    }
+    if (data.containsKey('stage_index')) {
+      context.handle(
+        _stageIndexMeta,
+        stageIndex.isAcceptableOrUnknown(data['stage_index']!, _stageIndexMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_stageIndexMeta);
+    }
+    if (data.containsKey('best_score')) {
+      context.handle(
+        _bestScoreMeta,
+        bestScore.isAcceptableOrUnknown(data['best_score']!, _bestScoreMeta),
+      );
+    }
+    if (data.containsKey('best_stars')) {
+      context.handle(
+        _bestStarsMeta,
+        bestStars.isAcceptableOrUnknown(data['best_stars']!, _bestStarsMeta),
+      );
+    }
+    if (data.containsKey('attempts')) {
+      context.handle(
+        _attemptsMeta,
+        attempts.isAcceptableOrUnknown(data['attempts']!, _attemptsMeta),
+      );
+    }
+    if (data.containsKey('passed')) {
+      context.handle(
+        _passedMeta,
+        passed.isAcceptableOrUnknown(data['passed']!, _passedMeta),
+      );
+    }
+    if (data.containsKey('last_played_at')) {
+      context.handle(
+        _lastPlayedAtMeta,
+        lastPlayedAt.isAcceptableOrUnknown(
+          data['last_played_at']!,
+          _lastPlayedAtMeta,
+        ),
+      );
+    }
+    if (data.containsKey('created_at')) {
+      context.handle(
+        _createdAtMeta,
+        createdAt.isAcceptableOrUnknown(data['created_at']!, _createdAtMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_createdAtMeta);
+    }
+    if (data.containsKey('updated_at')) {
+      context.handle(
+        _updatedAtMeta,
+        updatedAt.isAcceptableOrUnknown(data['updated_at']!, _updatedAtMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_updatedAtMeta);
+    }
+    return context;
+  }
+
+  @override
+  Set<GeneratedColumn> get $primaryKey => {subjectId, stageIndex};
+  @override
+  QuizStageProgressRow map(Map<String, dynamic> data, {String? tablePrefix}) {
+    final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
+    return QuizStageProgressRow(
+      subjectId: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}subject_id'],
+      )!,
+      stageIndex: attachedDatabase.typeMapping.read(
+        DriftSqlType.int,
+        data['${effectivePrefix}stage_index'],
+      )!,
+      bestScore: attachedDatabase.typeMapping.read(
+        DriftSqlType.int,
+        data['${effectivePrefix}best_score'],
+      )!,
+      bestStars: attachedDatabase.typeMapping.read(
+        DriftSqlType.int,
+        data['${effectivePrefix}best_stars'],
+      )!,
+      attempts: attachedDatabase.typeMapping.read(
+        DriftSqlType.int,
+        data['${effectivePrefix}attempts'],
+      )!,
+      passed: attachedDatabase.typeMapping.read(
+        DriftSqlType.bool,
+        data['${effectivePrefix}passed'],
+      )!,
+      lastPlayedAt: attachedDatabase.typeMapping.read(
+        DriftSqlType.dateTime,
+        data['${effectivePrefix}last_played_at'],
+      ),
+      createdAt: attachedDatabase.typeMapping.read(
+        DriftSqlType.dateTime,
+        data['${effectivePrefix}created_at'],
+      )!,
+      updatedAt: attachedDatabase.typeMapping.read(
+        DriftSqlType.dateTime,
+        data['${effectivePrefix}updated_at'],
+      )!,
+    );
+  }
+
+  @override
+  $QuizStageProgressTable createAlias(String alias) {
+    return $QuizStageProgressTable(attachedDatabase, alias);
+  }
+}
+
+class QuizStageProgressRow extends DataClass
+    implements Insertable<QuizStageProgressRow> {
+  final String subjectId;
+  final int stageIndex;
+
+  /// Best percentage score (0–100) achieved on this stage.
+  final int bestScore;
+
+  /// Best star rating (0–3) achieved on this stage.
+  final int bestStars;
+
+  /// Total number of completed attempts on this stage.
+  final int attempts;
+
+  /// True once the stage was passed (score >= 50%), unlocking the next one.
+  final bool passed;
+  final DateTime? lastPlayedAt;
+  final DateTime createdAt;
+  final DateTime updatedAt;
+  const QuizStageProgressRow({
+    required this.subjectId,
+    required this.stageIndex,
+    required this.bestScore,
+    required this.bestStars,
+    required this.attempts,
+    required this.passed,
+    this.lastPlayedAt,
+    required this.createdAt,
+    required this.updatedAt,
+  });
+  @override
+  Map<String, Expression> toColumns(bool nullToAbsent) {
+    final map = <String, Expression>{};
+    map['subject_id'] = Variable<String>(subjectId);
+    map['stage_index'] = Variable<int>(stageIndex);
+    map['best_score'] = Variable<int>(bestScore);
+    map['best_stars'] = Variable<int>(bestStars);
+    map['attempts'] = Variable<int>(attempts);
+    map['passed'] = Variable<bool>(passed);
+    if (!nullToAbsent || lastPlayedAt != null) {
+      map['last_played_at'] = Variable<DateTime>(lastPlayedAt);
+    }
+    map['created_at'] = Variable<DateTime>(createdAt);
+    map['updated_at'] = Variable<DateTime>(updatedAt);
+    return map;
+  }
+
+  QuizStageProgressCompanion toCompanion(bool nullToAbsent) {
+    return QuizStageProgressCompanion(
+      subjectId: Value(subjectId),
+      stageIndex: Value(stageIndex),
+      bestScore: Value(bestScore),
+      bestStars: Value(bestStars),
+      attempts: Value(attempts),
+      passed: Value(passed),
+      lastPlayedAt: lastPlayedAt == null && nullToAbsent
+          ? const Value.absent()
+          : Value(lastPlayedAt),
+      createdAt: Value(createdAt),
+      updatedAt: Value(updatedAt),
+    );
+  }
+
+  factory QuizStageProgressRow.fromJson(
+    Map<String, dynamic> json, {
+    ValueSerializer? serializer,
+  }) {
+    serializer ??= driftRuntimeOptions.defaultSerializer;
+    return QuizStageProgressRow(
+      subjectId: serializer.fromJson<String>(json['subjectId']),
+      stageIndex: serializer.fromJson<int>(json['stageIndex']),
+      bestScore: serializer.fromJson<int>(json['bestScore']),
+      bestStars: serializer.fromJson<int>(json['bestStars']),
+      attempts: serializer.fromJson<int>(json['attempts']),
+      passed: serializer.fromJson<bool>(json['passed']),
+      lastPlayedAt: serializer.fromJson<DateTime?>(json['lastPlayedAt']),
+      createdAt: serializer.fromJson<DateTime>(json['createdAt']),
+      updatedAt: serializer.fromJson<DateTime>(json['updatedAt']),
+    );
+  }
+  @override
+  Map<String, dynamic> toJson({ValueSerializer? serializer}) {
+    serializer ??= driftRuntimeOptions.defaultSerializer;
+    return <String, dynamic>{
+      'subjectId': serializer.toJson<String>(subjectId),
+      'stageIndex': serializer.toJson<int>(stageIndex),
+      'bestScore': serializer.toJson<int>(bestScore),
+      'bestStars': serializer.toJson<int>(bestStars),
+      'attempts': serializer.toJson<int>(attempts),
+      'passed': serializer.toJson<bool>(passed),
+      'lastPlayedAt': serializer.toJson<DateTime?>(lastPlayedAt),
+      'createdAt': serializer.toJson<DateTime>(createdAt),
+      'updatedAt': serializer.toJson<DateTime>(updatedAt),
+    };
+  }
+
+  QuizStageProgressRow copyWith({
+    String? subjectId,
+    int? stageIndex,
+    int? bestScore,
+    int? bestStars,
+    int? attempts,
+    bool? passed,
+    Value<DateTime?> lastPlayedAt = const Value.absent(),
+    DateTime? createdAt,
+    DateTime? updatedAt,
+  }) => QuizStageProgressRow(
+    subjectId: subjectId ?? this.subjectId,
+    stageIndex: stageIndex ?? this.stageIndex,
+    bestScore: bestScore ?? this.bestScore,
+    bestStars: bestStars ?? this.bestStars,
+    attempts: attempts ?? this.attempts,
+    passed: passed ?? this.passed,
+    lastPlayedAt: lastPlayedAt.present ? lastPlayedAt.value : this.lastPlayedAt,
+    createdAt: createdAt ?? this.createdAt,
+    updatedAt: updatedAt ?? this.updatedAt,
+  );
+  QuizStageProgressRow copyWithCompanion(QuizStageProgressCompanion data) {
+    return QuizStageProgressRow(
+      subjectId: data.subjectId.present ? data.subjectId.value : this.subjectId,
+      stageIndex: data.stageIndex.present
+          ? data.stageIndex.value
+          : this.stageIndex,
+      bestScore: data.bestScore.present ? data.bestScore.value : this.bestScore,
+      bestStars: data.bestStars.present ? data.bestStars.value : this.bestStars,
+      attempts: data.attempts.present ? data.attempts.value : this.attempts,
+      passed: data.passed.present ? data.passed.value : this.passed,
+      lastPlayedAt: data.lastPlayedAt.present
+          ? data.lastPlayedAt.value
+          : this.lastPlayedAt,
+      createdAt: data.createdAt.present ? data.createdAt.value : this.createdAt,
+      updatedAt: data.updatedAt.present ? data.updatedAt.value : this.updatedAt,
+    );
+  }
+
+  @override
+  String toString() {
+    return (StringBuffer('QuizStageProgressRow(')
+          ..write('subjectId: $subjectId, ')
+          ..write('stageIndex: $stageIndex, ')
+          ..write('bestScore: $bestScore, ')
+          ..write('bestStars: $bestStars, ')
+          ..write('attempts: $attempts, ')
+          ..write('passed: $passed, ')
+          ..write('lastPlayedAt: $lastPlayedAt, ')
+          ..write('createdAt: $createdAt, ')
+          ..write('updatedAt: $updatedAt')
+          ..write(')'))
+        .toString();
+  }
+
+  @override
+  int get hashCode => Object.hash(
+    subjectId,
+    stageIndex,
+    bestScore,
+    bestStars,
+    attempts,
+    passed,
+    lastPlayedAt,
+    createdAt,
+    updatedAt,
+  );
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      (other is QuizStageProgressRow &&
+          other.subjectId == this.subjectId &&
+          other.stageIndex == this.stageIndex &&
+          other.bestScore == this.bestScore &&
+          other.bestStars == this.bestStars &&
+          other.attempts == this.attempts &&
+          other.passed == this.passed &&
+          other.lastPlayedAt == this.lastPlayedAt &&
+          other.createdAt == this.createdAt &&
+          other.updatedAt == this.updatedAt);
+}
+
+class QuizStageProgressCompanion extends UpdateCompanion<QuizStageProgressRow> {
+  final Value<String> subjectId;
+  final Value<int> stageIndex;
+  final Value<int> bestScore;
+  final Value<int> bestStars;
+  final Value<int> attempts;
+  final Value<bool> passed;
+  final Value<DateTime?> lastPlayedAt;
+  final Value<DateTime> createdAt;
+  final Value<DateTime> updatedAt;
+  final Value<int> rowid;
+  const QuizStageProgressCompanion({
+    this.subjectId = const Value.absent(),
+    this.stageIndex = const Value.absent(),
+    this.bestScore = const Value.absent(),
+    this.bestStars = const Value.absent(),
+    this.attempts = const Value.absent(),
+    this.passed = const Value.absent(),
+    this.lastPlayedAt = const Value.absent(),
+    this.createdAt = const Value.absent(),
+    this.updatedAt = const Value.absent(),
+    this.rowid = const Value.absent(),
+  });
+  QuizStageProgressCompanion.insert({
+    required String subjectId,
+    required int stageIndex,
+    this.bestScore = const Value.absent(),
+    this.bestStars = const Value.absent(),
+    this.attempts = const Value.absent(),
+    this.passed = const Value.absent(),
+    this.lastPlayedAt = const Value.absent(),
+    required DateTime createdAt,
+    required DateTime updatedAt,
+    this.rowid = const Value.absent(),
+  }) : subjectId = Value(subjectId),
+       stageIndex = Value(stageIndex),
+       createdAt = Value(createdAt),
+       updatedAt = Value(updatedAt);
+  static Insertable<QuizStageProgressRow> custom({
+    Expression<String>? subjectId,
+    Expression<int>? stageIndex,
+    Expression<int>? bestScore,
+    Expression<int>? bestStars,
+    Expression<int>? attempts,
+    Expression<bool>? passed,
+    Expression<DateTime>? lastPlayedAt,
+    Expression<DateTime>? createdAt,
+    Expression<DateTime>? updatedAt,
+    Expression<int>? rowid,
+  }) {
+    return RawValuesInsertable({
+      if (subjectId != null) 'subject_id': subjectId,
+      if (stageIndex != null) 'stage_index': stageIndex,
+      if (bestScore != null) 'best_score': bestScore,
+      if (bestStars != null) 'best_stars': bestStars,
+      if (attempts != null) 'attempts': attempts,
+      if (passed != null) 'passed': passed,
+      if (lastPlayedAt != null) 'last_played_at': lastPlayedAt,
+      if (createdAt != null) 'created_at': createdAt,
+      if (updatedAt != null) 'updated_at': updatedAt,
+      if (rowid != null) 'rowid': rowid,
+    });
+  }
+
+  QuizStageProgressCompanion copyWith({
+    Value<String>? subjectId,
+    Value<int>? stageIndex,
+    Value<int>? bestScore,
+    Value<int>? bestStars,
+    Value<int>? attempts,
+    Value<bool>? passed,
+    Value<DateTime?>? lastPlayedAt,
+    Value<DateTime>? createdAt,
+    Value<DateTime>? updatedAt,
+    Value<int>? rowid,
+  }) {
+    return QuizStageProgressCompanion(
+      subjectId: subjectId ?? this.subjectId,
+      stageIndex: stageIndex ?? this.stageIndex,
+      bestScore: bestScore ?? this.bestScore,
+      bestStars: bestStars ?? this.bestStars,
+      attempts: attempts ?? this.attempts,
+      passed: passed ?? this.passed,
+      lastPlayedAt: lastPlayedAt ?? this.lastPlayedAt,
+      createdAt: createdAt ?? this.createdAt,
+      updatedAt: updatedAt ?? this.updatedAt,
+      rowid: rowid ?? this.rowid,
+    );
+  }
+
+  @override
+  Map<String, Expression> toColumns(bool nullToAbsent) {
+    final map = <String, Expression>{};
+    if (subjectId.present) {
+      map['subject_id'] = Variable<String>(subjectId.value);
+    }
+    if (stageIndex.present) {
+      map['stage_index'] = Variable<int>(stageIndex.value);
+    }
+    if (bestScore.present) {
+      map['best_score'] = Variable<int>(bestScore.value);
+    }
+    if (bestStars.present) {
+      map['best_stars'] = Variable<int>(bestStars.value);
+    }
+    if (attempts.present) {
+      map['attempts'] = Variable<int>(attempts.value);
+    }
+    if (passed.present) {
+      map['passed'] = Variable<bool>(passed.value);
+    }
+    if (lastPlayedAt.present) {
+      map['last_played_at'] = Variable<DateTime>(lastPlayedAt.value);
+    }
+    if (createdAt.present) {
+      map['created_at'] = Variable<DateTime>(createdAt.value);
+    }
+    if (updatedAt.present) {
+      map['updated_at'] = Variable<DateTime>(updatedAt.value);
+    }
+    if (rowid.present) {
+      map['rowid'] = Variable<int>(rowid.value);
+    }
+    return map;
+  }
+
+  @override
+  String toString() {
+    return (StringBuffer('QuizStageProgressCompanion(')
+          ..write('subjectId: $subjectId, ')
+          ..write('stageIndex: $stageIndex, ')
+          ..write('bestScore: $bestScore, ')
+          ..write('bestStars: $bestStars, ')
+          ..write('attempts: $attempts, ')
+          ..write('passed: $passed, ')
+          ..write('lastPlayedAt: $lastPlayedAt, ')
+          ..write('createdAt: $createdAt, ')
+          ..write('updatedAt: $updatedAt, ')
+          ..write('rowid: $rowid')
+          ..write(')'))
+        .toString();
+  }
+}
+
 class $AiConversationsTable extends AiConversations
     with TableInfo<$AiConversationsTable, AiConversationRow> {
   @override
@@ -19197,6 +19980,17 @@ class $AiConversationsTable extends AiConversations
     ),
     defaultValue: const Constant(false),
   );
+  static const VerificationMeta _projectIdMeta = const VerificationMeta(
+    'projectId',
+  );
+  @override
+  late final GeneratedColumn<String> projectId = GeneratedColumn<String>(
+    'project_id',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
   static const VerificationMeta _searchTextMeta = const VerificationMeta(
     'searchText',
   );
@@ -19237,6 +20031,7 @@ class $AiConversationsTable extends AiConversations
     title,
     model,
     pinned,
+    projectId,
     searchText,
     createdAt,
     updatedAt,
@@ -19276,6 +20071,12 @@ class $AiConversationsTable extends AiConversations
       context.handle(
         _pinnedMeta,
         pinned.isAcceptableOrUnknown(data['pinned']!, _pinnedMeta),
+      );
+    }
+    if (data.containsKey('project_id')) {
+      context.handle(
+        _projectIdMeta,
+        projectId.isAcceptableOrUnknown(data['project_id']!, _projectIdMeta),
       );
     }
     if (data.containsKey('search_text')) {
@@ -19325,6 +20126,10 @@ class $AiConversationsTable extends AiConversations
         DriftSqlType.bool,
         data['${effectivePrefix}pinned'],
       )!,
+      projectId: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}project_id'],
+      ),
       searchText: attachedDatabase.typeMapping.read(
         DriftSqlType.string,
         data['${effectivePrefix}search_text'],
@@ -19355,6 +20160,10 @@ class AiConversationRow extends DataClass
   final String? model;
   final bool pinned;
 
+  /// The project (folder) this conversation belongs to, if any. Null = the
+  /// conversation lives outside every project (plain Recents chat).
+  final String? projectId;
+
   /// Lowercased title (+ optional content) for fast conversation search.
   final String searchText;
   final DateTime createdAt;
@@ -19364,6 +20173,7 @@ class AiConversationRow extends DataClass
     required this.title,
     this.model,
     required this.pinned,
+    this.projectId,
     required this.searchText,
     required this.createdAt,
     required this.updatedAt,
@@ -19377,6 +20187,9 @@ class AiConversationRow extends DataClass
       map['model'] = Variable<String>(model);
     }
     map['pinned'] = Variable<bool>(pinned);
+    if (!nullToAbsent || projectId != null) {
+      map['project_id'] = Variable<String>(projectId);
+    }
     map['search_text'] = Variable<String>(searchText);
     map['created_at'] = Variable<DateTime>(createdAt);
     map['updated_at'] = Variable<DateTime>(updatedAt);
@@ -19391,6 +20204,9 @@ class AiConversationRow extends DataClass
           ? const Value.absent()
           : Value(model),
       pinned: Value(pinned),
+      projectId: projectId == null && nullToAbsent
+          ? const Value.absent()
+          : Value(projectId),
       searchText: Value(searchText),
       createdAt: Value(createdAt),
       updatedAt: Value(updatedAt),
@@ -19407,6 +20223,7 @@ class AiConversationRow extends DataClass
       title: serializer.fromJson<String>(json['title']),
       model: serializer.fromJson<String?>(json['model']),
       pinned: serializer.fromJson<bool>(json['pinned']),
+      projectId: serializer.fromJson<String?>(json['projectId']),
       searchText: serializer.fromJson<String>(json['searchText']),
       createdAt: serializer.fromJson<DateTime>(json['createdAt']),
       updatedAt: serializer.fromJson<DateTime>(json['updatedAt']),
@@ -19420,6 +20237,7 @@ class AiConversationRow extends DataClass
       'title': serializer.toJson<String>(title),
       'model': serializer.toJson<String?>(model),
       'pinned': serializer.toJson<bool>(pinned),
+      'projectId': serializer.toJson<String?>(projectId),
       'searchText': serializer.toJson<String>(searchText),
       'createdAt': serializer.toJson<DateTime>(createdAt),
       'updatedAt': serializer.toJson<DateTime>(updatedAt),
@@ -19431,6 +20249,7 @@ class AiConversationRow extends DataClass
     String? title,
     Value<String?> model = const Value.absent(),
     bool? pinned,
+    Value<String?> projectId = const Value.absent(),
     String? searchText,
     DateTime? createdAt,
     DateTime? updatedAt,
@@ -19439,6 +20258,7 @@ class AiConversationRow extends DataClass
     title: title ?? this.title,
     model: model.present ? model.value : this.model,
     pinned: pinned ?? this.pinned,
+    projectId: projectId.present ? projectId.value : this.projectId,
     searchText: searchText ?? this.searchText,
     createdAt: createdAt ?? this.createdAt,
     updatedAt: updatedAt ?? this.updatedAt,
@@ -19449,6 +20269,7 @@ class AiConversationRow extends DataClass
       title: data.title.present ? data.title.value : this.title,
       model: data.model.present ? data.model.value : this.model,
       pinned: data.pinned.present ? data.pinned.value : this.pinned,
+      projectId: data.projectId.present ? data.projectId.value : this.projectId,
       searchText: data.searchText.present
           ? data.searchText.value
           : this.searchText,
@@ -19464,6 +20285,7 @@ class AiConversationRow extends DataClass
           ..write('title: $title, ')
           ..write('model: $model, ')
           ..write('pinned: $pinned, ')
+          ..write('projectId: $projectId, ')
           ..write('searchText: $searchText, ')
           ..write('createdAt: $createdAt, ')
           ..write('updatedAt: $updatedAt')
@@ -19472,8 +20294,16 @@ class AiConversationRow extends DataClass
   }
 
   @override
-  int get hashCode =>
-      Object.hash(id, title, model, pinned, searchText, createdAt, updatedAt);
+  int get hashCode => Object.hash(
+    id,
+    title,
+    model,
+    pinned,
+    projectId,
+    searchText,
+    createdAt,
+    updatedAt,
+  );
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
@@ -19482,6 +20312,7 @@ class AiConversationRow extends DataClass
           other.title == this.title &&
           other.model == this.model &&
           other.pinned == this.pinned &&
+          other.projectId == this.projectId &&
           other.searchText == this.searchText &&
           other.createdAt == this.createdAt &&
           other.updatedAt == this.updatedAt);
@@ -19492,6 +20323,7 @@ class AiConversationsCompanion extends UpdateCompanion<AiConversationRow> {
   final Value<String> title;
   final Value<String?> model;
   final Value<bool> pinned;
+  final Value<String?> projectId;
   final Value<String> searchText;
   final Value<DateTime> createdAt;
   final Value<DateTime> updatedAt;
@@ -19501,6 +20333,7 @@ class AiConversationsCompanion extends UpdateCompanion<AiConversationRow> {
     this.title = const Value.absent(),
     this.model = const Value.absent(),
     this.pinned = const Value.absent(),
+    this.projectId = const Value.absent(),
     this.searchText = const Value.absent(),
     this.createdAt = const Value.absent(),
     this.updatedAt = const Value.absent(),
@@ -19511,6 +20344,7 @@ class AiConversationsCompanion extends UpdateCompanion<AiConversationRow> {
     required String title,
     this.model = const Value.absent(),
     this.pinned = const Value.absent(),
+    this.projectId = const Value.absent(),
     this.searchText = const Value.absent(),
     required DateTime createdAt,
     required DateTime updatedAt,
@@ -19524,6 +20358,7 @@ class AiConversationsCompanion extends UpdateCompanion<AiConversationRow> {
     Expression<String>? title,
     Expression<String>? model,
     Expression<bool>? pinned,
+    Expression<String>? projectId,
     Expression<String>? searchText,
     Expression<DateTime>? createdAt,
     Expression<DateTime>? updatedAt,
@@ -19534,6 +20369,7 @@ class AiConversationsCompanion extends UpdateCompanion<AiConversationRow> {
       if (title != null) 'title': title,
       if (model != null) 'model': model,
       if (pinned != null) 'pinned': pinned,
+      if (projectId != null) 'project_id': projectId,
       if (searchText != null) 'search_text': searchText,
       if (createdAt != null) 'created_at': createdAt,
       if (updatedAt != null) 'updated_at': updatedAt,
@@ -19546,6 +20382,7 @@ class AiConversationsCompanion extends UpdateCompanion<AiConversationRow> {
     Value<String>? title,
     Value<String?>? model,
     Value<bool>? pinned,
+    Value<String?>? projectId,
     Value<String>? searchText,
     Value<DateTime>? createdAt,
     Value<DateTime>? updatedAt,
@@ -19556,6 +20393,7 @@ class AiConversationsCompanion extends UpdateCompanion<AiConversationRow> {
       title: title ?? this.title,
       model: model ?? this.model,
       pinned: pinned ?? this.pinned,
+      projectId: projectId ?? this.projectId,
       searchText: searchText ?? this.searchText,
       createdAt: createdAt ?? this.createdAt,
       updatedAt: updatedAt ?? this.updatedAt,
@@ -19577,6 +20415,9 @@ class AiConversationsCompanion extends UpdateCompanion<AiConversationRow> {
     }
     if (pinned.present) {
       map['pinned'] = Variable<bool>(pinned.value);
+    }
+    if (projectId.present) {
+      map['project_id'] = Variable<String>(projectId.value);
     }
     if (searchText.present) {
       map['search_text'] = Variable<String>(searchText.value);
@@ -19600,6 +20441,7 @@ class AiConversationsCompanion extends UpdateCompanion<AiConversationRow> {
           ..write('title: $title, ')
           ..write('model: $model, ')
           ..write('pinned: $pinned, ')
+          ..write('projectId: $projectId, ')
           ..write('searchText: $searchText, ')
           ..write('createdAt: $createdAt, ')
           ..write('updatedAt: $updatedAt, ')
@@ -20123,6 +20965,368 @@ class AiMessagesCompanion extends UpdateCompanion<AiMessageRow> {
   }
 }
 
+class $AiProjectsTable extends AiProjects
+    with TableInfo<$AiProjectsTable, AiProjectRow> {
+  @override
+  final GeneratedDatabase attachedDatabase;
+  final String? _alias;
+  $AiProjectsTable(this.attachedDatabase, [this._alias]);
+  static const VerificationMeta _idMeta = const VerificationMeta('id');
+  @override
+  late final GeneratedColumn<String> id = GeneratedColumn<String>(
+    'id',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _nameMeta = const VerificationMeta('name');
+  @override
+  late final GeneratedColumn<String> name = GeneratedColumn<String>(
+    'name',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _searchTextMeta = const VerificationMeta(
+    'searchText',
+  );
+  @override
+  late final GeneratedColumn<String> searchText = GeneratedColumn<String>(
+    'search_text',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+    defaultValue: const Constant(''),
+  );
+  static const VerificationMeta _createdAtMeta = const VerificationMeta(
+    'createdAt',
+  );
+  @override
+  late final GeneratedColumn<DateTime> createdAt = GeneratedColumn<DateTime>(
+    'created_at',
+    aliasedName,
+    false,
+    type: DriftSqlType.dateTime,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _updatedAtMeta = const VerificationMeta(
+    'updatedAt',
+  );
+  @override
+  late final GeneratedColumn<DateTime> updatedAt = GeneratedColumn<DateTime>(
+    'updated_at',
+    aliasedName,
+    false,
+    type: DriftSqlType.dateTime,
+    requiredDuringInsert: true,
+  );
+  @override
+  List<GeneratedColumn> get $columns => [
+    id,
+    name,
+    searchText,
+    createdAt,
+    updatedAt,
+  ];
+  @override
+  String get aliasedName => _alias ?? actualTableName;
+  @override
+  String get actualTableName => $name;
+  static const String $name = 'ai_projects';
+  @override
+  VerificationContext validateIntegrity(
+    Insertable<AiProjectRow> instance, {
+    bool isInserting = false,
+  }) {
+    final context = VerificationContext();
+    final data = instance.toColumns(true);
+    if (data.containsKey('id')) {
+      context.handle(_idMeta, id.isAcceptableOrUnknown(data['id']!, _idMeta));
+    } else if (isInserting) {
+      context.missing(_idMeta);
+    }
+    if (data.containsKey('name')) {
+      context.handle(
+        _nameMeta,
+        name.isAcceptableOrUnknown(data['name']!, _nameMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_nameMeta);
+    }
+    if (data.containsKey('search_text')) {
+      context.handle(
+        _searchTextMeta,
+        searchText.isAcceptableOrUnknown(data['search_text']!, _searchTextMeta),
+      );
+    }
+    if (data.containsKey('created_at')) {
+      context.handle(
+        _createdAtMeta,
+        createdAt.isAcceptableOrUnknown(data['created_at']!, _createdAtMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_createdAtMeta);
+    }
+    if (data.containsKey('updated_at')) {
+      context.handle(
+        _updatedAtMeta,
+        updatedAt.isAcceptableOrUnknown(data['updated_at']!, _updatedAtMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_updatedAtMeta);
+    }
+    return context;
+  }
+
+  @override
+  Set<GeneratedColumn> get $primaryKey => {id};
+  @override
+  AiProjectRow map(Map<String, dynamic> data, {String? tablePrefix}) {
+    final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
+    return AiProjectRow(
+      id: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}id'],
+      )!,
+      name: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}name'],
+      )!,
+      searchText: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}search_text'],
+      )!,
+      createdAt: attachedDatabase.typeMapping.read(
+        DriftSqlType.dateTime,
+        data['${effectivePrefix}created_at'],
+      )!,
+      updatedAt: attachedDatabase.typeMapping.read(
+        DriftSqlType.dateTime,
+        data['${effectivePrefix}updated_at'],
+      )!,
+    );
+  }
+
+  @override
+  $AiProjectsTable createAlias(String alias) {
+    return $AiProjectsTable(attachedDatabase, alias);
+  }
+}
+
+class AiProjectRow extends DataClass implements Insertable<AiProjectRow> {
+  final String id;
+  final String name;
+
+  /// Lowercased name for fast project search.
+  final String searchText;
+  final DateTime createdAt;
+  final DateTime updatedAt;
+  const AiProjectRow({
+    required this.id,
+    required this.name,
+    required this.searchText,
+    required this.createdAt,
+    required this.updatedAt,
+  });
+  @override
+  Map<String, Expression> toColumns(bool nullToAbsent) {
+    final map = <String, Expression>{};
+    map['id'] = Variable<String>(id);
+    map['name'] = Variable<String>(name);
+    map['search_text'] = Variable<String>(searchText);
+    map['created_at'] = Variable<DateTime>(createdAt);
+    map['updated_at'] = Variable<DateTime>(updatedAt);
+    return map;
+  }
+
+  AiProjectsCompanion toCompanion(bool nullToAbsent) {
+    return AiProjectsCompanion(
+      id: Value(id),
+      name: Value(name),
+      searchText: Value(searchText),
+      createdAt: Value(createdAt),
+      updatedAt: Value(updatedAt),
+    );
+  }
+
+  factory AiProjectRow.fromJson(
+    Map<String, dynamic> json, {
+    ValueSerializer? serializer,
+  }) {
+    serializer ??= driftRuntimeOptions.defaultSerializer;
+    return AiProjectRow(
+      id: serializer.fromJson<String>(json['id']),
+      name: serializer.fromJson<String>(json['name']),
+      searchText: serializer.fromJson<String>(json['searchText']),
+      createdAt: serializer.fromJson<DateTime>(json['createdAt']),
+      updatedAt: serializer.fromJson<DateTime>(json['updatedAt']),
+    );
+  }
+  @override
+  Map<String, dynamic> toJson({ValueSerializer? serializer}) {
+    serializer ??= driftRuntimeOptions.defaultSerializer;
+    return <String, dynamic>{
+      'id': serializer.toJson<String>(id),
+      'name': serializer.toJson<String>(name),
+      'searchText': serializer.toJson<String>(searchText),
+      'createdAt': serializer.toJson<DateTime>(createdAt),
+      'updatedAt': serializer.toJson<DateTime>(updatedAt),
+    };
+  }
+
+  AiProjectRow copyWith({
+    String? id,
+    String? name,
+    String? searchText,
+    DateTime? createdAt,
+    DateTime? updatedAt,
+  }) => AiProjectRow(
+    id: id ?? this.id,
+    name: name ?? this.name,
+    searchText: searchText ?? this.searchText,
+    createdAt: createdAt ?? this.createdAt,
+    updatedAt: updatedAt ?? this.updatedAt,
+  );
+  AiProjectRow copyWithCompanion(AiProjectsCompanion data) {
+    return AiProjectRow(
+      id: data.id.present ? data.id.value : this.id,
+      name: data.name.present ? data.name.value : this.name,
+      searchText: data.searchText.present
+          ? data.searchText.value
+          : this.searchText,
+      createdAt: data.createdAt.present ? data.createdAt.value : this.createdAt,
+      updatedAt: data.updatedAt.present ? data.updatedAt.value : this.updatedAt,
+    );
+  }
+
+  @override
+  String toString() {
+    return (StringBuffer('AiProjectRow(')
+          ..write('id: $id, ')
+          ..write('name: $name, ')
+          ..write('searchText: $searchText, ')
+          ..write('createdAt: $createdAt, ')
+          ..write('updatedAt: $updatedAt')
+          ..write(')'))
+        .toString();
+  }
+
+  @override
+  int get hashCode => Object.hash(id, name, searchText, createdAt, updatedAt);
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      (other is AiProjectRow &&
+          other.id == this.id &&
+          other.name == this.name &&
+          other.searchText == this.searchText &&
+          other.createdAt == this.createdAt &&
+          other.updatedAt == this.updatedAt);
+}
+
+class AiProjectsCompanion extends UpdateCompanion<AiProjectRow> {
+  final Value<String> id;
+  final Value<String> name;
+  final Value<String> searchText;
+  final Value<DateTime> createdAt;
+  final Value<DateTime> updatedAt;
+  final Value<int> rowid;
+  const AiProjectsCompanion({
+    this.id = const Value.absent(),
+    this.name = const Value.absent(),
+    this.searchText = const Value.absent(),
+    this.createdAt = const Value.absent(),
+    this.updatedAt = const Value.absent(),
+    this.rowid = const Value.absent(),
+  });
+  AiProjectsCompanion.insert({
+    required String id,
+    required String name,
+    this.searchText = const Value.absent(),
+    required DateTime createdAt,
+    required DateTime updatedAt,
+    this.rowid = const Value.absent(),
+  }) : id = Value(id),
+       name = Value(name),
+       createdAt = Value(createdAt),
+       updatedAt = Value(updatedAt);
+  static Insertable<AiProjectRow> custom({
+    Expression<String>? id,
+    Expression<String>? name,
+    Expression<String>? searchText,
+    Expression<DateTime>? createdAt,
+    Expression<DateTime>? updatedAt,
+    Expression<int>? rowid,
+  }) {
+    return RawValuesInsertable({
+      if (id != null) 'id': id,
+      if (name != null) 'name': name,
+      if (searchText != null) 'search_text': searchText,
+      if (createdAt != null) 'created_at': createdAt,
+      if (updatedAt != null) 'updated_at': updatedAt,
+      if (rowid != null) 'rowid': rowid,
+    });
+  }
+
+  AiProjectsCompanion copyWith({
+    Value<String>? id,
+    Value<String>? name,
+    Value<String>? searchText,
+    Value<DateTime>? createdAt,
+    Value<DateTime>? updatedAt,
+    Value<int>? rowid,
+  }) {
+    return AiProjectsCompanion(
+      id: id ?? this.id,
+      name: name ?? this.name,
+      searchText: searchText ?? this.searchText,
+      createdAt: createdAt ?? this.createdAt,
+      updatedAt: updatedAt ?? this.updatedAt,
+      rowid: rowid ?? this.rowid,
+    );
+  }
+
+  @override
+  Map<String, Expression> toColumns(bool nullToAbsent) {
+    final map = <String, Expression>{};
+    if (id.present) {
+      map['id'] = Variable<String>(id.value);
+    }
+    if (name.present) {
+      map['name'] = Variable<String>(name.value);
+    }
+    if (searchText.present) {
+      map['search_text'] = Variable<String>(searchText.value);
+    }
+    if (createdAt.present) {
+      map['created_at'] = Variable<DateTime>(createdAt.value);
+    }
+    if (updatedAt.present) {
+      map['updated_at'] = Variable<DateTime>(updatedAt.value);
+    }
+    if (rowid.present) {
+      map['rowid'] = Variable<int>(rowid.value);
+    }
+    return map;
+  }
+
+  @override
+  String toString() {
+    return (StringBuffer('AiProjectsCompanion(')
+          ..write('id: $id, ')
+          ..write('name: $name, ')
+          ..write('searchText: $searchText, ')
+          ..write('createdAt: $createdAt, ')
+          ..write('updatedAt: $updatedAt, ')
+          ..write('rowid: $rowid')
+          ..write(')'))
+        .toString();
+  }
+}
+
 abstract class _$AppDatabase extends GeneratedDatabase {
   _$AppDatabase(QueryExecutor e) : super(e);
   $AppDatabaseManager get managers => $AppDatabaseManager(this);
@@ -20188,10 +21392,13 @@ abstract class _$AppDatabase extends GeneratedDatabase {
   );
   late final $QuizSubjectsTable quizSubjects = $QuizSubjectsTable(this);
   late final $QuizTopicsTable quizTopics = $QuizTopicsTable(this);
+  late final $QuizStageProgressTable quizStageProgress =
+      $QuizStageProgressTable(this);
   late final $AiConversationsTable aiConversations = $AiConversationsTable(
     this,
   );
   late final $AiMessagesTable aiMessages = $AiMessagesTable(this);
+  late final $AiProjectsTable aiProjects = $AiProjectsTable(this);
   @override
   Iterable<TableInfo<Table, Object?>> get allTables =>
       allSchemaEntities.whereType<TableInfo<Table, Object?>>();
@@ -20234,8 +21441,10 @@ abstract class _$AppDatabase extends GeneratedDatabase {
     quizSettingsRows,
     quizSubjects,
     quizTopics,
+    quizStageProgress,
     aiConversations,
     aiMessages,
+    aiProjects,
   ];
 }
 
@@ -24813,6 +26022,7 @@ typedef $$StudyTasksTableCreateCompanionBuilder =
       Value<String?> notes,
       Value<int> status,
       Value<int?> durationMinutes,
+      Value<bool> autoScheduled,
       Value<String> kind,
       Value<int> rowid,
     });
@@ -24834,6 +26044,7 @@ typedef $$StudyTasksTableUpdateCompanionBuilder =
       Value<String?> notes,
       Value<int> status,
       Value<int?> durationMinutes,
+      Value<bool> autoScheduled,
       Value<String> kind,
       Value<int> rowid,
     });
@@ -24924,6 +26135,11 @@ class $$StudyTasksTableFilterComposer
 
   ColumnFilters<int> get durationMinutes => $composableBuilder(
     column: $table.durationMinutes,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<bool> get autoScheduled => $composableBuilder(
+    column: $table.autoScheduled,
     builder: (column) => ColumnFilters(column),
   );
 
@@ -25022,6 +26238,11 @@ class $$StudyTasksTableOrderingComposer
     builder: (column) => ColumnOrderings(column),
   );
 
+  ColumnOrderings<bool> get autoScheduled => $composableBuilder(
+    column: $table.autoScheduled,
+    builder: (column) => ColumnOrderings(column),
+  );
+
   ColumnOrderings<String> get kind => $composableBuilder(
     column: $table.kind,
     builder: (column) => ColumnOrderings(column),
@@ -25093,6 +26314,11 @@ class $$StudyTasksTableAnnotationComposer
     builder: (column) => column,
   );
 
+  GeneratedColumn<bool> get autoScheduled => $composableBuilder(
+    column: $table.autoScheduled,
+    builder: (column) => column,
+  );
+
   GeneratedColumn<String> get kind =>
       $composableBuilder(column: $table.kind, builder: (column) => column);
 }
@@ -25144,6 +26370,7 @@ class $$StudyTasksTableTableManager
                 Value<String?> notes = const Value.absent(),
                 Value<int> status = const Value.absent(),
                 Value<int?> durationMinutes = const Value.absent(),
+                Value<bool> autoScheduled = const Value.absent(),
                 Value<String> kind = const Value.absent(),
                 Value<int> rowid = const Value.absent(),
               }) => StudyTasksCompanion(
@@ -25163,6 +26390,7 @@ class $$StudyTasksTableTableManager
                 notes: notes,
                 status: status,
                 durationMinutes: durationMinutes,
+                autoScheduled: autoScheduled,
                 kind: kind,
                 rowid: rowid,
               ),
@@ -25184,6 +26412,7 @@ class $$StudyTasksTableTableManager
                 Value<String?> notes = const Value.absent(),
                 Value<int> status = const Value.absent(),
                 Value<int?> durationMinutes = const Value.absent(),
+                Value<bool> autoScheduled = const Value.absent(),
                 Value<String> kind = const Value.absent(),
                 Value<int> rowid = const Value.absent(),
               }) => StudyTasksCompanion.insert(
@@ -25203,6 +26432,7 @@ class $$StudyTasksTableTableManager
                 notes: notes,
                 status: status,
                 durationMinutes: durationMinutes,
+                autoScheduled: autoScheduled,
                 kind: kind,
                 rowid: rowid,
               ),
@@ -25516,7 +26746,10 @@ typedef $$StudySessionsTableCreateCompanionBuilder =
       required String id,
       required String day,
       required DateTime startedAt,
+      Value<DateTime?> endedAt,
       required int durationMinutes,
+      Value<String?> subject,
+      Value<String?> taskId,
       Value<String> kind,
       required DateTime createdAt,
       Value<int> rowid,
@@ -25526,7 +26759,10 @@ typedef $$StudySessionsTableUpdateCompanionBuilder =
       Value<String> id,
       Value<String> day,
       Value<DateTime> startedAt,
+      Value<DateTime?> endedAt,
       Value<int> durationMinutes,
+      Value<String?> subject,
+      Value<String?> taskId,
       Value<String> kind,
       Value<DateTime> createdAt,
       Value<int> rowid,
@@ -25556,8 +26792,23 @@ class $$StudySessionsTableFilterComposer
     builder: (column) => ColumnFilters(column),
   );
 
+  ColumnFilters<DateTime> get endedAt => $composableBuilder(
+    column: $table.endedAt,
+    builder: (column) => ColumnFilters(column),
+  );
+
   ColumnFilters<int> get durationMinutes => $composableBuilder(
     column: $table.durationMinutes,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get subject => $composableBuilder(
+    column: $table.subject,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get taskId => $composableBuilder(
+    column: $table.taskId,
     builder: (column) => ColumnFilters(column),
   );
 
@@ -25596,8 +26847,23 @@ class $$StudySessionsTableOrderingComposer
     builder: (column) => ColumnOrderings(column),
   );
 
+  ColumnOrderings<DateTime> get endedAt => $composableBuilder(
+    column: $table.endedAt,
+    builder: (column) => ColumnOrderings(column),
+  );
+
   ColumnOrderings<int> get durationMinutes => $composableBuilder(
     column: $table.durationMinutes,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get subject => $composableBuilder(
+    column: $table.subject,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get taskId => $composableBuilder(
+    column: $table.taskId,
     builder: (column) => ColumnOrderings(column),
   );
 
@@ -25630,10 +26896,19 @@ class $$StudySessionsTableAnnotationComposer
   GeneratedColumn<DateTime> get startedAt =>
       $composableBuilder(column: $table.startedAt, builder: (column) => column);
 
+  GeneratedColumn<DateTime> get endedAt =>
+      $composableBuilder(column: $table.endedAt, builder: (column) => column);
+
   GeneratedColumn<int> get durationMinutes => $composableBuilder(
     column: $table.durationMinutes,
     builder: (column) => column,
   );
+
+  GeneratedColumn<String> get subject =>
+      $composableBuilder(column: $table.subject, builder: (column) => column);
+
+  GeneratedColumn<String> get taskId =>
+      $composableBuilder(column: $table.taskId, builder: (column) => column);
 
   GeneratedColumn<String> get kind =>
       $composableBuilder(column: $table.kind, builder: (column) => column);
@@ -25676,7 +26951,10 @@ class $$StudySessionsTableTableManager
                 Value<String> id = const Value.absent(),
                 Value<String> day = const Value.absent(),
                 Value<DateTime> startedAt = const Value.absent(),
+                Value<DateTime?> endedAt = const Value.absent(),
                 Value<int> durationMinutes = const Value.absent(),
+                Value<String?> subject = const Value.absent(),
+                Value<String?> taskId = const Value.absent(),
                 Value<String> kind = const Value.absent(),
                 Value<DateTime> createdAt = const Value.absent(),
                 Value<int> rowid = const Value.absent(),
@@ -25684,7 +26962,10 @@ class $$StudySessionsTableTableManager
                 id: id,
                 day: day,
                 startedAt: startedAt,
+                endedAt: endedAt,
                 durationMinutes: durationMinutes,
+                subject: subject,
+                taskId: taskId,
                 kind: kind,
                 createdAt: createdAt,
                 rowid: rowid,
@@ -25694,7 +26975,10 @@ class $$StudySessionsTableTableManager
                 required String id,
                 required String day,
                 required DateTime startedAt,
+                Value<DateTime?> endedAt = const Value.absent(),
                 required int durationMinutes,
+                Value<String?> subject = const Value.absent(),
+                Value<String?> taskId = const Value.absent(),
                 Value<String> kind = const Value.absent(),
                 required DateTime createdAt,
                 Value<int> rowid = const Value.absent(),
@@ -25702,7 +26986,10 @@ class $$StudySessionsTableTableManager
                 id: id,
                 day: day,
                 startedAt: startedAt,
+                endedAt: endedAt,
                 durationMinutes: durationMinutes,
+                subject: subject,
+                taskId: taskId,
                 kind: kind,
                 createdAt: createdAt,
                 rowid: rowid,
@@ -30102,12 +31389,306 @@ typedef $$QuizTopicsTableProcessedTableManager =
       QuizTopicRow,
       PrefetchHooks Function()
     >;
+typedef $$QuizStageProgressTableCreateCompanionBuilder =
+    QuizStageProgressCompanion Function({
+      required String subjectId,
+      required int stageIndex,
+      Value<int> bestScore,
+      Value<int> bestStars,
+      Value<int> attempts,
+      Value<bool> passed,
+      Value<DateTime?> lastPlayedAt,
+      required DateTime createdAt,
+      required DateTime updatedAt,
+      Value<int> rowid,
+    });
+typedef $$QuizStageProgressTableUpdateCompanionBuilder =
+    QuizStageProgressCompanion Function({
+      Value<String> subjectId,
+      Value<int> stageIndex,
+      Value<int> bestScore,
+      Value<int> bestStars,
+      Value<int> attempts,
+      Value<bool> passed,
+      Value<DateTime?> lastPlayedAt,
+      Value<DateTime> createdAt,
+      Value<DateTime> updatedAt,
+      Value<int> rowid,
+    });
+
+class $$QuizStageProgressTableFilterComposer
+    extends Composer<_$AppDatabase, $QuizStageProgressTable> {
+  $$QuizStageProgressTableFilterComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  ColumnFilters<String> get subjectId => $composableBuilder(
+    column: $table.subjectId,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<int> get stageIndex => $composableBuilder(
+    column: $table.stageIndex,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<int> get bestScore => $composableBuilder(
+    column: $table.bestScore,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<int> get bestStars => $composableBuilder(
+    column: $table.bestStars,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<int> get attempts => $composableBuilder(
+    column: $table.attempts,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<bool> get passed => $composableBuilder(
+    column: $table.passed,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<DateTime> get lastPlayedAt => $composableBuilder(
+    column: $table.lastPlayedAt,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<DateTime> get createdAt => $composableBuilder(
+    column: $table.createdAt,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<DateTime> get updatedAt => $composableBuilder(
+    column: $table.updatedAt,
+    builder: (column) => ColumnFilters(column),
+  );
+}
+
+class $$QuizStageProgressTableOrderingComposer
+    extends Composer<_$AppDatabase, $QuizStageProgressTable> {
+  $$QuizStageProgressTableOrderingComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  ColumnOrderings<String> get subjectId => $composableBuilder(
+    column: $table.subjectId,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<int> get stageIndex => $composableBuilder(
+    column: $table.stageIndex,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<int> get bestScore => $composableBuilder(
+    column: $table.bestScore,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<int> get bestStars => $composableBuilder(
+    column: $table.bestStars,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<int> get attempts => $composableBuilder(
+    column: $table.attempts,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<bool> get passed => $composableBuilder(
+    column: $table.passed,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<DateTime> get lastPlayedAt => $composableBuilder(
+    column: $table.lastPlayedAt,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<DateTime> get createdAt => $composableBuilder(
+    column: $table.createdAt,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<DateTime> get updatedAt => $composableBuilder(
+    column: $table.updatedAt,
+    builder: (column) => ColumnOrderings(column),
+  );
+}
+
+class $$QuizStageProgressTableAnnotationComposer
+    extends Composer<_$AppDatabase, $QuizStageProgressTable> {
+  $$QuizStageProgressTableAnnotationComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  GeneratedColumn<String> get subjectId =>
+      $composableBuilder(column: $table.subjectId, builder: (column) => column);
+
+  GeneratedColumn<int> get stageIndex => $composableBuilder(
+    column: $table.stageIndex,
+    builder: (column) => column,
+  );
+
+  GeneratedColumn<int> get bestScore =>
+      $composableBuilder(column: $table.bestScore, builder: (column) => column);
+
+  GeneratedColumn<int> get bestStars =>
+      $composableBuilder(column: $table.bestStars, builder: (column) => column);
+
+  GeneratedColumn<int> get attempts =>
+      $composableBuilder(column: $table.attempts, builder: (column) => column);
+
+  GeneratedColumn<bool> get passed =>
+      $composableBuilder(column: $table.passed, builder: (column) => column);
+
+  GeneratedColumn<DateTime> get lastPlayedAt => $composableBuilder(
+    column: $table.lastPlayedAt,
+    builder: (column) => column,
+  );
+
+  GeneratedColumn<DateTime> get createdAt =>
+      $composableBuilder(column: $table.createdAt, builder: (column) => column);
+
+  GeneratedColumn<DateTime> get updatedAt =>
+      $composableBuilder(column: $table.updatedAt, builder: (column) => column);
+}
+
+class $$QuizStageProgressTableTableManager
+    extends
+        RootTableManager<
+          _$AppDatabase,
+          $QuizStageProgressTable,
+          QuizStageProgressRow,
+          $$QuizStageProgressTableFilterComposer,
+          $$QuizStageProgressTableOrderingComposer,
+          $$QuizStageProgressTableAnnotationComposer,
+          $$QuizStageProgressTableCreateCompanionBuilder,
+          $$QuizStageProgressTableUpdateCompanionBuilder,
+          (
+            QuizStageProgressRow,
+            BaseReferences<
+              _$AppDatabase,
+              $QuizStageProgressTable,
+              QuizStageProgressRow
+            >,
+          ),
+          QuizStageProgressRow,
+          PrefetchHooks Function()
+        > {
+  $$QuizStageProgressTableTableManager(
+    _$AppDatabase db,
+    $QuizStageProgressTable table,
+  ) : super(
+        TableManagerState(
+          db: db,
+          table: table,
+          createFilteringComposer: () =>
+              $$QuizStageProgressTableFilterComposer($db: db, $table: table),
+          createOrderingComposer: () =>
+              $$QuizStageProgressTableOrderingComposer($db: db, $table: table),
+          createComputedFieldComposer: () =>
+              $$QuizStageProgressTableAnnotationComposer(
+                $db: db,
+                $table: table,
+              ),
+          updateCompanionCallback:
+              ({
+                Value<String> subjectId = const Value.absent(),
+                Value<int> stageIndex = const Value.absent(),
+                Value<int> bestScore = const Value.absent(),
+                Value<int> bestStars = const Value.absent(),
+                Value<int> attempts = const Value.absent(),
+                Value<bool> passed = const Value.absent(),
+                Value<DateTime?> lastPlayedAt = const Value.absent(),
+                Value<DateTime> createdAt = const Value.absent(),
+                Value<DateTime> updatedAt = const Value.absent(),
+                Value<int> rowid = const Value.absent(),
+              }) => QuizStageProgressCompanion(
+                subjectId: subjectId,
+                stageIndex: stageIndex,
+                bestScore: bestScore,
+                bestStars: bestStars,
+                attempts: attempts,
+                passed: passed,
+                lastPlayedAt: lastPlayedAt,
+                createdAt: createdAt,
+                updatedAt: updatedAt,
+                rowid: rowid,
+              ),
+          createCompanionCallback:
+              ({
+                required String subjectId,
+                required int stageIndex,
+                Value<int> bestScore = const Value.absent(),
+                Value<int> bestStars = const Value.absent(),
+                Value<int> attempts = const Value.absent(),
+                Value<bool> passed = const Value.absent(),
+                Value<DateTime?> lastPlayedAt = const Value.absent(),
+                required DateTime createdAt,
+                required DateTime updatedAt,
+                Value<int> rowid = const Value.absent(),
+              }) => QuizStageProgressCompanion.insert(
+                subjectId: subjectId,
+                stageIndex: stageIndex,
+                bestScore: bestScore,
+                bestStars: bestStars,
+                attempts: attempts,
+                passed: passed,
+                lastPlayedAt: lastPlayedAt,
+                createdAt: createdAt,
+                updatedAt: updatedAt,
+                rowid: rowid,
+              ),
+          withReferenceMapper: (p0) => p0
+              .map((e) => (e.readTable(table), BaseReferences(db, table, e)))
+              .toList(),
+          prefetchHooksCallback: null,
+        ),
+      );
+}
+
+typedef $$QuizStageProgressTableProcessedTableManager =
+    ProcessedTableManager<
+      _$AppDatabase,
+      $QuizStageProgressTable,
+      QuizStageProgressRow,
+      $$QuizStageProgressTableFilterComposer,
+      $$QuizStageProgressTableOrderingComposer,
+      $$QuizStageProgressTableAnnotationComposer,
+      $$QuizStageProgressTableCreateCompanionBuilder,
+      $$QuizStageProgressTableUpdateCompanionBuilder,
+      (
+        QuizStageProgressRow,
+        BaseReferences<
+          _$AppDatabase,
+          $QuizStageProgressTable,
+          QuizStageProgressRow
+        >,
+      ),
+      QuizStageProgressRow,
+      PrefetchHooks Function()
+    >;
 typedef $$AiConversationsTableCreateCompanionBuilder =
     AiConversationsCompanion Function({
       required String id,
       required String title,
       Value<String?> model,
       Value<bool> pinned,
+      Value<String?> projectId,
       Value<String> searchText,
       required DateTime createdAt,
       required DateTime updatedAt,
@@ -30119,6 +31700,7 @@ typedef $$AiConversationsTableUpdateCompanionBuilder =
       Value<String> title,
       Value<String?> model,
       Value<bool> pinned,
+      Value<String?> projectId,
       Value<String> searchText,
       Value<DateTime> createdAt,
       Value<DateTime> updatedAt,
@@ -30151,6 +31733,11 @@ class $$AiConversationsTableFilterComposer
 
   ColumnFilters<bool> get pinned => $composableBuilder(
     column: $table.pinned,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get projectId => $composableBuilder(
+    column: $table.projectId,
     builder: (column) => ColumnFilters(column),
   );
 
@@ -30199,6 +31786,11 @@ class $$AiConversationsTableOrderingComposer
     builder: (column) => ColumnOrderings(column),
   );
 
+  ColumnOrderings<String> get projectId => $composableBuilder(
+    column: $table.projectId,
+    builder: (column) => ColumnOrderings(column),
+  );
+
   ColumnOrderings<String> get searchText => $composableBuilder(
     column: $table.searchText,
     builder: (column) => ColumnOrderings(column),
@@ -30235,6 +31827,9 @@ class $$AiConversationsTableAnnotationComposer
 
   GeneratedColumn<bool> get pinned =>
       $composableBuilder(column: $table.pinned, builder: (column) => column);
+
+  GeneratedColumn<String> get projectId =>
+      $composableBuilder(column: $table.projectId, builder: (column) => column);
 
   GeneratedColumn<String> get searchText => $composableBuilder(
     column: $table.searchText,
@@ -30289,6 +31884,7 @@ class $$AiConversationsTableTableManager
                 Value<String> title = const Value.absent(),
                 Value<String?> model = const Value.absent(),
                 Value<bool> pinned = const Value.absent(),
+                Value<String?> projectId = const Value.absent(),
                 Value<String> searchText = const Value.absent(),
                 Value<DateTime> createdAt = const Value.absent(),
                 Value<DateTime> updatedAt = const Value.absent(),
@@ -30298,6 +31894,7 @@ class $$AiConversationsTableTableManager
                 title: title,
                 model: model,
                 pinned: pinned,
+                projectId: projectId,
                 searchText: searchText,
                 createdAt: createdAt,
                 updatedAt: updatedAt,
@@ -30309,6 +31906,7 @@ class $$AiConversationsTableTableManager
                 required String title,
                 Value<String?> model = const Value.absent(),
                 Value<bool> pinned = const Value.absent(),
+                Value<String?> projectId = const Value.absent(),
                 Value<String> searchText = const Value.absent(),
                 required DateTime createdAt,
                 required DateTime updatedAt,
@@ -30318,6 +31916,7 @@ class $$AiConversationsTableTableManager
                 title: title,
                 model: model,
                 pinned: pinned,
+                projectId: projectId,
                 searchText: searchText,
                 createdAt: createdAt,
                 updatedAt: updatedAt,
@@ -30609,6 +32208,208 @@ typedef $$AiMessagesTableProcessedTableManager =
       AiMessageRow,
       PrefetchHooks Function()
     >;
+typedef $$AiProjectsTableCreateCompanionBuilder =
+    AiProjectsCompanion Function({
+      required String id,
+      required String name,
+      Value<String> searchText,
+      required DateTime createdAt,
+      required DateTime updatedAt,
+      Value<int> rowid,
+    });
+typedef $$AiProjectsTableUpdateCompanionBuilder =
+    AiProjectsCompanion Function({
+      Value<String> id,
+      Value<String> name,
+      Value<String> searchText,
+      Value<DateTime> createdAt,
+      Value<DateTime> updatedAt,
+      Value<int> rowid,
+    });
+
+class $$AiProjectsTableFilterComposer
+    extends Composer<_$AppDatabase, $AiProjectsTable> {
+  $$AiProjectsTableFilterComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  ColumnFilters<String> get id => $composableBuilder(
+    column: $table.id,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get name => $composableBuilder(
+    column: $table.name,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get searchText => $composableBuilder(
+    column: $table.searchText,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<DateTime> get createdAt => $composableBuilder(
+    column: $table.createdAt,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<DateTime> get updatedAt => $composableBuilder(
+    column: $table.updatedAt,
+    builder: (column) => ColumnFilters(column),
+  );
+}
+
+class $$AiProjectsTableOrderingComposer
+    extends Composer<_$AppDatabase, $AiProjectsTable> {
+  $$AiProjectsTableOrderingComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  ColumnOrderings<String> get id => $composableBuilder(
+    column: $table.id,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get name => $composableBuilder(
+    column: $table.name,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get searchText => $composableBuilder(
+    column: $table.searchText,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<DateTime> get createdAt => $composableBuilder(
+    column: $table.createdAt,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<DateTime> get updatedAt => $composableBuilder(
+    column: $table.updatedAt,
+    builder: (column) => ColumnOrderings(column),
+  );
+}
+
+class $$AiProjectsTableAnnotationComposer
+    extends Composer<_$AppDatabase, $AiProjectsTable> {
+  $$AiProjectsTableAnnotationComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  GeneratedColumn<String> get id =>
+      $composableBuilder(column: $table.id, builder: (column) => column);
+
+  GeneratedColumn<String> get name =>
+      $composableBuilder(column: $table.name, builder: (column) => column);
+
+  GeneratedColumn<String> get searchText => $composableBuilder(
+    column: $table.searchText,
+    builder: (column) => column,
+  );
+
+  GeneratedColumn<DateTime> get createdAt =>
+      $composableBuilder(column: $table.createdAt, builder: (column) => column);
+
+  GeneratedColumn<DateTime> get updatedAt =>
+      $composableBuilder(column: $table.updatedAt, builder: (column) => column);
+}
+
+class $$AiProjectsTableTableManager
+    extends
+        RootTableManager<
+          _$AppDatabase,
+          $AiProjectsTable,
+          AiProjectRow,
+          $$AiProjectsTableFilterComposer,
+          $$AiProjectsTableOrderingComposer,
+          $$AiProjectsTableAnnotationComposer,
+          $$AiProjectsTableCreateCompanionBuilder,
+          $$AiProjectsTableUpdateCompanionBuilder,
+          (
+            AiProjectRow,
+            BaseReferences<_$AppDatabase, $AiProjectsTable, AiProjectRow>,
+          ),
+          AiProjectRow,
+          PrefetchHooks Function()
+        > {
+  $$AiProjectsTableTableManager(_$AppDatabase db, $AiProjectsTable table)
+    : super(
+        TableManagerState(
+          db: db,
+          table: table,
+          createFilteringComposer: () =>
+              $$AiProjectsTableFilterComposer($db: db, $table: table),
+          createOrderingComposer: () =>
+              $$AiProjectsTableOrderingComposer($db: db, $table: table),
+          createComputedFieldComposer: () =>
+              $$AiProjectsTableAnnotationComposer($db: db, $table: table),
+          updateCompanionCallback:
+              ({
+                Value<String> id = const Value.absent(),
+                Value<String> name = const Value.absent(),
+                Value<String> searchText = const Value.absent(),
+                Value<DateTime> createdAt = const Value.absent(),
+                Value<DateTime> updatedAt = const Value.absent(),
+                Value<int> rowid = const Value.absent(),
+              }) => AiProjectsCompanion(
+                id: id,
+                name: name,
+                searchText: searchText,
+                createdAt: createdAt,
+                updatedAt: updatedAt,
+                rowid: rowid,
+              ),
+          createCompanionCallback:
+              ({
+                required String id,
+                required String name,
+                Value<String> searchText = const Value.absent(),
+                required DateTime createdAt,
+                required DateTime updatedAt,
+                Value<int> rowid = const Value.absent(),
+              }) => AiProjectsCompanion.insert(
+                id: id,
+                name: name,
+                searchText: searchText,
+                createdAt: createdAt,
+                updatedAt: updatedAt,
+                rowid: rowid,
+              ),
+          withReferenceMapper: (p0) => p0
+              .map((e) => (e.readTable(table), BaseReferences(db, table, e)))
+              .toList(),
+          prefetchHooksCallback: null,
+        ),
+      );
+}
+
+typedef $$AiProjectsTableProcessedTableManager =
+    ProcessedTableManager<
+      _$AppDatabase,
+      $AiProjectsTable,
+      AiProjectRow,
+      $$AiProjectsTableFilterComposer,
+      $$AiProjectsTableOrderingComposer,
+      $$AiProjectsTableAnnotationComposer,
+      $$AiProjectsTableCreateCompanionBuilder,
+      $$AiProjectsTableUpdateCompanionBuilder,
+      (
+        AiProjectRow,
+        BaseReferences<_$AppDatabase, $AiProjectsTable, AiProjectRow>,
+      ),
+      AiProjectRow,
+      PrefetchHooks Function()
+    >;
 
 class $AppDatabaseManager {
   final _$AppDatabase _db;
@@ -30690,8 +32491,12 @@ class $AppDatabaseManager {
       $$QuizSubjectsTableTableManager(_db, _db.quizSubjects);
   $$QuizTopicsTableTableManager get quizTopics =>
       $$QuizTopicsTableTableManager(_db, _db.quizTopics);
+  $$QuizStageProgressTableTableManager get quizStageProgress =>
+      $$QuizStageProgressTableTableManager(_db, _db.quizStageProgress);
   $$AiConversationsTableTableManager get aiConversations =>
       $$AiConversationsTableTableManager(_db, _db.aiConversations);
   $$AiMessagesTableTableManager get aiMessages =>
       $$AiMessagesTableTableManager(_db, _db.aiMessages);
+  $$AiProjectsTableTableManager get aiProjects =>
+      $$AiProjectsTableTableManager(_db, _db.aiProjects);
 }

@@ -1,0 +1,1833 @@
+{
+  "bank": {
+    "name": "History",
+    "subject": "Pakistan Affairs",
+    "topic": "History",
+    "description": "Key events of the Pakistan Movement and the history of Pakistan, from the Aligarh movement to the present.",
+    "tags": "css,pms,fpsc,pakistan-affairs,history",
+    "version": "1.0",
+    "id": "pakistan_affairs_history"
+  },
+  "questions": [
+    {
+      "type": "mcq",
+      "prompt": "When was the Pakistan Resolution adopted?",
+      "options": [
+        "23 March 1940",
+        "14 August 1947",
+        "12 March 1949",
+        "23 March 1956"
+      ],
+      "answer": 0,
+      "explanation": "The Lahore Resolution (later renamed Pakistan Resolution) was adopted on 23 March 1940 at Minto Park, Lahore.",
+      "difficulty": "easy",
+      "id": "q01"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who moved the Pakistan Resolution at the Lahore session of the Muslim League in 1940?",
+      "options": [
+        "Liaquat Ali Khan",
+        "A. K. Fazlul Huq",
+        "Choudhry Rahmat Ali",
+        "Muhammad Ali Jinnah"
+      ],
+      "answer": 1,
+      "explanation": "A. K. Fazlul Huq, the Prime Minister of Bengal, formally moved the Lahore (Pakistan) Resolution.",
+      "difficulty": "medium",
+      "id": "q02"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who coined the name 'Pakistan'?",
+      "options": [
+        "Allama Iqbal",
+        "Sir Syed Ahmad Khan",
+        "Choudhry Rahmat Ali",
+        "Muhammad Ali Jinnah"
+      ],
+      "answer": 2,
+      "explanation": "Choudhry Rahmat Ali coined the name 'Pakistan' in his 1933 pamphlet 'Now or Never'.",
+      "difficulty": "easy",
+      "id": "q03"
+    },
+    {
+      "type": "mcq",
+      "prompt": "In which address did Allama Iqbal present the idea of a separate Muslim state in the subcontinent?",
+      "options": [
+        "Aligarh, 1916",
+        "Allahabad, 1930",
+        "Lahore, 1940",
+        "Delhi, 1929"
+      ],
+      "answer": 1,
+      "explanation": "Allama Iqbal delivered his famous Allahabad Address in 1930, proposing a separate homeland for the Muslims of the subcontinent.",
+      "difficulty": "medium",
+      "id": "q04"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who was the first Governor-General of Pakistan?",
+      "options": [
+        "Liaquat Ali Khan",
+        "Khawaja Nazimuddin",
+        "Muhammad Ali Jinnah",
+        "Iskander Mirza"
+      ],
+      "answer": 2,
+      "explanation": "Quaid-e-Azam Muhammad Ali Jinnah became the first Governor-General of Pakistan on 15 August 1947.",
+      "difficulty": "easy",
+      "id": "q05"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who was the first Prime Minister of Pakistan?",
+      "options": [
+        "Khawaja Nazimuddin",
+        "Liaquat Ali Khan",
+        "Muhammad Ali Bogra",
+        "Chaudhry Muhammad Ali"
+      ],
+      "answer": 1,
+      "explanation": "Liaquat Ali Khan was the first Prime Minister of Pakistan (1947-1951).",
+      "difficulty": "easy",
+      "id": "q06"
+    },
+    {
+      "type": "mcq",
+      "prompt": "When was the Objectives Resolution passed by the Constituent Assembly?",
+      "options": [
+        "14 August 1947",
+        "23 March 1940",
+        "12 March 1949",
+        "23 March 1956"
+      ],
+      "answer": 2,
+      "explanation": "The Objectives Resolution, which laid the foundation of the constitution, was passed on 12 March 1949.",
+      "difficulty": "medium",
+      "id": "q07"
+    },
+    {
+      "type": "mcq",
+      "prompt": "When was the first Constitution of Pakistan promulgated?",
+      "options": [
+        "1947",
+        "1956",
+        "1962",
+        "1973"
+      ],
+      "answer": 1,
+      "explanation": "The first Constitution of Pakistan was promulgated on 23 March 1956.",
+      "difficulty": "easy",
+      "id": "q08"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who was the first President of Pakistan?",
+      "options": [
+        "Ayub Khan",
+        "Iskander Mirza",
+        "Yahya Khan",
+        "Zulfikar Ali Bhutto"
+      ],
+      "answer": 1,
+      "explanation": "Iskander Mirza became the first President of Pakistan when the 1956 Constitution came into effect; he was deposed in the 1958 martial law.",
+      "difficulty": "medium",
+      "id": "q09"
+    },
+    {
+      "type": "mcq",
+      "prompt": "When was the first martial law imposed in Pakistan, and by whom?",
+      "options": [
+        "1958, by Ayub Khan",
+        "1969, by Yahya Khan",
+        "1977, by Zia-ul-Haq",
+        "1999, by Pervez Musharraf"
+      ],
+      "answer": 0,
+      "explanation": "General Ayub Khan imposed the first martial law on 7 October 1958.",
+      "difficulty": "medium",
+      "id": "q10"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which Constitution made Pakistan a parliamentary federal republic with a Prime Minister as head of government?",
+      "options": [
+        "1956",
+        "1962",
+        "1973",
+        "1985"
+      ],
+      "answer": 2,
+      "explanation": "The 1973 Constitution, promulgated on 14 August 1973 under Zulfikar Ali Bhutto, established the parliamentary system.",
+      "difficulty": "medium",
+      "id": "q11"
+    },
+    {
+      "type": "mcq",
+      "prompt": "When was the Tashkent Declaration signed after the 1965 Indo-Pakistan war?",
+      "options": [
+        "1965",
+        "1966",
+        "1972",
+        "1999"
+      ],
+      "answer": 1,
+      "explanation": "The Tashkent Declaration was signed in January 1966 between Ayub Khan and Lal Bahadur Shastri, with Soviet mediation.",
+      "difficulty": "medium",
+      "id": "q12"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Between whom was the Simla Agreement of 1972 signed?",
+      "options": [
+        "Ayub Khan and Nehru",
+        "Bhutto and Indira Gandhi",
+        "Yahya Khan and Shastri",
+        "Nawaz Sharif and Vajpayee"
+      ],
+      "answer": 1,
+      "explanation": "Zulfikar Ali Bhutto and Indira Gandhi signed the Simla Agreement on 2 July 1972, after the 1971 war.",
+      "difficulty": "easy",
+      "id": "q13"
+    },
+    {
+      "type": "mcq",
+      "prompt": "In which year did East Pakistan separate and become Bangladesh?",
+      "options": [
+        "1947",
+        "1965",
+        "1971",
+        "1990"
+      ],
+      "answer": 2,
+      "explanation": "East Pakistan separated on 16 December 1971, when Pakistan's forces surrendered in Dhaka.",
+      "difficulty": "easy",
+      "id": "q14"
+    },
+    {
+      "type": "mcq",
+      "prompt": "When did the 1973 Constitution come into effect?",
+      "options": [
+        "23 March 1973",
+        "14 August 1973",
+        "25 December 1973",
+        "1 January 1974"
+      ],
+      "answer": 1,
+      "explanation": "The 1973 Constitution was enforced on 14 August 1973.",
+      "difficulty": "medium",
+      "id": "q15"
+    },
+    {
+      "type": "mcq",
+      "prompt": "In which year and city was the All-India Muslim League founded?",
+      "options": [
+        "1906, Dhaka",
+        "1916, Lucknow",
+        "1920, Aligarh",
+        "1940, Lahore"
+      ],
+      "answer": 0,
+      "explanation": "The All-India Muslim League was founded on 30 December 1906 at a meeting in Dhaka.",
+      "difficulty": "medium",
+      "id": "q16"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which British commission of 1928, with no Indian member, was boycotted by Indian parties?",
+      "options": [
+        "Hunter Commission",
+        "Simon Commission",
+        "Rowlatt Commission",
+        "Radcliffe Commission"
+      ],
+      "answer": 1,
+      "explanation": "The all-white Simon Commission (1928) was boycotted across India with the slogan 'Simon Go Back'.",
+      "difficulty": "medium",
+      "id": "q17"
+    },
+    {
+      "type": "mcq",
+      "prompt": "When did Quaid-e-Azam present his famous Fourteen Points?",
+      "options": [
+        "1916",
+        "1928",
+        "1929",
+        "1940"
+      ],
+      "answer": 2,
+      "explanation": "Jinnah presented his Fourteen Points in 1929 in response to the Nehru Report.",
+      "difficulty": "medium",
+      "id": "q18"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The boundary line drawn between India and Pakistan at partition in 1947 is named after which person?",
+      "options": [
+        "Cyril Radcliffe",
+        "Louis Mountbatten",
+        "Stafford Cripps",
+        "Pethick-Lawrence"
+      ],
+      "answer": 0,
+      "explanation": "The Radcliffe Line was drawn by Sir Cyril Radcliffe to demarcate the India-Pakistan border in August 1947.",
+      "difficulty": "easy",
+      "id": "q19"
+    },
+    {
+      "type": "mcq",
+      "prompt": "In which year was the 'One Unit' scheme merging the provinces of West Pakistan introduced?",
+      "options": [
+        "1951",
+        "1955",
+        "1962",
+        "1970"
+      ],
+      "answer": 1,
+      "explanation": "The One Unit scheme was introduced in 1955 and remained in force until it was dissolved in 1970.",
+      "difficulty": "hard",
+      "id": "q20"
+    },
+    {
+      "type": "mcq",
+      "prompt": "When did Pakistan conduct its first nuclear tests at Chagai?",
+      "options": [
+        "1974",
+        "28 May 1998",
+        "11 May 1998",
+        "2002"
+      ],
+      "answer": 1,
+      "explanation": "Pakistan carried out five nuclear tests on 28 May 1998 at Chagai, Balochistan, followed by a sixth on 30 May.",
+      "difficulty": "easy",
+      "id": "q21"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Lahore Declaration of February 1999 was signed between which two leaders?",
+      "options": [
+        "Bhutto and Gandhi",
+        "Nawaz Sharif and Vajpayee",
+        "Musharraf and Singh",
+        "Zia and Desai"
+      ],
+      "answer": 1,
+      "explanation": "Prime Minister Nawaz Sharif and Indian PM Atal Bihari Vajpayee signed the Lahore Declaration in February 1999.",
+      "difficulty": "hard",
+      "id": "q22"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who was the first woman prime minister of Pakistan?",
+      "options": [
+        "Benazir Bhutto",
+        "Fatima Jinnah",
+        "Hina Rabbani Khar",
+        "Sharmila Farooqi"
+      ],
+      "answer": 0,
+      "explanation": "Benazir Bhutto became the first woman prime minister of Pakistan in 1988.",
+      "difficulty": "easy",
+      "id": "q23"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The 1962 Constitution introduced which system of government?",
+      "options": [
+        "A presidential system with an indirectly elected president",
+        "A parliamentary system",
+        "A confederation",
+        "A monarchy"
+      ],
+      "answer": 0,
+      "explanation": "Ayub Khan's 1962 Constitution established a strong presidential system.",
+      "difficulty": "medium",
+      "id": "q24"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who was the Chief Martial Law Administrator who imposed the second martial law in 1969?",
+      "options": [
+        "Yahya Khan",
+        "Ayub Khan",
+        "Zia-ul-Haq",
+        "Musharraf"
+      ],
+      "answer": 0,
+      "explanation": "General Yahya Khan imposed martial law in March 1969.",
+      "difficulty": "medium",
+      "id": "q25"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The 1970 general elections were won by which party in East Pakistan?",
+      "options": [
+        "Awami League",
+        "PPP",
+        "Muslim League",
+        "Jamaat-e-Islami"
+      ],
+      "answer": 0,
+      "explanation": "Sheikh Mujibur Rahman's Awami League won a majority of seats in 1970, mostly in East Pakistan.",
+      "difficulty": "easy",
+      "id": "q26"
+    },
+    {
+      "type": "mcq",
+      "prompt": "When was the 1973 Constitution adopted by the National Assembly?",
+      "options": [
+        "April 1973",
+        "August 1973",
+        "March 1973",
+        "December 1973"
+      ],
+      "answer": 0,
+      "explanation": "The National Assembly unanimously approved the 1973 Constitution on 10 April 1973.",
+      "difficulty": "medium",
+      "id": "q27"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Pakistan became the world's how many-th nuclear power in 1998?",
+      "options": [
+        "Seventh",
+        "Fifth",
+        "Ninth",
+        "Third"
+      ],
+      "answer": 0,
+      "explanation": "After the 1998 Chagai tests, Pakistan became the seventh nuclear weapons state.",
+      "difficulty": "medium",
+      "id": "q28"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who became the first President of Pakistan to be elected directly by the people?",
+      "options": [
+        "General Pervez Musharraf",
+        "Ayub Khan",
+        "Asif Ali Zardari",
+        "Iskander Mirza"
+      ],
+      "answer": 0,
+      "explanation": "Musharraf won the 2002 referendum and 2004 presidential vote; Ayub Khan also used a referendum in 1960 and was elected by the Electoral College in 1965.",
+      "difficulty": "hard",
+      "id": "q29"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The name 'Pakistan' was first used in which publication?",
+      "options": [
+        "'Now or Never' pamphlet (1933)",
+        "The Dawn newspaper",
+        "The Muslim League manifesto",
+        "The Lahore Resolution"
+      ],
+      "answer": 0,
+      "explanation": "Choudhry Rahmat Ali coined 'Pakistan' in the 1933 pamphlet 'Now or Never'.",
+      "difficulty": "easy",
+      "id": "q30"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The 'Kamal Ataturk' reforms influenced which Pakistani leader?",
+      "options": [
+        "Muhammad Ali Jinnah (his secular ideals)",
+        "Ayub Khan",
+        "Zulfikar Ali Bhutto",
+        "Allama Iqbal"
+      ],
+      "answer": 0,
+      "explanation": "Jinnah admired Ataturk's modernization, which influenced his vision for Pakistan.",
+      "difficulty": "hard",
+      "id": "q31"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who was the last Governor-General of Pakistan?",
+      "options": [
+        "Iskander Mirza",
+        "Muhammad Ali Jinnah",
+        "Ghulam Muhammad",
+        "Khawaja Nazimuddin"
+      ],
+      "answer": 0,
+      "explanation": "Iskander Mirza was the last Governor-General before becoming the first President in 1956.",
+      "difficulty": "medium",
+      "id": "q32"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which Governor-General dismissed the first Constituent Assembly in 1954?",
+      "options": [
+        "Ghulam Muhammad",
+        "Khawaja Nazimuddin",
+        "Iskander Mirza",
+        "Jinnah"
+      ],
+      "answer": 0,
+      "explanation": "Ghulam Muhammad dismissed the first Constituent Assembly in 1954.",
+      "difficulty": "hard",
+      "id": "q33"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The 'Objective Resolution' was moved in the Constituent Assembly by?",
+      "options": [
+        "Liaquat Ali Khan",
+        "Jinnah",
+        "Chaudhry Muhammad Ali",
+        "Iskander Mirza"
+      ],
+      "answer": 0,
+      "explanation": "Liaquat Ali Khan moved the Objectives Resolution on 7 March 1949.",
+      "difficulty": "medium",
+      "id": "q34"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The 'Ayub Khan era' is often called?",
+      "options": [
+        "The Decade of Development",
+        "The Decade of Crisis",
+        "The Golden Years",
+        "The Era of Democracy"
+      ],
+      "answer": 0,
+      "explanation": "Ayub's 1960s rule promoted rapid industrialization and is called the Decade of Development.",
+      "difficulty": "medium",
+      "id": "q35"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which party won the 1970 general elections in West Pakistan?",
+      "options": [
+        "Pakistan Peoples Party (PPP)",
+        "Awami League",
+        "Muslim League",
+        "Jamaat-e-Islami"
+      ],
+      "answer": 0,
+      "explanation": "PPP led by Zulfikar Ali Bhutto won the majority of West Pakistan seats in 1970.",
+      "difficulty": "easy",
+      "id": "q36"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Zulfikar Ali Bhutto served as which of the following first?",
+      "options": [
+        "Foreign Minister under Ayub",
+        "President",
+        "Prime Minister",
+        "Army Chief"
+      ],
+      "answer": 0,
+      "explanation": "Bhutto was Foreign Minister (1963-66), then President (1971-73), then PM (1973-77).",
+      "difficulty": "medium",
+      "id": "q37"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The 1973 Constitution was drafted under whose leadership?",
+      "options": [
+        "Zulfikar Ali Bhutto",
+        "Ayub Khan",
+        "Yahya Khan",
+        "Nawaz Sharif"
+      ],
+      "answer": 0,
+      "explanation": "Bhutto's government and the 1972 constitutional committee drafted the 1973 Constitution.",
+      "difficulty": "easy",
+      "id": "q38"
+    },
+    {
+      "type": "mcq",
+      "prompt": "General Zia-ul-Haq imposed martial law in which year?",
+      "options": [
+        "1977",
+        "1971",
+        "1985",
+        "1969"
+      ],
+      "answer": 0,
+      "explanation": "Zia imposed martial law on 5 July 1977, overthrowing Bhutto.",
+      "difficulty": "easy",
+      "id": "q39"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Zia-ul-Haq held the 'Islamization' and held a referendum in which year?",
+      "options": [
+        "1984",
+        "1980",
+        "1988",
+        "1979"
+      ],
+      "answer": 0,
+      "explanation": "Zia's 1984 referendum endorsed his Islamization agenda and presidency.",
+      "difficulty": "hard",
+      "id": "q40"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who became the first directly elected Prime Minister in 1985?",
+      "options": [
+        "Muhammad Khan Junejo",
+        "Nawaz Sharif",
+        "Benazir Bhutto",
+        "Ghulam Mustafa Jatoi"
+      ],
+      "answer": 0,
+      "explanation": "Junejo was elected PM in the 1985 non-party elections under Zia.",
+      "difficulty": "hard",
+      "id": "q41"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Benazir Bhutto became PM for the first time in which year?",
+      "options": [
+        "1988",
+        "1990",
+        "1993",
+        "1996"
+      ],
+      "answer": 0,
+      "explanation": "Benazir Bhutto became PM in December 1988 after Zia's death.",
+      "difficulty": "easy",
+      "id": "q42"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The 'Kalabagh Dam' controversy primarily involves?",
+      "options": [
+        "Water distribution disputes among provinces",
+        "Nuclear tests",
+        "Trade agreements",
+        "Border disputes"
+      ],
+      "answer": 0,
+      "explanation": "The proposed Kalabagh Dam has faced provincial opposition over water shares.",
+      "difficulty": "medium",
+      "id": "q43"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who signed the 'Lahore Declaration' in 1999?",
+      "options": [
+        "Nawaz Sharif and Atal Bihari Vajpayee",
+        "Bhutto and Gandhi",
+        "Musharraf and Singh",
+        "Zia and Desai"
+      ],
+      "answer": 0,
+      "explanation": "Sharif and Vajpayee signed the Lahore Declaration in February 1999.",
+      "difficulty": "medium",
+      "id": "q44"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The 'Kargil Conflict' of 1999 took place in which region?",
+      "options": [
+        "Kashmir (Kargil sector)",
+        "Punjab border",
+        "Balochistan",
+        "Sindh"
+      ],
+      "answer": 0,
+      "explanation": "The Kargil conflict occurred along the Line of Control in Kashmir in 1999.",
+      "difficulty": "easy",
+      "id": "q45"
+    },
+    {
+      "type": "mcq",
+      "prompt": "General Pervez Musharraf took power in which year?",
+      "options": [
+        "1999",
+        "1998",
+        "2001",
+        "1997"
+      ],
+      "answer": 0,
+      "explanation": "Musharraf led the October 1999 coup against Nawaz Sharif.",
+      "difficulty": "easy",
+      "id": "q46"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The 18th Amendment was passed under which PM?",
+      "options": [
+        "Yousuf Raza Gilani",
+        "Nawaz Sharif",
+        "Imran Khan",
+        "Shaukat Aziz"
+      ],
+      "answer": 0,
+      "explanation": "The 18th Amendment was passed in 2010 during Gilani's premiership.",
+      "difficulty": "easy",
+      "id": "q47"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which general election is known for the 'Terrorism and extremism' security backdrop of 2018?",
+      "options": [
+        "The 2018 general elections",
+        "The 2008 elections",
+        "The 2002 elections",
+        "The 2013 elections"
+      ],
+      "answer": 0,
+      "explanation": "The 25 July 2018 elections were held under heavy security after years of militancy.",
+      "difficulty": "medium",
+      "id": "q48"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Pakistan celebrated its 75th independence anniversary (Azadi Ka Amrit-like milestone) in which year?",
+      "options": [
+        "2022",
+        "2020",
+        "2025",
+        "2023"
+      ],
+      "answer": 0,
+      "explanation": "Pakistan marked 75 years of independence in August 2022.",
+      "difficulty": "medium",
+      "id": "q49"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Indus Valley Civilisation was contemporary with which ancient civilisation?",
+      "options": [
+        "Ancient Egypt and Mesopotamia",
+        "Ancient Rome",
+        "Ancient Greece",
+        "The Maya"
+      ],
+      "answer": 0,
+      "explanation": "It flourished alongside Egypt and Mesopotamia.",
+      "difficulty": "easy",
+      "id": "q50"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The city of Harappa is located on the banks of which river?",
+      "options": [
+        "Ravi",
+        "Indus",
+        "Chenab",
+        "Sutlej"
+      ],
+      "answer": 0,
+      "explanation": "Harappa lies on the old course of the Ravi River.",
+      "difficulty": "medium",
+      "id": "q51"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Battle of Panipat (1526) was fought between Babur and:",
+      "options": [
+        "Ibrahim Lodhi",
+        "Rana Sanga",
+        "Sher Shah Suri",
+        "Hemu"
+      ],
+      "answer": 0,
+      "explanation": "Babur defeated Ibrahim Lodhi at the First Battle of Panipat.",
+      "difficulty": "easy",
+      "id": "q52"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Battle of Plassey (1757) was fought between the British and:",
+      "options": [
+        "Siraj-ud-Daulah",
+        "Tipu Sultan",
+        "Mir Qasim",
+        "Shah Alam II"
+      ],
+      "answer": 0,
+      "explanation": "Clive defeated Siraj-ud-Daulah at Plassey.",
+      "difficulty": "easy",
+      "id": "q53"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The first Governor-General of British India was:",
+      "options": [
+        "Warren Hastings",
+        "Lord Clive",
+        "Lord Wellesley",
+        "Lord Dalhousie"
+      ],
+      "answer": 0,
+      "explanation": "Warren Hastings was the first Governor-General of India.",
+      "difficulty": "medium",
+      "id": "q54"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The War of Independence (1857) began at which city?",
+      "options": [
+        "Meerut",
+        "Delhi",
+        "Kanpur",
+        "Lucknow"
+      ],
+      "answer": 0,
+      "explanation": "The uprising broke out at Meerut in May 1857.",
+      "difficulty": "easy",
+      "id": "q55"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The British abolished the East India Company's rule in which year?",
+      "options": [
+        "1858",
+        "1857",
+        "1876",
+        "1849"
+      ],
+      "answer": 0,
+      "explanation": "The Government of India Act 1858 transferred power to the Crown.",
+      "difficulty": "medium",
+      "id": "q56"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Swadeshi Movement was launched in response to:",
+      "options": [
+        "The partition of Bengal (1905)",
+        "The Jallianwala massacre",
+        "The Simon Commission",
+        "The Salt tax"
+      ],
+      "answer": 0,
+      "explanation": "Swadeshi arose against the 1905 partition of Bengal.",
+      "difficulty": "easy",
+      "id": "q57"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Chauri Chaura incident (1922) is associated with:",
+      "options": [
+        "The Non-Cooperation Movement",
+        "The Khilafat Movement",
+        "The Quit India Movement",
+        "The Civil Disobedience Movement"
+      ],
+      "answer": 0,
+      "explanation": "The Chauri Chaura violence ended the Non-Cooperation Movement.",
+      "difficulty": "medium",
+      "id": "q58"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Jallianwala Bagh massacre occurred in:",
+      "options": [
+        "1919",
+        "1920",
+        "1922",
+        "1916"
+      ],
+      "answer": 0,
+      "explanation": "The massacre at Amritsar took place on 13 April 1919.",
+      "difficulty": "easy",
+      "id": "q59"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who ordered the Jallianwala Bagh firing?",
+      "options": [
+        "General Dyer",
+        "Lord Irwin",
+        "General Haig",
+        "Sir John Simon"
+      ],
+      "answer": 0,
+      "explanation": "Brigadier-General Reginald Dyer ordered the firing.",
+      "difficulty": "easy",
+      "id": "q60"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Round Table Conferences were held in which city?",
+      "options": [
+        "London",
+        "Delhi",
+        "Simla",
+        "Bombay"
+      ],
+      "answer": 0,
+      "explanation": "All three Round Table Conferences met in London (1930–32).",
+      "difficulty": "easy",
+      "id": "q61"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Cripps Mission came to India in:",
+      "options": [
+        "1942",
+        "1940",
+        "1945",
+        "1939"
+      ],
+      "answer": 0,
+      "explanation": "The Cripps Mission visited India in March 1942.",
+      "difficulty": "easy",
+      "id": "q62"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Hindu ruler who fought against Mahmud of Ghazni was:",
+      "options": [
+        "Jaipal",
+        "Prithviraj",
+        "Raja Dahir",
+        "Poras"
+      ],
+      "answer": 0,
+      "explanation": "Raja Jaipal led resistance against Mahmud of Ghazni.",
+      "difficulty": "medium",
+      "id": "q63"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Delhi Sultanate was founded by:",
+      "options": [
+        "Qutb-ud-Din Aibak",
+        "Iltutmish",
+        "Balban",
+        "Muhammad Ghori"
+      ],
+      "answer": 0,
+      "explanation": "Qutb-ud-Din Aibak founded the Delhi Sultanate in 1206.",
+      "difficulty": "easy",
+      "id": "q64"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Sultanate's first woman ruler was:",
+      "options": [
+        "Razia Sultana",
+        "Chand Bibi",
+        "Nur Jahan",
+        "Mumtaz Mahal"
+      ],
+      "answer": 0,
+      "explanation": "Razia Sultana ruled Delhi from 1236 to 1240.",
+      "difficulty": "easy",
+      "id": "q65"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Ghaznavid ruler who attacked Somnath temple was:",
+      "options": [
+        "Mahmud of Ghazni",
+        "Muhammad Ghori",
+        "Alauddin Khalji",
+        "Tamerlane"
+      ],
+      "answer": 0,
+      "explanation": "Mahmud of Ghazni raided Somnath in 1025.",
+      "difficulty": "easy",
+      "id": "q66"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Taj Mahal was built by which Mughal emperor?",
+      "options": [
+        "Shah Jahan",
+        "Akbar",
+        "Jahangir",
+        "Humayun"
+      ],
+      "answer": 0,
+      "explanation": "Shah Jahan built the Taj Mahal for Mumtaz Mahal.",
+      "difficulty": "easy",
+      "id": "q67"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Battle of Haldighati (1576) was fought between Akbar and:",
+      "options": [
+        "Maharana Pratap",
+        "Rana Sanga",
+        "Shivaji",
+        "Jai Singh"
+      ],
+      "answer": 0,
+      "explanation": "Akbar's forces defeated Maharana Pratap at Haldighati.",
+      "difficulty": "medium",
+      "id": "q68"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Sikh Empire in Punjab was founded by:",
+      "options": [
+        "Ranjit Singh",
+        "Guru Nanak",
+        "Banda Singh Bahadur",
+        "Guru Gobind Singh"
+      ],
+      "answer": 0,
+      "explanation": "Maharaja Ranjit Singh founded the Sikh Empire in 1799.",
+      "difficulty": "easy",
+      "id": "q69"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The British annexed Sindh in which year?",
+      "options": [
+        "1843",
+        "1857",
+        "1849",
+        "1839"
+      ],
+      "answer": 0,
+      "explanation": "Sindh was annexed by Charles Napier in 1843.",
+      "difficulty": "medium",
+      "id": "q70"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The British defeated the Sikhs in the Second Anglo-Sikh War in:",
+      "options": [
+        "1849",
+        "1845",
+        "1857",
+        "1843"
+      ],
+      "answer": 0,
+      "explanation": "The Second Anglo-Sikh War ended with the annexation of Punjab in 1849.",
+      "difficulty": "medium",
+      "id": "q71"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The famous Al-Beruni wrote 'Kitab-ul-Hind' during the reign of:",
+      "options": [
+        "Mahmud of Ghazni",
+        "Akbar",
+        "Alauddin Khalji",
+        "Sher Shah Suri"
+      ],
+      "answer": 0,
+      "explanation": "Al-Beruni accompanied Mahmud of Ghazni's campaigns.",
+      "difficulty": "medium",
+      "id": "q72"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The city of Multan is famous for the shrine of:",
+      "options": [
+        "Shah Rukn-e-Alam",
+        "Data Ganj Bakhsh",
+        "Lal Shahbaz Qalandar",
+        "Baba Farid"
+      ],
+      "answer": 0,
+      "explanation": "Shah Rukn-e-Alam's shrine is at Multan.",
+      "difficulty": "easy",
+      "id": "q73"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Gandhara civilisation is best known for:",
+      "options": [
+        "Buddhist art and sculpture",
+        "Maritime trade",
+        "Iron smelting",
+        "Urban drainage"
+      ],
+      "answer": 0,
+      "explanation": "Gandhara is famed for Greco-Buddhist art.",
+      "difficulty": "easy",
+      "id": "q74"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The East India Company received trading rights in India from:",
+      "options": [
+        "Jahangir",
+        "Akbar",
+        "Aurangzeb",
+        "Shah Jahan"
+      ],
+      "answer": 0,
+      "explanation": "Jahangir granted the Company trading rights in 1608–1613.",
+      "difficulty": "medium",
+      "id": "q75"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The last Mughal emperor was:",
+      "options": [
+        "Bahadur Shah Zafar",
+        "Shah Alam II",
+        "Aurangzeb",
+        "Akbar II"
+      ],
+      "answer": 0,
+      "explanation": "Bahadur Shah Zafar was exiled after 1857.",
+      "difficulty": "easy",
+      "id": "q76"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Mauryan emperor who spread Buddhism was:",
+      "options": [
+        "Ashoka",
+        "Chandragupta",
+        "Bindusara",
+        "Kanishka"
+      ],
+      "answer": 0,
+      "explanation": "Ashoka promoted Buddhism across the subcontinent.",
+      "difficulty": "easy",
+      "id": "q77"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The capital of the Indus Valley site Mohenjo-Daro was located in:",
+      "options": [
+        "Sindh",
+        "Punjab",
+        "Balochistan",
+        "Gujarat"
+      ],
+      "answer": 0,
+      "explanation": "Mohenjo-Daro is in Sindh, near Larkana.",
+      "difficulty": "easy",
+      "id": "q78"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The British created the 'North-West Frontier Province' in:",
+      "options": [
+        "1901",
+        "1857",
+        "1909",
+        "1919"
+      ],
+      "answer": 0,
+      "explanation": "NWFP (now KPK) was separated from Punjab in 1901.",
+      "difficulty": "medium",
+      "id": "q79"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The 'Sassanid' and 'Kushan' empires competed for control of which region?",
+      "options": [
+        "Gandhara (present-day northern Pakistan)",
+        "Bengal",
+        "Kashmir only",
+        "Malabar"
+      ],
+      "answer": 0,
+      "explanation": "Gandhara was contested by Sassanids and Kushans.",
+      "difficulty": "hard",
+      "id": "q80"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The 'Shah Jahan' period is famous for:",
+      "options": [
+        "The golden age of Mughal architecture",
+        "The first Mughal war",
+        "The decline of the empire",
+        "The founding of Delhi"
+      ],
+      "answer": 0,
+      "explanation": "Shah Jahan's reign produced the Taj Mahal and Shahjahanabad.",
+      "difficulty": "easy",
+      "id": "q81"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The 'Battle of Chausa' (1539) was fought between:",
+      "options": [
+        "Sher Shah Suri and Humayun",
+        "Akbar and Hemu",
+        "Babur and Ibrahim Lodhi",
+        "Aurangzeb and Shivaji"
+      ],
+      "answer": 0,
+      "explanation": "Sher Shah defeated Humayun at Chausa.",
+      "difficulty": "hard",
+      "id": "q82"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The first known ruler of the Mauryan Empire was:",
+      "options": [
+        "Chandragupta Maurya",
+        "Ashoka",
+        "Bindusara",
+        "Samudragupta"
+      ],
+      "answer": 0,
+      "explanation": "Chandragupta Maurya founded the empire.",
+      "difficulty": "easy",
+      "id": "q83"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The 'Buddhist king' Kanishka belonged to which dynasty?",
+      "options": [
+        "Kushan",
+        "Mauryan",
+        "Gupta",
+        "Pala"
+      ],
+      "answer": 0,
+      "explanation": "Kanishka was the great Kushan ruler.",
+      "difficulty": "medium",
+      "id": "q84"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The 'Raja Dahir' was the ruler of which region?",
+      "options": [
+        "Sindh",
+        "Punjab",
+        "Kashmir",
+        "Gujarat"
+      ],
+      "answer": 0,
+      "explanation": "Raja Dahir ruled Sindh when Muhammad bin Qasim invaded.",
+      "difficulty": "easy",
+      "id": "q85"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Muhammad bin Qasim conquered Sindh in:",
+      "options": [
+        "711 AD",
+        "712 BC",
+        "750 AD",
+        "701 AD"
+      ],
+      "answer": 0,
+      "explanation": "Muhammad bin Qasim invaded Sindh in 711 AD.",
+      "difficulty": "easy",
+      "id": "q86"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The 'Sultanate of Delhi' lasted from:",
+      "options": [
+        "1206 to 1526",
+        "1000 to 1206",
+        "1526 to 1707",
+        "1192 to 1398"
+      ],
+      "answer": 0,
+      "explanation": "The Delhi Sultanate ran from 1206 to 1526.",
+      "difficulty": "medium",
+      "id": "q87"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The 'Fatehpur Sikri' was built by:",
+      "options": [
+        "Akbar",
+        "Shah Jahan",
+        "Babur",
+        "Jahangir"
+      ],
+      "answer": 0,
+      "explanation": "Akbar founded Fatehpur Sikri in 1571.",
+      "difficulty": "easy",
+      "id": "q88"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The 'Battle of Talikota' (1565) led to the fall of which kingdom?",
+      "options": [
+        "The Vijayanagara Empire",
+        "The Mughals",
+        "The Delhi Sultanate",
+        "The Marathas"
+      ],
+      "answer": 0,
+      "explanation": "Vijayanagara fell after Talikota.",
+      "difficulty": "hard",
+      "id": "q89"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The 'Mughal emperor' who banned the Jizya tax was:",
+      "options": [
+        "Akbar",
+        "Aurangzeb",
+        "Shah Jahan",
+        "Jahangir"
+      ],
+      "answer": 0,
+      "explanation": "Akbar abolished the Jizya in 1564.",
+      "difficulty": "easy",
+      "id": "q90"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The 'Guru Granth Sahib' was compiled by:",
+      "options": [
+        "Guru Arjan Dev",
+        "Guru Nanak",
+        "Guru Gobind Singh",
+        "Guru Tegh Bahadur"
+      ],
+      "answer": 0,
+      "explanation": "Guru Arjan compiled the Adi Granth.",
+      "difficulty": "hard",
+      "id": "q91"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The 'Anglo-Sikh' Treaty of 1846 was signed after which war?",
+      "options": [
+        "The First Anglo-Sikh War",
+        "The Second Anglo-Sikh War",
+        "The Battle of Plassey",
+        "The 1857 War"
+      ],
+      "answer": 0,
+      "explanation": "The treaty followed the First Anglo-Sikh War (1845–46).",
+      "difficulty": "medium",
+      "id": "q92"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The 'Hazara' region of KPK was historically part of which kingdom?",
+      "options": [
+        "The Sikh Empire before British annexation",
+        "The Mughal navy",
+        "The Delhi Sultanate only",
+        "The Vijayanagara"
+      ],
+      "answer": 0,
+      "explanation": "Hazara was under the Sikh Empire before 1849.",
+      "difficulty": "hard",
+      "id": "q93"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The 'Red Fort' of Delhi was built by:",
+      "options": [
+        "Shah Jahan",
+        "Akbar",
+        "Aurangzeb",
+        "Jahangir"
+      ],
+      "answer": 0,
+      "explanation": "Shah Jahan built the Red Fort in 1648.",
+      "difficulty": "easy",
+      "id": "q94"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The 'Alauddin Khalji' was famous for:",
+      "options": [
+        "Market reforms and price controls",
+        "Building the Taj Mahal",
+        "The first railways",
+        "Abolishing the Sultanate"
+      ],
+      "answer": 0,
+      "explanation": "Alauddin Khalji introduced market regulations.",
+      "difficulty": "medium",
+      "id": "q95"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The 'Sikh Empire' was annexed by the British in:",
+      "options": [
+        "1849",
+        "1857",
+        "1839",
+        "1843"
+      ],
+      "answer": 0,
+      "explanation": "Punjab was annexed after the Second Anglo-Sikh War in 1849.",
+      "difficulty": "easy",
+      "id": "q96"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The 'Kushan emperor' who convened the Fourth Buddhist Council was:",
+      "options": [
+        "Kanishka",
+        "Ashoka",
+        "Harsha",
+        "Chandragupta"
+      ],
+      "answer": 0,
+      "explanation": "Kanishka convened the Fourth Buddhist Council.",
+      "difficulty": "medium",
+      "id": "q97"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who founded the Muhammadan Anglo-Oriental College at Aligarh?",
+      "options": [
+        "Sir Syed Ahmad Khan",
+        "Nawab Salimullah",
+        "Aga Khan III",
+        "Maulana Shaukat Ali"
+      ],
+      "answer": 0,
+      "explanation": "Sir Syed Ahmad Khan founded the MAO College in 1875, the nucleus of Aligarh Muslim University.",
+      "difficulty": "easy",
+      "id": "q98"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Cabinet Mission of 1946 was headed by whom?",
+      "options": [
+        "Lord Pethick-Lawrence",
+        "Lord Wavell",
+        "Sir Stafford Cripps",
+        "Lord Mountbatten"
+      ],
+      "answer": 0,
+      "explanation": "Pethick-Lawrence led the three-member Cabinet Mission of 1946.",
+      "difficulty": "medium",
+      "id": "q99"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who was the last Viceroy of India?",
+      "options": [
+        "Lord Mountbatten",
+        "Lord Wavell",
+        "Lord Linlithgow",
+        "Lord Curzon"
+      ],
+      "answer": 0,
+      "explanation": "Lord Mountbatten was the last Viceroy, overseeing the partition in 1947.",
+      "difficulty": "easy",
+      "id": "q100"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Doctrine of Lapse was associated with which Governor-General?",
+      "options": [
+        "Lord Dalhousie",
+        "Lord Wellesley",
+        "Lord Canning",
+        "Warren Hastings"
+      ],
+      "answer": 0,
+      "explanation": "Lord Dalhousie used the Doctrine of Lapse to annex states whose rulers died without heirs.",
+      "difficulty": "medium",
+      "id": "q101"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The First War of Independence (1857) is also known as?",
+      "options": [
+        "The Sepoy Mutiny",
+        "The Swadeshi Movement",
+        "The Quit India Movement",
+        "The Khilafat Movement"
+      ],
+      "answer": 0,
+      "explanation": "The 1857 uprising is often called the Sepoy Mutiny or the War of Independence.",
+      "difficulty": "easy",
+      "id": "q102"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The ruins of the Indus Valley Civilisation were discovered in which period?",
+      "options": [
+        "1921-22",
+        "1857",
+        "1901",
+        "1947"
+      ],
+      "answer": 0,
+      "explanation": "Excavations at Harappa and Mohenjo-Daro in 1921-22 revealed the Indus Valley Civilisation.",
+      "difficulty": "medium",
+      "id": "q103"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who discovered the ruins of Harappa?",
+      "options": [
+        "Daya Ram Sahni",
+        "R.D. Banerji",
+        "John Marshall",
+        "Alexander Cunningham"
+      ],
+      "answer": 0,
+      "explanation": "Daya Ram Sahni supervised the first excavations at Harappa in 1921.",
+      "difficulty": "hard",
+      "id": "q104"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The excavations of Mohenjo-Daro were carried out by?",
+      "options": [
+        "R.D. Banerji",
+        "Daya Ram Sahni",
+        "Mortimer Wheeler",
+        "John Marshall"
+      ],
+      "answer": 0,
+      "explanation": "R.D. Banerji led the excavation of Mohenjo-Daro in 1922.",
+      "difficulty": "hard",
+      "id": "q105"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Muhammad bin Qasim was sent to conquer Sindh by whom?",
+      "options": [
+        "Hajjaj bin Yusuf",
+        "Harun al-Rashid",
+        "Al-Mansur",
+        "Abdul Malik"
+      ],
+      "answer": 0,
+      "explanation": "The Umayyad governor Hajjaj bin Yusuf dispatched the 17-year-old Muhammad bin Qasim in 711.",
+      "difficulty": "hard",
+      "id": "q106"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Arab conquest of Sindh took place during the reign of which Umayyad caliph?",
+      "options": [
+        "Walid ibn Abd al-Malik",
+        "Umar ibn Abd al-Aziz",
+        "Hisham ibn Abd al-Malik",
+        "Yazid II"
+      ],
+      "answer": 0,
+      "explanation": "Sindh was conquered in 711 during the reign of Caliph Walid ibn Abd al-Malik.",
+      "difficulty": "hard",
+      "id": "q107"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Sher Shah Suri built which famous road connecting Bengal with the North-West?",
+      "options": [
+        "Grand Trunk Road",
+        "Karakoram Highway",
+        "Silk Road",
+        "Makran Coastal Highway"
+      ],
+      "answer": 0,
+      "explanation": "Sher Shah Suri constructed the Grand Trunk Road, later extended by the British.",
+      "difficulty": "medium",
+      "id": "q108"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Battle of Panipat of 1761 was fought between the Marathas and?",
+      "options": [
+        "Ahmad Shah Abdali",
+        "Babur",
+        "Sher Shah Suri",
+        "Ibrahim Lodhi"
+      ],
+      "answer": 0,
+      "explanation": "Ahmad Shah Abdali defeated the Marathas at Panipat in 1761.",
+      "difficulty": "medium",
+      "id": "q109"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The English East India Company was formed in which year?",
+      "options": [
+        "1600",
+        "1707",
+        "1498",
+        "1858"
+      ],
+      "answer": 0,
+      "explanation": "Queen Elizabeth I granted the East India Company its charter in 1600.",
+      "difficulty": "medium",
+      "id": "q110"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Regulating Act, which brought the East India Company under British parliamentary control, was passed in?",
+      "options": [
+        "1773",
+        "1813",
+        "1833",
+        "1853"
+      ],
+      "answer": 0,
+      "explanation": "The Regulating Act of 1773 was the first step of British government control over the Company.",
+      "difficulty": "hard",
+      "id": "q111"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Indian National Congress was founded in which year?",
+      "options": [
+        "1885",
+        "1875",
+        "1906",
+        "1892"
+      ],
+      "answer": 0,
+      "explanation": "The Indian National Congress was founded in 1885.",
+      "difficulty": "easy",
+      "id": "q112"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who founded the Indian National Congress?",
+      "options": [
+        "Allan Octavian Hume",
+        "Dadabhai Naoroji",
+        "Surendranath Banerjee",
+        "Gopal Krishna Gokhale"
+      ],
+      "answer": 0,
+      "explanation": "Retired British official A.O. Hume founded the Congress in 1885.",
+      "difficulty": "medium",
+      "id": "q113"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who was the first President of the Indian National Congress?",
+      "options": [
+        "W.C. Bonnerjee",
+        "Dadabhai Naoroji",
+        "Badruddin Tyabji",
+        "Ferozeshah Mehta"
+      ],
+      "answer": 0,
+      "explanation": "W.C. Bonnerjee presided over the first Congress session at Bombay in 1885.",
+      "difficulty": "hard",
+      "id": "q114"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Jallianwala Bagh massacre took place in which city?",
+      "options": [
+        "Amritsar",
+        "Lahore",
+        "Delhi",
+        "Meerut"
+      ],
+      "answer": 0,
+      "explanation": "The massacre occurred at Jallianwala Bagh in Amritsar on 13 April 1919.",
+      "difficulty": "easy",
+      "id": "q115"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Civil Disobedience Movement was launched in which year?",
+      "options": [
+        "1930",
+        "1919",
+        "1922",
+        "1942"
+      ],
+      "answer": 0,
+      "explanation": "Gandhi launched the Civil Disobedience Movement with the Salt March in 1930.",
+      "difficulty": "medium",
+      "id": "q116"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Salt March (Dandi March) of 1930 was led by whom?",
+      "options": [
+        "Mahatma Gandhi",
+        "Jawaharlal Nehru",
+        "Subhas Chandra Bose",
+        "Vallabhbhai Patel"
+      ],
+      "answer": 0,
+      "explanation": "Gandhi marched from Sabarmati to Dandi to break the salt law in 1930.",
+      "difficulty": "easy",
+      "id": "q117"
+    },
+    {
+      "type": "mcq",
+      "prompt": "At which session of the Congress was 'Purna Swaraj' (complete independence) demanded?",
+      "options": [
+        "Lahore session of 1929",
+        "Calcutta session of 1920",
+        "Nagpur session of 1920",
+        "Karachi session of 1931"
+      ],
+      "answer": 0,
+      "explanation": "The Congress at its Lahore session in December 1929 declared Purna Swaraj as its goal.",
+      "difficulty": "hard",
+      "id": "q118"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who was known as the 'Frontier Gandhi'?",
+      "options": [
+        "Khan Abdul Ghaffar Khan",
+        "Abdul Qayyum Khan",
+        "Sardar Abdur Rab Nishtar",
+        "Maulana Abul Kalam Azad"
+      ],
+      "answer": 0,
+      "explanation": "Khan Abdul Ghaffar Khan led the Khudai Khidmatgar movement in the NWFP.",
+      "difficulty": "medium",
+      "id": "q119"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The first census of Pakistan was held in which year?",
+      "options": [
+        "1951",
+        "1947",
+        "1961",
+        "1948"
+      ],
+      "answer": 0,
+      "explanation": "Pakistan conducted its first national census in 1951.",
+      "difficulty": "medium",
+      "id": "q120"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which city served as the capital of Pakistan before Islamabad?",
+      "options": [
+        "Karachi",
+        "Lahore",
+        "Rawalpindi",
+        "Hyderabad"
+      ],
+      "answer": 0,
+      "explanation": "Karachi was the federal capital until the seat of government moved to Islamabad.",
+      "difficulty": "easy",
+      "id": "q121"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Pakistan became a republic in which year?",
+      "options": [
+        "1956",
+        "1947",
+        "1958",
+        "1962"
+      ],
+      "answer": 0,
+      "explanation": "With the 1956 Constitution, Pakistan became an Islamic Republic.",
+      "difficulty": "easy",
+      "id": "q122"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who was the first Viceroy of India under the British Crown?",
+      "options": [
+        "Lord Canning",
+        "Lord Dalhousie",
+        "Lord Curzon",
+        "Warren Hastings"
+      ],
+      "answer": 0,
+      "explanation": "Lord Canning became the first Viceroy after the Crown took over in 1858.",
+      "difficulty": "hard",
+      "id": "q123"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The tomb of Emperor Jahangir is located in which city?",
+      "options": [
+        "Lahore",
+        "Delhi",
+        "Agra",
+        "Kabul"
+      ],
+      "answer": 0,
+      "explanation": "Jahangir's mausoleum stands at Shahdara on the outskirts of Lahore.",
+      "difficulty": "medium",
+      "id": "q124"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Battle of Buxar (1764) was fought between the British and?",
+      "options": [
+        "Mir Qasim",
+        "Siraj-ud-Daulah",
+        "Tipu Sultan",
+        "Raja Dahir"
+      ],
+      "answer": 0,
+      "explanation": "The British defeated the combined forces of Mir Qasim, Mir Jafar and Shah Alam II at Buxar.",
+      "difficulty": "hard",
+      "id": "q125"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Doctrine of Subsidiary Alliance was introduced by?",
+      "options": [
+        "Lord Wellesley",
+        "Lord Dalhousie",
+        "Lord Cornwallis",
+        "Lord Hastings"
+      ],
+      "answer": 0,
+      "explanation": "Lord Wellesley used subsidiary alliances to bring Indian states under British control.",
+      "difficulty": "medium",
+      "id": "q126"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The 'Forward Bloc' within the Congress was founded by?",
+      "options": [
+        "Subhas Chandra Bose",
+        "Jawaharlal Nehru",
+        "C. Rajagopalachari",
+        "Sardar Patel"
+      ],
+      "answer": 0,
+      "explanation": "Subhas Chandra Bose formed the Forward Bloc in 1939.",
+      "difficulty": "hard",
+      "id": "q127"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The book 'Causes of the Indian Revolt' was written by?",
+      "options": [
+        "Sir Syed Ahmad Khan",
+        "Allama Iqbal",
+        "Maulana Azad",
+        "Choudhry Rahmat Ali"
+      ],
+      "answer": 0,
+      "explanation": "Sir Syed Ahmad Khan wrote 'Causes of the Indian Revolt' after 1857.",
+      "difficulty": "hard",
+      "id": "q128"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Wahabi movement in India was led by?",
+      "options": [
+        "Syed Ahmad Barelvi",
+        "Shah Waliullah",
+        "Allama Mashriqi",
+        "Maulana Abul Kalam Azad"
+      ],
+      "answer": 0,
+      "explanation": "Syed Ahmad Barelvi led the Wahabi movement against Sikh rule in the early 19th century.",
+      "difficulty": "hard",
+      "id": "q129"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Government of India Act of 1858 transferred the control of India from the Company to?",
+      "options": [
+        "The British Crown",
+        "The Viceroy's Council",
+        "The East India Company directors",
+        "The Secretary of State for War"
+      ],
+      "answer": 0,
+      "explanation": "After 1858, India was governed in the name of the British Crown.",
+      "difficulty": "medium",
+      "id": "q130"
+    }
+  ]
+}

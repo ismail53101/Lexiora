@@ -8,6 +8,7 @@ abstract final class AppRoutes {
   static const String splash = '/splash';
   static const String home = '/';
   static const String library = '/library';
+  static const String driveLibrary = '/library/drive';
   static const String settings = '/settings';
   static const String admin = '/admin';
   static const String profile = '/profile';
@@ -29,10 +30,16 @@ abstract final class AppRoutes {
   static const String grammarLessonPattern = '/grammar/lesson/:id';
   static String grammarLesson(String id) =>
       '/grammar/lesson/${Uri.encodeComponent(id)}';
+  static const String grammarTypeName = 'grammarType';
+  static const String grammarTypePattern = '/grammar/lesson/:id/type/:type';
+  static String grammarType(String lessonId, String type) =>
+      '/grammar/lesson/${Uri.encodeComponent(lessonId)}/type/${Uri.encodeComponent(type)}';
 
   // Study Hub (Phase v0.7.0 / v0.7.1)
   static const String studyHub = '/study-hub';
   static const String studyHubDaily = '/study-hub/daily';
+  static String studyHubDailyFor(String day, String taskId) =>
+      '$studyHubDaily?day=${Uri.encodeQueryComponent(day)}&taskId=${Uri.encodeQueryComponent(taskId)}';
   static const String studyHubWeekly = '/study-hub/weekly';
   static const String studyHubMonthly = '/study-hub/monthly';
   static const String studyHubTemplates = '/study-hub/templates';
@@ -55,6 +62,12 @@ abstract final class AppRoutes {
 
   // Quiz Engine (Phase v0.9.0 / subject-first v0.9.1)
   static const String quiz = '/quiz';
+  static const String quizMcqs = '/quiz/mcqs';
+  static const String quizStages = '/quiz/stages';
+  static const String quizMcqBrowseName = 'quizMcqBrowse';
+  static const String quizMcqBrowsePattern = '/quiz/mcqs/browse/:subjectId';
+  static String quizMcqBrowse(String subjectId) =>
+      '/quiz/mcqs/browse/${Uri.encodeComponent(subjectId)}';
   static const String quizSubjectName = 'quizSubject';
   static const String quizSubjectPattern = '/quiz/subject/:id';
   static String quizSubject(String id) =>
@@ -69,12 +82,23 @@ abstract final class AppRoutes {
   static const String quizSearch = '/quiz/search';
   static const String quizSettings = '/quiz/settings';
 
+  // Staged Quiz (Phase v0.11.0)
+  static const String quizStageMapName = 'quizStageMap';
+  static const String quizStageMapPattern = '/quiz/stage-map/:subjectId';
+  static String quizStageMap(String subjectId) =>
+      '/quiz/stage-map/${Uri.encodeComponent(subjectId)}';
+  static const String quizStagePlay = '/quiz/stage-play';
+
   // AI Assistant (Phase v0.10.0)
   static const String aiAssistant = '/ai';
   static const String notesHome = '/notes';
- 
+
   // Vocabulary (Phase v0.6.0)
   static const String vocabulary = '/vocabulary';
+  static const String vocabularyWordName = 'vocabularyWord';
+  static const String vocabularyWordPattern = '/vocabulary/word/:word';
+  static String vocabularyWord(String word) =>
+      '/vocabulary/word/${Uri.encodeComponent(word)}';
   static const String vocabularyListName = 'vocabularyList';
   static const String vocabularyListPattern = '/vocabulary/list/:id';
   static String vocabularyList(String id) =>
@@ -82,6 +106,8 @@ abstract final class AppRoutes {
 
   static const String readerName = 'reader';
   static const String readerPattern = '/reader/:id';
+  static const String driveReaderName = 'driveReader';
+  static const String driveReader = '/drive-reader';
   static String reader(String documentId) => '/reader/$documentId';
 
   static const String bookmarksName = 'bookmarks';

@@ -40,6 +40,13 @@ class LibraryDocument extends Equatable {
   /// (so it is deleted with the document). False for in-place discovered files.
   final bool isManaged;
 
+  /// Drive PDFs are cached under this app-private directory before reading.
+  /// Deriving the source from the path keeps the existing database schema
+  /// compatible while still allowing the UI to show a source indicator.
+  bool get isFromGoogleDrive => filePath.replaceAll('\\', '/').contains('/drive_cache/');
+
+  String get sourceLabel => isFromGoogleDrive ? 'From Google Drive' : 'From Device';
+
   /// Human-friendly file size, e.g. "2.4 MB".
   String get readableSize {
     if (fileSize <= 0) return '—';

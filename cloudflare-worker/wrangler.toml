@@ -2,10 +2,31 @@ name = "sapiora-ai-worker"
 main = "worker.js"
 compatibility_date = "2026-01-01"
 
+[triggers]
+crons = ["*/15 * * * *"]
+
+# KV namespace holding the remotely-changeable, provider-agnostic AI pool
+# config: keys "provider_config", "model_config", and "policy" (see
+# README.md). Create it once with `wrangler kv namespace create
+# MODEL_CONFIG_KV` and paste the id it prints below — this only needs to be
+# done once, ever; after that, adding/removing providers or models, or
+# flipping the free/paid policy, is pure KV writes with no wrangler.toml
+# edit and no deploy. (The legacy key "model_pool" from before this pool
+# supported multiple providers is still read as a fallback.)
+[[kv_namespaces]]
+binding = "MODEL_CONFIG_KV"
+id = "REPLACE_WITH_KV_NAMESPACE_ID"
+
 # Non-secret settings can go here as plain vars. Real API keys must NEVER be
 # put in this file (or committed to git) — set them with `wrangler secret put`
 # instead; see README.md.
 [vars]
-DEFAULT_PROVIDER = "hcnsec"
+# "unorouter" tries the remotely-configured, provider-agnostic pool first
+# (see MODEL_CONFIG_KV above — this may call UnoRouter, xKiro, or any other
+# provider listed in "provider_config"/"model_config"); "auto" then falls
+# back to hcnsec/forge/openrouter below if every pool candidate fails, so the
+# Assistant keeps working even if every free provider in the pool is down at
+# once.
+DEFAULT_PROVIDER = "unorouter"
 HCNSEC_BASE_URL = "https://api.hcnsec.cn"
 # FORGE_BASE_URL = "https://your-forge-endpoint.example.com"

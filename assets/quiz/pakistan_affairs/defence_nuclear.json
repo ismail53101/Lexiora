@@ -1,0 +1,1833 @@
+{
+  "bank": {
+    "name": "Defence & Nuclear",
+    "subject": "Pakistan Affairs",
+    "topic": "Defence & Nuclear",
+    "description": "Pakistan's armed forces, wars, defence day, and the nuclear weapons programme.",
+    "tags": "css,pms,fpsc,pakistan-affairs,defence,nuclear",
+    "version": "1.0",
+    "id": "pakistan_affairs_defence_nuclear"
+  },
+  "questions": [
+    {
+      "type": "mcq",
+      "prompt": "Pakistan observes Defence Day (Youm-e-Difa) on which date?",
+      "options": [
+        "23 March",
+        "6 September",
+        "14 August",
+        "11 September"
+      ],
+      "answer": 1,
+      "explanation": "6 September commemorates the 1965 war against India.",
+      "difficulty": "easy",
+      "id": "q01"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The 1965 Indo-Pakistan war lasted for how many days?",
+      "options": [
+        "10 days",
+        "14 days",
+        "17 days",
+        "21 days"
+      ],
+      "answer": 2,
+      "explanation": "The war ran from 6 to 22 September 1965, about 17 days.",
+      "difficulty": "medium",
+      "id": "q02"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Pakistan Army was formally established in which year?",
+      "options": [
+        "1947",
+        "1950",
+        "1956",
+        "1962"
+      ],
+      "answer": 0,
+      "explanation": "The Pakistan Army came into being on 14 August 1947.",
+      "difficulty": "easy",
+      "id": "q03"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Royal Pakistan Air Force was renamed the Pakistan Air Force in which year?",
+      "options": [
+        "1947",
+        "1950",
+        "1956",
+        "1965"
+      ],
+      "answer": 2,
+      "explanation": "The air force dropped the 'Royal' prefix when Pakistan became a republic in 1956.",
+      "difficulty": "hard",
+      "id": "q04"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Pakistan Military Academy (PMA), where army officers are trained, is located at?",
+      "options": [
+        "Rawalpindi",
+        "Kakul (Abbottabad)",
+        "Murree",
+        "Kohat"
+      ],
+      "answer": 1,
+      "explanation": "The Pakistan Military Academy is at Kakul, Abbottabad.",
+      "difficulty": "medium",
+      "id": "q05"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Inter-Services Intelligence (ISI) agency was founded in which year?",
+      "options": [
+        "1947",
+        "1948",
+        "1954",
+        "1965"
+      ],
+      "answer": 1,
+      "explanation": "ISI was established in 1948 under Major General Cawthorne.",
+      "difficulty": "hard",
+      "id": "q06"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Pakistan's nuclear tests on 28 May 1998 were conducted at?",
+      "options": [
+        "Kahuta",
+        "Wah Cantt",
+        "Chagai Hills",
+        "Sargodha"
+      ],
+      "answer": 2,
+      "explanation": "The tests, codenamed Chagai-I, were conducted in the Chagai Hills of Balochistan.",
+      "difficulty": "medium",
+      "id": "q07"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Pakistan's nuclear tests of 1998 were a response to nuclear tests by which country?",
+      "options": [
+        "China",
+        "United States",
+        "Israel",
+        "India"
+      ],
+      "answer": 3,
+      "explanation": "India conducted tests at Pokhran in May 1998, prompting Pakistan's response.",
+      "difficulty": "easy",
+      "id": "q08"
+    },
+    {
+      "type": "mcq",
+      "prompt": "India's nuclear test site of 1998 is called?",
+      "options": [
+        "Pokhran",
+        "Trombay",
+        "Kalpakkam",
+        "Bhabha"
+      ],
+      "answer": 0,
+      "explanation": "India tested at Pokhran in Rajasthan in May 1998.",
+      "difficulty": "hard",
+      "id": "q09"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Pakistan's Ghauri missile is named after which historical conqueror?",
+      "options": [
+        "Mahmud of Ghazni",
+        "Muhammad of Ghor (Ghauri)",
+        "Tamerlane",
+        "Babur"
+      ],
+      "answer": 1,
+      "explanation": "The Ghauri missile is named after Sultan Muhammad Ghori.",
+      "difficulty": "medium",
+      "id": "q10"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The 1971 war between Pakistan and India ended with the surrender of Pakistani forces in Dhaka on?",
+      "options": [
+        "14 August 1971",
+        "16 December 1971",
+        "25 December 1971",
+        "3 January 1972"
+      ],
+      "answer": 1,
+      "explanation": "The surrender took place on 16 December 1971.",
+      "difficulty": "easy",
+      "id": "q11"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Kargil conflict between Pakistan and India occurred in which year?",
+      "options": [
+        "1994",
+        "1999",
+        "2001",
+        "2003"
+      ],
+      "answer": 1,
+      "explanation": "The Kargil conflict was fought in the summer of 1999.",
+      "difficulty": "easy",
+      "id": "q12"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who is the current chain of command head of the Pakistan Army?",
+      "options": [
+        "The Chief of Army Staff (COAS)",
+        "The President",
+        "The Defence Minister",
+        "The Senate Chairman"
+      ],
+      "answer": 0,
+      "explanation": "The COAS commands the army under the constitution.",
+      "difficulty": "easy",
+      "id": "q13"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The headquarters of the Pakistan Army is located in?",
+      "options": [
+        "Rawalpindi (GHQ)",
+        "Islamabad",
+        "Lahore",
+        "Karachi"
+      ],
+      "answer": 0,
+      "explanation": "The General Headquarters (GHQ) is in Rawalpindi.",
+      "difficulty": "easy",
+      "id": "q14"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Pakistan Navy's main base is?",
+      "options": [
+        "Karachi (PNS Karachi)",
+        "Gwadar",
+        "Port Qasim",
+        "Islamabad"
+      ],
+      "answer": 0,
+      "explanation": "Karachi hosts the principal naval base and fleet headquarters.",
+      "difficulty": "medium",
+      "id": "q15"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Pakistan Air Force headquarters is located at?",
+      "options": [
+        "Islamabad (PAF Complex)",
+        "Peshawar",
+        "Quetta",
+        "Sargodha"
+      ],
+      "answer": 0,
+      "explanation": "PAF headquarters is at the PAF Complex in Islamabad.",
+      "difficulty": "medium",
+      "id": "q16"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The JF-17 Thunder fighter jet is a joint project of Pakistan and?",
+      "options": [
+        "China",
+        "Turkey",
+        "USA",
+        "Russia"
+      ],
+      "answer": 0,
+      "explanation": "The JF-17 is co-developed by Pakistan (PAC) and China (CAC).",
+      "difficulty": "easy",
+      "id": "q17"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Pakistan's first nuclear test on 28 May 1998 was conducted at?",
+      "options": [
+        "Chagai (Ras Koh hills), Balochistan",
+        "Thar, Sindh",
+        "Kala Chitta, Punjab",
+        "Kharan only"
+      ],
+      "answer": 0,
+      "explanation": "Five devices were detonated at the Ras Koh hills in Chagai, Balochistan.",
+      "difficulty": "easy",
+      "id": "q18"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The codename of Pakistan's 1998 nuclear tests was?",
+      "options": [
+        "Chagai-I",
+        "Smiling Buddha",
+        "Operation Grand Slam",
+        "Project Zarb"
+      ],
+      "answer": 0,
+      "explanation": "The tests were codenamed Chagai-I; India's 1974 test was 'Smiling Buddha'.",
+      "difficulty": "medium",
+      "id": "q19"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who was the prime minister of Pakistan during the 1998 nuclear tests?",
+      "options": [
+        "Nawaz Sharif",
+        "Benazir Bhutto",
+        "Pervez Musharraf",
+        "Shaukat Aziz"
+      ],
+      "answer": 0,
+      "explanation": "Nawaz Sharif ordered the tests after India's Pokhran-II detonations.",
+      "difficulty": "easy",
+      "id": "q20"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Pakistan's surface-to-surface missile 'Shaheen' is named after?",
+      "options": [
+        "A falcon (Shaheen is a falcon)",
+        "A mountain",
+        "A river",
+        "A city"
+      ],
+      "answer": 0,
+      "explanation": "Shaheen (falcon) is the codename for Pakistan's solid-fuel ballistic missile family.",
+      "difficulty": "medium",
+      "id": "q21"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The 'Ghauri' missile is named after which historical figure?",
+      "options": [
+        "Shahab-ud-Din Muhammad Ghori",
+        "Mahmud of Ghazni",
+        "Babur",
+        "Tamerlane"
+      ],
+      "answer": 0,
+      "explanation": "Ghauri is named after Sultan Shahab-ud-Din Muhammad Ghori, who conquered Delhi.",
+      "difficulty": "medium",
+      "id": "q22"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which Pakistani missile is a cruise missile with 'Babur' as its name?",
+      "options": [
+        "Babur (Hatf-VII) cruise missile",
+        "Shaheen",
+        "Ghauri",
+        "Abdali"
+      ],
+      "answer": 0,
+      "explanation": "Babur is Pakistan's ground-launched cruise missile, named after Emperor Babur.",
+      "difficulty": "medium",
+      "id": "q23"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The 1965 war between Pakistan and India began over which region?",
+      "options": [
+        "Kashmir (Operation Gibraltar area)",
+        "Sindh",
+        "Balochistan",
+        "Gilgit"
+      ],
+      "answer": 0,
+      "explanation": "The 1965 war began with skirmishes in Kashmir, escalating to a full-scale conflict.",
+      "difficulty": "medium",
+      "id": "q24"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Battle of Chawinda (1965) is considered?",
+      "options": [
+        "One of the largest tank battles since World War II",
+        "A naval battle",
+        "An air battle only",
+        "A border skirmish"
+      ],
+      "answer": 0,
+      "explanation": "Chawinda in Punjab saw major armoured engagements between Pakistan and India.",
+      "difficulty": "medium",
+      "id": "q25"
+    },
+    {
+      "type": "mcq",
+      "prompt": "'Youm-e-Shuhada' (Martyrs' Day) is observed on?",
+      "options": [
+        "30 April",
+        "6 September",
+        "23 March",
+        "14 August"
+      ],
+      "answer": 0,
+      "explanation": "30 April is observed as Martyrs' Day to honour those who gave their lives for Pakistan.",
+      "difficulty": "medium",
+      "id": "q26"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who was the Commander-in-Chief of Pakistan Army during the 1965 war?",
+      "options": [
+        "General Muhammad Musa",
+        "Ayub Khan",
+        "Yahya Khan",
+        "Tikka Khan"
+      ],
+      "answer": 0,
+      "explanation": "General Muhammad Musa led the army; Ayub Khan was president.",
+      "difficulty": "hard",
+      "id": "q27"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The 'Fauji' tradition of 'Sainik' in Pakistan includes the 'Nishan-e-Haider'. It is awarded for?",
+      "options": [
+        "Conspicuous gallantry in the face of the enemy",
+        "Long service",
+        "Sports achievement",
+        "Civilian bravery"
+      ],
+      "answer": 0,
+      "explanation": "Nishan-e-Haider is Pakistan's highest military gallantry award.",
+      "difficulty": "easy",
+      "id": "q28"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The 'Naval Academy' of Pakistan is at?",
+      "options": [
+        "Manora (Karachi)",
+        "Gwadar",
+        "Islamabad",
+        "Peshawar"
+      ],
+      "answer": 0,
+      "explanation": "The Pakistan Naval Academy is at Manora, Karachi.",
+      "difficulty": "medium",
+      "id": "q29"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The 'Air Force Academy' (Asghar Khan Academy) is at?",
+      "options": [
+        "Risalpur",
+        "Sargodha",
+        "Karachi",
+        "Quetta"
+      ],
+      "answer": 0,
+      "explanation": "PAF Academy Risalpur trains pilots and officers.",
+      "difficulty": "medium",
+      "id": "q30"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which rank heads the Pakistan Navy?",
+      "options": [
+        "Chief of the Naval Staff (CNS)",
+        "Admiral of the Fleet",
+        "Commodore",
+        "Naval Secretary"
+      ],
+      "answer": 0,
+      "explanation": "The Chief of the Naval Staff commands the navy.",
+      "difficulty": "easy",
+      "id": "q31"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The 'K-8' and 'Super Mushshak' aircraft are?",
+      "options": [
+        "Trainer aircraft of the PAF",
+        "Fighter jets",
+        "Drones",
+        "Tankers"
+      ],
+      "answer": 0,
+      "explanation": "K-8 and Super Mushshak are training aircraft used by the PAF.",
+      "difficulty": "hard",
+      "id": "q32"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Pakistan's 'Babur' cruise missile has a reported range of about?",
+      "options": [
+        "700 km (with variants up to 1,500 km)",
+        "100 km",
+        "50 km",
+        "5,000 km"
+      ],
+      "answer": 0,
+      "explanation": "Babur (Hatf-VII) ranges around 700 km, with extended variants.",
+      "difficulty": "hard",
+      "id": "q33"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The 'Abdali' (Hatf-II) missile is?",
+      "options": [
+        "A short-range ballistic missile",
+        "A cruise missile",
+        "A submarine",
+        "An aircraft"
+      ],
+      "answer": 0,
+      "explanation": "Abdali is a short-range ballistic missile (~180 km).",
+      "difficulty": "medium",
+      "id": "q34"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Pakistan's 'Ghaznavi' missile is named after?",
+      "options": [
+        "Mahmud of Ghazni",
+        "Muhammad bin Qasim",
+        "Babur",
+        "Aurangzeb"
+      ],
+      "answer": 0,
+      "explanation": "Ghaznavi (Hatf-III) honors Mahmud of Ghazni.",
+      "difficulty": "medium",
+      "id": "q35"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The 'Shaheen-III' missile's range is approximately?",
+      "options": [
+        "2,750 km",
+        "500 km",
+        "100 km",
+        "10,000 km"
+      ],
+      "answer": 0,
+      "explanation": "Shaheen-III has a range of about 2,750 km, covering much of the region.",
+      "difficulty": "hard",
+      "id": "q36"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The 'Sword of Honour' at PMA is awarded to?",
+      "options": [
+        "The best cadet of the passing-out course",
+        "The oldest officer",
+        "The fastest runner",
+        "The tallest cadet"
+      ],
+      "answer": 0,
+      "explanation": "The Sword of Honour recognizes the top cadet at PMA Kakul.",
+      "difficulty": "easy",
+      "id": "q37"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The 'Karakoram' mountain range forms a natural border with?",
+      "options": [
+        "China",
+        "India only",
+        "Iran",
+        "Afghanistan"
+      ],
+      "answer": 0,
+      "explanation": "The Karakoram range lies along Pakistan's border with China.",
+      "difficulty": "easy",
+      "id": "q38"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which Pakistani submarine class is the first nuclear-powered-capable (conventional) Agosta-90B?",
+      "options": [
+        "Agosta-90B (Khalid class)",
+        "Type 21",
+        "Submarine only of US origin",
+        "Diesel boats only"
+      ],
+      "answer": 0,
+      "explanation": "The Agosta-90B (Khalid class) submarines are Pakistan's most advanced.",
+      "difficulty": "hard",
+      "id": "q39"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Pakistan's 'Sea of Peace' doctrine refers to?",
+      "options": [
+        "A maritime security concept for the Indian Ocean",
+        "A naval exercise",
+        "A fishing treaty",
+        "A port name"
+      ],
+      "answer": 0,
+      "explanation": "Pakistan's navy promotes 'Sea of Peace' for shared maritime security.",
+      "difficulty": "medium",
+      "id": "q40"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The 'Zarb-e-Hadid' and 'Raad' exercises relate to?",
+      "options": [
+        "Pakistan Army war games",
+        "Naval drills",
+        "Air shows",
+        "Disaster relief"
+      ],
+      "answer": 0,
+      "explanation": "Zarb-e-Hadid is a major Pakistan Army exercise; Raad is an air-launched cruise missile.",
+      "difficulty": "hard",
+      "id": "q41"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The 'PNS Zulfiqar' and 'PNS Saif' are?",
+      "options": [
+        "Warships (frigates) of the Pakistan Navy",
+        "Submarines",
+        "Aircraft",
+        "Missiles"
+      ],
+      "answer": 0,
+      "explanation": "These are Zulfiquar-class frigates of the Pakistan Navy.",
+      "difficulty": "hard",
+      "id": "q42"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which Pakistani general became the first to hold the rank of Field Marshal?",
+      "options": [
+        "Ayub Khan",
+        "Yahya Khan",
+        "Musharraf",
+        "Raheel Sharif"
+      ],
+      "answer": 0,
+      "explanation": "Ayub Khan was elevated to Field Marshal in 1959.",
+      "difficulty": "medium",
+      "id": "q43"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The 'Mujahid Force' and 'National Guard' are?",
+      "options": [
+        "Reserve forces of Pakistan",
+        "Elite commandos",
+        "Airborne units",
+        "Naval marines"
+      ],
+      "answer": 0,
+      "explanation": "The Mujahid Force and National Guard are reserve components.",
+      "difficulty": "medium",
+      "id": "q44"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The 'Special Services Group' (SSG) is Pakistan's?",
+      "options": [
+        "Elite special forces",
+        "Medical corps",
+        "Engineers",
+        "Signals corps"
+      ],
+      "answer": 0,
+      "explanation": "The SSG is the Pakistan Army's elite special operations unit.",
+      "difficulty": "easy",
+      "id": "q45"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which PAF pilot shot down 9 Indian aircraft in the 1965 war?",
+      "options": [
+        "Muhammad Mahmood Alam",
+        "Asghar Khan",
+        "Nur Khan",
+        "Rafiqui"
+      ],
+      "answer": 0,
+      "explanation": "MM Alam is credited with 9 kills in 1965, a record in aerial combat.",
+      "difficulty": "medium",
+      "id": "q46"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The 'Joint Staff Headquarters' (JSHQ) is located at?",
+      "options": [
+        "Rawalpindi (Chaklala area)",
+        "Islamabad only",
+        "Karachi",
+        "Lahore"
+      ],
+      "answer": 0,
+      "explanation": "The JSHQ is in Rawalpindi, coordinating the three services.",
+      "difficulty": "medium",
+      "id": "q47"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What is the name of Pakistan's first nuclear test series conducted in May 1998?",
+      "options": [
+        "Chagai-I and Chagai-II",
+        "Operation Rah-e-Nijat",
+        "Zarb-e-Azb",
+        "Ghaznavi"
+      ],
+      "answer": 0,
+      "explanation": "Chagai-I (28 May) and Chagai-II (30 May 1998) were the nuclear tests.",
+      "difficulty": "easy",
+      "id": "q48"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Pakistani missile 'Shaheen' is named after:",
+      "options": [
+        "A falcon (white eagle)",
+        "A mountain",
+        "A river",
+        "A city"
+      ],
+      "answer": 0,
+      "explanation": "Shaheen means falcon, symbolising speed and precision.",
+      "difficulty": "medium",
+      "id": "q49"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The 'Abdali' missile is named after which historical figure?",
+      "options": [
+        "Ahmad Shah Abdali",
+        "Sher Shah Suri",
+        "Tipu Sultan",
+        "Salahuddin"
+      ],
+      "answer": 0,
+      "explanation": "It honours Ahmad Shah Abdali, the Afghan ruler.",
+      "difficulty": "medium",
+      "id": "q50"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What is the name of Pakistan's nuclear command authority?",
+      "options": [
+        "National Command Authority (NCA)",
+        "Strategic Command",
+        "PAEC",
+        "ISSI"
+      ],
+      "answer": 0,
+      "explanation": "The NCA oversees the development and control of nuclear assets.",
+      "difficulty": "medium",
+      "id": "q51"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Pakistan's first aircraft carrier-free naval fleet is based at which port?",
+      "options": [
+        "Karachi (PN Dockyard)",
+        "Gwadar",
+        "Pasni",
+        "Orkara"
+      ],
+      "answer": 0,
+      "explanation": "The Pakistan Navy's main operational base is at Karachi.",
+      "difficulty": "easy",
+      "id": "q52"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The PAF's main fighter base in the 1971 war was at:",
+      "options": [
+        "Sargodha",
+        "Mianwali",
+        "Jacobabad",
+        "Quetta"
+      ],
+      "answer": 0,
+      "explanation": "Sargodha was the key PAF operational base during the 1971 war.",
+      "difficulty": "medium",
+      "id": "q53"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Pakistan tested the 'Ghauri' missile in which year?",
+      "options": [
+        "1998",
+        "1990",
+        "2002",
+        "1995"
+      ],
+      "answer": 0,
+      "explanation": "Ghauri was first test-fired in April 1998.",
+      "difficulty": "medium",
+      "id": "q54"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The K-8 is a joint Pakistan-China training aircraft produced by:",
+      "options": [
+        "PAC Kamra",
+        "PAF Faisal",
+        "HIT Taxila",
+        "PN Dockyard"
+      ],
+      "answer": 0,
+      "explanation": "The K-8 Karakorum trainer is assembled at Pakistan Aeronautical Complex, Kamra.",
+      "difficulty": "hard",
+      "id": "q55"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Pakistan conducted its nuclear tests at which site?",
+      "options": [
+        "Ras Koh hills, Chagai",
+        "Kala Chitta",
+        "Thar",
+        "Karakoram"
+      ],
+      "answer": 0,
+      "explanation": "The tests took place at the Ras Koh hills in Chagai, Balochistan.",
+      "difficulty": "easy",
+      "id": "q56"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The 'Zarb-e-Azb' operation was conducted against which group?",
+      "options": [
+        "Terrorist networks in North Waziristan",
+        "Indian forces",
+        "Naval pirates",
+        "Drug smugglers"
+      ],
+      "answer": 0,
+      "explanation": "Zarb-e-Azb (2014) targeted militants in North Waziristan.",
+      "difficulty": "easy",
+      "id": "q57"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The 'Al-Khalid' tank is manufactured at:",
+      "options": [
+        "Heavy Industries Taxila (HIT)",
+        "PAC Kamra",
+        "KSEW Karachi",
+        "PN Ordnance"
+      ],
+      "answer": 0,
+      "explanation": "Al-Khalid main battle tanks are built at HIT, Taxila.",
+      "difficulty": "medium",
+      "id": "q58"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Pakistan's strategic nuclear command body is called:",
+      "options": [
+        "Strategic Plans Division (SPD)",
+        "ISI",
+        "COMSEC",
+        "NCA"
+      ],
+      "answer": 0,
+      "explanation": "The SPD manages the strategic nuclear arsenal.",
+      "difficulty": "hard",
+      "id": "q59"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which Pakistani general is known as the architect of the 1965 war strategy?",
+      "options": [
+        "General Musa Khan",
+        "General Ayub Khan",
+        "General Yahya Khan",
+        "General Tikka Khan"
+      ],
+      "answer": 0,
+      "explanation": "Gen. Musa Khan was the Army chief during the 1965 war.",
+      "difficulty": "medium",
+      "id": "q60"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Pakistan Navy's submarine base is located at:",
+      "options": [
+        "Orkara (near Karachi)",
+        "Gwadar",
+        "Pasni",
+        "Keti Bandar"
+      ],
+      "answer": 0,
+      "explanation": "Ormara is the main submarine base of the Pakistan Navy.",
+      "difficulty": "medium",
+      "id": "q61"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Pakistan tested the 'Hatf' series of missiles in:",
+      "options": [
+        "Multiple tests since 1989",
+        "Only in 1998",
+        "Only in 2005",
+        "Never tested"
+      ],
+      "answer": 0,
+      "explanation": "The Hatf series has been test-fired many times since 1989.",
+      "difficulty": "medium",
+      "id": "q62"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Pakistan Air Force was created in:",
+      "options": [
+        "1947",
+        "1948",
+        "1950",
+        "1946"
+      ],
+      "answer": 0,
+      "explanation": "The RPAF, now PAF, was established on 14 August 1947.",
+      "difficulty": "easy",
+      "id": "q63"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Operation 'Radd-ul-Fasaad' was launched by the military in:",
+      "options": [
+        "2017",
+        "2014",
+        "2020",
+        "2019"
+      ],
+      "answer": 0,
+      "explanation": "Radd-ul-Fasaad (2017) aimed at eliminating terrorism across Pakistan.",
+      "difficulty": "medium",
+      "id": "q64"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which missile has a range of about 2,750 km and is Pakistan's longest-range ballistic missile?",
+      "options": [
+        "Shaheen-III",
+        "Ghauri",
+        "Ghaznavi",
+        "Abdali"
+      ],
+      "answer": 0,
+      "explanation": "Shaheen-III has a reported range of ~2,750 km.",
+      "difficulty": "medium",
+      "id": "q65"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The defence budget of Pakistan is mainly presented by:",
+      "options": [
+        "The Finance Minister",
+        "The Army Chief",
+        "The President",
+        "The PM"
+      ],
+      "answer": 0,
+      "explanation": "The federal finance minister presents the budget, including defence.",
+      "difficulty": "easy",
+      "id": "q66"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Pakistan's first martial law was imposed in which year?",
+      "options": [
+        "1958",
+        "1969",
+        "1977",
+        "1953"
+      ],
+      "answer": 0,
+      "explanation": "Gen. Ayub Khan imposed the first martial law in October 1958.",
+      "difficulty": "easy",
+      "id": "q67"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Pakistan Ordnance Factories (POF) are located at:",
+      "options": [
+        "Wah Cantonment",
+        "Kamra",
+        "Taxila",
+        "Sialkot"
+      ],
+      "answer": 0,
+      "explanation": "POF is based at Wah Cantonment near Rawalpindi.",
+      "difficulty": "easy",
+      "id": "q68"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The 'Zarb-e-Nab' naval exercise is conducted by which service?",
+      "options": [
+        "Pakistan Navy",
+        "Pakistan Army",
+        "Pakistan Air Force",
+        "Coast Guard"
+      ],
+      "answer": 0,
+      "explanation": "Zarb-e-Nab is a major Pakistan Navy exercise.",
+      "difficulty": "hard",
+      "id": "q69"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Pakistan conducted a successful test of the Babur cruise missile in:",
+      "options": [
+        "2005 and later years",
+        "1998 only",
+        "1989 only",
+        "2015 only"
+      ],
+      "answer": 0,
+      "explanation": "Babur, an indigenously developed cruise missile, was first tested in 2005.",
+      "difficulty": "medium",
+      "id": "q70"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The chief of army staff is appointed by:",
+      "options": [
+        "The President",
+        "The Prime Minister",
+        "The Defence Minister",
+        "The Chief Justice"
+      ],
+      "answer": 0,
+      "explanation": "The President appoints the COAS on the advice of the PM.",
+      "difficulty": "easy",
+      "id": "q71"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which operation was launched to counter the insurgency in Swat in 2009?",
+      "options": [
+        "Rah-e-Rast",
+        "Zarb-e-Azb",
+        "Radd-ul-Fasaad",
+        "Khyber-1"
+      ],
+      "answer": 0,
+      "explanation": "Operation Rah-e-Rast (2009) cleared Swat of militants.",
+      "difficulty": "medium",
+      "id": "q72"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Pakistan Coast Guard operates primarily along:",
+      "options": [
+        "The Makran coast",
+        "The river Indus",
+        "The Karakoram highway",
+        "The Sialkot border"
+      ],
+      "answer": 0,
+      "explanation": "The Coast Guard patrols Pakistan's coastline, mainly the Makran coast.",
+      "difficulty": "easy",
+      "id": "q73"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The 'Fatah' is which type of weapon system developed by Pakistan?",
+      "options": [
+        "Guided multi-launch rocket system (MLRS)",
+        "Nuclear submarine",
+        "Fighter jet",
+        "Drone"
+      ],
+      "answer": 0,
+      "explanation": "Fatah is an indigenously developed guided MLRS.",
+      "difficulty": "hard",
+      "id": "q74"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The 'Ghaznavi' missile is a short-range missile with a range of about:",
+      "options": [
+        "290 km",
+        "1,500 km",
+        "2,750 km",
+        "700 km"
+      ],
+      "answer": 0,
+      "explanation": "Ghaznavi (Hatf-3) has a range of about 290 km.",
+      "difficulty": "hard",
+      "id": "q75"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Pakistan's 'Agosta-90B' submarines were acquired from:",
+      "options": [
+        "France",
+        "China",
+        "Germany",
+        "USA"
+      ],
+      "answer": 0,
+      "explanation": "Agosta-90B submarines were built with French assistance.",
+      "difficulty": "hard",
+      "id": "q76"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Pakistan Navy's war slogan is:",
+      "options": [
+        "Guardians of the Sea",
+        "Pride of the Nation",
+        "Second to None",
+        "Defenders of the Realm"
+      ],
+      "answer": 0,
+      "explanation": "The Navy's motto is 'Guardians of the Sea'.",
+      "difficulty": "medium",
+      "id": "q77"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Operation 'Khyber-1' targeted militants in:",
+      "options": [
+        "Khyber Agency",
+        "Swat",
+        "Karachi",
+        "Quetta"
+      ],
+      "answer": 0,
+      "explanation": "Operation Khyber-1 (2014) cleared Khyber Agency.",
+      "difficulty": "medium",
+      "id": "q78"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The first Chief of Army Staff of Pakistan was:",
+      "options": [
+        "General Sir Frank Messervy",
+        "General Ayub Khan",
+        "General Yahya Khan",
+        "General Musa Khan"
+      ],
+      "answer": 0,
+      "explanation": "Gen. Sir Frank Messervy was the first army chief (1947).",
+      "difficulty": "hard",
+      "id": "q79"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The 'MILGEM' corvettes for Pakistan were built with cooperation from:",
+      "options": [
+        "Turkey",
+        "China",
+        "Italy",
+        "UK"
+      ],
+      "answer": 0,
+      "explanation": "Pakistan acquired MILGEM corvettes from Turkey.",
+      "difficulty": "medium",
+      "id": "q80"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Pakistan Air Force's aerobatics team is called:",
+      "options": [
+        "Sherdils",
+        "Red Arrows",
+        "Thunderbirds",
+        "Blue Angels"
+      ],
+      "answer": 0,
+      "explanation": "The PAF's display team is the Sherdils.",
+      "difficulty": "easy",
+      "id": "q81"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The K-8 Karakorum trainer aircraft is produced jointly by Pakistan and:",
+      "options": [
+        "China",
+        "Turkey",
+        "Russia",
+        "USA"
+      ],
+      "answer": 0,
+      "explanation": "K-8 is a joint Pakistan-China trainer.",
+      "difficulty": "easy",
+      "id": "q82"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Defence Housing Authority (DHA) was established in:",
+      "options": [
+        "1948",
+        "1965",
+        "1958",
+        "1971"
+      ],
+      "answer": 0,
+      "explanation": "DHA was set up in 1948 to provide housing to defence personnel.",
+      "difficulty": "hard",
+      "id": "q83"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The 'K2' (Karakoram) mountain is of strategic interest to which service?",
+      "options": [
+        "Pakistan Army (high-altitude operations)",
+        "Pakistan Navy",
+        "PAF only",
+        "Coast Guard"
+      ],
+      "answer": 0,
+      "explanation": "The Army conducts high-altitude training in the Karakoram region.",
+      "difficulty": "medium",
+      "id": "q84"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Pakistan Army's main infantry rifle in service is the:",
+      "options": [
+        "Type 56 (and its variants)",
+        "M16 only",
+        "AK-47 only",
+        "G3 only"
+      ],
+      "answer": 0,
+      "explanation": "Type 56 rifles and variants are standard issue.",
+      "difficulty": "hard",
+      "id": "q85"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The 'Zarb-e-Ahan' refers to:",
+      "options": [
+        "An armour exercise of the Pakistan Army",
+        "A naval exercise",
+        "An air exercise",
+        "A nuclear test"
+      ],
+      "answer": 0,
+      "explanation": "Zarb-e-Ahan is a major armoured corps exercise.",
+      "difficulty": "hard",
+      "id": "q86"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The National Defence University (NDU) is located at:",
+      "options": [
+        "Islamabad",
+        "Rawalpindi",
+        "Karachi",
+        "Lahore"
+      ],
+      "answer": 0,
+      "explanation": "NDU is in Islamabad.",
+      "difficulty": "easy",
+      "id": "q87"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Pakistan's first female fighter pilot was:",
+      "options": [
+        "Marium Mukhtiar",
+        "Sana Mir",
+        "Shazia Hidayat",
+        "Bilquis Edhi"
+      ],
+      "answer": 0,
+      "explanation": "Marium Mukhtiar was a pioneering female PAF fighter pilot.",
+      "difficulty": "easy",
+      "id": "q88"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The 'Pakistan Rangers' primarily guard which border?",
+      "options": [
+        "The eastern border with India",
+        "The western border",
+        "The northern border",
+        "The coastline"
+      ],
+      "answer": 0,
+      "explanation": "Pakistan Rangers are stationed along the eastern (Indo-Pak) border.",
+      "difficulty": "easy",
+      "id": "q89"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The 'Chagai-I' test consisted of how many nuclear devices?",
+      "options": [
+        "Five",
+        "One",
+        "Two",
+        "Seven"
+      ],
+      "answer": 0,
+      "explanation": "Chagai-I involved five simultaneous detonations on 28 May 1998.",
+      "difficulty": "medium",
+      "id": "q90"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The 'Jinnah Class' frigates of the Pakistan Navy were obtained from:",
+      "options": [
+        "China",
+        "USA",
+        "UK",
+        "Russia"
+      ],
+      "answer": 0,
+      "explanation": "Jinnah Class (Type 054A/P) frigates are from China.",
+      "difficulty": "hard",
+      "id": "q91"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Pakistan's 'Full-Spectrum Deterrence' strategy covers:",
+      "options": [
+        "Conventional and nuclear deterrence",
+        "Only nuclear",
+        "Only naval",
+        "Only cyber"
+      ],
+      "answer": 0,
+      "explanation": "Full-spectrum deterrence spans conventional and nuclear means.",
+      "difficulty": "medium",
+      "id": "q92"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The 'Nishan-e-Haider' is Pakistan's highest award for?",
+      "options": [
+        "Gallantry in the face of the enemy",
+        "Civilian service",
+        "Sports achievement",
+        "Scientific work"
+      ],
+      "answer": 0,
+      "explanation": "The Nishan-e-Haider is the highest military gallantry award.",
+      "difficulty": "easy",
+      "id": "q93"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The first Nishan-e-Haider recipient of Pakistan was?",
+      "options": [
+        "Captain Raja Muhammad Sarwar",
+        "Major Aziz Bhatti",
+        "Pilot Officer Rashid Minhas",
+        "Lance Naik Muhammad Mahfuz"
+      ],
+      "answer": 0,
+      "explanation": "Captain Raja Muhammad Sarwar received the first Nishan-e-Haider posthumously in 1948.",
+      "difficulty": "hard",
+      "id": "q94"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Major Aziz Bhatti received the Nishan-e-Haider for gallantry during which war?",
+      "options": [
+        "The 1965 war",
+        "The 1971 war",
+        "The Kargil conflict",
+        "World War II"
+      ],
+      "answer": 0,
+      "explanation": "Major Aziz Bhatti was martyred in the 1965 war.",
+      "difficulty": "medium",
+      "id": "q95"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Pilot Officer Rashid Minhas received the Nishan-e-Haider for his actions in which year?",
+      "options": [
+        "1971",
+        "1965",
+        "1948",
+        "1999"
+      ],
+      "answer": 0,
+      "explanation": "Rashid Minhas was martyred in August 1971.",
+      "difficulty": "hard",
+      "id": "q96"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Lance Naik Muhammad Mahfuz received the Nishan-e-Haider for gallantry in which war?",
+      "options": [
+        "The 1971 war",
+        "The 1965 war",
+        "The Kargil conflict",
+        "The Siachen conflict"
+      ],
+      "answer": 0,
+      "explanation": "Lance Naik Mahfuz earned the Nishan-e-Haider in the 1971 war.",
+      "difficulty": "hard",
+      "id": "q97"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Pakistan Army's 'Sword of Honour' at PMA Kakul is awarded to?",
+      "options": [
+        "The best overall cadet",
+        "The best shooter",
+        "The best athlete",
+        "The senior-most cadet"
+      ],
+      "answer": 0,
+      "explanation": "The Sword of Honour is given to the best cadet of the course.",
+      "difficulty": "medium",
+      "id": "q98"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Pakistan Navy celebrates its 'Navy Day' on which date?",
+      "options": [
+        "8 September",
+        "6 September",
+        "14 August",
+        "23 March"
+      ],
+      "answer": 0,
+      "explanation": "Navy Day is observed on 8 September.",
+      "difficulty": "hard",
+      "id": "q99"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Pakistan Air Force celebrates 'Air Force Day' on which date?",
+      "options": [
+        "7 September",
+        "6 September",
+        "8 September",
+        "23 March"
+      ],
+      "answer": 0,
+      "explanation": "Air Force Day is celebrated on 7 September.",
+      "difficulty": "hard",
+      "id": "q100"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Pakistan Navy's first female admiral was?",
+      "options": [
+        "No Pakistani woman has reached flag rank in the Navy",
+        "Marium Mukhtiar",
+        "Ayesha Farooq",
+        "Samina Baig"
+      ],
+      "answer": 0,
+      "explanation": "No Pakistani woman has yet reached flag rank in the Navy.",
+      "difficulty": "hard",
+      "id": "q101"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The PAF's 'Sherdils' are best known for?",
+      "options": [
+        "Aerobatic displays",
+        "Bombing missions",
+        "Air defence",
+        "Reconnaissance"
+      ],
+      "answer": 0,
+      "explanation": "The Sherdils are the PAF's aerobatics team.",
+      "difficulty": "medium",
+      "id": "q102"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The 'Shaheen' series of missiles is developed by which organisation?",
+      "options": [
+        "National Defence Complex (NDC)",
+        "KRL",
+        "PAEC",
+        "SUPARCO"
+      ],
+      "answer": 0,
+      "explanation": "The Shaheen missiles are produced by the National Defence Complex.",
+      "difficulty": "hard",
+      "id": "q103"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The 'Ghauri' missile is developed by which organisation?",
+      "options": [
+        "Khan Research Laboratories",
+        "National Defence Complex",
+        "PAEC",
+        "PAC Kamra"
+      ],
+      "answer": 0,
+      "explanation": "The Ghauri missile is developed by KRL.",
+      "difficulty": "hard",
+      "id": "q104"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Pakistan's 'Hatf-IX' missile is better known as the?",
+      "options": [
+        "Nasr",
+        "Ghaznavi",
+        "Abdali",
+        "Babur"
+      ],
+      "answer": 0,
+      "explanation": "Hatf-IX is the Nasr short-range missile.",
+      "difficulty": "hard",
+      "id": "q105"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The 'Nasr' missile is designed to counter?",
+      "options": [
+        "India's 'Cold Start' doctrine",
+        "Naval blockade",
+        "Air raids",
+        "Cyber attacks"
+      ],
+      "answer": 0,
+      "explanation": "Nasr is a tactical missile aimed at deterring India's Cold Start doctrine.",
+      "difficulty": "hard",
+      "id": "q106"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The 'Ra'ad' missile is a Pakistan Air Force?",
+      "options": [
+        "Air-launched cruise missile",
+        "Ballistic missile",
+        "Anti-tank missile",
+        "Surface-to-air missile"
+      ],
+      "answer": 0,
+      "explanation": "Ra'ad is an air-launched cruise missile.",
+      "difficulty": "hard",
+      "id": "q107"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The 'Burraq' is Pakistan's armed?",
+      "options": [
+        "Unmanned aerial vehicle",
+        "Fighter jet",
+        "Tank",
+        "Submarine"
+      ],
+      "answer": 0,
+      "explanation": "Burraq is an armed UAV of Pakistan.",
+      "difficulty": "medium",
+      "id": "q108"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The 'Pakistan Army Aviation' operates which attack helicopter?",
+      "options": [
+        "AH-1 Cobra",
+        "F-16",
+        "JF-17",
+        "Mirage"
+      ],
+      "answer": 0,
+      "explanation": "The Army Aviation operates AH-1 Cobra attack helicopters.",
+      "difficulty": "medium",
+      "id": "q109"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The 'VT-4' and 'Al-Zarrar' are types of which Pakistani weapons?",
+      "options": [
+        "Main battle tanks",
+        "Fighter aircraft",
+        "Submarines",
+        "Artillery guns"
+      ],
+      "answer": 0,
+      "explanation": "VT-4 and Al-Zarrar are main battle tanks.",
+      "difficulty": "medium",
+      "id": "q110"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The 'M-109' and 'M-198' are types of?",
+      "options": [
+        "Howitzers used by the Pakistan Army",
+        "Rifles",
+        "Drones",
+        "Mines"
+      ],
+      "answer": 0,
+      "explanation": "M-109 and M-198 are towed howitzers.",
+      "difficulty": "hard",
+      "id": "q111"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The 'Gomal' and 'Zahid' are examples of Pakistani?",
+      "options": [
+        "Patrol boats",
+        "Missiles",
+        "Drones",
+        "Tanks"
+      ],
+      "answer": 0,
+      "explanation": "Gomal and Zahid are patrol boats of Pakistan.",
+      "difficulty": "hard",
+      "id": "q112"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The 'Pakistan Navy' operates the 'Orkara' base for which purpose?",
+      "options": [
+        "Submarine operations",
+        "Air defence",
+        "Missile testing",
+        "Coast guard training"
+      ],
+      "answer": 0,
+      "explanation": "Orkara is Pakistan's submarine base.",
+      "difficulty": "medium",
+      "id": "q113"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The 'PNS Shifa' is a Pakistani naval?",
+      "options": [
+        "Hospital ship",
+        "Frigate",
+        "Submarine",
+        "Destroyer"
+      ],
+      "answer": 0,
+      "explanation": "PNS Shifa is a hospital ship.",
+      "difficulty": "hard",
+      "id": "q114"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The 'Jinnah' and 'Tughril' class ships of Pakistan were acquired from which country?",
+      "options": [
+        "China",
+        "Turkey",
+        "USA",
+        "France"
+      ],
+      "answer": 0,
+      "explanation": "The Jinnah and Tughril class frigates came from China.",
+      "difficulty": "hard",
+      "id": "q115"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The 'MILGEM' corvette project is a joint Pakistan-Turkey programme named?",
+      "options": [
+        "PNS Babur class",
+        "PNS Khalid class",
+        "PNS Hangor class",
+        "PNS Agosta class"
+      ],
+      "answer": 0,
+      "explanation": "The MILGEM corvettes form the PNS Babur class.",
+      "difficulty": "hard",
+      "id": "q116"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Pakistan's first indigenous submarine project is named?",
+      "options": [
+        "Hangor class",
+        "Agosta class",
+        "Babur class",
+        "Khalid class"
+      ],
+      "answer": 0,
+      "explanation": "The Hangor class is Pakistan's first locally built submarine project.",
+      "difficulty": "hard",
+      "id": "q117"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The 'Pakistan Army' highest peacetime gallantry award is the?",
+      "options": [
+        "Sitara-e-Jurat",
+        "Tamgha-e-Jurat",
+        "Hilal-e-Jurat",
+        "Nishan-e-Haider"
+      ],
+      "answer": 0,
+      "explanation": "The Sitara-e-Jurat is a high gallantry award.",
+      "difficulty": "hard",
+      "id": "q118"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The 'Tamgha-i-Imtiaz' (military) is awarded for?",
+      "options": [
+        "Meritorious service in the armed forces",
+        "Gallantry only",
+        "Long service",
+        "Sports"
+      ],
+      "answer": 0,
+      "explanation": "The Tamgha-i-Imtiaz (military) honours distinguished service.",
+      "difficulty": "hard",
+      "id": "q119"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The 'Pakistan Coast Guards' is a paramilitary force under which ministry?",
+      "options": [
+        "Interior",
+        "Defence",
+        "Foreign Affairs",
+        "Commerce"
+      ],
+      "answer": 0,
+      "explanation": "The Coast Guards operate under the Ministry of Interior.",
+      "difficulty": "hard",
+      "id": "q120"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The 'Frontier Corps' in Khyber Pakhtunkhwa is commanded by whom?",
+      "options": [
+        "An inspector general from the Pakistan Army",
+        "A civilian officer",
+        "The Chief Minister",
+        "The Governor only"
+      ],
+      "answer": 0,
+      "explanation": "The FC is led by an Army-appointed inspector general.",
+      "difficulty": "hard",
+      "id": "q121"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The 'Pakistan Rangers' in Punjab have their headquarters at?",
+      "options": [
+        "Lahore",
+        "Karachi",
+        "Rawalpindi",
+        "Multan"
+      ],
+      "answer": 0,
+      "explanation": "The Rangers' Punjab headquarters is in Lahore.",
+      "difficulty": "hard",
+      "id": "q122"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The 'Pakistan Rangers' in Sindh have their headquarters at?",
+      "options": [
+        "Karachi",
+        "Hyderabad",
+        "Sukkur",
+        "Thatta"
+      ],
+      "answer": 0,
+      "explanation": "The Sindh Rangers headquarters is in Karachi.",
+      "difficulty": "hard",
+      "id": "q123"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The 'Civil Armed Forces' of Pakistan include the?",
+      "options": [
+        "Rangers, Frontier Corps and Coast Guards",
+        "Army, Navy and Air Force",
+        "ISI and MI",
+        "Police only"
+      ],
+      "answer": 0,
+      "explanation": "The Civil Armed Forces include Rangers, FC and Coast Guards.",
+      "difficulty": "medium",
+      "id": "q124"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The 'Inter-Services Public Relations' (ISPR) is the media wing of which body?",
+      "options": [
+        "The armed forces",
+        "The judiciary",
+        "The legislature",
+        "The civil service"
+      ],
+      "answer": 0,
+      "explanation": "ISPR is the public relations wing of the armed forces.",
+      "difficulty": "easy",
+      "id": "q125"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The 'Military Intelligence' (MI) agency reports primarily to?",
+      "options": [
+        "The Chief of Army Staff",
+        "The Prime Minister",
+        "The President",
+        "The Navy Chief"
+      ],
+      "answer": 0,
+      "explanation": "MI operates under the Army's chain of command.",
+      "difficulty": "hard",
+      "id": "q126"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Pakistan's first female three-star general was?",
+      "options": [
+        "No Pakistani woman has held three-star rank",
+        "Ayesha Farooq",
+        "Marium Mukhtiar",
+        "Noor Jehan"
+      ],
+      "answer": 0,
+      "explanation": "No Pakistani woman has yet reached three-star rank.",
+      "difficulty": "hard",
+      "id": "q127"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The 'Pakistan Army' Medical Corps has been led by which notable female officer?",
+      "options": [
+        "Major General Shahida Malik",
+        "Marium Mukhtiar",
+        "Ayesha Farooq",
+        "Samina Baig"
+      ],
+      "answer": 0,
+      "explanation": "Major General Shahida Malik became the first female two-star general.",
+      "difficulty": "hard",
+      "id": "q128"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The 'Air Chief Marshal' is the highest rank of which service?",
+      "options": [
+        "Pakistan Air Force",
+        "Pakistan Army",
+        "Pakistan Navy",
+        "Coast Guards"
+      ],
+      "answer": 0,
+      "explanation": "Air Chief Marshal is the PAF's highest rank.",
+      "difficulty": "medium",
+      "id": "q129"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The 'Admiral' is the highest rank of which service?",
+      "options": [
+        "Pakistan Navy",
+        "Pakistan Army",
+        "Pakistan Air Force",
+        "Frontier Corps"
+      ],
+      "answer": 0,
+      "explanation": "Admiral is the Pakistan Navy's highest rank.",
+      "difficulty": "easy",
+      "id": "q130"
+    }
+  ]
+}

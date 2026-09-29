@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:lexiora/modules/study_hub/domain/entities/study_goal.dart';
+import 'package:lexiora/modules/study_hub/domain/study_dates.dart';
 import 'package:lexiora/modules/study_hub/presentation/providers/study_hub_providers.dart';
 import 'package:lexiora/modules/study_hub/presentation/widgets/goal_editor.dart';
 import 'package:lexiora/modules/study_hub/presentation/widgets/study_hub_common.dart';
@@ -29,7 +30,11 @@ class DailyGoalCard extends ConsumerWidget {
           ? _Empty(day: day)
           : Column(
               children: <Widget>[
-                _PrimaryGoal(goal: goals.first),
+                _PrimaryGoal(
+                    goal: (goals.where((StudyGoal g) => g.isStudyTimeGoal).isNotEmpty
+                            ? goals.where((StudyGoal g) => g.isStudyTimeGoal)
+                            : goals)
+                        .first),
                 if (goals.length > 1) ...<Widget>[
                   const Divider(height: 20),
                   for (final StudyGoal g in goals.skip(1)) _GoalRow(goal: g),
@@ -80,10 +85,14 @@ class _PrimaryGoal extends ConsumerWidget {
             child: Column(
               mainAxisSize: MainAxisSize.min,
               children: <Widget>[
-                Text('${goal.currentCount}',
+                Text(goal.isStudyTimeGoal
+                    ? formatDuration(goal.currentCount)
+                    : '${goal.currentCount}',
                     style: theme.textTheme.titleLarge
                         ?.copyWith(fontWeight: FontWeight.w800)),
-                Text('/ ${goal.targetCount}',
+                Text(goal.isStudyTimeGoal
+                    ? '/ ${formatDuration(goal.targetMinutes)}'
+                    : '/ ${goal.targetCount}',
                     style: theme.textTheme.bodySmall?.copyWith(
                         color: theme.colorScheme.onSurfaceVariant)),
               ],
@@ -109,7 +118,11 @@ class _PrimaryGoal extends ConsumerWidget {
                         : theme.colorScheme.onSurfaceVariant),
               ),
               const SizedBox(height: 8),
-              _Stepper(goal: goal),
+              if (goal.isStudyTimeGoal)
+                _Stepper(goal: goal)
+              else
+                Text('${goal.currentCount} / ${goal.targetCount} ${goal.unit ?? 'topics'}',
+                    style: theme.textTheme.labelMedium),
             ],
           ),
         ),
@@ -147,7 +160,11 @@ class _GoalRow extends StatelessWidget {
             ),
           ),
           const SizedBox(width: 8),
-          _Stepper(goal: goal, compact: true),
+          if (goal.isStudyTimeGoal)
+            _Stepper(goal: goal, compact: true)
+          else
+            Text('${goal.currentCount}/${goal.targetCount}',
+                style: theme.textTheme.labelMedium),
         ],
       ),
     );

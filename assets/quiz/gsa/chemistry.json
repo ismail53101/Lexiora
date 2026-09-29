@@ -1,0 +1,1833 @@
+{
+  "bank": {
+    "name": "Chemistry",
+    "subject": "General Science & Ability",
+    "topic": "Chemistry",
+    "description": "Elements, the periodic table, compounds, acids and bases, gases and everyday chemistry.",
+    "tags": "css,pms,fpsc,ppsc,nts,gsa,chemistry",
+    "version": "1.0",
+    "id": "gsa_chemistry"
+  },
+  "questions": [
+    {
+      "type": "mcq",
+      "prompt": "What is the chemical formula of water?",
+      "options": [
+        "H2O2",
+        "H2O",
+        "CO2",
+        "HO"
+      ],
+      "answer": 1,
+      "explanation": "Water is H2O: two hydrogen atoms and one oxygen atom.",
+      "difficulty": "easy",
+      "id": "q01"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What is the chemical formula of ozone?",
+      "options": [
+        "O3",
+        "O2",
+        "CO2",
+        "H2O"
+      ],
+      "answer": 0,
+      "explanation": "Ozone is made of three oxygen atoms, hence O3.",
+      "difficulty": "easy",
+      "id": "q02"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which gas is most abundant in the Earth's atmosphere?",
+      "options": [
+        "Oxygen",
+        "Carbon dioxide",
+        "Nitrogen",
+        "Argon"
+      ],
+      "answer": 2,
+      "explanation": "Nitrogen makes up about 78% of the atmosphere.",
+      "difficulty": "easy",
+      "id": "q03"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which is the most abundant element in the Earth's crust?",
+      "options": [
+        "Silicon",
+        "Aluminium",
+        "Iron",
+        "Oxygen"
+      ],
+      "answer": 3,
+      "explanation": "Oxygen is about 46% of the Earth's crust by mass.",
+      "difficulty": "medium",
+      "id": "q04"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which is the most abundant element in the universe?",
+      "options": [
+        "Helium",
+        "Carbon",
+        "Oxygen",
+        "Hydrogen"
+      ],
+      "answer": 3,
+      "explanation": "Hydrogen is about 75% of the universe's normal matter.",
+      "difficulty": "medium",
+      "id": "q05"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which is the most abundant metal in the Earth's crust?",
+      "options": [
+        "Iron",
+        "Copper",
+        "Aluminium",
+        "Gold"
+      ],
+      "answer": 2,
+      "explanation": "Aluminium is the most abundant metal in the crust.",
+      "difficulty": "medium",
+      "id": "q06"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The atomic number of an element is equal to the number of?",
+      "options": [
+        "Neutrons",
+        "Protons",
+        "Electrons and neutrons",
+        "Nucleons"
+      ],
+      "answer": 1,
+      "explanation": "The atomic number counts the protons in the nucleus.",
+      "difficulty": "easy",
+      "id": "q07"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The atomic mass of an atom is approximately the sum of?",
+      "options": [
+        "Protons and electrons",
+        "Protons and neutrons",
+        "Neutrons and electrons",
+        "Electrons only"
+      ],
+      "answer": 1,
+      "explanation": "Mass is carried almost entirely by protons and neutrons.",
+      "difficulty": "easy",
+      "id": "q08"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The periodic table of elements is arranged in order of increasing?",
+      "options": [
+        "Atomic mass",
+        "Atomic number",
+        "Density",
+        "Electronegativity"
+      ],
+      "answer": 1,
+      "explanation": "Modern periodic law orders elements by atomic number.",
+      "difficulty": "medium",
+      "id": "q09"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which is the first element in the periodic table?",
+      "options": [
+        "Helium",
+        "Oxygen",
+        "Carbon",
+        "Hydrogen"
+      ],
+      "answer": 3,
+      "explanation": "Hydrogen (atomic number 1) is the first element.",
+      "difficulty": "easy",
+      "id": "q10"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The chemical symbol 'Au' represents which element?",
+      "options": [
+        "Silver",
+        "Gold",
+        "Aluminium",
+        "Argon"
+      ],
+      "answer": 1,
+      "explanation": "Au (from aurum) is gold.",
+      "difficulty": "easy",
+      "id": "q11"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The chemical symbol 'Fe' represents which element?",
+      "options": [
+        "Fluorine",
+        "Fermium",
+        "Iron",
+        "Francium"
+      ],
+      "answer": 2,
+      "explanation": "Fe (from ferrum) is iron.",
+      "difficulty": "easy",
+      "id": "q12"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which metal is liquid at room temperature?",
+      "options": [
+        "Iron",
+        "Mercury",
+        "Zinc",
+        "Lead"
+      ],
+      "answer": 1,
+      "explanation": "Mercury is the only metal that is liquid at ordinary temperatures.",
+      "difficulty": "easy",
+      "id": "q13"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What is the hardest naturally occurring substance?",
+      "options": [
+        "Quartz",
+        "Steel",
+        "Diamond",
+        "Graphite"
+      ],
+      "answer": 2,
+      "explanation": "Diamond is the hardest natural substance.",
+      "difficulty": "easy",
+      "id": "q14"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Diamond and graphite are both forms of which element?",
+      "options": [
+        "Silicon",
+        "Carbon",
+        "Sulphur",
+        "Boron"
+      ],
+      "answer": 1,
+      "explanation": "Diamond and graphite are allotropes of carbon.",
+      "difficulty": "medium",
+      "id": "q15"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Acids turn blue litmus paper?",
+      "options": [
+        "Blue",
+        "Green",
+        "Red",
+        "Yellow"
+      ],
+      "answer": 2,
+      "explanation": "Acids turn blue litmus red.",
+      "difficulty": "easy",
+      "id": "q16"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Bases (alkalis) turn red litmus paper?",
+      "options": [
+        "Red",
+        "Blue",
+        "Green",
+        "Black"
+      ],
+      "answer": 1,
+      "explanation": "Bases turn red litmus blue.",
+      "difficulty": "easy",
+      "id": "q17"
+    },
+    {
+      "type": "mcq",
+      "prompt": "A solution with pH below 7 is?",
+      "options": [
+        "Basic",
+        "Neutral",
+        "Acidic",
+        "Salty"
+      ],
+      "answer": 2,
+      "explanation": "pH below 7 indicates an acidic solution.",
+      "difficulty": "easy",
+      "id": "q18"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The acid present in the human stomach that aids digestion is?",
+      "options": [
+        "Sulphuric acid",
+        "Nitric acid",
+        "Hydrochloric acid",
+        "Acetic acid"
+      ],
+      "answer": 2,
+      "explanation": "Gastric juice contains dilute hydrochloric acid.",
+      "difficulty": "medium",
+      "id": "q19"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Vinegar contains which acid?",
+      "options": [
+        "Citric acid",
+        "Lactic acid",
+        "Acetic acid",
+        "Tartaric acid"
+      ],
+      "answer": 2,
+      "explanation": "Vinegar is a dilute solution of acetic acid.",
+      "difficulty": "medium",
+      "id": "q20"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The chemical formula of baking soda is?",
+      "options": [
+        "NaOH",
+        "NaHCO3",
+        "Na2CO3",
+        "NaCl"
+      ],
+      "answer": 1,
+      "explanation": "Baking soda is sodium bicarbonate, NaHCO3.",
+      "difficulty": "medium",
+      "id": "q21"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Air is best described as a?",
+      "options": [
+        "Compound",
+        "Mixture of gases",
+        "Solution",
+        "Element"
+      ],
+      "answer": 1,
+      "explanation": "Air is a mixture of gases, mainly nitrogen and oxygen.",
+      "difficulty": "easy",
+      "id": "q22"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Rusting of iron requires?",
+      "options": [
+        "Oxygen and moisture",
+        "Only heat",
+        "Only carbon dioxide",
+        "Salt only"
+      ],
+      "answer": 0,
+      "explanation": "Rusting needs both oxygen and water.",
+      "difficulty": "easy",
+      "id": "q23"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The three main nutrients in fertilisers are?",
+      "options": [
+        "Carbon, hydrogen, oxygen",
+        "Nitrogen, phosphorus, potassium",
+        "Calcium, magnesium, sulphur",
+        "Iron, zinc, copper"
+      ],
+      "answer": 1,
+      "explanation": "NPK fertilisers supply nitrogen, phosphorus and potassium.",
+      "difficulty": "medium",
+      "id": "q24"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Ozone in the atmosphere is made of?",
+      "options": [
+        "O2",
+        "O3",
+        "CO2",
+        "H2O"
+      ],
+      "answer": 1,
+      "explanation": "Ozone is a triatomic molecule O3.",
+      "difficulty": "medium",
+      "id": "q25"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The ozone layer mainly protects us from?",
+      "options": [
+        "Infrared rays",
+        "Visible light",
+        "Ultraviolet (UV) rays",
+        "Radio waves"
+      ],
+      "answer": 2,
+      "explanation": "Ozone absorbs most harmful ultraviolet radiation.",
+      "difficulty": "medium",
+      "id": "q26"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which gas is used to extinguish most fires?",
+      "options": [
+        "Oxygen",
+        "Carbon dioxide",
+        "Nitrogen only",
+        "Hydrogen"
+      ],
+      "answer": 1,
+      "explanation": "Carbon dioxide fire extinguishers smother flames by excluding oxygen.",
+      "difficulty": "easy",
+      "id": "q27"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which of the following is a noble gas?",
+      "options": [
+        "Chlorine",
+        "Fluorine",
+        "Helium",
+        "Hydrogen"
+      ],
+      "answer": 2,
+      "explanation": "Helium, neon, argon, krypton, xenon and radon are noble gases.",
+      "difficulty": "easy",
+      "id": "q28"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The 'king of chemicals' is?",
+      "options": [
+        "Nitric acid",
+        "Sulphuric acid",
+        "Hydrochloric acid",
+        "Acetic acid"
+      ],
+      "answer": 1,
+      "explanation": "Sulphuric acid (H2SO4) is called the king of chemicals.",
+      "difficulty": "hard",
+      "id": "q29"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The chemical formula of chalk (calcium carbonate) is?",
+      "options": [
+        "CaO",
+        "CaCO3",
+        "Ca(OH)2",
+        "CaSO4"
+      ],
+      "answer": 1,
+      "explanation": "Chalk and limestone are calcium carbonate, CaCO3.",
+      "difficulty": "medium",
+      "id": "q30"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which gas is known as a 'greenhouse gas'?",
+      "options": [
+        "Oxygen",
+        "Nitrogen",
+        "Carbon dioxide",
+        "Helium"
+      ],
+      "answer": 2,
+      "explanation": "CO2 traps heat and contributes to global warming.",
+      "difficulty": "easy",
+      "id": "q31"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The process of converting a liquid into vapour is called?",
+      "options": [
+        "Condensation",
+        "Evaporation",
+        "Sublimation",
+        "Filtration"
+      ],
+      "answer": 1,
+      "explanation": "Evaporation is the change of a liquid into vapour.",
+      "difficulty": "easy",
+      "id": "q32"
+    },
+    {
+      "type": "mcq",
+      "prompt": "A compound is a substance made of?",
+      "options": [
+        "Only one element",
+        "Two or more elements chemically combined",
+        "Mixed elements without bonding",
+        "Only metals"
+      ],
+      "answer": 1,
+      "explanation": "Compounds form when elements combine chemically in fixed ratios.",
+      "difficulty": "easy",
+      "id": "q33"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which gas is essential for human respiration?",
+      "options": [
+        "Nitrogen",
+        "Oxygen",
+        "Carbon dioxide",
+        "Hydrogen"
+      ],
+      "answer": 1,
+      "explanation": "Humans inhale oxygen, which is used in cellular respiration.",
+      "difficulty": "easy",
+      "id": "q34"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What is the pH of a neutral solution?",
+      "options": [
+        "7",
+        "0",
+        "14",
+        "1"
+      ],
+      "answer": 0,
+      "explanation": "A pH of 7 is neutral; below 7 is acidic, above 7 is basic.",
+      "difficulty": "easy",
+      "id": "q35"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which element is the main constituent of the Sun?",
+      "options": [
+        "Hydrogen",
+        "Oxygen",
+        "Carbon",
+        "Iron"
+      ],
+      "answer": 0,
+      "explanation": "Hydrogen (~74%) and helium fuel the Sun's nuclear fusion.",
+      "difficulty": "easy",
+      "id": "q36"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which of these is a noble gas?",
+      "options": [
+        "Argon",
+        "Chlorine",
+        "Oxygen",
+        "Nitrogen"
+      ],
+      "answer": 0,
+      "explanation": "Argon is a noble gas (Group 18) with a full outer shell, making it unreactive.",
+      "difficulty": "easy",
+      "id": "q37"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What is the atomic number of carbon?",
+      "options": [
+        "6",
+        "12",
+        "14",
+        "8"
+      ],
+      "answer": 0,
+      "explanation": "Carbon has atomic number 6; its mass number is 12.",
+      "difficulty": "easy",
+      "id": "q38"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What is the chemical symbol for gold?",
+      "options": [
+        "Au",
+        "Ag",
+        "Go",
+        "Gd"
+      ],
+      "answer": 0,
+      "explanation": "Gold's symbol 'Au' comes from its Latin name 'aurum'.",
+      "difficulty": "easy",
+      "id": "q39"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which gas is called 'laughing gas'?",
+      "options": [
+        "Nitrous oxide",
+        "Carbon monoxide",
+        "Methane",
+        "Ammonia"
+      ],
+      "answer": 0,
+      "explanation": "Nitrous oxide (N2O) is used as an anaesthetic and is nicknamed laughing gas.",
+      "difficulty": "medium",
+      "id": "q40"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Water is a compound of hydrogen and oxygen in the ratio:",
+      "options": [
+        "2:1",
+        "1:2",
+        "1:1",
+        "3:1"
+      ],
+      "answer": 0,
+      "explanation": "Water (H2O) has two hydrogen atoms to one oxygen atom, a 2:1 ratio.",
+      "difficulty": "easy",
+      "id": "q41"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which element has the highest electrical conductivity?",
+      "options": [
+        "Silver",
+        "Iron",
+        "Zinc",
+        "Lead"
+      ],
+      "answer": 0,
+      "explanation": "Silver is the best conductor of electricity; copper is second.",
+      "difficulty": "medium",
+      "id": "q42"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What is the chemical name of baking soda?",
+      "options": [
+        "Sodium bicarbonate",
+        "Sodium carbonate",
+        "Sodium chloride",
+        "Sodium hydroxide"
+      ],
+      "answer": 0,
+      "explanation": "Baking soda is sodium bicarbonate (NaHCO3).",
+      "difficulty": "medium",
+      "id": "q43"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which isotope is used as a fuel in nuclear reactors?",
+      "options": [
+        "Uranium-235",
+        "Carbon-14",
+        "Cobalt-60",
+        "Iodine-131"
+      ],
+      "answer": 0,
+      "explanation": "Uranium-235 undergoes fission in nuclear reactors to release energy.",
+      "difficulty": "medium",
+      "id": "q44"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which element has the highest melting point?",
+      "options": [
+        "Tungsten",
+        "Iron",
+        "Copper",
+        "Aluminium"
+      ],
+      "answer": 0,
+      "explanation": "Tungsten has the highest melting point of metals.",
+      "difficulty": "medium",
+      "id": "q45"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The process of rusting involves which gas?",
+      "options": [
+        "Oxygen",
+        "Nitrogen",
+        "Hydrogen",
+        "Carbon dioxide"
+      ],
+      "answer": 0,
+      "explanation": "Iron reacts with oxygen and moisture to form rust.",
+      "difficulty": "easy",
+      "id": "q46"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The smallest particle of an element is:",
+      "options": [
+        "Atom",
+        "Molecule",
+        "Compound",
+        "Ion"
+      ],
+      "answer": 0,
+      "explanation": "An atom is the smallest unit of an element.",
+      "difficulty": "easy",
+      "id": "q47"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which gas is produced during photosynthesis?",
+      "options": [
+        "Oxygen",
+        "Carbon dioxide",
+        "Nitrogen",
+        "Methane"
+      ],
+      "answer": 0,
+      "explanation": "Photosynthesis releases oxygen as a by-product.",
+      "difficulty": "easy",
+      "id": "q48"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which metal is used in thermometers?",
+      "options": [
+        "Mercury",
+        "Silver",
+        "Copper",
+        "Zinc"
+      ],
+      "answer": 0,
+      "explanation": "Mercury expands uniformly and is used in thermometers.",
+      "difficulty": "easy",
+      "id": "q49"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which element is the lightest?",
+      "options": [
+        "Hydrogen",
+        "Helium",
+        "Oxygen",
+        "Carbon"
+      ],
+      "answer": 0,
+      "explanation": "Hydrogen is the lightest element.",
+      "difficulty": "easy",
+      "id": "q50"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The compound used in baking powder that releases CO2 is:",
+      "options": [
+        "Sodium bicarbonate",
+        "Sodium chloride",
+        "Calcium carbonate",
+        "Sodium hydroxide"
+      ],
+      "answer": 0,
+      "explanation": "Sodium bicarbonate (baking soda) releases CO2 when heated.",
+      "difficulty": "medium",
+      "id": "q51"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which gas is used in balloons to make them float?",
+      "options": [
+        "Helium",
+        "Oxygen",
+        "Nitrogen",
+        "Carbon dioxide"
+      ],
+      "answer": 0,
+      "explanation": "Helium is lighter than air and used in balloons.",
+      "difficulty": "easy",
+      "id": "q52"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The reaction between an acid and a base produces:",
+      "options": [
+        "Salt and water",
+        "Salt and gas",
+        "Water and carbon",
+        "Only salt"
+      ],
+      "answer": 0,
+      "explanation": "Neutralisation produces salt and water.",
+      "difficulty": "easy",
+      "id": "q53"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The gas responsible for the greenhouse effect is mainly:",
+      "options": [
+        "Carbon dioxide",
+        "Oxygen",
+        "Nitrogen",
+        "Helium"
+      ],
+      "answer": 0,
+      "explanation": "CO2 is the main greenhouse gas from human activity.",
+      "difficulty": "easy",
+      "id": "q54"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The chemical symbol of silver is:",
+      "options": [
+        "Ag",
+        "Si",
+        "Sr",
+        "S"
+      ],
+      "answer": 0,
+      "explanation": "Ag comes from the Latin 'argentum'.",
+      "difficulty": "easy",
+      "id": "q55"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What is the chemical formula of ammonia?",
+      "options": [
+        "NH3",
+        "NH4",
+        "NO2",
+        "N2O"
+      ],
+      "answer": 0,
+      "explanation": "Ammonia is NH3.",
+      "difficulty": "easy",
+      "id": "q56"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What is the atomic number of hydrogen?",
+      "options": [
+        "2",
+        "8",
+        "6",
+        "1"
+      ],
+      "answer": 3,
+      "explanation": "Hydrogen has atomic number 1, the simplest element.",
+      "difficulty": "easy",
+      "id": "q57"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The chemical formula of sulphuric acid is:",
+      "options": [
+        "H2SO4",
+        "H2S",
+        "SO2",
+        "H2SO3"
+      ],
+      "answer": 0,
+      "explanation": "Sulphuric acid is H2SO4.",
+      "difficulty": "easy",
+      "id": "q58"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which compound is commonly known as quicklime?",
+      "options": [
+        "Calcium oxide (CaO)",
+        "Calcium carbonate",
+        "Calcium hydroxide",
+        "Calcium chloride"
+      ],
+      "answer": 0,
+      "explanation": "Quicklime is calcium oxide.",
+      "difficulty": "medium",
+      "id": "q59"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which gas is released when acid reacts with a carbonate?",
+      "options": [
+        "Carbon dioxide",
+        "Hydrogen",
+        "Oxygen",
+        "Nitrogen"
+      ],
+      "answer": 0,
+      "explanation": "Carbonates react with acids to release CO2.",
+      "difficulty": "easy",
+      "id": "q60"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which element is used in making semiconductor chips?",
+      "options": [
+        "Silicon",
+        "Carbon",
+        "Iron",
+        "Copper"
+      ],
+      "answer": 0,
+      "explanation": "Silicon is the main semiconductor material.",
+      "difficulty": "easy",
+      "id": "q61"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which of the following is an organic compound?",
+      "options": [
+        "Methane (CH4)",
+        "Sodium chloride",
+        "Water",
+        "Ammonia"
+      ],
+      "answer": 0,
+      "explanation": "Methane is a hydrocarbon, an organic compound.",
+      "difficulty": "easy",
+      "id": "q62"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The atomic number of oxygen is:",
+      "options": [
+        "8",
+        "16",
+        "6",
+        "18"
+      ],
+      "answer": 0,
+      "explanation": "Oxygen has atomic number 8.",
+      "difficulty": "easy",
+      "id": "q63"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which gas is used in the synthesis of ammonia (Haber process)?",
+      "options": [
+        "Nitrogen",
+        "Oxygen",
+        "Chlorine",
+        "Argon"
+      ],
+      "answer": 0,
+      "explanation": "The Haber process combines nitrogen and hydrogen.",
+      "difficulty": "medium",
+      "id": "q64"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which compound is used as a preservative in pickles?",
+      "options": [
+        "Vinegar (acetic acid)",
+        "Sugar only",
+        "Salt only",
+        "Baking soda"
+      ],
+      "answer": 0,
+      "explanation": "Acetic acid prevents microbial growth.",
+      "difficulty": "easy",
+      "id": "q65"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What is the valency of oxygen?",
+      "options": [
+        "2",
+        "1",
+        "3",
+        "4"
+      ],
+      "answer": 0,
+      "explanation": "Oxygen has a valency of 2.",
+      "difficulty": "easy",
+      "id": "q66"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which element is present in all organic compounds?",
+      "options": [
+        "Carbon",
+        "Oxygen",
+        "Nitrogen",
+        "Hydrogen"
+      ],
+      "answer": 0,
+      "explanation": "Carbon is the defining element of organic compounds.",
+      "difficulty": "easy",
+      "id": "q67"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The process of converting iron ore into iron is called:",
+      "options": [
+        "Smelting",
+        "Electrolysis",
+        "Distillation",
+        "Filtration"
+      ],
+      "answer": 0,
+      "explanation": "Smelting extracts metal from ore.",
+      "difficulty": "medium",
+      "id": "q68"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which of the following is a mixture?",
+      "options": [
+        "Air",
+        "Water",
+        "Salt",
+        "Sugar"
+      ],
+      "answer": 0,
+      "explanation": "Air is a mixture of gases.",
+      "difficulty": "easy",
+      "id": "q69"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which non-metal is a good conductor of electricity?",
+      "options": [
+        "Graphite (carbon)",
+        "Sulphur",
+        "Phosphorus",
+        "Iodine"
+      ],
+      "answer": 0,
+      "explanation": "Graphite conducts electricity due to free electrons.",
+      "difficulty": "medium",
+      "id": "q70"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which element has the symbol 'Pb'?",
+      "options": [
+        "Lead",
+        "Phosphorus",
+        "Platinum",
+        "Palladium"
+      ],
+      "answer": 0,
+      "explanation": "Pb is lead (plumbum).",
+      "difficulty": "medium",
+      "id": "q71"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The chemical formula of glucose is:",
+      "options": [
+        "C6H12O6",
+        "CO2",
+        "C2H5OH",
+        "CH4"
+      ],
+      "answer": 0,
+      "explanation": "Glucose is C6H12O6.",
+      "difficulty": "easy",
+      "id": "q72"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which acid is used in car batteries?",
+      "options": [
+        "Sulphuric acid",
+        "Hydrochloric acid",
+        "Nitric acid",
+        "Phosphoric acid"
+      ],
+      "answer": 0,
+      "explanation": "Lead-acid batteries use sulphuric acid.",
+      "difficulty": "easy",
+      "id": "q73"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What is the chemical formula of nitric acid?",
+      "options": [
+        "H2SO4",
+        "HNO3",
+        "HCl",
+        "H2CO3"
+      ],
+      "answer": 1,
+      "explanation": "Nitric acid has the formula HNO3.",
+      "difficulty": "easy",
+      "id": "q74"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which of the following is an alkali metal?",
+      "options": [
+        "Calcium",
+        "Potassium",
+        "Iron",
+        "Zinc"
+      ],
+      "answer": 1,
+      "explanation": "Potassium (K) is a member of group 1, the alkali metals.",
+      "difficulty": "medium",
+      "id": "q75"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which compound is commonly known as table salt?",
+      "options": [
+        "KCl",
+        "CaCO3",
+        "NaCl",
+        "NaOH"
+      ],
+      "answer": 2,
+      "explanation": "Sodium chloride (NaCl) is table salt.",
+      "difficulty": "medium",
+      "id": "q76"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which of the following is the lightest metal?",
+      "options": [
+        "Sodium",
+        "Lithium",
+        "Potassium",
+        "Calcium"
+      ],
+      "answer": 1,
+      "explanation": "Lithium is the lightest metal, with a density of about 0.53 g/cm3.",
+      "difficulty": "easy",
+      "id": "q77"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which gas is essential for photosynthesis?",
+      "options": [
+        "Oxygen",
+        "Nitrogen",
+        "Carbon dioxide",
+        "Hydrogen"
+      ],
+      "answer": 2,
+      "explanation": "Plants take in carbon dioxide and release oxygen during photosynthesis.",
+      "difficulty": "easy",
+      "id": "q78"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which acid is present in lemon?",
+      "options": [
+        "Acetic acid",
+        "Citric acid",
+        "Tartaric acid",
+        "Lactic acid"
+      ],
+      "answer": 1,
+      "explanation": "Lemons and other citrus fruits contain citric acid.",
+      "difficulty": "easy",
+      "id": "q79"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The chemical formula of methane is:",
+      "options": [
+        "CH4",
+        "C2H6",
+        "C2H4",
+        "CO2"
+      ],
+      "answer": 0,
+      "explanation": "Methane, the main component of natural gas, is CH4.",
+      "difficulty": "easy",
+      "id": "q80"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The chemical symbol of potassium is:",
+      "options": [
+        "P",
+        "Po",
+        "K",
+        "Pt"
+      ],
+      "answer": 2,
+      "explanation": "Potassium comes from the Latin 'kalium', hence the symbol K.",
+      "difficulty": "easy",
+      "id": "q81"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The process of electrolysis is used to:",
+      "options": [
+        "Separate mixtures by hand",
+        "Decompose compounds using electricity",
+        "Neutralise acids",
+        "Evaporate liquids"
+      ],
+      "answer": 1,
+      "explanation": "Electrolysis decomposes compounds using an electric current, e.g. water into hydrogen and oxygen.",
+      "difficulty": "medium",
+      "id": "q82"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which gas supports burning?",
+      "options": [
+        "Nitrogen",
+        "Carbon dioxide",
+        "Oxygen",
+        "Hydrogen"
+      ],
+      "answer": 2,
+      "explanation": "Oxygen supports combustion; nitrogen and carbon dioxide do not.",
+      "difficulty": "easy",
+      "id": "q83"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The purest form of carbon is:",
+      "options": [
+        "Graphite",
+        "Diamond",
+        "Coal",
+        "Charcoal"
+      ],
+      "answer": 1,
+      "explanation": "Diamond is the purest natural form of carbon.",
+      "difficulty": "medium",
+      "id": "q84"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which metal is used in the galvanisation of iron?",
+      "options": [
+        "Copper",
+        "Zinc",
+        "Tin",
+        "Aluminium"
+      ],
+      "answer": 1,
+      "explanation": "Galvanising coats iron with zinc to protect it from rusting.",
+      "difficulty": "easy",
+      "id": "q85"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The process of rusting can be prevented by:",
+      "options": [
+        "Keeping the metal wet",
+        "Painting the surface",
+        "Exposing it to humid air",
+        "Adding salt to it"
+      ],
+      "answer": 1,
+      "explanation": "Painting, oiling or galvanising keeps air and moisture away from iron, preventing rust.",
+      "difficulty": "easy",
+      "id": "q86"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which solution turns red litmus paper blue?",
+      "options": [
+        "An acid",
+        "A base",
+        "A salt",
+        "Distilled water"
+      ],
+      "answer": 1,
+      "explanation": "Bases (alkalis) turn red litmus blue, while acids turn blue litmus red.",
+      "difficulty": "easy",
+      "id": "q87"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which of the following is a non-metal?",
+      "options": [
+        "Iron",
+        "Sulphur",
+        "Copper",
+        "Silver"
+      ],
+      "answer": 1,
+      "explanation": "Sulphur is a non-metal; iron, copper and silver are metals.",
+      "difficulty": "easy",
+      "id": "q88"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which compound gives plants their green colour?",
+      "options": [
+        "Haemoglobin",
+        "Chlorophyll",
+        "Carotene",
+        "Xanthophyll"
+      ],
+      "answer": 1,
+      "explanation": "Chlorophyll is the green pigment essential for photosynthesis.",
+      "difficulty": "easy",
+      "id": "q89"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The chemical formula of carbon monoxide is:",
+      "options": [
+        "CO2",
+        "CO",
+        "C2O",
+        "C2O2"
+      ],
+      "answer": 1,
+      "explanation": "Carbon monoxide is CO, a poisonous gas produced by incomplete burning.",
+      "difficulty": "easy",
+      "id": "q90"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The element with symbol 'Na' is:",
+      "options": [
+        "Sodium",
+        "Potassium",
+        "Nitrogen",
+        "Nickel"
+      ],
+      "answer": 0,
+      "explanation": "Na comes from 'natrium', the Latin name for sodium.",
+      "difficulty": "easy",
+      "id": "q91"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The compound used in plaster of Paris is:",
+      "options": [
+        "Calcium carbonate",
+        "Calcium sulphate",
+        "Calcium oxide",
+        "Calcium chloride"
+      ],
+      "answer": 1,
+      "explanation": "Plaster of Paris is calcium sulphate hemihydrate (CaSO4 . 1/2H2O).",
+      "difficulty": "medium",
+      "id": "q92"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which gas is the second most abundant in the Earth's atmosphere?",
+      "options": [
+        "Nitrogen",
+        "Oxygen",
+        "Carbon dioxide",
+        "Argon"
+      ],
+      "answer": 1,
+      "explanation": "Nitrogen is most abundant (about 78%), followed by oxygen (about 21%).",
+      "difficulty": "easy",
+      "id": "q93"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The chemical formula of carbon dioxide is:",
+      "options": [
+        "CO",
+        "CO2",
+        "C2O",
+        "C2O4"
+      ],
+      "answer": 1,
+      "explanation": "Carbon dioxide is CO2: one carbon atom and two oxygen atoms.",
+      "difficulty": "easy",
+      "id": "q94"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which element is used in pencil leads?",
+      "options": [
+        "Lead",
+        "Carbon",
+        "Sulphur",
+        "Zinc"
+      ],
+      "answer": 1,
+      "explanation": "Pencil lead is actually graphite, a form of carbon.",
+      "difficulty": "easy",
+      "id": "q95"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What is the pH of a strong acid?",
+      "options": [
+        "Above 7",
+        "Below 7",
+        "Exactly 7",
+        "Exactly 14"
+      ],
+      "answer": 1,
+      "explanation": "Acids have pH below 7; strong acids are near 0-1 on the pH scale.",
+      "difficulty": "medium",
+      "id": "q96"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The chemical formula of sodium hydroxide is?",
+      "options": [
+        "NaOH",
+        "NaCl",
+        "Na2CO3",
+        "KOH"
+      ],
+      "answer": 0,
+      "explanation": "Sodium hydroxide (caustic soda) has the formula NaOH.",
+      "difficulty": "easy",
+      "id": "q97"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The chemical formula of calcium hydroxide (slaked lime) is?",
+      "options": [
+        "Ca(OH)2",
+        "CaCO3",
+        "CaO",
+        "CaCl2"
+      ],
+      "answer": 0,
+      "explanation": "Slaked lime is calcium hydroxide, Ca(OH)2.",
+      "difficulty": "medium",
+      "id": "q98"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Washing soda is the common name of?",
+      "options": [
+        "Sodium carbonate",
+        "Sodium bicarbonate",
+        "Sodium chloride",
+        "Sodium sulphate"
+      ],
+      "answer": 0,
+      "explanation": "Washing soda is sodium carbonate (Na2CO3).",
+      "difficulty": "medium",
+      "id": "q99"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What is the atomic number of nitrogen?",
+      "options": [
+        "7",
+        "5",
+        "14",
+        "15"
+      ],
+      "answer": 0,
+      "explanation": "Nitrogen has atomic number 7 and atomic mass about 14.",
+      "difficulty": "easy",
+      "id": "q100"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The chemical symbol of calcium is?",
+      "options": [
+        "Ca",
+        "C",
+        "Cl",
+        "K"
+      ],
+      "answer": 0,
+      "explanation": "Calcium is represented by the symbol Ca.",
+      "difficulty": "easy",
+      "id": "q101"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The chemical symbol of magnesium is?",
+      "options": [
+        "Mg",
+        "Mn",
+        "Mo",
+        "Hg"
+      ],
+      "answer": 0,
+      "explanation": "Magnesium is represented by the symbol Mg.",
+      "difficulty": "easy",
+      "id": "q102"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which element has the chemical symbol 'Cl'?",
+      "options": [
+        "Chlorine",
+        "Carbon",
+        "Calcium",
+        "Chromium"
+      ],
+      "answer": 0,
+      "explanation": "Cl is the symbol of chlorine.",
+      "difficulty": "easy",
+      "id": "q103"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The main constituent of natural gas is?",
+      "options": [
+        "Methane",
+        "Ethane",
+        "Propane",
+        "Butane"
+      ],
+      "answer": 0,
+      "explanation": "Natural gas is mainly methane (CH4).",
+      "difficulty": "easy",
+      "id": "q104"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which gas is produced when sodium metal reacts with water?",
+      "options": [
+        "Hydrogen",
+        "Oxygen",
+        "Nitrogen",
+        "Carbon dioxide"
+      ],
+      "answer": 0,
+      "explanation": "Sodium reacts vigorously with water to release hydrogen gas.",
+      "difficulty": "medium",
+      "id": "q105"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The process of separating an insoluble solid from a liquid using a filter is called?",
+      "options": [
+        "Filtration",
+        "Decantation",
+        "Evaporation",
+        "Distillation"
+      ],
+      "answer": 0,
+      "explanation": "Filtration separates an insoluble solid from a liquid using filter paper.",
+      "difficulty": "easy",
+      "id": "q106"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The chief ore of aluminium is?",
+      "options": [
+        "Bauxite",
+        "Haematite",
+        "Magnetite",
+        "Pyrolusite"
+      ],
+      "answer": 0,
+      "explanation": "Aluminium is extracted from bauxite (aluminium oxide ore).",
+      "difficulty": "medium",
+      "id": "q107"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The most common ore of iron is?",
+      "options": [
+        "Haematite",
+        "Bauxite",
+        "Galena",
+        "Cinnabar"
+      ],
+      "answer": 0,
+      "explanation": "Iron is chiefly obtained from haematite (iron oxide).",
+      "difficulty": "medium",
+      "id": "q108"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What is the valency of nitrogen?",
+      "options": [
+        "3",
+        "2",
+        "5",
+        "7"
+      ],
+      "answer": 0,
+      "explanation": "Nitrogen needs three more electrons to complete its octet, so its valency is 3.",
+      "difficulty": "medium",
+      "id": "q109"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which gas is used in neon signs and advertising tubes?",
+      "options": [
+        "Neon",
+        "Argon",
+        "Helium",
+        "Krypton"
+      ],
+      "answer": 0,
+      "explanation": "Neon glows red-orange when an electric discharge passes through it, hence its use in signs.",
+      "difficulty": "easy",
+      "id": "q110"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which gas is commonly used as a refrigerant in domestic refrigerators?",
+      "options": [
+        "Ammonia",
+        "Oxygen",
+        "Nitrogen",
+        "Hydrogen"
+      ],
+      "answer": 0,
+      "explanation": "Ammonia is an efficient, low-cost refrigerant used in many cooling systems.",
+      "difficulty": "medium",
+      "id": "q111"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The chemical formula of potassium permanganate is?",
+      "options": [
+        "KMnO4",
+        "K2Cr2O7",
+        "KClO3",
+        "KNO3"
+      ],
+      "answer": 0,
+      "explanation": "Potassium permanganate has the formula KMnO4.",
+      "difficulty": "medium",
+      "id": "q112"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which element is used in the manufacture of match sticks?",
+      "options": [
+        "Phosphorus",
+        "Sulphur",
+        "Carbon",
+        "Chlorine"
+      ],
+      "answer": 0,
+      "explanation": "Red phosphorus in the striking surface ignites the match head.",
+      "difficulty": "easy",
+      "id": "q113"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The gas evolved when hydrogen peroxide decomposes is?",
+      "options": [
+        "Oxygen",
+        "Hydrogen",
+        "Ozone",
+        "Nitrogen"
+      ],
+      "answer": 0,
+      "explanation": "Hydrogen peroxide breaks down into water and oxygen gas.",
+      "difficulty": "medium",
+      "id": "q114"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which is the softest metal at room temperature?",
+      "options": [
+        "Caesium",
+        "Lithium",
+        "Sodium",
+        "Mercury"
+      ],
+      "answer": 0,
+      "explanation": "Caesium is a very soft alkali metal that can be cut with a knife.",
+      "difficulty": "hard",
+      "id": "q115"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which allotrope of carbon is used as a lubricant?",
+      "options": [
+        "Graphite",
+        "Diamond",
+        "Fullerene",
+        "Charcoal"
+      ],
+      "answer": 0,
+      "explanation": "Graphite's layered structure makes it a good dry lubricant.",
+      "difficulty": "easy",
+      "id": "q116"
+    },
+    {
+      "type": "mcq",
+      "prompt": "A reaction in which heat is released is called?",
+      "options": [
+        "Exothermic reaction",
+        "Endothermic reaction",
+        "Reversible reaction",
+        "Photochemical reaction"
+      ],
+      "answer": 0,
+      "explanation": "An exothermic reaction releases heat energy to the surroundings.",
+      "difficulty": "easy",
+      "id": "q117"
+    },
+    {
+      "type": "mcq",
+      "prompt": "A reaction in which heat is absorbed is called?",
+      "options": [
+        "Endothermic reaction",
+        "Exothermic reaction",
+        "Neutralisation reaction",
+        "Reduction reaction"
+      ],
+      "answer": 0,
+      "explanation": "An endothermic reaction absorbs heat energy from the surroundings.",
+      "difficulty": "easy",
+      "id": "q118"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The chemical formula of hydrochloric acid is?",
+      "options": [
+        "HCl",
+        "HNO3",
+        "H2SO4",
+        "H2CO3"
+      ],
+      "answer": 0,
+      "explanation": "Hydrochloric acid is a solution of hydrogen chloride gas, HCl.",
+      "difficulty": "easy",
+      "id": "q119"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which element has the highest electronegativity?",
+      "options": [
+        "Fluorine",
+        "Oxygen",
+        "Chlorine",
+        "Nitrogen"
+      ],
+      "answer": 0,
+      "explanation": "Fluorine, at the top right of the periodic table, is the most electronegative element.",
+      "difficulty": "hard",
+      "id": "q120"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which non-metal is liquid at room temperature?",
+      "options": [
+        "Bromine",
+        "Iodine",
+        "Sulphur",
+        "Phosphorus"
+      ],
+      "answer": 0,
+      "explanation": "Bromine is the only non-metal that is liquid at room temperature.",
+      "difficulty": "medium",
+      "id": "q121"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What is the atomic number of sodium?",
+      "options": [
+        "11",
+        "23",
+        "19",
+        "17"
+      ],
+      "answer": 0,
+      "explanation": "Sodium has atomic number 11; its atomic mass is about 23.",
+      "difficulty": "easy",
+      "id": "q122"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which metal is extracted from the ore cinnabar?",
+      "options": [
+        "Mercury",
+        "Lead",
+        "Zinc",
+        "Copper"
+      ],
+      "answer": 0,
+      "explanation": "Cinnabar (mercury sulphide) is the chief ore of mercury.",
+      "difficulty": "hard",
+      "id": "q123"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The chemical formula of sulphur dioxide is?",
+      "options": [
+        "SO2",
+        "SO3",
+        "H2S",
+        "S2O"
+      ],
+      "answer": 0,
+      "explanation": "Sulphur dioxide, an air pollutant, has the formula SO2.",
+      "difficulty": "easy",
+      "id": "q124"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The main constituent of ordinary sand is?",
+      "options": [
+        "Silicon dioxide",
+        "Calcium carbonate",
+        "Sodium chloride",
+        "Aluminium oxide"
+      ],
+      "answer": 0,
+      "explanation": "Sand is largely silicon dioxide (silica), SiO2.",
+      "difficulty": "easy",
+      "id": "q125"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which element is the second most abundant in the Earth's crust?",
+      "options": [
+        "Silicon",
+        "Aluminium",
+        "Iron",
+        "Calcium"
+      ],
+      "answer": 0,
+      "explanation": "After oxygen, silicon is the second most abundant element in the Earth's crust.",
+      "difficulty": "medium",
+      "id": "q126"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which acid is present in sour milk?",
+      "options": [
+        "Lactic acid",
+        "Citric acid",
+        "Acetic acid",
+        "Oxalic acid"
+      ],
+      "answer": 0,
+      "explanation": "Bacteria convert lactose into lactic acid, which sours milk.",
+      "difficulty": "medium",
+      "id": "q127"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What is the valency of carbon?",
+      "options": [
+        "4",
+        "2",
+        "3",
+        "1"
+      ],
+      "answer": 0,
+      "explanation": "Carbon needs four electrons to complete its octet, so its valency is 4.",
+      "difficulty": "easy",
+      "id": "q128"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The process of heating an ore in air to convert it into its oxide is called?",
+      "options": [
+        "Roasting",
+        "Smelting",
+        "Calcination",
+        "Refining"
+      ],
+      "answer": 0,
+      "explanation": "Roasting heats a sulphide ore in air to change it into the metal oxide.",
+      "difficulty": "hard",
+      "id": "q129"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which acid is used to prepare carbonated drinks?",
+      "options": [
+        "Carbonic acid",
+        "Sulphuric acid",
+        "Nitric acid",
+        "Phosphoric acid"
+      ],
+      "answer": 0,
+      "explanation": "Dissolved carbon dioxide forms carbonic acid, giving fizzy drinks their tang.",
+      "difficulty": "medium",
+      "id": "q130"
+    }
+  ]
+}

@@ -15,8 +15,8 @@ void main() {
         .where((File f) => f.path.toLowerCase().endsWith('.json'))
         .toList();
 
-    expect(files.length, greaterThanOrEqualTo(11),
-        reason: 'all starter lists should ship');
+    expect(files.length, greaterThanOrEqualTo(5),
+        reason: 'all competitive-exam lists should ship');
 
     final Set<String> ids = <String>{};
     int total = 0;
@@ -36,22 +36,31 @@ void main() {
       expect(words.length, greaterThanOrEqualTo(40),
           reason: 'list "$id" looks like demo data (${words.length} words)');
 
+      // Idioms & proverbs are phrases, not single words, so they have no
+      // canonical IPA; everything else must carry a slashed IPA.
+      final bool isPhraseList = id == 'idioms' || id == 'proverbs';
+      final List<String> required = isPhraseList
+          ? const <String>['word', 'urdu', 'meaning', 'pos']
+          : const <String>['word', 'ipa', 'urdu', 'meaning', 'pos'];
+
       final Set<String> seen = <String>{};
       for (final dynamic w in words) {
         final Map<String, dynamic> m = w as Map<String, dynamic>;
-        for (final String k in const <String>['word', 'ipa', 'urdu', 'meaning', 'pos']) {
+        for (final String k in required) {
           expect((m[k] as String?)?.trim().isNotEmpty ?? false, isTrue,
               reason: 'list "$id" entry missing "$k"');
         }
-        expect((m['ipa'] as String).startsWith('/'), isTrue,
-            reason: 'list "$id": IPA for "${m['word']}" must be slashed');
+        if (!isPhraseList) {
+          expect((m['ipa'] as String).startsWith('/'), isTrue,
+              reason: 'list "$id": IPA for "${m['word']}" must be slashed');
+        }
         final String wl = (m['word'] as String).toLowerCase();
         expect(seen.add(wl), isTrue, reason: 'list "$id" duplicate word "$wl"');
       }
       total += words.length;
     }
 
-    expect(total, greaterThanOrEqualTo(1000),
+    expect(total, greaterThanOrEqualTo(1500),
         reason: 'realistic starter content across all lists, not demo data');
   });
 }

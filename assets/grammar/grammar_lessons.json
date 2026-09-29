@@ -542,67 +542,8 @@
     "category": "Verbs & Tenses",
     "order": 9,
     "title": "Active & Passive Voice",
-    "summary": "Active voice highlights the doer of an action; passive voice foregrounds the receiver or omits the doer.",
-    "keywords": ["active voice", "passive voice", "agent", "by phrase", "transitive verb", "passive construction", "voice transformation"],
-    "explanation": "In active voice, the subject performs the action: 'The chef prepared the meal.' In passive voice, the subject receives the action: 'The meal was prepared by the chef.' Passive voice is formed with a form of 'be' plus the past participle of the main verb.\n\nPassive voice is preferred when the doer is unknown, unimportant, or deliberately omitted, when the receiver is more important, or in formal and scientific writing. However, active voice is generally clearer and more direct.",
-    "rules": [
-      "Active: Subject + Verb + Object. Passive: Object (as subject) + be + past participle + (by + agent).",
-      "Only transitive verbs (verbs that take an object) can be made passive.",
-      "The 'by' phrase naming the agent is optional in passive sentences.",
-      "The tense of 'be' in the passive mirrors the tense of the original active verb.",
-      "Modal passives use: modal + be + past participle (e.g., 'The report must be submitted').",
-      "Avoid overusing passive voice; active voice is usually clearer.",
-      "The passive is appropriate in scientific writing, news reports, and when the agent is unknown."
-    ],
-    "examples": [
-      { "text": "Active: The committee approved the proposal.", "note": "subject performs the action" },
-      { "text": "Passive: The proposal was approved by the committee.", "note": "receiver becomes subject; agent in by-phrase" },
-      { "text": "The thief was arrested last night.", "note": "agent omitted: unknown or unimportant" },
-      { "text": "The bridge is being repaired.", "note": "present continuous passive" },
-      { "text": "The form must be completed in ink.", "note": "modal passive" }
-    ],
-    "notes": [
-      "Intransitive verbs (arrive, sleep, die) cannot be made passive because they have no object.",
-      "In a passive sentence with two objects, either can become the subject: 'She was given a prize' or 'A prize was given to her'.",
-      "The passive does not always include a 'by' phrase; its absence does not make the sentence wrong."
-    ],
-    "tips": [
-      "To form the passive, find the object in the active sentence and make it the subject.",
-      "Check the tense of 'be': 'was approved' (past), 'is approved' (present), 'will be approved' (future).",
-      "Prefer active voice in most writing; switch to passive only when it genuinely improves clarity or emphasis."
-    ],
-    "commonMistakes": [
-      { "wrong": "The letter was wrote by her.", "right": "The letter was written by her.", "note": "passive requires past participle, not simple past" },
-      { "wrong": "They were arrived late.", "right": "They arrived late.", "note": "'arrive' is intransitive and cannot be passive" },
-      { "wrong": "The cake is baked by she.", "right": "The cake is baked by her.", "note": "by-phrase requires object pronoun" },
-      { "wrong": "The report has been wrote.", "right": "The report has been written.", "note": "use the past participle 'written', not 'wrote'" }
-    ],
-    "practiceQuestions": [
-      {
-        "question": "Convert to passive: 'Scientists discovered a new planet.'",
-        "options": ["A new planet discovered by scientists.", "A new planet was discovered by scientists.", "A new planet is discovered by scientists.", "A new planet was discover by scientists."],
-        "answerIndex": 1,
-        "explanation": "Simple past passive: 'was discovered'; the agent 'scientists' follows 'by'."
-      },
-      {
-        "question": "Which sentence is in the passive voice?",
-        "options": ["She baked a cake.", "The cake was baked by her.", "She has been baking a cake.", "She is baking a cake."],
-        "answerIndex": 1,
-        "explanation": "'Was baked' is the passive form (be + past participle); the receiver 'cake' is the subject."
-      },
-      {
-        "question": "Which verb CANNOT be made passive?",
-        "options": ["write", "build", "arrive", "approve"],
-        "answerIndex": 2,
-        "explanation": "'Arrive' is intransitive and has no object, so it cannot form a passive sentence."
-      },
-      {
-        "question": "Identify the passive voice: 'The meeting will be held on Monday.'",
-        "options": ["It is active voice.", "It is passive voice.", "It is neither active nor passive.", "It is an infinitive."],
-        "answerIndex": 1,
-        "explanation": "'Will be held' is a future passive construction (will + be + past participle)."
-      }
-    ]
+    "summary": "",
+    "keywords": ["active voice", "passive voice", "agent", "by phrase", "transitive verb", "passive construction", "voice transformation"]
   },
   {
     "id": "conditional-sentences",

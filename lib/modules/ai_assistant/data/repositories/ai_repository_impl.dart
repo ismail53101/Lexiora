@@ -5,6 +5,7 @@ import 'package:lexiora/modules/ai_assistant/data/datasources/ai_local_data_sour
 import 'package:lexiora/modules/ai_assistant/domain/entities/ai_chat.dart';
 import 'package:lexiora/modules/ai_assistant/domain/entities/ai_conversation.dart';
 import 'package:lexiora/modules/ai_assistant/domain/entities/ai_message.dart';
+import 'package:lexiora/modules/ai_assistant/domain/entities/ai_project.dart';
 import 'package:lexiora/modules/ai_assistant/domain/repositories/ai_repository.dart';
 import 'package:lexiora/modules/ai_assistant/domain/services/ai_chat_service.dart';
 import 'package:uuid/uuid.dart';
@@ -44,12 +45,14 @@ class AiRepositoryImpl implements AiRepository {
           .toList(growable: false));
 
   @override
-  Future<AiConversation> createConversation({String? title}) async {
+  Future<AiConversation> createConversation(
+      {String? title, String? projectId}) async {
     final DateTime now = DateTime.now();
     final AiConversation c = AiConversation(
       id: _uuid.v4(),
       title: (title == null || title.trim().isEmpty) ? 'New chat' : title.trim(),
       model: _config.model,
+      projectId: projectId,
       createdAt: now,
       updatedAt: now,
     );
@@ -57,10 +60,12 @@ class AiRepositoryImpl implements AiRepository {
       id: c.id,
       title: c.title,
       model: Value<String?>(c.model),
+      projectId: Value<String?>(c.projectId),
       searchText: Value<String>(c.title.toLowerCase()),
       createdAt: now,
       updatedAt: now,
     ));
+    if (projectId != null) await _touchProject(projectId);
     return c;
   }
 
@@ -88,6 +93,78 @@ class AiRepositoryImpl implements AiRepository {
 
   @override
   Future<void> deleteAllConversations() => _local.deleteAllConversations();
+
+  @override
+  Future<void> setConversationProject(String id, String? projectId) async {
+    final AiConversationRow? row = await _local.conversation(id);
+    if (row == null) return;
+    await _local.updateConversation(
+      id,
+      AiConversationsCompanion(
+        projectId: Value<String?>(projectId),
+        updatedAt: Value<DateTime>(DateTime.now()),
+      ),
+    );
+    // Keep both sides' ordering fresh: the project the chat left and the one
+    // it joined.
+    if (row.projectId != null) await _touchProject(row.projectId!);
+    if (projectId != null) await _touchProject(projectId);
+  }
+
+  // ── Projects ───────────────────────────────────────────────────────────────
+
+  @override
+  Stream<List<AiProjectSummary>> watchProjects({String query = ''}) =>
+      _local.watchProjectSummaries(query).map((List<QueryRow> rows) => rows
+          .map((QueryRow r) => AiProjectSummary(
+                project: _toProject(_local.projectRowFrom(r)),
+                conversationCount: r.read<int>('conversation_count'),
+                lastActivity: _readDateTime(r, 'last_activity'),
+              ))
+          .toList(growable: false));
+
+  @override
+  Future<AiProject> createProject(String name) async {
+    final String n = name.trim().isEmpty ? 'New project' : name.trim();
+    final DateTime now = DateTime.now();
+    final AiProject p = AiProject(id: _uuid.v4(), name: n, createdAt: now, updatedAt: now);
+    await _local.upsertProject(AiProjectsCompanion.insert(
+      id: p.id,
+      name: p.name,
+      searchText: Value<String>(p.name.toLowerCase()),
+      createdAt: now,
+      updatedAt: now,
+    ));
+    return p;
+  }
+
+  @override
+  Future<void> renameProject(String id, String name) {
+    final String n = name.trim().isEmpty ? 'Untitled project' : name.trim();
+    return _local.updateProject(
+      id,
+      AiProjectsCompanion(
+        name: Value<String>(n),
+        searchText: Value<String>(n.toLowerCase()),
+        updatedAt: Value<DateTime>(DateTime.now()),
+      ),
+    );
+  }
+
+  @override
+  Future<void> deleteProject(String id) async {
+    // Conversations survive — they simply leave the project and fall back to
+    // plain Recents chats (no conversation is left pointing at a ghost id).
+    await _local.clearProjectFromConversations(id);
+    await _local.deleteProject(id);
+  }
+
+  /// Bumps a project's updatedAt so the sidebar ordering stays fresh.
+  /// (A no-op when the project no longer exists.)
+  Future<void> _touchProject(String id) => _local.updateProject(
+        id,
+        AiProjectsCompanion(updatedAt: Value<DateTime>(DateTime.now())),
+      );
 
   // ── Messages ───────────────────────────────────────────────────────────────
 
@@ -223,9 +300,32 @@ class AiRepositoryImpl implements AiRepository {
         title: r.title,
         model: r.model,
         pinned: r.pinned,
+        projectId: r.projectId,
         createdAt: r.createdAt,
         updatedAt: r.updatedAt,
       );
+
+  AiProject _toProject(AiProjectRow r) => AiProject(
+        id: r.id,
+        name: r.name,
+        createdAt: r.createdAt,
+        updatedAt: r.updatedAt,
+      );
+
+  /// Drift stores DateTime as seconds since epoch; MAX() in raw SQL returns
+  /// that integer, so decode defensively (handles both drivers).
+  DateTime? _readDateTime(QueryRow r, String column) {
+    final Object? v = r.data[column];
+    if (v == null) return null;
+    if (v is DateTime) return v;
+    if (v is num) {
+      final int ms = v.toInt();
+      return DateTime.fromMillisecondsSinceEpoch(
+          ms > 100000000000 ? ms : ms * 1000);
+    }
+    if (v is String) return DateTime.tryParse(v);
+    return null;
+  }
 
   AiMessage _toMessage(AiMessageRow r) => AiMessage(
         id: r.id,

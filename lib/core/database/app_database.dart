@@ -55,8 +55,10 @@ part 'app_database.g.dart';
     QuizSettingsRows,
     QuizSubjects,
     QuizTopics,
+    QuizStageProgress,
     AiConversations,
     AiMessages,
+    AiProjects,
   ],
 )
 class AppDatabase extends _$AppDatabase {
@@ -168,6 +170,29 @@ class AppDatabase extends _$AppDatabase {
           if (from < 16) {
             await m.createTable(aiConversations);
             await m.createTable(aiMessages);
+          }
+          // v16 → v17: Staged Quiz progress. Purely additive.
+          if (from < 17) {
+            await m.createTable(quizStageProgress);
+          }
+          // v17 → v18: Study Planner automatic/manual scheduling state.
+          // Existing rows remain manual and retain their stored times.
+          if (from < 18) {
+            await m.addColumn(studyTasks, studyTasks.autoScheduled);
+          }
+          // v18 → v19: AI Assistant projects (folders) + per-conversation
+          // project linkage. Purely additive; existing chats are untouched and
+          // simply remain outside every project.
+          if (from < 19) {
+            await m.createTable(aiProjects);
+            await m.addColumn(aiConversations, aiConversations.projectId);
+          }
+          // v19 → v20: completed study sessions retain their planned task and
+          // subject, plus the actual end time. Existing sessions remain valid.
+          if (from < 20) {
+            await m.addColumn(studySessions, studySessions.endedAt);
+            await m.addColumn(studySessions, studySessions.subject);
+            await m.addColumn(studySessions, studySessions.taskId);
           }
         },
         beforeOpen: (OpeningDetails details) async {
@@ -317,6 +342,10 @@ class AppDatabase extends _$AppDatabase {
             'CREATE INDEX IF NOT EXISTS idx_quiz_wrong_subject '
             'ON quiz_wrong_answers (subject)',
           );
+          await customStatement(
+            'CREATE INDEX IF NOT EXISTS idx_quiz_stage_progress_subject '
+            'ON quiz_stage_progress (subject_id)',
+          );
           // Quiz subject-first hierarchy (v0.9.1).
           await customStatement(
             'CREATE INDEX IF NOT EXISTS idx_quiz_questions_subject_id '
@@ -346,6 +375,16 @@ class AppDatabase extends _$AppDatabase {
           await customStatement(
             'CREATE INDEX IF NOT EXISTS idx_ai_conversations_updated '
             'ON ai_conversations (updated_at)',
+          );
+          // AI Assistant projects (v0.23.x): fast project listing, project →
+          // conversation lookups, and name search.
+          await customStatement(
+            'CREATE INDEX IF NOT EXISTS idx_ai_projects_updated '
+            'ON ai_projects (updated_at)',
+          );
+          await customStatement(
+            'CREATE INDEX IF NOT EXISTS idx_ai_conversations_project '
+            'ON ai_conversations (project_id, updated_at)',
           );
         },
       );

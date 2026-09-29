@@ -7,6 +7,7 @@ import 'package:lexiora/modules/ai_assistant/domain/entities/ai_chat.dart';
 import 'package:lexiora/modules/ai_assistant/domain/entities/ai_conversation.dart';
 import 'package:lexiora/modules/ai_assistant/domain/entities/ai_failure.dart';
 import 'package:lexiora/modules/ai_assistant/domain/entities/ai_message.dart';
+import 'package:lexiora/modules/ai_assistant/domain/entities/ai_project.dart';
 import 'package:lexiora/modules/ai_assistant/domain/repositories/ai_repository.dart';
 import 'package:lexiora/modules/ai_assistant/domain/usecases/ai_usecases.dart';
 
@@ -34,6 +35,24 @@ final StreamProvider<List<AiConversationSummary>> aiConversationsProvider =
   final String query = ref.watch(aiSearchQueryProvider);
   return WatchConversations(ref.watch(aiRepositoryProvider)).call(query: query);
 });
+
+/// Projects (folders), newest activity first, filtered by the sidebar search.
+final StreamProvider<List<AiProjectSummary>> aiProjectsProvider =
+    StreamProvider<List<AiProjectSummary>>((Ref ref) {
+  final String query = ref.watch(aiSearchQueryProvider);
+  return WatchProjects(ref.watch(aiRepositoryProvider)).call(query: query);
+});
+
+/// The project new chats are created in (null = a plain, projectless chat).
+/// Set when the user starts a chat from inside a project in the sidebar.
+class CurrentProjectId extends Notifier<String?> {
+  @override
+  String? build() => null;
+  void set(String? id) => state = id;
+}
+
+final NotifierProvider<CurrentProjectId, String?> currentProjectIdProvider =
+    NotifierProvider<CurrentProjectId, String?>(CurrentProjectId.new);
 
 /// The active conversation id (null = a fresh, not-yet-created chat).
 class CurrentConversationId extends Notifier<String?> {
@@ -102,16 +121,30 @@ class AiChatController extends Notifier<AiChatState> {
   AiRepository get _repo => ref.read(aiRepositoryProvider);
 
   /// Switch to a conversation (or null for a new chat), resetting stream state.
+  /// Opening an existing chat clears any pending project context — that only
+  /// applies to conversations that are about to be created.
   void openConversation(String? id) {
     _cancel?.cancel();
     _sub?.cancel();
     _sub = null;
+    if (id != null) {
+      ref.read(currentProjectIdProvider.notifier).set(null);
+    }
     ref.read(currentConversationIdProvider.notifier).set(id);
     ref.read(aiMessageLimitProvider.notifier).reset();
     state = const AiChatState();
   }
 
-  void newChat() => openConversation(null);
+  void newChat() {
+    ref.read(currentProjectIdProvider.notifier).set(null);
+    openConversation(null);
+  }
+
+  /// Starts a fresh chat that will be filed into [projectId] on first send.
+  void newChatInProject(String projectId) {
+    ref.read(currentProjectIdProvider.notifier).set(projectId);
+    openConversation(null);
+  }
 
   Future<void> send(String text) async {
     final String trimmed = text.trim();
@@ -122,7 +155,8 @@ class AiChatController extends Notifier<AiChatState> {
     }
     String? convId = ref.read(currentConversationIdProvider);
     if (convId == null) {
-      final AiConversation c = await CreateConversation(_repo).call();
+      final AiConversation c = await CreateConversation(_repo).call(
+          projectId: ref.read(currentProjectIdProvider));
       convId = c.id;
       ref.read(currentConversationIdProvider.notifier).set(convId);
       ref.read(aiMessageLimitProvider.notifier).reset();

@@ -88,6 +88,13 @@ class PdfOcrService {
     required String sourcePath,
     void Function(int page, int totalPages)? onProgress,
   }) async {
+    final Directory dir = await _ocrDirectory();
+    final String outputPath = '${dir.path}/$documentId.pdf';
+    final File cached = File(outputPath);
+    if (await cached.exists() && await cached.length() > 0) {
+      return outputPath;
+    }
+
     PdfDocument? document;
     final List<String> tempImages = <String>[];
     try {
@@ -120,8 +127,6 @@ class PdfOcrService {
         return sourcePath;
       }
 
-      final Directory dir = await _ocrDirectory();
-      final String outputPath = '${dir.path}/$documentId.pdf';
       final String? saved = await _channel.invokeMethod<String>(
         'embedOcrText',
         <String, Object?>{
@@ -143,6 +148,16 @@ class PdfOcrService {
       for (final String p in tempImages) {
         _deleteQuiet(p);
       }
+    }
+  }
+
+  Future<void> deleteSearchable(String documentId) async {
+    try {
+      final Directory dir = await _ocrDirectory();
+      final File file = File('${dir.path}/$documentId.pdf');
+      if (await file.exists()) await file.delete();
+    } on Object catch (e) {
+      AppLogger.w('PdfOcrService: cache cleanup failed: $e');
     }
   }
 

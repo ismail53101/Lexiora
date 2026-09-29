@@ -12,6 +12,7 @@ import 'package:lexiora/modules/vocabulary/data/vocabulary_seeder.dart';
 import 'package:lexiora/modules/vocabulary/domain/repositories/vocabulary_repository.dart';
 import 'package:lexiora/modules/vocabulary/presentation/pages/vocabulary_lists_page.dart';
 import 'package:lexiora/modules/vocabulary/presentation/pages/vocabulary_words_page.dart';
+import 'package:lexiora/modules/vocabulary/presentation/pages/vocabulary_word_page.dart';
 
 /// Phase v0.6.0 — the offline Vocabulary module.
 ///
@@ -57,6 +58,12 @@ class VocabularyModule extends FeatureModule {
           builder: (_, _) => const VocabularyListsPage(),
         ),
         GoRoute(
+          name: AppRoutes.vocabularyWordName,
+          path: AppRoutes.vocabularyWordPattern,
+          builder: (BuildContext context, GoRouterState state) =>
+              VocabularyWordPage(word: state.pathParameters['word'] ?? ''),
+        ),
+        GoRoute(
           name: AppRoutes.vocabularyListName,
           path: AppRoutes.vocabularyListPattern,
           builder: (BuildContext context, GoRouterState state) =>
@@ -72,6 +79,7 @@ class VocabularyModule extends FeatureModule {
           subtitle: 'Learn word lists A–Z',
           icon: Icons.style_outlined,
           routePath: AppRoutes.vocabulary,
+          imageAsset: 'assets/branding/vocabulary_explore.webp',
           order: 13,
         ),
       ];

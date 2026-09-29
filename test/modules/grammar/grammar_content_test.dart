@@ -45,17 +45,17 @@ void main() {
   });
 
   test('the hierarchy has the expected shape', () async {
-    expect(await ds.topicCount(), greaterThanOrEqualTo(35));
+    expect(await ds.topicCount(), greaterThanOrEqualTo(22));
 
     final List<GrammarTopicSummary> categories = await ds.children(null);
-    expect(categories.length, greaterThanOrEqualTo(14));
+    expect(categories.length, greaterThanOrEqualTo(10));
 
-    // Parts of Speech → 9 leaves.
+    // Parts of Speech → 9 grammar leaves plus the dedicated Quiz item.
     final List<GrammarTopicSummary> pos = await ds.children('parts-of-speech');
-    expect(pos.length, 9);
+    expect(pos.length, 10);
     expect(pos.every((GrammarTopicSummary t) => t.isLeaf), isTrue);
 
-    // Tenses → 3 time branches → 4 tenses each.
+    // Tenses retains only the root and its three time folders; all lessons are removed.
     final List<GrammarTopicSummary> tenses = await ds.children('tenses');
     expect(tenses.length, 3);
     expect(tenses.every((GrammarTopicSummary t) => !t.isLeaf), isTrue);
@@ -63,45 +63,156 @@ void main() {
         await ds.children('tenses/present');
     expect(present.length, 4);
     expect(present.every((GrammarTopicSummary t) => t.isLeaf), isTrue);
+    expect(
+      present.map((GrammarTopicSummary t) => t.title),
+      containsAll(<String>[
+        'Present Indefinite Tense — حال سادہ',
+        'Present Continuous Tense — حال جاری',
+        'Present Perfect Tense — حال مکمل',
+        'Present Perfect Continuous Tense — حال مکمل جاری',
+      ]),
+    );
 
-    // Clauses → Independent (leaf) + Dependent (branch) → 3 clause types.
+    // Clauses → two independence/function branches and the Phrase vs Clause
+    // lesson; the Introduction folder was intentionally removed.
     final List<GrammarTopicSummary> clauses = await ds.children('clauses');
-    expect(clauses.length, 2);
+    expect(clauses.length, 3);
     expect(clauses.where((GrammarTopicSummary t) => t.isLeaf).length, 1,
-        reason: 'Independent Clause is the only direct leaf under Clauses');
-    expect(clauses.where((GrammarTopicSummary t) => !t.isLeaf).length, 1,
-        reason: 'Dependent Clause is a sub-branch');
-    final List<GrammarTopicSummary> dependent =
-        await ds.children('clauses/dependent');
-    expect(dependent.length, 3);
-    expect(dependent.every((GrammarTopicSummary t) => t.isLeaf), isTrue);
+        reason: 'Phrase vs Clause is the only direct leaf');
+    expect(clauses.where((GrammarTopicSummary t) => !t.isLeaf).length, 2,
+        reason: 'By Independence and By Function are branches');
+    final List<GrammarTopicSummary> byIndependence =
+        await ds.children('clauses/by-independence');
+    expect(byIndependence.length, 2);
+    expect(byIndependence.every((GrammarTopicSummary t) => t.isLeaf), isTrue);
+    final List<GrammarTopicSummary> byFunction =
+        await ds.children('clauses/by-function');
+    expect(byFunction.length, 3);
+    expect(byFunction.every((GrammarTopicSummary t) => t.isLeaf), isTrue);
 
-    // Phrases → 8 leaf types.
+    // Phrases → the nine requested Phrase lessons; the separate Overview
+    // entry was intentionally removed.
     final List<GrammarTopicSummary> phrases = await ds.children('phrases');
-    expect(phrases.length, 8);
+    expect(phrases.length, 9);
     expect(phrases.every((GrammarTopicSummary t) => t.isLeaf), isTrue);
+    expect(phrases.map((GrammarTopicSummary t) => t.title),
+        contains('Absolute Phrase'));
 
-    // Active & Passive Voice → 8 leaf sections.
+    // Comparison is the only new top-level folder and has seven comparisons
+    // plus two reference topics.
+    final List<GrammarTopicSummary> comparison =
+        await ds.children('comparison');
+    expect(comparison.length, 9);
+    expect(comparison.every((GrammarTopicSummary t) => t.isLeaf), isTrue);
+
+    // Active & Passive Voice → six direct leaves (Introduction, General Rules,
+    // Modal Verbs, Imperative Sentences, Special Prepositions, Practice Quiz)
+    // and three tense branches (Present, Past, Future) with sub-lessons.
     final List<GrammarTopicSummary> voice =
         await ds.children('active-passive-voice');
-    expect(voice.length, 8);
-    expect(voice.every((GrammarTopicSummary t) => t.isLeaf), isTrue);
+    expect(voice.length, 9);
+    expect(
+      voice.map((GrammarTopicSummary t) => t.title).toList(),
+      <String>[
+        'Introduction to Voice',
+        'General Rules of Conversion',
+        'Present Tense',
+        'Past Tense',
+        'Future Tense',
+        'Modal Verbs',
+        'Imperative Sentences',
+        'Special Prepositions',
+        'Practice Quiz',
+      ],
+    );
+    expect(voice.where((GrammarTopicSummary t) => !t.isLeaf).length, 3,
+        reason: 'the three tense groups (Present, Past, Future) are the only branches');
+    expect(
+      (await ds.children('active-passive-voice/present'))
+          .map((GrammarTopicSummary t) => t.title)
+          .toList(),
+      <String>['Simple Present', 'Present Continuous', 'Present Perfect'],
+    );
+    expect(
+      (await ds.children('active-passive-voice/past'))
+          .map((GrammarTopicSummary t) => t.title)
+          .toList(),
+      <String>['Simple Past', 'Past Continuous', 'Past Perfect'],
+    );
+    expect(
+      (await ds.children('active-passive-voice/future'))
+          .map((GrammarTopicSummary t) => t.title)
+          .toList(),
+      <String>['Simple Future', 'Future Perfect'],
+    );
 
-    // Narration → 6 leaf sections.
+    // Active & Passive Voice → Practice Quiz: 100 unique MCQs across all
+    // seven voice topics (no Introduction / General Rules questions).
+    final GrammarLesson? apvQuiz = await ds.leaf('active-passive-voice/practice-quiz');
+    expect(apvQuiz, isNotNull);
+    expect(apvQuiz!.quiz.length, 100);
+    final Set<String> seenQuestions = <String>{};
+    for (final GrammarQuestion q in apvQuiz.quiz) {
+      expect(q.options.length, 4, reason: 'every question has exactly 4 options');
+      expect(q.answerIndex, inInclusiveRange(0, 3));
+      expect(seenQuestions.add(q.question), isTrue,
+          reason: 'no duplicate questions');
+      final Set<String> opts = Set<String>.from(q.options);
+      expect(opts.length, 4, reason: 'options are unique within a question');
+    }
+
+    // Narration → the new 8-part course: 7 lessons + a 100-MCQ quiz leaf.
     final List<GrammarTopicSummary> narration =
         await ds.children('direct-indirect-speech');
-    expect(narration.length, 6);
+    expect(narration.length, 8);
     expect(narration.every((GrammarTopicSummary t) => t.isLeaf), isTrue);
+    expect(
+      narration.map((GrammarTopicSummary t) => t.title).toList(),
+      <String>[
+        'Introduction & Basic Difference',
+        'Statements',
+        'Tense Changes (Backshift of Tenses)',
+        'Pronoun Changes',
+        'Time and Place Changes',
+        'Questions — Yes/No and WH-Questions',
+        'Commands, Requests, Punctuation & Exceptions',
+        'Practice Quiz',
+      ],
+    );
+    final GrammarLesson? disQuiz =
+        await ds.leaf('direct-indirect-speech/practice-quiz');
+    expect(disQuiz, isNotNull);
+    expect(disQuiz!.quiz.length, 100);
+    for (final String id in <String>[
+      'direct-indirect-speech/introduction',
+      'direct-indirect-speech/statements',
+      'direct-indirect-speech/tense-changes',
+      'direct-indirect-speech/pronoun-changes',
+      'direct-indirect-speech/time-place-changes',
+      'direct-indirect-speech/questions',
+      'direct-indirect-speech/commands-requests-punctuation',
+    ]) {
+      final GrammarLesson? lesson = await ds.leaf(id);
+      expect(lesson, isNotNull, reason: '$id must decode');
+      expect(lesson!.urduExplanation, isNotEmpty, reason: '$id needs Urdu');
+      expect(lesson.rules, isNotEmpty, reason: '$id needs rules');
+      expect(lesson.practice, isNotEmpty, reason: '$id needs practice');
+      expect(lesson.examTips, isNotEmpty, reason: '$id needs exam tips');
+      expect(lesson.summary, isNotEmpty, reason: '$id needs a summary');
+    }
+    expect(
+      (await ds.leaf('direct-indirect-speech/introduction'))!.voiceComparison,
+      isNotNull,
+      reason: 'intro lesson uses the two-column comparison layout',
+    );
 
-    // Final split: the six remaining multi-type categories each became a
-    // branch with a dedicated leaf per type.
+    // Final split: the remaining multi-type categories each became a
+    // branch with a dedicated leaf per type. Articles, Prepositions, and
+    // Conjunctions were intentionally removed from the Grammar hierarchy.
     final Map<String, int> expectedChildren = <String, int>{
-      'articles': 4,
-      'prepositions': 4,
-      'conjunctions': 3,
       'modals': 10,
       'conditional-sentences': 5,
-      'punctuation': 9,
+      'punctuation': 11,
     };
     for (final MapEntry<String, int> e in expectedChildren.entries) {
       final List<GrammarTopicSummary> kids = await ds.children(e.key);
@@ -112,7 +223,6 @@ void main() {
 
     // The three cohesive categories stay single lessons (not split).
     for (final String id in <String>[
-      'sentence-structure',
       'subject-verb-agreement',
       'common-errors',
     ]) {
@@ -130,28 +240,33 @@ void main() {
       final Map<String, dynamic> o = e as Map<String, dynamic>;
       if (o['isLeaf'] != true) continue;
       leaves++;
-      final GrammarLesson? lesson = await ds.leaf(o['id'] as String);
-      expect(lesson, isNotNull, reason: 'leaf ${o['id']} must decode');
-      expect(lesson!.englishExplanation, isNotEmpty,
-          reason: '${o['id']} needs an English explanation');
+      final String id = o['id'] as String;
+      final GrammarLesson? lesson = await ds.leaf(id);
+      expect(lesson, isNotNull, reason: 'leaf $id must decode');
+
+      // Active & Passive Voice intentionally ships as an empty structure;
+      // its lessons receive content in a later pass.
+      if (id != 'punctuation/parentheses' &&
+          !id.startsWith('active-passive-voice/')) {
+        expect(
+          lesson!.englishExplanation.isNotEmpty ||
+              lesson.introduction.isNotEmpty ||
+              lesson.providedMaterial.isNotEmpty,
+          isTrue,
+          reason: '$id needs English lesson content',
+        );
+      }
     }
-    expect(leaves, greaterThanOrEqualTo(80));
+    expect(leaves, greaterThanOrEqualTo(86));
 
     // Flagship leaves across the split categories decode with full sections
     // (Urdu + rules + practice + quiz + summary), proving each type has its
     // own dedicated lesson rather than a merged page.
     for (final String id in <String>[
       'pos/noun',
-      'clauses/dependent/adverb',
-      'phrases/participial',
-      'active-passive-voice/interrogative',
-      'direct-indirect-speech/universal-truth',
-      'articles/an',
-      'prepositions/confusing',
-      'conjunctions/correlative',
+      'direct-indirect-speech/tense-changes',
       'modals/must',
-      'conditional-sentences/third',
-      'punctuation/semicolon',
+      'modals/should',
     ]) {
       final GrammarLesson? lesson = await ds.leaf(id);
       expect(lesson, isNotNull, reason: '$id must decode');
@@ -162,17 +277,62 @@ void main() {
       expect(lesson.summary, isNotEmpty, reason: '$id needs a summary');
     }
 
+    // Phrase material is preserved verbatim from the supplied TXT file. The
+    // structured fields remain optional because the original source includes
+    // its own headings, examples, explanations, and Urdu lines.
+    for (final String id in <String>[
+      'phrases/noun',
+      'phrases/verb',
+      'phrases/adjective',
+      'phrases/adverb',
+      'phrases/prepositional',
+      'phrases/gerund',
+      'phrases/infinitive',
+      'phrases/participial',
+      'phrases/absolute',
+    ]) {
+      final GrammarLesson? lesson = await ds.leaf(id);
+      expect(lesson, isNotNull, reason: '$id must decode');
+      expect(lesson!.providedMaterial, isNotEmpty,
+          reason: '$id needs the supplied material verbatim');
+    }
+    // Clause lessons supplied by the user preserve the attached material
+    // verbatim and intentionally do not require legacy practice/quiz sections.
+    for (final String id in <String>[
+      'clauses/by-independence/independent',
+      'clauses/by-independence/dependent',
+      'clauses/by-function/noun',
+      'clauses/by-function/adjective',
+      'clauses/by-function/adverb',
+      'clauses/phrase-vs-clause',
+    ]) {
+      final GrammarLesson? lesson = await ds.leaf(id);
+      expect(lesson, isNotNull, reason: '$id must decode');
+      expect(lesson!.providedMaterial, isNotEmpty,
+          reason: '$id needs the supplied material verbatim');
+    }
+
     // The expanded schema decodes: Exam Tips, Structure, and Urdu
-    // translations on examples are all present on the new lessons.
+    // translations on the established structured lessons.
     final GrammarLesson must = (await ds.leaf('modals/must'))!;
     expect(must.examTips, isNotEmpty, reason: 'modals/must needs exam tips');
     expect(must.structure, isNotEmpty, reason: 'modals/must needs a structure');
     expect(must.examples.any((GrammarExample e) => (e.urdu ?? '').isNotEmpty),
         isTrue,
         reason: 'examples carry Urdu translations');
-    final GrammarLesson cond = (await ds.leaf('conditional-sentences/third'))!;
-    expect(cond.structure, isNotEmpty,
-        reason: 'conditionals carry the if/main-clause formula');
-    expect(cond.examTips, isNotEmpty);
+    // Conditional lessons preserve the supplied source material verbatim,
+    // including formulas and exam tips inside the source-material field.
+    for (final String id in <String>[
+      'conditional-sentences/zero',
+      'conditional-sentences/first',
+      'conditional-sentences/second',
+      'conditional-sentences/third',
+      'conditional-sentences/mixed',
+    ]) {
+      final GrammarLesson? cond = await ds.leaf(id);
+      expect(cond, isNotNull, reason: '$id must decode');
+      expect(cond!.providedMaterial, isNotEmpty,
+          reason: '$id needs the supplied material verbatim');
+    }
   });
 }

@@ -1,0 +1,14 @@
+Apache License, Version 2.0
+==========================
+
+The idioms/proverbs data in idioms.json is redistributed under the Apache
+License 2.0, per the source dataset:
+
+    "Urdu Idioms with English Translation"
+    Ehtisham1328, Hugging Face
+    https://huggingface.co/datasets/Ehtisham1328/urdu-idioms-with-english-translation
+
+The full text of the Apache License 2.0 can be found at:
+    https://www.apache.org/licenses/LICENSE-2.0
+
+SPDX-License-Identifier: Apache-2.0

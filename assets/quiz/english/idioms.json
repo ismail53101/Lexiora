@@ -1,0 +1,1651 @@
+{
+  "bank": {
+    "name": "Idioms & Phrases",
+    "subject": "English",
+    "topic": "Idioms & Phrases",
+    "description": "Choose the correct meaning of the given idiom or phrase.",
+    "tags": "css,pms,fpsc,ppsc,nts,english,idioms,phrases",
+    "version": "1.0",
+    "id": "english_idioms"
+  },
+  "questions": [
+    {
+      "type": "mcq",
+      "prompt": "What does the idiom 'once in a blue moon' mean?",
+      "options": [
+        "Every day",
+        "Very rarely",
+        "At night",
+        "Frequently"
+      ],
+      "answer": 1,
+      "explanation": "Once in a blue moon means very rarely.",
+      "difficulty": "easy",
+      "id": "q01"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What does the idiom 'break the ice' mean?",
+      "options": [
+        "Start a conversation",
+        "Break something frozen",
+        "End a meeting",
+        "Make a mistake"
+      ],
+      "answer": 0,
+      "explanation": "To break the ice is to start a conversation and ease tension.",
+      "difficulty": "easy",
+      "id": "q02"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What does the idiom 'bite the bullet' mean?",
+      "options": [
+        "Chew food",
+        "Face a difficult situation bravely",
+        "Tell a lie",
+        "Run away"
+      ],
+      "answer": 1,
+      "explanation": "To bite the bullet means to endure a painful or difficult situation bravely.",
+      "difficulty": "medium",
+      "id": "q03"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What does the idiom 'a piece of cake' mean?",
+      "options": [
+        "Something very easy",
+        "A delicious meal",
+        "A small share",
+        "A reward"
+      ],
+      "answer": 0,
+      "explanation": "A piece of cake means a task that is very easy.",
+      "difficulty": "easy",
+      "id": "q04"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What does the idiom 'let the cat out of the bag' mean?",
+      "options": [
+        "Release an animal",
+        "Reveal a secret",
+        "Hide something",
+        "Start a fight"
+      ],
+      "answer": 1,
+      "explanation": "To let the cat out of the bag is to reveal a secret carelessly.",
+      "difficulty": "medium",
+      "id": "q05"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What does the idiom 'under the weather' mean?",
+      "options": [
+        "Feeling ill",
+        "Below the sky",
+        "In the rain",
+        "Very happy"
+      ],
+      "answer": 0,
+      "explanation": "Under the weather means feeling unwell or ill.",
+      "difficulty": "easy",
+      "id": "q06"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What does the idiom 'burn the midnight oil' mean?",
+      "options": [
+        "Start a fire",
+        "Work late into the night",
+        "Waste fuel",
+        "Go to bed early"
+      ],
+      "answer": 1,
+      "explanation": "To burn the midnight oil is to work or study late at night.",
+      "difficulty": "medium",
+      "id": "q07"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What does the idiom 'hit the nail on the head' mean?",
+      "options": [
+        "Cause an injury",
+        "Be exactly right",
+        "Miss the target",
+        "Do manual work"
+      ],
+      "answer": 1,
+      "explanation": "To hit the nail on the head is to be exactly right about something.",
+      "difficulty": "medium",
+      "id": "q08"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What does the idiom 'a blessing in disguise' mean?",
+      "options": [
+        "A hidden problem",
+        "Something good that seemed bad at first",
+        "A religious ritual",
+        "An accident"
+      ],
+      "answer": 1,
+      "explanation": "A blessing in disguise is an apparent misfortune that turns out to be good.",
+      "difficulty": "medium",
+      "id": "q09"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What does the idiom 'spill the beans' mean?",
+      "options": [
+        "Cook food",
+        "Tell a secret",
+        "Drop groceries",
+        "Make a mess"
+      ],
+      "answer": 1,
+      "explanation": "To spill the beans is to reveal confidential information.",
+      "difficulty": "easy",
+      "id": "q10"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What does the idiom 'cry over spilt milk' mean?",
+      "options": [
+        "Feel sad about something done",
+        "Clean a mess",
+        "Weep loudly",
+        "Drink sour milk"
+      ],
+      "answer": 0,
+      "explanation": "Crying over spilt milk means regretting something that cannot be undone.",
+      "difficulty": "medium",
+      "id": "q11"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What does the idiom 'at the eleventh hour' mean?",
+      "options": [
+        "At 11 o'clock",
+        "At the last possible moment",
+        "Very early",
+        "At noon"
+      ],
+      "answer": 1,
+      "explanation": "At the eleventh hour means at the last possible moment.",
+      "difficulty": "medium",
+      "id": "q12"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What does the idiom 'add fuel to the fire' mean?",
+      "options": [
+        "Extinguish a fire",
+        "Make a situation worse",
+        "Light a stove",
+        "Warm a room"
+      ],
+      "answer": 1,
+      "explanation": "To add fuel to the fire is to worsen an already bad situation.",
+      "difficulty": "medium",
+      "id": "q13"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What does the idiom 'beating around the bush' mean?",
+      "options": [
+        "Avoiding the main point",
+        "Gardening work",
+        "Hunting birds",
+        "Talking loudly"
+      ],
+      "answer": 0,
+      "explanation": "Beating around the bush means avoiding the main topic.",
+      "difficulty": "medium",
+      "id": "q14"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What does the idiom 'the ball is in your court' mean?",
+      "options": [
+        "You must play a game",
+        "It is your turn to act",
+        "You are losing",
+        "The match is over"
+      ],
+      "answer": 1,
+      "explanation": "The ball is in your court means it is now your turn to decide or act.",
+      "difficulty": "hard",
+      "id": "q15"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What does the idiom 'cut corners' mean?",
+      "options": [
+        "Do something cheaply or carelessly",
+        "Take a shortcut on the road",
+        "Trim edges",
+        "Save time exactly"
+      ],
+      "answer": 0,
+      "explanation": "To cut corners is to do something carelessly or in a cheap way to save time or money.",
+      "difficulty": "hard",
+      "id": "q16"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What does the idiom 'out of the blue' mean?",
+      "options": [
+        "From the sky",
+        "Suddenly and unexpectedly",
+        "In the sea",
+        "Very slowly"
+      ],
+      "answer": 1,
+      "explanation": "Out of the blue means happening suddenly and unexpectedly.",
+      "difficulty": "medium",
+      "id": "q17"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What does the idiom 'call it a day' mean?",
+      "options": [
+        "Name the day",
+        "Stop working for the day",
+        "Start a new job",
+        "Make a phone call"
+      ],
+      "answer": 1,
+      "explanation": "To call it a day is to stop working for the rest of the day.",
+      "difficulty": "easy",
+      "id": "q18"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What does the idiom 'a storm in a teacup' mean?",
+      "options": [
+        "Great excitement over a small matter",
+        "A violent weather event",
+        "A cup of tea",
+        "A dangerous quarrel"
+      ],
+      "answer": 0,
+      "explanation": "A storm in a teacup is great excitement over a trivial matter.",
+      "difficulty": "hard",
+      "id": "q19"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What does the idiom 'keep your fingers crossed' mean?",
+      "options": [
+        "Cross your arms",
+        "Hope for a good outcome",
+        "Signal to stop",
+        "Show anger"
+      ],
+      "answer": 1,
+      "explanation": "Keeping your fingers crossed means hoping for good luck or a favourable outcome.",
+      "difficulty": "easy",
+      "id": "q20"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What does the idiom 'the last straw' mean?",
+      "options": [
+        "The final drink",
+        "The final problem that makes one give up",
+        "The lightest load",
+        "The best part"
+      ],
+      "answer": 1,
+      "explanation": "The last straw is the final irritation that makes a situation unbearable.",
+      "difficulty": "hard",
+      "id": "q21"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What does the idiom 'on cloud nine' mean?",
+      "options": [
+        "Extremely happy",
+        "Very high up",
+        "Confused",
+        "Afraid of heights"
+      ],
+      "answer": 0,
+      "explanation": "On cloud nine means extremely happy or elated.",
+      "difficulty": "medium",
+      "id": "q22"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What does the idiom 'pulling one's leg' mean?",
+      "options": [
+        "Tricking someone playfully",
+        "Hurting someone",
+        "Helping someone walk",
+        "Stretching muscles"
+      ],
+      "answer": 0,
+      "explanation": "Pulling one's leg means teasing or tricking someone playfully.",
+      "difficulty": "medium",
+      "id": "q23"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What does the idiom 'straight from the horse's mouth' mean?",
+      "options": [
+        "From a reliable source",
+        "From a farm",
+        "Hearing animal sounds",
+        "From a stranger"
+      ],
+      "answer": 0,
+      "explanation": "Straight from the horse's mouth means information from the most reliable source.",
+      "difficulty": "hard",
+      "id": "q24"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What does the idiom 'barking up the wrong tree' mean?",
+      "options": [
+        "Wrong approach or accusation",
+        "Climbing a tree",
+        "Losing one's dog",
+        "Wasting energy on a task"
+      ],
+      "answer": 0,
+      "explanation": "Barking up the wrong tree means pursuing a mistaken or misguided course.",
+      "difficulty": "hard",
+      "id": "q25"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What does the idiom 'a dime a dozen' mean?",
+      "options": [
+        "Very expensive",
+        "Very common",
+        "Very rare",
+        "Very cheap and useful"
+      ],
+      "answer": 1,
+      "explanation": "A dime a dozen means something very common and easily available.",
+      "difficulty": "hard",
+      "id": "q26"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What does the idiom 'cost an arm and a leg' mean?",
+      "options": [
+        "Very expensive",
+        "Very painful",
+        "Requires surgery",
+        "A long journey"
+      ],
+      "answer": 0,
+      "explanation": "To cost an arm and a leg means to be extremely expensive.",
+      "difficulty": "easy",
+      "id": "q27"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What does the idiom 'in hot water' mean?",
+      "options": [
+        "In trouble",
+        "Having a bath",
+        "Feverish",
+        "Angry"
+      ],
+      "answer": 0,
+      "explanation": "To be in hot water is to be in trouble or difficulty.",
+      "difficulty": "easy",
+      "id": "q28"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What does the idiom 'give the benefit of the doubt' mean?",
+      "options": [
+        "Trust someone's honesty despite doubt",
+        "Give money to the poor",
+        "Win a court case",
+        "Doubling an amount"
+      ],
+      "answer": 0,
+      "explanation": "Giving the benefit of the doubt means believing someone's statement when the evidence is unclear.",
+      "difficulty": "hard",
+      "id": "q29"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What does the idiom 'apple of one's eye' mean?",
+      "options": [
+        "A favourite person",
+        "An eye disease",
+        "A green fruit",
+        "A clear view"
+      ],
+      "answer": 0,
+      "explanation": "The apple of one's eye is a person who is greatly loved or treasured.",
+      "difficulty": "medium",
+      "id": "q30"
+    },
+    {
+      "type": "mcq",
+      "prompt": "'To turn a deaf ear' means:",
+      "options": [
+        "To refuse to listen",
+        "To hear well",
+        "To be deaf",
+        "To complain"
+      ],
+      "answer": 0,
+      "explanation": "Turning a deaf ear means deliberately ignoring what is said.",
+      "difficulty": "medium",
+      "id": "q31"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What does 'to be on cloud nine' mean?",
+      "options": [
+        "To be extremely happy",
+        "To be high up",
+        "To be confused",
+        "To be ill"
+      ],
+      "answer": 0,
+      "explanation": "Being on cloud nine means being extremely joyful.",
+      "difficulty": "easy",
+      "id": "q32"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What does 'to see eye to eye' mean?",
+      "options": [
+        "To agree with someone",
+        "To stare at someone",
+        "To be similar",
+        "To argue"
+      ],
+      "answer": 0,
+      "explanation": "Seeing eye to eye means holding the same opinion or agreeing fully.",
+      "difficulty": "medium",
+      "id": "q33"
+    },
+    {
+      "type": "mcq",
+      "prompt": "'To add fuel to the fire' means:",
+      "options": [
+        "To make a bad situation worse",
+        "To start a fire",
+        "To help someone",
+        "To calm things down"
+      ],
+      "answer": 0,
+      "explanation": "Adding fuel to the fire means worsening an already difficult situation.",
+      "difficulty": "easy",
+      "id": "q34"
+    },
+    {
+      "type": "mcq",
+      "prompt": "'To call it a day' means:",
+      "options": [
+        "To stop working for the day",
+        "To celebrate",
+        "To start working",
+        "To take a nap"
+      ],
+      "answer": 0,
+      "explanation": "Calling it a day means deciding to stop work or activity.",
+      "difficulty": "easy",
+      "id": "q35"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What does 'to be over the moon' mean?",
+      "options": [
+        "To be extremely delighted",
+        "To be lost",
+        "To be confused",
+        "To be angry"
+      ],
+      "answer": 0,
+      "explanation": "Being over the moon means being extremely happy or thrilled.",
+      "difficulty": "easy",
+      "id": "q36"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What does 'to spill the beans' mean?",
+      "options": [
+        "To reveal secret information",
+        "To drop food",
+        "To make a mess",
+        "To buy groceries"
+      ],
+      "answer": 0,
+      "explanation": "Spilling the beans means disclosing a secret.",
+      "difficulty": "easy",
+      "id": "q37"
+    },
+    {
+      "type": "mcq",
+      "prompt": "'To keep an eye on' means:",
+      "options": [
+        "To watch carefully",
+        "To close one's eyes",
+        "To ignore",
+        "To stare angrily"
+      ],
+      "answer": 0,
+      "explanation": "Keeping an eye on something means monitoring it closely.",
+      "difficulty": "easy",
+      "id": "q38"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What does 'to be on thin ice' mean?",
+      "options": [
+        "To be in a risky situation",
+        "To be skating",
+        "To be confident",
+        "To be cold"
+      ],
+      "answer": 0,
+      "explanation": "Being on thin ice means being in a delicate or dangerous position.",
+      "difficulty": "medium",
+      "id": "q39"
+    },
+    {
+      "type": "mcq",
+      "prompt": "'To take something with a grain of salt' means:",
+      "options": [
+        "To view it with some doubt",
+        "To accept it fully",
+        "To add salt",
+        "To ignore it"
+      ],
+      "answer": 0,
+      "explanation": "Taking something with a grain of salt means not fully believing it.",
+      "difficulty": "medium",
+      "id": "q40"
+    },
+    {
+      "type": "mcq",
+      "prompt": "'To go back on one's word' means:",
+      "options": [
+        "To break a promise",
+        "To remember something",
+        "To apologize",
+        "To speak clearly"
+      ],
+      "answer": 0,
+      "explanation": "Going back on one's word means failing to keep a promise.",
+      "difficulty": "medium",
+      "id": "q41"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What does 'to smell a rat' mean?",
+      "options": [
+        "To suspect something is wrong",
+        "To smell something bad",
+        "To find a mouse",
+        "To be hungry"
+      ],
+      "answer": 0,
+      "explanation": "Smelling a rat means detecting suspicion or deceit.",
+      "difficulty": "easy",
+      "id": "q42"
+    },
+    {
+      "type": "mcq",
+      "prompt": "'To put all one's eggs in one basket' means:",
+      "options": [
+        "To risk everything on a single venture",
+        "To be careful",
+        "To cook breakfast",
+        "To share equally"
+      ],
+      "answer": 0,
+      "explanation": "Putting all eggs in one basket means depending on one single plan or thing.",
+      "difficulty": "easy",
+      "id": "q43"
+    },
+    {
+      "type": "mcq",
+      "prompt": "'To make both ends meet' means:",
+      "options": [
+        "To manage with one's income",
+        "To work day and night",
+        "To travel",
+        "To agree with everyone"
+      ],
+      "answer": 0,
+      "explanation": "Making both ends meet means managing to live within one's income.",
+      "difficulty": "medium",
+      "id": "q44"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What does 'to be in the limelight' mean?",
+      "options": [
+        "To be the centre of public attention",
+        "To be in a spotlight",
+        "To be shy",
+        "To be hidden"
+      ],
+      "answer": 0,
+      "explanation": "Being in the limelight means receiving a lot of public attention.",
+      "difficulty": "medium",
+      "id": "q45"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What does 'to be at loggerheads' mean?",
+      "options": [
+        "To be in strong disagreement",
+        "To be friends",
+        "To be tired",
+        "To be working"
+      ],
+      "answer": 0,
+      "explanation": "Being at loggerheads means being in open conflict or dispute.",
+      "difficulty": "medium",
+      "id": "q46"
+    },
+    {
+      "type": "mcq",
+      "prompt": "'To hit the sack' means:",
+      "options": [
+        "To go to bed",
+        "To fight",
+        "To work hard",
+        "To give up"
+      ],
+      "answer": 0,
+      "explanation": "Hitting the sack means going to sleep.",
+      "difficulty": "easy",
+      "id": "q47"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What does 'to be in the red' mean?",
+      "options": [
+        "To be in debt or loss",
+        "To be angry",
+        "To be embarrassed",
+        "To be healthy"
+      ],
+      "answer": 0,
+      "explanation": "Being in the red means owing money or making a loss.",
+      "difficulty": "medium",
+      "id": "q48"
+    },
+    {
+      "type": "mcq",
+      "prompt": "'To pull strings' means:",
+      "options": [
+        "To use influence behind the scenes",
+        "To control a puppet",
+        "To work hard",
+        "To quit"
+      ],
+      "answer": 0,
+      "explanation": "Pulling strings means using personal influence to get things done.",
+      "difficulty": "medium",
+      "id": "q49"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What does 'to be at sixes and sevens' mean?",
+      "options": [
+        "To be in confusion or disorder",
+        "To be lucky",
+        "To be wealthy",
+        "To be punctual"
+      ],
+      "answer": 0,
+      "explanation": "Being at sixes and sevens means being disorganised or confused.",
+      "difficulty": "hard",
+      "id": "q50"
+    },
+    {
+      "type": "mcq",
+      "prompt": "'To be born with a silver spoon in one's mouth' means:",
+      "options": [
+        "To be born into wealth",
+        "To be a good eater",
+        "To be lucky in exams",
+        "To be famous"
+      ],
+      "answer": 0,
+      "explanation": "This idiom describes someone born into a rich family.",
+      "difficulty": "easy",
+      "id": "q51"
+    },
+    {
+      "type": "mcq",
+      "prompt": "'To turn over a new leaf' means:",
+      "options": [
+        "To start behaving better",
+        "To read a new book",
+        "To turn a page",
+        "To change jobs"
+      ],
+      "answer": 0,
+      "explanation": "Turning over a new leaf means making a fresh start with better behaviour.",
+      "difficulty": "easy",
+      "id": "q52"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What does 'to be on the verge of' mean?",
+      "options": [
+        "To be very close to something",
+        "To be far away",
+        "To be above",
+        "To be behind"
+      ],
+      "answer": 0,
+      "explanation": "Being on the verge of something means being about to experience it.",
+      "difficulty": "easy",
+      "id": "q53"
+    },
+    {
+      "type": "mcq",
+      "prompt": "'To take someone for a ride' means:",
+      "options": [
+        "To deceive someone",
+        "To drive with someone",
+        "To entertain someone",
+        "To travel together"
+      ],
+      "answer": 0,
+      "explanation": "Taking someone for a ride means tricking or deceiving them.",
+      "difficulty": "medium",
+      "id": "q54"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What does 'to burn the candle at both ends' mean?",
+      "options": [
+        "To work or stay up excessively",
+        "To waste money",
+        "To be wasteful",
+        "To light candles"
+      ],
+      "answer": 0,
+      "explanation": "Burning the candle at both ends means overworking oneself.",
+      "difficulty": "medium",
+      "id": "q55"
+    },
+    {
+      "type": "mcq",
+      "prompt": "'To have second thoughts' means:",
+      "options": [
+        "To doubt a decision",
+        "To think twice daily",
+        "To forget",
+        "To agree quickly"
+      ],
+      "answer": 0,
+      "explanation": "Having second thoughts means reconsidering or doubting a decision.",
+      "difficulty": "easy",
+      "id": "q56"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What does 'to be in the dark' mean?",
+      "options": [
+        "To be unaware or uninformed",
+        "To be in trouble",
+        "To be scared",
+        "To be tired"
+      ],
+      "answer": 0,
+      "explanation": "Being in the dark means being kept unaware of information.",
+      "difficulty": "easy",
+      "id": "q57"
+    },
+    {
+      "type": "mcq",
+      "prompt": "'To take the rough with the smooth' means:",
+      "options": [
+        "To accept both good and bad times",
+        "To smooth things over",
+        "To be rough",
+        "To avoid work"
+      ],
+      "answer": 0,
+      "explanation": "This idiom means accepting life's difficulties along with its pleasures.",
+      "difficulty": "medium",
+      "id": "q58"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What does 'to be out of the woods' mean?",
+      "options": [
+        "To be past the danger",
+        "To be lost",
+        "To be in a forest",
+        "To be tired"
+      ],
+      "answer": 0,
+      "explanation": "Being out of the woods means no longer being in danger or difficulty.",
+      "difficulty": "medium",
+      "id": "q59"
+    },
+    {
+      "type": "mcq",
+      "prompt": "'To be a jack of all trades' means:",
+      "options": [
+        "A person skilled in many things",
+        "A person with no skills",
+        "A trader",
+        "A lazy person"
+      ],
+      "answer": 0,
+      "explanation": "A jack of all trades can do many kinds of work, though not perfectly.",
+      "difficulty": "easy",
+      "id": "q60"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What does 'to keep the ball rolling' mean?",
+      "options": [
+        "To maintain momentum",
+        "To play sports",
+        "To stop",
+        "To delay"
+      ],
+      "answer": 0,
+      "explanation": "Keeping the ball rolling means sustaining progress or activity.",
+      "difficulty": "medium",
+      "id": "q61"
+    },
+    {
+      "type": "mcq",
+      "prompt": "'To be a fish out of water' means:",
+      "options": [
+        "To feel uncomfortable in unfamiliar surroundings",
+        "To be a good swimmer",
+        "To be thirsty",
+        "To be in trouble"
+      ],
+      "answer": 0,
+      "explanation": "A fish out of water feels awkward in an unfamiliar environment.",
+      "difficulty": "easy",
+      "id": "q62"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What does 'to have a finger in every pie' mean?",
+      "options": [
+        "To be involved in everything",
+        "To bake pies",
+        "To be greedy",
+        "To be busy cooking"
+      ],
+      "answer": 0,
+      "explanation": "Having a finger in every pie means being involved in many activities.",
+      "difficulty": "medium",
+      "id": "q63"
+    },
+    {
+      "type": "mcq",
+      "prompt": "'To be at death's door' means:",
+      "options": [
+        "To be very ill or near death",
+        "To be at an entrance",
+        "To be late",
+        "To be brave"
+      ],
+      "answer": 0,
+      "explanation": "Being at death's door means being gravely ill.",
+      "difficulty": "easy",
+      "id": "q64"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What does 'to let bygones be bygones' mean?",
+      "options": [
+        "To forgive past quarrels",
+        "To remember old times",
+        "To avoid the past",
+        "To celebrate"
+      ],
+      "answer": 0,
+      "explanation": "Letting bygones be bygones means forgiving and forgetting past conflicts.",
+      "difficulty": "easy",
+      "id": "q65"
+    },
+    {
+      "type": "mcq",
+      "prompt": "'To be on the same wavelength' means:",
+      "options": [
+        "To understand each other well",
+        "To use the same radio",
+        "To be nearby",
+        "To work together"
+      ],
+      "answer": 0,
+      "explanation": "Being on the same wavelength means thinking and understanding alike.",
+      "difficulty": "medium",
+      "id": "q66"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What does 'to be under someone's thumb' mean?",
+      "options": [
+        "To be completely controlled by someone",
+        "To be shorter than someone",
+        "To be close friends",
+        "To be equal"
+      ],
+      "answer": 0,
+      "explanation": "Being under someone's thumb means being dominated by them.",
+      "difficulty": "medium",
+      "id": "q67"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What does 'to be worth one's salt' mean?",
+      "options": [
+        "To be competent at one's job",
+        "To be expensive",
+        "To be salty",
+        "To be honest"
+      ],
+      "answer": 0,
+      "explanation": "Being worth one's salt means being competent and deserving of pay.",
+      "difficulty": "hard",
+      "id": "q68"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What does 'to blow one's own trumpet' mean?",
+      "options": [
+        "To boast about oneself",
+        "To play music",
+        "To be loud",
+        "To celebrate"
+      ],
+      "answer": 0,
+      "explanation": "Blowing one's own trumpet means praising oneself.",
+      "difficulty": "easy",
+      "id": "q69"
+    },
+    {
+      "type": "mcq",
+      "prompt": "'To have an axe to grind' means:",
+      "options": [
+        "To have a private motive",
+        "To chop wood",
+        "To be angry",
+        "To work hard"
+      ],
+      "answer": 0,
+      "explanation": "Having an axe to grind means having a selfish personal reason.",
+      "difficulty": "hard",
+      "id": "q70"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What does 'to be up in arms' mean?",
+      "options": [
+        "To be angrily protesting",
+        "To raise weapons",
+        "To exercise",
+        "To celebrate"
+      ],
+      "answer": 0,
+      "explanation": "Being up in arms means protesting strongly or angrily.",
+      "difficulty": "medium",
+      "id": "q71"
+    },
+    {
+      "type": "mcq",
+      "prompt": "'To pay through the nose' means:",
+      "options": [
+        "To pay an excessive price",
+        "To pay in cash",
+        "To refuse payment",
+        "To be fined"
+      ],
+      "answer": 0,
+      "explanation": "Paying through the nose means paying far too much.",
+      "difficulty": "medium",
+      "id": "q72"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What does 'to be a man of letters' mean?",
+      "options": [
+        "A scholarly or literary person",
+        "A postman",
+        "A teacher",
+        "A writer only"
+      ],
+      "answer": 0,
+      "explanation": "A man of letters is a learned person devoted to literature.",
+      "difficulty": "medium",
+      "id": "q73"
+    },
+    {
+      "type": "mcq",
+      "prompt": "'To be out of sorts' means:",
+      "options": [
+        "To feel unwell or irritable",
+        "To be disorganised",
+        "To be late",
+        "To be out of stock"
+      ],
+      "answer": 0,
+      "explanation": "Being out of sorts means feeling slightly unwell or grumpy.",
+      "difficulty": "medium",
+      "id": "q74"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What does 'to take with a grain of salt' mean?",
+      "options": [
+        "To listen with some doubt",
+        "To cook with salt",
+        "To accept fully",
+        "To reject"
+      ],
+      "answer": 0,
+      "explanation": "Taking something with a grain of salt means being sceptical of it.",
+      "difficulty": "medium",
+      "id": "q75"
+    },
+    {
+      "type": "mcq",
+      "prompt": "'To be in hot water' means:",
+      "options": [
+        "To be in trouble",
+        "To bathe",
+        "To be thirsty",
+        "To be healthy"
+      ],
+      "answer": 0,
+      "explanation": "Being in hot water means facing trouble or difficulty.",
+      "difficulty": "easy",
+      "id": "q76"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What does 'to steal someone's thunder' mean?",
+      "options": [
+        "To take attention away from someone",
+        "To rob someone",
+        "To make noise",
+        "To tell a secret"
+      ],
+      "answer": 0,
+      "explanation": "Stealing someone's thunder means overshadowing their moment of glory.",
+      "difficulty": "hard",
+      "id": "q77"
+    },
+    {
+      "type": "mcq",
+      "prompt": "'To be a laughing stock' means:",
+      "options": [
+        "To be ridiculed by everyone",
+        "To be happy",
+        "To be a comedian",
+        "To be popular"
+      ],
+      "answer": 0,
+      "explanation": "Being a laughing stock means being an object of general mockery.",
+      "difficulty": "easy",
+      "id": "q78"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What does 'to cast pearls before swine' mean?",
+      "options": [
+        "To offer something valuable to those who can't appreciate it",
+        "To be generous",
+        "To sell jewellery",
+        "To waste nothing"
+      ],
+      "answer": 0,
+      "explanation": "Casting pearls before swine means wasting value on the unappreciative.",
+      "difficulty": "hard",
+      "id": "q79"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What does 'to beat around the bush' mean?",
+      "options": [
+        "To avoid the main point",
+        "To waste money",
+        "To work hard",
+        "To travel far"
+      ],
+      "answer": 0,
+      "explanation": "Beating around the bush means avoiding the main issue.",
+      "difficulty": "easy",
+      "id": "q80"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What does 'to have a change of heart' mean?",
+      "options": [
+        "To change one's opinion or feeling",
+        "To suffer a heart attack",
+        "To be brave",
+        "To feel love"
+      ],
+      "answer": 0,
+      "explanation": "A change of heart means altering one's attitude or decision.",
+      "difficulty": "medium",
+      "id": "q81"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What does 'to play it by ear' mean?",
+      "options": [
+        "To act without a fixed plan",
+        "To listen to music",
+        "To play a musical instrument",
+        "To memorize a tune"
+      ],
+      "answer": 0,
+      "explanation": "Playing it by ear means improvising as events unfold.",
+      "difficulty": "medium",
+      "id": "q82"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What does 'to bite off more than one can chew' mean?",
+      "options": [
+        "To take on more than one can handle",
+        "To eat too fast",
+        "To be greedy with food",
+        "To speak rudely"
+      ],
+      "answer": 0,
+      "explanation": "It means attempting more than one has the ability to manage.",
+      "difficulty": "easy",
+      "id": "q83"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What does 'to let the cat out of the bag' mean?",
+      "options": [
+        "To reveal a secret",
+        "To free a pet",
+        "To be careless",
+        "To make a mess"
+      ],
+      "answer": 0,
+      "explanation": "Letting the cat out of the bag means disclosing a secret.",
+      "difficulty": "easy",
+      "id": "q84"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What does 'to cost an arm and a leg' mean?",
+      "options": [
+        "To be very expensive",
+        "To be physically harmful",
+        "To be priceless",
+        "To be free"
+      ],
+      "answer": 0,
+      "explanation": "It means something is extremely costly.",
+      "difficulty": "easy",
+      "id": "q85"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What does 'to kill two birds with one stone' mean?",
+      "options": [
+        "To achieve two things at once",
+        "To be cruel to animals",
+        "To act violently",
+        "To waste effort"
+      ],
+      "answer": 0,
+      "explanation": "It means solving two problems with a single action.",
+      "difficulty": "easy",
+      "id": "q86"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What does 'to read between the lines' mean?",
+      "options": [
+        "To understand hidden meaning",
+        "To read very fast",
+        "To read aloud",
+        "To skip paragraphs"
+      ],
+      "answer": 0,
+      "explanation": "Reading between the lines means perceiving the implicit meaning.",
+      "difficulty": "medium",
+      "id": "q87"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What does 'to give someone the cold shoulder' mean?",
+      "options": [
+        "To ignore someone deliberately",
+        "To embrace someone",
+        "To feel cold",
+        "To comfort someone"
+      ],
+      "answer": 0,
+      "explanation": "Giving the cold shoulder means treating someone with deliberate indifference.",
+      "difficulty": "easy",
+      "id": "q88"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What does 'to pull someone's leg' mean?",
+      "options": [
+        "To tease someone playfully",
+        "To injure someone",
+        "To hold someone back",
+        "To help someone walk"
+      ],
+      "answer": 0,
+      "explanation": "Pulling someone's leg means joking or teasing in fun.",
+      "difficulty": "easy",
+      "id": "q89"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What does 'to be in the same boat' mean?",
+      "options": [
+        "To be in the same situation",
+        "To go sailing",
+        "To travel together",
+        "To be wealthy"
+      ],
+      "answer": 0,
+      "explanation": "Being in the same boat means sharing the same circumstances.",
+      "difficulty": "easy",
+      "id": "q90"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What does 'to break the ice' mean?",
+      "options": [
+        "To start a conversation to ease tension",
+        "To smash frozen water",
+        "To end a relationship",
+        "To cool down"
+      ],
+      "answer": 0,
+      "explanation": "Breaking the ice means initiating conversation in a tense atmosphere.",
+      "difficulty": "easy",
+      "id": "q91"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What does 'to hit the nail on the head' mean?",
+      "options": [
+        "To state something exactly right",
+        "To hammer hard",
+        "To hurt oneself",
+        "To work carelessly"
+      ],
+      "answer": 0,
+      "explanation": "It means expressing the precise truth of a matter.",
+      "difficulty": "easy",
+      "id": "q92"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What does 'to burn the midnight oil' mean?",
+      "options": [
+        "To work late into the night",
+        "To waste fuel",
+        "To stay up partying",
+        "To light candles"
+      ],
+      "answer": 0,
+      "explanation": "Burning the midnight oil means studying or working late at night.",
+      "difficulty": "medium",
+      "id": "q93"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What does 'to keep one's fingers crossed' mean?",
+      "options": [
+        "To hope for good luck",
+        "To make a fist",
+        "To be superstitious of everything",
+        "To refuse to help"
+      ],
+      "answer": 0,
+      "explanation": "Keeping fingers crossed expresses hope for a favourable outcome.",
+      "difficulty": "easy",
+      "id": "q94"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What does 'to be on the ball' mean?",
+      "options": [
+        "To be alert and efficient",
+        "To play sports",
+        "To be overweight",
+        "To be indecisive"
+      ],
+      "answer": 0,
+      "explanation": "Being on the ball means being quick-witted and competent.",
+      "difficulty": "medium",
+      "id": "q95"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What does 'to face the music' mean?",
+      "options": [
+        "To accept the consequences",
+        "To enjoy a concert",
+        "To dance",
+        "To be cheerful"
+      ],
+      "answer": 0,
+      "explanation": "Facing the music means confronting the unpleasant results of one's actions.",
+      "difficulty": "easy",
+      "id": "q96"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What does 'to have an ace up one's sleeve' mean?",
+      "options": [
+        "To hold a hidden advantage",
+        "To cheat at cards",
+        "To wear loose clothing",
+        "To be boastful"
+      ],
+      "answer": 0,
+      "explanation": "It means keeping a secret advantage in reserve.",
+      "difficulty": "medium",
+      "id": "q97"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What does 'to go the extra mile' mean?",
+      "options": [
+        "To make more effort than required",
+        "To travel far",
+        "To walk slowly",
+        "To give up easily"
+      ],
+      "answer": 0,
+      "explanation": "Going the extra mile means putting in additional effort.",
+      "difficulty": "easy",
+      "id": "q98"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What does 'to throw in the towel' mean?",
+      "options": [
+        "To admit defeat",
+        "To clean up",
+        "To fight back",
+        "To start over"
+      ],
+      "answer": 0,
+      "explanation": "Throwing in the towel means conceding failure or giving up.",
+      "difficulty": "easy",
+      "id": "q99"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What does 'to be a dark horse' mean?",
+      "options": [
+        "A little-known person who surprises with success",
+        "A person who fears darkness",
+        "A dishonest person",
+        "A night worker"
+      ],
+      "answer": 0,
+      "explanation": "A dark horse is an unexpected winner or someone of unknown potential.",
+      "difficulty": "medium",
+      "id": "q100"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What does 'to make a mountain out of a molehill' mean?",
+      "options": [
+        "To exaggerate a small problem",
+        "To work in mining",
+        "To climb hills",
+        "To be very strong"
+      ],
+      "answer": 0,
+      "explanation": "It means magnifying a trivial issue out of proportion.",
+      "difficulty": "medium",
+      "id": "q101"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What does 'to sit on the fence' mean?",
+      "options": [
+        "To avoid taking sides",
+        "To relax outdoors",
+        "To be indecisive in climbing",
+        "To watch sports"
+      ],
+      "answer": 0,
+      "explanation": "Sitting on the fence means remaining neutral and not committing.",
+      "difficulty": "easy",
+      "id": "q102"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What does 'to be all ears' mean?",
+      "options": [
+        "To listen very attentively",
+        "To have large ears",
+        "To hear poorly",
+        "To refuse to listen"
+      ],
+      "answer": 0,
+      "explanation": "Being all ears means paying full attention to what is said.",
+      "difficulty": "easy",
+      "id": "q103"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What does 'to be under the weather' mean?",
+      "options": [
+        "To feel unwell",
+        "To be outdoors",
+        "To be calm",
+        "To dress warmly"
+      ],
+      "answer": 0,
+      "explanation": "Being under the weather means feeling slightly ill.",
+      "difficulty": "easy",
+      "id": "q104"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What does 'to burn one's boats' mean?",
+      "options": [
+        "To cut off all means of retreat",
+        "To set sail",
+        "To destroy property",
+        "To start a war"
+      ],
+      "answer": 0,
+      "explanation": "Burning one's boats means committing to a course with no way back.",
+      "difficulty": "hard",
+      "id": "q105"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What does 'to turn a blind eye' mean?",
+      "options": [
+        "To deliberately ignore something",
+        "To lose one's sight",
+        "To wink",
+        "To look away in pain"
+      ],
+      "answer": 0,
+      "explanation": "Turning a blind eye means knowingly overlooking wrongdoing.",
+      "difficulty": "easy",
+      "id": "q106"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What does 'to be a blessing in disguise' mean?",
+      "options": [
+        "An apparent misfortune that brings benefit",
+        "A religious ceremony",
+        "A magic trick",
+        "A hidden treasure"
+      ],
+      "answer": 0,
+      "explanation": "A blessing in disguise is something bad that turns out well.",
+      "difficulty": "medium",
+      "id": "q107"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What does 'to have bigger fish to fry' mean?",
+      "options": [
+        "To have more important matters to attend",
+        "To be hungry",
+        "To cook a feast",
+        "To go fishing"
+      ],
+      "answer": 0,
+      "explanation": "It means having more significant tasks or concerns.",
+      "difficulty": "medium",
+      "id": "q108"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What does 'to cry over spilled milk' mean?",
+      "options": [
+        "To regret what cannot be undone",
+        "To be careless",
+        "To weep loudly",
+        "To clean up"
+      ],
+      "answer": 0,
+      "explanation": "It means uselessly lamenting an irreversible past mistake.",
+      "difficulty": "easy",
+      "id": "q109"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What does 'to take the bull by the horns' mean?",
+      "options": [
+        "To tackle a difficulty boldly",
+        "To be reckless",
+        "To wrestle animals",
+        "To be stubborn"
+      ],
+      "answer": 0,
+      "explanation": "It means confronting a challenge directly and courageously.",
+      "difficulty": "easy",
+      "id": "q110"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What does 'to be a wet blanket' mean?",
+      "options": [
+        "A person who spoils others' enjoyment",
+        "A lazy worker",
+        "A good listener",
+        "A person who loves rain"
+      ],
+      "answer": 0,
+      "explanation": "A wet blanket is someone who dampens enthusiasm or fun.",
+      "difficulty": "medium",
+      "id": "q111"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What does 'to get to the bottom of something' mean?",
+      "options": [
+        "To find the true cause",
+        "To sink a ship",
+        "To dig a hole",
+        "To reach the end of a road"
+      ],
+      "answer": 0,
+      "explanation": "It means discovering the fundamental truth of a matter.",
+      "difficulty": "medium",
+      "id": "q112"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What does 'to have one's head in the clouds' mean?",
+      "options": [
+        "To be daydreaming and unrealistic",
+        "To be very tall",
+        "To be a pilot",
+        "To be wise"
+      ],
+      "answer": 0,
+      "explanation": "It describes someone lost in impractical fantasies.",
+      "difficulty": "easy",
+      "id": "q113"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What does 'to call a spade a spade' mean?",
+      "options": [
+        "To speak plainly and directly",
+        "To insult someone",
+        "To garden",
+        "To be witty"
+      ],
+      "answer": 0,
+      "explanation": "It means calling things by their real names without euphemism.",
+      "difficulty": "medium",
+      "id": "q114"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What does 'to be at one's wit's end' mean?",
+      "options": [
+        "To be utterly puzzled or frustrated",
+        "To be very clever",
+        "To be exhausted physically",
+        "To be playful"
+      ],
+      "answer": 0,
+      "explanation": "It means being so perplexed that one cannot think of a solution.",
+      "difficulty": "medium",
+      "id": "q115"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What does 'to steal a march on someone' mean?",
+      "options": [
+        "To gain an advantage over someone",
+        "To rob a traveler",
+        "To march in front",
+        "To surprise an enemy"
+      ],
+      "answer": 0,
+      "explanation": "It means securing a lead over rivals by acting sooner.",
+      "difficulty": "hard",
+      "id": "q116"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What does 'to make ends meet' mean?",
+      "options": [
+        "To earn just enough to live on",
+        "To fix broken items",
+        "To join two ropes",
+        "To finish a race"
+      ],
+      "answer": 0,
+      "explanation": "It means managing to live within one's income.",
+      "difficulty": "easy",
+      "id": "q117"
+    }
+  ]
+}

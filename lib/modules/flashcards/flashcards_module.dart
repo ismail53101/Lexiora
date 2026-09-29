@@ -101,6 +101,7 @@ class FlashcardsModule extends FeatureModule {
           subtitle: 'Spaced-repetition revision',
           icon: Icons.style_outlined,
           routePath: AppRoutes.flashcards,
+          imageAsset: 'assets/branding/flashcards_explore.webp',
           order: 14,
         ),
       ];

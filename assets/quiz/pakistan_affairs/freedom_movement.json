@@ -1,0 +1,1833 @@
+{
+  "bank": {
+    "name": "Freedom Movement",
+    "subject": "Pakistan Affairs",
+    "topic": "Freedom Movement",
+    "description": "From the Aligarh movement and the Muslim League to partition: the political milestones of the struggle for Pakistan.",
+    "tags": "css,pms,fpsc,pakistan-affairs,freedom-movement",
+    "version": "1.0",
+    "id": "pakistan_affairs_freedom_movement"
+  },
+  "questions": [
+    {
+      "type": "mcq",
+      "prompt": "In which year did Sir Syed Ahmad Khan establish the Muhammadan Anglo-Oriental (MAO) College at Aligarh?",
+      "options": [
+        "1867",
+        "1875",
+        "1885",
+        "1906"
+      ],
+      "answer": 1,
+      "explanation": "MAO College was founded in 1875 and later became Aligarh Muslim University in 1920.",
+      "difficulty": "medium",
+      "id": "q01"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Sir Syed Ahmad Khan's movement for Muslim educational and social reform is known as?",
+      "options": [
+        "Khilafat Movement",
+        "Wahabi Movement",
+        "Aligarh Movement",
+        "Deoband Movement"
+      ],
+      "answer": 2,
+      "explanation": "The Aligarh Movement, led by Sir Syed, aimed at modern education for Muslims.",
+      "difficulty": "medium",
+      "id": "q02"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who was the first President of the All-India Muslim League?",
+      "options": [
+        "Salimullah Khan",
+        "Muhammad Ali Jinnah",
+        "Aga Khan III",
+        "A. K. Fazlul Huq"
+      ],
+      "answer": 2,
+      "explanation": "Aga Khan III was the first President of the Muslim League (1906-1913).",
+      "difficulty": "hard",
+      "id": "q03"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The founding of the Muslim League in 1906 was mainly due to the efforts of?",
+      "options": [
+        "Nawab Salimullah of Dhaka",
+        "Sir Syed Ahmad Khan",
+        "Liaquat Ali Khan",
+        "Maulana Mohammad Ali"
+      ],
+      "answer": 0,
+      "explanation": "Nawab Salimullah of Dhaka hosted the 1906 Dhaka session where the Muslim League was founded.",
+      "difficulty": "hard",
+      "id": "q04"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Lucknow Pact of 1916 was signed between?",
+      "options": [
+        "Muslim League and Congress",
+        "Muslim League and British government",
+        "Congress and Sikh League",
+        "Muslim League and Hindu Mahasabha"
+      ],
+      "answer": 0,
+      "explanation": "The 1916 Lucknow Pact was a compromise between the Indian National Congress and the Muslim League.",
+      "difficulty": "medium",
+      "id": "q05"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Jinnah joined the All-India Muslim League in which year?",
+      "options": [
+        "1906",
+        "1913",
+        "1916",
+        "1920"
+      ],
+      "answer": 1,
+      "explanation": "Quaid-e-Azam joined the Muslim League in 1913, before which he was a Congress member.",
+      "difficulty": "hard",
+      "id": "q06"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Khilafat Movement (1919-1924) was led in India by which brothers?",
+      "options": [
+        "Muhammad Ali and Shaukat Ali",
+        "Altaf Husain and Maulana Azad",
+        "Abdul Ghaffar and Khan Sahib",
+        "Fazlul Huq and Suhrawardy"
+      ],
+      "answer": 0,
+      "explanation": "The Ali Brothers, Maulana Muhammad Ali and Shaukat Ali, led the Khilafat Movement.",
+      "difficulty": "medium",
+      "id": "q07"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Montagu-Chelmsford Reforms, introducing diarchy in the provinces, were enacted in which year?",
+      "options": [
+        "1909",
+        "1919",
+        "1935",
+        "1947"
+      ],
+      "answer": 1,
+      "explanation": "The Government of India Act 1919 (Montagu-Chelmsford Reforms) introduced diarchy in the provinces.",
+      "difficulty": "medium",
+      "id": "q08"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which Indian leader led the Non-Cooperation Movement of 1920?",
+      "options": [
+        "Motilal Nehru",
+        "Mahatma Gandhi",
+        "Jawaharlal Nehru",
+        "Subhas Chandra Bose"
+      ],
+      "answer": 1,
+      "explanation": "Mahatma Gandhi launched the Non-Cooperation Movement in 1920.",
+      "difficulty": "easy",
+      "id": "q09"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The all-white Simon Commission visited India in which year?",
+      "options": [
+        "1922",
+        "1928",
+        "1930",
+        "1932"
+      ],
+      "answer": 1,
+      "explanation": "The Simon Commission arrived in India in 1928 and was met with the 'Simon Go Back' boycott.",
+      "difficulty": "medium",
+      "id": "q10"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Nehru Report of 1928 was prepared by which committee?",
+      "options": [
+        "Simon Commission",
+        "Motilal Nehru Committee",
+        "Radcliffe Committee",
+        "Cripps Mission"
+      ],
+      "answer": 1,
+      "explanation": "The Nehru Report, rejecting separate electorates, was produced by the Motilal Nehru Committee in 1928.",
+      "difficulty": "medium",
+      "id": "q11"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The First Round Table Conference was held in which city and year?",
+      "options": [
+        "Delhi, 1930",
+        "London, 1930",
+        "Simla, 1931",
+        "London, 1932"
+      ],
+      "answer": 1,
+      "explanation": "The First Round Table Conference was held in London from November 1930 to January 1931.",
+      "difficulty": "hard",
+      "id": "q12"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Communal Award of 1932 was announced by which British Prime Minister?",
+      "options": [
+        "Winston Churchill",
+        "Neville Chamberlain",
+        "Ramsay MacDonald",
+        "Clement Attlee"
+      ],
+      "answer": 2,
+      "explanation": "Ramsay MacDonald announced the Communal Award in August 1932.",
+      "difficulty": "hard",
+      "id": "q13"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Government of India Act of which year introduced provincial autonomy?",
+      "options": [
+        "1919",
+        "1928",
+        "1935",
+        "1947"
+      ],
+      "answer": 2,
+      "explanation": "The Government of India Act 1935 introduced provincial autonomy and was the basis for the 1937 elections.",
+      "difficulty": "medium",
+      "id": "q14"
+    },
+    {
+      "type": "mcq",
+      "prompt": "In the 1937 provincial elections, which party swept the general seats?",
+      "options": [
+        "Muslim League",
+        "Indian National Congress",
+        "Unionist Party",
+        "Justice Party"
+      ],
+      "answer": 1,
+      "explanation": "Congress won a majority in most provinces in 1937, while the Muslim League won only a small share of Muslim seats.",
+      "difficulty": "medium",
+      "id": "q15"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which day did the Muslim League observe after the resignation of Congress ministries in 1939?",
+      "options": [
+        "Independence Day",
+        "Day of Deliverance",
+        "Direct Action Day",
+        "Republic Day"
+      ],
+      "answer": 1,
+      "explanation": "22 December 1939 was observed as the Day of Deliverance after Congress ministries resigned.",
+      "difficulty": "hard",
+      "id": "q16"
+    },
+    {
+      "type": "mcq",
+      "prompt": "In the 1945-46 elections, the Muslim League's performance was?",
+      "options": [
+        "Lost most Muslim seats",
+        "Won all Muslim seats",
+        "Won only a few seats",
+        "Boycotted the elections"
+      ],
+      "answer": 1,
+      "explanation": "The Muslim League won all 30 reserved Muslim seats in the Central Assembly and most provincial Muslim seats.",
+      "difficulty": "medium",
+      "id": "q17"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Cabinet Mission visited India in which year?",
+      "options": [
+        "1942",
+        "1945",
+        "1946",
+        "1947"
+      ],
+      "answer": 2,
+      "explanation": "The three-member Cabinet Mission arrived in India in March 1946.",
+      "difficulty": "medium",
+      "id": "q18"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which day is associated with the Muslim League's call for Direct Action in 1946?",
+      "options": [
+        "16 August 1946",
+        "3 June 1947",
+        "14 August 1947",
+        "22 December 1939"
+      ],
+      "answer": 0,
+      "explanation": "16 August 1946 was observed as Direct Action Day to press for the creation of Pakistan.",
+      "difficulty": "hard",
+      "id": "q19"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Mountbatten Plan for the partition of India was announced on?",
+      "options": [
+        "3 June 1947",
+        "14 August 1947",
+        "18 July 1947",
+        "15 August 1947"
+      ],
+      "answer": 0,
+      "explanation": "The 3 June 1947 Plan, also called the Mountbatten Plan, proposed partition and the creation of Pakistan.",
+      "difficulty": "medium",
+      "id": "q20"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Indian Independence Act received royal assent in which month of 1947?",
+      "options": [
+        "June",
+        "July",
+        "August",
+        "September"
+      ],
+      "answer": 1,
+      "explanation": "The Indian Independence Act received royal assent on 18 July 1947.",
+      "difficulty": "hard",
+      "id": "q21"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who became the first Governor-General of independent India?",
+      "options": [
+        "Jawaharlal Nehru",
+        "Lord Mountbatten",
+        "C. Rajagopalachari",
+        "Mahatma Gandhi"
+      ],
+      "answer": 1,
+      "explanation": "Lord Mountbatten became the first Governor-General of India, while Jinnah was Pakistan's first.",
+      "difficulty": "medium",
+      "id": "q22"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Quaid-e-Azam addressed the first Constituent Assembly of Pakistan on?",
+      "options": [
+        "11 August 1947",
+        "14 August 1947",
+        "23 March 1948",
+        "1 January 1948"
+      ],
+      "answer": 0,
+      "explanation": "On 11 August 1947 Jinnah delivered his famous address on unity, faith and discipline.",
+      "difficulty": "hard",
+      "id": "q23"
+    },
+    {
+      "type": "mcq",
+      "prompt": "What was the national motto chosen by Quaid-e-Azam for Pakistan?",
+      "options": [
+        "Unity, Faith, Discipline",
+        "Justice for All",
+        "Peace and Progress",
+        "Truth Alone Triumphs"
+      ],
+      "answer": 0,
+      "explanation": "'Unity, Faith, Discipline' (Ittihad, Yaqeen, Nizam) is Pakistan's national motto.",
+      "difficulty": "easy",
+      "id": "q24"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Quaid-e-Azam Muhammad Ali Jinnah passed away on?",
+      "options": [
+        "11 September 1948",
+        "14 August 1948",
+        "23 March 1949",
+        "25 December 1948"
+      ],
+      "answer": 0,
+      "explanation": "The Quaid-e-Azam died on 11 September 1948 in Karachi.",
+      "difficulty": "easy",
+      "id": "q25"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Liaquat-Nehru Pact of 1950 mainly dealt with?",
+      "options": [
+        "Boundaries",
+        "Rights of minorities",
+        "Kashmir dispute",
+        "River waters"
+      ],
+      "answer": 1,
+      "explanation": "The 1950 pact between Liaquat Ali Khan and Nehru aimed to protect minority rights after partition.",
+      "difficulty": "hard",
+      "id": "q26"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Bogra Formula of 1953 was presented by?",
+      "options": [
+        "Chaudhry Muhammad Ali",
+        "Muhammad Ali Bogra",
+        "Khawaja Nazimuddin",
+        "Iskander Mirza"
+      ],
+      "answer": 1,
+      "explanation": "Prime Minister Muhammad Ali Bogra presented the Bogra Formula as an alternative constitutional framework.",
+      "difficulty": "hard",
+      "id": "q27"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The first Constituent Assembly of Pakistan held its first session in?",
+      "options": [
+        "August 1947",
+        "March 1948",
+        "January 1949",
+        "June 1947"
+      ],
+      "answer": 0,
+      "explanation": "The first Constituent Assembly met on 10 August 1947, with Jinnah elected as its President.",
+      "difficulty": "medium",
+      "id": "q28"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Simla Deputation of 1906 was led by whom?",
+      "options": [
+        "Aga Khan III",
+        "Sir Syed Ahmad Khan",
+        "Nawab Salimullah",
+        "Muhammad Ali Jinnah"
+      ],
+      "answer": 0,
+      "explanation": "Aga Khan III led the Muslim deputation to Viceroy Minto in Simla in 1906.",
+      "difficulty": "medium",
+      "id": "q29"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The All India Muslim League was founded in which city?",
+      "options": [
+        "Dhaka",
+        "Delhi",
+        "Lahore",
+        "Karachi"
+      ],
+      "answer": 0,
+      "explanation": "The Muslim League was founded at Dhaka on 30 December 1906.",
+      "difficulty": "easy",
+      "id": "q30"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The famous 'Lucknow Pact' of 1916 was signed between?",
+      "options": [
+        "The Muslim League and the Congress",
+        "The British and the League",
+        "The League and the Sikhs",
+        "Two factions of the League"
+      ],
+      "answer": 0,
+      "explanation": "The Lucknow Pact (1916) was an agreement between the Muslim League and Indian National Congress.",
+      "difficulty": "easy",
+      "id": "q31"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Khilafat Movement (1919-1924) was launched to?",
+      "options": [
+        "Protect the Ottoman caliphate after World War I",
+        "Demand a separate Muslim state",
+        "Reform education",
+        "Oppose the Rowlatt Act only"
+      ],
+      "answer": 0,
+      "explanation": "The Khilafat Movement protested the dismemberment of the Ottoman caliphate by the Allies.",
+      "difficulty": "easy",
+      "id": "q32"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who led the Khilafat Movement in India?",
+      "options": [
+        "Maulana Muhammad Ali Jauhar and Shaukat Ali",
+        "Sir Syed Ahmad Khan",
+        "Allama Iqbal",
+        "Aga Khan"
+      ],
+      "answer": 0,
+      "explanation": "The Ali brothers — Muhammad Ali Jauhar and Shaukat Ali — led the Khilafat Movement.",
+      "difficulty": "easy",
+      "id": "q33"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Nehru Report of 1928 was rejected by Jinnah because?",
+      "options": [
+        "It ignored Muslim demands for separate electorates and safeguards",
+        "It favored the British",
+        "It demanded a separate state",
+        "It was too short"
+      ],
+      "answer": 0,
+      "explanation": "Jinnah's amendments to the Nehru Report were rejected, prompting his Fourteen Points.",
+      "difficulty": "medium",
+      "id": "q34"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The '3 June Plan' of 1947 announced the partition of India. Who announced it?",
+      "options": [
+        "Lord Mountbatten",
+        "Winston Churchill",
+        "Clement Attlee",
+        "Stafford Cripps"
+      ],
+      "answer": 0,
+      "explanation": "Viceroy Mountbatten announced the partition plan on 3 June 1947.",
+      "difficulty": "easy",
+      "id": "q35"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Indian Independence Act was passed by the British Parliament in?",
+      "options": [
+        "July 1947",
+        "June 1947",
+        "August 1947",
+        "March 1947"
+      ],
+      "answer": 0,
+      "explanation": "The Indian Independence Act received royal assent on 18 July 1947.",
+      "difficulty": "medium",
+      "id": "q36"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Quaid-e-Azam took oath as Governor-General of Pakistan on?",
+      "options": [
+        "15 August 1947",
+        "14 August 1947",
+        "1 January 1948",
+        "25 December 1947"
+      ],
+      "answer": 0,
+      "explanation": "Jinnah was sworn in as the first Governor-General on 15 August 1947.",
+      "difficulty": "medium",
+      "id": "q37"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The 'Cripps Mission' of 1942 offered India?",
+      "options": [
+        "Dominion status after the war with a constituent assembly",
+        "Immediate independence",
+        "Partition of Bengal",
+        "A new constitution only"
+      ],
+      "answer": 0,
+      "explanation": "Cripps proposed post-war dominion status; both major parties rejected it.",
+      "difficulty": "medium",
+      "id": "q38"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The 'Quit India Movement' was launched by the Congress in?",
+      "options": [
+        "1942",
+        "1930",
+        "1940",
+        "1945"
+      ],
+      "answer": 0,
+      "explanation": "Gandhi launched Quit India in August 1942.",
+      "difficulty": "easy",
+      "id": "q39"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The 'Cabinet Mission' of 1946 proposed?",
+      "options": [
+        "A three-tier federal plan to keep India united",
+        "Immediate partition",
+        "Two separate states",
+        "British rule for 10 more years"
+      ],
+      "answer": 0,
+      "explanation": "The 1946 Cabinet Mission proposed a loose federation, which both sides eventually rejected.",
+      "difficulty": "medium",
+      "id": "q40"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The 'August Offer' of 1940 was made by which Viceroy?",
+      "options": [
+        "Lord Linlithgow",
+        "Lord Mountbatten",
+        "Lord Wavell",
+        "Lord Irwin"
+      ],
+      "answer": 0,
+      "explanation": "Linlithgow's August Offer promised post-war dominion status and constitutional talks.",
+      "difficulty": "hard",
+      "id": "q41"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The 'Shimla Conference' of 1945 was called by?",
+      "options": [
+        "Lord Wavell",
+        "Lord Linlithgow",
+        "Lord Mountbatten",
+        "Lord Irwin"
+      ],
+      "answer": 0,
+      "explanation": "Wavell convened the 1945 Shimla Conference to form an interim government.",
+      "difficulty": "medium",
+      "id": "q42"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The 'Muslim League' originally supported which stance in 1906?",
+      "options": [
+        "Separate electorates and loyalty to the British Crown",
+        "Immediate independence",
+        "A separate state",
+        "Socialism"
+      ],
+      "answer": 0,
+      "explanation": "The early League sought separate electorates and British protection for Muslim interests.",
+      "difficulty": "medium",
+      "id": "q43"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The 'Two-Nation Theory' was articulated most clearly in which address?",
+      "options": [
+        "Iqbal's Allahabad Address (1930)",
+        "Jinnah's 1916 speech",
+        "The Lucknow Pact",
+        "The Simla Deputation"
+      ],
+      "answer": 0,
+      "explanation": "Iqbal's 1930 Allahabad Address proposed a separate Muslim homeland in the northwest.",
+      "difficulty": "medium",
+      "id": "q44"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The 'Delhi Muslim Proposals' of 1927 were put forward by?",
+      "options": [
+        "The Muslim League led by Jinnah",
+        "The Congress",
+        "The British",
+        "The Sikh League"
+      ],
+      "answer": 0,
+      "explanation": "Jinnah's 1927 proposals sought constitutional safeguards for Muslims.",
+      "difficulty": "hard",
+      "id": "q45"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The 'Nehru Report' was authored by a committee headed by?",
+      "options": [
+        "Motilal Nehru",
+        "Jawaharlal Nehru",
+        "Mahatma Gandhi",
+        "Sardar Patel"
+      ],
+      "answer": 0,
+      "explanation": "Motilal Nehru chaired the committee that produced the 1928 Nehru Report.",
+      "difficulty": "medium",
+      "id": "q46"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The 'Poona Pact' (1932) was between?",
+      "options": [
+        "Gandhi and B.R. Ambedkar",
+        "Jinnah and Nehru",
+        "The League and the Congress",
+        "The British and the Congress"
+      ],
+      "answer": 0,
+      "explanation": "The Poona Pact modified the Communal Award's separate electorates for depressed classes.",
+      "difficulty": "medium",
+      "id": "q47"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Government of India Act of 1935 introduced?",
+      "options": [
+        "Provincial autonomy and a federal structure",
+        "Complete independence",
+        "Partition",
+        "Dominion status only"
+      ],
+      "answer": 0,
+      "explanation": "The 1935 Act granted provincial autonomy with elected provincial governments.",
+      "difficulty": "medium",
+      "id": "q48"
+    },
+    {
+      "type": "mcq",
+      "prompt": "In the 1937 provincial elections, the Muslim League's performance was?",
+      "options": [
+        "Weak overall, winning few Muslim seats",
+        "A landslide",
+        "Total boycott",
+        "Winning all provinces"
+      ],
+      "answer": 0,
+      "explanation": "The League performed poorly in 1937, prompting organizational reforms under Jinnah.",
+      "difficulty": "medium",
+      "id": "q49"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The 'Pakistan Resolution' was originally called the?",
+      "options": [
+        "Lahore Resolution",
+        "Delhi Resolution",
+        "Karachi Resolution",
+        "Dhaka Resolution"
+      ],
+      "answer": 0,
+      "explanation": "It was passed as the Lahore Resolution on 23 March 1940.",
+      "difficulty": "easy",
+      "id": "q50"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who drafted the 'Now or Never' pamphlet that coined 'Pakistan'?",
+      "options": [
+        "Choudhry Rahmat Ali",
+        "Jinnah",
+        "Iqbal",
+        "Liaquat Ali Khan"
+      ],
+      "answer": 0,
+      "explanation": "Rahmat Ali, studying at Cambridge, coined 'Pakistan' in 1933.",
+      "difficulty": "easy",
+      "id": "q51"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The letters of 'Pakistan' stand for?",
+      "options": [
+        "Punjab, Afghania, Kashmir, Sindh and Baluchistan",
+        "The five rivers",
+        "The five provinces of 1933",
+        "Random letters"
+      ],
+      "answer": 0,
+      "explanation": "The name encodes Punjab, Afghania (NWFP), Kashmir, Sindh and Baluchistan.",
+      "difficulty": "medium",
+      "id": "q52"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The 'Radcliffe Award' was announced in?",
+      "options": [
+        "August 1947",
+        "June 1947",
+        "March 1947",
+        "October 1947"
+      ],
+      "answer": 0,
+      "explanation": "The Radcliffe boundary awards were published on 16-17 August 1947.",
+      "difficulty": "medium",
+      "id": "q53"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The 'Independence of Pakistan' was achieved on which date?",
+      "options": [
+        "14 August 1947",
+        "15 August 1947",
+        "23 March 1947",
+        "1 January 1948"
+      ],
+      "answer": 0,
+      "explanation": "Pakistan gained independence on 14 August 1947 (celebrated annually).",
+      "difficulty": "easy",
+      "id": "q54"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Rowlatt Act was passed in which year?",
+      "options": [
+        "1919",
+        "1916",
+        "1921",
+        "1928"
+      ],
+      "answer": 0,
+      "explanation": "The Rowlatt Act of 1919 gave the government emergency powers.",
+      "difficulty": "easy",
+      "id": "q55"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The 'Fourteen Points' of Jinnah were presented in response to:",
+      "options": [
+        "The Nehru Report",
+        "The Simon Commission",
+        "The Round Table Conference",
+        "The Cripps Mission"
+      ],
+      "answer": 0,
+      "explanation": "Jinnah's 14 Points (1929) answered the Nehru Report.",
+      "difficulty": "easy",
+      "id": "q56"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Allama Mashriqi founded which organisation in 1930?",
+      "options": [
+        "Khaksar Tehrik",
+        "Khilafat Movement",
+        "Ahrar",
+        "Majlis-e-Ahrar"
+      ],
+      "answer": 0,
+      "explanation": "Allama Mashriqi founded the Khaksar Tehrik in 1930.",
+      "difficulty": "medium",
+      "id": "q57"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Muslim League won the 1946 provincial elections in which provinces?",
+      "options": [
+        "Punjab, Sindh, Bengal, NWFP (majority Muslim provinces)",
+        "Only Punjab",
+        "Only Bengal",
+        "No provinces"
+      ],
+      "answer": 0,
+      "explanation": "The League swept the Muslim-majority provinces in 1946.",
+      "difficulty": "easy",
+      "id": "q58"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Indian Independence Act received royal assent on:",
+      "options": [
+        "18 July 1947",
+        "15 August 1947",
+        "3 June 1947",
+        "14 August 1947"
+      ],
+      "answer": 0,
+      "explanation": "The Act received royal assent on 18 July 1947.",
+      "difficulty": "medium",
+      "id": "q59"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Lahore Resolution was seconded by:",
+      "options": [
+        "Maulana Zafar Ali Khan",
+        "Allama Iqbal",
+        "Liaquat Ali Khan",
+        "Chaudhry Khaliquzzaman"
+      ],
+      "answer": 3,
+      "explanation": "Chaudhry Khaliquzzaman seconded the Lahore Resolution of 1940.",
+      "difficulty": "hard",
+      "id": "q60"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which British Prime Minister announced the plan for partition on 3 June 1947?",
+      "options": [
+        "Clement Attlee",
+        "Winston Churchill",
+        "Neville Chamberlain",
+        "Harold Macmillan"
+      ],
+      "answer": 0,
+      "explanation": "PM Attlee announced the 3 June Plan for partition.",
+      "difficulty": "medium",
+      "id": "q61"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Khilafat Movement was launched in:",
+      "options": [
+        "1919",
+        "1924",
+        "1916",
+        "1930"
+      ],
+      "answer": 0,
+      "explanation": "The Khilafat Movement began in 1919.",
+      "difficulty": "easy",
+      "id": "q62"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The first Round Table Conference was held in:",
+      "options": [
+        "1930",
+        "1931",
+        "1932",
+        "1928"
+      ],
+      "answer": 0,
+      "explanation": "The First Round Table Conference met in London in 1930.",
+      "difficulty": "medium",
+      "id": "q63"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Muslim League observed 'Day of Deliverance' after:",
+      "options": [
+        "Congress ministries resigned in 1939",
+        "The 1946 elections",
+        "The Cripps Mission",
+        "The partition"
+      ],
+      "answer": 0,
+      "explanation": "The League marked 22 December 1939 after Congress ministries resigned.",
+      "difficulty": "medium",
+      "id": "q64"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Radcliffe Commission drew the boundary between:",
+      "options": [
+        "India and Pakistan in 1947",
+        "Punjab and Sindh",
+        "India and Burma",
+        "India and Nepal"
+      ],
+      "answer": 0,
+      "explanation": "Sir Cyril Radcliffe's commission demarcated the 1947 boundary.",
+      "difficulty": "easy",
+      "id": "q65"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The famous poem 'Tarana-e-Milli' was written by:",
+      "options": [
+        "Allama Iqbal",
+        "Maulana Abul Kalam Azad",
+        "Josh Malihabadi",
+        "Faiz"
+      ],
+      "answer": 0,
+      "explanation": "Iqbal wrote Tarana-e-Milli celebrating Muslim identity.",
+      "difficulty": "easy",
+      "id": "q66"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Cabinet Mission Plan was presented in:",
+      "options": [
+        "1946",
+        "1945",
+        "1947",
+        "1942"
+      ],
+      "answer": 0,
+      "explanation": "The Cabinet Mission visited India in March–June 1946.",
+      "difficulty": "easy",
+      "id": "q67"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The partition of Bengal was annulled in:",
+      "options": [
+        "1911",
+        "1905",
+        "1909",
+        "1916"
+      ],
+      "answer": 0,
+      "explanation": "The annulment of Bengal's partition came in 1911.",
+      "difficulty": "medium",
+      "id": "q68"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Pirpur Report (1938) was prepared by the Muslim League against:",
+      "options": [
+        "Congress ministries' treatment of Muslims",
+        "British policies",
+        "The Simon Commission",
+        "The Hindu Mahasabha"
+      ],
+      "answer": 0,
+      "explanation": "The Pirpur Report documented grievances under Congress ministries.",
+      "difficulty": "hard",
+      "id": "q69"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The 'Punjab Unionist Party' leader who opposed partition initially was:",
+      "options": [
+        "Sir Sikandar Hayat Khan",
+        "Liaquat Ali Khan",
+        "Feroz Khan Noon",
+        "Khizr Hayat Tiwana"
+      ],
+      "answer": 0,
+      "explanation": "Sir Sikandar Hayat Khan led the Unionist Party in Punjab.",
+      "difficulty": "medium",
+      "id": "q70"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The first session of the All-India Muslim League was held in:",
+      "options": [
+        "Karachi",
+        "Dhaka",
+        "Lahore",
+        "Aligarh"
+      ],
+      "answer": 0,
+      "explanation": "The League's first session was held in Karachi in 1907.",
+      "difficulty": "medium",
+      "id": "q71"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which English daily newspaper did Jinnah edit in 1938?",
+      "options": [
+        "Dawn",
+        "The Tribune",
+        "The Statesman",
+        "Civil & Military Gazette"
+      ],
+      "answer": 0,
+      "explanation": "Jinnah launched and edited Dawn in 1938.",
+      "difficulty": "medium",
+      "id": "q72"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Lucknow Session of the Muslim League (1937) was presided over by:",
+      "options": [
+        "Quaid-e-Azam",
+        "Sir Aga Khan",
+        "Nawab Salimullah",
+        "Chaudhry Rahmat Ali"
+      ],
+      "answer": 0,
+      "explanation": "Jinnah presided over the League's Lucknow session in 1937.",
+      "difficulty": "easy",
+      "id": "q73"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The term 'Pakistan' was coined in a pamphlet published in:",
+      "options": [
+        "1933",
+        "1940",
+        "1928",
+        "1947"
+      ],
+      "answer": 0,
+      "explanation": "Chaudhry Rahmat Ali's pamphlet 'Now or Never' (1933) coined the name.",
+      "difficulty": "easy",
+      "id": "q74"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Mountbatten Plan was also known as:",
+      "options": [
+        "The 3 June Plan",
+        "The Cripps Plan",
+        "The Wavell Plan",
+        "The Gandhi Plan"
+      ],
+      "answer": 0,
+      "explanation": "Mountbatten's plan for partition is the 3 June 1947 Plan.",
+      "difficulty": "easy",
+      "id": "q75"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Pakistan's first Constituent Assembly met on:",
+      "options": [
+        "10 August 1947",
+        "14 August 1947",
+        "15 August 1947",
+        "23 March 1947"
+      ],
+      "answer": 0,
+      "explanation": "The Constituent Assembly of Pakistan first met on 10 August 1947.",
+      "difficulty": "medium",
+      "id": "q76"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The 'All-India Muslim League' was formed at which location in 1906?",
+      "options": [
+        "Dacca (Dhaka)",
+        "Lahore",
+        "Delhi",
+        "Calcutta"
+      ],
+      "answer": 0,
+      "explanation": "The League was founded at the Dacca session in December 1906.",
+      "difficulty": "easy",
+      "id": "q77"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The 'Partition of Bengal' in 1905 was carried out by:",
+      "options": [
+        "Lord Curzon",
+        "Lord Minto",
+        "Lord Ripon",
+        "Lord Lytton"
+      ],
+      "answer": 0,
+      "explanation": "Viceroy Curzon partitioned Bengal in 1905.",
+      "difficulty": "easy",
+      "id": "q78"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The 'Minto-Morley Reforms' were introduced in:",
+      "options": [
+        "1909",
+        "1905",
+        "1911",
+        "1916"
+      ],
+      "answer": 0,
+      "explanation": "The Government of India Act 1909 was the Minto-Morley Reforms.",
+      "difficulty": "medium",
+      "id": "q79"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The first woman president of the Indian National Congress was:",
+      "options": [
+        "Annie Besant",
+        "Sarojini Naidu",
+        "Indira Gandhi",
+        "Vijaya Lakshmi Pandit"
+      ],
+      "answer": 0,
+      "explanation": "Annie Besant presided over Congress in 1917.",
+      "difficulty": "medium",
+      "id": "q80"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The 'Chaudhry Rahmat Ali' proposed the name 'Pakistan' in:",
+      "options": [
+        "1933",
+        "1940",
+        "1930",
+        "1942"
+      ],
+      "answer": 0,
+      "explanation": "Rahmat Ali coined 'Pakistan' in his 1933 pamphlet.",
+      "difficulty": "easy",
+      "id": "q81"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The 'Wavell Plan' was announced in:",
+      "options": [
+        "1945",
+        "1943",
+        "1946",
+        "1942"
+      ],
+      "answer": 0,
+      "explanation": "The Wavell Plan was announced in June 1945.",
+      "difficulty": "hard",
+      "id": "q82"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Muslim League won how many seats in the 1945–46 central assembly elections?",
+      "options": [
+        "All 30 Muslim seats",
+        "10 seats",
+        "15 seats",
+        "20 seats"
+      ],
+      "answer": 0,
+      "explanation": "The League swept all Muslim seats in the centre in 1945–46.",
+      "difficulty": "medium",
+      "id": "q83"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The '1946 Cabinet Mission' proposed:",
+      "options": [
+        "A three-tier federal plan",
+        "Immediate partition",
+        "A unitary state",
+        "British withdrawal only"
+      ],
+      "answer": 0,
+      "explanation": "The Cabinet Mission Plan proposed a loose federation.",
+      "difficulty": "medium",
+      "id": "q84"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Jinnah's 'Two Nation Theory' was based on:",
+      "options": [
+        "Cultural and religious differences",
+        "Economic inequality",
+        "Geographic separation",
+        "Language only"
+      ],
+      "answer": 0,
+      "explanation": "The theory stressed the distinct identity of Muslims as a nation.",
+      "difficulty": "easy",
+      "id": "q85"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The 'Lahore Resolution' was originally called the:",
+      "options": [
+        "Pakistan Resolution",
+        "Delhi Resolution",
+        "Lucknow Pact",
+        "Simla Declaration"
+      ],
+      "answer": 0,
+      "explanation": "It was passed as the Pakistan Resolution on 23 March 1940.",
+      "difficulty": "easy",
+      "id": "q86"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who presided over the Lahore session of the Muslim League in 1940?",
+      "options": [
+        "Muhammad Ali Jinnah",
+        "Liaquat Ali Khan",
+        "Nawab Salimullah",
+        "Aga Khan"
+      ],
+      "answer": 0,
+      "explanation": "Jinnah presided over the historic 1940 session.",
+      "difficulty": "easy",
+      "id": "q87"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The 'Kashmir' accession to Pakistan was urged by whom in 1947?",
+      "options": [
+        "The Muslim majority and tribal fighters",
+        "The Maharaja only",
+        "The British only",
+        "No one"
+      ],
+      "answer": 0,
+      "explanation": "Kashmir's Muslim majority and tribal fighters supported accession to Pakistan.",
+      "difficulty": "medium",
+      "id": "q88"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The 'Radcliffe Award' was announced on:",
+      "options": [
+        "17 August 1947",
+        "14 August 1947",
+        "3 June 1947",
+        "15 August 1947"
+      ],
+      "answer": 0,
+      "explanation": "The boundary award was published on 17 August 1947.",
+      "difficulty": "hard",
+      "id": "q89"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The 'Pakistani Flag' was designed by:",
+      "options": [
+        "Ameer-ud-Din Khidwai (based on a design by Syed Amir-ud-din Kedwaii)",
+        "Liaquat Ali Khan",
+        "Chaudhry Rehmat Ali",
+        "Jinnah"
+      ],
+      "answer": 0,
+      "explanation": "The national flag design was adapted from a proposal by Ameer-ud-Din Khidwai.",
+      "difficulty": "medium",
+      "id": "q90"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The 'Shimla Deputation' of 1906 demanded:",
+      "options": [
+        "Separate electorates for Muslims",
+        "Complete independence",
+        "Joint electorates",
+        "Partition of Bengal"
+      ],
+      "answer": 0,
+      "explanation": "The deputation sought separate Muslim electorates.",
+      "difficulty": "easy",
+      "id": "q91"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Second Round Table Conference was held in which year?",
+      "options": [
+        "1931",
+        "1930",
+        "1932",
+        "1933"
+      ],
+      "answer": 0,
+      "explanation": "The Second Round Table Conference was held in London in 1931.",
+      "difficulty": "medium",
+      "id": "q92"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Third Round Table Conference was held in which year?",
+      "options": [
+        "1932",
+        "1931",
+        "1933",
+        "1930"
+      ],
+      "answer": 0,
+      "explanation": "The Third Round Table Conference took place in 1932.",
+      "difficulty": "hard",
+      "id": "q93"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Gandhi-Irwin Pact was signed in which year?",
+      "options": [
+        "1931",
+        "1930",
+        "1932",
+        "1933"
+      ],
+      "answer": 0,
+      "explanation": "Gandhi and Lord Irwin signed the pact in March 1931.",
+      "difficulty": "medium",
+      "id": "q94"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Gandhi-Irwin Pact ended which movement?",
+      "options": [
+        "Civil Disobedience Movement",
+        "Non-Cooperation Movement",
+        "Quit India Movement",
+        "Khilafat Movement"
+      ],
+      "answer": 0,
+      "explanation": "The pact suspended the Civil Disobedience Movement.",
+      "difficulty": "medium",
+      "id": "q95"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Jinnah's Fourteen Points were presented in which year?",
+      "options": [
+        "1929",
+        "1928",
+        "1930",
+        "1931"
+      ],
+      "answer": 0,
+      "explanation": "Jinnah presented his Fourteen Points in 1929.",
+      "difficulty": "medium",
+      "id": "q96"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Hijrat Movement of 1920 encouraged Muslims to migrate to?",
+      "options": [
+        "Afghanistan",
+        "Turkey",
+        "Saudi Arabia",
+        "Egypt"
+      ],
+      "answer": 0,
+      "explanation": "The Hijrat Movement urged Muslims to migrate to Afghanistan.",
+      "difficulty": "medium",
+      "id": "q97"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Swaraj Party was founded in which year by C.R. Das and Motilal Nehru?",
+      "options": [
+        "1923",
+        "1920",
+        "1925",
+        "1922"
+      ],
+      "answer": 0,
+      "explanation": "The Swaraj Party was formed in 1923.",
+      "difficulty": "hard",
+      "id": "q98"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Moplah rebellion of 1921 took place in which region?",
+      "options": [
+        "Malabar",
+        "Bengal",
+        "Punjab",
+        "Sindh"
+      ],
+      "answer": 0,
+      "explanation": "The Moplah rebellion occurred in Malabar, Kerala.",
+      "difficulty": "hard",
+      "id": "q99"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Urdu-Hindi controversy that influenced Sir Syed arose after which event?",
+      "options": [
+        "The 1867 Banaras language dispute",
+        "The 1857 war",
+        "The partition of Bengal",
+        "The Lucknow Pact"
+      ],
+      "answer": 0,
+      "explanation": "The 1867 language dispute in Banaras convinced Sir Syed of the need for separate political organisation.",
+      "difficulty": "hard",
+      "id": "q100"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Sir Syed Ahmad Khan founded the Scientific Society in which year?",
+      "options": [
+        "1863",
+        "1875",
+        "1858",
+        "1886"
+      ],
+      "answer": 0,
+      "explanation": "Sir Syed established the Scientific Society at Ghazipur in 1863.",
+      "difficulty": "hard",
+      "id": "q101"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The journal 'Tehzeeb-ul-Akhlaq' was started by whom?",
+      "options": [
+        "Sir Syed Ahmad Khan",
+        "Maulana Shibli Nomani",
+        "Allama Iqbal",
+        "Maulana Azad"
+      ],
+      "answer": 0,
+      "explanation": "Sir Syed launched the journal Tehzeeb-ul-Akhlaq in 1870.",
+      "difficulty": "medium",
+      "id": "q102"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The All-India Muslim League's London branch was founded in 1908 by whom?",
+      "options": [
+        "Syed Ameer Ali",
+        "Aga Khan III",
+        "Muhammad Ali Jauhar",
+        "Nawab Salimullah"
+      ],
+      "answer": 0,
+      "explanation": "Syed Ameer Ali founded the League's London branch in 1908.",
+      "difficulty": "hard",
+      "id": "q103"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Quaid-e-Azam Muhammad Ali Jinnah was born in which year?",
+      "options": [
+        "1876",
+        "1870",
+        "1880",
+        "1875"
+      ],
+      "answer": 0,
+      "explanation": "Jinnah was born on 25 December 1876 in Karachi.",
+      "difficulty": "medium",
+      "id": "q104"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Jinnah studied law at which institution in London?",
+      "options": [
+        "Lincoln's Inn",
+        "Gray's Inn",
+        "Inner Temple",
+        "Oxford University"
+      ],
+      "answer": 0,
+      "explanation": "Jinnah was called to the bar from Lincoln's Inn.",
+      "difficulty": "medium",
+      "id": "q105"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Jinnah was known as the 'Ambassador of' what?",
+      "options": [
+        "Hindu-Muslim Unity",
+        "British India",
+        "Two Nations",
+        "Islamic Unity"
+      ],
+      "answer": 0,
+      "explanation": "Jinnah was called the Ambassador of Hindu-Muslim Unity in his early career.",
+      "difficulty": "medium",
+      "id": "q106"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Jinnah joined the Indian National Congress in which year?",
+      "options": [
+        "1906",
+        "1910",
+        "1900",
+        "1913"
+      ],
+      "answer": 0,
+      "explanation": "Jinnah joined the Congress in 1906.",
+      "difficulty": "hard",
+      "id": "q107"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Jinnah was elected to the Imperial Legislative Council in which year?",
+      "options": [
+        "1910",
+        "1906",
+        "1913",
+        "1916"
+      ],
+      "answer": 0,
+      "explanation": "Jinnah was elected to the Imperial Legislative Council in 1910.",
+      "difficulty": "hard",
+      "id": "q108"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Jinnah returned permanently to India from London in which year?",
+      "options": [
+        "1934",
+        "1930",
+        "1935",
+        "1932"
+      ],
+      "answer": 0,
+      "explanation": "Jinnah returned from London in 1934 to lead the Muslim League.",
+      "difficulty": "hard",
+      "id": "q109"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The 1937 Shariat Application Act was passed by which body?",
+      "options": [
+        "The Indian legislature",
+        "The Muslim League",
+        "The Congress",
+        "The Viceroy's council"
+      ],
+      "answer": 0,
+      "explanation": "The Shariat Application Act was passed in 1937 by the Indian central legislature.",
+      "difficulty": "hard",
+      "id": "q110"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Muslim League was reorganized and made a mass party after which year?",
+      "options": [
+        "1937",
+        "1930",
+        "1940",
+        "1935"
+      ],
+      "answer": 0,
+      "explanation": "After the 1937 elections the League was reorganised into a mass party.",
+      "difficulty": "medium",
+      "id": "q111"
+    },
+    {
+      "type": "mcq",
+      "prompt": "In the 1946 Bengal elections, the Muslim League ministry was headed by whom?",
+      "options": [
+        "H.S. Suhrawardy",
+        "A.K. Fazlul Haq",
+        "Khwaja Nazimuddin",
+        "Nawab Salimullah"
+      ],
+      "answer": 0,
+      "explanation": "Suhrawardy led the League ministry in Bengal after 1946.",
+      "difficulty": "hard",
+      "id": "q112"
+    },
+    {
+      "type": "mcq",
+      "prompt": "In 1946, the Punjab ministry was headed by which Unionist leader?",
+      "options": [
+        "Khizr Hayat Tiwana",
+        "Sikandar Hayat Khan",
+        "Feroz Khan Noon",
+        "Malik Khuda Bakhsh"
+      ],
+      "answer": 0,
+      "explanation": "Khizr Hayat Tiwana headed the Punjab ministry in 1946.",
+      "difficulty": "hard",
+      "id": "q113"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Congress ministry in the NWFP (1946) was headed by whom?",
+      "options": [
+        "Dr. Khan Sahib",
+        "Abdul Ghaffar Khan",
+        "Abdul Qayyum Khan",
+        "Sardar Rab Nishtar"
+      ],
+      "answer": 0,
+      "explanation": "Dr. Khan Sahib headed the Congress ministry in the NWFP.",
+      "difficulty": "hard",
+      "id": "q114"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The symbol used by the Muslim League in the 1946 elections was?",
+      "options": [
+        "The ballot box",
+        "The spinning wheel",
+        "The lotus",
+        "The star"
+      ],
+      "answer": 0,
+      "explanation": "The League used the ballot box as its election symbol in 1946.",
+      "difficulty": "medium",
+      "id": "q115"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The symbol used by the Congress in the 1946 elections was?",
+      "options": [
+        "The spinning wheel",
+        "The ballot box",
+        "The torch",
+        "The hand"
+      ],
+      "answer": 0,
+      "explanation": "The Congress used the charkha (spinning wheel) as its symbol.",
+      "difficulty": "hard",
+      "id": "q116"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Radcliffe Commission was headed by whom?",
+      "options": [
+        "Sir Cyril Radcliffe",
+        "Lord Mountbatten",
+        "Sir Stafford Cripps",
+        "Sir Pethick-Lawrence"
+      ],
+      "answer": 0,
+      "explanation": "Sir Cyril Radcliffe chaired the boundary commission in 1947.",
+      "difficulty": "medium",
+      "id": "q117"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The words of Pakistan's national anthem were written by whom?",
+      "options": [
+        "Hafeez Jalandhari",
+        "Allama Iqbal",
+        "Faiz Ahmed Faiz",
+        "Josh Malihabadi"
+      ],
+      "answer": 0,
+      "explanation": "Hafeez Jalandhari wrote the national anthem's lyrics.",
+      "difficulty": "easy",
+      "id": "q118"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Quaid-e-Azam is known as the?",
+      "options": [
+        "Father of the Nation",
+        "Great Leader of Bengal",
+        "Poet of the East",
+        "Constitution Maker"
+      ],
+      "answer": 0,
+      "explanation": "Jinnah is revered as the Father of the Nation.",
+      "difficulty": "easy",
+      "id": "q119"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Allama Iqbal's famous address at Allahabad was delivered in which year?",
+      "options": [
+        "1930",
+        "1928",
+        "1932",
+        "1929"
+      ],
+      "answer": 0,
+      "explanation": "Iqbal delivered the Allahabad Address at the 1930 League session.",
+      "difficulty": "easy",
+      "id": "q120"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Muslim League session at which Iqbal delivered his address was held in?",
+      "options": [
+        "Allahabad",
+        "Lahore",
+        "Karachi",
+        "Delhi"
+      ],
+      "answer": 0,
+      "explanation": "The 1930 session was held at Allahabad.",
+      "difficulty": "medium",
+      "id": "q121"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Maulana Mazharuddin Shaheed is credited with first addressing Jinnah by which title?",
+      "options": [
+        "Quaid-e-Azam",
+        "Father of the Nation",
+        "Great Leader",
+        "Sword of Islam"
+      ],
+      "answer": 0,
+      "explanation": "Maulana Mazharuddin Shaheed is credited with conferring the title Quaid-e-Azam on Jinnah.",
+      "difficulty": "hard",
+      "id": "q122"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Pakistan National Movement was founded by whom?",
+      "options": [
+        "Choudhry Rahmat Ali",
+        "M.A. Jinnah",
+        "Allama Iqbal",
+        "Syed Ameer Ali"
+      ],
+      "answer": 0,
+      "explanation": "Choudhry Rahmat Ali founded the Pakistan National Movement.",
+      "difficulty": "hard",
+      "id": "q123"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The partition of Bengal in 1905 divided Bengal for administrative purposes into?",
+      "options": [
+        "Eastern and Western Bengal",
+        "Northern and Southern Bengal",
+        "Four provinces",
+        "Two districts"
+      ],
+      "answer": 0,
+      "explanation": "The 1905 partition divided Bengal into eastern and western parts.",
+      "difficulty": "medium",
+      "id": "q124"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Muslims of Bengal celebrated the annulment of the partition in 1911 as?",
+      "options": [
+        "A defeat",
+        "A victory",
+        "A tragedy",
+        "An insult"
+      ],
+      "answer": 0,
+      "explanation": "Muslims had supported the 1905 partition and were aggrieved by its annulment in 1911.",
+      "difficulty": "hard",
+      "id": "q125"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Swadeshi Movement (1905) was launched in protest against?",
+      "options": [
+        "The partition of Bengal",
+        "The Rowlatt Act",
+        "The Jallianwala massacre",
+        "The Simon Commission"
+      ],
+      "answer": 0,
+      "explanation": "The Swadeshi Movement protested the partition of Bengal.",
+      "difficulty": "medium",
+      "id": "q126"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Lahore Resolution was moved by whom at the 1940 session?",
+      "options": [
+        "A.K. Fazlul Haq",
+        "Liaquat Ali Khan",
+        "Khaliquzzaman",
+        "M.A. Jinnah"
+      ],
+      "answer": 0,
+      "explanation": "A.K. Fazlul Haq moved the Lahore Resolution.",
+      "difficulty": "medium",
+      "id": "q127"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The Quaid-e-Azam's final illness and death occurred in which city?",
+      "options": [
+        "Karachi",
+        "Lahore",
+        "Islamabad",
+        "Quetta"
+      ],
+      "answer": 0,
+      "explanation": "Jinnah died in Karachi on 11 September 1948.",
+      "difficulty": "easy",
+      "id": "q128"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The 'Independence Day' of Pakistan is celebrated on which date?",
+      "options": [
+        "14 August",
+        "15 August",
+        "23 March",
+        "16 August"
+      ],
+      "answer": 0,
+      "explanation": "Pakistan celebrates Independence Day on 14 August.",
+      "difficulty": "easy",
+      "id": "q129"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The 'Pakistan Day' is celebrated on which date?",
+      "options": [
+        "23 March",
+        "14 August",
+        "25 December",
+        "11 September"
+      ],
+      "answer": 0,
+      "explanation": "Pakistan Day commemorates the Lahore Resolution of 23 March 1940.",
+      "difficulty": "easy",
+      "id": "q130"
+    }
+  ]
+}

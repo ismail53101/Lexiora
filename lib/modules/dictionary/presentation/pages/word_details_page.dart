@@ -9,6 +9,7 @@ import 'package:lexiora/core/widgets/error_view.dart';
 import 'package:lexiora/modules/dictionary/domain/entities/dictionary_entry.dart';
 import 'package:lexiora/modules/dictionary/domain/entities/word_profile.dart';
 import 'package:lexiora/modules/dictionary/domain/usecases/dictionary_usecases.dart';
+import 'package:lexiora/modules/dictionary/domain/usecases/usage_relevance.dart';
 import 'package:lexiora/modules/dictionary/presentation/providers/dictionary_providers.dart';
 import 'package:lexiora/modules/dictionary/presentation/widgets/part_of_speech_chip.dart';
 import 'package:lexiora/modules/dictionary/presentation/widgets/pronunciation_button.dart';
@@ -116,7 +117,8 @@ class _WordDetailsPageState extends ConsumerState<WordDetailsPage> {
     if (e != null) {
       if (e.synonyms.isNotEmpty) b.writeln('Synonyms: ${e.synonyms.join(', ')}');
       if (e.antonyms.isNotEmpty) b.writeln('Antonyms: ${e.antonyms.join(', ')}');
-      final WordUsage? u = e.usage;
+      // Same filtered resolution as the Usage card, so copy matches display.
+      final WordUsage? u = _ProfileView._resolveUsage(p);
       if (u != null) {
         b.writeln('Usage (${u.context}): ${u.english}');
         if (u.urdu.isNotEmpty) b.writeln(u.urdu);
@@ -190,6 +192,9 @@ class _ProfileView extends StatelessWidget {
     final List<Widget> otherMeanings = _buildOtherMeanings(context, profile);
     final bool showPronunciation =
         profile.existsLocally || profile.pronunciation != null;
+    // Best usage example: curated sentence first, else the base dictionary's
+    // example sentence (WordNet-derived), so every word can show an example.
+    final WordUsage? usage = _resolveUsage(profile);
 
     return ListView(
       padding: const EdgeInsets.fromLTRB(16, 12, 16, 32),
@@ -261,9 +266,10 @@ class _ProfileView extends StatelessWidget {
             ),
           ),
 
-        // 5) Usage.
-        if (e?.usage != null)
-          _UsageSection(word: profile.displayWord, usage: e!.usage!),
+        // 5) Usage — the Urdu translation is served curated when present and
+        //    fetched (and cached) via the hybrid translator otherwise.
+        if (usage != null)
+          _UsageSection(word: profile.displayWord, usage: usage),
 
         // 6) Common Collocations.
         if (e != null && e.collocations.isNotEmpty)
@@ -320,6 +326,26 @@ class _ProfileView extends StatelessWidget {
             ),
           ),
       ],
+    );
+  }
+
+  /// Best usage example: the curated exam sentence, else the base dictionary's
+  /// primary example sentence — but only when the sentence is a *real* example
+  /// that actually contains the headword. WordNet's synset examples often
+  /// illustrate a different word entirely (e.g. "elevate" → "John was kicked
+  /// upstairs when a replacement was hired"), which reads as nonsense and
+  /// machine-translates into nonsense Urdu, so those sentences are filtered out
+  /// here and the Usage card is hidden instead.
+  static WordUsage? _resolveUsage(WordProfile profile) {
+    final ExamWordData? e = profile.exam;
+    final WordUsage? curated = validatedUsage(profile.wordLower, e?.usage);
+    if (curated != null) return curated;
+
+    final String? example = profile.base?.primary?.exampleSentence;
+    if (example == null || example.trim().isEmpty) return null;
+    return validatedUsage(
+      profile.wordLower,
+      WordUsage(context: 'Usage', english: example.trim(), urdu: ''),
     );
   }
 
@@ -577,14 +603,14 @@ class _UrduBlock extends ConsumerWidget {
   }
 }
 
-class _UsageSection extends StatelessWidget {
+class _UsageSection extends ConsumerWidget {
   const _UsageSection({required this.word, required this.usage});
 
   final String word;
   final WordUsage usage;
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     final ThemeData theme = Theme.of(context);
     return _Section(
       icon: Icons.article_outlined,
@@ -606,23 +632,97 @@ class _UsageSection extends StatelessWidget {
             ),
           const SizedBox(height: 12),
           _HighlightedSentence(sentence: usage.english, word: word),
-          if (usage.urdu.isNotEmpty) ...<Widget>[
-            const SizedBox(height: 10),
-            Directionality(
-              textDirection: TextDirection.rtl,
-              child: Text(
-                usage.urdu,
-                style: theme.textTheme.titleMedium?.copyWith(
-                  height: 1.6,
-                  color: theme.colorScheme.onSurfaceVariant,
-                ),
-              ),
-            ),
-          ],
+          const SizedBox(height: 10),
+          if (usage.urdu.isNotEmpty)
+            _UrduSentence(text: usage.urdu)
+          else
+            _FetchedSentenceUrdu(sentence: usage.english),
         ],
       ),
     );
   }
+}
+
+/// Renders a curated Urdu sentence.
+class _UrduSentence extends StatelessWidget {
+  const _UrduSentence({required this.text});
+
+  final String text;
+
+  @override
+  Widget build(BuildContext context) {
+    final ThemeData theme = Theme.of(context);
+    return Directionality(
+      textDirection: TextDirection.rtl,
+      child: Text(
+        text,
+        style: theme.textTheme.titleMedium?.copyWith(
+          height: 1.6,
+          color: theme.colorScheme.onSurfaceVariant,
+        ),
+      ),
+    );
+  }
+}
+
+/// Urdu for an auto-derived example sentence: fetched through the hybrid
+/// translator (online fallback, cached for offline reuse), mirroring the
+/// reader pop-up's "Saved for offline use" behaviour.
+class _FetchedSentenceUrdu extends ConsumerWidget {
+  const _FetchedSentenceUrdu({required this.sentence});
+
+  final String sentence;
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final ThemeData theme = Theme.of(context);
+    final AsyncValue<TranslationOutcome> async =
+        ref.watch(hybridTranslationProvider((word: sentence, lang: 'ur')));
+    return async.when(
+      loading: () => Row(
+        children: <Widget>[
+          const SizedBox(
+            width: 16,
+            height: 16,
+            child: CircularProgressIndicator(strokeWidth: 2),
+          ),
+          const SizedBox(width: 12),
+          Text('Fetching Urdu translation…',
+              style: theme.textTheme.bodyMedium),
+        ],
+      ),
+      error: (_, _) => _hint(theme),
+      data: (TranslationOutcome o) {
+        final Translation? t = o.translation;
+        if (t == null || t.text.trim().isEmpty) return _hint(theme);
+        return Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: <Widget>[
+            _UrduSentence(text: t.text),
+            if (t.source == TranslationSource.online) ...<Widget>[
+              const SizedBox(height: 6),
+              Row(
+                children: <Widget>[
+                  Icon(Icons.cloud_done_outlined,
+                      size: 14, color: theme.colorScheme.primary),
+                  const SizedBox(width: 6),
+                  Text('Saved for offline use',
+                      style: theme.textTheme.labelSmall?.copyWith(
+                          color: theme.colorScheme.onSurfaceVariant)),
+                ],
+              ),
+            ],
+          ],
+        );
+      },
+    );
+  }
+
+  Widget _hint(ThemeData theme) => Text(
+        'Connect to the internet to load the Urdu translation of this sentence.',
+        style: theme.textTheme.bodyMedium
+            ?.copyWith(color: theme.colorScheme.onSurfaceVariant),
+      );
 }
 
 /// Bolds the searched word (and simple inflections) inside a sentence.

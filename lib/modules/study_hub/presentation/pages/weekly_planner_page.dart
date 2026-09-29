@@ -173,7 +173,7 @@ class _CollapsibleDay extends ConsumerWidget {
               ),
             ),
           ),
-          DayPlannerSection(day: day, title: '', subtitle: null),
+          DayPlannerSection(day: day, title: ''),
         ],
       );
     }

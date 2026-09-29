@@ -1,0 +1,1833 @@
+{
+  "bank": {
+    "name": "Biology",
+    "subject": "General Science & Ability",
+    "topic": "Biology",
+    "description": "The human body, cells, plants, diseases, vitamins and genetics — the biology essentials for GSA exams.",
+    "tags": "css,pms,fpsc,ppsc,nts,gsa,biology",
+    "version": "1.0",
+    "id": "gsa_biology"
+  },
+  "questions": [
+    {
+      "type": "mcq",
+      "prompt": "What is the basic unit of life?",
+      "options": [
+        "Atom",
+        "Cell",
+        "Tissue",
+        "Organ"
+      ],
+      "answer": 1,
+      "explanation": "The cell is the structural and functional unit of life.",
+      "difficulty": "easy",
+      "id": "q01"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which organelle is called the 'powerhouse of the cell'?",
+      "options": [
+        "Nucleus",
+        "Ribosome",
+        "Mitochondria",
+        "Golgi body"
+      ],
+      "answer": 2,
+      "explanation": "Mitochondria produce ATP, the cell's energy currency.",
+      "difficulty": "easy",
+      "id": "q02"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The control centre of the cell is the?",
+      "options": [
+        "Cell wall",
+        "Nucleus",
+        "Cytoplasm",
+        "Vacuole"
+      ],
+      "answer": 1,
+      "explanation": "The nucleus contains genetic material and controls cell activities.",
+      "difficulty": "easy",
+      "id": "q03"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The cell wall of plants is mainly made of?",
+      "options": [
+        "Protein",
+        "Cellulose",
+        "Chitin",
+        "Lipid"
+      ],
+      "answer": 1,
+      "explanation": "Plant cell walls are composed of cellulose.",
+      "difficulty": "medium",
+      "id": "q04"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Photosynthesis takes place in which part of the plant cell?",
+      "options": [
+        "Mitochondria",
+        "Nucleus",
+        "Chloroplasts",
+        "Ribosomes"
+      ],
+      "answer": 2,
+      "explanation": "Chloroplasts contain chlorophyll and carry out photosynthesis.",
+      "difficulty": "easy",
+      "id": "q05"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The green pigment in plants that captures sunlight is?",
+      "options": [
+        "Chlorophyll",
+        "Carotene",
+        "Xanthophyll",
+        "Haemoglobin"
+      ],
+      "answer": 0,
+      "explanation": "Chlorophyll absorbs light energy for photosynthesis.",
+      "difficulty": "easy",
+      "id": "q06"
+    },
+    {
+      "type": "mcq",
+      "prompt": "How many chambers does the human heart have?",
+      "options": [
+        "2",
+        "3",
+        "4",
+        "5"
+      ],
+      "answer": 2,
+      "explanation": "The heart has four chambers: two atria and two ventricles.",
+      "difficulty": "easy",
+      "id": "q07"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The normal body temperature of a healthy human is about?",
+      "options": [
+        "36 C",
+        "37 C",
+        "38 C",
+        "39 C"
+      ],
+      "answer": 1,
+      "explanation": "Normal body temperature is about 37 C (98.6 F).",
+      "difficulty": "easy",
+      "id": "q08"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which is the largest organ of the human body?",
+      "options": [
+        "Liver",
+        "Brain",
+        "Skin",
+        "Lungs"
+      ],
+      "answer": 2,
+      "explanation": "The skin is the body's largest organ.",
+      "difficulty": "easy",
+      "id": "q09"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which is the largest gland of the human body?",
+      "options": [
+        "Thyroid",
+        "Pancreas",
+        "Liver",
+        "Pituitary"
+      ],
+      "answer": 2,
+      "explanation": "The liver is the largest gland in the body.",
+      "difficulty": "medium",
+      "id": "q10"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which is the longest bone in the human body?",
+      "options": [
+        "Tibia",
+        "Humerus",
+        "Femur",
+        "Radius"
+      ],
+      "answer": 2,
+      "explanation": "The femur (thigh bone) is the longest and strongest bone.",
+      "difficulty": "medium",
+      "id": "q11"
+    },
+    {
+      "type": "mcq",
+      "prompt": "How many bones does an adult human body have?",
+      "options": [
+        "196",
+        "206",
+        "216",
+        "236"
+      ],
+      "answer": 1,
+      "explanation": "An adult human has 206 bones (babies have more).",
+      "difficulty": "medium",
+      "id": "q12"
+    },
+    {
+      "type": "mcq",
+      "prompt": "How many teeth does a normal adult human have?",
+      "options": [
+        "28",
+        "30",
+        "32",
+        "36"
+      ],
+      "answer": 2,
+      "explanation": "A full adult set has 32 teeth including four wisdom teeth.",
+      "difficulty": "medium",
+      "id": "q13"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Red blood cells are produced in the?",
+      "options": [
+        "Liver",
+        "Spleen",
+        "Bone marrow",
+        "Kidneys"
+      ],
+      "answer": 2,
+      "explanation": "Haematopoiesis (blood cell production) occurs mainly in bone marrow.",
+      "difficulty": "medium",
+      "id": "q14"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which blood component carries oxygen to the body's tissues?",
+      "options": [
+        "White blood cells",
+        "Platelets",
+        "Red blood cells",
+        "Plasma"
+      ],
+      "answer": 2,
+      "explanation": "Haemoglobin in red blood cells transports oxygen.",
+      "difficulty": "easy",
+      "id": "q15"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which cells of the blood fight infection?",
+      "options": [
+        "Red blood cells",
+        "White blood cells",
+        "Platelets",
+        "Plasma proteins"
+      ],
+      "answer": 1,
+      "explanation": "White blood cells (leucocytes) defend against pathogens.",
+      "difficulty": "easy",
+      "id": "q16"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which blood group is known as the universal donor?",
+      "options": [
+        "AB+",
+        "O-",
+        "A+",
+        "B-"
+      ],
+      "answer": 1,
+      "explanation": "O negative blood can be given to patients of any blood group.",
+      "difficulty": "medium",
+      "id": "q17"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which blood group is the universal recipient?",
+      "options": [
+        "O+",
+        "AB+",
+        "A-",
+        "B+"
+      ],
+      "answer": 1,
+      "explanation": "AB positive can receive blood from all groups.",
+      "difficulty": "medium",
+      "id": "q18"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Deficiency of vitamin C causes?",
+      "options": [
+        "Rickets",
+        "Scurvy",
+        "Night blindness",
+        "Anaemia"
+      ],
+      "answer": 1,
+      "explanation": "Scurvy results from vitamin C deficiency.",
+      "difficulty": "easy",
+      "id": "q19"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Deficiency of vitamin D causes?",
+      "options": [
+        "Scurvy",
+        "Rickets",
+        "Beriberi",
+        "Pellagra"
+      ],
+      "answer": 1,
+      "explanation": "Vitamin D deficiency causes rickets in children.",
+      "difficulty": "easy",
+      "id": "q20"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which vitamin is synthesised by the skin with sunlight?",
+      "options": [
+        "Vitamin A",
+        "Vitamin C",
+        "Vitamin D",
+        "Vitamin K"
+      ],
+      "answer": 2,
+      "explanation": "Sunlight enables the skin to produce vitamin D.",
+      "difficulty": "easy",
+      "id": "q21"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which of the following vitamins is water-soluble?",
+      "options": [
+        "Vitamin A",
+        "Vitamin D",
+        "Vitamin E",
+        "Vitamin C"
+      ],
+      "answer": 3,
+      "explanation": "Vitamin C and the B vitamins are water-soluble.",
+      "difficulty": "medium",
+      "id": "q22"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Insulin is secreted by which organ?",
+      "options": [
+        "Liver",
+        "Pancreas",
+        "Thyroid",
+        "Adrenal gland"
+      ],
+      "answer": 1,
+      "explanation": "The pancreas produces insulin, which regulates blood sugar.",
+      "difficulty": "easy",
+      "id": "q23"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Diabetes mellitus is caused by a problem with?",
+      "options": [
+        "Thyroid hormone",
+        "Insulin",
+        "Adrenaline",
+        "Growth hormone"
+      ],
+      "answer": 1,
+      "explanation": "Diabetes results from insufficient insulin or insulin resistance.",
+      "difficulty": "easy",
+      "id": "q24"
+    },
+    {
+      "type": "mcq",
+      "prompt": "DNA stands for?",
+      "options": [
+        "Deoxyribonucleic acid",
+        "Dinucleic acid",
+        "Deoxyribose nucleic element",
+        "Di-nucleotide acid"
+      ],
+      "answer": 0,
+      "explanation": "DNA is deoxyribonucleic acid, the genetic material.",
+      "difficulty": "easy",
+      "id": "q25"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The structure of DNA is a?",
+      "options": [
+        "Single strand",
+        "Double helix",
+        "Triple helix",
+        "Circle"
+      ],
+      "answer": 1,
+      "explanation": "Watson and Crick described DNA as a double helix.",
+      "difficulty": "medium",
+      "id": "q26"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Who is regarded as the father of genetics?",
+      "options": [
+        "Charles Darwin",
+        "Gregor Mendel",
+        "Lamarck",
+        "Watson"
+      ],
+      "answer": 1,
+      "explanation": "Gregor Mendel's pea-plant experiments founded genetics.",
+      "difficulty": "medium",
+      "id": "q27"
+    },
+    {
+      "type": "mcq",
+      "prompt": "How many chromosomes do normal human body cells have?",
+      "options": [
+        "23",
+        "44",
+        "46",
+        "48"
+      ],
+      "answer": 2,
+      "explanation": "Humans have 46 chromosomes (23 pairs).",
+      "difficulty": "medium",
+      "id": "q28"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Malaria is caused by a parasite of which genus?",
+      "options": [
+        "Salmonella",
+        "Plasmodium",
+        "Trypanosoma",
+        "E. coli"
+      ],
+      "answer": 1,
+      "explanation": "Plasmodium species cause malaria.",
+      "difficulty": "medium",
+      "id": "q29"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Malaria is transmitted by the bite of?",
+      "options": [
+        "Housefly",
+        "Female Anopheles mosquito",
+        "Aedes mosquito",
+        "Bed bug"
+      ],
+      "answer": 1,
+      "explanation": "Female Anopheles mosquitoes transmit the malaria parasite.",
+      "difficulty": "easy",
+      "id": "q30"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Dengue fever is spread by which mosquito?",
+      "options": [
+        "Anopheles",
+        "Culex",
+        "Aedes aegypti",
+        "Mansonia"
+      ],
+      "answer": 2,
+      "explanation": "Aedes aegypti mosquitoes spread dengue and Zika.",
+      "difficulty": "medium",
+      "id": "q31"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Tuberculosis (TB) mainly affects which organ?",
+      "options": [
+        "Kidneys",
+        "Lungs",
+        "Liver",
+        "Brain"
+      ],
+      "answer": 1,
+      "explanation": "TB primarily attacks the lungs.",
+      "difficulty": "easy",
+      "id": "q32"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which organ filters waste from the blood and produces urine?",
+      "options": [
+        "Liver",
+        "Spleen",
+        "Kidneys",
+        "Intestines"
+      ],
+      "answer": 2,
+      "explanation": "The kidneys filter blood and produce urine.",
+      "difficulty": "easy",
+      "id": "q33"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The basic unit of the nervous system is the?",
+      "options": [
+        "Neuron",
+        "Axon only",
+        "Synapse",
+        "Glial cell"
+      ],
+      "answer": 0,
+      "explanation": "Neurons are the structural and functional units of the nervous system.",
+      "difficulty": "easy",
+      "id": "q34"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which gas is carried by red blood cells?",
+      "options": [
+        "Oxygen",
+        "Carbon dioxide",
+        "Nitrogen",
+        "Hydrogen"
+      ],
+      "answer": 0,
+      "explanation": "Haemoglobin in red blood cells transports oxygen from lungs to tissues.",
+      "difficulty": "easy",
+      "id": "q35"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which of the following is NOT a function of the liver?",
+      "options": [
+        "Pumping blood",
+        "Producing bile",
+        "Detoxifying chemicals",
+        "Storing glycogen"
+      ],
+      "answer": 0,
+      "explanation": "The liver produces bile, detoxifies and stores glycogen; pumping blood is the heart's job.",
+      "difficulty": "medium",
+      "id": "q36"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which vitamin deficiency causes night blindness?",
+      "options": [
+        "Vitamin A",
+        "Vitamin B1",
+        "Vitamin E",
+        "Vitamin K"
+      ],
+      "answer": 0,
+      "explanation": "Vitamin A deficiency leads to night blindness and poor vision.",
+      "difficulty": "easy",
+      "id": "q37"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which enzyme in saliva helps digest starch?",
+      "options": [
+        "Amylase",
+        "Pepsin",
+        "Lipase",
+        "Trypsin"
+      ],
+      "answer": 0,
+      "explanation": "Salivary amylase begins the digestion of starch in the mouth.",
+      "difficulty": "easy",
+      "id": "q38"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which gas do plants absorb during photosynthesis?",
+      "options": [
+        "Carbon dioxide",
+        "Oxygen",
+        "Nitrogen",
+        "Hydrogen"
+      ],
+      "answer": 0,
+      "explanation": "Plants take in CO2 for photosynthesis.",
+      "difficulty": "easy",
+      "id": "q39"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which organ is responsible for pumping blood?",
+      "options": [
+        "Heart",
+        "Lungs",
+        "Liver",
+        "Brain"
+      ],
+      "answer": 0,
+      "explanation": "The heart pumps blood through the body.",
+      "difficulty": "easy",
+      "id": "q40"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The process by which plants make food is called:",
+      "options": [
+        "Photosynthesis",
+        "Respiration",
+        "Digestion",
+        "Transpiration"
+      ],
+      "answer": 0,
+      "explanation": "Photosynthesis is the food-making process in plants.",
+      "difficulty": "easy",
+      "id": "q41"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The normal blood pressure of a healthy adult is approximately:",
+      "options": [
+        "120/80 mmHg",
+        "140/100 mmHg",
+        "90/60 mmHg",
+        "160/100 mmHg"
+      ],
+      "answer": 0,
+      "explanation": "A normal adult reading is around 120/80 mmHg.",
+      "difficulty": "medium",
+      "id": "q42"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which disease is caused by a virus?",
+      "options": [
+        "Measles",
+        "Cholera",
+        "Typhoid",
+        "Tuberculosis"
+      ],
+      "answer": 0,
+      "explanation": "Measles is a viral disease; the others are bacterial.",
+      "difficulty": "medium",
+      "id": "q43"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The blood pressure is measured with an instrument called:",
+      "options": [
+        "Sphygmomanometer",
+        "Stethoscope",
+        "Thermometer",
+        "Barometer"
+      ],
+      "answer": 0,
+      "explanation": "A sphygmomanometer measures blood pressure.",
+      "difficulty": "easy",
+      "id": "q44"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The study of animals is called:",
+      "options": [
+        "Zoology",
+        "Botany",
+        "Anatomy",
+        "Genetics"
+      ],
+      "answer": 0,
+      "explanation": "Zoology studies animals.",
+      "difficulty": "easy",
+      "id": "q45"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The largest cell in the human body is:",
+      "options": [
+        "The ovum (egg cell)",
+        "The red blood cell",
+        "The neuron",
+        "The muscle cell"
+      ],
+      "answer": 0,
+      "explanation": "The ovum is the largest human cell.",
+      "difficulty": "medium",
+      "id": "q46"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which gas do humans exhale in the greatest amount?",
+      "options": [
+        "Carbon dioxide",
+        "Oxygen",
+        "Nitrogen",
+        "Hydrogen"
+      ],
+      "answer": 0,
+      "explanation": "Exhaled air is rich in carbon dioxide.",
+      "difficulty": "easy",
+      "id": "q47"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The process of breaking down food in the body is called:",
+      "options": [
+        "Digestion",
+        "Respiration",
+        "Circulation",
+        "Excretion"
+      ],
+      "answer": 0,
+      "explanation": "Digestion breaks down food into nutrients.",
+      "difficulty": "easy",
+      "id": "q48"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The 'master gland' of the body is the:",
+      "options": [
+        "Pituitary gland",
+        "Thyroid",
+        "Adrenal",
+        "Pancreas"
+      ],
+      "answer": 0,
+      "explanation": "The pituitary controls other endocrine glands.",
+      "difficulty": "medium",
+      "id": "q49"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which part of the plant performs photosynthesis?",
+      "options": [
+        "Leaf",
+        "Root",
+        "Stem",
+        "Flower"
+      ],
+      "answer": 0,
+      "explanation": "Leaves contain chlorophyll for photosynthesis.",
+      "difficulty": "easy",
+      "id": "q50"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which mineral is essential for the formation of haemoglobin?",
+      "options": [
+        "Calcium",
+        "Iron",
+        "Potassium",
+        "Iodine"
+      ],
+      "answer": 1,
+      "explanation": "Iron is a key component of haemoglobin in red blood cells.",
+      "difficulty": "medium",
+      "id": "q51"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which disease is spread by the Anopheles mosquito?",
+      "options": [
+        "Malaria",
+        "Cholera",
+        "Typhoid",
+        "Influenza"
+      ],
+      "answer": 0,
+      "explanation": "The Anopheles mosquito transmits malaria.",
+      "difficulty": "easy",
+      "id": "q52"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which vitamin helps in the absorption of calcium?",
+      "options": [
+        "Vitamin D",
+        "Vitamin A",
+        "Vitamin C",
+        "Vitamin E"
+      ],
+      "answer": 0,
+      "explanation": "Vitamin D aids calcium absorption.",
+      "difficulty": "easy",
+      "id": "q53"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The functional unit of the kidney is the:",
+      "options": [
+        "Nephron",
+        "Neuron",
+        "Alveolus",
+        "Villus"
+      ],
+      "answer": 0,
+      "explanation": "Nephrons filter blood in the kidneys.",
+      "difficulty": "medium",
+      "id": "q54"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which part of the brain controls heartbeat and breathing?",
+      "options": [
+        "Medulla oblongata",
+        "Cerebellum",
+        "Cerebrum",
+        "Hypothalamus"
+      ],
+      "answer": 0,
+      "explanation": "The medulla regulates vital functions.",
+      "difficulty": "medium",
+      "id": "q55"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The process by which plants lose water through leaves is:",
+      "options": [
+        "Transpiration",
+        "Respiration",
+        "Photosynthesis",
+        "Pollination"
+      ],
+      "answer": 0,
+      "explanation": "Transpiration is water loss through stomata.",
+      "difficulty": "easy",
+      "id": "q56"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which deficiency causes goitre?",
+      "options": [
+        "Iodine",
+        "Iron",
+        "Calcium",
+        "Zinc"
+      ],
+      "answer": 0,
+      "explanation": "Iodine deficiency causes goitre.",
+      "difficulty": "easy",
+      "id": "q57"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The 'diaphragm' is a muscle that helps in:",
+      "options": [
+        "Breathing",
+        "Digestion",
+        "Hearing",
+        "Vision"
+      ],
+      "answer": 0,
+      "explanation": "The diaphragm drives respiration.",
+      "difficulty": "easy",
+      "id": "q58"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which organ produces bile?",
+      "options": [
+        "Liver",
+        "Gallbladder",
+        "Pancreas",
+        "Spleen"
+      ],
+      "answer": 0,
+      "explanation": "The liver produces bile; the gallbladder stores it.",
+      "difficulty": "easy",
+      "id": "q59"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which of the following is a water-borne disease?",
+      "options": [
+        "Diabetes",
+        "Anaemia",
+        "Cholera",
+        "Goitre"
+      ],
+      "answer": 2,
+      "explanation": "Cholera spreads through contaminated water.",
+      "difficulty": "easy",
+      "id": "q60"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The scientific study of heredity is called:",
+      "options": [
+        "Genetics",
+        "Ecology",
+        "Botany",
+        "Anatomy"
+      ],
+      "answer": 0,
+      "explanation": "Genetics studies heredity and variation.",
+      "difficulty": "easy",
+      "id": "q61"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which vitamin is found abundantly in citrus fruits?",
+      "options": [
+        "Vitamin C",
+        "Vitamin D",
+        "Vitamin A",
+        "Vitamin K"
+      ],
+      "answer": 0,
+      "explanation": "Citrus fruits are rich in vitamin C.",
+      "difficulty": "easy",
+      "id": "q62"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The smallest blood vessels in the body are:",
+      "options": [
+        "Capillaries",
+        "Arteries",
+        "Veins",
+        "Venules"
+      ],
+      "answer": 0,
+      "explanation": "Capillaries connect arteries and veins.",
+      "difficulty": "easy",
+      "id": "q63"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which part of the eye controls the amount of light entering?",
+      "options": [
+        "Iris",
+        "Lens",
+        "Retina",
+        "Cornea"
+      ],
+      "answer": 0,
+      "explanation": "The iris adjusts the pupil size.",
+      "difficulty": "easy",
+      "id": "q64"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which animal is known as the 'ship of the desert'?",
+      "options": [
+        "Camel",
+        "Horse",
+        "Donkey",
+        "Goat"
+      ],
+      "answer": 0,
+      "explanation": "Camels are adapted to desert travel.",
+      "difficulty": "easy",
+      "id": "q65"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which mineral is essential for strong bones and teeth?",
+      "options": [
+        "Calcium",
+        "Iron",
+        "Sodium",
+        "Potassium"
+      ],
+      "answer": 0,
+      "explanation": "Calcium builds bones and teeth.",
+      "difficulty": "easy",
+      "id": "q66"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The 'Alveoli' are tiny air sacs found in the:",
+      "options": [
+        "Lungs",
+        "Heart",
+        "Kidneys",
+        "Liver"
+      ],
+      "answer": 0,
+      "explanation": "Alveoli facilitate gas exchange in lungs.",
+      "difficulty": "easy",
+      "id": "q67"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which of the following is a unicellular organism?",
+      "options": [
+        "Amoeba",
+        "Frog",
+        "Earthworm",
+        "Butterfly"
+      ],
+      "answer": 0,
+      "explanation": "Amoeba is a single-celled organism.",
+      "difficulty": "easy",
+      "id": "q68"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which blood cells are responsible for clotting?",
+      "options": [
+        "Platelets",
+        "Red blood cells",
+        "White blood cells",
+        "Plasma"
+      ],
+      "answer": 0,
+      "explanation": "Platelets help blood clot.",
+      "difficulty": "easy",
+      "id": "q69"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The study of the functioning of the body is called:",
+      "options": [
+        "Physiology",
+        "Anatomy",
+        "Botany",
+        "Genetics"
+      ],
+      "answer": 0,
+      "explanation": "Physiology studies body functions.",
+      "difficulty": "easy",
+      "id": "q70"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which cell organelle is known as the 'suicidal bag'?",
+      "options": [
+        "Ribosome",
+        "Mitochondrion",
+        "Golgi body",
+        "Lysosome"
+      ],
+      "answer": 3,
+      "explanation": "Lysosomes digest cellular waste and are called suicidal bags.",
+      "difficulty": "easy",
+      "id": "q71"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The normal pH of human blood is approximately:",
+      "options": [
+        "5.5",
+        "7.4",
+        "8.9",
+        "6.1"
+      ],
+      "answer": 1,
+      "explanation": "Human blood is slightly alkaline, around pH 7.35–7.45.",
+      "difficulty": "medium",
+      "id": "q72"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The smallest bone in the human body is the:",
+      "options": [
+        "Femur",
+        "Stapes",
+        "Tibia",
+        "Humerus"
+      ],
+      "answer": 1,
+      "explanation": "The stapes, inside the middle ear, is the smallest bone in the human body.",
+      "difficulty": "medium",
+      "id": "q73"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which gland secretes the hormone adrenaline?",
+      "options": [
+        "Thyroid gland",
+        "Adrenal gland",
+        "Pituitary gland",
+        "Pancreas"
+      ],
+      "answer": 1,
+      "explanation": "The adrenal glands, located above the kidneys, secrete adrenaline.",
+      "difficulty": "easy",
+      "id": "q74"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which of the following is NOT a type of blood cell?",
+      "options": [
+        "Red blood cell",
+        "White blood cell",
+        "Platelet",
+        "Neuron"
+      ],
+      "answer": 3,
+      "explanation": "Neurons are nerve cells, not blood cells.",
+      "difficulty": "easy",
+      "id": "q75"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The largest artery in the human body is the:",
+      "options": [
+        "Pulmonary artery",
+        "Aorta",
+        "Carotid artery",
+        "Femoral artery"
+      ],
+      "answer": 1,
+      "explanation": "The aorta is the largest artery, carrying oxygenated blood out of the heart.",
+      "difficulty": "easy",
+      "id": "q76"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which vitamin is essential for blood clotting?",
+      "options": [
+        "Vitamin A",
+        "Vitamin C",
+        "Vitamin K",
+        "Vitamin D"
+      ],
+      "answer": 2,
+      "explanation": "Vitamin K is required for the synthesis of clotting factors in the liver.",
+      "difficulty": "medium",
+      "id": "q77"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The part of the eye that focuses light is the:",
+      "options": [
+        "Cornea",
+        "Lens",
+        "Iris",
+        "Retina"
+      ],
+      "answer": 1,
+      "explanation": "The lens of the eye focuses incoming light onto the retina.",
+      "difficulty": "medium",
+      "id": "q78"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The DNA is located in which part of the cell?",
+      "options": [
+        "Cytoplasm",
+        "Nucleus",
+        "Cell membrane",
+        "Ribosome"
+      ],
+      "answer": 1,
+      "explanation": "DNA is stored in the nucleus, the control centre of the cell.",
+      "difficulty": "easy",
+      "id": "q79"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The study of plants is called:",
+      "options": [
+        "Zoology",
+        "Botany",
+        "Ecology",
+        "Genetics"
+      ],
+      "answer": 1,
+      "explanation": "Botany is the study of plants; zoology is the study of animals.",
+      "difficulty": "easy",
+      "id": "q80"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which blood vessel carries blood away from the heart?",
+      "options": [
+        "Vein",
+        "Artery",
+        "Capillary",
+        "Venule"
+      ],
+      "answer": 1,
+      "explanation": "Arteries carry blood away from the heart; veins carry blood back to it.",
+      "difficulty": "easy",
+      "id": "q81"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which organ is responsible for detoxifying the blood?",
+      "options": [
+        "Kidney",
+        "Liver",
+        "Spleen",
+        "Pancreas"
+      ],
+      "answer": 1,
+      "explanation": "The liver detoxifies harmful substances in the blood.",
+      "difficulty": "easy",
+      "id": "q82"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which pigment gives blood its red colour?",
+      "options": [
+        "Melanin",
+        "Haemoglobin",
+        "Chlorophyll",
+        "Bilirubin"
+      ],
+      "answer": 1,
+      "explanation": "Haemoglobin, the iron-containing pigment in red blood cells, gives blood its red colour.",
+      "difficulty": "easy",
+      "id": "q83"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which type of teeth are used for grinding food?",
+      "options": [
+        "Incisors",
+        "Canines",
+        "Molars",
+        "None of these"
+      ],
+      "answer": 2,
+      "explanation": "Molars are the flat teeth at the back of the mouth used for grinding food.",
+      "difficulty": "easy",
+      "id": "q84"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which hormone increases the level of sugar in the blood?",
+      "options": [
+        "Insulin",
+        "Glucagon",
+        "Thyroxine",
+        "Adrenaline"
+      ],
+      "answer": 1,
+      "explanation": "Glucagon raises blood glucose levels, while insulin lowers them.",
+      "difficulty": "medium",
+      "id": "q85"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which organelle is responsible for protein synthesis?",
+      "options": [
+        "Mitochondria",
+        "Ribosomes",
+        "Golgi apparatus",
+        "Lysosomes"
+      ],
+      "answer": 1,
+      "explanation": "Ribosomes assemble proteins from amino acids.",
+      "difficulty": "easy",
+      "id": "q86"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Mendel's experiments on heredity were performed on:",
+      "options": [
+        "Rats",
+        "Pea plants",
+        "Fruit flies",
+        "Pigeons"
+      ],
+      "answer": 1,
+      "explanation": "Gregor Mendel studied inheritance using pea plants (Pisum sativum).",
+      "difficulty": "easy",
+      "id": "q87"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The basic unit of heredity is the:",
+      "options": [
+        "Chromosome",
+        "Gene",
+        "Nucleus",
+        "Cell"
+      ],
+      "answer": 1,
+      "explanation": "A gene is the basic unit of heredity, carrying the instructions for a trait on a chromosome.",
+      "difficulty": "easy",
+      "id": "q88"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which part of the brain controls balance and coordination?",
+      "options": [
+        "Cerebrum",
+        "Cerebellum",
+        "Medulla oblongata",
+        "Pons"
+      ],
+      "answer": 1,
+      "explanation": "The cerebellum coordinates voluntary movements, balance and posture.",
+      "difficulty": "medium",
+      "id": "q89"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which organelle is known as the 'kitchen of the cell'?",
+      "options": [
+        "Chloroplast",
+        "Mitochondria",
+        "Nucleus",
+        "Ribosome"
+      ],
+      "answer": 0,
+      "explanation": "Chloroplasts make food by photosynthesis, so they are called the kitchen of the cell.",
+      "difficulty": "medium",
+      "id": "q90"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which blood vessel carries blood towards the heart?",
+      "options": [
+        "Vein",
+        "Artery",
+        "Capillary",
+        "Aorta"
+      ],
+      "answer": 0,
+      "explanation": "Veins carry blood back towards the heart; arteries carry it away.",
+      "difficulty": "easy",
+      "id": "q91"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which disease is caused by a lack of insulin in the body?",
+      "options": [
+        "Diabetes mellitus",
+        "Goitre",
+        "Anaemia",
+        "Scurvy"
+      ],
+      "answer": 0,
+      "explanation": "Insufficient insulin production leads to high blood sugar and diabetes mellitus.",
+      "difficulty": "easy",
+      "id": "q92"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which vitamin is called the 'anti-bleeding vitamin'?",
+      "options": [
+        "Vitamin K",
+        "Vitamin A",
+        "Vitamin C",
+        "Vitamin E"
+      ],
+      "answer": 0,
+      "explanation": "Vitamin K is essential for blood clotting, so its deficiency causes bleeding.",
+      "difficulty": "medium",
+      "id": "q93"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which hormone regulates the amount of sugar in the blood?",
+      "options": [
+        "Insulin",
+        "Thyroxine",
+        "Adrenaline",
+        "Oestrogen"
+      ],
+      "answer": 0,
+      "explanation": "Insulin lowers blood sugar; glucagon raises it, keeping the level regulated.",
+      "difficulty": "medium",
+      "id": "q94"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which of the following is a fungal infection?",
+      "options": [
+        "Ringworm",
+        "Typhoid",
+        "Malaria",
+        "Polio"
+      ],
+      "answer": 0,
+      "explanation": "Ringworm is a skin infection caused by fungi.",
+      "difficulty": "easy",
+      "id": "q95"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The scientific study of insects is called?",
+      "options": [
+        "Entomology",
+        "Ornithology",
+        "Ichthyology",
+        "Herpetology"
+      ],
+      "answer": 0,
+      "explanation": "Entomology is the branch of zoology that studies insects.",
+      "difficulty": "easy",
+      "id": "q96"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which part of a plant absorbs water and minerals from the soil?",
+      "options": [
+        "Roots",
+        "Leaves",
+        "Stems",
+        "Flowers"
+      ],
+      "answer": 0,
+      "explanation": "Roots take up water and dissolved minerals from the soil.",
+      "difficulty": "easy",
+      "id": "q97"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The type of cell division that produces two genetically identical daughter cells is?",
+      "options": [
+        "Mitosis",
+        "Meiosis",
+        "Binary fission",
+        "Budding"
+      ],
+      "answer": 0,
+      "explanation": "Mitosis produces two identical daughter cells for growth and repair.",
+      "difficulty": "medium",
+      "id": "q98"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which type of cell division produces gametes (sex cells)?",
+      "options": [
+        "Meiosis",
+        "Mitosis",
+        "Amitosis",
+        "Fragmentation"
+      ],
+      "answer": 0,
+      "explanation": "Meiosis halves the chromosome number and produces gametes.",
+      "difficulty": "medium",
+      "id": "q99"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which enzyme digests proteins in the stomach?",
+      "options": [
+        "Pepsin",
+        "Amylase",
+        "Lipase",
+        "Trypsin"
+      ],
+      "answer": 0,
+      "explanation": "Pepsin, active in the acidic stomach, breaks proteins into peptides.",
+      "difficulty": "medium",
+      "id": "q100"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The hardest substance in the human body is?",
+      "options": [
+        "Tooth enamel",
+        "Bone",
+        "Cartilage",
+        "Dentine"
+      ],
+      "answer": 0,
+      "explanation": "Enamel, the outer layer of teeth, is the hardest substance in the body.",
+      "difficulty": "medium",
+      "id": "q101"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which organ stores urine temporarily?",
+      "options": [
+        "Urinary bladder",
+        "Kidney",
+        "Liver",
+        "Ureter"
+      ],
+      "answer": 0,
+      "explanation": "Urine collects in the urinary bladder before being expelled.",
+      "difficulty": "easy",
+      "id": "q102"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which gland controls the metabolic rate of the body?",
+      "options": [
+        "Thyroid gland",
+        "Pituitary gland",
+        "Adrenal gland",
+        "Pancreas"
+      ],
+      "answer": 0,
+      "explanation": "Thyroid hormones regulate the body's metabolic rate.",
+      "difficulty": "medium",
+      "id": "q103"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The pigment that gives colour to the skin and hair is?",
+      "options": [
+        "Melanin",
+        "Keratin",
+        "Haemoglobin",
+        "Carotene"
+      ],
+      "answer": 0,
+      "explanation": "Melanin produced by melanocytes determines skin and hair colour.",
+      "difficulty": "easy",
+      "id": "q104"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which of the following is a hereditary disease?",
+      "options": [
+        "Haemophilia",
+        "Cholera",
+        "Influenza",
+        "Measles"
+      ],
+      "answer": 0,
+      "explanation": "Haemophilia, a bleeding disorder, is inherited through genes.",
+      "difficulty": "easy",
+      "id": "q105"
+    },
+    {
+      "type": "mcq",
+      "prompt": "How many pairs of ribs are present in the human body?",
+      "options": [
+        "12",
+        "10",
+        "14",
+        "24"
+      ],
+      "answer": 0,
+      "explanation": "Humans have 12 pairs of ribs protecting the thoracic cavity.",
+      "difficulty": "medium",
+      "id": "q106"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which artery carries deoxygenated blood?",
+      "options": [
+        "Pulmonary artery",
+        "Aorta",
+        "Carotid artery",
+        "Femoral artery"
+      ],
+      "answer": 0,
+      "explanation": "The pulmonary artery carries deoxygenated blood from the heart to the lungs.",
+      "difficulty": "hard",
+      "id": "q107"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which vein carries oxygenated blood?",
+      "options": [
+        "Pulmonary vein",
+        "Vena cava",
+        "Jugular vein",
+        "Hepatic vein"
+      ],
+      "answer": 0,
+      "explanation": "The pulmonary vein returns oxygenated blood from the lungs to the heart.",
+      "difficulty": "hard",
+      "id": "q108"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The largest muscle in the human body is the?",
+      "options": [
+        "Gluteus maximus",
+        "Biceps",
+        "Deltoid",
+        "Quadriceps"
+      ],
+      "answer": 0,
+      "explanation": "The gluteus maximus in the buttocks is the body's largest muscle.",
+      "difficulty": "medium",
+      "id": "q109"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which type of organism causes typhoid fever?",
+      "options": [
+        "Bacteria",
+        "Virus",
+        "Protozoan",
+        "Fungus"
+      ],
+      "answer": 0,
+      "explanation": "Typhoid is a bacterial infection caused by Salmonella typhi.",
+      "difficulty": "easy",
+      "id": "q110"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which gas do plants give out during respiration at night?",
+      "options": [
+        "Carbon dioxide",
+        "Oxygen",
+        "Nitrogen",
+        "Hydrogen"
+      ],
+      "answer": 0,
+      "explanation": "Without sunlight plants respire like animals, releasing carbon dioxide.",
+      "difficulty": "medium",
+      "id": "q111"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which organ of the body is affected by hepatitis?",
+      "options": [
+        "Liver",
+        "Kidney",
+        "Lungs",
+        "Heart"
+      ],
+      "answer": 0,
+      "explanation": "Hepatitis is inflammation of the liver, usually caused by a virus.",
+      "difficulty": "easy",
+      "id": "q112"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which of the following is a viral disease?",
+      "options": [
+        "Influenza",
+        "Typhoid",
+        "Cholera",
+        "Tetanus"
+      ],
+      "answer": 0,
+      "explanation": "Influenza is caused by the influenza virus.",
+      "difficulty": "easy",
+      "id": "q113"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which cells of the retina are responsible for colour vision?",
+      "options": [
+        "Cone cells",
+        "Rod cells",
+        "Ganglion cells",
+        "Bipolar cells"
+      ],
+      "answer": 0,
+      "explanation": "Cones detect colour in bright light, while rods work in dim light.",
+      "difficulty": "hard",
+      "id": "q114"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The fluid that lubricates the joints is called?",
+      "options": [
+        "Synovial fluid",
+        "Cerebrospinal fluid",
+        "Plasma",
+        "Lymph"
+      ],
+      "answer": 0,
+      "explanation": "Synovial fluid reduces friction between the bones in a joint.",
+      "difficulty": "medium",
+      "id": "q115"
+    },
+    {
+      "type": "mcq",
+      "prompt": "In which part of the female reproductive system does fertilization usually occur?",
+      "options": [
+        "Fallopian tube",
+        "Uterus",
+        "Ovary",
+        "Vagina"
+      ],
+      "answer": 0,
+      "explanation": "The egg is usually fertilized in the fallopian tube before reaching the uterus.",
+      "difficulty": "medium",
+      "id": "q116"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The normal resting heart rate of a healthy adult is about?",
+      "options": [
+        "72 beats per minute",
+        "100 beats per minute",
+        "50 beats per minute",
+        "120 beats per minute"
+      ],
+      "answer": 0,
+      "explanation": "A resting adult heart beats about 72 times per minute on average.",
+      "difficulty": "easy",
+      "id": "q117"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which of the following is an airborne disease?",
+      "options": [
+        "Tuberculosis",
+        "Cholera",
+        "Typhoid",
+        "Hepatitis"
+      ],
+      "answer": 0,
+      "explanation": "Tuberculosis spreads through droplets in the air when an infected person coughs.",
+      "difficulty": "medium",
+      "id": "q118"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which vitamin deficiency causes beriberi?",
+      "options": [
+        "Vitamin B1 (thiamine)",
+        "Vitamin C",
+        "Vitamin A",
+        "Vitamin D"
+      ],
+      "answer": 0,
+      "explanation": "Beriberi results from a deficiency of thiamine (vitamin B1).",
+      "difficulty": "medium",
+      "id": "q119"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The process by which cells release energy from glucose is called?",
+      "options": [
+        "Cellular respiration",
+        "Photosynthesis",
+        "Digestion",
+        "Excretion"
+      ],
+      "answer": 0,
+      "explanation": "Cellular respiration breaks down glucose to release energy in the form of ATP.",
+      "difficulty": "medium",
+      "id": "q120"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which part of the ear vibrates when sound waves strike it?",
+      "options": [
+        "Eardrum",
+        "Cochlea",
+        "Ear ossicles",
+        "Semicircular canals"
+      ],
+      "answer": 0,
+      "explanation": "Sound waves make the eardrum vibrate, which is the first step of hearing.",
+      "difficulty": "easy",
+      "id": "q121"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which hormone prepares the body for emergencies (fight or flight)?",
+      "options": [
+        "Adrenaline",
+        "Insulin",
+        "Thyroxine",
+        "Melatonin"
+      ],
+      "answer": 0,
+      "explanation": "Adrenaline from the adrenal glands speeds up the heart and prepares the body for action.",
+      "difficulty": "easy",
+      "id": "q122"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The scientific study of fungi is called?",
+      "options": [
+        "Mycology",
+        "Bacteriology",
+        "Virology",
+        "Cytology"
+      ],
+      "answer": 0,
+      "explanation": "Mycology is the branch of biology that studies fungi.",
+      "difficulty": "medium",
+      "id": "q123"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The scientific name of human beings is?",
+      "options": [
+        "Homo sapiens",
+        "Homo erectus",
+        "Homo habilis",
+        "Homo neanderthalensis"
+      ],
+      "answer": 0,
+      "explanation": "Modern humans belong to the species Homo sapiens.",
+      "difficulty": "easy",
+      "id": "q124"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which vitamin deficiency causes pellagra?",
+      "options": [
+        "Niacin (vitamin B3)",
+        "Vitamin C",
+        "Vitamin E",
+        "Vitamin B12"
+      ],
+      "answer": 0,
+      "explanation": "Pellagra is caused by a deficiency of niacin (vitamin B3).",
+      "difficulty": "hard",
+      "id": "q125"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which part of the brain controls voluntary (conscious) movements?",
+      "options": [
+        "Cerebrum",
+        "Cerebellum",
+        "Medulla",
+        "Pons"
+      ],
+      "answer": 0,
+      "explanation": "The cerebrum controls voluntary movements, thought and memory.",
+      "difficulty": "medium",
+      "id": "q126"
+    },
+    {
+      "type": "mcq",
+      "prompt": "The removal of nitrogenous waste products from the body is called?",
+      "options": [
+        "Excretion",
+        "Respiration",
+        "Secretion",
+        "Digestion"
+      ],
+      "answer": 0,
+      "explanation": "Excretion removes nitrogenous wastes such as urea from the body.",
+      "difficulty": "medium",
+      "id": "q127"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which is the largest mammal in the world?",
+      "options": [
+        "Blue whale",
+        "Elephant",
+        "Giraffe",
+        "Hippopotamus"
+      ],
+      "answer": 0,
+      "explanation": "The blue whale is the largest animal ever known to have lived.",
+      "difficulty": "easy",
+      "id": "q128"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which gland produces the hormone that regulates sleep (melatonin)?",
+      "options": [
+        "Pineal gland",
+        "Pituitary gland",
+        "Thyroid gland",
+        "Thymus gland"
+      ],
+      "answer": 0,
+      "explanation": "The pineal gland secretes melatonin, which regulates the sleep-wake cycle.",
+      "difficulty": "hard",
+      "id": "q129"
+    },
+    {
+      "type": "mcq",
+      "prompt": "Which of the following is a fat-soluble vitamin?",
+      "options": [
+        "Vitamin A",
+        "Vitamin C",
+        "Vitamin B complex",
+        "Vitamin B12"
+      ],
+      "answer": 0,
+      "explanation": "Vitamins A, D, E and K are fat-soluble; the B complex and C are water-soluble.",
+      "difficulty": "medium",
+      "id": "q130"
+    }
+  ]
+}

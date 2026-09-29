@@ -41,6 +41,7 @@ class GrammarSeeder {
       }
 
       await _local.clearTopics();
+      await _local.clearStaleInProgress();
 
       final String raw =
           await _bundle.loadString(GrammarConstants.topicsAssetPath);
