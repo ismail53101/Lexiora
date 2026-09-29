@@ -1,5 +1,4 @@
 import 'dart:async';
-import 'dart:io';
 import 'dart:ui' as ui;
 
 import 'package:flutter/foundation.dart';
@@ -9,6 +8,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:lexiora/app/di/injector.dart';
 import 'package:lexiora/app/router/app_routes.dart';
+import 'package:lexiora/core/utils/image_provider_for_path.dart';
 import 'package:lexiora/core/navigation/home_destination.dart';
 import 'package:lexiora/core/services/permission_service.dart';
 import 'package:lexiora/core/usecase/usecase.dart';
@@ -1013,11 +1013,11 @@ class _RecentDocThumb extends StatelessWidget {
   Widget build(BuildContext context) {
     final ColorScheme scheme = Theme.of(context).colorScheme;
     final String? path = document.coverPath;
-    if (!kIsWeb && path != null && path.isNotEmpty) {
+    if (path != null && path.isNotEmpty) {
       return ColoredBox(
         color: const Color(0xFFF3F1EC),
-        child: Image.file(
-          File(path),
+        child: Image(
+          image: imageProviderForPath(path),
           fit: BoxFit.contain,
           errorBuilder: (BuildContext context, Object error, StackTrace? _) =>
               _RecentDocThumbPlaceholder(scheme: scheme),

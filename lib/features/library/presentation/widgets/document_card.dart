@@ -1,7 +1,6 @@
-import 'dart:io';
-
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:lexiora/core/utils/image_provider_for_path.dart';
 import 'package:lexiora/features/library/domain/entities/library_document.dart';
 
 /// Actions offered from a document card's overflow menu.
@@ -148,13 +147,13 @@ class _CoverImage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final String? path = coverPath;
-    if (!kIsWeb && path != null && path.isNotEmpty) {
+    if (path != null && path.isNotEmpty) {
       return ColoredBox(
         // Neutral backing behind the page so `contain` never shows the
         // card's own background bleeding through at the letterboxed edges.
         color: const Color(0xFFF3F1EC),
-        child: Image.file(
-          File(path),
+        child: Image(
+          image: imageProviderForPath(path),
           // `cover` was cropping most of the page away to fill the card
           // (a rendered page's aspect ratio rarely matches the card's),
           // which read as an unpleasant, overly zoomed-in thumbnail.

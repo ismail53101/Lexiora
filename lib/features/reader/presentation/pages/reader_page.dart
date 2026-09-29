@@ -1,5 +1,4 @@
 import 'dart:async';
-import 'dart:io';
 
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -14,6 +13,7 @@ import 'package:lexiora/core/reader_engine/word_action.dart';
 import 'package:lexiora/core/services/pdf_ocr_service.dart';
 import 'package:lexiora/core/services/screen_wake_service.dart';
 import 'package:lexiora/core/utils/logger.dart';
+import 'package:lexiora/core/utils/local_file.dart';
 import 'package:lexiora/core/widgets/error_view.dart';
 import 'package:lexiora/features/annotations/domain/entities/highlight.dart';
 import 'package:lexiora/features/annotations/domain/usecases/annotations_usecases.dart';
@@ -116,9 +116,8 @@ class _ReaderPageState extends ConsumerState<ReaderPage> {
       bool exists = true;
       int size = doc.fileSize;
       if (!kIsWeb) {
-        final File file = File(doc.filePath);
-        exists = await file.exists();
-        size = exists ? await file.length() : 0;
+        exists = await localFileExists(doc.filePath);
+        size = exists ? await localFileLength(doc.filePath) : 0;
       }
       AppLogger.i('Reader: file=${doc.filePath} exists=$exists size=$size');
       if (!exists || size == 0) {
@@ -219,7 +218,7 @@ class _ReaderPageState extends ConsumerState<ReaderPage> {
       }
       if (!persistentDriveCache && temporaryPath != null) {
         unawaited(
-          File(temporaryPath).delete().catchError((Object _) => File(temporaryPath)),
+          deleteLocalFile(temporaryPath).catchError((Object _) {}),
         );
       }
     }
