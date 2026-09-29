@@ -468,6 +468,8 @@ class _FeaturedStoryCard extends StatelessWidget {
                       children: <Widget>[
                         _CategoryTag(label: story.category),
                         const Spacer(),
+                        _FeedOriginTag(feedType: story.feedType),
+                        const SizedBox(width: 7),
                         Text(
                           '${story.source} · ${story.relativeTime}',
                           style: theme.textTheme.labelSmall?.copyWith(
@@ -573,6 +575,8 @@ class _EditorialStoryCard extends StatelessWidget {
                             ),
                           ),
                         ),
+                        const SizedBox(width: 7),
+                        _FeedOriginTag(feedType: story.feedType),
                         Text(' · ${story.relativeTime}', style: theme.textTheme.labelSmall?.copyWith(color: scheme.onSurfaceVariant)),
                       ],
                     ),
@@ -652,6 +656,38 @@ class _CategoryTag extends StatelessWidget {
             color: scheme.onSecondaryContainer,
             fontWeight: FontWeight.w900,
             letterSpacing: 0.45,
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class _FeedOriginTag extends StatelessWidget {
+  const _FeedOriginTag({required this.feedType});
+
+  final String feedType;
+
+  @override
+  Widget build(BuildContext context) {
+    final ThemeData theme = Theme.of(context);
+    final ColorScheme scheme = theme.colorScheme;
+    final bool isGNews = feedType.trim().toLowerCase() == 'gnews';
+    return DecoratedBox(
+      decoration: BoxDecoration(
+        color: isGNews ? scheme.tertiaryContainer : scheme.surfaceContainerHighest,
+        borderRadius: BorderRadius.circular(7),
+        border: Border.all(color: scheme.outlineVariant.withValues(alpha: 0.65)),
+      ),
+      child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 3),
+        child: Text(
+          isGNews ? 'GNEWS' : 'RSS',
+          style: theme.textTheme.labelSmall?.copyWith(
+            color: isGNews ? scheme.onTertiaryContainer : scheme.onSurfaceVariant,
+            fontWeight: FontWeight.w900,
+            fontSize: 9,
+            letterSpacing: 0.35,
           ),
         ),
       ),

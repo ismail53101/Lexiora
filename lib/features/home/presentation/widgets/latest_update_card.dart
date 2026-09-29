@@ -198,7 +198,7 @@ class _LatestUpdateCardState extends State<LatestUpdateCard> {
                             ),
                           ),
                           Text(
-                            '${story.source} · ${story.category} · ${story.relativeTime}',
+                            '${story.source} · ${story.category} · ${story.relativeTime} · ${_feedOriginLabel(story.feedType)}',
                             maxLines: 1,
                             overflow: TextOverflow.ellipsis,
                             style: theme.textTheme.labelSmall?.copyWith(
@@ -319,6 +319,10 @@ class _NewsThumbnail extends StatelessWidget {
       ],
     );
   }
+}
+
+String _feedOriginLabel(String feedType) {
+  return feedType.trim().toLowerCase() == 'gnews' ? 'GNEWS' : 'RSS';
 }
 
 class _CarouselDots extends StatelessWidget {
