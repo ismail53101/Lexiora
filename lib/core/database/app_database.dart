@@ -389,6 +389,11 @@ class AppDatabase extends _$AppDatabase {
         },
       );
 
-  static QueryExecutor _openConnection() =>
-      driftDatabase(name: DbConstants.databaseName);
+  static QueryExecutor _openConnection() => driftDatabase(
+        name: DbConstants.databaseName,
+        web: DriftWebOptions(
+          sqlite3Wasm: Uri.parse('sqlite3.wasm'),
+          driftWorker: Uri.parse('drift_worker.js'),
+        ),
+      );
 }

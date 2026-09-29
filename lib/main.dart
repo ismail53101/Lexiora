@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'dart:convert';
 
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
@@ -64,16 +65,18 @@ Future<void> main() async {
       // screen. Notifications, permissions, and PDF intent discovery continue
       // immediately after the first frame and report failures to the logger.
       runApp(ProviderScope(child: SapioraApp(router: router)));
-      unawaited(_finishStartup(router));
+      if (!kIsWeb) unawaited(_finishStartup(router));
 
   // One-time data hygiene: if Android's auto-backup restored an old database
   // (e.g. after an uninstall), purge the stale AI chats so Recents starts
   // empty. Real user data on updates is protected by install markers — see
   // [FreshInstallGuard]. Best-effort and unawaited: any failure is logged and
   // must never block startup.
-  unawaited(
-    sl<FreshInstallGuard>().purgeStaleChatData(sl<AppDatabase>()),
-  );
+      if (!kIsWeb) {
+        unawaited(
+          sl<FreshInstallGuard>().purgeStaleChatData(sl<AppDatabase>()),
+        );
+      }
     },
     (Object error, StackTrace stack) {
       AppLogger.e('Uncaught zone error', error: error, stackTrace: stack);

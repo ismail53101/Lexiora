@@ -18,6 +18,7 @@ class PdfImportService {
   /// Installs the callback used when Android delivers a PDF while the app is
   /// already running or resumed from the background.
   void registerIncomingPdfHandler(ValueChanged<DeviceFile> onIncoming) {
+    if (kIsWeb) return;
     _channel.setMethodCallHandler((MethodCall call) async {
       if (call.method != 'incomingPdf') return;
       final DeviceFile? file = _parseDeviceFile(call.arguments);
@@ -28,12 +29,14 @@ class PdfImportService {
   /// Retrieves a PDF that launched the app before Flutter installed its
   /// method-channel callback (cold-start path).
   Future<DeviceFile?> takeInitialIncomingPdf() async {
+    if (kIsWeb) return null;
     if (!Platform.isAndroid) return null;
     final Object? raw = await _channel.invokeMethod<Object?>('takeIncomingPdf');
     return _parseDeviceFile(raw);
   }
 
   Future<List<DeviceFile>> pickAndImport() async {
+    if (kIsWeb) return const <DeviceFile>[];
     if (!Platform.isAndroid) return const <DeviceFile>[];
     final List<Object?>? raw =
         await _channel.invokeMethod<List<Object?>>('pickPdfs');
