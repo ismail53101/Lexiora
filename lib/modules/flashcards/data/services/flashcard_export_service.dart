@@ -2,6 +2,7 @@ import 'dart:convert';
 import 'dart:typed_data';
 
 import 'package:archive/archive.dart';
+import 'package:lexiora/core/services/backup_store.dart' as platform_backup;
 import 'package:lexiora/core/services/share_bytes.dart' as platform_share;
 import 'package:lexiora/modules/flashcards/domain/entities/flashcard.dart';
 import 'package:lexiora/modules/flashcards/domain/repositories/flashcard_repository.dart';
@@ -105,37 +106,27 @@ class FlashcardExportService {
 
   // ── Backup / restore ─────────────────────────────────────────────────────────
 
-  Future<Directory> _backupDir() async {
-    final Directory base = await getApplicationDocumentsDirectory();
-    final Directory dir = Directory('${base.path}/flashcards_backups');
-    if (!dir.existsSync()) await dir.create(recursive: true);
-    return dir;
-  }
-
   Future<void> backupAndShare(FlashcardRepository repo) async {
     final Map<String, dynamic> data = await repo.exportBackup();
     final String json = jsonEncode(data);
-    final Directory dir = await _backupDir();
     final String stamp = DateTime.now()
         .toIso8601String()
         .replaceAll(RegExp(r'[:.]'), '-')
         .substring(0, 19);
-    final File file = File('${dir.path}/flashcards_backup_$stamp.json');
-    await file.writeAsString(json, flush: true);
-    await shareBytes(utf8.encode(json), file.uri.pathSegments.last,
+    final String filename = 'flashcards_backup_$stamp.json';
+    await platform_backup.saveBackup(
+      'flashcards_backups', filename, utf8.encode(json));
+    await shareBytes(utf8.encode(json), filename,
         'application/json');
   }
 
   Future<List<FcBackupFile>> listBackups() async {
-    final Directory dir = await _backupDir();
-    final List<FcBackupFile> files = dir
-        .listSync()
-        .whereType<File>()
-        .where((File f) => f.path.endsWith('.json'))
-        .map((File f) => FcBackupFile(
+    final List<platform_backup.StoredBackup> stored =
+        await platform_backup.listBackups('flashcards_backups');
+    final List<FcBackupFile> files = stored.map((platform_backup.StoredBackup f) => FcBackupFile(
               path: f.path,
-              name: f.uri.pathSegments.last,
-              savedAt: f.statSync().modified,
+              name: f.name,
+              savedAt: f.savedAt,
             ))
         .toList()
       ..sort((FcBackupFile a, FcBackupFile b) => b.savedAt.compareTo(a.savedAt));
@@ -143,7 +134,7 @@ class FlashcardExportService {
   }
 
   Future<void> restore(FlashcardRepository repo, String path) async {
-    final String json = await File(path).readAsString();
+    final String json = utf8.decode(await platform_backup.readBackup(path));
     await repo.importBackup((jsonDecode(json) as Map).cast<String, dynamic>());
   }
 

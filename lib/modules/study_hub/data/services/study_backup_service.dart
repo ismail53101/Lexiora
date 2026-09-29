@@ -1,9 +1,8 @@
 import 'dart:convert';
-import 'dart:io';
 
+import 'package:lexiora/core/services/backup_store.dart' as platform_backup;
 import 'package:lexiora/modules/study_hub/data/services/study_export_service.dart';
 import 'package:lexiora/modules/study_hub/domain/repositories/study_hub_repository.dart';
-import 'package:path_provider/path_provider.dart';
 
 /// A saved local backup file.
 class BackupFile {
@@ -23,31 +22,26 @@ class StudyBackupService {
 
   final StudyExportService _export;
 
-  Future<Directory> _dir() async {
-    final Directory base = await getApplicationDocumentsDirectory();
-    final Directory dir = Directory('${base.path}/sapiora_backups');
-    if (!dir.existsSync()) await dir.create(recursive: true);
-    return dir;
-  }
-
   /// Writes a backup file locally and returns it (does not share).
   Future<BackupFile> createBackup(StudyHubRepository repo) async {
     final Map<String, dynamic> data = await repo.exportBackup();
     final String json = jsonEncode(data);
-    final Directory dir = await _dir();
     final String stamp = DateTime.now()
         .toIso8601String()
         .replaceAll(RegExp(r'[:.]'), '-')
         .split('T')
         .join('_')
         .substring(0, 19);
-    final File file = File('${dir.path}/sapiora_backup_$stamp.json');
-    await file.writeAsString(json, flush: true);
+    final platform_backup.StoredBackup stored = await platform_backup.saveBackup(
+      'sapiora_backups',
+      'sapiora_backup_$stamp.json',
+      utf8.encode(json),
+    );
     return BackupFile(
-      path: file.path,
-      name: file.uri.pathSegments.last,
-      savedAt: DateTime.now(),
-      sizeBytes: json.length,
+      path: stored.path,
+      name: stored.name,
+      savedAt: stored.savedAt,
+      sizeBytes: stored.sizeBytes,
     );
   }
 
@@ -55,7 +49,7 @@ class StudyBackupService {
   Future<void> backupAndShare(StudyHubRepository repo) async {
     final BackupFile backup = await createBackup(repo);
     await _export.shareBytes(
-      await File(backup.path).readAsBytes(),
+      await platform_backup.readBackup(backup.path),
       backup.name,
       'application/json',
     );
@@ -63,34 +57,27 @@ class StudyBackupService {
 
   /// Lists locally saved backups, newest first.
   Future<List<BackupFile>> listBackups() async {
-    final Directory dir = await _dir();
-    final List<BackupFile> files = dir
-        .listSync()
-        .whereType<File>()
-        .where((File f) => f.path.endsWith('.json'))
-        .map((File f) {
-      final FileStat s = f.statSync();
+    final List<platform_backup.StoredBackup> stored =
+        await platform_backup.listBackups('sapiora_backups');
+    return stored.map((platform_backup.StoredBackup s) {
       return BackupFile(
-        path: f.path,
-        name: f.uri.pathSegments.last,
-        savedAt: s.modified,
-        sizeBytes: s.size,
+        path: s.path,
+        name: s.name,
+        savedAt: s.savedAt,
+        sizeBytes: s.sizeBytes,
       );
-    }).toList()
-      ..sort((BackupFile a, BackupFile b) => b.savedAt.compareTo(a.savedAt));
-    return files;
+    }).toList(growable: false);
   }
 
   /// Restores a previously saved backup, replacing current Study Hub data.
   Future<void> restore(StudyHubRepository repo, String path) async {
-    final String json = await File(path).readAsString();
+    final String json = utf8.decode(await platform_backup.readBackup(path));
     final Map<String, dynamic> data =
         (jsonDecode(json) as Map).cast<String, dynamic>();
     await repo.importBackup(data);
   }
 
   Future<void> deleteBackup(String path) async {
-    final File f = File(path);
-    if (f.existsSync()) await f.delete();
+    await platform_backup.deleteBackup(path);
   }
 }

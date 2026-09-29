@@ -2,6 +2,7 @@ import 'dart:convert';
 import 'dart:typed_data';
 
 import 'package:archive/archive.dart';
+import 'package:lexiora/core/services/backup_store.dart' as platform_backup;
 import 'package:lexiora/core/services/share_bytes.dart' as platform_share;
 import 'package:lexiora/modules/quiz/domain/repositories/quiz_repository.dart';
 import 'package:pdf/pdf.dart';
@@ -89,37 +90,31 @@ class QuizExportService {
 
   // ── Backup / restore ─────────────────────────────────────────────────────────
 
-  Future<Directory> _backupDir() async {
-    final Directory base = await getApplicationDocumentsDirectory();
-    final Directory dir = Directory('${base.path}/quiz_backups');
-    if (!dir.existsSync()) await dir.create(recursive: true);
-    return dir;
-  }
-
   Future<void> backupAndShare(QuizRepository repo) async {
     final Map<String, dynamic> data = await repo.exportBackup();
     final String json = jsonEncode(data);
-    final Directory dir = await _backupDir();
     final String stamp = DateTime.now()
         .toIso8601String()
         .replaceAll(RegExp(r'[:.]'), '-')
         .substring(0, 19);
-    final File file = File('${dir.path}/quiz_backup_$stamp.json');
-    await file.writeAsString(json, flush: true);
+    final String filename = 'quiz_backup_$stamp.json';
+    await platform_backup.saveBackup(
+      'quiz_backups',
+      filename,
+      utf8.encode(json),
+    );
     await shareBytes(
-        utf8.encode(json), file.uri.pathSegments.last, 'application/json');
+        utf8.encode(json), filename, 'application/json');
   }
 
   Future<List<QuizBackupFile>> listBackups() async {
-    final Directory dir = await _backupDir();
-    final List<QuizBackupFile> files = dir
-        .listSync()
-        .whereType<File>()
-        .where((File f) => f.path.endsWith('.json'))
-        .map((File f) => QuizBackupFile(
+    final List<platform_backup.StoredBackup> stored =
+        await platform_backup.listBackups('quiz_backups');
+    final List<QuizBackupFile> files = stored
+        .map((platform_backup.StoredBackup f) => QuizBackupFile(
               path: f.path,
-              name: f.uri.pathSegments.last,
-              savedAt: f.statSync().modified,
+              name: f.name,
+              savedAt: f.savedAt,
             ))
         .toList()
       ..sort((QuizBackupFile a, QuizBackupFile b) =>
@@ -128,7 +123,7 @@ class QuizExportService {
   }
 
   Future<void> restore(QuizRepository repo, String path) async {
-    final String json = await File(path).readAsString();
+    final String json = utf8.decode(await platform_backup.readBackup(path));
     await repo.importBackup((jsonDecode(json) as Map).cast<String, dynamic>());
   }
 
