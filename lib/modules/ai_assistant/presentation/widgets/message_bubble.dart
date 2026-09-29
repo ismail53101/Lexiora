@@ -1,8 +1,8 @@
 import 'dart:async';
-import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:lexiora/modules/ai_assistant/data/services/ai_image_file.dart';
 import 'package:lexiora/modules/ai_assistant/domain/entities/ai_attachment.dart';
 import 'package:lexiora/modules/ai_assistant/domain/entities/ai_message.dart';
 import 'package:lexiora/modules/ai_assistant/presentation/widgets/ai_markdown.dart';
@@ -823,8 +823,8 @@ class _AttachedImage extends StatelessWidget {
       onTap: () => _openFullscreen(context),
       child: ClipRRect(
         borderRadius: BorderRadius.circular(12),
-        child: Image.file(
-          File(path),
+        child: Image(
+          image: aiImageProvider(path),
           fit: BoxFit.cover,
           width: double.infinity,
           height: 180,
@@ -849,7 +849,7 @@ class _AttachedImage extends StatelessWidget {
           appBar: AppBar(backgroundColor: Colors.transparent, elevation: 0),
           body: Center(
             child: InteractiveViewer(
-              child: Image.file(File(path)),
+              child: Image(image: aiImageProvider(path)),
             ),
           ),
         ),

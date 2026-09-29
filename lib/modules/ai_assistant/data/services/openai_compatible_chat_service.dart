@@ -1,8 +1,8 @@
 import 'dart:convert';
-import 'dart:io';
 
 import 'package:lexiora/modules/ai_assistant/config/ai_config.dart';
 import 'package:lexiora/modules/ai_assistant/data/services/ai_api_client.dart';
+import 'package:lexiora/modules/ai_assistant/data/services/ai_image_file.dart';
 import 'package:lexiora/modules/ai_assistant/domain/entities/ai_attachment.dart';
 import 'package:lexiora/modules/ai_assistant/domain/entities/ai_chat.dart';
 import 'package:lexiora/modules/ai_assistant/domain/entities/ai_failure.dart';
@@ -154,17 +154,7 @@ class OpenAiCompatibleChatService implements AiChatService {
   }
 
   Future<String?> _readImageAsDataUrl(String path) async {
-    try {
-      final File file = File(path);
-      if (!await file.exists()) return null;
-      final List<int> bytes = await file.readAsBytes();
-      final String mime = path.toLowerCase().endsWith('.png')
-          ? 'image/png'
-          : 'image/jpeg';
-      return 'data:$mime;base64,${base64Encode(bytes)}';
-    } on Object {
-      return null;
-    }
+    return readAiImageDataUrl(path);
   }
 
   // ── Pure parsers (unit-testable) ────────────────────────────────────────────

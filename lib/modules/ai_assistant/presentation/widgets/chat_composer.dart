@@ -1,15 +1,13 @@
-import 'dart:io';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:lexiora/core/services/pdf_discovery_service.dart' show DeviceFile;
 import 'package:lexiora/core/services/pdf_import_service.dart';
 import 'package:lexiora/core/services/pdf_ocr_service.dart';
+import 'package:lexiora/modules/ai_assistant/data/services/ai_image_file.dart';
 import 'package:lexiora/modules/ai_assistant/domain/entities/ai_attachment.dart';
 import 'package:lexiora/modules/ai_assistant/presentation/providers/ai_providers.dart';
 import 'package:lexiora/modules/ai_assistant/presentation/widgets/ai_message_tools.dart';
-import 'package:path_provider/path_provider.dart';
 import 'package:uuid/uuid.dart';
 
 /// The message input bar: a single ChatGPT-style rounded pill holding the
@@ -69,15 +67,9 @@ class _ChatComposerState extends ConsumerState<ChatComposer> {
       );
       if (picked == null) return;
 
-      // Copy into the app's own persistent storage — the picker's own file
-      // can live in a transient cache location that the OS may clear, and
-      // this image needs to survive as long as the conversation does (it's
-      // shown again every time the chat history is reopened).
-      final Directory dir = await _imagesDirectory();
-      final String ext =
-          picked.path.toLowerCase().endsWith('.png') ? 'png' : 'jpg';
-      final String savedPath = '${dir.path}/${_uuid.v4()}.$ext';
-      await File(picked.path).copy(savedPath);
+      // Native builds copy into app support storage; Web stores a data URL so
+      // the attachment survives the picker's transient object URL.
+      final String savedPath = await persistAiImage(picked.path, _uuid.v4());
 
       if (mounted) setState(() => _pendingImagePath = savedPath);
     } on Object {
@@ -87,12 +79,6 @@ class _ChatComposerState extends ConsumerState<ChatComposer> {
     }
   }
 
-  Future<Directory> _imagesDirectory() async {
-    final Directory support = await getApplicationSupportDirectory();
-    final Directory dir = Directory('${support.path}/ai_images');
-    if (!await dir.exists()) await dir.create(recursive: true);
-    return dir;
-  }
 
   /// Opens the same native PDF picker the Library's "Import PDF" uses. The
   /// selected document stays as a PDF attachment chip; extracted text is kept
@@ -392,8 +378,8 @@ class _ImagePreviewChip extends StatelessWidget {
         children: <Widget>[
           ClipRRect(
             borderRadius: BorderRadius.circular(14),
-            child: Image.file(
-              File(path),
+            child: Image(
+              image: aiImageProvider(path),
               width: 72,
               height: 72,
               fit: BoxFit.cover,
