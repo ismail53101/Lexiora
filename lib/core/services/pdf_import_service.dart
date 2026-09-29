@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
+import 'package:lexiora/core/services/browser_pdf_picker.dart';
 import 'package:lexiora/core/services/pdf_discovery_service.dart' show DeviceFile;
 
 /// Manual PDF import via the system file picker (Storage Access Framework,
@@ -36,7 +37,7 @@ class PdfImportService {
   }
 
   Future<List<DeviceFile>> pickAndImport() async {
-    if (kIsWeb) return const <DeviceFile>[];
+    if (kIsWeb) return pickBrowserPdfs();
     if (!Platform.isAndroid) return const <DeviceFile>[];
     final List<Object?>? raw =
         await _channel.invokeMethod<List<Object?>>('pickPdfs');

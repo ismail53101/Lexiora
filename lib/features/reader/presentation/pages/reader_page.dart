@@ -1,7 +1,9 @@
 import 'dart:async';
 import 'dart:io';
 
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:lexiora/core/services/browser_pdf_store.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:lexiora/app/di/injector.dart';
 import 'package:lexiora/core/models/normalized_rect.dart';
@@ -104,10 +106,16 @@ class _ReaderPageState extends ConsumerState<ReaderPage> {
 
       // Validate the backing file BEFORE handing it to the PDF engine, so a
       // missing/empty file shows a helpful error instead of a blank viewer.
-      final File file = File(doc.filePath);
-      final String sourcePath = doc.filePath;
-      final bool exists = await file.exists();
-      final int size = exists ? await file.length() : 0;
+      final String sourcePath = kIsWeb
+          ? await resolveBrowserPdf(doc.filePath)
+          : doc.filePath;
+      bool exists = true;
+      int size = doc.fileSize;
+      if (!kIsWeb) {
+        final File file = File(doc.filePath);
+        exists = await file.exists();
+        size = exists ? await file.length() : 0;
+      }
       AppLogger.i('Reader: file=${doc.filePath} exists=$exists size=$size');
       if (!exists || size == 0) {
         if (mounted) {

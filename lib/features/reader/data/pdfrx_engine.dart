@@ -1,4 +1,5 @@
 import 'package:flutter/widgets.dart';
+import 'package:flutter/foundation.dart';
 import 'package:lexiora/core/reader_engine/pdf_engine.dart';
 import 'package:lexiora/core/reader_engine/pdf_reader_controller.dart';
 import 'package:lexiora/core/reader_engine/reader_models.dart';
@@ -27,7 +28,9 @@ class PdfrxEngine implements PdfEngine {
 
   @override
   Future<PdfDocumentInfo> readDocumentInfo(String filePath) async {
-    final PdfDocument document = await PdfDocument.openFile(filePath);
+    final PdfDocument document = kIsWeb
+        ? await PdfDocument.openUri(Uri.parse(filePath))
+        : await PdfDocument.openFile(filePath);
     try {
       return PdfDocumentInfo(pageCount: document.pages.length);
     } finally {

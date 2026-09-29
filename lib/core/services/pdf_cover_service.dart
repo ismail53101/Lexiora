@@ -3,6 +3,7 @@ import 'dart:io';
 import 'dart:typed_data';
 import 'dart:ui' as ui;
 
+import 'package:flutter/foundation.dart';
 import 'package:lexiora/core/utils/logger.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:pdfrx/pdfrx.dart';
@@ -33,6 +34,7 @@ class PdfCoverService {
     required String documentId,
     required String pdfPath,
   }) async {
+    if (kIsWeb) return null;
     PdfDocument? document;
     try {
       document = await PdfDocument.openFile(pdfPath);

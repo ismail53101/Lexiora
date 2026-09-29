@@ -1,8 +1,8 @@
 import 'dart:async';
 import 'dart:io';
-
 import 'dart:ui' as ui;
 
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -1013,7 +1013,7 @@ class _RecentDocThumb extends StatelessWidget {
   Widget build(BuildContext context) {
     final ColorScheme scheme = Theme.of(context).colorScheme;
     final String? path = document.coverPath;
-    if (path != null && path.isNotEmpty) {
+    if (!kIsWeb && path != null && path.isNotEmpty) {
       return ColoredBox(
         color: const Color(0xFFF3F1EC),
         child: Image.file(

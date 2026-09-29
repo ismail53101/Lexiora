@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:lexiora/features/library/domain/entities/library_document.dart';
 
@@ -147,7 +148,7 @@ class _CoverImage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final String? path = coverPath;
-    if (path != null && path.isNotEmpty) {
+    if (!kIsWeb && path != null && path.isNotEmpty) {
       return ColoredBox(
         // Neutral backing behind the page so `contain` never shows the
         // card's own background bleeding through at the letterboxed edges.

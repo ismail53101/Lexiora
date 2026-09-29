@@ -1,5 +1,6 @@
 import 'dart:math' as math;
 
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:lexiora/core/models/normalized_rect.dart';
 import 'package:lexiora/core/reader_engine/pdf_engine.dart';
@@ -32,7 +33,7 @@ class PdfrxReaderView extends StatefulWidget {
 }
 
 class _PdfrxReaderViewState extends State<PdfrxReaderView> {
-  late PdfDocumentRefFile _docRef;
+  late PdfDocumentRef _docRef;
 
   static const ColorFilter _nightFilter = ColorFilter.matrix(<double>[
     -1, 0, 0, 0, 255, //
@@ -51,7 +52,7 @@ class _PdfrxReaderViewState extends State<PdfrxReaderView> {
   @override
   void initState() {
     super.initState();
-    _docRef = PdfDocumentRefFile(widget.config.filePath);
+    _docRef = _documentRef(widget.config.filePath);
     AppLogger.i('Reader opening file: ${widget.config.filePath}');
   }
 
@@ -59,9 +60,13 @@ class _PdfrxReaderViewState extends State<PdfrxReaderView> {
   void didUpdateWidget(covariant PdfrxReaderView oldWidget) {
     super.didUpdateWidget(oldWidget);
     if (oldWidget.config.filePath != widget.config.filePath) {
-      _docRef = PdfDocumentRefFile(widget.config.filePath);
+      _docRef = _documentRef(widget.config.filePath);
     }
   }
+
+  PdfDocumentRef _documentRef(String path) => kIsWeb
+      ? PdfDocumentRefUri(Uri.parse(path))
+      : PdfDocumentRefFile(path);
 
   @override
   Widget build(BuildContext context) {
@@ -123,7 +128,7 @@ class _PdfrxReaderViewState extends State<PdfrxReaderView> {
               'password-protected, or in an unsupported format.',
           details: error.toString(),
           onRetry: () => setState(
-            () => _docRef = PdfDocumentRefFile(widget.config.filePath),
+            () => _docRef = _documentRef(widget.config.filePath),
           ),
         );
       },
