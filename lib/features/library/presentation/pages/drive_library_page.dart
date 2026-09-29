@@ -1,5 +1,3 @@
-import 'dart:io';
-
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -27,7 +25,7 @@ class _DriveLibraryPageState extends ConsumerState<DriveLibraryPage> {
   @override
   void initState() {
     super.initState();
-    _files = _loadFiles();
+    _files = kIsWeb ? Future<List<GoogleDrivePdf>>.value(const []) : _loadFiles();
   }
 
   Future<List<GoogleDrivePdf>> _loadFiles() async {
@@ -52,14 +50,14 @@ class _DriveLibraryPageState extends ConsumerState<DriveLibraryPage> {
           if (mounted) setState(() => _downloadProgress = progress);
         },
       );
-      final File cached = opened.file;
+      final DriveCachedFile cached = opened.file;
       if (!mounted) return;
       final LibraryDocument temporaryDocument = LibraryDocument(
         id: 'drive_${pdf.id}',
         title: _displayTitle(pdf.name),
         fileName: pdf.name,
         filePath: cached.path,
-        fileSize: pdf.size > 0 ? pdf.size : await cached.length(),
+        fileSize: pdf.size > 0 ? pdf.size : cached.size,
         pageCount: 0,
         isFavorite: false,
         importedAt: DateTime.now(),
@@ -214,7 +212,7 @@ class _DriveCard extends StatefulWidget {
 }
 
 class _DriveCardState extends State<_DriveCard> {
-  late Future<File?> _thumbnail;
+  late Future<DriveCachedFile?> _thumbnail;
 
   @override
   void initState() {
@@ -224,9 +222,10 @@ class _DriveCardState extends State<_DriveCard> {
 
   @override
   Widget build(BuildContext context) {
-    return FutureBuilder<File?>(
+    return FutureBuilder<DriveCachedFile?>(
       future: _thumbnail,
-      builder: (BuildContext context, AsyncSnapshot<File?> snapshot) {
+      builder: (BuildContext context,
+          AsyncSnapshot<DriveCachedFile?> snapshot) {
         final LibraryDocument document = LibraryDocument(
           id: 'drive_${widget.pdf.id}',
           title: widget.pdf.name.replaceFirst(

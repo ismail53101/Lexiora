@@ -1,10 +1,9 @@
-import 'dart:io';
-
 import 'package:lexiora/core/services/pdf_cover_service.dart';
 import 'package:lexiora/core/services/pdf_discovery_service.dart';
 import 'package:lexiora/core/services/pdf_import_service.dart';
 import 'package:lexiora/core/usecase/usecase.dart';
 import 'package:lexiora/core/utils/guard.dart';
+import 'package:lexiora/core/utils/local_file.dart';
 import 'package:lexiora/core/utils/logger.dart';
 import 'package:lexiora/core/utils/result.dart';
 import 'package:lexiora/core/utils/typedefs.dart';
@@ -151,8 +150,8 @@ class AutoDiscoverPdfs implements UseCase<DiscoveryOutcome, NoParams> {
         // files are cleaned using the existing metadata-safe delete use case.
         for (final LibraryDocument document in existing) {
           if (matchedIds.contains(document.id)) continue;
-          final bool managedFileStillExists =
-              document.isManaged && File(document.filePath).existsSync();
+          final bool managedFileStillExists = document.isManaged &&
+              await localFileExists(document.filePath);
           if (managedFileStillExists) continue;
           final Result<void> result = await _deleteDocument.call(document.id);
           result.fold(
@@ -255,12 +254,9 @@ class ImportPdfs implements UseCase<ImportOutcome, NoParams> {
       });
 
   void _discardCopy(String path) {
-    try {
-      final File file = File(path);
-      if (file.existsSync()) file.deleteSync();
-    } on Object catch (e) {
+    deleteLocalFile(path).catchError((Object e) {
       AppLogger.w('Import: could not discard duplicate copy $path: $e');
-    }
+    });
   }
 }
 
@@ -279,12 +275,9 @@ class ImportIncomingPdf {
         final List<LibraryDocument> existing = await _repo.watchAll().first;
         for (final LibraryDocument document in existing) {
           if (libraryDedupKey(document.fileName, document.fileSize) == key) {
-            try {
-              final File copy = File(file.path);
-              if (copy.existsSync()) copy.deleteSync();
-            } on Object catch (error) {
+            deleteLocalFile(file.path).catchError((Object error) {
               AppLogger.w('Incoming PDF duplicate cleanup failed: $error');
-            }
+            });
             return document;
           }
         }
@@ -327,7 +320,7 @@ class ImportDrivePdf {
         if (keys.contains(key)) {
           return const ImportOutcome(picked: 1, added: 0, duplicates: 1);
         }
-        final File cached = await _drive.downloadPdf(pdf);
+        final DriveCachedFile cached = await _drive.downloadPdf(pdf);
         final String id = _uuid.v4();
         final String? cover =
             await _cover.generateCover(documentId: id, pdfPath: cached.path);
@@ -337,7 +330,7 @@ class ImportDrivePdf {
             title: title,
             fileName: pdf.name,
             filePath: cached.path,
-            fileSize: pdf.size > 0 ? pdf.size : await cached.length(),
+            fileSize: pdf.size > 0 ? pdf.size : cached.size,
             pageCount: 0,
             isFavorite: false,
             importedAt: DateTime.now(),
@@ -407,12 +400,9 @@ class AdminImportPdfs {
       });
 
   void _discardCopy(String path) {
-    try {
-      final File file = File(path);
-      if (file.existsSync()) file.deleteSync();
-    } on Object catch (e) {
+    deleteLocalFile(path).catchError((Object e) {
       AppLogger.w('AdminImport: could not discard duplicate copy $path: $e');
-    }
+    });
   }
 }
 
