@@ -114,20 +114,20 @@ class _WordDetailsPageState extends ConsumerState<WordDetailsPage> {
     if (pron != null && pron.isNotEmpty) b.writeln('Pronunciation: $pron');
     final String? pos = p.partOfSpeech;
     if (pos != null && pos.isNotEmpty) b.writeln('Part of speech: $pos');
-    if (e != null) {
-      if (e.synonyms.isNotEmpty) b.writeln('Synonyms: ${e.synonyms.join(', ')}');
-      if (e.antonyms.isNotEmpty) b.writeln('Antonyms: ${e.antonyms.join(', ')}');
+    if (e != null || p.ai != null) {
+      if (p.synonyms.isNotEmpty) b.writeln('Synonyms: ${p.synonyms.join(', ')}');
+      if (p.antonyms.isNotEmpty) b.writeln('Antonyms: ${p.antonyms.join(', ')}');
       // Same filtered resolution as the Usage card, so copy matches display.
       final WordUsage? u = _ProfileView._resolveUsage(p);
       if (u != null) {
         b.writeln('Usage (${u.context}): ${u.english}');
         if (u.urdu.isNotEmpty) b.writeln(u.urdu);
       }
-      if (e.collocations.isNotEmpty) {
-        b.writeln('Collocations: ${e.collocations.join(', ')}');
+      if (p.collocations.isNotEmpty) {
+        b.writeln('Collocations: ${p.collocations.join(', ')}');
       }
-      if (e.examNote != null && e.examNote!.isNotEmpty) {
-        b.writeln('Exam note: ${e.examNote}');
+      if (p.examNote != null && p.examNote!.isNotEmpty) {
+        b.writeln('Exam note: ${p.examNote}');
       }
     }
     return b.toString().trim();
@@ -209,6 +209,7 @@ class _ProfileView extends StatelessWidget {
         _OfflineStatusBadge(
           wordLower: profile.wordLower,
           hasCuratedUrdu: hasCuratedUrdu,
+          aiAvailable: profile.ai != null,
         ),
         const SizedBox(height: 12),
 
@@ -222,6 +223,7 @@ class _ProfileView extends StatelessWidget {
               _UrduBlock(
                 wordLower: profile.wordLower,
                 curated: e?.urduMeanings ?? const <String>[],
+                aiMeanings: profile.ai?.urduMeanings ?? const <String>[],
               ),
               if (profile.englishDefinition != null) ...<Widget>[
                 const SizedBox(height: 12),
@@ -249,18 +251,18 @@ class _ProfileView extends StatelessWidget {
           ),
 
         // 4) Synonyms & Antonyms.
-        if (e != null && (e.synonyms.isNotEmpty || e.antonyms.isNotEmpty))
+        if (profile.synonyms.isNotEmpty || profile.antonyms.isNotEmpty)
           _Section(
             icon: Icons.swap_horiz,
             title: 'Synonyms & Antonyms',
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
-                if (e.synonyms.isNotEmpty)
-                  _ChipGroup(label: 'Synonyms', items: e.synonyms),
-                if (e.antonyms.isNotEmpty) ...<Widget>[
+                if (profile.synonyms.isNotEmpty)
+                  _ChipGroup(label: 'Synonyms', items: profile.synonyms),
+                if (profile.antonyms.isNotEmpty) ...<Widget>[
                   const SizedBox(height: 12),
-                  _ChipGroup(label: 'Antonyms', items: e.antonyms, tonal: false),
+                  _ChipGroup(label: 'Antonyms', items: profile.antonyms, tonal: false),
                 ],
               ],
             ),
@@ -272,11 +274,11 @@ class _ProfileView extends StatelessWidget {
           _UsageSection(word: profile.displayWord, usage: usage),
 
         // 6) Common Collocations.
-        if (e != null && e.collocations.isNotEmpty)
+        if (profile.collocations.isNotEmpty)
           _Section(
             icon: Icons.link,
             title: 'Common Collocations',
-            child: _ChipGroup(label: '', items: e.collocations),
+            child: _ChipGroup(label: '', items: profile.collocations),
           ),
 
         // 7) Word Forms / Related Words (merged, family only).
@@ -306,12 +308,12 @@ class _ProfileView extends StatelessWidget {
           ),
 
         // 9) Exam Note.
-        if (e != null && e.examNote != null && e.examNote!.isNotEmpty)
+        if (profile.examNote != null && profile.examNote!.isNotEmpty)
           _Section(
             icon: Icons.lightbulb_outline,
             title: 'Exam Note',
             accent: theme.colorScheme.tertiary,
-            child: Text(e.examNote!,
+            child: Text(profile.examNote!,
                 style: theme.textTheme.bodyLarge?.copyWith(height: 1.4)),
           ),
 
@@ -342,10 +344,14 @@ class _ProfileView extends StatelessWidget {
     if (curated != null) return curated;
 
     final String? example = profile.base?.primary?.exampleSentence;
-    if (example == null || example.trim().isEmpty) return null;
+    final String? aiExample = profile.ai?.exampleSentence;
+    final String? selected = aiExample?.trim().isNotEmpty == true
+        ? aiExample
+        : example;
+    if (selected == null || selected.trim().isEmpty) return null;
     return validatedUsage(
       profile.wordLower,
-      WordUsage(context: 'Usage', english: example.trim(), urdu: ''),
+      WordUsage(context: aiExample != null ? 'AI example' : 'Usage', english: selected.trim(), urdu: ''),
     );
   }
 
@@ -472,10 +478,12 @@ class _OfflineStatusBadge extends ConsumerWidget {
   const _OfflineStatusBadge({
     required this.wordLower,
     required this.hasCuratedUrdu,
+    required this.aiAvailable,
   });
 
   final String wordLower;
   final bool hasCuratedUrdu;
+  final bool aiAvailable;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -490,10 +498,14 @@ class _OfflineStatusBadge extends ConsumerWidget {
           );
     }
     final ThemeData theme = Theme.of(context);
-    final Color bg = online
+    final Color bg = aiAvailable
+        ? theme.colorScheme.tertiaryContainer
+        : online
         ? theme.colorScheme.tertiaryContainer
         : theme.colorScheme.secondaryContainer;
-    final Color fg = online
+    final Color fg = aiAvailable
+        ? theme.colorScheme.onTertiaryContainer
+        : online
         ? theme.colorScheme.onTertiaryContainer
         : theme.colorScheme.onSecondaryContainer;
     return Align(
@@ -505,7 +517,11 @@ class _OfflineStatusBadge extends ConsumerWidget {
           borderRadius: BorderRadius.circular(20),
         ),
         child: Text(
-          online ? '🌐 Retrieved Online • Saved Offline' : '🟢 Available Offline',
+          aiAvailable
+              ? '✨ AI-enhanced • Offline fallback ready'
+              : online
+                  ? '🌐 Retrieved Online • Saved Offline'
+                  : '🟢 Available Offline',
           style: theme.textTheme.labelMedium
               ?.copyWith(color: fg, fontWeight: FontWeight.w600),
         ),
@@ -517,15 +533,19 @@ class _OfflineStatusBadge extends ConsumerWidget {
 /// Renders the Urdu meaning(s): the curated ordered list when available, else
 /// the hybrid (offline-first, cached online fallback) result.
 class _UrduBlock extends ConsumerWidget {
-  const _UrduBlock({required this.wordLower, required this.curated});
+  const _UrduBlock({required this.wordLower, required this.curated, required this.aiMeanings});
 
   final String wordLower;
   final List<String> curated;
+  final List<String> aiMeanings;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     if (curated.isNotEmpty) {
       return _urduList(context, curated);
+    }
+    if (aiMeanings.isNotEmpty) {
+      return _urduList(context, aiMeanings);
     }
     final AsyncValue<TranslationOutcome> async =
         ref.watch(hybridTranslationProvider((word: wordLower, lang: 'ur')));

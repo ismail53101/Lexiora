@@ -5,6 +5,7 @@ import 'package:lexiora/core/usecase/usecase.dart';
 import 'package:lexiora/core/utils/result.dart';
 import 'package:lexiora/modules/dictionary/data/dictionary_seeder.dart';
 import 'package:lexiora/modules/dictionary/data/exam_words_seeder.dart';
+import 'package:lexiora/modules/dictionary/data/services/ai_dictionary_service.dart';
 import 'package:lexiora/modules/dictionary/domain/entities/dictionary_entry.dart';
 import 'package:lexiora/modules/dictionary/domain/entities/word_profile.dart';
 import 'package:lexiora/modules/dictionary/domain/repositories/dictionary_repository.dart';
@@ -90,7 +91,10 @@ final Provider<ExamWordsSeeder> examWordsSeederProvider =
 
 final Provider<GetWordProfile> getWordProfileProvider =
     Provider<GetWordProfile>(
-  (Ref ref) => GetWordProfile(ref.watch(dictionaryRepositoryProvider)),
+  (Ref ref) => GetWordProfile(
+    ref.watch(dictionaryRepositoryProvider),
+    sl<AiDictionaryService>(),
+  ),
 );
 
 /// Aggregated, offline word profile: curated exam data + base senses + derived

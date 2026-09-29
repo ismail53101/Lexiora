@@ -13,6 +13,7 @@ import 'package:lexiora/modules/ai_assistant/data/services/openai_compatible_cha
 import 'package:lexiora/modules/ai_assistant/domain/repositories/ai_repository.dart';
 import 'package:lexiora/modules/ai_assistant/domain/services/ai_chat_service.dart';
 import 'package:lexiora/modules/ai_assistant/presentation/pages/ai_chat_page.dart';
+import 'package:lexiora/modules/dictionary/data/services/ai_dictionary_service.dart';
 
 /// Phase v0.10.0 — the AI Assistant.
 ///
@@ -36,6 +37,12 @@ class AiAssistantModule extends FeatureModule {
       ..registerLazySingleton<AiConfig>(AiConfig.fromEnvironment)
       ..registerLazySingleton<AiApiClient>(
         () => AiApiClient(getIt<AiConfig>()),
+      )
+      ..registerLazySingleton<AiDictionaryService>(
+        () => AiDictionaryService(
+          getIt<AiApiClient>(),
+          getIt<AiConfig>(),
+        ),
       )
       ..registerLazySingleton<AiChatService>(
         () => OpenAiCompatibleChatService(
