@@ -1,5 +1,3 @@
-import 'dart:io';
-
 import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
 import 'package:lexiora/core/services/browser_pdf_picker.dart';
@@ -31,14 +29,16 @@ class PdfImportService {
   /// method-channel callback (cold-start path).
   Future<DeviceFile?> takeInitialIncomingPdf() async {
     if (kIsWeb) return null;
-    if (!Platform.isAndroid) return null;
+    if (defaultTargetPlatform != TargetPlatform.android) return null;
     final Object? raw = await _channel.invokeMethod<Object?>('takeIncomingPdf');
     return _parseDeviceFile(raw);
   }
 
   Future<List<DeviceFile>> pickAndImport() async {
     if (kIsWeb) return pickBrowserPdfs();
-    if (!Platform.isAndroid) return const <DeviceFile>[];
+    if (defaultTargetPlatform != TargetPlatform.android) {
+      return const <DeviceFile>[];
+    }
     final List<Object?>? raw =
         await _channel.invokeMethod<List<Object?>>('pickPdfs');
     if (raw == null) return const <DeviceFile>[];

@@ -1,5 +1,4 @@
-import 'dart:io';
-
+import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
 
 /// Toggles the Android "keep screen on" window flag (via the native
@@ -11,7 +10,7 @@ class ScreenWakeService {
   static const MethodChannel _channel = MethodChannel('lexiora/platform');
 
   Future<void> setKeepScreenOn(bool on) async {
-    if (!Platform.isAndroid) return;
+    if (kIsWeb || defaultTargetPlatform != TargetPlatform.android) return;
     try {
       await _channel.invokeMethod<void>('setKeepScreenOn', <String, Object?>{
         'on': on,

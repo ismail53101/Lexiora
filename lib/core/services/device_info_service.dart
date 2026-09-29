@@ -1,5 +1,4 @@
-import 'dart:io';
-
+import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
 
 /// Reports the Android API level (via the native `lexiora/platform` channel) so
@@ -12,7 +11,7 @@ class DeviceInfoService {
 
   /// The Android SDK/API level (e.g. 34 for Android 14). Returns 0 off-Android.
   Future<int> androidSdkInt() async {
-    if (!Platform.isAndroid) return 0;
+    if (kIsWeb || defaultTargetPlatform != TargetPlatform.android) return 0;
     return _cachedSdkInt ??=
         (await _channel.invokeMethod<int>('getSdkInt')) ?? 0;
   }

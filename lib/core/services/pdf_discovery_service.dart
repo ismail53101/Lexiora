@@ -1,5 +1,4 @@
-import 'dart:io';
-
+import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
 
 /// A PDF found by walking the device filesystem (with all-files access),
@@ -30,7 +29,7 @@ class PdfDiscoveryService {
   /// True when the app currently has all-files access (always true below
   /// API 30, where broad read access is covered by the storage permission).
   Future<bool> hasFullAccess() async {
-    if (!Platform.isAndroid) return true;
+    if (kIsWeb || defaultTargetPlatform != TargetPlatform.android) return true;
     return (await _channel.invokeMethod<bool>('isExternalStorageManager')) ??
         false;
   }
@@ -38,7 +37,9 @@ class PdfDiscoveryService {
   /// Walks the shared-storage volumes for PDFs (requires all-files access).
   /// Each file is referenced by absolute path; nothing is copied.
   Future<List<DeviceFile>> scanAll() async {
-    if (!Platform.isAndroid) return const <DeviceFile>[];
+    if (kIsWeb || defaultTargetPlatform != TargetPlatform.android) {
+      return const <DeviceFile>[];
+    }
     final List<Object?>? raw =
         await _channel.invokeMethod<List<Object?>>('scanAllPdfs');
     if (raw == null) return const <DeviceFile>[];

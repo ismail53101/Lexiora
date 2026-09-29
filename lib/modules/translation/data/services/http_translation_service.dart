@@ -1,12 +1,12 @@
 import 'dart:convert';
-import 'dart:io';
 
+import 'package:http/http.dart' as http;
 import 'package:lexiora/core/constants/db_constants.dart';
 import 'package:lexiora/modules/translation/domain/services/remote_translation_service.dart';
 
 /// Default [RemoteTranslationService] backed by a configurable HTTP endpoint
 /// (Google Translate's keyless web endpoint by default — free, no API key),
-/// using `dart:io` so no extra package dependency is required.
+/// using the cross-platform `http` package.
 ///
 /// The response parsing is isolated in the pure, static [parseTranslation] so it
 /// can be unit-tested without any network access. Both the Google Translate and
@@ -16,14 +16,14 @@ class HttpTranslationService implements RemoteTranslationService {
   HttpTranslationService({
     String? endpoint,
     Duration? timeout,
-    HttpClient? client,
+    http.Client? client,
   })  : _endpoint = endpoint ?? TranslationConstants.remoteEndpoint,
         _timeout = timeout ?? TranslationConstants.remoteTimeout,
-        _client = client ?? HttpClient();
+        _client = client ?? http.Client();
 
   final String _endpoint;
   final Duration _timeout;
-  final HttpClient _client;
+  final http.Client _client;
 
   @override
   String get providerName => TranslationConstants.remoteProviderName;
@@ -42,16 +42,13 @@ class HttpTranslationService implements RemoteTranslationService {
       targetLanguageCode: targetLanguageCode,
     );
 
-    final HttpClientRequest request = await _client.getUrl(uri).timeout(_timeout);
-    final HttpClientResponse response = await request.close().timeout(_timeout);
-    if (response.statusCode != HttpStatus.ok) {
-      throw HttpException(
+    final http.Response response = await _client.get(uri).timeout(_timeout);
+    if (response.statusCode != 200) {
+      throw TranslationHttpException(
         'Translation provider returned HTTP ${response.statusCode}',
-        uri: uri,
       );
     }
-    final String body =
-        await response.transform(utf8.decoder).join().timeout(_timeout);
+    final String body = response.body;
     final String? parsed = parseTranslation(body);
     if (parsed != null) return parsed;
 
@@ -62,9 +59,8 @@ class HttpTranslationService implements RemoteTranslationService {
     if (decoded is Map<String, dynamic>) {
       final Object? responseStatus = decoded['responseStatus'];
       if (responseStatus is num && responseStatus != 200) {
-        throw HttpException(
+        throw TranslationHttpException(
           'Translation provider returned responseStatus $responseStatus',
-          uri: uri,
         );
       }
       final Object? responseData = decoded['responseData'];
@@ -170,4 +166,13 @@ class HttpTranslationService implements RemoteTranslationService {
     }
     return trimmed;
   }
+}
+
+class TranslationHttpException implements Exception {
+  const TranslationHttpException(this.message);
+
+  final String message;
+
+  @override
+  String toString() => message;
 }

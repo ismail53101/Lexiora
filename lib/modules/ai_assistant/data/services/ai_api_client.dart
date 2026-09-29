@@ -1,7 +1,7 @@
 import 'dart:async';
 import 'dart:convert';
-import 'dart:io';
 
+import 'package:http/http.dart' as http;
 import 'package:lexiora/core/constants/db_constants.dart';
 import 'package:lexiora/modules/ai_assistant/config/ai_config.dart';
 import 'package:lexiora/modules/ai_assistant/domain/entities/ai_chat.dart';
@@ -9,8 +9,7 @@ import 'package:lexiora/modules/ai_assistant/domain/entities/ai_failure.dart';
 
 /// Low-level HTTP transport for the OpenAI-compatible provider.
 ///
-/// Uses `dart:io` [HttpClient] (matching the codebase's zero-extra-dependency
-/// HTTP approach) which natively supports Server-Sent Events streaming and
+/// Uses the cross-platform [http.Client] for Server-Sent Events streaming and
 /// mid-stream cancellation. The API key is attached to the Authorization header
 /// but is NEVER printed, logged, or included in any error/toString output.
 class AiApiClient {
@@ -26,47 +25,43 @@ class AiApiClient {
   }) async* {
     if (!_config.isConfigured) throw AiFailure.notConfigured;
 
-    final HttpClient client = HttpClient()
-      ..connectionTimeout = AiConstants.connectTimeout;
+    final http.Client client = http.Client();
     cancel?.attach(() {
       try {
-        client.close(force: true);
+        client.close();
       } catch (_) {/* already closing */}
     });
 
-    HttpClientResponse response;
+    http.StreamedResponse response;
     try {
-      final HttpClientRequest req = await client
-          .postUrl(_config.chatCompletionsUri)
-          .timeout(AiConstants.connectTimeout);
-      req.headers
-        ..set(HttpHeaders.contentTypeHeader, 'application/json')
-        ..set(HttpHeaders.acceptHeader, 'text/event-stream')
-        ..set(HttpHeaders.authorizationHeader, 'Bearer ${_config.apiKey}')
-        ..set('X-AI-Provider', _config.provider.wireValue);
-      req.add(utf8.encode(jsonEncode(body)));
-      response = await req.close().timeout(AiConstants.idleTimeout);
-    } on SocketException {
-      client.close(force: true);
+      final http.Request req = http.Request('POST', _config.chatCompletionsUri)
+        ..headers.addAll(<String, String>{
+          'Content-Type': 'application/json',
+          'Accept': 'text/event-stream',
+          'Authorization': 'Bearer ${_config.apiKey}',
+          'X-AI-Provider': _config.provider.wireValue,
+        })
+        ..body = jsonEncode(body);
+      response = await client.send(req).timeout(AiConstants.idleTimeout);
+    } on http.ClientException {
+      client.close();
       throw AiFailure.network;
     } on TimeoutException {
-      client.close(force: true);
+      client.close();
       throw AiFailure.timeout;
-    } on HttpException {
-      client.close(force: true);
-      throw AiFailure.network;
     }
 
-    if (response.statusCode != HttpStatus.ok) {
+    if (response.statusCode != 200) {
       final int code = response.statusCode;
-      await response.drain<void>().catchError((_) {});
-      client.close(force: true);
+      await response.stream.drain<void>().catchError((_) {});
+      client.close();
       throw AiFailure.fromStatus(code);
     }
 
     try {
-      final Stream<String> lines =
-          response.transform(utf8.decoder).transform(const LineSplitter());
+      final Stream<String> lines = response.stream
+          .transform(utf8.decoder)
+          .transform(const LineSplitter());
       await for (final String line in lines) {
         if (cancel?.isCancelled ?? false) return;
         final String trimmed = line.trim();
@@ -76,10 +71,10 @@ class AiApiClient {
         yield payload;
       }
     } on Object {
-      if (cancel?.isCancelled ?? false) return; // forced-close during abort
+      if (cancel?.isCancelled ?? false) return;
       throw AiFailure.network;
     } finally {
-      client.close(force: true);
+      client.close();
     }
   }
 
@@ -90,31 +85,25 @@ class AiApiClient {
   }) async {
     if (!_config.isConfigured) throw AiFailure.notConfigured;
 
-    final HttpClient client = HttpClient()
-      ..connectionTimeout = AiConstants.connectTimeout;
+    final http.Client client = http.Client();
     cancel?.attach(() {
       try {
-        client.close(force: true);
+        client.close();
       } catch (_) {}
     });
 
     try {
-      final HttpClientRequest req = await client
-          .postUrl(_config.chatCompletionsUri)
-          .timeout(AiConstants.connectTimeout);
-      req.headers
-        ..set(HttpHeaders.contentTypeHeader, 'application/json')
-        ..set(HttpHeaders.authorizationHeader, 'Bearer ${_config.apiKey}')
-        ..set('X-AI-Provider', _config.provider.wireValue);
-      req.add(utf8.encode(jsonEncode(body)));
-      final HttpClientResponse response =
-          await req.close().timeout(AiConstants.idleTimeout);
-
-      final String raw = await response
-          .transform(utf8.decoder)
-          .join()
-          .timeout(AiConstants.idleTimeout);
-      if (response.statusCode != HttpStatus.ok) {
+      final http.Response response = await client.post(
+        _config.chatCompletionsUri,
+        headers: <String, String>{
+          'Content-Type': 'application/json',
+          'Authorization': 'Bearer ${_config.apiKey}',
+          'X-AI-Provider': _config.provider.wireValue,
+        },
+        body: jsonEncode(body),
+      ).timeout(AiConstants.idleTimeout);
+      final String raw = response.body;
+      if (response.statusCode != 200) {
         throw AiFailure.fromStatus(response.statusCode);
       }
       final Object? decoded = jsonDecode(raw);
@@ -122,14 +111,12 @@ class AiApiClient {
       return decoded;
     } on FormatException {
       throw AiFailure.malformed;
-    } on SocketException {
+    } on http.ClientException {
       throw AiFailure.network;
     } on TimeoutException {
       throw AiFailure.timeout;
-    } on HttpException {
-      throw AiFailure.network;
     } finally {
-      client.close(force: true);
+      client.close();
     }
   }
 }

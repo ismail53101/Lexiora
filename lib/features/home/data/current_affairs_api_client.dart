@@ -1,6 +1,6 @@
 import 'dart:convert';
-import 'dart:io';
 
+import 'package:http/http.dart' as http;
 import 'package:lexiora/features/home/config/current_affairs_config.dart';
 import 'package:lexiora/features/home/domain/entities/current_affairs_feed.dart';
 
@@ -14,23 +14,17 @@ class CurrentAffairsApiClient {
       throw const CurrentAffairsUnavailableException();
     }
 
-    final HttpClient client = HttpClient()
-      ..connectionTimeout = const Duration(seconds: 10);
+    final http.Client client = http.Client();
     try {
-      final HttpClientRequest request =
-          await client.getUrl(_config.latestUri).timeout(
-                const Duration(seconds: 10),
-              );
-      request.headers
-        ..set(HttpHeaders.acceptHeader, 'application/json')
-        ..set(HttpHeaders.userAgentHeader, 'Sapiora/Current-Affairs');
-      final HttpClientResponse response =
-          await request.close().timeout(const Duration(seconds: 15));
-      final String raw = await response
-          .transform(utf8.decoder)
-          .join()
-          .timeout(const Duration(seconds: 15));
-      if (response.statusCode != HttpStatus.ok) {
+      final http.Response response = await client.get(
+        _config.latestUri,
+        headers: const <String, String>{
+          'Accept': 'application/json',
+          'User-Agent': 'Sapiora/Current-Affairs',
+        },
+      ).timeout(const Duration(seconds: 15));
+      final String raw = response.body;
+      if (response.statusCode != 200) {
         throw CurrentAffairsUnavailableException(
           'Current Affairs API returned HTTP ${response.statusCode}.',
         );
@@ -47,7 +41,7 @@ class CurrentAffairsApiClient {
     } on Object catch (error) {
       throw CurrentAffairsUnavailableException(error.toString());
     } finally {
-      client.close(force: true);
+      client.close();
     }
   }
 }

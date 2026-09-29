@@ -1,5 +1,4 @@
-import 'dart:io';
-
+import 'package:flutter/foundation.dart';
 import 'package:lexiora/core/services/device_info_service.dart';
 import 'package:permission_handler/permission_handler.dart';
 
@@ -24,7 +23,9 @@ class PermissionService {
   }
 
   Future<StorageAccessStatus> requestForDiscovery() async {
-    if (!Platform.isAndroid) return StorageAccessStatus.granted;
+    if (kIsWeb || defaultTargetPlatform != TargetPlatform.android) {
+      return StorageAccessStatus.granted;
+    }
     final PermissionStatus status = await (await _permission()).request();
     if (status.isGranted) return StorageAccessStatus.granted;
     if (status.isPermanentlyDenied) return StorageAccessStatus.permanentlyDenied;
@@ -32,7 +33,7 @@ class PermissionService {
   }
 
   Future<bool> isGrantedForDiscovery() async {
-    if (!Platform.isAndroid) return true;
+    if (kIsWeb || defaultTargetPlatform != TargetPlatform.android) return true;
     return (await (await _permission()).status).isGranted;
   }
 

@@ -1,22 +1,24 @@
-import 'dart:io';
+import 'package:http/http.dart' as http;
 
 /// Abstraction over "is the device online right now?".
 ///
-/// Kept as an interface so the online-fallback logic depends on a contract, not
-/// on `dart:io`, and can be faked in tests.
+/// Kept as an interface so the online-fallback logic depends on a contract and
+/// can be faked in tests.
 abstract interface class ConnectivityService {
   /// Returns true when the device appears to have working internet access.
   Future<bool> hasConnection();
 }
 
-/// Default [ConnectivityService] backed by a lightweight DNS lookup.
+/// Default [ConnectivityService] backed by lightweight HTTP probes.
 ///
-/// A successful lookup of a well-known host is a cheap, dependency-free signal
-/// that the device is online (it avoids pulling in a platform plugin). Any
-/// failure — no DNS, timeout, airplane mode — is treated as "offline".
+/// Any response from a well-known host is treated as online; failures are
+/// treated as offline. This works in browsers as well as on Android.
 class NetworkConnectivityService implements ConnectivityService {
   const NetworkConnectivityService({
-    this.probeHosts = const <String>['one.one.one.one', 'example.com'],
+    this.probeHosts = const <String>[
+      'https://one.one.one.one',
+      'https://example.com',
+    ],
     this.timeout = const Duration(seconds: 4),
   });
 
@@ -25,17 +27,20 @@ class NetworkConnectivityService implements ConnectivityService {
 
   @override
   Future<bool> hasConnection() async {
-    for (final String host in probeHosts) {
-      try {
-        final List<InternetAddress> result =
-            await InternetAddress.lookup(host).timeout(timeout);
-        if (result.isNotEmpty && result.first.rawAddress.isNotEmpty) {
-          return true;
+    final http.Client client = http.Client();
+    try {
+      for (final String host in probeHosts) {
+        try {
+          final http.Response response =
+              await client.head(Uri.parse(host)).timeout(timeout);
+          if (response.statusCode > 0) return true;
+        } on Object {
+          // Try the next host; if all fail we report offline.
         }
-      } on Object {
-        // Try the next host; if all fail we report offline.
       }
+      return false;
+    } finally {
+      client.close();
     }
-    return false;
   }
 }

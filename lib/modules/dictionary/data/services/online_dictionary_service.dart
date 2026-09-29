@@ -1,6 +1,6 @@
 import 'dart:convert';
-import 'dart:io';
 
+import 'package:http/http.dart' as http;
 import 'package:lexiora/modules/dictionary/data/services/definition_sense.dart';
 
 /// A single online English definition — just enough to display in the
@@ -14,21 +14,21 @@ class OnlineDefinition {
 
 /// Fetches an English definition from the free, keyless Free Dictionary API
 /// (https://dictionaryapi.dev) — mirrors [HttpTranslationService]'s pattern
-/// (plain `dart:io` HTTP, no extra package, a pure/testable response parser)
+/// (cross-platform HTTP, with a pure/testable response parser)
 /// so the app's two "online, free, no API key" fallbacks — Urdu translation
 /// and English definitions — work the same way and fail the same way: any
 /// error (offline, timeout, word not found) simply yields `null`, and the
 /// caller falls back to not showing that section rather than an error.
 class OnlineDictionaryService {
-  OnlineDictionaryService({Duration? timeout, HttpClient? client})
+  OnlineDictionaryService({Duration? timeout, http.Client? client})
       : _timeout = timeout ?? const Duration(seconds: 8),
-        _client = client ?? HttpClient();
+        _client = client ?? http.Client();
 
   static const String _baseUrl =
       'https://api.dictionaryapi.dev/api/v2/entries/en';
 
   final Duration _timeout;
-  final HttpClient _client;
+  final http.Client _client;
 
   Future<OnlineDefinition?> define(String word) async {
     final String q = word.trim();
@@ -36,17 +36,12 @@ class OnlineDictionaryService {
 
     try {
       final Uri uri = Uri.parse('$_baseUrl/${Uri.encodeComponent(q)}');
-      final HttpClientRequest request =
-          await _client.getUrl(uri).timeout(_timeout);
-      final HttpClientResponse response =
-          await request.close().timeout(_timeout);
-      if (response.statusCode != HttpStatus.ok) {
+      final http.Response response = await _client.get(uri).timeout(_timeout);
+      if (response.statusCode != 200) {
         // 404 means "not an English word we know" — not an error to log.
         return null;
       }
-      final String body =
-          await response.transform(utf8.decoder).join().timeout(_timeout);
-      return parseDefinition(body);
+      return parseDefinition(response.body);
     } on Object {
       // Offline, timed out, malformed response, ... — no English meaning
       // available right now is a normal, silent outcome, not a crash.

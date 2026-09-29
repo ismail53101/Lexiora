@@ -1,8 +1,8 @@
 import 'dart:async';
 import 'dart:convert';
-import 'dart:io' show gzip;
 import 'dart:math' as math;
 
+import 'package:archive/archive.dart';
 import 'package:drift/drift.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart' show AssetBundle, ByteData, rootBundle;
@@ -106,8 +106,8 @@ class DictionarySeeder {
       final List<DictionaryEntriesCompanion> batch =
           <DictionaryEntriesCompanion>[];
 
-      final Stream<String> lines = _chunk(bytes)
-          .transform(gzip.decoder)
+      final List<int> decompressed = GZipDecoder().decodeBytes(bytes);
+      final Stream<String> lines = Stream<List<int>>.value(decompressed)
           .transform(utf8.decoder)
           .transform(const LineSplitter());
 
