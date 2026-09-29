@@ -5,6 +5,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart' show AssetBundle, AssetManifest, rootBundle;
 import 'package:lexiora/core/constants/db_constants.dart';
 import 'package:lexiora/core/database/app_database.dart';
+import 'package:lexiora/core/utils/content_signature.dart';
 import 'package:lexiora/core/utils/logger.dart';
 import 'package:lexiora/modules/dictionary/data/datasources/dictionary_local_data_source.dart';
 
@@ -215,22 +216,9 @@ class ExamWordsSeeder {
   /// every pack's path and bytes. Any pack added/removed/edited changes it.
   String _versionFor(Map<String, String> packs) {
     final List<String> keys = packs.keys.toList()..sort();
-    int hash = 0xcbf29ce484222325; // 64-bit FNV-1a offset basis
-    const int prime = 0x100000001b3;
-    void mix(String s) {
-      for (final int b in utf8.encode(s)) {
-        hash ^= b;
-        hash = (hash * prime) & 0xFFFFFFFFFFFFFFFF;
-      }
-    }
-
-    for (final String k in keys) {
-      mix(k);
-      mix(' ');
-      mix(packs[k]!);
-      mix('');
-    }
-    final String sig = hash.toUnsigned(64).toRadixString(16);
+    final String sig = contentSignature(<String>[
+      for (final String key in keys) ...<String>[key, '\u0000', packs[key]!, '\u0001'],
+    ]);
     return '${ExamDictionaryConstants.datasetVersion}#packs-${keys.length}-$sig';
   }
 }
