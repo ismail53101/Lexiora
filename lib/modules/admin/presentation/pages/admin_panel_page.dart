@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:lexiora/app/router/app_routes.dart';
+import 'package:lexiora/core/services/share_bytes.dart' as platform_share;
 import 'package:lexiora/core/utils/result.dart';
 import 'package:lexiora/core/widgets/empty_state.dart';
 import 'package:lexiora/features/library/domain/entities/library_document.dart';
@@ -11,7 +12,6 @@ import 'package:lexiora/modules/admin/data/services/admin_content_service.dart';
 import 'package:lexiora/modules/admin/domain/entities/admin_link.dart';
 import 'package:lexiora/modules/admin/domain/entities/admin_note.dart';
 import 'package:lexiora/modules/admin/presentation/providers/admin_providers.dart';
-import 'package:share_plus/share_plus.dart';
 import 'package:uuid/uuid.dart';
 
 enum _ItemType { pdf, link, note }
@@ -171,14 +171,17 @@ class AdminPanelPage extends ConsumerWidget {
       const SnackBar(content: Text('Building export…')),
     );
     try {
-      final String path =
+      final List<int> bytes =
           await ref.read(adminExportServiceProvider).exportToZip();
       messenger.hideCurrentSnackBar();
-      await SharePlus.instance.share(
-        ShareParams(
-          files: <XFile>[XFile(path)],
-          text: 'Sapiora Admin export — content to fold into the next release.',
-        ),
+      final String stamp = DateTime.now()
+          .toIso8601String()
+          .replaceAll(RegExp(r'[^0-9]'), '')
+          .substring(0, 14);
+      await platform_share.shareBytes(
+        bytes,
+        'sapiora-admin-export-$stamp.zip',
+        'application/zip',
       );
     } on Object catch (e) {
       messenger.hideCurrentSnackBar();

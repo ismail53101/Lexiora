@@ -1,10 +1,11 @@
 import 'dart:async';
-import 'dart:io';
 
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_tts/flutter_tts.dart';
-import 'package:path_provider/path_provider.dart';
+import 'package:lexiora/core/services/browser_pdf_store.dart';
+import 'package:lexiora/core/services/share_bytes.dart' as platform_share;
 // PdfDocument/PdfPage exist in BOTH packages below (one is for reading an
 // existing PDF's text, the other for building a new PDF) — hidden from the
 // `pdf` package so pdfrx's versions (the ones actually used for reading)
@@ -15,7 +16,6 @@ import 'package:pdfrx/pdfrx.dart';
 // XFile itself comes from share_plus's own re-export of cross_file — no
 // separate cross_file import needed (and the analyzer flags it as
 // unnecessary if you add one).
-import 'package:share_plus/share_plus.dart';
 
 /// Pulls the plain text out of an existing PDF (e.g. one the user attaches
 /// to ask the assistant about) using the same `pdfrx` per-page text loader
@@ -34,7 +34,12 @@ Future<String?> extractPdfPlainText(
 }) async {
   PdfDocument? document;
   try {
-    document = await PdfDocument.openFile(filePath);
+    final String source = kIsWeb
+        ? await resolveBrowserPdf(filePath)
+        : filePath;
+    document = kIsWeb
+        ? await PdfDocument.openUri(Uri.parse(source))
+        : await PdfDocument.openFile(source);
     final List<String> pageSections = <String>[];
     for (int index = 0; index < document.pages.length; index++) {
       final PdfPage page = document.pages[index];
@@ -467,14 +472,12 @@ Future<void> exportMessageAsPdf(
       ),
     );
 
-    final Directory dir = await getTemporaryDirectory();
-    final String path =
-        '${dir.path}/sapiora-reply-${DateTime.now().millisecondsSinceEpoch}.pdf';
-    final File file = File(path);
-    await file.writeAsBytes(await doc.save());
-
-    await SharePlus.instance.share(
-      ShareParams(files: <XFile>[XFile(path)], text: title),
+    final String filename =
+        'sapiora-reply-${DateTime.now().millisecondsSinceEpoch}.pdf';
+    await platform_share.shareBytes(
+      await doc.save(),
+      filename,
+      'application/pdf',
     );
   } on Object catch (e, st) {
     // Logged for `flutter run`/`adb logcat` visibility, and shown in the

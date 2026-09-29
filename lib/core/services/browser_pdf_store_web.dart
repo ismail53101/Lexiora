@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'dart:html' as html;
+import 'dart:typed_data';
 // Flutter's Web compiler provides this platform library; the non-Web analyzer
 // does not index it even though this file is selected only for Web builds.
 // ignore: uri_does_not_exist
@@ -52,6 +53,24 @@ Future<String> resolveBrowserPdf(String path) async {
   final String url = html.Url.createObjectUrl(blob);
   _objectUrls[id] = url;
   return url;
+}
+
+Future<List<int>> readBrowserPdfBytes(String path) async {
+  if (!path.startsWith(_pathPrefix)) {
+    throw StateError('Not a browser-managed PDF path.');
+  }
+  final String id = path.substring(_pathPrefix.length);
+  final idb.Database database = await _openDatabase();
+  final idb.Transaction transaction = database.transaction(_storeName, 'readonly');
+  final html.Blob? blob =
+      await transaction.objectStore(_storeName).getObject(id) as html.Blob?;
+  await transaction.onComplete.first;
+  database.close();
+  if (blob == null) throw StateError('Saved PDF is no longer available.');
+  final html.FileReader reader = html.FileReader();
+  reader.readAsArrayBuffer(blob);
+  await reader.onLoad.first;
+  return (reader.result as ByteBuffer).asUint8List();
 }
 
 Future<void> deleteBrowserPdf(String path) async {

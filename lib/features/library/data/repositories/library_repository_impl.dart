@@ -1,8 +1,7 @@
-import 'dart:io';
-
 import 'package:drift/drift.dart';
 import 'package:lexiora/core/database/app_database.dart';
 import 'package:lexiora/core/services/browser_pdf_store.dart';
+import 'package:lexiora/core/utils/local_file.dart';
 import 'package:lexiora/core/utils/logger.dart';
 import 'package:lexiora/features/library/domain/entities/category.dart';
 import 'package:lexiora/features/library/domain/entities/library_document.dart';
@@ -178,8 +177,9 @@ class LibraryRepositoryImpl implements LibraryRepository {
         if (row.filePath.startsWith('sapiora-web-pdf:')) {
           await deleteBrowserPdf(row.filePath);
         } else {
-          final File file = File(row.filePath);
-          if (file.existsSync()) file.deleteSync();
+          if (await localFileExists(row.filePath)) {
+            await deleteLocalFile(row.filePath);
+          }
         }
       } on Object catch (e) {
         AppLogger.w('Could not delete managed file ${row.filePath}: $e');
