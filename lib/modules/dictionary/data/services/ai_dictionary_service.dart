@@ -12,16 +12,32 @@ class AiDictionaryService {
   final AiApiClient _client;
   final AiConfig _config;
 
-  Future<AiWordProfile?> define(String word) async {
+  Future<AiWordProfile?> define(
+    String word, {
+    List<String> missingFields = const <String>[],
+  }) async {
     final String query = word.trim();
     if (query.isEmpty || !_config.isConfigured) return null;
 
     try {
+      final List<String> fields = missingFields.isEmpty
+          ? const <String>[
+              'englishDefinition',
+              'urduMeanings',
+              'partOfSpeech',
+              'synonyms',
+              'antonyms',
+              'exampleSentence',
+              'collocations',
+              'examNote',
+            ]
+          : missingFields;
       final Map<String, dynamic> response = await _client.postJson(<String, dynamic>{
         'model': _config.model,
         'provider': _config.provider.wireValue,
         'stream': false,
         'temperature': 0.1,
+        'max_tokens': 350,
         'messages': <Map<String, String>>[
           <String, String>{
             'role': 'system',
@@ -29,7 +45,7 @@ class AiDictionaryService {
           },
           <String, String>{
             'role': 'user',
-            'content': 'Create the dictionary profile for the English word "$query". Confirm that the returned word is the same headword.',
+            'content': 'Create the dictionary profile for the English word "$query". Fill these missing fields: ${fields.join(', ')}. Return empty values for all other fields. Confirm that the returned word is the same headword.',
           },
         ],
       });

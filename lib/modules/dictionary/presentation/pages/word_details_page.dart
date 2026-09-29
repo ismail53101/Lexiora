@@ -345,13 +345,11 @@ class _ProfileView extends StatelessWidget {
 
     final String? example = profile.base?.primary?.exampleSentence;
     final String? aiExample = profile.ai?.exampleSentence;
-    final String? selected = aiExample?.trim().isNotEmpty == true
-        ? aiExample
-        : example;
+    final String? selected = example?.trim().isNotEmpty == true ? example : aiExample;
     if (selected == null || selected.trim().isEmpty) return null;
     return validatedUsage(
       profile.wordLower,
-      WordUsage(context: aiExample != null ? 'AI example' : 'Usage', english: selected.trim(), urdu: ''),
+      WordUsage(context: selected == aiExample ? 'AI example' : 'Usage', english: selected.trim(), urdu: ''),
     );
   }
 
