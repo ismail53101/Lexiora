@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
@@ -88,7 +89,15 @@ class _LibraryPageState extends ConsumerState<LibraryPage> {
                     tooltip: 'Google Drive',
                     onPressed: _importing
                         ? null
-                        : () => context.push(AppRoutes.driveLibrary),
+                        : kIsWeb
+                            ? () => ScaffoldMessenger.of(context).showSnackBar(
+                                  const SnackBar(
+                                    content: Text(
+                                      'Google Drive is available on Android only.',
+                                    ),
+                                  ),
+                                )
+                            : () => context.push(AppRoutes.driveLibrary),
                     padding: EdgeInsets.zero,
                     constraints: const BoxConstraints.tightFor(
                       width: 38,

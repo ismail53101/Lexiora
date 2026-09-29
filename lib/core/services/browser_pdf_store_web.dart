@@ -11,6 +11,7 @@ const String _databaseName = 'sapiora_local_files';
 const String _storeName = 'pdfs';
 const int _databaseVersion = 1;
 const String _pathPrefix = 'sapiora-web-pdf:';
+final Map<String, String> _objectUrls = <String, String>{};
 
 Future<idb.Database> _openDatabase() async {
   final idb.IdbFactory factory = html.window.indexedDB!;
@@ -39,6 +40,8 @@ Future<DeviceFile> storeBrowserPdf(html.File file) async {
 Future<String> resolveBrowserPdf(String path) async {
   if (!path.startsWith(_pathPrefix)) return path;
   final String id = path.substring(_pathPrefix.length);
+  final String? existingUrl = _objectUrls[id];
+  if (existingUrl != null) return existingUrl;
   final idb.Database database = await _openDatabase();
   final idb.Transaction transaction = database.transaction(_storeName, 'readonly');
   final html.Blob? blob =
@@ -46,5 +49,26 @@ Future<String> resolveBrowserPdf(String path) async {
   await transaction.onComplete.first;
   database.close();
   if (blob == null) throw StateError('Saved PDF is no longer available.');
-  return html.Url.createObjectUrl(blob);
+  final String url = html.Url.createObjectUrl(blob);
+  _objectUrls[id] = url;
+  return url;
+}
+
+Future<void> deleteBrowserPdf(String path) async {
+  if (!path.startsWith(_pathPrefix)) return;
+  final String id = path.substring(_pathPrefix.length);
+  final String? objectUrl = _objectUrls.remove(id);
+  if (objectUrl != null) html.Url.revokeObjectUrl(objectUrl);
+  final idb.Database database = await _openDatabase();
+  final idb.Transaction transaction = database.transaction(_storeName, 'readwrite');
+  transaction.objectStore(_storeName).delete(id);
+  await transaction.onComplete.first;
+  database.close();
+}
+
+Future<void> releaseBrowserPdf(String path) async {
+  if (!path.startsWith(_pathPrefix)) return;
+  final String id = path.substring(_pathPrefix.length);
+  final String? objectUrl = _objectUrls.remove(id);
+  if (objectUrl != null) html.Url.revokeObjectUrl(objectUrl);
 }

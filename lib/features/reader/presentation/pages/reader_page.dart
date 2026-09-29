@@ -64,6 +64,7 @@ class _ReaderPageState extends ConsumerState<ReaderPage> {
   String? _error;
   String? _errorDetails;
   String? _temporarySourcePath;
+  String? _resolvedBrowserPath;
   bool _hasOcrCache = false;
   int _initialPage = 1;
   int _pageCount = 0;
@@ -109,6 +110,9 @@ class _ReaderPageState extends ConsumerState<ReaderPage> {
       final String sourcePath = kIsWeb
           ? await resolveBrowserPdf(doc.filePath)
           : doc.filePath;
+      if (kIsWeb && sourcePath != doc.filePath) {
+        _resolvedBrowserPath = doc.filePath;
+      }
       bool exists = true;
       int size = doc.fileSize;
       if (!kIsWeb) {
@@ -201,6 +205,9 @@ class _ReaderPageState extends ConsumerState<ReaderPage> {
   @override
   void dispose() {
     unawaited(sl<ScreenWakeService>().setKeepScreenOn(false));
+    if (kIsWeb && _resolvedBrowserPath != null) {
+      unawaited(releaseBrowserPdf(_resolvedBrowserPath!));
+    }
     if (_isTemporary) {
       final String? temporaryPath = _temporarySourcePath ?? _document?.filePath;
       final bool persistentDriveCache =
