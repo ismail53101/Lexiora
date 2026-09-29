@@ -275,11 +275,19 @@ built and in users' hands, keeps working without any update, rebuild, or
 Play Store release.
 
 
-## Current Affairs RSS cache
+## Current Affairs RSS and GNews cache
 
-The Worker also exposes `GET /api/current-affairs/latest`. It fetches metadata only from the configured public RSS feeds, removes duplicate stories by canonical article URL/title, and returns separate `national` and `international` arrays. Each story contains its title, source, category, publication time, excerpt, optional image URL, and original article URL. Full article bodies are never stored.
+The Worker also exposes `GET /api/current-affairs/latest`. It fetches metadata only from the configured public RSS feeds and optional GNews headline feeds, removes duplicate stories by canonical article URL/title, and returns separate `national` and `international` arrays. Each story contains its title, source, category, feed type, publication time, excerpt, optional image URL, and original article URL. Full article bodies are never stored.
 
-The scheduled Worker trigger refreshes the cache every 15 minutes. The currently configured sources are Express Tribune Pakistan and The News News under `National`, and BBC World, Express Tribune World, The News World, and Al Jazeera under `International`. A source that temporarily fails contributes no new items while the remaining sources continue to populate the cache.
+The scheduled Worker trigger refreshes the cache every 15 minutes. RSS remains enabled for Dawn, Express Tribune, The News, BBC World, and Al Jazeera. If the `GNEWS_API_KEY` Worker secret is set, GNews National and World headlines are also fetched. The response retains up to 40 normal Latest stories per category, targeting a balanced mix of up to 20 GNews and 20 RSS stories, plus up to 20 Opinions stories. If one transport has fewer available stories, the other fills the unused slots. A source that temporarily fails contributes no new items while the remaining sources continue to populate the cache.
+
+Configure the optional GNews key directly in Cloudflare; never commit it:
+
+```bash
+wrangler secret put GNEWS_API_KEY
+```
+
+Normal GNews stories use `feedType: "gnews"`. Any backend story explicitly classified with `feedType: "Opinions"` remains in the existing Opinions flow, regardless of whether its transport is RSS or GNews.
 
 The Flutter release build can connect the existing Home card by passing:
 

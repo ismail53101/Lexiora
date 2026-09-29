@@ -197,6 +197,9 @@ const MODEL_ATTEMPT_TIMEOUT_MS = 25000;
 const NEWS_CACHE_KEY = "https://sapiora.internal/cache/current-affairs/latest-v1";
 const NEWS_CACHE_TTL_MS = 15 * 60 * 1000;
 const NEWS_FRESHNESS_WINDOW_MS = 48 * 60 * 60 * 1000;
+const MAX_LATEST_STORIES_PER_CATEGORY = 40;
+const MAX_OPINION_STORIES_PER_CATEGORY = 20;
+const MAX_GNEWS_STORIES_PER_CATEGORY = 20;
 
 const RELEVANCE_BOOSTS = [
   ['politic', 8],
@@ -253,6 +256,10 @@ const NEWS_SOURCES = [
   { id: "al-jazeera-world", name: "Al Jazeera", category: "International", feedType: "Latest News", url: "https://www.aljazeera.com/xml/rss/all.xml" },
   { id: "express-tribune-world", name: "Express Tribune", category: "International", feedType: "Latest News", url: "https://tribune.com.pk/feed/world" },
   { id: "the-news-world", name: "The News", category: "International", feedType: "Latest News", url: "https://www.thenews.com.pk/rss/1/2" },
+  // GNews articles are merged with RSS articles. Set the Worker secret
+  // GNEWS_API_KEY to enable these sources; RSS remains the fallback.
+  { id: "gnews-pakistan", name: "GNews", category: "National", feedType: "gnews", kind: "gnews", categoryParam: "nation", country: "pk" },
+  { id: "gnews-world", name: "GNews", category: "International", feedType: "gnews", kind: "gnews", categoryParam: "world" },
 ];
 const CORS_HEADERS = {
   "Access-Control-Allow-Origin": "*",
@@ -275,7 +282,7 @@ export default {
       if (request.method !== "GET") {
         return jsonError(405, "method_not_allowed", "Use GET.");
       }
-      return currentAffairsResponse(ctx);
+      return currentAffairsResponse(ctx, env);
     }
 
     if (url.pathname !== CHAT_COMPLETIONS_PATH) {
@@ -370,12 +377,12 @@ export default {
     // Unreachable in practice (the loop always returns), but keeps the
     // function's control flow explicit.
     return jsonError(502, "unknown_error", lastFailure?.message || "All providers failed.");
-    },
+  },
   async scheduled(controller, env, ctx) {
-    ctx.waitUntil(refreshCurrentAffairs());
+    ctx.waitUntil(refreshCurrentAffairs(env));
   },
 };
-async function currentAffairsResponse(ctx) {
+async function currentAffairsResponse(ctx, env) {
   const cache = caches.default;
   const cached = await cache.match(NEWS_CACHE_KEY);
   if (cached) {
@@ -385,14 +392,16 @@ async function currentAffairsResponse(ctx) {
     }
   }
 
-  const payload = await refreshCurrentAffairs();
+  const payload = await refreshCurrentAffairs(env);
   const response = jsonResponse(payload);
   ctx.waitUntil(cache.put(new Request(NEWS_CACHE_KEY), response.clone()));
   return response;
 }
 
-async function refreshCurrentAffairs() {
-  const settled = await Promise.allSettled(NEWS_SOURCES.map(fetchNewsSource));
+async function refreshCurrentAffairs(env) {
+  const settled = await Promise.allSettled(
+    NEWS_SOURCES.map((source) => fetchNewsSource(source, env)),
+  );
   const stories = settled.flatMap((result) =>
     result.status === "fulfilled" ? result.value : []
   );
@@ -419,7 +428,8 @@ async function refreshCurrentAffairs() {
   return payload;
 }
 
-async function fetchNewsSource(source) {
+async function fetchNewsSource(source, env) {
+  if (source.kind === "gnews") return fetchGNewsSource(source, env);
   const controller = new AbortController();
   const timeout = setTimeout(() => controller.abort(), 10000);
   try {
@@ -432,6 +442,48 @@ async function fetchNewsSource(source) {
     });
     if (!response.ok) return [];
     return parseFeed(await response.text(), source);
+  } finally {
+    clearTimeout(timeout);
+  }
+}
+
+async function fetchGNewsSource(source, env) {
+  const apiKey = env.GNEWS_API_KEY;
+  if (!apiKey) return [];
+
+  const endpoint = new URL("https://gnews.io/api/v4/top-headlines");
+  endpoint.searchParams.set("lang", "en");
+  endpoint.searchParams.set("max", "100");
+  endpoint.searchParams.set("apikey", apiKey);
+  if (source.country) endpoint.searchParams.set("country", source.country);
+  if (source.categoryParam) endpoint.searchParams.set("category", source.categoryParam);
+
+  const controller = new AbortController();
+  const timeout = setTimeout(() => controller.abort(), 10000);
+  try {
+    const response = await fetch(endpoint, {
+      headers: { "User-Agent": "Sapiora-Current-Affairs/1.0 (+GNews reader)" },
+      signal: controller.signal,
+    });
+    if (!response.ok) return [];
+    const payload = await response.json();
+    if (!Array.isArray(payload.articles)) return [];
+    return payload.articles.map((article) => {
+      const title = cleanText(article.title || "");
+      const url = typeof article.url === "string" ? article.url : "";
+      if (!title || !url) return null;
+      return {
+        id: stableStoryId(url, title),
+        title,
+        source: cleanText(article.source?.name || "GNews"),
+        category: source.category,
+        feedType: source.feedType,
+        publishedAt: validDate(article.publishedAt),
+        excerpt: cleanText(article.description || article.content || "").slice(0, 500),
+        imageUrl: typeof article.image === "string" ? article.image : null,
+        articleUrl: url,
+      };
+    }).filter(Boolean);
   } finally {
     clearTimeout(timeout);
   }
@@ -508,20 +560,41 @@ function filterFreshStories(stories, now = Date.now()) {
 function selectLatestStories(stories) {
   if (stories.length === 0) return [];
 
-  // Relevance is used to remove low-value lifestyle/sports noise when there
-  // are exam-relevant stories available. The final ordering remains strictly
-  // newest-first, as required for a Latest feed.
-  const scored = stories.map((story) => ({
-    story,
-    score: relevanceScore(story),
-  }));
+  const opinions = stories.filter((story) => story.feedType.toLowerCase() === "opinions");
+  const latest = stories.filter((story) => story.feedType.toLowerCase() !== "opinions");
+  const gnews = latest.filter((story) => story.feedType.toLowerCase() === "gnews");
+  const rss = latest.filter((story) => story.feedType.toLowerCase() !== "gnews");
+
+  // Rank each transport independently so a large RSS batch cannot crowd every
+  // GNews article out of the response. Up to 20 GNews and 20 RSS stories are
+  // retained per category, with either side filling unused slots.
+  const selectedLatest = mergeNewsTransports(
+    rankedStories(gnews).slice(0, MAX_GNEWS_STORIES_PER_CATEGORY),
+    rankedStories(rss),
+    MAX_LATEST_STORIES_PER_CATEGORY,
+  );
+  const selectedOpinions = rankedStories(opinions).slice(0, MAX_OPINION_STORIES_PER_CATEGORY);
+
+  return [...selectedLatest, ...selectedOpinions]
+    .sort((a, b) => dateValue(b.publishedAt) - dateValue(a.publishedAt));
+}
+
+function rankedStories(stories) {
+  const scored = stories.map((story) => ({ story, score: relevanceScore(story) }));
   const relevant = scored.filter((entry) => entry.score > 0);
   const candidates = relevant.length > 0 ? relevant : scored;
-
   return candidates
     .sort((a, b) => dateValue(b.story.publishedAt) - dateValue(a.story.publishedAt))
-    .slice(0, 20)
     .map((entry) => entry.story);
+}
+
+function mergeNewsTransports(gnews, rss, limit) {
+  const selected = [];
+  const gnewsTarget = Math.min(gnews.length, Math.floor(limit / 2));
+  selected.push(...gnews.slice(0, gnewsTarget));
+  selected.push(...rss.slice(0, limit - selected.length));
+  if (selected.length < limit) selected.push(...gnews.slice(gnewsTarget, limit));
+  return selected.slice(0, limit);
 }
 
 function relevanceScore(story) {
