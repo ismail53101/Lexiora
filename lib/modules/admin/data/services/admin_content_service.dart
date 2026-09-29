@@ -1,11 +1,10 @@
 import 'dart:convert';
-import 'dart:io';
 
 import 'package:crypto/crypto.dart';
+import 'package:lexiora/core/services/json_store.dart';
 import 'package:lexiora/core/utils/logger.dart';
 import 'package:lexiora/modules/admin/domain/entities/admin_link.dart';
 import 'package:lexiora/modules/admin/domain/entities/admin_note.dart';
-import 'package:path_provider/path_provider.dart';
 
 /// Stores the Admin Panel's links, notes, per-PDF subject tags, and PIN lock
 /// as a single JSON file under the app's private storage — a deliberately
@@ -145,19 +144,9 @@ class AdminContentService {
 
   // ── File I/O ─────────────────────────────────────────────────────────────
 
-  Future<File> _file() async {
-    final Directory dir = await getApplicationSupportDirectory();
-    return File('${dir.path}/admin_content.json');
-  }
-
   Future<Map<String, dynamic>> _readFile() async {
     try {
-      final File file = await _file();
-      if (!await file.exists()) return <String, dynamic>{};
-      final String text = await file.readAsString();
-      if (text.trim().isEmpty) return <String, dynamic>{};
-      final Object? decoded = jsonDecode(text);
-      return decoded is Map<String, dynamic> ? decoded : <String, dynamic>{};
+      return await readJsonStore('admin_content');
     } on Object catch (e) {
       AppLogger.w('AdminContentService: read failed: $e');
       return <String, dynamic>{};
@@ -174,14 +163,13 @@ class AdminContentService {
       final Map<String, String> pdfSubjects = await loadPdfSubjects();
       final String? pinHash = await _loadPinHash();
 
-      final File file = await _file();
       final Map<String, dynamic> data = <String, dynamic>{
         'links': links.map((AdminLink l) => l.toJson()).toList(),
         'notes': notes.map((AdminNote n) => n.toJson()).toList(),
         'pdfSubjects': pdfSubjects,
         'pinHash': pinHash,
       };
-      await file.writeAsString(jsonEncode(data));
+      await writeJsonStore('admin_content', data);
     } on Object catch (e) {
       AppLogger.w('AdminContentService: write failed: $e');
     }
