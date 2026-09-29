@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:lexiora/core/services/pdf_cover_service.dart';
 import 'package:lexiora/core/services/pdf_discovery_service.dart';
 import 'package:lexiora/core/services/pdf_import_service.dart';
@@ -254,9 +256,9 @@ class ImportPdfs implements UseCase<ImportOutcome, NoParams> {
       });
 
   void _discardCopy(String path) {
-    deleteLocalFile(path).catchError((Object e) {
+    unawaited(deleteLocalFile(path).catchError((Object e) {
       AppLogger.w('Import: could not discard duplicate copy $path: $e');
-    });
+    }));
   }
 }
 
@@ -275,9 +277,9 @@ class ImportIncomingPdf {
         final List<LibraryDocument> existing = await _repo.watchAll().first;
         for (final LibraryDocument document in existing) {
           if (libraryDedupKey(document.fileName, document.fileSize) == key) {
-            deleteLocalFile(file.path).catchError((Object error) {
+            unawaited(deleteLocalFile(file.path).catchError((Object error) {
               AppLogger.w('Incoming PDF duplicate cleanup failed: $error');
-            });
+            }));
             return document;
           }
         }
@@ -400,9 +402,9 @@ class AdminImportPdfs {
       });
 
   void _discardCopy(String path) {
-    deleteLocalFile(path).catchError((Object e) {
+    unawaited(deleteLocalFile(path).catchError((Object e) {
       AppLogger.w('AdminImport: could not discard duplicate copy $path: $e');
-    });
+    }));
   }
 }
 
