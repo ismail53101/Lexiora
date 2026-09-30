@@ -22,31 +22,13 @@ class GetWordProfile implements UseCase<WordProfile, String> {
         final ExamWordData? exam = await _repo.examData(wl);
         final WordDetails? base = await _repo.wordDetails(wl);
         final List<String> related = await _repo.relatedWords(wl);
-        // Complete curated exam-pack words are the source of truth. Do not
-        // spend an AI request on them and never let AI replace their checked
-        // meanings, synonyms, antonyms, examples, or Urdu content. A curated
-        // word with missing sections, or a word outside the curated pack, may
-        // still receive AI enrichment when the device is online.
-        final List<String> missing = <String>[];
-        if (exam?.englishDefinition?.trim().isNotEmpty != true &&
-            base?.primary?.meaning == null) {
-          missing.add('englishDefinition');
-        }
-        if (exam?.urduMeanings.isNotEmpty != true) missing.add('urduMeanings');
-        if (exam?.partOfSpeech?.trim().isNotEmpty != true &&
-            base?.primary?.partOfSpeech == null) {
-          missing.add('partOfSpeech');
-        }
-        if (exam?.synonyms.isNotEmpty != true) missing.add('synonyms');
-        if (exam?.antonyms.isNotEmpty != true) missing.add('antonyms');
-        if (exam?.usage == null && base?.primary?.exampleSentence == null) {
-          missing.add('exampleSentence');
-        }
-        if (exam?.collocations.isNotEmpty != true) missing.add('collocations');
-        if (exam?.examNote?.trim().isNotEmpty != true) missing.add('examNote');
-        final AiWordProfile? ai = missing.isEmpty
+        // Any local record is the source of truth and must open immediately.
+        // AI is reserved for a truly missing word, avoiding a network wait for
+        // entries that already have a meaning, synonyms, antonyms, or example.
+        final bool existsOffline = exam != null || base != null;
+        final AiWordProfile? ai = existsOffline
             ? null
-            : await _ai?.define(wl, missingFields: missing);
+            : await _ai?.define(wl);
         return WordProfile(
           word: exam?.word ?? base?.word ?? wordLower,
           wordLower: wl,
