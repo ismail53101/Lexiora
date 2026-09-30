@@ -165,15 +165,6 @@ class _CurrentAffairsPageState extends ConsumerState<CurrentAffairsPage> {
   }
 }
 
-String _feedLabel(String raw) {
-  final String value = raw.trim().toLowerCase();
-  if (value.contains('gnews') || value.contains('google news')) return 'GNews';
-  if (value.contains('rss')) return 'RSS';
-  if (value.contains('opinion')) return 'Opinions';
-  if (value.isEmpty) return 'Latest';
-  return raw.trim();
-}
-
 class _LivePill extends StatelessWidget {
   const _LivePill({required this.color});
 
@@ -476,9 +467,9 @@ class _FeaturedStoryCard extends StatelessWidget {
                     Row(
                       children: <Widget>[
                         _CategoryTag(label: story.category),
-                        const SizedBox(width: 6),
-                        _CategoryTag(label: _feedLabel(story.feedType)),
                         const Spacer(),
+                        _FeedOriginTag(feedType: story.feedType),
+                        const SizedBox(width: 7),
                         Text(
                           '${story.source} · ${story.relativeTime}',
                           style: theme.textTheme.labelSmall?.copyWith(
@@ -575,7 +566,7 @@ class _EditorialStoryCard extends StatelessWidget {
                       children: <Widget>[
                         Flexible(
                           child: Text(
-                            '${story.source} · ${_feedLabel(story.feedType)}',
+                            story.source,
                             maxLines: 1,
                             overflow: TextOverflow.ellipsis,
                             style: theme.textTheme.labelSmall?.copyWith(
@@ -584,6 +575,8 @@ class _EditorialStoryCard extends StatelessWidget {
                             ),
                           ),
                         ),
+                        const SizedBox(width: 7),
+                        _FeedOriginTag(feedType: story.feedType),
                         Text(' · ${story.relativeTime}', style: theme.textTheme.labelSmall?.copyWith(color: scheme.onSurfaceVariant)),
                       ],
                     ),
@@ -663,6 +656,38 @@ class _CategoryTag extends StatelessWidget {
             color: scheme.onSecondaryContainer,
             fontWeight: FontWeight.w900,
             letterSpacing: 0.45,
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class _FeedOriginTag extends StatelessWidget {
+  const _FeedOriginTag({required this.feedType});
+
+  final String feedType;
+
+  @override
+  Widget build(BuildContext context) {
+    final ThemeData theme = Theme.of(context);
+    final ColorScheme scheme = theme.colorScheme;
+    final bool isGNews = feedType.trim().toLowerCase() == 'gnews';
+    return DecoratedBox(
+      decoration: BoxDecoration(
+        color: isGNews ? scheme.tertiaryContainer : scheme.surfaceContainerHighest,
+        borderRadius: BorderRadius.circular(7),
+        border: Border.all(color: scheme.outlineVariant.withValues(alpha: 0.65)),
+      ),
+      child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 3),
+        child: Text(
+          isGNews ? 'GNEWS' : 'RSS',
+          style: theme.textTheme.labelSmall?.copyWith(
+            color: isGNews ? scheme.onTertiaryContainer : scheme.onSurfaceVariant,
+            fontWeight: FontWeight.w900,
+            fontSize: 9,
+            letterSpacing: 0.35,
           ),
         ),
       ),
@@ -773,7 +798,7 @@ Future<void> _showArticleUnavailable(
               ),
               const SizedBox(height: 4),
               Text(
-                            '${story.source} · ${_feedLabel(story.feedType)}',
+                story.source,
                 style: theme.textTheme.titleSmall?.copyWith(
                   fontWeight: FontWeight.w800,
                 ),

@@ -6,7 +6,7 @@ import 'package:lexiora/core/constants/translation_languages.dart';
 import 'package:lexiora/features/settings/presentation/providers/settings_providers.dart';
 import 'package:lexiora/modules/dictionary/data/dictionary_seeder.dart';
 import 'package:lexiora/modules/dictionary/data/exam_words_seeder.dart';
-import 'package:lexiora/modules/dictionary/domain/entities/dictionary_entry.dart';
+import 'package:lexiora/modules/dictionary/data/services/ai_dictionary_service.dart';
 import 'package:lexiora/modules/dictionary/domain/entities/word_profile.dart';
 import 'package:lexiora/modules/dictionary/domain/repositories/dictionary_repository.dart';
 import 'package:lexiora/modules/translation/data/services/word_meaning_service.dart';
@@ -315,11 +315,12 @@ class _EnglishMeaningState extends State<_EnglishMeaning> {
   final DictionarySeeder _dictionarySeeder = sl<DictionarySeeder>();
   final VocabularySeeder _vocabularySeeder = sl<VocabularySeeder>();
   final ExamWordsSeeder _examSeeder = sl<ExamWordsSeeder>();
-  final DictionaryRepository _dictionary = sl<DictionaryRepository>();
+  final AiDictionaryService _aiDictionary = sl<AiDictionaryService>();
 
   String? _meaning;
   String? _partOfSpeech;
   bool _fromOnline = false;
+  bool _fromAi = false;
   bool _loading = true;
 
   @override
@@ -338,40 +339,30 @@ class _EnglishMeaningState extends State<_EnglishMeaning> {
       await _vocabularySeeder.ensureSeeded();
       await _examSeeder.ensureSeeded();
 
-      // Resolve the best exam-appropriate meaning: curated packs first (so
-      // "attention" → "the act of focusing the mind", not "treatment"), then
-      // the base dictionary's most general sense, then the online dictionary.
-      WordMeaning? m = await sl<WordMeaningService>()
+      // Resolve the best exam-appropriate meaning: curated/offline packs first.
+      // The free dictionary is not trusted as the final answer; when it is the
+      // only result, ask the direct AI dictionary service instead. This keeps
+      // the reader aligned with Dictionary search without opening AI chat.
+      final WordMeaning? m = await sl<WordMeaningService>()
           .resolve(widget.word.toLowerCase());
-      // Keep the reader useful even if an optional vocabulary source failed to
-      // initialise: the local dictionary/exam tables are still authoritative.
-      if (m == null) {
-        final ExamWordData? exam =
-            await _dictionary.examData(widget.word.toLowerCase());
-        if (exam?.englishDefinition?.trim().isNotEmpty == true) {
-          m = WordMeaning(
-            meaning: exam!.englishDefinition!.trim(),
-            partOfSpeech: exam.partOfSpeech,
-            urdu: exam.urduMeanings.isEmpty ? null : exam.urduMeanings.first,
-            fromOnline: false,
-          );
-        } else {
-          final DictionaryResult? local =
-              await _dictionary.lookup(widget.word.toLowerCase());
-          if (local != null && local.meaning.trim().isNotEmpty) {
-            m = WordMeaning(
-              meaning: local.meaning.trim(),
-              partOfSpeech: local.partOfSpeech,
-              fromOnline: false,
-            );
-          }
-        }
+      AiWordProfile? ai;
+      if (m == null || m.fromOnline) {
+        ai = await _aiDictionary.define(
+          widget.word.toLowerCase(),
+          missingFields: const <String>[
+            'englishDefinition',
+            'urduMeanings',
+            'partOfSpeech',
+            'exampleSentence',
+          ],
+        );
       }
       if (mounted) {
         setState(() {
-          _meaning = m?.meaning;
-          _partOfSpeech = m?.partOfSpeech;
-          _fromOnline = m?.fromOnline ?? false;
+          _meaning = ai?.englishDefinition ?? (m?.fromOnline == true ? null : m?.meaning);
+          _partOfSpeech = ai?.partOfSpeech ?? (m?.fromOnline == true ? null : m?.partOfSpeech);
+          _fromOnline = false;
+          _fromAi = ai?.englishDefinition != null;
           _loading = false;
         });
       }
@@ -383,6 +374,7 @@ class _EnglishMeaningState extends State<_EnglishMeaning> {
           _meaning = null;
           _partOfSpeech = null;
           _fromOnline = false;
+          _fromAi = false;
           _loading = false;
         });
       }
@@ -419,9 +411,9 @@ class _EnglishMeaningState extends State<_EnglishMeaning> {
                 letterSpacing: 0.6,
               ),
             ),
-            if (_fromOnline) ...<Widget>[
+            if (_fromOnline || _fromAi) ...<Widget>[
               const SizedBox(width: 6),
-              Icon(Icons.cloud_outlined,
+              Icon(_fromAi ? Icons.auto_awesome : Icons.cloud_outlined,
                   size: 13, color: theme.colorScheme.onSurfaceVariant),
             ],
           ],

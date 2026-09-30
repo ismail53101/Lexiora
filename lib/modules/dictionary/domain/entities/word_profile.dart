@@ -29,6 +29,80 @@ class WordUsage extends Equatable {
   List<Object?> get props => <Object?>[context, english, urdu];
 }
 
+/// Structured content returned by the direct AI dictionary lookup.
+///
+/// It is kept separate from curated [ExamWordData] so an AI failure never
+/// damages or overwrites the bundled offline content.
+class AiWordProfile extends Equatable {
+  const AiWordProfile({
+    required this.word,
+    this.englishDefinition,
+    this.urduMeanings = const <String>[],
+    this.partOfSpeech,
+    this.synonyms = const <String>[],
+    this.antonyms = const <String>[],
+    this.exampleSentence,
+    this.collocations = const <String>[],
+    this.examNote,
+  });
+
+  factory AiWordProfile.fromJson(Map<String, dynamic> json) => AiWordProfile(
+        word: json['word']?.toString() ?? '',
+        englishDefinition: _text(json['englishDefinition']),
+        urduMeanings: _strings(json['urduMeanings']),
+        partOfSpeech: _text(json['partOfSpeech']),
+        synonyms: _strings(json['synonyms']),
+        antonyms: _strings(json['antonyms']),
+        exampleSentence: _text(json['exampleSentence']),
+        collocations: _strings(json['collocations']),
+        examNote: _text(json['examNote']),
+      );
+
+  final String word;
+  final String? englishDefinition;
+  final List<String> urduMeanings;
+  final String? partOfSpeech;
+  final List<String> synonyms;
+  final List<String> antonyms;
+  final String? exampleSentence;
+  final List<String> collocations;
+  final String? examNote;
+
+  bool get hasContent =>
+      englishDefinition != null ||
+      urduMeanings.isNotEmpty ||
+      synonyms.isNotEmpty ||
+      antonyms.isNotEmpty ||
+      exampleSentence != null;
+
+  @override
+  List<Object?> get props => <Object?>[
+        word,
+        englishDefinition,
+        urduMeanings,
+        partOfSpeech,
+        synonyms,
+        antonyms,
+        exampleSentence,
+        collocations,
+        examNote,
+      ];
+
+  static String? _text(Object? value) {
+    final String text = value?.toString().trim() ?? '';
+    return text.isEmpty ? null : text;
+  }
+
+  static List<String> _strings(Object? value) {
+    if (value is! List) return const <String>[];
+    return value
+        .map((Object? item) => item?.toString().trim() ?? '')
+        .where((String item) => item.isNotEmpty)
+        .take(8)
+        .toList(growable: false);
+  }
+}
+
 /// Curated, exam-oriented content for a word (from the bundled exam pack).
 ///
 /// Every list is non-null (possibly empty) and optional scalars are nullable, so
@@ -103,6 +177,7 @@ class WordProfile extends Equatable {
     this.exam,
     this.base,
     this.relatedWords = const <String>[],
+    this.ai,
   });
 
   final String word;
@@ -110,6 +185,7 @@ class WordProfile extends Equatable {
   final ExamWordData? exam;
   final WordDetails? base;
   final List<String> relatedWords;
+  final AiWordProfile? ai;
 
   /// True when the word exists in any local data set (base or curated).
   bool get existsLocally => base != null || exam != null;
@@ -120,16 +196,28 @@ class WordProfile extends Equatable {
 
   /// English definition: curated first, then the base primary sense.
   String? get englishDefinition =>
-      exam?.englishDefinition ?? base?.primary?.meaning;
+      exam?.englishDefinition ?? ai?.englishDefinition ?? base?.primary?.meaning;
 
   /// Pronunciation (IPA): curated first, then the base IPA when present.
   String? get pronunciation => exam?.pronunciation ?? base?.ipaPronunciation;
 
   /// Part of speech: curated first, then the base primary sense.
   String? get partOfSpeech =>
-      exam?.partOfSpeech ?? base?.primary?.partOfSpeech;
+      exam?.partOfSpeech ?? ai?.partOfSpeech ?? base?.primary?.partOfSpeech;
+
+  List<String> get synonyms =>
+      exam?.synonyms.isNotEmpty == true ? exam!.synonyms : ai?.synonyms ?? const <String>[];
+
+  List<String> get antonyms =>
+      exam?.antonyms.isNotEmpty == true ? exam!.antonyms : ai?.antonyms ?? const <String>[];
+
+  List<String> get collocations => exam?.collocations.isNotEmpty == true
+      ? exam!.collocations
+      : ai?.collocations ?? const <String>[];
+
+  String? get examNote => exam?.examNote ?? ai?.examNote;
 
   @override
   List<Object?> get props =>
-      <Object?>[word, wordLower, exam, base, relatedWords];
+      <Object?>[word, wordLower, exam, base, relatedWords, ai];
 }
