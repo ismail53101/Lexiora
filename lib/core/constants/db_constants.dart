@@ -51,7 +51,9 @@ abstract final class DbConstants {
   /// simply remain outside every project.
   /// v19 → v20: Study session linkage — adds optional task/subject/end-time
   /// metadata to existing `study_sessions` rows. Purely additive.
-  static const int schemaVersion = 20;
+  /// v20 → v21: AI Assistant nested sub-projects — adds nullable parent_id to
+  /// ai_projects. Existing projects remain top-level.
+  static const int schemaVersion = 21;
 }
 
 /// Constants for the Quiz Engine's one-time demo seed.

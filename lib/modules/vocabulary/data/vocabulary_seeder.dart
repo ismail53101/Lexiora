@@ -131,13 +131,25 @@ class VocabularySeeder {
   static Future<List<String>> _discoverPacks(AssetBundle bundle) async {
     final AssetManifest manifest =
         await AssetManifest.loadFromAssetBundle(bundle);
-    return manifest
+    final List<String> discovered = manifest
         .listAssets()
         .where((String k) =>
             k.startsWith(VocabularyConstants.assetDir) &&
             k.toLowerCase().endsWith(VocabularyConstants.packSuffix))
         .toList()
       ..sort();
+    // Some OEM/release Flutter asset manifests have historically omitted
+    // directory-discovered entries. Keep the bundled packs usable in that
+    // case rather than silently returning an empty Vocabulary screen.
+    if (discovered.isNotEmpty) return discovered;
+    return <String>[
+      'assets/vocabulary/css_bpsc_vocabulary.json',
+      'assets/vocabulary/css_solved_pair_of_words.json',
+      'assets/vocabulary/gre_high_frequency.json',
+      'assets/vocabulary/idioms.json',
+      'assets/vocabulary/one_word_substitutions.json',
+      'assets/vocabulary/proverbs.json',
+    ];
   }
 
   Future<Map<String, String>> _loadPacks(List<String> paths) async {

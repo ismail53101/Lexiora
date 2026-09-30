@@ -5,24 +5,27 @@ class AiProject extends Equatable {
   const AiProject({
     required this.id,
     required this.name,
+    this.parentId,
     required this.createdAt,
     required this.updatedAt,
   });
 
   final String id;
   final String name;
+  final String? parentId;
   final DateTime createdAt;
   final DateTime updatedAt;
 
-  AiProject copyWith({String? name, DateTime? updatedAt}) => AiProject(
+  AiProject copyWith({String? name, String? parentId, DateTime? updatedAt}) => AiProject(
         id: id,
         name: name ?? this.name,
+        parentId: parentId ?? this.parentId,
         createdAt: createdAt,
         updatedAt: updatedAt ?? this.updatedAt,
       );
 
   @override
-  List<Object?> get props => <Object?>[id, name, createdAt, updatedAt];
+  List<Object?> get props => <Object?>[id, name, parentId, createdAt, updatedAt];
 }
 
 /// A project plus a lightweight preview for the sidebar list.

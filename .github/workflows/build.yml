@@ -1,11 +1,11 @@
-name: Build Sapiora APK
+name: Build Lexiora APK
 
 # Builds, analyzes and tests Sapiora on every push to main, then produces a
 # release APK — uploaded both as a workflow artifact and as an asset on a
 # GitHub Release whose tag is derived from the pubspec version (e.g. v0.1.5).
 on:
   push:
-    branches: [main]
+    branches: [main, update-v0.5.3]
   pull_request:
     branches: [main]
   workflow_dispatch:

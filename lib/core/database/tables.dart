@@ -940,6 +940,10 @@ class AiProjects extends Table {
   TextColumn get id => text()();
   TextColumn get name => text()();
 
+  /// Optional parent project. Null keeps the existing top-level project
+  /// behavior; a value creates a nested sub-project.
+  TextColumn get parentId => text().nullable()();
+
   /// Lowercased name for fast project search.
   TextColumn get searchText => text().withDefault(const Constant(''))();
   DateTimeColumn get createdAt => dateTime()();

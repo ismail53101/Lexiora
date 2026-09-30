@@ -25,7 +25,7 @@ import 'package:lexiora/features/settings/domain/entities/app_settings.dart';
 import 'package:lexiora/features/settings/domain/repositories/settings_repository.dart';
 import 'package:pdfrx/pdfrx.dart';
 
-const String _initialPermissionFlowVersion = '2026.09.16-permissions-v3';
+const String _initialPermissionFlowVersion = '2026.09.30-permissions-v4';
 
 /// Sapiora entry point.
 ///
@@ -82,61 +82,74 @@ Future<void> main() async {
 }
 
 Future<void> _finishStartup(GoRouter router) async {
+  final NotificationService notifications = sl<NotificationService>();
   try {
-      final NotificationService notifications = sl<NotificationService>();
-      await notifications.initialize(
-        onTap: (String payload) => _handleNotificationPayload(router, payload),
-      );
-      final SettingsRepository settings = sl<SettingsRepository>();
-      final AppSettings currentSettings = await settings.getSettings();
-      final bool needsPermissionFlow =
-          !currentSettings.initialPermissionFlowCompleted ||
-          currentSettings.initialPermissionFlowVersion !=
-              _initialPermissionFlowVersion;
-      if (needsPermissionFlow) {
-        final bool notificationsEnabled =
-            await notifications.notificationsEnabled();
-        if (!notificationsEnabled) await notifications.requestPermission();
+    await notifications.initialize(
+      onTap: (String payload) => _handleNotificationPayload(router, payload),
+    );
+  } on Object catch (error, stackTrace) {
+    AppLogger.e('Notification setup failed', error: error, stackTrace: stackTrace);
+  }
 
+  try {
+    final SettingsRepository settings = sl<SettingsRepository>();
+    final AppSettings currentSettings = await settings.getSettings();
+    final bool needsPermissionFlow =
+        !currentSettings.initialPermissionFlowCompleted ||
+        currentSettings.initialPermissionFlowVersion !=
+            _initialPermissionFlowVersion;
+    if (needsPermissionFlow) {
+      try {
+        if (!await notifications.notificationsEnabled()) {
+          await notifications.requestPermission();
+        }
+      } on Object catch (error, stackTrace) {
+        AppLogger.e('Notification permission request failed', error: error, stackTrace: stackTrace);
+      }
+
+      try {
         final PermissionService filePermission = sl<PermissionService>();
         if (!await filePermission.isGrantedForDiscovery()) {
           await filePermission.requestForDiscovery();
         }
-        await settings.updateSettings(
-          currentSettings.copyWith(
-            initialPermissionFlowCompleted: true,
-            initialPermissionFlowVersion: _initialPermissionFlowVersion,
-          ),
-        );
+      } on Object catch (error, stackTrace) {
+        AppLogger.e('PDF storage permission request failed', error: error, stackTrace: stackTrace);
       }
-      // Start reminder restoration before PDF intent discovery, so a later PDF
-      // setup failure cannot suppress Word of the Day scheduling. Permission
-      // has already been settled above, avoiding a race with rescheduling.
-      unawaited(_rescheduleNotifications(notifications));
-      final PdfImportService pdfImport = sl<PdfImportService>();
-      pdfImport.registerIncomingPdfHandler(
-        (DeviceFile file) => unawaited(_openIncomingPdf(router, file)),
+      await settings.updateSettings(
+        currentSettings.copyWith(
+          initialPermissionFlowCompleted: true,
+          initialPermissionFlowVersion: _initialPermissionFlowVersion,
+        ),
       );
-      final DeviceFile? initialIncoming =
-          await pdfImport.takeInitialIncomingPdf();
-
-      final String? pendingPayload = notifications.takePendingPayload();
-      if (pendingPayload != null) {
-        WidgetsBinding.instance.addPostFrameCallback((_) {
-          _handleNotificationPayload(router, pendingPayload);
-        });
-      }
-      if (initialIncoming != null) {
-        WidgetsBinding.instance.addPostFrameCallback((_) {
-          unawaited(_openIncomingPdf(router, initialIncoming));
-        });
-      }
+    }
+    // Start reminder restoration before PDF intent discovery, so a later PDF
+    // setup failure cannot suppress Word of the Day scheduling.
+    unawaited(_rescheduleNotifications(notifications));
   } on Object catch (error, stackTrace) {
-    AppLogger.e(
-      'Post-launch platform setup failed',
-      error: error,
-      stackTrace: stackTrace,
+    AppLogger.e('Permission setup failed', error: error, stackTrace: stackTrace);
+  }
+
+  try {
+    final PdfImportService pdfImport = sl<PdfImportService>();
+    pdfImport.registerIncomingPdfHandler(
+      (DeviceFile file) => unawaited(_openIncomingPdf(router, file)),
     );
+    final DeviceFile? initialIncoming =
+        await pdfImport.takeInitialIncomingPdf();
+
+    final String? pendingPayload = notifications.takePendingPayload();
+    if (pendingPayload != null) {
+      WidgetsBinding.instance.addPostFrameCallback((_) {
+        _handleNotificationPayload(router, pendingPayload);
+      });
+    }
+    if (initialIncoming != null) {
+      WidgetsBinding.instance.addPostFrameCallback((_) {
+        unawaited(_openIncomingPdf(router, initialIncoming));
+      });
+    }
+  } on Object catch (error, stackTrace) {
+    AppLogger.e('PDF intent setup failed', error: error, stackTrace: stackTrace);
   }
 }
 

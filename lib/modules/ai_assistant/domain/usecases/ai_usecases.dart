@@ -51,7 +51,8 @@ class WatchProjects {
 class CreateProject {
   const CreateProject(this._repo);
   final AiRepository _repo;
-  Future<AiProject> call(String name) => _repo.createProject(name);
+  Future<AiProject> call(String name, {String? parentId}) =>
+      _repo.createProject(name, parentId: parentId);
 }
 
 class RenameProject {

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:gpt_markdown/gpt_markdown.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 /// Renders assistant Markdown: headings, bold/italic, bullet & numbered lists,
 /// tables, fenced code blocks, and LaTeX math ($...$ / $$...$$). Provider-output
@@ -49,6 +50,7 @@ class AiMarkdown extends StatelessWidget {
         // from leaving stale inline spans behind on the next update.
         key: ValueKey<String>(data),
         useDollarSignsForLatex: true,
+        onLinkTap: (String url, String title) => _openLink(url),
         style: theme.textTheme.bodyMedium?.copyWith(
           color: textColor,
           height: 1.5,
@@ -243,4 +245,15 @@ Future<void> _copy(BuildContext context, String text) async {
   final ScaffoldMessengerState messenger = ScaffoldMessenger.of(context);
   await Clipboard.setData(ClipboardData(text: text));
   messenger.showSnackBar(const SnackBar(content: Text('Code copied')));
+}
+
+/// Opens http(s) links (e.g. web-search sources) in the external browser.
+Future<void> _openLink(String url) async {
+  final Uri? uri = Uri.tryParse(url.trim());
+  if (uri == null || !(uri.scheme == 'http' || uri.scheme == 'https')) return;
+  try {
+    await launchUrl(uri, mode: LaunchMode.externalApplication);
+  } on Object {
+    // Nothing sensible to show; ignore.
+  }
 }

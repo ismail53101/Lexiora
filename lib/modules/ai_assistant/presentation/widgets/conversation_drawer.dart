@@ -154,6 +154,7 @@ class _ConversationDrawerState extends ConsumerState<ConversationDrawer> {
                           onToggleProject: _toggleProject,
                           onNewChatInProject: _newChatInProject,
                           onCreateProject: _createProject,
+                          onCreateSubproject: _createSubproject,
                           onRenameProject: _renameProject,
                           onDeleteProject: _deleteProject,
                           onOpenConversation: _openConversation,
@@ -225,6 +226,20 @@ class _ConversationDrawerState extends ConsumerState<ConversationDrawer> {
     if (name == null || name.trim().isEmpty) return;
     final AiProject p = await ref.read(aiRepositoryProvider).createProject(name);
     if (mounted) setState(() => _expanded.add(p.id));
+  }
+
+  Future<void> _createSubproject(AiProjectSummary parent) async {
+    final String? name = await _promptText(
+      title: 'New sub-project',
+      label: 'Sub-project name',
+      confirmLabel: 'Create',
+    );
+    if (name == null || name.trim().isEmpty) return;
+    final AiProject child = await ref.read(aiRepositoryProvider).createProject(
+          name,
+          parentId: parent.project.id,
+        );
+    if (mounted) setState(() => _expanded.add(child.id));
   }
 
   Future<void> _renameProject(AiProjectSummary summary) async {
@@ -348,6 +363,7 @@ class _ProjectsSection extends StatelessWidget {
     required this.onToggleProject,
     required this.onNewChatInProject,
     required this.onCreateProject,
+    required this.onCreateSubproject,
     required this.onRenameProject,
     required this.onDeleteProject,
     required this.onOpenConversation,
@@ -362,6 +378,7 @@ class _ProjectsSection extends StatelessWidget {
   final void Function(String) onToggleProject;
   final void Function(String) onNewChatInProject;
   final Future<void> Function() onCreateProject;
+  final Future<void> Function(AiProjectSummary) onCreateSubproject;
   final Future<void> Function(AiProjectSummary) onRenameProject;
   final Future<void> Function(AiProjectSummary) onDeleteProject;
   final void Function(AiConversationSummary) onOpenConversation;
@@ -415,6 +432,7 @@ class _ProjectsSection extends StatelessWidget {
                 expanded: expanded.contains(s.project.id),
                 onToggle: onToggleProject,
                 onNewChat: onNewChatInProject,
+                onCreateSubproject: onCreateSubproject,
                 onRename: onRenameProject,
                 onDelete: onDeleteProject,
                 onOpenConversation: onOpenConversation,
@@ -492,6 +510,7 @@ class _ProjectTile extends StatelessWidget {
     required this.expanded,
     required this.onToggle,
     required this.onNewChat,
+    required this.onCreateSubproject,
     required this.onRename,
     required this.onDelete,
     required this.onOpenConversation,
@@ -505,6 +524,7 @@ class _ProjectTile extends StatelessWidget {
   final bool expanded;
   final void Function(String) onToggle;
   final void Function(String) onNewChat;
+  final Future<void> Function(AiProjectSummary) onCreateSubproject;
   final Future<void> Function(AiProjectSummary) onRename;
   final Future<void> Function(AiProjectSummary) onDelete;
   final void Function(AiConversationSummary) onOpenConversation;
@@ -529,7 +549,10 @@ class _ProjectTile extends StatelessWidget {
             size: 26,
             color: _projectFolderColor(summary.project.id),
           ),
-          title: Text(summary.project.name,
+          title: Text(
+              summary.project.parentId == null
+                  ? summary.project.name
+                  : '↳ ${summary.project.name}',
               maxLines: 1, overflow: TextOverflow.ellipsis),
           subtitle: Text(
             count == 1 ? '1 conversation' : '$count conversations',
@@ -555,6 +578,8 @@ class _ProjectTile extends StatelessWidget {
                   const PopupMenuItem<String>(
                       value: 'new_chat', child: Text('New chat in project')),
                   const PopupMenuItem<String>(
+                      value: 'new_subproject', child: Text('New sub-project')),
+                  const PopupMenuItem<String>(
                       value: 'rename', child: Text('Rename')),
                   const PopupMenuItem<String>(
                       value: 'delete', child: Text('Delete project')),
@@ -563,6 +588,8 @@ class _ProjectTile extends StatelessWidget {
                   switch (v) {
                     case 'new_chat':
                       onNewChat(summary.project.id);
+                    case 'new_subproject':
+                      onCreateSubproject(summary);
                     case 'rename':
                       onRename(summary);
                     case 'delete':

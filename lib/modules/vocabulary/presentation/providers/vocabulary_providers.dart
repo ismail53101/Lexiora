@@ -16,14 +16,11 @@ final Provider<VocabularyRepository> vocabularyRepositoryProvider =
 final Provider<VocabularySeeder> vocabularySeederProvider =
     Provider<VocabularySeeder>((Ref ref) => sl<VocabularySeeder>());
 
-/// Kicks off (idempotent) seeding; best-effort so a failure never blocks the UI.
+/// Kicks off (idempotent) seeding. Errors are deliberately propagated so the
+/// page can show the real failure and offer Retry instead of looking empty.
 final FutureProvider<void> vocabularySeedProvider =
     FutureProvider<void>((Ref ref) async {
-  try {
-    await ref.watch(vocabularySeederProvider).ensureSeeded();
-  } on Object {
-    // The lists simply won't be available this run.
-  }
+  await ref.watch(vocabularySeederProvider).ensureSeeded();
 });
 
 /// On-device TTS for the pronunciation button. Reuses the shared core service.

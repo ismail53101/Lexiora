@@ -39,6 +39,7 @@ class OpenAiCompatibleChatService implements AiChatService {
     final List<Map<String, dynamic>> wire = await _buildWireMessages(messages);
     final String useModel = model ?? _config.model;
     final StringBuffer acc = StringBuffer();
+    String? sourcesHeader;
 
     try {
       await for (final String payload in _client.streamSse(
@@ -49,6 +50,7 @@ class OpenAiCompatibleChatService implements AiChatService {
           'provider': _config.provider.wireValue,
         },
         cancel: cancel,
+        onSources: (String raw) => sourcesHeader = raw,
       )) {
         final String? delta = parseStreamDelta(payload);
         if (delta != null && delta.isNotEmpty) {
@@ -71,6 +73,17 @@ class OpenAiCompatibleChatService implements AiChatService {
         if (content.isNotEmpty) {
           acc.write(content);
           yield AiDelta(content);
+        }
+      }
+
+      // Web search was used: append a "Sources" list to the reply. It is saved
+      // with the message (no DB change) and rendered as tappable Markdown links.
+      if (acc.isNotEmpty && sourcesHeader != null) {
+        final String block =
+            sourcesMarkdown(parseSourcesHeader(sourcesHeader!));
+        if (block.isNotEmpty) {
+          acc.write(block);
+          yield AiDelta(block);
         }
       }
 
@@ -108,7 +121,9 @@ class OpenAiCompatibleChatService implements AiChatService {
   ) async {
     final List<Map<String, dynamic>> wire = <Map<String, dynamic>>[];
     for (final AiMessage m in messages) {
-      final AiAttachment att = AiAttachment.parse(m.content);
+      final AiAttachment att = AiAttachment.parse(
+        m.role == AiRole.assistant ? stripSources(m.content) : m.content,
+      );
       final String text = _textWithPdfContext(att);
 
       if (!att.hasImage) {
@@ -165,6 +180,54 @@ class OpenAiCompatibleChatService implements AiChatService {
     } on Object {
       return null;
     }
+  }
+
+  // ── Web-search sources (Worker → app) ───────────────────────────────────────
+
+  static const String _sourcesMarker = '\n\n---\n**Sources**\n';
+
+  /// Decodes the Worker's `X-Sapiora-Sources` header (URL-encoded JSON list of
+  /// `{title, url}`). Never throws; returns only http(s) links.
+  static List<({String title, String url})> parseSourcesHeader(String raw) {
+    try {
+      final Object? decoded = jsonDecode(Uri.decodeComponent(raw));
+      if (decoded is! List) return const <({String title, String url})>[];
+      final List<({String title, String url})> out =
+          <({String title, String url})>[];
+      for (final Object? item in decoded) {
+        if (item is! Map) continue;
+        final String url = '${item['url'] ?? ''}'.trim();
+        final Uri? uri = Uri.tryParse(url);
+        if (uri == null || !(uri.scheme == 'http' || uri.scheme == 'https')) {
+          continue;
+        }
+        final String title = '${item['title'] ?? ''}'.trim();
+        out.add((title: title.isEmpty ? uri.host : title, url: url));
+      }
+      return out;
+    } on Object {
+      return const <({String title, String url})>[];
+    }
+  }
+
+  /// Numbered to match the `[1]`, `[2]` citations the model writes.
+  static String sourcesMarkdown(List<({String title, String url})> sources) {
+    if (sources.isEmpty) return '';
+    final StringBuffer b = StringBuffer(_sourcesMarker);
+    for (int i = 0; i < sources.length; i++) {
+      final String title = sources[i].title
+          .replaceAll(RegExp(r'[\[\]\n\r]'), ' ')
+          .replaceAll(RegExp(r'\s+'), ' ')
+          .trim();
+      b.writeln('${i + 1}. [$title](${sources[i].url})');
+    }
+    return b.toString().trimRight();
+  }
+
+  /// Removes the Sources block so it isn't re-sent to the model as history.
+  static String stripSources(String content) {
+    final int i = content.indexOf(_sourcesMarker);
+    return i < 0 ? content : content.substring(0, i);
   }
 
   // ── Pure parsers (unit-testable) ────────────────────────────────────────────

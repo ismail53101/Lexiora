@@ -519,9 +519,9 @@ class _OfflineStatusBadge extends ConsumerWidget {
         ),
         child: Text(
           aiAvailable
-              ? enrichmentSource == 'stands4'
+              ? (enrichmentSource == 'stands4'
                   ? '📖 STANDS4-enhanced • AI fallback ready'
-                  : '✨ AI-enhanced • Offline fallback ready'
+                  : '✨ AI-enhanced • Offline fallback ready')
               : online
                   ? '🌐 Retrieved Online • Saved Offline'
                   : '🟢 Available Offline',
