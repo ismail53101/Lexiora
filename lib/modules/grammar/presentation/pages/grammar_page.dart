@@ -110,17 +110,17 @@ class _GrammarPageState extends ConsumerState<GrammarPage> {
   Widget _dashboard() {
     final List<GrammarTopicSummary> categories =
         ref.watch(grammarChildrenProvider(null)).maybeWhen(
-              data: (List<GrammarTopicSummary> c) => c,
+              data: (List<GrammarTopicSummary> c) => _withoutComparison(c),
               orElse: () => const <GrammarTopicSummary>[],
             );
     final List<GrammarTopicSummary> continueLearning =
         ref.watch(grammarContinueProvider).maybeWhen(
-              data: (List<GrammarTopicSummary> c) => c,
+              data: (List<GrammarTopicSummary> c) => _withoutComparison(c),
               orElse: () => const <GrammarTopicSummary>[],
             );
     final List<GrammarTopicSummary> favorites =
         ref.watch(grammarFavoritesProvider).maybeWhen(
-              data: (List<GrammarTopicSummary> c) => c,
+              data: (List<GrammarTopicSummary> c) => _withoutComparison(c),
               orElse: () => const <GrammarTopicSummary>[],
             );
 
@@ -145,9 +145,43 @@ class _GrammarPageState extends ConsumerState<GrammarPage> {
           for (final GrammarTopicSummary t in favorites)
             GrammarTopicTile(topic: t, onTap: () => _open(t)),
         ],
+        const Divider(height: 1),
+        const _Header('Coming soon'),
+        const _ComingSoonTile(
+          title: 'Subject–Verb Agreement',
+          subtitle: 'Rules, examples, and practice',
+        ),
+        const _ComingSoonTile(
+          title: 'Common Errors',
+          subtitle: 'Frequent mistakes explained clearly',
+        ),
+        const _ComingSoonTile(
+          title: 'Modal Verbs',
+          subtitle: 'Can, could, may, might, must, and more',
+        ),
         const SizedBox(height: 24),
       ],
     );
+  }
+
+  List<GrammarTopicSummary> _withoutComparison(
+    List<GrammarTopicSummary> topics,
+  ) {
+    return topics
+        .where((GrammarTopicSummary topic) =>
+            !_isRemovedOrComingSoon(topic))
+        .toList(growable: false);
+  }
+
+  bool _isRemovedOrComingSoon(GrammarTopicSummary topic) {
+    final String value = '${topic.id} ${topic.title}'.toLowerCase();
+    return value.contains('comparison') ||
+        value.contains('subject-verb-agreement') ||
+        value.contains('subject–verb agreement') ||
+        value.contains('common-errors') ||
+        value.contains('common errors') ||
+        value.contains('modal-verbs') ||
+        value.contains('modal verbs');
   }
 
   void _showAbout(BuildContext context) {
@@ -187,6 +221,28 @@ class _Header extends StatelessWidget {
             .titleMedium
             ?.copyWith(fontWeight: FontWeight.w700),
       ),
+    );
+  }
+}
+
+class _ComingSoonTile extends StatelessWidget {
+  const _ComingSoonTile({required this.title, required this.subtitle});
+
+  final String title;
+  final String subtitle;
+
+  @override
+  Widget build(BuildContext context) {
+    final ThemeData theme = Theme.of(context);
+    return ListTile(
+      leading: CircleAvatar(
+        backgroundColor: theme.colorScheme.secondaryContainer,
+        child: Icon(Icons.lock_outline,
+            color: theme.colorScheme.onSecondaryContainer),
+      ),
+      title: Text(title, style: const TextStyle(fontWeight: FontWeight.w700)),
+      subtitle: Text(subtitle),
+      trailing: const Chip(label: Text('Coming soon')),
     );
   }
 }
