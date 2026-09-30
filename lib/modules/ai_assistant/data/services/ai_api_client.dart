@@ -23,6 +23,7 @@ class AiApiClient {
   Stream<String> streamSse(
     Map<String, dynamic> body, {
     AiCancelToken? cancel,
+    void Function(String rawSourcesHeader)? onSources,
   }) async* {
     if (!_config.isConfigured) throw AiFailure.notConfigured;
 
@@ -62,6 +63,12 @@ class AiApiClient {
       await response.drain<void>().catchError((_) {});
       client.close(force: true);
       throw AiFailure.fromStatus(code);
+    }
+
+    // Web-search sources chosen by the Worker (Firecrawl), URL-encoded JSON.
+    final String? sourcesHeader = response.headers.value('x-sapiora-sources');
+    if (sourcesHeader != null && sourcesHeader.isNotEmpty) {
+      onSources?.call(sourcesHeader);
     }
 
     try {
