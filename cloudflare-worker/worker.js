@@ -203,6 +203,20 @@ const MAX_GNEWS_STORIES_PER_CATEGORY = 20;
 const STANDS4_CACHE_TTL_MS = 24 * 60 * 60 * 1000;
 const STANDS4_CACHE_PREFIX = "https://sapiora.internal/cache/stands4/";
 
+const INTERNATIONAL_NEWS_MARKERS = [
+  'united states', 'u.s.', 'usa', 'united kingdom', 'european union',
+  'europe', 'russia', 'ukraine', 'china', 'taiwan', 'israel', 'gaza',
+  'palestine', 'iran', 'iraq', 'afghanistan', 'india', 'bangladesh',
+  'sri lanka', 'nepal', 'united nations', 'nato', 'donald trump',
+  'white house', 'european parliament',
+];
+const PAKISTAN_NEWS_MARKERS = [
+  'pakistan', 'pakistani', 'islamabad', 'rawalpindi', 'lahore', 'karachi',
+  'peshawar', 'quetta', 'balochistan', 'sindh', 'punjab', 'khyber',
+  'gilgit', 'azad kashmir', 'prime minister', 'national assembly',
+  'senate of pakistan', 'state bank of pakistan',
+];
+
 const RELEVANCE_BOOSTS = [
   ['politic', 8],
   ['government', 8],
@@ -483,7 +497,9 @@ async function refreshCurrentAffairs(env) {
   const stories = settled.flatMap((result) =>
     result.status === "fulfilled" ? result.value : []
   );
-  const freshStories = filterFreshStories(deduplicateStories(stories));
+  const freshStories = reclassifyNewsStories(
+    filterFreshStories(deduplicateStories(stories)),
+  );
   const payload = {
     fetchedAt: Date.now(),
     national: selectLatestStories(
@@ -613,7 +629,20 @@ function classifyFeedType(source, articleUrl, title) {
     ? "Opinions"
     : source.feedType;
 }
-
+function reclassifyNewsStories(stories) {
+  return stories.map((story) => {
+    if (story.category !== "National") return story;
+    const text = `${story.title} ${story.excerpt}`.toLowerCase();
+    const mentionsPakistan = PAKISTAN_NEWS_MARKERS.some((marker) => text.includes(marker));
+    const mentionsInternational = INTERNATIONAL_NEWS_MARKERS.some((marker) => text.includes(marker));
+    // Pakistan feeds often carry world headlines. Move only strongly marked
+    // foreign stories; Pakistan-specific stories always remain National.
+    if (!mentionsPakistan && mentionsInternational) {
+      return { ...story, category: "International" };
+    }
+    return story;
+  });
+}
 function readTag(block, tag) {
   const match = block.match(new RegExp(`<${tag}\\b[^>]*>([\\s\\S]*?)</${tag}>`, "i"));
   return match ? match[1].trim() : "";
@@ -776,7 +805,7 @@ function resolveProviderOrder(requested, env) {
   if (requested !== "auto") {
     return configured.includes(requested) ? [requested] : [];
   }
-  const preferredDefault = (env.DEFAULT_PROVIDER || "hcnsec").toLowerCase();
+  const preferredDefault = (env.DEFAULT_PROVIDER || "unorouter").toLowerCase();
   const rest = configured.filter((id) => id !== preferredDefault);
   return configured.includes(preferredDefault)
     ? [preferredDefault, ...rest]
@@ -784,6 +813,11 @@ function resolveProviderOrder(requested, env) {
 }
 
 function providerApiKey(id, env) {
+  if (id === "unorouter") {
+    // The generic pool may be backed entirely by xKiro or another provider in
+    // MODEL_CONFIG_KV, so it must not depend on a legacy UnoRouter key.
+    return env.MODEL_CONFIG_KV || env.UNOROUTER_API_KEY;
+  }
   return env[PROVIDERS[id].apiKeyEnv];
 }
 

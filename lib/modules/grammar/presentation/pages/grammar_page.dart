@@ -176,6 +176,8 @@ class _GrammarPageState extends ConsumerState<GrammarPage> {
   bool _isRemovedOrComingSoon(GrammarTopicSummary topic) {
     final String value = '${topic.id} ${topic.title}'.toLowerCase();
     return value.contains('comparison') ||
+        topic.id == 'modals' ||
+        topic.id.startsWith('modals/') ||
         value.contains('subject-verb-agreement') ||
         value.contains('subject–verb agreement') ||
         value.contains('common-errors') ||
