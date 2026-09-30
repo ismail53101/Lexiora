@@ -30,7 +30,7 @@ abstract interface class AiRepository {
   /// All projects (most-recently-updated first), optionally filtered by
   /// [query] (matches the project name).
   Stream<List<AiProjectSummary>> watchProjects({String query});
-  Future<AiProject> createProject(String name);
+  Future<AiProject> createProject(String name, {String? parentId});
   Future<void> renameProject(String id, String name);
   Future<void> deleteProject(String id);
 

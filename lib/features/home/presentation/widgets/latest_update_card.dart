@@ -198,7 +198,7 @@ class _LatestUpdateCardState extends State<LatestUpdateCard> {
                             ),
                           ),
                           Text(
-                            '${story.source} · ${story.category} · ${story.relativeTime}',
+                            '${story.source} · ${story.feedType} · ${story.relativeTime}',
                             maxLines: 1,
                             overflow: TextOverflow.ellipsis,
                             style: theme.textTheme.labelSmall?.copyWith(

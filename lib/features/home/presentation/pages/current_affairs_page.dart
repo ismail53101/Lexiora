@@ -165,6 +165,15 @@ class _CurrentAffairsPageState extends ConsumerState<CurrentAffairsPage> {
   }
 }
 
+String _feedLabel(String raw) {
+  final String value = raw.trim().toLowerCase();
+  if (value.contains('gnews') || value.contains('google news')) return 'GNews';
+  if (value.contains('rss')) return 'RSS';
+  if (value.contains('opinion')) return 'Opinions';
+  if (value.isEmpty) return 'Latest';
+  return raw.trim();
+}
+
 class _LivePill extends StatelessWidget {
   const _LivePill({required this.color});
 
@@ -467,6 +476,8 @@ class _FeaturedStoryCard extends StatelessWidget {
                     Row(
                       children: <Widget>[
                         _CategoryTag(label: story.category),
+                        const SizedBox(width: 6),
+                        _CategoryTag(label: _feedLabel(story.feedType)),
                         const Spacer(),
                         Text(
                           '${story.source} · ${story.relativeTime}',
@@ -564,7 +575,7 @@ class _EditorialStoryCard extends StatelessWidget {
                       children: <Widget>[
                         Flexible(
                           child: Text(
-                            story.source,
+                            '${story.source} · ${_feedLabel(story.feedType)}',
                             maxLines: 1,
                             overflow: TextOverflow.ellipsis,
                             style: theme.textTheme.labelSmall?.copyWith(
@@ -762,7 +773,7 @@ Future<void> _showArticleUnavailable(
               ),
               const SizedBox(height: 4),
               Text(
-                story.source,
+                            '${story.source} · ${_feedLabel(story.feedType)}',
                 style: theme.textTheme.titleSmall?.copyWith(
                   fontWeight: FontWeight.w800,
                 ),

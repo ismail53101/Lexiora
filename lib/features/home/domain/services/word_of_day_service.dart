@@ -34,7 +34,14 @@ class WordOfDayService {
     if (poolLength <= 0) return 0;
     final DateTime utcDay = DateTime.utc(date.year, date.month, date.day);
     final int dayIndex = utcDay.difference(DateTime.utc(1970)).inDays;
-    return dayIndex % poolLength;
+    // The bundled data is alphabetically ordered. A plain dayIndex % length
+    // therefore makes the home card visibly walk A→Z. Mix the date first so
+    // the choice remains stable for the whole day but feels genuinely daily.
+    int hash = dayIndex ^ 0x9E3779B9;
+    hash = (hash ^ (hash >>> 16)) * 0x85EBCA6B;
+    hash = (hash ^ (hash >>> 13)) * 0xC2B2AE35;
+    hash ^= hash >>> 16;
+    return (hash & 0x7fffffff) % poolLength;
   }
 
   static Future<List<Map<String, dynamic>>> _load() async {

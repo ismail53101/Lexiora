@@ -194,6 +194,11 @@ class AppDatabase extends _$AppDatabase {
             await m.addColumn(studySessions, studySessions.subject);
             await m.addColumn(studySessions, studySessions.taskId);
           }
+          // v20 → v21: AI Assistant nested sub-projects. Existing projects
+          // remain top-level because parent_id is nullable.
+          if (from < 21) {
+            await m.addColumn(aiProjects, aiProjects.parentId);
+          }
         },
         beforeOpen: (OpeningDetails details) async {
           await customStatement('PRAGMA foreign_keys = ON');

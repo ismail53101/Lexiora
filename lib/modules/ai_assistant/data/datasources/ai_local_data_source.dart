@@ -86,7 +86,7 @@ class AiLocalDataSource {
           '  WHERE c.project_id = p.id) AS last_activity '
           'FROM ai_projects p '
           '${filtered ? 'WHERE p.search_text LIKE ?' : ''} '
-          'ORDER BY p.updated_at DESC, p.rowid DESC',
+          'ORDER BY p.parent_id IS NOT NULL, p.updated_at DESC, p.rowid DESC',
           variables: <Variable<Object>>[
             if (filtered) Variable.withString('%$q%'),
           ],

@@ -124,13 +124,20 @@ class AiRepositoryImpl implements AiRepository {
           .toList(growable: false));
 
   @override
-  Future<AiProject> createProject(String name) async {
+  Future<AiProject> createProject(String name, {String? parentId}) async {
     final String n = name.trim().isEmpty ? 'New project' : name.trim();
     final DateTime now = DateTime.now();
-    final AiProject p = AiProject(id: _uuid.v4(), name: n, createdAt: now, updatedAt: now);
+    final AiProject p = AiProject(
+      id: _uuid.v4(),
+      name: n,
+      parentId: parentId,
+      createdAt: now,
+      updatedAt: now,
+    );
     await _local.upsertProject(AiProjectsCompanion.insert(
       id: p.id,
       name: p.name,
+      parentId: Value<String?>(p.parentId),
       searchText: Value<String>(p.name.toLowerCase()),
       createdAt: now,
       updatedAt: now,
@@ -308,6 +315,7 @@ class AiRepositoryImpl implements AiRepository {
   AiProject _toProject(AiProjectRow r) => AiProject(
         id: r.id,
         name: r.name,
+        parentId: r.parentId,
         createdAt: r.createdAt,
         updatedAt: r.updatedAt,
       );

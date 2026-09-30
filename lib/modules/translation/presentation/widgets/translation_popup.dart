@@ -313,6 +313,7 @@ class _EnglishMeaningState extends State<_EnglishMeaning> {
   final DictionarySeeder _dictionarySeeder = sl<DictionarySeeder>();
   final VocabularySeeder _vocabularySeeder = sl<VocabularySeeder>();
   final ExamWordsSeeder _examSeeder = sl<ExamWordsSeeder>();
+  final DictionaryRepository _dictionary = sl<DictionaryRepository>();
 
   String? _meaning;
   String? _partOfSpeech;
@@ -338,8 +339,32 @@ class _EnglishMeaningState extends State<_EnglishMeaning> {
       // Resolve the best exam-appropriate meaning: curated packs first (so
       // "attention" → "the act of focusing the mind", not "treatment"), then
       // the base dictionary's most general sense, then the online dictionary.
-      final WordMeaning? m = await sl<WordMeaningService>()
+      WordMeaning? m = await sl<WordMeaningService>()
           .resolve(widget.word.toLowerCase());
+      // Keep the reader useful even if an optional vocabulary source failed to
+      // initialise: the local dictionary/exam tables are still authoritative.
+      if (m == null) {
+        final ExamWordData? exam =
+            await _dictionary.examData(widget.word.toLowerCase());
+        if (exam?.englishDefinition?.trim().isNotEmpty == true) {
+          m = WordMeaning(
+            meaning: exam!.englishDefinition!.trim(),
+            partOfSpeech: exam.partOfSpeech,
+            urdu: exam.urduMeanings.isEmpty ? null : exam.urduMeanings.first,
+            fromOnline: false,
+          );
+        } else {
+          final DictionaryResult? local =
+              await _dictionary.lookup(widget.word.toLowerCase());
+          if (local != null && local.meaning.trim().isNotEmpty) {
+            m = WordMeaning(
+              meaning: local.meaning.trim(),
+              partOfSpeech: local.partOfSpeech,
+              fromOnline: false,
+            );
+          }
+        }
+      }
       if (mounted) {
         setState(() {
           _meaning = m?.meaning;
