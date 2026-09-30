@@ -267,9 +267,12 @@ const NEWS_SOURCES = [
   { id: "dawn-opinion", name: "Dawn", category: "National", feedType: "Opinions", url: "https://www.dawn.com/feeds/opinion" },
   { id: "express-tribune-pakistan", name: "Express Tribune", category: "National", feedType: "Latest News", url: "https://tribune.com.pk/feed/pakistan" },
   { id: "the-news-pakistan", name: "The News", category: "National", feedType: "Latest News", url: "https://www.thenews.com.pk/rss/1/0" },
-  // World — official world/latest feeds. No unsupported category feed is guessed.
+  // World — sources intended to remain accessible for Pakistan users.
   { id: "bbc-world", name: "BBC World", category: "International", feedType: "Latest News", url: "https://feeds.bbci.co.uk/news/world/rss.xml" },
-  { id: "al-jazeera-world", name: "Al Jazeera", category: "International", feedType: "Latest News", url: "https://www.aljazeera.com/xml/rss/all.xml" },
+  // Reuters no longer exposes a dependable public world RSS endpoint. This
+  // Google News RSS query is restricted to Reuters world articles and keeps
+  // the original Reuters links in each parsed story.
+  { id: "reuters-world", name: "Reuters", category: "International", feedType: "Latest News", url: "https://news.google.com/rss/search?q=site%3Areuters.com%2Fworld&hl=en-US&gl=US&ceid=US:en" },
   { id: "express-tribune-world", name: "Express Tribune", category: "International", feedType: "Latest News", url: "https://tribune.com.pk/feed/world" },
   { id: "the-news-world", name: "The News", category: "International", feedType: "Latest News", url: "https://www.thenews.com.pk/rss/1/2" },
   // GNews articles are merged with RSS articles. Set the Worker secret
