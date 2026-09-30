@@ -36,6 +36,7 @@ class WordUsage extends Equatable {
 class AiWordProfile extends Equatable {
   const AiWordProfile({
     required this.word,
+    this.source = 'ai',
     this.englishDefinition,
     this.urduMeanings = const <String>[],
     this.partOfSpeech,
@@ -48,6 +49,7 @@ class AiWordProfile extends Equatable {
 
   factory AiWordProfile.fromJson(Map<String, dynamic> json) => AiWordProfile(
         word: json['word']?.toString() ?? '',
+        source: json['source']?.toString() ?? 'ai',
         englishDefinition: _text(json['englishDefinition']),
         urduMeanings: _strings(json['urduMeanings']),
         partOfSpeech: _text(json['partOfSpeech']),
@@ -59,6 +61,7 @@ class AiWordProfile extends Equatable {
       );
 
   final String word;
+  final String source;
   final String? englishDefinition;
   final List<String> urduMeanings;
   final String? partOfSpeech;
@@ -78,6 +81,7 @@ class AiWordProfile extends Equatable {
   @override
   List<Object?> get props => <Object?>[
         word,
+        source,
         englishDefinition,
         urduMeanings,
         partOfSpeech,

@@ -4,6 +4,7 @@ import 'package:lexiora/core/utils/typedefs.dart';
 import 'package:lexiora/modules/dictionary/domain/entities/dictionary_entry.dart';
 import 'package:lexiora/modules/dictionary/domain/entities/word_profile.dart';
 import 'package:lexiora/modules/dictionary/data/services/ai_dictionary_service.dart';
+import 'package:lexiora/modules/dictionary/data/services/stands4_dictionary_service.dart';
 import 'package:lexiora/modules/dictionary/domain/repositories/dictionary_repository.dart';
 
 /// Aggregates the fully-offline parts of a word's profile: the curated exam
@@ -11,10 +12,11 @@ import 'package:lexiora/modules/dictionary/domain/repositories/dictionary_reposi
 /// words. Urdu meanings (hybrid) and the bookmark state are supplied by their
 /// own reactive providers, so this stays fast and network-free.
 class GetWordProfile implements UseCase<WordProfile, String> {
-  const GetWordProfile(this._repo, [this._ai]);
+  const GetWordProfile(this._repo, [this._ai, this._stands4]);
 
   final DictionaryRepository _repo;
   final AiDictionaryService? _ai;
+  final Stands4DictionaryService? _stands4;
 
   @override
   ResultFuture<WordProfile> call(String wordLower) => guard(() async {
@@ -26,9 +28,11 @@ class GetWordProfile implements UseCase<WordProfile, String> {
         // AI is reserved for a truly missing word, avoiding a network wait for
         // entries that already have a meaning, synonyms, antonyms, or example.
         final bool existsOffline = exam != null || base != null;
-        final AiWordProfile? ai = existsOffline
-            ? null
-            : await _ai?.define(wl);
+        AiWordProfile? ai;
+        if (!existsOffline) {
+          ai = await _stands4?.define(wl);
+          ai ??= await _ai?.define(wl);
+        }
         return WordProfile(
           word: exam?.word ?? base?.word ?? wordLower,
           wordLower: wl,

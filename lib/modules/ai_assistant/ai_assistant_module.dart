@@ -14,6 +14,7 @@ import 'package:lexiora/modules/ai_assistant/domain/repositories/ai_repository.d
 import 'package:lexiora/modules/ai_assistant/domain/services/ai_chat_service.dart';
 import 'package:lexiora/modules/ai_assistant/presentation/pages/ai_chat_page.dart';
 import 'package:lexiora/modules/dictionary/data/services/ai_dictionary_service.dart';
+import 'package:lexiora/modules/dictionary/data/services/stands4_dictionary_service.dart';
 
 /// Phase v0.10.0 — the AI Assistant.
 ///
@@ -43,6 +44,9 @@ class AiAssistantModule extends FeatureModule {
           getIt<AiApiClient>(),
           getIt<AiConfig>(),
         ),
+      )
+      ..registerLazySingleton<Stands4DictionaryService>(
+        () => Stands4DictionaryService(getIt<AiConfig>()),
       )
       ..registerLazySingleton<AiChatService>(
         () => OpenAiCompatibleChatService(

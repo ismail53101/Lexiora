@@ -210,6 +210,7 @@ class _ProfileView extends StatelessWidget {
           wordLower: profile.wordLower,
           hasCuratedUrdu: hasCuratedUrdu,
           aiAvailable: profile.ai != null,
+          enrichmentSource: profile.ai?.source,
         ),
         const SizedBox(height: 12),
 
@@ -477,11 +478,13 @@ class _OfflineStatusBadge extends ConsumerWidget {
     required this.wordLower,
     required this.hasCuratedUrdu,
     required this.aiAvailable,
+    this.enrichmentSource,
   });
 
   final String wordLower;
   final bool hasCuratedUrdu;
   final bool aiAvailable;
+  final String? enrichmentSource;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -516,7 +519,9 @@ class _OfflineStatusBadge extends ConsumerWidget {
         ),
         child: Text(
           aiAvailable
-              ? '✨ AI-enhanced • Offline fallback ready'
+              ? (enrichmentSource == 'stands4'
+                  ? '📖 STANDS4-enhanced • AI fallback ready'
+                  : '✨ AI-enhanced • Offline fallback ready')
               : online
                   ? '🌐 Retrieved Online • Saved Offline'
                   : '🟢 Available Offline',
