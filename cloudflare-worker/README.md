@@ -297,3 +297,24 @@ flutter build apk --release \
 ```
 
 If the define is omitted or the endpoint is unavailable, the Home card keeps using its bundled mock update. The GitHub Actions release workflow reuses the existing `SAPIORA_AI_BASE_URL` secret for this optional define.
+
+## Dictionary STANDS4 fallback
+
+The Dictionary remains offline-first. A word found in the bundled dictionary is
+returned immediately without a network request. Only a completely missing word
+uses the protected Worker endpoint `/api/dictionary/lookup`, which calls the
+STANDS4 Definitions and Synonyms APIs. If STANDS4 is unavailable or returns no
+usable definition, the app falls back to its direct AI dictionary request.
+
+Configure the STANDS4 credentials as Worker secrets; never put them in Flutter
+or commit them:
+
+```bash
+wrangler secret put STANDS4_UID
+wrangler secret put STANDS4_TOKEN
+```
+
+The STANDS4 lookup is cached by the Worker for 24 hours. STANDS4 provides the
+English definition, part of speech, example, synonyms, and antonyms. Urdu
+meanings remain an AI fallback field because STANDS4's Dictionary and Synonyms
+APIs do not provide Urdu translations.

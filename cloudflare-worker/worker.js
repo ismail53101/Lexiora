@@ -200,6 +200,8 @@ const NEWS_FRESHNESS_WINDOW_MS = 48 * 60 * 60 * 1000;
 const MAX_LATEST_STORIES_PER_CATEGORY = 40;
 const MAX_OPINION_STORIES_PER_CATEGORY = 20;
 const MAX_GNEWS_STORIES_PER_CATEGORY = 20;
+const STANDS4_CACHE_TTL_MS = 24 * 60 * 60 * 1000;
+const STANDS4_CACHE_PREFIX = "https://sapiora.internal/cache/stands4/";
 
 const RELEVANCE_BOOSTS = [
   ['politic', 8],
@@ -285,6 +287,16 @@ export default {
       return currentAffairsResponse(ctx, env);
     }
 
+    if (url.pathname === "/api/dictionary/lookup") {
+      if (request.method !== "GET") {
+        return jsonError(405, "method_not_allowed", "Use GET.");
+      }
+      if (!isWorkerAuthorized(request, env)) {
+        return jsonError(401, "unauthorized", "Invalid or missing API key.");
+      }
+      return stands4DictionaryResponse(url, env);
+    }
+
     if (url.pathname !== CHAT_COMPLETIONS_PATH) {
       return jsonError(404, "not_found", `Unknown path: ${url.pathname}`);
     }
@@ -297,12 +309,8 @@ export default {
     // Worker itself defines, completely separate from the real Forge/HCNSEC
     // keys. Without it, anyone who finds the Worker's URL could rack up
     // usage on your real provider accounts.
-    if (env.WORKER_SHARED_KEY) {
-      const auth = request.headers.get("Authorization") || "";
-      const token = auth.startsWith("Bearer ") ? auth.slice(7).trim() : "";
-      if (token !== env.WORKER_SHARED_KEY) {
-        return jsonError(401, "unauthorized", "Invalid or missing API key.");
-      }
+    if (!isWorkerAuthorized(request, env)) {
+      return jsonError(401, "unauthorized", "Invalid or missing API key.");
     }
 
     let bodyText;
@@ -396,6 +404,76 @@ async function currentAffairsResponse(ctx, env) {
   const response = jsonResponse(payload);
   ctx.waitUntil(cache.put(new Request(NEWS_CACHE_KEY), response.clone()));
   return response;
+}
+
+function isWorkerAuthorized(request, env) {
+  if (!env.WORKER_SHARED_KEY) return true;
+  const auth = request.headers.get("Authorization") || "";
+  const token = auth.startsWith("Bearer ") ? auth.slice(7).trim() : "";
+  return token === env.WORKER_SHARED_KEY;
+}
+
+async function stands4DictionaryResponse(url, env) {
+  const word = (url.searchParams.get("word") || "").trim().toLowerCase();
+  if (!word || word.length > 80) {
+    return jsonError(400, "invalid_word", "Provide one dictionary word.");
+  }
+  if (!env.STANDS4_UID || !env.STANDS4_TOKEN) {
+    return jsonError(503, "stands4_not_configured", "STANDS4 is not configured.");
+  }
+
+  const cacheKey = new Request(`${STANDS4_CACHE_PREFIX}${encodeURIComponent(word)}`);
+  const cached = await caches.default.match(cacheKey);
+  if (cached) {
+    const cachedPayload = await cached.clone().json().catch(() => null);
+    if (cachedPayload && Date.now() - cachedPayload.fetchedAt < STANDS4_CACHE_TTL_MS) {
+      return withCors(cached);
+    }
+  }
+
+  const params = new URLSearchParams({
+    uid: env.STANDS4_UID,
+    tokenid: env.STANDS4_TOKEN,
+    word,
+    format: "json",
+  });
+  const headers = { "User-Agent": "Lexiora-Dictionary/1.0" };
+  const [definitionsResponse, synonymsResponse] = await Promise.all([
+    fetch(`https://www.stands4.com/services/v2/defs.php?${params}`, { headers }),
+    fetch(`https://www.stands4.com/services/v2/syno.php?${params}`, { headers }),
+  ]);
+  if (!definitionsResponse.ok && !synonymsResponse.ok) {
+    return jsonError(502, "stands4_unavailable", "STANDS4 lookup failed.");
+  }
+
+  const definitions = await definitionsResponse.json().catch(() => null);
+  const synonyms = await synonymsResponse.json().catch(() => null);
+  const definition = firstStands4Result(definitions);
+  const thesaurus = firstStands4Result(synonyms);
+  const payload = {
+    fetchedAt: Date.now(),
+    word,
+    englishDefinition: cleanText(definition?.definition || thesaurus?.definition || ""),
+    partOfSpeech: cleanText(definition?.partofspeech || thesaurus?.partofspeech || ""),
+    exampleSentence: cleanText(definition?.example || ""),
+    synonyms: splitStands4List(thesaurus?.synonyms),
+    antonyms: splitStands4List(thesaurus?.antonyms),
+    source: "stands4",
+  };
+  const response = jsonResponse(payload);
+  await caches.default.put(cacheKey, response.clone());
+  return response;
+}
+
+function firstStands4Result(payload) {
+  const result = payload?.results?.result;
+  if (Array.isArray(result)) return result[0] || null;
+  return result && typeof result === "object" ? result : null;
+}
+
+function splitStands4List(value) {
+  if (typeof value !== "string") return [];
+  return value.split(",").map((item) => cleanText(item)).filter(Boolean).slice(0, 12);
 }
 
 async function refreshCurrentAffairs(env) {
