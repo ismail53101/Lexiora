@@ -275,11 +275,11 @@ built and in users' hands, keeps working without any update, rebuild, or
 Play Store release.
 
 
-## Current Affairs RSS cache
+## Current Affairs RSS/GNews cache
 
-The Worker also exposes `GET /api/current-affairs/latest`. It fetches metadata only from the configured public RSS feeds, removes duplicate stories by canonical article URL/title, and returns separate `national` and `international` arrays. Each story contains its title, source, category, publication time, excerpt, optional image URL, and original article URL. Full article bodies are never stored.
+The Worker also exposes `GET /api/current-affairs/latest`. It fetches metadata only from the configured public RSS feeds and GNews, removes duplicate stories by canonical article URL/title, and returns separate `national` and `international` arrays. Each story contains its title, source, category, publication time, excerpt, optional image URL, and original article URL. Full article bodies are never stored.
 
-The scheduled Worker trigger refreshes the cache every 15 minutes. The currently configured sources are Express Tribune Pakistan and The News News under `National`, and BBC World, Express Tribune World, The News World, and Al Jazeera under `International`. A source that temporarily fails contributes no new items while the remaining sources continue to populate the cache.
+The scheduled Worker trigger refreshes the cache every 15 minutes. GNews is the primary source for latest stories and is selected at roughly a 2:1 ratio over RSS when both have enough fresh items; RSS remains the fallback when GNews is unavailable, rate-limited, or not configured. Set `GNEWS_API_KEY` as a Worker secret to enable it. Optional plain variables are `GNEWS_MAX` (default `10`) and `GNEWS_CACHE_MINUTES` (default `60`). The currently configured RSS sources are Express Tribune Pakistan and The News under `National`, and BBC World, Express Tribune World, The News World, and Al Jazeera under `International`. A source that temporarily fails contributes no new items while the remaining sources continue to populate the cache.
 
 The Flutter release build can connect the existing Home card by passing:
 

@@ -201,7 +201,8 @@ const NEWS_CACHE_TTL_MS = 15 * 60 * 1000;
 const NEWS_FRESHNESS_WINDOW_MS = 48 * 60 * 60 * 1000;
 const MAX_LATEST_STORIES_PER_CATEGORY = 40;
 const MAX_OPINION_STORIES_PER_CATEGORY = 20;
-const MAX_GNEWS_STORIES_PER_CATEGORY = 20;
+const MAX_GNEWS_STORIES_PER_CATEGORY = 30;
+const MAX_RSS_STORIES_PER_CATEGORY = 20;
 // GNews free plan: 100 requests/day, 10 articles/request, 1 request/second.
 // The cron runs every 15 min, so GNews results are cached (KV, global) and the
 // API is only called when the cache is older than GNEWS_CACHE_MINUTES. If the
@@ -769,11 +770,13 @@ function selectLatestStories(stories) {
   const rss = latest.filter((story) => story.feedType.toLowerCase() !== "gnews");
 
   // Rank each transport independently so a large RSS batch cannot crowd every
-  // GNews article out of the response. Up to 20 GNews and 20 RSS stories are
-  // retained per category, with either side filling unused slots.
+  // GNews article out of the response. GNews is the primary source: when both
+  // transports have enough stories, the final list contains roughly two GNews
+  // stories for every RSS story. RSS still fills unused slots when GNews is
+  // unavailable, rate-limited, or not configured.
   const selectedLatest = interleaveTransports(
     rankedStories(gnews).slice(0, MAX_GNEWS_STORIES_PER_CATEGORY),
-    rankedStories(rss),
+    rankedStories(rss).slice(0, MAX_RSS_STORIES_PER_CATEGORY),
     MAX_LATEST_STORIES_PER_CATEGORY,
   );
   const selectedOpinions = rankedStories(opinions)
@@ -798,14 +801,20 @@ function interleaveTransports(gnews, rss, limit) {
   const out = [];
   let g = 0;
   let r = 0;
-  // Start with whichever side has the newest story, then alternate.
-  let takeGnews = dateValue(gnews[0]?.publishedAt) > dateValue(rss[0]?.publishedAt);
+  // Keep a 2:1 GNews-to-RSS rhythm. This makes GNews visibly primary without
+  // making the feed brittle when one transport returns fewer stories.
+  let gnewsSinceRss = 0;
   while (out.length < limit && (g < gnews.length || r < rss.length)) {
-    if (takeGnews && g < gnews.length) out.push(gnews[g++]);
-    else if (!takeGnews && r < rss.length) out.push(rss[r++]);
-    else if (g < gnews.length) out.push(gnews[g++]);
-    else out.push(rss[r++]);
-    takeGnews = !takeGnews;
+    if (g < gnews.length && (r >= rss.length || gnewsSinceRss < 2)) {
+      out.push(gnews[g++]);
+      gnewsSinceRss += 1;
+    } else if (r < rss.length) {
+      out.push(rss[r++]);
+      gnewsSinceRss = 0;
+    } else {
+      out.push(gnews[g++]);
+      gnewsSinceRss += 1;
+    }
   }
   return out;
 }
