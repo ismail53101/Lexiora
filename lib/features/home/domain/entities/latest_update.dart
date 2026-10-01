@@ -24,4 +24,10 @@ class LatestUpdate {
   final String? imageUrl;
   final String? articleUrl;
   final DateTime? publishedAt;
+
+  /// Whether this story belongs in the Opinions feed rather than Latest.
+  ///
+  /// The API may include inconsistent casing or whitespace in the feed type,
+  /// so classification is normalized in one place before the UI filters it.
+  bool get isOpinion => feedType.trim().toLowerCase() == 'opinions';
 }

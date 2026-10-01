@@ -152,10 +152,7 @@ class _CurrentAffairsPageState extends ConsumerState<CurrentAffairsPage> {
   }
 
   bool _matchesFeedType(LatestUpdate story, int selectedFeedType) {
-    if (selectedFeedType == 0) {
-      return story.feedType.toLowerCase() != 'opinions';
-    }
-    return story.feedType.toLowerCase() == 'opinions';
+    return selectedFeedType == 1 ? story.isOpinion : !story.isOpinion;
   }
 
   List<LatestUpdate> _fallback(String category) {
