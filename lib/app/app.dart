@@ -17,10 +17,15 @@ class SapioraApp extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final AsyncValue<AppSettings> settings = ref.watch(settingsProvider);
-    final ThemeMode themeMode = settings.maybeWhen(
+    final ThemeMode selectedThemeMode = settings.maybeWhen(
       data: (AppSettings s) => s.themeMode,
       orElse: () => ThemeMode.light,
     );
+    // Keep the System option available in settings, but use the app's light
+    // theme for it instead of inheriting a device-wide dark appearance.
+    final ThemeMode themeMode = selectedThemeMode == ThemeMode.system
+        ? ThemeMode.light
+        : selectedThemeMode;
     final double fontScale = settings.maybeWhen(
       data: (AppSettings s) => s.fontScale,
       orElse: () => 1.0,
