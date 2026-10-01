@@ -11107,6 +11107,125 @@
       "backshift"
     ],
     "content": {
+      "narrationSheet": {
+        "sections": [
+          {
+            "accent": "blue",
+            "blocks": [
+              {
+                "type": "panels",
+                "columns": [
+                  {
+                    "kind": "direct",
+                    "title": "Direct Speech",
+                    "rows": [
+                      { "kind": "label", "icon": "book", "text": "Basic Formula" },
+                      { "kind": "formula", "text": "Subject + said, \"Statement.\"" },
+                      { "kind": "label", "icon": "bulb", "text": "What is a Statement?" },
+                      {
+                        "kind": "bullets",
+                        "items": [
+                          "A statement is a complete sentence that tells something.",
+                          "In direct speech, the statement is the exact words spoken by the speaker."
+                        ]
+                      },
+                      { "kind": "urdu", "text": "بیانیہ ایک مکمل جملہ ہوتا ہے جو کوئی بات بتاتا ہے۔ Direct speech میں یہ سپیکر کے اصل الفاظ ہوتے ہیں۔" }
+                    ]
+                  },
+                  {
+                    "kind": "indirect",
+                    "title": "Indirect Speech",
+                    "rows": [
+                      { "kind": "label", "icon": "book", "text": "Basic Formula" },
+                      { "kind": "formula", "text": "Subject + said **that** + reported statement." },
+                      { "kind": "label", "icon": "bulb", "text": "What is a Reported Statement?" },
+                      {
+                        "kind": "bullets",
+                        "items": [
+                          "A **reported statement** is the meaning of the original statement in our own words.",
+                          "In indirect speech, we do not use the exact words."
+                        ]
+                      },
+                      { "kind": "urdu", "text": "Reported statement سپیکر کی بات کا مطلب ہے جو اپنے الفاظ میں بیان کیا جاتا ہے۔" }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "exampleColumns",
+                "examples": [
+                  {
+                    "title": "Example 1",
+                    "direct": "Riya said, \"**I am happy.**\"",
+                    "indirect": "Riya said **that** **she was happy**."
+                  },
+                  {
+                    "title": "Example 2",
+                    "direct": "Aman said, \"**I have completed my work.**\"",
+                    "indirect": "Aman said that **he had completed his work**."
+                  }
+                ]
+              },
+              {
+                "type": "group",
+                "accent": "blue",
+                "icon": "gear",
+                "title": "Changes Shown",
+                "titleSuffix": "(Example 1)",
+                "blocks": [
+                  {
+                    "type": "table",
+                    "headers": ["Word (Direct Speech)", "Word (Indirect Speech)", "Why?"],
+                    "rows": [
+                      { "numbered": true, "number": 1, "left": "I", "right": "she", "why": "Because Riya is the speaker." },
+                      { "numbered": true, "number": 2, "left": "am", "right": "was", "why": "Because the reporting verb \"said\" is in the past, so the tense goes one step back." },
+                      { "numbered": true, "number": 3, "left": "my", "right": "her", "why": "Because \"my\" refers to Riya." },
+                      { "numbered": true, "number": 4, "left": "quotation marks", "right": "removed", "why": "Because indirect speech does not repeat the exact words." },
+                      { "numbered": true, "number": 5, "left": "that", "right": "added", "why": "Because \"that\" connects the reporting clause with the reported statement." }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "group",
+                "accent": "blue",
+                "icon": "people",
+                "title": "Said vs Told",
+                "blocks": [
+                  {
+                    "type": "changesCard",
+                    "cards": [
+                      {
+                        "accent": "purple",
+                        "title": "Said (no object)",
+                        "items": [
+                          "We use \"said\" when there is no object after it.",
+                          "Example: Riya said that she was ready.",
+                          "\"said\" کے بعد کوئی شخص کا نام یا object نہیں آتا۔"
+                        ]
+                      },
+                      {
+                        "accent": "green",
+                        "title": "Told (with object)",
+                        "items": [
+                          "We use \"told\" when there is an object (person) after it.",
+                          "Example: Riya told me that she was ready.",
+                          "\"told\" کے بعد ہمیشہ سننے والے کا نام آتا ہے۔"
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "type": "incorrectCorrect",
+                    "incorrect": "Riya told that she was ready.",
+                    "correct": "Riya told me that she was ready."
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
       "introduction": "A statement (assertive sentence) states a fact, opinion or piece of information. It is the most common type of reported speech. The formula is simple: Direct — Subject + said, \"Statement.\" ; Indirect — Subject + said/told + that + reported statement, with the tense back-shifted and the pronouns adjusted.",
       "urduExplanation": "بیانیہ جملے (Statements) میں براہِ راست تقریر کا فارمولا ہے: Subject + said, \"جملہ\"۔ بالواسطہ تقریر میں اقتباس کے نشان ہٹا کر 'that' لگایا جاتا ہے اور زمانہ ایک قدم پیچھے لے جایا جاتا ہے۔ اگر سامنے کوئی سننے والا موجود ہو (said **to me/him**) تو said کی جگہ **told** استعمال ہوتا ہے — یاد رکھیں، told کے بعد ہمیشہ کوئی object آتا ہے۔ ضمائر بھی مقرر اور سننے والے کے مطابق بدل جاتے ہیں۔",
       "englishExplanation": "For statements, keep the reporting verb \"said\" when there is no listener, and change \"said to + object\" into \"told + object\". Insert the conjunction \"that\" after the reporting verb and remove the quotation marks. Back-shift the reported verb one step into the past (Simple Present → Simple Past, Present Continuous → Past Continuous, Present Perfect / Simple Past → Past Perfect, will → would, can → could, may → might, shall → should/would, must → had to). Change first-person pronouns according to the subject of the reporting verb and second-person pronouns according to its object; third-person pronouns stay unchanged. Time and place words shift too: now → then, today → that day, yesterday → the previous day, tomorrow → the next day, here → there. If the reporting verb is in the present or future, the tense does not back-shift.",
@@ -11300,6 +11419,82 @@
       "would could might"
     ],
     "content": {
+      "narrationSheet": {
+        "sections": [
+          {
+            "accent": "blue",
+            "blocks": [
+              {
+                "type": "panels",
+                "columns": [
+                  {
+                    "kind": "direct",
+                    "title": "Direct Speech",
+                    "rows": [
+                      { "kind": "label", "icon": "book", "text": "Definition" },
+                      { "kind": "text", "text": "The exact words of the speaker are written inside quotation marks." },
+                      { "kind": "urdu", "text": "سپیکر کے اصل الفاظ quotation marks میں لکھے جاتے ہیں۔" }
+                    ]
+                  },
+                  {
+                    "kind": "indirect",
+                    "title": "Indirect Speech",
+                    "rows": [
+                      { "kind": "label", "icon": "book", "text": "Definition" },
+                      { "kind": "text", "text": "The speaker's meaning is reported without using the exact words." },
+                      { "kind": "urdu", "text": "اسپیکر کی بات کو اپنے الفاظ میں بیان کیا جاتے ہے، اصل الفاظ جوں کے توں نہیں لکھے جاتے۔" }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "group",
+                "accent": "blue",
+                "icon": "gear",
+                "title": "Tense Changes (Backshift of Tenses)",
+                "note": "When the reporting verb is in the **past**, the tense usually moves one step back.\nجب reporting verb ماضی میں ہو تو معمول کے طور پر زمانہ ایک قدم پیچھے چلا جاتا ہے۔",
+                "blocks": [
+                  {
+                    "type": "table",
+                    "headers": ["DIRECT SPEECH", "INDIRECT SPEECH"],
+                    "rows": [
+                      { "left": "am / is", "right": "was" },
+                      { "left": "are", "right": "were" },
+                      { "left": "V₁ / V₁ + s", "right": "V₂" },
+                      { "left": "am / is / are + V-ing", "right": "was / were + V-ing" },
+                      { "left": "has / have + V₃", "right": "had + V₃" },
+                      { "left": "V₂", "right": "had + V₃" },
+                      { "left": "was / were + V-ing", "right": "had been + V-ing" },
+                      { "left": "will", "right": "would" },
+                      { "left": "can", "right": "could" },
+                      { "left": "may", "right": "might" },
+                      { "left": "shall", "right": "should / would" }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "group",
+                "accent": "blue",
+                "icon": "chat",
+                "title": "Examples",
+                "blocks": [
+                  {
+                    "type": "rows",
+                    "rows": [
+                      { "direct": "She said, \"**I work** hard.\"", "indirect": "She said **that** she **worked** hard." },
+                      { "direct": "She said, \"**I am studying**.\"", "indirect": "She said **that** she **was studying**." },
+                      { "direct": "She said, \"**I have finished**.\"", "indirect": "She said **that** she **had finished**." },
+                      { "direct": "She said, \"**I bought** a book.\"", "indirect": "She said **that** she **had bought** a book." },
+                      { "direct": "She said, \"**I will help** you.\"", "indirect": "She said **that** she **would help** me." }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
       "introduction": "When the reporting verb is in the past (said, told, asked), the tense of the reported clause usually moves one step back into the past. This is called the back-shift of tenses. Present forms become past forms, and past forms become past perfect. Modals change too: will → would, can → could, may → might, shall → should/would, must → had to. Tenses that are already past perfect — and would/should/could/might — stay as they are.",
       "urduExplanation": "جب رپورٹنگ فعل ماضی میں ہو (said, told, asked) تو رپورٹڈ جملے کا زمانہ ایک قدم پیچھے لے جایا جاتا ہے، یعنی حال کی شکلیں ماضی بن جاتی ہیں اور ماضی ماضیِ مکمل بن جاتا ہے۔ مثلاً am/is → was، V₁ → V₂، has/have + V₃ → had + V₃، will → would، can → could، may → might، shall → should/would، must → had to۔ یاد رہے کہ Past Perfect اور would, should, could, might کا زمانہ نہیں بدلتا۔",
       "englishExplanation": "Back-shift applies when the reporting verb is past. Simple Present (V₁/V₁+s) becomes Simple Past (V₂); Present Continuous becomes Past Continuous; Present Perfect and Simple Past both become Past Perfect; Past Continuous becomes Past Perfect Continuous; will/can/may/shall become would/could/might/should-would; must becomes had to. Past Perfect never changes, and the conditionals would, should, could and might stay unchanged. No back-shift happens when the reporting verb is in the present or future tense, or when the sentence is a universal truth or habitual fact.",
@@ -11699,6 +11894,110 @@
       "you"
     ],
     "content": {
+      "narrationSheet": {
+        "sections": [
+          {
+            "accent": "blue",
+            "blocks": [
+              {
+                "type": "panels",
+                "columns": [
+                  {
+                    "kind": "direct",
+                    "title": "Direct Speech",
+                    "rows": [
+                      { "kind": "label", "icon": "book", "text": "What are Pronouns in Direct Speech?" },
+                      {
+                        "kind": "bullets",
+                        "items": [
+                          "Pronouns are used according to: 1. The speaker (جو بول رہا ہے) 2. The listener (جو سن رہا ہے) 3. The person being discussed (جس کے بارے میں بات کی جا رہی ہے)",
+                          "It shows the exact person in the sentence."
+                        ]
+                      },
+                      { "kind": "urdu", "text": "ضمیر اس اصل شخص کو ظاہر کرتا ہے جس کے بارے میں بات کی جا رہی ہے۔" }
+                    ]
+                  },
+                  {
+                    "kind": "indirect",
+                    "title": "Indirect Speech",
+                    "rows": [
+                      { "kind": "label", "icon": "book", "text": "What happens to Pronouns?" },
+                      {
+                        "kind": "bullets",
+                        "items": [
+                          "In indirect speech, pronouns usually change according to the speaker, listener and the person being discussed.",
+                          "The pronoun is changed so that the meaning remains clear from the reporter's point of view.",
+                          "We do not use the exact words of the speaker."
+                        ]
+                      },
+                      { "kind": "urdu", "text": "Indirect speech میں ضمیر اس طرح بدلتے ہیں کہ جملے کا مطلب واضح رہے۔" }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "group",
+                "accent": "blue",
+                "icon": "gear",
+                "title": "Pronoun Changes Table",
+                "blocks": [
+                  {
+                    "type": "table",
+                    "headers": ["Pronoun (Direct Form)", "Pronoun (Indirect Form)"],
+                    "rows": [
+                      { "left": "I", "right": "he / she" },
+                      { "left": "we", "right": "they" },
+                      { "left": "me", "right": "him / her" },
+                      { "left": "us", "right": "them" },
+                      { "left": "my", "right": "his / her" },
+                      { "left": "our", "right": "their" },
+                      { "left": "you", "right": "I / we / he / she / they" },
+                      { "left": "your", "right": "my / our / his / her / their" },
+                      { "left": "myself", "right": "myself / himself / herself / themselves" },
+                      { "left": "this", "right": "that" },
+                      { "left": "these", "right": "those" }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "exampleColumns",
+                "examples": [
+                  {
+                    "title": "Example 1",
+                    "direct": "Riya said, \"**I love my school.**\"",
+                    "changes": [
+                      { "from": "I", "to": "she", "why": "Riya is the speaker" },
+                      { "from": "my", "to": "her", "why": "school belongs to Riya" }
+                    ],
+                    "indirect": "Riya said that **she loved her school**."
+                  },
+                  {
+                    "title": "Example 2",
+                    "direct": "Aman said to Riya, \"**You helped me.**\"",
+                    "changes": [
+                      { "from": "you", "to": "she", "why": "Riya is the listener" },
+                      { "from": "me", "to": "him", "why": "Aman is the person being discussed" }
+                    ],
+                    "indirect": "Aman told Riya that **she had helped him**."
+                  }
+                ]
+              },
+              {
+                "type": "note",
+                "accent": "red",
+                "title": "Important Note",
+                "rows": [
+                  { "text": "\"You\" does not have one fixed conversion." },
+                  { "text": "It changes according to the listener (who is being addressed)." },
+                  { "text": "Example: Riya said to Ali, \"**You are my friend.**\" → Riya told Ali that **he was her friend**." }
+                ],
+                "urdu": "\"You\" کا ایک مقررہ تبدیلی نہیں ہوتی۔ یہ سننے والے کے مطابق بدلتی ہے۔\nمثال: کیا Ali نے \"You are my friend\" کہا تو وہ اس کا دوست ہے۔"
+              }
+            ]
+          }
+        ]
+      },
       "introduction": "Pronouns in the reported clause change according to the speaker, the listener, and the person being discussed. The SOC rule makes this easy: First-person pronouns (I, we, my, our…) follow the Subject of the reporting verb; Second-person pronouns (you, your) follow the Object (the listener); Third-person pronouns (he, she, they, it) do not change.",
       "urduExplanation": "ضمائر (Pronouns) تین باتوں کے مطابق بدلتے ہیں: مقرر (speaker)، سننے والا (listener) اور جس شخص کا ذکر ہو۔ SOC کا اصول یاد رکھیں: پہلے شخص کے ضمائر (I, we, my, our) رپورٹنگ فعل کے Subject کے مطابق بدلتے ہیں، دوسرے شخص کے ضمائر (you, your) Object یعنی سننے والے کے مطابق بدلتے ہیں، اور تیسرے شخص کے ضمائر (he, she, they) نہیں بدلتے۔ Note: \"you\" کی کوئی ایک مقرر شکل نہیں — یہ ہمیشہ سننے والے کے مطابق بدلتا ہے۔",
       "englishExplanation": "Apply the SOC rule. Subject rule: first-person pronouns change according to the subject of the reporting verb — I → he/she, we → they, me → him/her, us → them, my → his/her, our → their. Object rule: second-person pronouns change according to the object of the reporting verb — you → I/we/he/she/they and your → my/our/his/her/their, depending on who the listener is; you has no single fixed conversion. Context rule: third-person pronouns (he, she, they, it, him, her) remain unchanged. Reflexive myself changes to himself/herself/themselves as needed, and the demonstratives this → that, these → those.",
@@ -11905,6 +12204,103 @@
       "ago before"
     ],
     "content": {
+      "narrationSheet": {
+        "sections": [
+          {
+            "accent": "blue",
+            "blocks": [
+              {
+                "type": "panels",
+                "columns": [
+                  {
+                    "kind": "direct",
+                    "title": "Direct Speech",
+                    "rows": [
+                      { "kind": "label", "icon": "book", "text": "Definition" },
+                      { "kind": "text", "text": "The exact words of the speaker are written inside quotation marks." },
+                      { "kind": "urdu", "text": "سپیکر کے اصل الفاظ quotation marks میں لکھے جاتے ہیں۔" }
+                    ]
+                  },
+                  {
+                    "kind": "indirect",
+                    "title": "Indirect Speech",
+                    "rows": [
+                      { "kind": "label", "icon": "book", "text": "Definition" },
+                      { "kind": "text", "text": "The speaker's meaning is reported without using the exact words." },
+                      { "kind": "urdu", "text": "سپیکر کی بات کو اپنے الفاظ میں بیان کیا جاتا ہے، اصل الفاظ جوں کے توں نہیں لکھے جاتے۔" }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "group",
+                "accent": "blue",
+                "icon": "gear",
+                "title": "Time and Place Changes Table",
+                "blocks": [
+                  {
+                    "type": "table",
+                    "headers": ["Word (Direct Speech)", "Word (Indirect Speech)", "Meaning / Use"],
+                    "rows": [
+                      { "left": "now", "right": "then", "why": "used for current time" },
+                      { "left": "today", "right": "that day", "why": "used for today" },
+                      { "left": "tonight", "right": "that night", "why": "used for tonight" },
+                      { "left": "yesterday", "right": "the previous day / the day before", "why": "used for yesterday" },
+                      { "left": "tomorrow", "right": "the next day / the following day", "why": "used for tomorrow" },
+                      { "left": "last night", "right": "the previous night", "why": "used for last night" },
+                      { "left": "last week", "right": "the previous week", "why": "used for last week" },
+                      { "left": "next week", "right": "the following week", "why": "used for next week" },
+                      { "left": "ago", "right": "before", "why": "used for a time before" },
+                      { "left": "here", "right": "there", "why": "used for a place" },
+                      { "left": "this", "right": "that", "why": "used for this (thing/person)" },
+                      { "left": "these", "right": "those", "why": "used for these (things/people)" },
+                      { "left": "come", "right": "go", "why": "used for come" },
+                      { "left": "bring", "right": "take", "why": "used for bring" }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "group",
+                "accent": "blue",
+                "icon": "chat",
+                "title": "Example",
+                "blocks": [
+                  {
+                    "type": "flow",
+                    "direct": "Riya said, \"**I will come here tomorrow.**\"",
+                    "changes": [
+                      "will → would",
+                      "come → go",
+                      "here → there",
+                      "tomorrow → the next day"
+                    ],
+                    "indirect": "Riya said **that** she **would go there the next day**."
+                  },
+                  {
+                    "type": "timeline",
+                    "steps": [
+                      { "title": "yesterday", "urdu": "کل", "label": "the previous day" },
+                      { "title": "today", "urdu": "آج", "label": "that day" },
+                      { "title": "tomorrow", "urdu": "آنے والا کل", "label": "the next day" }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "note",
+                "accent": "red",
+                "title": "Important Note",
+                "rows": [
+                  { "text": "Time and place words change because the sentence is reported later, from a different time and place." },
+                  { "text": "The meaning remains the same, but the words are changed." }
+                ],
+                "urdu": "وقت اور جگہ کے الفاظ تبدیل ہوتے ہیں کیونکہ بات بعد میں، دوسرے وقت اور جگہ سے بیان کی جاتی ہے۔\nمطلب وہی رہتا ہے، لیکن الفاظ بدل جاتے ہیں۔"
+              }
+            ]
+          }
+        ]
+      },
       "introduction": "When the reporter speaks at a different time or place from the original speaker, near words become far words: now → then, today → that day, yesterday → the previous day, tomorrow → the next day, here → there, this → that, ago → before. Verbs of motion change direction too: come → go and bring → take.",
       "urduExplanation": "جب رپورٹ کرنے والا کسی اور وقت یا مقام پر بات دہرائے تو قریب کے الفاظ دور کے الفاظ بن جاتے ہیں: now → then، today → that day، yesterday → the previous day، tomorrow → the next day، here → there، this → that، ago → before۔ حرکت کے فعل بھی بدلتے ہیں: come → go اور bring → take۔ اگر رپورٹنگ فعل حال میں ہو یا بات اسی وقت کی ہو تو یہ الفاظ نہیں بدلتے۔",
       "englishExplanation": "Time and place adverbials shift when the reporting moment differs from the speaking moment: now → then, today → that day, tonight → that night, yesterday → the previous day / the day before, tomorrow → the next day / the following day, last night → the previous night, last week → the previous week, next week → the following week, ago → before, here → there, this → that, these → those. Motion verbs also change perspective: come → go and bring → take. If the reporting verb is in the present tense, or the time expression is still valid (dates, names of days, \"since morning\"), no change is needed.",
@@ -12116,6 +12512,93 @@
       "asked"
     ],
     "content": {
+      "narrationSheet": {
+        "sections": [
+          {
+            "accent": "blue",
+            "blocks": [
+              {
+                "type": "questionBlock",
+                "accent": "magenta",
+                "heading": "Use asked + if / whether.",
+                "urdu": "سوالات میں if یا whether استعمال ہوتا ہے۔",
+                "changes": [
+                  "Remove quotation marks.",
+                  "Remove ?",
+                  "Use **if / whether.**",
+                  "Change order."
+                ],
+                "direct": "Riya asked, \"**Are you ready?**\"",
+                "indirect": "Riya asked **if I was ready**."
+              },
+              {
+                "type": "group",
+                "accent": "blue",
+                "icon": "book",
+                "title": "More Examples",
+                "titleSuffix": "(Yes/No Questions)",
+                "blocks": [
+                  {
+                    "type": "rows",
+                    "rows": [
+                      { "direct": "He asked, \"**Do you like tea?**\"", "indirect": "He asked **if** I **liked** tea." },
+                      { "direct": "She asked, \"**Will you come tomorrow?**\"", "indirect": "She asked **if** I **would come the next day**." },
+                      { "direct": "He asked, \"**Can you help me?**\"", "indirect": "He asked **if** I **could help** him." },
+                      { "direct": "They asked, \"**Have you finished?**\"", "indirect": "They asked **if** I **had finished**." },
+                      { "direct": "She asked, \"**Is she your sister?**\"", "indirect": "She asked **if** she **was** my sister." }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "questionBlock",
+                "accent": "cyan",
+                "heading": "Keep the question word.",
+                "urdu": "Wh-word فبی سوال کو ویسے ہی رکھا جاتا ہے۔",
+                "changes": [],
+                "direct": "Riya asked, \"**Where do you live?**\"",
+                "indirect": "Riya asked **where I lived**."
+              },
+              {
+                "type": "formulaCard",
+                "accent": "blue",
+                "title": "Formula",
+                "text": "asked + wh-word + subject + verb"
+              },
+              {
+                "type": "group",
+                "accent": "blue",
+                "icon": "book",
+                "title": "More Examples",
+                "blocks": [
+                  {
+                    "type": "rows",
+                    "rows": [
+                      { "direct": "He asked, \"**Why are you late?**\"", "indirect": "He asked **why** I **was late**." },
+                      { "direct": "She asked, \"**When will you return?**\"", "indirect": "She asked **when** I **would return**." },
+                      { "direct": "She asked, \"**How did you do this?**\"", "indirect": "She asked **how** I **had done that**." }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "note",
+                "accent": "red",
+                "title": "Important Rule",
+                "rows": [
+                  { "text": "Do not use question word order." }
+                ],
+                "urdu": "سوال والے الفاظ کا ترتیب تبدیل نہیں کرتے۔"
+              },
+              {
+                "type": "incorrectCorrect",
+                "incorrect": "She asked **where did I live**.",
+                "correct": "She asked **where I lived**."
+              }
+            ]
+          }
+        ]
+      },
       "introduction": "Reported questions use \"asked\" (never \"said\"), and the question becomes a statement: no quotation marks, no question mark, no question word order. Yes/No questions are joined with if or whether; WH-questions keep their question word (what, where, when, why, how). The tense back-shifts and the pronouns and time words change as in statements.",
       "urduExplanation": "سوالات کی رپورٹ کے لیے ہمیشہ **asked** استعمال ہوتا ہے۔ Haan/Nah والے سوالات (Yes/No) میں if یا whether لگتا ہے، اور WH-سوالات میں سوال کا لفظ (what, where, when) ویسے ہی رہتا ہے۔ سوال کی ترتیب ختم ہو کر عام جملے کی ترتیب (subject + verb) بن جاتی ہے، سوال کا نشان (?) ہٹ جاتا ہے اور do/does/did حذف ہو جاتے ہیں۔ زمانہ، ضمیر اور وقت کے الفاظ پچھلے اصولوں کے مطابق بدلتے ہیں۔",
       "englishExplanation": "Change the reporting verb to asked. For Yes/No questions, add if or whether and convert to statement order: asked + if/whether + subject + verb. Remove the auxiliary do/does/did and back-shift the main verb. For WH-questions, keep the question word and use statement order: asked + wh-word + subject + verb. Never keep question word order: \"She asked where did I live\" is wrong; \"She asked where I lived\" is correct. Remove the question mark and end with a full stop. If the question word is the subject (Who broke the window?), the order stays the same because it is already subject + verb.",
@@ -12329,6 +12812,272 @@
       "not to"
     ],
     "content": {
+      "narrationSheet": {
+        "sections": [
+          {
+            "accent": "blue",
+            "letter": "A",
+            "title": "Commands and Requests",
+            "blocks": [
+              {
+                "type": "items",
+                "items": [
+                  {
+                    "accent": "yellow",
+                    "icon": "gear",
+                    "title": "Why this formula?",
+                    "text": "Positive commands are instructions. They are changed into **\"told/ordered + object + to + V₁\"** because we express the command as a request to do something."
+                  },
+                  {
+                    "accent": "blue",
+                    "icon": "doc",
+                    "title": "Formula:",
+                    "text": "told / ordered / asked + object + to + V₁"
+                  }
+                ]
+              },
+              {
+                "type": "panels",
+                "columns": [
+                  {
+                    "kind": "direct",
+                    "title": "Direct Speech",
+                    "rows": [
+                      {
+                        "kind": "example",
+                        "items": [
+                          { "text": "Teacher said, \"**Sit down.**\"" },
+                          { "text": "Father said, \"**Open the door.**\"" },
+                          { "text": "Coach said, \"**Practice daily.**\"" }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "indirect",
+                    "title": "Indirect Speech",
+                    "rows": [
+                      {
+                        "kind": "example",
+                        "items": [
+                          { "text": "Teacher told the students **to sit down**." },
+                          { "text": "Father ordered me **to open the door**." },
+                          { "text": "Coach advised the team **to practice daily**." }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "items",
+                "items": [
+                  {
+                    "accent": "yellow",
+                    "icon": "gear",
+                    "title": "Why this formula?",
+                    "text": "Negative commands forbid someone from doing something. So we use **\"told/ordered + object + not to + V₁\"**."
+                  },
+                  {
+                    "accent": "blue",
+                    "icon": "doc",
+                    "title": "Formula:",
+                    "text": "told / ordered / asked + object + **not to** + V₁"
+                  }
+                ]
+              },
+              {
+                "type": "panels",
+                "columns": [
+                  {
+                    "kind": "direct",
+                    "title": "Direct Speech",
+                    "rows": [
+                      {
+                        "kind": "example",
+                        "items": [
+                          { "text": "Mother said, \"**Do not waste time.**\"" },
+                          { "text": "Teacher said, \"**Don't be late.**\"" },
+                          { "text": "He said, \"**Do not touch this.**\"" }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "indirect",
+                    "title": "Indirect Speech",
+                    "rows": [
+                      {
+                        "kind": "example",
+                        "items": [
+                          { "text": "Mother told me **not to waste time**." },
+                          { "text": "Teacher ordered the students **not to be late**." },
+                          { "text": "He warned me **not to touch that**." }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "items",
+                "items": [
+                  {
+                    "accent": "yellow",
+                    "icon": "gear",
+                    "title": "Why this formula?",
+                    "text": "Requests are polite commands. They are changed into **\"asked + object + to + V₁\"**."
+                  },
+                  {
+                    "accent": "blue",
+                    "icon": "doc",
+                    "title": "Formula:",
+                    "text": "asked + object + to + V₁"
+                  }
+                ]
+              },
+              {
+                "type": "panels",
+                "columns": [
+                  {
+                    "kind": "direct",
+                    "title": "Direct Speech",
+                    "rows": [
+                      {
+                        "kind": "example",
+                        "items": [
+                          { "text": "Riya said, \"**Please help me.**\"" },
+                          { "text": "He said, \"**Please send me the notes.**\"" },
+                          { "text": "She said, \"**Kindly wait here.**\"" }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "indirect",
+                    "title": "Indirect Speech",
+                    "rows": [
+                      {
+                        "kind": "example",
+                        "items": [
+                          { "text": "Riya asked me **to help her**." },
+                          { "text": "He requested me **to send him the notes**." },
+                          { "text": "She asked us **to wait there**." }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "accent": "blue",
+            "letter": "B",
+            "title": "Punctuation Changes",
+            "blocks": [
+              {
+                "type": "panels",
+                "columns": [
+                  {
+                    "kind": "direct",
+                    "title": "Direct Speech (Examples)",
+                    "rows": [
+                      {
+                        "kind": "bullets",
+                        "items": [
+                          "Comma before spoken words → He said, \"**Come here.**\"",
+                          "Quotation marks → She said, \"**Be careful!**\"",
+                          "Capital letter at beginning → Father said, \"**Open the door.**\"",
+                          "? or ! inside the quotation marks → He said, \"**What is this?**\"",
+                          "Use comma to separate speaker → Riya said, \"**Please sit.**\""
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "indirect",
+                    "title": "Indirect Speech (Examples)",
+                    "rows": [
+                      {
+                        "kind": "bullets",
+                        "items": [
+                          "No quotation marks → He asked me **to come here**.",
+                          "No comma before the report → She advised me **to be careful**.",
+                          "Full stop at the end → Father ordered me **to open the door**.",
+                          "Use that / if / whether for ? → He asked **what this was**.",
+                          "Use that / if / whether / to / wh-word → Riya told me **to sit**."
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "accent": "blue",
+            "letter": "C",
+            "title": "When Tense Does Not Change",
+            "blocks": [
+              {
+                "type": "truthRows",
+                "rows": [
+                  {
+                    "name": "Universal Truth",
+                    "direct": "Teacher said, \"The Earth **moves around the Sun**.\"",
+                    "indirect": "Teacher said that the Earth **moves around the Sun**."
+                  },
+                  {
+                    "name": "Reporting Verb in Present",
+                    "direct": "Riya says, \"I **am busy**.\"",
+                    "indirect": "Riya says that she **is busy**."
+                  },
+                  {
+                    "name": "Fact Still True",
+                    "direct": "Aman said, \"Delhi **is the capital** of India.\"",
+                    "indirect": "Aman said that Delhi **is the capital** of India."
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "accent": "orange",
+            "title": "Final Conversion Checklist",
+            "blocks": [
+              {
+                "type": "checklist",
+                "items": [
+                  "Identify the sentence type (command / request / statement).",
+                  "Remove commas and quotation marks.",
+                  "Choose the correct reporting verb (told / ordered / asked etc.).",
+                  "Add that / if / whether / to when needed.",
+                  "Change the pronoun (I → he/she, me → him/her).",
+                  "Change the tense (if required).",
+                  "Change the time and place words (today → that day).",
+                  "Use normal statement word order."
+                ]
+              }
+            ]
+          },
+          {
+            "accent": "red",
+            "title": "Remember",
+            "blocks": [
+              {
+                "type": "note",
+                "accent": "red",
+                "title": "Remember",
+                "rows": [
+                  { "text": "Commands, requests and some facts do not always change the tense." }
+                ],
+                "urdu": "یاد رکھیں: T = Tense، P = Pronoun، T = Time words، P = Punctuation۔"
+              }
+            ]
+          }
+        ]
+      },
       "introduction": "Commands and requests change the bare imperative into an infinitive: told/ordered/asked + object + to + V₁ (positive) or not to + V₁ (negative). Requests use asked/requested politely — the word please disappears. Punctuation changes completely: no quotation marks, no comma, a full stop at the end. And in three situations the tense does NOT change: universal truths, present-tense reporting verbs, and facts that are still true.",
       "urduExplanation": "حکم (Command) بالواسطہ تقریر میں infinitive بن جاتا ہے: told/ordered + object + **to** + V₁۔ منفی حکم میں **not to** + V₁ لگتا ہے۔ درخواست (Request) کے لیے asked/requested استعمال ہوتا ہے اور \"please\" حذف ہو جاتا ہے۔ رموزِ اوقاف بدل جاتے ہیں: اقتباس کے نشان اور کاما ہٹ جاتے ہیں اور جملہ فُل سٹاپ پر ختم ہوتا ہے۔ زمانہ ان تین صورتوں میں نہیں بدلتا: اکثر سچائی (universal truth)، فعلِ حال میں رپورٹنگ ورب، اور آج بھی درست حقیقت۔",
       "englishExplanation": "Positive command: told / ordered / asked + object + to + V₁ — Teacher said, \"Sit down.\" → Teacher told the students to sit down. Negative command: told / ordered / asked + object + not to + V₁ — Mother said, \"Do not waste time.\" → Mother told me not to waste time. Request: asked / requested + object + to + V₁, dropping please — Riya said, \"Please help me.\" → Riya asked me to help her. Punctuation: direct speech uses a comma before the spoken words, quotation marks, a capital letter, and ? or ! inside the quotes; indirect speech uses no quotation marks, no comma before the report, a full stop at the end, and that / if / whether / to / a wh-word as the connector. Tense does not change for universal truths, habitual facts, still-true statements, or a present-tense reporting verb. Final checklist: identify the sentence type; remove commas and quotation marks; choose the reporting verb; add that / if / whether / to / wh-word; change the pronoun; change the tense; change time and place words; use normal statement word order — the T-P-T-P order.",

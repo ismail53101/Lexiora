@@ -111,6 +111,21 @@ class GrammarSeeder {
           }
         }
       }
+      // Reference-sheet lessons (narrationSheet) index their panel
+      // definitions/Urdu lines so in-app search keeps finding them.
+      final Object? sheet = content['narrationSheet'];
+      if (sheet is Map) {
+        for (final Object? panel in (sheet['panels'] as List<dynamic>?) ??
+            const <dynamic>[]) {
+          if (panel is Map) {
+            search
+              ..write(' ')
+              ..write((panel['text']?.toString() ?? '').toLowerCase())
+              ..write(' ')
+              ..write((panel['urdu']?.toString() ?? '').toLowerCase());
+          }
+        }
+      }
     }
     final List<dynamic> keywords =
         (o['keywords'] as List<dynamic>?) ?? const <dynamic>[];

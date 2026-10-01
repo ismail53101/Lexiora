@@ -203,6 +203,22 @@ void main() {
       isNotNull,
       reason: 'intro lesson uses the compact two-column narration layout',
     );
+    // The six course lessons each ship a full-page reference sheet.
+    for (final String id in <String>[
+      'direct-indirect-speech/statements',
+      'direct-indirect-speech/tense-changes',
+      'direct-indirect-speech/pronoun-changes',
+      'direct-indirect-speech/time-place-changes',
+      'direct-indirect-speech/questions',
+      'direct-indirect-speech/commands-requests-punctuation',
+    ]) {
+      final Map<String, dynamic>? sheet =
+          (await ds.leaf(id))!.narrationSheet;
+      expect(sheet, isNotNull, reason: '$id needs a narrationSheet');
+      expect((sheet!['sections'] as List<dynamic>? ?? <dynamic>[]).length,
+          greaterThanOrEqualTo(1),
+          reason: '$id sheet has sections');
+    }
     // The remaining course leaves keep the full study sections.
     for (final String id in <String>[
       'direct-indirect-speech/statements',
@@ -266,7 +282,8 @@ void main() {
           lesson!.englishExplanation.isNotEmpty ||
               lesson.introduction.isNotEmpty ||
               lesson.providedMaterial.isNotEmpty ||
-              (lesson.narrationIntro?.isNotEmpty ?? false),
+              (lesson.narrationIntro?.isNotEmpty ?? false) ||
+              (lesson.narrationSheet?.isNotEmpty ?? false),
           isTrue,
           reason: '$id needs English lesson content',
         );

@@ -211,6 +211,7 @@ class GrammarLesson extends Equatable {
     this.rulesConversion,
     this.tenseSections,
     this.narrationIntro,
+    this.narrationSheet,
   });
 
   final String id;
@@ -259,6 +260,11 @@ class GrammarLesson extends Equatable {
   /// step-by-step method, key difference and exam tip).
   final Map<String, dynamic>? narrationIntro;
 
+  /// Full-page reference sheet for a Direct & Indirect Speech course lesson:
+  /// side-by-side panels, conversion tables, direct→indirect rows and summary
+  /// cards rendered as one fixed screen.
+  final Map<String, dynamic>? narrationSheet;
+
   @override
   List<Object?> get props => <Object?>[
         id,
@@ -288,5 +294,6 @@ class GrammarLesson extends Equatable {
         rulesConversion,
         tenseSections,
         narrationIntro,
+        narrationSheet,
       ];
 }

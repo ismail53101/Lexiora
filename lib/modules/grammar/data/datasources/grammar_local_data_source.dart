@@ -305,6 +305,7 @@ class GrammarLocalDataSource {
       rulesConversion: o['rulesConversion'] as Map<String, dynamic>?,
       tenseSections: o['tenseSections'] as Map<String, dynamic>?,
       narrationIntro: o['narrationIntro'] as Map<String, dynamic>?,
+      narrationSheet: o['narrationSheet'] as Map<String, dynamic>?,
     );
   }
 

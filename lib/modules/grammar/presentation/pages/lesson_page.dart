@@ -208,6 +208,10 @@ class _LessonView extends StatelessWidget {
         lesson.id == 'pos/determiner') {
       return _NounLandingView(lesson: lesson);
     }
+    // Full-page reference sheet (Direct & Indirect Speech course lessons).
+    if (lesson.narrationSheet != null && lesson.narrationSheet!.isNotEmpty) {
+      return _NarrationSheetView(lesson: lesson);
+    }
     // Compact side-by-side Direct vs Indirect Speech layout (Introduction &
     // Basic Difference). Both panels render on the same screen — no slides.
     if (lesson.narrationIntro != null && lesson.narrationIntro!.isNotEmpty) {
@@ -4441,6 +4445,2058 @@ class _NarrationExamTip extends StatelessWidget {
               style: bodyStyle.copyWith(height: 1.65),
             ),
           ],
+        ],
+      ),
+    );
+  }
+}
+
+/// ─────────────────────────────────────────────────────────────────────────────
+/// Full-page reference sheet for the Direct & Indirect Speech course lessons
+/// (Statements, Tense/Pronoun/Time-Place Changes, Questions, Commands &
+/// Requests). One fixed screen in image order: side-by-side purple/green
+/// panels, conversion tables, direct→indirect rows, worked flows and summary
+/// cards. No slides, no horizontal scrolling — vertical page scroll only.
+/// Content comes from the lesson's `narrationSheet` map.
+/// ─────────────────────────────────────────────────────────────────────────────
+class _NarrationSheetView extends StatelessWidget {
+  const _NarrationSheetView({required this.lesson});
+
+  final GrammarLesson lesson;
+
+  @override
+  Widget build(BuildContext context) {
+    final Map<String, dynamic> data =
+        lesson.narrationSheet ?? const <String, dynamic>{};
+    final List<Map<String, dynamic>> sections = _narrationMaps(data['sections']);
+
+    return ListView(
+      padding: const EdgeInsets.fromLTRB(8, 8, 8, 20),
+      children: <Widget>[
+        for (int i = 0; i < sections.length; i++)
+          Padding(
+            padding: EdgeInsets.only(bottom: i == sections.length - 1 ? 0 : 8),
+            child: _SheetSection(section: sections[i]),
+          ),
+        if (lesson.practice.isNotEmpty) ...<Widget>[
+          const SizedBox(height: 8),
+          GrammarSectionCard(
+            icon: Icons.edit_note,
+            title: 'Practice',
+            child: Column(
+              children: <Widget>[
+                for (int i = 0; i < lesson.practice.length; i++)
+                  PracticeQuestionCard(
+                    question: lesson.practice[i],
+                    index: i + 1,
+                  ),
+              ],
+            ),
+          ),
+        ],
+      ],
+    );
+  }
+}
+
+/// One outer rounded section of the sheet (e.g. "A — Commands and Requests").
+class _SheetSection extends StatelessWidget {
+  const _SheetSection({required this.section});
+
+  final Map<String, dynamic> section;
+
+  @override
+  Widget build(BuildContext context) {
+    final ThemeData theme = Theme.of(context);
+    final Color accent = _sheetAccent((section['accent'] as String?) ?? 'blue');
+    final String letter = (section['letter'] as String?) ?? '';
+    final List<Map<String, dynamic>> blocks = _narrationMaps(section['blocks']);
+
+    return Container(
+      width: double.infinity,
+      padding: const EdgeInsets.all(8),
+      decoration: BoxDecoration(
+        border: Border.all(color: accent.withValues(alpha: 0.6)),
+        borderRadius: BorderRadius.circular(14),
+        color: accent.withValues(alpha: 0.04),
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: <Widget>[
+          if (letter.isNotEmpty || (section['title'] as String?)?.isNotEmpty == true)
+            Padding(
+              padding: const EdgeInsets.only(bottom: 8),
+              child: Row(
+                children: <Widget>[
+                  if (letter.isNotEmpty) ...<Widget>[
+                    Container(
+                      width: 26,
+                      height: 26,
+                      decoration: BoxDecoration(
+                        shape: BoxShape.circle,
+                        gradient: LinearGradient(
+                          colors: <Color>[accent, accent.withValues(alpha: 0.6)],
+                        ),
+                      ),
+                      alignment: Alignment.center,
+                      child: Text(
+                        letter,
+                        style: theme.textTheme.titleSmall?.copyWith(
+                          color: Colors.white,
+                          fontWeight: FontWeight.w800,
+                        ),
+                      ),
+                    ),
+                    const SizedBox(width: 8),
+                  ],
+                  Expanded(
+                    child: Text(
+                      (section['title'] as String?) ?? '',
+                      style: theme.textTheme.titleMedium?.copyWith(
+                        color: accent,
+                        fontWeight: FontWeight.w800,
+                        fontSize: 15,
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          for (int i = 0; i < blocks.length; i++)
+            Padding(
+              padding: EdgeInsets.only(bottom: i == blocks.length - 1 ? 0 : 7),
+              child: _SheetBlock(block: blocks[i]),
+            ),
+        ],
+      ),
+    );
+  }
+}
+
+/// Accent colors shared by the sheet blocks (theme-aware where it matters).
+Color _sheetAccent(String name) {
+  switch (name) {
+    case 'purple':
+      return kGrammarHeadingPurple;
+    case 'green':
+      return const Color(0xFF10B981);
+    case 'blue':
+      return const Color(0xFF42A5F5);
+    case 'red':
+      return const Color(0xFFEF5350);
+    case 'orange':
+      return const Color(0xFFFB8C00);
+    case 'yellow':
+      return const Color(0xFFFDD835);
+    case 'cyan':
+      return const Color(0xFF26C6DA);
+    case 'magenta':
+      return const Color(0xFFEC407A);
+  }
+  return const Color(0xFF42A5F5);
+}
+
+/// Dispatches one block of the sheet to its renderer.
+class _SheetBlock extends StatelessWidget {
+  const _SheetBlock({required this.block});
+
+  final Map<String, dynamic> block;
+
+  @override
+  Widget build(BuildContext context) {
+    final String type = (block['type'] as String?) ?? 'text';
+    switch (type) {
+      case 'panels':
+        return _SheetPanels(data: block);
+      case 'items':
+        return _SheetItems(data: block);
+      case 'questionBlock':
+        return _SheetQuestionBlock(data: block);
+      case 'group':
+        return _SheetGroup(data: block);
+      case 'table':
+        return _SheetTable(data: block);
+      case 'rows':
+        return _SheetRows(data: block);
+      case 'truthRows':
+        return _SheetTruthRows(data: block);
+      case 'flow':
+        return _SheetFlow(data: block);
+      case 'exampleColumns':
+        return _SheetExampleColumns(data: block);
+      case 'checklist':
+        return _SheetChecklist(data: block);
+      case 'timeline':
+        return _SheetTimeline(data: block);
+      case 'note':
+        return _SheetNote(data: block);
+      case 'incorrectCorrect':
+        return _SheetIncorrectCorrect(data: block);
+      case 'urdu':
+        return _SheetUrduLine(text: (block['text'] as String?) ?? '');
+      case 'text':
+        return _SheetSpansText(
+          text: (block['text'] as String?) ?? '',
+          color: _sheetAccent((block['accent'] as String?) ?? 'blue'),
+        );
+      default:
+        return const SizedBox.shrink();
+    }
+  }
+}
+
+/// Shared rich-text renderer: @@yellow@@, **bold** and __underline__ markup on
+/// top of an explicit base color.
+class _SheetSpansText extends StatelessWidget {
+  const _SheetSpansText({required this.text, required this.color, this.style});
+
+  final String text;
+  final Color color;
+  final TextStyle? style;
+
+  @override
+  Widget build(BuildContext context) {
+    final TextStyle base = style ??
+        Theme.of(context).textTheme.bodySmall?.copyWith(
+              height: 1.35,
+              fontSize: 11.5,
+            ) ??
+        const TextStyle();
+    return Text.rich(
+      TextSpan(
+        style: base.copyWith(color: color),
+        children: _boldMarkedSpans(
+          text,
+          color: color,
+          highlightColor: highlightYellowColor(context),
+        ),
+      ),
+    );
+  }
+}
+
+/// RTL Urdu line (white text, optional size).
+class _SheetUrduLine extends StatelessWidget {
+  const _SheetUrduLine({required this.text, this.fontSize = 11});
+
+  final String text;
+  final double fontSize;
+
+  @override
+  Widget build(BuildContext context) {
+    if (text.isEmpty) return const SizedBox.shrink();
+    return Padding(
+      padding: const EdgeInsets.only(top: 2, bottom: 2),
+      child: Text(
+        text,
+        textAlign: TextAlign.right,
+        textDirection: TextDirection.rtl,
+        style: Theme.of(context).textTheme.bodySmall?.copyWith(
+              color: Theme.of(context).colorScheme.onSurface,
+              fontSize: fontSize,
+              height: 1.6,
+            ),
+      ),
+    );
+  }
+}
+
+/// A pair of side-by-side Direct (purple) / Indirect (green) panels.
+class _SheetPanels extends StatelessWidget {
+  const _SheetPanels({required this.data});
+
+  final Map<String, dynamic> data;
+
+  @override
+  Widget build(BuildContext context) {
+    final List<Map<String, dynamic>> panels = _narrationMaps(data['columns']);
+    if (panels.isEmpty) return const SizedBox.shrink();
+    return Row(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: <Widget>[
+        for (int i = 0; i < panels.length; i++) ...<Widget>[
+          if (i > 0) const SizedBox(width: 8),
+          Expanded(child: _SheetPanel(panel: panels[i])),
+        ],
+      ],
+    );
+  }
+}
+
+/// One Direct/Indirect panel: header bar + content rows.
+class _SheetPanel extends StatelessWidget {
+  const _SheetPanel({required this.panel});
+
+  final Map<String, dynamic> panel;
+
+  @override
+  Widget build(BuildContext context) {
+    final bool isIndirect =
+        ((panel['kind'] as String?) ?? 'direct') == 'indirect';
+    final Color accent = isIndirect ? _sheetAccent('green') : kGrammarHeadingPurple;
+    final List<Map<String, dynamic>> rows = _narrationMaps(panel['rows']);
+
+    return Container(
+      decoration: BoxDecoration(
+        border: Border.all(color: accent.withValues(alpha: 0.55)),
+        borderRadius: BorderRadius.circular(10),
+      ),
+      clipBehavior: Clip.antiAlias,
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: <Widget>[
+          _SheetHeaderBox(title: (panel['title'] as String?) ?? '', accent: accent),
+          Padding(
+            padding: const EdgeInsets.all(7),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: <Widget>[
+                for (int i = 0; i < rows.length; i++)
+                  Padding(
+                    padding: EdgeInsets.only(bottom: i == rows.length - 1 ? 0 : 6),
+                    child: _SheetPanelRow(row: rows[i], accent: accent),
+                  ),
+              ],
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+/// The colored header bar of a Direct/Indirect panel.
+class _SheetHeaderBox extends StatelessWidget {
+  const _SheetHeaderBox({required this.title, required this.accent});
+
+  final String title;
+  final Color accent;
+
+  @override
+  Widget build(BuildContext context) {
+    final ThemeData theme = Theme.of(context);
+    return Container(
+      width: double.infinity,
+      color: accent.withValues(alpha: 0.22),
+      padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 6),
+      child: Row(
+        children: <Widget>[
+          Icon(
+            accent == kGrammarHeadingPurple ? Icons.volume_up : Icons.volume_down,
+            size: 14,
+            color: accent,
+          ),
+          const SizedBox(width: 6),
+          Expanded(
+            child: Text(
+              title,
+              maxLines: 1,
+              overflow: TextOverflow.ellipsis,
+              style: theme.textTheme.titleSmall?.copyWith(
+                color: accent,
+                fontWeight: FontWeight.w800,
+                fontSize: 13,
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+/// One content row inside a Direct/Indirect panel:
+/// label, bullets, urdu, example, formula or text.
+class _SheetPanelRow extends StatelessWidget {
+  const _SheetPanelRow({required this.row, required this.accent});
+
+  final Map<String, dynamic> row;
+  final Color accent;
+
+  @override
+  Widget build(BuildContext context) {
+    final ThemeData theme = Theme.of(context);
+    final ColorScheme scheme = theme.colorScheme;
+    final String kind = (row['kind'] as String?) ?? 'text';
+    final TextStyle bodyStyle = theme.textTheme.bodySmall?.copyWith(
+          height: 1.35,
+          fontSize: 11,
+          color: scheme.onSurface,
+        ) ??
+        const TextStyle();
+
+    switch (kind) {
+      case 'label':
+        return Row(
+          children: <Widget>[
+            Icon(
+              (row['icon'] as String?) == 'bulb'
+                  ? Icons.lightbulb_outline
+                  : Icons.menu_book_outlined,
+              size: 13,
+              color: accent,
+            ),
+            const SizedBox(width: 5),
+            Expanded(
+              child: Text(
+                (row['text'] as String?) ?? '',
+                style: bodyStyle.copyWith(
+                  color: accent,
+                  fontWeight: FontWeight.w800,
+                  fontSize: 11.5,
+                ),
+              ),
+            ),
+          ],
+        );
+      case 'bullets':
+        final List<String> items =
+            ((row['items'] as List<dynamic>?) ?? const <dynamic>[])
+                .map((dynamic e) => e.toString())
+                .toList(growable: false);
+        return Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: <Widget>[
+            for (final String item in items)
+              Padding(
+                padding: const EdgeInsets.only(bottom: 3),
+                child: Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: <Widget>[
+                    Container(
+                      width: 5,
+                      height: 5,
+                      margin: const EdgeInsets.only(top: 5, right: 6),
+                      decoration: BoxDecoration(color: accent, shape: BoxShape.circle),
+                    ),
+                    Expanded(
+                      child: _SheetSpansText(text: item, color: scheme.onSurface, style: bodyStyle),
+                    ),
+                  ],
+                ),
+              ),
+          ],
+        );
+      case 'urdu':
+        return _SheetUrduLine(text: (row['text'] as String?) ?? '');
+      case 'example':
+        final List<Map<String, dynamic>> examples = _narrationMaps(row['items']);
+        return Container(
+          width: double.infinity,
+          padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 6),
+          decoration: BoxDecoration(
+            color: accent.withValues(alpha: 0.08),
+            border: Border.all(color: accent.withValues(alpha: 0.45)),
+            borderRadius: BorderRadius.circular(8),
+          ),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: <Widget>[
+              for (int i = 0; i < examples.length; i++)
+                Padding(
+                  padding: EdgeInsets.only(bottom: i == examples.length - 1 ? 0 : 4),
+                  child: Row(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: <Widget>[
+                      Container(
+                        width: 4,
+                        height: 4,
+                        margin: const EdgeInsets.only(top: 6, right: 6),
+                        decoration: BoxDecoration(color: accent, shape: BoxShape.circle),
+                      ),
+                      Expanded(
+                        child: _SheetSpansText(
+                          text: examples[i]['text'] as String? ?? '',
+                          color: scheme.onSurface,
+                          style: bodyStyle,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+            ],
+          ),
+        );
+      case 'formula':
+        return Container(
+          width: double.infinity,
+          padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 7),
+          decoration: BoxDecoration(
+            border: Border.all(color: accent.withValues(alpha: 0.55)),
+            borderRadius: BorderRadius.circular(8),
+          ),
+          child: _SheetSpansText(
+            text: (row['text'] as String?) ?? '',
+            color: scheme.onSurface,
+            style: bodyStyle.copyWith(fontWeight: FontWeight.w800, fontSize: 11.5),
+          ),
+        );
+      default:
+        return _SheetSpansText(
+          text: (row['text'] as String?) ?? '',
+          color: scheme.onSurface,
+          style: bodyStyle,
+        );
+    }
+  }
+}
+
+/// Side-by-side formula/why cards (e.g. "Why this formula?" + "Formula:").
+class _SheetItems extends StatelessWidget {
+  const _SheetItems({required this.data});
+
+  final Map<String, dynamic> data;
+
+  @override
+  Widget build(BuildContext context) {
+    final List<Map<String, dynamic>> items = _narrationMaps(data['items']);
+    if (items.isEmpty) return const SizedBox.shrink();
+    return Row(
+      crossAxisAlignment: CrossAxisAlignment.stretch,
+      children: <Widget>[
+        for (int i = 0; i < items.length; i++) ...<Widget>[
+          if (i > 0) const SizedBox(width: 7),
+          Expanded(child: _SheetItemCard(item: items[i])),
+        ],
+      ],
+    );
+  }
+}
+
+/// One bordered card with a bold colored title and rich-text body.
+class _SheetItemCard extends StatelessWidget {
+  const _SheetItemCard({required this.item});
+
+  final Map<String, dynamic> item;
+
+  @override
+  Widget build(BuildContext context) {
+    final ThemeData theme = Theme.of(context);
+    final ColorScheme scheme = theme.colorScheme;
+    final Color accent = _sheetAccent((item['accent'] as String?) ?? 'yellow');
+    final String title = (item['title'] as String?) ?? '';
+    final String text = (item['text'] as String?) ?? '';
+    final List<String> lines =
+        ((item['lines'] as List<dynamic>?) ?? const <dynamic>[])
+            .map((dynamic e) => e.toString())
+            .toList(growable: false);
+    final String urdu = (item['urdu'] as String?) ?? '';
+
+    return Container(
+      padding: const EdgeInsets.all(8),
+      decoration: BoxDecoration(
+        border: Border.all(color: accent.withValues(alpha: 0.6)),
+        borderRadius: BorderRadius.circular(9),
+        color: accent.withValues(alpha: 0.05),
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: <Widget>[
+          Row(
+            children: <Widget>[
+              Icon(
+                (item['icon'] as String?) == 'gear'
+                    ? Icons.settings_outlined
+                    : Icons.description_outlined,
+                size: 12,
+                color: accent,
+              ),
+              const SizedBox(width: 5),
+              Expanded(
+                child: Text(
+                  title,
+                  style: theme.textTheme.labelLarge?.copyWith(
+                    color: accent,
+                    fontWeight: FontWeight.w800,
+                    fontSize: 11.5,
+                  ),
+                ),
+              ),
+            ],
+          ),
+          if (text.isNotEmpty) ...<Widget>[
+            const SizedBox(height: 3),
+            _SheetSpansText(
+              text: text,
+              color: scheme.onSurface,
+              style: theme.textTheme.bodySmall?.copyWith(
+                height: 1.35,
+                fontSize: 10.5,
+                color: scheme.onSurface,
+              ),
+            ),
+          ],
+          for (final String line in lines)
+            Padding(
+              padding: const EdgeInsets.only(top: 2),
+              child: _SheetSpansText(
+                text: line,
+                color: scheme.onSurface,
+                style: theme.textTheme.bodySmall?.copyWith(
+                  height: 1.35,
+                  fontSize: 10.5,
+                  color: scheme.onSurface,
+                ),
+              ),
+            ),
+          if (urdu.isNotEmpty) _SheetUrduLine(text: urdu, fontSize: 10.5),
+        ],
+      ),
+    );
+  }
+}
+
+/// Numbered question block: title, Urdu, Direct box → Indirect box, and the
+/// orange numbered "Changes" card beside it (Yes/No & WH question lessons).
+class _SheetQuestionBlock extends StatelessWidget {
+  const _SheetQuestionBlock({required this.data});
+
+  final Map<String, dynamic> data;
+
+  @override
+  Widget build(BuildContext context) {
+    final ThemeData theme = Theme.of(context);
+    final ColorScheme scheme = theme.colorScheme;
+    final Color accent = _sheetAccent((data['accent'] as String?) ?? 'magenta');
+    final String heading = (data['heading'] as String?) ?? '';
+    final String urdu = (data['urdu'] as String?) ?? '';
+    final String direct = (data['direct'] as String?) ?? '';
+    final String indirect = (data['indirect'] as String?) ?? '';
+    final List<String> changes =
+        ((data['changes'] as List<dynamic>?) ?? const <dynamic>[])
+            .map((dynamic e) => e.toString())
+            .toList(growable: false);
+    final TextStyle bodyStyle = theme.textTheme.bodySmall?.copyWith(
+      height: 1.35,
+      fontSize: 11.5,
+      color: scheme.onSurface,
+    );
+
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: <Widget>[
+        Row(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: <Widget>[
+            Expanded(
+              flex: changes.isEmpty ? 1 : 3,
+              child: Container(
+                padding: const EdgeInsets.all(7),
+                decoration: BoxDecoration(
+                  border: Border.all(color: accent.withValues(alpha: 0.55)),
+                  borderRadius: BorderRadius.circular(9),
+                  color: accent.withValues(alpha: 0.07),
+                ),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: <Widget>[
+                    Text(
+                      heading,
+                      style: bodyStyle?.copyWith(
+                        color: accent,
+                        fontWeight: FontWeight.w800,
+                      ),
+                    ),
+                    if (urdu.isNotEmpty)
+                      Text(
+                        urdu,
+                        textAlign: TextAlign.right,
+                        textDirection: TextDirection.rtl,
+                        style: bodyStyle?.copyWith(
+                          color: scheme.onSurfaceVariant,
+                          fontSize: 10.5,
+                          height: 1.55,
+                        ),
+                      ),
+                  ],
+                ),
+              ),
+            ),
+            if (changes.isNotEmpty) ...<Widget>[
+              const SizedBox(width: 8),
+              Expanded(
+              flex: 2,
+              child: Container(
+                padding: const EdgeInsets.all(7),
+                decoration: BoxDecoration(
+                  border: Border.all(color: _sheetAccent('orange').withValues(alpha: 0.6)),
+                  borderRadius: BorderRadius.circular(9),
+                ),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: <Widget>[
+                    Row(
+                      children: <Widget>[
+                        Icon(Icons.settings_outlined,
+                            size: 12, color: _sheetAccent('yellow')),
+                        const SizedBox(width: 5),
+                        Text(
+                          'Changes',
+                          style: bodyStyle?.copyWith(
+                            color: _sheetAccent('yellow'),
+                            fontWeight: FontWeight.w800,
+                          ),
+                        ),
+                      ],
+                    ),
+                    const SizedBox(height: 4),
+                    for (int i = 0; i < changes.length; i++)
+                      Padding(
+                        padding: const EdgeInsets.only(bottom: 3),
+                        child: Row(
+                          children: <Widget>[
+                            Container(
+                              width: 13,
+                              height: 13,
+                              decoration: const BoxDecoration(
+                                color: _SheetColors.amber,
+                                shape: BoxShape.circle,
+                              ),
+                              alignment: Alignment.center,
+                              child: Text(
+                                '${i + 1}',
+                                style: theme.textTheme.labelSmall?.copyWith(
+                                  color: Colors.black,
+                                  fontWeight: FontWeight.w800,
+                                  fontSize: 8.5,
+                                ),
+                              ),
+                            ),
+                            const SizedBox(width: 6),
+                            Expanded(
+                              child: _SheetSpansText(
+                                text: changes[i],
+                                color: scheme.onSurface,
+                                style: bodyStyle?.copyWith(fontSize: 10.5),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                  ],
+                ),
+              ),
+            ),
+            ],
+          ],
+        ),
+        const SizedBox(height: 7),
+        _SheetHeaderBox(title: 'Direct Speech', accent: kGrammarHeadingPurple),
+        Container(
+          width: double.infinity,
+          padding: const EdgeInsets.all(8),
+          decoration: BoxDecoration(
+            border: Border.all(color: kGrammarHeadingPurple.withValues(alpha: 0.5)),
+            borderRadius: const BorderRadius.only(
+              bottomLeft: Radius.circular(10),
+              bottomRight: Radius.circular(10),
+            ),
+          ),
+          child: _SheetSpansText(text: direct, color: scheme.onSurface, style: bodyStyle),
+        ),
+        Center(
+          child: Icon(Icons.arrow_downward, size: 16, color: accent),
+        ),
+        _SheetHeaderBox(title: 'Indirect Speech', accent: _sheetAccent('green')),
+        Container(
+          width: double.infinity,
+          padding: const EdgeInsets.all(8),
+          decoration: BoxDecoration(
+            border: Border.all(color: _sheetAccent('green').withValues(alpha: 0.5)),
+            borderRadius: const BorderRadius.only(
+              bottomLeft: Radius.circular(10),
+              bottomRight: Radius.circular(10),
+            ),
+          ),
+          child: _SheetSpansText(
+            text: indirect,
+            color: scheme.onSurface,
+            style: bodyStyle,
+          ),
+        ),
+      ],
+    );
+  }
+}
+
+/// Fixed accent colors used by the sheet widgets.
+abstract final class _SheetColors {
+  static const Color amber = Color(0xFFFDD835);
+  static const Color magenta = Color(0xFFEC407A);
+  static const Color pink = Color(0xFFF06292);
+  static const Color sky = Color(0xFF4FC3F7);
+  static const Color green = Color(0xFF10B981);
+  static const Color purple = kGrammarHeadingPurple;
+  static const Color red = Color(0xFFEF5350);
+  static const Color blue = Color(0xFF42A5F5);
+  static const Color orange = Color(0xFFFB8C00);
+}
+
+/// Inner rounded group with a bold colored heading ("Changes Shown",
+/// "Said vs Told", "More Examples", "Time and Place Changes Table"…).
+class _SheetGroup extends StatelessWidget {
+  const _SheetGroup({required this.data});
+
+  final Map<String, dynamic> data;
+
+  @override
+  Widget build(BuildContext context) {
+    final ThemeData theme = Theme.of(context);
+    final Color accent = _sheetAccent((data['accent'] as String?) ?? 'blue');
+    final String title = (data['title'] as String?) ?? '';
+    final String? titleSuffix = (data['titleSuffix'] as String?);
+    final String? note = (data['note'] as String?);
+    final List<Map<String, dynamic>> blocks = _narrationMaps(data['blocks']);
+    final IconData icon = switch (data['icon'] as String?) {
+      'gear' => Icons.settings_outlined,
+      'bulb' => Icons.lightbulb_outline,
+      'book' => Icons.menu_book_outlined,
+      'people' => Icons.people_outline,
+      'chat' => Icons.chat_bubble_outline,
+      'doc' => Icons.article_outlined,
+      _ => Icons.settings_outlined,
+    };
+
+    return Container(
+      width: double.infinity,
+      padding: const EdgeInsets.all(8),
+      decoration: BoxDecoration(
+        border: Border.all(color: accent.withValues(alpha: 0.5)),
+        borderRadius: BorderRadius.circular(10),
+        color: accent.withValues(alpha: 0.04),
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: <Widget>[
+          if (title.isNotEmpty)
+            Padding(
+              padding: const EdgeInsets.only(bottom: 6),
+              child: Row(
+                children: <Widget>[
+                  Icon(icon, size: 15, color: accent),
+                  const SizedBox(width: 6),
+                  Flexible(
+                    child: Text.rich(
+                      TextSpan(
+                        text: title,
+                        style: theme.textTheme.titleSmall?.copyWith(
+                          color: accent,
+                          fontWeight: FontWeight.w800,
+                          fontSize: 13.5,
+                        ),
+                        children: <InlineSpan>[
+                          if (titleSuffix != null)
+                            TextSpan(
+                              text: ' $titleSuffix',
+                              style: theme.textTheme.bodySmall?.copyWith(
+                                color: accent,
+                                fontWeight: FontWeight.w700,
+                                fontSize: 11.5,
+                              ),
+                            ),
+                        ],
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          if (note != null && note.isNotEmpty)
+            Padding(
+              padding: const EdgeInsets.only(bottom: 6),
+              child: _SheetSpansText(
+                text: note,
+                color: theme.colorScheme.onSurface,
+                style: theme.textTheme.bodySmall?.copyWith(
+                  height: 1.35,
+                  fontSize: 11,
+                  color: theme.colorScheme.onSurface,
+                ),
+              ),
+            ),
+          for (int i = 0; i < blocks.length; i++)
+            Padding(
+              padding: EdgeInsets.only(bottom: i == blocks.length - 1 ? 0 : 7),
+              child: _SheetBlock(block: blocks[i]),
+            ),
+        ],
+      ),
+    );
+  }
+}
+
+/// Conversion table with a purple/green two-tone header and an arrow column.
+class _SheetTable extends StatelessWidget {
+  const _SheetTable({required this.data});
+
+  final Map<String, dynamic> data;
+
+  @override
+  Widget build(BuildContext context) {
+    final ThemeData theme = Theme.of(context);
+    final ColorScheme scheme = theme.colorScheme;
+    final Color leftAccent = _sheetAccent((data['leftAccent'] as String?) ?? 'purple');
+    final Color rightAccent = _sheetAccent((data['rightAccent'] as String?) ?? 'green');
+    final List<String> headers =
+        ((data['headers'] as List<dynamic>?) ?? const <dynamic>[])
+            .map((dynamic e) => e.toString())
+            .toList(growable: false);
+    final List<Map<String, dynamic>> rows = _narrationMaps(data['rows']);
+    final TextStyle bodyStyle = theme.textTheme.bodySmall?.copyWith(
+      height: 1.3,
+      fontSize: 11,
+      color: scheme.onSurface,
+    );
+
+    return Container(
+      width: double.infinity,
+      decoration: BoxDecoration(
+        border: Border.all(color: scheme.outlineVariant.withValues(alpha: 0.6)),
+        borderRadius: BorderRadius.circular(10),
+      ),
+      clipBehavior: Clip.antiAlias,
+      child: Column(
+        children: <Widget>[
+          if (headers.isNotEmpty)
+            Container(
+              color: scheme.surfaceContainerHighest.withValues(alpha: 0.4),
+              padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 6),
+              child: Row(
+                children: <Widget>[
+                  Expanded(
+                    flex: 3,
+                    child: Text(
+                      headers[0],
+                      textAlign: TextAlign.center,
+                      style: bodyStyle?.copyWith(
+                        color: leftAccent,
+                        fontWeight: FontWeight.w800,
+                      ),
+                    ),
+                  ),
+                  const SizedBox(width: 26),
+                  Expanded(
+                    flex: 3,
+                    child: Text(
+                      headers.length > 1 ? headers[1] : '',
+                      textAlign: TextAlign.center,
+                      style: bodyStyle?.copyWith(
+                        color: rightAccent,
+                        fontWeight: FontWeight.w800,
+                      ),
+                    ),
+                  ),
+                  if (headers.length > 2)
+                    Expanded(
+                      flex: 3,
+                      child: Text(
+                        headers[2],
+                        textAlign: TextAlign.center,
+                        style: bodyStyle?.copyWith(
+                          color: scheme.onSurfaceVariant,
+                          fontWeight: FontWeight.w800,
+                        ),
+                      ),
+                    ),
+                ],
+              ),
+            ),
+          for (int i = 0; i < rows.length; i++) ...<Widget>[
+            if (i > 0)
+              Divider(height: 1, color: scheme.outlineVariant.withValues(alpha: 0.35)),
+            _SheetTableRow(
+              row: rows[i],
+              leftAccent: leftAccent,
+              rightAccent: rightAccent,
+              bodyStyle: bodyStyle,
+            ),
+          ],
+        ],
+      ),
+    );
+  }
+}
+
+/// One data row of a conversion table (left word → right word [+ why]).
+class _SheetTableRow extends StatelessWidget {
+  const _SheetTableRow({
+    required this.row,
+    required this.leftAccent,
+    required this.rightAccent,
+    required this.bodyStyle,
+  });
+
+  final Map<String, dynamic> row;
+  final Color leftAccent;
+  final Color rightAccent;
+  final TextStyle? bodyStyle;
+
+  @override
+  Widget build(BuildContext context) {
+    final ThemeData theme = Theme.of(context);
+    final ColorScheme scheme = theme.colorScheme;
+    final String left = (row['left'] as String?) ?? '';
+    final String right = (row['right'] as String?) ?? '';
+    final String why = (row['why'] as String?) ?? '';
+    final bool numbered = row['numbered'] == true;
+    final int? number = (row['number'] as num?)?.toInt();
+
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 6),
+      child: Row(
+        children: <Widget>[
+          if (numbered)
+            Container(
+              width: 15,
+              height: 15,
+              margin: const EdgeInsets.only(right: 6),
+              decoration: BoxDecoration(
+                color: leftAccent,
+                shape: BoxShape.circle,
+              ),
+              alignment: Alignment.center,
+              child: Text(
+                '${number ?? 0}',
+                style: theme.textTheme.labelSmall?.copyWith(
+                  color: Colors.white,
+                  fontWeight: FontWeight.w800,
+                  fontSize: 9,
+                ),
+              ),
+            ),
+          Expanded(
+            flex: 3,
+            child: Text(
+              left,
+              style: bodyStyle?.copyWith(
+                color: leftAccent,
+                fontWeight: FontWeight.w700,
+              ),
+            ),
+          ),
+          SizedBox(
+            width: 26,
+            child: Icon(
+              Icons.arrow_forward,
+              size: 12,
+              color: scheme.onSurfaceVariant,
+            ),
+          ),
+          Expanded(
+            flex: 3,
+            child: Text(
+              right,
+              style: bodyStyle?.copyWith(
+                color: rightAccent,
+                fontWeight: FontWeight.w700,
+              ),
+            ),
+          ),
+          if (why.isNotEmpty)
+            Expanded(
+              flex: 3,
+              child: Text(
+                why,
+                style: bodyStyle?.copyWith(
+                  color: scheme.onSurfaceVariant,
+                  fontSize: 10,
+                ),
+              ),
+            ),
+        ],
+      ),
+    );
+  }
+}
+
+/// Numbered Direct → Indirect rows (speech examples with color-coded parts).
+class _SheetRows extends StatelessWidget {
+  const _SheetRows({required this.data});
+
+  final Map<String, dynamic> data;
+
+  @override
+  Widget build(BuildContext context) {
+    final List<Map<String, dynamic>> rows = _narrationMaps(data['rows']);
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: <Widget>[
+        for (int i = 0; i < rows.length; i++)
+          _SheetExampleRow(
+            row: rows[i],
+            index: i + 1,
+          ),
+      ],
+    );
+  }
+}
+
+/// One numbered Direct → Indirect example row with an arrow between.
+class _SheetExampleRow extends StatelessWidget {
+  const _SheetExampleRow({required this.row, required this.index});
+
+  final Map<String, dynamic> row;
+  final int index;
+
+  @override
+  Widget build(BuildContext context) {
+    final ThemeData theme = Theme.of(context);
+    final ColorScheme scheme = theme.colorScheme;
+    final Color purple = kGrammarHeadingPurple;
+    final Color green = _sheetAccent('green');
+    final TextStyle bodyStyle = theme.textTheme.bodySmall?.copyWith(
+      height: 1.3,
+      fontSize: 10.5,
+      color: scheme.onSurface,
+    );
+
+    return Padding(
+      padding: const EdgeInsets.only(bottom: 5),
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: <Widget>[
+          Container(
+            width: 16,
+            height: 16,
+            margin: const EdgeInsets.only(right: 6),
+            decoration: BoxDecoration(color: purple, shape: BoxShape.circle),
+            alignment: Alignment.center,
+            child: Text(
+              '$index',
+              style: theme.textTheme.labelSmall?.copyWith(
+                color: Colors.white,
+                fontWeight: FontWeight.w800,
+                fontSize: 9,
+              ),
+            ),
+          ),
+          Expanded(
+            child: _SheetSpansText(
+              text: (row['direct'] as String?) ?? '',
+              color: scheme.onSurface,
+              style: bodyStyle,
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 4),
+            child: Icon(
+              Icons.arrow_forward,
+              size: 12,
+              color: scheme.onSurfaceVariant,
+            ),
+          ),
+          Expanded(
+            child: _SheetSpansText(
+              text: (row['indirect'] as String?) ?? '',
+              color: scheme.onSurface,
+              style: bodyStyle,
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+/// When-Tense-Does-Not-Change rows (No. | name | direct → indirect).
+class _SheetTruthRows extends StatelessWidget {
+  const _SheetTruthRows({required this.data});
+
+  final Map<String, dynamic> data;
+
+  @override
+  Widget build(BuildContext context) {
+    final List<Map<String, dynamic>> rows = _narrationMaps(data['rows']);
+    return Column(
+      children: <Widget>[
+        for (int i = 0; i < rows.length; i++)
+          _SheetTruthRow(row: rows[i], index: i + 1),
+      ],
+    );
+  }
+}
+
+/// One truth row of the "when tense does not change" table.
+class _SheetTruthRow extends StatelessWidget {
+  const _SheetTruthRow({required this.row, required this.index});
+
+  final Map<String, dynamic> row;
+  final int index;
+
+  @override
+  Widget build(BuildContext context) {
+    final ThemeData theme = Theme.of(context);
+    final ColorScheme scheme = theme.colorScheme;
+    final TextStyle bodyStyle = theme.textTheme.bodySmall?.copyWith(
+      height: 1.3,
+      fontSize: 10.5,
+      color: scheme.onSurface,
+    );
+
+    return Padding(
+      padding: const EdgeInsets.only(bottom: 4),
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: <Widget>[
+          Container(
+            width: 15,
+            height: 15,
+            margin: const EdgeInsets.only(top: 1, right: 6),
+            decoration: const BoxDecoration(
+              color: _SheetColors.sky,
+              shape: BoxShape.circle,
+            ),
+            alignment: Alignment.center,
+            child: Text(
+              '$index',
+              style: theme.textTheme.labelSmall?.copyWith(
+                color: Colors.black,
+                fontWeight: FontWeight.w800,
+                fontSize: 9,
+              ),
+            ),
+          ),
+          SizedBox(
+            width: 118,
+            child: Text(
+              (row['name'] as String?) ?? '',
+              style: bodyStyle?.copyWith(
+                color: _SheetColors.magenta,
+                fontWeight: FontWeight.w700,
+              ),
+            ),
+          ),
+          Expanded(
+            flex: 3,
+            child: _SheetSpansText(
+              text: (row['direct'] as String?) ?? '',
+              color: scheme.onSurface,
+              style: bodyStyle,
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 4),
+            child: Icon(
+              Icons.arrow_forward,
+              size: 12,
+              color: _SheetColors.orange,
+            ),
+          ),
+          Expanded(
+            flex: 3,
+            child: _SheetSpansText(
+              text: (row['indirect'] as String?) ?? '',
+              color: scheme.onSurface,
+              style: bodyStyle,
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+/// Direct box → Changes list → Indirect box (horizontal conversion flow).
+class _SheetFlow extends StatelessWidget {
+  const _SheetFlow({required this.data});
+
+  final Map<String, dynamic> data;
+
+  @override
+  Widget build(BuildContext context) {
+    final ThemeData theme = Theme.of(context);
+    final ColorScheme scheme = theme.colorScheme;
+    final String direct = (data['direct'] as String?) ?? '';
+    final String indirect = (data['indirect'] as String?) ?? '';
+    final List<String> changes =
+        ((data['changes'] as List<dynamic>?) ?? const <dynamic>[])
+            .map((dynamic e) => e.toString())
+            .toList(growable: false);
+    final TextStyle bodyStyle = theme.textTheme.bodySmall?.copyWith(
+      height: 1.35,
+      fontSize: 10.5,
+      color: scheme.onSurface,
+    );
+
+    return Row(
+      crossAxisAlignment: CrossAxisAlignment.center,
+      children: <Widget>[
+        Expanded(
+          flex: 4,
+          child: _SheetMiniPanel(
+            title: 'Direct Speech',
+            accent: kGrammarHeadingPurple,
+            child: _SheetSpansText(text: direct, color: scheme.onSurface, style: bodyStyle),
+          ),
+        ),
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 5),
+          child: Icon(Icons.arrow_forward, size: 14, color: _sheetAccent('blue')),
+        ),
+        Expanded(
+          flex: 3,
+          child: Container(
+            padding: const EdgeInsets.all(7),
+            decoration: BoxDecoration(
+              border: Border.all(color: _sheetAccent('orange').withValues(alpha: 0.6)),
+              borderRadius: BorderRadius.circular(9),
+            ),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: <Widget>[
+                Text(
+                  'Changes',
+                  style: bodyStyle?.copyWith(
+                    color: _sheetAccent('yellow'),
+                    fontWeight: FontWeight.w800,
+                  ),
+                ),
+                const SizedBox(height: 3),
+                for (int i = 0; i < changes.length; i++)
+                  Padding(
+                    padding: const EdgeInsets.only(bottom: 2),
+                    child: Row(
+                      children: <Widget>[
+                        Container(
+                          width: 12,
+                          height: 12,
+                          margin: const EdgeInsets.only(right: 5),
+                          decoration: const BoxDecoration(
+                            color: _SheetColors.amber,
+                            shape: BoxShape.circle,
+                          ),
+                          alignment: Alignment.center,
+                          child: Text(
+                            '${i + 1}',
+                            style: theme.textTheme.labelSmall?.copyWith(
+                              color: Colors.black,
+                              fontWeight: FontWeight.w800,
+                              fontSize: 8,
+                            ),
+                          ),
+                        ),
+                        Expanded(
+                          child: _SheetSpansText(
+                            text: changes[i],
+                            color: scheme.onSurface,
+                            style: bodyStyle?.copyWith(fontSize: 10),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+              ],
+            ),
+          ),
+        ),
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 5),
+          child: Icon(Icons.arrow_forward, size: 14, color: _sheetAccent('blue')),
+        ),
+        Expanded(
+          flex: 4,
+          child: _SheetMiniPanel(
+            title: 'Indirect Speech',
+            accent: _sheetAccent('green'),
+            child: _SheetSpansText(text: indirect, color: scheme.onSurface, style: bodyStyle),
+          ),
+        ),
+      ],
+    );
+  }
+}
+
+/// Small titled box used inside conversion flows.
+class _SheetMiniPanel extends StatelessWidget {
+  const _SheetMiniPanel({
+    required this.title,
+    required this.accent,
+    required this.child,
+  });
+
+  final String title;
+  final Color accent;
+  final Widget child;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      decoration: BoxDecoration(
+        border: Border.all(color: accent.withValues(alpha: 0.55)),
+        borderRadius: BorderRadius.circular(9),
+      ),
+      clipBehavior: Clip.antiAlias,
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: <Widget>[
+          _SheetHeaderBox(title: title, accent: accent),
+          Padding(
+            padding: const EdgeInsets.all(7),
+            child: child,
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+/// Two side-by-side example columns (Example 1 | Example 2, each with a
+/// Direct box, a Changes list and an Indirect box).
+class _SheetExampleColumns extends StatelessWidget {
+  const _SheetExampleColumns({required this.data});
+
+  final Map<String, dynamic> data;
+
+  @override
+  Widget build(BuildContext context) {
+    final List<Map<String, dynamic>> examples = _narrationMaps(data['examples']);
+    return Row(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: <Widget>[
+        for (int i = 0; i < examples.length; i++) ...<Widget>[
+          if (i > 0) const SizedBox(width: 8),
+          Expanded(child: _SheetExampleCard(example: examples[i], index: i + 1)),
+        ],
+      ],
+    );
+  }
+}
+
+/// One worked example column: title, Direct box, Changes, Indirect box.
+class _SheetExampleCard extends StatelessWidget {
+  const _SheetExampleCard({required this.example, required this.index});
+
+  final Map<String, dynamic> example;
+  final int index;
+
+  @override
+  Widget build(BuildContext context) {
+    final ThemeData theme = Theme.of(context);
+    final ColorScheme scheme = theme.colorScheme;
+    final TextStyle bodyStyle = theme.textTheme.bodySmall?.copyWith(
+      height: 1.35,
+      fontSize: 10.5,
+      color: scheme.onSurface,
+    );
+    final List<Map<String, dynamic>> changes = _narrationMaps(example['changes']);
+
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: <Widget>[
+        Row(
+          children: <Widget>[
+            Icon(Icons.format_quote, size: 14, color: _sheetAccent('blue')),
+            const SizedBox(width: 5),
+            Text(
+              (example['title'] as String?) ?? 'Example $index',
+              style: theme.textTheme.titleSmall?.copyWith(
+                color: _sheetAccent('blue'),
+                fontWeight: FontWeight.w800,
+                fontSize: 12.5,
+              ),
+            ),
+          ],
+        ),
+        const SizedBox(height: 5),
+        _SheetHeaderBox(title: 'Direct Speech', accent: kGrammarHeadingPurple),
+        Container(
+          width: double.infinity,
+          padding: const EdgeInsets.all(7),
+          decoration: BoxDecoration(
+            border: Border.all(color: kGrammarHeadingPurple.withValues(alpha: 0.5)),
+            borderRadius: const BorderRadius.only(
+              bottomLeft: Radius.circular(9),
+              bottomRight: Radius.circular(9),
+            ),
+          ),
+          child: _SheetSpansText(
+            text: (example['direct'] as String?) ?? '',
+            color: scheme.onSurface,
+            style: bodyStyle,
+          ),
+        ),
+        const SizedBox(height: 5),
+        Center(
+          child: Icon(Icons.arrow_downward, size: 14, color: scheme.onSurfaceVariant),
+        ),
+        const SizedBox(height: 5),
+        Container(
+          width: double.infinity,
+          padding: const EdgeInsets.all(7),
+          decoration: BoxDecoration(
+            border: Border.all(color: _SheetColors.red.withValues(alpha: 0.5)),
+            borderRadius: BorderRadius.circular(9),
+          ),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: <Widget>[
+              Text(
+                'Changes',
+                style: bodyStyle?.copyWith(
+                  color: _SheetColors.red,
+                  fontWeight: FontWeight.w800,
+                ),
+              ),
+              const SizedBox(height: 3),
+              for (final Map<String, dynamic> change in changes)
+                Padding(
+                  padding: const EdgeInsets.only(bottom: 2),
+                  child: Row(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: <Widget>[
+                      Container(
+                        width: 4,
+                        height: 4,
+                        margin: const EdgeInsets.only(top: 6, right: 5),
+                        decoration: const BoxDecoration(
+                          color: _SheetColors.pink,
+                          shape: BoxShape.circle,
+                        ),
+                      ),
+                      Expanded(
+                        child: _SheetSpansText(
+                          text:
+                              '${change['from'] ?? ''} → ${change['to'] ?? ''}${change['why'] == null ? '' : '  (${change['why']})'}',
+                          color: scheme.onSurface,
+                          style: bodyStyle?.copyWith(fontSize: 10),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+            ],
+          ),
+        ),
+        const SizedBox(height: 5),
+        Center(
+          child: Icon(Icons.arrow_downward, size: 14, color: scheme.onSurfaceVariant),
+        ),
+        const SizedBox(height: 5),
+        _SheetHeaderBox(title: 'Indirect Speech', accent: _sheetAccent('green')),
+        Container(
+          width: double.infinity,
+          padding: const EdgeInsets.all(7),
+          decoration: BoxDecoration(
+            border: Border.all(color: _sheetAccent('green').withValues(alpha: 0.5)),
+            borderRadius: const BorderRadius.only(
+              bottomLeft: Radius.circular(9),
+              bottomRight: Radius.circular(9),
+            ),
+          ),
+          child: _SheetSpansText(
+            text: (example['indirect'] as String?) ?? '',
+            color: scheme.onSurface,
+            style: bodyStyle,
+          ),
+        ),
+      ],
+    );
+  }
+}
+
+/// Final conversion checklist (two columns of numbered items).
+class _SheetChecklist extends StatelessWidget {
+  const _SheetChecklist({required this.data});
+
+  final Map<String, dynamic> data;
+
+  @override
+  Widget build(BuildContext context) {
+    final List<String> items =
+        ((data['items'] as List<dynamic>?) ?? const <dynamic>[])
+            .map((dynamic e) => e.toString())
+            .toList(growable: false);
+    final int half = (items.length / 2).ceil();
+    final List<String> left = items.take(half).toList(growable: false);
+    final List<String> right = items.skip(half).toList(growable: false);
+
+    return Row(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: <Widget>[
+        Expanded(child: _SheetChecklistColumn(items: left, startIndex: 1)),
+        const SizedBox(width: 10),
+        Expanded(
+          child: _SheetChecklistColumn(items: right, startIndex: half + 1),
+        ),
+      ],
+    );
+  }
+}
+
+/// One column of the conversion checklist.
+class _SheetChecklistColumn extends StatelessWidget {
+  const _SheetChecklistColumn({required this.items, required this.startIndex});
+
+  final List<String> items;
+  final int startIndex;
+
+  @override
+  Widget build(BuildContext context) {
+    final ThemeData theme = Theme.of(context);
+    final ColorScheme scheme = theme.colorScheme;
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: <Widget>[
+        for (int i = 0; i < items.length; i++)
+          Padding(
+            padding: const EdgeInsets.only(bottom: 4),
+            child: Row(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: <Widget>[
+                Container(
+                  width: 15,
+                  height: 15,
+                  margin: const EdgeInsets.only(top: 1, right: 6),
+                  decoration: const BoxDecoration(
+                    color: _SheetColors.sky,
+                    shape: BoxShape.circle,
+                  ),
+                  alignment: Alignment.center,
+                  child: Text(
+                    '${startIndex + i}',
+                    style: theme.textTheme.labelSmall?.copyWith(
+                      color: Colors.black,
+                      fontWeight: FontWeight.w800,
+                      fontSize: 9,
+                    ),
+                  ),
+                ),
+                Expanded(
+                  child: _SheetSpansText(
+                    text: items[i],
+                    color: scheme.onSurface,
+                    style: theme.textTheme.bodySmall?.copyWith(
+                      height: 1.3,
+                      fontSize: 10.5,
+                      color: scheme.onSurface,
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ),
+      ],
+    );
+  }
+}
+
+/// yesterday → today → tomorrow timeline chips.
+class _SheetTimeline extends StatelessWidget {
+  const _SheetTimeline({required this.data});
+
+  final Map<String, dynamic> data;
+
+  @override
+  Widget build(BuildContext context) {
+    final List<Map<String, dynamic>> steps = _narrationMaps(data['steps']);
+    return Row(
+      children: <Widget>[
+        for (int i = 0; i < steps.length; i++) ...<Widget>[
+          if (i > 0)
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 4),
+              child: Icon(Icons.trending_flat, size: 18, color: _SheetColors.amber),
+            ),
+          Expanded(
+            child: Container(
+              padding: const EdgeInsets.symmetric(vertical: 6, horizontal: 4),
+              decoration: BoxDecoration(
+                color: _SheetColors.pink.withValues(alpha: 0.2),
+                border: Border.all(color: _SheetColors.pink.withValues(alpha: 0.6)),
+                borderRadius: BorderRadius.circular(8),
+              ),
+              child: Column(
+                children: <Widget>[
+                  Text(
+                    (steps[i]['title'] as String?) ?? '',
+                    style: Theme.of(context).textTheme.labelLarge?.copyWith(
+                          color: Colors.white,
+                          fontWeight: FontWeight.w800,
+                          fontSize: 11,
+                        ),
+                  ),
+                  if ((steps[i]['urdu'] as String?)?.isNotEmpty == true)
+                    Text(
+                      steps[i]['urdu'] as String,
+                      textDirection: TextDirection.rtl,
+                      style: Theme.of(context).textTheme.labelSmall?.copyWith(
+                            color: Colors.white70,
+                            fontSize: 9.5,
+                          ),
+                    ),
+                  Text(
+                    (steps[i]['label'] as String?) ?? '',
+                    textAlign: TextAlign.center,
+                    style: Theme.of(context).textTheme.labelSmall?.copyWith(
+                          color: Colors.white,
+                          fontWeight: FontWeight.w700,
+                          fontSize: 9.5,
+                        ),
+                  ),
+                ],
+              ),
+            ),
+          ),
+        ],
+      ],
+    );
+  }
+}
+
+/// Important Note / Remember strip with red accent and Urdu support.
+class _SheetNote extends StatelessWidget {
+  const _SheetNote({required this.data});
+
+  final Map<String, dynamic> data;
+
+  @override
+  Widget build(BuildContext context) {
+    final ThemeData theme = Theme.of(context);
+    final ColorScheme scheme = theme.colorScheme;
+    final Color accent = _sheetAccent((data['accent'] as String?) ?? 'red');
+    final String title = (data['title'] as String?) ?? 'Important Note';
+    final List<Map<String, dynamic>> rows = _narrationMaps(data['rows']);
+    final String urdu = (data['urdu'] as String?) ?? '';
+    final TextStyle bodyStyle = theme.textTheme.bodySmall?.copyWith(
+      height: 1.35,
+      fontSize: 10.5,
+      color: scheme.onSurface,
+    );
+
+    return Container(
+      width: double.infinity,
+      padding: const EdgeInsets.all(9),
+      decoration: BoxDecoration(
+        color: accent.withValues(alpha: 0.08),
+        border: Border.all(color: accent.withValues(alpha: 0.55)),
+        borderRadius: BorderRadius.circular(10),
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: <Widget>[
+          Row(
+            children: <Widget>[
+              Icon(Icons.star, size: 15, color: accent),
+              const SizedBox(width: 6),
+              Text(
+                title,
+                style: theme.textTheme.titleSmall?.copyWith(
+                  color: accent,
+                  fontWeight: FontWeight.w800,
+                  fontSize: 13,
+                ),
+              ),
+            ],
+          ),
+          const SizedBox(height: 5),
+          Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: <Widget>[
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: <Widget>[
+                    for (final Map<String, dynamic> row in rows)
+                      Padding(
+                        padding: const EdgeInsets.only(bottom: 3),
+                        child: Row(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: <Widget>[
+                            Container(
+                              width: 5,
+                              height: 5,
+                              margin: const EdgeInsets.only(top: 6, right: 6),
+                              decoration: BoxDecoration(
+                                color: accent,
+                                shape: BoxShape.circle,
+                              ),
+                            ),
+                            Expanded(
+                              child: _SheetSpansText(
+                                text: (row['text'] as String?) ?? '',
+                                color: scheme.onSurface,
+                                style: bodyStyle,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                  ],
+                ),
+              ),
+              if (urdu.isNotEmpty)
+                Expanded(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: <Widget>[
+                      for (final String line in urdu.split('\n'))
+                        Padding(
+                          padding: const EdgeInsets.only(bottom: 3),
+                          child: Row(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: <Widget>[
+                              Container(
+                                width: 5,
+                                height: 5,
+                                margin: const EdgeInsets.only(top: 6, right: 6),
+                                decoration: BoxDecoration(
+                                  color: accent,
+                                  shape: BoxShape.circle,
+                                ),
+                              ),
+                              Expanded(
+                                child: Text(
+                                  line,
+                                  textDirection: TextDirection.rtl,
+                                  style: bodyStyle?.copyWith(height: 1.6),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                    ],
+                  ),
+                ),
+            ],
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+/// Incorrect / Correct comparison strip.
+class _SheetIncorrectCorrect extends StatelessWidget {
+  const _SheetIncorrectCorrect({required this.data});
+
+  final Map<String, dynamic> data;
+
+  @override
+  Widget build(BuildContext context) {
+    final ThemeData theme = Theme.of(context);
+    final ColorScheme scheme = theme.colorScheme;
+    final String incorrect = (data['incorrect'] as String?) ?? '';
+    final String correct = (data['correct'] as String?) ?? '';
+    final TextStyle bodyStyle = theme.textTheme.bodySmall?.copyWith(
+      height: 1.35,
+      fontSize: 11,
+      color: scheme.onSurface,
+    );
+
+    return Column(
+      children: <Widget>[
+        Container(
+          width: double.infinity,
+          padding: const EdgeInsets.symmetric(horizontal: 9, vertical: 6),
+          decoration: BoxDecoration(
+            color: _SheetColors.red.withValues(alpha: 0.12),
+            border: Border.all(color: _SheetColors.red.withValues(alpha: 0.5)),
+            borderRadius: BorderRadius.circular(9),
+          ),
+          child: Row(
+            children: <Widget>[
+              Icon(Icons.cancel, size: 15, color: _SheetColors.red),
+              const SizedBox(width: 7),
+              Text(
+                'Incorrect:',
+                style: bodyStyle?.copyWith(
+                  color: _SheetColors.red,
+                  fontWeight: FontWeight.w800,
+                ),
+              ),
+              const SizedBox(width: 8),
+              Expanded(
+                child: _SheetSpansText(
+                  text: incorrect,
+                  color: scheme.onSurface,
+                  style: bodyStyle,
+                ),
+              ),
+              Icon(Icons.close, size: 16, color: _SheetColors.red),
+            ],
+          ),
+        ),
+        const SizedBox(height: 5),
+        Container(
+          width: double.infinity,
+          padding: const EdgeInsets.symmetric(horizontal: 9, vertical: 6),
+          decoration: BoxDecoration(
+            color: _SheetColors.green.withValues(alpha: 0.12),
+            border: Border.all(color: _SheetColors.green.withValues(alpha: 0.5)),
+            borderRadius: BorderRadius.circular(9),
+          ),
+          child: Row(
+            children: <Widget>[
+              Icon(Icons.check_circle, size: 15, color: _SheetColors.green),
+              const SizedBox(width: 7),
+              Text(
+                'Correct:',
+                style: bodyStyle?.copyWith(
+                  color: _SheetColors.green,
+                  fontWeight: FontWeight.w800,
+                ),
+              ),
+              const SizedBox(width: 8),
+              Expanded(
+                child: _SheetSpansText(
+                  text: correct,
+                  color: scheme.onSurface,
+                  style: bodyStyle,
+                ),
+              ),
+              Icon(Icons.check, size: 16, color: _SheetColors.green),
+            ],
+          ),
+        ),
+      ],
+    );
+  }
+}
+
+/// "Said vs Told"-style two-column comparison (purple card | green card).
+class _SheetChangesCard extends StatelessWidget {
+  const _SheetChangesCard({required this.data});
+
+  final Map<String, dynamic> data;
+
+  @override
+  Widget build(BuildContext context) {
+    final ThemeData theme = Theme.of(context);
+    final ColorScheme scheme = theme.colorScheme;
+    final List<Map<String, dynamic>> cards = _narrationMaps(data['cards']);
+    final TextStyle bodyStyle = theme.textTheme.bodySmall?.copyWith(
+      height: 1.35,
+      fontSize: 10.5,
+      color: scheme.onSurface,
+    );
+
+    return Row(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: <Widget>[
+        for (int i = 0; i < cards.length; i++) ...<Widget>[
+          if (i > 0) const SizedBox(width: 8),
+          Expanded(
+            child: Builder(
+              builder: (BuildContext context) {
+                final Map<String, dynamic> card = cards[i];
+                final Color accent =
+                    _sheetAccent((card['accent'] as String?) ?? 'purple');
+                final List<String> items =
+                    ((card['items'] as List<dynamic>?) ?? const <dynamic>[])
+                        .map((dynamic e) => e.toString())
+                        .toList(growable: false);
+                return Container(
+                  padding: const EdgeInsets.all(8),
+                  decoration: BoxDecoration(
+                    border: Border.all(color: accent.withValues(alpha: 0.55)),
+                    borderRadius: BorderRadius.circular(9),
+                    color: accent.withValues(alpha: 0.06),
+                  ),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: <Widget>[
+                      Row(
+                        children: <Widget>[
+                          Icon(Icons.person_outline, size: 13, color: accent),
+                          const SizedBox(width: 5),
+                          Expanded(
+                            child: _SheetSpansText(
+                              text: (card['title'] as String?) ?? '',
+                              color: accent,
+                              style: bodyStyle?.copyWith(
+                                fontWeight: FontWeight.w800,
+                                fontSize: 12,
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                      const SizedBox(height: 4),
+                      for (final String item in items)
+                        Padding(
+                          padding: const EdgeInsets.only(bottom: 3),
+                          child: Row(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: <Widget>[
+                              Container(
+                                width: 5,
+                                height: 5,
+                                margin: const EdgeInsets.only(top: 6, right: 6),
+                                decoration: BoxDecoration(
+                                  color: accent,
+                                  shape: BoxShape.circle,
+                                ),
+                              ),
+                              Expanded(
+                                child: _SheetSpansText(
+                                  text: item,
+                                  color: scheme.onSurface,
+                                  style: bodyStyle,
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                    ],
+                  ),
+                );
+              },
+            ),
+          ),
+        ],
+      ],
+    );
+  }
+}
+
+/// Big bordered formula box (e.g. "asked + wh-word + subject + verb").
+class _SheetFormulaCard extends StatelessWidget {
+  const _SheetFormulaCard({required this.data});
+
+  final Map<String, dynamic> data;
+
+  @override
+  Widget build(BuildContext context) {
+    final ThemeData theme = Theme.of(context);
+    final ColorScheme scheme = theme.colorScheme;
+    final Color accent = _sheetAccent((data['accent'] as String?) ?? 'blue');
+
+    return Container(
+      width: double.infinity,
+      padding: const EdgeInsets.all(10),
+      decoration: BoxDecoration(
+        border: Border.all(color: accent.withValues(alpha: 0.6)),
+        borderRadius: BorderRadius.circular(10),
+        color: accent.withValues(alpha: 0.05),
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: <Widget>[
+          Row(
+            children: <Widget>[
+              Icon(Icons.description_outlined, size: 14, color: accent),
+              const SizedBox(width: 6),
+              Text(
+                (data['title'] as String?) ?? 'Formula',
+                style: theme.textTheme.titleSmall?.copyWith(
+                  color: accent,
+                  fontWeight: FontWeight.w800,
+                  fontSize: 13,
+                ),
+              ),
+            ],
+          ),
+          const SizedBox(height: 5),
+          _SheetSpansText(
+            text: (data['text'] as String?) ?? '',
+            color: scheme.onSurface,
+            style: theme.textTheme.bodyMedium?.copyWith(
+              color: scheme.onSurface,
+              fontWeight: FontWeight.w800,
+              fontSize: 12.5,
+              height: 1.4,
+            ),
+          ),
         ],
       ),
     );
