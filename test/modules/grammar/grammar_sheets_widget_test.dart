@@ -106,6 +106,10 @@ void main() {
         find.textContaining('do not always change the tense'),
         findsWidgets,
       );
+      expect(find.textContaining('quick checklist'), findsWidgets);
+      expect(find.textContaining('Not every sentence'), findsWidgets);
+      expect(find.textContaining('needs to change'), findsWidgets);
+      expect(find.textContaining('quotation marks, commas'), findsWidgets);
     },
   );
 
