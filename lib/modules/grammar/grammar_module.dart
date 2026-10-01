@@ -70,6 +70,12 @@ class GrammarModule extends FeatureModule {
                 title: 'Active & Passive Voice Quiz',
               );
             }
+            if (lessonId == 'direct-indirect-speech/practice-quiz') {
+              return const PosQuizStageMapPage(
+                lessonId: 'direct-indirect-speech/practice-quiz',
+                title: 'Direct & Indirect Speech Quiz',
+              );
+            }
             return LessonPage(lessonId: lessonId);
           },
         ),

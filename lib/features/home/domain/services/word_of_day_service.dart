@@ -33,15 +33,20 @@ class WordOfDayService {
   static int indexForDate(DateTime date, int poolLength) {
     if (poolLength <= 0) return 0;
     final DateTime utcDay = DateTime.utc(date.year, date.month, date.day);
-    final int dayIndex = utcDay.difference(DateTime.utc(1970)).inDays;
-    // The bundled data is alphabetically ordered. A plain dayIndex % length
-    // therefore makes the home card visibly walk A→Z. Mix the date first so
-    // the choice remains stable for the whole day but feels genuinely daily.
-    int hash = dayIndex ^ 0x9E3779B9;
-    hash = (hash ^ (hash >>> 16)) * 0x85EBCA6B;
-    hash = (hash ^ (hash >>> 13)) * 0xC2B2AE35;
-    hash ^= hash >>> 16;
-    return (hash & 0x7fffffff) % poolLength;
+    // The bundled pack is alphabetically ordered. Walking it with
+    // `dayIndex % poolLength` makes Word of the Day visibly move A→B→C.
+    // Hash the calendar date instead: selection remains stable for a day and
+    // fully deterministic/offline, but no longer follows asset order.
+    final String key =
+        '${utcDay.year.toString().padLeft(4, '0')}-'
+        '${utcDay.month.toString().padLeft(2, '0')}-'
+        '${utcDay.day.toString().padLeft(2, '0')}';
+    var hash = 2166136261;
+    for (final int codeUnit in key.codeUnits) {
+      hash ^= codeUnit;
+      hash = (hash * 16777619) & 0x7fffffff;
+    }
+    return hash % poolLength;
   }
 
   static Future<List<Map<String, dynamic>>> _load() async {

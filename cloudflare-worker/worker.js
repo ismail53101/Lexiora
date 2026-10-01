@@ -212,6 +212,20 @@ const GNEWS_DEFAULT_MAX = 10;
 const GNEWS_DEFAULT_CACHE_MINUTES = 60;
 const GNEWS_STALE_MAX_MS = 24 * 60 * 60 * 1000;
 
+const INTERNATIONAL_NEWS_MARKERS = [
+  'united states', 'u.s.', 'usa', 'united kingdom', 'european union',
+  'europe', 'russia', 'ukraine', 'china', 'taiwan', 'israel', 'gaza',
+  'palestine', 'iran', 'iraq', 'afghanistan', 'india', 'bangladesh',
+  'sri lanka', 'nepal', 'united nations', 'nato', 'donald trump',
+  'white house', 'european parliament',
+];
+const PAKISTAN_NEWS_MARKERS = [
+  'pakistan', 'pakistani', 'islamabad', 'rawalpindi', 'lahore', 'karachi',
+  'peshawar', 'quetta', 'balochistan', 'sindh', 'punjab', 'khyber',
+  'gilgit', 'azad kashmir', 'prime minister', 'national assembly',
+  'senate of pakistan', 'state bank of pakistan',
+];
+
 const RELEVANCE_BOOSTS = [
   ['politic', 8],
   ['government', 8],
@@ -262,9 +276,12 @@ const NEWS_SOURCES = [
   { id: "dawn-opinion", name: "Dawn", category: "National", feedType: "Opinions", url: "https://www.dawn.com/feeds/opinion" },
   { id: "express-tribune-pakistan", name: "Express Tribune", category: "National", feedType: "Latest News", url: "https://tribune.com.pk/feed/pakistan" },
   { id: "the-news-pakistan", name: "The News", category: "National", feedType: "Latest News", url: "https://www.thenews.com.pk/rss/1/0" },
-  // World — official world/latest feeds. No unsupported category feed is guessed.
+  // World — sources intended to remain accessible for Pakistan users.
   { id: "bbc-world", name: "BBC World", category: "International", feedType: "Latest News", url: "https://feeds.bbci.co.uk/news/world/rss.xml" },
-  { id: "al-jazeera-world", name: "Al Jazeera", category: "International", feedType: "Latest News", url: "https://www.aljazeera.com/xml/rss/all.xml" },
+  // Reuters no longer exposes a dependable public world RSS endpoint. This
+  // Google News RSS query is restricted to Reuters world articles and keeps
+  // the original Reuters links in each parsed story.
+  { id: "reuters-world", name: "Reuters", category: "International", feedType: "Latest News", url: "https://news.google.com/rss/search?q=site%3Areuters.com%2Fworld&hl=en-US&gl=US&ceid=US:en" },
   { id: "express-tribune-world", name: "Express Tribune", category: "International", feedType: "Latest News", url: "https://tribune.com.pk/feed/world" },
   { id: "the-news-world", name: "The News", category: "International", feedType: "Latest News", url: "https://www.thenews.com.pk/rss/1/2" },
   // GNews articles are merged with RSS articles. Set the Worker secret
@@ -509,7 +526,9 @@ async function refreshCurrentAffairs(env) {
   const stories = settled.flatMap((result) =>
     result.status === "fulfilled" ? result.value : []
   );
-  const freshStories = filterFreshStories(deduplicateStories(stories));
+  const freshStories = reclassifyNewsStories(
+    filterFreshStories(deduplicateStories(stories)),
+  );
   const payload = {
     fetchedAt: Date.now(),
     // Diagnostics only (the app ignores unknown fields): how many stories each
@@ -717,7 +736,20 @@ function classifyFeedType(source, articleUrl, title) {
     ? "Opinions"
     : source.feedType;
 }
-
+function reclassifyNewsStories(stories) {
+  return stories.map((story) => {
+    if (story.category !== "National") return story;
+    const text = `${story.title} ${story.excerpt}`.toLowerCase();
+    const mentionsPakistan = PAKISTAN_NEWS_MARKERS.some((marker) => text.includes(marker));
+    const mentionsInternational = INTERNATIONAL_NEWS_MARKERS.some((marker) => text.includes(marker));
+    // Pakistan feeds often carry world headlines. Move only strongly marked
+    // foreign stories; Pakistan-specific stories always remain National.
+    if (!mentionsPakistan && mentionsInternational) {
+      return { ...story, category: "International" };
+    }
+    return story;
+  });
+}
 function readTag(block, tag) {
   const match = block.match(new RegExp(`<${tag}\\b[^>]*>([\\s\\S]*?)</${tag}>`, "i"));
   return match ? match[1].trim() : "";
@@ -890,7 +922,7 @@ function resolveProviderOrder(requested, env) {
   if (requested !== "auto") {
     return configured.includes(requested) ? [requested] : [];
   }
-  const preferredDefault = (env.DEFAULT_PROVIDER || "hcnsec").toLowerCase();
+  const preferredDefault = (env.DEFAULT_PROVIDER || "unorouter").toLowerCase();
   const rest = configured.filter((id) => id !== preferredDefault);
   return configured.includes(preferredDefault)
     ? [preferredDefault, ...rest]
@@ -898,6 +930,11 @@ function resolveProviderOrder(requested, env) {
 }
 
 function providerApiKey(id, env) {
+  if (id === "unorouter") {
+    // The generic pool may be backed entirely by xKiro or another provider in
+    // MODEL_CONFIG_KV, so it must not depend on a legacy UnoRouter key.
+    return env.MODEL_CONFIG_KV || env.UNOROUTER_API_KEY;
+  }
   return env[PROVIDERS[id].apiKeyEnv];
 }
 
