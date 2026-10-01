@@ -4373,9 +4373,9 @@ class _NarrationMethod extends StatelessWidget {
   }
 }
 
-/// One compact step chip of the conversion method: number badge, title and
-/// worked example stacked in a small tinted box; chips sit side by side with
-/// arrow separators between them.
+/// One compact step chip of the conversion method: a numbered colored title
+/// and its worked example stacked in a small tinted box; chips sit side by
+/// side with arrow separators between them.
 class _NarrationStep extends StatelessWidget {
   const _NarrationStep({
     required this.data,
@@ -4389,15 +4389,14 @@ class _NarrationStep extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final ThemeData theme = Theme.of(context);
-    final ColorScheme scheme = theme.colorScheme;
+    final ColorScheme scheme = Theme.of(context).colorScheme;
     final Color accent =
         _sheetAccent((data['accent'] as String?) ?? 'purple');
     final String title = (data['title'] as String?) ?? '';
     final String example = (data['example'] as String?) ?? '';
 
     return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 3, vertical: 5),
+      padding: const EdgeInsets.symmetric(horizontal: 2, vertical: 5),
       decoration: BoxDecoration(
         color: accent.withValues(alpha: 0.07),
         border: Border.all(color: accent.withValues(alpha: 0.55)),
@@ -4407,27 +4406,10 @@ class _NarrationStep extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.center,
         mainAxisSize: MainAxisSize.min,
         children: <Widget>[
-          Container(
-            width: 13,
-            height: 13,
-            decoration: BoxDecoration(color: accent, shape: BoxShape.circle),
-            alignment: Alignment.center,
-            child: Text(
-              '$index',
-              style: theme.textTheme.labelSmall?.copyWith(
-                color: Colors.white,
-                fontWeight: FontWeight.w800,
-                fontSize: 8.5,
-              ),
-            ),
-          ),
-          if (title.isNotEmpty) ...<Widget>[
-            const SizedBox(height: 3),
+          if (title.isNotEmpty)
             Text(
-              title,
+              '$index. $title',
               textAlign: TextAlign.center,
-              maxLines: 4,
-              overflow: TextOverflow.ellipsis,
               style: bodyStyle.copyWith(
                 color: accent,
                 fontWeight: FontWeight.w800,
@@ -4435,14 +4417,11 @@ class _NarrationStep extends StatelessWidget {
                 height: 1.15,
               ),
             ),
-          ],
           if (example.isNotEmpty) ...<Widget>[
-            const SizedBox(height: 3),
+            if (title.isNotEmpty) const SizedBox(height: 3),
             Text(
               example,
               textAlign: TextAlign.center,
-              maxLines: 4,
-              overflow: TextOverflow.ellipsis,
               style: bodyStyle.copyWith(
                 color: scheme.onSurfaceVariant,
                 fontSize: 8.5,
@@ -4788,6 +4767,9 @@ class _SheetSubHeader extends StatelessWidget {
   Widget build(BuildContext context) {
     final ThemeData theme = Theme.of(context);
     final Color accent = _sheetAccent((data['accent'] as String?) ?? 'pink');
+    final Object? circleName = data['circle'];
+    final Color circleColor =
+        circleName is String ? _sheetAccent(circleName) : accent;
     final String number = (data['number'] as String?) ?? '';
     final String title = (data['title'] as String?) ?? '';
 
@@ -4800,7 +4782,10 @@ class _SheetSubHeader extends StatelessWidget {
             decoration: BoxDecoration(
               shape: BoxShape.circle,
               gradient: LinearGradient(
-                colors: <Color>[accent, accent.withValues(alpha: 0.65)],
+                colors: <Color>[
+                  circleColor,
+                  circleColor.withValues(alpha: 0.65),
+                ],
               ),
             ),
             alignment: Alignment.center,
@@ -5964,8 +5949,10 @@ class _SheetTruthRow extends StatelessWidget {
             width: 15,
             height: 15,
             margin: const EdgeInsets.only(top: 1, right: 6),
-            decoration: const BoxDecoration(
-              color: _SheetColors.sky,
+            decoration: BoxDecoration(
+              color: row['color'] is String
+                  ? _sheetAccent(row['color'] as String)
+                  : _SheetColors.sky,
               shape: BoxShape.circle,
             ),
             alignment: Alignment.center,

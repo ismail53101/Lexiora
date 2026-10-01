@@ -10959,12 +10959,12 @@
             {
               "accent": "pink",
               "title": "Identify Reporting Clause",
-              "example": "Ali said,"
+              "example": "Find who said it. Ali said,"
             },
             {
               "accent": "orange",
               "title": "Add \"that\"",
-              "example": "Ali said that"
+              "example": "Add a joining word. Ali said that"
             },
             {
               "accent": "blue",
@@ -12472,10 +12472,10 @@
                 "type": "items",
                 "items": [
                   {
-                    "accent": "yellow",
+                    "accent": "magenta",
                     "icon": "gear",
                     "title": "Why this formula?",
-                    "text": "Positive commands are instructions. They are changed into **\"told/ordered + object + to + V₁\"** because we express the command as a request to do something."
+                    "text": "Positive commands are instructions. They are changed into @@\"to + V₁\"@@ because we express the command as a request to do something."
                   },
                   {
                     "accent": "blue",
@@ -12520,21 +12520,21 @@
                   }
                 ]
               },
-              { "type": "subHeader", "number": "2", "title": "Negative Command", "accent": "pink" },
+              { "type": "subHeader", "number": "2", "title": "Negative Command", "accent": "pink", "circle": "orange" },
               {
                 "type": "items",
                 "items": [
                   {
-                    "accent": "yellow",
+                    "accent": "magenta",
                     "icon": "gear",
                     "title": "Why this formula?",
-                    "text": "Negative commands forbid someone from doing something. So we use **\"told/ordered + object + not to + V₁\"**."
+                    "text": "Negative commands forbid someone from doing something. So we use @@\"not to + V₁\"@@."
                   },
                   {
                     "accent": "blue",
                     "icon": "doc",
                     "title": "Formula:",
-                    "text": "told / ordered / asked + object + **not to** + V₁"
+                    "text": "told / ordered / advised / asked + object + **not to** + V₁"
                   }
                 ]
               },
@@ -12566,22 +12566,22 @@
                         "items": [
                           { "text": "Mother told me **not to waste time**." },
                           { "text": "Teacher ordered the students **not to be late**." },
-                          { "text": "He warned me **not to touch that**." }
+                          { "text": "He warned me **not to touch this**." }
                         ]
                       }
                     ]
                   }
                 ]
               },
-              { "type": "subHeader", "number": "3", "title": "Request", "accent": "pink" },
+              { "type": "subHeader", "number": "3", "title": "Request", "accent": "pink", "circle": "blue" },
               {
                 "type": "items",
                 "items": [
                   {
-                    "accent": "yellow",
+                    "accent": "magenta",
                     "icon": "gear",
                     "title": "Why this formula?",
-                    "text": "Requests are polite commands. They are changed into **\"asked + object + to + V₁\"**."
+                    "text": "Requests are polite commands. They are changed into @@\"asked + object + to + V₁\"@@."
                   },
                   {
                     "accent": "blue",
@@ -12681,16 +12681,19 @@
                 "type": "truthRows",
                 "rows": [
                   {
+                    "color": "purple",
                     "name": "Universal Truth",
                     "direct": "Teacher said, \"The Earth **moves around the Sun**.\"",
                     "indirect": "Teacher said that the Earth **moves around the Sun**."
                   },
                   {
+                    "color": "orange",
                     "name": "Reporting Verb in Present",
                     "direct": "Riya says, \"I **am busy**.\"",
                     "indirect": "Riya says that she **is busy**."
                   },
                   {
+                    "color": "blue",
                     "name": "Fact Still True",
                     "direct": "Aman said, \"Delhi **is the capital** of India.\"",
                     "indirect": "Aman said that Delhi **is the capital** of India."
@@ -12701,6 +12704,7 @@
           },
           {
             "accent": "yellow",
+            "letter": "D",
             "title": "FINAL CONVERSION CHECKLIST",
             "blocks": [
               {
