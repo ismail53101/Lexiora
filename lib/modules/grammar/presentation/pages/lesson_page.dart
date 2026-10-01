@@ -5559,7 +5559,10 @@ class _SheetExampleRow extends StatelessWidget {
             width: 16,
             height: 16,
             margin: const EdgeInsets.only(right: 6),
-            decoration: BoxDecoration(color: purple, shape: BoxShape.circle),
+            decoration: const BoxDecoration(
+              color: kGrammarHeadingPurple,
+              shape: BoxShape.circle,
+            ),
             alignment: Alignment.center,
             child: Text(
               '$index',
