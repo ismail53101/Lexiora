@@ -4632,6 +4632,10 @@ class _SheetBlock extends StatelessWidget {
         return _SheetNote(data: block);
       case 'incorrectCorrect':
         return _SheetIncorrectCorrect(data: block);
+      case 'changesCard':
+        return _SheetChangesCard(data: block);
+      case 'formulaCard':
+        return _SheetFormulaCard(data: block);
       case 'urdu':
         return _SheetUrduLine(text: (block['text'] as String?) ?? '');
       case 'text':
@@ -5066,7 +5070,7 @@ class _SheetQuestionBlock extends StatelessWidget {
         ((data['changes'] as List<dynamic>?) ?? const <dynamic>[])
             .map((dynamic e) => e.toString())
             .toList(growable: false);
-    final TextStyle bodyStyle = theme.textTheme.bodySmall?.copyWith(
+    final TextStyle? bodyStyle = theme.textTheme.bodySmall?.copyWith(
       height: 1.35,
       fontSize: 11.5,
       color: scheme.onSurface,
@@ -5226,9 +5230,7 @@ abstract final class _SheetColors {
   static const Color pink = Color(0xFFF06292);
   static const Color sky = Color(0xFF4FC3F7);
   static const Color green = Color(0xFF10B981);
-  static const Color purple = kGrammarHeadingPurple;
   static const Color red = Color(0xFFEF5350);
-  static const Color blue = Color(0xFF42A5F5);
   static const Color orange = Color(0xFFFB8C00);
 }
 
@@ -5342,7 +5344,7 @@ class _SheetTable extends StatelessWidget {
             .map((dynamic e) => e.toString())
             .toList(growable: false);
     final List<Map<String, dynamic>> rows = _narrationMaps(data['rows']);
-    final TextStyle bodyStyle = theme.textTheme.bodySmall?.copyWith(
+    final TextStyle? bodyStyle = theme.textTheme.bodySmall?.copyWith(
       height: 1.3,
       fontSize: 11,
       color: scheme.onSurface,
@@ -5542,9 +5544,7 @@ class _SheetExampleRow extends StatelessWidget {
   Widget build(BuildContext context) {
     final ThemeData theme = Theme.of(context);
     final ColorScheme scheme = theme.colorScheme;
-    final Color purple = kGrammarHeadingPurple;
-    final Color green = _sheetAccent('green');
-    final TextStyle bodyStyle = theme.textTheme.bodySmall?.copyWith(
+    final TextStyle? bodyStyle = theme.textTheme.bodySmall?.copyWith(
       height: 1.3,
       fontSize: 10.5,
       color: scheme.onSurface,
@@ -5627,7 +5627,7 @@ class _SheetTruthRow extends StatelessWidget {
   Widget build(BuildContext context) {
     final ThemeData theme = Theme.of(context);
     final ColorScheme scheme = theme.colorScheme;
-    final TextStyle bodyStyle = theme.textTheme.bodySmall?.copyWith(
+    final TextStyle? bodyStyle = theme.textTheme.bodySmall?.copyWith(
       height: 1.3,
       fontSize: 10.5,
       color: scheme.onSurface,
@@ -5712,7 +5712,7 @@ class _SheetFlow extends StatelessWidget {
         ((data['changes'] as List<dynamic>?) ?? const <dynamic>[])
             .map((dynamic e) => e.toString())
             .toList(growable: false);
-    final TextStyle bodyStyle = theme.textTheme.bodySmall?.copyWith(
+    final TextStyle? bodyStyle = theme.textTheme.bodySmall?.copyWith(
       height: 1.35,
       fontSize: 10.5,
       color: scheme.onSurface,
@@ -5873,7 +5873,7 @@ class _SheetExampleCard extends StatelessWidget {
   Widget build(BuildContext context) {
     final ThemeData theme = Theme.of(context);
     final ColorScheme scheme = theme.colorScheme;
-    final TextStyle bodyStyle = theme.textTheme.bodySmall?.copyWith(
+    final TextStyle? bodyStyle = theme.textTheme.bodySmall?.copyWith(
       height: 1.35,
       fontSize: 10.5,
       color: scheme.onSurface,
@@ -6157,7 +6157,7 @@ class _SheetNote extends StatelessWidget {
     final String title = (data['title'] as String?) ?? 'Important Note';
     final List<Map<String, dynamic>> rows = _narrationMaps(data['rows']);
     final String urdu = (data['urdu'] as String?) ?? '';
-    final TextStyle bodyStyle = theme.textTheme.bodySmall?.copyWith(
+    final TextStyle? bodyStyle = theme.textTheme.bodySmall?.copyWith(
       height: 1.35,
       fontSize: 10.5,
       color: scheme.onSurface,
@@ -6277,7 +6277,7 @@ class _SheetIncorrectCorrect extends StatelessWidget {
     final ColorScheme scheme = theme.colorScheme;
     final String incorrect = (data['incorrect'] as String?) ?? '';
     final String correct = (data['correct'] as String?) ?? '';
-    final TextStyle bodyStyle = theme.textTheme.bodySmall?.copyWith(
+    final TextStyle? bodyStyle = theme.textTheme.bodySmall?.copyWith(
       height: 1.35,
       fontSize: 11,
       color: scheme.onSurface,
@@ -6364,7 +6364,7 @@ class _SheetChangesCard extends StatelessWidget {
     final ThemeData theme = Theme.of(context);
     final ColorScheme scheme = theme.colorScheme;
     final List<Map<String, dynamic>> cards = _narrationMaps(data['cards']);
-    final TextStyle bodyStyle = theme.textTheme.bodySmall?.copyWith(
+    final TextStyle? bodyStyle = theme.textTheme.bodySmall?.copyWith(
       height: 1.35,
       fontSize: 10.5,
       color: scheme.onSurface,
