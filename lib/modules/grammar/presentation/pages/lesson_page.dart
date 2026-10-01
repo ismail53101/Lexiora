@@ -3744,7 +3744,7 @@ class _NarrationAnnotatedSentence extends StatelessWidget {
                 ),
         ),
       );
-      if (!plain) ...<Widget>[
+      if (!plain)
         spans.add(
           WidgetSpan(
             alignment: PlaceholderAlignment.middle,
@@ -3764,8 +3764,7 @@ class _NarrationAnnotatedSentence extends StatelessWidget {
               ),
             ),
           ),
-        ),
-      ];
+        );
       if (i < segments.length - 1) spans.add(const TextSpan(text: ' '));
     }
 
@@ -6061,10 +6060,9 @@ class _SheetDownArrow extends StatelessWidget {
 
 /// Full-width numbered "Changes" card (amber numbers, orange border).
 class _SheetChangesBox extends StatelessWidget {
-  const _SheetChangesBox({required this.changes, this.fontSize = 11});
+  const _SheetChangesBox({required this.changes});
 
   final List<String> changes;
-  final double fontSize;
 
   @override
   Widget build(BuildContext context) {
@@ -6072,7 +6070,7 @@ class _SheetChangesBox extends StatelessWidget {
     final ColorScheme scheme = theme.colorScheme;
     final TextStyle? bodyStyle = theme.textTheme.bodySmall?.copyWith(
       height: 1.35,
-      fontSize: fontSize,
+      fontSize: 11,
       color: scheme.onSurface,
     );
 
