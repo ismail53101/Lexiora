@@ -13,9 +13,10 @@ import 'package:lexiora/modules/grammar/presentation/pages/lesson_page.dart';
 /// section, clipped text or build exception fails CI.
 
 Map<String, dynamic> _leafContent(String id) {
-  final Map<String, dynamic> doc = jsonDecode(
+  // The bundled file's root is a list of topic maps.
+  final List<dynamic> topics = jsonDecode(
     File('assets/grammar/grammar_topics.json').readAsStringSync(),
-  ) as Map<String, dynamic>;
+  ) as List<dynamic>;
   Map<String, dynamic>? content;
   void walk(Object? node) {
     if (content != null || node is! Map) return;
@@ -26,7 +27,9 @@ Map<String, dynamic> _leafContent(String id) {
     node.forEach((dynamic _, dynamic value) => walk(value));
   }
 
-  walk(doc);
+  for (final Object? topic in topics) {
+    walk(topic);
+  }
   if (content == null) {
     fail('lesson $id not found in assets/grammar/grammar_topics.json');
   }
