@@ -194,17 +194,31 @@ void main() {
     ]) {
       final GrammarLesson? lesson = await ds.leaf(id);
       expect(lesson, isNotNull, reason: '$id must decode');
+      expect(lesson!.practice, isNotEmpty, reason: '$id needs practice');
+    }
+    // The intro leaf ships the compact two-column narration layout instead of
+    // the legacy Urdu/rules/exam-tips/summary sections.
+    expect(
+      (await ds.leaf('direct-indirect-speech/introduction'))!.narrationIntro,
+      isNotNull,
+      reason: 'intro lesson uses the compact two-column narration layout',
+    );
+    // The remaining course leaves keep the full study sections.
+    for (final String id in <String>[
+      'direct-indirect-speech/statements',
+      'direct-indirect-speech/tense-changes',
+      'direct-indirect-speech/pronoun-changes',
+      'direct-indirect-speech/time-place-changes',
+      'direct-indirect-speech/questions',
+      'direct-indirect-speech/commands-requests-punctuation',
+    ]) {
+      final GrammarLesson? lesson = await ds.leaf(id);
+      expect(lesson, isNotNull, reason: '$id must decode');
       expect(lesson!.urduExplanation, isNotEmpty, reason: '$id needs Urdu');
       expect(lesson.rules, isNotEmpty, reason: '$id needs rules');
-      expect(lesson.practice, isNotEmpty, reason: '$id needs practice');
       expect(lesson.examTips, isNotEmpty, reason: '$id needs exam tips');
       expect(lesson.summary, isNotEmpty, reason: '$id needs a summary');
     }
-    expect(
-      (await ds.leaf('direct-indirect-speech/introduction'))!.voiceComparison,
-      isNotNull,
-      reason: 'intro lesson uses the two-column comparison layout',
-    );
 
     // Final split: the remaining multi-type categories each became a
     // branch with a dedicated leaf per type. Articles, Prepositions, and
@@ -251,7 +265,8 @@ void main() {
         expect(
           lesson!.englishExplanation.isNotEmpty ||
               lesson.introduction.isNotEmpty ||
-              lesson.providedMaterial.isNotEmpty,
+              lesson.providedMaterial.isNotEmpty ||
+              (lesson.narrationIntro?.isNotEmpty ?? false),
           isTrue,
           reason: '$id needs English lesson content',
         );

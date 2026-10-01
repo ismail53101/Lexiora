@@ -139,10 +139,14 @@ class _CompleteBar extends ConsumerWidget {
 }
 
 class _BilingualText extends StatelessWidget {
-  const _BilingualText({required this.text, required this.style});
+  const _BilingualText({required this.text, required this.style, this.highlightColor});
 
   final String text;
   final TextStyle style;
+
+  /// Optional override for the color used to highlight Latin words embedded
+  /// in the Urdu text (defaults to the theme primary).
+  final Color? highlightColor;
 
   @override
   Widget build(BuildContext context) {
@@ -157,7 +161,7 @@ class _BilingualText extends StatelessWidget {
       spans.add(TextSpan(
         text: match.group(0),
         style: style.copyWith(
-          color: theme.colorScheme.primary,
+          color: highlightColor ?? theme.colorScheme.primary,
           fontWeight: FontWeight.w700,
         ),
       ));
@@ -203,6 +207,11 @@ class _LessonView extends StatelessWidget {
         lesson.id == 'pos/interjection' ||
         lesson.id == 'pos/determiner') {
       return _NounLandingView(lesson: lesson);
+    }
+    // Compact side-by-side Direct vs Indirect Speech layout (Introduction &
+    // Basic Difference). Both panels render on the same screen — no slides.
+    if (lesson.narrationIntro != null && lesson.narrationIntro!.isNotEmpty) {
+      return _NarrationIntroView(lesson: lesson);
     }
     // Numbered vertical rules layout (General Rules of Conversion).
     if (lesson.rulesConversion != null && lesson.rulesConversion!.isNotEmpty) {
@@ -3274,6 +3283,1165 @@ class _QuizResultView extends StatelessWidget {
             ),
           ],
         ),
+      ),
+    );
+  }
+}
+
+/// ─────────────────────────────────────────────────────────────────────────────
+/// Compact side-by-side "Direct Speech vs Indirect Speech" layout for the
+/// Introduction & Basic Difference lesson. Both panels render on one screen —
+/// never as swipeable slides — followed by a compact step-by-step method, a
+/// key-difference table and an exam tip. Content comes from the lesson's
+/// `narrationIntro` map (assets/grammar/grammar_topics.json).
+/// ─────────────────────────────────────────────────────────────────────────────
+class _NarrationIntroView extends StatelessWidget {
+  const _NarrationIntroView({required this.lesson});
+
+  final GrammarLesson lesson;
+
+  @override
+  Widget build(BuildContext context) {
+    final ThemeData theme = Theme.of(context);
+    final ColorScheme scheme = theme.colorScheme;
+    final Map<String, dynamic> data =
+        lesson.narrationIntro ?? const <String, dynamic>{};
+    final List<Map<String, dynamic>> columns =
+        _narrationMaps(data['columns']);
+    final Map<String, dynamic>? method =
+        data['method'] as Map<String, dynamic>?;
+    final Map<String, dynamic>? keyDifference =
+        data['keyDifference'] as Map<String, dynamic>?;
+    final Map<String, dynamic>? examTip =
+        data['examTip'] as Map<String, dynamic>?;
+
+    final TextStyle bodyStyle = theme.textTheme.bodySmall?.copyWith(
+          height: 1.35,
+          fontSize: 11.5,
+          color: scheme.onSurface,
+        ) ??
+        const TextStyle();
+    final TextStyle urduStyle = bodyStyle.copyWith(
+      height: 1.6,
+      color: scheme.onSurfaceVariant,
+    );
+
+    return ListView(
+      padding: const EdgeInsets.fromLTRB(10, 8, 10, 20),
+      children: <Widget>[
+        // ── Both sections side by side: Direct (left) | Indirect (right) ──
+        if (columns.isNotEmpty)
+          IntrinsicHeight(
+            child: Row(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: <Widget>[
+                Expanded(
+                  child: _NarrationPanel(
+                    data: columns[0],
+                    accent: kGrammarHeadingPurple,
+                    bodyStyle: bodyStyle,
+                    urduStyle: urduStyle,
+                  ),
+                ),
+                if (columns.length >= 2) ...<Widget>[
+                  const SizedBox(width: 8),
+                  Expanded(
+                    child: _NarrationPanel(
+                      data: columns[1],
+                      accent: passiveVoiceColor(context),
+                      bodyStyle: bodyStyle,
+                      urduStyle: urduStyle,
+                    ),
+                  ),
+                ],
+              ],
+            ),
+          ),
+
+        // ── Step-by-Step Method (Direct → Indirect) ──────────────────────
+        if (method != null) ...<Widget>[
+          const SizedBox(height: 10),
+          _NarrationMethod(data: method, bodyStyle: bodyStyle),
+        ],
+
+        // ── Key Difference ───────────────────────────────────────────────
+        if (keyDifference != null) ...<Widget>[
+          const SizedBox(height: 10),
+          _NarrationKeyDifference(data: keyDifference, bodyStyle: bodyStyle),
+        ],
+
+        // ── Important Rule / Exam Tip ────────────────────────────────────
+        if (examTip != null) ...<Widget>[
+          const SizedBox(height: 10),
+          _NarrationExamTip(data: examTip, bodyStyle: bodyStyle),
+        ],
+
+        // ── Practice (kept from the existing lesson data) ────────────────
+        if (lesson.practice.isNotEmpty) ...<Widget>[
+          const SizedBox(height: 4),
+          GrammarSectionCard(
+            icon: Icons.edit_note,
+            title: 'Practice',
+            child: Column(
+              children: <Widget>[
+                for (int i = 0; i < lesson.practice.length; i++)
+                  PracticeQuestionCard(
+                    question: lesson.practice[i],
+                    index: i + 1,
+                  ),
+              ],
+            ),
+          ),
+        ],
+      ],
+    );
+  }
+}
+
+/// Extracts the map entries of a JSON list, ignoring anything else.
+List<Map<String, dynamic>> _narrationMaps(Object? value) {
+  if (value is! List) return const <Map<String, dynamic>>[];
+  return value.whereType<Map<String, dynamic>>().toList(growable: false);
+}
+
+/// One side panel of the comparison (purple = Direct Speech, green = Indirect
+/// Speech): definition, Urdu definition, example, parts of the sentence,
+/// numbered features and the worked example explanation.
+class _NarrationPanel extends StatelessWidget {
+  const _NarrationPanel({
+    required this.data,
+    required this.accent,
+    required this.bodyStyle,
+    required this.urduStyle,
+  });
+
+  final Map<String, dynamic> data;
+  final Color accent;
+  final TextStyle bodyStyle;
+  final TextStyle urduStyle;
+
+  @override
+  Widget build(BuildContext context) {
+    final ThemeData theme = Theme.of(context);
+    final ColorScheme scheme = theme.colorScheme;
+    final String title = (data['title'] as String?) ?? '';
+    final String definition = (data['definition'] as String?) ?? '';
+    final String definitionUrdu = (data['definitionUrdu'] as String?) ?? '';
+    final String example = (data['example'] as String?) ?? '';
+    final String exampleUrdu = (data['exampleUrdu'] as String?) ?? '';
+    final List<Map<String, dynamic>> parts = _narrationMaps(data['parts']);
+    final String featuresTitle =
+        (data['featuresTitle'] as String?) ?? 'Features';
+    final List<Map<String, dynamic>> features = _narrationMaps(data['features']);
+    final Map<String, dynamic>? explain =
+        data['explain'] as Map<String, dynamic>?;
+
+    return Container(
+      decoration: BoxDecoration(
+        color: accent.withValues(alpha: 0.05),
+        border: Border.all(color: accent.withValues(alpha: 0.55)),
+        borderRadius: BorderRadius.circular(12),
+      ),
+      clipBehavior: Clip.antiAlias,
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: <Widget>[
+          // ── Panel header: speaker icon + title ──────────────────────────
+          Container(
+            width: double.infinity,
+            color: accent.withValues(alpha: 0.2),
+            padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 7),
+            child: Row(
+              children: <Widget>[
+                Icon(Icons.volume_up, size: 15, color: accent),
+                const SizedBox(width: 6),
+                Expanded(
+                  child: Text(
+                    title,
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
+                    style: theme.textTheme.titleSmall?.copyWith(
+                      color: accent,
+                      fontWeight: FontWeight.w800,
+                      fontSize: 13.5,
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.fromLTRB(8, 8, 8, 10),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: <Widget>[
+                // ── Definition + Urdu definition ────────────────────────
+                _NarrationPanelLabel(
+                  icon: Icons.menu_book_outlined,
+                  label: 'Definition',
+                  color: accent,
+                ),
+                const SizedBox(height: 3),
+                if (definition.isNotEmpty) Text(definition, style: bodyStyle),
+                if (definitionUrdu.isNotEmpty) ...<Widget>[
+                  const SizedBox(height: 3),
+                  _BilingualText(
+                    text: definitionUrdu,
+                    style: urduStyle,
+                    highlightColor: accent,
+                  ),
+                ],
+
+                // ── Example + Urdu example ──────────────────────────────
+                const SizedBox(height: 8),
+                _NarrationPanelLabel(
+                  icon: Icons.format_quote,
+                  label: 'Example',
+                  color: accent,
+                ),
+                const SizedBox(height: 3),
+                if (example.isNotEmpty)
+                  _NarrationSentence(
+                    text: example,
+                    accent: accent,
+                    bodyStyle: bodyStyle,
+                  ),
+                if (exampleUrdu.isNotEmpty) ...<Widget>[
+                  const SizedBox(height: 3),
+                  _BilingualText(
+                    text: exampleUrdu,
+                    style: urduStyle,
+                    highlightColor: accent,
+                  ),
+                ],
+
+                // ── Parts of the Sentence ───────────────────────────────
+                if (parts.isNotEmpty) ...<Widget>[
+                  const SizedBox(height: 8),
+                  _NarrationPanelLabel(
+                    icon: Icons.account_tree_outlined,
+                    label: 'Parts of the Sentence',
+                    color: accent,
+                  ),
+                  const SizedBox(height: 4),
+                  IntrinsicHeight(
+                    child: Row(
+                      crossAxisAlignment: CrossAxisAlignment.stretch,
+                      children: <Widget>[
+                        for (int i = 0; i < parts.length; i++) ...<Widget>[
+                          if (i > 0) const SizedBox(width: 6),
+                          Expanded(
+                            child: _NarrationPart(
+                              data: parts[i],
+                              color:
+                                  i == 0 ? accent : activeVoiceColor(context),
+                              bodyStyle: bodyStyle,
+                            ),
+                          ),
+                        ],
+                      ],
+                    ),
+                  ),
+                ],
+
+                // ── Numbered features ───────────────────────────────────
+                if (features.isNotEmpty) ...<Widget>[
+                  const SizedBox(height: 8),
+                  _NarrationPanelLabel(
+                    icon: Icons.settings_outlined,
+                    label: featuresTitle,
+                    color: accent,
+                  ),
+                  const SizedBox(height: 4),
+                  for (int i = 0; i < features.length; i++)
+                    _NarrationFeature(
+                      data: features[i],
+                      index: i + 1,
+                      accent: accent,
+                      bodyStyle: bodyStyle,
+                    ),
+                ],
+
+                // ── Example with Explanation ────────────────────────────
+                if (explain != null)
+                  _NarrationExplain(
+                    data: explain,
+                    accent: accent,
+                    bodyStyle: bodyStyle,
+                    mutedColor: scheme.onSurfaceVariant,
+                  ),
+              ],
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+/// Worked example explanation inside a panel: the sentence, the numbered
+/// teaching points (with their WHY lines) and the "Why used?" bullets or the
+/// change summary chips for Indirect Speech.
+class _NarrationExplain extends StatelessWidget {
+  const _NarrationExplain({
+    required this.data,
+    required this.accent,
+    required this.bodyStyle,
+    required this.mutedColor,
+  });
+
+  final Map<String, dynamic> data;
+  final Color accent;
+  final TextStyle bodyStyle;
+  final Color mutedColor;
+
+  @override
+  Widget build(BuildContext context) {
+    final ThemeData theme = Theme.of(context);
+    final String title =
+        (data['title'] as String?) ?? 'Example with Explanation';
+    final String sentence = (data['sentence'] as String?) ?? '';
+    final List<Map<String, dynamic>> points = _narrationMaps(data['points']);
+    final String whyTitle = (data['whyTitle'] as String?) ?? '';
+    final List<String> why = ((data['why'] as List<dynamic>?) ?? const <dynamic>[])
+        .map((dynamic e) => e.toString())
+        .toList(growable: false);
+    final List<String> changes =
+        ((data['changes'] as List<dynamic>?) ?? const <dynamic>[])
+            .map((dynamic e) => e.toString())
+            .toList(growable: false);
+
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: <Widget>[
+        const SizedBox(height: 8),
+        _NarrationPanelLabel(
+          icon: Icons.lightbulb_outline,
+          label: title,
+          color: accent,
+        ),
+        if (sentence.isNotEmpty) ...<Widget>[
+          const SizedBox(height: 4),
+          _NarrationSentence(
+            text: sentence,
+            accent: accent,
+            bodyStyle: bodyStyle,
+          ),
+        ],
+        const SizedBox(height: 5),
+        for (int i = 0; i < points.length; i++)
+          _NarrationPoint(
+            data: points[i],
+            index: i + 1,
+            accent: accent,
+            bodyStyle: bodyStyle,
+            mutedColor: mutedColor,
+          ),
+        if (why.isNotEmpty) ...<Widget>[
+          const SizedBox(height: 2),
+          Text(
+            whyTitle.isEmpty ? 'Why used?' : whyTitle,
+            style: bodyStyle.copyWith(
+              fontWeight: FontWeight.w800,
+              color: theme.colorScheme.onSurface,
+            ),
+          ),
+          const SizedBox(height: 3),
+          for (final String item in why)
+            Padding(
+              padding: const EdgeInsets.only(bottom: 3),
+              child: Row(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: <Widget>[
+                  Container(
+                    width: 5,
+                    height: 5,
+                    margin: const EdgeInsets.only(top: 5, right: 6),
+                    decoration: BoxDecoration(
+                      color: accent,
+                      shape: BoxShape.circle,
+                    ),
+                  ),
+                  Expanded(
+                    child: Text(
+                      item,
+                      style: bodyStyle.copyWith(
+                        height: 1.3,
+                        color: mutedColor,
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+        ],
+        if (changes.isNotEmpty) ...<Widget>[
+          const SizedBox(height: 3),
+          Wrap(
+            spacing: 5,
+            runSpacing: 5,
+            children: <Widget>[
+              for (final String change in changes)
+                Container(
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 7, vertical: 3),
+                  decoration: BoxDecoration(
+                    color: accent.withValues(alpha: 0.1),
+                    border: Border.all(color: accent.withValues(alpha: 0.5)),
+                    borderRadius: BorderRadius.circular(20),
+                  ),
+                  child: Text(
+                    change,
+                    style: bodyStyle.copyWith(
+                      color: accent,
+                      fontWeight: FontWeight.w800,
+                      fontSize: 10.5,
+                      height: 1.2,
+                    ),
+                  ),
+                ),
+            ],
+          ),
+        ],
+      ],
+    );
+  }
+}
+
+/// One numbered teaching point inside "Example with Explanation".
+class _NarrationPoint extends StatelessWidget {
+  const _NarrationPoint({
+    required this.data,
+    required this.index,
+    required this.accent,
+    required this.bodyStyle,
+    required this.mutedColor,
+  });
+
+  final Map<String, dynamic> data;
+  final int index;
+  final Color accent;
+  final TextStyle bodyStyle;
+  final Color mutedColor;
+
+  @override
+  Widget build(BuildContext context) {
+    final ThemeData theme = Theme.of(context);
+    final String label = (data['label'] as String?) ?? '';
+    final String text = (data['text'] as String?) ?? '';
+    final String why = (data['why'] as String?) ?? '';
+
+    return Padding(
+      padding: const EdgeInsets.only(bottom: 5),
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: <Widget>[
+          Container(
+            width: 15,
+            height: 15,
+            margin: const EdgeInsets.only(top: 1),
+            decoration: BoxDecoration(color: accent, shape: BoxShape.circle),
+            alignment: Alignment.center,
+            child: Text(
+              '$index',
+              style: theme.textTheme.labelSmall?.copyWith(
+                color: Colors.white,
+                fontWeight: FontWeight.w800,
+                fontSize: 9.5,
+              ),
+            ),
+          ),
+          const SizedBox(width: 6),
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: <Widget>[
+                Text.rich(
+                  TextSpan(
+                    style: bodyStyle.copyWith(height: 1.3),
+                    children: <InlineSpan>[
+                      if (label.isNotEmpty)
+                        TextSpan(
+                          text: label,
+                          style: bodyStyle.copyWith(
+                            fontWeight: FontWeight.w800,
+                            height: 1.3,
+                          ),
+                        ),
+                      if (label.isNotEmpty && text.isNotEmpty)
+                        const TextSpan(text: ' '),
+                      if (text.isNotEmpty) TextSpan(text: text),
+                    ],
+                  ),
+                ),
+                if (why.isNotEmpty)
+                  Text.rich(
+                    TextSpan(
+                      style: bodyStyle.copyWith(
+                        height: 1.3,
+                        color: mutedColor,
+                      ),
+                      children: _narrationWhySpans(
+                        why,
+                        highlightYellowColor(context),
+                      ),
+                    ),
+                  ),
+              ],
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+/// Renders a WHY line with the "WHY?" prefix highlighted in amber.
+List<InlineSpan> _narrationWhySpans(String why, Color highlightColor) {
+  if (why.startsWith('WHY?')) {
+    return <InlineSpan>[
+      TextSpan(
+        text: 'WHY?',
+        style: TextStyle(
+          color: highlightColor,
+          fontWeight: FontWeight.w800,
+        ),
+      ),
+      TextSpan(text: why.substring(4)),
+    ];
+  }
+  return <InlineSpan>[TextSpan(text: why)];
+}
+
+/// Bordered example sentence in the panel accent color.
+class _NarrationSentence extends StatelessWidget {
+  const _NarrationSentence({
+    required this.text,
+    required this.accent,
+    required this.bodyStyle,
+  });
+
+  final String text;
+  final Color accent;
+  final TextStyle bodyStyle;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      width: double.infinity,
+      padding: const EdgeInsets.symmetric(horizontal: 7, vertical: 5),
+      decoration: BoxDecoration(
+        color: accent.withValues(alpha: 0.08),
+        border: Border.all(color: accent.withValues(alpha: 0.4)),
+        borderRadius: BorderRadius.circular(8),
+      ),
+      child: Text(
+        text,
+        style: bodyStyle.copyWith(
+          color: accent,
+          fontWeight: FontWeight.w700,
+          height: 1.3,
+        ),
+      ),
+    );
+  }
+}
+
+/// Small colored section label inside a panel.
+class _NarrationPanelLabel extends StatelessWidget {
+  const _NarrationPanelLabel({
+    required this.icon,
+    required this.label,
+    required this.color,
+  });
+
+  final IconData icon;
+  final String label;
+  final Color color;
+
+  @override
+  Widget build(BuildContext context) {
+    final ThemeData theme = Theme.of(context);
+    return Row(
+      children: <Widget>[
+        Icon(icon, size: 13, color: color),
+        const SizedBox(width: 5),
+        Expanded(
+          child: Text(
+            label,
+            maxLines: 1,
+            overflow: TextOverflow.ellipsis,
+            style: theme.textTheme.labelLarge?.copyWith(
+              color: color,
+              fontWeight: FontWeight.w800,
+              fontSize: 11.5,
+              height: 1.2,
+            ),
+          ),
+        ),
+      ],
+    );
+  }
+}
+
+/// One labelled part of the sentence (reporting clause / spoken words …).
+class _NarrationPart extends StatelessWidget {
+  const _NarrationPart({
+    required this.data,
+    required this.color,
+    required this.bodyStyle,
+  });
+
+  final Map<String, dynamic> data;
+  final Color color;
+  final TextStyle bodyStyle;
+
+  @override
+  Widget build(BuildContext context) {
+    final ColorScheme scheme = Theme.of(context).colorScheme;
+    final String text = (data['text'] as String?) ?? '';
+    final String label = (data['label'] as String?) ?? '';
+    final String urdu = (data['urdu'] as String?) ?? '';
+
+    return Container(
+      padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 6),
+      decoration: BoxDecoration(
+        color: color.withValues(alpha: 0.12),
+        border: Border.all(color: color.withValues(alpha: 0.45)),
+        borderRadius: BorderRadius.circular(8),
+      ),
+      child: Column(
+        children: <Widget>[
+          Text(
+            text,
+            textAlign: TextAlign.center,
+            style: bodyStyle.copyWith(
+              color: color,
+              fontWeight: FontWeight.w800,
+              height: 1.25,
+            ),
+          ),
+          if (label.isNotEmpty) ...<Widget>[
+            const SizedBox(height: 3),
+            Text(
+              label,
+              textAlign: TextAlign.center,
+              style: bodyStyle.copyWith(
+                color: color,
+                fontWeight: FontWeight.w700,
+                fontSize: 10.5,
+                height: 1.2,
+              ),
+            ),
+          ],
+          if (urdu.isNotEmpty) ...<Widget>[
+            const SizedBox(height: 2),
+            Text(
+              urdu,
+              textAlign: TextAlign.center,
+              textDirection: TextDirection.rtl,
+              style: bodyStyle.copyWith(
+                color: scheme.onSurfaceVariant,
+                fontSize: 10.5,
+                height: 1.5,
+              ),
+            ),
+          ],
+        ],
+      ),
+    );
+  }
+}
+
+/// One numbered feature: title, explanation and Urdu line.
+class _NarrationFeature extends StatelessWidget {
+  const _NarrationFeature({
+    required this.data,
+    required this.index,
+    required this.accent,
+    required this.bodyStyle,
+  });
+
+  final Map<String, dynamic> data;
+  final int index;
+  final Color accent;
+  final TextStyle bodyStyle;
+
+  @override
+  Widget build(BuildContext context) {
+    final ThemeData theme = Theme.of(context);
+    final ColorScheme scheme = theme.colorScheme;
+    final String title = (data['title'] as String?) ?? '';
+    final String text = (data['text'] as String?) ?? '';
+    final String urdu = (data['urdu'] as String?) ?? '';
+
+    return Padding(
+      padding: const EdgeInsets.only(bottom: 6),
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: <Widget>[
+          Container(
+            width: 16,
+            height: 16,
+            margin: const EdgeInsets.only(top: 1),
+            decoration: BoxDecoration(color: accent, shape: BoxShape.circle),
+            alignment: Alignment.center,
+            child: Text(
+              '$index',
+              style: theme.textTheme.labelSmall?.copyWith(
+                color: Colors.white,
+                fontWeight: FontWeight.w800,
+                fontSize: 9.5,
+              ),
+            ),
+          ),
+          const SizedBox(width: 6),
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: <Widget>[
+                if (title.isNotEmpty)
+                  Text(
+                    title,
+                    style: bodyStyle.copyWith(
+                      fontWeight: FontWeight.w700,
+                      height: 1.3,
+                    ),
+                  ),
+                if (text.isNotEmpty) ...<Widget>[
+                  const SizedBox(height: 1),
+                  Text(
+                    text,
+                    style: bodyStyle.copyWith(
+                      color: scheme.onSurfaceVariant,
+                      fontSize: 10.5,
+                      height: 1.3,
+                    ),
+                  ),
+                ],
+                if (urdu.isNotEmpty) ...<Widget>[
+                  const SizedBox(height: 1),
+                  _BilingualText(
+                    text: urdu,
+                    style: bodyStyle.copyWith(
+                      color: scheme.onSurfaceVariant,
+                      fontSize: 10.5,
+                      height: 1.55,
+                    ),
+                    highlightColor: accent,
+                  ),
+                ],
+              ],
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+/// Compact full-width card used by the bottom narration sections.
+class _NarrationCard extends StatelessWidget {
+  const _NarrationCard({
+    required this.accent,
+    required this.icon,
+    required this.title,
+    required this.child,
+    this.subtitle = '',
+  });
+
+  final Color accent;
+  final IconData icon;
+  final String title;
+  final String subtitle;
+  final Widget child;
+
+  @override
+  Widget build(BuildContext context) {
+    final ThemeData theme = Theme.of(context);
+    return Container(
+      width: double.infinity,
+      padding: const EdgeInsets.all(10),
+      decoration: BoxDecoration(
+        color: accent.withValues(alpha: 0.05),
+        border: Border.all(color: accent.withValues(alpha: 0.4)),
+        borderRadius: BorderRadius.circular(12),
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: <Widget>[
+          Row(
+            children: <Widget>[
+              Icon(icon, size: 16, color: accent),
+              const SizedBox(width: 6),
+              Flexible(
+                child: Text(
+                  title,
+                  style: theme.textTheme.titleSmall?.copyWith(
+                    color: accent,
+                    fontWeight: FontWeight.w800,
+                    fontSize: 13.5,
+                  ),
+                ),
+              ),
+              if (subtitle.isNotEmpty) ...<Widget>[
+                const SizedBox(width: 8),
+                Container(
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 8, vertical: 2),
+                  decoration: BoxDecoration(
+                    border: Border.all(color: accent.withValues(alpha: 0.6)),
+                    borderRadius: BorderRadius.circular(20),
+                  ),
+                  child: Text(
+                    subtitle,
+                    style: theme.textTheme.labelSmall?.copyWith(
+                      color: accent,
+                      fontWeight: FontWeight.w700,
+                    ),
+                  ),
+                ),
+              ],
+            ],
+          ),
+          const SizedBox(height: 8),
+          child,
+        ],
+      ),
+    );
+  }
+}
+
+/// Step-by-Step Method (Direct → Indirect): numbered steps with their example
+/// transformations, ending in the final converted sentence.
+class _NarrationMethod extends StatelessWidget {
+  const _NarrationMethod({required this.data, required this.bodyStyle});
+
+  final Map<String, dynamic> data;
+  final TextStyle bodyStyle;
+
+  @override
+  Widget build(BuildContext context) {
+    const Color purple = kGrammarHeadingPurple;
+    final Color green = passiveVoiceColor(context);
+    final List<Map<String, dynamic>> steps = _narrationMaps(data['steps']);
+    final String finalLabel = (data['finalLabel'] as String?) ?? 'Final';
+    final String finalText = (data['finalText'] as String?) ?? '';
+
+    return _NarrationCard(
+      accent: purple,
+      icon: Icons.sync_alt,
+      title: (data['title'] as String?) ?? 'Step-by-Step Method',
+      subtitle: (data['subtitle'] as String?) ?? '',
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: <Widget>[
+          for (int i = 0; i < steps.length; i++)
+            _NarrationStep(
+              data: steps[i],
+              index: i + 1,
+              bodyStyle: bodyStyle,
+            ),
+          if (finalText.isNotEmpty)
+            Container(
+              width: double.infinity,
+              margin: const EdgeInsets.only(top: 2),
+              padding:
+                  const EdgeInsets.symmetric(horizontal: 10, vertical: 8),
+              decoration: BoxDecoration(
+                color: green.withValues(alpha: 0.08),
+                border: Border.all(color: green.withValues(alpha: 0.5)),
+                borderRadius: BorderRadius.circular(8),
+              ),
+              child: Text.rich(
+                TextSpan(
+                  style: bodyStyle.copyWith(height: 1.4),
+                  children: <InlineSpan>[
+                    TextSpan(
+                      text: '$finalLabel: ',
+                      style: bodyStyle.copyWith(
+                        color: purple,
+                        fontWeight: FontWeight.w800,
+                      ),
+                    ),
+                    TextSpan(
+                      text: finalText,
+                      style: bodyStyle.copyWith(
+                        color: green,
+                        fontWeight: FontWeight.w800,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+        ],
+      ),
+    );
+  }
+}
+
+/// One numbered step of the conversion method.
+class _NarrationStep extends StatelessWidget {
+  const _NarrationStep({
+    required this.data,
+    required this.index,
+    required this.bodyStyle,
+  });
+
+  final Map<String, dynamic> data;
+  final int index;
+  final TextStyle bodyStyle;
+
+  @override
+  Widget build(BuildContext context) {
+    final ThemeData theme = Theme.of(context);
+    final String title = (data['title'] as String?) ?? '';
+    final String example = (data['example'] as String?) ?? '';
+
+    return Padding(
+      padding: const EdgeInsets.only(bottom: 7),
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: <Widget>[
+          Container(
+            width: 18,
+            height: 18,
+            margin: const EdgeInsets.only(top: 1),
+            decoration: const BoxDecoration(
+              color: kGrammarHeadingPurple,
+              shape: BoxShape.circle,
+            ),
+            alignment: Alignment.center,
+            child: Text(
+              '$index',
+              style: theme.textTheme.labelSmall?.copyWith(
+                color: Colors.white,
+                fontWeight: FontWeight.w800,
+                fontSize: 10,
+              ),
+            ),
+          ),
+          const SizedBox(width: 8),
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: <Widget>[
+                if (title.isNotEmpty)
+                  Text(
+                    title,
+                    style: bodyStyle.copyWith(
+                      fontWeight: FontWeight.w700,
+                      height: 1.3,
+                    ),
+                  ),
+                if (example.isNotEmpty) ...<Widget>[
+                  const SizedBox(height: 1),
+                  Text(
+                    example,
+                    style: bodyStyle.copyWith(
+                      color: highlightYellowColor(context),
+                      fontWeight: FontWeight.w800,
+                      height: 1.3,
+                    ),
+                  ),
+                ],
+              ],
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+/// Compact two-column Key Difference comparison (Direct | Indirect).
+class _NarrationKeyDifference extends StatelessWidget {
+  const _NarrationKeyDifference({required this.data, required this.bodyStyle});
+
+  final Map<String, dynamic> data;
+  final TextStyle bodyStyle;
+
+  @override
+  Widget build(BuildContext context) {
+    final List<String> direct =
+        ((data['direct'] as List<dynamic>?) ?? const <dynamic>[])
+            .map((dynamic e) => e.toString())
+            .toList(growable: false);
+    final List<String> indirect =
+        ((data['indirect'] as List<dynamic>?) ?? const <dynamic>[])
+            .map((dynamic e) => e.toString())
+            .toList(growable: false);
+
+    return _NarrationCard(
+      accent: const Color(0xFF42A5F5),
+      icon: Icons.rule,
+      title: (data['title'] as String?) ?? 'Key Difference',
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: <Widget>[
+          Expanded(
+            child: _NarrationDiffColumn(
+              title: (data['directTitle'] as String?) ?? 'Direct Speech',
+              items: direct,
+              color: kGrammarHeadingPurple,
+              bodyStyle: bodyStyle,
+            ),
+          ),
+          const SizedBox(width: 8),
+          Expanded(
+            child: _NarrationDiffColumn(
+              title: (data['indirectTitle'] as String?) ?? 'Indirect Speech',
+              items: indirect,
+              color: passiveVoiceColor(context),
+              bodyStyle: bodyStyle,
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+/// One column of the Key Difference comparison.
+class _NarrationDiffColumn extends StatelessWidget {
+  const _NarrationDiffColumn({
+    required this.title,
+    required this.items,
+    required this.color,
+    required this.bodyStyle,
+  });
+
+  final String title;
+  final List<String> items;
+  final Color color;
+  final TextStyle bodyStyle;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      decoration: BoxDecoration(
+        border: Border.all(color: color.withValues(alpha: 0.45)),
+        borderRadius: BorderRadius.circular(8),
+      ),
+      clipBehavior: Clip.antiAlias,
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: <Widget>[
+          Container(
+            width: double.infinity,
+            color: color.withValues(alpha: 0.18),
+            padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 5),
+            child: Text(
+              title,
+              textAlign: TextAlign.center,
+              style: bodyStyle.copyWith(
+                color: color,
+                fontWeight: FontWeight.w800,
+              ),
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.all(8),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: <Widget>[
+                for (final String item in items)
+                  Padding(
+                    padding: const EdgeInsets.only(bottom: 4),
+                    child: Row(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: <Widget>[
+                        Container(
+                          width: 5,
+                          height: 5,
+                          margin: const EdgeInsets.only(top: 5, right: 6),
+                          decoration: BoxDecoration(
+                            color: color,
+                            shape: BoxShape.circle,
+                          ),
+                        ),
+                        Expanded(
+                          child: Text(
+                            item,
+                            style: bodyStyle.copyWith(height: 1.3),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+              ],
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+/// Important Rule / Exam Tip strip (Direct vs Indirect + Urdu).
+class _NarrationExamTip extends StatelessWidget {
+  const _NarrationExamTip({required this.data, required this.bodyStyle});
+
+  final Map<String, dynamic> data;
+  final TextStyle bodyStyle;
+
+  @override
+  Widget build(BuildContext context) {
+    final ThemeData theme = Theme.of(context);
+    final String direct = (data['direct'] as String?) ?? '';
+    final String indirect = (data['indirect'] as String?) ?? '';
+    final String urdu = (data['urdu'] as String?) ?? '';
+
+    return _NarrationCard(
+      accent: theme.colorScheme.error,
+      icon: Icons.star,
+      title: (data['title'] as String?) ?? 'Important Rule / Exam Tip',
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: <Widget>[
+          if (direct.isNotEmpty)
+            Text.rich(
+              TextSpan(
+                style: bodyStyle.copyWith(height: 1.35),
+                children: <InlineSpan>[
+                  TextSpan(
+                    text: 'Direct Speech: ',
+                    style: bodyStyle.copyWith(
+                      color: kGrammarHeadingPurple,
+                      fontWeight: FontWeight.w800,
+                    ),
+                  ),
+                  TextSpan(text: direct),
+                ],
+              ),
+            ),
+          if (indirect.isNotEmpty) ...<Widget>[
+            const SizedBox(height: 3),
+            Text.rich(
+              TextSpan(
+                style: bodyStyle.copyWith(height: 1.35),
+                children: <InlineSpan>[
+                  TextSpan(
+                    text: 'Indirect Speech: ',
+                    style: bodyStyle.copyWith(
+                      color: passiveVoiceColor(context),
+                      fontWeight: FontWeight.w800,
+                    ),
+                  ),
+                  TextSpan(text: indirect),
+                ],
+              ),
+            ),
+          ],
+          if (urdu.isNotEmpty) ...<Widget>[
+            const SizedBox(height: 5),
+            _BilingualText(
+              text: urdu,
+              style: bodyStyle.copyWith(height: 1.65),
+            ),
+          ],
+        ],
       ),
     );
   }

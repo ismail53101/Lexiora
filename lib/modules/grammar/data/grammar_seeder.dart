@@ -96,6 +96,21 @@ class GrammarSeeder {
         ..write((content['introduction']?.toString() ?? '').toLowerCase())
         ..write(' ')
         ..write((content['englishExplanation']?.toString() ?? '').toLowerCase());
+      // Lessons that ship the compact two-column narration layout carry their
+      // wording in narrationIntro instead of the legacy explanation fields.
+      final Object? narration = content['narrationIntro'];
+      if (narration is Map) {
+        for (final Object? column in (narration['columns'] as List<dynamic>?) ??
+            const <dynamic>[]) {
+          if (column is Map) {
+            search
+              ..write(' ')
+              ..write((column['definition']?.toString() ?? '').toLowerCase())
+              ..write(' ')
+              ..write((column['definitionUrdu']?.toString() ?? '').toLowerCase());
+          }
+        }
+      }
     }
     final List<dynamic> keywords =
         (o['keywords'] as List<dynamic>?) ?? const <dynamic>[];

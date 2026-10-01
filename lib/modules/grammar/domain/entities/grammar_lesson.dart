@@ -210,6 +210,7 @@ class GrammarLesson extends Equatable {
     this.voiceComparison,
     this.rulesConversion,
     this.tenseSections,
+    this.narrationIntro,
   });
 
   final String id;
@@ -253,6 +254,11 @@ class GrammarLesson extends Equatable {
   /// used by the Active & Passive Voice tense lessons.
   final Map<String, dynamic>? tenseSections;
 
+  /// Compact side-by-side Direct vs Indirect Speech layout (definition, Urdu
+  /// definition, example, parts of the sentence, features, worked explanation,
+  /// step-by-step method, key difference and exam tip).
+  final Map<String, dynamic>? narrationIntro;
+
   @override
   List<Object?> get props => <Object?>[
         id,
@@ -281,5 +287,6 @@ class GrammarLesson extends Equatable {
         voiceComparison,
         rulesConversion,
         tenseSections,
+        narrationIntro,
       ];
 }

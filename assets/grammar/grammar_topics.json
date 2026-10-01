@@ -10820,215 +10820,218 @@
       "indirect speech"
     ],
     "content": {
-      "introduction": "Speech is reported in two ways. Direct Speech gives the speaker's exact words inside quotation marks. Indirect Speech (Reported Speech) gives the meaning in the reporter's own words. To convert Direct into Indirect, four things usually change: the tense, the pronouns, the time/place words, and the punctuation. Remember the order T-P-T-P: Tense, Pronoun, Time words, Punctuation.",
-      "urduExplanation": "براہِ راست تقریر (Direct Speech) میں مقرر کے اصل الفاظ جوں کے توں اقتباس کے نشانوں کے اندر لکھے جاتے ہیں۔ بالواسطہ تقریر (Indirect Speech) میں ہم وہی بات اپنے الفاظ میں بیان کرتے ہیں۔ اس کے لیے اقتباس کے نشان ہٹا دیے جاتے ہیں، فعل کا زمانہ ایک قدم پیچھے لے جاتا ہے، ضمائر مقرر یا سُننے والے کے مطابق بدلے جاتے ہیں اور وقت و مقام کے الفاظ بھی بدل جاتے ہیں۔ یادی رکھیں: T-P-T-P — زمانہ، ضمیر، وقت کے الفاظ، رموزِ اوقاف۔",
-      "englishExplanation": "Direct speech repeats the speaker's exact words, marked by a comma before the quote and quotation marks around it, with a capital letter at the start of the quote. Indirect speech removes the quotation marks and the comma, adds a conjunction (that, if, whether, to, or a wh-word), back-shifts the tense one step into the past when the reporting verb is in the past, adjusts pronouns to the new point of view, and replaces near time/place words (now, today, here) with distant ones (then, that day, there). Universal truths, habitual facts, and sentences with a present-tense reporting verb usually keep their original tense.",
-      "voiceComparison": {
-        "intro": "The same sentence in both forms:",
+      "narrationIntro": {
         "columns": [
           {
             "title": "Direct Speech",
-            "blocks": [
+            "definition": "The exact words of the speaker are written inside quotation marks.",
+            "definitionUrdu": "سپیکر کے اصل الفاظ جیسے بولے گئے تھے ویسے ہی quotation marks میں لکھے جاتے ہیں۔",
+            "example": "Ali said, \"We will come tomorrow.\"",
+            "exampleUrdu": "علی نے کہا، \"ہم کل آئیں گے۔\"",
+            "parts": [
               {
-                "type": "text",
-                "text": "Reports the speaker's **exact words**."
+                "text": "Ali said,",
+                "label": "reporting clause",
+                "urdu": "(بتانے والا حصہ)"
               },
               {
-                "type": "urdu",
-                "text": "مقرر کے اصل الفاظ جوں کے توں لکھے جاتے ہیں۔"
-              },
-              {
-                "type": "example",
-                "label": "Example",
-                "text": "Ali said, \"I am happy.\"",
-                "urdu": "علی نے کہا، \"میں خوش ہوں۔\""
-              },
-              {
-                "type": "breakdown",
-                "label": "Changes shown",
-                "rows": [
-                  [
-                    "**\" \" quotation marks**",
-                    "=",
-                    "speaker's exact words"
-                  ],
-                  [
-                    "**comma (,)**",
-                    "=",
-                    "before the spoken words"
-                  ],
-                  [
-                    "**I / am**",
-                    "=",
-                    "speaker's own pronoun + present tense"
-                  ]
-                ]
-              },
-              {
-                "type": "text",
-                "text": "Inside the quotation marks nothing changes — it is exactly what was said."
-              },
-              {
-                "type": "urdu",
-                "text": "اقتباس کے نشانوں کے اندر کے الفاظ بالکل نہیں بدلتے۔"
-              },
-              {
-                "type": "bullets",
-                "label": "More examples",
-                "items": [
-                  "Sara said, \"I am writing a letter.\"",
-                  "He said, \"We will come tomorrow.\"",
-                  "The teacher said, \"Honesty is the best policy.\""
-                ]
+                "text": "\"We will come tomorrow.\"",
+                "label": "spoken words",
+                "urdu": "(اصل بولے گئے الفاظ)"
               }
-            ]
+            ],
+            "featuresTitle": "Features of Direct Speech",
+            "features": [
+              {
+                "title": "Uses quotation marks ( \" \" ).",
+                "text": "The exact words are written inside quotation marks.",
+                "urdu": "سپیکر کے اصل الفاظ quotation marks کے اندر لکھے جاتے ہیں۔"
+              },
+              {
+                "title": "Gives exact words.",
+                "text": "Whatever the speaker says, it is written as it is.",
+                "urdu": "جو الفاظ سپیکر کہے، وہ جیسے کے ویسے ہی لکھے جاتے ہیں۔"
+              },
+              {
+                "title": "Comma before spoken words.",
+                "text": "A comma is used after the reporting clause and before the spoken words.",
+                "urdu": "Reporting clause کے بعد اور بولے گئے الفاظ سے پہلے comma لگایا جاتا ہے۔"
+              },
+              {
+                "title": "Same wording (no change).",
+                "text": "The words inside quotation marks remain unchanged.",
+                "urdu": "Quotation marks کے اندر الفاظ میں کوئی تبدیلی نہیں ہوتی۔"
+              }
+            ],
+            "explain": {
+              "sentence": "Ali said, \"We will come tomorrow.\"",
+              "points": [
+                {
+                  "label": "\"Ali said\"",
+                  "text": "is the reporting clause because it tells us who spoke."
+                },
+                {
+                  "label": "\"We will come tomorrow\"",
+                  "text": "is the exact speech of Ali."
+                },
+                {
+                  "label": "Quotation marks",
+                  "text": "are used because Ali's exact words are being repeated."
+                },
+                {
+                  "label": "The comma",
+                  "text": "comes before the spoken words."
+                },
+                {
+                  "label": "Nothing changes",
+                  "text": "inside the quotation marks because this is Direct Speech."
+                }
+              ],
+              "whyTitle": "Why used?",
+              "why": [
+                "Quotation marks are used because these are Ali's exact words.",
+                "A comma is placed before the spoken words.",
+                "No changes are made inside the quotation marks."
+              ]
+            }
           },
           {
             "title": "Indirect Speech",
-            "blocks": [
+            "definition": "The speaker's meaning is reported without using the exact words.",
+            "definitionUrdu": "سپیکر کی کہی ہوئی بات اپنے الفاظ میں بیان کی جاتی ہے، اصل الفاظ جوں کے توں نہیں لکھے جاتے۔",
+            "example": "Ali said that they would come the next day.",
+            "exampleUrdu": "علی نے کہا کہ وہ اگلے دن آئیں گے۔",
+            "parts": [
               {
-                "type": "text",
-                "text": "Reports the **meaning** in the reporter's own words."
+                "text": "Ali said that",
+                "label": "reporting clause",
+                "urdu": "(بتانے والا حصہ)"
               },
               {
-                "type": "urdu",
-                "text": "وہی بات اپنے الفاظ میں بیان کی جاتی ہے۔"
-              },
-              {
-                "type": "example",
-                "label": "Example",
-                "text": "Ali said that he was happy.",
-                "urdu": "علی نے کہا کہ وہ خوش تھا۔"
-              },
-              {
-                "type": "breakdown",
-                "label": "Changes shown",
-                "rows": [
-                  [
-                    "**that**",
-                    "=",
-                    "conjunction added"
-                  ],
-                  [
-                    "**I → he**",
-                    "=",
-                    "pronoun follows the speaker"
-                  ],
-                  [
-                    "**am → was**",
-                    "=",
-                    "tense back-shifts one step"
-                  ],
-                  [
-                    "**\" \" and comma**",
-                    "=",
-                    "removed"
-                  ]
-                ]
-              },
-              {
-                "type": "text",
-                "text": "Tense moves one step back, pronouns follow the new point of view, and the sentence ends with a **full stop**."
-              },
-              {
-                "type": "urdu",
-                "text": "زمانہ ایک قدم پیچھے جاتا ہے اور جملہ فُل سٹاپ پر ختم ہوتا ہے۔"
-              },
-              {
-                "type": "bullets",
-                "label": "More examples",
-                "items": [
-                  "Sara said that she was writing a letter.",
-                  "He said that they would come the next day.",
-                  "The teacher said that honesty is the best policy."
-                ]
+                "text": "they would come the next day.",
+                "label": "reported meaning",
+                "urdu": "(کہی ہوئی بات کا مطلب)"
               }
-            ]
+            ],
+            "featuresTitle": "Features of Indirect Speech",
+            "features": [
+              {
+                "title": "No quotation marks.",
+                "text": "The exact words are not written, so quotation marks are removed.",
+                "urdu": "اصل الفاظ نقل نہیں کیے جاتے، اس لیے quotation marks استعمال نہیں ہوتے۔"
+              },
+              {
+                "title": "Reports the meaning.",
+                "text": "We give the speaker's message in our own words.",
+                "urdu": "ہم سپیکر کی بات کو اپنے الفاظ میں بیان کرتے ہیں۔"
+              },
+              {
+                "title": "Pronouns may change.",
+                "text": "\"We\" changes to \"they\" according to who the speaker is and who is reporting the speech.",
+                "urdu": "ضمیر سیاق کے مطابق تبدیل ہو سکتا ہے۔ یہاں \"we\" کو \"they\" کیا گیا ہے۔"
+              },
+              {
+                "title": "Tense may change.",
+                "text": "When the reporting verb is in the past, the tense usually moves one step back.",
+                "urdu": "اگر reporting verb ماضی میں ہو تو tense عام طور پر ایک قدم پیچھے چلا جاتا ہے۔"
+              },
+              {
+                "title": "Uses a joining word (that).",
+                "text": "\"That\" is used to connect the reporting clause with the reported statement.",
+                "urdu": "\"that\" دونوں حصوں کو جوڑنے کے لیے استعمال ہوتا ہے۔"
+              }
+            ],
+            "explain": {
+              "sentence": "Ali said that they would come the next day.",
+              "points": [
+                {
+                  "label": "Quotation marks and comma removed",
+                  "why": "WHY? Because Indirect Speech does not repeat the speaker's exact words."
+                },
+                {
+                  "label": "\"that\" added after \"said\"",
+                  "why": "WHY? It connects the reporting clause with the reported statement."
+                },
+                {
+                  "label": "we → they",
+                  "why": "WHY? Because the sentence is now being reported from another point of view."
+                },
+                {
+                  "label": "will → would",
+                  "why": "WHY? Because the reporting verb \"said\" is in the past, so the tense normally backshifts."
+                },
+                {
+                  "label": "tomorrow → the next day",
+                  "why": "WHY? Because the original time reference changes when the statement is reported later."
+                }
+              ],
+              "changes": [
+                "we → they",
+                "will → would",
+                "tomorrow → the next day",
+                "\" \" → removed",
+                "that → added"
+              ]
+            }
           }
         ],
-        "bottom": {
-          "title": "Easy Way to Remember (T-P-T-P)",
-          "blocks": [
+        "method": {
+          "title": "Step-by-Step Method",
+          "subtitle": "Direct → Indirect",
+          "steps": [
             {
-              "type": "text",
-              "text": "**T** — Tense: move one step into the past."
+              "title": "Identify the reporting clause.",
+              "example": "Ali said"
             },
             {
-              "type": "text",
-              "text": "**P** — Pronoun: match the speaker and the listener."
+              "title": "Remove quotation marks and comma.",
+              "example": ""
             },
             {
-              "type": "text",
-              "text": "**T** — Time words: now → then, today → that day, here → there."
+              "title": "Add the appropriate joining word.",
+              "example": "said + that"
             },
             {
-              "type": "text",
-              "text": "**P** — Punctuation: drop the quotes and the comma; end with a full stop."
+              "title": "Change pronouns according to the speaker/listener.",
+              "example": "we → they"
             },
             {
-              "type": "text",
-              "text": "Universal truths and habitual facts usually keep their tense."
+              "title": "Change the tense if required.",
+              "example": "will → would"
+            },
+            {
+              "title": "Change time/place words if required.",
+              "example": "tomorrow → the next day"
             }
+          ],
+          "finalLabel": "Final",
+          "finalText": "Ali said that they would come the next day."
+        },
+        "keyDifference": {
+          "title": "Key Difference",
+          "directTitle": "Direct Speech",
+          "direct": [
+            "Gives exact words.",
+            "Uses quotation marks.",
+            "Keeps original wording.",
+            "Uses comma before speech."
+          ],
+          "indirectTitle": "Indirect Speech",
+          "indirect": [
+            "Reports the meaning.",
+            "Does not use quotation marks.",
+            "Pronouns and tense may change.",
+            "Uses a joining word such as \"that\"."
           ]
+        },
+        "examTip": {
+          "title": "Important Rule / Exam Tip",
+          "direct": "Repeats the speaker's exact words.",
+          "indirect": "Reports the speaker's message in our own words.",
+          "urdu": "Direct Speech میں سپیکر کے اصل الفاظ دہرائے جاتے ہیں، جبکہ Indirect Speech میں اسی بات کا مطلب اپنے الفاظ میں بیان کیا جاتا ہے۔"
         }
       },
-      "types": [
-        {
-          "name": "The Four Changes",
-          "description": "When the reporting verb is in the past, four things change: tense (one step back), pronouns (speaker/listener point of view), time and place words (near becomes far), and punctuation (no quotes, no comma).",
-          "urduExplanation": "فعلِ ماضی کے ساتھ چار چیزیں بدلتی ہیں: زمانہ، ضمیر، وقت و مقام کے الفاظ اور رموزِ اوقاف۔"
-        },
-        {
-          "name": "What Does Not Change",
-          "description": "The meaning of the sentence never changes. Question words (what, where, when) stay the same. Universal truths, habitual facts, and sentences reported with a present-tense verb keep their original tense.",
-          "urduExplanation": "جملے کا مطلب کبھی نہیں بدلتا۔ سوال کے الفاظ (what, where) ویسے ہی رہتے ہیں اور اکثر سچائیوں کا زمانہ نہیں بدلتا۔"
-        },
-        {
-          "name": "How to Convert (4 Steps)",
-          "description": "Every conversion follows the same four steps used in every lesson of this course.",
-          "urduExplanation": "ہر جملے کی تبدیلی انہی چار مرحلوں سے ہوتی ہے۔",
-          "rules": [
-            "Identify the sentence type (statement, question, command, request).",
-            "Remove the quotation marks and comma; choose the correct reporting verb (said / told / asked).",
-            "Add the right connector (that / if / whether / to / wh-word).",
-            "Apply T-P-T-P: change the tense, pronouns, time/place words and punctuation."
-          ]
-        }
-      ],
-      "rules": [
-        "Direct speech = exact words inside quotation marks; Indirect speech = the meaning in the reporter's words.",
-        "Remove the quotation marks and the comma, and join the clauses with a suitable connector.",
-        "Back-shift the tense when the reporting verb is in the past.",
-        "Change pronouns according to the speaker and the listener.",
-        "Change time and place words: now → then, today → that day, here → there.",
-        "End the indirect sentence with a full stop (or keep ? only in the direct form)."
-      ],
-      "examples": [
-        {
-          "text": "Ali said, \"I am happy.\" → Ali said that he was happy.",
-          "note": "am → was, I → he, quotes removed, **that** added."
-        },
-        {
-          "text": "He said, \"We will come tomorrow.\" → He said that they would come the next day.",
-          "note": "will → would, we → they, tomorrow → the next day."
-        },
-        {
-          "text": "The teacher said, \"Honesty is the best policy.\" → The teacher said that honesty is the best policy.",
-          "note": "Universal truth: the tense does not change."
-        }
-      ],
-      "commonMistakes": [
-        {
-          "wrong": "He said, \"I am happy\" that he was happy.",
-          "right": "He said that he was happy.",
-          "note": "Remove the quotation marks completely in indirect speech."
-        },
-        {
-          "wrong": "Ali said that he is happy. (reporting a past remark)",
-          "right": "Ali said that he was happy.",
-          "note": "Back-shift the tense when the reporting verb \"said\" is past."
-        }
-      ],
+
       "practice": [
         {
           "question": "What is Direct Speech?",
@@ -11085,13 +11088,7 @@
           "answerIndex": 1,
           "explanation": "he was ← I am: the speaker used \"I am happy.\""
         }
-      ],
-      "examTips": [
-        "First identify the sentence type — statements, questions, commands and requests each use a different connector.",
-        "Back-shift the tense only when the reporting verb is in the past; \"says\" and \"will say\" need no change.",
-        "Exam papers love the T-P-T-P order: check tense, then pronouns, then time words, then punctuation."
-      ],
-      "summary": "Direct speech quotes the exact words; indirect speech reports the meaning. Conversion changes the tense (one step back), the pronouns, the time/place words and the punctuation — remember T-P-T-P. Meaning, question words and universal truths stay the same."
+      ]
     }
   },
   {
