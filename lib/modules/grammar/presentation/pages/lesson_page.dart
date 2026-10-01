@@ -3706,8 +3706,9 @@ class _NarrationExplain extends StatelessWidget {
   }
 }
 
-/// Annotated example sentence: each segment is underlined in its own color and
-/// carries the numbered badge that the explanation points below refer to.
+/// Annotated example sentence: colored words are underlined and carry their
+/// numbered callout badge hanging directly underneath, matching the numbered
+/// explanation points below.
 class _NarrationAnnotatedSentence extends StatelessWidget {
   const _NarrationAnnotatedSentence({
     required this.segments,
@@ -3721,51 +3722,53 @@ class _NarrationAnnotatedSentence extends StatelessWidget {
   Widget build(BuildContext context) {
     final ThemeData theme = Theme.of(context);
     final ColorScheme scheme = theme.colorScheme;
-    final List<InlineSpan> spans = <InlineSpan>[];
+    int badgeNumber = 0;
+    final List<Widget> items = <Widget>[];
     for (int i = 0; i < segments.length; i++) {
+      final String text =
+          ((segments[i]['text'] as String?) ?? '').trim();
+      if (text.isEmpty) continue;
+      final bool plain = segments[i]['plain'] == true;
       final Color color =
           _sheetAccent((segments[i]['color'] as String?) ?? 'blue');
-      final bool plain = segments[i]['plain'] == true;
-      spans.add(
-        TextSpan(
-          text: (segments[i]['text'] as String?) ?? '',
-          style: plain
-              ? bodyStyle.copyWith(
-                  color: scheme.onSurface,
-                  height: 1.4,
-                )
-              : bodyStyle.copyWith(
-                  color: scheme.onSurface,
-                  fontWeight: FontWeight.w700,
-                  decoration: TextDecoration.underline,
-                  decorationColor: color,
-                  decorationThickness: 2,
-                  height: 1.4,
-                ),
-        ),
-      );
-      if (!plain)
-        spans.add(
-          WidgetSpan(
-            alignment: PlaceholderAlignment.middle,
-            child: Container(
-              width: 14,
-              height: 14,
-              margin: const EdgeInsets.symmetric(horizontal: 2),
-              decoration: BoxDecoration(color: color, shape: BoxShape.circle),
-              alignment: Alignment.center,
-              child: Text(
-                '${i + 1}',
-                style: theme.textTheme.labelSmall?.copyWith(
-                  color: Colors.white,
-                  fontWeight: FontWeight.w800,
-                  fontSize: 8.5,
+      if (!plain) badgeNumber++;
+      final TextStyle textStyle = plain
+          ? bodyStyle.copyWith(color: scheme.onSurface, height: 1.3)
+          : bodyStyle.copyWith(
+              color: scheme.onSurface,
+              fontWeight: FontWeight.w700,
+              decoration: TextDecoration.underline,
+              decorationColor: color,
+              decorationThickness: 2,
+              height: 1.3,
+            );
+      items.add(
+        Column(
+          mainAxisSize: MainAxisSize.min,
+          children: <Widget>[
+            Text(text, textAlign: TextAlign.center, style: textStyle),
+            const SizedBox(height: 2),
+            if (plain)
+              const SizedBox(width: 1, height: 13)
+            else
+              Container(
+                width: 13,
+                height: 13,
+                decoration:
+                    BoxDecoration(color: color, shape: BoxShape.circle),
+                alignment: Alignment.center,
+                child: Text(
+                  '$badgeNumber',
+                  style: theme.textTheme.labelSmall?.copyWith(
+                    color: Colors.white,
+                    fontWeight: FontWeight.w800,
+                    fontSize: 8.5,
+                  ),
                 ),
               ),
-            ),
-          ),
-        );
-      if (i < segments.length - 1) spans.add(const TextSpan(text: ' '));
+          ],
+        ),
+      );
     }
 
     return Container(
@@ -3775,11 +3778,11 @@ class _NarrationAnnotatedSentence extends StatelessWidget {
         color: scheme.surfaceContainerHighest.withValues(alpha: 0.25),
         borderRadius: BorderRadius.circular(8),
       ),
-      child: Text.rich(
-        TextSpan(
-          style: bodyStyle.copyWith(height: 1.9),
-          children: spans,
-        ),
+      child: Wrap(
+        alignment: WrapAlignment.center,
+        spacing: 6,
+        runSpacing: 6,
+        children: items,
       ),
     );
   }
@@ -4279,8 +4282,9 @@ class _NarrationCard extends StatelessWidget {
   }
 }
 
-/// Step-by-Step Method (Direct → Indirect): numbered steps with their example
-/// transformations, ending in the final converted sentence.
+/// Step-by-Step Method (Direct → Indirect): compact horizontal step chips
+/// separated by arrows, each chip showing the step title and its worked
+/// example transformation, ending in the final converted sentence.
 class _NarrationMethod extends StatelessWidget {
   const _NarrationMethod({required this.data, required this.bodyStyle});
 
@@ -4303,24 +4307,33 @@ class _NarrationMethod extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: <Widget>[
-          for (int i = 0; i < steps.length; i++) ...<Widget>[
-            _NarrationStep(
-              data: steps[i],
-              index: i + 1,
-              bodyStyle: bodyStyle,
-            ),
-            if (i < steps.length - 1)
-              Padding(
-                padding: const EdgeInsets.only(bottom: 6),
-                child: Center(
-                  child: Icon(
-                    Icons.arrow_downward,
-                    size: 15,
-                    color: _sheetAccent('orange'),
+          IntrinsicHeight(
+            child: Row(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: <Widget>[
+                for (int i = 0; i < steps.length; i++) ...<Widget>[
+                  if (i > 0)
+                    SizedBox(
+                      width: 12,
+                      child: Center(
+                        child: Icon(
+                          Icons.arrow_forward,
+                          size: 11,
+                          color: _sheetAccent('orange'),
+                        ),
+                      ),
+                    ),
+                  Expanded(
+                    child: _NarrationStep(
+                      data: steps[i],
+                      index: i + 1,
+                      bodyStyle: bodyStyle,
+                    ),
                   ),
-                ),
-              ),
-          ],
+                ],
+              ],
+            ),
+          ),
           if (finalText.isNotEmpty)
             Container(
               width: double.infinity,
@@ -4360,8 +4373,9 @@ class _NarrationMethod extends StatelessWidget {
   }
 }
 
-/// One numbered step of the conversion method: a colored header box (step
-/// number + title) with the worked example below it.
+/// One compact step chip of the conversion method: number badge, title and
+/// worked example stacked in a small tinted box; chips sit side by side with
+/// arrow separators between them.
 class _NarrationStep extends StatelessWidget {
   const _NarrationStep({
     required this.data,
@@ -4383,40 +4397,59 @@ class _NarrationStep extends StatelessWidget {
     final String example = (data['example'] as String?) ?? '';
 
     return Container(
+      padding: const EdgeInsets.symmetric(horizontal: 3, vertical: 5),
       decoration: BoxDecoration(
-        border: Border.all(color: accent.withValues(alpha: 0.6)),
+        color: accent.withValues(alpha: 0.07),
+        border: Border.all(color: accent.withValues(alpha: 0.55)),
         borderRadius: BorderRadius.circular(8),
       ),
-      clipBehavior: Clip.antiAlias,
       child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        mainAxisSize: MainAxisSize.min,
         children: <Widget>[
           Container(
-            width: double.infinity,
-            color: accent.withValues(alpha: 0.22),
-            padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 5),
+            width: 13,
+            height: 13,
+            decoration: BoxDecoration(color: accent, shape: BoxShape.circle),
+            alignment: Alignment.center,
             child: Text(
-              '$index. $title',
-              style: theme.textTheme.labelLarge?.copyWith(
-                color: accent,
+              '$index',
+              style: theme.textTheme.labelSmall?.copyWith(
+                color: Colors.white,
                 fontWeight: FontWeight.w800,
-                fontSize: 11.5,
-                height: 1.25,
+                fontSize: 8.5,
               ),
             ),
           ),
-          if (example.isNotEmpty)
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 6),
-              child: Text(
-                example,
-                style: bodyStyle.copyWith(
-                  color: scheme.onSurface,
-                  fontSize: 10.5,
-                  height: 1.3,
-                ),
+          if (title.isNotEmpty) ...<Widget>[
+            const SizedBox(height: 3),
+            Text(
+              title,
+              textAlign: TextAlign.center,
+              maxLines: 4,
+              overflow: TextOverflow.ellipsis,
+              style: bodyStyle.copyWith(
+                color: accent,
+                fontWeight: FontWeight.w800,
+                fontSize: 9,
+                height: 1.15,
               ),
             ),
+          ],
+          if (example.isNotEmpty) ...<Widget>[
+            const SizedBox(height: 3),
+            Text(
+              example,
+              textAlign: TextAlign.center,
+              maxLines: 4,
+              overflow: TextOverflow.ellipsis,
+              style: bodyStyle.copyWith(
+                color: scheme.onSurfaceVariant,
+                fontSize: 8.5,
+                height: 1.2,
+              ),
+            ),
+          ],
         ],
       ),
     );
@@ -4442,7 +4475,7 @@ class _NarrationKeyDifference extends StatelessWidget {
             .toList(growable: false);
 
     return _NarrationCard(
-      accent: const Color(0xFF42A5F5),
+      accent: kGrammarHeadingPurple,
       icon: Icons.rule,
       title: (data['title'] as String?) ?? 'Key Difference',
       child: Row(

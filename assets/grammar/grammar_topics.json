@@ -10855,8 +10855,7 @@
                 { "text": "\"We", "color": "orange" },
                 { "text": " will ", "color": "blue" },
                 { "text": "come ", "plain": true },
-                { "text": "tomorrow", "color": "green" },
-                { "text": ".”", "plain": true }
+                { "text": "tomorrow.”", "color": "green" }
               ],
               "points": [
                 {
@@ -10960,12 +10959,12 @@
             {
               "accent": "pink",
               "title": "Identify Reporting Clause",
-              "example": "Find who said it. Ali said,"
+              "example": "Ali said,"
             },
             {
               "accent": "orange",
               "title": "Add \"that\"",
-              "example": "Add a joining word. Ali said that"
+              "example": "Ali said that"
             },
             {
               "accent": "blue",
