@@ -68,7 +68,7 @@ class SettingsRepositoryImpl implements SettingsRepository {
       themeMode: ThemeMode.values[_enumIndex(
         map[_kThemeMode],
         ThemeMode.values.length,
-        ThemeMode.system.index,
+        ThemeMode.light.index,
       )],
       fontScale: _clampDouble(_double(map[_kFontScale], 1.0), 0.8, 1.6),
       readingScrollAxis: ReaderScrollAxis.values[_enumIndex(

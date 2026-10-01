@@ -19,7 +19,7 @@ class SapioraApp extends ConsumerWidget {
     final AsyncValue<AppSettings> settings = ref.watch(settingsProvider);
     final ThemeMode themeMode = settings.maybeWhen(
       data: (AppSettings s) => s.themeMode,
-      orElse: () => ThemeMode.system,
+      orElse: () => ThemeMode.light,
     );
     final double fontScale = settings.maybeWhen(
       data: (AppSettings s) => s.fontScale,

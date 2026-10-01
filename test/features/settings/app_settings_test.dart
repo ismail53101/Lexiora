@@ -7,7 +7,7 @@ void main() {
   group('AppSettings', () {
     test('has sensible offline-first defaults', () {
       const AppSettings s = AppSettings();
-      expect(s.themeMode, ThemeMode.system);
+      expect(s.themeMode, ThemeMode.light);
       expect(s.fontScale, 1.0);
       expect(s.readingScrollAxis, ReaderScrollAxis.vertical);
       expect(s.readerColorMode, ReaderColorMode.day);

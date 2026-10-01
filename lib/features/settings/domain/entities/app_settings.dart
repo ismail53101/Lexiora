@@ -10,7 +10,7 @@ import 'package:lexiora/core/reader_engine/reader_models.dart';
 /// offline with a single source of truth.
 class AppSettings extends Equatable {
   const AppSettings({
-    this.themeMode = ThemeMode.system,
+    this.themeMode = ThemeMode.light,
     this.fontScale = 1.0,
     this.readingScrollAxis = ReaderScrollAxis.vertical,
     this.readerColorMode = ReaderColorMode.day,

@@ -33,7 +33,8 @@ class GrammarTopicTile extends ConsumerWidget {
           Flexible(
             child: Text(
               topic.title,
-              overflow: TextOverflow.ellipsis,
+              maxLines: 2,
+              overflow: TextOverflow.visible,
               style: theme.textTheme.titleMedium
                   ?.copyWith(fontWeight: FontWeight.w700),
             ),
