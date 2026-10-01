@@ -183,6 +183,8 @@ void main() {
         await ds.leaf('direct-indirect-speech/practice-quiz');
     expect(disQuiz, isNotNull);
     expect(disQuiz!.quiz.length, 100);
+    // The DIS lessons intentionally ship without a practice section: the
+    // narration intro/reference-sheet views own the whole lesson screen.
     for (final String id in <String>[
       'direct-indirect-speech/introduction',
       'direct-indirect-speech/statements',
@@ -194,7 +196,7 @@ void main() {
     ]) {
       final GrammarLesson? lesson = await ds.leaf(id);
       expect(lesson, isNotNull, reason: '$id must decode');
-      expect(lesson!.practice, isNotEmpty, reason: '$id needs practice');
+      expect(lesson!.practice, isEmpty, reason: '$id ships without practice');
     }
     // The intro leaf ships the compact two-column narration layout instead of
     // the legacy Urdu/rules/exam-tips/summary sections.
@@ -296,7 +298,7 @@ void main() {
     // own dedicated lesson rather than a merged page.
     for (final String id in <String>[
       'pos/noun',
-      'direct-indirect-speech/tense-changes',
+      'pos/verb',
       'modals/must',
       'modals/should',
     ]) {

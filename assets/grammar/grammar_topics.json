@@ -10832,59 +10832,52 @@
               {
                 "text": "Ali said,",
                 "label": "reporting clause",
-                "urdu": "(بتانے والا حصہ)"
+                "urdu": "(بتانے والا حصہ)",
+                "color": "pink"
               },
               {
                 "text": "\"We will come tomorrow.\"",
                 "label": "spoken words",
-                "urdu": "(اصل بولے گئے الفاظ)"
+                "urdu": "(اصل بولے گئے الفاظ)",
+                "color": "blue"
               }
             ],
             "featuresTitle": "Features of Direct Speech",
             "features": [
-              {
-                "title": "Uses quotation marks ( \" \" ).",
-                "text": "The exact words are written inside quotation marks.",
-                "urdu": "سپیکر کے اصل الفاظ quotation marks کے اندر لکھے جاتے ہیں۔"
-              },
-              {
-                "title": "Gives exact words.",
-                "text": "Whatever the speaker says, it is written as it is.",
-                "urdu": "جو الفاظ سپیکر کہے، وہ جیسے کے ویسے ہی لکھے جاتے ہیں۔"
-              },
-              {
-                "title": "Comma before spoken words.",
-                "text": "A comma is used after the reporting clause and before the spoken words.",
-                "urdu": "Reporting clause کے بعد اور بولے گئے الفاظ سے پہلے comma لگایا جاتا ہے۔"
-              },
-              {
-                "title": "Same wording (no change).",
-                "text": "The words inside quotation marks remain unchanged.",
-                "urdu": "Quotation marks کے اندر الفاظ میں کوئی تبدیلی نہیں ہوتی۔"
-              }
+              { "title": "Uses quotation marks ( \" \" )." },
+              { "title": "Gives exact words." },
+              { "title": "Comma before spoken words." },
+              { "title": "Same wording (no change)." }
             ],
             "explain": {
-              "sentence": "Ali said, \"We will come tomorrow.\"",
+              "segments": [
+                { "text": "Ali said, ", "color": "pink" },
+                { "text": "\"We", "color": "orange" },
+                { "text": " will ", "color": "blue" },
+                { "text": "come ", "plain": true },
+                { "text": "tomorrow", "color": "green" },
+                { "text": ".”", "plain": true }
+              ],
               "points": [
                 {
-                  "label": "\"Ali said\"",
-                  "text": "is the reporting clause because it tells us who spoke."
+                  "label": "Ali said,",
+                  "text": "the reporting clause — it tells who spoke.",
+                  "color": "pink"
                 },
                 {
-                  "label": "\"We will come tomorrow\"",
-                  "text": "is the exact speech of Ali."
+                  "label": "We",
+                  "text": "the speaker used \"we\" (first person).",
+                  "color": "orange"
                 },
                 {
-                  "label": "Quotation marks",
-                  "text": "are used because Ali's exact words are being repeated."
+                  "label": "will",
+                  "text": "present/future tense (will).",
+                  "color": "blue"
                 },
                 {
-                  "label": "The comma",
-                  "text": "comes before the spoken words."
-                },
-                {
-                  "label": "Nothing changes",
-                  "text": "inside the quotation marks because this is Direct Speech."
+                  "label": "tomorrow",
+                  "text": "time word.",
+                  "color": "green"
                 }
               ],
               "whyTitle": "Why used?",
@@ -10905,107 +10898,91 @@
               {
                 "text": "Ali said that",
                 "label": "reporting clause",
-                "urdu": "(بتانے والا حصہ)"
+                "urdu": "(بتانے والا حصہ)",
+                "color": "pink"
               },
               {
                 "text": "they would come the next day.",
                 "label": "reported meaning",
-                "urdu": "(کہی ہوئی بات کا مطلب)"
+                "urdu": "(کہی ہوئی بات کا مطلب)",
+                "color": "blue"
               }
             ],
             "featuresTitle": "Features of Indirect Speech",
             "features": [
-              {
-                "title": "No quotation marks.",
-                "text": "The exact words are not written, so quotation marks are removed.",
-                "urdu": "اصل الفاظ نقل نہیں کیے جاتے، اس لیے quotation marks استعمال نہیں ہوتے۔"
-              },
-              {
-                "title": "Reports the meaning.",
-                "text": "We give the speaker's message in our own words.",
-                "urdu": "ہم سپیکر کی بات کو اپنے الفاظ میں بیان کرتے ہیں۔"
-              },
-              {
-                "title": "Pronouns may change.",
-                "text": "\"We\" changes to \"they\" according to who the speaker is and who is reporting the speech.",
-                "urdu": "ضمیر سیاق کے مطابق تبدیل ہو سکتا ہے۔ یہاں \"we\" کو \"they\" کیا گیا ہے۔"
-              },
-              {
-                "title": "Tense may change.",
-                "text": "When the reporting verb is in the past, the tense usually moves one step back.",
-                "urdu": "اگر reporting verb ماضی میں ہو تو tense عام طور پر ایک قدم پیچھے چلا جاتا ہے۔"
-              },
-              {
-                "title": "Uses a joining word (that).",
-                "text": "\"That\" is used to connect the reporting clause with the reported statement.",
-                "urdu": "\"that\" دونوں حصوں کو جوڑنے کے لیے استعمال ہوتا ہے۔"
-              }
+              { "title": "No quotation marks." },
+              { "title": "Reports the meaning." },
+              { "title": "Pronouns and tense may change." },
+              { "title": "Uses a joining word (that)." }
             ],
             "explain": {
-              "sentence": "Ali said that they would come the next day.",
+              "segments": [
+                { "text": "Ali said", "color": "pink" },
+                { "text": " that ", "color": "orange" },
+                { "text": "they would come", "color": "blue" },
+                { "text": " the next day.", "color": "green" }
+              ],
               "points": [
                 {
-                  "label": "Quotation marks and comma removed",
-                  "why": "WHY? Because Indirect Speech does not repeat the speaker's exact words."
+                  "label": "Reporting clause",
+                  "text": "same (only comma removed).",
+                  "color": "pink"
                 },
                 {
-                  "label": "\"that\" added after \"said\"",
-                  "why": "WHY? It connects the reporting clause with the reported statement."
+                  "label": "that",
+                  "text": "joining word is added to connect the clause.",
+                  "color": "orange"
                 },
                 {
-                  "label": "we → they",
-                  "why": "WHY? Because the sentence is now being reported from another point of view."
+                  "label": "they would come",
+                  "text": "\"we\" changes to \"they\" and \"will\" changes to \"would\" (one step back).",
+                  "color": "blue"
                 },
                 {
-                  "label": "will → would",
-                  "why": "WHY? Because the reporting verb \"said\" is in the past, so the tense normally backshifts."
-                },
-                {
-                  "label": "tomorrow → the next day",
-                  "why": "WHY? Because the original time reference changes when the statement is reported later."
+                  "label": "the next day",
+                  "text": "\"tomorrow\" changes to \"the next day\" because it is a time word and the time of speaking is no longer the same.",
+                  "color": "green"
                 }
               ],
-              "changes": [
-                "we → they",
-                "will → would",
-                "tomorrow → the next day",
-                "\" \" → removed",
-                "that → added"
+              "whyTitle": "Why used (changes)?",
+              "why": [
+                "Quotation marks are removed because exact words are not written.",
+                "\"we\" becomes \"they\" because the sentence is reported from another point of view.",
+                "\"will\" changes to \"would\" (present/future → one step back).",
+                "\"tomorrow\" changes to \"the next day\" (time change)."
               ]
             }
           }
         ],
         "method": {
-          "title": "Step-by-Step Method",
-          "subtitle": "Direct → Indirect",
+          "title": "Step-by-Step Method (Direct → Indirect)",
           "steps": [
             {
-              "title": "Identify the reporting clause.",
-              "example": "Ali said"
+              "accent": "pink",
+              "title": "Identify Reporting Clause",
+              "example": "Find who said it. Ali said,"
             },
             {
-              "title": "Remove quotation marks and comma.",
-              "example": ""
+              "accent": "orange",
+              "title": "Add \"that\"",
+              "example": "Add a joining word. Ali said that"
             },
             {
-              "title": "Add the appropriate joining word.",
-              "example": "said + that"
+              "accent": "blue",
+              "title": "Change Pronoun",
+              "example": "We → they (according to the speaker)"
             },
             {
-              "title": "Change pronouns according to the speaker/listener.",
-              "example": "we → they"
+              "accent": "green",
+              "title": "Change Tense",
+              "example": "will → would (one step back)"
             },
             {
-              "title": "Change the tense if required.",
-              "example": "will → would"
-            },
-            {
-              "title": "Change time/place words if required.",
+              "accent": "purple",
+              "title": "Change Time/Place (if needed)",
               "example": "tomorrow → the next day"
             }
-          ],
-          "finalLabel": "Final",
-          "finalText": "Ali said that they would come the next day."
+          ]
         },
         "keyDifference": {
           "title": "Key Difference",
@@ -11026,69 +11003,11 @@
         },
         "examTip": {
           "title": "Important Rule / Exam Tip",
-          "direct": "Repeats the speaker's exact words.",
-          "indirect": "Reports the speaker's message in our own words.",
+          "direct": "Direct repeats the words.",
+          "indirect": "Indirect reports the message.",
           "urdu": "Direct Speech میں سپیکر کے اصل الفاظ دہرائے جاتے ہیں، جبکہ Indirect Speech میں اسی بات کا مطلب اپنے الفاظ میں بیان کیا جاتا ہے۔"
         }
-      },
-
-      "practice": [
-        {
-          "question": "What is Direct Speech?",
-          "options": [
-            "The speaker's exact words in quotation marks",
-            "A summary of the speech in our own words",
-            "A sentence without any reporting verb",
-            "A sentence that always stays in the present"
-          ],
-          "answerIndex": 0,
-          "explanation": "Direct speech repeats the exact words inside quotation marks."
-        },
-        {
-          "question": "In She said, \"I am tired.\", which part is the direct speech?",
-          "options": [
-            "She said",
-            "\"I am tired.\"",
-            "tired",
-            "She"
-          ],
-          "answerIndex": 1,
-          "explanation": "The words inside the quotation marks are the direct (reported) speech."
-        },
-        {
-          "question": "In indirect speech, the quotation marks are…",
-          "options": [
-            "kept as they are",
-            "doubled",
-            "removed",
-            "moved to the end"
-          ],
-          "answerIndex": 2,
-          "explanation": "Quotation marks and the comma before them are removed."
-        },
-        {
-          "question": "The mnemonic T-P-T-P stands for:",
-          "options": [
-            "Tense, Person, Place, Past",
-            "Tense, Pronoun, Time words, Punctuation",
-            "Topic, Phrase, Tense, Pronoun",
-            "Today, Past, Tomorrow, Present"
-          ],
-          "answerIndex": 1,
-          "explanation": "Tense → Pronoun → Time words → Punctuation is the conversion order."
-        },
-        {
-          "question": "Which direct sentence gives \"Ali said that he was happy.\"?",
-          "options": [
-            "Ali said, \"He is happy.\"",
-            "Ali said, \"I am happy.\"",
-            "Ali said, \"I was happy.\"",
-            "Ali said, \"I will be happy.\""
-          ],
-          "answerIndex": 1,
-          "explanation": "he was ← I am: the speaker used \"I am happy.\""
-        }
-      ]
+      }
     }
   },
   {
@@ -11337,63 +11256,6 @@
           "right": "She told me that I was right.",
           "urdu": "فعلِ ماضی کے ساتھ زمانہ پیچھے ہٹانا ضروری ہے۔",
           "note": "Back-shift \"am\" to \"was\" after the past reporting verb."
-        }
-      ],
-      "practice": [
-        {
-          "question": "Choose the Direct Speech formula for a statement:",
-          "options": [
-            "Subject + said, \"Statement.\"",
-            "Subject + asked, \"Statement.\"",
-            "Subject + said to + that",
-            "Subject + told, \"Statement.\""
-          ],
-          "answerIndex": 0,
-          "explanation": "Statements use said + comma + quoted sentence."
-        },
-        {
-          "question": "He said, \"I work hard.\" → He said that he ______ hard.",
-          "options": [
-            "works",
-            "worked",
-            "had worked",
-            "is working"
-          ],
-          "answerIndex": 1,
-          "explanation": "Simple Present \"work\" back-shifts to Simple Past \"worked\"."
-        },
-        {
-          "question": "Which sentence is correct?",
-          "options": [
-            "Riya told that she was ready.",
-            "Riya said me that she was ready.",
-            "Riya told me that she was ready.",
-            "Riya told to me that she was ready."
-          ],
-          "answerIndex": 2,
-          "explanation": "told takes a direct listener: told me; said never takes \"me\"."
-        },
-        {
-          "question": "She said to me, \"You are right.\" → She told me that ______ right.",
-          "options": [
-            "you are",
-            "I was",
-            "I am",
-            "she was"
-          ],
-          "answerIndex": 1,
-          "explanation": "you (the listener = me) becomes I, and are back-shifts to was."
-        },
-        {
-          "question": "Which conjunction is added when converting a statement?",
-          "options": [
-            "if",
-            "whether",
-            "that",
-            "to"
-          ],
-          "answerIndex": 2,
-          "explanation": "Statements take \"that\"; if/whether are for Yes/No questions and to for commands."
         }
       ],
       "examTips": [
@@ -11756,63 +11618,6 @@
           "note": "can back-shifts to could."
         }
       ],
-      "practice": [
-        {
-          "question": "\"I am reading a book.\" → She said that she ______ a book.",
-          "options": [
-            "is reading",
-            "was reading",
-            "had been reading",
-            "has read"
-          ],
-          "answerIndex": 1,
-          "explanation": "Present Continuous back-shifts to Past Continuous."
-        },
-        {
-          "question": "In indirect speech, has/have + V₃ becomes:",
-          "options": [
-            "has/have + V₃",
-            "had + V₃",
-            "was + V₃",
-            "will have + V₃"
-          ],
-          "answerIndex": 1,
-          "explanation": "Present Perfect back-shifts to Past Perfect (had + V₃)."
-        },
-        {
-          "question": "\"I bought a pen.\" → He said that he ______ a pen.",
-          "options": [
-            "bought",
-            "buys",
-            "had bought",
-            "has bought"
-          ],
-          "answerIndex": 2,
-          "explanation": "Simple Past back-shifts to Past Perfect."
-        },
-        {
-          "question": "Which modal never changes in indirect speech?",
-          "options": [
-            "will",
-            "can",
-            "may",
-            "might"
-          ],
-          "answerIndex": 3,
-          "explanation": "might is already the past form; would/should/could/might stay unchanged."
-        },
-        {
-          "question": "\"I was waiting for you.\" → They said that they ______ for me.",
-          "options": [
-            "were waiting",
-            "had been waiting",
-            "have been waiting",
-            "are waiting"
-          ],
-          "answerIndex": 1,
-          "explanation": "Past Continuous back-shifts to Past Perfect Continuous."
-        }
-      ],
       "quiz": [
         {
           "question": "\"I go to school daily.\" → He said that he ______ to school daily.",
@@ -12121,63 +11926,6 @@
           "note": "Third-person pronouns never change."
         }
       ],
-      "practice": [
-        {
-          "question": "Riya said, \"I love my school.\" → Riya said that ______ loved ______ school.",
-          "options": [
-            "I, my",
-            "she, her",
-            "you, your",
-            "they, their"
-          ],
-          "answerIndex": 1,
-          "explanation": "I → she and my → her (first person follows the subject Riya)."
-        },
-        {
-          "question": "\"We are tired.\" → The players said that ______ were tired.",
-          "options": [
-            "we",
-            "you",
-            "they",
-            "he"
-          ],
-          "answerIndex": 2,
-          "explanation": "we → they."
-        },
-        {
-          "question": "The teacher said to me, \"Your answer is wrong.\" → The teacher told me that ______ answer was wrong.",
-          "options": [
-            "your",
-            "his",
-            "my",
-            "her"
-          ],
-          "answerIndex": 2,
-          "explanation": "your follows the listener (me) → my."
-        },
-        {
-          "question": "Which pronouns never change in indirect speech?",
-          "options": [
-            "I and we",
-            "you and your",
-            "he, she, they",
-            "my and our"
-          ],
-          "answerIndex": 2,
-          "explanation": "Third-person pronouns stay unchanged (Context rule)."
-        },
-        {
-          "question": "He said, \"I wrote this poem myself.\" → He said that he had written that poem ______.",
-          "options": [
-            "myself",
-            "himself",
-            "herself",
-            "themselves"
-          ],
-          "answerIndex": 1,
-          "explanation": "myself → himself because I → he."
-        }
-      ],
       "examTips": [
         "Use SOC: Subject (1st person), Object (2nd person), Context (3rd person) — one exam question almost always tests this.",
         "Read the listener first: the answer for \"you/your\" depends entirely on the object of the reporting verb.",
@@ -12432,63 +12180,6 @@
           "note": "ago becomes before in indirect speech."
         }
       ],
-      "practice": [
-        {
-          "question": "\"I am busy now.\" → He said that he was busy ______.",
-          "options": [
-            "now",
-            "then",
-            "that day",
-            "today"
-          ],
-          "answerIndex": 1,
-          "explanation": "now becomes then."
-        },
-        {
-          "question": "\"I came yesterday.\" → She said that she had come ______.",
-          "options": [
-            "yesterday",
-            "the previous day",
-            "the next day",
-            "that day"
-          ],
-          "answerIndex": 1,
-          "explanation": "yesterday → the previous day (or the day before)."
-        },
-        {
-          "question": "\"We will leave tomorrow.\" → They said that they would leave ______.",
-          "options": [
-            "tomorrow",
-            "the previous day",
-            "the next day",
-            "that night"
-          ],
-          "answerIndex": 2,
-          "explanation": "tomorrow → the next day / the following day."
-        },
-        {
-          "question": "\"I live here.\" → He said that he lived ______.",
-          "options": [
-            "here",
-            "there",
-            "everywhere",
-            "that place"
-          ],
-          "answerIndex": 1,
-          "explanation": "here becomes there."
-        },
-        {
-          "question": "\"I will come here tomorrow.\" → Riya said that she would ______ there the next day.",
-          "options": [
-            "come",
-            "went",
-            "go",
-            "gone"
-          ],
-          "answerIndex": 2,
-          "explanation": "come → go when the viewpoint shifts to the reporter."
-        }
-      ],
       "examTips": [
         "Memorise the three headline pairs: now→then, today→that day, tomorrow→the next day, yesterday→the previous day.",
         "come→go and bring→take are the most-forgotten changes — check for motion verbs in every question.",
@@ -12513,9 +12204,14 @@
     ],
     "content": {
       "narrationSheet": {
+        "banner": {
+          "subtitle": "QUESTIONS"
+        },
         "sections": [
           {
-            "accent": "blue",
+            "accent": "pink",
+            "letter": "1",
+            "title": "YES / NO QUESTIONS",
             "blocks": [
               {
                 "type": "questionBlock",
@@ -12533,7 +12229,7 @@
               },
               {
                 "type": "group",
-                "accent": "blue",
+                "accent": "purple",
                 "icon": "book",
                 "title": "More Examples",
                 "titleSuffix": "(Yes/No Questions)",
@@ -12549,12 +12245,19 @@
                     ]
                   }
                 ]
-              },
+              }
+            ]
+          },
+          {
+            "accent": "cyan",
+            "letter": "2",
+            "title": "WH- QUESTIONS",
+            "blocks": [
               {
                 "type": "questionBlock",
                 "accent": "cyan",
                 "heading": "Keep the question word.",
-                "urdu": "Wh-word فبی سوال کو ویسے ہی رکھا جاتا ہے۔",
+                "urdu": "WH-لفظ سوال میں ویسے ہی رہتا ہے مگر ترتیب عام جملے جیسی ہو جاتی ہے۔",
                 "changes": [],
                 "direct": "Riya asked, \"**Where do you live?**\"",
                 "indirect": "Riya asked **where I lived**."
@@ -12567,7 +12270,7 @@
               },
               {
                 "type": "group",
-                "accent": "blue",
+                "accent": "purple",
                 "icon": "book",
                 "title": "More Examples",
                 "blocks": [
@@ -12730,63 +12433,6 @@
           "note": "Statement order: subject (I) before verb (was)."
         }
       ],
-      "practice": [
-        {
-          "question": "Which connector joins a reported Yes/No question?",
-          "options": [
-            "that",
-            "to",
-            "if / whether",
-            "because"
-          ],
-          "answerIndex": 2,
-          "explanation": "Yes/No questions take if or whether."
-        },
-        {
-          "question": "\"Are you ready?\" → Riya asked ______ I ______ ready.",
-          "options": [
-            "that, am",
-            "if, was",
-            "if, is",
-            "to, be"
-          ],
-          "answerIndex": 1,
-          "explanation": "if + I + was: connector, listener pronoun, back-shifted tense."
-        },
-        {
-          "question": "\"Where do you live?\" → He asked where ______ lived.",
-          "options": [
-            "do you",
-            "did you",
-            "I",
-            "you do"
-          ],
-          "answerIndex": 2,
-          "explanation": "do is removed, you → I, and the order is subject + verb."
-        },
-        {
-          "question": "Which sentence is correct?",
-          "options": [
-            "She asked where did I live.",
-            "She asked where I lived.",
-            "She asked where do I live.",
-            "She asked did where I live."
-          ],
-          "answerIndex": 1,
-          "explanation": "The reported clause uses statement word order."
-        },
-        {
-          "question": "\"Why are you crying?\" → He asked why ______ crying.",
-          "options": [
-            "are you",
-            "I was",
-            "was I",
-            "you are"
-          ],
-          "answerIndex": 1,
-          "explanation": "you → I and are → was in statement order."
-        }
-      ],
       "examTips": [
         "Two checks for every reported question: connector (if/whether vs wh-word) and word order (subject before verb).",
         "do/does/did always disappear — their tense jumps onto the main verb (did do → had done).",
@@ -12813,12 +12459,16 @@
     ],
     "content": {
       "narrationSheet": {
+        "banner": {
+          "subtitle": "COMMANDS, REQUESTS, PUNCTUATION & EXCEPTIONS"
+        },
         "sections": [
           {
-            "accent": "blue",
+            "accent": "pink",
             "letter": "A",
-            "title": "Commands and Requests",
+            "title": "COMMANDS AND REQUESTS",
             "blocks": [
+              { "type": "subHeader", "number": "1", "title": "Positive Command", "accent": "pink" },
               {
                 "type": "items",
                 "items": [
@@ -12838,6 +12488,8 @@
               },
               {
                 "type": "panels",
+                "layout": "stack",
+                "arrow": "pink",
                 "columns": [
                   {
                     "kind": "direct",
@@ -12869,6 +12521,7 @@
                   }
                 ]
               },
+              { "type": "subHeader", "number": "2", "title": "Negative Command", "accent": "pink" },
               {
                 "type": "items",
                 "items": [
@@ -12888,6 +12541,8 @@
               },
               {
                 "type": "panels",
+                "layout": "stack",
+                "arrow": "pink",
                 "columns": [
                   {
                     "kind": "direct",
@@ -12919,6 +12574,7 @@
                   }
                 ]
               },
+              { "type": "subHeader", "number": "3", "title": "Request", "accent": "pink" },
               {
                 "type": "items",
                 "items": [
@@ -12938,6 +12594,8 @@
               },
               {
                 "type": "panels",
+                "layout": "stack",
+                "arrow": "pink",
                 "columns": [
                   {
                     "kind": "direct",
@@ -12972,9 +12630,9 @@
             ]
           },
           {
-            "accent": "blue",
+            "accent": "cyan",
             "letter": "B",
-            "title": "Punctuation Changes",
+            "title": "PUNCTUATION CHANGES",
             "blocks": [
               {
                 "type": "panels",
@@ -13016,9 +12674,9 @@
             ]
           },
           {
-            "accent": "blue",
+            "accent": "green",
             "letter": "C",
-            "title": "When Tense Does Not Change",
+            "title": "WHEN TENSE DOES NOT CHANGE",
             "blocks": [
               {
                 "type": "truthRows",
@@ -13043,8 +12701,8 @@
             ]
           },
           {
-            "accent": "orange",
-            "title": "Final Conversion Checklist",
+            "accent": "yellow",
+            "title": "FINAL CONVERSION CHECKLIST",
             "blocks": [
               {
                 "type": "checklist",
@@ -13073,6 +12731,16 @@
                   { "text": "Commands, requests and some facts do not always change the tense." }
                 ],
                 "urdu": "یاد رکھیں: T = Tense، P = Pronoun، T = Time words، P = Punctuation۔"
+              },
+              {
+                "type": "letterBoxes",
+                "accent": "red",
+                "items": [
+                  { "letter": "T", "text": "Tense" },
+                  { "letter": "P", "text": "Pronoun" },
+                  { "letter": "T", "text": "Time words" },
+                  { "letter": "P", "text": "Punctuation" }
+                ]
               }
             ]
           }
@@ -13228,63 +12896,6 @@
           "wrong": "Riya says that she **was** busy.",
           "right": "Riya says that she **is** busy.",
           "note": "A present reporting verb blocks the back-shift."
-        }
-      ],
-      "practice": [
-        {
-          "question": "Positive command formula:",
-          "options": [
-            "told + object + to + V₁",
-            "told + object + V₁",
-            "told + to + V₁",
-            "said + object + V-ing"
-          ],
-          "answerIndex": 0,
-          "explanation": "told/ordered/asked + object + to + V₁."
-        },
-        {
-          "question": "\"Please help me.\" → Riya asked me ______ her.",
-          "options": [
-            "help",
-            "helped",
-            "to help",
-            "helping"
-          ],
-          "answerIndex": 2,
-          "explanation": "Requests become to + V₁; please disappears."
-        },
-        {
-          "question": "\"Do not make a noise.\" → She told us ______ a noise.",
-          "options": [
-            "to not make",
-            "not to make",
-            "do not make",
-            "not making"
-          ],
-          "answerIndex": 1,
-          "explanation": "Negative commands use not to + V₁."
-        },
-        {
-          "question": "\"The sun rises in the east.\" → The teacher said that the sun ______ in the east.",
-          "options": [
-            "rose",
-            "had risen",
-            "rises",
-            "would rise"
-          ],
-          "answerIndex": 2,
-          "explanation": "Universal truth: the tense does not change."
-        },
-        {
-          "question": "Which punctuation marks disappear in indirect speech?",
-          "options": [
-            "Full stop only",
-            "Quotation marks and the comma before the quote",
-            "Capital letters",
-            "No punctuation changes"
-          ],
-          "answerIndex": 1,
-          "explanation": "Quotes and the comma go; the sentence ends with a full stop."
         }
       ],
       "examTips": [
