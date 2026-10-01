@@ -210,12 +210,12 @@ class _LessonView extends StatelessWidget {
     }
     // Full-page reference sheet (Direct & Indirect Speech course lessons).
     if (lesson.narrationSheet != null && lesson.narrationSheet!.isNotEmpty) {
-      return _NarrationSheetView(lesson: lesson);
+      return NarrationSheetView(lesson: lesson);
     }
     // Compact side-by-side Direct vs Indirect Speech layout (Introduction &
     // Basic Difference). Both panels render on the same screen — no slides.
     if (lesson.narrationIntro != null && lesson.narrationIntro!.isNotEmpty) {
-      return _NarrationIntroView(lesson: lesson);
+      return NarrationIntroView(lesson: lesson);
     }
     // Numbered vertical rules layout (General Rules of Conversion).
     if (lesson.rulesConversion != null && lesson.rulesConversion!.isNotEmpty) {
@@ -3299,8 +3299,12 @@ class _QuizResultView extends StatelessWidget {
 /// key-difference table and an exam tip. Content comes from the lesson's
 /// `narrationIntro` map (assets/grammar/grammar_topics.json).
 /// ─────────────────────────────────────────────────────────────────────────────
-class _NarrationIntroView extends StatelessWidget {
-  const _NarrationIntroView({required this.lesson});
+/// Introduction & Basic Difference lesson: side-by-side Direct (purple) and
+/// Indirect (green) panels, a separate worked-example explanation section,
+/// the step-by-step chip strip, Key Difference and the exam tip.
+/// Public so widget tests can pump it with the real bundled data.
+class NarrationIntroView extends StatelessWidget {
+  const NarrationIntroView({required this.lesson});
 
   final GrammarLesson lesson;
 
@@ -3312,6 +3316,11 @@ class _NarrationIntroView extends StatelessWidget {
         lesson.narrationIntro ?? const <String, dynamic>{};
     final List<Map<String, dynamic>> columns =
         _narrationMaps(data['columns']);
+    final List<Map<String, dynamic>> explains = <Map<String, dynamic>>[
+      for (final Map<String, dynamic> column in columns)
+        if (column['explain'] is Map<String, dynamic>)
+          column['explain'] as Map<String, dynamic>,
+    ];
     final Map<String, dynamic>? method =
         data['method'] as Map<String, dynamic>?;
     final Map<String, dynamic>? keyDifference =
@@ -3362,6 +3371,47 @@ class _NarrationIntroView extends StatelessWidget {
             ),
           ),
 
+        // ── Example with Explanation (side-by-side worked examples) ────
+        if (explains.isNotEmpty) ...<Widget>[
+          const SizedBox(height: 10),
+          _NarrationCard(
+            accent: kGrammarHeadingPurple,
+            icon: Icons.lightbulb_outline,
+            title: (explains.first['title'] as String?) ??
+                'Example with Explanation',
+            child: IntrinsicHeight(
+              child: Row(
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: <Widget>[
+                  for (int i = 0; i < explains.length; i++) ...<Widget>[
+                    if (i > 0) const SizedBox(width: 8),
+                    Expanded(
+                      child: Container(
+                        padding: const EdgeInsets.all(7),
+                        decoration: BoxDecoration(
+                          border: Border.all(
+                            color:
+                                scheme.outlineVariant.withValues(alpha: 0.4),
+                          ),
+                          borderRadius: BorderRadius.circular(8),
+                        ),
+                        child: _NarrationExplain(
+                          data: explains[i],
+                          accent: i == 0
+                              ? kGrammarHeadingPurple
+                              : passiveVoiceColor(context),
+                          bodyStyle: bodyStyle,
+                          mutedColor: scheme.onSurfaceVariant,
+                        ),
+                      ),
+                    ),
+                  ],
+                ],
+              ),
+            ),
+          ),
+        ],
+
         // ── Step-by-Step Method (Direct → Indirect) ──────────────────────
         if (method != null) ...<Widget>[
           const SizedBox(height: 10),
@@ -3391,8 +3441,8 @@ List<Map<String, dynamic>> _narrationMaps(Object? value) {
 }
 
 /// One side panel of the comparison (purple = Direct Speech, green = Indirect
-/// Speech): definition, Urdu definition, example, parts of the sentence,
-/// numbered features and the worked example explanation.
+/// Speech): definition, Urdu definition, example, parts of the sentence and
+/// numbered features.
 class _NarrationPanel extends StatelessWidget {
   const _NarrationPanel({
     required this.data,
@@ -3409,7 +3459,6 @@ class _NarrationPanel extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final ThemeData theme = Theme.of(context);
-    final ColorScheme scheme = theme.colorScheme;
     final String title = (data['title'] as String?) ?? '';
     final String definition = (data['definition'] as String?) ?? '';
     final String definitionUrdu = (data['definitionUrdu'] as String?) ?? '';
@@ -3419,8 +3468,6 @@ class _NarrationPanel extends StatelessWidget {
     final String featuresTitle =
         (data['featuresTitle'] as String?) ?? 'Features';
     final List<Map<String, dynamic>> features = _narrationMaps(data['features']);
-    final Map<String, dynamic>? explain =
-        data['explain'] as Map<String, dynamic>?;
 
     return Container(
       decoration: BoxDecoration(
@@ -3552,15 +3599,6 @@ class _NarrationPanel extends StatelessWidget {
                       bodyStyle: bodyStyle,
                     ),
                 ],
-
-                // ── Example with Explanation ────────────────────────────
-                if (explain != null)
-                  _NarrationExplain(
-                    data: explain,
-                    accent: accent,
-                    bodyStyle: bodyStyle,
-                    mutedColor: scheme.onSurfaceVariant,
-                  ),
               ],
             ),
           ),
@@ -3570,9 +3608,10 @@ class _NarrationPanel extends StatelessWidget {
   }
 }
 
-/// Worked example explanation inside a panel: the sentence, the numbered
-/// teaching points (with their WHY lines) and the "Why used?" bullets or the
-/// change summary chips for Indirect Speech.
+/// One column of the "Example with Explanation" section: the annotated
+/// sentence with hanging callout badges, the numbered teaching points (with
+/// their WHY lines) and the "Why used?" bullets or the change summary chips
+/// for Indirect Speech.
 class _NarrationExplain extends StatelessWidget {
   const _NarrationExplain({
     required this.data,
@@ -3589,8 +3628,6 @@ class _NarrationExplain extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final ThemeData theme = Theme.of(context);
-    final String title =
-        (data['title'] as String?) ?? 'Example with Explanation';
     final String sentence = (data['sentence'] as String?) ?? '';
     final List<Map<String, dynamic>> segments = _narrationMaps(data['segments']);
     final List<Map<String, dynamic>> points = _narrationMaps(data['points']);
@@ -3606,12 +3643,6 @@ class _NarrationExplain extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
-        const SizedBox(height: 8),
-        _NarrationPanelLabel(
-          icon: Icons.lightbulb_outline,
-          label: title,
-          color: accent,
-        ),
         if (segments.isNotEmpty) ...<Widget>[
           const SizedBox(height: 4),
           _NarrationAnnotatedSentence(
@@ -3952,8 +3983,6 @@ class _NarrationPanelLabel extends StatelessWidget {
         Expanded(
           child: Text(
             label,
-            maxLines: 1,
-            overflow: TextOverflow.ellipsis,
             style: theme.textTheme.labelLarge?.copyWith(
               color: color,
               fontWeight: FontWeight.w800,
@@ -4635,8 +4664,10 @@ class _NarrationExamTip extends StatelessWidget {
 /// cards. No slides, no horizontal scrolling — vertical page scroll only.
 /// Content comes from the lesson's `narrationSheet` map.
 /// ─────────────────────────────────────────────────────────────────────────────
-class _NarrationSheetView extends StatelessWidget {
-  const _NarrationSheetView({required this.lesson});
+/// Full-page reference sheet for the Direct & Indirect Speech course lessons.
+/// Public so widget tests can pump it with the real bundled data.
+class NarrationSheetView extends StatelessWidget {
+  const NarrationSheetView({required this.lesson});
 
   final GrammarLesson lesson;
 
@@ -5132,6 +5163,7 @@ class _SheetPanel extends StatelessWidget {
     final List<Map<String, dynamic>> rows = _narrationMaps(panel['rows']);
 
     return Container(
+      width: double.infinity,
       decoration: BoxDecoration(
         border: Border.all(color: accent.withValues(alpha: 0.55)),
         borderRadius: BorderRadius.circular(10),
