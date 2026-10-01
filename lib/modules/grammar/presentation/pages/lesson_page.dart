@@ -4858,11 +4858,13 @@ class _SheetLetterBoxes extends StatelessWidget {
     final List<Map<String, dynamic>> items = _narrationMaps(data['items']);
     final Color accent = _sheetAccent((data['accent'] as String?) ?? 'red');
 
-    return Row(
-      crossAxisAlignment: CrossAxisAlignment.stretch,
-      children: <Widget>[
-        for (int i = 0; i < items.length; i++) ...<Widget>[
-          if (i > 0) const SizedBox(width: 6),
+    // IntrinsicHeight bounds the Row's height first (see _SheetItems).
+    return IntrinsicHeight(
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: <Widget>[
+          for (int i = 0; i < items.length; i++) ...<Widget>[
+            if (i > 0) const SizedBox(width: 6),
           Expanded(
             child: Container(
               padding: const EdgeInsets.symmetric(horizontal: 4, vertical: 6),
@@ -4894,8 +4896,9 @@ class _SheetLetterBoxes extends StatelessWidget {
               ),
             ),
           ),
+          ],
         ],
-      ],
+      ),
     );
   }
 }
@@ -5378,14 +5381,19 @@ class _SheetItems extends StatelessWidget {
   Widget build(BuildContext context) {
     final List<Map<String, dynamic>> items = _narrationMaps(data['items']);
     if (items.isEmpty) return const SizedBox.shrink();
-    return Row(
-      crossAxisAlignment: CrossAxisAlignment.stretch,
-      children: <Widget>[
-        for (int i = 0; i < items.length; i++) ...<Widget>[
-          if (i > 0) const SizedBox(width: 7),
-          Expanded(child: _SheetItemCard(item: items[i])),
+    // IntrinsicHeight bounds the Row's height first: CrossAxisAlignment.stretch
+    // on a Row inside an unbounded-height scrollable would otherwise force an
+    // infinite height on its children and abort the whole sheet layout.
+    return IntrinsicHeight(
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: <Widget>[
+          for (int i = 0; i < items.length; i++) ...<Widget>[
+            if (i > 0) const SizedBox(width: 7),
+            Expanded(child: _SheetItemCard(item: items[i])),
+          ],
         ],
-      ],
+      ),
     );
   }
 }
