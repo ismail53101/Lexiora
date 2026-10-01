@@ -12731,20 +12731,22 @@
                 "accent": "red",
                 "title": "Remember",
                 "rows": [
-                  { "text": "Commands, requests and some facts do not always change the tense." },
-                  { "text": "**TPTP** is a quick checklist: **Tense → Pronoun → Time Words → Punctuation**." },
-                  { "text": "Not every sentence requires all four changes." }
-                ],
-                "urdu": "یاد رکھیں: T = Tense، P = Pronoun، T = Time words، P = Punctuation۔"
+                  { "text": "**Commands & Requests**" },
+                  { "text": "Use told / ordered / asked / requested + object + to + verb." },
+                  { "text": "For negative commands: not to + verb." },
+                  { "text": "**Examples:**" },
+                  { "text": "“Open the door.” → He told me to open the door." },
+                  { "text": "“Please help me.” → She requested me to help her." },
+                  { "text": "“Do not run.” → He told me not to run." }
+                ]
               },
               {
                 "type": "letterBoxes",
                 "accent": "red",
                 "items": [
-                  { "letter": "T", "text": "Tense → Check whether the tense needs to change." },
-                  { "letter": "P", "text": "Pronoun → Check whether the pronoun needs to change." },
-                  { "letter": "T", "text": "Time Words → Check whether time expressions need to change." },
-                  { "letter": "P", "text": "Punctuation → Remove/change quotation marks, commas, etc." }
+                  { "letter": "Punctuation", "text": "Remove the comma and quotation marks when changing Direct Speech into Indirect Speech." },
+                  { "letter": "Exceptions", "text": "Universal truths, facts that are still true, and some present reporting verbs may not require a tense change." },
+                  { "letter": "Important", "text": "Choose the reporting verb according to the sentence type. Do not use “that” for commands and requests." }
                 ]
               }
             ]

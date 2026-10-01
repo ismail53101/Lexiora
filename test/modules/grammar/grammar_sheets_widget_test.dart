@@ -103,13 +103,19 @@ void main() {
       );
       // Remember strip.
       expect(
-        find.textContaining('do not always change the tense'),
+        find.textContaining('Use told / ordered / asked / requested'),
         findsWidgets,
       );
-      expect(find.textContaining('quick checklist'), findsWidgets);
-      expect(find.textContaining('Not every sentence'), findsWidgets);
-      expect(find.textContaining('needs to change'), findsWidgets);
-      expect(find.textContaining('quotation marks, commas'), findsWidgets);
+      expect(find.textContaining('For negative commands: not to + verb.'), findsWidgets);
+      expect(find.textContaining('He told me to open the door.'), findsWidgets);
+      expect(find.textContaining('She requested me to help her.'), findsWidgets);
+      expect(find.textContaining('He told me not to run.'), findsWidgets);
+      expect(
+        find.textContaining('Remove the comma and quotation marks'),
+        findsWidgets,
+      );
+      expect(find.textContaining('Universal truths, facts that are still true'), findsWidgets);
+      expect(find.textContaining('Choose the reporting verb'), findsWidgets);
     },
   );
 
