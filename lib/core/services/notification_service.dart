@@ -403,6 +403,33 @@ class NotificationService {
             : AndroidScheduleMode.inexactAllowWhileIdle,
       );
     } on Object catch (error, stackTrace) {
+      if (error is PlatformException && error.code == 'invalid_sound') {
+        AppLogger.w(
+          'Sound resource ${sound.resourceName} is unavailable; '
+          'retrying notification id=$id with legacy notification_sound',
+        );
+        await _plugin.zonedSchedule(
+          id: id,
+          title: title,
+          body: body,
+          scheduledDate: scheduledTz,
+          payload: jsonEncode(payload),
+          notificationDetails: NotificationDetails(
+            android: _details(
+              channelId: channelId,
+              channelName: channelName,
+              settings: settings,
+              sound: sound,
+              includeStartAction: includeStartAction,
+              soundResourceOverride: 'notification_sound',
+            ),
+          ),
+          androidScheduleMode: exact
+              ? AndroidScheduleMode.exactAllowWhileIdle
+              : AndroidScheduleMode.inexactAllowWhileIdle,
+        );
+        return;
+      }
       AppLogger.e(
         'Notification scheduling failed: id=$id, scheduledTz=$scheduledTz',
         error: error,
@@ -507,29 +534,32 @@ class NotificationService {
     required AppSettings settings,
     NotificationSound? sound,
     bool includeStartAction = false,
+    String? soundResourceOverride,
   }) {
     final NotificationSound selectedSound = sound ?? settings.notificationSound;
+    final String selectedResource =
+        soundResourceOverride ?? selectedSound.resourceName;
     final String soundMode =
         settings.notificationSoundEnabled ? 'sound' : 'silent';
     final String vibrationMode =
         settings.notificationVibrationEnabled ? 'vibrate' : 'quiet';
     AppLogger.d(
       'Notification channel config: '
-      'id=${channelId}_${selectedSound.resourceName}_${soundMode}_$vibrationMode, '
-      'sound=${selectedSound.resourceName}, '
+      'id=${channelId}_${selectedResource}_${soundMode}_$vibrationMode, '
+      'sound=$selectedResource, '
       'playSound=${settings.notificationSoundEnabled}, '
       'enableVibration=${settings.notificationVibrationEnabled}, '
       'pattern=[0,180]',
     );
     return AndroidNotificationDetails(
-      '${channelId}_${selectedSound.resourceName}_${soundMode}_$vibrationMode',
+      '${channelId}_${selectedResource}_${soundMode}_$vibrationMode',
       channelName,
       channelDescription: 'Sapiora learning reminders',
       importance: Importance.high,
       priority: Priority.high,
       playSound: settings.notificationSoundEnabled,
       sound: settings.notificationSoundEnabled
-          ? RawResourceAndroidNotificationSound(selectedSound.resourceName)
+          ? RawResourceAndroidNotificationSound(selectedResource)
           : null,
       enableVibration: settings.notificationVibrationEnabled,
       vibrationPattern: settings.notificationVibrationEnabled
