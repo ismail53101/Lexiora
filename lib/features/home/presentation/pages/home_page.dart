@@ -336,7 +336,7 @@ class _GreetingRow extends StatelessWidget {
                   children: <InlineSpan>[
                     TextSpan(
                       text: displayName.isEmpty
-                          ? _greeting
+                          ? '$_greeting 👋'
                           : '$_greeting, ',
                     ),
                     if (displayName.isNotEmpty)
@@ -344,6 +344,7 @@ class _GreetingRow extends StatelessWidget {
                         text: displayName,
                         style: TextStyle(color: scheme.primary),
                       ),
+                    if (displayName.isNotEmpty) const TextSpan(text: ' 👋'),
                   ],
                 ),
               ),
