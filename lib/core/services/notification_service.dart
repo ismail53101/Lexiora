@@ -28,9 +28,10 @@ class NotificationService {
   static const String breakChannelId = 'break_reminders_v3';
   static const String wordChannelId = 'word_of_the_day_v3';
   static const int _studyIdBase = 100000;
-  static const int _studyStartIdBase = 150000;
+  static const int _studyOneMinuteIdBase = 150000;
   static const int _studyFollowUpIdBase = 175000;
   static const int _breakIdBase = 200000;
+  static const int _implicitBreakIdBase = 225000;
   static const int _wordIdBase = 300000;
   static const int _lookAheadDays = 45;
 
@@ -243,32 +244,27 @@ class NotificationService {
     );
     final List<StudyTask> tasks =
         await _studyHub.watchTasksInRange(startDay, endDay).first;
+    final List<StudyTask> scheduledTasks = tasks
+        .where((StudyTask task) => task.startMinute != null)
+        .toList()
+      ..sort((StudyTask a, StudyTask b) {
+        final int byDay = a.day.compareTo(b.day);
+        if (byDay != 0) return byDay;
+        return a.startMinute!.compareTo(b.startMinute!);
+      });
     final DateTime now = DateTime.now();
     AppLogger.i(
-      'Planner notification scan: tasks=${tasks.length}, '
+      'Planner notification scan: tasks=${scheduledTasks.length}, '
       'range=$startDay..$endDay, now=$now',
     );
-    for (final StudyTask task in tasks) {
+    for (int index = 0; index < scheduledTasks.length; index++) {
+      final StudyTask task = scheduledTasks[index];
       final int? start = task.startMinute;
       if (start == null) {
         AppLogger.d('Skipping task ${task.id}: no start time');
         continue;
       }
       final bool isBreak = task.isBreak;
-      if (isBreak && !settings.breakRemindersEnabled) {
-        AppLogger.d('Skipping break ${task.id}: break reminders disabled');
-        continue;
-      }
-      if (!isBreak && !settings.studyRemindersEnabled) {
-        AppLogger.d('Skipping task ${task.id}: study reminders disabled');
-        continue;
-      }
-      if (!isBreak && task.status != TaskStatus.pending) {
-        AppLogger.d('Skipping task ${task.id}: status=${task.status}');
-        continue;
-      }
-
-      final int lead = isBreak ? 0 : settings.studyReminderMinutes;
       final DateTime date = _parseDay(task.day);
       final DateTime startLocal = DateTime(
         date.year,
@@ -277,8 +273,7 @@ class NotificationService {
       ).add(Duration(minutes: start));
       AppLogger.d(
         'Task ${task.id} "${task.displaySubject}": '
-        'startLocal=$startLocal, preLocal='
-        '${startLocal.subtract(Duration(minutes: lead))}, '
+        'startLocal=$startLocal, '
         'timezone=${tz.local.name}',
       );
       final Map<String, String> payload = <String, String>{
@@ -288,26 +283,31 @@ class NotificationService {
         'route': AppRoutes.studyHubDailyFor(task.day, task.id),
       };
       if (isBreak) {
-        await _schedule(
-          id: _stableId(_breakIdBase.toString(), task.id),
-          title: 'Break Reminder',
-          body: '${task.title} starts now.',
-          scheduledLocal: startLocal,
-          payload: payload,
-          settings: settings,
-          sound: NotificationSound.gentle,
-          channelId: breakChannelId,
-          channelName: 'Break reminders',
+        if (settings.breakRemindersEnabled) {
+          await _scheduleBreakReminder(
+            id: _stableId(_breakIdBase.toString(), task.id),
+            breakStart: startLocal,
+            payload: payload,
+            settings: settings,
+          );
+        }
+        continue;
+      }
+      if (!settings.studyRemindersEnabled || task.status != TaskStatus.pending) {
+        AppLogger.d(
+          'Skipping study reminders for ${task.id}: '
+          'enabled=${settings.studyRemindersEnabled}, status=${task.status}',
         );
         continue;
       }
-      final DateTime preLocal = startLocal.subtract(Duration(minutes: lead));
-      if (preLocal.isAfter(now)) {
+      final int lead = settings.studyReminderMinutes;
+      final DateTime leadLocal = startLocal.subtract(Duration(minutes: lead));
+      if (lead > 0 && leadLocal.isAfter(now)) {
         await _schedule(
           id: _stableId(_studyIdBase.toString(), task.id),
           title: 'Study Time Soon',
           body: '${task.displaySubject} starts in $lead minutes.',
-          scheduledLocal: preLocal,
+          scheduledLocal: leadLocal,
           payload: payload,
           settings: settings,
           sound: NotificationSound.gentle,
@@ -315,17 +315,19 @@ class NotificationService {
           channelName: 'Study reminders',
         );
       }
-      if (startLocal.isAfter(now)) {
+      final DateTime oneMinuteLocal =
+          startLocal.subtract(const Duration(minutes: 1));
+      if (oneMinuteLocal.isAfter(now)) {
         await _schedule(
-          id: _stableId(_studyStartIdBase.toString(), task.id),
-          title: "It's Study Time",
-          body: _taskLabel(task),
-          scheduledLocal: startLocal,
+          id: _stableId(_studyOneMinuteIdBase.toString(), task.id),
+          title: 'Get Ready',
+          body: 'Get ready! ${_taskLabel(task)} starts in 1 minute.',
+          scheduledLocal: oneMinuteLocal,
           payload: payload,
           settings: settings,
           sound: settings.notificationSound,
-          channelId: '${studyChannelId}_start',
-          channelName: 'Study start reminders',
+          channelId: '${studyChannelId}_one_minute',
+          channelName: 'Study reminders',
           includeStartAction: true,
         );
       }
@@ -334,8 +336,8 @@ class NotificationService {
         if (followUpLocal.isAfter(now)) {
           await _schedule(
             id: _stableId(_studyFollowUpIdBase.toString(), task.id),
-            title: 'Still Ready to Study?',
-            body: '${_taskLabel(task)} — start when you are ready.',
+            title: 'Study Follow-up',
+            body: "You haven't started ${_taskLabel(task)} yet.",
             scheduledLocal: followUpLocal,
             payload: payload,
             settings: settings,
@@ -346,7 +348,63 @@ class NotificationService {
           );
         }
       }
+      if (settings.breakRemindersEnabled && task.endMinute != null) {
+        final StudyTask? next = _nextTask(scheduledTasks, index, task.day);
+        if (next != null &&
+            !next.isBreak &&
+            next.startMinute != null &&
+            next.startMinute! > task.endMinute!) {
+          final DateTime breakStart = DateTime(
+            date.year,
+            date.month,
+            date.day,
+          ).add(Duration(minutes: task.endMinute!));
+          await _scheduleBreakReminder(
+            id: _stableId(_implicitBreakIdBase.toString(), task.id),
+            breakStart: breakStart,
+            payload: <String, String>{
+              'type': 'break',
+              'taskId': task.id,
+              'day': task.day,
+              'route': AppRoutes.studyHubDailyFor(task.day, task.id),
+            },
+            settings: settings,
+          );
+        }
+      }
     }
+  }
+
+  StudyTask? _nextTask(
+    List<StudyTask> tasks,
+    int currentIndex,
+    String day,
+  ) {
+    for (int index = currentIndex + 1; index < tasks.length; index++) {
+      final StudyTask candidate = tasks[index];
+      if (candidate.day != day) return null;
+      return candidate;
+    }
+    return null;
+  }
+
+  Future<void> _scheduleBreakReminder({
+    required int id,
+    required DateTime breakStart,
+    required Map<String, String> payload,
+    required AppSettings settings,
+  }) async {
+    await _schedule(
+      id: id,
+      title: 'Break Reminder',
+      body: 'Take a break now! Your break starts in 1 minute.',
+      scheduledLocal: breakStart.subtract(const Duration(minutes: 1)),
+      payload: payload,
+      settings: settings,
+      sound: NotificationSound.gentle,
+      channelId: breakChannelId,
+      channelName: 'Break reminders',
+    );
   }
 
   Future<void> _schedule({
