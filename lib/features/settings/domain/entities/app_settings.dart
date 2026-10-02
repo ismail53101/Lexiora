@@ -11,10 +11,10 @@ enum NotificationSound {
   newNotification;
 
   String get label => switch (this) {
-        NotificationSound.gentle => 'Gentle',
-        NotificationSound.studyBell => 'Study Bell',
-        NotificationSound.alert => 'Alert',
-        NotificationSound.newNotification => 'New Notification',
+        NotificationSound.gentle => 'notification_pop.wav',
+        NotificationSound.studyBell => 'notification_bell.mp3',
+        NotificationSound.alert => 'notification_long_bell.wav',
+        NotificationSound.newNotification => 'notification_new.mp3',
       };
 
   String get resourceName => switch (this) {

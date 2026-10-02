@@ -36,6 +36,13 @@ void main() {
         NotificationSound.newNotification.resourceName,
         'notification_new',
       );
+      expect(NotificationSound.gentle.label, 'notification_pop.wav');
+      expect(NotificationSound.studyBell.label, 'notification_bell.mp3');
+      expect(NotificationSound.alert.label, 'notification_long_bell.wav');
+      expect(
+        NotificationSound.newNotification.label,
+        'notification_new.mp3',
+      );
     });
   });
 }
