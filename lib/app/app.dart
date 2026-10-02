@@ -142,4 +142,3 @@ class _NameSetupDialogState extends State<_NameSetupDialog> {
     );
   }
 }
-}
