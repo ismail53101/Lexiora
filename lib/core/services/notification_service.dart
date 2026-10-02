@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'dart:convert';
+import 'dart:typed_data';
 
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:flutter_timezone/flutter_timezone.dart';
@@ -26,6 +27,8 @@ class NotificationService {
   static const String breakChannelId = 'break_reminders_v2';
   static const String wordChannelId = 'word_of_the_day_v2';
   static const int _studyIdBase = 100000;
+  static const int _studyStartIdBase = 150000;
+  static const int _studyFollowUpIdBase = 175000;
   static const int _breakIdBase = 200000;
   static const int _wordIdBase = 300000;
   static const int _lookAheadDays = 45;
@@ -39,6 +42,7 @@ class NotificationService {
   void Function(String payload)? _onTap;
   String? _pendingPayload;
   bool _initialized = false;
+  Future<void> _rescheduleTail = Future<void>.value();
 
   bool get initialized => _initialized;
   String? takePendingPayload() {
@@ -73,6 +77,9 @@ class NotificationService {
       onDidReceiveNotificationResponse: (NotificationResponse response) {
         final String? payload = response.payload;
         if (payload == null || payload.isEmpty) return;
+        if (response.actionId == 'start_studying') {
+          _markTaskStarted(payload);
+        }
         final void Function(String payload)? handler = _onTap;
         if (handler != null) {
           handler(payload);
@@ -85,14 +92,34 @@ class NotificationService {
         await _plugin.getNotificationAppLaunchDetails();
     if (launch?.didNotificationLaunchApp ?? false) {
       final String? payload = launch?.notificationResponse?.payload;
+      if (payload != null &&
+          launch?.notificationResponse?.actionId == 'start_studying') {
+        _markTaskStarted(payload);
+      }
       if (payload != null && payload.isNotEmpty) _pendingPayload = payload;
     }
     _initialized = true;
   }
 
+  void _markTaskStarted(String payload) {
+    try {
+      final Object? decoded = jsonDecode(payload);
+      if (decoded is Map<String, dynamic>) {
+        final String? taskId = decoded['taskId'] as String?;
+        if (taskId != null && taskId.isNotEmpty) {
+          unawaited(_studyHub.setTaskStatus(taskId, TaskStatus.inProgress));
+        }
+      }
+    } on Object {
+      // A malformed payload should never prevent the notification tap from
+      // opening the planner.
+    }
+  }
+
   Future<bool> requestPermission() async {
     await initialize();
     final bool? granted = await _androidPlugin?.requestNotificationsPermission();
+    await _androidPlugin?.requestExactAlarmsPermission();
     return granted ?? await _isEnabled();
   }
 
@@ -116,7 +143,15 @@ class NotificationService {
   /// Reschedules the complete notification set from persisted settings and
   /// persisted planner rows. Cancelling our set first makes this idempotent
   /// after restart, edits, deletes, and preference changes.
-  Future<void> rescheduleAll() async {
+  Future<void> rescheduleAll() {
+    final Future<void> next = _rescheduleTail
+        .catchError((Object _) {})
+        .then((_) => _rescheduleAll());
+    _rescheduleTail = next.catchError((Object _) {});
+    return next;
+  }
+
+  Future<void> _rescheduleAll() async {
     await initialize();
     final bool enabled = await _isEnabled();
     if (!enabled) {
@@ -144,50 +179,126 @@ class NotificationService {
     final DateTime now = DateTime.now();
     for (final StudyTask task in tasks) {
       final int? start = task.startMinute;
-      if (start == null || task.endMinute == null) continue;
+      if (start == null) continue;
       final bool isBreak = task.isBreak;
       if (isBreak && !settings.breakRemindersEnabled) continue;
       if (!isBreak && !settings.studyRemindersEnabled) continue;
+      if (!isBreak && task.status != TaskStatus.pending) continue;
 
       final int lead = isBreak ? 0 : settings.studyReminderMinutes;
       final DateTime date = _parseDay(task.day);
-      final DateTime scheduledLocal = DateTime(
+      final DateTime startLocal = DateTime(
         date.year,
         date.month,
         date.day,
-      ).add(Duration(minutes: start - lead));
-      if (!scheduledLocal.isAfter(now)) continue;
-
-      final int id = _stableId(
-        (isBreak ? _breakIdBase : _studyIdBase).toString(),
-        task.id,
-      );
-      final String title = isBreak ? 'Break Reminder' : 'Study Reminder';
-      final String body = isBreak
-          ? '${task.title} starts now.'
-          : '${task.displaySubject} starts in $lead minutes.';
-      await _plugin.zonedSchedule(
-        id: id,
-        title: title,
-        body: body,
-        scheduledDate: _toTz(scheduledLocal),
-        payload: jsonEncode(<String, String>{
-          'type': isBreak ? 'break' : 'study',
-          'taskId': task.id,
-          'day': task.day,
-          'route': AppRoutes.studyHubDailyFor(task.day, task.id),
-        }),
-        notificationDetails: NotificationDetails(
-          android: _details(
-            channelId: isBreak ? breakChannelId : studyChannelId,
-            channelName: isBreak ? 'Break reminders' : 'Study reminders',
+      ).add(Duration(minutes: start));
+      final Map<String, String> payload = <String, String>{
+        'type': isBreak ? 'break' : 'study',
+        'taskId': task.id,
+        'day': task.day,
+        'route': AppRoutes.studyHubDailyFor(task.day, task.id),
+      };
+      if (isBreak) {
+        await _schedule(
+          id: _stableId(_breakIdBase.toString(), task.id),
+          title: 'Break Reminder',
+          body: '${task.title} starts now.',
+          scheduledLocal: startLocal,
+          payload: payload,
+          settings: settings,
+          sound: NotificationSound.gentle,
+          channelId: breakChannelId,
+          channelName: 'Break reminders',
+        );
+        continue;
+      }
+      final DateTime preLocal = startLocal.subtract(Duration(minutes: lead));
+      if (preLocal.isAfter(now)) {
+        await _schedule(
+          id: _stableId(_studyIdBase.toString(), task.id),
+          title: 'Study Time Soon',
+          body: '${task.displaySubject} starts in $lead minutes.',
+          scheduledLocal: preLocal,
+          payload: payload,
+          settings: settings,
+          sound: NotificationSound.gentle,
+          channelId: '${studyChannelId}_pre',
+          channelName: 'Study reminders',
+        );
+      }
+      if (startLocal.isAfter(now)) {
+        await _schedule(
+          id: _stableId(_studyStartIdBase.toString(), task.id),
+          title: "It's Study Time",
+          body: _taskLabel(task),
+          scheduledLocal: startLocal,
+          payload: payload,
+          settings: settings,
+          sound: settings.notificationSound,
+          channelId: '${studyChannelId}_start',
+          channelName: 'Study start reminders',
+          includeStartAction: true,
+        );
+      }
+      if (settings.followUpReminderEnabled) {
+        final DateTime followUpLocal = startLocal.add(const Duration(minutes: 5));
+        if (followUpLocal.isAfter(now)) {
+          await _schedule(
+            id: _stableId(_studyFollowUpIdBase.toString(), task.id),
+            title: 'Still Ready to Study?',
+            body: '${_taskLabel(task)} — start when you are ready.',
+            scheduledLocal: followUpLocal,
+            payload: payload,
             settings: settings,
-          ),
-        ),
-        androidScheduleMode: AndroidScheduleMode.inexactAllowWhileIdle,
-      );
+            sound: NotificationSound.alert,
+            channelId: '${studyChannelId}_follow_up',
+            channelName: 'Study follow-up reminders',
+            includeStartAction: true,
+          );
+        }
+      }
     }
   }
+
+  Future<void> _schedule({
+    required int id,
+    required String title,
+    required String body,
+    required DateTime scheduledLocal,
+    required Map<String, String> payload,
+    required AppSettings settings,
+    required NotificationSound sound,
+    required String channelId,
+    required String channelName,
+    bool includeStartAction = false,
+  }) async {
+    if (!scheduledLocal.isAfter(DateTime.now())) return;
+    final bool exact =
+        await _androidPlugin?.canScheduleExactNotifications() ?? true;
+    await _plugin.zonedSchedule(
+      id: id,
+      title: title,
+      body: body,
+      scheduledDate: _toTz(scheduledLocal),
+      payload: jsonEncode(payload),
+      notificationDetails: NotificationDetails(
+        android: _details(
+          channelId: channelId,
+          channelName: channelName,
+          settings: settings,
+          sound: sound,
+          includeStartAction: includeStartAction,
+        ),
+      ),
+      androidScheduleMode: exact
+          ? AndroidScheduleMode.exactAllowWhileIdle
+          : AndroidScheduleMode.inexactAllowWhileIdle,
+    );
+  }
+
+  String _taskLabel(StudyTask task) => task.topic == null || task.topic!.isEmpty
+      ? task.displaySubject
+      : '${task.displaySubject} — ${task.topic}';
 
   Future<void> _scheduleWordOfDay(AppSettings settings) async {
     final DateTime now = DateTime.now();
@@ -248,22 +359,37 @@ class NotificationService {
     required String channelId,
     required String channelName,
     required AppSettings settings,
+    NotificationSound? sound,
+    bool includeStartAction = false,
   }) {
+    final NotificationSound selectedSound = sound ?? settings.notificationSound;
     final String soundMode =
         settings.notificationSoundEnabled ? 'sound' : 'silent';
     final String vibrationMode =
         settings.notificationVibrationEnabled ? 'vibrate' : 'quiet';
     return AndroidNotificationDetails(
-      '${channelId}_${soundMode}_$vibrationMode',
+      '${channelId}_${selectedSound.resourceName}_${soundMode}_$vibrationMode',
       channelName,
       channelDescription: 'Sapiora learning reminders',
       importance: Importance.high,
       priority: Priority.high,
       playSound: settings.notificationSoundEnabled,
       sound: settings.notificationSoundEnabled
-          ? const RawResourceAndroidNotificationSound('notification_sound')
+          ? RawResourceAndroidNotificationSound(selectedSound.resourceName)
           : null,
       enableVibration: settings.notificationVibrationEnabled,
+      vibrationPattern: settings.notificationVibrationEnabled
+          ? Int64List.fromList(<int>[0, 180])
+          : null,
+      actions: includeStartAction
+          ? <AndroidNotificationAction>[
+              const AndroidNotificationAction(
+                'start_studying',
+                'Start Studying',
+                showsUserInterface: true,
+              ),
+            ]
+          : null,
     );
   }
 

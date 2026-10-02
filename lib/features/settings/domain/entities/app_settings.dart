@@ -4,6 +4,24 @@ import 'package:lexiora/core/constants/app_constants.dart';
 import 'package:lexiora/core/constants/translation_languages.dart';
 import 'package:lexiora/core/reader_engine/reader_models.dart';
 
+enum NotificationSound {
+  gentle,
+  studyBell,
+  alert;
+
+  String get label => switch (this) {
+        NotificationSound.gentle => 'Gentle',
+        NotificationSound.studyBell => 'Study Bell',
+        NotificationSound.alert => 'Alert',
+      };
+
+  String get resourceName => switch (this) {
+        NotificationSound.gentle => 'gentle_sound',
+        NotificationSound.studyBell => 'study_bell',
+        NotificationSound.alert => 'alert_sound',
+      };
+}
+
 /// Immutable snapshot of all user-configurable preferences.
 ///
 /// Persisted as key-value rows in the local database so everything stays
@@ -21,12 +39,14 @@ class AppSettings extends Equatable {
     this.translationLanguage = kDefaultTranslationLanguage,
     this.displayName = '',
     this.studyRemindersEnabled = true,
-    this.studyReminderMinutes = 10,
+    this.studyReminderMinutes = 5,
+    this.followUpReminderEnabled = false,
     this.breakRemindersEnabled = false,
     this.dailyWordEnabled = true,
     this.dailyWordHour = 8,
     this.dailyWordMinute = 0,
     this.notificationSoundEnabled = true,
+    this.notificationSound = NotificationSound.studyBell,
     this.notificationVibrationEnabled = true,
     this.dailyWordHistory = const <String>[],
     this.initialPermissionFlowCompleted = false,
@@ -62,11 +82,13 @@ class AppSettings extends Equatable {
 
   final bool studyRemindersEnabled;
   final int studyReminderMinutes;
+  final bool followUpReminderEnabled;
   final bool breakRemindersEnabled;
   final bool dailyWordEnabled;
   final int dailyWordHour;
   final int dailyWordMinute;
   final bool notificationSoundEnabled;
+  final NotificationSound notificationSound;
   final bool notificationVibrationEnabled;
   final List<String> dailyWordHistory;
 
@@ -90,11 +112,13 @@ class AppSettings extends Equatable {
     String? displayName,
     bool? studyRemindersEnabled,
     int? studyReminderMinutes,
+    bool? followUpReminderEnabled,
     bool? breakRemindersEnabled,
     bool? dailyWordEnabled,
     int? dailyWordHour,
     int? dailyWordMinute,
     bool? notificationSoundEnabled,
+    NotificationSound? notificationSound,
     bool? notificationVibrationEnabled,
     List<String>? dailyWordHistory,
     bool? initialPermissionFlowCompleted,
@@ -116,6 +140,8 @@ class AppSettings extends Equatable {
             studyRemindersEnabled ?? this.studyRemindersEnabled,
         studyReminderMinutes:
             studyReminderMinutes ?? this.studyReminderMinutes,
+        followUpReminderEnabled:
+            followUpReminderEnabled ?? this.followUpReminderEnabled,
         breakRemindersEnabled:
             breakRemindersEnabled ?? this.breakRemindersEnabled,
         dailyWordEnabled: dailyWordEnabled ?? this.dailyWordEnabled,
@@ -123,6 +149,7 @@ class AppSettings extends Equatable {
         dailyWordMinute: dailyWordMinute ?? this.dailyWordMinute,
         notificationSoundEnabled:
             notificationSoundEnabled ?? this.notificationSoundEnabled,
+        notificationSound: notificationSound ?? this.notificationSound,
         notificationVibrationEnabled:
             notificationVibrationEnabled ?? this.notificationVibrationEnabled,
         dailyWordHistory: dailyWordHistory ?? this.dailyWordHistory,
@@ -146,11 +173,13 @@ class AppSettings extends Equatable {
         displayName,
         studyRemindersEnabled,
         studyReminderMinutes,
+        followUpReminderEnabled,
         breakRemindersEnabled,
         dailyWordEnabled,
         dailyWordHour,
         dailyWordMinute,
         notificationSoundEnabled,
+        notificationSound,
         notificationVibrationEnabled,
         dailyWordHistory,
         initialPermissionFlowCompleted,

@@ -126,14 +126,26 @@ class StudyHubRepositoryImpl implements StudyHubRepository {
   }
 
   @override
-  Future<void> setTaskCompleted(String id, {required bool completed}) =>
-      _local.setStatus(
-          id, completed ? TaskStatus.completed.index : TaskStatus.pending.index,
-          completed, DateTime.now());
+  Future<void> setTaskCompleted(String id, {required bool completed}) async {
+    await _local.setStatus(
+      id,
+      completed ? TaskStatus.completed.index : TaskStatus.pending.index,
+      completed,
+      DateTime.now(),
+    );
+    await onTasksChanged?.call();
+  }
 
   @override
-  Future<void> setTaskStatus(String id, TaskStatus status) => _local.setStatus(
-      id, status.index, status == TaskStatus.completed, DateTime.now());
+  Future<void> setTaskStatus(String id, TaskStatus status) async {
+    await _local.setStatus(
+      id,
+      status.index,
+      status == TaskStatus.completed,
+      DateTime.now(),
+    );
+    await onTasksChanged?.call();
+  }
 
   @override
   Future<List<String>> subjectSuggestions() => _local.subjectSuggestions();

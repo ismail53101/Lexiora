@@ -407,6 +407,15 @@ class _NotificationSection extends StatelessWidget {
           ),
         SwitchListTile(
           contentPadding: EdgeInsets.zero,
+          title: const Text('Follow-up reminder'),
+          subtitle: const Text('Remind me again 5 minutes after the start time'),
+          value: settings.followUpReminderEnabled,
+          onChanged: settings.studyRemindersEnabled
+              ? controller.setFollowUpReminderEnabled
+              : null,
+        ),
+        SwitchListTile(
+          contentPadding: EdgeInsets.zero,
           title: const Text('Break reminders'),
           subtitle: const Text('Notify me when a planned break starts'),
           value: settings.breakRemindersEnabled,
@@ -436,9 +445,30 @@ class _NotificationSection extends StatelessWidget {
         ),
         SwitchListTile(
           contentPadding: EdgeInsets.zero,
-          title: const Text('Sound'),
+          title: const Text('Notification sound'),
           value: settings.notificationSoundEnabled,
           onChanged: controller.setNotificationSoundEnabled,
+        ),
+        DropdownButtonFormField<NotificationSound>(
+          initialValue: settings.notificationSound,
+          decoration: const InputDecoration(
+            labelText: 'Sound type',
+            border: OutlineInputBorder(),
+            isDense: true,
+          ),
+          items: NotificationSound.values
+              .map(
+                (NotificationSound sound) => DropdownMenuItem<NotificationSound>(
+                  value: sound,
+                  child: Text(sound.label),
+                ),
+              )
+              .toList(),
+          onChanged: settings.notificationSoundEnabled
+              ? (NotificationSound? value) {
+                  if (value != null) controller.setNotificationSound(value);
+                }
+              : null,
         ),
         SwitchListTile(
           contentPadding: EdgeInsets.zero,

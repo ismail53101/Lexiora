@@ -60,6 +60,10 @@ class SettingsController {
         (AppSettings s) => s.copyWith(studyReminderMinutes: value),
       );
 
+  Future<void> setFollowUpReminderEnabled(bool value) => _mutate(
+        (AppSettings s) => s.copyWith(followUpReminderEnabled: value),
+      );
+
   Future<void> setBreakRemindersEnabled(bool value) => _mutate(
         (AppSettings s) => s.copyWith(breakRemindersEnabled: value),
       );
@@ -78,6 +82,10 @@ class SettingsController {
 
   Future<void> setNotificationSoundEnabled(bool value) => _mutate(
         (AppSettings s) => s.copyWith(notificationSoundEnabled: value),
+      );
+
+  Future<void> setNotificationSound(NotificationSound value) => _mutate(
+        (AppSettings s) => s.copyWith(notificationSound: value),
       );
 
   Future<void> setNotificationVibrationEnabled(bool value) => _mutate(
