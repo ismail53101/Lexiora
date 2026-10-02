@@ -373,21 +373,6 @@ class _NotificationSection extends StatelessWidget {
     }
   }
 
-  Future<void> _sendTestNotification(BuildContext context) async {
-    try {
-      await sl<NotificationService>().scheduleTestNotification();
-      if (!context.mounted) return;
-      ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text('Test notification scheduled for 10 seconds.')),
-      );
-    } on Object catch (error) {
-      if (!context.mounted) return;
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text('Test notification failed: $error')),
-      );
-    }
-  }
-
   @override
   Widget build(BuildContext context) {
     return _SectionCard(
@@ -496,12 +481,6 @@ class _NotificationSection extends StatelessWidget {
           onPressed: () => _requestPermission(context),
           icon: const Icon(Icons.notifications_active_outlined),
           label: const Text('Check notification permission'),
-        ),
-        const SizedBox(height: 8),
-        OutlinedButton.icon(
-          onPressed: () => _sendTestNotification(context),
-          icon: const Icon(Icons.timer_outlined),
-          label: const Text('Test notification in 10 seconds'),
         ),
       ],
     );

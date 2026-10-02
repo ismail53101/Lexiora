@@ -32,7 +32,6 @@ class NotificationService {
   static const int _studyFollowUpIdBase = 175000;
   static const int _breakIdBase = 200000;
   static const int _wordIdBase = 300000;
-  static const int _testNotificationId = 399999;
   static const int _lookAheadDays = 45;
 
   final SettingsRepository _settings;
@@ -400,36 +399,6 @@ class NotificationService {
       androidScheduleMode: exact
           ? AndroidScheduleMode.exactAllowWhileIdle
           : AndroidScheduleMode.inexactAllowWhileIdle,
-    );
-  }
-
-  /// Development diagnostic: schedules a real Android notification in 10s.
-  Future<void> scheduleTestNotification() async {
-    await initialize();
-    if (!await _isEnabled()) {
-      AppLogger.e('Test notification not scheduled: Android notifications are disabled');
-      throw StateError(
-        'Android notifications are disabled. Enable notification permission first.',
-      );
-    }
-    final AppSettings settings = await _settings.getSettings();
-    final DateTime scheduledLocal =
-        DateTime.now().add(const Duration(seconds: 10));
-    await _plugin.cancel(id: _testNotificationId);
-    await _schedule(
-      id: _testNotificationId,
-      title: 'Study Planner Test',
-      body: 'Sound and vibration test notification.',
-      scheduledLocal: scheduledLocal,
-      payload: <String, String>{'type': 'test'},
-      settings: settings,
-      sound: settings.notificationSound,
-      channelId: '${studyChannelId}_test',
-      channelName: 'Study Planner test notifications',
-    );
-    AppLogger.i(
-      'Test notification requested for $scheduledLocal '
-      '(${tz.local.name}); inspect logcat for the scheduling result',
     );
   }
 
