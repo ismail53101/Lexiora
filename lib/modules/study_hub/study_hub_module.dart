@@ -1,5 +1,3 @@
-import 'dart:async';
-
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
 import 'package:go_router/go_router.dart';
@@ -44,11 +42,9 @@ class StudyHubModule extends FeatureModule {
       ..registerLazySingleton<StudyHubRepository>(
         () => StudyHubRepositoryImpl(
           getIt<StudyHubLocalDataSource>(),
-          onTasksChanged: () async {
-            // Task persistence should not keep the editor open while the
-            // complete reminder set (including Word of the Day) is rebuilt.
-            unawaited(_rescheduleNotifications(getIt));
-          },
+          // Awaiting this callback guarantees that a task save has reached
+          // Android's alarm manager before the editor/app is closed.
+          onTasksChanged: () => _rescheduleNotifications(getIt),
         ),
       );
   }

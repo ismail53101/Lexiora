@@ -5,6 +5,7 @@ import 'dart:typed_data';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:flutter_timezone/flutter_timezone.dart';
 import 'package:lexiora/app/router/app_routes.dart';
+import 'package:lexiora/core/utils/logger.dart';
 import 'package:lexiora/features/home/domain/services/word_of_day_service.dart';
 import 'package:lexiora/features/settings/domain/entities/app_settings.dart';
 import 'package:lexiora/features/settings/domain/repositories/settings_repository.dart';
@@ -31,6 +32,7 @@ class NotificationService {
   static const int _studyFollowUpIdBase = 175000;
   static const int _breakIdBase = 200000;
   static const int _wordIdBase = 300000;
+  static const int _testNotificationId = 399999;
   static const int _lookAheadDays = 45;
 
   final SettingsRepository _settings;
@@ -65,29 +67,45 @@ class NotificationService {
     try {
       final TimezoneInfo local = await FlutterTimezone.getLocalTimezone();
       tz.setLocalLocation(tz.getLocation(local.identifier));
+      AppLogger.i('Notifications timezone initialized: ${tz.local.name}');
     } on Object {
       // Keep the package's default location if the platform does not expose a
       // valid IANA name. Android normally returns one on supported releases.
+      AppLogger.w('Could not resolve device timezone; using ${tz.local.name}');
     }
 
-    await _plugin.initialize(
-      settings: InitializationSettings(
-        android: const AndroidInitializationSettings('@mipmap/ic_launcher'),
-      ),
-      onDidReceiveNotificationResponse: (NotificationResponse response) {
-        final String? payload = response.payload;
-        if (payload == null || payload.isEmpty) return;
-        if (response.actionId == 'start_studying') {
-          _markTaskStarted(payload);
-        }
-        final void Function(String payload)? handler = _onTap;
-        if (handler != null) {
-          handler(payload);
-        } else {
-          _pendingPayload = payload;
-        }
-      },
-    );
+    try {
+      await _plugin.initialize(
+        settings: InitializationSettings(
+          android: const AndroidInitializationSettings('@mipmap/ic_launcher'),
+        ),
+        onDidReceiveNotificationResponse: (NotificationResponse response) {
+          AppLogger.i(
+            'Notification callback: id=${response.id}, '
+            'action=${response.actionId}, payload=${response.payload}',
+          );
+          final String? payload = response.payload;
+          if (payload == null || payload.isEmpty) return;
+          if (response.actionId == 'start_studying') {
+            _markTaskStarted(payload);
+          }
+          final void Function(String payload)? handler = _onTap;
+          if (handler != null) {
+            handler(payload);
+          } else {
+            _pendingPayload = payload;
+          }
+        },
+      );
+      AppLogger.i('Flutter local notifications plugin initialized');
+    } on Object catch (error, stackTrace) {
+      AppLogger.e(
+        'Flutter local notifications plugin initialization failed',
+        error: error,
+        stackTrace: stackTrace,
+      );
+      rethrow;
+    }
     final NotificationAppLaunchDetails? launch =
         await _plugin.getNotificationAppLaunchDetails();
     if (launch?.didNotificationLaunchApp ?? false) {
@@ -119,13 +137,25 @@ class NotificationService {
   Future<bool> requestPermission() async {
     await initialize();
     final bool? granted = await _androidPlugin?.requestNotificationsPermission();
-    await _androidPlugin?.requestExactAlarmsPermission();
-    return granted ?? await _isEnabled();
+    final bool? exactGranted = await _androidPlugin?.requestExactAlarmsPermission();
+    final bool? exactAvailable =
+        await _androidPlugin?.canScheduleExactNotifications();
+    AppLogger.i(
+      'Notification permissions: notifications=$granted, '
+      'exactAlarmRequest=$exactGranted, exactAlarmAvailable=$exactAvailable',
+    );
+    final bool enabled = await _isEnabled();
+    if (enabled) {
+      await rescheduleAll();
+    }
+    return granted ?? enabled;
   }
 
   Future<bool> notificationsEnabled() async {
     await initialize();
-    return _isEnabled();
+    final bool enabled = await _isEnabled();
+    AppLogger.i('Android notification permission status: enabled=$enabled');
+    return enabled;
   }
 
   Future<bool> _isEnabled() async =>
@@ -154,11 +184,25 @@ class NotificationService {
   Future<void> _rescheduleAll() async {
     await initialize();
     final bool enabled = await _isEnabled();
+    final bool? exact = await _androidPlugin?.canScheduleExactNotifications();
+    AppLogger.i(
+      'Rescheduling notifications: enabled=$enabled, '
+      'exactAlarmAvailable=$exact, timezone=${tz.local.name}',
+    );
     if (!enabled) {
       await _plugin.cancelAll();
+      AppLogger.w('Notifications disabled by Android; cancelled all pending notifications');
       return;
     }
     final AppSettings settings = await _settings.getSettings();
+    AppLogger.i(
+      'Reminder settings: study=${settings.studyRemindersEnabled}, '
+      'lead=${settings.studyReminderMinutes}m, '
+      'followUp=${settings.followUpReminderEnabled}, '
+      'sound=${settings.notificationSound.label}, '
+      'soundEnabled=${settings.notificationSoundEnabled}, '
+      'vibration=${settings.notificationVibrationEnabled}',
+    );
     await _plugin.cancelAll();
 
     if (settings.studyRemindersEnabled || settings.breakRemindersEnabled) {
@@ -166,6 +210,30 @@ class NotificationService {
     }
     if (settings.dailyWordEnabled) {
       await _scheduleWordOfDay(settings);
+    }
+    final List<PendingNotificationRequest> pending =
+        await _plugin.pendingNotificationRequests();
+    final List<int> pendingIds =
+        pending.map((PendingNotificationRequest e) => e.id).toList();
+    AppLogger.i(
+      'Notification reschedule complete: count=${pending.length}, '
+      'ids=${pendingIds.join(',')}, '
+      'duplicateIds=${pendingIds.length != pendingIds.toSet().length}',
+    );
+    final List<AndroidNotificationChannel>? channels =
+        await _androidPlugin?.getNotificationChannels();
+    if (channels != null) {
+      for (final AndroidNotificationChannel channel in channels.where(
+        (AndroidNotificationChannel channel) =>
+            channel.id.contains(studyChannelId),
+      )) {
+        AppLogger.i(
+          'Android channel state: id=${channel.id}, '
+          'playSound=${channel.playSound}, sound=${channel.sound}, '
+          'enableVibration=${channel.enableVibration}, '
+          'vibrationPattern=${channel.vibrationPattern}',
+        );
+      }
     }
   }
 
@@ -177,13 +245,29 @@ class NotificationService {
     final List<StudyTask> tasks =
         await _studyHub.watchTasksInRange(startDay, endDay).first;
     final DateTime now = DateTime.now();
+    AppLogger.i(
+      'Planner notification scan: tasks=${tasks.length}, '
+      'range=$startDay..$endDay, now=$now',
+    );
     for (final StudyTask task in tasks) {
       final int? start = task.startMinute;
-      if (start == null) continue;
+      if (start == null) {
+        AppLogger.d('Skipping task ${task.id}: no start time');
+        continue;
+      }
       final bool isBreak = task.isBreak;
-      if (isBreak && !settings.breakRemindersEnabled) continue;
-      if (!isBreak && !settings.studyRemindersEnabled) continue;
-      if (!isBreak && task.status != TaskStatus.pending) continue;
+      if (isBreak && !settings.breakRemindersEnabled) {
+        AppLogger.d('Skipping break ${task.id}: break reminders disabled');
+        continue;
+      }
+      if (!isBreak && !settings.studyRemindersEnabled) {
+        AppLogger.d('Skipping task ${task.id}: study reminders disabled');
+        continue;
+      }
+      if (!isBreak && task.status != TaskStatus.pending) {
+        AppLogger.d('Skipping task ${task.id}: status=${task.status}');
+        continue;
+      }
 
       final int lead = isBreak ? 0 : settings.studyReminderMinutes;
       final DateTime date = _parseDay(task.day);
@@ -192,6 +276,12 @@ class NotificationService {
         date.month,
         date.day,
       ).add(Duration(minutes: start));
+      AppLogger.d(
+        'Task ${task.id} "${task.displaySubject}": '
+        'startLocal=$startLocal, preLocal='
+        '${startLocal.subtract(Duration(minutes: lead))}, '
+        'timezone=${tz.local.name}',
+      );
       final Map<String, String> payload = <String, String>{
         'type': isBreak ? 'break' : 'study',
         'taskId': task.id,
@@ -272,27 +362,83 @@ class NotificationService {
     required String channelName,
     bool includeStartAction = false,
   }) async {
-    if (!scheduledLocal.isAfter(DateTime.now())) return;
+    final DateTime now = DateTime.now();
+    if (!scheduledLocal.isAfter(now)) {
+      AppLogger.w(
+        'Skipping notification id=$id because scheduled time $scheduledLocal '
+        'is not after now $now',
+      );
+      return;
+    }
     final bool exact =
         await _androidPlugin?.canScheduleExactNotifications() ?? true;
-    await _plugin.zonedSchedule(
-      id: id,
-      title: title,
-      body: body,
-      scheduledDate: _toTz(scheduledLocal),
-      payload: jsonEncode(payload),
-      notificationDetails: NotificationDetails(
-        android: _details(
-          channelId: channelId,
-          channelName: channelName,
-          settings: settings,
-          sound: sound,
-          includeStartAction: includeStartAction,
+    final tz.TZDateTime scheduledTz = _toTz(scheduledLocal);
+    AppLogger.i(
+      'Scheduling notification: id=$id, title="$title", '
+      'local=$scheduledLocal, tz=$scheduledTz (${tz.local.name}), '
+      'mode=${exact ? 'exactAllowWhileIdle' : 'inexactAllowWhileIdle'}, '
+      'sound=${sound.label}/${sound.resourceName}, '
+      'soundEnabled=${settings.notificationSoundEnabled}, '
+      'vibration=${settings.notificationVibrationEnabled}, '
+      'channel=$channelId',
+    );
+    try {
+      await _plugin.zonedSchedule(
+        id: id,
+        title: title,
+        body: body,
+        scheduledDate: scheduledTz,
+        payload: jsonEncode(payload),
+        notificationDetails: NotificationDetails(
+          android: _details(
+            channelId: channelId,
+            channelName: channelName,
+            settings: settings,
+            sound: sound,
+            includeStartAction: includeStartAction,
+          ),
         ),
-      ),
-      androidScheduleMode: exact
-          ? AndroidScheduleMode.exactAllowWhileIdle
-          : AndroidScheduleMode.inexactAllowWhileIdle,
+        androidScheduleMode: exact
+            ? AndroidScheduleMode.exactAllowWhileIdle
+            : AndroidScheduleMode.inexactAllowWhileIdle,
+      );
+    } on Object catch (error, stackTrace) {
+      AppLogger.e(
+        'Notification scheduling failed: id=$id, scheduledTz=$scheduledTz',
+        error: error,
+        stackTrace: stackTrace,
+      );
+      rethrow;
+    }
+  }
+
+  /// Development diagnostic: schedules a real Android notification in 10s.
+  Future<void> scheduleTestNotification() async {
+    await initialize();
+    if (!await _isEnabled()) {
+      AppLogger.e('Test notification not scheduled: Android notifications are disabled');
+      throw StateError(
+        'Android notifications are disabled. Enable notification permission first.',
+      );
+    }
+    final AppSettings settings = await _settings.getSettings();
+    final DateTime scheduledLocal =
+        DateTime.now().add(const Duration(seconds: 10));
+    await _plugin.cancel(id: _testNotificationId);
+    await _schedule(
+      id: _testNotificationId,
+      title: 'Study Planner Test',
+      body: 'Sound and vibration test notification.',
+      scheduledLocal: scheduledLocal,
+      payload: <String, String>{'type': 'test'},
+      settings: settings,
+      sound: settings.notificationSound,
+      channelId: '${studyChannelId}_test',
+      channelName: 'Study Planner test notifications',
+    );
+    AppLogger.i(
+      'Test notification requested for $scheduledLocal '
+      '(${tz.local.name}); inspect logcat for the scheduling result',
     );
   }
 
@@ -367,6 +513,14 @@ class NotificationService {
         settings.notificationSoundEnabled ? 'sound' : 'silent';
     final String vibrationMode =
         settings.notificationVibrationEnabled ? 'vibrate' : 'quiet';
+    AppLogger.d(
+      'Notification channel config: '
+      'id=${channelId}_${selectedSound.resourceName}_${soundMode}_$vibrationMode, '
+      'sound=${selectedSound.resourceName}, '
+      'playSound=${settings.notificationSoundEnabled}, '
+      'enableVibration=${settings.notificationVibrationEnabled}, '
+      'pattern=[0,180]',
+    );
     return AndroidNotificationDetails(
       '${channelId}_${selectedSound.resourceName}_${soundMode}_$vibrationMode',
       channelName,
