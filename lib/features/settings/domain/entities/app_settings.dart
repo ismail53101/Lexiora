@@ -7,18 +7,21 @@ import 'package:lexiora/core/reader_engine/reader_models.dart';
 enum NotificationSound {
   gentle,
   studyBell,
-  alert;
+  alert,
+  newNotification;
 
   String get label => switch (this) {
         NotificationSound.gentle => 'Gentle',
         NotificationSound.studyBell => 'Study Bell',
         NotificationSound.alert => 'Alert',
+        NotificationSound.newNotification => 'New Notification',
       };
 
   String get resourceName => switch (this) {
-        NotificationSound.gentle => 'gentle_sound',
-        NotificationSound.studyBell => 'study_bell',
-        NotificationSound.alert => 'alert_sound',
+        NotificationSound.gentle => 'notification_pop',
+        NotificationSound.studyBell => 'notification_bell',
+        NotificationSound.alert => 'notification_long_bell',
+        NotificationSound.newNotification => 'notification_new',
       };
 }
 

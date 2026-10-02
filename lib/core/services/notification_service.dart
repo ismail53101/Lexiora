@@ -2,7 +2,6 @@ import 'dart:async';
 import 'dart:convert';
 import 'dart:typed_data';
 
-import 'package:flutter/services.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:flutter_timezone/flutter_timezone.dart';
 import 'package:lexiora/app/router/app_routes.dart';
@@ -25,9 +24,9 @@ class NotificationService {
   // Versioned IDs migrate devices away from the original channels, which may
   // already have been created as silent. The mode suffix is also necessary
   // because Android persists channel audio settings after first creation.
-  static const String studyChannelId = 'study_reminders_v2';
-  static const String breakChannelId = 'break_reminders_v2';
-  static const String wordChannelId = 'word_of_the_day_v2';
+  static const String studyChannelId = 'study_reminders_v3';
+  static const String breakChannelId = 'break_reminders_v3';
+  static const String wordChannelId = 'word_of_the_day_v3';
   static const int _studyIdBase = 100000;
   static const int _studyStartIdBase = 150000;
   static const int _studyFollowUpIdBase = 175000;
@@ -383,100 +382,25 @@ class NotificationService {
       'vibration=${settings.notificationVibrationEnabled}, '
       'channel=$channelId',
     );
-    try {
-      await _plugin.zonedSchedule(
-        id: id,
-        title: title,
-        body: body,
-        scheduledDate: scheduledTz,
-        payload: jsonEncode(payload),
-        notificationDetails: NotificationDetails(
-          android: _details(
-            channelId: channelId,
-            channelName: channelName,
-            settings: settings,
-            sound: sound,
-            includeStartAction: includeStartAction,
-          ),
+    await _plugin.zonedSchedule(
+      id: id,
+      title: title,
+      body: body,
+      scheduledDate: scheduledTz,
+      payload: jsonEncode(payload),
+      notificationDetails: NotificationDetails(
+        android: _details(
+          channelId: channelId,
+          channelName: channelName,
+          settings: settings,
+          sound: sound,
+          includeStartAction: includeStartAction,
         ),
-        androidScheduleMode: exact
-            ? AndroidScheduleMode.exactAllowWhileIdle
-            : AndroidScheduleMode.inexactAllowWhileIdle,
-      );
-    } on Object catch (error, stackTrace) {
-      if (error is PlatformException && error.code == 'invalid_sound') {
-        AppLogger.w(
-          'Sound resource ${sound.resourceName} is unavailable; '
-          'retrying notification id=$id with legacy notification_sound',
-        );
-        try {
-          await _plugin.zonedSchedule(
-            id: id,
-            title: title,
-            body: body,
-            scheduledDate: scheduledTz,
-            payload: jsonEncode(payload),
-            notificationDetails: NotificationDetails(
-              android: _details(
-                channelId: channelId,
-                channelName: channelName,
-                settings: settings,
-                sound: sound,
-                includeStartAction: includeStartAction,
-                soundResourceOverride: 'notification_sound',
-              ),
-            ),
-            androidScheduleMode: exact
-                ? AndroidScheduleMode.exactAllowWhileIdle
-                : AndroidScheduleMode.inexactAllowWhileIdle,
-          );
-          return;
-        } on Object catch (fallbackError, fallbackStackTrace) {
-          AppLogger.e(
-            'Notification fallback scheduling failed; '
-            'retrying silently: id=$id',
-            error: fallbackError,
-            stackTrace: fallbackStackTrace,
-          );
-          try {
-            await _plugin.zonedSchedule(
-              id: id,
-              title: title,
-              body: body,
-              scheduledDate: scheduledTz,
-              payload: jsonEncode(payload),
-              notificationDetails: NotificationDetails(
-                android: _details(
-                  channelId: channelId,
-                  channelName: channelName,
-                  settings: settings.copyWith(notificationSoundEnabled: false),
-                  sound: sound,
-                  includeStartAction: includeStartAction,
-                ),
-              ),
-              androidScheduleMode: exact
-                  ? AndroidScheduleMode.exactAllowWhileIdle
-                  : AndroidScheduleMode.inexactAllowWhileIdle,
-            );
-          } on Object catch (silentError, silentStackTrace) {
-            AppLogger.e(
-              'Notification scheduling failed even in silent mode; '
-              'continuing without this reminder: id=$id',
-              error: silentError,
-              stackTrace: silentStackTrace,
-            );
-          }
-          return;
-        }
-      }
-      AppLogger.e(
-        'Notification scheduling failed; continuing without this reminder: '
-        'id=$id, scheduledTz=$scheduledTz',
-        error: error,
-        stackTrace: stackTrace,
-      );
-      return;
-    }
+      ),
+      androidScheduleMode: exact
+          ? AndroidScheduleMode.exactAllowWhileIdle
+          : AndroidScheduleMode.inexactAllowWhileIdle,
+    );
   }
 
   /// Development diagnostic: schedules a real Android notification in 10s.
@@ -574,11 +498,9 @@ class NotificationService {
     required AppSettings settings,
     NotificationSound? sound,
     bool includeStartAction = false,
-    String? soundResourceOverride,
   }) {
     final NotificationSound selectedSound = sound ?? settings.notificationSound;
-    final String selectedResource =
-        soundResourceOverride ?? selectedSound.resourceName;
+    final String selectedResource = selectedSound.resourceName;
     final String soundMode =
         settings.notificationSoundEnabled ? 'sound' : 'silent';
     final String vibrationMode =

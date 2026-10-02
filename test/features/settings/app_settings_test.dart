@@ -27,5 +27,15 @@ void main() {
       expect(updated.readerColorMode, s.readerColorMode);
       expect(updated.readingScrollAxis, s.readingScrollAxis);
     });
+
+    test('notification sound options use the bundled Android resources', () {
+      expect(NotificationSound.gentle.resourceName, 'notification_pop');
+      expect(NotificationSound.studyBell.resourceName, 'notification_bell');
+      expect(NotificationSound.alert.resourceName, 'notification_long_bell');
+      expect(
+        NotificationSound.newNotification.resourceName,
+        'notification_new',
+      );
+    });
   });
 }
