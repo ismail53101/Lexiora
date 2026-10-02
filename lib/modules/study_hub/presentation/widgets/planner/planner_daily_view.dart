@@ -53,7 +53,7 @@ class PlannerDailyViewState extends State<PlannerDailyView> {
       return ListView(
         padding: const EdgeInsets.fromLTRB(16, 4, 16, 24),
         children: <Widget>[
-          // 🔥 Streak / 🎯 Today's Goal / ⏱ Study today — the day overview
+          // 🔥 Streak / ⏱ Study today — the day overview
           // stays visible on the planner's default tab.
           const Padding(
             padding: EdgeInsets.symmetric(horizontal: -16),

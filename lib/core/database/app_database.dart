@@ -39,7 +39,6 @@ part 'app_database.g.dart';
     VocabularyLists,
     VocabularyWords,
     StudyTasks,
-    StudyGoals,
     StudySessions,
     StudyTemplates,
     StudyTemplateItems,
@@ -123,7 +122,6 @@ class AppDatabase extends _$AppDatabase {
           // v9 → v10: Study Hub (personal dashboard). Purely additive.
           if (from < 10) {
             await m.createTable(studyTasks);
-            await m.createTable(studyGoals);
             await m.createTable(studySessions);
           }
           // v10 → v11: Study Hub → Academic Planning System. Additive columns
@@ -199,6 +197,10 @@ class AppDatabase extends _$AppDatabase {
           if (from < 21) {
             await m.addColumn(aiProjects, aiProjects.parentId);
           }
+          // v21 → v22: remove the retired Study Planner Goals feature.
+          if (from < 22) {
+            await customStatement('DROP TABLE IF EXISTS study_goals');
+          }
         },
         beforeOpen: (OpeningDetails details) async {
           await customStatement('PRAGMA foreign_keys = ON');
@@ -255,10 +257,6 @@ class AppDatabase extends _$AppDatabase {
           await customStatement(
             'CREATE INDEX IF NOT EXISTS idx_study_tasks_day '
             'ON study_tasks (day)',
-          );
-          await customStatement(
-            'CREATE INDEX IF NOT EXISTS idx_study_goals_day '
-            'ON study_goals (day)',
           );
           await customStatement(
             'CREATE INDEX IF NOT EXISTS idx_study_sessions_day '

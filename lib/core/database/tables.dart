@@ -476,24 +476,6 @@ class StudyTasks extends Table {
   Set<Column<Object>> get primaryKey => {id};
 }
 
-/// A daily goal with progress (e.g. "Learn 20 vocabulary words").
-@DataClassName('StudyGoalRow')
-class StudyGoals extends Table {
-  TextColumn get id => text()();
-  TextColumn get day => text()();
-  TextColumn get title => text()();
-
-  /// vocabulary / reading / grammar / mcq / custom (mirrors GoalType.key).
-  TextColumn get type => text().withDefault(const Constant('custom'))();
-  IntColumn get targetCount => integer().withDefault(const Constant(1))();
-  IntColumn get currentCount => integer().withDefault(const Constant(0))();
-  TextColumn get unit => text().nullable()();
-  DateTimeColumn get createdAt => dateTime()();
-  DateTimeColumn get updatedAt => dateTime()();
-
-  @override
-  Set<Column<Object>> get primaryKey => {id};
-}
 
 /// A recorded study session — a completed Pomodoro focus block or a manual log.
 /// Drives Study Hours, the streak, and the weekly/monthly statistics.

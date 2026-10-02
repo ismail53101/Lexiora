@@ -1,14 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:lexiora/modules/study_hub/domain/entities/study_goal.dart';
 import 'package:lexiora/modules/study_hub/domain/entities/study_models.dart';
-import 'package:lexiora/modules/study_hub/domain/study_dates.dart';
 import 'package:lexiora/modules/study_hub/presentation/providers/study_hub_providers.dart';
-import 'package:lexiora/modules/study_hub/presentation/widgets/goal_editor.dart';
 
-/// 🔥 Study Streak + 🎯 Today's Goal + ⏱ Study Today, merged into one
-/// compact three-tile row instead of three separate full-width cards. Same
-/// underlying data/providers as before — just a tighter layout.
+/// 🔥 Study Streak + ⏱ Study Today, merged into one compact row.
 class TodayOverviewRow extends ConsumerWidget {
   const TodayOverviewRow({super.key});
 
@@ -17,11 +12,6 @@ class TodayOverviewRow extends ConsumerWidget {
     final StudyStreak streak = ref.watch(studyStreakProvider).maybeWhen(
           data: (StudyStreak s) => s,
           orElse: () => StudyStreak.empty,
-        );
-    final String day = ref.watch(studyTodayProvider);
-    final List<StudyGoal> goals = ref.watch(studyGoalsProvider).maybeWhen(
-          data: (List<StudyGoal> g) => g,
-          orElse: () => const <StudyGoal>[],
         );
     final int minutesToday = ref.watch(studyMinutesTodayProvider).maybeWhen(
           data: (int m) => m,
@@ -33,14 +23,12 @@ class TodayOverviewRow extends ConsumerWidget {
       child: LayoutBuilder(
         builder: (BuildContext context, BoxConstraints c) {
           const double gap = 8;
-          final double w = (c.maxWidth - gap * 2) / 3;
+          final double w = (c.maxWidth - gap) / 2;
           return IntrinsicHeight(
             child: Row(
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: <Widget>[
                 SizedBox(width: w, child: _StreakTile(streak: streak)),
-                const SizedBox(width: gap),
-                SizedBox(width: w, child: _GoalTile(day: day, goals: goals)),
                 const SizedBox(width: gap),
                 SizedBox(width: w, child: _StudyTodayTile(minutes: minutesToday)),
               ],
@@ -98,51 +86,6 @@ class _StreakTile extends StatelessWidget {
               overflow: TextOverflow.ellipsis,
               style: theme.textTheme.labelSmall
                   ?.copyWith(color: theme.colorScheme.onSurfaceVariant)),
-        ],
-      ),
-    );
-  }
-}
-
-class _GoalTile extends StatelessWidget {
-  const _GoalTile({required this.day, required this.goals});
-  final String day;
-  final List<StudyGoal> goals;
-
-  @override
-  Widget build(BuildContext context) {
-    final ThemeData theme = Theme.of(context);
-    final StudyGoal? primary = goals.isEmpty ? null : goals.first;
-    return _Tile(
-      onTap: () => primary == null
-          ? showGoalEditor(context, day: day)
-          : showGoalEditor(context, day: day, existing: primary),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        mainAxisSize: MainAxisSize.min,
-        children: <Widget>[
-          const Text('🎯', style: TextStyle(fontSize: 18)),
-          const SizedBox(height: 6),
-          if (primary == null) ...<Widget>[
-            Text('No goal',
-                style: theme.textTheme.titleMedium
-                    ?.copyWith(fontWeight: FontWeight.w800)),
-            Text('Tap to set',
-                style: theme.textTheme.labelSmall?.copyWith(
-                    color: theme.colorScheme.primary,
-                    fontWeight: FontWeight.w700)),
-          ] else ...<Widget>[
-            Text('${(primary.progress * 100).round()}%',
-                style: theme.textTheme.titleMedium
-                    ?.copyWith(fontWeight: FontWeight.w800)),
-            Text(
-              goals.length > 1 ? '${primary.title} +${goals.length - 1}' : primary.title,
-              maxLines: 1,
-              overflow: TextOverflow.ellipsis,
-              style: theme.textTheme.labelSmall
-                  ?.copyWith(color: theme.colorScheme.onSurfaceVariant),
-            ),
-          ],
         ],
       ),
     );

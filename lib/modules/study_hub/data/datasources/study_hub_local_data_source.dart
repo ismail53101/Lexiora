@@ -6,8 +6,6 @@ import 'package:lexiora/core/database/app_database.dart';
 typedef StatsAgg = ({
   int tasksCompleted,
   int pendingSessions,
-  int goalsAchieved,
-  int vocabularyLearned,
   int studyMinutes,
   int breakMinutes,
   int subjectsStudied,
@@ -103,32 +101,6 @@ class StudyHubLocalDataSource {
     return rows.map((QueryRow r) => r.read<String>('v')).toList();
   }
 
-  // ── Goals ───────────────────────────────────────────────────────────────────
-
-  Stream<List<StudyGoalRow>> watchGoals(String day) =>
-      (_db.select(_db.studyGoals)
-            ..where((t) => t.day.equals(day))
-            ..orderBy(<OrderClauseGenerator<$StudyGoalsTable>>[
-              (t) => OrderingTerm(expression: t.createdAt),
-            ]))
-          .watch();
-
-  Future<void> upsertGoal(StudyGoalsCompanion goal) =>
-      _db.into(_db.studyGoals).insertOnConflictUpdate(goal);
-
-  Future<void> deleteGoal(String id) =>
-      (_db.delete(_db.studyGoals)..where((t) => t.id.equals(id))).go();
-
-  Future<StudyGoalRow?> getGoal(String id) => (_db.select(_db.studyGoals)
-        ..where((t) => t.id.equals(id))
-        ..limit(1))
-      .getSingleOrNull();
-
-  Future<void> updateGoalCount(String id, int count, DateTime at) =>
-      (_db.update(_db.studyGoals)..where((t) => t.id.equals(id))).write(
-        StudyGoalsCompanion(currentCount: Value(count), updatedAt: Value(at)),
-      );
-
   // ── Session log ─────────────────────────────────────────────────────────────
 
   Future<void> insertSession(StudySessionsCompanion session) =>
@@ -207,7 +179,7 @@ class StudyHubLocalDataSource {
 
   Stream<StatsAgg> watchStats(String startKey, String endKey) {
     final List<Variable<Object>> vars = <Variable<Object>>[
-      for (int i = 0; i < 10; i++) ...<Variable<Object>>[
+      for (int i = 0; i < 8; i++) ...<Variable<Object>>[
         Variable.withString(startKey),
         Variable.withString(endKey),
       ],
@@ -219,11 +191,6 @@ class StudyHubLocalDataSource {
           " AND kind = 'session' AND day BETWEEN ? AND ?) AS tasks_completed, "
           '(SELECT COUNT(*) FROM study_tasks WHERE completed = 0 '
           " AND kind = 'session' AND day BETWEEN ? AND ?) AS pending_sessions, "
-          '(SELECT COUNT(*) FROM study_goals '
-          ' WHERE current_count >= target_count AND target_count > 0 '
-          ' AND day BETWEEN ? AND ?) AS goals_achieved, '
-          '(SELECT COALESCE(SUM(current_count), 0) FROM study_goals '
-          " WHERE type = 'vocabulary' AND day BETWEEN ? AND ?) AS vocab_learned, "
           '(SELECT COALESCE(SUM(duration_minutes), 0) FROM study_sessions '
           ' WHERE day BETWEEN ? AND ?) AS study_minutes, '
           '(SELECT COALESCE(SUM(duration_minutes), 0) FROM study_tasks '
@@ -243,7 +210,6 @@ class StudyHubLocalDataSource {
           variables: vars,
           readsFrom: <ResultSetImplementation<dynamic, dynamic>>{
             _db.studyTasks,
-            _db.studyGoals,
             _db.studySessions,
           },
         )
@@ -251,8 +217,6 @@ class StudyHubLocalDataSource {
         .map((QueryRow r) => (
               tasksCompleted: r.read<int>('tasks_completed'),
               pendingSessions: r.read<int>('pending_sessions'),
-              goalsAchieved: r.read<int>('goals_achieved'),
-              vocabularyLearned: r.read<int>('vocab_learned'),
               studyMinutes: r.read<int>('study_minutes'),
               breakMinutes: r.read<int>('break_minutes'),
               subjectsStudied: r.read<int>('subjects_studied'),
@@ -405,7 +369,6 @@ class StudyHubLocalDataSource {
   // ── Backup / restore (v0.7.2) ───────────────────────────────────────────────
 
   Future<List<StudyTaskRow>> allTasks() => _db.select(_db.studyTasks).get();
-  Future<List<StudyGoalRow>> allGoals() => _db.select(_db.studyGoals).get();
   Future<List<StudySessionRow>> allSessionLogs() =>
       _db.select(_db.studySessions).get();
   Future<List<StudyTemplateRow>> allTemplates() =>
@@ -416,7 +379,6 @@ class StudyHubLocalDataSource {
   /// Wipes and replaces all Study Hub data in one transaction (restore).
   Future<void> replaceAll({
     required List<StudyTasksCompanion> tasks,
-    required List<StudyGoalsCompanion> goals,
     required List<StudySessionsCompanion> logs,
     required List<StudyTemplatesCompanion> templates,
     required List<StudyTemplateItemsCompanion> templateItems,
@@ -424,14 +386,12 @@ class StudyHubLocalDataSource {
   }) async {
     await _db.transaction(() async {
       await _db.delete(_db.studyTasks).go();
-      await _db.delete(_db.studyGoals).go();
       await _db.delete(_db.studySessions).go();
       await _db.delete(_db.studyTemplateItems).go();
       await _db.delete(_db.studyTemplates).go();
       await _db.delete(_db.studySubjects).go();
       await _db.batch((Batch b) {
         b.insertAll(_db.studyTasks, tasks);
-        b.insertAll(_db.studyGoals, goals);
         b.insertAll(_db.studySessions, logs);
         b.insertAll(_db.studyTemplates, templates);
         b.insertAll(_db.studyTemplateItems, templateItems);

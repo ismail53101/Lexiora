@@ -5,7 +5,6 @@ import 'package:lexiora/app/di/injector.dart';
 import 'package:lexiora/modules/study_hub/data/services/study_backup_service.dart';
 import 'package:lexiora/modules/study_hub/data/services/study_export_service.dart';
 import 'package:lexiora/modules/study_hub/domain/entities/session_filter.dart';
-import 'package:lexiora/modules/study_hub/domain/entities/study_goal.dart';
 import 'package:lexiora/modules/study_hub/domain/entities/study_models.dart';
 import 'package:lexiora/modules/study_hub/domain/entities/study_subject.dart';
 import 'package:lexiora/modules/study_hub/domain/entities/study_task.dart';
@@ -24,48 +23,6 @@ final StreamProvider<List<StudyTask>> studyTasksProvider =
     StreamProvider<List<StudyTask>>((Ref ref) => ref
         .watch(studyHubRepositoryProvider)
         .watchTasks(ref.watch(studyTodayProvider)));
-
-final StreamProvider<List<StudyGoal>> studyGoalsProvider =
-    StreamProvider<List<StudyGoal>>((Ref ref) {
-  final StudyHubRepository repo = ref.watch(studyHubRepositoryProvider);
-  final String day = ref.watch(studyTodayProvider);
-  return Stream<List<StudyGoal>>.multi((MultiStreamController<List<StudyGoal>> out) {
-    List<StudyGoal>? goals;
-    int? minutes;
-    List<StudyTask>? tasks;
-    void emit() {
-      if (goals == null || minutes == null || tasks == null) return;
-      final int completedTasks = tasks!
-          .where((StudyTask task) => task.completed && !task.isBreak)
-          .length;
-      out.add(goals!
-          .map((StudyGoal goal) => goal.isStudyTimeGoal
-              ? goal.withStudyMinutes(minutes!)
-              : goal.withCompletedTasks(completedTasks))
-          .toList(growable: false));
-    }
-    final StreamSubscription<List<StudyGoal>> goalsSub =
-        repo.watchGoals(day).listen((List<StudyGoal> value) {
-      goals = value;
-      emit();
-    });
-    final StreamSubscription<int> minutesSub =
-        repo.watchStudyMinutes(day).listen((int value) {
-      minutes = value;
-      emit();
-    });
-    final StreamSubscription<List<StudyTask>> tasksSub =
-        repo.watchTasks(day).listen((List<StudyTask> value) {
-      tasks = value;
-      emit();
-    });
-    out.onCancel = () async {
-      await goalsSub.cancel();
-      await minutesSub.cancel();
-      await tasksSub.cancel();
-    };
-  });
-});
 
 final StreamProvider<int> studyMinutesTodayProvider =
     StreamProvider<int>((Ref ref) => ref

@@ -93,8 +93,6 @@ class StudyStats extends Equatable {
     required this.rangeDays,
     required this.tasksCompleted,
     required this.pendingSessions,
-    required this.goalsAchieved,
-    required this.vocabularyLearned,
     required this.studyMinutes,
     required this.breakMinutes,
     required this.subjectsStudied,
@@ -107,8 +105,6 @@ class StudyStats extends Equatable {
   /// Completed study sessions (breaks excluded).
   final int tasksCompleted;
   final int pendingSessions;
-  final int goalsAchieved;
-  final int vocabularyLearned;
   final int studyMinutes;
   final int breakMinutes;
   final int subjectsStudied;
@@ -128,8 +124,6 @@ class StudyStats extends Equatable {
         rangeDays: rangeDays,
         tasksCompleted: 0,
         pendingSessions: 0,
-        goalsAchieved: 0,
-        vocabularyLearned: 0,
         studyMinutes: 0,
         breakMinutes: 0,
         subjectsStudied: 0,
@@ -142,8 +136,6 @@ class StudyStats extends Equatable {
         rangeDays,
         tasksCompleted,
         pendingSessions,
-        goalsAchieved,
-        vocabularyLearned,
         studyMinutes,
         breakMinutes,
         subjectsStudied,

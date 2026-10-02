@@ -20,7 +20,6 @@ class AppSettings extends Equatable {
     this.autoResume = true,
     this.translationLanguage = kDefaultTranslationLanguage,
     this.displayName = '',
-    this.dailyTopicsGoal = 5,
     this.studyRemindersEnabled = true,
     this.studyReminderMinutes = 10,
     this.breakRemindersEnabled = false,
@@ -61,9 +60,6 @@ class AppSettings extends Equatable {
   /// sets it (the greeting simply omits the name in that case).
   final String displayName;
 
-  /// The denominator in Home's "Today's Goal — x / y Topics" card.
-  final int dailyTopicsGoal;
-
   final bool studyRemindersEnabled;
   final int studyReminderMinutes;
   final bool breakRemindersEnabled;
@@ -92,7 +88,6 @@ class AppSettings extends Equatable {
     bool? autoResume,
     String? translationLanguage,
     String? displayName,
-    int? dailyTopicsGoal,
     bool? studyRemindersEnabled,
     int? studyReminderMinutes,
     bool? breakRemindersEnabled,
@@ -117,7 +112,6 @@ class AppSettings extends Equatable {
         autoResume: autoResume ?? this.autoResume,
         translationLanguage: translationLanguage ?? this.translationLanguage,
         displayName: displayName ?? this.displayName,
-        dailyTopicsGoal: dailyTopicsGoal ?? this.dailyTopicsGoal,
         studyRemindersEnabled:
             studyRemindersEnabled ?? this.studyRemindersEnabled,
         studyReminderMinutes:
@@ -150,7 +144,6 @@ class AppSettings extends Equatable {
         autoResume,
         translationLanguage,
         displayName,
-        dailyTopicsGoal,
         studyRemindersEnabled,
         studyReminderMinutes,
         breakRemindersEnabled,

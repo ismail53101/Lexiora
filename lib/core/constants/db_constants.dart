@@ -53,7 +53,8 @@ abstract final class DbConstants {
   /// metadata to existing `study_sessions` rows. Purely additive.
   /// v20 → v21: AI Assistant nested sub-projects — adds nullable parent_id to
   /// ai_projects. Existing projects remain top-level.
-  static const int schemaVersion = 21;
+  /// v21 → v22: removes the retired Study Planner Goals table and feature.
+  static const int schemaVersion = 22;
 }
 
 /// Constants for the Quiz Engine's one-time demo seed.
@@ -223,7 +224,7 @@ abstract final class VocabularyConstants {
 
 /// Constants for the Study Hub module (Phase v0.7.0).
 ///
-/// Study Hub stores only user data (tasks, goals, sessions) in dedicated tables.
+/// Study Hub stores only user data (tasks, sessions) in dedicated tables.
 /// The lightweight preference below (the last-used Pomodoro mode) is kept in the
 /// shared key-value [Settings] store so it needs no schema of its own.
 abstract final class StudyHubConstants {

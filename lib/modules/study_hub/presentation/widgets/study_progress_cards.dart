@@ -10,7 +10,7 @@ import 'package:lexiora/modules/study_hub/presentation/widgets/study_hub_common.
 /// merged into one section with a Weekly/Monthly toggle. Both previously
 /// showed largely the same metrics in two separate large cards; this keeps
 /// every metric from both (study time, completed/pending sessions, subjects,
-/// topics, goals, break time, avg daily) in a single compact grid that just
+/// topics, break time, avg daily) in a single compact grid that just
 /// switches range instead of duplicating itself.
 class ProgressCard extends ConsumerStatefulWidget {
   const ProgressCard({super.key});
@@ -78,10 +78,6 @@ class _ProgressCardState extends ConsumerState<ProgressCard> {
                   icon: Icons.topic_outlined,
                   value: '${s.topicsCompleted}',
                   label: 'Topics completed'),
-              StudyStatTile(
-                  icon: Icons.flag,
-                  value: '${s.goalsAchieved}',
-                  label: 'Goals completed'),
               StudyStatTile(
                   icon: Icons.free_breakfast_outlined,
                   value: formatDuration(s.breakMinutes),

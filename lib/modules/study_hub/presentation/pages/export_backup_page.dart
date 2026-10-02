@@ -156,7 +156,7 @@ class _ExportBackupPageState extends ConsumerState<ExportBackupPage> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
                 Text(
-                  'A backup includes your sessions, breaks, goals, templates and '
+                  'A backup includes your sessions, breaks, templates and '
                   'subject colours. Cloud Sync is coming; backups are local for now.',
                   style: theme.textTheme.bodyMedium
                       ?.copyWith(color: theme.colorScheme.onSurfaceVariant),

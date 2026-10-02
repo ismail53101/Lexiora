@@ -14,7 +14,7 @@ class BackupFile {
   final int sizeBytes;
 }
 
-/// Local backup & restore for the whole Study Hub (sessions, goals, breaks,
+/// Local backup & restore for the whole Study Hub (sessions, breaks,
 /// templates, subject colours). Backups live in the app's documents dir and can
 /// also be shared out. Cloud sync can later reuse [StudyHubRepository.exportBackup]
 /// / [importBackup] — this service is the local seam only.

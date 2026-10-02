@@ -3,7 +3,6 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:lexiora/core/database/app_database.dart';
 import 'package:lexiora/modules/study_hub/data/datasources/study_hub_local_data_source.dart';
 import 'package:lexiora/modules/study_hub/data/repositories/study_hub_repository_impl.dart';
-import 'package:lexiora/modules/study_hub/domain/entities/study_goal.dart';
 import 'package:lexiora/modules/study_hub/domain/entities/study_models.dart';
 import 'package:lexiora/modules/study_hub/domain/entities/study_task.dart';
 import 'package:lexiora/modules/study_hub/domain/entities/study_template.dart';
@@ -65,20 +64,6 @@ void main() {
     );
   }
 
-  StudyGoal goal(String id,
-      {required int target, required int current, GoalType type = GoalType.custom}) {
-    final DateTime now = DateTime.now();
-    return StudyGoal(
-      id: id,
-      day: today,
-      title: 'Goal $id',
-      type: type,
-      targetCount: target,
-      currentCount: current,
-      createdAt: now,
-      updatedAt: now,
-    );
-  }
 
   StudySession log(String id, {required int minutes, required String day}) {
     final DateTime now = DateTime.now();
@@ -161,7 +146,6 @@ void main() {
     await repo.saveTask(
         session('c2', status: TaskStatus.completed, subject: 'English', topic: 'Essay'));
     await repo.saveTask(session('p1', subject: 'Physics')); // pending, same subject
-    await repo.saveGoal(goal('gv', target: 10, current: 12, type: GoalType.vocabulary));
     await repo.addSession(log('L1', minutes: 50, day: today));
 
     final StudyStats s = await repo.watchStats(StudyRange.weekly).first;
@@ -169,7 +153,6 @@ void main() {
     expect(s.pendingSessions, 1);
     expect(s.subjectsStudied, 2, reason: 'Physics + English (distinct)');
     expect(s.topicsCompleted, 2, reason: 'Motion + Essay');
-    expect(s.vocabularyLearned, 12);
     expect(s.studyMinutes, 50);
   });
 
@@ -248,34 +231,4 @@ void main() {
     expect((await repo.watchStats(StudyRange.monthly).first).studyMinutes, 27);
   });
 
-  test('study-time and achievement goals keep separate progress rules', () {
-    final DateTime now = DateTime.now();
-    final StudyGoal studyTime = StudyGoal(
-      id: 'time',
-      day: today,
-      title: 'Daily Study',
-      type: GoalType.studyTime,
-      targetCount: 3,
-      unit: 'hours',
-      createdAt: now,
-      updatedAt: now,
-    ).withStudyMinutes(130);
-    final StudyGoal achievement = StudyGoal(
-      id: 'achievement',
-      day: today,
-      title: 'Complete English Tenses',
-      type: GoalType.achievement,
-      targetCount: 5,
-      unit: 'topics',
-      createdAt: now,
-      updatedAt: now,
-    ).withCompletedTasks(3);
-
-    expect(studyTime.targetMinutes, 180);
-    expect(studyTime.progress, closeTo(130 / 180, 0.001));
-    expect(achievement.currentCount, 3);
-    expect(achievement.progress, closeTo(0.6, 0.001));
-    expect(studyTime.withCompletedTasks(5).currentCount, 130);
-    expect(achievement.withStudyMinutes(130).currentCount, 3);
-  });
 }

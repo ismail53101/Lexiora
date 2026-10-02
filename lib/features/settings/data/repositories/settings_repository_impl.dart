@@ -24,7 +24,6 @@ class SettingsRepositoryImpl implements SettingsRepository {
   static const String _kAutoResume = 'autoResume';
   static const String _kTranslationLanguage = 'translationLanguage';
   static const String _kDisplayName = 'displayName';
-  static const String _kDailyTopicsGoal = 'dailyTopicsGoal';
   static const String _kStudyRemindersEnabled = 'studyRemindersEnabled';
   static const String _kStudyReminderMinutes = 'studyReminderMinutes';
   static const String _kBreakRemindersEnabled = 'breakRemindersEnabled';
@@ -90,7 +89,6 @@ class SettingsRepositoryImpl implements SettingsRepository {
       autoResume: _bool(map[_kAutoResume], true),
       translationLanguage: _language(map[_kTranslationLanguage]),
       displayName: map[_kDisplayName] ?? '',
-      dailyTopicsGoal: _int(map[_kDailyTopicsGoal], 5).clamp(1, 99),
       studyRemindersEnabled: _bool(map[_kStudyRemindersEnabled], true),
       studyReminderMinutes: _validReminderMinutes(
         _int(map[_kStudyReminderMinutes], 10),
@@ -122,7 +120,6 @@ class SettingsRepositoryImpl implements SettingsRepository {
         _kAutoResume: s.autoResume ? '1' : '0',
         _kTranslationLanguage: s.translationLanguage,
         _kDisplayName: s.displayName,
-        _kDailyTopicsGoal: s.dailyTopicsGoal.toString(),
         _kStudyRemindersEnabled: s.studyRemindersEnabled ? '1' : '0',
         _kStudyReminderMinutes: _validReminderMinutes(
           s.studyReminderMinutes,

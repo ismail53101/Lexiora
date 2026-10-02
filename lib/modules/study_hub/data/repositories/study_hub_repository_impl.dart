@@ -2,7 +2,6 @@ import 'package:drift/drift.dart';
 import 'package:lexiora/core/database/app_database.dart';
 import 'package:lexiora/modules/study_hub/data/datasources/study_hub_local_data_source.dart';
 import 'package:lexiora/modules/study_hub/domain/entities/session_filter.dart';
-import 'package:lexiora/modules/study_hub/domain/entities/study_goal.dart';
 import 'package:lexiora/modules/study_hub/domain/entities/study_models.dart';
 import 'package:lexiora/modules/study_hub/domain/entities/study_subject.dart';
 import 'package:lexiora/modules/study_hub/domain/entities/study_task.dart';
@@ -142,39 +141,6 @@ class StudyHubRepositoryImpl implements StudyHubRepository {
   @override
   Future<List<String>> topicSuggestions() => _local.topicSuggestions();
 
-  // ── Goals ───────────────────────────────────────────────────────────────────
-
-  @override
-  Stream<List<StudyGoal>> watchGoals(String day) => _local
-      .watchGoals(day)
-      .map((List<StudyGoalRow> r) => r.map(_toGoal).toList(growable: false));
-
-  @override
-  Future<void> saveGoal(StudyGoal g) => _local.upsertGoal(
-        StudyGoalsCompanion.insert(
-          id: g.id,
-          day: g.day,
-          title: g.title,
-          type: Value<String>(g.type.key),
-          targetCount: Value<int>(g.targetCount),
-          currentCount: Value<int>(g.currentCount),
-          unit: Value<String?>(g.unit),
-          createdAt: g.createdAt,
-          updatedAt: g.updatedAt,
-        ),
-      );
-
-  @override
-  Future<void> deleteGoal(String id) => _local.deleteGoal(id);
-
-  @override
-  Future<void> incrementGoal(String id, int delta) async {
-    final StudyGoalRow? row = await _local.getGoal(id);
-    if (row == null) return;
-    final int next = row.currentCount + delta;
-    await _local.updateGoalCount(id, next < 0 ? 0 : next, DateTime.now());
-  }
-
   // ── Session log ─────────────────────────────────────────────────────────────
 
   @override
@@ -313,8 +279,6 @@ class StudyHubRepositoryImpl implements StudyHubRepository {
           rangeDays: range.days,
           tasksCompleted: a.tasksCompleted,
           pendingSessions: a.pendingSessions,
-          goalsAchieved: a.goalsAchieved,
-          vocabularyLearned: a.vocabularyLearned,
           studyMinutes: a.studyMinutes,
           breakMinutes: a.breakMinutes,
           subjectsStudied: a.subjectsStudied,
@@ -471,9 +435,6 @@ class StudyHubRepositoryImpl implements StudyHubRepository {
       'tasks': (await _local.allTasks())
           .map((StudyTaskRow r) => r.toJson())
           .toList(),
-      'goals': (await _local.allGoals())
-          .map((StudyGoalRow r) => r.toJson())
-          .toList(),
       'logs': (await _local.allSessionLogs())
           .map((StudySessionRow r) => r.toJson())
           .toList(),
@@ -499,10 +460,6 @@ class StudyHubRepositoryImpl implements StudyHubRepository {
       tasks: rows('tasks')
           .map((Map<String, dynamic> m) =>
               StudyTaskRow.fromJson(m).toCompanion(true))
-          .toList(),
-      goals: rows('goals')
-          .map((Map<String, dynamic> m) =>
-              StudyGoalRow.fromJson(m).toCompanion(true))
           .toList(),
       logs: rows('logs')
           .map((Map<String, dynamic> m) =>
@@ -562,17 +519,6 @@ class StudyHubRepositoryImpl implements StudyHubRepository {
         completedAt: r.completedAt,
       );
 
-  StudyGoal _toGoal(StudyGoalRow r) => StudyGoal(
-        id: r.id,
-        day: r.day,
-        title: r.title,
-        type: GoalType.fromKey(r.type),
-        targetCount: r.targetCount,
-        currentCount: r.currentCount,
-        unit: r.unit,
-        createdAt: r.createdAt,
-        updatedAt: r.updatedAt,
-      );
 
   StudyStreak _streakFrom(List<String> daysDesc) {
     if (daysDesc.isEmpty) return StudyStreak.empty;

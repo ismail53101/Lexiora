@@ -1,5 +1,4 @@
 import 'package:lexiora/modules/study_hub/domain/entities/session_filter.dart';
-import 'package:lexiora/modules/study_hub/domain/entities/study_goal.dart';
 import 'package:lexiora/modules/study_hub/domain/entities/study_models.dart';
 import 'package:lexiora/modules/study_hub/domain/entities/study_subject.dart';
 import 'package:lexiora/modules/study_hub/domain/entities/study_task.dart';
@@ -25,11 +24,6 @@ abstract interface class StudyHubRepository {
   Future<List<String>> subjectSuggestions();
   Future<List<String>> topicSuggestions();
 
-  // ── Daily Goals ─────────────────────────────────────────────────────────────
-  Stream<List<StudyGoal>> watchGoals(String day);
-  Future<void> saveGoal(StudyGoal goal);
-  Future<void> deleteGoal(String id);
-  Future<void> incrementGoal(String id, int delta);
 
   // ── Sessions log (Pomodoro / manual timer / planned task timer) ─────────────
   /// Persists only completed, positive-duration study sessions. Implementations

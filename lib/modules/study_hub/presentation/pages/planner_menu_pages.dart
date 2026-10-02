@@ -35,7 +35,7 @@ class PlannerTimerPage extends ConsumerWidget {
 }
 
 /// Weekly / Monthly progress stats (study time, completed/pending sessions,
-/// subjects, topics, goals, break time, avg daily) + subject chips.
+/// subjects, topics, break time, avg daily) + subject chips.
 class PlannerProgressPage extends StatelessWidget {
   const PlannerProgressPage({super.key});
 

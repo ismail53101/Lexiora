@@ -27,10 +27,8 @@ import 'package:lexiora/features/library/presentation/providers/library_provider
 import 'package:lexiora/features/library/presentation/widgets/document_card.dart';
 import 'package:lexiora/features/settings/domain/entities/app_settings.dart';
 import 'package:lexiora/features/settings/presentation/providers/settings_providers.dart';
-import 'package:lexiora/modules/study_hub/domain/entities/study_goal.dart';
 import 'package:lexiora/modules/study_hub/domain/study_dates.dart';
 import 'package:lexiora/modules/study_hub/presentation/providers/study_hub_providers.dart';
-import 'package:lexiora/modules/study_hub/presentation/widgets/goal_editor.dart';
 
 /// The Home dashboard: a personal greeting + quick search, the Explore
 /// module grid (brought up top so it's visible without scrolling),
@@ -425,7 +423,7 @@ class _GlowIconButtonState extends State<_GlowIconButton> {
   }
 }
 
-/// The "24 PDFs / study time today / today's goal" glance row.
+/// The "24 PDFs / study time today" glance row.
 class _StatsRow extends ConsumerWidget {
   const _StatsRow();
 
@@ -439,13 +437,6 @@ class _StatsRow extends ConsumerWidget {
     final int studyMinutes = ref.watch(studyMinutesTodayProvider).maybeWhen(
         data: (int m) => m, orElse: () => 0);
 
-    final List<StudyGoal> goals = ref.watch(studyGoalsProvider).maybeWhen(
-        data: (List<StudyGoal> g) => g, orElse: () => const <StudyGoal>[]);
-    final List<StudyGoal> studyTimeGoals = goals
-        .where((StudyGoal goal) => goal.isStudyTimeGoal)
-        .toList(growable: false);
-    final StudyGoal? studyGoal =
-        studyTimeGoals.isEmpty ? null : studyTimeGoals.first;
 
     return Padding(
       padding: const EdgeInsets.fromLTRB(20, 6, 20, 0),
@@ -472,176 +463,9 @@ class _StatsRow extends ConsumerWidget {
               onTap: () => context.push(AppRoutes.studyHub),
             ),
           ),
-          const SizedBox(width: 10),
-          Expanded(
-            child: _GoalStatTile(
-              goal: studyGoal,
-              color: scheme.primary,
-              onTap: () => _showGoalsSheet(context, ref, goals),
-            ),
-          ),
         ],
       ),
     ).animate().fadeIn(duration: 300.ms).slideY(begin: 0.06, end: 0);
-  }
-}
-
-class _GoalStatTile extends StatelessWidget {
-  const _GoalStatTile({required this.goal, required this.color, this.onTap});
-
-  final StudyGoal? goal;
-  final Color color;
-  final VoidCallback? onTap;
-
-  @override
-  Widget build(BuildContext context) {
-    final ThemeData theme = Theme.of(context);
-    final ColorScheme scheme = theme.colorScheme;
-    final double progress = goal?.progress ?? 0;
-    final int current = goal?.currentCount ?? 0;
-    final String goalValue = goal == null
-        ? 'Set a goal'
-        : '${formatDuration(current)} / ${formatDuration(goal!.targetMinutes)}';
-
-    return Material(
-      color: scheme.surfaceContainerHigh,
-      borderRadius: BorderRadius.circular(18),
-      child: InkWell(
-        borderRadius: BorderRadius.circular(18),
-        onTap: onTap,
-        child: Padding(
-          padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 6),
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            children: <Widget>[
-              SizedBox(
-                width: 66,
-                height: 66,
-                child: Stack(
-                  alignment: Alignment.center,
-                  children: <Widget>[
-                    CircularProgressIndicator(
-                      value: progress,
-                      strokeWidth: 7,
-                      backgroundColor:
-                          scheme.outlineVariant.withValues(alpha: 0.55),
-                      valueColor: AlwaysStoppedAnimation<Color>(color),
-                    ),
-                    Text(
-                      '${(progress * 100).round()}%',
-                      style: theme.textTheme.titleMedium?.copyWith(
-                        fontWeight: FontWeight.w800,
-                        color: color,
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-              const SizedBox(height: 5),
-              Text(
-                'Goal',
-                maxLines: 1,
-                overflow: TextOverflow.ellipsis,
-                style: theme.textTheme.bodySmall?.copyWith(
-                  fontWeight: FontWeight.w700,
-                ),
-              ),
-              Text(
-                goalValue,
-                maxLines: 1,
-                overflow: TextOverflow.ellipsis,
-                style: theme.textTheme.labelSmall?.copyWith(
-                  color: scheme.onSurfaceVariant,
-                ),
-              ),
-            ],
-          ),
-        ),
-      ),
-    );
-  }
-}
-
-void _showGoalsSheet(
-  BuildContext context,
-  WidgetRef ref,
-  List<StudyGoal> goals,
-) {
-  showModalBottomSheet<void>(
-    context: context,
-    showDragHandle: true,
-    builder: (BuildContext sheetContext) {
-      final List<StudyGoal> studyGoals =
-          goals.where((StudyGoal g) => g.isStudyTimeGoal).toList(growable: false);
-      final List<StudyGoal> achievementGoals =
-          goals.where((StudyGoal g) => g.isAchievementGoal).toList(growable: false);
-      return Padding(
-        padding: const EdgeInsets.fromLTRB(20, 0, 20, 20),
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: <Widget>[
-            Text('Goals', style: Theme.of(sheetContext).textTheme.titleLarge),
-            const SizedBox(height: 12),
-            if (goals.isEmpty)
-              const Text('No goal set for today.')
-            else ...<Widget>[
-              for (final StudyGoal goal in studyGoals)
-                _GoalSheetRow(
-                  icon: Icons.track_changes,
-                  title: "Today's Study",
-                  value:
-                      '${formatDuration(goal.currentCount)} / ${formatDuration(goal.targetMinutes)} — ${(goal.progress * 100).round()}%',
-                ),
-              for (final StudyGoal goal in achievementGoals)
-                _GoalSheetRow(
-                  icon: Icons.menu_book_outlined,
-                  title: goal.title,
-                  value:
-                      '${goal.currentCount} / ${goal.targetCount} ${goal.unit ?? 'topics'} — ${(goal.progress * 100).round()}%',
-                ),
-            ],
-            const SizedBox(height: 12),
-            Align(
-              alignment: Alignment.centerRight,
-              child: FilledButton.tonalIcon(
-                onPressed: () {
-                  Navigator.of(sheetContext).pop();
-                  showGoalEditor(context, day: ref.read(studyTodayProvider));
-                },
-                icon: const Icon(Icons.add),
-                label: const Text('Add goal'),
-              ),
-            ),
-          ],
-        ),
-      );
-    },
-  );
-}
-
-class _GoalSheetRow extends StatelessWidget {
-  const _GoalSheetRow({required this.icon, required this.title, required this.value});
-  final IconData icon;
-  final String title;
-  final String value;
-
-  @override
-  Widget build(BuildContext context) {
-    final ColorScheme scheme = Theme.of(context).colorScheme;
-    return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 5),
-      child: Row(
-        children: <Widget>[
-          Icon(icon, size: 20, color: scheme.primary),
-          const SizedBox(width: 10),
-          Expanded(
-              child: Text(title,
-                  style: const TextStyle(fontWeight: FontWeight.w700))),
-          Text(value, style: TextStyle(color: scheme.onSurfaceVariant)),
-        ],
-      ),
-    );
   }
 }
 
