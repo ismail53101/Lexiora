@@ -409,34 +409,73 @@ class NotificationService {
           'Sound resource ${sound.resourceName} is unavailable; '
           'retrying notification id=$id with legacy notification_sound',
         );
-        await _plugin.zonedSchedule(
-          id: id,
-          title: title,
-          body: body,
-          scheduledDate: scheduledTz,
-          payload: jsonEncode(payload),
-          notificationDetails: NotificationDetails(
-            android: _details(
-              channelId: channelId,
-              channelName: channelName,
-              settings: settings,
-              sound: sound,
-              includeStartAction: includeStartAction,
-              soundResourceOverride: 'notification_sound',
+        try {
+          await _plugin.zonedSchedule(
+            id: id,
+            title: title,
+            body: body,
+            scheduledDate: scheduledTz,
+            payload: jsonEncode(payload),
+            notificationDetails: NotificationDetails(
+              android: _details(
+                channelId: channelId,
+                channelName: channelName,
+                settings: settings,
+                sound: sound,
+                includeStartAction: includeStartAction,
+                soundResourceOverride: 'notification_sound',
+              ),
             ),
-          ),
-          androidScheduleMode: exact
-              ? AndroidScheduleMode.exactAllowWhileIdle
-              : AndroidScheduleMode.inexactAllowWhileIdle,
-        );
-        return;
+            androidScheduleMode: exact
+                ? AndroidScheduleMode.exactAllowWhileIdle
+                : AndroidScheduleMode.inexactAllowWhileIdle,
+          );
+          return;
+        } on Object catch (fallbackError, fallbackStackTrace) {
+          AppLogger.e(
+            'Notification fallback scheduling failed; '
+            'retrying silently: id=$id',
+            error: fallbackError,
+            stackTrace: fallbackStackTrace,
+          );
+          try {
+            await _plugin.zonedSchedule(
+              id: id,
+              title: title,
+              body: body,
+              scheduledDate: scheduledTz,
+              payload: jsonEncode(payload),
+              notificationDetails: NotificationDetails(
+                android: _details(
+                  channelId: channelId,
+                  channelName: channelName,
+                  settings: settings.copyWith(notificationSoundEnabled: false),
+                  sound: sound,
+                  includeStartAction: includeStartAction,
+                ),
+              ),
+              androidScheduleMode: exact
+                  ? AndroidScheduleMode.exactAllowWhileIdle
+                  : AndroidScheduleMode.inexactAllowWhileIdle,
+            );
+          } on Object catch (silentError, silentStackTrace) {
+            AppLogger.e(
+              'Notification scheduling failed even in silent mode; '
+              'continuing without this reminder: id=$id',
+              error: silentError,
+              stackTrace: silentStackTrace,
+            );
+          }
+          return;
+        }
       }
       AppLogger.e(
-        'Notification scheduling failed: id=$id, scheduledTz=$scheduledTz',
+        'Notification scheduling failed; continuing without this reminder: '
+        'id=$id, scheduledTz=$scheduledTz',
         error: error,
         stackTrace: stackTrace,
       );
-      rethrow;
+      return;
     }
   }
 

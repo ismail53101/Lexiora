@@ -78,6 +78,7 @@ class _SessionEditorState extends ConsumerState<_SessionEditor> {
   StudyTask? _existingBreak;
   bool _breakLoaded = false;
   late bool _automatic = widget.existing?.autoScheduled ?? true;
+  bool _saving = false;
 
   @override
   void initState() {
@@ -146,8 +147,11 @@ class _SessionEditorState extends ConsumerState<_SessionEditor> {
   }
 
   Future<void> _save() async {
+    if (_saving) return;
     final String subject = _subject.text.trim();
     if (subject.isEmpty) return;
+    setState(() => _saving = true);
+    try {
     final DateTime now = DateTime.now();
     if (!_breakLoaded) await _loadExistingBreak();
     final StudyTask base = widget.existing ??
@@ -206,6 +210,15 @@ class _SessionEditorState extends ConsumerState<_SessionEditor> {
       await ref.read(studyHubRepositoryProvider).deleteTask(_existingBreak!.id);
     }
     if (mounted) Navigator.of(context).pop();
+    } on Object catch (error) {
+      if (mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text('Could not save study plan: $error')),
+        );
+      }
+    } finally {
+      if (mounted) setState(() => _saving = false);
+    }
   }
 
   @override
