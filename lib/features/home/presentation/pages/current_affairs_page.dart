@@ -476,6 +476,10 @@ class _FeaturedStoryCard extends StatelessWidget {
                         ),
                       ],
                     ),
+                    if (_isAlJazeera(story.source)) ...[
+                      const SizedBox(height: 7),
+                      const _AlJazeeraNotice(),
+                    ],
                     const SizedBox(height: 10),
                     Text(
                       story.headline,
@@ -549,16 +553,6 @@ class _EditorialStoryCard extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
-                    Text(
-                      story.headline,
-                      maxLines: 3,
-                      overflow: TextOverflow.ellipsis,
-                      style: theme.textTheme.titleSmall?.copyWith(
-                        fontWeight: FontWeight.w900,
-                        height: 1.15,
-                      ),
-                    ),
-                    const SizedBox(height: 7),
                     Row(
                       children: <Widget>[
                         Flexible(
@@ -577,6 +571,20 @@ class _EditorialStoryCard extends StatelessWidget {
                         Text(' · ${story.relativeTime}', style: theme.textTheme.labelSmall?.copyWith(color: scheme.onSurfaceVariant)),
                       ],
                     ),
+                    if (_isAlJazeera(story.source)) ...[
+                      const SizedBox(height: 7),
+                      const _AlJazeeraNotice(),
+                    ],
+                    const SizedBox(height: 7),
+                    Text(
+                      story.headline,
+                      maxLines: 3,
+                      overflow: TextOverflow.ellipsis,
+                      style: theme.textTheme.titleSmall?.copyWith(
+                        fontWeight: FontWeight.w900,
+                        height: 1.15,
+                      ),
+                    ),
                   ],
                 ),
               ),
@@ -585,6 +593,42 @@ class _EditorialStoryCard extends StatelessWidget {
             ],
           ),
         ),
+      ),
+    );
+  }
+}
+
+bool _isAlJazeera(String source) =>
+    source.trim().toLowerCase().contains('al jazeera');
+
+class _AlJazeeraNotice extends StatelessWidget {
+  const _AlJazeeraNotice();
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 5),
+      decoration: BoxDecoration(
+        color: const Color(0xFFEAF7EE),
+        borderRadius: BorderRadius.circular(999),
+      ),
+      child: const Row(
+        mainAxisSize: MainAxisSize.min,
+        children: <Widget>[
+          Icon(Icons.info_outline_rounded, size: 13, color: Color(0xFF31804A)),
+          SizedBox(width: 5),
+          Flexible(
+            child: Text(
+              'Al Jazeera may be blocked in Pakistan · VPN may be required',
+              style: TextStyle(
+                color: Color(0xFF31804A),
+                fontSize: 10,
+                fontWeight: FontWeight.w600,
+                height: 1.15,
+              ),
+            ),
+          ),
+        ],
       ),
     );
   }
