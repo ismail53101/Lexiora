@@ -8,9 +8,9 @@ void main() {
     test('has sensible offline-first defaults', () {
       const AppSettings s = AppSettings();
       expect(s.themeMode, ThemeMode.light);
-      expect(s.studyReminderMinutes, 5);
+      expect(s.studyReminderMinutes, 10);
       expect(s.followUpReminderEnabled, isFalse);
-      expect(s.notificationSound, NotificationSound.studyBell);
+      expect(s.notificationSound, NotificationSound.newNotification);
       expect(s.fontScale, 1.0);
       expect(s.readingScrollAxis, ReaderScrollAxis.vertical);
       expect(s.readerColorMode, ReaderColorMode.day);

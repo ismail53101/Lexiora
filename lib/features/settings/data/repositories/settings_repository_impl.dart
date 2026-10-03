@@ -93,7 +93,7 @@ class SettingsRepositoryImpl implements SettingsRepository {
       displayName: map[_kDisplayName] ?? '',
       studyRemindersEnabled: _bool(map[_kStudyRemindersEnabled], true),
       studyReminderMinutes: _validReminderMinutes(
-        _int(map[_kStudyReminderMinutes], 5),
+        _int(map[_kStudyReminderMinutes], 10),
       ),
       followUpReminderEnabled:
           _bool(map[_kFollowUpReminderEnabled], false),
@@ -106,7 +106,7 @@ class SettingsRepositoryImpl implements SettingsRepository {
       notificationSound: NotificationSound.values[_enumIndex(
         map[_kNotificationSound],
         NotificationSound.values.length,
-        NotificationSound.studyBell.index,
+        NotificationSound.newNotification.index,
       )],
       notificationVibrationEnabled:
           _bool(map[_kNotificationVibrationEnabled], true),
@@ -172,7 +172,7 @@ class SettingsRepositoryImpl implements SettingsRepository {
   }
 
   int _validReminderMinutes(int value) =>
-      const <int>[5, 10, 15, 30].contains(value) ? value : 5;
+      const <int>[5, 10, 15, 30].contains(value) ? value : 10;
 
   List<String> _history(String? value) => value == null || value.isEmpty
       ? const <String>[]

@@ -190,7 +190,7 @@ class NotificationService {
       'exactAlarmAvailable=$exact, timezone=${tz.local.name}',
     );
     if (!enabled) {
-      await _plugin.cancelAll();
+      await _cancelManagedNotifications();
       AppLogger.w('Notifications disabled by Android; cancelled all pending notifications');
       return;
     }
@@ -203,7 +203,7 @@ class NotificationService {
       'soundEnabled=${settings.notificationSoundEnabled}, '
       'vibration=${settings.notificationVibrationEnabled}',
     );
-    await _plugin.cancelAll();
+    await _cancelManagedNotifications();
 
     if (settings.studyRemindersEnabled || settings.breakRemindersEnabled) {
       await _schedulePlanner(settings);
@@ -285,7 +285,7 @@ class NotificationService {
       if (isBreak) {
         if (settings.breakRemindersEnabled) {
           await _scheduleBreakReminder(
-            id: _stableId(_breakIdBase.toString(), task.id),
+            id: _stableId(_breakIdBase.toString(), '${task.day}:${task.id}:break'),
             breakStart: startLocal,
             payload: payload,
             settings: settings,
@@ -304,7 +304,7 @@ class NotificationService {
       final DateTime leadLocal = startLocal.subtract(Duration(minutes: lead));
       if (lead > 0 && leadLocal.isAfter(now)) {
         await _schedule(
-          id: _stableId(_studyIdBase.toString(), task.id),
+          id: _stableId(_studyIdBase.toString(), '${task.day}:${task.id}:lead'),
           title: 'Study Time Soon',
           body: '${task.displaySubject} starts in $lead minutes.',
           scheduledLocal: leadLocal,
@@ -319,7 +319,10 @@ class NotificationService {
           startLocal.subtract(const Duration(minutes: 1));
       if (oneMinuteLocal.isAfter(now)) {
         await _schedule(
-          id: _stableId(_studyOneMinuteIdBase.toString(), task.id),
+          id: _stableId(
+            _studyOneMinuteIdBase.toString(),
+            '${task.day}:${task.id}:oneMinute',
+          ),
           title: 'Get Ready',
           body: 'Get ready! ${_taskLabel(task)} starts in 1 minute.',
           scheduledLocal: oneMinuteLocal,
@@ -335,7 +338,10 @@ class NotificationService {
         final DateTime followUpLocal = startLocal.add(const Duration(minutes: 5));
         if (followUpLocal.isAfter(now)) {
           await _schedule(
-            id: _stableId(_studyFollowUpIdBase.toString(), task.id),
+            id: _stableId(
+              _studyFollowUpIdBase.toString(),
+              '${task.day}:${task.id}:followUp',
+            ),
             title: 'Study Follow-up',
             body: "You haven't started ${_taskLabel(task)} yet.",
             scheduledLocal: followUpLocal,
@@ -360,7 +366,10 @@ class NotificationService {
             date.day,
           ).add(Duration(minutes: task.endMinute!));
           await _scheduleBreakReminder(
-            id: _stableId(_implicitBreakIdBase.toString(), task.id),
+            id: _stableId(
+              _implicitBreakIdBase.toString(),
+              '${task.day}:${task.id}:implicitBreak',
+            ),
             breakStart: breakStart,
             payload: <String, String>{
               'type': 'break',
@@ -373,6 +382,33 @@ class NotificationService {
         }
       }
     }
+  }
+
+  Future<void> _cancelManagedNotifications() async {
+    final List<PendingNotificationRequest> pending =
+        await _plugin.pendingNotificationRequests();
+    int cancelled = 0;
+    for (final PendingNotificationRequest request in pending) {
+      final String? payload = request.payload;
+      if (payload == null || payload.isEmpty) continue;
+      try {
+        final Object? decoded = jsonDecode(payload);
+        final Object? type = decoded is Map<String, dynamic>
+            ? decoded['type']
+            : null;
+        if (type == 'study' || type == 'break' || type == 'wordOfDay') {
+          await _plugin.cancel(request.id);
+          cancelled++;
+        }
+      } on Object catch (error, stackTrace) {
+        AppLogger.w(
+          'Could not inspect pending notification id=${request.id}; keeping it',
+          error: error,
+          stackTrace: stackTrace,
+        );
+      }
+    }
+    AppLogger.i('Cancelled managed local notifications: count=$cancelled');
   }
 
   StudyTask? _nextTask(
@@ -429,35 +465,49 @@ class NotificationService {
     }
     final bool exact =
         await _androidPlugin?.canScheduleExactNotifications() ?? true;
+    if (!exact) {
+      AppLogger.e(
+        'Exact alarm permission unavailable; refusing to schedule '
+        'time-sensitive notification id=$id at $scheduledLocal',
+      );
+      return;
+    }
     final tz.TZDateTime scheduledTz = _toTz(scheduledLocal);
     AppLogger.i(
       'Scheduling notification: id=$id, title="$title", '
       'local=$scheduledLocal, tz=$scheduledTz (${tz.local.name}), '
-      'mode=${exact ? 'exactAllowWhileIdle' : 'inexactAllowWhileIdle'}, '
+        'mode=exactAllowWhileIdle, '
       'sound=${sound.label}/${sound.resourceName}, '
       'soundEnabled=${settings.notificationSoundEnabled}, '
       'vibration=${settings.notificationVibrationEnabled}, '
       'channel=$channelId',
     );
-    await _plugin.zonedSchedule(
-      id: id,
-      title: title,
-      body: body,
-      scheduledDate: scheduledTz,
-      payload: jsonEncode(payload),
-      notificationDetails: NotificationDetails(
-        android: _details(
-          channelId: channelId,
-          channelName: channelName,
-          settings: settings,
-          sound: sound,
-          includeStartAction: includeStartAction,
+    try {
+      await _plugin.zonedSchedule(
+        id: id,
+        title: title,
+        body: body,
+        scheduledDate: scheduledTz,
+        payload: jsonEncode(payload),
+        notificationDetails: NotificationDetails(
+          android: _details(
+            channelId: channelId,
+            channelName: channelName,
+            settings: settings,
+            sound: sound,
+            includeStartAction: includeStartAction,
+          ),
         ),
-      ),
-      androidScheduleMode: exact
-          ? AndroidScheduleMode.exactAllowWhileIdle
-          : AndroidScheduleMode.inexactAllowWhileIdle,
-    );
+        androidScheduleMode: AndroidScheduleMode.exactAllowWhileIdle,
+      );
+      AppLogger.i('Scheduled local notification successfully: id=$id');
+    } on Object catch (error, stackTrace) {
+      AppLogger.e(
+        'Failed to schedule local notification id=$id at $scheduledLocal',
+        error: error,
+        stackTrace: stackTrace,
+      );
+    }
   }
 
   String _taskLabel(StudyTask task) => task.topic == null || task.topic!.isEmpty
