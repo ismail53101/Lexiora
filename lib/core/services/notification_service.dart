@@ -280,7 +280,7 @@ class NotificationService {
         'type': isBreak ? 'break' : 'study',
         'taskId': task.id,
         'day': task.day,
-        'route': AppRoutes.studyHubDailyFor(task.day, task.id),
+        'route': AppRoutes.studyHubDaily,
       };
       if (isBreak) {
         if (settings.breakRemindersEnabled) {
@@ -375,7 +375,7 @@ class NotificationService {
               'type': 'break',
               'taskId': task.id,
               'day': task.day,
-              'route': AppRoutes.studyHubDailyFor(task.day, task.id),
+              'route': AppRoutes.studyHubDaily,
             },
             settings: settings,
           );
