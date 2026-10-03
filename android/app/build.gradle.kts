@@ -80,7 +80,7 @@ android {
             // IDs must match ca-app-pub-{16 digits}~{10 digits}; until a
             // well-formed production ID is supplied, fall back to Google's
             // official test App ID so the app always starts.
-            val admobProductionAppId = "ca-app-pub-434281193355977~3999306324"
+            val admobProductionAppId = "ca-app-pub-4342811933559577~399306324"
             val admobAppIdPattern = Regex("^ca-app-pub-[0-9]{16}~[0-9]{10}$")
             manifestPlaceholders["admobAppId"] =
                 if (admobAppIdPattern.matches(admobProductionAppId)) admobProductionAppId

@@ -14,18 +14,18 @@ abstract final class AdConfiguration {
   static const String androidTestAppId =
       'ca-app-pub-3940256099942544~3347511713';
   static const String androidProductionAppId =
-      'ca-app-pub-434281193355977~3999306324';
+      'ca-app-pub-4342811933559577~399306324';
   static const String testBannerId = 'ca-app-pub-3940256099942544/6300978111';
   static const String productionBannerId =
-      'ca-app-pub-434281193355977/9332447492';
+      'ca-app-pub-4342811933559577/9332447492';
   static const String testInterstitialId =
       'ca-app-pub-3940256099942544/1033173712';
   static const String productionInterstitialId =
-      'ca-app-pub-434281193355977/6060583937';
+      'ca-app-pub-4342811933559577/7060583937';
   static const String testRewardedId =
       'ca-app-pub-3940256099942544/5224354917';
   static const String productionRewardedId =
-      'ca-app-pub-434281193355977/75768607000';
+      'ca-app-pub-4342811933559577/5768607000';
   /// Central AI usage configuration; change these values without changing the
   /// AI Assistant flow or rewarded-ad implementation.
   static const int FREE_AI_REQUEST_LIMIT = 7;
