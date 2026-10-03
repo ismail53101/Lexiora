@@ -397,7 +397,7 @@ class NotificationService {
             ? decoded['type']
             : null;
         if (type == 'study' || type == 'break' || type == 'wordOfDay') {
-          await _plugin.cancel(request.id);
+          await _plugin.cancel(id: request.id);
           cancelled++;
         }
       } on Object catch (error, stackTrace) {
