@@ -401,7 +401,7 @@ class NotificationService {
           cancelled++;
         }
       } on Object catch (error, stackTrace) {
-        AppLogger.w(
+        AppLogger.e(
           'Could not inspect pending notification id=${request.id}; keeping it',
           error: error,
           stackTrace: stackTrace,
@@ -416,12 +416,10 @@ class NotificationService {
     int currentIndex,
     String day,
   ) {
-    for (int index = currentIndex + 1; index < tasks.length; index++) {
-      final StudyTask candidate = tasks[index];
-      if (candidate.day != day) return null;
-      return candidate;
-    }
-    return null;
+    final int nextIndex = currentIndex + 1;
+    if (nextIndex >= tasks.length) return null;
+    final StudyTask candidate = tasks[nextIndex];
+    return candidate.day == day ? candidate : null;
   }
 
   Future<void> _scheduleBreakReminder({
