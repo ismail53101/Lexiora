@@ -1,4 +1,5 @@
-<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
     <!-- Internet access for the Hybrid Translation System's online fallback
          (English → Urdu, v0.4.1). The app remains offline-first; the network is
          used only when a word has no offline translation. This MUST be declared
@@ -79,6 +80,15 @@
         <meta-data
             android:name="com.google.android.gms.ads.APPLICATION_ID"
             android:value="${admobAppId}" />
+        <!-- These SDKs are initialized lazily from Dart after the first frame.
+             Their manifest providers run before Flutter and can terminate the
+             process on devices with incompatible Play Services/runtime. -->
+        <provider
+            android:name="com.google.android.gms.ads.MobileAdsInitProvider"
+            tools:node="remove" />
+        <provider
+            android:name="com.google.mlkit.common.internal.MlKitInitProvider"
+            tools:node="remove" />
         <receiver
             android:exported="false"
             android:name="com.dexterous.flutterlocalnotifications.ScheduledNotificationReceiver" />
