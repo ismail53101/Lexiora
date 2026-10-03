@@ -31,12 +31,26 @@ abstract final class AdConfiguration {
   static const int FREE_AI_REQUEST_LIMIT = 7;
   static const int REWARDED_AI_REQUEST_BONUS = 7;
 
-  static String get bannerId =>
-      kReleaseMode ? productionBannerId : testBannerId;
-  static String get interstitialId =>
-      kReleaseMode ? productionInterstitialId : testInterstitialId;
-  static String get rewardedId =>
-      kReleaseMode ? productionRewardedId : testRewardedId;
+  static String get bannerId => kReleaseMode
+      ? _productionOrTest(productionBannerId, testBannerId)
+      : testBannerId;
+  static String get interstitialId => kReleaseMode
+      ? _productionOrTest(productionInterstitialId, testInterstitialId)
+      : testInterstitialId;
+  static String get rewardedId => kReleaseMode
+      ? _productionOrTest(productionRewardedId, testRewardedId)
+      : testRewardedId;
+
+  /// A production ID may only be used when it is well-formed. The Google
+  /// Mobile Ads SDK rejects malformed IDs (and crashes on a malformed App ID
+  /// at process start), so anything that does not match AdMob's official
+  /// ca-app-pub-{16}~{10} / ca-app-pub-{16}/{10} shape silently falls back to
+  /// the matching Google test ID.
+  static bool _isWellFormed(String id) =>
+      RegExp(r'^ca-app-pub-[0-9]{16}[~/][0-9]{10}$').hasMatch(id);
+
+  static String _productionOrTest(String id, String testId) =>
+      _isWellFormed(id) ? id : testId;
 }
 
 enum RewardedAdPlacement {
