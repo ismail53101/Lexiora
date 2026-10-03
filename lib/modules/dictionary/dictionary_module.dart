@@ -6,7 +6,9 @@ import 'package:lexiora/core/database/app_database.dart';
 import 'package:lexiora/core/module/feature_module.dart';
 import 'package:lexiora/core/navigation/home_destination.dart';
 import 'package:lexiora/core/reader_engine/word_action.dart';
+import 'package:lexiora/core/services/ad_return_navigation_scope.dart';
 import 'package:lexiora/core/services/pronunciation_service.dart';
+import 'package:lexiora/core/services/rewarded_ad_manager.dart';
 import 'package:lexiora/modules/dictionary/data/datasources/dictionary_local_data_source.dart';
 import 'package:lexiora/modules/dictionary/data/dictionary_seeder.dart';
 import 'package:lexiora/modules/dictionary/data/exam_words_seeder.dart';
@@ -57,7 +59,10 @@ class DictionaryModule extends FeatureModule {
   List<RouteBase> routes(GetIt getIt) => <RouteBase>[
         GoRoute(
           path: AppRoutes.dictionary,
-          builder: (_, _) => const DictionaryPage(),
+          builder: (_, _) => AdReturnNavigationScope(
+            manager: getIt<RewardedAdManager>(),
+            child: const DictionaryPage(),
+          ),
         ),
         GoRoute(
           name: AppRoutes.dictionaryWordName,

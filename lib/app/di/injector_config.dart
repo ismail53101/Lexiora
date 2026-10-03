@@ -11,6 +11,7 @@ import 'package:lexiora/core/services/pdf_discovery_service.dart';
 import 'package:lexiora/core/services/pdf_import_service.dart';
 import 'package:lexiora/core/services/pdf_ocr_service.dart';
 import 'package:lexiora/core/services/permission_service.dart';
+import 'package:lexiora/core/services/rewarded_ad_manager.dart';
 import 'package:lexiora/core/services/screen_wake_service.dart';
 import 'package:lexiora/core/services/notification_service.dart';
 import 'package:lexiora/modules/admin/data/services/admin_content_service.dart';
@@ -35,6 +36,14 @@ Future<void> configureDependencies() async {
       () => PermissionService(sl<DeviceInfoService>()),
     )
     ..registerLazySingleton<ScreenWakeService>(ScreenWakeService.new)
+    ..registerLazySingleton<NoPremiumEntitlementService>(
+      NoPremiumEntitlementService.new,
+    )
+    ..registerLazySingleton<RewardedAdManager>(
+      () => RewardedAdManager(
+        isPremium: () => sl<NoPremiumEntitlementService>().isPremium,
+      ),
+    )
     // The tap-on-word extension registry — empty in Phase 1, populated by
     // future language modules.
     ..registerLazySingleton<WordActionRegistry>(WordActionRegistry.new);

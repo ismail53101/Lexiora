@@ -5,6 +5,8 @@ import 'package:lexiora/app/router/app_routes.dart';
 import 'package:lexiora/core/database/app_database.dart';
 import 'package:lexiora/core/module/feature_module.dart';
 import 'package:lexiora/core/navigation/home_destination.dart';
+import 'package:lexiora/core/services/ad_return_navigation_scope.dart';
+import 'package:lexiora/core/services/rewarded_ad_manager.dart';
 import 'package:lexiora/features/library/data/repositories/library_repository_impl.dart';
 import 'package:lexiora/features/library/domain/repositories/library_repository.dart';
 import 'package:lexiora/features/library/presentation/pages/drive_library_page.dart';
@@ -29,7 +31,10 @@ class LibraryModule extends FeatureModule {
   List<RouteBase> routes(GetIt getIt) => <RouteBase>[
         GoRoute(
           path: AppRoutes.library,
-          builder: (_, _) => const LibraryPage(),
+          builder: (_, _) => AdReturnNavigationScope(
+            manager: getIt<RewardedAdManager>(),
+            child: const LibraryPage(),
+          ),
         ),
         GoRoute(
           path: AppRoutes.driveLibrary,

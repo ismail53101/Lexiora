@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:lexiora/core/widgets/app_bottom_nav.dart';
@@ -7,6 +9,7 @@ import 'package:lexiora/modules/ai_assistant/domain/entities/ai_message.dart';
 import 'package:lexiora/modules/ai_assistant/domain/entities/ai_project.dart';
 import 'package:lexiora/modules/ai_assistant/presentation/providers/ai_providers.dart';
 import 'package:lexiora/modules/ai_assistant/presentation/widgets/ai_markdown.dart';
+import 'package:lexiora/modules/ai_assistant/presentation/widgets/ai_usage_limit_dialog.dart';
 import 'package:lexiora/modules/ai_assistant/presentation/widgets/chat_composer.dart';
 import 'package:lexiora/modules/ai_assistant/presentation/widgets/conversation_drawer.dart';
 import 'package:lexiora/modules/ai_assistant/presentation/widgets/message_bubble.dart';
@@ -296,6 +299,14 @@ class _MessageList extends ConsumerWidget {
 
   final String conversationId;
 
+  Future<void> _regenerate(BuildContext context, WidgetRef ref) async {
+    final AiSendResult result =
+        await ref.read(aiChatControllerProvider.notifier).regenerate();
+    if (result == AiSendResult.limitReached && context.mounted) {
+      await showAiUsageLimitDialog(context, ref);
+    }
+  }
+
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final AsyncValue<List<AiMessage>> async =
@@ -342,7 +353,7 @@ class _MessageList extends ConsumerWidget {
               onDelete: () =>
                   ref.read(aiRepositoryProvider).deleteMessage(m.id),
               onRegenerate: isLastAssistant
-                  ? () => ref.read(aiChatControllerProvider.notifier).regenerate()
+                  ? () => unawaited(_regenerate(context, ref))
                   : null,
             );
           },

@@ -16,6 +16,7 @@ import 'package:lexiora/core/services/notification_service.dart';
 import 'package:lexiora/core/services/pdf_discovery_service.dart';
 import 'package:lexiora/core/services/pdf_import_service.dart';
 import 'package:lexiora/core/services/permission_service.dart';
+import 'package:lexiora/core/services/rewarded_ad_manager.dart';
 import 'package:lexiora/core/utils/logger.dart';
 import 'package:lexiora/core/utils/result.dart';
 import 'package:lexiora/features/library/domain/entities/library_document.dart';
@@ -82,6 +83,7 @@ Future<void> main() async {
 }
 
 Future<void> _finishStartup(GoRouter router) async {
+  await sl<RewardedAdManager>().initialize();
   final NotificationService notifications = sl<NotificationService>();
   try {
     await notifications.initialize(

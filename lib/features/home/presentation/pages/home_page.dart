@@ -11,6 +11,7 @@ import 'package:lexiora/app/di/injector.dart';
 import 'package:lexiora/app/router/app_routes.dart';
 import 'package:lexiora/core/navigation/home_destination.dart';
 import 'package:lexiora/core/services/permission_service.dart';
+import 'package:lexiora/core/services/rewarded_ad_manager.dart';
 import 'package:lexiora/core/usecase/usecase.dart';
 import 'package:lexiora/core/utils/result.dart';
 import 'package:lexiora/core/widgets/app_bottom_nav.dart';
@@ -166,6 +167,14 @@ class _HomePageState extends ConsumerState<HomePage>
             ),
             SliverToBoxAdapter(
               child: _ExploreSection(destinations: destinations),
+            ),
+            SliverToBoxAdapter(
+              child: Padding(
+                padding: const EdgeInsets.only(top: 12),
+                child: Center(
+                  child: ManagedBannerAd(manager: sl<RewardedAdManager>()),
+                ),
+              ),
             ),
             ...[
               _continueAndRecentSection(context, continueReading, recent),

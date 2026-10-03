@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'dart:io';
 
 import 'package:flutter/material.dart';
@@ -9,6 +10,7 @@ import 'package:lexiora/core/services/pdf_ocr_service.dart';
 import 'package:lexiora/modules/ai_assistant/domain/entities/ai_attachment.dart';
 import 'package:lexiora/modules/ai_assistant/presentation/providers/ai_providers.dart';
 import 'package:lexiora/modules/ai_assistant/presentation/widgets/ai_message_tools.dart';
+import 'package:lexiora/modules/ai_assistant/presentation/widgets/ai_usage_limit_dialog.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:uuid/uuid.dart';
 
@@ -190,7 +192,7 @@ class _ChatComposerState extends ConsumerState<ChatComposer> {
     );
   }
 
-  void _send() {
+  Future<void> _send() async {
     if (!_canSend) return;
     final String content = AiAttachment.encode(
       imagePath: _pendingImagePath,
@@ -199,7 +201,14 @@ class _ChatComposerState extends ConsumerState<ChatComposer> {
       pdfText: _pendingPdfText,
       text: _controller.text.trim(),
     );
-    ref.read(aiChatControllerProvider.notifier).send(content);
+    final AiSendResult result =
+        await ref.read(aiChatControllerProvider.notifier).send(content);
+    if (!mounted) return;
+    if (result == AiSendResult.limitReached) {
+      await showAiUsageLimitDialog(context, ref);
+      return;
+    }
+    if (result != AiSendResult.started) return;
     _controller.clear();
     setState(() {
       _pendingImagePath = null;
@@ -523,7 +532,7 @@ class _SendStopButton extends StatelessWidget {
 
   final bool streaming;
   final bool canSend;
-  final VoidCallback onSend;
+  final Future<void> Function() onSend;
   final VoidCallback onStop;
 
   static const double _size = 34;
@@ -559,7 +568,7 @@ class _SendStopButton extends StatelessWidget {
         color: canSend ? scheme.primary : scheme.surfaceContainerHighest,
       ),
       child: IconButton(
-        onPressed: canSend ? onSend : null,
+        onPressed: canSend ? () => unawaited(onSend()) : null,
         tooltip: 'Send',
         padding: EdgeInsets.zero,
         icon: Icon(

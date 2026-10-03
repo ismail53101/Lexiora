@@ -5,7 +5,9 @@ import 'package:lexiora/app/router/app_routes.dart';
 import 'package:lexiora/core/database/app_database.dart';
 import 'package:lexiora/core/module/feature_module.dart';
 import 'package:lexiora/core/navigation/home_destination.dart';
+import 'package:lexiora/core/services/ad_return_navigation_scope.dart';
 import 'package:lexiora/core/services/notification_service.dart';
+import 'package:lexiora/core/services/rewarded_ad_manager.dart';
 import 'package:lexiora/core/utils/logger.dart';
 import 'package:lexiora/modules/study_hub/data/datasources/study_hub_local_data_source.dart';
 import 'package:lexiora/modules/study_hub/data/repositories/study_hub_repository_impl.dart';
@@ -53,7 +55,10 @@ class StudyHubModule extends FeatureModule {
   List<RouteBase> routes(GetIt getIt) => <RouteBase>[
         GoRoute(
           path: AppRoutes.studyHub,
-          builder: (_, _) => const PlannerPage(),
+          builder: (_, _) => AdReturnNavigationScope(
+            manager: getIt<RewardedAdManager>(),
+            child: const PlannerPage(),
+          ),
         ),
         GoRoute(
           path: AppRoutes.studyHubDaily,

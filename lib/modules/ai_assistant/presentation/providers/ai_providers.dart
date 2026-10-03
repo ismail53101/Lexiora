@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:lexiora/app/di/injector.dart';
 import 'package:lexiora/core/constants/db_constants.dart';
+import 'package:lexiora/core/services/rewarded_ad_manager.dart';
 import 'package:lexiora/modules/ai_assistant/domain/entities/ai_chat.dart';
 import 'package:lexiora/modules/ai_assistant/domain/entities/ai_conversation.dart';
 import 'package:lexiora/modules/ai_assistant/domain/entities/ai_failure.dart';
@@ -105,6 +106,8 @@ class AiChatState {
       );
 }
 
+enum AiSendResult { started, limitReached, rejected }
+
 class AiChatController extends Notifier<AiChatState> {
   StreamSubscription<AiStreamEvent>? _sub;
   AiCancelToken? _cancel;
@@ -146,12 +149,15 @@ class AiChatController extends Notifier<AiChatState> {
     openConversation(null);
   }
 
-  Future<void> send(String text) async {
+  Future<AiSendResult> send(String text) async {
     final String trimmed = text.trim();
-    if (trimmed.isEmpty || state.streaming) return;
+    if (trimmed.isEmpty || state.streaming) return AiSendResult.rejected;
     if (!_repo.isConfigured) {
       state = state.copyWith(error: AiFailure.notConfigured);
-      return;
+      return AiSendResult.rejected;
+    }
+    if (!await sl<RewardedAdManager>().canStartAiRequest()) {
+      return AiSendResult.limitReached;
     }
     String? convId = ref.read(currentConversationIdProvider);
     if (convId == null) {
@@ -163,14 +169,24 @@ class AiChatController extends Notifier<AiChatState> {
     }
     _start(SendMessage(_repo).call(
         conversationId: convId, userText: trimmed, cancel: _freshToken()));
+    return AiSendResult.started;
   }
 
-  Future<void> regenerate() async {
-    if (state.streaming) return;
+  Future<AiSendResult> regenerate() async {
+    if (state.streaming) return AiSendResult.rejected;
     final String? convId = ref.read(currentConversationIdProvider);
-    if (convId == null || !_repo.isConfigured) return;
+    if (convId == null || !_repo.isConfigured) return AiSendResult.rejected;
+    if (!await sl<RewardedAdManager>().canStartAiRequest()) {
+      return AiSendResult.limitReached;
+    }
     _start(RegenerateReply(_repo)
         .call(conversationId: convId, cancel: _freshToken()));
+    return AiSendResult.started;
+  }
+
+  /// Called after the user explicitly taps “Watch Ad for 7 More Searches”.
+  Future<bool> watchAdForMoreAi() async {
+    return sl<RewardedAdManager>().watchAdForMoreAi();
   }
 
   /// Stop generating — finalizes whatever partial text has arrived.
@@ -193,7 +209,7 @@ class AiChatController extends Notifier<AiChatState> {
             state = state.copyWith(
                 streaming: true, streamingText: state.streamingText + ev.text);
           case AiDone():
-            _finish();
+            _finish(successful: true);
           case AiError():
             state = AiChatState(error: ev.failure);
         }
@@ -211,7 +227,12 @@ class AiChatController extends Notifier<AiChatState> {
     );
   }
 
-  void _finish() => state = const AiChatState();
+  void _finish({bool successful = false}) {
+    if (successful) {
+      sl<RewardedAdManager>().recordSuccessfulAiRequest();
+    }
+    state = const AiChatState();
+  }
 }
 
 final NotifierProvider<AiChatController, AiChatState> aiChatControllerProvider =

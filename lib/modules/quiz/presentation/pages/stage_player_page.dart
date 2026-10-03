@@ -3,6 +3,8 @@ import 'dart:math' show Random;
 
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:lexiora/app/di/injector.dart';
+import 'package:lexiora/core/services/rewarded_ad_manager.dart';
 import 'package:lexiora/modules/quiz/domain/entities/quiz_models.dart';
 import 'package:lexiora/modules/quiz/domain/entities/quiz_question.dart';
 import 'package:lexiora/modules/quiz/domain/quiz_grading.dart';
@@ -207,6 +209,9 @@ class _StagePlayerPageState extends ConsumerState<StagePlayerPage> {
           total: total,
         );
     ref.read(qRevisionProvider.notifier).bump();
+    if (sl<RewardedAdManager>().recordMainQuizCompletion() && mounted) {
+      await _offerReward(context);
+    }
     if (!mounted) return;
     unawaited(Navigator.of(context).pushReplacement(MaterialPageRoute<void>(
       builder: (_) => StageResultsPage(
@@ -218,6 +223,43 @@ class _StagePlayerPageState extends ConsumerState<StagePlayerPage> {
         outcomes: outcomes,
       ),
     )));
+  }
+
+  Future<void> _offerReward(BuildContext context) async {
+    final bool watch = await showDialog<bool>(
+          context: context,
+          builder: (BuildContext dialogContext) => AlertDialog(
+            title: const Text('Keep your streak going'),
+            content: const Text(
+              'You completed five quizzes. Watch a short ad for a bonus reward?',
+            ),
+            actions: <Widget>[
+              TextButton(
+                onPressed: () => Navigator.of(dialogContext).pop(false),
+                child: const Text('Not now'),
+              ),
+              FilledButton(
+                onPressed: () => Navigator.of(dialogContext).pop(true),
+                child: const Text('Watch ad'),
+              ),
+            ],
+          ),
+        ) ??
+        false;
+    if (!watch || !mounted) return;
+    final RewardedAdResult result = await sl<RewardedAdManager>().showRewarded(
+      placement: RewardedAdPlacement.quiz,
+    );
+    if (!mounted) return;
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(
+        content: Text(
+          result == RewardedAdResult.rewarded
+              ? 'Reward claimed.'
+              : 'The ad was not completed. You can continue normally.',
+        ),
+      ),
+    );
   }
 
   Future<bool> _confirmQuit() async {

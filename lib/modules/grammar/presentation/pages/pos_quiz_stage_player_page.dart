@@ -1,6 +1,7 @@
 import 'dart:async';
-
 import 'package:flutter/material.dart';
+import 'package:lexiora/app/di/injector.dart';
+import 'package:lexiora/core/services/rewarded_ad_manager.dart';
 import 'package:lexiora/modules/grammar/domain/entities/grammar_lesson.dart';
 
 class PosQuizStagePlayerPage extends StatefulWidget {
@@ -248,6 +249,12 @@ class _PosQuizStagePlayerPageState extends State<PosQuizStagePlayerPage> {
             const SizedBox(height: 8),
             Text(passed ? 'You scored 50% or more. The next stage is unlocked.' : 'Score at least 50% to unlock the next stage.', textAlign: TextAlign.center),
             const SizedBox(height: 28),
+            OutlinedButton.icon(
+              onPressed: () => _watchCompletionReward(context),
+              icon: const Icon(Icons.play_circle_outline),
+              label: const Text('WATCH AD FOR BONUS'),
+            ),
+            const SizedBox(height: 10),
             FilledButton(
               onPressed: () => Navigator.of(context).pop(passed),
               child: const Text('BACK TO STAGES'),
@@ -256,6 +263,19 @@ class _PosQuizStagePlayerPageState extends State<PosQuizStagePlayerPage> {
         ),
       ),
     );
+  }
+
+  Future<void> _watchCompletionReward(BuildContext context) async {
+    final RewardedAdResult result = await sl<RewardedAdManager>().showRewarded(
+      placement: RewardedAdPlacement.grammarQuiz,
+    );
+    if (!mounted) return;
+    final String message = result == RewardedAdResult.rewarded
+        ? 'Reward claimed.'
+        : result == RewardedAdResult.unavailable
+            ? 'The ad is not ready. You can continue normally.'
+            : 'No reward was granted.';
+    ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(message)));
   }
 }
 

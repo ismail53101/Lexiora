@@ -53,6 +53,8 @@ android {
         targetSdk = flutter.targetSdkVersion
         versionCode = flutter.versionCode
         versionName = flutter.versionName
+        manifestPlaceholders["admobAppId"] =
+            "ca-app-pub-3940256099942544~3347511713"
     }
 
     signingConfigs {
@@ -69,8 +71,10 @@ android {
     buildTypes {
         release {
             // Always use the real production/upload keystore. The build fails
-            // above if android/key.properties is absent.
+            // above if the production keystore is absent.
             signingConfig = signingConfigs.getByName("release")
+            manifestPlaceholders["admobAppId"] =
+                "ca-app-pub-434281193355977~3999306324"
             // Remove unreachable Java/Kotlin bytecode. Notification sounds are
             // selected by resource name at runtime through Flutter, so Android
             // resource shrinking cannot reliably detect and preserve them.
