@@ -190,7 +190,11 @@ class _StageMapPageState extends ConsumerState<StageMapPage> {
     }
     final int quizNumber = stage + 1;
     final RewardedAdManager manager = sl<RewardedAdManager>();
-    if (await manager.requiresMainQuizUnlock(quizNumber)) {
+    final bool milestoneGate = AdConfiguration.isRewardedQuizMilestone(
+      quizNumber,
+    );
+    final bool alreadyUnlocked = await manager.hasMainQuizUnlock(quizNumber);
+    if (milestoneGate && !alreadyUnlocked) {
       final bool unlocked = await _offerQuizUnlock(manager, quizNumber);
       if (!unlocked || !mounted) return;
       setState(() => _sessionUnlockedStages.add(stage));

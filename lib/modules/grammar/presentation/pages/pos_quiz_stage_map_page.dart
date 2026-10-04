@@ -33,7 +33,11 @@ class _PosQuizStageMapPageState extends ConsumerState<PosQuizStageMapPage> {
     if (!_isUnlocked(index)) return;
     final int quizNumber = index + 1;
     final RewardedAdManager manager = sl<RewardedAdManager>();
-    if (await manager.requiresGrammarQuizUnlock(quizNumber)) {
+    final bool milestoneGate = AdConfiguration.isRewardedQuizMilestone(
+      quizNumber,
+    );
+    final bool alreadyUnlocked = await manager.hasGrammarQuizUnlock(quizNumber);
+    if (milestoneGate && !alreadyUnlocked) {
       final bool unlocked = await _offerQuizUnlock(manager, quizNumber);
       if (!unlocked || !mounted) return;
       setState(() => _sessionUnlockedStages.add(index));

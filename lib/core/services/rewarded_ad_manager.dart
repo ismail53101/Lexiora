@@ -28,6 +28,9 @@ abstract final class AdConfiguration {
       'ca-app-pub-4342811933559577/5768607000';
   static const int rewardedQuizMilestone = 5;
 
+  static bool isRewardedQuizMilestone(int quizNumber) =>
+      quizNumber > 1 && (quizNumber - 1) % rewardedQuizMilestone == 0;
+
   /// Central AI usage configuration; change these values without changing the
   /// AI Assistant flow or rewarded-ad implementation.
   static const int FREE_AI_REQUEST_LIMIT = 7;
@@ -420,8 +423,7 @@ class RewardedAdManager {
       .toSet();
 
   bool _requiresUnlock(int completed, Set<int> unlocks, int quizNumber) =>
-      quizNumber > 1 &&
-      (quizNumber - 1) % AdConfiguration.rewardedQuizMilestone == 0 &&
+      AdConfiguration.isRewardedQuizMilestone(quizNumber) &&
       completed >= quizNumber - 1 &&
       !unlocks.contains(quizNumber);
 
