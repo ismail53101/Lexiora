@@ -148,7 +148,8 @@ jobs:
           test "$actual" = "$expected"
           aapt="$(find "$ANDROID_HOME/build-tools" -type f -name aapt | sort -V | tail -n 1)"
           test -n "$aapt"
-          "$aapt" dump xmltree build/app/outputs/flutter-apk/app-release.apk > /tmp/release-apk-manifest.txt
+          "$aapt" dump xmltree build/app/outputs/flutter-apk/app-release.apk \
+            --file AndroidManifest.xml > /tmp/release-apk-manifest.txt
           grep -F "$expected" /tmp/release-apk-manifest.txt
 
       - name: Build release App Bundle (.aab, for Play Store)
