@@ -259,6 +259,19 @@ class _StageResultsPageState extends ConsumerState<StageResultsPage> {
           const SizedBox(height: 26),
           FilledButton.icon(
             onPressed: () {
+              if (!passed) {
+                Navigator.of(context).pushReplacement(
+                  MaterialPageRoute<void>(
+                    builder: (_) => StagePlayerPage(
+                      subjectId: subjectId,
+                      subjectName: subjectName,
+                      topicId: topicId,
+                      stageIndex: stageIndex,
+                    ),
+                  ),
+                );
+                return;
+              }
               if (!hasNext) {
                 Navigator.of(context).pop();
                 return;
