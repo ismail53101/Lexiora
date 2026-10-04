@@ -69,41 +69,47 @@ class _DictionaryPageState extends ConsumerState<DictionaryPage> {
           ),
         ],
       ),
-      body: ValueListenableBuilder<DictionarySeedStatus>(
-        valueListenable: seeder.status,
-        builder: (BuildContext context, DictionarySeedStatus seed, _) {
-          if (seed.isSeeding) return _SeedingView(status: seed);
-          if (seed.isError) {
-            return ErrorView(
-              title: 'Dictionary unavailable',
-              message: 'The offline dictionary could not be prepared.',
-              onRetry: () => ref.read(dictionarySeederProvider).ensureSeeded(),
-            );
-          }
-          return Column(
-            children: [
-              _SearchField(
-                controller: _field,
-                onChanged: (String v) => ref
-                    .read(dictionarySearchControllerProvider.notifier)
-                    .onQueryChanged(v),
-                onClear: () {
-                  _field.clear();
-                  ref
-                      .read(dictionarySearchControllerProvider.notifier)
-                      .onQueryChanged('');
-                },
+      body: Column(
+        children: [
+          _SearchField(
+            controller: _field,
+            onChanged: (String v) => ref
+                .read(dictionarySearchControllerProvider.notifier)
+                .onQueryChanged(v),
+            onClear: () {
+              _field.clear();
+              ref
+                  .read(dictionarySearchControllerProvider.notifier)
+                  .onQueryChanged('');
+            },
+          ),
+          SizedBox(
+            height: 50,
+            child: Center(
+              child: ManagedBannerAd(
+                manager: sl<RewardedAdManager>(),
+                placementName: 'dictionary',
               ),
-              Center(
-                child: ManagedBannerAd(
-                  manager: sl<RewardedAdManager>(),
-                  placementName: 'dictionary',
-                ),
-              ),
-              Expanded(child: _buildBody()),
-            ],
-          );
-        },
+            ),
+          ),
+          Expanded(
+            child: ValueListenableBuilder<DictionarySeedStatus>(
+              valueListenable: seeder.status,
+              builder: (BuildContext context, DictionarySeedStatus seed, _) {
+                if (seed.isSeeding) return _SeedingView(status: seed);
+                if (seed.isError) {
+                  return ErrorView(
+                    title: 'Dictionary unavailable',
+                    message: 'The offline dictionary could not be prepared.',
+                    onRetry: () =>
+                        ref.read(dictionarySeederProvider).ensureSeeded(),
+                  );
+                }
+                return _buildBody();
+              },
+            ),
+          ),
+        ],
       ),
     );
   }
