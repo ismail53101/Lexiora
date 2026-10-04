@@ -23,6 +23,7 @@ class _PosQuizStagePlayerPageState extends State<PosQuizStagePlayerPage> {
   int _score = 0;
   int? _selectedIndex;
   bool _showResult = false;
+  bool _rewardOfferAvailable = false;
 
   GrammarQuestion get _question => _questions[_questionIndex];
   bool get _answered => _selectedIndex != null;
@@ -60,7 +61,12 @@ class _PosQuizStagePlayerPageState extends State<PosQuizStagePlayerPage> {
   void _next() {
     if (!_answered) return;
     if (_questionIndex == _questions.length - 1) {
-      setState(() => _showResult = true);
+      final bool offer = sl<RewardedAdManager>().recordGrammarQuizCompletion();
+      setState(() {
+        _rewardOfferAvailable = offer;
+        _showResult = true;
+      });
+      if (offer && mounted) unawaited(_offerGrammarReward(context));
       return;
     }
     setState(() {
@@ -75,6 +81,43 @@ class _PosQuizStagePlayerPageState extends State<PosQuizStagePlayerPage> {
   void dispose() {
     _timer?.cancel();
     super.dispose();
+  }
+
+  Future<void> _offerGrammarReward(BuildContext context) async {
+    final bool watch = await showDialog<bool>(
+          context: context,
+          builder: (BuildContext dialogContext) => AlertDialog(
+            title: const Text('Keep your streak going'),
+            content: const Text(
+              'You completed five grammar quizzes. Watch a short ad for a bonus reward?',
+            ),
+            actions: <Widget>[
+              TextButton(
+                onPressed: () => Navigator.of(dialogContext).pop(false),
+                child: const Text('Not now'),
+              ),
+              FilledButton(
+                onPressed: () => Navigator.of(dialogContext).pop(true),
+                child: const Text('Watch ad'),
+              ),
+            ],
+          ),
+        ) ??
+        false;
+    if (!watch || !mounted) return;
+    final RewardedAdResult result = await sl<RewardedAdManager>().showRewarded(
+      placement: RewardedAdPlacement.grammarQuiz,
+    );
+    if (!mounted) return;
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(
+        content: Text(
+          result == RewardedAdResult.rewarded
+              ? 'Reward claimed.'
+              : 'The ad was not completed. You can continue normally.',
+        ),
+      ),
+    );
   }
 
   @override
@@ -248,12 +291,14 @@ class _PosQuizStagePlayerPageState extends State<PosQuizStagePlayerPage> {
             Text('$_score / ${_questions.length}', style: Theme.of(context).textTheme.headlineMedium),
             const SizedBox(height: 8),
             Text(passed ? 'You scored 50% or more. The next stage is unlocked.' : 'Score at least 50% to unlock the next stage.', textAlign: TextAlign.center),
-            const SizedBox(height: 28),
-            OutlinedButton.icon(
-              onPressed: () => _watchCompletionReward(context),
-              icon: const Icon(Icons.play_circle_outline),
-              label: const Text('WATCH AD FOR BONUS'),
-            ),
+            if (_rewardOfferAvailable) ...<Widget>[
+              const SizedBox(height: 28),
+              OutlinedButton.icon(
+                onPressed: () => _offerGrammarReward(context),
+                icon: const Icon(Icons.play_circle_outline),
+                label: const Text('WATCH AD FOR BONUS'),
+              ),
+            ],
             const SizedBox(height: 10),
             FilledButton(
               onPressed: () => Navigator.of(context).pop(passed),
@@ -265,18 +310,6 @@ class _PosQuizStagePlayerPageState extends State<PosQuizStagePlayerPage> {
     );
   }
 
-  Future<void> _watchCompletionReward(BuildContext context) async {
-    final RewardedAdResult result = await sl<RewardedAdManager>().showRewarded(
-      placement: RewardedAdPlacement.grammarQuiz,
-    );
-    if (!mounted) return;
-    final String message = result == RewardedAdResult.rewarded
-        ? 'Reward claimed.'
-        : result == RewardedAdResult.unavailable
-            ? 'The ad is not ready. You can continue normally.'
-            : 'No reward was granted.';
-    ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(message)));
-  }
 }
 
 

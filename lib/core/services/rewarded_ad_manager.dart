@@ -26,6 +26,7 @@ abstract final class AdConfiguration {
       'ca-app-pub-3940256099942544/5224354917';
   static const String productionRewardedId =
       'ca-app-pub-4342811933559577/5768607000';
+  static const int rewardedQuizMilestone = 5;
   /// Central AI usage configuration; change these values without changing the
   /// AI Assistant flow or rewarded-ad implementation.
   static const int FREE_AI_REQUEST_LIMIT = 7;
@@ -64,6 +65,7 @@ enum RewardedAdResult {
   premium,
   cooldown,
   unavailable,
+  dismissedWithoutReward,
   failed,
 }
 
@@ -93,6 +95,7 @@ class RewardedAdManager {
   final Map<RewardedAdPlacement, DateTime> _lastRewardedShown =
       <RewardedAdPlacement, DateTime>{};
   int _mainQuizCompletions = 0;
+  int _grammarQuizCompletions = 0;
   int _aiRequestsRemaining = AdConfiguration.FREE_AI_REQUEST_LIMIT;
   bool _initialized = false;
   bool _showingInterstitial = false;
@@ -309,7 +312,9 @@ class RewardedAdManager {
     ad.fullScreenContentCallback = FullScreenContentCallback<RewardedAd>(
       onAdDismissedFullScreenContent: (RewardedAd dismissedAd) {
         unawaited(dismissedAd.dispose());
-        finish(rewarded ? RewardedAdResult.rewarded : RewardedAdResult.failed);
+        finish(rewarded
+            ? RewardedAdResult.rewarded
+            : RewardedAdResult.dismissedWithoutReward);
       },
       onAdFailedToShowFullScreenContent: (RewardedAd failedAd, AdError error) {
         AppLogger.w('Rewarded ad failed to show: $error');
@@ -338,7 +343,13 @@ class RewardedAdManager {
   /// Returns true on every fifth completed main-Quiz session in this app run.
   bool recordMainQuizCompletion() {
     _mainQuizCompletions++;
-    return _mainQuizCompletions % 5 == 0;
+    return _mainQuizCompletions % AdConfiguration.rewardedQuizMilestone == 0;
+  }
+
+  /// Returns true only for every fifth completed grammar quiz.
+  bool recordGrammarQuizCompletion() {
+    _grammarQuizCompletions++;
+    return _grammarQuizCompletions % AdConfiguration.rewardedQuizMilestone == 0;
   }
 
   void dispose() {
