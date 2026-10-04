@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:lexiora/app/di/injector.dart';
+import 'package:lexiora/core/services/rewarded_ad_manager.dart';
 import 'package:lexiora/modules/grammar/domain/entities/grammar_lesson.dart';
 import 'package:lexiora/modules/grammar/presentation/pages/pos_quiz_stage_player_page.dart';
 import 'package:lexiora/modules/grammar/presentation/providers/grammar_providers.dart';
@@ -16,22 +18,29 @@ class PosQuizStageMapPage extends ConsumerStatefulWidget {
   final String title;
 
   @override
-  ConsumerState<PosQuizStageMapPage> createState() => _PosQuizStageMapPageState();
+  ConsumerState<PosQuizStageMapPage> createState() =>
+      _PosQuizStageMapPageState();
 }
 
 class _PosQuizStageMapPageState extends ConsumerState<PosQuizStageMapPage> {
   final Set<int> _passedStages = <int>{};
 
-  bool _isUnlocked(int index) => index == 0 || _passedStages.contains(index - 1);
+  bool _isUnlocked(int index) =>
+      index == 0 || _passedStages.contains(index - 1);
 
   Future<void> _openStage(GrammarLesson lesson, int index) async {
     if (!_isUnlocked(index)) return;
+    final int quizNumber = index + 1;
+    final RewardedAdManager manager = sl<RewardedAdManager>();
+    if (await manager.requiresGrammarQuizUnlock(quizNumber)) {
+      final bool unlocked = await _offerQuizUnlock(manager, quizNumber);
+      if (!unlocked || !mounted) return;
+    }
+    if (!mounted) return;
     final bool? passed = await Navigator.of(context).push<bool>(
       MaterialPageRoute<bool>(
-        builder: (_) => PosQuizStagePlayerPage(
-          lesson: lesson,
-          stageIndex: index,
-        ),
+        builder: (_) =>
+            PosQuizStagePlayerPage(lesson: lesson, stageIndex: index),
       ),
     );
     if (passed == true && mounted) {
@@ -39,15 +48,60 @@ class _PosQuizStageMapPageState extends ConsumerState<PosQuizStageMapPage> {
     }
   }
 
+  Future<bool> _offerQuizUnlock(
+    RewardedAdManager manager,
+    int quizNumber,
+  ) async {
+    final bool watch =
+        await showDialog<bool>(
+          context: context,
+          builder: (BuildContext dialogContext) => AlertDialog(
+            title: Text('Unlock Grammar Quiz $quizNumber'),
+            content: const Text(
+              'Watch a short ad to unlock this quiz. The next five grammar quizzes will then be free.',
+            ),
+            actions: <Widget>[
+              TextButton(
+                onPressed: () => Navigator.of(dialogContext).pop(false),
+                child: const Text('Not now'),
+              ),
+              FilledButton(
+                onPressed: () => Navigator.of(dialogContext).pop(true),
+                child: const Text('Watch Ad to Unlock'),
+              ),
+            ],
+          ),
+        ) ??
+        false;
+    if (!watch || !mounted) return false;
+    final RewardedAdResult result = await manager.showRewarded(
+      placement: RewardedAdPlacement.grammarQuiz,
+    );
+    if (result != RewardedAdResult.rewarded) {
+      if (mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(
+            content: Text('Quiz remains locked until the ad is completed.'),
+          ),
+        );
+      }
+      return false;
+    }
+    await manager.unlockGrammarQuiz(quizNumber);
+    return true;
+  }
+
   @override
   Widget build(BuildContext context) {
-    final AsyncValue<GrammarLesson?> lessonValue =
-        ref.watch(grammarLeafProvider(widget.lessonId));
+    final AsyncValue<GrammarLesson?> lessonValue = ref.watch(
+      grammarLeafProvider(widget.lessonId),
+    );
     return Scaffold(
       appBar: AppBar(title: Text(widget.title)),
       body: lessonValue.when(
         loading: () => const Center(child: CircularProgressIndicator()),
-        error: (_, _) => const Center(child: Text('Could not load quiz questions.')),
+        error: (_, _) =>
+            const Center(child: Text('Could not load quiz questions.')),
         data: (GrammarLesson? lesson) {
           if (lesson == null || lesson.quiz.isEmpty) {
             return const Center(child: Text('No quiz questions available.'));
@@ -64,20 +118,26 @@ class _PosQuizStageMapPageState extends ConsumerState<PosQuizStageMapPage> {
                     children: <Widget>[
                       Row(
                         children: <Widget>[
-                          Icon(Icons.flag_outlined,
-                              color: Theme.of(context).colorScheme.primary, size: 30),
+                          Icon(
+                            Icons.flag_outlined,
+                            color: Theme.of(context).colorScheme.primary,
+                            size: 30,
+                          ),
                           const SizedBox(width: 14),
                           Expanded(
-                            child: Text('Stage ladder',
-                                style: Theme.of(context).textTheme.titleLarge?.copyWith(
-                                      fontWeight: FontWeight.w800,
-                                    )),
+                            child: Text(
+                              'Stage ladder',
+                              style: Theme.of(context).textTheme.titleLarge
+                                  ?.copyWith(fontWeight: FontWeight.w800),
+                            ),
                           ),
-                          Text('${_passedStages.length} / $stageCount passed',
-                              style: TextStyle(
-                                color: Theme.of(context).colorScheme.primary,
-                                fontWeight: FontWeight.w700,
-                              )),
+                          Text(
+                            '${_passedStages.length} / $stageCount passed',
+                            style: TextStyle(
+                              color: Theme.of(context).colorScheme.primary,
+                              fontWeight: FontWeight.w700,
+                            ),
+                          ),
                         ],
                       ),
                       const SizedBox(height: 16),
@@ -112,15 +172,17 @@ class _PosQuizStageMapPageState extends ConsumerState<PosQuizStageMapPage> {
                     child: Card(
                       color: unlocked
                           ? Theme.of(context).colorScheme.surface
-                          : Theme.of(context).colorScheme.surfaceContainerHighest,
+                          : Theme.of(
+                              context,
+                            ).colorScheme.surfaceContainerHighest,
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(18),
                         side: BorderSide(
                           color: passed
                               ? Colors.green
                               : unlocked
-                                  ? Theme.of(context).colorScheme.primary
-                                  : Theme.of(context).dividerColor,
+                              ? Theme.of(context).colorScheme.primary
+                              : Theme.of(context).dividerColor,
                           width: unlocked || passed ? 1.5 : 1,
                         ),
                       ),
@@ -136,32 +198,35 @@ class _PosQuizStageMapPageState extends ConsumerState<PosQuizStageMapPage> {
                                   passed
                                       ? Icons.check_circle_outline
                                       : unlocked
-                                          ? Icons.play_arrow_rounded
-                                          : Icons.lock_outline,
+                                      ? Icons.play_arrow_rounded
+                                      : Icons.lock_outline,
                                   color: passed
                                       ? Colors.green
                                       : unlocked
-                                          ? Theme.of(context).colorScheme.primary
-                                          : Theme.of(context).disabledColor,
+                                      ? Theme.of(context).colorScheme.primary
+                                      : Theme.of(context).disabledColor,
                                   size: 30,
                                 ),
                                 if (!unlocked)
-                                  Icon(Icons.lock_outline,
-                                      color: Theme.of(context).disabledColor),
+                                  Icon(
+                                    Icons.lock_outline,
+                                    color: Theme.of(context).disabledColor,
+                                  ),
                               ],
                             ),
                             const Spacer(),
-                            Text('Stage ${index + 1}',
-                                style: Theme.of(context).textTheme.titleMedium?.copyWith(
-                                      fontWeight: FontWeight.w800,
-                                    )),
+                            Text(
+                              'Stage ${index + 1}',
+                              style: Theme.of(context).textTheme.titleMedium
+                                  ?.copyWith(fontWeight: FontWeight.w800),
+                            ),
                             const SizedBox(height: 6),
                             Text(
                               passed
                                   ? 'Passed'
                                   : unlocked
-                                      ? '$count questions · 50s each'
-                                      : 'Pass Stage $index to unlock',
+                                  ? '$count questions · 50s each'
+                                  : 'Pass Stage $index to unlock',
                               style: Theme.of(context).textTheme.bodyMedium,
                             ),
                           ],

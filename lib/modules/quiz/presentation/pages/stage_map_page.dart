@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
+import 'package:lexiora/app/di/injector.dart';
 import 'package:lexiora/app/router/app_routes.dart';
+import 'package:lexiora/core/services/rewarded_ad_manager.dart';
 import 'package:lexiora/core/widgets/empty_state.dart';
 import 'package:lexiora/modules/quiz/domain/entities/quiz_stage_progress.dart';
 import 'package:lexiora/modules/quiz/domain/entities/quiz_subject.dart';
@@ -37,11 +39,12 @@ class _StageMapPageState extends ConsumerState<StageMapPage> {
   @override
   Widget build(BuildContext context) {
     final ThemeData theme = Theme.of(context);
-    final List<QuizSubjectSummary> subjects =
-        ref.watch(quizSubjectsProvider(false)).maybeWhen(
-              data: (List<QuizSubjectSummary> s) => s,
-              orElse: () => const <QuizSubjectSummary>[],
-            );
+    final List<QuizSubjectSummary> subjects = ref
+        .watch(quizSubjectsProvider(false))
+        .maybeWhen(
+          data: (List<QuizSubjectSummary> s) => s,
+          orElse: () => const <QuizSubjectSummary>[],
+        );
     QuizSubject? subject;
     for (final QuizSubjectSummary s in subjects) {
       if (s.subject.id == widget.subjectId) {
@@ -55,16 +58,15 @@ class _StageMapPageState extends ConsumerState<StageMapPage> {
       subjectId: widget.subjectId,
       topicId: widget.topicId,
     );
-    final int stageCount =
-        ref.watch(quizStageCountProvider(scope)).maybeWhen(
-              data: (int n) => n,
-              orElse: () => -1,
-            );
-    final List<QuizStageProgress> progress =
-        ref.watch(quizStageProgressProvider(scope)).maybeWhen(
-              data: (List<QuizStageProgress> p) => p,
-              orElse: () => const <QuizStageProgress>[],
-            );
+    final int stageCount = ref
+        .watch(quizStageCountProvider(scope))
+        .maybeWhen(data: (int n) => n, orElse: () => -1);
+    final List<QuizStageProgress> progress = ref
+        .watch(quizStageProgressProvider(scope))
+        .maybeWhen(
+          data: (List<QuizStageProgress> p) => p,
+          orElse: () => const <QuizStageProgress>[],
+        );
     final String pageTitle = widget.title ?? subject?.name ?? 'Quiz';
 
     if (stageCount < 0) {
@@ -84,8 +86,10 @@ class _StageMapPageState extends ConsumerState<StageMapPage> {
       );
     }
 
-    final Set<int> passed =
-        <int>{for (final QuizStageProgress p in progress) if (p.passed) p.stageIndex};
+    final Set<int> passed = <int>{
+      for (final QuizStageProgress p in progress)
+        if (p.passed) p.stageIndex,
+    };
     // The "current" stage is the first unlocked stage not passed yet; when the
     // whole ladder is done it stays on the last stage.
     int current = 0;
@@ -146,8 +150,7 @@ class _StageMapPageState extends ConsumerState<StageMapPage> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
                 IconButton(
-                  onPressed:
-                      _page == 0 ? null : () => setState(() => _page--),
+                  onPressed: _page == 0 ? null : () => setState(() => _page--),
                   icon: const Icon(Icons.chevron_left),
                   tooltip: 'Previous',
                 ),
@@ -170,15 +173,66 @@ class _StageMapPageState extends ConsumerState<StageMapPage> {
     );
   }
 
-  void _open(int stage, Set<int> passed) {
+  Future<void> _open(int stage, Set<int> passed) async {
     if (!quizStageUnlocked(stage, passed)) {
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(content: Text('Pass Stage $stage with 50% to unlock it.')),
       );
       return;
     }
-    context.push(
-        '${AppRoutes.quizStagePlay}?subjectId=${Uri.encodeComponent(widget.subjectId)}${widget.topicId == null ? '' : '&topicId=${Uri.encodeComponent(widget.topicId!)}'}${widget.title == null ? '' : '&title=${Uri.encodeComponent(widget.title!)}'}&stage=$stage');
+    final int quizNumber = stage + 1;
+    final RewardedAdManager manager = sl<RewardedAdManager>();
+    if (await manager.requiresMainQuizUnlock(quizNumber)) {
+      final bool unlocked = await _offerQuizUnlock(manager, quizNumber);
+      if (!unlocked || !mounted) return;
+    }
+    if (!mounted) return;
+    await context.push(
+      '${AppRoutes.quizStagePlay}?subjectId=${Uri.encodeComponent(widget.subjectId)}${widget.topicId == null ? '' : '&topicId=${Uri.encodeComponent(widget.topicId!)}'}${widget.title == null ? '' : '&title=${Uri.encodeComponent(widget.title!)}'}&stage=$stage',
+    );
+  }
+
+  Future<bool> _offerQuizUnlock(
+    RewardedAdManager manager,
+    int quizNumber,
+  ) async {
+    final bool watch =
+        await showDialog<bool>(
+          context: context,
+          builder: (BuildContext dialogContext) => AlertDialog(
+            title: Text('Unlock Quiz $quizNumber'),
+            content: const Text(
+              'Watch a short ad to unlock this quiz. The next five quizzes will then be free.',
+            ),
+            actions: <Widget>[
+              TextButton(
+                onPressed: () => Navigator.of(dialogContext).pop(false),
+                child: const Text('Not now'),
+              ),
+              FilledButton(
+                onPressed: () => Navigator.of(dialogContext).pop(true),
+                child: const Text('Watch Ad to Unlock'),
+              ),
+            ],
+          ),
+        ) ??
+        false;
+    if (!watch || !mounted) return false;
+    final RewardedAdResult result = await manager.showRewarded(
+      placement: RewardedAdPlacement.quiz,
+    );
+    if (result != RewardedAdResult.rewarded) {
+      if (mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(
+            content: Text('Quiz remains locked until the ad is completed.'),
+          ),
+        );
+      }
+      return false;
+    }
+    await manager.unlockMainQuiz(quizNumber);
+    return true;
   }
 }
 
@@ -213,8 +267,9 @@ class _LadderHeader extends StatelessWidget {
                 Expanded(
                   child: Text(
                     'Stage ladder',
-                    style: theme.textTheme.titleMedium
-                        ?.copyWith(fontWeight: FontWeight.w800),
+                    style: theme.textTheme.titleMedium?.copyWith(
+                      fontWeight: FontWeight.w800,
+                    ),
                   ),
                 ),
                 Text(
@@ -237,8 +292,9 @@ class _LadderHeader extends StatelessWidget {
             Text(
               'Each stage is 10 questions. Score 50% or more to unlock the '
               'next level.',
-              style: theme.textTheme.bodySmall
-                  ?.copyWith(color: theme.colorScheme.onSurfaceVariant),
+              style: theme.textTheme.bodySmall?.copyWith(
+                color: theme.colorScheme.onSurfaceVariant,
+              ),
             ),
           ],
         ),
@@ -281,13 +337,11 @@ class _StageCard extends StatelessWidget {
 
     return Material(
       color: theme.colorScheme.surfaceContainerHigh.withValues(
-          alpha: locked ? 0.45 : 1),
+        alpha: locked ? 0.45 : 1,
+      ),
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(16),
-        side: BorderSide(
-          color: borderColor,
-          width: isCurrent ? 2 : 1,
-        ),
+        side: BorderSide(color: borderColor, width: isCurrent ? 2 : 1),
       ),
       clipBehavior: Clip.antiAlias,
       child: InkWell(
@@ -304,7 +358,9 @@ class _StageCard extends StatelessWidget {
                   if (isCurrent)
                     Container(
                       padding: const EdgeInsets.symmetric(
-                          horizontal: 8, vertical: 3),
+                        horizontal: 8,
+                        vertical: 3,
+                      ),
                       decoration: BoxDecoration(
                         color: color,
                         borderRadius: BorderRadius.circular(12),
@@ -320,11 +376,17 @@ class _StageCard extends StatelessWidget {
                       ),
                     )
                   else if (locked)
-                    Icon(Icons.lock_outline,
-                        size: 18, color: theme.colorScheme.outline)
+                    Icon(
+                      Icons.lock_outline,
+                      size: 18,
+                      color: theme.colorScheme.outline,
+                    )
                   else
-                    Icon(Icons.check_circle,
-                        size: 18, color: theme.colorScheme.primary),
+                    Icon(
+                      Icons.check_circle,
+                      size: 18,
+                      color: theme.colorScheme.primary,
+                    ),
                 ],
               ),
               const Spacer(),
@@ -364,8 +426,11 @@ class _StageCard extends StatelessWidget {
           color: theme.colorScheme.surfaceContainerHighest,
           borderRadius: BorderRadius.circular(10),
         ),
-        child: Icon(Icons.lock_outline,
-            size: 18, color: theme.colorScheme.outline),
+        child: Icon(
+          Icons.lock_outline,
+          size: 18,
+          color: theme.colorScheme.outline,
+        ),
       );
     }
     if (progress == null) {
@@ -395,8 +460,10 @@ class _StageCard extends StatelessWidget {
           Center(
             child: Text(
               '${progress!.bestScore}%',
-              style: theme.textTheme.labelSmall
-                  ?.copyWith(fontWeight: FontWeight.w800, fontSize: 9),
+              style: theme.textTheme.labelSmall?.copyWith(
+                fontWeight: FontWeight.w800,
+                fontSize: 9,
+              ),
             ),
           ),
         ],
@@ -407,8 +474,8 @@ class _StageCard extends StatelessWidget {
   String _subtitle(ThemeData theme) {
     if (locked) return 'Pass Stage $stageIndex to unlock';
     if (progress == null) return '10 questions · 50s each';
-    final String stars = '★' * progress!.bestStars +
-        '☆' * (3 - progress!.bestStars);
+    final String stars =
+        '★' * progress!.bestStars + '☆' * (3 - progress!.bestStars);
     return 'Best $stars · ${progress!.attempts} attempt'
         '${progress!.attempts == 1 ? '' : 's'}';
   }

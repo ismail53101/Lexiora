@@ -74,7 +74,11 @@ class _StagePlayerPageState extends ConsumerState<StagePlayerPage> {
   Future<void> _load() async {
     final List<QuizQuestion> qs = await ref
         .read(quizRepositoryProvider)
-        .stageQuestions(widget.subjectId, widget.stageIndex, topicId: widget.topicId);
+        .stageQuestions(
+          widget.subjectId,
+          widget.stageIndex,
+          topicId: widget.topicId,
+        );
     if (!mounted) return;
     setState(() {
       _questions = qs;
@@ -93,8 +97,11 @@ class _StagePlayerPageState extends ConsumerState<StagePlayerPage> {
   void _prepareQuestion() {
     if (_questions.isEmpty) return;
     final QuizQuestion q = _questions[_index];
-    final ShuffledOptions shuffled =
-        shuffleOptions(q.options, q.answerIndex, _random);
+    final ShuffledOptions shuffled = shuffleOptions(
+      q.options,
+      q.answerIndex,
+      _random,
+    );
     _displayOrder = shuffled.order;
   }
 
@@ -137,7 +144,8 @@ class _StagePlayerPageState extends ConsumerState<StagePlayerPage> {
   }
 
   void _accrueTime() {
-    _timeMs[_index] = (_timeMs[_index] ?? 0) +
+    _timeMs[_index] =
+        (_timeMs[_index] ?? 0) +
         DateTime.now().difference(_shownAt).inMilliseconds;
   }
 
@@ -182,15 +190,16 @@ class _StagePlayerPageState extends ConsumerState<StagePlayerPage> {
     final List<QuestionOutcome> outcomes = <QuestionOutcome>[];
     for (int i = 0; i < _questions.length; i++) {
       final QuizGivenAnswer? g = _answers[i];
-      outcomes.add(QuestionOutcome(
-        question: _questions[i],
-        given: g,
-        skipped: g == null || g.isEmpty,
-        timeMs: _timeMs[i] ?? 0,
-      ));
+      outcomes.add(
+        QuestionOutcome(
+          question: _questions[i],
+          given: g,
+          skipped: g == null || g.isEmpty,
+          timeMs: _timeMs[i] ?? 0,
+        ),
+      );
     }
-    final int duration =
-        DateTime.now().difference(_startedAt).inMilliseconds;
+    final int duration = DateTime.now().difference(_startedAt).inMilliseconds;
     final QuizAttempt attempt = await ref
         .read(quizRepositoryProvider)
         .recordAttempt(
@@ -201,7 +210,9 @@ class _StagePlayerPageState extends ConsumerState<StagePlayerPage> {
         );
     final int correct = attempt.correct;
     final int total = attempt.totalQuestions;
-    await ref.read(quizRepositoryProvider).saveStageResult(
+    await ref
+        .read(quizRepositoryProvider)
+        .saveStageResult(
           subjectId: widget.subjectId,
           topicId: widget.topicId,
           stageIndex: widget.stageIndex,
@@ -209,54 +220,19 @@ class _StagePlayerPageState extends ConsumerState<StagePlayerPage> {
           total: total,
         );
     ref.read(qRevisionProvider.notifier).bump();
-    if (sl<RewardedAdManager>().recordMainQuizCompletion() && mounted) {
-      await _offerReward(context);
-    }
+    await sl<RewardedAdManager>().recordMainQuizCompletion();
     if (!mounted) return;
-    unawaited(Navigator.of(context).pushReplacement(MaterialPageRoute<void>(
-      builder: (_) => StageResultsPage(
-        subjectId: widget.subjectId,
-        subjectName: widget.subjectName,
-        topicId: widget.topicId,
-        stageIndex: widget.stageIndex,
-        attempt: attempt,
-        outcomes: outcomes,
-      ),
-    )));
-  }
-
-  Future<void> _offerReward(BuildContext context) async {
-    final bool watch = await showDialog<bool>(
-          context: context,
-          builder: (BuildContext dialogContext) => AlertDialog(
-            title: const Text('Keep your streak going'),
-            content: const Text(
-              'You completed five quizzes. Watch a short ad for a bonus reward?',
-            ),
-            actions: <Widget>[
-              TextButton(
-                onPressed: () => Navigator.of(dialogContext).pop(false),
-                child: const Text('Not now'),
-              ),
-              FilledButton(
-                onPressed: () => Navigator.of(dialogContext).pop(true),
-                child: const Text('Watch ad'),
-              ),
-            ],
+    unawaited(
+      Navigator.of(context).pushReplacement(
+        MaterialPageRoute<void>(
+          builder: (_) => StageResultsPage(
+            subjectId: widget.subjectId,
+            subjectName: widget.subjectName,
+            topicId: widget.topicId,
+            stageIndex: widget.stageIndex,
+            attempt: attempt,
+            outcomes: outcomes,
           ),
-        ) ??
-        false;
-    if (!watch || !mounted) return;
-    final RewardedAdResult result = await sl<RewardedAdManager>().showRewarded(
-      placement: RewardedAdPlacement.quiz,
-    );
-    if (!mounted) return;
-    ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(
-        content: Text(
-          result == RewardedAdResult.rewarded
-              ? 'Reward claimed.'
-              : 'The ad was not completed. You can continue normally.',
         ),
       ),
     );
@@ -270,11 +246,13 @@ class _StagePlayerPageState extends ConsumerState<StagePlayerPage> {
             content: const Text('Your progress in this stage will be lost.'),
             actions: <Widget>[
               TextButton(
-                  onPressed: () => Navigator.of(context).pop(false),
-                  child: const Text('Stay')),
+                onPressed: () => Navigator.of(context).pop(false),
+                child: const Text('Stay'),
+              ),
               FilledButton(
-                  onPressed: () => Navigator.of(context).pop(true),
-                  child: const Text('Leave')),
+                onPressed: () => Navigator.of(context).pop(true),
+                child: const Text('Leave'),
+              ),
             ],
           ),
         ) ??
@@ -344,9 +322,7 @@ class _StagePlayerPageState extends ConsumerState<StagePlayerPage> {
                     '${_remaining}s',
                     style: theme.textTheme.titleSmall?.copyWith(
                       fontWeight: FontWeight.w800,
-                      color: _remaining <= 5
-                          ? theme.colorScheme.error
-                          : null,
+                      color: _remaining <= 5 ? theme.colorScheme.error : null,
                     ),
                   ),
                 ],
@@ -410,7 +386,10 @@ class _StagePlayerPageState extends ConsumerState<StagePlayerPage> {
   }
 
   List<Widget> _answerArea(
-      ThemeData theme, QuizQuestion q, QuizGivenAnswer? given) {
+    ThemeData theme,
+    QuizQuestion q,
+    QuizGivenAnswer? given,
+  ) {
     final bool answered = given != null && !given.isEmpty;
     switch (q.type) {
       case QuestionType.mcqSingle:
@@ -418,8 +397,7 @@ class _StagePlayerPageState extends ConsumerState<StagePlayerPage> {
         // position maps back to the original index for grading.
         return <Widget>[
           for (int display = 0; display < _displayOrder.length; display++)
-            _choice(
-                q, display, q.options[_displayOrder[display]], given),
+            _choice(q, display, q.options[_displayOrder[display]], given),
         ];
       case QuestionType.trueFalse:
         return <Widget>[
@@ -460,15 +438,20 @@ class _StagePlayerPageState extends ConsumerState<StagePlayerPage> {
         return <Widget>[
           Text(
             'This question type is reserved and not playable in this version.',
-            style: theme.textTheme.bodyMedium
-                ?.copyWith(color: theme.colorScheme.onSurfaceVariant),
+            style: theme.textTheme.bodyMedium?.copyWith(
+              color: theme.colorScheme.onSurfaceVariant,
+            ),
           ),
         ];
     }
   }
 
   Widget _choice(
-      QuizQuestion q, int displayIndex, String text, QuizGivenAnswer? given) {
+    QuizQuestion q,
+    int displayIndex,
+    String text,
+    QuizGivenAnswer? given,
+  ) {
     final int originalIndex = _displayOrder[displayIndex];
     final bool answered = given != null && !given.isEmpty;
     final bool isSelected = given?.index == originalIndex;
@@ -477,7 +460,9 @@ class _StagePlayerPageState extends ConsumerState<StagePlayerPage> {
       text: text,
       state: answered
           ? quizOptionStateAfterAnswer(
-              isAnswer: isAnswer, isSelected: isSelected)
+              isAnswer: isAnswer,
+              isSelected: isSelected,
+            )
           : QuizOptionState.normal,
       onTap: answered
           ? null
@@ -485,8 +470,12 @@ class _StagePlayerPageState extends ConsumerState<StagePlayerPage> {
     );
   }
 
-  Widget _boolChoice(QuizQuestion q, bool value, String text,
-      QuizGivenAnswer? given) {
+  Widget _boolChoice(
+    QuizQuestion q,
+    bool value,
+    String text,
+    QuizGivenAnswer? given,
+  ) {
     final bool answered = given != null && !given.isEmpty;
     final bool isSelected = given?.boolValue == value;
     final bool isAnswer = q.answerBool == value;
@@ -494,7 +483,9 @@ class _StagePlayerPageState extends ConsumerState<StagePlayerPage> {
       text: text,
       state: answered
           ? quizOptionStateAfterAnswer(
-              isAnswer: isAnswer, isSelected: isSelected)
+              isAnswer: isAnswer,
+              isSelected: isSelected,
+            )
           : QuizOptionState.normal,
       onTap: answered ? null : () => _select(QuizGivenAnswer.boolean(value)),
     );

@@ -4,6 +4,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:lexiora/core/utils/logger.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 typedef PremiumChecker = FutureOr<bool> Function();
 typedef RewardCallback = FutureOr<void> Function();
@@ -22,11 +23,11 @@ abstract final class AdConfiguration {
       'ca-app-pub-3940256099942544/1033173712';
   static const String productionInterstitialId =
       'ca-app-pub-4342811933559577/7060583937';
-  static const String testRewardedId =
-      'ca-app-pub-3940256099942544/5224354917';
+  static const String testRewardedId = 'ca-app-pub-3940256099942544/5224354917';
   static const String productionRewardedId =
       'ca-app-pub-4342811933559577/5768607000';
   static const int rewardedQuizMilestone = 5;
+
   /// Central AI usage configuration; change these values without changing the
   /// AI Assistant flow or rewarded-ad implementation.
   static const int FREE_AI_REQUEST_LIMIT = 7;
@@ -54,11 +55,7 @@ abstract final class AdConfiguration {
       _isWellFormed(id) ? id : testId;
 }
 
-enum RewardedAdPlacement {
-  grammarQuiz,
-  quiz,
-  aiAssistant,
-}
+enum RewardedAdPlacement { grammarQuiz, quiz, aiAssistant }
 
 enum RewardedAdResult {
   rewarded,
@@ -96,6 +93,10 @@ class RewardedAdManager {
       <RewardedAdPlacement, DateTime>{};
   int _mainQuizCompletions = 0;
   int _grammarQuizCompletions = 0;
+  final Set<int> _mainQuizUnlocks = <int>{};
+  final Set<int> _grammarQuizUnlocks = <int>{};
+  Future<void>? _quizProgressLoad;
+  SharedPreferences? _quizProgressPrefs;
   int _aiRequestsRemaining = AdConfiguration.FREE_AI_REQUEST_LIMIT;
   bool _initialized = false;
   bool _showingInterstitial = false;
@@ -143,12 +144,17 @@ class RewardedAdManager {
       unawaited(loadInterstitial());
     } on Object catch (error, stackTrace) {
       _initialized = false;
-      AppLogger.e('AdMob initialization failed', error: error, stackTrace: stackTrace);
+      AppLogger.e(
+        'AdMob initialization failed',
+        error: error,
+        stackTrace: stackTrace,
+      );
     }
   }
 
   Future<void> loadRewarded() async {
-    if (!_initialized || _rewardedAd != null || _rewardedLoadInFlight != null) return;
+    if (!_initialized || _rewardedAd != null || _rewardedLoadInFlight != null)
+      return;
     final Completer<void> done = Completer<void>();
     _rewardedLoadInFlight = done.future;
     try {
@@ -170,7 +176,11 @@ class RewardedAdManager {
       );
       await done.future;
     } on Object catch (error, stackTrace) {
-      AppLogger.e('Rewarded ad load failed unexpectedly', error: error, stackTrace: stackTrace);
+      AppLogger.e(
+        'Rewarded ad load failed unexpectedly',
+        error: error,
+        stackTrace: stackTrace,
+      );
       if (!done.isCompleted) done.complete();
     } finally {
       _rewardedLoadInFlight = null;
@@ -178,7 +188,10 @@ class RewardedAdManager {
   }
 
   Future<void> loadInterstitial() async {
-    if (!_initialized || _interstitialAd != null || _interstitialLoadInFlight != null) return;
+    if (!_initialized ||
+        _interstitialAd != null ||
+        _interstitialLoadInFlight != null)
+      return;
     final Completer<void> done = Completer<void>();
     _interstitialLoadInFlight = done.future;
     try {
@@ -200,7 +213,11 @@ class RewardedAdManager {
       );
       await done.future;
     } on Object catch (error, stackTrace) {
-      AppLogger.e('Interstitial ad load failed unexpectedly', error: error, stackTrace: stackTrace);
+      AppLogger.e(
+        'Interstitial ad load failed unexpectedly',
+        error: error,
+        stackTrace: stackTrace,
+      );
       if (!done.isCompleted) done.complete();
     } finally {
       _interstitialLoadInFlight = null;
@@ -212,7 +229,8 @@ class RewardedAdManager {
   Future<bool> showReturnInterstitial() async {
     if (await isPremiumUser() ||
         _showingInterstitial ||
-        _returnInterstitialShownThisSession) return false;
+        _returnInterstitialShownThisSession)
+      return false;
     final DateTime now = DateTime.now();
     if (_lastInterstitialShown != null &&
         now.difference(_lastInterstitialShown!) < interstitialCooldown) {
@@ -243,18 +261,23 @@ class RewardedAdManager {
         unawaited(dismissedAd.dispose());
         finish(true);
       },
-      onAdFailedToShowFullScreenContent: (InterstitialAd failedAd, AdError error) {
-        AppLogger.w('Interstitial ad failed to show: $error');
-        unawaited(failedAd.dispose());
-        _lastInterstitialShown = null;
-        _returnInterstitialShownThisSession = false;
-        finish(false);
-      },
+      onAdFailedToShowFullScreenContent:
+          (InterstitialAd failedAd, AdError error) {
+            AppLogger.w('Interstitial ad failed to show: $error');
+            unawaited(failedAd.dispose());
+            _lastInterstitialShown = null;
+            _returnInterstitialShownThisSession = false;
+            finish(false);
+          },
     );
     try {
       await ad.show();
     } on Object catch (error, stackTrace) {
-      AppLogger.e('Interstitial ad show failed unexpectedly', error: error, stackTrace: stackTrace);
+      AppLogger.e(
+        'Interstitial ad show failed unexpectedly',
+        error: error,
+        stackTrace: stackTrace,
+      );
       unawaited(ad.dispose());
       _lastInterstitialShown = null;
       _returnInterstitialShownThisSession = false;
@@ -283,7 +306,8 @@ class RewardedAdManager {
     if (await isPremiumUser()) return RewardedAdResult.premium;
     if (_showingRewarded) return RewardedAdResult.unavailable;
     final DateTime? lastShown = _lastRewardedShown[placement];
-    if (lastShown != null && DateTime.now().difference(lastShown) < rewardedCooldown) {
+    if (lastShown != null &&
+        DateTime.now().difference(lastShown) < rewardedCooldown) {
       return RewardedAdResult.cooldown;
     }
     if (!_initialized) await initialize();
@@ -304,7 +328,8 @@ class RewardedAdManager {
       if (completed) return;
       completed = true;
       _showingRewarded = false;
-      if (value == RewardedAdResult.failed) _lastRewardedShown.remove(placement);
+      if (value == RewardedAdResult.failed)
+        _lastRewardedShown.remove(placement);
       if (!result.isCompleted) result.complete(value);
       unawaited(loadRewarded());
     }
@@ -312,9 +337,11 @@ class RewardedAdManager {
     ad.fullScreenContentCallback = FullScreenContentCallback<RewardedAd>(
       onAdDismissedFullScreenContent: (RewardedAd dismissedAd) {
         unawaited(dismissedAd.dispose());
-        finish(rewarded
-            ? RewardedAdResult.rewarded
-            : RewardedAdResult.dismissedWithoutReward);
+        finish(
+          rewarded
+              ? RewardedAdResult.rewarded
+              : RewardedAdResult.dismissedWithoutReward,
+        );
       },
       onAdFailedToShowFullScreenContent: (RewardedAd failedAd, AdError error) {
         AppLogger.w('Rewarded ad failed to show: $error');
@@ -333,7 +360,11 @@ class RewardedAdManager {
         },
       );
     } on Object catch (error, stackTrace) {
-      AppLogger.e('Rewarded ad show failed unexpectedly', error: error, stackTrace: stackTrace);
+      AppLogger.e(
+        'Rewarded ad show failed unexpectedly',
+        error: error,
+        stackTrace: stackTrace,
+      );
       unawaited(ad.dispose());
       finish(RewardedAdResult.failed);
     }
@@ -341,15 +372,99 @@ class RewardedAdManager {
   }
 
   /// Returns true on every fifth completed main-Quiz session in this app run.
-  bool recordMainQuizCompletion() {
-    _mainQuizCompletions++;
-    return _mainQuizCompletions % AdConfiguration.rewardedQuizMilestone == 0;
+  Future<void> _ensureQuizProgressLoaded() async {
+    if (_quizProgressPrefs != null) return;
+    final Future<void>? existing = _quizProgressLoad;
+    if (existing != null) {
+      await existing;
+      return;
+    }
+    final Future<void> load = () async {
+      final SharedPreferences prefs = await SharedPreferences.getInstance();
+      _quizProgressPrefs = prefs;
+      _mainQuizCompletions = prefs.getInt('quiz_main_completed_count') ?? 0;
+      _grammarQuizCompletions =
+          prefs.getInt('quiz_grammar_completed_count') ?? 0;
+      _mainQuizUnlocks
+        ..clear()
+        ..addAll(_readUnlocks(prefs, 'quiz_main_unlock_'));
+      _grammarQuizUnlocks
+        ..clear()
+        ..addAll(_readUnlocks(prefs, 'quiz_grammar_unlock_'));
+    }();
+    _quizProgressLoad = load;
+    await load;
   }
 
-  /// Returns true only for every fifth completed grammar quiz.
-  bool recordGrammarQuizCompletion() {
+  Set<int> _readUnlocks(SharedPreferences prefs, String prefix) => prefs
+      .getKeys()
+      .where((String key) => key.startsWith(prefix))
+      .map((String key) => int.tryParse(key.substring(prefix.length)))
+      .whereType<int>()
+      .toSet();
+
+  bool _requiresUnlock(int completed, Set<int> unlocks, int quizNumber) =>
+      quizNumber > 1 &&
+      (quizNumber - 1) % AdConfiguration.rewardedQuizMilestone == 0 &&
+      completed >= quizNumber - 1 &&
+      !unlocks.contains(quizNumber);
+
+  Future<bool> requiresMainQuizUnlock(int quizNumber) async {
+    await _ensureQuizProgressLoaded();
+    if (await isPremiumUser()) return false;
+    return _requiresUnlock(_mainQuizCompletions, _mainQuizUnlocks, quizNumber);
+  }
+
+  Future<bool> requiresGrammarQuizUnlock(int quizNumber) async {
+    await _ensureQuizProgressLoaded();
+    if (await isPremiumUser()) return false;
+    return _requiresUnlock(
+      _grammarQuizCompletions,
+      _grammarQuizUnlocks,
+      quizNumber,
+    );
+  }
+
+  Future<bool> hasMainQuizUnlock(int quizNumber) async {
+    await _ensureQuizProgressLoaded();
+    return await isPremiumUser() || _mainQuizUnlocks.contains(quizNumber);
+  }
+
+  Future<bool> hasGrammarQuizUnlock(int quizNumber) async {
+    await _ensureQuizProgressLoaded();
+    return await isPremiumUser() || _grammarQuizUnlocks.contains(quizNumber);
+  }
+
+  Future<void> unlockMainQuiz(int quizNumber) async {
+    await _ensureQuizProgressLoaded();
+    _mainQuizUnlocks.add(quizNumber);
+    await _quizProgressPrefs!.setBool('quiz_main_unlock_$quizNumber', true);
+  }
+
+  Future<void> unlockGrammarQuiz(int quizNumber) async {
+    await _ensureQuizProgressLoaded();
+    _grammarQuizUnlocks.add(quizNumber);
+    await _quizProgressPrefs!.setBool('quiz_grammar_unlock_$quizNumber', true);
+  }
+
+  /// Persists one completed main quiz. The next gate is checked on quiz tap.
+  Future<void> recordMainQuizCompletion() async {
+    await _ensureQuizProgressLoaded();
+    _mainQuizCompletions++;
+    await _quizProgressPrefs!.setInt(
+      'quiz_main_completed_count',
+      _mainQuizCompletions,
+    );
+  }
+
+  /// Persists one completed grammar quiz. The next gate is checked on quiz tap.
+  Future<void> recordGrammarQuizCompletion() async {
+    await _ensureQuizProgressLoaded();
     _grammarQuizCompletions++;
-    return _grammarQuizCompletions % AdConfiguration.rewardedQuizMilestone == 0;
+    await _quizProgressPrefs!.setInt(
+      'quiz_grammar_completed_count',
+      _grammarQuizCompletions,
+    );
   }
 
   void dispose() {
@@ -416,7 +531,11 @@ class _ManagedBannerAdState extends State<ManagedBannerAd> {
     try {
       await ad.load();
     } on Object catch (error, stackTrace) {
-      AppLogger.e('Banner ad load failed unexpectedly', error: error, stackTrace: stackTrace);
+      AppLogger.e(
+        'Banner ad load failed unexpectedly',
+        error: error,
+        stackTrace: stackTrace,
+      );
       unawaited(ad.dispose());
     }
   }
