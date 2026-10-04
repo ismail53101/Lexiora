@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:lexiora/app/di/injector.dart';
@@ -5,6 +7,7 @@ import 'package:lexiora/core/services/rewarded_ad_manager.dart';
 import 'package:lexiora/modules/grammar/domain/entities/grammar_lesson.dart';
 import 'package:lexiora/modules/grammar/presentation/pages/pos_quiz_stage_player_page.dart';
 import 'package:lexiora/modules/grammar/presentation/providers/grammar_providers.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 /// Staged ladder for the Parts of Speech quiz. Each stage contains ten questions.
 class PosQuizStageMapPage extends ConsumerStatefulWidget {
@@ -25,9 +28,40 @@ class PosQuizStageMapPage extends ConsumerStatefulWidget {
 class _PosQuizStageMapPageState extends ConsumerState<PosQuizStageMapPage> {
   final Set<int> _passedStages = <int>{};
   final Set<int> _sessionUnlockedStages = <int>{};
+  final Set<int> _persistedUnlockedStages = <int>{};
+  SharedPreferences? _progressPrefs;
+  bool _progressLoadStarted = false;
 
   bool _isUnlocked(int index) =>
       index == 0 || _passedStages.contains(index - 1);
+
+  void _loadPersistedState(int stageCount) {
+    if (_progressLoadStarted) return;
+    _progressLoadStarted = true;
+    unawaited(() async {
+      final SharedPreferences prefs = await SharedPreferences.getInstance();
+      final String passedPrefix = 'grammar_stage_passed_${widget.lessonId}_';
+      final Set<int> passed = prefs
+          .getKeys()
+          .where((String key) => key.startsWith(passedPrefix))
+          .map((String key) => int.tryParse(key.substring(passedPrefix.length)))
+          .whereType<int>()
+          .toSet();
+      final RewardedAdManager manager = sl<RewardedAdManager>();
+      final Set<int> unlocked = <int>{};
+      for (int stage = AdConfiguration.rewardedQuizMilestone;
+          stage < stageCount;
+          stage += AdConfiguration.rewardedQuizMilestone) {
+        if (await manager.hasGrammarQuizUnlock(stage + 1)) unlocked.add(stage);
+      }
+      if (!mounted) return;
+      setState(() {
+        _progressPrefs = prefs;
+        _passedStages.addAll(passed);
+        _persistedUnlockedStages.addAll(unlocked);
+      });
+    }());
+  }
 
   Future<void> _openStage(GrammarLesson lesson, int index) async {
     if (!_isUnlocked(index)) return;
@@ -51,8 +85,14 @@ class _PosQuizStageMapPageState extends ConsumerState<PosQuizStageMapPage> {
             PosQuizStagePlayerPage(lesson: lesson, stageIndex: index),
       ),
     );
-    if (passed == true && mounted) {
-      setState(() => _passedStages.add(index));
+    if (passed == true) {
+      final SharedPreferences prefs =
+          _progressPrefs ?? await SharedPreferences.getInstance();
+      await prefs.setBool(
+        'grammar_stage_passed_${widget.lessonId}_$index',
+        true,
+      );
+      if (mounted) setState(() => _passedStages.add(index));
     }
   }
 
@@ -115,6 +155,7 @@ class _PosQuizStageMapPageState extends ConsumerState<PosQuizStageMapPage> {
             return const Center(child: Text('No quiz questions available.'));
           }
           final int stageCount = (lesson.quiz.length + 9) ~/ 10;
+          _loadPersistedState(stageCount);
           return ListView(
             padding: const EdgeInsets.fromLTRB(16, 16, 16, 28),
             children: <Widget>[
@@ -177,9 +218,9 @@ class _PosQuizStageMapPageState extends ConsumerState<PosQuizStageMapPage> {
                   final bool rewardLocked =
                       index > 0 &&
                       index % AdConfiguration.rewardedQuizMilestone == 0 &&
-                      !passed &&
                       unlocked &&
-                      !_sessionUnlockedStages.contains(index);
+                      !_sessionUnlockedStages.contains(index) &&
+                      !_persistedUnlockedStages.contains(index);
                   return InkWell(
                     borderRadius: BorderRadius.circular(18),
                     onTap: unlocked ? () => _openStage(lesson, index) : null,
