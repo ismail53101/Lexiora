@@ -50,7 +50,9 @@ class _StageMapPageState extends ConsumerState<StageMapPage> {
       for (int stage = AdConfiguration.rewardedQuizMilestone;
           stage < stageCount;
           stage += AdConfiguration.rewardedQuizMilestone) {
-        if (await manager.hasMainQuizUnlock(stage + 1)) unlocked.add(stage);
+        if (await manager.hasMainQuizUnlock(widget.subjectId, stage + 1)) {
+          unlocked.add(stage);
+        }
       }
       if (!mounted) return;
       setState(() {
@@ -219,7 +221,10 @@ class _StageMapPageState extends ConsumerState<StageMapPage> {
     final bool milestoneGate = AdConfiguration.isRewardedQuizMilestone(
       quizNumber,
     );
-    final bool alreadyUnlocked = await manager.hasMainQuizUnlock(quizNumber);
+    final bool alreadyUnlocked = await manager.hasMainQuizUnlock(
+      widget.subjectId,
+      quizNumber,
+    );
     if (milestoneGate && !alreadyUnlocked) {
       final bool unlocked = await _offerQuizUnlock(manager, quizNumber);
       if (!unlocked || !mounted) return;
@@ -262,6 +267,7 @@ class _StageMapPageState extends ConsumerState<StageMapPage> {
     final bool unlocked = await manager.watchAdToUnlockQuiz(
       placement: RewardedAdPlacement.quiz,
       quizNumber: quizNumber,
+      mainQuizSubjectId: widget.subjectId,
     );
     if (!unlocked) {
       if (mounted) {

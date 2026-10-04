@@ -54,7 +54,10 @@ class _StageResultsPageState extends ConsumerState<StageResultsPage> {
     final int nextQuizNumber = widget.stageIndex + 2;
     final bool unlocked =
         !AdConfiguration.isRewardedQuizMilestone(nextQuizNumber) ||
-        await sl<RewardedAdManager>().hasMainQuizUnlock(nextQuizNumber);
+        await sl<RewardedAdManager>().hasMainQuizUnlock(
+          subjectId,
+          nextQuizNumber,
+        );
     if (mounted) setState(() => _nextStageUnlocked = unlocked);
   }
 
@@ -63,6 +66,7 @@ class _StageResultsPageState extends ConsumerState<StageResultsPage> {
     final bool unlocked = await sl<RewardedAdManager>().watchAdToUnlockQuiz(
       placement: RewardedAdPlacement.quiz,
       quizNumber: nextQuizNumber,
+      mainQuizSubjectId: subjectId,
     );
     if (!mounted) return;
     if (unlocked) {

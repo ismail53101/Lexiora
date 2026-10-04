@@ -223,8 +223,10 @@ class _StagePlayerPageState extends ConsumerState<StagePlayerPage> {
     ref.read(qRevisionProvider.notifier).bump();
     if (quizStagePassed(correct, total)) {
       final RewardedAdManager rewardManager = sl<RewardedAdManager>();
-      await rewardManager.recordMainQuizCompletion();
-      final int? pendingQuiz = await rewardManager.pendingMainQuizUnlock();
+      await rewardManager.recordMainQuizCompletion(widget.subjectId);
+      final int? pendingQuiz = await rewardManager.pendingMainQuizUnlock(
+        widget.subjectId,
+      );
       if (pendingQuiz != null && mounted) {
         await _showMilestoneRewardDialog(rewardManager, pendingQuiz);
       }
@@ -275,6 +277,7 @@ class _StagePlayerPageState extends ConsumerState<StagePlayerPage> {
     final bool unlocked = await manager.watchAdToUnlockQuiz(
       placement: RewardedAdPlacement.quiz,
       quizNumber: quizNumber,
+      mainQuizSubjectId: widget.subjectId,
     );
     if (!unlocked && mounted) {
       ScaffoldMessenger.of(context).showSnackBar(

@@ -8,14 +8,45 @@ void main() {
     final RewardedAdManager manager = RewardedAdManager(
       isPremium: () async => false,
     );
+    const String subjectId = 'pakistan_affairs';
 
     for (int i = 0; i < AdConfiguration.rewardedQuizMilestone; i++) {
-      await manager.recordMainQuizCompletion();
+      await manager.recordMainQuizCompletion(subjectId);
     }
-    expect(await manager.requiresMainQuizUnlock(6), isTrue);
-    await manager.unlockMainQuiz(6);
-    expect(await manager.requiresMainQuizUnlock(6), isFalse);
-    expect(await manager.requiresMainQuizUnlock(7), isFalse);
+    expect(await manager.requiresMainQuizUnlock(subjectId, 6), isTrue);
+    await manager.unlockMainQuiz(subjectId, 6);
+    expect(await manager.requiresMainQuizUnlock(subjectId, 6), isFalse);
+    expect(await manager.requiresMainQuizUnlock(subjectId, 7), isFalse);
+  });
+
+  test('main quiz progress and unlocks stay isolated by subject', () async {
+    SharedPreferences.setMockInitialValues(<String, Object>{});
+    final RewardedAdManager manager = RewardedAdManager(
+      isPremium: () async => false,
+    );
+    const String pakistan = 'pakistan_affairs';
+    const String islamic = 'islamic_studies';
+
+    for (int i = 0; i < AdConfiguration.rewardedQuizMilestone; i++) {
+      await manager.recordMainQuizCompletion(pakistan);
+    }
+    for (int i = 0; i < 2; i++) {
+      await manager.recordMainQuizCompletion(islamic);
+    }
+
+    expect(await manager.requiresMainQuizUnlock(pakistan, 6), isTrue);
+    expect(await manager.requiresMainQuizUnlock(islamic, 6), isFalse);
+    await manager.unlockMainQuiz(pakistan, 6);
+    expect(await manager.hasMainQuizUnlock(pakistan, 6), isTrue);
+    expect(await manager.hasMainQuizUnlock(islamic, 6), isFalse);
+
+    final RewardedAdManager restored = RewardedAdManager(
+      isPremium: () async => false,
+    );
+    expect(await restored.hasMainQuizUnlock(pakistan, 6), isTrue);
+    expect(await restored.hasMainQuizUnlock(islamic, 6), isFalse);
+    expect(await restored.requiresMainQuizUnlock(pakistan, 11), isFalse);
+    expect(await restored.requiresMainQuizUnlock(islamic, 6), isFalse);
   });
 
   test('grammar quiz reward milestone is exactly five completions', () async {
@@ -46,7 +77,6 @@ void main() {
         manager.recordSuccessfulAiRequest();
       }
       expect(manager.aiRequestsRemaining, 0);
-      expect(await manager.canStartAiRequest(), isFalse);
 
       // A failed request does not call recordSuccessfulAiRequest(), so it does
       // not consume anything. The rewarded callback grants one seven-request

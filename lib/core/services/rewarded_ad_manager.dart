@@ -84,11 +84,11 @@ class RewardedAdManager {
   Future<void>? _interstitialLoadInFlight;
   DateTime? _lastInterstitialShown;
   bool _returnInterstitialShownThisSession = false;
-  final Map<RewardedAdPlacement, DateTime> _lastRewardedShown =
-      <RewardedAdPlacement, DateTime>{};
-  int _mainQuizCompletions = 0;
+  final Map<String, DateTime> _lastRewardedShown = <String, DateTime>{};
+  final Map<String, int> _mainQuizCompletionsBySubject = <String, int>{};
   int _grammarQuizCompletions = 0;
-  final Set<int> _mainQuizUnlocks = <int>{};
+  final Map<String, Set<int>> _mainQuizUnlocksBySubject =
+      <String, Set<int>>{};
   final Set<int> _grammarQuizUnlocks = <int>{};
   Future<void>? _quizProgressLoad;
   SharedPreferences? _quizProgressPrefs;
@@ -311,13 +311,26 @@ class RewardedAdManager {
   Future<bool> watchAdToUnlockQuiz({
     required RewardedAdPlacement placement,
     required int quizNumber,
+    String? mainQuizSubjectId,
   }) async {
-    final RewardedAdResult result = await showRewarded(placement: placement);
+    if (placement == RewardedAdPlacement.quiz && mainQuizSubjectId == null) {
+      AppLogger.w('Main Quiz rewarded unlock rejected without a subject ID');
+      return false;
+    }
+    final RewardedAdResult result = await showRewarded(
+      placement: placement,
+      cooldownKey: mainQuizSubjectId,
+    );
     if (result != RewardedAdResult.rewarded) return false;
     if (placement == RewardedAdPlacement.grammarQuiz) {
       await unlockGrammarQuiz(quizNumber);
+    } else if (placement == RewardedAdPlacement.quiz) {
+      await unlockMainQuiz(
+        mainQuizSubjectId!,
+        quizNumber,
+      );
     } else {
-      await unlockMainQuiz(quizNumber);
+      return false;
     }
     return true;
   }
@@ -327,10 +340,12 @@ class RewardedAdManager {
   Future<RewardedAdResult> showRewarded({
     required RewardedAdPlacement placement,
     RewardCallback? onRewarded,
+    String? cooldownKey,
   }) async {
     if (await isPremiumUser()) return RewardedAdResult.premium;
     if (_showingRewarded) return RewardedAdResult.unavailable;
-    final DateTime? lastShown = _lastRewardedShown[placement];
+    final String rewardKey = _rewardedCooldownKey(placement, cooldownKey);
+    final DateTime? lastShown = _lastRewardedShown[rewardKey];
     if (lastShown != null &&
         DateTime.now().difference(lastShown) < rewardedCooldown) {
       return RewardedAdResult.cooldown;
@@ -348,7 +363,7 @@ class RewardedAdManager {
 
     _rewardedAd = null;
     _showingRewarded = true;
-    _lastRewardedShown[placement] = DateTime.now();
+    _lastRewardedShown[rewardKey] = DateTime.now();
     AppLogger.i(
       'ADS_DIAGNOSTIC rewarded show called '
       '(placement=$placement, responseInfo=${ad.responseInfo})',
@@ -361,8 +376,7 @@ class RewardedAdManager {
       if (completed) return;
       completed = true;
       _showingRewarded = false;
-      if (value == RewardedAdResult.failed)
-        _lastRewardedShown.remove(placement);
+      if (value == RewardedAdResult.failed) _lastRewardedShown.remove(rewardKey);
       if (!result.isCompleted) result.complete(value);
       unawaited(loadRewarded());
     }
@@ -419,6 +433,12 @@ class RewardedAdManager {
     return result.future;
   }
 
+  String _rewardedCooldownKey(
+    RewardedAdPlacement placement,
+    String? cooldownKey,
+  ) =>
+      '$placement:${cooldownKey ?? ''}';
+
   /// Returns true on every fifth completed main-Quiz session in this app run.
   Future<void> _ensureQuizProgressLoaded() async {
     if (_quizProgressPrefs != null) return;
@@ -430,12 +450,14 @@ class RewardedAdManager {
     final Future<void> load = () async {
       final SharedPreferences prefs = await SharedPreferences.getInstance();
       _quizProgressPrefs = prefs;
-      _mainQuizCompletions = prefs.getInt('quiz_main_completed_count') ?? 0;
-      _grammarQuizCompletions =
-          prefs.getInt('quiz_grammar_completed_count') ?? 0;
-      _mainQuizUnlocks
+      _mainQuizCompletionsBySubject
         ..clear()
-        ..addAll(_readUnlocks(prefs, 'quiz_main_unlock_'));
+        ..addAll(_readMainCompletions(prefs));
+      _grammarQuizCompletions =
+        prefs.getInt('quiz_grammar_completed_count') ?? 0;
+      _mainQuizUnlocksBySubject
+        ..clear()
+        ..addAll(_readMainUnlocks(prefs));
       _grammarQuizUnlocks
         ..clear()
         ..addAll(_readUnlocks(prefs, 'quiz_grammar_unlock_'));
@@ -451,15 +473,53 @@ class RewardedAdManager {
       .whereType<int>()
       .toSet();
 
+  Map<String, int> _readMainCompletions(SharedPreferences prefs) {
+    const String prefix = 'quiz_main_completed_count_';
+    return <String, int>{
+      for (final String key in prefs.getKeys())
+        if (key.startsWith(prefix))
+          key.substring(prefix.length): prefs.getInt(key) ?? 0,
+    };
+  }
+
+  Map<String, Set<int>> _readMainUnlocks(SharedPreferences prefs) {
+    const String prefix = 'quiz_main_unlock_';
+    final Map<String, Set<int>> result = <String, Set<int>>{};
+    for (final String key in prefs.getKeys()) {
+      if (!key.startsWith(prefix)) continue;
+      final String encoded = key.substring(prefix.length);
+      final int separator = encoded.lastIndexOf('_');
+      if (separator <= 0) continue;
+      final String subjectId = encoded.substring(0, separator);
+      final int? quizNumber = int.tryParse(encoded.substring(separator + 1));
+      if (quizNumber == null) continue;
+      result.putIfAbsent(subjectId, () => <int>{}).add(quizNumber);
+    }
+    return result;
+  }
+
+  int _mainCompletionsFor(String subjectId) =>
+      _mainQuizCompletionsBySubject[subjectId] ?? 0;
+
+  Set<int> _mainUnlocksFor(String subjectId) =>
+      _mainQuizUnlocksBySubject.putIfAbsent(subjectId, () => <int>{});
+
   bool _requiresUnlock(int completed, Set<int> unlocks, int quizNumber) =>
       AdConfiguration.isRewardedQuizMilestone(quizNumber) &&
       completed >= quizNumber - 1 &&
       !unlocks.contains(quizNumber);
 
-  Future<bool> requiresMainQuizUnlock(int quizNumber) async {
+  Future<bool> requiresMainQuizUnlock(
+    String subjectId,
+    int quizNumber,
+  ) async {
     await _ensureQuizProgressLoaded();
     if (await isPremiumUser()) return false;
-    return _requiresUnlock(_mainQuizCompletions, _mainQuizUnlocks, quizNumber);
+    return _requiresUnlock(
+      _mainCompletionsFor(subjectId),
+      _mainUnlocksFor(subjectId),
+      quizNumber,
+    );
   }
 
   Future<bool> requiresGrammarQuizUnlock(int quizNumber) async {
@@ -472,9 +532,10 @@ class RewardedAdManager {
     );
   }
 
-  Future<bool> hasMainQuizUnlock(int quizNumber) async {
+  Future<bool> hasMainQuizUnlock(String subjectId, int quizNumber) async {
     await _ensureQuizProgressLoaded();
-    return await isPremiumUser() || _mainQuizUnlocks.contains(quizNumber);
+    return await isPremiumUser() ||
+        _mainUnlocksFor(subjectId).contains(quizNumber);
   }
 
   Future<bool> hasGrammarQuizUnlock(int quizNumber) async {
@@ -482,14 +543,16 @@ class RewardedAdManager {
     return await isPremiumUser() || _grammarQuizUnlocks.contains(quizNumber);
   }
 
-  Future<int?> pendingMainQuizUnlock() async {
+  Future<int?> pendingMainQuizUnlock(String subjectId) async {
     await _ensureQuizProgressLoaded();
-    if (_mainQuizCompletions == 0 ||
-        _mainQuizCompletions % AdConfiguration.rewardedQuizMilestone != 0 ||
-        _mainQuizUnlocks.contains(_mainQuizCompletions + 1) ||
+    final int completions = _mainCompletionsFor(subjectId);
+    final Set<int> unlocks = _mainUnlocksFor(subjectId);
+    if (completions == 0 ||
+        completions % AdConfiguration.rewardedQuizMilestone != 0 ||
+        unlocks.contains(completions + 1) ||
         await isPremiumUser())
       return null;
-    return _mainQuizCompletions + 1;
+    return completions + 1;
   }
 
   Future<int?> pendingGrammarQuizUnlock() async {
@@ -502,10 +565,13 @@ class RewardedAdManager {
     return _grammarQuizCompletions + 1;
   }
 
-  Future<void> unlockMainQuiz(int quizNumber) async {
+  Future<void> unlockMainQuiz(String subjectId, int quizNumber) async {
     await _ensureQuizProgressLoaded();
-    _mainQuizUnlocks.add(quizNumber);
-    await _quizProgressPrefs!.setBool('quiz_main_unlock_$quizNumber', true);
+    _mainUnlocksFor(subjectId).add(quizNumber);
+    await _quizProgressPrefs!.setBool(
+      'quiz_main_unlock_${subjectId}_$quizNumber',
+      true,
+    );
   }
 
   Future<void> unlockGrammarQuiz(int quizNumber) async {
@@ -515,12 +581,13 @@ class RewardedAdManager {
   }
 
   /// Persists one completed main quiz. The next gate is checked on quiz tap.
-  Future<void> recordMainQuizCompletion() async {
+  Future<void> recordMainQuizCompletion(String subjectId) async {
     await _ensureQuizProgressLoaded();
-    _mainQuizCompletions++;
+    final int completions = _mainCompletionsFor(subjectId) + 1;
+    _mainQuizCompletionsBySubject[subjectId] = completions;
     await _quizProgressPrefs!.setInt(
-      'quiz_main_completed_count',
-      _mainQuizCompletions,
+      'quiz_main_completed_count_$subjectId',
+      completions,
     );
   }
 
