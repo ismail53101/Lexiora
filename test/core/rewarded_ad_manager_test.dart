@@ -33,7 +33,31 @@ void main() {
     expect(await manager.requiresGrammarQuizUnlock(7), isFalse);
   });
 
-  test('AI free allowance remains seven requests', () {
+  test(
+    'AI allowance counts successful requests only and grants exactly seven',
+    () async {
+      final RewardedAdManager manager = RewardedAdManager(
+        isPremium: () async => false,
+      );
+
+      expect(manager.aiRequestsRemaining, 7);
+      for (int i = 0; i < 7; i++) {
+        expect(await manager.canStartAiRequest(), isTrue);
+        manager.recordSuccessfulAiRequest();
+      }
+      expect(manager.aiRequestsRemaining, 0);
+      expect(await manager.canStartAiRequest(), isFalse);
+
+      // A failed request does not call recordSuccessfulAiRequest(), so it does
+      // not consume anything. The rewarded callback grants one seven-request
+      // allowance, not an allowance at dialog-open or ad-start time.
+      manager.grantAiRequestsAfterReward();
+      expect(manager.aiRequestsRemaining, 7);
+      expect(await manager.canStartAiRequest(), isTrue);
+    },
+  );
+
+  test('AI free allowance starts at seven requests', () {
     final RewardedAdManager manager = RewardedAdManager(
       isPremium: () async => false,
     );
