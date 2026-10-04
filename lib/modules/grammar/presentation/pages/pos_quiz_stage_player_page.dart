@@ -27,6 +27,7 @@ class _PosQuizStagePlayerPageState extends State<PosQuizStagePlayerPage> {
   int _score = 0;
   int? _selectedIndex;
   bool _showResult = false;
+  bool _nextStageUnlocked = false;
 
   GrammarQuestion get _question => _questions[_questionIndex];
   bool get _answered => _selectedIndex != null;
@@ -67,11 +68,18 @@ class _PosQuizStagePlayerPageState extends State<PosQuizStagePlayerPage> {
   Future<void> _next() async {
     if (!_answered) return;
     if (_questionIndex == _questions.length - 1) {
-      final RewardedAdManager rewardManager = sl<RewardedAdManager>();
-      await rewardManager.recordGrammarQuizCompletion();
-      final int? pendingQuiz = await rewardManager.pendingGrammarQuizUnlock();
-      if (pendingQuiz != null && mounted) {
-        await _showMilestoneRewardDialog(rewardManager, pendingQuiz);
+      final bool passed = _score >= (_questions.length / 2).ceil();
+      if (passed) {
+        final RewardedAdManager rewardManager = sl<RewardedAdManager>();
+        await rewardManager.recordGrammarQuizCompletion();
+        final int? pendingQuiz = await rewardManager.pendingGrammarQuizUnlock();
+        if (pendingQuiz != null && mounted) {
+          await _showMilestoneRewardDialog(rewardManager, pendingQuiz);
+        }
+        final int nextQuizNumber = widget.stageIndex + 2;
+        _nextStageUnlocked =
+            !AdConfiguration.isRewardedQuizMilestone(nextQuizNumber) ||
+            await rewardManager.hasGrammarQuizUnlock(nextQuizNumber);
       }
       if (mounted) setState(() => _showResult = true);
       return;
@@ -351,7 +359,9 @@ class _PosQuizStagePlayerPageState extends State<PosQuizStagePlayerPage> {
               const SizedBox(height: 8),
               Text(
                 passed
-                    ? 'You scored 50% or more. The next stage is unlocked.'
+                    ? (_nextStageUnlocked
+                          ? 'You scored 50% or more. The next stage is unlocked.'
+                          : 'Stage passed! Watch an ad to unlock the next stage.')
                     : 'Score at least 50% to unlock the next stage.',
                 textAlign: TextAlign.center,
               ),

@@ -220,11 +220,13 @@ class _StagePlayerPageState extends ConsumerState<StagePlayerPage> {
           total: total,
         );
     ref.read(qRevisionProvider.notifier).bump();
-    final RewardedAdManager rewardManager = sl<RewardedAdManager>();
-    await rewardManager.recordMainQuizCompletion();
-    final int? pendingQuiz = await rewardManager.pendingMainQuizUnlock();
-    if (pendingQuiz != null && mounted) {
-      await _showMilestoneRewardDialog(rewardManager, pendingQuiz);
+    if (quizStagePassed(correct, total)) {
+      final RewardedAdManager rewardManager = sl<RewardedAdManager>();
+      await rewardManager.recordMainQuizCompletion();
+      final int? pendingQuiz = await rewardManager.pendingMainQuizUnlock();
+      if (pendingQuiz != null && mounted) {
+        await _showMilestoneRewardDialog(rewardManager, pendingQuiz);
+      }
     }
     if (!mounted) return;
     unawaited(
