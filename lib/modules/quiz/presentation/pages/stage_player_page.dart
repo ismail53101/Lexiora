@@ -52,6 +52,7 @@ class _StagePlayerPageState extends ConsumerState<StagePlayerPage> {
   bool _loading = true;
   bool _submitting = false;
   bool _frozen = false;
+  bool _confirmingQuit = false;
   Timer? _timer;
   DateTime _shownAt = DateTime.now();
   DateTime _startedAt = DateTime.now();
@@ -263,7 +264,12 @@ class _StagePlayerPageState extends ConsumerState<StagePlayerPage> {
   }
 
   Future<bool> _confirmQuit() async {
-    return await showDialog<bool>(
+    // Android Back, the AppBar button, and QUIT can all arrive through
+    // separate callbacks. Never allow two confirmation dialogs (or two pops)
+    // for one leave request.
+    if (_confirmingQuit) return false;
+    _confirmingQuit = true;
+    final bool leave = await showDialog<bool>(
           context: context,
           builder: (BuildContext context) => AlertDialog(
             title: const Text('Leave stage?'),
@@ -279,6 +285,19 @@ class _StagePlayerPageState extends ConsumerState<StagePlayerPage> {
           ),
         ) ??
         false;
+    _confirmingQuit = false;
+    return leave;
+  }
+
+  Future<void> _leaveQuiz() async {
+    if (_submitting) return;
+    if (await _confirmQuit() && mounted) {
+      _timer?.cancel();
+      // The stage map is already underneath this route because it opened the
+      // player with Navigator.push/context.push. Pop this quiz exactly once;
+      // never derive or push a previous stage from the stage number.
+      Navigator.of(context).pop();
+    }
   }
 
   @override
@@ -311,12 +330,17 @@ class _StagePlayerPageState extends ConsumerState<StagePlayerPage> {
       canPop: false,
       onPopInvokedWithResult: (bool didPop, Object? _) async {
         if (didPop) return;
-        final NavigatorState navigator = Navigator.of(context);
-        if (await _confirmQuit() && mounted) navigator.pop();
+        await _leaveQuiz();
       },
       child: Scaffold(
         appBar: AppBar(
           title: Text('Stage $_stageNumber'),
+          automaticallyImplyLeading: false,
+          leading: IconButton(
+            onPressed: _leaveQuiz,
+            icon: const Icon(Icons.arrow_back),
+            tooltip: 'Back',
+          ),
           bottom: PreferredSize(
             preferredSize: const Size.fromHeight(4),
             child: LinearProgressIndicator(
@@ -404,9 +428,7 @@ class _StagePlayerPageState extends ConsumerState<StagePlayerPage> {
   }
 
   Future<void> _quit() async {
-    _timer?.cancel();
-    final NavigatorState navigator = Navigator.of(context);
-    if (await _confirmQuit() && mounted) navigator.pop();
+    await _leaveQuiz();
   }
 
   List<Widget> _answerArea(
