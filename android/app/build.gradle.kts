@@ -99,6 +99,8 @@ kotlin {
 
 dependencies {
     coreLibraryDesugaring("com.android.tools:desugar_jdk_libs:2.1.5")
+    // Override the older WorkManager requested transitively by Google Mobile Ads.
+    implementation("androidx.work:work-runtime:2.11.2")
     // On-device text recognition (OCR) for scanned/photographed PDF pages.
     // Fully on-device: the recognition model downloads once via Google Play
     // Services on first use, then runs completely offline — no API key, no
