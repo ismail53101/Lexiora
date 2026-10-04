@@ -26,6 +26,10 @@ abstract final class AdConfiguration {
   static const String testRewardedId = 'ca-app-pub-3940256099942544/5224354917';
   static const String productionRewardedId =
       'ca-app-pub-4342811933559577/5768607000';
+  static const bool diagnosticTestAds = bool.fromEnvironment(
+    'SAPIORA_DIAGNOSTIC_TEST_ADS',
+    defaultValue: false,
+  );
   static const int rewardedQuizMilestone = 5;
 
   static bool isRewardedQuizMilestone(int quizNumber) =>
@@ -36,26 +40,14 @@ abstract final class AdConfiguration {
   static const int FREE_AI_REQUEST_LIMIT = 7;
   static const int REWARDED_AI_REQUEST_BONUS = 7;
 
-  static String get bannerId => kReleaseMode
-      ? _productionOrTest(productionBannerId, testBannerId)
-      : testBannerId;
-  static String get interstitialId => kReleaseMode
-      ? _productionOrTest(productionInterstitialId, testInterstitialId)
-      : testInterstitialId;
-  static String get rewardedId => kReleaseMode
-      ? _productionOrTest(productionRewardedId, testRewardedId)
-      : testRewardedId;
-
-  /// A production ID may only be used when it is well-formed. The Google
-  /// Mobile Ads SDK rejects malformed IDs (and crashes on a malformed App ID
-  /// at process start), so anything that does not match AdMob's official
-  /// ca-app-pub-{16}~{10} / ca-app-pub-{16}/{10} shape silently falls back to
-  /// the matching Google test ID.
-  static bool _isWellFormed(String id) =>
-      RegExp(r'^ca-app-pub-[0-9]{16}[~/][0-9]{10}$').hasMatch(id);
-
-  static String _productionOrTest(String id, String testId) =>
-      _isWellFormed(id) ? id : testId;
+  static String get bannerId =>
+      diagnosticTestAds || !kReleaseMode ? testBannerId : productionBannerId;
+  static String get interstitialId => diagnosticTestAds || !kReleaseMode
+      ? testInterstitialId
+      : productionInterstitialId;
+  static String get rewardedId => diagnosticTestAds || !kReleaseMode
+      ? testRewardedId
+      : productionRewardedId;
 }
 
 enum RewardedAdPlacement { grammarQuiz, quiz, aiAssistant }
@@ -158,6 +150,11 @@ class RewardedAdManager {
   Future<void> loadRewarded() async {
     if (!_initialized || _rewardedAd != null || _rewardedLoadInFlight != null)
       return;
+    AppLogger.i(
+      'ADS_DIAGNOSTIC rewarded load started '
+      '(unit=${AdConfiguration.rewardedId}, '
+      'testMode=${AdConfiguration.diagnosticTestAds})',
+    );
     final Completer<void> done = Completer<void>();
     _rewardedLoadInFlight = done.future;
     try {
@@ -169,10 +166,19 @@ class RewardedAdManager {
             final RewardedAd? previous = _rewardedAd;
             if (previous != null) unawaited(previous.dispose());
             _rewardedAd = ad;
+            AppLogger.i(
+              'ADS_DIAGNOSTIC rewarded load success '
+              '(objectNonNull=${_rewardedAd != null}, '
+              'responseInfo=${ad.responseInfo})',
+            );
             done.complete();
           },
           onAdFailedToLoad: (LoadAdError error) {
-            AppLogger.w('Rewarded ad failed to load: $error');
+            AppLogger.w(
+              'ADS_DIAGNOSTIC rewarded load failure '
+              '(code=${error.code}, message=${error.message}, '
+              'domain=${error.domain}, responseInfo=${error.responseInfo})',
+            );
             done.complete();
           },
         ),
@@ -332,6 +338,10 @@ class RewardedAdManager {
     if (!_initialized) await initialize();
     final RewardedAd? ad = _rewardedAd;
     if (ad == null) {
+      AppLogger.w(
+        'ADS_DIAGNOSTIC rewarded show blocked: ad object is null '
+        '(unit=${AdConfiguration.rewardedId})',
+      );
       unawaited(loadRewarded());
       return RewardedAdResult.unavailable;
     }
@@ -339,6 +349,10 @@ class RewardedAdManager {
     _rewardedAd = null;
     _showingRewarded = true;
     _lastRewardedShown[placement] = DateTime.now();
+    AppLogger.i(
+      'ADS_DIAGNOSTIC rewarded show called '
+      '(placement=$placement, responseInfo=${ad.responseInfo})',
+    );
     final Completer<RewardedAdResult> result = Completer<RewardedAdResult>();
     bool rewarded = false;
     bool completed = false;
@@ -355,6 +369,10 @@ class RewardedAdManager {
 
     ad.fullScreenContentCallback = FullScreenContentCallback<RewardedAd>(
       onAdDismissedFullScreenContent: (RewardedAd dismissedAd) {
+        AppLogger.i(
+          'ADS_DIAGNOSTIC rewarded ad closed '
+          '(earned=$rewarded, responseInfo=${dismissedAd.responseInfo})',
+        );
         unawaited(dismissedAd.dispose());
         finish(
           rewarded
@@ -363,7 +381,11 @@ class RewardedAdManager {
         );
       },
       onAdFailedToShowFullScreenContent: (RewardedAd failedAd, AdError error) {
-        AppLogger.w('Rewarded ad failed to show: $error');
+        AppLogger.w(
+          'ADS_DIAGNOSTIC rewarded ad failed to show '
+          '(code=${error.code}, message=${error.message}, '
+          'domain=${error.domain}, responseInfo=${failedAd.responseInfo})',
+        );
         unawaited(failedAd.dispose());
         finish(RewardedAdResult.failed);
       },
@@ -373,6 +395,10 @@ class RewardedAdManager {
         onUserEarnedReward: (AdWithoutView shownAd, RewardItem reward) {
           if (rewarded) return;
           rewarded = true;
+          AppLogger.i(
+            'ADS_DIAGNOSTIC earned reward callback '
+            '(amount=${reward.amount}, type=${reward.type})',
+          );
           if (onRewarded != null) {
             unawaited(Future<void>(() async => onRewarded()));
           }
@@ -385,6 +411,9 @@ class RewardedAdManager {
         stackTrace: stackTrace,
       );
       unawaited(ad.dispose());
+      AppLogger.w(
+        'ADS_DIAGNOSTIC rewarded object disposed after show exception',
+      );
       finish(RewardedAdResult.failed);
     }
     return result.future;
@@ -543,6 +572,11 @@ class _ManagedBannerAdState extends State<ManagedBannerAd> {
   }
 
   Future<void> _load() async {
+    AppLogger.i(
+      'ADS_DIAGNOSTIC banner load started '
+      '(unit=${AdConfiguration.bannerId}, '
+      'testMode=${AdConfiguration.diagnosticTestAds})',
+    );
     await widget.manager.initialize();
     if (await widget.manager.isPremiumUser()) return;
     final BannerAd ad = BannerAd(
@@ -556,14 +590,21 @@ class _ManagedBannerAdState extends State<ManagedBannerAd> {
             return;
           }
           _retryTimer?.cancel();
+          AppLogger.i(
+            'ADS_DIAGNOSTIC banner load success '
+            '(responseInfo=${(ad as BannerAd).responseInfo})',
+          );
           setState(() {
-            _ad = ad as BannerAd;
+            _ad = ad;
             _loaded = true;
           });
         },
         onAdFailedToLoad: (Ad ad, LoadAdError error) {
           AppLogger.w(
-            'Banner ad failed to load (unit=${AdConfiguration.bannerId}): $error',
+            'ADS_DIAGNOSTIC banner load failure '
+            '(unit=${AdConfiguration.bannerId}, code=${error.code}, '
+            'message=${error.message}, domain=${error.domain}, '
+            'responseInfo=${error.responseInfo})',
           );
           _ad = null;
           _loaded = false;
@@ -600,13 +641,20 @@ class _ManagedBannerAdState extends State<ManagedBannerAd> {
   void dispose() {
     _retryTimer?.cancel();
     final BannerAd? ad = _ad;
-    if (ad != null) unawaited(ad.dispose());
+    if (ad != null) {
+      AppLogger.i('ADS_DIAGNOSTIC banner object disposed');
+      unawaited(ad.dispose());
+    }
     super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
     if (!_loaded || _ad == null) return const SizedBox.shrink();
+    AppLogger.i(
+      'ADS_DIAGNOSTIC banner mounted/rendered '
+      '(width=${_ad!.size.width}, height=${_ad!.size.height})',
+    );
     return SafeArea(
       top: false,
       child: SizedBox(

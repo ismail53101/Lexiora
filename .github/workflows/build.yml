@@ -116,7 +116,8 @@ jobs:
           if [ "$SAPIORA_ENABLE_ADMIN" = "true" ]; then
             DEFINES="$DEFINES --dart-define=SAPIORA_ENABLE_ADMIN=true"
           fi
-          flutter build apk --release $DEFINES
+          flutter build apk --release $DEFINES \
+            --dart-define=SAPIORA_DIAGNOSTIC_TEST_ADS=true
 
       - name: Build release App Bundle (.aab, for Play Store)
         env:
@@ -138,7 +139,8 @@ jobs:
           if [ "$SAPIORA_ENABLE_ADMIN" = "true" ]; then
             DEFINES="$DEFINES --dart-define=SAPIORA_ENABLE_ADMIN=true"
           fi
-          flutter build appbundle --release $DEFINES
+          flutter build appbundle --release $DEFINES \
+            --dart-define=SAPIORA_DIAGNOSTIC_TEST_ADS=true
 
       - name: Resolve app version
         id: ver
