@@ -14,7 +14,7 @@ abstract final class AdConfiguration {
   static const String androidTestAppId =
       'ca-app-pub-3940256099942544~3347511713';
   static const String androidProductionAppId =
-      'ca-app-pub-4342811933559577~399306324';
+      'ca-app-pub-4342811933559577~3999306324';
   static const String testBannerId = 'ca-app-pub-3940256099942544/6300978111';
   static const String productionBannerId =
       'ca-app-pub-4342811933559577/9332447492';
@@ -88,6 +88,7 @@ class RewardedAdManager {
   InterstitialAd? _interstitialAd;
   Future<void>? _rewardedLoadInFlight;
   Future<void>? _interstitialLoadInFlight;
+  Future<void>? _initializationInFlight;
   DateTime? _lastInterstitialShown;
   bool _returnInterstitialShownThisSession = false;
   final Map<RewardedAdPlacement, DateTime> _lastRewardedShown =
@@ -100,6 +101,7 @@ class RewardedAdManager {
 
   bool get isLoaded => _rewardedAd != null;
   bool get isInterstitialLoaded => _interstitialAd != null;
+  bool get isInitialized => _initialized;
   int get aiRequestsRemaining => _aiRequestsRemaining;
 
   Future<bool> isPremiumUser() async {
@@ -131,21 +133,44 @@ class RewardedAdManager {
   }
 
   /// Initializes the SDK once and preloads the shared full-screen ads.
-  Future<void> initialize() async {
-    if (_initialized) return;
-    _initialized = true;
+  Future<void> initialize() {
+    if (_initialized) return Future<void>.value();
+    final Future<void>? inFlight = _initializationInFlight;
+    if (inFlight != null) return inFlight;
+    final Future<void> initialization = Future<void>.microtask(_initializeSdk);
+    _initializationInFlight = initialization;
+    return initialization;
+  }
+
+  Future<void> _initializeSdk() async {
     try {
+      AppLogger.i('AdMob SDK initialization started (release=$kReleaseMode)');
       await MobileAds.instance.initialize();
-      unawaited(loadRewarded());
-      unawaited(loadInterstitial());
+      _initialized = true;
+      AppLogger.i(
+        'AdMob SDK initialization succeeded '
+        '(bannerUnit=${AdConfiguration.bannerId}, '
+        'interstitialUnit=${AdConfiguration.interstitialId}, '
+        'rewardedUnit=${AdConfiguration.rewardedId})',
+      );
     } on Object catch (error, stackTrace) {
       _initialized = false;
-      AppLogger.e('AdMob initialization failed', error: error, stackTrace: stackTrace);
+      AppLogger.e(
+        'AdMob SDK initialization failed',
+        error: error,
+        stackTrace: stackTrace,
+      );
+      return;
+    } finally {
+      _initializationInFlight = null;
     }
+    unawaited(loadRewarded());
+    unawaited(loadInterstitial());
   }
 
   Future<void> loadRewarded() async {
     if (!_initialized || _rewardedAd != null || _rewardedLoadInFlight != null) return;
+    AppLogger.i('Rewarded ad load requested (unit=${AdConfiguration.rewardedId})');
     final Completer<void> done = Completer<void>();
     _rewardedLoadInFlight = done.future;
     try {
@@ -157,10 +182,18 @@ class RewardedAdManager {
             final RewardedAd? previous = _rewardedAd;
             if (previous != null) unawaited(previous.dispose());
             _rewardedAd = ad;
+            AppLogger.i(
+              'Rewarded ad loaded (responseInfo=${ad.responseInfo})',
+            );
             done.complete();
           },
           onAdFailedToLoad: (LoadAdError error) {
-            AppLogger.w('Rewarded ad failed to load: $error');
+            AppLogger.w(
+              'Rewarded ad failed to load '
+              '(unit=${AdConfiguration.rewardedId}, '
+              'code=${error.code}, message=${error.message}, '
+              'domain=${error.domain}, responseInfo=${error.responseInfo})',
+            );
             done.complete();
           },
         ),
@@ -176,6 +209,10 @@ class RewardedAdManager {
 
   Future<void> loadInterstitial() async {
     if (!_initialized || _interstitialAd != null || _interstitialLoadInFlight != null) return;
+    AppLogger.i(
+      'Interstitial ad load requested '
+      '(unit=${AdConfiguration.interstitialId})',
+    );
     final Completer<void> done = Completer<void>();
     _interstitialLoadInFlight = done.future;
     try {
@@ -187,10 +224,18 @@ class RewardedAdManager {
             final InterstitialAd? previous = _interstitialAd;
             if (previous != null) unawaited(previous.dispose());
             _interstitialAd = ad;
+            AppLogger.i(
+              'Interstitial ad loaded (responseInfo=${ad.responseInfo})',
+            );
             done.complete();
           },
           onAdFailedToLoad: (LoadAdError error) {
-            AppLogger.w('Interstitial ad failed to load: $error');
+            AppLogger.w(
+              'Interstitial ad failed to load '
+              '(unit=${AdConfiguration.interstitialId}, '
+              'code=${error.code}, message=${error.message}, '
+              'domain=${error.domain}, responseInfo=${error.responseInfo})',
+            );
             done.complete();
           },
         ),
@@ -207,6 +252,7 @@ class RewardedAdManager {
   /// Shows one return-navigation interstitial when it is already ready.
   /// Returns immediately with false when policy or availability says no ad.
   Future<bool> showReturnInterstitial() async {
+    AppLogger.i('Return-navigation interstitial check started');
     if (await isPremiumUser() ||
         _showingInterstitial ||
         _returnInterstitialShownThisSession) return false;
@@ -217,6 +263,9 @@ class RewardedAdManager {
     }
     final InterstitialAd? ad = _interstitialAd;
     if (ad == null) {
+      AppLogger.w(
+        'Return-navigation interstitial unavailable; no loaded ad is ready',
+      );
       unawaited(loadInterstitial());
       return false;
     }
@@ -235,13 +284,31 @@ class RewardedAdManager {
       unawaited(loadInterstitial());
     }
 
+    AppLogger.i(
+      'Return-navigation interstitial show requested '
+      '(responseInfo=${ad.responseInfo})',
+    );
     ad.fullScreenContentCallback = FullScreenContentCallback<InterstitialAd>(
+      onAdShowedFullScreenContent: (InterstitialAd shownAd) {
+        AppLogger.i(
+          'Return-navigation interstitial shown '
+          '(responseInfo=${shownAd.responseInfo})',
+        );
+      },
       onAdDismissedFullScreenContent: (InterstitialAd dismissedAd) {
+        AppLogger.i(
+          'Return-navigation interstitial dismissed '
+          '(responseInfo=${dismissedAd.responseInfo})',
+        );
         unawaited(dismissedAd.dispose());
         finish(true);
       },
       onAdFailedToShowFullScreenContent: (InterstitialAd failedAd, AdError error) {
-        AppLogger.w('Interstitial ad failed to show: $error');
+        AppLogger.w(
+          'Return-navigation interstitial failed to show '
+          '(code=${error.code}, message=${error.message}, '
+          'domain=${error.domain}, responseInfo=${failedAd.responseInfo})',
+        );
         unawaited(failedAd.dispose());
         _lastInterstitialShown = null;
         _returnInterstitialShownThisSession = false;
@@ -286,6 +353,10 @@ class RewardedAdManager {
     if (!_initialized) await initialize();
     final RewardedAd? ad = _rewardedAd;
     if (ad == null) {
+      AppLogger.w(
+        'Rewarded ad unavailable; no loaded ad is ready '
+        '(unit=${AdConfiguration.rewardedId})',
+      );
       unawaited(loadRewarded());
       return RewardedAdResult.unavailable;
     }
@@ -307,7 +378,16 @@ class RewardedAdManager {
     }
 
     ad.fullScreenContentCallback = FullScreenContentCallback<RewardedAd>(
+      onAdShowedFullScreenContent: (RewardedAd shownAd) {
+        AppLogger.i(
+          'Rewarded ad shown (responseInfo=${shownAd.responseInfo})',
+        );
+      },
       onAdDismissedFullScreenContent: (RewardedAd dismissedAd) {
+        AppLogger.i(
+          'Rewarded ad dismissed (earned=$rewarded, '
+          'responseInfo=${dismissedAd.responseInfo})',
+        );
         unawaited(dismissedAd.dispose());
         finish(rewarded ? RewardedAdResult.rewarded : RewardedAdResult.failed);
       },
@@ -322,6 +402,10 @@ class RewardedAdManager {
         onUserEarnedReward: (AdWithoutView shownAd, RewardItem reward) {
           if (rewarded) return;
           rewarded = true;
+          AppLogger.i(
+            'Rewarded ad reward callback reached '
+            '(amount=${reward.amount}, type=${reward.type})',
+          );
           if (onRewarded != null) {
             unawaited(Future<void>(() async => onRewarded()));
           }
@@ -359,9 +443,14 @@ class NoPremiumEntitlementService {
 
 /// A lifecycle-safe banner widget backed by the centralized AdMob config.
 class ManagedBannerAd extends StatefulWidget {
-  const ManagedBannerAd({super.key, required this.manager});
+  const ManagedBannerAd({
+    super.key,
+    required this.manager,
+    this.placementName = 'unspecified',
+  });
 
   final RewardedAdManager manager;
+  final String placementName;
 
   @override
   State<ManagedBannerAd> createState() => _ManagedBannerAdState();
@@ -378,7 +467,18 @@ class _ManagedBannerAdState extends State<ManagedBannerAd> {
   }
 
   Future<void> _load() async {
+    AppLogger.i(
+      'Banner ad load requested '
+      '(placement=${widget.placementName}, unit=${AdConfiguration.bannerId})',
+    );
     await widget.manager.initialize();
+    if (!widget.manager.isInitialized) {
+      AppLogger.w(
+        'Banner ad request skipped because AdMob SDK initialization failed '
+        '(placement=${widget.placementName})',
+      );
+      return;
+    }
     if (await widget.manager.isPremiumUser()) return;
     final BannerAd ad = BannerAd(
       adUnitId: AdConfiguration.bannerId,
@@ -390,13 +490,24 @@ class _ManagedBannerAdState extends State<ManagedBannerAd> {
             unawaited(ad.dispose());
             return;
           }
+          AppLogger.i(
+            'Banner ad loaded (placement=${widget.placementName}, '
+            'unit=${AdConfiguration.bannerId}, '
+            'responseInfo=${(ad as BannerAd).responseInfo})',
+          );
           setState(() {
-            _ad = ad as BannerAd;
+            _ad = ad;
             _loaded = true;
           });
         },
         onAdFailedToLoad: (Ad ad, LoadAdError error) {
-          AppLogger.w('Banner ad failed to load: $error');
+          AppLogger.w(
+            'Banner ad failed to load '
+            '(placement=${widget.placementName}, '
+            'unit=${AdConfiguration.bannerId}, code=${error.code}, '
+            'message=${error.message}, domain=${error.domain}, '
+            'responseInfo=${error.responseInfo})',
+          );
           unawaited(ad.dispose());
         },
       ),

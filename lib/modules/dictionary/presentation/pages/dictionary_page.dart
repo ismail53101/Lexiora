@@ -94,7 +94,12 @@ class _DictionaryPageState extends ConsumerState<DictionaryPage> {
                       .onQueryChanged('');
                 },
               ),
-              Center(child: ManagedBannerAd(manager: sl<RewardedAdManager>())),
+              Center(
+                child: ManagedBannerAd(
+                  manager: sl<RewardedAdManager>(),
+                  placementName: 'dictionary',
+                ),
+              ),
               Expanded(child: _buildBody()),
             ],
           );

@@ -172,7 +172,10 @@ class _HomePageState extends ConsumerState<HomePage>
               child: Padding(
                 padding: const EdgeInsets.only(top: 12),
                 child: Center(
-                  child: ManagedBannerAd(manager: sl<RewardedAdManager>()),
+                  child: ManagedBannerAd(
+                    manager: sl<RewardedAdManager>(),
+                    placementName: 'home',
+                  ),
                 ),
               ),
             ),

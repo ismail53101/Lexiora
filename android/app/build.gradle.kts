@@ -76,8 +76,15 @@ android {
             // This exact production App ID must be resolved into the release
             // manifest. Do not substitute an ad-unit ID, an old/malformed ID,
             // or the Google test App ID during a production build.
-            manifestPlaceholders["admobAppId"] =
-                "ca-app-pub-434281193355977~3999306324"
+            val admobProductionAppId =
+                "ca-app-pub-4342811933559577~3999306324"
+            val admobAppIdPattern = Regex("^ca-app-pub-[0-9]{16}~[0-9]{10}$")
+            if (!admobAppIdPattern.matches(admobProductionAppId)) {
+                throw GradleException(
+                    "Invalid production AdMob App ID; expected 16 publisher digits and 10 app digits.",
+                )
+            }
+            manifestPlaceholders["admobAppId"] = admobProductionAppId
             // Remove unreachable Java/Kotlin bytecode. Notification sounds are
             // selected by resource name at runtime through Flutter, so Android
             // resource shrinking cannot reliably detect and preserve them.

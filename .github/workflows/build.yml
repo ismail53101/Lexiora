@@ -122,26 +122,51 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          expected='ca-app-pub-434281193355977~3999306324'
+          expected='ca-app-pub-4342811933559577~3999306324'
           merged_manifest="$(find build/app/intermediates -type f \( \
             -path '*/merged_manifests/release/*/AndroidManifest.xml' -o \
             -path '*/merged_manifest/release/*/AndroidManifest.xml' \
           \) -print -quit)"
           test -n "$merged_manifest"
           echo "Merged release manifest: $merged_manifest"
-          actual="$(python3 - "$merged_manifest" <<'PY'
+          actual="$(python3 - "$merged_manifest" "$expected" lib/core/services/rewarded_ad_manager.dart <<'PY'
+          import re
           import sys
           import xml.etree.ElementTree as ET
 
           android_name = '{http://schemas.android.com/apk/res/android}name'
           android_value = '{http://schemas.android.com/apk/res/android}value'
           root = ET.parse(sys.argv[1]).getroot()
+          expected = sys.argv[2]
+          dart_source = open(sys.argv[3], encoding='utf-8').read()
+          if not re.fullmatch(r'ca-app-pub-[0-9]{16}~[0-9]{10}', expected):
+              raise SystemExit('Configured production AdMob App ID has invalid format')
+          app_ids = []
           for node in root.findall('./application/meta-data'):
               if node.get(android_name) == 'com.google.android.gms.ads.APPLICATION_ID':
-                  print(node.get(android_value, ''))
-                  break
-          else:
-              raise SystemExit('APPLICATION_ID meta-data is missing')
+                  app_ids.append(node.get(android_value, ''))
+          if len(app_ids) != 1:
+              raise SystemExit(f'Expected exactly one APPLICATION_ID entry, found {len(app_ids)}')
+          actual = app_ids[0]
+          if actual != expected:
+              raise SystemExit(f'Merged manifest App ID mismatch: {actual}')
+          dart_app_ids = re.findall(
+              r"androidProductionAppId\s*=\s*'([^']+)'", dart_source
+          )
+          if dart_app_ids != [expected]:
+              raise SystemExit(f'Dart production App ID does not match manifest: {dart_app_ids}')
+          publisher = expected.removeprefix('ca-app-pub-').split('~', 1)[0]
+          for variable in ('productionBannerId', 'productionInterstitialId', 'productionRewardedId'):
+              values = re.findall(
+                  rf"{variable}\s*=\s*'([^']+)'", dart_source
+              )
+              if len(values) != 1:
+                  raise SystemExit(f'Expected one {variable}, found {len(values)}')
+              match = re.fullmatch(r'ca-app-pub-([0-9]{16})/([0-9]{10})', values[0])
+              if not match or match.group(1) != publisher:
+                  raise SystemExit(f'Invalid or mismatched production ad unit {variable}: {values[0]}')
+              print(f'{variable} = {values[0]}', file=sys.stderr)
+          print(actual)
           PY
           )"
           echo "APPLICATION_ID = $actual"
@@ -150,7 +175,10 @@ jobs:
           test -n "$aapt"
           "$aapt" dump xmltree build/app/outputs/flutter-apk/app-release.apk \
             AndroidManifest.xml > /tmp/release-apk-manifest.txt
+          apk_id_count="$(grep -F -c "$expected" /tmp/release-apk-manifest.txt || true)"
+          test "$apk_id_count" -eq 1
           grep -F "$expected" /tmp/release-apk-manifest.txt
+          grep -Eq 'isMinifyEnabled[[:space:]]*=[[:space:]]*true' android/app/build.gradle.kts
 
       - name: Build release App Bundle (.aab, for Play Store)
         env:
