@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -36,6 +38,28 @@ class _StageMapPageState extends ConsumerState<StageMapPage> {
   static const int _pageSize = 18;
   int _page = 0;
   final Set<int> _sessionUnlockedStages = <int>{};
+  final Set<int> _persistedUnlockedStages = <int>{};
+  int _unlockScanStageCount = -1;
+
+  void _loadPersistedUnlocks(int stageCount) {
+    if (_unlockScanStageCount == stageCount) return;
+    _unlockScanStageCount = stageCount;
+    unawaited(() async {
+      final RewardedAdManager manager = sl<RewardedAdManager>();
+      final Set<int> unlocked = <int>{};
+      for (int stage = AdConfiguration.rewardedQuizMilestone;
+          stage < stageCount;
+          stage += AdConfiguration.rewardedQuizMilestone) {
+        if (await manager.hasMainQuizUnlock(stage + 1)) unlocked.add(stage);
+      }
+      if (!mounted) return;
+      setState(() {
+        _persistedUnlockedStages
+          ..clear()
+          ..addAll(unlocked);
+      });
+    }());
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -86,6 +110,8 @@ class _StageMapPageState extends ConsumerState<StageMapPage> {
         ),
       );
     }
+
+    _loadPersistedUnlocks(stageCount);
 
     final Set<int> passed = <int>{
       for (final QuizStageProgress p in progress)
@@ -138,13 +164,13 @@ class _StageMapPageState extends ConsumerState<StageMapPage> {
               final bool rewardLocked =
                   stage > 0 &&
                   stage % AdConfiguration.rewardedQuizMilestone == 0 &&
-                  p == null &&
                   quizStageUnlocked(stage, passed) &&
-                  !_sessionUnlockedStages.contains(stage);
+                  !_sessionUnlockedStages.contains(stage) &&
+                  !_persistedUnlockedStages.contains(stage);
               return _StageCard(
                 stageIndex: stage,
                 color: color,
-                isCurrent: stage == current && p == null,
+                isCurrent: stage == current && p == null && !rewardLocked,
                 locked: !quizStageUnlocked(stage, passed) || rewardLocked,
                 rewardLocked: rewardLocked,
                 progress: p,
