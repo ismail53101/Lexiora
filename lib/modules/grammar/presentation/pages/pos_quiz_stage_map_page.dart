@@ -24,6 +24,7 @@ class PosQuizStageMapPage extends ConsumerStatefulWidget {
 
 class _PosQuizStageMapPageState extends ConsumerState<PosQuizStageMapPage> {
   final Set<int> _passedStages = <int>{};
+  final Set<int> _sessionUnlockedStages = <int>{};
 
   bool _isUnlocked(int index) =>
       index == 0 || _passedStages.contains(index - 1);
@@ -35,6 +36,9 @@ class _PosQuizStageMapPageState extends ConsumerState<PosQuizStageMapPage> {
     if (await manager.requiresGrammarQuizUnlock(quizNumber)) {
       final bool unlocked = await _offerQuizUnlock(manager, quizNumber);
       if (!unlocked || !mounted) return;
+      setState(() => _sessionUnlockedStages.add(index));
+    } else if (mounted) {
+      setState(() => _sessionUnlockedStages.add(index));
     }
     if (!mounted) return;
     final bool? passed = await Navigator.of(context).push<bool>(
@@ -74,10 +78,11 @@ class _PosQuizStageMapPageState extends ConsumerState<PosQuizStageMapPage> {
         ) ??
         false;
     if (!watch || !mounted) return false;
-    final RewardedAdResult result = await manager.showRewarded(
+    final bool unlocked = await manager.watchAdToUnlockQuiz(
       placement: RewardedAdPlacement.grammarQuiz,
+      quizNumber: quizNumber,
     );
-    if (result != RewardedAdResult.rewarded) {
+    if (!unlocked) {
       if (mounted) {
         ScaffoldMessenger.of(context).showSnackBar(
           const SnackBar(
@@ -87,7 +92,6 @@ class _PosQuizStageMapPageState extends ConsumerState<PosQuizStageMapPage> {
       }
       return false;
     }
-    await manager.unlockGrammarQuiz(quizNumber);
     return true;
   }
 
@@ -166,11 +170,17 @@ class _PosQuizStageMapPageState extends ConsumerState<PosQuizStageMapPage> {
                   final int count = (index == stageCount - 1)
                       ? lesson.quiz.length - index * 10
                       : 10;
+                  final bool rewardLocked =
+                      index > 0 &&
+                      index % AdConfiguration.rewardedQuizMilestone == 0 &&
+                      !passed &&
+                      unlocked &&
+                      !_sessionUnlockedStages.contains(index);
                   return InkWell(
                     borderRadius: BorderRadius.circular(18),
                     onTap: unlocked ? () => _openStage(lesson, index) : null,
                     child: Card(
-                      color: unlocked
+                      color: unlocked && !rewardLocked
                           ? Theme.of(context).colorScheme.surface
                           : Theme.of(
                               context,
@@ -197,17 +207,17 @@ class _PosQuizStageMapPageState extends ConsumerState<PosQuizStageMapPage> {
                                 Icon(
                                   passed
                                       ? Icons.check_circle_outline
-                                      : unlocked
+                                      : unlocked && !rewardLocked
                                       ? Icons.play_arrow_rounded
                                       : Icons.lock_outline,
                                   color: passed
                                       ? Colors.green
-                                      : unlocked
+                                      : unlocked && !rewardLocked
                                       ? Theme.of(context).colorScheme.primary
                                       : Theme.of(context).disabledColor,
                                   size: 30,
                                 ),
-                                if (!unlocked)
+                                if (!unlocked || rewardLocked)
                                   Icon(
                                     Icons.lock_outline,
                                     color: Theme.of(context).disabledColor,
@@ -224,11 +234,30 @@ class _PosQuizStageMapPageState extends ConsumerState<PosQuizStageMapPage> {
                             Text(
                               passed
                                   ? 'Passed'
+                                  : rewardLocked
+                                  ? 'Watch ad to unlock'
                                   : unlocked
                                   ? '$count questions · 50s each'
                                   : 'Pass Stage $index to unlock',
                               style: Theme.of(context).textTheme.bodyMedium,
                             ),
+                            if (rewardLocked) ...<Widget>[
+                              const SizedBox(height: 4),
+                              TextButton.icon(
+                                onPressed: () => _openStage(lesson, index),
+                                icon: const Icon(
+                                  Icons.play_circle_outline,
+                                  size: 16,
+                                ),
+                                label: const Text('WATCH AD TO UNLOCK'),
+                                style: TextButton.styleFrom(
+                                  padding: EdgeInsets.zero,
+                                  minimumSize: const Size(0, 28),
+                                  tapTargetSize:
+                                      MaterialTapTargetSize.shrinkWrap,
+                                ),
+                              ),
+                            ],
                           ],
                         ),
                       ),

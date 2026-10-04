@@ -35,6 +35,7 @@ class StageMapPage extends ConsumerStatefulWidget {
 class _StageMapPageState extends ConsumerState<StageMapPage> {
   static const int _pageSize = 18;
   int _page = 0;
+  final Set<int> _sessionUnlockedStages = <int>{};
 
   @override
   Widget build(BuildContext context) {
@@ -134,11 +135,18 @@ class _StageMapPageState extends ConsumerState<StageMapPage> {
             itemBuilder: (BuildContext context, int i) {
               final int stage = from + i;
               final QuizStageProgress? p = byStage[stage];
+              final bool rewardLocked =
+                  stage > 0 &&
+                  stage % AdConfiguration.rewardedQuizMilestone == 0 &&
+                  p == null &&
+                  quizStageUnlocked(stage, passed) &&
+                  !_sessionUnlockedStages.contains(stage);
               return _StageCard(
                 stageIndex: stage,
                 color: color,
                 isCurrent: stage == current && p == null,
-                locked: !quizStageUnlocked(stage, passed),
+                locked: !quizStageUnlocked(stage, passed) || rewardLocked,
+                rewardLocked: rewardLocked,
                 progress: p,
                 onTap: () => _open(stage, passed),
               ).animate().fadeIn(duration: 220.ms);
@@ -185,6 +193,9 @@ class _StageMapPageState extends ConsumerState<StageMapPage> {
     if (await manager.requiresMainQuizUnlock(quizNumber)) {
       final bool unlocked = await _offerQuizUnlock(manager, quizNumber);
       if (!unlocked || !mounted) return;
+      setState(() => _sessionUnlockedStages.add(stage));
+    } else if (mounted) {
+      setState(() => _sessionUnlockedStages.add(stage));
     }
     if (!mounted) return;
     await context.push(
@@ -218,10 +229,11 @@ class _StageMapPageState extends ConsumerState<StageMapPage> {
         ) ??
         false;
     if (!watch || !mounted) return false;
-    final RewardedAdResult result = await manager.showRewarded(
+    final bool unlocked = await manager.watchAdToUnlockQuiz(
       placement: RewardedAdPlacement.quiz,
+      quizNumber: quizNumber,
     );
-    if (result != RewardedAdResult.rewarded) {
+    if (!unlocked) {
       if (mounted) {
         ScaffoldMessenger.of(context).showSnackBar(
           const SnackBar(
@@ -231,7 +243,6 @@ class _StageMapPageState extends ConsumerState<StageMapPage> {
       }
       return false;
     }
-    await manager.unlockMainQuiz(quizNumber);
     return true;
   }
 }
@@ -309,6 +320,7 @@ class _StageCard extends StatelessWidget {
     required this.color,
     required this.isCurrent,
     required this.locked,
+    required this.rewardLocked,
     required this.onTap,
     this.progress,
   });
@@ -317,6 +329,7 @@ class _StageCard extends StatelessWidget {
   final Color color;
   final bool isCurrent;
   final bool locked;
+  final bool rewardLocked;
   final QuizStageProgress? progress;
   final VoidCallback onTap;
 
@@ -410,6 +423,19 @@ class _StageCard extends StatelessWidget {
                       : theme.colorScheme.onSurfaceVariant,
                 ),
               ),
+              if (rewardLocked) ...<Widget>[
+                const SizedBox(height: 4),
+                TextButton.icon(
+                  onPressed: onTap,
+                  icon: const Icon(Icons.play_circle_outline, size: 16),
+                  label: const Text('WATCH AD TO UNLOCK'),
+                  style: TextButton.styleFrom(
+                    padding: EdgeInsets.zero,
+                    minimumSize: const Size(0, 28),
+                    tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+                  ),
+                ),
+              ],
             ],
           ),
         ),
@@ -472,6 +498,7 @@ class _StageCard extends StatelessWidget {
   }
 
   String _subtitle(ThemeData theme) {
+    if (rewardLocked) return 'Watch ad to unlock';
     if (locked) return 'Pass Stage $stageIndex to unlock';
     if (progress == null) return '10 questions · 50s each';
     final String stars =

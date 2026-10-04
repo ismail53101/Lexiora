@@ -297,6 +297,22 @@ class RewardedAdManager {
     return true;
   }
 
+  /// Attempts to unlock exactly one milestone quiz. The unlock is persisted
+  /// only after [showRewarded] reports the official earned-reward callback.
+  Future<bool> watchAdToUnlockQuiz({
+    required RewardedAdPlacement placement,
+    required int quizNumber,
+  }) async {
+    final RewardedAdResult result = await showRewarded(placement: placement);
+    if (result != RewardedAdResult.rewarded) return false;
+    if (placement == RewardedAdPlacement.grammarQuiz) {
+      await unlockGrammarQuiz(quizNumber);
+    } else {
+      await unlockMainQuiz(quizNumber);
+    }
+    return true;
+  }
+
   /// Shows a rewarded ad only when the caller has already obtained explicit
   /// user consent (for example, after pressing “Watch Ad for More AI”).
   Future<RewardedAdResult> showRewarded({
@@ -435,6 +451,26 @@ class RewardedAdManager {
     return await isPremiumUser() || _grammarQuizUnlocks.contains(quizNumber);
   }
 
+  Future<int?> pendingMainQuizUnlock() async {
+    await _ensureQuizProgressLoaded();
+    if (_mainQuizCompletions == 0 ||
+        _mainQuizCompletions % AdConfiguration.rewardedQuizMilestone != 0 ||
+        _mainQuizUnlocks.contains(_mainQuizCompletions + 1) ||
+        await isPremiumUser())
+      return null;
+    return _mainQuizCompletions + 1;
+  }
+
+  Future<int?> pendingGrammarQuizUnlock() async {
+    await _ensureQuizProgressLoaded();
+    if (_grammarQuizCompletions == 0 ||
+        _grammarQuizCompletions % AdConfiguration.rewardedQuizMilestone != 0 ||
+        _grammarQuizUnlocks.contains(_grammarQuizCompletions + 1) ||
+        await isPremiumUser())
+      return null;
+    return _grammarQuizCompletions + 1;
+  }
+
   Future<void> unlockMainQuiz(int quizNumber) async {
     await _ensureQuizProgressLoaded();
     _mainQuizUnlocks.add(quizNumber);
@@ -496,6 +532,7 @@ class ManagedBannerAd extends StatefulWidget {
 class _ManagedBannerAdState extends State<ManagedBannerAd> {
   BannerAd? _ad;
   bool _loaded = false;
+  Timer? _retryTimer;
 
   @override
   void initState() {
@@ -516,14 +553,20 @@ class _ManagedBannerAdState extends State<ManagedBannerAd> {
             unawaited(ad.dispose());
             return;
           }
+          _retryTimer?.cancel();
           setState(() {
             _ad = ad as BannerAd;
             _loaded = true;
           });
         },
         onAdFailedToLoad: (Ad ad, LoadAdError error) {
-          AppLogger.w('Banner ad failed to load: $error');
+          AppLogger.w(
+            'Banner ad failed to load (unit=${AdConfiguration.bannerId}): $error',
+          );
+          _ad = null;
+          _loaded = false;
           unawaited(ad.dispose());
+          _scheduleRetry();
         },
       ),
     );
@@ -537,11 +580,23 @@ class _ManagedBannerAdState extends State<ManagedBannerAd> {
         stackTrace: stackTrace,
       );
       unawaited(ad.dispose());
+      _ad = null;
+      _loaded = false;
+      _scheduleRetry();
     }
+  }
+
+  void _scheduleRetry() {
+    if (!mounted) return;
+    _retryTimer?.cancel();
+    _retryTimer = Timer(const Duration(seconds: 30), () {
+      if (mounted) unawaited(_load());
+    });
   }
 
   @override
   void dispose() {
+    _retryTimer?.cancel();
     final BannerAd? ad = _ad;
     if (ad != null) unawaited(ad.dispose());
     super.dispose();

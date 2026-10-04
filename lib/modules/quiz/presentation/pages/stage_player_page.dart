@@ -220,7 +220,12 @@ class _StagePlayerPageState extends ConsumerState<StagePlayerPage> {
           total: total,
         );
     ref.read(qRevisionProvider.notifier).bump();
-    await sl<RewardedAdManager>().recordMainQuizCompletion();
+    final RewardedAdManager rewardManager = sl<RewardedAdManager>();
+    await rewardManager.recordMainQuizCompletion();
+    final int? pendingQuiz = await rewardManager.pendingMainQuizUnlock();
+    if (pendingQuiz != null && mounted) {
+      await _showMilestoneRewardDialog(rewardManager, pendingQuiz);
+    }
     if (!mounted) return;
     unawaited(
       Navigator.of(context).pushReplacement(
@@ -236,6 +241,45 @@ class _StagePlayerPageState extends ConsumerState<StagePlayerPage> {
         ),
       ),
     );
+  }
+
+  Future<void> _showMilestoneRewardDialog(
+    RewardedAdManager manager,
+    int quizNumber,
+  ) async {
+    final bool watch =
+        await showDialog<bool>(
+          context: context,
+          builder: (BuildContext dialogContext) => AlertDialog(
+            title: const Text('Keep your streak going'),
+            content: const Text(
+              'You completed five quizzes. Watch a short ad for a bonus reward?',
+            ),
+            actions: <Widget>[
+              TextButton(
+                onPressed: () => Navigator.of(dialogContext).pop(false),
+                child: const Text('Not now'),
+              ),
+              FilledButton(
+                onPressed: () => Navigator.of(dialogContext).pop(true),
+                child: const Text('Watch ad'),
+              ),
+            ],
+          ),
+        ) ??
+        false;
+    if (!watch || !mounted) return;
+    final bool unlocked = await manager.watchAdToUnlockQuiz(
+      placement: RewardedAdPlacement.quiz,
+      quizNumber: quizNumber,
+    );
+    if (!unlocked && mounted) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(
+          content: Text('The quiz remains locked until the ad is completed.'),
+        ),
+      );
+    }
   }
 
   Future<bool> _confirmQuit() async {

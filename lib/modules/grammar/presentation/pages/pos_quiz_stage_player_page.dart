@@ -67,7 +67,12 @@ class _PosQuizStagePlayerPageState extends State<PosQuizStagePlayerPage> {
   Future<void> _next() async {
     if (!_answered) return;
     if (_questionIndex == _questions.length - 1) {
-      await sl<RewardedAdManager>().recordGrammarQuizCompletion();
+      final RewardedAdManager rewardManager = sl<RewardedAdManager>();
+      await rewardManager.recordGrammarQuizCompletion();
+      final int? pendingQuiz = await rewardManager.pendingGrammarQuizUnlock();
+      if (pendingQuiz != null && mounted) {
+        await _showMilestoneRewardDialog(rewardManager, pendingQuiz);
+      }
       if (mounted) setState(() => _showResult = true);
       return;
     }
@@ -83,6 +88,45 @@ class _PosQuizStagePlayerPageState extends State<PosQuizStagePlayerPage> {
   void dispose() {
     _timer?.cancel();
     super.dispose();
+  }
+
+  Future<void> _showMilestoneRewardDialog(
+    RewardedAdManager manager,
+    int quizNumber,
+  ) async {
+    final bool watch =
+        await showDialog<bool>(
+          context: context,
+          builder: (BuildContext dialogContext) => AlertDialog(
+            title: const Text('Keep your streak going'),
+            content: const Text(
+              'You completed five quizzes. Watch a short ad for a bonus reward?',
+            ),
+            actions: <Widget>[
+              TextButton(
+                onPressed: () => Navigator.of(dialogContext).pop(false),
+                child: const Text('Not now'),
+              ),
+              FilledButton(
+                onPressed: () => Navigator.of(dialogContext).pop(true),
+                child: const Text('Watch ad'),
+              ),
+            ],
+          ),
+        ) ??
+        false;
+    if (!watch || !mounted) return;
+    final bool unlocked = await manager.watchAdToUnlockQuiz(
+      placement: RewardedAdPlacement.grammarQuiz,
+      quizNumber: quizNumber,
+    );
+    if (!unlocked && mounted) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(
+          content: Text('The quiz remains locked until the ad is completed.'),
+        ),
+      );
+    }
   }
 
   @override
