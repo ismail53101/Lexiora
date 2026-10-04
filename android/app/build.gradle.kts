@@ -73,18 +73,11 @@ android {
             // Always use the real production/upload keystore. The build fails
             // above if the production keystore is absent.
             signingConfig = signingConfigs.getByName("release")
-            // The Google Mobile Ads SDK validates this App ID in a
-            // ContentProvider BEFORE any Dart code runs and throws an
-            // uncatchable IllegalStateException ("Invalid application ID")
-            // for a malformed value, killing the app at launch. Production
-            // IDs must match ca-app-pub-{16 digits}~{10 digits}; until a
-            // well-formed production ID is supplied, fall back to Google's
-            // official test App ID so the app always starts.
-            val admobProductionAppId = "ca-app-pub-4342811933559577~399306324"
-            val admobAppIdPattern = Regex("^ca-app-pub-[0-9]{16}~[0-9]{10}$")
+            // This exact production App ID must be resolved into the release
+            // manifest. Do not substitute an ad-unit ID, an old/malformed ID,
+            // or the Google test App ID during a production build.
             manifestPlaceholders["admobAppId"] =
-                if (admobAppIdPattern.matches(admobProductionAppId)) admobProductionAppId
-                else "ca-app-pub-3940256099942544~3347511713"
+                "ca-app-pub-434281193355977~3999306324"
             // Remove unreachable Java/Kotlin bytecode. Notification sounds are
             // selected by resource name at runtime through Flutter, so Android
             // resource shrinking cannot reliably detect and preserve them.

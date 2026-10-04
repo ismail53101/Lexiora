@@ -118,6 +118,39 @@ jobs:
           fi
           flutter build apk --release $DEFINES
 
+      - name: Audit merged release manifest
+        shell: bash
+        run: |
+          set -euo pipefail
+          expected='ca-app-pub-434281193355977~3999306324'
+          merged_manifest="$(find build/app/intermediates -type f \( \
+            -path '*/merged_manifests/release/*/AndroidManifest.xml' -o \
+            -path '*/merged_manifest/release/*/AndroidManifest.xml' \
+          \) -print -quit)"
+          test -n "$merged_manifest"
+          echo "Merged release manifest: $merged_manifest"
+          actual="$(python3 - "$merged_manifest" <<'PY'
+          import sys
+          import xml.etree.ElementTree as ET
+
+          android_name = '{http://schemas.android.com/apk/res/android}name'
+          android_value = '{http://schemas.android.com/apk/res/android}value'
+          root = ET.parse(sys.argv[1]).getroot()
+          for node in root.findall('./application/meta-data'):
+              if node.get(android_name) == 'com.google.android.gms.ads.APPLICATION_ID':
+                  print(node.get(android_value, ''))
+                  break
+          else:
+              raise SystemExit('APPLICATION_ID meta-data is missing')
+          PY
+          )"
+          echo "APPLICATION_ID = $actual"
+          test "$actual" = "$expected"
+          aapt="$(find "$ANDROID_HOME/build-tools" -type f -name aapt | sort -V | tail -n 1)"
+          test -n "$aapt"
+          "$aapt" dump xmltree build/app/outputs/flutter-apk/app-release.apk > /tmp/release-apk-manifest.txt
+          grep -F "$expected" /tmp/release-apk-manifest.txt
+
       - name: Build release App Bundle (.aab, for Play Store)
         env:
           SAPIORA_AI_API_KEY: ${{ secrets.SAPIORA_AI_API_KEY }}
