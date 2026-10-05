@@ -3,7 +3,9 @@ import 'dart:math' show Random;
 
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:go_router/go_router.dart';
 import 'package:lexiora/app/di/injector.dart';
+import 'package:lexiora/app/router/app_routes.dart';
 import 'package:lexiora/core/services/rewarded_ad_manager.dart';
 import 'package:lexiora/modules/quiz/domain/entities/quiz_models.dart';
 import 'package:lexiora/modules/quiz/domain/entities/quiz_question.dart';
@@ -344,20 +346,29 @@ class _StagePlayerPageState extends ConsumerState<StagePlayerPage> {
     return leave;
   }
 
+  void _returnToStageList() {
+    if (_mainQuiz) {
+      // StageMap opens the player through GoRouter, while subsequent Result/
+      // Next routes are imperative MaterialPageRoutes. A plain pop can therefore
+      // reveal the stale original player (often Stage 1). Rebase the router to
+      // this subject's stage list and discard quiz routes.
+      context.go(AppRoutes.quizStageMap(widget.subjectId));
+      return;
+    }
+    Navigator.of(context).pop();
+  }
+
   Future<void> _leaveQuiz() async {
     if (_submitting || _leaving) return;
     if (_accessDenied) {
       _leaving = true;
-      if (mounted) Navigator.of(context).pop();
+      if (mounted) _returnToStageList();
       return;
     }
     if (await _confirmQuit() && mounted && !_leaving) {
       _leaving = true;
       _timer?.cancel();
-      // The stage map is already underneath this route because it opened the
-      // player with Navigator.push/context.push. Pop this quiz exactly once;
-      // never derive or push a previous stage from the stage number.
-      Navigator.of(context).pop();
+      _returnToStageList();
     }
   }
 
