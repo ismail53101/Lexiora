@@ -59,6 +59,18 @@ class _DictionaryPageState extends ConsumerState<DictionaryPage> {
     final DictionarySeeder seeder = ref.watch(dictionarySeederProvider);
 
     return Scaffold(
+      bottomNavigationBar: SafeArea(
+        top: false,
+        child: SizedBox(
+          height: 50,
+          child: Center(
+            child: ManagedBannerAd(
+              manager: sl<RewardedAdManager>(),
+              placementName: 'dictionary',
+            ),
+          ),
+        ),
+      ),
       appBar: AppBar(
         title: const Text('Dictionary'),
         actions: [
@@ -82,15 +94,6 @@ class _DictionaryPageState extends ConsumerState<DictionaryPage> {
                   .read(dictionarySearchControllerProvider.notifier)
                   .onQueryChanged('');
             },
-          ),
-          SizedBox(
-            height: 50,
-            child: Center(
-              child: ManagedBannerAd(
-                manager: sl<RewardedAdManager>(),
-                placementName: 'dictionary',
-              ),
-            ),
           ),
           Expanded(
             child: ValueListenableBuilder<DictionarySeedStatus>(

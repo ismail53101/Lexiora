@@ -123,7 +123,24 @@ class _HomePageState extends ConsumerState<HomePage>
         data: (AppSettings s) => s.displayName, orElse: () => '');
 
     return Scaffold(
-      bottomNavigationBar: const AppBottomNav(currentIndex: 0),
+      bottomNavigationBar: SafeArea(
+        top: false,
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: <Widget>[
+            SizedBox(
+              height: 50,
+              child: Center(
+                child: ManagedBannerAd(
+                  manager: sl<RewardedAdManager>(),
+                  placementName: 'home',
+                ),
+              ),
+            ),
+            const AppBottomNav(currentIndex: 0),
+          ],
+        ),
+      ),
       body: SafeArea(
         bottom: false,
         child: Stack(
@@ -167,17 +184,6 @@ class _HomePageState extends ConsumerState<HomePage>
             ),
             SliverToBoxAdapter(
               child: _ExploreSection(destinations: destinations),
-            ),
-            SliverToBoxAdapter(
-              child: Padding(
-                padding: const EdgeInsets.only(top: 12),
-                child: Center(
-                  child: ManagedBannerAd(
-                    manager: sl<RewardedAdManager>(),
-                    placementName: 'home',
-                  ),
-                ),
-              ),
             ),
             ...[
               _continueAndRecentSection(context, continueReading, recent),
