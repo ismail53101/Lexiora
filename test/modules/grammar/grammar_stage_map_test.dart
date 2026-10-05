@@ -99,7 +99,13 @@ void main() {
       await tester.pump(const Duration(milliseconds: 400));
 
       expect(ads.requestCount, 1);
-      expect(find.text('Stage 5'), findsOneWidget);
+      expect(
+        find.descendant(
+          of: find.byType(AppBar).first,
+          matching: find.text('Stage 5'),
+        ),
+        findsOneWidget,
+      );
       expect(
         (await repository.grammarQuizStageProgress(quizId))
             .singleWhere((row) => row.stageIndex == 4)
@@ -144,9 +150,16 @@ void main() {
     expect(find.text('Question 1 of 10'), findsOneWidget);
 
     for (int question = 0; question < 10; question++) {
-      await tester.tap(find.text('Choice A').first);
+      final Finder answer = find.text('Choice A').first;
+      await tester.ensureVisible(answer);
       await tester.pump();
-      await tester.tap(find.text(question == 9 ? 'FINISH' : 'NEXT'));
+      await tester.tap(answer);
+      await tester.pump();
+      final Finder continueButton =
+          find.text(question == 9 ? 'FINISH' : 'NEXT');
+      await tester.ensureVisible(continueButton);
+      await tester.pump();
+      await tester.tap(continueButton);
       await tester.pump();
       await tester.pump(const Duration(milliseconds: 10));
     }
