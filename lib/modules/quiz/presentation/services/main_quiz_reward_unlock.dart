@@ -11,6 +11,17 @@ typedef MainQuizRewardedAdRequest = Future<RewardedAdResult> Function({
   required RewardCallback? onRewarded,
 });
 
+RewardedAdPlacement mainQuizRewardPlacementForSubject(String subjectId) =>
+    switch (subjectId) {
+      'pakistan-affairs' => RewardedAdPlacement.mainQuizPakistanAffairs,
+      'islamic-studies' => RewardedAdPlacement.mainQuizIslamicStudies,
+      'general-science-ability' =>
+        RewardedAdPlacement.mainQuizGeneralScienceAbility,
+      'english' => RewardedAdPlacement.mainQuizEnglish,
+      _ => throw ArgumentError.value(
+          subjectId, 'subjectId', 'Not a Main Quiz subject'),
+    };
+
 class MainQuizRewardOutcome {
   const MainQuizRewardOutcome({
     required this.adResult,

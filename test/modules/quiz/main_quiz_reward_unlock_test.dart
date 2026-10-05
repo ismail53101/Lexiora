@@ -27,6 +27,29 @@ void main() {
     await db.close();
   });
 
+  test('each Main Quiz subject uses its own rewarded placement', () {
+    expect(
+      mainQuizRewardPlacementForSubject('pakistan-affairs'),
+      RewardedAdPlacement.mainQuizPakistanAffairs,
+    );
+    expect(
+      mainQuizRewardPlacementForSubject('islamic-studies'),
+      RewardedAdPlacement.mainQuizIslamicStudies,
+    );
+    expect(
+      mainQuizRewardPlacementForSubject('general-science-ability'),
+      RewardedAdPlacement.mainQuizGeneralScienceAbility,
+    );
+    expect(
+      mainQuizRewardPlacementForSubject('english'),
+      RewardedAdPlacement.mainQuizEnglish,
+    );
+    expect(
+      () => mainQuizRewardPlacementForSubject('custom-subject'),
+      throwsArgumentError,
+    );
+  });
+
   Future<MainQuizRewardOutcome> runFlow({
     required MainQuizRewardedAdRequest request,
   }) =>

@@ -279,7 +279,7 @@ class _StageMapPageState extends ConsumerState<StageMapPage> {
           await requestMainQuizMilestoneUnlock(
         subjectId: widget.subjectId,
         stageIndex: stageIndex,
-        placement: _rewardPlacementForSubject(widget.subjectId),
+        placement: mainQuizRewardPlacementForSubject(widget.subjectId),
         repository: ref.read(quizRepositoryProvider),
         requestAd: ({
           required RewardedAdPlacement placement,
@@ -318,16 +318,6 @@ class _StageMapPageState extends ConsumerState<StageMapPage> {
       _rewardFlowActive = false;
     }
   }
-
-  RewardedAdPlacement _rewardPlacementForSubject(String subjectId) =>
-      switch (subjectId) {
-        'pakistan-affairs' => RewardedAdPlacement.mainQuizPakistanAffairs,
-        'islamic-studies' => RewardedAdPlacement.mainQuizIslamicStudies,
-        'general-science-ability' =>
-          RewardedAdPlacement.mainQuizGeneralScienceAbility,
-        'english' => RewardedAdPlacement.mainQuizEnglish,
-        _ => RewardedAdPlacement.quiz,
-      };
 
   void _pushStage(int stage) {
     context.push(

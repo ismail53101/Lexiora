@@ -1,11 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:lexiora/app/di/injector.dart';
+import 'package:lexiora/core/services/rewarded_ad_manager.dart';
 import 'package:lexiora/modules/quiz/domain/entities/quiz_models.dart';
+import 'package:lexiora/modules/quiz/domain/entities/quiz_stage_progress.dart';
 import 'package:lexiora/modules/quiz/domain/quiz_grading.dart';
 import 'package:lexiora/modules/quiz/domain/quiz_stages.dart';
 import 'package:lexiora/modules/quiz/presentation/pages/quiz_review_page.dart';
 import 'package:lexiora/modules/quiz/presentation/pages/stage_player_page.dart';
 import 'package:lexiora/modules/quiz/presentation/providers/quiz_providers.dart';
+import 'package:lexiora/modules/quiz/presentation/services/main_quiz_reward_unlock.dart';
 
 /// End-of-stage score screen (Phase v0.11.0): animated percentage ring, star
 /// rating, pass/unlock banner, per-question review and next-stage CTA.
@@ -46,9 +50,30 @@ class StageResultsPage extends ConsumerWidget {
     final int stars = quizStageStars(correct, total);
     final bool hasNext = stageCount > stageIndex + 1;
     final bool mainQuiz = isMainQuizScope(scope);
+    final int nextStageIndex = stageIndex + 1;
+    final List<QuizStageProgress>? progressRows = mainQuiz
+        ? ref.watch(quizStageProgressProvider(scope)).maybeWhen(
+              data: (List<QuizStageProgress> rows) => rows,
+              orElse: () => null,
+            )
+        : const <QuizStageProgress>[];
+    final Set<int>? rewardedMilestones = mainQuiz
+        ? ref.watch(quizMainRewardUnlocksProvider(subjectId)).maybeWhen(
+              data: (Set<int> stages) => stages,
+              orElse: () => null,
+            )
+        : const <int>{};
+    final bool nextStageAlreadyPassed =
+        progressRows?.any((QuizStageProgress row) =>
+                row.stageIndex == nextStageIndex && row.passed) ??
+            false;
+    final bool nextStageAlreadyUnlocked =
+        rewardedMilestones?.contains(nextStageIndex) ?? false;
     final bool nextIsMilestone = mainQuiz &&
         hasNext &&
-        quizStageIsRewardMilestone(stageIndex + 1);
+        quizStageIsRewardMilestone(nextStageIndex) &&
+        !nextStageAlreadyPassed &&
+        !nextStageAlreadyUnlocked;
 
     return Scaffold(
       appBar: AppBar(
@@ -149,7 +174,7 @@ class StageResultsPage extends ConsumerWidget {
                     passed
                         ? (hasNext
                             ? (nextIsMilestone
-                                ? 'Stage passed! Return to the stage list and watch an ad to unlock Stage ${stageIndex + 2}.'
+                                ? 'Stage passed! Watch a rewarded ad to continue to Stage ${nextStageIndex + 1}.'
                                 : 'Stage passed! Stage ${stageIndex + 2} is now unlocked.')
                             : 'Stage passed! You completed the ladder.')
                         : (mainQuiz
@@ -180,7 +205,7 @@ class StageResultsPage extends ConsumerWidget {
           ),
           const SizedBox(height: 26),
           FilledButton.icon(
-            onPressed: () {
+            onPressed: () async {
               if (mainQuiz && !passed) {
                 Navigator.of(context).pushReplacement(
                   MaterialPageRoute<void>(
@@ -195,10 +220,54 @@ class StageResultsPage extends ConsumerWidget {
                 return;
               }
               if (mainQuiz && passed && hasNext) {
-                // Keep one player route at a time. Returning to the stage map
-                // prevents Back/Leave from landing on a previously played
-                // stage, and milestone cards are gated there before entry.
-                Navigator.of(context).pop();
+                if (nextIsMilestone) {
+                  final RewardedAdManager manager = sl<RewardedAdManager>();
+                  final MainQuizRewardOutcome outcome =
+                      await requestMainQuizMilestoneUnlock(
+                    subjectId: subjectId,
+                    stageIndex: nextStageIndex,
+                    placement:
+                        mainQuizRewardPlacementForSubject(subjectId),
+                    repository: ref.read(quizRepositoryProvider),
+                    requestAd: ({
+                      required RewardedAdPlacement placement,
+                      required RewardCallback? onRewarded,
+                    }) =>
+                        manager.showRewarded(
+                      placement: placement,
+                      onRewarded: onRewarded,
+                    ),
+                  );
+                  if (!context.mounted) return;
+                  if (!outcome.unlockPersisted) {
+                    final String message = switch (outcome.adResult) {
+                      RewardedAdResult.unavailable =>
+                        'A rewarded ad is not ready yet. Stage ${nextStageIndex + 1} remains locked; try again shortly.',
+                      RewardedAdResult.cooldown =>
+                        'Please wait before requesting another reward for this subject.',
+                      RewardedAdResult.rewarded =>
+                        'The reward was not saved. Stage ${nextStageIndex + 1} remains locked.',
+                      RewardedAdResult.premium =>
+                        'Stage ${nextStageIndex + 1} unlocks only after the rewarded ad is completed.',
+                      RewardedAdResult.failed =>
+                        'The ad was not completed. Stage ${nextStageIndex + 1} remains locked.',
+                    };
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      SnackBar(content: Text(message)),
+                    );
+                    return;
+                  }
+                  ref.invalidate(quizMainRewardUnlocksProvider(subjectId));
+                }
+                if (!context.mounted) return;
+                Navigator.of(context).pushReplacement(MaterialPageRoute<void>(
+                  builder: (_) => StagePlayerPage(
+                    subjectId: subjectId,
+                    subjectName: subjectName,
+                    topicId: topicId,
+                    stageIndex: nextStageIndex,
+                  ),
+                ));
                 return;
               }
               if (!hasNext) {
@@ -215,7 +284,9 @@ class StageResultsPage extends ConsumerWidget {
               ));
             },
             icon: Icon(mainQuiz && passed && hasNext
-                ? Icons.list_alt_rounded
+                ? (nextIsMilestone
+                    ? Icons.play_circle_outline_rounded
+                    : Icons.arrow_forward_rounded)
                 : (mainQuiz && !passed
                     ? Icons.replay_rounded
                     : (passed && hasNext
@@ -224,7 +295,9 @@ class StageResultsPage extends ConsumerWidget {
             label: Text(mainQuiz && !passed
                 ? 'Try again'
                 : (mainQuiz && passed && hasNext
-                    ? 'Back to stages'
+                    ? (nextIsMilestone
+                        ? 'Watch Ad to Continue to Stage ${nextStageIndex + 1}'
+                        : 'Next Stage')
                     : (passed && hasNext
                         ? 'Next stage'
                         : (passed ? 'Done' : 'Try again')))),
