@@ -58,6 +58,11 @@ abstract interface class QuizRepository {
     required int total,
     String? topicId,
   });
+  Future<Set<int>> mainQuizRewardedMilestoneStages(String subjectId);
+  Future<bool> grantMainQuizMilestoneUnlock({
+    required String subjectId,
+    required int stageIndex,
+  });
 
   // ── Play / attempts ─────────────────────────────────────────────────────────
   Future<List<QuizQuestion>> buildSession({

@@ -56,6 +56,10 @@ abstract final class AdConfiguration {
 enum RewardedAdPlacement {
   grammarQuiz,
   quiz,
+  mainQuizPakistanAffairs,
+  mainQuizIslamicStudies,
+  mainQuizGeneralScienceAbility,
+  mainQuizEnglish,
   aiAssistant,
 }
 
@@ -93,7 +97,7 @@ class RewardedAdManager {
   bool _returnInterstitialShownThisSession = false;
   final Map<RewardedAdPlacement, DateTime> _lastRewardedShown =
       <RewardedAdPlacement, DateTime>{};
-  int _mainQuizCompletions = 0;
+  int _legacyOtherQuizCompletions = 0;
   int _aiRequestsRemaining = AdConfiguration.FREE_AI_REQUEST_LIMIT;
   bool _initialized = false;
   bool _showingInterstitial = false;
@@ -367,14 +371,22 @@ class RewardedAdManager {
     final Completer<RewardedAdResult> result = Completer<RewardedAdResult>();
     bool rewarded = false;
     bool completed = false;
+    Future<void>? rewardCallbackInFlight;
 
     void finish(RewardedAdResult value) {
       if (completed) return;
       completed = true;
-      _showingRewarded = false;
-      if (value == RewardedAdResult.failed) _lastRewardedShown.remove(placement);
-      if (!result.isCompleted) result.complete(value);
-      unawaited(loadRewarded());
+      unawaited(() async {
+        // Persist any caller-owned entitlement before exposing completion. The
+        // callback is started only by AdMob's official earned-reward event.
+        await rewardCallbackInFlight;
+        _showingRewarded = false;
+        if (value == RewardedAdResult.failed) {
+          _lastRewardedShown.remove(placement);
+        }
+        if (!result.isCompleted) result.complete(value);
+        unawaited(loadRewarded());
+      }());
     }
 
     ad.fullScreenContentCallback = FullScreenContentCallback<RewardedAd>(
@@ -407,7 +419,15 @@ class RewardedAdManager {
             '(amount=${reward.amount}, type=${reward.type})',
           );
           if (onRewarded != null) {
-            unawaited(Future<void>(() async => onRewarded()));
+            rewardCallbackInFlight = Future<void>.sync(onRewarded).catchError(
+              (Object error, StackTrace stackTrace) {
+                AppLogger.e(
+                  'Rewarded ad earned callback failed',
+                  error: error,
+                  stackTrace: stackTrace,
+                );
+              },
+            );
           }
         },
       );
@@ -419,10 +439,11 @@ class RewardedAdManager {
     return result.future;
   }
 
-  /// Returns true on every fifth completed main-Quiz session in this app run.
-  bool recordMainQuizCompletion() {
-    _mainQuizCompletions++;
-    return _mainQuizCompletions % 5 == 0;
+  /// Keeps the legacy non-Main-Quiz streak prompt available to topic/Grammar
+  /// ladders. Main Quiz uses independent subject + milestone unlock records.
+  bool recordNonMainQuizCompletion() {
+    _legacyOtherQuizCompletions++;
+    return _legacyOtherQuizCompletions % 5 == 0;
   }
 
   void dispose() {

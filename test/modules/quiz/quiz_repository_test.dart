@@ -275,6 +275,85 @@ void main() {
     expect(s.shuffleQuestions, isFalse);
   });
 
+  test('Main Quiz milestone unlocks persist independently by subject', () async {
+    expect(await repo.mainQuizRewardedMilestoneStages('pakistan-affairs'),
+        isEmpty);
+    expect(
+      await repo.grantMainQuizMilestoneUnlock(
+        subjectId: 'pakistan-affairs',
+        stageIndex: 4,
+      ),
+      isFalse,
+      reason: 'only the 0-based index of a stage after five passes is valid',
+    );
+    expect(
+      await repo.grantMainQuizMilestoneUnlock(
+        subjectId: 'pakistan-affairs',
+        stageIndex: 5,
+      ),
+      isFalse,
+      reason: 'the first five stages must be passed before the reward can persist',
+    );
+    for (int stage = 0; stage < 5; stage++) {
+      await repo.saveStageResult(
+        subjectId: 'pakistan-affairs',
+        stageIndex: stage,
+        correct: 5,
+        total: 10,
+      );
+    }
+
+    expect(
+      await repo.grantMainQuizMilestoneUnlock(
+        subjectId: 'pakistan-affairs',
+        stageIndex: 5,
+      ),
+      isTrue,
+    );
+    for (int stage = 0; stage < 10; stage++) {
+      await repo.saveStageResult(
+        subjectId: 'islamic-studies',
+        stageIndex: stage,
+        correct: 5,
+        total: 10,
+      );
+    }
+    expect(
+      await repo.grantMainQuizMilestoneUnlock(
+        subjectId: 'islamic-studies',
+        stageIndex: 10,
+      ),
+      isTrue,
+    );
+    expect(await repo.mainQuizRewardedMilestoneStages('pakistan-affairs'),
+        <int>{5});
+    expect(await repo.mainQuizRewardedMilestoneStages('islamic-studies'),
+        <int>{10});
+    expect(await repo.mainQuizRewardedMilestoneStages('english'), isEmpty);
+    expect(
+      await repo.grantMainQuizMilestoneUnlock(
+        subjectId: 'custom-subject',
+        stageIndex: 5,
+      ),
+      isFalse,
+    );
+
+    // The same database-backed store is used after rebuilding the repository,
+    // and ordinary Quiz preferences remain independent of unlock keys.
+    final QuizRepositoryImpl recreated =
+        QuizRepositoryImpl(QuizLocalDataSource(db));
+    expect(await recreated.mainQuizRewardedMilestoneStages('pakistan-affairs'),
+        <int>{5});
+    await recreated.saveSettings(const QuizSettings(
+      questionsPerQuiz: 20,
+      defaultMode: QuizMode.exam,
+      shuffleQuestions: false,
+    ));
+    expect(await repo.mainQuizRewardedMilestoneStages('pakistan-affairs'),
+        <int>{5});
+    expect((await repo.loadSettings()).questionsPerQuiz, 20);
+  });
+
   test('backup round-trips banks, questions, attempts and wrong answers',
       () async {
     await repo.saveBank(bank('b1', name: 'Keep me'));

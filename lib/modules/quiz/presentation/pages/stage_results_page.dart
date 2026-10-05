@@ -32,11 +32,9 @@ class StageResultsPage extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final ThemeData theme = Theme.of(context);
-    final int stageCount =
-        ref.watch(quizStageCountProvider(QuizStageScope(
-          subjectId: subjectId,
-          topicId: topicId,
-        ))).maybeWhen(
+    final QuizStageScope scope =
+        QuizStageScope(subjectId: subjectId, topicId: topicId);
+    final int stageCount = ref.watch(quizStageCountProvider(scope)).maybeWhen(
               data: (int n) => n,
               orElse: () => -1,
             );
@@ -47,6 +45,10 @@ class StageResultsPage extends ConsumerWidget {
     final bool passed = quizStagePassed(correct, total);
     final int stars = quizStageStars(correct, total);
     final bool hasNext = stageCount > stageIndex + 1;
+    final bool mainQuiz = isMainQuizScope(scope);
+    final bool nextIsMilestone = mainQuiz &&
+        hasNext &&
+        quizStageIsRewardMilestone(stageIndex + 1);
 
     return Scaffold(
       appBar: AppBar(
@@ -146,9 +148,13 @@ class StageResultsPage extends ConsumerWidget {
                   child: Text(
                     passed
                         ? (hasNext
-                            ? 'Stage passed! Stage ${stageIndex + 2} is now unlocked.'
+                            ? (nextIsMilestone
+                                ? 'Stage passed! Return to the stage list and watch an ad to unlock Stage ${stageIndex + 2}.'
+                                : 'Stage passed! Stage ${stageIndex + 2} is now unlocked.')
                             : 'Stage passed! You completed the ladder.')
-                        : 'Score 50% or more to unlock the next stage.',
+                        : (mainQuiz
+                            ? 'Score at least 50% to pass. Failed attempts do not unlock stages.'
+                            : 'Score 50% or more to unlock the next stage.'),
                     style: theme.textTheme.bodyMedium
                         ?.copyWith(fontWeight: FontWeight.w600),
                   ),
@@ -175,6 +181,26 @@ class StageResultsPage extends ConsumerWidget {
           const SizedBox(height: 26),
           FilledButton.icon(
             onPressed: () {
+              if (mainQuiz && !passed) {
+                Navigator.of(context).pushReplacement(
+                  MaterialPageRoute<void>(
+                    builder: (_) => StagePlayerPage(
+                      subjectId: subjectId,
+                      subjectName: subjectName,
+                      topicId: topicId,
+                      stageIndex: stageIndex,
+                    ),
+                  ),
+                );
+                return;
+              }
+              if (mainQuiz && passed && hasNext) {
+                // Keep one player route at a time. Returning to the stage map
+                // prevents Back/Leave from landing on a previously played
+                // stage, and milestone cards are gated there before entry.
+                Navigator.of(context).pop();
+                return;
+              }
               if (!hasNext) {
                 Navigator.of(context).pop();
                 return;
@@ -188,12 +214,20 @@ class StageResultsPage extends ConsumerWidget {
                 ),
               ));
             },
-            icon: Icon(passed && hasNext
-                ? Icons.arrow_forward_rounded
-                : Icons.replay_rounded),
-            label: Text(passed && hasNext
-                ? 'Next stage'
-                : (passed ? 'Done' : 'Try again')),
+            icon: Icon(mainQuiz && passed && hasNext
+                ? Icons.list_alt_rounded
+                : (mainQuiz && !passed
+                    ? Icons.replay_rounded
+                    : (passed && hasNext
+                        ? Icons.arrow_forward_rounded
+                        : Icons.replay_rounded))),
+            label: Text(mainQuiz && !passed
+                ? 'Try again'
+                : (mainQuiz && passed && hasNext
+                    ? 'Back to stages'
+                    : (passed && hasNext
+                        ? 'Next stage'
+                        : (passed ? 'Done' : 'Try again')))),
           ),
           const SizedBox(height: 10),
           OutlinedButton.icon(

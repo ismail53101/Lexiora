@@ -85,6 +85,12 @@ final quizStageProgressProvider =
             .watch(quizRepositoryProvider)
             .watchStageProgress(scope.subjectId, topicId: scope.topicId));
 
+/// Durable rewarded milestone unlocks, kept separate per Main Quiz subject.
+final quizMainRewardUnlocksProvider =
+    FutureProvider.family<Set<int>, String>((Ref ref, String subjectId) =>
+        ref.watch(quizRepositoryProvider)
+            .mainQuizRewardedMilestoneStages(subjectId));
+
 /// Number of stages in a subject or topic-specific question pool.
 final quizStageCountProvider = FutureProvider.family<int, QuizStageScope>(
     (Ref ref, QuizStageScope scope) async {

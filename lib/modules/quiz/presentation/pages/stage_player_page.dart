@@ -7,6 +7,7 @@ import 'package:lexiora/app/di/injector.dart';
 import 'package:lexiora/core/services/rewarded_ad_manager.dart';
 import 'package:lexiora/modules/quiz/domain/entities/quiz_models.dart';
 import 'package:lexiora/modules/quiz/domain/entities/quiz_question.dart';
+import 'package:lexiora/modules/quiz/domain/entities/quiz_stage_progress.dart';
 import 'package:lexiora/modules/quiz/domain/quiz_grading.dart';
 import 'package:lexiora/modules/quiz/domain/quiz_stages.dart';
 import 'package:lexiora/modules/quiz/presentation/pages/stage_results_page.dart';
@@ -50,14 +51,20 @@ class _StagePlayerPageState extends ConsumerState<StagePlayerPage> {
   int _index = 0;
   int _remaining = quizStageSecondsPerQuestion;
   bool _loading = true;
+  bool _accessDenied = false;
   bool _submitting = false;
   bool _frozen = false;
   bool _confirmingQuit = false;
+  bool _leaving = false;
   Timer? _timer;
   DateTime _shownAt = DateTime.now();
   DateTime _startedAt = DateTime.now();
 
   int get _stageNumber => widget.stageIndex + 1;
+  bool get _mainQuiz => isMainQuizScope(QuizStageScope(
+        subjectId: widget.subjectId,
+        topicId: widget.topicId,
+      ));
 
   @override
   void initState() {
@@ -73,9 +80,39 @@ class _StagePlayerPageState extends ConsumerState<StagePlayerPage> {
   }
 
   Future<void> _load() async {
-    final List<QuizQuestion> qs = await ref
-        .read(quizRepositoryProvider)
-        .stageQuestions(widget.subjectId, widget.stageIndex, topicId: widget.topicId);
+    final repository = ref.read(quizRepositoryProvider);
+    final QuizStageScope scope = QuizStageScope(
+      subjectId: widget.subjectId,
+      topicId: widget.topicId,
+    );
+    if (isMainQuizScope(scope)) {
+      final List<QuizStageProgress> progress =
+          await repository.watchStageProgress(widget.subjectId).first;
+      final Set<int> passed = <int>{
+        for (final QuizStageProgress item in progress)
+          if (item.passed) item.stageIndex,
+      };
+      final Set<int> rewardUnlocks =
+          await repository.mainQuizRewardedMilestoneStages(widget.subjectId);
+      if (!quizStageUnlocked(
+        widget.stageIndex,
+        passed,
+        requireRewardedMilestones: true,
+        rewardedUnlockedStageIndices: rewardUnlocks,
+      )) {
+        if (!mounted) return;
+        setState(() {
+          _accessDenied = true;
+          _loading = false;
+        });
+        return;
+      }
+    }
+    final List<QuizQuestion> qs = await repository.stageQuestions(
+      widget.subjectId,
+      widget.stageIndex,
+      topicId: widget.topicId,
+    );
     if (!mounted) return;
     setState(() {
       _questions = qs;
@@ -99,9 +136,9 @@ class _StagePlayerPageState extends ConsumerState<StagePlayerPage> {
     _displayOrder = shuffled.order;
   }
 
-  void _startTimer() {
+  void _startTimer({bool resetRemaining = true}) {
     _timer?.cancel();
-    _remaining = quizStageSecondsPerQuestion;
+    if (resetRemaining) _remaining = quizStageSecondsPerQuestion;
     _timer = Timer.periodic(const Duration(seconds: 1), (Timer t) {
       if (!mounted) {
         t.cancel();
@@ -210,7 +247,9 @@ class _StagePlayerPageState extends ConsumerState<StagePlayerPage> {
           total: total,
         );
     ref.read(qRevisionProvider.notifier).bump();
-    if (sl<RewardedAdManager>().recordMainQuizCompletion() && mounted) {
+    if (!_mainQuiz &&
+        sl<RewardedAdManager>().recordNonMainQuizCompletion() &&
+        mounted) {
       await _offerReward(context);
     }
     if (!mounted) return;
@@ -269,29 +308,51 @@ class _StagePlayerPageState extends ConsumerState<StagePlayerPage> {
     // for one leave request.
     if (_confirmingQuit) return false;
     _confirmingQuit = true;
-    final bool leave = await showDialog<bool>(
-          context: context,
-          builder: (BuildContext context) => AlertDialog(
-            title: const Text('Leave stage?'),
-            content: const Text('Your progress in this stage will be lost.'),
-            actions: <Widget>[
-              TextButton(
-                  onPressed: () => Navigator.of(context).pop(false),
-                  child: const Text('Stay')),
-              FilledButton(
-                  onPressed: () => Navigator.of(context).pop(true),
-                  child: const Text('Leave')),
-            ],
-          ),
-        ) ??
-        false;
-    _confirmingQuit = false;
+    if (_mainQuiz) {
+      if (!_loading && !_frozen && _questions.isNotEmpty) _accrueTime();
+      _timer?.cancel();
+    }
+    bool leave = false;
+    try {
+      leave = await showDialog<bool>(
+            context: context,
+            builder: (BuildContext context) => AlertDialog(
+              title: const Text('Leave stage?'),
+              content: const Text('Your progress in this stage will be lost.'),
+              actions: <Widget>[
+                TextButton(
+                    onPressed: () => Navigator.of(context).pop(false),
+                    child: const Text('Stay')),
+                FilledButton(
+                    onPressed: () => Navigator.of(context).pop(true),
+                    child: const Text('Leave')),
+              ],
+            ),
+          ) ??
+          false;
+    } finally {
+      _confirmingQuit = false;
+      if (_mainQuiz && !leave && mounted && !_submitting) {
+        // Exclude time spent in the confirmation dialog from the question's
+        // elapsed time. Preserve both the selected answer and remaining timer.
+        _shownAt = DateTime.now();
+        if (!_loading && !_frozen && _questions.isNotEmpty) {
+          _startTimer(resetRemaining: false);
+        }
+      }
+    }
     return leave;
   }
 
   Future<void> _leaveQuiz() async {
-    if (_submitting) return;
-    if (await _confirmQuit() && mounted) {
+    if (_submitting || _leaving) return;
+    if (_accessDenied) {
+      _leaving = true;
+      if (mounted) Navigator.of(context).pop();
+      return;
+    }
+    if (await _confirmQuit() && mounted && !_leaving) {
+      _leaving = true;
       _timer?.cancel();
       // The stage map is already underneath this route because it opened the
       // player with Navigator.push/context.push. Pop this quiz exactly once;
@@ -300,13 +361,63 @@ class _StagePlayerPageState extends ConsumerState<StagePlayerPage> {
     }
   }
 
+  Widget _guardLeave(Widget child) => PopScope(
+        canPop: false,
+        onPopInvokedWithResult: (bool didPop, Object? _) async {
+          if (didPop) return;
+          await _leaveQuiz();
+        },
+        child: child,
+      );
+
   @override
   Widget build(BuildContext context) {
     final ThemeData theme = Theme.of(context);
     if (_loading) {
-      return const Scaffold(body: Center(child: CircularProgressIndicator()));
+      const Scaffold loading =
+          Scaffold(body: Center(child: CircularProgressIndicator()));
+      return _mainQuiz ? _guardLeave(loading) : loading;
     }
-    if (_questions.isEmpty) {
+    if (_accessDenied) {
+      return _guardLeave(
+        Scaffold(
+          appBar: AppBar(
+            title: Text('Stage $_stageNumber'),
+            automaticallyImplyLeading: false,
+            leading: IconButton(
+              onPressed: _leaveQuiz,
+              icon: const Icon(Icons.arrow_back),
+              tooltip: 'Back to stages',
+            ),
+          ),
+          body: Center(
+            child: Padding(
+              padding: const EdgeInsets.all(24),
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: <Widget>[
+                  const Icon(Icons.lock_outline, size: 36),
+                  const SizedBox(height: 12),
+                  Text(
+                    'This stage is locked. Return to the subject stage list to '
+                    'complete earlier stages or unlock this milestone.',
+                    textAlign: TextAlign.center,
+                    style: theme.textTheme.bodyLarge,
+                  ),
+                  const SizedBox(height: 16),
+                  FilledButton.icon(
+                    onPressed: _leaveQuiz,
+                    icon: const Icon(Icons.arrow_back_rounded),
+                    label: const Text('Back to stages'),
+                  ),
+                ],
+              ),
+            ),
+          ),
+        ),
+      );
+    }
+    if (_questions.isEmpty && !_mainQuiz) {
       return Scaffold(
         appBar: AppBar(title: Text('Stage $_stageNumber')),
         body: const Center(
@@ -320,19 +431,38 @@ class _StagePlayerPageState extends ConsumerState<StagePlayerPage> {
         ),
       );
     }
+    if (_questions.isEmpty) {
+      return _guardLeave(
+        Scaffold(
+          appBar: AppBar(
+            title: Text('Stage $_stageNumber'),
+            automaticallyImplyLeading: false,
+            leading: IconButton(
+              onPressed: _leaveQuiz,
+              icon: const Icon(Icons.arrow_back),
+              tooltip: 'Back',
+            ),
+          ),
+          body: const Center(
+            child: Padding(
+              padding: EdgeInsets.all(24),
+              child: Text(
+                'No questions available for this stage.',
+                textAlign: TextAlign.center,
+              ),
+            ),
+          ),
+        ),
+      );
+    }
 
     final QuizQuestion q = _questions[_index];
     final bool isLast = _index == _questions.length - 1;
     final QuizGivenAnswer? given = _answers[_index];
     final bool answered = given != null && !given.isEmpty;
 
-    return PopScope(
-      canPop: false,
-      onPopInvokedWithResult: (bool didPop, Object? _) async {
-        if (didPop) return;
-        await _leaveQuiz();
-      },
-      child: Scaffold(
+    return _guardLeave(
+      Scaffold(
         appBar: AppBar(
           title: Text('Stage $_stageNumber'),
           automaticallyImplyLeading: false,

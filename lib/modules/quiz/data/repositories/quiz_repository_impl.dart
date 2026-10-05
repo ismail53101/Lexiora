@@ -236,6 +236,20 @@ class QuizRepositoryImpl implements QuizRepository {
     ));
   }
 
+  @override
+  Future<Set<int>> mainQuizRewardedMilestoneStages(String subjectId) =>
+      _local.mainQuizRewardedMilestoneStages(subjectId);
+
+  @override
+  Future<bool> grantMainQuizMilestoneUnlock({
+    required String subjectId,
+    required int stageIndex,
+  }) =>
+      _local.grantMainQuizMilestoneUnlock(
+        subjectId: subjectId,
+        stageIndex: stageIndex,
+      );
+
   // ── Play / attempts ─────────────────────────────────────────────────────────
 
   @override

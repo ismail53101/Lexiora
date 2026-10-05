@@ -3,6 +3,7 @@ import 'package:lexiora/core/constants/db_constants.dart';
 import 'package:lexiora/core/database/app_database.dart';
 import 'package:lexiora/modules/quiz/domain/entities/quiz_models.dart';
 import 'package:lexiora/modules/quiz/domain/quiz_dates.dart';
+import 'package:lexiora/modules/quiz/domain/quiz_stages.dart';
 
 typedef StatsAgg = ({
   int totalQuizzes,
@@ -631,6 +632,52 @@ class QuizLocalDataSource {
         );
       }
     });
+  }
+
+  static const String _mainQuizRewardUnlockPrefix =
+      'main_quiz.reward_unlock.v1';
+
+  String _mainQuizRewardUnlockKey(String subjectId, int stageIndex) =>
+      '$_mainQuizRewardUnlockPrefix:$subjectId:$stageIndex';
+
+  /// Reads only earned milestone keys for one of the four bundled Main Quiz
+  /// subjects. The subject and stage are part of each durable settings key.
+  Future<Set<int>> mainQuizRewardedMilestoneStages(String subjectId) async {
+    if (!mainQuizSubjectIds.contains(subjectId)) return <int>{};
+    final String prefix = '$_mainQuizRewardUnlockPrefix:$subjectId:';
+    final Map<String, String> settings = await allSettings();
+    final Set<int> stages = <int>{};
+    for (final MapEntry<String, String> entry in settings.entries) {
+      if (!entry.key.startsWith(prefix) || entry.value != 'earned') continue;
+      final int? stageIndex = int.tryParse(entry.key.substring(prefix.length));
+      if (stageIndex != null && quizStageIsRewardMilestone(stageIndex)) {
+        stages.add(stageIndex);
+      }
+    }
+    return stages;
+  }
+
+  /// Idempotently persists one earned reward. Invalid subjects/stages cannot
+  /// create unlocks; successful writes are scoped to subject + stage index.
+  Future<bool> grantMainQuizMilestoneUnlock({
+    required String subjectId,
+    required int stageIndex,
+  }) async {
+    if (!mainQuizSubjectIds.contains(subjectId) ||
+        !quizStageIsRewardMilestone(stageIndex)) {
+      return false;
+    }
+    final String key = _mainQuizRewardUnlockKey(subjectId, stageIndex);
+    if ((await allSettings())[key] == 'earned') return true;
+    for (int precedingStage = 0;
+        precedingStage < stageIndex;
+        precedingStage++) {
+      final QuizStageProgressRow? progress =
+          await stageProgress(subjectId, precedingStage);
+      if (progress == null || !progress.passed) return false;
+    }
+    await saveSettings(<String, String>{key: 'earned'});
+    return true;
   }
 
   // ── Demo seed bookkeeping (v0.9.1) ──────────────────────────────────────────

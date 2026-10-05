@@ -41,6 +41,40 @@ const int quizStagePassPercent = 50;
 /// the user answers (and resets for each new question).
 const int quizStageSecondsPerQuestion = 50;
 
+/// Stable bundled Main Quiz subject IDs. Topic-scoped ladders (including
+/// Grammar) and unrelated user-created subjects never receive these gates.
+const Set<String> mainQuizSubjectIds = <String>{
+  'pakistan-affairs',
+  'islamic-studies',
+  'general-science-ability',
+  'english',
+};
+
+/// Main Quiz earns a rewarded unlock after each five successfully passed
+/// stages. Stage indices are zero-based, so gates are indices 5, 10, 15, … .
+const int quizMilestoneInterval = 5;
+
+bool isMainQuizScope(QuizStageScope scope) =>
+    scope.topicId == null && mainQuizSubjectIds.contains(scope.subjectId);
+
+bool quizStageIsRewardMilestone(int stageIndex) =>
+    stageIndex > 0 && stageIndex % quizMilestoneInterval == 0;
+
+/// Number of consecutive stage passes from the beginning of this subject's
+/// ladder. Retries do not inflate this count because [passedStages] is a set.
+int quizConsecutivePassedStages(Set<int> passedStages) {
+  int count = 0;
+  while (passedStages.contains(count)) {
+    count++;
+  }
+  return count;
+}
+
+/// True once all stages before a milestone stage have been successfully passed.
+bool quizMilestoneEligible(int stageIndex, Set<int> passedStages) =>
+    quizStageIsRewardMilestone(stageIndex) &&
+    quizConsecutivePassedStages(passedStages) >= stageIndex;
+
 /// How many stages a subject's question pool splits into (ceil division, so a
 /// trailing partial stage counts once). Returns 0 for an empty pool.
 int quizStageCount(int questionCount, {int perStage = quizStagePerStage}) {
@@ -72,8 +106,21 @@ int quizStageStars(int correct, int total) {
   return 1;
 }
 
-/// Whether stage [stageIndex] is playable given the set of passed stage
-/// indices. Stage 1 (index 0) is always unlocked; each later stage unlocks
-/// only after the previous one has been passed.
-bool quizStageUnlocked(int stageIndex, Set<int> passedStages) =>
-    stageIndex <= 0 || passedStages.contains(stageIndex - 1);
+/// Whether stage [stageIndex] is playable given passed stages. Generic ladders
+/// unlock sequentially. Main Quiz callers additionally require a persisted
+/// rewarded unlock at milestone indices (5, 10, 15, …). Previously passed
+/// stages remain playable for backward compatibility with existing progress.
+bool quizStageUnlocked(
+  int stageIndex,
+  Set<int> passedStages, {
+  bool requireRewardedMilestones = false,
+  Set<int> rewardedUnlockedStageIndices = const <int>{},
+}) {
+  if (stageIndex <= 0 || passedStages.contains(stageIndex)) return true;
+  if (!passedStages.contains(stageIndex - 1)) return false;
+  if (!requireRewardedMilestones || !quizStageIsRewardMilestone(stageIndex)) {
+    return true;
+  }
+  return quizMilestoneEligible(stageIndex, passedStages) &&
+      rewardedUnlockedStageIndices.contains(stageIndex);
+}

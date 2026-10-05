@@ -82,6 +82,28 @@ void main() {
       expect(subject.progressSubjectId, 'english');
       expect(grammar, isNot(subject));
     });
+
+    test('Main Quiz milestone scope excludes Grammar topic ladders', () {
+      for (final String subjectId in <String>[
+        'pakistan-affairs',
+        'islamic-studies',
+        'general-science-ability',
+        'english',
+      ]) {
+        expect(isMainQuizScope(QuizStageScope(subjectId: subjectId)), isTrue);
+      }
+      expect(
+        isMainQuizScope(const QuizStageScope(
+          subjectId: 'english',
+          topicId: 'english-grammar',
+        )),
+        isFalse,
+      );
+      expect(
+        isMainQuizScope(const QuizStageScope(subjectId: 'custom-subject')),
+        isFalse,
+      );
+    });
   });
 
   group('quizStageUnlocked', () {
@@ -96,6 +118,64 @@ void main() {
       expect(quizStageUnlocked(2, const <int>{0, 1}), isTrue);
       expect(quizStageUnlocked(5, const <int>{0, 1, 2, 3}), isFalse);
       expect(quizStageUnlocked(5, const <int>{0, 1, 2, 3, 4}), isTrue);
+    });
+
+    test('Main Quiz stages 1–5 are free and Stage 6 needs earned unlock', () {
+      final Set<int> firstFive = <int>{0, 1, 2, 3, 4};
+      expect(quizStageUnlocked(0, const <int>{},
+          requireRewardedMilestones: true), isTrue);
+      for (int index = 1; index < 5; index++) {
+        expect(
+          quizStageUnlocked(index, <int>{for (int i = 0; i < index; i++) i},
+              requireRewardedMilestones: true),
+          isTrue,
+        );
+      }
+      expect(quizMilestoneEligible(5, firstFive), isTrue);
+      expect(
+        quizStageUnlocked(5, firstFive, requireRewardedMilestones: true),
+        isFalse,
+      );
+      expect(
+        quizStageUnlocked(
+          5,
+          firstFive,
+          requireRewardedMilestones: true,
+          rewardedUnlockedStageIndices: const <int>{5},
+        ),
+        isTrue,
+      );
+    });
+
+    test('Stage 7 is free; Stage 11 requires the second earned unlock', () {
+      final Set<int> sixPassed = <int>{0, 1, 2, 3, 4, 5};
+      expect(
+        quizStageUnlocked(6, sixPassed, requireRewardedMilestones: true),
+        isTrue,
+      );
+
+      final Set<int> tenPassed = <int>{0, 1, 2, 3, 4, 5, 6, 7, 8, 9};
+      expect(quizMilestoneEligible(10, tenPassed), isTrue);
+      expect(
+        quizStageUnlocked(10, tenPassed, requireRewardedMilestones: true),
+        isFalse,
+      );
+      expect(
+        quizStageUnlocked(
+          10,
+          tenPassed,
+          requireRewardedMilestones: true,
+          rewardedUnlockedStageIndices: const <int>{10},
+        ),
+        isTrue,
+      );
+    });
+
+    test('failed or repeated attempts cannot satisfy milestone count', () {
+      expect(quizMilestoneEligible(5, const <int>{0, 1, 2, 4}), isFalse);
+      expect(quizMilestoneEligible(5, const <int>{0, 1, 2, 3}), isFalse);
+      // A set represents unique passed stages; reattempts add no entries.
+      expect(quizConsecutivePassedStages(const <int>{0, 1, 2, 3, 4}), 5);
     });
 
     test('earlier passes do not bypass the immediate previous stage', () {
