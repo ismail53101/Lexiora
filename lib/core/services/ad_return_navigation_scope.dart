@@ -53,15 +53,18 @@ class _AdReturnNavigationScopeState extends State<AdReturnNavigationScope> {
 
   Future<void> _attemptInterstitialThenPop(NavigatorState navigator) async {
     try {
-      final bool shown = await widget.manager.showReturnInterstitial().timeout(
-        widget.navigationFallbackTimeout,
-        onTimeout: () {
-          AppLogger.w(
-            'INTERSTITIAL_NAVIGATION_FALLBACK reason=terminal_callback_timeout',
+      final bool shown = await Future<bool>.sync(
+        widget.manager.showReturnInterstitial,
+      ).timeout(
+            widget.navigationFallbackTimeout,
+            onTimeout: () {
+              AppLogger.w(
+                'INTERSTITIAL_NAVIGATION_FALLBACK '
+                'reason=terminal_callback_timeout',
+              );
+              return false;
+            },
           );
-          return false;
-        },
-      );
       AppLogger.i('INTERSTITIAL_EXIT_RESULT shown=$shown');
     } on Object catch (error, stackTrace) {
       AppLogger.e(
