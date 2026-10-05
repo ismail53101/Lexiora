@@ -167,19 +167,34 @@ class RewardedAdManager {
 
   Future<void> _initializeSdk() async {
     try {
-      AppLogger.i('AdMob SDK initialization started (release=$kReleaseMode)');
-      await MobileAds.instance.initialize();
+      final String configuredAppId = kReleaseMode
+          ? AdConfiguration.androidProductionAppId
+          : AdConfiguration.androidTestAppId;
+      AppLogger.i(
+        'ADMOB_INIT_START release=$kReleaseMode appId=$configuredAppId',
+      );
+      final InitializationStatus status =
+          await MobileAds.instance.initialize();
+      final String adapterDetails = status.adapterStatuses.entries
+          .map(
+            (entry) => '${entry.key}:state=${entry.value.state},'
+                'latency=${entry.value.latency}s,'
+                'description=${entry.value.description}',
+          )
+          .join(' | ');
       _initialized = true;
       AppLogger.i(
-        'AdMob SDK initialization succeeded '
-        '(bannerUnit=${AdConfiguration.bannerId}, '
-        'interstitialUnit=${AdConfiguration.interstitialId}, '
-        'rewardedUnit=${AdConfiguration.rewardedId})',
+        'ADMOB_INIT_SUCCESS release=$kReleaseMode appId=$configuredAppId '
+        'adapters=[$adapterDetails] '
+        'bannerUnit=${AdConfiguration.bannerId} '
+        'interstitialUnit=${AdConfiguration.interstitialId} '
+        'rewardedUnit=${AdConfiguration.rewardedId}',
       );
     } on Object catch (error, stackTrace) {
       _initialized = false;
       AppLogger.e(
-        'AdMob SDK initialization failed',
+        'ADMOB_INIT_FAILURE release=$kReleaseMode '
+        'errorMessage=$error',
         error: error,
         stackTrace: stackTrace,
       );
@@ -232,6 +247,7 @@ class RewardedAdManager {
       required String code,
       required String message,
       String? domain,
+      String? responseInfo,
       Object? error,
       StackTrace? stackTrace,
     }) {
@@ -240,7 +256,8 @@ class RewardedAdManager {
       retryAfterFailure = true;
       AppLogger.w(
         'REWARDED_LOAD_FAILED unit=${AdConfiguration.rewardedId} '
-        'code=$code message=$message domain=${domain ?? 'unknown'}',
+        'code=$code domain=${domain ?? 'unknown'} message=$message '
+        'responseInfo=${responseInfo ?? 'unavailable'}',
       );
       if (error != null) {
         AppLogger.e(
@@ -282,6 +299,7 @@ class RewardedAdManager {
               code: '${error.code}',
               message: error.message,
               domain: error.domain,
+              responseInfo: error.responseInfo?.toString(),
               error: error,
             );
           },
@@ -351,11 +369,23 @@ class RewardedAdManager {
   }
 
   Future<void> loadInterstitial() async {
-    if (!_initialized || _interstitialAd != null || _interstitialLoadInFlight != null) return;
     AppLogger.i(
-      'Interstitial ad load requested '
-      '(unit=${AdConfiguration.interstitialId})',
+      'INTERSTITIAL_LOAD_REQUEST unit=${AdConfiguration.interstitialId} '
+      'initialized=$_initialized adExists=${_interstitialAd != null} '
+      'loading=${_interstitialLoadInFlight != null}',
     );
+    if (!_initialized) {
+      AppLogger.i('INTERSTITIAL_LOAD_REQUEST skipped reason=sdk_not_initialized');
+      return;
+    }
+    if (_interstitialAd != null) {
+      AppLogger.i('INTERSTITIAL_LOAD_REQUEST skipped reason=already_ready');
+      return;
+    }
+    if (_interstitialLoadInFlight != null) {
+      AppLogger.i('INTERSTITIAL_LOAD_REQUEST skipped reason=already_loading');
+      return;
+    }
     final Completer<void> done = Completer<void>();
     _interstitialLoadInFlight = done.future;
     try {
@@ -368,16 +398,17 @@ class RewardedAdManager {
             if (previous != null) unawaited(previous.dispose());
             _interstitialAd = ad;
             AppLogger.i(
-              'Interstitial ad loaded (responseInfo=${ad.responseInfo})',
+              'INTERSTITIAL_LOAD_SUCCESS unit=${AdConfiguration.interstitialId} '
+              'responseInfo=${ad.responseInfo}',
             );
             done.complete();
           },
           onAdFailedToLoad: (LoadAdError error) {
             AppLogger.w(
-              'Interstitial ad failed to load '
-              '(unit=${AdConfiguration.interstitialId}, '
-              'code=${error.code}, message=${error.message}, '
-              'domain=${error.domain}, responseInfo=${error.responseInfo})',
+              'INTERSTITIAL_LOAD_FAILED '
+              'unit=${AdConfiguration.interstitialId} '
+              'code=${error.code} domain=${error.domain} '
+              'message=${error.message} responseInfo=${error.responseInfo}',
             );
             done.complete();
           },
@@ -385,7 +416,12 @@ class RewardedAdManager {
       );
       await done.future;
     } on Object catch (error, stackTrace) {
-      AppLogger.e('Interstitial ad load failed unexpectedly', error: error, stackTrace: stackTrace);
+      AppLogger.e(
+        'INTERSTITIAL_LOAD_FAILED unit=${AdConfiguration.interstitialId} '
+        'code=exception message=$error',
+        error: error,
+        stackTrace: stackTrace,
+      );
       if (!done.isCompleted) done.complete();
     } finally {
       _interstitialLoadInFlight = null;
@@ -395,19 +431,35 @@ class RewardedAdManager {
   /// Shows one return-navigation interstitial when it is already ready.
   /// Returns immediately with false when policy or availability says no ad.
   Future<bool> showReturnInterstitial() async {
-    AppLogger.i('Return-navigation interstitial check started');
-    if (await isPremiumUser() ||
-        _showingInterstitial ||
-        _returnInterstitialShownThisSession) return false;
+    AppLogger.i(
+      'INTERSTITIAL_SHOW_REQUEST placement=return_navigation '
+      'unit=${AdConfiguration.interstitialId} ready=${_interstitialAd != null} '
+      'loading=${_interstitialLoadInFlight != null} initialized=$_initialized',
+    );
+    if (await isPremiumUser()) {
+      AppLogger.i('INTERSTITIAL_SHOW_SKIPPED reason=premium');
+      return false;
+    }
+    if (_showingInterstitial) {
+      AppLogger.i('INTERSTITIAL_SHOW_SKIPPED reason=already_showing');
+      return false;
+    }
+    if (_returnInterstitialShownThisSession) {
+      AppLogger.i('INTERSTITIAL_SHOW_SKIPPED reason=already_shown_this_session');
+      return false;
+    }
     final DateTime now = DateTime.now();
     if (_lastInterstitialShown != null &&
         now.difference(_lastInterstitialShown!) < interstitialCooldown) {
+      AppLogger.i('INTERSTITIAL_SHOW_SKIPPED reason=cooldown');
       return false;
     }
     final InterstitialAd? ad = _interstitialAd;
     if (ad == null) {
       AppLogger.w(
-        'Return-navigation interstitial unavailable; no loaded ad is ready',
+        'INTERSTITIAL_SHOW_SKIPPED reason=not_ready '
+        'unit=${AdConfiguration.interstitialId} '
+        'loading=${_interstitialLoadInFlight != null}',
       );
       unawaited(loadInterstitial());
       return false;
@@ -424,33 +476,41 @@ class RewardedAdManager {
       completed = true;
       _showingInterstitial = false;
       if (!result.isCompleted) result.complete(shown);
+      AppLogger.i(
+        'INTERSTITIAL_RELOAD_REQUEST unit=${AdConfiguration.interstitialId} '
+        'previousShowSucceeded=$shown',
+      );
       unawaited(loadInterstitial());
     }
 
     AppLogger.i(
-      'Return-navigation interstitial show requested '
-      '(responseInfo=${ad.responseInfo})',
+      'INTERSTITIAL_SHOW_REQUEST reached=true '
+      'placement=return_navigation unit=${AdConfiguration.interstitialId} '
+      'responseInfo=${ad.responseInfo}',
     );
     ad.fullScreenContentCallback = FullScreenContentCallback<InterstitialAd>(
       onAdShowedFullScreenContent: (InterstitialAd shownAd) {
         AppLogger.i(
-          'Return-navigation interstitial shown '
-          '(responseInfo=${shownAd.responseInfo})',
+          'INTERSTITIAL_SHOW_SUCCESS placement=return_navigation '
+          'unit=${AdConfiguration.interstitialId} '
+          'responseInfo=${shownAd.responseInfo}',
         );
       },
       onAdDismissedFullScreenContent: (InterstitialAd dismissedAd) {
         AppLogger.i(
-          'Return-navigation interstitial dismissed '
-          '(responseInfo=${dismissedAd.responseInfo})',
+          'INTERSTITIAL_DISMISSED placement=return_navigation '
+          'unit=${AdConfiguration.interstitialId} '
+          'responseInfo=${dismissedAd.responseInfo}',
         );
         unawaited(dismissedAd.dispose());
         finish(true);
       },
       onAdFailedToShowFullScreenContent: (InterstitialAd failedAd, AdError error) {
         AppLogger.w(
-          'Return-navigation interstitial failed to show '
-          '(code=${error.code}, message=${error.message}, '
-          'domain=${error.domain}, responseInfo=${failedAd.responseInfo})',
+          'INTERSTITIAL_SHOW_FAILED '
+          'unit=${AdConfiguration.interstitialId} '
+          'code=${error.code} domain=${error.domain} '
+          'message=${error.message} responseInfo=${failedAd.responseInfo}',
         );
         unawaited(failedAd.dispose());
         _lastInterstitialShown = null;
@@ -461,7 +521,12 @@ class RewardedAdManager {
     try {
       await ad.show();
     } on Object catch (error, stackTrace) {
-      AppLogger.e('Interstitial ad show failed unexpectedly', error: error, stackTrace: stackTrace);
+      AppLogger.e(
+        'INTERSTITIAL_SHOW_FAILED unit=${AdConfiguration.interstitialId} '
+        'code=exception message=$error',
+        error: error,
+        stackTrace: stackTrace,
+      );
       unawaited(ad.dispose());
       _lastInterstitialShown = null;
       _returnInterstitialShownThisSession = false;
@@ -489,6 +554,7 @@ class RewardedAdManager {
   }) async {
     AppLogger.i(
       'REWARDED_SHOW_REQUEST placement=$placement readiness=$rewardedReadiness '
+      'ready=${_rewardedAd != null} loading=${_rewardedLoadInFlight != null} '
       'unit=${AdConfiguration.rewardedId}',
     );
     if (await isPremiumUser()) return RewardedAdResult.premium;
@@ -663,54 +729,75 @@ class ManagedBannerAd extends StatefulWidget {
 class _ManagedBannerAdState extends State<ManagedBannerAd> {
   BannerAd? _ad;
   bool _loaded = false;
+  bool _displayLogged = false;
 
   @override
   void initState() {
     super.initState();
+    AppLogger.i(
+      'BANNER_CREATE placement=${widget.placementName} '
+      'unit=${AdConfiguration.bannerId}',
+    );
     _load();
   }
 
   Future<void> _load() async {
     AppLogger.i(
-      'Banner ad load requested '
-      '(placement=${widget.placementName}, unit=${AdConfiguration.bannerId})',
+      'BANNER_LOAD_WAITING_FOR_SDK placement=${widget.placementName} '
+      'unit=${AdConfiguration.bannerId} phase=waiting_for_sdk '
+      'initialized=${widget.manager.isInitialized}',
     );
     await widget.manager.initialize();
     if (!widget.manager.isInitialized) {
       AppLogger.w(
-        'Banner ad request skipped because AdMob SDK initialization failed '
-        '(placement=${widget.placementName})',
+        'BANNER_LOAD_SKIPPED placement=${widget.placementName} '
+        'unit=${AdConfiguration.bannerId} code=sdk_initialization '
+        'message=AdMob SDK is not initialized',
       );
       return;
     }
-    if (await widget.manager.isPremiumUser()) return;
+    if (await widget.manager.isPremiumUser()) {
+      AppLogger.i(
+        'BANNER_LOAD_SKIPPED placement=${widget.placementName} reason=premium',
+      );
+      return;
+    }
     final BannerAd ad = BannerAd(
       adUnitId: AdConfiguration.bannerId,
       size: AdSize.banner,
       request: const AdRequest(),
       listener: BannerAdListener(
         onAdLoaded: (Ad ad) {
+          final BannerAd loadedAd = ad as BannerAd;
+          AppLogger.i(
+            'BANNER_LOAD_SUCCESS placement=${widget.placementName} '
+            'unit=${AdConfiguration.bannerId} '
+            'responseInfo=${loadedAd.responseInfo}',
+          );
           if (!mounted) {
             unawaited(ad.dispose());
             return;
           }
-          AppLogger.i(
-            'Banner ad loaded (placement=${widget.placementName}, '
-            'unit=${AdConfiguration.bannerId}, '
-            'responseInfo=${(ad as BannerAd).responseInfo})',
-          );
           setState(() {
             _ad = ad;
             _loaded = true;
           });
+          WidgetsBinding.instance.addPostFrameCallback((_) {
+            if (!mounted || !_loaded || _displayLogged) return;
+            _displayLogged = true;
+            AppLogger.i(
+              'BANNER_DISPLAYED placement=${widget.placementName} '
+              'unit=${AdConfiguration.bannerId} '
+              'size=${loadedAd.size.width}x${loadedAd.size.height}',
+            );
+          });
         },
         onAdFailedToLoad: (Ad ad, LoadAdError error) {
           AppLogger.w(
-            'Banner ad failed to load '
-            '(placement=${widget.placementName}, '
-            'unit=${AdConfiguration.bannerId}, code=${error.code}, '
-            'message=${error.message}, domain=${error.domain}, '
-            'responseInfo=${error.responseInfo})',
+            'BANNER_LOAD_FAILED placement=${widget.placementName} '
+            'unit=${AdConfiguration.bannerId} code=${error.code} '
+            'domain=${error.domain} message=${error.message} '
+            'responseInfo=${error.responseInfo}',
           );
           unawaited(ad.dispose());
         },
@@ -718,9 +805,19 @@ class _ManagedBannerAdState extends State<ManagedBannerAd> {
     );
     _ad = ad;
     try {
+      AppLogger.i(
+        'BANNER_LOAD_REQUEST placement=${widget.placementName} '
+        'unit=${AdConfiguration.bannerId} phase=load_call '
+        'initialized=${widget.manager.isInitialized}',
+      );
       await ad.load();
     } on Object catch (error, stackTrace) {
-      AppLogger.e('Banner ad load failed unexpectedly', error: error, stackTrace: stackTrace);
+      AppLogger.e(
+        'BANNER_LOAD_FAILED placement=${widget.placementName} '
+        'unit=${AdConfiguration.bannerId} code=exception message=$error',
+        error: error,
+        stackTrace: stackTrace,
+      );
       unawaited(ad.dispose());
     }
   }
