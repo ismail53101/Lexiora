@@ -81,6 +81,8 @@ enum RewardedAdReadiness { ready, loading, retrying, showing, notReady }
 /// future integration point for authentication and billing.
 class RewardedAdManager {
   static const Duration _rewardedLoadTimeout = Duration(seconds: 45);
+  static const Duration _interstitialLoadTimeout = Duration(seconds: 20);
+  static const Duration _interstitialTerminalTimeout = Duration(seconds: 15);
   static const int _maxRewardedAutoRetries = 3;
 
   RewardedAdManager({
@@ -95,10 +97,14 @@ class RewardedAdManager {
 
   RewardedAd? _rewardedAd;
   InterstitialAd? _interstitialAd;
+  InterstitialAd? _activeInterstitialAd;
   Future<void>? _rewardedLoadInFlight;
   Future<void>? _interstitialLoadInFlight;
+  Completer<void>? _interstitialLoadCompleter;
   Future<void>? _initializationInFlight;
   Timer? _rewardedRetryTimer;
+  Timer? _interstitialShowWatchdog;
+  Completer<bool>? _interstitialShowCompleter;
   int _rewardedRetryAttempt = 0;
   DateTime? _lastInterstitialShown;
   bool _returnInterstitialShownThisSession = false;
@@ -374,6 +380,10 @@ class RewardedAdManager {
       'initialized=$_initialized adExists=${_interstitialAd != null} '
       'loading=${_interstitialLoadInFlight != null}',
     );
+    if (_disposed) {
+      AppLogger.i('INTERSTITIAL_LOAD_REQUEST skipped reason=manager_disposed');
+      return;
+    }
     if (!_initialized) {
       AppLogger.i('INTERSTITIAL_LOAD_REQUEST skipped reason=sdk_not_initialized');
       return;
@@ -387,13 +397,27 @@ class RewardedAdManager {
       return;
     }
     final Completer<void> done = Completer<void>();
-    _interstitialLoadInFlight = done.future;
+    final Future<void> requestFuture = done.future;
+    _interstitialLoadCompleter = done;
+    _interstitialLoadInFlight = requestFuture;
+    bool settled = false;
+
+    void finishLoad() {
+      if (settled) return;
+      settled = true;
+      if (!done.isCompleted) done.complete();
+    }
+
     try {
-      await InterstitialAd.load(
+      final Future<void> loadRequest = InterstitialAd.load(
         adUnitId: AdConfiguration.interstitialId,
         request: const AdRequest(),
         adLoadCallback: InterstitialAdLoadCallback(
           onAdLoaded: (InterstitialAd ad) {
+            if (settled || _disposed) {
+              unawaited(ad.dispose());
+              return;
+            }
             final InterstitialAd? previous = _interstitialAd;
             if (previous != null) unawaited(previous.dispose());
             _interstitialAd = ad;
@@ -401,7 +425,7 @@ class RewardedAdManager {
               'INTERSTITIAL_LOAD_SUCCESS unit=${AdConfiguration.interstitialId} '
               'responseInfo=${ad.responseInfo}',
             );
-            done.complete();
+            finishLoad();
           },
           onAdFailedToLoad: (LoadAdError error) {
             AppLogger.w(
@@ -410,11 +434,31 @@ class RewardedAdManager {
               'code=${error.code} domain=${error.domain} '
               'message=${error.message} responseInfo=${error.responseInfo}',
             );
-            done.complete();
+            finishLoad();
           },
         ),
       );
-      await done.future;
+      unawaited(
+        loadRequest.then<void>(
+          (_) {},
+          onError: (Object error, StackTrace stackTrace) {
+            AppLogger.e(
+              'INTERSTITIAL_LOAD_FAILED unit=${AdConfiguration.interstitialId} '
+              'code=exception message=$error',
+              error: error,
+              stackTrace: stackTrace,
+            );
+            finishLoad();
+          },
+        ),
+      );
+      await requestFuture.timeout(_interstitialLoadTimeout);
+    } on TimeoutException {
+      AppLogger.w(
+        'INTERSTITIAL_LOAD_FAILED unit=${AdConfiguration.interstitialId} '
+        'reason=callback_timeout timeout=${_interstitialLoadTimeout.inSeconds}s',
+      );
+      finishLoad();
     } on Object catch (error, stackTrace) {
       AppLogger.e(
         'INTERSTITIAL_LOAD_FAILED unit=${AdConfiguration.interstitialId} '
@@ -422,9 +466,14 @@ class RewardedAdManager {
         error: error,
         stackTrace: stackTrace,
       );
-      if (!done.isCompleted) done.complete();
+      finishLoad();
     } finally {
-      _interstitialLoadInFlight = null;
+      if (identical(_interstitialLoadInFlight, requestFuture)) {
+        _interstitialLoadInFlight = null;
+      }
+      if (identical(_interstitialLoadCompleter, done)) {
+        _interstitialLoadCompleter = null;
+      }
     }
   }
 
@@ -436,6 +485,10 @@ class RewardedAdManager {
       'unit=${AdConfiguration.interstitialId} ready=${_interstitialAd != null} '
       'loading=${_interstitialLoadInFlight != null} initialized=$_initialized',
     );
+    if (_disposed) {
+      AppLogger.i('INTERSTITIAL_SHOW_SKIPPED reason=manager_disposed');
+      return false;
+    }
     if (await isPremiumUser()) {
       AppLogger.i('INTERSTITIAL_SHOW_SKIPPED reason=premium');
       return false;
@@ -469,19 +522,47 @@ class RewardedAdManager {
     _returnInterstitialShownThisSession = true;
     _lastInterstitialShown = now;
     final Completer<bool> result = Completer<bool>();
+    _interstitialShowCompleter = result;
+    _activeInterstitialAd = ad;
     bool completed = false;
+    bool adDisposed = false;
+
+    void disposeShownAd() {
+      if (adDisposed) return;
+      adDisposed = true;
+      if (!identical(_activeInterstitialAd, ad)) return;
+      _activeInterstitialAd = null;
+      unawaited(ad.dispose());
+    }
 
     void finish(bool shown) {
-      if (completed) return;
+      if (completed || result.isCompleted) return;
       completed = true;
+      _interstitialShowWatchdog?.cancel();
+      _interstitialShowWatchdog = null;
+      if (identical(_interstitialShowCompleter, result)) {
+        _interstitialShowCompleter = null;
+      }
       _showingInterstitial = false;
-      if (!result.isCompleted) result.complete(shown);
+      result.complete(shown);
       AppLogger.i(
         'INTERSTITIAL_RELOAD_REQUEST unit=${AdConfiguration.interstitialId} '
         'previousShowSucceeded=$shown',
       );
-      unawaited(loadInterstitial());
+      if (!_disposed) unawaited(loadInterstitial());
     }
+
+    _interstitialShowWatchdog = Timer(_interstitialTerminalTimeout, () {
+      AppLogger.w(
+        'INTERSTITIAL_SHOW_FAILED unit=${AdConfiguration.interstitialId} '
+        'reason=terminal_callback_timeout '
+        'timeout=${_interstitialTerminalTimeout.inSeconds}s',
+      );
+      disposeShownAd();
+      // Keep the session/cooldown consumed on timeout: the ad may have been
+      // shown even though the platform omitted its terminal callback.
+      finish(false);
+    });
 
     AppLogger.i(
       'INTERSTITIAL_SHOW_REQUEST reached=true '
@@ -490,6 +571,7 @@ class RewardedAdManager {
     );
     ad.fullScreenContentCallback = FullScreenContentCallback<InterstitialAd>(
       onAdShowedFullScreenContent: (InterstitialAd shownAd) {
+        if (completed || result.isCompleted) return;
         AppLogger.i(
           'INTERSTITIAL_SHOW_SUCCESS placement=return_navigation '
           'unit=${AdConfiguration.interstitialId} '
@@ -497,29 +579,56 @@ class RewardedAdManager {
         );
       },
       onAdDismissedFullScreenContent: (InterstitialAd dismissedAd) {
+        if (completed || result.isCompleted) {
+          disposeShownAd();
+          return;
+        }
         AppLogger.i(
           'INTERSTITIAL_DISMISSED placement=return_navigation '
           'unit=${AdConfiguration.interstitialId} '
           'responseInfo=${dismissedAd.responseInfo}',
         );
-        unawaited(dismissedAd.dispose());
+        disposeShownAd();
         finish(true);
       },
       onAdFailedToShowFullScreenContent: (InterstitialAd failedAd, AdError error) {
+        if (completed || result.isCompleted) {
+          disposeShownAd();
+          return;
+        }
         AppLogger.w(
           'INTERSTITIAL_SHOW_FAILED '
           'unit=${AdConfiguration.interstitialId} '
           'code=${error.code} domain=${error.domain} '
           'message=${error.message} responseInfo=${failedAd.responseInfo}',
         );
-        unawaited(failedAd.dispose());
+        disposeShownAd();
         _lastInterstitialShown = null;
         _returnInterstitialShownThisSession = false;
         finish(false);
       },
     );
     try {
-      await ad.show();
+      final Future<void> showRequest = ad.show();
+      unawaited(
+        showRequest.then<void>(
+          (_) {},
+          onError: (Object error, StackTrace stackTrace) {
+            if (completed || result.isCompleted) return;
+            AppLogger.e(
+              'INTERSTITIAL_SHOW_FAILED '
+              'unit=${AdConfiguration.interstitialId} '
+              'code=exception message=$error',
+              error: error,
+              stackTrace: stackTrace,
+            );
+            disposeShownAd();
+            _lastInterstitialShown = null;
+            _returnInterstitialShownThisSession = false;
+            finish(false);
+          },
+        ),
+      );
     } on Object catch (error, stackTrace) {
       AppLogger.e(
         'INTERSTITIAL_SHOW_FAILED unit=${AdConfiguration.interstitialId} '
@@ -527,7 +636,7 @@ class RewardedAdManager {
         error: error,
         stackTrace: stackTrace,
       );
-      unawaited(ad.dispose());
+      disposeShownAd();
       _lastInterstitialShown = null;
       _returnInterstitialShownThisSession = false;
       finish(false);
@@ -696,12 +805,29 @@ class RewardedAdManager {
     _disposed = true;
     _rewardedRetryTimer?.cancel();
     _rewardedRetryTimer = null;
+    _interstitialShowWatchdog?.cancel();
+    _interstitialShowWatchdog = null;
+    final Completer<void>? loadCompleter = _interstitialLoadCompleter;
+    if (loadCompleter != null && !loadCompleter.isCompleted) {
+      loadCompleter.complete();
+    }
+    _interstitialLoadCompleter = null;
+    _interstitialLoadInFlight = null;
+    final Completer<bool>? showCompleter = _interstitialShowCompleter;
+    if (showCompleter != null && !showCompleter.isCompleted) {
+      showCompleter.complete(false);
+    }
+    _interstitialShowCompleter = null;
+    _showingInterstitial = false;
     final RewardedAd? rewarded = _rewardedAd;
     final InterstitialAd? interstitial = _interstitialAd;
+    final InterstitialAd? activeInterstitial = _activeInterstitialAd;
     if (rewarded != null) unawaited(rewarded.dispose());
     if (interstitial != null) unawaited(interstitial.dispose());
+    if (activeInterstitial != null) unawaited(activeInterstitial.dispose());
     _rewardedAd = null;
     _interstitialAd = null;
+    _activeInterstitialAd = null;
   }
 }
 

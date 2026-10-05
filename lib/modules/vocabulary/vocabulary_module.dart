@@ -5,7 +5,9 @@ import 'package:lexiora/app/router/app_routes.dart';
 import 'package:lexiora/core/database/app_database.dart';
 import 'package:lexiora/core/module/feature_module.dart';
 import 'package:lexiora/core/navigation/home_destination.dart';
+import 'package:lexiora/core/services/ad_return_navigation_scope.dart';
 import 'package:lexiora/core/services/pronunciation_service.dart';
+import 'package:lexiora/core/services/rewarded_ad_manager.dart';
 import 'package:lexiora/modules/vocabulary/data/datasources/vocabulary_local_data_source.dart';
 import 'package:lexiora/modules/vocabulary/data/repositories/vocabulary_repository_impl.dart';
 import 'package:lexiora/modules/vocabulary/data/vocabulary_seeder.dart';
@@ -55,7 +57,10 @@ class VocabularyModule extends FeatureModule {
   List<RouteBase> routes(GetIt getIt) => <RouteBase>[
         GoRoute(
           path: AppRoutes.vocabulary,
-          builder: (_, _) => const VocabularyListsPage(),
+          builder: (_, _) => AdReturnNavigationScope(
+            manager: getIt<RewardedAdManager>(),
+            child: const VocabularyListsPage(),
+          ),
         ),
         GoRoute(
           name: AppRoutes.vocabularyWordName,

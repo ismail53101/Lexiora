@@ -133,8 +133,9 @@ Future<GoRouter> _pumpGsaStageSix(WidgetTester tester) async {
 
 Future<void> _pushScopedFeature(
   WidgetTester tester,
-  RewardedAdManager manager,
-) async {
+  RewardedAdManager manager, {
+  Duration navigationFallbackTimeout = const Duration(seconds: 18),
+}) async {
   await tester.pumpWidget(
     MaterialApp(
       home: Builder(
@@ -145,6 +146,7 @@ Future<void> _pushScopedFeature(
                 MaterialPageRoute<void>(
                   builder: (_) => AdReturnNavigationScope(
                     manager: manager,
+                    navigationFallbackTimeout: navigationFallbackTimeout,
                     child: const Scaffold(
                       body: Center(child: Text('Scoped feature')),
                     ),
@@ -189,14 +191,23 @@ void main() {
   });
 
   testWidgets(
-      'return navigation does not wait for a missing interstitial terminal callback',
+      'return navigation falls back when an interstitial terminal callback is missing',
       (WidgetTester tester) async {
     final Completer<bool> neverCompletes = Completer<bool>();
     final _PendingInterstitialManager manager =
         _PendingInterstitialManager(neverCompletes);
-    await _pushScopedFeature(tester, manager);
+    await _pushScopedFeature(
+      tester,
+      manager,
+      navigationFallbackTimeout: const Duration(milliseconds: 50),
+    );
 
     await tester.binding.handlePopRoute();
+    await tester.pump();
+    expect(find.text('Scoped feature'), findsOneWidget);
+    expect(manager.requestCount, 1);
+
+    await tester.pump(const Duration(milliseconds: 60));
     await tester.pumpAndSettle();
 
     expect(find.text('Open feature'), findsOneWidget);

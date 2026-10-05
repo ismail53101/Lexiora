@@ -59,6 +59,7 @@ class _DictionaryPageState extends ConsumerState<DictionaryPage> {
     final DictionarySeeder seeder = ref.watch(dictionarySeederProvider);
 
     return Scaffold(
+      resizeToAvoidBottomInset: true,
       bottomNavigationBar: SafeArea(
         top: false,
         child: SizedBox(
