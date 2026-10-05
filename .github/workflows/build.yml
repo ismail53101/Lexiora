@@ -44,14 +44,6 @@ jobs:
       - name: Generate code (Drift)
         run: dart run build_runner build
 
-      - name: Upload generated Drift source (temporary Grammar migration aid)
-        if: github.ref != 'refs/heads/main'
-        uses: actions/upload-artifact@v4
-        with:
-          name: generated-drift-source
-          path: lib/core/database/app_database.g.dart
-          if-no-files-found: error
-
       - name: Set up release signing
         # Release builds must never fall back to the Android debug key. The
         # check lives in the shell script because GitHub Actions does not
