@@ -95,7 +95,8 @@ void main() {
       await tester.ensureVisible(find.text('WATCH AD TO CONTINUE'));
       await tester.pumpAndSettle();
       await tester.tap(find.text('WATCH AD TO CONTINUE'));
-      await tester.pumpAndSettle();
+      await tester.pump();
+      await tester.pump(const Duration(milliseconds: 400));
 
       expect(ads.requestCount, 1);
       expect(find.text('Stage 5'), findsOneWidget);
@@ -105,10 +106,9 @@ void main() {
             .rewardedUnlocked,
         isTrue,
       );
-      await tester.pageBack();
-      await tester.pumpAndSettle();
       await tester.pumpWidget(const SizedBox.shrink());
-      await tester.pump();
+      await tester.pump(const Duration(milliseconds: 1));
+      await tester.pump(const Duration(milliseconds: 1));
     });
   }
 
@@ -139,7 +139,8 @@ void main() {
     await tester.ensureVisible(find.text('Stage 4'));
     await tester.pumpAndSettle();
     await tester.tap(find.text('Stage 4'));
-    await tester.pumpAndSettle();
+    await tester.pump();
+    await tester.pump(const Duration(milliseconds: 400));
     expect(find.text('Question 1 of 10'), findsOneWidget);
 
     for (int question = 0; question < 10; question++) {
@@ -157,7 +158,8 @@ void main() {
     );
     expect(find.text('NOT NOW'), findsOneWidget);
     await tester.tap(find.text('NOT NOW'));
-    await tester.pumpAndSettle();
+    await tester.pump();
+    await tester.pump(const Duration(milliseconds: 400));
 
     expect(ads.requestCount, 0);
     expect(find.text('WATCH AD TO CONTINUE'), findsOneWidget);
@@ -167,6 +169,7 @@ void main() {
       isEmpty,
     );
     await tester.pumpWidget(const SizedBox.shrink());
-    await tester.pumpAndSettle();
+    await tester.pump(const Duration(milliseconds: 1));
+    await tester.pump(const Duration(milliseconds: 1));
   });
 }
