@@ -71,6 +71,8 @@ enum RewardedAdResult {
   failed,
 }
 
+enum RewardedAdReadiness { ready, loading, retrying, showing, notReady }
+
 /// The single owner of all AdMob lifecycle and monetization policy.
 ///
 /// Feature code must call this service rather than importing
@@ -78,6 +80,9 @@ enum RewardedAdResult {
 /// prevent navigation, studying, or AI use. The entitlement callback is the
 /// future integration point for authentication and billing.
 class RewardedAdManager {
+  static const Duration _rewardedLoadTimeout = Duration(seconds: 45);
+  static const int _maxRewardedAutoRetries = 3;
+
   RewardedAdManager({
     required PremiumChecker isPremium,
     this.interstitialCooldown = const Duration(minutes: 10),
@@ -93,6 +98,8 @@ class RewardedAdManager {
   Future<void>? _rewardedLoadInFlight;
   Future<void>? _interstitialLoadInFlight;
   Future<void>? _initializationInFlight;
+  Timer? _rewardedRetryTimer;
+  int _rewardedRetryAttempt = 0;
   DateTime? _lastInterstitialShown;
   bool _returnInterstitialShownThisSession = false;
   final Map<RewardedAdPlacement, DateTime> _lastRewardedShown =
@@ -102,8 +109,19 @@ class RewardedAdManager {
   bool _initialized = false;
   bool _showingInterstitial = false;
   bool _showingRewarded = false;
+  bool _disposed = false;
 
   bool get isLoaded => _rewardedAd != null;
+  bool get isRewardedLoading => _rewardedLoadInFlight != null;
+  RewardedAdReadiness get rewardedReadiness {
+    if (_rewardedAd != null) return RewardedAdReadiness.ready;
+    if (_showingRewarded) return RewardedAdReadiness.showing;
+    if (_rewardedLoadInFlight != null) return RewardedAdReadiness.loading;
+    if (_rewardedRetryTimer?.isActive ?? false) {
+      return RewardedAdReadiness.retrying;
+    }
+    return RewardedAdReadiness.notReady;
+  }
   bool get isInterstitialLoaded => _interstitialAd != null;
   bool get isInitialized => _initialized;
   int get aiRequestsRemaining => _aiRequestsRemaining;
@@ -138,6 +156,7 @@ class RewardedAdManager {
 
   /// Initializes the SDK once and preloads the shared full-screen ads.
   Future<void> initialize() {
+    if (_disposed) return Future<void>.value();
     if (_initialized) return Future<void>.value();
     final Future<void>? inFlight = _initializationInFlight;
     if (inFlight != null) return inFlight;
@@ -172,43 +191,163 @@ class RewardedAdManager {
     unawaited(loadInterstitial());
   }
 
-  Future<void> loadRewarded() async {
-    if (!_initialized || _rewardedAd != null || _rewardedLoadInFlight != null) return;
-    AppLogger.i('Rewarded ad load requested (unit=${AdConfiguration.rewardedId})');
+  Future<void> loadRewarded() => _loadRewarded(isRetry: false);
+
+  Future<void> _loadRewarded({required bool isRetry}) async {
+    final String source = isRetry ? 'retry' : 'explicit';
+    AppLogger.i(
+      'REWARDED_LOAD_REQUEST source=$source '
+      'readiness=$rewardedReadiness unit=${AdConfiguration.rewardedId}',
+    );
+    if (_disposed) {
+      AppLogger.w('REWARDED_LOAD_REQUEST skipped reason=manager_disposed');
+      return;
+    }
+    if (!_initialized) {
+      AppLogger.w('REWARDED_LOAD_REQUEST skipped reason=sdk_not_initialized');
+      return;
+    }
+    if (_rewardedAd != null) {
+      AppLogger.i('REWARDED_LOAD_REQUEST skipped reason=already_ready');
+      return;
+    }
+    if (_rewardedLoadInFlight != null) {
+      AppLogger.i('REWARDED_LOAD_REQUEST skipped reason=already_loading');
+      return;
+    }
+    if (_rewardedRetryTimer?.isActive ?? false) {
+      AppLogger.i('REWARDED_LOAD_REQUEST skipped reason=retry_backoff');
+      return;
+    }
+    if (!isRetry) _rewardedRetryAttempt = 0;
+
     final Completer<void> done = Completer<void>();
-    _rewardedLoadInFlight = done.future;
+    final Future<void> requestFuture = done.future;
+    _rewardedLoadInFlight = requestFuture;
+    bool retryAfterFailure = false;
+    bool failureLogged = false;
+    AppLogger.i('REWARDED_LOAD_STARTED unit=${AdConfiguration.rewardedId}');
+
+    void failLoad({
+      required String code,
+      required String message,
+      String? domain,
+      Object? error,
+      StackTrace? stackTrace,
+    }) {
+      if (failureLogged) return;
+      failureLogged = true;
+      retryAfterFailure = true;
+      AppLogger.w(
+        'REWARDED_LOAD_FAILED unit=${AdConfiguration.rewardedId} '
+        'code=$code message=$message domain=${domain ?? 'unknown'}',
+      );
+      if (error != null) {
+        AppLogger.e(
+          'Rewarded load failure details',
+          error: error,
+          stackTrace: stackTrace,
+        );
+      }
+      if (!done.isCompleted) done.complete();
+    }
+
     try {
-      await RewardedAd.load(
+      final Future<void> platformLoad = RewardedAd.load(
         adUnitId: AdConfiguration.rewardedId,
         request: const AdRequest(),
         rewardedAdLoadCallback: RewardedAdLoadCallback(
           onAdLoaded: (RewardedAd ad) {
+            if (_disposed) {
+              unawaited(ad.dispose());
+              if (!done.isCompleted) done.complete();
+              return;
+            }
             final RewardedAd? previous = _rewardedAd;
-            if (previous != null) unawaited(previous.dispose());
+            if (previous != null && !identical(previous, ad)) {
+              unawaited(previous.dispose());
+            }
             _rewardedAd = ad;
+            _rewardedRetryTimer?.cancel();
+            _rewardedRetryTimer = null;
+            _rewardedRetryAttempt = 0;
             AppLogger.i(
-              'Rewarded ad loaded (responseInfo=${ad.responseInfo})',
+              'REWARDED_LOAD_SUCCESS unit=${AdConfiguration.rewardedId} '
+              'responseInfo=${ad.responseInfo}',
             );
-            done.complete();
+            if (!done.isCompleted) done.complete();
           },
           onAdFailedToLoad: (LoadAdError error) {
-            AppLogger.w(
-              'Rewarded ad failed to load '
-              '(unit=${AdConfiguration.rewardedId}, '
-              'code=${error.code}, message=${error.message}, '
-              'domain=${error.domain}, responseInfo=${error.responseInfo})',
+            failLoad(
+              code: '${error.code}',
+              message: error.message,
+              domain: error.domain,
+              error: error,
             );
-            done.complete();
           },
         ),
       );
-      await done.future;
+      unawaited(
+        platformLoad.catchError((Object error, StackTrace stackTrace) {
+          failLoad(
+            code: 'exception',
+            message: error.toString(),
+            error: error,
+            stackTrace: stackTrace,
+          );
+        }),
+      );
+      await requestFuture.timeout(_rewardedLoadTimeout);
+    } on TimeoutException catch (error, stackTrace) {
+      failLoad(
+        code: 'timeout',
+        message: 'No rewarded load callback within $_rewardedLoadTimeout',
+        error: error,
+        stackTrace: stackTrace,
+      );
     } on Object catch (error, stackTrace) {
-      AppLogger.e('Rewarded ad load failed unexpectedly', error: error, stackTrace: stackTrace);
-      if (!done.isCompleted) done.complete();
+      failLoad(
+        code: 'exception',
+        message: error.toString(),
+        error: error,
+        stackTrace: stackTrace,
+      );
     } finally {
-      _rewardedLoadInFlight = null;
+      if (identical(_rewardedLoadInFlight, requestFuture)) {
+        _rewardedLoadInFlight = null;
+      }
+      if (retryAfterFailure && _rewardedAd == null) {
+        _scheduleRewardedRetry();
+      }
     }
+  }
+
+  void _scheduleRewardedRetry() {
+    if (_disposed || !_initialized || _rewardedAd != null) return;
+    if (_rewardedLoadInFlight != null) return;
+    if (_rewardedRetryTimer?.isActive ?? false) return;
+    if (_rewardedRetryAttempt >= _maxRewardedAutoRetries) {
+      AppLogger.w(
+        'REWARDED_RELOAD_REQUEST skipped reason=retry_limit_reached '
+        'attempts=$_rewardedRetryAttempt',
+      );
+      return;
+    }
+
+    final int retryNumber = _rewardedRetryAttempt + 1;
+    final Duration delay = Duration(
+      seconds: 5 * (1 << _rewardedRetryAttempt),
+    );
+    _rewardedRetryAttempt++;
+    AppLogger.i(
+      'REWARDED_RELOAD_REQUEST reason=load_failure retry=$retryNumber '
+      'delay=${delay.inSeconds}s',
+    );
+    _rewardedRetryTimer = Timer(delay, () {
+      _rewardedRetryTimer = null;
+      if (_disposed || !_initialized || _rewardedAd != null) return;
+      unawaited(_loadRewarded(isRetry: true));
+    });
   }
 
   Future<void> loadInterstitial() async {
@@ -348,20 +487,46 @@ class RewardedAdManager {
     required RewardedAdPlacement placement,
     RewardCallback? onRewarded,
   }) async {
+    AppLogger.i(
+      'REWARDED_SHOW_REQUEST placement=$placement readiness=$rewardedReadiness '
+      'unit=${AdConfiguration.rewardedId}',
+    );
     if (await isPremiumUser()) return RewardedAdResult.premium;
-    if (_showingRewarded) return RewardedAdResult.unavailable;
+    if (_showingRewarded) {
+      AppLogger.w(
+        'REWARDED_SHOW_FAILED placement=$placement reason=another_rewarded_ad_is_showing',
+      );
+      return RewardedAdResult.unavailable;
+    }
     final DateTime? lastShown = _lastRewardedShown[placement];
-    if (lastShown != null && DateTime.now().difference(lastShown) < rewardedCooldown) {
+    // A single Grammar placement covers three independent section ladders and
+    // repeated milestones. A wall-clock cooldown here would block legitimate
+    // rewards for those other sections/stages even when an ad is ready.
+    if (placement != RewardedAdPlacement.grammarQuiz &&
+        lastShown != null &&
+        DateTime.now().difference(lastShown) < rewardedCooldown) {
+      AppLogger.w(
+        'REWARDED_SHOW_FAILED placement=$placement reason=cooldown '
+        'remaining=${rewardedCooldown - DateTime.now().difference(lastShown)}',
+      );
       return RewardedAdResult.cooldown;
     }
     if (!_initialized) await initialize();
+    if (!_initialized) {
+      AppLogger.w(
+        'REWARDED_SHOW_FAILED placement=$placement reason=sdk_not_initialized',
+      );
+      return RewardedAdResult.unavailable;
+    }
     final RewardedAd? ad = _rewardedAd;
     if (ad == null) {
       AppLogger.w(
-        'Rewarded ad unavailable; no loaded ad is ready '
-        '(unit=${AdConfiguration.rewardedId})',
+        'REWARDED_SHOW_FAILED placement=$placement reason=not_ready '
+        'readiness=$rewardedReadiness unit=${AdConfiguration.rewardedId}',
       );
-      unawaited(loadRewarded());
+      if (rewardedReadiness == RewardedAdReadiness.notReady) {
+        unawaited(loadRewarded());
+      }
       return RewardedAdResult.unavailable;
     }
 
@@ -385,6 +550,12 @@ class RewardedAdManager {
           _lastRewardedShown.remove(placement);
         }
         if (!result.isCompleted) result.complete(value);
+        final String reloadReason = value == RewardedAdResult.rewarded
+            ? 'ad_consumed'
+            : 'show_finished';
+        AppLogger.i(
+          'REWARDED_RELOAD_REQUEST reason=$reloadReason placement=$placement',
+        );
         unawaited(loadRewarded());
       }());
     }
@@ -392,19 +563,24 @@ class RewardedAdManager {
     ad.fullScreenContentCallback = FullScreenContentCallback<RewardedAd>(
       onAdShowedFullScreenContent: (RewardedAd shownAd) {
         AppLogger.i(
-          'Rewarded ad shown (responseInfo=${shownAd.responseInfo})',
+          'REWARDED_SHOW_SUCCESS placement=$placement '
+          'responseInfo=${shownAd.responseInfo}',
         );
       },
       onAdDismissedFullScreenContent: (RewardedAd dismissedAd) {
         AppLogger.i(
-          'Rewarded ad dismissed (earned=$rewarded, '
-          'responseInfo=${dismissedAd.responseInfo})',
+          'REWARDED_AD_DISMISSED placement=$placement earned=$rewarded '
+          'responseInfo=${dismissedAd.responseInfo}',
         );
         unawaited(dismissedAd.dispose());
         finish(rewarded ? RewardedAdResult.rewarded : RewardedAdResult.failed);
       },
       onAdFailedToShowFullScreenContent: (RewardedAd failedAd, AdError error) {
-        AppLogger.w('Rewarded ad failed to show: $error');
+        AppLogger.w(
+          'REWARDED_SHOW_FAILED placement=$placement code=${error.code} '
+          'message=${error.message} domain=${error.domain} '
+          'responseInfo=${failedAd.responseInfo}',
+        );
         unawaited(failedAd.dispose());
         finish(RewardedAdResult.failed);
       },
@@ -415,8 +591,8 @@ class RewardedAdManager {
           if (rewarded) return;
           rewarded = true;
           AppLogger.i(
-            'Rewarded ad reward callback reached '
-            '(amount=${reward.amount}, type=${reward.type})',
+            'REWARDED_EARNED placement=$placement '
+            'amount=${reward.amount} type=${reward.type}',
           );
           if (onRewarded != null) {
             rewardCallbackInFlight = Future<void>.sync(onRewarded).catchError(
@@ -432,7 +608,11 @@ class RewardedAdManager {
         },
       );
     } on Object catch (error, stackTrace) {
-      AppLogger.e('Rewarded ad show failed unexpectedly', error: error, stackTrace: stackTrace);
+      AppLogger.e(
+        'REWARDED_SHOW_FAILED placement=$placement reason=exception',
+        error: error,
+        stackTrace: stackTrace,
+      );
       unawaited(ad.dispose());
       finish(RewardedAdResult.failed);
     }
@@ -447,6 +627,9 @@ class RewardedAdManager {
   }
 
   void dispose() {
+    _disposed = true;
+    _rewardedRetryTimer?.cancel();
+    _rewardedRetryTimer = null;
     final RewardedAd? rewarded = _rewardedAd;
     final InterstitialAd? interstitial = _interstitialAd;
     if (rewarded != null) unawaited(rewarded.dispose());

@@ -107,6 +107,10 @@ class _PosQuizStageMapPageState extends ConsumerState<PosQuizStageMapPage> {
     if (_rewardFlowActive) return false;
     setState(() => _rewardFlowActive = true);
     try {
+      final RewardedAdManager adsManager =
+          ref.read(grammarRewardedAdManagerProvider);
+      final RewardedAdReadiness readinessBeforeRequest =
+          adsManager.rewardedReadiness;
       final GrammarQuizRewardOutcome outcome =
           await requestGrammarQuizMilestoneUnlock(
         quizId: quizId,
@@ -116,7 +120,7 @@ class _PosQuizStageMapPageState extends ConsumerState<PosQuizStageMapPage> {
           required RewardedAdPlacement placement,
           required RewardCallback? onRewarded,
         }) =>
-            ref.read(grammarRewardedAdManagerProvider).showRewarded(
+            adsManager.showRewarded(
           placement: placement,
           onRewarded: onRewarded,
         ),
@@ -126,8 +130,23 @@ class _PosQuizStageMapPageState extends ConsumerState<PosQuizStageMapPage> {
       if (outcome.unlockPersisted) return true;
 
       final String message = switch (outcome.adResult) {
-        RewardedAdResult.unavailable =>
-          'A rewarded ad is not ready. Stage ${stageIndex + 1} remains locked.',
+        RewardedAdResult.unavailable => switch (readinessBeforeRequest) {
+            RewardedAdReadiness.loading =>
+              'The rewarded ad is loading. Please try again shortly. '
+                  'Stage ${stageIndex + 1} remains locked.',
+            RewardedAdReadiness.retrying =>
+              'The rewarded ad is being prepared. Please try again shortly. '
+                  'Stage ${stageIndex + 1} remains locked.',
+            RewardedAdReadiness.showing =>
+              'Another rewarded ad is in progress. Please wait. '
+                  'Stage ${stageIndex + 1} remains locked.',
+            RewardedAdReadiness.ready =>
+              'The rewarded ad could not be started. Please try again. '
+                  'Stage ${stageIndex + 1} remains locked.',
+            RewardedAdReadiness.notReady =>
+              'A rewarded ad is being prepared. Please try again shortly. '
+                  'Stage ${stageIndex + 1} remains locked.',
+          },
         RewardedAdResult.cooldown =>
           'Please wait before requesting another ad. Stage ${stageIndex + 1} remains locked.',
         RewardedAdResult.premium =>
