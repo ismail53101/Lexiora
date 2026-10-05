@@ -34,9 +34,9 @@ Future<void> _openFeature(
                   builder: (_) => AdReturnNavigationScope(
                     manager: manager,
                     navigationFallbackTimeout: fallbackTimeout,
-                    child: const Scaffold(
-                      appBar: AppBar(title: Text('Feature screen')),
-                      body: Center(child: Text('Feature content')),
+                    child: Scaffold(
+                      appBar: AppBar(title: const Text('Feature screen')),
+                      body: const Center(child: Text('Feature content')),
                     ),
                   ),
                 ),

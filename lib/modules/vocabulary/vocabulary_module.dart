@@ -13,8 +13,8 @@ import 'package:lexiora/modules/vocabulary/data/repositories/vocabulary_reposito
 import 'package:lexiora/modules/vocabulary/data/vocabulary_seeder.dart';
 import 'package:lexiora/modules/vocabulary/domain/repositories/vocabulary_repository.dart';
 import 'package:lexiora/modules/vocabulary/presentation/pages/vocabulary_lists_page.dart';
-import 'package:lexiora/modules/vocabulary/presentation/pages/vocabulary_words_page.dart';
 import 'package:lexiora/modules/vocabulary/presentation/pages/vocabulary_word_page.dart';
+import 'package:lexiora/modules/vocabulary/presentation/pages/vocabulary_words_page.dart';
 
 /// Phase v0.6.0 — the offline Vocabulary module.
 ///
