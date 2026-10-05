@@ -2,9 +2,10 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:lexiora/core/services/rewarded_ad_manager.dart';
+import 'package:lexiora/core/utils/logger.dart';
 
 /// Wraps a major feature route and offers the shared return interstitial once
-/// on Back when policy allows it. If no ad is ready, Back is immediate.
+/// on Back when policy allows it. The ad is best-effort; Back never waits for it.
 class AdReturnNavigationScope extends StatefulWidget {
   const AdReturnNavigationScope({
     super.key,
@@ -22,18 +23,44 @@ class AdReturnNavigationScope extends StatefulWidget {
 class _AdReturnNavigationScopeState extends State<AdReturnNavigationScope> {
   bool _handlingBack = false;
 
-  Future<void> _handleBack() async {
+  void _handleBack() {
     if (_handlingBack || !mounted) return;
     _handlingBack = true;
-    await widget.manager.showReturnInterstitial();
-    if (mounted) Navigator.of(context).pop();
+    final NavigatorState navigator = Navigator.of(context);
+    unawaited(_showOptionalInterstitial());
+    try {
+      if (navigator.canPop()) {
+        navigator.pop();
+      } else {
+        _handlingBack = false;
+      }
+    } on Object catch (error, stackTrace) {
+      _handlingBack = false;
+      AppLogger.e(
+        'Return navigation failed after optional interstitial request',
+        error: error,
+        stackTrace: stackTrace,
+      );
+    }
+  }
+
+  Future<void> _showOptionalInterstitial() async {
+    try {
+      await widget.manager.showReturnInterstitial();
+    } on Object catch (error, stackTrace) {
+      AppLogger.e(
+        'Optional return interstitial failed; navigation continues',
+        error: error,
+        stackTrace: stackTrace,
+      );
+    }
   }
 
   @override
   Widget build(BuildContext context) => PopScope<Object?>(
         canPop: false,
         onPopInvokedWithResult: (bool didPop, Object? result) {
-          if (!didPop) unawaited(_handleBack());
+          if (!didPop) _handleBack();
         },
         child: widget.child,
       );

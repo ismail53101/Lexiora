@@ -305,9 +305,8 @@ class _StagePlayerPageState extends ConsumerState<StagePlayerPage> {
   }
 
   Future<bool> _confirmQuit() async {
-    // Android Back, the AppBar button, and QUIT can all arrive through
-    // separate callbacks. Never allow two confirmation dialogs (or two pops)
-    // for one leave request.
+    // QUIT and non-Main-Quiz Back can arrive through separate callbacks.
+    // Never allow two confirmation dialogs (or two pops) for one leave request.
     if (_confirmingQuit) return false;
     _confirmingQuit = true;
     if (_mainQuiz) {
@@ -358,6 +357,21 @@ class _StagePlayerPageState extends ConsumerState<StagePlayerPage> {
     Navigator.of(context).pop();
   }
 
+  void _returnToStageMapFromBack() {
+    if (!_mainQuiz || _submitting || _leaving || !mounted) return;
+    _leaving = true;
+    _timer?.cancel();
+    _returnToStageList();
+  }
+
+  void _handleBack() {
+    if (_mainQuiz) {
+      _returnToStageMapFromBack();
+      return;
+    }
+    unawaited(_leaveQuiz());
+  }
+
   Future<void> _leaveQuiz() async {
     if (_submitting || _leaving) return;
     if (_accessDenied) {
@@ -376,7 +390,11 @@ class _StagePlayerPageState extends ConsumerState<StagePlayerPage> {
         canPop: false,
         onPopInvokedWithResult: (bool didPop, Object? _) async {
           if (didPop) return;
-          await _leaveQuiz();
+          if (_mainQuiz) {
+            _returnToStageMapFromBack();
+          } else {
+            await _leaveQuiz();
+          }
         },
         child: child,
       );
@@ -396,7 +414,7 @@ class _StagePlayerPageState extends ConsumerState<StagePlayerPage> {
             title: Text('Stage $_stageNumber'),
             automaticallyImplyLeading: false,
             leading: IconButton(
-              onPressed: _leaveQuiz,
+              onPressed: _handleBack,
               icon: const Icon(Icons.arrow_back),
               tooltip: 'Back to stages',
             ),
@@ -449,7 +467,7 @@ class _StagePlayerPageState extends ConsumerState<StagePlayerPage> {
             title: Text('Stage $_stageNumber'),
             automaticallyImplyLeading: false,
             leading: IconButton(
-              onPressed: _leaveQuiz,
+              onPressed: _handleBack,
               icon: const Icon(Icons.arrow_back),
               tooltip: 'Back',
             ),
@@ -478,7 +496,7 @@ class _StagePlayerPageState extends ConsumerState<StagePlayerPage> {
           title: Text('Stage $_stageNumber'),
           automaticallyImplyLeading: false,
           leading: IconButton(
-            onPressed: _leaveQuiz,
+            onPressed: _handleBack,
             icon: const Icon(Icons.arrow_back),
             tooltip: 'Back',
           ),
