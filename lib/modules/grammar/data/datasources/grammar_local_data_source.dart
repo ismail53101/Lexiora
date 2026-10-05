@@ -4,7 +4,9 @@ import 'package:drift/drift.dart';
 import 'package:lexiora/core/constants/db_constants.dart';
 import 'package:lexiora/core/database/app_database.dart';
 import 'package:lexiora/modules/grammar/domain/entities/grammar_lesson.dart';
+import 'package:lexiora/modules/grammar/domain/entities/grammar_quiz_stage_progress.dart';
 import 'package:lexiora/modules/grammar/domain/entities/grammar_topic.dart';
+import 'package:lexiora/modules/grammar/domain/grammar_quiz_stages.dart';
 
 /// All local-database access for the Grammar tree (Category → Subcategory →
 /// Lesson). Navigation reads children of a node; leaves decode a full lesson
@@ -168,6 +170,164 @@ class GrammarLocalDataSource {
           .watchSingleOrNull()
           .map((GrammarProgressRow? row) =>
               GrammarProgressStatus.fromIndex(row?.status));
+
+  // ── Staged Grammar quiz progress ───────────────────────────────────────────
+
+  Stream<List<GrammarQuizStageProgress>> watchGrammarQuizStageProgress(
+    String quizId,
+  ) {
+    _validateStagedQuizId(quizId);
+    return (_db.select(_db.grammarQuizStageProgresses)
+          ..where((t) => t.quizId.equals(quizId))
+          ..orderBy([(t) => OrderingTerm.asc(t.stageIndex)]))
+        .watch()
+        .map((List<GrammarQuizStageProgressRow> rows) =>
+            rows.map(_stageProgressFromRow).toList(growable: false));
+  }
+
+  Future<List<GrammarQuizStageProgress>> grammarQuizStageProgress(
+    String quizId,
+  ) async {
+    _validateStagedQuizId(quizId);
+    final List<GrammarQuizStageProgressRow> rows = await (_db.select(
+      _db.grammarQuizStageProgresses,
+    )..where((t) => t.quizId.equals(quizId))
+      ..orderBy([(t) => OrderingTerm.asc(t.stageIndex)])).get();
+    return rows.map(_stageProgressFromRow).toList(growable: false);
+  }
+
+  Future<void> recordGrammarQuizStageResult({
+    required String quizId,
+    required int stageIndex,
+    required int correct,
+    required int total,
+  }) async {
+    _validateStagedQuizId(quizId);
+    if (stageIndex < 0 || total <= 0 || correct < 0 || correct > total) {
+      throw ArgumentError('Invalid Grammar quiz stage result.');
+    }
+
+    await _db.transaction(() async {
+      final List<GrammarQuizStageProgressRow> rows = await (_db.select(
+        _db.grammarQuizStageProgresses,
+      )..where((t) => t.quizId.equals(quizId))).get();
+      final Set<int> passedStages = rows
+          .where((GrammarQuizStageProgressRow row) => row.passed)
+          .map((GrammarQuizStageProgressRow row) => row.stageIndex)
+          .toSet();
+      final Set<int> rewardedStages = rows
+          .where((GrammarQuizStageProgressRow row) => row.rewardedUnlocked)
+          .map((GrammarQuizStageProgressRow row) => row.stageIndex)
+          .toSet();
+      if (!isGrammarQuizStageUnlocked(
+        stageIndex: stageIndex,
+        passedStages: passedStages,
+        rewardedStages: rewardedStages,
+      )) {
+        throw StateError('This Grammar quiz stage is still locked.');
+      }
+
+      GrammarQuizStageProgressRow? existing;
+      for (final GrammarQuizStageProgressRow row in rows) {
+        if (row.stageIndex == stageIndex) {
+          existing = row;
+          break;
+        }
+      }
+      final DateTime now = DateTime.now();
+      final int scorePercent = (correct * 100 / total).round();
+      final bool passed = correct >= (total / 2).ceil();
+      await _db.into(_db.grammarQuizStageProgresses).insertOnConflictUpdate(
+            GrammarQuizStageProgressesCompanion(
+              quizId: Value<String>(quizId),
+              stageIndex: Value<int>(stageIndex),
+              bestScore: Value<int>(
+                existing == null || scorePercent > existing.bestScore
+                    ? scorePercent
+                    : existing.bestScore,
+              ),
+              attempts: Value<int>((existing?.attempts ?? 0) + 1),
+              passed: Value<bool>((existing?.passed ?? false) || passed),
+              rewardedUnlocked: Value<bool>(existing?.rewardedUnlocked ?? false),
+              createdAt: Value<DateTime>(existing?.createdAt ?? now),
+              updatedAt: Value<DateTime>(now),
+            ),
+          );
+    });
+  }
+
+  Future<bool> grantGrammarQuizMilestoneUnlock({
+    required String quizId,
+    required int stageIndex,
+  }) async {
+    _validateStagedQuizId(quizId);
+    if (stageIndex < 0) return false;
+
+    return _db.transaction(() async {
+      final List<GrammarQuizStageProgressRow> rows = await (_db.select(
+        _db.grammarQuizStageProgresses,
+      )..where((t) => t.quizId.equals(quizId))).get();
+      final Set<int> passedStages = rows
+          .where((GrammarQuizStageProgressRow row) => row.passed)
+          .map((GrammarQuizStageProgressRow row) => row.stageIndex)
+          .toSet();
+      final Set<int> rewardedStages = rows
+          .where((GrammarQuizStageProgressRow row) => row.rewardedUnlocked)
+          .map((GrammarQuizStageProgressRow row) => row.stageIndex)
+          .toSet();
+      if (!canRequestGrammarQuizMilestone(
+        stageIndex: stageIndex,
+        passedStages: passedStages,
+        rewardedStages: rewardedStages,
+      )) {
+        return false;
+      }
+
+      GrammarQuizStageProgressRow? existing;
+      for (final GrammarQuizStageProgressRow row in rows) {
+        if (row.stageIndex == stageIndex) {
+          existing = row;
+          break;
+        }
+      }
+      final DateTime now = DateTime.now();
+      await _db.into(_db.grammarQuizStageProgresses).insertOnConflictUpdate(
+            GrammarQuizStageProgressesCompanion(
+              quizId: Value<String>(quizId),
+              stageIndex: Value<int>(stageIndex),
+              bestScore: Value<int>(existing?.bestScore ?? 0),
+              attempts: Value<int>(existing?.attempts ?? 0),
+              passed: Value<bool>(existing?.passed ?? false),
+              rewardedUnlocked: const Value<bool>(true),
+              createdAt: Value<DateTime>(existing?.createdAt ?? now),
+              updatedAt: Value<DateTime>(now),
+            ),
+          );
+      return true;
+    });
+  }
+
+  void _validateStagedQuizId(String quizId) {
+    if (!stagedGrammarQuizIds.contains(quizId)) {
+      throw ArgumentError.value(
+        quizId,
+        'quizId',
+        'Not a staged Grammar quiz id',
+      );
+    }
+  }
+
+  GrammarQuizStageProgress _stageProgressFromRow(
+    GrammarQuizStageProgressRow row,
+  ) =>
+      GrammarQuizStageProgress(
+        quizId: row.quizId,
+        stageIndex: row.stageIndex,
+        bestScore: row.bestScore,
+        attempts: row.attempts,
+        passed: row.passed,
+        rewardedUnlocked: row.rewardedUnlocked,
+      );
 
   // ── Favorites ─────────────────────────────────────────────────────────────
 

@@ -36,6 +36,7 @@ part 'app_database.g.dart';
     GrammarProgress,
     GrammarFavorites,
     GrammarTopics,
+    GrammarQuizStageProgresses,
     VocabularyLists,
     VocabularyWords,
     StudyTasks,
@@ -200,6 +201,11 @@ class AppDatabase extends _$AppDatabase {
           // v21 → v22: remove the retired Study Planner Goals feature.
           if (from < 22) {
             await customStatement('DROP TABLE IF EXISTS study_goals');
+          }
+          // v22 → v23: independent Grammar staged-quiz progress and rewarded
+          // milestone state. Additive; existing user data is untouched.
+          if (from < 23) {
+            await m.createTable(grammarQuizStageProgresses);
           }
         },
         beforeOpen: (OpeningDetails details) async {

@@ -1,4 +1,5 @@
 import 'package:lexiora/modules/grammar/domain/entities/grammar_lesson.dart';
+import 'package:lexiora/modules/grammar/domain/entities/grammar_quiz_stage_progress.dart';
 import 'package:lexiora/modules/grammar/domain/entities/grammar_topic.dart';
 
 /// Domain contract for the offline Grammar tree (Category → Subcategory →
@@ -32,6 +33,29 @@ abstract interface class GrammarRepository {
   Stream<bool> watchIsFavorite(String leafId);
   Future<void> addFavorite({required String leafId, required String title});
   Future<void> removeFavorite(String leafId);
+
+  /// Reactive durable progress for one staged Grammar quiz, keyed by its
+  /// stable lesson id (not by Main Quiz subject ids).
+  Stream<List<GrammarQuizStageProgress>> watchGrammarQuizStageProgress(
+    String quizId,
+  );
+
+  /// One-shot durable progress for one staged Grammar quiz.
+  Future<List<GrammarQuizStageProgress>> grammarQuizStageProgress(String quizId);
+
+  /// Records one completed attempt, preserving the best score and pass state.
+  Future<void> recordGrammarQuizStageResult({
+    required String quizId,
+    required int stageIndex,
+    required int correct,
+    required int total,
+  });
+
+  /// Persists access to a Grammar milestone only when all prerequisites are met.
+  Future<bool> grantGrammarQuizMilestoneUnlock({
+    required String quizId,
+    required int stageIndex,
+  });
 
   /// Total number of seeded topic nodes (diagnostics).
   Future<int> topicCount();

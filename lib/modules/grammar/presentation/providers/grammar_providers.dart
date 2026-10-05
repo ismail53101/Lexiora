@@ -1,9 +1,11 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:lexiora/app/di/injector.dart';
+import 'package:lexiora/core/services/rewarded_ad_manager.dart';
 import 'package:lexiora/core/usecase/usecase.dart';
 import 'package:lexiora/core/utils/result.dart';
 import 'package:lexiora/modules/grammar/data/grammar_seeder.dart';
 import 'package:lexiora/modules/grammar/domain/entities/grammar_lesson.dart';
+import 'package:lexiora/modules/grammar/domain/entities/grammar_quiz_stage_progress.dart';
 import 'package:lexiora/modules/grammar/domain/entities/grammar_topic.dart';
 import 'package:lexiora/modules/grammar/domain/repositories/grammar_repository.dart';
 import 'package:lexiora/modules/grammar/domain/usecases/grammar_usecases.dart';
@@ -12,6 +14,11 @@ import 'package:lexiora/modules/grammar/domain/usecases/grammar_usecases.dart';
 
 final Provider<GrammarRepository> grammarRepositoryProvider =
     Provider<GrammarRepository>((Ref ref) => sl<GrammarRepository>());
+
+/// Grammar uses the app's centralized ad lifecycle; no Grammar-specific ad
+/// manager is created.
+final Provider<RewardedAdManager> grammarRewardedAdManagerProvider =
+    Provider<RewardedAdManager>((Ref ref) => sl<RewardedAdManager>());
 
 final Provider<GrammarSeeder> grammarSeederProvider =
     Provider<GrammarSeeder>((Ref ref) => sl<GrammarSeeder>());
@@ -93,6 +100,16 @@ final grammarLeafProvider = FutureProvider.family<GrammarLesson?, String>(
       (GrammarLesson? lesson) => lesson,
     );
   },
+);
+
+/// Durable, reactive stage and milestone state for one staged Grammar quiz.
+/// Its family key is the stable Grammar lesson id, so the three ladders never
+/// share progress.
+final grammarQuizStageProgressProvider =
+    StreamProvider.family<List<GrammarQuizStageProgress>, String>(
+  (Ref ref, String quizId) => ref
+      .watch(grammarRepositoryProvider)
+      .watchGrammarQuizStageProgress(quizId),
 );
 
 /// Node title (for the Topic screen app bar).

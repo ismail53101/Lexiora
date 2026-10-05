@@ -54,7 +54,8 @@ abstract final class DbConstants {
   /// v20 → v21: AI Assistant nested sub-projects — adds nullable parent_id to
   /// ai_projects. Existing projects remain top-level.
   /// v21 → v22: removes the retired Study Planner Goals table and feature.
-  static const int schemaVersion = 22;
+  /// v22 → v23: adds Grammar-only staged-quiz progress and reward unlock state.
+  static const int schemaVersion = 23;
 }
 
 /// Constants for the Quiz Engine's one-time demo seed.

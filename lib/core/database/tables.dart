@@ -323,6 +323,24 @@ class GrammarProgress extends Table {
   Set<Column<Object>> get primaryKey => {lessonId};
 }
 
+/// Durable stage and rewarded-milestone state for the three staged Grammar
+/// quizzes. Kept separate from [QuizStageProgress], which belongs to Main Quiz.
+@DataClassName('GrammarQuizStageProgressRow')
+class GrammarQuizStageProgresses extends Table {
+  TextColumn get quizId => text()();
+  IntColumn get stageIndex => integer()();
+  IntColumn get bestScore => integer().withDefault(const Constant(0))();
+  IntColumn get attempts => integer().withDefault(const Constant(0))();
+  BoolColumn get passed => boolean().withDefault(const Constant(false))();
+  BoolColumn get rewardedUnlocked =>
+      boolean().withDefault(const Constant(false))();
+  DateTimeColumn get createdAt => dateTime()();
+  DateTimeColumn get updatedAt => dateTime()();
+
+  @override
+  Set<Column<Object>> get primaryKey => {quizId, stageIndex};
+}
+
 /// A user-saved ("favorite") grammar lesson.
 ///
 /// Keyed by [lessonId]. A snapshot of the title and category is denormalized

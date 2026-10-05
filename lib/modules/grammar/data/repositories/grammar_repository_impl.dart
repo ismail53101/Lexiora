@@ -1,5 +1,6 @@
 import 'package:lexiora/modules/grammar/data/datasources/grammar_local_data_source.dart';
 import 'package:lexiora/modules/grammar/domain/entities/grammar_lesson.dart';
+import 'package:lexiora/modules/grammar/domain/entities/grammar_quiz_stage_progress.dart';
 import 'package:lexiora/modules/grammar/domain/entities/grammar_topic.dart';
 import 'package:lexiora/modules/grammar/domain/repositories/grammar_repository.dart';
 
@@ -61,6 +62,42 @@ class GrammarRepositoryImpl implements GrammarRepository {
 
   @override
   Future<void> removeFavorite(String leafId) => _local.removeFavorite(leafId);
+
+  @override
+  Stream<List<GrammarQuizStageProgress>> watchGrammarQuizStageProgress(
+    String quizId,
+  ) =>
+      _local.watchGrammarQuizStageProgress(quizId);
+
+  @override
+  Future<List<GrammarQuizStageProgress>> grammarQuizStageProgress(
+    String quizId,
+  ) =>
+      _local.grammarQuizStageProgress(quizId);
+
+  @override
+  Future<void> recordGrammarQuizStageResult({
+    required String quizId,
+    required int stageIndex,
+    required int correct,
+    required int total,
+  }) =>
+      _local.recordGrammarQuizStageResult(
+        quizId: quizId,
+        stageIndex: stageIndex,
+        correct: correct,
+        total: total,
+      );
+
+  @override
+  Future<bool> grantGrammarQuizMilestoneUnlock({
+    required String quizId,
+    required int stageIndex,
+  }) =>
+      _local.grantGrammarQuizMilestoneUnlock(
+        quizId: quizId,
+        stageIndex: stageIndex,
+      );
 
   @override
   Future<int> topicCount() => _local.topicCount();
