@@ -92,6 +92,8 @@ void main() {
       expect(find.text('WATCH AD TO CONTINUE'), findsOneWidget);
       expect(ads.requestCount, 0);
 
+      await tester.ensureVisible(find.text('WATCH AD TO CONTINUE'));
+      await tester.pumpAndSettle();
       await tester.tap(find.text('WATCH AD TO CONTINUE'));
       await tester.pumpAndSettle();
 
@@ -133,6 +135,8 @@ void main() {
         ),
       ),
     );
+    await tester.pumpAndSettle();
+    await tester.ensureVisible(find.text('Stage 4'));
     await tester.pumpAndSettle();
     await tester.tap(find.text('Stage 4'));
     await tester.pumpAndSettle();
