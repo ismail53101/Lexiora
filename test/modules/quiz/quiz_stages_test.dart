@@ -147,6 +147,17 @@ void main() {
       );
     });
 
+    test('a legacy-completed milestone stage remains playable', () {
+      expect(
+        quizStageUnlocked(
+          5,
+          const <int>{0, 1, 2, 3, 4, 5},
+          requireRewardedMilestones: true,
+        ),
+        isTrue,
+      );
+    });
+
     test('Stage 7 is free; Stage 11 requires the second earned unlock', () {
       final Set<int> sixPassed = <int>{0, 1, 2, 3, 4, 5};
       expect(

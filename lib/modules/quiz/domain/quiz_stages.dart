@@ -116,7 +116,10 @@ bool quizStageUnlocked(
   bool requireRewardedMilestones = false,
   Set<int> rewardedUnlockedStageIndices = const <int>{},
 }) {
-  if (stageIndex <= 0 || passedStages.contains(stageIndex)) return true;
+  if (stageIndex <= 0) return true;
+  // Preserve access to a legacy Main Quiz stage already completed before the
+  // milestone gate existed; this does not make a new stage pass count.
+  if (requireRewardedMilestones && passedStages.contains(stageIndex)) return true;
   if (!passedStages.contains(stageIndex - 1)) return false;
   if (!requireRewardedMilestones || !quizStageIsRewardMilestone(stageIndex)) {
     return true;
