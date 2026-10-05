@@ -53,18 +53,16 @@ class _AdReturnNavigationScopeState extends State<AdReturnNavigationScope> {
 
   Future<void> _attemptInterstitialThenPop(NavigatorState navigator) async {
     try {
-      final bool shown = await Future<bool>.sync(
-        widget.manager.showReturnInterstitial,
-      ).timeout(
-            widget.navigationFallbackTimeout,
-            onTimeout: () {
-              AppLogger.w(
-                'INTERSTITIAL_NAVIGATION_FALLBACK '
-                'reason=terminal_callback_timeout',
-              );
-              return false;
-            },
+      final bool shown = await _showInterstitialSafely().timeout(
+        widget.navigationFallbackTimeout,
+        onTimeout: () {
+          AppLogger.w(
+            'INTERSTITIAL_NAVIGATION_FALLBACK '
+            'reason=terminal_callback_timeout',
           );
+          return false;
+        },
+      );
       AppLogger.i('INTERSTITIAL_EXIT_RESULT shown=$shown');
     } on Object catch (error, stackTrace) {
       AppLogger.e(
@@ -89,6 +87,42 @@ class _AdReturnNavigationScopeState extends State<AdReturnNavigationScope> {
         stackTrace: stackTrace,
       );
     }
+  }
+
+  Future<bool> _showInterstitialSafely() {
+    final Completer<bool> result = Completer<bool>();
+
+    void completeUnavailable() {
+      if (!result.isCompleted) result.complete(false);
+    }
+
+    try {
+      final Future<bool> request = widget.manager.showReturnInterstitial();
+      unawaited(
+        request.then<void>(
+          (bool shown) {
+            if (!result.isCompleted) result.complete(shown);
+          },
+          onError: (Object error, StackTrace stackTrace) {
+            AppLogger.e(
+              'Optional return interstitial failed; navigation continues',
+              error: error,
+              stackTrace: stackTrace,
+            );
+            completeUnavailable();
+          },
+        ),
+      );
+    } on Object catch (error, stackTrace) {
+      AppLogger.e(
+        'Optional return interstitial failed; navigation continues',
+        error: error,
+        stackTrace: stackTrace,
+      );
+      completeUnavailable();
+    }
+
+    return result.future;
   }
 
   void _popWithoutAnotherAd(NavigatorState navigator) {
