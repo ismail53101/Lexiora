@@ -101,7 +101,7 @@ void main() {
       expect(ads.requestCount, 1);
       expect(
         find.descendant(
-          of: find.byType(AppBar).first,
+          of: find.byType(AppBar).last,
           matching: find.text('Stage 5'),
         ),
         findsOneWidget,
