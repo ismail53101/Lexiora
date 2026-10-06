@@ -1,5 +1,6 @@
 package com.sapiora.app
 
+import android.Manifest
 import android.app.Activity
 import android.content.Intent
 import android.database.Cursor
@@ -8,6 +9,7 @@ import android.net.Uri
 import android.os.Build
 import android.os.Bundle
 import android.os.Environment
+import android.content.pm.PackageManager
 import android.provider.MediaStore
 import android.provider.OpenableColumns
 import android.util.Log
@@ -54,6 +56,9 @@ import java.io.File
 class MainActivity : FlutterActivity() {
     private val channelName = "lexiora/platform"
     private val pickPdfsRequest = 0x5A11
+    private val notificationPermissionRequest = 0x4E31
+    private val notificationPermissionPrefs = "sapiora_permission_flow"
+    private val notificationPermissionPromptedKey = "notification_prompted_v1"
     private var pendingResult: MethodChannel.Result? = null
     private var platformChannel: MethodChannel? = null
     private var pendingIncomingPdf: Map<String, Any?>? = null
@@ -61,7 +66,45 @@ class MainActivity : FlutterActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        // Android 13+ notification permission is requested before Flutter's
+        // first frame. The launch window is intentionally black, so the
+        // permission dialog never appears on top of the Home screen.
+        requestNotificationPermissionOnFreshInstall()
         processIncomingIntent(intent)
+    }
+
+    private fun requestNotificationPermissionOnFreshInstall() {
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.TIRAMISU) return
+
+        val prefs = getSharedPreferences(notificationPermissionPrefs, MODE_PRIVATE)
+        if (prefs.getBoolean(notificationPermissionPromptedKey, false)) return
+
+        if (checkSelfPermission(Manifest.permission.POST_NOTIFICATIONS) ==
+            PackageManager.PERMISSION_GRANTED
+        ) {
+            prefs.edit().putBoolean(notificationPermissionPromptedKey, true).apply()
+            return
+        }
+
+        requestPermissions(
+            arrayOf(Manifest.permission.POST_NOTIFICATIONS),
+            notificationPermissionRequest,
+        )
+    }
+
+    override fun onRequestPermissionsResult(
+        requestCode: Int,
+        permissions: Array<out String>,
+        grantResults: IntArray,
+    ) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
+        if (requestCode == notificationPermissionRequest) {
+            getSharedPreferences(notificationPermissionPrefs, MODE_PRIVATE)
+                .edit()
+                .putBoolean(notificationPermissionPromptedKey, true)
+                .apply()
+        }
     }
 
     override fun onNewIntent(intent: Intent) {
