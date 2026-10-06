@@ -15,7 +15,6 @@ import 'package:lexiora/core/platform/fresh_install_guard.dart';
 import 'package:lexiora/core/services/notification_service.dart';
 import 'package:lexiora/core/services/pdf_discovery_service.dart';
 import 'package:lexiora/core/services/pdf_import_service.dart';
-import 'package:lexiora/core/services/permission_service.dart';
 import 'package:lexiora/core/services/rewarded_ad_manager.dart';
 import 'package:lexiora/core/utils/logger.dart';
 import 'package:lexiora/core/utils/result.dart';
@@ -101,22 +100,11 @@ Future<void> _finishStartup(GoRouter router) async {
         currentSettings.initialPermissionFlowVersion !=
             _initialPermissionFlowVersion;
     if (needsPermissionFlow) {
-      try {
-        if (!await notifications.notificationsEnabled()) {
-          await notifications.requestPermission();
-        }
-      } on Object catch (error, stackTrace) {
-        AppLogger.e('Notification permission request failed', error: error, stackTrace: stackTrace);
-      }
-
-      try {
-        final PermissionService filePermission = sl<PermissionService>();
-        if (!await filePermission.isGrantedForDiscovery()) {
-          await filePermission.requestForDiscovery();
-        }
-      } on Object catch (error, stackTrace) {
-        AppLogger.e('PDF storage permission request failed', error: error, stackTrace: stackTrace);
-      }
+      // Notification permission is requested natively in MainActivity before
+      // Flutter renders, so the Android dialog never appears over Home.
+      // PDF "All files access" is deliberately requested only when the user
+      // opens Library; it is a special-access settings screen rather than a
+      // normal runtime permission and should not interrupt first launch.
       await settings.updateSettings(
         currentSettings.copyWith(
           initialPermissionFlowCompleted: true,
