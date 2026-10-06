@@ -185,6 +185,9 @@ class AiChatController extends Notifier<AiChatState> {
   }
 
   /// Called after the user explicitly taps “Watch Ad for 7 More Searches”.
+  Future<RewardedAdResult> watchAdForMoreAiResult() =>
+      sl<RewardedAdManager>().watchAdForMoreAiResult();
+
   Future<bool> watchAdForMoreAi() async {
     return sl<RewardedAdManager>().watchAdForMoreAi();
   }
