@@ -91,8 +91,8 @@ class _LibraryPageState extends ConsumerState<LibraryPage> {
                         : () => context.push(AppRoutes.driveLibrary),
                     padding: EdgeInsets.zero,
                     constraints: const BoxConstraints.tightFor(
-                      width: 38,
-                      height: 38,
+                      width: 60,
+                      height: 56,
                     ),
                     icon: const _GoogleDriveToolbarIcon(),
                   ),
@@ -496,35 +496,51 @@ class _GoogleDriveToolbarIcon extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return CustomPaint(
-      size: const Size.square(25),
-      painter: _GoogleDriveToolbarPainter(
-        borderColor: Theme.of(context).colorScheme.outlineVariant,
+    return Container(
+      width: 60,
+      height: 56,
+      padding: const EdgeInsets.symmetric(horizontal: 7, vertical: 4),
+      decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(12),
+        border: Border.all(
+          color: Theme.of(context).colorScheme.outlineVariant.withValues(alpha: 0.65),
+          width: 1,
+        ),
+      ),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          CustomPaint(
+            size: const Size.square(28),
+            painter: const _GoogleDriveToolbarPainter(),
+          ),
+          const SizedBox(height: 1),
+          const Text(
+            'Your Drive',
+            maxLines: 1,
+            overflow: TextOverflow.clip,
+            style: TextStyle(
+              fontSize: 8,
+              fontWeight: FontWeight.w600,
+              height: 1,
+              color: Color(0xFF5F6368),
+            ),
+          ),
+        ],
       ),
     );
   }
 }
 
 class _GoogleDriveToolbarPainter extends CustomPainter {
-  const _GoogleDriveToolbarPainter({required this.borderColor});
-
-  final Color borderColor;
+  const _GoogleDriveToolbarPainter();
 
   @override
   void paint(Canvas canvas, Size size) {
     final double scale = size.shortestSide / 25;
     canvas.save();
     canvas.scale(scale, scale);
-
-    final Paint border = Paint()
-      ..color = borderColor.withValues(alpha: 0.7)
-      ..style = PaintingStyle.stroke
-      ..strokeWidth = 1.2;
-    final RRect background = RRect.fromRectAndRadius(
-      const Rect.fromLTWH(0.5, 0.5, 24, 24),
-      const Radius.circular(7),
-    );
-    canvas.drawRRect(background, border);
 
     final Path green = Path()
       ..moveTo(8.5, 5)
@@ -556,8 +572,7 @@ class _GoogleDriveToolbarPainter extends CustomPainter {
   }
 
   @override
-  bool shouldRepaint(_GoogleDriveToolbarPainter oldDelegate) =>
-      oldDelegate.borderColor != borderColor;
+  bool shouldRepaint(_GoogleDriveToolbarPainter oldDelegate) => false;
 }
 
 class _CategoryBar extends StatelessWidget {
