@@ -20,7 +20,7 @@ class SplashPage extends StatefulWidget {
 }
 
 class _SplashPageState extends State<SplashPage> {
-  static const Duration _holdDuration = Duration(milliseconds: 2200);
+  static const Duration _holdDuration = Duration(milliseconds: 3000);
 
   @override
   void initState() {
@@ -42,8 +42,8 @@ class _SplashPageState extends State<SplashPage> {
               borderRadius: BorderRadius.circular(28),
               child: Image.asset(
                 'assets/branding/app_icon.webp',
-                width: 128,
-                height: 128,
+                width: 136,
+                height: 136,
               ),
             )
                 .animate()
