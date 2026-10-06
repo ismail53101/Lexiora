@@ -167,6 +167,7 @@ TextSpan _emailLinkedText(String text, TextStyle? style) {
       TextSpan(text: text.substring(0, emailStart)),
       TextSpan(
         text: email,
+        style: style?.copyWith(color: Colors.blue),
         recognizer: TapGestureRecognizer()..onTap = _openEmail,
       ),
       TextSpan(text: text.substring(emailStart + email.length)),
