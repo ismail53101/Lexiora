@@ -147,6 +147,13 @@ class MainActivity : FlutterActivity() {
 
     private fun completeStartupPermissionFlow() {
         if (startupPermissionReady) return
+
+        // Permissions must remain on a pure black launch surface. Only after
+        // the user has finished the one-time permission flow do we reveal the
+        // branded launch background. Flutter's first frame is still deferred,
+        // so this logo remains visible while the engine/app finishes starting.
+        window.setBackgroundDrawableResource(R.drawable.launch_brand_background)
+
         startupPermissionReady = true
         val pending = ArrayList(pendingStartupPermissionResults)
         pendingStartupPermissionResults.clear()
