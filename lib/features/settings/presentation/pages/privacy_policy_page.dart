@@ -7,7 +7,7 @@ class PrivacyPolicyPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final ThemeData theme = Theme.of(context);
+    
     return Scaffold(
       appBar: AppBar(title: const Text('Privacy Policy')),
       body: ListView(
