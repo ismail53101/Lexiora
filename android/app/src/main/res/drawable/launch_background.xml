@@ -2,5 +2,5 @@
 <!-- Sapiora launch splash: solid brand navy (the Flutter splash screen draws
      the branding on top). Replaces the template's white flash. -->
 <layer-list xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:drawable="@color/splash_background" />
+    <item android:drawable="@color/launch_black" />
 </layer-list>
