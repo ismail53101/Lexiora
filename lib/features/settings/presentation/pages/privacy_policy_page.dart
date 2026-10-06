@@ -1,4 +1,6 @@
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 /// In-app Privacy Policy. The content below mirrors the publicly hosted
 /// privacy policy in docs/privacy-policy.html.
@@ -16,10 +18,17 @@ class PrivacyPolicyPage extends StatelessWidget {
           const _Section(
             title: 'Accounts and information you provide',
             body:
-                'Sapiora can be used without an account in the current version. '
-                'You do not need to provide your name, phone number or email '
-                'address to use the core features. Sapiora does not sell users\' '
-                'personal information.',
+                'Sapiora can be used without signing in for free use of the app '
+                'and its available features. Signing in is optional for users '
+                'who only want to use the free version.\n\n'
+                'An account is required only when a user chooses to purchase '
+                'or use a Premium membership. When signing in or creating an '
+                'account for Premium, the user may provide information such as '
+                'an email address and other account-related information required '
+                'by the authentication and membership system.\n\n'
+                'Users are not required to sign in unless they choose to use '
+                'features that require an account, such as Premium membership. '
+                'Sapiora does not sell users\' personal information.',
           ),
           const _Section(
             title: 'Data stored on your device',
@@ -27,7 +36,9 @@ class PrivacyPolicyPage extends StatelessWidget {
                 'Where applicable, library data, highlights, notes, bookmarks, '
                 'reading progress, saved vocabulary and locally stored AI '
                 'conversation history remain on your device. PDFs are accessed '
-                'locally and are not uploaded merely for reading.',
+                'locally and are not uploaded merely for reading. Account-related '
+                'information required for Premium may be processed by the '
+                'authentication and membership services.',
           ),
           const _Section(
             title: 'Online features',
@@ -66,20 +77,22 @@ class PrivacyPolicyPage extends StatelessWidget {
             title: 'Children\'s privacy',
             body:
                 'Sapiora is intended for students and general users rather '
-                'than specifically for children under 13. The current version '
+                'than specifically for children under 13. Free use of the app '
                 'does not require an account or ask users to provide age or '
                 'other personal information. We do not knowingly collect '
                 'personal information from children. Parents or guardians '
                 'with questions can contact us at sapiora.app@gmail.com.',
+            linkEmail: true,
           ),
           const _Section(
             title: 'Data security and retention',
             body:
                 'Local app data remains on the user\'s device unless the user '
                 'actively uses a feature that transmits information to an '
-                'online service. Sapiora does not maintain a user account or '
-                'a cloud account for local study history in the current '
-                'version.',
+                'online service. Sapiora does not maintain a cloud account for '
+                'local study history in the current version. Account-related '
+                'information required for Premium may be processed by the '
+                'authentication and membership services.',
           ),
           const _Section(
             title: 'Changes to this policy',
@@ -93,6 +106,7 @@ class PrivacyPolicyPage extends StatelessWidget {
             body:
                 'Questions about this policy or Sapiora\'s privacy practices? '
                 'Contact us at sapiora.app@gmail.com.',
+            linkEmail: true,
           ),
         ],
       ),
@@ -101,10 +115,11 @@ class PrivacyPolicyPage extends StatelessWidget {
 }
 
 class _Section extends StatelessWidget {
-  const _Section({required this.title, required this.body});
+  const _Section({required this.title, required this.body, this.linkEmail = false});
 
   final String title;
   final String body;
+  final bool linkEmail;
 
   @override
   Widget build(BuildContext context) {
@@ -122,12 +137,46 @@ class _Section extends StatelessWidget {
             ),
           ),
           const SizedBox(height: 6),
-          Text(
-            body,
-            style: theme.textTheme.bodyMedium?.copyWith(height: 1.45),
-          ),
+          linkEmail
+              ? Text.rich(
+                  _emailLinkedText(
+                    body,
+                    theme.textTheme.bodyMedium?.copyWith(height: 1.45),
+                  ),
+                )
+              : Text(
+                  body,
+                  style: theme.textTheme.bodyMedium?.copyWith(height: 1.45),
+                ),
         ],
       ),
     );
   }
+}
+
+TextSpan _emailLinkedText(String text, TextStyle? style) {
+  const email = 'sapiora.app@gmail.com';
+  final emailStart = text.indexOf(email);
+  if (emailStart == -1) {
+    return TextSpan(text: text, style: style);
+  }
+
+  return TextSpan(
+    style: style,
+    children: [
+      TextSpan(text: text.substring(0, emailStart)),
+      TextSpan(
+        text: email,
+        recognizer: TapGestureRecognizer()..onTap = _openEmail,
+      ),
+      TextSpan(text: text.substring(emailStart + email.length)),
+    ],
+  );
+}
+
+Future<void> _openEmail() async {
+  await launchUrl(
+    Uri(scheme: 'mailto', path: 'sapiora.app@gmail.com'),
+    mode: LaunchMode.externalApplication,
+  );
 }
