@@ -57,8 +57,13 @@ class MainActivity : FlutterActivity() {
     private val channelName = "lexiora/platform"
     private val pickPdfsRequest = 0x5A11
     private val notificationPermissionRequest = 0x4E31
+    private val storagePermissionRequest = 0x4E32
     private val notificationPermissionPrefs = "sapiora_permission_flow"
     private val notificationPermissionPromptedKey = "notification_prompted_v1"
+    private val startupPermissionPrefs = "sapiora_permission_flow"
+    private val allFilesPromptedKey = "all_files_prompted_v1"
+    private var startupPermissionReady = false
+    private val pendingStartupPermissionResults = ArrayList<MethodChannel.Result>()
     private var pendingResult: MethodChannel.Result? = null
     private var platformChannel: MethodChannel? = null
     private var pendingIncomingPdf: Map<String, Any?>? = null
@@ -75,22 +80,89 @@ class MainActivity : FlutterActivity() {
     }
 
     private fun requestNotificationPermissionOnFreshInstall() {
-        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.TIRAMISU) return
-
         val prefs = getSharedPreferences(notificationPermissionPrefs, MODE_PRIVATE)
-        if (prefs.getBoolean(notificationPermissionPromptedKey, false)) return
 
-        if (checkSelfPermission(Manifest.permission.POST_NOTIFICATIONS) ==
-            PackageManager.PERMISSION_GRANTED
-        ) {
-            prefs.edit().putBoolean(notificationPermissionPromptedKey, true).apply()
+        if (prefs.getBoolean(allFilesPromptedKey, false)) {
+            completeStartupPermissionFlow()
             return
         }
 
-        requestPermissions(
-            arrayOf(Manifest.permission.POST_NOTIFICATIONS),
-            notificationPermissionRequest,
-        )
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU &&
+            !prefs.getBoolean(notificationPermissionPromptedKey, false) &&
+            checkSelfPermission(Manifest.permission.POST_NOTIFICATIONS) !=
+                PackageManager.PERMISSION_GRANTED
+        ) {
+            requestPermissions(
+                arrayOf(Manifest.permission.POST_NOTIFICATIONS),
+                notificationPermissionRequest,
+            )
+            return
+        }
+
+        beginAllFilesAccessFlow()
+    }
+
+    private fun beginAllFilesAccessFlow() {
+        val prefs = getSharedPreferences(startupPermissionPrefs, MODE_PRIVATE)
+        if (prefs.getBoolean(allFilesPromptedKey, false)) {
+            completeStartupPermissionFlow()
+            return
+        }
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
+            if (Environment.isExternalStorageManager()) {
+                prefs.edit().putBoolean(allFilesPromptedKey, true).apply()
+                completeStartupPermissionFlow()
+                return
+            }
+
+            prefs.edit().putBoolean(allFilesPromptedKey, true).apply()
+            try {
+                val intent = Intent(
+                    android.provider.Settings.ACTION_MANAGE_APP_ALL_FILES_ACCESS_PERMISSION,
+                    Uri.parse("package:$packageName"),
+                )
+                startActivity(intent)
+            } catch (e: Exception) {
+                Log.w("Lexiora", "Could not open All Files Access settings: ${e.message}")
+                completeStartupPermissionFlow()
+            }
+            return
+        }
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M &&
+            checkSelfPermission(Manifest.permission.READ_EXTERNAL_STORAGE) !=
+                PackageManager.PERMISSION_GRANTED
+        ) {
+            requestPermissions(
+                arrayOf(Manifest.permission.READ_EXTERNAL_STORAGE),
+                storagePermissionRequest,
+            )
+            return
+        }
+
+        prefs.edit().putBoolean(allFilesPromptedKey, true).apply()
+        completeStartupPermissionFlow()
+    }
+
+    private fun completeStartupPermissionFlow() {
+        if (startupPermissionReady) return
+        startupPermissionReady = true
+        val pending = ArrayList(pendingStartupPermissionResults)
+        pendingStartupPermissionResults.clear()
+        pending.forEach { it.success(true) }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        if (!startupPermissionReady) {
+            val prefs = getSharedPreferences(startupPermissionPrefs, MODE_PRIVATE)
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R &&
+                prefs.getBoolean(allFilesPromptedKey, false)
+            ) {
+                completeStartupPermissionFlow()
+            }
+        }
     }
 
     override fun onRequestPermissionsResult(
@@ -104,6 +176,13 @@ class MainActivity : FlutterActivity() {
                 .edit()
                 .putBoolean(notificationPermissionPromptedKey, true)
                 .apply()
+            beginAllFilesAccessFlow()
+        } else if (requestCode == storagePermissionRequest) {
+            getSharedPreferences(startupPermissionPrefs, MODE_PRIVATE)
+                .edit()
+                .putBoolean(allFilesPromptedKey, true)
+                .apply()
+            completeStartupPermissionFlow()
         }
     }
 
@@ -119,6 +198,13 @@ class MainActivity : FlutterActivity() {
         platformChannel!!
             .setMethodCallHandler { call, result ->
                 when (call.method) {
+                    "waitForStartupPermissions" -> {
+                        if (startupPermissionReady) {
+                            result.success(true)
+                        } else {
+                            pendingStartupPermissionResults.add(result)
+                        }
+                    }
                     "takeIncomingPdf" -> {
                         dartChannelReady = true
                         val incoming = pendingIncomingPdf
