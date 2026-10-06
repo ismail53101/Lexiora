@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Shown only after the one-time permission flow completes. The launch
+     surface stays black while Android permission/settings screens are active. -->
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:drawable="@color/launch_black" />
+    <item
+        android:gravity="center"
+        android:drawable="@mipmap/ic_launcher" />
+</layer-list>
