@@ -1,6 +1,9 @@
 import 'dart:async';
 
 import 'dart:convert';
+import 'dart:io';
+
+import 'package:flutter/services.dart';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -25,7 +28,24 @@ import 'package:lexiora/features/settings/domain/entities/app_settings.dart';
 import 'package:lexiora/features/settings/domain/repositories/settings_repository.dart';
 import 'package:pdfrx/pdfrx.dart';
 
-const String _initialPermissionFlowVersion = '2026.09.30-permissions-v4';
+const String _initialPermissionFlowVersion = '2026.10.06-permissions-v5';
+const MethodChannel _startupPermissionChannel =
+    MethodChannel('lexiora/platform');
+
+Future<void> _waitForStartupPermissions() async {
+  if (!Platform.isAndroid) return;
+  try {
+    await _startupPermissionChannel.invokeMethod<bool>(
+      'waitForStartupPermissions',
+    );
+  } on Object catch (error, stackTrace) {
+    AppLogger.w(
+      'Startup permission gate failed open',
+      error: error,
+      stackTrace: stackTrace,
+    );
+  }
+}
 
 /// Sapiora entry point.
 ///
@@ -36,7 +56,13 @@ const String _initialPermissionFlowVersion = '2026.09.30-permissions-v4';
 Future<void> main() async {
   await runZonedGuarded<Future<void>>(
     () async {
-      WidgetsFlutterBinding.ensureInitialized();
+      final WidgetsBinding binding = WidgetsFlutterBinding.ensureInitialized();
+
+      // Keep the native black launch screen visible until the one-time
+      // notification -> All Files Access sequence has finished. Flutter's
+      // first frame must not reveal the logo/Home underneath the permission.
+      binding.deferFirstFrame();
+      await _waitForStartupPermissions();
 
       ErrorWidget.builder = (FlutterErrorDetails details) {
         AppLogger.e(
@@ -64,6 +90,7 @@ Future<void> main() async {
       // screen. Notifications, permissions, and PDF intent discovery continue
       // immediately after the first frame and report failures to the logger.
       runApp(ProviderScope(child: SapioraApp(router: router)));
+      binding.allowFirstFrame();
       unawaited(_finishStartup(router));
 
   // One-time data hygiene: if Android's auto-backup restored an old database
