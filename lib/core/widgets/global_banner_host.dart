@@ -59,7 +59,10 @@ class _GlobalBannerHostState extends State<GlobalBannerHost> {
 
   bool get _routeAllowsBanner {
     final String path = widget.router.routeInformationProvider.value.uri.path;
-    return path != AppRoutes.splash && path != AppRoutes.dictionary;
+    // Home and Dictionary own their single in-page banner placements.
+    // The global banner is reserved for Library so those screens never
+    // receive a duplicate banner.
+    return path == AppRoutes.library;
   }
 
   @override
