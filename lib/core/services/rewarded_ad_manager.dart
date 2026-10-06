@@ -36,9 +36,19 @@ abstract final class AdConfiguration {
   /// for a fresh free batch, or watch a rewarded ad to continue right away.
   static const Duration AI_FREE_REFILL_INTERVAL = Duration(hours: 1);
 
-  static String get bannerId => kReleaseMode
-      ? _productionOrTest(productionBannerId, testBannerId)
-      : testBannerId;
+  /// Set with --dart-define=SAPiora_FORCE_TEST_ADS=true when testing a
+  /// release build locally. It never changes Play Store builds unless the
+  /// define is explicitly supplied.
+  static const bool forceTestAds = bool.fromEnvironment(
+    'SAPiora_FORCE_TEST_ADS',
+    defaultValue: false,
+  );
+
+  static String get bannerId => forceTestAds
+      ? testBannerId
+      : kReleaseMode
+          ? _productionOrTest(productionBannerId, testBannerId)
+          : testBannerId;
   static String get interstitialId => kReleaseMode
       ? _productionOrTest(productionInterstitialId, testInterstitialId)
       : testInterstitialId;
@@ -272,8 +282,13 @@ class RewardedAdManager {
     } finally {
       _initializationInFlight = null;
     }
-    unawaited(loadRewarded());
-    unawaited(loadInterstitial());
+    // Do not compete with the first Home frame: banners are loaded by their
+    // visible slots, while full-screen ads can warm up shortly after launch.
+    Future<void>.delayed(const Duration(milliseconds: 1200), () {
+      if (_disposed || !_initialized) return;
+      unawaited(loadRewarded());
+      unawaited(loadInterstitial());
+    });
   }
 
   Future<void> loadRewarded() => _loadRewarded(isRetry: false);
@@ -911,7 +926,8 @@ class BannerAdSlot extends ChangeNotifier {
             AppLogger.w(
               'BANNER_LOAD_FAILED placement=$placementName '
               'unit=${AdConfiguration.bannerId} code=${error.code} '
-              'domain=${error.domain} message=${error.message}',
+              'domain=${error.domain} message=${error.message} '
+              'responseInfo=${error.responseInfo}',
             );
             unawaited(failed.dispose());
             if (identical(_ad, failed)) _ad = null;
