@@ -5,6 +5,7 @@ import 'package:lexiora/core/module/feature_module.dart';
 import 'package:lexiora/core/navigation/home_destination.dart';
 import 'package:lexiora/core/platform/fresh_install_guard.dart';
 import 'package:lexiora/core/reader_engine/word_action.dart';
+import 'package:lexiora/core/services/ai_usage_store.dart';
 import 'package:lexiora/core/services/device_info_service.dart';
 import 'package:lexiora/core/services/pdf_cover_service.dart';
 import 'package:lexiora/core/services/pdf_discovery_service.dart';
@@ -42,6 +43,7 @@ Future<void> configureDependencies() async {
     ..registerLazySingleton<RewardedAdManager>(
       () => RewardedAdManager(
         isPremium: () => sl<NoPremiumEntitlementService>().isPremium,
+        aiUsageStore: AiUsageStore(),
       ),
     )
     // The tap-on-word extension registry — empty in Phase 1, populated by

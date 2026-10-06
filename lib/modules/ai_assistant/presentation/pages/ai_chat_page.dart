@@ -8,6 +8,7 @@ import 'package:lexiora/modules/ai_assistant/domain/entities/ai_conversation.dar
 import 'package:lexiora/modules/ai_assistant/domain/entities/ai_message.dart';
 import 'package:lexiora/modules/ai_assistant/domain/entities/ai_project.dart';
 import 'package:lexiora/modules/ai_assistant/presentation/providers/ai_providers.dart';
+import 'package:lexiora/modules/ai_assistant/presentation/widgets/ai_limit_gate.dart';
 import 'package:lexiora/modules/ai_assistant/presentation/widgets/ai_markdown.dart';
 import 'package:lexiora/modules/ai_assistant/presentation/widgets/ai_usage_limit_dialog.dart';
 import 'package:lexiora/modules/ai_assistant/presentation/widgets/chat_composer.dart';
@@ -70,6 +71,7 @@ class AiChatPage extends ConsumerWidget {
       drawer: const ConversationDrawer(),
       body: Column(
         children: <Widget>[
+          AiLimitGate(conversationId: currentId),
           Expanded(
             child: !configured
                 ? _notConfigured(context)
