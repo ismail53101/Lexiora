@@ -51,7 +51,12 @@ class _HomePageState extends ConsumerState<HomePage>
     super.initState();
     WidgetsBinding.instance.addObserver(this);
     WidgetsBinding.instance.addPostFrameCallback((_) {
-      unawaited(_initializePdfDiscovery());
+      // Let the first Home frame settle before the potentially large PDF scan.
+      // Discovery remains automatic, but it no longer competes with the first
+      // 60 frames of the dashboard for CPU time.
+      Future<void>.delayed(const Duration(milliseconds: 1200), () {
+        if (mounted) unawaited(_initializePdfDiscovery());
+      });
     });
   }
 
