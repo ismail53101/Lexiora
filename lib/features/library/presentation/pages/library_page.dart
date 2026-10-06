@@ -512,7 +512,7 @@ class _GoogleDriveToolbarIcon extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           CustomPaint(
-            size: const Size.square(28),
+            size: const Size.square(22),
             painter: const _GoogleDriveToolbarPainter(),
           ),
           const SizedBox(height: 1),
