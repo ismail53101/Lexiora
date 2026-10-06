@@ -20,16 +20,6 @@ class OpenAiCompatibleChatService implements AiChatService {
   final AiApiClient _client;
   final AiConfig _config;
 
-  static const int _maxTransientRetries = 2;
-
-  /// Whether a failure is worth an automatic retry: server-side problems
-  /// (5xx, including Cloudflare's 52x family), timeouts and network drops.
-  /// Auth, rate-limit and not-found errors are never retried.
-  static bool isTransientFailure(AiFailure f) =>
-      f.kind == AiFailureKind.server ||
-      f.kind == AiFailureKind.timeout ||
-      f.kind == AiFailureKind.network;
-
   @override
   AiProviderInfo get info => const AiProviderInfo(
         id: 'openai_compatible',
@@ -52,42 +42,20 @@ class OpenAiCompatibleChatService implements AiChatService {
     String? sourcesHeader;
 
     try {
-      // Transient gateway/upstream failures (Cloudflare 502/503/504/520-524,
-      // timeouts, dropped connections) are retried a couple of times as long
-      // as nothing has been shown to the user yet. A free upstream model that
-      // is momentarily unreachable then no longer surfaces as "error 522".
-      for (int attempt = 0;; attempt++) {
-        try {
-          await for (final String payload in _client.streamSse(
-            <String, dynamic>{
-              'model': useModel,
-              'messages': wire,
-              'stream': true,
-              'provider': _config.provider.wireValue,
-            },
-            cancel: cancel,
-            onSources: (String raw) => sourcesHeader = raw,
-          )) {
-            final String? delta = parseStreamDelta(payload);
-            if (delta != null && delta.isNotEmpty) {
-              acc.write(delta);
-              yield AiDelta(delta);
-            }
-          }
-          break;
-        } on AiFailure catch (f) {
-          final bool canRetry = acc.isEmpty &&
-              attempt < _maxTransientRetries &&
-              isTransientFailure(f) &&
-              !(cancel?.isCancelled ?? false);
-          if (!canRetry) rethrow;
-          await Future<void>.delayed(
-            Duration(milliseconds: 1500 * (attempt + 1)),
-          );
-          if (cancel?.isCancelled ?? false) {
-            yield AiDone(acc.toString());
-            return;
-          }
+      await for (final String payload in _client.streamSse(
+        <String, dynamic>{
+          'model': useModel,
+          'messages': wire,
+          'stream': true,
+          'provider': _config.provider.wireValue,
+        },
+        cancel: cancel,
+        onSources: (String raw) => sourcesHeader = raw,
+      )) {
+        final String? delta = parseStreamDelta(payload);
+        if (delta != null && delta.isNotEmpty) {
+          acc.write(delta);
+          yield AiDelta(delta);
         }
       }
 

@@ -998,3 +998,37 @@ class ManagedBannerAd extends StatefulWidget {
 
   final RewardedAdManager manager;
   final String placementName;
+
+  @override
+  State<ManagedBannerAd> createState() => _ManagedBannerAdState();
+}
+
+class _ManagedBannerAdState extends State<ManagedBannerAd> {
+  late final BannerAdSlot _slot = BannerAdSlot(
+    manager: widget.manager,
+    placementName: widget.placementName,
+  );
+
+  @override
+  void initState() {
+    super.initState();
+    AppLogger.i('BANNER_CREATE placement=${widget.placementName}');
+    unawaited(_slot.start());
+  }
+
+  @override
+  void dispose() {
+    _slot.dispose();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) => ListenableBuilder(
+        listenable: _slot,
+        builder: (BuildContext context, Widget? _) {
+          final BannerAd? ad = _slot.ad;
+          if (ad == null) return const SizedBox.shrink();
+          return Center(child: BannerAdView(ad: ad));
+        },
+      );
+}

@@ -5,7 +5,6 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:lexiora/core/constants/app_constants.dart';
 import 'package:lexiora/core/theme/app_theme.dart';
-import 'package:lexiora/core/widgets/global_banner_host.dart';
 import 'package:lexiora/features/settings/domain/entities/app_settings.dart';
 import 'package:lexiora/features/settings/presentation/providers/settings_providers.dart';
 
@@ -63,10 +62,7 @@ class _SapioraAppState extends ConsumerState<SapioraApp> {
         final MediaQueryData mq = MediaQuery.of(context);
         return MediaQuery(
           data: mq.copyWith(textScaler: TextScaler.linear(fontScale)),
-          child: GlobalBannerHost(
-            router: widget.router,
-            child: child ?? const SizedBox.shrink(),
-          ),
+          child: child ?? const SizedBox.shrink(),
         );
       },
     );

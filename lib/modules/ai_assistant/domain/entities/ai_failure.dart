@@ -50,8 +50,7 @@ class AiFailure implements Exception {
       default:
         if (status >= 500) {
           return AiFailure(AiFailureKind.server,
-              'The AI service is busy right now (error $status). We retried '
-              'automatically — please tap retry in a few seconds.',
+              'The AI service is having trouble (error $status). Please try again later.',
               statusCode: status);
         }
         return AiFailure(AiFailureKind.unknown,

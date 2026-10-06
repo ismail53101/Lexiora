@@ -20,6 +20,7 @@ class _FakeRewardedAdManager extends RewardedAdManager {
   Future<RewardedAdResult> showRewarded({
     required RewardedAdPlacement placement,
     RewardCallback? onRewarded,
+    Duration? waitForLoad,
   }) async {
     requestCount++;
     if (placement != RewardedAdPlacement.grammarQuiz) {

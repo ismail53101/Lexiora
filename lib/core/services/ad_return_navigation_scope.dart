@@ -23,14 +23,6 @@ class AdReturnNavigationScope extends StatefulWidget {
 class _AdReturnNavigationScopeState extends State<AdReturnNavigationScope> {
   bool _handlingBack = false;
 
-  @override
-  void initState() {
-    super.initState();
-    // Make sure an interstitial is already loaded by the time the learner
-    // presses Back (no-op when one is ready/loading or the SDK is not up yet).
-    unawaited(widget.manager.loadInterstitial());
-  }
-
   void _handleBack() {
     if (_handlingBack || !mounted) return;
     _handlingBack = true;

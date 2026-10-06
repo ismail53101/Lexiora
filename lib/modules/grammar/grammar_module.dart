@@ -4,8 +4,6 @@ import 'package:go_router/go_router.dart';
 import 'package:lexiora/app/router/app_routes.dart';
 import 'package:lexiora/core/database/app_database.dart';
 import 'package:lexiora/core/module/feature_module.dart';
-import 'package:lexiora/core/services/ad_return_navigation_scope.dart';
-import 'package:lexiora/core/services/rewarded_ad_manager.dart';
 import 'package:lexiora/core/navigation/home_destination.dart';
 import 'package:lexiora/modules/grammar/data/datasources/grammar_local_data_source.dart';
 import 'package:lexiora/modules/grammar/data/grammar_seeder.dart';
@@ -49,10 +47,7 @@ class GrammarModule extends FeatureModule {
   List<RouteBase> routes(GetIt getIt) => <RouteBase>[
         GoRoute(
           path: AppRoutes.grammar,
-          builder: (_, _) => AdReturnNavigationScope(
-            manager: getIt<RewardedAdManager>(),
-            child: const GrammarPage(),
-          ),
+          builder: (_, _) => const GrammarPage(),
         ),
         GoRoute(
           name: AppRoutes.grammarTopicName,
