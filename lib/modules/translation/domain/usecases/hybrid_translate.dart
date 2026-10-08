@@ -5,6 +5,7 @@ import 'package:lexiora/core/utils/logger.dart';
 import 'package:lexiora/core/utils/typedefs.dart';
 import 'package:lexiora/modules/dictionary/domain/repositories/dictionary_repository.dart';
 import 'package:lexiora/modules/translation/data/services/word_meaning_service.dart';
+import 'package:lexiora/modules/translation/data/services/ai_word_translation_service.dart';
 import 'package:lexiora/modules/translation/domain/entities/translation.dart';
 import 'package:lexiora/modules/translation/domain/entities/translation_outcome.dart';
 import 'package:lexiora/modules/translation/domain/repositories/translation_repository.dart';
@@ -46,17 +47,20 @@ class HybridTranslate
     required ConnectivityService connectivity,
     required DictionaryRepository dictionaryRepository,
     required WordMeaningService meaningService,
+    required AiWordTranslationService aiWordTranslationService,
   })  : _repo = translationRepository,
         _remote = remoteService,
         _connectivity = connectivity,
         _dictionary = dictionaryRepository,
-        _meaningService = meaningService;
+        _meaningService = meaningService,
+        _aiWordTranslation = aiWordTranslationService;
 
   final TranslationRepository _repo;
   final RemoteTranslationService _remote;
   final ConnectivityService _connectivity;
   final DictionaryRepository _dictionary;
   final WordMeaningService _meaningService;
+  final AiWordTranslationService _aiWordTranslation;
 
   @override
   ResultFuture<TranslationOutcome> call(HybridTranslateParams params) =>
@@ -103,6 +107,32 @@ class HybridTranslate
           if (wordLevel != null && wordLevel.isNotEmpty) {
             return TranslationOutcome.offline(
               Translation(word: word, languageCode: lang, text: wordLevel),
+            );
+          }
+        }
+
+        // 2) AI fallback: only for a single English word, only for Urdu,
+        //    and only after every local source missed. Phrases/sentences never
+        //    use this AI dictionary fallback.
+        if (_isSingleWord(word) && lang.toLowerCase() == 'ur') {
+          final String? aiTranslation = await _aiWordTranslation.translate(
+            word: word,
+            targetLanguageCode: lang,
+          );
+          if (aiTranslation != null && aiTranslation.isNotEmpty) {
+            await _repo.cacheTranslation(
+              word: word,
+              languageCode: lang,
+              translation: aiTranslation,
+            );
+            await _registerInDictionary(word, aiTranslation);
+            return TranslationOutcome.online(
+              Translation(
+                word: word,
+                languageCode: lang,
+                text: aiTranslation,
+                source: TranslationSource.online,
+              ),
             );
           }
         }
