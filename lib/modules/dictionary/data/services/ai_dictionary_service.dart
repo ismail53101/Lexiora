@@ -28,7 +28,9 @@ class AiDictionaryService {
               'synonyms',
               'antonyms',
               'exampleSentence',
+              'exampleSentenceUrdu',
               'collocations',
+              'wordForms',
               'examNote',
             ]
           : missingFields;
@@ -41,7 +43,7 @@ class AiDictionaryService {
         'messages': <Map<String, String>>[
           <String, String>{
             'role': 'system',
-            'content': '''You are Lexiora's exam English dictionary. Return ONLY valid JSON, with no markdown and no commentary. Give the most common, precise meaning intended for CSS/BPSC/competitive-exam learners. Do not invent a rare meaning. Use short natural Urdu meanings. Use empty arrays or null only when genuinely unavailable. The JSON keys must be exactly: word, englishDefinition, urduMeanings, partOfSpeech, synonyms, antonyms, exampleSentence, collocations, examNote.''',
+            'content': '''You are Lexiora's exam English dictionary. Return ONLY valid JSON, with no markdown and no commentary. Give the most common, precise meaning intended for CSS/BPSC/competitive-exam learners. Do not invent a rare meaning. Use short natural Urdu meanings. Use empty arrays or null only when genuinely unavailable. The JSON keys must be exactly: word, englishDefinition, urduMeanings, partOfSpeech, synonyms, antonyms, exampleSentence, exampleSentenceUrdu, collocations, wordForms, examNote. For exampleSentence, write one natural competitive-exam English sentence containing the headword; exampleSentenceUrdu must be a faithful Urdu translation of that exact sentence. For wordForms, give useful derivational/inflectional family forms when they genuinely exist; do not invent forms. If a requested field genuinely has no reliable answer (for example a word has no natural antonym), return an empty array or null rather than inventing one.''',
           },
           <String, String>{
             'role': 'user',
