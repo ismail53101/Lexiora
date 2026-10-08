@@ -8,6 +8,9 @@ import 'package:lexiora/modules/dictionary/domain/repositories/dictionary_reposi
 import 'package:lexiora/modules/translation/data/datasources/translation_local_data_source.dart';
 import 'package:lexiora/modules/translation/data/repositories/translation_repository_impl.dart';
 import 'package:lexiora/modules/translation/data/services/http_translation_service.dart';
+import 'package:lexiora/modules/translation/data/services/ai_word_translation_service.dart';
+import 'package:lexiora/modules/ai_assistant/config/ai_config.dart';
+import 'package:lexiora/modules/ai_assistant/data/services/ai_api_client.dart';
 import 'package:lexiora/modules/translation/data/services/word_meaning_service.dart';
 import 'package:lexiora/modules/translation/data/translation_seeder.dart';
 import 'package:lexiora/modules/translation/domain/repositories/translation_repository.dart';
@@ -48,6 +51,12 @@ class TranslationModule extends FeatureModule {
       )
       ..registerLazySingleton<ConnectivityService>(
         NetworkConnectivityService.new,
+      )
+      ..registerLazySingleton<AiWordTranslationService>(
+        () => AiWordTranslationService(
+          getIt<AiApiClient>(),
+          getIt<AiConfig>(),
+        ),
       )
       // Resolves a single word's best English meaning (+ curated Urdu when
       // available) across the exam packs, the base dictionary and the free
