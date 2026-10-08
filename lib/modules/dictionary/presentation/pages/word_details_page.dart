@@ -48,6 +48,15 @@ class _WordDetailsPageState extends ConsumerState<WordDetailsPage> {
   Widget build(BuildContext context) {
     final AsyncValue<WordProfile> profileAsync =
         ref.watch(wordProfileProvider(widget.wordLower));
+    final AsyncValue<AiWordProfile?> aiAsync =
+        ref.watch(wordAiEnrichmentProvider(widget.wordLower));
+
+    final WordProfile? localProfile =
+        profileAsync.maybeWhen(data: (WordProfile p) => p, orElse: () => null);
+    final WordProfile? displayProfile =
+        localProfile == null
+            ? null
+            : localProfile.copyWith(ai: aiAsync.valueOrNull);
 
     return Scaffold(
       appBar: AppBar(
@@ -80,7 +89,7 @@ class _WordDetailsPageState extends ConsumerState<WordDetailsPage> {
           message: 'Something went wrong loading this word.',
           onRetry: () => ref.invalidate(wordProfileProvider(widget.wordLower)),
         ),
-        data: (WordProfile p) => _ProfileView(profile: p),
+        data: (WordProfile p) => _ProfileView(profile: displayProfile ?? p),
       ),
     );
   }
