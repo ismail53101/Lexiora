@@ -6,6 +6,7 @@ import 'package:lexiora/modules/dictionary/domain/entities/word_profile.dart';
 import 'package:lexiora/modules/dictionary/data/services/ai_dictionary_service.dart';
 import 'package:lexiora/modules/dictionary/data/services/stands4_dictionary_service.dart';
 import 'package:lexiora/modules/dictionary/domain/repositories/dictionary_repository.dart';
+import 'package:lexiora/modules/dictionary/domain/usecases/usage_relevance.dart';
 
 /// Aggregates the fully-offline parts of a word's profile: the curated exam
 /// data (when present), the base dictionary senses, and locally-derived related
@@ -33,6 +34,7 @@ class GetWordProfile implements UseCase<WordProfile, String> {
         // The bundled 6k+ dictionary remains the primary source; AI only fills
         // fields that are absent, so we never replace curated/local content.
         final List<String> missingFields = <String>[];
+        AiWordProfile? ai;
         final bool hasEnglish = (exam?.englishDefinition?.trim().isNotEmpty == true) ||
             (base?.primary?.meaning.trim().isNotEmpty == true);
         final bool hasUrdu = exam?.urduMeanings.isNotEmpty == true;
