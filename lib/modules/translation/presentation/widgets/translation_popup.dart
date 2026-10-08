@@ -7,6 +7,7 @@ import 'package:lexiora/features/settings/presentation/providers/settings_provid
 import 'package:lexiora/modules/dictionary/data/dictionary_seeder.dart';
 import 'package:lexiora/modules/dictionary/data/exam_words_seeder.dart';
 import 'package:lexiora/modules/dictionary/data/services/ai_dictionary_service.dart';
+import 'package:lexiora/modules/dictionary/data/services/stands4_dictionary_service.dart';
 import 'package:lexiora/modules/dictionary/domain/entities/word_profile.dart';
 import 'package:lexiora/modules/dictionary/domain/repositories/dictionary_repository.dart';
 import 'package:lexiora/modules/translation/data/services/word_meaning_service.dart';
@@ -316,6 +317,7 @@ class _EnglishMeaningState extends State<_EnglishMeaning> {
   final VocabularySeeder _vocabularySeeder = sl<VocabularySeeder>();
   final ExamWordsSeeder _examSeeder = sl<ExamWordsSeeder>();
   final AiDictionaryService _aiDictionary = sl<AiDictionaryService>();
+  final Stands4DictionaryService _stands4 = sl<Stands4DictionaryService>();
 
   String? _meaning;
   String? _partOfSpeech;
@@ -347,7 +349,9 @@ class _EnglishMeaningState extends State<_EnglishMeaning> {
           .resolve(widget.word.toLowerCase());
       AiWordProfile? ai;
       if (m == null || m.fromOnline) {
-        ai = await _aiDictionary.define(
+        // STANDS4 (via the Worker) first; AI only when it has nothing.
+        ai = await _stands4.define(widget.word.toLowerCase());
+        ai ??= await _aiDictionary.define(
           widget.word.toLowerCase(),
           missingFields: const <String>[
             'englishDefinition',
