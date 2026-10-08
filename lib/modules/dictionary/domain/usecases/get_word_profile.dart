@@ -6,6 +6,7 @@ import 'package:lexiora/modules/dictionary/domain/entities/word_profile.dart';
 import 'package:lexiora/modules/dictionary/data/services/ai_dictionary_service.dart';
 import 'package:lexiora/modules/dictionary/data/services/stands4_dictionary_service.dart';
 import 'package:lexiora/modules/dictionary/domain/repositories/dictionary_repository.dart';
+import 'package:lexiora/modules/dictionary/domain/usecases/usage_relevance.dart';
 
 /// Aggregates the fully-offline parts of a word's profile: the curated exam
 /// data (when present), the base dictionary senses, and locally-derived related
@@ -24,15 +25,38 @@ class GetWordProfile implements UseCase<WordProfile, String> {
         final ExamWordData? exam = await _repo.examData(wl);
         final WordDetails? base = await _repo.wordDetails(wl);
         final List<String> related = await _repo.relatedWords(wl);
-        // Any local record is the source of truth and must open immediately.
-        // AI is reserved for a truly missing word, avoiding a network wait for
-        // entries that already have a meaning, synonyms, antonyms, or example.
-        final bool existsOffline = exam != null || base != null;
+        // Enrich incomplete local entries as well as completely missing words.
+        // The bundled 6k+ dictionary remains the primary source; AI only fills
+        // fields that are absent, so we never replace curated/local content.
+        final List<String> missingFields = <String>[];
         AiWordProfile? ai;
-        if (!existsOffline) {
-          ai = await _stands4?.define(wl);
-          ai ??= await _ai?.define(wl);
+        final bool hasEnglish = (exam?.englishDefinition?.trim().isNotEmpty == true) ||
+            (base?.primary?.meaning.trim().isNotEmpty == true);
+        final bool hasUrdu = exam?.urduMeanings.isNotEmpty == true;
+        final bool hasSynonyms = exam?.synonyms.isNotEmpty == true;
+        final bool hasAntonyms = exam?.antonyms.isNotEmpty == true;
+        final bool hasExample = validatedUsage(wl, exam?.usage) != null ||
+            base?.primary?.exampleSentence?.trim().isNotEmpty == true;
+        final bool hasCollocations = exam?.collocations.isNotEmpty == true;
+        final bool hasWordForms = exam?.wordForms.isNotEmpty == true || related.isNotEmpty;
+        final bool hasExamNote = exam?.examNote?.trim().isNotEmpty == true;
+
+        if (!hasEnglish) missingFields.add('englishDefinition');
+        if (!hasUrdu) missingFields.add('urduMeanings');
+        if (!hasSynonyms) missingFields.add('synonyms');
+        if (!hasAntonyms) missingFields.add('antonyms');
+        if (!hasExample) {
+          missingFields.add('exampleSentence');
+          missingFields.add('exampleSentenceUrdu');
         }
+        if (!hasCollocations) missingFields.add('collocations');
+        if (!hasWordForms) missingFields.add('wordForms');
+        if (!hasExamNote) missingFields.add('examNote');
+        if (missingFields.isNotEmpty) {
+          ai = await _ai?.define(wl, missingFields: missingFields);
+          ai ??= await _stands4?.define(wl);
+        }
+
         return WordProfile(
           word: exam?.word ?? base?.word ?? wordLower,
           wordLower: wl,

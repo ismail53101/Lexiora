@@ -188,6 +188,9 @@ class _ProfileView extends StatelessWidget {
     for (final String w in profile.relatedWords) {
       if (seen.add(w.toLowerCase())) forms.add(w);
     }
+    for (final String w in profile.ai?.wordForms ?? const <String>[]) {
+      if (seen.add(w.toLowerCase())) forms.add(w);
+    }
 
     final List<Widget> otherMeanings = _buildOtherMeanings(context, profile);
     final bool showPronunciation =
@@ -344,13 +347,23 @@ class _ProfileView extends StatelessWidget {
     final WordUsage? curated = validatedUsage(profile.wordLower, e?.usage);
     if (curated != null) return curated;
 
-    final String? example = profile.base?.primary?.exampleSentence;
     final String? aiExample = profile.ai?.exampleSentence;
-    final String? selected = example?.trim().isNotEmpty == true ? example : aiExample;
-    if (selected == null || selected.trim().isEmpty) return null;
+    if (aiExample?.trim().isNotEmpty == true) {
+      return validatedUsage(
+        profile.wordLower,
+        WordUsage(
+          context: 'AI example',
+          english: aiExample!.trim(),
+          urdu: profile.ai?.exampleSentenceUrdu?.trim() ?? '',
+        ),
+      );
+    }
+
+    final String? example = profile.base?.primary?.exampleSentence;
+    if (example?.trim().isNotEmpty != true) return null;
     return validatedUsage(
       profile.wordLower,
-      WordUsage(context: selected == aiExample ? 'AI example' : 'Usage', english: selected.trim(), urdu: ''),
+      WordUsage(context: 'Usage', english: example!.trim(), urdu: ''),
     );
   }
 
