@@ -43,7 +43,9 @@ class AiWordProfile extends Equatable {
     this.synonyms = const <String>[],
     this.antonyms = const <String>[],
     this.exampleSentence,
+    this.exampleSentenceUrdu,
     this.collocations = const <String>[],
+    this.wordForms = const <String>[],
     this.examNote,
   });
 
@@ -56,6 +58,7 @@ class AiWordProfile extends Equatable {
         synonyms: _strings(json['synonyms']),
         antonyms: _strings(json['antonyms']),
         exampleSentence: _text(json['exampleSentence']),
+        exampleSentenceUrdu: _text(json['exampleSentenceUrdu']),
         collocations: _strings(json['collocations']),
         examNote: _text(json['examNote']),
       );
@@ -68,7 +71,9 @@ class AiWordProfile extends Equatable {
   final List<String> synonyms;
   final List<String> antonyms;
   final String? exampleSentence;
+  final String? exampleSentenceUrdu;
   final List<String> collocations;
+  final List<String> wordForms;
   final String? examNote;
 
   bool get hasContent =>
@@ -88,7 +93,9 @@ class AiWordProfile extends Equatable {
         synonyms,
         antonyms,
         exampleSentence,
+        exampleSentenceUrdu,
         collocations,
+        wordForms,
         examNote,
       ];
 
