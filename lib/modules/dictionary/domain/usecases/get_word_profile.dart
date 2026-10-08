@@ -30,8 +30,9 @@ class GetWordProfile implements UseCase<WordProfile, String> {
         final bool existsOffline = exam != null || base != null;
         AiWordProfile? ai;
         if (!existsOffline) {
-          ai = await _stands4?.define(wl);
-          ai ??= await _ai?.define(wl);
+          // Missing from the entire local dictionary: AI is the only fallback.
+          // STANDS4 is intentionally not called here.
+          ai = await _ai?.define(wl);
         } else if (exam == null || exam.synonyms.isEmpty) {
           // Word is in the offline dictionary but has no curated synonyms:
           // enrich ONLY synonyms/antonyms from STANDS4 (synonyms.com). The
