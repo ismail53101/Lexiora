@@ -53,10 +53,14 @@ class _WordDetailsPageState extends ConsumerState<WordDetailsPage> {
 
     final WordProfile? localProfile =
         profileAsync.maybeWhen(data: (WordProfile p) => p, orElse: () => null);
+    final AiWordProfile? aiProfile = aiAsync.maybeWhen(
+      data: (AiWordProfile? value) => value,
+      orElse: () => null,
+    );
     final WordProfile? displayProfile =
         localProfile == null
             ? null
-            : localProfile.copyWith(ai: aiAsync.valueOrNull);
+            : localProfile.copyWith(ai: aiProfile);
 
     return Scaffold(
       appBar: AppBar(
