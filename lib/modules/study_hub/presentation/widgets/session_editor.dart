@@ -190,7 +190,10 @@ class _SessionEditorState extends ConsumerState<_SessionEditor> {
             startMinute: breakStart,
             endMinute: breakEnd,
             durationMinutes: _breakMinutes,
-            autoScheduled: true,
+            // This break is explicitly attached to this session's end.
+            // Keep it as a manual anchor so saveTask/recalculate does not
+            // move it to the end of the whole day's schedule.
+            autoScheduled: false,
             updatedAt: now,
           ) ??
           StudyTask(
@@ -201,7 +204,8 @@ class _SessionEditorState extends ConsumerState<_SessionEditor> {
             endMinute: breakEnd,
             durationMinutes: _breakMinutes,
             kind: SessionKind.breakTime,
-            autoScheduled: true,
+            // A break created from a session is anchored to that session.
+            autoScheduled: false,
             createdAt: now,
             updatedAt: now,
           );
@@ -466,6 +470,9 @@ class _BreakEditorState extends ConsumerState<_BreakEditor> {
       kind: SessionKind.breakTime,
       status: TaskStatus.pending,
       durationMinutes: _start != null && _end != null ? _end! - _start! : null,
+      // Editing a break is an explicit user action, so preserve its chosen
+      // time instead of letting automatic scheduling move it elsewhere.
+      autoScheduled: false,
       updatedAt: now,
       clearSubject: true,
       clearTopic: true,
