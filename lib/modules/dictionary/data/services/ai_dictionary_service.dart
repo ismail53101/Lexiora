@@ -39,7 +39,7 @@ class AiDictionaryService {
         'provider': _config.provider.wireValue,
         'stream': false,
         'temperature': 0.1,
-        'max_tokens': 350,
+        'max_tokens': 600,
         'messages': <Map<String, String>>[
           <String, String>{
             'role': 'system',
