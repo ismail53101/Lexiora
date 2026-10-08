@@ -132,6 +132,11 @@ final wordAiEnrichmentProvider =
     final WordProfile profile =
         await ref.watch(wordProfileProvider(wordLower).future);
 
+    // AI is strictly a fallback for words absent from the local JSON-backed
+    // dictionary. Existing local words may use STANDS4 for synonym enrichment,
+    // but must never trigger an AI dictionary request for missing fields.
+    if (profile.existsLocally) return null;
+
     final ExamWordData? exam = profile.exam;
     final WordDetails? base = profile.base;
     final List<String> missing = <String>[];
