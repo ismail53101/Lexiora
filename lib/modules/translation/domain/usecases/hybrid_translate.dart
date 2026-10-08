@@ -47,7 +47,7 @@ class HybridTranslate
     required ConnectivityService connectivity,
     required DictionaryRepository dictionaryRepository,
     required WordMeaningService meaningService,
-    required AiWordTranslationService aiWordTranslationService,
+    AiWordTranslationService? aiWordTranslationService,
   })  : _repo = translationRepository,
         _remote = remoteService,
         _connectivity = connectivity,
@@ -60,7 +60,7 @@ class HybridTranslate
   final ConnectivityService _connectivity;
   final DictionaryRepository _dictionary;
   final WordMeaningService _meaningService;
-  final AiWordTranslationService _aiWordTranslation;
+  final AiWordTranslationService? _aiWordTranslation;
 
   @override
   ResultFuture<TranslationOutcome> call(HybridTranslateParams params) =>
@@ -114,8 +114,10 @@ class HybridTranslate
         // 2) AI fallback: only for a single English word, only for Urdu,
         //    and only after every local source missed. Phrases/sentences never
         //    use this AI dictionary fallback.
-        if (_isSingleWord(word) && lang.toLowerCase() == 'ur') {
-          final String? aiTranslation = await _aiWordTranslation.translate(
+        if (_aiWordTranslation != null &&
+            _isSingleWord(word) &&
+            lang.toLowerCase() == 'ur') {
+          final String? aiTranslation = await _aiWordTranslation!.translate(
             word: word,
             targetLanguageCode: lang,
           );
