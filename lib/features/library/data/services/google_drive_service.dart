@@ -84,8 +84,13 @@ class GoogleDriveService {
       clientId: sapioraAndroidOAuthClientId,
       serverClientId: sapioraWebOAuthClientId,
     );
+    // Do not perform lightweight authentication during Drive page startup.
+    // On Play-distributed builds this can trigger a silent account reauth
+    // failure (GoogleSignInExceptionCode.canceled / status 16) before the
+    // user has explicitly chosen their Google account. The actual user-driven
+    // authenticate() call in [connect] establishes the account that owns
+    // the Drive data.
     _initialized = true;
-    _account = await _signIn.attemptLightweightAuthentication();
   }
 
   Future<GoogleSignInAccount> connect() async {
