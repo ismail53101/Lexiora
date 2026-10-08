@@ -58,8 +58,8 @@ class GetWordProfile implements UseCase<WordProfile, String> {
         if (!hasWordForms) missingFields.add('wordForms');
         if (!hasExamNote) missingFields.add('examNote');
         if (missingFields.isNotEmpty) {
-          ai = await _stands4?.define(wl);
-          ai ??= await _ai?.define(wl, missingFields: missingFields);
+          ai = await _ai?.define(wl, missingFields: missingFields);
+          ai ??= await _stands4?.define(wl);
         }
 
         return WordProfile(
