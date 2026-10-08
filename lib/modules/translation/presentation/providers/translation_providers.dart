@@ -4,6 +4,7 @@ import 'package:lexiora/core/services/connectivity_service.dart';
 import 'package:lexiora/core/utils/result.dart';
 import 'package:lexiora/modules/dictionary/presentation/providers/dictionary_providers.dart';
 import 'package:lexiora/modules/translation/data/services/word_meaning_service.dart';
+import 'package:lexiora/modules/translation/data/services/ai_word_translation_service.dart';
 import 'package:lexiora/modules/translation/data/translation_seeder.dart';
 import 'package:lexiora/modules/translation/domain/entities/translation.dart';
 import 'package:lexiora/modules/translation/domain/entities/translation_outcome.dart';
@@ -50,6 +51,7 @@ final Provider<HybridTranslate> hybridTranslateProvider =
     connectivity: ref.watch(connectivityServiceProvider),
     dictionaryRepository: ref.watch(dictionaryRepositoryProvider),
     meaningService: ref.watch(wordMeaningServiceProvider),
+    aiWordTranslationService: sl<AiWordTranslationService>(),
   ),
 );
 
