@@ -60,6 +60,7 @@ class AiWordProfile extends Equatable {
         exampleSentence: _text(json['exampleSentence']),
         exampleSentenceUrdu: _text(json['exampleSentenceUrdu']),
         collocations: _strings(json['collocations']),
+        wordForms: _strings(json['wordForms']),
         examNote: _text(json['examNote']),
       );
 
@@ -81,7 +82,10 @@ class AiWordProfile extends Equatable {
       urduMeanings.isNotEmpty ||
       synonyms.isNotEmpty ||
       antonyms.isNotEmpty ||
-      exampleSentence != null;
+      exampleSentence != null ||
+      collocations.isNotEmpty ||
+      wordForms.isNotEmpty ||
+      examNote != null;
 
   @override
   List<Object?> get props => <Object?>[
