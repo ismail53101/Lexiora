@@ -123,6 +123,53 @@ final wordProfileProvider = FutureProvider.family<WordProfile, String>(
   },
 );
 
+/// Loads only the missing dictionary fields through AI in the background.
+/// The local profile is never blocked by this provider.
+final wordAiEnrichmentProvider =
+    FutureProvider.family<AiWordProfile?, String>(
+  (Ref ref, String wordLower) async {
+    final WordProfile profile =
+        await ref.watch(wordProfileProvider(wordLower).future);
+
+    final ExamWordData? exam = profile.exam;
+    final WordDetails? base = profile.base;
+    final List<String> missing = <String>[];
+
+    final bool hasEnglish =
+        (exam?.englishDefinition?.trim().isNotEmpty == true) ||
+        (base?.primary?.meaning.trim().isNotEmpty == true);
+    final bool hasUrdu = exam?.urduMeanings.isNotEmpty == true;
+    final bool hasSynonyms = exam?.synonyms.isNotEmpty == true;
+    final bool hasAntonyms = exam?.antonyms.isNotEmpty == true;
+    final bool hasExample =
+        validatedUsage(profile.wordLower, exam?.usage) != null ||
+        base?.primary?.exampleSentence?.trim().isNotEmpty == true;
+    final bool hasCollocations = exam?.collocations.isNotEmpty == true;
+    final bool hasWordForms =
+        exam?.wordForms.isNotEmpty == true || profile.relatedWords.isNotEmpty;
+    final bool hasExamNote = exam?.examNote?.trim().isNotEmpty == true;
+
+    if (!hasEnglish) missing.add('englishDefinition');
+    if (!hasUrdu) missing.add('urduMeanings');
+    if (!hasSynonyms) missing.add('synonyms');
+    if (!hasAntonyms) missing.add('antonyms');
+    if (!hasExample) {
+      missing.add('exampleSentence');
+      missing.add('exampleSentenceUrdu');
+    }
+    if (!hasCollocations) missing.add('collocations');
+    if (!hasWordForms) missing.add('wordForms');
+    if (!hasExamNote) missing.add('examNote');
+
+    if (missing.isEmpty) return null;
+
+    return sl<AiDictionaryService>().define(
+      wordLower,
+      missingFields: missing,
+    );
+  },
+);
+
 /// Reactive recent searches (most recent first).
 final recentSearchesProvider = StreamProvider<List<String>>(
   (Ref ref) => ref.watch(dictionaryRepositoryProvider).watchRecentSearches(),
