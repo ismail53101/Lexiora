@@ -25,11 +25,6 @@ class GetWordProfile implements UseCase<WordProfile, String> {
         final ExamWordData? exam = await _repo.examData(wl);
         final WordDetails? base = await _repo.wordDetails(wl);
         final List<String> related = await _repo.relatedWords(wl);
-        // Any local record is the source of truth and must open immediately.
-        // AI is reserved for a truly missing word, avoiding a network wait for
-        // entries that already have a meaning, synonyms, antonyms, or example.
-        final bool existsOffline = exam != null || base != null;
-
         // Enrich incomplete local entries as well as completely missing words.
         // The bundled 6k+ dictionary remains the primary source; AI only fills
         // fields that are absent, so we never replace curated/local content.
