@@ -12,6 +12,7 @@ import 'package:lexiora/modules/dictionary/domain/entities/word_profile.dart';
 import 'package:lexiora/modules/dictionary/domain/repositories/dictionary_repository.dart';
 import 'package:lexiora/modules/dictionary/domain/usecases/dictionary_usecases.dart';
 import 'package:lexiora/modules/dictionary/domain/usecases/get_word_profile.dart';
+import 'package:lexiora/modules/dictionary/domain/usecases/usage_relevance.dart';
 
 // ── Infrastructure ────────────────────────────────────────────────────────────
 
