@@ -202,6 +202,15 @@ class WordProfile extends Equatable {
   final List<String> relatedWords;
   final AiWordProfile? ai;
 
+  WordProfile copyWith({AiWordProfile? ai}) => WordProfile(
+        word: word,
+        wordLower: wordLower,
+        exam: exam,
+        base: base,
+        relatedWords: relatedWords,
+        ai: ai ?? this.ai,
+      );
+
   /// True when the word exists in any local data set (base or curated).
   bool get existsLocally => base != null || exam != null;
 
