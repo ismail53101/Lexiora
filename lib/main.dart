@@ -47,7 +47,7 @@ Future<void> _waitForStartupPermissions() async {
   }
 }
 
-/// Sapiora entry point.
+/// DarsNexa entry point.
 ///
 /// Runs inside a guarded zone with a friendly [ErrorWidget.builder] so a build
 /// failure is never an unexplained blank/grey screen, and all framework and
