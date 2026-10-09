@@ -41,7 +41,7 @@ class _SplashPageState extends State<SplashPage> {
             ClipRRect(
               borderRadius: BorderRadius.circular(28),
               child: Image.asset(
-                'assets/branding/app_icon.webp',
+                'assets/branding/darsnexa_icon.webp',
                 width: 136,
                 height: 136,
               ),
