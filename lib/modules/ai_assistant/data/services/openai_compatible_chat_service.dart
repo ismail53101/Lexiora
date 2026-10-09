@@ -224,7 +224,7 @@ class OpenAiCompatibleChatService implements AiChatService {
 
   static const String _sourcesMarker = '\n\n---\n**Sources**\n';
 
-  /// Decodes the Worker's `X-Sapiora-Sources` header (URL-encoded JSON list of
+  /// Decodes the Worker's `X-DarsNexa-Sources` header (URL-encoded JSON list of
   /// `{title, url}`). Never throws; returns only http(s) links.
   static List<({String title, String url})> parseSourcesHeader(String raw) {
     try {
