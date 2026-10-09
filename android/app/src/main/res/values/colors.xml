@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!-- Sapiora brand navy — used for the Android launch/splash background so
+    <!-- DarsNexa brand navy — used for the Android launch/splash background so
          the window starts on-brand instead of flashing white. -->
     <color name="splash_background">#001450</color>
     <!-- Keep the native startup/permission stage completely black. -->
-    <color name="launch_black">#000000</color>
+    <color name="launch_black">#061344</color>
 </resources>
