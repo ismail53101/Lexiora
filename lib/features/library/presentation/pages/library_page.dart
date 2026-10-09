@@ -79,25 +79,7 @@ class _LibraryPageState extends ConsumerState<LibraryPage> {
                 ),
                 onChanged: (String v) => setState(() => _query = v),
               )
-            : Row(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  const Text('Library'),
-                  const SizedBox(width: 8),
-                  IconButton(
-                    tooltip: 'Google Drive',
-                    onPressed: _importing
-                        ? null
-                        : () => context.push(AppRoutes.driveLibrary),
-                    padding: EdgeInsets.zero,
-                    constraints: const BoxConstraints.tightFor(
-                      width: 60,
-                      height: 56,
-                    ),
-                    icon: const _GoogleDriveToolbarIcon(),
-                  ),
-                ],
-              ),
+            : const Text('Library'),
         actions: [
           IconButton(
             icon: Icon(_searching ? Icons.close : Icons.search),
@@ -489,90 +471,6 @@ class _LibraryPageState extends ConsumerState<LibraryPage> {
       ),
     );
   }
-}
-
-class _GoogleDriveToolbarIcon extends StatelessWidget {
-  const _GoogleDriveToolbarIcon();
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      width: 60,
-      height: 56,
-      padding: const EdgeInsets.symmetric(horizontal: 7, vertical: 4),
-      decoration: BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.circular(12),
-        border: Border.all(
-          color: Theme.of(context).colorScheme.outlineVariant.withValues(alpha: 0.65),
-          width: 1,
-        ),
-      ),
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          CustomPaint(
-            size: const Size.square(22),
-            painter: const _GoogleDriveToolbarPainter(),
-          ),
-          const SizedBox(height: 1),
-          const Text(
-            'Your Drive',
-            maxLines: 1,
-            overflow: TextOverflow.clip,
-            style: TextStyle(
-              fontSize: 8,
-              fontWeight: FontWeight.w600,
-              height: 1,
-              color: Color(0xFF5F6368),
-            ),
-          ),
-        ],
-      ),
-    );
-  }
-}
-
-class _GoogleDriveToolbarPainter extends CustomPainter {
-  const _GoogleDriveToolbarPainter();
-
-  @override
-  void paint(Canvas canvas, Size size) {
-    final double scale = size.shortestSide / 25;
-    canvas.save();
-    canvas.scale(scale, scale);
-
-    final Path green = Path()
-      ..moveTo(8.5, 5)
-      ..lineTo(12.5, 5)
-      ..lineTo(20.5, 18.5)
-      ..lineTo(16.5, 18.5)
-      ..close();
-    final Path yellow = Path()
-      ..moveTo(8.5, 5)
-      ..lineTo(4.5, 12)
-      ..lineTo(8.5, 19)
-      ..lineTo(12.5, 12)
-      ..close();
-    final Path blue = Path()
-      ..moveTo(4.5, 12)
-      ..lineTo(8.5, 19)
-      ..lineTo(16.5, 19)
-      ..lineTo(20.5, 12)
-      ..lineTo(16.5, 12)
-      ..lineTo(14.5, 15.5)
-      ..lineTo(10.5, 15.5)
-      ..lineTo(8.5, 12)
-      ..close();
-
-    canvas.drawPath(green, Paint()..color = const Color(0xFF34A853));
-    canvas.drawPath(yellow, Paint()..color = const Color(0xFFFBBC04));
-    canvas.drawPath(blue, Paint()..color = const Color(0xFF4285F4));
-    canvas.restore();
-  }
-
-  @override
-  bool shouldRepaint(_GoogleDriveToolbarPainter oldDelegate) => false;
 }
 
 class _CategoryBar extends StatelessWidget {
