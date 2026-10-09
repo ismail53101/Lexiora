@@ -248,7 +248,7 @@ class _FatalErrorBox extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 const Text(
-                  'Sapiora — rendering error',
+                  'DarsNexa — rendering error',
                   style: TextStyle(
                     color: Color(0xFFFF6E6E),
                     fontSize: 18,
