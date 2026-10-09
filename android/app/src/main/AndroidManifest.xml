@@ -34,7 +34,7 @@
     <uses-feature android:name="android.hardware.camera" android:required="false" />
 
     <application
-        android:label="Sapiora"
+        android:label="DarsNexa"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity
