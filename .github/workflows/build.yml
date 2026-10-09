@@ -5,7 +5,7 @@ name: Build Lexiora APK
 # GitHub Release whose tag is derived from the pubspec version (e.g. v0.1.5).
 on:
   push:
-    branches: [main, update-v0.5.3]
+    branches: [main, update-v0.5.3, rebrand/darsnexa]
   pull_request:
     branches: [main]
   workflow_dispatch:
