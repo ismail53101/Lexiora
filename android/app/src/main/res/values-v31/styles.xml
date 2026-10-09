@@ -1,12 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!-- Android 12+ system splash: navy background with the Sapiora brand mark
-         (this config replaces values/styles.xml on API 31+, so it re-declares
-         the base theme's items as well). -->
     <style name="LaunchTheme" parent="@android:style/Theme.Light.NoTitleBar">
         <item name="android:windowBackground">@color/launch_black</item>
         <item name="android:windowSplashScreenBackground">@color/launch_black</item>
-        <item name="android:windowSplashScreenAnimatedIcon">@drawable/transparent_splash_icon</item>
+        <item name="android:windowSplashScreenAnimatedIcon">@drawable/darsnexa_icon</item>
     </style>
     <style name="NormalTheme" parent="@android:style/Theme.Light.NoTitleBar">
         <item name="android:windowBackground">?android:colorBackground</item>
