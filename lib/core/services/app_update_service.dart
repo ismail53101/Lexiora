@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:flutter/foundation.dart';
+import 'package:package_info_plus/package_info_plus.dart';
 import 'package:http/http.dart' as http;
 
 /// Remote policy for mandatory app updates.
@@ -13,8 +14,6 @@ class AppUpdateService {
 
   final http.Client _client;
 
-  // Keep in sync with pubspec.yaml's +build number when releasing a new AAB.
-  static const int currentVersionCode = 79;
 
   static const String _policyUrl =
       'https://raw.githubusercontent.com/ismail53101/Lexiora/rebrand/darsnexa/docs/app_update.json';
@@ -41,7 +40,9 @@ class AppUpdateService {
           ? decoded['storeUrl'] as String
           : 'https://play.google.com/store/apps/details?id=com.sapiora.app';
 
-      if (minimum <= currentVersionCode) return null;
+      final PackageInfo packageInfo = await PackageInfo.fromPlatform();
+      final int installedVersionCode = int.tryParse(packageInfo.buildNumber) ?? 0;
+      if (minimum <= installedVersionCode) return null;
       return UpdatePolicy(
         minimumVersionCode: minimum,
         title: title,
