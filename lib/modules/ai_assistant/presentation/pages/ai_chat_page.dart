@@ -89,7 +89,7 @@ class AiChatPage extends ConsumerWidget {
         icon: Icons.key_off_outlined,
         title: 'AI Assistant not configured',
         message:
-            'An API key is required. Build with:\n\nflutter run --dart-define=SAPIORA_AI_API_KEY=your_key\n\nYour key is never stored or logged.',
+            'An API key is required. Build with:\n\nflutter run --dart-define=DARSNEXA_AI_API_KEY=your_key\n\nYour key is never stored or logged.',
       );
 }
 
@@ -254,7 +254,7 @@ class _Welcome extends ConsumerWidget {
               ),
               clipBehavior: Clip.antiAlias,
               child: Image.asset(
-                'assets/branding/app_icon.webp',
+                'assets/branding/ai_assistant_nav.webp',
                 fit: BoxFit.cover,
               ),
             ),
