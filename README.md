@@ -1,8 +1,8 @@
-# Sapiora
+# DarsNexa
 
-**A premium, offline-first study & language-learning platform for Android — built with Flutter.**
+**An all-in-one, offline-first educational platform for Android — built with Flutter.**
 
-Sapiora Phase 1 is a production-grade **PDF study reader**: it **automatically finds the PDFs already on your device** *and* lets you **import your own** with the system file picker, then reads them with a fast PDFium-based engine and lets you highlight, underline, annotate, bookmark and take notes. Everything is stored locally on the device. No account. No internet. Your library never leaves your phone.
+DarsNexa Phase 1 is a production-grade **PDF study reader**: it **automatically finds the PDFs already on your device** *and* lets you **import your own** with the system file picker, then reads them with a fast PDFium-based engine and lets you highlight, underline, annotate, bookmark and take notes. Everything is stored locally on the device. No account. No internet. Your library never leaves your phone.
 
 It is also the **foundation** of a larger platform. The architecture is designed so that nine planned modules (Dictionary, Translation, Grammar, Vocabulary Builder, Flashcards, Quiz, Admin, AI Assistant, Cloud Sync) can be added later **without modifying existing code**.
 
