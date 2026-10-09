@@ -4,6 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:lexiora/core/constants/app_constants.dart';
+import 'package:lexiora/core/services/app_update_service.dart';
+import 'package:url_launcher/url_launcher.dart';
 import 'package:lexiora/core/theme/app_theme.dart';
 import 'package:lexiora/core/widgets/global_banner_host.dart';
 import 'package:lexiora/features/settings/domain/entities/app_settings.dart';
@@ -23,6 +25,8 @@ class SapioraApp extends ConsumerStatefulWidget {
 
 class _SapioraAppState extends ConsumerState<SapioraApp> {
   bool _namePromptScheduled = false;
+  bool _updateCheckScheduled = false;
+  bool _updateDialogShowing = false;
 
   @override
   Widget build(BuildContext context) {
@@ -31,6 +35,12 @@ class _SapioraAppState extends ConsumerState<SapioraApp> {
       data: (AppSettings s) => s.displayName.trim(),
       orElse: () => '',
     );
+    if (!_updateCheckScheduled) {
+      _updateCheckScheduled = true;
+      WidgetsBinding.instance.addPostFrameCallback((_) {
+        if (mounted) unawaited(_checkMandatoryUpdate());
+      });
+    }
     if (!_namePromptScheduled && settings.hasValue && displayName.isEmpty) {
       _namePromptScheduled = true;
       WidgetsBinding.instance.addPostFrameCallback((_) {
@@ -70,6 +80,50 @@ class _SapioraAppState extends ConsumerState<SapioraApp> {
         );
       },
     );
+  }
+
+  Future<void> _checkMandatoryUpdate() async {
+    final AppUpdateService service = AppUpdateService();
+    try {
+      final UpdatePolicy? policy = await service.fetchPolicy();
+      if (!mounted || policy == null || _updateDialogShowing) return;
+      _updateDialogShowing = true;
+      await showDialog<void>(
+        context: context,
+        barrierDismissible: false,
+        builder: (BuildContext dialogContext) => PopScope(
+          canPop: false,
+          child: AlertDialog(
+            title: Text(policy.title),
+            content: Text(policy.message),
+            actions: <Widget>[
+              FilledButton(
+                onPressed: () async {
+                  final Uri uri = Uri.parse(policy.storeUrl);
+                  final bool opened = await launchUrl(
+                    uri,
+                    mode: LaunchMode.externalApplication,
+                  );
+                  if (!opened && dialogContext.mounted) {
+                    ScaffoldMessenger.of(dialogContext).showSnackBar(
+                      const SnackBar(
+                        content: Text('Could not open Play Store. Please try again.'),
+                      ),
+                    );
+                  }
+                },
+                child: const Text('UPDATE NOW'),
+              ),
+            ],
+          ),
+        ),
+      );
+    } catch (_) {
+      // Update checks must never prevent users from opening the learning app.
+    } finally {
+      _updateDialogShowing = false;
+      service.dispose();
+    }
   }
 
   Future<void> _showNameSetupDialog() async {
