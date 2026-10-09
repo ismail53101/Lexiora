@@ -36,7 +36,7 @@
     <application
         android:label="DarsNexa"
         android:name="${applicationName}"
-        android:icon="@drawable/darsnexa_icon">
+        android:icon="@drawable/darsnexa_launcher">
         <activity
             android:name=".MainActivity"
             android:exported="true"

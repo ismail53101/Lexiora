@@ -5,7 +5,7 @@ import 'package:lexiora/app/router/app_routes.dart';
 import 'package:lexiora/core/constants/app_constants.dart';
 
 /// The first screen shown on launch: a short, branded entrance animation for
-/// the Sapiora logo, then an automatic hand-off to Home.
+/// the DarsNexa logo, then an automatic hand-off to Home.
 ///
 /// By the time this screen appears, [main]'s `await configureDependencies()`
 /// etc. have already completed — there's no async work happening here, this
