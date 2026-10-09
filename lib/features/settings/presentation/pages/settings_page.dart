@@ -280,7 +280,7 @@ class _SettingsBody extends ConsumerWidget {
               contentPadding: EdgeInsets.zero,
               leading: const Icon(Icons.privacy_tip_outlined),
               title: const Text('Privacy Policy'),
-              subtitle: const Text('How Sapiora handles your data'),
+              subtitle: const Text('How DarsNexa handles your data'),
               trailing: const Icon(Icons.chevron_right),
               onTap: () => Navigator.of(context).push(
                 MaterialPageRoute<void>(
