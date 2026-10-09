@@ -36,7 +36,7 @@
     <application
         android:label="DarsNexa"
         android:name="${applicationName}"
-        android:icon="@mipmap/ic_launcher">
+        android:icon="@drawable/darsnexa_icon">
         <activity
             android:name=".MainActivity"
             android:exported="true"
