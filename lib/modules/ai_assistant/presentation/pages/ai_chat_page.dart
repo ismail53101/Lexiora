@@ -1,9 +1,7 @@
 import 'dart:async';
-import 'dart:math' as math;
 
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
-import 'package:flutter/scheduler.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:lexiora/core/widgets/app_bottom_nav.dart';
 import 'package:lexiora/core/widgets/empty_state.dart';
@@ -519,17 +517,19 @@ class _StreamingBubble extends ConsumerStatefulWidget {
 }
 
 class _StreamingBubbleState extends ConsumerState<_StreamingBubble> {
-  static const int _charactersPerFrame = 3;
+  static const Duration _tickerInterval = Duration(milliseconds: 15);
+  static const int _largeQueueThreshold = 25;
 
   String _sourceText = '';
   String _renderedText = '';
-  String _queuedText = '';
-  bool _frameScheduled = false;
+  final List<String> _textQueue = <String>[];
+  Timer? _ticker;
 
   @override
   void initState() {
     super.initState();
     _enqueueSource(ref.read(aiChatControllerProvider).streamingText);
+    _ticker = Timer.periodic(_tickerInterval, (_) => _consumeQueue());
   }
 
   void _enqueueSource(String source) {
@@ -540,28 +540,35 @@ class _StreamingBubbleState extends ConsumerState<_StreamingBubble> {
     if (!source.startsWith(_sourceText)) {
       _sourceText = source;
       _renderedText = '';
-      _queuedText = source;
+      _textQueue
+        ..clear()
+        ..addAll(source.split(''));
     } else {
-      _queuedText += source.substring(_sourceText.length);
+      _textQueue.addAll(source.substring(_sourceText.length).split(''));
       _sourceText = source;
     }
-    _scheduleRenderFrame();
   }
 
-  void _scheduleRenderFrame() {
-    if (_frameScheduled || _queuedText.isEmpty) return;
-    _frameScheduled = true;
-    SchedulerBinding.instance.scheduleFrameCallback((_) {
-      _frameScheduled = false;
-      if (!mounted) return;
+  void _consumeQueue() {
+    if (!mounted || _textQueue.isEmpty) return;
 
-      final int count = math.min(_charactersPerFrame, _queuedText.length);
-      final String nextText = _queuedText.substring(0, count);
-      _queuedText = _queuedText.substring(count);
-      setState(() => _renderedText += nextText);
-      widget.onRendered();
-      _scheduleRenderFrame();
-    });
+    // Keep normal output relaxed, but catch up smoothly when network chunks
+    // arrive in a burst instead of allowing the visible text to lag behind.
+    final int takeCount = _textQueue.length > _largeQueueThreshold ? 3 : 1;
+    final StringBuffer next = StringBuffer();
+    for (int i = 0; i < takeCount && _textQueue.isNotEmpty; i++) {
+      next.write(_textQueue.removeAt(0));
+    }
+    setState(() => _renderedText += next.toString());
+    widget.onRendered();
+  }
+
+  @override
+  void dispose() {
+    _ticker?.cancel();
+    _ticker = null;
+    _textQueue.clear();
+    super.dispose();
   }
 
   @override
@@ -603,9 +610,23 @@ class _StreamingBubbleState extends ConsumerState<_StreamingBubble> {
           ),
           SizedBox(
             width: double.infinity,
-            child: _renderedText.isEmpty
-                ? const TypingIndicator()
-                : AiMarkdown(data: _renderedText, color: scheme.onSurface),
+            child: AnimatedSwitcher(
+              duration: const Duration(milliseconds: 200),
+              switchInCurve: Curves.easeOut,
+              switchOutCurve: Curves.easeIn,
+              child: _renderedText.isEmpty
+                  ? const KeyedSubtree(
+                      key: ValueKey<bool>(true),
+                      child: PulsingThinkingDot(),
+                    )
+                  : KeyedSubtree(
+                      key: const ValueKey<bool>(false),
+                      child: AiMarkdown(
+                        data: _renderedText,
+                        color: scheme.onSurface,
+                      ),
+                    ),
+            ),
           ),
         ],
       ),

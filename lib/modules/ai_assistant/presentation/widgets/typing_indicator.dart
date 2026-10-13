@@ -2,6 +2,60 @@ import 'dart:math' as math;
 
 import 'package:flutter/material.dart';
 
+/// Minimal ChatGPT-style thinking state shown before the first token arrives.
+class PulsingThinkingDot extends StatefulWidget {
+  const PulsingThinkingDot({super.key});
+
+  @override
+  State<PulsingThinkingDot> createState() => _PulsingThinkingDotState();
+}
+
+class _PulsingThinkingDotState extends State<PulsingThinkingDot>
+    with SingleTickerProviderStateMixin {
+  late final AnimationController _controller = AnimationController(
+    vsync: this,
+    duration: const Duration(milliseconds: 900),
+  )..repeat(reverse: true);
+
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final Color color = Theme.of(context).colorScheme.primary;
+    return Semantics(
+      label: 'AI Assistant is thinking',
+      liveRegion: true,
+      child: AnimatedBuilder(
+        animation: _controller,
+        builder: (BuildContext context, _) {
+          final double value = Curves.easeInOut.transform(_controller.value);
+          return Padding(
+            padding: const EdgeInsets.symmetric(vertical: 8),
+            child: Opacity(
+              opacity: 0.45 + value * 0.55,
+              child: Transform.scale(
+                scale: 0.82 + value * 0.18,
+                child: Container(
+                  width: 10,
+                  height: 10,
+                  decoration: BoxDecoration(
+                    color: color,
+                    shape: BoxShape.circle,
+                  ),
+                ),
+              ),
+            ),
+          );
+        },
+      ),
+    );
+  }
+}
+
 /// Gemini-inspired loading state shown while the assistant prepares its first
 /// tokens. The animation is intentionally lightweight and uses only Flutter's
 /// canvas APIs, so it works offline and does not add an asset dependency.
