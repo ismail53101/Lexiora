@@ -27,7 +27,7 @@ class _TypingIndicatorState extends State<TypingIndicator>
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 48,
+      height: 36,
       child: Row(
         mainAxisSize: MainAxisSize.min,
         children: <Widget>[
@@ -44,14 +44,14 @@ class _TypingIndicatorState extends State<TypingIndicator>
             ).createShader(bounds),
             child: const Icon(
               Icons.auto_awesome_rounded,
-              size: 42,
+              size: 30,
               color: Colors.white,
             ),
           ),
-          const SizedBox(width: 12),
+          const SizedBox(width: 8),
           SizedBox(
-            width: 150,
-            height: 34,
+            width: 112,
+            height: 26,
             child: AnimatedBuilder(
               animation: _controller,
               builder: (BuildContext context, Widget? child) => CustomPaint(
@@ -75,7 +75,7 @@ class _ThinkingWavePainter extends CustomPainter {
   void paint(Canvas canvas, Size size) {
     final Paint paint = Paint()
       ..style = PaintingStyle.stroke
-      ..strokeWidth = 3.2
+      ..strokeWidth = 2.2
       ..strokeCap = StrokeCap.round
       ..shader = const LinearGradient(
         colors: <Color>[
@@ -92,7 +92,7 @@ class _ThinkingWavePainter extends CustomPainter {
       final double y = size.height / 2 +
           math.sin((i / 90 * math.pi * 3) + progress * math.pi * 2) *
               size.height *
-              0.25 *
+              0.22 *
               envelope;
       if (i == 0) {
         path.moveTo(x, y);
