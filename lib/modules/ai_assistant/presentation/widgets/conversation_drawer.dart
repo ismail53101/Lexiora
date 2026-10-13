@@ -226,6 +226,7 @@ class _ConversationDrawerState extends ConsumerState<ConversationDrawer> {
               ],
             ),
           ),
+          ),
         ),
       ),
     );
