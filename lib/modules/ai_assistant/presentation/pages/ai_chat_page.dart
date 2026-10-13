@@ -1,7 +1,9 @@
 import 'dart:async';
+import 'dart:math' as math;
 
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:lexiora/core/widgets/app_bottom_nav.dart';
 import 'package:lexiora/core/widgets/empty_state.dart';
@@ -307,58 +309,125 @@ class _MessageList extends ConsumerStatefulWidget {
 }
 
 class _MessageListState extends ConsumerState<_MessageList> {
+  /// Distance from the newest message at which streaming auto-scroll pauses.
+  static const double _autoScrollThreshold = 24;
+
   final ScrollController _scrollController = ScrollController();
-  static const double _latestMessageThreshold = 120;
-  double? _lastMaxScrollExtent;
-  bool _preservingReadingPosition = false;
+  bool _userScrolledUp = false;
+  bool _programmaticScrollInProgress = false;
+  bool _userScrollInProgress = false;
 
-  bool get _isNearLatestMessage =>
-      !_scrollController.hasClients ||
-      _scrollController.position.pixels <= _latestMessageThreshold;
+  void _setUserScrolledUp(bool value) {
+    if (_userScrolledUp == value) return;
+    _userScrolledUp = value;
+    if (mounted) setState(() {});
+  }
 
-  bool _onScrollMetricsChanged(ScrollMetricsNotification notification) {
-    final ScrollMetrics metrics = notification.metrics;
-    final double? previousExtent = _lastMaxScrollExtent;
-    _lastMaxScrollExtent = metrics.maxScrollExtent;
+  @override
+  void initState() {
+    super.initState();
+    _scrollController.addListener(_handleScroll);
+  }
 
-    // With reverse:true, offset zero is the latest message. When the user has
-    // scrolled up to read history, streaming content grows at the reversed
-    // list's leading edge. Compensate for that growth so the visible history
-    // stays anchored instead of drifting/jumping while tokens arrive.
-    if (previousExtent != null &&
-        _preservingReadingPosition &&
-        !_isNearLatestMessage) {
-      final double extentDelta = metrics.maxScrollExtent - previousExtent;
-      if (extentDelta.abs() > 0.5 && _scrollController.hasClients) {
-        WidgetsBinding.instance.addPostFrameCallback((_) {
-          if (!mounted || !_scrollController.hasClients) return;
-          final ScrollPosition position = _scrollController.position;
-          final double target = (position.pixels + extentDelta)
-              .clamp(position.minScrollExtent, position.maxScrollExtent)
-              .toDouble();
-          if ((position.pixels - target).abs() > 0.5) {
-            _scrollController.jumpTo(target);
-          }
-        });
+  @override
+  void dispose() {
+    _scrollController
+      ..removeListener(_handleScroll)
+      ..dispose();
+    super.dispose();
+  }
+
+  void _handleScroll() {
+    if (!_scrollController.hasClients || _programmaticScrollInProgress) return;
+
+    // This ListView is reversed, so offset 0 is the newest message/bottom.
+    final double distanceFromBottom = _scrollController.position.pixels;
+    // Never clear the lock from a controller notification. Streaming/layout
+    // updates can emit these notifications while the user is reading.
+    if (_userScrollInProgress && distanceFromBottom > _autoScrollThreshold) {
+      _setUserScrolledUp(true);
+    }
+  }
+
+  bool _handleScrollNotification(ScrollNotification notification) {
+    if (_programmaticScrollInProgress) return false;
+    final double offset = notification.metrics.pixels;
+
+    if (notification is ScrollStartNotification) {
+      // Only treat a real finger drag as user intent; streaming/layout changes
+      // also produce scroll notifications but must never unlock auto-follow.
+      _userScrollInProgress = notification.dragDetails != null;
+      if (_userScrollInProgress && offset > _autoScrollThreshold) {
+        _setUserScrolledUp(true);
+      }
+    } else if (notification is UserScrollNotification &&
+        notification.direction != ScrollDirection.idle) {
+      _userScrollInProgress = true;
+      if (offset > _autoScrollThreshold) _setUserScrolledUp(true);
+    } else if (notification is ScrollUpdateNotification &&
+        (_userScrollInProgress || notification.dragDetails != null)) {
+      _userScrollInProgress = true;
+      // Lock as soon as the user moves away from the latest message. A small
+      // threshold prevents streaming frames from winning the race on slow
+      // devices before the drag reaches a large offset.
+      if (offset > _autoScrollThreshold) _setUserScrolledUp(true);
+    } else if (notification is ScrollEndNotification &&
+        _userScrollInProgress) {
+      _userScrollInProgress = false;
+      // Unlock only if the user deliberately returned to the newest message.
+      if (offset <= _autoScrollThreshold) {
+        _setUserScrolledUp(false);
+        if (offset > 0) unawaited(_scrollToBottom());
+      } else {
+        _setUserScrolledUp(true);
       }
     }
     return false;
   }
 
-  bool _onScrollNotification(ScrollNotification notification) {
-    if (notification.depth == 0 &&
-        notification is UserScrollNotification) {
-      _preservingReadingPosition =
-          notification.direction != ScrollDirection.idle &&
-          !_isNearLatestMessage;
-    }
-    return false;
+  /// Resume following the stream after the user explicitly requests it.
+  Future<void> _resumeAutoScroll() async {
+    if (!_scrollController.hasClients) return;
+    _setUserScrolledUp(false);
+    await _scrollToBottom();
   }
 
-  @override
-  void dispose() {
-    _scrollController.dispose();
-    super.dispose();
+  /// Scroll to the newest message unless the user is reading older content.
+  Future<void> _scrollToBottom() async {
+    if (_userScrolledUp ||
+        !_scrollController.hasClients ||
+        _programmaticScrollInProgress) return;
+    _programmaticScrollInProgress = true;
+    try {
+      await _scrollController.animateTo(
+        0,
+        duration: const Duration(milliseconds: 250),
+        curve: Curves.easeOut,
+      );
+    } finally {
+      _programmaticScrollInProgress = false;
+      if (mounted && _scrollController.hasClients) {
+        _setUserScrolledUp(
+          _scrollController.position.pixels > _autoScrollThreshold,
+        );
+      }
+    }
+  }
+
+  void _onStreamingFrameRendered() {
+    if (_userScrolledUp || !_scrollController.hasClients) return;
+    if (_scrollController.position.isScrollingNotifier.value) return;
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      if (!mounted ||
+          _userScrolledUp ||
+          !_scrollController.hasClients ||
+          _scrollController.position.isScrollingNotifier.value) {
+        return;
+      }
+      if (_scrollController.position.pixels > 0) {
+        _scrollController.jumpTo(0);
+      }
+    });
   }
 
   Future<void> _regenerate(BuildContext context, WidgetRef ref) async {
@@ -371,10 +440,8 @@ class _MessageListState extends ConsumerState<_MessageList> {
 
   @override
   Widget build(BuildContext context) {
-    final WidgetRef ref = this.ref;
-    final String conversationId = widget.conversationId;
     final AsyncValue<List<AiMessage>> async =
-        ref.watch(aiMessagesProvider(conversationId));
+        ref.watch(aiMessagesProvider(widget.conversationId));
     final bool streaming =
         ref.watch(aiChatControllerProvider.select((AiChatState s) => s.streaming));
     final int limit = ref.watch(aiMessageLimitProvider);
@@ -388,17 +455,21 @@ class _MessageListState extends ConsumerState<_MessageList> {
         final bool canLoadMore = messages.length >= limit;
         final int count = off + messages.length + (canLoadMore ? 1 : 0);
 
-        return NotificationListener<ScrollMetricsNotification>(
-          onNotification: _onScrollMetricsChanged,
-          child: NotificationListener<ScrollNotification>(
-            onNotification: _onScrollNotification,
-            child: ListView.builder(
-              controller: _scrollController,
-              reverse: true,
-              padding: const EdgeInsets.symmetric(vertical: 8),
-              itemCount: count,
-              itemBuilder: (BuildContext context, int i) {
-            if (streaming && i == 0) return const _StreamingBubble();
+        return Stack(
+          children: <Widget>[
+            NotificationListener<ScrollNotification>(
+              onNotification: _handleScrollNotification,
+              child: ListView.builder(
+                reverse: true,
+                controller: _scrollController,
+                padding: const EdgeInsets.symmetric(vertical: 8),
+                itemCount: count,
+                itemBuilder: (BuildContext context, int i) {
+            if (streaming && i == 0) {
+              return _StreamingBubble(
+                onRendered: _onStreamingFrameRendered,
+              );
+            }
             if (canLoadMore && i == count - 1) {
               return Center(
                 child: Padding(
@@ -425,24 +496,92 @@ class _MessageListState extends ConsumerState<_MessageList> {
                   ? () => unawaited(_regenerate(context, ref))
                   : null,
             );
-              },
+                },
+              ),
             ),
-          ),
+            if (streaming && _userScrolledUp)
+              Positioned(
+                right: 16,
+                bottom: 16,
+                child: FloatingActionButton.small(
+                  heroTag: 'ai-scroll-to-bottom',
+                  tooltip: 'Scroll to bottom',
+                  onPressed: _resumeAutoScroll,
+                  child: const Icon(Icons.arrow_downward_rounded),
+                ),
+              ),
+          ],
         );
       },
     );
   }
 }
 
-/// The in-flight assistant reply. Watches only the streaming text so it is the
-/// only widget rebuilding per token.
-class _StreamingBubble extends ConsumerWidget {
-  const _StreamingBubble();
+/// The in-flight assistant reply. Incoming cumulative text is buffered and
+/// released a few characters per frame so token-sized network chunks do not
+/// force a rebuild for every event.
+class _StreamingBubble extends ConsumerStatefulWidget {
+  const _StreamingBubble({required this.onRendered});
+
+  final VoidCallback onRendered;
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
-    final String text = ref.watch(
-        aiChatControllerProvider.select((AiChatState s) => s.streamingText));
+  ConsumerState<_StreamingBubble> createState() => _StreamingBubbleState();
+}
+
+class _StreamingBubbleState extends ConsumerState<_StreamingBubble> {
+  static const int _charactersPerFrame = 3;
+
+  String _sourceText = '';
+  String _renderedText = '';
+  String _queuedText = '';
+  bool _frameScheduled = false;
+
+  @override
+  void initState() {
+    super.initState();
+    _enqueueSource(ref.read(aiChatControllerProvider).streamingText);
+  }
+
+  void _enqueueSource(String source) {
+    if (source == _sourceText) return;
+
+    // The provider exposes cumulative text. Only enqueue the newly arrived
+    // suffix; reset safely if a stream is replaced while this widget remains.
+    if (!source.startsWith(_sourceText)) {
+      _sourceText = source;
+      _renderedText = '';
+      _queuedText = source;
+    } else {
+      _queuedText += source.substring(_sourceText.length);
+      _sourceText = source;
+    }
+    _scheduleRenderFrame();
+  }
+
+  void _scheduleRenderFrame() {
+    if (_frameScheduled || _queuedText.isEmpty) return;
+    _frameScheduled = true;
+    SchedulerBinding.instance.scheduleFrameCallback((_) {
+      _frameScheduled = false;
+      if (!mounted) return;
+
+      final int count = math.min(_charactersPerFrame, _queuedText.length);
+      final String nextText = _queuedText.substring(0, count);
+      _queuedText = _queuedText.substring(count);
+      setState(() => _renderedText += nextText);
+      widget.onRendered();
+      _scheduleRenderFrame();
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    ref.listen<String>(
+      aiChatControllerProvider.select((AiChatState s) => s.streamingText),
+      (_, String next) => _enqueueSource(next),
+    );
+
     final ThemeData theme = Theme.of(context);
     final ColorScheme scheme = theme.colorScheme;
 
@@ -475,9 +614,9 @@ class _StreamingBubble extends ConsumerWidget {
           ),
           SizedBox(
             width: double.infinity,
-            child: text.isEmpty
+            child: _renderedText.isEmpty
                 ? const TypingIndicator()
-                : AiMarkdown(data: text, color: scheme.onSurface),
+                : AiMarkdown(data: _renderedText, color: scheme.onSurface),
           ),
         ],
       ),
