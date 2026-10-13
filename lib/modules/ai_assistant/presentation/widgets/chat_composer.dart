@@ -319,8 +319,8 @@ class _ChatComposerState extends ConsumerState<ChatComposer> {
                       cursorColor: scheme.primary,
                       decoration: InputDecoration(
                         hintText: widget.enabled
-                            ? 'Ask Sapiora'
-                            : 'Sapiora is not configured',
+                            ? 'Ask DarsNexa'
+                            : 'AI Assistant is not configured',
                         hintStyle: theme.textTheme.bodyLarge
                             ?.copyWith(color: hintColor),
                         border: InputBorder.none,

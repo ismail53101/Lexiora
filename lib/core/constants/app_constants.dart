@@ -1,13 +1,13 @@
-/// Global, compile-time constants for Sapiora.
+/// Global, compile-time constants for DarsNexa.
 ///
 /// Anything that might change per-environment lives in settings or the database
 /// instead — these are true constants that never require a rewrite.
 abstract final class AppConstants {
-  static const String appName = 'Sapiora';
-  static const String appTagline = 'Read. Study. Master languages.';
+  static const String appName = 'DarsNexa';
+  static const String appTagline = 'Learn. Grow. Achieve.';
   static const String appVersion = '0.21.4';
 
-  /// Shown in the Home greeting and Profile screen. Sapiora has no account
+  /// Shown in the Home greeting and Profile screen. DarsNexa has no account
   /// system — this is the developer's own copy of the app for now.
   static const String userDisplayName = 'Ismail';
 

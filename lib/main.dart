@@ -47,7 +47,7 @@ Future<void> _waitForStartupPermissions() async {
   }
 }
 
-/// Sapiora entry point.
+/// DarsNexa entry point.
 ///
 /// Runs inside a guarded zone with a friendly [ErrorWidget.builder] so a build
 /// failure is never an unexplained blank/grey screen, and all framework and
@@ -248,7 +248,7 @@ class _FatalErrorBox extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 const Text(
-                  'Sapiora — rendering error',
+                  'DarsNexa — rendering error',
                   style: TextStyle(
                     color: Color(0xFFFF6E6E),
                     fontSize: 18,
