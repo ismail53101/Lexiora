@@ -308,8 +308,7 @@ class _MessageList extends ConsumerStatefulWidget {
 }
 
 class _MessageListState extends ConsumerState<_MessageList> {
-  /// Distance from the newest message at which streaming auto-scroll pauses.
-  static const double _autoScrollThreshold = 24;
+  static const double _autoScrollThreshold = 48;
 
   final ScrollController _scrollController = ScrollController();
   bool _userScrolledUp = false;
@@ -336,47 +335,42 @@ class _MessageListState extends ConsumerState<_MessageList> {
     super.dispose();
   }
 
+  double _distanceFromLatest() {
+    if (!_scrollController.hasClients) return 0;
+    final ScrollPosition position = _scrollController.position;
+    return (position.maxScrollExtent - position.pixels).clamp(0.0, double.infinity);
+  }
+
   void _handleScroll() {
     if (!_scrollController.hasClients || _programmaticScrollInProgress) return;
-
-    // This ListView is reversed, so offset 0 is the newest message/bottom.
-    final double distanceFromBottom = _scrollController.position.pixels;
-    // Never clear the lock from a controller notification. Streaming/layout
-    // updates can emit these notifications while the user is reading.
-    if (_userScrollInProgress && distanceFromBottom > _autoScrollThreshold) {
+    if (_userScrollInProgress &&
+        _distanceFromLatest() > _autoScrollThreshold) {
       _setUserScrolledUp(true);
     }
   }
 
   bool _handleScrollNotification(ScrollNotification notification) {
     if (_programmaticScrollInProgress) return false;
-    final double offset = notification.metrics.pixels;
+    final double distance = _distanceFromLatest();
 
     if (notification is ScrollStartNotification) {
-      // Only treat a real finger drag as user intent; streaming/layout changes
-      // also produce scroll notifications but must never unlock auto-follow.
       _userScrollInProgress = notification.dragDetails != null;
-      if (_userScrollInProgress && offset > _autoScrollThreshold) {
+      if (_userScrollInProgress && distance > _autoScrollThreshold) {
         _setUserScrolledUp(true);
       }
     } else if (notification is UserScrollNotification &&
         notification.direction != ScrollDirection.idle) {
       _userScrollInProgress = true;
-      if (offset > _autoScrollThreshold) _setUserScrolledUp(true);
+      if (distance > _autoScrollThreshold) _setUserScrolledUp(true);
     } else if (notification is ScrollUpdateNotification &&
         (_userScrollInProgress || notification.dragDetails != null)) {
       _userScrollInProgress = true;
-      // Lock as soon as the user moves away from the latest message. A small
-      // threshold prevents streaming frames from winning the race on slow
-      // devices before the drag reaches a large offset.
-      if (offset > _autoScrollThreshold) _setUserScrolledUp(true);
+      if (distance > _autoScrollThreshold) _setUserScrolledUp(true);
     } else if (notification is ScrollEndNotification &&
         _userScrollInProgress) {
       _userScrollInProgress = false;
-      // Unlock only if the user deliberately returned to the newest message.
-      if (offset <= _autoScrollThreshold) {
+      if (distance <= _autoScrollThreshold) {
         _setUserScrolledUp(false);
-        if (offset > 0) unawaited(_scrollToBottom());
       } else {
         _setUserScrolledUp(true);
       }
@@ -384,32 +378,41 @@ class _MessageListState extends ConsumerState<_MessageList> {
     return false;
   }
 
-  /// Resume following the stream after the user explicitly requests it.
+  /// Keep the newest streamed text visible unless the user is reading history.
+  void _followLatestAfterLayout() {
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      if (!mounted ||
+          _userScrolledUp ||
+          _userScrollInProgress ||
+          _programmaticScrollInProgress ||
+          !_scrollController.hasClients) {
+        return;
+      }
+      final ScrollPosition position = _scrollController.position;
+      if ((position.maxScrollExtent - position.pixels).abs() < 1) return;
+      _scrollController.jumpTo(position.maxScrollExtent);
+    });
+  }
+
   Future<void> _resumeAutoScroll() async {
     if (!_scrollController.hasClients) return;
     _setUserScrolledUp(false);
-    await _scrollToBottom();
+    await _scrollToLatest();
   }
 
-  /// Scroll to the newest message unless the user is reading older content.
-  Future<void> _scrollToBottom() async {
+  Future<void> _scrollToLatest() async {
     if (_userScrolledUp ||
         !_scrollController.hasClients ||
         _programmaticScrollInProgress) return;
     _programmaticScrollInProgress = true;
     try {
       await _scrollController.animateTo(
-        0,
-        duration: const Duration(milliseconds: 250),
+        _scrollController.position.maxScrollExtent,
+        duration: const Duration(milliseconds: 220),
         curve: Curves.easeOut,
       );
     } finally {
       _programmaticScrollInProgress = false;
-      if (mounted && _scrollController.hasClients) {
-        _setUserScrolledUp(
-          _scrollController.position.pixels > _autoScrollThreshold,
-        );
-      }
     }
   }
 
@@ -425,58 +428,66 @@ class _MessageListState extends ConsumerState<_MessageList> {
   Widget build(BuildContext context) {
     final AsyncValue<List<AiMessage>> async =
         ref.watch(aiMessagesProvider(widget.conversationId));
-    final bool streaming =
-        ref.watch(aiChatControllerProvider.select((AiChatState s) => s.streaming));
+    final AiChatState chatState = ref.watch(aiChatControllerProvider);
+    final bool streaming = chatState.streaming;
+    final String streamingText = chatState.streamingText;
     final int limit = ref.watch(aiMessageLimitProvider);
+
+    if (streaming) _followLatestAfterLayout();
 
     return async.when(
       loading: () => const Center(child: CircularProgressIndicator()),
       error: (_, _) => const _Welcome(),
       data: (List<AiMessage> messages) {
         if (messages.isEmpty && !streaming) return const _Welcome();
-        final int off = streaming ? 1 : 0;
         final bool canLoadMore = messages.length >= limit;
-        final int count = off + messages.length + (canLoadMore ? 1 : 0);
+        final int count = messages.length + (canLoadMore ? 1 : 0) + (streaming ? 1 : 0);
 
         return Stack(
           children: <Widget>[
             NotificationListener<ScrollNotification>(
               onNotification: _handleScrollNotification,
               child: ListView.builder(
-                reverse: true,
+                // Normal chronological layout: each assistant answer starts at
+                // its own top and grows downward, like ChatGPT.
+                reverse: false,
                 controller: _scrollController,
                 padding: const EdgeInsets.symmetric(vertical: 8),
                 itemCount: count,
                 itemBuilder: (BuildContext context, int i) {
-            if (streaming && i == 0) {
-              return const _StreamingBubble();
-            }
-            if (canLoadMore && i == count - 1) {
-              return Center(
-                child: Padding(
-                  padding: const EdgeInsets.all(8),
-                  child: TextButton.icon(
-                    onPressed: () =>
-                        ref.read(aiMessageLimitProvider.notifier).more(),
-                    icon: const Icon(Icons.history, size: 18),
-                    label: const Text('Load earlier messages'),
-                  ),
-                ),
-              );
-            }
-            final int msgIndex = messages.length - 1 - (i - off);
-            final AiMessage m = messages[msgIndex];
-            final bool isLastAssistant = !streaming &&
-                m.role == AiRole.assistant &&
-                msgIndex == messages.length - 1;
-            return MessageBubble(
-              message: m,
-              onDelete: () =>
-                  ref.read(aiRepositoryProvider).deleteMessage(m.id),
-              onRegenerate: isLastAssistant
-                  ? () => unawaited(_regenerate(context, ref))
-                  : null,
-            );
+                  if (canLoadMore && i == 0) {
+                    return Center(
+                      child: Padding(
+                        padding: const EdgeInsets.all(8),
+                        child: TextButton.icon(
+                          onPressed: () =>
+                              ref.read(aiMessageLimitProvider.notifier).more(),
+                          icon: const Icon(Icons.history, size: 18),
+                          label: const Text('Load earlier messages'),
+                        ),
+                      ),
+                    );
+                  }
+
+                  final int messageIndex = i - (canLoadMore ? 1 : 0);
+                  if (streaming && messageIndex == messages.length) {
+                    return _StreamingBubble(
+                      onTextRendered: _followLatestAfterLayout,
+                    );
+                  }
+
+                  final AiMessage message = messages[messageIndex];
+                  final bool isLastAssistant = !streaming &&
+                      message.role == AiRole.assistant &&
+                      messageIndex == messages.length - 1;
+                  return MessageBubble(
+                    message: message,
+                    onDelete: () =>
+                        ref.read(aiRepositoryProvider).deleteMessage(message.id),
+                    onRegenerate: isLastAssistant
+                        ? () => unawaited(_regenerate(context, ref))
+                        : null,
+                  );
                 },
               ),
             ),
@@ -486,7 +497,7 @@ class _MessageListState extends ConsumerState<_MessageList> {
                 bottom: 16,
                 child: FloatingActionButton.small(
                   heroTag: 'ai-scroll-to-bottom',
-                  tooltip: 'Scroll to bottom',
+                  tooltip: 'Scroll to latest answer',
                   onPressed: _resumeAutoScroll,
                   child: const Icon(Icons.arrow_downward_rounded),
                 ),
@@ -497,99 +508,38 @@ class _MessageListState extends ConsumerState<_MessageList> {
     );
   }
 }
-
-/// The in-flight assistant reply. Incoming cumulative text is buffered and
-/// released a few characters per frame so token-sized network chunks do not
-/// force a rebuild for every event.
+/// The in-flight assistant reply. The provider's real stream deltas are
+/// rendered directly, without a second artificial character-by-character timer.
 class _StreamingBubble extends ConsumerStatefulWidget {
-  const _StreamingBubble();
+  const _StreamingBubble({required this.onTextRendered});
+
+  final VoidCallback onTextRendered;
 
   @override
   ConsumerState<_StreamingBubble> createState() => _StreamingBubbleState();
 }
 
 class _StreamingBubbleState extends ConsumerState<_StreamingBubble> {
-  // Pace the visible text instead of releasing a large burst every frame.
-  static const Duration _renderInterval = Duration(milliseconds: 50);
-  static const int _charactersPerTick = 2;
-
-  Timer? _renderTimer;
-  String _sourceText = '';
-  String _renderedText = '';
-  String _queuedText = '';
-
   @override
-  void initState() {
-    super.initState();
-    _enqueueSource(ref.read(aiChatControllerProvider).streamingText);
-  }
-
-  void _enqueueSource(String source) {
-    if (source == _sourceText) return;
-
-    // The provider exposes cumulative text. Only enqueue the newly arrived
-    // suffix; reset safely if a stream is replaced while this widget remains.
-    if (!source.startsWith(_sourceText)) {
-      _sourceText = source;
-      _renderedText = '';
-      _queuedText = source;
-    } else {
-      _queuedText += source.substring(_sourceText.length);
-      _sourceText = source;
+  void didUpdateWidget(covariant _StreamingBubble oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    if (oldWidget.onTextRendered != widget.onTextRendered) {
+      widget.onTextRendered();
     }
-    _startRenderTimer();
-  }
-
-  void _startRenderTimer() {
-    if (_renderTimer != null || _queuedText.isEmpty) return;
-    _renderTimer = Timer.periodic(_renderInterval, (Timer timer) {
-      if (!mounted) {
-        timer.cancel();
-        _renderTimer = null;
-        return;
-      }
-      if (_queuedText.isEmpty) {
-        timer.cancel();
-        _renderTimer = null;
-        return;
-      }
-
-      // Keep each visual update small and evenly paced. This avoids the
-      // bursty, racing effect caused by rendering many characters per frame.
-      int count = math.min(_charactersPerTick, _queuedText.length);
-      final int boundary = _queuedText.indexOf(' ', count);
-      if (boundary >= 0 && boundary < count + 3) {
-        count = boundary + 1;
-      }
-      final String nextText = _queuedText.substring(0, count);
-      _queuedText = _queuedText.substring(count);
-      setState(() => _renderedText += nextText);
-
-      if (_queuedText.isEmpty) {
-        timer.cancel();
-        _renderTimer = null;
-      }
-    });
-  }
-
-  @override
-  void dispose() {
-    _renderTimer?.cancel();
-    super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
-    ref.listen<String>(
+    final String text = ref.watch(
       aiChatControllerProvider.select((AiChatState s) => s.streamingText),
-      (_, String next) => _enqueueSource(next),
     );
-
     final ThemeData theme = Theme.of(context);
     final ColorScheme scheme = theme.colorScheme;
 
-    // Keep the existing assistant label and layout; the animated Gemini-like
-    // thinking visual appears only until the first answer text is rendered.
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      if (mounted) widget.onTextRendered();
+    });
+
     return Container(
       width: double.infinity,
       margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
@@ -616,9 +566,9 @@ class _StreamingBubbleState extends ConsumerState<_StreamingBubble> {
           ),
           SizedBox(
             width: double.infinity,
-            child: _renderedText.isEmpty
+            child: text.isEmpty
                 ? const TypingIndicator()
-                : AiMarkdown(data: _renderedText, color: scheme.onSurface),
+                : AiMarkdown(data: text, color: scheme.onSurface),
           ),
         ],
       ),
