@@ -450,8 +450,7 @@ class _MessageListState extends ConsumerState<_MessageList> {
                 itemCount: count,
                 itemBuilder: (BuildContext context, int i) {
             if (streaming && i == 0) {
-              return _StreamingBubble(
-              );
+              return const _StreamingBubble();
             }
             if (canLoadMore && i == count - 1) {
               return Center(
