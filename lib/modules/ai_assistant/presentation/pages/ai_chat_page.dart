@@ -314,6 +314,7 @@ class _MessageListState extends ConsumerState<_MessageList> {
   bool _userScrolledUp = false;
   bool _programmaticScrollInProgress = false;
   bool _userScrollInProgress = false;
+  bool _wasStreaming = false;
 
   void _setUserScrolledUp(bool value) {
     if (_userScrolledUp == value) return;
@@ -432,10 +433,19 @@ class _MessageListState extends ConsumerState<_MessageList> {
         ref.watch(aiMessagesProvider(widget.conversationId));
     final AiChatState chatState = ref.watch(aiChatControllerProvider);
     final bool streaming = chatState.streaming;
-    final String streamingText = chatState.streamingText;
     final int limit = ref.watch(aiMessageLimitProvider);
 
-    if (streaming) _followLatestAfterLayout();
+    // A newly submitted prompt must take the user to that new turn even if
+    // they were browsing older messages. After this initial jump, manual
+    // scrolling can pause auto-follow again for the remainder of the stream.
+    if (streaming && !_wasStreaming) {
+      _userScrolledUp = false;
+      _userScrollInProgress = false;
+      _followLatestAfterLayout();
+    } else if (streaming) {
+      _followLatestAfterLayout();
+    }
+    _wasStreaming = streaming;
 
     return async.when(
       loading: () => const Center(child: CircularProgressIndicator()),
