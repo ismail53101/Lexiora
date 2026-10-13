@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:lexiora/modules/ai_assistant/domain/entities/ai_conversation.dart';
@@ -79,15 +81,37 @@ class _ConversationDrawerState extends ConsumerState<ConversationDrawer> {
     }
 
     return Drawer(
-      child: SafeArea(
-        child: Column(
+      backgroundColor: Colors.transparent,
+      elevation: 0,
+      child: ClipRRect(
+        borderRadius:
+            const BorderRadius.horizontal(right: Radius.circular(28)),
+        child: BackdropFilter(
+          filter: ImageFilter.blur(sigmaX: 20, sigmaY: 20),
+          child: Container(
+            decoration: BoxDecoration(
+              color: theme.colorScheme.surface.withValues(alpha: 0.92),
+              border: Border(
+                right: BorderSide(
+                  color: theme.colorScheme.outline.withValues(alpha: 0.16),
+                ),
+              ),
+            ),
+            child: SafeArea(
+              child: Column(
           children: <Widget>[
             // ── Header: title + new chat ──────────────────────────────────
             Padding(
-              padding: const EdgeInsets.fromLTRB(16, 12, 12, 8),
+              padding: const EdgeInsets.fromLTRB(20, 16, 12, 12),
               child: Row(
                 children: <Widget>[
-                  Text('Chats', style: theme.textTheme.titleLarge),
+                  Text(
+                    'Chats',
+                    style: theme.textTheme.headlineSmall?.copyWith(
+                      fontWeight: FontWeight.w700,
+                      letterSpacing: -0.4,
+                    ),
+                  ),
                   const Spacer(),
                   IconButton.filledTonal(
                     tooltip: 'New chat',
@@ -103,15 +127,20 @@ class _ConversationDrawerState extends ConsumerState<ConversationDrawer> {
 
             // ── Search field ──────────────────────────────────────────────
             Padding(
-              padding: const EdgeInsets.fromLTRB(12, 0, 12, 8),
+              padding: const EdgeInsets.fromLTRB(16, 0, 16, 12),
               child: TextField(
                 controller: _search,
                 focusNode: _searchFocus,
                 onChanged: (String v) =>
                     ref.read(aiSearchQueryProvider.notifier).set(v),
                 decoration: InputDecoration(
-                  hintText: 'Search chats, projects…',
+                  hintText: 'Search chats, projects...',
                   isDense: true,
+                  filled: true,
+                  fillColor:
+                      theme.colorScheme.surface.withValues(alpha: 0.82),
+                  contentPadding:
+                      const EdgeInsets.symmetric(vertical: 12, horizontal: 4),
                   prefixIcon: const Icon(Icons.search, size: 20),
                   suffixIcon: searching
                       ? IconButton(
@@ -122,11 +151,31 @@ class _ConversationDrawerState extends ConsumerState<ConversationDrawer> {
                         )
                       : null,
                   border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(12)),
+                    borderRadius: BorderRadius.circular(14),
+                    borderSide: BorderSide(
+                      color: theme.colorScheme.outline.withValues(alpha: 0.22),
+                    ),
+                  ),
+                  enabledBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(14),
+                    borderSide: BorderSide(
+                      color: theme.colorScheme.outline.withValues(alpha: 0.16),
+                    ),
+                  ),
+                  focusedBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(14),
+                    borderSide: BorderSide(
+                      color: theme.colorScheme.primary,
+                      width: 1.4,
+                    ),
+                  ),
                 ),
               ),
             ),
-            const Divider(height: 1),
+            Divider(
+              height: 1,
+              color: theme.colorScheme.outline.withValues(alpha: 0.12),
+            ),
 
             // ── Body ──────────────────────────────────────────────────────
             Expanded(
@@ -174,7 +223,9 @@ class _ConversationDrawerState extends ConsumerState<ConversationDrawer> {
                       ],
                     ),
             ),
-          ],
+              ],
+            ),
+          ),
         ),
       ),
     );
@@ -414,55 +465,59 @@ class _ProjectsSection extends StatelessWidget {
             ],
           ),
         ),
-        if (projects.isEmpty)
-          Padding(
-            padding: const EdgeInsets.fromLTRB(16, 0, 16, 6),
-            child: Text(
-              'Group related chats together',
-              style: theme.textTheme.bodySmall
-                  ?.copyWith(color: scheme.onSurfaceVariant),
+        Padding(
+          padding: const EdgeInsets.fromLTRB(16, 0, 16, 10),
+          child: Text(
+            'Group related chats together',
+            style: theme.textTheme.bodySmall?.copyWith(
+              color: scheme.onSurfaceVariant.withValues(alpha: 0.78),
             ),
-          )
-        else
-          ...projects.map((AiProjectSummary s) => _ProjectTile(
-                summary: s,
-                conversations: conversationsByProject[s.project.id] ??
-                    const <AiConversationSummary>[],
-                currentConversationId: currentConversationId,
-                expanded: expanded.contains(s.project.id),
-                onToggle: onToggleProject,
-                onNewChat: onNewChatInProject,
-                onCreateSubproject: onCreateSubproject,
-                onRename: onRenameProject,
-                onDelete: onDeleteProject,
-                onOpenConversation: onOpenConversation,
-                onRenameConversation: onRenameConversation,
-                onDeleteConversation: onDeleteConversation,
-              )),
+          ),
+        ),
+        ...projects.map((AiProjectSummary s) => _ProjectTile(
+              summary: s,
+              conversations: conversationsByProject[s.project.id] ??
+                  const <AiConversationSummary>[],
+              currentConversationId: currentConversationId,
+              expanded: expanded.contains(s.project.id),
+              onToggle: onToggleProject,
+              onNewChat: onNewChatInProject,
+              onCreateSubproject: onCreateSubproject,
+              onRename: onRenameProject,
+              onDelete: onDeleteProject,
+              onOpenConversation: onOpenConversation,
+              onRenameConversation: onRenameConversation,
+              onDeleteConversation: onDeleteConversation,
+            )),
 
         // ── "+ New project" row (reference layout) ─────────────────────────
         Padding(
-          padding: const EdgeInsets.fromLTRB(8, 2, 8, 4),
+          padding: const EdgeInsets.fromLTRB(16, 2, 16, 4),
           child: InkWell(
-            borderRadius: BorderRadius.circular(10),
+            borderRadius: BorderRadius.circular(12),
             onTap: onCreateProject,
-            child: ListTile(
-              dense: true,
-              contentPadding: const EdgeInsets.only(left: 12, right: 4),
-              shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(10)),
-              leading: Container(
-                width: 34,
-                height: 34,
-                decoration: BoxDecoration(
-                  color: scheme.surfaceContainerHighest.withValues(alpha: 0.6),
-                  borderRadius: BorderRadius.circular(9),
+            child: Container(
+              padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 14),
+              decoration: BoxDecoration(
+                color: scheme.surface.withValues(alpha: 0.58),
+                borderRadius: BorderRadius.circular(12),
+                border: Border.all(
+                  color: scheme.primary.withValues(alpha: 0.32),
                 ),
-                child: Icon(Icons.add, size: 20, color: scheme.onSurfaceVariant),
               ),
-              title: Text('New project',
-                  style: theme.textTheme.bodyLarge
-                      ?.copyWith(color: scheme.onSurfaceVariant)),
+              child: Row(
+                children: <Widget>[
+                  Icon(Icons.add, color: scheme.primary, size: 18),
+                  const SizedBox(width: 8),
+                  Text(
+                    'New project',
+                    style: theme.textTheme.bodyMedium?.copyWith(
+                      color: scheme.primary,
+                      fontWeight: FontWeight.w600,
+                    ),
+                  ),
+                ],
+              ),
             ),
           ),
         ),
@@ -749,34 +804,59 @@ class _ConversationTile extends StatelessWidget {
   Widget build(BuildContext context) {
     final ColorScheme scheme = Theme.of(context).colorScheme;
 
-    return ListTile(
-      dense: true,
-      selected: active,
-      selectedTileColor: scheme.secondaryContainer.withValues(alpha: 0.5),
-      contentPadding: const EdgeInsets.only(left: 16, right: 4),
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
-      leading: Icon(leadingIcon ?? Icons.chat_bubble_outline_rounded, size: 20),
-      title: Text(summary.conversation.title,
-          maxLines: 1, overflow: TextOverflow.ellipsis),
-      subtitle: summary.lastMessage == null
-          ? null
-          : Text(summary.lastMessage!,
-              maxLines: 1, overflow: TextOverflow.ellipsis),
-      onTap: () => onOpen(summary),
-      trailing: _DotMenuButton(
-        tooltip: 'Chat options',
-        itemBuilder: (BuildContext context) => <PopupMenuEntry<String>>[
-          const PopupMenuItem<String>(value: 'rename', child: Text('Rename')),
-          const PopupMenuItem<String>(value: 'delete', child: Text('Delete')),
-        ],
-        onSelected: (String v) {
-          switch (v) {
-            case 'rename':
-              onRename(summary);
-            case 'delete':
-              onDelete(summary);
-          }
-        },
+    return Container(
+      margin: const EdgeInsets.symmetric(horizontal: 8, vertical: 2),
+      decoration: BoxDecoration(
+        color: active
+            ? scheme.primaryContainer.withValues(alpha: 0.48)
+            : Colors.transparent,
+        borderRadius: BorderRadius.circular(12),
+        border: active
+            ? Border(
+                left: BorderSide(color: scheme.primary, width: 3),
+              )
+            : null,
+      ),
+      child: ListTile(
+        dense: true,
+        contentPadding: const EdgeInsets.only(left: 10, right: 4),
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+        leading: Icon(
+          leadingIcon ?? Icons.chat_bubble_outline_rounded,
+          size: 20,
+          color: active ? scheme.primary : scheme.onSurfaceVariant,
+        ),
+        title: Text(
+          summary.conversation.title,
+          maxLines: 1,
+          overflow: TextOverflow.ellipsis,
+          style: active
+              ? const TextStyle(fontWeight: FontWeight.w600)
+              : null,
+        ),
+        subtitle: summary.lastMessage == null
+            ? null
+            : Text(
+                summary.lastMessage!,
+                maxLines: 1,
+                overflow: TextOverflow.ellipsis,
+              ),
+        onTap: () => onOpen(summary),
+        trailing: _DotMenuButton(
+          tooltip: 'Chat options',
+          itemBuilder: (BuildContext context) => <PopupMenuEntry<String>>[
+            const PopupMenuItem<String>(value: 'rename', child: Text('Rename')),
+            const PopupMenuItem<String>(value: 'delete', child: Text('Delete')),
+          ],
+          onSelected: (String v) {
+            switch (v) {
+              case 'rename':
+                onRename(summary);
+              case 'delete':
+                onDelete(summary);
+            }
+          },
+        ),
       ),
     );
   }
