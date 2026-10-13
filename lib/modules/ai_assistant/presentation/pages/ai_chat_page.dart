@@ -3,7 +3,6 @@ import 'dart:math' as math;
 
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
-import 'package:flutter/scheduler.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:lexiora/core/widgets/app_bottom_nav.dart';
 import 'package:lexiora/core/widgets/empty_state.dart';
@@ -511,8 +510,8 @@ class _StreamingBubble extends ConsumerStatefulWidget {
 
 class _StreamingBubbleState extends ConsumerState<_StreamingBubble> {
   // Pace the visible text instead of releasing a large burst every frame.
-  static const Duration _renderInterval = Duration(milliseconds: 32);
-  static const int _charactersPerTick = 4;
+  static const Duration _renderInterval = Duration(milliseconds: 50);
+  static const int _charactersPerTick = 2;
 
   Timer? _renderTimer;
   String _sourceText = '';
