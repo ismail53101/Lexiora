@@ -338,7 +338,9 @@ class _MessageListState extends ConsumerState<_MessageList> {
   double _distanceFromLatest() {
     if (!_scrollController.hasClients) return 0;
     final ScrollPosition position = _scrollController.position;
-    return (position.maxScrollExtent - position.pixels).clamp(0.0, double.infinity);
+    return (position.maxScrollExtent - position.pixels)
+        .clamp(0.0, double.infinity)
+        .toDouble();
   }
 
   void _handleScroll() {
