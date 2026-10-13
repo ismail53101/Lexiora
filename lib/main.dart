@@ -29,24 +29,6 @@ import 'package:lexiora/features/settings/domain/repositories/settings_repositor
 import 'package:pdfrx/pdfrx.dart';
 
 const String _initialPermissionFlowVersion = '2026.10.06-permissions-v5';
-const MethodChannel _startupPermissionChannel =
-    MethodChannel('lexiora/platform');
-
-Future<void> _waitForStartupPermissions() async {
-  if (!Platform.isAndroid) return;
-  try {
-    await _startupPermissionChannel.invokeMethod<bool>(
-      'waitForStartupPermissions',
-    );
-  } on Object catch (error, stackTrace) {
-    AppLogger.e(
-      'Startup permission gate failed open',
-      error: error,
-      stackTrace: stackTrace,
-    );
-  }
-}
-
 /// DarsNexa entry point.
 ///
 /// Runs inside a guarded zone with a friendly [ErrorWidget.builder] so a build
@@ -57,12 +39,6 @@ Future<void> main() async {
   await runZonedGuarded<Future<void>>(
     () async {
       final WidgetsBinding binding = WidgetsFlutterBinding.ensureInitialized();
-
-      // Keep the native black launch screen visible until the one-time
-      // notification -> All Files Access sequence has finished. Flutter's
-      // first frame must not reveal the logo/Home underneath the permission.
-      binding.deferFirstFrame();
-      await _waitForStartupPermissions();
 
       ErrorWidget.builder = (FlutterErrorDetails details) {
         AppLogger.e(
