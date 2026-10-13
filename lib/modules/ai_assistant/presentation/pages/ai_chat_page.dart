@@ -1,6 +1,8 @@
 import 'dart:async';
+import 'dart:math' as math;
 
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:lexiora/core/widgets/app_bottom_nav.dart';
 import 'package:lexiora/core/widgets/empty_state.dart';
@@ -296,10 +298,55 @@ class _Welcome extends ConsumerWidget {
   }
 }
 
-class _MessageList extends ConsumerWidget {
+class _MessageList extends ConsumerStatefulWidget {
   const _MessageList({required this.conversationId});
 
   final String conversationId;
+
+  @override
+  ConsumerState<_MessageList> createState() => _MessageListState();
+}
+
+class _MessageListState extends ConsumerState<_MessageList> {
+  static const double _autoScrollThreshold = 50;
+
+  final ScrollController _scrollController = ScrollController();
+  bool _userScrolledUp = false;
+
+  @override
+  void initState() {
+    super.initState();
+    _scrollController.addListener(_handleScroll);
+  }
+
+  @override
+  void dispose() {
+    _scrollController
+      ..removeListener(_handleScroll)
+      ..dispose();
+    super.dispose();
+  }
+
+  void _handleScroll() {
+    if (!_scrollController.hasClients) return;
+
+    // This ListView is reversed, so offset 0 is the newest message/bottom.
+    final double distanceFromBottom = _scrollController.position.pixels;
+    final bool scrolledUp = distanceFromBottom > _autoScrollThreshold;
+    if (scrolledUp != _userScrolledUp) {
+      _userScrolledUp = scrolledUp;
+    }
+  }
+
+  void _onStreamingFrameRendered() {
+    if (_userScrolledUp || !_scrollController.hasClients) return;
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      if (!mounted || _userScrolledUp || !_scrollController.hasClients) return;
+      if (_scrollController.position.pixels > 0) {
+        _scrollController.jumpTo(0);
+      }
+    });
+  }
 
   Future<void> _regenerate(BuildContext context, WidgetRef ref) async {
     final AiSendResult result =
@@ -312,7 +359,7 @@ class _MessageList extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final AsyncValue<List<AiMessage>> async =
-        ref.watch(aiMessagesProvider(conversationId));
+        ref.watch(aiMessagesProvider(widget.conversationId));
     final bool streaming =
         ref.watch(aiChatControllerProvider.select((AiChatState s) => s.streaming));
     final int limit = ref.watch(aiMessageLimitProvider);
@@ -328,10 +375,15 @@ class _MessageList extends ConsumerWidget {
 
         return ListView.builder(
           reverse: true,
+          controller: _scrollController,
           padding: const EdgeInsets.symmetric(vertical: 8),
           itemCount: count,
           itemBuilder: (BuildContext context, int i) {
-            if (streaming && i == 0) return const _StreamingBubble();
+            if (streaming && i == 0) {
+              return _StreamingBubble(
+                onRendered: _onStreamingFrameRendered,
+              );
+            }
             if (canLoadMore && i == count - 1) {
               return Center(
                 child: Padding(
@@ -365,15 +417,71 @@ class _MessageList extends ConsumerWidget {
   }
 }
 
-/// The in-flight assistant reply. Watches only the streaming text so it is the
-/// only widget rebuilding per token.
-class _StreamingBubble extends ConsumerWidget {
-  const _StreamingBubble();
+/// The in-flight assistant reply. Incoming cumulative text is buffered and
+/// released a few characters per frame so token-sized network chunks do not
+/// force a rebuild for every event.
+class _StreamingBubble extends ConsumerStatefulWidget {
+  const _StreamingBubble({required this.onRendered});
+
+  final VoidCallback onRendered;
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
-    final String text = ref.watch(
-        aiChatControllerProvider.select((AiChatState s) => s.streamingText));
+  ConsumerState<_StreamingBubble> createState() => _StreamingBubbleState();
+}
+
+class _StreamingBubbleState extends ConsumerState<_StreamingBubble> {
+  static const int _charactersPerFrame = 3;
+
+  String _sourceText = '';
+  String _renderedText = '';
+  String _queuedText = '';
+  bool _frameScheduled = false;
+
+  @override
+  void initState() {
+    super.initState();
+    _enqueueSource(ref.read(aiChatControllerProvider).streamingText);
+  }
+
+  void _enqueueSource(String source) {
+    if (source == _sourceText) return;
+
+    // The provider exposes cumulative text. Only enqueue the newly arrived
+    // suffix; reset safely if a stream is replaced while this widget remains.
+    if (!source.startsWith(_sourceText)) {
+      _sourceText = source;
+      _renderedText = '';
+      _queuedText = source;
+    } else {
+      _queuedText += source.substring(_sourceText.length);
+      _sourceText = source;
+    }
+    _scheduleRenderFrame();
+  }
+
+  void _scheduleRenderFrame() {
+    if (_frameScheduled || _queuedText.isEmpty) return;
+    _frameScheduled = true;
+    SchedulerBinding.instance.scheduleFrameCallback((_) {
+      _frameScheduled = false;
+      if (!mounted) return;
+
+      final int count = math.min(_charactersPerFrame, _queuedText.length);
+      final String nextText = _queuedText.substring(0, count);
+      _queuedText = _queuedText.substring(count);
+      setState(() => _renderedText += nextText);
+      widget.onRendered();
+      _scheduleRenderFrame();
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    ref.listen<String>(
+      aiChatControllerProvider.select((AiChatState s) => s.streamingText),
+      (_, String next) => _enqueueSource(next),
+    );
+
     final ThemeData theme = Theme.of(context);
     final ColorScheme scheme = theme.colorScheme;
 
@@ -406,9 +514,9 @@ class _StreamingBubble extends ConsumerWidget {
           ),
           SizedBox(
             width: double.infinity,
-            child: text.isEmpty
+            child: _renderedText.isEmpty
                 ? const TypingIndicator()
-                : AiMarkdown(data: text, color: scheme.onSurface),
+                : AiMarkdown(data: _renderedText, color: scheme.onSurface),
           ),
         ],
       ),
