@@ -296,10 +296,69 @@ class _Welcome extends ConsumerWidget {
   }
 }
 
-class _MessageList extends ConsumerWidget {
+class _MessageList extends ConsumerStatefulWidget {
   const _MessageList({required this.conversationId});
 
   final String conversationId;
+
+  @override
+  ConsumerState<_MessageList> createState() => _MessageListState();
+}
+
+class _MessageListState extends ConsumerState<_MessageList> {
+  final ScrollController _scrollController = ScrollController();
+  static const double _latestMessageThreshold = 120;
+  double? _lastMaxScrollExtent;
+  bool _preservingReadingPosition = false;
+
+  bool get _isNearLatestMessage =>
+      !_scrollController.hasClients ||
+      _scrollController.position.pixels <= _latestMessageThreshold;
+
+  bool _onScrollMetricsChanged(ScrollMetricsNotification notification) {
+    final ScrollMetrics metrics = notification.metrics;
+    final double? previousExtent = _lastMaxScrollExtent;
+    _lastMaxScrollExtent = metrics.maxScrollExtent;
+
+    // With reverse:true, offset zero is the latest message. When the user has
+    // scrolled up to read history, streaming content grows at the reversed
+    // list's leading edge. Compensate for that growth so the visible history
+    // stays anchored instead of drifting/jumping while tokens arrive.
+    if (previousExtent != null &&
+        _preservingReadingPosition &&
+        !_isNearLatestMessage) {
+      final double extentDelta = metrics.maxScrollExtent - previousExtent;
+      if (extentDelta.abs() > 0.5 && _scrollController.hasClients) {
+        WidgetsBinding.instance.addPostFrameCallback((_) {
+          if (!mounted || !_scrollController.hasClients) return;
+          final ScrollPosition position = _scrollController.position;
+          final double target = (position.pixels + extentDelta)
+              .clamp(position.minScrollExtent, position.maxScrollExtent)
+              .toDouble();
+          if ((position.pixels - target).abs() > 0.5) {
+            _scrollController.jumpTo(target);
+          }
+        });
+      }
+    }
+    return false;
+  }
+
+  bool _onScrollNotification(ScrollNotification notification) {
+    if (notification.depth == 0 &&
+        notification is UserScrollNotification) {
+      _preservingReadingPosition =
+          notification.direction != ScrollDirection.idle &&
+          !_isNearLatestMessage;
+    }
+    return false;
+  }
+
+  @override
+  void dispose() {
+    _scrollController.dispose();
+    super.dispose();
+  }
 
   Future<void> _regenerate(BuildContext context, WidgetRef ref) async {
     final AiSendResult result =
@@ -310,7 +369,9 @@ class _MessageList extends ConsumerWidget {
   }
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
+  Widget build(BuildContext context) {
+    final WidgetRef ref = this.ref;
+    final String conversationId = widget.conversationId;
     final AsyncValue<List<AiMessage>> async =
         ref.watch(aiMessagesProvider(conversationId));
     final bool streaming =
@@ -326,11 +387,16 @@ class _MessageList extends ConsumerWidget {
         final bool canLoadMore = messages.length >= limit;
         final int count = off + messages.length + (canLoadMore ? 1 : 0);
 
-        return ListView.builder(
-          reverse: true,
-          padding: const EdgeInsets.symmetric(vertical: 8),
-          itemCount: count,
-          itemBuilder: (BuildContext context, int i) {
+        return NotificationListener<ScrollMetricsNotification>(
+          onNotification: _onScrollMetricsChanged,
+          child: NotificationListener<ScrollNotification>(
+            onNotification: _onScrollNotification,
+            child: ListView.builder(
+              controller: _scrollController,
+              reverse: true,
+              padding: const EdgeInsets.symmetric(vertical: 8),
+              itemCount: count,
+              itemBuilder: (BuildContext context, int i) {
             if (streaming && i == 0) return const _StreamingBubble();
             if (canLoadMore && i == count - 1) {
               return Center(
@@ -358,7 +424,9 @@ class _MessageList extends ConsumerWidget {
                   ? () => unawaited(_regenerate(context, ref))
                   : null,
             );
-          },
+              },
+            ),
+          ),
         );
       },
     );
