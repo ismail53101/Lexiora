@@ -63,6 +63,7 @@ class MainActivity : FlutterActivity() {
     private val startupPermissionPrefs = "sapiora_permission_flow"
     private val allFilesPromptedKey = "all_files_prompted_v1"
     private var startupPermissionReady = false
+    private var startupPermissionFlowStarted = false
     private val pendingStartupPermissionResults = ArrayList<MethodChannel.Result>()
     private var pendingResult: MethodChannel.Result? = null
     private var platformChannel: MethodChannel? = null
@@ -72,20 +73,13 @@ class MainActivity : FlutterActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        // Android 13+ notification permission is requested before Flutter's
-        // first frame. The launch window is intentionally black, so the
-        // permission dialog never appears on top of the Home screen.
-        requestNotificationPermissionOnFreshInstall()
+        // Do not block the first Flutter/Home frame with system permission
+        // dialogs. Dart starts this flow after Home has rendered once.
         processIncomingIntent(intent)
     }
 
     private fun requestNotificationPermissionOnFreshInstall() {
         val prefs = getSharedPreferences(notificationPermissionPrefs, MODE_PRIVATE)
-
-        if (prefs.getBoolean(allFilesPromptedKey, false)) {
-            completeStartupPermissionFlow()
-            return
-        }
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU &&
             !prefs.getBoolean(notificationPermissionPromptedKey, false) &&
@@ -205,11 +199,15 @@ class MainActivity : FlutterActivity() {
         platformChannel!!
             .setMethodCallHandler { call, result ->
                 when (call.method) {
-                    "waitForStartupPermissions" -> {
+                    "requestStartupPermissions" -> {
                         if (startupPermissionReady) {
                             result.success(true)
                         } else {
                             pendingStartupPermissionResults.add(result)
+                            if (!startupPermissionFlowStarted) {
+                                startupPermissionFlowStarted = true
+                                requestNotificationPermissionOnFreshInstall()
+                            }
                         }
                     }
                     "takeIncomingPdf" -> {
