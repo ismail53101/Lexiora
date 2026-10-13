@@ -35,7 +35,7 @@ const String _initialPermissionFlowVersion = '2026.10.06-permissions-v5';
 Future<void> main() async {
   await runZonedGuarded<Future<void>>(
     () async {
-      final WidgetsBinding binding = WidgetsFlutterBinding.ensureInitialized();
+      WidgetsFlutterBinding.ensureInitialized();
 
       ErrorWidget.builder = (FlutterErrorDetails details) {
         AppLogger.e(
@@ -63,7 +63,6 @@ Future<void> main() async {
       // screen. Notifications, permissions, and PDF intent discovery continue
       // immediately after the first frame and report failures to the logger.
       runApp(ProviderScope(child: SapioraApp(router: router)));
-      binding.allowFirstFrame();
       unawaited(_finishStartup(router));
 
       // One-time data hygiene: if Android's auto-backup restored an old database
