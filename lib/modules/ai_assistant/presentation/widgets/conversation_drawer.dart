@@ -609,13 +609,20 @@ class _ProjectTile extends StatelessWidget {
               summary.project.parentId == null
                   ? summary.project.name
                   : '↳ ${summary.project.name}',
-              maxLines: 1, overflow: TextOverflow.ellipsis),
+              maxLines: 1,
+              overflow: TextOverflow.ellipsis,
+              style: theme.textTheme.titleSmall?.copyWith(
+                fontWeight: FontWeight.w700,
+              )),
           subtitle: Text(
             count == 1 ? '1 conversation' : '$count conversations',
             maxLines: 1,
             overflow: TextOverflow.ellipsis,
             style: theme.textTheme.bodySmall
-                ?.copyWith(color: scheme.onSurfaceVariant),
+                ?.copyWith(
+                  color: scheme.onSurfaceVariant,
+                  fontWeight: FontWeight.w600,
+                ),
           ),
           onTap: () => onToggle(summary.project.id),
           trailing: Row(
@@ -668,25 +675,59 @@ class _ProjectTile extends StatelessWidget {
             children: <Widget>[
               // Start a new conversation directly inside the project.
               Padding(
-                padding: const EdgeInsets.only(left: 28),
-                child: ListTile(
-                  dense: true,
-                  contentPadding: const EdgeInsets.only(left: 12, right: 4),
-                  shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(10)),
-                  leading: Container(
-                    width: 28,
-                    height: 28,
-                    decoration: BoxDecoration(
-                      color: scheme.primary.withValues(alpha: 0.14),
-                      shape: BoxShape.circle,
+                padding: const EdgeInsets.only(left: 28, right: 4),
+                child: Row(
+                  children: <Widget>[
+                    Expanded(
+                      child: InkWell(
+                        borderRadius: BorderRadius.circular(10),
+                        onTap: () => onNewChat(summary.project.id),
+                        child: Padding(
+                          padding: const EdgeInsets.symmetric(
+                              horizontal: 12, vertical: 8),
+                          child: Row(
+                            children: <Widget>[
+                              Container(
+                                width: 28,
+                                height: 28,
+                                decoration: BoxDecoration(
+                                  color: scheme.primary.withValues(alpha: 0.14),
+                                  shape: BoxShape.circle,
+                                ),
+                                child: Icon(Icons.add,
+                                    size: 17, color: scheme.primary),
+                              ),
+                              const SizedBox(width: 10),
+                              Text(
+                                'New chat',
+                                style: theme.textTheme.bodyLarge?.copyWith(
+                                  color: scheme.primary,
+                                  fontWeight: FontWeight.w700,
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
                     ),
-                    child: Icon(Icons.add, size: 17, color: scheme.primary),
-                  ),
-                  title: Text('New chat',
-                      style: theme.textTheme.bodyLarge
-                          ?.copyWith(color: scheme.primary)),
-                  onTap: () => onNewChat(summary.project.id),
+                    _DotMenuButton(
+                      tooltip: 'Folder options',
+                      itemBuilder: (BuildContext context) =>
+                          <PopupMenuEntry<String>>[
+                        const PopupMenuItem<String>(
+                            value: 'rename', child: Text('Rename')),
+                        const PopupMenuItem<String>(
+                            value: 'delete', child: Text('Delete project')),
+                      ],
+                      onSelected: (String value) {
+                        if (value == 'rename') {
+                          onRename(summary);
+                        } else if (value == 'delete') {
+                          onDelete(summary);
+                        }
+                      },
+                    ),
+                  ],
                 ),
               ),
               // Existing conversations that live in this project. Opening one

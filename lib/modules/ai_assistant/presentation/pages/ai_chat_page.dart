@@ -309,11 +309,12 @@ class _MessageList extends ConsumerStatefulWidget {
 }
 
 class _MessageListState extends ConsumerState<_MessageList> {
-  static const double _autoScrollThreshold = 50;
+  /// Distance from the newest message at which streaming auto-scroll pauses.
+  static const double _autoScrollThreshold = 80;
 
   final ScrollController _scrollController = ScrollController();
   bool _userScrolledUp = false;
-  bool _userScrollInProgress = false;
+  bool _programmaticScrollInProgress = false;
   double _lastUserScrollOffset = 0;
 
   void _setUserScrolledUp(bool value) {
@@ -337,44 +338,60 @@ class _MessageListState extends ConsumerState<_MessageList> {
   }
 
   void _handleScroll() {
-    if (!_scrollController.hasClients) return;
+    if (!_scrollController.hasClients || _programmaticScrollInProgress) return;
 
     // This ListView is reversed, so offset 0 is the newest message/bottom.
     final double distanceFromBottom = _scrollController.position.pixels;
     final bool scrolledUp = distanceFromBottom > _autoScrollThreshold;
-    if (scrolledUp || !_userScrollInProgress) {
-      _setUserScrolledUp(scrolledUp);
-    }
+    _setUserScrolledUp(scrolledUp);
   }
 
   bool _handleUserScroll(UserScrollNotification notification) {
+    if (_programmaticScrollInProgress) return false;
     final double offset = notification.metrics.pixels;
     if (notification.direction != ScrollDirection.idle) {
-      _userScrollInProgress = true;
       // Compare offsets instead of relying on ScrollDirection: a reversed
       // list can report axis directions differently across platforms.
       if (offset > _lastUserScrollOffset) {
         _setUserScrolledUp(true);
       }
     } else {
-      _userScrollInProgress = false;
       if (offset <= _autoScrollThreshold) {
         _setUserScrolledUp(false);
+        if (offset > 0) unawaited(_scrollToBottom());
       }
     }
     _lastUserScrollOffset = offset;
     return false;
   }
 
-  Future<void> _scrollToBottom() async {
+  /// Resume following the stream after the user explicitly requests it.
+  Future<void> _resumeAutoScroll() async {
     if (!_scrollController.hasClients) return;
-    _userScrollInProgress = false;
     _setUserScrolledUp(false);
-    await _scrollController.animateTo(
-      0,
-      duration: const Duration(milliseconds: 250),
-      curve: Curves.easeOut,
-    );
+    await _scrollToBottom();
+  }
+
+  /// Scroll to the newest message unless the user is reading older content.
+  Future<void> _scrollToBottom() async {
+    if (_userScrolledUp ||
+        !_scrollController.hasClients ||
+        _programmaticScrollInProgress) return;
+    _programmaticScrollInProgress = true;
+    try {
+      await _scrollController.animateTo(
+        0,
+        duration: const Duration(milliseconds: 250),
+        curve: Curves.easeOut,
+      );
+    } finally {
+      _programmaticScrollInProgress = false;
+      if (mounted && _scrollController.hasClients) {
+        _setUserScrolledUp(
+          _scrollController.position.pixels > _autoScrollThreshold,
+        );
+      }
+    }
   }
 
   void _onStreamingFrameRendered() {
@@ -469,7 +486,7 @@ class _MessageListState extends ConsumerState<_MessageList> {
                 child: FloatingActionButton.small(
                   heroTag: 'ai-scroll-to-bottom',
                   tooltip: 'Scroll to bottom',
-                  onPressed: _scrollToBottom,
+                  onPressed: _resumeAutoScroll,
                   child: const Icon(Icons.arrow_downward_rounded),
                 ),
               ),
