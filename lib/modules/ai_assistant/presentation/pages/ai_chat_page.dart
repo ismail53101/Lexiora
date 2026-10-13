@@ -510,13 +510,14 @@ class _StreamingBubble extends ConsumerStatefulWidget {
 }
 
 class _StreamingBubbleState extends ConsumerState<_StreamingBubble> {
-  // Batch more characters per frame to reduce repeated Markdown rebuilds.
-  static const int _charactersPerFrame = 8;
+  // Pace the visible text instead of releasing a large burst every frame.
+  static const Duration _renderInterval = Duration(milliseconds: 32);
+  static const int _charactersPerTick = 4;
 
+  Timer? _renderTimer;
   String _sourceText = '';
   String _renderedText = '';
   String _queuedText = '';
-  bool _frameScheduled = false;
 
   @override
   void initState() {
@@ -537,22 +538,45 @@ class _StreamingBubbleState extends ConsumerState<_StreamingBubble> {
       _queuedText += source.substring(_sourceText.length);
       _sourceText = source;
     }
-    _scheduleRenderFrame();
+    _startRenderTimer();
   }
 
-  void _scheduleRenderFrame() {
-    if (_frameScheduled || _queuedText.isEmpty) return;
-    _frameScheduled = true;
-    SchedulerBinding.instance.scheduleFrameCallback((_) {
-      _frameScheduled = false;
-      if (!mounted) return;
+  void _startRenderTimer() {
+    if (_renderTimer != null || _queuedText.isEmpty) return;
+    _renderTimer = Timer.periodic(_renderInterval, (Timer timer) {
+      if (!mounted) {
+        timer.cancel();
+        _renderTimer = null;
+        return;
+      }
+      if (_queuedText.isEmpty) {
+        timer.cancel();
+        _renderTimer = null;
+        return;
+      }
 
-      final int count = math.min(_charactersPerFrame, _queuedText.length);
+      // Keep each visual update small and evenly paced. This avoids the
+      // bursty, racing effect caused by rendering many characters per frame.
+      int count = math.min(_charactersPerTick, _queuedText.length);
+      final int boundary = _queuedText.indexOf(' ', count);
+      if (boundary >= 0 && boundary < count + 3) {
+        count = boundary + 1;
+      }
       final String nextText = _queuedText.substring(0, count);
       _queuedText = _queuedText.substring(count);
       setState(() => _renderedText += nextText);
-      _scheduleRenderFrame();
+
+      if (_queuedText.isEmpty) {
+        timer.cancel();
+        _renderTimer = null;
+      }
     });
+  }
+
+  @override
+  void dispose() {
+    _renderTimer?.cancel();
+    super.dispose();
   }
 
   @override
@@ -565,9 +589,8 @@ class _StreamingBubbleState extends ConsumerState<_StreamingBubble> {
     final ThemeData theme = Theme.of(context);
     final ColorScheme scheme = theme.colorScheme;
 
-    // Matches MessageBubble's assistant styling: no boxed bubble, full
-    // width, small sparkle + label header — so the reply doesn't visually
-    // "jump" into a different layout once streaming finishes.
+    // Keep the existing assistant label and layout; the animated Gemini-like
+    // thinking visual appears only until the first answer text is rendered.
     return Container(
       width: double.infinity,
       margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
