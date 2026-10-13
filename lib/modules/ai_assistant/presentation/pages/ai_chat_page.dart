@@ -312,6 +312,8 @@ class _MessageListState extends ConsumerState<_MessageList> {
 
   final ScrollController _scrollController = ScrollController();
   bool _userScrolledUp = false;
+  bool _userScrollInProgress = false;
+  double _lastUserScrollOffset = 0;
 
   @override
   void initState() {
@@ -333,15 +335,40 @@ class _MessageListState extends ConsumerState<_MessageList> {
     // This ListView is reversed, so offset 0 is the newest message/bottom.
     final double distanceFromBottom = _scrollController.position.pixels;
     final bool scrolledUp = distanceFromBottom > _autoScrollThreshold;
-    if (scrolledUp != _userScrolledUp) {
+    if (scrolledUp || !_userScrollInProgress) {
       _userScrolledUp = scrolledUp;
     }
   }
 
+  bool _handleUserScroll(UserScrollNotification notification) {
+    final double offset = notification.metrics.pixels;
+    if (notification.direction != ScrollDirection.idle) {
+      _userScrollInProgress = true;
+      // Compare offsets instead of relying on ScrollDirection: a reversed
+      // list can report axis directions differently across platforms.
+      if (offset > _lastUserScrollOffset) {
+        _userScrolledUp = true;
+      }
+    } else {
+      _userScrollInProgress = false;
+      if (offset <= _autoScrollThreshold) {
+        _userScrolledUp = false;
+      }
+    }
+    _lastUserScrollOffset = offset;
+    return false;
+  }
+
   void _onStreamingFrameRendered() {
     if (_userScrolledUp || !_scrollController.hasClients) return;
+    if (_scrollController.position.isScrollingNotifier.value) return;
     WidgetsBinding.instance.addPostFrameCallback((_) {
-      if (!mounted || _userScrolledUp || !_scrollController.hasClients) return;
+      if (!mounted ||
+          _userScrolledUp ||
+          !_scrollController.hasClients ||
+          _scrollController.position.isScrollingNotifier.value) {
+        return;
+      }
       if (_scrollController.position.pixels > 0) {
         _scrollController.jumpTo(0);
       }
@@ -373,12 +400,14 @@ class _MessageListState extends ConsumerState<_MessageList> {
         final bool canLoadMore = messages.length >= limit;
         final int count = off + messages.length + (canLoadMore ? 1 : 0);
 
-        return ListView.builder(
-          reverse: true,
-          controller: _scrollController,
-          padding: const EdgeInsets.symmetric(vertical: 8),
-          itemCount: count,
-          itemBuilder: (BuildContext context, int i) {
+        return NotificationListener<UserScrollNotification>(
+          onNotification: _handleUserScroll,
+          child: ListView.builder(
+            reverse: true,
+            controller: _scrollController,
+            padding: const EdgeInsets.symmetric(vertical: 8),
+            itemCount: count,
+            itemBuilder: (BuildContext context, int i) {
             if (streaming && i == 0) {
               return _StreamingBubble(
                 onRendered: _onStreamingFrameRendered,
@@ -410,7 +439,8 @@ class _MessageListState extends ConsumerState<_MessageList> {
                   ? () => unawaited(_regenerate(context, ref))
                   : null,
             );
-          },
+            },
+          ),
         );
       },
     );
