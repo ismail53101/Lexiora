@@ -414,22 +414,6 @@ class _MessageListState extends ConsumerState<_MessageList> {
     }
   }
 
-  void _onStreamingFrameRendered() {
-    if (_userScrolledUp || !_scrollController.hasClients) return;
-    if (_scrollController.position.isScrollingNotifier.value) return;
-    WidgetsBinding.instance.addPostFrameCallback((_) {
-      if (!mounted ||
-          _userScrolledUp ||
-          !_scrollController.hasClients ||
-          _scrollController.position.isScrollingNotifier.value) {
-        return;
-      }
-      if (_scrollController.position.pixels > 0) {
-        _scrollController.jumpTo(0);
-      }
-    });
-  }
-
   Future<void> _regenerate(BuildContext context, WidgetRef ref) async {
     final AiSendResult result =
         await ref.read(aiChatControllerProvider.notifier).regenerate();
@@ -467,7 +451,6 @@ class _MessageListState extends ConsumerState<_MessageList> {
                 itemBuilder: (BuildContext context, int i) {
             if (streaming && i == 0) {
               return _StreamingBubble(
-                onRendered: _onStreamingFrameRendered,
               );
             }
             if (canLoadMore && i == count - 1) {
@@ -521,16 +504,15 @@ class _MessageListState extends ConsumerState<_MessageList> {
 /// released a few characters per frame so token-sized network chunks do not
 /// force a rebuild for every event.
 class _StreamingBubble extends ConsumerStatefulWidget {
-  const _StreamingBubble({required this.onRendered});
-
-  final VoidCallback onRendered;
+  const _StreamingBubble();
 
   @override
   ConsumerState<_StreamingBubble> createState() => _StreamingBubbleState();
 }
 
 class _StreamingBubbleState extends ConsumerState<_StreamingBubble> {
-  static const int _charactersPerFrame = 3;
+  // Batch more characters per frame to reduce repeated Markdown rebuilds.
+  static const int _charactersPerFrame = 8;
 
   String _sourceText = '';
   String _renderedText = '';
@@ -570,7 +552,6 @@ class _StreamingBubbleState extends ConsumerState<_StreamingBubble> {
       final String nextText = _queuedText.substring(0, count);
       _queuedText = _queuedText.substring(count);
       setState(() => _renderedText += nextText);
-      widget.onRendered();
       _scheduleRenderFrame();
     });
   }
