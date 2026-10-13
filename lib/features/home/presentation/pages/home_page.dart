@@ -4,6 +4,7 @@ import 'dart:io';
 import 'dart:ui' as ui;
 
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
@@ -45,19 +46,33 @@ class HomePage extends ConsumerStatefulWidget {
 class _HomePageState extends ConsumerState<HomePage>
     with WidgetsBindingObserver {
   bool _discoveryInFlight = false;
+  bool _startupPermissionsRequested = false;
 
   @override
   void initState() {
     super.initState();
     WidgetsBinding.instance.addObserver(this);
     WidgetsBinding.instance.addPostFrameCallback((_) {
-      // Let the first Home frame settle before the potentially large PDF scan.
-      // Discovery remains automatic, but it no longer competes with the first
-      // 60 frames of the dashboard for CPU time.
+      // Render Home first. Only after the user can see and interact with the
+      // dashboard do we start the one-time notification -> PDF-access flow.
+      if (mounted) unawaited(_requestStartupPermissions());
+      // PDF discovery is independent of the permission dialog and runs later
+      // in the background so it cannot compete with the first Home frames.
       Future<void>.delayed(const Duration(milliseconds: 1200), () {
         if (mounted) unawaited(_initializePdfDiscovery());
       });
     });
+  }
+
+  Future<void> _requestStartupPermissions() async {
+    if (!mounted || _startupPermissionsRequested || !Platform.isAndroid) return;
+    _startupPermissionsRequested = true;
+    try {
+      await const MethodChannel('lexiora/platform')
+          .invokeMethod<bool>('requestStartupPermissions');
+    } on Object catch (error, stackTrace) {
+      debugPrint('Deferred startup permission flow failed: $error');
+    }
   }
 
   @override
