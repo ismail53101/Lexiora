@@ -1,7 +1,9 @@
+import 'dart:math' as math;
+
 import 'package:flutter/material.dart';
 
-/// An animated three-dot "thinking" indicator shown while the assistant is
-/// preparing its first tokens.
+/// Gemini-inspired thinking visual: a colorful sparkle beside a softly
+/// animated wave while the assistant prepares its first answer tokens.
 class TypingIndicator extends StatefulWidget {
   const TypingIndicator({super.key});
 
@@ -13,7 +15,7 @@ class _TypingIndicatorState extends State<TypingIndicator>
     with SingleTickerProviderStateMixin {
   late final AnimationController _controller = AnimationController(
     vsync: this,
-    duration: const Duration(milliseconds: 1100),
+    duration: const Duration(milliseconds: 1500),
   )..repeat();
 
   @override
@@ -24,37 +26,84 @@ class _TypingIndicatorState extends State<TypingIndicator>
 
   @override
   Widget build(BuildContext context) {
-    final Color color = Theme.of(context).colorScheme.onSurfaceVariant;
-    return AnimatedBuilder(
-      animation: _controller,
-      builder: (BuildContext context, _) {
-        return Row(
-          mainAxisSize: MainAxisSize.min,
-          children: <Widget>[
-            for (int i = 0; i < 3; i++)
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 2),
-                child: _dot(color, i),
+    return SizedBox(
+      height: 48,
+      child: Row(
+        mainAxisSize: MainAxisSize.min,
+        children: <Widget>[
+          ShaderMask(
+            shaderCallback: (Rect bounds) => const LinearGradient(
+              colors: <Color>[
+                Color(0xFF35B9F5),
+                Color(0xFF7865F7),
+                Color(0xFFEF8ACB),
+                Color(0xFFFFC46B),
+              ],
+              begin: Alignment.topLeft,
+              end: Alignment.bottomRight,
+            ).createShader(bounds),
+            child: const Icon(
+              Icons.auto_awesome_rounded,
+              size: 42,
+              color: Colors.white,
+            ),
+          ),
+          const SizedBox(width: 12),
+          SizedBox(
+            width: 150,
+            height: 34,
+            child: AnimatedBuilder(
+              animation: _controller,
+              builder: (BuildContext context, Widget? child) => CustomPaint(
+                painter: _ThinkingWavePainter(_controller.value),
+                child: const SizedBox.expand(),
               ),
-          ],
-        );
-      },
-    );
-  }
-
-  Widget _dot(Color color, int index) {
-    final double t = (_controller.value + index * 0.2) % 1.0;
-    final double scale = 0.6 + 0.4 * (1 - (2 * t - 1).abs());
-    return Opacity(
-      opacity: 0.4 + 0.6 * scale,
-      child: Transform.scale(
-        scale: scale,
-        child: Container(
-          width: 8,
-          height: 8,
-          decoration: BoxDecoration(color: color, shape: BoxShape.circle),
-        ),
+            ),
+          ),
+        ],
       ),
     );
   }
+}
+
+class _ThinkingWavePainter extends CustomPainter {
+  const _ThinkingWavePainter(this.progress);
+
+  final double progress;
+
+  @override
+  void paint(Canvas canvas, Size size) {
+    final Paint paint = Paint()
+      ..style = PaintingStyle.stroke
+      ..strokeWidth = 3.2
+      ..strokeCap = StrokeCap.round
+      ..shader = const LinearGradient(
+        colors: <Color>[
+          Color(0xFF5CC8F5),
+          Color(0xFF9A8CF8),
+          Color(0xFFE8A9D8),
+        ],
+      ).createShader(Offset.zero & size);
+
+    final Path path = Path();
+    for (int i = 0; i <= 90; i++) {
+      final double x = size.width * i / 90;
+      final double envelope = 0.55 + 0.45 * math.sin(math.pi * i / 90);
+      final double y = size.height / 2 +
+          math.sin((i / 90 * math.pi * 3) + progress * math.pi * 2) *
+              size.height *
+              0.25 *
+              envelope;
+      if (i == 0) {
+        path.moveTo(x, y);
+      } else {
+        path.lineTo(x, y);
+      }
+    }
+    canvas.drawPath(path, paint);
+  }
+
+  @override
+  bool shouldRepaint(_ThinkingWavePainter oldDelegate) =>
+      oldDelegate.progress != progress;
 }
