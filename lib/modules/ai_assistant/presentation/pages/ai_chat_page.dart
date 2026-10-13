@@ -2,6 +2,7 @@ import 'dart:async';
 import 'dart:math' as math;
 
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:lexiora/core/widgets/app_bottom_nav.dart';
@@ -315,6 +316,12 @@ class _MessageListState extends ConsumerState<_MessageList> {
   bool _userScrollInProgress = false;
   double _lastUserScrollOffset = 0;
 
+  void _setUserScrolledUp(bool value) {
+    if (_userScrolledUp == value) return;
+    _userScrolledUp = value;
+    if (mounted) setState(() {});
+  }
+
   @override
   void initState() {
     super.initState();
@@ -336,7 +343,7 @@ class _MessageListState extends ConsumerState<_MessageList> {
     final double distanceFromBottom = _scrollController.position.pixels;
     final bool scrolledUp = distanceFromBottom > _autoScrollThreshold;
     if (scrolledUp || !_userScrollInProgress) {
-      _userScrolledUp = scrolledUp;
+      _setUserScrolledUp(scrolledUp);
     }
   }
 
@@ -347,16 +354,27 @@ class _MessageListState extends ConsumerState<_MessageList> {
       // Compare offsets instead of relying on ScrollDirection: a reversed
       // list can report axis directions differently across platforms.
       if (offset > _lastUserScrollOffset) {
-        _userScrolledUp = true;
+        _setUserScrolledUp(true);
       }
     } else {
       _userScrollInProgress = false;
       if (offset <= _autoScrollThreshold) {
-        _userScrolledUp = false;
+        _setUserScrolledUp(false);
       }
     }
     _lastUserScrollOffset = offset;
     return false;
+  }
+
+  Future<void> _scrollToBottom() async {
+    if (!_scrollController.hasClients) return;
+    _userScrollInProgress = false;
+    _setUserScrolledUp(false);
+    await _scrollController.animateTo(
+      0,
+      duration: const Duration(milliseconds: 250),
+      curve: Curves.easeOut,
+    );
   }
 
   void _onStreamingFrameRendered() {
@@ -400,14 +418,16 @@ class _MessageListState extends ConsumerState<_MessageList> {
         final bool canLoadMore = messages.length >= limit;
         final int count = off + messages.length + (canLoadMore ? 1 : 0);
 
-        return NotificationListener<UserScrollNotification>(
-          onNotification: _handleUserScroll,
-          child: ListView.builder(
-            reverse: true,
-            controller: _scrollController,
-            padding: const EdgeInsets.symmetric(vertical: 8),
-            itemCount: count,
-            itemBuilder: (BuildContext context, int i) {
+        return Stack(
+          children: <Widget>[
+            NotificationListener<UserScrollNotification>(
+              onNotification: _handleUserScroll,
+              child: ListView.builder(
+                reverse: true,
+                controller: _scrollController,
+                padding: const EdgeInsets.symmetric(vertical: 8),
+                itemCount: count,
+                itemBuilder: (BuildContext context, int i) {
             if (streaming && i == 0) {
               return _StreamingBubble(
                 onRendered: _onStreamingFrameRendered,
@@ -439,8 +459,21 @@ class _MessageListState extends ConsumerState<_MessageList> {
                   ? () => unawaited(_regenerate(context, ref))
                   : null,
             );
-            },
-          ),
+                },
+              ),
+            ),
+            if (streaming && _userScrolledUp)
+              Positioned(
+                right: 16,
+                bottom: 16,
+                child: FloatingActionButton.small(
+                  heroTag: 'ai-scroll-to-bottom',
+                  tooltip: 'Scroll to bottom',
+                  onPressed: _scrollToBottom,
+                  child: const Icon(Icons.arrow_downward_rounded),
+                ),
+              ),
+          ],
         );
       },
     );
