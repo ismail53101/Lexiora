@@ -291,7 +291,13 @@ class _ConversationDrawerState extends ConsumerState<ConversationDrawer> {
           name,
           parentId: parent.project.id,
         );
-    if (mounted) setState(() => _expanded.add(child.id));
+    if (mounted) {
+      setState(() {
+        _expanded
+          ..add(parent.project.id)
+          ..add(child.id);
+      });
+    }
   }
 
   Future<void> _renameProject(AiProjectSummary summary) async {
@@ -475,21 +481,14 @@ class _ProjectsSection extends StatelessWidget {
             ),
           ),
         ),
-        ...projects.map((AiProjectSummary s) => _ProjectTile(
-              summary: s,
-              conversations: conversationsByProject[s.project.id] ??
-                  const <AiConversationSummary>[],
-              currentConversationId: currentConversationId,
-              expanded: expanded.contains(s.project.id),
-              onToggle: onToggleProject,
-              onNewChat: onNewChatInProject,
-              onCreateSubproject: onCreateSubproject,
-              onRename: onRenameProject,
-              onDelete: onDeleteProject,
-              onOpenConversation: onOpenConversation,
-              onRenameConversation: onRenameConversation,
-              onDeleteConversation: onDeleteConversation,
-            )),
+        ...projects
+            .where((AiProjectSummary s) => s.project.parentId == null)
+            .map((AiProjectSummary s) => _buildProjectTile(
+                  s,
+                  projects: projects,
+                  conversationsByProject: conversationsByProject,
+                  currentConversationId: currentConversationId,
+                )),
 
         // ── "+ New project" row (reference layout) ─────────────────────────
         Padding(
@@ -529,6 +528,39 @@ class _ProjectsSection extends StatelessWidget {
       ],
     );
   }
+
+  Widget _buildProjectTile(
+    AiProjectSummary summary, {
+    required List<AiProjectSummary> projects,
+    required Map<String, List<AiConversationSummary>> conversationsByProject,
+    required String? currentConversationId,
+  }) {
+    return _ProjectTile(
+      summary: summary,
+      childProjects: projects
+          .where((AiProjectSummary child) =>
+              child.project.parentId == summary.project.id)
+          .toList(growable: false),
+      conversations: conversationsByProject[summary.project.id] ??
+          const <AiConversationSummary>[],
+      currentConversationId: currentConversationId,
+      expanded: expanded.contains(summary.project.id),
+      onToggle: onToggleProject,
+      onNewChat: onNewChatInProject,
+      onCreateSubproject: onCreateSubproject,
+      onRename: onRenameProject,
+      onDelete: onDeleteProject,
+      onOpenConversation: onOpenConversation,
+      onRenameConversation: onRenameConversation,
+      onDeleteConversation: onDeleteConversation,
+      buildChildProject: (AiProjectSummary child) => _buildProjectTile(
+        child,
+        projects: projects,
+        conversationsByProject: conversationsByProject,
+        currentConversationId: currentConversationId,
+      ),
+    );
+  }
 }
 
 // ── Project colors ─────────────────────────────────────────────────────────
@@ -561,6 +593,7 @@ Color _projectFolderColor(String projectId) {
 class _ProjectTile extends StatelessWidget {
   const _ProjectTile({
     required this.summary,
+    required this.childProjects,
     required this.conversations,
     required this.currentConversationId,
     required this.expanded,
@@ -572,9 +605,11 @@ class _ProjectTile extends StatelessWidget {
     required this.onOpenConversation,
     required this.onRenameConversation,
     required this.onDeleteConversation,
+    required this.buildChildProject,
   });
 
   final AiProjectSummary summary;
+  final List<AiProjectSummary> childProjects;
   final List<AiConversationSummary> conversations;
   final String? currentConversationId;
   final bool expanded;
@@ -586,6 +621,7 @@ class _ProjectTile extends StatelessWidget {
   final void Function(AiConversationSummary) onOpenConversation;
   final Future<void> Function(AiConversationSummary) onRenameConversation;
   final Future<void> Function(AiConversationSummary) onDeleteConversation;
+  final Widget Function(AiProjectSummary) buildChildProject;
 
   @override
   Widget build(BuildContext context) {
@@ -743,6 +779,11 @@ class _ProjectTile extends StatelessWidget {
                     onRename: onRenameConversation,
                     onDelete: onDeleteConversation,
                   ),
+                ),
+              for (final AiProjectSummary child in childProjects)
+                Padding(
+                  padding: const EdgeInsets.only(left: 20),
+                  child: buildChildProject(child),
                 ),
             ],
           ),

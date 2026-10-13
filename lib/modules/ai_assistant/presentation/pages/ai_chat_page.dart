@@ -315,7 +315,7 @@ class _MessageListState extends ConsumerState<_MessageList> {
   final ScrollController _scrollController = ScrollController();
   bool _userScrolledUp = false;
   bool _programmaticScrollInProgress = false;
-  double _lastUserScrollOffset = 0;
+  bool _userScrollInProgress = false;
 
   void _setUserScrolledUp(bool value) {
     if (_userScrolledUp == value) return;
@@ -342,26 +342,35 @@ class _MessageListState extends ConsumerState<_MessageList> {
 
     // This ListView is reversed, so offset 0 is the newest message/bottom.
     final double distanceFromBottom = _scrollController.position.pixels;
-    final bool scrolledUp = distanceFromBottom > _autoScrollThreshold;
-    _setUserScrolledUp(scrolledUp);
+    // Never clear the lock from a controller notification. Streaming/layout
+    // updates can emit these notifications while the user is reading.
+    if (_userScrollInProgress && distanceFromBottom > _autoScrollThreshold) {
+      _setUserScrolledUp(true);
+    }
   }
 
-  bool _handleUserScroll(UserScrollNotification notification) {
+  bool _handleScrollNotification(ScrollNotification notification) {
     if (_programmaticScrollInProgress) return false;
     final double offset = notification.metrics.pixels;
-    if (notification.direction != ScrollDirection.idle) {
-      // Compare offsets instead of relying on ScrollDirection: a reversed
-      // list can report axis directions differently across platforms.
-      if (offset > _lastUserScrollOffset) {
-        _setUserScrolledUp(true);
-      }
-    } else {
+
+    if (notification is ScrollStartNotification) {
+      _userScrollInProgress = notification.dragDetails != null;
+    } else if (notification is UserScrollNotification &&
+        notification.direction != ScrollDirection.idle) {
+      _userScrollInProgress = true;
+      if (offset > _autoScrollThreshold) _setUserScrolledUp(true);
+    } else if (notification is ScrollUpdateNotification &&
+        (_userScrollInProgress || notification.dragDetails != null)) {
+      _userScrollInProgress = true;
+      if (offset > _autoScrollThreshold) _setUserScrolledUp(true);
+    } else if (notification is ScrollEndNotification &&
+        _userScrollInProgress) {
+      _userScrollInProgress = false;
       if (offset <= _autoScrollThreshold) {
         _setUserScrolledUp(false);
         if (offset > 0) unawaited(_scrollToBottom());
       }
     }
-    _lastUserScrollOffset = offset;
     return false;
   }
 
@@ -437,8 +446,8 @@ class _MessageListState extends ConsumerState<_MessageList> {
 
         return Stack(
           children: <Widget>[
-            NotificationListener<UserScrollNotification>(
-              onNotification: _handleUserScroll,
+            NotificationListener<ScrollNotification>(
+              onNotification: _handleScrollNotification,
               child: ListView.builder(
                 reverse: true,
                 controller: _scrollController,
