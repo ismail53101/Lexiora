@@ -617,7 +617,7 @@ class _StreamingBubbleState extends ConsumerState<_StreamingBubble> {
               child: _renderedText.isEmpty
                   ? const KeyedSubtree(
                       key: ValueKey<bool>(true),
-                      child: PulsingThinkingDot(),
+                      child: TypingIndicator(),
                     )
                   : KeyedSubtree(
                       key: const ValueKey<bool>(false),
