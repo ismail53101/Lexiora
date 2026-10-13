@@ -357,7 +357,7 @@ class _MessageListState extends ConsumerState<_MessageList> {
   }
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
+  Widget build(BuildContext context) {
     final AsyncValue<List<AiMessage>> async =
         ref.watch(aiMessagesProvider(widget.conversationId));
     final bool streaming =
