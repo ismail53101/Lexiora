@@ -268,7 +268,7 @@ class _LibraryPageState extends ConsumerState<LibraryPage> {
     return EmptyState(
       icon: Icons.menu_book_outlined,
       title: 'No PDFs found',
-      message: 'Sapiora didn’t find any PDF files on this device yet. Add PDFs '
+      message: 'DarsNexa didn’t find any PDF files on this device yet. Add PDFs '
           '(for example to Downloads or Documents) and pull down to refresh, or '
           'use Import PDF to pick files yourself.',
       action: Wrap(
@@ -294,12 +294,12 @@ class _LibraryPageState extends ConsumerState<LibraryPage> {
     return EmptyState(
       icon: Icons.folder_off_outlined,
       title: 'Allow access to your files',
-      message: 'Sapiora lists the PDFs already on your device — nothing is '
-          'ever uploaded and everything stays on your phone. To do that it '
-          'needs the one-time “All files access” permission (the same '
-          'one Adobe Acrobat and Xodo use). Grant it once and your PDFs appear '
-          'here automatically. You can also use Import PDF to add files without '
-          'granting access.',
+      message: 'DarsNexa uses All files access to automatically find PDF '
+          'documents stored on your device and show them in your PDF Library. '
+          'Your documents remain on your device and are not uploaded by the '
+          'PDF discovery feature. Grant access once and your PDFs will appear '
+          'here automatically. You can also use Import PDF to select individual '
+          'files without granting access.',
       action: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
