@@ -19,7 +19,7 @@ RewardedAdManager _manager(_MemoryStore store) => RewardedAdManager(
 void main() {
   test('7 free searches, then blocked, then an ad grants 7 more', () async {
     final RewardedAdManager m = _manager(_MemoryStore(null));
-    for (int i = 0; i < AdConfiguration.FREE_AI_REQUEST_LIMIT; i++) {
+    for (int i = 0; i < AdConfiguration.freeAiRequestLimit; i++) {
       expect(await m.canStartAiRequest(), isTrue);
       m.recordSuccessfulAiRequest();
     }
