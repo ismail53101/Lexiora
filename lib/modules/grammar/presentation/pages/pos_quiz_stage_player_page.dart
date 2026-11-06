@@ -223,8 +223,8 @@ class _PosQuizStagePlayerPageState
     if (_answered && selected && !correct) color = incorrectColor.withValues(alpha: 0.16);
     return RadioGroup<int>(
       groupValue: _selectedIndex,
-      onChanged: (int value) {
-        if (!_answered && !_finishing) {
+      onChanged: (int? value) {
+        if (!_answered && !_finishing && value != null) {
           _selectAnswer(value);
         }
       },
