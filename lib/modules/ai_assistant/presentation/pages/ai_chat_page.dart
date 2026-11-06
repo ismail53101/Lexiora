@@ -307,34 +307,24 @@ class _MessageList extends ConsumerStatefulWidget {
 }
 
 class _MessageListState extends ConsumerState<_MessageList> {
-  /// Smart auto-scroll state. When false, streaming is allowed to continue
-  /// without moving the user's viewport.
-  bool _isAutoScrollEnabled = true;
-
-  /// Distance from the newest message (offset 0 because the list is reversed)
-  /// at which auto-scroll is considered to be at the bottom.
+  /// Streaming is rendered inside the in-flight assistant bubble. The parent
+  /// list is deliberately not animated for every token: with a reversed list,
+  /// offset 0 naturally keeps the newest bubble anchored while its height
+  /// grows. This leaves manual scrolling completely under the user's control.
   static const double _bottomThreshold = 24;
 
   final ScrollController _scrollController = ScrollController();
-  Timer? _streamScrollTimer;
+
+  bool _isAutoScrollEnabled = true;
 
   @override
   void initState() {
     super.initState();
     _scrollController.addListener(_handleScroll);
-
-    // Scroll only when a new streaming chunk arrives. The callback is gated
-    // by _isAutoScrollEnabled, so manual scrolling always has priority.
-    ref.listenManual<String>(
-      aiChatControllerProvider.select((AiChatState s) => s.streamingText),
-      (_, String _) => _scheduleStreamingScroll(),
-    );
   }
 
   @override
   void dispose() {
-    _streamScrollTimer?.cancel();
-    _streamScrollTimer = null;
     _scrollController
       ..removeListener(_handleScroll)
       ..dispose();
@@ -343,95 +333,44 @@ class _MessageListState extends ConsumerState<_MessageList> {
 
   void _handleScroll() {
     if (!_scrollController.hasClients) return;
-
     final double offset = _scrollController.position.pixels;
-
-    // Because the ListView is reversed, offset 0 is the newest message.
-    // Reaching the bottom re-enables smart auto-scroll.
-    if (offset <= _bottomThreshold && !_isAutoScrollEnabled) {
-      _isAutoScrollEnabled = true;
+    final bool atNewest = offset <= _bottomThreshold;
+    if (atNewest != _isAutoScrollEnabled) {
+      _isAutoScrollEnabled = atNewest;
       if (mounted) setState(() {});
     }
   }
 
   bool _handleScrollNotification(ScrollNotification notification) {
-    if (notification is UserScrollNotification) {
+    if (notification is UserScrollNotification ||
+        notification is ScrollUpdateNotification ||
+        notification is ScrollEndNotification) {
       final double offset = notification.metrics.pixels;
-
-      // The prompt's rule: when the user scrolls away from the newest
-      // message, disable auto-scroll immediately.
-      if (notification.direction == ScrollDirection.forward &&
-          offset > _bottomThreshold) {
-        if (_isAutoScrollEnabled) {
-          _isAutoScrollEnabled = false;
-          _streamScrollTimer?.cancel();
-          _streamScrollTimer = null;
-          if (mounted) setState(() {});
-        }
-      }
-
-      // Also use the actual offset as a safety net. This covers reversed
-      // ListView gesture semantics across Flutter versions/devices.
-      if (offset > _bottomThreshold && _isAutoScrollEnabled) {
-        _isAutoScrollEnabled = false;
-        _streamScrollTimer?.cancel();
-        _streamScrollTimer = null;
-        if (mounted) setState(() {});
-      } else if (offset <= _bottomThreshold && !_isAutoScrollEnabled) {
-        _isAutoScrollEnabled = true;
-        if (mounted) setState(() {});
-      }
-    } else if (notification is ScrollEndNotification) {
-      final double offset = notification.metrics.pixels;
-      if (offset <= _bottomThreshold && !_isAutoScrollEnabled) {
-        _isAutoScrollEnabled = true;
+      final bool atNewest = offset <= _bottomThreshold;
+      if (atNewest != _isAutoScrollEnabled) {
+        _isAutoScrollEnabled = atNewest;
         if (mounted) setState(() {});
       }
     }
-
     return false;
   }
 
-  /// Smoothly follows the newest content only while smart auto-scroll is
-  /// enabled. Never uses jumpTo(), so completion does not cause an abrupt
-  /// jump.
-  Future<void> _scrollToBottom() async {
-    if (!_isAutoScrollEnabled || !_scrollController.hasClients) return;
-
-    const double target = 0;
-    final double current = _scrollController.position.pixels;
-    if ((current - target).abs() <= 1) return;
-
-    try {
-      await _scrollController.animateTo(
-        target,
-        duration: const Duration(milliseconds: 300),
-        curve: Curves.easeOut,
-      );
-    } on FlutterError {
-      // The controller can lose its position while the conversation is
-      // disposed/replaced. There is nothing to recover here.
-    }
-  }
-
-  /// Coalesce very fast stream chunks into one smooth animation. This avoids
-  /// starting dozens of overlapping animations when the provider emits
-  /// multiple chunks within the same frame.
-  void _scheduleStreamingScroll() {
-    if (!_isAutoScrollEnabled || !_scrollController.hasClients) return;
-
-    _streamScrollTimer?.cancel();
-    _streamScrollTimer = Timer(const Duration(milliseconds: 24), () {
-      _streamScrollTimer = null;
-      if (!mounted || !_isAutoScrollEnabled) return;
-      unawaited(_scrollToBottom());
-    });
-  }
-
   Future<void> _resumeAutoScroll() async {
+    if (!_scrollController.hasClients) return;
     _isAutoScrollEnabled = true;
     if (mounted) setState(() {});
-    await _scrollToBottom();
+
+    // Only perform an explicit scroll when the user asks to return to the
+    // newest answer. Streaming itself never calls animateTo/jumpTo.
+    try {
+      await _scrollController.animateTo(
+        0,
+        duration: const Duration(milliseconds: 220),
+        curve: Curves.easeOutCubic,
+      );
+    } on FlutterError {
+      // The controller may lose its position during route replacement.
+    }
   }
 
   Future<void> _regenerate(BuildContext context, WidgetRef ref) async {
