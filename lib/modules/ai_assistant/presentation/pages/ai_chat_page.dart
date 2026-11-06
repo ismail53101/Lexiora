@@ -399,10 +399,6 @@ class _MessageListState extends ConsumerState<_MessageList> {
             NotificationListener<ScrollNotification>(
               onNotification: _handleScrollNotification,
               child: ListView.builder(
-                // The reference behavior is a normal top-to-bottom conversation:
-                // the user's message stays where it was while the live answer
-                // grows underneath it instead of growing upward from the bottom.
-                reverse: false,
                 controller: _scrollController,
                 padding: const EdgeInsets.symmetric(vertical: 8),
                 itemCount: count,
