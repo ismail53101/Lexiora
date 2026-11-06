@@ -221,14 +221,17 @@ class _PosQuizStagePlayerPageState
     Color? color;
     if (_answered && correct) color = correctColor.withValues(alpha: 0.16);
     if (_answered && selected && !correct) color = incorrectColor.withValues(alpha: 0.16);
-    return Card(
-      color: color,
-      child: RadioListTile<int>(
-        value: index,
-        groupValue: _selectedIndex,
-        onChanged: _answered || _finishing ? null : _selectAnswer,
-        title: Text(_question.options[index]),
-        activeColor: theme.colorScheme.primary,
+    return RadioGroup<int>(
+      groupValue: _selectedIndex,
+      onChanged: _answered || _finishing ? null : _selectAnswer,
+      child: Card(
+        color: color,
+        child: RadioListTile<int>(
+          value: index,
+          title: Text(_question.options[index]),
+          selected: selected,
+          activeColor: theme.colorScheme.primary,
+        ),
       ),
     );
   }
