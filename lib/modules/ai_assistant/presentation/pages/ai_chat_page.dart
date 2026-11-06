@@ -1,7 +1,6 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:lexiora/core/widgets/app_bottom_nav.dart';
 import 'package:lexiora/core/widgets/empty_state.dart';
@@ -17,8 +16,8 @@ import 'package:lexiora/modules/ai_assistant/presentation/widgets/conversation_d
 import 'package:lexiora/modules/ai_assistant/presentation/widgets/message_bubble.dart';
 import 'package:lexiora/modules/ai_assistant/presentation/widgets/typing_indicator.dart';
 
-/// The AI Assistant chat screen — a modern interface with a conversation
-/// drawer, streaming replies, and offline history.
+/// The AI Assistant chat screen with a conversation drawer, streaming replies,
+/// and offline history.
 class AiChatPage extends ConsumerWidget {
   const AiChatPage({super.key});
 
@@ -36,8 +35,6 @@ class AiChatPage extends ConsumerWidget {
           },
           orElse: () => 'AI Assistant',
         );
-    // A chat started from inside a project shows the project name until the
-    // first message creates the conversation.
     final String effectiveTitle = currentId == null && pendingProjectId != null
         ? (ref.watch(aiProjectsProvider).maybeWhen(
               data: (List<AiProjectSummary> list) {
@@ -94,9 +91,6 @@ class AiChatPage extends ConsumerWidget {
       );
 }
 
-/// Header actions: a small dark pill holding an edit ("new chat") icon
-/// and — once a conversation exists — an overflow menu for renaming or
-/// deleting it.
 class _HeaderActions extends ConsumerWidget {
   const _HeaderActions({required this.currentId});
 
@@ -134,7 +128,8 @@ class _HeaderActions extends ConsumerWidget {
                   await _delete(context, ref, id);
                 }
               },
-              itemBuilder: (BuildContext context) => const <PopupMenuEntry<String>>[
+              itemBuilder: (BuildContext context) =>
+                  const <PopupMenuEntry<String>>[
                 PopupMenuItem<String>(
                   value: 'rename',
                   child: ListTile(
@@ -213,8 +208,6 @@ class _HeaderActions extends ConsumerWidget {
 class _Welcome extends ConsumerWidget {
   const _Welcome({this.projectId});
 
-  /// When a chat was started from inside a project, the welcome state shows
-  /// the project name — reinforcing that the first message lands in it.
   final String? projectId;
 
   @override
@@ -270,8 +263,7 @@ class _Welcome extends ConsumerWidget {
               Row(
                 mainAxisSize: MainAxisSize.min,
                 children: <Widget>[
-                  Icon(Icons.folder_rounded,
-                      size: 14, color: scheme.primary),
+                  Icon(Icons.folder_rounded, size: 14, color: scheme.primary),
                   const SizedBox(width: 4),
                   Text(
                     'Project chat — messages are filed here',
@@ -306,118 +298,75 @@ class _MessageList extends ConsumerStatefulWidget {
 }
 
 class _MessageListState extends ConsumerState<_MessageList> {
-  /// Distance from the newest message at which streaming auto-scroll pauses.
-  static const double _autoScrollThreshold = 80;
+  static const double _bottomThreshold = 80;
 
   final ScrollController _scrollController = ScrollController();
-  bool _userScrolledUp = false;
-  bool _programmaticScrollInProgress = false;
-  bool _userScrollInProgress = false;
-
-  void _setUserScrolledUp(bool value) {
-    if (_userScrolledUp == value) return;
-    _userScrolledUp = value;
-    if (mounted) setState(() {});
-  }
+  bool _showScrollToBottomBtn = false;
+  bool _initialScrollDone = false;
 
   @override
   void initState() {
     super.initState();
-    _scrollController.addListener(_handleScroll);
+    _scrollController.addListener(_updateScrollButtonVisibility);
+  }
+
+  @override
+  void didUpdateWidget(covariant _MessageList oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    if (oldWidget.conversationId != widget.conversationId) {
+      _initialScrollDone = false;
+      _showScrollToBottomBtn = false;
+    }
   }
 
   @override
   void dispose() {
     _scrollController
-      ..removeListener(_handleScroll)
+      ..removeListener(_updateScrollButtonVisibility)
       ..dispose();
     super.dispose();
   }
 
-  void _handleScroll() {
-    if (!_scrollController.hasClients || _programmaticScrollInProgress) return;
-
-    // This ListView is reversed, so offset 0 is the newest message/bottom.
-    final double distanceFromBottom = _scrollController.position.pixels;
-    // Never clear the lock from a controller notification. Streaming/layout
-    // updates can emit these notifications while the user is reading.
-    if (_userScrollInProgress && distanceFromBottom > _autoScrollThreshold) {
-      _setUserScrolledUp(true);
-    }
-  }
-
-  bool _handleScrollNotification(ScrollNotification notification) {
-    if (_programmaticScrollInProgress) return false;
-    final double offset = notification.metrics.pixels;
-
-    if (notification is ScrollStartNotification) {
-      _userScrollInProgress = notification.dragDetails != null;
-    } else if (notification is UserScrollNotification &&
-        notification.direction != ScrollDirection.idle) {
-      _userScrollInProgress = true;
-      if (offset > _autoScrollThreshold) _setUserScrolledUp(true);
-    } else if (notification is ScrollUpdateNotification &&
-        (_userScrollInProgress || notification.dragDetails != null)) {
-      _userScrollInProgress = true;
-      if (offset > _autoScrollThreshold) _setUserScrolledUp(true);
-    } else if (notification is ScrollEndNotification &&
-        _userScrollInProgress) {
-      _userScrollInProgress = false;
-      if (offset <= _autoScrollThreshold) {
-        _setUserScrolledUp(false);
-        if (offset > 0) unawaited(_scrollToBottom());
-      }
-    }
-    return false;
-  }
-
-  /// Resume following the stream after the user explicitly requests it.
-  Future<void> _resumeAutoScroll() async {
+  void _updateScrollButtonVisibility() {
     if (!_scrollController.hasClients) return;
-    _setUserScrolledUp(false);
-    await _scrollToBottom();
+    final ScrollPosition pos = _scrollController.position;
+    final bool hasMoreBelow = (pos.maxScrollExtent - pos.pixels) > _bottomThreshold;
+    if (hasMoreBelow != _showScrollToBottomBtn && mounted) {
+      setState(() => _showScrollToBottomBtn = hasMoreBelow);
+    }
   }
 
-  /// Scroll to the newest message unless the user is reading older content.
-  Future<void> _scrollToBottom() async {
-    if (_userScrolledUp ||
-        !_scrollController.hasClients ||
-        _programmaticScrollInProgress) return;
-    _programmaticScrollInProgress = true;
-    try {
+  Future<void> _scrollToBottom({bool animated = true}) async {
+    if (!_scrollController.hasClients) return;
+    final double target = _scrollController.position.maxScrollExtent;
+    if (animated) {
       await _scrollController.animateTo(
-        0,
-        duration: const Duration(milliseconds: 250),
-        curve: Curves.easeOut,
+        target,
+        duration: const Duration(milliseconds: 280),
+        curve: Curves.easeOutCubic,
       );
-    } finally {
-      _programmaticScrollInProgress = false;
-      if (mounted && _scrollController.hasClients) {
-        _setUserScrolledUp(
-          _scrollController.position.pixels > _autoScrollThreshold,
-        );
-      }
+    } else {
+      _scrollController.jumpTo(target);
     }
+    _updateScrollButtonVisibility();
+  }
+
+  /// Called once when streaming starts so the user's newly sent message and
+  /// the top of the AI reply are brought into view. As the reply grows
+  /// downward, we DO NOT force-scroll, letting the user read from the top.
+  void _scrollNewPromptIntoView() {
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      if (!mounted || !_scrollController.hasClients) return;
+      unawaited(_scrollToBottom(animated: true));
+    });
   }
 
   void _onStreamingFrameRendered() {
-    if (_userScrolledUp || _userScrollInProgress || !_scrollController.hasClients) return;
-    if (_scrollController.position.isScrollingNotifier.value) return;
+    // Only update whether the down-arrow button should appear as text grows
+    // below the screen. Never force-jump the user's scroll position!
     WidgetsBinding.instance.addPostFrameCallback((_) {
-      if (!mounted ||
-          _userScrolledUp ||
-          _userScrollInProgress ||
-          !_scrollController.hasClients ||
-          _scrollController.position.isScrollingNotifier.value) {
-        return;
-      }
-      if (_scrollController.position.pixels > 0) {
-        _scrollController.animateTo(
-          0,
-          duration: const Duration(milliseconds: 100),
-          curve: Curves.easeOut,
-        );
-      }
+      if (!mounted) return;
+      _updateScrollButtonVisibility();
     });
   }
 
@@ -431,10 +380,25 @@ class _MessageListState extends ConsumerState<_MessageList> {
 
   @override
   Widget build(BuildContext context) {
+    ref.listen<bool>(
+      aiChatControllerProvider.select((AiChatState s) => s.streaming),
+      (bool? prev, bool next) {
+        if (prev == false && next == true) {
+          // User just sent a prompt: bring the prompt + typing indicator into view once.
+          _scrollNewPromptIntoView();
+        } else if (prev == true && next == false) {
+          // Streaming finished: re-check if content extends below viewport.
+          WidgetsBinding.instance.addPostFrameCallback((_) {
+            if (mounted) _updateScrollButtonVisibility();
+          });
+        }
+      },
+    );
+
     final AsyncValue<List<AiMessage>> async =
         ref.watch(aiMessagesProvider(widget.conversationId));
-    final bool streaming =
-        ref.watch(aiChatControllerProvider.select((AiChatState s) => s.streaming));
+    final bool streaming = ref
+        .watch(aiChatControllerProvider.select((AiChatState s) => s.streaming));
     final int limit = ref.watch(aiMessageLimitProvider);
 
     return async.when(
@@ -442,62 +406,69 @@ class _MessageListState extends ConsumerState<_MessageList> {
       error: (_, _) => const _Welcome(),
       data: (List<AiMessage> messages) {
         if (messages.isEmpty && !streaming) return const _Welcome();
-        final int off = streaming ? 1 : 0;
+
+        if (!_initialScrollDone && messages.isNotEmpty) {
+          _initialScrollDone = true;
+          WidgetsBinding.instance.addPostFrameCallback((_) {
+            if (mounted) unawaited(_scrollToBottom(animated: false));
+          });
+        }
+
         final bool canLoadMore = messages.length >= limit;
-        final int count = off + messages.length + (canLoadMore ? 1 : 0);
+        final int loadMoreOffset = canLoadMore ? 1 : 0;
+        final int streamOffset = streaming ? 1 : 0;
+        final int count = loadMoreOffset + messages.length + streamOffset;
 
         return Stack(
           children: <Widget>[
-            NotificationListener<ScrollNotification>(
-              onNotification: _handleScrollNotification,
-              child: ListView.builder(
-                reverse: true,
-                controller: _scrollController,
-                padding: const EdgeInsets.symmetric(vertical: 8),
-                itemCount: count,
-                itemBuilder: (BuildContext context, int i) {
-                  if (streaming && i == 0) {
-                    return _StreamingBubble(
-                      onRendered: _onStreamingFrameRendered,
-                    );
-                  }
-                  if (canLoadMore && i == count - 1) {
-                    return Center(
-                      child: Padding(
-                        padding: const EdgeInsets.all(8),
-                        child: TextButton.icon(
-                          onPressed: () =>
-                              ref.read(aiMessageLimitProvider.notifier).more(),
-                          icon: const Icon(Icons.history, size: 18),
-                          label: const Text('Load earlier messages'),
-                        ),
+            ListView.builder(
+              controller: _scrollController,
+              padding: const EdgeInsets.symmetric(vertical: 8),
+              itemCount: count,
+              itemBuilder: (BuildContext context, int i) {
+                if (canLoadMore && i == 0) {
+                  return Center(
+                    child: Padding(
+                      padding: const EdgeInsets.all(8),
+                      child: TextButton.icon(
+                        onPressed: () =>
+                            ref.read(aiMessageLimitProvider.notifier).more(),
+                        icon: const Icon(Icons.history, size: 18),
+                        label: const Text('Load earlier messages'),
                       ),
-                    );
-                  }
-                  final int msgIndex = messages.length - 1 - (i - off);
-                  final AiMessage m = messages[msgIndex];
-                  final bool isLastAssistant = !streaming &&
-                      m.role == AiRole.assistant &&
-                      msgIndex == messages.length - 1;
-                  return MessageBubble(
-                    message: m,
-                    onDelete: () =>
-                        ref.read(aiRepositoryProvider).deleteMessage(m.id),
-                    onRegenerate: isLastAssistant
-                        ? () => unawaited(_regenerate(context, ref))
-                        : null,
+                    ),
                   );
-                },
-              ),
+                }
+
+                if (streaming && i == count - 1) {
+                  return _StreamingBubble(
+                    onRendered: _onStreamingFrameRendered,
+                  );
+                }
+
+                final int msgIndex = i - loadMoreOffset;
+                final AiMessage m = messages[msgIndex];
+                final bool isLastAssistant = !streaming &&
+                    m.role == AiRole.assistant &&
+                    msgIndex == messages.length - 1;
+                return MessageBubble(
+                  message: m,
+                  onDelete: () =>
+                      ref.read(aiRepositoryProvider).deleteMessage(m.id),
+                  onRegenerate: isLastAssistant
+                      ? () => unawaited(_regenerate(context, ref))
+                      : null,
+                );
+              },
             ),
-            if (streaming && _userScrolledUp)
+            if (_showScrollToBottomBtn)
               Positioned(
                 right: 16,
                 bottom: 16,
                 child: FloatingActionButton.small(
                   heroTag: 'ai-scroll-to-bottom',
                   tooltip: 'Scroll to bottom',
-                  onPressed: _resumeAutoScroll,
+                  onPressed: () => _scrollToBottom(animated: true),
                   child: const Icon(Icons.arrow_downward_rounded),
                 ),
               ),
@@ -508,9 +479,6 @@ class _MessageListState extends ConsumerState<_MessageList> {
   }
 }
 
-/// The in-flight assistant reply. Incoming cumulative text is buffered and
-/// released a few characters per frame so token-sized network chunks do not
-/// force a rebuild for every event.
 class _StreamingBubble extends ConsumerStatefulWidget {
   const _StreamingBubble({required this.onRendered});
 
@@ -521,8 +489,7 @@ class _StreamingBubble extends ConsumerStatefulWidget {
 }
 
 class _StreamingBubbleState extends ConsumerState<_StreamingBubble> {
-  static const Duration _tickerInterval = Duration(milliseconds: 15);
-  static const int _largeQueueThreshold = 25;
+  static const Duration _tickerInterval = Duration(milliseconds: 16);
 
   String _sourceText = '';
   String _renderedText = '';
@@ -539,4 +506,62 @@ class _StreamingBubbleState extends ConsumerState<_StreamingBubble> {
   void _enqueueSource(String source) {
     if (source == _sourceText) return;
 
-    // The provider exposes cumulative text. Only enqueue the newly arri
+    if (!source.startsWith(_sourceText)) {
+      _sourceText = source;
+      _renderedText = '';
+      _textQueue
+        ..clear()
+        ..addAll(source.split(''));
+    } else {
+      _textQueue.addAll(source.substring(_sourceText.length).split(''));
+      _sourceText = source;
+    }
+  }
+
+  void _consumeQueue() {
+    if (!mounted || _textQueue.isEmpty) return;
+
+    // Fast adaptive drain so the typewriter never lags far behind the stream
+    // or snaps abruptly when streaming finishes.
+    final int len = _textQueue.length;
+    final int takeCount = len > 200
+        ? 25
+        : (len > 80 ? 10 : (len > 25 ? 4 : 1));
+
+    final StringBuffer next = StringBuffer();
+    for (int i = 0; i < takeCount && _textQueue.isNotEmpty; i++) {
+      next.write(_textQueue.removeAt(0));
+    }
+    setState(() => _renderedText += next.toString());
+    widget.onRendered();
+  }
+
+  @override
+  void dispose() {
+    _ticker?.cancel();
+    _ticker = null;
+    _textQueue.clear();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    ref.listen<String>(
+      aiChatControllerProvider.select((AiChatState s) => s.streamingText),
+      (_, String next) => _enqueueSource(next),
+    );
+
+    final ThemeData theme = Theme.of(context);
+    final ColorScheme scheme = theme.colorScheme;
+
+    return Container(
+      width: double.infinity,
+      margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        mainAxisSize: MainAxisSize.min,
+        children: <Widget>[
+          Padding(
+            padding: const EdgeInsets.only(bottom: 4),
+            child: Row(
+              mainAxisSize: MainAqueue the newly arri
