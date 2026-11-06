@@ -137,8 +137,8 @@ void main() {
           grammarLeafProvider(quizId).overrideWith((Ref ref) async => lesson),
           grammarRewardedAdManagerProvider.overrideWithValue(ads),
         ],
-        child: MaterialApp(
-          home: PosQuizStageMapPage(lessonId: quizId),
+        child: const MaterialApp(
+          home: PosQuizStageMapPage(),
         ),
       ),
     );

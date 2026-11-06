@@ -213,10 +213,8 @@ class _WavePainter extends CustomPainter {
     canvas.drawPath(path, base);
 
     final Paint shimmer = Paint()
-      ..shader = LinearGradient(
-        begin: Alignment.centerLeft,
-        end: Alignment.centerRight,
-        colors: const <Color>[
+      ..shader = const LinearGradient(
+        colors: <Color>[
           Color(0x009B72CB),
           Color(0x889B72CB),
           Color(0x994285F4),

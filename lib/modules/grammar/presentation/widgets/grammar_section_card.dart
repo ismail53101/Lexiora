@@ -63,7 +63,7 @@ class GrammarSectionCard extends StatelessWidget {
 /// A simple leading-bullet row used inside section cards for rules, notes and
 /// tips lists.
 class TenseRichText extends StatelessWidget {
-  const TenseRichText({required this.text, this.style, this.bilingual = false});
+  const TenseRichText({super.key, required this.text, this.style, this.bilingual = false});
   final String text;
   final TextStyle? style;
   final bool bilingual;
@@ -309,7 +309,6 @@ class GrammarBullet extends StatelessWidget {
                 children: _highlightRuleDetails(
                   text,
                   const Color(0xFF42A5F5),
-                  defaultColor: null,
                   brightness: theme.brightness,
                 ),
               ),

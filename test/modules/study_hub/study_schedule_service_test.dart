@@ -3,7 +3,7 @@ import 'package:lexiora/modules/study_hub/domain/entities/study_task.dart';
 import 'package:lexiora/modules/study_hub/domain/scheduling/study_schedule_service.dart';
 
 void main() {
-  final DateTime created = DateTime(2026, 1, 1);
+  final DateTime created = DateTime(2026);
 
   StudyTask task(
     String id, {

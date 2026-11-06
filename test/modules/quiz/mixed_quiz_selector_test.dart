@@ -47,6 +47,6 @@ QuizQuestion _question(String subject, int index) => QuizQuestion(
       options: const <String>['A', 'B'],
       answerIndex: 0,
       subject: subject,
-      createdAt: DateTime(2026, 1, 1),
-      updatedAt: DateTime(2026, 1, 1),
+      createdAt: DateTime(2026),
+      updatedAt: DateTime(2026),
     );

@@ -41,7 +41,6 @@ abstract final class AdConfiguration {
   /// define is explicitly supplied.
   static const bool forceTestAds = bool.fromEnvironment(
     'SAPiora_FORCE_TEST_ADS',
-    defaultValue: false,
   );
 
   static String get bannerId => forceTestAds
@@ -247,7 +246,7 @@ class RewardedAdManager {
 
   Future<void> _initializeSdk() async {
     try {
-      final String configuredAppId = kReleaseMode
+      const String configuredAppId = kReleaseMode
           ? AdConfiguration.androidProductionAppId
           : AdConfiguration.androidTestAppId;
       AppLogger.i(

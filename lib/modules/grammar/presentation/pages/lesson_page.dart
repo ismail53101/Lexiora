@@ -1,7 +1,6 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:vector_math/vector_math_64.dart' show Vector3;
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:lexiora/app/router/app_routes.dart';
@@ -13,6 +12,7 @@ import 'package:lexiora/modules/grammar/presentation/providers/grammar_providers
 import 'package:lexiora/modules/grammar/presentation/widgets/grammar_section_card.dart';
 import 'package:lexiora/modules/grammar/presentation/widgets/grammar_voice_colors.dart';
 import 'package:lexiora/modules/grammar/presentation/widgets/practice_question_card.dart';
+import 'package:vector_math/vector_math_64.dart' show Vector3;
 
 /// A single dedicated grammar lesson (a tree leaf): Introduction, Urdu & English
 /// explanation, Types, Rules, Structure, Examples (with Urdu translation),
@@ -560,7 +560,7 @@ class _RulesConversionView extends StatelessWidget {
           const SizedBox(height: 10),
           Row(
             children: <Widget>[
-              Icon(Icons.calculate_outlined, size: 20, color: _purple),
+              const Icon(Icons.calculate_outlined, size: 20, color: _purple),
               const SizedBox(width: 8),
               Text(
                 (formula['title'] as String?) ?? 'General Formula',
@@ -735,7 +735,7 @@ class _ConversionRuleLine extends StatelessWidget {
                 width: 5,
                 height: 5,
                 margin: const EdgeInsets.only(top: 7, right: 10),
-                decoration: BoxDecoration(
+                decoration: const BoxDecoration(
                   color: _purple,
                   shape: BoxShape.circle,
                 ),
@@ -1091,8 +1091,8 @@ class _VoiceBlockWidget extends StatelessWidget {
               // "Example" label with quote icon
               Row(
                 children: <Widget>[
-                  Icon(Icons.format_quote,
-                      size: 16, color: const Color(0xFF42A5F5)),
+                  const Icon(Icons.format_quote,
+                      size: 16, color: Color(0xFF42A5F5)),
                   const SizedBox(width: 4),
                   Text(
                     label,
@@ -1166,8 +1166,8 @@ class _VoiceBlockWidget extends StatelessWidget {
               if (label.isNotEmpty) ...<Widget>[
                 Row(
                   children: <Widget>[
-                    Icon(Icons.format_quote,
-                        size: 16, color: const Color(0xFF42A5F5)),
+                    const Icon(Icons.format_quote,
+                        size: 16, color: Color(0xFF42A5F5)),
                     const SizedBox(width: 4),
                     Text(
                       label,
@@ -1233,7 +1233,7 @@ class _VoiceBreakdownRow extends StatelessWidget {
   Widget build(BuildContext context) {
     if (cells.isEmpty) return const SizedBox.shrink();
     // Layout: [label] = [description]
-    final String left = cells.length >= 1 ? cells[0] : '';
+    final String left = cells.isNotEmpty ? cells[0] : '';
     final String right = cells.length >= 3 ? cells[2] : '';
     return Padding(
       padding: const EdgeInsets.only(bottom: 2),
@@ -1308,7 +1308,6 @@ class _TenseSectionsView extends StatelessWidget {
       children: <Widget>[
         // ── Page heading (e.g. "3. Present Simple") ─────────────────────
         Row(
-          crossAxisAlignment: CrossAxisAlignment.center,
           children: <Widget>[
             Flexible(
               child: Text.rich(
@@ -1357,7 +1356,7 @@ class _TenseSectionsView extends StatelessWidget {
                   height: 1.35,
                 ),
                 children: <TextSpan>[
-                  TextSpan(
+                  const TextSpan(
                     text: 'Definition: ',
                     style: TextStyle(
                       color: _TenseSectionsView._purple,
@@ -1680,8 +1679,8 @@ class _TenseRuleBullet extends StatelessWidget {
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
-          Padding(
-            padding: const EdgeInsets.only(top: 6),
+          const Padding(
+            padding: EdgeInsets.only(top: 6),
             child: Icon(Icons.circle, size: 8, color: _TenseSectionsView._markerPurple),
           ),
           const SizedBox(width: 10),
@@ -3304,7 +3303,7 @@ class _QuizResultView extends StatelessWidget {
 /// the step-by-step chip strip, Key Difference and the exam tip.
 /// Public so widget tests can pump it with the real bundled data.
 class NarrationIntroView extends StatelessWidget {
-  const NarrationIntroView({required this.lesson});
+  const NarrationIntroView({super.key, required this.lesson});
 
   final GrammarLesson lesson;
 
@@ -4432,7 +4431,6 @@ class _NarrationStep extends StatelessWidget {
         borderRadius: BorderRadius.circular(8),
       ),
       child: Column(
-        crossAxisAlignment: CrossAxisAlignment.center,
         mainAxisSize: MainAxisSize.min,
         children: <Widget>[
           if (title.isNotEmpty)
@@ -4667,7 +4665,7 @@ class _NarrationExamTip extends StatelessWidget {
 /// Full-page reference sheet for the Direct & Indirect Speech course lessons.
 /// Public so widget tests can pump it with the real bundled data.
 class NarrationSheetView extends StatelessWidget {
-  const NarrationSheetView({required this.lesson});
+  const NarrationSheetView({super.key, required this.lesson});
 
   final GrammarLesson lesson;
 
@@ -5897,7 +5895,6 @@ class _SheetExampleRow extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.only(bottom: 5),
       child: Row(
-        crossAxisAlignment: CrossAxisAlignment.center,
         children: <Widget>[
           Container(
             width: 16,
@@ -6023,8 +6020,8 @@ class _SheetTruthRow extends StatelessWidget {
               style: bodyStyle,
             ),
           ),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 4),
+          const Padding(
+            padding: EdgeInsets.symmetric(horizontal: 4),
             child: Icon(
               Icons.arrow_forward,
               size: 12,
@@ -6293,7 +6290,7 @@ class _SheetExampleCard extends StatelessWidget {
           ],
         ),
         const SizedBox(height: 5),
-        _SheetHeaderBox(title: 'Direct Speech', accent: kGrammarHeadingPurple),
+        const _SheetHeaderBox(title: 'Direct Speech', accent: kGrammarHeadingPurple),
         Container(
           width: double.infinity,
           padding: const EdgeInsets.all(7),
@@ -6488,8 +6485,8 @@ class _SheetTimeline extends StatelessWidget {
       children: <Widget>[
         for (int i = 0; i < steps.length; i++) ...<Widget>[
           if (i > 0)
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 4),
+            const Padding(
+              padding: EdgeInsets.symmetric(horizontal: 4),
               child: Icon(Icons.trending_flat, size: 18, color: _SheetColors.amber),
             ),
           Expanded(
@@ -6690,7 +6687,7 @@ class _SheetIncorrectCorrect extends StatelessWidget {
           ),
           child: Row(
             children: <Widget>[
-              Icon(Icons.cancel, size: 15, color: _SheetColors.red),
+              const Icon(Icons.cancel, size: 15, color: _SheetColors.red),
               const SizedBox(width: 7),
               Text(
                 'Incorrect:',
@@ -6707,7 +6704,7 @@ class _SheetIncorrectCorrect extends StatelessWidget {
                   style: bodyStyle,
                 ),
               ),
-              Icon(Icons.close, size: 16, color: _SheetColors.red),
+              const Icon(Icons.close, size: 16, color: _SheetColors.red),
             ],
           ),
         ),
@@ -6722,7 +6719,7 @@ class _SheetIncorrectCorrect extends StatelessWidget {
           ),
           child: Row(
             children: <Widget>[
-              Icon(Icons.check_circle, size: 15, color: _SheetColors.green),
+              const Icon(Icons.check_circle, size: 15, color: _SheetColors.green),
               const SizedBox(width: 7),
               Text(
                 'Correct:',
@@ -6739,7 +6736,7 @@ class _SheetIncorrectCorrect extends StatelessWidget {
                   style: bodyStyle,
                 ),
               ),
-              Icon(Icons.check, size: 16, color: _SheetColors.green),
+              const Icon(Icons.check, size: 16, color: _SheetColors.green),
             ],
           ),
         ),

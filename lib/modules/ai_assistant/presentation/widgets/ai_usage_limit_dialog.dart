@@ -19,7 +19,7 @@ Future<void> showAiUsageLimitDialog(
   final String? action = await showDialog<String>(
     context: context,
     builder: (BuildContext dialogContext) => AlertDialog(
-      title: Text(
+      title: const Text(
         "You've used your ${AdConfiguration.FREE_AI_REQUEST_LIMIT} free "
         'AI searches.',
       ),
@@ -29,7 +29,7 @@ Future<void> showAiUsageLimitDialog(
       actions: <Widget>[
         FilledButton(
           onPressed: () => Navigator.of(dialogContext).pop('reward'),
-          child: Text(
+          child: const Text(
             'Watch Ad to Continue '
             '(+${AdConfiguration.REWARDED_AI_REQUEST_BONUS})',
           ),

@@ -204,8 +204,6 @@ class _SessionEditorState extends ConsumerState<_SessionEditor> {
             endMinute: breakEnd,
             durationMinutes: _breakMinutes,
             kind: SessionKind.breakTime,
-            // A break created from a session is anchored to that session.
-            autoScheduled: false,
             createdAt: now,
             updatedAt: now,
           );
@@ -234,7 +232,7 @@ class _SessionEditorState extends ConsumerState<_SessionEditor> {
           data: (List<StudyTask> tasks) => tasks,
           orElse: () => const <StudyTask>[],
         );
-    final int? nextAvailable = StudyScheduleService.nextAvailableMinute(
+    final int nextAvailable = StudyScheduleService.nextAvailableMinute(
       dayTasks,
       excludeId: widget.existing?.id,
     );
@@ -300,7 +298,7 @@ class _SessionEditorState extends ConsumerState<_SessionEditor> {
               onChanged: (bool value) => setState(() => _automatic = value),
               title: const Text('Automatic scheduling'),
               subtitle: Text(
-                _automatic && nextAvailable != null
+                _automatic
                     ? 'Next available: ${formatMinuteOfDay(nextAvailable)}'
                     : 'Choose a custom start time manually',
               ),
@@ -312,7 +310,7 @@ class _SessionEditorState extends ConsumerState<_SessionEditor> {
                     onPressed: () => _pickTime(start: true),
                     icon: const Icon(Icons.schedule, size: 18),
                     label: Text(
-                      _automatic && nextAvailable != null
+                      _automatic
                           ? formatMinuteOfDay(nextAvailable)
                           : (_start == null ? 'Start' : formatMinuteOfDay(_start)),
                     ),

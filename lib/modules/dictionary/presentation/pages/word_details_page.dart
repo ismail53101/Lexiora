@@ -58,9 +58,7 @@ class _WordDetailsPageState extends ConsumerState<WordDetailsPage> {
       orElse: () => null,
     );
     final WordProfile? displayProfile =
-        localProfile == null
-            ? null
-            : localProfile.copyWith(ai: aiProfile);
+        localProfile?.copyWith(ai: aiProfile);
 
     return Scaffold(
       appBar: AppBar(

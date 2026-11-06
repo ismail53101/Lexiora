@@ -76,8 +76,8 @@ class NotificationService {
 
     try {
       await _plugin.initialize(
-        settings: InitializationSettings(
-          android: const AndroidInitializationSettings('@mipmap/ic_launcher'),
+        settings: const InitializationSettings(
+          android: AndroidInitializationSettings('@mipmap/ic_launcher'),
         ),
         onDidReceiveNotificationResponse: (NotificationResponse response) {
           AppLogger.i(

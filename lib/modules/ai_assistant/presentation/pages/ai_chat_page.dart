@@ -327,7 +327,7 @@ class _MessageListState extends ConsumerState<_MessageList> {
     // by _isAutoScrollEnabled, so manual scrolling always has priority.
     ref.listenManual<String>(
       aiChatControllerProvider.select((AiChatState s) => s.streamingText),
-      (_, String __) => _scheduleStreamingScroll(),
+      (_, String _) => _scheduleStreamingScroll(),
     );
   }
 
@@ -398,7 +398,7 @@ class _MessageListState extends ConsumerState<_MessageList> {
   Future<void> _scrollToBottom() async {
     if (!_isAutoScrollEnabled || !_scrollController.hasClients) return;
 
-    final double target = 0;
+    const double target = 0;
     final double current = _scrollController.position.pixels;
     if ((current - target).abs() <= 1) return;
 

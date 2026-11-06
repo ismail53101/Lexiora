@@ -12,9 +12,9 @@ import 'package:lexiora/modules/quiz/domain/entities/quiz_settings.dart';
 import 'package:lexiora/modules/quiz/domain/entities/quiz_stage_progress.dart';
 import 'package:lexiora/modules/quiz/domain/entities/quiz_subject.dart';
 import 'package:lexiora/modules/quiz/domain/entities/quiz_topic.dart';
+import 'package:lexiora/modules/quiz/domain/mixed_quiz_selector.dart';
 import 'package:lexiora/modules/quiz/domain/quiz_dates.dart';
 import 'package:lexiora/modules/quiz/domain/quiz_grading.dart';
-import 'package:lexiora/modules/quiz/domain/mixed_quiz_selector.dart';
 import 'package:lexiora/modules/quiz/domain/quiz_stages.dart';
 import 'package:lexiora/modules/quiz/domain/repositories/quiz_repository.dart';
 import 'package:uuid/uuid.dart';
@@ -279,7 +279,6 @@ class QuizRepositoryImpl implements QuizRepository {
     return MixedQuizSelector.select(
       questions,
       limit: limit,
-      shuffle: true,
     );
   }
 

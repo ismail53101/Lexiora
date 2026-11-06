@@ -168,7 +168,7 @@ void main() {
       ),
       isTrue,
     );
-    Set<int> pakistanUnlocks =
+    final Set<int> pakistanUnlocks =
         await repo.mainQuizRewardedMilestoneStages('pakistan-affairs');
     expect(
       quizStageUnlocked(

@@ -150,7 +150,7 @@ void main() {
   });
 
   test('bundled seeder installs manifest subjects, idempotently', () async {
-    final _FakeBundledProvider provider = const _FakeBundledProvider(
+    const _FakeBundledProvider provider = _FakeBundledProvider(
       <QuizBankManifest>[
         QuizBankManifest(
           ref: 'pakistan_affairs/economy.json',

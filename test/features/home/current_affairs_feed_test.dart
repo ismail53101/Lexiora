@@ -51,7 +51,6 @@ void main() {
       source: 'Dawn',
       category: 'National',
       relativeTime: '1h ago',
-      feedType: 'Latest News',
     );
 
     expect(opinion.isOpinion, isTrue);

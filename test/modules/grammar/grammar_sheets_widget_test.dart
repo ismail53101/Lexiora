@@ -129,7 +129,7 @@ void main() {
       await tester.pumpWidget(
         MaterialApp(
           home: MediaQuery(
-            data: MediaQueryData(textScaler: TextScaler.linear(1.5)),
+            data: const MediaQueryData(textScaler: TextScaler.linear(1.5)),
             child: Scaffold(
               body: NarrationSheetView(
                 lesson: _lesson(
@@ -198,7 +198,7 @@ void main() {
       await tester.pumpWidget(
         MaterialApp(
           home: MediaQuery(
-            data: MediaQueryData(textScaler: TextScaler.linear(1.5)),
+            data: const MediaQueryData(textScaler: TextScaler.linear(1.5)),
             child: Scaffold(
               body: NarrationIntroView(
                 lesson: _lesson(

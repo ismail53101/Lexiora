@@ -121,7 +121,7 @@ void main() {
     await repo.saveTask((await repo.watchTasks(today).first)
         .firstWhere((StudyTask t) => t.id == 'b')
         .copyWith(endMinute: 620, durationMinutes: 20, updatedAt: DateTime.now()));
-    StudyTask breakTask = (await repo.watchTasks(today).first)
+    final StudyTask breakTask = (await repo.watchTasks(today).first)
         .firstWhere((StudyTask t) => t.id == 'b');
     expect(breakTask.startMinute, 600);
     expect(breakTask.endMinute, 620);

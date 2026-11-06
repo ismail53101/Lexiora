@@ -137,10 +137,10 @@ class _SplashPageState extends State<SplashPage> {
                               )
                               .fadeIn(duration: 500.ms),
                           const SizedBox(height: 30),
-                          Text(
+                          const Text(
                             AppConstants.appName,
                             textAlign: TextAlign.center,
-                            style: const TextStyle(
+                            style: TextStyle(
                               color: Colors.white,
                               fontSize: 38,
                               fontWeight: FontWeight.w800,
@@ -158,10 +158,10 @@ class _SplashPageState extends State<SplashPage> {
                                 curve: Curves.easeOutCubic,
                               ),
                           const SizedBox(height: 12),
-                          Text(
+                          const Text(
                             AppConstants.appTagline,
                             textAlign: TextAlign.center,
-                            style: const TextStyle(
+                            style: TextStyle(
                               color: Color(0xFFB9D5FF),
                               fontSize: 18,
                               letterSpacing: 1.1,

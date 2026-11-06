@@ -1,10 +1,10 @@
 import 'package:lexiora/core/usecase/usecase.dart';
 import 'package:lexiora/core/utils/guard.dart';
 import 'package:lexiora/core/utils/typedefs.dart';
-import 'package:lexiora/modules/dictionary/domain/entities/dictionary_entry.dart';
-import 'package:lexiora/modules/dictionary/domain/entities/word_profile.dart';
 import 'package:lexiora/modules/dictionary/data/services/ai_dictionary_service.dart';
 import 'package:lexiora/modules/dictionary/data/services/stands4_dictionary_service.dart';
+import 'package:lexiora/modules/dictionary/domain/entities/dictionary_entry.dart';
+import 'package:lexiora/modules/dictionary/domain/entities/word_profile.dart';
 import 'package:lexiora/modules/dictionary/domain/repositories/dictionary_repository.dart';
 
 /// Aggregates the fully-offline parts of a word's profile: the curated exam

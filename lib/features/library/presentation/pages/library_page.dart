@@ -79,10 +79,10 @@ class _LibraryPageState extends ConsumerState<LibraryPage> {
                 ),
                 onChanged: (String v) => setState(() => _query = v),
               )
-            : Row(
+            : const Row(
                 mainAxisSize: MainAxisSize.min,
                 children: [
-                  const Text('Library'),
+                  Text('Library'),
                 ],
               ),
         actions: [
