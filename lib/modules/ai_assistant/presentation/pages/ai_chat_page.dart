@@ -423,7 +423,7 @@ class _MessageListState extends ConsumerState<_MessageList> {
     ref.listen<AiChatState>(
       aiChatControllerProvider,
       (previous, next) {
-        if (next.streaming && !next.streamingText.isEmpty) {
+        if (next.streaming && next.streamingText.isNotEmpty) {
           _scheduleStreamingScroll();
         }
       },
