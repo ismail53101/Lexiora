@@ -306,15 +306,10 @@ class _MessageList extends ConsumerStatefulWidget {
 }
 
 class _MessageListState extends ConsumerState<_MessageList> {
-  /// Streaming is rendered inside the in-flight assistant bubble. The parent
-  /// list is deliberately not animated for every token: with a reversed list,
-  /// offset 0 naturally keeps the newest bubble anchored while its height
-  /// grows. This leaves manual scrolling completely under the user's control.
-  static const double _bottomThreshold = 24;
+  static const double _bottomThreshold = 32;
 
   final ScrollController _scrollController = ScrollController();
-
-  bool _isAutoScrollEnabled = true;
+  bool _userHasScrolled = false;
 
   @override
   void initState() {
@@ -332,44 +327,36 @@ class _MessageListState extends ConsumerState<_MessageList> {
 
   void _handleScroll() {
     if (!_scrollController.hasClients) return;
-    final double offset = _scrollController.position.pixels;
-    final bool atNewest = offset <= _bottomThreshold;
-    if (atNewest != _isAutoScrollEnabled) {
-      _isAutoScrollEnabled = atNewest;
-      if (mounted) setState(() {});
-    }
+    final ScrollPosition position = _scrollController.position;
+    _userHasScrolled = position.maxScrollExtent - position.pixels >
+        _bottomThreshold;
   }
 
   bool _handleScrollNotification(ScrollNotification notification) {
     if (notification is UserScrollNotification ||
         notification is ScrollUpdateNotification ||
         notification is ScrollEndNotification) {
-      final double offset = notification.metrics.pixels;
-      final bool atNewest = offset <= _bottomThreshold;
-      if (atNewest != _isAutoScrollEnabled) {
-        _isAutoScrollEnabled = atNewest;
-        if (mounted) setState(() {});
-      }
+      _handleScroll();
     }
     return false;
   }
 
-  Future<void> _resumeAutoScroll() async {
-    if (!_scrollController.hasClients) return;
-    _isAutoScrollEnabled = true;
-    if (mounted) setState(() {});
-
-    // Only perform an explicit scroll when the user asks to return to the
-    // newest answer. Streaming itself never calls animateTo/jumpTo.
-    try {
-      await _scrollController.animateTo(
-        0,
-        duration: const Duration(milliseconds: 220),
+  /// The reference behavior does not continuously scroll while the answer is
+  /// being generated. The user message stays in place and the live assistant
+  /// response grows downward naturally. This method is only used to reveal a
+  /// newly submitted conversation when appropriate.
+  void _showNewestMessage() {
+    if (!_scrollController.hasClients || _userHasScrolled) return;
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      if (!mounted || !_scrollController.hasClients || _userHasScrolled) return;
+      final double target = _scrollController.position.maxScrollExtent;
+      if (target <= 0) return;
+      _scrollController.animateTo(
+        target,
+        duration: const Duration(milliseconds: 180),
         curve: Curves.easeOutCubic,
       );
-    } on FlutterError {
-      // The controller may lose its position during route replacement.
-    }
+    });
   }
 
   Future<void> _regenerate(BuildContext context, WidgetRef ref) async {
@@ -388,29 +375,39 @@ class _MessageListState extends ConsumerState<_MessageList> {
         ref.watch(aiChatControllerProvider.select((AiChatState s) => s.streaming));
     final int limit = ref.watch(aiMessageLimitProvider);
 
+    ref.listen<AsyncValue<List<AiMessage>>>(
+      aiMessagesProvider(widget.conversationId),
+      (previous, next) {
+        if (previous?.valueOrNull?.length != next.valueOrNull?.length) {
+          _showNewestMessage();
+        }
+      },
+    );
+
     return async.when(
       loading: () => const Center(child: CircularProgressIndicator()),
       error: (_, _) => const _Welcome(),
       data: (List<AiMessage> messages) {
         if (messages.isEmpty && !streaming) return const _Welcome();
-        final int off = streaming ? 1 : 0;
         final bool canLoadMore = messages.length >= limit;
-        final int count = off + messages.length + (canLoadMore ? 1 : 0);
+        final int count = (streaming ? 1 : 0) +
+            messages.length +
+            (canLoadMore ? 1 : 0);
 
         return Stack(
           children: <Widget>[
             NotificationListener<ScrollNotification>(
               onNotification: _handleScrollNotification,
               child: ListView.builder(
-                reverse: true,
+                // The reference behavior is a normal top-to-bottom conversation:
+                // the user's message stays where it was while the live answer
+                // grows underneath it instead of growing upward from the bottom.
+                reverse: false,
                 controller: _scrollController,
                 padding: const EdgeInsets.symmetric(vertical: 8),
                 itemCount: count,
                 itemBuilder: (BuildContext context, int i) {
-                  if (streaming && i == 0) {
-                    return const _StreamingBubble();
-                  }
-                  if (canLoadMore && i == count - 1) {
+                  if (canLoadMore && i == 0) {
                     return Center(
                       child: Padding(
                         padding: const EdgeInsets.all(8),
@@ -423,11 +420,22 @@ class _MessageListState extends ConsumerState<_MessageList> {
                       ),
                     );
                   }
-                  final int msgIndex = messages.length - 1 - (i - off);
+
+                  final int messageOffset = canLoadMore ? 1 : 0;
+                  if (streaming && i == messageOffset + messages.length) {
+                    return const _StreamingBubble();
+                  }
+
+                  final int msgIndex = i - messageOffset;
+                  if (msgIndex < 0 || msgIndex >= messages.length) {
+                    return const SizedBox.shrink();
+                  }
+
                   final AiMessage m = messages[msgIndex];
                   final bool isLastAssistant = !streaming &&
                       m.role == AiRole.assistant &&
                       msgIndex == messages.length - 1;
+
                   return MessageBubble(
                     message: m,
                     onDelete: () =>
@@ -439,24 +447,12 @@ class _MessageListState extends ConsumerState<_MessageList> {
                 },
               ),
             ),
-            if (streaming && !_isAutoScrollEnabled)
-              Positioned(
-                right: 16,
-                bottom: 16,
-                child: FloatingActionButton.small(
-                  heroTag: 'ai-scroll-to-bottom',
-                  tooltip: 'Scroll to bottom',
-                  onPressed: _resumeAutoScroll,
-                  child: const Icon(Icons.arrow_downward_rounded),
-                ),
-              ),
           ],
         );
       },
     );
   }
 }
-
 /// The in-flight assistant reply.
 ///
 /// Network tokens are buffered and rendered in small batches. This keeps
