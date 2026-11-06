@@ -117,7 +117,7 @@ class HybridTranslate
         if (_aiWordTranslation != null &&
             _isSingleWord(word) &&
             lang.toLowerCase() == 'ur') {
-          final String? aiTranslation = await _aiWordTranslation!.translate(
+          final String? aiTranslation = await _aiWordTranslation.translate(
             word: word,
             targetLanguageCode: lang,
           );
