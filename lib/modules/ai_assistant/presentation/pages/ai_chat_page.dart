@@ -351,7 +351,9 @@ class _MessageListState extends ConsumerState<_MessageList> {
   }
 
   bool _handleScrollNotification(ScrollNotification notification) {
-    final bool isUserGesture = notification.dragDetails != null;
+    final bool isUserGesture =
+        notification is ScrollStartNotification &&
+        notification.dragDetails != null;
     if (isUserGesture) {
       _streamFollowTimer?.cancel();
       _streamFollowTimer = null;
