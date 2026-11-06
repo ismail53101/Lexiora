@@ -330,7 +330,8 @@ class _MessageListState extends ConsumerState<_MessageList> {
   void _updateScrollButtonVisibility() {
     if (!_scrollController.hasClients) return;
     final ScrollPosition pos = _scrollController.position;
-    final bool hasMoreBelow = (pos.maxScrollExtent - pos.pixels) > _bottomThreshold;
+    final bool hasMoreBelow =
+        (pos.maxScrollExtent - pos.pixels) > _bottomThreshold;
     if (hasMoreBelow != _showScrollToBottomBtn && mounted) {
       setState(() => _showScrollToBottomBtn = hasMoreBelow);
     }
@@ -351,9 +352,6 @@ class _MessageListState extends ConsumerState<_MessageList> {
     _updateScrollButtonVisibility();
   }
 
-  /// Called once when streaming starts so the user's newly sent message and
-  /// the top of the AI reply are brought into view. As the reply grows
-  /// downward, we DO NOT force-scroll, letting the user read from the top.
   void _scrollNewPromptIntoView() {
     WidgetsBinding.instance.addPostFrameCallback((_) {
       if (!mounted || !_scrollController.hasClients) return;
@@ -362,8 +360,6 @@ class _MessageListState extends ConsumerState<_MessageList> {
   }
 
   void _onStreamingFrameRendered() {
-    // Only update whether the down-arrow button should appear as text grows
-    // below the screen. Never force-jump the user's scroll position!
     WidgetsBinding.instance.addPostFrameCallback((_) {
       if (!mounted) return;
       _updateScrollButtonVisibility();
@@ -384,10 +380,8 @@ class _MessageListState extends ConsumerState<_MessageList> {
       aiChatControllerProvider.select((AiChatState s) => s.streaming),
       (bool? prev, bool next) {
         if (prev == false && next == true) {
-          // User just sent a prompt: bring the prompt + typing indicator into view once.
           _scrollNewPromptIntoView();
         } else if (prev == true && next == false) {
-          // Streaming finished: re-check if content extends below viewport.
           WidgetsBinding.instance.addPostFrameCallback((_) {
             if (mounted) _updateScrollButtonVisibility();
           });
@@ -521,12 +515,9 @@ class _StreamingBubbleState extends ConsumerState<_StreamingBubble> {
   void _consumeQueue() {
     if (!mounted || _textQueue.isEmpty) return;
 
-    // Fast adaptive drain so the typewriter never lags far behind the stream
-    // or snaps abruptly when streaming finishes.
     final int len = _textQueue.length;
-    final int takeCount = len > 200
-        ? 25
-        : (len > 80 ? 10 : (len > 25 ? 4 : 1));
+    final int takeCount =
+        len > 200 ? 25 : (len > 80 ? 10 : (len > 25 ? 4 : 1));
 
     final StringBuffer next = StringBuffer();
     for (int i = 0; i < takeCount && _textQueue.isNotEmpty; i++) {
@@ -564,4 +555,23 @@ class _StreamingBubbleState extends ConsumerState<_StreamingBubble> {
           Padding(
             padding: const EdgeInsets.only(bottom: 4),
             child: Row(
-              mainAxisSize: MainAqueue the newly arri
+              mainAxisSize: MainAxisSize.min,
+              children: <Widget>[
+                Icon(Icons.auto_awesome_rounded,
+                    size: 14, color: scheme.primary),
+                const SizedBox(width: 5),
+                Text(
+                  'AI Assistant',
+                  style: theme.textTheme.labelMedium?.copyWith(
+                    fontWeight: FontWeight.w700,
+                    color: scheme.primary,
+                  ),
+                ),
+              ],
+            ),
+          ),
+          SizedBox(
+            width: double.infinity,
+            child: AnimatedSwitcher(
+              duration: const Duration(milliseconds: 200),
+              switchInCurv
