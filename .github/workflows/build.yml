@@ -70,11 +70,6 @@ jobs:
           storeFile=upload-keystore.jks
           EOF
 
-      - name: Ensure Gradle wrapper
-        # The wrapper jar is intentionally not committed (binary-free repo);
-        # regenerate it to match the pinned Gradle version before building.
-        run: cd android && gradle wrapper --gradle-version 9.1.0
-
       - name: Apply Dart automatic fixes
         run: |
           set -euo pipefail
@@ -92,6 +87,11 @@ jobs:
 
       - name: Run tests
         run: flutter test
+
+      - name: Ensure Gradle wrapper
+        # The wrapper jar is intentionally not committed (binary-free repo);
+        # regenerate it to match the pinned Gradle version before building.
+        run: cd android && gradle wrapper --gradle-version 9.1.0
 
       - name: Build release APK
         # SAPIORA_AI_API_KEY / SAPIORA_AI_BASE_URL / SAPIORA_AI_PROVIDER come
