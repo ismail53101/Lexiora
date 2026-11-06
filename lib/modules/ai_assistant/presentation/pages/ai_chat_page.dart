@@ -470,39 +470,44 @@ class _StreamingBubble extends ConsumerStatefulWidget {
 }
 
 class _StreamingBubbleState extends ConsumerState<_StreamingBubble> {
-  static const Duration _tickerInterval = Duration(milliseconds: 32);
-  static const int _normalBatchSize = 2;
-  static const int _catchUpBatchSize = 8;
-  static const int _catchUpThreshold = 32;
+  /// Render at a controlled cadence instead of rebuilding the Markdown parser
+  /// for every network token. The parent message list remains untouched.
+  static const Duration _renderInterval = Duration(milliseconds: 64);
+  static const int _normalBatchSize = 6;
+  static const int _catchUpBatchSize = 24;
+  static const int _catchUpThreshold = 48;
 
   String _sourceText = '';
   String _renderedText = '';
   final List<String> _textQueue = <String>[];
-  Timer? _ticker;
+  Timer? _renderTimer;
 
   @override
   void initState() {
     super.initState();
+    ref.listenManual<String>(
+      aiChatControllerProvider.select((AiChatState s) => s.streamingText),
+      (_, String next) => _enqueueSource(next),
+    );
     _enqueueSource(ref.read(aiChatControllerProvider).streamingText);
-    _ticker = Timer.periodic(_tickerInterval, (_) => _consumeQueue());
+    _renderTimer = Timer.periodic(_renderInterval, (_) => _consumeQueue());
   }
 
   void _enqueueSource(String source) {
-    if (source == _sourceText) return;
+    if (!mounted || source == _sourceText) return;
 
     // streamingText is cumulative. Queue only the new suffix.
-    if (!source.startsWith(_sourceText)) {
-      _sourceText = source;
-      _renderedText = '';
+    if (source.startsWith(_sourceText)) {
+      final String suffix = source.substring(_sourceText.length);
+      if (suffix.isNotEmpty) {
+        _textQueue.addAll(suffix.runes.map(String.fromCharCode));
+      }
+    } else {
+      // The provider can replace the stream when a request is restarted.
       _textQueue
         ..clear()
-        ..addAll(source.split(''));
-      return;
-    }
-
-    final String suffix = source.substring(_sourceText.length);
-    if (suffix.isNotEmpty) {
-      _textQueue.addAll(suffix.split(''));
+        ..addAll(source.runes.map(String.fromCharCode));
+      _renderedText = '';
     }
     _sourceText = source;
   }
@@ -510,77 +515,73 @@ class _StreamingBubbleState extends ConsumerState<_StreamingBubble> {
   void _consumeQueue() {
     if (!mounted || _textQueue.isEmpty) return;
 
-    final int takeCount = _textQueue.length >= _catchUpThreshold
+    final int target = _textQueue.length >= _catchUpThreshold
         ? _catchUpBatchSize
         : _normalBatchSize;
-    final int actualCount =
-        takeCount < _textQueue.length ? takeCount : _textQueue.length;
+    final int count = target.clamp(1, _textQueue.length);
 
     final StringBuffer next = StringBuffer();
-    for (int i = 0; i < actualCount; i++) {
+    for (int i = 0; i < count; i++) {
       next.write(_textQueue[i]);
     }
-    _textQueue.removeRange(0, actualCount);
+    _textQueue.removeRange(0, count);
 
     setState(() => _renderedText += next.toString());
   }
 
   @override
   void dispose() {
-    _ticker?.cancel();
-    _ticker = null;
+    _renderTimer?.cancel();
+    _renderTimer = null;
     _textQueue.clear();
     super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
-    ref.listen<String>(
-      aiChatControllerProvider.select((AiChatState s) => s.streamingText),
-      (_, String next) => _enqueueSource(next),
-    );
-
     final ThemeData theme = Theme.of(context);
     final ColorScheme scheme = theme.colorScheme;
 
-    return Container(
-      width: double.infinity,
-      margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        mainAxisSize: MainAxisSize.min,
-        children: <Widget>[
-          Padding(
-            padding: const EdgeInsets.only(bottom: 4),
-            child: Row(
-              mainAxisSize: MainAxisSize.min,
-              children: <Widget>[
-                Icon(
-                  Icons.auto_awesome_rounded,
-                  size: 14,
-                  color: scheme.primary,
-                ),
-                const SizedBox(width: 5),
-                Text(
-                  'AI Assistant',
-                  style: theme.textTheme.labelMedium?.copyWith(
-                    fontWeight: FontWeight.w700,
+    return RepaintBoundary(
+      child: Container(
+        width: double.infinity,
+        margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisSize: MainAxisSize.min,
+          children: <Widget>[
+            Padding(
+              padding: const EdgeInsets.only(bottom: 4),
+              child: Row(
+                mainAxisSize: MainAxisSize.min,
+                children: <Widget>[
+                  Icon(
+                    Icons.auto_awesome_rounded,
+                    size: 14,
                     color: scheme.primary,
                   ),
-                ),
-              ],
-            ),
-          ),
-          SizedBox(
-            width: double.infinity,
-            child: _renderedText.isEmpty
-                ? const TypingIndicator()
-                : AiMarkdown(
-                    data: _renderedText,
-                    color: scheme.onSurface,
+                  const SizedBox(width: 5),
+                  Text(
+                    'AI Assistant',
+                    style: theme.textTheme.labelMedium?.copyWith(
+                      fontWeight: FontWeight.w700,
+                      color: scheme.primary,
+                    ),
                   ),
-          ),
-        ],
+                ],
+              ),
+            ),
+            SizedBox(
+              width: double.infinity,
+              child: _renderedText.isEmpty
+                  ? const TypingIndicator()
+                  : AiMarkdown(
+                      data: _renderedText,
+                      color: scheme.onSurface,
+                    ),
+            ),
+          ],
+        ),
       ),
     );
   }
