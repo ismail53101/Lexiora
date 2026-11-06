@@ -55,7 +55,9 @@ class AiWordTranslationService {
       if (delta is Map && delta['content'] is String) return delta['content'] as String;
       final Object? message = first['message'];
       if (message is Map && message['content'] is String) return message['content'] as String;
-    } on Object {}
+    } on Object {
+      // Ignore malformed or non-JSON streaming chunks and let the caller continue.
+    }
     return null;
   }
 
