@@ -314,6 +314,7 @@ class _MessageListState extends ConsumerState<_MessageList> {
   bool _userScrolledUp = false;
   bool _programmaticScrollInProgress = false;
   bool _userScrollInProgress = false;
+  Timer? _streamFollowTimer;
 
   void _setUserScrolledUp(bool value) {
     if (_userScrolledUp == value) return;
@@ -329,6 +330,8 @@ class _MessageListState extends ConsumerState<_MessageList> {
 
   @override
   void dispose() {
+    _streamFollowTimer?.cancel();
+    _streamFollowTimer = null;
     _scrollController
       ..removeListener(_handleScroll)
       ..dispose();
@@ -348,7 +351,15 @@ class _MessageListState extends ConsumerState<_MessageList> {
   }
 
   bool _handleScrollNotification(ScrollNotification notification) {
-    if (_programmaticScrollInProgress) return false;
+    final bool isUserGesture = notification.dragDetails != null;
+    if (isUserGesture) {
+      _streamFollowTimer?.cancel();
+      _streamFollowTimer = null;
+      _userScrollInProgress = true;
+      _programmaticScrollInProgress = false;
+    } else if (_programmaticScrollInProgress) {
+      return false;
+    }
     final double offset = notification.metrics.pixels;
 
     if (notification is ScrollStartNotification) {
@@ -380,7 +391,7 @@ class _MessageListState extends ConsumerState<_MessageList> {
   }
 
   /// Scroll to the newest message unless the user is reading older content.
-  Future<void> _scrollToBottom() async {
+  Future<void> _scrollToBottom({bool fromStreaming = false}) async {
     if (_userScrolledUp ||
         !_scrollController.hasClients ||
         _programmaticScrollInProgress) return;
@@ -388,17 +399,37 @@ class _MessageListState extends ConsumerState<_MessageList> {
     try {
       await _scrollController.animateTo(
         0,
-        duration: const Duration(milliseconds: 250),
+        duration: Duration(milliseconds: fromStreaming ? 120 : 250),
         curve: Curves.easeOut,
       );
     } finally {
       _programmaticScrollInProgress = false;
-      if (mounted && _scrollController.hasClients) {
+      if (mounted && _scrollController.hasClients && !_userScrollInProgress) {
         _setUserScrolledUp(
           _scrollController.position.pixels > _autoScrollThreshold,
         );
       }
     }
+  }
+
+  void _scheduleStreamingFollow() {
+    if (_userScrolledUp ||
+        _userScrollInProgress ||
+        !_scrollController.hasClients) {
+      return;
+    }
+    _streamFollowTimer?.cancel();
+    _streamFollowTimer = Timer(const Duration(milliseconds: 80), () {
+      _streamFollowTimer = null;
+      if (!mounted ||
+          _userScrolledUp ||
+          _userScrollInProgress ||
+          !_scrollController.hasClients ||
+          _scrollController.position.isScrollingNotifier.value) {
+        return;
+      }
+      unawaited(_scrollToBottom(fromStreaming: true));
+    });
   }
 
   Future<void> _regenerate(BuildContext context, WidgetRef ref) async {
@@ -415,6 +446,10 @@ class _MessageListState extends ConsumerState<_MessageList> {
         ref.watch(aiMessagesProvider(widget.conversationId));
     final bool streaming =
         ref.watch(aiChatControllerProvider.select((AiChatState s) => s.streaming));
+    ref.listen<String>(
+      aiChatControllerProvider.select((AiChatState s) => s.streamingText),
+      (_, String __) => _scheduleStreamingFollow(),
+    );
     final int limit = ref.watch(aiMessageLimitProvider);
 
     return async.when(
