@@ -274,14 +274,14 @@ class StageResultsPage extends ConsumerWidget {
                 Navigator.of(context).pop();
                 return;
               }
-              Navigator.of(context).pushReplacement(MaterialPageRoute<void>(
+              unawaited(Navigator.of(context).pushReplacement(MaterialPageRoute<void>(
                 builder: (_) => StagePlayerPage(
                   subjectId: subjectId,
                   subjectName: subjectName,
                   topicId: topicId,
                   stageIndex: stageIndex + 1,
                 ),
-              ));
+              )));
             },
             icon: Icon(mainQuiz && passed && hasNext
                 ? (nextIsMilestone
