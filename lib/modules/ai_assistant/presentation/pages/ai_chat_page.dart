@@ -309,6 +309,7 @@ class _MessageListState extends ConsumerState<_MessageList> {
   static const double _bottomThreshold = 32;
 
   final ScrollController _scrollController = ScrollController();
+  Timer? _scrollTimer;
   bool _userHasScrolled = false;
 
   @override
@@ -319,6 +320,8 @@ class _MessageListState extends ConsumerState<_MessageList> {
 
   @override
   void dispose() {
+    _scrollTimer?.cancel();
+    _scrollTimer = null;
     _scrollController
       ..removeListener(_handleScroll)
       ..dispose();
@@ -333,27 +336,54 @@ class _MessageListState extends ConsumerState<_MessageList> {
   }
 
   bool _handleScrollNotification(ScrollNotification notification) {
-    if (notification is UserScrollNotification ||
-        notification is ScrollUpdateNotification ||
-        notification is ScrollEndNotification) {
+    if (notification is UserScrollNotification) {
+      _scrollTimer?.cancel();
+      _handleScroll();
+    } else if (notification is ScrollEndNotification) {
       _handleScroll();
     }
     return false;
   }
 
-  /// The reference behavior does not continuously scroll while the answer is
-  /// being generated. The user message stays in place and the live assistant
-  /// response grows downward naturally. This method is only used to reveal a
-  /// newly submitted conversation when appropriate.
-  void _showNewestMessage() {
-    if (!_scrollController.hasClients || _userHasScrolled) return;
+  /// Reveal a newly submitted user message and keep it in the lower part of
+  /// the viewport, matching the reference behavior. This is intentionally
+  /// triggered only for a new user message, never when the completed
+  /// assistant reply is persisted.
+  void _showNewestUserMessage() {
+    if (!_scrollController.hasClients) return;
+    _scheduleScrollToBottom(const Duration(milliseconds: 180));
+  }
+
+  /// Follow the live assistant response as it grows. The scroll is coalesced
+  /// so a burst of tokens cannot start a competing animation for every token.
+  void _scheduleStreamingScroll() {
+    if (_userHasScrolled || !_scrollController.hasClients) return;
+    _scrollTimer?.cancel();
+    _scrollTimer = Timer(const Duration(milliseconds: 24), () {
+      if (!mounted || _userHasScrolled || !_scrollController.hasClients) return;
+      WidgetsBinding.instance.addPostFrameCallback((_) {
+        if (!mounted || _userHasScrolled || !_scrollController.hasClients) return;
+        final double target = _scrollController.position.maxScrollExtent;
+        if (target <= _scrollController.position.pixels + 1) return;
+        _scrollController.animateTo(
+          target,
+          duration: const Duration(milliseconds: 90),
+          curve: Curves.easeOut,
+        );
+      });
+    });
+  }
+
+  void _scheduleScrollToBottom(Duration duration) {
+    if (!_scrollController.hasClients) return;
+    _scrollTimer?.cancel();
     WidgetsBinding.instance.addPostFrameCallback((_) {
-      if (!mounted || !_scrollController.hasClients || _userHasScrolled) return;
+      if (!mounted || !_scrollController.hasClients) return;
       final double target = _scrollController.position.maxScrollExtent;
-      if (target <= 0) return;
+      if (target <= _scrollController.position.pixels + 1) return;
       _scrollController.animateTo(
         target,
-        duration: const Duration(milliseconds: 180),
+        duration: duration,
         curve: Curves.easeOutCubic,
       );
     });
@@ -378,14 +408,23 @@ class _MessageListState extends ConsumerState<_MessageList> {
     ref.listen<AsyncValue<List<AiMessage>>>(
       aiMessagesProvider(widget.conversationId),
       (previous, next) {
-        final int? previousLength = previous is AsyncData<List<AiMessage>>
-            ? previous.value.length
-            : null;
-        final int? nextLength = next is AsyncData<List<AiMessage>>
-            ? next.value.length
-            : null;
-        if (previousLength != nextLength) {
-          _showNewestMessage();
+        final List<AiMessage>? previousMessages =
+            previous is AsyncData<List<AiMessage>> ? previous.value : null;
+        final List<AiMessage>? nextMessages =
+            next is AsyncData<List<AiMessage>> ? next.value : null;
+        if (previousMessages == null || nextMessages == null) return;
+        if (nextMessages.length > previousMessages.length &&
+            nextMessages.isNotEmpty &&
+            nextMessages.last.role == AiRole.user) {
+          _showNewestUserMessage();
+        }
+      },
+    );
+    ref.listen<AiChatState>(
+      aiChatControllerProvider,
+      (previous, next) {
+        if (next.streaming && !next.streamingText.isEmpty) {
+          _scheduleStreamingScroll();
         }
       },
     );
@@ -425,7 +464,9 @@ class _MessageListState extends ConsumerState<_MessageList> {
 
                   final int messageOffset = canLoadMore ? 1 : 0;
                   if (streaming && i == messageOffset + messages.length) {
-                    return const _StreamingBubble();
+                    return _StreamingBubble(
+                      onRendered: _scheduleStreamingScroll,
+                    );
                   }
 
                   final int msgIndex = i - messageOffset;
@@ -461,7 +502,9 @@ class _MessageListState extends ConsumerState<_MessageList> {
 /// markdown/layout work off the hot path and, importantly, never touches the
 /// parent ScrollController while the user is scrolling.
 class _StreamingBubble extends ConsumerStatefulWidget {
-  const _StreamingBubble();
+  const _StreamingBubble({required this.onRendered});
+
+  final VoidCallback onRendered;
 
   @override
   ConsumerState<_StreamingBubble> createState() => _StreamingBubbleState();
@@ -525,6 +568,7 @@ class _StreamingBubbleState extends ConsumerState<_StreamingBubble> {
     _textQueue.removeRange(0, count);
 
     setState(() => _renderedText += next.toString());
+    widget.onRendered();
   }
 
   @override
