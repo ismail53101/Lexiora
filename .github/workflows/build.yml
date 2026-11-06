@@ -75,6 +75,18 @@ jobs:
         # regenerate it to match the pinned Gradle version before building.
         run: cd android && gradle wrapper --gradle-version 9.1.0
 
+      - name: Apply Dart automatic fixes
+        run: |
+          set -euo pipefail
+          dart fix --apply
+          if ! git diff --quiet; then
+            git config user.name "github-actions[bot]"
+            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            git add -A
+            git commit -m "chore: apply Dart auto-fixes [skip ci]"
+            git push origin "HEAD:$GITHUB_REF_NAME"
+          fi
+
       - name: Analyze
         run: flutter analyze --no-fatal-infos --no-fatal-warnings
 
