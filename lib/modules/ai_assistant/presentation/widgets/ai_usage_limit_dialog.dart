@@ -14,13 +14,13 @@ Future<void> showAiUsageLimitDialog(
   final Duration? wait = sl<RewardedAdManager>().aiRefillRemaining;
   final String waitText = wait == null
       ? 'Free searches return after one hour.'
-      : 'Your next ${AdConfiguration.FREE_AI_REQUEST_LIMIT} free searches '
+      : 'Your next ${AdConfiguration.freeAiRequestLimit} free searches '
           'unlock in ${_formatWait(wait)}.';
   final String? action = await showDialog<String>(
     context: context,
     builder: (BuildContext dialogContext) => AlertDialog(
       title: const Text(
-        "You've used your ${AdConfiguration.FREE_AI_REQUEST_LIMIT} free "
+        "You've used your ${AdConfiguration.freeAiRequestLimit} free "
         'AI searches.',
       ),
       content: Text(
@@ -31,7 +31,7 @@ Future<void> showAiUsageLimitDialog(
           onPressed: () => Navigator.of(dialogContext).pop('reward'),
           child: const Text(
             'Watch Ad to Continue '
-            '(+${AdConfiguration.REWARDED_AI_REQUEST_BONUS})',
+            '(+${AdConfiguration.rewardedAiRequestBonus})',
           ),
         ),
         TextButton(
