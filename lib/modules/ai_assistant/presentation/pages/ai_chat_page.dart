@@ -401,22 +401,6 @@ class _MessageListState extends ConsumerState<_MessageList> {
     }
   }
 
-  void _onStreamingFrameRendered() {
-    if (_userScrolledUp || !_scrollController.hasClients) return;
-    if (_scrollController.position.isScrollingNotifier.value) return;
-    WidgetsBinding.instance.addPostFrameCallback((_) {
-      if (!mounted ||
-          _userScrolledUp ||
-          !_scrollController.hasClients ||
-          _scrollController.position.isScrollingNotifier.value) {
-        return;
-      }
-      if (_scrollController.position.pixels > 0) {
-        _scrollController.jumpTo(0);
-      }
-    });
-  }
-
   Future<void> _regenerate(BuildContext context, WidgetRef ref) async {
     final AiSendResult result =
         await ref.read(aiChatControllerProvider.notifier).regenerate();
@@ -453,9 +437,7 @@ class _MessageListState extends ConsumerState<_MessageList> {
                 itemCount: count,
                 itemBuilder: (BuildContext context, int i) {
             if (streaming && i == 0) {
-              return _StreamingBubble(
-                onRendered: _onStreamingFrameRendered,
-              );
+              return const _StreamingBubble();
             }
             if (canLoadMore && i == count - 1) {
               return Center(
@@ -504,21 +486,23 @@ class _MessageListState extends ConsumerState<_MessageList> {
   }
 }
 
-/// The in-flight assistant reply. Incoming cumulative text is buffered and
-/// released a few characters per frame so token-sized network chunks do not
-/// force a rebuild for every event.
+/// The in-flight assistant reply.
+///
+/// Network tokens are buffered and rendered in small batches. This keeps
+/// markdown/layout work off the hot path and, importantly, never touches the
+/// parent ScrollController while the user is scrolling.
 class _StreamingBubble extends ConsumerStatefulWidget {
-  const _StreamingBubble({required this.onRendered});
-
-  final VoidCallback onRendered;
+  const _StreamingBubble();
 
   @override
   ConsumerState<_StreamingBubble> createState() => _StreamingBubbleState();
 }
 
 class _StreamingBubbleState extends ConsumerState<_StreamingBubble> {
-  static const Duration _tickerInterval = Duration(milliseconds: 15);
-  static const int _largeQueueThreshold = 25;
+  static const Duration _tickerInterval = Duration(milliseconds: 32);
+  static const int _normalBatchSize = 2;
+  static const int _catchUpBatchSize = 8;
+  static const int _catchUpThreshold = 32;
 
   String _sourceText = '';
   String _renderedText = '';
@@ -535,32 +519,39 @@ class _StreamingBubbleState extends ConsumerState<_StreamingBubble> {
   void _enqueueSource(String source) {
     if (source == _sourceText) return;
 
-    // The provider exposes cumulative text. Only enqueue the newly arrived
-    // suffix; reset safely if a stream is replaced while this widget remains.
+    // streamingText is cumulative. Queue only the new suffix.
     if (!source.startsWith(_sourceText)) {
       _sourceText = source;
       _renderedText = '';
       _textQueue
         ..clear()
         ..addAll(source.split(''));
-    } else {
-      _textQueue.addAll(source.substring(_sourceText.length).split(''));
-      _sourceText = source;
+      return;
     }
+
+    final String suffix = source.substring(_sourceText.length);
+    if (suffix.isNotEmpty) {
+      _textQueue.addAll(suffix.split(''));
+    }
+    _sourceText = source;
   }
 
   void _consumeQueue() {
     if (!mounted || _textQueue.isEmpty) return;
 
-    // Keep normal output relaxed, but catch up smoothly when network chunks
-    // arrive in a burst instead of allowing the visible text to lag behind.
-    final int takeCount = _textQueue.length > _largeQueueThreshold ? 3 : 1;
+    final int takeCount = _textQueue.length >= _catchUpThreshold
+        ? _catchUpBatchSize
+        : _normalBatchSize;
+    final int actualCount =
+        takeCount < _textQueue.length ? takeCount : _textQueue.length;
+
     final StringBuffer next = StringBuffer();
-    for (int i = 0; i < takeCount && _textQueue.isNotEmpty; i++) {
-      next.write(_textQueue.removeAt(0));
+    for (int i = 0; i < actualCount; i++) {
+      next.write(_textQueue[i]);
     }
+    _textQueue.removeRange(0, actualCount);
+
     setState(() => _renderedText += next.toString());
-    widget.onRendered();
   }
 
   @override
@@ -581,9 +572,6 @@ class _StreamingBubbleState extends ConsumerState<_StreamingBubble> {
     final ThemeData theme = Theme.of(context);
     final ColorScheme scheme = theme.colorScheme;
 
-    // Matches MessageBubble's assistant styling: no boxed bubble, full
-    // width, small sparkle + label header — so the reply doesn't visually
-    // "jump" into a different layout once streaming finishes.
     return Container(
       width: double.infinity,
       margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
@@ -596,7 +584,11 @@ class _StreamingBubbleState extends ConsumerState<_StreamingBubble> {
             child: Row(
               mainAxisSize: MainAxisSize.min,
               children: <Widget>[
-                Icon(Icons.auto_awesome_rounded, size: 14, color: scheme.primary),
+                Icon(
+                  Icons.auto_awesome_rounded,
+                  size: 14,
+                  color: scheme.primary,
+                ),
                 const SizedBox(width: 5),
                 Text(
                   'AI Assistant',
@@ -610,23 +602,12 @@ class _StreamingBubbleState extends ConsumerState<_StreamingBubble> {
           ),
           SizedBox(
             width: double.infinity,
-            child: AnimatedSwitcher(
-              duration: const Duration(milliseconds: 200),
-              switchInCurve: Curves.easeOut,
-              switchOutCurve: Curves.easeIn,
-              child: _renderedText.isEmpty
-                  ? const KeyedSubtree(
-                      key: ValueKey<bool>(true),
-                      child: TypingIndicator(),
-                    )
-                  : KeyedSubtree(
-                      key: const ValueKey<bool>(false),
-                      child: AiMarkdown(
-                        data: _renderedText,
-                        color: scheme.onSurface,
-                      ),
-                    ),
-            ),
+            child: _renderedText.isEmpty
+                ? const TypingIndicator()
+                : AiMarkdown(
+                    data: _renderedText,
+                    color: scheme.onSurface,
+                  ),
           ),
         ],
       ),
