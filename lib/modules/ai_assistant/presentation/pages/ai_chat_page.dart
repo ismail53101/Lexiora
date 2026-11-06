@@ -378,7 +378,13 @@ class _MessageListState extends ConsumerState<_MessageList> {
     ref.listen<AsyncValue<List<AiMessage>>>(
       aiMessagesProvider(widget.conversationId),
       (previous, next) {
-        if (previous?.valueOrNull?.length != next.valueOrNull?.length) {
+        final int? previousLength = previous is AsyncData<List<AiMessage>>
+            ? previous.value.length
+            : null;
+        final int? nextLength = next is AsyncData<List<AiMessage>>
+            ? next.value.length
+            : null;
+        if (previousLength != nextLength) {
           _showNewestMessage();
         }
       },
