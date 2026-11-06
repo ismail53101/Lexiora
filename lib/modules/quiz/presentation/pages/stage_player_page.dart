@@ -292,7 +292,7 @@ class _StagePlayerPageState extends ConsumerState<StagePlayerPage> {
     final RewardedAdResult result = await sl<RewardedAdManager>().showRewarded(
       placement: RewardedAdPlacement.quiz,
     );
-    if (!mounted) return;
+    if (!context.mounted) return;
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(
         content: Text(
