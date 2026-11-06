@@ -89,6 +89,9 @@ class AiDictionaryService {
     }
   }
 
+  // Kept out of the active parsing path until a non-streaming response
+  // fallback is needed again.
+  // ignore: unused_element
   static String? _content(Map<String, dynamic> response) {
     final Object? choices = response['choices'];
     if (choices is! List || choices.isEmpty) return null;
