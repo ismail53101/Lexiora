@@ -260,14 +260,14 @@ class StageResultsPage extends ConsumerWidget {
                   ref.invalidate(quizMainRewardUnlocksProvider(subjectId));
                 }
                 if (!context.mounted) return;
-                Navigator.of(context).pushReplacement(MaterialPageRoute<void>(
+                unawaited(Navigator.of(context).pushReplacement(MaterialPageRoute<void>(
                   builder: (_) => StagePlayerPage(
                     subjectId: subjectId,
                     subjectName: subjectName,
                     topicId: topicId,
                     stageIndex: nextStageIndex,
                   ),
-                ));
+                )));
                 return;
               }
               if (!hasNext) {
