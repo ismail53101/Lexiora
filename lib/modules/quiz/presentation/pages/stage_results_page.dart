@@ -216,7 +216,7 @@ class StageResultsPage extends ConsumerWidget {
                       stageIndex: stageIndex,
                     ),
                   ),
-                );
+                ));
                 return;
               }
               if (mainQuiz && passed && hasNext) {
