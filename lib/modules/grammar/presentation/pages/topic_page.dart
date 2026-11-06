@@ -341,7 +341,8 @@ class _TensesReferenceImageState extends State<_TensesReferenceImage> {
             if (_controller.value != Matrix4.identity()) {
               _controller.value = Matrix4.identity();
             } else {
-              _controller.value = Matrix4.identity()..scale(2.0);
+              _controller.value = Matrix4.identity()
+                ..scaleByDouble(2.0, 2.0, 2.0, 1.0);
             }
           },
           child: InteractiveViewer(
