@@ -17,7 +17,7 @@ import 'package:lexiora/modules/ai_assistant/presentation/widgets/conversation_d
 import 'package:lexiora/modules/ai_assistant/presentation/widgets/message_bubble.dart';
 import 'package:lexiora/modules/ai_assistant/presentation/widgets/typing_indicator.dart';
 
-/// The AI Assistant chat screen — a ChatGPT-style interface with a conversation
+/// The AI Assistant chat screen — a modern interface with a conversation
 /// drawer, streaming replies, and offline history.
 class AiChatPage extends ConsumerWidget {
   const AiChatPage({super.key});
@@ -94,10 +94,9 @@ class AiChatPage extends ConsumerWidget {
       );
 }
 
-/// ChatGPT-style header actions: a small dark pill holding an edit
-/// ("new chat") icon and — once a conversation exists — an overflow menu
-/// for renaming or deleting it. Replaces the old single "add_comment_outlined"
-/// button.
+/// Header actions: a small dark pill holding an edit ("new chat") icon
+/// and — once a conversation exists — an overflow menu for renaming or
+/// deleting it.
 class _HeaderActions extends ConsumerWidget {
   const _HeaderActions({required this.currentId});
 
@@ -402,17 +401,22 @@ class _MessageListState extends ConsumerState<_MessageList> {
   }
 
   void _onStreamingFrameRendered() {
-    if (_userScrolledUp || !_scrollController.hasClients) return;
+    if (_userScrolledUp || _userScrollInProgress || !_scrollController.hasClients) return;
     if (_scrollController.position.isScrollingNotifier.value) return;
     WidgetsBinding.instance.addPostFrameCallback((_) {
       if (!mounted ||
           _userScrolledUp ||
+          _userScrollInProgress ||
           !_scrollController.hasClients ||
           _scrollController.position.isScrollingNotifier.value) {
         return;
       }
       if (_scrollController.position.pixels > 0) {
-        _scrollController.jumpTo(0);
+        _scrollController.animateTo(
+          0,
+          duration: const Duration(milliseconds: 100),
+          curve: Curves.easeOut,
+        );
       }
     });
   }
@@ -452,37 +456,37 @@ class _MessageListState extends ConsumerState<_MessageList> {
                 padding: const EdgeInsets.symmetric(vertical: 8),
                 itemCount: count,
                 itemBuilder: (BuildContext context, int i) {
-            if (streaming && i == 0) {
-              return _StreamingBubble(
-                onRendered: _onStreamingFrameRendered,
-              );
-            }
-            if (canLoadMore && i == count - 1) {
-              return Center(
-                child: Padding(
-                  padding: const EdgeInsets.all(8),
-                  child: TextButton.icon(
-                    onPressed: () =>
-                        ref.read(aiMessageLimitProvider.notifier).more(),
-                    icon: const Icon(Icons.history, size: 18),
-                    label: const Text('Load earlier messages'),
-                  ),
-                ),
-              );
-            }
-            final int msgIndex = messages.length - 1 - (i - off);
-            final AiMessage m = messages[msgIndex];
-            final bool isLastAssistant = !streaming &&
-                m.role == AiRole.assistant &&
-                msgIndex == messages.length - 1;
-            return MessageBubble(
-              message: m,
-              onDelete: () =>
-                  ref.read(aiRepositoryProvider).deleteMessage(m.id),
-              onRegenerate: isLastAssistant
-                  ? () => unawaited(_regenerate(context, ref))
-                  : null,
-            );
+                  if (streaming && i == 0) {
+                    return _StreamingBubble(
+                      onRendered: _onStreamingFrameRendered,
+                    );
+                  }
+                  if (canLoadMore && i == count - 1) {
+                    return Center(
+                      child: Padding(
+                        padding: const EdgeInsets.all(8),
+                        child: TextButton.icon(
+                          onPressed: () =>
+                              ref.read(aiMessageLimitProvider.notifier).more(),
+                          icon: const Icon(Icons.history, size: 18),
+                          label: const Text('Load earlier messages'),
+                        ),
+                      ),
+                    );
+                  }
+                  final int msgIndex = messages.length - 1 - (i - off);
+                  final AiMessage m = messages[msgIndex];
+                  final bool isLastAssistant = !streaming &&
+                      m.role == AiRole.assistant &&
+                      msgIndex == messages.length - 1;
+                  return MessageBubble(
+                    message: m,
+                    onDelete: () =>
+                        ref.read(aiRepositoryProvider).deleteMessage(m.id),
+                    onRegenerate: isLastAssistant
+                        ? () => unawaited(_regenerate(context, ref))
+                        : null,
+                  );
                 },
               ),
             ),
@@ -535,101 +539,4 @@ class _StreamingBubbleState extends ConsumerState<_StreamingBubble> {
   void _enqueueSource(String source) {
     if (source == _sourceText) return;
 
-    // The provider exposes cumulative text. Only enqueue the newly arrived
-    // suffix; reset safely if a stream is replaced while this widget remains.
-    if (!source.startsWith(_sourceText)) {
-      _sourceText = source;
-      _renderedText = '';
-      _textQueue
-        ..clear()
-        ..addAll(source.split(''));
-    } else {
-      _textQueue.addAll(source.substring(_sourceText.length).split(''));
-      _sourceText = source;
-    }
-  }
-
-  void _consumeQueue() {
-    if (!mounted || _textQueue.isEmpty) return;
-
-    // Keep normal output relaxed, but catch up smoothly when network chunks
-    // arrive in a burst instead of allowing the visible text to lag behind.
-    final int takeCount = _textQueue.length > _largeQueueThreshold ? 3 : 1;
-    final StringBuffer next = StringBuffer();
-    for (int i = 0; i < takeCount && _textQueue.isNotEmpty; i++) {
-      next.write(_textQueue.removeAt(0));
-    }
-    setState(() => _renderedText += next.toString());
-    widget.onRendered();
-  }
-
-  @override
-  void dispose() {
-    _ticker?.cancel();
-    _ticker = null;
-    _textQueue.clear();
-    super.dispose();
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    ref.listen<String>(
-      aiChatControllerProvider.select((AiChatState s) => s.streamingText),
-      (_, String next) => _enqueueSource(next),
-    );
-
-    final ThemeData theme = Theme.of(context);
-    final ColorScheme scheme = theme.colorScheme;
-
-    // Matches MessageBubble's assistant styling: no boxed bubble, full
-    // width, small sparkle + label header — so the reply doesn't visually
-    // "jump" into a different layout once streaming finishes.
-    return Container(
-      width: double.infinity,
-      margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        mainAxisSize: MainAxisSize.min,
-        children: <Widget>[
-          Padding(
-            padding: const EdgeInsets.only(bottom: 4),
-            child: Row(
-              mainAxisSize: MainAxisSize.min,
-              children: <Widget>[
-                Icon(Icons.auto_awesome_rounded, size: 14, color: scheme.primary),
-                const SizedBox(width: 5),
-                Text(
-                  'AI Assistant',
-                  style: theme.textTheme.labelMedium?.copyWith(
-                    fontWeight: FontWeight.w700,
-                    color: scheme.primary,
-                  ),
-                ),
-              ],
-            ),
-          ),
-          SizedBox(
-            width: double.infinity,
-            child: AnimatedSwitcher(
-              duration: const Duration(milliseconds: 200),
-              switchInCurve: Curves.easeOut,
-              switchOutCurve: Curves.easeIn,
-              child: _renderedText.isEmpty
-                  ? const KeyedSubtree(
-                      key: ValueKey<bool>(true),
-                      child: TypingIndicator(),
-                    )
-                  : KeyedSubtree(
-                      key: const ValueKey<bool>(false),
-                      child: AiMarkdown(
-                        data: _renderedText,
-                        color: scheme.onSurface,
-                      ),
-                    ),
-            ),
-          ),
-        ],
-      ),
-    );
-  }
-}
+    // The provider exposes cumulative text. Only enqueue the newly arri
