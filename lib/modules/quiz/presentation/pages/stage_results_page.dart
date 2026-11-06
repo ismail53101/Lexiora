@@ -207,7 +207,7 @@ class StageResultsPage extends ConsumerWidget {
           FilledButton.icon(
             onPressed: () async {
               if (mainQuiz && !passed) {
-                Navigator.of(context).pushReplacement(
+                unawaited(Navigator.of(context).pushReplacement(
                   MaterialPageRoute<void>(
                     builder: (_) => StagePlayerPage(
                       subjectId: subjectId,
