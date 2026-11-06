@@ -307,31 +307,34 @@ class _MessageList extends ConsumerStatefulWidget {
 }
 
 class _MessageListState extends ConsumerState<_MessageList> {
-  /// Distance from the newest message at which streaming auto-scroll pauses.
-  static const double _autoScrollThreshold = 80;
+  /// Smart auto-scroll state. When false, streaming is allowed to continue
+  /// without moving the user's viewport.
+  bool _isAutoScrollEnabled = true;
+
+  /// Distance from the newest message (offset 0 because the list is reversed)
+  /// at which auto-scroll is considered to be at the bottom.
+  static const double _bottomThreshold = 24;
 
   final ScrollController _scrollController = ScrollController();
-  bool _userScrolledUp = false;
-  bool _programmaticScrollInProgress = false;
-  bool _userScrollInProgress = false;
-  Timer? _streamFollowTimer;
-
-  void _setUserScrolledUp(bool value) {
-    if (_userScrolledUp == value) return;
-    _userScrolledUp = value;
-    if (mounted) setState(() {});
-  }
+  Timer? _streamScrollTimer;
 
   @override
   void initState() {
     super.initState();
     _scrollController.addListener(_handleScroll);
+
+    // Scroll only when a new streaming chunk arrives. The callback is gated
+    // by _isAutoScrollEnabled, so manual scrolling always has priority.
+    ref.listenManual<String>(
+      aiChatControllerProvider.select((AiChatState s) => s.streamingText),
+      (_, String __) => _scheduleStreamingScroll(),
+    );
   }
 
   @override
   void dispose() {
-    _streamFollowTimer?.cancel();
-    _streamFollowTimer = null;
+    _streamScrollTimer?.cancel();
+    _streamScrollTimer = null;
     _scrollController
       ..removeListener(_handleScroll)
       ..dispose();
@@ -339,99 +342,96 @@ class _MessageListState extends ConsumerState<_MessageList> {
   }
 
   void _handleScroll() {
-    if (!_scrollController.hasClients || _programmaticScrollInProgress) return;
+    if (!_scrollController.hasClients) return;
 
-    // This ListView is reversed, so offset 0 is the newest message/bottom.
-    final double distanceFromBottom = _scrollController.position.pixels;
-    // Never clear the lock from a controller notification. Streaming/layout
-    // updates can emit these notifications while the user is reading.
-    if (_userScrollInProgress && distanceFromBottom > _autoScrollThreshold) {
-      _setUserScrolledUp(true);
+    final double offset = _scrollController.position.pixels;
+
+    // Because the ListView is reversed, offset 0 is the newest message.
+    // Reaching the bottom re-enables smart auto-scroll.
+    if (offset <= _bottomThreshold && !_isAutoScrollEnabled) {
+      _isAutoScrollEnabled = true;
+      if (mounted) setState(() {});
     }
   }
 
   bool _handleScrollNotification(ScrollNotification notification) {
-    final bool isUserGesture =
-        notification is ScrollStartNotification &&
-        notification.dragDetails != null;
-    if (isUserGesture) {
-      _streamFollowTimer?.cancel();
-      _streamFollowTimer = null;
-      _userScrollInProgress = true;
-      _programmaticScrollInProgress = false;
-    } else if (_programmaticScrollInProgress) {
-      return false;
-    }
-    final double offset = notification.metrics.pixels;
+    if (notification is UserScrollNotification) {
+      final double offset = notification.metrics.pixels;
 
-    if (notification is ScrollStartNotification) {
-      _userScrollInProgress = notification.dragDetails != null;
-    } else if (notification is UserScrollNotification &&
-        notification.direction != ScrollDirection.idle) {
-      _userScrollInProgress = true;
-      if (offset > _autoScrollThreshold) _setUserScrolledUp(true);
-    } else if (notification is ScrollUpdateNotification &&
-        (_userScrollInProgress || notification.dragDetails != null)) {
-      _userScrollInProgress = true;
-      if (offset > _autoScrollThreshold) _setUserScrolledUp(true);
-    } else if (notification is ScrollEndNotification &&
-        _userScrollInProgress) {
-      _userScrollInProgress = false;
-      if (offset <= _autoScrollThreshold) {
-        _setUserScrolledUp(false);
-        if (offset > 0) unawaited(_scrollToBottom());
+      // The prompt's rule: when the user scrolls away from the newest
+      // message, disable auto-scroll immediately.
+      if (notification.direction == ScrollDirection.forward &&
+          offset > _bottomThreshold) {
+        if (_isAutoScrollEnabled) {
+          _isAutoScrollEnabled = false;
+          _streamScrollTimer?.cancel();
+          _streamScrollTimer = null;
+          if (mounted) setState(() {});
+        }
+      }
+
+      // Also use the actual offset as a safety net. This covers reversed
+      // ListView gesture semantics across Flutter versions/devices.
+      if (offset > _bottomThreshold && _isAutoScrollEnabled) {
+        _isAutoScrollEnabled = false;
+        _streamScrollTimer?.cancel();
+        _streamScrollTimer = null;
+        if (mounted) setState(() {});
+      } else if (offset <= _bottomThreshold && !_isAutoScrollEnabled) {
+        _isAutoScrollEnabled = true;
+        if (mounted) setState(() {});
+      }
+    } else if (notification is ScrollEndNotification) {
+      final double offset = notification.metrics.pixels;
+      if (offset <= _bottomThreshold && !_isAutoScrollEnabled) {
+        _isAutoScrollEnabled = true;
+        if (mounted) setState(() {});
       }
     }
+
     return false;
   }
 
-  /// Resume following the stream after the user explicitly requests it.
-  Future<void> _resumeAutoScroll() async {
-    if (!_scrollController.hasClients) return;
-    _setUserScrolledUp(false);
-    await _scrollToBottom();
-  }
+  /// Smoothly follows the newest content only while smart auto-scroll is
+  /// enabled. Never uses jumpTo(), so completion does not cause an abrupt
+  /// jump.
+  Future<void> _scrollToBottom() async {
+    if (!_isAutoScrollEnabled || !_scrollController.hasClients) return;
 
-  /// Scroll to the newest message unless the user is reading older content.
-  Future<void> _scrollToBottom({bool fromStreaming = false}) async {
-    if (_userScrolledUp ||
-        !_scrollController.hasClients ||
-        _programmaticScrollInProgress) return;
-    _programmaticScrollInProgress = true;
+    final double target = 0;
+    final double current = _scrollController.position.pixels;
+    if ((current - target).abs() <= 1) return;
+
     try {
       await _scrollController.animateTo(
-        0,
-        duration: Duration(milliseconds: fromStreaming ? 120 : 250),
+        target,
+        duration: const Duration(milliseconds: 300),
         curve: Curves.easeOut,
       );
-    } finally {
-      _programmaticScrollInProgress = false;
-      if (mounted && _scrollController.hasClients && !_userScrollInProgress) {
-        _setUserScrolledUp(
-          _scrollController.position.pixels > _autoScrollThreshold,
-        );
-      }
+    } on FlutterError {
+      // The controller can lose its position while the conversation is
+      // disposed/replaced. There is nothing to recover here.
     }
   }
 
-  void _scheduleStreamingFollow() {
-    if (_userScrolledUp ||
-        _userScrollInProgress ||
-        !_scrollController.hasClients) {
-      return;
-    }
-    _streamFollowTimer?.cancel();
-    _streamFollowTimer = Timer(const Duration(milliseconds: 80), () {
-      _streamFollowTimer = null;
-      if (!mounted ||
-          _userScrolledUp ||
-          _userScrollInProgress ||
-          !_scrollController.hasClients ||
-          _scrollController.position.isScrollingNotifier.value) {
-        return;
-      }
-      unawaited(_scrollToBottom(fromStreaming: true));
+  /// Coalesce very fast stream chunks into one smooth animation. This avoids
+  /// starting dozens of overlapping animations when the provider emits
+  /// multiple chunks within the same frame.
+  void _scheduleStreamingScroll() {
+    if (!_isAutoScrollEnabled || !_scrollController.hasClients) return;
+
+    _streamScrollTimer?.cancel();
+    _streamScrollTimer = Timer(const Duration(milliseconds: 24), () {
+      _streamScrollTimer = null;
+      if (!mounted || !_isAutoScrollEnabled) return;
+      unawaited(_scrollToBottom());
     });
+  }
+
+  Future<void> _resumeAutoScroll() async {
+    _isAutoScrollEnabled = true;
+    if (mounted) setState(() {});
+    await _scrollToBottom();
   }
 
   Future<void> _regenerate(BuildContext context, WidgetRef ref) async {
@@ -448,10 +448,6 @@ class _MessageListState extends ConsumerState<_MessageList> {
         ref.watch(aiMessagesProvider(widget.conversationId));
     final bool streaming =
         ref.watch(aiChatControllerProvider.select((AiChatState s) => s.streaming));
-    ref.listen<String>(
-      aiChatControllerProvider.select((AiChatState s) => s.streamingText),
-      (_, String __) => _scheduleStreamingFollow(),
-    );
     final int limit = ref.watch(aiMessageLimitProvider);
 
     return async.when(
@@ -473,39 +469,39 @@ class _MessageListState extends ConsumerState<_MessageList> {
                 padding: const EdgeInsets.symmetric(vertical: 8),
                 itemCount: count,
                 itemBuilder: (BuildContext context, int i) {
-            if (streaming && i == 0) {
-              return const _StreamingBubble();
-            }
-            if (canLoadMore && i == count - 1) {
-              return Center(
-                child: Padding(
-                  padding: const EdgeInsets.all(8),
-                  child: TextButton.icon(
-                    onPressed: () =>
-                        ref.read(aiMessageLimitProvider.notifier).more(),
-                    icon: const Icon(Icons.history, size: 18),
-                    label: const Text('Load earlier messages'),
-                  ),
-                ),
-              );
-            }
-            final int msgIndex = messages.length - 1 - (i - off);
-            final AiMessage m = messages[msgIndex];
-            final bool isLastAssistant = !streaming &&
-                m.role == AiRole.assistant &&
-                msgIndex == messages.length - 1;
-            return MessageBubble(
-              message: m,
-              onDelete: () =>
-                  ref.read(aiRepositoryProvider).deleteMessage(m.id),
-              onRegenerate: isLastAssistant
-                  ? () => unawaited(_regenerate(context, ref))
-                  : null,
-            );
+                  if (streaming && i == 0) {
+                    return const _StreamingBubble();
+                  }
+                  if (canLoadMore && i == count - 1) {
+                    return Center(
+                      child: Padding(
+                        padding: const EdgeInsets.all(8),
+                        child: TextButton.icon(
+                          onPressed: () =>
+                              ref.read(aiMessageLimitProvider.notifier).more(),
+                          icon: const Icon(Icons.history, size: 18),
+                          label: const Text('Load earlier messages'),
+                        ),
+                      ),
+                    );
+                  }
+                  final int msgIndex = messages.length - 1 - (i - off);
+                  final AiMessage m = messages[msgIndex];
+                  final bool isLastAssistant = !streaming &&
+                      m.role == AiRole.assistant &&
+                      msgIndex == messages.length - 1;
+                  return MessageBubble(
+                    message: m,
+                    onDelete: () =>
+                        ref.read(aiRepositoryProvider).deleteMessage(m.id),
+                    onRegenerate: isLastAssistant
+                        ? () => unawaited(_regenerate(context, ref))
+                        : null,
+                  );
                 },
               ),
             ),
-            if (streaming && _userScrolledUp)
+            if (streaming && !_isAutoScrollEnabled)
               Positioned(
                 right: 16,
                 bottom: 16,
