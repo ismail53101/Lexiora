@@ -29,12 +29,12 @@ abstract final class AdConfiguration {
       'ca-app-pub-4342811933559577/5768607000';
   /// Central AI usage configuration; change these values without changing the
   /// AI Assistant flow or rewarded-ad implementation.
-  static const int FREE_AI_REQUEST_LIMIT = 7;
-  static const int REWARDED_AI_REQUEST_BONUS = 7;
+  static const int freeAiRequestLimit = 7;
+  static const int rewardedAiRequestBonus = 7;
 
   /// After the free searches run out, the learner can either wait this long
   /// for a fresh free batch, or watch a rewarded ad to continue right away.
-  static const Duration AI_FREE_REFILL_INTERVAL = Duration(hours: 1);
+  static const Duration aiFreeRefillInterval = Duration(hours: 1);
 
   /// Set with --dart-define=SAPiora_FORCE_TEST_ADS=true when testing a
   /// release build locally. It never changes Play Store builds unless the
@@ -128,7 +128,7 @@ class RewardedAdManager {
   final Map<RewardedAdPlacement, DateTime> _lastRewardedShown =
       <RewardedAdPlacement, DateTime>{};
   int _legacyOtherQuizCompletions = 0;
-  int _aiRequestsRemaining = AdConfiguration.FREE_AI_REQUEST_LIMIT;
+  int _aiRequestsRemaining = AdConfiguration.freeAiRequestLimit;
   bool _initialized = false;
   bool _showingInterstitial = false;
   bool _showingRewarded = false;
@@ -192,10 +192,10 @@ class RewardedAdManager {
     final DateTime? exhaustedAt = _aiExhaustedAt;
     if (_aiRequestsRemaining > 0 || exhaustedAt == null) return;
     if (DateTime.now().difference(exhaustedAt) <
-        AdConfiguration.AI_FREE_REFILL_INTERVAL) {
+        AdConfiguration.aiFreeRefillInterval) {
       return;
     }
-    _aiRequestsRemaining = AdConfiguration.FREE_AI_REQUEST_LIMIT;
+    _aiRequestsRemaining = AdConfiguration.freeAiRequestLimit;
     _aiExhaustedAt = null;
     _persistAiUsage();
   }
@@ -204,7 +204,7 @@ class RewardedAdManager {
   Duration? get aiRefillRemaining {
     final DateTime? exhaustedAt = _aiExhaustedAt;
     if (_aiRequestsRemaining > 0 || exhaustedAt == null) return null;
-    final Duration left = AdConfiguration.AI_FREE_REFILL_INTERVAL -
+    final Duration left = AdConfiguration.aiFreeRefillInterval -
         DateTime.now().difference(exhaustedAt);
     return left.isNegative ? Duration.zero : left;
   }
@@ -228,7 +228,7 @@ class RewardedAdManager {
 
   /// Adds exactly one configured allowance after a completed rewarded ad.
   void grantAiRequestsAfterReward() {
-    _aiRequestsRemaining += AdConfiguration.REWARDED_AI_REQUEST_BONUS;
+    _aiRequestsRemaining += AdConfiguration.rewardedAiRequestBonus;
     _aiExhaustedAt = null;
     _persistAiUsage();
   }
