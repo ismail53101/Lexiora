@@ -140,6 +140,61 @@ class DictionaryLocalDataSource {
 
   Future<int> entryCount() => _count();
 
+  // ── Persistent AI / online enrichment ─────────────────────────────────────
+
+  Future<AiWordProfile?> cachedAiProfile(String wordLower) async {
+    final String wl = wordLower.trim().toLowerCase();
+    if (wl.isEmpty) return null;
+    final DictionaryAiCacheRow? row = await (_db.select(_db.dictionaryAiCache)
+          ..where((t) => t.wordLower.equals(wl))
+          ..limit(1))
+        .getSingleOrNull();
+    if (row == null) return null;
+    try {
+      return AiWordProfile.fromJson(
+        jsonDecode(row.profileJson) as Map<String, dynamic>,
+      );
+    } on Object {
+      return null;
+    }
+  }
+
+  Future<void> saveAiProfile(AiWordProfile profile) async {
+    final String wl = profile.word.trim().toLowerCase();
+    if (wl.isEmpty || !profile.hasContent) return;
+    final AiWordProfile normalized = AiWordProfile(
+      word: profile.word.trim(),
+      source: profile.source,
+      englishDefinition: profile.englishDefinition,
+      urduMeanings: profile.urduMeanings,
+      partOfSpeech: profile.partOfSpeech,
+      synonyms: profile.synonyms,
+      antonyms: profile.antonyms,
+      exampleSentence: profile.exampleSentence,
+      exampleSentenceUrdu: profile.exampleSentenceUrdu,
+      collocations: profile.collocations,
+      wordForms: profile.wordForms,
+      examNote: profile.examNote,
+    );
+    await _db.into(_db.dictionaryAiCache).insertOnConflictUpdate(
+      DictionaryAiCacheCompanion.insert(
+        wordLower: wl,
+        word: normalized.word,
+        profileJson: jsonEncode(normalized.toJson()),
+        source: Value(normalized.source),
+        updatedAt: DateTime.now(),
+      ),
+    );
+  }
+
+  Future<void> removeAiProfile(String wordLower) async {
+    final String wl = wordLower.trim().toLowerCase();
+    if (wl.isEmpty) return;
+    await (_db.delete(_db.dictionaryAiCache)
+          ..where((t) => t.wordLower.equals(wl)))
+        .go();
+  }
+
   // ── Favorites ───────────────────────────────────────────────────────────────
 
   Future<bool> isFavorite(String wordLower) async {
