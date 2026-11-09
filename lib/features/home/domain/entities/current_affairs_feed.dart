@@ -35,6 +35,7 @@ class CurrentAffairsFeed {
     final DateTime? publishedAt =
         DateTime.tryParse(json['publishedAt']?.toString() ?? '')?.toLocal();
     return LatestUpdate(
+      id: json['id']?.toString() ?? '',
       headline: json['title']?.toString() ?? '',
       source: json['source']?.toString() ?? 'Current Affairs',
       category: json['category']?.toString() ?? 'International',
