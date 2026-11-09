@@ -16,6 +16,32 @@ class CurrentAffairsConfig {
 
   bool get isConfigured => baseUrl.trim().isNotEmpty;
 
+  Uri get summaryBaseUri {
+    final String base = baseUrl.trim().replaceFirst(RegExp(r'/+
+    final String base = baseUrl.trim().replaceFirst(RegExp(r'/+$'), '');
+    final String path = base.endsWith('/api/current-affairs/latest')
+        ? ''
+        : '/api/current-affairs/latest';
+    return Uri.parse('$base$path');
+  }
+}
+), '');
+    return Uri.parse(base);
+  }
+
+  Uri summaryUri(String storyId) {
+    final String base = summaryBaseUri.toString().replaceFirst(RegExp(r'/+
+    final String base = baseUrl.trim().replaceFirst(RegExp(r'/+$'), '');
+    final String path = base.endsWith('/api/current-affairs/latest')
+        ? ''
+        : '/api/current-affairs/latest';
+    return Uri.parse('$base$path');
+  }
+}
+), '');
+    return Uri.parse('$base/api/current-affairs/summary?id=${Uri.encodeQueryComponent(storyId)}');
+  }
+
   Uri get latestUri {
     final String base = baseUrl.trim().replaceFirst(RegExp(r'/+$'), '');
     final String path = base.endsWith('/api/current-affairs/latest')
