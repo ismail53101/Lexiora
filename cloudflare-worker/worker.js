@@ -102,6 +102,9 @@ const PROVIDERS = {
     apiKeyEnv: "UNOROUTER_API_KEY",
     defaultBaseUrl: "https://api.unorouter.com",
   },
+  async scheduled(controller, env, ctx) {
+    ctx.waitUntil(preGenerateCurrentAffairsSummaries(env));
+  },
 };
 
 const CHAT_COMPLETIONS_PATH = "/v1/chat/completions";
@@ -317,7 +320,7 @@ export default {
    * @param {Request} request
    * @param {Record<string, string>} env
    */
-    async fetch(request, env, ctx) {
+  async fetch(request, env, ctx) {
     if (request.method === "OPTIONS") {
       return new Response(null, { status: 204, headers: CORS_HEADERS });
     }
@@ -545,7 +548,13 @@ async function currentAffairsSummaryResponse(url, env) {
   );
   if (!story) return jsonError(404, "article_not_found", "Article is no longer available.");
 
-  const result = await generateCurrentAffairsSummary(story, env);
+  let result;
+  try {
+    result = await generateCurrentAffairsSummary(story, env);
+  } catch (error) {
+    console.log(`[summary] generation failed: ${error.message || error}`);
+    return jsonError(503, "summary_unavailable", "AI summary is temporarily unavailable.");
+  }
   if (env.MODEL_CONFIG_KV) {
     try {
       await env.MODEL_CONFIG_KV.put(cacheKey, JSON.stringify(result), {
@@ -611,7 +620,7 @@ async function generateCurrentAffairsSummary(story, env) {
 
   const order = resolveProviderOrder("auto", env).filter((id) => id !== "unorouter");
   if (order.length === 0) {
-    return jsonError(503, "summary_provider_unavailable", "No direct AI provider is configured for summaries.");
+    throw new Error("No direct AI provider is configured for summaries.");
   }
 
   let lastError = null;
@@ -672,6 +681,52 @@ function extractArticleText(html) {
     .replace(/<svg\\b[\\s\\S]*?<\\/svg>/gi, " ")
     .replace(/<[^>]+>/g, " ")
   ).replace(/\\s+/g, " ").trim();
+}
+
+async function preGenerateCurrentAffairsSummaries(env) {
+  if (!env.MODEL_CONFIG_KV) return;
+  const dayKey = `news_ai_pregen:${new Date().toISOString().slice(0, 10)}`;
+  const count = Number(await env.MODEL_CONFIG_KV.get(dayKey)) || 0;
+  if (count >= 20) return;
+
+  let payload = null;
+  try {
+    const cached = await caches.default.match(NEWS_CACHE_KEY);
+    if (cached) payload = await cached.clone().json();
+    if (!payload) payload = await refreshCurrentAffairs(env);
+  } catch (error) {
+    console.log(`[summary] pre-generation feed failed: ${error.message || error}`);
+    return;
+  }
+
+  const stories = [...(payload?.national || []), ...(payload?.international || [])]
+    .map((story) => ({ ...story, id: stableStoryId(story.articleUrl, story.title) }))
+    .filter((story) => {
+      const score = relevanceScore(story);
+      return score > 0 &&
+        (story.feedType || "").toLowerCase() !== "opinions" ||
+        score >= 8;
+    })
+    .sort((a, b) => relevanceScore(b) - relevanceScore(a));
+
+  for (const story of stories) {
+    if (await env.MODEL_CONFIG_KV.get(`news_ai_summary:${story.id}`)) continue;
+    try {
+      const summary = await generateCurrentAffairsSummary(story, env);
+      await env.MODEL_CONFIG_KV.put(
+        `news_ai_summary:${story.id}`,
+        JSON.stringify(summary),
+        { expirationTtl: 60 * 60 * 24 * 30 },
+      );
+      await env.MODEL_CONFIG_KV.put(dayKey, String(count + 1), {
+        expirationTtl: 60 * 60 * 48,
+      });
+      break;
+    } catch (error) {
+      console.log(`[summary] pre-generation failed: ${error.message || error}`);
+      break;
+    }
+  }
 }
 
 async function currentAffairsResponse(ctx, env) {
