@@ -230,7 +230,7 @@ class TranslationEntries extends Table {
   TextColumn get translation => text()();
 }
 
-/// Online-fetched translations saved for offline reuse (Hybrid Translation
+/// Persistent AI/online dictionary enrichment for a headword.\n///\n/// This table is intentionally separate from the bundled dictionary tables so\n/// app updates and re-seeding never remove user-generated dictionary data.\n/// The complete structured profile is stored as JSON to keep the schema stable.\n@DataClassName('DictionaryAiCacheRow')\nclass DictionaryAiCache extends Table {\n  TextColumn get wordLower => text()();\n  TextColumn get word => text()();\n  TextColumn get contentJson => text()();\n  TextColumn get source => text().withDefault(const Constant('ai'))();\n  DateTimeColumn get createdAt => dateTime()();\n  DateTimeColumn get updatedAt => dateTime()();\n\n  @override\n  Set<Column<Object>> get primaryKey => {wordLower};\n}\n\n/// Online-fetched translations saved for offline reuse (Hybrid Translation
 /// System, Phase v0.4.1).
 ///
 /// This table is **separate** from the read-only, bulk-seeded
