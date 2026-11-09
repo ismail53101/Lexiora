@@ -28,15 +28,12 @@ class GetWordProfile implements UseCase<WordProfile, String> {
         // AI is reserved for a truly missing word, avoiding a network wait for
         // entries that already have a meaning, synonyms, antonyms, or example.
         final bool existsOffline = exam != null || base != null;
+        // AI enrichment for a missing word is handled by
+        // wordAiEnrichmentProvider so the flow makes exactly one AI request.
+        // Existing local words may still receive synonym/antonym enrichment
+        // from STANDS4.
         AiWordProfile? ai;
-        if (!existsOffline) {
-          // Missing from the entire local dictionary: AI is the only fallback.
-          // STANDS4 is intentionally not called here.
-          ai = await _ai?.define(wl);
-        } else if (exam == null || exam.synonyms.isEmpty) {
-          // Word is in the offline dictionary but has no curated synonyms:
-          // enrich ONLY synonyms/antonyms from STANDS4 (synonyms.com). The
-          // offline meaning/example stay untouched; failure is silent.
+        if (existsOffline && (exam == null || exam.synonyms.isEmpty)) {
           final AiWordProfile? online = await _stands4?.define(wl);
           if (online != null &&
               (online.synonyms.isNotEmpty || online.antonyms.isNotEmpty)) {
