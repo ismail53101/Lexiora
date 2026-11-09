@@ -75,6 +75,9 @@ jobs:
         # regenerate it to match the pinned Gradle version before building.
         run: cd android && gradle wrapper --gradle-version 9.1.0
 
+      - name: Validate Cloudflare Worker JavaScript
+        run: node --check cloudflare-worker/worker.js
+
       - name: Analyze
         run: flutter analyze --no-fatal-infos --no-fatal-warnings
 
