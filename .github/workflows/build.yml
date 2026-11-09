@@ -87,6 +87,22 @@ jobs:
         # regenerate it to match the pinned Gradle version before building.
         run: cd android && gradle :wrapper --gradle-version 9.1.0 --no-validate-url --network-timeout 60000 --retries 3 --retry-back-off-ms 1000
 
+      - name: Warm Gradle distribution with retries
+        # Gradle 9.1.0 is downloaded by the wrapper from services.gradle.org.
+        # A transient 504 here should not fail an otherwise healthy build.
+        run: |
+          set -euo pipefail
+          for attempt in 1 2 3 4 5; do
+            if cd android && ./gradlew --version --no-daemon; then
+              exit 0
+            fi
+            echo "Gradle distribution download failed; retry $attempt/5 in 20 seconds..."
+            cd ..
+            sleep 20
+          done
+          echo "Unable to download Gradle 9.1.0 after 5 attempts." >&2
+          exit 1
+
       - name: Validate Cloudflare Worker JavaScript
         run: node --check cloudflare-worker/worker.js
 
