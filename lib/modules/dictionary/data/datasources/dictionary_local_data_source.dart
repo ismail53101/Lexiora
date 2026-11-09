@@ -57,7 +57,7 @@ class DictionaryLocalDataSource {
         '), cached AS ('
         '  SELECT c.word AS word, c.word_lower AS word_lower, '
         "         json_extract(c.profile_json, '$.partOfSpeech') AS pos, "
-        "         COALESCE(json_extract(c.profile_json, '$.englishDefinition'), c.word) AS meaning, "
+        "         COALESCE(json_extract(c.content_json, '$.englishDefinition'), c.word) AS meaning, "
         '         0 AS rid, 1 AS sense_count '
         '  FROM dictionary_ai_cache c '
         '  WHERE c.word_lower >= ? AND c.word_lower < ?'
@@ -100,6 +100,7 @@ class DictionaryLocalDataSource {
           _db.dictionaryEntries,
           _db.dictionaryExamEntries,
           _db.dictionaryFavorites,
+          _db.dictionaryAiCache,
         },
       ).get();
 
@@ -176,7 +177,7 @@ class DictionaryLocalDataSource {
     if (row == null) return null;
     try {
       return AiWordProfile.fromJson(
-        jsonDecode(row.profileJson) as Map<String, dynamic>,
+        jsonDecode(row.contentJson) as Map<String, dynamic>,
       );
     } on Object {
       return null;
@@ -204,8 +205,9 @@ class DictionaryLocalDataSource {
       DictionaryAiCacheCompanion.insert(
         wordLower: wl,
         word: normalized.word,
-        profileJson: jsonEncode(normalized.toJson()),
+        contentJson: jsonEncode(normalized.toJson()),
         source: Value(normalized.source),
+        createdAt: DateTime.now(),
         updatedAt: DateTime.now(),
       ),
     );
