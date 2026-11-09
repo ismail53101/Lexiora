@@ -34,33 +34,27 @@ class AiDictionaryService {
               'examNote',
             ]
           : missingFields;
-      final StringBuffer content = StringBuffer();
-      await for (final String payload in _client.streamSse(
+      final Map<String, dynamic> response = await _client.postJson(
         <String, dynamic>{
           'model': _config.model,
           'provider': _config.provider.wireValue,
-          'stream': true,
+          'stream': false,
           'temperature': 0.1,
-          'max_tokens': 600,
+          'max_tokens': 900,
           'messages': <Map<String, String>>[
             <String, String>{
               'role': 'system',
-              'content': '''You are Lexiora's exam English dictionary. Return ONLY valid JSON, with no markdown and no commentary. Give the most common, precise meaning intended for CSS/BPSC/competitive-exam learners. Do not invent a rare meaning. Use short, standard, commonly understood Urdu meanings suitable for Pakistani CSS/BPSC learners. Prefer common forms such as خوشگوار، دلکش، مسرت انگیز for 'delightful'; never output obscure, malformed, unrelated, or guessed Urdu words. Use empty arrays or null only when genuinely unavailable. Synonyms and antonyms must be semantically appropriate for the specific sense; do not treat loose associations as synonyms or antonyms. The JSON keys must be exactly: word, englishDefinition, urduMeanings, partOfSpeech, synonyms, antonyms, exampleSentence, exampleSentenceUrdu, collocations, wordForms, examNote. For exampleSentence, write one natural competitive-exam English sentence containing the headword; exampleSentenceUrdu must be a faithful Urdu translation of that exact sentence. For wordForms, give useful derivational/inflectional family forms when they genuinely exist; do not invent forms. If a requested field genuinely has no reliable answer (for example a word has no natural antonym), return an empty array or null rather than inventing one.''',
+              'content': '''You are DarsNexa's exam English dictionary. Return ONLY one valid JSON object, with no markdown, commentary, or extra text. The response MUST contain every key: word, englishDefinition, urduMeanings, partOfSpeech, synonyms, antonyms, exampleSentence, exampleSentenceUrdu, collocations, wordForms, examNote. Give a precise common meaning for CSS/BPSC learners. Give a short natural Urdu meaning. Give 3-5 semantically accurate synonyms and 2-4 accurate antonyms when they genuinely exist; never invent. Give useful word-family forms when they genuinely exist. Give one natural competitive-exam English sentence containing the headword and a faithful Urdu translation. Give a concise exam note. If a field genuinely has no reliable value, use an empty array or null, but never omit a required key.''',
             },
             <String, String>{
               'role': 'user',
-              'content': 'Create the dictionary profile for the English word "$query". Fill these missing fields: ${fields.join(', ')}. Return empty values for all other fields. Confirm that the returned word is the same headword.',
+              'content': 'Create the COMPLETE dictionary profile for the English word "$query". Fill every field. The returned word must exactly match the requested headword.',
             },
           ],
         },
-      )) {
-        final String? delta = _streamDelta(payload);
-        if (delta != null) content.write(delta);
-      }
+      );
+      final String raw = (_content(response) ?? '').trim();
 
-      final String raw = content.toString().trim();
-      if (raw.isEmpty) return null;
-      return _parse(raw, query);
     } on Object {
       // AI is an optional enhancement. The caller keeps the offline profile.
       return null;
