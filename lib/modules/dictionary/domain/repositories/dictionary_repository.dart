@@ -28,6 +28,14 @@ abstract interface class DictionaryRepository {
   /// Total number of indexed senses (diagnostics / seed verification).
   Future<int> entryCount();
 
+  // ── Persistent AI / online enrichment
+
+  Future<AiWordProfile?> cachedAiProfile(String wordLower);
+
+  Future<void> saveAiProfile(AiWordProfile profile);
+
+  Future<void> removeAiProfile(String wordLower);
+
   // ── Favorites (saved vocabulary) ──────────────────────────────────────────
 
   /// Saves a word to favorites, snapshotting a representative meaning.
