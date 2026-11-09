@@ -208,12 +208,12 @@ Future<AiWordProfile?> _fetchDictionaryEnrichment(
         ? ai!.urduMeanings
         : online?.urduMeanings ?? const <String>[],
     partOfSpeech: ai?.partOfSpeech ?? online?.partOfSpeech,
-    synonyms: online?.synonyms.isNotEmpty == true
-        ? online!.synonyms
-        : ai?.synonyms ?? const <String>[],
-    antonyms: online?.antonyms.isNotEmpty == true
-        ? online!.antonyms
-        : ai?.antonyms ?? const <String>[],
+    synonyms: ai?.synonyms.isNotEmpty == true
+        ? ai!.synonyms
+        : online?.synonyms ?? const <String>[],
+    antonyms: ai?.antonyms.isNotEmpty == true
+        ? ai!.antonyms
+        : online?.antonyms ?? const <String>[],
     exampleSentence: ai?.exampleSentence ?? online?.exampleSentence,
     exampleSentenceUrdu: ai?.exampleSentenceUrdu ?? online?.exampleSentenceUrdu,
     collocations: ai?.collocations.isNotEmpty == true
