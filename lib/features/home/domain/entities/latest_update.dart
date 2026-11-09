@@ -4,6 +4,7 @@
 /// Current Affairs/RSS source can replace the mock list later.
 class LatestUpdate {
   const LatestUpdate({
+    required this.id,
     required this.headline,
     required this.source,
     required this.category,
@@ -16,6 +17,7 @@ class LatestUpdate {
     this.aiSummaryAvailable = false,
   });
 
+  final String id;
   final String headline;
   final String source;
   final String category;
