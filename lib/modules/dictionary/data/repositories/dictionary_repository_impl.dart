@@ -30,6 +30,18 @@ class DictionaryRepositoryImpl implements DictionaryRepository {
   Future<int> entryCount() => _local.entryCount();
 
   @override
+  Future<AiWordProfile?> cachedAiProfile(String wordLower) =>
+      _local.cachedAiProfile(wordLower);
+
+  @override
+  Future<void> saveAiProfile(AiWordProfile profile) =>
+      _local.saveAiProfile(profile);
+
+  @override
+  Future<void> removeAiProfile(String wordLower) =>
+      _local.removeAiProfile(wordLower);
+
+  @override
   Future<void> addFavorite({
     required String wordLower,
     required String word,
