@@ -38,6 +38,18 @@ jobs:
       - name: Print versions
         run: flutter --version
 
+      - name: Clear cached sqlite3 native asset
+        # sqlite3 3.5.0 can fail native-asset verification when a stale/corrupt
+        # package is restored from the Flutter/pub cache. Remove only that
+        # package so pub downloads a clean copy without discarding all caches.
+        run: |
+          set -euo pipefail
+          if [ -n "${PUB_CACHE:-}" ]; then
+            rm -rf "$PUB_CACHE/hosted/pub.dev/sqlite3-3.5.0"
+          fi
+          rm -rf "$HOME/.pub-cache/hosted/pub.dev/sqlite3-3.5.0"
+          rm -rf "/home/runner/work/_temp/flutter/pub-cache/hosted/pub.dev/sqlite3-3.5.0"
+
       - name: Install dependencies
         run: flutter pub get
 
