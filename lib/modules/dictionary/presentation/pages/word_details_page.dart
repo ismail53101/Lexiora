@@ -119,7 +119,11 @@ class _WordDetailsPageState extends ConsumerState<WordDetailsPage> {
           message: 'Something went wrong loading this word.',
           onRetry: () => ref.invalidate(wordProfileProvider(widget.wordLower)),
         ),
-        data: (WordProfile p) => _ProfileView(profile: displayProfile ?? p),
+        data: (WordProfile p) => _ProfileView(
+            profile: displayProfile ?? p,
+            aiRefreshing: _aiRefreshing,
+            onRefreshAi: _refreshAi,
+          ),
       ),
     );
   }
@@ -207,9 +211,15 @@ class _BookmarkAction extends ConsumerWidget {
 }
 
 class _ProfileView extends StatelessWidget {
-  const _ProfileView({required this.profile});
+  const _ProfileView({
+    required this.profile,
+    required this.aiRefreshing,
+    required this.onRefreshAi,
+  });
 
   final WordProfile profile;
+  final bool aiRefreshing;
+  final VoidCallback onRefreshAi;
 
   @override
   Widget build(BuildContext context) {
@@ -255,9 +265,9 @@ class _ProfileView extends StatelessWidget {
           enrichmentSource: profile.ai?.source,
         ),
         _AiEnrichmentButton(
-          loading: _aiRefreshing,
+          loading: aiRefreshing,
           hasCachedAi: profile.ai != null,
-          onPressed: _refreshAi,
+          onPressed: onRefreshAi,
         ),
         const SizedBox(height: 12),
 
