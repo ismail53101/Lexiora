@@ -32,6 +32,33 @@ class WordDetailsPage extends ConsumerStatefulWidget {
 }
 
 class _WordDetailsPageState extends ConsumerState<WordDetailsPage> {
+  AiWordProfile? _manualAiProfile;
+  bool _aiRefreshing = false;
+
+  Future<void> _refreshAi() async {
+    if (_aiRefreshing) return;
+    setState(() => _aiRefreshing = true);
+    try {
+      ref.invalidate(dictionaryAiRefreshProvider(widget.wordLower));
+      final AiWordProfile? value =
+          await ref.read(dictionaryAiRefreshProvider(widget.wordLower).future);
+      if (!mounted) return;
+      if (value == null) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(content: Text('AI information could not be loaded.')),
+        );
+      } else {
+        setState(() => _manualAiProfile = value);
+        ref.invalidate(wordProfileProvider(widget.wordLower));
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(content: Text('AI information saved for offline use.')),
+        );
+      }
+    } finally {
+      if (mounted) setState(() => _aiRefreshing = false);
+    }
+  }
+
   @override
   void initState() {
     super.initState();
@@ -57,8 +84,9 @@ class _WordDetailsPageState extends ConsumerState<WordDetailsPage> {
       data: (AiWordProfile? value) => value,
       orElse: () => null,
     );
+    final AiWordProfile? effectiveAi = _manualAiProfile ?? aiProfile;
     final WordProfile? displayProfile =
-        localProfile?.copyWith(ai: aiProfile);
+        localProfile?.copyWith(ai: effectiveAi);
 
     return Scaffold(
       appBar: AppBar(
@@ -225,6 +253,11 @@ class _ProfileView extends StatelessWidget {
           hasCuratedUrdu: hasCuratedUrdu,
           aiAvailable: profile.ai != null,
           enrichmentSource: profile.ai?.source,
+        ),
+        _AiEnrichmentButton(
+          loading: _aiRefreshing,
+          hasCachedAi: profile.ai != null,
+          onPressed: _refreshAi,
         ),
         const SizedBox(height: 12),
 
@@ -497,6 +530,66 @@ class _IpaLine extends StatelessWidget {
 }
 
 /// 🟢 Available Offline / 🌐 Retrieved Online • Saved Offline.
+
+
+class _AiEnrichmentButton extends StatelessWidget {
+  const _AiEnrichmentButton({
+    required this.loading,
+    required this.hasCachedAi,
+    required this.onPressed,
+  });
+
+  final bool loading;
+  final bool hasCachedAi;
+  final VoidCallback onPressed;
+
+  @override
+  Widget build(BuildContext context) {
+    final ThemeData theme = Theme.of(context);
+    return Align(
+      alignment: Alignment.centerLeft,
+      child: Padding(
+        padding: const EdgeInsets.only(top: 6, bottom: 4),
+        child: InkWell(
+          borderRadius: BorderRadius.circular(18),
+          onTap: loading ? null : onPressed,
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 4, vertical: 4),
+            child: Row(
+              mainAxisSize: MainAxisSize.min,
+              children: <Widget>[
+                loading
+                    ? const SizedBox(
+                        width: 16,
+                        height: 16,
+                        child: CircularProgressIndicator(strokeWidth: 2),
+                      )
+                    : Icon(
+                        Icons.auto_awesome,
+                        size: 17,
+                        color: theme.colorScheme.primary,
+                      ),
+                const SizedBox(width: 6),
+                Text(
+                  loading
+                      ? 'Getting AI information…'
+                      : hasCachedAi
+                          ? 'AI information saved • Refresh AI'
+                          : 'Ask AI for more information',
+                  style: theme.textTheme.labelMedium?.copyWith(
+                    color: theme.colorScheme.primary,
+                    fontWeight: FontWeight.w600,
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+}
+
 class _OfflineStatusBadge extends ConsumerWidget {
   const _OfflineStatusBadge({
     required this.wordLower,
