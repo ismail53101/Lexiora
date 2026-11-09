@@ -73,7 +73,7 @@ jobs:
       - name: Ensure Gradle wrapper
         # The wrapper jar is intentionally not committed (binary-free repo);
         # regenerate it to match the pinned Gradle version before building.
-        run: cd android && gradle wrapper --gradle-version 9.1.0
+        run: cd android && gradle :wrapper --gradle-version 9.1.0 --no-validate-url --network-timeout 60000 --retries 3 --retry-back-off-ms 1000
 
       - name: Validate Cloudflare Worker JavaScript
         run: node --check cloudflare-worker/worker.js
