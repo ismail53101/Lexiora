@@ -132,11 +132,6 @@ final wordAiEnrichmentProvider =
     final WordProfile profile =
         await ref.watch(wordProfileProvider(wordLower).future);
 
-    // AI is strictly a fallback for words absent from the local JSON-backed
-    // dictionary. Existing local words may use STANDS4 for synonym enrichment,
-    // but must never trigger an AI dictionary request for missing fields.
-    if (profile.existsLocally) return null;
-
     final ExamWordData? exam = profile.exam;
     final WordDetails? base = profile.base;
     final List<String> missing = <String>[];
@@ -167,12 +162,75 @@ final wordAiEnrichmentProvider =
     if (!hasWordForms) missing.add('wordForms');
     if (!hasExamNote) missing.add('examNote');
 
-    if (missing.isEmpty) return null;
+    AiWordProfile? online;
 
-    return sl<AiDictionaryService>().define(
-      wordLower,
-      missingFields: missing,
+    // First try the dedicated thesaurus/definition API for synonym and
+    // antonym data. This is intentionally allowed for words that already
+    // exist locally when those curated fields are missing.
+    if (!hasSynonyms || !hasAntonyms) {
+      online = await sl<Stands4DictionaryService>().define(wordLower);
+    }
+
+    // AI fills the remaining missing fields and also acts as the fallback for
+    // synonyms/antonyms when STANDS4 is unavailable or incomplete.
+    final List<String> aiFields = <String>[
+      ...missing.where((String field) {
+        if (field == 'synonyms' && online?.synonyms.isNotEmpty == true) {
+          return false;
+        }
+        if (field == 'antonyms' && online?.antonyms.isNotEmpty == true) {
+          return false;
+        }
+        return true;
+      }),
+    ];
+
+    AiWordProfile? ai;
+    if (aiFields.isNotEmpty) {
+      ai = await sl<AiDictionaryService>().define(
+        wordLower,
+        missingFields: aiFields,
+      );
+    }
+
+    if (online == null && ai == null) return null;
+
+    final AiWordProfile merged = AiWordProfile(
+      word: wordLower,
+      source: online != null && ai != null
+          ? 'stands4+ai'
+          : online != null
+              ? 'stands4'
+              : 'ai',
+      englishDefinition: ai?.englishDefinition ?? online?.englishDefinition,
+      urduMeanings:
+          ai?.urduMeanings.isNotEmpty == true
+              ? ai!.urduMeanings
+              : online?.urduMeanings ?? const <String>[],
+      partOfSpeech: ai?.partOfSpeech ?? online?.partOfSpeech,
+      synonyms:
+          online?.synonyms.isNotEmpty == true
+              ? online!.synonyms
+              : ai?.synonyms ?? const <String>[],
+      antonyms:
+          online?.antonyms.isNotEmpty == true
+              ? online!.antonyms
+              : ai?.antonyms ?? const <String>[],
+      exampleSentence:
+          ai?.exampleSentence ?? online?.exampleSentence,
+      exampleSentenceUrdu: ai?.exampleSentenceUrdu,
+      collocations:
+          ai?.collocations.isNotEmpty == true
+              ? ai!.collocations
+              : online?.collocations ?? const <String>[],
+      wordForms:
+          ai?.wordForms.isNotEmpty == true
+              ? ai!.wordForms
+              : online?.wordForms ?? const <String>[],
+      examNote: ai?.examNote,
     );
+
+    return merged.hasContent ? merged : null;
   },
 );
 
