@@ -13,6 +13,7 @@ class LatestUpdate {
     this.imageUrl,
     this.articleUrl,
     this.publishedAt,
+    this.aiSummaryAvailable = false,
   });
 
   final String headline;
@@ -24,6 +25,7 @@ class LatestUpdate {
   final String? imageUrl;
   final String? articleUrl;
   final DateTime? publishedAt;
+  final bool aiSummaryAvailable;
 
   /// Whether this story belongs in the Opinions feed rather than Latest.
   ///
