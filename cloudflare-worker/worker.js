@@ -450,10 +450,10 @@ export default {
     return aiUnavailable(lastFailure, null);
   },
   async scheduled(controller, env, ctx) {
-    ctx.waitUntil(refreshCurrentAffairs(env));
-  },
-  async scheduled(controller, env, ctx) {
-    ctx.waitUntil(preGenerateCurrentAffairsSummaries(env));
+    ctx.waitUntil((async () => {
+      await refreshCurrentAffairs(env);
+      await preGenerateCurrentAffairsSummaries(env);
+    })());
   },
 };
 function isWorkerAuthorized(request, env) {
