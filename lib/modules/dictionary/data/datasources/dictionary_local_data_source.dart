@@ -54,6 +54,13 @@ class DictionaryLocalDataSource {
         '  FROM dictionary_exam_entries e '
         '  WHERE (e.word_lower >= ? AND e.word_lower < ?) '
         '     OR e.content_json LIKE ?'
+        '), cached AS ('
+        '  SELECT c.word AS word, c.word_lower AS word_lower, '
+        "         json_extract(c.profile_json, '$.partOfSpeech') AS pos, "
+        "         COALESCE(json_extract(c.profile_json, '$.englishDefinition'), c.word) AS meaning, "
+        '         0 AS rid, 1 AS sense_count '
+        '  FROM dictionary_ai_cache c '
+        '  WHERE c.word_lower >= ? AND c.word_lower < ?'
         '), combined AS ('
         '  SELECT b.word, b.word_lower, b.pos, b.meaning, '
         '         b.rid, b.sense_count '
@@ -62,9 +69,14 @@ class DictionaryLocalDataSource {
         '  SELECT c.word, c.word_lower, c.pos, c.meaning, '
         '         c.rid, c.sense_count '
         '  FROM curated c '
-        '  WHERE NOT EXISTS ('
+        '  WHERE NOT EXISTS (
         '    SELECT 1 FROM base b WHERE b.word_lower = c.word_lower'
         '  )'
+        '  UNION ALL '
+        '  SELECT x.word, x.word_lower, x.pos, x.meaning, x.rid, x.sense_count '
+        '  FROM cached x '
+        '  WHERE NOT EXISTS (SELECT 1 FROM base b WHERE b.word_lower = x.word_lower) '
+        '    AND NOT EXISTS (SELECT 1 FROM dictionary_exam_entries e WHERE e.word_lower = x.word_lower) '
         ') '
         'SELECT word, word_lower, pos, meaning, rid, sense_count, '
         '       EXISTS(SELECT 1 FROM dictionary_favorites f '
@@ -78,6 +90,8 @@ class DictionaryLocalDataSource {
           Variable<String>(q),
           Variable<String>(hi),
           Variable<String>(curatedTextMatch),
+          Variable<String>(q),
+          Variable<String>(hi),
           Variable<String>(q),
           Variable<int>(limit),
           Variable<int>(offset),
@@ -127,13 +141,24 @@ class DictionaryLocalDataSource {
           ..orderBy([(t) => OrderingTerm(expression: t.id)])
           ..limit(1))
         .getSingleOrNull();
-    if (row == null) return null;
+    if (row != null) {
+      return DictionaryResult(
+        word: row.word,
+        wordLower: wl,
+        meaning: row.meaning,
+        partOfSpeech: row.partOfSpeech,
+        senseCount: await _countSenses(wl),
+        isFavorite: await isFavorite(wl),
+      );
+    }
+    final AiWordProfile? cached = await cachedAiProfile(wl);
+    if (cached == null) return null;
     return DictionaryResult(
-      word: row.word,
+      word: cached.word,
       wordLower: wl,
-      meaning: row.meaning,
-      partOfSpeech: row.partOfSpeech,
-      senseCount: await _countSenses(wl),
+      meaning: cached.englishDefinition ?? cached.urduMeanings.firstOrNull ?? cached.word,
+      partOfSpeech: cached.partOfSpeech,
+      senseCount: 1,
       isFavorite: await isFavorite(wl),
     );
   }
