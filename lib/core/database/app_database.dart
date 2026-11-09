@@ -203,13 +203,16 @@ class AppDatabase extends _$AppDatabase {
           if (from < 22) {
             await customStatement('DROP TABLE IF EXISTS study_goals');
           }
+          // v22 → v23: independent Grammar staged-quiz progress and rewarded
+          // milestone state. Additive; existing user data is untouched.
+          if (from < 23) {
+            await m.createTable(grammarQuizStageProgresses);
+          }
           // v23 → v24: persistent AI/online dictionary profiles. Additive; cached
           // enrichment survives bundled dictionary re-seeding and app updates.
           if (from < 24) {
             await m.createTable(dictionaryAiCache);
           }
-          // v22 → v23: independent Grammar staged-quiz progress and rewarded
-          // milestone state. Additive; existing user data is untouched.
           if (from < 23) {
             await m.createTable(grammarQuizStageProgresses);
           }
