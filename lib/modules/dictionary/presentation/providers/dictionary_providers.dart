@@ -165,7 +165,7 @@ Future<AiWordProfile?> _fetchDictionaryEnrichment(
 ) async {
   final Stands4DictionaryService stands4 = sl<Stands4DictionaryService>();
   final AiDictionaryService aiService = sl<AiDictionaryService>();
-  AiWordProfile? online = await stands4.define(wordLower);
+  final AiWordProfile? online = await stands4.define(wordLower);
 
   final List<String> aiFields = <String>[
     'englishDefinition',
@@ -181,10 +181,10 @@ Future<AiWordProfile?> _fetchDictionaryEnrichment(
   ];
   if (online != null) {
     aiFields.removeWhere((String field) {
-      if (field == 'synonyms') return online!.synonyms.isNotEmpty;
-      if (field == 'antonyms') return online!.antonyms.isNotEmpty;
-      if (field == 'englishDefinition') return online!.englishDefinition != null;
-      if (field == 'partOfSpeech') return online!.partOfSpeech != null;
+      if (field == 'synonyms') return online.synonyms.isNotEmpty;
+      if (field == 'antonyms') return online.antonyms.isNotEmpty;
+      if (field == 'englishDefinition') return online.englishDefinition != null;
+      if (field == 'partOfSpeech') return online.partOfSpeech != null;
       return false;
     });
   }
