@@ -56,7 +56,7 @@ class DictionaryLocalDataSource {
         '     OR e.content_json LIKE ?'
         '), cached AS ('
         '  SELECT c.word AS word, c.word_lower AS word_lower, '
-        "         json_extract(c.profile_json, '$.partOfSpeech') AS pos, "
+        "         json_extract(c.content_json, '$.partOfSpeech') AS pos, "
         "         COALESCE(json_extract(c.content_json, '$.englishDefinition'), c.word) AS meaning, "
         '         0 AS rid, 1 AS sense_count '
         '  FROM dictionary_ai_cache c '
@@ -69,8 +69,7 @@ class DictionaryLocalDataSource {
         '  SELECT c.word, c.word_lower, c.pos, c.meaning, '
         '         c.rid, c.sense_count '
         '  FROM curated c '
-        '  WHERE NOT EXISTS (
-        '    SELECT 1 FROM base b WHERE b.word_lower = c.word_lower'
+        '  WHERE NOT EXISTS (SELECT 1 FROM base b WHERE b.word_lower = c.word_lower'
         '  )'
         '  UNION ALL '
         '  SELECT x.word, x.word_lower, x.pos, x.meaning, x.rid, x.sense_count '
