@@ -135,8 +135,20 @@ final wordAiEnrichmentProvider =
     if (cached != null) return cached;
 
     final WordProfile profile = await ref.watch(wordProfileProvider(wl).future);
-    if (profile.existsLocally) return null;
 
+    // Local/bundled words are enriched automatically with STANDS4 once.
+    // The cached result is returned on every later open, so this never
+    // repeatedly calls STANDS4 for the same word.
+    if (profile.existsLocally) {
+      final Stands4DictionaryService stands4 = sl<Stands4DictionaryService>();
+      final AiWordProfile? stands4Profile = await stands4.define(wl);
+      if (stands4Profile != null) {
+        await repo.saveAiProfile(stands4Profile);
+      }
+      return stands4Profile;
+    }
+
+    // Unknown words get the full STANDS4 + AI profile automatically.
     final AiWordProfile? online = await _fetchDictionaryEnrichment(wl, ref);
     if (online != null) {
       await repo.saveAiProfile(online);
