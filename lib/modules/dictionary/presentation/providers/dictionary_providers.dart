@@ -177,7 +177,10 @@ Future<AiWordProfile?> _fetchDictionaryEnrichment(
   final AiDictionaryService aiService = sl<AiDictionaryService>();
   final AiWordProfile? online = await stands4.define(wordLower);
 
-  final List<String> aiFields = <String>[
+  // Explicit AI enrichment is a full profile request, not a "missing fields"
+  // request. This is important for bundled/offline words: the user asks AI to
+  // improve the explanation, not merely fill whatever STANDS4 lacks.
+  const List<String> aiFields = <String>[
     'englishDefinition',
     'urduMeanings',
     'partOfSpeech',
@@ -189,18 +192,8 @@ Future<AiWordProfile?> _fetchDictionaryEnrichment(
     'wordForms',
     'examNote',
   ];
-  if (online != null) {
-    aiFields.removeWhere((String field) {
-      if (field == 'synonyms') return online.synonyms.isNotEmpty;
-      if (field == 'antonyms') return online.antonyms.isNotEmpty;
-      if (field == 'englishDefinition') return online.englishDefinition != null;
-      if (field == 'partOfSpeech') return online.partOfSpeech != null;
-      return false;
-    });
-  }
-  final AiWordProfile? ai = aiFields.isEmpty
-      ? null
-      : await aiService.define(wordLower, missingFields: aiFields);
+  final AiWordProfile? ai =
+      await aiService.define(wordLower, missingFields: aiFields);
 
   if (online == null && ai == null) return null;
   final AiWordProfile merged = AiWordProfile(
