@@ -618,7 +618,11 @@ async function generateCurrentAffairsSummary(story, env) {
     ],
   });
 
-  const order = resolveProviderOrder("auto", env).filter((id) => id !== "unorouter");
+  // Current Affairs summaries must use the same generic KV-configured
+  // model pool as the main AI Assistant. "unorouter" is the gateway trigger
+  // for that pool; removing it made summaries fail when no legacy direct
+  // provider key was configured.
+  const order = resolveProviderOrder("auto", env);
   if (order.length === 0) {
     throw new Error("No direct AI provider is configured for summaries.");
   }
