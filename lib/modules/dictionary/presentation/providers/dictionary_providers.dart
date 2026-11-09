@@ -95,8 +95,6 @@ final Provider<GetWordProfile> getWordProfileProvider =
     Provider<GetWordProfile>(
   (Ref ref) => GetWordProfile(
     ref.watch(dictionaryRepositoryProvider),
-    sl<AiDictionaryService>(),
-    sl<Stands4DictionaryService>(),
   ),
 );
 
@@ -149,7 +147,7 @@ final wordAiEnrichmentProvider =
 
 /// Explicitly fetches/refreshes AI + online dictionary data and persists it.
 /// Used by the AI icon on words that already have bundled offline content.
-final FutureProviderFamily<AiWordProfile?, String> dictionaryAiRefreshProvider =
+final dictionaryAiRefreshProvider =
     FutureProvider.family<AiWordProfile?, String>((Ref ref, String wordLower) async {
   final String wl = wordLower.trim().toLowerCase();
   final AiWordProfile? online = await _fetchDictionaryEnrichment(wl, ref);
