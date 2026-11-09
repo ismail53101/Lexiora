@@ -49,7 +49,7 @@ class AiDictionaryService {
             },
             <String, String>{
               'role': 'user',
-              'content': 'Create the dictionary profile for the English word "$query". Fill these missing fields: ${fields.join(', ')}. Return empty values for all other fields. Confirm that the returned word is the same headword.',
+              'content': 'Create a COMPLETE dictionary profile for the English word "$query". Return every requested field: ${fields.join(', ')}. Do not omit a requested field. If a requested field genuinely does not apply, return an empty array or null. Do not return a shortened definition merely because an offline dictionary already has one. The AI result must be useful as a standalone learner-facing profile. Confirm that the returned word is exactly the same headword.',
             },
           ],
         },
