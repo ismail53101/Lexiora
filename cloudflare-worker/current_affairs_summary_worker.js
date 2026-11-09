@@ -3,27 +3,27 @@ async fetch(request,env){
  if(request.method==="OPTIONS")return new Response(null,{status:204,headers:C()});
  const u=new URL(request.url); if(u.pathname!=="/api/current-affairs/summary"||request.method!=="GET")return J({error:"not_found"},404);
  const id=ID(u.searchParams.get("id")); if(!id)return J({error:"missing_id"},400);
- let s=await env.KV.get("s:"+id,"json"); if(s)return J(s);
- let a=await env.KV.get("a:"+id,"json"); if(!a){try{a=(await F(env)).find(x=>x.id===id)||null}catch(e){}}
+ let s=await env.MODEL_CONFIG_KV.get("s:"+id,"json"); if(s)return J(s);
+ let a=await env.MODEL_CONFIG_KV.get("a:"+id,"json"); if(!a){try{a=(await F(env)).find(x=>x.id===id)||null}catch(e){}}
  if(!a)return J({error:"article_not_found"},404);
- try{s=await G(a,env);await env.KV.put("s:"+id,JSON.stringify(s),{expirationTtl:2592000});return J(s)}
+ try{s=await G(a,env);await env.MODEL_CONFIG_KV.put("s:"+id,JSON.stringify(s),{expirationTtl:2592000});return J(s)}
  catch(e){return J({error:"summary_unavailable"},503)}
 },
 async scheduled(c,env,ctx){ctx.waitUntil(P(env))}
 };
 async function P(env){
- try{const as=await F(env);let d=new Date().toISOString().slice(0,10),k="p:"+d,n=Number(await env.KV.get(k))||0;
+ try{const as=await F(env);let d=new Date().toISOString().slice(0,10),k="p:"+d,n=Number(await env.MODEL_CONFIG_KV.get(k))||0;
   if(n>=20)return;
   as.sort((x,y)=>R(y)-R(x));
-  for(const a of as){if(n>=20)break;if(await env.KV.get("s:"+a.id))continue;if(R(a)<=0)continue;if(a.feedType.toLowerCase()==="opinions"&&R(a)<8)continue;
-   try{const s=await G(a,env);await env.KV.put("s:"+a.id,JSON.stringify(s),{expirationTtl:2592000});n++;await env.KV.put(k,String(n),{expirationTtl:172800})}catch(e){}
+  for(const a of as){if(n>=20)break;if(await env.MODEL_CONFIG_KV.get("s:"+a.id))continue;if(R(a)<=0)continue;if(a.feedType.toLowerCase()==="opinions"&&R(a)<8)continue;
+   try{const s=await G(a,env);await env.MODEL_CONFIG_KV.put("s:"+a.id,JSON.stringify(s),{expirationTtl:2592000});n++;await env.MODEL_CONFIG_KV.put(k,String(n),{expirationTtl:172800})}catch(e){}
   }
  }catch(e){}
 }
 async function F(env){
  const r=await fetch(env.FEED_URL);if(!r.ok)throw Error("feed");
  const d=await r.json(),as=[...(Array.isArray(d.national)?d.national:[]),...(Array.isArray(d.international)?d.international:[])].filter(x=>x&&x.title&&x.articleUrl).map(x=>({id:ID(x.id)||I(x.articleUrl,x.title),title:T(x.title),source:T(x.source||"Current Affairs"),category:T(x.category||"International"),feedType:T(x.feedType||"Latest News"),excerpt:T(x.excerpt||"").slice(0,1000),articleUrl:x.articleUrl}));
- for(const a of as)await env.KV.put("a:"+a.id,JSON.stringify(a),{expirationTtl:172800});return as
+ for(const a of as)await env.MODEL_CONFIG_KV.put("a:"+a.id,JSON.stringify(a),{expirationTtl:172800});return as
 }
 async function G(a,env){
  let t="";try{const c=new AbortController(),z=setTimeout(()=>c.abort(),12000),r=await fetch(a.articleUrl,{headers:{Accept:"text/html", "User-Agent":"DarsNexa-AI-Summary/1.0"},signal:c.signal});if(r.ok)t=X((await r.text()).slice(0,500000)).slice(0,12000);clearTimeout(z)}catch(e){}
