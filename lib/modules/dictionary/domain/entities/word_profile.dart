@@ -234,27 +234,33 @@ class WordProfile extends Equatable {
   String get displayWord => exam?.word ?? base?.word ?? word;
 
   /// English definition: curated first, then the base primary sense.
+  /// When AI enrichment has been saved, it is the preferred learner-facing
+  /// explanation. Bundled exam content remains the fallback if AI has no value.
   String? get englishDefinition =>
-      exam?.englishDefinition ?? ai?.englishDefinition ?? base?.primary?.meaning;
+      ai?.englishDefinition ?? exam?.englishDefinition ?? base?.primary?.meaning;
 
   /// Pronunciation (IPA): curated first, then the base IPA when present.
   String? get pronunciation => exam?.pronunciation ?? base?.ipaPronunciation;
 
   /// Part of speech: curated first, then the base primary sense.
   String? get partOfSpeech =>
-      exam?.partOfSpeech ?? ai?.partOfSpeech ?? base?.primary?.partOfSpeech;
+      ai?.partOfSpeech ?? exam?.partOfSpeech ?? base?.primary?.partOfSpeech;
 
   List<String> get synonyms =>
-      exam?.synonyms.isNotEmpty == true ? exam!.synonyms : ai?.synonyms ?? const <String>[];
+      ai?.synonyms.isNotEmpty == true
+          ? ai!.synonyms
+          : exam?.synonyms ?? const <String>[];
 
   List<String> get antonyms =>
-      exam?.antonyms.isNotEmpty == true ? exam!.antonyms : ai?.antonyms ?? const <String>[];
+      ai?.antonyms.isNotEmpty == true
+          ? ai!.antonyms
+          : exam?.antonyms ?? const <String>[];
 
-  List<String> get collocations => exam?.collocations.isNotEmpty == true
-      ? exam!.collocations
-      : ai?.collocations ?? const <String>[];
+  List<String> get collocations => ai?.collocations.isNotEmpty == true
+      ? ai!.collocations
+      : exam?.collocations ?? const <String>[];
 
-  String? get examNote => exam?.examNote ?? ai?.examNote;
+  String? get examNote => ai?.examNote ?? exam?.examNote;
 
   @override
   List<Object?> get props =>
