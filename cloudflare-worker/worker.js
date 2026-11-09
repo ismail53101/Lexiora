@@ -337,6 +337,12 @@ export default {
       }
       return currentAffairsResponse(ctx, env);
     }
+    if (url.pathname === "/api/current-affairs/summary") {
+      if (request.method !== "GET") {
+        return jsonError(405, "method_not_allowed", "Use GET.");
+      }
+      return currentAffairsSummaryResponse(url, env);
+    }
 
     if (url.pathname !== CHAT_COMPLETIONS_PATH) {
       return jsonError(404, "not_found", `Unknown path: ${url.pathname}`);
@@ -517,6 +523,157 @@ function splitStands4List(value) {
   return value.split(",").map((item) => cleanText(item)).filter(Boolean).slice(0, 12);
 }
 
+async function currentAffairsSummaryResponse(url, env) {
+  const id = String(url.searchParams.get("id") || "").trim().toLowerCase();
+  if (!/^[a-z0-9-]{1,180}$/.test(id)) {
+    return jsonError(400, "missing_id", "A valid article id is required.");
+  }
+  const cacheKey = `news_ai_summary:${id}`;
+  if (env.MODEL_CONFIG_KV) {
+    try {
+      const cached = await env.MODEL_CONFIG_KV.get(cacheKey, "json");
+      if (cached) return jsonResponse(cached);
+    } catch (error) {
+      console.log(`[summary] cache read failed: ${error.message || error}`);
+    }
+  }
+
+  const feed = await refreshCurrentAffairs(env);
+  const stories = [...(feed.national || []), ...(feed.international || [])];
+  const story = stories.find((item) =>
+    stableStoryId(item.articleUrl, item.title) === id
+  );
+  if (!story) return jsonError(404, "article_not_found", "Article is no longer available.");
+
+  const result = await generateCurrentAffairsSummary(story, env);
+  if (env.MODEL_CONFIG_KV) {
+    try {
+      await env.MODEL_CONFIG_KV.put(cacheKey, JSON.stringify(result), {
+        expirationTtl: 60 * 60 * 24 * 30,
+      });
+    } catch (error) {
+      console.log(`[summary] cache write failed: ${error.message || error}`);
+    }
+  }
+  return jsonResponse(result);
+}
+
+async function generateCurrentAffairsSummary(story, env) {
+  let articleText = "";
+  const controller = new AbortController();
+  const timeout = setTimeout(() => controller.abort(), 12000);
+  try {
+    const response = await fetch(story.articleUrl, {
+      headers: {
+        Accept: "text/html,application/xhtml+xml",
+        "User-Agent": "DarsNexa-Current-Affairs/1.0",
+      },
+      signal: controller.signal,
+    });
+    if (response.ok) {
+      articleText = extractArticleText((await response.text()).slice(0, 500000))
+        .slice(0, 12000);
+    }
+  } catch (error) {
+    console.log(`[summary] article fetch failed: ${error.message || error}`);
+  } finally {
+    clearTimeout(timeout);
+  }
+
+  if (!articleText) articleText = story.excerpt || story.title;
+
+  const body = JSON.stringify({
+    model: "auto",
+    stream: false,
+    messages: [
+      {
+        role: "system",
+        content:
+          "You are DarsNexa's current-affairs exam summarizer. Return JSON only. " +
+          "Use only the supplied article content. Never invent facts.",
+      },
+      {
+        role: "user",
+        content: [
+          "Return exactly this JSON shape:",
+          '{"summary":"2-4 concise lines","keyPoints":["3-5 factual points"],"examRelevance":["1-3 exam subjects"]}',
+          "",
+          `TITLE: ${story.title}`,
+          `SOURCE: ${story.source}`,
+          `CATEGORY: ${story.category}`,
+          "",
+          "ARTICLE CONTENT:",
+          articleText,
+        ].join("\n"),
+      },
+    ],
+  });
+
+  const order = resolveProviderOrder("auto", env).filter((id) => id !== "unorouter");
+  if (order.length === 0) {
+    return jsonError(503, "summary_provider_unavailable", "No direct AI provider is configured for summaries.");
+  }
+
+  let lastError = null;
+  for (const providerId of order) {
+    try {
+      const upstream = await callProvider(
+        providerId,
+        body,
+        env,
+        Date.now() + 25000,
+      );
+      if (!upstream.ok) {
+        lastError = `${providerId}: HTTP ${upstream.status}`;
+        continue;
+      }
+      const payload = await upstream.json();
+      const content = payload?.choices?.[0]?.message?.content;
+      if (typeof content !== "string" || !content.trim()) {
+        lastError = `${providerId}: empty response`;
+        continue;
+      }
+      const parsed = JSON.parse(
+        content.replace(/^\s*\`\`\`json\s*/i, "")
+          .replace(/\s*\`\`\`\s*$/i, "")
+          .trim(),
+      );
+      const summary = cleanText(parsed.summary);
+      const keyPoints = Array.isArray(parsed.keyPoints)
+        ? parsed.keyPoints.map(cleanText).filter(Boolean).slice(0, 5)
+        : [];
+      const examRelevance = Array.isArray(parsed.examRelevance)
+        ? parsed.examRelevance.map(cleanText).filter(Boolean).slice(0, 3)
+        : [];
+      if (!summary || keyPoints.length < 3 || examRelevance.length < 1) {
+        lastError = `${providerId}: invalid summary shape`;
+        continue;
+      }
+      return {
+        version: 1,
+        generatedAt: new Date().toISOString(),
+        summary,
+        keyPoints,
+        examRelevance,
+      };
+    } catch (error) {
+      lastError = `${providerId}: ${error.message || error}`;
+    }
+  }
+
+  throw new Error(lastError || "No AI provider succeeded.");
+}
+
+function extractArticleText(html) {
+  return decodeXml(html
+    .replace(/<script\\b[\\s\\S]*?<\\/script>/gi, " ")
+    .replace(/<style\\b[\\s\\S]*?<\\/style>/gi, " ")
+    .replace(/<noscript\\b[\\s\\S]*?<\\/noscript>/gi, " ")
+    .replace(/<svg\\b[\\s\\S]*?<\\/svg>/gi, " ")
+    .replace(/<[^>]+>/g, " ")
+  ).replace(/\\s+/g, " ").trim();
+}
+
 async function currentAffairsResponse(ctx, env) {
   const cache = caches.default;
   const cached = await cache.match(NEWS_CACHE_KEY);
@@ -564,6 +721,15 @@ async function refreshCurrentAffairs(env) {
       feedType,
     })),
   };
+  payload.national = payload.national.map((story) => ({
+    ...story,
+    id: stableStoryId(story.articleUrl, story.title),
+  }));
+  payload.international = payload.international.map((story) => ({
+    ...story,
+    id: stableStoryId(story.articleUrl, story.title),
+  }));
+
   await caches.default.put(
     new Request(NEWS_CACHE_KEY),
     jsonResponse(payload),
