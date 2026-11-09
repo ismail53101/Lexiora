@@ -54,7 +54,8 @@ class AiDictionaryService {
         },
       );
       final String raw = (_content(response) ?? '').trim();
-
+      if (raw.isEmpty) return null;
+      return _parse(raw, query);
     } on Object {
       // AI is an optional enhancement. The caller keeps the offline profile.
       return null;
