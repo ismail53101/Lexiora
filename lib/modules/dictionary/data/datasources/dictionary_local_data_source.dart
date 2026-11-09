@@ -56,8 +56,8 @@ class DictionaryLocalDataSource {
         '     OR e.content_json LIKE ?'
         '), cached AS ('
         '  SELECT c.word AS word, c.word_lower AS word_lower, '
-        "         json_extract(c.content_json, '$.partOfSpeech') AS pos, "
-        "         COALESCE(json_extract(c.content_json, '$.englishDefinition'), c.word) AS meaning, "
+        r"         json_extract(c.content_json, '$.partOfSpeech') AS pos, "
+        r"         COALESCE(json_extract(c.content_json, '$.englishDefinition'), c.word) AS meaning, "
         '         0 AS rid, 1 AS sense_count '
         '  FROM dictionary_ai_cache c '
         '  WHERE c.word_lower >= ? AND c.word_lower < ?'
