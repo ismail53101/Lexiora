@@ -102,9 +102,6 @@ const PROVIDERS = {
     apiKeyEnv: "UNOROUTER_API_KEY",
     defaultBaseUrl: "https://api.unorouter.com",
   },
-  async scheduled(controller, env, ctx) {
-    ctx.waitUntil(preGenerateCurrentAffairsSummaries(env));
-  },
 };
 
 const CHAT_COMPLETIONS_PATH = "/v1/chat/completions";
@@ -454,6 +451,9 @@ export default {
   },
   async scheduled(controller, env, ctx) {
     ctx.waitUntil(refreshCurrentAffairs(env));
+  },
+  async scheduled(controller, env, ctx) {
+    ctx.waitUntil(preGenerateCurrentAffairsSummaries(env));
   },
 };
 function isWorkerAuthorized(request, env) {
