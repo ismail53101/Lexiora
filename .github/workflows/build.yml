@@ -82,10 +82,24 @@ jobs:
           storeFile=upload-keystore.jks
           EOF
 
-      - name: Ensure Gradle wrapper
-        # The wrapper jar is intentionally not committed (binary-free repo);
-        # regenerate it to match the pinned Gradle version before building.
-        run: cd android && gradle :wrapper --gradle-version 9.1.0 --no-validate-url --network-timeout 60000 --retries 3 --retry-back-off-ms 1000
+      - name: Generate Gradle wrapper without configuring the Android project
+        # Do not run the wrapper task from android/: that configures the full
+        # Flutter/Android build and can download Kotlin artifacts before the
+        # wrapper is even generated. Generate it in a tiny standalone project
+        # using the runner's installed Gradle, then copy only the wrapper files.
+        run: |
+          set -euo pipefail
+          rm -rf /tmp/gradle-wrapper-bootstrap
+          mkdir -p /tmp/gradle-wrapper-bootstrap
+          cd /tmp/gradle-wrapper-bootstrap
+          printf 'rootProject.name = "gradle-wrapper-bootstrap"\n' > settings.gradle
+          printf '' > build.gradle
+          gradle wrapper --gradle-version 9.1.0 --no-validate-url
+          cp gradlew "$GITHUB_WORKSPACE/android/gradlew"
+          cp gradlew.bat "$GITHUB_WORKSPACE/android/gradlew.bat"
+          mkdir -p "$GITHUB_WORKSPACE/android/gradle/wrapper"
+          cp gradle/wrapper/gradle-wrapper.jar "$GITHUB_WORKSPACE/android/gradle/wrapper/gradle-wrapper.jar"
+          cp gradle/wrapper/gradle-wrapper.properties "$GITHUB_WORKSPACE/android/gradle/wrapper/gradle-wrapper.properties"
 
       - name: Warm Gradle distribution with retries
         # Gradle 9.1.0 is downloaded by the wrapper from services.gradle.org.
