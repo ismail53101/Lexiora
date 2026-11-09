@@ -53,9 +53,9 @@ abstract final class DbConstants {
   /// metadata to existing `study_sessions` rows. Purely additive.
   /// v20 → v21: AI Assistant nested sub-projects — adds nullable parent_id to
   /// ai_projects. Existing projects remain top-level.
-  /// v21 → v22: removes the retired Study Planner Goals table and feature.
+  /// v23 → v24: adds persistent dictionary AI/online profile cache.\n  /// Cached enrichment is user data and is never cleared by dictionary re-seeding.\n  /// v21 → v22: removes the retired Study Planner Goals table and feature.
   /// v22 → v23: adds Grammar-only staged-quiz progress and reward unlock state.
-  static const int schemaVersion = 23;
+  static const int schemaVersion = 24;
 }
 
 /// Constants for the Quiz Engine's one-time demo seed.
