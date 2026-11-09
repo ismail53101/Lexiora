@@ -213,9 +213,6 @@ class AppDatabase extends _$AppDatabase {
           if (from < 24) {
             await m.createTable(dictionaryAiCache);
           }
-          if (from < 23) {
-            await m.createTable(grammarQuizStageProgresses);
-          }
         },
         beforeOpen: (OpeningDetails details) async {
           await customStatement('PRAGMA foreign_keys = ON');
