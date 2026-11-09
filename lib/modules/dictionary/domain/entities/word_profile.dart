@@ -49,6 +49,21 @@ class AiWordProfile extends Equatable {
     this.examNote,
   });
 
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'word': word,
+        'source': source,
+        'englishDefinition': englishDefinition,
+        'urduMeanings': urduMeanings,
+        'partOfSpeech': partOfSpeech,
+        'synonyms': synonyms,
+        'antonyms': antonyms,
+        'exampleSentence': exampleSentence,
+        'exampleSentenceUrdu': exampleSentenceUrdu,
+        'collocations': collocations,
+        'wordForms': wordForms,
+        'examNote': examNote,
+      };
+
   factory AiWordProfile.fromJson(Map<String, dynamic> json) => AiWordProfile(
         word: json['word']?.toString() ?? '',
         source: json['source']?.toString() ?? 'ai',
