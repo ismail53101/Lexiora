@@ -46,6 +46,7 @@ class CurrentAffairsFeed {
       imageUrl: _nullable(json['imageUrl']),
       articleUrl: _nullable(json['articleUrl']),
       publishedAt: publishedAt,
+      aiSummaryAvailable: json['aiSummaryAvailable'] == true,
     );
   }
 
