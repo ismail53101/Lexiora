@@ -156,7 +156,7 @@ class DictionaryLocalDataSource {
     return DictionaryResult(
       word: cached.word,
       wordLower: wl,
-      meaning: cached.englishDefinition ?? cached.urduMeanings.firstOrNull ?? cached.word,
+      meaning: cached.englishDefinition ?? (cached.urduMeanings.isNotEmpty ? cached.urduMeanings.first : cached.word),
       partOfSpeech: cached.partOfSpeech,
       senseCount: 1,
       isFavorite: await isFavorite(wl),
