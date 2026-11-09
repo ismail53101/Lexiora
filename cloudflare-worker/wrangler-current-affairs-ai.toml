@@ -1,0 +1,18 @@
+name = "darsnexa-current-affairs-ai"
+main = "current_affairs_summary_worker.js"
+compatibility_date = "2026-01-01"
+
+[triggers]
+crons = ["*/15 * * * *"]
+
+[[kv_namespaces]]
+binding = "KV"
+id = "REPLACE_WITH_SUMMARY_KV_NAMESPACE_ID"
+
+[vars]
+FEED_URL = "https://sapiora-ai-worker.ismaillasharibaloch53.workers.dev/api/current-affairs/latest"
+AI_URL = "https://sapiora-ai-worker.ismaillasharibaloch53.workers.dev/v1/chat/completions"
+
+# Set these as secrets:
+# wrangler secret put AI_KEY
+# Use the same value as the existing AI Worker's WORKER_SHARED_KEY.
