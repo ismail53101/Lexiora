@@ -108,131 +108,121 @@ final wordProfileProvider = FutureProvider.family<WordProfile, String>(
   (Ref ref, String wordLower) async {
     try {
       await ref.watch(dictionarySeederProvider).ensureSeeded();
-    } on Object {
-      // Base dictionary unavailable this run; profile degrades gracefully.
-    }
+    } on Object {}
     try {
       await ref.watch(examWordsSeederProvider).ensureSeeded();
-    } on Object {
-      // Curated pack is optional.
-    }
-    final result = await ref.watch(getWordProfileProvider).call(wordLower);
-    return result.fold(
+    } on Object {}
+
+    final String wl = wordLower.trim().toLowerCase();
+    final result = await ref.watch(getWordProfileProvider).call(wl);
+    final WordProfile profile = result.fold(
       (failure) => throw StateError(failure.message),
-      (WordProfile profile) => profile,
+      (WordProfile value) => value,
     );
+    final AiWordProfile? cached =
+        await ref.watch(dictionaryRepositoryProvider).cachedAiProfile(wl);
+    return profile.copyWith(ai: cached);
   },
 );
 
-/// Loads only the missing dictionary fields through AI in the background.
-/// The local profile is never blocked by this provider.
+/// Enriches only a genuinely missing word automatically. For words already in
+/// the bundled dictionary, AI enrichment is explicit via the AI button in the
+/// details screen. Cached results are always returned without a network call.
 final wordAiEnrichmentProvider =
     FutureProvider.family<AiWordProfile?, String>(
   (Ref ref, String wordLower) async {
-    final WordProfile profile =
-        await ref.watch(wordProfileProvider(wordLower).future);
+    final String wl = wordLower.trim().toLowerCase();
+    final DictionaryRepository repo = ref.watch(dictionaryRepositoryProvider);
+    final AiWordProfile? cached = await repo.cachedAiProfile(wl);
+    if (cached != null) return cached;
 
-    final ExamWordData? exam = profile.exam;
-    final WordDetails? base = profile.base;
-    final List<String> missing = <String>[];
+    final WordProfile profile = await ref.watch(wordProfileProvider(wl).future);
+    if (profile.existsLocally) return null;
 
-    final bool hasEnglish =
-        (exam?.englishDefinition?.trim().isNotEmpty == true) ||
-        (base?.primary?.meaning.trim().isNotEmpty == true);
-    final bool hasUrdu = exam?.urduMeanings.isNotEmpty == true;
-    final bool hasSynonyms = exam?.synonyms.isNotEmpty == true;
-    final bool hasAntonyms = exam?.antonyms.isNotEmpty == true;
-    final bool hasExample =
-        validatedUsage(profile.wordLower, exam?.usage) != null ||
-        base?.primary?.exampleSentence?.trim().isNotEmpty == true;
-    final bool hasCollocations = exam?.collocations.isNotEmpty == true;
-    final bool hasWordForms =
-        exam?.wordForms.isNotEmpty == true || profile.relatedWords.isNotEmpty;
-    final bool hasExamNote = exam?.examNote?.trim().isNotEmpty == true;
-
-    if (!hasEnglish) missing.add('englishDefinition');
-    if (!hasUrdu) missing.add('urduMeanings');
-    if (!hasSynonyms) missing.add('synonyms');
-    if (!hasAntonyms) missing.add('antonyms');
-    if (!hasExample) {
-      missing.add('exampleSentence');
-      missing.add('exampleSentenceUrdu');
+    final AiWordProfile? online = await _fetchDictionaryEnrichment(wl, ref);
+    if (online != null) {
+      await repo.saveAiProfile(online);
     }
-    if (!hasCollocations) missing.add('collocations');
-    if (!hasWordForms) missing.add('wordForms');
-    if (!hasExamNote) missing.add('examNote');
-
-    AiWordProfile? online;
-
-    // First try the dedicated thesaurus/definition API for synonym and
-    // antonym data. This is intentionally allowed for words that already
-    // exist locally when those curated fields are missing.
-    if (!hasSynonyms || !hasAntonyms) {
-      online = await sl<Stands4DictionaryService>().define(wordLower);
-    }
-
-    // AI fills the remaining missing fields and also acts as the fallback for
-    // synonyms/antonyms when STANDS4 is unavailable or incomplete.
-    final List<String> aiFields = <String>[
-      ...missing.where((String field) {
-        if (field == 'synonyms' && online?.synonyms.isNotEmpty == true) {
-          return false;
-        }
-        if (field == 'antonyms' && online?.antonyms.isNotEmpty == true) {
-          return false;
-        }
-        return true;
-      }),
-    ];
-
-    AiWordProfile? ai;
-    if (aiFields.isNotEmpty) {
-      ai = await sl<AiDictionaryService>().define(
-        wordLower,
-        missingFields: aiFields,
-      );
-    }
-
-    if (online == null && ai == null) return null;
-
-    final AiWordProfile merged = AiWordProfile(
-      word: wordLower,
-      source: online != null && ai != null
-          ? 'stands4+ai'
-          : online != null
-              ? 'stands4'
-              : 'ai',
-      englishDefinition: ai?.englishDefinition ?? online?.englishDefinition,
-      urduMeanings:
-          ai?.urduMeanings.isNotEmpty == true
-              ? ai!.urduMeanings
-              : online?.urduMeanings ?? const <String>[],
-      partOfSpeech: ai?.partOfSpeech ?? online?.partOfSpeech,
-      synonyms:
-          online?.synonyms.isNotEmpty == true
-              ? online!.synonyms
-              : ai?.synonyms ?? const <String>[],
-      antonyms:
-          online?.antonyms.isNotEmpty == true
-              ? online!.antonyms
-              : ai?.antonyms ?? const <String>[],
-      exampleSentence:
-          ai?.exampleSentence ?? online?.exampleSentence,
-      exampleSentenceUrdu: ai?.exampleSentenceUrdu,
-      collocations:
-          ai?.collocations.isNotEmpty == true
-              ? ai!.collocations
-              : online?.collocations ?? const <String>[],
-      wordForms:
-          ai?.wordForms.isNotEmpty == true
-              ? ai!.wordForms
-              : online?.wordForms ?? const <String>[],
-      examNote: ai?.examNote,
-    );
-
-    return merged.hasContent ? merged : null;
+    return online;
   },
 );
+
+/// Explicitly fetches/refreshes AI + online dictionary data and persists it.
+/// Used by the AI icon on words that already have bundled offline content.
+final FutureProviderFamily<AiWordProfile?, String> dictionaryAiRefreshProvider =
+    FutureProvider.family<AiWordProfile?, String>((Ref ref, String wordLower) async {
+  final String wl = wordLower.trim().toLowerCase();
+  final AiWordProfile? online = await _fetchDictionaryEnrichment(wl, ref);
+  if (online != null) {
+    await ref.read(dictionaryRepositoryProvider).saveAiProfile(online);
+  }
+  return online;
+});
+
+Future<AiWordProfile?> _fetchDictionaryEnrichment(
+  String wordLower,
+  Ref ref,
+) async {
+  final Stands4DictionaryService stands4 = sl<Stands4DictionaryService>();
+  final AiDictionaryService aiService = sl<AiDictionaryService>();
+  AiWordProfile? online = await stands4.define(wordLower);
+
+  final List<String> aiFields = <String>[
+    'englishDefinition',
+    'urduMeanings',
+    'partOfSpeech',
+    'synonyms',
+    'antonyms',
+    'exampleSentence',
+    'exampleSentenceUrdu',
+    'collocations',
+    'wordForms',
+    'examNote',
+  ];
+  if (online != null) {
+    aiFields.removeWhere((String field) {
+      if (field == 'synonyms') return online!.synonyms.isNotEmpty;
+      if (field == 'antonyms') return online!.antonyms.isNotEmpty;
+      if (field == 'englishDefinition') return online!.englishDefinition != null;
+      if (field == 'partOfSpeech') return online!.partOfSpeech != null;
+      return false;
+    });
+  }
+  final AiWordProfile? ai = aiFields.isEmpty
+      ? null
+      : await aiService.define(wordLower, missingFields: aiFields);
+
+  if (online == null && ai == null) return null;
+  final AiWordProfile merged = AiWordProfile(
+    word: wordLower,
+    source: online != null && ai != null
+        ? 'stands4+ai'
+        : online != null
+            ? 'stands4'
+            : 'ai',
+    englishDefinition: ai?.englishDefinition ?? online?.englishDefinition,
+    urduMeanings: ai?.urduMeanings.isNotEmpty == true
+        ? ai!.urduMeanings
+        : online?.urduMeanings ?? const <String>[],
+    partOfSpeech: ai?.partOfSpeech ?? online?.partOfSpeech,
+    synonyms: online?.synonyms.isNotEmpty == true
+        ? online!.synonyms
+        : ai?.synonyms ?? const <String>[],
+    antonyms: online?.antonyms.isNotEmpty == true
+        ? online!.antonyms
+        : ai?.antonyms ?? const <String>[],
+    exampleSentence: ai?.exampleSentence ?? online?.exampleSentence,
+    exampleSentenceUrdu: ai?.exampleSentenceUrdu ?? online?.exampleSentenceUrdu,
+    collocations: ai?.collocations.isNotEmpty == true
+        ? ai!.collocations
+        : online?.collocations ?? const <String>[],
+    wordForms: ai?.wordForms.isNotEmpty == true
+        ? ai!.wordForms
+        : online?.wordForms ?? const <String>[],
+    examNote: ai?.examNote ?? online?.examNote,
+  );
+  return merged.hasContent ? merged : null;
+}
 
 /// Reactive recent searches (most recent first).
 final recentSearchesProvider = StreamProvider<List<String>>(
