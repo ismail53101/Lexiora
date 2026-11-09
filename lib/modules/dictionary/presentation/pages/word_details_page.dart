@@ -398,9 +398,6 @@ class _ProfileView extends StatelessWidget {
   /// here and the Usage card is hidden instead.
   static WordUsage? _resolveUsage(WordProfile profile) {
     final ExamWordData? e = profile.exam;
-    final WordUsage? curated = validatedUsage(profile.wordLower, e?.usage);
-    if (curated != null) return curated;
-
     final String? aiExample = profile.ai?.exampleSentence;
     if (aiExample?.trim().isNotEmpty == true) {
       return validatedUsage(
@@ -412,6 +409,9 @@ class _ProfileView extends StatelessWidget {
         ),
       );
     }
+
+    final WordUsage? curated = validatedUsage(profile.wordLower, e?.usage);
+    if (curated != null) return curated;
 
     final String? example = profile.base?.primary?.exampleSentence;
     if (example?.trim().isNotEmpty != true) return null;
@@ -673,11 +673,13 @@ class _UrduBlock extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    if (curated.isNotEmpty) {
-      return _urduList(context, curated);
-    }
+    // Once the user has asked AI, show the AI Urdu explanation first.
+    // Bundled Urdu remains the offline fallback when AI has no result.
     if (aiMeanings.isNotEmpty) {
       return _urduList(context, aiMeanings);
+    }
+    if (curated.isNotEmpty) {
+      return _urduList(context, curated);
     }
     final AsyncValue<TranslationOutcome> async =
         ref.watch(hybridTranslationProvider((word: wordLower, lang: 'ur')));
