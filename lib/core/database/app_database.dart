@@ -30,6 +30,7 @@ part 'app_database.g.dart';
     DictionaryFavorites,
     DictionaryExamEntries,
     DictionarySearchHistory,
+    DictionaryAiCache,
     TranslationEntries,
     TranslationCache,
     GrammarLessons,
@@ -201,6 +202,11 @@ class AppDatabase extends _$AppDatabase {
           // v21 → v22: remove the retired Study Planner Goals feature.
           if (from < 22) {
             await customStatement('DROP TABLE IF EXISTS study_goals');
+          }
+          // v23 → v24: persistent AI/online dictionary profiles. Additive; cached
+          // enrichment survives bundled dictionary re-seeding and app updates.
+          if (from < 24) {
+            await m.createTable(dictionaryAiCache);
           }
           // v22 → v23: independent Grammar staged-quiz progress and rewarded
           // milestone state. Additive; existing user data is untouched.
