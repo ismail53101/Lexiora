@@ -4,6 +4,7 @@ import 'package:lexiora/features/home/data/latest_update_mock_data.dart';
 import 'package:lexiora/features/home/domain/entities/current_affairs_feed.dart';
 import 'package:lexiora/features/home/domain/entities/latest_update.dart';
 import 'package:lexiora/features/home/presentation/providers/current_affairs_providers.dart';
+import 'package:lexiora/features/home/presentation/pages/current_affairs_summary_page.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class CurrentAffairsPage extends ConsumerStatefulWidget {
@@ -18,6 +19,7 @@ class _CurrentAffairsPageState extends ConsumerState<CurrentAffairsPage> {
   int _selectedFeedType = 0;
 
   Future<void> _refresh() async {
+
     ref.invalidate(currentAffairsProvider);
     await ref.read(currentAffairsProvider.future);
   }
@@ -159,6 +161,36 @@ class _CurrentAffairsPageState extends ConsumerState<CurrentAffairsPage> {
     return mockLatestUpdates
         .where((LatestUpdate story) => story.category.toLowerCase() == category.toLowerCase())
         .toList(growable: false);
+  }
+}
+
+Future<void> _openAiSummary(BuildContext context, LatestUpdate story) async {
+  if (story.id.trim().isEmpty) return;
+  final repository = ProviderScope.containerOf(context, listen: false)
+      .read(currentAffairsRepositoryProvider);
+  showDialog<void>(
+    context: context,
+    barrierDismissible: false,
+    builder: (_) => const Center(child: CircularProgressIndicator()),
+  );
+  try {
+    final summary = await repository.fetchSummary(story.id);
+    if (!context.mounted) return;
+    Navigator.of(context).pop();
+    await Navigator.of(context).push(
+      MaterialPageRoute<void>(
+        builder: (_) => CurrentAffairsSummaryPage(
+          story: story,
+          summary: summary,
+        ),
+      ),
+    );
+  } catch (_) {
+    if (!context.mounted) return;
+    Navigator.of(context).pop();
+    ScaffoldMessenger.of(context).showSnackBar(
+      const SnackBar(content: Text('AI summary is temporarily unavailable.')),
+    );
   }
 }
 
@@ -506,15 +538,39 @@ class _FeaturedStoryCard extends StatelessWidget {
                     const SizedBox(height: 13),
                     Row(
                       children: <Widget>[
-                        Text(
-                          'Read full report',
-                          style: theme.textTheme.labelLarge?.copyWith(
-                            color: scheme.primary,
-                            fontWeight: FontWeight.w900,
+                        InkWell(
+                          onTap: () => _openAiSummary(context, story),
+                          borderRadius: BorderRadius.circular(10),
+                          child: Padding(
+                            padding: const EdgeInsets.symmetric(horizontal: 4, vertical: 4),
+                            child: Row(
+                              mainAxisSize: MainAxisSize.min,
+                              children: [
+                                Icon(Icons.auto_awesome_rounded, size: 16, color: scheme.primary),
+                                const SizedBox(width: 5),
+                                Text(
+                                  'AI Summary',
+                                  style: theme.textTheme.labelLarge?.copyWith(
+                                    color: scheme.primary,
+                                    fontWeight: FontWeight.w900,
+                                  ),
+                                ),
+                              ],
+                            ),
                           ),
                         ),
-                        const SizedBox(width: 5),
-                        Icon(Icons.arrow_forward_rounded, size: 17, color: scheme.primary),
+                        const Spacer(),
+                        InkWell(
+                          onTap: () => _openArticle(context, story),
+                          child: Row(
+                            mainAxisSize: MainAxisSize.min,
+                            children: [
+                              Text('Read article', style: theme.textTheme.labelLarge?.copyWith(color: scheme.onSurfaceVariant, fontWeight: FontWeight.w800)),
+                              const SizedBox(width: 4),
+                              Icon(Icons.open_in_new_rounded, size: 16, color: scheme.onSurfaceVariant),
+                            ],
+                          ),
+                        ),
                       ],
                     ),
                   ],
@@ -589,7 +645,14 @@ class _EditorialStoryCard extends StatelessWidget {
                 ),
               ),
               const SizedBox(width: 7),
-              Icon(Icons.arrow_outward_rounded, size: 18, color: scheme.primary),
+              InkWell(
+                onTap: () => _openAiSummary(context, story),
+                borderRadius: BorderRadius.circular(12),
+                child: Padding(
+                  padding: const EdgeInsets.all(5),
+                  child: Icon(Icons.auto_awesome_rounded, size: 19, color: scheme.primary),
+                ),
+              ),
             ],
           ),
         ),
