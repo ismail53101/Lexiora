@@ -276,10 +276,23 @@ class _ProfileView extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
                 if (profile.synonyms.isNotEmpty)
-                  _ChipGroup(label: 'Synonyms', items: profile.synonyms),
+                  _ChipGroup(
+                    label: 'Synonyms',
+                    items: profile.synonyms,
+                    onTap: (String word) => context.push(
+                      AppRoutes.dictionaryWord(word.toLowerCase()),
+                    ),
+                  ),
                 if (profile.antonyms.isNotEmpty) ...<Widget>[
                   const SizedBox(height: 12),
-                  _ChipGroup(label: 'Antonyms', items: profile.antonyms, tonal: false),
+                  _ChipGroup(
+                    label: 'Antonyms',
+                    items: profile.antonyms,
+                    tonal: false,
+                    onTap: (String word) => context.push(
+                      AppRoutes.dictionaryWord(word.toLowerCase()),
+                    ),
+                  ),
                 ],
               ],
             ),
@@ -840,11 +853,17 @@ class _OtherMeaningRow extends StatelessWidget {
 }
 
 class _ChipGroup extends StatelessWidget {
-  const _ChipGroup({required this.label, required this.items, this.tonal = true});
+  const _ChipGroup({
+    required this.label,
+    required this.items,
+    this.tonal = true,
+    this.onTap,
+  });
 
   final String label;
   final List<String> items;
   final bool tonal;
+  final void Function(String word)? onTap;
 
   @override
   Widget build(BuildContext context) {
@@ -870,16 +889,27 @@ class _ChipGroup extends StatelessWidget {
           runSpacing: 8,
           children: <Widget>[
             for (final String item in items)
-              Container(
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
-                decoration: BoxDecoration(
-                  color: bg,
-                  borderRadius: BorderRadius.circular(10),
+              if (onTap != null)
+                ActionChip(
+                  label: Text(item),
+                  labelStyle:
+                      theme.textTheme.bodyMedium?.copyWith(color: fg),
+                  backgroundColor: bg,
+                  onPressed: () => onTap!(item),
+                )
+              else
+                Container(
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
+                  decoration: BoxDecoration(
+                    color: bg,
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                  child: Text(
+                    item,
+                    style: theme.textTheme.bodyMedium?.copyWith(color: fg),
+                  ),
                 ),
-                child: Text(item,
-                    style: theme.textTheme.bodyMedium?.copyWith(color: fg)),
-              ),
           ],
         ),
       ],
