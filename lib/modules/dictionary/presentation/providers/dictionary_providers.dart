@@ -1,4 +1,5 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_riverpod/misc.dart';
 import 'package:lexiora/app/di/injector.dart';
 import 'package:lexiora/core/services/pronunciation_service.dart';
 import 'package:lexiora/core/usecase/usecase.dart';
@@ -147,7 +148,7 @@ final wordAiEnrichmentProvider =
 
 /// Explicitly fetches/refreshes AI + online dictionary data and persists it.
 /// Used by the AI icon on words that already have bundled offline content.
-final dictionaryAiRefreshProvider =
+final FutureProviderFamily<AiWordProfile?, String> dictionaryAiRefreshProvider =
     FutureProvider.family<AiWordProfile?, String>((Ref ref, String wordLower) async {
   final String wl = wordLower.trim().toLowerCase();
   final AiWordProfile? online = await _fetchDictionaryEnrichment(wl, ref);
