@@ -77,7 +77,21 @@ class FlashcardsModule extends FeatureModule {
               (StudyMode m) => m.name == modeName,
               orElse: () => StudyMode.due,
             );
-            return StudyPage(deckId: deck, mode: mode);
+            final String? practiceName = state.uri.queryParameters['practice'];
+            PracticeMode? practice;
+            if (practiceName != null) {
+              for (final PracticeMode candidate in PracticeMode.values) {
+                if (candidate.name == practiceName) {
+                  practice = candidate;
+                  break;
+                }
+              }
+            }
+            return StudyPage(
+              deckId: deck,
+              mode: mode,
+              practiceMode: practice,
+            );
           },
         ),
         GoRoute(

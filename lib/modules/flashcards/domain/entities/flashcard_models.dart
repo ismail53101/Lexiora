@@ -205,6 +205,55 @@ enum ImportSource {
       };
 }
 
+/// Interactive practice modes inspired by the reference flashcards app.
+enum PracticeMode {
+  basicReview,
+  multipleAnswers,
+  matchCards,
+  writingReview,
+  audioReview,
+  whiteboardReview,
+  memoryGame,
+  combinedReview;
+
+  String get label => switch (this) {
+        PracticeMode.basicReview => 'Basic Review',
+        PracticeMode.multipleAnswers => 'Multiple Answers',
+        PracticeMode.matchCards => 'Match Cards',
+        PracticeMode.writingReview => 'Writing Review',
+        PracticeMode.audioReview => 'Audio Review',
+        PracticeMode.whiteboardReview => 'Whiteboard Review',
+        PracticeMode.memoryGame => 'Memory Game',
+        PracticeMode.combinedReview => 'Combined Review',
+      };
+
+  String get description => switch (this) {
+        PracticeMode.basicReview => 'Flip cards and rate recall.',
+        PracticeMode.multipleAnswers => 'Recall several accepted answers.',
+        PracticeMode.matchCards => 'Match terms with definitions.',
+        PracticeMode.writingReview => 'Type the answer before revealing it.',
+        PracticeMode.audioReview => 'Listen and recall before revealing.',
+        PracticeMode.whiteboardReview => 'Write or draw your answer.',
+        PracticeMode.memoryGame => 'Match hidden term and definition pairs.',
+        PracticeMode.combinedReview => 'Rotate through multiple practice modes.',
+      };
+}
+
+/// Options controlling how a practice session is ordered and sized.
+class PracticeOptions {
+  const PracticeOptions({
+    this.difficultFirst = false,
+    this.termFirst = true,
+    this.writeTerm = false,
+    this.cardLimit = 20,
+  });
+
+  final bool difficultFirst;
+  final bool termFirst;
+  final bool writeTerm;
+  final int cardLimit;
+}
+
 /// Which cards a study session includes.
 enum StudyMode {
   due,

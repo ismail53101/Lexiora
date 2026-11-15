@@ -570,8 +570,12 @@ class _StreamingBubbleState extends ConsumerState<_StreamingBubble> {
               ],
             ),
           ),
-          SizedBox(
-            width: double.infinity,
-            child: AnimatedSwitcher(
-              duration: const Duration(milliseconds: 200),
-              switchInCurv
+          SelectableText(
+            _renderedText,
+            style: theme.textTheme.bodyLarge,
+          ),
+        ],
+      ),
+    );
+  }
+}
