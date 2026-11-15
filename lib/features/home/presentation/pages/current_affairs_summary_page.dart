@@ -41,9 +41,17 @@ class CurrentAffairsSummaryPage extends StatelessWidget {
           _Section(
             icon: Icons.auto_awesome_rounded,
             title: 'AI Summary',
-            child: Text(
-              summary.summary,
-              style: theme.textTheme.bodyLarge?.copyWith(height: 1.5),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(summary.summary, style: theme.textTheme.bodyLarge?.copyWith(height: 1.5)),
+                if (summary.summaryUr.isNotEmpty) ...[
+                  const SizedBox(height: 14),
+                  Text('Urdu Summary', style: theme.textTheme.labelLarge?.copyWith(color: scheme.primary, fontWeight: FontWeight.w900)),
+                  const SizedBox(height: 5),
+                  Text(summary.summaryUr, textDirection: TextDirection.rtl, style: theme.textTheme.bodyMedium?.copyWith(height: 1.55)),
+                ],
+              ],
             ),
           ),
           const SizedBox(height: 16),
@@ -68,13 +76,23 @@ class CurrentAffairsSummaryPage extends StatelessWidget {
           _Section(
             icon: Icons.school_rounded,
             title: 'Exam Relevance',
-            child: Wrap(
-              spacing: 8,
-              runSpacing: 8,
-              children: summary.examRelevance.map((item) => Chip(
-                label: Text(item),
-                visualDensity: VisualDensity.compact,
-              )).toList(growable: false),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                if (summary.examRelevance.isNotEmpty)
+                  Text(summary.examRelevance, style: theme.textTheme.bodyMedium?.copyWith(height: 1.45)),
+                if (summary.examSubjects.isNotEmpty) ...[
+                  const SizedBox(height: 12),
+                  Wrap(
+                    spacing: 8,
+                    runSpacing: 8,
+                    children: summary.examSubjects.map((item) => Chip(
+                      label: Text(item),
+                      visualDensity: VisualDensity.compact,
+                    )).toList(growable: false),
+                  ),
+                ],
+              ],
             ),
           ),
           const SizedBox(height: 22),
