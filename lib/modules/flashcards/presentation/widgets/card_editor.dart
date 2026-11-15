@@ -44,6 +44,8 @@ class _CardEditorState extends ConsumerState<_CardEditor> {
       widget.existing?.difficulty ?? CardDifficulty.none;
   late bool _bookmarked = widget.existing?.bookmarked ?? false;
   late bool _favorite = widget.existing?.favorite ?? false;
+  bool _reverseCard = false;
+  bool _multipleAnswers = false;
 
   @override
   void dispose() {
@@ -85,7 +87,27 @@ class _CardEditorState extends ConsumerState<_CardEditor> {
       clearTags: _tags.text.trim().isEmpty,
       clearNotes: _notes.text.trim().isEmpty,
     );
-    await ref.read(flashcardRepositoryProvider).saveCard(card);
+    final dynamic repository = ref.read(flashcardRepositoryProvider);
+    await repository.saveCard(card);
+
+    if (_reverseCard && widget.existing == null) {
+      await repository.saveCard(
+        Flashcard(
+          id: const Uuid().v4(),
+          deckId: widget.deckId,
+          front: back,
+          back: front,
+          subject: card.subject,
+          topic: card.topic,
+          tags: card.tags,
+          notes: card.notes,
+          difficulty: card.difficulty,
+          createdAt: now,
+          updatedAt: now,
+        ),
+      );
+    }
+
     ref.read(fcRevisionProvider.notifier).bump();
     if (mounted) Navigator.of(context).pop();
   }
@@ -189,6 +211,23 @@ class _CardEditorState extends ConsumerState<_CardEditor> {
                     onSelected: (_) => setState(() => _difficulty = d),
                   ),
               ],
+            ),
+            const SizedBox(height: 8),
+            SwitchListTile.adaptive(
+              contentPadding: EdgeInsets.zero,
+              title: const Text('Also create reverse card'),
+              subtitle: const Text('Create a second card with front and back swapped.'),
+              value: _reverseCard,
+              onChanged: widget.existing == null
+                  ? (bool value) => setState(() => _reverseCard = value)
+                  : null,
+            ),
+            SwitchListTile.adaptive(
+              contentPadding: EdgeInsets.zero,
+              title: const Text('Multiple answers'),
+              subtitle: const Text('Separate accepted answers with | or new lines.'),
+              value: _multipleAnswers,
+              onChanged: (bool value) => setState(() => _multipleAnswers = value),
             ),
             const SizedBox(height: 8),
             Row(
