@@ -41,17 +41,9 @@ class CurrentAffairsSummaryPage extends StatelessWidget {
           _Section(
             icon: Icons.auto_awesome_rounded,
             title: 'AI Summary',
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(summary.summary, style: theme.textTheme.bodyLarge?.copyWith(height: 1.5)),
-                if (summary.summaryUr.isNotEmpty) ...[
-                  const SizedBox(height: 14),
-                  Text('Urdu Summary', style: theme.textTheme.labelLarge?.copyWith(color: scheme.primary, fontWeight: FontWeight.w900)),
-                  const SizedBox(height: 5),
-                  Text(summary.summaryUr, textDirection: TextDirection.rtl, style: theme.textTheme.bodyMedium?.copyWith(height: 1.55)),
-                ],
-              ],
+            child: Text(
+              summary.summary,
+              style: theme.textTheme.bodyLarge?.copyWith(height: 1.5),
             ),
           ),
           const SizedBox(height: 16),
