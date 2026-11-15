@@ -13,6 +13,9 @@ import 'package:lexiora/modules/dictionary/data/datasources/dictionary_local_dat
 import 'package:lexiora/modules/dictionary/data/dictionary_seeder.dart';
 import 'package:lexiora/modules/dictionary/data/exam_words_seeder.dart';
 import 'package:lexiora/modules/dictionary/data/services/ai_dictionary_cache.dart';
+import 'package:lexiora/modules/dictionary/data/services/ai_dictionary_service.dart';
+import 'package:lexiora/modules/ai_assistant/config/ai_config.dart';
+import 'package:lexiora/modules/ai_assistant/data/services/ai_api_client.dart';
 import 'package:lexiora/modules/dictionary/data/repositories/dictionary_repository_impl.dart';
 import 'package:lexiora/modules/dictionary/domain/repositories/dictionary_repository.dart';
 import 'package:lexiora/modules/dictionary/presentation/pages/dictionary_page.dart';
@@ -37,6 +40,12 @@ class DictionaryModule extends FeatureModule {
     getIt
       ..registerLazySingleton<AiDictionaryCache>(
         () => AiDictionaryCache(getIt<AppDatabase>()),
+      )
+      ..registerLazySingleton<AiDictionaryService>(
+        () => AiDictionaryService(
+          getIt<AiApiClient>(),
+          getIt<AiConfig>(),
+        ),
       )
       ..registerLazySingleton<DictionaryLocalDataSource>(
         () => DictionaryLocalDataSource(getIt<AppDatabase>()),
