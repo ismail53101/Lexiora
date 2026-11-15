@@ -229,6 +229,22 @@ class WordProfile extends Equatable {
   /// True when the word exists in any local data set (base or curated).
   bool get existsLocally => base != null || exam != null;
 
+  /// True when the local entry looks like a temporary/external registration
+  /// created by the reader's online translation cache. Such an entry contains
+  /// only a bare meaning and no bundled dictionary metadata.
+  ///
+  /// This distinction is important because external registrations must not
+  /// suppress the AI dictionary fallback for PDF word lookups.
+  bool get isExternalOnly {
+    final DictionaryEntry? primary = base?.primary;
+    return exam == null &&
+        primary != null &&
+        base!.senses.length == 1 &&
+        primary.partOfSpeech == null &&
+        primary.ipaPronunciation == null &&
+        primary.exampleSentence == null;
+  }
+
   /// Best display headword: the exam pack's casing, else the base word, else the
   /// lowercased search term.
   String get displayWord => exam?.word ?? base?.word ?? word;
