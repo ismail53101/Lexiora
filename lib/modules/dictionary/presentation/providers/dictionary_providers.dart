@@ -5,6 +5,7 @@ import 'package:lexiora/core/usecase/usecase.dart';
 import 'package:lexiora/core/utils/result.dart';
 import 'package:lexiora/modules/dictionary/data/dictionary_seeder.dart';
 import 'package:lexiora/modules/dictionary/data/exam_words_seeder.dart';
+import 'package:lexiora/modules/dictionary/data/services/ai_dictionary_cache.dart';
 import 'package:lexiora/modules/dictionary/data/services/ai_dictionary_service.dart';
 import 'package:lexiora/modules/dictionary/data/services/stands4_dictionary_service.dart';
 import 'package:lexiora/modules/dictionary/domain/entities/dictionary_entry.dart';
@@ -137,6 +138,12 @@ final wordAiEnrichmentProvider =
     // but must never trigger an AI dictionary request for missing fields.
     if (profile.existsLocally) return null;
 
+    // Persistent cache check: previously generated AI profiles consume zero
+    // network requests and zero AI tokens on subsequent lookups.
+    final AiDictionaryCache cache = sl<AiDictionaryCache>();
+    final AiWordProfile? cached = await cache.get(wordLower);
+    if (cached != null) return cached;
+
     final ExamWordData? exam = profile.exam;
     final WordDetails? base = profile.base;
     final List<String> missing = <String>[];
@@ -169,10 +176,18 @@ final wordAiEnrichmentProvider =
 
     if (missing.isEmpty) return null;
 
-    return sl<AiDictionaryService>().define(
+    final AiWordProfile? generated = await sl<AiDictionaryService>().define(
       wordLower,
       missingFields: missing,
     );
+
+    // Cache only successful profiles. Failed requests are not cached so a
+    // later lookup can retry when the network/provider is available.
+    if (generated != null && generated.hasContent) {
+      await cache.put(generated);
+    }
+
+    return generated;
   },
 );
 
