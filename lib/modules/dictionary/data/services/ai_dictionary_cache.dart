@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:drift/drift.dart';
 import 'package:lexiora/core/database/app_database.dart';
+import 'package:lexiora/core/database/tables.dart';
 import 'package:lexiora/modules/dictionary/domain/entities/word_profile.dart';
 
 /// Persistent on-device cache for successful AI dictionary lookups.
