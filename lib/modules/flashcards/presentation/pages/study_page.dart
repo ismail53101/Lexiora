@@ -101,7 +101,7 @@ class _StudyPageState extends ConsumerState<StudyPage> {
     }
     if (_currentMode == PracticeMode.memoryGame) {
       _tiles = <_Tile>[
-        for (int i = 0; i < _cards.length) ...< _Tile>[
+        for (int i = 0; i < _cards.length) ...<_Tile>[
           _Tile(i, _cards[i].front, true),
           _Tile(i, _cards[i].back, false),
         ],
@@ -524,14 +524,14 @@ class _StudyPageState extends ConsumerState<StudyPage> {
   Widget _ratings(ThemeData theme) => Padding(
     padding: const EdgeInsets.fromLTRB(8, 0, 8, 16),
     child: Row(children: <Widget>[
-      _rate('Again', CardRating.again, theme.colorScheme.error),
-      _rate('Hard', CardRating.hard, theme.colorScheme.tertiary),
-      _rate('Good', CardRating.good, theme.colorScheme.primary),
-      _rate('Easy', CardRating.easy, theme.colorScheme.secondary),
+      _rateButton('Again', CardRating.again, theme.colorScheme.error),
+      _rateButton('Hard', CardRating.hard, theme.colorScheme.tertiary),
+      _rateButton('Good', CardRating.good, theme.colorScheme.primary),
+      _rateButton('Easy', CardRating.easy, theme.colorScheme.secondary),
     ]),
   );
 
-  Widget _rate(String label, CardRating rating, Color color) => Expanded(
+  Widget _rateButton(String label, CardRating rating, Color color) => Expanded(
     child: Padding(
       padding: const EdgeInsets.symmetric(horizontal: 3),
       child: FilledButton.tonal(
