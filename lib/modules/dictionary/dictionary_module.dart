@@ -12,6 +12,7 @@ import 'package:lexiora/core/services/rewarded_ad_manager.dart';
 import 'package:lexiora/modules/dictionary/data/datasources/dictionary_local_data_source.dart';
 import 'package:lexiora/modules/dictionary/data/dictionary_seeder.dart';
 import 'package:lexiora/modules/dictionary/data/exam_words_seeder.dart';
+import 'package:lexiora/modules/dictionary/data/services/ai_dictionary_cache.dart';
 import 'package:lexiora/modules/dictionary/data/repositories/dictionary_repository_impl.dart';
 import 'package:lexiora/modules/dictionary/domain/repositories/dictionary_repository.dart';
 import 'package:lexiora/modules/dictionary/presentation/pages/dictionary_page.dart';
@@ -34,6 +35,9 @@ class DictionaryModule extends FeatureModule {
   @override
   void registerDependencies(GetIt getIt) {
     getIt
+      ..registerLazySingleton<AiDictionaryCache>(
+        () => AiDictionaryCache(getIt<AppDatabase>()),
+      )
       ..registerLazySingleton<DictionaryLocalDataSource>(
         () => DictionaryLocalDataSource(getIt<AppDatabase>()),
       )
