@@ -9,6 +9,7 @@ import 'package:lexiora/modules/dictionary/data/services/ai_dictionary_cache.dar
 import 'package:lexiora/modules/dictionary/data/services/ai_dictionary_service.dart';
 import 'package:lexiora/modules/dictionary/data/services/stands4_dictionary_service.dart';
 import 'package:lexiora/modules/dictionary/domain/entities/dictionary_entry.dart';
+import 'package:lexiora/modules/translation/domain/repositories/translation_repository.dart';
 import 'package:lexiora/modules/dictionary/domain/entities/word_profile.dart';
 import 'package:lexiora/modules/dictionary/domain/repositories/dictionary_repository.dart';
 import 'package:lexiora/modules/dictionary/domain/usecases/dictionary_usecases.dart';
@@ -133,11 +134,29 @@ final wordAiEnrichmentProvider =
     final WordProfile profile =
         await ref.watch(wordProfileProvider(wordLower).future);
 
-    // AI is the fallback for words absent from the bundled dictionary.
-    // Reader translations can register an online-only word in the local
-    // dictionary index; those temporary entries must NOT count as bundled
-    // dictionary content, otherwise they would permanently suppress AI.
-    if (profile.existsLocally && !profile.isExternalOnly) return null;
+    // The reader has two different kinds of local Urdu data:
+    // 1) bundled translation data (authoritative/offline) — NEVER call AI;
+    // 2) translationCache rows created by a previous online lookup — these
+    //    must NOT suppress the AI dictionary fallback.
+    //
+    // The old implementation only checked WordProfile.existsLocally. That is
+    // not enough because a word can have a bundled English definition but no
+    // bundled Urdu meaning (e.g. "prominence"). In that case the PDF reader
+    // must still use the AI dictionary for BOTH English + Urdu.
+    final TranslationRepository translations = sl<TranslationRepository>();
+    final String? localUrdu =
+        await translations.translate(wordLower, 'ur');
+    if (localUrdu != null && localUrdu.trim().isNotEmpty) {
+      final bool isOnlineCache =
+          await translations.isCached(wordLower, 'ur');
+      if (!isOnlineCache) {
+        // Exact bundled offline Urdu exists. Keep it untouched and do not
+        // spend an AI request.
+        return null;
+      }
+      // An old online result exists in translationCache. Ignore it and let the
+      // AI dictionary replace it with a precise cached AI profile.
+    }
 
     // Persistent cache check: previously generated AI profiles consume zero
     // network requests and zero AI tokens on subsequent lookups.
