@@ -24,11 +24,13 @@ class TranslationRepositoryImpl implements TranslationRepository {
     required String word,
     required String languageCode,
     required String translation,
+    String source = 'online',
   }) =>
       _local.cacheTranslation(
         word: word,
         languageCode: languageCode,
         translation: translation,
+        source: source,
       );
 
   @override
