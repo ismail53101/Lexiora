@@ -12,7 +12,8 @@ class CurrentAffairsConfig {
         ),
         summaryBaseUrl: String.fromEnvironment(
           'SAPIORA_CURRENT_AFFAIRS_SUMMARY_BASE_URL',
-          defaultValue: '',
+          defaultValue:
+              'https://sapiora-ai-worker.ismaillasharibaloch53.workers.dev',
         ),
       );
 
