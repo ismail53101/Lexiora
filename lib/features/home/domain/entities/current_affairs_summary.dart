@@ -2,7 +2,6 @@ class CurrentAffairsSummary {
   const CurrentAffairsSummary({
     required this.summary,
     required this.summaryEn,
-    required this.summaryUr,
     required this.keyPoints,
     required this.examRelevance,
     required this.examSubjects,
@@ -10,7 +9,6 @@ class CurrentAffairsSummary {
 
   final String summary;
   final List<String> summaryEn;
-  final String summaryUr;
   final List<String> keyPoints;
   final String examRelevance;
   final List<String> examSubjects;
@@ -24,7 +22,6 @@ class CurrentAffairsSummary {
     return CurrentAffairsSummary(
       summary: json['summary']?.toString().trim() ?? '',
       summaryEn: _strings(json['summaryEn']),
-      summaryUr: json['summaryUr']?.toString().trim() ?? '',
       keyPoints: _strings(json['keyPoints']),
       examRelevance: relevance.text,
       examSubjects: relevance.subjects,
