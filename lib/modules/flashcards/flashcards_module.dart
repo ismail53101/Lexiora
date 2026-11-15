@@ -78,12 +78,15 @@ class FlashcardsModule extends FeatureModule {
               orElse: () => StudyMode.due,
             );
             final String? practiceName = state.uri.queryParameters['practice'];
-            final PracticeMode? practice = practiceName == null
-                ? null
-                : PracticeMode.values.cast<PracticeMode?>().firstWhere(
-                    (PracticeMode? m) => m?.name == practiceName,
-                    orElse: () => null,
-                  );
+            PracticeMode? practice;
+            if (practiceName != null) {
+              for (final PracticeMode candidate in PracticeMode.values) {
+                if (candidate.name == practiceName) {
+                  practice = candidate;
+                  break;
+                }
+              }
+            }
             return StudyPage(
               deckId: deck,
               mode: mode,
