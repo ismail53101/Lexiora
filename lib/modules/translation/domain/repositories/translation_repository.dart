@@ -23,6 +23,7 @@ abstract interface class TranslationRepository {
     required String word,
     required String languageCode,
     required String translation,
+    String source = 'online',
   });
 
   /// Number of cached (online-fetched) translations.
