@@ -133,10 +133,11 @@ final wordAiEnrichmentProvider =
     final WordProfile profile =
         await ref.watch(wordProfileProvider(wordLower).future);
 
-    // AI is strictly a fallback for words absent from the local JSON-backed
-    // dictionary. Existing local words may use STANDS4 for synonym enrichment,
-    // but must never trigger an AI dictionary request for missing fields.
-    if (profile.existsLocally) return null;
+    // AI is the fallback for words absent from the bundled dictionary.
+    // Reader translations can register an online-only word in the local
+    // dictionary index; those temporary entries must NOT count as bundled
+    // dictionary content, otherwise they would permanently suppress AI.
+    if (profile.existsLocally && !profile.isExternalOnly) return null;
 
     // Persistent cache check: previously generated AI profiles consume zero
     // network requests and zero AI tokens on subsequent lookups.
