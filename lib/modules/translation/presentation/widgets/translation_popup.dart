@@ -157,6 +157,7 @@ class _Outcome extends StatelessWidget {
     switch (outcome.status) {
       case TranslationOutcomeStatus.offline:
       case TranslationOutcomeStatus.online:
+      case TranslationOutcomeStatus.ai:
         return _Available(
           word: word,
           language: language,
@@ -194,11 +195,13 @@ class _Available extends ConsumerWidget {
     required this.word,
     required this.language,
     required this.translation,
+    this.aiResult = false,
   });
 
   final String word;
   final TranslationLanguage language;
   final Translation translation;
+  final bool aiResult;
 
   bool get _isRtl => language.code == 'ur' || language.code == 'ar';
 
@@ -231,7 +234,7 @@ class _Available extends ConsumerWidget {
     final String displayedText = useAiUrdu
         ? aiProfile!.urduMeanings.join('، ')
         : translation.text;
-    final bool sourceIsAi = useAiUrdu;
+    final bool sourceIsAi = aiResult || useAiUrdu;
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
