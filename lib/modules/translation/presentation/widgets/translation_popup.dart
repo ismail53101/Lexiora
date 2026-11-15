@@ -4,17 +4,12 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:lexiora/app/di/injector.dart';
 import 'package:lexiora/core/constants/translation_languages.dart';
 import 'package:lexiora/features/settings/presentation/providers/settings_providers.dart';
-import 'package:lexiora/modules/dictionary/data/dictionary_seeder.dart';
-import 'package:lexiora/modules/dictionary/data/exam_words_seeder.dart';
-import 'package:lexiora/modules/dictionary/data/services/ai_dictionary_service.dart';
-import 'package:lexiora/modules/dictionary/data/services/stands4_dictionary_service.dart';
-import 'package:lexiora/modules/dictionary/domain/entities/word_profile.dart';
 import 'package:lexiora/modules/dictionary/domain/repositories/dictionary_repository.dart';
-import 'package:lexiora/modules/translation/data/services/word_meaning_service.dart';
+import 'package:lexiora/modules/dictionary/domain/entities/word_profile.dart';
+import 'package:lexiora/modules/dictionary/presentation/providers/dictionary_providers.dart';
 import 'package:lexiora/modules/translation/domain/entities/translation.dart';
 import 'package:lexiora/modules/translation/domain/entities/translation_outcome.dart';
 import 'package:lexiora/modules/translation/presentation/providers/translation_providers.dart';
-import 'package:lexiora/modules/vocabulary/data/vocabulary_seeder.dart';
 import 'package:lexiora/modules/vocabulary/presentation/widgets/vocab_pronunciation_button.dart';
 
 /// Shows the lightweight reader translation popup for a single selected word.
@@ -194,7 +189,7 @@ String _ttsLocaleFor(String languageCode) => switch (languageCode) {
       _ => 'en-US',
     };
 
-class _Available extends StatelessWidget {
+class _Available extends ConsumerWidget {
   const _Available({
     required this.word,
     required this.language,
@@ -207,16 +202,36 @@ class _Available extends StatelessWidget {
 
   bool get _isRtl => language.code == 'ur' || language.code == 'ar';
 
-  /// Only a single word has a dictionary *definition* — a phrase or sentence
-  /// doesn't, so the English-meaning block is single-word only. Mirrors the
-  /// exact rule the reader itself uses to gate the "Look up" action.
+  /// Only a single word has a dictionary definition — phrases/sentences use
+  /// the translation service directly.
   bool get _isSingleWord =>
       RegExp(r"^[A-Za-z][A-Za-z'’\-]*$").hasMatch(word);
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     final ThemeData theme = Theme.of(context);
-    final bool online = translation.source == TranslationSource.online;
+
+    // The dictionary provider is the single source of truth for the
+    // offline -> AI fallback. Successful AI results are persisted in the
+    // on-device cache, so this does not call AI again on later lookups.
+    final AsyncValue<AiWordProfile?> aiAsync = _isSingleWord
+        ? ref.watch(wordAiEnrichmentProvider(word.toLowerCase()))
+        : const AsyncData<AiWordProfile?>(null);
+
+    final AiWordProfile? aiProfile = aiAsync.maybeWhen(
+      data: (AiWordProfile? value) => value,
+      orElse: () => null,
+    );
+
+    // For Urdu, an AI dictionary profile is authoritative when the word is
+    // missing from the offline dictionary. Never replace it with the generic
+    // online translator, which was the source of the inaccurate screenshot.
+    final bool useAiUrdu =
+        language.code == 'ur' && aiProfile?.urduMeanings.isNotEmpty == true;
+    final String displayedText = useAiUrdu
+        ? aiProfile!.urduMeanings.join('، ')
+        : translation.text;
+    final bool sourceIsAi = useAiUrdu;
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -242,21 +257,35 @@ class _Available extends StatelessWidget {
               child: Directionality(
                 textDirection: _isRtl ? TextDirection.rtl : TextDirection.ltr,
                 child: Text(
-                  translation.text,
+                  displayedText,
                   style: theme.textTheme.titleLarge?.copyWith(height: 1.35),
                 ),
               ),
             ),
             const SizedBox(width: 4),
             VocabPronunciationButton(
-              text: translation.text,
+              text: displayedText,
               languageCode: _ttsLocaleFor(language.code),
             ),
           ],
         ),
         const SizedBox(height: 12),
-        _SourceBadge(online: online),
-        if (online) ...<Widget>[
+        _SourceBadge(online: !sourceIsAi && translation.source == TranslationSource.online, ai: sourceIsAi),
+        if (sourceIsAi) ...<Widget>[
+          const SizedBox(height: 6),
+          Row(
+            children: <Widget>[
+              Icon(Icons.cloud_done_outlined,
+                  size: 16, color: theme.colorScheme.primary),
+              const SizedBox(width: 6),
+              Text(
+                'AI result saved for offline use.',
+                style: theme.textTheme.bodySmall
+                    ?.copyWith(color: theme.colorScheme.onSurfaceVariant),
+              ),
+            ],
+          ),
+        ] else if (translation.source == TranslationSource.online) ...<Widget>[
           const SizedBox(height: 6),
           Row(
             children: <Widget>[
@@ -277,13 +306,13 @@ class _Available extends StatelessWidget {
             OutlinedButton.icon(
               icon: const Icon(Icons.copy_outlined, size: 18),
               label: const Text('Copy'),
-              onPressed: () => _copy(context, translation.text),
+              onPressed: () => _copy(context, displayedText),
             ),
             const SizedBox(width: 12),
             Expanded(
               child: _SaveToVocabularyButton(
                 word: word,
-                meaning: translation.text,
+                meaning: displayedText,
               ),
             ),
           ],
@@ -304,103 +333,52 @@ class _Available extends StatelessWidget {
 /// itself echoed back) — looked up from the same offline dictionary the
 /// "Look up" reader action uses. Renders nothing when the word isn't in the
 /// dictionary, rather than showing an empty/misleading section.
-class _EnglishMeaning extends StatefulWidget {
+class _EnglishMeaning extends ConsumerWidget {
   const _EnglishMeaning({required this.word});
+
   final String word;
 
   @override
-  State<_EnglishMeaning> createState() => _EnglishMeaningState();
-}
+  Widget build(BuildContext context, WidgetRef ref) {
+    final ThemeData theme = Theme.of(context);
+    final String wordLower = word.toLowerCase();
 
-class _EnglishMeaningState extends State<_EnglishMeaning> {
-  final DictionarySeeder _dictionarySeeder = sl<DictionarySeeder>();
-  final VocabularySeeder _vocabularySeeder = sl<VocabularySeeder>();
-  final ExamWordsSeeder _examSeeder = sl<ExamWordsSeeder>();
-  final AiDictionaryService _aiDictionary = sl<AiDictionaryService>();
-  final Stands4DictionaryService _stands4 = sl<Stands4DictionaryService>();
+    final AsyncValue<WordProfile> profileAsync =
+        ref.watch(wordProfileProvider(wordLower));
+    final AsyncValue<AiWordProfile?> aiAsync =
+        ref.watch(wordAiEnrichmentProvider(wordLower));
 
-  String? _meaning;
-  String? _partOfSpeech;
-  bool _fromOnline = false;
-  bool _fromAi = false;
-  bool _loading = true;
+    final WordProfile? local = profileAsync.maybeWhen(
+      data: (WordProfile value) => value,
+      orElse: () => null,
+    );
+    final AiWordProfile? ai = aiAsync.maybeWhen(
+      data: (AiWordProfile? value) => value,
+      orElse: () => null,
+    );
 
-  @override
-  void initState() {
-    super.initState();
-    _load();
-  }
+    // Offline content wins. If the word is absent offline, the provider
+    // supplies the cached AI profile or generates it once and caches it.
+    final bool isAi = local?.existsLocally != true && ai?.hasContent == true;
+    final String? meaning = isAi
+        ? ai!.englishDefinition
+        : local?.englishDefinition;
+    final String? pos = isAi ? ai!.partOfSpeech : local?.partOfSpeech;
 
-  Future<void> _load() async {
-    try {
-      // The bundled dictionary, the exam vocabulary packs and the curated
-      // common-words packs all seed lazily; the reader popup is a first-class
-      // seeding trigger (see DictionarySeeder docs). ensureSeeded is
-      // idempotent (shared future) so this is cheap after the first run.
-      await _dictionarySeeder.ensureSeeded();
-      await _vocabularySeeder.ensureSeeded();
-      await _examSeeder.ensureSeeded();
-
-      // Resolve the best exam-appropriate meaning: curated/offline packs first.
-      // The free dictionary is not trusted as the final answer; when it is the
-      // only result, ask the direct AI dictionary service instead. This keeps
-      // the reader aligned with Dictionary search without opening AI chat.
-      final WordMeaning? m = await sl<WordMeaningService>()
-          .resolve(widget.word.toLowerCase());
-      AiWordProfile? ai;
-      if (m == null || m.fromOnline) {
-        // STANDS4 (via the Worker) first; AI only when it has nothing.
-        ai = await _stands4.define(widget.word.toLowerCase());
-        ai ??= await _aiDictionary.define(
-          widget.word.toLowerCase(),
-          missingFields: const <String>[
-            'englishDefinition',
-            'urduMeanings',
-            'partOfSpeech',
-            'exampleSentence',
-          ],
+    if (meaning == null || meaning.trim().isEmpty) {
+      if (profileAsync.isLoading || aiAsync.isLoading) {
+        return const SizedBox(
+          height: 20,
+          width: 20,
+          child: Padding(
+            padding: EdgeInsets.only(top: 2),
+            child: CircularProgressIndicator(strokeWidth: 2),
+          ),
         );
       }
-      if (mounted) {
-        setState(() {
-          _meaning = ai?.englishDefinition ?? (m?.fromOnline == true ? null : m?.meaning);
-          _partOfSpeech = ai?.partOfSpeech ?? (m?.fromOnline == true ? null : m?.partOfSpeech);
-          _fromOnline = false;
-          _fromAi = ai?.englishDefinition != null;
-          _loading = false;
-        });
-      }
-    } on Object {
-      // A seeder/database/network failure must never strand the popup on a
-      // perpetual spinner — degrade to "no English meaning" instead.
-      if (mounted) {
-        setState(() {
-          _meaning = null;
-          _partOfSpeech = null;
-          _fromOnline = false;
-          _fromAi = false;
-          _loading = false;
-        });
-      }
+      return const SizedBox.shrink();
     }
-  }
 
-  @override
-  Widget build(BuildContext context) {
-    if (_loading) {
-      return const SizedBox(
-        height: 20,
-        width: 20,
-        child: Padding(
-          padding: EdgeInsets.only(top: 2),
-          child: CircularProgressIndicator(strokeWidth: 2),
-        ),
-      );
-    }
-    final String? meaning = _meaning;
-    if (meaning == null) return const SizedBox.shrink(); // no English meaning found
-
-    final ThemeData theme = Theme.of(context);
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       mainAxisSize: MainAxisSize.min,
@@ -415,10 +393,13 @@ class _EnglishMeaningState extends State<_EnglishMeaning> {
                 letterSpacing: 0.6,
               ),
             ),
-            if (_fromOnline || _fromAi) ...<Widget>[
+            if (isAi) ...<Widget>[
               const SizedBox(width: 6),
-              Icon(_fromAi ? Icons.auto_awesome : Icons.cloud_outlined,
-                  size: 13, color: theme.colorScheme.onSurfaceVariant),
+              Icon(
+                Icons.auto_awesome,
+                size: 13,
+                color: theme.colorScheme.onSurfaceVariant,
+              ),
             ],
           ],
         ),
@@ -427,10 +408,10 @@ class _EnglishMeaningState extends State<_EnglishMeaning> {
           meaning,
           style: theme.textTheme.titleMedium?.copyWith(height: 1.3),
         ),
-        if (_partOfSpeech != null && _partOfSpeech!.isNotEmpty) ...<Widget>[
+        if (pos != null && pos.trim().isNotEmpty) ...<Widget>[
           const SizedBox(height: 4),
           Text(
-            _partOfSpeech!,
+            pos.trim(),
             style: theme.textTheme.bodySmall?.copyWith(
               color: theme.colorScheme.primary,
               fontStyle: FontStyle.italic,
@@ -444,19 +425,28 @@ class _EnglishMeaningState extends State<_EnglishMeaning> {
 
 /// The "Source: Offline / Online" pill.
 class _SourceBadge extends StatelessWidget {
-  const _SourceBadge({required this.online});
+  const _SourceBadge({
+    required this.online,
+    this.ai = false,
+  });
 
   final bool online;
+  final bool ai;
 
   @override
   Widget build(BuildContext context) {
     final ThemeData theme = Theme.of(context);
-    final Color bg = online
+    final Color bg = ai
         ? theme.colorScheme.tertiaryContainer
-        : theme.colorScheme.secondaryContainer;
-    final Color fg = online
+        : online
+            ? theme.colorScheme.tertiaryContainer
+            : theme.colorScheme.secondaryContainer;
+    final Color fg = ai
         ? theme.colorScheme.onTertiaryContainer
-        : theme.colorScheme.onSecondaryContainer;
+        : online
+            ? theme.colorScheme.onTertiaryContainer
+            : theme.colorScheme.onSecondaryContainer;
+
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
       decoration: BoxDecoration(
@@ -466,11 +456,18 @@ class _SourceBadge extends StatelessWidget {
       child: Row(
         mainAxisSize: MainAxisSize.min,
         children: <Widget>[
-          Icon(online ? Icons.cloud_done_outlined : Icons.offline_bolt_outlined,
-              size: 14, color: fg),
+          Icon(
+            ai
+                ? Icons.auto_awesome
+                : online
+                    ? Icons.cloud_done_outlined
+                    : Icons.offline_bolt_outlined,
+            size: 14,
+            color: fg,
+          ),
           const SizedBox(width: 6),
           Text(
-            online ? 'Source: Online' : 'Source: Offline',
+            ai ? 'Source: AI' : online ? 'Source: Online' : 'Source: Offline',
             style: theme.textTheme.labelMedium
                 ?.copyWith(color: fg, fontWeight: FontWeight.w700),
           ),
