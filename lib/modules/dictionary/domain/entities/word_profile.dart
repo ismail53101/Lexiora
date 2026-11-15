@@ -77,6 +77,21 @@ class AiWordProfile extends Equatable {
   final List<String> wordForms;
   final String? examNote;
 
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'word': word,
+        'source': source,
+        'englishDefinition': englishDefinition,
+        'urduMeanings': urduMeanings,
+        'partOfSpeech': partOfSpeech,
+        'synonyms': synonyms,
+        'antonyms': antonyms,
+        'exampleSentence': exampleSentence,
+        'exampleSentenceUrdu': exampleSentenceUrdu,
+        'collocations': collocations,
+        'wordForms': wordForms,
+        'examNote': examNote,
+      };
+
   bool get hasContent =>
       englishDefinition != null ||
       urduMeanings.isNotEmpty ||
