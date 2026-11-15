@@ -101,7 +101,7 @@ class _StudyPageState extends ConsumerState<StudyPage> {
     }
     if (_currentMode == PracticeMode.memoryGame) {
       _tiles = <_Tile>[
-        for (int i = 0; i < _cards.length) ...<_Tile>[
+        for (int i = 0; i < _cards.length; i++) ...<_Tile>[
           _Tile(i, _cards[i].front, true),
           _Tile(i, _cards[i].back, false),
         ],
