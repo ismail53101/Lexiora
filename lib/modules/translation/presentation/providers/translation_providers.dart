@@ -3,6 +3,8 @@ import 'package:lexiora/app/di/injector.dart';
 import 'package:lexiora/core/services/connectivity_service.dart';
 import 'package:lexiora/core/utils/result.dart';
 import 'package:lexiora/modules/dictionary/presentation/providers/dictionary_providers.dart';
+import 'package:lexiora/modules/dictionary/data/services/ai_dictionary_cache.dart';
+import 'package:lexiora/modules/dictionary/data/services/ai_dictionary_service.dart';
 import 'package:lexiora/modules/translation/data/services/word_meaning_service.dart';
 import 'package:lexiora/modules/translation/data/services/ai_word_translation_service.dart';
 import 'package:lexiora/modules/translation/data/translation_seeder.dart';
@@ -52,6 +54,8 @@ final Provider<HybridTranslate> hybridTranslateProvider =
     dictionaryRepository: ref.watch(dictionaryRepositoryProvider),
     meaningService: ref.watch(wordMeaningServiceProvider),
     aiWordTranslationService: sl<AiWordTranslationService>(),
+    aiDictionaryService: sl<AiDictionaryService>(),
+    aiDictionaryCache: sl<AiDictionaryCache>(),
   ),
 );
 
