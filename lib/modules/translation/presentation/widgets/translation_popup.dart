@@ -162,6 +162,7 @@ class _Outcome extends StatelessWidget {
           word: word,
           language: language,
           translation: outcome.translation!,
+          aiResult: outcome.status == TranslationOutcomeStatus.ai,
         );
       case TranslationOutcomeStatus.unavailableOffline:
         return _NeedsInternet(language: language, onRetry: onRetry);
