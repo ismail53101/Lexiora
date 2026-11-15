@@ -4,6 +4,8 @@ import 'package:lexiora/core/utils/guard.dart';
 import 'package:lexiora/core/utils/logger.dart';
 import 'package:lexiora/core/utils/typedefs.dart';
 import 'package:lexiora/modules/dictionary/domain/repositories/dictionary_repository.dart';
+import 'package:lexiora/modules/dictionary/data/services/ai_dictionary_cache.dart';
+import 'package:lexiora/modules/dictionary/data/services/ai_dictionary_service.dart';
 import 'package:lexiora/modules/translation/data/services/word_meaning_service.dart';
 import 'package:lexiora/modules/translation/data/services/ai_word_translation_service.dart';
 import 'package:lexiora/modules/translation/domain/entities/translation.dart';
@@ -48,12 +50,16 @@ class HybridTranslate
     required DictionaryRepository dictionaryRepository,
     required WordMeaningService meaningService,
     AiWordTranslationService? aiWordTranslationService,
+    AiDictionaryService? aiDictionaryService,
+    AiDictionaryCache? aiDictionaryCache,
   })  : _repo = translationRepository,
         _remote = remoteService,
         _connectivity = connectivity,
         _dictionary = dictionaryRepository,
         _meaningService = meaningService,
-        _aiWordTranslation = aiWordTranslationService;
+        _aiWordTranslation = aiWordTranslationService,
+        _aiDictionary = aiDictionaryService,
+        _aiCache = aiDictionaryCache;
 
   final TranslationRepository _repo;
   final RemoteTranslationService _remote;
@@ -61,6 +67,8 @@ class HybridTranslate
   final DictionaryRepository _dictionary;
   final WordMeaningService _meaningService;
   final AiWordTranslationService? _aiWordTranslation;
+  final AiDictionaryService? _aiDictionary;
+  final AiDictionaryCache? _aiCache;
 
   @override
   ResultFuture<TranslationOutcome> call(HybridTranslateParams params) =>
@@ -71,24 +79,13 @@ class HybridTranslate
           return const TranslationOutcome.notFound();
         }
 
-        // 1) Single-word sense-aware attempt. Works fully offline when the
-        //    meaning carries a curated Urdu translation; otherwise the bundled
-        //    offline word-level translation (Wiktionary-sourced, e.g.
-        //    "reputation" → "شہرت") is served next. Only when both miss does
-        //    the word fall through to the online fallback below, which
-        //    translates the bare word itself — machine-translating the verbose
-        //    WordNet definition used to produce garbage like "eventually" →
-        //    "غير متعینہ مدت یا خاص طور پر طویل تاخیر کے بعد". The handful of
-        //    multi-sense traps (e.g. "execution" → "پھانسی") are pinned by the
-        //    curated packs / core-word overrides above, so translating the bare
-        //    word is safe and reads naturally.
+        // 1) Single-word sense-aware attempt.
         if (_isSingleWord(word)) {
           final WordMeaning? meaning = await _resolveMeaning(word);
           if (meaning != null) {
             final String curated = meaning.urdu ?? '';
             if (curated.trim().isNotEmpty) {
-              // Curated exam-pack Urdu — the best, exam-appropriate answer,
-              // served offline and cached for reuse.
+              // Curated exam-pack Urdu is authoritative and stays offline.
               await _repo.cacheTranslation(
                 word: word,
                 languageCode: lang,
@@ -101,45 +98,73 @@ class HybridTranslate
             }
           }
 
-          // No curated Urdu → the offline word-level entry (bundled data +
-          // cache) is a curated, word-sized answer.
+          // IMPORTANT: translationCache can contain an old online result.
+          // It must not be mistaken for bundled/offline data, otherwise it
+          // suppresses the AI dictionary fallback.
           final String? wordLevel = await _repo.translate(word, lang);
-          if (wordLevel != null && wordLevel.isNotEmpty) {
+          final bool cachedOnline =
+              await _repo.isCached(word, lang);
+          if (wordLevel != null &&
+              wordLevel.isNotEmpty &&
+              !cachedOnline) {
             return TranslationOutcome.offline(
               Translation(word: word, languageCode: lang, text: wordLevel),
             );
           }
         }
 
-        // 2) AI fallback: only for a single English word, only for Urdu,
-        //    and only after every local source missed. Phrases/sentences never
-        //    use this AI dictionary fallback.
-        if (_aiWordTranslation != null &&
+        // 2) AI dictionary fallback for a single English word -> Urdu.
+        // This is the SAME dictionary AI used by the Dictionary screen,
+        // rather than the older one-field translation service. It produces
+        // precise English + Urdu data and the profile is persisted so repeated
+        // PDF lookups consume zero additional AI requests.
+        if (_aiDictionary != null &&
+            _aiCache != null &&
             _isSingleWord(word) &&
             lang.toLowerCase() == 'ur') {
-          final String? aiTranslation = await _aiWordTranslation!.translate(
-            word: word,
-            targetLanguageCode: lang,
-          );
-          if (aiTranslation != null && aiTranslation.isNotEmpty) {
+          final AiWordProfile? cached = await _aiCache.get(word);
+          final AiWordProfile? profile = cached ??
+              await _aiDictionary.define(
+                word,
+                missingFields: const <String>[
+                  'englishDefinition',
+                  'urduMeanings',
+                  'partOfSpeech',
+                  'synonyms',
+                  'antonyms',
+                  'exampleSentence',
+                  'exampleSentenceUrdu',
+                  'collocations',
+                  'wordForms',
+                  'examNote',
+                ],
+              );
+
+          if (profile != null &&
+              profile.urduMeanings.isNotEmpty &&
+              profile.urduMeanings.first.trim().isNotEmpty) {
+            if (cached == null) {
+              await _aiCache.put(profile);
+            }
+            final String aiUrdu = profile.urduMeanings.join('، ');
             await _repo.cacheTranslation(
               word: word,
               languageCode: lang,
-              translation: aiTranslation,
+              translation: aiUrdu,
+              source: 'ai',
             );
-            await _registerInDictionary(word, aiTranslation);
-            return TranslationOutcome.online(
+            return TranslationOutcome.ai(
               Translation(
                 word: word,
                 languageCode: lang,
-                text: aiTranslation,
-                source: TranslationSource.online,
+                text: aiUrdu,
+                source: TranslationSource.ai,
               ),
             );
           }
         }
 
-        // 2) Offline first — bundled data set, then the offline cache.
+        // 3) Offline first — bundled data set, then the offline cache.
         final String? offline = await _repo.translate(word, lang);
         if (offline != null && offline.isNotEmpty) {
           return TranslationOutcome.offline(
@@ -147,7 +172,7 @@ class HybridTranslate
           );
         }
 
-        // 3) No offline result → ALWAYS attempt the online provider. We do not
+        // 4) No offline/AI result → attempt the online provider. We do not
         //    pre-gate on a connectivity probe: a false negative there would
         //    wrongly suppress the fallback (that was the reported bug). The
         //    connectivity check is consulted only to explain a failure.
@@ -167,7 +192,7 @@ class HybridTranslate
           return const TranslationOutcome.notFound();
         }
 
-        // 5) Save for offline reuse + make the word searchable in the Dictionary.
+        // 5) Save the generic online result for offline reuse + dictionary search.
         await _repo.cacheTranslation(
           word: word,
           languageCode: lang,
