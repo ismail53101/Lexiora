@@ -7,6 +7,9 @@ import 'package:lexiora/features/home/presentation/providers/current_affairs_pro
 import 'package:lexiora/features/home/presentation/pages/current_affairs_summary_page.dart';
 import 'package:url_launcher/url_launcher.dart';
 
+// Future feature flag. Keep the implementation, but hide it and block all AI requests until launch.
+const bool kAiSummaryEnabled = false;
+
 class CurrentAffairsPage extends ConsumerStatefulWidget {
   const CurrentAffairsPage({super.key});
 
@@ -165,7 +168,8 @@ class _CurrentAffairsPageState extends ConsumerState<CurrentAffairsPage> {
 }
 
 Future<void> _openAiSummary(BuildContext context, LatestUpdate story) async {
-  if (story.id.trim().isEmpty) return;
+  // Safety guard: disabled means no summary API request and therefore no AI token usage.
+  if (!kAiSummaryEnabled || story.id.trim().isEmpty) return;
   final repository = ProviderScope.containerOf(context, listen: false)
       .read(currentAffairsRepositoryProvider);
   showDialog<void>(
@@ -538,8 +542,9 @@ class _FeaturedStoryCard extends StatelessWidget {
                     const SizedBox(height: 13),
                     Row(
                       children: <Widget>[
-                        InkWell(
-                          onTap: () => _openAiSummary(context, story),
+                        if (kAiSummaryEnabled)
+                          InkWell(
+                            onTap: () => _openAiSummary(context, story),
                           borderRadius: BorderRadius.circular(10),
                           child: Padding(
                             padding: const EdgeInsets.symmetric(horizontal: 4, vertical: 4),
@@ -644,15 +649,17 @@ class _EditorialStoryCard extends StatelessWidget {
                   ],
                 ),
               ),
-              const SizedBox(width: 7),
-              InkWell(
-                onTap: () => _openAiSummary(context, story),
+              if (kAiSummaryEnabled) ...[
+                const SizedBox(width: 7),
+                InkWell(
+                  onTap: () => _openAiSummary(context, story),
                 borderRadius: BorderRadius.circular(12),
                 child: Padding(
                   padding: const EdgeInsets.all(5),
-                  child: Icon(Icons.auto_awesome_rounded, size: 19, color: scheme.primary),
+                    child: Icon(Icons.auto_awesome_rounded, size: 19, color: scheme.primary),
+                  ),
                 ),
-              ),
+              ],
             ],
           ),
         ),
