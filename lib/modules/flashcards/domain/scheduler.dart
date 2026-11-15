@@ -61,7 +61,7 @@ SchedulerOutcome scheduleReview(
         lapses: lapses,
       );
     case CardRating.good:
-      final int next = interval <= 0 ? 2 : math.max(2, (interval * ease).round());
+      final int next = interval <= 0 ? 1 : math.max(1, (interval * ease).round());
       return SchedulerOutcome(
         reviewState: ReviewState.review,
         dueAt: now.add(Duration(days: next)),
@@ -73,8 +73,8 @@ SchedulerOutcome scheduleReview(
     case CardRating.easy:
       ease = math.min(3.0, ease + 0.15);
       final int next = interval <= 0
-          ? 8
-          : math.max(4, (interval * ease * 1.3).round());
+          ? 3
+          : math.max(3, (interval * ease * 1.3).round());
       return SchedulerOutcome(
         reviewState: ReviewState.review,
         dueAt: now.add(Duration(days: next)),
