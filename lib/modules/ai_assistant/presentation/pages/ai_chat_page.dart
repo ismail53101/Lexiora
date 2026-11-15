@@ -570,14 +570,9 @@ class _StreamingBubbleState extends ConsumerState<_StreamingBubble> {
               ],
             ),
           ),
-          AnimatedSwitcher(
-            duration: const Duration(milliseconds: 200),
-            switchInCurve: Curves.easeOut,
-            child: SelectableText(
-              _renderedText,
-              key: ValueKey<String>(_renderedText),
-              style: theme.textTheme.bodyLarge,
-            ),
+          SelectableText(
+            _renderedText,
+            style: theme.textTheme.bodyLarge,
           ),
         ],
       ),
