@@ -4,6 +4,8 @@ import 'package:lexiora/core/module/feature_module.dart';
 import 'package:lexiora/core/reader_engine/word_action.dart';
 import 'package:lexiora/core/services/connectivity_service.dart';
 import 'package:lexiora/modules/dictionary/data/services/online_dictionary_service.dart';
+import 'package:lexiora/modules/dictionary/data/services/ai_dictionary_cache.dart';
+import 'package:lexiora/modules/dictionary/data/services/ai_dictionary_service.dart';
 import 'package:lexiora/modules/dictionary/domain/repositories/dictionary_repository.dart';
 import 'package:lexiora/modules/translation/data/datasources/translation_local_data_source.dart';
 import 'package:lexiora/modules/translation/data/repositories/translation_repository_impl.dart';
@@ -51,6 +53,12 @@ class TranslationModule extends FeatureModule {
       )
       ..registerLazySingleton<ConnectivityService>(
         NetworkConnectivityService.new,
+      )
+      ..registerLazySingleton<AiDictionaryService>(
+        () => AiDictionaryService(
+          getIt<AiApiClient>(),
+          getIt<AiConfig>(),
+        ),
       )
       ..registerLazySingleton<AiWordTranslationService>(
         () => AiWordTranslationService(
