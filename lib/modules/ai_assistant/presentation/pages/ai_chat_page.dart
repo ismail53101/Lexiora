@@ -441,8 +441,8 @@ class _MessageListState extends ConsumerState<_MessageList> {
     if (streaming && !_wasStreaming) {
       _userScrolledUp = false;
       _userScrollInProgress = false;
-      _followLatestAfterLayout();
-    } else if (streaming) {
+      // Scroll once when a new answer starts so the new turn is visible.
+      // After that, keep the viewport fixed while streamed text grows below.
       _followLatestAfterLayout();
     }
     _wasStreaming = streaming;
@@ -483,9 +483,7 @@ class _MessageListState extends ConsumerState<_MessageList> {
 
                   final int messageIndex = i - (canLoadMore ? 1 : 0);
                   if (streaming && messageIndex == messages.length) {
-                    return _StreamingBubble(
-                      onTextRendered: _followLatestAfterLayout,
-                    );
+                    return const _StreamingBubble();
                   }
 
                   final AiMessage message = messages[messageIndex];
@@ -522,35 +520,16 @@ class _MessageListState extends ConsumerState<_MessageList> {
 }
 /// The in-flight assistant reply. The provider's real stream deltas are
 /// rendered directly, without a second artificial character-by-character timer.
-class _StreamingBubble extends ConsumerStatefulWidget {
-  const _StreamingBubble({required this.onTextRendered});
-
-  final VoidCallback onTextRendered;
+class _StreamingBubble extends ConsumerWidget {
+  const _StreamingBubble();
 
   @override
-  ConsumerState<_StreamingBubble> createState() => _StreamingBubbleState();
-}
-
-class _StreamingBubbleState extends ConsumerState<_StreamingBubble> {
-  @override
-  void didUpdateWidget(covariant _StreamingBubble oldWidget) {
-    super.didUpdateWidget(oldWidget);
-    if (oldWidget.onTextRendered != widget.onTextRendered) {
-      widget.onTextRendered();
-    }
-  }
-
-  @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     final String text = ref.watch(
       aiChatControllerProvider.select((AiChatState s) => s.streamingText),
     );
     final ThemeData theme = Theme.of(context);
     final ColorScheme scheme = theme.colorScheme;
-
-    WidgetsBinding.instance.addPostFrameCallback((_) {
-      if (mounted) widget.onTextRendered();
-    });
 
     return Container(
       width: double.infinity,
