@@ -359,7 +359,9 @@ class _EnglishMeaning extends ConsumerWidget {
 
     // Offline content wins. If the word is absent offline, the provider
     // supplies the cached AI profile or generates it once and caches it.
-    final bool isAi = local?.existsLocally != true && ai?.hasContent == true;
+    final bool isAi =
+        ai?.hasContent == true &&
+        (local == null || !local.existsLocally || local.isExternalOnly);
     final String? meaning = isAi
         ? ai!.englishDefinition
         : local?.englishDefinition;
