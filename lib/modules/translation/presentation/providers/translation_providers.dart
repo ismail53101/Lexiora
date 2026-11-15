@@ -53,7 +53,6 @@ final Provider<HybridTranslate> hybridTranslateProvider =
     connectivity: ref.watch(connectivityServiceProvider),
     dictionaryRepository: ref.watch(dictionaryRepositoryProvider),
     meaningService: ref.watch(wordMeaningServiceProvider),
-    aiWordTranslationService: sl<AiWordTranslationService>(),
     aiDictionaryService: sl<AiDictionaryService>(),
     aiDictionaryCache: sl<AiDictionaryCache>(),
   ),
