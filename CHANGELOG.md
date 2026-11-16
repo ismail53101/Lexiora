@@ -5,6 +5,42 @@ All notable changes to Sapiora are documented here.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [Unreleased]
+
+### Changed
+
+- **Flashcards rebuilt around the FSRS-6 spaced-repetition algorithm.** The old
+  placeholder scheduler is gone. Reviews are now scheduled by FSRS-6 (the
+  open algorithm used by modern Anki), with learning/relearning steps, a
+  per-deck target memory (70–97 %), daily new/review limits, a 04:00 study-day
+  rollover, "learn ahead" and automatic leech suspension after 8 lapses. The
+  Dart port is verified against the reference `py-fsrs` implementation by
+  golden tests (`tools/gen_fsrs_golden.py` regenerates them).
+- **New study experience:** flip animation, swipe to answer (← Again, → Good,
+  ↑ Easy), interval preview on every button, undo, read-aloud, keyboard
+  shortcuts, practice modes (all / starred / leeches) that never touch the
+  schedule, and an end-of-session summary.
+- **New card types:** Basic, Cloze (`{{c1::hidden}}`, one card per blank) and
+  Type-the-answer (typo-tolerant checking). Optional reverse cards.
+- **Deck list and browser:** live new / learning / due counts, search, status
+  filters (new, learning, review, suspended, starred, leeches), sorting,
+  multi-select (suspend, move, delete) and per-deck study settings.
+- **Statistics:** streaks, 20-week activity heatmap, 30-day retention,
+  30-day review forecast, card maturity breakdown and time studied.
+- **Import / export:** paste CSV, TSV or Anki "Notes in Plain Text"; import
+  from Dictionary, Vocabulary and the Study Planner (read-only); export to
+  CSV, Anki text, XLSX, PDF or JSON; full JSON backup and restore (old
+  backups are still accepted).
+
+### Migration
+
+- Existing decks, cards and review history are kept. The original `decks`,
+  `flashcards` and `review_logs` tables are untouched; FSRS state and deck
+  settings live in two new tables (`fc_card_state`, `fc_deck_settings`)
+  created when the database opens. Existing cards are converted once: the
+  old interval becomes the FSRS stability and the old ease factor seeds the
+  difficulty, so due dates are preserved.
+
 ## [0.23.10] — 2026-09-27
 
 ### Fixed

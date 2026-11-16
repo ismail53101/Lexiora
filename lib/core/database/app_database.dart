@@ -7,6 +7,8 @@ import 'package:lexiora/core/constants/db_constants.dart';
 import 'package:lexiora/core/database/converters.dart';
 import 'package:lexiora/core/database/tables.dart';
 import 'package:lexiora/core/models/normalized_rect.dart';
+import 'package:lexiora/modules/flashcards/data/drift_fc_sql.dart';
+import 'package:lexiora/modules/flashcards/data/flashcard_schema.dart';
 
 part 'app_database.g.dart';
 
@@ -314,6 +316,8 @@ class AppDatabase extends _$AppDatabase {
             'CREATE INDEX IF NOT EXISTS idx_decks_archived '
             'ON decks (archived)',
           );
+          // Flashcards v2 (FSRS): sidecar tables + backfill for legacy cards.
+          await FcSchema.ensure(DriftFcSql(this));
           // Quiz Engine: fast per-bank listing, search & filters at 100k+ scale.
           await customStatement(
             'CREATE INDEX IF NOT EXISTS idx_quiz_questions_bank '
