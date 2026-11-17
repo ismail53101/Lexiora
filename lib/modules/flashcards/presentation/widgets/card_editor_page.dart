@@ -231,7 +231,7 @@ class _FcCardEditorPageState extends ConsumerState<FcCardEditorPage> {
   FcRichTextController get _editorController => _activeController ?? _front;
 
   void _insertCloze() {
-    final TextEditingController c = _front;
+    final FcRichTextController c = _front;
     final TextSelection sel = c.selection;
     if (sel.isValid && !sel.isCollapsed) {
       _wrapSelection(sameNumber: false);
@@ -256,7 +256,7 @@ class _FcCardEditorPageState extends ConsumerState<FcCardEditorPage> {
     if (!await dir.exists()) await dir.create(recursive: true);
     final String target = '${dir.path}/${DateTime.now().microsecondsSinceEpoch}_${file.name}';
     await File(file.path).copy(target);
-    final TextEditingController c = _editorController;
+    final FcRichTextController c = _editorController;
     final int pos = c.selection.isValid ? c.selection.baseOffset : c.text.length;
     final String token = '[img:' + target + ']';
     c.value = TextEditingValue(
