@@ -12,16 +12,16 @@ import 'package:speech_to_text/speech_recognition_result.dart';
 import 'package:speech_to_text/speech_to_text.dart';
 
 import 'package:lexiora/core/utils/result.dart';
+import 'package:lexiora/modules/dictionary/presentation/providers/dictionary_providers.dart';
 import 'package:lexiora/modules/flashcards/domain/fsrs/fsrs_scheduler.dart';
 import 'package:lexiora/modules/flashcards/domain/logic/cloze.dart';
 import 'package:lexiora/modules/flashcards/domain/logic/csv_codec.dart';
 import 'package:lexiora/modules/flashcards/domain/models/fc_models.dart';
 import 'package:lexiora/modules/flashcards/domain/repositories/fc_repository.dart';
 import 'package:lexiora/modules/flashcards/presentation/providers/fc_providers.dart';
-import 'package:lexiora/modules/flashcards/presentation/widgets/fc_widgets.dart';
-import 'package:lexiora/modules/flashcards/presentation/widgets/fc_content.dart';
 import 'package:lexiora/modules/flashcards/presentation/widgets/card_editor_utils.dart';
-import 'package:lexiora/modules/dictionary/presentation/providers/dictionary_providers.dart';
+import 'package:lexiora/modules/flashcards/presentation/widgets/fc_content.dart';
+import 'package:lexiora/modules/flashcards/presentation/widgets/fc_widgets.dart';
 
 /// Opens the card editor; resolves to true when something was saved.
 Future<bool?> openCardEditor(BuildContext context, {required String deckId, String? cardId}) =>
