@@ -118,8 +118,18 @@ class _FcCardEditorPageState extends ConsumerState<FcCardEditorPage> {
     super.initState();
     _load();
     _initSpeech();
-    _front.addListener(() => setState(() {}));
-    _back.addListener(() => setState(() {}));
+    _front.addListener(_handleFrontChanged);
+    _back.addListener(_handleBackChanged);
+  }
+
+  void _handleFrontChanged() {
+    _frontSelection = _front.selection;
+    if (mounted) setState(() {});
+  }
+
+  void _handleBackChanged() {
+    _backSelection = _back.selection;
+    if (mounted) setState(() {});
   }
 
   Future<void> _initSpeech() async {
@@ -217,6 +227,8 @@ class _FcCardEditorPageState extends ConsumerState<FcCardEditorPage> {
   @override
   void dispose() {
     _speech.stop();
+    _front.removeListener(_handleFrontChanged);
+    _back.removeListener(_handleBackChanged);
     _front.dispose();
     _back.dispose();
     _notes.dispose();
@@ -492,10 +504,6 @@ class _FcCardEditorPageState extends ConsumerState<FcCardEditorPage> {
                       _frontSelection = _front.selection;
                     },
                     onChanged: (_) => _activeController = _front,
-                    onSelectionChanged: (TextSelection selection, SelectionChangedCause? _) {
-                      _frontSelection = selection;
-                      _activeController = _front;
-                    },
                     autofocus: !_editing,
                     minLines: 3,
                     maxLines: 8,
@@ -544,10 +552,6 @@ class _FcCardEditorPageState extends ConsumerState<FcCardEditorPage> {
                     onTap: () {
                       _activeController = _back;
                       _backSelection = _back.selection;
-                    },
-                    onSelectionChanged: (TextSelection selection, SelectionChangedCause? _) {
-                      _backSelection = selection;
-                      _activeController = _back;
                     },
                     minLines: cloze ? 1 : 3,
                     maxLines: 8,
