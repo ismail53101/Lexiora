@@ -40,6 +40,7 @@ class _FcCardEditorPageState extends ConsumerState<FcCardEditorPage> {
   bool _reversed = false;
   bool _perDeletion = true;
   bool _showAnswer = false;
+  int? _previewClozeIndex;
   bool _loading = true;
   bool _saving = false;
   int _addedCount = 0;
@@ -106,6 +107,7 @@ class _FcCardEditorPageState extends ConsumerState<FcCardEditorPage> {
       text: r.text,
       selection: TextSelection.collapsed(offset: r.caret),
     );
+    setState(() => _previewClozeIndex = index);
     _frontFocus.requestFocus();
   }
 
@@ -186,13 +188,16 @@ class _FcCardEditorPageState extends ConsumerState<FcCardEditorPage> {
   FcCard _previewCard() {
     final DateTime now = DateTime.now();
     final List<int> idx = clozeIndices(_front.text);
+    final int? previewIndex = _previewClozeIndex != null && idx.contains(_previewClozeIndex)
+        ? _previewClozeIndex
+        : (idx.isEmpty ? null : idx.first);
     return FcCard(
       id: 'preview',
       deckId: widget.deckId,
       front: _front.text,
       back: _back.text,
       type: _type,
-      clozeIndex: _type == FcCardType.cloze && idx.length > 1 && _perDeletion ? idx.first : null,
+      clozeIndex: _type == FcCardType.cloze ? previewIndex : null,
       createdAt: now,
       updatedAt: now,
       fsrs: _existing?.fsrs ?? FsrsCard.fresh(now),
@@ -295,6 +300,33 @@ class _FcCardEditorPageState extends ConsumerState<FcCardEditorPage> {
                     ),
                   ),
                   const SizedBox(height: 20),
+                  if (cloze && clozeIndices(_front.text).length > 1) ...<Widget>[
+                    Row(
+                      children: <Widget>[
+                        Text('Preview blank', style: theme.textTheme.titleSmall),
+                        const SizedBox(width: 10),
+                        Expanded(
+                          child: SingleChildScrollView(
+                            scrollDirection: Axis.horizontal,
+                            child: Row(
+                              children: <Widget>[
+                                for (final int i in clozeIndices(_front.text))
+                                  Padding(
+                                    padding: const EdgeInsets.only(right: 6),
+                                    child: ChoiceChip(
+                                      label: Text('c$i'),
+                                      selected: (_previewClozeIndex ?? clozeIndices(_front.text).first) == i,
+                                      onSelected: (_) => setState(() => _previewClozeIndex = i),
+                                    ),
+                                  ),
+                              ],
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                    const SizedBox(height: 8),
+                  ],
                   Row(
                     children: <Widget>[
                       Text('Preview', style: theme.textTheme.titleSmall),
