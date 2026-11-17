@@ -15,6 +15,7 @@ import 'package:lexiora/modules/flashcards/domain/repositories/fc_repository.dar
 import 'package:lexiora/modules/flashcards/presentation/providers/fc_providers.dart';
 import 'package:lexiora/modules/flashcards/presentation/widgets/fc_widgets.dart';
 import 'package:lexiora/modules/flashcards/presentation/widgets/fc_content.dart';
+import 'package:lexiora/modules/flashcards/presentation/widgets/card_editor_utils.dart';
 import 'package:lexiora/modules/dictionary/presentation/providers/dictionary_providers.dart';
 
 /// Opens the card editor; resolves to true when something was saved.
@@ -180,15 +181,11 @@ class _FcCardEditorPageState extends ConsumerState<FcCardEditorPage> {
         final String spoken = result.recognizedWords.trim();
         if (spoken.isEmpty) return;
 
-        final int start = selection.start.clamp(0, c.text.length);
-        final int end = selection.end.clamp(start, c.text.length);
-        final String separator = start == 0 || c.text.substring(0, start).endsWith(' ') ? '' : ' ';
-        final String insertion = separator + spoken;
-        final int caret = start + insertion.length;
-        c.value = TextEditingValue(
-          text: c.text.replaceRange(start, end, insertion),
-          selection: TextSelection.collapsed(offset: caret),
+        c.value = insertSpeechText(
+          TextEditingValue(text: c.text, selection: selection),
+          spoken,
         );
+        final int caret = c.selection.baseOffset;
         if (identical(c, _front)) {
           _frontSelection = TextSelection.collapsed(offset: caret);
         } else {
