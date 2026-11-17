@@ -14,6 +14,7 @@ import 'package:lexiora/modules/flashcards/domain/models/fc_models.dart';
 import 'package:lexiora/modules/flashcards/domain/repositories/fc_repository.dart';
 import 'package:lexiora/modules/flashcards/presentation/providers/fc_providers.dart';
 import 'package:lexiora/modules/flashcards/presentation/widgets/card_editor_page.dart';
+import 'package:lexiora/modules/flashcards/presentation/widgets/fc_content.dart';
 import 'package:lexiora/modules/flashcards/presentation/widgets/fc_widgets.dart';
 
 /// The study screen: flip cards, rate them, undo, and see a summary at the end.
