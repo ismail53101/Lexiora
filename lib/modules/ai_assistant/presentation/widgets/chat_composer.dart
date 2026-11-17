@@ -335,8 +335,15 @@ class _ChatComposerState extends ConsumerState<ChatComposer> {
       );
       _voiceSheetContext = null;
       if (_speech.isListening) await _speech.stop();
+
+      // Once the voice sheet closes, immediately submit the recognized
+      // prompt instead of requiring the user to press Send.
+      final bool hasVoiceText = liveText.value.trim().isNotEmpty;
       liveText.dispose();
       if (mounted) setState(() {});
+      if (hasVoiceText && mounted && _canSend) {
+        await _send();
+      }
     } catch (_) {
       await _speech.stop();
       _requestCloseVoiceSheet();
