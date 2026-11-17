@@ -291,7 +291,12 @@ class _FcCardEditorPageState extends ConsumerState<FcCardEditorPage> {
 
       if (!_speechReady) {
         final bool ready = await _speech.initialize(
-          onStatus: (_) {},
+          onStatus: (String status) {
+            if ((status == 'done' || status == 'notListening') && sheetContext != null) {
+              closeSheet();
+            }
+            if (mounted) setState(() {});
+          },
           onError: (SpeechRecognitionError error) {
             if (mounted) {
               fcToast(context, 'Voice input error: ${error.errorMsg}');
@@ -317,7 +322,6 @@ class _FcCardEditorPageState extends ConsumerState<FcCardEditorPage> {
         if (sheetContext != null && sheetContext!.mounted) {
           Navigator.of(sheetContext!).pop();
         }
-        liveText.dispose();
       }
 
       TextSelection insertionSelection =
@@ -377,10 +381,7 @@ class _FcCardEditorPageState extends ConsumerState<FcCardEditorPage> {
       if (_speech.isListening) {
         await _speech.stop();
       }
-      if (!closed) {
-        closed = true;
-        liveText.dispose();
-      }
+      liveText.dispose();
       if (mounted) setState(() {});
     } catch (_) {
       await _speech.stop();
@@ -490,13 +491,13 @@ class _FcCardEditorPageState extends ConsumerState<FcCardEditorPage> {
         : _front.text;
 
     word = word
-        .replaceAll(RegExp(r'\\[biu\\]'), '')
-        .replaceAll(RegExp(r'\\[/biu\\]'), '')
-        .replaceAll(RegExp(r'\\{\\{c\\d+::'), '')
+        .replaceAll(RegExp(r'\[(?:b|i|u)\]'), '')
+        .replaceAll(RegExp(r'\[/(?:b|i|u)\]'), '')
+        .replaceAll(RegExp(r'\{\{c\d+::'), '')
         .replaceAll('}}', '')
         .trim();
 
-    if (word.contains(RegExp(r'\\s'))) {
+    if (word.contains(RegExp(r'\s'))) {
       fcToast(context, 'Select one word in Front to translate.');
       return;
     }
