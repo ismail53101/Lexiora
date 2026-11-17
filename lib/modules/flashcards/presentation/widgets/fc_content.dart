@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 
 final RegExp _fcImageToken = RegExp(r'\[img:([^\]]+)\]');
@@ -282,17 +284,65 @@ class FcRichTextController extends TextEditingController {
   }) {
     final TextStyle base = style ?? const TextStyle();
     final Set<int> boundaries = <int>{0, text.length};
+    final Map<int, RegExpMatch> images = <int, RegExpMatch>{
+      for (final RegExpMatch match in _fcImageToken.allMatches(text))
+        match.start: match,
+    };
+
     for (final _FcFormatRange r in _ranges) {
       boundaries.add(r.start.clamp(0, text.length));
       boundaries.add(r.end.clamp(0, text.length));
     }
+    for (final RegExpMatch match in images.values) {
+      boundaries.add(match.start);
+      boundaries.add(match.end);
+    }
+
     final List<int> points = boundaries.toList()..sort();
     final List<InlineSpan> children = <InlineSpan>[];
+
+    Widget imageWidget(String path) {
+      final Widget image = path.startsWith('http://') || path.startsWith('https://')
+          ? Image.network(
+              path,
+              fit: BoxFit.contain,
+              errorBuilder: (_, __, ___) => const Icon(Icons.broken_image_outlined),
+            )
+          : Image.file(
+              File(path),
+              fit: BoxFit.contain,
+              errorBuilder: (_, __, ___) => const Icon(Icons.broken_image_outlined),
+            );
+      return Container(
+        constraints: const BoxConstraints(maxWidth: 280, maxHeight: 170),
+        margin: const EdgeInsets.symmetric(vertical: 8),
+        padding: const EdgeInsets.all(6),
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(12),
+          border: Border.all(color: Theme.of(context).colorScheme.outlineVariant),
+        ),
+        child: ClipRRect(
+          borderRadius: BorderRadius.circular(8),
+          child: image,
+        ),
+      );
+    }
 
     for (int i = 0; i < points.length - 1; i++) {
       final int start = points[i];
       final int end = points[i + 1];
       if (start == end) continue;
+
+      final RegExpMatch? image = images[start];
+      if (image != null && image.end == end) {
+        children.add(
+          WidgetSpan(
+            alignment: PlaceholderAlignment.middle,
+            child: imageWidget(image.group(1)!),
+          ),
+        );
+        continue;
+      }
 
       TextStyle segmentStyle = base;
       for (final String tag in _formatsAt(start)) {
