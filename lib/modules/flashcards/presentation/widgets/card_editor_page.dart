@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:permission_handler/permission_handler.dart';
 import 'package:lexiora/core/utils/result.dart';
 import 'package:image_picker/image_picker.dart';
 import 'dart:io';
@@ -36,6 +37,10 @@ class _EditorToolbar extends StatelessWidget {
     required this.onItalic,
     required this.onUnderline,
     required this.onClear,
+    required this.boldActive,
+    required this.italicActive,
+    required this.underlineActive,
+    required this.listening,
   });
 
   final bool cloze;
@@ -46,6 +51,10 @@ class _EditorToolbar extends StatelessWidget {
   final VoidCallback onItalic;
   final VoidCallback onUnderline;
   final VoidCallback onClear;
+  final bool boldActive;
+  final bool italicActive;
+  final bool underlineActive;
+  final bool listening;
 
   @override
   Widget build(BuildContext context) {
@@ -54,11 +63,11 @@ class _EditorToolbar extends StatelessWidget {
       spacing: 2,
       children: <Widget>[
         IconButton(tooltip: 'Cloze', icon: const Icon(Icons.crop_free), color: cloze ? cs.primary : null, onPressed: onCloze),
-        IconButton(tooltip: 'Voice input', icon: const Icon(Icons.mic_none), onPressed: onMic),
+        IconButton(tooltip: 'Voice input', icon: Icon(listening ? Icons.mic : Icons.mic_none), color: listening ? cs.primary : null, onPressed: onMic),
         IconButton(tooltip: 'Insert image', icon: const Icon(Icons.image_outlined), onPressed: onImage),
-        IconButton(tooltip: 'Bold', icon: const Icon(Icons.format_bold), onPressed: onBold),
-        IconButton(tooltip: 'Italic', icon: const Icon(Icons.format_italic), onPressed: onItalic),
-        IconButton(tooltip: 'Underline', icon: const Icon(Icons.format_underlined), onPressed: onUnderline),
+        IconButton(tooltip: 'Bold', icon: const Icon(Icons.format_bold), color: boldActive ? cs.primary : null, onPressed: onBold),
+        IconButton(tooltip: 'Italic', icon: const Icon(Icons.format_italic), color: italicActive ? cs.primary : null, onPressed: onItalic),
+        IconButton(tooltip: 'Underline', icon: const Icon(Icons.format_underlined), color: underlineActive ? cs.primary : null, onPressed: onUnderline),
         IconButton(tooltip: 'Clear formatting', icon: const Icon(Icons.format_clear), onPressed: onClear),
       ],
     );
@@ -76,8 +85,8 @@ class FcCardEditorPage extends ConsumerStatefulWidget {
 }
 
 class _FcCardEditorPageState extends ConsumerState<FcCardEditorPage> {
-  final TextEditingController _front = TextEditingController();
-  final TextEditingController _back = TextEditingController();
+  final FcRichTextController _front = FcRichTextController();
+  final FcRichTextController _back = FcRichTextController();
   final TextEditingController _notes = TextEditingController();
   final TextEditingController _tagInput = TextEditingController();
   final FocusNode _frontFocus = FocusNode();
@@ -89,7 +98,9 @@ class _FcCardEditorPageState extends ConsumerState<FcCardEditorPage> {
   bool _showAnswer = false;
   bool _multipleAnswers = false;
   bool _advancedOpen = false;
-  TextEditingController? _activeController;
+  FcRichTextController? _activeController;
+  TextSelection _frontSelection = const TextSelection.collapsed(offset: 0);
+  TextSelection _backSelection = const TextSelection.collapsed(offset: 0);
   final SpeechToText _speech = SpeechToText();
   bool _speechReady = false;
   int? _previewClozeIndex;
@@ -112,34 +123,77 @@ class _FcCardEditorPageState extends ConsumerState<FcCardEditorPage> {
 
   Future<void> _initSpeech() async {
     try {
-      final bool ready = await _speech.initialize();
+      final PermissionStatus permission = await Permission.microphone.request();
+      if (!permission.isGranted) {
+        if (mounted) setState(() => _speechReady = false);
+        return;
+      }
+      final bool ready = await _speech.initialize(
+        onStatus: (String status) {
+          if (!mounted) return;
+          if (status == 'done' || status == 'notListening') {
+            setState(() {});
+          }
+        },
+        onError: (_) {
+          if (mounted) {
+            setState(() {});
+            fcToast(context, 'Voice input stopped');
+          }
+        },
+      );
       if (mounted) setState(() => _speechReady = ready);
     } catch (_) {
-      if (mounted) setState(() => _speechReady = false);
+      if (mounted) {
+        setState(() => _speechReady = false);
+        fcToast(context, 'Microphone permission or speech recognition is unavailable');
+      }
     }
   }
 
   Future<void> _voiceInput() async {
-    final TextEditingController c = _editorController;
+    final FcRichTextController c = _editorController;
     if (!_speechReady) {
-      fcToast(context, 'Voice input is not available on this device');
-      return;
+      await _initSpeech();
+      if (!_speechReady) {
+        fcToast(context, 'Microphone permission or speech recognition is unavailable');
+        return;
+      }
     }
     if (_speech.isListening) {
       await _speech.stop();
       if (mounted) setState(() {});
       return;
     }
+
+    final TextSelection storedSelection =
+        identical(c, _front) ? _frontSelection : _backSelection;
+    final TextSelection selection =
+        storedSelection.isValid ? storedSelection : TextSelection.collapsed(offset: c.text.length);
+
     await _speech.listen(
       onResult: (SpeechRecognitionResult result) {
-        final String spoken = result.recognizedWords;
+        if (!result.finalResult) {
+          if (mounted) setState(() {});
+          return;
+        }
+        final String spoken = result.recognizedWords.trim();
         if (spoken.isEmpty) return;
-        final TextSelection s = c.selection;
-        final int pos = s.isValid ? s.baseOffset : c.text.length;
-        final String suffix = s.isCollapsed ? ' ' : '';
-        final String next = c.text.replaceRange(pos, pos, spoken + suffix);
-        final int caret = pos + spoken.length + suffix.length;
-        c.value = TextEditingValue(text: next, selection: TextSelection.collapsed(offset: caret));
+
+        final int start = selection.start.clamp(0, c.text.length);
+        final int end = selection.end.clamp(start, c.text.length);
+        final String separator = start == 0 || c.text.substring(0, start).endsWith(' ') ? '' : ' ';
+        final String insertion = separator + spoken;
+        final int caret = start + insertion.length;
+        c.value = TextEditingValue(
+          text: c.text.replaceRange(start, end, insertion),
+          selection: TextSelection.collapsed(offset: caret),
+        );
+        if (identical(c, _front)) {
+          _frontSelection = TextSelection.collapsed(offset: caret);
+        } else {
+          _backSelection = TextSelection.collapsed(offset: caret);
+        }
         if (mounted) setState(() {});
       },
     );
@@ -154,8 +208,8 @@ class _FcCardEditorPageState extends ConsumerState<FcCardEditorPage> {
       if (c != null) {
         _existing = c;
         _type = c.type;
-        _front.text = c.front;
-        _back.text = c.back;
+        _front.loadMarkup(c.front);
+        _back.loadMarkup(c.back);
         _notes.text = c.notes ?? '';
         _tags.addAll(c.tags);
       }
@@ -174,7 +228,7 @@ class _FcCardEditorPageState extends ConsumerState<FcCardEditorPage> {
     super.dispose();
   }
 
-  TextEditingController get _editorController => _activeController ?? _front;
+  FcRichTextController get _editorController => _activeController ?? _front;
 
   void _insertCloze() {
     final TextEditingController c = _front;
@@ -219,25 +273,20 @@ class _FcCardEditorPageState extends ConsumerState<FcCardEditorPage> {
     setState(() {});
   }
 
+  TextSelection _selectionFor(FcRichTextController c) =>
+      identical(c, _front) ? _frontSelection : _backSelection;
+
   void _format(String tag) {
-    final TextEditingController c = _editorController;
-    final TextSelection s = c.selection;
-    if (!s.isValid || s.isCollapsed) {
-      fcToast(context, 'Select text first');
-      return;
-    }
-    c.value = TextEditingValue(
-      text: fcApplyMarkup(c.text, s.start, s.end, tag),
-      selection: TextSelection.collapsed(offset: s.end + (tag.length * 2) + 5),
-    );
+    final FcRichTextController c = _editorController;
+    c.toggleFormat(tag, _selectionFor(c));
     setState(() {});
   }
 
   void _clearFormatting() {
-    final TextEditingController c = _editorController;
-    final int pos = c.selection.isValid ? c.selection.baseOffset : c.text.length;
-    c.text = fcClearFormatting(c.text);
-    c.selection = TextSelection.collapsed(offset: pos.clamp(0, c.text.length));
+    final FcRichTextController c = _editorController;
+    final TextSelection selection = _selectionFor(c);
+    c.clearFormatting();
+    c.value = c.value.copyWith(selection: selection);
     setState(() {});
   }
 
@@ -317,8 +366,8 @@ class _FcCardEditorPageState extends ConsumerState<FcCardEditorPage> {
         final FcCard c = _existing!;
         final List<int> idx = clozeIndices(_front.text);
         await repo.updateCard(c.copyWith(
-          front: _front.text.trim(),
-          back: _back.text.trim(),
+          front: _front.markupText.trim(),
+          back: _back.markupText.trim(),
           type: _type,
           clozeIndex: () => (_type == FcCardType.cloze && c.clozeIndex != null && idx.contains(c.clozeIndex)) ? c.clozeIndex : null,
           tags: List<String>.of(_tags),
@@ -331,8 +380,8 @@ class _FcCardEditorPageState extends ConsumerState<FcCardEditorPage> {
         widget.deckId,
         <CardDraft>[
           CardDraft(
-            front: _front.text.trim(),
-            back: _type == FcCardType.cloze ? _back.text.trim() : _back.text.trim(),
+            front: _front.markupText.trim(),
+            back: _back.markupText.trim(),
             type: _type,
             tags: List<String>.of(_tags),
             notes: notes,
@@ -375,8 +424,8 @@ class _FcCardEditorPageState extends ConsumerState<FcCardEditorPage> {
     return FcCard(
       id: 'preview',
       deckId: widget.deckId,
-      front: _front.text,
-      back: _back.text,
+      front: _front.markupText,
+      back: _back.markupText,
       type: _type,
       clozeIndex: _type == FcCardType.cloze ? previewIndex : null,
       createdAt: now,
@@ -441,8 +490,15 @@ class _FcCardEditorPageState extends ConsumerState<FcCardEditorPage> {
                   TextField(
                     controller: _front,
                     focusNode: _frontFocus,
-                    onTap: () => _activeController = _front,
+                    onTap: () {
+                      _activeController = _front;
+                      _frontSelection = _front.selection;
+                    },
                     onChanged: (_) => _activeController = _front,
+                    onSelectionChanged: (TextSelection selection, SelectionChangedCause? _) {
+                      _frontSelection = selection;
+                      _activeController = _front;
+                    },
                     autofocus: !_editing,
                     minLines: 3,
                     maxLines: 8,
@@ -463,6 +519,10 @@ class _FcCardEditorPageState extends ConsumerState<FcCardEditorPage> {
                     onItalic: () => _format('i'),
                     onUnderline: () => _format('u'),
                     onClear: _clearFormatting,
+                    boldActive: _editorController.isBoldActive,
+                    italicActive: _editorController.isItalicActive,
+                    underlineActive: _editorController.isUnderlineActive,
+                    listening: _speech.isListening,
                   ),
                   if (cloze) ...<Widget>[
                     Wrap(
@@ -484,7 +544,14 @@ class _FcCardEditorPageState extends ConsumerState<FcCardEditorPage> {
                   const SizedBox(height: 14),
                   TextField(
                     controller: _back,
-                    onTap: () => _activeController = _back,
+                    onTap: () {
+                      _activeController = _back;
+                      _backSelection = _back.selection;
+                    },
+                    onSelectionChanged: (TextSelection selection, SelectionChangedCause? _) {
+                      _backSelection = selection;
+                      _activeController = _back;
+                    },
                     minLines: cloze ? 1 : 3,
                     maxLines: 8,
                     textCapitalization: TextCapitalization.sentences,
@@ -503,12 +570,16 @@ class _FcCardEditorPageState extends ConsumerState<FcCardEditorPage> {
                     _EditorToolbar(
                       cloze: false,
                       onCloze: _insertCloze,
-                      onMic: () => fcToast(context, 'Voice input uses the keyboard microphone on this device.'),
+                      onMic: _voiceInput,
                       onImage: _pickImage,
                       onBold: () => _format('b'),
                       onItalic: () => _format('i'),
                       onUnderline: () => _format('u'),
                       onClear: _clearFormatting,
+                      boldActive: _editorController.isBoldActive,
+                      italicActive: _editorController.isItalicActive,
+                      underlineActive: _editorController.isUnderlineActive,
+                      listening: _speech.isListening,
                     ),
                   ],
                   const SizedBox(height: 20),
