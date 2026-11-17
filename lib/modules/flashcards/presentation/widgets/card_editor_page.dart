@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:lexiora/core/utils/result.dart';
 import 'package:image_picker/image_picker.dart';
 import 'dart:io';
 import 'package:path_provider/path_provider.dart';
@@ -12,6 +13,7 @@ import 'package:lexiora/modules/flashcards/domain/models/fc_models.dart';
 import 'package:lexiora/modules/flashcards/domain/repositories/fc_repository.dart';
 import 'package:lexiora/modules/flashcards/presentation/providers/fc_providers.dart';
 import 'package:lexiora/modules/flashcards/presentation/widgets/fc_widgets.dart';
+import 'package:lexiora/modules/flashcards/presentation/widgets/fc_content.dart';
 import 'package:lexiora/modules/dictionary/presentation/providers/dictionary_providers.dart';
 
 /// Opens the card editor; resolves to true when something was saved.
