@@ -210,27 +210,52 @@ class _DeckDetailPageState extends ConsumerState<DeckDetailPage> {
               icon: const Icon(Icons.add),
               label: const Text('Add card'),
             ),
-      body: ListView.builder(
+      body: CustomScrollView(
         controller: _scroll,
-        padding: const EdgeInsets.only(bottom: 96),
-        itemCount: 1 + (_cards.isEmpty ? 1 : _cards.length) + (_hasMore && _cards.isNotEmpty ? 1 : 0),
-        itemBuilder: (BuildContext context, int i) {
-          if (i == 0) return _header(summary, theme, cs);
-          if (_cards.isEmpty) return _empty();
-          final int idx = i - 1;
-          if (idx >= _cards.length) {
-            return const Padding(padding: EdgeInsets.all(16), child: Center(child: CircularProgressIndicator()));
-          }
-          final FcCard c = _cards[idx];
-          return FcCardTile(
-            card: c,
-            selected: _selected.contains(c.id),
-            selectionMode: _selecting,
-            onTap: () => _selecting ? _toggle(c.id) : openCardEditor(context, deckId: widget.deckId, cardId: c.id),
-            onLongPress: () => _toggle(c.id),
-            onToggleStar: _selecting ? null : () => ref.read(fcRepositoryProvider).setStarred(c.id, !c.bookmarked),
-          );
-        },
+        slivers: <Widget>[
+          SliverToBoxAdapter(child: _header(summary, theme, cs)),
+          if (_cards.isEmpty)
+            SliverFillRemaining(hasScrollBody: false, child: _empty())
+          else ...<Widget>[
+            SliverPadding(
+              padding: const EdgeInsets.fromLTRB(8, 2, 8, 96),
+              sliver: SliverGrid(
+                delegate: SliverChildBuilderDelegate(
+                  (BuildContext context, int index) {
+                    final FcCard c = _cards[index];
+                    return FcCardTile(
+                      margin: EdgeInsets.zero,
+                      card: c,
+                      selected: _selected.contains(c.id),
+                      selectionMode: _selecting,
+                      onTap: () => _selecting
+                          ? _toggle(c.id)
+                          : openCardEditor(context, deckId: widget.deckId, cardId: c.id),
+                      onLongPress: () => _toggle(c.id),
+                      onToggleStar: _selecting
+                          ? null
+                          : () => ref.read(fcRepositoryProvider).setStarred(c.id, !c.bookmarked),
+                    );
+                  },
+                  childCount: _cards.length,
+                ),
+                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                  crossAxisCount: 2,
+                  crossAxisSpacing: 10,
+                  mainAxisSpacing: 10,
+                  childAspectRatio: 0.72,
+                ),
+              ),
+            ),
+            if (_hasMore)
+              const SliverToBoxAdapter(
+                child: Padding(
+                  padding: EdgeInsets.all(16),
+                  child: Center(child: CircularProgressIndicator()),
+                ),
+              ),
+          ],
+        ],
       ),
     );
   }

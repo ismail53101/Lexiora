@@ -145,9 +145,13 @@ class _StudyPageState extends ConsumerState<StudyPage> {
   Future<void> _speak() async {
     final FcCard? c = _session?.current;
     if (c == null) return;
-    final String text = _revealed
+    final String rawText = _revealed
         ? (c.type == FcCardType.cloze ? clozePlainText(c.front) : c.back)
-        : (c.type == FcCardType.cloze ? clozeQuestionText(c.front, activeIndex: c.clozeIndex) : c.front);
+        : (c.type == FcCardType.cloze
+            ? clozeQuestionText(c.front, activeIndex: c.clozeIndex)
+            : c.front);
+    final String text = fcPlainText(rawText);
+    if (text.isEmpty) return;
     final PronunciationService tts = ref.read(fcPronunciationProvider);
     final String lang = detectTextDirection(text) == TextDirection.rtl ? 'ur-PK' : 'en-US';
     if (!await tts.isAvailable(lang)) {

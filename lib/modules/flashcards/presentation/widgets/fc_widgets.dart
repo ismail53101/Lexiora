@@ -286,6 +286,7 @@ class FcCardTile extends StatelessWidget {
     this.onTap,
     this.onLongPress,
     this.onToggleStar,
+    this.margin = const EdgeInsets.symmetric(horizontal: 12, vertical: 3),
   });
 
   final FcCard card;
@@ -295,86 +296,92 @@ class FcCardTile extends StatelessWidget {
   final VoidCallback? onTap;
   final VoidCallback? onLongPress;
   final VoidCallback? onToggleStar;
+  final EdgeInsetsGeometry margin;
 
   @override
   Widget build(BuildContext context) {
     final ThemeData theme = Theme.of(context);
     final ColorScheme cs = theme.colorScheme;
-    final String front = card.type == FcCardType.cloze
-        ? clozeQuestionText(card.front, activeIndex: card.clozeIndex).replaceAll('blank', '[…]')
-        : card.front;
-    final String back =
-        card.type == FcCardType.cloze ? clozePlainText(card.front) : card.back;
-    final String due = card.isNew
-        ? ''
-        : card.suspended
-            ? ''
-            : 'Due ${formatDueIn(card.fsrs.due)}';
+    final String frontText = card.type == FcCardType.cloze
+        ? fcPlainText(clozeQuestionText(card.front, activeIndex: card.clozeIndex))
+        : fcPlainText(card.front);
+    final String backText = card.type == FcCardType.cloze
+        ? fcPlainText(clozePlainText(card.front))
+        : fcPlainText(card.back);
+    final String due = card.isNew ? '' : card.suspended ? '' : 'Due ${formatDueIn(card.fsrs.due)}';
+
+    Widget face(FcFace which, String fallback) {
+      final String text = which == FcFace.question ? frontText : backText;
+      if (text.isEmpty && !card.front.contains('[img:') && !card.back.contains('[img:')) {
+        return Text(fallback, maxLines: 2, overflow: TextOverflow.ellipsis,
+            style: theme.textTheme.bodyMedium?.copyWith(color: cs.onSurfaceVariant));
+      }
+      return ClipRect(
+        child: ConstrainedBox(
+          constraints: const BoxConstraints(minHeight: 34, maxHeight: 120),
+          child: FcCardFaceText(card: card, face: which, fontSize: 17, textAlign: TextAlign.left),
+        ),
+      );
+    }
+
     return Card(
-      margin: const EdgeInsets.symmetric(horizontal: 12, vertical: 3),
+      margin: margin,
       elevation: 0,
       color: selected ? cs.primaryContainer : cs.surfaceContainerLow,
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(18)),
+      clipBehavior: Clip.antiAlias,
       child: InkWell(
-        borderRadius: BorderRadius.circular(16),
+        borderRadius: BorderRadius.circular(18),
         onTap: onTap,
         onLongPress: onLongPress,
         child: Padding(
-          padding: const EdgeInsets.fromLTRB(14, 12, 6, 12),
-          child: Row(
+          padding: const EdgeInsets.fromLTRB(14, 12, 10, 12),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
-              if (selectionMode)
-                Padding(
-                  padding: const EdgeInsets.only(right: 10),
-                  child: Icon(selected ? Icons.check_circle : Icons.radio_button_unchecked,
-                      color: selected ? cs.primary : cs.outline),
-                ),
-              Expanded(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: <Widget>[
-                    Text(front,
-                        maxLines: 2,
-                        overflow: TextOverflow.ellipsis,
-                        textDirection: detectTextDirection(front),
-                        style: theme.textTheme.titleSmall?.copyWith(fontWeight: FontWeight.w700)),
-                    const SizedBox(height: 3),
-                    Text(back,
-                        maxLines: 1,
-                        overflow: TextOverflow.ellipsis,
-                        textDirection: detectTextDirection(back),
-                        style: theme.textTheme.bodyMedium?.copyWith(color: cs.onSurfaceVariant)),
-                    const SizedBox(height: 6),
-                    Wrap(
-                      spacing: 10,
-                      runSpacing: 2,
-                      crossAxisAlignment: WrapCrossAlignment.center,
-                      children: <Widget>[
-                        FcStateBadge(card: card),
-                        if (card.type != FcCardType.basic)
-                          Text(card.type.label,
-                              style: theme.textTheme.labelSmall?.copyWith(color: cs.primary)),
-                        if (due.isNotEmpty)
-                          Text(due, style: theme.textTheme.labelSmall?.copyWith(color: cs.onSurfaceVariant)),
-                        if (card.isLeech)
-                          Text('Leech',
-                              style: theme.textTheme.labelSmall?.copyWith(color: cs.error, fontWeight: FontWeight.w700)),
-                        if (deckName != null)
-                          Text(deckName!, style: theme.textTheme.labelSmall?.copyWith(color: cs.onSurfaceVariant)),
-                        for (final String t in card.tags.take(3))
-                          Text('#$t', style: theme.textTheme.labelSmall?.copyWith(color: cs.onSurfaceVariant)),
-                      ],
+              Row(
+                children: <Widget>[
+                  if (selectionMode)
+                    Padding(
+                      padding: const EdgeInsets.only(right: 8),
+                      child: Icon(selected ? Icons.check_circle : Icons.radio_button_unchecked,
+                          color: selected ? cs.primary : cs.outline, size: 20),
                     ),
-                  ],
-                ),
+                  Expanded(child: face(FcFace.question, frontText.isEmpty ? 'Image card' : frontText)),
+                  if (onToggleStar != null)
+                    IconButton(
+                      visualDensity: VisualDensity.compact,
+                      padding: EdgeInsets.zero,
+                      tooltip: card.bookmarked ? 'Remove star' : 'Star',
+                      icon: Icon(card.bookmarked ? Icons.star_rounded : Icons.star_outline_rounded,
+                          color: card.bookmarked ? Colors.amber.shade700 : cs.outline, size: 21),
+                      onPressed: onToggleStar,
+                    ),
+                ],
               ),
-              if (onToggleStar != null)
-                IconButton(
-                  tooltip: card.bookmarked ? 'Remove star' : 'Star',
-                  icon: Icon(card.bookmarked ? Icons.star_rounded : Icons.star_outline_rounded,
-                      color: card.bookmarked ? Colors.amber.shade700 : cs.outline),
-                  onPressed: onToggleStar,
-                ),
+              const SizedBox(height: 8),
+              Divider(height: 1, color: cs.outlineVariant.withValues(alpha: 0.65)),
+              const SizedBox(height: 8),
+              face(FcFace.answer, backText),
+              const SizedBox(height: 8),
+              Wrap(
+                spacing: 8,
+                runSpacing: 3,
+                crossAxisAlignment: WrapCrossAlignment.center,
+                children: <Widget>[
+                  FcStateBadge(card: card),
+                  if (card.type != FcCardType.basic)
+                    Text(card.type.label, style: theme.textTheme.labelSmall?.copyWith(color: cs.primary)),
+                  if (due.isNotEmpty)
+                    Text(due, style: theme.textTheme.labelSmall?.copyWith(color: cs.onSurfaceVariant)),
+                  if (card.isLeech)
+                    Text('Leech', style: theme.textTheme.labelSmall?.copyWith(color: cs.error, fontWeight: FontWeight.w700)),
+                  if (deckName != null)
+                    Text(deckName!, style: theme.textTheme.labelSmall?.copyWith(color: cs.onSurfaceVariant)),
+                  for (final String t in card.tags.take(2))
+                    Text('#$t', style: theme.textTheme.labelSmall?.copyWith(color: cs.onSurfaceVariant)),
+                ],
+              ),
             ],
           ),
         ),

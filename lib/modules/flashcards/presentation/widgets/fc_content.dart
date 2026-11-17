@@ -378,6 +378,13 @@ String fcClearFormatting(String text) {
   return plain;
 }
 
+/// Removes editor-only markup and media tokens before compact display or speech.
+String fcPlainText(String text) => text
+    .replaceAll(_fcImageToken, ' ')
+    .replaceAll(_fcMarkupToken, '')
+    .replaceAll(RegExp(r'\s+'), ' ')
+    .trim();
+
 List<FcContentPart> fcContentParts(String text) {
   final List<FcContentPart> out = <FcContentPart>[];
   int cursor = 0;

@@ -328,7 +328,11 @@ class _FcCardEditorPageState extends ConsumerState<FcCardEditorPage> {
     final BuildContext? ctx = _voiceSheetContext;
     if (ctx == null || !ctx.mounted) return;
     _voiceSheetClosed = true;
-    Navigator.of(ctx).pop();
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      if (!ctx.mounted) return;
+      final NavigatorState navigator = Navigator.of(ctx);
+      if (navigator.canPop()) navigator.pop();
+    });
   }
 
   bool get _editing => widget.cardId != null;
@@ -353,62 +357,6 @@ class _FcCardEditorPageState extends ConsumerState<FcCardEditorPage> {
     return body.isEmpty ? imageMarkup : '$body\n$imageMarkup';
   }
 
-  Widget _imageAttachments(List<String> images) {
-    if (images.isEmpty) return const SizedBox.shrink();
-    final ColorScheme cs = Theme.of(context).colorScheme;
-    return Padding(
-      padding: const EdgeInsets.only(top: 8, bottom: 4),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.stretch,
-        children: <Widget>[
-          for (int i = 0; i < images.length; i++)
-            Padding(
-              padding: const EdgeInsets.only(bottom: 8),
-              child: Stack(
-                children: <Widget>[
-                  Container(
-                    constraints: const BoxConstraints(maxHeight: 220),
-                    width: double.infinity,
-                    padding: const EdgeInsets.all(8),
-                    decoration: BoxDecoration(
-                      color: cs.surfaceContainerLow,
-                      borderRadius: BorderRadius.circular(14),
-                      border: Border.all(color: cs.outlineVariant),
-                    ),
-                    child: ClipRRect(
-                      borderRadius: BorderRadius.circular(10),
-                      child: images[i].startsWith('http://') ||
-                              images[i].startsWith('https://')
-                          ? Image.network(
-                              images[i],
-                              fit: BoxFit.contain,
-                              errorBuilder: (_, __, ___) =>
-                                  const Icon(Icons.broken_image_outlined),
-                            )
-                          : Image.file(
-                              File(images[i]),
-                              fit: BoxFit.contain,
-                              errorBuilder: (_, __, ___) =>
-                                  const Icon(Icons.broken_image_outlined),
-                            ),
-                    ),
-                  ),
-                  Positioned(
-                    top: 4,
-                    right: 4,
-                    child: IconButton.filledTonal(
-                      tooltip: 'Remove image',
-                      icon: const Icon(Icons.close, size: 18),
-                      onPressed: () => setState(() => images.removeAt(i)),
-                    ),
-                  ),
-                ],
-              ),
-            ),
-        ],
-      ),
-    );
-  }
 
   @override
   void initState() {
@@ -433,6 +381,7 @@ class _FcCardEditorPageState extends ConsumerState<FcCardEditorPage> {
     final FcRichTextController c = _editorController;
     if (_speech.isListening) {
       await _speech.stop();
+      _requestCloseVoiceSheet();
       if (mounted) setState(() {});
       return;
     }
@@ -1032,24 +981,6 @@ class _FcCardEditorPageState extends ConsumerState<FcCardEditorPage> {
                     underlineActive: _editorController.isUnderlineActive,
                     listening: _speech.isListening,
                   ),
-                  _imageAttachments(_frontImages),
-                  if (cloze) ...<Widget>[
-                    Wrap(
-                      spacing: 8,
-                      children: <Widget>[
-                        FilledButton.tonalIcon(
-                          onPressed: () => _wrapSelection(sameNumber: false),
-                          icon: const Icon(Icons.visibility_off_outlined, size: 18),
-                          label: const Text('Hide selection'),
-                        ),
-                        if (clozeIndices(_front.text).isNotEmpty)
-                          OutlinedButton(
-                            onPressed: () => _wrapSelection(sameNumber: true),
-                            child: Text('Same blank (c${clozeIndices(_front.text).last})'),
-                          ),
-                      ],
-                    ),
-                  ],
                   SizedBox(
                     height: 68,
                     child: Center(
@@ -1093,7 +1024,6 @@ class _FcCardEditorPageState extends ConsumerState<FcCardEditorPage> {
                       ),
                     ),
                   ),
-                  _imageAttachments(_backImages),
                   if (!cloze) ...<Widget>[
                     const SizedBox(height: 8),
                     _EditorToolbar(
