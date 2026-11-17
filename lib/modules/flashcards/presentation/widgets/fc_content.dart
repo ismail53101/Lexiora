@@ -110,7 +110,7 @@ class FcRichTextController extends TextEditingController {
     return tags;
   }
 
-  bool isFormatted(TextRange selection, String tag) {
+  bool isFormatted(TextSelection selection, String tag) {
     if (!selection.isValid || selection.isCollapsed) return _activeFormats.contains(tag);
     final int start = selection.start.clamp(0, text.length);
     final int end = selection.end.clamp(start, text.length);
@@ -130,7 +130,7 @@ class FcRichTextController extends TextEditingController {
     return false;
   }
 
-  void toggleFormat(String tag, TextRange selection) {
+  void toggleFormat(String tag, TextSelection selection) {
     if (!selection.isValid || selection.isCollapsed) {
       if (_activeFormats.contains(tag)) {
         _activeFormats.remove(tag);
@@ -145,7 +145,7 @@ class FcRichTextController extends TextEditingController {
     final int end = selection.end.clamp(start, text.length);
     if (start == end) return;
 
-    final bool remove = isFormatted(TextRange(start: start, end: end), tag);
+    final bool remove = isFormatted(TextSelection(baseOffset: start, extentOffset: end), tag);
     if (remove) {
       _removeFormat(start, end, tag);
       _activeFormats.remove(tag);
