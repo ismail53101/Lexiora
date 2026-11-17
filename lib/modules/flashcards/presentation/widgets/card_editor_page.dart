@@ -30,27 +30,28 @@ Future<bool?> openCardEditor(BuildContext context, {required String deckId, Stri
 
 /// Create or edit one card (basic, cloze or type-the-answer) with a live preview.
 class _VoiceListeningSheet extends StatefulWidget {
-  const _VoiceListeningSheet({
-    required this.transcript,
-    required this.onStop,
-  });
-
+  const _VoiceListeningSheet({required this.transcript});
   final ValueNotifier<String> transcript;
-  final Future<void> Function() onStop;
 
   @override
   State<_VoiceListeningSheet> createState() => _VoiceListeningSheetState();
 }
 
 class _VoiceListeningSheetState extends State<_VoiceListeningSheet>
-    with SingleTickerProviderStateMixin {
-  late final AnimationController _pulse =
-      AnimationController(vsync: this, duration: const Duration(milliseconds: 1100))
-        ..repeat(reverse: true);
+    with TickerProviderStateMixin {
+  late final AnimationController _pulse = AnimationController(
+    vsync: this,
+    duration: const Duration(milliseconds: 1200),
+  )..repeat(reverse: true);
+  late final AnimationController _wave = AnimationController(
+    vsync: this,
+    duration: const Duration(milliseconds: 900),
+  )..repeat();
 
   @override
   void dispose() {
     _pulse.dispose();
+    _wave.dispose();
     super.dispose();
   }
 
@@ -58,81 +59,171 @@ class _VoiceListeningSheetState extends State<_VoiceListeningSheet>
   Widget build(BuildContext context) {
     final ColorScheme cs = Theme.of(context).colorScheme;
     return SafeArea(
-      child: Container(
-        margin: const EdgeInsets.fromLTRB(12, 0, 12, 12),
-        padding: const EdgeInsets.fromLTRB(20, 18, 20, 16),
-        decoration: BoxDecoration(
-          color: cs.surface,
-          borderRadius: BorderRadius.circular(28),
-          boxShadow: <BoxShadow>[
-            BoxShadow(
-              blurRadius: 28,
-              spreadRadius: 2,
-              color: Colors.black.withValues(alpha: 0.16),
+      child: Padding(
+        padding: const EdgeInsets.fromLTRB(12, 0, 12, 14),
+        child: DecoratedBox(
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(30),
+            gradient: LinearGradient(
+              begin: Alignment.topLeft,
+              end: Alignment.bottomRight,
+              colors: <Color>[
+                cs.primary.withValues(alpha: 0.94),
+                cs.surface.withValues(alpha: 0.96),
+                Colors.cyan.withValues(alpha: 0.72),
+              ],
             ),
-          ],
-        ),
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: <Widget>[
-            Container(
-              width: 44,
-              height: 4,
-              decoration: BoxDecoration(
-                color: cs.onSurfaceVariant.withValues(alpha: 0.25),
-                borderRadius: BorderRadius.circular(8),
+            boxShadow: <BoxShadow>[
+              BoxShadow(
+                blurRadius: 34,
+                spreadRadius: 2,
+                color: cs.primary.withValues(alpha: 0.28),
               ),
+            ],
+          ),
+          child: Container(
+            padding: const EdgeInsets.fromLTRB(20, 18, 20, 20),
+            decoration: BoxDecoration(
+              color: Colors.black.withValues(alpha: 0.42),
+              borderRadius: BorderRadius.circular(30),
+              border: Border.all(color: Colors.white.withValues(alpha: 0.24)),
             ),
-            const SizedBox(height: 18),
-            AnimatedBuilder(
-              animation: _pulse,
-              builder: (BuildContext context, Widget? child) {
-                final double scale = 1 + (_pulse.value * 0.08);
-                return Transform.scale(
-                  scale: scale,
-                  child: Container(
-                    width: 72,
-                    height: 72,
-                    decoration: BoxDecoration(
-                      shape: BoxShape.circle,
-                      color: cs.primaryContainer,
-                    ),
-                    child: Icon(Icons.mic_rounded, size: 34, color: cs.primary),
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: <Widget>[
+                Container(
+                  width: 42,
+                  height: 4,
+                  decoration: BoxDecoration(
+                    color: Colors.white.withValues(alpha: 0.38),
+                    borderRadius: BorderRadius.circular(10),
                   ),
-                );
-              },
-            ),
-            const SizedBox(height: 12),
-            Text('Listening…', style: Theme.of(context).textTheme.titleMedium),
-            const SizedBox(height: 6),
-            ValueListenableBuilder<String>(
-              valueListenable: widget.transcript,
-              builder: (BuildContext context, String value, Widget? child) {
-                return ConstrainedBox(
-                  constraints: const BoxConstraints(minHeight: 44, maxHeight: 88),
-                  child: SingleChildScrollView(
-                    child: Text(
-                      value.isEmpty ? 'Speak now' : value,
-                      textAlign: TextAlign.center,
-                      style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-                            color: value.isEmpty ? cs.onSurfaceVariant : cs.onSurface,
+                ),
+                const SizedBox(height: 14),
+                AnimatedBuilder(
+                  animation: _pulse,
+                  builder: (BuildContext context, Widget? child) {
+                    final double value = _pulse.value;
+                    return Container(
+                      width: 82 + value * 8,
+                      height: 82 + value * 8,
+                      decoration: BoxDecoration(
+                        shape: BoxShape.circle,
+                        border: Border.all(
+                          width: 2,
+                          color: cs.primary.withValues(alpha: 0.72),
+                        ),
+                        boxShadow: <BoxShadow>[
+                          BoxShadow(
+                            blurRadius: 22 + value * 12,
+                            spreadRadius: 4,
+                            color: cs.primary.withValues(alpha: 0.38),
                           ),
-                    ),
-                  ),
-                );
-              },
+                          BoxShadow(
+                            blurRadius: 18,
+                            spreadRadius: 1,
+                            color: Colors.cyan.withValues(alpha: 0.24),
+                          ),
+                        ],
+                        gradient: LinearGradient(
+                          colors: <Color>[
+                            cs.primary.withValues(alpha: 0.96),
+                            Colors.cyan.withValues(alpha: 0.82),
+                          ],
+                        ),
+                      ),
+                      child: const Icon(Icons.mic_rounded, size: 38, color: Colors.white),
+                    );
+                  },
+                ),
+                const SizedBox(height: 14),
+                const Text(
+                  'Listening…',
+                  style: TextStyle(color: Colors.white, fontSize: 24, fontWeight: FontWeight.w700),
+                ),
+                const SizedBox(height: 5),
+                const Text(
+                  'Speak now, I’m listening to your voice',
+                  textAlign: TextAlign.center,
+                  style: TextStyle(color: Colors.white70, fontSize: 15),
+                ),
+                const SizedBox(height: 14),
+                AnimatedBuilder(
+                  animation: _wave,
+                  builder: (BuildContext context, Widget? child) {
+                    return SizedBox(
+                      height: 42,
+                      width: double.infinity,
+                      child: CustomPaint(
+                        painter: _VoiceWavePainter(
+                          progress: _wave.value,
+                          primary: cs.primary,
+                          secondary: Colors.cyanAccent,
+                        ),
+                      ),
+                    );
+                  },
+                ),
+                ValueListenableBuilder<String>(
+                  valueListenable: widget.transcript,
+                  builder: (BuildContext context, String value, Widget? child) {
+                    if (value.trim().isEmpty) return const SizedBox(height: 2);
+                    return ConstrainedBox(
+                      constraints: const BoxConstraints(maxHeight: 54),
+                      child: SingleChildScrollView(
+                        child: Text(
+                          value,
+                          textAlign: TextAlign.center,
+                          style: const TextStyle(color: Colors.white, fontSize: 14),
+                        ),
+                      ),
+                    );
+                  },
+                ),
+              ],
             ),
-            const SizedBox(height: 10),
-            FilledButton.icon(
-              onPressed: widget.onStop,
-              icon: const Icon(Icons.stop_rounded),
-              label: const Text('Done'),
-            ),
-          ],
+          ),
         ),
       ),
     );
   }
+}
+
+class _VoiceWavePainter extends CustomPainter {
+  const _VoiceWavePainter({
+    required this.progress,
+    required this.primary,
+    required this.secondary,
+  });
+
+  final double progress;
+  final Color primary;
+  final Color secondary;
+
+  @override
+  void paint(Canvas canvas, Size size) {
+    final Paint paint = Paint()..strokeCap = StrokeCap.round;
+    const int bars = 31;
+    final double gap = size.width / (bars + 1);
+    for (int i = 0; i < bars; i++) {
+      final double phase = (i / bars) * math.pi * 2;
+      final double motion = math.sin((progress * math.pi * 2) + phase);
+      final double envelope = 0.25 + 0.75 * math.sin((i / (bars - 1)) * math.pi);
+      final double height = 5 + (motion.abs() * envelope * 27);
+      paint
+        ..strokeWidth = 3.2
+        ..color = Color.lerp(primary, secondary, i / (bars - 1))!;
+      final double x = gap * (i + 1);
+      canvas.drawLine(
+        Offset(x, (size.height - height) / 2),
+        Offset(x, (size.height + height) / 2),
+        paint,
+      );
+    }
+  }
+
+  @override
+  bool shouldRepaint(_VoiceWavePainter oldDelegate) => oldDelegate.progress != progress;
 }
 
 class _EditorToolbar extends StatelessWidget {
@@ -338,20 +429,20 @@ class _FcCardEditorPageState extends ConsumerState<FcCardEditorPage> {
       }
 
       if (mounted) setState(() {});
+      await SystemSound.play(SystemSoundType.click);
+      if (!mounted) {
+        liveText.dispose();
+        return;
+      }
       await showModalBottomSheet<void>(
         context: context,
         isDismissible: true,
-        enableDrag: true,
+        enableDrag: false,
         backgroundColor: Colors.transparent,
+        barrierColor: Colors.black.withValues(alpha: 0.08),
         builder: (BuildContext ctx) {
           sheetContext = ctx;
-          return _VoiceListeningSheet(
-            transcript: liveText,
-            onStop: () async {
-              await _speech.stop();
-              if (ctx.mounted) Navigator.of(ctx).pop();
-            },
-          );
+          return _VoiceListeningSheet(transcript: liveText);
         },
       );
 
