@@ -289,29 +289,6 @@ class _FcCardEditorPageState extends ConsumerState<FcCardEditorPage> {
         return;
       }
 
-      if (!_speechReady) {
-        final bool ready = await _speech.initialize(
-          onStatus: (String status) {
-            if ((status == 'done' || status == 'notListening') && sheetContext != null) {
-              closeSheet();
-            }
-            if (mounted) setState(() {});
-          },
-          onError: (SpeechRecognitionError error) {
-            if (mounted) {
-              fcToast(context, 'Voice input error: ${error.errorMsg}');
-              setState(() {});
-            }
-          },
-        );
-        _speechReady = ready;
-      }
-
-      if (!_speechReady) {
-        if (mounted) fcToast(context, 'Speech recognition is not available on this device.');
-        return;
-      }
-
       final ValueNotifier<String> liveText = ValueNotifier<String>('');
       BuildContext? sheetContext;
       bool closed = false;
@@ -322,6 +299,34 @@ class _FcCardEditorPageState extends ConsumerState<FcCardEditorPage> {
         if (sheetContext != null && sheetContext!.mounted) {
           Navigator.of(sheetContext!).pop();
         }
+      }
+
+      if (!_speechReady) {
+        final bool ready = await _speech.initialize(
+          onStatus: (String status) {
+            if ((status == 'done' || status == 'notListening') &&
+                sheetContext != null) {
+              closeSheet();
+            }
+            if (mounted) setState(() {});
+          },
+          onError: (SpeechRecognitionError error) {
+            if (mounted) {
+              fcToast(context, 'Voice input error: ${error.errorMsg}');
+              setState(() {});
+            }
+            closeSheet();
+          },
+        );
+        _speechReady = ready;
+      }
+
+      if (!_speechReady) {
+        liveText.dispose();
+        if (mounted) {
+          fcToast(context, 'Speech recognition is not available on this device.');
+        }
+        return;
       }
 
       TextSelection insertionSelection =
@@ -378,6 +383,7 @@ class _FcCardEditorPageState extends ConsumerState<FcCardEditorPage> {
           );
         },
       );
+
       if (_speech.isListening) {
         await _speech.stop();
       }
