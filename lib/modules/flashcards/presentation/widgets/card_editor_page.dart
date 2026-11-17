@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'dart:io';
 import 'dart:math' as math;
 
@@ -436,24 +437,22 @@ class _FcCardEditorPageState extends ConsumerState<FcCardEditorPage> {
       final ValueNotifier<String> liveText = ValueNotifier<String>('');
       BuildContext? sheetContext;
       bool closed = false;
-      bool speechEndedBeforeSheetOpened = false;
+      bool recognitionEnded = false;
 
-      Future<void> closeSheet() async {
+      void requestCloseSheet() {
+        recognitionEnded = true;
         if (closed) return;
-        if (sheetContext == null || !sheetContext!.mounted) {
-          speechEndedBeforeSheetOpened = true;
-          return;
-        }
+        final BuildContext? ctx = sheetContext;
+        if (ctx == null || !ctx.mounted) return;
         closed = true;
-        Navigator.of(sheetContext!).pop();
+        Navigator.of(ctx).pop();
       }
 
       if (!_speechReady) {
         final bool ready = await _speech.initialize(
           onStatus: (String status) {
             if (status == 'done' || status == 'notListening') {
-              speechEndedBeforeSheetOpened = true;
-              unawaited(closeSheet());
+              requestCloseSheet();
             }
             if (mounted) setState(() {});
           },
@@ -462,7 +461,7 @@ class _FcCardEditorPageState extends ConsumerState<FcCardEditorPage> {
               fcToast(context, 'Voice input error: ${error.errorMsg}');
               setState(() {});
             }
-            closeSheet();
+            requestCloseSheet();
           },
         );
         _speechReady = ready;
@@ -504,6 +503,9 @@ class _FcCardEditorPageState extends ConsumerState<FcCardEditorPage> {
             _backSelection = c.selection;
           }
           if (mounted) setState(() {});
+          if (result.finalResult) {
+            requestCloseSheet();
+          }
         },
       );
 
@@ -527,12 +529,9 @@ class _FcCardEditorPageState extends ConsumerState<FcCardEditorPage> {
         barrierColor: Colors.black.withValues(alpha: 0.08),
         builder: (BuildContext ctx) {
           sheetContext = ctx;
-          if (speechEndedBeforeSheetOpened) {
+          if (recognitionEnded) {
             WidgetsBinding.instance.addPostFrameCallback((_) {
-              if (!closed && ctx.mounted) {
-                closed = true;
-                Navigator.of(ctx).pop();
-              }
+              requestCloseSheet();
             });
           }
           return _VoiceListeningSheet(transcript: liveText);
