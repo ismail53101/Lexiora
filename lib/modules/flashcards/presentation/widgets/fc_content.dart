@@ -84,11 +84,13 @@ class FcRichTextController extends TextEditingController {
       if (start == end) continue;
 
       final Set<String> current = _formatsAt(start);
+      // Close the previous style stack completely, then open the current
+      // stack. This keeps overlapping formatting ranges validly nested.
       for (final String tag in _formatOrder.reversed) {
-        if (previous.contains(tag) && !current.contains(tag)) out.write('[/$tag]');
+        if (previous.contains(tag)) out.write('[/$tag]');
       }
       for (final String tag in _formatOrder) {
-        if (current.contains(tag) && !previous.contains(tag)) out.write('[$tag]');
+        if (current.contains(tag)) out.write('[$tag]');
       }
       out.write(text.substring(start, end));
       previous = current;
