@@ -319,7 +319,7 @@ class _FcCardEditorPageState extends ConsumerState<FcCardEditorPage> {
     images.clear();
     return markup.replaceAllMapped(
       _imageToken,
-      (RegExpMatch match) {
+      (Match match) {
         final String path = match.group(1)!.trim();
         if (path.isNotEmpty) images.add(path);
         return '';
