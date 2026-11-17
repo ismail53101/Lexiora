@@ -54,15 +54,18 @@ Future<void> main() async {
         FlutterError.presentError(details);
       };
 
-      // Required because we open PdfDocuments via the engine API (reading page
-      // counts at import time) before any pdfrx widget is built.
-      await pdfrxFlutterInitialize();
+      // Keep the first Flutter frame independent from pdfrx/native PDF
+      // initialization. On some Android/OEM combinations, a native plugin
+      // initialization can stall before Flutter renders anything, leaving the
+      // user stuck on the Android launch surface with no Dart exception.
+      // The PDF engine is initialized immediately after the first frame instead.
       await configureDependencies();
       final GoRouter router = createAppRouter();
-      // Optional platform setup must not keep Flutter on the native splash
-      // screen. Notifications, permissions, and PDF intent discovery continue
-      // immediately after the first frame and report failures to the logger.
       runApp(ProviderScope(child: SapioraApp(router: router)));
+
+      // Native PDF initialization is required by the reader, but must never
+      // block the Home screen from rendering.
+      unawaited(_initializePdfEngine());
       unawaited(_finishStartup(router));
 
       // One-time data hygiene: if Android's auto-backup restored an old database
@@ -78,6 +81,18 @@ Future<void> main() async {
       AppLogger.e('Uncaught zone error', error: error, stackTrace: stack);
     },
   );
+}
+
+Future<void> _initializePdfEngine() async {
+  try {
+    await pdfrxFlutterInitialize();
+  } on Object catch (error, stackTrace) {
+    AppLogger.e(
+      'PDF engine initialization failed after app startup',
+      error: error,
+      stackTrace: stackTrace,
+    );
+  }
 }
 
 Future<void> _finishStartup(GoRouter router) async {
