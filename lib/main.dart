@@ -54,33 +54,94 @@ Future<void> main() async {
         FlutterError.presentError(details);
       };
 
-      // Keep the first Flutter frame independent from pdfrx/native PDF
-      // initialization. On some Android/OEM combinations, a native plugin
-      // initialization can stall before Flutter renders anything, leaving the
-      // user stuck on the Android launch surface with no Dart exception.
-      // The PDF engine is initialized immediately after the first frame instead.
-      await configureDependencies();
-      final GoRouter router = createAppRouter();
-      runApp(ProviderScope(child: SapioraApp(router: router)));
-
-      // Native PDF initialization is required by the reader, but must never
-      // block the Home screen from rendering.
-      unawaited(_initializePdfEngine());
-      unawaited(_finishStartup(router));
-
-      // One-time data hygiene: if Android's auto-backup restored an old database
-      // (e.g. after an uninstall), purge the stale AI chats so Recents starts
-      // empty. Real user data on updates is protected by install markers — see
-      // [FreshInstallGuard]. Best-effort and unawaited: any failure is logged and
-      // must never block startup.
-      unawaited(
-        sl<FreshInstallGuard>().purgeStaleChatData(sl<AppDatabase>()),
-      );
+      // Render Flutter immediately. Nothing that can initialize a database,
+      // router, PDF engine, ads, notifications, or a feature module is allowed
+      // to run before the first Flutter frame.
+      runApp(const _BootstrapApp());
     },
     (Object error, StackTrace stack) {
       AppLogger.e('Uncaught zone error', error: error, stackTrace: stack);
     },
   );
+}
+
+class _BootstrapApp extends StatefulWidget {
+  const _BootstrapApp();
+
+  @override
+  State<_BootstrapApp> createState() => _BootstrapAppState();
+}
+
+class _BootstrapAppState extends State<_BootstrapApp> {
+  GoRouter? _router;
+  Object? _error;
+  StackTrace? _stack;
+
+  @override
+  void initState() {
+    super.initState();
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      unawaited(_bootstrap());
+    });
+  }
+
+  Future<void> _bootstrap() async {
+    try {
+      await configureDependencies();
+      final GoRouter router = createAppRouter();
+      if (!mounted) return;
+      setState(() => _router = router);
+
+      // These are deliberately started only after the first real Flutter
+      // frame is already on screen.
+      unawaited(_initializePdfEngine());
+      unawaited(_finishStartup(router));
+
+      unawaited(
+        sl<FreshInstallGuard>().purgeStaleChatData(sl<AppDatabase>()),
+      );
+    } on Object catch (error, stackTrace) {
+      AppLogger.e(
+        'App bootstrap failed',
+        error: error,
+        stackTrace: stackTrace,
+      );
+      if (!mounted) return;
+      setState(() {
+        _error = error;
+        _stack = stackTrace;
+      });
+    }
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final GoRouter? router = _router;
+    if (router != null) {
+      return ProviderScope(
+        child: SapioraApp(router: router),
+      );
+    }
+
+    if (_error != null) {
+      return _FatalErrorBox(
+        details: FlutterErrorDetails(
+          exception: _error!,
+          stack: _stack,
+        ),
+      );
+    }
+
+    return const MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: Scaffold(
+        backgroundColor: Color(0xFF030A31),
+        body: Center(
+          child: CircularProgressIndicator(),
+        ),
+      ),
+    );
+  }
 }
 
 Future<void> _initializePdfEngine() async {
