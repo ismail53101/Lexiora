@@ -436,21 +436,24 @@ class _FcCardEditorPageState extends ConsumerState<FcCardEditorPage> {
       final ValueNotifier<String> liveText = ValueNotifier<String>('');
       BuildContext? sheetContext;
       bool closed = false;
+      bool speechEndedBeforeSheetOpened = false;
 
       Future<void> closeSheet() async {
         if (closed) return;
-        closed = true;
-        if (sheetContext != null && sheetContext!.mounted) {
-          Navigator.of(sheetContext!).pop();
+        if (sheetContext == null || !sheetContext!.mounted) {
+          speechEndedBeforeSheetOpened = true;
+          return;
         }
+        closed = true;
+        Navigator.of(sheetContext!).pop();
       }
 
       if (!_speechReady) {
         final bool ready = await _speech.initialize(
           onStatus: (String status) {
-            if ((status == 'done' || status == 'notListening') &&
-                sheetContext != null) {
-              closeSheet();
+            if (status == 'done' || status == 'notListening') {
+              speechEndedBeforeSheetOpened = true;
+              unawaited(closeSheet());
             }
             if (mounted) setState(() {});
           },
@@ -524,6 +527,14 @@ class _FcCardEditorPageState extends ConsumerState<FcCardEditorPage> {
         barrierColor: Colors.black.withValues(alpha: 0.08),
         builder: (BuildContext ctx) {
           sheetContext = ctx;
+          if (speechEndedBeforeSheetOpened) {
+            WidgetsBinding.instance.addPostFrameCallback((_) {
+              if (!closed && ctx.mounted) {
+                closed = true;
+                Navigator.of(ctx).pop();
+              }
+            });
+          }
           return _VoiceListeningSheet(transcript: liveText);
         },
       );
