@@ -1,8 +1,11 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:lexiora/modules/flashcards/domain/fsrs/fsrs_scheduler.dart';
 import 'package:lexiora/modules/flashcards/domain/logic/cloze.dart';
 import 'package:lexiora/modules/flashcards/domain/logic/fc_time.dart';
 import 'package:lexiora/modules/flashcards/domain/models/fc_models.dart';
+import 'package:lexiora/modules/flashcards/presentation/widgets/fc_content.dart';
 
 /// The three colours of the study counters (like Anki: new / learning /
 /// review), taken from the current theme.
@@ -190,6 +193,27 @@ class FcCardFaceText extends StatelessWidget {
   final double fontSize;
   final TextAlign textAlign;
 
+  Widget _image(BuildContext context, String path) {
+    final Widget image = path.startsWith('http://') || path.startsWith('https://')
+        ? Image.network(path, fit: BoxFit.contain)
+        : Image.file(File(path), fit: BoxFit.contain);
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 10),
+      child: ClipRRect(borderRadius: BorderRadius.circular(12), child: ConstrainedBox(
+        constraints: const BoxConstraints(maxHeight: 240, maxWidth: 520),
+        child: image,
+      )),
+    );
+  }
+
+  Widget _text(BuildContext context, String text, TextStyle base) {
+    return Text.rich(
+      TextSpan(children: fcMarkupSpans(text, base)),
+      textAlign: textAlign,
+      textDirection: detectTextDirection(text),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     final ThemeData theme = Theme.of(context);
@@ -204,24 +228,19 @@ class FcCardFaceText extends StatelessWidget {
       final bool revealed = face == FcFace.answer;
       final List<ClozeSegment> segs =
           renderCloze(card.front, activeIndex: card.clozeIndex, revealed: revealed);
+      final List<InlineSpan> spans = <InlineSpan>[];
+      for (final ClozeSegment s in segs) {
+        final TextStyle styled = (s.isBlank || s.isAnswer)
+            ? base.copyWith(
+                color: theme.colorScheme.primary,
+                fontWeight: FontWeight.w800,
+                backgroundColor: theme.colorScheme.primary.withValues(alpha: 0.12),
+              )
+            : base;
+        spans.addAll(fcMarkupSpans(s.text, styled));
+      }
       final Widget rich = Text.rich(
-        TextSpan(
-          style: base,
-          children: <InlineSpan>[
-            for (final ClozeSegment s in segs)
-              TextSpan(
-                text: s.text,
-                style: (s.isBlank || s.isAnswer)
-                    ? TextStyle(
-                        color: theme.colorScheme.primary,
-                        fontWeight: FontWeight.w800,
-                        backgroundColor:
-                            theme.colorScheme.primary.withValues(alpha: 0.12),
-                      )
-                    : null,
-              ),
-          ],
-        ),
+        TextSpan(children: spans),
         textAlign: textAlign,
         textDirection: detectTextDirection(clozePlainText(card.front)),
       );
@@ -232,21 +251,26 @@ class FcCardFaceText extends StatelessWidget {
         children: <Widget>[
           rich,
           const SizedBox(height: 16),
-          Text(extra,
-              textAlign: textAlign,
-              style: base.copyWith(
-                  fontSize: fontSize * 0.7,
-                  color: theme.colorScheme.onSurfaceVariant)),
+          _text(context, extra, base.copyWith(
+            fontSize: fontSize * 0.7,
+            color: theme.colorScheme.onSurfaceVariant,
+          )),
         ],
       );
     }
 
     final String text = face == FcFace.question ? card.front : card.back;
-    return Text(
-      text,
-      textAlign: textAlign,
-      textDirection: detectTextDirection(text),
-      style: base,
+    final List<FcContentPart> parts = fcContentParts(text);
+    if (parts.length == 1 && !parts.first.isImage) {
+      return _text(context, text, base);
+    }
+    return Column(
+      mainAxisSize: MainAxisSize.min,
+      crossAxisAlignment: CrossAxisAlignment.center,
+      children: <Widget>[
+        for (final FcContentPart part in parts)
+          if (part.isImage) _image(context, part.value) else _text(context, part.value, base),
+      ],
     );
   }
 }
