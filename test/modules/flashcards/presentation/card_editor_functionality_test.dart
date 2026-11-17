@@ -9,7 +9,7 @@ void main() {
       final FcRichTextController controller = FcRichTextController(text: 'English');
       controller.toggleFormat(
         'b',
-        const TextRange(start: 0, end: 7),
+        const TextSelection(baseOffset: 0, extentOffset: 7),
       );
 
       expect(controller.text, 'English');
@@ -19,7 +19,7 @@ void main() {
 
     test('supports combined bold italic and underline formatting', () {
       final FcRichTextController controller = FcRichTextController(text: 'English');
-      const TextRange all = TextRange(start: 0, end: 7);
+      const TextRange all = TextSelection(baseOffset: 0, extentOffset: 7);
 
       controller.toggleFormat('b', all);
       controller.toggleFormat('i', all);
@@ -35,7 +35,7 @@ void main() {
 
       controller.toggleFormat(
         'b',
-        const TextRange(start: 0, end: 7),
+        const TextSelection(baseOffset: 0, extentOffset: 7),
       );
 
       expect(controller.text, 'English');
