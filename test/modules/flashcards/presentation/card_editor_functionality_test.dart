@@ -1,5 +1,6 @@
 import 'package:flutter/services.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:lexiora/modules/flashcards/domain/logic/cloze.dart';
 import 'package:lexiora/modules/flashcards/presentation/widgets/card_editor_utils.dart';
 import 'package:lexiora/modules/flashcards/presentation/widgets/fc_content.dart';
 
@@ -72,6 +73,28 @@ void main() {
 
       expect(controller.text, 'The {{c1::heart}} pumps blood');
       expect(controller.markupText, 'The {{c1::heart}} pumps blood');
+      controller.dispose();
+    });
+
+    test('multiple cloze indices render as blanks together when no index is active', () {
+      final List<ClozeSegment> segments = renderCloze(
+        'Pakistan got independence {{c1::1947}} founded by {{c2::M.A Jinnah}}.',
+        revealed: false,
+      );
+
+      expect(
+        segments.where((ClozeSegment segment) => segment.isBlank).map((ClozeSegment segment) => segment.text),
+        <String>['[…]', '[…]'],
+      );
+    });
+
+    test('image tokens remain persisted for card storage', () {
+      final FcRichTextController controller = FcRichTextController(
+        text: 'Definition\n[img:/tmp/example.jpg]',
+      );
+
+      expect(controller.text, contains('[img:/tmp/example.jpg]'));
+      expect(controller.markupText, 'Definition\n[img:/tmp/example.jpg]');
       controller.dispose();
     });
   });
