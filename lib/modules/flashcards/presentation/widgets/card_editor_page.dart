@@ -296,6 +296,9 @@ class _FcCardEditorPageState extends ConsumerState<FcCardEditorPage> {
 
   FcCardType _type = FcCardType.basic;
   final List<String> _tags = <String>[];
+  final List<String> _frontImages = <String>[];
+  final List<String> _backImages = <String>[];
+  static final RegExp _imageToken = RegExp(r'\[img:([^\]]+)\]');
   bool _reversed = false;
   bool _showAnswer = false;
   bool _multipleAnswers = false;
@@ -311,6 +314,83 @@ class _FcCardEditorPageState extends ConsumerState<FcCardEditorPage> {
   FcDeck? _deck;
 
   bool get _editing => widget.cardId != null;
+
+  String _loadImagesInto(String markup, List<String> images) {
+    images.clear();
+    return markup.replaceAllMapped(
+      _imageToken,
+      (RegExpMatch match) {
+        final String path = match.group(1)!.trim();
+        if (path.isNotEmpty) images.add(path);
+        return '';
+      },
+    ).trim();
+  }
+
+  String _composeMarkup(String text, List<String> images) {
+    final String body = text.trim();
+    if (images.isEmpty) return body;
+    final String imageMarkup =
+        images.map((String path) => '[img:$path]').join('\n');
+    return body.isEmpty ? imageMarkup : '$body\n$imageMarkup';
+  }
+
+  Widget _imageAttachments(List<String> images) {
+    if (images.isEmpty) return const SizedBox.shrink();
+    final ColorScheme cs = Theme.of(context).colorScheme;
+    return Padding(
+      padding: const EdgeInsets.only(top: 8, bottom: 4),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: <Widget>[
+          for (int i = 0; i < images.length; i++)
+            Padding(
+              padding: const EdgeInsets.only(bottom: 8),
+              child: Stack(
+                children: <Widget>[
+                  Container(
+                    constraints: const BoxConstraints(maxHeight: 220),
+                    width: double.infinity,
+                    padding: const EdgeInsets.all(8),
+                    decoration: BoxDecoration(
+                      color: cs.surfaceContainerLow,
+                      borderRadius: BorderRadius.circular(14),
+                      border: Border.all(color: cs.outlineVariant),
+                    ),
+                    child: ClipRRect(
+                      borderRadius: BorderRadius.circular(10),
+                      child: images[i].startsWith('http://') ||
+                              images[i].startsWith('https://')
+                          ? Image.network(
+                              images[i],
+                              fit: BoxFit.contain,
+                              errorBuilder: (_, __, ___) =>
+                                  const Icon(Icons.broken_image_outlined),
+                            )
+                          : Image.file(
+                              File(images[i]),
+                              fit: BoxFit.contain,
+                              errorBuilder: (_, __, ___) =>
+                                  const Icon(Icons.broken_image_outlined),
+                            ),
+                    ),
+                  ),
+                  Positioned(
+                    top: 4,
+                    right: 4,
+                    child: IconButton.filledTonal(
+                      tooltip: 'Remove image',
+                      icon: const Icon(Icons.close, size: 18),
+                      onPressed: () => setState(() => images.removeAt(i)),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+        ],
+      ),
+    );
+  }
 
   @override
   void initState() {
@@ -471,8 +551,8 @@ class _FcCardEditorPageState extends ConsumerState<FcCardEditorPage> {
         _existing = c;
         _type = c.type;
         _multipleAnswers = c.type == FcCardType.typed && c.back.contains('|');
-        _front.loadMarkup(c.front);
-        _back.loadMarkup(c.back);
+        _front.loadMarkup(_loadImagesInto(c.front, _frontImages));
+        _back.loadMarkup(_loadImagesInto(c.back, _backImages));
         _notes.text = c.notes ?? '';
         _tags.addAll(c.tags);
       }
@@ -527,15 +607,9 @@ class _FcCardEditorPageState extends ConsumerState<FcCardEditorPage> {
     if (!await dir.exists()) await dir.create(recursive: true);
     final String target = '${dir.path}/${DateTime.now().microsecondsSinceEpoch}_${file.name}';
     await File(file.path).copy(target);
-    final FcRichTextController c = _editorController;
-    final int pos = c.selection.isValid ? c.selection.baseOffset : c.text.length;
-    final String token = '[img:' + target + ']';
-    final String prefix = c.text.isNotEmpty && !c.text.endsWith('\n') ? '\n' : '';
-    final String insertion = prefix + token;
-    c.value = TextEditingValue(
-      text: c.text.replaceRange(pos, pos, insertion),
-      selection: TextSelection.collapsed(offset: pos + insertion.length),
-    );
+    final List<String> images =
+        identical(_editorController, _front) ? _frontImages : _backImages;
+    images.add(target);
     setState(() {});
   }
 
@@ -783,11 +857,15 @@ class _FcCardEditorPageState extends ConsumerState<FcCardEditorPage> {
 
   String? _validate() {
     final String front = _front.text.trim();
-    if (front.isEmpty) return 'The front can’t be empty';
     if (_type == FcCardType.cloze) {
       if (!hasCloze(front)) return 'Hide some text with the “Hide selection” button';
-    } else if (_back.text.trim().isEmpty) {
-      return 'The back can’t be empty';
+    } else {
+      if (front.isEmpty && _frontImages.isEmpty) {
+        return 'Add text or an image to the front';
+      }
+      if (_back.text.trim().isEmpty && _backImages.isEmpty) {
+        return 'Add text or an image to the back';
+      }
     }
     return null;
   }
@@ -806,8 +884,8 @@ class _FcCardEditorPageState extends ConsumerState<FcCardEditorPage> {
         final FcCard c = _existing!;
         final List<int> idx = clozeIndices(_front.text);
         await repo.updateCard(c.copyWith(
-          front: _front.markupText.trim(),
-          back: _back.markupText.trim(),
+          front: _composeMarkup(_front.markupText, _frontImages),
+          back: _composeMarkup(_back.markupText, _backImages),
           type: _type,
           clozeIndex: () => (_type == FcCardType.cloze && c.clozeIndex != null && idx.contains(c.clozeIndex)) ? c.clozeIndex : null,
           tags: List<String>.of(_tags),
@@ -820,8 +898,8 @@ class _FcCardEditorPageState extends ConsumerState<FcCardEditorPage> {
         widget.deckId,
         <CardDraft>[
           CardDraft(
-            front: _front.markupText.trim(),
-            back: _back.markupText.trim(),
+            front: _composeMarkup(_front.markupText, _frontImages),
+            back: _composeMarkup(_back.markupText, _backImages),
             type: _type,
             tags: List<String>.of(_tags),
             notes: notes,
@@ -837,6 +915,8 @@ class _FcCardEditorPageState extends ConsumerState<FcCardEditorPage> {
       if (addAnother) {
         _front.clear();
         _back.clear();
+        _frontImages.clear();
+        _backImages.clear();
         _notes.clear();
         setState(() {
           _saving = false;
@@ -860,8 +940,8 @@ class _FcCardEditorPageState extends ConsumerState<FcCardEditorPage> {
     return FcCard(
       id: 'preview',
       deckId: widget.deckId,
-      front: _front.markupText,
-      back: _back.markupText,
+      front: _composeMarkup(_front.markupText, _frontImages),
+      back: _composeMarkup(_back.markupText, _backImages),
       type: _type,
       clozeIndex: null,
       createdAt: now,
@@ -935,6 +1015,7 @@ class _FcCardEditorPageState extends ConsumerState<FcCardEditorPage> {
                     underlineActive: _editorController.isUnderlineActive,
                     listening: _speech.isListening,
                   ),
+                  _imageAttachments(_frontImages),
                   if (cloze) ...<Widget>[
                     Wrap(
                       spacing: 8,
@@ -995,6 +1076,7 @@ class _FcCardEditorPageState extends ConsumerState<FcCardEditorPage> {
                       ),
                     ),
                   ),
+                  _imageAttachments(_backImages),
                   if (!cloze) ...<Widget>[
                     const SizedBox(height: 8),
                     _EditorToolbar(
