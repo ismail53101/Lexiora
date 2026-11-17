@@ -1030,15 +1030,17 @@ class _FcCardEditorPageState extends ConsumerState<FcCardEditorPage> {
                             value: _multipleAnswers,
                             onChanged: _setMultipleAnswers,
                           ),
-                          const Divider(height: 1),
-                          SwitchListTile(
-                            title: const Text('Also create the reverse card'),
-                            subtitle: const Text('Adds back → front as a second card'),
-                            value: _reversed && _type == FcCardType.basic,
-                            onChanged: _type == FcCardType.basic
-                                ? (bool v) => setState(() => _reversed = v)
-                                : null,
-                          ),
+                          if (!_editing) ...<Widget>[
+                            const Divider(height: 1),
+                            SwitchListTile(
+                              title: const Text('Also create the reverse card'),
+                              subtitle: const Text('Adds back → front as a second card'),
+                              value: _reversed && _type == FcCardType.basic,
+                              onChanged: _type == FcCardType.basic
+                                  ? (bool v) => setState(() => _reversed = v)
+                                  : null,
+                            ),
+                          ],
                           if (_multipleAnswers)
                             Padding(
                               padding: const EdgeInsets.fromLTRB(16, 0, 16, 12),
