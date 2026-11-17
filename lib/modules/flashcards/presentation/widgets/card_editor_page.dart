@@ -304,7 +304,6 @@ class _FcCardEditorPageState extends ConsumerState<FcCardEditorPage> {
   TextSelection _backSelection = const TextSelection.collapsed(offset: 0);
   final SpeechToText _speech = SpeechToText();
   bool _speechReady = false;
-  int? _previewClozeIndex;
   bool _loading = true;
   bool _saving = false;
   int _addedCount = 0;
@@ -516,7 +515,7 @@ class _FcCardEditorPageState extends ConsumerState<FcCardEditorPage> {
       text: c.text.replaceRange(pos, pos, marker),
       selection: TextSelection.collapsed(offset: pos + marker.length - 2),
     );
-    setState(() => _previewClozeIndex = index);
+    setState(() {});
     _frontFocus.requestFocus();
   }
 
