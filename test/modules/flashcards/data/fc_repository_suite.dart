@@ -56,9 +56,23 @@ void defineRepositoryTests(Future<FcSql> Function() newSql) {
       const String text = 'The {{c1::heart}} pumps {{c2::blood}}';
       AddCardsResult r = await repo.addCards(
           d.id, <CardDraft>[const CardDraft(front: text, back: '', type: FcCardType.cloze)]);
+      // Default behaviour: all cloze deletions belong to one card.
+      // c1 and c2 must both hide on the same question card.
+      expect(r.created, 1);
+      List<FcCard> cards = await store.browse(FcCardQuery(deckId: d.id), now);
+      expect(cards, hasLength(1));
+      expect(cards.single.clozeIndex, isNull);
+
+      // The repository still supports the explicit per-deletion mode for
+      // callers that intentionally request separate cards.
+      r = await repo.addCards(
+          d.id,
+          <CardDraft>[const CardDraft(front: text, back: '', type: FcCardType.cloze)],
+          clozePerDeletion: true);
       expect(r.created, 2);
-      final List<FcCard> cards = await store.browse(FcCardQuery(deckId: d.id), now);
-      expect(cards.map((FcCard c) => c.clozeIndex).toSet(), <int?>{1, 2});
+      cards = await store.browse(FcCardQuery(deckId: d.id, limit: 100), now);
+      expect(cards.where((FcCard c) => c.clozeIndex != null), hasLength(2));
+      expect(cards.map((FcCard c) => c.clozeIndex).whereType<int>().toSet(), <int>{1, 2});
 
       r = await repo.addCards(
           d.id,
@@ -66,7 +80,7 @@ void defineRepositoryTests(Future<FcSql> Function() newSql) {
           clozePerDeletion: false);
       expect(r.created, 1);
       final List<FcCard> single = await store.browse(FcCardQuery(deckId: d.id, limit: 100), now);
-      expect(single.where((FcCard c) => c.clozeIndex == null), hasLength(1));
+      expect(single.where((FcCard c) => c.clozeIndex == null), hasLength(2));
 
       r = await repo.addCards(
           d.id, <CardDraft>[const CardDraft(front: 'no markers', back: '', type: FcCardType.cloze)]);
