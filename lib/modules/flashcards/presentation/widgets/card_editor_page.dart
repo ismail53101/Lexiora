@@ -314,6 +314,23 @@ class _FcCardEditorPageState extends ConsumerState<FcCardEditorPage> {
   FcCard? _existing;
   FcDeck? _deck;
 
+  // Voice-sheet state lives on the State object because speech_to_text only
+  // accepts its status/error callbacks during the first initialize() call.
+  // Keeping the callbacks bound to these fields makes later voice sessions
+  // close the current sheet instead of retaining the first session's context.
+  BuildContext? _voiceSheetContext;
+  bool _voiceSheetClosed = false;
+  bool _voiceRecognitionEnded = false;
+
+  void _requestCloseVoiceSheet() {
+    _voiceRecognitionEnded = true;
+    if (_voiceSheetClosed) return;
+    final BuildContext? ctx = _voiceSheetContext;
+    if (ctx == null || !ctx.mounted) return;
+    _voiceSheetClosed = true;
+    Navigator.of(ctx).pop();
+  }
+
   bool get _editing => widget.cardId != null;
 
   String _loadImagesInto(String markup, List<String> images) {
@@ -435,24 +452,15 @@ class _FcCardEditorPageState extends ConsumerState<FcCardEditorPage> {
       }
 
       final ValueNotifier<String> liveText = ValueNotifier<String>('');
-      BuildContext? sheetContext;
-      bool closed = false;
-      bool recognitionEnded = false;
-
-      void requestCloseSheet() {
-        recognitionEnded = true;
-        if (closed) return;
-        final BuildContext? ctx = sheetContext;
-        if (ctx == null || !ctx.mounted) return;
-        closed = true;
-        Navigator.of(ctx).pop();
-      }
+      _voiceSheetContext = null;
+      _voiceSheetClosed = false;
+      _voiceRecognitionEnded = false;
 
       if (!_speechReady) {
         final bool ready = await _speech.initialize(
           onStatus: (String status) {
             if (status == 'done' || status == 'notListening') {
-              requestCloseSheet();
+              _requestCloseVoiceSheet();
             }
             if (mounted) setState(() {});
           },
@@ -461,7 +469,7 @@ class _FcCardEditorPageState extends ConsumerState<FcCardEditorPage> {
               fcToast(context, 'Voice input error: ${error.errorMsg}');
               setState(() {});
             }
-            requestCloseSheet();
+            _requestCloseVoiceSheet();
           },
         );
         _speechReady = ready;
@@ -489,6 +497,7 @@ class _FcCardEditorPageState extends ConsumerState<FcCardEditorPage> {
             return;
           }
 
+          _requestCloseVoiceSheet();
           final String spoken = result.recognizedWords.trim();
           if (spoken.isEmpty) return;
 
@@ -503,9 +512,6 @@ class _FcCardEditorPageState extends ConsumerState<FcCardEditorPage> {
             _backSelection = c.selection;
           }
           if (mounted) setState(() {});
-          if (result.finalResult) {
-            requestCloseSheet();
-          }
         },
       );
 
@@ -528,16 +534,17 @@ class _FcCardEditorPageState extends ConsumerState<FcCardEditorPage> {
         backgroundColor: Colors.transparent,
         barrierColor: Colors.black.withValues(alpha: 0.08),
         builder: (BuildContext ctx) {
-          sheetContext = ctx;
-          if (recognitionEnded) {
+          _voiceSheetContext = ctx;
+          if (_voiceRecognitionEnded) {
             WidgetsBinding.instance.addPostFrameCallback((_) {
-              requestCloseSheet();
+              _requestCloseVoiceSheet();
             });
           }
           return _VoiceListeningSheet(transcript: liveText);
         },
       );
 
+      _voiceSheetContext = null;
       if (_speech.isListening) {
         await _speech.stop();
       }
