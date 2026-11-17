@@ -20,12 +20,8 @@ class FlashcardTile extends ConsumerWidget {
     final ThemeData theme = Theme.of(context);
     final Color? sc = subjectColorOf(card.subject, colors);
 
-    final String frontText = card.type == FcCardType.cloze
-        ? fcPlainText(clozeQuestionText(card.front, activeIndex: card.clozeIndex))
-        : fcPlainText(card.front);
-    final String backText = card.type == FcCardType.cloze
-        ? fcPlainText(clozePlainText(card.front))
-        : fcPlainText(card.back);
+    final String frontText = fcPlainText(clozeQuestionText(card.front));
+    final String backText = fcPlainText(clozePlainText(card.back));
 
     return Card(
       margin: const EdgeInsets.fromLTRB(12, 4, 12, 4),
