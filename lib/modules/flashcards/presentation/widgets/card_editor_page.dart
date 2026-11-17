@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
+import 'dart:io';
+import 'package:path_provider/path_provider.dart';
+import 'package:speech_to_text/speech_recognition_result.dart';
+import 'package:speech_to_text/speech_to_text.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:lexiora/modules/flashcards/domain/fsrs/fsrs_scheduler.dart';
 import 'package:lexiora/modules/flashcards/domain/logic/cloze.dart';
@@ -84,6 +88,8 @@ class _FcCardEditorPageState extends ConsumerState<FcCardEditorPage> {
   bool _multipleAnswers = false;
   bool _advancedOpen = false;
   TextEditingController? _activeController;
+  final SpeechToText _speech = SpeechToText();
+  bool _speechReady = false;
   int? _previewClozeIndex;
   bool _loading = true;
   bool _saving = false;
@@ -97,8 +103,45 @@ class _FcCardEditorPageState extends ConsumerState<FcCardEditorPage> {
   void initState() {
     super.initState();
     _load();
+    _initSpeech();
     _front.addListener(() => setState(() {}));
     _back.addListener(() => setState(() {}));
+  }
+
+  Future<void> _initSpeech() async {
+    try {
+      final bool ready = await _speech.initialize();
+      if (mounted) setState(() => _speechReady = ready);
+    } catch (_) {
+      if (mounted) setState(() => _speechReady = false);
+    }
+  }
+
+  Future<void> _voiceInput() async {
+    final TextEditingController c = _editorController;
+    if (!_speechReady) {
+      fcToast(context, 'Voice input is not available on this device');
+      return;
+    }
+    if (_speech.isListening) {
+      await _speech.stop();
+      if (mounted) setState(() {});
+      return;
+    }
+    await _speech.listen(
+      onResult: (SpeechRecognitionResult result) {
+        final String spoken = result.recognizedWords;
+        if (spoken.isEmpty) return;
+        final TextSelection s = c.selection;
+        final int pos = s.isValid ? s.baseOffset : c.text.length;
+        final String suffix = s.isCollapsed ? ' ' : '';
+        final String next = c.text.replaceRange(pos, pos, spoken + suffix);
+        final int caret = pos + spoken.length + suffix.length;
+        c.value = TextEditingValue(text: next, selection: TextSelection.collapsed(offset: caret));
+        if (mounted) setState(() {});
+      },
+    );
+    if (mounted) setState(() {});
   }
 
   Future<void> _load() async {
@@ -120,6 +163,7 @@ class _FcCardEditorPageState extends ConsumerState<FcCardEditorPage> {
 
   @override
   void dispose() {
+    _speech.stop();
     _front.dispose();
     _back.dispose();
     _notes.dispose();
@@ -151,9 +195,14 @@ class _FcCardEditorPageState extends ConsumerState<FcCardEditorPage> {
   Future<void> _pickImage() async {
     final XFile? file = await ImagePicker().pickImage(source: ImageSource.gallery, imageQuality: 90);
     if (file == null) return;
+    final Directory root = await getApplicationDocumentsDirectory();
+    final Directory dir = Directory('${root.path}/flashcards_media');
+    if (!await dir.exists()) await dir.create(recursive: true);
+    final String target = '${dir.path}/${DateTime.now().microsecondsSinceEpoch}_${file.name}';
+    await File(file.path).copy(target);
     final TextEditingController c = _editorController;
     final int pos = c.selection.isValid ? c.selection.baseOffset : c.text.length;
-    final String token = '[img:' + file.path + ']';
+    final String token = '[img:' + target + ']';
     c.value = TextEditingValue(
       text: c.text.replaceRange(pos, pos, token),
       selection: TextSelection.collapsed(offset: pos + token.length),
@@ -406,7 +455,7 @@ class _FcCardEditorPageState extends ConsumerState<FcCardEditorPage> {
                   _EditorToolbar(
                     cloze: cloze,
                     onCloze: _insertCloze,
-                    onMic: () => fcToast(context, 'Voice input uses the keyboard microphone on this device.'),
+                    onMic: _voiceInput,
                     onImage: _pickImage,
                     onBold: () => _format('b'),
                     onItalic: () => _format('i'),
