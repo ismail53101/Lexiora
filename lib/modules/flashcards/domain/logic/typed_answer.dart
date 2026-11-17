@@ -38,10 +38,24 @@ int levenshtein(String a, String b) {
 
 TypedResult checkTypedAnswer(String typed, String expected) {
   final String a = normaliseAnswer(typed);
-  final String b = normaliseAnswer(expected);
-  if (a.isEmpty) return TypedResult.wrong;
-  if (a == b) return TypedResult.correct;
-  final int d = levenshtein(a, b);
-  final int allowed = b.length <= 4 ? 0 : (b.length <= 9 ? 1 : 2);
-  return d <= allowed ? TypedResult.close : TypedResult.wrong;
+  final List<String> accepted = expected
+      .split('|')
+      .map(normaliseAnswer)
+      .where((String s) => s.isNotEmpty)
+      .toList();
+  if (a.isEmpty || accepted.isEmpty) return TypedResult.wrong;
+  for (final String b in accepted) {
+    if (a == b) return TypedResult.correct;
+  }
+  int best = 999999;
+  int bestLength = 0;
+  for (final String b in accepted) {
+    final int d = levenshtein(a, b);
+    if (d < best) {
+      best = d;
+      bestLength = b.length;
+    }
+  }
+  final int allowed = bestLength <= 4 ? 0 : (bestLength <= 9 ? 1 : 2);
+  return best <= allowed ? TypedResult.close : TypedResult.wrong;
 }
