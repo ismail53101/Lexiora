@@ -275,6 +275,10 @@ class _ChatComposerState extends ConsumerState<ChatComposer> {
             TextSelection.collapsed(offset: _controller.text.length);
       }
       await _speech.listen(
+        // Give the user a few seconds of silence before treating the
+        // voice input as finished. This prevents the sheet from closing
+        // while the user is simply pausing between words/sentences.
+        pauseFor: const Duration(seconds: 5),
         onResult: (SpeechRecognitionResult result) {
           liveText.value = result.recognizedWords;
           if (!result.finalResult) {
