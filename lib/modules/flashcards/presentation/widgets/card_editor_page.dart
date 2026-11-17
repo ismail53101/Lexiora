@@ -4,6 +4,7 @@ import 'package:lexiora/core/utils/result.dart';
 import 'package:image_picker/image_picker.dart';
 import 'dart:io';
 import 'package:path_provider/path_provider.dart';
+import 'package:speech_to_text/speech_recognition_error.dart';
 import 'package:speech_to_text/speech_recognition_result.dart';
 import 'package:speech_to_text/speech_to_text.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -169,7 +170,7 @@ class _EditorToolbar extends StatelessWidget {
     return Wrap(
       spacing: 2,
       children: <Widget>[
-        IconButton(tooltip: 'Cloze', icon: const Icon(Icons.crop_free), color: cloze ? cs.primary : null, onPressed: onCloze),
+        IconButton(tooltip: 'Cloze mode', icon: const Icon(Icons.crop_free), color: cloze ? cs.primary : null, onPressed: onCloze),
         IconButton(tooltip: 'Voice input', icon: Icon(listening ? Icons.mic : Icons.mic_none), color: listening ? cs.primary : null, onPressed: onMic),
         IconButton(tooltip: 'Insert image', icon: const Icon(Icons.image_outlined), onPressed: onImage),
         IconButton(tooltip: 'Bold', icon: const Icon(Icons.format_bold), color: boldActive ? cs.primary : null, onPressed: onBold),
@@ -237,35 +238,6 @@ class _FcCardEditorPageState extends ConsumerState<FcCardEditorPage> {
     if (mounted) setState(() {});
   }
 
-  Future<void> _initSpeech() async {
-    try {
-      final PermissionStatus permission = await Permission.microphone.request();
-      if (!permission.isGranted) {
-        if (mounted) setState(() => _speechReady = false);
-        return;
-      }
-      final bool ready = await _speech.initialize(
-        onStatus: (String status) {
-          if (!mounted) return;
-          if (status == 'done' || status == 'notListening') {
-            setState(() {});
-          }
-        },
-        onError: (_) {
-          if (mounted) {
-            setState(() {});
-            fcToast(context, 'Voice input stopped');
-          }
-        },
-      );
-      if (mounted) setState(() => _speechReady = ready);
-    } catch (_) {
-      if (mounted) {
-        setState(() => _speechReady = false);
-        fcToast(context, 'Microphone permission or speech recognition is unavailable');
-      }
-    }
-  }
 
   Future<void> _voiceInput() async {
     final FcRichTextController c = _editorController;
@@ -431,6 +403,12 @@ class _FcCardEditorPageState extends ConsumerState<FcCardEditorPage> {
   FcRichTextController get _editorController => _activeController ?? _front;
 
   void _insertCloze() {
+    if (_type != FcCardType.cloze) {
+      setState(() {
+        _type = FcCardType.cloze;
+        _showAnswer = false;
+      });
+    }
     final FcRichTextController c = _front;
     final TextSelection sel = c.selection;
     if (sel.isValid && !sel.isCollapsed) {
@@ -697,27 +675,6 @@ class _FcCardEditorPageState extends ConsumerState<FcCardEditorPage> {
             : ListView(
                 padding: const EdgeInsets.fromLTRB(16, 8, 16, 32),
                 children: <Widget>[
-                  SegmentedButton<FcCardType>(
-                    segments: const <ButtonSegment<FcCardType>>[
-                      ButtonSegment<FcCardType>(value: FcCardType.basic, label: Text('Basic'), icon: Icon(Icons.style_outlined)),
-                      ButtonSegment<FcCardType>(value: FcCardType.cloze, label: Text('Cloze'), icon: Icon(Icons.visibility_off_outlined)),
-                      ButtonSegment<FcCardType>(value: FcCardType.typed, label: Text('Type'), icon: Icon(Icons.keyboard)),
-                    ],
-                    selected: <FcCardType>{_type},
-                    onSelectionChanged: (Set<FcCardType> s) => setState(() {
-                      _type = s.first;
-                      _showAnswer = false;
-                    }),
-                  ),
-                  const SizedBox(height: 6),
-                  Text(
-                    switch (_type) {
-                      FcCardType.basic => 'Normal card: question on the front, answer on the back.',
-                      FcCardType.cloze => 'Fill-in-the-blank: hide key words. Back/extra info is optional.',
-                      FcCardType.typed => 'Type the answer yourself; it is checked against the back.',
-                    },
-                    style: theme.textTheme.bodySmall?.copyWith(color: theme.colorScheme.onSurfaceVariant),
-                  ),
                   const SizedBox(height: 16),
                   TextField(
                     controller: _front,
