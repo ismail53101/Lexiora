@@ -43,7 +43,7 @@ abstract interface class FcRepository {
     String deckId,
     List<CardDraft> drafts, {
     bool reversed = false,
-    bool clozePerDeletion = true,
+    bool clozePerDeletion = false,
     String? subject,
     String? topic,
   });
