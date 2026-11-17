@@ -8,6 +8,7 @@ import 'package:lexiora/modules/flashcards/domain/logic/csv_codec.dart';
 import 'package:lexiora/modules/flashcards/domain/logic/fc_time.dart';
 import 'package:lexiora/modules/flashcards/domain/logic/legacy_mapper.dart';
 import 'package:lexiora/modules/flashcards/domain/logic/stats_calc.dart';
+import 'package:lexiora/modules/flashcards/domain/logic/typed_answer.dart';
 import 'package:lexiora/modules/flashcards/domain/models/fc_models.dart';
 
 void main() {
@@ -83,6 +84,14 @@ void main() {
 
     test('multi-line cloze', () {
       expect(parseCloze('{{c1::a\nb}}').single.answer, 'a\nb');
+    });
+  });
+
+  group('typed answers', () {
+    test('accepts multiple answers separated by |', () {
+      expect(checkTypedAnswer('fast', 'quick|fast|swift'), TypedResult.correct);
+      expect(checkTypedAnswer('quik', 'quick|fast'), TypedResult.close);
+      expect(checkTypedAnswer('slow', 'quick|fast'), TypedResult.wrong);
     });
   });
 
