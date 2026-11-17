@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:lexiora/modules/flashcards/domain/fsrs/fsrs_scheduler.dart';
 import 'package:lexiora/modules/flashcards/domain/logic/cloze.dart';
@@ -7,6 +8,7 @@ import 'package:lexiora/modules/flashcards/domain/models/fc_models.dart';
 import 'package:lexiora/modules/flashcards/domain/repositories/fc_repository.dart';
 import 'package:lexiora/modules/flashcards/presentation/providers/fc_providers.dart';
 import 'package:lexiora/modules/flashcards/presentation/widgets/fc_widgets.dart';
+import 'package:lexiora/modules/dictionary/presentation/providers/dictionary_providers.dart';
 
 /// Opens the card editor; resolves to true when something was saved.
 Future<bool?> openCardEditor(BuildContext context, {required String deckId, String? cardId}) =>
@@ -18,6 +20,45 @@ Future<bool?> openCardEditor(BuildContext context, {required String deckId, Stri
     );
 
 /// Create or edit one card (basic, cloze or type-the-answer) with a live preview.
+class _EditorToolbar extends StatelessWidget {
+  const _EditorToolbar({
+    required this.cloze,
+    required this.onCloze,
+    required this.onMic,
+    required this.onImage,
+    required this.onBold,
+    required this.onItalic,
+    required this.onUnderline,
+    required this.onClear,
+  });
+
+  final bool cloze;
+  final VoidCallback onCloze;
+  final VoidCallback onMic;
+  final VoidCallback onImage;
+  final VoidCallback onBold;
+  final VoidCallback onItalic;
+  final VoidCallback onUnderline;
+  final VoidCallback onClear;
+
+  @override
+  Widget build(BuildContext context) {
+    final ColorScheme cs = Theme.of(context).colorScheme;
+    return Wrap(
+      spacing: 2,
+      children: <Widget>[
+        IconButton(tooltip: 'Cloze', icon: const Icon(Icons.crop_free), color: cloze ? cs.primary : null, onPressed: onCloze),
+        IconButton(tooltip: 'Voice input', icon: const Icon(Icons.mic_none), onPressed: onMic),
+        IconButton(tooltip: 'Insert image', icon: const Icon(Icons.image_outlined), onPressed: onImage),
+        IconButton(tooltip: 'Bold', icon: const Icon(Icons.format_bold), onPressed: onBold),
+        IconButton(tooltip: 'Italic', icon: const Icon(Icons.format_italic), onPressed: onItalic),
+        IconButton(tooltip: 'Underline', icon: const Icon(Icons.format_underlined), onPressed: onUnderline),
+        IconButton(tooltip: 'Clear formatting', icon: const Icon(Icons.format_clear), onPressed: onClear),
+      ],
+    );
+  }
+}
+
 class FcCardEditorPage extends ConsumerStatefulWidget {
   const FcCardEditorPage({super.key, required this.deckId, this.cardId});
 
@@ -40,6 +81,9 @@ class _FcCardEditorPageState extends ConsumerState<FcCardEditorPage> {
   bool _reversed = false;
   bool _perDeletion = true;
   bool _showAnswer = false;
+  bool _multipleAnswers = false;
+  bool _advancedOpen = false;
+  TextEditingController? _activeController;
   int? _previewClozeIndex;
   bool _loading = true;
   bool _saving = false;
@@ -53,9 +97,8 @@ class _FcCardEditorPageState extends ConsumerState<FcCardEditorPage> {
   void initState() {
     super.initState();
     _load();
-    for (final TextEditingController c in <TextEditingController>[_front, _back]) {
-      c.addListener(() => setState(() {}));
-    }
+    _front.addListener(() => setState(() {}));
+    _back.addListener(() => setState(() {}));
   }
 
   Future<void> _load() async {
@@ -83,6 +126,93 @@ class _FcCardEditorPageState extends ConsumerState<FcCardEditorPage> {
     _tagInput.dispose();
     _frontFocus.dispose();
     super.dispose();
+  }
+
+  TextEditingController get _editorController => _activeController ?? _front;
+
+  void _insertCloze() {
+    final TextEditingController c = _front;
+    final TextSelection sel = c.selection;
+    if (sel.isValid && !sel.isCollapsed) {
+      _wrapSelection(sameNumber: false);
+      return;
+    }
+    final int index = nextClozeIndex(c.text);
+    final int pos = sel.isValid ? sel.baseOffset : c.text.length;
+    final String marker = '{{c' + index.toString() + '::}}';
+    c.value = TextEditingValue(
+      text: c.text.replaceRange(pos, pos, marker),
+      selection: TextSelection.collapsed(offset: pos + marker.length - 2),
+    );
+    setState(() => _previewClozeIndex = index);
+    _frontFocus.requestFocus();
+  }
+
+  Future<void> _pickImage() async {
+    final XFile? file = await ImagePicker().pickImage(source: ImageSource.gallery, imageQuality: 90);
+    if (file == null) return;
+    final TextEditingController c = _editorController;
+    final int pos = c.selection.isValid ? c.selection.baseOffset : c.text.length;
+    final String token = '[img:' + file.path + ']';
+    c.value = TextEditingValue(
+      text: c.text.replaceRange(pos, pos, token),
+      selection: TextSelection.collapsed(offset: pos + token.length),
+    );
+    setState(() {});
+  }
+
+  void _swapFrontBack() {
+    final String a = _front.text;
+    _front.text = _back.text;
+    _back.text = a;
+    setState(() {});
+  }
+
+  void _format(String tag) {
+    final TextEditingController c = _editorController;
+    final TextSelection s = c.selection;
+    if (!s.isValid || s.isCollapsed) {
+      fcToast(context, 'Select text first');
+      return;
+    }
+    c.value = TextEditingValue(
+      text: fcApplyMarkup(c.text, s.start, s.end, tag),
+      selection: TextSelection.collapsed(offset: s.end + (tag.length * 2) + 5),
+    );
+    setState(() {});
+  }
+
+  void _clearFormatting() {
+    final TextEditingController c = _editorController;
+    final int pos = c.selection.isValid ? c.selection.baseOffset : c.text.length;
+    c.text = fcClearFormatting(c.text);
+    c.selection = TextSelection.collapsed(offset: pos.clamp(0, c.text.length));
+    setState(() {});
+  }
+
+  Future<void> _translateBack() async {
+    final String word = _front.text.trim();
+    if (word.isEmpty) {
+      fcToast(context, 'Enter a word or phrase first');
+      return;
+    }
+    try {
+      final result = await ref.read(lookUpWordProvider).call(word.toLowerCase());
+      result.fold(
+        (failure) => fcToast(context, 'Translation not found'),
+        (value) {
+          final String meaning = value?.meaning.trim() ?? '';
+          if (meaning.isEmpty) {
+            fcToast(context, 'Translation not found');
+            return;
+          }
+          _back.text = meaning;
+          setState(() {});
+        },
+      );
+    } catch (_) {
+      fcToast(context, 'Translation unavailable');
+    }
   }
 
   void _addTag(String raw) {
@@ -260,6 +390,8 @@ class _FcCardEditorPageState extends ConsumerState<FcCardEditorPage> {
                   TextField(
                     controller: _front,
                     focusNode: _frontFocus,
+                    onTap: () => _activeController = _front,
+                    onChanged: (_) => _activeController = _front,
                     autofocus: !_editing,
                     minLines: 3,
                     maxLines: 8,
@@ -270,8 +402,18 @@ class _FcCardEditorPageState extends ConsumerState<FcCardEditorPage> {
                       border: const OutlineInputBorder(),
                     ),
                   ),
+                  const SizedBox(height: 8),
+                  _EditorToolbar(
+                    cloze: cloze,
+                    onCloze: _insertCloze,
+                    onMic: () => fcToast(context, 'Voice input uses the keyboard microphone on this device.'),
+                    onImage: _pickImage,
+                    onBold: () => _format('b'),
+                    onItalic: () => _format('i'),
+                    onUnderline: () => _format('u'),
+                    onClear: _clearFormatting,
+                  ),
                   if (cloze) ...<Widget>[
-                    const SizedBox(height: 8),
                     Wrap(
                       spacing: 8,
                       children: <Widget>[
@@ -291,14 +433,33 @@ class _FcCardEditorPageState extends ConsumerState<FcCardEditorPage> {
                   const SizedBox(height: 14),
                   TextField(
                     controller: _back,
+                    onTap: () => _activeController = _back,
                     minLines: cloze ? 1 : 3,
                     maxLines: 8,
                     textCapitalization: TextCapitalization.sentences,
                     decoration: InputDecoration(
                       labelText: cloze ? 'Extra info (optional)' : 'Back',
                       border: const OutlineInputBorder(),
+                      suffixIcon: cloze ? null : IconButton(
+                        tooltip: 'Translate from dictionary',
+                        icon: const Icon(Icons.translate),
+                        onPressed: _translateBack,
+                      ),
                     ),
                   ),
+                  if (!cloze) ...<Widget>[
+                    const SizedBox(height: 8),
+                    _EditorToolbar(
+                      cloze: false,
+                      onCloze: _insertCloze,
+                      onMic: () => fcToast(context, 'Voice input uses the keyboard microphone on this device.'),
+                      onImage: _pickImage,
+                      onBold: () => _format('b'),
+                      onItalic: () => _format('i'),
+                      onUnderline: () => _format('u'),
+                      onClear: _clearFormatting,
+                    ),
+                  ],
                   const SizedBox(height: 20),
                   if (cloze && clozeIndices(_front.text).length > 1) ...<Widget>[
                     Row(
@@ -401,6 +562,27 @@ class _FcCardEditorPageState extends ConsumerState<FcCardEditorPage> {
                       labelText: 'Notes (shown after the answer)',
                       border: OutlineInputBorder(),
                     ),
+                  ),
+                  ExpansionTile(
+                    tilePadding: EdgeInsets.zero,
+                    initiallyExpanded: _advancedOpen,
+                    onExpansionChanged: (bool v) => setState(() => _advancedOpen = v),
+                    title: const Text('Advanced'),
+                    children: <Widget>[
+                      SwitchListTile(
+                        contentPadding: EdgeInsets.zero,
+                        title: const Text('Multiple answers'),
+                        subtitle: const Text('Separate accepted answers with |'),
+                        value: _multipleAnswers,
+                        onChanged: (bool v) => setState(() => _multipleAnswers = v),
+                      ),
+                      ListTile(
+                        contentPadding: EdgeInsets.zero,
+                        title: const Text('Flip front and back'),
+                        leading: const Icon(Icons.swap_vert),
+                        onTap: _swapFrontBack,
+                      ),
+                    ],
                   ),
                   if (!_editing) ...<Widget>[
                     const SizedBox(height: 8),
