@@ -777,7 +777,7 @@ class _FcCardEditorPageState extends ConsumerState<FcCardEditorPage> {
       text: r.text,
       selection: TextSelection.collapsed(offset: r.caret),
     );
-    setState(() => _previewClozeIndex = index);
+    setState(() {});
     _frontFocus.requestFocus();
   }
 
