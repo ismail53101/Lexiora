@@ -879,12 +879,22 @@ class _FcCardEditorPageState extends ConsumerState<FcCardEditorPage> {
       _addedCount += r.created;
       if (!mounted) return;
       if (addAnother) {
+        // Start the next card from a clean Basic-card state. The previous
+        // card's type must never leak into "Save and add another".
         _front.clear();
         _back.clear();
         _frontImages.clear();
         _backImages.clear();
         _notes.clear();
+        _tags.clear();
+        _tagInput.clear();
+        _activeController = _front;
+        _frontSelection = const TextSelection.collapsed(offset: 0);
+        _backSelection = const TextSelection.collapsed(offset: 0);
         setState(() {
+          _type = FcCardType.basic;
+          _multipleAnswers = false;
+          _reversed = false;
           _saving = false;
           _showAnswer = false;
         });
