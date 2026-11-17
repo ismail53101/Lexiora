@@ -205,7 +205,6 @@ class _FcCardEditorPageState extends ConsumerState<FcCardEditorPage> {
   bool _perDeletion = true;
   bool _showAnswer = false;
   bool _multipleAnswers = false;
-  bool _advancedOpen = false;
   FcRichTextController? _activeController;
   TextSelection _frontSelection = const TextSelection.collapsed(offset: 0);
   TextSelection _backSelection = const TextSelection.collapsed(offset: 0);
@@ -726,7 +725,14 @@ class _FcCardEditorPageState extends ConsumerState<FcCardEditorPage> {
                       ],
                     ),
                   ],
-                  const SizedBox(height: 14),
+                  Center(
+                    child: IconButton(
+                      tooltip: 'Swap front and back',
+                      onPressed: _swapFrontBack,
+                      icon: const Icon(Icons.swap_vert_rounded),
+                    ),
+                  ),
+                  const SizedBox(height: 2),
                   TextField(
                     controller: _back,
                     onTap: () {
@@ -738,7 +744,9 @@ class _FcCardEditorPageState extends ConsumerState<FcCardEditorPage> {
                     textCapitalization: TextCapitalization.sentences,
                     decoration: InputDecoration(
                       labelText: cloze ? 'Extra info (optional)' : 'Back',
-                      helperText: cloze ? 'Optional — Cloze cards can be saved without a back.' : null,
+                      helperText: cloze
+                          ? 'Optional — Cloze cards can be saved without a back.'
+                          : (_multipleAnswers ? 'Separate accepted answers with |' : null),
                       border: const OutlineInputBorder(),
                       suffixIcon: cloze ? null : IconButton(
                         tooltip: 'Translate from dictionary',
@@ -867,37 +875,27 @@ class _FcCardEditorPageState extends ConsumerState<FcCardEditorPage> {
                       border: OutlineInputBorder(),
                     ),
                   ),
-                  ExpansionTile(
-                    tilePadding: EdgeInsets.zero,
-                    initiallyExpanded: _advancedOpen,
-                    onExpansionChanged: (bool v) => setState(() => _advancedOpen = v),
-                    title: const Text('Advanced'),
-                    children: <Widget>[
-                      SwitchListTile(
-                        contentPadding: EdgeInsets.zero,
-                        title: const Text('Multiple answers'),
-                        subtitle: const Text('Separate accepted answers with |'),
-                        value: _multipleAnswers,
-                        onChanged: (bool v) => setState(() => _multipleAnswers = v),
-                      ),
-                      ListTile(
-                        contentPadding: EdgeInsets.zero,
-                        title: const Text('Flip front and back'),
-                        leading: const Icon(Icons.swap_vert),
-                        onTap: _swapFrontBack,
-                      ),
-                    ],
-                  ),
+                  if (!cloze) ...<Widget>[
+                    SwitchListTile(
+                      contentPadding: EdgeInsets.zero,
+                      title: const Text('Multiple answers'),
+                      subtitle: const Text('Accept multiple answers separated with |'),
+                      value: _multipleAnswers,
+                      onChanged: (bool v) => setState(() => _multipleAnswers = v),
+                    ),
+                  ],
+                  if (!_editing && _type == FcCardType.basic) ...<Widget>[
+                    SwitchListTile(
+                      contentPadding: EdgeInsets.zero,
+                      title: const Text('Also create the reverse card'),
+                      subtitle: const Text('Adds back → front as a second card'),
+                      value: _reversed,
+                      onChanged: (bool v) => setState(() => _reversed = v),
+                    ),
+                  ],
                   if (!_editing) ...<Widget>[
+
                     const SizedBox(height: 8),
-                    if (_type == FcCardType.basic)
-                      SwitchListTile(
-                        contentPadding: EdgeInsets.zero,
-                        title: const Text('Also create the reverse card'),
-                        subtitle: const Text('Adds back → front as a second card'),
-                        value: _reversed,
-                        onChanged: (bool v) => setState(() => _reversed = v),
-                      ),
                     if (cloze && clozeIndices(_front.text).length > 1)
                       SwitchListTile(
                         contentPadding: EdgeInsets.zero,
