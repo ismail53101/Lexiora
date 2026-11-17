@@ -28,6 +28,112 @@ Future<bool?> openCardEditor(BuildContext context, {required String deckId, Stri
     );
 
 /// Create or edit one card (basic, cloze or type-the-answer) with a live preview.
+class _VoiceListeningSheet extends StatefulWidget {
+  const _VoiceListeningSheet({
+    required this.transcript,
+    required this.onStop,
+  });
+
+  final ValueNotifier<String> transcript;
+  final Future<void> Function() onStop;
+
+  @override
+  State<_VoiceListeningSheet> createState() => _VoiceListeningSheetState();
+}
+
+class _VoiceListeningSheetState extends State<_VoiceListeningSheet>
+    with SingleTickerProviderStateMixin {
+  late final AnimationController _pulse =
+      AnimationController(vsync: this, duration: const Duration(milliseconds: 1100))
+        ..repeat(reverse: true);
+
+  @override
+  void dispose() {
+    _pulse.dispose();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final ColorScheme cs = Theme.of(context).colorScheme;
+    return SafeArea(
+      child: Container(
+        margin: const EdgeInsets.fromLTRB(12, 0, 12, 12),
+        padding: const EdgeInsets.fromLTRB(20, 18, 20, 16),
+        decoration: BoxDecoration(
+          color: cs.surface,
+          borderRadius: BorderRadius.circular(28),
+          boxShadow: <BoxShadow>[
+            BoxShadow(
+              blurRadius: 28,
+              spreadRadius: 2,
+              color: Colors.black.withValues(alpha: 0.16),
+            ),
+          ],
+        ),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: <Widget>[
+            Container(
+              width: 44,
+              height: 4,
+              decoration: BoxDecoration(
+                color: cs.onSurfaceVariant.withValues(alpha: 0.25),
+                borderRadius: BorderRadius.circular(8),
+              ),
+            ),
+            const SizedBox(height: 18),
+            AnimatedBuilder(
+              animation: _pulse,
+              builder: (BuildContext context, Widget? child) {
+                final double scale = 1 + (_pulse.value * 0.08);
+                return Transform.scale(
+                  scale: scale,
+                  child: Container(
+                    width: 72,
+                    height: 72,
+                    decoration: BoxDecoration(
+                      shape: BoxShape.circle,
+                      color: cs.primaryContainer,
+                    ),
+                    child: Icon(Icons.mic_rounded, size: 34, color: cs.primary),
+                  ),
+                );
+              },
+            ),
+            const SizedBox(height: 12),
+            Text('Listening…', style: Theme.of(context).textTheme.titleMedium),
+            const SizedBox(height: 6),
+            ValueListenableBuilder<String>(
+              valueListenable: widget.transcript,
+              builder: (BuildContext context, String value, Widget? child) {
+                return ConstrainedBox(
+                  constraints: const BoxConstraints(minHeight: 44, maxHeight: 88),
+                  child: SingleChildScrollView(
+                    child: Text(
+                      value.isEmpty ? 'Speak now' : value,
+                      textAlign: TextAlign.center,
+                      style: Theme.of(context).textTheme.bodyLarge?.copyWith(
+                            color: value.isEmpty ? cs.onSurfaceVariant : cs.onSurface,
+                          ),
+                    ),
+                  ),
+                );
+              },
+            ),
+            const SizedBox(height: 10),
+            FilledButton.icon(
+              onPressed: widget.onStop,
+              icon: const Icon(Icons.stop_rounded),
+              label: const Text('Done'),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
 class _EditorToolbar extends StatelessWidget {
   const _EditorToolbar({
     required this.cloze,
@@ -117,7 +223,6 @@ class _FcCardEditorPageState extends ConsumerState<FcCardEditorPage> {
   void initState() {
     super.initState();
     _load();
-    _initSpeech();
     _front.addListener(_handleFrontChanged);
     _back.addListener(_handleBackChanged);
   }
@@ -164,47 +269,126 @@ class _FcCardEditorPageState extends ConsumerState<FcCardEditorPage> {
 
   Future<void> _voiceInput() async {
     final FcRichTextController c = _editorController;
-    if (!_speechReady) {
-      await _initSpeech();
-      if (!_speechReady) {
-        fcToast(context, 'Microphone permission or speech recognition is unavailable');
-        return;
-      }
-    }
     if (_speech.isListening) {
       await _speech.stop();
       if (mounted) setState(() {});
       return;
     }
 
-    final TextSelection storedSelection =
-        identical(c, _front) ? _frontSelection : _backSelection;
-    final TextSelection selection =
-        storedSelection.isValid ? storedSelection : TextSelection.collapsed(offset: c.text.length);
-
-    await _speech.listen(
-      onResult: (SpeechRecognitionResult result) {
-        if (!result.finalResult) {
-          if (mounted) setState(() {});
-          return;
+    try {
+      final PermissionStatus permission = await Permission.microphone.request();
+      if (!permission.isGranted) {
+        if (mounted) {
+          fcToast(
+            context,
+            permission.isPermanentlyDenied
+                ? 'Microphone permission is blocked. Allow it in Android Settings.'
+                : 'Microphone permission is required for voice input.',
+          );
         }
-        final String spoken = result.recognizedWords.trim();
-        if (spoken.isEmpty) return;
+        return;
+      }
 
-        c.value = insertSpeechText(
-          TextEditingValue(text: c.text, selection: selection),
-          spoken,
+      if (!_speechReady) {
+        final bool ready = await _speech.initialize(
+          onStatus: (_) {},
+          onError: (SpeechRecognitionError error) {
+            if (mounted) {
+              fcToast(context, 'Voice input error: ${error.errorMsg}');
+              setState(() {});
+            }
+          },
         );
-        final int caret = c.selection.baseOffset;
-        if (identical(c, _front)) {
-          _frontSelection = TextSelection.collapsed(offset: caret);
-        } else {
-          _backSelection = TextSelection.collapsed(offset: caret);
+        _speechReady = ready;
+      }
+
+      if (!_speechReady) {
+        if (mounted) fcToast(context, 'Speech recognition is not available on this device.');
+        return;
+      }
+
+      final ValueNotifier<String> liveText = ValueNotifier<String>('');
+      BuildContext? sheetContext;
+      bool closed = false;
+
+      Future<void> closeSheet() async {
+        if (closed) return;
+        closed = true;
+        if (sheetContext != null && sheetContext!.mounted) {
+          Navigator.of(sheetContext!).pop();
         }
-        if (mounted) setState(() {});
-      },
-    );
-    if (mounted) setState(() {});
+        liveText.dispose();
+      }
+
+      TextSelection insertionSelection =
+          identical(c, _front) ? _frontSelection : _backSelection;
+      if (!insertionSelection.isValid) {
+        insertionSelection = TextSelection.collapsed(offset: c.text.length);
+      }
+
+      await _speech.listen(
+        onResult: (SpeechRecognitionResult result) {
+          liveText.value = result.recognizedWords;
+          if (!result.finalResult) {
+            if (mounted) setState(() {});
+            return;
+          }
+
+          final String spoken = result.recognizedWords.trim();
+          if (spoken.isEmpty) return;
+
+          c.value = insertSpeechText(
+            TextEditingValue(text: c.text, selection: insertionSelection),
+            spoken,
+          );
+          insertionSelection = c.selection;
+          if (identical(c, _front)) {
+            _frontSelection = c.selection;
+          } else {
+            _backSelection = c.selection;
+          }
+          if (mounted) setState(() {});
+        },
+      );
+
+      if (!_speech.isListening) {
+        liveText.dispose();
+        if (mounted) fcToast(context, 'Could not start speech recognition.');
+        return;
+      }
+
+      if (mounted) setState(() {});
+      await showModalBottomSheet<void>(
+        context: context,
+        isDismissible: true,
+        enableDrag: true,
+        backgroundColor: Colors.transparent,
+        builder: (BuildContext ctx) {
+          sheetContext = ctx;
+          return _VoiceListeningSheet(
+            transcript: liveText,
+            onStop: () async {
+              await _speech.stop();
+              if (ctx.mounted) Navigator.of(ctx).pop();
+            },
+          );
+        },
+      );
+      if (_speech.isListening) {
+        await _speech.stop();
+      }
+      if (!closed) {
+        closed = true;
+        liveText.dispose();
+      }
+      if (mounted) setState(() {});
+    } catch (_) {
+      await _speech.stop();
+      if (mounted) {
+        setState(() {});
+        fcToast(context, 'Voice input is unavailable right now.');
+      }
+    }
   }
 
   Future<void> _load() async {
@@ -300,19 +484,51 @@ class _FcCardEditorPageState extends ConsumerState<FcCardEditorPage> {
   }
 
   Future<void> _translateBack() async {
-    final String word = _front.text.trim();
-    if (word.isEmpty) {
-      fcToast(context, 'Enter a word or phrase first');
+    final TextSelection selection = _front.selection;
+    String word = selection.isValid && !selection.isCollapsed
+        ? _front.text.substring(selection.start, selection.end)
+        : _front.text;
+
+    word = word
+        .replaceAll(RegExp(r'\\[biu\\]'), '')
+        .replaceAll(RegExp(r'\\[/biu\\]'), '')
+        .replaceAll(RegExp(r'\\{\\{c\\d+::'), '')
+        .replaceAll('}}', '')
+        .trim();
+
+    if (word.contains(RegExp(r'\\s'))) {
+      fcToast(context, 'Select one word in Front to translate.');
       return;
     }
+    if (word.isEmpty) {
+      fcToast(context, 'Enter or select a word first.');
+      return;
+    }
+
     try {
+      final profile = await ref.read(wordProfileProvider(word.toLowerCase()).future);
+      final List<String> offlineUrdu = profile.exam?.urduMeanings ?? const <String>[];
+      if (offlineUrdu.isNotEmpty) {
+        _back.text = offlineUrdu.take(3).join('، ');
+        setState(() {});
+        return;
+      }
+
+      final ai = await ref.read(wordAiEnrichmentProvider(word.toLowerCase()).future);
+      final List<String> aiUrdu = ai?.urduMeanings ?? const <String>[];
+      if (aiUrdu.isNotEmpty) {
+        _back.text = aiUrdu.take(3).join('، ');
+        setState(() {});
+        return;
+      }
+
       final result = await ref.read(lookUpWordProvider).call(word.toLowerCase());
       result.fold(
-        (failure) => fcToast(context, 'Translation not found'),
+        (_) => fcToast(context, 'Translation not found for “$word”.'),
         (value) {
           final String meaning = value?.meaning.trim() ?? '';
           if (meaning.isEmpty) {
-            fcToast(context, 'Translation not found');
+            fcToast(context, 'Translation not found for “$word”.');
             return;
           }
           _back.text = meaning;
@@ -320,7 +536,7 @@ class _FcCardEditorPageState extends ConsumerState<FcCardEditorPage> {
         },
       );
     } catch (_) {
-      fcToast(context, 'Translation unavailable');
+      fcToast(context, 'Translation unavailable right now.');
     }
   }
 
@@ -476,8 +692,8 @@ class _FcCardEditorPageState extends ConsumerState<FcCardEditorPage> {
                 children: <Widget>[
                   SegmentedButton<FcCardType>(
                     segments: const <ButtonSegment<FcCardType>>[
-                      ButtonSegment<FcCardType>(value: FcCardType.basic, label: Text('Basic'), icon: Icon(Icons.flip)),
-                      ButtonSegment<FcCardType>(value: FcCardType.cloze, label: Text('Cloze'), icon: Icon(Icons.format_underlined)),
+                      ButtonSegment<FcCardType>(value: FcCardType.basic, label: Text('Basic'), icon: Icon(Icons.style_outlined)),
+                      ButtonSegment<FcCardType>(value: FcCardType.cloze, label: Text('Cloze'), icon: Icon(Icons.visibility_off_outlined)),
                       ButtonSegment<FcCardType>(value: FcCardType.typed, label: Text('Type'), icon: Icon(Icons.keyboard)),
                     ],
                     selected: <FcCardType>{_type},
@@ -489,9 +705,9 @@ class _FcCardEditorPageState extends ConsumerState<FcCardEditorPage> {
                   const SizedBox(height: 6),
                   Text(
                     switch (_type) {
-                      FcCardType.basic => 'Question on the front, answer on the back.',
-                      FcCardType.cloze => 'Write a sentence and hide the key words. Each hidden part is tested.',
-                      FcCardType.typed => 'You type the answer and it is checked against the back.',
+                      FcCardType.basic => 'Normal card: question on the front, answer on the back.',
+                      FcCardType.cloze => 'Fill-in-the-blank: hide key words. Back/extra info is optional.',
+                      FcCardType.typed => 'Type the answer yourself; it is checked against the back.',
                     },
                     style: theme.textTheme.bodySmall?.copyWith(color: theme.colorScheme.onSurfaceVariant),
                   ),
@@ -558,6 +774,7 @@ class _FcCardEditorPageState extends ConsumerState<FcCardEditorPage> {
                     textCapitalization: TextCapitalization.sentences,
                     decoration: InputDecoration(
                       labelText: cloze ? 'Extra info (optional)' : 'Back',
+                      helperText: cloze ? 'Optional — Cloze cards can be saved without a back.' : null,
                       border: const OutlineInputBorder(),
                       suffixIcon: cloze ? null : IconButton(
                         tooltip: 'Translate from dictionary',
