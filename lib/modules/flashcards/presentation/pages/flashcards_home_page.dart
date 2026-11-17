@@ -158,7 +158,7 @@ class _TodayCard extends StatelessWidget {
                   icon: Icons.school_outlined,
                   label: 'Learning',
                   value: c.learningCount,
-                  color: cs.tertiary,
+                  color: Colors.amber,
                 ),
               ),
               Expanded(
@@ -166,7 +166,7 @@ class _TodayCard extends StatelessWidget {
                   icon: Icons.fiber_new_rounded,
                   label: 'New',
                   value: c.newCount,
-                  color: cs.primary,
+                  color: Colors.green,
                 ),
               ),
             ],
@@ -175,7 +175,7 @@ class _TodayCard extends StatelessWidget {
           SizedBox(
             width: double.infinity,
             child: FilledButton.icon(
-              onPressed: c.reviewCount == 0
+              onPressed: c.total == 0
                   ? null
                   : () => context.push(fcStudyLocation()),
               icon: const Icon(Icons.play_arrow_rounded),
