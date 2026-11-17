@@ -12,6 +12,10 @@ import 'package:lexiora/modules/ai_assistant/presentation/providers/ai_providers
 import 'package:lexiora/modules/ai_assistant/presentation/widgets/ai_message_tools.dart';
 import 'package:lexiora/modules/ai_assistant/presentation/widgets/ai_usage_limit_dialog.dart';
 import 'package:path_provider/path_provider.dart';
+import 'package:permission_handler/permission_handler.dart';
+import 'package:speech_to_text/speech_recognition_error.dart';
+import 'package:speech_to_text/speech_recognition_result.dart';
+import 'package:speech_to_text/speech_to_text.dart';
 import 'package:uuid/uuid.dart';
 
 /// The message input bar: a single ChatGPT-style rounded pill holding the
@@ -40,6 +44,11 @@ class _ChatComposerState extends ConsumerState<ChatComposer> {
   String? _pendingPdfText;
   bool _pickingImage = false;
   bool _pickingPdf = false;
+  final SpeechToText _speech = SpeechToText();
+  bool _speechReady = false;
+  BuildContext? _voiceSheetContext;
+  bool _voiceSheetClosed = false;
+  bool _voiceRecognitionEnded = false;
 
   @override
   void initState() {
@@ -192,6 +201,152 @@ class _ChatComposerState extends ConsumerState<ChatComposer> {
     );
   }
 
+  void _requestCloseVoiceSheet() {
+    if (_voiceSheetClosed) return;
+    _voiceSheetClosed = true;
+    final BuildContext? sheet = _voiceSheetContext;
+    if (sheet != null && sheet.mounted) Navigator.of(sheet).pop();
+  }
+
+  Future<void> _voiceInput() async {
+    if (_speech.isListening) {
+      await _speech.stop();
+      _requestCloseVoiceSheet();
+      if (mounted) setState(() {});
+      return;
+    }
+    try {
+      final PermissionStatus permission =
+          await Permission.microphone.request();
+      if (!permission.isGranted) {
+        if (mounted) {
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(
+              content: Text(
+                permission.isPermanentlyDenied
+                    ? 'Microphone permission is blocked. Allow it in Android Settings.'
+                    : 'Microphone permission is required for voice input.',
+              ),
+            ),
+          );
+        }
+        return;
+      }
+      final ValueNotifier<String> liveText = ValueNotifier<String>('');
+      _voiceSheetContext = null;
+      _voiceSheetClosed = false;
+      _voiceRecognitionEnded = false;
+      if (!_speechReady) {
+        _speechReady = await _speech.initialize(
+          onStatus: (String status) {
+            if (status == 'done' || status == 'notListening') {
+              _voiceRecognitionEnded = true;
+              _requestCloseVoiceSheet();
+            }
+            if (mounted) setState(() {});
+          },
+          onError: (SpeechRecognitionError error) {
+            if (mounted) {
+              ScaffoldMessenger.of(context).showSnackBar(
+                SnackBar(content: Text('Voice input error: \${error.errorMsg}')),
+              );
+              setState(() {});
+            }
+            _requestCloseVoiceSheet();
+          },
+        );
+      }
+      if (!_speechReady) {
+        liveText.dispose();
+        if (mounted) {
+          ScaffoldMessenger.of(context).showSnackBar(
+            const SnackBar(content: Text(
+              'Speech recognition is not available on this device.',
+            )),
+          );
+        }
+        return;
+      }
+      TextSelection insertionSelection = _controller.selection;
+      if (!insertionSelection.isValid) {
+        insertionSelection =
+            TextSelection.collapsed(offset: _controller.text.length);
+      }
+      await _speech.listen(
+        onResult: (SpeechRecognitionResult result) {
+          liveText.value = result.recognizedWords;
+          if (!result.finalResult) {
+            if (mounted) setState(() {});
+            return;
+          }
+          _requestCloseVoiceSheet();
+          final String spoken = result.recognizedWords.trim();
+          if (spoken.isEmpty) return;
+          final TextEditingValue current = _controller.value;
+          final int start = current.selection.isValid
+              ? current.selection.start
+              : insertionSelection.start;
+          final int end = current.selection.isValid
+              ? current.selection.end
+              : insertionSelection.end;
+          final String updated = current.text.replaceRange(start, end, spoken);
+          final int cursor = start + spoken.length;
+          _controller.value = TextEditingValue(
+            text: updated,
+            selection: TextSelection.collapsed(offset: cursor),
+          );
+          insertionSelection = _controller.selection;
+          _focus.requestFocus();
+          if (mounted) setState(() {});
+        },
+      );
+      if (!_speech.isListening) {
+        liveText.dispose();
+        if (mounted) {
+          ScaffoldMessenger.of(context).showSnackBar(
+            const SnackBar(content: Text('Could not start speech recognition.')),
+          );
+        }
+        return;
+      }
+      if (mounted) setState(() {});
+      await SystemSound.play(SystemSoundType.click);
+      if (!mounted) {
+        liveText.dispose();
+        return;
+      }
+      await showModalBottomSheet<void>(
+        context: context,
+        isDismissible: true,
+        enableDrag: false,
+        backgroundColor: Colors.transparent,
+        barrierColor: Colors.black.withValues(alpha: 0.08),
+        builder: (BuildContext ctx) {
+          _voiceSheetContext = ctx;
+          if (_voiceRecognitionEnded) {
+            WidgetsBinding.instance.addPostFrameCallback((_) {
+              _requestCloseVoiceSheet();
+            });
+          }
+          return _VoiceListeningSheet(transcript: liveText);
+        },
+      );
+      _voiceSheetContext = null;
+      if (_speech.isListening) await _speech.stop();
+      liveText.dispose();
+      if (mounted) setState(() {});
+    } catch (_) {
+      await _speech.stop();
+      _requestCloseVoiceSheet();
+      if (mounted) {
+        setState(() {});
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(content: Text('Voice input is unavailable right now.')),
+        );
+      }
+    }
+  }
+
   Future<void> _send() async {
     if (!_canSend) return;
     final String content = AiAttachment.encode(
@@ -330,7 +485,17 @@ class _ChatComposerState extends ConsumerState<ChatComposer> {
                       ),
                     ),
                   ),
-                  const SizedBox(width: 4),
+                  const SizedBox(width: 2),
+                  IconButton(
+                    tooltip: 'Voice input',
+                    visualDensity: VisualDensity.compact,
+                    onPressed: widget.enabled ? _voiceInput : null,
+                    icon: Icon(
+                      _speech.isListening ? Icons.mic_rounded : Icons.mic_none_rounded,
+                      color: _speech.isListening ? scheme.primary : inputTextColor,
+                    ),
+                  ),
+                  const SizedBox(width: 2),
                   Padding(
                     padding: const EdgeInsets.only(right: 2),
                     child: _SendStopButton(
@@ -349,6 +514,176 @@ class _ChatComposerState extends ConsumerState<ChatComposer> {
       ),
     );
   }
+}
+
+
+class _VoiceListeningSheet extends StatefulWidget {
+  const _VoiceListeningSheet({required this.transcript});
+  final ValueNotifier<String> transcript;
+  @override
+  State<_VoiceListeningSheet> createState() => _VoiceListeningSheetState();
+}
+class _VoiceListeningSheetState extends State<_VoiceListeningSheet>
+    with TickerProviderStateMixin {
+  late final AnimationController _pulse = AnimationController(
+    vsync: this, duration: const Duration(milliseconds: 1200),
+  )..repeat(reverse: true);
+  late final AnimationController _wave = AnimationController(
+    vsync: this, duration: const Duration(milliseconds: 900),
+  )..repeat();
+  @override
+  void dispose() { _pulse.dispose(); _wave.dispose(); super.dispose(); }
+  @override
+  Widget build(BuildContext context) {
+    final ColorScheme cs = Theme.of(context).colorScheme;
+    return SafeArea(
+      child: Padding(
+        padding: const EdgeInsets.fromLTRB(12, 0, 12, 14),
+        child: DecoratedBox(
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(30),
+            gradient: LinearGradient(
+              begin: Alignment.topLeft, end: Alignment.bottomRight,
+              colors: <Color>[
+                cs.primary.withValues(alpha: 0.94),
+                cs.surface.withValues(alpha: 0.96),
+                Colors.cyan.withValues(alpha: 0.72),
+              ],
+            ),
+            boxShadow: <BoxShadow>[
+              BoxShadow(
+                blurRadius: 34, spreadRadius: 2,
+                color: cs.primary.withValues(alpha: 0.28),
+              ),
+            ],
+          ),
+          child: Container(
+            padding: const EdgeInsets.fromLTRB(20, 18, 20, 20),
+            decoration: BoxDecoration(
+              color: Colors.black.withValues(alpha: 0.42),
+              borderRadius: BorderRadius.circular(30),
+              border: Border.all(color: Colors.white.withValues(alpha: 0.24)),
+            ),
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: <Widget>[
+                Container(
+                  width: 42, height: 4,
+                  decoration: BoxDecoration(
+                    color: Colors.white.withValues(alpha: 0.38),
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                ),
+                const SizedBox(height: 14),
+                AnimatedBuilder(
+                  animation: _pulse,
+                  builder: (BuildContext context, Widget? child) {
+                    final double value = _pulse.value;
+                    return Container(
+                      width: 82 + value * 8, height: 82 + value * 8,
+                      decoration: BoxDecoration(
+                        shape: BoxShape.circle,
+                        border: Border.all(
+                          width: 2,
+                          color: cs.primary.withValues(alpha: 0.72),
+                        ),
+                        boxShadow: <BoxShadow>[
+                          BoxShadow(
+                            blurRadius: 22 + value * 12, spreadRadius: 4,
+                            color: cs.primary.withValues(alpha: 0.38),
+                          ),
+                          BoxShadow(
+                            blurRadius: 18, spreadRadius: 1,
+                            color: Colors.cyan.withValues(alpha: 0.24),
+                          ),
+                        ],
+                        gradient: LinearGradient(
+                          colors: <Color>[
+                            cs.primary.withValues(alpha: 0.96),
+                            Colors.cyan.withValues(alpha: 0.82),
+                          ],
+                        ),
+                      ),
+                      child: const Icon(Icons.mic_rounded, size: 38, color: Colors.white),
+                    );
+                  },
+                ),
+                const SizedBox(height: 14),
+                const Text('Listening…', style: TextStyle(
+                  color: Colors.white, fontSize: 24, fontWeight: FontWeight.w700,
+                )),
+                const SizedBox(height: 5),
+                const Text('Speak now, I’m listening to your voice',
+                  textAlign: TextAlign.center,
+                  style: TextStyle(color: Colors.white70, fontSize: 15),
+                ),
+                const SizedBox(height: 14),
+                AnimatedBuilder(
+                  animation: _wave,
+                  builder: (BuildContext context, Widget? child) {
+                    return SizedBox(
+                      height: 42, width: double.infinity,
+                      child: CustomPaint(
+                        painter: _VoiceWavePainter(
+                          progress: _wave.value,
+                          primary: cs.primary,
+                          secondary: Colors.cyanAccent,
+                        ),
+                      ),
+                    );
+                  },
+                ),
+                ValueListenableBuilder<String>(
+                  valueListenable: widget.transcript,
+                  builder: (BuildContext context, String value, Widget? child) {
+                    if (value.trim().isEmpty) return const SizedBox(height: 2);
+                    return ConstrainedBox(
+                      constraints: const BoxConstraints(maxHeight: 54),
+                      child: SingleChildScrollView(
+                        child: Text(value, textAlign: TextAlign.center,
+                          style: const TextStyle(color: Colors.white, fontSize: 14)),
+                      ),
+                    );
+                  },
+                ),
+              ],
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+}
+class _VoiceWavePainter extends CustomPainter {
+  const _VoiceWavePainter({
+    required this.progress, required this.primary, required this.secondary,
+  });
+  final double progress;
+  final Color primary;
+  final Color secondary;
+  @override
+  void paint(Canvas canvas, Size size) {
+    final Paint paint = Paint()..strokeCap = StrokeCap.round;
+    const int bars = 31;
+    final double gap = size.width / (bars + 1);
+    for (int i = 0; i < bars; i++) {
+      final double phase = (i / bars) * math.pi * 2;
+      final double motion = math.sin((progress * math.pi * 2) + phase);
+      final double envelope = 0.25 + 0.75 * math.sin((i / (bars - 1)) * math.pi);
+      final double height = 5 + (motion.abs() * envelope * 27);
+      paint
+        ..strokeWidth = 3.2
+        ..color = Color.lerp(primary, secondary, i / (bars - 1))!;
+      final double x = gap * (i + 1);
+      canvas.drawLine(
+        Offset(x, (size.height - height) / 2),
+        Offset(x, (size.height + height) / 2),
+        paint,
+      );
+    }
+  }
+  @override
+  bool shouldRepaint(_VoiceWavePainter oldDelegate) => oldDelegate.progress != progress;
 }
 
 class _AttachButton extends StatelessWidget {
