@@ -85,7 +85,7 @@ void main() {
       final TextEditingValue next = insertSpeechText(value, 'is important');
 
       expect(next.text, 'English is important grammar');
-      expect(next.selection.baseOffset, 19);
+      expect(next.selection.baseOffset, 20);
     });
 
     test('replaces a selected range with speech', () {
