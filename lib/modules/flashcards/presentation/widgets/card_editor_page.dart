@@ -1,16 +1,17 @@
+import 'dart:io';
 import 'dart:math' as math;
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:permission_handler/permission_handler.dart';
-import 'package:lexiora/core/utils/result.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:image_picker/image_picker.dart';
-import 'dart:io';
 import 'package:path_provider/path_provider.dart';
+import 'package:permission_handler/permission_handler.dart';
 import 'package:speech_to_text/speech_recognition_error.dart';
 import 'package:speech_to_text/speech_recognition_result.dart';
 import 'package:speech_to_text/speech_to_text.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
+
+import 'package:lexiora/core/utils/result.dart';
 import 'package:lexiora/modules/flashcards/domain/fsrs/fsrs_scheduler.dart';
 import 'package:lexiora/modules/flashcards/domain/logic/cloze.dart';
 import 'package:lexiora/modules/flashcards/domain/logic/csv_codec.dart';
@@ -296,7 +297,6 @@ class _FcCardEditorPageState extends ConsumerState<FcCardEditorPage> {
   FcCardType _type = FcCardType.basic;
   final List<String> _tags = <String>[];
   bool _reversed = false;
-  bool _perDeletion = true;
   bool _showAnswer = false;
   bool _multipleAnswers = false;
   FcRichTextController? _activeController;
@@ -471,6 +471,7 @@ class _FcCardEditorPageState extends ConsumerState<FcCardEditorPage> {
       if (c != null) {
         _existing = c;
         _type = c.type;
+        _multipleAnswers = c.type == FcCardType.typed && c.back.contains('|');
         _front.loadMarkup(c.front);
         _back.loadMarkup(c.back);
         _notes.text = c.notes ?? '';
@@ -530,17 +531,154 @@ class _FcCardEditorPageState extends ConsumerState<FcCardEditorPage> {
     final FcRichTextController c = _editorController;
     final int pos = c.selection.isValid ? c.selection.baseOffset : c.text.length;
     final String token = '[img:' + target + ']';
+    final String prefix = c.text.isNotEmpty && !c.text.endsWith('\n') ? '\n' : '';
+    final String insertion = prefix + token;
     c.value = TextEditingValue(
-      text: c.text.replaceRange(pos, pos, token),
-      selection: TextSelection.collapsed(offset: pos + token.length),
+      text: c.text.replaceRange(pos, pos, insertion),
+      selection: TextSelection.collapsed(offset: pos + insertion.length),
     );
     setState(() {});
+  }
+
+  Future<void> _editMultipleAnswers() async {
+    final List<String> existing = _back.text
+        .split('|')
+        .map((String value) => value.trim())
+        .where((String value) => value.isNotEmpty)
+        .take(5)
+        .toList();
+    final List<TextEditingController> controllers = List<TextEditingController>.generate(
+      5,
+      (int index) => TextEditingController(
+        text: index < existing.length ? existing[index] : '',
+      ),
+    );
+
+    try {
+      final bool? saved = await showModalBottomSheet<bool>(
+        context: context,
+        isScrollControlled: true,
+        showDragHandle: true,
+        backgroundColor: Theme.of(context).colorScheme.surface,
+        builder: (BuildContext sheetContext) {
+          final ColorScheme cs = Theme.of(sheetContext).colorScheme;
+          return SafeArea(
+            child: Padding(
+              padding: EdgeInsets.fromLTRB(
+                20,
+                8,
+                20,
+                MediaQuery.viewInsetsOf(sheetContext).bottom + 20,
+              ),
+              child: SingleChildScrollView(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: <Widget>[
+                    Text(
+                      'Multiple Answers',
+                      style: Theme.of(sheetContext).textTheme.headlineSmall?.copyWith(
+                            fontWeight: FontWeight.w800,
+                          ),
+                    ),
+                    const SizedBox(height: 4),
+                    Text(
+                      'Add up to 5 accepted answers. Any one of them will be accepted during study.',
+                      style: Theme.of(sheetContext).textTheme.bodyMedium?.copyWith(
+                            color: cs.onSurfaceVariant,
+                          ),
+                    ),
+                    const SizedBox(height: 18),
+                    for (int i = 0; i < controllers.length; i++) ...<Widget>[
+                      TextField(
+                        controller: controllers[i],
+                        textInputAction: i == controllers.length - 1
+                            ? TextInputAction.done
+                            : TextInputAction.next,
+                        decoration: InputDecoration(
+                          labelText: 'Answer ' + (i + 1).toString(),
+                          prefixIcon: CircleAvatar(
+                            radius: 14,
+                            backgroundColor: cs.primaryContainer,
+                            child: Text(
+                              (i + 1).toString(),
+                              style: TextStyle(
+                                color: cs.onPrimaryContainer,
+                                fontWeight: FontWeight.w700,
+                              ),
+                            ),
+                          ),
+                          border: const OutlineInputBorder(),
+                        ),
+                      ),
+                      const SizedBox(height: 10),
+                    ],
+                    const SizedBox(height: 6),
+                    SizedBox(
+                      width: double.infinity,
+                      child: FilledButton(
+                        onPressed: () => Navigator.pop(sheetContext, true),
+                        child: const Text('Done'),
+                      ),
+                    ),
+                    const SizedBox(height: 4),
+                    Center(
+                      child: TextButton(
+                        onPressed: () => Navigator.pop(sheetContext, false),
+                        child: const Text('Cancel'),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          );
+        },
+      );
+
+      if (saved == true) {
+        final List<String> answers = controllers
+            .map((TextEditingController c) => c.text.trim())
+            .where((String value) => value.isNotEmpty)
+            .toList();
+        if (answers.isEmpty) {
+          setState(() {
+            _multipleAnswers = false;
+            if (_type == FcCardType.typed) _type = FcCardType.basic;
+          });
+          return;
+        }
+        _back.text = answers.join(' | ');
+        setState(() {
+          _multipleAnswers = true;
+          _type = FcCardType.typed;
+        });
+      }
+    } finally {
+      for (final TextEditingController controller in controllers) {
+        controller.dispose();
+      }
+    }
+  }
+
+  void _setMultipleAnswers(bool enabled) {
+    if (!enabled) {
+      setState(() {
+        _multipleAnswers = false;
+        if (_type == FcCardType.typed) _type = FcCardType.basic;
+      });
+      return;
+    }
+    _editMultipleAnswers();
   }
 
   void _swapFrontBack() {
     final String a = _front.text;
     _front.text = _back.text;
     _back.text = a;
+    if (_multipleAnswers && !_back.text.contains('|')) {
+      _multipleAnswers = false;
+      if (_type == FcCardType.typed) _type = FcCardType.basic;
+    }
     setState(() {});
   }
 
@@ -691,7 +829,7 @@ class _FcCardEditorPageState extends ConsumerState<FcCardEditorPage> {
           ),
         ],
         reversed: _reversed && _type == FcCardType.basic,
-        clozePerDeletion: _perDeletion,
+        clozePerDeletion: false,
         subject: _deck?.subject,
         topic: _deck?.topic,
       );
@@ -819,14 +957,23 @@ class _FcCardEditorPageState extends ConsumerState<FcCardEditorPage> {
                       ],
                     ),
                   ],
-                  Center(
-                    child: IconButton(
-                      tooltip: 'Swap front and back',
-                      onPressed: _swapFrontBack,
-                      icon: const Icon(Icons.swap_vert_rounded),
+                  SizedBox(
+                    height: 68,
+                    child: Center(
+                      child: Material(
+                        color: theme.colorScheme.surfaceContainerHighest,
+                        shape: const CircleBorder(),
+                        child: InkWell(
+                          customBorder: const CircleBorder(),
+                          onTap: _swapFrontBack,
+                          child: const Padding(
+                            padding: EdgeInsets.all(12),
+                            child: Icon(Icons.swap_vert_rounded, size: 32),
+                          ),
+                        ),
+                      ),
                     ),
                   ),
-                  const SizedBox(height: 2),
                   TextField(
                     controller: _back,
                     onTap: () {
@@ -837,10 +984,14 @@ class _FcCardEditorPageState extends ConsumerState<FcCardEditorPage> {
                     maxLines: 8,
                     textCapitalization: TextCapitalization.sentences,
                     decoration: InputDecoration(
-                      labelText: cloze ? 'Extra info (optional)' : 'Back',
+                      labelText: cloze
+                          ? 'Extra info (optional)'
+                          : (_multipleAnswers ? 'Accepted answers' : 'Back'),
                       helperText: cloze
                           ? 'Optional — Cloze cards can be saved without a back.'
-                          : (_multipleAnswers ? 'Separate accepted answers with |' : null),
+                          : (_multipleAnswers
+                              ? 'Any one accepted answer can be entered during study.'
+                              : null),
                       border: const OutlineInputBorder(),
                       suffixIcon: cloze ? null : IconButton(
                         tooltip: 'Translate from dictionary',
@@ -864,6 +1015,49 @@ class _FcCardEditorPageState extends ConsumerState<FcCardEditorPage> {
                       italicActive: _editorController.isItalicActive,
                       underlineActive: _editorController.isUnderlineActive,
                       listening: _speech.isListening,
+                    ),
+                    const SizedBox(height: 10),
+                    Card(
+                      elevation: 0,
+                      color: theme.colorScheme.surfaceContainerLow,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(18),
+                      ),
+                      child: Column(
+                        children: <Widget>[
+                          SwitchListTile(
+                            title: const Text('Multiple answers'),
+                            subtitle: Text(
+                              _multipleAnswers
+                                  ? 'Multiple accepted answers are configured'
+                                  : 'Accept more than one correct answer',
+                            ),
+                            value: _multipleAnswers,
+                            onChanged: _setMultipleAnswers,
+                          ),
+                          const Divider(height: 1),
+                          SwitchListTile(
+                            title: const Text('Also create the reverse card'),
+                            subtitle: const Text('Adds back → front as a second card'),
+                            value: _reversed && _type == FcCardType.basic,
+                            onChanged: _type == FcCardType.basic
+                                ? (bool v) => setState(() => _reversed = v)
+                                : null,
+                          ),
+                          if (_multipleAnswers)
+                            Padding(
+                              padding: const EdgeInsets.fromLTRB(16, 0, 16, 12),
+                              child: Align(
+                                alignment: Alignment.centerLeft,
+                                child: TextButton.icon(
+                                  onPressed: _editMultipleAnswers,
+                                  icon: const Icon(Icons.edit_outlined, size: 18),
+                                  label: const Text('Edit accepted answers'),
+                                ),
+                              ),
+                            ),
+                        ],
+                      ),
                     ),
                   ],
                   const SizedBox(height: 20),
@@ -969,35 +1163,8 @@ class _FcCardEditorPageState extends ConsumerState<FcCardEditorPage> {
                       border: OutlineInputBorder(),
                     ),
                   ),
-                  if (!cloze) ...<Widget>[
-                    SwitchListTile(
-                      contentPadding: EdgeInsets.zero,
-                      title: const Text('Multiple answers'),
-                      subtitle: const Text('Accept multiple answers separated with |'),
-                      value: _multipleAnswers,
-                      onChanged: (bool v) => setState(() => _multipleAnswers = v),
-                    ),
-                  ],
-                  if (!_editing && _type == FcCardType.basic) ...<Widget>[
-                    SwitchListTile(
-                      contentPadding: EdgeInsets.zero,
-                      title: const Text('Also create the reverse card'),
-                      subtitle: const Text('Adds back → front as a second card'),
-                      value: _reversed,
-                      onChanged: (bool v) => setState(() => _reversed = v),
-                    ),
-                  ],
                   if (!_editing) ...<Widget>[
 
-                    const SizedBox(height: 8),
-                    if (cloze && clozeIndices(_front.text).length > 1)
-                      SwitchListTile(
-                        contentPadding: EdgeInsets.zero,
-                        title: const Text('One card per blank'),
-                        subtitle: Text('Creates ${clozeIndices(_front.text).length} cards, each hiding one number'),
-                        value: _perDeletion,
-                        onChanged: (bool v) => setState(() => _perDeletion = v),
-                      ),
                     const SizedBox(height: 12),
                     SizedBox(
                       width: double.infinity,
