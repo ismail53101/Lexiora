@@ -24,34 +24,18 @@ class GetWordProfile implements UseCase<WordProfile, String> {
         final ExamWordData? exam = await _repo.examData(wl);
         final WordDetails? base = await _repo.wordDetails(wl);
         final List<String> related = await _repo.relatedWords(wl);
-        // Any local record is the source of truth and must open immediately.
-        // AI is reserved for a truly missing word, avoiding a network wait for
-        // entries that already have a meaning, synonyms, antonyms, or example.
-        final bool existsOffline = exam != null || base != null;
-        // AI enrichment for a missing word is handled by
-        // wordAiEnrichmentProvider so the flow makes exactly one AI request.
-        // Existing local words may still receive synonym/antonym enrichment
-        // from STANDS4.
-        AiWordProfile? ai;
-        if (existsOffline && (exam == null || exam.synonyms.isEmpty)) {
-          final AiWordProfile? online = await _stands4?.define(wl);
-          if (online != null &&
-              (online.synonyms.isNotEmpty || online.antonyms.isNotEmpty)) {
-            ai = AiWordProfile(
-              word: online.word,
-              source: 'stands4',
-              synonyms: online.synonyms,
-              antonyms: online.antonyms,
-            );
-          }
-        }
+        // The bundled offline dictionary is authoritative. If the word
+        // exists locally, return it exactly as stored and do not call AI,
+        // STANDS4/Synonyms, or any other online enrichment service.
+        //
+        // Online fallback is reserved for a genuinely missing word and is
+        // handled by wordAiEnrichmentProvider.
         return WordProfile(
           word: exam?.word ?? base?.word ?? wordLower,
           wordLower: wl,
           exam: exam,
           base: base,
           relatedWords: related,
-          ai: ai?.hasContent == true ? ai : null,
         );
       });
 }
