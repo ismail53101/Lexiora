@@ -2,8 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:lexiora/modules/flashcards/domain/entities/flashcard.dart';
 import 'package:lexiora/modules/flashcards/presentation/providers/flashcard_providers.dart';
+import 'package:lexiora/modules/flashcards/domain/logic/cloze.dart';
 import 'package:lexiora/modules/flashcards/presentation/widgets/card_editor.dart';
 import 'package:lexiora/modules/flashcards/presentation/widgets/fc_common.dart';
+import 'package:lexiora/modules/flashcards/presentation/widgets/fc_content.dart';
 
 /// A single card row: front/back preview, subject colour, flags, and a
 /// long-press menu (bookmark / favourite / difficulty / delete). Tap to edit.
@@ -17,6 +19,9 @@ class FlashcardTile extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final ThemeData theme = Theme.of(context);
     final Color? sc = subjectColorOf(card.subject, colors);
+
+    final String frontText = fcPlainText(clozeQuestionText(card.front));
+    final String backText = fcPlainText(clozePlainText(card.back));
 
     return Card(
       margin: const EdgeInsets.fromLTRB(12, 4, 12, 4),
@@ -41,16 +46,20 @@ class FlashcardTile extends ConsumerWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
-                    Text(card.front,
-                        maxLines: 1,
-                        overflow: TextOverflow.ellipsis,
-                        style: theme.textTheme.bodyLarge
-                            ?.copyWith(fontWeight: FontWeight.w600)),
-                    Text(card.back,
-                        maxLines: 1,
-                        overflow: TextOverflow.ellipsis,
-                        style: theme.textTheme.bodySmall
-                            ?.copyWith(color: theme.colorScheme.onSurfaceVariant)),
+                    Text(
+                      frontText.isEmpty ? 'Image card' : frontText,
+                      maxLines: 2,
+                      overflow: TextOverflow.ellipsis,
+                      style: theme.textTheme.bodyLarge
+                          ?.copyWith(fontWeight: FontWeight.w600),
+                    ),
+                    Text(
+                      backText,
+                      maxLines: 2,
+                      overflow: TextOverflow.ellipsis,
+                      style: theme.textTheme.bodySmall
+                          ?.copyWith(color: theme.colorScheme.onSurfaceVariant),
+                    ),
                     if (card.subject != null || card.isDifficult)
                       Padding(
                         padding: const EdgeInsets.only(top: 4),

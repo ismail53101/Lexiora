@@ -124,103 +124,104 @@ class _TodayCard extends StatelessWidget {
     final ThemeData theme = Theme.of(context);
     final ColorScheme cs = theme.colorScheme;
     final StudyCounts c = dash.counts;
-    final bool caughtUp = c.isEmpty;
 
     return Container(
       margin: const EdgeInsets.fromLTRB(16, 8, 16, 6),
       padding: const EdgeInsets.all(20),
       decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(28),
-        gradient: LinearGradient(
-          begin: Alignment.topLeft,
-          end: Alignment.bottomRight,
-          colors: <Color>[cs.primaryContainer, cs.tertiaryContainer],
-        ),
+        color: cs.surfaceContainerLow,
+        borderRadius: BorderRadius.circular(24),
+        border: Border.all(color: cs.outlineVariant.withValues(alpha: 0.5)),
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
-          Text(caughtUp ? 'All caught up' : 'Due today',
-              style: theme.textTheme.labelLarge?.copyWith(color: cs.onPrimaryContainer)),
-          const SizedBox(height: 4),
-          if (caughtUp)
-            Text(
-              dash.reviewsToday > 0
-                  ? 'Nice work — ${dash.reviewsToday} reviewed today.'
-                  : 'Nothing to review right now.',
-              style: theme.textTheme.titleLarge?.copyWith(
-                  fontWeight: FontWeight.w800, color: cs.onPrimaryContainer),
-            )
-          else ...<Widget>[
-            Row(
-              crossAxisAlignment: CrossAxisAlignment.end,
-              children: <Widget>[
-                Text('${c.total}',
-                    style: theme.textTheme.displayMedium?.copyWith(
-                        fontWeight: FontWeight.w900, color: cs.onPrimaryContainer, height: 1)),
-                const SizedBox(width: 8),
-                Padding(
-                  padding: const EdgeInsets.only(bottom: 6),
-                  child: Text(c.total == 1 ? 'card' : 'cards',
-                      style: theme.textTheme.titleMedium?.copyWith(color: cs.onPrimaryContainer)),
-                ),
-                const Spacer(),
-                Padding(
-                  padding: const EdgeInsets.only(bottom: 6),
-                  child: Text('≈ ${c.estimatedMinutes} min',
-                      style: theme.textTheme.labelLarge?.copyWith(color: cs.onPrimaryContainer)),
-                ),
-              ],
+          Text(
+            'Flashcards',
+            style: theme.textTheme.titleLarge?.copyWith(
+              fontWeight: FontWeight.w800,
             ),
-            const SizedBox(height: 12),
-            Wrap(
-              spacing: 8,
-              runSpacing: 6,
-              children: <Widget>[
-                FcCountChip(label: 'new', value: c.newCount, color: cs.fcNew),
-                FcCountChip(label: 'learning', value: c.learningCount, color: cs.fcLearning),
-                FcCountChip(label: 'review', value: c.reviewCount, color: cs.fcReview),
-              ],
-            ),
-          ],
-          const SizedBox(height: 16),
+          ),
+          const SizedBox(height: 14),
           Row(
             children: <Widget>[
               Expanded(
-                child: FilledButton.icon(
-                  onPressed: caughtUp ? null : () => context.push(fcStudyLocation()),
-                  icon: const Icon(Icons.play_arrow_rounded),
-                  label: Text(caughtUp ? 'Nothing due' : 'Study now'),
+                child: _DashboardCount(
+                  icon: Icons.schedule_rounded,
+                  label: 'Due',
+                  value: c.reviewCount,
+                  color: cs.error,
                 ),
               ),
-              const SizedBox(width: 10),
-              PopupMenuButton<StudyMode>(
-                tooltip: 'Practice without changing your schedule',
-                onSelected: (StudyMode m) => context.push(fcStudyLocation(mode: m)),
-                itemBuilder: (BuildContext c) => <PopupMenuEntry<StudyMode>>[
-                  for (final StudyMode m in StudyMode.values.where((StudyMode m) => m.isPractice))
-                    PopupMenuItem<StudyMode>(value: m, child: Text(m.label)),
-                ],
-                child: Container(
-                  padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
-                  decoration: BoxDecoration(
-                    border: Border.all(color: cs.onPrimaryContainer.withValues(alpha: 0.4)),
-                    borderRadius: BorderRadius.circular(40),
-                  ),
-                  child: Row(
-                    mainAxisSize: MainAxisSize.min,
-                    children: <Widget>[
-                      Icon(Icons.fitness_center, size: 18, color: cs.onPrimaryContainer),
-                      const SizedBox(width: 6),
-                      Text('Practice', style: TextStyle(color: cs.onPrimaryContainer)),
-                    ],
-                  ),
+              Expanded(
+                child: _DashboardCount(
+                  icon: Icons.school_outlined,
+                  label: 'Learning',
+                  value: c.learningCount,
+                  color: Colors.amber,
+                ),
+              ),
+              Expanded(
+                child: _DashboardCount(
+                  icon: Icons.fiber_new_rounded,
+                  label: 'New',
+                  value: c.newCount,
+                  color: Colors.green,
                 ),
               ),
             ],
           ),
+          const SizedBox(height: 16),
+          SizedBox(
+            width: double.infinity,
+            child: FilledButton.icon(
+              onPressed: c.total == 0
+                  ? null
+                  : () => context.push(fcStudyLocation()),
+              icon: const Icon(Icons.play_arrow_rounded),
+              label: const Text('Start Review'),
+            ),
+          ),
         ],
       ),
+    );
+  }
+}
+
+class _DashboardCount extends StatelessWidget {
+  const _DashboardCount({
+    required this.icon,
+    required this.label,
+    required this.value,
+    required this.color,
+  });
+
+  final IconData icon;
+  final String label;
+  final int value;
+  final Color color;
+
+  @override
+  Widget build(BuildContext context) {
+    final ThemeData theme = Theme.of(context);
+    return Column(
+      children: <Widget>[
+        Icon(icon, color: color, size: 22),
+        const SizedBox(height: 4),
+        Text(
+          '$value',
+          style: theme.textTheme.titleLarge?.copyWith(
+            fontWeight: FontWeight.w900,
+            color: color,
+          ),
+        ),
+        Text(
+          label,
+          style: theme.textTheme.labelMedium?.copyWith(
+            color: theme.colorScheme.onSurfaceVariant,
+          ),
+        ),
+      ],
     );
   }
 }

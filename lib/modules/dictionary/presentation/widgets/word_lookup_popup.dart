@@ -143,7 +143,7 @@ class _AiFound extends ConsumerWidget {
         ),
         const SizedBox(height: 8),
         Text(
-          'AI DICTIONARY',
+          profile.source == 'stands4' ? 'ONLINE DICTIONARY' : 'AI DICTIONARY',
           style: theme.textTheme.labelMedium?.copyWith(
             color: theme.colorScheme.primary,
             fontWeight: FontWeight.w700,

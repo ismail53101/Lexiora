@@ -315,6 +315,7 @@ class _MessageListState extends ConsumerState<_MessageList> {
   bool _programmaticScrollInProgress = false;
   bool _userScrollInProgress = false;
   bool _wasStreaming = false;
+  bool _didInitialScroll = false;
 
   void _setUserScrolledUp(bool value) {
     if (_userScrolledUp == value) return;
@@ -427,6 +428,16 @@ class _MessageListState extends ConsumerState<_MessageList> {
     }
   }
 
+  void _scrollToInitialLatest() {
+    if (_didInitialScroll) return;
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      if (!mounted || _didInitialScroll || !_scrollController.hasClients) return;
+      final ScrollPosition position = _scrollController.position;
+      _scrollController.jumpTo(position.maxScrollExtent);
+      _didInitialScroll = true;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     final AsyncValue<List<AiMessage>> async =
@@ -451,6 +462,9 @@ class _MessageListState extends ConsumerState<_MessageList> {
       loading: () => const Center(child: CircularProgressIndicator()),
       error: (_, _) => const _Welcome(),
       data: (List<AiMessage> messages) {
+        if (messages.isNotEmpty && !_didInitialScroll) {
+          _scrollToInitialLatest();
+        }
         if (messages.isEmpty && !streaming) return const _Welcome();
         final bool canLoadMore = messages.length >= limit;
         final int count = messages.length + (canLoadMore ? 1 : 0) + (streaming ? 1 : 0);
