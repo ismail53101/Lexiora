@@ -9,6 +9,7 @@ import 'package:lexiora/modules/study_hub/domain/entities/study_subject.dart';
 import 'package:lexiora/modules/study_hub/domain/entities/study_task.dart';
 import 'package:lexiora/modules/study_hub/domain/entities/study_template.dart';
 import 'package:lexiora/modules/study_hub/domain/repositories/study_hub_repository.dart';
+import 'package:lexiora/modules/study_hub/domain/scheduling/pomodoro_planner.dart';
 import 'package:lexiora/modules/study_hub/domain/scheduling/study_schedule_service.dart';
 import 'package:lexiora/modules/study_hub/domain/study_dates.dart';
 import 'package:uuid/uuid.dart';
@@ -162,6 +163,93 @@ class StudyHubRepositoryImpl implements StudyHubRepository {
     );
     _notifyChanged();
     return recalculated.firstWhere((StudyTask t) => t.id == prepared.id);
+  }
+
+  @override
+  Future<List<StudyTask>> saveSessionAsBlocks({
+    required StudyTask session,
+    required int focusMinutes,
+    required int breakMinutes,
+  }) async {
+    final List<StudyTask> stored =
+        (await _local.getTasks(session.day)).map(_toTask).toList();
+    final String prefix = '${session.id}:';
+    final List<StudyTask> others = stored
+        .where((StudyTask t) => t.id != session.id && !t.id.startsWith(prefix))
+        .toList();
+    final Map<String, StudyTask> oldBlocks = <String, StudyTask>{
+      for (final StudyTask t in stored)
+        if (t.id.startsWith(prefix)) t.id: t,
+    };
+
+    final int total = StudyScheduleService.durationOf(session);
+    final int? start = session.autoScheduled
+        ? StudyScheduleService.nextAvailableMinute(others)
+        : session.startMinute;
+    if (start == null) {
+      throw const StudyScheduleInvalidTimeException(
+          'Choose a start time for the focus blocks.');
+    }
+    if (focusMinutes <= 0 || breakMinutes < 0) {
+      throw const StudyScheduleInvalidTimeException(
+          'Focus blocks need a length of at least one minute.');
+    }
+    final PomodoroPlan plan = planPomodoro(
+      totalFocusMinutes: total,
+      focusMinutes: focusMinutes,
+      breakMinutes: breakMinutes,
+    );
+    final String? problem =
+        StudyScheduleService.validateSpan(start, start + plan.windowMinutes);
+    if (problem != null) throw StudyScheduleInvalidTimeException(problem);
+
+    final DateTime now = DateTime.now();
+    int focusNo = 0, breakNo = 0;
+    final List<StudyTask> rows = <StudyTask>[];
+    for (final PlannedBlock block in plan.blocks) {
+      final bool focus = block.kind == BlockKind.focus;
+      final String id = focus ? '$prefix' 'f${++focusNo}' : '$prefix' 'b${++breakNo}';
+      final StudyTask? previous = oldBlocks[id];
+      final int s = start + block.offsetMinutes;
+      rows.add(StudyTask(
+        id: id,
+        day: session.day,
+        title: focus ? session.title : 'Break',
+        subject: focus ? session.subject : null,
+        topic: focus ? session.topic : null,
+        notes: focus ? session.notes : null,
+        priority: session.priority,
+        status: focus ? session.status : TaskStatus.pending,
+        kind: focus ? SessionKind.session : SessionKind.breakTime,
+        startMinute: s,
+        endMinute: s + block.minutes,
+        durationMinutes: block.minutes,
+        // Not automatic: the blocks keep their fixed times as one chain.
+        completedAt: focus && session.status == TaskStatus.completed ? now : null,
+        createdAt: previous?.createdAt ?? now,
+        updatedAt: now,
+      ));
+    }
+
+    final List<StudyTask> recalculated =
+        StudyScheduleService.recalculate(<StudyTask>[...others, ...rows]);
+    final Set<String> mine = <String>{for (final StudyTask r in rows) r.id};
+    final StudyScheduleConflict? conflict = _firstWhereOrNull(
+      StudyScheduleService.conflicts(recalculated),
+      (StudyScheduleConflict c) =>
+          mine.contains(c.item.id) || mine.contains(c.previous.id),
+    );
+    if (conflict != null) throw StudyScheduleOverlapException(conflict);
+
+    await _local.applyChanges(
+      upserts: recalculated.map(_taskCompanion).toList(),
+      deleteIds: <String>[
+        for (final String id in oldBlocks.keys)
+          if (!mine.contains(id)) id,
+      ],
+    );
+    _notifyChanged();
+    return recalculated.where((StudyTask t) => mine.contains(t.id)).toList();
   }
 
   static T? _firstWhereOrNull<T>(Iterable<T> items, bool Function(T) test) {

@@ -79,6 +79,8 @@ class _PlannerPageState extends State<PlannerPage> {
                   _pushPage(const PlannerProgressPage());
                 case 'quick':
                   _pushPage(const PlannerQuickActionsPage());
+                case 'exams':
+                  context.push(AppRoutes.studyHubExams);
                 case 'templates':
                   context.push(AppRoutes.studyHubTemplates);
                 case 'subjects':
@@ -93,6 +95,8 @@ class _PlannerPageState extends State<PlannerPage> {
               PopupMenuItem<String>(value: 'progress', child: Text('Progress')),
               PopupMenuItem<String>(
                   value: 'quick', child: Text('Quick Actions')),
+              PopupMenuItem<String>(
+                  value: 'exams', child: Text('Exams & Syllabus')),
               PopupMenuDivider(),
               PopupMenuItem<String>(value: 'templates', child: Text('Templates')),
               PopupMenuItem<String>(

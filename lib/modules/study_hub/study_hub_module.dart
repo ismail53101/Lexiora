@@ -3,6 +3,7 @@ import 'package:get_it/get_it.dart';
 import 'package:go_router/go_router.dart';
 import 'package:lexiora/app/router/app_routes.dart';
 import 'package:lexiora/core/database/app_database.dart';
+import 'package:lexiora/core/database/raw_sql.dart';
 import 'package:lexiora/core/module/feature_module.dart';
 import 'package:lexiora/core/navigation/home_destination.dart';
 import 'package:lexiora/core/services/ad_return_navigation_scope.dart';
@@ -10,9 +11,12 @@ import 'package:lexiora/core/services/notification_service.dart';
 import 'package:lexiora/core/services/rewarded_ad_manager.dart';
 import 'package:lexiora/core/utils/logger.dart';
 import 'package:lexiora/modules/study_hub/data/datasources/study_hub_local_data_source.dart';
+import 'package:lexiora/modules/study_hub/data/repositories/exam_repository_impl.dart';
 import 'package:lexiora/modules/study_hub/data/repositories/study_hub_repository_impl.dart';
+import 'package:lexiora/modules/study_hub/domain/repositories/exam_repository.dart';
 import 'package:lexiora/modules/study_hub/domain/repositories/study_hub_repository.dart';
 import 'package:lexiora/modules/study_hub/presentation/pages/daily_planner_page.dart';
+import 'package:lexiora/modules/study_hub/presentation/pages/exams_page.dart';
 import 'package:lexiora/modules/study_hub/presentation/pages/export_backup_page.dart';
 import 'package:lexiora/modules/study_hub/presentation/pages/manage_subjects_page.dart';
 import 'package:lexiora/modules/study_hub/presentation/pages/monthly_planner_page.dart';
@@ -44,10 +48,14 @@ class StudyHubModule extends FeatureModule {
       ..registerLazySingleton<StudyHubRepository>(
         () => StudyHubRepositoryImpl(
           getIt<StudyHubLocalDataSource>(),
-          // Awaiting this callback guarantees that a task save has reached
-          // Android's alarm manager before the editor/app is closed.
+          // Runs in the background so saving never waits for it. Reminders
+          // are also rescheduled on every app start (main.dart), so nothing
+          // is lost if the app closes before this finishes.
           onTasksChanged: () => _rescheduleNotifications(getIt),
         ),
+      )
+      ..registerLazySingleton<ExamRepository>(
+        () => ExamRepositoryImpl(DriftRawSql(getIt<AppDatabase>())),
       );
   }
 
@@ -89,6 +97,10 @@ class StudyHubModule extends FeatureModule {
         GoRoute(
           path: AppRoutes.studyHubExport,
           builder: (_, _) => const ExportBackupPage(),
+        ),
+        GoRoute(
+          path: AppRoutes.studyHubExams,
+          builder: (_, _) => const StudyExamsPage(),
         ),
       ];
 

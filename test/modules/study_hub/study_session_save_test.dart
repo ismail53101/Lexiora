@@ -210,4 +210,71 @@ void main() {
       expect(await timeline(r), hasLength(1));
     });
   });
+
+  group('saveSessionAsBlocks (Pomodoro)', () {
+    test('2 hours of 50 + 10: focus blocks and breaks are chained', () async {
+      final StudyHubRepositoryImpl r = await repo();
+      await r.saveSessionAsBlocks(
+          session: session('s1', 'Maths', start: 9 * h, duration: 2 * h),
+          focusMinutes: 50, breakMinutes: 10);
+      expect((await timeline(r)).map(line).toList(), <String>[
+        'S Maths 540-590',
+        'B Break 590-600',
+        'S Maths 600-650',
+        'B Break 650-660',
+        'S Maths 660-680',
+      ]);
+    });
+
+    test('automatic start goes after the previous item (or 09:00 on an empty day)', () async {
+      final StudyHubRepositoryImpl r = await repo();
+      await r.saveSessionAsBlocks(
+          session: session('s1', 'Maths', duration: 60, auto: true), focusMinutes: 25, breakMinutes: 5);
+      expect((await timeline(r)).first.startMinute, 9 * h);
+      await r.saveSessionAsBlocks(
+          session: session('s2', 'English', duration: 50, auto: true), focusMinutes: 50, breakMinutes: 10);
+      final List<StudyTask> t = await timeline(r);
+      // Maths: 25 b5 25 b5 10 -> ends 09:00 + 70 = 10:10; English starts there.
+      expect(t.where((StudyTask x) => x.subject == 'English').single.startMinute, 10 * h + 10);
+    });
+
+    test('saving again replaces the blocks (no duplicates), even with a new plan', () async {
+      final StudyHubRepositoryImpl r = await repo();
+      await r.saveSessionAsBlocks(
+          session: session('s1', 'Maths', start: 9 * h, duration: 2 * h), focusMinutes: 50, breakMinutes: 10);
+      await r.saveSessionAsBlocks(
+          session: session('s1', 'Maths', start: 9 * h, duration: 2 * h), focusMinutes: 50, breakMinutes: 10);
+      expect(await timeline(r), hasLength(5));
+      await r.saveSessionAsBlocks(
+          session: session('s1', 'Maths', start: 9 * h, duration: h), focusMinutes: 50, breakMinutes: 10);
+      expect((await timeline(r)).map(line).toList(), <String>['S Maths 540-590', 'B Break 590-600', 'S Maths 600-610']);
+    });
+
+    test('an overlap or running past midnight saves nothing', () async {
+      final StudyHubRepositoryImpl r = await repo();
+      await r.saveTask(session('fixed', 'Chemistry', start: 10 * h, duration: h));
+      await expectLater(
+        r.saveSessionAsBlocks(
+            session: session('s1', 'Maths', start: 9 * h, duration: 2 * h), focusMinutes: 50, breakMinutes: 10),
+        throwsA(isA<StudyScheduleOverlapException>()),
+      );
+      await expectLater(
+        r.saveSessionAsBlocks(
+            session: session('s2', 'Maths', start: 23 * h, duration: 2 * h), focusMinutes: 50, breakMinutes: 10),
+        throwsA(isA<StudyScheduleInvalidTimeException>()),
+      );
+      await expectLater(
+        r.saveSessionAsBlocks(session: session('s3', 'Maths', duration: h), focusMinutes: 50, breakMinutes: 10),
+        throwsA(isA<StudyScheduleInvalidTimeException>()),
+      );
+      expect((await timeline(r)).map((StudyTask t) => t.id).toList(), <String>['fixed']);
+    });
+
+    test('a session shorter than one block stays a single session', () async {
+      final StudyHubRepositoryImpl r = await repo();
+      await r.saveSessionAsBlocks(
+          session: session('s1', 'Maths', start: 9 * h, duration: 30), focusMinutes: 50, breakMinutes: 10);
+      expect((await timeline(r)).map(line).toList(), <String>['S Maths 540-570']);
+    });
+  });
 }

@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:lexiora/modules/study_hub/domain/entities/study_task.dart';
+import 'package:lexiora/modules/study_hub/domain/scheduling/pomodoro_planner.dart';
 import 'package:lexiora/modules/study_hub/domain/scheduling/study_schedule_service.dart';
 import 'package:lexiora/modules/study_hub/domain/study_dates.dart';
 import 'package:lexiora/modules/study_hub/presentation/providers/study_hub_providers.dart';
@@ -52,6 +53,9 @@ List<String> _mergeUnique(List<List<String>> lists) {
   }
   return out;
 }
+
+/// Focus + break lengths offered when splitting a session (minutes).
+const List<(int, int)> _blockPresets = <(int, int)>[(25, 5), (50, 10), (90, 15)];
 
 enum _TimeMode {
   /// Placed right after the previous item of the day (the default).
@@ -205,6 +209,8 @@ class _SessionEditorState extends ConsumerState<_SessionEditor> {
   late TaskPriority _priority = widget.existing?.priority ?? TaskPriority.medium;
   late TaskStatus _status = widget.existing?.status ?? TaskStatus.pending;
   bool _addBreak = false;
+  bool _split = false;
+  int _preset = 1;
   int _breakMinutes = StudyScheduleService.defaultBreakMinutes;
   StudyTask? _existingBreak;
   bool _breakLoaded = false;
@@ -361,12 +367,21 @@ class _SessionEditorState extends ConsumerState<_SessionEditor> {
             durationMinutes: _duration,
           );
       }
-      await ref.read(studyHubRepositoryProvider).saveSessionWithBreak(
-            session: task,
-            breakId: _breakId,
-            breakMinutes:
-                (_addBreak && _mode != _TimeMode.none) ? _breakMinutes : null,
-          );
+      final repo = ref.read(studyHubRepositoryProvider);
+      if (_split && widget.existing == null && _mode != _TimeMode.none) {
+        await repo.saveSessionAsBlocks(
+          session: task,
+          focusMinutes: _blockPresets[_preset].$1,
+          breakMinutes: _blockPresets[_preset].$2,
+        );
+      } else {
+        await repo.saveSessionWithBreak(
+          session: task,
+          breakId: _breakId,
+          breakMinutes:
+              (_addBreak && _mode != _TimeMode.none) ? _breakMinutes : null,
+        );
+      }
       if (mounted) Navigator.of(context).pop();
     } on Object catch (error) {
       if (mounted) setState(() => _error = _scheduleErrorText(error));
@@ -404,8 +419,18 @@ class _SessionEditorState extends ConsumerState<_SessionEditor> {
       data(ref.watch(topicSuggestionsProvider)),
     ]);
 
+    final bool canSplit = widget.existing == null && _mode != _TimeMode.none;
+    final bool splitting = canSplit && _split;
+    final PomodoroPlan? plan = splitting
+        ? planPomodoro(
+            totalFocusMinutes: _duration,
+            focusMinutes: _blockPresets[_preset].$1,
+            breakMinutes: _blockPresets[_preset].$2,
+          )
+        : null;
     final int? start = _startFor();
-    final int? end = start == null ? null : start + _duration;
+    final int? end =
+        start == null ? null : start + (plan?.windowMinutes ?? _duration);
     final bool pastMidnight = end != null && end > 24 * 60;
 
     return Padding(
@@ -496,7 +521,7 @@ class _SessionEditorState extends ConsumerState<_SessionEditor> {
                   const SizedBox(width: 12),
                   Expanded(
                     child: OutlinedButton.icon(
-                      onPressed: () => _pickEnd(start, end),
+                      onPressed: splitting ? null : () => _pickEnd(start, end),
                       icon: const Icon(Icons.stop_rounded, size: 18),
                       label: Text('End  ${formatMinuteOfDay(end % (24 * 60))}'),
                     ),
@@ -529,23 +554,55 @@ class _SessionEditorState extends ConsumerState<_SessionEditor> {
                 ),
               ),
             ],
+            if (canSplit) ...<Widget>[
+              SwitchListTile.adaptive(
+                contentPadding: EdgeInsets.zero,
+                value: _split,
+                onChanged: (bool v) => setState(() {
+                  _split = v;
+                  _error = null;
+                }),
+                title: const Text('Split into focus blocks'),
+                subtitle: Text(
+                  plan == null
+                      ? 'Pomodoro style: study in blocks with short breaks in between.'
+                      : plan.breaks == 0
+                          ? 'Too short to split: this stays one block.'
+                          : '${plan.summary} min  ·  ${plan.focusBlocks} blocks, ${plan.breaks} breaks',
+                ),
+              ),
+              if (_split)
+                Wrap(
+                  spacing: 8,
+                  children: <Widget>[
+                    for (int i = 0; i < _blockPresets.length; i++)
+                      ChoiceChip(
+                        label: Text('${_blockPresets[i].$1} + ${_blockPresets[i].$2} min'),
+                        selected: _preset == i,
+                        onSelected: (_) => setState(() => _preset = i),
+                      ),
+                  ],
+                ),
+            ],
             const SizedBox(height: 12),
             SwitchListTile.adaptive(
               contentPadding: EdgeInsets.zero,
-              value: _addBreak && _mode != _TimeMode.none,
-              onChanged: _mode == _TimeMode.none
+              value: _addBreak && _mode != _TimeMode.none && !splitting,
+              onChanged: (_mode == _TimeMode.none || splitting)
                   ? null
                   : (bool v) => setState(() => _addBreak = v),
               title: const Text('Add a break right after this session'),
               subtitle: Text(
                 _mode == _TimeMode.none
                     ? 'A break needs a time — choose “After previous” or “Set time”.'
-                    : (_addBreak && end != null
-                        ? 'Break ${formatMinuteOfDay(end)} → ${formatMinuteOfDay((end + _breakMinutes) % (24 * 60))}'
-                        : 'Creates it in the same step — Pomodoro-style'),
+                    : splitting
+                        ? 'Not needed: breaks are already between the focus blocks.'
+                        : (_addBreak && end != null
+                            ? 'Break ${formatMinuteOfDay(end)} → ${formatMinuteOfDay((end + _breakMinutes) % (24 * 60))}'
+                            : 'Creates it in the same step'),
               ),
             ),
-            if (_addBreak && _mode != _TimeMode.none)
+            if (_addBreak && _mode != _TimeMode.none && !splitting)
               Wrap(
                 spacing: 8,
                 children: <Widget>[

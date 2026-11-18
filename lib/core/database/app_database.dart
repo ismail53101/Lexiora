@@ -5,10 +5,12 @@ import 'package:lexiora/core/constants/db_constants.dart';
 // (app_database.g.dart) can resolve the NormalizedRectListConverter and
 // NormalizedRect types used by the highlight/note rect columns.
 import 'package:lexiora/core/database/converters.dart';
+import 'package:lexiora/core/database/raw_sql.dart';
 import 'package:lexiora/core/database/tables.dart';
 import 'package:lexiora/core/models/normalized_rect.dart';
 import 'package:lexiora/modules/flashcards/data/drift_fc_sql.dart';
 import 'package:lexiora/modules/flashcards/data/flashcard_schema.dart';
+import 'package:lexiora/modules/study_hub/data/planner_extras_schema.dart';
 
 part 'app_database.g.dart';
 
@@ -318,6 +320,8 @@ class AppDatabase extends _$AppDatabase {
           );
           // Flashcards v2 (FSRS): sidecar tables + backfill for legacy cards.
           await FcSchema.ensure(DriftFcSql(this));
+          // Study Planner extras: exams and syllabus tables.
+          await PlannerExtrasSchema.ensure(DriftRawSql(this));
           // Quiz Engine: fast per-bank listing, search & filters at 100k+ scale.
           await customStatement(
             'CREATE INDEX IF NOT EXISTS idx_quiz_questions_bank '

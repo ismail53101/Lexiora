@@ -9,6 +9,8 @@ import 'package:lexiora/modules/study_hub/domain/entities/study_models.dart';
 import 'package:lexiora/modules/study_hub/domain/entities/study_subject.dart';
 import 'package:lexiora/modules/study_hub/domain/entities/study_task.dart';
 import 'package:lexiora/modules/study_hub/domain/entities/study_template.dart';
+import 'package:lexiora/modules/study_hub/domain/exams/exam_models.dart';
+import 'package:lexiora/modules/study_hub/domain/repositories/exam_repository.dart';
 import 'package:lexiora/modules/study_hub/domain/repositories/study_hub_repository.dart';
 import 'package:lexiora/modules/study_hub/domain/study_dates.dart';
 
@@ -193,3 +195,17 @@ final Provider<StudyExportService> studyExportServiceProvider =
 final Provider<StudyBackupService> studyBackupServiceProvider =
     Provider<StudyBackupService>(
         (Ref ref) => StudyBackupService(ref.watch(studyExportServiceProvider)));
+
+// ── Exams & syllabus ─────────────────────────────────────────────────────────
+
+final Provider<ExamRepository> examRepositoryProvider =
+    Provider<ExamRepository>((Ref ref) => sl<ExamRepository>());
+
+/// Exams with days left and syllabus progress, soonest first.
+final StreamProvider<List<ExamCountdown>> examCountdownsProvider =
+    StreamProvider<List<ExamCountdown>>(
+        (Ref ref) => ref.watch(examRepositoryProvider).watchCountdowns());
+
+final StreamProvider<List<SubjectSyllabus>> syllabiProvider =
+    StreamProvider<List<SubjectSyllabus>>(
+        (Ref ref) => ref.watch(examRepositoryProvider).watchSyllabi());

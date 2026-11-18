@@ -3,6 +3,8 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:lexiora/modules/study_hub/domain/entities/study_task.dart';
 import 'package:lexiora/modules/study_hub/domain/study_dates.dart';
 import 'package:lexiora/modules/study_hub/presentation/providers/study_hub_providers.dart';
+import 'package:lexiora/modules/study_hub/presentation/widgets/exam_countdown_card.dart';
+import 'package:lexiora/modules/study_hub/presentation/widgets/flashcards_due_card.dart';
 import 'package:lexiora/modules/study_hub/presentation/widgets/planner/planner_common.dart';
 import 'package:lexiora/modules/study_hub/presentation/widgets/today_overview_card.dart';
 
@@ -60,6 +62,8 @@ class PlannerDailyViewState extends State<PlannerDailyView> {
             child: TodayOverviewRow(),
           ),
           const SizedBox(height: 6),
+          const ExamCountdownCard(),
+          const FlashcardsDueCard(),
           PlannerNavHeader(
             label: label,
             onPrevious: () => _shiftDay(-1),

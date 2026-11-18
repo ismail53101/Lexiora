@@ -32,6 +32,24 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   CSV, Anki text, XLSX, PDF or JSON; full JSON backup and restore (old
   backups are still accepted).
 
+### Study Planner
+
+- **Session + break saving fixed:** a session and its break are saved in one
+  step (nothing is half-saved), saving again never creates duplicates, breaks
+  are no longer silently skipped, and errors appear inside the sheet instead of
+  behind it. Reminders refresh in the background so saving no longer lags.
+- **Clearer time selection:** "After previous" / "Set time" / "No time", one
+  picker per tap, duration chips and an `10:10 → 11:10` summary. The first
+  automatic session of a day starts at 09:00 instead of midnight, and editing
+  an automatic session keeps its place in the day.
+- **Pomodoro blocks:** split a session into focus blocks with breaks (25 + 5,
+  50 + 10 or 90 + 15) in one step.
+- **Exams & syllabus:** exam dates with a days-left countdown, a topic
+  checklist per subject (paste a list or import topics from your planned
+  sessions) and a "topics per day" pace hint. A countdown card appears in the
+  daily planner.
+- **Flashcards due** shortcut in the daily planner when cards are waiting.
+
 ### Migration
 
 - Existing decks, cards and review history are kept. The original `decks`,

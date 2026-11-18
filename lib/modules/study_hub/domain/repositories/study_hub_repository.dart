@@ -17,6 +17,21 @@ abstract interface class StudyHubRepository {
   Future<void> saveTask(StudyTask task); // insert or update (session or break)
   Future<void> deleteTask(String id);
 
+  /// Splits [session] into Pomodoro-style focus blocks with [breakMinutes]
+  /// breaks between them and saves everything in one atomic step.
+  ///
+  /// `session.durationMinutes` is the total FOCUS time. The blocks start at
+  /// `session.startMinute` (manual) or right after the previous item of the
+  /// day (when `session.autoScheduled`). Block ids derive from `session.id`,
+  /// so saving again replaces the previous blocks instead of duplicating.
+  /// Throws [StudyScheduleInvalidTimeException] / [StudyScheduleOverlapException]
+  /// and saves nothing in that case. Returns every saved row in time order.
+  Future<List<StudyTask>> saveSessionAsBlocks({
+    required StudyTask session,
+    required int focusMinutes,
+    required int breakMinutes,
+  });
+
   /// Saves a session AND the break attached to its end in one atomic step.
   ///
   /// [breakMinutes] null (or 0) means "no break": a previously linked break
