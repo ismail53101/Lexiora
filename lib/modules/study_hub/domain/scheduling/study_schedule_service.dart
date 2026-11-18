@@ -8,6 +8,17 @@ class StudyScheduleConflict {
   final StudyTask previous;
 }
 
+/// Thrown when a session/break has an impossible time span.
+class StudyScheduleInvalidTimeException implements Exception {
+  const StudyScheduleInvalidTimeException(this.message);
+
+  /// A short, user-readable explanation.
+  final String message;
+
+  @override
+  String toString() => message;
+}
+
 class StudyScheduleOverlapException implements Exception {
   const StudyScheduleOverlapException(this.conflict);
 
@@ -26,6 +37,8 @@ class StudyScheduleOverlapException implements Exception {
 class StudyScheduleService {
   const StudyScheduleService._();
 
+  /// Where the first automatic item of an empty day is placed (09:00).
+  static const int defaultDayStartMinute = 9 * 60;
   static const int defaultSessionMinutes = 60;
   static const int defaultBreakMinutes = 10;
   static const int minutesPerDay = 24 * 60;
@@ -44,14 +57,29 @@ class StudyScheduleService {
     return task.isBreak ? defaultBreakMinutes : defaultSessionMinutes;
   }
 
-  /// Returns the next available time after all scheduled rows for [day].
+  /// Returns the next available time after all scheduled rows of a day, or
+  /// [defaultDayStartMinute] when nothing on that day has a time yet.
   static int nextAvailableMinute(Iterable<StudyTask> tasks, {String? excludeId}) {
-    int cursor = 0;
+    int? cursor;
     for (final StudyTask task in _ordered(tasks, excludeId: excludeId)) {
       final int? end = task.endMinute;
-      if (end != null && end > cursor) cursor = end;
+      if (end != null && (cursor == null || end > cursor)) cursor = end;
     }
-    return cursor;
+    return cursor ?? defaultDayStartMinute;
+  }
+
+  /// A user-readable problem with a start/end pair, or null when it is fine.
+  /// Both null (an item without a time) is allowed.
+  static String? validateSpan(int? start, int? end) {
+    if (start == null && end == null) return null;
+    if (start == null || end == null) {
+      return 'Choose both a start time and a duration.';
+    }
+    if (end <= start) return 'The end time must be after the start time.';
+    if (start < 0 || end > minutesPerDay) {
+      return 'This would run past midnight. Pick an earlier start or a shorter duration.';
+    }
+    return null;
   }
 
   /// Recalculates all automatic rows while preserving manual start/end times.

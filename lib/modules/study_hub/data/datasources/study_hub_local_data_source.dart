@@ -70,6 +70,26 @@ class StudyHubLocalDataSource {
     });
   }
 
+  /// Applies several writes as ONE transaction: either everything is saved or
+  /// nothing is (used when a session and its break are saved together).
+  Future<void> applyChanges({
+    required List<StudyTasksCompanion> upserts,
+    List<String> deleteIds = const <String>[],
+  }) {
+    return _db.transaction(() async {
+      for (final String id in deleteIds) {
+        await (_db.delete(_db.studyTasks)..where((t) => t.id.equals(id))).go();
+      }
+      if (upserts.isNotEmpty) {
+        await _db.batch((Batch b) {
+          for (final StudyTasksCompanion task in upserts) {
+            b.insert(_db.studyTasks, task, mode: InsertMode.insertOrReplace);
+          }
+        });
+      }
+    });
+  }
+
   Future<void> deleteTask(String id) =>
       (_db.delete(_db.studyTasks)..where((t) => t.id.equals(id))).go();
 

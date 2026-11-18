@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:drift/drift.dart';
 import 'package:lexiora/core/database/app_database.dart';
 import 'package:lexiora/modules/study_hub/data/datasources/study_hub_local_data_source.dart';
@@ -19,6 +21,20 @@ class StudyHubRepositoryImpl implements StudyHubRepository {
   final StudyHubLocalDataSource _local;
   final Future<void> Function()? onTasksChanged;
   static const Uuid _uuid = Uuid();
+
+  /// Refreshes reminders in the background. Rescheduling every notification is
+  /// slow (many platform calls), so saving must not wait for it.
+  void _notifyChanged() {
+    final Future<void> Function()? callback = onTasksChanged;
+    if (callback == null) return;
+    unawaited(() async {
+      try {
+        await callback();
+      } on Object {
+        // Reminder refresh failures must never break saving.
+      }
+    }());
+  }
 
   // ── Planner ─────────────────────────────────────────────────────────────────
 
@@ -53,7 +69,106 @@ class StudyHubRepositoryImpl implements StudyHubRepository {
       throw StudyScheduleOverlapException(ownConflict);
     }
     await _persistDay(t.day, all, recalculated);
-    await onTasksChanged?.call();
+    _notifyChanged();
+  }
+
+  @override
+  Future<StudyTask> saveSessionWithBreak({
+    required StudyTask session,
+    required String breakId,
+    int? breakMinutes,
+  }) async {
+    final List<StudyTask> stored =
+        (await _local.getTasks(session.day)).map(_toTask).toList();
+    final List<StudyTask> others = stored
+        .where((StudyTask t) => t.id != session.id && t.id != breakId)
+        .toList();
+    final StudyTask? previous = _firstWhereOrNull(
+        stored, (StudyTask t) => t.id == session.id);
+    final StudyTask? oldBreak =
+        _firstWhereOrNull(stored, (StudyTask t) => t.id == breakId);
+
+    // Editing an automatic session keeps its place in the day; only a NEW
+    // automatic session (or one that was manual) goes to the end of the day.
+    final bool keepsPlace = session.autoScheduled &&
+        previous != null &&
+        previous.autoScheduled &&
+        previous.startMinute != null;
+    final StudyTask prepared;
+    if (keepsPlace) {
+      final int start = previous.startMinute!;
+      final int duration = StudyScheduleService.durationOf(session);
+      prepared = session.copyWith(
+        startMinute: start,
+        endMinute: start + duration,
+        durationMinutes: duration,
+      );
+    } else {
+      prepared = _prepareIncoming(session, others);
+    }
+
+    final String? problem = StudyScheduleService.validateSpan(
+        prepared.startMinute, prepared.endMinute);
+    if (problem != null) throw StudyScheduleInvalidTimeException(problem);
+
+    final DateTime now = DateTime.now();
+    StudyTask? breakTask;
+    if (breakMinutes != null && breakMinutes > 0 && prepared.endMinute != null) {
+      final int start = prepared.endMinute!;
+      final int end = start + breakMinutes;
+      final String? breakProblem = StudyScheduleService.validateSpan(start, end);
+      if (breakProblem != null) {
+        throw const StudyScheduleInvalidTimeException(
+            'The break would run past midnight. Choose a shorter break.');
+      }
+      breakTask = (oldBreak ??
+              StudyTask(
+                id: breakId,
+                day: session.day,
+                title: 'Break',
+                kind: SessionKind.breakTime,
+                createdAt: now,
+                updatedAt: now,
+              ))
+          .copyWith(
+        startMinute: start,
+        endMinute: end,
+        durationMinutes: breakMinutes,
+        // Anchored to this session's end so recalculation keeps it there.
+        autoScheduled: false,
+        updatedAt: now,
+      );
+    }
+
+    final List<StudyTask> all = <StudyTask>[
+      ...others,
+      prepared,
+      ?breakTask,
+    ];
+    final List<StudyTask> recalculated = StudyScheduleService.recalculate(all);
+    final Set<String> mine = <String>{prepared.id, ?breakTask?.id};
+    final StudyScheduleConflict? conflict = _firstWhereOrNull(
+      StudyScheduleService.conflicts(recalculated),
+      (StudyScheduleConflict c) =>
+          mine.contains(c.item.id) || mine.contains(c.previous.id),
+    );
+    if (conflict != null) throw StudyScheduleOverlapException(conflict);
+
+    await _local.applyChanges(
+      upserts: recalculated.map(_taskCompanion).toList(),
+      deleteIds: <String>[
+        if (breakTask == null && oldBreak != null) oldBreak.id,
+      ],
+    );
+    _notifyChanged();
+    return recalculated.firstWhere((StudyTask t) => t.id == prepared.id);
+  }
+
+  static T? _firstWhereOrNull<T>(Iterable<T> items, bool Function(T) test) {
+    for (final T item in items) {
+      if (test(item)) return item;
+    }
+    return null;
   }
 
   @override
@@ -65,7 +180,7 @@ class StudyHubRepositoryImpl implements StudyHubRepository {
         (await _local.getTasks(row.day)).map(_toTask).toList();
     final List<StudyTask> recalculated = StudyScheduleService.recalculate(remaining);
     await _persistDay(row.day, remaining, recalculated);
-    await onTasksChanged?.call();
+    _notifyChanged();
   }
 
   StudyTask _prepareIncoming(StudyTask task, List<StudyTask> existing) {
@@ -133,7 +248,7 @@ class StudyHubRepositoryImpl implements StudyHubRepository {
       completed,
       DateTime.now(),
     );
-    await onTasksChanged?.call();
+    _notifyChanged();
   }
 
   @override
@@ -144,7 +259,7 @@ class StudyHubRepositoryImpl implements StudyHubRepository {
       status == TaskStatus.completed,
       DateTime.now(),
     );
-    await onTasksChanged?.call();
+    _notifyChanged();
   }
 
   @override

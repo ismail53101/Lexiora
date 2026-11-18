@@ -16,6 +16,19 @@ abstract interface class StudyHubRepository {
 
   Future<void> saveTask(StudyTask task); // insert or update (session or break)
   Future<void> deleteTask(String id);
+
+  /// Saves a session AND the break attached to its end in one atomic step.
+  ///
+  /// [breakMinutes] null (or 0) means "no break": a previously linked break
+  /// with [breakId] is removed. Throws [StudyScheduleInvalidTimeException] or
+  /// [StudyScheduleOverlapException] — in which case NOTHING is saved.
+  /// Saving again with the same ids updates the same rows (never duplicates).
+  /// Returns the session as stored (with its final start/end).
+  Future<StudyTask> saveSessionWithBreak({
+    required StudyTask session,
+    required String breakId,
+    int? breakMinutes,
+  });
   Future<void> setTaskCompleted(String id, {required bool completed});
   Future<void> setTaskStatus(String id, TaskStatus status);
 
