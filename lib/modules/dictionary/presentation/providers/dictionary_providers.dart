@@ -151,6 +151,16 @@ final wordAiEnrichmentProvider =
     final AiWordProfile? cached = await cache.get(wordLower);
     if (cached != null) return cached;
 
+    // Online fallbacks are allowed only because the bundled dictionary does
+    // not contain this word. Prefer the dedicated STANDS4/Synonyms source for
+    // lexical data; use AI only if that online source cannot provide a profile.
+    final AiWordProfile? synonymsProfile =
+        await sl<Stands4DictionaryService>().define(wordLower);
+    if (synonymsProfile != null && synonymsProfile.hasContent) {
+      await cache.put(synonymsProfile);
+      return synonymsProfile;
+    }
+
     final AiWordProfile? generated =
         await sl<AiDictionaryService>().define(wordLower);
 
