@@ -70,6 +70,21 @@ class StudyHubLocalDataSource {
     });
   }
 
+  /// The most recent day each subject was studied (a completed session),
+  /// keyed by lower-cased subject name.
+  Future<Map<String, String>> lastStudiedDays() async {
+    final List<QueryRow> rows = await _db.customSelect(
+      'SELECT LOWER(TRIM(COALESCE(subject, title))) AS k, MAX(day) AS d '
+      "FROM study_tasks WHERE kind = 'session' AND (completed = 1 OR status = 2) "
+      'GROUP BY k',
+    ).get();
+    return <String, String>{
+      for (final QueryRow r in rows)
+        if ((r.data['k'] as String?)?.isNotEmpty ?? false)
+          r.data['k']! as String: r.data['d']! as String,
+    };
+  }
+
   /// Applies several writes as ONE transaction: either everything is saved or
   /// nothing is (used when a session and its break are saved together).
   Future<void> applyChanges({

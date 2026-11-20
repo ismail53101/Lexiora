@@ -8,6 +8,7 @@ import 'package:lexiora/modules/study_hub/domain/entities/study_models.dart';
 import 'package:lexiora/modules/study_hub/domain/entities/study_subject.dart';
 import 'package:lexiora/modules/study_hub/domain/entities/study_task.dart';
 import 'package:lexiora/modules/study_hub/domain/entities/study_template.dart';
+import 'package:lexiora/modules/study_hub/domain/planning/day_planner.dart';
 import 'package:lexiora/modules/study_hub/domain/repositories/study_hub_repository.dart';
 import 'package:lexiora/modules/study_hub/domain/scheduling/pomodoro_planner.dart';
 import 'package:lexiora/modules/study_hub/domain/scheduling/study_schedule_service.dart';
@@ -163,6 +164,96 @@ class StudyHubRepositoryImpl implements StudyHubRepository {
     );
     _notifyChanged();
     return recalculated.firstWhere((StudyTask t) => t.id == prepared.id);
+  }
+
+  @override
+  Future<int> saveGeneratedPlan({
+    required String day,
+    required List<StudyTask> items,
+  }) async {
+    if (items.isEmpty) return 0;
+    final List<StudyTask> stored =
+        (await _local.getTasks(day)).map(_toTask).toList();
+    final Set<String> mine = <String>{for (final StudyTask t in items) t.id};
+    final List<StudyTask> others =
+        stored.where((StudyTask t) => !mine.contains(t.id)).toList();
+    final DateTime now = DateTime.now();
+    final List<StudyTask> rows = <StudyTask>[
+      for (final StudyTask t in items)
+        t.copyWith(day: day, autoScheduled: false, updatedAt: now),
+    ];
+    for (final StudyTask r in rows) {
+      final String? problem =
+          StudyScheduleService.validateSpan(r.startMinute, r.endMinute);
+      if (problem != null) throw StudyScheduleInvalidTimeException(problem);
+    }
+    final List<StudyTask> recalculated =
+        StudyScheduleService.recalculate(<StudyTask>[...others, ...rows]);
+    final StudyScheduleConflict? conflict = _firstWhereOrNull(
+      StudyScheduleService.conflicts(recalculated),
+      (StudyScheduleConflict c) =>
+          mine.contains(c.item.id) || mine.contains(c.previous.id),
+    );
+    if (conflict != null) throw StudyScheduleOverlapException(conflict);
+    await _local.applyChanges(
+      upserts: recalculated.map(_taskCompanion).toList(),
+    );
+    _notifyChanged();
+    return rows.length;
+  }
+
+  @override
+  Future<Map<String, String>> lastStudiedDays() => _local.lastStudiedDays();
+
+  @override
+  Future<List<StudyTask>> missedSessions({
+    required String today,
+    required int nowMinute,
+    int lookbackDays = 7,
+  }) async {
+    final DateTime end = DateTime.parse(today);
+    final List<StudyTask> all = <StudyTask>[];
+    for (int i = 0; i <= lookbackDays; i++) {
+      final DateTime d = DateTime(end.year, end.month, end.day - i);
+      final String key =
+          '${d.year.toString().padLeft(4, '0')}-${d.month.toString().padLeft(2, '0')}-${d.day.toString().padLeft(2, '0')}';
+      all.addAll((await _local.getTasks(key)).map(_toTask));
+    }
+    return findMissedSessions(all, today: today, nowMinute: nowMinute);
+  }
+
+  @override
+  Future<int> moveSessionsToDay({
+    required List<StudyTask> tasks,
+    required String toDay,
+  }) async {
+    final List<StudyTask> movable =
+        tasks.where((StudyTask t) => !t.isBreak && t.day != toDay).toList();
+    if (movable.isEmpty) return 0;
+    final List<StudyTask> target =
+        (await _local.getTasks(toDay)).map(_toTask).toList();
+    final Set<String> ids = <String>{for (final StudyTask t in movable) t.id};
+    final List<StudyTask> placed = target
+        .where((StudyTask t) => !ids.contains(t.id))
+        .toList();
+    final DateTime now = DateTime.now();
+    for (final StudyTask t in movable) {
+      final StudyTask incoming = t.copyWith(
+        day: toDay,
+        autoScheduled: true,
+        clearTimes: true,
+        durationMinutes: StudyScheduleService.durationOf(t),
+        status: TaskStatus.pending,
+        updatedAt: now,
+      );
+      placed.add(_prepareIncoming(incoming, placed));
+    }
+    final List<StudyTask> recalculated = StudyScheduleService.recalculate(placed);
+    await _local.applyChanges(
+      upserts: recalculated.map(_taskCompanion).toList(),
+    );
+    _notifyChanged();
+    return movable.length;
   }
 
   @override

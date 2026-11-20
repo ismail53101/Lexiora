@@ -49,6 +49,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   sessions) and a "topics per day" pace hint. A countdown card appears in the
   daily planner.
 - **Flashcards due** shortcut in the daily planner when cards are waiting.
+- **Plan my day:** choose when you are free and which subjects to cover; the
+  planner fills the gaps around what is already planned with focus sessions and
+  breaks. Time is shared by exam closeness, syllabus left and how long since
+  you last studied each subject, and each block suggests the next unfinished
+  topic. Review the plan, remove blocks you do not want, then add it in one
+  step. Simple rules, no AI, fully offline.
+- **Missed sessions:** unfinished sessions from the past week (or earlier
+  today) are offered with "Move to tomorrow".
 
 ### Migration
 

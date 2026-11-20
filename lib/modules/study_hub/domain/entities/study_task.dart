@@ -101,6 +101,7 @@ class StudyTask extends Equatable {
       (subject != null && subject!.isNotEmpty) ? subject! : title;
 
   StudyTask copyWith({
+    String? day,
     String? title,
     String? subject,
     String? topic,
@@ -122,7 +123,7 @@ class StudyTask extends Equatable {
   }) {
     return StudyTask(
       id: id,
-      day: day,
+      day: day ?? this.day,
       title: title ?? this.title,
       subject: clearSubject ? null : (subject ?? this.subject),
       topic: clearTopic ? null : (topic ?? this.topic),

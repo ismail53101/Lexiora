@@ -209,3 +209,22 @@ final StreamProvider<List<ExamCountdown>> examCountdownsProvider =
 final StreamProvider<List<SubjectSyllabus>> syllabiProvider =
     StreamProvider<List<SubjectSyllabus>>(
         (Ref ref) => ref.watch(examRepositoryProvider).watchSyllabi());
+
+// ── Plan my day & missed sessions ────────────────────────────────────────────
+
+/// The last day each subject was studied (lower-cased name → `yyyy-MM-dd`).
+final FutureProvider<Map<String, String>> lastStudiedDaysProvider =
+    FutureProvider.autoDispose<Map<String, String>>(
+        (Ref ref) => ref.watch(studyHubRepositoryProvider).lastStudiedDays());
+
+/// Unfinished sessions from the last week whose time has passed. Refreshes
+/// whenever today's tasks change.
+final FutureProvider<List<StudyTask>> missedSessionsProvider =
+    FutureProvider.autoDispose<List<StudyTask>>((Ref ref) {
+  ref.watch(studyDayTasksProvider(todayKey()));
+  final DateTime now = DateTime.now();
+  return ref.watch(studyHubRepositoryProvider).missedSessions(
+        today: dayKey(now),
+        nowMinute: now.hour * 60 + now.minute,
+      );
+});

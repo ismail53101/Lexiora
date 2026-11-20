@@ -32,6 +32,33 @@ abstract interface class StudyHubRepository {
     required int breakMinutes,
   });
 
+  /// Saves the sessions and breaks of a generated day plan in one atomic step.
+  /// Items keep their ids, so saving the same plan twice never duplicates.
+  /// Throws [StudyScheduleInvalidTimeException] / [StudyScheduleOverlapException]
+  /// and saves nothing in that case.
+  Future<int> saveGeneratedPlan({
+    required String day,
+    required List<StudyTask> items,
+  });
+
+  /// The last day each subject was studied (lower-cased name → `yyyy-MM-dd`).
+  Future<Map<String, String>> lastStudiedDays();
+
+  /// Sessions from the last [lookbackDays] days (including [today]) that were
+  /// not completed and whose time has passed.
+  Future<List<StudyTask>> missedSessions({
+    required String today,
+    required int nowMinute,
+    int lookbackDays = 7,
+  });
+
+  /// Moves [tasks] to [toDay] as automatic sessions placed after everything
+  /// already planned there. Returns how many were moved.
+  Future<int> moveSessionsToDay({
+    required List<StudyTask> tasks,
+    required String toDay,
+  });
+
   /// Saves a session AND the break attached to its end in one atomic step.
   ///
   /// [breakMinutes] null (or 0) means "no break": a previously linked break
