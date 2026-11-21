@@ -239,6 +239,7 @@ class StudyHubRepositoryImpl implements StudyHubRepository {
     final DateTime now = DateTime.now();
     final bool movingToToday = toDay == dayKey(now);
     final int nowMinute = now.hour * 60 + now.minute;
+    final Set<String> movedTaskIds = <String>{};
 
     for (final StudyTask t in movable) {
       final StudyTask incoming = t.copyWith(
@@ -249,15 +250,18 @@ class StudyHubRepositoryImpl implements StudyHubRepository {
         status: TaskStatus.pending,
         updatedAt: now,
       );
-      placed.add(_prepareIncoming(incoming, placed));
+      final StudyTask prepared = _prepareIncoming(incoming, placed);
+      placed.add(prepared);
+      movedTaskIds.add(prepared.id);
     }
 
     // When moving missed work to Today, never put it back into a time that
-    // has already passed. Start from the later of "now" and the end of the
-    // existing timeline. Tomorrow/future dates keep the normal 9 AM behaviour.
+    // has already passed. The floor applies ONLY to the sessions being moved,
+    // not to existing sessions that were already planned for today.
     final List<StudyTask> recalculated = StudyScheduleService.recalculate(
       placed,
       minimumStartMinute: movingToToday ? nowMinute : null,
+      minimumStartTaskIds: movingToToday ? movedTaskIds : null,
     );
 
     if (movingToToday) {
