@@ -304,12 +304,16 @@ class StudyHubRepositoryImpl implements StudyHubRepository {
           task.orderIndex > current ? task.orderIndex : current,
     ) + 1;
 
+    int untimedCursor = StudyScheduleService.nextAvailableMinute(placed);
+
     for (final StudyTask row in chain) {
       final int duration = StudyScheduleService.durationOf(row);
-      final int? start = row.startMinute == null
-          ? null
+      // Timed sessions preserve their original clock time. Untimed sessions
+      // still use the destination day's next available slot.
+      final int start = row.startMinute == null
+          ? untimedCursor
           : row.startMinute! + shiftMinutes;
-      final int? end = start == null ? null : start + duration;
+      final int end = start + duration;
 
       final StudyTask incoming = row.copyWith(
         day: toDay,
@@ -326,6 +330,9 @@ class StudyHubRepositoryImpl implements StudyHubRepository {
       );
       placed.add(incoming);
       movedTaskIds.add(incoming.id);
+      if (row.startMinute == null) {
+        untimedCursor = end;
+      }
     }
 
     final List<StudyTask> recalculated =
