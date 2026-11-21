@@ -67,6 +67,7 @@ class _ReaderPageState extends ConsumerState<ReaderPage> {
   int _pageCount = 0;
   PdfTextSelectionData? _selection;
   bool _searching = false;
+  bool _keepScreenAwake = false;
   ReaderScrollAxis _scrollAxis = ReaderScrollAxis.vertical;
   ReaderColorMode _colorMode = ReaderColorMode.day;
   List<int> _highlightColors = const <int>[0xFFFFF176];
@@ -161,9 +162,6 @@ class _ReaderPageState extends ConsumerState<ReaderPage> {
       _initialPage = settings.autoResume
           ? (progress?.lastPage ?? 1).clamp(1, maxPage)
           : 1;
-
-      // Honor the "keep screen awake" preference while reading.
-      await sl<ScreenWakeService>().setKeepScreenOn(settings.keepScreenAwake);
 
       if (!_isTemporary) {
         await ref.read(markDocumentOpenedProvider).call(_id);
@@ -356,6 +354,13 @@ class _ReaderPageState extends ConsumerState<ReaderPage> {
     await _clearSelection();
   }
 
+  Future<void> _setKeepScreenAwake(bool enabled) async {
+    if (mounted) {
+      setState(() => _keepScreenAwake = enabled);
+    }
+    await sl<ScreenWakeService>().setKeepScreenOn(enabled);
+  }
+
   void _cycleColorMode() {
     setState(() {
       _colorMode = ReaderColorMode
@@ -486,6 +491,29 @@ class _ReaderPageState extends ConsumerState<ReaderPage> {
             child: sl<PdfEngine>().buildViewer(
               controller: _controller,
               config: config,
+            ),
+          ),
+          Positioned(
+            left: 0,
+            right: 0,
+            bottom: 68,
+            child: SafeArea(
+              top: false,
+              child: Center(
+                child: FilterChip(
+                  selected: _keepScreenAwake,
+                  onSelected: _setKeepScreenAwake,
+                  avatar: Icon(
+                    _keepScreenAwake
+                        ? Icons.screen_lock_portrait
+                        : Icons.screen_lock_portrait_outlined,
+                  ),
+                  label: const Text('Keep screen awake'),
+                  tooltip: 'Keep the screen awake while reading this PDF',
+                  showCheckmark: false,
+                  visualDensity: VisualDensity.compact,
+                ),
+              ),
             ),
           ),
           if (_selection != null)
