@@ -6,6 +6,7 @@ import 'package:lexiora/core/utils/typedefs.dart';
 import 'package:lexiora/modules/dictionary/domain/repositories/dictionary_repository.dart';
 import 'package:lexiora/modules/dictionary/data/services/ai_dictionary_cache.dart';
 import 'package:lexiora/modules/dictionary/data/services/ai_dictionary_service.dart';
+import 'package:lexiora/modules/dictionary/domain/entities/dictionary_entry.dart';
 import 'package:lexiora/modules/dictionary/domain/entities/word_profile.dart';
 import 'package:lexiora/modules/translation/data/services/word_meaning_service.dart';
 import 'package:lexiora/modules/translation/domain/entities/translation.dart';
