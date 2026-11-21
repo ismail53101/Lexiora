@@ -57,6 +57,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   step. Simple rules, no AI, fully offline.
 - **Missed sessions:** unfinished sessions from the past week (or earlier
   today) are offered with "Move to tomorrow".
+- **Weekly report** (menu → Weekly report): total study time with the change
+  vs last week, a bar per day, plan-vs-done, time by subject, when in the day
+  you study most, and a few plain-language insights (for example a subject
+  with an exam coming up that got almost no time). Browse earlier weeks and
+  share the summary. Time counts timer logs plus sessions you ticked as done
+  (never both for the same session).
 
 ### Migration
 

@@ -10,7 +10,9 @@ import 'package:lexiora/modules/study_hub/domain/entities/study_subject.dart';
 import 'package:lexiora/modules/study_hub/domain/entities/study_task.dart';
 import 'package:lexiora/modules/study_hub/domain/entities/study_template.dart';
 import 'package:lexiora/modules/study_hub/domain/exams/exam_models.dart';
+import 'package:lexiora/modules/study_hub/domain/report/weekly_report.dart';
 import 'package:lexiora/modules/study_hub/domain/repositories/exam_repository.dart';
+import 'package:lexiora/modules/study_hub/domain/repositories/report_repository.dart';
 import 'package:lexiora/modules/study_hub/domain/repositories/study_hub_repository.dart';
 import 'package:lexiora/modules/study_hub/domain/study_dates.dart';
 
@@ -227,4 +229,45 @@ final FutureProvider<List<StudyTask>> missedSessionsProvider =
         today: dayKey(now),
         nowMinute: now.hour * 60 + now.minute,
       );
+});
+
+// ── Weekly report ────────────────────────────────────────────────────────────
+
+final Provider<ReportRepository> reportRepositoryProvider =
+    Provider<ReportRepository>((Ref ref) => sl<ReportRepository>());
+
+String _keyOf(DateTime d) =>
+    '${d.year.toString().padLeft(4, '0')}-${d.month.toString().padLeft(2, '0')}-${d.day.toString().padLeft(2, '0')}';
+
+/// The report for the week starting on the Monday [weekStartKey]
+/// (`yyyy-MM-dd`). Refreshes when exams or today's tasks change.
+final weeklyReportProvider =
+    FutureProvider.autoDispose.family<WeeklyReport, String>((Ref ref, String weekStartKey) async {
+  ref.watch(studyDayTasksProvider(todayKey()));
+  final List<ExamCountdown> exams =
+      ref.watch(examCountdownsProvider).asData?.value ?? const <ExamCountdown>[];
+  final DateTime weekStart = DateTime.parse(weekStartKey);
+  final DateTime prevStart = DateTime(weekStart.year, weekStart.month, weekStart.day - 7);
+  final DateTime weekEnd = DateTime(weekStart.year, weekStart.month, weekStart.day + 6);
+
+  final ReportSource src = await ref.watch(reportRepositoryProvider).load(
+        startDay: _keyOf(prevStart),
+        endDay: _keyOf(weekEnd),
+      );
+  bool inThisWeek(String day) => day.compareTo(weekStartKey) >= 0;
+
+  final List<TaskRow> tasksThis = src.tasks.where((TaskRow t) => inThisWeek(t.day)).toList();
+  final List<TaskRow> tasksLast = src.tasks.where((TaskRow t) => !inThisWeek(t.day)).toList();
+  final List<TimerLog> logsThis = src.logs.where((TimerLog l) => inThisWeek(l.day)).toList();
+  final List<TimerLog> logsLast = src.logs.where((TimerLog l) => !inThisWeek(l.day)).toList();
+
+  final DateTime now = DateTime.now();
+  return buildWeeklyReport(
+    weekStart: weekStart,
+    thisWeek: mergeEffort(logsThis, tasksThis),
+    lastWeek: mergeEffort(logsLast, tasksLast),
+    plannedThisWeek: plannedForReport(tasksThis, _keyOf(now)),
+    exams: exams,
+    now: now,
+  );
 });

@@ -12,8 +12,10 @@ import 'package:lexiora/core/services/rewarded_ad_manager.dart';
 import 'package:lexiora/core/utils/logger.dart';
 import 'package:lexiora/modules/study_hub/data/datasources/study_hub_local_data_source.dart';
 import 'package:lexiora/modules/study_hub/data/repositories/exam_repository_impl.dart';
+import 'package:lexiora/modules/study_hub/data/repositories/report_repository_impl.dart';
 import 'package:lexiora/modules/study_hub/data/repositories/study_hub_repository_impl.dart';
 import 'package:lexiora/modules/study_hub/domain/repositories/exam_repository.dart';
+import 'package:lexiora/modules/study_hub/domain/repositories/report_repository.dart';
 import 'package:lexiora/modules/study_hub/domain/repositories/study_hub_repository.dart';
 import 'package:lexiora/modules/study_hub/presentation/pages/daily_planner_page.dart';
 import 'package:lexiora/modules/study_hub/presentation/pages/exams_page.dart';
@@ -24,6 +26,7 @@ import 'package:lexiora/modules/study_hub/presentation/pages/planner_page.dart';
 import 'package:lexiora/modules/study_hub/presentation/pages/search_page.dart';
 import 'package:lexiora/modules/study_hub/presentation/pages/templates_page.dart';
 import 'package:lexiora/modules/study_hub/presentation/pages/weekly_planner_page.dart';
+import 'package:lexiora/modules/study_hub/presentation/pages/weekly_report_page.dart';
 
 /// Phase v0.7.0 — the Study Hub module (personal learning dashboard).
 ///
@@ -56,6 +59,9 @@ class StudyHubModule extends FeatureModule {
       )
       ..registerLazySingleton<ExamRepository>(
         () => ExamRepositoryImpl(DriftRawSql(getIt<AppDatabase>())),
+      )
+      ..registerLazySingleton<ReportRepository>(
+        () => ReportRepositoryImpl(DriftRawSql(getIt<AppDatabase>())),
       );
   }
 
@@ -101,6 +107,10 @@ class StudyHubModule extends FeatureModule {
         GoRoute(
           path: AppRoutes.studyHubExams,
           builder: (_, _) => const StudyExamsPage(),
+        ),
+        GoRoute(
+          path: AppRoutes.studyHubReport,
+          builder: (_, _) => const WeeklyReportPage(),
         ),
       ];
 
