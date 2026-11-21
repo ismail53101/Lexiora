@@ -234,37 +234,44 @@ class StudyHubRepositoryImpl implements StudyHubRepository {
     final List<StudyTask> target =
         (await _local.getTasks(toDay)).map(_toTask).toList();
 
-    // A Pomodoro session is stored as a chain:
-    // <root>, <root>:f1, <root>:b1, <root>:f2, ...
-    // The missed-session banner can hand us one focus block (for example
-    // <root>:f1), so derive the root and move the entire chain together.
+    // Break rows are independent planner rows (their IDs are not derived from
+    // the session ID). A break belongs to a session when it starts exactly at
+    // that session's end. This is also how the session editor finds its break.
+    // Include those rows explicitly; otherwise Move Today leaves old breaks
+    // behind on the source day.
+    final Set<String> sourceDays = <String>{for (final StudyTask t in movable) t.day};
+    final Map<String, List<StudyTask>> sourceRowsByDay =
+        <String, List<StudyTask>>{};
+    for (final String day in sourceDays) {
+      sourceRowsByDay[day] =
+          (await _local.getTasks(day)).map(_toTask).toList();
+    }
+
     final Set<String> roots = <String>{
       for (final StudyTask task in movable)
         task.id.contains(':') ? task.id.split(':').first : task.id,
     };
 
-    final Map<String, List<StudyTask>> sourceRowsByDay =
-        <String, List<StudyTask>>{};
-    for (final StudyTask task in movable) {
-      sourceRowsByDay.putIfAbsent(task.day, () => <StudyTask>[]);
-    }
-    for (final String day in sourceRowsByDay.keys) {
-      sourceRowsByDay[day] =
-          (await _local.getTasks(day)).map(_toTask).toList();
-    }
-
     final List<StudyTask> chain = <StudyTask>[];
     for (final List<StudyTask> sourceRows in sourceRowsByDay.values) {
-      chain.addAll(
-        sourceRows.where((StudyTask row) {
-          final String root =
-              row.id.contains(':') ? row.id.split(':').first : row.id;
-          return roots.contains(root);
-        }),
-      );
+      for (final StudyTask row in sourceRows) {
+        final String root =
+            row.id.contains(':') ? row.id.split(':').first : row.id;
+        final bool sameChain = roots.contains(root);
+        final bool belongsToMovedSession = row.isBreak &&
+            movable.any(
+              (StudyTask session) =>
+                  session.day == row.day &&
+                  session.endMinute != null &&
+                  row.startMinute == session.endMinute,
+            );
+        if (sameChain || belongsToMovedSession) {
+          chain.add(row);
+        }
+      }
     }
 
-    final Set<String> movedIds = <String>{for (final StudyTask t in chain) t.id};
+    final Set<String> movedIds = <String>{for (final StudyTask t in chain)};
     final List<StudyTask> placed = target
         .where((StudyTask t) => !movedIds.contains(t.id))
         .toList();
@@ -280,7 +287,7 @@ class StudyHubRepositoryImpl implements StudyHubRepository {
           task.orderIndex > current ? task.orderIndex : current,
     ) + 1;
 
-    // Keep every focus/break block in its original chain order.
+    // Preserve focus/break order from the source timeline.
     chain.sort((StudyTask a, StudyTask b) {
       final int byDay = a.day.compareTo(b.day);
       if (byDay != 0) return byDay;
@@ -303,9 +310,6 @@ class StudyHubRepositoryImpl implements StudyHubRepository {
       movedTaskIds.add(incoming.id);
     }
 
-    // Today starts from the actual current minute. Because the complete
-    // focus/break chain is in movedTaskIds, the break rows get the same
-    // current-time floor and remain between their focus blocks.
     final List<StudyTask> recalculated = StudyScheduleService.recalculate(
       placed,
       minimumStartMinute: movingToToday ? nowMinute : null,
@@ -328,8 +332,12 @@ class StudyHubRepositoryImpl implements StudyHubRepository {
       }
     }
 
+    // Moving means removing the complete source chain as well as inserting it
+    // on the destination day. Without this delete, the old break remains
+    // visible even though the session itself appears to have moved.
     await _local.applyChanges(
       upserts: recalculated.map(_taskCompanion).toList(),
+      deleteIds: movedIds.toList(growable: false),
     );
     _notifyChanged();
     return movable.length;
