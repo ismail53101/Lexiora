@@ -90,6 +90,7 @@ class StudyScheduleService {
   static List<StudyTask> recalculate(
     Iterable<StudyTask> input, {
     int? minimumStartMinute,
+    Set<String>? minimumStartTaskIds,
   }) {
     final List<StudyTask> rows = _ordered(input);
     final List<StudyTask> result = <StudyTask>[];
@@ -99,7 +100,10 @@ class StudyScheduleService {
       StudyTask current = original;
       if (current.autoScheduled) {
         int start = cursorEnd ?? current.startMinute ?? 0;
-        if (minimumStartMinute != null && current.startMinute == null && start < minimumStartMinute) {
+        if (minimumStartMinute != null &&
+            (minimumStartTaskIds == null ||
+                minimumStartTaskIds.contains(current.id)) &&
+            start < minimumStartMinute) {
           start = minimumStartMinute;
         }
         final int end = start + durationOf(current);
