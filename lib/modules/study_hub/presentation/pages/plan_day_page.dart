@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:go_router/go_router.dart';
+import 'package:lexiora/app/router/app_routes.dart';
 import 'package:lexiora/modules/study_hub/domain/entities/study_subject.dart';
 import 'package:lexiora/modules/study_hub/domain/entities/study_task.dart';
 import 'package:lexiora/modules/study_hub/domain/exams/exam_models.dart';
@@ -254,15 +256,36 @@ class _PlanDayPageState extends ConsumerState<PlanDayPage> {
           const SizedBox(height: 18),
           Row(
             children: <Widget>[
-              Expanded(child: Text('Subjects', style: theme.textTheme.titleSmall?.copyWith(fontWeight: FontWeight.w800))),
+              Expanded(
+                child: Text(
+                  'Subjects',
+                  style: theme.textTheme.titleSmall?.copyWith(
+                    fontWeight: FontWeight.w800,
+                  ),
+                ),
+              ),
+              TextButton.icon(
+                onPressed: () => context.push(AppRoutes.studyHubSubjects),
+                icon: const Icon(Icons.tune, size: 18),
+                label: const Text('Manage'),
+              ),
               if (cands.isNotEmpty)
                 TextButton(
                   onPressed: () => setState(() {
-                    final Set<String> all = <String>{for (final PlanCandidate c in cands) c.subject.name.toLowerCase()};
-                    _selected = (_selected ?? <String>{}).length == all.length ? <String>{} : all;
+                    final Set<String> all = <String>{
+                      for (final PlanCandidate c in cands)
+                        c.subject.name.toLowerCase(),
+                    };
+                    _selected = (_selected ?? <String>{}).length == all.length
+                        ? <String>{}
+                        : all;
                     _plan = null;
                   }),
-                  child: Text((_selected ?? <String>{}).length == cands.length ? 'Clear' : 'Select all'),
+                  child: Text(
+                    (_selected ?? <String>{}).length == cands.length
+                        ? 'Clear'
+                        : 'Select all',
+                  ),
                 ),
             ],
           ),
