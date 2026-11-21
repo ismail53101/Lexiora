@@ -37,7 +37,6 @@ class AppSettings extends Equatable {
     this.readerColorMode = ReaderColorMode.day,
     this.highlightColors = AppConstants.defaultHighlightColors,
     this.defaultHighlightColor = AppConstants.primaryHighlightColor,
-    this.keepScreenAwake = false,
     this.autoResume = true,
     this.translationLanguage = kDefaultTranslationLanguage,
     this.displayName = '',
@@ -69,9 +68,6 @@ class AppSettings extends Equatable {
 
   /// The color pre-selected when creating a new highlight.
   final int defaultHighlightColor;
-
-  /// Keep the screen on while reading.
-  final bool keepScreenAwake;
 
   /// Resume from the last read page when reopening a document.
   final bool autoResume;
@@ -109,7 +105,6 @@ class AppSettings extends Equatable {
     ReaderColorMode? readerColorMode,
     List<int>? highlightColors,
     int? defaultHighlightColor,
-    bool? keepScreenAwake,
     bool? autoResume,
     String? translationLanguage,
     String? displayName,
@@ -135,7 +130,6 @@ class AppSettings extends Equatable {
         highlightColors: highlightColors ?? this.highlightColors,
         defaultHighlightColor:
             defaultHighlightColor ?? this.defaultHighlightColor,
-        keepScreenAwake: keepScreenAwake ?? this.keepScreenAwake,
         autoResume: autoResume ?? this.autoResume,
         translationLanguage: translationLanguage ?? this.translationLanguage,
         displayName: displayName ?? this.displayName,
@@ -170,7 +164,6 @@ class AppSettings extends Equatable {
         readerColorMode,
         highlightColors,
         defaultHighlightColor,
-        keepScreenAwake,
         autoResume,
         translationLanguage,
         displayName,
