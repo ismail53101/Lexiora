@@ -230,6 +230,25 @@ class MainActivity : FlutterActivity() {
                             true
                         },
                     )
+                    "openAllFilesAccessSettings" -> {
+                        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
+                            try {
+                                startActivity(
+                                    Intent(
+                                        android.provider.Settings
+                                            .ACTION_MANAGE_APP_ALL_FILES_ACCESS_PERMISSION,
+                                        Uri.parse("package:$packageName"),
+                                    ),
+                                )
+                                result.success(true)
+                            } catch (e: Exception) {
+                                Log.w("Lexiora", "Could not open All Files Access settings: " + e.message)
+                                result.error("settings_failed", e.message, null)
+                            }
+                        } else {
+                            result.success(true)
+                        }
+                    }
                     "scanAllPdfs" -> scanAllPdfs(result)
                     "pickPdfs" -> startPickPdfs(result)
                     "recognizeText" -> {
