@@ -1,6 +1,10 @@
 import 'dart:async';
 
+import 'dart:async';
+
 import 'package:flutter/material.dart';
+import 'package:lexiora/app/di/injector.dart';
+import 'package:lexiora/core/services/notification_service.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:lexiora/modules/study_hub/domain/entities/study_task.dart';
 import 'package:lexiora/modules/study_hub/domain/scheduling/pomodoro_planner.dart';
@@ -382,6 +386,7 @@ class _SessionEditorState extends ConsumerState<_SessionEditor> {
               (_addBreak && _mode != _TimeMode.none) ? _breakMinutes : null,
         );
       }
+      await sl<NotificationService>().rescheduleAll();
       if (mounted) Navigator.of(context).pop();
     } on Object catch (error) {
       if (mounted) setState(() => _error = _scheduleErrorText(error));
@@ -652,6 +657,7 @@ class _SessionEditorState extends ConsumerState<_SessionEditor> {
                             await ref
                                 .read(studyHubRepositoryProvider)
                                 .deleteTask(widget.existing!.id);
+                            await sl<NotificationService>().rescheduleAll();
                             if (context.mounted) Navigator.of(context).pop();
                           },
                     icon: Icon(Icons.delete_outline, color: theme.colorScheme.error),
@@ -788,6 +794,7 @@ class _BreakEditorState extends ConsumerState<_BreakEditor> {
         clearTopic: true,
       );
       await ref.read(studyHubRepositoryProvider).saveTask(task);
+      await sl<NotificationService>().rescheduleAll();
       if (mounted) Navigator.of(context).pop();
     } on Object catch (error) {
       if (mounted) setState(() => _error = _scheduleErrorText(error));
