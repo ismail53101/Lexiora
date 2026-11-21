@@ -339,46 +339,6 @@ class _NotificationSection extends StatelessWidget {
     }
   }
 
-  Future<void> _setNotificationToggle(
-    BuildContext context,
-    Future<void> Function(bool) setter,
-    bool value,
-  ) async {
-    if (!value) {
-      await setter(false);
-      return;
-    }
-    final bool granted = await sl<NotificationService>().requestPermission();
-    if (!context.mounted) return;
-    if (!granted) {
-      await showDialog<void>(
-        context: context,
-        builder: (BuildContext dialogContext) => AlertDialog(
-          title: const Text('Notification access needed'),
-          content: const Text(
-            'DarsNexa needs notification access and exact alarm access to '
-            'send study reminders at the scheduled time.',
-          ),
-          actions: <Widget>[
-            TextButton(
-              onPressed: () => Navigator.pop(dialogContext),
-              child: const Text('Not now'),
-            ),
-            FilledButton(
-              onPressed: () async {
-                Navigator.pop(dialogContext);
-                await sl<NotificationService>().openNotificationSettings();
-              },
-              child: const Text('Open settings'),
-            ),
-          ],
-        ),
-      );
-      return;
-    }
-    await setter(true);
-  }
-
   Future<void> _requestPermission(BuildContext context) async {
     final bool granted = await sl<NotificationService>().requestPermission();
     if (!context.mounted) return;
@@ -423,8 +383,7 @@ class _NotificationSection extends StatelessWidget {
           title: const Text('Study reminders'),
           subtitle: const Text('Remind me before scheduled study sessions'),
           value: settings.studyRemindersEnabled,
-          onChanged: (bool value) =>
-              _setNotificationToggle(context, controller.setStudyRemindersEnabled, value),
+          onChanged: controller.setStudyRemindersEnabled,
         ),
         if (settings.studyRemindersEnabled)
           DropdownButtonFormField<int>(
@@ -452,8 +411,7 @@ class _NotificationSection extends StatelessWidget {
           subtitle: const Text('Remind me again 5 minutes after the start time'),
           value: settings.followUpReminderEnabled,
           onChanged: settings.studyRemindersEnabled
-              ? (bool value) =>
-                  _setNotificationToggle(context, controller.setFollowUpReminderEnabled, value)
+              ? controller.setFollowUpReminderEnabled
               : null,
         ),
         SwitchListTile(
@@ -461,16 +419,14 @@ class _NotificationSection extends StatelessWidget {
           title: const Text('Break reminders'),
           subtitle: const Text('Notify me when a planned break starts'),
           value: settings.breakRemindersEnabled,
-          onChanged: (bool value) =>
-              _setNotificationToggle(context, controller.setBreakRemindersEnabled, value),
+          onChanged: controller.setBreakRemindersEnabled,
         ),
         SwitchListTile(
           contentPadding: EdgeInsets.zero,
           title: const Text('Daily Word of the Day'),
           subtitle: const Text('Receive one GRE word notification every day'),
           value: settings.dailyWordEnabled,
-          onChanged: (bool value) =>
-              _setNotificationToggle(context, controller.setDailyWordEnabled, value),
+          onChanged: controller.setDailyWordEnabled,
         ),
         ListTile(
           contentPadding: EdgeInsets.zero,
