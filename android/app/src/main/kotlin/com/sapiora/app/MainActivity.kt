@@ -167,7 +167,7 @@ class MainActivity : FlutterActivity() {
                 .edit()
                 .putBoolean(notificationPermissionPromptedKey, true)
                 .apply()
-            completeStartupPermissionFlow()
+            beginAllFilesAccessFlow()
         } else if (requestCode == storagePermissionRequest) {
             getSharedPreferences(startupPermissionPrefs, MODE_PRIVATE)
                 .edit()
