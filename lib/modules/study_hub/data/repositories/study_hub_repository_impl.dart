@@ -236,9 +236,7 @@ class StudyHubRepositoryImpl implements StudyHubRepository {
 
     // Break rows are independent planner rows (their IDs are not derived from
     // the session ID). A break belongs to a session when it starts exactly at
-    // that session's end. This is also how the session editor finds its break.
-    // Include those rows explicitly; otherwise Move Today leaves old breaks
-    // behind on the source day.
+    // that session's end.
     final Set<String> sourceDays = <String>{for (final StudyTask t in movable) t.day};
     final Map<String, List<StudyTask>> sourceRowsByDay =
         <String, List<StudyTask>>{};
@@ -279,15 +277,13 @@ class StudyHubRepositoryImpl implements StudyHubRepository {
     final DateTime now = DateTime.now();
     final bool movingToToday = toDay == dayKey(now);
     final int nowMinute = now.hour * 60 + now.minute;
-    final Set<String> movedTaskIds = <String>{};
 
-    int nextOrder = placed.fold<int>(
-      -1,
-      (int current, StudyTask task) =>
-          task.orderIndex > current ? task.orderIndex : current,
-    ) + 1;
-
-    // Preserve focus/break order from the source timeline.
+    // IMPORTANT: moving a schedule must preserve its original clock time.
+    // For Today only, if that clock time has already passed, shift the whole
+    // moved chain forward by exactly the amount needed to start "now".
+    // Example: 09:00–12:00 moved at 08:30 => stays 09:00–12:00.
+    // Moved at 10:00 => becomes 10:00–13:00.
+    // Tomorrow/another day => always stays 09:00–12:00.
     chain.sort((StudyTask a, StudyTask b) {
       final int byDay = a.day.compareTo(b.day);
       if (byDay != 0) return byDay;
@@ -296,12 +292,34 @@ class StudyHubRepositoryImpl implements StudyHubRepository {
       return a.orderIndex.compareTo(b.orderIndex);
     });
 
+    final int? firstStart = _firstStartMinute(chain);
+    final int shiftMinutes = movingToToday && firstStart != null
+        ? (nowMinute > firstStart ? nowMinute - firstStart : 0)
+        : 0;
+
+    final Set<String> movedTaskIds = <String>{};
+    int nextOrder = placed.fold<int>(
+      -1,
+      (int current, StudyTask task) =>
+          task.orderIndex > current ? task.orderIndex : current,
+    ) + 1;
+
     for (final StudyTask row in chain) {
+      final int duration = StudyScheduleService.durationOf(row);
+      final int? start = row.startMinute == null
+          ? null
+          : row.startMinute! + shiftMinutes;
+      final int? end = start == null ? null : start + duration;
+
       final StudyTask incoming = row.copyWith(
         day: toDay,
-        autoScheduled: true,
-        clearTimes: true,
-        durationMinutes: StudyScheduleService.durationOf(row),
+        // A moved schedule is now a fixed-time anchor. This prevents the
+        // normal automatic scheduler from changing 09:00 into 12:00 merely
+        // because the destination day already contains later tasks.
+        autoScheduled: false,
+        startMinute: start,
+        endMinute: end,
+        durationMinutes: duration,
         status: row.isBreak ? TaskStatus.pending : row.status,
         orderIndex: nextOrder++,
         updatedAt: now,
@@ -310,11 +328,18 @@ class StudyHubRepositoryImpl implements StudyHubRepository {
       movedTaskIds.add(incoming.id);
     }
 
-    final List<StudyTask> recalculated = StudyScheduleService.recalculate(
-      placed,
-      minimumStartMinute: movingToToday ? nowMinute : null,
-      minimumStartTaskIds: movingToToday ? movedTaskIds : null,
+    final List<StudyTask> recalculated =
+        StudyScheduleService.recalculate(placed);
+
+    final StudyScheduleConflict? conflict = _firstWhereOrNull(
+      StudyScheduleService.conflicts(recalculated),
+      (StudyScheduleConflict c) =>
+          movedTaskIds.contains(c.item.id) ||
+          movedTaskIds.contains(c.previous.id),
     );
+    if (conflict != null) {
+      throw StudyScheduleOverlapException(conflict);
+    }
 
     if (movingToToday) {
       final StudyTask? overflow = _firstWhereOrNull(
@@ -333,14 +358,20 @@ class StudyHubRepositoryImpl implements StudyHubRepository {
     }
 
     // Moving means removing the complete source chain as well as inserting it
-    // on the destination day. Without this delete, the old break remains
-    // visible even though the session itself appears to have moved.
+    // on the destination day.
     await _local.applyChanges(
       upserts: recalculated.map(_taskCompanion).toList(),
       deleteIds: movedIds.toList(growable: false),
     );
     _notifyChanged();
     return movable.length;
+  }
+
+  int? _firstStartMinute(List<StudyTask> rows) {
+    for (final StudyTask row in rows) {
+      if (row.startMinute != null) return row.startMinute;
+    }
+    return null;
   }
 
   @override
