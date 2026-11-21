@@ -79,10 +79,7 @@ class MainActivity : FlutterActivity() {
     }
 
     private fun requestNotificationPermissionOnFreshInstall() {
-        val prefs = getSharedPreferences(notificationPermissionPrefs, MODE_PRIVATE)
-
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU &&
-            !prefs.getBoolean(notificationPermissionPromptedKey, false) &&
             checkSelfPermission(Manifest.permission.POST_NOTIFICATIONS) !=
                 PackageManager.PERMISSION_GRANTED
         ) {
@@ -93,17 +90,11 @@ class MainActivity : FlutterActivity() {
             return
         }
 
-        // PDF storage access is requested only when the user opens Library.
-        // Do not open the All Files Access screen during app startup.
-        completeStartupPermissionFlow()
+        beginAllFilesAccessFlow()
     }
 
     private fun beginAllFilesAccessFlow() {
         val prefs = getSharedPreferences(startupPermissionPrefs, MODE_PRIVATE)
-        if (prefs.getBoolean(allFilesPromptedKey, false)) {
-            completeStartupPermissionFlow()
-            return
-        }
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
             if (Environment.isExternalStorageManager()) {
@@ -112,7 +103,6 @@ class MainActivity : FlutterActivity() {
                 return
             }
 
-            prefs.edit().putBoolean(allFilesPromptedKey, true).apply()
             try {
                 val intent = Intent(
                     android.provider.Settings.ACTION_MANAGE_APP_ALL_FILES_ACCESS_PERMISSION,
@@ -120,7 +110,7 @@ class MainActivity : FlutterActivity() {
                 )
                 startActivity(intent)
             } catch (e: Exception) {
-                Log.w("Lexiora", "Could not open All Files Access settings: ${e.message}")
+                Log.w("Lexiora", "Could not open All Files Access settings: " + e.message)
                 completeStartupPermissionFlow()
             }
             return
@@ -158,13 +148,11 @@ class MainActivity : FlutterActivity() {
 
     override fun onResume() {
         super.onResume()
-        if (!startupPermissionReady) {
-            val prefs = getSharedPreferences(startupPermissionPrefs, MODE_PRIVATE)
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R &&
-                prefs.getBoolean(allFilesPromptedKey, false)
-            ) {
-                completeStartupPermissionFlow()
-            }
+        if (!startupPermissionReady &&
+            Build.VERSION.SDK_INT >= Build.VERSION_CODES.R &&
+            Environment.isExternalStorageManager()
+        ) {
+            completeStartupPermissionFlow()
         }
     }
 
