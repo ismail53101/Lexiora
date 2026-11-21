@@ -170,7 +170,7 @@ void main() {
       expect(await r.moveSessionsToDay(tasks: missed, toDay: tomorrow), 2);
 
       expect((await dayRows(r, tomorrow)).map(line).toList(),
-          <String>['S Maths 540-630', 'S English 480-525', 'S Chemistry 780-840']);
+          <String>['S English 480-525', 'S Maths 540-630', 'S Chemistry 780-840']);
       final StudyTask maths = (await dayRows(r, tomorrow)).firstWhere((StudyTask t) => t.id == 'm1');
       expect(maths.topic, 'Algebra');
       expect(maths.autoScheduled, false);
