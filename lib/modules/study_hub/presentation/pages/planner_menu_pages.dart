@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:lexiora/modules/study_hub/domain/pomodoro_state.dart';
 import 'package:lexiora/modules/study_hub/presentation/providers/manual_timer_controller.dart';
 import 'package:lexiora/modules/study_hub/presentation/providers/pomodoro_controller.dart';
 import 'package:lexiora/modules/study_hub/presentation/providers/study_hub_providers.dart';
