@@ -161,19 +161,19 @@ void main() {
   });
 
   group('move to another day', () {
-    test('missed sessions land after what is already planned, as automatic sessions', () async {
+    test('missed timed sessions preserve their original clock time', () async {
       final StudyHubRepositoryImpl r = await repo();
-      await r.saveTask(task('tmrw', tomorrow, 'Chemistry', start: 9 * h, end: 10 * h));
+      await r.saveTask(task('tmrw', tomorrow, 'Chemistry', start: 13 * h, end: 14 * h));
       await r.saveTask(task('m1', '2026-03-09', 'Maths', start: 9 * h, end: 10 * h + 30, topic: 'Algebra'));
       await r.saveTask(task('m2', today, 'English', start: 8 * h, end: 8 * h + 45));
       final List<StudyTask> missed = await r.missedSessions(today: today, nowMinute: 12 * h);
       expect(await r.moveSessionsToDay(tasks: missed, toDay: tomorrow), 2);
 
       expect((await dayRows(r, tomorrow)).map(line).toList(),
-          <String>['S Chemistry 540-600', 'S Maths 600-690', 'S English 690-735']);
+          <String>['S Maths 540-630', 'S English 480-525', 'S Chemistry 780-840']);
       final StudyTask maths = (await dayRows(r, tomorrow)).firstWhere((StudyTask t) => t.id == 'm1');
       expect(maths.topic, 'Algebra');
-      expect(maths.autoScheduled, true);
+      expect(maths.autoScheduled, false);
       expect(maths.status, TaskStatus.pending);
       expect(await dayRows(r, '2026-03-09'), isEmpty);
       expect(await dayRows(r, today), isEmpty);
@@ -192,7 +192,7 @@ void main() {
       expect(rows.map((StudyTask t) => t.id).toSet(), <String>{'u', 's'});
       final StudyTask u = rows.firstWhere((StudyTask t) => t.id == 'u');
       expect(u.endMinute! - u.startMinute!, StudyScheduleService.defaultSessionMinutes);
-      expect(u.startMinute, 10 * h); // right after the existing 09:00-10:00 session
+      expect(u.startMinute, 10 * h); // untimed items still use the next available slot
     });
 
     test('moving nothing does nothing', () async {
