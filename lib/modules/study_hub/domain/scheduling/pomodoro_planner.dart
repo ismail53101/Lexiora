@@ -89,3 +89,51 @@ PomodoroPlan planPomodoro({
   }
   return PomodoroPlan(out);
 }
+
+
+/// Plans a fixed total calendar window using Pomodoro-style focus + breaks.
+///
+/// Unlike [planPomodoro], [totalWindowMinutes] includes the breaks. For
+/// example, a 60-minute window with 50/10 produces exactly 50 minutes of
+/// focus followed by 10 minutes of break.
+PomodoroPlan planPomodoroWindow({
+  required int totalWindowMinutes,
+  required int focusMinutes,
+  required int breakMinutes,
+}) {
+  if (totalWindowMinutes <= 0) return const PomodoroPlan(<PlannedBlock>[]);
+  if (focusMinutes <= 0 || breakMinutes < 0) {
+    throw ArgumentError('Focus minutes must be positive and break minutes non-negative.');
+  }
+
+  final List<PlannedBlock> out = <PlannedBlock>[];
+  int remaining = totalWindowMinutes;
+  int offset = 0;
+
+  while (remaining > 0) {
+    final int focus = remaining < focusMinutes ? remaining : focusMinutes;
+    out.add(PlannedBlock(
+      kind: BlockKind.focus,
+      offsetMinutes: offset,
+      minutes: focus,
+    ));
+    offset += focus;
+    remaining -= focus;
+
+    if (remaining <= 0 || breakMinutes == 0) break;
+
+    final int breakLength = remaining < breakMinutes ? remaining : breakMinutes;
+    out.add(PlannedBlock(
+      kind: BlockKind.rest,
+      offsetMinutes: offset,
+      minutes: breakLength,
+    ));
+    offset += breakLength;
+    remaining -= breakLength;
+  }
+
+  // A partial final focus block is not useful when the remaining window is
+  // shorter than a normal focus period. Keep the window exact rather than
+  // extending it beyond the user's selected duration.
+  return PomodoroPlan(out);
+}
