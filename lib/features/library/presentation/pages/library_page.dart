@@ -365,6 +365,16 @@ class _LibraryPageState extends ConsumerState<LibraryPage> {
   /// duplicates of already-known files are skipped.
   Future<void> _import() async {
     final ScaffoldMessengerState messenger = ScaffoldMessenger.of(context);
+
+    // The Library is intentionally permission-gated. Even the manual picker
+    // must not add a PDF before the user has granted PDF/storage access.
+    final PermissionService perm = ref.read(permissionServiceProvider);
+    final bool granted = await perm.isGrantedForDiscovery();
+    if (!granted) {
+      await _autoDiscover();
+      return;
+    }
+
     setState(() => _importing = true);
     final Result<ImportOutcome> result =
         await ref.read(importPdfsProvider).call(const NoParams());
