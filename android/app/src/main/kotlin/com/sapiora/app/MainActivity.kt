@@ -411,51 +411,21 @@ class MainActivity : FlutterActivity() {
             val out = ArrayList<Map<String, Any?>>()
             val seen = HashSet<String>()
             try {
-                // MediaStore is the fast, system-indexed source. Use it first
-                // so a large phone storage tree cannot block the Library scan.
+                // MediaStore is Android's indexed file database. With
+                // MANAGE_EXTERNAL_STORAGE granted, it is the reliable
+                // fast path for discovering device PDFs. Do not recursively
+                // walk storage here: that can keep the Library spinner busy
+                // for a very long time on phones with large storage.
                 queryMediaStorePdfs(out, seen)
-
-                // Small fallback walk for common user folders containing PDFs
-                // that have not yet been indexed by MediaStore.
-                val roots = ArrayList<File>()
-                Environment.getExternalStorageDirectory()?.let { storage ->
-                    val names = arrayOf(
-                        "Download", "Documents", "DCIM", "Pictures",
-                        "Movies", "Music", "Android/media",
-                    )
-                    for (name in names) {
-                        val dir = File(storage, name)
-                        if (dir.exists() && dir.isDirectory) roots.add(dir)
-                    }
-                }
-                for (dir in getExternalFilesDirs(null)) {
-                    val vol = dir?.parentFile?.parentFile?.parentFile?.parentFile
-                    if (vol != null && vol.exists()) {
-                        for (name in arrayOf(
-                            "Download", "Documents", "DCIM", "Pictures",
-                            "Movies", "Music", "Android/media",
-                        )) {
-                            val root = File(vol, name)
-                            if (root.exists() && root.isDirectory &&
-                                roots.none { it.absolutePath == root.absolutePath }
-                            ) roots.add(root)
-                        }
-                    }
-                }
-                for (root in roots) walkPdfs(root, out, seen, 0)
-
-                Log.i(
-                    "Lexiora",
-                    "scanAllPdfs: total=" + out.size +
-                        " from MediaStore/common folders across " +
-                        roots.size + " root(s)",
-                )
+                Log.i("Lexiora", "scanAllPdfs: found=" + out.size)
                 runOnUiThread { result.success(out) }
             } catch (e: Exception) {
+                Log.w("Lexiora", "scanAllPdfs failed: " + e.message)
                 runOnUiThread { result.error("scan_all_failed", e.message, null) }
             }
         }.start()
     }
+
     /// Queries [MediaStore.Files] for every indexed `application/pdf` entry and
     /// appends the ones not already found by the filesystem walk (deduped by
     /// absolute path, via [seen]). Returns how many new entries were added.
