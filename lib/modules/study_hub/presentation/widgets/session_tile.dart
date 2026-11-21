@@ -122,7 +122,7 @@ class SessionTile extends ConsumerWidget {
 
   Widget _menu(BuildContext context, WidgetRef ref) {
     return PopupMenuButton<String>(
-      onSelected: (String v) {
+      onSelected: (String v) async {
         if (v == 'edit') {
           task.isBreak
               ? showBreakEditor(context, day: task.day, existing: task)
