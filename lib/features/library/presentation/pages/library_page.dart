@@ -276,12 +276,10 @@ class _LibraryPageState extends ConsumerState<LibraryPage> {
     return EmptyState(
       icon: Icons.folder_off_outlined,
       title: 'Allow access to your files',
-      message: 'Sapiora lists the PDFs already on your device — nothing is '
-          'ever uploaded and everything stays on your phone. To do that it '
-          'needs the one-time “All files access” permission (the same '
-          'one Adobe Acrobat and Xodo use). Grant it once and your PDFs appear '
-          'here automatically. You can also use Import PDF to add files without '
-          'granting access.',
+      message: 'DarsNexa lists PDFs from your device only after you grant '
+          'the one-time PDF/storage access. Nothing is uploaded and your files '
+          'stay on your phone. Grant access once and your PDFs can appear here '
+          'automatically or be added with the PDF picker.',
       action: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
