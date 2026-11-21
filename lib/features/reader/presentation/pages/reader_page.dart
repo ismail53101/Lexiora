@@ -468,6 +468,17 @@ class _ReaderPageState extends ConsumerState<ReaderPage> {
             tooltip: 'Search in document',
             onPressed: _toggleSearch,
           ),
+          IconButton(
+            icon: Icon(
+              _keepScreenAwake
+                  ? Icons.screen_lock_portrait
+                  : Icons.screen_lock_portrait_outlined,
+            ),
+            tooltip: _keepScreenAwake
+                ? 'Turn off keep screen awake'
+                : 'Keep screen awake',
+            onPressed: () => _setKeepScreenAwake(!_keepScreenAwake),
+          ),
           _BookmarkToggle(documentId: _id, controller: _controller),
         ],
         bottom: _searching
@@ -491,29 +502,6 @@ class _ReaderPageState extends ConsumerState<ReaderPage> {
             child: sl<PdfEngine>().buildViewer(
               controller: _controller,
               config: config,
-            ),
-          ),
-          Positioned(
-            left: 0,
-            right: 0,
-            bottom: 68,
-            child: SafeArea(
-              top: false,
-              child: Center(
-                child: FilterChip(
-                  selected: _keepScreenAwake,
-                  onSelected: _setKeepScreenAwake,
-                  avatar: Icon(
-                    _keepScreenAwake
-                        ? Icons.screen_lock_portrait
-                        : Icons.screen_lock_portrait_outlined,
-                  ),
-                  label: const Text('Keep screen awake'),
-                  tooltip: 'Keep the screen awake while reading this PDF',
-                  showCheckmark: false,
-                  visualDensity: VisualDensity.compact,
-                ),
-              ),
             ),
           ),
           if (_selection != null)
