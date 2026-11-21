@@ -35,7 +35,7 @@ class GetWordProfile implements UseCase<WordProfile, String> {
           exam: exam,
           base: base,
           relatedWords: related,
-          ai: ai?.hasContent == true ? ai : null,
+          ai: null,
         );
       });
 }
