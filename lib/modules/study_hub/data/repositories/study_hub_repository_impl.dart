@@ -233,37 +233,38 @@ class StudyHubRepositoryImpl implements StudyHubRepository {
 
     final List<StudyTask> target =
         (await _local.getTasks(toDay)).map(_toTask).toList();
-    final Set<String> ids = <String>{for (final StudyTask t in movable) t.id};
 
-    // A session created with focus/break blocks owns its Break rows through
-    // the session-id prefix. Move those rows together with the session so an
-    // old break is never left behind on the source day.
+    // A Pomodoro session is stored as a chain:
+    // <root>, <root>:f1, <root>:b1, <root>:f2, ...
+    // The missed-session banner can hand us one focus block (for example
+    // <root>:f1), so derive the root and move the entire chain together.
+    final Set<String> roots = <String>{
+      for (final StudyTask task in movable)
+        task.id.contains(':') ? task.id.split(':').first : task.id,
+    };
+
     final Map<String, List<StudyTask>> sourceRowsByDay =
         <String, List<StudyTask>>{};
-    for (final StudyTask session in movable) {
-      sourceRowsByDay.putIfAbsent(session.day, () => <StudyTask>[]);
+    for (final StudyTask task in movable) {
+      sourceRowsByDay.putIfAbsent(task.day, () => <StudyTask>[]);
     }
     for (final String day in sourceRowsByDay.keys) {
       sourceRowsByDay[day] =
           (await _local.getTasks(day)).map(_toTask).toList();
     }
 
-    final List<StudyTask> movedBreaks = <StudyTask>[];
-    for (final StudyTask session in movable) {
-      final List<StudyTask> sourceRows =
-          sourceRowsByDay[session.day] ?? <StudyTask>[];
-      movedBreaks.addAll(
-        sourceRows.where(
-          (StudyTask row) =>
-              row.isBreak && row.id.startsWith(session.id + ':'),
-        ),
+    final List<StudyTask> chain = <StudyTask>[];
+    for (final List<StudyTask> sourceRows in sourceRowsByDay.values) {
+      chain.addAll(
+        sourceRows.where((StudyTask row) {
+          final String root =
+              row.id.contains(':') ? row.id.split(':').first : row.id;
+          return roots.contains(root);
+        }),
       );
     }
 
-    final Set<String> movedIds = <String>{
-      ...ids,
-      ...movedBreaks.map((StudyTask t) => t.id),
-    };
+    final Set<String> movedIds = <String>{for (final StudyTask t in chain) t.id};
     final List<StudyTask> placed = target
         .where((StudyTask t) => !movedIds.contains(t.id))
         .toList();
@@ -279,42 +280,32 @@ class StudyHubRepositoryImpl implements StudyHubRepository {
           task.orderIndex > current ? task.orderIndex : current,
     ) + 1;
 
-    for (final StudyTask session in movable) {
-      final StudyTask incoming = session.copyWith(
+    // Keep every focus/break block in its original chain order.
+    chain.sort((StudyTask a, StudyTask b) {
+      final int byDay = a.day.compareTo(b.day);
+      if (byDay != 0) return byDay;
+      final int byStart = (a.startMinute ?? 0).compareTo(b.startMinute ?? 0);
+      if (byStart != 0) return byStart;
+      return a.orderIndex.compareTo(b.orderIndex);
+    });
+
+    for (final StudyTask row in chain) {
+      final StudyTask incoming = row.copyWith(
         day: toDay,
         autoScheduled: true,
         clearTimes: true,
-        durationMinutes: StudyScheduleService.durationOf(session),
-        status: TaskStatus.pending,
+        durationMinutes: StudyScheduleService.durationOf(row),
+        status: row.isBreak ? TaskStatus.pending : row.status,
         orderIndex: nextOrder++,
         updatedAt: now,
       );
-      final StudyTask prepared = _prepareIncoming(incoming, placed);
-      placed.add(prepared);
-      movedTaskIds.add(prepared.id);
-
-      final List<StudyTask> blocks = movedBreaks
-          .where((StudyTask row) => row.id.startsWith(session.id + ':'))
-          .toList();
-
-      for (final StudyTask block in blocks) {
-        final StudyTask incomingBreak = block.copyWith(
-          day: toDay,
-          autoScheduled: true,
-          clearTimes: true,
-          durationMinutes: StudyScheduleService.durationOf(block),
-          status: TaskStatus.pending,
-          orderIndex: nextOrder++,
-          updatedAt: now,
-        );
-        placed.add(incomingBreak);
-        movedTaskIds.add(incomingBreak.id);
-      }
+      placed.add(incoming);
+      movedTaskIds.add(incoming.id);
     }
 
-    // When moving missed work to Today, never put it back into a time that
-    // has already passed. The floor applies to the moved session/break chain,
-    // not to existing sessions that were already planned for today.
+    // Today starts from the actual current minute. Because the complete
+    // focus/break chain is in movedTaskIds, the break rows get the same
+    // current-time floor and remain between their focus blocks.
     final List<StudyTask> recalculated = StudyScheduleService.recalculate(
       placed,
       minimumStartMinute: movingToToday ? nowMinute : null,
