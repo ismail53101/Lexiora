@@ -44,7 +44,7 @@ class _LibraryPageState extends ConsumerState<LibraryPage> {
   String? _categoryId;
   bool _scanning = false;
   bool _importing = false;
-  bool _accessDenied = false;
+  bool _accessDenied = true;
   bool _searching = false;
   String _query = '';
   LibrarySort _sort = LibrarySort.importDate;
