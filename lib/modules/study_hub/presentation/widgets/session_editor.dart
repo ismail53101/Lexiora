@@ -425,15 +425,16 @@ class _SessionEditorState extends ConsumerState<_SessionEditor> {
     final bool canSplit = widget.existing == null && _mode != _TimeMode.none;
     final bool splitting = canSplit && _split;
     final PomodoroPlan? plan = splitting
-        ? planPomodoro(
-            totalFocusMinutes: _duration,
+        ? planPomodoroWindow(
+            totalWindowMinutes: _duration,
             focusMinutes: _blockPresets[_preset].$1,
             breakMinutes: _blockPresets[_preset].$2,
           )
         : null;
     final int? start = _startFor();
-    final int? end =
-        start == null ? null : start + (plan?.windowMinutes ?? _duration);
+    // The selected session duration is the total calendar window. Breaks are
+    // inside that window, so Split must never extend the session's end time.
+    final int? end = start == null ? null : start + _duration;
     final bool pastMidnight = end != null && end > 24 * 60;
 
     return Padding(
