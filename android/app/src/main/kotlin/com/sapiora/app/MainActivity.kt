@@ -93,7 +93,9 @@ class MainActivity : FlutterActivity() {
             return
         }
 
-        beginAllFilesAccessFlow()
+        // PDF storage access is requested only when the user opens Library.
+        // Do not open the All Files Access screen during app startup.
+        completeStartupPermissionFlow()
     }
 
     private fun beginAllFilesAccessFlow() {
@@ -177,7 +179,7 @@ class MainActivity : FlutterActivity() {
                 .edit()
                 .putBoolean(notificationPermissionPromptedKey, true)
                 .apply()
-            beginAllFilesAccessFlow()
+            completeStartupPermissionFlow()
         } else if (requestCode == storagePermissionRequest) {
             getSharedPreferences(startupPermissionPrefs, MODE_PRIVATE)
                 .edit()
