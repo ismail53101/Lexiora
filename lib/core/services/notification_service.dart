@@ -145,18 +145,11 @@ class NotificationService {
       'exactAlarmRequest=$exactGranted, exactAlarmAvailable=$exactAvailable',
     );
     final bool enabled = await _isEnabled();
-    final bool exactReady =
-        exactAvailable == null || exactAvailable == true;
-    if (enabled && exactReady) {
+    if (enabled) {
       await rescheduleAll();
-    } else if (!enabled) {
-      await _cancelManagedNotifications();
     }
-    // The scheduler uses exactAllowWhileIdle, so both notification access and
-    // exact-alarm access are required before we report the feature as ready.
-    return (granted ?? enabled) && exactReady;
+    return granted ?? enabled;
   }
-
   Future<bool> notificationsEnabled() async {
     await initialize();
     final bool enabled = await _isEnabled();
