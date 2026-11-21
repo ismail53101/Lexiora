@@ -230,33 +230,90 @@ class StudyHubRepositoryImpl implements StudyHubRepository {
     final List<StudyTask> movable =
         tasks.where((StudyTask t) => !t.isBreak && t.day != toDay).toList();
     if (movable.isEmpty) return 0;
+
     final List<StudyTask> target =
         (await _local.getTasks(toDay)).map(_toTask).toList();
     final Set<String> ids = <String>{for (final StudyTask t in movable) t.id};
+
+    // A session created with focus/break blocks owns its Break rows through
+    // the session-id prefix. Move those rows together with the session so an
+    // old break is never left behind on the source day.
+    final Map<String, List<StudyTask>> sourceRowsByDay =
+        <String, List<StudyTask>>{};
+    for (final StudyTask session in movable) {
+      sourceRowsByDay.putIfAbsent(session.day, () => <StudyTask>[]);
+    }
+    for (final String day in sourceRowsByDay.keys) {
+      sourceRowsByDay[day] =
+          (await _local.getTasks(day)).map(_toTask).toList();
+    }
+
+    final List<StudyTask> movedBreaks = <StudyTask>[];
+    for (final StudyTask session in movable) {
+      final List<StudyTask> sourceRows =
+          sourceRowsByDay[session.day] ?? <StudyTask>[];
+      movedBreaks.addAll(
+        sourceRows.where(
+          (StudyTask row) =>
+              row.isBreak && row.id.startsWith(session.id + ':'),
+        ),
+      );
+    }
+
+    final Set<String> movedIds = <String>{
+      ...ids,
+      ...movedBreaks.map((StudyTask t) => t.id),
+    };
     final List<StudyTask> placed = target
-        .where((StudyTask t) => !ids.contains(t.id))
+        .where((StudyTask t) => !movedIds.contains(t.id))
         .toList();
+
     final DateTime now = DateTime.now();
     final bool movingToToday = toDay == dayKey(now);
     final int nowMinute = now.hour * 60 + now.minute;
     final Set<String> movedTaskIds = <String>{};
 
-    for (final StudyTask t in movable) {
-      final StudyTask incoming = t.copyWith(
+    int nextOrder = placed.fold<int>(
+      -1,
+      (int current, StudyTask task) =>
+          task.orderIndex > current ? task.orderIndex : current,
+    ) + 1;
+
+    for (final StudyTask session in movable) {
+      final StudyTask incoming = session.copyWith(
         day: toDay,
         autoScheduled: true,
         clearTimes: true,
-        durationMinutes: StudyScheduleService.durationOf(t),
+        durationMinutes: StudyScheduleService.durationOf(session),
         status: TaskStatus.pending,
+        orderIndex: nextOrder++,
         updatedAt: now,
       );
       final StudyTask prepared = _prepareIncoming(incoming, placed);
       placed.add(prepared);
       movedTaskIds.add(prepared.id);
+
+      final List<StudyTask> blocks = movedBreaks
+          .where((StudyTask row) => row.id.startsWith(session.id + ':'))
+          .toList();
+
+      for (final StudyTask block in blocks) {
+        final StudyTask incomingBreak = block.copyWith(
+          day: toDay,
+          autoScheduled: true,
+          clearTimes: true,
+          durationMinutes: StudyScheduleService.durationOf(block),
+          status: TaskStatus.pending,
+          orderIndex: nextOrder++,
+          updatedAt: now,
+        );
+        placed.add(incomingBreak);
+        movedTaskIds.add(incomingBreak.id);
+      }
     }
 
     // When moving missed work to Today, never put it back into a time that
-    // has already passed. The floor applies ONLY to the sessions being moved,
+    // has already passed. The floor applies to the moved session/break chain,
     // not to existing sessions that were already planned for today.
     final List<StudyTask> recalculated = StudyScheduleService.recalculate(
       placed,
@@ -268,9 +325,7 @@ class StudyHubRepositoryImpl implements StudyHubRepository {
       final StudyTask? overflow = _firstWhereOrNull(
         recalculated,
         (StudyTask task) =>
-            task.id.startsWith('') &&
-            !task.isBreak &&
-            task.id.isNotEmpty &&
+            movedTaskIds.contains(task.id) &&
             task.endMinute != null &&
             task.endMinute! > StudyScheduleService.minutesPerDay,
       );
