@@ -237,6 +237,9 @@ class StudyHubRepositoryImpl implements StudyHubRepository {
         .where((StudyTask t) => !ids.contains(t.id))
         .toList();
     final DateTime now = DateTime.now();
+    final bool movingToToday = toDay == dayKey(now);
+    final int nowMinute = now.hour * 60 + now.minute;
+
     for (final StudyTask t in movable) {
       final StudyTask incoming = t.copyWith(
         day: toDay,
@@ -248,7 +251,33 @@ class StudyHubRepositoryImpl implements StudyHubRepository {
       );
       placed.add(_prepareIncoming(incoming, placed));
     }
-    final List<StudyTask> recalculated = StudyScheduleService.recalculate(placed);
+
+    // When moving missed work to Today, never put it back into a time that
+    // has already passed. Start from the later of "now" and the end of the
+    // existing timeline. Tomorrow/future dates keep the normal 9 AM behaviour.
+    final List<StudyTask> recalculated = StudyScheduleService.recalculate(
+      placed,
+      minimumStartMinute: movingToToday ? nowMinute : null,
+    );
+
+    if (movingToToday) {
+      final StudyTask? overflow = _firstWhereOrNull(
+        recalculated,
+        (StudyTask task) =>
+            task.id.startsWith('') &&
+            !task.isBreak &&
+            task.id.isNotEmpty &&
+            task.endMinute != null &&
+            task.endMinute! > StudyScheduleService.minutesPerDay,
+      );
+      if (overflow != null) {
+        throw const StudyScheduleInvalidTimeException(
+          'There is not enough time left today for all missed sessions. '
+          'Choose tomorrow or another date.',
+        );
+      }
+    }
+
     await _local.applyChanges(
       upserts: recalculated.map(_taskCompanion).toList(),
     );
