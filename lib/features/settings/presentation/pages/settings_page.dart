@@ -151,13 +151,6 @@ class _SettingsBody extends ConsumerWidget {
           children: [
             SwitchListTile(
               contentPadding: EdgeInsets.zero,
-              title: const Text('Keep screen awake'),
-              subtitle: const Text('Stop the screen dimming while reading'),
-              value: settings.keepScreenAwake,
-              onChanged: controller.setKeepScreenAwake,
-            ),
-            SwitchListTile(
-              contentPadding: EdgeInsets.zero,
               title: const Text('Auto-resume'),
               subtitle: const Text('Reopen documents on your last read page'),
               value: settings.autoResume,
