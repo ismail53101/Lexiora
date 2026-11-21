@@ -2,6 +2,7 @@ package com.sapiora.app
 
 import android.Manifest
 import android.app.Activity
+import android.app.AppOpsManager
 import android.content.Intent
 import android.database.Cursor
 import android.graphics.BitmapFactory
@@ -9,6 +10,7 @@ import android.net.Uri
 import android.os.Build
 import android.os.Bundle
 import android.os.Environment
+import android.os.Process
 import android.content.pm.PackageManager
 import android.provider.MediaStore
 import android.provider.OpenableColumns
@@ -93,11 +95,28 @@ class MainActivity : FlutterActivity() {
         beginAllFilesAccessFlow()
     }
 
+    private fun hasAllFilesAccess(): Boolean {
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.R) return true
+        if (Environment.isExternalStorageManager()) return true
+
+        return try {
+            val appOps = getSystemService(AppOpsManager::class.java)
+            appOps?.unsafeCheckOpNoThrow(
+                AppOpsManager.OPSTR_MANAGE_EXTERNAL_STORAGE,
+                Process.myUid(),
+                packageName,
+            ) == AppOpsManager.MODE_ALLOWED
+        } catch (e: Exception) {
+            Log.w("Lexiora", "All Files Access app-op check failed: " + e.message)
+            false
+        }
+    }
+
     private fun beginAllFilesAccessFlow() {
         val prefs = getSharedPreferences(startupPermissionPrefs, MODE_PRIVATE)
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
-            if (Environment.isExternalStorageManager()) {
+            if (hasAllFilesAccess()) {
                 prefs.edit().putBoolean(allFilesPromptedKey, true).apply()
                 completeStartupPermissionFlow()
                 return
@@ -150,7 +169,7 @@ class MainActivity : FlutterActivity() {
         super.onResume()
         if (!startupPermissionReady &&
             Build.VERSION.SDK_INT >= Build.VERSION_CODES.R &&
-            Environment.isExternalStorageManager()
+            hasAllFilesAccess()
         ) {
             completeStartupPermissionFlow()
         }
@@ -224,11 +243,7 @@ class MainActivity : FlutterActivity() {
                         result.success(null)
                     }
                     "isExternalStorageManager" -> result.success(
-                        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
-                            Environment.isExternalStorageManager()
-                        } else {
-                            true
-                        },
+                        hasAllFilesAccess(),
                     )
                     "openAllFilesAccessSettings" -> {
                         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
@@ -410,34 +425,44 @@ class MainActivity : FlutterActivity() {
             val out = ArrayList<Map<String, Any?>>()
             val seen = HashSet<String>()
             try {
+                // MediaStore is the fast, system-indexed source. Use it first
+                // so a large phone storage tree cannot block the Library scan.
+                queryMediaStorePdfs(out, seen)
+
+                // Small fallback walk for common user folders containing PDFs
+                // that have not yet been indexed by MediaStore.
                 val roots = ArrayList<File>()
-                Environment.getExternalStorageDirectory()?.let { roots.add(it) }
-                // Include secondary volumes (e.g. SD cards): each getExternalFilesDirs
-                // entry is /storage/<VOL>/Android/data/<pkg>/files → the volume root
-                // is four levels up.
-                for (dir in getExternalFilesDirs(null)) {
-                    val vol = dir?.parentFile?.parentFile?.parentFile?.parentFile
-                    if (vol != null && vol.exists() &&
-                        roots.none { it.absolutePath == vol.absolutePath }
-                    ) {
-                        roots.add(vol)
+                Environment.getExternalStorageDirectory()?.let { storage ->
+                    val names = arrayOf(
+                        "Download", "Documents", "DCIM", "Pictures",
+                        "Movies", "Music", "Android/media",
+                    )
+                    for (name in names) {
+                        val dir = File(storage, name)
+                        if (dir.exists() && dir.isDirectory) roots.add(dir)
                     }
                 }
-                val beforeMediaStore = out.size
+                for (dir in getExternalFilesDirs(null)) {
+                    val vol = dir?.parentFile?.parentFile?.parentFile?.parentFile
+                    if (vol != null && vol.exists()) {
+                        for (name in arrayOf(
+                            "Download", "Documents", "DCIM", "Pictures",
+                            "Movies", "Music", "Android/media",
+                        )) {
+                            val root = File(vol, name)
+                            if (root.exists() && root.isDirectory &&
+                                roots.none { it.absolutePath == root.absolutePath }
+                            ) roots.add(root)
+                        }
+                    }
+                }
                 for (root in roots) walkPdfs(root, out, seen, 0)
-                val fromWalk = out.size - beforeMediaStore
-
-                // Second, independent source: the system's indexed media database.
-                // This finds files the raw filesystem walk misses on vendor builds
-                // that restrict recursive directory listing under scoped storage,
-                // since MediaStore is populated by the OS's own media scanner and
-                // reads from it are never subject to that restriction.
-                val fromMediaStore = queryMediaStorePdfs(out, seen)
 
                 Log.i(
                     "Lexiora",
-                    "scanAllPdfs: filesystem=$fromWalk MediaStore=$fromMediaStore " +
-                        "total=${out.size} across ${roots.size} volume(s)",
+                    "scanAllPdfs: total=" + out.size +
+                        " from MediaStore/common folders across " +
+                        roots.size + " root(s)",
                 )
                 runOnUiThread { result.success(out) }
             } catch (e: Exception) {
@@ -445,7 +470,6 @@ class MainActivity : FlutterActivity() {
             }
         }.start()
     }
-
     /// Queries [MediaStore.Files] for every indexed `application/pdf` entry and
     /// appends the ones not already found by the filesystem walk (deduped by
     /// absolute path, via [seen]). Returns how many new entries were added.
