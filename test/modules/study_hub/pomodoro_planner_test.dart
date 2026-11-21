@@ -64,6 +64,37 @@ void main() {
     expect(p.windowMinutes, 100);
   });
 
+
+  test('a 1-hour split is 50 minutes focus plus 10 minutes break', () {
+    final PomodoroPlan p = planPomodoroWindow(
+      totalWindowMinutes: 60,
+      focusMinutes: 50,
+      breakMinutes: 10,
+    );
+    expect(kinds(p), <(BlockKind, int)>[
+      (BlockKind.focus, 50),
+      (BlockKind.rest, 10),
+    ]);
+    expect(p.windowMinutes, 60);
+    expect(p.focusMinutes, 50);
+  });
+
+  test('a 2-hour split keeps the full window without a trailing focus extension', () {
+    final PomodoroPlan p = planPomodoroWindow(
+      totalWindowMinutes: 120,
+      focusMinutes: 50,
+      breakMinutes: 10,
+    );
+    expect(kinds(p), <(BlockKind, int)>[
+      (BlockKind.focus, 50),
+      (BlockKind.rest, 10),
+      (BlockKind.focus, 50),
+      (BlockKind.rest, 10),
+    ]);
+    expect(p.windowMinutes, 120);
+    expect(p.focusMinutes, 100);
+  });
+
   test('empty input gives an empty plan', () {
     expect(planPomodoro(totalFocusMinutes: 0, focusMinutes: 25, breakMinutes: 5).blocks, isEmpty);
   });
