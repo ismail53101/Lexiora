@@ -87,7 +87,10 @@ class StudyScheduleService {
   /// A session or break edited by the user can remain a manual anchor. Every
   /// later automatic row is placed at the end of the previous timeline item,
   /// which makes the persisted values and the rendered timeline agree.
-  static List<StudyTask> recalculate(Iterable<StudyTask> input) {
+  static List<StudyTask> recalculate(
+    Iterable<StudyTask> input, {
+    int? minimumStartMinute,
+  }) {
     final List<StudyTask> rows = _ordered(input);
     final List<StudyTask> result = <StudyTask>[];
     int? cursorEnd;
@@ -95,7 +98,10 @@ class StudyScheduleService {
     for (final StudyTask original in rows) {
       StudyTask current = original;
       if (current.autoScheduled) {
-        final int start = cursorEnd ?? current.startMinute ?? 0;
+        int start = cursorEnd ?? current.startMinute ?? 0;
+        if (minimumStartMinute != null && start < minimumStartMinute) {
+          start = minimumStartMinute;
+        }
         final int end = start + durationOf(current);
         current = current.copyWith(
           startMinute: start,
