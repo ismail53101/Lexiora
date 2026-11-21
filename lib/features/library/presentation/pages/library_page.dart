@@ -45,6 +45,7 @@ class _LibraryPageState extends ConsumerState<LibraryPage> with WidgetsBindingOb
   bool _scanning = false;
   bool _importing = false;
   bool _accessDenied = true;
+  bool _permissionChecking = true;
   bool _searching = false;
   String _query = '';
   LibrarySort _sort = LibrarySort.importDate;
@@ -54,7 +55,7 @@ class _LibraryPageState extends ConsumerState<LibraryPage> with WidgetsBindingOb
     super.initState();
     WidgetsBinding.instance.addObserver(this);
     WidgetsBinding.instance.addPostFrameCallback((_) {
-      _autoDiscover(initial: true);
+      _initializeLibrary();
       // Fire-and-forget: fills in thumbnails for documents imported before
       // the cover feature existed. Silent by design — it's a one-time
       // catch-up, not something the user needs to see happen.
@@ -161,9 +162,11 @@ class _LibraryPageState extends ConsumerState<LibraryPage> with WidgetsBindingOb
             orElse: () => const SizedBox.shrink(),
           ),
           Expanded(
-            child: _accessDenied
-                ? _accessState()
-                : documents.when(
+            child: _permissionChecking
+                ? const Center(child: CircularProgressIndicator())
+                : _accessDenied
+                    ? _accessState()
+                    : documents.when(
                     loading: () =>
                         const Center(child: CircularProgressIndicator()),
                     error: (Object e, _) =>
@@ -316,6 +319,30 @@ class _LibraryPageState extends ConsumerState<LibraryPage> with WidgetsBindingOb
 
   /// Ensures storage access, then scans the device and indexes any PDFs not yet
   /// in the library. Runs automatically on open and on pull-to-refresh.
+  Future<void> _initializeLibrary() async {
+    final PermissionService perm = ref.read(permissionServiceProvider);
+    final bool granted = await perm.isGrantedForDiscovery();
+    if (!mounted) return;
+
+    if (granted) {
+      // Keep the permission gate hidden while the existing grant is being
+      // verified. This prevents the "Allow access" screen from flashing
+      // every time the Library is opened.
+      setState(() {
+        _permissionChecking = false;
+        _accessDenied = false;
+      });
+      await _autoDiscover(initial: true);
+      return;
+    }
+
+    setState(() {
+      _permissionChecking = false;
+      _accessDenied = true;
+    });
+    await _autoDiscover(initial: true);
+  }
+
   Future<void> _autoDiscover({bool initial = false}) async {
     if (_scanning) return;
     final ScaffoldMessengerState messenger = ScaffoldMessenger.of(context);
