@@ -99,7 +99,7 @@ class StudyScheduleService {
       StudyTask current = original;
       if (current.autoScheduled) {
         int start = cursorEnd ?? current.startMinute ?? 0;
-        if (minimumStartMinute != null && start < minimumStartMinute) {
+        if (minimumStartMinute != null && current.startMinute == null && start < minimumStartMinute) {
           start = minimumStartMinute;
         }
         final int end = start + durationOf(current);
