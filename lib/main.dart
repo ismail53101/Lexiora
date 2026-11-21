@@ -15,6 +15,7 @@ import 'package:lexiora/core/platform/fresh_install_guard.dart';
 import 'package:lexiora/core/services/notification_service.dart';
 import 'package:lexiora/core/services/pdf_discovery_service.dart';
 import 'package:lexiora/core/services/pdf_import_service.dart';
+import 'package:lexiora/core/services/permission_service.dart';
 import 'package:lexiora/core/services/rewarded_ad_manager.dart';
 import 'package:lexiora/core/utils/logger.dart';
 import 'package:lexiora/core/utils/result.dart';
@@ -248,6 +249,13 @@ void _handleNotificationPayload(GoRouter router, String payload) {
 
 Future<void> _openIncomingPdf(GoRouter router, DeviceFile file) async {
   try {
+    // Never import/open an external PDF into DarsNexa until the user has
+    // explicitly granted the Library's PDF/storage access.
+    final PermissionService permissions = sl<PermissionService>();
+    if (!await permissions.isGrantedForDiscovery()) {
+      AppLogger.i('Ignoring incoming PDF until PDF access is granted');
+      return;
+    }
     final Result<LibraryDocument?> result = await ImportIncomingPdf(
       sl<LibraryRepository>(),
       sl(),
