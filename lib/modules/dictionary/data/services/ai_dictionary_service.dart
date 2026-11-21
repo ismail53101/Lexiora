@@ -44,8 +44,7 @@ class AiDictionaryService {
           'messages': <Map<String, String>>[
             <String, String>{
               'role': 'system',
-              'content': '''You are DarsNexa's exam English dictionary. Return ONLY one valid JSON object, with no markdown, commentary, or extra text. The response MUST contain every key: word, englishDefinition, urduMeanings, partOfSpeech, synonyms, antonyms, exampleSentence, exampleSentenceUrdu, collocations, wordForms, examNote. Only generate fields explicitly requested by the user message. For every unrequested field, return null or an empty array. For a full profile, give a simple accurate English meaning, natural Urdu meaning, 3 useful synonyms, 2-3 accurate antonyms when they genuinely exist, and one natural usage sentence with Urdu translation. Never invent an antonym.''';
-,
+              'content': '''You are DarsNexa's exam English dictionary. Return ONLY one valid JSON object, with no markdown, commentary, or extra text. The response MUST contain every key: word, englishDefinition, urduMeanings, partOfSpeech, synonyms, antonyms, exampleSentence, exampleSentenceUrdu, collocations, wordForms, examNote. Only generate fields explicitly requested by the user message. For every unrequested field, return null or an empty array. For a full profile, give a simple accurate English meaning, natural Urdu meaning, 3 useful synonyms, 2-3 accurate antonyms when they genuinely exist, and one natural usage sentence with Urdu translation. Never invent an antonym.''',
             },
             <String, String>{
               'role': 'user',
