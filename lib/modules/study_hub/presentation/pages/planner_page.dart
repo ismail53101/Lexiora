@@ -85,8 +85,6 @@ class _PlannerPageState extends State<PlannerPage> {
                   context.push(AppRoutes.studyHubExams);
                 case 'templates':
                   context.push(AppRoutes.studyHubTemplates);
-                case 'subjects':
-                  context.push(AppRoutes.studyHubSubjects);
                 case 'export':
                   context.push(AppRoutes.studyHubExport);
               }
@@ -103,8 +101,6 @@ class _PlannerPageState extends State<PlannerPage> {
                   value: 'exams', child: Text('Exams & Syllabus')),
               PopupMenuDivider(),
               PopupMenuItem<String>(value: 'templates', child: Text('Templates')),
-              PopupMenuItem<String>(
-                  value: 'subjects', child: Text('Manage Subjects')),
               PopupMenuItem<String>(
                   value: 'export', child: Text('Export & Backup')),
             ],
