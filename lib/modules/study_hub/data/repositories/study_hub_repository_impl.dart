@@ -271,7 +271,7 @@ class StudyHubRepositoryImpl implements StudyHubRepository {
       }
     }
 
-    final Set<String> movedIds = <String>{for (final StudyTask t in chain)};
+    final Set<String> movedIds = <String>{for (final StudyTask t in chain) t.id};
     final List<StudyTask> placed = target
         .where((StudyTask t) => !movedIds.contains(t.id))
         .toList();
