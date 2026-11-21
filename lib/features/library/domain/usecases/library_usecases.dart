@@ -125,10 +125,11 @@ class AutoDiscoverPdfs implements UseCase<DiscoveryOutcome, NoParams> {
 
           AppLogger.i('AutoDiscover: indexing ${file.path}');
           final String id = _uuid.v4();
-          final String? cover = await _cover.generateCover(
-            documentId: id,
-            pdfPath: file.path,
-          );
+          // Index immediately. Cover generation is intentionally not
+          // part of discovery because a large PDF or many PDFs can make the
+          // Library appear stuck on the permission/loading state. The existing
+          // backfill-covers pass can generate thumbnails after the documents
+          // are visible.
           await _repo.insert(
             LibraryDocument(
               id: id,
@@ -139,7 +140,6 @@ class AutoDiscoverPdfs implements UseCase<DiscoveryOutcome, NoParams> {
               pageCount: 0,
               isFavorite: false,
               importedAt: now,
-              coverPath: cover,
             ),
           );
           matchedIds.add(id);
