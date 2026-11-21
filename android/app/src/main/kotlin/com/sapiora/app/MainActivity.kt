@@ -79,10 +79,7 @@ class MainActivity : FlutterActivity() {
     }
 
     private fun requestNotificationPermissionOnFreshInstall() {
-        val prefs = getSharedPreferences(notificationPermissionPrefs, MODE_PRIVATE)
-
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU &&
-            !prefs.getBoolean(notificationPermissionPromptedKey, false) &&
             checkSelfPermission(Manifest.permission.POST_NOTIFICATIONS) !=
                 PackageManager.PERMISSION_GRANTED
         ) {
@@ -96,21 +93,21 @@ class MainActivity : FlutterActivity() {
         beginAllFilesAccessFlow()
     }
 
+    private fun hasAllFilesAccess(): Boolean {
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.R) return true
+        return Environment.isExternalStorageManager()
+    }
+
     private fun beginAllFilesAccessFlow() {
         val prefs = getSharedPreferences(startupPermissionPrefs, MODE_PRIVATE)
-        if (prefs.getBoolean(allFilesPromptedKey, false)) {
-            completeStartupPermissionFlow()
-            return
-        }
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
-            if (Environment.isExternalStorageManager()) {
+            if (hasAllFilesAccess()) {
                 prefs.edit().putBoolean(allFilesPromptedKey, true).apply()
                 completeStartupPermissionFlow()
                 return
             }
 
-            prefs.edit().putBoolean(allFilesPromptedKey, true).apply()
             try {
                 val intent = Intent(
                     android.provider.Settings.ACTION_MANAGE_APP_ALL_FILES_ACCESS_PERMISSION,
@@ -118,7 +115,7 @@ class MainActivity : FlutterActivity() {
                 )
                 startActivity(intent)
             } catch (e: Exception) {
-                Log.w("Lexiora", "Could not open All Files Access settings: ${e.message}")
+                Log.w("Lexiora", "Could not open All Files Access settings: " + e.message)
                 completeStartupPermissionFlow()
             }
             return
@@ -156,13 +153,11 @@ class MainActivity : FlutterActivity() {
 
     override fun onResume() {
         super.onResume()
-        if (!startupPermissionReady) {
-            val prefs = getSharedPreferences(startupPermissionPrefs, MODE_PRIVATE)
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R &&
-                prefs.getBoolean(allFilesPromptedKey, false)
-            ) {
-                completeStartupPermissionFlow()
-            }
+        if (!startupPermissionReady &&
+            Build.VERSION.SDK_INT >= Build.VERSION_CODES.R &&
+            hasAllFilesAccess()
+        ) {
+            completeStartupPermissionFlow()
         }
     }
 
@@ -234,12 +229,27 @@ class MainActivity : FlutterActivity() {
                         result.success(null)
                     }
                     "isExternalStorageManager" -> result.success(
-                        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
-                            Environment.isExternalStorageManager()
-                        } else {
-                            true
-                        },
+                        hasAllFilesAccess(),
                     )
+                    "openAllFilesAccessSettings" -> {
+                        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
+                            try {
+                                startActivity(
+                                    Intent(
+                                        android.provider.Settings
+                                            .ACTION_MANAGE_APP_ALL_FILES_ACCESS_PERMISSION,
+                                        Uri.parse("package:$packageName"),
+                                    ),
+                                )
+                                result.success(true)
+                            } catch (e: Exception) {
+                                Log.w("Lexiora", "Could not open All Files Access settings: " + e.message)
+                                result.error("settings_failed", e.message, null)
+                            }
+                        } else {
+                            result.success(true)
+                        }
+                    }
                     "scanAllPdfs" -> scanAllPdfs(result)
                     "pickPdfs" -> startPickPdfs(result)
                     "recognizeText" -> {
@@ -401,37 +411,16 @@ class MainActivity : FlutterActivity() {
             val out = ArrayList<Map<String, Any?>>()
             val seen = HashSet<String>()
             try {
-                val roots = ArrayList<File>()
-                Environment.getExternalStorageDirectory()?.let { roots.add(it) }
-                // Include secondary volumes (e.g. SD cards): each getExternalFilesDirs
-                // entry is /storage/<VOL>/Android/data/<pkg>/files → the volume root
-                // is four levels up.
-                for (dir in getExternalFilesDirs(null)) {
-                    val vol = dir?.parentFile?.parentFile?.parentFile?.parentFile
-                    if (vol != null && vol.exists() &&
-                        roots.none { it.absolutePath == vol.absolutePath }
-                    ) {
-                        roots.add(vol)
-                    }
-                }
-                val beforeMediaStore = out.size
-                for (root in roots) walkPdfs(root, out, seen, 0)
-                val fromWalk = out.size - beforeMediaStore
-
-                // Second, independent source: the system's indexed media database.
-                // This finds files the raw filesystem walk misses on vendor builds
-                // that restrict recursive directory listing under scoped storage,
-                // since MediaStore is populated by the OS's own media scanner and
-                // reads from it are never subject to that restriction.
-                val fromMediaStore = queryMediaStorePdfs(out, seen)
-
-                Log.i(
-                    "Lexiora",
-                    "scanAllPdfs: filesystem=$fromWalk MediaStore=$fromMediaStore " +
-                        "total=${out.size} across ${roots.size} volume(s)",
-                )
+                // MediaStore is Android's indexed file database. With
+                // MANAGE_EXTERNAL_STORAGE granted, it is the reliable
+                // fast path for discovering device PDFs. Do not recursively
+                // walk storage here: that can keep the Library spinner busy
+                // for a very long time on phones with large storage.
+                queryMediaStorePdfs(out, seen)
+                Log.i("Lexiora", "scanAllPdfs: found=" + out.size)
                 runOnUiThread { result.success(out) }
             } catch (e: Exception) {
+                Log.w("Lexiora", "scanAllPdfs failed: " + e.message)
                 runOnUiThread { result.error("scan_all_failed", e.message, null) }
             }
         }.start()

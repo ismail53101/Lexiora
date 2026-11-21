@@ -1,13 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:go_router/go_router.dart';
-import 'package:lexiora/app/router/app_routes.dart';
 import 'package:lexiora/core/widgets/empty_state.dart';
-import 'package:lexiora/modules/flashcards/domain/entities/deck.dart';
-import 'package:lexiora/modules/flashcards/presentation/providers/flashcard_providers.dart';
-import 'package:lexiora/modules/flashcards/presentation/widgets/deck_editor.dart';
-import 'package:lexiora/modules/flashcards/presentation/widgets/fc_common.dart';
+import 'package:lexiora/modules/flashcards/domain/models/fc_models.dart';
+import 'package:lexiora/modules/flashcards/presentation/providers/fc_providers.dart';
+import 'package:lexiora/modules/flashcards/presentation/widgets/deck_sheets.dart';
+import 'package:lexiora/modules/flashcards/presentation/widgets/deck_tile.dart';
 
+/// Every deck, including archived ones.
 class DecksPage extends ConsumerStatefulWidget {
   const DecksPage({super.key});
 
@@ -16,88 +15,68 @@ class DecksPage extends ConsumerStatefulWidget {
 }
 
 class _DecksPageState extends ConsumerState<DecksPage> {
-  bool _showArchived = false;
+  bool _archived = false;
+  String _query = '';
 
   @override
   Widget build(BuildContext context) {
-    final List<DeckSummary> decks = ref.watch(decksProvider(_showArchived)).maybeWhen(
-          data: (List<DeckSummary> d) => d,
-          orElse: () => const <DeckSummary>[],
-        );
-    final Map<String, int> colors = ref.watch(fcSubjectColorsProvider).maybeWhen(
-          data: (Map<String, int> m) => m,
-          orElse: () => const <String, int>{},
-        );
-
+    final AsyncValue<List<FcDeckSummary>> all = ref.watch(fcAllDecksProvider);
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('My Decks'),
-        actions: <Widget>[
-          IconButton(
-            tooltip: _showArchived ? 'Hide archived' : 'Show archived',
-            icon: Icon(_showArchived ? Icons.unarchive_outlined : Icons.archive_outlined),
-            onPressed: () => setState(() => _showArchived = !_showArchived),
-          ),
-        ],
-      ),
+      appBar: AppBar(title: const Text('All decks')),
       floatingActionButton: FloatingActionButton.extended(
         onPressed: () => showDeckEditor(context),
         icon: const Icon(Icons.add),
         label: const Text('New deck'),
       ),
-      body: decks.isEmpty
-          ? const EmptyState(
-              icon: Icons.library_books_outlined,
-              title: 'No decks yet',
-              message: 'Create your first deck to start making flashcards.',
-            )
-          : ListView.builder(
-              padding: const EdgeInsets.only(bottom: 88),
-              itemCount: decks.length,
-              itemBuilder: (BuildContext context, int i) =>
-                  _DeckCard(summary: decks[i], colors: colors),
-            ),
-    );
-  }
-}
-
-class _DeckCard extends ConsumerWidget {
-  const _DeckCard({required this.summary, required this.colors});
-  final DeckSummary summary;
-  final Map<String, int> colors;
-
-  @override
-  Widget build(BuildContext context, WidgetRef ref) {
-    final ThemeData theme = Theme.of(context);
-    final Deck d = summary.deck;
-    final Color color = d.colorValue ??
-        subjectColorOf(d.subject, colors) ??
-        theme.colorScheme.primary;
-    return Card(
-      margin: const EdgeInsets.fromLTRB(16, 4, 16, 4),
-      clipBehavior: Clip.antiAlias,
-      child: ListTile(
-        onTap: () => context.push(AppRoutes.flashcardsDeck(d.id)),
-        onLongPress: () => showDeckEditor(context, existing: d),
-        leading: CircleAvatar(
-          backgroundColor: color,
-          child: const Icon(Icons.style, color: Colors.white),
-        ),
-        title: Text(d.name,
-            style: const TextStyle(fontWeight: FontWeight.w700)),
-        subtitle: Text(<String>[
-          if (d.subject != null) d.subject!,
-          '${summary.cardCount} cards',
-          '${summary.dueCount} due',
-          if (d.archived) 'Archived',
-        ].join(' · ')),
-        trailing: summary.dueCount > 0
-            ? Chip(
-                label: Text('${summary.dueCount}'),
-                backgroundColor: theme.colorScheme.primaryContainer,
-                visualDensity: VisualDensity.compact,
-              )
-            : const Icon(Icons.chevron_right),
+      body: all.when(
+        loading: () => const Center(child: CircularProgressIndicator()),
+        error: (Object e, StackTrace _) => EmptyState(icon: Icons.error_outline, title: 'Couldn’t load decks', message: '$e'),
+        data: (List<FcDeckSummary> list) {
+          final String q = _query.trim().toLowerCase();
+          final List<FcDeckSummary> shown = list
+              .where((FcDeckSummary s) => s.deck.archived == _archived)
+              .where((FcDeckSummary s) =>
+                  q.isEmpty ||
+                  s.deck.name.toLowerCase().contains(q) ||
+                  (s.deck.subject ?? '').toLowerCase().contains(q))
+              .toList();
+          final int archivedCount = list.where((FcDeckSummary s) => s.deck.archived).length;
+          return ListView(
+            padding: const EdgeInsets.only(bottom: 96),
+            children: <Widget>[
+              Padding(
+                padding: const EdgeInsets.fromLTRB(16, 8, 16, 8),
+                child: SearchBar(
+                  hintText: 'Search decks',
+                  leading: const Icon(Icons.search),
+                  elevation: const WidgetStatePropertyAll<double>(0),
+                  onChanged: (String v) => setState(() => _query = v),
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 16),
+                child: Wrap(
+                  spacing: 8,
+                  children: <Widget>[
+                    ChoiceChip(label: const Text('Active'), selected: !_archived, onSelected: (_) => setState(() => _archived = false)),
+                    ChoiceChip(label: Text('Archived ($archivedCount)'), selected: _archived, onSelected: (_) => setState(() => _archived = true)),
+                  ],
+                ),
+              ),
+              const SizedBox(height: 8),
+              if (shown.isEmpty)
+                Padding(
+                  padding: const EdgeInsets.only(top: 60),
+                  child: EmptyState(
+                    icon: _archived ? Icons.archive_outlined : Icons.style_outlined,
+                    title: _archived ? 'No archived decks' : 'No decks found',
+                  ),
+                )
+              else
+                for (final FcDeckSummary s in shown) FcDeckTile(summary: s),
+            ],
+          );
+        },
       ),
     );
   }

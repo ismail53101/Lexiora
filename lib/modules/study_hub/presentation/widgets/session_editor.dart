@@ -1,8 +1,11 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:lexiora/app/di/injector.dart';
+import 'package:lexiora/core/services/notification_service.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:lexiora/modules/study_hub/domain/entities/study_task.dart';
+import 'package:lexiora/modules/study_hub/domain/scheduling/pomodoro_planner.dart';
 import 'package:lexiora/modules/study_hub/domain/scheduling/study_schedule_service.dart';
 import 'package:lexiora/modules/study_hub/domain/study_dates.dart';
 import 'package:lexiora/modules/study_hub/presentation/providers/study_hub_providers.dart';
@@ -53,6 +56,129 @@ List<String> _mergeUnique(List<List<String>> lists) {
   return out;
 }
 
+/// Focus + break lengths offered when splitting a session (minutes).
+const List<(int, int)> _blockPresets = <(int, int)>[(25, 5), (50, 10), (90, 15)];
+
+enum _TimeMode {
+  /// Placed right after the previous item of the day (the default).
+  auto('After previous'),
+
+  /// The user chooses the start time.
+  manual('Set time'),
+
+  /// No time at all (just a to-do for the day).
+  none('No time');
+
+  const _TimeMode(this.label);
+  final String label;
+}
+
+TimeOfDay _timeOfDay(int minute) {
+  final int m = minute.clamp(0, 24 * 60 - 1);
+  return TimeOfDay(hour: m ~/ 60, minute: m % 60);
+}
+
+/// Friendly text for a scheduling error (shown inside the sheet, where the user
+/// is looking — a SnackBar would appear hidden behind it).
+String _scheduleErrorText(Object error) {
+  if (error is StudyScheduleInvalidTimeException) return error.message;
+  if (error is StudyScheduleOverlapException) {
+    String span(StudyTask t) =>
+        '“${t.displaySubject}” (${formatMinuteOfDay(t.startMinute)}–${formatMinuteOfDay(t.endMinute)})';
+    return 'This overlaps with ${span(error.conflict.previous)} and '
+        '${span(error.conflict.item)}. Pick another time, or choose '
+        '“After previous”.';
+  }
+  return 'Could not save: $error';
+}
+
+/// Duration chips + a ±5 minute fine-tune, shared by sessions and breaks.
+class _DurationPicker extends StatelessWidget {
+  const _DurationPicker({
+    required this.minutes,
+    required this.options,
+    required this.onChanged,
+  });
+
+  final int minutes;
+  final List<int> options;
+  final ValueChanged<int> onChanged;
+
+  @override
+  Widget build(BuildContext context) {
+    final ThemeData theme = Theme.of(context);
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: <Widget>[
+        Wrap(
+          spacing: 8,
+          runSpacing: 4,
+          children: <Widget>[
+            for (final int m in options)
+              ChoiceChip(
+                label: Text(formatDuration(m)),
+                selected: minutes == m,
+                onSelected: (_) => onChanged(m),
+              ),
+          ],
+        ),
+        const SizedBox(height: 6),
+        Row(
+          children: <Widget>[
+            IconButton.filledTonal(
+              tooltip: '5 minutes less',
+              icon: const Icon(Icons.remove),
+              onPressed: minutes <= 5 ? null : () => onChanged(minutes - 5),
+            ),
+            Expanded(
+              child: Text(
+                formatDuration(minutes),
+                textAlign: TextAlign.center,
+                style: theme.textTheme.titleMedium
+                    ?.copyWith(fontWeight: FontWeight.w700),
+              ),
+            ),
+            IconButton.filledTonal(
+              tooltip: '5 minutes more',
+              icon: const Icon(Icons.add),
+              onPressed: minutes >= 12 * 60 ? null : () => onChanged(minutes + 5),
+            ),
+          ],
+        ),
+      ],
+    );
+  }
+}
+
+class _ErrorBanner extends StatelessWidget {
+  const _ErrorBanner(this.message);
+  final String message;
+
+  @override
+  Widget build(BuildContext context) {
+    final ColorScheme cs = Theme.of(context).colorScheme;
+    return Container(
+      width: double.infinity,
+      margin: const EdgeInsets.only(bottom: 12),
+      padding: const EdgeInsets.all(12),
+      decoration: BoxDecoration(
+        color: cs.errorContainer,
+        borderRadius: BorderRadius.circular(12),
+      ),
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: <Widget>[
+          Icon(Icons.error_outline, color: cs.onErrorContainer, size: 20),
+          const SizedBox(width: 8),
+          Expanded(
+            child: Text(message, style: TextStyle(color: cs.onErrorContainer)),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
 class _SessionEditor extends ConsumerStatefulWidget {
   const _SessionEditor({required this.day, this.existing});
   final String day;
@@ -69,16 +195,36 @@ class _SessionEditorState extends ConsumerState<_SessionEditor> {
       TextEditingController(text: widget.existing?.topic ?? '');
   late final TextEditingController _notes =
       TextEditingController(text: widget.existing?.notes ?? '');
+
+  /// Ids are fixed for the life of the sheet, so pressing Save twice (or again
+  /// after an error) updates the same rows instead of adding duplicates.
+  late final String _sessionId = widget.existing?.id ?? const Uuid().v4();
+  String _breakId = const Uuid().v4();
+
+  late _TimeMode _mode = _initialMode();
   late int? _start = widget.existing?.startMinute;
-  late int? _end = widget.existing?.endMinute;
+  late int _duration = widget.existing == null
+      ? StudyScheduleService.defaultSessionMinutes
+      : StudyScheduleService.durationOf(widget.existing!);
+  int _next = StudyScheduleService.defaultDayStartMinute;
+
   late TaskPriority _priority = widget.existing?.priority ?? TaskPriority.medium;
   late TaskStatus _status = widget.existing?.status ?? TaskStatus.pending;
   bool _addBreak = false;
-  int _breakMinutes = 10;
+  bool _split = false;
+  int _preset = 1;
+  int _breakMinutes = StudyScheduleService.defaultBreakMinutes;
   StudyTask? _existingBreak;
   bool _breakLoaded = false;
-  late bool _automatic = widget.existing?.autoScheduled ?? true;
   bool _saving = false;
+  String? _error;
+
+  _TimeMode _initialMode() {
+    final StudyTask? e = widget.existing;
+    if (e == null) return _TimeMode.auto;
+    if (e.startMinute == null) return _TimeMode.none;
+    return e.autoScheduled ? _TimeMode.auto : _TimeMode.manual;
+  }
 
   @override
   void initState() {
@@ -91,9 +237,8 @@ class _SessionEditorState extends ConsumerState<_SessionEditor> {
   }
 
   Future<void> _loadExistingBreak() async {
-    final StudyTask? sessionValue = widget.existing;
-    if (sessionValue == null) return;
-    final StudyTask session = sessionValue;
+    final StudyTask? session = widget.existing;
+    if (session == null) return;
     final List<StudyTask> tasks =
         await ref.read(studyHubRepositoryProvider).watchTasks(widget.day).first;
     final Iterable<StudyTask> matches = tasks.where((StudyTask task) =>
@@ -102,11 +247,11 @@ class _SessionEditorState extends ConsumerState<_SessionEditor> {
     if (!mounted) return;
     setState(() {
       _existingBreak = breakTask;
-      _addBreak = breakTask != null;
-      _breakMinutes = breakTask?.durationMinutes ??
-          (breakTask?.startMinute != null && breakTask?.endMinute != null
-              ? breakTask!.endMinute! - breakTask.startMinute!
-              : 10);
+      if (breakTask != null) {
+        _breakId = breakTask.id;
+        _addBreak = true;
+        _breakMinutes = StudyScheduleService.durationOf(breakTask);
+      }
       _breakLoaded = true;
     });
   }
@@ -119,107 +264,130 @@ class _SessionEditorState extends ConsumerState<_SessionEditor> {
     super.dispose();
   }
 
-  Future<void> _pickTime({required bool start, int? initialMinute}) async {
-    final int base = initialMinute ??
-        ((start ? _start : _end) ?? (start ? 9 * 60 : 10 * 60));
+  /// Where this session starts for the current choice (null = no time).
+  int? _startFor() {
+    switch (_mode) {
+      case _TimeMode.none:
+        return null;
+      case _TimeMode.manual:
+        return _start ?? _next;
+      case _TimeMode.auto:
+        final StudyTask? e = widget.existing;
+        // Editing an automatic session keeps its place in the day.
+        if (e != null && e.autoScheduled && e.startMinute != null) {
+          return e.startMinute;
+        }
+        return _next;
+    }
+  }
+
+  Future<void> _pickStart(int current) async {
     final TimeOfDay? picked = await showTimePicker(
       context: context,
-      initialTime: TimeOfDay(hour: base ~/ 60, minute: base % 60),
+      initialTime: _timeOfDay(current),
+      helpText: 'START TIME',
     );
     if (picked == null) return;
-    final int m = picked.hour * 60 + picked.minute;
     setState(() {
-      if (start) {
-        _automatic = false;
-        _start = m;
+      _mode = _TimeMode.manual;
+      _start = picked.hour * 60 + picked.minute;
+      _error = null;
+    });
+  }
+
+  Future<void> _pickEnd(int start, int currentEnd) async {
+    final TimeOfDay? picked = await showTimePicker(
+      context: context,
+      initialTime: _timeOfDay(currentEnd),
+      helpText: 'END TIME',
+    );
+    if (picked == null) return;
+    final int end = picked.hour * 60 + picked.minute;
+    setState(() {
+      if (end <= start) {
+        _error = 'The end time must be after the start time '
+            '(${formatMinuteOfDay(start)}).';
       } else {
-        _end = m;
+        _duration = end - start;
+        _error = null;
       }
     });
-    // After the start time is confirmed (OK), jump straight into the
-    // end-time picker — pre-filled with start + 1h — so the user just
-    // confirms the end; no need to tap the End button separately.
-    if (start && mounted) {
-      final int suggested =
-          (_end != null && _end! > m) ? _end! : (m + 60) % (24 * 60);
-      await _pickTime(start: false, initialMinute: suggested);
-    }
   }
 
   Future<void> _save() async {
     if (_saving) return;
     final String subject = _subject.text.trim();
-    if (subject.isEmpty) return;
-    setState(() => _saving = true);
+    if (subject.isEmpty) {
+      setState(() => _error = 'Enter a subject first.');
+      return;
+    }
+    setState(() {
+      _saving = true;
+      _error = null;
+    });
     try {
-    final DateTime now = DateTime.now();
-    if (!_breakLoaded) await _loadExistingBreak();
-    final StudyTask base = widget.existing ??
-        StudyTask(
-          id: const Uuid().v4(),
-          day: widget.day,
-          title: subject,
-          createdAt: now,
-          updatedAt: now,
-        );
-    final StudyTask task = base.copyWith(
-      title: subject,
-      subject: subject,
-      topic: _topic.text.trim().isEmpty ? null : _topic.text.trim(),
-      notes: _notes.text.trim().isEmpty ? null : _notes.text.trim(),
-      startMinute: _start,
-      endMinute: _end,
-      priority: _priority,
-      status: _status,
-      kind: SessionKind.session,
-      durationMinutes: _start != null && _end != null ? _end! - _start! : null,
-      autoScheduled: _automatic,
-      updatedAt: now,
-      completedAt: _status == TaskStatus.completed ? now : null,
-      clearTopic: _topic.text.trim().isEmpty,
-      clearNotes: _notes.text.trim().isEmpty,
-      clearTimes: _start == null && _end == null,
-    );
-    await ref.read(studyHubRepositoryProvider).saveTask(task);
-    // Keep the break attached to this session's end time in both create and
-    // edit flows. Turning the switch off removes the linked break.
-    if (_addBreak && _end != null) {
-      final int breakStart = _end!;
-      final int breakEnd = (breakStart + _breakMinutes) % (24 * 60);
-      final StudyTask breakTask = _existingBreak?.copyWith(
-            startMinute: breakStart,
-            endMinute: breakEnd,
-            durationMinutes: _breakMinutes,
-            // This break is explicitly attached to this session's end.
-            // Keep it as a manual anchor so saveTask/recalculate does not
-            // move it to the end of the whole day's schedule.
-            autoScheduled: false,
-            updatedAt: now,
-          ) ??
+      final DateTime now = DateTime.now();
+      if (!_breakLoaded) await _loadExistingBreak();
+      final StudyTask base = widget.existing ??
           StudyTask(
-            id: const Uuid().v4(),
+            id: _sessionId,
             day: widget.day,
-            title: 'Break',
-            startMinute: breakStart,
-            endMinute: breakEnd,
-            durationMinutes: _breakMinutes,
-            kind: SessionKind.breakTime,
-            // A break created from a session is anchored to that session.
-            autoScheduled: false,
+            title: subject,
             createdAt: now,
             updatedAt: now,
           );
-      await ref.read(studyHubRepositoryProvider).saveTask(breakTask);
-    } else if (_existingBreak != null) {
-      await ref.read(studyHubRepositoryProvider).deleteTask(_existingBreak!.id);
-    }
-    if (mounted) Navigator.of(context).pop();
-    } on Object catch (error) {
-      if (mounted) {
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: Text('Could not save study plan: $error')),
+      final int? start = _startFor();
+      final StudyTask common = base.copyWith(
+        title: subject,
+        subject: subject,
+        topic: _topic.text.trim().isEmpty ? null : _topic.text.trim(),
+        notes: _notes.text.trim().isEmpty ? null : _notes.text.trim(),
+        priority: _priority,
+        status: _status,
+        kind: SessionKind.session,
+        updatedAt: now,
+        completedAt: _status == TaskStatus.completed ? now : null,
+        clearTopic: _topic.text.trim().isEmpty,
+        clearNotes: _notes.text.trim().isEmpty,
+      );
+      final StudyTask task;
+      switch (_mode) {
+        case _TimeMode.none:
+          task = common.copyWith(autoScheduled: false, clearTimes: true);
+        case _TimeMode.manual:
+          task = common.copyWith(
+            autoScheduled: false,
+            startMinute: start,
+            endMinute: start! + _duration,
+            durationMinutes: _duration,
+          );
+        case _TimeMode.auto:
+          // The repository places it (after the previous item) and fills in
+          // the start/end from the duration.
+          task = common.copyWith(
+            autoScheduled: true,
+            durationMinutes: _duration,
+          );
+      }
+      final repo = ref.read(studyHubRepositoryProvider);
+      if (_split && widget.existing == null && _mode != _TimeMode.none) {
+        await repo.saveSessionAsBlocks(
+          session: task,
+          focusMinutes: _blockPresets[_preset].$1,
+          breakMinutes: _blockPresets[_preset].$2,
+        );
+      } else {
+        await repo.saveSessionWithBreak(
+          session: task,
+          breakId: _breakId,
+          breakMinutes:
+              (_addBreak && _mode != _TimeMode.none) ? _breakMinutes : null,
         );
       }
+      await sl<NotificationService>().rescheduleAll();
+      if (mounted) Navigator.of(context).pop();
+    } on Object catch (error) {
+      if (mounted) setState(() => _error = _scheduleErrorText(error));
     } finally {
       if (mounted) setState(() => _saving = false);
     }
@@ -234,9 +402,10 @@ class _SessionEditorState extends ConsumerState<_SessionEditor> {
           data: (List<StudyTask> tasks) => tasks,
           orElse: () => const <StudyTask>[],
         );
-    final int? nextAvailable = StudyScheduleService.nextAvailableMinute(
-      dayTasks,
-      excludeId: widget.existing?.id,
+    // Everything on the day except this session and its own break.
+    _next = StudyScheduleService.nextAvailableMinute(
+      dayTasks.where((StudyTask t) =>
+          t.id != _sessionId && t.id != _breakId && t.id != _existingBreak?.id),
     );
     List<String> data(AsyncValue<List<String>> v) => v.maybeWhen(
           data: (List<String> s) => s,
@@ -252,6 +421,20 @@ class _SessionEditorState extends ConsumerState<_SessionEditor> {
       data(ref.watch(recentTopicsProvider)),
       data(ref.watch(topicSuggestionsProvider)),
     ]);
+
+    final bool canSplit = widget.existing == null && _mode != _TimeMode.none;
+    final bool splitting = canSplit && _split;
+    final PomodoroPlan? plan = splitting
+        ? planPomodoro(
+            totalFocusMinutes: _duration,
+            focusMinutes: _blockPresets[_preset].$1,
+            breakMinutes: _blockPresets[_preset].$2,
+          )
+        : null;
+    final int? start = _startFor();
+    final int? end =
+        start == null ? null : start + (plan?.windowMinutes ?? _duration);
+    final bool pastMidnight = end != null && end > 24 * 60;
 
     return Padding(
       padding: EdgeInsets.fromLTRB(16, 0, 16, _bottomInset(context)),
@@ -293,51 +476,136 @@ class _SessionEditorState extends ConsumerState<_SessionEditor> {
                 labelText: 'Notes / description (optional)',
               ),
             ),
-            const SizedBox(height: 16),
-            SwitchListTile.adaptive(
-              contentPadding: EdgeInsets.zero,
-              value: _automatic,
-              onChanged: (bool value) => setState(() => _automatic = value),
-              title: const Text('Automatic scheduling'),
-              subtitle: Text(
-                _automatic && nextAvailable != null
-                    ? 'Next available: ${formatMinuteOfDay(nextAvailable)}'
-                    : 'Choose a custom start time manually',
-              ),
+            const SizedBox(height: 20),
+            Text('When', style: theme.textTheme.labelLarge),
+            const SizedBox(height: 8),
+            SegmentedButton<_TimeMode>(
+              showSelectedIcon: false,
+              segments: <ButtonSegment<_TimeMode>>[
+                for (final _TimeMode m in _TimeMode.values)
+                  ButtonSegment<_TimeMode>(value: m, label: Text(m.label)),
+              ],
+              selected: <_TimeMode>{_mode},
+              onSelectionChanged: (Set<_TimeMode> s) => setState(() {
+                final _TimeMode next = s.first;
+                if (next == _TimeMode.manual && _mode != _TimeMode.manual) {
+                  _start = _startFor() ?? _next;
+                }
+                if (next == _TimeMode.none) _addBreak = false;
+                _mode = next;
+                _error = null;
+              }),
             ),
-            Row(
-              children: <Widget>[
-                Expanded(
-                  child: OutlinedButton.icon(
-                    onPressed: () => _pickTime(start: true),
-                    icon: const Icon(Icons.schedule, size: 18),
-                    label: Text(
-                      _automatic && nextAvailable != null
-                          ? formatMinuteOfDay(nextAvailable)
-                          : (_start == null ? 'Start' : formatMinuteOfDay(_start)),
+            const SizedBox(height: 4),
+            Text(
+              switch (_mode) {
+                _TimeMode.auto =>
+                  'Starts right after your last item of the day, and moves '
+                      'automatically if earlier items change.',
+                _TimeMode.manual => 'Choose exactly when this session starts.',
+                _TimeMode.none =>
+                  'No time: it stays on your list without a place on the '
+                      'timeline and sends no reminder.',
+              },
+              style: theme.textTheme.bodySmall
+                  ?.copyWith(color: theme.colorScheme.onSurfaceVariant),
+            ),
+            if (start != null && end != null) ...<Widget>[
+              const SizedBox(height: 12),
+              Row(
+                children: <Widget>[
+                  Expanded(
+                    child: OutlinedButton.icon(
+                      onPressed: () => _pickStart(start),
+                      icon: const Icon(Icons.play_arrow_rounded, size: 18),
+                      label: Text('Start  ${formatMinuteOfDay(start)}'),
                     ),
                   ),
-                ),
-                const SizedBox(width: 12),
-                Expanded(
-                  child: OutlinedButton.icon(
-                    onPressed: () => _pickTime(start: false),
-                    icon: const Icon(Icons.schedule_outlined, size: 18),
-                    label:
-                        Text(_end == null ? 'End' : formatMinuteOfDay(_end)),
+                  const SizedBox(width: 12),
+                  Expanded(
+                    child: OutlinedButton.icon(
+                      onPressed: splitting ? null : () => _pickEnd(start, end),
+                      icon: const Icon(Icons.stop_rounded, size: 18),
+                      label: Text('End  ${formatMinuteOfDay(end % (24 * 60))}'),
+                    ),
+                  ),
+                ],
+              ),
+              const SizedBox(height: 12),
+              Text('How long?', style: theme.textTheme.labelLarge),
+              const SizedBox(height: 6),
+              _DurationPicker(
+                minutes: _duration,
+                options: const <int>[30, 45, 60, 90, 120],
+                onChanged: (int m) => setState(() {
+                  _duration = m;
+                  _error = null;
+                }),
+              ),
+              Padding(
+                padding: const EdgeInsets.only(top: 4),
+                child: Text(
+                  pastMidnight
+                      ? '${formatMinuteOfDay(start)} → past midnight. Choose an earlier start or a shorter time.'
+                      : '${formatMinuteOfDay(start)} → ${formatMinuteOfDay(end)}',
+                  style: theme.textTheme.titleSmall?.copyWith(
+                    color: pastMidnight
+                        ? theme.colorScheme.error
+                        : theme.colorScheme.primary,
+                    fontWeight: FontWeight.w700,
                   ),
                 ),
-              ],
-            ),
+              ),
+            ],
+            if (canSplit) ...<Widget>[
+              SwitchListTile.adaptive(
+                contentPadding: EdgeInsets.zero,
+                value: _split,
+                onChanged: (bool v) => setState(() {
+                  _split = v;
+                  _error = null;
+                }),
+                title: const Text('Split into focus blocks'),
+                subtitle: Text(
+                  plan == null
+                      ? 'Pomodoro style: study in blocks with short breaks in between.'
+                      : plan.breaks == 0
+                          ? 'Too short to split: this stays one block.'
+                          : '${plan.summary} min  ·  ${plan.focusBlocks} blocks, ${plan.breaks} breaks',
+                ),
+              ),
+              if (_split)
+                Wrap(
+                  spacing: 8,
+                  children: <Widget>[
+                    for (int i = 0; i < _blockPresets.length; i++)
+                      ChoiceChip(
+                        label: Text('${_blockPresets[i].$1} + ${_blockPresets[i].$2} min'),
+                        selected: _preset == i,
+                        onSelected: (_) => setState(() => _preset = i),
+                      ),
+                  ],
+                ),
+            ],
             const SizedBox(height: 12),
             SwitchListTile.adaptive(
               contentPadding: EdgeInsets.zero,
-              value: _addBreak,
-              onChanged: (bool v) => setState(() => _addBreak = v),
+              value: _addBreak && _mode != _TimeMode.none && !splitting,
+              onChanged: (_mode == _TimeMode.none || splitting)
+                  ? null
+                  : (bool v) => setState(() => _addBreak = v),
               title: const Text('Add a break right after this session'),
-              subtitle: const Text('Creates it in the same step — Pomodoro-style'),
+              subtitle: Text(
+                _mode == _TimeMode.none
+                    ? 'A break needs a time — choose “After previous” or “Set time”.'
+                    : splitting
+                        ? 'Not needed: breaks are already between the focus blocks.'
+                        : (_addBreak && end != null
+                            ? 'Break ${formatMinuteOfDay(end)} → ${formatMinuteOfDay((end + _breakMinutes) % (24 * 60))}'
+                            : 'Creates it in the same step'),
+              ),
             ),
-            if (_addBreak)
+            if (_addBreak && _mode != _TimeMode.none && !splitting)
               Wrap(
                 spacing: 8,
                 children: <Widget>[
@@ -376,22 +644,36 @@ class _SessionEditorState extends ConsumerState<_SessionEditor> {
                   setState(() => _status = s.first),
             ),
             const SizedBox(height: 20),
+            if (_error != null) _ErrorBanner(_error!),
             Row(
               children: <Widget>[
                 if (widget.existing != null)
                   TextButton.icon(
-                    onPressed: () async {
-                      await ref
-                          .read(studyHubRepositoryProvider)
-                          .deleteTask(widget.existing!.id);
-                      if (context.mounted) Navigator.of(context).pop();
-                    },
+                    onPressed: _saving
+                        ? null
+                        : () async {
+                            await ref
+                                .read(studyHubRepositoryProvider)
+                                .deleteTask(widget.existing!.id);
+                            await sl<NotificationService>().rescheduleAll();
+                            if (context.mounted) Navigator.of(context).pop();
+                          },
                     icon: Icon(Icons.delete_outline, color: theme.colorScheme.error),
                     label: Text('Delete',
                         style: TextStyle(color: theme.colorScheme.error)),
                   ),
                 const Spacer(),
-                FilledButton(onPressed: _save, child: const Text('Save')),
+                FilledButton.icon(
+                  onPressed: (_saving || pastMidnight) ? null : _save,
+                  icon: _saving
+                      ? const SizedBox(
+                          width: 16,
+                          height: 16,
+                          child: CircularProgressIndicator(strokeWidth: 2),
+                        )
+                      : const Icon(Icons.check),
+                  label: Text(_saving ? 'Saving…' : 'Save'),
+                ),
               ],
             ),
           ],
@@ -413,8 +695,14 @@ class _BreakEditor extends ConsumerStatefulWidget {
 class _BreakEditorState extends ConsumerState<_BreakEditor> {
   late final TextEditingController _name =
       TextEditingController(text: widget.existing?.title ?? '');
+  late final String _id = widget.existing?.id ?? const Uuid().v4();
   late int? _start = widget.existing?.startMinute;
-  late int? _end = widget.existing?.endMinute;
+  late int _duration = widget.existing == null
+      ? 15
+      : StudyScheduleService.durationOf(widget.existing!);
+  int _next = StudyScheduleService.defaultDayStartMinute;
+  bool _saving = false;
+  String? _error;
 
   static const List<String> _presets = <String>[
     'Tea Break', 'Lunch', 'Prayer', 'Walk', 'Rest',
@@ -426,65 +714,109 @@ class _BreakEditorState extends ConsumerState<_BreakEditor> {
     super.dispose();
   }
 
-  Future<void> _pickTime({required bool start, int? initialMinute}) async {
-    final int base = initialMinute ??
-        ((start ? _start : _end) ?? (start ? 11 * 60 : 11 * 60 + 15));
+  int get _startValue => _start ?? _next;
+
+  Future<void> _pickStart() async {
     final TimeOfDay? picked = await showTimePicker(
       context: context,
-      initialTime: TimeOfDay(hour: base ~/ 60, minute: base % 60),
+      initialTime: _timeOfDay(_startValue),
+      helpText: 'START TIME',
     );
     if (picked == null) return;
-    final int m = picked.hour * 60 + picked.minute;
     setState(() {
-      if (start) {
-        _start = m;
+      _start = picked.hour * 60 + picked.minute;
+      _error = null;
+    });
+  }
+
+  Future<void> _pickEnd() async {
+    final int start = _startValue;
+    final TimeOfDay? picked = await showTimePicker(
+      context: context,
+      initialTime: _timeOfDay(start + _duration),
+      helpText: 'END TIME',
+    );
+    if (picked == null) return;
+    final int end = picked.hour * 60 + picked.minute;
+    setState(() {
+      if (end <= start) {
+        _error = 'The end time must be after the start time '
+            '(${formatMinuteOfDay(start)}).';
       } else {
-        _end = m;
+        _duration = end - start;
+        _error = null;
       }
     });
-    // Same flow as sessions: confirming the start opens the end picker
-    // automatically (pre-filled with start + 15 min).
-    if (start && mounted) {
-      final int suggested =
-          (_end != null && _end! > m) ? _end! : (m + 15) % (24 * 60);
-      await _pickTime(start: false, initialMinute: suggested);
-    }
   }
 
   Future<void> _save() async {
+    if (_saving) return;
     final String name = _name.text.trim();
-    if (name.isEmpty) return;
-    final DateTime now = DateTime.now();
-    final StudyTask base = widget.existing ??
-        StudyTask(
-          id: const Uuid().v4(),
-          day: widget.day,
-          title: name,
-          createdAt: now,
-          updatedAt: now,
-        );
-    final StudyTask task = base.copyWith(
-      title: name,
-      startMinute: _start,
-      endMinute: _end,
-      kind: SessionKind.breakTime,
-      status: TaskStatus.pending,
-      durationMinutes: _start != null && _end != null ? _end! - _start! : null,
-      // Editing a break is an explicit user action, so preserve its chosen
-      // time instead of letting automatic scheduling move it elsewhere.
-      autoScheduled: false,
-      updatedAt: now,
-      clearSubject: true,
-      clearTopic: true,
-      clearTimes: _start == null && _end == null,
-    );
-    await ref.read(studyHubRepositoryProvider).saveTask(task);
-    if (mounted) Navigator.of(context).pop();
+    if (name.isEmpty) {
+      setState(() => _error = 'Enter a name for the break.');
+      return;
+    }
+    final int start = _startValue;
+    final int end = start + _duration;
+    final String? problem = StudyScheduleService.validateSpan(start, end);
+    if (problem != null) {
+      setState(() => _error = problem);
+      return;
+    }
+    setState(() {
+      _saving = true;
+      _error = null;
+    });
+    try {
+      final DateTime now = DateTime.now();
+      final StudyTask base = widget.existing ??
+          StudyTask(
+            id: _id,
+            day: widget.day,
+            title: name,
+            createdAt: now,
+            updatedAt: now,
+          );
+      final StudyTask task = base.copyWith(
+        title: name,
+        startMinute: start,
+        endMinute: end,
+        kind: SessionKind.breakTime,
+        status: TaskStatus.pending,
+        durationMinutes: _duration,
+        // Editing a break is an explicit user action, so preserve its chosen
+        // time instead of letting automatic scheduling move it elsewhere.
+        autoScheduled: false,
+        updatedAt: now,
+        clearSubject: true,
+        clearTopic: true,
+      );
+      await ref.read(studyHubRepositoryProvider).saveTask(task);
+      await sl<NotificationService>().rescheduleAll();
+      if (mounted) Navigator.of(context).pop();
+    } on Object catch (error) {
+      if (mounted) setState(() => _error = _scheduleErrorText(error));
+    } finally {
+      if (mounted) setState(() => _saving = false);
+    }
   }
 
   @override
   Widget build(BuildContext context) {
     final ThemeData theme = Theme.of(context);
+    final List<StudyTask> dayTasks = ref
+        .watch(studyDayTasksProvider(widget.day))
+        .maybeWhen(
+          data: (List<StudyTask> tasks) => tasks,
+          orElse: () => const <StudyTask>[],
+        );
+    _next = StudyScheduleService.nextAvailableMinute(
+      dayTasks.where((StudyTask t) => t.id != _id),
+    );
+    final int start = _startValue;
+    final int end = start + _duration;
+    final bool pastMidnight = end > 24 * 60;
+
     return Padding(
       padding: EdgeInsets.fromLTRB(16, 0, 16, _bottomInset(context)),
       child: SingleChildScrollView(
@@ -511,47 +843,76 @@ class _BreakEditorState extends ConsumerState<_BreakEditor> {
               children: <Widget>[
                 Expanded(
                   child: OutlinedButton.icon(
-                    onPressed: () => _pickTime(start: true),
-                    icon: const Icon(Icons.schedule, size: 18),
-                    label: Text(
-                        _start == null ? 'Start' : formatMinuteOfDay(_start)),
+                    onPressed: _pickStart,
+                    icon: const Icon(Icons.play_arrow_rounded, size: 18),
+                    label: Text('Start  ${formatMinuteOfDay(start)}'),
                   ),
                 ),
                 const SizedBox(width: 12),
                 Expanded(
                   child: OutlinedButton.icon(
-                    onPressed: () => _pickTime(start: false),
-                    icon: const Icon(Icons.schedule_outlined, size: 18),
-                    label:
-                        Text(_end == null ? 'End' : formatMinuteOfDay(_end)),
+                    onPressed: _pickEnd,
+                    icon: const Icon(Icons.stop_rounded, size: 18),
+                    label: Text('End  ${formatMinuteOfDay(end % (24 * 60))}'),
                   ),
                 ),
               ],
             ),
-            if (_start != null && _end != null && _end! > _start!)
-              Padding(
-                padding: const EdgeInsets.only(top: 8),
-                child: Text('Duration: ${formatDuration(_end! - _start!)}',
-                    style: theme.textTheme.bodySmall?.copyWith(
-                        color: theme.colorScheme.onSurfaceVariant)),
+            const SizedBox(height: 12),
+            Text('How long?', style: theme.textTheme.labelLarge),
+            const SizedBox(height: 6),
+            _DurationPicker(
+              minutes: _duration,
+              options: const <int>[5, 10, 15, 20, 30],
+              onChanged: (int m) => setState(() {
+                _duration = m;
+                _error = null;
+              }),
+            ),
+            Padding(
+              padding: const EdgeInsets.only(top: 4),
+              child: Text(
+                pastMidnight
+                    ? 'This runs past midnight. Choose an earlier start or a shorter break.'
+                    : '${formatMinuteOfDay(start)} → ${formatMinuteOfDay(end)}',
+                style: theme.textTheme.titleSmall?.copyWith(
+                  color: pastMidnight
+                      ? theme.colorScheme.error
+                      : theme.colorScheme.primary,
+                  fontWeight: FontWeight.w700,
+                ),
               ),
+            ),
             const SizedBox(height: 20),
+            if (_error != null) _ErrorBanner(_error!),
             Row(
               children: <Widget>[
                 if (widget.existing != null)
                   TextButton.icon(
-                    onPressed: () async {
-                      await ref
-                          .read(studyHubRepositoryProvider)
-                          .deleteTask(widget.existing!.id);
-                      if (context.mounted) Navigator.of(context).pop();
-                    },
+                    onPressed: _saving
+                        ? null
+                        : () async {
+                            await ref
+                                .read(studyHubRepositoryProvider)
+                                .deleteTask(widget.existing!.id);
+                            if (context.mounted) Navigator.of(context).pop();
+                          },
                     icon: Icon(Icons.delete_outline, color: theme.colorScheme.error),
                     label: Text('Delete',
                         style: TextStyle(color: theme.colorScheme.error)),
                   ),
                 const Spacer(),
-                FilledButton(onPressed: _save, child: const Text('Save')),
+                FilledButton.icon(
+                  onPressed: (_saving || pastMidnight) ? null : _save,
+                  icon: _saving
+                      ? const SizedBox(
+                          width: 16,
+                          height: 16,
+                          child: CircularProgressIndicator(strokeWidth: 2),
+                        )
+                      : const Icon(Icons.check),
+                  label: Text(_saving ? 'Saving…' : 'Save'),
+                ),
               ],
             ),
           ],

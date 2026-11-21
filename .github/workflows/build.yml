@@ -7,7 +7,7 @@ on:
   push:
     branches: [main, update-v0.5.3, rebrand/darsnexa]
   pull_request:
-    branches: [main]
+    branches: [main, flashcards-v2]
   workflow_dispatch:
 
 permissions:

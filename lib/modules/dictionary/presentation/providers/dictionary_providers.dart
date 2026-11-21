@@ -134,79 +134,74 @@ final wordAiEnrichmentProvider =
     final WordProfile profile =
         await ref.watch(wordProfileProvider(wordLower).future);
 
-    // The reader has two different kinds of local Urdu data:
-    // 1) bundled translation data (authoritative/offline) — NEVER call AI;
-    // 2) translationCache rows created by a previous online lookup — these
-    //    must NOT suppress the AI dictionary fallback.
-    //
-    // The old implementation only checked WordProfile.existsLocally. That is
-    // not enough because a word can have a bundled English definition but no
-    // bundled Urdu meaning (e.g. "prominence"). In that case the PDF reader
-    // must still use the AI dictionary for BOTH English + Urdu.
+    final bool existsOffline = profile.existsLocally;
     final TranslationRepository translations = sl<TranslationRepository>();
+
+    // Bundled/offline Urdu is authoritative. If it exists, this provider must
+    // not call AI at all — even if the offline entry is missing other fields.
     final String? localUrdu =
         await translations.translate(wordLower, 'ur');
-    if (localUrdu != null && localUrdu.trim().isNotEmpty) {
-      final bool isOnlineCache =
-          await translations.isCached(wordLower, 'ur');
-      if (!isOnlineCache) {
-        // Exact bundled offline Urdu exists. Keep it untouched and do not
-        // spend an AI request.
-        return null;
-      }
-      // An old online result exists in translationCache. Ignore it and let the
-      // AI dictionary replace it with a precise cached AI profile.
+    final bool hasOfflineUrdu =
+        (profile.exam?.urduMeanings.isNotEmpty == true) ||
+        (localUrdu != null &&
+            localUrdu.trim().isNotEmpty &&
+            !(await translations.isCached(wordLower, 'ur')));
+
+    if (existsOffline && hasOfflineUrdu) {
+      return null;
     }
 
-    // Persistent cache check: previously generated AI profiles consume zero
-    // network requests and zero AI tokens on subsequent lookups.
     final AiDictionaryCache cache = sl<AiDictionaryCache>();
+
+    // A locally-known word is allowed only one AI gap: Urdu. Never enrich its
+    // synonyms, antonyms, examples, collocations, etc.
+    if (existsOffline) {
+      final AiWordProfile? cached = await cache.get(wordLower);
+      if (cached != null && cached.urduMeanings.isNotEmpty) {
+        return AiWordProfile(
+          word: cached.word,
+          source: 'ai',
+          urduMeanings: cached.urduMeanings,
+        );
+      }
+
+      final AiWordProfile? generated = await sl<AiDictionaryService>().define(
+        wordLower,
+        missingFields: const <String>['urduMeanings'],
+      );
+      if (generated != null && generated.urduMeanings.isNotEmpty) {
+        await cache.put(
+          AiWordProfile(
+            word: generated.word,
+            source: 'ai',
+            urduMeanings: generated.urduMeanings,
+          ),
+        );
+        return generated;
+      }
+      return null;
+    }
+
+    // The word is genuinely absent from offline data: AI can provide the
+    // complete lightweight fallback profile.
     final AiWordProfile? cached = await cache.get(wordLower);
     if (cached != null) return cached;
 
-    final ExamWordData? exam = profile.exam;
-    final WordDetails? base = profile.base;
-    final List<String> missing = <String>[];
-
-    final bool hasEnglish =
-        (exam?.englishDefinition?.trim().isNotEmpty == true) ||
-        (base?.primary?.meaning.trim().isNotEmpty == true);
-    final bool hasUrdu = exam?.urduMeanings.isNotEmpty == true;
-    final bool hasSynonyms = exam?.synonyms.isNotEmpty == true;
-    final bool hasAntonyms = exam?.antonyms.isNotEmpty == true;
-    final bool hasExample =
-        validatedUsage(profile.wordLower, exam?.usage) != null ||
-        base?.primary?.exampleSentence?.trim().isNotEmpty == true;
-    final bool hasCollocations = exam?.collocations.isNotEmpty == true;
-    final bool hasWordForms =
-        exam?.wordForms.isNotEmpty == true || profile.relatedWords.isNotEmpty;
-    final bool hasExamNote = exam?.examNote?.trim().isNotEmpty == true;
-
-    if (!hasEnglish) missing.add('englishDefinition');
-    if (!hasUrdu) missing.add('urduMeanings');
-    if (!hasSynonyms) missing.add('synonyms');
-    if (!hasAntonyms) missing.add('antonyms');
-    if (!hasExample) {
-      missing.add('exampleSentence');
-      missing.add('exampleSentenceUrdu');
-    }
-    if (!hasCollocations) missing.add('collocations');
-    if (!hasWordForms) missing.add('wordForms');
-    if (!hasExamNote) missing.add('examNote');
-
-    if (missing.isEmpty) return null;
-
     final AiWordProfile? generated = await sl<AiDictionaryService>().define(
       wordLower,
-      missingFields: missing,
+      missingFields: const <String>[
+        'englishDefinition',
+        'urduMeanings',
+        'synonyms',
+        'antonyms',
+        'exampleSentence',
+        'exampleSentenceUrdu',
+      ],
     );
 
-    // Cache only successful profiles. Failed requests are not cached so a
-    // later lookup can retry when the network/provider is available.
     if (generated != null && generated.hasContent) {
       await cache.put(generated);
     }
-
     return generated;
   },
 );

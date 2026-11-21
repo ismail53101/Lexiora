@@ -4,32 +4,32 @@ import 'package:go_router/go_router.dart';
 import 'package:lexiora/app/router/app_routes.dart';
 import 'package:lexiora/core/database/app_database.dart';
 import 'package:lexiora/core/module/feature_module.dart';
+import 'package:lexiora/core/navigation/home_destination.dart';
 import 'package:lexiora/core/services/ad_return_navigation_scope.dart';
 import 'package:lexiora/core/services/rewarded_ad_manager.dart';
-import 'package:lexiora/core/navigation/home_destination.dart';
-import 'package:lexiora/modules/flashcards/data/datasources/flashcard_local_data_source.dart';
-import 'package:lexiora/modules/flashcards/data/repositories/flashcard_repository_impl.dart';
-import 'package:lexiora/modules/flashcards/domain/entities/flashcard_models.dart';
-import 'package:lexiora/modules/flashcards/domain/repositories/flashcard_repository.dart';
+import 'package:lexiora/modules/flashcards/data/drift_fc_sql.dart';
+import 'package:lexiora/modules/flashcards/data/fc_repository_impl.dart';
+import 'package:lexiora/modules/flashcards/data/flashcard_store.dart';
+import 'package:lexiora/modules/flashcards/domain/models/fc_models.dart';
+import 'package:lexiora/modules/flashcards/domain/repositories/fc_repository.dart';
 import 'package:lexiora/modules/flashcards/presentation/pages/deck_detail_page.dart';
 import 'package:lexiora/modules/flashcards/presentation/pages/decks_page.dart';
-import 'package:lexiora/modules/flashcards/presentation/pages/flashcard_export_page.dart';
-import 'package:lexiora/modules/flashcards/presentation/pages/flashcard_search_page.dart';
-import 'package:lexiora/modules/flashcards/presentation/pages/flashcard_stats_page.dart';
-import 'package:lexiora/modules/flashcards/presentation/pages/flashcards_dashboard_page.dart';
+import 'package:lexiora/modules/flashcards/presentation/pages/export_page.dart';
+import 'package:lexiora/modules/flashcards/presentation/pages/flashcards_home_page.dart';
 import 'package:lexiora/modules/flashcards/presentation/pages/import_page.dart';
+import 'package:lexiora/modules/flashcards/presentation/pages/search_page.dart';
+import 'package:lexiora/modules/flashcards/presentation/pages/stats_page.dart';
 import 'package:lexiora/modules/flashcards/presentation/pages/study_page.dart';
 
-/// Phase v0.8.0 — the Flashcards Learning Engine.
+/// Flashcards v2: an FSRS-6 spaced-repetition engine with basic, cloze and
+/// type-the-answer cards, per-deck limits, statistics, import/export and
+/// backups.
 ///
-/// A fully independent [FeatureModule]: it wires its own data source +
-/// repository into DI, contributes the `/flashcards/*` routes, and replaces the
-/// old "Coming Soon" tile with a live Home entry. It reads other modules'
-/// tables (study_subjects for colours; dictionary/vocabulary/study_tasks for
-/// import) strictly read-only, and modifies no existing module. Storage is
-/// three additive Drift tables with UUID ids + timestamps, structured so a
-/// future Cloud Sync / spaced-repetition layer can be added without changing
-/// these contracts.
+/// Storage: the original `decks` / `flashcards` / `review_logs` tables are
+/// kept as they are (so nobody loses data); FSRS scheduling state and deck
+/// settings live in two sidecar tables created by [FcSchema] when the
+/// database opens. Other modules' tables (study_subjects, dictionary_entries,
+/// vocabulary_words, study_tasks) are only ever read.
 class FlashcardsModule extends FeatureModule {
   @override
   String get id => 'flashcards';
@@ -40,11 +40,11 @@ class FlashcardsModule extends FeatureModule {
   @override
   void registerDependencies(GetIt getIt) {
     getIt
-      ..registerLazySingleton<FlashcardLocalDataSource>(
-        () => FlashcardLocalDataSource(getIt<AppDatabase>()),
+      ..registerLazySingleton<FlashcardStore>(
+        () => FlashcardStore(DriftFcSql(getIt<AppDatabase>())),
       )
-      ..registerLazySingleton<FlashcardRepository>(
-        () => FlashcardRepositoryImpl(getIt<FlashcardLocalDataSource>()),
+      ..registerLazySingleton<FcRepository>(
+        () => FcRepositoryImpl(getIt<FlashcardStore>()),
       );
   }
 
@@ -54,7 +54,7 @@ class FlashcardsModule extends FeatureModule {
           path: AppRoutes.flashcards,
           builder: (_, _) => AdReturnNavigationScope(
             manager: getIt<RewardedAdManager>(),
-            child: const FlashcardsDashboardPage(),
+            child: const FlashcardsHomePage(),
           ),
         ),
         GoRoute(
@@ -82,19 +82,20 @@ class FlashcardsModule extends FeatureModule {
         ),
         GoRoute(
           path: AppRoutes.flashcardsSearch,
-          builder: (_, _) => const FlashcardSearchPage(),
+          builder: (_, _) => const FlashcardsSearchPage(),
         ),
         GoRoute(
           path: AppRoutes.flashcardsStats,
-          builder: (_, _) => const FlashcardStatsPage(),
+          builder: (_, _) => const FlashcardsStatsPage(),
         ),
         GoRoute(
           path: AppRoutes.flashcardsImport,
-          builder: (_, _) => const ImportPage(),
+          builder: (_, _) => const FlashcardsImportPage(),
         ),
         GoRoute(
           path: AppRoutes.flashcardsExport,
-          builder: (_, _) => const FlashcardExportPage(),
+          builder: (BuildContext context, GoRouterState state) =>
+              FlashcardsExportPage(deckId: state.uri.queryParameters['deck']),
         ),
       ];
 

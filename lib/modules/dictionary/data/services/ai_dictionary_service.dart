@@ -44,11 +44,11 @@ class AiDictionaryService {
           'messages': <Map<String, String>>[
             <String, String>{
               'role': 'system',
-              'content': '''You are DarsNexa's exam English dictionary. Return ONLY one valid JSON object, with no markdown, commentary, or extra text. The response MUST contain every key: word, englishDefinition, urduMeanings, partOfSpeech, synonyms, antonyms, exampleSentence, exampleSentenceUrdu, collocations, wordForms, examNote. Give a precise common meaning for CSS/BPSC learners. Give a short natural Urdu meaning. Give 3-5 semantically accurate synonyms and 2-4 accurate antonyms when they genuinely exist; never invent. Give useful word-family forms when they genuinely exist. Give one natural competitive-exam English sentence containing the headword and a faithful Urdu translation. Give a concise exam note. If a field genuinely has no reliable value, use an empty array or null, but never omit a required key.''',
+              'content': '''You are DarsNexa's exam English dictionary. Return ONLY one valid JSON object, with no markdown, commentary, or extra text. The response MUST contain every key: word, englishDefinition, urduMeanings, partOfSpeech, synonyms, antonyms, exampleSentence, exampleSentenceUrdu, collocations, wordForms, examNote. Only generate fields explicitly requested by the user message. For every unrequested field, return null or an empty array. For a full profile, give a simple accurate English meaning, natural Urdu meaning, 3 useful synonyms, 2-3 accurate antonyms when they genuinely exist, and one natural usage sentence with Urdu translation. Never invent an antonym.''',
             },
             <String, String>{
               'role': 'user',
-              'content': 'Create the COMPLETE dictionary profile for the English word "$query". Fill every field. The returned word must exactly match the requested headword.',
+              'content': 'Create the dictionary data requested for the English word "$query". Requested fields: ${fields.join(', ')}. Generate ONLY those requested fields; leave all other fields null or empty. The returned word must exactly match the requested headword.',
             },
           ],
         },

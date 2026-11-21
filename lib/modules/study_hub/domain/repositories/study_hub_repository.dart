@@ -16,6 +16,61 @@ abstract interface class StudyHubRepository {
 
   Future<void> saveTask(StudyTask task); // insert or update (session or break)
   Future<void> deleteTask(String id);
+
+  /// Splits [session] into Pomodoro-style focus blocks with [breakMinutes]
+  /// breaks between them and saves everything in one atomic step.
+  ///
+  /// `session.durationMinutes` is the total FOCUS time. The blocks start at
+  /// `session.startMinute` (manual) or right after the previous item of the
+  /// day (when `session.autoScheduled`). Block ids derive from `session.id`,
+  /// so saving again replaces the previous blocks instead of duplicating.
+  /// Throws [StudyScheduleInvalidTimeException] / [StudyScheduleOverlapException]
+  /// and saves nothing in that case. Returns every saved row in time order.
+  Future<List<StudyTask>> saveSessionAsBlocks({
+    required StudyTask session,
+    required int focusMinutes,
+    required int breakMinutes,
+  });
+
+  /// Saves the sessions and breaks of a generated day plan in one atomic step.
+  /// Items keep their ids, so saving the same plan twice never duplicates.
+  /// Throws [StudyScheduleInvalidTimeException] / [StudyScheduleOverlapException]
+  /// and saves nothing in that case.
+  Future<int> saveGeneratedPlan({
+    required String day,
+    required List<StudyTask> items,
+  });
+
+  /// The last day each subject was studied (lower-cased name → `yyyy-MM-dd`).
+  Future<Map<String, String>> lastStudiedDays();
+
+  /// Sessions from the last [lookbackDays] days (including [today]) that were
+  /// not completed and whose time has passed.
+  Future<List<StudyTask>> missedSessions({
+    required String today,
+    required int nowMinute,
+    int lookbackDays = 7,
+  });
+
+  /// Moves [tasks] to [toDay] as automatic sessions placed after everything
+  /// already planned there. Returns how many were moved.
+  Future<int> moveSessionsToDay({
+    required List<StudyTask> tasks,
+    required String toDay,
+  });
+
+  /// Saves a session AND the break attached to its end in one atomic step.
+  ///
+  /// [breakMinutes] null (or 0) means "no break": a previously linked break
+  /// with [breakId] is removed. Throws [StudyScheduleInvalidTimeException] or
+  /// [StudyScheduleOverlapException] — in which case NOTHING is saved.
+  /// Saving again with the same ids updates the same rows (never duplicates).
+  /// Returns the session as stored (with its final start/end).
+  Future<StudyTask> saveSessionWithBreak({
+    required StudyTask session,
+    required String breakId,
+    int? breakMinutes,
+  });
   Future<void> setTaskCompleted(String id, {required bool completed});
   Future<void> setTaskStatus(String id, TaskStatus status);
 

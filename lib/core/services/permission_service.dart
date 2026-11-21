@@ -1,31 +1,45 @@
 import 'dart:io';
 
+import 'package:flutter/services.dart';
 import 'package:lexiora/core/services/device_info_service.dart';
 import 'package:permission_handler/permission_handler.dart';
 
 /// Outcome of a storage-access request for automatic PDF discovery.
 enum StorageAccessStatus { granted, denied, permanentlyDenied }
 
-/// Version-aware storage-access flow for automatic device-wide PDF discovery.
+/// Version-aware storage-access flow for automatic PDF discovery.
 ///
-/// On Android 11+ (API 30+), listing every PDF on the device requires
-/// "All files access" (MANAGE_EXTERNAL_STORAGE) — the same capability Adobe
-/// Acrobat / Xodo use — so we request that (permission_handler opens the system
-/// All-files-access screen). On Android 10 and below, READ_EXTERNAL_STORAGE is
-/// sufficient.
+/// Android 11+ uses the platform's All Files Access state directly. This is
+/// more reliable than relying on permission_handler's cached state after the
+/// user returns from the system settings screen.
 class PermissionService {
   PermissionService(this._device);
 
   final DeviceInfoService _device;
+  static const MethodChannel _platform = MethodChannel('lexiora/platform');
 
-  Future<Permission> _permission() async {
-    final int sdk = await _device.androidSdkInt();
-    return sdk >= 30 ? Permission.manageExternalStorage : Permission.storage;
-  }
+  Future<int> _sdk() => _device.androidSdkInt();
 
   Future<StorageAccessStatus> requestForDiscovery() async {
     if (!Platform.isAndroid) return StorageAccessStatus.granted;
-    final PermissionStatus status = await (await _permission()).request();
+
+    final int sdk = await _sdk();
+    if (sdk >= 30) {
+      try {
+        final bool granted = await _isAllFilesAccessGranted();
+        if (granted) return StorageAccessStatus.granted;
+
+        await _platform.invokeMethod<void>('openAllFilesAccessSettings');
+
+        // The user must grant this in Android Settings. The Library listens
+        // for the app resume and re-checks the real native state there.
+        return StorageAccessStatus.denied;
+      } on PlatformException {
+        return StorageAccessStatus.denied;
+      }
+    }
+
+    final PermissionStatus status = await Permission.storage.request();
     if (status.isGranted) return StorageAccessStatus.granted;
     if (status.isPermanentlyDenied) return StorageAccessStatus.permanentlyDenied;
     return StorageAccessStatus.denied;
@@ -33,8 +47,30 @@ class PermissionService {
 
   Future<bool> isGrantedForDiscovery() async {
     if (!Platform.isAndroid) return true;
-    return (await (await _permission()).status).isGranted;
+
+    final int sdk = await _sdk();
+    if (sdk >= 30) {
+      return _isAllFilesAccessGranted();
+    }
+
+    return (await Permission.storage.status).isGranted;
   }
 
-  Future<void> openSystemSettings() => openAppSettings();
+  Future<bool> _isAllFilesAccessGranted() async {
+    try {
+      final bool? value =
+          await _platform.invokeMethod<bool>('isExternalStorageManager');
+      return value ?? false;
+    } on PlatformException {
+      return false;
+    }
+  }
+
+  Future<void> openSystemSettings() async {
+    if (Platform.isAndroid && await _sdk() >= 30) {
+      await _platform.invokeMethod<void>('openAllFilesAccessSettings');
+      return;
+    }
+    await openAppSettings();
+  }
 }

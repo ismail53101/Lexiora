@@ -9,6 +9,10 @@ import 'package:lexiora/modules/study_hub/domain/entities/study_models.dart';
 import 'package:lexiora/modules/study_hub/domain/entities/study_subject.dart';
 import 'package:lexiora/modules/study_hub/domain/entities/study_task.dart';
 import 'package:lexiora/modules/study_hub/domain/entities/study_template.dart';
+import 'package:lexiora/modules/study_hub/domain/exams/exam_models.dart';
+import 'package:lexiora/modules/study_hub/domain/report/weekly_report.dart';
+import 'package:lexiora/modules/study_hub/domain/repositories/exam_repository.dart';
+import 'package:lexiora/modules/study_hub/domain/repositories/report_repository.dart';
 import 'package:lexiora/modules/study_hub/domain/repositories/study_hub_repository.dart';
 import 'package:lexiora/modules/study_hub/domain/study_dates.dart';
 
@@ -32,17 +36,28 @@ final StreamProvider<int> studyMinutesTodayProvider =
 /// Context carried from a planned task into the existing Pomodoro/manual timer.
 /// It is not a second log: completed timers still write only to study_sessions.
 class ActiveStudyContext {
-  const ActiveStudyContext({this.taskId, this.subject});
+  const ActiveStudyContext({this.taskId, this.subject, this.durationMinutes});
   final String? taskId;
   final String? subject;
+  final int? durationMinutes;
   static const empty = ActiveStudyContext();
 }
 
 class ActiveStudyContextNotifier extends Notifier<ActiveStudyContext> {
   @override
   ActiveStudyContext build() => ActiveStudyContext.empty;
-  void setTask(StudyTask task) =>
-      state = ActiveStudyContext(taskId: task.id, subject: task.displaySubject);
+
+  void setTask(StudyTask task) {
+    final int? duration = task.startMinute != null && task.endMinute != null
+        ? task.endMinute! - task.startMinute!
+        : null;
+    state = ActiveStudyContext(
+      taskId: task.id,
+      subject: task.displaySubject,
+      durationMinutes: duration != null && duration > 0 ? duration : null,
+    );
+  }
+
   void clear() => state = ActiveStudyContext.empty;
 }
 
@@ -193,3 +208,77 @@ final Provider<StudyExportService> studyExportServiceProvider =
 final Provider<StudyBackupService> studyBackupServiceProvider =
     Provider<StudyBackupService>(
         (Ref ref) => StudyBackupService(ref.watch(studyExportServiceProvider)));
+
+// ── Exams & syllabus ─────────────────────────────────────────────────────────
+
+final Provider<ExamRepository> examRepositoryProvider =
+    Provider<ExamRepository>((Ref ref) => sl<ExamRepository>());
+
+/// Exams with days left and syllabus progress, soonest first.
+final StreamProvider<List<ExamCountdown>> examCountdownsProvider =
+    StreamProvider<List<ExamCountdown>>(
+        (Ref ref) => ref.watch(examRepositoryProvider).watchCountdowns());
+
+final StreamProvider<List<SubjectSyllabus>> syllabiProvider =
+    StreamProvider<List<SubjectSyllabus>>(
+        (Ref ref) => ref.watch(examRepositoryProvider).watchSyllabi());
+
+// ── Plan my day & missed sessions ────────────────────────────────────────────
+
+/// The last day each subject was studied (lower-cased name → `yyyy-MM-dd`).
+final FutureProvider<Map<String, String>> lastStudiedDaysProvider =
+    FutureProvider.autoDispose<Map<String, String>>(
+        (Ref ref) => ref.watch(studyHubRepositoryProvider).lastStudiedDays());
+
+/// Unfinished sessions from the last week whose time has passed. Refreshes
+/// whenever today's tasks change.
+final FutureProvider<List<StudyTask>> missedSessionsProvider =
+    FutureProvider.autoDispose<List<StudyTask>>((Ref ref) {
+  ref.watch(studyDayTasksProvider(todayKey()));
+  final DateTime now = DateTime.now();
+  return ref.watch(studyHubRepositoryProvider).missedSessions(
+        today: dayKey(now),
+        nowMinute: now.hour * 60 + now.minute,
+      );
+});
+
+// ── Weekly report ────────────────────────────────────────────────────────────
+
+final Provider<ReportRepository> reportRepositoryProvider =
+    Provider<ReportRepository>((Ref ref) => sl<ReportRepository>());
+
+String _keyOf(DateTime d) =>
+    '${d.year.toString().padLeft(4, '0')}-${d.month.toString().padLeft(2, '0')}-${d.day.toString().padLeft(2, '0')}';
+
+/// The report for the week starting on the Monday [weekStartKey]
+/// (`yyyy-MM-dd`). Refreshes when exams or today's tasks change.
+final weeklyReportProvider =
+    FutureProvider.autoDispose.family<WeeklyReport, String>((Ref ref, String weekStartKey) async {
+  ref.watch(studyDayTasksProvider(todayKey()));
+  final List<ExamCountdown> exams =
+      ref.watch(examCountdownsProvider).asData?.value ?? const <ExamCountdown>[];
+  final DateTime weekStart = DateTime.parse(weekStartKey);
+  final DateTime prevStart = DateTime(weekStart.year, weekStart.month, weekStart.day - 7);
+  final DateTime weekEnd = DateTime(weekStart.year, weekStart.month, weekStart.day + 6);
+
+  final ReportSource src = await ref.watch(reportRepositoryProvider).load(
+        startDay: _keyOf(prevStart),
+        endDay: _keyOf(weekEnd),
+      );
+  bool inThisWeek(String day) => day.compareTo(weekStartKey) >= 0;
+
+  final List<TaskRow> tasksThis = src.tasks.where((TaskRow t) => inThisWeek(t.day)).toList();
+  final List<TaskRow> tasksLast = src.tasks.where((TaskRow t) => !inThisWeek(t.day)).toList();
+  final List<TimerLog> logsThis = src.logs.where((TimerLog l) => inThisWeek(l.day)).toList();
+  final List<TimerLog> logsLast = src.logs.where((TimerLog l) => !inThisWeek(l.day)).toList();
+
+  final DateTime now = DateTime.now();
+  return buildWeeklyReport(
+    weekStart: weekStart,
+    thisWeek: mergeEffort(logsThis, tasksThis),
+    lastWeek: mergeEffort(logsLast, tasksLast),
+    plannedThisWeek: plannedForReport(tasksThis, _keyOf(now)),
+    exams: exams,
+    now: now,
+  );
+});

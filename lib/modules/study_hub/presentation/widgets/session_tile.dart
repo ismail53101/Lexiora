@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:lexiora/app/di/injector.dart';
+import 'package:lexiora/core/services/notification_service.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:lexiora/modules/study_hub/domain/entities/study_task.dart';
 import 'package:lexiora/modules/study_hub/domain/study_dates.dart';
@@ -45,9 +47,12 @@ class SessionTile extends ConsumerWidget {
           ),
           Checkbox(
             value: task.completed,
-            onChanged: (bool? v) => ref
-                .read(studyHubRepositoryProvider)
-                .setTaskCompleted(task.id, completed: v ?? false),
+            onChanged: (bool? v) async {
+              await ref
+                  .read(studyHubRepositoryProvider)
+                  .setTaskCompleted(task.id, completed: v ?? false);
+              await sl<NotificationService>().rescheduleAll();
+            },
           ),
           _PriorityDot(priority: task.priority),
           const SizedBox(width: 8),
@@ -117,13 +122,14 @@ class SessionTile extends ConsumerWidget {
 
   Widget _menu(BuildContext context, WidgetRef ref) {
     return PopupMenuButton<String>(
-      onSelected: (String v) {
+      onSelected: (String v) async {
         if (v == 'edit') {
           task.isBreak
               ? showBreakEditor(context, day: task.day, existing: task)
               : showSessionEditor(context, day: task.day, existing: task);
         } else if (v == 'delete') {
-          ref.read(studyHubRepositoryProvider).deleteTask(task.id);
+          await ref.read(studyHubRepositoryProvider).deleteTask(task.id);
+          await sl<NotificationService>().rescheduleAll();
         }
       },
       itemBuilder: (BuildContext context) => const <PopupMenuEntry<String>>[

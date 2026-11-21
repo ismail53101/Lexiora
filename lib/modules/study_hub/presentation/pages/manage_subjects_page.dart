@@ -121,14 +121,14 @@ class _ManageSubjectsPageState extends ConsumerState<ManageSubjectsPage> {
             updatedAt: now,
           ));
         }
-      case 'rename':
+      case 'edit':
         if (!u.hasColor) return;
         final TextEditingController ctrl =
             TextEditingController(text: u.name);
         final String? newName = await showDialog<String>(
           context: context,
           builder: (BuildContext context) => AlertDialog(
-            title: const Text('Rename subject'),
+            title: const Text('Edit subject'),
             content: TextField(
                 controller: ctrl,
                 autofocus: true,
@@ -152,7 +152,30 @@ class _ManageSubjectsPageState extends ConsumerState<ManageSubjectsPage> {
       case 'restore':
         if (u.hasColor) await _repo.setSubjectArchived(u.subject!.id, false);
       case 'delete':
-        if (u.hasColor) await _repo.deleteSubject(u.subject!.id);
+        if (!u.hasColor) return;
+        final bool? confirmed = await showDialog<bool>(
+          context: context,
+          builder: (BuildContext context) => AlertDialog(
+            title: const Text('Delete subject?'),
+            content: Text(
+              'Delete "${u.name}" from your subjects? '
+              'Its existing study history will stay intact.',
+            ),
+            actions: <Widget>[
+              TextButton(
+                onPressed: () => Navigator.of(context).pop(false),
+                child: const Text('Cancel'),
+              ),
+              FilledButton(
+                onPressed: () => Navigator.of(context).pop(true),
+                child: const Text('Delete'),
+              ),
+            ],
+          ),
+        );
+        if (confirmed == true) {
+          await _repo.deleteSubject(u.subject!.id);
+        }
     }
   }
 }
@@ -195,13 +218,19 @@ class _SubjectRow extends StatelessWidget {
               value: 'color',
               child: Text(usage.hasColor ? 'Change colour' : 'Add colour')),
           if (usage.hasColor)
-            const PopupMenuItem<String>(value: 'rename', child: Text('Rename')),
+            const PopupMenuItem<String>(
+              value: 'edit',
+              child: Text('Edit subject'),
+            ),
           if (usage.hasColor && !archived)
             const PopupMenuItem<String>(value: 'archive', child: Text('Archive')),
           if (usage.hasColor && archived)
             const PopupMenuItem<String>(value: 'restore', child: Text('Restore')),
           if (usage.hasColor)
-            const PopupMenuItem<String>(value: 'delete', child: Text('Delete colour')),
+            const PopupMenuItem<String>(
+              value: 'delete',
+              child: Text('Delete subject'),
+            ),
         ],
       ),
     );

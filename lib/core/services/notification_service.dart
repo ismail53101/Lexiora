@@ -150,7 +150,6 @@ class NotificationService {
     }
     return granted ?? enabled;
   }
-
   Future<bool> notificationsEnabled() async {
     await initialize();
     final bool enabled = await _isEnabled();

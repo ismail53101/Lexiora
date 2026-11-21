@@ -43,9 +43,6 @@ class SettingsController {
   Future<void> setDefaultHighlightColor(int color) =>
       _mutate((AppSettings s) => s.copyWith(defaultHighlightColor: color));
 
-  Future<void> setKeepScreenAwake(bool value) =>
-      _mutate((AppSettings s) => s.copyWith(keepScreenAwake: value));
-
   Future<void> setAutoResume(bool value) =>
       _mutate((AppSettings s) => s.copyWith(autoResume: value));
 

@@ -5,6 +5,74 @@ All notable changes to Sapiora are documented here.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [Unreleased]
+
+### Changed
+
+- **Flashcards rebuilt around the FSRS-6 spaced-repetition algorithm.** The old
+  placeholder scheduler is gone. Reviews are now scheduled by FSRS-6 (the
+  open algorithm used by modern Anki), with learning/relearning steps, a
+  per-deck target memory (70–97 %), daily new/review limits, a 04:00 study-day
+  rollover, "learn ahead" and automatic leech suspension after 8 lapses. The
+  Dart port is verified against the reference `py-fsrs` implementation by
+  golden tests (`tools/gen_fsrs_golden.py` regenerates them).
+- **New study experience:** flip animation, swipe to answer (← Again, → Good,
+  ↑ Easy), interval preview on every button, undo, read-aloud, keyboard
+  shortcuts, practice modes (all / starred / leeches) that never touch the
+  schedule, and an end-of-session summary.
+- **New card types:** Basic, Cloze (`{{c1::hidden}}`, one card per blank) and
+  Type-the-answer (typo-tolerant checking). Optional reverse cards.
+- **Deck list and browser:** live new / learning / due counts, search, status
+  filters (new, learning, review, suspended, starred, leeches), sorting,
+  multi-select (suspend, move, delete) and per-deck study settings.
+- **Statistics:** streaks, 20-week activity heatmap, 30-day retention,
+  30-day review forecast, card maturity breakdown and time studied.
+- **Import / export:** paste CSV, TSV or Anki "Notes in Plain Text"; import
+  from Dictionary, Vocabulary and the Study Planner (read-only); export to
+  CSV, Anki text, XLSX, PDF or JSON; full JSON backup and restore (old
+  backups are still accepted).
+
+### Study Planner
+
+- **Session + break saving fixed:** a session and its break are saved in one
+  step (nothing is half-saved), saving again never creates duplicates, breaks
+  are no longer silently skipped, and errors appear inside the sheet instead of
+  behind it. Reminders refresh in the background so saving no longer lags.
+- **Clearer time selection:** "After previous" / "Set time" / "No time", one
+  picker per tap, duration chips and an `10:10 → 11:10` summary. The first
+  automatic session of a day starts at 09:00 instead of midnight, and editing
+  an automatic session keeps its place in the day.
+- **Pomodoro blocks:** split a session into focus blocks with breaks (25 + 5,
+  50 + 10 or 90 + 15) in one step.
+- **Exams & syllabus:** exam dates with a days-left countdown, a topic
+  checklist per subject (paste a list or import topics from your planned
+  sessions) and a "topics per day" pace hint. A countdown card appears in the
+  daily planner.
+- **Flashcards due** shortcut in the daily planner when cards are waiting.
+- **Plan my day:** choose when you are free and which subjects to cover; the
+  planner fills the gaps around what is already planned with focus sessions and
+  breaks. Time is shared by exam closeness, syllabus left and how long since
+  you last studied each subject, and each block suggests the next unfinished
+  topic. Review the plan, remove blocks you do not want, then add it in one
+  step. Simple rules, no AI, fully offline.
+- **Missed sessions:** unfinished sessions from the past week (or earlier
+  today) are offered with "Move to tomorrow".
+- **Weekly report** (menu → Weekly report): total study time with the change
+  vs last week, a bar per day, plan-vs-done, time by subject, when in the day
+  you study most, and a few plain-language insights (for example a subject
+  with an exam coming up that got almost no time). Browse earlier weeks and
+  share the summary. Time counts timer logs plus sessions you ticked as done
+  (never both for the same session).
+
+### Migration
+
+- Existing decks, cards and review history are kept. The original `decks`,
+  `flashcards` and `review_logs` tables are untouched; FSRS state and deck
+  settings live in two new tables (`fc_card_state`, `fc_deck_settings`)
+  created when the database opens. Existing cards are converted once: the
+  old interval becomes the FSRS stability and the old ease factor seeds the
+  difficulty, so due dates are preserved.
+
 ## [0.23.10] — 2026-09-27
 
 ### Fixed
