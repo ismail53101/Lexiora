@@ -121,7 +121,6 @@ class HybridTranslate
             lang.toLowerCase() == 'ur') {
           final String wl = word.toLowerCase();
           final WordDetails? base = await _dictionary.wordDetails(wl);
-          final WordMeaning? meaning = await _resolveMeaning(wl);
           final bool existsOffline =
               base != null || await _dictionary.examData(wl) != null;
 
