@@ -3,6 +3,7 @@ import 'dart:async';
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:lexiora/app/app.dart';
@@ -96,6 +97,8 @@ class _BootstrapAppState extends State<_BootstrapApp> {
       // These are deliberately started only after the first real Flutter
       // frame is already on screen.
       unawaited(_initializePdfEngine());
+      // Ask immediately on launch: notification first, then PDF/device access.
+      unawaited(_requestStartupPermissions());
       unawaited(_finishStartup(router));
 
       unawaited(
@@ -151,6 +154,20 @@ Future<void> _initializePdfEngine() async {
   } on Object catch (error, stackTrace) {
     AppLogger.e(
       'PDF engine initialization failed after app startup',
+      error: error,
+      stackTrace: stackTrace,
+    );
+  }
+}
+
+const MethodChannel _platformChannel = MethodChannel('lexiora/platform');
+
+Future<void> _requestStartupPermissions() async {
+  try {
+    await _platformChannel.invokeMethod<bool>('requestStartupPermissions');
+  } on Object catch (error, stackTrace) {
+    AppLogger.e(
+      'Startup permission request failed',
       error: error,
       stackTrace: stackTrace,
     );
