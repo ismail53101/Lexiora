@@ -40,7 +40,7 @@ class LibraryPage extends ConsumerStatefulWidget {
   ConsumerState<LibraryPage> createState() => _LibraryPageState();
 }
 
-class _LibraryPageState extends ConsumerState<LibraryPage> {
+class _LibraryPageState extends ConsumerState<LibraryPage> with WidgetsBindingObserver {
   String? _categoryId;
   bool _scanning = false;
   bool _importing = false;
@@ -52,6 +52,7 @@ class _LibraryPageState extends ConsumerState<LibraryPage> {
   @override
   void initState() {
     super.initState();
+    WidgetsBinding.instance.addObserver(this);
     WidgetsBinding.instance.addPostFrameCallback((_) {
       _autoDiscover(initial: true);
       // Fire-and-forget: fills in thumbnails for documents imported before
@@ -59,6 +60,21 @@ class _LibraryPageState extends ConsumerState<LibraryPage> {
       // catch-up, not something the user needs to see happen.
       unawaited(ref.read(backfillCoversProvider).call(const NoParams()));
     });
+  }
+
+  @override
+  void dispose() {
+    WidgetsBinding.instance.removeObserver(this);
+    super.dispose();
+  }
+
+  @override
+  void didChangeAppLifecycleState(AppLifecycleState state) {
+    if (state == AppLifecycleState.resumed && mounted) {
+      // Android 11+ returns from the All Files Access Settings screen here.
+      // Re-check native permission state and scan immediately after the grant.
+      unawaited(_autoDiscover());
+    }
   }
 
   @override
