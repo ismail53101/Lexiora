@@ -2,7 +2,6 @@ package com.sapiora.app
 
 import android.Manifest
 import android.app.Activity
-import android.app.AppOpsManager
 import android.content.Intent
 import android.database.Cursor
 import android.graphics.BitmapFactory
@@ -10,7 +9,6 @@ import android.net.Uri
 import android.os.Build
 import android.os.Bundle
 import android.os.Environment
-import android.os.Process
 import android.content.pm.PackageManager
 import android.provider.MediaStore
 import android.provider.OpenableColumns
@@ -97,19 +95,7 @@ class MainActivity : FlutterActivity() {
 
     private fun hasAllFilesAccess(): Boolean {
         if (Build.VERSION.SDK_INT < Build.VERSION_CODES.R) return true
-        if (Environment.isExternalStorageManager()) return true
-
-        return try {
-            val appOps = getSystemService(AppOpsManager::class.java)
-            appOps?.unsafeCheckOpNoThrow(
-                AppOpsManager.OPSTR_MANAGE_EXTERNAL_STORAGE,
-                Process.myUid(),
-                packageName,
-            ) == AppOpsManager.MODE_ALLOWED
-        } catch (e: Exception) {
-            Log.w("Lexiora", "All Files Access app-op check failed: " + e.message)
-            false
-        }
+        return Environment.isExternalStorageManager()
     }
 
     private fun beginAllFilesAccessFlow() {
