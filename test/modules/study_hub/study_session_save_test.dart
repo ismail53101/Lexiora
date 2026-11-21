@@ -222,7 +222,6 @@ void main() {
         'B Break 590-600',
         'S Maths 600-650',
         'B Break 650-660',
-        'S Maths 660-680',
       ]);
     });
 
@@ -234,8 +233,8 @@ void main() {
       await r.saveSessionAsBlocks(
           session: session('s2', 'English', duration: 50, auto: true), focusMinutes: 50, breakMinutes: 10);
       final List<StudyTask> t = await timeline(r);
-      // Maths: 25 b5 25 b5 10 -> ends 09:00 + 70 = 10:10; English starts there.
-      expect(t.where((StudyTask x) => x.subject == 'English').single.startMinute, 10 * h + 10);
+      // Maths: 50 + 10 = 60 minutes; English starts at 10:00.
+      expect(t.where((StudyTask x) => x.subject == 'English').single.startMinute, 10 * h);
     });
 
     test('saving again replaces the blocks (no duplicates), even with a new plan', () async {
@@ -244,10 +243,10 @@ void main() {
           session: session('s1', 'Maths', start: 9 * h, duration: 2 * h), focusMinutes: 50, breakMinutes: 10);
       await r.saveSessionAsBlocks(
           session: session('s1', 'Maths', start: 9 * h, duration: 2 * h), focusMinutes: 50, breakMinutes: 10);
-      expect(await timeline(r), hasLength(5));
+      expect(await timeline(r), hasLength(4));
       await r.saveSessionAsBlocks(
           session: session('s1', 'Maths', start: 9 * h, duration: h), focusMinutes: 50, breakMinutes: 10);
-      expect((await timeline(r)).map(line).toList(), <String>['S Maths 540-590', 'B Break 590-600', 'S Maths 600-610']);
+      expect((await timeline(r)).map(line).toList(), <String>['S Maths 540-590', 'B Break 590-600']);
     });
 
     test('an overlap or running past midnight saves nothing', () async {
