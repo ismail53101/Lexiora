@@ -210,32 +210,36 @@ class _ExportBackupPageState extends ConsumerState<ExportBackupPage> {
   Future<void> _importBackupFile() async {
     if (_busy) return;
     try {
-      // Study Planner backups are JSON files. Keep CSV/PDF/XLSX exports
-      // out of this picker so an export cannot be mistaken for a backup.
       final PlatformFile? picked = await FilePicker.pickFile(
-        type: FileType.custom,
-        allowedExtensions: <String>['json'],
+        type: FileType.any,
       );
-      if (picked == null) return;
-      if (!picked.name.toLowerCase().endsWith('.json')) {
-        if (mounted) {
-          ScaffoldMessenger.of(context).showSnackBar(
-            const SnackBar(
-              content: Text('Please select a DarsNexa backup (.json) file.'),
+      if (picked == null || !mounted) return;
+
+      final String lower = picked.name.toLowerCase();
+      final bool isJson = lower.endsWith('.json');
+      final bool isCsv = lower.endsWith('.csv');
+      if (!isJson && !isCsv) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(
+            content: Text(
+              'This file type can be exported, but CSV and DarsNexa JSON '
+              'are the supported import formats.',
             ),
-          );
-        }
+          ),
+        );
         return;
       }
-      if (!mounted) return;
 
       final bool ok = await showDialog<bool>(
             context: context,
             builder: (BuildContext context) => AlertDialog(
-              title: const Text('Import DarsNexa backup?'),
+              title: Text(isCsv ? 'Import CSV?' : 'Import DarsNexa backup?'),
               content: Text(
-                'This will replace the current Study Planner data with '
-                '"${picked.name}". This cannot be undone.',
+                isCsv
+                    ? 'This will add the sessions from "${picked.name}" to your '
+                      'current Study Planner. Existing data will not be deleted.'
+                    : 'This will replace the current Study Planner data with '
+                      '"${picked.name}". This cannot be undone.',
               ),
               actions: <Widget>[
                 TextButton(
@@ -254,13 +258,24 @@ class _ExportBackupPageState extends ConsumerState<ExportBackupPage> {
 
       setState(() => _busy = true);
       final List<int> bytes = await picked.readAsBytes();
-      await ref
-          .read(studyBackupServiceProvider)
-          .restoreBytes(ref.read(studyHubRepositoryProvider), bytes);
-      if (mounted) {
-        ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(content: Text('Backup imported successfully')),
+      final StudyBackupService service = ref.read(studyBackupServiceProvider);
+      if (isCsv) {
+        final int count = await service.importCsv(
+          ref.read(studyHubRepositoryProvider),
+          bytes,
         );
+        if (mounted) {
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(content: Text('$count CSV rows imported successfully')),
+          );
+        }
+      } else {
+        await service.restoreBytes(ref.read(studyHubRepositoryProvider), bytes);
+        if (mounted) {
+          ScaffoldMessenger.of(context).showSnackBar(
+            const SnackBar(content: Text('Backup imported successfully')),
+          );
+        }
       }
     } on Object catch (e) {
       if (mounted) {
