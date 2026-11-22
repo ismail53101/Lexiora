@@ -203,6 +203,30 @@ void main() {
       ]);
     });
 
+    test('untimed missed sessions moved to today start from the current time', () async {
+      final StudyHubRepositoryImpl r = await repo();
+      await r.saveTask(task('u', '2026-03-09', 'Maths'));
+
+      final StudyTask missed =
+          (await dayRows(r, '2026-03-09')).single;
+
+      expect(
+        await r.moveSessionsToDay(
+          tasks: <StudyTask>[missed],
+          toDay: today,
+          nowMinute: 11 * h + 11,
+        ),
+        1,
+      );
+
+      final StudyTask moved =
+          (await dayRows(r, today)).single;
+      expect(moved.startMinute, 11 * h + 11);
+      expect(moved.endMinute, 12 * h + 11);
+      expect(moved.autoScheduled, false);
+      expect(moved.status, TaskStatus.pending);
+    });
+
     test('untimed sessions get the default duration; breaks and same-day items are skipped', () async {
       final StudyHubRepositoryImpl r = await repo();
       await r.saveTask(task('u', '2026-03-09', 'Maths'));
