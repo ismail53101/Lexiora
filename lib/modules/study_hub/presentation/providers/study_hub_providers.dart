@@ -37,17 +37,27 @@ final StreamProvider<int> studyMinutesTodayProvider =
 /// Context carried from a planned task into the existing Pomodoro/manual timer.
 /// It is not a second log: completed timers still write only to study_sessions.
 class ActiveStudyContext {
-  const ActiveStudyContext({this.taskId, this.subject});
+  const ActiveStudyContext({this.taskId, this.subject, this.durationMinutes});
   final String? taskId;
   final String? subject;
+  final int? durationMinutes;
   static const empty = ActiveStudyContext();
 }
 
 class ActiveStudyContextNotifier extends Notifier<ActiveStudyContext> {
   @override
   ActiveStudyContext build() => ActiveStudyContext.empty;
-  void setTask(StudyTask task) =>
-      state = ActiveStudyContext(taskId: task.id, subject: task.displaySubject);
+  void setTask(StudyTask task) {
+    final int? duration = task.durationMinutes ??
+        (task.startMinute != null && task.endMinute != null
+            ? task.endMinute! - task.startMinute!
+            : null);
+    state = ActiveStudyContext(
+      taskId: task.id,
+      subject: task.displaySubject,
+      durationMinutes: duration != null && duration > 0 ? duration : null,
+    );
+  }
   void clear() => state = ActiveStudyContext.empty;
 }
 
