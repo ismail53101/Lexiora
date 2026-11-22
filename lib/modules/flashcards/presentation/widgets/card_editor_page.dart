@@ -579,6 +579,66 @@ class _FcCardEditorPageState extends ConsumerState<FcCardEditorPage> {
     setState(() {});
   }
 
+  void _removeImage(List<String> images, int index) {
+    if (index < 0 || index >= images.length) return;
+    setState(() => images.removeAt(index));
+  }
+
+  Widget _imageAttachments(List<String> images) {
+    if (images.isEmpty) return const SizedBox.shrink();
+    final ThemeData theme = Theme.of(context);
+    return Padding(
+      padding: const EdgeInsets.only(top: 8),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: <Widget>[
+          for (int i = 0; i < images.length; i++)
+            Card(
+              elevation: 0,
+              color: theme.colorScheme.surfaceContainerLow,
+              margin: const EdgeInsets.only(bottom: 8),
+              child: Padding(
+                padding: const EdgeInsets.all(8),
+                child: Row(
+                  children: <Widget>[
+                    ClipRRect(
+                      borderRadius: BorderRadius.circular(10),
+                      child: Image.file(
+                        File(images[i]),
+                        width: 72,
+                        height: 72,
+                        fit: BoxFit.cover,
+                        errorBuilder: (_, __, ___) => const SizedBox(
+                          width: 72,
+                          height: 72,
+                          child: Icon(Icons.broken_image_outlined),
+                        ),
+                      ),
+                    ),
+                    const SizedBox(width: 12),
+                    Expanded(
+                      child: Text(
+                        'Image #' + (i + 1).toString(),
+                        style: theme.textTheme.bodyMedium,
+                      ),
+                    ),
+                    IconButton(
+                      tooltip: 'Remove image',
+                      icon: Icon(
+                        Icons.delete_outline,
+                        color: theme.colorScheme.error,
+                      ),
+                      onPressed: () => _removeImage(images, i),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+        ],
+      ),
+    );
+  }
+
   Future<void> _editMultipleAnswers() async {
     final List<String> existing = _back.text
         .split('|')
@@ -981,6 +1041,7 @@ class _FcCardEditorPageState extends ConsumerState<FcCardEditorPage> {
                     underlineActive: _editorController.isUnderlineActive,
                     listening: _speech.isListening,
                   ),
+                  _imageAttachments(_frontImages),
                   SizedBox(
                     height: 68,
                     child: Center(
@@ -1040,6 +1101,7 @@ class _FcCardEditorPageState extends ConsumerState<FcCardEditorPage> {
                       underlineActive: _editorController.isUnderlineActive,
                       listening: _speech.isListening,
                     ),
+                    _imageAttachments(_backImages),
                     const SizedBox(height: 10),
                     Card(
                       elevation: 0,
