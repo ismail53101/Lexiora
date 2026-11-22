@@ -1,3 +1,4 @@
+import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:lexiora/modules/study_hub/data/services/study_backup_service.dart';
@@ -173,7 +174,12 @@ class _ExportBackupPageState extends ConsumerState<ExportBackupPage> {
                     OutlinedButton.icon(
                       onPressed: _busy ? null : _restore,
                       icon: const Icon(Icons.restore),
-                      label: const Text('Restore backup'),
+                      label: const Text('Restore local'),
+                    ),
+                    OutlinedButton.icon(
+                      onPressed: _busy ? null : _importBackupFile,
+                      icon: const Icon(Icons.file_open_outlined),
+                      label: const Text('Import backup'),
                     ),
                   ],
                 ),
@@ -196,6 +202,60 @@ class _ExportBackupPageState extends ConsumerState<ExportBackupPage> {
       messenger.showSnackBar(const SnackBar(content: Text('Backup created')));
     } on Object catch (e) {
       messenger.showSnackBar(SnackBar(content: Text('Backup failed: $e')));
+    } finally {
+      if (mounted) setState(() => _busy = false);
+    }
+  }
+
+  Future<void> _importBackupFile() async {
+    if (_busy) return;
+    try {
+      final PlatformFile? picked = await FilePicker.pickFile(
+        type: FileType.custom,
+        allowedExtensions: <String>['json'],
+      );
+      if (picked == null) return;
+      if (!mounted) return;
+
+      final bool ok = await showDialog<bool>(
+            context: context,
+            builder: (BuildContext context) => AlertDialog(
+              title: const Text('Import backup?'),
+              content: Text(
+                'This will replace the current Study Planner data with '
+                '"${picked.name}". This cannot be undone.',
+              ),
+              actions: <Widget>[
+                TextButton(
+                  onPressed: () => Navigator.of(context).pop(false),
+                  child: const Text('Cancel'),
+                ),
+                FilledButton(
+                  onPressed: () => Navigator.of(context).pop(true),
+                  child: const Text('Import'),
+                ),
+              ],
+            ),
+          ) ??
+          false;
+      if (!ok || !mounted) return;
+
+      setState(() => _busy = true);
+      final List<int> bytes = await picked.readAsBytes();
+      await ref
+          .read(studyBackupServiceProvider)
+          .restoreBytes(ref.read(studyHubRepositoryProvider), bytes);
+      if (mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(content: Text('Backup imported successfully')),
+        );
+      }
+    } on Object catch (e) {
+      if (mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text('Import failed: $e')),
+        );
+      }
     } finally {
       if (mounted) setState(() => _busy = false);
     }
