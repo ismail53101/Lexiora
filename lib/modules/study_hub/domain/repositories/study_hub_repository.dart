@@ -82,6 +82,8 @@ abstract interface class StudyHubRepository {
     required String startDay,
     required String untilDay,
     int? breakMinutes,
+    int? splitFocusMinutes,
+    int? splitBreakMinutes,
   });
 
   /// All repeating series with their upcoming occurrences, from [today].
