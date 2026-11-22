@@ -2,6 +2,7 @@ import 'dart:convert';
 import 'dart:io';
 
 import 'package:lexiora/modules/study_hub/data/services/study_export_service.dart';
+import 'package:lexiora/modules/study_hub/domain/entities/study_task.dart';
 import 'package:lexiora/modules/study_hub/domain/repositories/study_hub_repository.dart';
 import 'package:path_provider/path_provider.dart';
 
@@ -41,7 +42,7 @@ class StudyBackupService {
         .split('T')
         .join('_')
         .substring(0, 19);
-    final File file = File('${dir.path}/sapiora_backup_$stamp.json');
+    final File file = File('${dir.path}/darsnexa_backup_$stamp.json');
     await file.writeAsString(json, flush: true);
     return BackupFile(
       path: file.path,
@@ -146,14 +147,25 @@ class StudyBackupService {
     if (rows.isEmpty) {
       throw const FormatException('The CSV file is empty.');
     }
+
     final List<String> header =
         rows.first.map((String v) => v.trim().toLowerCase()).toList();
     const List<String> expected = <String>[
-      'date', 'type', 'subject', 'topic', 'start', 'end', 'priority', 'status', 'notes',
+      'date',
+      'type',
+      'subject',
+      'topic',
+      'start',
+      'end',
+      'priority',
+      'status',
+      'notes',
     ];
     if (header.length != expected.length ||
-        !List.generate(expected.length, (int i) => header[i] == expected[i])
-            .every((bool v) => v)) {
+        !List.generate(
+          expected.length,
+          (int i) => header[i] == expected[i],
+        ).every((bool value) => value)) {
       throw const FormatException(
         'This is not a DarsNexa Study Planner CSV export.',
       );
@@ -161,28 +173,36 @@ class StudyBackupService {
 
     int imported = 0;
     final DateTime now = DateTime.now();
+
     for (final List<String> row in rows.skip(1)) {
-      if (row.every((String v) => v.trim().isEmpty)) continue;
-      if (row.length != expected.length) {
-        throw const FormatException('A CSV row has an invalid number of columns.');
+      if (row.every((String value) => value.trim().isEmpty)) {
+        continue;
       }
+      if (row.length != expected.length) {
+        throw const FormatException(
+          'A CSV row has an invalid number of columns.',
+        );
+      }
+
       final String day = row[0].trim();
       final String type = row[1].trim().toLowerCase();
       final String subject = row[2].trim();
       final String topic = row[3].trim();
       final int? start = _parseCsvMinute(row[4]);
       final int? end = _parseCsvMinute(row[5]);
-      if (!RegExp(r'^\d{4}-\d{2}-\d{2}
-    final File f = File(path);
-    if (f.existsSync()) await f.delete();
-  }
-}
-).hasMatch(day)) {
+
+      final List<String> dateParts = day.split('-');
+      final bool validDate = dateParts.length == 3 &&
+          dateParts[0].length == 4 &&
+          int.tryParse(dateParts[0]) != null &&
+          int.tryParse(dateParts[1]) != null &&
+          int.tryParse(dateParts[2]) != null;
+      if (!validDate) {
         throw FormatException('Invalid date in CSV: ${row[0]}');
       }
       if ((row[4].trim().isNotEmpty && start == null) ||
           (row[5].trim().isNotEmpty && end == null)) {
-        throw FormatException('Invalid time in CSV row.');
+        throw const FormatException('Invalid time in CSV row.');
       }
       if (start != null && end != null && end <= start) {
         throw const FormatException('End time must be after start time in CSV.');
@@ -199,9 +219,11 @@ class StudyBackupService {
         'in progress' => TaskStatus.inProgress,
         _ => TaskStatus.pending,
       };
+
       final String title = isBreak
           ? (subject.isEmpty ? 'Break' : subject)
           : (subject.isEmpty ? 'Imported session' : subject);
+
       await repo.saveTask(
         StudyTask(
           id: 'csv-${now.microsecondsSinceEpoch}-$imported',
@@ -215,7 +237,8 @@ class StudyBackupService {
           priority: priority,
           status: status,
           kind: isBreak ? SessionKind.breakTime : SessionKind.session,
-          durationMinutes: start != null && end != null ? end - start : null,
+          durationMinutes:
+              start != null && end != null ? end - start : null,
           autoScheduled: false,
           orderIndex: imported,
           createdAt: now,
@@ -224,6 +247,7 @@ class StudyBackupService {
       );
       imported++;
     }
+
     if (imported == 0) {
       throw const FormatException('No planner rows were found in this CSV.');
     }
@@ -237,8 +261,14 @@ class StudyBackupService {
     if (parts.length != 2) return null;
     final int? hour = int.tryParse(parts[0]);
     final int? minute = int.tryParse(parts[1]);
-    if (hour == null || minute == null || hour < 0 || hour > 23 ||
-        minute < 0 || minute > 59) return null;
+    if (hour == null ||
+        minute == null ||
+        hour < 0 ||
+        hour > 23 ||
+        minute < 0 ||
+        minute > 59) {
+      return null;
+    }
     return hour * 60 + minute;
   }
 
@@ -247,6 +277,7 @@ class StudyBackupService {
     List<String> row = <String>[];
     final StringBuffer cell = StringBuffer();
     bool quoted = false;
+
     for (int i = 0; i < input.length; i++) {
       final String ch = input[i];
       if (ch == '"') {
@@ -260,7 +291,9 @@ class StudyBackupService {
         row.add(cell.toString());
         cell.clear();
       } else if ((ch == '\n' || ch == '\r') && !quoted) {
-        if (ch == '\r' && i + 1 < input.length && input[i + 1] == '\n') i++;
+        if (ch == '\r' && i + 1 < input.length && input[i + 1] == '\n') {
+          i++;
+        }
         row.add(cell.toString());
         rows.add(row);
         row = <String>[];
@@ -269,6 +302,7 @@ class StudyBackupService {
         cell.write(ch);
       }
     }
+
     if (cell.isNotEmpty || row.isNotEmpty) {
       row.add(cell.toString());
       rows.add(row);
@@ -278,6 +312,8 @@ class StudyBackupService {
 
   Future<void> deleteBackup(String path) async {
     final File f = File(path);
-    if (f.existsSync()) await f.delete();
+    if (f.existsSync()) {
+      await f.delete();
+    }
   }
 }
