@@ -25,7 +25,7 @@ class StudyBackupService {
 
   Future<Directory> _dir() async {
     final Directory base = await getApplicationDocumentsDirectory();
-    final Directory dir = Directory('${base.path}/sapiora_backups');
+    final Directory dir = Directory('${base.path}/darsnexa_backups');
     if (!dir.existsSync()) await dir.create(recursive: true);
     return dir;
   }
