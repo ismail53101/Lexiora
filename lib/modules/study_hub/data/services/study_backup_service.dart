@@ -257,18 +257,80 @@ class StudyBackupService {
   int? _parseCsvMinute(String value) {
     final String v = value.trim();
     if (v.isEmpty) return null;
-    final List<String> parts = v.split(':');
-    if (parts.length != 2) return null;
-    final int? hour = int.tryParse(parts[0]);
-    final int? minute = int.tryParse(parts[1]);
-    if (hour == null ||
-        minute == null ||
-        hour < 0 ||
-        hour > 23 ||
-        minute < 0 ||
-        minute > 59) {
+
+    // Study Planner CSV exports use the display format produced by
+    // formatMinuteOfDay(), e.g. "9:00 AM" or "2:30 PM". Accept 24-hour
+    // "HH:mm" as well so externally edited CSV files remain importable.
+    final RegExp match = RegExp(
+      r'^(\\d{1,2}):(\\d{2})(?:\\s*(AM|PM))?
+
+  List<List<String>> _parseCsv(String input) {
+    final List<List<String>> rows = <List<String>>[];
+    List<String> row = <String>[];
+    final StringBuffer cell = StringBuffer();
+    bool quoted = false;
+
+    for (int i = 0; i < input.length; i++) {
+      final String ch = input[i];
+      if (ch == '"') {
+        if (quoted && i + 1 < input.length && input[i + 1] == '"') {
+          cell.write('"');
+          i++;
+        } else {
+          quoted = !quoted;
+        }
+      } else if (ch == ',' && !quoted) {
+        row.add(cell.toString());
+        cell.clear();
+      } else if ((ch == '\n' || ch == '\r') && !quoted) {
+        if (ch == '\r' && i + 1 < input.length && input[i + 1] == '\n') {
+          i++;
+        }
+        row.add(cell.toString());
+        rows.add(row);
+        row = <String>[];
+        cell.clear();
+      } else {
+        cell.write(ch);
+      }
+    }
+
+    if (cell.isNotEmpty || row.isNotEmpty) {
+      row.add(cell.toString());
+      rows.add(row);
+    }
+    return rows;
+  }
+
+  Future<void> deleteBackup(String path) async {
+    final File f = File(path);
+    if (f.existsSync()) {
+      await f.delete();
+    }
+  }
+}
+,
+      caseSensitive: false,
+    ).firstMatch(v);
+    if (match == null) return null;
+
+    int hour = int.parse(match.group(1)!);
+    final int minute = int.parse(match.group(2)!);
+    final String? period = match.group(3)?.toUpperCase();
+
+    if (minute > 59) return null;
+
+    if (period != null) {
+      if (hour < 1 || hour > 12) return null;
+      if (period == 'AM') {
+        if (hour == 12) hour = 0;
+      } else if (hour != 12) {
+        hour += 12;
+      }
+    } else if (hour > 23) {
       return null;
     }
+
     return hour * 60 + minute;
   }
 
