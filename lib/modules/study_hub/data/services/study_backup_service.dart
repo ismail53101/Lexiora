@@ -136,39 +136,77 @@ class StudyBackupService {
     await repo.importBackup(data);
   }
 
-  /// Imports a DarsNexa Study Planner CSV export as planner entries.
-  /// Existing data is kept; imported rows are added as new tasks.
-  Future<int> importCsv(
-    StudyHubRepository repo,
-    List<int> bytes,
-  ) async {
+  /// Returns the distinct dates contained in a DarsNexa Study Planner CSV.
+  ///
+  /// This is used by the UI before importing a single-day CSV so the user can
+  /// explicitly choose whether a plan dated today should be added to today or
+  /// moved to tomorrow.
+  Set<String> csvDates(List<int> bytes) {
     final String csv = utf8.decode(bytes, allowMalformed: false);
     final List<List<String>> rows = _parseCsv(csv);
-    if (rows.isEmpty) {
-      throw const FormatException('The CSV file is empty.');
+    _validateCsvHeader(rows);
+
+    final Set<String> dates = <String>{};
+    for (final List<String> row in rows.skip(1)) {
+      if (row.every((String value) => value.trim().isEmpty)) continue;
+      if (row.length != 9) {
+        throw const FormatException(
+          'A CSV row has an invalid number of columns.',
+        );
+      }
+      final String day = row[0].trim();
+      if (!_isValidDayKey(day)) {
+        throw FormatException('Invalid date in CSV: ${row[0]}');
+      }
+      dates.add(day);
     }
 
-    final List<String> header =
-        rows.first.map((String v) => v.trim().toLowerCase()).toList();
-    const List<String> expected = <String>[
-      'date',
-      'type',
-      'subject',
-      'topic',
-      'start',
-      'end',
-      'priority',
-      'status',
-      'notes',
-    ];
-    if (header.length != expected.length ||
-        !List.generate(
-          expected.length,
-          (int i) => header[i] == expected[i],
-        ).every((bool value) => value)) {
+    if (dates.isEmpty) {
+      throw const FormatException('No planner rows were found in this CSV.');
+    }
+    return dates;
+  }
+
+  /// Imports a DarsNexa Study Planner CSV export as planner entries.
+  /// Existing data is kept; imported rows are added as new tasks.
+  ///
+  /// When [targetDay] is supplied, the CSV must contain one source date and
+  /// every imported row is placed on that day. This is intentionally explicit
+  /// so a plan exported today is not silently turned into a set of already
+  /// missed sessions when the user imports it later in the day.
+  Future<int> importCsv(
+    StudyHubRepository repo,
+    List<int> bytes, {
+    String? targetDay,
+  }) async {
+    final String csv = utf8.decode(bytes, allowMalformed: false);
+    final List<List<String>> rows = _parseCsv(csv);
+    _validateCsvHeader(rows);
+
+    final Set<String> sourceDates = <String>{};
+    for (final List<String> row in rows.skip(1)) {
+      if (row.every((String value) => value.trim().isEmpty)) continue;
+      if (row.length != 9) {
+        throw const FormatException(
+          'A CSV row has an invalid number of columns.',
+        );
+      }
+      final String day = row[0].trim();
+      if (!_isValidDayKey(day)) {
+        throw FormatException('Invalid date in CSV: ${row[0]}');
+      }
+      sourceDates.add(day);
+    }
+    if (sourceDates.isEmpty) {
+      throw const FormatException('No planner rows were found in this CSV.');
+    }
+    if (targetDay != null && sourceDates.length != 1) {
       throw const FormatException(
-        'This is not a DarsNexa Study Planner CSV export.',
+        'A target day can only be used with a single-day CSV.',
       );
+    }
+    if (targetDay != null && !_isValidDayKey(targetDay)) {
+      throw const FormatException('Invalid target day.');
     }
 
     int imported = 0;
@@ -178,28 +216,15 @@ class StudyBackupService {
       if (row.every((String value) => value.trim().isEmpty)) {
         continue;
       }
-      if (row.length != expected.length) {
-        throw const FormatException(
-          'A CSV row has an invalid number of columns.',
-        );
-      }
 
-      final String day = row[0].trim();
+      final String sourceDay = row[0].trim();
+      final String day = targetDay ?? sourceDay;
       final String type = row[1].trim().toLowerCase();
       final String subject = row[2].trim();
       final String topic = row[3].trim();
       final int? start = _parseCsvMinute(row[4]);
       final int? end = _parseCsvMinute(row[5]);
 
-      final List<String> dateParts = day.split('-');
-      final bool validDate = dateParts.length == 3 &&
-          dateParts[0].length == 4 &&
-          int.tryParse(dateParts[0]) != null &&
-          int.tryParse(dateParts[1]) != null &&
-          int.tryParse(dateParts[2]) != null;
-      if (!validDate) {
-        throw FormatException('Invalid date in CSV: ${row[0]}');
-      }
       if ((row[4].trim().isNotEmpty && start == null) ||
           (row[5].trim().isNotEmpty && end == null)) {
         throw const FormatException('Invalid time in CSV row.');
@@ -248,10 +273,51 @@ class StudyBackupService {
       imported++;
     }
 
-    if (imported == 0) {
-      throw const FormatException('No planner rows were found in this CSV.');
-    }
     return imported;
+  }
+
+  void _validateCsvHeader(List<List<String>> rows) {
+    if (rows.isEmpty) {
+      throw const FormatException('The CSV file is empty.');
+    }
+    final List<String> header =
+        rows.first.map((String v) => v.trim().toLowerCase()).toList();
+    const List<String> expected = <String>[
+      'date',
+      'type',
+      'subject',
+      'topic',
+      'start',
+      'end',
+      'priority',
+      'status',
+      'notes',
+    ];
+    if (header.length != expected.length ||
+        !List.generate(
+          expected.length,
+          (int i) => header[i] == expected[i],
+        ).every((bool value) => value)) {
+      throw const FormatException(
+        'This is not a DarsNexa Study Planner CSV export.',
+      );
+    }
+  }
+
+  bool _isValidDayKey(String day) {
+    final List<String> dateParts = day.split('-');
+    if (dateParts.length != 3 ||
+        dateParts[0].length != 4 ||
+        int.tryParse(dateParts[0]) == null ||
+        int.tryParse(dateParts[1]) == null ||
+        int.tryParse(dateParts[2]) == null) {
+      return false;
+    }
+    final DateTime? parsed = DateTime.tryParse(day);
+    return parsed != null &&
+        parsed.year == int.parse(dateParts[0]) &&
+        parsed.month == int.parse(dateParts[1]) &&
+        parsed.day == int.parse(dateParts[2]);
   }
 
   int? _parseCsvMinute(String value) {
