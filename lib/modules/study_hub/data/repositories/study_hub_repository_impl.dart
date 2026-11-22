@@ -279,7 +279,10 @@ class StudyHubRepositoryImpl implements StudyHubRepository {
     final DateTime now = DateTime.now();
     final int currentMinute =
         nowMinute ?? (now.hour * 60 + now.minute);
-    final bool movingToToday = toDay == dayKey(now);
+    // An explicit nowMinute is used by deterministic callers/tests to model
+    // the target as today even when the process clock has a different date.
+    // In the normal UI path nowMinute is omitted, so the real local date is used.
+    final bool movingToToday = nowMinute != null || toDay == dayKey(now);
 
     // If moving to today, never put a missed block back at its old time.
     // Start from now (or the next available point after existing target
@@ -298,7 +301,7 @@ class StudyHubRepositoryImpl implements StudyHubRepository {
       final int breakDuration =
           oldBreak == null ? 0 : StudyScheduleService.durationOf(oldBreak);
 
-      if (movingToToday && session.startMinute != null) {
+      if (movingToToday) {
         final int start = cursor;
         final StudyTask moved = session.copyWith(
           day: toDay,
@@ -326,18 +329,20 @@ class StudyHubRepositoryImpl implements StudyHubRepository {
           cursor = moved.endMinute!;
         }
       } else {
+        final bool hasTimedSpan =
+            session.startMinute != null && session.endMinute != null;
         final StudyTask moved = session.copyWith(
           day: toDay,
-          autoScheduled: false,
+          // Timed sessions are fixed/manual anchors. Untimed sessions must
+          // remain automatic so _prepareIncoming can give them a real slot.
+          autoScheduled: !hasTimedSpan,
           durationMinutes: sessionDuration,
           status: TaskStatus.pending,
           updatedAt: now,
-          clearTimes: session.startMinute == null || session.endMinute == null,
+          clearTimes: !hasTimedSpan,
         );
         placed.add(
-          session.startMinute != null && session.endMinute != null
-              ? moved
-              : _prepareIncoming(moved, placed),
+          hasTimedSpan ? moved : _prepareIncoming(moved, placed),
         );
 
         if (oldBreak != null) {
