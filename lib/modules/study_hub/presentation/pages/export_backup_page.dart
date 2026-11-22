@@ -252,7 +252,7 @@ class _ExportBackupPageState extends ConsumerState<ExportBackupPage> {
                 title: const Text('Import today’s plan?'),
                 content: Text(
                   '“${picked.name}” contains today’s study sessions. '
-                  'Some times may already have passed. Choose where to add '
+                  'If you choose Today, past times move to the current time and breaks are kept. Tomorrow keeps the original times. Choose where to add '
                   'this plan.',
                 ),
                 actions: <Widget>[
@@ -329,6 +329,7 @@ class _ExportBackupPageState extends ConsumerState<ExportBackupPage> {
           ref.read(studyHubRepositoryProvider),
           bytes,
           targetDay: csvTargetDay,
+          nowMinute: DateTime.now().hour * 60 + DateTime.now().minute,
         );
         // Import creates today's tasks outside the normal planner flow.
         // Refresh the missed-session calculation immediately so a plan
