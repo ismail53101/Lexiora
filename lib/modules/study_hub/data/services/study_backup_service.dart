@@ -178,12 +178,14 @@ class StudyBackupService {
     StudyHubRepository repo,
     List<int> bytes, {
     String? targetDay,
+    int? nowMinute,
   }) async {
     final String csv = utf8.decode(bytes, allowMalformed: false);
     final List<List<String>> rows = _parseCsv(csv);
     _validateCsvHeader(rows);
 
     final Set<String> sourceDates = <String>{};
+    final List<List<String>> dataRows = <List<String>>[];
     for (final List<String> row in rows.skip(1)) {
       if (row.every((String value) => value.trim().isEmpty)) continue;
       if (row.length != 9) {
@@ -193,10 +195,12 @@ class StudyBackupService {
       }
       final String day = row[0].trim();
       if (!_isValidDayKey(day)) {
-        throw FormatException('Invalid date in CSV: ${row[0]}');
+        throw FormatException('Invalid date in CSV: ' + row[0]);
       }
       sourceDates.add(day);
+      dataRows.add(row);
     }
+
     if (sourceDates.isEmpty) {
       throw const FormatException('No planner rows were found in this CSV.');
     }
@@ -209,14 +213,16 @@ class StudyBackupService {
       throw const FormatException('Invalid target day.');
     }
 
-    int imported = 0;
     final DateTime now = DateTime.now();
+    final int currentMinute =
+        nowMinute ?? (now.hour * 60 + now.minute);
+    final String today = dayKey(now);
+    final bool reuseToday =
+        targetDay == today && sourceDates.length == 1 && sourceDates.first == today;
 
-    for (final List<String> row in rows.skip(1)) {
-      if (row.every((String value) => value.trim().isEmpty)) {
-        continue;
-      }
-
+    final List<StudyTask> importedTasks = <StudyTask>[];
+    for (int index = 0; index < dataRows.length; index++) {
+      final List<String> row = dataRows[index];
       final String sourceDay = row[0].trim();
       final String day = targetDay ?? sourceDay;
       final String type = row[1].trim().toLowerCase();
@@ -249,9 +255,9 @@ class StudyBackupService {
           ? (subject.isEmpty ? 'Break' : subject)
           : (subject.isEmpty ? 'Imported session' : subject);
 
-      await repo.saveTask(
+      importedTasks.add(
         StudyTask(
-          id: 'csv-${now.microsecondsSinceEpoch}-$imported',
+          id: 'csv-' + now.microsecondsSinceEpoch.toString() + '-' + index.toString(),
           day: day,
           title: title,
           subject: isBreak ? null : (subject.isEmpty ? null : subject),
@@ -265,12 +271,62 @@ class StudyBackupService {
           durationMinutes:
               start != null && end != null ? end - start : null,
           autoScheduled: false,
-          orderIndex: imported,
+          orderIndex: index,
           createdAt: now,
           updatedAt: now,
         ),
       );
-      imported++;
+    }
+
+    // Reusing today's exported plan later in the day should behave like
+    // moving missed sessions to today: anchor the whole timeline at the
+    // current clock time, while preserving every session/break duration and
+    // the gaps between them. Tomorrow/other dates keep the exported times.
+    if (reuseToday) {
+      final List<StudyTask> timedSessions = importedTasks
+          .where((StudyTask t) => !t.isBreak && t.startMinute != null && t.endMinute != null)
+          .toList()
+        ..sort((StudyTask a, StudyTask b) =>
+            a.startMinute!.compareTo(b.startMinute!));
+
+      if (timedSessions.isNotEmpty &&
+          timedSessions.first.startMinute! < currentMinute) {
+        final int shift = currentMinute - timedSessions.first.startMinute!;
+        final int maxEnd = importedTasks
+            .map((StudyTask t) => t.endMinute ?? 0)
+            .fold(0, (int max, int end) => end > max ? end : max);
+
+        if (maxEnd + shift > StudyScheduleService.minutesPerDay) {
+          throw const FormatException(
+            'This plan no longer fits in today from the current time. '
+            'Choose Tomorrow instead.',
+          );
+        }
+
+        for (int i = 0; i < importedTasks.length; i++) {
+          final StudyTask t = importedTasks[i];
+          if (t.startMinute == null || t.endMinute == null) continue;
+          importedTasks[i] = t.copyWith(
+            startMinute: t.startMinute! + shift,
+            endMinute: t.endMinute! + shift,
+            updatedAt: now,
+          );
+        }
+      }
+    }
+
+    int imported = 0;
+    final Map<String, List<StudyTask>> byDay = <String, List<StudyTask>>{};
+    for (final StudyTask task in importedTasks) {
+      byDay.putIfAbsent(task.day, () => <StudyTask>[]).add(task);
+    }
+
+    for (final MapEntry<String, List<StudyTask>> entry in byDay.entries) {
+      final int count = await repo.saveGeneratedPlan(
+        day: entry.key,
+        items: entry.value,
+      );
+      imported += count;
     }
 
     return imported;
