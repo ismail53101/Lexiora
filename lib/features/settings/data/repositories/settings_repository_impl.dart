@@ -145,9 +145,7 @@ class SettingsRepositoryImpl implements SettingsRepository {
         _kInitialPermissionFlowVersion: s.initialPermissionFlowVersion,
       };
 
-  String _language(String? v) => (v != null && isSupportedTranslationLanguage(v))
-      ? v
-      : kDefaultTranslationLanguage;
+  String _language(String? v) => kDefaultTranslationLanguage;
 
   int _int(String? v, int fallback) =>
       v == null ? fallback : (int.tryParse(v) ?? fallback);
