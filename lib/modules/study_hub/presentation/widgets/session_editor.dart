@@ -1,10 +1,10 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:lexiora/app/di/injector.dart';
-import 'package:lexiora/core/services/notification_service.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:lexiora/modules/study_hub/domain/entities/study_task.dart';
+import 'package:lexiora/modules/study_hub/domain/recurrence/recurrence.dart';
+import 'package:lexiora/modules/study_hub/domain/recurrence/repeat_series.dart';
 import 'package:lexiora/modules/study_hub/domain/scheduling/pomodoro_planner.dart';
 import 'package:lexiora/modules/study_hub/domain/scheduling/study_schedule_service.dart';
 import 'package:lexiora/modules/study_hub/domain/study_dates.dart';
@@ -71,6 +71,17 @@ enum _TimeMode {
 
   const _TimeMode(this.label);
   final String label;
+}
+
+const List<String> _shortMonths = <String>[
+  'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec',
+];
+
+/// "Wed 11 Mar" for a `yyyy-MM-dd` day.
+String _shortDay(String key) {
+  final DateTime? d = parseDayKeyOrNull(key);
+  if (d == null) return key;
+  return '${weekdayShort[d.weekday - 1]} ${d.day} ${_shortMonths[d.month - 1]}';
 }
 
 TimeOfDay _timeOfDay(int minute) {
@@ -213,6 +224,12 @@ class _SessionEditorState extends ConsumerState<_SessionEditor> {
   bool _addBreak = false;
   bool _split = false;
   int _preset = 1;
+  bool _repeat = false;
+  int _repeatWeeks = 8;
+  late final Set<int> _repeatDays = <int>{
+    parseDayKeyOrNull(widget.day)?.weekday ?? DateTime.now().weekday,
+  };
+  late final String _seriesId = const Uuid().v4();
   int _breakMinutes = StudyScheduleService.defaultBreakMinutes;
   StudyTask? _existingBreak;
   bool _breakLoaded = false;
@@ -370,6 +387,33 @@ class _SessionEditorState extends ConsumerState<_SessionEditor> {
           );
       }
       final repo = ref.read(studyHubRepositoryProvider);
+      if (_repeat && widget.existing == null && _mode == _TimeMode.manual && !_split) {
+        final RepeatSaveResult res = await repo.createRepeatingSessions(
+          seriesId: _seriesId,
+          template: task,
+          weekdays: _repeatDays,
+          startDay: widget.day,
+          untilDay: untilAfterWeeks(widget.day, _repeatWeeks),
+          breakMinutes: _addBreak ? _breakMinutes : null,
+        );
+        if (res.created == 0) {
+          setState(() => _error = 'Nothing was added: that time is already taken on '
+              '${res.skippedDays.length} of the chosen days.');
+          return;
+        }
+        if (!mounted) return;
+        final ScaffoldMessengerState messenger = ScaffoldMessenger.of(context);
+        Navigator.of(context).pop();
+        messenger
+          ..hideCurrentSnackBar()
+          ..showSnackBar(SnackBar(
+            content: Text(
+              'Added ${res.created} ${res.created == 1 ? 'session' : 'sessions'}'
+              '${res.skippedDays.isEmpty ? '' : '. Skipped ${res.skippedDays.length} (time already taken): ${res.skippedDays.take(3).map(_shortDay).join(', ')}${res.skippedDays.length > 3 ? '…' : ''}'}',
+            ),
+          ));
+        return;
+      }
       if (_split && widget.existing == null && _mode != _TimeMode.none) {
         await repo.saveSessionAsBlocks(
           session: task,
@@ -384,7 +428,6 @@ class _SessionEditorState extends ConsumerState<_SessionEditor> {
               (_addBreak && _mode != _TimeMode.none) ? _breakMinutes : null,
         );
       }
-      await sl<NotificationService>().rescheduleAll();
       if (mounted) Navigator.of(context).pop();
     } on Object catch (error) {
       if (mounted) setState(() => _error = _scheduleErrorText(error));
@@ -425,16 +468,15 @@ class _SessionEditorState extends ConsumerState<_SessionEditor> {
     final bool canSplit = widget.existing == null && _mode != _TimeMode.none;
     final bool splitting = canSplit && _split;
     final PomodoroPlan? plan = splitting
-        ? planPomodoroWindow(
-            totalWindowMinutes: _duration,
+        ? planPomodoro(
+            totalFocusMinutes: _duration,
             focusMinutes: _blockPresets[_preset].$1,
             breakMinutes: _blockPresets[_preset].$2,
           )
         : null;
     final int? start = _startFor();
-    // The selected session duration is the total calendar window. Breaks are
-    // inside that window, so Split must never extend the session's end time.
-    final int? end = start == null ? null : start + _duration;
+    final int? end =
+        start == null ? null : start + (plan?.windowMinutes ?? _duration);
     final bool pastMidnight = end != null && end > 24 * 60;
 
     return Padding(
@@ -564,6 +606,7 @@ class _SessionEditorState extends ConsumerState<_SessionEditor> {
                 value: _split,
                 onChanged: (bool v) => setState(() {
                   _split = v;
+                  if (v) _repeat = false;
                   _error = null;
                 }),
                 title: const Text('Split into focus blocks'),
@@ -618,6 +661,77 @@ class _SessionEditorState extends ConsumerState<_SessionEditor> {
                     ),
                 ],
               ),
+            if (widget.existing == null && _mode != _TimeMode.none && !splitting) ...<Widget>[
+              SwitchListTile.adaptive(
+                contentPadding: EdgeInsets.zero,
+                value: _repeat,
+                onChanged: (bool v) => setState(() {
+                  _repeat = v;
+                  _error = null;
+                  if (v && _mode != _TimeMode.manual) {
+                    // A repeating session needs a fixed time.
+                    _start = _startFor() ?? _next;
+                    _mode = _TimeMode.manual;
+                  }
+                }),
+                title: const Text('Repeat weekly'),
+                subtitle: Text(
+                  _repeat
+                      ? 'Adds this session on the chosen days (at a fixed time)'
+                      : 'For example every Monday and Wednesday',
+                ),
+              ),
+              if (_repeat) ...<Widget>[
+                Wrap(
+                  spacing: 6,
+                  children: <Widget>[
+                    for (int d = 1; d <= 7; d++)
+                      FilterChip(
+                        label: Text(weekdayShort[d - 1]),
+                        selected: _repeatDays.contains(d),
+                        onSelected: (bool v) => setState(() {
+                          if (v) {
+                            _repeatDays.add(d);
+                          } else if (_repeatDays.length > 1) {
+                            _repeatDays.remove(d);
+                          }
+                        }),
+                      ),
+                  ],
+                ),
+                const SizedBox(height: 8),
+                Wrap(
+                  spacing: 8,
+                  children: <Widget>[
+                    for (final int w in const <int>[4, 8, 12, 16])
+                      ChoiceChip(
+                        label: Text('$w weeks'),
+                        selected: _repeatWeeks == w,
+                        onSelected: (_) => setState(() => _repeatWeeks = w),
+                      ),
+                  ],
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(top: 6),
+                  child: Text(
+                    () {
+                      final List<String> days = occurrenceDays(
+                        weekdays: _repeatDays,
+                        startDay: widget.day,
+                        untilDay: untilAfterWeeks(widget.day, _repeatWeeks),
+                      );
+                      return '${describeWeekdays(_repeatDays)} · ${days.length} '
+                          '${days.length == 1 ? 'session' : 'sessions'}'
+                          '${days.isEmpty ? '' : ' until ${_shortDay(days.last)}'}';
+                    }(),
+                    style: theme.textTheme.titleSmall?.copyWith(
+                      color: theme.colorScheme.primary,
+                      fontWeight: FontWeight.w700,
+                    ),
+                  ),
+                ),
+              ],
+            ],
             const SizedBox(height: 16),
             Text('Priority', style: theme.textTheme.labelLarge),
             const SizedBox(height: 8),
@@ -656,7 +770,6 @@ class _SessionEditorState extends ConsumerState<_SessionEditor> {
                             await ref
                                 .read(studyHubRepositoryProvider)
                                 .deleteTask(widget.existing!.id);
-                            await sl<NotificationService>().rescheduleAll();
                             if (context.mounted) Navigator.of(context).pop();
                           },
                     icon: Icon(Icons.delete_outline, color: theme.colorScheme.error),
@@ -793,7 +906,6 @@ class _BreakEditorState extends ConsumerState<_BreakEditor> {
         clearTopic: true,
       );
       await ref.read(studyHubRepositoryProvider).saveTask(task);
-      await sl<NotificationService>().rescheduleAll();
       if (mounted) Navigator.of(context).pop();
     } on Object catch (error) {
       if (mounted) setState(() => _error = _scheduleErrorText(error));

@@ -10,6 +10,7 @@ import 'package:lexiora/modules/study_hub/domain/entities/study_subject.dart';
 import 'package:lexiora/modules/study_hub/domain/entities/study_task.dart';
 import 'package:lexiora/modules/study_hub/domain/entities/study_template.dart';
 import 'package:lexiora/modules/study_hub/domain/exams/exam_models.dart';
+import 'package:lexiora/modules/study_hub/domain/recurrence/repeat_series.dart';
 import 'package:lexiora/modules/study_hub/domain/report/weekly_report.dart';
 import 'package:lexiora/modules/study_hub/domain/repositories/exam_repository.dart';
 import 'package:lexiora/modules/study_hub/domain/repositories/report_repository.dart';
@@ -36,28 +37,17 @@ final StreamProvider<int> studyMinutesTodayProvider =
 /// Context carried from a planned task into the existing Pomodoro/manual timer.
 /// It is not a second log: completed timers still write only to study_sessions.
 class ActiveStudyContext {
-  const ActiveStudyContext({this.taskId, this.subject, this.durationMinutes});
+  const ActiveStudyContext({this.taskId, this.subject});
   final String? taskId;
   final String? subject;
-  final int? durationMinutes;
   static const empty = ActiveStudyContext();
 }
 
 class ActiveStudyContextNotifier extends Notifier<ActiveStudyContext> {
   @override
   ActiveStudyContext build() => ActiveStudyContext.empty;
-
-  void setTask(StudyTask task) {
-    final int? duration = task.startMinute != null && task.endMinute != null
-        ? task.endMinute! - task.startMinute!
-        : null;
-    state = ActiveStudyContext(
-      taskId: task.id,
-      subject: task.displaySubject,
-      durationMinutes: duration != null && duration > 0 ? duration : null,
-    );
-  }
-
+  void setTask(StudyTask task) =>
+      state = ActiveStudyContext(taskId: task.id, subject: task.displaySubject);
   void clear() => state = ActiveStudyContext.empty;
 }
 
@@ -282,3 +272,10 @@ final weeklyReportProvider =
     now: now,
   );
 });
+
+// ── Repeating sessions ───────────────────────────────────────────────────────
+
+/// Weekly repeating series with their upcoming sessions.
+final StreamProvider<List<RepeatSeries>> repeatSeriesProvider =
+    StreamProvider.autoDispose<List<RepeatSeries>>((Ref ref) =>
+        ref.watch(studyHubRepositoryProvider).watchSeries(today: todayKey()));

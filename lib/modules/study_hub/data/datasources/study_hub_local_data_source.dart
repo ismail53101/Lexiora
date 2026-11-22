@@ -87,9 +87,14 @@ class StudyHubLocalDataSource {
 
   /// Applies several writes as ONE transaction: either everything is saved or
   /// nothing is (used when a session and its break are saved together).
+  ///
+  /// [statements] are extra raw SQL statements (for the planner's own sidecar
+  /// tables) that run inside the same transaction.
   Future<void> applyChanges({
     required List<StudyTasksCompanion> upserts,
     List<String> deleteIds = const <String>[],
+    List<({String sql, List<Object?> args})> statements =
+        const <({String sql, List<Object?> args})>[],
   }) {
     return _db.transaction(() async {
       for (final String id in deleteIds) {
@@ -102,7 +107,40 @@ class StudyHubLocalDataSource {
           }
         });
       }
+      for (final ({String sql, List<Object?> args}) s in statements) {
+        await _db.customStatement(s.sql, s.args);
+      }
     });
+  }
+
+  static Variable<Object> _variable(Object? v) {
+    if (v == null) return const Variable<Object>(null);
+    if (v is bool) return Variable<Object>(v ? 1 : 0);
+    if (v is int || v is double) return Variable<Object>(v);
+    return Variable<Object>(v.toString());
+  }
+
+  /// Runs a read-only raw query (for the planner's sidecar tables).
+  Future<List<Map<String, Object?>>> rawSelect(String sql,
+      [List<Object?> args = const <Object?>[]]) async {
+    final List<QueryRow> rows = await _db
+        .customSelect(sql, variables: args.map(_variable).toList())
+        .get();
+    return rows.map((QueryRow r) => r.data).toList();
+  }
+
+  /// Like [rawSelect], but re-emits whenever `study_tasks` changes.
+  Stream<List<Map<String, Object?>>> watchRawOnTasks(String sql,
+      [List<Object?> args = const <Object?>[]]) {
+    return _db
+        .customSelect(
+          sql,
+          variables: args.map(_variable).toList(),
+          readsFrom: <TableInfo<Table, dynamic>>{_db.studyTasks},
+        )
+        .watch()
+        .map((List<QueryRow> rows) =>
+            rows.map((QueryRow r) => r.data).toList());
   }
 
   Future<void> deleteTask(String id) =>

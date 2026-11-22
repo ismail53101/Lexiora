@@ -48,6 +48,7 @@ abstract final class AppRoutes {
   static const String studyHubExport = '/study-hub/export';
   static const String studyHubExams = '/study-hub/exams';
   static const String studyHubReport = '/study-hub/report';
+  static const String studyHubRepeating = '/study-hub/repeating';
 
   // Flashcards (Phase v0.8.0)
   static const String flashcards = '/flashcards';

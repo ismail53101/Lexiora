@@ -23,6 +23,7 @@ import 'package:lexiora/modules/study_hub/presentation/pages/export_backup_page.
 import 'package:lexiora/modules/study_hub/presentation/pages/manage_subjects_page.dart';
 import 'package:lexiora/modules/study_hub/presentation/pages/monthly_planner_page.dart';
 import 'package:lexiora/modules/study_hub/presentation/pages/planner_page.dart';
+import 'package:lexiora/modules/study_hub/presentation/pages/repeating_sessions_page.dart';
 import 'package:lexiora/modules/study_hub/presentation/pages/search_page.dart';
 import 'package:lexiora/modules/study_hub/presentation/pages/templates_page.dart';
 import 'package:lexiora/modules/study_hub/presentation/pages/weekly_planner_page.dart';
@@ -111,6 +112,10 @@ class StudyHubModule extends FeatureModule {
         GoRoute(
           path: AppRoutes.studyHubReport,
           builder: (_, _) => const WeeklyReportPage(),
+        ),
+        GoRoute(
+          path: AppRoutes.studyHubRepeating,
+          builder: (_, _) => const RepeatingSessionsPage(),
         ),
       ];
 

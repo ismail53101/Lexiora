@@ -3,6 +3,7 @@ import 'package:lexiora/modules/study_hub/domain/entities/study_models.dart';
 import 'package:lexiora/modules/study_hub/domain/entities/study_subject.dart';
 import 'package:lexiora/modules/study_hub/domain/entities/study_task.dart';
 import 'package:lexiora/modules/study_hub/domain/entities/study_template.dart';
+import 'package:lexiora/modules/study_hub/domain/recurrence/repeat_series.dart';
 
 /// Domain contract for the Study Hub. The presentation layer depends only on
 /// this interface. All data is local; the implementation is structured so a
@@ -58,6 +59,39 @@ abstract interface class StudyHubRepository {
     required List<StudyTask> tasks,
     required String toDay,
   });
+
+  /// Creates a weekly repeating session in one atomic step.
+  ///
+  /// [template] carries the subject/topic/notes/priority and the fixed time
+  /// (`startMinute`/`endMinute`). One session (and, when [breakMinutes] > 0, one
+  /// break) is created for every matching date from [startDay] to [untilDay].
+  /// Dates where the time is already taken are skipped and reported, not
+  /// treated as an error. Ids derive from [seriesId], so saving again with the
+  /// same id never duplicates.
+  Future<RepeatSaveResult> createRepeatingSessions({
+    required String seriesId,
+    required StudyTask template,
+    required Set<int> weekdays,
+    required String startDay,
+    required String untilDay,
+    int? breakMinutes,
+  });
+
+  /// All repeating series with their upcoming occurrences, from [today].
+  Stream<List<RepeatSeries>> watchSeries({required String today});
+
+  /// Adds [weeks] more weeks of occurrences after the series' last day (or
+  /// from [today] when it has already finished).
+  Future<RepeatSaveResult> extendSeries({
+    required String seriesId,
+    required int weeks,
+    required String today,
+  });
+
+  /// Ends a series: deletes its sessions (and breaks) from [fromDay] onwards
+  /// that are not completed. Earlier and completed ones stay. Returns how many
+  /// sessions were removed.
+  Future<int> endSeries({required String seriesId, required String fromDay});
 
   /// Saves a session AND the break attached to its end in one atomic step.
   ///

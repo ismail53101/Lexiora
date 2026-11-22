@@ -63,6 +63,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   with an exam coming up that got almost no time). Browse earlier weeks and
   share the summary. Time counts timer logs plus sessions you ticked as done
   (never both for the same session).
+- **Repeating sessions:** when adding a session, switch on "Repeat weekly",
+  pick the days and 4, 8, 12 or 16 weeks. Every occurrence is an ordinary
+  session (so reminders, the weekly view and the report work as usual). Days
+  where the time is already taken are skipped and listed. Menu → Repeating
+  sessions lets you add 4 more weeks or end a series (past and completed
+  sessions are kept).
 
 ### Migration
 

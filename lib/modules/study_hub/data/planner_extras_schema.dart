@@ -33,6 +33,30 @@ CREATE TABLE IF NOT EXISTS sp_topics (
 )''',
     'CREATE UNIQUE INDEX IF NOT EXISTS idx_sp_topics_unique '
         'ON sp_topics (subject_key, title_key)',
+    '''
+CREATE TABLE IF NOT EXISTS sp_series (
+  id TEXT NOT NULL PRIMARY KEY,
+  subject TEXT NOT NULL,
+  topic TEXT,
+  notes TEXT,
+  weekdays INTEGER NOT NULL,
+  start_minute INTEGER NOT NULL,
+  duration_minutes INTEGER NOT NULL,
+  break_minutes INTEGER NOT NULL DEFAULT 0,
+  priority INTEGER NOT NULL DEFAULT 1,
+  start_day TEXT NOT NULL,
+  until_day TEXT NOT NULL,
+  created_at INTEGER NOT NULL
+)''',
+    '''
+CREATE TABLE IF NOT EXISTS sp_series_tasks (
+  task_id TEXT NOT NULL PRIMARY KEY,
+  break_id TEXT,
+  series_id TEXT NOT NULL,
+  day TEXT NOT NULL
+)''',
+    'CREATE INDEX IF NOT EXISTS idx_sp_series_tasks_series '
+        'ON sp_series_tasks (series_id)',
   ];
 
   static Future<void> ensure(RawSql db) async {

@@ -9,6 +9,8 @@ import 'package:lexiora/modules/study_hub/domain/entities/study_subject.dart';
 import 'package:lexiora/modules/study_hub/domain/entities/study_task.dart';
 import 'package:lexiora/modules/study_hub/domain/entities/study_template.dart';
 import 'package:lexiora/modules/study_hub/domain/planning/day_planner.dart';
+import 'package:lexiora/modules/study_hub/domain/recurrence/recurrence.dart';
+import 'package:lexiora/modules/study_hub/domain/recurrence/repeat_series.dart';
 import 'package:lexiora/modules/study_hub/domain/repositories/study_hub_repository.dart';
 import 'package:lexiora/modules/study_hub/domain/scheduling/pomodoro_planner.dart';
 import 'package:lexiora/modules/study_hub/domain/scheduling/study_schedule_service.dart';
@@ -230,155 +232,349 @@ class StudyHubRepositoryImpl implements StudyHubRepository {
     final List<StudyTask> movable =
         tasks.where((StudyTask t) => !t.isBreak && t.day != toDay).toList();
     if (movable.isEmpty) return 0;
-
     final List<StudyTask> target =
         (await _local.getTasks(toDay)).map(_toTask).toList();
-
-    // Break rows are independent planner rows (their IDs are not derived from
-    // the session ID). A break belongs to a session when it starts exactly at
-    // that session's end.
-    final Set<String> sourceDays = <String>{for (final StudyTask t in movable) t.day};
-    final Map<String, List<StudyTask>> sourceRowsByDay =
-        <String, List<StudyTask>>{};
-    for (final String day in sourceDays) {
-      sourceRowsByDay[day] =
-          (await _local.getTasks(day)).map(_toTask).toList();
-    }
-
-    final Set<String> roots = <String>{
-      for (final StudyTask task in movable)
-        task.id.contains(':') ? task.id.split(':').first : task.id,
-    };
-
-    final List<StudyTask> chain = <StudyTask>[];
-    for (final List<StudyTask> sourceRows in sourceRowsByDay.values) {
-      for (final StudyTask row in sourceRows) {
-        final String root =
-            row.id.contains(':') ? row.id.split(':').first : row.id;
-        final bool sameChain = roots.contains(root);
-        final bool belongsToMovedSession = row.isBreak &&
-            movable.any(
-              (StudyTask session) =>
-                  session.day == row.day &&
-                  session.endMinute != null &&
-                  row.startMinute == session.endMinute,
-            );
-        if (sameChain || belongsToMovedSession) {
-          chain.add(row);
-        }
-      }
-    }
-
-    final Set<String> movedIds = <String>{for (final StudyTask t in chain) t.id};
+    final Set<String> ids = <String>{for (final StudyTask t in movable) t.id};
     final List<StudyTask> placed = target
-        .where((StudyTask t) => !movedIds.contains(t.id))
+        .where((StudyTask t) => !ids.contains(t.id))
         .toList();
-
     final DateTime now = DateTime.now();
-    final bool movingToToday = toDay == dayKey(now);
-    final int nowMinute = now.hour * 60 + now.minute;
-
-    // IMPORTANT: moving a schedule must preserve its original clock time.
-    // For Today only, if that clock time has already passed, shift the whole
-    // moved chain forward by exactly the amount needed to start "now".
-    // Example: 09:00–12:00 moved at 08:30 => stays 09:00–12:00.
-    // Moved at 10:00 => becomes 10:00–13:00.
-    // Tomorrow/another day => always stays 09:00–12:00.
-    chain.sort((StudyTask a, StudyTask b) {
-      final int byDay = a.day.compareTo(b.day);
-      if (byDay != 0) return byDay;
-      final int byStart = (a.startMinute ?? 0).compareTo(b.startMinute ?? 0);
-      if (byStart != 0) return byStart;
-      return a.orderIndex.compareTo(b.orderIndex);
-    });
-
-    final int? firstStart = _firstStartMinute(chain);
-    final int shiftMinutes = movingToToday && firstStart != null
-        ? (nowMinute > firstStart ? nowMinute - firstStart : 0)
-        : 0;
-
-    final Set<String> movedTaskIds = <String>{};
-    int nextOrder = placed.fold<int>(
-      -1,
-      (int current, StudyTask task) =>
-          task.orderIndex > current ? task.orderIndex : current,
-    ) + 1;
-
-    int untimedCursor = StudyScheduleService.nextAvailableMinute(placed);
-
-    for (final StudyTask row in chain) {
-      final int duration = StudyScheduleService.durationOf(row);
-      // Timed sessions preserve their original clock time. Untimed sessions
-      // still use the destination day's next available slot.
-      final int start = row.startMinute == null
-          ? untimedCursor
-          : row.startMinute! + shiftMinutes;
-      final int end = start + duration;
-
-      final StudyTask incoming = row.copyWith(
+    for (final StudyTask t in movable) {
+      final StudyTask incoming = t.copyWith(
         day: toDay,
-        // A moved schedule is now a fixed-time anchor. This prevents the
-        // normal automatic scheduler from changing 09:00 into 12:00 merely
-        // because the destination day already contains later tasks.
-        autoScheduled: false,
-        startMinute: start,
-        endMinute: end,
-        durationMinutes: duration,
-        status: row.isBreak ? TaskStatus.pending : row.status,
-        orderIndex: nextOrder++,
+        autoScheduled: true,
+        clearTimes: true,
+        durationMinutes: StudyScheduleService.durationOf(t),
+        status: TaskStatus.pending,
         updatedAt: now,
       );
-      placed.add(incoming);
-      movedTaskIds.add(incoming.id);
-      if (row.startMinute == null) {
-        untimedCursor = end;
-      }
+      placed.add(_prepareIncoming(incoming, placed));
     }
-
-    final List<StudyTask> recalculated =
-        StudyScheduleService.recalculate(placed);
-
-    final StudyScheduleConflict? conflict = _firstWhereOrNull(
-      StudyScheduleService.conflicts(recalculated),
-      (StudyScheduleConflict c) =>
-          movedTaskIds.contains(c.item.id) ||
-          movedTaskIds.contains(c.previous.id),
-    );
-    if (conflict != null) {
-      throw StudyScheduleOverlapException(conflict);
-    }
-
-    if (movingToToday) {
-      final StudyTask? overflow = _firstWhereOrNull(
-        recalculated,
-        (StudyTask task) =>
-            movedTaskIds.contains(task.id) &&
-            task.endMinute != null &&
-            task.endMinute! > StudyScheduleService.minutesPerDay,
-      );
-      if (overflow != null) {
-        throw const StudyScheduleInvalidTimeException(
-          'There is not enough time left today for all missed sessions. '
-          'Choose tomorrow or another date.',
-        );
-      }
-    }
-
-    // Moving means removing the complete source chain as well as inserting it
-    // on the destination day.
+    final List<StudyTask> recalculated = StudyScheduleService.recalculate(placed);
     await _local.applyChanges(
       upserts: recalculated.map(_taskCompanion).toList(),
-      deleteIds: movedIds.toList(growable: false),
     );
     _notifyChanged();
     return movable.length;
   }
 
-  int? _firstStartMinute(List<StudyTask> rows) {
-    for (final StudyTask row in rows) {
-      if (row.startMinute != null) return row.startMinute;
+  // ── repeating sessions ─────────────────────────────────────────────────────
+
+  static const String _mapSql =
+      'INSERT OR REPLACE INTO sp_series_tasks (task_id, break_id, series_id, day) '
+      'VALUES (?, ?, ?, ?)';
+
+  /// Builds the sessions (and breaks) for [days]. A day whose time is already
+  /// taken is skipped. Rows of a day that move because of the new items (such
+  /// as automatic sessions) are included so nothing is left overlapping.
+  Future<({List<StudyTask> tasks, List<({String sql, List<Object?> args})> mapping, List<String> skipped})>
+      _buildOccurrences({
+    required String seriesId,
+    required StudyTask template,
+    required List<String> days,
+    required int breakMinutes,
+  }) async {
+    final DateTime now = DateTime.now();
+    final List<StudyTask> tasks = <StudyTask>[];
+    final List<({String sql, List<Object?> args})> mapping =
+        <({String sql, List<Object?> args})>[];
+    final List<String> skipped = <String>[];
+    final int start = template.startMinute!;
+    final int end = template.endMinute!;
+
+    for (final String day in days) {
+      final String sessionId = '$seriesId:$day';
+      final String breakId = '$seriesId:$day:b';
+      final List<StudyTask> stored = (await _local.getTasks(day))
+          .map(_toTask)
+          .where((StudyTask t) => t.id != sessionId && t.id != breakId)
+          .toList();
+      final StudyTask session = StudyTask(
+        id: sessionId,
+        day: day,
+        title: template.title,
+        subject: template.subject,
+        topic: template.topic,
+        notes: template.notes,
+        startMinute: start,
+        endMinute: end,
+        durationMinutes: end - start,
+        priority: template.priority,
+        createdAt: now,
+        updatedAt: now,
+      );
+      final StudyTask? pause = breakMinutes > 0
+          ? StudyTask(
+              id: breakId,
+              day: day,
+              title: 'Break',
+              startMinute: end,
+              endMinute: end + breakMinutes,
+              durationMinutes: breakMinutes,
+              kind: SessionKind.breakTime,
+              createdAt: now,
+              updatedAt: now,
+            )
+          : null;
+      final Set<String> mine = <String>{sessionId, ?pause?.id};
+      final List<StudyTask> recalculated =
+          StudyScheduleService.recalculate(<StudyTask>[...stored, session, ?pause]);
+      final StudyScheduleConflict? conflict = _firstWhereOrNull(
+        StudyScheduleService.conflicts(recalculated),
+        (StudyScheduleConflict c) =>
+            mine.contains(c.item.id) || mine.contains(c.previous.id),
+      );
+      if (conflict != null) {
+        skipped.add(day);
+        continue;
+      }
+      final Map<String, StudyTask> before = <String, StudyTask>{
+        for (final StudyTask t in stored) t.id: t,
+      };
+      for (final StudyTask t in recalculated) {
+        final StudyTask? old = before[t.id];
+        final bool changed = old == null ||
+            old.startMinute != t.startMinute ||
+            old.endMinute != t.endMinute;
+        if (changed) tasks.add(t);
+      }
+      mapping.add((sql: _mapSql, args: <Object?>[sessionId, pause?.id, seriesId, day]));
     }
-    return null;
+    return (tasks: tasks, mapping: mapping, skipped: skipped);
+  }
+
+  @override
+  Future<RepeatSaveResult> createRepeatingSessions({
+    required String seriesId,
+    required StudyTask template,
+    required Set<int> weekdays,
+    required String startDay,
+    required String untilDay,
+    int? breakMinutes,
+  }) async {
+    final int? start = template.startMinute;
+    final int? end = template.endMinute;
+    final String? problem = StudyScheduleService.validateSpan(start, end);
+    if (start == null || end == null) {
+      throw const StudyScheduleInvalidTimeException(
+          'Repeating sessions need a start time and a duration.');
+    }
+    if (problem != null) throw StudyScheduleInvalidTimeException(problem);
+    final int pause = (breakMinutes ?? 0) > 0 ? breakMinutes! : 0;
+    if (pause > 0 && end + pause > 24 * 60) {
+      throw const StudyScheduleInvalidTimeException(
+          'The break would run past midnight. Choose a shorter break.');
+    }
+    if (weekdays.isEmpty) {
+      throw const StudyScheduleInvalidTimeException(
+          'Choose at least one day of the week.');
+    }
+    final List<String> days = occurrenceDays(
+      weekdays: weekdays,
+      startDay: startDay,
+      untilDay: untilDay,
+    );
+    if (days.isEmpty) {
+      throw const StudyScheduleInvalidTimeException(
+          'None of the chosen days fall inside that period.');
+    }
+
+    final built = await _buildOccurrences(
+      seriesId: seriesId,
+      template: template,
+      days: days,
+      breakMinutes: pause,
+    );
+    final int created = built.mapping.length;
+    if (created == 0) {
+      return RepeatSaveResult(
+          seriesId: seriesId, created: 0, skippedDays: built.skipped);
+    }
+    await _local.applyChanges(
+      upserts: built.tasks.map(_taskCompanion).toList(),
+      statements: <({String sql, List<Object?> args})>[
+        (
+          sql: 'INSERT OR REPLACE INTO sp_series '
+              '(id, subject, topic, notes, weekdays, start_minute, duration_minutes, '
+              'break_minutes, priority, start_day, until_day, created_at) '
+              'VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)',
+          args: <Object?>[
+            seriesId,
+            template.displaySubject,
+            template.topic,
+            template.notes,
+            weekdaysToMask(weekdays),
+            start,
+            end - start,
+            pause,
+            template.priority.index,
+            days.first,
+            days.last,
+            DateTime.now().millisecondsSinceEpoch ~/ 1000,
+          ],
+        ),
+        ...built.mapping,
+      ],
+    );
+    _notifyChanged();
+    return RepeatSaveResult(
+        seriesId: seriesId, created: created, skippedDays: built.skipped);
+  }
+
+  RepeatSeries _seriesFromRow(Map<String, Object?> r) {
+    int i(String k) => (r[k] as num?)?.toInt() ?? 0;
+    return RepeatSeries(
+      id: r['id']! as String,
+      subject: (r['subject'] as String?) ?? '',
+      topic: r['topic'] as String?,
+      notes: r['notes'] as String?,
+      weekdays: weekdaysFromMask(i('weekdays')),
+      startMinute: i('start_minute'),
+      durationMinutes: i('duration_minutes'),
+      breakMinutes: i('break_minutes'),
+      priorityIndex: i('priority'),
+      startDay: (r['start_day'] as String?) ?? '',
+      untilDay: (r['until_day'] as String?) ?? '',
+      upcoming: i('upcoming'),
+      nextDay: r['next_day'] as String?,
+    );
+  }
+
+  @override
+  Stream<List<RepeatSeries>> watchSeries({required String today}) {
+    const String sql = 'SELECT s.*, '
+        '(SELECT COUNT(*) FROM sp_series_tasks m JOIN study_tasks k ON k.id = m.task_id '
+        'WHERE m.series_id = s.id AND k.day >= ?) AS upcoming, '
+        '(SELECT MIN(k.day) FROM sp_series_tasks m JOIN study_tasks k ON k.id = m.task_id '
+        'WHERE m.series_id = s.id AND k.day >= ? AND k.completed = 0) AS next_day '
+        'FROM sp_series s ORDER BY s.subject COLLATE NOCASE, s.start_minute';
+    return _local
+        .watchRawOnTasks(sql, <Object?>[today, today])
+        .map((List<Map<String, Object?>> rows) => rows.map(_seriesFromRow).toList());
+  }
+
+  @override
+  Future<RepeatSaveResult> extendSeries({
+    required String seriesId,
+    required int weeks,
+    required String today,
+  }) async {
+    final List<Map<String, Object?>> rows = await _local
+        .rawSelect('SELECT * FROM sp_series WHERE id = ?', <Object?>[seriesId]);
+    if (rows.isEmpty) throw ArgumentError('Unknown series $seriesId');
+    final RepeatSeries series = _seriesFromRow(rows.first);
+    final DateTime? oldUntil = parseDayKeyOrNull(series.untilDay);
+    final DateTime? todayDate = parseDayKeyOrNull(today);
+    if (oldUntil == null || todayDate == null || weeks <= 0) {
+      return RepeatSaveResult(seriesId: seriesId, created: 0, skippedDays: const <String>[]);
+    }
+    // Continue after the last day, or from today once the series has finished.
+    final DateTime lastCovered =
+        oldUntil.isBefore(DateTime(todayDate.year, todayDate.month, todayDate.day - 1))
+            ? DateTime(todayDate.year, todayDate.month, todayDate.day - 1)
+            : oldUntil;
+    final DateTime from = DateTime(lastCovered.year, lastCovered.month, lastCovered.day + 1);
+    final DateTime newUntil =
+        DateTime(lastCovered.year, lastCovered.month, lastCovered.day + weeks * 7);
+    final List<String> days = occurrenceDays(
+      weekdays: series.weekdays,
+      startDay: dayKeyOf(from),
+      untilDay: dayKeyOf(newUntil),
+    );
+    final DateTime now = DateTime.now();
+    final StudyTask template = StudyTask(
+      id: seriesId,
+      day: dayKeyOf(from),
+      title: series.subject,
+      subject: series.subject,
+      topic: series.topic,
+      notes: series.notes,
+      startMinute: series.startMinute,
+      endMinute: series.endMinute,
+      priority: TaskPriority.values[series.priorityIndex.clamp(0, TaskPriority.values.length - 1)],
+      createdAt: now,
+      updatedAt: now,
+    );
+    final built = await _buildOccurrences(
+      seriesId: seriesId,
+      template: template,
+      days: days,
+      breakMinutes: series.breakMinutes,
+    );
+    await _local.applyChanges(
+      upserts: built.tasks.map(_taskCompanion).toList(),
+      statements: <({String sql, List<Object?> args})>[
+        (
+          sql: 'UPDATE sp_series SET until_day = ? WHERE id = ?',
+          args: <Object?>[dayKeyOf(newUntil), seriesId],
+        ),
+        ...built.mapping,
+      ],
+    );
+    _notifyChanged();
+    return RepeatSaveResult(
+      seriesId: seriesId,
+      created: built.mapping.length,
+      skippedDays: built.skipped,
+    );
+  }
+
+  @override
+  Future<int> endSeries({required String seriesId, required String fromDay}) async {
+    final List<Map<String, Object?>> rows = await _local.rawSelect(
+      'SELECT m.task_id AS task_id, m.break_id AS break_id, m.day AS day, '
+      'k.id AS exists_id, k.completed AS completed, k.status AS status '
+      'FROM sp_series_tasks m LEFT JOIN study_tasks k ON k.id = m.task_id '
+      'WHERE m.series_id = ?',
+      <Object?>[seriesId],
+    );
+    final List<String> deleteIds = <String>[];
+    final List<({String sql, List<Object?> args})> statements =
+        <({String sql, List<Object?> args})>[];
+    int removed = 0;
+    int remaining = 0;
+    for (final Map<String, Object?> r in rows) {
+      final String taskId = r['task_id']! as String;
+      final String day = (r['day'] as String?) ?? '';
+      final bool taskExists = r['exists_id'] != null;
+      final bool done = ((r['completed'] as num?)?.toInt() ?? 0) != 0 ||
+          ((r['status'] as num?)?.toInt() ?? 0) == 2;
+      final bool future = day.compareTo(fromDay) >= 0;
+      if (!taskExists) {
+        // The session was deleted on its own; just forget the link.
+        statements.add((sql: 'DELETE FROM sp_series_tasks WHERE task_id = ?', args: <Object?>[taskId]));
+      } else if (future && !done) {
+        deleteIds.add(taskId);
+        final String? breakId = r['break_id'] as String?;
+        if (breakId != null) deleteIds.add(breakId);
+        statements.add((sql: 'DELETE FROM sp_series_tasks WHERE task_id = ?', args: <Object?>[taskId]));
+        removed++;
+      } else {
+        remaining++;
+      }
+    }
+    if (remaining == 0) {
+      statements.add((sql: 'DELETE FROM sp_series WHERE id = ?', args: <Object?>[seriesId]));
+    } else {
+      final DateTime? from = parseDayKeyOrNull(fromDay);
+      if (from != null) {
+        statements.add((
+          sql: 'UPDATE sp_series SET until_day = ? WHERE id = ? AND until_day > ?',
+          args: <Object?>[
+            dayKeyOf(DateTime(from.year, from.month, from.day - 1)),
+            seriesId,
+            dayKeyOf(DateTime(from.year, from.month, from.day - 1)),
+          ],
+        ));
+      }
+    }
+    await _local.applyChanges(
+      upserts: const <StudyTasksCompanion>[],
+      deleteIds: deleteIds,
+      statements: statements,
+    );
+    _notifyChanged();
+    return removed;
   }
 
   @override
@@ -410,8 +606,8 @@ class StudyHubRepositoryImpl implements StudyHubRepository {
       throw const StudyScheduleInvalidTimeException(
           'Focus blocks need a length of at least one minute.');
     }
-    final PomodoroPlan plan = planPomodoroWindow(
-      totalWindowMinutes: total,
+    final PomodoroPlan plan = planPomodoro(
+      totalFocusMinutes: total,
       focusMinutes: focusMinutes,
       breakMinutes: breakMinutes,
     );
