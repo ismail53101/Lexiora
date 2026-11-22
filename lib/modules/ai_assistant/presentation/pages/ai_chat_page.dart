@@ -416,7 +416,9 @@ class _MessageListState extends ConsumerState<_MessageList> {
   }
 
   Future<void> _scrollToLatest() async {
-    if (!_scrollController.hasClients || _programmaticScrollInProgress) return;
+    if (_userScrolledUp ||
+        !_scrollController.hasClients ||
+        _programmaticScrollInProgress) return;
     _programmaticScrollInProgress = true;
     try {
       await _scrollController.animateTo(
