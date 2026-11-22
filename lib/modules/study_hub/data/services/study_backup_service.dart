@@ -218,8 +218,7 @@ class StudyBackupService {
     final int currentMinute =
         nowMinute ?? (now.hour * 60 + now.minute);
     final String today = dayKey(now);
-    final bool reuseToday =
-        targetDay == today && sourceDates.length == 1 && sourceDates.first == today;
+    final bool reuseToday = targetDay == today && sourceDates.length == 1;
 
     final List<StudyTask> importedTasks = <StudyTask>[];
     for (int index = 0; index < dataRows.length; index++) {
