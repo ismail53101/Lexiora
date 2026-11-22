@@ -262,54 +262,7 @@ class StudyBackupService {
     // formatMinuteOfDay(), e.g. "9:00 AM" or "2:30 PM". Accept 24-hour
     // "HH:mm" as well so externally edited CSV files remain importable.
     final RegExp match = RegExp(
-      r'^(\\d{1,2}):(\\d{2})(?:\\s*(AM|PM))?
-
-  List<List<String>> _parseCsv(String input) {
-    final List<List<String>> rows = <List<String>>[];
-    List<String> row = <String>[];
-    final StringBuffer cell = StringBuffer();
-    bool quoted = false;
-
-    for (int i = 0; i < input.length; i++) {
-      final String ch = input[i];
-      if (ch == '"') {
-        if (quoted && i + 1 < input.length && input[i + 1] == '"') {
-          cell.write('"');
-          i++;
-        } else {
-          quoted = !quoted;
-        }
-      } else if (ch == ',' && !quoted) {
-        row.add(cell.toString());
-        cell.clear();
-      } else if ((ch == '\n' || ch == '\r') && !quoted) {
-        if (ch == '\r' && i + 1 < input.length && input[i + 1] == '\n') {
-          i++;
-        }
-        row.add(cell.toString());
-        rows.add(row);
-        row = <String>[];
-        cell.clear();
-      } else {
-        cell.write(ch);
-      }
-    }
-
-    if (cell.isNotEmpty || row.isNotEmpty) {
-      row.add(cell.toString());
-      rows.add(row);
-    }
-    return rows;
-  }
-
-  Future<void> deleteBackup(String path) async {
-    final File f = File(path);
-    if (f.existsSync()) {
-      await f.delete();
-    }
-  }
-}
-,
+      r'^(\d{1,2}):(\d{2})(?:\s*(AM|PM))?$',
       caseSensitive: false,
     ).firstMatch(v);
     if (match == null) return null;
