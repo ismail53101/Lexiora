@@ -241,7 +241,7 @@ class _ExportBackupPageState extends ConsumerState<ExportBackupPage> {
         // A single-day CSV exported for today is the common "reuse my plan"
         // case. Never silently put it back on today after some of its times
         // have already passed: let the user choose Today or Tomorrow.
-        if (dates.length == 1 && dates.first == today) {
+        if (dates.length == 1) {
           final String? chosenDay = await showDialog<String>(
             context: context,
             builder: (BuildContext context) {
