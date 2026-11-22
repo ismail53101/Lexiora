@@ -331,6 +331,62 @@ class _SessionEditorState extends ConsumerState<_SessionEditor> {
     });
   }
 
+  /// If a new session is being scheduled for today but its manual start
+  /// time has already passed, offer a safe way to move it forward instead of
+  /// silently creating a session in the past.
+  Future<String?> _resolvePastTodayTime(int start) async {
+    if (widget.existing != null ||
+        widget.day != dayKey(DateTime.now()) ||
+        _mode != _TimeMode.manual) {
+      return widget.day;
+    }
+
+    final DateTime now = DateTime.now();
+    if (start > now.hour * 60 + now.minute) return widget.day;
+
+    final String? choice = await showDialog<String>(
+      context: context,
+      builder: (BuildContext dialogContext) => AlertDialog(
+        title: const Text('This time has already passed'),
+        content: Text(
+          formatMinuteOfDay(start) +
+              ' is already in the past for today. Would you like to move '
+              'this session to tomorrow or choose another day?',
+        ),
+        actions: <Widget>[
+          TextButton(
+            onPressed: () => Navigator.of(dialogContext).pop('cancel'),
+            child: const Text('Keep today'),
+          ),
+          OutlinedButton(
+            onPressed: () => Navigator.of(dialogContext).pop('tomorrow'),
+            child: const Text('Tomorrow'),
+          ),
+          FilledButton(
+            onPressed: () => Navigator.of(dialogContext).pop('other'),
+            child: const Text('Choose another day'),
+          ),
+        ],
+      ),
+    );
+
+    if (choice == 'tomorrow') {
+      return dayKey(DateTime(now.year, now.month, now.day + 1));
+    }
+    if (choice != 'other') return choice == 'cancel' ? null : widget.day;
+
+    if (!mounted) return null;
+    final DateTime tomorrow = DateTime(now.year, now.month, now.day + 1);
+    final DateTime? picked = await showDatePicker(
+      context: context,
+      initialDate: tomorrow,
+      firstDate: tomorrow,
+      lastDate: DateTime(now.year + 2, now.month, now.day),
+      helpText: 'CHOOSE STUDY DAY',
+    );
+    return picked == null ? null : dayKey(picked);
+  }
+
   Future<void> _save() async {
     if (_saving) return;
     final String subject = _subject.text.trim();
@@ -345,10 +401,23 @@ class _SessionEditorState extends ConsumerState<_SessionEditor> {
     try {
       final DateTime now = DateTime.now();
       if (!_breakLoaded) await _loadExistingBreak();
+
+      final int? selectedStart = _startFor();
+      final String? targetDay = selectedStart == null
+          ? widget.day
+          : await _resolvePastTodayTime(selectedStart);
+      if (targetDay == null) {
+        setState(() {
+          _saving = false;
+          _error = null;
+        });
+        return;
+      }
+
       final StudyTask base = widget.existing ??
           StudyTask(
             id: _sessionId,
-            day: widget.day,
+            day: targetDay,
             title: subject,
             createdAt: now,
             updatedAt: now,
@@ -392,8 +461,8 @@ class _SessionEditorState extends ConsumerState<_SessionEditor> {
           seriesId: _seriesId,
           template: task,
           weekdays: _repeatDays,
-          startDay: widget.day,
-          untilDay: untilAfterWeeks(widget.day, _repeatWeeks),
+          startDay: targetDay,
+          untilDay: untilAfterWeeks(targetDay, _repeatWeeks),
           breakMinutes: _addBreak ? _breakMinutes : null,
         );
         if (res.created == 0) {
