@@ -356,7 +356,7 @@ class _SessionEditorState extends ConsumerState<_SessionEditor> {
         actions: <Widget>[
           TextButton(
             onPressed: () => Navigator.of(dialogContext).pop('cancel'),
-            child: const Text('Keep today'),
+            child: const Text('Cancel'),
           ),
           OutlinedButton(
             onPressed: () => Navigator.of(dialogContext).pop('tomorrow'),
