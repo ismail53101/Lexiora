@@ -1059,7 +1059,7 @@ class StudyHubRepositoryImpl implements StudyHubRepository {
   @override
   Future<Map<String, dynamic>> exportBackup() async {
     return <String, dynamic>{
-      'app': 'sapiora',
+      'app': 'darsnexa',
       'type': 'study_hub_backup',
       'version': 1,
       'exportedAt': DateTime.now().toIso8601String(),
