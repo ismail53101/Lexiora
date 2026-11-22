@@ -468,16 +468,23 @@ class _ReaderPageState extends ConsumerState<ReaderPage> {
             tooltip: 'Search in document',
             onPressed: _toggleSearch,
           ),
-          IconButton(
-            icon: Icon(
-              _keepScreenAwake
-                  ? Icons.screen_lock_portrait
-                  : Icons.screen_lock_portrait_outlined,
-            ),
-            tooltip: _keepScreenAwake
-                ? 'Turn off keep screen awake'
-                : 'Keep screen awake',
-            onPressed: () => _setKeepScreenAwake(!_keepScreenAwake),
+          Semantics(
+            toggled: _keepScreenAwake,
+            button: true,
+            label: _keepScreenAwake
+                ? 'Keep screen awake is on'
+                : 'Keep screen awake is off',
+            child: _keepScreenAwake
+                ? IconButton.filledTonal(
+                    icon: const Icon(Icons.screen_lock_portrait),
+                    tooltip: 'Keep screen awake: ON',
+                    onPressed: () => _setKeepScreenAwake(false),
+                  )
+                : IconButton(
+                    icon: const Icon(Icons.screen_lock_portrait_outlined),
+                    tooltip: 'Keep screen awake: OFF',
+                    onPressed: () => _setKeepScreenAwake(true),
+                  ),
           ),
           _BookmarkToggle(documentId: _id, controller: _controller),
         ],
