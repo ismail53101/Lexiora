@@ -228,35 +228,150 @@ class StudyHubRepositoryImpl implements StudyHubRepository {
   Future<int> moveSessionsToDay({
     required List<StudyTask> tasks,
     required String toDay,
+    int? nowMinute,
   }) async {
     final List<StudyTask> movable =
         tasks.where((StudyTask t) => !t.isBreak && t.day != toDay).toList();
     if (movable.isEmpty) return 0;
+
     final List<StudyTask> target =
         (await _local.getTasks(toDay)).map(_toTask).toList();
-    final Set<String> ids = <String>{for (final StudyTask t in movable) t.id};
-    final List<StudyTask> placed = target
-        .where((StudyTask t) => !ids.contains(t.id))
-        .toList();
-    final DateTime now = DateTime.now();
-    for (final StudyTask t in movable) {
-      final int duration = StudyScheduleService.durationOf(t);
-      final bool hasTimedSpan = t.startMinute != null && t.endMinute != null;
-      final StudyTask incoming = t.copyWith(
-        day: toDay,
-        autoScheduled: !hasTimedSpan,
-        durationMinutes: duration,
-        status: TaskStatus.pending,
-        updatedAt: now,
-        clearTimes: !hasTimedSpan,
-      );
-      placed.add(
-        hasTimedSpan ? incoming : _prepareIncoming(incoming, placed),
-      );
+    final Set<String> movedSessionIds =
+        <String>{for (final StudyTask t in movable) t.id};
+
+    // Breaks are ordinary timeline rows, but missedSessions() deliberately
+    // excludes them. Recover the break immediately following each moved
+    // session so moving a session never silently drops its break.
+    final Set<String> sourceDays = <String>{
+      for (final StudyTask t in movable) t.day,
+    };
+    final Map<String, List<StudyTask>> rowsByDay = <String, List<StudyTask>>{
+      for (final String day in sourceDays)
+        day: (await _local.getTasks(day)).map(_toTask).toList(),
+    };
+    final Set<String> movedBreakIds = <String>{};
+    final List<({StudyTask session, StudyTask? breakTask})> blocks =
+        <({StudyTask session, StudyTask? breakTask})>[];
+
+    for (final StudyTask session in movable) {
+      StudyTask? breakTask;
+      if (session.endMinute != null) {
+        breakTask = _firstWhereOrNull(
+          rowsByDay[session.day] ?? const <StudyTask>[],
+          (StudyTask row) =>
+              row.isBreak &&
+              row.startMinute == session.endMinute &&
+              !movedBreakIds.contains(row.id),
+        );
+        if (breakTask != null) movedBreakIds.add(breakTask.id);
+      }
+      blocks.add((session: session, breakTask: breakTask));
     }
-    final List<StudyTask> recalculated = StudyScheduleService.recalculate(placed);
+
+    final Set<String> idsToReplace = <String>{
+      ...movedSessionIds,
+      ...movedBreakIds,
+    };
+    final List<StudyTask> placed = target
+        .where((StudyTask t) => !idsToReplace.contains(t.id))
+        .toList();
+
+    final DateTime now = DateTime.now();
+    final int currentMinute =
+        nowMinute ?? (now.hour * 60 + now.minute);
+    final bool movingToToday = toDay == dayKey(now);
+
+    // If moving to today, never put a missed block back at its old time.
+    // Start from now (or the next available point after existing target
+    // items), then keep every session/break in the same relative sequence.
+    int cursor = currentMinute;
+    if (movingToToday) {
+      cursor = StudyScheduleService.nextAvailableMinute(placed)
+          .clamp(currentMinute, StudyScheduleService.minutesPerDay);
+    }
+
+    for (final ({StudyTask session, StudyTask? breakTask}) block in blocks) {
+      final StudyTask session = block.session;
+      final int sessionDuration = StudyScheduleService.durationOf(session);
+      final StudyTask? oldBreak = block.breakTask;
+      final int breakDuration =
+          oldBreak == null ? 0 : StudyScheduleService.durationOf(oldBreak);
+
+      if (movingToToday && session.startMinute != null) {
+        final int start = cursor;
+        final StudyTask moved = session.copyWith(
+          day: toDay,
+          startMinute: start,
+          endMinute: start + sessionDuration,
+          durationMinutes: sessionDuration,
+          autoScheduled: false,
+          status: TaskStatus.pending,
+          updatedAt: now,
+        );
+        placed.add(moved);
+
+        if (oldBreak != null) {
+          final int breakStart = moved.endMinute!;
+          placed.add(oldBreak.copyWith(
+            day: toDay,
+            startMinute: breakStart,
+            endMinute: breakStart + breakDuration,
+            durationMinutes: breakDuration,
+            autoScheduled: false,
+            updatedAt: now,
+          ));
+          cursor = breakStart + breakDuration;
+        } else {
+          cursor = moved.endMinute!;
+        }
+      } else {
+        final StudyTask moved = session.copyWith(
+          day: toDay,
+          autoScheduled: false,
+          durationMinutes: sessionDuration,
+          status: TaskStatus.pending,
+          updatedAt: now,
+          clearTimes: session.startMinute == null || session.endMinute == null,
+        );
+        placed.add(
+          session.startMinute != null && session.endMinute != null
+              ? moved
+              : _prepareIncoming(moved, placed),
+        );
+
+        if (oldBreak != null) {
+          final StudyTask movedBreak = oldBreak.copyWith(
+            day: toDay,
+            autoScheduled: false,
+            durationMinutes: breakDuration,
+            updatedAt: now,
+          );
+          placed.add(movedBreak);
+        }
+      }
+    }
+
+    final List<StudyTask> recalculated =
+        StudyScheduleService.recalculate(placed);
+    final Set<String> movedIds = <String>{
+      ...movedSessionIds,
+      ...movedBreakIds,
+    };
+    final StudyScheduleConflict? conflict = _firstWhereOrNull(
+      StudyScheduleService.conflicts(recalculated),
+      (StudyScheduleConflict c) =>
+          movedIds.contains(c.item.id) || movedIds.contains(c.previous.id),
+    );
+    if (conflict != null) {
+      throw StudyScheduleOverlapException(conflict);
+    }
+
     await _local.applyChanges(
       upserts: recalculated.map(_taskCompanion).toList(),
+      deleteIds: <String>[
+        for (final String id in movedIds)
+          if (target.any((StudyTask t) => t.id == id)) id,
+      ],
     );
     _notifyChanged();
     return movable.length;
