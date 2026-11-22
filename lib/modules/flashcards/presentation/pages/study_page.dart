@@ -460,12 +460,12 @@ class _CardAreaState extends State<_CardArea> {
                 mainAxisSize: MainAxisSize.min,
                 children: <Widget>[
                   if (card.type != FcCardType.cloze) ...<Widget>[
-                    Text(card.front,
-                        textAlign: TextAlign.center,
-                        maxLines: 3,
-                        overflow: TextOverflow.ellipsis,
-                        textDirection: detectTextDirection(card.front),
-                        style: theme.textTheme.bodyMedium?.copyWith(color: cs.onSurfaceVariant)),
+                    FcCardFaceText(
+                      card: card,
+                      face: FcFace.question,
+                      fontSize: 17,
+                      textAlign: TextAlign.center,
+                    ),
                     const Divider(height: 28),
                   ],
                   FcCardFaceText(card: card, face: FcFace.answer),
