@@ -286,8 +286,9 @@ class StudyHubRepositoryImpl implements StudyHubRepository {
     // items), then keep every session/break in the same relative sequence.
     int cursor = currentMinute;
     if (movingToToday) {
-      cursor = StudyScheduleService.nextAvailableMinute(placed)
-          .clamp(currentMinute, StudyScheduleService.minutesPerDay);
+      final int nextAvailable =
+          StudyScheduleService.nextAvailableMinute(placed);
+      cursor = nextAvailable > currentMinute ? nextAvailable : currentMinute;
     }
 
     for (final ({StudyTask session, StudyTask? breakTask}) block in blocks) {
