@@ -4,6 +4,7 @@ import 'dart:io';
 import 'package:lexiora/modules/study_hub/data/services/study_export_service.dart';
 import 'package:lexiora/modules/study_hub/domain/entities/study_task.dart';
 import 'package:lexiora/modules/study_hub/domain/repositories/study_hub_repository.dart';
+import 'package:lexiora/modules/study_hub/domain/scheduling/study_schedule_service.dart';
 import 'package:path_provider/path_provider.dart';
 
 /// A saved local backup file.
