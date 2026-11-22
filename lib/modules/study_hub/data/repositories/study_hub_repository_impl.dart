@@ -240,15 +240,19 @@ class StudyHubRepositoryImpl implements StudyHubRepository {
         .toList();
     final DateTime now = DateTime.now();
     for (final StudyTask t in movable) {
+      final int duration = StudyScheduleService.durationOf(t);
+      final bool hasTimedSpan = t.startMinute != null && t.endMinute != null;
       final StudyTask incoming = t.copyWith(
         day: toDay,
-        autoScheduled: true,
-        clearTimes: true,
-        durationMinutes: StudyScheduleService.durationOf(t),
+        autoScheduled: !hasTimedSpan,
+        durationMinutes: duration,
         status: TaskStatus.pending,
         updatedAt: now,
+        clearTimes: !hasTimedSpan,
       );
-      placed.add(_prepareIncoming(incoming, placed));
+      placed.add(
+        hasTimedSpan ? incoming : _prepareIncoming(incoming, placed),
+      );
     }
     final List<StudyTask> recalculated = StudyScheduleService.recalculate(placed);
     await _local.applyChanges(
@@ -606,8 +610,8 @@ class StudyHubRepositoryImpl implements StudyHubRepository {
       throw const StudyScheduleInvalidTimeException(
           'Focus blocks need a length of at least one minute.');
     }
-    final PomodoroPlan plan = planPomodoro(
-      totalFocusMinutes: total,
+    final PomodoroPlan plan = planPomodoroWindow(
+      totalWindowMinutes: total,
       focusMinutes: focusMinutes,
       breakMinutes: breakMinutes,
     );
