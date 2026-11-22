@@ -53,11 +53,18 @@ abstract interface class StudyHubRepository {
     int lookbackDays = 7,
   });
 
-  /// Moves [tasks] to [toDay] as automatic sessions placed after everything
-  /// already planned there. Returns how many were moved.
+  /// Moves [tasks] to [toDay].
+  ///
+  /// Timed sessions keep their original clock times on a future day. When the
+  /// target is today, missed sessions are rescheduled from the current time
+  /// instead of being placed back at their old (already passed) times.
+  /// Breaks directly attached to moved sessions are moved with them.
+  /// Untimed sessions are placed in the next available slot. Returns the
+  /// number of study sessions moved (breaks are not counted).
   Future<int> moveSessionsToDay({
     required List<StudyTask> tasks,
     required String toDay,
+    int? nowMinute,
   });
 
   /// Creates a weekly repeating session in one atomic step.
