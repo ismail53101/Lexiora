@@ -210,20 +210,29 @@ class _ExportBackupPageState extends ConsumerState<ExportBackupPage> {
   Future<void> _importBackupFile() async {
     if (_busy) return;
     try {
-      // Do not filter by extension here. Android's document picker can
-      // hide valid backups when the filename/extension was changed by a
-      // browser, file manager, or sharing app. The backup service validates
-      // the actual JSON payload before importing it.
+      // Study Planner backups are JSON files. Keep CSV/PDF/XLSX exports
+      // out of this picker so an export cannot be mistaken for a backup.
       final PlatformFile? picked = await FilePicker.pickFile(
-        type: FileType.any,
+        type: FileType.custom,
+        allowedExtensions: <String>['json'],
       );
       if (picked == null) return;
+      if (!picked.name.toLowerCase().endsWith('.json')) {
+        if (mounted) {
+          ScaffoldMessenger.of(context).showSnackBar(
+            const SnackBar(
+              content: Text('Please select a DarsNexa backup (.json) file.'),
+            ),
+          );
+        }
+        return;
+      }
       if (!mounted) return;
 
       final bool ok = await showDialog<bool>(
             context: context,
             builder: (BuildContext context) => AlertDialog(
-              title: const Text('Import backup?'),
+              title: const Text('Import DarsNexa backup?'),
               content: Text(
                 'This will replace the current Study Planner data with '
                 '"${picked.name}". This cannot be undone.',
