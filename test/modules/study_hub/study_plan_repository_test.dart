@@ -180,6 +180,29 @@ void main() {
       expect(await r.missedSessions(today: today, nowMinute: 12 * h), isEmpty);
     });
 
+    test('moving missed sessions to today starts from now and keeps linked breaks', () async {
+      final StudyHubRepositoryImpl r = await repo();
+      await r.saveTask(task('m1', '2026-03-09', 'English', start: 9 * h, end: 9 * h + 50));
+      await r.saveTask(task('b1', '2026-03-09', '', start: 9 * h + 50, end: 10 * h, isBreak: true));
+      await r.saveTask(task('m2', '2026-03-09', 'Newspaper', start: 10 * h, end: 10 * h + 50));
+      await r.saveTask(task('b2', '2026-03-09', '', start: 10 * h + 50, end: 11 * h, isBreak: true));
+
+      final List<StudyTask> missed =
+          await r.missedSessions(today: today, nowMinute: 11 * h + 11);
+      expect(await r.moveSessionsToDay(
+        tasks: missed,
+        toDay: today,
+        nowMinute: 11 * h + 11,
+      ), 2);
+
+      expect((await dayRows(r, today)).map(line).toList(), <String>[
+        'S English 671-721',
+        'B Break 721-731',
+        'S Newspaper 731-781',
+        'B Break 781-791',
+      ]);
+    });
+
     test('untimed sessions get the default duration; breaks and same-day items are skipped', () async {
       final StudyHubRepositoryImpl r = await repo();
       await r.saveTask(task('u', '2026-03-09', 'Maths'));
