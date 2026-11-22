@@ -511,8 +511,6 @@ class StudyHubRepositoryImpl implements StudyHubRepository {
       template: template,
       days: days,
       breakMinutes: pause,
-      splitFocusMinutes: splitFocusMinutes,
-      splitBreakMinutes: splitBreakMinutes,
     );
     var finalTasks = built.tasks;
     var finalMapping = built.mapping;
