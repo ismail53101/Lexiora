@@ -261,7 +261,7 @@ class StudyBackupService {
     // Study Planner CSV exports use the display format produced by
     // formatMinuteOfDay(), e.g. "9:00 AM" or "2:30 PM". Accept 24-hour
     // "HH:mm" as well so externally edited CSV files remain importable.
-    final RegExp match = RegExp(
+    final RegExpMatch? match = RegExp(
       r'^(\d{1,2}):(\d{2})(?:\s*(AM|PM))?$',
       caseSensitive: false,
     ).firstMatch(v);
