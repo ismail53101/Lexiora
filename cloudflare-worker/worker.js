@@ -846,7 +846,7 @@ async function fetchDawnOpinionPage(source, env) {
     const html = await response.text();
     const stories = [];
     const seen = new Set();
-    const linkPattern = /<a\\b[^>]*href=["'](\\/news\\/[^"']+)["'][^>]*>([\\s\\S]*?)<\\/a>/gi;
+    const linkPattern = /<a\b[^>]*href=["'](\/news\/[^"']+)["'][^>]*>([\s\S]*?)<\/a>/gi;
 
     for (const match of html.matchAll(linkPattern)) {
       const url = decodeXml(match[1]);
