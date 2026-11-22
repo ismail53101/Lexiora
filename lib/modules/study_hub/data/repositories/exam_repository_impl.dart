@@ -196,12 +196,75 @@ class ExamRepositoryImpl implements ExamRepository {
 
   @override
   Future<void> setTopicDone(String id, bool done) async {
+    final List<SqlRow> rows = await _sql.select(
+      'SELECT subject_key, title, title_key FROM sp_topics WHERE id = ?',
+      <Object?>[id],
+    );
+    if (rows.isEmpty) return;
+
+    final SqlRow topicRow = rows.first;
+    final String subjectKey = _s(topicRow, 'subject_key');
+    final String titleKey = _s(topicRow, 'title_key');
+
     await _sql.execute(
       'UPDATE sp_topics SET done = ?, completed_at = ? WHERE id = ?',
       <Object?>[done ? 1 : 0, done ? _unix(_now()) : null, id],
     );
+
+    // A repeating session is a subject slot, not a command to repeat the
+    // same topic forever. The selected topic stays active until the user
+    // explicitly checks it off in the syllabus. Only then do future
+    // occurrences advance to the next unfinished syllabus topic.
+    //
+    // We deliberately do NOT advance when a planner session itself is
+    // completed: a 50-minute session does not prove that a whole topic is
+    // finished, and a difficult topic may legitimately take several sessions.
+    if (done) {
+      final List<SqlRow> next = await _sql.select(
+        'SELECT title FROM sp_topics '
+        'WHERE subject_key = ? AND done = 0 '
+        'ORDER BY sort_order, created_at, id LIMIT 1',
+        <Object?>[subjectKey],
+      );
+      if (next.isNotEmpty) {
+        final String nextTitle = _s(next.first, 'title');
+        final int now = _unix(_now());
+        final String today = _dayKey(_now());
+
+        // Occurrences are materialized ahead of time, so advance every
+        // pending future occurrence carrying the completed topic. Past
+        // history remains unchanged.
+        await _sql.execute(
+          'UPDATE study_tasks SET topic = ?, updated_at = ? '
+          'WHERE id IN ('
+          '  SELECT m.task_id '
+          '  FROM sp_series_tasks m '
+          '  JOIN study_tasks t ON t.id = m.task_id '
+          '  WHERE t.day >= ? AND t.completed = 0 '
+          '    AND LOWER(TRIM(COALESCE(t.topic, \'\'))) = ? '
+          '    AND LOWER(TRIM(COALESCE(t.subject, t.title))) = ?'
+          ')',
+          <Object?>[nextTitle, now, today, titleKey, subjectKey],
+        );
+
+        // Keep series metadata in sync so the repeating-sessions screen
+        // describes the topic that will be studied next.
+        await _sql.execute(
+          'UPDATE sp_series SET topic = ? '
+          'WHERE LOWER(TRIM(subject)) = ? '
+          'AND LOWER(TRIM(COALESCE(topic, \'\'))) = ?',
+          <Object?>[nextTitle, subjectKey, titleKey],
+        );
+      }
+    }
+
     _notify();
   }
+
+  static String _dayKey(DateTime d) =>
+      d.year.toString().padLeft(4, '0') + '-' +
+      d.month.toString().padLeft(2, '0') + '-' +
+      d.day.toString().padLeft(2, '0');
 
   @override
   Future<void> renameTopic(String id, String title) async {
