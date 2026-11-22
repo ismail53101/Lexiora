@@ -89,6 +89,52 @@ class StudyBackupService {
     await repo.importBackup(data);
   }
 
+  /// Restores a backup selected outside the app.
+  ///
+  /// The payload is validated before any database rows are replaced.
+  Future<void> restoreBytes(
+    StudyHubRepository repo,
+    List<int> bytes,
+  ) async {
+    final dynamic decoded = jsonDecode(utf8.decode(bytes));
+    if (decoded is! Map) {
+      throw const FormatException('The selected file is not a valid backup.');
+    }
+    final Map<String, dynamic> data = decoded.cast<String, dynamic>();
+    final String type = data['type']?.toString() ?? '';
+    final String app = data['app']?.toString().toLowerCase() ?? '';
+    final int? version = data['version'] is int
+        ? data['version'] as int
+        : int.tryParse(data['version']?.toString() ?? '');
+
+    if (type != 'study_hub_backup') {
+      throw const FormatException(
+        'This file is not a DarsNexa Study Planner backup.',
+      );
+    }
+    if (app.isNotEmpty && app != 'sapiora' && app != 'darsnexa') {
+      throw const FormatException('This backup belongs to another app.');
+    }
+    if (version != 1) {
+      throw const FormatException('This backup version is not supported.');
+    }
+
+    const List<String> requiredLists = <String>[
+      'tasks',
+      'logs',
+      'templates',
+      'templateItems',
+      'subjects',
+    ];
+    for (final String key in requiredLists) {
+      if (data[key] is! List) {
+        throw FormatException('Backup is missing "$key".');
+      }
+    }
+
+    await repo.importBackup(data);
+  }
+
   Future<void> deleteBackup(String path) async {
     final File f = File(path);
     if (f.existsSync()) await f.delete();
