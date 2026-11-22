@@ -210,9 +210,12 @@ class _ExportBackupPageState extends ConsumerState<ExportBackupPage> {
   Future<void> _importBackupFile() async {
     if (_busy) return;
     try {
+      // Do not filter by extension here. Android's document picker can
+      // hide valid backups when the filename/extension was changed by a
+      // browser, file manager, or sharing app. The backup service validates
+      // the actual JSON payload before importing it.
       final PlatformFile? picked = await FilePicker.pickFile(
-        type: FileType.custom,
-        allowedExtensions: <String>['json'],
+        type: FileType.any,
       );
       if (picked == null) return;
       if (!mounted) return;
