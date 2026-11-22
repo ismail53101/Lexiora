@@ -511,6 +511,8 @@ class StudyHubRepositoryImpl implements StudyHubRepository {
       template: template,
       days: days,
       breakMinutes: pause,
+      splitFocusMinutes: splitFocusMinutes,
+      splitBreakMinutes: splitBreakMinutes,
     );
     var finalTasks = built.tasks;
     var finalMapping = built.mapping;
@@ -530,7 +532,6 @@ class StudyHubRepositoryImpl implements StudyHubRepository {
       ];
       for (final String day in days) {
         final String sessionId = '$seriesId:$day';
-        final String breakId = '$seriesId:$day:b';
         final StudyTask? session = built.tasks.cast<StudyTask?>().firstWhere(
           (StudyTask? t) => t?.id == sessionId,
           orElse: () => null,
