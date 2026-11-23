@@ -2,8 +2,11 @@ import 'dart:async';
 import 'dart:io';
 
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:go_router/go_router.dart';
 import 'package:lexiora/app/di/injector.dart';
+import 'package:lexiora/app/router/app_routes.dart';
 import 'package:lexiora/core/models/normalized_rect.dart';
 import 'package:lexiora/core/reader_engine/pdf_engine.dart';
 import 'package:lexiora/core/reader_engine/pdf_reader_controller.dart';
@@ -423,8 +426,13 @@ class _ReaderPageState extends ConsumerState<ReaderPage> {
   @override
   Widget build(BuildContext context) {
     if (_document == null && _error == null) {
-      return const Scaffold(
-        body: SizedBox.expand(),
+      return Scaffold(
+        appBar: AppBar(
+          title: const Text('Opening PDF…'),
+        ),
+        body: const Center(
+          child: CircularProgressIndicator(),
+        ),
       );
     }
 
@@ -461,6 +469,21 @@ class _ReaderPageState extends ConsumerState<ReaderPage> {
 
     return Scaffold(
       appBar: AppBar(
+        leading: IconButton(
+          icon: const Icon(Icons.arrow_back),
+          tooltip: 'Back',
+          onPressed: () {
+            final GoRouter router = GoRouter.of(context);
+            if (router.canPop()) {
+              router.pop();
+            } else {
+              // The reader can also be reached directly from an external
+              // PDF intent. In that case there is no reader route to pop;
+              // return to Library instead of closing the app.
+              router.go(AppRoutes.library);
+            }
+          },
+        ),
         title: Text(_document!.title, overflow: TextOverflow.ellipsis),
         actions: [
           IconButton(

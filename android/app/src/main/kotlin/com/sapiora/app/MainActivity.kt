@@ -70,12 +70,29 @@ class MainActivity : FlutterActivity() {
     private var pendingIncomingPdf: Map<String, Any?>? = null
     private var dartChannelReady = false
 
+    // External PDF intents carry a content:// URI. FlutterActivity can
+    // expose that URI as the engine's initial route; GoRouter would then show
+    // its "Page Not Found" screen before our normal PDF-import flow handles it.
+    // Keep navigation rooted in the app; processIncomingIntent() handles the
+    // actual PDF separately.
+    override fun getInitialRoute(): String {
+        return "/splash"
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
+        // Keep external PDF URIs out of Flutter's navigation layer. Otherwise
+        // GoRouter can interpret content://... as an initial route and render
+        // "Page Not Found" before the PDF import is handled.
+        val incomingIntent = intent
+        if (isExternalPdfIntent(incomingIntent)) {
+            setIntent(Intent(this, MainActivity::class.java))
+        }
+
         super.onCreate(savedInstanceState)
 
         // Do not block the first Flutter/Home frame with system permission
         // dialogs. Dart starts this flow after Home has rendered once.
-        processIncomingIntent(intent)
+        processIncomingIntent(incomingIntent)
     }
 
     private fun requestNotificationPermissionOnFreshInstall() {
@@ -183,9 +200,16 @@ class MainActivity : FlutterActivity() {
     }
 
     override fun onNewIntent(intent: Intent) {
-        super.onNewIntent(intent)
-        setIntent(intent)
-        processIncomingIntent(intent)
+        // Never hand the content:// URI to FlutterActivity/GoRouter.
+        // Keep the current app route intact and process the PDF ourselves.
+        val incomingIntent = intent
+        if (isExternalPdfIntent(incomingIntent)) {
+            setIntent(Intent(this, MainActivity::class.java))
+        } else {
+            setIntent(incomingIntent)
+        }
+        super.onNewIntent(this.intent)
+        processIncomingIntent(incomingIntent)
     }
 
     override fun configureFlutterEngine(flutterEngine: FlutterEngine) {
@@ -273,6 +297,24 @@ class MainActivity : FlutterActivity() {
                     else -> result.notImplemented()
                 }
             }
+    }
+
+    private fun isExternalPdfIntent(incoming: Intent?): Boolean {
+        if (incoming == null) return false
+        val action = incoming.action
+        if (action != Intent.ACTION_VIEW && action != Intent.ACTION_SEND) return false
+        val uri = incoming.data
+            ?: if (action == Intent.ACTION_SEND) {
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+                    incoming.getParcelableExtra(Intent.EXTRA_STREAM, Uri::class.java)
+                } else {
+                    @Suppress("DEPRECATION")
+                    incoming.getParcelableExtra(Intent.EXTRA_STREAM)
+                }
+            } else null
+        val mime = incoming.type
+        return mime == "application/pdf" ||
+            (uri?.toString()?.lowercase()?.endsWith(".pdf") == true)
     }
 
     /** Copies an incoming content URI immediately, then notifies Dart with a

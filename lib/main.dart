@@ -282,7 +282,14 @@ Future<void> _openIncomingPdf(GoRouter router, DeviceFile file) async {
         'Incoming PDF could not be imported: ${failure.message}',
       ),
       (document) {
-        if (document != null) router.go(AppRoutes.reader(document.id));
+        if (document == null) return;
+        // External PDF opens must sit on top of Library so the reader's Back
+        // action returns to the user's Documents list instead of exiting the
+        // app. router.go() replaces the current route and breaks that stack.
+        router.go(AppRoutes.library);
+        WidgetsBinding.instance.addPostFrameCallback((_) {
+          unawaited(router.push(AppRoutes.reader(document.id)));
+        });
       },
     );
   } on Object catch (error, stack) {
