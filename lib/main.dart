@@ -288,9 +288,7 @@ Future<void> _openIncomingPdf(GoRouter router, DeviceFile file) async {
         // app. router.go() replaces the current route and breaks that stack.
         router.go(AppRoutes.library);
         WidgetsBinding.instance.addPostFrameCallback((_) {
-          if (router.mounted) {
-            unawaited(router.push(AppRoutes.reader(document.id)));
-          }
+          unawaited(router.push(AppRoutes.reader(document.id)));
         });
       },
     );
