@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:lexiora/modules/study_hub/domain/pomodoro_state.dart';
 import 'package:lexiora/modules/study_hub/presentation/providers/manual_timer_controller.dart';
 import 'package:lexiora/modules/study_hub/presentation/providers/pomodoro_controller.dart';
 import 'package:lexiora/modules/study_hub/presentation/providers/study_hub_providers.dart';
@@ -12,11 +13,37 @@ import 'package:lexiora/modules/study_hub/presentation/widgets/study_timer_card.
 /// cards (same providers and behaviour as before), so every feature stays
 /// reachable while the planner home stays focused on the Daily / Weekly /
 /// Monthly views from the planner mockups.
-class PlannerTimerPage extends ConsumerWidget {
+class PlannerTimerPage extends ConsumerStatefulWidget {
   const PlannerTimerPage({super.key});
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
+  ConsumerState<PlannerTimerPage> createState() => _PlannerTimerPageState();
+}
+
+class _PlannerTimerPageState extends ConsumerState<PlannerTimerPage> {
+  bool _plannedTimerConfigured = false;
+
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    if (_plannedTimerConfigured) return;
+
+    final int? minutes = ref.read(activeStudyContextProvider).durationMinutes;
+    if (minutes != null && minutes > 0) {
+      _plannedTimerConfigured = true;
+      WidgetsBinding.instance.addPostFrameCallback((_) {
+        if (!mounted) return;
+        ref.read(pomodoroProvider.notifier).setMode(
+              PomodoroMode('$minutes / 0', minutes, 0),
+            );
+      });
+    } else {
+      _plannedTimerConfigured = true;
+    }
+  }
+
+  @override
+  Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: const Text('Study Timer')),
       body: PopScope(

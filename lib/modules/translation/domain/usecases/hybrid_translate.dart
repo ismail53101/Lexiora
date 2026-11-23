@@ -6,6 +6,7 @@ import 'package:lexiora/core/utils/typedefs.dart';
 import 'package:lexiora/modules/dictionary/domain/repositories/dictionary_repository.dart';
 import 'package:lexiora/modules/dictionary/data/services/ai_dictionary_cache.dart';
 import 'package:lexiora/modules/dictionary/data/services/ai_dictionary_service.dart';
+import 'package:lexiora/modules/dictionary/domain/entities/dictionary_entry.dart';
 import 'package:lexiora/modules/dictionary/domain/entities/word_profile.dart';
 import 'package:lexiora/modules/translation/data/services/word_meaning_service.dart';
 import 'package:lexiora/modules/translation/domain/entities/translation.dart';
@@ -111,53 +112,94 @@ class HybridTranslate
         }
 
         // 2) AI dictionary fallback for a single English word -> Urdu.
-        // This is the SAME dictionary AI used by the Dictionary screen,
-        // rather than the older one-field translation service. It produces
-        // precise English + Urdu data and the profile is persisted so repeated
-        // PDF lookups consume zero additional AI requests.
+        // Offline words are NEVER sent for a complete AI profile. If the word
+        // exists locally but lacks Urdu, AI is asked for Urdu only. If the word
+        // does not exist locally at all, AI can provide the lightweight full
+        // fallback profile.
         if (_aiDictionary != null &&
             _aiCache != null &&
             _isSingleWord(word) &&
             lang.toLowerCase() == 'ur') {
-          final AiWordProfile? cached = await _aiCache.get(word);
-          final AiWordProfile? profile = cached ??
-              await _aiDictionary.define(
-                word,
-                missingFields: const <String>[
-                  'englishDefinition',
-                  'urduMeanings',
-                  'partOfSpeech',
-                  'synonyms',
-                  'antonyms',
-                  'exampleSentence',
-                  'exampleSentenceUrdu',
-                  'collocations',
-                  'wordForms',
-                  'examNote',
-                ],
-              );
+          final String wl = word.toLowerCase();
+          final WordDetails? base = await _dictionary.wordDetails(wl);
+          final bool existsOffline =
+              base != null || await _dictionary.examData(wl) != null;
 
-          if (profile != null &&
-              profile.urduMeanings.isNotEmpty &&
-              profile.urduMeanings.first.trim().isNotEmpty) {
-            if (cached == null) {
-              await _aiCache.put(profile);
+          final AiWordProfile? cached = await _aiCache.get(wl);
+
+          if (existsOffline) {
+            if (cached != null && cached.urduMeanings.isNotEmpty) {
+              final String aiUrdu = cached.urduMeanings.join('، ');
+              return TranslationOutcome.ai(
+                Translation(
+                  word: word,
+                  languageCode: lang,
+                  text: aiUrdu,
+                  source: TranslationSource.ai,
+                ),
+              );
             }
-            final String aiUrdu = profile.urduMeanings.join('، ');
-            await _repo.cacheTranslation(
-              word: word,
-              languageCode: lang,
-              translation: aiUrdu,
-              source: 'ai',
+
+            final AiWordProfile? profile = await _aiDictionary.define(
+              word,
+              missingFields: const <String>['urduMeanings'],
             );
-            return TranslationOutcome.ai(
-              Translation(
+            if (profile != null && profile.urduMeanings.isNotEmpty) {
+              final AiWordProfile urduOnly = AiWordProfile(
+                word: profile.word,
+                source: 'ai',
+                urduMeanings: profile.urduMeanings,
+              );
+              await _aiCache.put(urduOnly);
+              final String aiUrdu = profile.urduMeanings.join('، ');
+              await _repo.cacheTranslation(
                 word: word,
                 languageCode: lang,
-                text: aiUrdu,
-                source: TranslationSource.ai,
-              ),
-            );
+                translation: aiUrdu,
+                source: 'ai',
+              );
+              return TranslationOutcome.ai(
+                Translation(
+                  word: word,
+                  languageCode: lang,
+                  text: aiUrdu,
+                  source: TranslationSource.ai,
+                ),
+              );
+            }
+          } else {
+            final AiWordProfile? profile = cached ??
+                await _aiDictionary.define(
+                  word,
+                  missingFields: const <String>[
+                    'englishDefinition',
+                    'urduMeanings',
+                    'synonyms',
+                    'antonyms',
+                    'exampleSentence',
+                    'exampleSentenceUrdu',
+                  ],
+                );
+
+            if (profile != null &&
+                profile.urduMeanings.isNotEmpty) {
+              if (cached == null) await _aiCache.put(profile);
+              final String aiUrdu = profile.urduMeanings.join('، ');
+              await _repo.cacheTranslation(
+                word: word,
+                languageCode: lang,
+                translation: aiUrdu,
+                source: 'ai',
+              );
+              return TranslationOutcome.ai(
+                Translation(
+                  word: word,
+                  languageCode: lang,
+                  text: aiUrdu,
+                  source: TranslationSource.ai,
+                ),
+              );
+            }
           }
         }
 

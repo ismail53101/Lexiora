@@ -70,6 +70,79 @@ class StudyHubLocalDataSource {
     });
   }
 
+  /// The most recent day each subject was studied (a completed session),
+  /// keyed by lower-cased subject name.
+  Future<Map<String, String>> lastStudiedDays() async {
+    final List<QueryRow> rows = await _db.customSelect(
+      'SELECT LOWER(TRIM(COALESCE(subject, title))) AS k, MAX(day) AS d '
+      "FROM study_tasks WHERE kind = 'session' AND (completed = 1 OR status = 2) "
+      'GROUP BY k',
+    ).get();
+    return <String, String>{
+      for (final QueryRow r in rows)
+        if ((r.data['k'] as String?)?.isNotEmpty ?? false)
+          r.data['k']! as String: r.data['d']! as String,
+    };
+  }
+
+  /// Applies several writes as ONE transaction: either everything is saved or
+  /// nothing is (used when a session and its break are saved together).
+  ///
+  /// [statements] are extra raw SQL statements (for the planner's own sidecar
+  /// tables) that run inside the same transaction.
+  Future<void> applyChanges({
+    required List<StudyTasksCompanion> upserts,
+    List<String> deleteIds = const <String>[],
+    List<({String sql, List<Object?> args})> statements =
+        const <({String sql, List<Object?> args})>[],
+  }) {
+    return _db.transaction(() async {
+      for (final String id in deleteIds) {
+        await (_db.delete(_db.studyTasks)..where((t) => t.id.equals(id))).go();
+      }
+      if (upserts.isNotEmpty) {
+        await _db.batch((Batch b) {
+          for (final StudyTasksCompanion task in upserts) {
+            b.insert(_db.studyTasks, task, mode: InsertMode.insertOrReplace);
+          }
+        });
+      }
+      for (final ({String sql, List<Object?> args}) s in statements) {
+        await _db.customStatement(s.sql, s.args);
+      }
+    });
+  }
+
+  static Variable<Object> _variable(Object? v) {
+    if (v == null) return const Variable<Object>(null);
+    if (v is bool) return Variable<Object>(v ? 1 : 0);
+    if (v is int || v is double) return Variable<Object>(v);
+    return Variable<Object>(v.toString());
+  }
+
+  /// Runs a read-only raw query (for the planner's sidecar tables).
+  Future<List<Map<String, Object?>>> rawSelect(String sql,
+      [List<Object?> args = const <Object?>[]]) async {
+    final List<QueryRow> rows = await _db
+        .customSelect(sql, variables: args.map(_variable).toList())
+        .get();
+    return rows.map((QueryRow r) => r.data).toList();
+  }
+
+  /// Like [rawSelect], but re-emits whenever `study_tasks` changes.
+  Stream<List<Map<String, Object?>>> watchRawOnTasks(String sql,
+      [List<Object?> args = const <Object?>[]]) {
+    return _db
+        .customSelect(
+          sql,
+          variables: args.map(_variable).toList(),
+          readsFrom: <TableInfo<Table, dynamic>>{_db.studyTasks},
+        )
+        .watch()
+        .map((List<QueryRow> rows) =>
+            rows.map((QueryRow r) => r.data).toList());
+  }
+
   Future<void> deleteTask(String id) =>
       (_db.delete(_db.studyTasks)..where((t) => t.id.equals(id))).go();
 

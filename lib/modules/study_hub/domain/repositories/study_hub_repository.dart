@@ -3,6 +3,8 @@ import 'package:lexiora/modules/study_hub/domain/entities/study_models.dart';
 import 'package:lexiora/modules/study_hub/domain/entities/study_subject.dart';
 import 'package:lexiora/modules/study_hub/domain/entities/study_task.dart';
 import 'package:lexiora/modules/study_hub/domain/entities/study_template.dart';
+import 'package:lexiora/modules/study_hub/domain/recurrence/recurrence.dart';
+import 'package:lexiora/modules/study_hub/domain/recurrence/repeat_series.dart';
 
 /// Domain contract for the Study Hub. The presentation layer depends only on
 /// this interface. All data is local; the implementation is structured so a
@@ -16,6 +18,107 @@ abstract interface class StudyHubRepository {
 
   Future<void> saveTask(StudyTask task); // insert or update (session or break)
   Future<void> deleteTask(String id);
+
+  /// Splits [session] into Pomodoro-style focus blocks with [breakMinutes]
+  /// breaks between them and saves everything in one atomic step.
+  ///
+  /// `session.durationMinutes` is the total FOCUS time. The blocks start at
+  /// `session.startMinute` (manual) or right after the previous item of the
+  /// day (when `session.autoScheduled`). Block ids derive from `session.id`,
+  /// so saving again replaces the previous blocks instead of duplicating.
+  /// Throws [StudyScheduleInvalidTimeException] / [StudyScheduleOverlapException]
+  /// and saves nothing in that case. Returns every saved row in time order.
+  Future<List<StudyTask>> saveSessionAsBlocks({
+    required StudyTask session,
+    required int focusMinutes,
+    required int breakMinutes,
+  });
+
+  /// Saves the sessions and breaks of a generated day plan in one atomic step.
+  /// Items keep their ids, so saving the same plan twice never duplicates.
+  /// Throws [StudyScheduleInvalidTimeException] / [StudyScheduleOverlapException]
+  /// and saves nothing in that case.
+  Future<int> saveGeneratedPlan({
+    required String day,
+    required List<StudyTask> items,
+  });
+
+  /// The last day each subject was studied (lower-cased name → `yyyy-MM-dd`).
+  Future<Map<String, String>> lastStudiedDays();
+
+  /// Sessions from the last [lookbackDays] days (including [today]) that were
+  /// not completed and whose time has passed.
+  Future<List<StudyTask>> missedSessions({
+    required String today,
+    required int nowMinute,
+    int lookbackDays = 7,
+  });
+
+  /// Moves [tasks] to [toDay].
+  ///
+  /// When [nowMinute] is supplied (used when moving missed work into today),
+  /// timed sessions and their linked breaks are rebased from that minute while
+  /// preserving their original order and durations. When omitted, timed
+  /// sessions keep their original clock time; untimed sessions are placed in
+  /// the next available slot.
+  Future<int> moveSessionsToDay({
+    required List<StudyTask> tasks,
+    required String toDay,
+    int? nowMinute,
+  });
+
+  /// Creates a weekly repeating session in one atomic step.
+  ///
+  /// [template] carries the subject/topic/notes/priority and the fixed time
+  /// (`startMinute`/`endMinute`). One session (and, when [breakMinutes] > 0, one
+  /// break) is created for every matching date from [startDay] to [untilDay].
+  /// Dates where the time is already taken are skipped and reported, not
+  /// treated as an error. Ids derive from [seriesId], so saving again with the
+  /// same id never duplicates.
+  ///
+  /// [topicMode] decides each session's topic: the same one for all, the next
+  /// unfinished topic of the subject's syllabus for each (days that are
+  /// skipped do not use up a topic), or only the first session.
+  Future<RepeatSaveResult> createRepeatingSessions({
+    required String seriesId,
+    required StudyTask template,
+    required Set<int> weekdays,
+    required String startDay,
+    required String untilDay,
+    int? breakMinutes,
+    int? splitFocusMinutes,
+    int? splitBreakMinutes,
+    RepeatTopicMode topicMode = RepeatTopicMode.same,
+  });
+
+  /// All repeating series with their upcoming occurrences, from [today].
+  Stream<List<RepeatSeries>> watchSeries({required String today});
+
+  /// Adds [weeks] more weeks of occurrences after the series' last day (or
+  /// from [today] when it has already finished).
+  Future<RepeatSaveResult> extendSeries({
+    required String seriesId,
+    required int weeks,
+    required String today,
+  });
+
+  /// Ends a series: deletes its sessions (and breaks) from [fromDay] onwards
+  /// that are not completed. Earlier and completed ones stay. Returns how many
+  /// sessions were removed.
+  Future<int> endSeries({required String seriesId, required String fromDay});
+
+  /// Saves a session AND the break attached to its end in one atomic step.
+  ///
+  /// [breakMinutes] null (or 0) means "no break": a previously linked break
+  /// with [breakId] is removed. Throws [StudyScheduleInvalidTimeException] or
+  /// [StudyScheduleOverlapException] — in which case NOTHING is saved.
+  /// Saving again with the same ids updates the same rows (never duplicates).
+  /// Returns the session as stored (with its final start/end).
+  Future<StudyTask> saveSessionWithBreak({
+    required StudyTask session,
+    required String breakId,
+    int? breakMinutes,
+  });
   Future<void> setTaskCompleted(String id, {required bool completed});
   Future<void> setTaskStatus(String id, TaskStatus status);
 

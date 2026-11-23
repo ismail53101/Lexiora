@@ -1,3 +1,4 @@
+import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:lexiora/modules/study_hub/data/services/study_backup_service.dart';
@@ -173,7 +174,12 @@ class _ExportBackupPageState extends ConsumerState<ExportBackupPage> {
                     OutlinedButton.icon(
                       onPressed: _busy ? null : _restore,
                       icon: const Icon(Icons.restore),
-                      label: const Text('Restore backup'),
+                      label: const Text('Restore local'),
+                    ),
+                    OutlinedButton.icon(
+                      onPressed: _busy ? null : _importBackupFile,
+                      icon: const Icon(Icons.file_open_outlined),
+                      label: const Text('Import backup'),
                     ),
                   ],
                 ),
@@ -201,6 +207,168 @@ class _ExportBackupPageState extends ConsumerState<ExportBackupPage> {
     }
   }
 
+  Future<void> _importBackupFile() async {
+    if (_busy) return;
+    try {
+      final PlatformFile? picked = await FilePicker.pickFile(
+        type: FileType.any,
+      );
+      if (picked == null || !mounted) return;
+
+      final String lower = picked.name.toLowerCase();
+      final bool isJson = lower.endsWith('.json');
+      final bool isCsv = lower.endsWith('.csv');
+      if (!isJson && !isCsv) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(
+            content: Text(
+              'This file type can be exported, but CSV and DarsNexa JSON '
+              'are the supported import formats.',
+            ),
+          ),
+        );
+        return;
+      }
+
+      final List<int> bytes = await picked.readAsBytes();
+      final StudyBackupService service = ref.read(studyBackupServiceProvider);
+      String? csvTargetDay;
+
+      if (isCsv) {
+        final Set<String> dates = service.csvDates(bytes);
+        final String today = todayKey();
+
+        // A single-day CSV exported for today is the common "reuse my plan"
+        // case. Never silently put it back on today after some of its times
+        // have already passed: let the user choose Today or Tomorrow.
+        if (dates.length == 1) {
+          final String? chosenDay = await showDialog<String>(
+            context: context,
+            builder: (BuildContext context) {
+              final DateTime now = DateTime.now();
+              final String tomorrow =
+                  dayKey(DateTime(now.year, now.month, now.day + 1));
+              return AlertDialog(
+                title: const Text('Import today’s plan?'),
+                content: Text(
+                  '“${picked.name}” contains today’s study sessions. '
+                  'If you choose Today, past times move to the current time and breaks are kept. Tomorrow keeps the original times. Choose where to add '
+                  'this plan.',
+                ),
+                actions: <Widget>[
+                  TextButton(
+                    onPressed: () => Navigator.of(context).pop(),
+                    child: const Text('Cancel'),
+                  ),
+                  TextButton(
+                    onPressed: () => Navigator.of(context).pop(today),
+                    child: const Text('Today'),
+                  ),
+                  FilledButton(
+                    onPressed: () => Navigator.of(context).pop(tomorrow),
+                    child: const Text('Tomorrow'),
+                  ),
+                ],
+              );
+            },
+          );
+          if (chosenDay == null || !mounted) return;
+          csvTargetDay = chosenDay;
+        } else {
+          final bool ok = await showDialog<bool>(
+                context: context,
+                builder: (BuildContext context) => AlertDialog(
+                  title: const Text('Import CSV?'),
+                  content: Text(
+                    'This will add the sessions from "${picked.name}" to your '
+                    'current Study Planner. Existing data will not be deleted.',
+                  ),
+                  actions: <Widget>[
+                    TextButton(
+                      onPressed: () => Navigator.of(context).pop(false),
+                      child: const Text('Cancel'),
+                    ),
+                    FilledButton(
+                      onPressed: () => Navigator.of(context).pop(true),
+                      child: const Text('Import'),
+                    ),
+                  ],
+                ),
+              ) ??
+              false;
+          if (!ok || !mounted) return;
+        }
+      } else {
+        final bool ok = await showDialog<bool>(
+              context: context,
+              builder: (BuildContext context) => AlertDialog(
+                title: const Text('Import DarsNexa backup?'),
+                content: Text(
+                  'This will replace the current Study Planner data with '
+                  '"${picked.name}". This cannot be undone.',
+                ),
+                actions: <Widget>[
+                  TextButton(
+                    onPressed: () => Navigator.of(context).pop(false),
+                    child: const Text('Cancel'),
+                  ),
+                  FilledButton(
+                    onPressed: () => Navigator.of(context).pop(true),
+                    child: const Text('Import'),
+                  ),
+                ],
+              ),
+            ) ??
+            false;
+        if (!ok || !mounted) return;
+      }
+
+      setState(() => _busy = true);
+      if (isCsv) {
+        final int count = await service.importCsv(
+          ref.read(studyHubRepositoryProvider),
+          bytes,
+          targetDay: csvTargetDay,
+          nowMinute: DateTime.now().hour * 60 + DateTime.now().minute,
+        );
+        // Import creates today's tasks outside the normal planner flow.
+        // Refresh the missed-session calculation immediately so a plan
+        // imported after its scheduled times shows the same Today/Tomorrow
+        // move option as manually created sessions.
+        ref.invalidate(missedSessionsProvider);
+        if (mounted) {
+          final String today = todayKey();
+          final String tomorrow = dayKey(
+            DateTime.now().add(const Duration(days: 1)),
+          );
+          final String suffix = csvTargetDay == today
+              ? ' for today'
+              : csvTargetDay == tomorrow
+                  ? ' for tomorrow'
+                  : '';
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(content: Text('$count CSV rows imported$suffix')),
+          );
+        }
+      } else {
+        await service.restoreBytes(ref.read(studyHubRepositoryProvider), bytes);
+        ref.invalidate(missedSessionsProvider);
+        if (mounted) {
+          ScaffoldMessenger.of(context).showSnackBar(
+            const SnackBar(content: Text('Backup imported successfully')),
+          );
+        }
+      }
+    } on Object catch (e) {
+      if (mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text('Import failed: $e')),
+        );
+      }
+    } finally {
+      if (mounted) setState(() => _busy = false);
+    }
+  }
   Future<void> _restore() async {
     final StudyBackupService service = ref.read(studyBackupServiceProvider);
     final List<BackupFile> backups = await service.listBackups();

@@ -3,8 +3,8 @@ import 'dart:io';
 import 'package:flutter/services.dart';
 
 /// Toggles the Android "keep screen on" window flag (via the native
-/// `lexiora/platform` channel). Used by the reader so the screen doesn't dim
-/// while reading, when the user enables it in Settings.
+/// `lexiora/platform` channel). Used by the PDF reader's session-level
+/// "Keep screen awake" control.
 class ScreenWakeService {
   ScreenWakeService();
 

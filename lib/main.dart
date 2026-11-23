@@ -3,6 +3,7 @@ import 'dart:async';
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:lexiora/app/app.dart';
@@ -15,6 +16,7 @@ import 'package:lexiora/core/platform/fresh_install_guard.dart';
 import 'package:lexiora/core/services/notification_service.dart';
 import 'package:lexiora/core/services/pdf_discovery_service.dart';
 import 'package:lexiora/core/services/pdf_import_service.dart';
+import 'package:lexiora/core/services/permission_service.dart';
 import 'package:lexiora/core/services/rewarded_ad_manager.dart';
 import 'package:lexiora/core/utils/logger.dart';
 import 'package:lexiora/core/utils/result.dart';
@@ -54,30 +56,122 @@ Future<void> main() async {
         FlutterError.presentError(details);
       };
 
-      // Required because we open PdfDocuments via the engine API (reading page
-      // counts at import time) before any pdfrx widget is built.
-      await pdfrxFlutterInitialize();
-      await configureDependencies();
-      final GoRouter router = createAppRouter();
-      // Optional platform setup must not keep Flutter on the native splash
-      // screen. Notifications, permissions, and PDF intent discovery continue
-      // immediately after the first frame and report failures to the logger.
-      runApp(ProviderScope(child: SapioraApp(router: router)));
-      unawaited(_finishStartup(router));
-
-      // One-time data hygiene: if Android's auto-backup restored an old database
-      // (e.g. after an uninstall), purge the stale AI chats so Recents starts
-      // empty. Real user data on updates is protected by install markers — see
-      // [FreshInstallGuard]. Best-effort and unawaited: any failure is logged and
-      // must never block startup.
-      unawaited(
-        sl<FreshInstallGuard>().purgeStaleChatData(sl<AppDatabase>()),
-      );
+      // Render Flutter immediately. Nothing that can initialize a database,
+      // router, PDF engine, ads, notifications, or a feature module is allowed
+      // to run before the first Flutter frame.
+      runApp(const _BootstrapApp());
     },
     (Object error, StackTrace stack) {
       AppLogger.e('Uncaught zone error', error: error, stackTrace: stack);
     },
   );
+}
+
+class _BootstrapApp extends StatefulWidget {
+  const _BootstrapApp();
+
+  @override
+  State<_BootstrapApp> createState() => _BootstrapAppState();
+}
+
+class _BootstrapAppState extends State<_BootstrapApp> {
+  GoRouter? _router;
+  Object? _error;
+  StackTrace? _stack;
+
+  @override
+  void initState() {
+    super.initState();
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      unawaited(_bootstrap());
+    });
+  }
+
+  Future<void> _bootstrap() async {
+    try {
+      await configureDependencies();
+      final GoRouter router = createAppRouter();
+      if (!mounted) return;
+      setState(() => _router = router);
+
+      // These are deliberately started only after the first real Flutter
+      // frame is already on screen.
+      unawaited(_initializePdfEngine());
+      // Ask immediately on launch: notification first, then PDF/device access.
+      unawaited(_requestStartupPermissions());
+      unawaited(_finishStartup(router));
+
+      unawaited(
+        sl<FreshInstallGuard>().purgeStaleChatData(sl<AppDatabase>()),
+      );
+    } on Object catch (error, stackTrace) {
+      AppLogger.e(
+        'App bootstrap failed',
+        error: error,
+        stackTrace: stackTrace,
+      );
+      if (!mounted) return;
+      setState(() {
+        _error = error;
+        _stack = stackTrace;
+      });
+    }
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final GoRouter? router = _router;
+    if (router != null) {
+      return ProviderScope(
+        child: SapioraApp(router: router),
+      );
+    }
+
+    if (_error != null) {
+      return _FatalErrorBox(
+        details: FlutterErrorDetails(
+          exception: _error!,
+          stack: _stack,
+        ),
+      );
+    }
+
+    return const MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: Scaffold(
+        backgroundColor: Color(0xFF030A31),
+        body: Center(
+          child: CircularProgressIndicator(),
+        ),
+      ),
+    );
+  }
+}
+
+Future<void> _initializePdfEngine() async {
+  try {
+    await pdfrxFlutterInitialize();
+  } on Object catch (error, stackTrace) {
+    AppLogger.e(
+      'PDF engine initialization failed after app startup',
+      error: error,
+      stackTrace: stackTrace,
+    );
+  }
+}
+
+const MethodChannel _platformChannel = MethodChannel('lexiora/platform');
+
+Future<void> _requestStartupPermissions() async {
+  try {
+    await _platformChannel.invokeMethod<bool>('requestStartupPermissions');
+  } on Object catch (error, stackTrace) {
+    AppLogger.e(
+      'Startup permission request failed',
+      error: error,
+      stackTrace: stackTrace,
+    );
+  }
 }
 
 Future<void> _finishStartup(GoRouter router) async {
@@ -172,6 +266,13 @@ void _handleNotificationPayload(GoRouter router, String payload) {
 
 Future<void> _openIncomingPdf(GoRouter router, DeviceFile file) async {
   try {
+    // Never import/open an external PDF into DarsNexa until the user has
+    // explicitly granted the Library's PDF/storage access.
+    final PermissionService permissions = sl<PermissionService>();
+    if (!await permissions.isGrantedForDiscovery()) {
+      AppLogger.i('Ignoring incoming PDF until PDF access is granted');
+      return;
+    }
     final Result<LibraryDocument?> result = await ImportIncomingPdf(
       sl<LibraryRepository>(),
       sl(),

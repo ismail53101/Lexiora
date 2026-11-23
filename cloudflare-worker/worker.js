@@ -808,8 +808,69 @@ async function fetchNewsSource(source, env) {
       },
       signal: controller.signal,
     });
+    if (!response.ok) {
+      // Dawn's opinion RSS endpoint can be blocked or return an unusable
+      // response to some Worker egress paths. Fall back to the public Opinion
+      // page so the Opinions tab does not silently become empty.
+      if (source.id === "dawn-opinion") return fetchDawnOpinionPage(source, env);
+      return [];
+    }
+    const stories = parseFeed(await response.text(), source);
+    if (source.id === "dawn-opinion" && stories.length === 0) {
+      return fetchDawnOpinionPage(source, env);
+    }
+    return stories;
+  } catch (error) {
+    if (source.id === "dawn-opinion") {
+      console.log("[news] Dawn opinion RSS failed; using HTML fallback");
+      return fetchDawnOpinionPage(source, env);
+    }
+    return [];
+  } finally {
+    clearTimeout(timeout);
+  }
+}
+
+async function fetchDawnOpinionPage(source, env) {
+  const controller = new AbortController();
+  const timeout = setTimeout(() => controller.abort(), 10000);
+  try {
+    const response = await fetch("https://www.dawn.com/opinion", {
+      headers: {
+        Accept: "text/html,application/xhtml+xml",
+        "User-Agent": "Sapiora-Current-Affairs/1.0 (+Dawn opinion reader)",
+      },
+      signal: controller.signal,
+    });
     if (!response.ok) return [];
-    return parseFeed(await response.text(), source);
+    const html = await response.text();
+    const stories = [];
+    const seen = new Set();
+    const linkPattern = /<a\b[^>]*href=["'](\/news\/[^"']+)["'][^>]*>([\s\S]*?)<\/a>/gi;
+
+    for (const match of html.matchAll(linkPattern)) {
+      const url = decodeXml(match[1]);
+      const title = cleanText(match[2]);
+      if (!title || title.length < 4 || seen.has(url)) continue;
+      seen.add(url);
+      stories.push({
+        id: stableStoryId(url, title),
+        title,
+        source: source.name,
+        category: source.category,
+        feedType: "Opinions",
+        publishedAt: new Date().toISOString(),
+        excerpt: "",
+        imageUrl: null,
+        articleUrl: url.startsWith("http") ? url : "https://www.dawn.com" + url,
+      });
+      if (stories.length >= MAX_OPINION_STORIES_PER_CATEGORY) break;
+    }
+    console.log("[news] Dawn opinion HTML fallback returned " + stories.length + " stories");
+    return stories;
+  } catch (error) {
+    console.log("[news] Dawn opinion HTML fallback failed: " + (error.message || error));
+    return [];
   } finally {
     clearTimeout(timeout);
   }

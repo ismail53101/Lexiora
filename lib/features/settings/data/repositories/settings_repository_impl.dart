@@ -20,7 +20,6 @@ class SettingsRepositoryImpl implements SettingsRepository {
   static const String _kColorMode = 'colorMode';
   static const String _kHighlightColors = 'highlightColors';
   static const String _kDefaultHighlightColor = 'defaultHighlightColor';
-  static const String _kKeepAwake = 'keepScreenAwake';
   static const String _kAutoResume = 'autoResume';
   static const String _kTranslationLanguage = 'translationLanguage';
   static const String _kDisplayName = 'displayName';
@@ -87,7 +86,6 @@ class SettingsRepositoryImpl implements SettingsRepository {
         map[_kDefaultHighlightColor],
         AppConstants.defaultHighlightColors[0],
       ),
-      keepScreenAwake: _bool(map[_kKeepAwake], false),
       autoResume: _bool(map[_kAutoResume], true),
       translationLanguage: _language(map[_kTranslationLanguage]),
       displayName: map[_kDisplayName] ?? '',
@@ -125,7 +123,6 @@ class SettingsRepositoryImpl implements SettingsRepository {
         _kColorMode: s.readerColorMode.index.toString(),
         _kHighlightColors: s.highlightColors.join(','),
         _kDefaultHighlightColor: s.defaultHighlightColor.toString(),
-        _kKeepAwake: s.keepScreenAwake ? '1' : '0',
         _kAutoResume: s.autoResume ? '1' : '0',
         _kTranslationLanguage: s.translationLanguage,
         _kDisplayName: s.displayName,
@@ -148,9 +145,7 @@ class SettingsRepositoryImpl implements SettingsRepository {
         _kInitialPermissionFlowVersion: s.initialPermissionFlowVersion,
       };
 
-  String _language(String? v) => (v != null && isSupportedTranslationLanguage(v))
-      ? v
-      : kDefaultTranslationLanguage;
+  String _language(String? v) => kDefaultTranslationLanguage;
 
   int _int(String? v, int fallback) =>
       v == null ? fallback : (int.tryParse(v) ?? fallback);

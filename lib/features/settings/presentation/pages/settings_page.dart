@@ -151,13 +151,6 @@ class _SettingsBody extends ConsumerWidget {
           children: [
             SwitchListTile(
               contentPadding: EdgeInsets.zero,
-              title: const Text('Keep screen awake'),
-              subtitle: const Text('Stop the screen dimming while reading'),
-              value: settings.keepScreenAwake,
-              onChanged: controller.setKeepScreenAwake,
-            ),
-            SwitchListTile(
-              contentPadding: EdgeInsets.zero,
               title: const Text('Auto-resume'),
               subtitle: const Text('Reopen documents on your last read page'),
               value: settings.autoResume,
@@ -171,24 +164,14 @@ class _SettingsBody extends ConsumerWidget {
           children: [
             const _Label('Translate words into'),
             const SizedBox(height: 4),
-            DropdownButtonFormField<String>(
-              initialValue:
-                  translationLanguageByCode(settings.translationLanguage).code,
+            InputDecorator(
               decoration: const InputDecoration(
                 border: OutlineInputBorder(),
                 isDense: true,
               ),
-              items: kTranslationLanguages
-                  .map(
-                    (TranslationLanguage l) => DropdownMenuItem<String>(
-                      value: l.code,
-                      child: Text(l.label),
-                    ),
-                  )
-                  .toList(),
-              onChanged: (String? code) {
-                if (code != null) controller.setTranslationLanguage(code);
-              },
+              child: Text(
+                translationLanguageByCode(kDefaultTranslationLanguage).label,
+              ),
             ),
             const SizedBox(height: 8),
             Text(

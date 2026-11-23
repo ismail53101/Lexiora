@@ -40,11 +40,12 @@ class LibraryPage extends ConsumerStatefulWidget {
   ConsumerState<LibraryPage> createState() => _LibraryPageState();
 }
 
-class _LibraryPageState extends ConsumerState<LibraryPage> {
+class _LibraryPageState extends ConsumerState<LibraryPage> with WidgetsBindingObserver {
   String? _categoryId;
   bool _scanning = false;
   bool _importing = false;
-  bool _accessDenied = false;
+  bool _accessDenied = true;
+  bool _permissionChecking = true;
   bool _searching = false;
   String _query = '';
   LibrarySort _sort = LibrarySort.importDate;
@@ -52,13 +53,29 @@ class _LibraryPageState extends ConsumerState<LibraryPage> {
   @override
   void initState() {
     super.initState();
+    WidgetsBinding.instance.addObserver(this);
     WidgetsBinding.instance.addPostFrameCallback((_) {
-      _autoDiscover(initial: true);
+      _initializeLibrary();
       // Fire-and-forget: fills in thumbnails for documents imported before
       // the cover feature existed. Silent by design — it's a one-time
       // catch-up, not something the user needs to see happen.
       unawaited(ref.read(backfillCoversProvider).call(const NoParams()));
     });
+  }
+
+  @override
+  void dispose() {
+    WidgetsBinding.instance.removeObserver(this);
+    super.dispose();
+  }
+
+  @override
+  void didChangeAppLifecycleState(AppLifecycleState state) {
+    if (state == AppLifecycleState.resumed && mounted) {
+      // Android 11+ returns from the All Files Access Settings screen here.
+      // Re-check native permission state and scan immediately after the grant.
+      unawaited(_autoDiscover());
+    }
   }
 
   @override
@@ -145,9 +162,11 @@ class _LibraryPageState extends ConsumerState<LibraryPage> {
             orElse: () => const SizedBox.shrink(),
           ),
           Expanded(
-            child: _accessDenied
-                ? _accessState()
-                : documents.when(
+            child: _permissionChecking
+                ? const Center(child: CircularProgressIndicator())
+                : _accessDenied
+                    ? _accessState()
+                    : documents.when(
                     loading: () =>
                         const Center(child: CircularProgressIndicator()),
                     error: (Object e, _) =>
@@ -276,12 +295,10 @@ class _LibraryPageState extends ConsumerState<LibraryPage> {
     return EmptyState(
       icon: Icons.folder_off_outlined,
       title: 'Allow access to your files',
-      message: 'Sapiora lists the PDFs already on your device — nothing is '
-          'ever uploaded and everything stays on your phone. To do that it '
-          'needs the one-time “All files access” permission (the same '
-          'one Adobe Acrobat and Xodo use). Grant it once and your PDFs appear '
-          'here automatically. You can also use Import PDF to add files without '
-          'granting access.',
+      message: 'DarsNexa lists PDFs from your device only after you grant '
+          'the one-time PDF/storage access. Nothing is uploaded and your files '
+          'stay on your phone. Grant access once and your PDFs can appear here '
+          'automatically or be added with the PDF picker.',
       action: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
@@ -302,6 +319,30 @@ class _LibraryPageState extends ConsumerState<LibraryPage> {
 
   /// Ensures storage access, then scans the device and indexes any PDFs not yet
   /// in the library. Runs automatically on open and on pull-to-refresh.
+  Future<void> _initializeLibrary() async {
+    final PermissionService perm = ref.read(permissionServiceProvider);
+    final bool granted = await perm.isGrantedForDiscovery();
+    if (!mounted) return;
+
+    if (granted) {
+      // Keep the permission gate hidden while the existing grant is being
+      // verified. This prevents the "Allow access" screen from flashing
+      // every time the Library is opened.
+      setState(() {
+        _permissionChecking = false;
+        _accessDenied = false;
+      });
+      await _autoDiscover(initial: true);
+      return;
+    }
+
+    setState(() {
+      _permissionChecking = false;
+      _accessDenied = true;
+    });
+    await _autoDiscover(initial: true);
+  }
+
   Future<void> _autoDiscover({bool initial = false}) async {
     if (_scanning) return;
     final ScaffoldMessengerState messenger = ScaffoldMessenger.of(context);
@@ -365,6 +406,16 @@ class _LibraryPageState extends ConsumerState<LibraryPage> {
   /// duplicates of already-known files are skipped.
   Future<void> _import() async {
     final ScaffoldMessengerState messenger = ScaffoldMessenger.of(context);
+
+    // The Library is intentionally permission-gated. Even the manual picker
+    // must not add a PDF before the user has granted PDF/storage access.
+    final PermissionService perm = ref.read(permissionServiceProvider);
+    final bool granted = await perm.isGrantedForDiscovery();
+    if (!granted) {
+      await _autoDiscover();
+      return;
+    }
+
     setState(() => _importing = true);
     final Result<ImportOutcome> result =
         await ref.read(importPdfsProvider).call(const NoParams());

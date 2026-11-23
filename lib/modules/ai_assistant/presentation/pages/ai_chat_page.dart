@@ -313,6 +313,7 @@ class _MessageListState extends ConsumerState<_MessageList> {
   final ScrollController _scrollController = ScrollController();
   bool _userScrolledUp = false;
   bool _programmaticScrollInProgress = false;
+  String? _positionRestoredForConversation;
   bool _userScrollInProgress = false;
   bool _wasStreaming = false;
 
@@ -326,6 +327,17 @@ class _MessageListState extends ConsumerState<_MessageList> {
   void initState() {
     super.initState();
     _scrollController.addListener(_handleScroll);
+  }
+
+  @override
+  void didUpdateWidget(covariant _MessageList oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    if (oldWidget.conversationId != widget.conversationId) {
+      _positionRestoredForConversation = null;
+      _userScrolledUp = false;
+      _userScrollInProgress = false;
+      _wasStreaming = false;
+    }
   }
 
   @override
@@ -419,6 +431,15 @@ class _MessageListState extends ConsumerState<_MessageList> {
     }
   }
 
+  void _restoreInitialPosition(String conversationId) {
+    if (_positionRestoredForConversation == conversationId) return;
+    _positionRestoredForConversation = conversationId;
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      if (!mounted || !_scrollController.hasClients) return;
+      _scrollController.jumpTo(_scrollController.position.maxScrollExtent);
+    });
+  }
+
   Future<void> _regenerate(BuildContext context, WidgetRef ref) async {
     final AiSendResult result =
         await ref.read(aiChatControllerProvider.notifier).regenerate();
@@ -451,6 +472,9 @@ class _MessageListState extends ConsumerState<_MessageList> {
       loading: () => const Center(child: CircularProgressIndicator()),
       error: (_, _) => const _Welcome(),
       data: (List<AiMessage> messages) {
+        if (messages.isNotEmpty) {
+          _restoreInitialPosition(widget.conversationId);
+        }
         if (messages.isEmpty && !streaming) return const _Welcome();
         final bool canLoadMore = messages.length >= limit;
         final int count = messages.length + (canLoadMore ? 1 : 0) + (streaming ? 1 : 0);
@@ -501,7 +525,7 @@ class _MessageListState extends ConsumerState<_MessageList> {
                 },
               ),
             ),
-            if (streaming && _userScrolledUp)
+            if (_userScrolledUp)
               Positioned(
                 right: 16,
                 bottom: 16,
