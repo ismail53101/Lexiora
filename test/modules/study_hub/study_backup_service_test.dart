@@ -42,7 +42,7 @@ Date,Type,Subject,Topic,Start,End,Priority,Status,Notes
 
     final rows = await repo.watchTasks('2026-11-24').first;
     expect(rows, hasLength(2));
-    expect(rows.map((r) => r.day), everyElement('2026-11-23'));
+    expect(rows.map((r) => r.day), everyElement('2026-11-24'));
     expect(rows.first.startMinute, 9 * 60);
     expect(rows.first.endMinute, 9 * 60 + 50);
   });
