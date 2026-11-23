@@ -86,6 +86,8 @@ abstract interface class StudyHubRepository {
     required String startDay,
     required String untilDay,
     int? breakMinutes,
+    int? splitFocusMinutes,
+    int? splitBreakMinutes,
     RepeatTopicMode topicMode = RepeatTopicMode.same,
   });
 
