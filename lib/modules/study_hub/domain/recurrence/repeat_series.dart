@@ -1,3 +1,5 @@
+import 'package:lexiora/modules/study_hub/domain/recurrence/recurrence.dart';
+
 /// A repeating study session ("every Mon and Wed, 6–7 PM, until 30 May").
 /// Each occurrence is an ordinary planner session; the series only links them
 /// so they can be extended or ended together.
@@ -14,6 +16,7 @@ class RepeatSeries {
     this.notes,
     this.breakMinutes = 0,
     this.priorityIndex = 1,
+    this.topicMode = RepeatTopicMode.same,
     this.upcoming = 0,
     this.nextDay,
   });
@@ -27,6 +30,9 @@ class RepeatSeries {
   final int durationMinutes;
   final int breakMinutes;
   final int priorityIndex;
+
+  /// How each session's topic was chosen when the series was created.
+  final RepeatTopicMode topicMode;
   final String startDay;
   final String untilDay;
 

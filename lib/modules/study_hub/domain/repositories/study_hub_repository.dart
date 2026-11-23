@@ -3,6 +3,7 @@ import 'package:lexiora/modules/study_hub/domain/entities/study_models.dart';
 import 'package:lexiora/modules/study_hub/domain/entities/study_subject.dart';
 import 'package:lexiora/modules/study_hub/domain/entities/study_task.dart';
 import 'package:lexiora/modules/study_hub/domain/entities/study_template.dart';
+import 'package:lexiora/modules/study_hub/domain/recurrence/recurrence.dart';
 import 'package:lexiora/modules/study_hub/domain/recurrence/repeat_series.dart';
 
 /// Domain contract for the Study Hub. The presentation layer depends only on
@@ -53,18 +54,11 @@ abstract interface class StudyHubRepository {
     int lookbackDays = 7,
   });
 
-  /// Moves [tasks] to [toDay].
-  ///
-  /// Timed sessions keep their original clock times on a future day. When the
-  /// target is today, missed sessions are rescheduled from the current time
-  /// instead of being placed back at their old (already passed) times.
-  /// Breaks directly attached to moved sessions are moved with them.
-  /// Untimed sessions are placed in the next available slot. Returns the
-  /// number of study sessions moved (breaks are not counted).
+  /// Moves [tasks] to [toDay] as automatic sessions placed after everything
+  /// already planned there. Returns how many were moved.
   Future<int> moveSessionsToDay({
     required List<StudyTask> tasks,
     required String toDay,
-    int? nowMinute,
   });
 
   /// Creates a weekly repeating session in one atomic step.
@@ -75,6 +69,10 @@ abstract interface class StudyHubRepository {
   /// Dates where the time is already taken are skipped and reported, not
   /// treated as an error. Ids derive from [seriesId], so saving again with the
   /// same id never duplicates.
+  ///
+  /// [topicMode] decides each session's topic: the same one for all, the next
+  /// unfinished topic of the subject's syllabus for each (days that are
+  /// skipped do not use up a topic), or only the first session.
   Future<RepeatSaveResult> createRepeatingSessions({
     required String seriesId,
     required StudyTask template,
@@ -82,8 +80,7 @@ abstract interface class StudyHubRepository {
     required String startDay,
     required String untilDay,
     int? breakMinutes,
-    int? splitFocusMinutes,
-    int? splitBreakMinutes,
+    RepeatTopicMode topicMode = RepeatTopicMode.same,
   });
 
   /// All repeating series with their upcoming occurrences, from [today].

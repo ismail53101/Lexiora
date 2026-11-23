@@ -44,6 +44,7 @@ CREATE TABLE IF NOT EXISTS sp_series (
   duration_minutes INTEGER NOT NULL,
   break_minutes INTEGER NOT NULL DEFAULT 0,
   priority INTEGER NOT NULL DEFAULT 1,
+  topic_mode INTEGER NOT NULL DEFAULT 0,
   start_day TEXT NOT NULL,
   until_day TEXT NOT NULL,
   created_at INTEGER NOT NULL
@@ -62,6 +63,13 @@ CREATE TABLE IF NOT EXISTS sp_series_tasks (
   static Future<void> ensure(RawSql db) async {
     for (final String sql in ddl) {
       await db.execute(sql);
+    }
+    // Installs that already have sp_series (from before topics could advance)
+    // get the new column; fresh installs already have it from the DDL above.
+    final List<SqlRow> cols = await db.select('PRAGMA table_info(sp_series)');
+    if (!cols.any((SqlRow c) => c['name'] == 'topic_mode')) {
+      await db.execute(
+          'ALTER TABLE sp_series ADD COLUMN topic_mode INTEGER NOT NULL DEFAULT 0');
     }
   }
 }

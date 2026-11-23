@@ -69,6 +69,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   where the time is already taken are skipped and listed. Menu → Repeating
   sessions lets you add 4 more weeks or end a series (past and completed
   sessions are kept).
+- **Topics in repeating sessions:** choose what each session gets: the next
+  unfinished topic of the subject's syllabus (the default when the subject has
+  one), the topic on the first session only, or the same topic every time
+  (revision). Days skipped because of a clash do not use up a topic, and
+  "4 more weeks" continues from where the syllabus left off.
 
 ### Migration
 

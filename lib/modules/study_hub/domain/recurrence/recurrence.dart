@@ -72,3 +72,63 @@ Set<int> weekdaysFromMask(int mask) => <int>{
       for (int d = 1; d <= 7; d++)
         if (mask & (1 << (d - 1)) != 0) d,
     };
+
+/// What topic each session of a repeating series gets. The index is stored.
+enum RepeatTopicMode {
+  /// Every session gets the same topic (good for revision).
+  same('Same every time'),
+
+  /// Each session gets the next unfinished topic of the subject's syllabus.
+  syllabus('Next from syllabus'),
+
+  /// Only the first session gets the topic; the rest stay blank.
+  firstOnly('First session only');
+
+  const RepeatTopicMode(this.label);
+  final String label;
+
+  static RepeatTopicMode fromIndex(int i) =>
+      i >= 0 && i < RepeatTopicMode.values.length ? RepeatTopicMode.values[i] : RepeatTopicMode.same;
+}
+
+/// The topic for each of [count] sessions, in order.
+///
+/// * [RepeatTopicMode.same]: [typedTopic] for all.
+/// * [RepeatTopicMode.firstOnly]: [typedTopic] for the first, then none.
+/// * [RepeatTopicMode.syllabus]: [syllabusTopics] (unfinished, in order) minus
+///   those in [exclude] (lower-case titles already used). If [typedTopic] is
+///   given it is used for the first session, and the sequence continues from
+///   that topic's place in the syllabus (or from the start when it is not on
+///   the list). When the topics run out the remaining sessions get none.
+List<String?> assignRepeatTopics({
+  required int count,
+  required RepeatTopicMode mode,
+  String? typedTopic,
+  List<String> syllabusTopics = const <String>[],
+  Set<String> exclude = const <String>{},
+}) {
+  if (count <= 0) return const <String?>[];
+  final String? typed = (typedTopic == null || typedTopic.trim().isEmpty) ? null : typedTopic.trim();
+  switch (mode) {
+    case RepeatTopicMode.same:
+      return List<String?>.filled(count, typed);
+    case RepeatTopicMode.firstOnly:
+      return <String?>[typed, ...List<String?>.filled(count - 1, null)];
+    case RepeatTopicMode.syllabus:
+      final List<String> pool = <String>[
+        for (final String t in syllabusTopics)
+          if (!exclude.contains(t.trim().toLowerCase())) t,
+      ];
+      final List<String?> out = <String?>[];
+      int next = 0;
+      if (typed != null) {
+        out.add(typed);
+        final int at = pool.indexWhere((String t) => t.toLowerCase() == typed.toLowerCase());
+        if (at >= 0) next = at + 1;
+      }
+      while (out.length < count) {
+        out.add(next < pool.length ? pool[next++] : null);
+      }
+      return out;
+  }
+}

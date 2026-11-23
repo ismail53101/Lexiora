@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:lexiora/modules/study_hub/domain/entities/study_task.dart';
+import 'package:lexiora/modules/study_hub/domain/exams/exam_models.dart';
 import 'package:lexiora/modules/study_hub/domain/recurrence/recurrence.dart';
 import 'package:lexiora/modules/study_hub/domain/recurrence/repeat_series.dart';
 import 'package:lexiora/modules/study_hub/domain/scheduling/pomodoro_planner.dart';
@@ -226,6 +227,7 @@ class _SessionEditorState extends ConsumerState<_SessionEditor> {
   int _preset = 1;
   bool _repeat = false;
   int _repeatWeeks = 8;
+  RepeatTopicMode? _topicChoice; // null = automatic (syllabus when available)
   late final Set<int> _repeatDays = <int>{
     parseDayKeyOrNull(widget.day)?.weekday ?? DateTime.now().weekday,
   };
@@ -331,60 +333,24 @@ class _SessionEditorState extends ConsumerState<_SessionEditor> {
     });
   }
 
-  /// If a new session is being scheduled for today but its manual start
-  /// time has already passed, offer a safe way to move it forward instead of
-  /// silently creating a session in the past.
-  Future<String?> _resolvePastTodayTime(int start) async {
-    if (widget.existing != null ||
-        widget.day != dayKey(DateTime.now()) ||
-        _mode != _TimeMode.manual) {
-      return widget.day;
+  /// Unfinished syllabus topics for the subject typed so far.
+  int _topicsLeft() {
+    final String key = _subject.text.trim().toLowerCase();
+    if (key.isEmpty) return 0;
+    final List<SubjectSyllabus> all =
+        ref.read(syllabiProvider).asData?.value ?? const <SubjectSyllabus>[];
+    for (final SubjectSyllabus s in all) {
+      if (s.subject.trim().toLowerCase() == key) return s.remaining;
     }
+    return 0;
+  }
 
-    final DateTime now = DateTime.now();
-    if (start > now.hour * 60 + now.minute) return widget.day;
-
-    final String? choice = await showDialog<String>(
-      context: context,
-      builder: (BuildContext dialogContext) => AlertDialog(
-        title: const Text('This time has already passed'),
-        content: Text(
-          formatMinuteOfDay(start) +
-              ' is already in the past for today. Would you like to move '
-              'this session to tomorrow or choose another day?',
-        ),
-        actions: <Widget>[
-          TextButton(
-            onPressed: () => Navigator.of(dialogContext).pop('cancel'),
-            child: const Text('Cancel'),
-          ),
-          OutlinedButton(
-            onPressed: () => Navigator.of(dialogContext).pop('tomorrow'),
-            child: const Text('Tomorrow'),
-          ),
-          FilledButton(
-            onPressed: () => Navigator.of(dialogContext).pop('other'),
-            child: const Text('Choose another day'),
-          ),
-        ],
-      ),
-    );
-
-    if (choice == 'tomorrow') {
-      return dayKey(DateTime(now.year, now.month, now.day + 1));
-    }
-    if (choice != 'other') return choice == 'cancel' ? null : widget.day;
-
-    if (!mounted) return null;
-    final DateTime tomorrow = DateTime(now.year, now.month, now.day + 1);
-    final DateTime? picked = await showDatePicker(
-      context: context,
-      initialDate: tomorrow,
-      firstDate: tomorrow,
-      lastDate: DateTime(now.year + 2, now.month, now.day),
-      helpText: 'CHOOSE STUDY DAY',
-    );
-    return picked == null ? null : dayKey(picked);
+  /// The topic mode that applies: the user's choice, else the syllabus when the
+  /// subject has one (so sessions do not all repeat the same topic).
+  RepeatTopicMode _effectiveTopicMode() {
+    final int left = _topicsLeft();
+    final RepeatTopicMode m = _topicChoice ?? (left > 0 ? RepeatTopicMode.syllabus : RepeatTopicMode.firstOnly);
+    return (m == RepeatTopicMode.syllabus && left == 0) ? RepeatTopicMode.firstOnly : m;
   }
 
   Future<void> _save() async {
@@ -401,23 +367,10 @@ class _SessionEditorState extends ConsumerState<_SessionEditor> {
     try {
       final DateTime now = DateTime.now();
       if (!_breakLoaded) await _loadExistingBreak();
-
-      final int? selectedStart = _startFor();
-      final String? targetDay = selectedStart == null
-          ? widget.day
-          : await _resolvePastTodayTime(selectedStart);
-      if (targetDay == null) {
-        setState(() {
-          _saving = false;
-          _error = null;
-        });
-        return;
-      }
-
       final StudyTask base = widget.existing ??
           StudyTask(
             id: _sessionId,
-            day: targetDay,
+            day: widget.day,
             title: subject,
             createdAt: now,
             updatedAt: now,
@@ -456,16 +409,15 @@ class _SessionEditorState extends ConsumerState<_SessionEditor> {
           );
       }
       final repo = ref.read(studyHubRepositoryProvider);
-      if (_repeat && widget.existing == null && _mode == _TimeMode.manual) {
+      if (_repeat && widget.existing == null && _mode == _TimeMode.manual && !_split) {
         final RepeatSaveResult res = await repo.createRepeatingSessions(
           seriesId: _seriesId,
           template: task,
           weekdays: _repeatDays,
-          startDay: targetDay,
-          untilDay: untilAfterWeeks(targetDay, _repeatWeeks),
-          breakMinutes: _addBreak && !_split ? _breakMinutes : null,
-          splitFocusMinutes: _split ? _blockPresets[_preset].$1 : null,
-          splitBreakMinutes: _split ? _blockPresets[_preset].$2 : null,
+          startDay: widget.day,
+          untilDay: untilAfterWeeks(widget.day, _repeatWeeks),
+          breakMinutes: _addBreak ? _breakMinutes : null,
+          topicMode: _effectiveTopicMode(),
         );
         if (res.created == 0) {
           setState(() => _error = 'Nothing was added: that time is already taken on '
@@ -507,6 +459,63 @@ class _SessionEditorState extends ConsumerState<_SessionEditor> {
     }
   }
 
+  /// "Topic for each session": syllabus order, first only, or the same one.
+  List<Widget> _topicChoiceWidgets(ThemeData theme) {
+    ref.watch(syllabiProvider); // rebuild when the syllabus changes
+    final int left = _topicsLeft();
+    final RepeatTopicMode mode = _effectiveTopicMode();
+    final int sessions = occurrenceDays(
+      weekdays: _repeatDays,
+      startDay: widget.day,
+      untilDay: untilAfterWeeks(widget.day, _repeatWeeks),
+    ).length;
+    final String subject = _subject.text.trim();
+    final String topic = _topic.text.trim();
+    final String help = switch (mode) {
+      RepeatTopicMode.syllabus => 'Each session gets the next topic of your $subject syllabus ($left left).'
+          '${sessions > left ? ' Only $left ${left == 1 ? 'topic is' : 'topics are'} left, so the last ${sessions - left} will have no topic.' : ''}',
+      RepeatTopicMode.firstOnly => topic.isEmpty
+          ? 'No topic yet. Add topics to the sessions later, or list the syllabus under Exams & Syllabus.'
+          : 'Only the first session gets “$topic”. Add topics to the others later.',
+      RepeatTopicMode.same => topic.isEmpty
+          ? 'Every session gets the same topic (type one above). Good for revision.'
+          : 'Every session gets “$topic”. Good for revision.',
+    };
+    return <Widget>[
+      const SizedBox(height: 12),
+      Text('Topic for each session', style: theme.textTheme.labelLarge),
+      const SizedBox(height: 6),
+      Wrap(
+        spacing: 8,
+        children: <Widget>[
+          for (final RepeatTopicMode m in RepeatTopicMode.values)
+            ChoiceChip(
+              label: Text(m.label),
+              selected: mode == m,
+              onSelected: (m == RepeatTopicMode.syllabus && left == 0)
+                  ? null
+                  : (_) => setState(() => _topicChoice = m),
+            ),
+        ],
+      ),
+      Padding(
+        padding: const EdgeInsets.only(top: 4),
+        child: Text(
+          help,
+          style: theme.textTheme.bodySmall?.copyWith(color: theme.colorScheme.onSurfaceVariant),
+        ),
+      ),
+      if (left == 0 && subject.isNotEmpty)
+        Padding(
+          padding: const EdgeInsets.only(top: 2),
+          child: Text(
+            '“Next from syllabus” needs topics under Exams & Syllabus for $subject.',
+            style: theme.textTheme.bodySmall?.copyWith(color: theme.colorScheme.outline),
+          ),
+        ),
+    ];
+  }
+
   @override
   Widget build(BuildContext context) {
     final ThemeData theme = Theme.of(context);
@@ -539,8 +548,8 @@ class _SessionEditorState extends ConsumerState<_SessionEditor> {
     final bool canSplit = widget.existing == null && _mode != _TimeMode.none;
     final bool splitting = canSplit && _split;
     final PomodoroPlan? plan = splitting
-        ? planPomodoroWindow(
-            totalWindowMinutes: _duration,
+        ? planPomodoro(
+            totalFocusMinutes: _duration,
             focusMinutes: _blockPresets[_preset].$1,
             breakMinutes: _blockPresets[_preset].$2,
           )
@@ -677,6 +686,7 @@ class _SessionEditorState extends ConsumerState<_SessionEditor> {
                 value: _split,
                 onChanged: (bool v) => setState(() {
                   _split = v;
+                  if (v) _repeat = false;
                   _error = null;
                 }),
                 title: const Text('Split into focus blocks'),
@@ -731,19 +741,19 @@ class _SessionEditorState extends ConsumerState<_SessionEditor> {
                     ),
                 ],
               ),
-            if (widget.existing == null && _mode != _TimeMode.none) ...<Widget>[
+            if (widget.existing == null && _mode != _TimeMode.none && !splitting) ...<Widget>[
               SwitchListTile.adaptive(
                 contentPadding: EdgeInsets.zero,
                 value: _repeat,
                 onChanged: (bool v) => setState(() {
-                        _repeat = v;
-                        _error = null;
-                        if (v && _mode != _TimeMode.manual) {
-                          // A repeating session needs a fixed time.
-                          _start = _startFor() ?? _next;
-                          _mode = _TimeMode.manual;
-                        }
-                      }),
+                  _repeat = v;
+                  _error = null;
+                  if (v && _mode != _TimeMode.manual) {
+                    // A repeating session needs a fixed time.
+                    _start = _startFor() ?? _next;
+                    _mode = _TimeMode.manual;
+                  }
+                }),
                 title: const Text('Repeat weekly'),
                 subtitle: Text(
                   _repeat
@@ -800,6 +810,7 @@ class _SessionEditorState extends ConsumerState<_SessionEditor> {
                     ),
                   ),
                 ),
+                ..._topicChoiceWidgets(theme),
               ],
             ],
             const SizedBox(height: 16),

@@ -158,7 +158,7 @@ class _SeriesCardState extends ConsumerState<_SeriesCard> {
                 const SizedBox(width: 8),
                 Expanded(
                   child: Text(
-                    s.topic == null || s.topic!.isEmpty ? s.subject : '${s.subject} · ${s.topic}',
+                    (s.topicMode == RepeatTopicMode.same && s.topic != null && s.topic!.isNotEmpty) ? '${s.subject} · ${s.topic}' : s.subject,
                     style: theme.textTheme.titleMedium?.copyWith(fontWeight: FontWeight.w800),
                   ),
                 ),
@@ -170,6 +170,16 @@ class _SeriesCardState extends ConsumerState<_SeriesCard> {
               '${s.breakMinutes > 0 ? ' · ${s.breakMinutes} min break' : ''}',
               style: theme.textTheme.bodyMedium,
             ),
+            if (s.topicMode != RepeatTopicMode.same)
+              Padding(
+                padding: const EdgeInsets.only(top: 2),
+                child: Text(
+                  s.topicMode == RepeatTopicMode.syllabus
+                      ? 'Topics follow your syllabus'
+                      : 'Topic on the first session only',
+                  style: theme.textTheme.bodySmall?.copyWith(color: cs.onSurfaceVariant),
+                ),
+              ),
             const SizedBox(height: 2),
             Text(
               s.isFinished

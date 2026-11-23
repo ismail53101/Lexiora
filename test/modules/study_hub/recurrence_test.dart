@@ -76,4 +76,56 @@ void main() {
     }
     expect(weekdaysToMask(<int>{0, 8, 2}), 2);
   });
+
+  group('assignRepeatTopics', () {
+    const List<String> syl = <String>['Algebra', 'Calculus', 'Geometry', 'Probability'];
+
+    test('same: the typed topic for every session', () {
+      expect(assignRepeatTopics(count: 3, mode: RepeatTopicMode.same, typedTopic: ' Algebra '),
+          <String?>['Algebra', 'Algebra', 'Algebra']);
+      expect(assignRepeatTopics(count: 2, mode: RepeatTopicMode.same), <String?>[null, null]);
+    });
+
+    test('firstOnly: only the first session gets the topic', () {
+      expect(assignRepeatTopics(count: 3, mode: RepeatTopicMode.firstOnly, typedTopic: 'Algebra'),
+          <String?>['Algebra', null, null]);
+      expect(assignRepeatTopics(count: 2, mode: RepeatTopicMode.firstOnly), <String?>[null, null]);
+    });
+
+    test('syllabus: the next unfinished topic for each session, in order', () {
+      expect(assignRepeatTopics(count: 3, mode: RepeatTopicMode.syllabus, syllabusTopics: syl),
+          <String?>['Algebra', 'Calculus', 'Geometry']);
+    });
+
+    test('syllabus: runs out gracefully', () {
+      expect(assignRepeatTopics(count: 6, mode: RepeatTopicMode.syllabus, syllabusTopics: <String>['A', 'B']),
+          <String?>['A', 'B', null, null, null, null]);
+      expect(assignRepeatTopics(count: 2, mode: RepeatTopicMode.syllabus), <String?>[null, null]);
+    });
+
+    test('syllabus: a typed topic on the list starts the sequence there', () {
+      expect(assignRepeatTopics(count: 3, mode: RepeatTopicMode.syllabus, typedTopic: 'calculus', syllabusTopics: syl),
+          <String?>['calculus', 'Geometry', 'Probability']);
+    });
+
+    test('syllabus: a typed topic that is not on the list is used first, then the list from the start', () {
+      expect(assignRepeatTopics(count: 3, mode: RepeatTopicMode.syllabus, typedTopic: 'Revision', syllabusTopics: syl),
+          <String?>['Revision', 'Algebra', 'Calculus']);
+    });
+
+    test('syllabus: topics already used are skipped', () {
+      expect(
+        assignRepeatTopics(count: 3, mode: RepeatTopicMode.syllabus, syllabusTopics: syl, exclude: <String>{'algebra', 'geometry'}),
+        <String?>['Calculus', 'Probability', null],
+      );
+    });
+
+    test('a count of zero gives nothing; the mode index round-trips', () {
+      expect(assignRepeatTopics(count: 0, mode: RepeatTopicMode.same, typedTopic: 'x'), isEmpty);
+      for (final RepeatTopicMode m in RepeatTopicMode.values) {
+        expect(RepeatTopicMode.fromIndex(m.index), m);
+      }
+      expect(RepeatTopicMode.fromIndex(99), RepeatTopicMode.same);
+    });
+  });
 }

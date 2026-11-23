@@ -1,9 +1,13 @@
 import 'package:drift/native.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:lexiora/core/database/app_database.dart';
+import 'package:lexiora/core/database/raw_sql.dart';
 import 'package:lexiora/modules/study_hub/data/datasources/study_hub_local_data_source.dart';
+import 'package:lexiora/modules/study_hub/data/planner_extras_schema.dart';
+import 'package:lexiora/modules/study_hub/data/repositories/exam_repository_impl.dart';
 import 'package:lexiora/modules/study_hub/data/repositories/study_hub_repository_impl.dart';
 import 'package:lexiora/modules/study_hub/domain/entities/study_task.dart';
+import 'package:lexiora/modules/study_hub/domain/recurrence/recurrence.dart';
 import 'package:lexiora/modules/study_hub/domain/recurrence/repeat_series.dart';
 import 'package:lexiora/modules/study_hub/domain/scheduling/study_schedule_service.dart';
 
@@ -246,6 +250,129 @@ void main() {
       await create(r);
       expect((await r.extendSeries(seriesId: 's1', weeks: 0, today: '2026-03-10')).created, 0);
     });
+  });
+
+  group('topics of a repeating series', () {
+    Future<(StudyHubRepositoryImpl, ExamRepositoryImpl, AppDatabase)> withSyllabus(List<String> topics, {String subject = 'Maths'}) async {
+      final AppDatabase db = AppDatabase(NativeDatabase.memory());
+      dbs.add(db);
+      final ExamRepositoryImpl exams = ExamRepositoryImpl(DriftRawSql(db));
+      await exams.addTopics(subject, topics);
+      return (StudyHubRepositoryImpl(StudyHubLocalDataSource(db)), exams, db);
+    }
+
+    Future<List<String?>> topicsInOrder(StudyHubRepositoryImpl r, List<String> days) async => <String?>[
+          for (final String d in days) (await day(r, d)).where((StudyTask t) => !t.isBreak).single.topic,
+        ];
+
+    const List<String> weeks = <String>['2026-03-09', '2026-03-16', '2026-03-23', '2026-03-30'];
+    Future<RepeatSaveResult> mondays(StudyHubRepositoryImpl r, {String id = 's1', String? topic, RepeatTopicMode mode = RepeatTopicMode.syllabus, String until = '2026-04-05'}) =>
+        r.createRepeatingSessions(
+          seriesId: id, template: template(topic: topic), weekdays: <int>{1},
+          startDay: '2026-03-09', untilDay: until, topicMode: mode,
+        );
+
+    test('syllabus mode: each session gets the next unfinished topic', () async {
+      final (StudyHubRepositoryImpl r, _, _) = await withSyllabus(<String>['Algebra', 'Calculus', 'Geometry', 'Probability']);
+      await mondays(r);
+      expect(await topicsInOrder(r, weeks), <String?>['Algebra', 'Calculus', 'Geometry', 'Probability']);
+    });
+
+    test('topics that are already done are skipped', () async {
+      final (StudyHubRepositoryImpl r, ExamRepositoryImpl exams, _) = await withSyllabus(<String>['Algebra', 'Calculus', 'Geometry', 'Probability']);
+      final String algebra = (await exams.watchSyllabi().first).single.topics.first.id;
+      await exams.setTopicDone(algebra, true);
+      await mondays(r);
+      expect(await topicsInOrder(r, weeks), <String?>['Calculus', 'Geometry', 'Probability', null]);
+    });
+
+    test('a day that is skipped because of a clash does not use up a topic', () async {
+      final (StudyHubRepositoryImpl r, _, _) = await withSyllabus(<String>['T1', 'T2', 'T3', 'T4']);
+      await r.saveTask(StudyTask(
+        id: 'clash', day: '2026-03-16', title: 'X', subject: 'X', startMinute: 18 * h, endMinute: 19 * h, createdAt: t0, updatedAt: t0,
+      ));
+      final RepeatSaveResult res = await mondays(r);
+      expect(res.skippedDays, <String>['2026-03-16']);
+      expect(await topicsInOrder(r, <String>['2026-03-09', '2026-03-23', '2026-03-30']), <String?>['T1', 'T2', 'T3']);
+    });
+
+    test('when the syllabus runs out the remaining sessions have no topic', () async {
+      final (StudyHubRepositoryImpl r, _, _) = await withSyllabus(<String>['Only']);
+      await mondays(r);
+      expect(await topicsInOrder(r, weeks), <String?>['Only', null, null, null]);
+    });
+
+    test('a typed topic on the syllabus starts the sequence there', () async {
+      final (StudyHubRepositoryImpl r, _, _) = await withSyllabus(<String>['Algebra', 'Calculus', 'Geometry', 'Probability']);
+      await mondays(r, topic: 'Calculus');
+      expect(await topicsInOrder(r, weeks), <String?>['Calculus', 'Geometry', 'Probability', null]);
+    });
+
+    test('syllabus mode only looks at the series subject', () async {
+      final (StudyHubRepositoryImpl r, ExamRepositoryImpl exams, _) = await withSyllabus(<String>['Algebra']);
+      await exams.addTopics('Physics', <String>['Optics']);
+      await mondays(r);
+      expect((await day(r, '2026-03-09')).single.topic, 'Algebra');
+    });
+
+    test('first-session-only: topic on the first session, the rest blank', () async {
+      final StudyHubRepositoryImpl r = await repo();
+      await mondays(r, topic: 'Algebra', mode: RepeatTopicMode.firstOnly);
+      expect(await topicsInOrder(r, weeks), <String?>['Algebra', null, null, null]);
+    });
+
+    test('same every time keeps working (the default)', () async {
+      final StudyHubRepositoryImpl r = await repo();
+      await mondays(r, topic: 'Algebra', mode: RepeatTopicMode.same);
+      expect(await topicsInOrder(r, weeks), <String?>['Algebra', 'Algebra', 'Algebra', 'Algebra']);
+    });
+
+    test('the mode is stored with the series', () async {
+      final (StudyHubRepositoryImpl r, _, _) = await withSyllabus(<String>['A']);
+      await mondays(r);
+      expect((await only(r, '2026-03-01')).topicMode, RepeatTopicMode.syllabus);
+    });
+
+    test('extending continues the syllabus after the topics already planned', () async {
+      final (StudyHubRepositoryImpl r, _, _) = await withSyllabus(<String>['T1', 'T2', 'T3', 'T4', 'T5', 'T6']);
+      await mondays(r); // T1..T4 on 9, 16, 23, 30 Mar
+      await r.extendSeries(seriesId: 's1', weeks: 2, today: '2026-03-10');
+      expect(await topicsInOrder(r, <String>['2026-04-06', '2026-04-13']), <String?>['T5', 'T6']);
+    });
+
+    test('extending in the other modes', () async {
+      final StudyHubRepositoryImpl r = await repo();
+      await mondays(r, id: 'same', topic: 'Algebra', mode: RepeatTopicMode.same, until: '2026-03-15');
+      await r.extendSeries(seriesId: 'same', weeks: 1, today: '2026-03-10');
+      expect((await day(r, '2026-03-16')).single.topic, 'Algebra');
+
+      final StudyHubRepositoryImpl r2 = await repo();
+      await mondays(r2, id: 'first', topic: 'Algebra', mode: RepeatTopicMode.firstOnly, until: '2026-03-15');
+      await r2.extendSeries(seriesId: 'first', weeks: 1, today: '2026-03-10');
+      expect((await day(r2, '2026-03-09')).single.topic, 'Algebra');
+      expect((await day(r2, '2026-03-16')).single.topic, isNull);
+    });
+  });
+
+  test('a database from before topic modes gets the new column and keeps its series', () async {
+    final AppDatabase db = AppDatabase(NativeDatabase.memory());
+    dbs.add(db);
+    final RawSql sql = DriftRawSql(db);
+    // Recreate the table exactly as the earlier version had it.
+    await sql.execute('DROP TABLE sp_series');
+    await sql.execute(
+      'CREATE TABLE sp_series (id TEXT NOT NULL PRIMARY KEY, subject TEXT NOT NULL, topic TEXT, notes TEXT, '
+      'weekdays INTEGER NOT NULL, start_minute INTEGER NOT NULL, duration_minutes INTEGER NOT NULL, '
+      'break_minutes INTEGER NOT NULL DEFAULT 0, priority INTEGER NOT NULL DEFAULT 1, '
+      'start_day TEXT NOT NULL, until_day TEXT NOT NULL, created_at INTEGER NOT NULL)',
+    );
+    await sql.execute("INSERT INTO sp_series VALUES ('old', 'Maths', 'Algebra', NULL, 1, 1080, 60, 0, 1, '2026-03-09', '2026-04-05', 0)");
+    await PlannerExtrasSchema.ensure(sql);
+    await PlannerExtrasSchema.ensure(sql); // and again: harmless
+    final StudyHubRepositoryImpl r = StudyHubRepositoryImpl(StudyHubLocalDataSource(db));
+    final RepeatSeries s = (await r.watchSeries(today: '2026-03-01').first).single;
+    expect(s.id, 'old');
+    expect(s.topicMode, RepeatTopicMode.same);
   });
 
   test('the series stream updates when sessions change', () async {
