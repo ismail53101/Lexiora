@@ -409,14 +409,16 @@ class _SessionEditorState extends ConsumerState<_SessionEditor> {
           );
       }
       final repo = ref.read(studyHubRepositoryProvider);
-      if (_repeat && widget.existing == null && _mode == _TimeMode.manual && !_split) {
+      if (_repeat && widget.existing == null && _mode == _TimeMode.manual) {
         final RepeatSaveResult res = await repo.createRepeatingSessions(
           seriesId: _seriesId,
           template: task,
           weekdays: _repeatDays,
           startDay: widget.day,
           untilDay: untilAfterWeeks(widget.day, _repeatWeeks),
-          breakMinutes: _addBreak ? _breakMinutes : null,
+          breakMinutes: _addBreak && !_split ? _breakMinutes : null,
+          splitFocusMinutes: _split ? _blockPresets[_preset].$1 : null,
+          splitBreakMinutes: _split ? _blockPresets[_preset].$2 : null,
           topicMode: _effectiveTopicMode(),
         );
         if (res.created == 0) {
@@ -686,7 +688,6 @@ class _SessionEditorState extends ConsumerState<_SessionEditor> {
                 value: _split,
                 onChanged: (bool v) => setState(() {
                   _split = v;
-                  if (v) _repeat = false;
                   _error = null;
                 }),
                 title: const Text('Split into focus blocks'),
@@ -745,9 +746,7 @@ class _SessionEditorState extends ConsumerState<_SessionEditor> {
               SwitchListTile.adaptive(
                 contentPadding: EdgeInsets.zero,
                 value: _repeat,
-                onChanged: splitting
-                    ? null
-                    : (bool v) => setState(() {
+                onChanged: (bool v) => setState(() {
                         _repeat = v;
                         _error = null;
                         if (v && _mode != _TimeMode.manual) {
@@ -758,11 +757,9 @@ class _SessionEditorState extends ConsumerState<_SessionEditor> {
                       }),
                 title: const Text('Repeat weekly'),
                 subtitle: Text(
-                  splitting
-                      ? 'Not available with focus blocks.'
-                      : _repeat
-                          ? 'Adds this session on the chosen days (at a fixed time)'
-                          : 'For example every Monday and Wednesday',
+                  _repeat
+                      ? 'Adds this session on the chosen days (at a fixed time)'
+                      : 'For example every Monday and Wednesday',
                 ),
               ),
               if (_repeat) ...<Widget>[
