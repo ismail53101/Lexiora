@@ -2,6 +2,7 @@ import 'dart:async';
 import 'dart:io';
 
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:lexiora/app/di/injector.dart';
 import 'package:lexiora/core/models/normalized_rect.dart';
@@ -461,6 +462,18 @@ class _ReaderPageState extends ConsumerState<ReaderPage> {
 
     return Scaffold(
       appBar: AppBar(
+        leading: IconButton(
+          icon: const Icon(Icons.arrow_back),
+          tooltip: 'Back',
+          onPressed: () {
+            final NavigatorState navigator = Navigator.of(context);
+            if (navigator.canPop()) {
+              navigator.pop();
+            } else {
+              SystemNavigator.pop();
+            }
+          },
+        ),
         title: Text(_document!.title, overflow: TextOverflow.ellipsis),
         actions: [
           IconButton(
