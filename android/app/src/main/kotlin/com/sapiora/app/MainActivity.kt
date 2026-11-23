@@ -70,6 +70,15 @@ class MainActivity : FlutterActivity() {
     private var pendingIncomingPdf: Map<String, Any?>? = null
     private var dartChannelReady = false
 
+    // External PDF intents carry a content:// URI. FlutterActivity can
+    // expose that URI as the engine's initial route; GoRouter would then show
+    // its "Page Not Found" screen before our normal PDF-import flow handles it.
+    // Keep navigation rooted in the app; processIncomingIntent() handles the
+    // actual PDF separately.
+    override fun getInitialRoute(): String {
+        return "/splash"
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
