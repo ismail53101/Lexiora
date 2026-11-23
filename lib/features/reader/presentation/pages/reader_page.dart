@@ -424,8 +424,13 @@ class _ReaderPageState extends ConsumerState<ReaderPage> {
   @override
   Widget build(BuildContext context) {
     if (_document == null && _error == null) {
-      return const Scaffold(
-        body: SizedBox.expand(),
+      return Scaffold(
+        appBar: AppBar(
+          title: const Text('Opening PDF…'),
+        ),
+        body: const Center(
+          child: CircularProgressIndicator(),
+        ),
       );
     }
 
