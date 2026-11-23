@@ -1,4 +1,4 @@
-name: Build Lexiora APK
+name: Build DarsNexa Release
 
 # Builds, analyzes and tests Sapiora on every push to main, then produces a
 # release APK — uploaded both as a workflow artifact and as an asset on a
@@ -15,7 +15,7 @@ permissions:
 
 jobs:
   build:
-    name: Analyze · Test · Build APK
+    name: Analyze · Test · Build DarsNexa
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -148,7 +148,7 @@ jobs:
           SAPIORA_AI_PROVIDER: ${{ secrets.SAPIORA_AI_PROVIDER }}
           SAPIORA_CURRENT_AFFAIRS_BASE_URL: https://sapiora-ai-worker.ismaillasharibaloch53.workers.dev
           SAPIORA_CURRENT_AFFAIRS_SUMMARY_BASE_URL: https://sapiora-ai-worker.ismaillasharibaloch53.workers.dev
-          SAPIORA_ENABLE_ADMIN: ${{ secrets.SAPIORA_ENABLE_ADMIN }}
+          SAPIORA_ENABLE_ADMIN: "false"
         run: |
           DEFINES="--dart-define=SAPIORA_AI_API_KEY=$SAPIORA_AI_API_KEY"
           if [ -n "$SAPIORA_CURRENT_AFFAIRS_BASE_URL" ]; then
@@ -236,7 +236,7 @@ jobs:
           SAPIORA_AI_PROVIDER: ${{ secrets.SAPIORA_AI_PROVIDER }}
           SAPIORA_CURRENT_AFFAIRS_BASE_URL: https://sapiora-ai-worker.ismaillasharibaloch53.workers.dev
           SAPIORA_CURRENT_AFFAIRS_SUMMARY_BASE_URL: https://sapiora-ai-worker.ismaillasharibaloch53.workers.dev
-          SAPIORA_ENABLE_ADMIN: ${{ secrets.SAPIORA_ENABLE_ADMIN }}
+          SAPIORA_ENABLE_ADMIN: "false"
         run: |
           DEFINES="--dart-define=SAPIORA_AI_API_KEY=$SAPIORA_AI_API_KEY"
           if [ -n "$SAPIORA_CURRENT_AFFAIRS_BASE_URL" ]; then
@@ -262,14 +262,14 @@ jobs:
       - name: Upload APK artifact
         uses: actions/upload-artifact@v4
         with:
-          name: lexiora-release-apk
+          name: darsnexa-release-apk
           path: build/app/outputs/flutter-apk/app-release.apk
           if-no-files-found: error
 
       - name: Upload App Bundle artifact
         uses: actions/upload-artifact@v4
         with:
-          name: sapiora-release-aab
+          name: darsnexa-release-aab
           path: build/app/outputs/bundle/release/app-release.aab
           if-no-files-found: error
 
@@ -290,8 +290,8 @@ jobs:
               gh release create "$RELEASE_TAG" \
                 build/app/outputs/flutter-apk/app-release.apk \
                 build/app/outputs/bundle/release/app-release.aab \
-                --title "Sapiora $RELEASE_TAG" \
-                --notes "Automated release build of Sapiora." && exit 0
+                --title "DarsNexa $RELEASE_TAG" \
+                --notes "Automated release build of DarsNexa." && exit 0
             fi
             echo "GitHub Release API unavailable; retry $attempt/5 in 20 seconds..."
             sleep 20
