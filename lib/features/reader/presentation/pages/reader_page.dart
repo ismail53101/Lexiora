@@ -13,6 +13,7 @@ import 'package:lexiora/core/reader_engine/pdf_reader_controller.dart';
 import 'package:lexiora/core/reader_engine/reader_models.dart';
 import 'package:lexiora/core/reader_engine/word_action.dart';
 import 'package:lexiora/core/services/pdf_ocr_service.dart';
+import 'package:lexiora/core/services/pdf_import_service.dart';
 import 'package:lexiora/core/services/screen_wake_service.dart';
 import 'package:lexiora/core/utils/logger.dart';
 import 'package:lexiora/core/widgets/error_view.dart';
@@ -45,6 +46,7 @@ class ReaderPage extends ConsumerStatefulWidget {
     super.key,
     required this.documentId,
     this.temporaryDocument,
+    this.externalLaunch = false,
   });
 
   final String documentId;
@@ -52,6 +54,10 @@ class ReaderPage extends ConsumerStatefulWidget {
   /// Non-null for a Drive PDF opened directly from temporary app-private cache.
   /// It is intentionally never inserted into the Library database.
   final LibraryDocument? temporaryDocument;
+
+  /// True when Android launched DarsNexa from another app's document picker.
+  /// Back must finish this task so Android returns to that caller directly.
+  final bool externalLaunch;
 
   @override
   ConsumerState<ReaderPage> createState() => _ReaderPageState();
@@ -77,6 +83,20 @@ class _ReaderPageState extends ConsumerState<ReaderPage> {
 
   String get _id => widget.documentId;
   bool get _isTemporary => widget.temporaryDocument != null;
+
+  void _leaveReader() {
+    if (widget.externalLaunch) {
+      unawaited(PdfImportService.finishExternalPdf());
+      return;
+    }
+
+    final GoRouter router = GoRouter.of(context);
+    if (router.canPop()) {
+      router.pop();
+    } else {
+      router.go(AppRoutes.library);
+    }
+  }
 
   @override
   void initState() {
@@ -444,7 +464,7 @@ class _ReaderPageState extends ConsumerState<ReaderPage> {
           message: _error ?? 'The document could not be opened.',
           details: _errorDetails,
           onRetry: _retry,
-          onBack: () => Navigator.of(context).maybePop(),
+          onBack: _leaveReader,
         ),
       );
     }
@@ -472,17 +492,7 @@ class _ReaderPageState extends ConsumerState<ReaderPage> {
         leading: IconButton(
           icon: const Icon(Icons.arrow_back),
           tooltip: 'Back',
-          onPressed: () {
-            final GoRouter router = GoRouter.of(context);
-            if (router.canPop()) {
-              router.pop();
-            } else {
-              // The reader can also be reached directly from an external
-              // PDF intent. In that case there is no reader route to pop;
-              // return to Library instead of closing the app.
-              router.go(AppRoutes.library);
-            }
-          },
+          onPressed: _leaveReader,
         ),
         title: Text(_document!.title, overflow: TextOverflow.ellipsis),
         actions: [

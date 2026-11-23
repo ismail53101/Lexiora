@@ -9,11 +9,13 @@ class DeviceFile {
     required this.path,
     required this.name,
     required this.size,
+    this.openedFromExternalIntent = false,
   });
 
   final String path;
   final String name;
   final int size;
+  final bool openedFromExternalIntent;
 }
 
 /// Discovers every PDF on the device via the native `lexiora/platform` channel.

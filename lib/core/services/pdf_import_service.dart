@@ -33,6 +33,12 @@ class PdfImportService {
     return _parseDeviceFile(raw);
   }
 
+  /// Closes DarsNexa and returns to the app that supplied an external PDF.
+  static Future<void> finishExternalPdf() async {
+    if (!Platform.isAndroid) return;
+    await _channel.invokeMethod<void>('finishExternalPdf');
+  }
+
   Future<List<DeviceFile>> pickAndImport() async {
     if (!Platform.isAndroid) return const <DeviceFile>[];
     final List<Object?>? raw =
@@ -62,6 +68,7 @@ class PdfImportService {
       path: path,
       name: (raw['name'] as String?) ?? 'document.pdf',
       size: (raw['size'] as num?)?.toInt() ?? 0,
+      openedFromExternalIntent: raw['externalIntent'] == true,
     );
   }
 }

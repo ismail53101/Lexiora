@@ -235,6 +235,10 @@ class MainActivity : FlutterActivity() {
                         pendingIncomingPdf = null
                         result.success(incoming)
                     }
+                    "finishExternalPdf" -> {
+                        result.success(null)
+                        finishAndRemoveTask()
+                    }
                     "getSdkInt" -> result.success(Build.VERSION.SDK_INT)
                     "getFirstInstallTime" -> result.success(
                         try {
@@ -341,7 +345,7 @@ class MainActivity : FlutterActivity() {
         Thread {
             try {
                 val dir = File(filesDir, "imported").apply { mkdirs() }
-                val copied = copyToImported(sourceUri, dir, 0)
+                val copied = copyToImported(sourceUri, dir, 0, externalIntent = true)
                 if (copied == null) throw IllegalStateException("Could not read the selected PDF")
                 runOnUiThread {
                     val channel = platformChannel
@@ -422,7 +426,12 @@ class MainActivity : FlutterActivity() {
         }.start()
     }
 
-    private fun copyToImported(uri: Uri, dir: File, index: Int): Map<String, Any?>? {
+    private fun copyToImported(
+        uri: Uri,
+        dir: File,
+        index: Int,
+        externalIntent: Boolean = false,
+    ): Map<String, Any?>? {
         val displayName = queryDisplayName(uri) ?: "document_${System.currentTimeMillis()}.pdf"
         val dest = File(dir, "${System.currentTimeMillis()}_$index.pdf")
         val input = contentResolver.openInputStream(uri) ?: return null
@@ -431,6 +440,7 @@ class MainActivity : FlutterActivity() {
             "path" to dest.absolutePath,
             "name" to displayName,
             "size" to dest.length(),
+            "externalIntent" to externalIntent,
         )
     }
 
