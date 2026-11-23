@@ -330,7 +330,7 @@ class MainActivity : FlutterActivity() {
     private fun openWordFile(path: String, mime: String, result: MethodChannel.Result) {
         try {
             val intent = Intent(Intent.ACTION_VIEW).apply {
-                setDataAndType(FileProvider.getUriForFile(this, "$packageName.fileprovider", File(path)), mime)
+                setDataAndType(FileProvider.getUriForFile(this@MainActivity, "$packageName.fileprovider", File(path)), mime)
                 addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION)
             }
             if (intent.resolveActivity(packageManager) == null) { result.error("no_app", "No installed app can open this Word document", null); return }
