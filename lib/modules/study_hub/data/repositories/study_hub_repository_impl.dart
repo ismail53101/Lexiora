@@ -619,7 +619,7 @@ class StudyHubRepositoryImpl implements StudyHubRepository {
           seriesId: seriesId, created: 0, skippedDays: built.skipped);
     }
     await _local.applyChanges(
-      upserts: built.tasks.map(_taskCompanion).toList(),
+      upserts: finalTasks.map(_taskCompanion).toList(),
       statements: <({String sql, List<Object?> args})>[
         (
           sql: 'INSERT OR REPLACE INTO sp_series '
@@ -642,7 +642,7 @@ class StudyHubRepositoryImpl implements StudyHubRepository {
             DateTime.now().millisecondsSinceEpoch ~/ 1000,
           ],
         ),
-        ...built.mapping,
+        ...finalMapping,
       ],
     );
     _notifyChanged();
