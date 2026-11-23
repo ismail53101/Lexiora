@@ -548,8 +548,8 @@ class _SessionEditorState extends ConsumerState<_SessionEditor> {
     final bool canSplit = widget.existing == null && _mode != _TimeMode.none;
     final bool splitting = canSplit && _split;
     final PomodoroPlan? plan = splitting
-        ? planPomodoro(
-            totalFocusMinutes: _duration,
+        ? planPomodoroWindow(
+            totalWindowMinutes: _duration,
             focusMinutes: _blockPresets[_preset].$1,
             breakMinutes: _blockPresets[_preset].$2,
           )
@@ -741,24 +741,28 @@ class _SessionEditorState extends ConsumerState<_SessionEditor> {
                     ),
                 ],
               ),
-            if (widget.existing == null && _mode != _TimeMode.none && !splitting) ...<Widget>[
+            if (widget.existing == null && _mode != _TimeMode.none) ...<Widget>[
               SwitchListTile.adaptive(
                 contentPadding: EdgeInsets.zero,
                 value: _repeat,
-                onChanged: (bool v) => setState(() {
-                  _repeat = v;
-                  _error = null;
-                  if (v && _mode != _TimeMode.manual) {
-                    // A repeating session needs a fixed time.
-                    _start = _startFor() ?? _next;
-                    _mode = _TimeMode.manual;
-                  }
-                }),
+                onChanged: splitting
+                    ? null
+                    : (bool v) => setState(() {
+                        _repeat = v;
+                        _error = null;
+                        if (v && _mode != _TimeMode.manual) {
+                          // A repeating session needs a fixed time.
+                          _start = _startFor() ?? _next;
+                          _mode = _TimeMode.manual;
+                        }
+                      }),
                 title: const Text('Repeat weekly'),
                 subtitle: Text(
-                  _repeat
-                      ? 'Adds this session on the chosen days (at a fixed time)'
-                      : 'For example every Monday and Wednesday',
+                  splitting
+                      ? 'Not available with focus blocks.'
+                      : _repeat
+                          ? 'Adds this session on the chosen days (at a fixed time)'
+                          : 'For example every Monday and Wednesday',
                 ),
               ),
               if (_repeat) ...<Widget>[
