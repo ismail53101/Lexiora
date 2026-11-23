@@ -781,8 +781,8 @@ class StudyHubRepositoryImpl implements StudyHubRepository {
       throw const StudyScheduleInvalidTimeException(
           'Focus blocks need a length of at least one minute.');
     }
-    final PomodoroPlan plan = planPomodoro(
-      totalFocusMinutes: total,
+    final PomodoroPlan plan = planPomodoroWindow(
+      totalWindowMinutes: total,
       focusMinutes: focusMinutes,
       breakMinutes: breakMinutes,
     );
