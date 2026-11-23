@@ -4,7 +4,9 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:go_router/go_router.dart';
 import 'package:lexiora/app/di/injector.dart';
+import 'package:lexiora/app/router/app_routes.dart';
 import 'package:lexiora/core/models/normalized_rect.dart';
 import 'package:lexiora/core/reader_engine/pdf_engine.dart';
 import 'package:lexiora/core/reader_engine/pdf_reader_controller.dart';
@@ -471,11 +473,14 @@ class _ReaderPageState extends ConsumerState<ReaderPage> {
           icon: const Icon(Icons.arrow_back),
           tooltip: 'Back',
           onPressed: () {
-            final NavigatorState navigator = Navigator.of(context);
-            if (navigator.canPop()) {
-              navigator.pop();
+            final GoRouter router = GoRouter.of(context);
+            if (router.canPop()) {
+              router.pop();
             } else {
-              SystemNavigator.pop();
+              // The reader can also be reached directly from an external
+              // PDF intent. In that case there is no reader route to pop;
+              // return to Library instead of closing the app.
+              router.go(AppRoutes.library);
             }
           },
         ),
