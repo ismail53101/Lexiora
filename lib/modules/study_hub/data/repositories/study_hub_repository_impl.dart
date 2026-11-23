@@ -493,6 +493,8 @@ class StudyHubRepositoryImpl implements StudyHubRepository {
     required String startDay,
     required String untilDay,
     int? breakMinutes,
+    int? splitFocusMinutes,
+    int? splitBreakMinutes,
     RepeatTopicMode topicMode = RepeatTopicMode.same,
   }) async {
     final int? start = template.startMinute;
@@ -537,7 +539,81 @@ class StudyHubRepositoryImpl implements StudyHubRepository {
       breakMinutes: pause,
       topics: topics,
     );
-    final int created = built.mapping.length;
+    var finalTasks = built.tasks;
+    var finalMapping = built.mapping;
+    if (splitFocusMinutes != null && splitBreakMinutes != null) {
+      finalTasks = <StudyTask>[
+        ...built.tasks.where((StudyTask t) {
+          return !t.id.contains(':') || !built.mapping.any(
+            (m) => m.args.length > 3 &&
+                m.args[2] == seriesId &&
+                m.args[3] == t.day &&
+                (m.args[0] == t.id || m.args[1] == t.id),
+          );
+        }),
+      ];
+      finalMapping = <({String sql, List<Object?> args})>[];
+      for (final String day in days) {
+        final String sessionId = '$seriesId:$day';
+        final StudyTask? session = built.tasks.cast<StudyTask?>().firstWhere(
+          (StudyTask? t) => t?.id == sessionId,
+          orElse: () => null,
+        );
+        if (session == null) continue;
+        final PomodoroPlan plan = planPomodoroWindow(
+          totalWindowMinutes: end - start,
+          focusMinutes: splitFocusMinutes,
+          breakMinutes: splitBreakMinutes,
+        );
+        final DateTime now = DateTime.now();
+        int focusNo = 0;
+        int breakNo = 0;
+        String? previousFocusId;
+        for (final PlannedBlock block in plan.blocks) {
+          final bool focus = block.kind == BlockKind.focus;
+          final String id = focus
+              ? '$seriesId:$day:f${++focusNo}'
+              : '$seriesId:$day:b${++breakNo}';
+          final int s = start + block.offsetMinutes;
+          final StudyTask blockTask = StudyTask(
+            id: id,
+            day: day,
+            title: focus ? session.title : 'Break',
+            subject: focus ? session.subject : null,
+            topic: focus ? session.topic : null,
+            notes: focus ? session.notes : null,
+            priority: session.priority,
+            status: focus ? session.status : TaskStatus.pending,
+            kind: focus ? SessionKind.session : SessionKind.breakTime,
+            startMinute: s,
+            endMinute: s + block.minutes,
+            durationMinutes: block.minutes,
+            completedAt: focus && session.status == TaskStatus.completed
+                ? now
+                : null,
+            createdAt: now,
+            updatedAt: now,
+          );
+          finalTasks.add(blockTask);
+          if (focus) {
+            previousFocusId = id;
+            finalMapping.add((
+              sql: _mapSql,
+              args: <Object?>[id, null, seriesId, day],
+            ));
+          } else if (previousFocusId != null) {
+            finalMapping.removeWhere(
+              (m) => m.args.length > 3 && m.args[0] == previousFocusId,
+            );
+            finalMapping.add((
+              sql: _mapSql,
+              args: <Object?>[previousFocusId, id, seriesId, day],
+            ));
+          }
+        }
+      }
+    }
+    final int created = finalMapping.length;
     if (created == 0) {
       return RepeatSaveResult(
           seriesId: seriesId, created: 0, skippedDays: built.skipped);
