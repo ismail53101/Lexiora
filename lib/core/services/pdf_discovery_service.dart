@@ -10,12 +10,16 @@ class DeviceFile {
     required this.name,
     required this.size,
     this.openedFromExternalIntent = false,
+    this.mimeType,
   });
 
   final String path;
   final String name;
   final int size;
   final bool openedFromExternalIntent;
+  final String? mimeType;
+
+  bool get isWord => name.toLowerCase().endsWith('.doc') || name.toLowerCase().endsWith('.docx') || (mimeType?.contains('word') ?? false);
 }
 
 /// Discovers every PDF on the device via the native `lexiora/platform` channel.

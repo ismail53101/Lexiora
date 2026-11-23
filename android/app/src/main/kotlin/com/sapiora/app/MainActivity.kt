@@ -14,6 +14,7 @@ import android.provider.MediaStore
 import android.provider.OpenableColumns
 import android.util.Log
 import android.view.WindowManager
+import androidx.core.content.FileProvider
 import com.google.android.gms.tasks.Tasks
 import com.google.mlkit.vision.common.InputImage
 import com.google.mlkit.vision.text.TextRecognition
@@ -84,7 +85,7 @@ class MainActivity : FlutterActivity() {
         // GoRouter can interpret content://... as an initial route and render
         // "Page Not Found" before the PDF import is handled.
         val incomingIntent = intent
-        if (isExternalPdfIntent(incomingIntent)) {
+        if (isExternalDocumentIntent(incomingIntent)) {
             setIntent(Intent(this, MainActivity::class.java))
         }
 
@@ -203,7 +204,7 @@ class MainActivity : FlutterActivity() {
         // Never hand the content:// URI to FlutterActivity/GoRouter.
         // Keep the current app route intact and process the PDF ourselves.
         val incomingIntent = intent
-        if (isExternalPdfIntent(incomingIntent)) {
+        if (isExternalDocumentIntent(incomingIntent)) {
             setIntent(Intent(this, MainActivity::class.java))
         } else {
             setIntent(incomingIntent)
@@ -238,6 +239,12 @@ class MainActivity : FlutterActivity() {
                     "finishExternalPdf" -> {
                         result.success(null)
                         finishAndRemoveTask()
+                    }
+                    "openWordFile" -> {
+                        val path = call.argument<String>("path")
+                        val mime = call.argument<String>("mime") ?: wordMimeFor(path)
+                        if (path == null) { result.error("bad_args", "Missing path", null) }
+                        else openWordFile(path, mime, result)
                     }
                     "getSdkInt" -> result.success(Build.VERSION.SDK_INT)
                     "getFirstInstallTime" -> result.success(
@@ -303,22 +310,32 @@ class MainActivity : FlutterActivity() {
             }
     }
 
-    private fun isExternalPdfIntent(incoming: Intent?): Boolean {
+    private fun isExternalDocumentIntent(incoming: Intent?): Boolean {
         if (incoming == null) return false
         val action = incoming.action
         if (action != Intent.ACTION_VIEW && action != Intent.ACTION_SEND) return false
-        val uri = incoming.data
-            ?: if (action == Intent.ACTION_SEND) {
-                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
-                    incoming.getParcelableExtra(Intent.EXTRA_STREAM, Uri::class.java)
-                } else {
-                    @Suppress("DEPRECATION")
-                    incoming.getParcelableExtra(Intent.EXTRA_STREAM)
-                }
-            } else null
-        val mime = incoming.type
-        return mime == "application/pdf" ||
-            (uri?.toString()?.lowercase()?.endsWith(".pdf") == true)
+        val uri = incoming.data ?: if (action == Intent.ACTION_SEND) {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) incoming.getParcelableExtra(Intent.EXTRA_STREAM, Uri::class.java)
+            else { @Suppress("DEPRECATION") incoming.getParcelableExtra(Intent.EXTRA_STREAM) }
+        } else null
+        val value = (incoming.type ?: "") + " " + (uri?.toString() ?: "")
+        return incoming.type == "application/pdf" || incoming.type == "application/msword" ||
+            incoming.type == "application/vnd.openxmlformats-officedocument.wordprocessingml.document" ||
+            value.lowercase().contains(".pdf") || value.lowercase().contains(".doc")
+    }
+
+    private fun wordMimeFor(path: String?): String =
+        if (path?.lowercase()?.endsWith(".docx") == true) "application/vnd.openxmlformats-officedocument.wordprocessingml.document" else "application/msword"
+
+    private fun openWordFile(path: String, mime: String, result: MethodChannel.Result) {
+        try {
+            val intent = Intent(Intent.ACTION_VIEW).apply {
+                setDataAndType(FileProvider.getUriForFile(this, "$packageName.fileprovider", File(path)), mime)
+                addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION)
+            }
+            if (intent.resolveActivity(packageManager) == null) { result.error("no_app", "No installed app can open this Word document", null); return }
+            startActivity(intent); result.success(true)
+        } catch (e: Exception) { result.error("open_failed", "Could not open Word document: ${e.message}", null) }
     }
 
     /** Copies an incoming content URI immediately, then notifies Dart with a
@@ -339,14 +356,17 @@ class MainActivity : FlutterActivity() {
         if (uri == null) return
         val sourceUri: Uri = uri
         val mime = incoming.type
-        if (mime != null && mime != "application/pdf" &&
-            !sourceUri.toString().lowercase().endsWith(".pdf")) return
+        val lower = sourceUri.toString().lowercase()
+        val supported = mime == null || mime == "application/pdf" || mime == "application/msword" ||
+            mime == "application/vnd.openxmlformats-officedocument.wordprocessingml.document" ||
+            lower.endsWith(".pdf") || lower.endsWith(".doc") || lower.endsWith(".docx")
+        if (!supported) return
 
         Thread {
             try {
                 val dir = File(filesDir, "imported").apply { mkdirs() }
                 val copied = copyToImported(sourceUri, dir, 0, externalIntent = true)
-                if (copied == null) throw IllegalStateException("Could not read the selected PDF")
+                if (copied == null) throw IllegalStateException("Could not read the selected document")
                 runOnUiThread {
                     val channel = platformChannel
                     if (channel == null || !dartChannelReady) {
@@ -432,14 +452,17 @@ class MainActivity : FlutterActivity() {
         index: Int,
         externalIntent: Boolean = false,
     ): Map<String, Any?>? {
-        val displayName = queryDisplayName(uri) ?: "document_${System.currentTimeMillis()}.pdf"
-        val dest = File(dir, "${System.currentTimeMillis()}_$index.pdf")
+        val displayName = queryDisplayName(uri) ?: "document_${System.currentTimeMillis()}.${if (externalIntent) "docx" else "pdf"}"
+        val safeName = displayName.substringAfterLast('/').ifBlank { "document.pdf" }
+        val extension = safeName.substringAfterLast('.', "pdf").lowercase()
+        val dest = File(dir, "${System.currentTimeMillis()}_$index.$extension")
         val input = contentResolver.openInputStream(uri) ?: return null
         input.use { s -> dest.outputStream().use { o -> s.copyTo(o) } }
         return mapOf(
             "path" to dest.absolutePath,
             "name" to displayName,
             "size" to dest.length(),
+            "mime" to (if (externalIntent) (if (extension == "docx") "application/vnd.openxmlformats-officedocument.wordprocessingml.document" else if (extension == "doc") "application/msword" else "application/pdf") else "application/pdf"),
             "externalIntent" to externalIntent,
         )
     }

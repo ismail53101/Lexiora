@@ -54,6 +54,7 @@ class PdfImportService {
           path: path,
           name: (e['name'] as String?) ?? 'document.pdf',
           size: (e['size'] as num?)?.toInt() ?? 0,
+          mimeType: e['mime'] as String?,
         ),
       );
     }
@@ -69,6 +70,7 @@ class PdfImportService {
       name: (raw['name'] as String?) ?? 'document.pdf',
       size: (raw['size'] as num?)?.toInt() ?? 0,
       openedFromExternalIntent: raw['externalIntent'] == true,
+      mimeType: raw['mime'] as String?,
     );
   }
 }

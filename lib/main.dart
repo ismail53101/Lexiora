@@ -215,7 +215,7 @@ Future<void> _finishStartup(GoRouter router) async {
   try {
     final PdfImportService pdfImport = sl<PdfImportService>();
     pdfImport.registerIncomingPdfHandler(
-      (DeviceFile file) => unawaited(_openIncomingPdf(router, file)),
+      (DeviceFile file) => unawaited(_openIncoming(router, file)),
     );
     final DeviceFile? initialIncoming =
         await pdfImport.takeInitialIncomingPdf();
@@ -228,7 +228,7 @@ Future<void> _finishStartup(GoRouter router) async {
     }
     if (initialIncoming != null) {
       WidgetsBinding.instance.addPostFrameCallback((_) {
-        unawaited(_openIncomingPdf(router, initialIncoming));
+        unawaited(_openIncoming(router, initialIncoming));
       });
     }
   } on Object catch (error, stackTrace) {
@@ -262,6 +262,11 @@ void _handleNotificationPayload(GoRouter router, String payload) {
       stackTrace: stack,
     );
   }
+}
+
+Future<void> _openIncoming(GoRouter router, DeviceFile file) async {
+  if (file.isWord) { router.go(AppRoutes.wordEditor, extra: file); return; }
+  await _openIncomingPdf(router, file);
 }
 
 Future<void> _openIncomingPdf(GoRouter router, DeviceFile file) async {

@@ -12,6 +12,8 @@ import 'package:lexiora/core/services/rewarded_ad_manager.dart';
 import 'package:lexiora/features/library/domain/entities/library_document.dart';
 import 'package:lexiora/features/reader/data/pdfrx_engine.dart';
 import 'package:lexiora/features/reader/presentation/pages/reader_page.dart';
+import 'package:lexiora/features/reader/presentation/pages/word_editor_page.dart';
+import 'package:lexiora/core/services/pdf_discovery_service.dart';
 
 /// Wires the Reader feature: registers the [PdfEngine] binding (pdfrx) and the
 /// `/reader/:id` route. Swapping the engine is a one-line change here.
@@ -53,6 +55,13 @@ class ReaderModule extends FeatureModule {
               manager: getIt<RewardedAdManager>(),
               child: reader,
             );
+          },
+        ),
+        GoRoute(
+          path: AppRoutes.wordEditor,
+          builder: (_, state) {
+            final file = state.extra! as DeviceFile;
+            return PopScope(canPop: false, onPopInvokedWithResult: (didPop, result) { if (!didPop) unawaited(PdfImportService.finishExternalPdf()); }, child: WordEditorPage(file: file));
           },
         ),
         GoRoute(
