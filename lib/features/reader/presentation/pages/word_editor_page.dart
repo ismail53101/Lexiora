@@ -186,7 +186,7 @@ class _WordEditorPageState extends State<WordEditorPage> {
   // keeps the document content inside Word-like margins.
   static const double _a4AspectRatio = 210 / 297;
   static const double _a4ContentHeight = 734;
-  static const double _lineHeight = 1.35;
+  static const double _lineHeight = 1.55;
   static const int _linesPerPage = 49;
   final List<_RichWordEditingController> _pageControllers = <_RichWordEditingController>[];
   int _activePageIndex = 0;
@@ -283,12 +283,90 @@ class _WordEditorPageState extends State<WordEditorPage> {
     if (mounted) setState(() {});
   }
 
+  TextSpan _paginationSpan(String value, int baseOffset) {
+    final List<InlineSpan> children = <InlineSpan>[];
+    final List<int> cuts = <int>[0, value.length];
+    for (final _FormatRange range in _ranges) {
+      if (range.end > baseOffset && range.start < baseOffset + value.length) {
+        cuts
+          ..add((range.start - baseOffset).clamp(0, value.length))
+          ..add((range.end - baseOffset).clamp(0, value.length));
+      }
+    }
+    cuts.sort();
+    final List<int> unique = <int>[];
+    for (final int cut in cuts) {
+      if (unique.isEmpty || unique.last != cut) unique.add(cut);
+    }
+    for (int i = 0; i < unique.length - 1; i++) {
+      final int start = unique[i];
+      final int end = unique[i + 1];
+      if (start == end) continue;
+      _FormatRange? format;
+      for (final _FormatRange range in _ranges.reversed) {
+        if (baseOffset + start >= range.start && baseOffset + start < range.end) {
+          format = range;
+          break;
+        }
+      }
+      final TextStyle style = TextStyle(
+        fontSize: format?.size ?? 11,
+        height: _lineHeight,
+        fontWeight: format?.bold == true ? FontWeight.bold : FontWeight.normal,
+        fontStyle: format?.italic == true ? FontStyle.italic : FontStyle.normal,
+        decoration: format?.underline == true ? TextDecoration.underline : TextDecoration.none,
+        color: format?.color ?? Colors.black,
+        backgroundColor: format?.highlight,
+      );
+      children.add(TextSpan(text: value.substring(start, end), style: style));
+    }
+    return TextSpan(children: children);
+  }
+
+  bool _fitsPage(String value, int baseOffset) {
+    final TextPainter painter = TextPainter(
+      text: _paginationSpan(value, baseOffset),
+      textDirection: TextDirection.ltr,
+      textWidthBasis: TextWidthBasis.parent,
+    )..layout(maxWidth: 686);
+    return painter.height <= _a4ContentHeight;
+  }
+
   List<String> _splitIntoPages([String? source]) {
-    final List<String> lines = (source ?? _text.text).split('\n');
+    final String text = source ?? _text.text;
+    if (text.isEmpty) return <String>[''];
     final List<String> pages = <String>[];
-    for (int i = 0; i < lines.length; i += _linesPerPage) {
-      final int end = (i + _linesPerPage).clamp(0, lines.length);
-      pages.add(lines.sublist(i, end).join('\n'));
+    int cursor = 0;
+    int pageBase = 0;
+    while (cursor < text.length) {
+      int low = cursor + 1;
+      int high = text.length;
+      int best = low;
+      while (low <= high) {
+        final int mid = (low + high) ~/ 2;
+        final String candidate = text.substring(cursor, mid);
+        if (_fitsPage(candidate, pageBase)) {
+          best = mid;
+          low = mid + 1;
+        } else {
+          high = mid - 1;
+        }
+      }
+      int end = best.clamp(cursor + 1, text.length);
+      if (end < text.length) {
+        final int newline = text.lastIndexOf('\n', end - 1);
+        final int space = text.lastIndexOf(RegExp(r'\s'), end - 1);
+        if (newline > cursor) {
+          end = newline;
+        } else if (space > cursor) {
+          end = space;
+        }
+      }
+      if (end <= cursor) end = (cursor + 1).clamp(0, text.length);
+      pages.add(text.substring(cursor, end));
+      cursor = end;
+      while (cursor < text.length && text[cursor] == '\n') cursor++;
+      pageBase = cursor;
     }
     return pages.isEmpty ? <String>[''] : pages;
   }
@@ -371,7 +449,9 @@ class _WordEditorPageState extends State<WordEditorPage> {
       ),
     );
     _activePageIndex = pageIndex;
-    if (value.split('\n').length > _linesPerPage) {
+    final List<String> recalculatedPages = _splitIntoPages(combined);
+    if (recalculatedPages.length != _pageControllers.length ||
+        value.split('\n').length > _linesPerPage) {
       _setEditorText(combined);
       _rebuildPageControllers(preferredPage: pageIndex);
     }
@@ -719,7 +799,7 @@ class _WordEditorPageState extends State<WordEditorPage> {
   Widget _tableSurface() {
     if (_tables.isEmpty) return const SizedBox.shrink();
     return SizedBox(
-      height: 180,
+      height: 170,
       child: ListView.builder(
         padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 4),
         itemCount: _tables.length,
@@ -1138,8 +1218,8 @@ class _WordEditorPageState extends State<WordEditorPage> {
                           ),
                             child: TextField(
                               controller: controller,
-                              maxLines: _linesPerPage,
-                              minLines: _linesPerPage,
+                              maxLines: null,
+                              minLines: 1,
                               scrollPhysics: const NeverScrollableScrollPhysics(),
                               onTap: () {
                               _activePageIndex = pageIndex;
