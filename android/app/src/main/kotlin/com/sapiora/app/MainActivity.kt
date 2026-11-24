@@ -486,12 +486,26 @@ class MainActivity : FlutterActivity() {
             val out = ArrayList<Map<String, Any?>>()
             val seen = HashSet<String>()
             try {
-                // MediaStore is Android's indexed file database. With
-                // MANAGE_EXTERNAL_STORAGE granted, it is the reliable
-                // fast path for discovering device PDFs. Do not recursively
-                // walk storage here: that can keep the Library spinner busy
-                // for a very long time on phones with large storage.
+                // Use both MediaStore and a filesystem walk. MediaStore can
+                // miss newly-created/unindexed files, while the filesystem walk
+                // can be restricted on some OEM builds. The union gives the
+                // Library the most reliable result after All Files Access.
                 queryMediaStorePdfs(out, seen)
+                val roots = LinkedHashSet<String>()
+                roots.add(Environment.getExternalStorageDirectory().absolutePath)
+                getExternalFilesDirs(null).forEach { filesDir ->
+                    if (filesDir != null) {
+                        val path = filesDir.absolutePath
+                        val marker = "/Android/data/$packageName/"
+                        val markerIndex = path.indexOf(marker)
+                        if (markerIndex > 0) {
+                            roots.add(path.substring(0, markerIndex))
+                        }
+                    }
+                }
+                roots.forEach { root ->
+                    walkPdfs(File(root), out, seen, 0)
+                }
                 Log.i("Lexiora", "scanAllDocuments: found=" + out.size)
                 runOnUiThread { result.success(out) }
             } catch (e: Exception) {
