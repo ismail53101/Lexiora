@@ -289,7 +289,7 @@ class _WordEditorPageState extends State<WordEditorPage> {
     final int rowCount = dimensions ~/ 100;
     final int columnCount = dimensions % 100;
     final String token = _newTableToken();
-    // Keep the table model constructor expanded to avoid parser ambiguity in CI.
+    // Keep the table model constructor expanded to avoid parser ambiguity in CI builds.
     _tables.add(
       _TableModel(
         token,
