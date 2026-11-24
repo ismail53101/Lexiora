@@ -93,10 +93,18 @@ class _WordEditorPageState extends State<WordEditorPage> {
 
       if (_docx) {
         final Uint8List bytes = await File(_path).readAsBytes();
-        await _controller.loadBytesAsync(bytes);
+        // Open synchronously so the live controller receives the exact WML
+        // tree (including floating text boxes/pictures) before the first
+        // pagination pass. This is important for Word files whose first page
+        // is composed from anchored objects.
+        _controller.loadBytes(bytes);
+        _normalizeImportedWordLayout();
         // Re-layout with the exact Flutter font metrics used by the canvas.
-        // This prevents DOCX line widths from drifting beyond the page content area.
+        // Run it after the import normalization so page geometry and text
+        // metrics are calculated from the final document model.
         _controller.fitPaintMetrics();
+        _controller.relayout();
+        _controller.refresh();
         _controller.markClean();
       } else if (mounted) {
         WidgetsBinding.instance.addPostFrameCallback((_) {
@@ -151,6 +159,44 @@ class _WordEditorPageState extends State<WordEditorPage> {
         );
       }
     }
+  }
+
+  void _normalizeImportedWordLayout() {
+    // Some Word-created assignment forms use a bullet-list paragraph only as
+    // a layout container for floating text boxes. Quds correctly imports the
+    // floating objects, but applying the list indent to the surrounding form
+    // paragraph shifts the editable fields far to the right. Detect only
+    // form-style paragraphs (labels + underscore fields) so real bullet lists
+    // elsewhere in the document remain untouched.
+    for (final WmlParagraph paragraph in _controller.document.paragraphs) {
+      final String text = paragraph.text;
+      if (paragraph.properties.numId == null ||
+          !text.contains('_') ||
+          !_looksLikeFormParagraph(text)) {
+        continue;
+      }
+      paragraph.properties
+        ..numId = null
+        ..ilvl = 0
+        ..listLabel = null
+        ..indent = const WmlIndent();
+    }
+  }
+
+  bool _looksLikeFormParagraph(String text) {
+    final String lower = text.toLowerCase();
+    const List<String> labels = <String>[
+      'student name',
+      'roll no',
+      'semester',
+      'department',
+      'course',
+      'teacher',
+      'submission date',
+      'sub title',
+    ];
+    final int matches = labels.where(lower.contains).length;
+    return matches >= 2;
   }
 
   void _insertTable() {
