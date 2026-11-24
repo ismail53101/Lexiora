@@ -182,7 +182,12 @@ class _WordEditorPageState extends State<WordEditorPage> {
   String? _error;
   String _lastText = '';
   bool _restoringText = false;
-  static const int _linesPerPage = 44;
+  // A4 portrait: 210 x 297 mm. The editor uses a fixed A4 logical page and
+  // keeps the document content inside Word-like margins.
+  static const double _a4AspectRatio = 210 / 297;
+  static const double _a4ContentHeight = 734;
+  static const double _lineHeight = 1.35;
+  static const int _linesPerPage = 49;
   final List<_RichWordEditingController> _pageControllers = <_RichWordEditingController>[];
   int _activePageIndex = 0;
 
@@ -1019,17 +1024,18 @@ class _WordEditorPageState extends State<WordEditorPage> {
                       Material(
                         color: Theme.of(context).colorScheme.surface,
                         elevation: active ? 2 : 1,
-                        child: Container(
-                          height: 760,
-                          decoration: BoxDecoration(
+                        child: AspectRatio(
+                          aspectRatio: _a4AspectRatio,
+                          child: Container(
+                            decoration: BoxDecoration(
                             border: Border.all(color: Theme.of(context).dividerColor),
                           ),
-                          child: TextField(
-                            controller: controller,
-                            maxLines: _linesPerPage,
-                            minLines: _linesPerPage,
-                            scrollPhysics: const NeverScrollableScrollPhysics(),
-                            onTap: () {
+                            child: TextField(
+                              controller: controller,
+                              maxLines: _linesPerPage,
+                              minLines: _linesPerPage,
+                              scrollPhysics: const NeverScrollableScrollPhysics(),
+                              onTap: () {
                               _activePageIndex = pageIndex;
                               final TextSelection selection = controller.selection;
                               if (selection.isValid) {
@@ -1041,13 +1047,14 @@ class _WordEditorPageState extends State<WordEditorPage> {
                               }
                               setState(() {});
                             },
-                            onChanged: (String value) => _onPageTextChanged(pageIndex, value),
-                            textAlign: _align,
-                            style: const TextStyle(fontSize: 11, height: 1.35, color: Colors.black),
-                            decoration: const InputDecoration(
-                              border: InputBorder.none,
-                              contentPadding: EdgeInsets.fromLTRB(38, 30, 38, 30),
-                              hintText: 'Start writing…',
+                              onChanged: (String value) => _onPageTextChanged(pageIndex, value),
+                              textAlign: _align,
+                              style: const TextStyle(fontSize: 11, height: _lineHeight, color: Colors.black),
+                              decoration: const InputDecoration(
+                                border: InputBorder.none,
+                                contentPadding: EdgeInsets.fromLTRB(54, 54, 54, 54),
+                                hintText: 'Start writing…',
+                              ),
                             ),
                           ),
                         ),
