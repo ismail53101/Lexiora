@@ -46,6 +46,7 @@ class _FormatRange {
     this.underline,
     this.size,
     this.color,
+    this.highlight,
   );
 
   final int start;
@@ -55,6 +56,7 @@ class _FormatRange {
   final bool underline;
   final double size;
   final Color color;
+  final Color? highlight;
 }
 
 class _WordPageBackground extends CustomPainter {
@@ -152,6 +154,7 @@ class _RichWordEditingController extends TextEditingController {
               decoration:
                   format.underline ? TextDecoration.underline : TextDecoration.none,
               color: format.color,
+              backgroundColor: format.highlight,
             );
       spans.add(TextSpan(text: value.substring(start, end), style: spanStyle));
     }
@@ -174,6 +177,7 @@ class _WordEditorPageState extends State<WordEditorPage> {
   bool _underline = false;
   double _size = 11;
   Color _color = Colors.black;
+  Color? _highlight;
   TextAlign _align = TextAlign.left;
   String? _error;
   String _lastText = '';
@@ -227,36 +231,21 @@ class _WordEditorPageState extends State<WordEditorPage> {
     final int delta = inserted - removed;
 
     if (removed > 0) {
-      _ranges.removeWhere(
-        (_FormatRange range) =>
-            range.end > prefix && range.start < oldSuffix,
-      );
-    }
-
-    if (delta != 0) {
+      final List<_FormatRange> adjusted = <_FormatRange>[];
+      for (final _FormatRange range in _ranges) {
+        if (range.end <= prefix) adjusted.add(range);
+        else if (range.start >= oldSuffix) adjusted.add(_copyRange(range, range.start + delta, range.end + delta));
+        else {
+          final int newStart = range.start < prefix ? range.start : prefix;
+          final int newEnd = range.end > oldSuffix ? range.end + delta : prefix;
+          if (newEnd > newStart) adjusted.add(_copyRange(range, newStart, newEnd));
+        }
+      }
+      _ranges..clear()..addAll(_mergeAdjacentRanges(adjusted));
+    } else if (delta != 0) {
       for (int i = 0; i < _ranges.length; i++) {
         final _FormatRange range = _ranges[i];
-        if (range.start >= oldSuffix) {
-          _ranges[i] = _FormatRange(
-            range.start + delta,
-            range.end + delta,
-            range.bold,
-            range.italic,
-            range.underline,
-            range.size,
-            range.color,
-          );
-        } else if (range.end > oldSuffix) {
-          _ranges[i] = _FormatRange(
-            range.start,
-            range.end + delta,
-            range.bold,
-            range.italic,
-            range.underline,
-            range.size,
-            range.color,
-          );
-        }
+        if (range.start >= prefix) _ranges[i] = _copyRange(range, range.start + delta, range.end + delta);
       }
     }
 
@@ -593,22 +582,47 @@ class _WordEditorPageState extends State<WordEditorPage> {
 
   String _escape(String value) => const HtmlEscape().convert(value);
 
-  void _applyFormat() {
+  void _applyFormat({bool? bold, bool? italic, bool? underline, double? size, Color? color, Color? highlight, bool clearHighlight = false}) {
     final TextSelection selection = _text.selection;
-    if (selection.isValid && !selection.isCollapsed) {
-      _ranges.add(
-        _FormatRange(
-          selection.start,
-          selection.end,
-          _bold,
-          _italic,
-          _underline,
-          _size,
-          _color,
-        ),
-      );
-      setState(() {});
+    if (!selection.isValid || selection.isCollapsed) return;
+    final int start = selection.start;
+    final int end = selection.end;
+    final List<_FormatRange> next = <_FormatRange>[];
+    for (final _FormatRange range in _ranges) {
+      if (range.end <= start || range.start >= end) {
+        next.add(range);
+      } else {
+        if (range.start < start) next.add(_copyRange(range, range.start, start));
+        if (range.end > end) next.add(_copyRange(range, end, range.end));
+      }
     }
+    _FormatRange base = _FormatRange(start, end, _bold, _italic, _underline, _size, _color, _highlight);
+    for (final _FormatRange range in _ranges.reversed) {
+      if (range.start <= start && range.end > start) {
+        base = _FormatRange(start, end, bold ?? range.bold, italic ?? range.italic, underline ?? range.underline, size ?? range.size, color ?? range.color, clearHighlight ? null : (highlight ?? range.highlight));
+        break;
+      }
+    }
+    next.add(base);
+    next.sort((_FormatRange a, _FormatRange b) => a.start.compareTo(b.start));
+    _ranges..clear()..addAll(_mergeAdjacentRanges(next));
+    setState(() {});
+  }
+
+  _FormatRange _copyRange(_FormatRange r, int start, int end) => _FormatRange(start, end, r.bold, r.italic, r.underline, r.size, r.color, r.highlight);
+
+  List<_FormatRange> _mergeAdjacentRanges(List<_FormatRange> ranges) {
+    if (ranges.isEmpty) return <_FormatRange>[];
+    final List<_FormatRange> merged = <_FormatRange>[ranges.first];
+    for (final _FormatRange r in ranges.skip(1)) {
+      final _FormatRange last = merged.last;
+      if (last.end == r.start && last.bold == r.bold && last.italic == r.italic && last.underline == r.underline && last.size == r.size && last.color == r.color && last.highlight == r.highlight) {
+        merged[merged.length - 1] = _copyRange(last, last.start, r.end);
+      } else {
+        merged.add(r);
+      }
+    }
+    return merged;
   }
 
   String _props(_FormatRange? range) {
@@ -618,7 +632,7 @@ class _WordEditorPageState extends State<WordEditorPage> {
     return '<w:rPr>'
         '${range.bold ? '<w:b/>' : ''}'
         '${range.italic ? '<w:i/>' : ''}'
-        '${range.underline ? '<w:u w:val="single"/>' : ''}'
+        '${range.highlight == null ? '' : '<w:shd w:val="clear" w:fill="' + range.highlight!.value.toRadixString(16).substring(2).toUpperCase() + '"/>'}'
         '<w:sz w:val="${(range.size * 2).round()}"/>'
         '<w:color w:val="$color"/>'
         '</w:rPr>';
@@ -805,24 +819,27 @@ class _WordEditorPageState extends State<WordEditorPage> {
                 _tool(
                   Icons.format_bold,
                   () {
-                    setState(() => _bold = !_bold);
-                    _applyFormat();
+                    final bool value = !_bold;
+                    setState(() => _bold = value);
+                    _applyFormat(bold: value);
                   },
                   _bold,
                 ),
                 _tool(
                   Icons.format_italic,
                   () {
-                    setState(() => _italic = !_italic);
-                    _applyFormat();
+                    final bool value = !_italic;
+                    setState(() => _italic = value);
+                    _applyFormat(italic: value);
                   },
                   _italic,
                 ),
                 _tool(
                   Icons.format_underline,
                   () {
-                    setState(() => _underline = !_underline);
-                    _applyFormat();
+                    final bool value = !_underline;
+                    setState(() => _underline = value);
+                    _applyFormat(underline: value);
                   },
                   _underline,
                 ),
@@ -839,21 +856,54 @@ class _WordEditorPageState extends State<WordEditorPage> {
                   onChanged: (double? size) {
                     if (size != null) {
                       setState(() => _size = size);
-                      _applyFormat();
+                      _applyFormat(size: size);
                     }
                   },
                 ),
-                _tool(
-                  Icons.format_color_text,
-                  () {
-                    setState(
-                      () => _color =
-                          _color == Colors.black ? Colors.red : Colors.black,
-                    );
-                    _applyFormat();
+                PopupMenuButton<Color>(
+                  tooltip: 'Text color',
+                  icon: Icon(Icons.format_color_text, color: _color),
+                  onSelected: (Color value) {
+                    setState(() => _color = value);
+                    _applyFormat(color: value);
                   },
-                  false,
-                  color: _color,
+                  itemBuilder: (BuildContext context) => <PopupMenuEntry<Color>>[
+                    for (final Color value in <Color>[
+                      Colors.black, Colors.red, Colors.blue, Colors.green,
+                      Colors.orange, Colors.purple, Colors.teal, Colors.brown,
+                    ])
+                      PopupMenuItem<Color>(
+                        value: value,
+                        child: Row(children: <Widget>[
+                          Icon(Icons.circle, color: value, size: 18),
+                          const SizedBox(width: 10),
+                          Text(value.toString()),
+                        ]),
+                      ),
+                  ],
+                ),
+                PopupMenuButton<Color?>(
+                  tooltip: 'Highlight',
+                  icon: Icon(Icons.highlight, color: _highlight ?? Colors.amber),
+                  onSelected: (Color? value) {
+                    setState(() => _highlight = value);
+                    _applyFormat(highlight: value, clearHighlight: value == null);
+                  },
+                  itemBuilder: (BuildContext context) => <PopupMenuEntry<Color?>>[
+                    const PopupMenuItem<Color?>(value: null, child: Text('No highlight')),
+                    for (final Color value in <Color>[
+                      Colors.yellow, Color(0xFFFFCC80), Color(0xFFB3E5FC),
+                      Color(0xFFC8E6C9), Color(0xFFE1BEE7), Color(0xFFFFCDD2),
+                    ])
+                      PopupMenuItem<Color?>(
+                        value: value,
+                        child: Row(children: <Widget>[
+                          Icon(Icons.highlight, color: value),
+                          const SizedBox(width: 10),
+                          const Text('Highlight'),
+                        ]),
+                      ),
+                  ],
                 ),
                 _tool(
                   Icons.format_align_left,
