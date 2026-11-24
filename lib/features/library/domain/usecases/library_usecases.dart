@@ -507,7 +507,7 @@ class DeleteCategory implements UseCase<void, String> {
   ResultFuture<void> call(String id) => guard(() => _repo.deleteCategory(id));
 }
 
-/// Generates a first-page thumbnail for every library document that doesn't
+/// Generates a first-page thumbnail for every PDF library document that doesn't
 /// have one yet — specifically, documents imported/discovered *before* the
 /// cover-thumbnail feature existed, which otherwise show the gradient+
 /// initials placeholder forever. New documents already get a cover at
@@ -527,6 +527,8 @@ class BackfillCovers implements UseCase<int, NoParams> {
         final List<LibraryDocument> all = await _repo.watchAll().first;
         int updated = 0;
         for (final LibraryDocument doc in all) {
+          // Word documents do not have PDF page thumbnails.
+          if (doc.isWord) continue;
           final String? existing = doc.coverPath;
           if (existing != null && existing.isNotEmpty) continue;
           final String? cover = await _cover.generateCover(
