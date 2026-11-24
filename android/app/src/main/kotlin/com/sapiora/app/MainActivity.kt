@@ -57,6 +57,7 @@ import java.io.File
 class MainActivity : FlutterActivity() {
     private val channelName = "lexiora/platform"
     private val pickPdfsRequest = 0x5A11
+    private val pickWordDocsRequest = 0x5A12
     private val notificationPermissionRequest = 0x4E31
     private val storagePermissionRequest = 0x4E32
     private val notificationPermissionPrefs = "sapiora_permission_flow"
@@ -287,6 +288,7 @@ class MainActivity : FlutterActivity() {
                     }
                     "scanAllDocuments" -> scanAllDocuments(result)
                     "pickPdfs" -> startPickPdfs(result)
+                    "pickWordDocs" -> startPickWordDocs(result)
                     "recognizeText" -> {
                         val path = call.argument<String>("path")
                         if (path == null) {
@@ -383,6 +385,33 @@ class MainActivity : FlutterActivity() {
 
     // ── Manual import (system file picker, multi-select) ───────────────────────
 
+    private fun startPickWordDocs(result: MethodChannel.Result) {
+        if (pendingResult != null) {
+            result.error("busy", "A file pick is already in progress.", null)
+            return
+        }
+        pendingResult = result
+        val intent = Intent(Intent.ACTION_OPEN_DOCUMENT).apply {
+            addCategory(Intent.CATEGORY_OPENABLE)
+            type = "application/*"
+            putExtra(
+                Intent.EXTRA_MIME_TYPES,
+                arrayOf(
+                    "application/msword",
+                    "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+                ),
+            )
+            putExtra(Intent.EXTRA_ALLOW_MULTIPLE, true)
+            addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION)
+        }
+        try {
+            startActivityForResult(intent, pickWordDocsRequest)
+        } catch (e: Exception) {
+            pendingResult = null
+            result.error("pick_failed", e.message, null)
+        }
+    }
+
     private fun startPickPdfs(result: MethodChannel.Result) {
         if (pendingResult != null) {
             result.error("busy", "A file pick is already in progress.", null)
@@ -405,7 +434,7 @@ class MainActivity : FlutterActivity() {
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
-        if (requestCode != pickPdfsRequest) return
+        if (requestCode != pickPdfsRequest && requestCode != pickWordDocsRequest) return
         val result = pendingResult ?: return
         pendingResult = null
 
@@ -441,7 +470,7 @@ class MainActivity : FlutterActivity() {
                     Log.w("Lexiora", "Import copy failed for $uri: ${e.message}")
                 }
             }
-            Log.i("Lexiora", "Imported ${imported.size}/${uris.size} PDF(s)")
+            Log.i("Lexiora", "Imported ${imported.size}/${uris.size} document(s)")
             runOnUiThread { result.success(imported) }
         }.start()
     }
