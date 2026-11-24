@@ -57,6 +57,41 @@ class _FormatRange {
   final Color color;
 }
 
+class _WordPageBackground extends CustomPainter {
+  const _WordPageBackground({
+    required this.pageCount,
+    required this.borderColor,
+    required this.pageColor,
+  });
+
+  final int pageCount;
+  final Color borderColor;
+  final Color pageColor;
+
+  @override
+  void paint(Canvas canvas, Size size) {
+    const double pageHeight = 760;
+    final Paint fill = Paint()..color = pageColor;
+    final Paint border = Paint()
+      ..color = borderColor
+      ..style = PaintingStyle.stroke
+      ..strokeWidth = 1;
+
+    for (int page = 0; page < pageCount; page++) {
+      final double top = page * pageHeight;
+      final Rect rect = Rect.fromLTWH(0, top, size.width, pageHeight - 14);
+      canvas.drawRect(rect, fill);
+      canvas.drawRect(rect, border);
+    }
+  }
+
+  @override
+  bool shouldRepaint(_WordPageBackground oldDelegate) =>
+      oldDelegate.pageCount != pageCount ||
+      oldDelegate.borderColor != borderColor ||
+      oldDelegate.pageColor != pageColor;
+}
+
 class _WordEditorPageState extends State<WordEditorPage> {
   final TextEditingController _text = TextEditingController();
   final List<_FormatRange> _ranges = <_FormatRange>[];
@@ -692,26 +727,64 @@ class _WordEditorPageState extends State<WordEditorPage> {
           ),
           _tableSurface(),
           Expanded(
-            child: Padding(
-              padding: const EdgeInsets.fromLTRB(16, 0, 16, 8),
-              child: TextField(
-                controller: _text,
-                expands: true,
-                maxLines: null,
-                minLines: null,
-                textAlign: _align,
-                style: TextStyle(
-                  fontSize: _size,
-                  fontWeight: _bold ? FontWeight.bold : null,
-                  fontStyle: _italic ? FontStyle.italic : null,
-                  decoration:
-                      _underline ? TextDecoration.underline : null,
-                  color: _color,
-                ),
-                decoration: const InputDecoration(
-                  border: OutlineInputBorder(),
-                  hintText: 'Edit document text',
-                ),
+            child: SingleChildScrollView(
+              padding: const EdgeInsets.fromLTRB(16, 0, 16, 24),
+              child: LayoutBuilder(
+                builder: (BuildContext context, BoxConstraints constraints) {
+                  const int linesPerPage = 36;
+                  final int pageCount = (_text.text.split('\\n').length / linesPerPage)
+                      .ceil()
+                      .clamp(1, 9999);
+                  return Column(
+                    crossAxisAlignment: CrossAxisAlignment.stretch,
+                    children: <Widget>[
+                      Align(
+                        alignment: Alignment.centerRight,
+                        child: Padding(
+                          padding: const EdgeInsets.only(bottom: 6),
+                          child: Text(
+                            'Page 1 of $pageCount',
+                            style: Theme.of(context).textTheme.labelMedium,
+                          ),
+                        ),
+                      ),
+                      Stack(
+                        children: <Widget>[
+                          Positioned.fill(
+                            child: CustomPaint(
+                              painter: _WordPageBackground(
+                                pageCount: pageCount,
+                                borderColor: Theme.of(context).dividerColor,
+                                pageColor: Theme.of(context).colorScheme.surface,
+                              ),
+                            ),
+                          ),
+                          TextField(
+                            controller: _text,
+                            maxLines: null,
+                            minLines: linesPerPage,
+                            scrollPhysics: const NeverScrollableScrollPhysics(),
+                            textAlign: _align,
+                            style: TextStyle(
+                              fontSize: _size,
+                              height: 1.35,
+                              fontWeight: _bold ? FontWeight.bold : null,
+                              fontStyle: _italic ? FontStyle.italic : null,
+                              decoration:
+                                  _underline ? TextDecoration.underline : null,
+                              color: _color,
+                            ),
+                            decoration: const InputDecoration(
+                              border: InputBorder.none,
+                              contentPadding: EdgeInsets.fromLTRB(38, 30, 38, 30),
+                              hintText: 'Start writing…',
+                            ),
+                          ),
+                        ],
+                      ),
+                    ],
+                  );
+                },
               ),
             ),
           ),
