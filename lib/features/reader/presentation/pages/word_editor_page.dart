@@ -189,6 +189,13 @@ class _WordEditorPageState extends State<WordEditorPage> {
       if (_document == null) {
         throw const FormatException('Document is no longer in the library');
       }
+      if (!_docx && mounted) {
+        WidgetsBinding.instance.addPostFrameCallback((_) {
+          if (mounted) {
+            unawaited(_openExternal());
+          }
+        });
+      }
       if (_docx) {
         final Archive archive =
             ZipDecoder().decodeBytes(await File(_path).readAsBytes());
@@ -543,17 +550,13 @@ class _WordEditorPageState extends State<WordEditorPage> {
     } else if (_error != null) {
       body = Center(child: Text(_error!));
     } else if (!_docx) {
-      body = Center(
+      body = const Center(
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: <Widget>[
-            const Text('Legacy .doc files cannot be edited inside DarsNexa.'),
-            const SizedBox(height: 16),
-            FilledButton.icon(
-              onPressed: _openExternal,
-              icon: const Icon(Icons.open_in_new),
-              label: const Text('Open in Word/Docs'),
-            ),
+            CircularProgressIndicator(),
+            SizedBox(height: 16),
+            Text('Opening in Word/Docs…'),
           ],
         ),
       );
