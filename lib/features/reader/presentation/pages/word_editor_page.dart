@@ -181,7 +181,15 @@ class _WordEditorPageState extends State<WordEditorPage> {
     );
     if (cleaned == xml) return bytes;
 
-    document.content = Uint8List.fromList(cleaned.codeUnits);
+    final Uint8List cleanedBytes = Uint8List.fromList(cleaned.codeUnits);
+    final CompressionType? compression = document.compression;
+    archive.removeFile('word/document.xml');
+    final ArchiveFile replacement = ArchiveFile(
+      'word/document.xml',
+      cleanedBytes.length,
+      cleanedBytes,
+    )..compression = compression;
+    archive.addFile(replacement);
     return Uint8List.fromList(ZipEncoder().encode(archive));
   }
 
