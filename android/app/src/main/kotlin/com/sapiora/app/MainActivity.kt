@@ -285,7 +285,7 @@ class MainActivity : FlutterActivity() {
                             result.success(true)
                         }
                     }
-                    "scanAllPdfs" -> scanAllPdfs(result)
+                    "scanAllDocuments" -> scanAllDocuments(result)
                     "pickPdfs" -> startPickPdfs(result)
                     "recognizeText" -> {
                         val path = call.argument<String>("path")
@@ -481,7 +481,7 @@ class MainActivity : FlutterActivity() {
 
     // ── Automatic discovery (filesystem walk + MediaStore, merged) ─────────────
 
-    private fun scanAllPdfs(result: MethodChannel.Result) {
+    private fun scanAllDocuments(result: MethodChannel.Result) {
         Thread {
             val out = ArrayList<Map<String, Any?>>()
             val seen = HashSet<String>()
@@ -492,10 +492,10 @@ class MainActivity : FlutterActivity() {
                 // walk storage here: that can keep the Library spinner busy
                 // for a very long time on phones with large storage.
                 queryMediaStorePdfs(out, seen)
-                Log.i("Lexiora", "scanAllPdfs: found=" + out.size)
+                Log.i("Lexiora", "scanAllDocuments: found=" + out.size)
                 runOnUiThread { result.success(out) }
             } catch (e: Exception) {
-                Log.w("Lexiora", "scanAllPdfs failed: " + e.message)
+                Log.w("Lexiora", "scanAllDocuments failed: " + e.message)
                 runOnUiThread { result.error("scan_all_failed", e.message, null) }
             }
         }.start()
@@ -518,42 +518,55 @@ class MainActivity : FlutterActivity() {
                 MediaStore.Files.FileColumns.DATA,
                 MediaStore.Files.FileColumns.DISPLAY_NAME,
                 MediaStore.Files.FileColumns.SIZE,
+                MediaStore.Files.FileColumns.MIME_TYPE,
             )
-            val selection = "${MediaStore.Files.FileColumns.MIME_TYPE} = ?"
-            val selectionArgs = arrayOf("application/pdf")
-
+            val selection =
+                "${MediaStore.Files.FileColumns.MIME_TYPE} IN (?, ?, ?) OR " +
+                    "${MediaStore.Files.FileColumns.DISPLAY_NAME} LIKE ? OR " +
+                    "${MediaStore.Files.FileColumns.DISPLAY_NAME} LIKE ? OR " +
+                    "${MediaStore.Files.FileColumns.DISPLAY_NAME} LIKE ?"
+            val selectionArgs = arrayOf(
+                "application/pdf",
+                "application/msword",
+                "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+                "%.pdf",
+                "%.doc",
+                "%.docx",
+            )
             val cursor: Cursor? = contentResolver.query(
-                collection,
-                projection,
-                selection,
-                selectionArgs,
-                null,
+                collection, projection, selection, selectionArgs, null,
             )
-            cursor?.use { c ->
-                val dataIdx = c.getColumnIndex(MediaStore.Files.FileColumns.DATA)
-                val nameIdx = c.getColumnIndex(MediaStore.Files.FileColumns.DISPLAY_NAME)
-                val sizeIdx = c.getColumnIndex(MediaStore.Files.FileColumns.SIZE)
+            cursor?.use { cur ->
+                val dataIdx = cur.getColumnIndex(MediaStore.Files.FileColumns.DATA)
+                val nameIdx = cur.getColumnIndex(MediaStore.Files.FileColumns.DISPLAY_NAME)
+                val sizeIdx = cur.getColumnIndex(MediaStore.Files.FileColumns.SIZE)
+                val mimeIdx = cur.getColumnIndex(MediaStore.Files.FileColumns.MIME_TYPE)
                 if (dataIdx < 0) return@use
-                while (c.moveToNext()) {
-                    val path = c.getString(dataIdx) ?: continue
+                while (cur.moveToNext()) {
+                    val path = cur.getString(dataIdx) ?: continue
                     if (path.isEmpty()) continue
                     val file = File(path)
-                    if (!file.exists() || !file.canRead()) continue
-                    if (!seen.add(path)) continue // already found by the filesystem walk
-                    val name = if (nameIdx >= 0) c.getString(nameIdx) else null
-                    val size = if (sizeIdx >= 0) c.getLong(sizeIdx) else file.length()
-                    out.add(
-                        mapOf(
-                            "path" to path,
-                            "name" to (name ?: file.name),
-                            "size" to size,
-                        ),
-                    )
+                    if (!file.exists() || !file.canRead() || !seen.add(path)) continue
+                    val name = if (nameIdx >= 0) cur.getString(nameIdx) else null
+                    val mime = if (mimeIdx >= 0) cur.getString(mimeIdx) else null
+                    val lower = (name ?: file.name).lowercase()
+                    val supported = lower.endsWith(".pdf") || lower.endsWith(".doc") ||
+                        lower.endsWith(".docx") || mime == "application/pdf" ||
+                        mime == "application/msword" ||
+                        mime == "application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+                    if (!supported) { seen.remove(path); continue }
+                    val size = if (sizeIdx >= 0) cur.getLong(sizeIdx) else file.length()
+                    out.add(mapOf(
+                        "path" to path,
+                        "name" to (name ?: file.name),
+                        "size" to size,
+                        "mime" to (mime ?: ""),
+                    ))
                     added++
                 }
             }
         } catch (e: Exception) {
-            Log.w("Lexiora", "MediaStore PDF query failed: ${e.message}")
+            Log.w("Lexiora", "MediaStore document query failed: ${e.message}")
         }
         return added
     }
@@ -564,38 +577,31 @@ class MainActivity : FlutterActivity() {
         seen: HashSet<String>,
         depth: Int,
     ) {
-        if (depth > 25) return // generous cap; guards against symlink loops
-        val files = try {
-            dir.listFiles()
-        } catch (e: Exception) {
-            null
-        } ?: return
+        if (depth > 25) return
+        val files = try { dir.listFiles() } catch (e: Exception) { null } ?: return
         for (f in files) {
             try {
                 if (f.isDirectory) {
-                    // Skip only app-private/system trees, which never hold the
-                    // user's own PDFs and are slow or inaccessible even with
-                    // all-files access. Android/media (WhatsApp docs, etc.) IS
-                    // traversed. Hidden folders are intentionally not skipped.
-                    if (f.parentFile?.name == "Android" &&
-                        (f.name == "data" || f.name == "obb")
-                    ) {
-                        continue
-                    }
+                    if (f.parentFile?.name == "Android" && (f.name == "data" || f.name == "obb")) continue
                     walkPdfs(f, out, seen, depth + 1)
-                } else if (f.name.lowercase().endsWith(".pdf") && f.canRead()) {
-                    if (seen.add(f.absolutePath)) {
-                        out.add(
-                            mapOf(
-                                "path" to f.absolutePath,
-                                "name" to f.name,
-                                "size" to f.length(),
-                            ),
-                        )
+                } else {
+                    val lower = f.name.lowercase()
+                    val supported = lower.endsWith(".pdf") || lower.endsWith(".doc") || lower.endsWith(".docx")
+                    if (supported && f.canRead() && seen.add(f.absolutePath)) {
+                        val mime = when {
+                            lower.endsWith(".pdf") -> "application/pdf"
+                            lower.endsWith(".docx") -> "application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+                            else -> "application/msword"
+                        }
+                        out.add(mapOf(
+                            "path" to f.absolutePath,
+                            "name" to f.name,
+                            "size" to f.length(),
+                            "mime" to mime,
+                        ))
                     }
                 }
             } catch (e: Exception) {
-                // One problematic entry must never abort the whole scan.
                 Log.w("Lexiora", "walk skip ${f.absolutePath}: ${e.message}")
             }
         }
