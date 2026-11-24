@@ -28,6 +28,15 @@ class WordEditorPage extends StatefulWidget {
   State<WordEditorPage> createState() => _WordEditorPageState();
 }
 
+class _TableModel {
+  _TableModel(this.token, this.rows, this.columns, this.cells);
+
+  final String token;
+  final int rows;
+  final int columns;
+  final List<List<String>> cells;
+}
+
 class _FormatRange {
   const _FormatRange(
     this.start,
@@ -51,6 +60,8 @@ class _FormatRange {
 class _WordEditorPageState extends State<WordEditorPage> {
   final TextEditingController _text = TextEditingController();
   final List<_FormatRange> _ranges = <_FormatRange>[];
+  final List<_TableModel> _tables = <_TableModel>[];
+  int _nextTableId = 1;
   final List<String> _undoStack = <String>[];
   final List<String> _redoStack = <String>[];
   LibraryDocument? _document;
@@ -186,26 +197,165 @@ class _WordEditorPageState extends State<WordEditorPage> {
           throw const FormatException('This DOCX has no document.xml');
         }
         final String xml = utf8.decode(entry.content as List<int>);
-        final Iterable<RegExpMatch> paragraphs = RegExp(
-          r'<w:p(?: [^>]*)?>(.*?)</w:p>',
+        final Iterable<RegExpMatch> blocks = RegExp(
+          r'<w:p(?: [^>]*)?>.*?</w:p>|<w:tbl>.*?</w:tbl>',
           dotAll: true,
         ).allMatches(xml);
-        _setEditorText(paragraphs
-            .map(
-              (RegExpMatch paragraph) => RegExp(
-                r'<w:t(?: [^>]*)?>(.*?)</w:t>',
-                dotAll: true,
-              )
-                  .allMatches(paragraph.group(1)!)
-                  .map((RegExpMatch text) => _unescape(text.group(1)!))
-                  .join(),
-            )
-            .join('\n'));
+        final List<String> loadedParagraphs = <String>[];
+        for (final RegExpMatch block in blocks) {
+          final String content = block.group(0)!;
+          final RegExpMatch? table = RegExp(r'<w:tbl>(.*?)</w:tbl>', dotAll: true).firstMatch(content);
+          if (table != null) {
+            final List<List<String>> cells = RegExp(r'<w:tr>(.*?)</w:tr>', dotAll: true)
+                .allMatches(table.group(1)!)
+                .map((RegExpMatch row) => RegExp(r'<w:tc(?: [^>]*)?>(.*?)</w:tc>', dotAll: true)
+                    .allMatches(row.group(1)!)
+                    .map((RegExpMatch cell) => RegExp(r'<w:t(?: [^>]*)?>(.*?)</w:t>', dotAll: true)
+                        .allMatches(cell.group(1)!)
+                        .map((RegExpMatch text) => _unescape(text.group(1)!))
+                        .join())
+                    .toList())
+                .toList();
+            final int rows = cells.isEmpty ? 1 : cells.length;
+            final int columns = cells.isEmpty ? 1 : cells.map((List<String> row) => row.length).fold<int>(1, (int a, int b) => a > b ? a : b);
+            final String token = _newTableToken();
+            _tables.add(_TableModel(token, rows, columns, cells));
+            loadedParagraphs.add(token);
+          } else {
+            loadedParagraphs.add(RegExp(r'<w:t(?: [^>]*)?>(.*?)</w:t>', dotAll: true)
+                .allMatches(content)
+                .map((RegExpMatch text) => _unescape(text.group(1)!))
+                .join());
+          }
+        }
+        _setEditorText(loadedParagraphs.join('\n'));
       }
     } on Object catch (error) {
       _error = 'Could not read this document: $error';
     }
     if (mounted) setState(() => _loading = false);
+  }
+
+  String _newTableToken() => '\uFFFCTABLE${_nextTableId++}\uFFFC';
+
+  bool _isBullet(String paragraph) => paragraph.startsWith('• ');
+  bool _isNumbered(String paragraph) => RegExp(r'^\d+\. ').hasMatch(paragraph);
+  String _plainListText(String paragraph) => paragraph.replaceFirst(RegExp(r'^(?:• |\d+\. )'), '');
+
+  void _toggleList({required bool numbered}) {
+    final String value = _text.text;
+    final TextSelection selection = _text.selection;
+    final int start = selection.isValid ? value.lastIndexOf('\n', selection.start - 1) + 1 : 0;
+    final int endBreak = selection.isValid ? value.indexOf('\n', selection.end) : -1;
+    final int end = endBreak < 0 ? value.length : endBreak;
+    final List<String> lines = value.substring(start, end).split('\n');
+    int number = 1;
+    final List<String> updated = lines.map((String line) {
+      final String plain = _plainListText(line);
+      if (numbered) return '${number++}. $plain';
+      return '• $plain';
+    }).toList();
+    _setEditorText(value.substring(0, start) + updated.join('\n') + value.substring(end));
+    setState(() {});
+  }
+
+  Future<void> _insertTable() async {
+    final TextEditingController rows = TextEditingController(text: '2');
+    final TextEditingController columns = TextEditingController(text: '2');
+    final int? dimensions = await showDialog<int>(
+      context: context,
+      builder: (BuildContext dialogContext) => AlertDialog(
+        title: const Text('Insert table'),
+        content: Row(children: <Widget>[
+          Expanded(child: TextField(controller: rows, keyboardType: TextInputType.number, decoration: const InputDecoration(labelText: 'Rows'))),
+          const SizedBox(width: 12),
+          Expanded(child: TextField(controller: columns, keyboardType: TextInputType.number, decoration: const InputDecoration(labelText: 'Columns'))),
+        ]),
+        actions: <Widget>[
+          TextButton(onPressed: () => Navigator.of(dialogContext).pop(), child: const Text('Cancel')),
+          FilledButton(onPressed: () {
+            final int rowCount = int.tryParse(rows.text) ?? 0;
+            final int columnCount = int.tryParse(columns.text) ?? 0;
+            if (rowCount >= 1 && rowCount <= 20 && columnCount >= 1 && columnCount <= 10) {
+              Navigator.of(dialogContext).pop(rowCount * 100 + columnCount);
+            }
+          }, child: const Text('Insert')),
+        ],
+      ),
+    );
+    rows.dispose();
+    columns.dispose();
+    if (dimensions == null) return;
+    final int rowCount = dimensions ~/ 100;
+    final int columnCount = dimensions % 100;
+    final String token = _newTableToken();
+    _tables.add(_TableModel(token, rowCount, columnCount, List<List<String>>.generate(rowCount, (_) => List<String>.filled(columnCount, '')));
+    final String value = _text.text;
+    final int offset = _text.selection.isValid ? _text.selection.end : value.length;
+    final int lineEnd = value.indexOf('\n', offset);
+    final int insertAt = lineEnd < 0 ? value.length : lineEnd;
+    final String prefix = value.substring(0, insertAt);
+    final String suffix = value.substring(insertAt);
+    _setEditorText('$prefix\n$token$suffix');
+    setState(() {});
+  }
+
+  Widget _tableSurface() {
+    if (_tables.isEmpty) return const SizedBox.shrink();
+    return SizedBox(
+      height: 180,
+      child: ListView.builder(
+        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 4),
+        itemCount: _tables.length,
+        itemBuilder: (BuildContext context, int tableIndex) {
+          final _TableModel table = _tables[tableIndex];
+          return Card(child: Padding(padding: const EdgeInsets.all(8), child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: <Widget>[
+              Text('Table ${tableIndex + 1} (${table.rows} × ${table.columns})', style: Theme.of(context).textTheme.labelLarge),
+              const SizedBox(height: 4),
+              for (int row = 0; row < table.rows; row++) Row(children: <Widget>[
+                for (int column = 0; column < table.columns; column++) Expanded(child: Padding(
+                  padding: const EdgeInsets.all(2),
+                  child: TextFormField(
+                    initialValue: row < table.cells.length && column < table.cells[row].length ? table.cells[row][column] : '',
+                    onChanged: (String text) => table.cells[row][column] = text,
+                    decoration: InputDecoration(isDense: true, hintText: 'Cell ${row + 1},${column + 1}', border: const OutlineInputBorder()),
+                  ),
+                )),
+              ]),
+            ],
+          )));
+        },
+      ),
+    );
+  }
+
+  _TableModel? _tableForToken(String token) {
+    for (final _TableModel table in _tables) {
+      if (table.token == token) return table;
+    }
+    return null;
+  }
+
+  String _tableXml(_TableModel table) {
+    final StringBuffer output = StringBuffer('<w:tbl><w:tblPr><w:tblBorders>'
+        '<w:top w:val="single" w:sz="4" w:space="0" w:color="B7C3D0"/>'
+        '<w:left w:val="single" w:sz="4" w:space="0" w:color="B7C3D0"/>'
+        '<w:bottom w:val="single" w:sz="4" w:space="0" w:color="B7C3D0"/>'
+        '<w:right w:val="single" w:sz="4" w:space="0" w:color="B7C3D0"/>'
+        '<w:insideH w:val="single" w:sz="4" w:space="0" w:color="B7C3D0"/>'
+        '<w:insideV w:val="single" w:sz="4" w:space="0" w:color="B7C3D0"/>'
+        '</w:tblBorders></w:tblPr>');
+    for (int row = 0; row < table.rows; row++) {
+      output.write('<w:tr>');
+      for (int column = 0; column < table.columns; column++) {
+        final String value = row < table.cells.length && column < table.cells[row].length ? table.cells[row][column] : '';
+        output.write('<w:tc><w:p><w:r><w:t xml:space="preserve">${_escape(value)}</w:t></w:r></w:p></w:tc>');
+      }
+      output.write('</w:tr>');
+    }
+    return '$output</w:tbl>';
   }
 
   String _unescape(String value) => value
@@ -248,7 +398,7 @@ class _WordEditorPageState extends State<WordEditorPage> {
         '</w:rPr>';
   }
 
-  String _paragraphXml(String text, int base) {
+  String _paragraphXml(String text, int base, {int? number}) {
     final List<int> cuts = <int>[0, text.length];
     for (final _FormatRange range in _ranges) {
       if (range.end > base && range.start < base + text.length) {
@@ -264,9 +414,9 @@ class _WordEditorPageState extends State<WordEditorPage> {
       TextAlign.justify => 'both',
       _ => 'left',
     };
-    final StringBuffer output = StringBuffer(
-      '<w:p><w:pPr><w:jc w:val="$justification"/></w:pPr>',
-    );
+    final StringBuffer output = StringBuffer('<w:p><w:pPr><w:jc w:val="$justification"/>'
+        '${number == null ? '' : '<w:numPr><w:ilvl w:val="0"/><w:numId w:val="$number"/></w:numPr>'}'
+        '</w:pPr>');
     for (int index = 0; index < cuts.length - 1; index++) {
       final int start = cuts[index];
       final int end = cuts[index + 1];
@@ -293,22 +443,44 @@ class _WordEditorPageState extends State<WordEditorPage> {
       final ArchiveFile? old = archive.findFile('word/document.xml');
       if (old == null) throw const FormatException('Missing document.xml');
       int offset = 0;
-      final String body = _text.text.split('\n').map((String paragraph) {
-        final String xml = _paragraphXml(paragraph, offset);
-        offset += paragraph.length + 1;
-        return xml;
-      }).join();
+      final List<String> parts = <String>[];
+      for (final String paragraph in _text.text.split('\n')) {
+        final _TableModel? table = _tableForToken(paragraph);
+        if (table != null) {
+          parts.add(_tableXml(table));
+        } else {
+          final int? numId = _isBullet(paragraph) ? 1 : _isNumbered(paragraph) ? 2 : null;
+          parts.add(_paragraphXml(_plainListText(paragraph), offset, number: numId));
+          offset += paragraph.length + 1;
+        }
+      }
+      final String body = parts.join();
       final String original = utf8.decode(old.content as List<int>);
-      final String replaced = original.replaceFirst(
-        RegExp(r'<w:body>.*?</w:body>', dotAll: true),
-        '<w:body>$body</w:body>',
-      );
+      final RegExp bodyPattern = RegExp(r'<w:body>(.*?)</w:body>', dotAll: true);
+      final RegExpMatch? bodyMatch = bodyPattern.firstMatch(original);
+      if (bodyMatch == null) throw const FormatException('Missing document body');
+      final String bodyTail = RegExp(r'<w:sectPr.*?</w:sectPr>', dotAll: true).firstMatch(bodyMatch.group(1) ?? '')?.group(0) ?? '';
+      final String replaced = original.replaceFirst(bodyPattern, '<w:body>$body$bodyTail</w:body>');
       final Archive output = Archive();
       for (final ArchiveFile entry in archive) {
-        final Uint8List content = entry.name == 'word/document.xml'
-            ? Uint8List.fromList(utf8.encode(replaced))
-            : entry.content;
+        Uint8List content = entry.name == 'word/document.xml' ? Uint8List.fromList(utf8.encode(replaced)) : entry.content;
+        if (entry.name == '[Content_Types].xml') {
+          final String types = utf8.decode(content);
+          if (!types.contains('/word/numbering.xml')) {
+            content = Uint8List.fromList(utf8.encode(types.replaceFirst('</Types>', '<Override PartName="/word/numbering.xml" ContentType="application/vnd.openxmlformats-officedocument.wordprocessingml.numbering+xml"/></Types>')));
+          }
+        }
+        if (entry.name == 'word/_rels/document.xml.rels') {
+          final String rels = utf8.decode(content);
+          if (!rels.contains('/word/numbering.xml')) {
+            content = Uint8List.fromList(utf8.encode(rels.replaceFirst('</Relationships>', '<Relationship Id="rIdLexioraNumbering" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/numbering" Target="numbering.xml"/></Relationships>')));
+          }
+        }
         output.addFile(ArchiveFile(entry.name, content.length, content));
+      }
+      if (archive.findFile('word/numbering.xml') == null) {
+        const String numbering = '<?xml version="1.0" encoding="UTF-8" standalone="yes"?><w:numbering xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main"><w:abstractNum w:abstractNumId="0"><w:multiLevelType w:val="singleLevel"/><w:lvl w:ilvl="0"><w:numFmt w:val="bullet"/><w:lvlText w:val="•"/><w:start w:val="1"/></w:lvl></w:abstractNum><w:abstractNum w:abstractNumId="1"><w:multiLevelType w:val="singleLevel"/><w:lvl w:ilvl="0"><w:numFmt w:val="decimal"/><w:lvlText w:val="%1."/><w:start w:val="1"/></w:lvl></w:abstractNum><w:num w:numId="1"><w:abstractNumId w:val="0"/></w:num><w:num w:numId="2"><w:abstractNumId w:val="1"/></w:num></w:numbering>';
+        output.addFile(ArchiveFile('word/numbering.xml', numbering.length, Uint8List.fromList(utf8.encode(numbering))));
       }
       await File(_path).writeAsBytes(ZipEncoder().encode(output));
       if (mounted) {
@@ -384,6 +556,9 @@ class _WordEditorPageState extends State<WordEditorPage> {
                 _tool(Icons.undo, _undo, _undoStack.isNotEmpty),
                 _tool(Icons.redo, _redo, _redoStack.isNotEmpty),
                 _tool(Icons.find_replace, _findAndReplace, false),
+                _tool(Icons.format_list_bulleted, () => _toggleList(numbered: false), false),
+                _tool(Icons.format_list_numbered, () => _toggleList(numbered: true), false),
+                _tool(Icons.table_chart, _insertTable, false),
                 _tool(
                   Icons.format_bold,
                   () {
@@ -455,6 +630,7 @@ class _WordEditorPageState extends State<WordEditorPage> {
               ],
             ),
           ),
+          _tableSurface(),
           Expanded(
             child: Padding(
               padding: const EdgeInsets.fromLTRB(16, 0, 16, 8),
