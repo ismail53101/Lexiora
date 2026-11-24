@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:lexiora/app/di/injector.dart';
 import 'package:lexiora/core/services/pdf_import_service.dart';
+import 'package:lexiora/core/services/pdf_discovery_service.dart' show DeviceFile;
 import 'package:lexiora/features/library/domain/entities/library_document.dart';
 import 'package:lexiora/features/library/domain/repositories/library_repository.dart';
 import 'package:quds_office_editor/quds_office_editor.dart';
