@@ -77,6 +77,15 @@ final Provider<ImportPdfs> importPdfsProvider = Provider<ImportPdfs>(
   ),
 );
 
+/// Manually imports DOC and DOCX files selected from the system picker.
+final Provider<ImportWordDocuments> importWordDocumentsProvider =
+    Provider<ImportWordDocuments>(
+  (Ref ref) => ImportWordDocuments(
+    ref.watch(libraryRepositoryProvider),
+    sl<PdfImportService>(),
+  ),
+);
+
 final Provider<GoogleDriveService> googleDriveServiceProvider =
     Provider<GoogleDriveService>((Ref ref) => GoogleDriveService());
 
