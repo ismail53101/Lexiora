@@ -289,7 +289,17 @@ class _WordEditorPageState extends State<WordEditorPage> {
     final int rowCount = dimensions ~/ 100;
     final int columnCount = dimensions % 100;
     final String token = _newTableToken();
-    _tables.add(_TableModel(token, rowCount, columnCount, List<List<String>>.generate(rowCount, (_) => List<String>.filled(columnCount, '')));
+    _tables.add(
+      _TableModel(
+        token,
+        rowCount,
+        columnCount,
+        List<List<String>>.generate(
+          rowCount,
+          (_) => List<String>.filled(columnCount, ''),
+        ),
+      ),
+    );
     final String value = _text.text;
     final int offset = _text.selection.isValid ? _text.selection.end : value.length;
     final int lineEnd = value.indexOf('\n', offset);
