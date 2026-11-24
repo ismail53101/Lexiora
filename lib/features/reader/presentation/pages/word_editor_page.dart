@@ -177,7 +177,7 @@ class _WordEditorPageState extends State<WordEditorPage> {
     final String xml = String.fromCharCodes(document.content);
     if (!xml.contains('<mc:Fallback>')) return bytes;
     final String cleaned = xml.replaceAll(
-      RegExp(r'<mc:Fallback>[\\s\\S]*?</mc:Fallback>'),
+      RegExp(r'<mc:Fallback>[\s\S]*?</mc:Fallback>'),
       '',
     );
     if (cleaned == xml) return bytes;
