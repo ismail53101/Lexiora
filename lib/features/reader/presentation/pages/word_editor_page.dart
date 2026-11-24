@@ -182,6 +182,9 @@ class _WordEditorPageState extends State<WordEditorPage> {
   String? _error;
   String _lastText = '';
   bool _restoringText = false;
+  static const int _linesPerPage = 44;
+  final List<_RichWordEditingController> _pageControllers = <_RichWordEditingController>[];
+  int _activePageIndex = 0;
 
   bool get _docx {
     final String fileName =
@@ -275,6 +278,101 @@ class _WordEditorPageState extends State<WordEditorPage> {
     if (mounted) setState(() {});
   }
 
+  List<String> _splitIntoPages([String? source]) {
+    final List<String> lines = (source ?? _text.text).split('\\n');
+    final List<String> pages = <String>[];
+    for (int i = 0; i < lines.length; i += _linesPerPage) {
+      final int end = (i + _linesPerPage).clamp(0, lines.length);
+      pages.add(lines.sublist(i, end).join('\\n'));
+    }
+    return pages.isEmpty ? <String>[''] : pages;
+  }
+
+  int _pageBaseOffset(int pageIndex, [String? source]) {
+    final List<String> pages = _splitIntoPages(source);
+    int offset = 0;
+    for (int i = 0; i < pageIndex && i < pages.length; i++) {
+      offset += pages[i].length + 1;
+    }
+    return offset;
+  }
+
+  List<_FormatRange> _rangesForPage(int pageIndex, String pageText) {
+    final int base = _pageBaseOffset(pageIndex);
+    final int end = base + pageText.length;
+    return <_FormatRange>[
+      for (final _FormatRange range in _ranges)
+        if (range.end > base && range.start < end)
+          _FormatRange(
+            range.start.clamp(base, end) - base,
+            range.end.clamp(base, end) - base,
+            range.bold,
+            range.italic,
+            range.underline,
+            range.size,
+            range.color,
+            range.highlight,
+          ),
+    ];
+  }
+
+  void _disposePageControllers() {
+    for (final _RichWordEditingController controller in _pageControllers) {
+      controller.dispose();
+    }
+    _pageControllers.clear();
+  }
+
+  void _rebuildPageControllers({int? preferredPage}) {
+    _disposePageControllers();
+    final List<String> pages = _splitIntoPages();
+    final int selected = (preferredPage ?? _activePageIndex).clamp(0, pages.length - 1);
+    for (int i = 0; i < pages.length; i++) {
+      final int pageIndex = i;
+      final _RichWordEditingController controller = _RichWordEditingController(
+        ranges: () => _rangesForPage(pageIndex, _pageControllers[pageIndex].text),
+        defaultStyle: const TextStyle(fontSize: 11, color: Colors.black),
+      );
+      controller.text = pages[i];
+      controller.addListener(() {
+        if (!mounted) return;
+        _activePageIndex = pageIndex;
+        final TextSelection selection = controller.selection;
+        if (selection.isValid) {
+          final int base = _pageBaseOffset(pageIndex);
+          _text.selection = TextSelection(
+            baseOffset: (base + selection.baseOffset).clamp(0, _text.text.length),
+            extentOffset: (base + selection.extentOffset).clamp(0, _text.text.length),
+          );
+        }
+      });
+      _pageControllers.add(controller);
+    }
+    _activePageIndex = selected;
+  }
+
+  void _onPageTextChanged(int pageIndex, String value) {
+    if (pageIndex >= _pageControllers.length) return;
+    final List<String> pages = _pageControllers.map((c) => c.text).toList();
+    pages[pageIndex] = value;
+    final String combined = pages.join('\\n');
+    final TextSelection localSelection = _pageControllers[pageIndex].selection;
+    final int base = _pageBaseOffset(pageIndex);
+    _text.value = TextEditingValue(
+      text: combined,
+      selection: TextSelection(
+        baseOffset: (base + localSelection.baseOffset).clamp(0, combined.length),
+        extentOffset: (base + localSelection.extentOffset).clamp(0, combined.length),
+      ),
+    );
+    _activePageIndex = pageIndex;
+    if (value.split('\\n').length > _linesPerPage) {
+      _setEditorText(combined);
+      _rebuildPageControllers(preferredPage: pageIndex);
+    }
+    if (mounted) setState(() {});
+  }
+
   void _setEditorText(String value) {
     _restoringText = true;
     _text.value = TextEditingValue(
@@ -290,6 +388,7 @@ class _WordEditorPageState extends State<WordEditorPage> {
     _redoStack.add(_text.text);
     final String value = _undoStack.removeLast();
     _setEditorText(value);
+    _rebuildPageControllers(preferredPage: _activePageIndex);
     setState(() {});
   }
 
@@ -298,6 +397,7 @@ class _WordEditorPageState extends State<WordEditorPage> {
     _undoStack.add(_text.text);
     final String value = _redoStack.removeLast();
     _setEditorText(value);
+    _rebuildPageControllers(preferredPage: _activePageIndex);
     setState(() {});
   }
 
@@ -413,6 +513,7 @@ class _WordEditorPageState extends State<WordEditorPage> {
           }
         }
         _setEditorText(loadedParagraphs.join('\n'));
+        _rebuildPageControllers();
       }
     } on Object catch (error) {
       _error = 'Could not read this document: $error';
@@ -440,27 +541,16 @@ class _WordEditorPageState extends State<WordEditorPage> {
       return '• $plain';
     }).toList();
     _setEditorText(value.substring(0, start) + updated.join('\n') + value.substring(end));
+    _rebuildPageControllers(preferredPage: _activePageIndex);
     setState(() {});
   }
 
   void _insertBlankPage() {
-    final String value = _text.text;
-    final int offset =
-        _text.selection.isValid ? _text.selection.end : value.length;
-    const int pageLines = 44;
-    final String blankPage = List<String>.filled(pageLines, '').join('\n');
-    final String prefix = value.substring(0, offset);
-    final String suffix = value.substring(offset);
-    final String next = '$prefix\n$blankPage\n$suffix';
-    _restoringText = true;
-    _text.value = TextEditingValue(
-      text: next,
-      selection: TextSelection.collapsed(
-        offset: prefix.length + 1 + blankPage.length + 1,
-      ),
-    );
-    _lastText = next;
-    _restoringText = false;
+    final List<String> pages = _splitIntoPages();
+    final int insertAt = (_activePageIndex + 1).clamp(0, pages.length);
+    pages.insert(insertAt, List<String>.filled(_linesPerPage, '').join('\\n'));
+    _setEditorText(pages.join('\\n'));
+    _rebuildPageControllers(preferredPage: insertAt);
     setState(() {});
   }
 
@@ -679,40 +769,28 @@ class _WordEditorPageState extends State<WordEditorPage> {
 
   Future<void> _save() async {
     try {
-      final Archive archive =
-          ZipDecoder().decodeBytes(await File(_path).readAsBytes());
+      final Archive archive = ZipDecoder().decodeBytes(await File(_path).readAsBytes());
       final ArchiveFile? old = archive.findFile('word/document.xml');
       if (old == null) throw const FormatException('Missing document.xml');
-      int offset = 0;
+      final List<String> pages = _splitIntoPages();
+      int pageBase = 0;
       final List<String> parts = <String>[];
-      final List<String> paragraphs = _text.text.split('\n');
-      for (int index = 0; index < paragraphs.length; index++) {
-        final String paragraph = paragraphs[index];
-        if (paragraph.isEmpty &&
-            index + 30 < paragraphs.length &&
-            paragraphs.skip(index).take(30).every((String p) => p.isEmpty)) {
-          parts.add('<w:p><w:r><w:br w:type="page"/></w:r></w:p>');
-          while (index + 1 < paragraphs.length &&
-              paragraphs[index + 1].isEmpty) {
-            index++;
+      for (int pageIndex = 0; pageIndex < pages.length; pageIndex++) {
+        final List<String> paragraphs = pages[pageIndex].split('\\n');
+        int paragraphBase = pageBase;
+        for (final String paragraph in paragraphs) {
+          final _TableModel? table = _tableForToken(paragraph);
+          if (table != null) {
+            parts.add(_tableXml(table));
+          } else {
+            final int? numId = _isBullet(paragraph) ? 1 : _isNumbered(paragraph) ? 2 : null;
+            parts.add(_paragraphXml(_plainListText(paragraph), paragraphBase, number: numId));
           }
-          offset += 1;
-          continue;
+          paragraphBase += paragraph.length + 1;
         }
-        final _TableModel? table = _tableForToken(paragraph);
-        if (table != null) {
-          parts.add(_tableXml(table));
-        } else {
-          final int? numId =
-              _isBullet(paragraph) ? 1 : _isNumbered(paragraph) ? 2 : null;
-          parts.add(
-            _paragraphXml(
-              _plainListText(paragraph),
-              offset,
-              number: numId,
-            ),
-          );
-          offset += paragraph.length + 1;
+        pageBase += pages[pageIndex].length + 1;
+        if (pageIndex < pages.length - 1) {
+          parts.add('<w:p><w:r><w:br w:type="page"/></w:r></w:p>');
         }
       }
       final String body = parts.join();
@@ -744,17 +822,9 @@ class _WordEditorPageState extends State<WordEditorPage> {
         output.addFile(ArchiveFile('word/numbering.xml', numbering.length, Uint8List.fromList(utf8.encode(numbering))));
       }
       await File(_path).writeAsBytes(ZipEncoder().encode(output));
-      if (mounted) {
-        ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(content: Text('Saved to the same DOCX file')),
-        );
-      }
+      if (mounted) ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text('Saved to the same DOCX file')));
     } on Object catch (error) {
-      if (mounted) {
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: Text('Could not save DOCX: $error')),
-        );
-      }
+      if (mounted) ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('Could not save DOCX: $error')));
     }
   }
 
@@ -926,68 +996,68 @@ class _WordEditorPageState extends State<WordEditorPage> {
           ),
           _tableSurface(),
           Expanded(
-            child: SingleChildScrollView(
-              padding: const EdgeInsets.fromLTRB(16, 0, 16, 24),
-              child: LayoutBuilder(
-                builder: (BuildContext context, BoxConstraints constraints) {
-                  const int linesPerPage = 44;
-                  final int pageCount = (_text.text.split('\\n').length / linesPerPage)
-                      .ceil()
-                      .clamp(1, 9999);
-                  return Column(
-                    crossAxisAlignment: CrossAxisAlignment.stretch,
+            child: ListView.builder(
+              padding: const EdgeInsets.fromLTRB(16, 8, 16, 24),
+              itemCount: _pageControllers.length,
+              itemBuilder: (BuildContext context, int pageIndex) {
+                final _RichWordEditingController controller = _pageControllers[pageIndex];
+                final bool active = _activePageIndex == pageIndex;
+                return Padding(
+                  padding: const EdgeInsets.only(bottom: 16),
+                  child: Column(
                     children: <Widget>[
                       Align(
                         alignment: Alignment.centerRight,
                         child: Padding(
-                          padding: const EdgeInsets.only(bottom: 6),
+                          padding: const EdgeInsets.only(bottom: 6, right: 4),
                           child: Text(
-                            '$pageCount page${pageCount == 1 ? '' : 's'}',
+                            'Page ' + (pageIndex + 1).toString() + ' of ' + _pageControllers.length.toString(),
                             style: Theme.of(context).textTheme.labelMedium,
                           ),
                         ),
                       ),
-                      ConstrainedBox(
-                        constraints: BoxConstraints(
-                          minHeight: pageCount * 760.0,
-                        ),
-                        child: Stack(
-                          children: <Widget>[
-                            Positioned.fill(
-                              child: CustomPaint(
-                              painter: _WordPageBackground(
-                                pageCount: pageCount,
-                                borderColor: Theme.of(context).dividerColor,
-                                pageColor: Theme.of(context).colorScheme.surface,
-                              ),
-                            ),
+                      Material(
+                        color: Theme.of(context).colorScheme.surface,
+                        elevation: active ? 2 : 1,
+                        child: Container(
+                          height: 760,
+                          decoration: BoxDecoration(
+                            border: Border.all(color: Theme.of(context).dividerColor),
                           ),
-                          TextField(
-                            controller: _text,
-                            maxLines: null,
-                            minLines: linesPerPage,
+                          child: TextField(
+                            controller: controller,
+                            maxLines: _linesPerPage,
+                            minLines: _linesPerPage,
                             scrollPhysics: const NeverScrollableScrollPhysics(),
+                            onTap: () {
+                              _activePageIndex = pageIndex;
+                              final TextSelection selection = controller.selection;
+                              if (selection.isValid) {
+                                final int base = _pageBaseOffset(pageIndex);
+                                _text.selection = TextSelection(
+                                  baseOffset: (base + selection.baseOffset).clamp(0, _text.text.length),
+                                  extentOffset: (base + selection.extentOffset).clamp(0, _text.text.length),
+                                );
+                              }
+                              setState(() {});
+                            },
+                            onChanged: (String value) => _onPageTextChanged(pageIndex, value),
                             textAlign: _align,
-                            style: const TextStyle(
-                              fontSize: 11,
-                              height: 1.35,
-                              color: Colors.black,
-                            ),
+                            style: const TextStyle(fontSize: 11, height: 1.35, color: Colors.black),
                             decoration: const InputDecoration(
                               border: InputBorder.none,
                               contentPadding: EdgeInsets.fromLTRB(38, 30, 38, 30),
                               hintText: 'Start writing…',
                             ),
-                            ),
-                          ],
+                          ),
                         ),
                       ),
                     ],
-                  );
-                },
-              ),
+                  ),
+                );
+              },
             ),
-          ),
+          )),
         ],
       );
     }
@@ -1029,6 +1099,7 @@ class _WordEditorPageState extends State<WordEditorPage> {
   @override
   void dispose() {
     _text.removeListener(_recordTextChange);
+    _disposePageControllers();
     _text.dispose();
     super.dispose();
   }
