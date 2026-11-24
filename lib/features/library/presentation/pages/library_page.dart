@@ -1,8 +1,12 @@
 import 'dart:async';
+import 'dart:convert';
+import 'dart:io';
 
+import 'package:archive/archive.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
+import 'package:path_provider/path_provider.dart';
 import 'package:lexiora/app/router/app_routes.dart';
 import 'package:lexiora/core/services/permission_service.dart';
 import 'package:lexiora/core/usecase/usecase.dart';
@@ -228,7 +232,29 @@ class _LibraryPageState extends ConsumerState<LibraryPage> with WidgetsBindingOb
 
   Widget _documentSection(BuildContext context, String title, IconData icon, List<LibraryDocument> documents) {
     return Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-      Padding(padding: const EdgeInsets.fromLTRB(0, 12, 0, 10), child: Row(children: [Icon(icon, size: 20), const SizedBox(width: 8), Text(title, style: Theme.of(context).textTheme.titleMedium?.copyWith(fontWeight: FontWeight.w800))])),
+      Padding(
+        padding: const EdgeInsets.fromLTRB(0, 12, 0, 10),
+        child: Row(
+          children: [
+            Icon(icon, size: 20),
+            const SizedBox(width: 8),
+            Expanded(
+              child: Text(
+                title,
+                style: Theme.of(context).textTheme.titleMedium?.copyWith(
+                  fontWeight: FontWeight.w800,
+                ),
+              ),
+            ),
+            if (_showDocx)
+              OutlinedButton.icon(
+                onPressed: _importing ? null : _createBlankAssignment,
+                icon: const Icon(Icons.note_add_outlined, size: 18),
+                label: const Text('New Assignment'),
+              ),
+          ],
+        ),
+      ),
       GridView.builder(shrinkWrap: true, physics: const NeverScrollableScrollPhysics(), gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(maxCrossAxisExtent: 200, childAspectRatio: 0.60, crossAxisSpacing: 16, mainAxisSpacing: 16), itemCount: documents.length, itemBuilder: (BuildContext context, int i) { final LibraryDocument doc = documents[i]; return DocumentCard(document: doc, onOpen: () => doc.isWord ? context.push(AppRoutes.wordEditorFor(doc.id)) : context.push(AppRoutes.reader(doc.id)), onAction: (DocumentCardAction a) => _onAction(a, doc)); }),
     ]);
   }
@@ -463,6 +489,116 @@ class _LibraryPageState extends ConsumerState<LibraryPage> with WidgetsBindingOb
         messenger.showSnackBar(SnackBar(content: Text(msg)));
       },
     );
+  }
+
+  Future<void> _createBlankAssignment() async {
+    final TextEditingController nameController =
+        TextEditingController(text: 'New Assignment');
+    final String? title = await showDialog<String>(
+      context: context,
+      builder: (BuildContext dialogContext) => AlertDialog(
+        title: const Text('New Word assignment'),
+        content: TextField(
+          controller: nameController,
+          autofocus: true,
+          decoration: const InputDecoration(
+            labelText: 'Assignment name',
+            hintText: 'e.g. English Pedagogy Assignment',
+          ),
+        ),
+        actions: <Widget>[
+          TextButton(
+            onPressed: () => Navigator.of(dialogContext).pop(),
+            child: const Text('Cancel'),
+          ),
+          FilledButton(
+            onPressed: () {
+              final String value = nameController.text.trim();
+              if (value.isNotEmpty) {
+                Navigator.of(dialogContext).pop(value);
+              }
+            },
+            child: const Text('Create'),
+          ),
+        ],
+      ),
+    );
+    nameController.dispose();
+    if (title == null || title.trim().isEmpty || !mounted) return;
+
+    try {
+      setState(() => _importing = true);
+      final Directory directory = await getApplicationDocumentsDirectory();
+      final String safeBase = title.trim().replaceAll(
+        RegExp(r'[\\/:*?"<>|]'),
+        '_',
+      );
+      final String filePath =
+          directory.path + '/' + safeBase + '-' +
+          DateTime.now().millisecondsSinceEpoch.toString() + '.docx';
+
+      final String documentXml =
+          '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>'
+          '<w:document xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main">'
+          '<w:body><w:p><w:r><w:t></w:t></w:r></w:p>'
+          '<w:sectPr><w:pgSz w:w="11906" w:h="16838"/>'
+          '<w:pgMar w:top="1440" w:right="1440" w:bottom="1440" w:left="1440"/>'
+          '</w:sectPr></w:body></w:document>';
+      const String contentTypes =
+          '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>'
+          '<Types xmlns="http://schemas.openxmlformats.org/package/2006/content-types">'
+          '<Default Extension="rels" ContentType="application/vnd.openxmlformats-package.relationships+xml"/>'
+          '<Default Extension="xml" ContentType="application/xml"/>'
+          '<Override PartName="/word/document.xml" ContentType="application/vnd.openxmlformats-officedocument.wordprocessingml.document.main+xml"/>'
+          '</Types>';
+      const String rootRels =
+          '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>'
+          '<Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships">'
+          '<Relationship Id="rId1" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/officeDocument" Target="word/document.xml"/>'
+          '</Relationships>';
+
+      final Archive archive = Archive()
+        ..addFile(ArchiveFile(
+          '[Content_Types].xml',
+          contentTypes.length,
+          Uint8List.fromList(utf8.encode(contentTypes)),
+        ))
+        ..addFile(ArchiveFile(
+          '_rels/.rels',
+          rootRels.length,
+          Uint8List.fromList(utf8.encode(rootRels)),
+        ))
+        ..addFile(ArchiveFile(
+          'word/document.xml',
+          documentXml.length,
+          Uint8List.fromList(utf8.encode(documentXml)),
+        ));
+
+      await File(filePath).writeAsBytes(ZipEncoder().encode(archive));
+      final File file = File(filePath);
+      final LibraryDocument document = LibraryDocument(
+        id: DateTime.now().microsecondsSinceEpoch.toString(),
+        title: safeBase,
+        fileName: safeBase + '.docx',
+        filePath: filePath,
+        fileSize: await file.length(),
+        pageCount: 1,
+        isFavorite: false,
+        importedAt: DateTime.now(),
+        isManaged: true,
+      );
+      await ref.read(libraryRepositoryProvider).insert(document);
+      if (!mounted) return;
+      setState(() => _importing = false);
+      await context.push(AppRoutes.wordEditorFor(document.id));
+    } on Object catch (error) {
+      if (mounted) {
+        setState(() => _importing = false);
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text('Could not create assignment: $error')),
+        );
+      }
+    }
   }
 
   Future<void> _importWord() async {
