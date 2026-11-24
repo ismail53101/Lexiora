@@ -141,7 +141,7 @@ class _LibraryPageState extends ConsumerState<LibraryPage> with WidgetsBindingOb
         ],
       ),
       floatingActionButton: FloatingActionButton.extended(
-        onPressed: _importing ? null : _import,
+        onPressed: _importing ? null : (_showDocx ? _importWord : _import),
         icon: _importing
             ? const SizedBox(
                 width: 18,
@@ -149,7 +149,7 @@ class _LibraryPageState extends ConsumerState<LibraryPage> with WidgetsBindingOb
                 child: CircularProgressIndicator(strokeWidth: 2),
               )
             : const Icon(Icons.file_upload_outlined),
-        label: Text(_importing ? 'Importing…' : 'Add PDF'),
+        label: Text(_importing ? 'Importing…' : (_showDocx ? 'Add Word' : 'Add PDF')),
       ),
       body: Column(
         children: [
@@ -174,24 +174,22 @@ class _LibraryPageState extends ConsumerState<LibraryPage> with WidgetsBindingOb
                     data: (List<LibraryDocument> docs) {
                       final List<LibraryDocument> visible = _applyView(docs);
                       final List<LibraryDocument> pdfs = visible.where((LibraryDocument d) => !d.isWord).toList();
-                      final List<LibraryDocument> docx = visible.where(
-                        (LibraryDocument d) => d.fileName.toLowerCase().endsWith('.docx'),
-                      ).toList();
-                      final List<LibraryDocument> selected = _showDocx ? docx : pdfs;
+                      final List<LibraryDocument> wordDocs = visible.where((LibraryDocument d) => d.isWord).toList();
+                      final List<LibraryDocument> selected = _showDocx ? wordDocs : pdfs;
                       return RefreshIndicator(
                         onRefresh: _autoDiscover,
                         child: ListView(
                           physics: const AlwaysScrollableScrollPhysics(),
                           padding: const EdgeInsets.fromLTRB(16, 8, 16, 96),
                           children: [
-                            _libraryTypeTabs(context, pdfs.length, docx.length),
+                            _libraryTypeTabs(context, pdfs.length, wordDocs.length),
                             const SizedBox(height: 8),
                             if (selected.isEmpty)
                               _emptyScrollable(_emptyContent())
                             else
                               _documentSection(
                                 context,
-                                _showDocx ? 'DOCX files' : 'PDF files',
+                                _showDocx ? 'Word files' : 'PDF files',
                                 _showDocx ? Icons.description_outlined : Icons.picture_as_pdf_outlined,
                                 selected,
                               ),
@@ -217,7 +215,7 @@ class _LibraryPageState extends ConsumerState<LibraryPage> with WidgetsBindingOb
         ButtonSegment<bool>(
           value: true,
           icon: const Icon(Icons.description_outlined),
-          label: Text('DOCX  ($docxCount)'),
+          label: Text('Word  ($docxCount)'),
         ),
       ],
       selected: <bool>{_showDocx},
@@ -463,6 +461,34 @@ class _LibraryPageState extends ConsumerState<LibraryPage> with WidgetsBindingOb
               : 'Those PDFs are already in your library';
         }
         messenger.showSnackBar(SnackBar(content: Text(msg)));
+      },
+    );
+  }
+
+  Future<void> _importWord() async {
+    final ScaffoldMessengerState messenger = ScaffoldMessenger.of(context);
+    final PermissionService perm = ref.read(permissionServiceProvider);
+    final bool granted = await perm.isGrantedForDiscovery();
+    if (!granted) {
+      await _autoDiscover();
+      return;
+    }
+    setState(() => _importing = true);
+    final Result<ImportOutcome> result =
+        await ref.read(importWordDocumentsProvider).call(const NoParams());
+    if (!mounted) return;
+    setState(() => _importing = false);
+    result.fold(
+      (failure) => messenger.showSnackBar(
+        SnackBar(content: Text('Word import failed: ${failure.message}')),
+      ),
+      (ImportOutcome o) {
+        if (o.picked == 0) return;
+        final String message = o.added > 0
+            ? 'Added ${o.added} Word file${o.added == 1 ? '' : 's'}'
+                '${o.duplicates > 0 ? ' · skipped ${o.duplicates} duplicate${o.duplicates == 1 ? '' : 's'}' : ''}'
+            : 'Those Word files are already in your library';
+        messenger.showSnackBar(SnackBar(content: Text(message)));
       },
     );
   }
