@@ -284,11 +284,11 @@ class _WordEditorPageState extends State<WordEditorPage> {
   }
 
   List<String> _splitIntoPages([String? source]) {
-    final List<String> lines = (source ?? _text.text).split('\\n');
+    final List<String> lines = (source ?? _text.text).split('\n');
     final List<String> pages = <String>[];
     for (int i = 0; i < lines.length; i += _linesPerPage) {
       final int end = (i + _linesPerPage).clamp(0, lines.length);
-      pages.add(lines.sublist(i, end).join('\\n'));
+      pages.add(lines.sublist(i, end).join('\n'));
     }
     return pages.isEmpty ? <String>[''] : pages;
   }
@@ -360,7 +360,7 @@ class _WordEditorPageState extends State<WordEditorPage> {
     if (pageIndex >= _pageControllers.length) return;
     final List<String> pages = _pageControllers.map((c) => c.text).toList();
     pages[pageIndex] = value;
-    final String combined = pages.join('\\n');
+    final String combined = pages.join('\n');
     final TextSelection localSelection = _pageControllers[pageIndex].selection;
     final int base = _pageBaseOffset(pageIndex);
     _text.value = TextEditingValue(
@@ -371,7 +371,7 @@ class _WordEditorPageState extends State<WordEditorPage> {
       ),
     );
     _activePageIndex = pageIndex;
-    if (value.split('\\n').length > _linesPerPage) {
+    if (value.split('\n').length > _linesPerPage) {
       _setEditorText(combined);
       _rebuildPageControllers(preferredPage: pageIndex);
     }
@@ -454,6 +454,111 @@ class _WordEditorPageState extends State<WordEditorPage> {
     replace.dispose();
   }
 
+  bool _xmlToggle(String xml, String tag) {
+    final RegExpMatch? match = RegExp('<w:$tag(?: [^>]*)?\\s*/?>').firstMatch(xml);
+    if (match == null) return false;
+    final String value = RegExp(r'w:val="([^"]+)"').firstMatch(match.group(0) ?? '')?.group(1) ?? '';
+    return value.isEmpty || (value != '0' && value != 'false' && value != 'off');
+  }
+
+  double _headingSize(String style) {
+    switch (style.toLowerCase()) {
+      case 'heading1':
+      case 'title':
+        return 24;
+      case 'heading2':
+        return 18;
+      case 'heading3':
+        return 14;
+      default:
+        return 11;
+    }
+  }
+
+  Color _docxColor(String value) {
+    final String hex = value.replaceAll('#', '').trim();
+    if (hex.length != 6) return Colors.black;
+    final int? rgb = int.tryParse(hex, radix: 16);
+    return rgb == null ? Colors.black : Color(0xFF000000 | rgb);
+  }
+
+  Color? _docxHighlight(String value) {
+    const Map<String, Color> named = <String, Color>{
+      'yellow': Colors.yellow,
+      'green': Colors.green,
+      'cyan': Colors.cyan,
+      'magenta': Colors.pinkAccent,
+      'red': Colors.redAccent,
+      'blue': Colors.lightBlueAccent,
+      'darkYellow': Colors.amber,
+      'lightGray': Color(0xFFE0E0E0),
+      'gray': Color(0xFFBDBDBD),
+    };
+    if (named.containsKey(value)) return named[value];
+    final String hex = value.replaceAll('#', '').trim();
+    if (hex.length == 6) {
+      final int? rgb = int.tryParse(hex, radix: 16);
+      if (rgb != null) return Color(0xFF000000 | rgb);
+    }
+    return null;
+  }
+
+  String _readDocxParagraph(String block, int baseOffset) {
+    final String style = RegExp(r'<w:pStyle[^>]*w:val="([^"]+)"[^>]*/?>')
+            .firstMatch(block)?.group(1) ??
+        '';
+    final bool heading = style.toLowerCase().startsWith('heading') ||
+        style.toLowerCase() == 'title';
+    final double defaultSize = _headingSize(style);
+    final bool defaultBold = heading;
+    final List<String> pieces = <String>[];
+    int localOffset = 0;
+    for (final RegExpMatch run in RegExp(r'<w:r(?: [^>]*)?>.*?</w:r>', dotAll: true).allMatches(block)) {
+      final String runXml = run.group(0)!;
+      final String rPr = RegExp(r'<w:rPr(?: [^>]*)?>(.*?)</w:rPr>', dotAll: true)
+              .firstMatch(runXml)?.group(1) ??
+          '';
+      String runText = RegExp(r'<w:t(?: [^>]*)?>(.*?)</w:t>', dotAll: true)
+          .allMatches(runXml)
+          .map((RegExpMatch m) => _unescape(m.group(1)!))
+          .join();
+      if (runText.isEmpty) {
+        if (runXml.contains('<w:tab')) runText = '\t';
+        if (runXml.contains('<w:br')) runText = '\n';
+      }
+      if (runText.isEmpty) continue;
+      final bool bold = rPr.contains('<w:b') ? _xmlToggle(rPr, 'b') : defaultBold;
+      final bool italic = _xmlToggle(rPr, 'i');
+      final bool underline = _xmlToggle(rPr, 'u');
+      final RegExpMatch? sizeMatch = RegExp(r'<w:sz[^>]*w:val="([0-9]+)"').firstMatch(rPr);
+      final double size = sizeMatch == null
+          ? defaultSize
+          : (double.tryParse(sizeMatch.group(1)!) ?? (defaultSize * 2)) / 2;
+      final RegExpMatch? colorMatch = RegExp(r'<w:color[^>]*w:val="([^"]+)"').firstMatch(rPr);
+      final Color color = colorMatch == null ? Colors.black : _docxColor(colorMatch.group(1)!);
+      final RegExpMatch? highlightMatch = RegExp(r'<w:highlight[^>]*w:val="([^"]+)"').firstMatch(rPr);
+      final RegExpMatch? shadingMatch = RegExp(r'<w:shd[^>]*w:fill="([^"]+)"').firstMatch(rPr);
+      final Color? highlight = highlightMatch != null
+          ? _docxHighlight(highlightMatch.group(1)!)
+          : shadingMatch != null ? _docxHighlight(shadingMatch.group(1)!) : null;
+      final int start = localOffset;
+      final int end = start + runText.length;
+      if (bold || italic || underline || size != 11 || color != Colors.black || highlight != null) {
+        _ranges.add(_FormatRange(baseOffset + start, baseOffset + end, bold, italic, underline, size, color, highlight));
+      }
+      pieces.add(runText);
+      localOffset = end;
+    }
+    if (pieces.isEmpty) {
+      final String plain = RegExp(r'<w:t(?: [^>]*)?>(.*?)</w:t>', dotAll: true)
+          .allMatches(block).map((RegExpMatch m) => _unescape(m.group(1)!)).join();
+      if (plain.isNotEmpty && (defaultBold || defaultSize != 11)) {
+        _ranges.add(_FormatRange(baseOffset, baseOffset + plain.length, defaultBold, false, false, defaultSize, Colors.black, null));
+      }
+      return plain;
+    }
+    return pieces.join();
+  }
   Future<void> _load() async {
     try {
       _document = widget.file == null
@@ -491,6 +596,7 @@ class _WordEditorPageState extends State<WordEditorPage> {
           dotAll: true,
         ).allMatches(xml);
         final List<String> loadedParagraphs = <String>[];
+        _ranges.clear();
         for (final RegExpMatch block in blocks) {
           final String content = block.group(0)!;
           final RegExpMatch? table = RegExp(r'<w:tbl>(.*?)</w:tbl>', dotAll: true).firstMatch(content);
@@ -511,10 +617,9 @@ class _WordEditorPageState extends State<WordEditorPage> {
             _tables.add(_TableModel(token, rows, columns, cells));
             loadedParagraphs.add(token);
           } else {
-            loadedParagraphs.add(RegExp(r'<w:t(?: [^>]*)?>(.*?)</w:t>', dotAll: true)
-                .allMatches(content)
-                .map((RegExpMatch text) => _unescape(text.group(1)!))
-                .join());
+            final int baseOffset = loadedParagraphs.join('\n').length +
+                (loadedParagraphs.isEmpty ? 0 : 1);
+            loadedParagraphs.add(_readDocxParagraph(content, baseOffset));
           }
         }
         _setEditorText(loadedParagraphs.join('\n'));
@@ -553,8 +658,8 @@ class _WordEditorPageState extends State<WordEditorPage> {
   void _insertBlankPage() {
     final List<String> pages = _splitIntoPages();
     final int insertAt = (_activePageIndex + 1).clamp(0, pages.length);
-    pages.insert(insertAt, List<String>.filled(_linesPerPage, '').join('\\n'));
-    _setEditorText(pages.join('\\n'));
+    pages.insert(insertAt, List<String>.filled(_linesPerPage, '').join('\n'));
+    _setEditorText(pages.join('\n'));
     _rebuildPageControllers(preferredPage: insertAt);
     setState(() {});
   }
@@ -728,6 +833,7 @@ class _WordEditorPageState extends State<WordEditorPage> {
     return '<w:rPr>'
         '${range.bold ? '<w:b/>' : ''}'
         '${range.italic ? '<w:i/>' : ''}'
+        '${range.underline ? '<w:u w:val="single"/>' : ''}'
         '${range.highlight == null ? '' : '<w:shd w:val="clear" w:fill="' + range.highlight!.value.toRadixString(16).substring(2).toUpperCase() + '"/>'}'
         '<w:sz w:val="${(range.size * 2).round()}"/>'
         '<w:color w:val="$color"/>'
@@ -781,7 +887,7 @@ class _WordEditorPageState extends State<WordEditorPage> {
       int pageBase = 0;
       final List<String> parts = <String>[];
       for (int pageIndex = 0; pageIndex < pages.length; pageIndex++) {
-        final List<String> paragraphs = pages[pageIndex].split('\\n');
+        final List<String> paragraphs = pages[pageIndex].split('\n');
         int paragraphBase = pageBase;
         for (final String paragraph in paragraphs) {
           final _TableModel? table = _tableForToken(paragraph);
