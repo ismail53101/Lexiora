@@ -80,7 +80,7 @@ void main() {
       expect(xml, contains('<w:pgSz w:w="11906" w:h="16838"/>'));
       expect(xml, contains('<w:pgMar w:top="1440"'));
       expect(xml, contains('<w:br w:type="page"/>'));
-      expect(xml, contains('&#1593;&#1608;&#1605;&#1583;'));
+      expect(xml, contains('&#1593;&#1608;&#1585;&#1605;&#1583;'));
     });
 
     test('leaves non-story parts untouched', () {
