@@ -183,7 +183,7 @@ class _WordEditorPageState extends State<WordEditorPage> {
 
     final Uint8List cleanedBytes = Uint8List.fromList(cleaned.codeUnits);
     final CompressionType? compression = document.compression;
-    archive.removeFile('word/document.xml');
+    archive.removeFile(document);
     final ArchiveFile replacement = ArchiveFile(
       'word/document.xml',
       cleanedBytes.length,
