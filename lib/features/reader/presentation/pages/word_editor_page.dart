@@ -2,12 +2,11 @@ import 'dart:async';
 import 'dart:io';
 import 'dart:typed_data';
 
-import 'package:archive/archive.dart';
-
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:lexiora/app/di/injector.dart';
 import 'package:lexiora/core/services/pdf_import_service.dart';
+import 'package:lexiora/features/reader/data/docx_layout_sanitizer.dart';
 import 'package:lexiora/core/services/pdf_discovery_service.dart' show DeviceFile;
 import 'package:lexiora/features/library/domain/entities/library_document.dart';
 import 'package:lexiora/features/library/domain/repositories/library_repository.dart';
@@ -166,32 +165,12 @@ class _WordEditorPageState extends State<WordEditorPage> {
 
   Uint8List _prepareDocxBytes(Uint8List bytes) {
     // Word stores DrawingML text boxes in mc:Choice and an identical VML
-    // copy in mc:Fallback. The current Quds importer can see both branches,
-    // which makes the same text box appear twice. Keep the preferred
-    // DrawingML branch and remove only the redundant fallback from the
-    // document story before handing the package to the editor.
-    final Archive archive = ZipDecoder().decodeBytes(bytes);
-    final ArchiveFile? document = archive.findFile('word/document.xml');
-    if (document == null || !document.isFile) return bytes;
-
-    final String xml = String.fromCharCodes(document.content);
-    if (!xml.contains('<mc:Fallback>')) return bytes;
-    final String cleaned = xml.replaceAll(
-      RegExp(r'<mc:Fallback>[\s\S]*?</mc:Fallback>'),
-      '',
-    );
-    if (cleaned == xml) return bytes;
-
-    final Uint8List cleanedBytes = Uint8List.fromList(cleaned.codeUnits);
-    final CompressionType? compression = document.compression;
-    archive.removeFile(document);
-    final ArchiveFile replacement = ArchiveFile(
-      'word/document.xml',
-      cleanedBytes.length,
-      cleanedBytes,
-    )..compression = compression;
-    archive.addFile(replacement);
-    return Uint8List.fromList(ZipEncoder().encode(archive));
+    // copy in mc:Fallback, and anchors them relative to the column/paragraph.
+    // The sanitizer removes the duplicate fallback branches and rewrites the
+    // anchors to the page margin area before the package reaches the editor,
+    // so each text box renders exactly once at its authored position instead
+    // of stacking at the page corner.
+    return sanitizeDocxForEditor(bytes);
   }
 
   void _normalizeImportedWordLayout() {
