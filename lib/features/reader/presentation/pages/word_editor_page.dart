@@ -274,15 +274,20 @@ class _WordEditorPageState extends State<WordEditorPage> {
     final String value = _text.text;
     final int offset =
         _text.selection.isValid ? _text.selection.end : value.length;
-    // Keep the editing surface visually page-like while recording a clear
-    // page-break marker that is converted to a real DOCX page break on save.
-    final String blankPageMarker = List<String>.filled(36, '\\n').join();
+    const int pageLines = 36;
+    final String blankPage = List<String>.filled(pageLines, '').join('\n');
     final String prefix = value.substring(0, offset);
     final String suffix = value.substring(offset);
-    _setEditorText('$prefix\\n$blankPageMarker$suffix');
-    _text.selection = TextSelection.collapsed(
-      offset: prefix.length + 1 + blankPageMarker.length,
+    final String next = '$prefix\n$blankPage\n$suffix';
+    _restoringText = true;
+    _text.value = TextEditingValue(
+      text: next,
+      selection: TextSelection.collapsed(
+        offset: prefix.length + 1 + blankPage.length + 1,
+      ),
     );
+    _lastText = next;
+    _restoringText = false;
     setState(() {});
   }
 
@@ -482,11 +487,9 @@ class _WordEditorPageState extends State<WordEditorPage> {
       if (old == null) throw const FormatException('Missing document.xml');
       int offset = 0;
       final List<String> parts = <String>[];
-      final List<String> paragraphs = _text.text.split('\\n');
+      final List<String> paragraphs = _text.text.split('\n');
       for (int index = 0; index < paragraphs.length; index++) {
         final String paragraph = paragraphs[index];
-        // A run of 30+ blank lines is the UI representation of "New Blank
-        // Page". Persist it as a real Word page break instead of empty text.
         if (paragraph.isEmpty &&
             index + 30 < paragraphs.length &&
             paragraphs.skip(index).take(30).every((String p) => p.isEmpty)) {
@@ -502,11 +505,8 @@ class _WordEditorPageState extends State<WordEditorPage> {
         if (table != null) {
           parts.add(_tableXml(table));
         } else {
-          final int? numId = _isBullet(paragraph)
-              ? 1
-              : _isNumbered(paragraph)
-                  ? 2
-                  : null;
+          final int? numId =
+              _isBullet(paragraph) ? 1 : _isNumbered(paragraph) ? 2 : null;
           parts.add(
             _paragraphXml(
               _plainListText(paragraph),
@@ -514,15 +514,6 @@ class _WordEditorPageState extends State<WordEditorPage> {
               number: numId,
             ),
           );
-          offset += paragraph.length + 1;
-        }
-      }
-        final _TableModel? table = _tableForToken(paragraph);
-        if (table != null) {
-          parts.add(_tableXml(table));
-        } else {
-          final int? numId = _isBullet(paragraph) ? 1 : _isNumbered(paragraph) ? 2 : null;
-          parts.add(_paragraphXml(_plainListText(paragraph), offset, number: numId));
           offset += paragraph.length + 1;
         }
       }
@@ -627,11 +618,7 @@ class _WordEditorPageState extends State<WordEditorPage> {
                 _tool(Icons.format_list_bulleted, () => _toggleList(numbered: false), false),
                 _tool(Icons.format_list_numbered, () => _toggleList(numbered: true), false),
                 _tool(Icons.table_chart, _insertTable, false),
-                _tool(
-                  Icons.note_add,
-                  _insertBlankPage,
-                  false,
-                ),
+                _tool(Icons.note_add, _insertBlankPage, false),
                 _tool(
                   Icons.format_bold,
                   () {
