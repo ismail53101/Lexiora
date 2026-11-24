@@ -30,8 +30,7 @@ extension on LibrarySort {
 /// search, sort and category filtering.
 ///
 /// Discovery is fully automatic — there is no import or "find files" button.
-/// On open (and on pull-to-refresh) Lexiora scans the device and lists every
-/// PDF, referencing each file in place. The one prerequisite on Android 11+ is
+/// On open (and on pull-to-refresh) Lexiora scans the device and lists every supported PDF and Word document, referencing each file in place. The one prerequisite on Android 11+ is
 /// the one-time "All files access" grant, surfaced as a permission state.
 class LibraryPage extends ConsumerStatefulWidget {
   const LibraryPage({super.key});
@@ -382,7 +381,7 @@ class _LibraryPageState extends ConsumerState<LibraryPage> with WidgetsBindingOb
           SnackBar(
             content: Text(
               o.added > 0
-                  ? 'Added ${o.added} new PDF${o.added == 1 ? '' : 's'}'
+                  ? 'Added ${o.added} new file${o.added == 1 ? '' : 's'}'
                   : 'Library is up to date',
             ),
           ),
