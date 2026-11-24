@@ -276,7 +276,7 @@ class _WordEditorPageState extends State<WordEditorPage> {
         _text.selection.isValid ? _text.selection.end : value.length;
     // Keep the editing surface visually page-like while recording a clear
     // page-break marker that is converted to a real DOCX page break on save.
-    const String blankPageMarker = '\\n' * 36;
+    final String blankPageMarker = List<String>.filled(36, '\\n').join();
     final String prefix = value.substring(0, offset);
     final String suffix = value.substring(offset);
     _setEditorText('$prefix\\n$blankPageMarker$suffix');
@@ -284,7 +284,6 @@ class _WordEditorPageState extends State<WordEditorPage> {
       offset: prefix.length + 1 + blankPageMarker.length,
     );
     setState(() {});
-    FocusScope.of(context).requestFocus(FocusNode());
   }
 
   Future<void> _insertTable() async {
