@@ -331,15 +331,44 @@ class MainActivity : FlutterActivity() {
 
     private fun openWordFile(path: String, mime: String, result: MethodChannel.Result) {
         try {
+            val source = File(path)
+            if (!source.exists() || !source.isFile) {
+                result.error("missing_file", "Word document no longer exists on the device", null)
+                return
+            }
+
+            // FileProvider only exposes app-owned files. Auto-discovered Word
+            // files may live in WhatsApp/Downloads/etc., so copy them to the
+            // app's private imported directory before handing them to Word/Docs.
+            val providerFile = if (source.canonicalPath.startsWith(filesDir.canonicalPath + File.separator)) {
+                source
+            } else {
+                val dir = File(filesDir, "imported").apply { mkdirs() }
+                val safeName = source.name.ifBlank { "document.docx" }
+                val copy = File(dir, "external_${System.currentTimeMillis()}_$safeName")
+                source.inputStream().use { input -> copy.outputStream().use { output -> input.copyTo(output) } }
+                copy
+            }
+
+            val uri = FileProvider.getUriForFile(
+                this@MainActivity,
+                "$packageName.fileprovider",
+                providerFile,
+            )
             val intent = Intent(Intent.ACTION_VIEW).apply {
-                setDataAndType(FileProvider.getUriForFile(this@MainActivity, "$packageName.fileprovider", File(path)), mime)
+                setDataAndType(uri, mime)
                 addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION)
             }
-            if (intent.resolveActivity(packageManager) == null) { result.error("no_app", "No installed app can open this Word document", null); return }
-            startActivity(intent); result.success(true)
-        } catch (e: Exception) { result.error("open_failed", "Could not open Word document: ${e.message}", null) }
+            if (intent.resolveActivity(packageManager) == null) {
+                result.error("no_app", "No installed app can open this Word document", null)
+                return
+            }
+            startActivity(intent)
+            result.success(true)
+        } catch (e: Exception) {
+            result.error("open_failed", "Could not open Word document: ${e.message}", null)
+        }
     }
-
     /** Copies an incoming content URI immediately, then notifies Dart with a
      * private, stable path. The reader never receives or assumes a raw URI. */
     private fun processIncomingIntent(incoming: Intent?) {
