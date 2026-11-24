@@ -199,7 +199,7 @@ class _WordEditorPageState extends State<WordEditorPage> {
     // visible content is positioned by floating text boxes. Clear only this
     // cover/form area; real bullet lists later in the document must remain
     // intact.
-    final List<WmlParagraph> paragraphs = _controller.document.paragraphs;
+    final List<WmlParagraph> paragraphs = _controller.document.paragraphs.toList();
     for (final WmlParagraph paragraph in paragraphs.take(5)) {
       paragraph.properties
         ..numId = null
