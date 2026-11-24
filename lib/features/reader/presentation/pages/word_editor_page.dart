@@ -99,13 +99,14 @@ class _WordEditorPageState extends State<WordEditorPage> {
         // tree (including floating text boxes/pictures) before the first
         // pagination pass. This is important for Word files whose first page
         // is composed from anchored objects.
-        _controller.loadBytes(_prepareDocxBytes(bytes));
+        // Use the editor's asynchronous OOXML loader so the complete Word
+        // package is parsed before we touch pagination/layout.
+        await _controller.loadBytesAsync(_prepareDocxBytes(bytes));
         _normalizeImportedWordLayout();
-        // Re-layout with the exact Flutter font metrics used by the canvas.
-        // Run it after the import normalization so page geometry and text
-        // metrics are calculated from the final document model.
+        // fitPaintMetrics() already re-lays out and then applies the same
+        // Flutter font metrics used by the canvas. Do not call relayout()
+        // afterwards, because that would discard the fitted paint metrics.
         _controller.fitPaintMetrics();
-        _controller.relayout();
         _controller.refresh();
         _controller.markClean();
       } else if (mounted) {
