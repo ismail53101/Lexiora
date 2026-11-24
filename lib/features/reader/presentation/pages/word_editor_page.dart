@@ -51,6 +51,8 @@ class _FormatRange {
 class _WordEditorPageState extends State<WordEditorPage> {
   final TextEditingController _text = TextEditingController();
   final List<_FormatRange> _ranges = <_FormatRange>[];
+  final List<String> _undoStack = <String>[];
+  final List<String> _redoStack = <String>[];
   LibraryDocument? _document;
   bool _loading = true;
   bool _bold = false;
@@ -60,6 +62,8 @@ class _WordEditorPageState extends State<WordEditorPage> {
   Color _color = Colors.black;
   TextAlign _align = TextAlign.left;
   String? _error;
+  String _lastText = '';
+  bool _restoringText = false;
 
   bool get _docx =>
       (_document?.fileName ?? widget.file?.name ?? '')
@@ -71,7 +75,90 @@ class _WordEditorPageState extends State<WordEditorPage> {
   @override
   void initState() {
     super.initState();
+    _text.addListener(_recordTextChange);
     _load();
+  }
+
+  void _recordTextChange() {
+    if (_restoringText || _text.text == _lastText) return;
+    _undoStack.add(_lastText);
+    _redoStack.clear();
+    _lastText = _text.text;
+    if (mounted) setState(() {});
+  }
+
+  void _setEditorText(String value) {
+    _restoringText = true;
+    _text.value = TextEditingValue(
+      text: value,
+      selection: TextSelection.collapsed(offset: value.length),
+    );
+    _lastText = value;
+    _restoringText = false;
+  }
+
+  void _undo() {
+    if (_undoStack.isEmpty) return;
+    _redoStack.add(_text.text);
+    final String value = _undoStack.removeLast();
+    _setEditorText(value);
+    setState(() {});
+  }
+
+  void _redo() {
+    if (_redoStack.isEmpty) return;
+    _undoStack.add(_text.text);
+    final String value = _redoStack.removeLast();
+    _setEditorText(value);
+    setState(() {});
+  }
+
+  Future<void> _findAndReplace() async {
+    final TextEditingController find = TextEditingController();
+    final TextEditingController replace = TextEditingController();
+    await showDialog<void>(
+      context: context,
+      builder: (BuildContext dialogContext) => AlertDialog(
+        title: const Text('Find and replace'),
+        content: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: <Widget>[
+            TextField(
+              controller: find,
+              autofocus: true,
+              decoration: const InputDecoration(labelText: 'Find'),
+            ),
+            TextField(
+              controller: replace,
+              decoration: const InputDecoration(labelText: 'Replace with'),
+            ),
+          ],
+        ),
+        actions: <Widget>[
+          TextButton(
+            onPressed: () => Navigator.of(dialogContext).pop(),
+            child: const Text('Cancel'),
+          ),
+          FilledButton(
+            onPressed: () {
+              final String query = find.text;
+              if (query.isEmpty) return;
+              final int count = query.allMatches(_text.text).length;
+              _undoStack.add(_text.text);
+              _redoStack.clear();
+              _setEditorText(_text.text.replaceAll(query, replace.text));
+              Navigator.of(dialogContext).pop();
+              ScaffoldMessenger.of(context).showSnackBar(
+                SnackBar(content: Text('$count occurrence(s) replaced')),
+              );
+            },
+            child: const Text('Replace all'),
+          ),
+        ],
+      ),
+    );
+    find.dispose();
+    replace.dispose();
   }
 
   Future<void> _load() async {
@@ -103,7 +190,7 @@ class _WordEditorPageState extends State<WordEditorPage> {
           r'<w:p(?: [^>]*)?>(.*?)</w:p>',
           dotAll: true,
         ).allMatches(xml);
-        _text.text = paragraphs
+        _setEditorText(paragraphs
             .map(
               (RegExpMatch paragraph) => RegExp(
                 r'<w:t(?: [^>]*)?>(.*?)</w:t>',
@@ -113,7 +200,7 @@ class _WordEditorPageState extends State<WordEditorPage> {
                   .map((RegExpMatch text) => _unescape(text.group(1)!))
                   .join(),
             )
-            .join('\n');
+            .join('\n'));
       }
     } on Object catch (error) {
       _error = 'Could not read this document: $error';
@@ -294,6 +381,9 @@ class _WordEditorPageState extends State<WordEditorPage> {
             scrollDirection: Axis.horizontal,
             child: Row(
               children: <Widget>[
+                _tool(Icons.undo, _undo, _undoStack.isNotEmpty),
+                _tool(Icons.redo, _redo, _redoStack.isNotEmpty),
+                _tool(Icons.find_replace, _findAndReplace, false),
                 _tool(
                   Icons.format_bold,
                   () {
@@ -440,6 +530,7 @@ class _WordEditorPageState extends State<WordEditorPage> {
 
   @override
   void dispose() {
+    _text.removeListener(_recordTextChange);
     _text.dispose();
     super.dispose();
   }
