@@ -309,7 +309,7 @@ class _WordEditorPageState extends State<WordEditorPage> {
     final String value = _text.text;
     final int offset =
         _text.selection.isValid ? _text.selection.end : value.length;
-    const int pageLines = 36;
+    const int pageLines = 44;
     final String blankPage = List<String>.filled(pageLines, '').join('\n');
     final String prefix = value.substring(0, offset);
     final String suffix = value.substring(offset);
@@ -731,7 +731,7 @@ class _WordEditorPageState extends State<WordEditorPage> {
               padding: const EdgeInsets.fromLTRB(16, 0, 16, 24),
               child: LayoutBuilder(
                 builder: (BuildContext context, BoxConstraints constraints) {
-                  const int linesPerPage = 36;
+                  const int linesPerPage = 44;
                   final int pageCount = (_text.text.split('\\n').length / linesPerPage)
                       .ceil()
                       .clamp(1, 9999);
@@ -743,15 +743,19 @@ class _WordEditorPageState extends State<WordEditorPage> {
                         child: Padding(
                           padding: const EdgeInsets.only(bottom: 6),
                           child: Text(
-                            'Page 1 of $pageCount',
+                            '$pageCount page${pageCount == 1 ? '' : 's'}',
                             style: Theme.of(context).textTheme.labelMedium,
                           ),
                         ),
                       ),
-                      Stack(
-                        children: <Widget>[
-                          Positioned.fill(
-                            child: CustomPaint(
+                      ConstrainedBox(
+                        constraints: BoxConstraints(
+                          minHeight: pageCount * 760.0,
+                        ),
+                        child: Stack(
+                          children: <Widget>[
+                            Positioned.fill(
+                              child: CustomPaint(
                               painter: _WordPageBackground(
                                 pageCount: pageCount,
                                 borderColor: Theme.of(context).dividerColor,
@@ -779,8 +783,9 @@ class _WordEditorPageState extends State<WordEditorPage> {
                               contentPadding: EdgeInsets.fromLTRB(38, 30, 38, 30),
                               hintText: 'Start writing…',
                             ),
-                          ),
-                        ],
+                            ),
+                          ],
+                        ),
                       ),
                     ],
                   );
