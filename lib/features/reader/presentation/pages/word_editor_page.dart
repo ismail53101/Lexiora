@@ -76,10 +76,14 @@ class _WordEditorPageState extends State<WordEditorPage> {
   String _lastText = '';
   bool _restoringText = false;
 
-  bool get _docx =>
-      (_document?.fileName ?? widget.file?.name ?? '')
-          .toLowerCase()
-          .endsWith('.docx');
+  bool get _docx {
+    final String fileName =
+        (_document?.fileName ?? widget.file?.name ?? '').toLowerCase();
+    final String path = (_document?.filePath ?? widget.file?.path ?? '').toLowerCase();
+    // Auto-discovered Android files can have a display name without an
+    // extension in the database, while the actual path still has .docx.
+    return fileName.endsWith('.docx') || path.endsWith('.docx');
+  }
   String get _path => _document?.filePath ?? widget.file!.path;
   String get _name => _document?.fileName ?? widget.file!.name;
 
