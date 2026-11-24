@@ -9,6 +9,7 @@ import 'package:lexiora/modules/flashcards/domain/repositories/fc_repository.dar
 import 'package:lexiora/modules/flashcards/presentation/providers/fc_providers.dart';
 import 'package:lexiora/modules/flashcards/presentation/widgets/deck_sheets.dart';
 import 'package:lexiora/modules/flashcards/presentation/widgets/fc_widgets.dart';
+import 'package:lexiora/modules/vocabulary/presentation/providers/vocabulary_providers.dart';
 
 /// Bring cards in: paste a table / Anki text, or pull from other parts of the app.
 class FlashcardsImportPage extends ConsumerStatefulWidget {
@@ -208,6 +209,11 @@ class _AppTabState extends ConsumerState<_AppTab> {
   Future<void> _load() async {
     setState(() => _loading = true);
     try {
+      // Vocabulary is seeded lazily by its own module. Ensure the bundled
+      // vocabulary packs are loaded before querying the shared database.
+      if (_source == ImportSource.vocabulary) {
+        await ref.read(vocabularySeederProvider).ensureSeeded();
+      }
       final List<ImportCandidate> r = await ref.read(fcRepositoryProvider).importCandidates(_source, _query);
       if (!mounted) return;
       setState(() {
