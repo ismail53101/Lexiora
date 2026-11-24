@@ -92,8 +92,76 @@ class _WordPageBackground extends CustomPainter {
       oldDelegate.pageColor != pageColor;
 }
 
+class _RichWordEditingController extends TextEditingController {
+  _RichWordEditingController({
+    required this.ranges,
+    required this.defaultStyle,
+  });
+
+  final List<_FormatRange> Function() ranges;
+  final TextStyle defaultStyle;
+
+  @override
+  TextSpan buildTextSpan({
+    required BuildContext context,
+    TextStyle? style,
+    required bool withComposing,
+  }) {
+    final String value = text;
+    if (value.isEmpty) {
+      return TextSpan(text: value, style: style ?? defaultStyle);
+    }
+
+    final List<int> cuts = <int>[0, value.length];
+    for (final _FormatRange range in ranges()) {
+      if (range.end > 0 && range.start < value.length) {
+        cuts
+          ..add(range.start.clamp(0, value.length))
+          ..add(range.end.clamp(0, value.length));
+      }
+    }
+    cuts.sort();
+    final List<int> uniqueCuts = <int>[];
+    for (final int cut in cuts) {
+      if (uniqueCuts.isEmpty || uniqueCuts.last != cut) {
+        uniqueCuts.add(cut);
+      }
+    }
+
+    final List<TextSpan> spans = <TextSpan>[];
+    final List<_FormatRange> allRanges = ranges();
+    for (int i = 0; i < uniqueCuts.length - 1; i++) {
+      final int start = uniqueCuts[i];
+      final int end = uniqueCuts[i + 1];
+      if (start == end) continue;
+
+      _FormatRange? format;
+      for (final _FormatRange range in allRanges.reversed) {
+        if (start >= range.start && start < range.end) {
+          format = range;
+          break;
+        }
+      }
+
+      final TextStyle spanStyle = format == null
+          ? (style ?? defaultStyle)
+          : (style ?? defaultStyle).copyWith(
+              fontSize: format.size,
+              fontWeight: format.bold ? FontWeight.bold : FontWeight.normal,
+              fontStyle: format.italic ? FontStyle.italic : FontStyle.normal,
+              decoration:
+                  format.underline ? TextDecoration.underline : TextDecoration.none,
+              color: format.color,
+            );
+      spans.add(TextSpan(text: value.substring(start, end), style: spanStyle));
+    }
+
+    return TextSpan(style: style ?? defaultStyle, children: spans);
+  }
+}
+
 class _WordEditorPageState extends State<WordEditorPage> {
-  final TextEditingController _text = TextEditingController();
+  late final _RichWordEditingController _text;
   final List<_FormatRange> _ranges = <_FormatRange>[];
   final List<_TableModel> _tables = <_TableModel>[];
   int _nextTableId = 1;
@@ -125,15 +193,95 @@ class _WordEditorPageState extends State<WordEditorPage> {
   @override
   void initState() {
     super.initState();
+    _text = _RichWordEditingController(
+      ranges: () => _ranges,
+      defaultStyle: const TextStyle(fontSize: 11, color: Colors.black),
+    );
     _text.addListener(_recordTextChange);
     _load();
   }
 
   void _recordTextChange() {
     if (_restoringText || _text.text == _lastText) return;
-    _undoStack.add(_lastText);
+    final String oldValue = _lastText;
+    final String newValue = _text.text;
+
+    int prefix = 0;
+    while (prefix < oldValue.length &&
+        prefix < newValue.length &&
+        oldValue.codeUnitAt(prefix) == newValue.codeUnitAt(prefix)) {
+      prefix++;
+    }
+    int oldSuffix = oldValue.length;
+    int newSuffix = newValue.length;
+    while (oldSuffix > prefix &&
+        newSuffix > prefix &&
+        oldValue.codeUnitAt(oldSuffix - 1) ==
+            newValue.codeUnitAt(newSuffix - 1)) {
+      oldSuffix--;
+      newSuffix--;
+    }
+
+    final int removed = oldSuffix - prefix;
+    final int inserted = newSuffix - prefix;
+    final int delta = inserted - removed;
+
+    if (removed > 0) {
+      _ranges.removeWhere(
+        (_FormatRange range) =>
+            range.end > prefix && range.start < oldSuffix,
+      );
+    }
+
+    if (delta != 0) {
+      for (int i = 0; i < _ranges.length; i++) {
+        final _FormatRange range = _ranges[i];
+        if (range.start >= oldSuffix) {
+          _ranges[i] = _FormatRange(
+            range.start + delta,
+            range.end + delta,
+            range.bold,
+            range.italic,
+            range.underline,
+            range.size,
+            range.color,
+          );
+        } else if (range.end > oldSuffix) {
+          _ranges[i] = _FormatRange(
+            range.start,
+            range.end + delta,
+            range.bold,
+            range.italic,
+            range.underline,
+            range.size,
+            range.color,
+          );
+        }
+      }
+    }
+
+    if (inserted > 0 &&
+        (_bold ||
+            _italic ||
+            _underline ||
+            _size != 11 ||
+            _color != Colors.black)) {
+      _ranges.add(
+        _FormatRange(
+          prefix,
+          newSuffix,
+          _bold,
+          _italic,
+          _underline,
+          _size,
+          _color,
+        ),
+      );
+    }
+
+    _undoStack.add(oldValue);
     _redoStack.clear();
-    _lastText = _text.text;
+    _lastText = newValue;
     if (mounted) setState(() {});
   }
 
@@ -769,14 +917,10 @@ class _WordEditorPageState extends State<WordEditorPage> {
                             minLines: linesPerPage,
                             scrollPhysics: const NeverScrollableScrollPhysics(),
                             textAlign: _align,
-                            style: TextStyle(
-                              fontSize: _size,
+                            style: const TextStyle(
+                              fontSize: 11,
                               height: 1.35,
-                              fontWeight: _bold ? FontWeight.bold : null,
-                              fontStyle: _italic ? FontStyle.italic : null,
-                              decoration:
-                                  _underline ? TextDecoration.underline : null,
-                              color: _color,
+                              color: Colors.black,
                             ),
                             decoration: const InputDecoration(
                               border: InputBorder.none,
