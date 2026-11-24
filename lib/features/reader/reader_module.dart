@@ -59,10 +59,11 @@ class ReaderModule extends FeatureModule {
         ),
         GoRoute(
           path: AppRoutes.wordEditor,
-          builder: (_, state) {
-            final file = state.extra! as DeviceFile;
-            return PopScope(canPop: false, onPopInvokedWithResult: (didPop, result) { if (!didPop) unawaited(PdfImportService.finishExternalPdf()); }, child: WordEditorPage(file: file));
-          },
+          builder: (_, state) => WordEditorPage(file: state.extra! as DeviceFile, externalLaunch: true),
+        ),
+        GoRoute(
+          path: AppRoutes.wordEditorPattern,
+          builder: (_, state) => WordEditorPage(documentId: state.pathParameters['id']!, externalLaunch: state.extra == true),
         ),
         GoRoute(
           path: AppRoutes.driveReader,

@@ -36,6 +36,10 @@ import 'package:lexiora/modules/study_hub/presentation/providers/study_hub_provi
 /// module grid (brought up top so it's visible without scrolling),
 /// followed by Continue reading / Recent documents, Favorites and the
 /// at-a-glance stats row further down — the app's landing tab.
+void _openLibraryDocument(BuildContext context, LibraryDocument document) {
+  context.push(document.isWord ? AppRoutes.wordEditorFor(document.id) : AppRoutes.reader(document.id));
+}
+
 class HomePage extends ConsumerStatefulWidget {
   const HomePage({super.key});
 
@@ -316,7 +320,7 @@ class _HomePageState extends ConsumerState<HomePage>
           itemCount: docs.length,
           itemBuilder: (BuildContext context, int i) => DocumentCard(
             document: docs[i],
-            onOpen: () => context.push(AppRoutes.reader(docs[i].id)),
+            onOpen: () => _openLibraryDocument(context, docs[i]),
           ),
         ),
       ),
@@ -702,8 +706,7 @@ class _ContinueReadingColumn extends StatelessWidget {
                     child: DocumentCard(
                       document: entries.first.document,
                       progress: entries.first.percent,
-                      onOpen: () => context
-                          .push(AppRoutes.reader(entries.first.document.id)),
+                      onOpen: () => _openLibraryDocument(context, entries.first.document),
                     ),
                   ),
                 )
@@ -721,7 +724,7 @@ class _ContinueReadingColumn extends StatelessWidget {
                           document: e.document,
                           progress: e.percent,
                           onOpen: () =>
-                              context.push(AppRoutes.reader(e.document.id)),
+                              _openLibraryDocument(context, e.document),
                         ),
                       ),
                     );
@@ -775,7 +778,7 @@ class _RecentDocumentsColumn extends StatelessWidget {
             padding: EdgeInsets.only(bottom: i == shown.length - 1 ? 0 : 10),
             child: _RecentDocRow(
               document: shown[i],
-              onOpen: () => context.push(AppRoutes.reader(shown[i].id)),
+              onOpen: () => _openLibraryDocument(context, shown[i]),
             ),
           ),
       ],

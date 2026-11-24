@@ -269,48 +269,38 @@ class ImportPdfs implements UseCase<ImportOutcome, NoParams> {
 /// documents are reused so opening a PDF never creates a duplicate library row.
 class ImportIncomingPdf {
   const ImportIncomingPdf(this._repo, this._cover);
-
   final LibraryRepository _repo;
   final PdfCoverService _cover;
-
-  ResultFuture<LibraryDocument?> call(DeviceFile file) => guard(() async {
-        final String title = _titleOf(file.name);
-        final String key = libraryDedupKey(title, file.size);
-        final List<LibraryDocument> existing = await _repo.watchAll().first;
-        for (final LibraryDocument document in existing) {
-          if (libraryDedupKey(document.fileName, document.fileSize) == key) {
-            try {
-              final File copy = File(file.path);
-              if (copy.existsSync()) copy.deleteSync();
-            } on Object catch (error) {
-              AppLogger.w('Incoming PDF duplicate cleanup failed: $error');
-            }
-            return document;
-          }
-        }
-
-        final String id = _uuid.v4();
-        final String? cover = await _cover.generateCover(
-          documentId: id,
-          pdfPath: file.path,
-        );
-        final LibraryDocument document = LibraryDocument(
-          id: id,
-          title: title,
-          fileName: title,
-          filePath: file.path,
-          fileSize: file.size,
-          pageCount: 0,
-          isFavorite: false,
-          importedAt: DateTime.now(),
-          coverPath: cover,
-          isManaged: true,
-        );
-        await _repo.insert(document);
-        return document;
-      });
+  ResultFuture<LibraryDocument?> call(DeviceFile file) =>
+      ImportIncomingDocument(_repo, _cover).call(file, createCover: true);
 }
-
+/// Imports an incoming PDF or Word file into the existing Documents table.
+class ImportIncomingDocument {
+  const ImportIncomingDocument(this._repo, this._cover);
+  final LibraryRepository _repo;
+  final PdfCoverService _cover;
+  ResultFuture<LibraryDocument?> call(DeviceFile file, {bool createCover = false}) => guard(() async {
+    final String title = _titleOf(file.name);
+    final String key = libraryDedupKey(title, file.size);
+    for (final LibraryDocument document in await _repo.watchAll().first) {
+      if (libraryDedupKey(document.fileName, document.fileSize) == key) {
+        if (document.filePath != file.path) { try { final File copy = File(file.path); if (copy.existsSync()) copy.deleteSync(); } on Object catch (e) { AppLogger.w('Incoming duplicate cleanup failed: $e'); } }
+        return document;
+      }
+    }
+    final String id = _uuid.v4();
+    final String? cover = createCover ? await _cover.generateCover(documentId: id, pdfPath: file.path) : null;
+    final LibraryDocument document = LibraryDocument(id: id, title: title, fileName: title, filePath: file.path, fileSize: file.size, pageCount: 0, isFavorite: false, importedAt: DateTime.now(), coverPath: cover, isManaged: true);
+    await _repo.insert(document);
+    return document;
+  });
+}
+class ImportIncomingWord {
+  const ImportIncomingWord(this._repo, this._cover);
+  final LibraryRepository _repo;
+  final PdfCoverService _cover;
+  ResultFuture<LibraryDocument?> call(DeviceFile file) => ImportIncomingDocument(_repo, _cover).call(file);
+}
 /// Downloads one selected Drive PDF into app-private cache and indexes it in
 /// the same managed-file pipeline as a system-picker import.
 class ImportDrivePdf {

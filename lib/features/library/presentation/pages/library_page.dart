@@ -173,34 +173,18 @@ class _LibraryPageState extends ConsumerState<LibraryPage> with WidgetsBindingOb
                         Center(child: Text('Error: $e')),
                     data: (List<LibraryDocument> docs) {
                       final List<LibraryDocument> visible = _applyView(docs);
+                      final List<LibraryDocument> pdfs = visible.where((LibraryDocument d) => !d.isWord).toList();
+                      final List<LibraryDocument> words = visible.where((LibraryDocument d) => d.isWord).toList();
                       return RefreshIndicator(
                         onRefresh: _autoDiscover,
-                        child: visible.isEmpty
-                            ? _emptyScrollable(_emptyContent())
-                            : GridView.builder(
-                                physics:
-                                    const AlwaysScrollableScrollPhysics(),
-                                padding:
-                                    const EdgeInsets.fromLTRB(16, 8, 16, 96),
-                                gridDelegate:
-                                    const SliverGridDelegateWithMaxCrossAxisExtent(
-                                  maxCrossAxisExtent: 200,
-                                  childAspectRatio: 0.60,
-                                  crossAxisSpacing: 16,
-                                  mainAxisSpacing: 16,
-                                ),
-                                itemCount: visible.length,
-                                itemBuilder: (BuildContext context, int i) {
-                                  final LibraryDocument doc = visible[i];
-                                  return DocumentCard(
-                                    document: doc,
-                                    onOpen: () => context
-                                        .push(AppRoutes.reader(doc.id)),
-                                    onAction: (DocumentCardAction a) =>
-                                        _onAction(a, doc),
-                                  );
-                                },
-                              ),
+                        child: visible.isEmpty ? _emptyScrollable(_emptyContent()) : ListView(
+                          physics: const AlwaysScrollableScrollPhysics(),
+                          padding: const EdgeInsets.fromLTRB(16, 8, 16, 96),
+                          children: [
+                            if (pdfs.isNotEmpty) _documentSection(context, 'PDF files', Icons.picture_as_pdf_outlined, pdfs),
+                            if (words.isNotEmpty) _documentSection(context, 'Word files', Icons.article_outlined, words),
+                          ],
+                        ),
                       );
                     },
                   ),
@@ -210,6 +194,12 @@ class _LibraryPageState extends ConsumerState<LibraryPage> with WidgetsBindingOb
     );
   }
 
+  Widget _documentSection(BuildContext context, String title, IconData icon, List<LibraryDocument> documents) {
+    return Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+      Padding(padding: const EdgeInsets.fromLTRB(0, 12, 0, 10), child: Row(children: [Icon(icon, size: 20), const SizedBox(width: 8), Text(title, style: Theme.of(context).textTheme.titleMedium?.copyWith(fontWeight: FontWeight.w800))])),
+      GridView.builder(shrinkWrap: true, physics: const NeverScrollableScrollPhysics(), gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(maxCrossAxisExtent: 200, childAspectRatio: 0.60, crossAxisSpacing: 16, mainAxisSpacing: 16), itemCount: documents.length, itemBuilder: (BuildContext context, int i) { final LibraryDocument doc = documents[i]; return DocumentCard(document: doc, onOpen: () => doc.isWord ? context.push(AppRoutes.wordEditorFor(doc.id)) : context.push(AppRoutes.reader(doc.id)), onAction: (DocumentCardAction a) => _onAction(a, doc)); }),
+    ]);
+  }
   List<LibraryDocument> _applyView(List<LibraryDocument> docs) {
     final String q = _query.trim().toLowerCase();
     final List<LibraryDocument> filtered = q.isEmpty
@@ -268,7 +258,7 @@ class _LibraryPageState extends ConsumerState<LibraryPage> with WidgetsBindingOb
     }
     return EmptyState(
       icon: Icons.menu_book_outlined,
-      title: 'No PDFs found',
+      title: 'No documents found',
       message: 'Sapiora didn’t find any PDF files on this device yet. Add PDFs '
           '(for example to Downloads or Documents) and pull down to refresh, or '
           'use Import PDF to pick files yourself.',

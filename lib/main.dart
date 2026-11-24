@@ -265,10 +265,18 @@ void _handleNotificationPayload(GoRouter router, String payload) {
 }
 
 Future<void> _openIncoming(GoRouter router, DeviceFile file) async {
-  if (file.isWord) { router.go(AppRoutes.wordEditor, extra: file); return; }
+  if (file.isWord) { await _openIncomingWord(router, file); return; }
   await _openIncomingPdf(router, file);
 }
 
+Future<void> _openIncomingWord(GoRouter router, DeviceFile file) async {
+  final Result<LibraryDocument?> result = await ImportIncomingWord(sl<LibraryRepository>(), sl()).call(file);
+  result.fold((failure) => AppLogger.w('Incoming Word could not be indexed: ${failure.message}'), (document) {
+    if (document == null) return;
+    router.go(AppRoutes.library);
+    WidgetsBinding.instance.addPostFrameCallback((_) => unawaited(router.push(AppRoutes.wordEditorFor(document.id), extra: file.openedFromExternalIntent)));
+  });
+}
 Future<void> _openIncomingPdf(GoRouter router, DeviceFile file) async {
   try {
     // Never import/open an external PDF into DarsNexa until the user has

@@ -44,6 +44,7 @@ class LibraryDocument extends Equatable {
   /// Deriving the source from the path keeps the existing database schema
   /// compatible while still allowing the UI to show a source indicator.
   bool get isFromGoogleDrive => filePath.replaceAll('\\', '/').contains('/drive_cache/');
+  bool get isWord => fileName.toLowerCase().endsWith('.doc') || fileName.toLowerCase().endsWith('.docx') || filePath.toLowerCase().endsWith('.doc') || filePath.toLowerCase().endsWith('.docx');
 
   String get sourceLabel => isFromGoogleDrive ? 'From Google Drive' : 'From Device';
 

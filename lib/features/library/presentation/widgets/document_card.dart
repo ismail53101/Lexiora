@@ -63,10 +63,8 @@ class DocumentCard extends StatelessWidget {
                     bottom: 8,
                     left: 8,
                     child: _Badge(
-                      icon: Icons.description_outlined,
-                      label: document.pageCount > 0
-                          ? '${document.pageCount} p'
-                          : 'PDF',
+                      icon: document.isWord ? Icons.article_outlined : Icons.description_outlined,
+                      label: document.isWord ? 'Word' : document.pageCount > 0 ? '${document.pageCount} p' : 'PDF',
                     ),
                   ),
                 ],

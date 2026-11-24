@@ -113,6 +113,8 @@ abstract final class AppRoutes {
   static const String driveReader = '/drive-reader';
   static String reader(String documentId) => '/reader/$documentId';
   static const String wordEditor = '/word-editor';
+  static const String wordEditorPattern = '/word-editor/:id';
+  static String wordEditorFor(String id) => '/word-editor/$id';
 
   static const String bookmarksName = 'bookmarks';
   static const String bookmarksPattern = '/documents/:id/bookmarks';
