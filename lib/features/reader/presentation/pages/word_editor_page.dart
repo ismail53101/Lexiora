@@ -1057,7 +1057,7 @@ class _WordEditorPageState extends State<WordEditorPage> {
                 );
               },
             ),
-          )),
+          ),
         ],
       );
     }
