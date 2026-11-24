@@ -94,6 +94,9 @@ class _WordEditorPageState extends State<WordEditorPage> {
       if (_docx) {
         final Uint8List bytes = await File(_path).readAsBytes();
         await _controller.loadBytesAsync(bytes);
+        // Re-layout with the exact Flutter font metrics used by the canvas.
+        // This prevents DOCX line widths from drifting beyond the page content area.
+        _controller.fitPaintMetrics();
         _controller.markClean();
       } else if (mounted) {
         WidgetsBinding.instance.addPostFrameCallback((_) {
@@ -225,6 +228,15 @@ class _WordEditorPageState extends State<WordEditorPage> {
     );
   }
 
+  int get _zoomPercent => (_controller.viewport.scale * 100).round();
+
+  void _setZoom(double value) {
+    final double clamped = value.clamp(0.5, 2.0).toDouble();
+    _controller.viewport.setScale(clamped);
+    _controller.refresh();
+    if (mounted) setState(() {});
+  }
+
   Widget _toolbar() {
     final WmlRunProps run = _controller.activeRunProps;
     return Material(
@@ -308,6 +320,25 @@ class _WordEditorPageState extends State<WordEditorPage> {
             _icon(Icons.format_align_center, () => _applyParagraph((WmlParagraphProps p) => p.justification = WmlJustification.center), tooltip: 'Align center'),
             _icon(Icons.format_align_right, () => _applyParagraph((WmlParagraphProps p) => p.justification = WmlJustification.right), tooltip: 'Align right'),
             _icon(Icons.format_align_justify, () => _applyParagraph((WmlParagraphProps p) => p.justification = WmlJustification.justify), tooltip: 'Justify'),
+            const VerticalDivider(width: 16, indent: 8, endIndent: 8),
+            _icon(
+              Icons.zoom_out,
+              () => _setZoom(_controller.viewport.scale - 0.1),
+              tooltip: 'Zoom out',
+            ),
+            IconButton(
+              tooltip: 'Reset zoom',
+              onPressed: () => _setZoom(1.0),
+              icon: Text(
+                '$_zoomPercent%',
+                style: const TextStyle(fontWeight: FontWeight.w600),
+              ),
+            ),
+            _icon(
+              Icons.zoom_in,
+              () => _setZoom(_controller.viewport.scale + 0.1),
+              tooltip: 'Zoom in',
+            ),
           ],
         ),
       ),
