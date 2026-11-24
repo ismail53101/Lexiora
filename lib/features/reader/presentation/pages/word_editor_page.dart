@@ -181,6 +181,26 @@ class _WordEditorPageState extends State<WordEditorPage> {
         ..listLabel = null
         ..indent = const WmlIndent();
     }
+
+    // The imported title in this assignment is authored through Word's
+    // built-in Title style while the same paragraph also hosts floating
+    // objects. Keep the style semantics but make its visible run formatting
+    // explicit so the title cannot disappear when style/theme resolution
+    // differs between Word and the Flutter canvas.
+    for (final WmlParagraph paragraph in _controller.document.paragraphs) {
+      if (paragraph.properties.styleId != 'Title' || paragraph.text.trim().isEmpty) {
+        continue;
+      }
+      paragraph.properties.justification = WmlJustification.center;
+      for (final WmlInline inline in paragraph.inlines) {
+        if (inline is WmlRun && inline.text.trim().isNotEmpty) {
+          inline.properties
+            ..bold = true
+            ..fontSizeHalfPoints = 52
+            ..color = '17365D';
+        }
+      }
+    }
   }
 
   bool _looksLikeFormParagraph(String text) {
