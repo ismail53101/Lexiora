@@ -264,6 +264,7 @@ class _WordEditorPageState extends State<WordEditorPage> {
           _underline,
           _size,
           _color,
+          _highlight,
         ),
       );
     }
