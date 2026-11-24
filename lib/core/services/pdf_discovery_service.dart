@@ -2,7 +2,7 @@ import 'dart:io';
 
 import 'package:flutter/services.dart';
 
-/// A PDF found by walking the device filesystem (with all-files access),
+/// A supported document found by walking the device filesystem (with all-files access),
 /// referenced in place by its absolute [path] — never copied.
 class DeviceFile {
   const DeviceFile({
@@ -22,7 +22,7 @@ class DeviceFile {
   bool get isWord => name.toLowerCase().endsWith('.doc') || name.toLowerCase().endsWith('.docx') || (mimeType?.contains('word') ?? false);
 }
 
-/// Discovers every PDF on the device via the native `lexiora/platform` channel.
+/// Discovers every PDF and Word document on the device via the native `lexiora/platform` channel.
 ///
 /// The app indexes files in place (no import, no copy): [scanAll] walks the
 /// shared storage volumes and returns each PDF's absolute path, which the
@@ -41,12 +41,12 @@ class PdfDiscoveryService {
         false;
   }
 
-  /// Walks the shared-storage volumes for PDFs (requires all-files access).
+  /// Walks the shared-storage volumes for PDFs and Word documents (requires all-files access).
   /// Each file is referenced by absolute path; nothing is copied.
   Future<List<DeviceFile>> scanAll() async {
     if (!Platform.isAndroid) return const <DeviceFile>[];
     final List<Object?>? raw =
-        await _channel.invokeMethod<List<Object?>>('scanAllPdfs');
+        await _channel.invokeMethod<List<Object?>>('scanAllDocuments');
     if (raw == null) return const <DeviceFile>[];
     final List<DeviceFile> out = <DeviceFile>[];
     for (final Object? e in raw) {
