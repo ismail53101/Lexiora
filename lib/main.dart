@@ -26,6 +26,7 @@ import 'package:lexiora/features/library/domain/usecases/library_usecases.dart';
 import 'package:lexiora/features/settings/domain/entities/app_settings.dart';
 import 'package:lexiora/features/settings/domain/repositories/settings_repository.dart';
 import 'package:pdfrx/pdfrx.dart';
+import 'package:quds_office_editor/quds_office_editor.dart';
 
 const String _initialPermissionFlowVersion = '2026.10.06-permissions-v5';
 /// DarsNexa entry point.
@@ -38,6 +39,7 @@ Future<void> main() async {
   await runZonedGuarded<Future<void>>(
     () async {
       WidgetsFlutterBinding.ensureInitialized();
+      await OfficeHostFonts.ensureRegistered();
 
       ErrorWidget.builder = (FlutterErrorDetails details) {
         AppLogger.e(
