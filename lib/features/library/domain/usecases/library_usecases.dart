@@ -264,6 +264,66 @@ class ImportPdfs implements UseCase<ImportOutcome, NoParams> {
   }
 }
 
+/// Manually imports Word documents selected from the system file picker.
+/// DOCX files are kept as editable documents; legacy DOC files are stored as-is
+/// and are opened externally because the in-app editor only supports DOCX.
+class ImportWordDocuments implements UseCase<ImportOutcome, NoParams> {
+  const ImportWordDocuments(this._repo, this._import);
+
+  final LibraryRepository _repo;
+  final PdfImportService _import;
+
+  @override
+  ResultFuture<ImportOutcome> call(NoParams params) => guard(() async {
+        final List<DeviceFile> picked = await _import.pickWordDocs();
+        if (picked.isEmpty) {
+          return const ImportOutcome(picked: 0, added: 0, duplicates: 0);
+        }
+        final Set<String> keys = await _repo.existingKeys();
+        final DateTime now = DateTime.now();
+        int added = 0;
+        int duplicates = 0;
+        for (final DeviceFile f in picked) {
+          final String title = _titleOf(f.name);
+          final String key = libraryDedupKey(title, f.size);
+          if (keys.contains(key)) {
+            duplicates++;
+            _discardCopy(f.path);
+            continue;
+          }
+          await _repo.insert(
+            LibraryDocument(
+              id: _uuid.v4(),
+              title: title,
+              fileName: f.name,
+              filePath: f.path,
+              fileSize: f.size,
+              pageCount: 0,
+              isFavorite: false,
+              importedAt: now,
+              isManaged: true,
+            ),
+          );
+          keys.add(key);
+          added++;
+        }
+        return ImportOutcome(
+          picked: picked.length,
+          added: added,
+          duplicates: duplicates,
+        );
+      });
+
+  void _discardCopy(String path) {
+    try {
+      final File file = File(path);
+      if (file.existsSync()) file.deleteSync();
+    } on Object catch (e) {
+      AppLogger.w('Import Word: could not discard duplicate copy $path: $e');
+    }
+  }
+}
+
 /// Imports one PDF delivered by Android's ACTION_VIEW/ACTION_SEND flow into
 /// the same private managed-file pipeline used by the system picker. Existing
 /// documents are reused so opening a PDF never creates a duplicate library row.
