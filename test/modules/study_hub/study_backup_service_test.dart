@@ -34,15 +34,15 @@ Date,Type,Subject,Topic,Start,End,Priority,Status,Notes
     final int count = await service.importCsv(
       repo,
       bytes,
-      targetDay: '2026-11-24',
+      targetDay: '2026-11-25',
     );
 
     expect(count, 2);
     expect(await repo.watchTasks('2026-11-22').first, isEmpty);
 
-    final rows = await repo.watchTasks('2026-11-24').first;
+    final rows = await repo.watchTasks('2026-11-25').first;
     expect(rows, hasLength(2));
-    expect(rows.map((r) => r.day), everyElement('2026-11-24'));
+    expect(rows.map((r) => r.day), everyElement('2026-11-25'));
     expect(rows.first.startMinute, 9 * 60);
     expect(rows.first.endMinute, 9 * 60 + 50);
   });
