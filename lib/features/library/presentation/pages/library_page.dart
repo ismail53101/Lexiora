@@ -48,6 +48,7 @@ class _LibraryPageState extends ConsumerState<LibraryPage> with WidgetsBindingOb
   bool _searching = false;
   String _query = '';
   LibrarySort _sort = LibrarySort.importDate;
+  bool _showDocx = false;
 
   @override
   void initState() {
@@ -173,15 +174,27 @@ class _LibraryPageState extends ConsumerState<LibraryPage> with WidgetsBindingOb
                     data: (List<LibraryDocument> docs) {
                       final List<LibraryDocument> visible = _applyView(docs);
                       final List<LibraryDocument> pdfs = visible.where((LibraryDocument d) => !d.isWord).toList();
-                      final List<LibraryDocument> words = visible.where((LibraryDocument d) => d.isWord).toList();
+                      final List<LibraryDocument> docx = visible.where(
+                        (LibraryDocument d) => d.fileName.toLowerCase().endsWith('.docx'),
+                      ).toList();
+                      final List<LibraryDocument> selected = _showDocx ? docx : pdfs;
                       return RefreshIndicator(
                         onRefresh: _autoDiscover,
-                        child: visible.isEmpty ? _emptyScrollable(_emptyContent()) : ListView(
+                        child: ListView(
                           physics: const AlwaysScrollableScrollPhysics(),
                           padding: const EdgeInsets.fromLTRB(16, 8, 16, 96),
                           children: [
-                            if (pdfs.isNotEmpty) _documentSection(context, 'PDF files', Icons.picture_as_pdf_outlined, pdfs),
-                            if (words.isNotEmpty) _documentSection(context, 'Word files', Icons.article_outlined, words),
+                            _libraryTypeTabs(context, pdfs.length, docx.length),
+                            const SizedBox(height: 8),
+                            if (selected.isEmpty)
+                              _emptyScrollable(_emptyContent())
+                            else
+                              _documentSection(
+                                context,
+                                _showDocx ? 'DOCX files' : 'PDF files',
+                                _showDocx ? Icons.description_outlined : Icons.picture_as_pdf_outlined,
+                                selected,
+                              ),
                           ],
                         ),
                       );
@@ -190,6 +203,28 @@ class _LibraryPageState extends ConsumerState<LibraryPage> with WidgetsBindingOb
           ),
         ],
       ),
+    );
+  }
+
+  Widget _libraryTypeTabs(BuildContext context, int pdfCount, int docxCount) {
+    return SegmentedButton<bool>(
+      segments: <ButtonSegment<bool>>[
+        ButtonSegment<bool>(
+          value: false,
+          icon: const Icon(Icons.picture_as_pdf_outlined),
+          label: Text('PDF files  ($pdfCount)'),
+        ),
+        ButtonSegment<bool>(
+          value: true,
+          icon: const Icon(Icons.description_outlined),
+          label: Text('DOCX  ($docxCount)'),
+        ),
+      ],
+      selected: <bool>{_showDocx},
+      onSelectionChanged: (Set<bool> value) {
+        setState(() => _showDocx = value.first);
+      },
+      showSelectedIcon: false,
     );
   }
 
@@ -258,9 +293,9 @@ class _LibraryPageState extends ConsumerState<LibraryPage> with WidgetsBindingOb
     return EmptyState(
       icon: Icons.menu_book_outlined,
       title: 'No documents found',
-      message: 'Sapiora didn’t find any PDF files on this device yet. Add PDFs '
+      message: 'DarsNexa didn’t find any supported files on this device yet. Add PDFs or DOCX files '
           '(for example to Downloads or Documents) and pull down to refresh, or '
-          'use Import PDF to pick files yourself.',
+          'use the file picker to add files yourself.',
       action: Wrap(
         spacing: 12,
         alignment: WrapAlignment.center,
