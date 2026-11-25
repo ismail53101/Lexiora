@@ -39,6 +39,15 @@ class _WordEditorPageState extends State<WordEditorPage> {
   bool _saving = false;
   final Map<int, Offset> _touchPositions = <int, Offset>{};
 
+  // "Phone view" (like WPS mobile view): every section is temporarily made as
+  // wide as the screen so the text re-wraps to the phone. The original page
+  // geometry is restored before saving, so the .docx layout is never changed.
+  bool _phoneView = true;
+  bool _pinching = false;
+  List<WmlPageSize>? _origSizes;
+  List<WmlPageMargins>? _origMargins;
+  static const double _phoneScale = 0.8;
+
   bool get _docx {
     final String fileName =
         (_document?.fileName ?? widget.file?.name ?? '').toLowerCase();
@@ -116,7 +125,13 @@ class _WordEditorPageState extends State<WordEditorPage> {
         // wider than a phone at 100%, so choose a readable initial scale that
         // fits an A4/Letter page inside the available screen width.
         WidgetsBinding.instance.addPostFrameCallback((_) {
-          if (mounted) _fitPageToWidth();
+          if (!mounted) return;
+          if (_phoneView) {
+            _controller.viewport.setScale(_phoneScale);
+            _applyPhoneView(true);
+          } else {
+            _fitPageToWidth();
+          }
         });
       } else if (mounted) {
         WidgetsBinding.instance.addPostFrameCallback((_) {
@@ -132,7 +147,10 @@ class _WordEditorPageState extends State<WordEditorPage> {
   Future<void> _save() async {
     if (_saving) return;
     setState(() => _saving = true);
+    final bool wasPhone = _phoneView;
     try {
+      // Put the real page size/margins back so the saved file is unchanged.
+      if (wasPhone) _setGeometry(phone: false);
       final Uint8List bytes = await _controller.saveBytesAsync();
       await File(_path).writeAsBytes(bytes, flush: true);
       _controller.markClean();
@@ -148,6 +166,7 @@ class _WordEditorPageState extends State<WordEditorPage> {
         );
       }
     } finally {
+      if (wasPhone) _applyPhoneView(true);
       if (mounted) setState(() => _saving = false);
     }
   }
@@ -330,6 +349,64 @@ class _WordEditorPageState extends State<WordEditorPage> {
     if (mounted) setState(() {});
   }
 
+  // Quds paints 64px gutters on both sides of a page. In phone view the editor
+  // is laid out (w + 142) wide and shifted left by 64, so the page fills the
+  // screen edge to edge and the gutters/scrollbar fall outside the clip.
+  static const double _editorExtra = 64.0 * 2 + 14.0;
+
+  void _setGeometry({required bool phone}) {
+    final List<WmlSection> sections = _controller.document.sections;
+    _origSizes ??= <WmlPageSize>[for (final WmlSection s in sections) s.pageSize];
+    _origMargins ??=
+        <WmlPageMargins>[for (final WmlSection s in sections) s.margins];
+    final double screen = MediaQuery.sizeOf(context).width;
+    final double scale = _controller.viewport.scale;
+    // +1px so the page is pinned to the left gutter (never re-centred).
+    final double pagePt = ((screen + 1.0) * 72.0 / 96.0) / scale;
+    for (int i = 0; i < sections.length; i++) {
+      if (i >= _origSizes!.length) break;
+      final WmlSection section = sections[i];
+      if (phone) {
+        final WmlPageMargins m = _origMargins![i];
+        section.pageSize = WmlPageSize(width: pagePt, height: _origSizes![i].height);
+        section.margins = WmlPageMargins(
+          top: m.top.clamp(24.0, 48.0).toDouble(),
+          bottom: m.bottom.clamp(24.0, 48.0).toDouble(),
+          left: 18,
+          right: 18,
+          header: m.header,
+          footer: m.footer,
+        );
+      } else {
+        section.pageSize = _origSizes![i];
+        section.margins = _origMargins![i];
+      }
+    }
+  }
+
+  void _applyPhoneView(bool phone) {
+    if (!mounted) return;
+    _setGeometry(phone: phone);
+    _controller.relayout();
+    _controller.fitPaintMetrics();
+    _controller.viewport.origin = Offset(0, _controller.viewport.origin.dy);
+    _controller.refresh();
+    if (mounted) setState(() {});
+  }
+
+  void _togglePhoneView() {
+    _phoneView = !_phoneView;
+    if (_phoneView) {
+      _controller.viewport.setScale(_phoneScale);
+      _applyPhoneView(true);
+    } else {
+      _setGeometry(phone: false);
+      _controller.relayout();
+      _controller.fitPaintMetrics();
+      _fitPageToWidth();
+    }
+  }
+
   // Quds canvas layout constants (see RenderWordCanvas): the page is painted
   // with a 64px gutter on both sides plus a 14px vertical scrollbar. When the
   // page (at the current scale) plus both gutters fits in the view, the canvas
@@ -371,6 +448,7 @@ class _WordEditorPageState extends State<WordEditorPage> {
 
     // Two fingers: pinch to zoom.
     if (_touchPositions.length == 2) {
+      _pinching = true;
       final List<Offset> pts = _touchPositions.values.toList();
       final double distance = (pts[0] - pts[1]).distance;
       final double? last = _lastPinchDistance;
@@ -391,7 +469,7 @@ class _WordEditorPageState extends State<WordEditorPage> {
     if (delta.distance == 0) return;
     final Offset origin = _controller.viewport.origin;
     _controller.viewport.origin = Offset(
-      math.max(0, origin.dx - delta.dx),
+      _phoneView ? 0 : math.max(0, origin.dx - delta.dx),
       math.max(0, origin.dy - delta.dy),
     );
     _controller.refresh();
@@ -399,7 +477,13 @@ class _WordEditorPageState extends State<WordEditorPage> {
 
   void _onWordPointerEnd(PointerEvent event) {
     _touchPositions.remove(event.pointer);
-    if (_touchPositions.length < 2) _lastPinchDistance = null;
+    if (_touchPositions.length < 2) {
+      _lastPinchDistance = null;
+      if (_pinching) {
+        _pinching = false;
+        if (_phoneView) _applyPhoneView(true);
+      }
+    }
   }
 
   Widget _toolbar() {
@@ -487,6 +571,11 @@ class _WordEditorPageState extends State<WordEditorPage> {
             _icon(Icons.format_align_justify, () => _applyParagraph((WmlParagraphProps p) => p.justification = WmlJustification.justify), tooltip: 'Justify'),
             const VerticalDivider(width: 16, indent: 8, endIndent: 8),
             _icon(
+              _phoneView ? Icons.description_outlined : Icons.smartphone,
+              _togglePhoneView,
+              tooltip: _phoneView ? 'Page view' : 'Phone view',
+            ),
+            _icon(
               Icons.zoom_out,
               () => _setZoom(_controller.viewport.scale - 0.1),
               tooltip: 'Zoom out',
@@ -541,15 +630,35 @@ class _WordEditorPageState extends State<WordEditorPage> {
         ),
       );
     } else {
-      body = Listener(
-        onPointerDown: _onWordPointerDown,
-        onPointerMove: _onWordPointerMove,
-        onPointerUp: _onWordPointerEnd,
-        onPointerCancel: _onWordPointerEnd,
-        child: QudsWordEditor(
-          controller: _controller,
-          toolbarBuilder: (BuildContext context, WordEditorController controller) => _toolbar(),
-        ),
+      final Widget editor = QudsWordEditor(controller: _controller);
+      final Widget canvas = _phoneView
+          ? LayoutBuilder(
+              builder: (BuildContext context, BoxConstraints c) => ClipRect(
+                child: OverflowBox(
+                  alignment: Alignment.topLeft,
+                  minWidth: c.maxWidth + _editorExtra,
+                  maxWidth: c.maxWidth + _editorExtra,
+                  child: Transform.translate(
+                    offset: const Offset(-64, 0),
+                    child: editor,
+                  ),
+                ),
+              ),
+            )
+          : editor;
+      body = Column(
+        children: <Widget>[
+          Expanded(
+            child: Listener(
+              onPointerDown: _onWordPointerDown,
+              onPointerMove: _onWordPointerMove,
+              onPointerUp: _onWordPointerEnd,
+              onPointerCancel: _onWordPointerEnd,
+              child: canvas,
+            ),
+          ),
+          SafeArea(top: false, child: _toolbar()),
+        ],
       );
     }
 
