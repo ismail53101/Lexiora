@@ -768,10 +768,19 @@ async function refreshCurrentAffairs(env) {
       rss: freshStories.filter((story) => story.feedType.toLowerCase() !== "gnews").length,
     },
     national: selectLatestStories(
-      freshStories.filter((story) => story.category === "National"),
+      freshStories.filter(
+        (story) => story.category === "National" &&
+          story.feedType.toLowerCase() !== "opinions",
+      ),
     ),
     international: selectLatestStories(
       freshStories.filter((story) => story.category === "International"),
+    ),
+    opinions: selectOpinionStories(
+      freshStories.filter(
+        (story) => story.category === "National" &&
+          story.feedType.toLowerCase() === "opinions",
+      ),
     ),
     sources: NEWS_SOURCES.map(({ id, name, category, feedType }) => ({
       id,
@@ -785,6 +794,10 @@ async function refreshCurrentAffairs(env) {
     id: stableStoryId(story.articleUrl, story.title),
   }));
   payload.international = payload.international.map((story) => ({
+    ...story,
+    id: stableStoryId(story.articleUrl, story.title),
+  }));
+  payload.opinions = payload.opinions.map((story) => ({
     ...story,
     id: stableStoryId(story.articleUrl, story.title),
   }));
@@ -846,10 +859,11 @@ async function fetchDawnOpinionPage(source, env) {
     const html = await response.text();
     const stories = [];
     const seen = new Set();
-    const linkPattern = /<a\b[^>]*href=["'](\/news\/[^"']+)["'][^>]*>([\s\S]*?)<\/a>/gi;
+    const linkPattern = /<a\b[^>]*href=["']((?:https?:\/\/www\.dawn\.com)?\/news\/[^"']+)["'][^>]*>([\s\S]*?)<\/a>/gi;
 
     for (const match of html.matchAll(linkPattern)) {
-      const url = decodeXml(match[1]);
+      const rawUrl = decodeXml(match[1]);
+      const url = rawUrl.startsWith("http") ? rawUrl : "https://www.dawn.com" + rawUrl;
       const title = cleanText(match[2]);
       if (!title || title.length < 4 || seen.has(url)) continue;
       seen.add(url);
@@ -862,7 +876,7 @@ async function fetchDawnOpinionPage(source, env) {
         publishedAt: new Date().toISOString(),
         excerpt: "",
         imageUrl: null,
-        articleUrl: url.startsWith("http") ? url : "https://www.dawn.com" + url,
+        articleUrl: url,
       });
       if (stories.length >= MAX_OPINION_STORIES_PER_CATEGORY) break;
     }
@@ -1115,6 +1129,13 @@ function selectLatestStories(stories) {
   // Latest stories alternate GNews / RSS (each side newest-first) so GNews is
   // not pushed down the list by the many RSS feeds; opinions follow.
   return [...selectedLatest, ...selectedOpinions];
+}
+
+function selectOpinionStories(stories) {
+  if (stories.length === 0) return [];
+  return rankedStories(stories)
+    .slice(0, MAX_OPINION_STORIES_PER_CATEGORY)
+    .sort((a, b) => dateValue(b.publishedAt) - dateValue(a.publishedAt));
 }
 
 function rankedStories(stories) {
