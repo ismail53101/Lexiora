@@ -38,17 +38,14 @@ class _CurrentAffairsPageState extends ConsumerState<CurrentAffairsPage> {
     );
     final List<LatestUpdate> national = liveFeed?.national ?? _fallback('National');
     final List<LatestUpdate> international = liveFeed?.international ?? _fallback('International');
-    final List<LatestUpdate> opinions = liveFeed?.opinions ?? const <LatestUpdate>[];
     final List<LatestUpdate> sectionStories = _selectedSection == 0 ? national : international;
     final String sectionLabel = _selectedSection == 0 ? 'National' : 'International';
     final bool isNational = _selectedSection == 0;
     final String feedLabel = isNational && _selectedFeedType == 1 ? 'Opinions' : 'Latest';
     final List<LatestUpdate> stories = isNational
-        ? (_selectedFeedType == 1
-            ? opinions
-            : sectionStories
-                .where((LatestUpdate story) => _matchesFeedType(story, _selectedFeedType))
-                .toList(growable: false))
+        ? sectionStories
+            .where((LatestUpdate story) => _matchesFeedType(story, _selectedFeedType))
+            .toList(growable: false)
         : sectionStories;
     final bool isRefreshing = feedAsync.isLoading && liveFeed == null;
 
