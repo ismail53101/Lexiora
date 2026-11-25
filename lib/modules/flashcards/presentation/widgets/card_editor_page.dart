@@ -321,6 +321,34 @@ class _FcCardEditorPageState extends ConsumerState<FcCardEditorPage> {
   BuildContext? _voiceSheetContext;
   bool _voiceSheetClosed = false;
   bool _voiceRecognitionEnded = false;
+  Timer? _voiceCommitTimer;
+
+  void _scheduleVoiceCommit(
+    FcRichTextController controller,
+    TextSelection insertionSelection,
+    String spoken,
+  ) {
+    _voiceCommitTimer?.cancel();
+    if (spoken.trim().isEmpty) return;
+    _voiceCommitTimer = Timer(const Duration(seconds: 2), () async {
+      if (!mounted) return;
+      if (_speech.isListening) await _speech.stop();
+      _requestCloseVoiceSheet();
+
+      final String text = spoken.trim();
+      if (text.isEmpty) return;
+      controller.value = insertSpeechText(
+        TextEditingValue(text: controller.text, selection: insertionSelection),
+        text,
+      );
+      if (identical(controller, _front)) {
+        _frontSelection = controller.selection;
+      } else {
+        _backSelection = controller.selection;
+      }
+      if (mounted) setState(() {});
+    });
+  }
 
   void _requestCloseVoiceSheet() {
     _voiceRecognitionEnded = true;
@@ -408,8 +436,9 @@ class _FcCardEditorPageState extends ConsumerState<FcCardEditorPage> {
       if (!_speechReady) {
         final bool ready = await _speech.initialize(
           onStatus: (String status) {
-            if (status == 'done') {
-              _requestCloseVoiceSheet();
+            if (status == 'done' && _voiceSheetContext != null) {
+              final String spoken = liveText.value.trim();
+              _scheduleVoiceCommit(c, insertionSelection, spoken);
             }
             if (mounted) setState(() {});
           },
@@ -445,24 +474,9 @@ class _FcCardEditorPageState extends ConsumerState<FcCardEditorPage> {
         cancelOnError: false,
         onResult: (SpeechRecognitionResult result) {
           liveText.value = result.recognizedWords;
-          if (!result.finalResult) {
-            if (mounted) setState(() {});
-            return;
-          }
-
-          _requestCloseVoiceSheet();
           final String spoken = result.recognizedWords.trim();
-          if (spoken.isEmpty) return;
-
-          c.value = insertSpeechText(
-            TextEditingValue(text: c.text, selection: insertionSelection),
-            spoken,
-          );
-          insertionSelection = c.selection;
-          if (identical(c, _front)) {
-            _frontSelection = c.selection;
-          } else {
-            _backSelection = c.selection;
+          if (spoken.isNotEmpty) {
+            _scheduleVoiceCommit(c, insertionSelection, spoken);
           }
           if (mounted) setState(() {});
         },
@@ -532,6 +546,7 @@ class _FcCardEditorPageState extends ConsumerState<FcCardEditorPage> {
 
   @override
   void dispose() {
+    _voiceCommitTimer?.cancel();
     _speech.stop();
     _front.removeListener(_handleFrontChanged);
     _back.removeListener(_handleBackChanged);
