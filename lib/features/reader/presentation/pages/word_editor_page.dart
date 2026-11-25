@@ -43,6 +43,7 @@ class _WordEditorPageState extends State<WordEditorPage> {
   // wide as the screen so the text re-wraps to the phone. The original page
   // geometry is restored before saving, so the .docx layout is never changed.
   bool _phoneView = true;
+  bool _editing = false;
   bool _pinching = false;
   List<WmlPageSize>? _origSizes;
   List<WmlPageMargins>? _origMargins;
@@ -64,7 +65,9 @@ class _WordEditorPageState extends State<WordEditorPage> {
     super.initState();
     _controller = WordEditorController(
       config: const OfficeSurfaceConfig(
-        mode: OfficeInteractionMode.editing,
+        // Start read-only: touching/scrolling must never open the keyboard.
+        // Editing is switched on explicitly with the Edit button.
+        mode: OfficeInteractionMode.viewing,
         textDirection: TextDirection.ltr,
         strings: OfficeStrings.english,
         theme: OfficeTheme.light,
@@ -113,7 +116,9 @@ class _WordEditorPageState extends State<WordEditorPage> {
         // is composed from anchored objects.
         // Use the editor's asynchronous OOXML loader so the complete Word
         // package is parsed before we touch pagination/layout.
+        final bool blankNew = _document?.isManaged == true && bytes.length < 3000;
         await _controller.loadBytesAsync(_prepareDocxBytes(bytes));
+        if (blankNew) _editing = true;
         _normalizeImportedWordLayout();
         // fitPaintMetrics() already re-lays out and then applies the same
         // Flutter font metrics used by the canvas. Do not call relayout()
@@ -126,6 +131,7 @@ class _WordEditorPageState extends State<WordEditorPage> {
         // fits an A4/Letter page inside the available screen width.
         WidgetsBinding.instance.addPostFrameCallback((_) {
           if (!mounted) return;
+          if (_editing) _controller.setMode(OfficeInteractionMode.editing);
           if (_phoneView) {
             _controller.viewport.setScale(_phoneScale);
             _applyPhoneView(true);
@@ -394,6 +400,19 @@ class _WordEditorPageState extends State<WordEditorPage> {
     if (mounted) setState(() {});
   }
 
+  void _setEditing(bool value) {
+    if (_editing == value) return;
+    setState(() => _editing = value);
+    if (value) {
+      _controller.setMode(OfficeInteractionMode.editing);
+    } else {
+      // Leave edit mode: close the keyboard and stop caret/selection.
+      _controller.setMode(OfficeInteractionMode.viewing);
+      FocusManager.instance.primaryFocus?.unfocus();
+      unawaited(SystemChannels.textInput.invokeMethod<void>('TextInput.hide'));
+    }
+  }
+
   void _togglePhoneView() {
     _phoneView = !_phoneView;
     if (_phoneView) {
@@ -446,31 +465,41 @@ class _WordEditorPageState extends State<WordEditorPage> {
     _touchPositions[event.pointer] = event.position;
     if (previous == null) return;
 
-    // Two fingers: pinch to zoom.
+    // Two fingers: pinch to zoom, or two-finger drag to scroll.
     if (_touchPositions.length == 2) {
-      _pinching = true;
       final List<Offset> pts = _touchPositions.values.toList();
       final double distance = (pts[0] - pts[1]).distance;
       final double? last = _lastPinchDistance;
       _lastPinchDistance = distance;
       if (last != null && last > 0 && distance > 0) {
-        final double next = (_controller.viewport.scale * (distance / last))
-            .clamp(0.25, 2.0)
-            .toDouble();
-        _controller.viewport.setScale(next);
-        _controller.refresh();
-        if (mounted) setState(() {});
+        final double ratio = distance / last;
+        if ((ratio - 1.0).abs() > 0.01) {
+          _pinching = true;
+          final double next = (_controller.viewport.scale * ratio)
+              .clamp(0.25, 2.0)
+              .toDouble();
+          _controller.viewport.setScale(next);
+          _controller.refresh();
+          if (mounted) setState(() {});
+        } else {
+          _scrollBy(event.position - previous, 0.5);
+        }
       }
       return;
     }
 
-    // One finger: scroll the page (the canvas has no native touch scroll).
-    final Offset delta = event.position - previous;
+    // One finger: scroll the page, but only in view mode. In edit mode a
+    // one-finger drag belongs to text selection.
+    if (_editing) return;
+    _scrollBy(event.position - previous, 1.0);
+  }
+
+  void _scrollBy(Offset delta, double factor) {
     if (delta.distance == 0) return;
     final Offset origin = _controller.viewport.origin;
     _controller.viewport.origin = Offset(
-      _phoneView ? 0 : math.max(0, origin.dx - delta.dx),
-      math.max(0, origin.dy - delta.dy),
+      _phoneView ? 0 : math.max(0, origin.dx - delta.dx * factor),
+      math.max(0, origin.dy - delta.dy * factor),
     );
     _controller.refresh();
   }
@@ -573,7 +602,7 @@ class _WordEditorPageState extends State<WordEditorPage> {
             _icon(
               _phoneView ? Icons.description_outlined : Icons.smartphone,
               _togglePhoneView,
-              tooltip: _phoneView ? 'Page view' : 'Phone view',
+              tooltip: _phoneView ? 'A4 page size' : 'Phone view',
             ),
             _icon(
               Icons.zoom_out,
@@ -657,7 +686,7 @@ class _WordEditorPageState extends State<WordEditorPage> {
               child: canvas,
             ),
           ),
-          SafeArea(top: false, child: _toolbar()),
+          if (_editing) SafeArea(top: false, child: _toolbar()),
         ],
       );
     }
@@ -673,6 +702,12 @@ class _WordEditorPageState extends State<WordEditorPage> {
           actions: <Widget>[
             if (_docx && !_loading)
               IconButton(
+                tooltip: _editing ? 'Done editing' : 'Edit',
+                onPressed: () => _setEditing(!_editing),
+                icon: Icon(_editing ? Icons.check : Icons.edit_outlined),
+              ),
+            if (_docx && !_loading)
+              IconButton(
                 tooltip: 'Save',
                 onPressed: _saving ? null : _save,
                 icon: _saving
@@ -682,6 +717,13 @@ class _WordEditorPageState extends State<WordEditorPage> {
           ],
         ),
         body: body,
+        floatingActionButton: (_docx && !_loading && _error == null && !_editing)
+            ? FloatingActionButton(
+                tooltip: 'Edit',
+                onPressed: () => _setEditing(true),
+                child: const Icon(Icons.edit),
+              )
+            : null,
       ),
     );
   }
