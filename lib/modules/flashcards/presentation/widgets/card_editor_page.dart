@@ -436,10 +436,6 @@ class _FcCardEditorPageState extends ConsumerState<FcCardEditorPage> {
       if (!_speechReady) {
         final bool ready = await _speech.initialize(
           onStatus: (String status) {
-            if (status == 'done' && _voiceSheetContext != null) {
-              final String spoken = liveText.value.trim();
-              _scheduleVoiceCommit(c, insertionSelection, spoken);
-            }
             if (mounted) setState(() {});
           },
           onError: (SpeechRecognitionError error) {
