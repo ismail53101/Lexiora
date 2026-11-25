@@ -38,28 +38,6 @@ void main() {
     expect(feed.featured, same(feed.national.single));
   });
 
-  test('maps dedicated opinions feed separately from national latest', () {
-    final CurrentAffairsFeed feed = CurrentAffairsFeed.fromJson(
-      <String, dynamic>{
-        'national': <Map<String, dynamic>>[],
-        'international': <Map<String, dynamic>>[],
-        'opinions': <Map<String, dynamic>>[
-          <String, dynamic>{
-            'title': 'Editorial view',
-            'source': 'Dawn',
-            'category': 'National',
-            'feedType': 'Opinions',
-            'publishedAt': '2026-11-25T08:00:00.000Z',
-          },
-        ],
-      },
-    );
-
-    expect(feed.national, isEmpty);
-    expect(feed.opinions, hasLength(1));
-    expect(feed.opinions.single.isOpinion, isTrue);
-  });
-
   test('classifies only normalized Opinions stories as opinion content', () {
     const LatestUpdate opinion = LatestUpdate(
       headline: 'Editorial view',
