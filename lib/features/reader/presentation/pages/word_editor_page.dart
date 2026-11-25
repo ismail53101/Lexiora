@@ -1053,23 +1053,25 @@ class _WordEditorPageState extends State<WordEditorPage> {
       body = Column(
         children: <Widget>[
           Expanded(
-            child: Listener(
-              onPointerDown: _onWordPointerDown,
-              onPointerMove: _onWordPointerMove,
-              onPointerUp: _onWordPointerEnd,
-              onPointerCancel: _onWordPointerEnd,
-              child: Stack(
-                children: <Widget>[
-                  Positioned.fill(child: canvas),
-                  if (_editing && !_controller.caret.isCollapsed)
-                    Positioned(
-                      left: 8,
-                      right: 8,
-                      bottom: 12,
-                      child: Center(child: _selectionPopup()),
-                    ),
-                ],
-              ),
+            child: Stack(
+              children: <Widget>[
+                Positioned.fill(
+                  child: Listener(
+                    onPointerDown: _onWordPointerDown,
+                    onPointerMove: _onWordPointerMove,
+                    onPointerUp: _onWordPointerEnd,
+                    onPointerCancel: _onWordPointerEnd,
+                    child: canvas,
+                  ),
+                ),
+                if (_editing && !_controller.caret.isCollapsed)
+                  Positioned(
+                    left: 8,
+                    right: 8,
+                    bottom: 12,
+                    child: Center(child: _selectionPopup()),
+                  ),
+              ],
             ),
           ),
           if (_editing && _controller.caret.isCollapsed)
