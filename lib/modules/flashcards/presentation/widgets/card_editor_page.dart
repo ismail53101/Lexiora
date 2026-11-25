@@ -408,7 +408,7 @@ class _FcCardEditorPageState extends ConsumerState<FcCardEditorPage> {
       if (!_speechReady) {
         final bool ready = await _speech.initialize(
           onStatus: (String status) {
-            if (status == 'done' || status == 'notListening') {
+            if (status == 'done') {
               _requestCloseVoiceSheet();
             }
             if (mounted) setState(() {});
@@ -439,6 +439,10 @@ class _FcCardEditorPageState extends ConsumerState<FcCardEditorPage> {
       }
 
       await _speech.listen(
+        listenFor: const Duration(seconds: 30),
+        pauseFor: const Duration(seconds: 5),
+        partialResults: true,
+        cancelOnError: false,
         onResult: (SpeechRecognitionResult result) {
           liveText.value = result.recognizedWords;
           if (!result.finalResult) {
