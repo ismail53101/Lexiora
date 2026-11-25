@@ -109,6 +109,14 @@ class _WordEditorPageState extends State<WordEditorPage> {
         _controller.fitPaintMetrics();
         _controller.refresh();
         _controller.markClean();
+        // Library DOCX files should open in the installed Word-compatible app
+        // for faithful page layout. Keep this parsed editor underneath as a
+        // fallback if the external app cannot be launched or returns to DarsNexa.
+        if (widget.documentId != null && !widget.externalLaunch) {
+          WidgetsBinding.instance.addPostFrameCallback((_) {
+            if (mounted) unawaited(_openExternal());
+          });
+        }
       } else if (mounted) {
         WidgetsBinding.instance.addPostFrameCallback((_) {
           if (mounted) unawaited(_openExternal());
