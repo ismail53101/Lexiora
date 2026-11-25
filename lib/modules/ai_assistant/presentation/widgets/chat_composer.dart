@@ -40,6 +40,11 @@ class _ChatComposerState extends ConsumerState<ChatComposer> {
 
   bool _speechReady = false;
   bool _hasText = false;
+  Timer? _voiceAutoSendTimer;
+  BuildContext? _voiceSheetContext;
+  ValueNotifier<String>? _voiceTranscript;
+  String _voiceBaseText = '';
+  TextSelection _voiceBaseSelection = const TextSelection.collapsed(offset: 0);
   String? _pendingImagePath;
   String? _pendingPdfPath;
   String? _pendingPdfName;
@@ -58,9 +63,11 @@ class _ChatComposerState extends ConsumerState<ChatComposer> {
 
   @override
   void dispose() {
+    _voiceAutoSendTimer?.cancel();
     if (_speech.isListening) {
       _speech.stop();
     }
+    _voiceTranscript?.dispose();
     _controller.dispose();
     _focus.dispose();
     super.dispose();
@@ -73,6 +80,7 @@ class _ChatComposerState extends ConsumerState<ChatComposer> {
     if (!widget.enabled) return;
 
     if (_speech.isListening) {
+      _voiceAutoSendTimer?.cancel();
       await _speech.stop();
       if (mounted) setState(() {});
       return;
@@ -84,41 +92,125 @@ class _ChatComposerState extends ConsumerState<ChatComposer> {
 
       if (!_speechReady) {
         _speechReady = await _speech.initialize(
-          onStatus: (_) {
+          onStatus: (String status) {
+            if (status == 'done' && (_voiceTranscript?.value.trim().isNotEmpty ?? false)) {
+              _scheduleVoiceAutoSend();
+            }
             if (mounted) setState(() {});
           },
           onError: (SpeechRecognitionError _) {
+            _voiceAutoSendTimer?.cancel();
             if (mounted) setState(() {});
           },
         );
       }
       if (!_speechReady) return;
 
+      _voiceAutoSendTimer?.cancel();
+      _voiceTranscript?.dispose();
+      _voiceTranscript = ValueNotifier<String>('');
+      _voiceBaseText = _controller.text;
+      _voiceBaseSelection = _controller.selection.isValid
+          ? _controller.selection
+          : TextSelection.collapsed(offset: _controller.text.length);
+
       await _speech.listen(
+        listenFor: const Duration(seconds: 30),
+        pauseFor: const Duration(seconds: 3),
+        partialResults: true,
+        cancelOnError: false,
         onResult: (SpeechRecognitionResult result) {
           final String spoken = result.recognizedWords.trim();
           if (spoken.isEmpty) return;
 
-          final TextSelection selection = _controller.selection;
-          final int start = selection.isValid ? selection.start : _controller.text.length;
-          final int end = selection.isValid ? selection.end : start;
-          final String before = _controller.text.substring(0, start);
-          final String after = _controller.text.substring(end);
-          final String prefix = before.isEmpty || before.endsWith(' ') ? '' : ' ';
-          final String suffix = after.isEmpty || after.startsWith(' ') ? '' : ' ';
-          final String inserted = '$before$prefix$spoken$suffix';
+          _voiceTranscript?.value = spoken;
+
+          final int start = _voiceBaseSelection.start.clamp(0, _voiceBaseText.length);
+          final int end = _voiceBaseSelection.end.clamp(start, _voiceBaseText.length);
+          final String before = _voiceBaseText.substring(0, start);
+          final String after = _voiceBaseText.substring(end);
+          final String prefix =
+              before.isEmpty || before.endsWith(' ') ? '' : ' ';
+          final String suffix =
+              after.isEmpty || after.startsWith(' ') ? '' : ' ';
+          final String inserted = '$before$prefix$spoken$suffix$after';
+          final int cursor = (before + prefix + spoken + suffix).length;
+
           _controller.value = TextEditingValue(
-            text: '$inserted$after',
-            selection: TextSelection.collapsed(offset: inserted.length),
+            text: inserted,
+            selection: TextSelection.collapsed(offset: cursor),
           );
+
+          _scheduleVoiceAutoSend();
           if (mounted) setState(() {});
         },
       );
+
+      if (!_speech.isListening) {
+        _voiceTranscript?.dispose();
+        _voiceTranscript = null;
+        if (mounted) setState(() {});
+        return;
+      }
+
+      if (!mounted) return;
+      setState(() {});
+
+      await showModalBottomSheet<void>(
+        context: context,
+        isDismissible: true,
+        enableDrag: false,
+        backgroundColor: Colors.transparent,
+        barrierColor: Colors.black.withValues(alpha: 0.08),
+        builder: (BuildContext sheetContext) {
+          _voiceSheetContext = sheetContext;
+          final ValueNotifier<String> transcript = _voiceTranscript!;
+          return _AiVoiceListeningSheet(transcript: transcript);
+        },
+      );
+
+      _voiceSheetContext = null;
+      if (_speech.isListening) {
+        await _speech.stop();
+      }
+      _voiceAutoSendTimer?.cancel();
+      _voiceTranscript?.dispose();
+      _voiceTranscript = null;
       if (mounted) setState(() {});
     } on Object {
+      _voiceAutoSendTimer?.cancel();
+      if (_speech.isListening) {
+        await _speech.stop();
+      }
+      _voiceTranscript?.dispose();
+      _voiceTranscript = null;
       if (mounted) setState(() {});
     }
   }
+
+  void _scheduleVoiceAutoSend() {
+    _voiceAutoSendTimer?.cancel();
+    _voiceAutoSendTimer = Timer(const Duration(seconds: 3), () async {
+      final String spoken = _voiceTranscript?.value.trim() ?? '';
+      if (spoken.isEmpty || !mounted) return;
+
+      if (_speech.isListening) {
+        await _speech.stop();
+      }
+
+      final BuildContext? sheetContext = _voiceSheetContext;
+      if (sheetContext != null && sheetContext.mounted) {
+        final NavigatorState navigator = Navigator.of(sheetContext);
+        if (navigator.canPop()) navigator.pop();
+      }
+
+      await Future<void>.delayed(const Duration(milliseconds: 120));
+      if (mounted && _controller.text.trim().isNotEmpty) {
+        await _send();
+      }
+    });
+  }
+
 
   Future<void> _pickImage(ImageSource source) async {
     if (_pickingImage) return;
@@ -420,6 +512,210 @@ class _ChatComposerState extends ConsumerState<ChatComposer> {
       ),
     );
   }
+}
+
+class _AiVoiceListeningSheet extends StatefulWidget {
+  const _AiVoiceListeningSheet({required this.transcript});
+
+  final ValueNotifier<String> transcript;
+
+  @override
+  State<_AiVoiceListeningSheet> createState() => _AiVoiceListeningSheetState();
+}
+
+class _AiVoiceListeningSheetState extends State<_AiVoiceListeningSheet>
+    with TickerProviderStateMixin {
+  late final AnimationController _pulse = AnimationController(
+    vsync: this,
+    duration: const Duration(milliseconds: 1200),
+  )..repeat(reverse: true);
+
+  late final AnimationController _wave = AnimationController(
+    vsync: this,
+    duration: const Duration(milliseconds: 900),
+  )..repeat();
+
+  @override
+  void dispose() {
+    _pulse.dispose();
+    _wave.dispose();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final ColorScheme cs = Theme.of(context).colorScheme;
+    return SafeArea(
+      child: Padding(
+        padding: const EdgeInsets.fromLTRB(12, 0, 12, 14),
+        child: DecoratedBox(
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(30),
+            gradient: LinearGradient(
+              begin: Alignment.topLeft,
+              end: Alignment.bottomRight,
+              colors: <Color>[
+                cs.primary.withValues(alpha: 0.94),
+                cs.surface.withValues(alpha: 0.96),
+                Colors.cyan.withValues(alpha: 0.72),
+              ],
+            ),
+            boxShadow: <BoxShadow>[
+              BoxShadow(
+                blurRadius: 34,
+                spreadRadius: 2,
+                color: cs.primary.withValues(alpha: 0.28),
+              ),
+            ],
+          ),
+          child: Container(
+            padding: const EdgeInsets.fromLTRB(20, 18, 20, 20),
+            decoration: BoxDecoration(
+              color: Colors.black.withValues(alpha: 0.42),
+              borderRadius: BorderRadius.circular(30),
+              border: Border.all(color: Colors.white.withValues(alpha: 0.24)),
+            ),
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: <Widget>[
+                Container(
+                  width: 42,
+                  height: 4,
+                  decoration: BoxDecoration(
+                    color: Colors.white.withValues(alpha: 0.38),
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                ),
+                const SizedBox(height: 14),
+                AnimatedBuilder(
+                  animation: _pulse,
+                  builder: (BuildContext context, Widget? child) {
+                    final double value = _pulse.value;
+                    return Container(
+                      width: 82 + value * 8,
+                      height: 82 + value * 8,
+                      decoration: BoxDecoration(
+                        shape: BoxShape.circle,
+                        border: Border.all(
+                          width: 2,
+                          color: cs.primary.withValues(alpha: 0.72),
+                        ),
+                        boxShadow: <BoxShadow>[
+                          BoxShadow(
+                            blurRadius: 22 + value * 12,
+                            spreadRadius: 4,
+                            color: cs.primary.withValues(alpha: 0.38),
+                          ),
+                          BoxShadow(
+                            blurRadius: 18,
+                            spreadRadius: 1,
+                            color: Colors.cyan.withValues(alpha: 0.24),
+                          ),
+                        ],
+                        gradient: LinearGradient(
+                          colors: <Color>[
+                            cs.primary.withValues(alpha: 0.96),
+                            Colors.cyan.withValues(alpha: 0.82),
+                          ],
+                        ),
+                      ),
+                      child: const Icon(Icons.mic_rounded, size: 38, color: Colors.white),
+                    );
+                  },
+                ),
+                const SizedBox(height: 14),
+                const Text(
+                  'Listening…',
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 24,
+                    fontWeight: FontWeight.w700,
+                  ),
+                ),
+                const SizedBox(height: 5),
+                const Text(
+                  'Speak now, I’m listening to your voice',
+                  textAlign: TextAlign.center,
+                  style: TextStyle(color: Colors.white70, fontSize: 15),
+                ),
+                const SizedBox(height: 14),
+                AnimatedBuilder(
+                  animation: _wave,
+                  builder: (BuildContext context, Widget? child) {
+                    return SizedBox(
+                      height: 42,
+                      width: double.infinity,
+                      child: CustomPaint(
+                        painter: _AiVoiceWavePainter(
+                          progress: _wave.value,
+                          primary: cs.primary,
+                          secondary: Colors.cyanAccent,
+                        ),
+                      ),
+                    );
+                  },
+                ),
+                ValueListenableBuilder<String>(
+                  valueListenable: widget.transcript,
+                  builder: (BuildContext context, String value, Widget? child) {
+                    if (value.trim().isEmpty) return const SizedBox(height: 2);
+                    return ConstrainedBox(
+                      constraints: const BoxConstraints(maxHeight: 54),
+                      child: SingleChildScrollView(
+                        child: Text(
+                          value,
+                          textAlign: TextAlign.center,
+                          style: const TextStyle(color: Colors.white, fontSize: 14),
+                        ),
+                      ),
+                    );
+                  },
+                ),
+              ],
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class _AiVoiceWavePainter extends CustomPainter {
+  const _AiVoiceWavePainter({
+    required this.progress,
+    required this.primary,
+    required this.secondary,
+  });
+
+  final double progress;
+  final Color primary;
+  final Color secondary;
+
+  @override
+  void paint(Canvas canvas, Size size) {
+    final Paint paint = Paint()..strokeCap = StrokeCap.round;
+    const int bars = 31;
+    final double gap = size.width / (bars + 1);
+    for (int i = 0; i < bars; i++) {
+      final double phase = (i / bars) * math.pi * 2;
+      final double motion = math.sin((progress * math.pi * 2) + phase);
+      final double envelope = 0.25 + 0.75 * math.sin((i / (bars - 1)) * math.pi);
+      final double height = 5 + (motion.abs() * envelope * 27);
+      paint
+        ..strokeWidth = 3.2
+        ..color = Color.lerp(primary, secondary, i / (bars - 1))!;
+      final double x = gap * (i + 1);
+      canvas.drawLine(
+        Offset(x, (size.height - height) / 2),
+        Offset(x, (size.height + height) / 2),
+        paint,
+      );
+    }
+  }
+
+  @override
+  bool shouldRepaint(_AiVoiceWavePainter oldDelegate) =>
+      oldDelegate.progress != progress;
 }
 
 class _AttachButton extends StatelessWidget {
