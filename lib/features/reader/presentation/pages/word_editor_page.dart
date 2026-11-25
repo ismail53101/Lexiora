@@ -321,35 +321,37 @@ class _WordEditorPageState extends State<WordEditorPage> {
   void _setZoom(double value) {
     final double clamped = value.clamp(0.25, 2.0).toDouble();
     _controller.viewport.setScale(clamped);
+    _controller.viewport.origin = Offset(
+      math.max(0, _controller.viewport.origin.dx),
+      math.max(0, _controller.viewport.origin.dy),
+    );
     _controller.refresh();
     if (mounted) setState(() {});
   }
 
+  // Quds canvas layout constants (see RenderWordCanvas): the page is painted
+  // with a 64px gutter on both sides plus a 14px vertical scrollbar. When the
+  // page (at the current scale) plus both gutters fits in the view, the canvas
+  // centres it by itself; otherwise it is pinned to the left gutter.
+  static const double _canvasGutter = 64.0;
+  static const double _canvasScrollBar = 14.0;
+  static const double _pointsToPixels = 96.0 / 72.0;
+
   void _fitPageToWidth() {
     if (!mounted) return;
-    // Quds stores Word page dimensions in points and paints them at 96/72
-    // pixels per point. Use the actual imported section width instead of an
-    // A4 assumption: assignments may contain custom or landscape pages.
-    const double pointsToPixels = 96.0 / 72.0;
-    final double availableWidth = MediaQuery.sizeOf(context).width - 24.0;
-    final double pageWidth = _controller.pageSize.width * pointsToPixels;
-    final double scale = (availableWidth / pageWidth).clamp(0.25, 1.0).toDouble();
-    _controller.viewport.setScale(scale);
-    // Start with the page centered in the visible canvas. If the imported
-    // page is wider than the phone, start at its horizontal midpoint so the
-    // user can pan to either side with a finger.
-    final double renderedPageWidth = pageWidth * scale;
     final double viewWidth = MediaQuery.sizeOf(context).width;
-    final double centeredOrigin = math.max(
-      0,
-      64.0 + renderedPageWidth / 2 - viewWidth / 2,
-    );
-    _controller.viewport.origin = Offset(
-      centeredOrigin,
-      _controller.viewport.origin.dy,
-    );
+    final double pagePx = _controller.pageSize.width * _pointsToPixels;
+    if (pagePx <= 0) return;
+    // Largest scale at which the whole page + gutters + scrollbar fit, so the
+    // canvas centres the page and nothing is clipped on the right.
+    final double usable =
+        viewWidth - (_canvasGutter * 2) - _canvasScrollBar - 1.0;
+    final double scale = (usable / pagePx).clamp(0.25, 1.0).toDouble();
+    _controller.viewport.setScale(scale);
+    // Always start at the left/top edge; the canvas clamps and centres.
+    _controller.viewport.origin = Offset.zero;
     _controller.refresh();
-    setState(() {});
+    if (mounted) setState(() {});
   }
 
   void _onWordPointerDown(PointerDownEvent event) {
@@ -358,15 +360,34 @@ class _WordEditorPageState extends State<WordEditorPage> {
     }
   }
 
+  double? _lastPinchDistance;
+
   void _onWordPointerMove(PointerMoveEvent event) {
     if (event.kind != PointerDeviceKind.touch) return;
     final Offset? previous = _touchPositions[event.pointer];
     _touchPositions[event.pointer] = event.position;
     if (previous == null) return;
+
+    // Two fingers: pinch to zoom.
+    if (_touchPositions.length == 2) {
+      final List<Offset> pts = _touchPositions.values.toList();
+      final double distance = (pts[0] - pts[1]).distance;
+      final double? last = _lastPinchDistance;
+      _lastPinchDistance = distance;
+      if (last != null && last > 0 && distance > 0) {
+        final double next = (_controller.viewport.scale * (distance / last))
+            .clamp(0.25, 2.0)
+            .toDouble();
+        _controller.viewport.setScale(next);
+        _controller.refresh();
+        if (mounted) setState(() {});
+      }
+      return;
+    }
+
+    // One finger: scroll the page (the canvas has no native touch scroll).
     final Offset delta = event.position - previous;
     if (delta.distance == 0) return;
-    // Finger movement is opposite viewport movement: dragging up reveals
-    // content farther down, and dragging left reveals the right side.
     final Offset origin = _controller.viewport.origin;
     _controller.viewport.origin = Offset(
       math.max(0, origin.dx - delta.dx),
@@ -377,6 +398,7 @@ class _WordEditorPageState extends State<WordEditorPage> {
 
   void _onWordPointerEnd(PointerEvent event) {
     _touchPositions.remove(event.pointer);
+    if (_touchPositions.length < 2) _lastPinchDistance = null;
   }
 
   Widget _toolbar() {
