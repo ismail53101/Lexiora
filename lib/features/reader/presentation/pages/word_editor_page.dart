@@ -662,7 +662,6 @@ class _WordEditorPageState extends State<WordEditorPage> {
   }
 
   double? _lastPinchDistance;
-  bool _pinching = false;
 
   void _onWordPointerMove(PointerMoveEvent event) {
     if (event.kind != PointerDeviceKind.touch) return;
