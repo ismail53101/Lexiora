@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'dart:io';
 import 'dart:typed_data';
+import 'dart:math' as math;
 
 import 'package:archive/archive.dart';
 
@@ -35,6 +36,7 @@ class _WordEditorPageState extends State<WordEditorPage> {
   bool _loading = true;
   String? _error;
   bool _saving = false;
+  final Map<int, Offset> _touchPositions = <int, Offset>{};
 
   bool get _docx {
     final String fileName =
@@ -333,8 +335,48 @@ class _WordEditorPageState extends State<WordEditorPage> {
     final double pageWidth = _controller.pageSize.width * pointsToPixels;
     final double scale = (availableWidth / pageWidth).clamp(0.25, 1.0).toDouble();
     _controller.viewport.setScale(scale);
+    // Start with the page centered in the visible canvas. If the imported
+    // page is wider than the phone, start at its horizontal midpoint so the
+    // user can pan to either side with a finger.
+    final double renderedPageWidth = pageWidth * scale;
+    final double viewWidth = MediaQuery.sizeOf(context).width;
+    final double centeredOrigin = math.max(
+      0,
+      64.0 + renderedPageWidth / 2 - viewWidth / 2,
+    );
+    _controller.viewport.origin = Offset(
+      centeredOrigin,
+      _controller.viewport.origin.dy,
+    );
     _controller.refresh();
     setState(() {});
+  }
+
+  void _onWordPointerDown(PointerDownEvent event) {
+    if (event.kind == PointerDeviceKind.touch) {
+      _touchPositions[event.pointer] = event.position;
+    }
+  }
+
+  void _onWordPointerMove(PointerMoveEvent event) {
+    if (event.kind != PointerDeviceKind.touch) return;
+    final Offset? previous = _touchPositions[event.pointer];
+    _touchPositions[event.pointer] = event.position;
+    if (previous == null) return;
+    final Offset delta = event.position - previous;
+    if (delta.distance == 0) return;
+    // Finger movement is opposite viewport movement: dragging up reveals
+    // content farther down, and dragging left reveals the right side.
+    final Offset origin = _controller.viewport.origin;
+    _controller.viewport.origin = Offset(
+      math.max(0, origin.dx - delta.dx),
+      math.max(0, origin.dy - delta.dy),
+    );
+    _controller.refresh();
+  }
+
+  void _onWordPointerEnd(PointerEvent event) {
+    _touchPositions.remove(event.pointer);
   }
 
   Widget _toolbar() {
@@ -476,9 +518,15 @@ class _WordEditorPageState extends State<WordEditorPage> {
         ),
       );
     } else {
-      body = QudsWordEditor(
-        controller: _controller,
-        toolbarBuilder: (BuildContext context, WordEditorController controller) => _toolbar(),
+      body = Listener(
+        onPointerDown: _onWordPointerDown,
+        onPointerMove: _onWordPointerMove,
+        onPointerUp: _onWordPointerEnd,
+        onPointerCancel: _onWordPointerEnd,
+        child: QudsWordEditor(
+          controller: _controller,
+          toolbarBuilder: (BuildContext context, WordEditorController controller) => _toolbar(),
+        ),
       );
     }
 
