@@ -5,6 +5,7 @@ import 'dart:math' as math;
 
 import 'package:archive/archive.dart';
 
+import 'package:flutter/gestures.dart' show PointerDeviceKind;
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:lexiora/app/di/injector.dart';
