@@ -109,14 +109,12 @@ class _WordEditorPageState extends State<WordEditorPage> {
         _controller.fitPaintMetrics();
         _controller.refresh();
         _controller.markClean();
-        // Library DOCX files should open in the installed Word-compatible app
-        // for faithful page layout. Keep this parsed editor underneath as a
-        // fallback if the external app cannot be launched or returns to DarsNexa.
-        if (widget.documentId != null && !widget.externalLaunch) {
-          WidgetsBinding.instance.addPostFrameCallback((_) {
-            if (mounted) unawaited(_openExternal());
-          });
-        }
+        // Library DOCX files must stay inside DarsNexa. The office canvas is
+        // wider than a phone at 100%, so choose a readable initial scale that
+        // fits an A4/Letter page inside the available screen width.
+        WidgetsBinding.instance.addPostFrameCallback((_) {
+          if (mounted) _fitPageToWidth();
+        });
       } else if (mounted) {
         WidgetsBinding.instance.addPostFrameCallback((_) {
           if (mounted) unawaited(_openExternal());
@@ -323,6 +321,19 @@ class _WordEditorPageState extends State<WordEditorPage> {
     _controller.viewport.setScale(clamped);
     _controller.refresh();
     if (mounted) setState(() {});
+  }
+
+  void _fitPageToWidth() {
+    if (!mounted) return;
+    // Word's default printable page width is approximately 794 logical units
+    // (A4 at 96 dpi; Letter is close). Leave a small margin for the editor
+    // viewport so the complete page is visible instead of clipping the right
+    // half on narrow Android screens.
+    final double availableWidth = MediaQuery.sizeOf(context).width - 24.0;
+    final double scale = (availableWidth / 794.0).clamp(0.5, 1.0).toDouble();
+    _controller.viewport.setScale(scale);
+    _controller.refresh();
+    setState(() {});
   }
 
   Widget _toolbar() {
