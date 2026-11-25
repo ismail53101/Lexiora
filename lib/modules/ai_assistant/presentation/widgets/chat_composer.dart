@@ -3,6 +3,10 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:permission_handler/permission_handler.dart';
+import 'package:speech_to_text/speech_recognition_error.dart';
+import 'package:speech_to_text/speech_recognition_result.dart';
+import 'package:speech_to_text/speech_to_text.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:lexiora/core/services/pdf_discovery_service.dart' show DeviceFile;
 import 'package:lexiora/core/services/pdf_import_service.dart';
@@ -32,7 +36,9 @@ class _ChatComposerState extends ConsumerState<ChatComposer> {
   final PdfImportService _pdfPicker = PdfImportService();
   final PdfOcrService _pdfOcr = PdfOcrService();
   static const Uuid _uuid = Uuid();
+  final SpeechToText _speech = SpeechToText();
 
+  bool _speechReady = false;
   bool _hasText = false;
   String? _pendingImagePath;
   String? _pendingPdfPath;
@@ -52,6 +58,9 @@ class _ChatComposerState extends ConsumerState<ChatComposer> {
 
   @override
   void dispose() {
+    if (_speech.isListening) {
+      _speech.stop();
+    }
     _controller.dispose();
     _focus.dispose();
     super.dispose();
@@ -59,6 +68,57 @@ class _ChatComposerState extends ConsumerState<ChatComposer> {
 
   bool get _canSend =>
       _hasText || _pendingImagePath != null || _pendingPdfPath != null;
+
+  Future<void> _voiceInput() async {
+    if (!widget.enabled) return;
+
+    if (_speech.isListening) {
+      await _speech.stop();
+      if (mounted) setState(() {});
+      return;
+    }
+
+    try {
+      final PermissionStatus permission = await Permission.microphone.request();
+      if (!permission.isGranted) return;
+
+      if (!_speechReady) {
+        _speechReady = await _speech.initialize(
+          onStatus: (_) {
+            if (mounted) setState(() {});
+          },
+          onError: (SpeechRecognitionError _) {
+            if (mounted) setState(() {});
+          },
+        );
+      }
+      if (!_speechReady) return;
+
+      await _speech.listen(
+        onResult: (SpeechRecognitionResult result) {
+          final String spoken = result.recognizedWords.trim();
+          if (spoken.isEmpty) return;
+
+          final TextSelection selection = _controller.selection;
+          final int start = selection.isValid ? selection.start : _controller.text.length;
+          final int end = selection.isValid ? selection.end : start;
+          final String before = _controller.text.substring(0, start);
+          final String after = _controller.text.substring(end);
+          final String prefix = before.isEmpty || before.endsWith(' ') ? '' : ' ';
+          final String suffix = after.isEmpty || after.startsWith(' ') ? '' : ' ';
+          final String inserted = '$before$prefix$spoken$suffix';
+          _controller.value = TextEditingValue(
+            text: '$inserted$after',
+            selection: TextSelection.collapsed(offset: inserted.length),
+          );
+          if (mounted) setState(() {});
+        },
+      );
+      if (mounted) setState(() {});
+    } on Object {
+      if (mounted) setState(() {});
+    }
+  }
 
   Future<void> _pickImage(ImageSource source) async {
     if (_pickingImage) return;
@@ -330,7 +390,18 @@ class _ChatComposerState extends ConsumerState<ChatComposer> {
                       ),
                     ),
                   ),
-                  const SizedBox(width: 4),
+                  IconButton(
+                    tooltip: _speech.isListening ? 'Stop voice input' : 'Voice input',
+                    onPressed: widget.enabled ? _voiceInput : null,
+                    visualDensity: VisualDensity.compact,
+                    icon: Icon(
+                      _speech.isListening ? Icons.mic_rounded : Icons.mic_none_rounded,
+                      color: widget.enabled
+                          ? (_speech.isListening ? scheme.primary : inputTextColor)
+                          : inputTextColor.withValues(alpha: 0.4),
+                    ),
+                  ),
+                  const SizedBox(width: 2),
                   Padding(
                     padding: const EdgeInsets.only(right: 2),
                     child: _SendStopButton(
