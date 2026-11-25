@@ -79,6 +79,8 @@ class _WordEditorPageState extends State<WordEditorPage> {
   String? _error;
   bool _saving = false;
   final Map<int, Offset> _touchPositions = <int, Offset>{};
+  final Map<int, bool> _touchMoved = <int, bool>{};
+  static const double _scrollGestureSlop = 8.0;
 
   // "Phone view" (like WPS mobile view): every section is temporarily made as
   // wide as the screen so the text re-wraps to the phone. The original page
@@ -273,8 +275,11 @@ class _WordEditorPageState extends State<WordEditorPage> {
         final bool blankNew = _document?.isManaged == true && bytes.length < 3000;
         await _controller.loadBytesAsync(_prepareDocxBytes(bytes));
         if (blankNew) {
-          _editing = true;
-          _phoneView = false; // New assignment = real A4 page, like Word.
+          // New Assignment opens as a normal Word-like A4 page in view mode.
+          // Do not enter editing/IME automatically; the first deliberate tap
+          // on the document can enter editing and show the keyboard.
+          _editing = false;
+          _phoneView = false;
         }
         _normalizeImportedWordLayout();
         // fitPaintMetrics() already re-lays out and then applies the same
@@ -589,7 +594,12 @@ class _WordEditorPageState extends State<WordEditorPage> {
     setState(() => _editing = value);
     _typing.clear();
     if (value) {
+      // Enable editing, but do not request the keyboard. A single tap on the
+      // document attaches the IME; a drag is treated as scrolling.
       _controller.setMode(OfficeInteractionMode.editing);
+      unawaited(
+        SystemChannels.textInput.invokeMethod<void>('TextInput.hide'),
+      );
     } else {
       // Leave edit mode: close the keyboard and stop caret/selection.
       _controller.setMode(OfficeInteractionMode.viewing);
@@ -639,16 +649,30 @@ class _WordEditorPageState extends State<WordEditorPage> {
   void _onWordPointerDown(PointerDownEvent event) {
     if (event.kind == PointerDeviceKind.touch) {
       _touchPositions[event.pointer] = event.position;
+      _touchMoved[event.pointer] = false;
+
+      // A touch may be a scroll or a tap. Never leave the keyboard visible
+      // while the finger is starting a possible scroll gesture.
+      if (_editing) {
+        unawaited(
+          SystemChannels.textInput.invokeMethod<void>('TextInput.hide'),
+        );
+      }
     }
   }
 
   double? _lastPinchDistance;
+  bool _pinching = false;
 
   void _onWordPointerMove(PointerMoveEvent event) {
     if (event.kind != PointerDeviceKind.touch) return;
     final Offset? previous = _touchPositions[event.pointer];
-    _touchPositions[event.pointer] = event.position;
     if (previous == null) return;
+    _touchPositions[event.pointer] = event.position;
+
+    if ((event.position - previous).distance > _scrollGestureSlop) {
+      _touchMoved[event.pointer] = true;
+    }
 
     // Two fingers: pinch to zoom, or two-finger drag to scroll.
     if (_touchPositions.length == 2) {
@@ -660,6 +684,12 @@ class _WordEditorPageState extends State<WordEditorPage> {
         final double ratio = distance / last;
         if ((ratio - 1.0).abs() > 0.01) {
           _pinching = true;
+          if (_editing) {
+            _controller.setMode(OfficeInteractionMode.viewing);
+            unawaited(
+              SystemChannels.textInput.invokeMethod<void>('TextInput.hide'),
+            );
+          }
           final double next = (_controller.viewport.scale * ratio)
               .clamp(0.25, 2.0)
               .toDouble();
@@ -673,24 +703,35 @@ class _WordEditorPageState extends State<WordEditorPage> {
       return;
     }
 
-    // One finger: scroll the page, but only in view mode. In edit mode a
-    // one-finger drag belongs to text selection.
-    if (_editing) return;
-    _scrollBy(event.position - previous, 1.0);
+    // One finger: scrolling must work even after Edit is enabled. Once the
+    // movement passes the slop threshold, switch the Office surface to view
+    // mode so a drag never turns into text selection/IME input.
+    if (_touchMoved[event.pointer] == true) {
+      if (_editing && _controller.mode != OfficeInteractionMode.viewing) {
+        _controller.setMode(OfficeInteractionMode.viewing);
+        unawaited(
+          SystemChannels.textInput.invokeMethod<void>('TextInput.hide'),
+        );
+      }
+      _scrollBy(event.position - previous, 1.0);
+    }
   }
 
   void _scrollBy(Offset delta, double factor) {
     if (delta.distance == 0) return;
     final Offset origin = _controller.viewport.origin;
     _controller.viewport.origin = Offset(
-      _phoneView ? 0 : math.max(0, origin.dx - delta.dx * factor),
+      math.max(0, origin.dx - delta.dx * factor),
       math.max(0, origin.dy - delta.dy * factor),
     );
     _controller.refresh();
   }
 
   void _onWordPointerEnd(PointerEvent event) {
+    final bool moved = _touchMoved[event.pointer] ?? false;
     _touchPositions.remove(event.pointer);
+    _touchMoved.remove(event.pointer);
+
     if (_touchPositions.length < 2) {
       _lastPinchDistance = null;
       if (_pinching) {
@@ -698,6 +739,167 @@ class _WordEditorPageState extends State<WordEditorPage> {
         if (_phoneView) _applyPhoneView(true);
       }
     }
+
+    if (event.kind == PointerDeviceKind.touch && _editing && !moved && !_pinching) {
+      // A stationary single tap is an intentional edit action: keep the caret
+      // active and explicitly attach the IME. Scrolling never opens it.
+      _controller.setMode(OfficeInteractionMode.editing);
+      _controller.attachInput();
+    } else if (event.kind == PointerDeviceKind.touch &&
+        _editing &&
+        moved &&
+        !_pinching) {
+      // Restore edit capability after a scroll, but keep the keyboard closed.
+      _controller.setMode(OfficeInteractionMode.editing);
+      unawaited(
+        SystemChannels.textInput.invokeMethod<void>('TextInput.hide'),
+      );
+    }
+  }
+
+  Widget _selectionPopup() {
+    final WmlRunProps run = _controller.activeRunProps;
+    final String? highlight = run.highlight;
+    final int sizePt = (run.fontSizeHalfPoints / 2).round();
+
+    Widget iconButton(
+      IconData icon,
+      VoidCallback onPressed, {
+      String? tooltip,
+      bool active = false,
+    }) {
+      return IconButton(
+        tooltip: tooltip,
+        visualDensity: VisualDensity.compact,
+        onPressed: onPressed,
+        color: active ? Theme.of(context).colorScheme.primary : null,
+        icon: Icon(icon, size: 20),
+      );
+    }
+
+    return Material(
+      elevation: 8,
+      borderRadius: BorderRadius.circular(14),
+      color: Theme.of(context).colorScheme.surface,
+      child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 4, vertical: 2),
+        child: SingleChildScrollView(
+          scrollDirection: Axis.horizontal,
+          child: Row(
+            mainAxisSize: MainAxisSize.min,
+            children: <Widget>[
+              PopupMenuButton<String>(
+                tooltip: 'Highlight',
+                padding: EdgeInsets.zero,
+                icon: Icon(
+                  Icons.highlight,
+                  size: 20,
+                  color: highlight == null ? null : _hexColor(highlight),
+                ),
+                onSelected: (String value) => _setHighlight(
+                  value == 'none' ? null : value,
+                ),
+                itemBuilder: (BuildContext context) => <PopupMenuEntry<String>>[
+                  const PopupMenuItem<String>(
+                    value: 'none',
+                    child: Text('No highlight'),
+                  ),
+                  for (final String value in <String>[
+                    'FFFF00',
+                    'FFCC80',
+                    'B3E5FC',
+                    'C8E6C9',
+                    'E1BEE7',
+                    'FFCDD2',
+                  ])
+                    PopupMenuItem<String>(
+                      value: value,
+                      child: Row(
+                        children: <Widget>[
+                          Icon(Icons.highlight, color: _hexColor(value)),
+                          const SizedBox(width: 8),
+                          const Text('Highlight'),
+                        ],
+                      ),
+                    ),
+                ],
+              ),
+              iconButton(
+                Icons.text_decrease,
+                () => _setSize(sizePt - 1),
+                tooltip: 'Smaller text',
+              ),
+              iconButton(
+                Icons.text_increase,
+                () => _setSize(sizePt + 1),
+                tooltip: 'Larger text',
+              ),
+              PopupMenuButton<String>(
+                tooltip: 'Text color',
+                padding: EdgeInsets.zero,
+                icon: Icon(Icons.format_color_text, color: _hexColor(run.color), size: 20),
+                onSelected: _setColor,
+                itemBuilder: (BuildContext context) => <PopupMenuEntry<String>>[
+                  for (final String value in <String>[
+                    '000000',
+                    'D32F2F',
+                    '1976D2',
+                    '388E3C',
+                    'F57C00',
+                    '7B1FA2',
+                    '00838F',
+                  ])
+                    PopupMenuItem<String>(
+                      value: value,
+                      child: Row(
+                        children: <Widget>[
+                          Icon(Icons.circle, color: _hexColor(value), size: 18),
+                          const SizedBox(width: 8),
+                          Text(value),
+                        ],
+                      ),
+                    ),
+                ],
+              ),
+              iconButton(
+                Icons.format_bold,
+                () => _formatRun(
+                  update: (WmlRunProps p) => p.bold = !p.bold,
+                  remember: (_TypingStyle t) => t.bold = !_boldNow,
+                ),
+                tooltip: 'Bold',
+                active: run.bold,
+              ),
+              iconButton(
+                Icons.format_underlined,
+                () => _formatRun(
+                  update: (WmlRunProps p) => p.underline =
+                      p.underline == WmlUnderline.none
+                          ? WmlUnderline.single
+                          : WmlUnderline.none,
+                  remember: (_TypingStyle t) => t.underline = !_underNow,
+                ),
+                tooltip: 'Underline',
+                active: run.underline != WmlUnderline.none,
+              ),
+              PopupMenuButton<int>(
+                tooltip: 'Heading',
+                padding: EdgeInsets.zero,
+                icon: const Icon(Icons.title, size: 20),
+                onSelected: _controller.applyHeading,
+                itemBuilder: (BuildContext context) => const <PopupMenuEntry<int>>[
+                  PopupMenuItem<int>(value: 0, child: Text('Normal text')),
+                  PopupMenuItem<int>(value: 1, child: Text('Heading 1')),
+                  PopupMenuItem<int>(value: 2, child: Text('Heading 2')),
+                  PopupMenuItem<int>(value: 3, child: Text('Heading 3')),
+                  PopupMenuItem<int>(value: 4, child: Text('Heading 4')),
+                ],
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
   }
 
   Widget _toolbar() {
@@ -857,10 +1059,22 @@ class _WordEditorPageState extends State<WordEditorPage> {
               onPointerMove: _onWordPointerMove,
               onPointerUp: _onWordPointerEnd,
               onPointerCancel: _onWordPointerEnd,
-              child: canvas,
+              child: Stack(
+                children: <Widget>[
+                  Positioned.fill(child: canvas),
+                  if (_editing && !_controller.caret.isCollapsed)
+                    Positioned(
+                      left: 8,
+                      right: 8,
+                      bottom: 12,
+                      child: Center(child: _selectionPopup()),
+                    ),
+                ],
+              ),
             ),
           ),
-          if (_editing) SafeArea(top: false, child: _toolbar()),
+          if (_editing && _controller.caret.isCollapsed)
+            SafeArea(top: false, child: _toolbar()),
         ],
       );
     }
