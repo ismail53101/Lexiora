@@ -15,6 +15,47 @@ import 'package:lexiora/features/library/domain/entities/library_document.dart';
 import 'package:lexiora/features/library/domain/repositories/library_repository.dart';
 import 'package:quds_office_editor/quds_office_editor.dart';
 
+/// Formatting chosen while the caret is collapsed (no selection). Like Word, it
+/// is applied to the text typed next instead of the whole word/run.
+class _TypingStyle {
+  bool? bold;
+  bool? italic;
+  bool? underline;
+  int? sizeHalf;
+  String? color;
+  String? highlight;
+  bool highlightSet = false;
+
+  bool get isEmpty =>
+      bold == null &&
+      italic == null &&
+      underline == null &&
+      sizeHalf == null &&
+      color == null &&
+      !highlightSet;
+
+  void clear() {
+    bold = null;
+    italic = null;
+    underline = null;
+    sizeHalf = null;
+    color = null;
+    highlight = null;
+    highlightSet = false;
+  }
+
+  void apply(WmlRunProps p) {
+    if (bold != null) p.bold = bold!;
+    if (italic != null) p.italic = italic!;
+    if (underline != null) {
+      p.underline = underline! ? WmlUnderline.single : WmlUnderline.none;
+    }
+    if (sizeHalf != null) p.fontSizeHalfPoints = sizeHalf!;
+    if (color != null) p.color = color!;
+    if (highlightSet) p.highlight = highlight;
+  }
+}
+
 class WordEditorPage extends StatefulWidget {
   const WordEditorPage({
     this.file,
@@ -44,6 +85,11 @@ class _WordEditorPageState extends State<WordEditorPage> {
   // geometry is restored before saving, so the .docx layout is never changed.
   bool _phoneView = true;
   bool _editing = false;
+  final _TypingStyle _typing = _TypingStyle();
+  bool _applyingTyping = false;
+  int _snapPara = 0;
+  int _snapLen = 0;
+  int _snapCaret = 0;
   bool _pinching = false;
   List<WmlPageSize>? _origSizes;
   List<WmlPageMargins>? _origMargins;
@@ -86,8 +132,116 @@ class _WordEditorPageState extends State<WordEditorPage> {
   }
 
   void _onControllerChanged() {
+    _trackTyping();
     if (mounted) setState(() {});
   }
+
+  List<WmlParagraph> get _paras => _controller.document.paragraphs.toList();
+
+  void _snapshotTyping() {
+    final List<WmlParagraph> paras = _paras;
+    if (paras.isEmpty) return;
+    final CaretEngine c = _controller.caret;
+    _snapPara = c.paragraphIndex.clamp(0, paras.length - 1);
+    _snapLen = paras[_snapPara].text.length;
+    _snapCaret = c.logicalIndex;
+  }
+
+  /// Applies the pending typing style to text that was just typed.
+  void _trackTyping() {
+    if (_typing.isEmpty || _applyingTyping || !_editing) return;
+    final List<WmlParagraph> paras = _paras;
+    if (paras.isEmpty) return;
+    final CaretEngine c = _controller.caret;
+    if (!c.isCollapsed) {
+      _typing.clear();
+      return;
+    }
+    final int pi = c.paragraphIndex.clamp(0, paras.length - 1);
+    final int len = paras[pi].text.length;
+    final int grew = len - _snapLen;
+    if (pi == _snapPara && grew > 0 && c.logicalIndex == _snapCaret + grew) {
+      final int from = _snapCaret;
+      final int to = c.logicalIndex;
+      _applyingTyping = true;
+      try {
+        c.selectionAnchorParagraph = pi;
+        c.selectionAnchor = from;
+        c.logicalIndex = to;
+        _controller.applyRunFormat(_typing.apply);
+        c.logicalIndex = to;
+        c.collapseSelection();
+      } finally {
+        _applyingTyping = false;
+      }
+      _snapshotTyping();
+      return;
+    }
+    if (pi == _snapPara && len == _snapLen && c.logicalIndex == _snapCaret) {
+      return;
+    }
+    // Caret moved elsewhere or text was deleted: forget the pending style.
+    _typing.clear();
+  }
+
+  /// Formats the selection, or (with no selection) the text typed next.
+  void _formatRun({
+    required void Function(WmlRunProps p) update,
+    required void Function(_TypingStyle t) remember,
+  }) {
+    if (!_editing) return;
+    if (_controller.caret.isCollapsed) {
+      remember(_typing);
+      _snapshotTyping();
+      if (mounted) setState(() {});
+    } else {
+      _controller.applyRunFormat(update);
+    }
+  }
+
+  bool get _boldNow => _typing.bold ?? _controller.activeRunProps.bold;
+  bool get _italicNow => _typing.italic ?? _controller.activeRunProps.italic;
+  bool get _underNow =>
+      _typing.underline ??
+      (_controller.activeRunProps.underline != WmlUnderline.none);
+  int get _sizeHalfNow =>
+      _typing.sizeHalf ?? _controller.activeRunProps.fontSizeHalfPoints;
+
+  void _toggleBold() {
+    final bool next = !_boldNow;
+    _formatRun(update: (WmlRunProps p) => p.bold = next, remember: (_TypingStyle t) => t.bold = next);
+  }
+
+  void _toggleItalic() {
+    final bool next = !_italicNow;
+    _formatRun(update: (WmlRunProps p) => p.italic = next, remember: (_TypingStyle t) => t.italic = next);
+  }
+
+  void _toggleUnderline() {
+    final bool next = !_underNow;
+    _formatRun(
+      update: (WmlRunProps p) =>
+          p.underline = next ? WmlUnderline.single : WmlUnderline.none,
+      remember: (_TypingStyle t) => t.underline = next,
+    );
+  }
+
+  void _setSize(int points) {
+    final int half = points.clamp(6, 96) * 2;
+    _formatRun(update: (WmlRunProps p) => p.fontSizeHalfPoints = half, remember: (_TypingStyle t) => t.sizeHalf = half);
+  }
+
+  void _stepSize(int delta) => _setSize((_sizeHalfNow / 2).round() + delta);
+
+  void _setColor(String hex) => _formatRun(update: (WmlRunProps p) => p.color = hex, remember: (_TypingStyle t) => t.color = hex);
+
+  void _setHighlight(String? hex) => _formatRun(
+        update: (WmlRunProps p) => p.highlight = hex,
+        remember: (_TypingStyle t) {
+          t.highlight = hex;
+          t.highlightSet = true;
+        },
+      );
 
   Future<void> _load() async {
     try {
@@ -118,7 +272,10 @@ class _WordEditorPageState extends State<WordEditorPage> {
         // package is parsed before we touch pagination/layout.
         final bool blankNew = _document?.isManaged == true && bytes.length < 3000;
         await _controller.loadBytesAsync(_prepareDocxBytes(bytes));
-        if (blankNew) _editing = true;
+        if (blankNew) {
+          _editing = true;
+          _phoneView = false; // New assignment = real A4 page, like Word.
+        }
         _normalizeImportedWordLayout();
         // fitPaintMetrics() already re-lays out and then applies the same
         // Flutter font metrics used by the canvas. Do not call relayout()
@@ -315,7 +472,34 @@ class _WordEditorPageState extends State<WordEditorPage> {
       columns.dispose();
       if (value == null) return;
       _controller.insertTable(rows: value ~/ 100, columns: value % 100);
+      _afterTableInserted(value % 100);
     });
+  }
+
+  void _afterTableInserted(int columns) {
+    try {
+      final ({WmlTable table, int row, int col})? loc = _controller.tableAtCaret;
+      final List<WmlSection> sections = _controller.document.sections;
+      if (loc != null && sections.isNotEmpty) {
+        final WmlSection sec = sections.first;
+        final double content =
+            sec.pageSize.width - sec.margins.left - sec.margins.right - 4;
+        final double each = (content / columns).clamp(24.0, 400.0).toDouble();
+        for (int i = 0; i < loc.table.grid.length; i++) {
+          loc.table.grid[i] = each;
+        }
+      }
+      // A table must never be the last block, or nothing can be typed below it.
+      final List<WmlBlock> blocks = sections.last.blocks;
+      if (blocks.isNotEmpty && blocks.last is WmlTable) {
+        blocks.add(WmlParagraph(inlines: <WmlInline>[WmlRun()]));
+      }
+      _controller.relayout();
+      _controller.fitPaintMetrics();
+      _controller.refresh();
+    } on Object {
+      // Table is still inserted; only the auto-fit was skipped.
+    }
   }
 
   void _insertBlankPage() => _controller.insertPageBreak();
@@ -403,6 +587,7 @@ class _WordEditorPageState extends State<WordEditorPage> {
   void _setEditing(bool value) {
     if (_editing == value) return;
     setState(() => _editing = value);
+    _typing.clear();
     if (value) {
       _controller.setMode(OfficeInteractionMode.editing);
     } else {
@@ -516,8 +701,12 @@ class _WordEditorPageState extends State<WordEditorPage> {
   }
 
   Widget _toolbar() {
+    final int sizePt = (_sizeHalfNow / 2).round();
     final WmlRunProps run = _controller.activeRunProps;
+    final String color = _typing.color ?? run.color;
+    final String? highlight = _typing.highlightSet ? _typing.highlight : run.highlight;
     return Material(
+      elevation: 6,
       color: Theme.of(context).colorScheme.surface,
       child: SingleChildScrollView(
         scrollDirection: Axis.horizontal,
@@ -525,34 +714,28 @@ class _WordEditorPageState extends State<WordEditorPage> {
           children: <Widget>[
             _icon(Icons.undo, _controller.undo, tooltip: 'Undo', active: _controller.canUndo),
             _icon(Icons.redo, _controller.redo, tooltip: 'Redo', active: _controller.canRedo),
-            _icon(Icons.search, _controller.requestFind, tooltip: 'Find'),
-            _icon(Icons.format_bold, () => _applyRun((WmlRunProps p) => p.bold = !p.bold), active: run.bold),
-            _icon(Icons.format_italic, () => _applyRun((WmlRunProps p) => p.italic = !p.italic), active: run.italic),
-            _icon(
-              Icons.format_underlined,
-              () => _applyRun(
-                (WmlRunProps p) => p.underline =
-                    p.underline == WmlUnderline.none
-                        ? WmlUnderline.single
-                        : WmlUnderline.none,
-              ),
-              active: run.underline != WmlUnderline.none,
-            ),
+            _icon(Icons.text_fields, _controller.selectWordAtCaret, tooltip: 'Select word'),
+            _icon(Icons.select_all, _controller.selectAll, tooltip: 'Select all'),
+            _icon(Icons.format_bold, _toggleBold, tooltip: 'Bold', active: _boldNow),
+            _icon(Icons.format_italic, _toggleItalic, tooltip: 'Italic', active: _italicNow),
+            _icon(Icons.format_underlined, _toggleUnderline, tooltip: 'Underline', active: _underNow),
+            _icon(Icons.text_decrease, () => _stepSize(-1), tooltip: 'Smaller text'),
             PopupMenuButton<int>(
               tooltip: 'Text size',
-              icon: Text('${run.fontSizePoints.round()}', style: const TextStyle(fontWeight: FontWeight.w600)),
-              onSelected: (int size) => _applyRun((WmlRunProps p) => p.fontSizeHalfPoints = size * 2),
+              icon: Text('$sizePt', style: const TextStyle(fontWeight: FontWeight.w600)),
+              onSelected: _setSize,
               itemBuilder: (BuildContext context) => <PopupMenuEntry<int>>[
-                for (final int size in <int>[10, 11, 12, 14, 16, 18, 20, 24, 28, 32])
+                for (final int size in <int>[8, 9, 10, 11, 12, 14, 16, 18, 20, 24, 28, 32, 36, 48])
                   PopupMenuItem<int>(value: size, child: Text('$size pt')),
               ],
             ),
+            _icon(Icons.text_increase, () => _stepSize(1), tooltip: 'Larger text'),
             PopupMenuButton<String>(
               tooltip: 'Text color',
-              icon: Icon(Icons.format_color_text, color: _hexColor(run.color)),
-              onSelected: (String value) => _applyRun((WmlRunProps p) => p.color = value),
+              icon: Icon(Icons.format_color_text, color: _hexColor(color)),
+              onSelected: _setColor,
               itemBuilder: (BuildContext context) => <PopupMenuEntry<String>>[
-                for (final String value in <String>['000000','D32F2F','1976D2','388E3C','F57C00','7B1FA2','00838F'])
+                for (final String value in <String>['000000', 'D32F2F', '1976D2', '388E3C', 'F57C00', '7B1FA2', '00838F'])
                   PopupMenuItem<String>(
                     value: value,
                     child: Row(children: <Widget>[
@@ -563,14 +746,14 @@ class _WordEditorPageState extends State<WordEditorPage> {
                   ),
               ],
             ),
-            PopupMenuButton<String?>(
+            PopupMenuButton<String>(
               tooltip: 'Highlight',
-              icon: Icon(Icons.highlight, color: run.highlight == null ? null : _hexColor(run.highlight!)),
-              onSelected: (String? value) => _applyRun((WmlRunProps p) => p.highlight = value),
-              itemBuilder: (BuildContext context) => <PopupMenuEntry<String?>>[
-                const PopupMenuItem<String?>(value: null, child: Text('No highlight')),
-                for (final String value in <String>['FFFF00','FFCC80','B3E5FC','C8E6C9','E1BEE7','FFCDD2'])
-                  PopupMenuItem<String?>(
+              icon: Icon(Icons.highlight, color: highlight == null ? null : _hexColor(highlight)),
+              onSelected: (String value) => _setHighlight(value == 'none' ? null : value),
+              itemBuilder: (BuildContext context) => <PopupMenuEntry<String>>[
+                const PopupMenuItem<String>(value: 'none', child: Text('No highlight')),
+                for (final String value in <String>['FFFF00', 'FFCC80', 'B3E5FC', 'C8E6C9', 'E1BEE7', 'FFCDD2'])
+                  PopupMenuItem<String>(
                     value: value,
                     child: Row(children: <Widget>[
                       Icon(Icons.highlight, color: _hexColor(value)),
@@ -585,9 +768,11 @@ class _WordEditorPageState extends State<WordEditorPage> {
               icon: const Icon(Icons.title),
               onSelected: (int level) => _controller.applyHeading(level),
               itemBuilder: (BuildContext context) => const <PopupMenuEntry<int>>[
+                PopupMenuItem<int>(value: 0, child: Text('Normal text')),
                 PopupMenuItem<int>(value: 1, child: Text('Heading 1')),
                 PopupMenuItem<int>(value: 2, child: Text('Heading 2')),
                 PopupMenuItem<int>(value: 3, child: Text('Heading 3')),
+                PopupMenuItem<int>(value: 4, child: Text('Heading 4')),
               ],
             ),
             _icon(Icons.format_list_bulleted, () => _controller.applyList(numbered: false), tooltip: 'Bullets'),
@@ -604,24 +789,13 @@ class _WordEditorPageState extends State<WordEditorPage> {
               _togglePhoneView,
               tooltip: _phoneView ? 'A4 page size' : 'Phone view',
             ),
-            _icon(
-              Icons.zoom_out,
-              () => _setZoom(_controller.viewport.scale - 0.1),
-              tooltip: 'Zoom out',
-            ),
+            _icon(Icons.zoom_out, () => _setZoom(_controller.viewport.scale - 0.1), tooltip: 'Zoom out'),
             IconButton(
               tooltip: 'Reset zoom',
-              onPressed: () => _setZoom(1.0),
-              icon: Text(
-                '$_zoomPercent%',
-                style: const TextStyle(fontWeight: FontWeight.w600),
-              ),
+              onPressed: () => _setZoom(_phoneView ? _phoneScale : 1.0),
+              icon: Text('$_zoomPercent%', style: const TextStyle(fontWeight: FontWeight.w600)),
             ),
-            _icon(
-              Icons.zoom_in,
-              () => _setZoom(_controller.viewport.scale + 0.1),
-              tooltip: 'Zoom in',
-            ),
+            _icon(Icons.zoom_in, () => _setZoom(_controller.viewport.scale + 0.1), tooltip: 'Zoom in'),
           ],
         ),
       ),
