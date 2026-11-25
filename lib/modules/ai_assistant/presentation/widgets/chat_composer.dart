@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'dart:io';
+import 'dart:math' as math;
 
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -125,8 +126,8 @@ class _ChatComposerState extends ConsumerState<ChatComposer> {
 
           _voiceTranscript?.value = spoken;
 
-          final int start = _voiceBaseSelection.start.clamp(0, _voiceBaseText.length);
-          final int end = _voiceBaseSelection.end.clamp(start, _voiceBaseText.length);
+          final int start = _voiceBaseSelection.start.clamp(0, _voiceBaseText.length) as int;
+          final int end = _voiceBaseSelection.end.clamp(start, _voiceBaseText.length) as int;
           final String before = _voiceBaseText.substring(0, start);
           final String after = _voiceBaseText.substring(end);
           final String prefix =
