@@ -4,13 +4,11 @@ class CurrentAffairsFeed {
   const CurrentAffairsFeed({
     required this.national,
     required this.international,
-    this.opinions = const <LatestUpdate>[],
     required this.fetchedAt,
   });
 
   final List<LatestUpdate> national;
   final List<LatestUpdate> international;
-  final List<LatestUpdate> opinions;
   final DateTime? fetchedAt;
 
   List<LatestUpdate> get all => <LatestUpdate>[...national, ...international];
@@ -21,7 +19,6 @@ class CurrentAffairsFeed {
     return CurrentAffairsFeed(
       national: _stories(json['national']),
       international: _stories(json['international']),
-      opinions: _stories(json['opinions']),
       fetchedAt: DateTime.tryParse(json['fetchedAt']?.toString() ?? ''),
     );
   }
