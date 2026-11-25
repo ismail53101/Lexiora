@@ -96,6 +96,8 @@ class _WordEditorPageState extends State<WordEditorPage> {
   List<WmlPageSize>? _origSizes;
   List<WmlPageMargins>? _origMargins;
   static const double _phoneScale = 0.8;
+  static const double _wordInitialScale = 0.8;
+  bool _initializingViewport = false;
 
   bool get _docx {
     final String fileName =
@@ -288,18 +290,22 @@ class _WordEditorPageState extends State<WordEditorPage> {
         _controller.fitPaintMetrics();
         _controller.refresh();
         _controller.markClean();
-        // Library DOCX files must stay inside DarsNexa. The office canvas is
-        // wider than a phone at 100%, so choose a readable initial scale that
-        // fits an A4/Letter page inside the available screen width.
+        // Keep the real Word page geometry. Fit-to-width (≈27% on a phone)
+        // makes 11/12pt text look microscopic and removes the useful horizontal
+        // pan range. Start at a readable Word-like zoom instead.
+        _phoneView = false;
+        _initializingViewport = true;
         WidgetsBinding.instance.addPostFrameCallback((_) {
           if (!mounted) return;
+          _setGeometry(phone: false);
+          _controller.relayout();
+          _controller.fitPaintMetrics();
+          _controller.viewport.setScale(_wordInitialScale);
+          _controller.viewport.origin = Offset.zero;
+          _controller.refresh();
+          _initializingViewport = false;
           if (_editing) _controller.setMode(OfficeInteractionMode.editing);
-          if (_phoneView) {
-            _controller.viewport.setScale(_phoneScale);
-            _applyPhoneView(true);
-          } else {
-            _fitPageToWidth();
-          }
+          if (mounted) setState(() => _loading = false);
         });
       } else if (mounted) {
         WidgetsBinding.instance.addPostFrameCallback((_) {
@@ -309,7 +315,10 @@ class _WordEditorPageState extends State<WordEditorPage> {
     } on Object catch (error) {
       _error = 'Could not open this Word document: $error';
     }
-    if (mounted) setState(() => _loading = false);
+    // For DOCX, loading is completed by the post-frame viewport setup above.
+    if (mounted && !_docx && !_initializingViewport) {
+      setState(() => _loading = false);
+    }
   }
 
   Future<void> _save() async {
@@ -617,7 +626,9 @@ class _WordEditorPageState extends State<WordEditorPage> {
       _setGeometry(phone: false);
       _controller.relayout();
       _controller.fitPaintMetrics();
-      _fitPageToWidth();
+      _controller.viewport.setScale(_wordInitialScale);
+      _controller.viewport.origin = Offset.zero;
+      _controller.refresh();
     }
   }
 
@@ -651,13 +662,9 @@ class _WordEditorPageState extends State<WordEditorPage> {
       _touchPositions[event.pointer] = event.position;
       _touchMoved[event.pointer] = false;
 
-      // A touch may be a scroll or a tap. Never leave the keyboard visible
-      // while the finger is starting a possible scroll gesture.
-      if (_editing) {
-        unawaited(
-          SystemChannels.textInput.invokeMethod<void>('TextInput.hide'),
-        );
-      }
+      // Do not hide the keyboard on pointer-down. A stationary tap is a
+      // legitimate editing action; only hide it after the gesture is proven
+      // to be a scroll.
     }
   }
 
@@ -740,16 +747,17 @@ class _WordEditorPageState extends State<WordEditorPage> {
     }
 
     if (event.kind == PointerDeviceKind.touch && _editing && !moved && !_pinching) {
-      // A stationary single tap is an intentional edit action: keep the caret
-      // active and explicitly attach the IME. Scrolling never opens it.
+      // Stationary tap: edit at the caret and open the IME.
       _controller.setMode(OfficeInteractionMode.editing);
       _controller.attachInput();
     } else if (event.kind == PointerDeviceKind.touch &&
         _editing &&
         moved &&
         !_pinching) {
-      // Restore edit capability after a scroll, but keep the keyboard closed.
-      _controller.setMode(OfficeInteractionMode.editing);
+      // Scroll completed. Stay in viewing mode so the IME cannot immediately
+      // reclaim focus on the next frame. The next deliberate tap re-enters edit.
+      _controller.setMode(OfficeInteractionMode.viewing);
+      FocusManager.instance.primaryFocus?.unfocus();
       unawaited(
         SystemChannels.textInput.invokeMethod<void>('TextInput.hide'),
       );
@@ -1074,7 +1082,7 @@ class _WordEditorPageState extends State<WordEditorPage> {
               ],
             ),
           ),
-          if (_editing && _controller.caret.isCollapsed)
+          if (!_loading && _editing && _controller.caret.isCollapsed)
             SafeArea(top: false, child: _toolbar()),
         ],
       );
