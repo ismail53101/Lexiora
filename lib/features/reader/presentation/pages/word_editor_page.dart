@@ -317,7 +317,7 @@ class _WordEditorPageState extends State<WordEditorPage> {
   int get _zoomPercent => (_controller.viewport.scale * 100).round();
 
   void _setZoom(double value) {
-    final double clamped = value.clamp(0.5, 2.0).toDouble();
+    final double clamped = value.clamp(0.25, 2.0).toDouble();
     _controller.viewport.setScale(clamped);
     _controller.refresh();
     if (mounted) setState(() {});
@@ -325,12 +325,13 @@ class _WordEditorPageState extends State<WordEditorPage> {
 
   void _fitPageToWidth() {
     if (!mounted) return;
-    // Word's default printable page width is approximately 794 logical units
-    // (A4 at 96 dpi; Letter is close). Leave a small margin for the editor
-    // viewport so the complete page is visible instead of clipping the right
-    // half on narrow Android screens.
+    // Quds stores Word page dimensions in points and paints them at 96/72
+    // pixels per point. Use the actual imported section width instead of an
+    // A4 assumption: assignments may contain custom or landscape pages.
+    const double pointsToPixels = 96.0 / 72.0;
     final double availableWidth = MediaQuery.sizeOf(context).width - 24.0;
-    final double scale = (availableWidth / 794.0).clamp(0.5, 1.0).toDouble();
+    final double pageWidth = _controller.pageSize.width * pointsToPixels;
+    final double scale = (availableWidth / pageWidth).clamp(0.25, 1.0).toDouble();
     _controller.viewport.setScale(scale);
     _controller.refresh();
     setState(() {});
