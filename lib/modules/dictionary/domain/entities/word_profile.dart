@@ -92,6 +92,38 @@ class AiWordProfile extends Equatable {
         'examNote': examNote,
       };
 
+  /// Merges only fields that are missing in this profile. Existing
+  /// local/curated values always win; incoming data only fills gaps.
+  AiWordProfile mergeMissing(AiWordProfile incoming) {
+    List<String> mergeLists(List<String> current, List<String> fallback) {
+      if (fallback.isEmpty) return current;
+      final Set<String> seen = <String>{
+        for (final String item in current) item.toLowerCase(),
+      };
+      final List<String> merged = <String>[...current];
+      for (final String item in fallback) {
+        final String key = item.toLowerCase();
+        if (item.trim().isNotEmpty && seen.add(key)) merged.add(item.trim());
+      }
+      return merged.take(8).toList(growable: false);
+    }
+
+    return AiWordProfile(
+      word: word,
+      source: source == 'ai' ? incoming.source : source,
+      englishDefinition: englishDefinition ?? incoming.englishDefinition,
+      urduMeanings: mergeLists(urduMeanings, incoming.urduMeanings),
+      partOfSpeech: partOfSpeech ?? incoming.partOfSpeech,
+      synonyms: mergeLists(synonyms, incoming.synonyms),
+      antonyms: mergeLists(antonyms, incoming.antonyms),
+      exampleSentence: exampleSentence ?? incoming.exampleSentence,
+      exampleSentenceUrdu: exampleSentenceUrdu ?? incoming.exampleSentenceUrdu,
+      collocations: mergeLists(collocations, incoming.collocations),
+      wordForms: mergeLists(wordForms, incoming.wordForms),
+      examNote: examNote ?? incoming.examNote,
+    );
+  }
+
   bool get hasContent =>
       englishDefinition != null ||
       urduMeanings.isNotEmpty ||
