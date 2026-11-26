@@ -181,7 +181,14 @@ class _WordEditorPageState extends State<WordEditorPage> {
     // intact.
     final List<WmlParagraph> paragraphs = _controller.document.paragraphs.toList();
     for (final WmlParagraph paragraph in paragraphs.take(5)) {
-      paragraph.properties
+      final WmlParagraphProps properties = paragraph.properties;
+      // Only strip list geometry from paragraphs that actually carry a
+      // number reference. Ordinary documents whose first paragraphs are
+      // genuine bullet/numbered lists keep their formatting intact.
+      if (properties.numId == null) {
+        continue;
+      }
+      properties
         ..numId = null
         ..ilvl = 0
         ..listLabel = null
@@ -196,21 +203,6 @@ class _WordEditorPageState extends State<WordEditorPage> {
     }
   }
 
-  bool _looksLikeFormParagraph(String text) {
-    final String lower = text.toLowerCase();
-    const List<String> labels = <String>[
-      'student name',
-      'roll no',
-      'semester',
-      'department',
-      'course',
-      'teacher',
-      'submission date',
-      'sub title',
-    ];
-    final int matches = labels.where(lower.contains).length;
-    return matches >= 2;
-  }
 
   void _insertTable() {
     final TextEditingController rows = TextEditingController(text: '2');
