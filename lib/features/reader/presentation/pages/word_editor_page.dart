@@ -90,6 +90,7 @@ class _WordEditorPageState extends State<WordEditorPage> {
   int _snapPara = 0;
   int _snapLen = 0;
   int _snapCaret = 0;
+  int _snapStart = 0;
   bool _pinching = false;
   List<WmlPageSize>? _origSizes;
   List<WmlPageMargins>? _origMargins;
@@ -143,11 +144,13 @@ class _WordEditorPageState extends State<WordEditorPage> {
     if (paras.isEmpty) return;
     final CaretEngine c = _controller.caret;
     _snapPara = c.paragraphIndex.clamp(0, paras.length - 1);
+    _snapStart = c.logicalIndex;
     _snapLen = paras[_snapPara].text.length;
     _snapCaret = c.logicalIndex;
   }
 
-  /// Applies the pending typing style to text that was just typed.
+  /// Keeps everything typed after the style was chosen in that style, even
+  /// when the keyboard replaces text (suggestions, auto-correct, composing).
   void _trackTyping() {
     if (_typing.isEmpty || _applyingTyping || !_editing) return;
     final List<WmlParagraph> paras = _paras;
@@ -159,29 +162,30 @@ class _WordEditorPageState extends State<WordEditorPage> {
     }
     final int pi = c.paragraphIndex.clamp(0, paras.length - 1);
     final int len = paras[pi].text.length;
-    final int grew = len - _snapLen;
-    if (pi == _snapPara && grew > 0 && c.logicalIndex == _snapCaret + grew) {
-      final int from = _snapCaret;
-      final int to = c.logicalIndex;
+    final int caret = c.logicalIndex;
+    if (pi != _snapPara || caret < _snapStart) {
+      _typing.clear(); // caret moved away from where the style was chosen
+      return;
+    }
+    if (len == _snapLen) {
+      if (caret != _snapCaret) _typing.clear(); // plain caret movement
+      return;
+    }
+    if (caret > _snapStart) {
       _applyingTyping = true;
       try {
         c.selectionAnchorParagraph = pi;
-        c.selectionAnchor = from;
-        c.logicalIndex = to;
+        c.selectionAnchor = _snapStart;
+        c.logicalIndex = caret;
         _controller.applyRunFormat(_typing.apply);
-        c.logicalIndex = to;
+        c.logicalIndex = caret;
         c.collapseSelection();
       } finally {
         _applyingTyping = false;
       }
-      _snapshotTyping();
-      return;
     }
-    if (pi == _snapPara && len == _snapLen && c.logicalIndex == _snapCaret) {
-      return;
-    }
-    // Caret moved elsewhere or text was deleted: forget the pending style.
-    _typing.clear();
+    _snapLen = _paras[pi].text.length;
+    _snapCaret = caret;
   }
 
   /// Formats the selection, or (with no selection) the text typed next.
@@ -531,10 +535,7 @@ class _WordEditorPageState extends State<WordEditorPage> {
   void _setZoom(double value) {
     final double clamped = value.clamp(0.25, 2.0).toDouble();
     _controller.viewport.setScale(clamped);
-    _controller.viewport.origin = Offset(
-      math.max(0, _controller.viewport.origin.dx),
-      math.max(0, _controller.viewport.origin.dy),
-    );
+    _clampOrigin();
     _controller.refresh();
     if (mounted) setState(() {});
   }
@@ -689,6 +690,7 @@ class _WordEditorPageState extends State<WordEditorPage> {
               .clamp(0.25, 2.0)
               .toDouble();
           _controller.viewport.setScale(next);
+          _clampOrigin();
           _controller.refresh();
           if (mounted) setState(() {});
         } else {
@@ -702,14 +704,46 @@ class _WordEditorPageState extends State<WordEditorPage> {
     if (_moved) _scrollBy(event.position - previous, 1.0);
   }
 
+  Size _canvasSize = Size.zero;
+
+  /// Keeps the scroll position inside the real page bounds so the page can
+  /// never be dragged out of view.
+  void _clampOrigin() {
+    final double scale = _controller.viewport.scale * _pointsToPixels;
+    final double viewW = _canvasSize.width;
+    final double viewH = _canvasSize.height;
+    double maxX = 0;
+    double maxY = 0;
+    try {
+      double pageW = _controller.pageSize.width;
+      double stack = 24.0;
+      final List<dynamic> pages = _controller.documentLaidOut.pages.toList();
+      for (final dynamic page in pages) {
+        stack += (page.height as double) * scale + 24;
+      }
+      if (pages.isEmpty) stack += _controller.pageSize.height * scale + 24;
+      final double contentW = pageW * scale;
+      maxX = math.max(0, contentW - viewW);
+      maxY = math.max(0, stack - viewH);
+    } on Object {
+      maxX = 0;
+      maxY = double.infinity;
+    }
+    final Offset o = _controller.viewport.origin;
+    _controller.viewport.origin = Offset(
+      o.dx.clamp(0.0, maxX).toDouble(),
+      o.dy.clamp(0.0, maxY).toDouble(),
+    );
+  }
+
   void _scrollBy(Offset delta, double factor) {
     if (delta.distance == 0) return;
     final Offset origin = _controller.viewport.origin;
-    // The canvas clamps to the real page bounds when it lays out.
     _controller.viewport.origin = Offset(
-      math.max(0, origin.dx - delta.dx * factor),
-      math.max(0, origin.dy - delta.dy * factor),
+      origin.dx - delta.dx * factor,
+      origin.dy - delta.dy * factor,
     );
+    _clampOrigin();
     _controller.refresh();
   }
 
@@ -973,7 +1007,9 @@ class _WordEditorPageState extends State<WordEditorPage> {
     } else {
       final Widget editor = QudsWordEditor(controller: _controller);
       final Widget canvas = LayoutBuilder(
-        builder: (BuildContext context, BoxConstraints c) => ClipRect(
+        builder: (BuildContext context, BoxConstraints c) {
+          _canvasSize = Size(c.maxWidth, c.maxHeight);
+          return ClipRect(
           child: OverflowBox(
             alignment: Alignment.topLeft,
             minWidth: c.maxWidth + _editorExtra,
@@ -983,7 +1019,8 @@ class _WordEditorPageState extends State<WordEditorPage> {
               child: IgnorePointer(ignoring: !_forwarding, child: editor),
             ),
           ),
-        ),
+          );
+        },
       );
       body = Column(
         children: <Widget>[
