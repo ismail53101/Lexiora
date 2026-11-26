@@ -1148,8 +1148,12 @@ class _WordEditorPageState extends State<WordEditorPage> {
     const double knob = 18;
     final Color color = Theme.of(context).colorScheme.primary;
     return Positioned(
+      // The hit target is centered on the actual selection endpoint. Previously
+      // it started above the endpoint and the visible knob was shifted down;
+      // touching the knob could therefore map the first drag sample into the
+      // next line and select the whole line.
       left: point.dx - touchBox / 2,
-      top: point.dy - 2,
+      top: point.dy - touchBox / 2,
       width: touchBox,
       height: touchBox,
       child: GestureDetector(
@@ -1162,12 +1166,10 @@ class _WordEditorPageState extends State<WordEditorPage> {
             _updateSelectionDrag(_editorLocalFromGlobal(d.globalPosition)),
         onPanEnd: (_) => _stopSelectionDrag(),
         onPanCancel: _stopSelectionDrag,
-        child: Align(
-          alignment: startHandle ? Alignment.topCenter : Alignment.topCenter,
+        child: Center(
           child: Container(
             width: knob,
             height: knob,
-            margin: const EdgeInsets.only(top: 4),
             decoration: BoxDecoration(
               color: color,
               shape: BoxShape.circle,
@@ -1621,11 +1623,8 @@ class _WordEditorPageState extends State<WordEditorPage> {
           scrollDirection: Axis.horizontal,
           child: Row(
             children: <Widget>[
-              TextButton.icon(
-                icon: const Icon(Icons.home_outlined, size: 18),
-                label: const Text('Home'),
-                onPressed: _showMoreFormatting,
-              ),
+              _icon(Icons.undo, _controller.undo, tooltip: 'Undo', active: _controller.canUndo),
+              _icon(Icons.redo, _controller.redo, tooltip: 'Redo', active: _controller.canRedo),
               _icon(Icons.format_bold, _toggleBold, tooltip: 'Bold', active: _boldNow),
               _icon(Icons.format_italic, _toggleItalic, tooltip: 'Italic', active: _italicNow),
               _icon(Icons.format_underlined, _toggleUnderline, tooltip: 'Underline', active: _underNow),
