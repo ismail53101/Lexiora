@@ -732,6 +732,7 @@ class _WordEditorPageState extends State<WordEditorPage> {
           _forwardTaps(_downPos!, count: 2, enterEdit: false, select: true);
           _downPos = null; // consumed: do not also treat release as a tap
           _selectDrag = true; // keep pressing and drag to extend the selection
+          _selectionDragActive = true;
         }
       });
     } else {
@@ -749,7 +750,7 @@ class _WordEditorPageState extends State<WordEditorPage> {
     _touchPositions[event.pointer] = event.position;
     if (previous == null) return;
     if (_selectDrag) {
-      _extendTo(event.position + const Offset(0, -6));
+      _updateSelectionDrag(event.position + const Offset(0, -6));
       return;
     }
     if (_downPos != null && (event.position - _downPos!).distance > 10) {
@@ -894,6 +895,77 @@ class _WordEditorPageState extends State<WordEditorPage> {
   bool _extendBusy = false;
   Offset? _extendNext;
   bool _selectDrag = false;
+  bool _selectionDragActive = false;
+  Offset? _lastSelectionPoint;
+  Timer? _selectionAutoScroll;
+
+  void _startSelectionDrag(Offset point) {
+    _selectionDragActive = true;
+    _updateSelectionDrag(point);
+  }
+
+  void _stopSelectionDrag() {
+    _selectionDragActive = false;
+    _lastSelectionPoint = null;
+    _selectionAutoScroll?.cancel();
+    _selectionAutoScroll = null;
+  }
+
+  /// Keeps the injected tap inside the visible editor viewport. Quds otherwise
+  /// tries to reveal an out-of-bounds caret in one large jump when a handle is
+  /// dragged to the bottom edge.
+  Offset _safeSelectionPoint(Offset point) {
+    final double top = kToolbarHeight + MediaQuery.paddingOf(context).top + 8;
+    final double bottom = MediaQuery.sizeOf(context).height -
+        MediaQuery.viewInsetsOf(context).bottom -
+        (_editing ? 78 : 16);
+    final double safeBottom = math.max(top + 20, bottom - 20);
+    return Offset(point.dx, point.dy.clamp(top + 20, safeBottom).toDouble());
+  }
+
+  void _updateSelectionDrag(Offset point) {
+    if (!_selectionDragActive || !mounted) return;
+    _lastSelectionPoint = point;
+    _extendTo(_safeSelectionPoint(point));
+
+    final double top = kToolbarHeight + MediaQuery.paddingOf(context).top + 44;
+    final double bottom = MediaQuery.sizeOf(context).height -
+        MediaQuery.viewInsetsOf(context).bottom -
+        (_editing ? 90 : 28);
+    final double edge = 56;
+    final bool nearTop = point.dy < top + edge;
+    final bool nearBottom = point.dy > bottom - edge;
+    if (!nearTop && !nearBottom) {
+      _selectionAutoScroll?.cancel();
+      _selectionAutoScroll = null;
+      return;
+    }
+    _selectionAutoScroll ??= Timer.periodic(const Duration(milliseconds: 16), (_) {
+      if (!_selectionDragActive || !mounted || _lastSelectionPoint == null) {
+        _stopSelectionDrag();
+        return;
+      }
+      final Offset current = _lastSelectionPoint!;
+      final double currentTop =
+          kToolbarHeight + MediaQuery.paddingOf(context).top + 44;
+      final double currentBottom = MediaQuery.sizeOf(context).height -
+          MediaQuery.viewInsetsOf(context).bottom -
+          (_editing ? 90 : 28);
+      final bool atTop = current.dy < currentTop + edge;
+      final bool atBottom = current.dy > currentBottom - edge;
+      if (!atTop && !atBottom) {
+        _selectionAutoScroll?.cancel();
+        _selectionAutoScroll = null;
+        return;
+      }
+      final double distance = atBottom
+          ? (current.dy - (currentBottom - edge)).clamp(0.0, edge)
+          : ((currentTop + edge) - current.dy).clamp(0.0, edge);
+      final double speed = 1.5 + distance / 10;
+      _scrollBy(Offset(0, atBottom ? -speed : speed), 1.0);
+      _extendTo(_safeSelectionPoint(current));
+    });
+  }
 
   /// Moves the end of the selection to [position] (screen coordinates).
   void _extendTo(Offset position) {
@@ -1006,9 +1078,14 @@ class _WordEditorPageState extends State<WordEditorPage> {
       height: box,
       child: GestureDetector(
         behavior: HitTestBehavior.opaque,
-        onPanStart: (DragStartDetails d) => _handleDragStart(startHandle: startHandle),
+        onPanStart: (DragStartDetails d) {
+          _handleDragStart(startHandle: startHandle);
+          _startSelectionDrag(d.globalPosition + const Offset(0, -34));
+        },
         onPanUpdate: (DragUpdateDetails d) =>
-            _extendTo(d.globalPosition + const Offset(0, -34)),
+            _updateSelectionDrag(d.globalPosition + const Offset(0, -34)),
+        onPanEnd: (_) => _stopSelectionDrag(),
+        onPanCancel: _stopSelectionDrag,
         child: Align(
           alignment: startHandle ? Alignment.topRight : Alignment.topLeft,
           child: Container(
@@ -1035,6 +1112,7 @@ class _WordEditorPageState extends State<WordEditorPage> {
     _longPress?.cancel();
     if (_selectDrag) {
       _selectDrag = false;
+      _stopSelectionDrag();
       _touchPositions.remove(event.pointer);
       return;
     }
@@ -1645,6 +1723,7 @@ class _WordEditorPageState extends State<WordEditorPage> {
   @override
   void dispose() {
     _longPress?.cancel();
+    _stopSelectionDrag();
     _controller.removeListener(_onControllerChanged);
     _controller.dispose();
     super.dispose();
