@@ -100,6 +100,7 @@ class _WordEditorPageState extends State<WordEditorPage> {
   String? _error;
   bool _saving = false;
   final Map<int, Offset> _touchPositions = <int, Offset>{};
+  final GlobalKey _editorStackKey = GlobalKey();
 
   // "Phone view" (like WPS mobile view): every section is temporarily made as
   // wide as the screen so the text re-wraps to the phone. The original page
@@ -912,16 +913,28 @@ class _WordEditorPageState extends State<WordEditorPage> {
     _selectionAutoScroll = null;
   }
 
-  /// Keeps the injected tap inside the visible editor viewport. Quds otherwise
-  /// tries to reveal an out-of-bounds caret in one large jump when a handle is
-  /// dragged to the bottom edge.
+  /// Converts a screen/global gesture position into the editor Stack's local
+  /// coordinates. Handle gestures report globalPosition, while the selection
+  /// hit-test below works in the Stack's coordinate system. Mixing those two
+  /// spaces was the main reason handle drags could jump by a whole paragraph.
+  Offset _editorLocalFromGlobal(Offset globalPosition) {
+    final BuildContext? stackContext = _editorStackKey.currentContext;
+    final RenderObject? renderObject = stackContext?.findRenderObject();
+    if (renderObject is RenderBox && renderObject.hasSize) {
+      return renderObject.globalToLocal(globalPosition);
+    }
+    return globalPosition;
+  }
+
+  /// Keeps the injected tap inside the visible editor viewport. The point is
+  /// already in the editor Stack's local coordinate space.
   Offset _safeSelectionPoint(Offset point) {
-    final double top = kToolbarHeight + MediaQuery.paddingOf(context).top + 8;
-    final double bottom = MediaQuery.sizeOf(context).height -
-        MediaQuery.viewInsetsOf(context).bottom -
-        (_editing ? 78 : 16);
-    final double safeBottom = math.max(top + 20, bottom - 20);
-    return Offset(point.dx, point.dy.clamp(top + 20, safeBottom).toDouble());
+    final double top = 4;
+    final double bottom = math.max(top + 20, _canvasSize.height - 4);
+    return Offset(
+      point.dx,
+      point.dy.clamp(top, bottom).toDouble(),
+    );
   }
 
   void _updateSelectionDrag(Offset point) {
@@ -1145,10 +1158,10 @@ class _WordEditorPageState extends State<WordEditorPage> {
         behavior: HitTestBehavior.opaque,
         onPanStart: (DragStartDetails d) {
           _handleDragStart(startHandle: startHandle);
-          _startSelectionDrag(d.globalPosition + const Offset(0, -28));
+          _startSelectionDrag(_editorLocalFromGlobal(d.globalPosition));
         },
         onPanUpdate: (DragUpdateDetails d) =>
-            _updateSelectionDrag(d.globalPosition + const Offset(0, -28)),
+            _updateSelectionDrag(_editorLocalFromGlobal(d.globalPosition)),
         onPanEnd: (_) => _stopSelectionDrag(),
         onPanCancel: _stopSelectionDrag,
         child: Align(
