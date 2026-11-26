@@ -942,10 +942,11 @@ class _WordEditorPageState extends State<WordEditorPage> {
     _lastSelectionPoint = point;
     _extendTo(_safeSelectionPoint(point));
 
-    final double top = kToolbarHeight + MediaQuery.paddingOf(context).top + 44;
-    final double bottom = MediaQuery.sizeOf(context).height -
-        MediaQuery.viewInsetsOf(context).bottom -
-        (_editing ? 90 : 28);
+    // These coordinates are local to the editor Stack, not screen
+    // coordinates. Using screen coordinates here made edge auto-scroll start
+    // far too early/late after handle dragging.
+    final double top = 8;
+    final double bottom = math.max(top + 40, _canvasSize.height - 8);
     final double edge = 56;
     final bool nearTop = point.dy < top + edge;
     final bool nearBottom = point.dy > bottom - edge;
@@ -960,11 +961,8 @@ class _WordEditorPageState extends State<WordEditorPage> {
         return;
       }
       final Offset current = _lastSelectionPoint!;
-      final double currentTop =
-          kToolbarHeight + MediaQuery.paddingOf(context).top + 44;
-      final double currentBottom = MediaQuery.sizeOf(context).height -
-          MediaQuery.viewInsetsOf(context).bottom -
-          (_editing ? 90 : 28);
+      final double currentTop = 8;
+      final double currentBottom = math.max(currentTop + 40, _canvasSize.height - 8);
       final bool atTop = current.dy < currentTop + edge;
       final bool atBottom = current.dy > currentBottom - edge;
       if (!atTop && !atBottom) {
