@@ -892,6 +892,8 @@ class _WordEditorPageState extends State<WordEditorPage> {
     });
   }
 
+  bool _extendBusy = false;
+  Offset? _extendNext;
   bool _selectDrag = false;
   bool _selectionDragActive = false;
   Offset? _lastSelectionPoint;
@@ -909,7 +911,10 @@ class _WordEditorPageState extends State<WordEditorPage> {
     _selectionAutoScroll = null;
   }
 
-  /// Keeps handle dragging inside the visible editor viewport.  Offset _safeSelectionPoint(Offset point) {
+  /// Keeps the injected tap inside the visible editor viewport. Quds otherwise
+  /// tries to reveal an out-of-bounds caret in one large jump when a handle is
+  /// dragged to the bottom edge.
+  Offset _safeSelectionPoint(Offset point) {
     final double top = kToolbarHeight + MediaQuery.paddingOf(context).top + 8;
     final double bottom = MediaQuery.sizeOf(context).height -
         MediaQuery.viewInsetsOf(context).bottom -
@@ -962,15 +967,15 @@ class _WordEditorPageState extends State<WordEditorPage> {
     });
   }
 
-  /// Maps a screen point directly to the nearest laid-out text position.
+  /// Moves the active selection end directly from the handle position.
   ///
-  /// Do not inject a synthetic Shift+tap here. The Quds canvas hit-test is
-  /// intentionally gesture-oriented and can snap a handle drag to a larger
-  /// text region when the pointer crosses a line. Using CaretEngine's exact
-  /// line hit-test keeps the moving end at the character nearest the finger.
+  /// Avoid synthetic Shift+tap events during a handle drag. They make the
+  /// editor repeat its normal hit-test and can snap the focus to a paragraph
+  /// when the finger crosses a line. Resolve the finger position against the
+  /// already-laid-out line instead, so the nearest logical character remains
+  /// the moving end of the selection.
   void _extendTo(Offset position) {
     if (!_selectionDragActive || !mounted) return;
-    _beginSelect();
 
     final CaretEngine c = _controller.caret;
     final List<dynamic> pages = _controller.documentLaidOut.pages.toList();
@@ -981,44 +986,43 @@ class _WordEditorPageState extends State<WordEditorPage> {
 
     final Offset origin = _controller.viewport.origin;
     final double viewW = _canvasSize.width + _editorExtra - _canvasScrollBar;
-    final double edgeWidth = math.max(0, viewW);
 
-    LaidOutLine? bestLine;
-    double bestDistance = double.infinity;
-    double bestPageX = 0;
+    LaidOutLine? targetLine;
+    double targetX = 0;
+    double bestYDistance = double.infinity;
 
     double pageTop = 24.0;
     for (final dynamic page in pages) {
       final double pageWidth = page.width as double;
       final double pageHeight = page.height as double;
-      final double pagePxWidth = pageWidth * scale;
-      final double left = edgeWidth > pagePxWidth + _canvasGutter * 2
-          ? (edgeWidth - pagePxWidth) / 2
+      final double pagePixelWidth = pageWidth * scale;
+      final double left = viewW > pagePixelWidth + _canvasGutter * 2
+          ? (viewW - pagePixelWidth) / 2
           : _canvasGutter;
 
       final double localY = (position.dy + origin.dy - pageTop) / scale;
       final List<LaidOutLine> lines =
           (page.lines as List<dynamic>).cast<LaidOutLine>();
+
       for (final LaidOutLine line in lines) {
-        final double centerY = line.y + line.height / 2;
-        final double distance = (localY - centerY).abs();
-        if (distance < bestDistance) {
-          final double pageX =
-              ((position.dx + origin.dx + _canvasGutter) - left) / scale;
-          bestLine = line;
-          bestDistance = distance;
-          bestPageX = pageX.clamp(0.0, pageWidth).toDouble();
+        final double distance = (localY - (line.y + line.height / 2)).abs();
+        if (distance < bestYDistance) {
+          bestYDistance = distance;
+          targetLine = line;
+          targetX = ((position.dx + origin.dx + _canvasGutter) - left) / scale;
+          targetX = targetX.clamp(0.0, pageWidth).toDouble();
         }
       }
 
       pageTop += pageHeight * scale + 24.0;
     }
 
-    final LaidOutLine? line = bestLine;
+    final LaidOutLine? line = targetLine;
     if (line == null) return;
 
     final int paragraph = line.paragraphIndex;
-    final int index = CaretEngine.hitLogicalIndex(line, bestPageX);
+    final int index = CaretEngine.hitLogicalIndex(line, targetX);
+
     if (c.paragraphIndex == paragraph && c.logicalIndex == index) return;
 
     c.paragraphIndex = paragraph;
