@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:lexiora/features/home/data/latest_update_mock_data.dart';
@@ -17,12 +19,42 @@ class CurrentAffairsPage extends ConsumerStatefulWidget {
   ConsumerState<CurrentAffairsPage> createState() => _CurrentAffairsPageState();
 }
 
-class _CurrentAffairsPageState extends ConsumerState<CurrentAffairsPage> {
+class _CurrentAffairsPageState extends ConsumerState<CurrentAffairsPage>
+    with WidgetsBindingObserver {
   int _selectedSection = 0;
   int _selectedFeedType = 0;
+  Timer? _autoRefresh;
+
+  @override
+  void initState() {
+    super.initState();
+    WidgetsBinding.instance.addObserver(this);
+    // Always pull fresh stories when the page opens (the provider otherwise
+    // keeps the first result for the whole app session), then keep checking
+    // every 2 minutes so new opinions appear quickly.
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      if (mounted) ref.invalidate(currentAffairsProvider);
+    });
+    _autoRefresh = Timer.periodic(const Duration(minutes: 2), (_) {
+      if (mounted) ref.invalidate(currentAffairsProvider);
+    });
+  }
+
+  @override
+  void didChangeAppLifecycleState(AppLifecycleState state) {
+    if (state == AppLifecycleState.resumed && mounted) {
+      ref.invalidate(currentAffairsProvider);
+    }
+  }
+
+  @override
+  void dispose() {
+    _autoRefresh?.cancel();
+    WidgetsBinding.instance.removeObserver(this);
+    super.dispose();
+  }
 
   Future<void> _refresh() async {
-
     ref.invalidate(currentAffairsProvider);
     await ref.read(currentAffairsProvider.future);
   }
@@ -32,10 +64,9 @@ class _CurrentAffairsPageState extends ConsumerState<CurrentAffairsPage> {
     final ThemeData theme = Theme.of(context);
     final ColorScheme scheme = theme.colorScheme;
     final AsyncValue<CurrentAffairsFeed?> feedAsync = ref.watch(currentAffairsProvider);
-    final CurrentAffairsFeed? liveFeed = feedAsync.maybeWhen(
-      data: (CurrentAffairsFeed? feed) => feed,
-      orElse: () => null,
-    );
+    // `value` keeps the previous feed while a background refresh is loading,
+    // so the list never flashes back to the offline sample stories.
+    final CurrentAffairsFeed? liveFeed = feedAsync.value;
     final List<LatestUpdate> national = liveFeed?.national ?? _fallback('National');
     final List<LatestUpdate> international = liveFeed?.international ?? _fallback('International');
     final List<LatestUpdate> sectionStories = _selectedSection == 0 ? national : international;
