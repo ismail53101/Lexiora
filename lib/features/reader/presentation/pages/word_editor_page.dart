@@ -1798,7 +1798,7 @@ class _WordEditorPageState extends State<WordEditorPage> {
             maxWidth: c.maxWidth + _editorExtra,
             child: Transform.translate(
               offset: const Offset(-64, 0),
-              child: IgnorePointer(ignoring: !_forwarding, child: editor),
+              child: editor,
             ),
           ),
           );
@@ -1810,17 +1810,7 @@ class _WordEditorPageState extends State<WordEditorPage> {
             child: Stack(
               key: _editorStackKey,
               children: <Widget>[
-                Positioned.fill(
-                  child: Listener(
-                    behavior: HitTestBehavior.opaque,
-                    onPointerDown: _onWordPointerDown,
-                    onPointerMove: _onWordPointerMove,
-                    onPointerUp: _onWordPointerEnd,
-                    onPointerCancel: _onWordPointerEnd,
-                    child: canvas,
-                  ),
-                ),
-                ..._handleWidgets(),
+                Positioned.fill(child: canvas),
                 if (!_editing && !_controller.caret.isCollapsed)
                   Positioned(
                     top: 8,
