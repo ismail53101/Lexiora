@@ -104,8 +104,8 @@ class _WordEditorPageState extends State<WordEditorPage> {
     return fileName.endsWith('.docx') || path.endsWith('.docx');
   }
 
-  String get _path => _document?.filePath ?? widget.file!.path;
-  String get _name => _document?.fileName ?? widget.file!.name;
+  String get _path => _document?.filePath ?? widget.file?.path ?? '';
+  String get _name => _document?.fileName ?? widget.file?.name ?? 'Document';
 
   @override
   void initState() {
@@ -872,6 +872,39 @@ class _WordEditorPageState extends State<WordEditorPage> {
     return k;
   }
 
+  bool _isSentenceEnd(String ch) => '.!?\u061F\u06D4'.contains(ch);
+
+  /// Selects the whole sentence around the caret/selection.
+  void _selectSentence() {
+    final List<WmlParagraph> paras = _paras;
+    final CaretEngine c = _controller.caret;
+    if (paras.isEmpty) return;
+    final int pi = c.paragraphIndex.clamp(0, paras.length - 1);
+    final String t = paras[pi].text;
+    if (t.isEmpty) return;
+    final int at = math.min(c.selectionAnchor, c.logicalIndex).clamp(0, t.length);
+    int start = at;
+    while (start > 0) {
+      final String prev = t[start - 1];
+      if (_isSentenceEnd(prev) && start < t.length && t[start].trim().isEmpty) {
+        break;
+      }
+      start--;
+    }
+    while (start < t.length && t[start].trim().isEmpty) {
+      start++;
+    }
+    int end = math.max(at, start);
+    while (end < t.length && !_isSentenceEnd(t[end])) {
+      end++;
+    }
+    if (end < t.length) end++; // include the full stop
+    c.selectionAnchorParagraph = pi;
+    c.selectionAnchor = start;
+    c.logicalIndex = end;
+    _controller.refresh();
+  }
+
   /// Grows the selection by one word on the right or left side.
   void _extendSelection({required bool right}) {
     final List<WmlParagraph> paras = _paras;
@@ -923,7 +956,15 @@ class _WordEditorPageState extends State<WordEditorPage> {
             ),
             _icon(Icons.keyboard_double_arrow_left, () => _extendSelection(right: false), tooltip: 'Add word on left'),
             _icon(Icons.keyboard_double_arrow_right, () => _extendSelection(right: true), tooltip: 'Add word on right'),
-            _icon(Icons.segment, _controller.selectParagraphAtCaret, tooltip: 'Select paragraph'),
+            TextButton(
+              onPressed: _controller.selectWordAtCaret,
+              child: const Text('Word'),
+            ),
+            TextButton(onPressed: _selectSentence, child: const Text('Sentence')),
+            TextButton(
+              onPressed: _controller.selectParagraphAtCaret,
+              child: const Text('Paragraph'),
+            ),
             _icon(Icons.format_bold, _toggleBold, tooltip: 'Bold', active: _boldNow),
             _icon(Icons.format_italic, _toggleItalic, tooltip: 'Italic', active: _italicNow),
             _icon(Icons.format_underlined, _toggleUnderline, tooltip: 'Underline', active: _underNow),
