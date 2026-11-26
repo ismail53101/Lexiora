@@ -196,7 +196,7 @@ final wordAiEnrichmentProvider =
     }
 
     // Build the exact gaps that still exist after local data + cache.
-    List<String> missingFields(AiWordProfile? extra) {
+    Future<List<String>> missingFields(AiWordProfile? extra) async {
       bool hasText(String? value) => value != null && value.trim().isNotEmpty;
       bool hasList(List<String> value) => value.isNotEmpty;
 
