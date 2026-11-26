@@ -7,6 +7,7 @@ import 'package:lexiora/modules/dictionary/data/dictionary_seeder.dart';
 import 'package:lexiora/modules/dictionary/data/exam_words_seeder.dart';
 import 'package:lexiora/modules/dictionary/data/services/ai_dictionary_cache.dart';
 import 'package:lexiora/modules/dictionary/data/services/ai_dictionary_service.dart';
+import 'package:lexiora/modules/dictionary/data/services/online_dictionary_service.dart';
 import 'package:lexiora/modules/dictionary/data/services/stands4_dictionary_service.dart';
 import 'package:lexiora/modules/dictionary/domain/entities/dictionary_entry.dart';
 import 'package:lexiora/modules/translation/domain/repositories/translation_repository.dart';
@@ -122,6 +123,54 @@ final wordProfileProvider = FutureProvider.family<WordProfile, String>(
     return result.fold(
       (failure) => throw StateError(failure.message),
       (WordProfile profile) => profile,
+    );
+  },
+);
+
+/// Supplements only fields absent from the local DarsNexa dictionary. The
+/// network result is intentionally kept outside the database and is discarded
+/// when unavailable, so offline/local behavior remains unchanged.
+final freeDictionaryEnrichmentProvider =
+    FutureProvider.family<FreeDictionaryProfile?, String>(
+  (Ref ref, String wordLower) async {
+    final WordProfile profile =
+        await ref.watch(wordProfileProvider(wordLower).future);
+    final bool needsSupplement =
+        !profile.existsLocally ||
+        profile.englishDefinition == null ||
+        profile.pronunciation == null ||
+        profile.partOfSpeech == null ||
+        profile.base?.primary?.exampleSentence == null;
+    if (!needsSupplement) return null;
+
+    final OnlineDefinition? online =
+        await sl<OnlineDictionaryService>().define(wordLower);
+    if (online == null) return null;
+    final List<FreeDictionarySense> senses = <FreeDictionarySense>[];
+    final Set<String> seen = <String>{};
+    void addSense(String meaning, String? pos, String? example) {
+      final String key = meaning.trim();
+      if (key.isEmpty || !seen.add(key)) return;
+      senses.add(FreeDictionarySense(
+        meaning: key,
+        partOfSpeech: pos,
+        example: example,
+      ));
+    }
+    // The service chooses the best general definition for the lightweight
+    // translation path; place it first for the profile too.
+    addSense(online.meaning, online.partOfSpeech, null);
+    for (final OnlineSense sense in online.senses) {
+      addSense(sense.meaning, sense.partOfSpeech, sense.example);
+    }
+    if (senses.isEmpty) return null;
+    return FreeDictionaryProfile(
+      word: wordLower.trim(),
+      senses: senses,
+      phonetic: online.phonetic,
+      audioUrl: online.audioUrl,
+      synonyms: online.synonyms,
+      antonyms: online.antonyms,
     );
   },
 );

@@ -133,6 +133,70 @@ class AiWordProfile extends Equatable {
   }
 }
 
+/// Non-authoritative fields returned by the Free Dictionary API.
+///
+/// This is separate from local dictionary data so API failures cannot affect
+/// the offline profile.
+class FreeDictionaryProfile extends Equatable {
+  const FreeDictionaryProfile({
+    required this.word,
+    required this.senses,
+    this.phonetic,
+    this.audioUrl,
+    this.synonyms = const <String>[],
+    this.antonyms = const <String>[],
+  });
+
+  final String word;
+  final List<FreeDictionarySense> senses;
+  final String? phonetic;
+  final String? audioUrl;
+  final List<String> synonyms;
+  final List<String> antonyms;
+
+  FreeDictionarySense? get primary => senses.isEmpty ? null : senses.first;
+  String? get definition => primary?.meaning;
+
+  String? get partOfSpeech {
+    for (final FreeDictionarySense sense in senses) {
+      if (sense.partOfSpeech != null) return sense.partOfSpeech;
+    }
+    return null;
+  }
+
+  String? get example {
+    for (final FreeDictionarySense sense in senses) {
+      if (sense.example != null) return sense.example;
+    }
+    return null;
+  }
+
+  @override
+  List<Object?> get props => <Object?>[
+        word,
+        senses,
+        phonetic,
+        audioUrl,
+        synonyms,
+        antonyms,
+      ];
+}
+
+class FreeDictionarySense extends Equatable {
+  const FreeDictionarySense({
+    required this.meaning,
+    this.partOfSpeech,
+    this.example,
+  });
+
+  final String meaning;
+  final String? partOfSpeech;
+  final String? example;
+
+  @override
+  List<Object?> get props => <Object?>[meaning, partOfSpeech, example];
+}
+
 /// Curated, exam-oriented content for a word (from the bundled exam pack).
 ///
 /// Every list is non-null (possibly empty) and optional scalars are nullable, so
@@ -208,6 +272,7 @@ class WordProfile extends Equatable {
     this.base,
     this.relatedWords = const <String>[],
     this.ai,
+    this.freeDictionary,
   });
 
   final String word;
@@ -216,14 +281,19 @@ class WordProfile extends Equatable {
   final WordDetails? base;
   final List<String> relatedWords;
   final AiWordProfile? ai;
+  final FreeDictionaryProfile? freeDictionary;
 
-  WordProfile copyWith({AiWordProfile? ai}) => WordProfile(
+  WordProfile copyWith({
+    AiWordProfile? ai,
+    FreeDictionaryProfile? freeDictionary,
+  }) => WordProfile(
         word: word,
         wordLower: wordLower,
         exam: exam,
         base: base,
-        relatedWords: relatedWords,
-        ai: ai ?? this.ai,
+    relatedWords: relatedWords,
+    ai: ai ?? this.ai,
+    freeDictionary: freeDictionary ?? this.freeDictionary,
       );
 
   /// True when the word exists in any local data set (base or curated).
@@ -251,20 +321,35 @@ class WordProfile extends Equatable {
 
   /// English definition: curated first, then the base primary sense.
   String? get englishDefinition =>
-      exam?.englishDefinition ?? ai?.englishDefinition ?? base?.primary?.meaning;
+      exam?.englishDefinition ??
+      base?.primary?.meaning ??
+      freeDictionary?.definition ??
+      ai?.englishDefinition;
 
   /// Pronunciation (IPA): curated first, then the base IPA when present.
-  String? get pronunciation => exam?.pronunciation ?? base?.ipaPronunciation;
+  String? get pronunciation =>
+      exam?.pronunciation ?? base?.ipaPronunciation ?? freeDictionary?.phonetic;
+
+  String? get pronunciationAudioUrl => freeDictionary?.audioUrl;
 
   /// Part of speech: curated first, then the base primary sense.
   String? get partOfSpeech =>
-      exam?.partOfSpeech ?? ai?.partOfSpeech ?? base?.primary?.partOfSpeech;
+      exam?.partOfSpeech ??
+      base?.primary?.partOfSpeech ??
+      freeDictionary?.partOfSpeech ??
+      ai?.partOfSpeech;
 
-  List<String> get synonyms =>
-      exam?.synonyms.isNotEmpty == true ? exam!.synonyms : ai?.synonyms ?? const <String>[];
+  List<String> get synonyms => exam?.synonyms.isNotEmpty == true
+      ? exam!.synonyms
+      : freeDictionary?.synonyms.isNotEmpty == true
+          ? freeDictionary!.synonyms
+          : ai?.synonyms ?? const <String>[];
 
-  List<String> get antonyms =>
-      exam?.antonyms.isNotEmpty == true ? exam!.antonyms : ai?.antonyms ?? const <String>[];
+  List<String> get antonyms => exam?.antonyms.isNotEmpty == true
+      ? exam!.antonyms
+      : freeDictionary?.antonyms.isNotEmpty == true
+          ? freeDictionary!.antonyms
+          : ai?.antonyms ?? const <String>[];
 
   List<String> get collocations => exam?.collocations.isNotEmpty == true
       ? exam!.collocations
@@ -274,5 +359,5 @@ class WordProfile extends Equatable {
 
   @override
   List<Object?> get props =>
-      <Object?>[word, wordLower, exam, base, relatedWords, ai];
+      <Object?>[word, wordLower, exam, base, relatedWords, ai, freeDictionary];
 }

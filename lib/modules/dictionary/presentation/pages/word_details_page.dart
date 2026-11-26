@@ -16,6 +16,7 @@ import 'package:lexiora/modules/dictionary/presentation/widgets/pronunciation_bu
 import 'package:lexiora/modules/translation/domain/entities/translation.dart';
 import 'package:lexiora/modules/translation/domain/entities/translation_outcome.dart';
 import 'package:lexiora/modules/translation/presentation/providers/translation_providers.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 /// A professional, offline-first word profile for exam learners. Sections are
 /// rendered in the mandated order: Meaning (same-sense Urdu + English),
@@ -50,6 +51,8 @@ class _WordDetailsPageState extends ConsumerState<WordDetailsPage> {
         ref.watch(wordProfileProvider(widget.wordLower));
     final AsyncValue<AiWordProfile?> aiAsync =
         ref.watch(wordAiEnrichmentProvider(widget.wordLower));
+    final AsyncValue<FreeDictionaryProfile?> freeAsync =
+        ref.watch(freeDictionaryEnrichmentProvider(widget.wordLower));
 
     final WordProfile? localProfile =
         profileAsync.maybeWhen(data: (WordProfile p) => p, orElse: () => null);
@@ -57,10 +60,14 @@ class _WordDetailsPageState extends ConsumerState<WordDetailsPage> {
       data: (AiWordProfile? value) => value,
       orElse: () => null,
     );
+    final FreeDictionaryProfile? freeProfile = freeAsync.maybeWhen(
+      data: (FreeDictionaryProfile? value) => value,
+      orElse: () => null,
+    );
     final WordProfile? displayProfile =
         localProfile == null
             ? null
-            : localProfile.copyWith(ai: aiProfile);
+            : localProfile.copyWith(ai: aiProfile, freeDictionary: freeProfile);
 
     return Scaffold(
       appBar: AppBar(
@@ -386,10 +393,21 @@ class _ProfileView extends StatelessWidget {
     }
 
     final String? example = profile.base?.primary?.exampleSentence;
-    if (example?.trim().isNotEmpty != true) return null;
+    if (example?.trim().isNotEmpty == true) {
+      return validatedUsage(
+        profile.wordLower,
+        WordUsage(context: 'Usage', english: example!.trim(), urdu: ''),
+      );
+    }
+    final String? onlineExample = profile.freeDictionary?.example;
+    if (onlineExample?.trim().isNotEmpty != true) return null;
     return validatedUsage(
       profile.wordLower,
-      WordUsage(context: 'Usage', english: example!.trim(), urdu: ''),
+      WordUsage(
+        context: 'Free Dictionary example',
+        english: onlineExample!.trim(),
+        urdu: '',
+      ),
     );
   }
 
@@ -407,6 +425,26 @@ class _ProfileView extends StatelessWidget {
       final ThemeData theme = Theme.of(context);
       return <Widget>[
         for (final DictionaryEntry s in base.senses.skip(1))
+          Padding(
+            padding: const EdgeInsets.only(bottom: 10),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: <Widget>[
+                if (s.partOfSpeech != null && s.partOfSpeech!.isNotEmpty)
+                  PartOfSpeechChip(partOfSpeech: s.partOfSpeech!),
+                const SizedBox(height: 4),
+                Text(s.meaning,
+                    style: theme.textTheme.bodyLarge?.copyWith(height: 1.35)),
+              ],
+          ),
+        ),
+      ];
+    }
+    final FreeDictionaryProfile? online = profile.freeDictionary;
+    if (online != null && online.senses.length > 1) {
+      final ThemeData theme = Theme.of(context);
+      return <Widget>[
+        for (final FreeDictionarySense s in online.senses.skip(1))
           Padding(
             padding: const EdgeInsets.only(bottom: 10),
             child: Column(
@@ -459,6 +497,20 @@ class _PronunciationSection extends StatelessWidget {
                         ?.copyWith(color: theme.colorScheme.onSurfaceVariant)),
                 PartOfSpeechChip(partOfSpeech: profile.partOfSpeech!),
               ],
+            ),
+          ],
+          if (profile.pronunciationAudioUrl != null) ...<Widget>[
+            const SizedBox(height: 4),
+            Align(
+              alignment: Alignment.centerLeft,
+              child: TextButton.icon(
+                icon: const Icon(Icons.volume_up_outlined),
+                label: const Text('Play online pronunciation'),
+                onPressed: () => launchUrl(
+                  Uri.parse(profile.pronunciationAudioUrl!),
+                  mode: LaunchMode.externalApplication,
+                ),
+              ),
             ),
           ],
           const SizedBox(height: 12),
