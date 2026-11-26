@@ -94,7 +94,7 @@ class _WordEditorPageState extends State<WordEditorPage> {
   bool _pinching = false;
   List<WmlPageSize>? _origSizes;
   List<WmlPageMargins>? _origMargins;
-  static const double _phoneScale = 0.8;
+  static const double _phoneScale = 0.9;
 
   bool get _docx {
     final String fileName =
@@ -149,6 +149,24 @@ class _WordEditorPageState extends State<WordEditorPage> {
     _snapCaret = c.logicalIndex;
   }
 
+  bool _rangeMatchesTyping(WmlParagraph para, int from, int to) {
+    for (int i = from; i < to; i++) {
+      final WmlRunProps p = WmlRunEdit.propsAt(para, i);
+      if (_typing.bold != null && p.bold != _typing.bold) return false;
+      if (_typing.italic != null && p.italic != _typing.italic) return false;
+      if (_typing.underline != null &&
+          (p.underline != WmlUnderline.none) != _typing.underline) {
+        return false;
+      }
+      if (_typing.sizeHalf != null && p.fontSizeHalfPoints != _typing.sizeHalf) {
+        return false;
+      }
+      if (_typing.color != null && p.color != _typing.color) return false;
+      if (_typing.highlightSet && p.highlight != _typing.highlight) return false;
+    }
+    return true;
+  }
+
   /// Keeps everything typed after the style was chosen in that style, even
   /// when the keyboard replaces text (suggestions, auto-correct, composing).
   void _trackTyping() {
@@ -156,36 +174,52 @@ class _WordEditorPageState extends State<WordEditorPage> {
     final List<WmlParagraph> paras = _paras;
     if (paras.isEmpty) return;
     final CaretEngine c = _controller.caret;
-    if (!c.isCollapsed) {
-      _typing.clear();
-      return;
-    }
     final int pi = c.paragraphIndex.clamp(0, paras.length - 1);
-    final int len = paras[pi].text.length;
     final int caret = c.logicalIndex;
     if (pi != _snapPara || caret < _snapStart) {
       _typing.clear(); // caret moved away from where the style was chosen
       return;
     }
-    if (len == _snapLen) {
-      if (caret != _snapCaret) _typing.clear(); // plain caret movement
-      return;
+    final WmlParagraph para = paras[pi];
+    final int end = caret.clamp(0, para.text.length);
+    if (end <= _snapStart || _rangeMatchesTyping(para, _snapStart, end)) return;
+    _applyingTyping = true;
+    final int anchor = c.selectionAnchor;
+    final int anchorPara = c.selectionAnchorParagraph;
+    try {
+      c.selectionAnchorParagraph = pi;
+      c.selectionAnchor = _snapStart;
+      c.logicalIndex = end;
+      _controller.applyRunFormat(_typing.apply);
+      c.logicalIndex = caret;
+      c.selectionAnchorParagraph = anchorPara;
+      c.selectionAnchor = anchor;
+      if (anchor == caret && anchorPara == pi) c.collapseSelection();
+    } finally {
+      _applyingTyping = false;
     }
-    if (caret > _snapStart) {
-      _applyingTyping = true;
-      try {
-        c.selectionAnchorParagraph = pi;
-        c.selectionAnchor = _snapStart;
-        c.logicalIndex = caret;
-        _controller.applyRunFormat(_typing.apply);
-        c.logicalIndex = caret;
-        c.collapseSelection();
-      } finally {
-        _applyingTyping = false;
+  }
+
+  /// In an empty paragraph the next typed character copies the properties of
+  /// the paragraph's (empty) run, so set the style there directly.
+  void _primeEmptyParagraph() {
+    final List<WmlParagraph> paras = _paras;
+    if (paras.isEmpty) return;
+    final int pi = _controller.caret.paragraphIndex.clamp(0, paras.length - 1);
+    final WmlParagraph para = paras[pi];
+    if (para.text.isNotEmpty) return;
+    WmlRun? run;
+    for (final WmlInline inline in para.inlines) {
+      if (inline is WmlRun) {
+        run = inline;
+        break;
       }
     }
-    _snapLen = _paras[pi].text.length;
-    _snapCaret = caret;
+    if (run == null) {
+      run = WmlRun();
+      para.inlines.add(run);
+    }
+    _typing.apply(run.properties);
   }
 
   /// Formats the selection, or (with no selection) the text typed next.
@@ -197,6 +231,7 @@ class _WordEditorPageState extends State<WordEditorPage> {
     if (_controller.caret.isCollapsed) {
       remember(_typing);
       _snapshotTyping();
+      _primeEmptyParagraph();
       if (mounted) setState(() {});
     } else {
       _controller.applyRunFormat(update);
@@ -276,10 +311,8 @@ class _WordEditorPageState extends State<WordEditorPage> {
         // package is parsed before we touch pagination/layout.
         final bool blankNew = _document?.isManaged == true && bytes.length < 3000;
         await _controller.loadBytesAsync(_prepareDocxBytes(bytes));
-        if (blankNew) {
-          _editing = true;
-          _phoneView = false; // New assignment = real A4 page, like Word.
-        }
+        // New assignment: A4 document, edited in the readable reflow view.
+        if (blankNew) _editing = true;
         _normalizeImportedWordLayout();
         // fitPaintMetrics() already re-lays out and then applies the same
         // Flutter font metrics used by the canvas. Do not call relayout()
@@ -800,6 +833,72 @@ class _WordEditorPageState extends State<WordEditorPage> {
     }
   }
 
+  String? _selectedWordsLabel() {
+    final List<WmlParagraph> paras = _paras;
+    final CaretEngine c = _controller.caret;
+    if (paras.isEmpty || c.selectionAnchorParagraph != c.paragraphIndex) {
+      return null;
+    }
+    final String text = paras[c.paragraphIndex.clamp(0, paras.length - 1)].text;
+    final int a = math.min(c.selectionAnchor, c.logicalIndex).clamp(0, text.length);
+    final int b = math.max(c.selectionAnchor, c.logicalIndex).clamp(0, text.length);
+    final int words = text
+        .substring(a, b)
+        .split(RegExp(r'\s+'))
+        .where((String w) => w.isNotEmpty)
+        .length;
+    return words == 1 ? '1 word' : '$words words';
+  }
+
+  int _wordEnd(String t, int i) {
+    int k = i;
+    while (k < t.length && t[k].trim().isEmpty) {
+      k++;
+    }
+    while (k < t.length && t[k].trim().isNotEmpty) {
+      k++;
+    }
+    return k;
+  }
+
+  int _wordStart(String t, int i) {
+    int k = i;
+    while (k > 0 && t[k - 1].trim().isEmpty) {
+      k--;
+    }
+    while (k > 0 && t[k - 1].trim().isNotEmpty) {
+      k--;
+    }
+    return k;
+  }
+
+  /// Grows the selection by one word on the right or left side.
+  void _extendSelection({required bool right}) {
+    final List<WmlParagraph> paras = _paras;
+    final CaretEngine c = _controller.caret;
+    if (paras.isEmpty || c.selectionAnchorParagraph != c.paragraphIndex) return;
+    final String text = paras[c.paragraphIndex.clamp(0, paras.length - 1)].text;
+    int a = c.selectionAnchor.clamp(0, text.length);
+    int f = c.logicalIndex.clamp(0, text.length);
+    final bool forward = a <= f;
+    if (right) {
+      if (forward) {
+        f = _wordEnd(text, f);
+      } else {
+        a = _wordEnd(text, a);
+      }
+    } else {
+      if (forward) {
+        a = _wordStart(text, a);
+      } else {
+        f = _wordStart(text, f);
+      }
+    }
+    c.selectionAnchor = a;
+    c.logicalIndex = f;
+    _controller.refresh();
+  }
+
   /// Small floating bar shown while text is selected (word/line/paragraph).
   Widget _selectionBar() {
     final int sizePt = (_sizeHalfNow / 2).round();
@@ -815,6 +914,16 @@ class _WordEditorPageState extends State<WordEditorPage> {
         child: Row(
           mainAxisSize: MainAxisSize.min,
           children: <Widget>[
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 8),
+              child: Text(
+                _selectedWordsLabel() ?? 'Selected',
+                style: const TextStyle(fontWeight: FontWeight.w600),
+              ),
+            ),
+            _icon(Icons.keyboard_double_arrow_left, () => _extendSelection(right: false), tooltip: 'Add word on left'),
+            _icon(Icons.keyboard_double_arrow_right, () => _extendSelection(right: true), tooltip: 'Add word on right'),
+            _icon(Icons.segment, _controller.selectParagraphAtCaret, tooltip: 'Select paragraph'),
             _icon(Icons.format_bold, _toggleBold, tooltip: 'Bold', active: _boldNow),
             _icon(Icons.format_italic, _toggleItalic, tooltip: 'Italic', active: _italicNow),
             _icon(Icons.format_underlined, _toggleUnderline, tooltip: 'Underline', active: _underNow),
