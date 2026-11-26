@@ -73,7 +73,8 @@ class _SelectionPainter extends CustomPainter {
   }
 
   @override
-  bool shouldRepaint(covariant _SelectionPainter old) => true;
+  bool shouldRepaint(covariant _SelectionPainter old) =>
+      old.color != color || old.rects != rects;
 }
 
 class WordEditorPage extends StatefulWidget {
@@ -986,40 +987,68 @@ class _WordEditorPageState extends State<WordEditorPage> {
 
     final Offset origin = _controller.viewport.origin;
     final double viewW = _canvasSize.width + _editorExtra - _canvasScrollBar;
+    final double canvasX = position.dx + origin.dx + _canvasGutter;
+    final double canvasY = position.dy + origin.dy;
 
-    LaidOutLine? targetLine;
-    double targetX = 0;
-    double bestYDistance = double.infinity;
+    dynamic? targetPage;
+    double targetPageTop = 24.0;
+    double bestPageDistance = double.infinity;
 
     double pageTop = 24.0;
     for (final dynamic page in pages) {
-      final double pageWidth = page.width as double;
       final double pageHeight = page.height as double;
-      final double pagePixelWidth = pageWidth * scale;
-      final double left = viewW > pagePixelWidth + _canvasGutter * 2
-          ? (viewW - pagePixelWidth) / 2
-          : _canvasGutter;
+      final double pageBottom = pageTop + pageHeight * scale;
 
-      final double localY = (position.dy + origin.dy - pageTop) / scale;
-      final List<LaidOutLine> lines =
-          (page.lines as List<dynamic>).cast<LaidOutLine>();
-
-      for (final LaidOutLine line in lines) {
-        final double distance = (localY - (line.y + line.height / 2)).abs();
-        if (distance < bestYDistance) {
-          bestYDistance = distance;
-          targetLine = line;
-          targetX = ((position.dx + origin.dx + _canvasGutter) - left) / scale;
-          targetX = targetX.clamp(0.0, pageWidth).toDouble();
-        }
+      // Prefer the page directly under the finger. Only fall back to the
+      // nearest page when the finger is in the gap between two pages.
+      if (canvasY >= pageTop && canvasY <= pageBottom) {
+        targetPage = page;
+        targetPageTop = pageTop;
+        break;
       }
 
-      pageTop += pageHeight * scale + 24.0;
+      final double distance =
+          canvasY < pageTop ? pageTop - canvasY : canvasY - pageBottom;
+      if (distance < bestPageDistance) {
+        bestPageDistance = distance;
+        targetPage = page;
+        targetPageTop = pageTop;
+      }
+      pageTop = pageBottom + 24.0;
+    }
+
+    final dynamic? page = targetPage;
+    if (page == null) return;
+
+    final double pageWidth = page.width as double;
+    final double pagePixelWidth = pageWidth * scale;
+    final double left = viewW > pagePixelWidth + _canvasGutter * 2
+        ? (viewW - pagePixelWidth) / 2
+        : _canvasGutter;
+
+    final double localY = (canvasY - targetPageTop) / scale;
+    final List<LaidOutLine> lines =
+        (page.lines as List<dynamic>).cast<LaidOutLine>();
+    if (lines.isEmpty) return;
+
+    LaidOutLine? targetLine;
+    double bestLineDistance = double.infinity;
+    for (final LaidOutLine line in lines) {
+      final double distance = (localY - (line.y + line.height / 2)).abs();
+      if (distance < bestLineDistance) {
+        bestLineDistance = distance;
+        targetLine = line;
+      }
     }
 
     final LaidOutLine? line = targetLine;
     if (line == null) return;
 
+    // Convert the finger's X position into the line's document coordinates.
+    // Clamping to the page prevents tiny horizontal overshoots at either edge
+    // from jumping the caret to another paragraph.
+    final double targetX =
+        ((canvasX - left) / scale).clamp(0.0, pageWidth).toDouble();
     final int paragraph = line.paragraphIndex;
     final int index = CaretEngine.hitLogicalIndex(line, targetX);
 
@@ -1102,38 +1131,41 @@ class _WordEditorPageState extends State<WordEditorPage> {
   }
 
   Widget _handle({required Offset point, required bool startHandle}) {
-    const double box = 40;
-    const double knob = 20;
+    // Keep a generous touch target, but make the visible handle close to the
+    // native Android/Word proportions so it does not visually overpower text.
+    const double touchBox = 44;
+    const double knob = 18;
     final Color color = Theme.of(context).colorScheme.primary;
     return Positioned(
-      left: startHandle ? point.dx - box + 6 : point.dx - 6,
-      top: point.dy - 4,
-      width: box,
-      height: box,
+      left: point.dx - touchBox / 2,
+      top: point.dy - 2,
+      width: touchBox,
+      height: touchBox,
       child: GestureDetector(
         behavior: HitTestBehavior.opaque,
         onPanStart: (DragStartDetails d) {
           _handleDragStart(startHandle: startHandle);
-          _startSelectionDrag(d.globalPosition + const Offset(0, -34));
+          _startSelectionDrag(d.globalPosition + const Offset(0, -28));
         },
         onPanUpdate: (DragUpdateDetails d) =>
-            _updateSelectionDrag(d.globalPosition + const Offset(0, -34)),
+            _updateSelectionDrag(d.globalPosition + const Offset(0, -28)),
         onPanEnd: (_) => _stopSelectionDrag(),
         onPanCancel: _stopSelectionDrag,
         child: Align(
-          alignment: startHandle ? Alignment.topRight : Alignment.topLeft,
+          alignment: startHandle ? Alignment.topCenter : Alignment.topCenter,
           child: Container(
             width: knob,
             height: knob,
             margin: const EdgeInsets.only(top: 4),
             decoration: BoxDecoration(
               color: color,
-              borderRadius: BorderRadius.only(
-                topLeft: Radius.circular(startHandle ? knob : 0),
-                topRight: Radius.circular(startHandle ? 0 : knob),
-                bottomLeft: const Radius.circular(knob),
-                bottomRight: const Radius.circular(knob),
-              ),
+              shape: BoxShape.circle,
+              boxShadow: const <BoxShadow>[
+                BoxShadow(
+                  blurRadius: 2,
+                  offset: Offset(0, 1),
+                ),
+              ],
             ),
           ),
         ),
@@ -1280,7 +1312,7 @@ class _WordEditorPageState extends State<WordEditorPage> {
           child: CustomPaint(
             painter: _SelectionPainter(
               ends.rects,
-              Theme.of(context).colorScheme.primary.withValues(alpha: 0.30),
+              Theme.of(context).colorScheme.primary.withValues(alpha: 0.18),
             ),
           ),
         ),
