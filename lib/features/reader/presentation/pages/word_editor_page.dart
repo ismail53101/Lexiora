@@ -646,7 +646,6 @@ class _WordEditorPageState extends State<WordEditorPage> {
   }
 
   void _beginSelect() {
-    if (!_editing) return;
     if (_selectMode) return;
     _selectMode = true;
     _controller.setMode(OfficeInteractionMode.selecting); // also hides keyboard
@@ -730,7 +729,7 @@ class _WordEditorPageState extends State<WordEditorPage> {
       _longPress?.cancel();
       _longPress = Timer(const Duration(milliseconds: 450), () {
         if (!_moved && _touchPositions.length == 1 && _downPos != null) {
-          _forwardTaps(_downPos!, count: 2, enterEdit: true, select: true);
+          _forwardTaps(_downPos!, count: 2, enterEdit: false, select: true);
           _downPos = null; // consumed: do not also treat release as a tap
           _selectDrag = true; // keep pressing and drag to extend the selection
         }
@@ -873,8 +872,8 @@ class _WordEditorPageState extends State<WordEditorPage> {
     bool select = false,
   }) {
     if (!mounted) return;
-    if (!_editing) {
-      if (!enterEdit) return;
+    if (!_editing && !enterEdit && !select) return;
+    if (!_editing && enterEdit) {
       _setEditing(true);
     }
     if (select) {
@@ -1160,7 +1159,6 @@ class _WordEditorPageState extends State<WordEditorPage> {
   }
 
   List<Widget> _handleWidgets() {
-    if (!_editing) return const <Widget>[];
     final ({Offset start, Offset end, List<Rect> rects})? ends = _selectionEnds();
     if (ends == null) return const <Widget>[];
     bool visible(Offset p) => p.dy > 0 && p.dy < _canvasSize.height - 4 && p.dx > -20;
@@ -1181,6 +1179,43 @@ class _WordEditorPageState extends State<WordEditorPage> {
   }
 
   /// Small floating bar shown while text is selected (word/line/paragraph).
+  Widget _viewSelectionBar() {
+    return Material(
+      elevation: 8,
+      borderRadius: BorderRadius.circular(24),
+      color: Theme.of(context).colorScheme.surfaceContainerHigh,
+      child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+        child: Row(
+          mainAxisSize: MainAxisSize.min,
+          children: <Widget>[
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 8),
+              child: Text(
+                _selectedWordsLabel() ?? 'Selected',
+                style: const TextStyle(fontWeight: FontWeight.w600),
+              ),
+            ),
+            IconButton(
+              tooltip: 'Copy',
+              icon: const Icon(Icons.copy_outlined),
+              onPressed: _controller.copyToClipboard,
+            ),
+            FilledButton.tonalIcon(
+              icon: const Icon(Icons.edit_outlined, size: 18),
+              label: const Text('Edit'),
+              onPressed: () {
+                _setEditing(true);
+                _ensureEditing();
+              },
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
+  /// Compact rich-text bar shown above the keyboard while editing.
   Widget _selectionBar() {
     final int sizePt = (_sizeHalfNow / 2).round();
     final String? highlight =
@@ -1265,7 +1300,7 @@ class _WordEditorPageState extends State<WordEditorPage> {
     );
   }
 
-  Widget _toolbar() {
+  Widget _fullFormattingToolbar() {
     final int sizePt = (_sizeHalfNow / 2).round();
     final WmlRunProps run = _controller.activeRunProps;
     final String color = _typing.color ?? run.color;
@@ -1370,6 +1405,120 @@ class _WordEditorPageState extends State<WordEditorPage> {
     );
   }
 
+  void _showMoreFormatting() {
+    showModalBottomSheet<void>(
+      context: context,
+      isScrollControlled: true,
+      showDragHandle: true,
+      builder: (_) => DraggableScrollableSheet(
+        expand: false,
+        initialChildSize: 0.72,
+        minChildSize: 0.45,
+        maxChildSize: 0.94,
+        builder: (BuildContext context, ScrollController scrollController) =>
+            Material(
+          color: Theme.of(context).colorScheme.surface,
+          child: ListView(
+            controller: scrollController,
+            padding: const EdgeInsets.fromLTRB(16, 4, 16, 28),
+            children: <Widget>[
+              Text('More formatting', style: Theme.of(context).textTheme.titleLarge),
+              const SizedBox(height: 8),
+              Text(
+                'Formatting applies to the selected text or to text typed next.',
+                style: Theme.of(context).textTheme.bodySmall,
+              ),
+              const SizedBox(height: 12),
+              _fullFormattingToolbar(),
+              const SizedBox(height: 12),
+              const ListTile(
+                leading: Icon(Icons.format_color_fill),
+                title: Text('Highlight and font color'),
+                subtitle: Text('Choose colors from the controls above'),
+              ),
+              const ListTile(
+                leading: Icon(Icons.format_list_bulleted),
+                title: Text('Bullets, numbering and alignment'),
+                subtitle: Text('Use the paragraph controls above'),
+              ),
+              const ListTile(
+                leading: Icon(Icons.search),
+                title: Text('Find'),
+                subtitle: Text('Document search remains available from the editor'),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+
+  Widget _toolbar() {
+    final WmlRunProps run = _controller.activeRunProps;
+    final String? highlight =
+        _typing.highlightSet ? _typing.highlight : run.highlight;
+    return Material(
+      elevation: 6,
+      color: Theme.of(context).colorScheme.surface,
+      child: SafeArea(
+        top: false,
+        child: SingleChildScrollView(
+          scrollDirection: Axis.horizontal,
+          child: Row(
+            children: <Widget>[
+              TextButton.icon(
+                icon: const Icon(Icons.home_outlined, size: 18),
+                label: const Text('Home'),
+                onPressed: _showMoreFormatting,
+              ),
+              _icon(Icons.format_bold, _toggleBold, tooltip: 'Bold', active: _boldNow),
+              _icon(Icons.format_italic, _toggleItalic, tooltip: 'Italic', active: _italicNow),
+              _icon(Icons.format_underlined, _toggleUnderline, tooltip: 'Underline', active: _underNow),
+              PopupMenuButton<String>(
+                tooltip: 'Highlight',
+                icon: Icon(Icons.highlight, color: highlight == null ? null : _hexColor(highlight)),
+                onSelected: (String value) => _setHighlight(value == 'none' ? null : value),
+                itemBuilder: (BuildContext context) => <PopupMenuEntry<String>>[
+                  const PopupMenuItem<String>(value: 'none', child: Text('No highlight')),
+                  for (final String value in <String>['FFFF00', 'FFCC80', 'B3E5FC', 'C8E6C9', 'E1BEE7', 'FFCDD2'])
+                    PopupMenuItem<String>(
+                      value: value,
+                      child: Row(children: <Widget>[
+                        Icon(Icons.highlight, color: _hexColor(value)),
+                        const SizedBox(width: 10),
+                        const Text('Highlight'),
+                      ]),
+                    ),
+                ],
+              ),
+              PopupMenuButton<String>(
+                tooltip: 'Font color',
+                icon: Icon(Icons.format_color_text, color: _hexColor(_typing.color ?? run.color)),
+                onSelected: _setColor,
+                itemBuilder: (BuildContext context) => <PopupMenuEntry<String>>[
+                  for (final String value in <String>['000000', 'D32F2F', '1976D2', '388E3C', 'F57C00', '7B1FA2', '00838F'])
+                    PopupMenuItem<String>(
+                      value: value,
+                      child: Row(children: <Widget>[
+                        Icon(Icons.circle, color: _hexColor(value), size: 18),
+                        const SizedBox(width: 10),
+                        Text(value),
+                      ]),
+                    ),
+                ],
+              ),
+              IconButton(
+                tooltip: 'More formatting',
+                icon: const Icon(Icons.more_horiz),
+                onPressed: _showMoreFormatting,
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+
   Color _hexColor(String hex) {
     final String value = hex.replaceAll('#', '').padLeft(6, '0');
     final int? rgb = int.tryParse(value.substring(value.length - 6), radix: 16);
@@ -1434,6 +1583,13 @@ class _WordEditorPageState extends State<WordEditorPage> {
                   ),
                 ),
                 ..._handleWidgets(),
+                if (!_editing && !_controller.caret.isCollapsed)
+                  Positioned(
+                    top: 8,
+                    left: 8,
+                    right: 8,
+                    child: Center(child: _viewSelectionBar()),
+                  ),
                 if (_editing && !_controller.caret.isCollapsed)
                   Positioned(
                     top: 8,
