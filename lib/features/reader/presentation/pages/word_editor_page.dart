@@ -5,7 +5,7 @@ import 'dart:math' as math;
 
 import 'package:archive/archive.dart';
 
-import 'package:flutter/gestures.dart' show PointerDeviceKind;
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:lexiora/app/di/injector.dart';
@@ -79,8 +79,6 @@ class _WordEditorPageState extends State<WordEditorPage> {
   String? _error;
   bool _saving = false;
   final Map<int, Offset> _touchPositions = <int, Offset>{};
-  final Map<int, bool> _touchMoved = <int, bool>{};
-  static const double _scrollGestureSlop = 8.0;
 
   // "Phone view" (like WPS mobile view): every section is temporarily made as
   // wide as the screen so the text re-wraps to the phone. The original page
@@ -96,8 +94,6 @@ class _WordEditorPageState extends State<WordEditorPage> {
   List<WmlPageSize>? _origSizes;
   List<WmlPageMargins>? _origMargins;
   static const double _phoneScale = 0.8;
-  static const double _wordInitialScale = 0.8;
-  bool _initializingViewport = false;
 
   bool get _docx {
     final String fileName =
@@ -277,11 +273,8 @@ class _WordEditorPageState extends State<WordEditorPage> {
         final bool blankNew = _document?.isManaged == true && bytes.length < 3000;
         await _controller.loadBytesAsync(_prepareDocxBytes(bytes));
         if (blankNew) {
-          // New Assignment opens as a normal Word-like A4 page in view mode.
-          // Do not enter editing/IME automatically; the first deliberate tap
-          // on the document can enter editing and show the keyboard.
-          _editing = false;
-          _phoneView = false;
+          _editing = true;
+          _phoneView = false; // New assignment = real A4 page, like Word.
         }
         _normalizeImportedWordLayout();
         // fitPaintMetrics() already re-lays out and then applies the same
@@ -290,22 +283,18 @@ class _WordEditorPageState extends State<WordEditorPage> {
         _controller.fitPaintMetrics();
         _controller.refresh();
         _controller.markClean();
-        // Keep the real Word page geometry. Fit-to-width (≈27% on a phone)
-        // makes 11/12pt text look microscopic and removes the useful horizontal
-        // pan range. Start at a readable Word-like zoom instead.
-        _phoneView = false;
-        _initializingViewport = true;
+        // Library DOCX files must stay inside DarsNexa. The office canvas is
+        // wider than a phone at 100%, so choose a readable initial scale that
+        // fits an A4/Letter page inside the available screen width.
         WidgetsBinding.instance.addPostFrameCallback((_) {
           if (!mounted) return;
-          _setGeometry(phone: false);
-          _controller.relayout();
-          _controller.fitPaintMetrics();
-          _controller.viewport.setScale(_wordInitialScale);
-          _controller.viewport.origin = Offset.zero;
-          _controller.refresh();
-          _initializingViewport = false;
           if (_editing) _controller.setMode(OfficeInteractionMode.editing);
-          if (mounted) setState(() => _loading = false);
+          if (_phoneView) {
+            _controller.viewport.setScale(_phoneScale);
+            _applyPhoneView(true);
+          } else {
+            _fitPageToWidth();
+          }
         });
       } else if (mounted) {
         WidgetsBinding.instance.addPostFrameCallback((_) {
@@ -315,10 +304,7 @@ class _WordEditorPageState extends State<WordEditorPage> {
     } on Object catch (error) {
       _error = 'Could not open this Word document: $error';
     }
-    // For DOCX, loading is completed by the post-frame viewport setup above.
-    if (mounted && !_docx && !_initializingViewport) {
-      setState(() => _loading = false);
-    }
+    if (mounted) setState(() => _loading = false);
   }
 
   Future<void> _save() async {
@@ -407,14 +393,7 @@ class _WordEditorPageState extends State<WordEditorPage> {
     // intact.
     final List<WmlParagraph> paragraphs = _controller.document.paragraphs.toList();
     for (final WmlParagraph paragraph in paragraphs.take(5)) {
-      final WmlParagraphProps properties = paragraph.properties;
-      // Only strip list geometry from paragraphs that actually carry a
-      // number reference. Ordinary documents whose first paragraphs are
-      // genuine bullet/numbered lists keep their formatting intact.
-      if (properties.numId == null) {
-        continue;
-      }
-      properties
+      paragraph.properties
         ..numId = null
         ..ilvl = 0
         ..listLabel = null
@@ -429,6 +408,21 @@ class _WordEditorPageState extends State<WordEditorPage> {
     }
   }
 
+  bool _looksLikeFormParagraph(String text) {
+    final String lower = text.toLowerCase();
+    const List<String> labels = <String>[
+      'student name',
+      'roll no',
+      'semester',
+      'department',
+      'course',
+      'teacher',
+      'submission date',
+      'sub title',
+    ];
+    final int matches = labels.where(lower.contains).length;
+    return matches >= 2;
+  }
 
   void _insertTable() {
     final TextEditingController rows = TextEditingController(text: '2');
@@ -595,12 +589,7 @@ class _WordEditorPageState extends State<WordEditorPage> {
     setState(() => _editing = value);
     _typing.clear();
     if (value) {
-      // Enable editing, but do not request the keyboard. A single tap on the
-      // document attaches the IME; a drag is treated as scrolling.
       _controller.setMode(OfficeInteractionMode.editing);
-      unawaited(
-        SystemChannels.textInput.invokeMethod<void>('TextInput.hide'),
-      );
     } else {
       // Leave edit mode: close the keyboard and stop caret/selection.
       _controller.setMode(OfficeInteractionMode.viewing);
@@ -618,9 +607,7 @@ class _WordEditorPageState extends State<WordEditorPage> {
       _setGeometry(phone: false);
       _controller.relayout();
       _controller.fitPaintMetrics();
-      _controller.viewport.setScale(_wordInitialScale);
-      _controller.viewport.origin = Offset.zero;
-      _controller.refresh();
+      _fitPageToWidth();
     }
   }
 
@@ -637,42 +624,58 @@ class _WordEditorPageState extends State<WordEditorPage> {
     final double viewWidth = MediaQuery.sizeOf(context).width;
     final double pagePx = _controller.pageSize.width * _pointsToPixels;
     if (pagePx <= 0) return;
-    // Largest scale at which the whole page + gutters + scrollbar fit, so the
-    // canvas centres the page and nothing is clipped on the right.
-    final double usable =
-        viewWidth - (_canvasGutter * 2) - _canvasScrollBar - 1.0;
-    final double scale = (usable / pagePx).clamp(0.25, 1.0).toDouble();
+    // The canvas is edge to edge (gutters are clipped away), so the page can
+    // use the full screen width. Pinch/zoom then pans horizontally.
+    final double scale = ((viewWidth + 1.0) / pagePx).clamp(0.25, 1.0).toDouble();
     _controller.viewport.setScale(scale);
-    // Always start at the left/top edge; the canvas clamps and centres.
     _controller.viewport.origin = Offset.zero;
     _controller.refresh();
     if (mounted) setState(() {});
   }
 
-  void _onWordPointerDown(PointerDownEvent event) {
-    if (event.kind == PointerDeviceKind.touch) {
-      _touchPositions[event.pointer] = event.position;
-      _touchMoved[event.pointer] = false;
+  // All touch input is handled here; the Quds canvas is wrapped in an
+  // IgnorePointer so scrolling can never move the caret or open the keyboard.
+  // Only a genuine tap (or long press) is forwarded to the canvas.
+  bool _forwarding = false;
+  int _fwdSeq = 0;
+  Offset? _downPos;
+  DateTime? _downAt;
+  bool _moved = false;
+  Timer? _longPress;
 
-      // Do not hide the keyboard on pointer-down. A stationary tap is a
-      // legitimate editing action; only hide it after the gesture is proven
-      // to be a scroll.
+  void _onWordPointerDown(PointerDownEvent event) {
+    if (_forwarding || event.kind != PointerDeviceKind.touch) return;
+    _touchPositions[event.pointer] = event.position;
+    if (_touchPositions.length == 1) {
+      _downPos = event.position;
+      _downAt = DateTime.now();
+      _moved = false;
+      _longPress?.cancel();
+      _longPress = Timer(const Duration(milliseconds: 450), () {
+        if (!_moved && _touchPositions.length == 1 && _downPos != null) {
+          _forwardTaps(_downPos!, count: 2, enterEdit: true);
+          _downPos = null; // consumed: do not also treat release as a tap
+        }
+      });
+    } else {
+      _moved = true;
+      _longPress?.cancel();
     }
   }
 
   double? _lastPinchDistance;
 
   void _onWordPointerMove(PointerMoveEvent event) {
-    if (event.kind != PointerDeviceKind.touch) return;
+    if (_forwarding || event.kind != PointerDeviceKind.touch) return;
     final Offset? previous = _touchPositions[event.pointer];
-    if (previous == null) return;
     _touchPositions[event.pointer] = event.position;
-
-    if ((event.position - previous).distance > _scrollGestureSlop) {
-      _touchMoved[event.pointer] = true;
+    if (previous == null) return;
+    if (_downPos != null && (event.position - _downPos!).distance > 10) {
+      _moved = true;
+      _longPress?.cancel();
     }
 
-    // Two fingers: pinch to zoom, or two-finger drag to scroll.
+    // Two fingers: pinch to zoom, or drag to scroll.
     if (_touchPositions.length == 2) {
       final List<Offset> pts = _touchPositions.values.toList();
       final double distance = (pts[0] - pts[1]).distance;
@@ -682,12 +685,6 @@ class _WordEditorPageState extends State<WordEditorPage> {
         final double ratio = distance / last;
         if ((ratio - 1.0).abs() > 0.01) {
           _pinching = true;
-          if (_editing) {
-            _controller.setMode(OfficeInteractionMode.viewing);
-            unawaited(
-              SystemChannels.textInput.invokeMethod<void>('TextInput.hide'),
-            );
-          }
           final double next = (_controller.viewport.scale * ratio)
               .clamp(0.25, 2.0)
               .toDouble();
@@ -701,23 +698,14 @@ class _WordEditorPageState extends State<WordEditorPage> {
       return;
     }
 
-    // One finger: scrolling must work even after Edit is enabled. Once the
-    // movement passes the slop threshold, switch the Office surface to view
-    // mode so a drag never turns into text selection/IME input.
-    if (_touchMoved[event.pointer] == true) {
-      if (_editing && _controller.mode != OfficeInteractionMode.viewing) {
-        _controller.setMode(OfficeInteractionMode.viewing);
-        unawaited(
-          SystemChannels.textInput.invokeMethod<void>('TextInput.hide'),
-        );
-      }
-      _scrollBy(event.position - previous, 1.0);
-    }
+    // One finger: scroll (vertical and horizontal) in both view and edit mode.
+    if (_moved) _scrollBy(event.position - previous, 1.0);
   }
 
   void _scrollBy(Offset delta, double factor) {
     if (delta.distance == 0) return;
     final Offset origin = _controller.viewport.origin;
+    // The canvas clamps to the real page bounds when it lays out.
     _controller.viewport.origin = Offset(
       math.max(0, origin.dx - delta.dx * factor),
       math.max(0, origin.dy - delta.dy * factor),
@@ -725,11 +713,50 @@ class _WordEditorPageState extends State<WordEditorPage> {
     _controller.refresh();
   }
 
-  void _onWordPointerEnd(PointerEvent event) {
-    final bool moved = _touchMoved[event.pointer] ?? false;
-    _touchPositions.remove(event.pointer);
-    _touchMoved.remove(event.pointer);
+  /// Sends real tap events to the (otherwise ignored) canvas so that the caret
+  /// is placed and the keyboard opens only for a deliberate tap.
+  void _forwardTaps(Offset position, {int count = 1, bool enterEdit = true}) {
+    if (!mounted) return;
+    if (!_editing) {
+      if (!enterEdit) return;
+      _setEditing(true);
+    }
+    setState(() => _forwarding = true);
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      if (!mounted) return;
+      final int viewId = View.of(context).viewId;
+      for (int i = 0; i < count; i++) {
+        final int id = 9000 + (_fwdSeq++);
+        GestureBinding.instance.handlePointerEvent(PointerDownEvent(
+          viewId: viewId,
+          pointer: id,
+          position: position,
+        ));
+        GestureBinding.instance.handlePointerEvent(PointerUpEvent(
+          viewId: viewId,
+          pointer: id,
+          position: position,
+        ));
+      }
+      if (mounted) setState(() => _forwarding = false);
+    });
+  }
 
+  void _onWordPointerEnd(PointerEvent event) {
+    if (_forwarding) return;
+    _longPress?.cancel();
+    final bool wasTap = event is PointerUpEvent &&
+        !_moved &&
+        _touchPositions.length == 1 &&
+        _downPos != null &&
+        _downAt != null &&
+        DateTime.now().difference(_downAt!).inMilliseconds < 450;
+    if (wasTap) {
+      final Offset at = _downPos!;
+      _downPos = null;
+      _forwardTaps(at);
+    }
+    _touchPositions.remove(event.pointer);
     if (_touchPositions.length < 2) {
       _lastPinchDistance = null;
       if (_pinching) {
@@ -737,165 +764,75 @@ class _WordEditorPageState extends State<WordEditorPage> {
         if (_phoneView) _applyPhoneView(true);
       }
     }
-
-    if (event.kind == PointerDeviceKind.touch && _editing && !moved && !_pinching) {
-      // Stationary tap: edit at the caret and open the IME.
-      _controller.setMode(OfficeInteractionMode.editing);
-      _controller.attachInput();
-    } else if (event.kind == PointerDeviceKind.touch &&
-        _editing &&
-        moved &&
-        !_pinching) {
-      // Scroll completed. Stay in viewing mode so the IME cannot immediately
-      // reclaim focus on the next frame. The next deliberate tap re-enters edit.
-      _controller.setMode(OfficeInteractionMode.viewing);
-      FocusManager.instance.primaryFocus?.unfocus();
-      unawaited(
-        SystemChannels.textInput.invokeMethod<void>('TextInput.hide'),
-      );
-    }
   }
 
-  Widget _selectionPopup() {
-    final WmlRunProps run = _controller.activeRunProps;
-    final String? highlight = run.highlight;
-    final int sizePt = (run.fontSizeHalfPoints / 2).round();
-
-    Widget iconButton(
-      IconData icon,
-      VoidCallback onPressed, {
-      String? tooltip,
-      bool active = false,
-    }) {
-      return IconButton(
-        tooltip: tooltip,
-        visualDensity: VisualDensity.compact,
-        onPressed: onPressed,
-        color: active ? Theme.of(context).colorScheme.primary : null,
-        icon: Icon(icon, size: 20),
-      );
-    }
-
+  /// Small floating bar shown while text is selected (word/line/paragraph).
+  Widget _selectionBar() {
+    final int sizePt = (_sizeHalfNow / 2).round();
+    final String? highlight =
+        _typing.highlightSet ? _typing.highlight : _controller.activeRunProps.highlight;
     return Material(
       elevation: 8,
-      borderRadius: BorderRadius.circular(14),
-      color: Theme.of(context).colorScheme.surface,
-      child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 4, vertical: 2),
-        child: SingleChildScrollView(
-          scrollDirection: Axis.horizontal,
-          child: Row(
-            mainAxisSize: MainAxisSize.min,
-            children: <Widget>[
-              PopupMenuButton<String>(
-                tooltip: 'Highlight',
-                padding: EdgeInsets.zero,
-                icon: Icon(
-                  Icons.highlight,
-                  size: 20,
-                  color: highlight == null ? null : _hexColor(highlight),
-                ),
-                onSelected: (String value) => _setHighlight(
-                  value == 'none' ? null : value,
-                ),
-                itemBuilder: (BuildContext context) => <PopupMenuEntry<String>>[
-                  const PopupMenuItem<String>(
-                    value: 'none',
-                    child: Text('No highlight'),
+      borderRadius: BorderRadius.circular(28),
+      color: Theme.of(context).colorScheme.surfaceContainerHigh,
+      child: SingleChildScrollView(
+        scrollDirection: Axis.horizontal,
+        padding: const EdgeInsets.symmetric(horizontal: 4),
+        child: Row(
+          mainAxisSize: MainAxisSize.min,
+          children: <Widget>[
+            _icon(Icons.format_bold, _toggleBold, tooltip: 'Bold', active: _boldNow),
+            _icon(Icons.format_italic, _toggleItalic, tooltip: 'Italic', active: _italicNow),
+            _icon(Icons.format_underlined, _toggleUnderline, tooltip: 'Underline', active: _underNow),
+            _icon(Icons.text_decrease, () => _stepSize(-1), tooltip: 'Smaller'),
+            Text('$sizePt', style: const TextStyle(fontWeight: FontWeight.w600)),
+            _icon(Icons.text_increase, () => _stepSize(1), tooltip: 'Larger'),
+            PopupMenuButton<String>(
+              tooltip: 'Text color',
+              icon: Icon(Icons.format_color_text, color: _hexColor(_typing.color ?? _controller.activeRunProps.color)),
+              onSelected: _setColor,
+              itemBuilder: (BuildContext context) => <PopupMenuEntry<String>>[
+                for (final String value in <String>['000000', 'D32F2F', '1976D2', '388E3C', 'F57C00', '7B1FA2', '00838F'])
+                  PopupMenuItem<String>(
+                    value: value,
+                    child: Row(children: <Widget>[
+                      Icon(Icons.circle, color: _hexColor(value), size: 18),
+                      const SizedBox(width: 10),
+                      Text(value),
+                    ]),
                   ),
-                  for (final String value in <String>[
-                    'FFFF00',
-                    'FFCC80',
-                    'B3E5FC',
-                    'C8E6C9',
-                    'E1BEE7',
-                    'FFCDD2',
-                  ])
-                    PopupMenuItem<String>(
-                      value: value,
-                      child: Row(
-                        children: <Widget>[
-                          Icon(Icons.highlight, color: _hexColor(value)),
-                          const SizedBox(width: 8),
-                          const Text('Highlight'),
-                        ],
-                      ),
-                    ),
-                ],
-              ),
-              iconButton(
-                Icons.text_decrease,
-                () => _setSize(sizePt - 1),
-                tooltip: 'Smaller text',
-              ),
-              iconButton(
-                Icons.text_increase,
-                () => _setSize(sizePt + 1),
-                tooltip: 'Larger text',
-              ),
-              PopupMenuButton<String>(
-                tooltip: 'Text color',
-                padding: EdgeInsets.zero,
-                icon: Icon(Icons.format_color_text, color: _hexColor(run.color), size: 20),
-                onSelected: _setColor,
-                itemBuilder: (BuildContext context) => <PopupMenuEntry<String>>[
-                  for (final String value in <String>[
-                    '000000',
-                    'D32F2F',
-                    '1976D2',
-                    '388E3C',
-                    'F57C00',
-                    '7B1FA2',
-                    '00838F',
-                  ])
-                    PopupMenuItem<String>(
-                      value: value,
-                      child: Row(
-                        children: <Widget>[
-                          Icon(Icons.circle, color: _hexColor(value), size: 18),
-                          const SizedBox(width: 8),
-                          Text(value),
-                        ],
-                      ),
-                    ),
-                ],
-              ),
-              iconButton(
-                Icons.format_bold,
-                () => _formatRun(
-                  update: (WmlRunProps p) => p.bold = !p.bold,
-                  remember: (_TypingStyle t) => t.bold = !_boldNow,
-                ),
-                tooltip: 'Bold',
-                active: run.bold,
-              ),
-              iconButton(
-                Icons.format_underlined,
-                () => _formatRun(
-                  update: (WmlRunProps p) => p.underline =
-                      p.underline == WmlUnderline.none
-                          ? WmlUnderline.single
-                          : WmlUnderline.none,
-                  remember: (_TypingStyle t) => t.underline = !_underNow,
-                ),
-                tooltip: 'Underline',
-                active: run.underline != WmlUnderline.none,
-              ),
-              PopupMenuButton<int>(
-                tooltip: 'Heading',
-                padding: EdgeInsets.zero,
-                icon: const Icon(Icons.title, size: 20),
-                onSelected: _controller.applyHeading,
-                itemBuilder: (BuildContext context) => const <PopupMenuEntry<int>>[
-                  PopupMenuItem<int>(value: 0, child: Text('Normal text')),
-                  PopupMenuItem<int>(value: 1, child: Text('Heading 1')),
-                  PopupMenuItem<int>(value: 2, child: Text('Heading 2')),
-                  PopupMenuItem<int>(value: 3, child: Text('Heading 3')),
-                  PopupMenuItem<int>(value: 4, child: Text('Heading 4')),
-                ],
-              ),
-            ],
-          ),
+              ],
+            ),
+            PopupMenuButton<String>(
+              tooltip: 'Highlight',
+              icon: Icon(Icons.highlight, color: highlight == null ? null : _hexColor(highlight)),
+              onSelected: (String value) => _setHighlight(value == 'none' ? null : value),
+              itemBuilder: (BuildContext context) => <PopupMenuEntry<String>>[
+                const PopupMenuItem<String>(value: 'none', child: Text('No highlight')),
+                for (final String value in <String>['FFFF00', 'FFCC80', 'B3E5FC', 'C8E6C9', 'E1BEE7', 'FFCDD2'])
+                  PopupMenuItem<String>(
+                    value: value,
+                    child: Row(children: <Widget>[
+                      Icon(Icons.highlight, color: _hexColor(value)),
+                      const SizedBox(width: 10),
+                      const Text('Highlight'),
+                    ]),
+                  ),
+              ],
+            ),
+            PopupMenuButton<int>(
+              tooltip: 'Heading',
+              icon: const Icon(Icons.title),
+              onSelected: (int level) => _controller.applyHeading(level),
+              itemBuilder: (BuildContext context) => const <PopupMenuEntry<int>>[
+                PopupMenuItem<int>(value: 0, child: Text('Normal text')),
+                PopupMenuItem<int>(value: 1, child: Text('Heading 1')),
+                PopupMenuItem<int>(value: 2, child: Text('Heading 2')),
+                PopupMenuItem<int>(value: 3, child: Text('Heading 3')),
+                PopupMenuItem<int>(value: 4, child: Text('Heading 4')),
+              ],
+            ),
+          ],
         ),
       ),
     );
@@ -1035,21 +972,19 @@ class _WordEditorPageState extends State<WordEditorPage> {
       );
     } else {
       final Widget editor = QudsWordEditor(controller: _controller);
-      final Widget canvas = _phoneView
-          ? LayoutBuilder(
-              builder: (BuildContext context, BoxConstraints c) => ClipRect(
-                child: OverflowBox(
-                  alignment: Alignment.topLeft,
-                  minWidth: c.maxWidth + _editorExtra,
-                  maxWidth: c.maxWidth + _editorExtra,
-                  child: Transform.translate(
-                    offset: const Offset(-64, 0),
-                    child: editor,
-                  ),
-                ),
-              ),
-            )
-          : editor;
+      final Widget canvas = LayoutBuilder(
+        builder: (BuildContext context, BoxConstraints c) => ClipRect(
+          child: OverflowBox(
+            alignment: Alignment.topLeft,
+            minWidth: c.maxWidth + _editorExtra,
+            maxWidth: c.maxWidth + _editorExtra,
+            child: Transform.translate(
+              offset: const Offset(-64, 0),
+              child: IgnorePointer(ignoring: !_forwarding, child: editor),
+            ),
+          ),
+        ),
+      );
       body = Column(
         children: <Widget>[
           Expanded(
@@ -1057,6 +992,7 @@ class _WordEditorPageState extends State<WordEditorPage> {
               children: <Widget>[
                 Positioned.fill(
                   child: Listener(
+                    behavior: HitTestBehavior.opaque,
                     onPointerDown: _onWordPointerDown,
                     onPointerMove: _onWordPointerMove,
                     onPointerUp: _onWordPointerEnd,
@@ -1066,16 +1002,15 @@ class _WordEditorPageState extends State<WordEditorPage> {
                 ),
                 if (_editing && !_controller.caret.isCollapsed)
                   Positioned(
+                    top: 8,
                     left: 8,
                     right: 8,
-                    bottom: 12,
-                    child: Center(child: _selectionPopup()),
+                    child: Center(child: _selectionBar()),
                   ),
               ],
             ),
           ),
-          if (!_loading && _editing && _controller.caret.isCollapsed)
-            SafeArea(top: false, child: _toolbar()),
+          if (_editing) SafeArea(top: false, child: _toolbar()),
         ],
       );
     }
@@ -1119,6 +1054,7 @@ class _WordEditorPageState extends State<WordEditorPage> {
 
   @override
   void dispose() {
+    _longPress?.cancel();
     _controller.removeListener(_onControllerChanged);
     _controller.dispose();
     super.dispose();
