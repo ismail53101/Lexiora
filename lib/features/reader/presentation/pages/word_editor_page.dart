@@ -160,6 +160,67 @@ class _WordEditorPageState extends State<WordEditorPage> {
   void _onControllerChanged() {
     _trackTyping();
     if (mounted) setState(() {});
+    _scheduleKeyboardCaretVisibility();
+  }
+
+  /// Quds owns the document viewport, so Scaffold resize only reduces the
+  /// available canvas. It does not automatically pan the document to the caret.
+  /// When the software keyboard opens, keep the active line above it.
+  void _scheduleKeyboardCaretVisibility() {
+    if (!_editing || !mounted) return;
+    if (MediaQuery.viewInsetsOf(context).bottom <= 0) return;
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      if (mounted) _ensureKeyboardCaretVisible();
+    });
+  }
+
+  void _ensureKeyboardCaretVisible() {
+    if (!_editing || !mounted || MediaQuery.viewInsetsOf(context).bottom <= 0) {
+      return;
+    }
+
+    final CaretEngine c = _controller.caret;
+    final List<dynamic> pages = _controller.documentLaidOut.pages.toList();
+    final double scale = _controller.viewport.scale * _pointsToPixels;
+    final Offset origin = _controller.viewport.origin;
+
+    double pageTop = 24.0;
+    double? caretTop;
+    double? caretBottom;
+
+    for (final dynamic page in pages) {
+      final List<LaidOutLine> lines =
+          (page.lines as List<dynamic>).cast<LaidOutLine>();
+      for (final LaidOutLine line in lines) {
+        if (line.paragraphIndex != c.paragraphIndex) continue;
+        if (c.logicalIndex >= line.logicalStart &&
+            c.logicalIndex <= line.logicalEnd) {
+          caretTop = pageTop + line.y * scale - origin.dy;
+          caretBottom = pageTop + (line.y + line.height) * scale - origin.dy;
+          break;
+        }
+      }
+      if (caretTop != null) break;
+      pageTop += (page.height as double) * scale + 24.0;
+    }
+
+    if (caretTop == null || caretBottom == null) return;
+
+    const double topPadding = 28.0;
+    const double bottomPadding = 28.0;
+    double delta = 0;
+    if (caretTop < topPadding) {
+      delta = caretTop - topPadding;
+    } else if (caretBottom > _canvasSize.height - bottomPadding) {
+      delta = caretBottom - (_canvasSize.height - bottomPadding);
+    }
+    if (delta.abs() < 1) return;
+
+    _controller.viewport.origin = Offset(
+      origin.dx,
+      (origin.dy + delta).clamp(0.0, double.infinity).toDouble(),
+    );
+    _controller.refresh();
   }
 
   List<WmlParagraph> get _paras => _controller.document.paragraphs.toList();
@@ -1403,10 +1464,11 @@ class _WordEditorPageState extends State<WordEditorPage> {
             _icon(Icons.text_decrease, () => _stepSize(-1), tooltip: 'Smaller'),
             Text('$sizePt', style: const TextStyle(fontWeight: FontWeight.w600)),
             _icon(Icons.text_increase, () => _stepSize(1), tooltip: 'Larger'),
-            PopupMenuButton<String>(
+            _colorButton(
               tooltip: 'Text color',
-              icon: Icon(Icons.format_color_text, color: _hexColor(_typing.color ?? _controller.activeRunProps.color)),
+              color: _hexColor(_typing.color ?? _controller.activeRunProps.color),
               onSelected: _setColor,
+            ),
               itemBuilder: (BuildContext context) => <PopupMenuEntry<String>>[
                 for (final String value in <String>['000000', 'D32F2F', '1976D2', '388E3C', 'F57C00', '7B1FA2', '00838F'])
                   PopupMenuItem<String>(
@@ -1487,10 +1549,11 @@ class _WordEditorPageState extends State<WordEditorPage> {
               ],
             ),
             _icon(Icons.text_increase, () => _stepSize(1), tooltip: 'Larger text'),
-            PopupMenuButton<String>(
+            _colorButton(
               tooltip: 'Text color',
-              icon: Icon(Icons.format_color_text, color: _hexColor(color)),
+              color: _hexColor(color),
               onSelected: _setColor,
+            ),
               itemBuilder: (BuildContext context) => <PopupMenuEntry<String>>[
                 for (final String value in <String>['000000', 'D32F2F', '1976D2', '388E3C', 'F57C00', '7B1FA2', '00838F'])
                   PopupMenuItem<String>(
@@ -1645,10 +1708,11 @@ class _WordEditorPageState extends State<WordEditorPage> {
                     ),
                 ],
               ),
-              PopupMenuButton<String>(
+              _colorButton(
                 tooltip: 'Font color',
-                icon: Icon(Icons.format_color_text, color: _hexColor(_typing.color ?? run.color)),
+                color: _hexColor(_typing.color ?? run.color),
                 onSelected: _setColor,
+              ),
                 itemBuilder: (BuildContext context) => <PopupMenuEntry<String>>[
                   for (final String value in <String>['000000', 'D32F2F', '1976D2', '388E3C', 'F57C00', '7B1FA2', '00838F'])
                     PopupMenuItem<String>(
@@ -1670,6 +1734,61 @@ class _WordEditorPageState extends State<WordEditorPage> {
           ),
         ),
       ),
+    );
+  }
+
+  Widget _colorButton({
+    required String tooltip,
+    required Color color,
+    required ValueChanged<String> onSelected,
+  }) {
+    return PopupMenuButton<String>(
+      tooltip: tooltip,
+      padding: EdgeInsets.zero,
+      icon: SizedBox(
+        width: 28,
+        height: 40,
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            const Text(
+              'A',
+              style: TextStyle(fontSize: 22, fontWeight: FontWeight.w600),
+            ),
+            const SizedBox(height: 1),
+            Container(
+              width: 22,
+              height: 3,
+              decoration: BoxDecoration(
+                color: color,
+                borderRadius: BorderRadius.circular(2),
+              ),
+            ),
+          ],
+        ),
+      ),
+      onSelected: onSelected,
+      itemBuilder: (BuildContext context) => <PopupMenuEntry<String>>[
+        for (final String value in <String>[
+          '000000',
+          'D32F2F',
+          '1976D2',
+          '388E3C',
+          'F57C00',
+          '7B1FA2',
+          '00838F',
+        ])
+          PopupMenuItem<String>(
+            value: value,
+            child: Row(
+              children: <Widget>[
+                Icon(Icons.circle, color: _hexColor(value), size: 18),
+                const SizedBox(width: 10),
+                Text(value),
+              ],
+            ),
+          ),
+      ],
     );
   }
 
