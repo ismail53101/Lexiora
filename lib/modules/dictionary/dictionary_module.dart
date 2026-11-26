@@ -15,6 +15,7 @@ import 'package:lexiora/modules/dictionary/data/exam_words_seeder.dart';
 import 'package:lexiora/modules/dictionary/data/services/ai_dictionary_cache.dart';
 import 'package:lexiora/modules/dictionary/data/services/ai_dictionary_service.dart';
 import 'package:lexiora/modules/dictionary/data/services/online_dictionary_service.dart';
+import 'package:lexiora/modules/dictionary/data/services/stands4_dictionary_service.dart';
 import 'package:lexiora/modules/ai_assistant/config/ai_config.dart';
 import 'package:lexiora/modules/ai_assistant/data/services/ai_api_client.dart';
 import 'package:lexiora/modules/dictionary/data/repositories/dictionary_repository_impl.dart';
@@ -50,6 +51,9 @@ class DictionaryModule extends FeatureModule {
       )
       ..registerLazySingleton<OnlineDictionaryService>(
         OnlineDictionaryService.new,
+      )
+      ..registerLazySingleton<Stands4DictionaryService>(
+        () => Stands4DictionaryService(getIt<AiConfig>()),
       )
       ..registerLazySingleton<DictionaryLocalDataSource>(
         () => DictionaryLocalDataSource(getIt<AppDatabase>()),
