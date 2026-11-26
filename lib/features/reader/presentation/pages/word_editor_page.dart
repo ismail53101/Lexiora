@@ -56,6 +56,26 @@ class _TypingStyle {
   }
 }
 
+/// Draws the selection highlight ourselves: the package paints the selection
+/// with the inverse of the text colour, which is invisible on black text.
+class _SelectionPainter extends CustomPainter {
+  _SelectionPainter(this.rects, this.color);
+
+  final List<Rect> rects;
+  final Color color;
+
+  @override
+  void paint(Canvas canvas, Size size) {
+    final Paint paint = Paint()..color = color;
+    for (final Rect r in rects) {
+      canvas.drawRect(r, paint);
+    }
+  }
+
+  @override
+  bool shouldRepaint(covariant _SelectionPainter old) => true;
+}
+
 class WordEditorPage extends StatefulWidget {
   const WordEditorPage({
     this.file,
@@ -85,6 +105,9 @@ class _WordEditorPageState extends State<WordEditorPage> {
   // geometry is restored before saving, so the .docx layout is never changed.
   bool _phoneView = true;
   bool _editing = false;
+  // While selecting text the controller runs in "selecting" mode: selection
+  // works but no keyboard is attached, so it can never pop up mid-selection.
+  bool _selectMode = false;
   final _TypingStyle _typing = _TypingStyle();
   bool _applyingTyping = false;
   int _snapPara = 0;
@@ -228,6 +251,7 @@ class _WordEditorPageState extends State<WordEditorPage> {
     required void Function(_TypingStyle t) remember,
   }) {
     if (!_editing) return;
+    _ensureEditing();
     if (_controller.caret.isCollapsed) {
       remember(_typing);
       _snapshotTyping();
@@ -557,7 +581,10 @@ class _WordEditorPageState extends State<WordEditorPage> {
   }) {
     return IconButton(
       tooltip: tooltip,
-      onPressed: action,
+      onPressed: () {
+        _ensureEditing();
+        action();
+      },
       color: active ? Theme.of(context).colorScheme.primary : null,
       icon: Icon(icon),
     );
@@ -618,7 +645,23 @@ class _WordEditorPageState extends State<WordEditorPage> {
     if (mounted) setState(() {});
   }
 
+  void _beginSelect() {
+    if (!_editing) return;
+    if (_selectMode) return;
+    _selectMode = true;
+    _controller.setMode(OfficeInteractionMode.selecting); // also hides keyboard
+  }
+
+  /// Leaves selection mode (without touching the selection) so formatting and
+  /// other edits are allowed again. This does not open the keyboard.
+  void _ensureEditing() {
+    if (!_selectMode) return;
+    _selectMode = false;
+    _controller.setMode(OfficeInteractionMode.editing);
+  }
+
   void _setEditing(bool value) {
+    _selectMode = false;
     if (_editing == value) return;
     setState(() => _editing = value);
     _typing.clear();
@@ -687,7 +730,7 @@ class _WordEditorPageState extends State<WordEditorPage> {
       _longPress?.cancel();
       _longPress = Timer(const Duration(milliseconds: 450), () {
         if (!_moved && _touchPositions.length == 1 && _downPos != null) {
-          _forwardTaps(_downPos!, count: 2, enterEdit: true);
+          _forwardTaps(_downPos!, count: 2, enterEdit: true, select: true);
           _downPos = null; // consumed: do not also treat release as a tap
           _selectDrag = true; // keep pressing and drag to extend the selection
         }
@@ -823,11 +866,21 @@ class _WordEditorPageState extends State<WordEditorPage> {
 
   /// Sends real tap events to the (otherwise ignored) canvas so that the caret
   /// is placed and the keyboard opens only for a deliberate tap.
-  void _forwardTaps(Offset position, {int count = 1, bool enterEdit = true}) {
+  void _forwardTaps(
+    Offset position, {
+    int count = 1,
+    bool enterEdit = true,
+    bool select = false,
+  }) {
     if (!mounted) return;
     if (!_editing) {
       if (!enterEdit) return;
       _setEditing(true);
+    }
+    if (select) {
+      _beginSelect();
+    } else {
+      _ensureEditing();
     }
     setState(() => _forwarding = true);
     WidgetsBinding.instance.addPostFrameCallback((_) {
@@ -845,6 +898,7 @@ class _WordEditorPageState extends State<WordEditorPage> {
 
   /// Moves the end of the selection to [position] (screen coordinates).
   void _extendTo(Offset position) {
+    _beginSelect();
     _extendNext = position;
     if (_extendBusy) return;
     _pumpExtend();
@@ -875,7 +929,7 @@ class _WordEditorPageState extends State<WordEditorPage> {
 
   /// Bottom-left of the first and bottom-right of the last selected box, in
   /// the coordinates of the canvas area.
-  ({Offset start, Offset end})? _selectionEnds() {
+  ({Offset start, Offset end, List<Rect> rects})? _selectionEnds() {
     final CaretEngine c = _controller.caret;
     if (c.isCollapsed) return null;
     try {
@@ -893,6 +947,7 @@ class _WordEditorPageState extends State<WordEditorPage> {
           : _canvasGutter;
       Offset? first;
       Offset? last;
+      final List<Rect> boxes = <Rect>[];
       double top = 24.0;
       for (final dynamic page in pages) {
         for (final LaidOutLine line in (page.lines as List<dynamic>).cast<LaidOutLine>()) {
@@ -906,18 +961,25 @@ class _WordEditorPageState extends State<WordEditorPage> {
             final double y = top - o.dy + r.bottom * scale;
             first ??= Offset(left - o.dx + r.left * scale - _canvasGutter, y);
             last = Offset(left - o.dx + r.right * scale - _canvasGutter, y);
+            boxes.add(Rect.fromLTRB(
+              left - o.dx + r.left * scale - _canvasGutter,
+              top - o.dy + r.top * scale,
+              left - o.dx + r.right * scale - _canvasGutter,
+              y,
+            ));
           }
         }
         top += (page.height as double) * scale + 24;
       }
       if (first == null || last == null) return null;
-      return (start: first, end: last);
+      return (start: first, end: last, rects: boxes);
     } on Object {
       return null;
     }
   }
 
   void _handleDragStart({required bool startHandle}) {
+    _beginSelect();
     final CaretEngine c = _controller.caret;
     // Make the dragged end the moving end (the "focus") of the selection.
     final bool forward = c.selectionAnchorParagraph < c.paragraphIndex ||
@@ -1099,10 +1161,20 @@ class _WordEditorPageState extends State<WordEditorPage> {
 
   List<Widget> _handleWidgets() {
     if (!_editing) return const <Widget>[];
-    final ({Offset start, Offset end})? ends = _selectionEnds();
+    final ({Offset start, Offset end, List<Rect> rects})? ends = _selectionEnds();
     if (ends == null) return const <Widget>[];
     bool visible(Offset p) => p.dy > 0 && p.dy < _canvasSize.height - 4 && p.dx > -20;
     return <Widget>[
+      Positioned.fill(
+        child: IgnorePointer(
+          child: CustomPaint(
+            painter: _SelectionPainter(
+              ends.rects,
+              Theme.of(context).colorScheme.primary.withValues(alpha: 0.30),
+            ),
+          ),
+        ),
+      ),
       if (visible(ends.start)) _handle(point: ends.start, startHandle: true),
       if (visible(ends.end)) _handle(point: ends.end, startHandle: false),
     ];
@@ -1175,7 +1247,10 @@ class _WordEditorPageState extends State<WordEditorPage> {
             PopupMenuButton<int>(
               tooltip: 'Heading',
               icon: const Icon(Icons.title),
-              onSelected: (int level) => _controller.applyHeading(level),
+              onSelected: (int level) {
+                _ensureEditing();
+                _controller.applyHeading(level);
+              },
               itemBuilder: (BuildContext context) => const <PopupMenuEntry<int>>[
                 PopupMenuItem<int>(value: 0, child: Text('Normal text')),
                 PopupMenuItem<int>(value: 1, child: Text('Heading 1')),
@@ -1256,7 +1331,10 @@ class _WordEditorPageState extends State<WordEditorPage> {
             PopupMenuButton<int>(
               tooltip: 'Heading',
               icon: const Icon(Icons.title),
-              onSelected: (int level) => _controller.applyHeading(level),
+              onSelected: (int level) {
+                _ensureEditing();
+                _controller.applyHeading(level);
+              },
               itemBuilder: (BuildContext context) => const <PopupMenuEntry<int>>[
                 PopupMenuItem<int>(value: 0, child: Text('Normal text')),
                 PopupMenuItem<int>(value: 1, child: Text('Heading 1')),
