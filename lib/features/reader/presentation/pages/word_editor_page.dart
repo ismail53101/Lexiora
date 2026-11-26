@@ -1728,6 +1728,7 @@ class _WordEditorPageState extends State<WordEditorPage> {
         children: <Widget>[
           Expanded(
             child: Stack(
+              key: _editorStackKey,
               children: <Widget>[
                 Positioned.fill(
                   child: Listener(
