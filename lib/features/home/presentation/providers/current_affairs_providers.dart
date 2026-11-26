@@ -7,12 +7,18 @@ final currentAffairsRepositoryProvider = Provider<CurrentAffairsRepository>(
   (ref) => sl<CurrentAffairsRepository>(),
 );
 
+CurrentAffairsFeed? _lastGoodFeed;
+
 final currentAffairsProvider = FutureProvider<CurrentAffairsFeed?>((ref) async {
   try {
-    return await ref.read(currentAffairsRepositoryProvider).fetchLatest();
+    final CurrentAffairsFeed feed =
+        await ref.read(currentAffairsRepositoryProvider).fetchLatest();
+    _lastGoodFeed = feed;
+    return feed;
   } on Object {
-    // The Home card remains useful with its local mock content when the
-    // optional endpoint is unavailable or not configured for this build.
-    return null;
+    // A failed background refresh keeps the last good stories on screen.
+    // With no previous result the Home card falls back to its local mock
+    // content (endpoint unavailable or not configured for this build).
+    return _lastGoodFeed;
   }
 });
