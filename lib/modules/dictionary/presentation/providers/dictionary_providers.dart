@@ -182,76 +182,124 @@ final wordAiEnrichmentProvider =
   (Ref ref, String wordLower) async {
     final WordProfile profile =
         await ref.watch(wordProfileProvider(wordLower).future);
-
-    final bool existsOffline = profile.existsLocally;
-    final TranslationRepository translations = sl<TranslationRepository>();
-
-    // Bundled/offline Urdu is authoritative. If it exists, this provider must
-    // not call AI at all — even if the offline entry is missing other fields.
-    final String? localUrdu =
-        await translations.translate(wordLower, 'ur');
-    final bool hasOfflineUrdu =
-        (profile.exam?.urduMeanings.isNotEmpty == true) ||
-        (localUrdu != null &&
-            localUrdu.trim().isNotEmpty &&
-            !(await translations.isCached(wordLower, 'ur')));
-
-    if (existsOffline && hasOfflineUrdu) {
-      return null;
-    }
+    final String query = wordLower.trim().toLowerCase();
+    if (query.isEmpty) return null;
 
     final AiDictionaryCache cache = sl<AiDictionaryCache>();
+    AiWordProfile? merged;
 
-    // A locally-known word is allowed only one AI gap: Urdu. Never enrich its
-    // synonyms, antonyms, examples, collocations, etc.
-    if (existsOffline) {
-      final AiWordProfile? cached = await cache.get(wordLower);
-      if (cached != null && cached.urduMeanings.isNotEmpty) {
-        return AiWordProfile(
-          word: cached.word,
-          source: 'ai',
-          urduMeanings: cached.urduMeanings,
-        );
-      }
-
-      final AiWordProfile? generated = await sl<AiDictionaryService>().define(
-        wordLower,
-        missingFields: const <String>['urduMeanings'],
-      );
-      if (generated != null && generated.urduMeanings.isNotEmpty) {
-        await cache.put(
-          AiWordProfile(
-            word: generated.word,
-            source: 'ai',
-            urduMeanings: generated.urduMeanings,
-          ),
-        );
-        return generated;
-      }
-      return null;
+    // First reuse any previously generated profile, but only as an enrichment
+    // source. Existing offline/curated fields always remain authoritative.
+    final AiWordProfile? cached = await cache.get(query);
+    if (cached != null) {
+      merged = cached;
     }
 
-    // The word is genuinely absent from offline data: AI can provide the
-    // complete lightweight fallback profile.
-    final AiWordProfile? cached = await cache.get(wordLower);
-    if (cached != null) return cached;
+    // Build the exact gaps that still exist after local data + cache.
+    List<String> missingFields(AiWordProfile? extra) {
+      bool hasText(String? value) => value != null && value.trim().isNotEmpty;
+      bool hasList(List<String> value) => value.isNotEmpty;
 
-    final AiWordProfile? generated = await sl<AiDictionaryService>().define(
-      wordLower,
-      missingFields: const <String>[
-        'englishDefinition',
-        'urduMeanings',
-        'synonyms',
-        'antonyms',
-        'exampleSentence',
-        'exampleSentenceUrdu',
-      ],
+      final List<String> missing = <String>[];
+
+      final bool hasDefinition =
+          profile.englishDefinition != null ||
+          hasText(extra?.englishDefinition);
+      final bool hasPos =
+          profile.partOfSpeech != null || hasText(extra?.partOfSpeech);
+      final bool hasSynonyms =
+          profile.synonyms.isNotEmpty || hasList(extra?.synonyms ?? const <String>[]);
+      final bool hasAntonyms =
+          profile.antonyms.isNotEmpty || hasList(extra?.antonyms ?? const <String>[]);
+      final bool hasExample =
+          profile.base?.primary?.exampleSentence != null ||
+          hasText(extra?.exampleSentence);
+      final bool hasCollocations =
+          profile.collocations.isNotEmpty ||
+          hasList(extra?.collocations ?? const <String>[]);
+      final bool hasWordForms =
+          (profile.exam?.wordForms.isNotEmpty == true) ||
+          profile.relatedWords.isNotEmpty ||
+          hasList(extra?.wordForms ?? const <String>[]);
+      final bool hasExamNote =
+          profile.exam?.examNote != null || hasText(extra?.examNote);
+
+      if (!hasDefinition) missing.add('englishDefinition');
+      if (!hasPos) missing.add('partOfSpeech');
+      if (!hasSynonyms) missing.add('synonyms');
+      if (!hasAntonyms) missing.add('antonyms');
+      if (!hasExample) missing.add('exampleSentence');
+      if (!hasCollocations) missing.add('collocations');
+      if (!hasWordForms) missing.add('wordForms');
+      if (!hasExamNote) missing.add('examNote');
+
+      final TranslationRepository translations = sl<TranslationRepository>();
+      // Urdu is authoritative when bundled/cached locally. Only request AI
+      // Urdu when the offline profile truly has no Urdu meaning.
+      final String? localUrdu =
+          await translations.translate(query, 'ur');
+      final bool hasUrdu =
+          profile.exam?.urduMeanings.isNotEmpty == true ||
+          (localUrdu != null &&
+              localUrdu.trim().isNotEmpty &&
+              !(await translations.isCached(query, 'ur'))) ||
+          (extra?.urduMeanings.isNotEmpty == true);
+      if (!hasUrdu) missing.add('urduMeanings');
+
+      return missing;
+    }
+
+    // STANDS4 is deliberately checked before AI. In particular, if local
+    // synonyms or antonyms are absent, STANDS4 gets the first chance to fill
+    // them. Existing STANDS4 credentials remain behind the Cloudflare Worker.
+    List<String> missing = await missingFields(merged);
+    final bool needsStands4 = missing.isNotEmpty &&
+        <String>{
+          'englishDefinition',
+          'partOfSpeech',
+          'synonyms',
+          'antonyms',
+          'exampleSentence',
+          'collocations',
+          'wordForms',
+          'examNote',
+        }.any(missing.contains);
+
+    if (needsStands4) {
+      try {
+        final AiWordProfile? stands4 =
+            await sl<Stands4DictionaryService>().define(query);
+        if (stands4 != null && stands4.hasContent) {
+          merged = merged == null ? stands4 : merged.mergeMissing(stands4);
+        }
+      } on Object {
+        // STANDS4 is optional. Continue to AI without surfacing a network error.
+      }
+    }
+
+    // Recalculate after STANDS4. AI receives only the fields that are still
+    // genuinely absent, so it does not overwrite or duplicate good data.
+    missing = await missingFields(merged);
+    if (missing.isEmpty) {
+      return merged;
+    }
+
+    final AiWordProfile? generated =
+        await sl<AiDictionaryService>().define(
+      query,
+      missingFields: missing,
     );
 
     if (generated != null && generated.hasContent) {
-      await cache.put(generated);
+      merged = merged == null ? generated : merged.mergeMissing(generated);
+      // Keep the existing cache behavior for AI-generated data. STANDS4 data
+      // is not persisted here because it is an external API result.
+      if (generated.source == 'ai') {
+        await cache.put(generated);
+      }
     }
-    return generated;
+
+    return merged;
   },
 );
 
