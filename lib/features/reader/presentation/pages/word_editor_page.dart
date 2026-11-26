@@ -193,12 +193,9 @@ class _WordEditorPageState extends State<WordEditorPage> {
           (page.lines as List<dynamic>).cast<LaidOutLine>();
       for (final LaidOutLine line in lines) {
         if (line.paragraphIndex != c.paragraphIndex) continue;
-        if (c.logicalIndex >= line.logicalStart &&
-            c.logicalIndex <= line.logicalEnd) {
-          caretTop = pageTop + line.y * scale - origin.dy;
-          caretBottom = pageTop + (line.y + line.height) * scale - origin.dy;
-          break;
-        }
+        caretTop = pageTop + line.y * scale - origin.dy;
+        caretBottom = pageTop + (line.y + line.height) * scale - origin.dy;
+        break;
       }
       if (caretTop != null) break;
       pageTop += (page.height as double) * scale + 24.0;
@@ -1469,18 +1466,7 @@ class _WordEditorPageState extends State<WordEditorPage> {
               color: _hexColor(_typing.color ?? _controller.activeRunProps.color),
               onSelected: _setColor,
             ),
-              itemBuilder: (BuildContext context) => <PopupMenuEntry<String>>[
-                for (final String value in <String>['000000', 'D32F2F', '1976D2', '388E3C', 'F57C00', '7B1FA2', '00838F'])
-                  PopupMenuItem<String>(
-                    value: value,
-                    child: Row(children: <Widget>[
-                      Icon(Icons.circle, color: _hexColor(value), size: 18),
-                      const SizedBox(width: 10),
-                      Text(value),
-                    ]),
-                  ),
-              ],
-            ),
+
             PopupMenuButton<String>(
               tooltip: 'Highlight',
               icon: Icon(Icons.highlight, color: highlight == null ? null : _hexColor(highlight)),
@@ -1554,18 +1540,7 @@ class _WordEditorPageState extends State<WordEditorPage> {
               color: _hexColor(color),
               onSelected: _setColor,
             ),
-              itemBuilder: (BuildContext context) => <PopupMenuEntry<String>>[
-                for (final String value in <String>['000000', 'D32F2F', '1976D2', '388E3C', 'F57C00', '7B1FA2', '00838F'])
-                  PopupMenuItem<String>(
-                    value: value,
-                    child: Row(children: <Widget>[
-                      Icon(Icons.circle, color: _hexColor(value), size: 18),
-                      const SizedBox(width: 10),
-                      Text(value),
-                    ]),
-                  ),
-              ],
-            ),
+
             PopupMenuButton<String>(
               tooltip: 'Highlight',
               icon: Icon(Icons.highlight, color: highlight == null ? null : _hexColor(highlight)),
@@ -1713,18 +1688,7 @@ class _WordEditorPageState extends State<WordEditorPage> {
                 color: _hexColor(_typing.color ?? run.color),
                 onSelected: _setColor,
               ),
-                itemBuilder: (BuildContext context) => <PopupMenuEntry<String>>[
-                  for (final String value in <String>['000000', 'D32F2F', '1976D2', '388E3C', 'F57C00', '7B1FA2', '00838F'])
-                    PopupMenuItem<String>(
-                      value: value,
-                      child: Row(children: <Widget>[
-                        Icon(Icons.circle, color: _hexColor(value), size: 18),
-                        const SizedBox(width: 10),
-                        Text(value),
-                      ]),
-                    ),
-                ],
-              ),
+
               IconButton(
                 tooltip: 'More formatting',
                 icon: const Icon(Icons.more_horiz),
