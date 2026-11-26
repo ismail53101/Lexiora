@@ -689,6 +689,7 @@ class _WordEditorPageState extends State<WordEditorPage> {
         if (!_moved && _touchPositions.length == 1 && _downPos != null) {
           _forwardTaps(_downPos!, count: 2, enterEdit: true);
           _downPos = null; // consumed: do not also treat release as a tap
+          _selectDrag = true; // keep pressing and drag to extend the selection
         }
       });
     } else {
@@ -700,10 +701,15 @@ class _WordEditorPageState extends State<WordEditorPage> {
   double? _lastPinchDistance;
 
   void _onWordPointerMove(PointerMoveEvent event) {
-    if (_forwarding || event.kind != PointerDeviceKind.touch) return;
+    if (event.kind != PointerDeviceKind.touch) return;
+    if (_forwarding && !_selectDrag) return;
     final Offset? previous = _touchPositions[event.pointer];
     _touchPositions[event.pointer] = event.position;
     if (previous == null) return;
+    if (_selectDrag) {
+      _extendTo(event.position + const Offset(0, -6));
+      return;
+    }
     if (_downPos != null && (event.position - _downPos!).distance > 10) {
       _moved = true;
       _longPress?.cancel();
@@ -780,6 +786,41 @@ class _WordEditorPageState extends State<WordEditorPage> {
     _controller.refresh();
   }
 
+  /// Sends one real tap to the canvas. With [shift] the canvas treats it as a
+  /// "extend selection to here" click, which is how selection handles and
+  /// press-and-drag selection move the end of the selection.
+  void _dispatchTap(Offset position, {bool shift = false}) {
+    final int viewId = View.of(context).viewId;
+    final int id = 9000 + (_fwdSeq++);
+    if (shift) {
+      HardwareKeyboard.instance.handleKeyEvent(KeyDownEvent(
+        physicalKey: PhysicalKeyboardKey.shiftLeft,
+        logicalKey: LogicalKeyboardKey.shiftLeft,
+        timeStamp: Duration.zero,
+      ));
+    }
+    try {
+      GestureBinding.instance.handlePointerEvent(PointerDownEvent(
+        viewId: viewId,
+        pointer: id,
+        position: position,
+      ));
+      GestureBinding.instance.handlePointerEvent(PointerUpEvent(
+        viewId: viewId,
+        pointer: id,
+        position: position,
+      ));
+    } finally {
+      if (shift) {
+        HardwareKeyboard.instance.handleKeyEvent(KeyUpEvent(
+          physicalKey: PhysicalKeyboardKey.shiftLeft,
+          logicalKey: LogicalKeyboardKey.shiftLeft,
+          timeStamp: Duration.zero,
+        ));
+      }
+    }
+  }
+
   /// Sends real tap events to the (otherwise ignored) canvas so that the caret
   /// is placed and the keyboard opens only for a deliberate tap.
   void _forwardTaps(Offset position, {int count = 1, bool enterEdit = true}) {
@@ -791,27 +832,151 @@ class _WordEditorPageState extends State<WordEditorPage> {
     setState(() => _forwarding = true);
     WidgetsBinding.instance.addPostFrameCallback((_) {
       if (!mounted) return;
-      final int viewId = View.of(context).viewId;
       for (int i = 0; i < count; i++) {
-        final int id = 9000 + (_fwdSeq++);
-        GestureBinding.instance.handlePointerEvent(PointerDownEvent(
-          viewId: viewId,
-          pointer: id,
-          position: position,
-        ));
-        GestureBinding.instance.handlePointerEvent(PointerUpEvent(
-          viewId: viewId,
-          pointer: id,
-          position: position,
-        ));
+        _dispatchTap(position);
       }
       if (mounted) setState(() => _forwarding = false);
     });
   }
 
+  bool _extendBusy = false;
+  Offset? _extendNext;
+  bool _selectDrag = false;
+
+  /// Moves the end of the selection to [position] (screen coordinates).
+  void _extendTo(Offset position) {
+    _extendNext = position;
+    if (_extendBusy) return;
+    _pumpExtend();
+  }
+
+  void _pumpExtend() {
+    final Offset? target = _extendNext;
+    if (target == null || !mounted) {
+      _extendBusy = false;
+      return;
+    }
+    _extendNext = null;
+    _extendBusy = true;
+    setState(() => _forwarding = true);
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      if (!mounted) {
+        _extendBusy = false;
+        return;
+      }
+      _dispatchTap(target, shift: true);
+      setState(() => _forwarding = false);
+      _extendBusy = false;
+      if (_extendNext != null) _pumpExtend();
+    });
+  }
+
+  // ---- selection handles (Android style) --------------------------------
+
+  /// Bottom-left of the first and bottom-right of the last selected box, in
+  /// the coordinates of the canvas area.
+  ({Offset start, Offset end})? _selectionEnds() {
+    final CaretEngine c = _controller.caret;
+    if (c.isCollapsed) return null;
+    try {
+      final List<dynamic> pages = _controller.documentLaidOut.pages.toList();
+      final double scale = _controller.viewport.scale * _pointsToPixels;
+      final Offset o = _controller.viewport.origin;
+      double maxW = 0;
+      for (final dynamic page in pages) {
+        maxW = math.max(maxW, page.width as double);
+      }
+      final double viewW = _canvasSize.width + _editorExtra - _canvasScrollBar;
+      final double pageW = maxW * scale;
+      final double left = viewW > pageW + _canvasGutter * 2
+          ? (viewW - pageW) / 2
+          : _canvasGutter;
+      Offset? first;
+      Offset? last;
+      double top = 24.0;
+      for (final dynamic page in pages) {
+        for (final LaidOutLine line in (page.lines as List<dynamic>).cast<LaidOutLine>()) {
+          final List<Rect> rects = c.selectionRectsOnLine(
+            line,
+            line.y,
+            line.height,
+            paragraph: line.paragraphIndex,
+          );
+          for (final Rect r in rects) {
+            final double y = top - o.dy + r.bottom * scale;
+            first ??= Offset(left - o.dx + r.left * scale - _canvasGutter, y);
+            last = Offset(left - o.dx + r.right * scale - _canvasGutter, y);
+          }
+        }
+        top += (page.height as double) * scale + 24;
+      }
+      if (first == null || last == null) return null;
+      return (start: first, end: last);
+    } on Object {
+      return null;
+    }
+  }
+
+  void _handleDragStart({required bool startHandle}) {
+    final CaretEngine c = _controller.caret;
+    // Make the dragged end the moving end (the "focus") of the selection.
+    final bool forward = c.selectionAnchorParagraph < c.paragraphIndex ||
+        (c.selectionAnchorParagraph == c.paragraphIndex &&
+            c.selectionAnchor <= c.logicalIndex);
+    final bool needSwap = startHandle ? forward : !forward;
+    if (needSwap) {
+      final int ap = c.selectionAnchorParagraph;
+      final int ai = c.selectionAnchor;
+      c.selectionAnchorParagraph = c.paragraphIndex;
+      c.selectionAnchor = c.logicalIndex;
+      c.paragraphIndex = ap;
+      c.logicalIndex = ai;
+    }
+  }
+
+  Widget _handle({required Offset point, required bool startHandle}) {
+    const double box = 40;
+    const double knob = 20;
+    final Color color = Theme.of(context).colorScheme.primary;
+    return Positioned(
+      left: startHandle ? point.dx - box + 6 : point.dx - 6,
+      top: point.dy - 4,
+      width: box,
+      height: box,
+      child: GestureDetector(
+        behavior: HitTestBehavior.opaque,
+        onPanStart: (DragStartDetails d) => _handleDragStart(startHandle: startHandle),
+        onPanUpdate: (DragUpdateDetails d) =>
+            _extendTo(d.globalPosition + const Offset(0, -34)),
+        child: Align(
+          alignment: startHandle ? Alignment.topRight : Alignment.topLeft,
+          child: Container(
+            width: knob,
+            height: knob,
+            margin: const EdgeInsets.only(top: 4),
+            decoration: BoxDecoration(
+              color: color,
+              borderRadius: BorderRadius.only(
+                topLeft: Radius.circular(startHandle ? knob : 0),
+                topRight: Radius.circular(startHandle ? 0 : knob),
+                bottomLeft: const Radius.circular(knob),
+                bottomRight: const Radius.circular(knob),
+              ),
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+
   void _onWordPointerEnd(PointerEvent event) {
-    if (_forwarding) return;
+    if (_forwarding && !_selectDrag) return;
     _longPress?.cancel();
+    if (_selectDrag) {
+      _selectDrag = false;
+      _touchPositions.remove(event.pointer);
+      return;
+    }
     final bool wasTap = event is PointerUpEvent &&
         !_moved &&
         _touchPositions.length == 1 &&
@@ -932,6 +1097,17 @@ class _WordEditorPageState extends State<WordEditorPage> {
     _controller.refresh();
   }
 
+  List<Widget> _handleWidgets() {
+    if (!_editing) return const <Widget>[];
+    final ({Offset start, Offset end})? ends = _selectionEnds();
+    if (ends == null) return const <Widget>[];
+    bool visible(Offset p) => p.dy > 0 && p.dy < _canvasSize.height - 4 && p.dx > -20;
+    return <Widget>[
+      if (visible(ends.start)) _handle(point: ends.start, startHandle: true),
+      if (visible(ends.end)) _handle(point: ends.end, startHandle: false),
+    ];
+  }
+
   /// Small floating bar shown while text is selected (word/line/paragraph).
   Widget _selectionBar() {
     final int sizePt = (_sizeHalfNow / 2).round();
@@ -954,17 +1130,9 @@ class _WordEditorPageState extends State<WordEditorPage> {
                 style: const TextStyle(fontWeight: FontWeight.w600),
               ),
             ),
-            _icon(Icons.keyboard_double_arrow_left, () => _extendSelection(right: false), tooltip: 'Add word on left'),
-            _icon(Icons.keyboard_double_arrow_right, () => _extendSelection(right: true), tooltip: 'Add word on right'),
-            TextButton(
-              onPressed: _controller.selectWordAtCaret,
-              child: const Text('Word'),
-            ),
-            TextButton(onPressed: _selectSentence, child: const Text('Sentence')),
-            TextButton(
-              onPressed: _controller.selectParagraphAtCaret,
-              child: const Text('Paragraph'),
-            ),
+            _icon(Icons.copy, _controller.copyToClipboard, tooltip: 'Copy'),
+            _icon(Icons.content_cut, _controller.cutToClipboard, tooltip: 'Cut'),
+            _icon(Icons.content_paste, () => _controller.pasteFromClipboard(), tooltip: 'Paste'),
             _icon(Icons.format_bold, _toggleBold, tooltip: 'Bold', active: _boldNow),
             _icon(Icons.format_italic, _toggleItalic, tooltip: 'Italic', active: _italicNow),
             _icon(Icons.format_underlined, _toggleUnderline, tooltip: 'Underline', active: _underNow),
@@ -1187,6 +1355,7 @@ class _WordEditorPageState extends State<WordEditorPage> {
                     child: canvas,
                   ),
                 ),
+                ..._handleWidgets(),
                 if (_editing && !_controller.caret.isCollapsed)
                   Positioned(
                     top: 8,
