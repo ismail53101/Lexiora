@@ -541,7 +541,7 @@ class _LibraryPageState extends ConsumerState<LibraryPage> with WidgetsBindingOb
       final String documentXml =
           '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>'
           '<w:document xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main">'
-          '<w:body><w:p><w:r><w:t></w:t></w:r></w:p>'
+          '<w:body><w:p><w:r><w:rPr><w:sz w:val="22"/><w:szCs w:val="22"/></w:rPr><w:t></w:t></w:r></w:p>'
           '<w:sectPr><w:pgSz w:w="11906" w:h="16838"/>'
           '<w:pgMar w:top="1440" w:right="1440" w:bottom="1440" w:left="1440"/>'
           '</w:sectPr></w:body></w:document>';
