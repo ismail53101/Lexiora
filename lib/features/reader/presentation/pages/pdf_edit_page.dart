@@ -31,13 +31,47 @@ class PdfEditPage extends StatefulWidget {
 class _PdfEditPageState extends State<PdfEditPage> {
   final PdfEditService _saveService = const PdfEditService();
   late final Future<Uint8List> _bytes;
+  late final PdfEditingController _editingController;
   bool _saving = false;
   bool _didOverwrite = false;
+  bool _autoFittingText = false;
 
   @override
   void initState() {
     super.initState();
     _bytes = File(widget.filePath).readAsBytes();
+  }
+
+  Future<Uint8List?> _pickPdfImage(BuildContext context) async {
+    final FilePickerResult? result = await FilePicker.pickFiles(
+      type: FileType.custom,
+      allowedExtensions: <String>['png', 'jpg', 'jpeg'],
+      withData: true,
+    );
+    return result?.files.single.bytes;
+  }
+
+  void _autoFitTextBoxAfterEdit(Uint8List bytes) {
+    if (_autoFittingText || !_editingController.canAutosizeSelectedTextFont) {
+      return;
+    }
+
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      if (!mounted ||
+          _autoFittingText ||
+          !_editingController.canAutosizeSelectedTextFont) {
+        return;
+      }
+
+      _autoFittingText = true;
+      try {
+        // Keep the user's manually drawn box dimensions fixed and reduce or
+        // grow the font so the complete text fits inside that box.
+        _editingController.autosizeSelectedTextFont();
+      } finally {
+        _autoFittingText = false;
+      }
+    });
   }
 
   void _saveAs(Uint8List bytes) {
@@ -181,9 +215,13 @@ class _PdfEditPageState extends State<PdfEditPage> {
             if (bytes == null) {
               return const Center(child: CircularProgressIndicator());
             }
+            _editingController = PdfEditingController(bytes);
+
             return PdfEditorView(
-              bytes: bytes,
+              controller: _editingController,
               onSave: _saveAs,
+              onDocumentChanged: _autoFitTextBoxAfterEdit,
+              imagePicker: _pickPdfImage,
               saveButtonLabel: 'Save PDF',
               toolbarTrailing: <PdfEditingToolbarWidgetBuilder>[
                 (
@@ -205,6 +243,7 @@ class _PdfEditPageState extends State<PdfEditPage> {
                   PdfEditTool.content,
                   PdfEditTool.contentDelete,
                   PdfEditTool.freeText,
+                  PdfEditTool.image,
                   PdfEditTool.ink,
                 },
                 thumbnails: false,
