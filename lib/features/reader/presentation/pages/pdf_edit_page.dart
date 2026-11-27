@@ -34,7 +34,10 @@ class _PdfEditPageState extends State<PdfEditPage> {
   PdfEditingController? _editingController;
   bool _saving = false;
   bool _didOverwrite = false;
-  bool _autoFittingText = false;
+  bool _pdfListenerAttached = false;
+  bool _wasEditingText = false;
+  (int, int)? _lastSelectedAnnotationSlot;
+  bool _openingExistingText = false;
 
   @override
   void initState() {
@@ -52,28 +55,66 @@ class _PdfEditPageState extends State<PdfEditPage> {
     return File(path).readAsBytes();
   }
 
-  void _autoFitTextBoxAfterEdit() {
-    final PdfEditingController? editing = _editingController;
-    if (_autoFittingText || editing == null || !editing.canAutosizeSelectedTextFont) {
+  void _attachPdfEditingListener(PdfEditingController editing) {
+    if (_pdfListenerAttached) return;
+    _pdfListenerAttached = true;
+    editing.addListener(() => _handlePdfEditingChanged(editing));
+  }
+
+  void _handlePdfEditingChanged(PdfEditingController editing) {
+    if (!mounted || _openingExistingText) return;
+
+    final bool editingText = editing.isEditingText;
+    final (int, int)? selectedSlot = editing.selectedAnnotationSlot;
+
+    // A text box was just committed. Return to Select so the next tap on the
+    // same box selects/opens that existing box instead of creating another one.
+    if (_wasEditingText && !editingText && editing.selectedFreeTextStyle != null) {
+      editing.tool = PdfEditTool.select;
+      _lastSelectedAnnotationSlot = selectedSlot;
+      _wasEditingText = false;
       return;
     }
 
-    WidgetsBinding.instance.addPostFrameCallback((_) {
-      if (!mounted ||
-          _autoFittingText || !editing.canAutosizeSelectedTextFont) {
-        return;
-      }
+    _wasEditingText = editingText;
+    if (editingText || editing.tool != PdfEditTool.select) {
+      if (selectedSlot == null) _lastSelectedAnnotationSlot = null;
+      return;
+    }
 
-      _autoFittingText = true;
-      try {
-        // Keep the user's manually drawn box dimensions fixed and reduce or
-        // grow the font so the complete text fits inside that box.
-        editing.autosizeSelectedTextFont();
-      } finally {
-        _autoFittingText = false;
-      }
-    });
+    // Selection was cleared; allow the next tap on the same box to trigger
+    // the inline editor again.
+    if (selectedSlot == null) {
+      _lastSelectedAnnotationSlot = null;
+      return;
+    }
+
+    if (selectedSlot == _lastSelectedAnnotationSlot) return;
+    _lastSelectedAnnotationSlot = selectedSlot;
+
+    // Single-tap on an existing free-text box: reopen that exact box rather
+    // than creating a new text box.
+    if (editing.canRestyleSelectedText) {
+      WidgetsBinding.instance.addPostFrameCallback((_) {
+        if (!mounted ||
+            _openingExistingText ||
+            editing.isEditingText ||
+            editing.tool != PdfEditTool.select ||
+            editing.selectedAnnotationSlot != selectedSlot ||
+            !editing.canRestyleSelectedText) {
+          return;
+        }
+
+        _openingExistingText = true;
+        try {
+          editing.requestEditSelectedTextInline();
+        } finally {
+          _openingExistingText = false;
+        }
+      });
+    }
   }
+
 
   void _saveAs(Uint8List bytes) {
     if (_saving) return;
@@ -218,11 +259,11 @@ class _PdfEditPageState extends State<PdfEditPage> {
             }
             final PdfEditingController editing =
                 _editingController ??= PdfEditingController(bytes);
+            _attachPdfEditingListener(editing);
 
             return PdfEditorView(
               controller: editing,
               onSave: _saveAs,
-              onDocumentChanged: (_) => _autoFitTextBoxAfterEdit(),
               imagePicker: _pickPdfImage,
               saveButtonLabel: 'Save PDF',
               toolbarTrailing: <PdfEditingToolbarWidgetBuilder>[
