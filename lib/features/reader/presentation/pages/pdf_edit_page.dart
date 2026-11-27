@@ -43,10 +43,11 @@ class _PdfEditPageState extends State<PdfEditPage> {
   }
 
   Future<Uint8List?> _pickPdfImage(BuildContext context) async {
-    final result = await FilePicker.pickFiles(
+    final List<PlatformFile> files = await FilePicker.pickFiles(
       type: FileType.image,
     );
-    final String? path = result?.files.single.path;
+    if (files.isEmpty) return null;
+    final String? path = files.first.path;
     if (path == null || path.isEmpty) return null;
     return File(path).readAsBytes();
   }
