@@ -31,147 +31,13 @@ class PdfEditPage extends StatefulWidget {
 class _PdfEditPageState extends State<PdfEditPage> {
   final PdfEditService _saveService = const PdfEditService();
   late final Future<Uint8List> _bytes;
-  PdfEditingController? _editing;
   bool _saving = false;
   bool _didOverwrite = false;
-  bool _openingTextEditor = false;
-  String? _lastTextSelectionKey;
 
   @override
   void initState() {
     super.initState();
     _bytes = File(widget.filePath).readAsBytes();
-  }
-
-  void _ensureEditingController(Uint8List bytes) {
-    if (_editing != null) return;
-    final PdfEditingController editing = PdfEditingController(bytes);
-    editing.addListener(_onEditingChanged);
-    _editing = editing;
-  }
-
-  void _onEditingChanged() {
-    final PdfEditingController? editing = _editing;
-    if (!mounted || editing == null || _openingTextEditor || _saving) return;
-
-    // Some PDFs draw every character as a separate text run. The editor
-    // exposes selectedElementEditText as the whole word represented by the
-    // selected glyph, so edit the word instead of moving one letter.
-    if (!editing.canEditSelectedElementText) return;
-    final String? text = editing.selectedElementEditText;
-    final int? page = editing.selectedElementPage;
-    if (text == null || page == null || text.isEmpty) return;
-
-    final String key = '$page::$text';
-    if (key == _lastTextSelectionKey) return;
-    _lastTextSelectionKey = key;
-
-    WidgetsBinding.instance.addPostFrameCallback((_) {
-      if (!mounted || _openingTextEditor || _saving) return;
-      final PdfEditingController? current = _editing;
-      if (current == null || !current.canEditSelectedElementText) return;
-      final String? currentText = current.selectedElementEditText;
-      if (currentText == null || currentText != text) return;
-      unawaited(_openTextEditor(current, text));
-    });
-  }
-
-  Future<void> _openTextEditor(
-    PdfEditingController editing,
-    String initialText,
-  ) async {
-    if (_openingTextEditor || !mounted) return;
-    _openingTextEditor = true;
-
-    final TextEditingController textController =
-        TextEditingController(text: initialText);
-    textController.selection = TextSelection(
-      baseOffset: 0,
-      extentOffset: textController.text.length,
-    );
-
-    try {
-      final String? replacement = await showModalBottomSheet<String>(
-        context: context,
-        isScrollControlled: true,
-        useSafeArea: true,
-        showDragHandle: true,
-        builder: (BuildContext sheetContext) {
-          final double keyboardInset =
-              MediaQuery.viewInsetsOf(sheetContext).bottom;
-          return Padding(
-            padding: EdgeInsets.fromLTRB(16, 4, 16, keyboardInset + 16),
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              crossAxisAlignment: CrossAxisAlignment.stretch,
-              children: <Widget>[
-                Row(
-                  children: <Widget>[
-                    const Icon(Icons.edit_outlined),
-                    const SizedBox(width: 10),
-                    const Expanded(
-                      child: Text(
-                        'Edit text',
-                        style: TextStyle(
-                          fontSize: 18,
-                          fontWeight: FontWeight.w600,
-                        ),
-                      ),
-                    ),
-                    IconButton(
-                      tooltip: 'Cancel',
-                      onPressed: () => Navigator.of(sheetContext).pop(),
-                      icon: const Icon(Icons.close),
-                    ),
-                  ],
-                ),
-                const SizedBox(height: 8),
-                TextField(
-                  controller: textController,
-                  autofocus: true,
-                  minLines: 1,
-                  maxLines: 6,
-                  textInputAction: TextInputAction.done,
-                  decoration: const InputDecoration(
-                    border: OutlineInputBorder(),
-                    hintText: 'Edit the selected PDF text',
-                  ),
-                  onSubmitted: (String value) =>
-                      Navigator.of(sheetContext).pop(value),
-                ),
-                const SizedBox(height: 10),
-                FilledButton.icon(
-                  onPressed: () =>
-                      Navigator.of(sheetContext).pop(textController.text),
-                  icon: const Icon(Icons.check),
-                  label: const Text('Apply'),
-                ),
-              ],
-            ),
-          );
-        },
-      );
-
-      if (!mounted || replacement == null) return;
-      if (replacement == initialText) return;
-      if (!editing.canEditSelectedElementText) return;
-
-      // Reflow preserves the PDF text flow and moves following lines when
-      // the replacement changes its width/height.
-      final bool changed = editing.reflowSelectedElementText(replacement);
-      editing.clearElementSelection();
-      if (!changed && mounted) {
-        ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(
-            content: Text('This PDF text could not be rewritten safely.'),
-          ),
-        );
-      }
-    } finally {
-      textController.dispose();
-      _openingTextEditor = false;
-      _lastTextSelectionKey = null;
-    }
   }
 
   void _saveAs(Uint8List bytes) {
@@ -267,7 +133,7 @@ class _PdfEditPageState extends State<PdfEditPage> {
   Widget build(BuildContext context) {
     return WillPopScope(
       onWillPop: () async {
-        if (_saving || _openingTextEditor) return false;
+        if (_saving) return false;
         Navigator.of(context).pop(_didOverwrite);
         return false;
       },
@@ -280,7 +146,7 @@ class _PdfEditPageState extends State<PdfEditPage> {
           leading: IconButton(
             icon: const Icon(Icons.arrow_back),
             tooltip: 'Close PDF editor',
-            onPressed: _saving || _openingTextEditor
+            onPressed: _saving
                 ? null
                 : () => Navigator.of(context).pop(_didOverwrite),
           ),
@@ -315,11 +181,8 @@ class _PdfEditPageState extends State<PdfEditPage> {
             if (bytes == null) {
               return const Center(child: CircularProgressIndicator());
             }
-            _ensureEditingController(bytes);
-            final PdfEditingController editing = _editing!;
-
             return PdfEditorView(
-              controller: editing,
+              bytes: bytes,
               onSave: _saveAs,
               saveButtonLabel: 'Save PDF',
               toolbarTrailing: <PdfEditingToolbarWidgetBuilder>[
@@ -359,12 +222,5 @@ class _PdfEditPageState extends State<PdfEditPage> {
         ),
       ),
     );
-  }
-
-  @override
-  void dispose() {
-    _editing?.removeListener(_onEditingChanged);
-    _editing?.dispose();
-    super.dispose();
   }
 }
