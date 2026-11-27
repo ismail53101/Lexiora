@@ -27,6 +27,7 @@ import 'package:lexiora/features/library/presentation/providers/library_provider
 import 'package:lexiora/features/notes/domain/entities/note.dart';
 import 'package:lexiora/features/notes/domain/usecases/notes_usecases.dart';
 import 'package:lexiora/features/notes/presentation/providers/notes_providers.dart';
+import 'package:lexiora/features/reader/presentation/pages/pdf_edit_page.dart';
 import 'package:lexiora/features/reader/presentation/widgets/reader_bottom_bar.dart';
 import 'package:lexiora/features/reader/presentation/widgets/reader_panels.dart';
 import 'package:lexiora/features/reader/presentation/widgets/reader_selection_toolbar.dart';
@@ -76,6 +77,7 @@ class _ReaderPageState extends ConsumerState<ReaderPage> {
   int _pageCount = 0;
   PdfTextSelectionData? _selection;
   bool _searching = false;
+  int _readerRevision = 0;
   bool _keepScreenAwake = false;
   ReaderScrollAxis _scrollAxis = ReaderScrollAxis.vertical;
   ReaderColorMode _colorMode = ReaderColorMode.day;
@@ -411,6 +413,22 @@ class _ReaderPageState extends ConsumerState<ReaderPage> {
     if (page != null) await _controller.goToPage(page);
   }
 
+  Future<void> _openPdfEditor() async {
+    final LibraryDocument? document = _document;
+    if (document == null) return;
+    final bool? saved = await Navigator.of(context).push<bool>(
+      MaterialPageRoute<bool>(
+        builder: (_) => PdfEditPage(
+          filePath: document.filePath,
+          title: document.title,
+        ),
+      ),
+    );
+    if (saved == true && mounted) {
+      setState(() => _readerRevision++);
+    }
+  }
+
   Future<String?> _promptText({
     required String title,
     required String hint,
@@ -501,6 +519,11 @@ class _ReaderPageState extends ConsumerState<ReaderPage> {
             tooltip: 'Search in document',
             onPressed: _toggleSearch,
           ),
+          IconButton(
+            icon: const Icon(Icons.edit_outlined),
+            tooltip: 'Edit PDF',
+            onPressed: _openPdfEditor,
+          ),
           Semantics(
             toggled: _keepScreenAwake,
             button: true,
@@ -539,9 +562,12 @@ class _ReaderPageState extends ConsumerState<ReaderPage> {
       body: Stack(
         children: [
           Positioned.fill(
-            child: sl<PdfEngine>().buildViewer(
-              controller: _controller,
-              config: config,
+            child: KeyedSubtree(
+              key: ValueKey<int>(_readerRevision),
+              child: sl<PdfEngine>().buildViewer(
+                controller: _controller,
+                config: config,
+              ),
             ),
           ),
           if (_selection != null)
