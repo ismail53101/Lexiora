@@ -31,7 +31,7 @@ class PdfEditPage extends StatefulWidget {
 class _PdfEditPageState extends State<PdfEditPage> {
   final PdfEditService _saveService = const PdfEditService();
   late final Future<Uint8List> _bytes;
-  late final PdfEditingController _editingController;
+  PdfEditingController? _editingController;
   bool _saving = false;
   bool _didOverwrite = false;
   bool _autoFittingText = false;
@@ -52,14 +52,15 @@ class _PdfEditPageState extends State<PdfEditPage> {
   }
 
   void _autoFitTextBoxAfterEdit(Uint8List bytes) {
-    if (_autoFittingText || !_editingController.canAutosizeSelectedTextFont) {
+    final PdfEditingController? editing = _editingController;
+    if (_autoFittingText || editing == null || !editing.canAutosizeSelectedTextFont) {
       return;
     }
 
     WidgetsBinding.instance.addPostFrameCallback((_) {
       if (!mounted ||
           _autoFittingText ||
-          !_editingController.canAutosizeSelectedTextFont) {
+          editing == null || !editing.canAutosizeSelectedTextFont) {
         return;
       }
 
@@ -67,7 +68,7 @@ class _PdfEditPageState extends State<PdfEditPage> {
       try {
         // Keep the user's manually drawn box dimensions fixed and reduce or
         // grow the font so the complete text fits inside that box.
-        _editingController.autosizeSelectedTextFont();
+        editing.autosizeSelectedTextFont();
       } finally {
         _autoFittingText = false;
       }
@@ -215,10 +216,11 @@ class _PdfEditPageState extends State<PdfEditPage> {
             if (bytes == null) {
               return const Center(child: CircularProgressIndicator());
             }
-            _editingController = PdfEditingController(bytes);
+            final PdfEditingController editing =
+                _editingController ??= PdfEditingController(bytes);
 
             return PdfEditorView(
-              controller: _editingController,
+              controller: editing,
               onSave: _saveAs,
               onDocumentChanged: _autoFitTextBoxAfterEdit,
               imagePicker: _pickPdfImage,
