@@ -154,7 +154,35 @@ class CurrentAffairsStore {
       final List<LatestUpdate> list =
           buckets.putIfAbsent(_bucketKey(story), () => <LatestUpdate>[]);
       final String id = identityOf(story);
-      list.removeWhere((LatestUpdate e) => identityOf(e) == id);
+
+      // A refresh can return the same article without an image (for example
+      // when an RSS/GNews source temporarily omits its media field). Never
+      // let that overwrite an image that was already cached for the article.
+      final int existingIndex =
+          list.indexWhere((LatestUpdate e) => identityOf(e) == id);
+      if (existingIndex >= 0) {
+        final LatestUpdate existing = list[existingIndex];
+        if (story.imageUrl == null && existing.imageUrl != null) {
+          final LatestUpdate preserved = LatestUpdate(
+            id: story.id.isNotEmpty ? story.id : existing.id,
+            headline: story.headline,
+            source: story.source,
+            category: story.category,
+            relativeTime: story.relativeTime,
+            feedType: story.feedType,
+            excerpt: story.excerpt,
+            imageUrl: existing.imageUrl,
+            articleUrl: story.articleUrl ?? existing.articleUrl,
+            publishedAt: story.publishedAt ?? existing.publishedAt,
+            aiSummaryAvailable:
+                story.aiSummaryAvailable || existing.aiSummaryAvailable,
+          );
+          list.removeAt(existingIndex);
+          list.add(preserved);
+          continue;
+        }
+        list.removeAt(existingIndex);
+      }
       list.add(story);
     }
     for (final List<LatestUpdate> list in buckets.values) {
@@ -176,8 +204,39 @@ class CurrentAffairsStore {
 
   // ---- favourites --------------------------------------------------------
 
-  Future<List<LatestUpdate>> loadFavorites() async =>
-      _storiesFromJson(await _readJson(_favoritesFile));
+  Future<List<LatestUpdate>> loadFavorites() async {
+    final List<LatestUpdate> favorites =
+        _storiesFromJson(await _readJson(_favoritesFile));
+    if (favorites.isEmpty) return favorites;
+
+    // Backfill an image from the article cache if an older favorite was saved
+    // while its live feed temporarily had no image URL.
+    final Map<String, List<LatestUpdate>> buckets = await _readBuckets();
+    final Map<String, LatestUpdate> cachedById = <String, LatestUpdate>{
+      for (final List<LatestUpdate> list in buckets.values)
+        for (final LatestUpdate cached in list) identityOf(cached): cached,
+    };
+
+    return favorites.map((LatestUpdate favorite) {
+      if (favorite.imageUrl != null) return favorite;
+      final LatestUpdate? cached = cachedById[identityOf(favorite)];
+      if (cached?.imageUrl == null) return favorite;
+      return LatestUpdate(
+        id: favorite.id,
+        headline: favorite.headline,
+        source: favorite.source,
+        category: favorite.category,
+        relativeTime: favorite.relativeTime,
+        feedType: favorite.feedType,
+        excerpt: favorite.excerpt,
+        imageUrl: cached!.imageUrl,
+        articleUrl: favorite.articleUrl ?? cached.articleUrl,
+        publishedAt: favorite.publishedAt ?? cached.publishedAt,
+        aiSummaryAvailable:
+            favorite.aiSummaryAvailable || cached.aiSummaryAvailable,
+      );
+    }).toList(growable: false);
+  }
 
   /// Saves or removes [story] and returns the updated favourites list.
   Future<List<LatestUpdate>> toggleFavorite(LatestUpdate story) async {
@@ -185,7 +244,37 @@ class CurrentAffairsStore {
     final String id = identityOf(story);
     final int before = favorites.length;
     favorites.removeWhere((LatestUpdate e) => identityOf(e) == id);
-    if (favorites.length == before) favorites.insert(0, story);
+    if (favorites.length == before) {
+      LatestUpdate toSave = story;
+
+      // If the live item has no image, prefer the cached copy so a newly
+      // saved favorite still has the same thumbnail as the news list.
+      if (toSave.imageUrl == null) {
+        final Map<String, List<LatestUpdate>> buckets = await _readBuckets();
+        for (final List<LatestUpdate> list in buckets.values) {
+          for (final LatestUpdate cached in list) {
+            if (identityOf(cached) == id && cached.imageUrl != null) {
+              toSave = LatestUpdate(
+                id: toSave.id.isNotEmpty ? toSave.id : cached.id,
+                headline: toSave.headline,
+                source: toSave.source,
+                category: toSave.category,
+                relativeTime: toSave.relativeTime,
+                feedType: toSave.feedType,
+                excerpt: toSave.excerpt,
+                imageUrl: cached.imageUrl,
+                articleUrl: toSave.articleUrl ?? cached.articleUrl,
+                publishedAt: toSave.publishedAt ?? cached.publishedAt,
+                aiSummaryAvailable:
+                    toSave.aiSummaryAvailable || cached.aiSummaryAvailable,
+              );
+              break;
+            }
+          }
+        }
+      }
+      favorites.insert(0, toSave);
+    }
     await _writeJson(
       _favoritesFile,
       favorites.map(storyToJson).toList(),
