@@ -93,7 +93,7 @@ class WordEditorPage extends StatefulWidget {
   State<WordEditorPage> createState() => _WordEditorPageState();
 }
 
-class _WordEditorPageState extends State<WordEditorPage> {
+class _WordEditorPageState extends State<WordEditorPage> with WidgetsBindingObserver {
   late final WordEditorController _controller;
   LibraryDocument? _document;
   bool _loading = true;
@@ -117,6 +117,7 @@ class _WordEditorPageState extends State<WordEditorPage> {
   int _snapCaret = 0;
   int _snapStart = 0;
   bool _pinching = false;
+  bool _scrollbarDragging = false;
   List<WmlPageSize>? _origSizes;
   List<WmlPageMargins>? _origMargins;
   static const double _phoneScale = 0.9;
@@ -135,6 +136,7 @@ class _WordEditorPageState extends State<WordEditorPage> {
   @override
   void initState() {
     super.initState();
+    WidgetsBinding.instance.addObserver(this);
     _controller = WordEditorController(
       config: const OfficeSurfaceConfig(
         // Start read-only: touching/scrolling must never open the keyboard.
@@ -161,6 +163,17 @@ class _WordEditorPageState extends State<WordEditorPage> {
     _trackTyping();
     if (mounted) setState(() {});
     _scheduleKeyboardCaretVisibility();
+  }
+
+  /// Keyboard appearance changes the available editor height without changing
+  /// the Quds controller. Re-check the caret after the window metrics change
+  /// so the active line is automatically brought above the keyboard.
+  @override
+  void didChangeMetrics() {
+    if (!mounted || !_editing) return;
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      if (mounted) _ensureKeyboardCaretVisible();
+    });
   }
 
   /// Quds owns the document viewport, so Scaffold resize only reduces the
@@ -896,6 +909,110 @@ class _WordEditorPageState extends State<WordEditorPage> {
     );
     _clampOrigin();
     _controller.refresh();
+  }
+
+  double _maxScrollY() {
+    final double scale = _controller.viewport.scale * _pointsToPixels;
+    if (scale <= 0 || _canvasSize.height <= 0) return 0;
+    try {
+      double contentHeight = 24.0;
+      final List<dynamic> pages = _controller.documentLaidOut.pages.toList();
+      for (final dynamic page in pages) {
+        contentHeight += (page.height as double) * scale + 24.0;
+      }
+      if (pages.isEmpty) {
+        contentHeight += _controller.pageSize.height * scale + 24.0;
+      }
+      return math.max(0.0, contentHeight - _canvasSize.height);
+    } on Object {
+      return 0;
+    }
+  }
+
+  Widget _verticalScrollbar() {
+    final double maxScroll = _maxScrollY();
+    if (maxScroll <= 1 || _canvasSize.height <= 0) {
+      return const SizedBox.shrink();
+    }
+
+    const double trackWidth = 6.0;
+    const double trackMargin = 6.0;
+    const double minThumbHeight = 36.0;
+    final double trackHeight =
+        math.max(24.0, _canvasSize.height - trackMargin * 2);
+    final double contentHeight = _canvasSize.height + maxScroll;
+    final double thumbHeight = math.max(
+      minThumbHeight,
+      trackHeight * (_canvasSize.height / contentHeight),
+    ).clamp(0.0, trackHeight).toDouble();
+    final double travel = math.max(0.0, trackHeight - thumbHeight);
+    final double progress =
+        maxScroll <= 0 ? 0 : (_controller.viewport.origin.dy / maxScroll).clamp(0.0, 1.0).toDouble();
+    final double thumbTop = trackMargin + travel * progress;
+
+    void beginDrag(DragStartDetails details) {
+      _scrollbarDragging = true;
+      if (mounted) setState(() {});
+    }
+
+    void updateDrag(DragUpdateDetails details) {
+      if (!_scrollbarDragging || travel <= 0) return;
+      final double originDelta = details.delta.dy * maxScroll / travel;
+      final Offset origin = _controller.viewport.origin;
+      _controller.viewport.origin = Offset(
+        origin.dx,
+        (origin.dy + originDelta).clamp(0.0, maxScroll).toDouble(),
+      );
+      _controller.refresh();
+    }
+
+    void endDrag(DragEndDetails details) {
+      _scrollbarDragging = false;
+      if (mounted) setState(() {});
+    }
+
+    return Positioned(
+      top: 0,
+      right: 2,
+      bottom: 0,
+      width: 14,
+      child: GestureDetector(
+        behavior: HitTestBehavior.translucent,
+        onVerticalDragStart: beginDrag,
+        onVerticalDragUpdate: updateDrag,
+        onVerticalDragEnd: endDrag,
+        child: Stack(
+          alignment: Alignment.topCenter,
+          children: <Widget>[
+            Positioned(
+              top: trackMargin,
+              bottom: trackMargin,
+              child: Container(
+                width: trackWidth,
+                decoration: BoxDecoration(
+                  color: Theme.of(context).colorScheme.outlineVariant.withValues(alpha: 0.28),
+                  borderRadius: BorderRadius.circular(99),
+                ),
+              ),
+            ),
+            Positioned(
+              top: thumbTop,
+              child: AnimatedContainer(
+                duration: const Duration(milliseconds: 90),
+                width: _scrollbarDragging ? 7.0 : trackWidth,
+                height: thumbHeight,
+                decoration: BoxDecoration(
+                  color: Theme.of(context).colorScheme.onSurfaceVariant.withValues(
+                    alpha: _scrollbarDragging ? 0.82 : 0.58,
+                  ),
+                  borderRadius: BorderRadius.circular(99),
+                ),
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
   }
 
   /// Sends one real tap to the canvas. With [shift] the canvas treats it as a
@@ -1875,6 +1992,7 @@ class _WordEditorPageState extends State<WordEditorPage> {
                     child: canvas,
                   ),
                 ),
+                _verticalScrollbar(),
                 ..._handleWidgets(),
                 if (!_editing && !_controller.caret.isCollapsed)
                   Positioned(
@@ -1937,6 +2055,7 @@ class _WordEditorPageState extends State<WordEditorPage> {
 
   @override
   void dispose() {
+    WidgetsBinding.instance.removeObserver(this);
     _longPress?.cancel();
     _stopSelectionDrag();
     _controller.removeListener(_onControllerChanged);
