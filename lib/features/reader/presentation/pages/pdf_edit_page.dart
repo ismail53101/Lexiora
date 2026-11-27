@@ -3,8 +3,11 @@ import 'dart:io';
 import 'dart:typed_data';
 
 import 'package:dart_pdf_editor/dart_pdf_editor.dart';
+import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:lexiora/features/reader/data/pdf_edit_service.dart';
+import 'package:path/path.dart' as p;
+
 
 /// Full-screen PDF Edit Mode.
 ///
@@ -29,7 +32,7 @@ class _PdfEditPageState extends State<PdfEditPage> {
   final PdfEditService _saveService = const PdfEditService();
   late final Future<Uint8List> _bytes;
   bool _saving = false;
-  bool _didSave = false;
+  bool _didOverwrite = false;
 
   @override
   void initState() {
@@ -37,22 +40,30 @@ class _PdfEditPageState extends State<PdfEditPage> {
     _bytes = File(widget.filePath).readAsBytes();
   }
 
-  void _save(Uint8List bytes) {
+  void _saveAs(Uint8List bytes) {
     if (_saving) return;
     setState(() => _saving = true);
-    unawaited(_saveAndReport(bytes));
+    unawaited(_saveAsAndReport(bytes));
   }
 
-  Future<void> _saveAndReport(Uint8List bytes) async {
+  Future<void> _saveAsAndReport(Uint8List bytes) async {
     try {
-      await _saveService.overwrite(filePath: widget.filePath, bytes: bytes);
+      final Uri? outputUri = await FilePicker.platform.saveFile(
+        dialogTitle: 'Save edited PDF',
+        fileName: p.basename(widget.filePath),
+        bytes: bytes,
+        mimeType: 'application/pdf',
+      );
+      if (outputUri == null) {
+        if (mounted) setState(() => _saving = false);
+        return;
+      }
       if (!mounted) return;
       setState(() {
         _saving = false;
-        _didSave = true;
       });
       ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text('PDF saved')),
+        SnackBar(content: Text('Edited PDF saved to $outputUri')),
       );
     } on Object catch (error) {
       if (!mounted) return;
@@ -63,12 +74,67 @@ class _PdfEditPageState extends State<PdfEditPage> {
     }
   }
 
+  void _requestOverwrite(Uint8List bytes) {
+    if (_saving) return;
+    unawaited(
+      showDialog<void>(
+        context: context,
+        builder: (BuildContext dialogContext) => AlertDialog(
+          title: const Text('Overwrite original PDF?'),
+          content: const Text(
+            'This replaces the current library file. Use Save PDF to keep '
+            'the original and create a separate edited copy.',
+          ),
+          actions: <Widget>[
+            TextButton(
+              onPressed: () => Navigator.of(dialogContext).pop(),
+              child: const Text('Cancel'),
+            ),
+            FilledButton(
+              onPressed: () {
+                Navigator.of(dialogContext).pop();
+                _overwrite(bytes);
+              },
+              child: const Text('Overwrite'),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
+  void _overwrite(Uint8List bytes) {
+    if (_saving) return;
+    setState(() => _saving = true);
+    unawaited(_overwriteAndReport(bytes));
+  }
+
+  Future<void> _overwriteAndReport(Uint8List bytes) async {
+    try {
+      await _saveService.overwrite(filePath: widget.filePath, bytes: bytes);
+      if (!mounted) return;
+      setState(() {
+        _saving = false;
+        _didOverwrite = true;
+      });
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(content: Text('Original PDF overwritten and saved')),
+      );
+    } on Object catch (error) {
+      if (!mounted) return;
+      setState(() => _saving = false);
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text('Could not overwrite PDF: $error')),
+      );
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return WillPopScope(
       onWillPop: () async {
         if (_saving) return false;
-        Navigator.of(context).pop(_didSave);
+        Navigator.of(context).pop(_didOverwrite);
         return false;
       },
       child: Scaffold(
@@ -82,7 +148,7 @@ class _PdfEditPageState extends State<PdfEditPage> {
             tooltip: 'Close PDF editor',
             onPressed: _saving
                 ? null
-                : () => Navigator.of(context).pop(_didSave),
+                : () => Navigator.of(context).pop(_didOverwrite),
           ),
           actions: [
             if (_saving)
@@ -117,14 +183,29 @@ class _PdfEditPageState extends State<PdfEditPage> {
             }
             return PdfEditorView(
               bytes: bytes,
-              onSave: _save,
+              onSave: _saveAs,
               saveButtonLabel: 'Save PDF',
+              toolbarTrailing: <PdfEditingToolbarWidgetBuilder>[
+                (
+                  BuildContext context,
+                  PdfEditingController editing,
+                  PdfViewerController viewer,
+                ) => IconButton(
+                  icon: const Icon(Icons.save_outlined),
+                  tooltip: 'Overwrite original PDF',
+                  onPressed: () => _requestOverwrite(editing.bytes),
+                ),
+              ],
               features: const PdfEditorFeatures(
-                // Keep Edit Mode focused and compact. Select handles moving,
-                // resizing, deleting, and editing inserted text annotations.
+                // Content selects real page elements. Its selected-element
+                // strip exposes direct text replacement when the PDF run is
+                // safely editable; freeText remains available for insertion.
                 tools: <PdfEditTool>{
                   PdfEditTool.select,
+                  PdfEditTool.content,
+                  PdfEditTool.contentDelete,
                   PdfEditTool.freeText,
+                  PdfEditTool.ink,
                 },
                 thumbnails: false,
                 bookmarks: false,
