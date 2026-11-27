@@ -810,7 +810,16 @@ class _WordEditorPageState extends State<WordEditorPage> {
     _touchPositions[event.pointer] = event.position;
     if (previous == null) return;
     if (_selectDrag) {
-      _updateSelectionDrag(event.position + const Offset(0, -6));
+      // Wait until the long-press word selection has been applied, otherwise
+      // it would reset the selection the finger has already started extending.
+      if (_forwarding) return;
+      // event.position is a SCREEN position; the selection code works in the
+      // editor's own coordinates. Passing the screen position made the
+      // selection land ~100px (several lines) below the finger and triggered
+      // the edge auto-scroll, which is what threw the selection out of control.
+      _updateSelectionDrag(
+        _editorLocalFromGlobal(event.position) + const Offset(0, -10),
+      );
       return;
     }
     if (_downPos != null && (event.position - _downPos!).distance > 10) {
@@ -1220,8 +1229,11 @@ class _WordEditorPageState extends State<WordEditorPage> {
           _handleDragStart(startHandle: startHandle);
           _startSelectionDrag(_editorLocalFromGlobal(d.globalPosition));
         },
-        onPanUpdate: (DragUpdateDetails d) =>
-            _updateSelectionDrag(_editorLocalFromGlobal(d.globalPosition)),
+        // The finger sits just below the text it points at (like Android), so
+        // aim a little above it. This lets both handles move freely up/down.
+        onPanUpdate: (DragUpdateDetails d) => _updateSelectionDrag(
+          _editorLocalFromGlobal(d.globalPosition) + const Offset(0, -10),
+        ),
         onPanEnd: (_) => _stopSelectionDrag(),
         onPanCancel: _stopSelectionDrag,
         child: Center(
