@@ -48,7 +48,7 @@ class _PdfEditPageState extends State<PdfEditPage> {
 
   Future<void> _saveAsAndReport(Uint8List bytes) async {
     try {
-      final Uri? outputUri = await FilePicker.platform.saveFile(
+      final Uri? outputUri = await FilePicker.saveFile(
         dialogTitle: 'Save edited PDF',
         fileName: p.basename(widget.filePath),
         bytes: bytes,
