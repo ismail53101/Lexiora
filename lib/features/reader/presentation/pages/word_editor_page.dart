@@ -118,6 +118,10 @@ class _WordEditorPageState extends State<WordEditorPage> with WidgetsBindingObse
   int _snapStart = 0;
   bool _pinching = false;
   bool _scrollbarDragging = false;
+  bool _visualDragging = false;
+  bool _visualDragMoved = false;
+  Offset? _visualDragLastPosition;
+  Timer? _keyboardCaretFollowTimer;
   List<WmlPageSize>? _origSizes;
   List<WmlPageMargins>? _origMargins;
   static const double _phoneScale = 0.9;
@@ -178,13 +182,37 @@ class _WordEditorPageState extends State<WordEditorPage> with WidgetsBindingObse
 
   /// Quds owns the document viewport, so Scaffold resize only reduces the
   /// available canvas. It does not automatically pan the document to the caret.
-  /// When the software keyboard opens, keep the active line above it.
+  /// Keyboard opening is animated on Android, so a single frame is too early.
+  /// Re-check for a short window until the keyboard settles.
   void _scheduleKeyboardCaretVisibility() {
     if (!_editing || !mounted) return;
     if (MediaQuery.viewInsetsOf(context).bottom <= 0) return;
+
     WidgetsBinding.instance.addPostFrameCallback((_) {
-      if (mounted) _ensureKeyboardCaretVisible();
+      if (!mounted || !_editing) return;
+      _ensureKeyboardCaretVisible();
     });
+
+    _keyboardCaretFollowTimer?.cancel();
+    int ticks = 0;
+    _keyboardCaretFollowTimer = Timer.periodic(
+      const Duration(milliseconds: 80),
+      (Timer timer) {
+        if (!mounted ||
+            !_editing ||
+            MediaQuery.viewInsetsOf(context).bottom <= 0 ||
+            ticks++ >= 8) {
+          timer.cancel();
+          if (identical(_keyboardCaretFollowTimer, timer)) {
+            _keyboardCaretFollowTimer = null;
+          }
+          return;
+        }
+        WidgetsBinding.instance.addPostFrameCallback((_) {
+          if (mounted && _editing) _ensureKeyboardCaretVisible();
+        });
+      },
+    );
   }
 
   void _ensureKeyboardCaretVisible() {
@@ -216,8 +244,9 @@ class _WordEditorPageState extends State<WordEditorPage> with WidgetsBindingObse
 
     if (caretTop == null || caretBottom == null) return;
 
-    const double topPadding = 28.0;
-    const double bottomPadding = 28.0;
+    const double topPadding = 24.0;
+    // Keep the active line comfortably above the keyboard/format bar.
+    const double bottomPadding = 56.0;
     double delta = 0;
     if (caretTop < topPadding) {
       delta = caretTop - topPadding;
@@ -792,8 +821,79 @@ class _WordEditorPageState extends State<WordEditorPage> with WidgetsBindingObse
   bool _moved = false;
   Timer? _longPress;
 
+  /// Returns the visible screen rect of the currently selected floating visual.
+  /// Quds stores visual coordinates in document points; convert them to the
+  /// current canvas scale and viewport origin.
+  Rect? _selectedVisualRect() {
+    final WmlVisual? selected = _controller.selectedVisual;
+    if (selected == null || !selected.visual.isPicture) return null;
+
+    final OfficeVisual visual = selected.visual;
+    final double scale = _controller.viewport.scale * _pointsToPixels;
+    if (scale <= 0) return null;
+
+    final Offset origin = _controller.viewport.origin;
+    const double pageTop = 24.0;
+    final double left = visual.offsetX * scale - origin.dx;
+    final double top = pageTop + visual.offsetY * scale - origin.dy;
+    final double width = visual.width * scale;
+    final double height = visual.height * scale;
+    if (width <= 0 || height <= 0) return null;
+
+    return Rect.fromLTWH(left, top, width, height);
+  }
+
+  bool _tryStartVisualDrag(Offset position) {
+    if (!_editing || _controller.mode != OfficeInteractionMode.editing) {
+      return false;
+    }
+    final WmlVisual? selected = _controller.selectedVisual;
+    final Rect? rect = _selectedVisualRect();
+    if (selected == null ||
+        !selected.visual.isPicture ||
+        rect == null ||
+        !rect.inflate(18).contains(position)) {
+      return false;
+    }
+
+    _visualDragging = true;
+    _visualDragMoved = false;
+    _visualDragLastPosition = position;
+    _controller.beginVisualTransform();
+    _longPress?.cancel();
+    _downPos = null;
+    return true;
+  }
+
+  void _updateVisualDrag(Offset position) {
+    if (!_visualDragging || _visualDragLastPosition == null) return;
+    final Offset deltaPx = position - _visualDragLastPosition!;
+    if (deltaPx.distance < 0.1) return;
+
+    final double scale = _controller.viewport.scale * _pointsToPixels;
+    if (scale <= 0) return;
+
+    _visualDragMoved = true;
+    _visualDragLastPosition = position;
+    // previewVisualMove works in document points, not screen pixels.
+    _controller.previewVisualMove(deltaPx.dx / scale, deltaPx.dy / scale);
+    _controller.refresh();
+  }
+
+  void _endVisualDrag() {
+    if (!_visualDragging) return;
+    _visualDragging = false;
+    _visualDragLastPosition = null;
+    if (_visualDragMoved) {
+      _controller.commitVisualTransform();
+    }
+    _visualDragMoved = false;
+    if (mounted) setState(() {});
+  }
+
   void _onWordPointerDown(PointerDownEvent event) {
     if (_forwarding || event.kind != PointerDeviceKind.touch) return;
+    if (_tryStartVisualDrag(event.position)) return;
     _touchPositions[event.pointer] = event.position;
     if (_touchPositions.length == 1) {
       _downPos = event.position;
@@ -818,6 +918,10 @@ class _WordEditorPageState extends State<WordEditorPage> with WidgetsBindingObse
 
   void _onWordPointerMove(PointerMoveEvent event) {
     if (event.kind != PointerDeviceKind.touch) return;
+    if (_visualDragging) {
+      _updateVisualDrag(event.position);
+      return;
+    }
     if (_forwarding && !_selectDrag) return;
     final Offset? previous = _touchPositions[event.pointer];
     _touchPositions[event.pointer] = event.position;
@@ -1417,6 +1521,10 @@ class _WordEditorPageState extends State<WordEditorPage> with WidgetsBindingObse
   }
 
   void _onWordPointerEnd(PointerEvent event) {
+    if (_visualDragging) {
+      _endVisualDrag();
+      return;
+    }
     if (_forwarding && !_selectDrag) return;
     _longPress?.cancel();
     if (_selectDrag) {
@@ -2055,6 +2163,7 @@ class _WordEditorPageState extends State<WordEditorPage> with WidgetsBindingObse
 
   @override
   void dispose() {
+    _keyboardCaretFollowTimer?.cancel();
     WidgetsBinding.instance.removeObserver(this);
     _longPress?.cancel();
     _stopSelectionDrag();
