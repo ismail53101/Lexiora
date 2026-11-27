@@ -235,11 +235,19 @@ class _WordEditorPageState extends State<WordEditorPage> with WidgetsBindingObse
     for (final dynamic page in pages) {
       final List<LaidOutLine> lines =
           (page.lines as List<dynamic>).cast<LaidOutLine>();
-      for (final LaidOutLine line in lines) {
-        if (line.paragraphIndex != c.paragraphIndex) continue;
-        caretTop = pageTop + line.y * scale - origin.dy;
-        caretBottom = pageTop + (line.y + line.height) * scale - origin.dy;
-        break;
+      for (int i = 0; i < lines.length; i++) {
+        final LaidOutLine line = lines[i];
+        if (line.paragraphIndex < 0) continue;
+        // Use the line that really holds the caret. Matching only the
+        // paragraph picked its FIRST line, so tapping the 3rd line of a
+        // paragraph looked "already visible" and stayed under the keyboard.
+        final bool lastOfParagraph = i == lines.length - 1 ||
+            lines[i + 1].paragraphIndex != line.paragraphIndex;
+        if (c.isOnLine(line, lastOfParagraph: lastOfParagraph)) {
+          caretTop = pageTop + line.y * scale - origin.dy;
+          caretBottom = pageTop + (line.y + line.height) * scale - origin.dy;
+          break;
+        }
       }
       if (caretTop != null) break;
       pageTop += (page.height as double) * scale + 24.0;
@@ -258,10 +266,8 @@ class _WordEditorPageState extends State<WordEditorPage> with WidgetsBindingObse
     }
     if (delta.abs() < 1) return;
 
-    _controller.viewport.origin = Offset(
-      origin.dx,
-      (origin.dy + delta).clamp(0.0, double.infinity).toDouble(),
-    );
+    _controller.viewport.origin = Offset(origin.dx, origin.dy + delta);
+    _clampOrigin();
     _controller.refresh();
   }
 
@@ -698,7 +704,7 @@ class _WordEditorPageState extends State<WordEditorPage> with WidgetsBindingObse
   int get _zoomPercent => (_controller.viewport.scale * 100).round();
 
   void _setZoom(double value) {
-    final double clamped = value.clamp(0.25, 2.0).toDouble();
+    final double clamped = value.clamp(0.2, 3.0).toDouble();
     _controller.viewport.setScale(clamped);
     _clampOrigin();
     _controller.refresh();
@@ -716,9 +722,11 @@ class _WordEditorPageState extends State<WordEditorPage> with WidgetsBindingObse
     _origMargins ??=
         <WmlPageMargins>[for (final WmlSection s in sections) s.margins];
     final double screen = MediaQuery.sizeOf(context).width;
-    final double scale = _controller.viewport.scale;
+    // Page width is computed at the fixed base scale, NOT the current zoom.
+    // Using the current zoom re-wrapped the page to fill the screen again after
+    // every pinch, so zooming out never made the page smaller.
     // +1px so the page is pinned to the left gutter (never re-centred).
-    final double pagePt = ((screen + 1.0) * 72.0 / 96.0) / scale;
+    final double pagePt = ((screen + 1.0) * 72.0 / 96.0) / _phoneScale;
     for (int i = 0; i < sections.length; i++) {
       if (i >= _origSizes!.length) break;
       final WmlSection section = sections[i];
@@ -824,26 +832,61 @@ class _WordEditorPageState extends State<WordEditorPage> with WidgetsBindingObse
   bool _moved = false;
   Timer? _longPress;
 
-  /// Returns the visible screen rect of the currently selected floating visual.
-  /// Quds stores visual coordinates in document points; convert them to the
-  /// current canvas scale and viewport origin.
+  /// Screen x of the page's left edge. The canvas centres the page when it is
+  /// narrower than the view and pins it to the left gutter otherwise.
+  double _pageLeftOnScreen(List<dynamic> pages, double scale) {
+    double maxW = 0;
+    for (final dynamic page in pages) {
+      maxW = math.max(maxW, page.width as double);
+    }
+    final double viewW = _canvasSize.width + _editorExtra - _canvasScrollBar;
+    final double pageW = maxW * scale;
+    final double left =
+        viewW > pageW + _canvasGutter * 2 ? (viewW - pageW) / 2 : _canvasGutter;
+    return left - _canvasGutter;
+  }
+
+  /// Screen rectangle of the first laid-out floating box accepted by [match].
+  /// The box already holds its real page position, unlike the visual's raw
+  /// offsets (which are relative to the margin/column and caused every touch
+  /// to miss the picture, so it could not be dragged).
+  Rect? _floatingBoxRect(bool Function(LaidOutBox box) match) {
+    final double scale = _controller.viewport.scale * _pointsToPixels;
+    if (scale <= 0) return null;
+    final Offset origin = _controller.viewport.origin;
+    try {
+      final List<dynamic> pages = _controller.documentLaidOut.pages.toList();
+      final double pageLeft = _pageLeftOnScreen(pages, scale);
+      double pageTop = 24.0;
+      for (final dynamic page in pages) {
+        for (final LaidOutBox box
+            in (page.frames as List<dynamic>).cast<LaidOutBox>()) {
+          if (match(box)) {
+            return Rect.fromLTWH(
+              pageLeft - origin.dx + box.x * scale,
+              pageTop + box.y * scale - origin.dy,
+              box.width * scale,
+              box.height * scale,
+            );
+          }
+        }
+        pageTop += (page.height as double) * scale + 24.0;
+      }
+    } on Object {
+      return null;
+    }
+    return null;
+  }
+
   Rect? _selectedVisualRect() {
     final WmlVisual? selected = _controller.selectedVisual;
     if (selected == null || !selected.visual.isPicture) return null;
-
-    final OfficeVisual visual = selected.visual;
-    final double scale = _controller.viewport.scale * _pointsToPixels;
-    if (scale <= 0) return null;
-
-    final Offset origin = _controller.viewport.origin;
-    const double pageTop = 24.0;
-    final double left = visual.offsetX * scale - origin.dx;
-    final double top = pageTop + visual.offsetY * scale - origin.dy;
-    final double width = visual.width * scale;
-    final double height = visual.height * scale;
-    if (width <= 0 || height <= 0) return null;
-
-    return Rect.fromLTWH(left, top, width, height);
+    final Rect? rect = _floatingBoxRect(
+      (LaidOutBox box) =>
+          box.visual != null && identical(box.visual, selected.visual),
+    );
+    if (rect == null || rect.width <= 0 || rect.height <= 0) return null;
+    return rect;
   }
 
   bool _tryStartVisualDrag(Offset position) {
@@ -874,29 +917,9 @@ class _WordEditorPageState extends State<WordEditorPage> with WidgetsBindingObse
   Rect? _selectedFrameRect() {
     final WmlFrame? selected = _controller.selectedFrame;
     if (selected == null) return null;
-    final double scale = _controller.viewport.scale * _pointsToPixels;
-    if (scale <= 0) return null;
-    final Offset origin = _controller.viewport.origin;
-    double pageTop = 24.0;
-    try {
-      for (final dynamic page in _controller.documentLaidOut.pages) {
-        for (final LaidOutBox box
-            in (page.frames as List<dynamic>).cast<LaidOutBox>()) {
-          if (identical(box.frame, selected)) {
-            return Rect.fromLTWH(
-              box.x * scale - origin.dx,
-              pageTop + box.y * scale - origin.dy,
-              box.width * scale,
-              box.height * scale,
-            );
-          }
-        }
-        pageTop += (page.height as double) * scale + 24.0;
-      }
-    } on Object {
-      return null;
-    }
-    return null;
+    return _floatingBoxRect(
+      (LaidOutBox box) => box.frame != null && identical(box.frame, selected),
+    );
   }
 
   bool _tryStartFrameDrag(Offset position) {
@@ -1040,7 +1063,7 @@ class _WordEditorPageState extends State<WordEditorPage> with WidgetsBindingObse
         if ((ratio - 1.0).abs() > 0.01) {
           _pinching = true;
           final double next = (_controller.viewport.scale * ratio)
-              .clamp(0.25, 2.0)
+              .clamp(0.2, 3.0)
               .toDouble();
           _controller.viewport.setScale(next);
           _clampOrigin();
