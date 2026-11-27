@@ -280,7 +280,7 @@ class _PdfEditPageState extends State<PdfEditPage> {
           leading: IconButton(
             icon: const Icon(Icons.arrow_back),
             tooltip: 'Close PDF editor',
-            onPressed: _saving
+            onPressed: _saving || _openingTextEditor
                 ? null
                 : () => Navigator.of(context).pop(_didOverwrite),
           ),
