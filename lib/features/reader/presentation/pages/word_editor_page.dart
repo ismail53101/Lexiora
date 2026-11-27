@@ -121,6 +121,9 @@ class _WordEditorPageState extends State<WordEditorPage> with WidgetsBindingObse
   bool _visualDragging = false;
   bool _visualDragMoved = false;
   Offset? _visualDragLastPosition;
+  bool _frameDragging = false;
+  bool _frameDragMoved = false;
+  Offset? _frameDragLastPosition;
   Timer? _keyboardCaretFollowTimer;
   List<WmlPageSize>? _origSizes;
   List<WmlPageMargins>? _origMargins;
@@ -865,6 +868,58 @@ class _WordEditorPageState extends State<WordEditorPage> with WidgetsBindingObse
     return true;
   }
 
+  /// Returns the visible canvas rect of the selected floating text box/shape.
+  /// Frame boxes are laid out in page coordinates, so include the same page
+  /// stack and viewport transform used by the Quds canvas.
+  Rect? _selectedFrameRect() {
+    final WmlFrame? selected = _controller.selectedFrame;
+    if (selected == null) return null;
+    final double scale = _controller.viewport.scale * _pointsToPixels;
+    if (scale <= 0) return null;
+    final Offset origin = _controller.viewport.origin;
+    double pageTop = 24.0;
+    try {
+      for (final dynamic page in _controller.documentLaidOut.pages) {
+        for (final LaidOutBox box
+            in (page.frames as List<dynamic>).cast<LaidOutBox>()) {
+          if (identical(box.frame, selected)) {
+            return Rect.fromLTWH(
+              box.x * scale - origin.dx,
+              pageTop + box.y * scale - origin.dy,
+              box.width * scale,
+              box.height * scale,
+            );
+          }
+        }
+        pageTop += (page.height as double) * scale + 24.0;
+      }
+    } on Object {
+      return null;
+    }
+    return null;
+  }
+
+  bool _tryStartFrameDrag(Offset position) {
+    if (!_editing || _controller.mode != OfficeInteractionMode.editing) {
+      return false;
+    }
+    final Rect? rect = _selectedFrameRect();
+    if (rect == null || !rect.inflate(18).contains(position)) return false;
+
+    // A tap inside the text remains a caret/edit gesture. The border band is
+    // the deliberate object-move target, matching Word's text-box behavior.
+    final double inset = math.min(18, math.min(rect.width, rect.height) / 3);
+    if (rect.deflate(inset).contains(position)) return false;
+
+    _frameDragging = true;
+    _frameDragMoved = false;
+    _frameDragLastPosition = position;
+    _controller.beginFrameTransform();
+    _longPress?.cancel();
+    _downPos = null;
+    return true;
+  }
+
   void _updateVisualDrag(Offset position) {
     if (!_visualDragging || _visualDragLastPosition == null) return;
     final Offset deltaPx = position - _visualDragLastPosition!;
@@ -880,6 +935,19 @@ class _WordEditorPageState extends State<WordEditorPage> with WidgetsBindingObse
     _controller.refresh();
   }
 
+  void _updateFrameDrag(Offset position) {
+    if (!_frameDragging || _frameDragLastPosition == null) return;
+    final Offset deltaPx = position - _frameDragLastPosition!;
+    if (deltaPx.distance < 0.1) return;
+    final double scale = _controller.viewport.scale * _pointsToPixels;
+    if (scale <= 0) return;
+
+    _frameDragMoved = true;
+    _frameDragLastPosition = position;
+    _controller.previewFrameMove(deltaPx.dx / scale, deltaPx.dy / scale);
+    _controller.refresh();
+  }
+
   void _endVisualDrag() {
     if (!_visualDragging) return;
     _visualDragging = false;
@@ -891,9 +959,22 @@ class _WordEditorPageState extends State<WordEditorPage> with WidgetsBindingObse
     if (mounted) setState(() {});
   }
 
+  void _endFrameDrag() {
+    if (!_frameDragging) return;
+    _frameDragging = false;
+    _frameDragLastPosition = null;
+    if (_frameDragMoved) {
+      _controller.commitFrameTransform();
+    }
+    _frameDragMoved = false;
+    if (mounted) setState(() {});
+  }
+
   void _onWordPointerDown(PointerDownEvent event) {
     if (_forwarding || event.kind != PointerDeviceKind.touch) return;
-    if (_tryStartVisualDrag(event.position)) return;
+    final Offset localPosition = _editorLocalFromGlobal(event.position);
+    if (_tryStartVisualDrag(localPosition)) return;
+    if (_tryStartFrameDrag(localPosition)) return;
     _touchPositions[event.pointer] = event.position;
     if (_touchPositions.length == 1) {
       _downPos = event.position;
@@ -919,7 +1000,11 @@ class _WordEditorPageState extends State<WordEditorPage> with WidgetsBindingObse
   void _onWordPointerMove(PointerMoveEvent event) {
     if (event.kind != PointerDeviceKind.touch) return;
     if (_visualDragging) {
-      _updateVisualDrag(event.position);
+      _updateVisualDrag(_editorLocalFromGlobal(event.position));
+      return;
+    }
+    if (_frameDragging) {
+      _updateFrameDrag(_editorLocalFromGlobal(event.position));
       return;
     }
     if (_forwarding && !_selectDrag) return;
@@ -1523,6 +1608,10 @@ class _WordEditorPageState extends State<WordEditorPage> with WidgetsBindingObse
   void _onWordPointerEnd(PointerEvent event) {
     if (_visualDragging) {
       _endVisualDrag();
+      return;
+    }
+    if (_frameDragging) {
+      _endFrameDrag();
       return;
     }
     if (_forwarding && !_selectDrag) return;
