@@ -43,12 +43,12 @@ class _PdfEditPageState extends State<PdfEditPage> {
   }
 
   Future<Uint8List?> _pickPdfImage(BuildContext context) async {
-    final FilePickerResult? result = await FilePicker.pickFiles(
-      type: FileType.custom,
-      allowedExtensions: <String>['png', 'jpg', 'jpeg'],
-      withData: true,
+    final result = await FilePicker.pickFiles(
+      type: FileType.image,
     );
-    return result?.files.single.bytes;
+    final String? path = result?.files.single.path;
+    if (path == null || path.isEmpty) return null;
+    return File(path).readAsBytes();
   }
 
   void _autoFitTextBoxAfterEdit() {
