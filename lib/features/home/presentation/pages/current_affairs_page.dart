@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:lexiora/features/home/data/current_affairs_store.dart';
 import 'package:lexiora/features/home/data/latest_update_mock_data.dart';
 import 'package:lexiora/features/home/domain/entities/current_affairs_feed.dart';
 import 'package:lexiora/features/home/domain/entities/latest_update.dart';
@@ -57,6 +58,8 @@ class _CurrentAffairsPageState extends ConsumerState<CurrentAffairsPage>
   Future<void> _refresh() async {
     ref.invalidate(currentAffairsProvider);
     await ref.read(currentAffairsProvider.future);
+    // The saved stories arrive first; keep the spinner while fresh ones load.
+    await Future<void>.delayed(const Duration(milliseconds: 1200));
   }
 
   @override
@@ -71,13 +74,10 @@ class _CurrentAffairsPageState extends ConsumerState<CurrentAffairsPage>
     final List<LatestUpdate> international = liveFeed?.international ?? _fallback('International');
     final List<LatestUpdate> sectionStories = _selectedSection == 0 ? national : international;
     final String sectionLabel = _selectedSection == 0 ? 'National' : 'International';
-    final bool isNational = _selectedSection == 0;
-    final String feedLabel = isNational && _selectedFeedType == 1 ? 'Opinions' : 'Latest';
-    final List<LatestUpdate> stories = isNational
-        ? sectionStories
-            .where((LatestUpdate story) => _matchesFeedType(story, _selectedFeedType))
-            .toList(growable: false)
-        : sectionStories;
+    final String feedLabel = _selectedFeedType == 1 ? 'Opinions' : 'Latest';
+    final List<LatestUpdate> stories = sectionStories
+        .where((LatestUpdate story) => _matchesFeedType(story, _selectedFeedType))
+        .toList(growable: false);
     final bool isRefreshing = feedAsync.isLoading && liveFeed == null;
 
     final Color pageBackground = theme.brightness == Brightness.light
@@ -105,6 +105,15 @@ class _CurrentAffairsPageState extends ConsumerState<CurrentAffairsPage>
           ],
         ),
         actions: <Widget>[
+          IconButton(
+            tooltip: 'Saved articles',
+            icon: const Icon(Icons.bookmarks_outlined),
+            onPressed: () => Navigator.of(context).push(
+              MaterialPageRoute<void>(
+                builder: (_) => const SavedStoriesPage(),
+              ),
+            ),
+          ),
           Padding(
             padding: const EdgeInsets.only(right: 16),
             child: _LivePill(color: scheme.tertiary),
@@ -127,8 +136,7 @@ class _CurrentAffairsPageState extends ConsumerState<CurrentAffairsPage>
                 ),
               ),
             ),
-            if (isNational)
-              SliverToBoxAdapter(
+            SliverToBoxAdapter(
                 child: Padding(
                   padding: const EdgeInsets.fromLTRB(20, 12, 20, 0),
                   child: _FeedTypeSwitcher(
@@ -596,6 +604,8 @@ class _FeaturedStoryCard extends StatelessWidget {
                           ),
                         ),
                         const Spacer(),
+                        _SaveButton(story: story),
+                        const SizedBox(width: 8),
                         InkWell(
                           onTap: () => _openArticle(context, story),
                           child: Row(
@@ -680,6 +690,8 @@ class _EditorialStoryCard extends StatelessWidget {
                   ],
                 ),
               ),
+              const SizedBox(width: 4),
+              _SaveButton(story: story),
               if (kAiSummaryEnabled) ...[
                 const SizedBox(width: 7),
                 InkWell(
@@ -975,4 +987,146 @@ Future<void> _showArticleUnavailable(
       );
     },
   );
+}
+
+
+/// Bookmark toggle used on every story card.
+class _SaveButton extends ConsumerWidget {
+  const _SaveButton({required this.story});
+
+  final LatestUpdate story;
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final ColorScheme scheme = Theme.of(context).colorScheme;
+    final List<LatestUpdate> favorites =
+        ref.watch(favoriteStoriesProvider).value ?? const <LatestUpdate>[];
+    final String id = CurrentAffairsStore.identityOf(story);
+    final bool saved = favorites.any(
+      (LatestUpdate item) => CurrentAffairsStore.identityOf(item) == id,
+    );
+    return InkWell(
+      borderRadius: BorderRadius.circular(12),
+      onTap: () async {
+        await ref.read(favoriteStoriesProvider.notifier).toggle(story);
+        if (!context.mounted) return;
+        ScaffoldMessenger.of(context)
+          ..hideCurrentSnackBar()
+          ..showSnackBar(
+            SnackBar(
+              duration: const Duration(seconds: 2),
+              content: Text(
+                saved ? 'Removed from saved articles' : 'Saved to study later',
+              ),
+            ),
+          );
+      },
+      child: Padding(
+        padding: const EdgeInsets.all(6),
+        child: Icon(
+          saved ? Icons.bookmark_rounded : Icons.bookmark_border_rounded,
+          size: 22,
+          color: scheme.primary,
+        ),
+      ),
+    );
+  }
+}
+
+/// Everything the user bookmarked. Headlines and summaries are stored on the
+/// device, so they can be read offline; the full article opens in the browser.
+class SavedStoriesPage extends ConsumerWidget {
+  const SavedStoriesPage({super.key});
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final ThemeData theme = Theme.of(context);
+    final ColorScheme scheme = theme.colorScheme;
+    final AsyncValue<List<LatestUpdate>> saved =
+        ref.watch(favoriteStoriesProvider);
+    final List<LatestUpdate> stories = saved.value ?? const <LatestUpdate>[];
+    return Scaffold(
+      appBar: AppBar(title: const Text('Saved articles')),
+      body: stories.isEmpty
+          ? Center(
+              child: Padding(
+                padding: const EdgeInsets.all(32),
+                child: Text(
+                  saved.isLoading
+                      ? 'Loading...'
+                      : 'Nothing saved yet.\nTap the bookmark on any story to keep it here for later.',
+                  textAlign: TextAlign.center,
+                  style: theme.textTheme.bodyLarge
+                      ?.copyWith(color: scheme.onSurfaceVariant),
+                ),
+              ),
+            )
+          : ListView.separated(
+              padding: const EdgeInsets.all(16),
+              itemCount: stories.length,
+              separatorBuilder: (_, _) => const SizedBox(height: 10),
+              itemBuilder: (BuildContext context, int index) {
+                final LatestUpdate story = stories[index];
+                return Material(
+                  color: scheme.surfaceContainerHigh,
+                  borderRadius: BorderRadius.circular(18),
+                  clipBehavior: Clip.antiAlias,
+                  child: InkWell(
+                    onTap: () => _openArticle(context, story),
+                    child: Padding(
+                      padding: const EdgeInsets.fromLTRB(14, 12, 6, 12),
+                      child: Row(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: <Widget>[
+                          Expanded(
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: <Widget>[
+                                Text(
+                                  '${story.source} \u00b7 ${story.category} \u00b7 ${story.feedType}',
+                                  style: theme.textTheme.labelSmall?.copyWith(
+                                    color: scheme.onSurfaceVariant,
+                                    fontWeight: FontWeight.w700,
+                                  ),
+                                ),
+                                const SizedBox(height: 6),
+                                Text(
+                                  story.headline,
+                                  style: theme.textTheme.titleSmall?.copyWith(
+                                    fontWeight: FontWeight.w900,
+                                    height: 1.2,
+                                  ),
+                                ),
+                                if (story.excerpt.trim().isNotEmpty) ...<Widget>[
+                                  const SizedBox(height: 6),
+                                  Text(
+                                    story.excerpt.trim(),
+                                    style: theme.textTheme.bodyMedium?.copyWith(
+                                      color: scheme.onSurfaceVariant,
+                                      height: 1.35,
+                                    ),
+                                  ),
+                                ],
+                              ],
+                            ),
+                          ),
+                          IconButton(
+                            tooltip: 'Remove',
+                            icon: Icon(
+                              Icons.bookmark_rounded,
+                              color: scheme.primary,
+                            ),
+                            onPressed: () => ref
+                                .read(favoriteStoriesProvider.notifier)
+                                .toggle(story),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                );
+              },
+            ),
+    );
+  }
 }

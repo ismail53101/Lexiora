@@ -209,11 +209,14 @@ function isHostDownStatus(status) {
   return status === 502 || status === 503 || status === 504 ||
     (status >= 520 && status <= 527);
 }
-const NEWS_CACHE_KEY = "https://sapiora.internal/cache/current-affairs/latest-v1";
+const NEWS_CACHE_KEY = "https://sapiora.internal/cache/current-affairs/latest-v2";
 const STANDS4_CACHE_TTL_MS = 24 * 60 * 60 * 1000;
 const STANDS4_CACHE_PREFIX = "https://sapiora.internal/cache/stands4/";
-const NEWS_CACHE_TTL_MS = 15 * 60 * 1000;
+// Short TTL + a 5-minute cron so new stories/opinions appear within minutes.
+const NEWS_CACHE_TTL_MS = 5 * 60 * 1000;
 const NEWS_FRESHNESS_WINDOW_MS = 48 * 60 * 60 * 1000;
+const OPINION_FRESHNESS_WINDOW_MS = 7 * 24 * 60 * 60 * 1000;
+const BROWSER_UA = "Mozilla/5.0 (Linux; Android 13; Pixel 7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0 Mobile Safari/537.36";
 const MAX_LATEST_STORIES_PER_CATEGORY = 40;
 const MAX_OPINION_STORIES_PER_CATEGORY = 20;
 const MAX_GNEWS_STORIES_PER_CATEGORY = 20;
@@ -289,6 +292,7 @@ const NEWS_SOURCES = [
   // Pakistan — official latest-news and opinion feeds.
   { id: "dawn-latest-news", name: "Dawn", category: "National", feedType: "Latest News", url: "https://www.dawn.com/feeds/latest-news" },
   { id: "dawn-opinion", name: "Dawn", category: "National", feedType: "Opinions", url: "https://www.dawn.com/feeds/opinion" },
+  { id: "express-tribune-opinion", name: "Express Tribune", category: "National", feedType: "Opinions", url: "https://tribune.com.pk/feed/opinion" },
   { id: "express-tribune-pakistan", name: "Express Tribune", category: "National", feedType: "Latest News", url: "https://tribune.com.pk/feed/pakistan" },
   { id: "the-news-pakistan", name: "The News", category: "National", feedType: "Latest News", url: "https://www.thenews.com.pk/rss/1/0" },
   // World — sources intended to remain accessible for Pakistan users.
@@ -817,7 +821,8 @@ async function fetchNewsSource(source, env) {
     const response = await fetch(source.url, {
       headers: {
         Accept: "application/rss+xml, application/atom+xml, application/xml, text/xml",
-        "User-Agent": "Sapiora-Current-Affairs/1.0 (+RSS reader)",
+        "User-Agent": source.feedType === "Opinions" ? BROWSER_UA : "Sapiora-Current-Affairs/1.0 (+RSS reader)",
+        "Accept-Language": "en-US,en;q=0.9",
       },
       signal: controller.signal,
     });
@@ -851,7 +856,8 @@ async function fetchDawnOpinionPage(source, env) {
     const response = await fetch("https://www.dawn.com/opinion", {
       headers: {
         Accept: "text/html,application/xhtml+xml",
-        "User-Agent": "Sapiora-Current-Affairs/1.0 (+Dawn opinion reader)",
+        "User-Agent": BROWSER_UA,
+        "Accept-Language": "en-US,en;q=0.9",
       },
       signal: controller.signal,
     });
@@ -1053,6 +1059,7 @@ function classifyFeedType(source, articleUrl, title) {
 function reclassifyNewsStories(stories) {
   return stories.map((story) => {
     if (story.category !== "National") return story;
+    if ((story.feedType || "").toLowerCase() === "opinions") return story;
     const text = `${story.title} ${story.excerpt}`.toLowerCase();
     const mentionsPakistan = PAKISTAN_NEWS_MARKERS.some((marker) => text.includes(marker));
     const mentionsInternational = INTERNATIONAL_NEWS_MARKERS.some((marker) => text.includes(marker));
@@ -1101,8 +1108,9 @@ function decodeXml(value) {
 function filterFreshStories(stories, now = Date.now()) {
   return stories.filter((story) => {
     const published = dateValue(story.publishedAt);
-    return published > 0 && now - published >= 0 &&
-      now - published <= NEWS_FRESHNESS_WINDOW_MS;
+    const isOpinion = (story.feedType || "").toLowerCase() === "opinions";
+    const window = isOpinion ? OPINION_FRESHNESS_WINDOW_MS : NEWS_FRESHNESS_WINDOW_MS;
+    return published > 0 && now - published >= 0 && now - published <= window;
   });
 }
 
@@ -1181,7 +1189,11 @@ function dateValue(value) {
 }
 
 function validDate(value) {
-  const time = Date.parse(value || "");
+  const normalized = String(value || "").replace(
+    /(\b\d{1,2}\s+[A-Za-z]{3}\s+)(\d{2})(\s+\d)/,
+    "$120$2$3",
+  );
+  const time = Date.parse(normalized);
   return Number.isNaN(time) ? null : new Date(time).toISOString();
 }
 
