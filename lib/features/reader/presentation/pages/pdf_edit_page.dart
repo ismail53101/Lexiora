@@ -51,7 +51,7 @@ class _PdfEditPageState extends State<PdfEditPage> {
     return result?.files.single.bytes;
   }
 
-  void _autoFitTextBoxAfterEdit(Uint8List bytes) {
+  void _autoFitTextBoxAfterEdit() {
     final PdfEditingController? editing = _editingController;
     if (_autoFittingText || editing == null || !editing.canAutosizeSelectedTextFont) {
       return;
@@ -59,8 +59,7 @@ class _PdfEditPageState extends State<PdfEditPage> {
 
     WidgetsBinding.instance.addPostFrameCallback((_) {
       if (!mounted ||
-          _autoFittingText ||
-          editing == null || !editing.canAutosizeSelectedTextFont) {
+          _autoFittingText || !editing.canAutosizeSelectedTextFont) {
         return;
       }
 
@@ -222,7 +221,7 @@ class _PdfEditPageState extends State<PdfEditPage> {
             return PdfEditorView(
               controller: editing,
               onSave: _saveAs,
-              onDocumentChanged: _autoFitTextBoxAfterEdit,
+              onDocumentChanged: (_) => _autoFitTextBoxAfterEdit(),
               imagePicker: _pickPdfImage,
               saveButtonLabel: 'Save PDF',
               toolbarTrailing: <PdfEditingToolbarWidgetBuilder>[
