@@ -321,6 +321,7 @@ class _FcCardEditorPageState extends ConsumerState<FcCardEditorPage> {
   BuildContext? _voiceSheetContext;
   bool _voiceSheetClosed = false;
   bool _voiceRecognitionEnded = false;
+  bool _voiceResultCommitted = false;
 
   void _commitFinalVoiceResult(
     FcRichTextController controller,
@@ -329,10 +330,11 @@ class _FcCardEditorPageState extends ConsumerState<FcCardEditorPage> {
   ) {
     // speech_to_text can emit interim and final results. Interim text is shown
     // only in the listening sheet; it must never be inserted into the field.
-    if (!result.finalResult) return;
+    if (!result.finalResult || _voiceResultCommitted) return;
 
     final String spoken = result.recognizedWords.trim();
     if (spoken.isEmpty) return;
+    _voiceResultCommitted = true;
 
     controller.value = insertSpeechText(
       TextEditingValue(text: controller.text, selection: insertionSelection),
@@ -429,6 +431,7 @@ class _FcCardEditorPageState extends ConsumerState<FcCardEditorPage> {
       _voiceSheetContext = null;
       _voiceSheetClosed = false;
       _voiceRecognitionEnded = false;
+      _voiceResultCommitted = false;
 
       if (!_speechReady) {
         final bool ready = await _speech.initialize(
