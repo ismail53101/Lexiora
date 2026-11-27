@@ -1141,7 +1141,8 @@ class _WordEditorPageState extends State<WordEditorPage> {
 
   /// Bottom-left of the first and bottom-right of the last selected box, in
   /// the coordinates of the canvas area.
-  ({Offset start, Offset end, List<Rect> rects})? _selectionEnds() {
+  ({Offset start, Offset end, List<Rect> rects, Rect startRect, Rect endRect})?
+      _selectionEnds() {
     final CaretEngine c = _controller.caret;
     if (c.isCollapsed) return null;
     try {
@@ -1184,7 +1185,13 @@ class _WordEditorPageState extends State<WordEditorPage> {
         top += (page.height as double) * scale + 24;
       }
       if (first == null || last == null) return null;
-      return (start: first, end: last, rects: boxes);
+      return (
+        start: first,
+        end: last,
+        rects: boxes,
+        startRect: boxes.first,
+        endRect: boxes.last,
+      );
     } on Object {
       return null;
     }
@@ -1208,50 +1215,86 @@ class _WordEditorPageState extends State<WordEditorPage> {
     }
   }
 
-  Widget _handle({required Offset point, required bool startHandle}) {
-    // Keep a generous touch target, but make the visible handle close to the
-    // native Android/Word proportions so it does not visually overpower text.
-    const double touchBox = 44;
-    const double knob = 18;
+  static const double _knob = 22;
+
+  /// Turns a finger position on the knob into the point on the text line the
+  /// knob belongs to (the knob hangs below its line, so aim up and onto it).
+  Offset _handleTarget(Offset global, double lineHeight) {
+    return _editorLocalFromGlobal(global) +
+        Offset(0, -(_knob / 2 + lineHeight / 2));
+  }
+
+  /// Word-style selection handle: a thin vertical bar along the first/last
+  /// selected line and a round knob hanging below it. Drag the knob up or down
+  /// to grow or shrink the selection line by line.
+  Widget _handle({required Rect rect, required bool startHandle}) {
+    const double boxW = 64;
+    const double bar = 2.5;
+    final double lineH = rect.height;
+    final double boxH = lineH + _knob + 30;
     final Color color = Theme.of(context).colorScheme.primary;
+    final double x = startHandle ? rect.left : rect.right;
+    // Knob centre (inside the box). The start knob hangs to the left of its
+    // bar and the end knob to the right, like Word.
+    final double knobCx = boxW / 2 + (startHandle ? -(_knob / 2 - 1) : (_knob / 2 - 1));
+    final double knobCy = lineH + _knob / 2 - 1;
     return Positioned(
-      // The hit target is centered on the actual selection endpoint. Previously
-      // it started above the endpoint and the visible knob was shifted down;
-      // touching the knob could therefore map the first drag sample into the
-      // next line and select the whole line.
-      left: point.dx - touchBox / 2,
-      top: point.dy - touchBox / 2,
-      width: touchBox,
-      height: touchBox,
-      child: GestureDetector(
-        behavior: HitTestBehavior.opaque,
-        onPanStart: (DragStartDetails d) {
-          _handleDragStart(startHandle: startHandle);
-          _startSelectionDrag(_editorLocalFromGlobal(d.globalPosition));
-        },
-        // The finger sits just below the text it points at (like Android), so
-        // aim a little above it. This lets both handles move freely up/down.
-        onPanUpdate: (DragUpdateDetails d) => _updateSelectionDrag(
-          _editorLocalFromGlobal(d.globalPosition) + const Offset(0, -10),
-        ),
-        onPanEnd: (_) => _stopSelectionDrag(),
-        onPanCancel: _stopSelectionDrag,
-        child: Center(
-          child: Container(
-            width: knob,
-            height: knob,
-            decoration: BoxDecoration(
-              color: color,
-              shape: BoxShape.circle,
-              boxShadow: const <BoxShadow>[
-                BoxShadow(
-                  blurRadius: 2,
-                  offset: Offset(0, 1),
+      left: x - boxW / 2,
+      top: rect.top,
+      width: boxW,
+      height: boxH,
+      child: Stack(
+        clipBehavior: Clip.none,
+        children: <Widget>[
+          Positioned(
+            left: boxW / 2 - bar / 2,
+            top: 0,
+            width: bar,
+            height: lineH,
+            child: IgnorePointer(child: ColoredBox(color: color)),
+          ),
+          Positioned(
+            left: knobCx - _knob / 2,
+            top: knobCy - _knob / 2,
+            width: _knob,
+            height: _knob,
+            child: IgnorePointer(
+              child: DecoratedBox(
+                decoration: BoxDecoration(
+                  color: color,
+                  borderRadius: BorderRadius.only(
+                    topLeft: Radius.circular(startHandle ? _knob / 2 : 0),
+                    topRight: Radius.circular(startHandle ? 0 : _knob / 2),
+                    bottomLeft: const Radius.circular(_knob / 2),
+                    bottomRight: const Radius.circular(_knob / 2),
+                  ),
+                  boxShadow: const <BoxShadow>[
+                    BoxShadow(blurRadius: 2, offset: Offset(0, 1)),
+                  ],
                 ),
-              ],
+              ),
             ),
           ),
-        ),
+          // Large invisible touch target around the knob.
+          Positioned(
+            left: knobCx - 26,
+            top: knobCy - 26,
+            width: 52,
+            height: 52,
+            child: GestureDetector(
+              behavior: HitTestBehavior.opaque,
+              onPanStart: (DragStartDetails d) {
+                _handleDragStart(startHandle: startHandle);
+                _startSelectionDrag(_handleTarget(d.globalPosition, lineH));
+              },
+              onPanUpdate: (DragUpdateDetails d) => _updateSelectionDrag(
+                _handleTarget(d.globalPosition, lineH),
+              ),
+              onPanEnd: (_) => _stopSelectionDrag(),
+              onPanCancel: _stopSelectionDrag,
+            ),
+          ),
+        ],
       ),
     );
   }
@@ -1386,7 +1429,8 @@ class _WordEditorPageState extends State<WordEditorPage> {
   }
 
   List<Widget> _handleWidgets() {
-    final ({Offset start, Offset end, List<Rect> rects})? ends = _selectionEnds();
+    final ({Offset start, Offset end, List<Rect> rects, Rect startRect, Rect endRect})?
+        ends = _selectionEnds();
     if (ends == null) return const <Widget>[];
     bool visible(Offset p) => p.dy > 0 && p.dy < _canvasSize.height - 4 && p.dx > -20;
     return <Widget>[
@@ -1400,12 +1444,11 @@ class _WordEditorPageState extends State<WordEditorPage> {
           ),
         ),
       ),
-      if (visible(ends.start)) _handle(point: ends.start, startHandle: true),
-      if (visible(ends.end)) _handle(point: ends.end, startHandle: false),
+      if (visible(ends.start)) _handle(rect: ends.startRect, startHandle: true),
+      if (visible(ends.end)) _handle(rect: ends.endRect, startHandle: false),
     ];
   }
 
-  /// Small floating bar shown while text is selected (word/line/paragraph).
   Widget _viewSelectionBar() {
     return Material(
       elevation: 8,
