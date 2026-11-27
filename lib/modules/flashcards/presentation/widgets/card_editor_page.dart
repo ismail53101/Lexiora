@@ -321,33 +321,30 @@ class _FcCardEditorPageState extends ConsumerState<FcCardEditorPage> {
   BuildContext? _voiceSheetContext;
   bool _voiceSheetClosed = false;
   bool _voiceRecognitionEnded = false;
-  Timer? _voiceCommitTimer;
 
-  void _scheduleVoiceCommit(
+  void _commitFinalVoiceResult(
     FcRichTextController controller,
     TextSelection insertionSelection,
-    String spoken,
+    SpeechRecognitionResult result,
   ) {
-    _voiceCommitTimer?.cancel();
-    if (spoken.trim().isEmpty) return;
-    _voiceCommitTimer = Timer(const Duration(seconds: 2), () async {
-      if (!mounted) return;
-      if (_speech.isListening) await _speech.stop();
-      _requestCloseVoiceSheet();
+    // speech_to_text can emit interim and final results. Interim text is shown
+    // only in the listening sheet; it must never be inserted into the field.
+    if (!result.finalResult) return;
 
-      final String text = spoken.trim();
-      if (text.isEmpty) return;
-      controller.value = insertSpeechText(
-        TextEditingValue(text: controller.text, selection: insertionSelection),
-        text,
-      );
-      if (identical(controller, _front)) {
-        _frontSelection = controller.selection;
-      } else {
-        _backSelection = controller.selection;
-      }
-      if (mounted) setState(() {});
-    });
+    final String spoken = result.recognizedWords.trim();
+    if (spoken.isEmpty) return;
+
+    controller.value = insertSpeechText(
+      TextEditingValue(text: controller.text, selection: insertionSelection),
+      spoken,
+    );
+    if (identical(controller, _front)) {
+      _frontSelection = controller.selection;
+    } else {
+      _backSelection = controller.selection;
+    }
+    _requestCloseVoiceSheet();
+    if (mounted) setState(() {});
   }
 
   void _requestCloseVoiceSheet() {
@@ -466,14 +463,14 @@ class _FcCardEditorPageState extends ConsumerState<FcCardEditorPage> {
       await _speech.listen(
         listenFor: const Duration(seconds: 30),
         pauseFor: const Duration(seconds: 5),
+        // Keep interim recognition visible in the listening sheet, but only
+        // insert the final result once. This prevents the same phrase from
+        // being inserted once as interim text and again as the final result.
         partialResults: true,
         cancelOnError: false,
         onResult: (SpeechRecognitionResult result) {
           liveText.value = result.recognizedWords;
-          final String spoken = result.recognizedWords.trim();
-          if (spoken.isNotEmpty) {
-            _scheduleVoiceCommit(c, insertionSelection, spoken);
-          }
+          _commitFinalVoiceResult(c, insertionSelection, result);
           if (mounted) setState(() {});
         },
       );
@@ -542,7 +539,6 @@ class _FcCardEditorPageState extends ConsumerState<FcCardEditorPage> {
 
   @override
   void dispose() {
-    _voiceCommitTimer?.cancel();
     _speech.stop();
     _front.removeListener(_handleFrontChanged);
     _back.removeListener(_handleBackChanged);
