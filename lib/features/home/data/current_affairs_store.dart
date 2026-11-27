@@ -23,6 +23,12 @@ class CurrentAffairsStore {
 
   /// Stable identity so the same article is never stored twice.
   static String identityOf(LatestUpdate story) {
+    // Prefer the feed's stable id when available. Some news providers can
+    // return different stories whose URLs normalize to the same host/path;
+    // using the id first prevents one bookmark from replacing another.
+    final String id = story.id.trim();
+    if (id.isNotEmpty) return 'id:$id';
+
     final String url = (story.articleUrl ?? '').trim();
     if (url.isNotEmpty) {
       final Uri? uri = Uri.tryParse(url);
@@ -30,12 +36,11 @@ class CurrentAffairsStore {
         final String path = uri.path.endsWith('/') && uri.path.length > 1
             ? uri.path.substring(0, uri.path.length - 1)
             : uri.path;
-        return '${uri.host.toLowerCase()}$path';
+        return 'url:${uri.host.toLowerCase()}$path';
       }
-      return url.toLowerCase();
+      return 'url:${url.toLowerCase()}';
     }
-    if (story.id.trim().isNotEmpty) return story.id.trim();
-    return story.headline.trim().toLowerCase();
+    return 'title:${story.headline.trim().toLowerCase()}';
   }
 
   static String _section(LatestUpdate story) =>
