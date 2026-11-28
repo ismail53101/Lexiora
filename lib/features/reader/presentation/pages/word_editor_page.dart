@@ -14,6 +14,7 @@ import 'package:lexiora/core/services/pdf_import_service.dart';
 import 'package:lexiora/core/services/pdf_discovery_service.dart' show DeviceFile;
 import 'package:lexiora/features/library/domain/entities/library_document.dart';
 import 'package:lexiora/features/library/domain/repositories/library_repository.dart';
+import 'package:lexiora/features/reader/presentation/widgets/word_ribbon.dart';
 import 'package:quds_office_editor/quds_office_editor.dart';
 
 /// Formatting chosen while the caret is collapsed (no selection). Like Word, it
@@ -26,6 +27,9 @@ class _TypingStyle {
   String? color;
   String? highlight;
   bool highlightSet = false;
+  bool? strike;
+  String? font;
+  WmlVertAlign? vertAlign;
 
   bool get isEmpty =>
       bold == null &&
@@ -33,6 +37,9 @@ class _TypingStyle {
       underline == null &&
       sizeHalf == null &&
       color == null &&
+      strike == null &&
+      font == null &&
+      vertAlign == null &&
       !highlightSet;
 
   void clear() {
@@ -43,6 +50,9 @@ class _TypingStyle {
     color = null;
     highlight = null;
     highlightSet = false;
+    strike = null;
+    font = null;
+    vertAlign = null;
   }
 
   void apply(WmlRunProps p) {
@@ -54,6 +64,12 @@ class _TypingStyle {
     if (sizeHalf != null) p.fontSizeHalfPoints = sizeHalf!;
     if (color != null) p.color = color!;
     if (highlightSet) p.highlight = highlight;
+    if (strike != null) p.strike = strike!;
+    if (font != null) {
+      p.asciiFont = font!;
+      p.csFont = font!;
+    }
+    if (vertAlign != null) p.vertAlign = vertAlign!;
   }
 }
 
@@ -111,6 +127,7 @@ class _WordEditorPageState extends State<WordEditorPage> with WidgetsBindingObse
   // While selecting text the controller runs in "selecting" mode: selection
   // works but no keyboard is attached, so it can never pop up mid-selection.
   bool _selectMode = false;
+  bool _ribbonOpen = false;
   final _TypingStyle _typing = _TypingStyle();
   bool _applyingTyping = false;
   int _snapPara = 0;
@@ -677,6 +694,259 @@ class _WordEditorPageState extends State<WordEditorPage> with WidgetsBindingObse
   }
 
   void _insertBlankPage() => _controller.insertPageBreak();
+
+  // ---- Word-style ribbon --------------------------------------------------
+
+  WmlParagraphProps? get _caretParagraphProps {
+    final List<WmlParagraph> paras = _paras;
+    if (paras.isEmpty) return null;
+    return paras[_controller.caret.paragraphIndex.clamp(0, paras.length - 1)]
+        .properties;
+  }
+
+  WordRibbonState _ribbonState() {
+    final WmlRunProps run = _controller.activeRunProps;
+    final WmlParagraphProps? para = _caretParagraphProps;
+    return WordRibbonState(
+      bold: _boldNow,
+      italic: _italicNow,
+      underline: _underNow,
+      strike: _typing.strike ?? run.strike,
+      vertAlign: _typing.vertAlign ?? run.vertAlign,
+      sizePoints: (_sizeHalfNow / 2).round(),
+      font: _typing.font ?? run.asciiFont,
+      color: _typing.color ?? run.color,
+      highlight: _typing.highlightSet ? _typing.highlight : run.highlight,
+      alignment: para?.justification ?? WmlJustification.left,
+      isRtl: para?.rightToLeft ?? false,
+      canUndo: _controller.canUndo,
+      canRedo: _controller.canRedo,
+    );
+  }
+
+  void _toggleStrike() {
+    final bool next = !(_typing.strike ?? _controller.activeRunProps.strike);
+    _formatRun(
+      update: (WmlRunProps p) => p.strike = next,
+      remember: (_TypingStyle t) => t.strike = next,
+    );
+  }
+
+  void _setVertAlign(WmlVertAlign value) => _formatRun(
+        update: (WmlRunProps p) => p.vertAlign = value,
+        remember: (_TypingStyle t) => t.vertAlign = value,
+      );
+
+  void _setFont(String family) => _formatRun(
+        update: (WmlRunProps p) {
+          p.asciiFont = family;
+          p.csFont = family;
+        },
+        remember: (_TypingStyle t) => t.font = family,
+      );
+
+  void _clearFormatting() {
+    final WmlRunProps d = WmlRunProps();
+    void reset(WmlRunProps p) {
+      p.bold = d.bold;
+      p.italic = d.italic;
+      p.underline = d.underline;
+      p.strike = d.strike;
+      p.color = d.color;
+      p.highlight = d.highlight;
+      p.fontSizeHalfPoints = d.fontSizeHalfPoints;
+      p.asciiFont = d.asciiFont;
+      p.csFont = d.csFont;
+      p.vertAlign = d.vertAlign;
+    }
+
+    _formatRun(
+      update: reset,
+      remember: (_TypingStyle t) {
+        t.bold = d.bold;
+        t.italic = d.italic;
+        t.underline = d.underline != WmlUnderline.none;
+        t.strike = d.strike;
+        t.color = d.color;
+        t.highlight = d.highlight;
+        t.highlightSet = true;
+        t.sizeHalf = d.fontSizeHalfPoints;
+        t.font = d.asciiFont;
+        t.vertAlign = d.vertAlign;
+      },
+    );
+  }
+
+  /// Applies a gallery style (heading or a look made of run + paragraph
+  /// formatting) to the paragraph at the caret.
+  void _applyStyleSpec(WordStyleSpec st) {
+    _ensureEditing();
+    void paragraphTweaks() {
+      if (st.align == null &&
+          st.spaceBefore == null &&
+          st.spaceAfter == null &&
+          st.lineSpacing == null &&
+          st.indentLeft == null) {
+        return;
+      }
+      _controller.applyParagraphFormat((WmlParagraphProps p) {
+        if (st.align != null) p.justification = st.align!;
+        if (st.spaceBefore != null) {
+          p.spacingBefore = st.spaceBefore!;
+          p.explicitSpacingBefore = true;
+        }
+        if (st.spaceAfter != null) {
+          p.spacingAfter = st.spaceAfter!;
+          p.explicitSpacingAfter = true;
+        }
+        if (st.lineSpacing != null) {
+          p.lineSpacing = st.lineSpacing!;
+          p.lineSpacingRule = WmlLineSpacingRule.auto;
+          p.explicitLineSpacing = true;
+        }
+        if (st.indentLeft != null) {
+          final WmlIndent i = p.indent;
+          p.indent = WmlIndent(left: st.indentLeft!, right: i.right);
+        }
+      });
+    }
+
+    if (st.headingLevel != null) {
+      _controller.applyHeading(st.headingLevel!);
+      paragraphTweaks();
+      return;
+    }
+    final CaretEngine c = _controller.caret;
+    final int anchorPara = c.selectionAnchorParagraph;
+    final int anchor = c.selectionAnchor;
+    final int para = c.paragraphIndex;
+    final int index = c.logicalIndex;
+    _controller.selectParagraphAtCaret();
+    _controller.applyRunFormat((WmlRunProps p) {
+      if (st.sizePt != null) p.fontSizeHalfPoints = (st.sizePt! * 2).round();
+      if (st.bold != null) p.bold = st.bold!;
+      if (st.italic != null) p.italic = st.italic!;
+      if (st.color != null) p.color = st.color!;
+    });
+    paragraphTweaks();
+    c.selectionAnchorParagraph = anchorPara;
+    c.selectionAnchor = anchor;
+    c.paragraphIndex = para;
+    c.logicalIndex = index;
+    _controller.refresh();
+  }
+
+  // ---- Find in document ---------------------------------------------------
+
+  final List<({int para, int start})> _findHits = <({int para, int start})>[];
+  String _findQuery = '';
+  int _findIndex = -1;
+
+  ({int count, int index}) _findInDocument(String query, int step) {
+    final String q = query.toLowerCase();
+    if (q.isEmpty) return (count: 0, index: 0);
+    if (step == 0 || q != _findQuery) {
+      _findQuery = q;
+      _findHits.clear();
+      final List<WmlParagraph> paras = _paras;
+      for (int i = 0; i < paras.length; i++) {
+        final String text = paras[i].text.toLowerCase();
+        int from = 0;
+        while (true) {
+          final int at = text.indexOf(q, from);
+          if (at < 0) break;
+          _findHits.add((para: i, start: at));
+          from = at + math.max(1, q.length);
+        }
+      }
+      _findIndex = _findHits.isEmpty ? -1 : 0;
+    } else if (_findHits.isNotEmpty) {
+      _findIndex = (_findIndex + step) % _findHits.length;
+      if (_findIndex < 0) _findIndex += _findHits.length;
+    }
+    if (_findIndex >= 0 && _findIndex < _findHits.length) {
+      final ({int para, int start}) hit = _findHits[_findIndex];
+      final CaretEngine c = _controller.caret;
+      c.selectionAnchorParagraph = hit.para;
+      c.selectionAnchor = hit.start;
+      c.paragraphIndex = hit.para;
+      c.logicalIndex = hit.start + q.length;
+      _controller.refresh();
+      _revealCaretLine();
+    }
+    return (count: _findHits.length, index: _findIndex < 0 ? 0 : _findIndex + 1);
+  }
+
+  /// Scrolls so the caret/selection end line sits in the upper part of the view.
+  void _revealCaretLine() {
+    final CaretEngine c = _controller.caret;
+    final List<dynamic> pages = _controller.documentLaidOut.pages.toList();
+    final double scale = _controller.viewport.scale * _pointsToPixels;
+    final Offset origin = _controller.viewport.origin;
+    double pageTop = 24.0;
+    double? lineTop;
+    for (final dynamic page in pages) {
+      final List<LaidOutLine> lines =
+          (page.lines as List<dynamic>).cast<LaidOutLine>();
+      for (int i = 0; i < lines.length; i++) {
+        final LaidOutLine line = lines[i];
+        if (line.paragraphIndex < 0) continue;
+        final bool last = i == lines.length - 1 ||
+            lines[i + 1].paragraphIndex != line.paragraphIndex;
+        if (c.isOnLine(line, lastOfParagraph: last)) {
+          lineTop = pageTop + line.y * scale - origin.dy;
+          break;
+        }
+      }
+      if (lineTop != null) break;
+      pageTop += (page.height as double) * scale + 24.0;
+    }
+    if (lineTop == null) return;
+    final double target = _canvasSize.height * 0.3;
+    _controller.viewport.origin = Offset(origin.dx, origin.dy + (lineTop - target));
+    _clampOrigin();
+    _controller.refresh();
+  }
+
+  WordRibbonActions _ribbonActions() => WordRibbonActions(
+        toggleBold: _toggleBold,
+        toggleItalic: _toggleItalic,
+        toggleUnderline: _toggleUnderline,
+        toggleStrike: _toggleStrike,
+        setVertAlign: _setVertAlign,
+        setFont: _setFont,
+        setSize: _setSize,
+        setColor: _setColor,
+        setHighlight: _setHighlight,
+        clearFormatting: _clearFormatting,
+        applyParagraph: (void Function(WmlParagraphProps p) u) {
+          _ensureEditing();
+          _controller.applyParagraphFormat(u);
+        },
+        applyList: ({required bool numbered}) {
+          _ensureEditing();
+          _controller.applyList(numbered: numbered);
+        },
+        applyStyle: _applyStyleSpec,
+        undo: () {
+          _ensureEditing();
+          _controller.undo();
+        },
+        redo: () {
+          _ensureEditing();
+          _controller.redo();
+        },
+        insertTable: () {
+          _ensureEditing();
+          _insertTable();
+        },
+        insertPageBreak: () {
+          _ensureEditing();
+          _insertBlankPage();
+        },
+        find: _findInDocument,
+        close: () => setState(() => _ribbonOpen = false),
+      );
 
   void _applyRun(void Function(WmlRunProps props) update) {
     _controller.applyRunFormat(update);
@@ -2212,7 +2482,10 @@ class _WordEditorPageState extends State<WordEditorPage> with WidgetsBindingObse
               IconButton(
                 tooltip: 'More formatting',
                 icon: const Icon(Icons.more_horiz),
-                onPressed: _showMoreFormatting,
+                onPressed: () {
+                  _ensureEditing();
+                  setState(() => _ribbonOpen = !_ribbonOpen);
+                },
               ),
             ],
           ),
@@ -2359,6 +2632,11 @@ class _WordEditorPageState extends State<WordEditorPage> with WidgetsBindingObse
               ],
             ),
           ),
+          if (_editing && _ribbonOpen)
+            SizedBox(
+              height: math.min(380.0, MediaQuery.sizeOf(context).height * 0.48),
+              child: WordRibbon(state: _ribbonState(), on: _ribbonActions()),
+            ),
           if (_editing) SafeArea(top: false, child: _toolbar()),
         ],
       );
