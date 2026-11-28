@@ -67,9 +67,12 @@ class _PdfEditPageState extends State<PdfEditPage> {
     final bool editingText = editing.isEditingText;
     final (int, int)? selectedSlot = editing.selectedAnnotationSlot;
 
-    // A text box was just committed. Return to Select so the next tap on the
-    // same box selects/opens that existing box instead of creating another one.
+    // A text box was just committed. Fit its font to the box before returning
+    // to Select, so text typed into a small box remains fully visible. The
+    // next tap on the same box then selects/opens that existing box instead of
+    // creating another one.
     if (_wasEditingText && !editingText && editing.selectedFreeTextStyle != null) {
+      editing.autosizeSelectedTextFont();
       editing.tool = PdfEditTool.select;
       _lastSelectedAnnotationSlot = selectedSlot;
       _wasEditingText = false;
@@ -257,8 +260,17 @@ class _PdfEditPageState extends State<PdfEditPage> {
             if (bytes == null) {
               return const Center(child: CircularProgressIndicator());
             }
-            final PdfEditingController editing =
-                _editingController ??= PdfEditingController(bytes);
+            final PdfEditingController editing;
+            if (_editingController == null) {
+              editing = PdfEditingController(bytes);
+              // Keep Draw usable for stylus drawing while allowing a finger to
+              // pan/scroll the document. The toolbar can still toggle finger
+              // drawing back on when finger-only drawing is needed.
+              editing.preferences.fingerDrawsInk = false;
+              _editingController = editing;
+            } else {
+              editing = _editingController!;
+            }
             _attachPdfEditingListener(editing);
 
             return PdfEditorView(
@@ -278,12 +290,10 @@ class _PdfEditPageState extends State<PdfEditPage> {
                 ),
               ],
               features: const PdfEditorFeatures(
-                // Content selects real page elements. Its selected-element
-                // strip exposes direct text replacement when the PDF run is
-                // safely editable; freeText remains available for insertion.
+                // Keep page-content erase, but hide Content/A editing. Text is
+                // added through freeText and can be reopened from Select.
                 tools: <PdfEditTool>{
                   PdfEditTool.select,
-                  PdfEditTool.content,
                   PdfEditTool.contentDelete,
                   PdfEditTool.freeText,
                   PdfEditTool.image,
