@@ -9,6 +9,7 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:lexiora/app/di/injector.dart';
+import 'package:lexiora/core/reader_engine/word_action.dart';
 import 'package:lexiora/core/services/pdf_import_service.dart';
 import 'package:lexiora/core/services/pdf_discovery_service.dart' show DeviceFile;
 import 'package:lexiora/features/library/domain/entities/library_document.dart';
@@ -117,6 +118,7 @@ class _WordEditorPageState extends State<WordEditorPage> with WidgetsBindingObse
   int _snapCaret = 0;
   int _snapStart = 0;
   bool _pinching = false;
+  DateTime _lastReflow = DateTime.fromMillisecondsSinceEpoch(0);
   bool _scrollbarDragging = false;
   bool _visualDragging = false;
   bool _visualDragMoved = false;
@@ -706,6 +708,10 @@ class _WordEditorPageState extends State<WordEditorPage> with WidgetsBindingObse
   void _setZoom(double value) {
     final double clamped = value.clamp(0.25, 2.0).toDouble();
     _controller.viewport.setScale(clamped);
+    if (_phoneView) {
+      _applyPhoneView(true);
+      return;
+    }
     _clampOrigin();
     _controller.refresh();
     if (mounted) setState(() {});
@@ -722,6 +728,9 @@ class _WordEditorPageState extends State<WordEditorPage> with WidgetsBindingObse
     _origMargins ??=
         <WmlPageMargins>[for (final WmlSection s in sections) s.margins];
     final double screen = MediaQuery.sizeOf(context).width;
+    // The page width follows the current zoom, so the page always fills the
+    // screen edge to edge: zooming out/in re-wraps the text (like WPS) instead
+    // of leaving the page narrow with dark empty bars at both sides.
     final double scale = _controller.viewport.scale;
     // +1px so the page is pinned to the left gutter (never re-centred).
     final double pagePt = ((screen + 1.0) * 72.0 / 96.0) / scale;
@@ -1064,9 +1073,18 @@ class _WordEditorPageState extends State<WordEditorPage> with WidgetsBindingObse
               .clamp(0.25, 2.0)
               .toDouble();
           _controller.viewport.setScale(next);
-          _clampOrigin();
-          _controller.refresh();
-          if (mounted) setState(() {});
+          final DateTime now = DateTime.now();
+          if (_phoneView &&
+              now.difference(_lastReflow).inMilliseconds > 140) {
+            // Re-wrap the text to the new zoom so the page keeps filling the
+            // screen while the fingers are still moving.
+            _lastReflow = now;
+            _applyPhoneView(true);
+          } else {
+            _clampOrigin();
+            _controller.refresh();
+            if (mounted) setState(() {});
+          }
         } else {
           _scrollBy(event.position - previous, 0.5);
         }
@@ -1680,6 +1698,82 @@ class _WordEditorPageState extends State<WordEditorPage> with WidgetsBindingObse
         .length;
     return words == 1 ? '1 word' : '$words words';
   }
+  String? _selectedText() {
+    final List<WmlParagraph> paras = _paras;
+    final CaretEngine c = _controller.caret;
+    if (paras.isEmpty || c.isCollapsed) return null;
+    final ({int startPara, int startIdx, int endPara, int endIdx}) range =
+        c.normalizedRange;
+    final List<String> parts = <String>[];
+    for (int pi = range.startPara; pi <= range.endPara; pi++) {
+      if (pi < 0 || pi >= paras.length) continue;
+      final String text = paras[pi].text;
+      final int from = (pi == range.startPara ? range.startIdx : 0)
+          .clamp(0, text.length);
+      final int to = (pi == range.endPara ? range.endIdx : text.length)
+          .clamp(from, text.length);
+      if (to > from) parts.add(text.substring(from, to));
+    }
+    final String value = parts.join('\n').trim();
+    return value.isEmpty ? null : value;
+  }
+  String _cleanSelectedWordText(String raw) {
+    String text = raw.trim();
+    text = text.replaceFirst(RegExp(r'^[^A-Za-z0-9]+'), '');
+    text = text.replaceFirst(RegExp(r'[^A-Za-z0-9]+$'), '');
+    return text;
+  }
+  String? _selectionSingleWord() {
+    final String? selected = _selectedText();
+    if (selected == null) return null;
+    final String text = _cleanSelectedWordText(selected);
+    if (text.isEmpty || text.length > 64) return null;
+    return RegExp(r"^[A-Za-z][A-Za-z'’\-]*$").hasMatch(text) ? text : null;
+  }
+  String? _selectionActionText() {
+    final String? selected = _selectedText();
+    if (selected == null || selected.length > 300) return null;
+    return _selectionSingleWord() ?? selected;
+  }
+  void _clearWordSelection() {
+    _selectMode = false;
+    _controller.caret.collapseSelection();
+    _controller.setMode(
+      _editing ? OfficeInteractionMode.editing : OfficeInteractionMode.viewing,
+    );
+    _controller.refresh();
+  }
+  Future<void> _copyWordSelection() async {
+    await _controller.copyToClipboard();
+    if (mounted) setState(_clearWordSelection);
+  }
+  Future<void> _highlightWordSelection(int colorValue) async {
+    if (_selectedText() == null) return;
+    final String hex = colorValue.toRadixString(16).padLeft(8, '0').substring(2);
+    final OfficeInteractionMode previous = _editing
+        ? OfficeInteractionMode.editing
+        : OfficeInteractionMode.selecting;
+    // Selecting mode intentionally blocks document mutation and the IME. Open
+    // only Quds' mutation gate for this operation, then restore the old mode.
+    _controller.setMode(OfficeInteractionMode.editing);
+    _controller.applyRunFormat((WmlRunProps props) => props.highlight = hex);
+    _controller.setMode(previous);
+    _controller.refresh();
+    if (mounted) setState(_clearWordSelection);
+  }
+  Future<void> _invokeWordSelectionAction(WordAction action) async {
+    final String? text = _selectionActionText();
+    if (text == null) return;
+    await action.invoke(
+      context,
+      WordActionContext(
+        documentId: _document?.id ?? widget.documentId ?? 'external',
+        pageNumber: 1,
+        word: text,
+      ),
+    );
+    if (mounted) setState(_clearWordSelection);
+  }
 
   int _wordEnd(String t, int i) {
     int k = i;
@@ -1785,36 +1879,72 @@ class _WordEditorPageState extends State<WordEditorPage> with WidgetsBindingObse
   }
 
   Widget _viewSelectionBar() {
+    final String? text = _selectionActionText();
+    final WordActionRegistry registry = sl<WordActionRegistry>();
+    final bool singleWord = text != null && _selectionSingleWord() == text;
+    final List<WordAction> actions = text == null
+        ? const <WordAction>[]
+        : registry.actions
+            .where((WordAction action) => singleWord || action.supportsPhrase)
+            .toList(growable: false);
+    const List<int> colors = <int>[0xFFFFF176, 0xFFFFCC80, 0xFFB3E5FC, 0xFFC8E6C9];
     return Material(
       elevation: 8,
-      borderRadius: BorderRadius.circular(24),
-      color: Theme.of(context).colorScheme.surfaceContainerHigh,
+      borderRadius: BorderRadius.circular(18),
+      color: Theme.of(context).colorScheme.surface,
       child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
-        child: Row(
-          mainAxisSize: MainAxisSize.min,
-          children: <Widget>[
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 8),
-              child: Text(
-                _selectedWordsLabel() ?? 'Selected',
-                style: const TextStyle(fontWeight: FontWeight.w600),
+        padding: const EdgeInsets.fromLTRB(10, 8, 10, 6),
+        child: ConstrainedBox(
+          constraints: const BoxConstraints(maxWidth: 360),
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: <Widget>[
+              if (actions.isNotEmpty)
+                Wrap(
+                  spacing: 6,
+                  runSpacing: 4,
+                  alignment: WrapAlignment.center,
+                  children: <Widget>[
+                    for (final WordAction action in actions)
+                      FilledButton.tonalIcon(
+                        icon: Icon(action.icon, size: 18),
+                        label: Text(action.label),
+                        onPressed: () => _invokeWordSelectionAction(action),
+                      ),
+                  ],
+                ),
+              if (actions.isNotEmpty) const Divider(height: 8),
+              Row(
+                mainAxisSize: MainAxisSize.min,
+                children: <Widget>[
+                  for (final int color in colors)
+                    IconButton(
+                      tooltip: 'Highlight',
+                      icon: Icon(Icons.circle, color: Color(color), size: 25),
+                      onPressed: () => _highlightWordSelection(color),
+                    ),
+                  IconButton(
+                    tooltip: 'Copy',
+                    icon: const Icon(Icons.copy_outlined),
+                    onPressed: _copyWordSelection,
+                  ),
+                  FilledButton.tonalIcon(
+                    icon: const Icon(Icons.edit_outlined, size: 18),
+                    label: const Text('Edit'),
+                    onPressed: () {
+                      _setEditing(true);
+                      _ensureEditing();
+                    },
+                  ),
+                  IconButton(
+                    tooltip: 'Dismiss',
+                    icon: const Icon(Icons.close),
+                    onPressed: () => setState(_clearWordSelection),
+                  ),
+                ],
               ),
-            ),
-            IconButton(
-              tooltip: 'Copy',
-              icon: const Icon(Icons.copy_outlined),
-              onPressed: _controller.copyToClipboard,
-            ),
-            FilledButton.tonalIcon(
-              icon: const Icon(Icons.edit_outlined, size: 18),
-              label: const Text('Edit'),
-              onPressed: () {
-                _setEditing(true);
-                _ensureEditing();
-              },
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );
