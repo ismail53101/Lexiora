@@ -31,6 +31,48 @@ class PdfrxReaderView extends StatefulWidget {
   State<PdfrxReaderView> createState() => _PdfrxReaderViewState();
 }
 
+class _PdfReadLollipopPainter extends CustomPainter {
+  const _PdfReadLollipopPainter({required this.start, required this.color});
+
+  final bool start;
+  final Color color;
+
+  @override
+  void paint(Canvas canvas, Size size) {
+    const double radius = 7;
+    final double centerX = size.width / 2;
+    final Paint line = Paint()
+      ..color = color
+      ..style = PaintingStyle.stroke
+      ..strokeWidth = 3
+      ..strokeCap = StrokeCap.round;
+    final Paint circle = Paint()..color = color;
+    if (start) {
+      canvas.drawCircle(const Offset(18, radius), radius, circle);
+      canvas.drawLine(
+        Offset(centerX, radius * 2 + 2),
+        Offset(centerX, size.height),
+        line,
+      );
+    } else {
+      canvas.drawLine(
+        Offset(centerX, 0),
+        Offset(centerX, size.height - radius * 2 - 2),
+        line,
+      );
+      canvas.drawCircle(
+        Offset(centerX, size.height - radius),
+        radius,
+        circle,
+      );
+    }
+  }
+
+  @override
+  bool shouldRepaint(covariant _PdfReadLollipopPainter oldDelegate) =>
+      oldDelegate.start != start || oldDelegate.color != color;
+}
+
 class _PdfrxReaderViewState extends State<PdfrxReaderView> {
   late PdfDocumentRefFile _docRef;
 
@@ -136,6 +178,8 @@ class _PdfrxReaderViewState extends State<PdfrxReaderView> {
         // of relying on pdfrx pointer-kind detection on Android devices.
         enableSelectionHandles: true,
         showContextMenuAutomatically: true,
+        buildSelectionHandle: _buildSelectionHandle,
+        calcSelectionHandleOffset: _selectionHandleOffset,
         onTextSelectionChange: _onSelectionChange,
       ),
       // Double-tap zooms to a comfortable close-up on the tapped point (tap
@@ -165,6 +209,45 @@ class _PdfrxReaderViewState extends State<PdfrxReaderView> {
             ),
           ],
     );
+  }
+
+  Widget _buildSelectionHandle(
+    BuildContext context,
+    PdfTextSelectionAnchor anchor,
+    PdfViewerTextSelectionAnchorHandleState state,
+  ) {
+    final Color color = const Color(0xFF1976D2).withValues(
+      alpha: state == PdfViewerTextSelectionAnchorHandleState.normal
+          ? 0.88
+          : 1,
+    );
+    return SizedBox(
+      width: 36,
+      height: 34,
+      child: CustomPaint(
+        painter: _PdfReadLollipopPainter(
+          start: anchor.type == PdfTextSelectionAnchorType.a,
+          color: color,
+        ),
+      ),
+    );
+  }
+
+  Offset _selectionHandleOffset(
+    BuildContext context,
+    PdfTextSelectionAnchor anchor,
+    PdfViewerTextSelectionAnchorHandleState state,
+  ) {
+    const double halfWidth = 18;
+    final bool start = anchor.type == PdfTextSelectionAnchorType.a;
+    switch (anchor.direction) {
+      case PdfTextDirection.rtl:
+      case PdfTextDirection.vrtl:
+        return Offset(start ? -halfWidth : halfWidth, 0);
+      case PdfTextDirection.ltr:
+      case PdfTextDirection.unknown:
+        return Offset(start ? halfWidth : -halfWidth, 0);
+    }
   }
 
   /// Lays pages out left-to-right for horizontal reading.
