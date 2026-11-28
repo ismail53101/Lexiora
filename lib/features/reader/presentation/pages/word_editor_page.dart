@@ -118,6 +118,7 @@ class _WordEditorPageState extends State<WordEditorPage> with WidgetsBindingObse
   int _snapCaret = 0;
   int _snapStart = 0;
   bool _pinching = false;
+  DateTime _lastReflow = DateTime.fromMillisecondsSinceEpoch(0);
   bool _scrollbarDragging = false;
   bool _visualDragging = false;
   bool _visualDragMoved = false;
@@ -705,8 +706,12 @@ class _WordEditorPageState extends State<WordEditorPage> with WidgetsBindingObse
   int get _zoomPercent => (_controller.viewport.scale * 100).round();
 
   void _setZoom(double value) {
-    final double clamped = value.clamp(0.2, 3.0).toDouble();
+    final double clamped = value.clamp(0.25, 2.0).toDouble();
     _controller.viewport.setScale(clamped);
+    if (_phoneView) {
+      _applyPhoneView(true);
+      return;
+    }
     _clampOrigin();
     _controller.refresh();
     if (mounted) setState(() {});
@@ -723,11 +728,12 @@ class _WordEditorPageState extends State<WordEditorPage> with WidgetsBindingObse
     _origMargins ??=
         <WmlPageMargins>[for (final WmlSection s in sections) s.margins];
     final double screen = MediaQuery.sizeOf(context).width;
-    // Page width is computed at the fixed base scale, NOT the current zoom.
-    // Using the current zoom re-wrapped the page to fill the screen again after
-    // every pinch, so zooming out never made the page smaller.
+    // The page width follows the current zoom, so the page always fills the
+    // screen edge to edge: zooming out/in re-wraps the text (like WPS) instead
+    // of leaving the page narrow with dark empty bars at both sides.
+    final double scale = _controller.viewport.scale;
     // +1px so the page is pinned to the left gutter (never re-centred).
-    final double pagePt = ((screen + 1.0) * 72.0 / 96.0) / _phoneScale;
+    final double pagePt = ((screen + 1.0) * 72.0 / 96.0) / scale;
     for (int i = 0; i < sections.length; i++) {
       if (i >= _origSizes!.length) break;
       final WmlSection section = sections[i];
@@ -1064,12 +1070,21 @@ class _WordEditorPageState extends State<WordEditorPage> with WidgetsBindingObse
         if ((ratio - 1.0).abs() > 0.01) {
           _pinching = true;
           final double next = (_controller.viewport.scale * ratio)
-              .clamp(0.2, 3.0)
+              .clamp(0.25, 2.0)
               .toDouble();
           _controller.viewport.setScale(next);
-          _clampOrigin();
-          _controller.refresh();
-          if (mounted) setState(() {});
+          final DateTime now = DateTime.now();
+          if (_phoneView &&
+              now.difference(_lastReflow).inMilliseconds > 140) {
+            // Re-wrap the text to the new zoom so the page keeps filling the
+            // screen while the fingers are still moving.
+            _lastReflow = now;
+            _applyPhoneView(true);
+          } else {
+            _clampOrigin();
+            _controller.refresh();
+            if (mounted) setState(() {});
+          }
         } else {
           _scrollBy(event.position - previous, 0.5);
         }
