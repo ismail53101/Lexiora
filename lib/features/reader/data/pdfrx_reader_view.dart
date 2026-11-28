@@ -132,6 +132,10 @@ class _PdfrxReaderViewState extends State<PdfrxReaderView> {
         if (searcher != null) searcher.pageTextMatchPaintCallback,
       ],
       textSelectionParams: PdfTextSelectionParams(
+        // Match the PDF editor's mobile selection behavior explicitly instead
+        // of relying on pdfrx pointer-kind detection on Android devices.
+        enableSelectionHandles: true,
+        showContextMenuAutomatically: true,
         onTextSelectionChange: _onSelectionChange,
       ),
       // Double-tap zooms to a comfortable close-up on the tapped point (tap
